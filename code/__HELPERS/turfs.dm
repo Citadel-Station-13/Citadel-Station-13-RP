@@ -16,7 +16,7 @@
 
 /proc/turf_clear(turf/T)
 	for(var/atom/A in T)
-		if(!(A.flags & ATOM_ABSTRACT))
+		if(!(A.atom_flags & ATOM_ABSTRACT))
 			return 0
 	return 1
 
@@ -76,7 +76,7 @@
 
 		var/turf/target = locate(dst_origin.x + x_pos, dst_origin.y + y_pos, dst_origin.z + z_pos)
 		if(!target)
-			log_debug("Null turf in translation @ ([dst_origin.x + x_pos], [dst_origin.y + y_pos], [dst_origin.z + z_pos])")
+			log_debug(SPAN_DEBUGERROR("Null turf in translation @ ([dst_origin.x + x_pos], [dst_origin.y + y_pos], [dst_origin.z + z_pos] [ADMIN_JMP(dst_origin)])"))
 		// If target is null, preserve that information in the turf map.
 		turf_map[source] = target
 
@@ -103,7 +103,7 @@
 
 	// You can stay, though.
 	if (istype(Origin, /turf/space))
-		log_debug("Tried to translate a space turf: src=[log_info_line(Origin)] dst=[log_info_line(Destination)]")
+		log_debug(SPAN_DEBUGERROR("Tried to translate a space turf: src=[log_info_line(Origin)][ADMIN_JMP(Origin)] dst=[log_info_line(Destination)][ADMIN_JMP(Destination)]"))
 		return FALSE	// TODO - Is this really okay to do nothing?
 
 	var/turf/X	// New Destination Turf
@@ -136,17 +136,17 @@
 
 	// Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
 	for(var/obj/O in Origin)
-		if(O.flags & ATOM_ABSTRACT)
+		if(O.atom_flags & ATOM_ABSTRACT)
 			continue
 		O.loc = X
 		O.update_light()
 		// The objects still need to know if their z-level changed.
 		if (z_level_change)
-			O.onTransitZ(Origin.z, X.z)
+			O.on_changed_z_level(Origin.z, X.z)
 
 	// Move the mobs unless it's an AI eye or other eye type.
 	for(var/mob/M in Origin)
-		if (M.flags & ATOM_ABSTRACT)
+		if (M.atom_flags & ATOM_ABSTRACT)
 			continue
 		if (isEye(M))
 			// If we need to check for more mobs, I'll add a variable.
@@ -155,12 +155,7 @@
 
 		// Same goes for mobs.
 		if (z_level_change)
-			M.onTransitZ(Origin.z, X.z)
-
-		if (istype(M, /mob/living))
-			var/mob/living/LM = M
-			// Need to check their Z-shadow, which is normally done in forceMove().
-			LM.check_shadow()
+			M.on_changed_z_level(Origin.z, X.z)
 
 	if (turftoleave)
 		Origin.ChangeTurf(turftoleave)
@@ -174,7 +169,40 @@
  * This assumes that the atom is located inside the target turf.
  */
 /atom/proc/is_between_turfs(turf/origin, turf/target)
-	if (flags & ON_BORDER)
+	if (atom_flags & ATOM_BORDER)
 		var/testdir = get_dir(target, origin)
 		return (dir & testdir)
+	return TRUE
+
+/**
+ * Checks whether the target turf is in a valid state to accept a directional window
+ * or other directional pseudo-dense object such as railings.
+ *
+ * Returns FALSE if the target turf cannot accept a directional window or railing.
+ * Returns TRUE otherwise.
+ *
+ * Arguments:
+ * * dest_turf - The destination turf to check for existing windows and railings
+ * * test_dir - The prospective dir of some atom you'd like to put on this turf.
+ * * is_fulltile - Whether the thing you're attempting to move to this turf takes up the entire tile or whether it supports multiple movable atoms on its tile.
+ */
+/proc/valid_window_location(turf/dest_turf, test_dir, is_fulltile = FALSE)
+	if(!dest_turf)
+		return FALSE
+	for(var/obj/turf_content in dest_turf)
+		if(istype(turf_content, /obj/machinery/door/window))
+			if((turf_content.dir == test_dir) || is_fulltile)
+				return FALSE
+		if(istype(turf_content, /obj/structure/windoor_assembly))
+			var/obj/structure/windoor_assembly/windoor_assembly = turf_content
+			if(windoor_assembly.dir == test_dir || is_fulltile)
+				return FALSE
+		if(istype(turf_content, /obj/structure/window))
+			var/obj/structure/window/window_structure = turf_content
+			if(window_structure.dir == test_dir || window_structure.fulltile || is_fulltile)
+				return FALSE
+		if(istype(turf_content, /obj/structure/railing))
+			var/obj/structure/railing/rail = turf_content
+			if(rail.dir == test_dir || is_fulltile)
+				return FALSE
 	return TRUE

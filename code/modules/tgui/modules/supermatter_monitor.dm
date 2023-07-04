@@ -1,26 +1,26 @@
 
-/datum/tgui_module/supermatter_monitor
+/datum/tgui_module_old/supermatter_monitor
 	name = "Supermatter monitor"
 	tgui_id = "SupermatterMonitor"
 	var/list/supermatters
 	var/obj/machinery/power/supermatter/active = null		// Currently selected supermatter crystal.
 
-/datum/tgui_module/supermatter_monitor/Destroy()
+/datum/tgui_module_old/supermatter_monitor/Destroy()
 	. = ..()
 	active = null
 	supermatters = null
 
-/datum/tgui_module/supermatter_monitor/New()
+/datum/tgui_module_old/supermatter_monitor/New()
 	..()
 	refresh()
 
 // Refreshes list of active supermatter crystals
-/datum/tgui_module/supermatter_monitor/proc/refresh()
+/datum/tgui_module_old/supermatter_monitor/proc/refresh()
 	supermatters = list()
 	var/z = get_z(ui_host())
 	if(!z)
 		return
-	var/valid_z_levels = GLOB.using_map.get_map_levels(z)
+	var/valid_z_levels = (LEGACY_MAP_DATUM).get_map_levels(z)
 	for(var/obj/machinery/power/supermatter/S in GLOB.machines)
 		// Delaminating, not within coverage, not on a tile.
 		if(S.grav_pulling || S.exploded || !(S.z in valid_z_levels) || !istype(S.loc, /turf/))
@@ -30,12 +30,12 @@
 	if(!(active in supermatters))
 		active = null
 
-/datum/tgui_module/supermatter_monitor/proc/get_status()
+/datum/tgui_module_old/supermatter_monitor/proc/get_status()
 	. = SUPERMATTER_INACTIVE
 	for(var/obj/machinery/power/supermatter/S in supermatters)
 		. = max(., S.get_status())
 
-/datum/tgui_module/supermatter_monitor/ui_data(mob/user)
+/datum/tgui_module_old/supermatter_monitor/ui_data(mob/user)
 	var/list/data = ..()
 
 	if(istype(active))
@@ -49,12 +49,14 @@
 			return
 
 		data["active"] = 1
+		data["currentcore"] = active
 		data["SM_area"] = get_area(active)
 		data["SM_integrity"] = active.get_integrity()
 		data["SM_power"] = active.power
 		data["SM_ambienttemp"] = air.temperature
 		data["SM_ambientpressure"] = air.return_pressure()
 		data["SM_EPR"] = active.get_epr()
+		data["SM_History"] = active.history
 		//data["SM_EPR"] = active.get_epr()
 		if(air.total_moles)
 			data["SM_gas_O2"] = round(100*air.gas[GAS_ID_OXYGEN]/air.total_moles,0.01)
@@ -86,7 +88,7 @@
 
 	return data
 
-/datum/tgui_module/supermatter_monitor/ui_act(action, params)
+/datum/tgui_module_old/supermatter_monitor/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -104,5 +106,5 @@
 					active = S
 			. = TRUE
 
-/datum/tgui_module/supermatter_monitor/ntos
+/datum/tgui_module_old/supermatter_monitor/ntos
 	ntos = TRUE

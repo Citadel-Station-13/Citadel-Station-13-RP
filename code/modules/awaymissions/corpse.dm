@@ -59,9 +59,9 @@
 		M.equip_to_slot_or_del(new src.corpseback(M), SLOT_ID_BACK)
 	if(src.corpseid == 1)
 		var/obj/item/card/id/W = new(M)
-		var/datum/job/jobdatum
-		for(var/jobtype in typesof(/datum/job))
-			var/datum/job/J = new jobtype
+		var/datum/role/job/jobdatum
+		for(var/jobtype in typesof(/datum/role/job))
+			var/datum/role/job/J = new jobtype
 			if(J.title == corpseidaccess)
 				jobdatum = J
 				break
@@ -459,7 +459,7 @@
 	name = "Pirate Buckler"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/green
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
-	corpsehelmet = /obj/item/clothing/head/tajaran/scarf
+	corpsehelmet = /obj/item/clothing/head/tajaranold/scarf
 	corpseback = /obj/item/storage/backpack/dufflebag/syndie
 
 /obj/spawner/corpse/pirate/melee_shield_machete_armor
@@ -514,7 +514,7 @@
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/tan
 	corpsesuit = /obj/item/clothing/suit/storage/vest/tactical
 	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
-	corpsehelmet = /obj/item/clothing/head/tajaran/scarf
+	corpsehelmet = /obj/item/clothing/head/tajaranold/scarf
 	corpsebelt = /obj/item/storage/belt/security/tactical/bandolier
 	corpseback = /obj/item/storage/backpack/rebel
 

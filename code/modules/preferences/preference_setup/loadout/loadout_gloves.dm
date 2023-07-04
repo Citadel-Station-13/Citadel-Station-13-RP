@@ -3,7 +3,7 @@
 	name = "Gloves - Black"
 	path = /obj/item/clothing/gloves/black
 	slot = SLOT_ID_GLOVES
-	sort_category = "Gloves and Handwear"
+	sort_category = LOADOUT_CATEGORY_GLOVES
 
 /datum/gear/gloves/blue
 	name = "Gloves - Blue"
@@ -138,7 +138,7 @@
 	path = /obj/item/clothing/gloves/fluff/siren
 
 /datum/gear/gloves/bountyskin
-	name = "Bounty Hunter's Gloves"
+	name = "Bounty Hunters Gloves"
 	path = /obj/item/clothing/gloves/bountyskin
 
 /datum/gear/gloves/hasie

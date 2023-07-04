@@ -15,7 +15,7 @@
 	if(stat != DEAD)
 		update_progression()
 
-/mob/living/carbon/alien/handle_mutations_and_radiation()
+/mob/living/carbon/alien/handle_mutations_and_radiation(seconds)
 
 	// Currently both Dionaea and larvae like to eat radiation, so I'm defining the
 	// rad absorbtion here. This will need to be changed if other baby aliens are added.
@@ -33,40 +33,24 @@
 
 /mob/living/carbon/alien/handle_regular_UI_updates()
 
-	if(status_flags & GODMODE)	return 0
+	if(status_flags & STATUS_GODMODE)	return 0
 
 	if(stat == DEAD)
 		blinded = 1
 		silent = 0
 	else
-		updatehealth()
+		update_health()
 		if(health <= 0)
 			death()
 			blinded = 1
 			silent = 0
 			return 1
 
-		if(paralysis && paralysis > 0)
+		if(!IS_CONSCIOUS(src))
 			blinded = 1
-			set_stat(UNCONSCIOUS)
-			if(halloss > 0)
-				adjustHalLoss(-3)
-
-		if(sleeping)
 			adjustHalLoss(-3)
-			if (mind)
-				if(mind.active && client != null)
-					AdjustSleeping(-1)
-			blinded = 1
-			set_stat(UNCONSCIOUS)
-		else if(resting)
-			if(halloss > 0)
-				adjustHalLoss(-3)
-
-		else
-			set_stat(CONSCIOUS)
-			if(halloss > 0)
-				adjustHalLoss(-1)
+		else if(IS_PRONE(src))
+			adjustHalLoss(-3)
 
 		// Eyes and blindness.
 		if(!has_eyes())
@@ -86,11 +70,9 @@
 /mob/living/carbon/alien/handle_regular_hud_updates()
 	if (stat == 2 || (MUTATION_XRAY in src.mutations))
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
-		SetSeeInDarkSelf(8)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
 	else if (stat != 2)
 		RemoveSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
-		SetSeeInDarkSelf(2)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
 
 	if (healths)

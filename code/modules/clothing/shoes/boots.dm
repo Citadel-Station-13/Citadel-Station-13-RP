@@ -2,7 +2,8 @@
 	name = "boots"
 	desc = "Generic boots."
 	icon_state = "workboots"
-	force = 3
+	armor_type = /datum/armor/shoes/boots
+	damage_force = 3
 	can_hold_knife = 1
 	step_volume_mod = 1.2
 
@@ -25,7 +26,6 @@
 	name = "jackboots"
 	desc = "Standard-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
 	icon_state = "jackboots"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
@@ -68,7 +68,6 @@
 	name = "workboots"
 	desc = "A pair of steel-toed work boots designed for use in industrial settings. Safety first."
 	icon_state = "workboots"
-	armor = list(melee = 40, bullet = 0, laser = 0, energy = 15, bomb = 20, bio = 0, rad = 20)
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/workboots/toeless
@@ -93,7 +92,7 @@
 	name = "security winter boots"
 	desc = "A pair of winter boots. These ones are lined with grey fur, and coloured an angry red."
 	icon_state = "winterboots_sec"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
+	armor_type = /datum/armor/security/light_formalwear
 
 /obj/item/clothing/shoes/boots/winter/science
 	name = "science winter boots"
@@ -139,7 +138,7 @@
 	name = "explorer winter boots"
 	desc = "Steel-toed winter boots for mining or exploration in hazardous environments. Very good at keeping toes warm and uncrushed."
 	icon_state = "explorer"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
+	armor_type = /datum/armor/exploration/soft
 
 // Allows the wearer to climb cliffs, which could allow for shortcuts or sequence-breaking.
 /obj/item/clothing/shoes/boots/winter/climbing
@@ -152,28 +151,25 @@
 	name = "tactical boots"
 	desc = "Tan boots with extra padding and armor."
 	icon_state = "jungle"
-	armor = list(melee = 40, bullet = 30, laser = 40,energy = 25, bomb = 50, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/duty
 	name = "duty boots"
 	desc = "A pair of steel-toed synthleather boots with a mirror shine."
 	icon_state = "duty"
-	armor = list(melee = 40, bullet = 0, laser = 0, energy = 15, bomb = 20, bio = 0, rad = 20)
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/jungle
 	name = "jungle boots"
 	desc = "A pair of durable brown boots. Waterproofed for use planetside."
 	icon_state = "jungle"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 10, rad = 0)
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/swat
 	name = "\improper SWAT shoes"
 	desc = "When you want to turn up the heat."
 	icon_state = "swat"
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
+	armor_type = /datum/armor/shoes/boots/swat
 	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6
 
@@ -181,8 +177,8 @@
 	name = "combat boots"
 	desc = "When you REALLY want to turn up the heat"
 	icon_state = "swat"
-	force = 5
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
+	damage_force = 5
+	armor_type = /datum/armor/shoes/boots/swat
 	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6
 
@@ -196,7 +192,7 @@
 	name = "combat boots"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time.  It can hold a Strategical knife."
 	icon_state = "jackboots"
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
+	armor_type = /datum/armor/shoes/boots/swat
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/shoes/cowboyboots/black
@@ -212,7 +208,10 @@
 
 	var/blessed = FALSE
 
-/obj/item/clothing/shoes/boots/swat/para/attack_self(mob/user as mob)
+/obj/item/clothing/shoes/boots/swat/para/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.mind.isholy && !blessed)
 		blessed = TRUE
 		clothing_flags |= NOSLIP
@@ -234,3 +233,46 @@
 	name = "Half Moon boots"
 	desc = "Perfect boots for crossing Mare Serenitatis. Flexible and tight, these boots ensure the wearer will be leaving a solid impression without sacrificing mobility."
 	icon_state = "half_moon"
+
+//More Warhammer Fun
+/obj/item/clothing/shoes/boots/utilitarian
+	name = "utilitarian military boots"
+	desc = "These boots seem to have been designed for a cloven foot. They're honestly pretty uncomfortable to wear."
+	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
+	icon_state = "tauboots"
+	siemens_coefficient = 0.7
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/boots/paladin
+	name = "elite paladin boots"
+	desc = "These sturdy leather boots have been augmented with tarnished steel plate armor. The soles have been refurbished many times."
+	icon = 'icons/clothing/suit/armor/medieval/paladin.dmi'
+	icon_state = "paladinboot"
+	siemens_coefficient = 0.7
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/boots/paladin_fake
+	name = "elite paladin boots"
+	desc = "These sturdy leather boots have been augmented with tarnished steel plate armor. The soles have been refurbished many times."
+	icon = 'icons/clothing/suit/armor/medieval/paladin.dmi'
+	icon_state = "paladinboot"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/boots/duty/alt
+	icon = 'icons/clothing/shoes/boots/duty.dmi'
+	icon_state = "altduty"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/boots/duty/alt/knee
+	name = "knee-high duty boots"
+	desc = "A pair of steel-toed synthleather boots with a mirror shine. These ones come up to just below the knee."
+	icon_state = "altduty_long"
+
+/obj/item/clothing/shoes/boots/duty/alt/heel
+	name = "heeled knee-high duty boots"
+	desc = "A pair of steel-toed synthleather boots with a mirror shine. These ones feature a pronounced heel and stop just below the knee."
+	icon_state = "altduty_heel"

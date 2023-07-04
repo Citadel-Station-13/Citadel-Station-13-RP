@@ -26,6 +26,8 @@
 #define NO_DEFIB (1<<11)
 ///(Phoron) Contamination doesnt affect them.
 #define CONTAMINATION_IMMUNE (1<<12)
+/// Cannot be ignited
+#define NO_IGNITE (1<<13)
 
 DEFINE_BITFIELD(species_flags, list(
 	BITFIELD(NO_MINOR_CUT),
@@ -52,38 +54,52 @@ DEFINE_BITFIELD(species_flags, list(
 #define SPECIES_FLUFF_PICKY_CITIZENSHIP (1<<2)
 /// deny religions that don't specifically whitelist us
 #define SPECIES_FLUFF_PICKY_RELIGION (1<<3)
+/// deny cultures that don't specifically whitelist us
+#define SPECIES_FLUFF_PICKY_CULTURE (1<<3)
 
 DEFINE_BITFIELD(species_fluff_flags, list(
 	BITFIELD(SPECIES_FLUFF_PICKY_FACTION),
 	BITFIELD(SPECIES_FLUFF_PICKY_ORIGIN),
 	BITFIELD(SPECIES_FLUFF_PICKY_CITIZENSHIP),
 	BITFIELD(SPECIES_FLUFF_PICKY_RELIGION),
+	BITFIELD(SPECIES_FLUFF_PICKY_CULTURE),
 ))
 
 //! species_spawn_flags
-/// Must be whitelisted to play.
-#define SPECIES_SPAWN_WHITELISTED (1<<0)
-/// Is not a core/normally playable species. (castes, mutantraces)
-#define SPECIES_SPAWN_RESTRICTED (1<<1)
-/// Species is selectable in chargen. - **this must be on a species to be roundstart/latejoin playable!!*
-#define SPECIES_SPAWN_ALLOWED (1<<2)
+/// is not considered a real character species; used for castes, monkies, etc.
+/// this flag will cause the species to skip char-species generation.
+#define SPECIES_SPAWN_SPECIAL (1<<0)
+/// Species is selectable and visible in chargen. This must be on a species to be roundstart/latejoin.
+#define SPECIES_SPAWN_CHARACTER (1<<1)
+/// Must be whitelisted to play roundstart/latejoin.
+#define SPECIES_SPAWN_WHITELISTED (1<<2)
+/// Must be whitelisted to see this species at all.
+#define SPECIES_SPAWN_SECRET (1<<3)
+/// Cannot normally spawn; something must pass in PREFS_COPY_TO_NO_CHECK_SPECIES to spawn checks to use!
+#define SPECIES_SPAWN_RESTRICTED (1<<4)
+/// if set, check species.id in WL, otherwise use uid
+#define SPECIES_SPAWN_WHITELIST_FLEXIBLE (1<<5)
+//? FLAGS ABOVE ARE RELEVANT TO UI.
+//? If you change them, change necessary TGUI too.
+//? Current TGUI that uses this:
+//? SpeicesPicker.tsx
 /// FBP of this species can't be made in-game.
-#define SPECIES_SPAWN_NO_FBP_CONSTRUCT (1<<3)
+#define SPECIES_SPAWN_NO_FBP_CONSTRUCT (1<<5)
 /// FBP of this species can't be selected at chargen.
-#define SPECIES_SPAWN_NO_FBP_SETUP (1<<4)
+#define SPECIES_SPAWN_NO_FBP_SETUP (1<<6)
 /// Species cannot start with robotic organs or have them attached.
-#define SPECIES_SPAWN_NO_ROBOTIC_ORGANS (1<<5)
-/// Can select and customize, but not join as
-#define SPECIES_SPAWN_WHITELIST_SELECTABLE (1<<6)
+#define SPECIES_SPAWN_NO_ROBOTIC_ORGANS (1<<7)
 
 DEFINE_BITFIELD(species_spawn_flags, list(
+	BITFIELD(SPECIES_SPAWN_SPECIAL),
+	BITFIELD(SPECIES_SPAWN_CHARACTER),
 	BITFIELD(SPECIES_SPAWN_WHITELISTED),
+	BITFIELD(SPECIES_SPAWN_SECRET),
 	BITFIELD(SPECIES_SPAWN_RESTRICTED),
-	BITFIELD(SPECIES_SPAWN_ALLOWED),
 	BITFIELD(SPECIES_SPAWN_NO_FBP_CONSTRUCT),
 	BITFIELD(SPECIES_SPAWN_NO_FBP_SETUP),
 	BITFIELD(SPECIES_SPAWN_NO_ROBOTIC_ORGANS),
-	BITFIELD(SPECIES_SPAWN_WHITELIST_SELECTABLE),
+	BITFIELD(SPECIES_SPAWN_WHITELIST_FLEXIBLE),
 ))
 
 //! species_appearance_flags

@@ -5,6 +5,7 @@
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "yellow"
 	density = 1
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
 	var/health = 100.0
 	w_class = ITEMSIZE_HUGE
 
@@ -37,7 +38,6 @@
 	var/temperature_resistance = 1000 + T0C
 	volume = 1000
 	use_power = USE_POWER_OFF
-	interact_offline = 1 // Allows this to be used when not in powered area.
 	var/update_flag = 0
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide
@@ -63,8 +63,8 @@
 
 /obj/machinery/portable_atmospherics/canister/phoron
 	name = "Canister \[Phoron\]"
-	icon_state = "orangeps"
-	canister_color = "orangeps"
+	icon_state = "orange"
+	canister_color = "orange"
 	can_label = 0
 
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide
@@ -92,8 +92,8 @@
 	canister_color = "blue"
 /obj/machinery/portable_atmospherics/canister/empty/phoron
 	name = "Canister \[Phoron\]"
-	icon_state = "orangeps"
-	canister_color = "orangeps"
+	icon_state = "orange"
+	canister_color = "orange"
 /obj/machinery/portable_atmospherics/canister/empty/nitrogen
 	name = "Canister \[N2\]"
 	icon_state = "red"
@@ -191,9 +191,9 @@ update_flag
 32 = tank_pressure go boom.
 */
 
-	if (src.destroyed)
-		src.overlays = 0
-		src.icon_state = text("[]-1", src.canister_color)
+	if (destroyed)
+		cut_overlays()
+		icon_state = "[canister_color]-1"
 		return
 
 	if(icon_state != "[canister_color]")
@@ -202,20 +202,24 @@ update_flag
 	if(check_change()) //Returns 1 if no change needed to icons.
 		return
 
-	src.overlays = 0
+	cut_overlays()
+	var/list/overlays_to_add = list()
 
 	if(update_flag & 1)
-		overlays += "can-open"
+		overlays_to_add += "can-open"
 	if(update_flag & 2)
-		overlays += "can-connector"
+		overlays_to_add += "can-connector"
 	if(update_flag & 4)
-		overlays += "can-o0"
+		overlays_to_add += "can-o0"
 	if(update_flag & 8)
-		overlays += "can-o1"
+		overlays_to_add += "can-o1"
 	else if(update_flag & 16)
-		overlays += "can-o2"
+		overlays_to_add += "can-o2"
 	else if(update_flag & 32)
-		overlays += "can-o3"
+		overlays_to_add += "can-o3"
+
+	add_overlay(overlays_to_add)
+
 	return
 
 /obj/machinery/portable_atmospherics/canister/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
@@ -278,7 +282,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/return_air()
 	return air_contents
 
-/obj/machinery/portable_atmospherics/canister/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/portable_atmospherics/canister/bullet_act(var/obj/projectile/Proj)
 	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
 		return
 
@@ -290,7 +294,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!W.is_wrench() && !istype(W, /obj/item/tank) && !istype(W, /obj/item/analyzer) && !istype(W, /obj/item/pda))
 		visible_message(SPAN_WARNING("\The [user] hits \the [src] with \a [W]!"))
-		src.health -= W.force
+		src.health -= W.damage_force
 		healthcheck()
 
 	if(istype(user, /mob/living/silicon/robot) && istype(W, /obj/item/tank/jetpack))
@@ -313,10 +317,10 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/portable_atmospherics/canister/attack_hand(var/mob/user as mob)
+/obj/machinery/portable_atmospherics/canister/attack_hand(mob/user, list/params)
 	return src.ui_interact(user)
 
-/obj/machinery/portable_atmospherics/canister/ui_state(mob/user)
+/obj/machinery/portable_atmospherics/canister/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/machinery/portable_atmospherics/canister/ui_interact(mob/user, datum/tgui/ui)
@@ -376,7 +380,7 @@ update_flag
 					"\[N2O\]" = "redws", \
 					"\[N2\]" = "red", \
 					"\[O2\]" = "blue", \
-					"\[Phoron\]" = "orangeps", \
+					"\[Phoron\]" = "orange", \
 					"\[CO2\]" = "black", \
 					"\[Air\]" = "grey", \
 					"\[CAUTION\]" = "yellow", \

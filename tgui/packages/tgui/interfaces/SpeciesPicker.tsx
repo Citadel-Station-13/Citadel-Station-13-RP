@@ -1,24 +1,35 @@
-import { BooleanLike } from 'common/react';
+import { BooleanLike } from '../../common/react';
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Button, Box } from '../components';
+import { Section, Stack, Button, Box, NoticeBox } from '../components';
 import { Window } from '../layouts';
+import { sanitizeText } from '../sanitize';
+
+// todo: this stuff should be generic constants somewhere for species manip
 
 type SpeciesPickerContext = {
   whitelisted: string[],
-  species: [String: Species[]],
-  default: String,
+  species: Record<string, Species[]>,
+  default: string,
   admin: BooleanLike,
 };
 
 type Species = {
-  id: String,
-  whitelisted: BooleanLike,
-  name: String,
-  desc: String,
-  appearance_flags: Number,
-  flags: Number,
-  category: String,
+  id: string,
+  spawn_flags: SpeciesSpawnFlags,
+  name: string,
+  desc: string,
+  appearance_flags: number,
+  flags: number,
+  category: string,
 };
+
+enum SpeciesSpawnFlags {
+  Special = (1<<0),
+  Character = (1<<1),
+  Whitelisted = (1<<2),
+  Secret = (1<<3),
+  Restricted = (1<<4),
+}
 
 // We currently do NOT render species appearance flags/numbers!
 
@@ -27,7 +38,7 @@ export const SpeciesPicker = (props, context) => {
   const [selectedCategory, setSelectedCategory] = useLocalState<String | null>(context, 'selectedCategory', null);
   const [selectedSpecies, setSelectedSpecies] = useLocalState<String | null>(context, 'selectedSpecies', data.default);
   const { whitelisted = [] } = data;
-  let categories: String[] = [];
+  let categories: string[] = [];
   let species: Species[] = [];
   let selected: Species | undefined;
   Object.entries(data.species).forEach(([k, v]) => {
@@ -42,8 +53,19 @@ export const SpeciesPicker = (props, context) => {
     });
   });
   categories.sort();
-  const isWhitelisted = (id) => (
-    !(species.find((s) => s.id === id)?.whitelisted) || (whitelisted.findIndex((s) => s === id) !== -1) || !!data.admin
+  const hasWhitelist = (s: Species) => (
+    (whitelisted.findIndex((str) => str === s.id) !== -1)
+  );
+  const hasAdminWhitelist = !!data.admin;
+  const isWhitelisted = (s: Species) => (
+    (s.spawn_flags & SpeciesSpawnFlags.Whitelisted)
+  );
+  const isHidden = (s: Species) => (
+    (s.spawn_flags & SpeciesSpawnFlags.Secret)
+    && !hasWhitelist(s)
+  );
+  const isRestricted = (s: Species) => (
+    (s.spawn_flags & SpeciesSpawnFlags.Restricted)
   );
 
   return (
@@ -72,7 +94,7 @@ export const SpeciesPicker = (props, context) => {
                 ) : (
                   <Section fill scrollable title="Species">
                     {
-                      species.filter((s) => s.category === selectedCategory).map((s) => (
+                      species.filter((s) => s.category === selectedCategory && !isHidden(s)).map((s) => (
                         <Button fluid color="transparent"
                           key={s.id}
                           selected={selectedSpecies === s.id}
@@ -92,32 +114,46 @@ export const SpeciesPicker = (props, context) => {
                   <Section fill />
                 ) : (
                   <Section fill title={selected.name}>
-                    {selected.desc}
-                    {isWhitelisted(selected.id)
-                      ? (
-                        <Button color="transparent"
-                          bottom="10px"
-                          left="10px"
-                          right="10px"
-                          width="auto"
-                          position="absolute"
-                          textAlign="center"
-                          onClick={() => act('pick', { id: selected?.id })}
-                        >
-                          Select
-                        </Button>
-                      ) : (
-                        <Box
-                          bottom="10px"
-                          left="10px"
-                          right="10px"
-                          width="auto"
-                          position="absolute"
-                          textAlign="center"
-                        >
-                          Whitelisted
-                        </Box>
+                    <Box dangerouslySetInnerHTML={{ __html: sanitizeText(selected.desc) }} />
+                    <Box
+                      bottom="10px"
+                      left="10px"
+                      right="10px"
+                      width="auto"
+                      position="absolute"
+                      textAlign="center"
+                    >
+                      {!!isRestricted(selected) && (
+                        <NoticeBox danger textAlign="center">
+                          This is a restricted species.
+                          You can select it, but cannot join the game with it in most normal roles.
+                        </NoticeBox>
                       )}
+                      {!!isWhitelisted(selected) && (hasWhitelist(selected)
+                        ?(
+                          <NoticeBox success textAlign="center">
+                            You have the whitelist to play this species.
+                          </NoticeBox>
+                        ) : (hasAdminWhitelist? (
+                          <NoticeBox success textAlign="center">
+                            You have administrative override for this species whitelist.
+                            Please play responsibly.
+                          </NoticeBox>
+                        ) : (
+                          <NoticeBox warning textAlign="center">
+                            This is a whitelisted species.
+                            You can select it, but cannot join the game with it without a whitelist.
+                          </NoticeBox>
+                        )
+                        ))}
+                      <Button color="transparent"
+                        textAlign="center"
+                        width="100% "
+                        onClick={() => act('pick', { id: selected?.id })}
+                      >
+                        Select
+                      </Button>
+                    </Box>
                   </Section>
                 )
             }

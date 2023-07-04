@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(ai)
 	init_order = INIT_ORDER_AI
 	priority = FIRE_PRIORITY_AI
 	wait = 5 // This gets run twice a second, however this is technically two loops in one, with the second loop being run every four iterations.
-	subsystem_flags = SS_NO_INIT|SS_TICKER
+	subsystem_flags = SS_NO_INIT
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/list/processing = list()
@@ -11,10 +11,8 @@ SUBSYSTEM_DEF(ai)
 	var/list/busy_z_levels = list()
 	var/slept_mobs = 0
 
-/datum/controller/subsystem/ai/stat_entry(msg_prefix)
-	var/list/msg = list(msg_prefix)
-	msg += "P:[processing.len]"
-	..(msg.Join())
+/datum/controller/subsystem/ai/stat_entry()
+	return ..() + " P:[length(processing)]"
 
 /datum/controller/subsystem/ai/fire(resumed = 0)
 	if (!resumed)

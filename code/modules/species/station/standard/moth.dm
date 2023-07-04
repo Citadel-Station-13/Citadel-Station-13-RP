@@ -22,7 +22,8 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	wing = "moth_plain"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 
-	darksight = 7
+	vision_innate = /datum/vision/baseline/species_tier_2
+
 	// i'd like to see oyu move in water with wings
 	water_movement = 0.3
 	// TODO: slightly brittle because i can't give them brittle bones on this rotten species backend until we make species backend more Fun
@@ -31,7 +32,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	metabolic_rate = 0.5
 	gluttonous = 0
 	max_additional_languages = 3
-	rarity_value = 2
+	//rarity_value = 2
 	intrinsic_languages = LANGUAGE_ID_LUINIMMA
 	name_language = LANGUAGE_ID_LUINIMMA
 	// sensitive
@@ -42,7 +43,6 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 	// todo: this is only so high BECAUSE EVERY OTHER GODDAMN RACE IS 10, WHO DESGINED THIS?
 	// todo: nerf everyone else and rework this fucked economy
-	economic_modifier = 8
 
 	// see defines - as of right now, detects reagents at 7% instead of 15%
 	taste_sensitivity = TASTE_SENSITIVE
@@ -110,7 +110,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/claw
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	primitive_form = null
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
@@ -129,11 +129,11 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	)
 
 	inherent_verbs = list(
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
 	)
-
+	abilities = list(
+		/datum/ability/species/toggle_flight
+	)
 	color_mult = 1
 	// todo: replace with proper name
 	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Dnin-Nepids"
@@ -157,19 +157,19 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 /datum/species/moth/dark
 	name = SPECIES_MOTH_DARK
 	uid = SPECIES_ID_MOTH_DARK
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
 	// darksight, but weak to light
-	darksight = 7
+	vision_innate = /datum/vision/baseline/species_tier_2
 	flash_burn = 5
 	flash_mod = 1.2
 
 /datum/species/moth/light
 	name = SPECIES_MOTH_LIGHT
 	uid = SPECIES_ID_MOTH_LIGHT
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
 	// hardy, but no darksight
-	darksight = 2
+	vision_innate = /datum/vision/baseline/species_tier_0
 	flash_mod = 0.5
 	item_slowdown_mod = 0.5

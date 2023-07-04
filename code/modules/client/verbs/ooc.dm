@@ -47,6 +47,11 @@
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
 
+	if(!reject_on_initialization_block())
+		return
+	if(!reject_age_unverified())
+		return
+
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
 		return
@@ -55,7 +60,9 @@
 		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
 		return
 
-
+	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
+		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
+		return
 
 	if(!mob)
 		return
@@ -70,9 +77,7 @@
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
 			return
-	// if(is_banned_from(ckey, "OOC"))
-	// 	to_chat(src, "<span class='danger'>You have been banned from OOC.</span>")
-	// 	return
+
 	if(QDELETED(src))
 		return
 
@@ -103,6 +108,11 @@
 		return
 
 	log_ooc(raw_msg, src)
+
+	if(persistent.ligma)
+		to_chat(src, "<span class='ooc'><span class='everyone'><span class='message'>OOC: <EM>[src.key]: </EM><span class='linkify'>[msg]</span></span></span></span>")
+		log_shadowban("[key_name(src)] OOC: [msg]")
+		return
 
 	var/ooc_style = "everyone"
 	if(holder && !holder.fakekey)
@@ -142,11 +152,20 @@
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC"
 
+	if(!reject_on_initialization_block())
+		return
+	if(!reject_age_unverified())
+		return
+
 	if(!mob)
 		return
 
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
+		return
+
+	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC) && IS_DEAD(mob))
+		to_chat(src, SPAN_WARNING("You are banned from typing in LOOC while dead, and deadchat."))
 		return
 
 	msg = sanitize(msg)
@@ -173,14 +192,13 @@
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
-	log_looc(msg,src)
-
 	if(msg)
 		handle_spam_prevention(MUTE_OOC)
 
 	var/mob/source = mob.get_looc_source()
 	var/turf/T = get_turf(source)
-	if(!T) return
+	if(!T)
+		return
 	var/list/in_range = get_mobs_and_objs_in_view_fast(T,world.view,0)
 	var/list/m_viewers = in_range["mobs"]
 
@@ -208,17 +226,24 @@
 				receivers |= E.owner.client
 
 	// Admins with RLOOC displayed who weren't already in
-	for(var/client/admin in admins)
+	for(var/client/admin in GLOB.admins)
 		if(!(admin in receivers) && admin.is_preference_enabled(/datum/client_preference/holder/show_rlooc))
 			r_receivers |= admin
 
 	msg = emoji_parse(msg)
 
+	if(persistent.ligma)
+		to_chat(src, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name]: </EM><span class='message'><span class='linkify'>[msg]</span></span></span>")
+		log_shadowban("[key_name(src)] LOOC: [msg]")
+		return
+
+	log_looc(msg,src)
+
 	// Send a message
 	for(var/client/target in receivers)
 		var/admin_stuff = ""
 
-		if(target in admins)
+		if(target in GLOB.admins)
 			admin_stuff += "/([key])"
 
 		to_chat(target, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name][admin_stuff]: </EM><span class='message'><span class='linkify'>[msg]</span></span></span>")
@@ -235,49 +260,3 @@
 	if(eyeobj)
 		return eyeobj
 	return src
-
-/client/verb/fit_viewport()
-	set name = "Fit Viewport"
-	set category = "OOC"
-	set desc = "Fit the width of the map window to match the viewport"
-
-	// Fetch the client's aspect ratio
-	var/view_size = getviewsize(view)
-	var/aspect_ratio = view_size[1] / view_size[2]
-
-	// Calculate desired pixel width using window size and aspect ratio
-	var/sizes = params2list(winget(src, "mainwindow.split;mapwindow", "size"))
-	var/map_size = splittext(sizes["mapwindow.size"], "x")
-	var/height = text2num(map_size[2])
-	var/desired_width = round(height * aspect_ratio)
-	if (text2num(map_size[1]) == desired_width)
-		return	// You're already good fam.
-
-	var/split_size = splittext(sizes["mainwindow.split.size"], "x")
-	var/split_width = text2num(split_size[1])
-
-	// Calculate and apply our best estimate
-	// +4 pixels are for the eidth of the splitter's handle
-	var/pct = 100 * (desired_width + 4) / split_width
-	winset(src, "mainwindow.split", "splitter=[pct]")
-
-	// Apply an ever-lowering offset until we finish or fail
-	var/delta
-	for(var/safety in 1 to 10)
-		var/after_size = winget(src, "mapwindow", "size")
-		map_size = splittext(after_size, "x")
-		var/got_width = text2num(map_size[1])
-
-		if (got_width == desired_width)
-			return	// Success!
-
-		// Calculate a probable delta value based on the diff
-		else if (isnull(delta))
-			delta = 100 * (desired_width - got_width) / split_width
-
-		// If we overshot, halve the delta and reverse direction
-		else if ((delta > 0 && got_width > desired_width) || (delta < 0 && got_width < desired_width))
-			delta = -delta/2
-
-		pct += delta
-		winset(src, "mainwindow.split", "splitter=[pct]")

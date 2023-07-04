@@ -18,7 +18,7 @@
 			)
 	name = "Trading Card Crate"
 	cost = 10
-	container_type = /obj/structure/closet/crate
+	container_type = /obj/structure/closet/crate/allico
 	container_name = "cards crate"
 
 /datum/supply_pack/randomised/misc/dnd
@@ -34,7 +34,7 @@
 			)
 	name = "Miniatures Crate"
 	cost = 200
-	container_type = /obj/structure/closet/crate
+	container_type = /obj/structure/closet/crate/allico
 	container_name = "Miniature Crate"
 
 /datum/supply_pack/randomised/misc/plushies
@@ -76,7 +76,7 @@
 			)
 	name = "Plushies Crate"
 	cost = 15
-	container_type = /obj/structure/closet/crate
+	container_type = /obj/structure/closet/crate/allico
 	container_name = "Plushies Crate"
 
 /datum/supply_pack/misc/eftpos
@@ -148,36 +148,38 @@
 	// num_contained = 6		i'm just commenting this out because whoever made this should have looked and seen that this doesn't work for non randomized crates
 	// screw you for causing me a compile error
 	name = "Emergency - MREs"
-	contains = list(/obj/item/storage/mre,
-					/obj/item/storage/mre/menu2,
-					/obj/item/storage/mre/menu3,
-					/obj/item/storage/mre/menu4,
-					/obj/item/storage/mre/menu5,
-					/obj/item/storage/mre/menu6,
-					/obj/item/storage/mre/menu7,
-					/obj/item/storage/mre/menu8,
-					/obj/item/storage/mre/menu9,
-					/obj/item/storage/mre/menu10)
+	contains = list(
+		/obj/item/storage/single_use/mre,
+		/obj/item/storage/single_use/mre/menu2,
+		/obj/item/storage/single_use/mre/menu3,
+		/obj/item/storage/single_use/mre/menu4,
+		/obj/item/storage/single_use/mre/menu5,
+		/obj/item/storage/single_use/mre/menu6,
+		/obj/item/storage/single_use/mre/menu7,
+		/obj/item/storage/single_use/mre/menu8,
+		/obj/item/storage/single_use/mre/menu9,
+		/obj/item/storage/single_use/mre/menu10,
+	)
 	cost = 50
-	container_type = /obj/structure/closet/crate/freezer
+	container_type = /obj/structure/closet/crate/centauri
 	container_name = "ready to eat rations"
 
 /datum/supply_pack/misc/paste_rations
 	name = "Emergency - Paste"
 	contains = list(
-			/obj/item/storage/mre/menu11 = 2
-			)
+		/obj/item/storage/single_use/mre/menu11 = 2,
+	)
 	cost = 25
-	container_type = /obj/structure/closet/crate/freezer
+	container_type = /obj/structure/closet/crate/centauri
 	container_name = "emergency rations"
 
 /datum/supply_pack/misc/medical_rations
 	name = "Emergency - VitaPaste"
 	contains = list(
-			/obj/item/storage/mre/menu13 = 2
-			)
+		/obj/item/storage/single_use/mre/menu13 = 2,
+	)
 	cost = 40
-	container_type = /obj/structure/closet/crate/freezer
+	container_type = /obj/structure/closet/crate/centauri
 	container_name = "emergency rations"
 
 /datum/supply_pack/misc/beltminer
@@ -190,45 +192,45 @@
 			/obj/item/storage/box/traumainjectors = 1
 			)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/gear
+	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "Belt-miner gear crate"
-	access = access_mining
+	access = ACCESS_SUPPLY_MINE
 
 /datum/supply_pack/misc/eva_rig
 	name = "eva hardsuit (empty)"
 	contains = list(
-			/obj/item/rig/eva = 1
+			/obj/item/hardsuit/eva = 1
 			)
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "eva hardsuit crate"
-	access = list(access_mining,
-				  access_eva,
-				  access_explorer,
-				  access_pilot)
+	access = list(ACCESS_SUPPLY_MINE,
+				  ACCESS_COMMAND_EVA,
+				  ACCESS_GENERAL_EXPLORER,
+				  ACCESS_GENERAL_PILOT)
 	one_access = TRUE
 
 /datum/supply_pack/misc/mining_rig
 	name = "industrial hardsuit (empty)"
 	contains = list(
-			/obj/item/rig/industrial = 1
+			/obj/item/hardsuit/industrial = 1
 			)
 	cost = 150
-	container_type = /obj/structure/closet/crate/secure/gear
+	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "industrial hardsuit crate"
-	access = list(access_mining,
-				  access_eva)
+	access = list(ACCESS_SUPPLY_MINE,
+				  ACCESS_COMMAND_EVA)
 	one_access = TRUE
 
 /datum/supply_pack/misc/medical_rig
 	name = "medical hardsuit (empty)"
 	contains = list(
-			/obj/item/rig/medical = 1
+			/obj/item/hardsuit/medical = 1
 			)
 	cost = 150
-	container_type = /obj/structure/closet/crate/secure/gear
+	container_type = /obj/structure/closet/crate/secure/veymed
 	container_name = "medical hardsuit crate"
-	access = access_medical
+	access = ACCESS_MEDICAL_MAIN
 
 /datum/supply_pack/misc/phoronoid
 	name  = "Spare Phoronoid containment suits"
@@ -244,32 +246,32 @@
 /datum/supply_pack/misc/security_rig
 	name = "hazard hardsuit (empty)"
 	contains = list(
-			/obj/item/rig/hazard = 1
+			/obj/item/hardsuit/hazard = 1
 			)
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "hazard hardsuit crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/misc/science_rig
 	name = "ami hardsuit (empty)"
 	contains = list(
-			/obj/item/rig/hazmat = 1
+			/obj/item/hardsuit/hazmat = 1
 			)
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "ami hardsuit crate"
-	access = access_rd
+	access = ACCESS_SCIENCE_RD
 
 /datum/supply_pack/misc/ce_rig
 	name = "advanced voidsuit (empty)"
 	contains = list(
-			/obj/item/rig/ce = 1
+			/obj/item/hardsuit/ce = 1
 			)
 	cost = 150
-	container_type = /obj/structure/closet/crate/secure/gear
+	container_type = /obj/structure/closet/crate/secure/aether
 	container_name = "advanced voidsuit crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 
 /datum/supply_pack/misc/colored_lights

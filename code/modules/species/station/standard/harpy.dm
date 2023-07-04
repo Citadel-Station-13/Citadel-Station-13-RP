@@ -1,5 +1,6 @@
 /datum/species/harpy
 	uid = SPECIES_ID_HARPY
+	id = SPECIES_ID_HARPY
 	name = SPECIES_RAPALA
 	name_plural = "Rapalans"
 	icobase = 'icons/mob/human_races/r_harpy_vr.dmi'
@@ -12,11 +13,11 @@
 	name_language = null
 	color_mult = 1
 	inherent_verbs = list(
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair
 		)
-
+	abilities = list(
+		/datum/ability/species/toggle_flight
+	)
 	max_age = 80
 
 	base_color = "#EECEB3"
@@ -30,7 +31,7 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/rapala)
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 

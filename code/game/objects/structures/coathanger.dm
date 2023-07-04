@@ -6,7 +6,7 @@
 	var/obj/item/clothing/suit/coat
 	var/list/allowed = list(/obj/item/clothing/suit/storage/toggle/labcoat, /obj/item/clothing/suit/storage/det_trench)
 
-/obj/structure/coatrack/attack_hand(mob/user as mob)
+/obj/structure/coatrack/attack_hand(mob/user, list/params)
 	user.visible_message("[user] takes [coat] off \the [src].", "You take [coat] off the \the [src]")
 	if(!user.put_in_active_hand(coat))
 		coat.loc = get_turf(user)
@@ -45,10 +45,14 @@
 		return 1
 
 /obj/structure/coatrack/update_icon()
-	overlays.Cut()
+	cut_overlays()
+
+	var/list/overlays_to_add = list()
 	if (istype(coat, /obj/item/clothing/suit/storage/toggle/labcoat))
-		overlays += image(icon, icon_state = "coat_lab")
+		overlays_to_add += image(icon, icon_state = "coat_lab")
 	if (istype(coat, /obj/item/clothing/suit/storage/toggle/labcoat/cmo))
-		overlays += image(icon, icon_state = "coat_cmo")
+		overlays_to_add += image(icon, icon_state = "coat_cmo")
 	if (istype(coat, /obj/item/clothing/suit/storage/det_trench))
-		overlays += image(icon, icon_state = "coat_det")
+		overlays_to_add += image(icon, icon_state = "coat_det")
+
+	add_overlay(overlays_to_add)

@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(garbage)
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 	init_order = INIT_ORDER_GARBAGE
 
-	var/list/collection_timeout = list(0, 2 MINUTES, 10 SECONDS) // deciseconds to wait before moving something up in the queue to the next level
+	var/list/collection_timeout = list(2 MINUTES, 10 SECONDS) // deciseconds to wait before moving something up in the queue to the next level
 
 	//Stat tracking
 	var/delslasttick = 0 // number of del()'s we've done this tick
@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(garbage)
 	#endif
 
 
-/datum/controller/subsystem/garbage/PreInit()
+/datum/controller/subsystem/garbage/PreInit(recovering)
 	queues = new(GC_QUEUE_COUNT)
 	pass_counts = new(GC_QUEUE_COUNT)
 	fail_counts = new(GC_QUEUE_COUNT)
@@ -38,10 +38,11 @@ SUBSYSTEM_DEF(garbage)
 		pass_counts[i] = 0
 		fail_counts[i] = 0
 
-/datum/controller/subsystem/garbage/stat_entry(msg)
+/datum/controller/subsystem/garbage/stat_entry()
 	var/list/counts = list()
 	for (var/list/L in queues)
 		counts += length(L)
+	var/list/msg = list()
 	msg += "Q:[counts.Join(",")]|D:[delslasttick]|G:[gcedlasttick]|"
 	msg += "GR:"
 	if (!(delslasttick+gcedlasttick))
@@ -56,7 +57,7 @@ SUBSYSTEM_DEF(garbage)
 		msg += "TGR:[round((totalgcs/(totaldels+totalgcs))*100, 0.01)]%"
 	msg += " P:[pass_counts.Join(",")]"
 	msg += "|F:[fail_counts.Join(",")]"
-	..(msg)
+	return ..() + " [jointext(msg, "")]"
 
 /datum/controller/subsystem/garbage/Shutdown()
 	//Adds the del() log to the qdel log file
@@ -147,8 +148,6 @@ SUBSYSTEM_DEF(garbage)
 		switch(level)
 			if(GC_QUEUE_CHECK)
 				#ifdef REFERENCE_TRACKING
-				D.find_references()
-				#elif defined(REFERENCE_TRACKING)
 				if(reference_find_on_fail[refID])
 					D.find_references()
 				#ifdef GC_FAILURE_HARD_LOOKUP
@@ -159,6 +158,7 @@ SUBSYSTEM_DEF(garbage)
 				#endif
 				var/type = D.type
 				var/datum/qdel_item/I = items[type]
+
 				#ifdef TESTING
 				log_world("## TESTING: GC: -- \ref[D] | [type] was unable to be GC'd --")
 				for(var/c in GLOB.admins) //Using testing() here would fill the logs with ADMIN_VV garbage
@@ -169,6 +169,7 @@ SUBSYSTEM_DEF(garbage)
 				testing("GC: -- \ref[src] | [type] was unable to be GC'd --")
 				#endif
 				I.failures++
+
 			if (GC_QUEUE_HARDDELETE)
 				HardDelete(D)
 				if (MC_TICK_CHECK)

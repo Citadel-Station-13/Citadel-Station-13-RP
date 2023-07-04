@@ -60,11 +60,11 @@
 	air1.volume = ATMOS_DEFAULT_VOLUME_PUMP + 800
 	air2.volume = ATMOS_DEFAULT_VOLUME_PUMP + 800
 
-/obj/machinery/atmospherics/component/binary/dp_vent_pump/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/component/binary/dp_vent_pump/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 
-	overlays.Cut()
+	cut_overlays()
 
 	var/vent_icon = "vent"
 
@@ -80,7 +80,7 @@
 	else
 		vent_icon += "[use_power ? "[pump_direction ? "out" : "in"]" : "off"]"
 
-	overlays += icon_manager.get_atmos_icon("device", , , vent_icon)
+	add_overlay(icon_manager.get_atmos_icon("device", , , vent_icon))
 
 /obj/machinery/atmospherics/component/binary/dp_vent_pump/update_underlays()
 	if(..())
@@ -199,7 +199,7 @@
 	if(frequency)
 		set_frequency(frequency)
 
-/obj/machinery/atmospherics/component/binary/dp_vent_pump/examine(mob/user)
+/obj/machinery/atmospherics/component/binary/dp_vent_pump/examine(mob/user, dist)
 	. = ..()
 	. += "A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W"
 

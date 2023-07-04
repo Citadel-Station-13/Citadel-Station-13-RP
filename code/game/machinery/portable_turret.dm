@@ -48,7 +48,7 @@
 	active_power_usage = 300
 	/// Drains power from the EQUIPMENT channel.
 	power_channel = EQUIP
-	req_one_access = list(access_security, access_heads)
+	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_COMMAND_BRIDGE)
 
 	/// If the turret cover is "open" and the turret is raised.
 	var/raised = FALSE
@@ -133,7 +133,7 @@
 	var/can_salvage = TRUE
 
 /obj/machinery/porta_turret/crescent
-	req_one_access = list(access_cent_specops)
+	req_one_access = list(ACCESS_CENTCOM_ERT)
 	enabled = FALSE
 	ailock = TRUE
 	check_synth = FALSE
@@ -157,7 +157,7 @@
 	installation = /obj/item/gun/energy/laser
 
 /obj/machinery/porta_turret/stationary/syndie // Generic turrets for POIs that need to not shoot their buddies.
-	req_one_access = list(access_syndicate)
+	req_one_access = list(ACCESS_FACTION_SYNDICATE)
 	enabled = TRUE
 	check_all = TRUE
 	faction = "syndicate" // Make sure this equals the faction that the mobs in the POI have or they will fight each other.
@@ -165,7 +165,7 @@
 /obj/machinery/porta_turret/ai_defense
 	name = "defense turret"
 	desc = "This variant appears to be much more durable."
-	req_one_access = list(access_synth) // Just in case.
+	req_one_access = list(ACCESS_SPECIAL_SILICONS) // Just in case.
 	installation = /obj/item/gun/energy/xray // For the armor pen.
 	health = 250 // Since lasers do 40 each.
 	maxhealth = 250
@@ -187,7 +187,7 @@
 	desc = "A very tough looking turret made by alien hands."
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_turret)
 	icon_state = "turret_cover_alien"
-	req_one_access = list(access_alien)
+	req_one_access = list(ACCESS_FACTION_ALIEN)
 	installation = /obj/item/gun/energy/alien
 	enabled = TRUE
 	lethal = TRUE
@@ -207,14 +207,14 @@
 /obj/machinery/porta_turret/industrial
 	name = "industrial turret"
 	desc = "This variant appears to be much more rugged."
-	req_one_access = list(access_heads)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	icon_state = "turret_cover_industrial"
 	installation = /obj/item/gun/energy/phasegun
 	health = 200
 	maxhealth = 200
 	turret_type = "industrial"
 
-/obj/machinery/porta_turret/industrial/bullet_act(obj/item/projectile/Proj)
+/obj/machinery/porta_turret/industrial/bullet_act(obj/projectile/Proj)
 	var/damage = round(Proj.get_structure_damage() * 1.33)
 
 	if(!damage)
@@ -235,7 +235,7 @@
 /obj/machinery/porta_turret/industrial/teleport_defense
 	name = "defense turret"
 	desc = "This variant appears to be much more durable, with a rugged outer coating."
-	req_one_access = list(access_heads)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	installation = /obj/item/gun/energy/gun/burst
 	health = 250
 	maxhealth = 250
@@ -378,7 +378,7 @@
 
 /obj/machinery/porta_turret/proc/setup()
 	var/obj/item/gun/energy/E = installation	//All energy-based weapons are applicable
-	var/obj/item/projectile/P = initial(E.projectile_type)
+	var/obj/projectile/P = initial(E.projectile_type)
 	//var/obj/item/ammo_casing/shottype = E.projectile_type
 
 	projectile = P
@@ -386,16 +386,16 @@
 	shot_sound = initial(P.fire_sound)
 	lethal_shot_sound = shot_sound
 
-	if(istype(P, /obj/item/projectile/energy))
+	if(istype(P, /obj/projectile/energy))
 		icon_color = "orange"
 
-	else if(istype(P, /obj/item/projectile/beam/stun))
+	else if(istype(P, /obj/projectile/beam/stun))
 		icon_color = "blue"
 
-	else if(istype(P, /obj/item/projectile/beam/lasertag))
+	else if(istype(P, /obj/projectile/beam/lasertag))
 		icon_color = "blue"
 
-	else if(istype(P, /obj/item/projectile/beam))
+	else if(istype(P, /obj/projectile/beam))
 		icon_color = "red"
 
 	else
@@ -409,30 +409,30 @@
 	switch(guntype)
 		if(/obj/item/gun/energy/gun/burst)
 			lethal_icon_color = "red"
-			lethal_projectile = /obj/item/projectile/beam/burstlaser
+			lethal_projectile = /obj/projectile/beam/burstlaser
 			lethal_shot_sound = 'sound/weapons/Laser.ogg'
 			shot_delay = 1 SECOND
 
 		if(/obj/item/gun/energy/phasegun)
 			icon_color = "orange"
 			lethal_icon_color = "orange"
-			lethal_projectile = /obj/item/projectile/energy/phase/heavy
+			lethal_projectile = /obj/projectile/energy/phase/heavy
 			shot_delay = 1 SECOND
 
 		if(/obj/item/gun/energy/gun)
 			lethal_icon_color = "red"
-			lethal_projectile = /obj/item/projectile/beam	//If it has, going to kill mode
+			lethal_projectile = /obj/projectile/beam	//If it has, going to kill mode
 			lethal_shot_sound = 'sound/weapons/Laser.ogg'
 
 		if(/obj/item/gun/energy/gun/nuclear)
 			lethal_icon_color = "red"
-			lethal_projectile = /obj/item/projectile/beam	//If it has, going to kill mode
+			lethal_projectile = /obj/projectile/beam	//If it has, going to kill mode
 			lethal_shot_sound = 'sound/weapons/Laser.ogg'
 
 		if(/obj/item/gun/energy/xray)
 			lethal_icon_color = "green"
-			lethal_projectile = /obj/item/projectile/beam/xray
-			projectile = /obj/item/projectile/beam/stun // Otherwise we fire xrays on both modes.
+			lethal_projectile = /obj/projectile/beam/xray
+			projectile = /obj/projectile/beam/stun // Otherwise we fire xrays on both modes.
 			lethal_shot_sound = 'sound/weapons/eluger.ogg'
 			shot_sound = 'sound/weapons/Taser.ogg'
 
@@ -452,7 +452,7 @@
 
 	nano_ui_interact(user)
 
-/obj/machinery/porta_turret/attack_hand(mob/user)
+/obj/machinery/porta_turret/attack_hand(mob/user, list/params)
 	if(isLocked(user))
 		return
 
@@ -606,8 +606,8 @@
 	else
 		//if the turret was attacked with the intention of harming it:
 		user.setClickCooldown(user.get_attack_speed(I))
-		take_damage(I.force * 0.5)
-		if(I.force * 0.5 > 1) //if the force of impact dealt at least 1 damage, the turret gets pissed off
+		take_damage(I.damage_force * 0.5)
+		if(I.damage_force * 0.5 > 1) //if the force of impact dealt at least 1 damage, the turret gets pissed off
 			if(!attacked && !emagged)
 				attacked = 1
 				spawn()
@@ -652,7 +652,7 @@
 	if(health <= 0)
 		die()	//the death process :(
 
-/obj/machinery/porta_turret/bullet_act(obj/item/projectile/Proj)
+/obj/machinery/porta_turret/bullet_act(obj/projectile/Proj)
 	var/damage = Proj.get_structure_damage()
 
 	if(!damage)
@@ -884,12 +884,12 @@
 		spawn()
 			popUp() //pop the turret up if it's not already up.
 		setDir(get_dir(src, target)) //even if you can't shoot, follow the target
-		spawn()
-			shootAt(target)
+		shootAt(target)
 		return 1
 	return
 
 /obj/machinery/porta_turret/proc/shootAt(mob/living/target)
+	set waitfor = FALSE
 	//any emagged turrets will shoot extremely fast! This not only is deadly, but drains a lot power!
 	if(!(emagged || attacked)) //if it hasn't been emagged or attacked, it has to obey a cooldown rate
 		if(last_fired || !raised) //prevents rapid-fire shooting, unless it's been emagged
@@ -908,7 +908,7 @@
 		return
 
 	update_icon()
-	var/obj/item/projectile/A
+	var/obj/projectile/A
 	if(emagged || lethal)
 		A = new lethal_projectile(loc)
 		playsound(loc, lethal_shot_sound, 75, 1)
@@ -1145,7 +1145,7 @@
 
 	..()
 
-/obj/machinery/porta_turret_construct/attack_hand(mob/user)
+/obj/machinery/porta_turret_construct/attack_hand(mob/user, list/params)
 	switch(build_step)
 		if(4)
 			if(!installation)

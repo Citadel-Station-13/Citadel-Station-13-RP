@@ -40,15 +40,16 @@
 /obj/machinery/atmospherics/component/binary/algae_farm/Initialize(mapload)
 	. = ..()
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
-	default_apply_parts()
 	update_icon()
+	var/list/overlays_to_add = list()
 	// TODO - Make these in actual icon states so its not silly like this
 	var/image/I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = dir)
 	I.color = PIPE_COLOR_BLUE
-	overlays += I
-	I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = GLOB.reverse_dir[dir])
+	overlays_to_add += I
+	I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = global.reverse_dir[dir])
 	I.color = PIPE_COLOR_BLACK
-	overlays += I
+	overlays_to_add += I
+	add_overlay(overlays_to_add)
 
 /obj/machinery/atmospherics/component/binary/algae_farm/Destroy()
 	. = ..()
@@ -138,7 +139,7 @@
 		to_chat(user, SPAN_NOTICE("You cannot insert this item into \the [src]!"))
 		return
 
-/obj/machinery/atmospherics/component/binary/algae_farm/attack_hand(mob/user)
+/obj/machinery/atmospherics/component/binary/algae_farm/attack_hand(mob/user, list/params)
 	if(..())
 		return TRUE
 	ui_interact(user)
@@ -188,7 +189,7 @@
 	data["materials"] = materials_ui
 	data["last_flow_rate"] = last_flow_rate
 	data["last_power_draw"] = last_power_draw
-	data["inputDir"] = dir2text(GLOB.reverse_dir[dir])
+	data["inputDir"] = dir2text(global.reverse_dir[dir])
 	data["outputDir"] = dir2text(dir)
 	data["usePower"] = use_power
 	data["errorText"] = ui_error
@@ -268,6 +269,7 @@
 	return 1
 
 /datum/material/algae
+	id = "algae"
 	name = MATERIAL_ALGAE
 	stack_type = /obj/item/stack/material/algae
 	icon_colour = "#557722"
@@ -287,6 +289,7 @@
 	amount = 10
 
 /datum/material/carbon
+	id = "carbon"
 	name = MATERIAL_CARBON
 	stack_type = /obj/item/stack/material/carbon
 	icon_colour = "#303030"

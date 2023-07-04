@@ -1,6 +1,10 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
 	w_class = ITEMSIZE_NO_CONTAINER
+	pass_flags = ATOM_PASS_BUCKLED
+
+	// todo: rename to default_unanchor, allow generic structure unanchoring.
+	var/allow_unanchor = FALSE
 
 	var/climbable
 	var/climb_delay = 3.5 SECONDS
@@ -12,7 +16,29 @@
 	var/list/blend_objects = newlist() // Objects which to blend with
 	var/list/noblend_objects = newlist() //Objects to avoid blending with (such as children of listed blend objects.
 
-/obj/structure/attack_hand(mob/user)
+/obj/structure/Initialize(mapload)
+	. = ..()
+
+	if(climbable)
+		add_obj_verb(src, /obj/structure/proc/climb_on)
+
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+		if(smoothing_flags & SMOOTH_CORNERS)
+			icon_state = ""
+
+	GLOB.cameranet.updateVisibility(src)
+
+/obj/structure/Destroy()
+	GLOB.cameranet.updateVisibility(src)
+
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH_NEIGHBORS(src)
+
+	return ..()
+
+/obj/structure/attack_hand(mob/user, list/params)
 	if(breakable)
 		if(MUTATION_HULK in user.mutations)
 			user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
@@ -43,11 +69,6 @@
 				return
 		if(3.0)
 			return
-
-/obj/structure/Initialize(mapload)
-	. = ..()
-	if(climbable)
-		verbs += /obj/structure/proc/climb_on
 
 /obj/structure/proc/climb_on()
 
@@ -88,10 +109,11 @@
 		if(istype(O,/obj/structure))
 			var/obj/structure/S = O
 			if(S.climbable) continue
-		if(O && O.density && !(O.flags & ON_BORDER)) //ON_BORDER structures are handled by the Adjacent() check.
+		if(O && O.density && !(O.atom_flags & ATOM_BORDER)) //ATOM_BORDER structures are handled by the Adjacent() check.
 			return O
 	return 0
 
+// todo: climbable obj-level (to avoid element/signal spam)
 /obj/structure/proc/do_climb(var/mob/living/user)
 	if (!can_climb(user))
 		return
@@ -99,7 +121,7 @@
 	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
 	climbers |= user
 
-	if(!do_after(user, issmall(user) ? climb_delay * 0.6 : climb_delay, src, incapacitation_flags = INCAPACITATION_ALL))
+	if(!do_after(user, issmall(user) ? climb_delay * 0.6 : climb_delay, src, mobility_flags = MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 		climbers -= user
 		return
 
@@ -107,7 +129,10 @@
 		climbers -= user
 		return
 
-	usr.forceMove(get_turf(src))
+	var/old = pass_flags & (ATOM_PASS_BUCKLED)
+	pass_flags |= ATOM_PASS_BUCKLED
+	usr.locationTransitForceMove(get_turf(src), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
+	pass_flags = (pass_flags & ~(ATOM_PASS_BUCKLED)) | (old & ATOM_PASS_BUCKLED)
 
 	if (get_turf(user) == get_turf(src))
 		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")
@@ -115,14 +140,14 @@
 
 /obj/structure/proc/structure_shaken()
 	for(var/mob/living/M in climbers)
-		M.Weaken(1)
+		M.afflict_paralyze(20 * 1)
 		to_chat(M, "<span class='danger'>You topple as you are shaken off \the [src]!</span>")
 		climbers.Cut(1,2)
 
 	for(var/mob/living/M in get_turf(src))
 		if(M.lying) return //No spamming this on people.
 
-		M.Weaken(3)
+		M.afflict_paralyze(20 * 3)
 		to_chat(M, "<span class='danger'>You topple as \the [src] moves under you!</span>")
 
 		if(prob(25))
@@ -158,9 +183,10 @@
 				H.adjustBruteLoss(damage)
 
 			H.UpdateDamageIcon()
-			H.updatehealth()
+			H.update_health()
 	return
 
+// todo: remove
 /obj/structure/proc/can_touch(var/mob/user)
 	if (!user)
 		return 0
@@ -169,7 +195,7 @@
 	if (user.restrained() || user.buckled)
 		to_chat(user, "<span class='notice'>You need your hands and legs free for this.</span>")
 		return 0
-	if (user.stat || user.paralysis || user.sleeping || user.lying || user.weakened)
+	if (!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		return 0
 	if (isAI(user))
 		to_chat(user, "<span class='notice'>You need hands for this.</span>")

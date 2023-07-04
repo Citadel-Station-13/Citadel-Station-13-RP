@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(vote)
 		break
 
 	if(!players_are_in_round)
-		log_debug("The crew transfer shuttle was automatically called at vote time due to no players being present.")
+		log_debug(SPAN_DEBUG("The crew transfer shuttle was automatically called at vote time due to no players being present."))
 		init_shift_change(null, 1)
 		return
 

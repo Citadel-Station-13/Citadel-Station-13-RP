@@ -239,7 +239,7 @@
 	result_amount = 1
 	var/sheet_to_give = /obj/item/stack/material/iron
 
-/datum/chemical_reaction/solidification/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/solidification/on_reaction(datum/reagents/holder, created_volume)
 	new sheet_to_give(get_turf(holder.my_atom), created_volume)
 	return
 
@@ -308,7 +308,7 @@
 	required_reagents = list("pacid" = 1, "plasticide" = 2)
 	result_amount = 1
 
-/datum/chemical_reaction/plastication/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/plastication/on_reaction(datum/reagents/holder, created_volume)
 	new /obj/item/stack/material/plastic(get_turf(holder.my_atom), created_volume)
 	return
 
@@ -318,7 +318,7 @@
 	required_reagents = list("hydrogen" = 1, MAT_CARBON = 1, "tallow" = 2)
 	result_amount = 1
 
-/datum/chemical_reaction/wax/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/wax/on_reaction(datum/reagents/holder, created_volume)
 	new /obj/item/stack/material/wax(get_turf(holder.my_atom), created_volume)
 	return
 
@@ -331,7 +331,7 @@
 	result_amount = 2
 	mix_message = null
 
-/datum/chemical_reaction/explosion_potassium/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/explosion_potassium/on_reaction(datum/reagents/holder, created_volume)
 	var/datum/effect_system/reagents_explosion/e = new()
 	e.set_up(round (created_volume/10, 1), holder.my_atom, 0, 0)
 	if(isliving(holder.my_atom))
@@ -351,7 +351,7 @@
 	required_reagents = list("aluminum" = 1, "potassium" = 1, "sulfur" = 1 )
 	result_amount = null
 
-/datum/chemical_reaction/flash_powder/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/flash_powder/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(2, 1, location)
@@ -364,7 +364,7 @@
 						continue
 
 				M.flash_eyes()
-				M.Weaken(15)
+				M.afflict_paralyze(20 * 15)
 
 			if(4 to 5)
 				if(hasvar(M, "glasses"))
@@ -372,7 +372,7 @@
 						continue
 
 				M.flash_eyes()
-				M.Stun(5)
+				M.afflict_stun(20 * 5)
 
 /datum/chemical_reaction/emp_pulse
 	name = "EMP Pulse"
@@ -381,7 +381,7 @@
 	required_reagents = list(MAT_URANIUM = 1, MAT_IRON = 1) // Yes, laugh, it's the best recipe I could think of that makes a little bit of sense
 	result_amount = 2
 
-/datum/chemical_reaction/emp_pulse/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/emp_pulse/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	// 100 created volume = 4 heavy range & 7 light range. A few tiles smaller than traitor EMP grandes.
 	// 200 created volume = 8 heavy range & 14 light range. 4 tiles larger than traitor EMP grenades.
@@ -398,7 +398,7 @@
 	result_amount = 2
 	log_is_important = 1
 
-/datum/chemical_reaction/nitroglycerin/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/nitroglycerin/on_reaction(datum/reagents/holder, created_volume)
 	var/datum/effect_system/reagents_explosion/e = new()
 	e.set_up(round (created_volume/2, 1), holder.my_atom, 0, 0)
 	if(isliving(holder.my_atom))
@@ -419,7 +419,7 @@
 	required_reagents = list("aluminum" = 1, MAT_PHORON = 1, "sacid" = 1 )
 	result_amount = 1
 
-/datum/chemical_reaction/napalm/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/napalm/on_reaction(datum/reagents/holder, created_volume)
 	var/turf/location = get_turf(holder.my_atom.loc)
 	for(var/turf/simulated/floor/target_tile in range(0,location))
 		target_tile.assume_gas(GAS_ID_VOLATILE_FUEL, created_volume, 400+T0C)
@@ -434,7 +434,7 @@
 	required_reagents = list("potassium" = 1, "sugar" = 1, "phosphorus" = 1)
 	result_amount = 0.4
 
-/datum/chemical_reaction/chemsmoke/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/chemsmoke/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem
 	S.attach(location)
@@ -454,7 +454,7 @@
 	result_amount = 2
 	mix_message = "The solution violently bubbles!"
 
-/datum/chemical_reaction/foam/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/foam/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 
 	for(var/mob/M in viewers(5, location))
@@ -474,7 +474,7 @@
 	required_reagents = list("aluminum" = 3, "foaming_agent" = 1, "pacid" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/metalfoam/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/metalfoam/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 
 	for(var/mob/M in viewers(5, location))
@@ -492,7 +492,7 @@
 	required_reagents = list(MAT_IRON = 3, "foaming_agent" = 1, "pacid" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/ironfoam/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/ironfoam/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 
 	for(var/mob/M in viewers(5, location))
@@ -745,9 +745,105 @@
 	required_reagents = list("hydrophoron" = 5, "water" = 10)
 	result_amount = 15
 
-/datum/chemical_reaction/deuterium/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/deuterium/on_reaction(datum/reagents/holder, created_volume)
 	var/turf/T = get_turf(holder.my_atom)
 	if(istype(T)) new /obj/item/stack/material/deuterium(T, created_volume)
+	return
+
+//Ashlander Chemistry!
+/datum/chemical_reaction/alchemybase
+	name = "Alchemical Base"
+	id = "alchemybase"
+	result = "alchemybase"
+	required_reagents = list("ash" = 1, "sacid" = 1)
+	result_amount = 1
+
+//This reaction creates tallow, just like /datum/chemical_reaction/food/tallow, but by a different vector.
+/datum/chemical_reaction/tallow
+	name = "Tallow"
+	id = "tallow"
+	result = "tallow"
+	required_reagents = list("triglyceride" = 1, "protein" = 1, "alchemybase" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/soap
+	name = "Soap"
+	id = "soap"
+	result = null
+	required_reagents = list("tallow" = 1, "water" = 1, "ash" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/soap/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/soap/primitive(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/charcoal
+	name = "Charcoal"
+	id = "charcoal"
+	result = null
+	required_reagents = list("tallow" = 1, "ash" = 1, "sacid" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/charcoal/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/pen/charcoal(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/fertilizer
+	name = "Fertilizer"
+	id = "fertilizer"
+	result = "fertilizer"
+	required_reagents = list("tallow" = 1, "ash" = 1, "alchemybase" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/poultice_brute
+	name = "Poultice (Juhtak)"
+	id = "poulticebrute"
+	result = null
+	required_reagents = list("alchemybase" = 10, "bicaridine" = 10)
+	result_amount = 10
+
+/datum/chemical_reaction/poultice_brute/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/stack/medical/poultice_brute(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/poultice_burn
+	name = "Poultice (Pyrrhlea)"
+	id = "poulticeburn"
+	result = null
+	required_reagents = list("alchemybase" = 10, "kelotane" = 10)
+	result_amount = 10
+
+/datum/chemical_reaction/poultice_burn/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/stack/medical/poultice_burn(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/phlogiston
+	name = "Phlogiston"
+	id = "phlogiston"
+	result = "phlogiston"
+	required_reagents = list("gunpowder" = 2, "alchemybase" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/condensedphlogiston
+	name = "Condensed Phlogiston"
+	id = "condensedphlogiston"
+	result = null
+	required_reagents = list("phlogiston" = 1, "ash" = 1, "alchemybase" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/condensedphlogiston/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/condensedphlogiston(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/bitterash
+	name = "Bitter Ash"
+	id = "bitterash"
+	result = null
+	required_reagents = list("nicotine" = 1, "ash" = 1, "alchemybase" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/bitterash/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/bitterash(get_turf(holder.my_atom), created_volume)
 	return
 
 ///////////////////////////////
@@ -794,11 +890,11 @@
 	var/fail_chance = rand(1,1000)
 	if(fail_chance == 1) // 0.1% chance of exploding, so scientists don't exclusively abuse this to obtain materials.
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The solution begins to vibrate violently!</span>"), 1) // It was at this moment, the Xenobiologist knew... he fucked up.
+			O.show_message(SPAN_WARNING("The solution begins to vibrate violently!"), SAYCODE_TYPE_VISIBLE) // It was at this moment, the Xenobiologist knew... he fucked up.
 		sleep(30)
 		playsound(get_turf(holder.my_atom), 'sound/items/Welder2.ogg', 100, 1)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The reaction begins to rapidly sizzle and swell outwards!</span>"), 1)
+			O.show_message(SPAN_WARNING("The reaction begins to rapidly sizzle and swell outwards!"), SAYCODE_TYPE_VISIBLE)
 		sleep(20)
 		explosion(get_turf(holder.my_atom), 0 ,4, 8) //Enough to cause severe damage in the area, but not so much that it'll instantly gib the person.
 		empulse(get_turf(holder.my_atom), 3, 7) //Uh oh, it produced some uranium, too! EMP blast!
@@ -807,7 +903,7 @@
 	if(fail_chance < 101) // 10% chance of it not working at all.
 		playsound(get_turf(holder.my_atom), 'sound/items/Welder.ogg', 100, 1)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The slime core fizzles disappointingly.</span>"), 1)
+			O.show_message(SPAN_WARNING("The slime core fizzles disappointingly."), SAYCODE_TYPE_VISIBLE)
 		return
 
 	var/blocked = list(/obj/item/stack/material, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/plastic, /obj/item/stack/material/cyborg/plasteel, /obj/item/stack/material/cyborg/glass/reinforced, /obj/item/stack/material/cyborg/wood, /obj/item/stack/animalhide/human, /obj/item/stack/animalhide/corgi, /obj/item/stack/animalhide/cat, /obj/item/stack/animalhide/monkey, /obj/item/stack/animalhide/lizard , /obj/item/stack/animalhide/xeno, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/glass/reinforced)
@@ -886,7 +982,7 @@
 
 /datum/chemical_reaction/slimefire/on_reaction(datum/reagents/holder)
 	for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-		O.show_message(text("<span class='warning'>The slime extract begins to vibrate violently!</span>"), 1)
+		O.show_message(SPAN_WARNING("The slime extract begins to vibrate violently!"), SAYCODE_TYPE_VISIBLE)
 	sleep(50)
 	var/turf/location = get_turf(holder.my_atom.loc)
 	for(var/turf/simulated/floor/target_tile in range(0,location))
@@ -917,7 +1013,7 @@
 		C.adjustOxyLoss(-25)
 		C.adjustBrainLoss(-25)
 		C.adjustCloneLoss(-25)
-		C.updatehealth()
+		C.update_health()
 
 /datum/chemical_reaction/slimejelly
 	name = "Slime Jam"
@@ -933,7 +1029,7 @@
 	result = null
 	required_reagents = list("monstertamer" = 5, "clonexadone" = 5)
 
-/datum/chemical_reaction/xenolazarus/on_reaction(var/datum/reagents/holder, var/created_volume) //literally all this does is mash the regenerate button
+/datum/chemical_reaction/xenolazarus/on_reaction(datum/reagents/holder, created_volume) //literally all this does is mash the regenerate button
 	if(ishuman(holder.my_atom))
 		var/mob/living/carbon/human/H = holder.my_atom
 		if(H.stat == DEAD && (/mob/living/carbon/human/proc/reconstitute_form in H.verbs)) //no magical regen for non-regenners, and can't force the reaction on live ones
@@ -950,29 +1046,6 @@
 					H.visible_message("<span class='info'>[H] stirs faintly, but doesn't appear to be ready to wake up yet.</span>")
 			else
 				H.visible_message("<span class='info'>[H] twitches for a moment, but remains still.</span>") // no nutriment
-
-
-/datum/chemical_reaction/sizeoxadone
-	name = "sizeoxadone"
-	id = "sizeoxadone"
-	result = "sizeoxadone"
-	required_reagents = list("clonexadone" = 1, "tramadol" = 3, MAT_PHORON = 1)
-	catalysts = list(MAT_PHORON = 5)
-	result_amount = 5
-
-/datum/chemical_reaction/macrocillin
-	name = "Macrocillin"
-	id = "macrocillin"
-	result = "macrocillin"
-	required_reagents = list("sizeoxadone" = 20, "diethylamine" = 20)
-	result_amount = 1
-
-/datum/chemical_reaction/microcillin
-	name = "Microcillin"
-	id = "microcillin"
-	result = "microcillin"
-	required_reagents = list("sizeoxadone" = 20, "sodiumchloride" = 20)
-	result_amount = 1
 
 /datum/chemical_reaction/gunpowder
 	name = "Gunpowder"

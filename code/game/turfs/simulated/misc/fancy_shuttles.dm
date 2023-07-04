@@ -38,7 +38,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	name = "shuttle floor preview"
 	icon = 'icons/turf/fancy_shuttles/generic_preview.dmi'
 	icon_state = "floors"
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	alpha = 90
 
@@ -50,14 +50,14 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 /turf/simulated/wall/fancy_shuttle
 	icon = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	icon_state = "hull"
-	wall_masks = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	var/mutable_appearance/under_MA
 	var/mutable_appearance/under_EM
 	var/fancy_shuttle_tag
 
 // Reinforced hull steel
-/turf/simulated/wall/fancy_shuttle/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	. = ..(mapload,  MAT_STEELHULL, MAT_STEELHULL, MAT_STEELHULL)
+/turf/simulated/wall/fancy_shuttle
+	material       = /datum/material/steel/hull
+	reinf_material = /datum/material/steel/hull
 
 /turf/simulated/wall/fancy_shuttle/window
 	opacity = FALSE
@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 			material.place_dismantled_product(src)
 
 	clear_plants()
-	material = get_material_by_name("placeholder")
+	material = SSmaterials.get_material(/datum/material/placeholder)
 	reinf_material = null
 	girder_material = null
 
@@ -108,7 +108,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 /turf/simulated/wall/fancy_shuttle/proc/apply_underlay()
 	remove_underlay()
 
-	var/turf/path = (baseturfs && (islist(baseturfs)? baseturfs[1] : baseturfs)) || /turf/space
+	var/turf/path = baseturf_underneath()
 
 	var/do_plane = null
 	var/do_state = initial(path.icon_state)
@@ -153,7 +153,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 /obj/effect/floor_decal/fancy_shuttle
 	icon = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	icon_state = "fancy_shuttle"
-	layer = MAPPER_DECAL_LAYER-1
+	layer = DECAL_LAYER-1
 	var/icon_file
 	var/fancy_shuttle_tag
 
@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	return ..()
 
 /obj/effect/floor_decal/fancy_shuttle/make_decal_image()
-	return image(icon = icon, icon_state = icon_state, layer = BUILTIN_DECAL_LAYER)
+	return image(icon = icon, icon_state = icon_state, layer = FLOOR_DECAL_LAYER)
 
 /obj/effect/floor_decal/fancy_shuttle/get_cache_key(var/turf/T)
 	return "[alpha]-[color]-[dir]-[icon_state]-[T.layer]-[icon_file]"

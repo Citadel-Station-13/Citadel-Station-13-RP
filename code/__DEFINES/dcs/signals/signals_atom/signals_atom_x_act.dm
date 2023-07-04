@@ -10,7 +10,7 @@
 /// From the [LEGACY_EX_ACT] wrapper macro: (severity, target)
 ////#define COMSIG_ATOM_LEGACY_EX_ACT "atom_legacy_ex_act"
 /// From base of atom/emp_act(): (severity)
-////#define COMSIG_ATOM_EMP_ACT "atom_emp_act"
+#define COMSIG_ATOM_EMP_ACT "atom_emp_act"
 /// From base of atom/fire_act(): (exposed_temperature, exposed_volume)
 ////#define COMSIG_ATOM_FIRE_ACT "atom_fire_act"
 /// From base of atom/bullet_act(): (/obj/projectile, def_zone)
@@ -38,6 +38,8 @@
 /// From obj/machinery/bsa/full/proc/fire(): ()
 ////#define COMSIG_ATOM_BSA_BEAM "atom_bsa_beam_pass"
 	////#define COMSIG_ATOM_BLOCKS_BSA_BEAM (1<<0)
+/// From base on atom/rad_act(): (strength, /datum/radiation_wave_legacy)
+#define COMSIG_ATOM_RAD_ACT "atom_rad_act"
 
 /// Called when teleporting into a protected turf: (channel, turf/origin)
 #define COMSIG_ATOM_INTERCEPT_TELEPORT "intercept_teleport"

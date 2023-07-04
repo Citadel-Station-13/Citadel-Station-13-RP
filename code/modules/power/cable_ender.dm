@@ -8,8 +8,8 @@
 	icon = 'icons/obj/power_cond_heavy.dmi'
 	name = "large power cable"
 	desc = "This cable is tough. It cannot be cut with simple hand tools."
-	plane = PLATING_PLANE
-	layer = PIPES_LAYER - 0.05 //Just below pipes
+	plane = TURF_PLANE
+	layer = HEAVYDUTY_WIRE_LAYER //Just below pipes
 	color = null
 	unacidable = 1
 	var/id = null
@@ -36,4 +36,3 @@
 // Because they cannot be rebuilt, they are hard to destroy
 /obj/structure/cable/ender/legacy_ex_act(severity)
 	return
-

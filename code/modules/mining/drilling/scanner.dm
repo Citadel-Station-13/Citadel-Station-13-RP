@@ -12,7 +12,7 @@
 	var/scan_exact_ores = FALSE
 	var/scan_exact_amounts = FALSE
 
-/obj/item/mining_scanner/examine(mob/user)
+/obj/item/mining_scanner/examine(mob/user, dist)
 	. = ..()
 	. += "Current scan range is [scanrange] step(s) from user's current location, including current location. Alt-Click to change scan range."
 
@@ -28,6 +28,9 @@
 	. = ..()
 
 /obj/item/mining_scanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>You begin sweeping \the [src] about, scanning for metal deposits.</span>")
 	playsound(loc, 'sound/items/goggles_charge.ogg', 50, 1, -6)
 
@@ -71,7 +74,7 @@
 	if(length(metals))
 		for(var/ore_type in metals)
 			var/result = "no sign"
-	
+
 			if(exact_amount)
 				result = "- [metals[ore_type]] of [ore_type]"
 			else

@@ -2,7 +2,7 @@
 	uid = SPECIES_ID_SHADEKIN
 	name = SPECIES_SHADEKIN
 	name_plural = SPECIES_SHADEKIN
-	category = "Special"
+	category = SPECIES_CATEGORY_RESTRICTED
 
 	icobase      = 'icons/mob/species/shadekin/body.dmi'
 	deform       = 'icons/mob/species/shadekin/body.dmi'
@@ -21,7 +21,7 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
-	rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
+	//rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
 
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_SHADEKIN_HIVEMIND
@@ -35,13 +35,14 @@
 	)
 
 	siemens_coefficient = 1
-	darksight = 10
+	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 
 	slowdown = -0.5
 	item_slowdown_mod = 0.5
 
 	brute_mod = 0.7 // Naturally sturdy.
 	burn_mod = 1.2 // Furry
+	radiation_mod = 0
 
 	warning_low_pressure = 50
 	hazard_low_pressure = -1
@@ -58,7 +59,7 @@
 	heat_level_3 = 1150
 
 	species_flags = NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
-	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELIST_SELECTABLE
+	species_spawn_flags = SPECIES_SPAWN_RESTRICTED | SPECIES_SPAWN_CHARACTER
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
 
@@ -114,6 +115,8 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
 	)
 
+	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
+
 	//SHADEKIN-UNIQUE STUFF GOES HERE
 	var/list/shadekin_abilities = list(
 		/datum/power/shadekin/phase_shift,
@@ -159,7 +162,7 @@
 		H.ability_master = new /atom/movable/screen/movable/ability_master/shadekin(H)
 	for(var/datum/power/shadekin/P in shadekin_ability_datums)
 		if(!(P.verbpath in H.verbs))
-			H.verbs += P.verbpath
+			add_verb(H, P.verbpath)
 			H.ability_master.add_shadekin_ability(
 				object_given = H,
 				verb_given = P.verbpath,

@@ -5,7 +5,10 @@
 	var/uses = 0
 	info = "<center><img src='talisman.png'></center><br/><br/>"
 
-/obj/item/paper/talisman/attack_self(mob/living/user as mob)
+/obj/item/paper/talisman/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(iscultist(user))
 		var/delete = 1
 		// who the hell thought this was a good idea :(
@@ -34,26 +37,24 @@
 				return
 			if("supply")
 				supply()
-		user.take_organ_damage(5, 0)
+		var/mob/living/carbon/human/H = ishuman(user)? user : null
+		H?.take_organ_damage(5, 0)
 		if(src && src.imbue!="supply" && src.imbue!="runestun")
 			if(delete)
 				qdel(src)
 		return
 	else
 		to_chat(user, "You see strange symbols on the paper. Are they supposed to mean something?")
-		return
 
-
-/obj/item/paper/talisman/attack(mob/living/carbon/T as mob, mob/living/user as mob)
-	if(iscultist(user))
+/obj/item/paper/talisman/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(isliving(user) && iscultist(user))
+		var/mob/living/L = user
 		if(imbue == "runestun")
-			user.take_organ_damage(5, 0)
-			call(/obj/effect/rune/proc/runestun)(T)
+			L.take_organ_damage(5, 0)
+			call(/obj/effect/rune/proc/runestun)(target)
 			qdel(src)
-		else
-			..() ///If its some other talisman, use the generic attack code, is this supposed to work this way?
-	else
-		..()
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 
 /obj/item/paper/talisman/proc/supply(key)

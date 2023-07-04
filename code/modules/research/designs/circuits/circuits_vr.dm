@@ -22,7 +22,7 @@
 /datum/design/circuit/quantum_pad
 	name = "Quantum Pad"
 	id = "quantum_pad"
-	req_tech = list(TECH_ENGINEERING = 4, TECH_POWER = 4, TECH_BLUESPACE = 4)
+	req_tech = list(TECH_ENGINEERING = 4, TECH_POWER = 4, TECH_BLUESPACE = 4, TECH_PRECURSOR = 1)
 	build_path = /obj/item/circuitboard/quantumpad
 	sort_string = "HABAH"
 
@@ -111,13 +111,6 @@
 	build_path = /obj/item/circuitboard/resleeving_control
 	sort_string = "HAADE"
 
-/datum/design/circuit/body_designer
-	name = "Body design console"
-	id = "body_designer"
-	req_tech = list(TECH_DATA = 5)
-	build_path = /obj/item/circuitboard/body_designer
-	sort_string = "HAADF"
-
 /datum/design/circuit/partslathe
 	name = "Parts lathe"
 	id = "partslathe"
@@ -144,7 +137,7 @@
 /datum/design/circuit/quantum_pad
 	name = "Quantum Pad"
 	id = "quantum_pad"
-	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5)
+	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5, TECH_PRECURSOR = 1)
 	build_path = /obj/item/circuitboard/quantumpad
 	sort_string = "HAAC"
 

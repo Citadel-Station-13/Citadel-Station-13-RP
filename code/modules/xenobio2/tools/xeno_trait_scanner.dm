@@ -31,11 +31,14 @@
 	user.visible_message("\The [src] spits out a piece of paper.")
 	return
 
-/obj/item/analyzer/xeno_analyzer/attack_self(mob/user as mob)
+/obj/item/analyzer/xeno_analyzer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	print_report(user)
 	return 0
 
-/obj/item/analyzer/xeno_analyzer/afterattack(var/target, mob/user, flag)
+/obj/item/analyzer/xeno_analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!flag) return
 
 	var/datum/xeno/traits/trait_info

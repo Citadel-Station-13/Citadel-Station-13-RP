@@ -83,7 +83,7 @@
 	set category = "Object"
 	set src in range(1)
 
-	if(usr.stat || usr.restrained() || usr.weakened || usr.paralysis || usr.lying || usr.stunned)
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 
 	if(!paperamount)
@@ -131,15 +131,19 @@
 		update_icon()
 
 /obj/machinery/papershredder/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	if(operable())
 		icon_state = "shredder-on"
 	else
 		icon_state = "shredder-off"
 	// Fullness overlay
-	overlays += "shredder-[max(0,min(5,FLOOR(paperamount/max_paper*5, 1)))]"
+	overlays_to_add += "shredder-[max(0,min(5,FLOOR(paperamount/max_paper*5, 1)))]"
 	if (panel_open)
-		overlays += "panel_open"
+		overlays_to_add += "panel_open"
+
+	add_overlay(overlays_to_add)
 
 //
 // Shredded Paper Item

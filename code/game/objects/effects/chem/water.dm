@@ -48,5 +48,6 @@
 //Used by spraybottles.
 /obj/effect/water/chempuff
 	name = "chemicals"
-	icon = 'icons/obj/chempuff.dmi'
+	icon = 'icons/obj/medical/chempuff.dmi'
 	icon_state = ""
+	layer = FLY_LAYER

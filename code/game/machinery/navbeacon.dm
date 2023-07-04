@@ -8,7 +8,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	icon_state = "navbeacon0-f"
 	name = "navigation beacon"
 	desc = "A beacon used for bot navigation."
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 	anchored = TRUE
 	/// TRUE if cover is open.
 	var/open = FALSE
@@ -22,7 +22,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	var/codes_txt
 	/// assoc. list of transponder codes.
 	var/list/codes = list()
-	req_access = list(access_engine)
+	req_access = list(ACCESS_ENGINEERING_MAIN)
 
 /obj/machinery/navbeacon/Initialize(mapload)
 	. = ..()
@@ -100,7 +100,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 /obj/machinery/navbeacon/attack_ai(var/mob/user)
 	interact(user, 1)
 
-/obj/machinery/navbeacon/attack_hand(var/mob/user)
+/obj/machinery/navbeacon/attack_hand(mob/user, list/params)
 
 	if(!user.IsAdvancedToolUser())
 		return FALSE

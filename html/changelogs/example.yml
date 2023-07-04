@@ -18,9 +18,9 @@
 #   sounddel
 #     - (removes a sound)
 #   rscadd
-#     - (removes a feature)
-#   rscdel
 #     - (adds a feature)
+#   rscdel
+#     - (removes a feature)
 #   imageadd
 #     - (adds an image or sprite)
 #   imagedel

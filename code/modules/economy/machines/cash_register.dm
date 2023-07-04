@@ -3,7 +3,7 @@
 	desc = "Swipe your ID card to make purchases electronically."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "register_idle"
-	req_access = list(access_heads)
+	req_access = list(ACCESS_COMMAND_BRIDGE)
 	anchored = 1
 
 	var/locked = 1
@@ -30,7 +30,7 @@
 	cash_stored = rand(10, 70)*10
 	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 
-/obj/machinery/cash_register/examine(mob/user)
+/obj/machinery/cash_register/examine(mob/user, dist)
 	. = ..()
 	if(cash_open)
 		if(cash_stored)
@@ -39,15 +39,15 @@
 			. += "It's completely empty."
 
 
-/obj/machinery/cash_register/attack_hand(mob/user as mob)
+/obj/machinery/cash_register/attack_hand(mob/user, list/params)
 	// Don't be accessible from the wrong side of the machine
-	if(get_dir(src, user) & GLOB.reverse_dir[src.dir]) return
+	if(get_dir(src, user) & global.reverse_dir[src.dir]) return
 
 	if(cash_open)
 		if(cash_stored)
 			spawn_money(cash_stored, loc, user)
 			cash_stored = 0
-			overlays -= "register_cash"
+			cut_overlay("register_cash")
 		else
 			open_cash_box()
 	else
@@ -178,7 +178,7 @@
 		if(cash_open)
 			to_chat(user, "You neatly sort the cash into the box.")
 			cash_stored += SC.worth
-			overlays |= "register_cash"
+			add_overlay("register_cash")
 			qdel(SC)
 		else
 			scan_cash(SC)
@@ -455,19 +455,24 @@
 	set desc = "Open/closes the register's cash box."
 	set src in view(1)
 
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	if(cash_open)
 		cash_open = 0
-		overlays -= "register_approve"
-		overlays -= "register_open"
-		overlays -= "register_cash"
+		var/list/overlays_to_remove = list()
+		overlays_to_remove.Add("register_approve")
+		overlays_to_remove.Add("register_open")
+		overlays_to_remove.Add("register_cash")
+		cut_overlays(overlays_to_remove)
 	else if(!cash_locked)
+		var/list/overlays_to_add = list()
 		cash_open = 1
-		overlays += "register_approve"
-		overlays += "register_open"
+		overlays_to_add.Add("register_approve")
+		overlays_to_add.Add("register_open")
 		if(cash_stored)
-			overlays += "register_cash"
+			overlays_to_add.Add("register_cash")
+		add_overlay(overlays_to_add)
 	else
 		to_chat(usr, "<span class='warning'>The cash box is locked.</span>")
 

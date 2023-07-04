@@ -1,284 +1,56 @@
 macro "default"
 
 
-menu "menu"
-	elem
-		name = "&File"
-		command = ""
-		saved-params = "is-checked"
-	elem
-		name = "&Quick screenshot\tF2"
-		command = ".screenshot auto"
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = "&Save screenshot as...\tShift+F2"
-		command = ".screenshot"
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = ""
-		command = ""
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = "&Reconnect"
-		command = ".reconnect"
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = "&Check ping"
-		command = ".ping"
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = "&Quit"
-		command = ".quit"
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = "&Size"
-		command = ""
-		saved-params = "is-checked"
-	elem "stretch"
-		name = "&Round up and lock to size"
-		command = ".winset \"mapwindow.map.icon-size=0\""
-		category = "&Size"
-		is-checked = true
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "cozyin"
-		name = "Get Cozy Inwards"
-		command = "SetCozyViewInwards 8"
-		category = "&Size"
-		can-check = false
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon128"
-		name = "&128x128 (4K)"
-		command = "SetWindowIconSize 128"
-		category = "&Size"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon96"
-		name = "&96x96"
-		command = "SetWindowIconSize 96"
-		category = "&Size"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon72"
-		name = "&72x72 (Cozy 1080p)"
-		command = "SetWindowIconSize 72"
-		category = "&Size"
-		is-checked = true
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon64"
-		name = "&64x64 (1080p)"
-		command = "SetWindowIconSize 64"
-		category = "&Size"
-		is-checked = true
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon48"
-		name = "&48x48"
-		command = "SetWindowIconSize 48"
-		category = "&Size"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon32"
-		name = "&32x32"
-		command = "SetWindowIconSize 32"
-		category = "&Size"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem
-		name = "&Scaling"
-		command = ""
-		saved-params = "is-checked"
-	elem "ZM"
-		name = "&Smooth Scaling"
-		command = ".winset \"zoommode.is-checked=true?map.zoom-mode=normal:map.zoom-mode=distort\""
-		category = "&Scaling"
-		is-checked = true
-		can-check = true
-		group = "scale"
-		saved-params = "is-checked"
-	elem "NN"
-		name = "&Nearest Neighbor"
-		command = ".winset \"mapwindow.map.zoom-mode=distort\""
-		category = "&Scaling"
-		can-check = true
-		group = "scale"
-		saved-params = "is-checked"
-	elem "PS"
-		name = "&Point Sampling"
-		command = ".winset \"mapwindow.map.zoom-mode=normal\""
-		category = "&Scaling"
-		can-check = true
-		group = "scale"
-		saved-params = "is-checked"
-	elem "BL"
-		name = "&Bilinear"
-		command = ".winset \"mapwindow.map.zoom-mode=blur\""
-		category = "&Scaling"
-		can-check = true
-		group = "scale"
-		saved-params = "is-checked"
-	elem
-		name = "&Help"
-		command = ""
-		saved-params = "is-checked"
-	elem
-		name = "&Admin help\tF1"
-		command = "adminhelp"
-		category = "&Help"
-		saved-params = "is-checked"
-	elem
-		name = "&Hotkeys"
-		command = "hotkeys-help"
-		category = "&Help"
-		saved-params = "is-checked"
-
-
-window "Telecomms IDE"
-	elem "Telecomms IDE"
-		type = MAIN
-		pos = 281,0
-		size = 569x582
-		anchor1 = none
-		anchor2 = none
-		background-color = #ffffff
-		is-visible = false
-		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "TCS IDE"
-		statusbar = false
-		on-close = "exittcs"
-	elem "button5"
-		type = BUTTON
-		pos = 209,464
-		size = 70x20
-		anchor1 = 37,80
-		anchor2 = 49,83
-		saved-params = "is-checked"
-		text = "Clear Memory"
-		command = "tcsclearmem"
-	elem "button4"
-		type = BUTTON
-		pos = 157,464
-		size = 52x20
-		anchor1 = 28,80
-		anchor2 = 37,83
-		saved-params = "is-checked"
-		text = "Revert"
-		command = "tcsrevert"
-	elem "button3"
-		type = BUTTON
-		pos = 105,464
-		size = 52x20
-		anchor1 = 18,80
-		anchor2 = 28,83
-		saved-params = "is-checked"
-		text = "Execute"
-		command = "tcsrun"
-	elem "tcserror"
-		type = OUTPUT
-		pos = 0,488
-		size = 566x94
-		anchor1 = 0,84
-		anchor2 = 99,100
-		font-family = "sans-serif"
-		font-size = 9
-		saved-params = "max-lines"
-	elem "button2"
-		type = BUTTON
-		pos = 53,464
-		size = 52x20
-		anchor1 = 9,80
-		anchor2 = 18,83
-		saved-params = "is-checked"
-		text = "Compile"
-		command = "tcscompile"
-	elem "button1"
-		type = BUTTON
-		pos = 0,464
-		size = 53x20
-		anchor1 = 0,80
-		anchor2 = 9,83
-		saved-params = "is-checked"
-		text = "Apply"
-		command = "tcssave"
-	elem "tcscode"
-		type = INPUT
-		pos = 0,0
-		size = 569x464
-		anchor1 = 0,0
-		anchor2 = 100,80
-		font-family = "Courier"
-		font-size = 10
-		saved-params = ""
-		command = "cancel"
-		multi-line = true
-		no-command = true
-
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
 		pos = 0,0
-		size = 640x440
-		anchor1 = none
-		anchor2 = none
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		icon = 'icons\\CS13.png'
 		macro = "default"
-		menu = "menu"
-		on-size = "OnResize"
 	elem "split"
 		type = CHILD
-		pos = 3,0
-		size = 640x440
+		pos = 0,0
+		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = "splitter"
 		left = "mapwindow"
 		right = "infowindow"
 		is-vert = true
-		on-size = "OnResize"
 	elem "asset_cache_browser"
 		type = BROWSER
 		pos = 0,0
 		size = 200x200
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		is-visible = false
 		saved-params = ""
 	elem "tooltip"
 		type = BROWSER
 		pos = 0,0
 		size = 999x999
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		is-visible = false
 		saved-params = ""
 
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 640x480
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
-		on-size = "OnResize"
+		outer-size = 656x538
+		inner-size = 640x499
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -287,18 +59,27 @@ window "mapwindow"
 		anchor2 = 100,100
 		font-family = "Arial"
 		font-size = 7
-		text-color = none
 		is-default = true
-		saved-params = "zoom;letterbox;zoom-mode"
+		saved-params = ""
+		on-size = ".on_viewport [[width]] [[height]] [[zoom]] [[letterbox]]"
 		style = ".center { text-align: center; } .maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .command_headset { font-weight: bold;\tfont-size: 8px; } .small { font-size: 6px; } .big { font-size: 8px; } .reallybig { font-size: 8px; } .extremelybig { font-size: 8px; } .greentext { color: #00FF00; font-size: 7px; } .redtext { color: #FF0000; font-size: 7px; } .clown { color: #FF69Bf; font-size: 7px;  font-weight: bold; } .his_grace { color: #15D512; } .hypnophrase { color: #0d0d0d; font-weight: bold; } .yell { font-weight: bold; } .italics { font-size: 6px; }"
+	elem "cutscenebrowser"
+		type = BROWSER
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = #ffffff
+		is-visible = false
+		saved-params = ""
 
 window "preferences_window"
 	elem "preferences_window"
 		type = MAIN
 		pos = 281,0
 		size = 1000x800
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
@@ -323,20 +104,16 @@ window "infowindow"
 		type = MAIN
 		pos = 418,0
 		size = 640x480
-		anchor1 = none
-		anchor2 = none
-		background-color = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
-		outer-size = 662x561
-		inner-size = 640x505
 	elem "mediapanel"
 		type = BROWSER
 		pos = 88,216
 		size = 200x200
-		anchor1 = none
-		anchor2 = none
-		background-color = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		is-visible = false
 		saved-params = ""
 	elem "info"
@@ -345,7 +122,6 @@ window "infowindow"
 		size = 640x445
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "splitter"
 		left = "statwindow"
 		right = "outputwindow"
@@ -356,7 +132,6 @@ window "infowindow"
 		size = 104x20
 		anchor1 = 3,0
 		anchor2 = 19,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Changelog"
 		command = "changelog"
@@ -366,7 +141,6 @@ window "infowindow"
 		size = 100x20
 		anchor1 = 19,0
 		anchor2 = 34,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Rules"
 		command = "rules"
@@ -376,7 +150,6 @@ window "infowindow"
 		size = 100x20
 		anchor1 = 34,0
 		anchor2 = 50,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = "wiki"
@@ -386,7 +159,6 @@ window "infowindow"
 		size = 100x20
 		anchor1 = 50,0
 		anchor2 = 66,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Forum"
 		command = "forum"
@@ -396,7 +168,6 @@ window "infowindow"
 		size = 100x20
 		anchor1 = 66,0
 		anchor2 = 81,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Github"
 		command = "github"
@@ -406,7 +177,6 @@ window "infowindow"
 		size = 100x20
 		anchor1 = 81,0
 		anchor2 = 97,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Report Issue"
 		command = "report-issue"
@@ -414,12 +184,15 @@ window "infowindow"
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 640x480
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
+		outer-size = 656x538
+		inner-size = 640x499
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
@@ -460,7 +233,7 @@ window "outputwindow"
 		background-color = none
 		saved-params = ""
 		text = "Hotkey Toggle"
-		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
+		command = "Toggle-Hotkeys"
 		button-type = pushbox
 	elem "output"
 		type = OUTPUT
@@ -474,25 +247,66 @@ window "outputwindow"
 		type = BROWSER
 		pos = 0,0
 		size = 200x200
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
 		saved-params = ""
 
-window "statwindow"
-	elem "statwindow"
+window "stat_pane_browser"
+	elem "stat_pane_browser"
 		type = MAIN
-		pos = 372,0
+		pos = 281,0
 		size = 640x480
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Status Panel"
 		is-pane = true
 	elem "statbrowser"
+		type = BROWSER
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		saved-params = ""
+
+window "stat_pane_byond"
+	elem "stat_pane_byond"
+		type = MAIN
+		pos = 281,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Turf / Misc"
+		is-pane = true
+	elem "statpanel"
 		type = INFO
 		pos = 0,0
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = ""
+
+window "statwindow"
+	elem "statwindow"
+		type = MAIN
+		pos = 281,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+	elem "stat_tab"
+		type = TAB
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		saved-params = ""
+		tabs = "stat_pane_browser,stat_pane_byond"
+		current-tab = "stat_pane_browser,stat_pane_byond"
+		multi-line = false
+		on-tab = ".statswitcher [[*]]"
 

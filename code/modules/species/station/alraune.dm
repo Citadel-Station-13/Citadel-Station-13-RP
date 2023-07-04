@@ -1,6 +1,7 @@
 /datum/species/alraune
-	name = SPECIES_ALRAUNE
 	uid = SPECIES_ID_ALRAUNE
+	id = SPECIES_ID_ALRAUNE
+	name = SPECIES_ALRAUNE
 	name_plural = "Alraunes"
 
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
@@ -59,7 +60,7 @@
 	breath_heat_level_3 = 800 //lower incineration threshold though
 
 	species_flags = NO_SCAN | IS_PLANT | NO_MINOR_CUT
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	unarmed_types = list(
@@ -260,11 +261,11 @@
 		if(SA_pp > SA_para_min)
 
 			// 3 gives them one second to wake up and run away a bit!
-			H.Paralyse(3)
+			H.afflict_unconscious(20 * 3)
 
 			// Enough to make us sleep as well
 			if(SA_pp > SA_sleep_min)
-				H.Sleeping(5)
+				H.afflict_sleeping(20 * 5)
 
 		// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
 		else if(SA_pp > 0.15)
@@ -342,6 +343,7 @@
 	set name = "Select Fruit"
 	set desc = "Select what fruit/vegetable you wish to grow."
 	set category = "Abilities"
+
 	var/obj/item/organ/internal/fruitgland/fruit_gland
 	for(var/F in contents)
 		if(istype(F, /obj/item/organ/internal/fruitgland))
@@ -352,13 +354,11 @@
 		var/selection = input(src, "Choose your character's fruit type. Choosing nothing will result in a default of apples.", "Fruit Type", fruit_gland.fruit_type) as null|anything in acceptable_fruit_types
 		if(selection)
 			fruit_gland.fruit_type = selection
-		verbs |= /mob/living/carbon/human/proc/alraune_fruit_pick
-		verbs -= /mob/living/carbon/human/proc/alraune_fruit_select
+		add_verb(src, /mob/living/carbon/human/proc/alraune_fruit_pick)
+		remove_verb(src, /mob/living/carbon/human/proc/alraune_fruit_select)
 		fruit_gland.emote_descriptor = list("fruit right off of [fruit_gland.owner]!", "a fruit from [fruit_gland.owner]!")
-
 	else
 		to_chat(src, SPAN_NOTICE("You lack the organ required to produce fruit."))
-		return
 
 /mob/living/carbon/human/proc/alraune_fruit_pick()
 	set name = "Pick Fruit"

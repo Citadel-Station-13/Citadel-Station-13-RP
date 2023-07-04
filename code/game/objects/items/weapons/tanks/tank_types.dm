@@ -23,11 +23,10 @@
 	. = ..()
 	air_contents.adjust_gas(GAS_ID_OXYGEN, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
-/obj/item/tank/oxygen/examine(mob/user)
+/obj/item/tank/oxygen/examine(mob/user, dist)
 	. = ..()
 	if(air_contents.gas[GAS_ID_OXYGEN] < 10)
 		. += "<span class='warning'>The meter on the [src] indicates you are almost out of oxygen!</span>"
-		playsound(usr, 'sound/effects/alert.ogg', 50, 1)
 
 /obj/item/tank/oxygen/yellow
 	desc = "A tank of oxygen, this one is yellow."
@@ -64,7 +63,7 @@
 	icon = 'icons/obj/tank_vr.dmi'
 	icon_state = "oxygen"
 
-/obj/item/tank/air/examine(mob/user)
+/obj/item/tank/air/examine(mob/user, dist)
 	. = ..()
 	if(air_contents.gas[GAS_ID_OXYGEN] < 1 && loc==user)
 		. += "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
@@ -140,7 +139,7 @@
 	gauge_cap = 3
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	force = 4
+	damage_force = 4
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	volume = 2 //Tiny. Real life equivalents only have 21 breaths of oxygen in them. They're EMERGENCY tanks anyway -errorage (dangercon 2011)
 
@@ -156,7 +155,7 @@
 	. = ..()
 	src.air_contents.adjust_gas(GAS_ID_OXYGEN, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
-/obj/item/tank/emergency/oxygen/examine(mob/user)
+/obj/item/tank/emergency/oxygen/examine(mob/user, dist)
 	. = ..()
 	if(air_contents.gas[GAS_ID_OXYGEN] < 0.2 && loc==user)
 		. += "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
@@ -191,9 +190,9 @@
 
 /obj/item/tank/emergency/nitrogen
 	name = "emergency nitrogen tank"
-	desc = "An emergency air tank hastily painted red."
+	desc = "An emergency air tank, it's coloured red with 'Nitrogen' being spelled in bold letters on it's side ."
 	icon = 'icons/obj/tank_vr.dmi'
-	icon_state = "emergency_nitro"
+	icon_state = "emergency_nitrogen"
 	gauge_icon = "indicator_emergency"
 	gauge_cap = 3
 
@@ -213,7 +212,7 @@
 	name = "emergency phoron tank"
 	desc = "An emergency air tank hastily painted red."
 	icon = 'icons/obj/tank_vr.dmi'
-	icon_state = "emergency_nitro"
+	icon_state = "emergency_phoron_vox"
 	gauge_icon = "indicator_emergency"
 	volume = 6
 	gauge_cap = 3
@@ -224,7 +223,7 @@
 
 /obj/item/tank/emergency/phoron/double
 	name = "double emergency phoron tank"
-	icon_state = "emergency_double_nitro"
+	icon_state = "emergency_double_vox"
 	gauge_icon = "indicator_emergency_double"
 	volume = 10
 
@@ -244,10 +243,9 @@
 
 	src.air_contents.adjust_gas(GAS_ID_NITROGEN, (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C))
 
-/obj/item/tank/nitrogen/examine(mob/user)
+/obj/item/tank/nitrogen/examine(mob/user, dist)
 	if(air_contents.gas[GAS_ID_NITROGEN] < 10)
 		. += "<span class='danger'>The meter on \the [src] indicates you are almost out of nitrogen!</span>"
-		playsound(user, 'sound/effects/alert.ogg', 50, 1)
 
 /obj/item/tank/stasis/nitro_cryo // Synthmorph bags need to have initial pressure within safe bounds for human atmospheric pressure, but low temperature to stop unwanted degredation.
 	name = "stasis cryogenic nitrogen tank"
@@ -287,7 +285,7 @@
 	. = ..()
 	src.air_contents.adjust_gas(GAS_ID_CARBON_DIOXIDE, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
-/obj/item/tank/emergency/carbon_dioxide/examine(mob/user)
+/obj/item/tank/emergency/carbon_dioxide/examine(mob/user, dist)
 	if(air_contents.gas[GAS_ID_CARBON_DIOXIDE] < 0.2 && loc==user)
 		. += "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
 	//	user.playsound('sound/effects/alert.ogg')

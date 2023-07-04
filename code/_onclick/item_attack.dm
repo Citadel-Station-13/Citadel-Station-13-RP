@@ -22,40 +22,22 @@ item/apply_hit_effect() can be overriden to do whatever you want. However "stand
 avoid code duplication. This includes items that may sometimes act as a standard weapon in addition to having other effects (e.g. stunbatons on harm intent).
 */
 
-// Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
-/obj/item/proc/attack_self(mob/user)
-	return
-
-// Called at the start of resolve_attackby(), before the actual attack.
-/obj/item/proc/pre_attack(atom/a, mob/user)
-	return
-
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
-/obj/item/proc/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
-	pre_attack(A, user)
-	if(!(flags & NOPRINT))
+/obj/item/proc/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1, clickchain_flags)
+	if(!(atom_flags & NOPRINT))
 		add_fingerprint(user)
-	return A.attackby(src, user, params, NONE, attack_modifier)
+	return A.attackby(src, user, params, clickchain_flags, attack_modifier)
 
 // No comment
-/atom/proc/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
-	return
+/atom/proc/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	return I.standard_melee_attack(src, user, clickchain_flags, params, damage_multiplier, user.zone_sel?.selecting, user.a_intent)
 
-/atom/movable/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
-	if(!(I.item_flags & ITEM_NOBLUDGEON))
-		visible_message("<span class='danger'>[src] has been hit by [user] with [I].</span>")
-
-/mob/living/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
-	if(!ismob(user))
-		return 0
-	if(can_operate(src) && I.do_surgery(src,user))
-		if(I.can_do_surgery(src,user))
-			return 1
-		else
-			return 0
+/mob/living/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(can_operate(src) && user.a_intent != INTENT_HARM && I.do_surgery(src,user))
+		return NONE
 	if(attempt_vr(src,"vore_attackby",args))
 		return
-	return I.attack(src, user, user.zone_sel.selecting, damage_multiplier)
+	return I.standard_melee_attack(src, user, clickchain_flags, params, damage_multiplier, user.zone_sel?.selecting, user.a_intent)
 
 // Used to get how fast a mob should attack, and influences click delay.
 // This is just for inheritence.
@@ -72,50 +54,3 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		if(!isnull(M.attack_speed_percent))
 			speed *= M.attack_speed_percent
 	return speed
-
-// Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
-// Click parameters is the params string from byond Click() code, see that documentation.
-/obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	return
-
-//I would prefer to rename this attack_as_weapon(), but that would involve touching hundreds of files.
-/obj/item/proc/attack(mob/living/M, mob/living/user, var/target_zone, var/attack_modifier)
-	if(!force || (item_flags & ITEM_NOBLUDGEON))
-		return 0
-	if(M == user && user.a_intent != INTENT_HARM)
-		return 0
-
-	/////////////////////////
-	user.lastattacked = M
-	M.lastattacker = user
-
-	if(!no_attack_log)
-		add_attack_logs(user,M,"attacked with [name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(damtype)])")
-	/////////////////////////
-
-	user.setClickCooldown(user.get_attack_speed(src))
-	user.do_attack_animation(M)
-
-	var/hit_zone = M.resolve_item_attack(src, user, target_zone)
-	if(hit_zone)
-		apply_hit_effect(M, user, hit_zone, attack_modifier)
-
-	return 1
-
-//Called when a weapon is used to make a successful melee attack on a mob. Returns the blocked result
-/obj/item/proc/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone, attack_modifier = 1)
-	user.break_cloak()
-	if(hitsound)
-		playsound(loc, hitsound, 50, 1, -1)
-
-	var/power = force
-	for(var/datum/modifier/M in user.modifiers)
-		if(!isnull(M.outgoing_melee_damage_percent))
-			power *= M.outgoing_melee_damage_percent
-
-	if(MUTATION_HULK in user.mutations)
-		power *= 2
-
-	power *= attack_modifier
-
-	return target.hit_with_weapon(src, user, power, hit_zone)

@@ -1,5 +1,6 @@
 /datum/species/skrell
 	uid = SPECIES_ID_SKRELL
+	id = SPECIES_ID_SKRELL
 	name = SPECIES_SKRELL
 	name_plural = SPECIES_SKRELL
 	primitive_form = SPECIES_MONKEY_SKRELL
@@ -36,9 +37,8 @@
 
 	max_age = 130
 
-	economic_modifier = 10
+	vision_innate = /datum/vision/baseline/species_tier_1
 
-	darksight  = 4
 	flash_mod  = 1.2
 	chemOD_mod = 0.9
 
@@ -46,8 +46,8 @@
 
 	ambiguous_genders = TRUE
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#8CD7A3"
 	blood_color = "#1D2CBF"

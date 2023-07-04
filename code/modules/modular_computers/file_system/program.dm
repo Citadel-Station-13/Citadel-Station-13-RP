@@ -18,7 +18,7 @@
 
 //! ## TGUI
 	/// If the program uses TGUIModule, put it here and it will be automagically opened. Otherwise implement ui_interact.
-	var/datum/tgui_module/TM = null
+	var/datum/tgui_module_old/TM = null
 	/// Path to tguimodule, make sure to set this if implementing new program.
 	var/tguimodule_path = null
 

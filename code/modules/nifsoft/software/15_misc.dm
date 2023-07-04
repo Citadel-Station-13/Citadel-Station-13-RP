@@ -2,7 +2,7 @@
 	name = "APC Connector"
 	desc = "A small attachment that allows synthmorphs to recharge themselves from APCs."
 	list_pos = NIF_APCCHARGE
-	cost = 625
+	cost = 50
 	wear = 2
 	applies_to = NIF_SYNTHETIC
 	tick_flags = NIF_ACTIVETICK
@@ -48,7 +48,7 @@
 	name = "Pressure Seals"
 	desc = "Creates pressure seals around important synthetic components to protect them from vacuum. Almost impossible on organics."
 	list_pos = NIF_PRESSURE
-	cost = 875
+	cost = 250
 	a_drain = 0.5
 	wear = 3
 	applies_to = NIF_SYNTHETIC
@@ -58,7 +58,7 @@
 	name = "Heat Sinks"
 	desc = "Advanced heat sinks for internal heat storage of heat on a synth until able to vent it in atmosphere."
 	list_pos = NIF_HEATSINK
-	cost = 725
+	cost = 250
 	a_drain = 0.25
 	wear = 3
 	var/used = 0
@@ -96,7 +96,7 @@
 	name = "Compliance Module"
 	desc = "A system that allows one to apply 'laws' to sapient life. Extremely illegal, of course."
 	list_pos = NIF_COMPLIANCE
-	cost = 8200
+	cost = 1000
 	wear = 4
 	illegal = TRUE
 	vended = FALSE
@@ -132,7 +132,7 @@
 	name = "Mass Alteration"
 	desc = "A system that allows one to change their size, through drastic mass rearrangement. Causes significant wear when installed."
 	list_pos = NIF_SIZECHANGE
-	cost = 375
+	cost = 175 // this doesn't get nerfed that much because size shifters are annoying sorry
 	wear = 6
 
 /datum/nifsoft/sizechange/activate()
@@ -166,7 +166,7 @@
 	name = "World Bender"
 	desc = "Alters your perception of various objects in the world. Only has one setting for now: displaying all your crewmates as farm animals."
 	list_pos = NIF_WORLDBEND
-	cost = 100
+	cost = 50
 	a_drain = 0.01
 
 /datum/nifsoft/worldbend/activate()

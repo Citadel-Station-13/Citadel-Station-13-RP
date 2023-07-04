@@ -1,7 +1,7 @@
 // Stacked resources. They use a material datum for a lot of inherited values.
 // If you're adding something here, make sure to add it to fifty_spawner_mats.dm as well
 /obj/item/stack/material
-	force = 5
+	damage_force = 5
 	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 3
@@ -42,7 +42,7 @@
 		color = material.icon_colour
 
 	if(!material.conductive)
-		flags |= NOCONDUCT
+		atom_flags |= NOCONDUCT
 
 	matter = material.get_matter()
 	update_strings()
@@ -77,9 +77,9 @@
 	if(M) M.update_strings()
 	return transfer
 
-/obj/item/stack/material/attack_self(var/mob/user)
+/obj/item/stack/material/attack_self(mob/user)
 	if(!allow_window_autobuild || !material.build_windows(user, src))
-		..()
+		return ..()
 
 /obj/item/stack/material/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
@@ -284,11 +284,11 @@
 	update_mass()
 	return
 
-/obj/item/stack/material/supermatter/attack_hand(mob/user)
+/obj/item/stack/material/supermatter/attack_hand(mob/user, list/params)
 	. = ..()
 
 	update_mass()
-	SSradiation.radiate(src, 5 + amount)
+	radiation_pulse(src, RAD_INTENSITY_MAT_SUPERMATTER_PICKUP_PER_SHEET(amount))
 	var/mob/living/M = user
 	if(!istype(M))
 		return
@@ -297,7 +297,7 @@
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/clothing/gloves/G = H.gloves
-		if(istype(G) && ((G.clothing_flags & THICKMATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
+		if(istype(G) && ((G.clothing_flags & CLOTHING_THICK_MATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
 			burn_user = FALSE
 
 		if(burn_user)
@@ -315,11 +315,12 @@
 
 /obj/item/stack/material/supermatter/legacy_ex_act(severity)	// An incredibly hard to manufacture material, SM chunks are unstable by their 'stabilized' nature.
 	if(prob((4 / severity) * 20))
-		SSradiation.radiate(get_turf(src), amount * 4)
+		// you dun fucked up
+		radiation_pulse(src, RAD_INTENSITY_MAT_SUPERMATTER_EXPLODE_PER_SHEET(amount))
 		explosion(get_turf(src),round(amount / 12) , round(amount / 6), round(amount / 3), round(amount / 25))
 		qdel(src)
 		return
-	SSradiation.radiate(get_turf(src), amount * 2)
+	radiation_pulse(src, RAD_INTENSITY_MAT_SUPERMATTER_EXPLODE_PER_SHEET(amount))
 	..()
 
 /obj/item/stack/material/wood
@@ -367,10 +368,10 @@
 	plank_type = /obj/item/stack/material/wood/hard
 
 /obj/item/stack/material/log/attackby(var/obj/item/W, var/mob/user)
-	if(!istype(W) || W.force <= 0)
+	if(!istype(W) || W.damage_force <= 0)
 		return ..()
 	if(W.sharp && W.edge)
-		var/time = (3 SECONDS / max(W.force / 10, 1)) * W.tool_speed
+		var/time = (3 SECONDS / max(W.damage_force / 10, 1)) * W.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))
 			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")

@@ -7,6 +7,7 @@
 	base_icon_state = "beacon"
 	var/code = "electronic"
 	var/functioning = TRUE
+	var/identifier
 	origin_tech = list(TECH_BLUESPACE = 1)
 
 GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
@@ -14,6 +15,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 /obj/item/radio/beacon/Initialize(mapload)
 	. = ..()
 	update_icon()
+	identifier = rand(0,99999)
 
 /obj/item/radio/beacon/update_icon()
 	cut_overlays()
@@ -33,12 +35,11 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	set category = "Object"
 	set src in usr
 
-	if ((usr.canmove && !( usr.restrained() )))
+	if(CHECK_MOBILITY(usr, MOBILITY_CAN_MOVE))
 		src.code = t
-	if (!( src.code ))
+	if(!( src.code ))
 		src.code = "beacon"
 	src.add_fingerprint(usr)
-	return
 
 /obj/item/radio/beacon/anchored
 	desc = "A beacon used by a teleporter. This one appears to be bolted to the ground."
@@ -87,7 +88,10 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	desc = "A label on it reads: <i>Activate to have a singularity beacon teleported to your location</i>."
 	origin_tech = list(TECH_BLUESPACE = 1, TECH_ILLEGAL = 7)
 
-/obj/item/radio/beacon/syndicate/attack_self(mob/user as mob)
+/obj/item/radio/beacon/syndicate/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user)
 		to_chat(user, SPAN_NOTICE("Locked In"))
 		new /obj/machinery/power/singularity_beacon/syndicate(user.loc)

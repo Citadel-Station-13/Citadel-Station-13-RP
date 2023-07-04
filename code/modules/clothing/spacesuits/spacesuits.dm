@@ -6,12 +6,12 @@
 	name = "Space helmet"
 	icon_state = "space"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment."
-	flags = PHORONGUARD
-	clothing_flags = THICKMATERIAL | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
+	atom_flags = PHORONGUARD
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
 	permeability_coefficient = 0.01
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 50)
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
-	body_parts_covered = HEAD|FACE|EYES
+	armor_type = /datum/armor/general/space
+	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	body_cover_flags = HEAD|FACE|EYES
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
@@ -56,7 +56,7 @@
 		to_chat(usr, "This helmet does not have a built-in camera.")
 		return
 
-/obj/item/clothing/head/helmet/space/examine(mob/user)
+/obj/item/clothing/head/helmet/space/examine(mob/user, dist)
 	. = ..()
 	if(camera_networks && get_dist(user,src) <= 1)
 		. += "This helmet has a built-in camera. It's [camera ? "" : "in"]active."
@@ -69,13 +69,13 @@
 	w_class = ITEMSIZE_HUGE // So you can't fit this in your bag and be prepared at all times.
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
-	flags = PHORONGUARD
-	clothing_flags = THICKMATERIAL
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	atom_flags = PHORONGUARD
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
 	slowdown = 1
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 50)
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	armor_type = /datum/armor/general/space
+	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
@@ -90,7 +90,7 @@
 	check_limb_support(M)
 	return ..()
 
-/obj/item/clothing/suit/space/dropped(mob/user, flags, atom/newLoc)
+/obj/item/clothing/suit/space/dropped(mob/user, atom_flags, atom/newLoc)
 	check_limb_support(user)
 	return ..()
 

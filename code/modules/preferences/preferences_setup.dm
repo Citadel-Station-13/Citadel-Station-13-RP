@@ -4,8 +4,8 @@
 	var/datum/species/current_species = real_species_datum()
 	set_biological_gender(pick(current_species.genders))
 
-	h_style = random_hair_style(biological_gender, current_species.name)
-	f_style = random_facial_hair_style(biological_gender, current_species.name)
+	h_style_id = random_hair_style(biological_gender, current_species.name)
+	f_style_id = random_facial_hair_style(biological_gender, current_species.name)
 	if(current_species)
 		if(current_species.species_appearance_flags & HAS_SKIN_TONE)
 			s_tone = random_skin_tone()
@@ -28,14 +28,12 @@
 			var/datum/category_item/underwear/WRI = pick(WRC.items)
 			all_underwear[WRC.name] = WRI.name
 
-
 	backbag = rand(1, 7)
 	pdachoice = rand(1, 7)
 	age = rand(current_species.min_age, current_species.max_age)
 	b_type = RANDOM_BLOOD_TYPE
 	if(H)
 		copy_to(H)
-
 
 /datum/preferences/proc/randomize_hair_color(var/target = "hair")
 	if(prob (75) && target == "facial") // Chance to inherit hair color
@@ -193,15 +191,15 @@
 	g_skin = green
 	b_skin = blue
 
-/datum/preferences/proc/dress_preview_mob(var/mob/living/carbon/human/mannequin)
-	copy_to(mannequin)
+/datum/preferences/proc/dress_preview_mob(var/mob/living/carbon/human/mannequin, flags)
+	copy_to(mannequin, flags)
 
 	if(!equip_preview_mob)
 		return
 
-	var/datum/job/previewJob = SSjob.job_by_id(preview_job_id())
+	var/datum/role/job/previewJob = SSjob.job_by_id(preview_job_id())
 
-	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/job/station/ai || previewJob.type == /datum/job/station/cyborg)))
+	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/role/job/station/ai || previewJob.type == /datum/role/job/station/cyborg)))
 		var/list/equipped_slots = list()
 		for(var/thing in gear)
 			var/datum/gear/G = gear_datums[thing]
@@ -244,7 +242,7 @@
 		regen_limbs = 0
 	dress_preview_mob(mannequin)
 	mannequin.update_transform()
-	COMPILE_OVERLAYS(mannequin)
+	mannequin.compile_overlays()
 
 	update_character_previews(new /mutable_appearance(mannequin))
 
@@ -255,20 +253,20 @@
 /datum/preferences/proc/get_valid_hairstyles()
 	var/list/valid_hairstyles = list()
 	var/species_name = real_species_name()
-	for(var/hairstyle in hair_styles_list)
-		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+	for(var/hairstyle in GLOB.legacy_hair_lookup)
+		var/datum/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
 		if(S.apply_restrictions && !(species_name in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
 
-		valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
+		valid_hairstyles[hairstyle] = GLOB.legacy_hair_lookup[hairstyle]
 
 	return valid_hairstyles
 
 /datum/preferences/proc/get_valid_facialhairstyles()
 	var/list/valid_facialhairstyles = list()
 	var/datum/species/RS = real_species_datum()
-	for(var/facialhairstyle in facial_hair_styles_list)
-		var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
+		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
 		if(biological_gender == MALE && S.gender == FEMALE)
 			continue
 		if(biological_gender == FEMALE && S.gender == MALE)
@@ -276,7 +274,7 @@
 		if(S.apply_restrictions && !(RS.name in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
 
-		valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
+		valid_facialhairstyles[facialhairstyle] = GLOB.legacy_facial_hair_lookup[facialhairstyle]
 
 	return valid_facialhairstyles
 
@@ -293,6 +291,5 @@
 	mannequin.update_transform()
 	mannequin.toggle_tail_vr(setting = TRUE)
 	mannequin.toggle_wing_vr(setting = TRUE)
-	COMPILE_OVERLAYS(mannequin)
+	mannequin.compile_overlays()
 	update_character_previews(new /mutable_appearance(mannequin))
-

@@ -35,8 +35,7 @@
 		// Regular ghosts can always at least view if in range.
 		var/datum/client_interface/client = GET_CLIENT(user)
 		if(client)
-			var/clientviewlist = getviewsize(client.view)
-			if(get_dist(source, user) < max(clientviewlist[1], clientviewlist[2]))
+			if(get_dist(source, user) < max(client.current_viewport_width, client.current_viewport_height))
 				return UI_UPDATE
 
 	return UI_CLOSE
@@ -74,8 +73,8 @@
 
 /mob/living/silicon/robot/get_ui_access(atom/source)
 	// Robots can interact with anything they can see.
-	var/list/clientviewlist = getviewsize(client.view)
-	if(get_dist(src, source) <= min(clientviewlist[1],clientviewlist[2]))
+	// todo: in view range for zooming
+	if(get_dist(src, source) <= min(CEILING(client.current_viewport_width / 2, 1), CEILING(client.current_viewport_height / 2, 1)))
 		return UI_INTERACTIVE
 	return UI_DISABLED // Otherwise they can keep the UI open.
 

@@ -64,7 +64,7 @@
 	cell = new /obj/item/cell/high(src)
 	key = new(src)
 	var/image/I = new(icon = 'icons/obj/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
-	overlays += I
+	add_overlay(I)
 	turn_off()	//so engine verbs are correctly set
 
 /obj/vehicle_old/train/security/engine/Move(var/turf/destination)
@@ -96,12 +96,12 @@
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
 			key = W
-			verbs += /obj/vehicle_old/train/security/engine/verb/remove_key
+			add_obj_verb(src, /obj/vehicle_old/train/security/engine/verb/remove_key)
 		return
 	..()
 
 //cargo trains are open topped, so there is a chance the projectile will hit the mob ridding the train instead
-/obj/vehicle_old/train/security/bullet_act(var/obj/item/projectile/Proj)
+/obj/vehicle_old/train/security/bullet_act(var/obj/projectile/Proj)
 	if(has_buckled_mobs() && prob(70))
 		var/mob/living/M = pick(buckled_mobs)
 		M.bullet_act(Proj)
@@ -148,24 +148,24 @@
 		..()
 		update_stats()
 
-		verbs -= /obj/vehicle_old/train/security/engine/verb/stop_engine
-		verbs -= /obj/vehicle_old/train/security/engine/verb/start_engine
+		remove_obj_verb(src, /obj/vehicle_old/train/security/engine/verb/stop_engine)
+		remove_obj_verb(src, /obj/vehicle_old/train/security/engine/verb/start_engine)
 
 		if(on)
-			verbs += /obj/vehicle_old/train/security/engine/verb/stop_engine
+			add_obj_verb(src, /obj/vehicle_old/train/security/engine/verb/stop_engine)
 		else
-			verbs += /obj/vehicle_old/train/security/engine/verb/start_engine
+			add_obj_verb(src, /obj/vehicle_old/train/security/engine/verb/start_engine)
 
 /obj/vehicle_old/train/security/engine/turn_off()
 	..()
 
-	verbs -= /obj/vehicle_old/train/security/engine/verb/stop_engine
-	verbs -= /obj/vehicle_old/train/security/engine/verb/start_engine
+	remove_obj_verb(src, /obj/vehicle_old/train/security/engine/verb/stop_engine)
+	remove_obj_verb(src, /obj/vehicle_old/train/security/engine/verb/start_engine)
 
 	if(!on)
-		verbs += /obj/vehicle_old/train/security/engine/verb/start_engine
+		add_obj_verb(src, /obj/vehicle_old/train/security/engine/verb/start_engine)
 	else
-		verbs += /obj/vehicle_old/train/security/engine/verb/stop_engine
+		add_obj_verb(src, /obj/vehicle_old/train/security/engine/verb/stop_engine)
 
 /obj/vehicle_old/train/security/RunOver(var/mob/living/M)
 	var/list/parts = list(BP_HEAD, BP_TORSO, BP_L_LEG, BP_R_LEG, BP_L_ARM, BP_R_ARM)
@@ -176,7 +176,7 @@
 
 /obj/vehicle_old/train/security/trolley/RunOver(var/mob/living/M)
 	..()
-	attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>")
+	attack_log += "\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>"
 
 /obj/vehicle_old/train/security/engine/RunOver(var/mob/living/M)
 	..()
@@ -186,9 +186,9 @@
 		to_chat(D, "<span class='danger'>You ran over \the [M]!</span>")
 		visible_message("<span class='danger'>\The [src] ran over \the [M]!</span>")
 		add_attack_logs(D,M,"Ran over with [src.name]")
-		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey]), driven by [D.name] ([D.ckey])</font>")
+		attack_log += "\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey]), driven by [D.name] ([D.ckey])</font>"
 	else
-		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>")
+		attack_log += "\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>"
 
 
 //-------------------------------------------
@@ -199,7 +199,7 @@
 		return 0
 
 	if(is_train_head())
-		if(direction == REVERSE_DIR(dir) && tow)
+		if(direction == global.reverse_dir[dir] && tow)
 			return 0
 		if(Move(get_step(src, direction)))
 			return 1
@@ -207,7 +207,7 @@
 	else
 		return ..()
 
-/obj/vehicle_old/train/security/engine/examine(mob/user)
+/obj/vehicle_old/train/security/engine/examine(mob/user, dist)
 	. = ..()
 	. += "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition."
 	. += "The charge meter reads [cell? round(cell.percent(), 0.01) : 0]%"
@@ -268,7 +268,7 @@
 		usr.put_in_hands(key)
 	key = null
 
-	verbs -= /obj/vehicle_old/train/security/engine/verb/remove_key
+	remove_obj_verb(src, /obj/vehicle_old/train/security/engine/verb/remove_key)
 
 //-------------------------------------------
 // Loading/unloading procs
@@ -299,7 +299,7 @@
 //This prevents the object from being interacted with until it has
 // been unloaded. A dummy object is loaded instead so the loading
 // code knows to handle it correctly.
-/obj/vehicle_old/train/security/trolley/proc/load_object(var/atom/movable/C)
+/obj/vehicle_old/train/security/trolley/proc/load_object(atom/movable/C)
 	if(!isturf(C.loc)) //To prevent loading things from someone's inventory, which wouldn't get handled properly.
 		return 0
 	if(load || C.anchored)
@@ -318,20 +318,20 @@
 		C.pixel_y += load_offset_y
 		C.layer = layer
 
-		overlays += C
+		add_overlay(C)
 
 		//we can set these back now since we have already cloned the icon into the overlay
 		C.pixel_x = initial(C.pixel_x)
 		C.pixel_y = initial(C.pixel_y)
 		C.layer = initial(C.layer)
 
-/obj/vehicle_old/train/security/trolley/unload(var/mob/user, var/direction)
+/obj/vehicle_old/train/security/trolley/unload(mob/user, direction)
 	if(istype(load, /datum/vehicle_dummy_load))
 		var/datum/vehicle_dummy_load/dummy_load = load
 		load = dummy_load.actual_load
 		dummy_load.actual_load = null
 		qdel(dummy_load)
-		overlays.Cut()
+		cut_overlay()
 	..()
 
 //-------------------------------------------
@@ -351,7 +351,7 @@
 
 		if(dir == T_dir) 	//if car is ahead
 			src.attach_to(T, user)
-		else if(REVERSE_DIR(dir) == T_dir)	//else if car is behind
+		else if(global.reverse_dir[dir] == T_dir)	//else if car is behind
 			T.attach_to(src, user)
 
 //-------------------------------------------------------

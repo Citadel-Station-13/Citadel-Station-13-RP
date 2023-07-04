@@ -1,5 +1,6 @@
 /datum/species/zaddat
 	uid = SPECIES_ID_ZADDAT
+	id = SPECIES_ID_ZADDAT
 	name = SPECIES_ZADDAT
 	name_plural = SPECIES_ZADDAT
 	icobase = 'icons/mob/species/zaddat/body.dmi'
@@ -30,7 +31,6 @@
 
 	minimum_breath_pressure = 20 //have fun with underpressures. any higher than this and they'll be even less suitible for life on the station
 
-	economic_modifier = 3
 
 	max_age = 90
 
@@ -54,7 +54,7 @@
 
 	genders = list(FEMALE, PLURAL) //females are polyp-producing, infertile females and males are nigh-identical
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = null
 
 	flesh_color = "#AFA59E"

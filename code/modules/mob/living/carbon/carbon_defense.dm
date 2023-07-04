@@ -16,10 +16,10 @@
 	var/weapon_sharp = is_sharp(I)
 	var/weapon_edge = has_edge(I)
 	var/hit_embed_chance = I.embed_chance
-	if(prob(getarmor(hit_zone, "melee"))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
+	if(prob(legacy_mob_armor(hit_zone, "melee"))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
 		weapon_sharp = 0
 		weapon_edge = 0
-		hit_embed_chance = I.force/(I.w_class*3)
+		hit_embed_chance = I.damage_force/(I.w_class*3)
 
 	apply_damage(effective_force, I.damtype, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
 
@@ -52,7 +52,7 @@
 	return 0
 
 /mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
-	if(status_flags & GODMODE)
+	if(status_flags & STATUS_GODMODE)
 		return 0	//godmode
 	if(def_zone == "l_hand" || def_zone == "r_hand") //Diona (And any other potential plant people) hands don't get shocked.
 		if(species.species_flags & IS_PLANT)
@@ -79,13 +79,13 @@
 	if(stun)
 		switch(shock_damage)
 			if(16 to 20)
-				Stun(2)
+				afflict_stun(20 * 2)
 			if(21 to 25)
-				Weaken(2)
+				afflict_paralyze(20 * 2)
 			if(26 to 30)
-				Weaken(5)
+				afflict_paralyze(20 * 5)
 			if(31 to INFINITY)
-				Weaken(10) //This should work for now, more is really silly and makes you lay there forever
+				afflict_paralyze(20 * 10) //This should work for now, more is really silly and makes you lay there forever
 
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, loc)
@@ -96,7 +96,7 @@
 // Knifing
 /mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/grab/G, mob/user)
 
-	if(!W.edge || !W.force || W.damtype != BRUTE)
+	if(!W.edge || !W.damage_force || W.damtype != BRUTE)
 		return 0 //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] begins to slit [src]'s throat with \the [W]!</span>")
@@ -110,13 +110,13 @@
 	var/damage_mod = 1
 	//presumably, if they are wearing a helmet that stops pressure effects, then it probably covers the throat as well
 	var/obj/item/clothing/head/helmet = item_by_slot(SLOT_ID_HEAD)
-	if(istype(helmet) && (helmet.body_parts_covered & HEAD) && (helmet.min_pressure_protection != null)) // Both min- and max_pressure_protection must be set for it to function at all, so we can just check that one is set.
+	if(istype(helmet) && (helmet.body_cover_flags & HEAD) && (helmet.min_pressure_protection != null)) // Both min- and max_pressure_protection must be set for it to function at all, so we can just check that one is set.
 		//we don't do an armor_check here because this is not an impact effect like a weapon swung with momentum, that either penetrates or glances off.
-		damage_mod = 1.0 - (helmet.armor["melee"]/100)
+		damage_mod = 1.0 - (helmet.fetch_armor().raw(ARMOR_MELEE))
 
 	var/total_damage = 0
 	for(var/i in 1 to 3)
-		var/damage = min(W.force*1.5, 20)*damage_mod
+		var/damage = min(W.damage_force*1.5, 20)*damage_mod
 		apply_damage(damage, W.damtype, "head", 0, sharp=W.sharp, edge=W.edge)
 		total_damage += damage
 
@@ -144,7 +144,7 @@
 
 /mob/living/carbon/proc/shank_attack(obj/item/W, obj/item/grab/G, mob/user, hit_zone)
 
-	if(!W.sharp || !W.force || W.damtype != BRUTE)
+	if(!W.sharp || !W.damage_force || W.damtype != BRUTE)
 		return 0 //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] plunges \the [W] into \the [src]!</span>")
@@ -160,7 +160,7 @@
 	return 1
 
 /mob/living/carbon/proc/shank_armor_helper(obj/item/W, obj/item/grab/G, mob/user)
-	var/damage = W.force
+	var/damage = W.damage_force
 	var/damage_mod = 1
 	if(W.edge)
 		damage = damage * 1.25 //small damage bonus for having sharp and edge
@@ -174,22 +174,21 @@
 	if(item_by_slot(SLOT_ID_SUIT))
 		worn_suit = item_by_slot(SLOT_ID_SUIT)
 		//worn_suit = item_by_slot(SLOT_ID_SUIT)
-		worn_suit_armor = worn_suit.armor["melee"]
+		worn_suit_armor = worn_suit.fetch_armor().raw(ARMOR_MELEE)
 	else
 		worn_suit_armor = 0
 
 	//if(SLOT_ID_UNIFORM)
 	if(item_by_slot(SLOT_ID_UNIFORM))
 		worn_under = item_by_slot(SLOT_ID_UNIFORM)
-		//worn_under_armor = SLOT_ID_UNIFORM.armor["melee"]
-		worn_under_armor = worn_under.armor["melee"]
+		worn_under_armor = worn_under.fetch_armor().raw(ARMOR_MELEE)
 	else
 		worn_under_armor = 0
 
 	if(worn_under_armor > worn_suit_armor)
-		damage_mod = 1 - (worn_under_armor/100)
+		damage_mod = 1 - (worn_under_armor)
 	else
-		damage_mod = 1 - (worn_suit_armor/100)
+		damage_mod = 1 - (worn_suit_armor)
 
 	damage = damage * damage_mod
 

@@ -34,50 +34,33 @@
 	return mobs
 
 /proc/random_hair_style(gender, species = SPECIES_HUMAN)
-	var/h_style = "Bald"
-
-	var/list/valid_hairstyles = list()
-	for(var/hairstyle in hair_styles_list)
-		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
-		if(gender == MALE && S.gender == FEMALE)
-			continue
-		if(gender == FEMALE && S.gender == MALE)
+	var/list/valid = list()
+	for(var/id in GLOB.sprite_accessory_hair)
+		var/datum/sprite_accessory/hair/S = GLOB.sprite_accessory_hair[id]
+		if(S.gender != NEUTER && gender != S.gender)
 			continue
 		if(S.apply_restrictions && !(species in S.species_allowed))
 			continue
-		valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
-
-	if(valid_hairstyles.len)
-		h_style = pick(valid_hairstyles)
-
-	return h_style
+		valid += id
+	return SAFEPICK(valid)
 
 /proc/random_facial_hair_style(gender, species = SPECIES_HUMAN)
-	var/f_style = "Shaved"
-
-	var/list/valid_facialhairstyles = list()
-	for(var/facialhairstyle in facial_hair_styles_list)
-		var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
-		if(gender == MALE && S.gender == FEMALE)
-			continue
-		if(gender == FEMALE && S.gender == MALE)
+	var/list/valid = list()
+	for(var/id in GLOB.sprite_accessory_facial_hair)
+		var/datum/sprite_accessory/facial_hair/S = GLOB.sprite_accessory_facial_hair[id]
+		if(S.gender != NEUTER && gender != S.gender)
 			continue
 		if(S.apply_restrictions && !(species in S.species_allowed))
 			continue
+		valid += id
+	return SAFEPICK(valid)
 
-		valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
-
-	if(valid_facialhairstyles.len)
-		f_style = pick(valid_facialhairstyles)
-
-		return f_style
-
-/proc/sanitize_name(name, species = SPECIES_HUMAN)
+/proc/sanitize_species_name(name, species = SPECIES_HUMAN)
 	var/datum/species/current_species
 	if(species)
 		current_species = SScharacters.resolve_species_name(species)
 
-	return current_species ? current_species.sanitize_name(name) : sanitizeName(name, MAX_NAME_LEN)
+	return current_species ? current_species.sanitize_species_name(name) : sanitizeName(name, MAX_NAME_LEN)
 
 /proc/random_name(gender, species = SPECIES_HUMAN)
 
@@ -149,9 +132,9 @@
 	var/target_str = key_name(target)
 
 	if(ismob(user))
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attacked [target_str]: [what_done]</font>")
+		user.attack_log += "\[[time_stamp()]\] <font color='red'>Attacked [target_str]: [what_done]</font>"
 	if(ismob(target))
-		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Attacked by [user_str]: [what_done]</font>")
+		target.attack_log += "\[[time_stamp()]\] <font color='orange'>Attacked by [user_str]: [what_done]</font>"
 	log_attack(user_str,target_str,what_done)
 	if(admin_notify)
 		msg_admin_attack("[key_name_admin(user)] vs [target_str]: [what_done]")
@@ -187,6 +170,7 @@
 	return humans
 
 /proc/cached_character_icon(mob/desired)
+	desired.compile_overlays()
 	var/cachekey = "\ref[desired][desired.real_name]"
 
 	if(cached_character_icons[cachekey])

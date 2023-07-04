@@ -9,9 +9,6 @@
 	///? Can't pick up
 	////#define COMPONENT_LIVING_CANT_PUT_IN_HAND (1<<0)
 
-/// From base of mob/update_transform()
-////#define COMSIG_LIVING_POST_UPDATE_TRANSFORM "living_post_update_transform"
-
 /// From /obj/structure/door/crush(): (mob/living/crushed, /obj/machinery/door/crushing_door)
 ////#define COMSIG_LIVING_DOORCRUSHED "living_doorcrush"
 /// From base of mob/living/resist() (/mob/living)
@@ -53,19 +50,6 @@
 
 //! ALL OF THESE DO NOT TAKE INTO ACCOUNT WHETHER AMOUNT IS 0 OR LOWER AND ARE SENT REGARDLESS! !//
 
-/// From base of mob/living/Stun() (amount, ignore_canstun)
-////#define COMSIG_LIVING_STATUS_STUN "living_stun"
-/// From base of mob/living/Knockdown() (amount, ignore_canstun)
-////#define COMSIG_LIVING_STATUS_KNOCKDOWN "living_knockdown"
-/// From base of mob/living/Paralyze() (amount, ignore_canstun)
-////#define COMSIG_LIVING_STATUS_PARALYZE "living_paralyze"
-/// From base of mob/living/Immobilize() (amount, ignore_canstun)
-////#define COMSIG_LIVING_STATUS_IMMOBILIZE "living_immobilize"
-/// From base of mob/living/Unconscious() (amount, ignore_canstun)
-////#define COMSIG_LIVING_STATUS_UNCONSCIOUS "living_unconscious"
-/// From base of mob/living/Sleeping() (amount, ignore_canstun)
-////#define COMSIG_LIVING_STATUS_SLEEP "living_sleeping"
-	////#define COMPONENT_NO_STUN (1<<0) //For all of them
 /// From base of /mob/living/can_track(): (mob/user)
 ////#define COMSIG_LIVING_CAN_TRACK "mob_cantrack"
 	////#define COMPONENT_CANT_TRACK (1<<0)

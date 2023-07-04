@@ -11,7 +11,7 @@
 	icon_state = "pcu"
 	icon_keyboard = "pcu_key"
 	light_color = "#5284e7"
-	req_one_access = list(access_heads)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	circuit = /obj/item/circuitboard/skills/pcu
 	density = FALSE
 	var/obj/item/card/id/scan = null
@@ -62,10 +62,10 @@
 	return attack_hand(user)
 
 //Someone needs to break down the dat += into chunks instead of long ass lines.
-/obj/machinery/computer/skills/attack_hand(mob/user as mob)
+/obj/machinery/computer/skills/attack_hand(mob/user, list/params)
 	if(..())
 		return
-	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
+	if ((LEGACY_MAP_DATUM) && !(src.z in (LEGACY_MAP_DATUM).contact_levels))
 		to_chat(user, "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!")
 		return
 	ui_interact(user)

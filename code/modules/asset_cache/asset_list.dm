@@ -6,22 +6,47 @@
 //all of our asset datums, used for referring to these later
 GLOBAL_LIST_EMPTY(asset_datums)
 
-//get an assetdatum or make a new one
+/// Get an assetdatum or make a new one.
 /proc/get_asset_datum(type)
+	var/datum/asset/loaded_asset = GLOB.asset_datums[type] || new type()
+	return loaded_asset.ensure_ready()
+
+/**
+ * Get an assetdatum or make a new one.
+ *! But does NOT ensure it's filled, if you want that use get_asset_datum()
+ */
+/proc/load_asset_datum(type)
 	return GLOB.asset_datums[type] || new type()
 
 /datum/asset
-	var/_abstract = /datum/asset
+	abstract_type = /datum/asset
+	/// lazyloaded? this means we lateload when someone fetches us, rather than at init
+	var/lazy = FALSE
+
 	var/cached_serialized_url_mappings
 	var/cached_serialized_url_mappings_transport_type
 
 	/// Whether or not this asset should be loaded in the "early assets" SS
 	var/early = FALSE
 
-	/// Whether or not this asset can be cached across rounds of the same commit under the `CACHE_ASSETS` config.
-	/// This is not a *guarantee* the asset will be cached. Not all asset subtypes respect this field, and the
-	/// config can, of course, be disabled.
+	/**
+	 * Whether or not this asset can be cached across rounds of the same commit under the `CACHE_ASSETS` config.
+	 * This is not a *guarantee* the asset will be cached. Not all asset subtypes respect this field, and the
+	 * config can, of course, be disabled.
+	 */
 	var/cross_round_cachable = FALSE
+
+/**
+ * Stub that allows us to react to something trying to get us.
+ * Not useful here, more handy for sprite sheets.
+ */
+/datum/asset/proc/ensure_ready()
+	return src
+
+/// Stub to hook into if your asset is having its generation queued by SSasset_loading
+/datum/asset/proc/queued_generation()
+	CRASH("[type] inserted into SSasset_loading despite not implementing /proc/queued_generation")
+
 
 /datum/asset/New()
 	GLOB.asset_datums[type] = src
@@ -50,13 +75,17 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 /// If you don't need anything complicated.
 /datum/asset/simple
-	_abstract = /datum/asset/simple
-	/// list of assets for this datum in the form of:
-	/// asset_filename = asset_file. At runtime the asset_file will be
-	/// converted into a asset_cache datum.
+	abstract_type = /datum/asset/simple
+	/**
+	 * List of assets for this datum in the form of:
+	 * * asset_filename = asset_file.
+	 * At runtime the asset_file will be converted into a asset_cache datum.
+	 */
 	var/assets = list()
-	/// Set to true to have this asset also be sent via the legacy browse_rsc
-	/// system when cdn transports are enabled?
+	/**
+	 * Set to true to have this asset also be sent via the legacy browse_rsc
+	 * system when cdn transports are enabled?
+	 */
 	var/legacy = FALSE
 	/// TRUE for keeping local asset names when browse_rsc backend is used
 	var/keep_local_name = FALSE
@@ -83,12 +112,12 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 // For registering or sending multiple others at once
 /datum/asset/group
-	_abstract = /datum/asset/group
+	abstract_type = /datum/asset/group
 	var/list/children
 
 /datum/asset/group/register()
 	for(var/type in children)
-		get_asset_datum(type)
+		load_asset_datum(type)
 
 /datum/asset/group/send(client/C)
 	for(var/type in children)
@@ -101,28 +130,44 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		var/datum/asset/A = get_asset_datum(type)
 		. += A.get_url_mappings()
 
-// spritesheet implementation - coalesces various icons into a single .png file
-// and uses CSS to select icons out of that file - saves on transferring some
-// 1400-odd individual PNG files
+/**
+ * spritesheet implementation - coalesces various icons into a single .png file
+ * and uses CSS to select icons out of that file - saves on transferring some
+ * 1400-odd individual PNG files
+ */
 #define SPR_SIZE 1
-#define SPR_IDX 2
-#define SPRSZ_COUNT 1
-#define SPRSZ_ICON 2
+#define SPR_IDX  2
+
+#define SPRSZ_COUNT    1
+#define SPRSZ_ICON     2
 #define SPRSZ_STRIPPED 3
 
 /datum/asset/spritesheet
-	_abstract = /datum/asset/spritesheet
+	abstract_type = /datum/asset/spritesheet
 	var/name
-	var/list/sizes = list()    // "32x32" -> list(10, icon/normal, icon/stripped)
-	var/list/sprites = list()  // "foo_bar" -> list("32x32", 5)
+	/**
+	 * List of arguments to pass into queuedInsert.
+	 * Exists so we can queue icon insertion, mostly for stuff like preferences.
+	 */
+	var/list/to_generate = list()
+	/// "32x32" -> list(10, icon/normal, icon/stripped)
+	var/list/sizes = list()
+	/// "foo_bar" -> list("32x32", 5)
+	var/list/sprites = list()
 	var/list/cached_spritesheets_needed
 	var/generating_cache = FALSE
+	var/fully_generated = FALSE
+	/**
+	 * If this asset should be fully loaded on new
+	 * Defaults to false so we can process this stuff nicely
+	 */
+	var/load_immediately = FALSE
 
 /datum/asset/spritesheet/should_refresh()
 	if (..())
 		return TRUE
 
-	// Static so that the result is the same, even when the files are created, for this run
+	/// Static so that the result is the same, even when the files are created, for this run.
 	var/static/should_refresh = null
 
 	if (isnull(should_refresh))
@@ -140,7 +185,25 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	if (!should_refresh() && read_from_cache())
 		return
 
+	/// If it's cached, may as well load it now, while the loading is cheap
+	if(CONFIG_GET(flag/cache_assets) && cross_round_cachable)
+		load_immediately = TRUE
+
 	create_spritesheets()
+	if(load_immediately)
+		realize_spritesheets(yield = FALSE)
+	else
+		SSasset_loading.generate_queue += src
+
+/datum/asset/spritesheet/proc/realize_spritesheets(yield)
+	if(fully_generated)
+		return
+	while(length(to_generate))
+		var/list/stored_args = to_generate[to_generate.len]
+		to_generate.len--
+		queuedInsert(arglist(stored_args))
+		if(yield && TICK_CHECK)
+			return
 
 	ensure_stripped()
 	for(var/size_id in sizes)
@@ -155,6 +218,18 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 	if (CONFIG_GET(flag/cache_assets) && cross_round_cachable)
 		write_to_cache()
+
+	fully_generated = TRUE
+	// If we were ever in there, remove ourselves
+	SSasset_loading.generate_queue -= src
+
+/datum/asset/spritesheet/queued_generation()
+	realize_spritesheets(yield = TRUE)
+
+/datum/asset/spritesheet/ensure_ready()
+	if(!fully_generated)
+		realize_spritesheets(yield = FALSE)
+	return ..()
 
 /datum/asset/spritesheet/send(client/client)
 	if (!name)
@@ -270,17 +345,31 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 	return mappings
 
-/// Override this in order to start the creation of the spritehseet.
-/// This is where all your Insert, InsertAll, etc calls should be inside.
+/**
+ *! Override this in order to start the creation of the spritehseet.
+ *! This is where all your Insert, InsertAll, etc calls should be inside.
+ */
 /datum/asset/spritesheet/proc/create_spritesheets()
 	SHOULD_CALL_PARENT(FALSE)
 	CRASH("create_spritesheets() not implemented for [type]!")
 
 /datum/asset/spritesheet/proc/Insert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE)
+	if(load_immediately)
+		queuedInsert(sprite_name, I, icon_state, dir, frame, moving)
+	else
+		to_generate += list(args.Copy())
+
+/**
+ * LEMON NOTE
+ * A GOON CODER SAYS BAD ICON ERRORS CAN BE THROWN BY THE "ICON CACHE"
+ * APPARENTLY IT MAKES ICONS IMMUTABLE
+ * LOOK INTO USING THE MUTABLE APPEARANCE PATTERN HERE
+ */
+/datum/asset/spritesheet/proc/queuedInsert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE)
 	I = icon(I, icon_state=icon_state, dir=dir, frame=frame, moving=moving)
-	if (!I || !length(icon_states(I)))  // that direction or state doesn't exist
+	if (!I || !length(icon_states(I))) // That direction or state doesn't exist!
 		return
-	//any sprite modifications we want to do (aka, coloring a greyscaled asset)
+	// Any sprite modifications we want to do (aka, coloring a greyscaled asset)
 	I = ModifyInserted(I)
 	var/size_id = "[I.Width()]x[I.Height()]"
 	var/size = sizes[size_id]
@@ -291,8 +380,10 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	if (size)
 		var/position = size[SPRSZ_COUNT]++
 		var/icon/sheet = size[SPRSZ_ICON]
+		var/icon/sheet_copy = icon(sheet)
 		size[SPRSZ_STRIPPED] = null
-		sheet.Insert(I, icon_state=sprite_name)
+		sheet_copy.Insert(I, icon_state=sprite_name)
+		size[SPRSZ_ICON] = sheet_copy
 		sprites[sprite_name] = list(size_id, position)
 	else
 		sizes[size_id] = size = list(1, I, null)
@@ -360,7 +451,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 
 /datum/asset/changelog_item
-	_abstract = /datum/asset/changelog_item
+	abstract_type = /datum/asset/changelog_item
 	var/item_filename
 
 /datum/asset/changelog_item/New(date)
@@ -378,7 +469,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	. = list("[item_filename]" = SSassets.transport.get_asset_url(item_filename))
 
 /datum/asset/spritesheet/simple
-	_abstract = /datum/asset/spritesheet/simple
+	abstract_type = /datum/asset/spritesheet/simple
 	var/list/assets
 
 /datum/asset/spritesheet/simple/create_spritesheets()
@@ -387,7 +478,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 //Generates assets based on iconstates of a single icon
 /datum/asset/simple/icon_states
-	_abstract = /datum/asset/simple/icon_states
+	abstract_type = /datum/asset/simple/icon_states
 	var/icon
 	var/list/directions = list(SOUTH)
 	var/frame = 1
@@ -411,7 +502,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 			SSassets.transport.register_asset(asset_name, asset)
 
 /datum/asset/simple/icon_states/multiple_icons
-	_abstract = /datum/asset/simple/icon_states/multiple_icons
+	abstract_type = /datum/asset/simple/icon_states/multiple_icons
 	var/list/icons
 
 /datum/asset/simple/icon_states/multiple_icons/register()
@@ -424,7 +515,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /// For example `blah.css` with asset `blah.png` will get loaded as `namespaces/a3d..14f/f12..d3c.css` and `namespaces/a3d..14f/blah.png`. allowing the css file to load `blah.png` by a relative url rather then compute the generated url with get_url_mappings().
 /// The namespace folder's name will change if any of the assets change. (excluding parent assets)
 /datum/asset/simple/namespaced
-	_abstract = /datum/asset/simple/namespaced
+	abstract_type = /datum/asset/simple/namespaced
 	/// parents - list of the parent asset or assets (in name = file assoicated format) for this namespace.
 	/// parent assets must be referenced by their generated url, but if an update changes a parent asset, it won't change the namespace's identity.
 	var/list/parents = list()
@@ -469,7 +560,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 /// A subtype to generate a JSON file from a list
 /datum/asset/json
-	_abstract = /datum/asset/json
+	abstract_type = /datum/asset/json
 	/// The filename, will be suffixed with ".json"
 	var/name
 

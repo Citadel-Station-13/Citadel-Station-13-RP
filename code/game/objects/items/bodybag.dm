@@ -3,11 +3,14 @@
 /obj/item/bodybag
 	name = "body bag"
 	desc = "A folded bag designed for the storage and transportation of cadavers."
-	icon = 'icons/obj/bodybag.dmi'
+	icon = 'icons/obj/medical/bodybag.dmi'
 	icon_state = "bodybag_folded"
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/bodybag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/obj/structure/closet/body_bag/R = new /obj/structure/closet/body_bag(user.loc)
 	R.add_fingerprint(user)
 	qdel(src)
@@ -32,7 +35,7 @@
 /obj/structure/closet/body_bag
 	name = "body bag"
 	desc = "A plastic bag designed for the storage and transportation of cadavers."
-	icon = 'icons/obj/bodybag.dmi'
+	icon = 'icons/obj/medical/bodybag.dmi'
 	icon_state = "bodybag_closed"
 	icon_closed = "bodybag_closed"
 	icon_opened = "bodybag_open"
@@ -43,26 +46,26 @@
 	storage_capacity = (MOB_MEDIUM * 2) - 1
 	var/contains_body = 0
 
-/obj/structure/closet/body_bag/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/structure/closet/body_bag/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/pen))
-		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
+		var/t = input(user, "What would you like the label to be?", name, null) as text
 		if (user.get_active_held_item() != W)
 			return
 		if (!in_range(src, user) && src.loc != user)
 			return
 		t = sanitizeSafe(t, MAX_NAME_LEN)
 		if (t)
-			src.name = "body bag - "
-			src.name += t
-			src.overlays += image(src.icon, "bodybag_label")
+			name = "body bag - "
+			name += t
+			add_overlay(image(src.icon, "bodybag_label"))
 		else
-			src.name = "body bag"
+			name = "body bag"
 	//..() //Doesn't need to run the parent. Since when can fucking bodybags be welded shut? -Agouri
 		return
 	else if(W.is_wirecutter())
 		to_chat(user, "You cut the tag off the bodybag")
-		src.name = "body bag"
-		src.overlays.Cut()
+		name = "body bag"
+		cut_overlays()
 		return
 
 /obj/structure/closet/body_bag/store_mobs(var/stored_units)
@@ -118,13 +121,16 @@
 	name = "stasis bag"
 	desc = "A non-reusable plastic bag designed to slow down bodily functions such as circulation and breathing, \
 	especially useful if short on time or in a hostile enviroment."
-	icon = 'icons/obj/cryobag.dmi'
+	icon = 'icons/obj/medical/cryobag.dmi'
 	icon_state = "bodybag_folded"
 	item_state = "bodybag_cryo_folded"
 	origin_tech = list(TECH_BIO = 4)
 	var/obj/item/reagent_containers/syringe/syringe
 
 /obj/item/bodybag/cryobag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/obj/structure/closet/body_bag/cryobag/R = new /obj/structure/closet/body_bag/cryobag(user.loc)
 	R.add_fingerprint(user)
 	if(syringe)
@@ -136,7 +142,7 @@
 	name = "stasis bag"
 	desc = "A non-reusable plastic bag designed to slow down bodily functions such as circulation and breathing, \
 	especially useful if short on time or in a hostile enviroment."
-	icon = 'icons/obj/cryobag.dmi'
+	icon = 'icons/obj/medical/cryobag.dmi'
 	item_path = /obj/item/bodybag/cryobag
 	store_misc = 0
 	store_items = 0
@@ -155,7 +161,7 @@
 	QDEL_NULL(tank)
 	return ..()
 
-/obj/structure/closet/body_bag/cryobag/attack_hand(mob/living/user)
+/obj/structure/closet/body_bag/cryobag/attack_hand(mob/user, list/params)
 	if(used)
 		var/confirm = tgui_alert(user, "Are you sure you want to open \the [src]? \The [src] will expire upon opening it.", "Confirm Opening", list("No", "Yes"))
 		if(confirm == "Yes")
@@ -212,16 +218,16 @@
 		return
 
 	if(H.reagents)
-		syringe.reagents.trans_to_mob(H, 30, CHEM_BLOOD)
+		syringe.reagents.trans_to_mob(H, 30, CHEM_INJECT)
 
-/obj/structure/closet/body_bag/cryobag/examine(mob/user)
+/obj/structure/closet/body_bag/cryobag/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user)) //The bag's rather thick and opaque from a distance.
 		. += "<span class='info'>You peer into \the [src].</span>"
 		if(syringe)
 			. += "<span class='info'>It has a syringe added to it.</span>"
 		for(var/mob/living/L in contents)
-			L.examine(user)
+			user.do_examinate(L)
 
 /obj/structure/closet/body_bag/cryobag/attackby(obj/item/W, mob/user)
 	if(opened)
@@ -230,7 +236,7 @@
 		if(istype(W,/obj/item/healthanalyzer))
 			var/obj/item/healthanalyzer/analyzer = W
 			for(var/mob/living/L in contents)
-				analyzer.attack(L,user)
+				analyzer.melee_attack_chain(L,user)
 
 		else if(istype(W,/obj/item/reagent_containers/syringe))
 			if(syringe)

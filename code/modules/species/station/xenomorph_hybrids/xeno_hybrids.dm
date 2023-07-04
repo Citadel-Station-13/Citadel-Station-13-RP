@@ -2,10 +2,16 @@
 	name = SPECIES_XENOHYBRID
 	name_plural = "Xenomorph Hybrids"
 	uid = SPECIES_ID_XENOHYBRID
+	id = SPECIES_ID_XENOHYBRID
 	default_bodytype = BODYTYPE_XENOHYBRID
 
 	icobase = 'icons/mob/species/xenohybrid/body.dmi'
 	deform  = 'icons/mob/species/xenohybrid/deformed_body.dmi'
+
+	base_skin_colours = list(
+		"Standard"  = null,
+		"Alternate" = "alt",
+	)
 
 	tail = "tail"
 	icobase_tail = 1
@@ -28,8 +34,8 @@
 	max_additional_languages = 3
 
 	species_flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_BASE_SKIN_COLOR
 
 	blood_color = "#12ff12"
 	flesh_color = "#201730"
@@ -42,19 +48,21 @@
 		)
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
-		/mob/living/proc/toggle_pass_table,
 		/mob/living/carbon/human/proc/tie_hair,
-		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/hybrid_resin,
 		/mob/living/carbon/human/proc/hybrid_plant//replaced from the normal weed node to place a singular weed
 		)
 
+	abilities = list(
+		/datum/ability/species/sonar,
+		/datum/ability/species/toggle_agility,
+	)
 	total_health = 110	//Exoskeleton makes you tougher than baseline
 	brute_mod = 0.95 // Chitin is somewhat hard to crack
 	burn_mod = 1.5	// Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.
 	blood_volume = 560	//Baseline
-	darksight = 6 //Better hunters in the dark.
+	vision_innate = /datum/vision/baseline/species_tier_2
 	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 
 	slowdown = -0.2//Speedboost Tesh have -0.5

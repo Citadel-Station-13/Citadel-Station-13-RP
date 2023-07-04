@@ -26,11 +26,11 @@
 			to_chat(user, "The access level of [W:registered_name]\'s card is not high enough. ")
 			return
 
-		if(!(access_heads in W:access)) //doesn't have this access
+		if(!(ACCESS_COMMAND_BRIDGE in W:access)) //doesn't have this access
 			to_chat(user, "The access level of [W:registered_name]\'s card is not high enough. ")
 			return 0
 
-		var/choice = alert(user, text("Would you like to (un)authorize a shortened launch time? [] authorization\s are still needed. Use abort to cancel all authorizations.", src.auth_need - src.authorized.len), "Shuttle Launch", "Authorize", "Repeal", "Abort")
+		var/choice = alert(user, "Would you like to (un)authorize a shortened launch time? [auth_need - authorized.len] authorization\s are still needed. Use abort to cancel all authorizations.", "Shuttle Launch", "Authorize", "Repeal", "Abort")
 		if(SSemergencyshuttle.location() && user.get_active_held_item() != W)
 			return 0
 		switch(choice)
@@ -52,7 +52,7 @@
 
 			if("Repeal")
 				src.authorized -= W:registered_name
-				to_chat(world, text("<span class='notice'><b>Alert: [] authorizations needed until shuttle is launched early</b></span>", src.auth_need - src.authorized.len))
+				to_chat(world, SPAN_BOLDNOTICE("Alert: [auth_need - authorized.len] authorizations needed until shuttle is launched early"))
 
 			if("Abort")
 				to_chat(world, "<span class='notice'><b>All authorizations to shortening time for shuttle launch have been revoked!</b></span>")

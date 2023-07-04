@@ -8,14 +8,27 @@
  	/// On next move, subtract this dir from the move that would otherwise be done
 	var/next_move_dir_sub
 
-// Set a client's focus to an object and override these procs on that object to let it handle keypresses
-/datum/proc/key_down(key, client/user) // Called when a key is pressed down initially
+/**
+ * called when a key is pressed down initially
+ *
+ * @return TRUE to stop propagation (useful if we're a focus intercept)
+ */
+/datum/proc/key_down(key, client/user)
 	return
 
+/**
+ * called when a key is released
+ *
+ * @return TRUE to stop propagation (useful if we're a focus intercept)
+ */
 /datum/proc/key_up(key, client/user) // Called when a key is released
 	return
-
-/datum/proc/keyLoop(client/user) // Called once every frame
+/**
+ * called every frame
+ *
+ * @return TRUE to stop propagation (useful if we're a focus intercept)
+ */
+/datum/proc/keyLoop(client/user)
 	set waitfor = FALSE
 	return
 
@@ -26,7 +39,7 @@
 	if(!SSinput.initialized)
 		to_chat(src, "<span class='warning'>Input hasn't been initialized yet. Wait a while.</span>")
 		return
-	log_debug("[src] reset their keybindings.")
+	log_debug(SPAN_DEBUG("[src] reset their keybindings."))
 	to_chat(src, "<span class='danger'>Force-reasserting all macros.</span>")
 	set_macros(prefs)
 
@@ -61,10 +74,20 @@
 	apply_macro_set(SKIN_MACROSET_CLASSIC_HOTKEYS, SSinput.macroset_classic_hotkey)
 	apply_macro_set(SKIN_MACROSET_CLASSIC_INPUT, SSinput.macroset_classic_input)
 
+	//Reactivate any active tgui windows mouse passthroughs macros
+	for(var/datum/tgui_window/window in tgui_windows)
+		if(window.mouse_event_macro_set)
+			window.mouse_event_macro_set = FALSE
+			window.set_mouse_macro()
+
 	set_hotkeys_preference()
+	set_hotkeys_button(prefs_override.hotkeys)
 
 /client/proc/set_hotkeys_preference(datum/preferences/prefs_override = prefs)
 	if(prefs_override.hotkeys)
 		winset(src, null, "map.focus=true input.background-color=[COLOR_INPUT_DISABLED] mainwindow.macro=[SKIN_MACROSET_HOTKEYS]")
 	else
 		winset(src, null, "input.focus=true input.background-color=[COLOR_INPUT_ENABLED] mainwindow.macro=[SKIN_MACROSET_CLASSIC_INPUT]")
+
+/client/proc/set_hotkeys_button(toggled)
+	winset(src, "hotkey_toggle", "is-checked=[toggled? "true" : "false"]")

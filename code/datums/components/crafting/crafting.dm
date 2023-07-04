@@ -119,7 +119,7 @@
 		return
 
 	for(var/atom/movable/AM in range(radius_range, a))
-		if(AM.flags & HOLOGRAM)
+		if(AM.atom_flags & HOLOGRAM)
 			continue
 		. += AM
 
@@ -129,7 +129,7 @@
 	.["other"] = list()
 	.["instances"] = list()
 	for(var/obj/item/I in get_environment(a))
-		if(I.flags & HOLOGRAM)
+		if(I.atom_flags & HOLOGRAM)
 			continue
 		if(.["instances"][I.type])
 			.["instances"][I.type] += I
@@ -144,7 +144,7 @@
 		else
 			if(istype(I, /obj/item/reagent_containers))
 				var/obj/item/reagent_containers/RC = I
-				if(RC.is_drainable())
+				if(RC.is_open_container())
 					for(var/datum/reagent/A in RC.reagents.reagent_list)
 						.["other"][A.type] += A.volume
 			.["other"][I.type] += 1
@@ -238,7 +238,7 @@
 				var/datum/reagent/RGNT
 				while(amt > 0)
 					var/obj/item/reagent_containers/RC = locate() in surroundings
-					RG = RC.reagents.get_reagent(A)
+					RG = RC.reagents.get_reagent(RG.id)
 					if(RG)
 						if(!locate(RG.type) in Deletion)
 							Deletion += new RG.type()
@@ -326,7 +326,7 @@
 	if(user == parent)
 		INVOKE_ASYNC(src, .proc/ui_interact, user)
 
-/datum/component/personal_crafting/ui_state(mob/user)
+/datum/component/personal_crafting/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.not_incapacitated_turf_state
 
 //For the UI related things we're going to assume the user is a mob rather than typesetting it to an atom as the UI isn't generated if the parent is an atom

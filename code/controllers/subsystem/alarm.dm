@@ -41,4 +41,4 @@ SUBSYSTEM_DEF(alarms)
 	return active_alarm_cache.len
 
 /datum/controller/subsystem/alarms/stat_entry()
-	..("[number_of_active_alarms()] alarm\s")
+	return ..() + " [number_of_active_alarms()] alarm\s"

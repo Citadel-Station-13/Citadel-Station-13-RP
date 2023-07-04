@@ -70,7 +70,7 @@
 
 /datum/trait/neutral/bloodsucker/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/carbon/human/proc/bloodsuck
+	add_verb(H, /mob/living/carbon/human/proc/bloodsuck)
 
 /datum/trait/neutral/succubus_drain
 	name = "Succubus Drain"
@@ -79,9 +79,9 @@
 
 /datum/trait/neutral/succubus_drain/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/carbon/human/proc/succubus_drain
-	H.verbs |= /mob/living/carbon/human/proc/succubus_drain_finalize
-	H.verbs |= /mob/living/carbon/human/proc/succubus_drain_lethal
+	add_verb(H, /mob/living/carbon/human/proc/succubus_drain)
+	add_verb(H, /mob/living/carbon/human/proc/succubus_drain_finalize)
+	add_verb(H, /mob/living/carbon/human/proc/succubus_drain_lethal)
 
 /datum/trait/neutral/vampire
 	name = "Vetalan / Vampiric"
@@ -90,7 +90,7 @@
 	custom_only = FALSE
 	var_changes = list(
 		"is_vampire" = TRUE,
-		"darksight" = 7,
+		vision_innate = /datum/vision/baseline/species_tier_2, // As per Silicons' suggestion
 		"flash_mod" = 2,
 		"flash_burn" = 5,
 		"burn_mod" = 1.25,
@@ -98,8 +98,9 @@
 
 /datum/trait/neutral/vampire/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/carbon/human/proc/bloodsuck
-	H.verbs |= /mob/living/carbon/human/proc/lick_wounds
+	H.add_vision_modifier(/datum/vision/augmenting/vetalan)
+	add_verb(H, /mob/living/carbon/human/proc/bloodsuck)
+	add_verb(H, /mob/living/carbon/human/proc/lick_wounds)
 
 /datum/trait/neutral/hard_vore
 	name = "Brutal Predation"
@@ -109,7 +110,7 @@
 
 /datum/trait/neutral/hard_vore/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/proc/shred_limb
+	add_verb(H, /mob/living/proc/shred_limb)
 
 /datum/trait/neutral/trashcan
 	name = "Trash Can"
@@ -120,7 +121,7 @@
 
 /datum/trait/neutral/trashcan/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/proc/eat_trash
+	add_verb(H, /mob/living/proc/eat_trash)
 
 /datum/trait/neutral/glowing_eyes
 	name = "Glowing Eyes"
@@ -137,8 +138,8 @@
 
 /datum/trait/neutral/glowing_body/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/proc/glow_toggle
-	H.verbs |= /mob/living/proc/glow_color
+	add_verb(H, /mob/living/proc/glow_toggle)
+	add_verb(H, /mob/living/proc/glow_color)
 
 //! ## Body shape traits
 /datum/trait/neutral/taller
@@ -245,7 +246,7 @@
 
 /datum/trait/neutral/antiseptic_saliva/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/carbon/human/proc/lick_wounds
+	add_verb(H, /mob/living/carbon/human/proc/lick_wounds)
 
 /datum/trait/neutral/size_change
 	name = "Sizeshift"
@@ -254,7 +255,16 @@
 
 /datum/trait/neutral/size_change/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/proc/set_size
+	add_verb(H, /mob/living/proc/set_size)
+
+/datum/trait/neutral/nitrogen_breathing
+	name = "Nitrogen Breathing"
+	desc = "You require Nitrogen instead of Oxygen to breathe, be it through genetic modification or evolution."
+	cost = 0
+	custom_only = FALSE
+	var_changes = list(
+		"breath_type" = /datum/gas/nitrogen
+	)
 
 /datum/trait/neutral/cyberpsycho
 	name = "Cybernetic Rejection Syndrome"
@@ -268,3 +278,10 @@
 /datum/trait/neutral/cyberpsycho/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
 	H.AddComponent(/datum/component/cyberpsychosis)
+
+/datum/trait/neutral/alcohol_intolerance
+	name = "Alcohol Intolerance"
+	desc = "You cannot metabolize alcohol; ingesting it will cause vomiting, toxin build-up, liver damage, pain and other unpleasantness."
+	cost = 0
+	custom_only = FALSE
+	traits = list(TRAIT_ALCOHOL_INTOLERANT)

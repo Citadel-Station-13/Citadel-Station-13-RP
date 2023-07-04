@@ -1,37 +1,40 @@
 /mob/living/carbon/brain/handle_breathing()
 	return
 
-/mob/living/carbon/brain/handle_mutations_and_radiation()
-	if (radiation)
-		if (radiation > 100)
-			radiation = 100
-			if(!container)//If it's not in an MMI
-				to_chat(src, "<font color='red'>You feel weak.</font>")
-			else//Fluff-wise, since the brain can't detect anything itself, the MMI handles thing like that
-				to_chat(src, "<font color='red'>STATUS: CRITICAL AMOUNTS OF RADIATION DETECTED.</font>")
+/mob/living/carbon/brain/handle_mutations_and_radiation(seconds)
+	// todo; deal with this
+	// removed for now because why do we even tick brains this way??
 
-		switch(radiation)
-			if(1 to 49)
-				radiation--
-				if(prob(25))
-					adjustToxLoss(1)
-					updatehealth()
+	// if (radiation)
+	// 	if (radiation > 100)
+	// 		radiation = 100
+	// 		if(!container)//If it's not in an MMI
+	// 			to_chat(src, "<font color='red'>You feel weak.</font>")
+	// 		else//Fluff-wise, since the brain can't detect anything itself, the MMI handles thing like that
+	// 			to_chat(src, "<font color='red'>STATUS: CRITICAL AMOUNTS OF RADIATION DETECTED.</font>")
 
-			if(50 to 74)
-				radiation -= 2
-				adjustToxLoss(1)
-				if(prob(5))
-					radiation -= 5
-					if(!container)
-						to_chat(src, "<font color='red'>You feel weak.</font>")
-					else
-						to_chat(src, "<font color='red'>STATUS: DANGEROUS LEVELS OF RADIATION DETECTED.</font>")
-				updatehealth()
+	// 	switch(radiation)
+	// 		if(1 to 49)
+	// 			radiation--
+	// 			if(prob(25))
+	// 				adjustToxLoss(1)
+	// 				update_health()
 
-			if(75 to 100)
-				radiation -= 3
-				adjustToxLoss(3)
-				updatehealth()
+	// 		if(50 to 74)
+	// 			radiation -= 2
+	// 			adjustToxLoss(1)
+	// 			if(prob(5))
+	// 				radiation -= 5
+	// 				if(!container)
+	// 					to_chat(src, "<font color='red'>You feel weak.</font>")
+	// 				else
+	// 					to_chat(src, "<font color='red'>STATUS: DANGEROUS LEVELS OF RADIATION DETECTED.</font>")
+	// 			update_health()
+
+	// 		if(75 to 100)
+	// 			radiation -= 3
+	// 			adjustToxLoss(3)
+	// 			update_health()
 
 
 /mob/living/carbon/brain/handle_environment(datum/gas_mixture/environment)
@@ -55,7 +58,7 @@
 	return //TODO: DEFERRED
 
 /mob/living/carbon/brain/proc/handle_temperature_damage(body_part, exposed_temperature, exposed_intensity)
-	if(status_flags & GODMODE) return
+	if(status_flags & STATUS_GODMODE) return
 
 	if(exposed_temperature > bodytemperature)
 		var/discomfort = min( abs(exposed_temperature - bodytemperature)*(exposed_intensity)/2000000, 1.0)
@@ -82,12 +85,12 @@
 	else
 		dizziness = max(0, dizziness - 1)
 
-	updatehealth()
+	update_health()
 
 	return //TODO: DEFERRED
 
 /mob/living/carbon/brain/handle_regular_UI_updates()	//TODO: comment out the unused bits >_>
-	updatehealth()
+	update_health()
 
 	if(stat == DEAD)	//DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
 		blinded = 1
@@ -177,11 +180,11 @@
 
 	if (stat == 2 || (MUTATION_XRAY in src.mutations))
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
-		SetSeeInDarkSelf(8)
+		self_perspective?.legacy_force_set_hard_darkvision(0)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_ONE)
 	else if (stat != 2)
 		RemoveSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
-		SetSeeInDarkSelf(2)
+		self_perspective?.legacy_force_set_hard_darkvision(null)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
 
 	if (stat != 2)

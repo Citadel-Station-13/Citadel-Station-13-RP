@@ -1,3 +1,4 @@
+// todo: convert and make looking up keys BY BIND possible
 /datum/preferences
 	/// Custom Keybindings
 	var/list/key_bindings = list()

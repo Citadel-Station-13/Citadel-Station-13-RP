@@ -21,14 +21,6 @@
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "tether3"
 
-// Elevator areas.
-/area/turbolift
-	delay_time = 2 SECONDS
-	forced_ambience = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')
-	dynamic_lighting = FALSE //Temporary fix for elevator lighting
-
-	requires_power = FALSE
-
 /area/turbolift/tether/transit
 	name = "tether (midway)"
 	lift_floor_label = "Tether Midpoint"
@@ -69,12 +61,10 @@
 /area/vacant/vacant_restaurant_upper
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
-	flags = null
 
 /area/vacant/vacant_restaurant_lower
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
-	flags = null
 
 /area/engineering/engineering_airlock
 	name = "\improper Engineering Airlock"
@@ -148,6 +138,8 @@
 /area/tether/surfacebase/outside
 	name = "Outside - Surface"
 	sound_env = MOUNTAINS
+	is_outside = OUTSIDE_YES
+
 /area/tether/surfacebase/outside/outside1
 	icon_state = "outside1"
 /area/tether/surfacebase/outside/outside2
@@ -243,7 +235,7 @@
 	icon_state = "dk_yellow"
 /area/vacant/vacant_site/east
 	name = "\improper East Base Vacant Site"
-	flags = null
+
 /area/vacant/vacant_library
 	name = "\improper Atrium Construction Site"
 /area/vacant/vacant_bar
@@ -320,6 +312,7 @@
 // Solars map areas
 /area/tether/outpost/solars_outside
 	name = "\improper Solar Farm"
+	is_outside = OUTSIDE_YES
 /area/tether/outpost/solars_shed
 	name = "\improper Solar Farm Shed"
 
@@ -672,8 +665,7 @@
 /area/engineering/lower/atmos_eva
 	name = "\improper Engineering Atmos EVA"
 
-/area/gateway/prep_room
-	name = "\improper Gateway Prep Room"
+
 /area/crew_quarters/locker/laundry_arrival
 	name = "\improper Arrivals Laundry"
 
@@ -937,7 +929,7 @@
 	area_flags = AREA_RAD_SHIELDED
 /area/tether/surfacebase/vacant_site
 	name = "\improper Vacant Site"
-	flags = null
+
 /area/crew_quarters/freezer
 	name = "\improper Kitchen Freezer"
 /area/crew_quarters/panic_shelter
@@ -1484,13 +1476,13 @@
 
 // Override telescience shielding on some areas
 /area/security/armoury
-	area_flags = AREA_BLUE_SHIELDED
+	area_flags = AREA_FLAG_BLUE_SHIELDED
 
 /area/security/tactical
-	area_flags = AREA_BLUE_SHIELDED
+	area_flags = AREA_FLAG_BLUE_SHIELDED
 
 /area/security/nuke_storage
-	area_flags = AREA_BLUE_SHIELDED
+	area_flags = AREA_FLAG_BLUE_SHIELDED
 
 /area/supply
 

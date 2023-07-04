@@ -1,5 +1,7 @@
 //These procs handle putting s tuff in your hand. It's probably best to use these rather than setting stuff manually
 //as they handle all relevant stuff like adding it to the player's screen and such
+// todo: proper inv procs
+//! WARNING: we currently only call equipped/unequipped and jankily using SLOT_ID_HANDS...
 
 //Returns the thing in our active hand (whatever is in our active module-slot, in this case)
 /mob/living/silicon/robot/get_active_held_item()
@@ -27,6 +29,7 @@
 		if (client)
 			client.screen -= module_state_1
 		contents -= module_state_1
+		module_state_1.unequipped(src, SLOT_ID_HANDS, NONE)
 		module_active = null
 		module_state_1:loc = module //So it can be used again later
 		module_state_1 = null
@@ -37,6 +40,7 @@
 		if (client)
 			client.screen -= module_state_2
 		contents -= module_state_2
+		module_state_2.unequipped(src, SLOT_ID_HANDS, NONE)
 		module_active = null
 		module_state_2:loc = module
 		module_state_2 = null
@@ -47,6 +51,7 @@
 		if (client)
 			client.screen -= module_state_3
 		contents -= module_state_3
+		module_state_3.unequipped(src, SLOT_ID_HANDS, NONE)
 		module_active = null
 		module_state_3:loc = module
 		module_state_3 = null
@@ -63,6 +68,7 @@
 			client.screen -= module_state_1
 		contents -= module_state_1
 		module_state_1:loc = module
+		module_state_1.unequipped(src, SLOT_ID_HANDS, NONE)
 		module_state_1 = null
 		inv1.icon_state = "inv1"
 	if(module_state_2)
@@ -72,6 +78,7 @@
 			client.screen -= module_state_2
 		contents -= module_state_2
 		module_state_2:loc = module
+		module_state_2.unequipped(src, SLOT_ID_HANDS, NONE)
 		module_state_2 = null
 		inv2.icon_state = "inv2"
 	if(module_state_3)
@@ -81,6 +88,7 @@
 			client.screen -= module_state_3
 		contents -= module_state_3
 		module_state_3:loc = module
+		module_state_3.unequipped(src, SLOT_ID_HANDS, NONE)
 		module_state_3 = null
 		inv3.icon_state = "inv3"
 	updateicon()
@@ -251,6 +259,7 @@
 			sight_mode |= module_state_3:sight_mode
 	else
 		to_chat(src, "<span class='notice'>You need to disable a module first!</span>")
+	O.equipped(src, SLOT_ID_HANDS, NONE)
 
 /mob/living/silicon/robot/get_held_items()
 	. = list()

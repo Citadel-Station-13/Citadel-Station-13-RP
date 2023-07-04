@@ -65,7 +65,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 		else
 	return
 
-/obj/machinery/magma_pump/attack_hand(mob/user)
+/obj/machinery/magma_pump/attack_hand(mob/user, list/params)
 	interact(user)
 
 /obj/machinery/magma_pump/interact(mob/user)
@@ -92,13 +92,13 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	return
 
 /obj/machinery/magma_pump/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(on)
 		set_light(3, 3, "#FFCC00")
-		src.icon_state = "[icon_state]_1"
+		icon_state = "[icon_state]_1"
 	else
 		set_light(0)
-		src.icon_state = initial(icon_state)
+		icon_state = initial(icon_state)
 
 /obj/structure/broken_pump
 	name = "broken pump"
@@ -211,7 +211,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 		else
 	return
 
-/obj/machinery/magma_reservoir/attack_hand(mob/user)
+/obj/machinery/magma_reservoir/attack_hand(mob/user, list/params)
 	interact(user)
 
 /obj/machinery/magma_reservoir/interact(mob/user)
@@ -240,13 +240,13 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	return
 
 /obj/machinery/magma_reservoir/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(on)
 		set_light(3, 3, "#FFCC00")
-		src.icon_state = "[icon_state]_1"
+		icon_state = "[icon_state]_1"
 	else
 		set_light(0)
-		src.icon_state = initial(icon_state)
+		icon_state = initial(icon_state)
 
 /obj/structure/broken_reservoir
 	name = "broken reservoir"

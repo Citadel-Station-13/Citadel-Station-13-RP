@@ -14,6 +14,7 @@
 /obj/belly
 	name = "belly"							// Name of this location
 	desc = "It's a belly! You're in it!"	// Flavor text description of inside sight/sound/smells/feels.
+	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	var/vore_sound = "Gulp"					// Sound when ingesting someone
 	var/vore_verb = "ingest"				// Verb for eating with this in messages
 	var/human_prey_swallow_time = 100		// Time in deciseconds to swallow /mob/living/carbon/human
@@ -169,7 +170,7 @@
 
 /obj/belly/Destroy()
 	SSbellies.belly_list -= src
-	if(owner)
+	if(owner?.vore_organs)
 		owner.vore_organs -= src
 		owner = null
 	. = ..()
@@ -345,7 +346,7 @@
 		if("em")
 			raw_messages = examine_messages
 
-	var/messages = list2text(raw_messages,delim)
+	var/messages = jointext(raw_messages, delim)
 	return messages
 
 // The next function sets the messages on the belly, from human-readable var
@@ -357,12 +358,12 @@
 	var/list/raw_list = text2list(html_encode(raw_text),delim)
 	if(raw_list.len > 10)
 		raw_list.Cut(11)
-		log_debug("[owner] tried to set [lowertext(name)] with 11+ messages")
+		log_debug(SPAN_DEBUGWARNING("[owner] tried to set [lowertext(name)] with 11+ messages"))
 
 	for(var/i = 1, i <= raw_list.len, i++)
 		if(length(raw_list[i]) > 160 || length(raw_list[i]) < 10) //160 is fudged value due to htmlencoding increasing the size
 			raw_list.Cut(i,i)
-			log_debug("[owner] tried to set [lowertext(name)] with >121 or <10 char message")
+			log_debug(SPAN_DEBUGWARNING("[owner] tried to set [lowertext(name)] with >121 or <10 char message"))
 		else
 			raw_list[i] = readd_quotes(raw_list[i])
 			//Also fix % sign for var replacement
@@ -528,7 +529,7 @@
 		to_chat(R,"<span class='warning'>You attempt to climb out of \the [lowertext(name)]. (This will take around [escapetime/10] seconds.)</span>")
 		to_chat(owner,"<span class='warning'>Someone is attempting to climb out of your [lowertext(name)]!</span>")
 
-		if(do_after(R, escapetime, owner, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))
+		if(do_after(R, escapetime, owner, mobility_flags = MOBILITY_CAN_RESIST))
 			if((owner.stat || escapable) && (R.loc == src)) //Can still escape?
 				release_specific_contents(R)
 				return
@@ -623,18 +624,11 @@
 			to_chat(owner,"<span class='warning'>Your prey appears to be unable to make any progress in escaping your [lowertext(name)].</span>")
 			return
 
-/obj/belly/proc/get_mobs_and_objs_in_belly()
-	var/list/see = list()
-	var/list/belly_mobs = list()
-	see["mobs"] = belly_mobs
-	var/list/belly_objs = list()
-	see["objs"] = belly_objs
-	for(var/mob/living/L in loc.contents)
-		belly_mobs |= L
-	for(var/obj/O in loc.contents)
-		belly_objs |= O
-
-	return see
+/obj/belly/proc/effective_emote_hearers()
+	. = list(loc)
+	for(var/atom/movable/AM as anything in contents)
+		if(AM.atom_flags & ATOM_HEAR)
+			. += AM
 
 //Transfers contents from one belly to another
 /obj/belly/proc/transfer_contents(var/atom/movable/content, var/obj/belly/target, silent = 0)

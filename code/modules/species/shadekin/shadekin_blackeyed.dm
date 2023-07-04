@@ -29,10 +29,11 @@
 	)
 	max_additional_languages = 3
 
-	rarity_value = 5 // INTERDIMENSIONAL FLUFFERS
+	//rarity_value = 5 // INTERDIMENSIONAL FLUFFERS
 
-	siemens_coefficient = 0 // Completely shockproof (this is no longer the case on virgo, feel free to change if it needs rebalancing)
-	darksight = 10 // Best darksight around
+	siemens_coefficient = 1 // Mirroring the shockproof removal of Shadekin
+
+	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 
 	slowdown = 0 // Originally 0.5 (As slow as unathi), lowered to 0 to be at human speed.
 	item_slowdown_mod = 2 // Originally 1.5. They're not as physically fits, slowed down more by heavy gear.
@@ -40,6 +41,8 @@
 	total_health = 75   // Fragile
 	brute_mod    = 1 // Originally 1.25, lowered to 1 because lower HP and increased damage is a bit heavy.
 	burn_mod     = 1.25 // Furry
+	radiation_mod = 0
+	toxins_mod = 1.2
 
 	blood_volume  = 500 // Slightly less blood than human baseline.
 	hunger_factor = 0.2 // Gets hungrier faster than human baseline.
@@ -48,7 +51,7 @@
 	hazard_low_pressure = -1
 
 	warning_high_pressure = 300
-	hazard_high_pressure = INFINITY
+	hazard_high_pressure = 1000 // Same High Pressure resistance as Voidsuits get
 
 	cold_level_1 = -1 // Immune to cold
 	cold_level_2 = -1
@@ -60,7 +63,7 @@
 
 	// Shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise)
 	species_flags =  NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
 
@@ -149,7 +152,7 @@
 		H.ability_master = new /atom/movable/screen/movable/ability_master/crew_shadekin(H)
 	for(var/datum/power/crew_shadekin/P in crew_shadekin_ability_datums)
 		if(!(P.verbpath in H.verbs))
-			H.verbs += P.verbpath
+			add_verb(H, P.verbpath)
 			H.ability_master.add_crew_shadekin_ability(
 				object_given = H,
 				verb_given = P.verbpath,

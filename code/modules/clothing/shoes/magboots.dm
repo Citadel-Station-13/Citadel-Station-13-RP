@@ -5,7 +5,7 @@
 	clothing_flags = PHORONGUARD
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "magboots", SLOT_ID_LEFT_HAND = "magboots")
 	species_restricted = null
-	force = 3
+	damage_force = 3
 	overshoes = 1
 	shoes_under_pants = -1	//These things are huge
 	preserve_item = 1
@@ -23,18 +23,21 @@
 		slowdown += slowdown_on
 
 /obj/item/clothing/shoes/magboots/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(magpulse)
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
 		set_slowdown()
-		force = 3
+		damage_force = 3
 		if(icon_base) icon_state = "[icon_base]0"
 		to_chat(user, "You disable the mag-pulse traction system.")
 	else
 		clothing_flags |= NOSLIP
 		magpulse = 1
 		set_slowdown()
-		force = 5
+		damage_force = 5
 		if(icon_base) icon_state = "[icon_base]1"
 		to_chat(user, "You enable the mag-pulse traction system.")
 	user.update_inv_shoes()	//so our mob-overlays update
@@ -59,7 +62,7 @@
 	. = ..()
 	set_slowdown()
 
-/obj/item/clothing/shoes/magboots/examine(mob/user)
+/obj/item/clothing/shoes/magboots/examine(mob/user, dist)
 	. = ..()
 	var/state = "disabled"
 	if(clothing_flags & NOSLIP)
@@ -71,7 +74,7 @@
 	name = "vox magclaws"
 	item_state = "boots-vox"
 	icon_state = "boots-vox"
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	species_restricted = list(SPECIES_VOX)
 
 	action_button_name = "Toggle the magclaws"
@@ -80,7 +83,7 @@
 	if(src.magpulse)
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
-		REMOVE_TRAIT(src, TRAIT_NODROP, MAGBOOT_TRAIT)
+		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, MAGBOOT_TRAIT)
 		to_chat(user, "You relax your deathgrip on the flooring.")
 	else
 		//make sure these can only be used when equipped.
@@ -93,7 +96,7 @@
 
 		clothing_flags |= NOSLIP
 		magpulse = 1
-		ADD_TRAIT(src, TRAIT_NODROP, MAGBOOT_TRAIT)
+		ADD_TRAIT(src, TRAIT_ITEM_NODROP, MAGBOOT_TRAIT)
 		to_chat(user, "You dig your claws deeply into the flooring, bracing yourself.")
 	user.update_action_buttons()
 
@@ -104,9 +107,9 @@
 		user.visible_message("The [src] go limp as they are removed from [usr]'s feet.", "The [src] go limp as they are removed from your feet.")
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
-		REMOVE_TRAIT(src, TRAIT_NODROP, MAGBOOT_TRAIT)
+		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, MAGBOOT_TRAIT)
 
-/obj/item/clothing/shoes/magboots/vox/examine(mob/user)
+/obj/item/clothing/shoes/magboots/vox/examine(mob/user, dist)
 	. = ..()
 	if(magpulse)
 		. += "It would be hard to take these off without relaxing your grip first."

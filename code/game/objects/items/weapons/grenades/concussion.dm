@@ -37,17 +37,12 @@
 						H.Confuse(2)
 					else
 						H.Confuse(8)
-						H.Weaken(1)
+						H.afflict_paralyze(20 * 1)
 						if ((prob(14) || (H == src.loc && prob(70))))
 							H.ear_damage += rand(1, 10)
 						else
 							H.ear_damage += rand(0, 5)
 							H.ear_deaf = max(H.ear_deaf,15)
-					if(H.client)
-						if(prob(50))
-							H.client.spinleft()
-						else
-							H.client.spinright()
 
 				else if(get_dist(H, T) <= round(radius * 0.5 * bang_effectiveness))
 					if(!ear_safety)
@@ -55,11 +50,6 @@
 						H.ear_damage += rand(0, 3)
 						H.ear_deaf = max(H.ear_deaf,10)
 
-					if(H.client)
-						if(prob(50))
-							H.client.spinleft()
-						else
-							H.client.spinright()
 
 				else if(!ear_safety && get_dist(H, T) <= (radius * bang_effectiveness))
 					H.Confuse(4)
@@ -74,21 +64,19 @@
 						H.sdisabilities |= SDISABILITY_DEAF
 				else if(H.ear_damage >= 5)
 					to_chat(H, "<span class='danger'>Your ears start to ring!</span>")
+			/* Until someone can come up with a better thing to have happen to borgs like a stun or something this is getting commented out
 			if(istype(L, /mob/living/silicon/robot))
 				var/mob/living/silicon/robot/R = L
 				if(L.client)
-					if(prob(50))
-						L.client.spinleft()
-					else
-						L.client.spinright()
 				to_chat(R, "<span class='critical'>Gyroscopic failure.</span>")
+			*/
 	return
 
 /obj/item/grenade/concussion/frag
 	name = "concussion-frag grenade"
 	desc = "A polymer and steel concussion grenade, optimized for disorienting personnel and being accused of war crimes."
 	icon_state = "conc-frag"
-	var/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment/strong, /obj/item/projectile/bullet/pellet/fragment/rubber, /obj/item/projectile/bullet/pellet/fragment/rubber/strong)
+	var/fragment_types = list(/obj/projectile/bullet/pellet/fragment, /obj/projectile/bullet/pellet/fragment/strong, /obj/projectile/bullet/pellet/fragment/rubber, /obj/projectile/bullet/pellet/fragment/rubber/strong)
 	var/num_fragments = 40  //total number of fragments produced by the grenade
 	var/spread_range = 5 // for above and below, see code\game\objects\items\weapons\grenades\explosive.dm
 

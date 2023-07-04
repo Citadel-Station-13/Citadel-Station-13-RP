@@ -1,6 +1,6 @@
 /obj/machinery/sleep_console
 	name = "sleeper console"
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "sleeperconsole"
 	var/obj/machinery/sleeper/sleeper
 	anchored = TRUE
@@ -8,7 +8,7 @@
 	dir = 8
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
-	interact_offline = TRUE
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 	circuit = /obj/item/circuitboard/sleeper_console
 
 /obj/machinery/sleep_console/Initialize(mapload, newdir)
@@ -37,7 +37,7 @@
 /obj/machinery/sleep_console/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/sleep_console/attack_hand(mob/user)
+/obj/machinery/sleep_console/attack_hand(mob/user, list/params)
 	if(..())
 		return 1
 
@@ -106,7 +106,7 @@
 	else
 		data["occupant"] = 0
 	if(S.beaker)
-		data["beaker"] = S.beaker.reagents.get_free_space()
+		data["beaker"] = S.beaker.reagents.available_volume()
 	else
 		data["beaker"] = -1
 	data["filtering"] = S.filtering
@@ -160,7 +160,7 @@
 /obj/machinery/sleeper
 	name = "sleeper"
 	desc = "A stasis pod with built-in injectors, a dialysis machine, and a limited health scanner."
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "sleeper_0"
 	density = TRUE
 	anchored = TRUE
@@ -182,7 +182,6 @@
 /obj/machinery/sleeper/Initialize(mapload)
 	. = ..()
 	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
-	default_apply_parts()
 
 /obj/machinery/sleeper/Destroy()
 	if(console)
@@ -421,7 +420,7 @@
 //Survival/Stasis sleepers
 /obj/machinery/sleeper/survival_pod
 	desc = "A limited functionality sleeper, all it can do is put patients into stasis. It lacks the medication and configuration of the larger units."
-	icon_state = "sleeper"
+	icon_state = "sleeper_0"
 	stasis_level = 100 //Just one setting
 
 /obj/machinery/sleeper/survival_pod/Initialize(mapload)

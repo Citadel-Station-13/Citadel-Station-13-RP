@@ -9,7 +9,7 @@
 					continue
 				else if(ignore_mobs && isliving(stuff)) // Ghosts aren't dense but keeping this limited to living type will probably save headaches in the future.
 					continue
-				else if(ignore_border && (stuff.flags & ON_BORDER))
+				else if(ignore_border && (stuff.atom_flags & ATOM_BORDER))
 					continue
 				else
 					return TRUE
@@ -29,7 +29,7 @@
 
 /obj/item/spell/proc/allowed_to_teleport()
 	if(owner)
-		if(owner.z in GLOB.using_map.admin_levels)
+		if(owner.z in (LEGACY_MAP_DATUM).admin_levels)
 			return FALSE
 
 		var/turf/T = get_turf(owner)

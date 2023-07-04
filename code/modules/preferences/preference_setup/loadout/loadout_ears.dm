@@ -3,7 +3,8 @@
 /datum/gear/ears
 	name = "Earmuffs"
 	path = /obj/item/clothing/ears/earmuffs
-	sort_category = "Earwear"
+	sort_category = LOADOUT_CATEGORY_EARS
+	slot = SLOT_ID_RIGHT_EAR
 
 /datum/gear/ears/headphones
 	name = "Headphones"
@@ -40,3 +41,17 @@
 	earrings["Dangle - Platinum"] = /obj/item/clothing/ears/earring/dangle/platinum
 	earrings["Dangle - Diamond"] = /obj/item/clothing/ears/earring/dangle/diamond
 	gear_tweaks += new/datum/gear_tweak/path(earrings)
+
+
+/datum/gear/ears/laurel
+	name = "Laurel Wreath Selection"
+	description = "A selection of leaf-like headwear."
+	path = /obj/item/clothing/ears/laurel
+
+/datum/gear/ears/laurel/New()
+	..()
+	var/laurel = list()
+	laurel["Laurel Wreath - Leaf"] = /obj/item/clothing/ears/laurel
+	laurel["Laurel Wreath - Silver"] = /obj/item/clothing/ears/laurel/silver
+	laurel["Laurel Wreath - Gold"] = /obj/item/clothing/ears/laurel/gold
+	gear_tweaks += new/datum/gear_tweak/path(laurel)

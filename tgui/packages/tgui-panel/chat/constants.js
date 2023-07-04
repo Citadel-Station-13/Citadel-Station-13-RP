@@ -26,6 +26,7 @@ export const MESSAGE_TYPE_LOCALCHAT = 'localchat';
 export const MESSAGE_TYPE_RADIO = 'radio';
 export const MESSAGE_TYPE_INFO = 'info';
 export const MESSAGE_TYPE_WARNING = 'warning';
+export const MESSAGE_TYPE_HELPFUL = 'helpful';
 export const MESSAGE_TYPE_DEADCHAT = 'deadchat';
 export const MESSAGE_TYPE_OOC = 'ooc';
 export const MESSAGE_TYPE_ADMINPM = 'adminpm';
@@ -107,6 +108,12 @@ export const MESSAGE_TYPES = [
     name: 'Combat Log',
     description: 'Urist McTraitor has stabbed you with a knife!',
     selector: '.danger',
+  },
+  {
+    type: MESSAGE_TYPE_HELPFUL,
+    name: 'Helpful',
+    description: 'PFC Unga Dunga starts feeding you a pill.',
+    selector: '.helpful',
   },
   {
     type: MESSAGE_TYPE_UNKNOWN,

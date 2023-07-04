@@ -32,7 +32,7 @@
 		far_dist += devastation_range * 10
 		var/frequency = get_rand_frequency()
 		var/creaking_explosion = FALSE
-		var/on_station = SSmapping.level_trait(epicenter.z, MAP_LEVEL_STATION)
+		var/on_station = SSmapping.level_trait(epicenter.z, LEGACY_LEVEL_STATION)
 		if(prob(devastation_range*30+heavy_impact_range*5) && on_station) // Huge explosions are near guaranteed to make the station creak and whine, smaller ones might.
 			creaking_explosion = TRUE // prob over 100 always returns true
 		var/far_volume = clamp(far_dist, 30, 50) // Volume is based on explosion size and dist
@@ -98,7 +98,7 @@
 				if(!T)
 					T = locate(x0,y0,z0)
 				for(var/atom/movable/AM as anything in T.contents)	//bypass type checking since only atom/movable can be contained by turfs anyway
-					if(AM.flags & ATOM_ABSTRACT)
+					if(AM.atom_flags & ATOM_ABSTRACT)
 						continue
 					LEGACY_EX_ACT(AM, dist, null)
 

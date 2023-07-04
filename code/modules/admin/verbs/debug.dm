@@ -30,7 +30,7 @@
 			to_chat(user, "<span class='warning'>You need to have something in your active hand, to use this verb.</span>")
 			return
 		var/weapon_attack_speed = user.get_attack_speed(I) / 10
-		var/weapon_damage = I.force
+		var/weapon_damage = I.damage_force
 		var/modified_damage_percent = 1
 
 		for(var/datum/modifier/M in user.modifiers)
@@ -40,16 +40,16 @@
 
 		if(istype(I, /obj/item/gun))
 			var/obj/item/gun/G = I
-			var/obj/item/projectile/P
+			var/obj/projectile/P
 
 			if(istype(I, /obj/item/gun/energy))
 				var/obj/item/gun/energy/energy_gun = G
 				P = new energy_gun.projectile_type()
 
-			else if(istype(I, /obj/item/gun/projectile))
-				var/obj/item/gun/projectile/projectile_gun = G
+			else if(istype(I, /obj/item/gun/ballistic))
+				var/obj/item/gun/ballistic/projectile_gun = G
 				var/obj/item/ammo_casing/ammo = projectile_gun.chambered
-				P = ammo.BB
+				P = ammo.get_projectile()
 
 			else
 				to_chat(user, "<span class='warning'>DPS calculation by this verb is not supported for \the [G]'s type. Energy or Ballistic only, sorry.</span>")
@@ -345,7 +345,7 @@
 		qdel(adminmob)
 	feedback_add_details("admin_verb","ADC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/take_picture(var/atom/A in world)
+/client/proc/take_picture(atom/A in world)
 	set name = "Save PNG"
 	set category = "Debug"
 	set desc = "Opens a dialog to save a PNG of any object in the game."
@@ -353,7 +353,7 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	downloadImage(A)
+	download_icon(A)
 
 /client/proc/cmd_admin_areatest()
 	set category = "Mapping"
@@ -511,10 +511,10 @@
 		if(Rad.anchored)
 			if(!Rad.P)
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
-				Phoron.air_contents.gas[GAS_ID_PHORON] = 70
-				Rad.drainratio = 0
+				/// supercooled so we don't just maxcap the engine lol
+				Phoron.air_contents.adjust_gas_temp(GAS_ID_PHORON, 350, 25)
+				Phoron.forceMove(Rad)
 				Rad.P = Phoron
-				Phoron.loc = Rad
 
 			if(!Rad.active)
 				Rad.toggle_power()
@@ -609,7 +609,7 @@
 		if("Players")
 			to_chat(usr, jointext(GLOB.player_list,","))
 		if("Admins")
-			to_chat(usr, jointext(admins,","))
+			to_chat(usr, jointext(GLOB.admins,","))
 		if("Mobs")
 			to_chat(usr, jointext(GLOB.mob_list,","))
 		if("Living Mobs")
@@ -723,27 +723,23 @@
 		to_chat(usr,"<span class='warning'>Target already has a NIF.</span>")
 		return
 
-	if(H.species.species_flags & NO_SCAN)
-		var/obj/item/nif/S = /obj/item/nif/bioadap
-		input_NIF = initial(S.name)
-		new /obj/item/nif/bioadap(H)
+	//if the admins want to adminbus a prommie with a full veymed, let them. screw the system. NIFs aren't in the plans to last long anyways. :^)
+	var/list/NIF_types = typesof(/obj/item/nif)
+	var/list/NIFs = list()
+
+	for(var/NIF_type in NIF_types)
+		var/obj/item/nif/S = NIF_type
+		NIFs[capitalize(initial(S.name))] = NIF_type
+
+	var/list/show_NIFs = sortList(NIFs) // the list that will be shown to the user to pick from
+
+	input_NIF = input("Pick the NIF type","Quick NIF") in show_NIFs
+	var/chosen_NIF = NIFs[capitalize(input_NIF)]
+
+	if(chosen_NIF)
+		new chosen_NIF(H)
 	else
-		var/list/NIF_types = typesof(/obj/item/nif)
-		var/list/NIFs = list()
-
-		for(var/NIF_type in NIF_types)
-			var/obj/item/nif/S = NIF_type
-			NIFs[capitalize(initial(S.name))] = NIF_type
-
-		var/list/show_NIFs = sortList(NIFs) // the list that will be shown to the user to pick from
-
-		input_NIF = input("Pick the NIF type","Quick NIF") in show_NIFs
-		var/chosen_NIF = NIFs[capitalize(input_NIF)]
-
-		if(chosen_NIF)
-			new chosen_NIF(H)
-		else
-			new /obj/item/nif(H)
+		new /obj/item/nif(H)
 
 	log_and_message_admins("[key_name(src)] Quick NIF'd [H.real_name] with a [input_NIF].")
 	feedback_add_details("admin_verb","QNIF") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

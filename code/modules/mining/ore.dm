@@ -3,6 +3,7 @@
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "ore2"
 	w_class = ITEMSIZE_SMALL
+	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE // uh let's like, not? it'd be funny but fields usually have like 400 pieces of ore in just a few tiles.
 	var/datum/geosample/geologic_data
 	var/material
 

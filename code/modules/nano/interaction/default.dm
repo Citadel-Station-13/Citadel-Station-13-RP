@@ -12,7 +12,10 @@
 /mob/observer/dead/nano_default_can_use_topic(var/src_object)
 	if(can_admin_interact())
 		return UI_INTERACTIVE							// Admins are more equal
-	if(!client || get_dist(src_object, src)	> client.view)	// Preventing ghosts from having a million windows open by limiting to objects in range
+	if(!client)
+		return UI_CLOSE
+	// todo: in view range for zooming
+	if(get_dist(src, src_object) > min(CEILING(client.current_viewport_width / 2, 1), CEILING(client.current_viewport_height / 2, 1)))
 		return UI_CLOSE
 	return UI_UPDATE									// Ghosts can view updates
 
@@ -28,7 +31,7 @@
 		return
 
 	// robots can interact with things they can see within their view range
-	if((src_object in view(src)) && get_dist(src_object, src) <= src.client.view)
+	if((src_object in view(src)) && get_dist(src_object, src) <= min(CEILING(client.current_viewport_width / 2, 1), CEILING(client.current_viewport_height / 2, 1)))
 		return UI_INTERACTIVE	// interactive (green visibility)
 	return UI_DISABLED			// no updates, completely disabled (red visibility)
 
@@ -40,7 +43,7 @@
 	// Prevents the AI from using Topic on admin levels (by for example viewing through the court/thunderdome cameras)
 	// unless it's on the same level as the object it's interacting with.
 	var/turf/T = get_turf(src_object)
-	if(!T || !(z == T.z || (T.z in GLOB.using_map.player_levels)))
+	if(!T || !(z == T.z || (T.z in (LEGACY_MAP_DATUM).player_levels)))
 		return UI_CLOSE
 
 	// If an object is in view then we can interact with it

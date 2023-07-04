@@ -121,6 +121,7 @@
 		/obj/item/seeds/orangeseed = 3,
 		/obj/item/seeds/onionseed = 3,
 		/obj/item/seeds/peanutseed = 3,
+		/obj/item/seeds/peaseed = 3,
 		/obj/item/seeds/plumpmycelium = 3,
 		/obj/item/seeds/poppyseed = 3,
 		/obj/item/seeds/potatoseed = 3,
@@ -140,8 +141,9 @@
 		/obj/item/seeds/vanilla = 3,
 		/obj/item/seeds/watermelonseed = 3,
 		/obj/item/seeds/wheatseed = 3,
-		/obj/item/seeds/whitebeetseed = 3
-		)
+		/obj/item/seeds/whitebeetseed = 3,
+		/obj/item/seeds/wabback = 2
+)
 
 /obj/machinery/seed_storage/xenobotany
 	name = "Xenobotany seed storage"
@@ -178,6 +180,7 @@
 		/obj/item/seeds/nettleseed = 2,
 		/obj/item/seeds/orangeseed = 3,
 		/obj/item/seeds/peanutseed = 3,
+		/obj/item/seeds/peaseed = 3,
 		/obj/item/seeds/plastiseed = 3,
 		/obj/item/seeds/plumpmycelium = 3,
 		/obj/item/seeds/poppyseed = 3,
@@ -201,9 +204,9 @@
 		/obj/item/seeds/watermelonseed = 3,
 		/obj/item/seeds/wheatseed = 3,
 		/obj/item/seeds/whitebeetseed = 3
-		)
+)
 
-/obj/machinery/seed_storage/attack_hand(mob/user as mob)
+/obj/machinery/seed_storage/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
@@ -352,7 +355,7 @@
 
 	return data
 
-/obj/machinery/seed_storage/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/seed_storage/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	var/ID = text2num(params["id"])
@@ -408,9 +411,9 @@
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
 		playsound(src, O.tool_sound, 50, 1)
-		overlays.Cut()
+		cut_overlays()
 		if(panel_open)
-			overlays += image(icon, "[initial(icon_state)]-panel")
+			add_overlay(image(icon, "[initial(icon_state)]-panel"))
 	else if((O.is_wirecutter() || istype(O, /obj/item/multitool)) && panel_open)
 		wires.Interact(user)
 

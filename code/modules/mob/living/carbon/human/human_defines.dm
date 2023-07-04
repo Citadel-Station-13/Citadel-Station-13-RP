@@ -4,11 +4,15 @@
 	voice_name = "unknown"
 	icon = 'icons/effects/effects.dmi' //We have an ultra-complex update icons that overlays everything, don't load some stupid random male human
 	icon_state = "nothing"
+	low_priority = FALSE	// UH YEA MAYBE STILL TICK THIS?
+	ssd_visible = TRUE
+	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
+	SET_APPEARANCE_FLAGS(TILE_BOUND | PIXEL_SCALE | KEEP_TOGETHER)
 
 	/// To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/embedded_flag
-	/// This is very not good, but it's much much better than calling get_rig() every update_canmove() call.
-	var/obj/item/rig/wearing_rig
+	/// This is very not good, but it's much much better than calling get_hardsuit() every update_canmove() call.
+	var/obj/item/hardsuit/wearing_rig
 	/// For human_attackhand.dm, keeps track of the last use of disarm.
 	var/last_push_time
 
@@ -31,7 +35,7 @@
 
 	hud_possible = list(
 		LIFE_HUD,
-		STATUS_HUD,
+		BIOLOGY_HUD,
 		ID_HUD,
 		WANTED_HUD,
 		IMPLOYAL_HUD,
@@ -257,3 +261,10 @@
 	 * Only used for camera monitors currently.
 	 */
 	var/obj/machinery/machine_visual
+
+	// ignore ssd status
+	var/override_ssd = FALSE
+
+	//? movement
+	/// are we trying to crawl under someone? mob if true
+	var/mob/crawling_under_someone

@@ -35,7 +35,7 @@
 	else
 		return..()
 
-/obj/machinery/artifact_harvester/attack_hand(mob/user)
+/obj/machinery/artifact_harvester/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
@@ -72,7 +72,7 @@
 				data["info"]["inserted_battery"]["artifact_id"] = "N/A"
 	return data
 
-/obj/machinery/artifact_harvester/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/artifact_harvester/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -1,5 +1,13 @@
+/obj/item/hardsuit/pickup(mob/user, flags, atom/oldLoc)
+	. = ..()
+	user?.client?.queue_legacy_verb_update()
+
+/obj/item/hardsuit/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	user?.client?.queue_legacy_verb_update()
+
 // Interface for humans.
-/obj/item/rig/verb/hardsuit_interface()
+/obj/item/hardsuit/verb/hardsuit_interface()
 
 	set name = "Open Hardsuit Interface"
 	set desc = "Open the hardsuit system interface."
@@ -9,10 +17,10 @@
 	if(wearer && (wearer.back == src || wearer.belt == src))
 		nano_ui_interact(usr)
 
-/obj/item/rig/verb/toggle_vision()
+/obj/item/hardsuit/verb/toggle_vision()
 
 	set name = "Toggle Visor"
-	set desc = "Turns your rig visor off or on."
+	set desc = "Turns your hardsuit visor off or on."
 	set category = "Hardsuit"
 	set src = usr.contents
 
@@ -39,7 +47,7 @@
 	else
 		visor.deactivate()
 
-/obj/item/rig/proc/toggle_helmet()
+/obj/item/hardsuit/proc/toggle_helmet()
 
 	set name = "Toggle Helmet"
 	set desc = "Deploys or retracts your helmet."
@@ -55,7 +63,7 @@
 
 	toggle_piece("helmet",wearer)
 
-/obj/item/rig/proc/toggle_chest()
+/obj/item/hardsuit/proc/toggle_chest()
 
 	set name = "Toggle Chestpiece"
 	set desc = "Deploys or retracts your chestpiece."
@@ -67,7 +75,7 @@
 
 	toggle_piece("chest",wearer)
 
-/obj/item/rig/proc/toggle_gauntlets()
+/obj/item/hardsuit/proc/toggle_gauntlets()
 
 	set name = "Toggle Gauntlets"
 	set desc = "Deploys or retracts your gauntlets."
@@ -83,7 +91,7 @@
 
 	toggle_piece("gauntlets",wearer)
 
-/obj/item/rig/proc/toggle_boots()
+/obj/item/hardsuit/proc/toggle_boots()
 
 	set name = "Toggle Boots"
 	set desc = "Deploys or retracts your boots."
@@ -99,7 +107,7 @@
 
 	toggle_piece("boots",wearer)
 
-/obj/item/rig/verb/deploy_suit()
+/obj/item/hardsuit/verb/deploy_suit()
 
 	set name = "Deploy Hardsuit"
 	set desc = "Deploys helmet, gloves and boots."
@@ -118,10 +126,10 @@
 
 	deploy(wearer)
 
-/obj/item/rig/verb/toggle_seals_verb()
+/obj/item/hardsuit/verb/toggle_seals_verb()
 
 	set name = "Toggle Hardsuit"
-	set desc = "Activates or deactivates your rig."
+	set desc = "Activates or deactivates your hardsuit."
 	set category = "Hardsuit"
 	set src = usr.contents
 
@@ -134,7 +142,7 @@
 
 	toggle_seals(wearer)
 
-/obj/item/rig/verb/switch_vision_mode()
+/obj/item/hardsuit/verb/switch_vision_mode()
 
 	set name = "Switch Vision Mode"
 	set desc = "Switches between available vision modes."
@@ -164,7 +172,7 @@
 
 	visor.engage()
 
-/obj/item/rig/verb/alter_voice()
+/obj/item/hardsuit/verb/alter_voice()
 
 	set name = "Configure Voice Synthesiser"
 	set desc = "Toggles or configures your voice synthesizer."
@@ -188,7 +196,7 @@
 
 	speech.engage()
 
-/obj/item/rig/verb/select_module()
+/obj/item/hardsuit/verb/select_module()
 
 	set name = "Select Module"
 	set desc = "Selects a module as your primary system."
@@ -210,11 +218,11 @@
 		return
 
 	var/list/selectable = list()
-	for(var/obj/item/rig_module/module in installed_modules)
+	for(var/obj/item/hardsuit_module/module in installed_modules)
 		if(module.selectable)
 			selectable |= module
 
-	var/obj/item/rig_module/module = input("Which module do you wish to select?") as null|anything in selectable
+	var/obj/item/hardsuit_module/module = input("Which module do you wish to select?") as null|anything in selectable
 
 	if(!istype(module))
 		selected_module = null
@@ -224,7 +232,7 @@
 	selected_module = module
 	to_chat(usr, "<font color=#4F49AF><b>Primary system is now: [selected_module.interface_name].</b></font>")
 
-/obj/item/rig/verb/toggle_module()
+/obj/item/hardsuit/verb/toggle_module()
 
 	set name = "Toggle Module"
 	set desc = "Toggle a system module."
@@ -246,11 +254,11 @@
 		return
 
 	var/list/selectable = list()
-	for(var/obj/item/rig_module/module in installed_modules)
+	for(var/obj/item/hardsuit_module/module in installed_modules)
 		if(module.toggleable)
 			selectable |= module
 
-	var/obj/item/rig_module/module = input("Which module do you wish to toggle?") as null|anything in selectable
+	var/obj/item/hardsuit_module/module = input("Which module do you wish to toggle?") as null|anything in selectable
 
 	if(!istype(module))
 		return
@@ -262,7 +270,7 @@
 		to_chat(usr, "<font color=#4F49AF><b>You attempt to activate \the [module.interface_name].</b></font>")
 		module.activate()
 
-/obj/item/rig/verb/engage_module()
+/obj/item/hardsuit/verb/engage_module()
 
 	set name = "Engage Module"
 	set desc = "Engages a system module."
@@ -284,11 +292,11 @@
 		return
 
 	var/list/selectable = list()
-	for(var/obj/item/rig_module/module in installed_modules)
+	for(var/obj/item/hardsuit_module/module in installed_modules)
 		if(module.usable)
 			selectable |= module
 
-	var/obj/item/rig_module/module = input("Which module do you wish to engage?") as null|anything in selectable
+	var/obj/item/hardsuit_module/module = input("Which module do you wish to engage?") as null|anything in selectable
 
 	if(!istype(module))
 		return

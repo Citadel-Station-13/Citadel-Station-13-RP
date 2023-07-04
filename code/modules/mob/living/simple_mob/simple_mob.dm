@@ -14,6 +14,10 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY
 
+	//? Darksight
+	/// our innate darksight
+	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/default
+
 	///Tooltip description
 	var/tt_desc = null
 
@@ -198,26 +202,6 @@
 	var/grab_resist = 0
 	/// Damage reduction for all types
 	var/resistance = 0
-	/// Values for normal getarmor() checks
-	var/list/armor = list(
-				"melee" = 0,
-				"bullet" = 0,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 100,
-				"rad" = 100
-				)
-	/// Values for getsoak() checks.
-	var/list/armor_soak = list(
-				"melee" = 0,
-				"bullet" = 0,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
 	// Protection against heat/cold/electric/water effects.
 	// 0 is no protection, 1 is total protection. Negative numbers increase vulnerability.
 	var/heat_resist = 0.0
@@ -248,24 +232,20 @@
 	/// Used for if the mob can drop limbs. Overrides the icon cache key, so it doesn't keep remaking the icon needlessly.
 	var/limb_icon_key
 
+	//  todo: remove
+	/// legacy armor, applied on init
+	var/list/armor_legacy_mob
+
 	///Does the simple mob drop organs when butchered?
 	butchery_drops_organs = FALSE
 
-//* randomization code. *//
-/mob/living/simple_mob/proc/randomize()
-	if(randomized == TRUE)
-		var/mod = rand(mod_min,mod_max)/100
-		size_multiplier = mod
-		maxHealth = round(maxHealth*mod)
-		health = round(health*mod)
-		melee_damage_lower = round(melee_damage_lower*mod)
-		melee_damage_upper = round(melee_damage_upper*mod)
-		movement_cooldown = round(movement_cooldown*mod)
-		meat_amount = round(meat_amount*mod)
-		update_icons()
-
 /mob/living/simple_mob/Initialize(mapload)
-	verbs -= /mob/verb/observe
+	if(armor_legacy_mob)
+		var/list/translated = list()
+		for(var/key in armor_legacy_mob)
+			translated[key] = armor_legacy_mob[key] * 0.01 // new armor is / 100
+		set_armor(translated)
+	remove_verb(src, /mob/verb/observe)
 	health = maxHealth
 	randomize()
 
@@ -290,6 +270,19 @@
 	if(has_eye_glow)
 		remove_eyes()
 	return ..()
+
+//* randomization code. *//
+/mob/living/simple_mob/proc/randomize()
+	if(randomized == TRUE)
+		var/mod = rand(mod_min,mod_max)/100
+		size_multiplier = mod
+		maxHealth = round(maxHealth*mod)
+		health = round(health*mod)
+		melee_damage_lower = round(melee_damage_lower*mod)
+		melee_damage_upper = round(melee_damage_upper*mod)
+		movement_cooldown = round(movement_cooldown*mod)
+		meat_amount = round(meat_amount*mod)
+		update_icons()
 
 /mob/living/simple_mob/death()
 	update_icon()
@@ -341,11 +334,11 @@
 
 	// Turf related slowdown
 	var/turf/T = get_turf(src)
-	if(T && T.movement_cost && !hovering) // Flying mobs ignore turf-based slowdown. Aquatic mobs ignore water slowdown, and can gain bonus speed in it.
+	if(T && T.slowdown && !hovering) // Flying mobs ignore turf-based slowdown. Aquatic mobs ignore water slowdown, and can gain bonus speed in it.
 		if(istype(T,/turf/simulated/floor/water) && aquatic_movement)
 			tally -= aquatic_movement - 1
 		else
-			tally += T.movement_cost
+			tally += T.slowdown
 
 	if(purge)//Purged creatures will move more slowly. The more time before their purge stops, the slower they'll move.
 		if(tally <= 0)
@@ -358,19 +351,18 @@
 	return . + tally + config_legacy.animal_delay
 
 
-/mob/living/simple_mob/Stat()
-	..()
-	if(statpanel("Status") && show_stat_health)
-		stat(null, "Health: [round((health / getMaxHealth()) * 100)]%")
+/mob/living/simple_mob/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status") && show_stat_health)
+		STATPANEL_DATA_LINE("Health: [round((health / getMaxHealth()) * 100)]%")
 
-/mob/living/simple_mob/lay_down()
-	..()
+/mob/living/simple_mob/set_resting(value)
+	. = ..()
 	if(resting && icon_rest)
 		icon_state = icon_rest
 	else
 		icon_state = icon_living
 	update_icon()
-
 
 /mob/living/simple_mob/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	verb = "says"

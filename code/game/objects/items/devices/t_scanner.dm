@@ -27,6 +27,9 @@
 	set_active(!on)
 
 /obj/item/t_scanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	set_active(!on)
 
 /obj/item/t_scanner/proc/set_active(var/active)
@@ -85,16 +88,17 @@
 	if(scanned in overlay_cache)
 		. = overlay_cache[scanned]
 	else
-		var/image/I = image(loc = scanned, icon = scanned.icon, icon_state = scanned.icon_state, layer = HUD_LAYER)
+		var/image/I = image(loc = scanned, icon = scanned.icon, icon_state = scanned.icon_state, layer = ABOVE_LIGHTING_LAYER_MAIN)
+		I.plane = ABOVE_LIGHTING_PLANE
 
 		//Pipes are special
 		if(istype(scanned, /obj/machinery/atmospherics/pipe))
 			var/obj/machinery/atmospherics/pipe/P = scanned
 			I.color = P.pipe_color
-			I.overlays += P.overlays
+			I.copy_overlays(P)
 
 		I.alpha = 128
-		I.mouse_opacity = 0
+		I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		. = I
 
 	// Add it to cache, cutting old entries if the list is too long
@@ -133,7 +137,7 @@
 
 	user_client = new_client
 
-/obj/item/t_scanner/dropped(mob/user, flags, atom/newLoc)
+/obj/item/t_scanner/dropped(mob/user, atom_flags, atom/newLoc)
 	. = ..()
 	set_user_client(null)
 

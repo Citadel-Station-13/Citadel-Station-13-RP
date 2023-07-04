@@ -9,7 +9,7 @@
 
 /datum/supply_pack/randomised/recreation
 	group = "Recreation"
-	access = access_security
+	access = ACCESS_SECURITY_EQUIPMENT
 
 /datum/supply_pack/recreation/foam_weapons
 	name = "Foam Weapon Crate"
@@ -146,7 +146,7 @@
 			/obj/random/action_figure/supplypack
 			)
 	cost = 200
-	container_type = /obj/structure/closet/crate
+	container_type = /obj/structure/closet/crate/allico
 	container_name = "Action figures crate"
 
 /datum/supply_pack/recreation/characters
@@ -165,7 +165,7 @@
 			/obj/random/plushie
 			)
 	cost = 60
-	container_type = /obj/structure/closet/crate
+	container_type = /obj/structure/closet/crate/allico
 	container_name = "Plushies crate"
 
 /datum/supply_pack/recreation/collars
@@ -200,8 +200,8 @@
 /datum/supply_pack/recreation/donksoft_exotic
 	name = "DONKsoft Exotic Weaponry Bundle"
 	contains = list(
-			/obj/item/gun/projectile/automatic/c20r/foam = 2,
-			/obj/item/gun/projectile/automatic/l6_saw/foam = 1,
+			/obj/item/gun/ballistic/automatic/c20r/foam = 2,
+			/obj/item/gun/ballistic/automatic/lmg/foam = 1,
 			/obj/item/ammo_magazine/mfoam/c20 = 4,
 			/obj/item/ammo_magazine/mfoam/lmg = 2,
 			/obj/item/material/twohanded/spear/foam = 2,

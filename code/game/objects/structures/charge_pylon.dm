@@ -12,7 +12,7 @@
 	if(Adjacent(user))
 		attack_hand(user)
 
-/obj/structure/adherent_pylon/attack_hand(var/mob/living/user)
+/obj/structure/adherent_pylon/attack_hand(mob/user, list/params)
 	charge_user(user)
 
 /obj/structure/adherent_pylon/proc/charge_user(var/mob/living/user)
@@ -25,14 +25,14 @@
 
 	playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 
-	if(istype(H) && H.species.name == SPECIES_ADHERENT && H.nutrition < H.species.max_nutrition)
+	if(istype(H) && H.species.get_species_id() == SPECIES_ID_ADHERENT && H.nutrition < H.species.max_nutrition)
 		H.nutrition = 400
 		return
 	if(isrobot(user))
 		user.apply_damage(80, BURN, def_zone = BP_TORSO)
 		visible_message("<span class='danger'>Electricity arcs off [user] as it touches \the [src]!</span>")
 		to_chat(user, "<span class='danger'><b>You detect damage to your components!</b></span>")
-	else if(istype(H) && H.species.name != SPECIES_ADHERENT)
+	else if(istype(H) && H.species.get_species_id() != SPECIES_ID_ADHERENT)
 		user.electrocute_act(85, src, def_zone = BP_TORSO)
 		visible_message("<span class='danger'>\The [user] has been shocked by \the [src]!</span>")
 	user.throw_at_old(get_step(user,get_dir(src,user)), 5, 10)
@@ -42,16 +42,8 @@
 	if(ishuman(AM))
 		charge_user(AM)
 
-/decl/flooring/crystal
-	name = "crystal floor"
-	icon = 'icons/turf/flooring/crystal.dmi'
-	build_type = null
-	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_CROWBAR
-	//color = "#00ffe1"
-
 /turf/simulated/floor/crystal
 	name = "crystal floor"
 	icon = 'icons/turf/flooring/crystal.dmi'
 	icon_state = ""
-	initial_flooring = /decl/flooring/crystal
-
+	initial_flooring = /singleton/flooring/crystal

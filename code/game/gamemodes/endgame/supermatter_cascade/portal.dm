@@ -19,7 +19,7 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/singularity/narsie/large/exit/update_icon()
-	overlays = 0
+	cut_overlays()
 
 /obj/singularity/narsie/large/exit/process(delta_time)
 	for(var/mob/M in GLOB.player_list)

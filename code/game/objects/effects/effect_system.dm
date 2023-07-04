@@ -237,8 +237,8 @@ steam.start() -- spawns the effect
 /* Not feasile until a later date
 /obj/effect/particle_effect/smoke/bad/Crossed(atom/movable/M as mob|obj)
 	..()
-	if(istype(M, /obj/item/projectile/beam))
-		var/obj/item/projectile/beam/B = M
+	if(istype(M, /obj/projectile/beam))
+		var/obj/projectile/beam/B = M
 		if(!(B in projectiles))
 			B.damage = (B.damage/2)
 			projectiles += B
@@ -246,7 +246,7 @@ steam.start() -- spawns the effect
 		to_chat(world, "Damage is: [B.damage]")
 	return 1
 
-/obj/effect/particle_effect/smoke/bad/proc/on_projectile_delete(obj/item/projectile/beam/proj)
+/obj/effect/particle_effect/smoke/bad/proc/on_projectile_delete(obj/projectile/beam/proj)
 	projectiles -= proj
 */
 
@@ -501,7 +501,7 @@ steam.start() -- spawns the effect
 		for(var/mob/M in viewers(1, location))
 			if (prob (50 * amount))
 				to_chat(M, "<span class='warning'>The explosion knocks you down.</span>")
-				M.Weaken(rand(1,5))
+				M.afflict_paralyze(20 * rand(1,5))
 		return
 	else
 		var/devst = -1

@@ -6,11 +6,11 @@
 /obj/item/defib_kit
 	name = "defibrillator"
 	desc = "A device that delivers powerful shocks to detachable paddles that resuscitate incapacitated patients."
-	icon = 'icons/obj/defibrillator.dmi'
+	icon = 'icons/obj/medical/defibrillator.dmi'
 	icon_state = "defibunit"
 	item_state = "defibunit"
 	slot_flags = SLOT_BACK
-	force = 5
+	damage_force = 5
 	throw_force = 6
 	preserve_item = 1
 	w_class = ITEMSIZE_LARGE
@@ -41,6 +41,8 @@
 
 
 /obj/item/defib_kit/update_icon()
+
+	cut_overlays()
 	var/list/new_overlays = list()
 
 	if(paddles && paddles.loc == src) //in case paddles got destroyed somehow.
@@ -59,12 +61,12 @@
 	else
 		new_overlays += "[initial(icon_state)]-nocell"
 
-	overlays = new_overlays
+	add_overlay(new_overlays)
 
 /obj/item/defib_kit/ui_action_click()
 	toggle_paddles()
 
-/obj/item/defib_kit/attack_hand(mob/user)
+/obj/item/defib_kit/attack_hand(mob/user, list/params)
 	if(loc == user)
 		toggle_paddles()
 	else
@@ -187,11 +189,11 @@
 /obj/item/shockpaddles
 	name = "defibrillator paddles"
 	desc = "A pair of plastic-gripped paddles with flat metal surfaces that are used to deliver powerful electric shocks."
-	icon = 'icons/obj/defibrillator.dmi'
+	icon = 'icons/obj/medical/defibrillator.dmi'
 	icon_state = "defibpaddles"
 	item_state = "defibpaddles"
 	gender = PLURAL
-	force = 2
+	damage_force = 2
 	throw_force = 6
 	w_class = ITEMSIZE_LARGE
 
@@ -270,7 +272,7 @@
 
 /obj/item/shockpaddles/proc/can_revive(mob/living/carbon/human/H) //This is checked right before attempting to revive
 
-	H.updatehealth()
+	H.update_health()
 
 	if(H.isSynthetic())
 		if(H.health + H.getOxyLoss() + H.getToxLoss() <= config_legacy.health_threshold_dead)
@@ -294,7 +296,7 @@
 /obj/item/shockpaddles/proc/check_contact(mob/living/carbon/human/H)
 	if(!combat)
 		for(var/obj/item/clothing/cloth in list(H.wear_suit, H.w_uniform))
-			if((cloth.body_parts_covered & UPPER_TORSO) && (cloth.clothing_flags & THICKMATERIAL))
+			if((cloth.body_cover_flags & UPPER_TORSO) && (cloth.clothing_flags & CLOTHING_THICK_MATERIAL))
 				return FALSE
 	return TRUE
 
@@ -334,35 +336,30 @@
 /obj/item/shockpaddles/proc/checked_use(var/charge_amt)
 	return 0
 
-/obj/item/shockpaddles/attack(mob/living/M, mob/living/user, var/target_zone)
-	var/mob/living/carbon/human/H = M
+/obj/item/shockpaddles/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/human/H = target
 	if(!istype(H) || user.a_intent == INTENT_HARM)
 		return ..() //Do a regular attack. Harm intent shocking happens as a hit effect
-
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(can_use(user, H))
 		busy = 1
 		update_icon()
-
 		do_revive(H, user)
-
 		busy = 0
 		update_icon()
-
-	return 1
 
 //Since harm-intent now skips the delay for deliberate placement, you have to be able to hit them in combat in order to shock people.
-/obj/item/shockpaddles/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	if(ishuman(target) && can_use(user, target))
+/obj/item/shockpaddles/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	if(ishuman(L) && can_use(user, L))
 		busy = 1
 		update_icon()
-
-		do_electrocute(target, user, hit_zone)
-
+		do_electrocute(L, user, target_zone)
 		busy = 0
 		update_icon()
-
-		return 1
-
+		return NONE
 	return ..()
 
 // This proc is used so that we can return out of the revive process while ensuring that busy and update_icon() are handled
@@ -473,19 +470,12 @@
 	add_attack_logs(user,H,"Shocked using [name]")
 
 /obj/item/shockpaddles/proc/make_alive(mob/living/carbon/human/M) //This revives the mob
-	dead_mob_list.Remove(M)
-	if((M in living_mob_list) || (M in dead_mob_list))
-		WARNING("Mob [M] was defibbed but already in the living or dead list still!")
-	living_mob_list += M
-
-	M.timeofdeath = 0
-	M.set_stat(UNCONSCIOUS) //Life() can bring them back to consciousness if it needs to.
-	M.failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
-	M.reload_fullscreen()
+	. = M.revive()
+	if(!.)
+		return
 
 	M.emote("gasp")
-	M.Weaken(rand(10,25))
-	M.updatehealth()
+	M.afflict_paralyze(20 * rand(10,25))
 
 /obj/item/shockpaddles/proc/make_announcement(var/message, var/msg_class)
 	audible_message("<b>\The [src]</b> [message]", "\The [src] vibrates slightly.")
@@ -591,12 +581,13 @@
 	return 1
 
 /obj/item/shockpaddles/standalone/checked_use(var/charge_amt)
-	SSradiation.radiate(src, charge_amt/12) //just a little bit of radiation. It's the price you pay for being powered by magic I guess
+	radiation_pulse(src, RAD_INTENSITY_STANDALONE_DEFIB)
 	return 1
 
 /obj/item/shockpaddles/standalone/process(delta_time)
 	if(fail_counter > 0)
-		SSradiation.radiate(src, fail_counter--)
+		fail_counter--
+		radiation_pulse(src, RAD_INTENSITY_STANDALONE_DEFIB_FAIL)
 	else
 		STOP_PROCESSING(SSobj, src)
 
@@ -653,18 +644,18 @@
 	item_state = "jumperpaddles0"
 	use_on_synthetic = 1
 
-// Rig Defibs
-/obj/item/shockpaddles/standalone/rig
+// Hardsuit Defibs
+/obj/item/shockpaddles/standalone/hardsuit
 	desc = "You shouldn't be seeing these."
 	chargetime = (2 SECONDS)
 
-/obj/item/shockpaddles/standalone/rig/checked_use(var/charge_amt)
+/obj/item/shockpaddles/standalone/hardsuit/checked_use(var/charge_amt)
 	return 1
 
-/obj/item/shockpaddles/standalone/rig/emp_act(severity)
+/obj/item/shockpaddles/standalone/hardsuit/emp_act(severity)
 	return
 
-/obj/item/shockpaddles/standalone/rig/can_use(mob/user, mob/M)
+/obj/item/shockpaddles/standalone/hardsuit/can_use(mob/user, mob/M)
 	return 1
 
 #undef DEFIB_TIME_LIMIT

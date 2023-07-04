@@ -19,16 +19,16 @@
 	update_icon()
 
 /obj/machinery/space_heater/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	icon_state = "sheater[on]"
 	if(panel_open)
-		overlays  += "sheater-open"
+		add_overlay("sheater-open")
 	if(on)
 		set_light(3, 3, "#FFCC00")
 	else
 		set_light(0)
 
-/obj/machinery/space_heater/examine(mob/user)
+/obj/machinery/space_heater/examine(mob/user, dist)
 	. = ..()
 	. += "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"]."
 	if(panel_open)
@@ -74,7 +74,7 @@
 		..()
 	return
 
-/obj/machinery/space_heater/attack_hand(mob/user as mob)
+/obj/machinery/space_heater/attack_hand(mob/user, list/params)
 	interact(user)
 
 /obj/machinery/space_heater/interact(mob/user as mob)
@@ -200,11 +200,7 @@
 	var/target_temp = T20C
 	var/mode = MODE_IDLE
 
-/obj/machinery/power/thermoregulator/Initialize(mapload)
-	.=..()
-	default_apply_parts()
-
-/obj/machinery/power/thermoregulator/examine(mob/user)
+/obj/machinery/power/thermoregulator/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>There is a small display that reads [target_temp]K.</span>"
 
@@ -234,7 +230,7 @@
 		return
 	..()
 
-/obj/machinery/power/thermoregulator/attack_hand(mob/user)
+/obj/machinery/power/thermoregulator/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	interact(user)
 
@@ -288,14 +284,16 @@
 	env.merge(removed)
 
 /obj/machinery/power/thermoregulator/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(on)
-		overlays += "lasergen-on"
+		overlays_to_add += "lasergen-on"
 		switch(mode)
 			if(MODE_HEATING)
-				overlays += "lasergen-heat"
+				overlays_to_add += "lasergen-heat"
 			if(MODE_COOLING)
-				overlays += "lasergen-cool"
+				overlays_to_add += "lasergen-cool"
+	add_overlay(overlays_to_add)
 
 /obj/machinery/power/thermoregulator/proc/turn_off()
 	on = 0

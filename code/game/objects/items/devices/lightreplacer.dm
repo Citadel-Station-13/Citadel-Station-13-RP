@@ -42,7 +42,7 @@
 
 	name = "light replacer"
 	desc = "A device to automatically replace lights. Refill with working lightbulbs, broken lightbulbs, or sheets of glass."
-	force = 8
+	damage_force = 8
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "lightreplacer0"
 	slot_flags = SLOT_BELT
@@ -64,7 +64,7 @@
 	. = ..()
 	failmsg = "The [name]'s refill light blinks red."
 
-/obj/item/lightreplacer/examine(mob/user)
+/obj/item/lightreplacer/examine(mob/user, dist)
 	. = ..()
 	. += "It has [uses] lights remaining."
 
@@ -135,6 +135,9 @@
 
 
 /obj/item/lightreplacer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	/* // This would probably be a bit OP. If you want it though, uncomment the code.
 	if(isrobot(user))
 		var/mob/living/silicon/robot/R = user

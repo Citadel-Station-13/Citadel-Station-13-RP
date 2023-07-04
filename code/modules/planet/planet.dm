@@ -11,8 +11,18 @@
 
 	var/datum/weather_holder/weather_holder
 
-	var/sun_position = 0 // 0 means midnight, 1 means noon.
-	var/list/sun = list("range","brightness","color","lum_r","lum_g","lum_b")
+	/// 0 means midnight, 1 means noon.
+	var/sun_position = 0
+	/// This a multiplier used to apply to the brightness of ambient lighting.  0.3 means 30% of the brightness of the sun.
+	var/sun_brightness_modifier = 0.5
+
+	/// The color currently applied to the sun.
+	var/sun_apparent_color
+	var/sun_apparent_brightness
+	var/sun_updating = FALSE
+	var/sun_next_color
+	var/sun_next_brightness
+
 	var/list/datum/lighting_corner/sunlit_corners = list()
 	var/list/expected_z_levels = list()
 
@@ -30,7 +40,10 @@
 
 /datum/planet/New()
 	..()
-	weather_holder = new(src)
+	if(isnull(weather_holder))
+		weather_holder = new(src)
+	else if(ispath(weather_holder))
+		weather_holder = new weather_holder(src)
 	current_time = current_time.make_random_time()
 	if(moon_name)
 		moon_phase = pick(list(
@@ -61,9 +74,28 @@
 	if(weather_holder)
 		weather_holder.process()
 
-/datum/planet/proc/update_sun_deferred(var/new_range, var/new_brightness, var/new_color)
-	sun["range"] = new_range
-	sun["brightness"] = new_brightness
-	sun["color"] = new_color
+/datum/planet/proc/update_sun_deferred(new_brightness, new_color)
+	set waitfor = FALSE
+	ASSERT(args.len < 3)
+	// Delta updates: changing the sun while it's still updating will permanently corrupt ambient lights (short of resetting them globally)
+	UNTIL(!sun_updating)
+	sun_updating = TRUE
+
+	sun_next_brightness = new_brightness
+	sun_next_color = new_color
+
 	needs_work |= PLANET_PROCESS_SUN
 
+/datum/planet/proc/update_sunlight()
+	if (sun_next_brightness == sun_apparent_brightness && sun_next_color == sun_apparent_color)
+		log_debug("update_sunlight(): apparent == next, not bothering")
+		return
+
+	for (var/turf/simulated/T as anything in planet_floors)
+		T.replace_ambient_light(sun_apparent_color, sun_next_color, sun_apparent_brightness, sun_next_brightness)
+
+		CHECK_TICK
+
+	sun_apparent_color = sun_next_color
+	sun_apparent_brightness = sun_next_brightness
+	sun_updating = FALSE

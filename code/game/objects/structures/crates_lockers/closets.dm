@@ -16,7 +16,7 @@
 
 	var/breakout = 0 //if someone is currently breaking out. mutex
 	var/breakout_time = 2 //2 minutes by default
-	var/breakout_sound = 'sound/effects/grillehit.ogg'	//Sound that plays while breaking out
+	breakout_sound = 'sound/effects/grillehit.ogg'	//Sound that plays while breaking out
 
 	var/storage_capacity = 2 * MOB_MEDIUM //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
@@ -32,11 +32,22 @@
 
 	var/list/starts_with
 
+
+	var/obj/item/electronics/airlock/lockerelectronics //Installed electronics
+	var/lock_in_use = FALSE //Someone is doing some stuff with the lock here, better not proceed further
+//	var/secure = FALSE //secure locker or not
+
+
 /obj/structure/closet/Initialize(mapload)
 	. = ..()
 	if(mapload && !opened)
 		addtimer(CALLBACK(src, .proc/take_contents), 0)
 	PopulateContents()
+	/*
+	if(secure)
+		lockerelectronics = new(src)
+		lockerelectronics.accesses = req_access
+	*/
 	// Closets need to come later because of spawners potentially creating objects during init.
 	return INITIALIZE_HINT_LATELOAD
 
@@ -69,7 +80,7 @@
 /obj/structure/closet/proc/PopulateContents()
 	return
 
-/obj/structure/closet/examine(mob/user)
+/obj/structure/closet/examine(mob/user, dist)
 	. = ..()
 	if(!opened)
 		var/content_size = 0
@@ -245,7 +256,7 @@
 			A.forceMove(src.loc)
 		qdel(src)
 
-/obj/structure/closet/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/closet/bullet_act(var/obj/projectile/Proj)
 	var/proj_damage = Proj.get_structure_damage()
 	if(!proj_damage)
 		return
@@ -336,7 +347,7 @@
 		return
 	if(O.loc == user)
 		return
-	if(user.restrained() || user.stat || user.weakened || user.stunned || user.paralysis)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		return
 	if((!( istype(O, /atom/movable) ) || O.anchored || !Adjacent(user) || !Adjacent(O) || !user.Adjacent(O) || user.contents.Find(src)))
 		return
@@ -363,7 +374,7 @@
 	if(!src.open())
 		to_chat(user, "<span class='notice'>It won't budge!</span>")
 
-/obj/structure/closet/attack_hand(mob/user as mob)
+/obj/structure/closet/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 	src.toggle(user)
 
@@ -385,7 +396,7 @@
 	set category = "Object"
 	set name = "Toggle Open"
 
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 
 	if(ishuman(usr) || isrobot(usr))
@@ -395,11 +406,11 @@
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
 /obj/structure/closet/update_icon()//Putting the sealed stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
-	overlays.Cut()
+	cut_overlays()
 	if(!opened)
 		icon_state = icon_closed
 		if(sealed)
-			overlays += "welded"
+			add_overlay("welded")
 	else
 		icon_state = icon_opened
 
@@ -419,7 +430,7 @@
 		return 0 //closed but not sealed...
 	return 1
 
-/obj/structure/closet/container_resist(mob/living/escapee)
+/obj/structure/closet/contents_resist(mob/escapee)
 	if(breakout)
 		return
 	if(!req_breakout() && !opened)

@@ -280,19 +280,6 @@
 
 	feedback_add_details("admin_verb","THInstm") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/verb/toggle_status_indicators()
-	set name = "Toggle Status Indicators"
-	set category = "Preferences"
-	set desc = "Enable/Disable seeing status indicators over peoples' heads."
-
-	var/pref_path = /datum/client_preference/status_indicators
-	toggle_preference(pref_path)
-	SScharacters.queue_preferences_save(prefs)
-
-	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/status_indicators)) ? "see" : "not see"] status indicators.")
-
-	feedback_add_details("admin_verb","TStatusIndicators")
-
 /client/verb/toggle_overhead_chat()
 	set name = "Toggle Overhead Chat"
 	set category = "Preferences"
@@ -306,19 +293,19 @@
 
 	feedback_add_details("admin_verb","TOHChat")
 
-/client/verb/toggle_scaling_viewport()
-	set name = "Toggle Scaling Viewport"
-	set category = "Preferences"
-	set desc = "Enable/Disable Viewport Scaling."
 
-	var/pref_path = /datum/client_preference/scaling_viewport
+/client/verb/toggle_subtle_emotes()
+	set name = "Toggle Subtle Emotes"
+	set category = "Preferences"
+	set desc = "Toggle seeing subtle emotes as a ghost."
+
+	var/pref_path = /datum/client_preference/subtle_see
 	toggle_preference(pref_path)
 	SScharacters.queue_preferences_save(prefs)
 
-	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/scaling_viewport)) ? "see" : "not see"] more...")
-	is_preference_enabled(/datum/client_preference/scaling_viewport) ? OnResize() : change_view(world.view)
-	feedback_add_details("admin_verb","TOHChat")
+	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/subtle_see)) ? "see" : "not see"] subtle emotes.")
 
+	feedback_add_details("admin_verb","TSubtleEmote")
 //Toggles for Staff
 //Developers
 
@@ -351,26 +338,11 @@
 
 	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-
-/client/proc/toggle_age_verification()
-	set name = "Toggle age verification status"
-	set category = "Debug"
-	set desc = "Toggles your age verified status."
-
-	var/pref_path = /datum/client_preference/debug/age_verified
-
-	toggle_preference(pref_path)
-
-	to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] be prompted to verify age.")
-
-	SScharacters.queue_preferences_save(prefs)
-
-	feedback_add_details("admin_verb","TAgeVerify") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 /mob/living/carbon/human/verb/toggle_pain_msg()
 	set name = "Toggle Pain Messages"
 	set category = "Preferences"
 	set desc = "Toggles pain messages."
+	set src = usr
 
 	if(painmsg)
 		src.painmsg = 0
@@ -379,11 +351,11 @@
 	to_chat(src,"You will [ (painmsg) ? "now" : "no longer"] see your own pain messages.")
 	feedback_add_details("admin_verb","painmsg") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-
 /mob/living/carbon/human/verb/acting()
 	set name = "Feign Impairment"
 	set category = "IC"
 	set desc = "Allows user to manually enable drunkenness, stutter, jitter, etc."
+	set src = usr
 
 	var/list/choices = list("Drunkenness", "Stuttering", "Jittering")
 	if(src.slurring >= 10 || src.stuttering >= 10 || src.jitteriness >= 100)

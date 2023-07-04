@@ -1,5 +1,6 @@
 /datum/species/tajaran
 	uid = SPECIES_ID_TAJARAN
+	id = SPECIES_ID_TAJARAN
 	name = SPECIES_TAJ
 	name_plural = "Tajaran"
 	category = "Tajaran"
@@ -13,15 +14,16 @@
 	tail_animation = 'icons/mob/species/tajaran/tail_greyscale.dmi'
 
 	max_additional_languages = 3
-	name_language = LANGUAGE_ID_TAJARAN
-	intrinsic_languages = LANGUAGE_ID_TAJARAN
+	name_language = /datum/language/tajaran
+	intrinsic_languages = /datum/language/tajaran
 	whitelist_languages = list(
-		LANGUAGE_ID_TAJARAN,
-		LANGUAGE_ID_TAJARAN_ALT,
-		LANGUAGE_ID_TAJARAN_SIGN
+		/datum/language/tajaran,
+		/datum/language/tajaranakhani,
+		/datum/language/tajsign
 	)
 
-	darksight = 8
+	vision_innate = /datum/vision/baseline/species_tier_2
+
 	slowdown  = -0.5
 	snow_movement = -1 //Ignores half of light snow
 
@@ -29,15 +31,16 @@
 	burn_mod  = 1.15
 	flash_mod = 1.1
 
+	//Cattos be hungy
 	metabolic_rate = 1.1
 	gluttonous = 0
+	hunger_factor = 0.1
 
 	color_mult = 1
 	health_hud_intensity = 2.5
 
 	max_age = 80
 
-	economic_modifier = 10
 
 	blurb = {"
 	The Tajaran are a mammalian species resembling roughly felines, hailing from Meralar in the Rarkajar system.
@@ -70,7 +73,7 @@
 
 	primitive_form = SPECIES_MONKEY_TAJ
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"

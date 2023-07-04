@@ -2,7 +2,7 @@
 /datum/gear/utility
 	name = "Briefcase"
 	path = /obj/item/storage/briefcase
-	sort_category = "Utility"
+	sort_category = LOADOUT_CATEGORY_UTILITY
 
 /datum/gear/utility/clipboard
 	name = "Clipboard"
@@ -223,6 +223,12 @@ modular computers
 /datum/gear/utility/dufflebag/black
 	name = "Dufflebag - Black"
 	path = /obj/item/storage/backpack/dufflebag/fluff
+
+/datum/gear/utility/rigbag
+	name = "Rig Storage Unit"
+	path = /obj/item/storage/backpack/rig
+	slot = SLOT_ID_BACK
+	cost = 0
 
 /datum/gear/utility/welding_helmet
 	name = "Welding Helmet"

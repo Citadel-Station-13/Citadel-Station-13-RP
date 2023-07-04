@@ -11,16 +11,16 @@
 		return
 
 	if(h_style)
-		var/datum/sprite_accessory/hair/hair_style = hair_styles_list[h_style]
+		var/datum/sprite_accessory/hair/hair_style = GLOB.legacy_hair_lookup[h_style]
 		var/selected_string
-		if(!(hair_style.flags & HAIR_TIEABLE))
+		if(!(hair_style.hair_flags & HAIR_TIEABLE))
 			to_chat(src, SPAN_WARNING("Your hair isn't long enough to tie."))
 			return
 		else
 			var/list/datum/sprite_accessory/hair/valid_hairstyles = list()
-			for(var/hair_string in hair_styles_list)
-				var/datum/sprite_accessory/hair/test = hair_styles_list[hair_string]
-				if(test.flags & HAIR_TIEABLE)
+			for(var/hair_string in GLOB.legacy_hair_lookup)
+				var/datum/sprite_accessory/hair/test = GLOB.legacy_hair_lookup[hair_string]
+				if(test.hair_flags & HAIR_TIEABLE)
 					valid_hairstyles.Add(hair_string)
 			selected_string = input("Select a new hairstyle", "Your hairstyle", hair_style) as null|anything in valid_hairstyles
 		if(incapacitated())
@@ -41,7 +41,7 @@
 	if(last_special > world.time)
 		return
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot tackle someone in your current state.")
 		return
 
@@ -60,7 +60,7 @@
 	if(last_special > world.time)
 		return
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot tackle in your current state.")
 		return
 
@@ -68,77 +68,17 @@
 
 	var/failed
 	if(prob(75))
-		T.Weaken(rand(0.5,3))
+		T.afflict_paralyze(20 * rand(0.5,3))
 	else
 		failed = 1
 
 	playsound(loc, 'sound/weapons/pierce.ogg', 25, 1, -1)
 	if(failed)
-		src.Weaken(rand(2,4))
+		src.afflict_paralyze(20 * rand(2,4))
 
 	for(var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))
-			O.show_message(text("<font color='red'><B>[] [failed ? "tried to tackle" : "has tackled"] down []!</font></B>", src, T), 1)
-
-/mob/living/carbon/human/proc/commune()
-	set category = "Abilities"
-	set name = "Commune with creature"
-	set desc = "Send a telepathic message to an unlucky recipient."
-
-	var/list/targets = list()
-	var/target = null
-	var/text = null
-	var/default_distance_mod = 0 SECONDS
-
-	if(nutrition < 50)
-		to_chat(src, SPAN_NOTICE("You don't have enough energy! Try eating. "))
-		return
-
-
-
-	for(var/datum/mind/possible_target in SSticker.minds)
-		if (istype(possible_target.current, /mob/living) && possible_target != src.mind)
-			LAZYADD(targets,possible_target.current)
-
-	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
-	if(!target)
-		return
-
-	text = input("What would you like to say?", "Speak to creature", null, null)
-	text = sanitize(text)
-
-	if(!text)
-		return
-
-	var/mob/living/M = target
-	if(M.stat == DEAD)
-		to_chat(src, "Not even a [src.species.name] can speak to the dead.")
-		return
-
-	//The further the target is, the longer it takes.
-	var/distance = get_dist(M.loc,loc)
-	var/distance_modifier
-	var/turf/target_location = get_turf(M.loc)
-	if(target_location)
-		if(target_location.z in GLOB.using_map.station_levels)
-			distance_modifier = 0	//No additional values if they're on-station
-	else
-		distance_modifier = default_distance_mod	//No quick snapchatting with someone off-station
-
-	var/delay = clamp((distance / 2), 1, 8) SECONDS + distance_modifier	//Half of distance worth of seconds, up to 8, plus 30 if they're off-station. Max: 38, min: 1.
-	src.visible_message(SPAN_WARNING("[src] seems to focus for a few seconds."),"You begin to seek [target] out. This may take a while.")
-
-	if(do_after(src, delay))
-		log_and_message_admins("COMMUNED to [key_name(M)]) [text]", src)
-
-		to_chat(M, SPAN_INTERFACE("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: <b>[text]</b>"))
-		nutrition -= 50
-		if(istype(M,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
-			if(H.species.name == src.species.name)
-				return
-			to_chat(H, SPAN_DANGER("Your nose begins to bleed..."))
-			H.drip(1)
+			O.show_message("<font color='red'><B>[src] [failed ? "tried to tackle" : "has tackled"] down [T]!</font></B>", 1)
 
 /mob/living/carbon/human/proc/regurgitate()
 	set name = "Regurgitate"
@@ -158,11 +98,20 @@
 	set desc = "Whisper silently to someone over a distance."
 	set category = "Abilities"
 
-	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
-	if(msg)
-		log_say("(PWHISPER to [key_name(M)]) [msg]", src)
-		to_chat(M, SPAN_GREEN("You hear a strange, alien voice in your head... <i>[msg]</i>"))
-		to_chat(src, SPAN_GREEN("You said: \"[msg]\" to [M]"))
+	var/msg_style = alert("Do you want to whisper or to project?", "Psychic style", "Whisper", "Projection", "Cancel")
+	switch(msg_style)
+		if ("Whisper")
+			var/msg = sanitize(input("Whisper Message:", "Psychic Whisper") as text|null)
+			if(msg)
+				log_say("(PWHISPER to [key_name(M)]) [msg]", src)
+				to_chat(M, SPAN_GREEN("You hear a strange, alien voice in your head... <i>[msg]</i>"))
+				to_chat(src, SPAN_GREEN("You said: \"[msg]\" to [M]"))
+		if ("Projection")
+			var/msg = sanitize(input("Projection Message:", "Psychic Whisper") as message|null)
+			if(msg)
+				log_say("(PWHISPER to [key_name(M)]) [msg]", src)
+				to_chat(M, SPAN_GREEN("A strange, alien Projection appears in your head... <i>[msg]</i>"))
+				to_chat(src, SPAN_GREEN("You projected: \"[msg]\" to [M]"))
 	return
 
 /mob/living/carbon/human/proc/diona_split_nymph()
@@ -179,7 +128,7 @@
 	transfer_languages(src, S)
 
 	if(mind)
-		mind.transfer_to(S)
+		mind.transfer(S)
 
 	message_admins("\The [src] has split into nymphs; player now controls [key_name_admin(S)]")
 	log_admin("\The [src] has split into nymphs; player now controls [key_name(S)]")
@@ -189,13 +138,13 @@
 	for(var/mob/living/carbon/alien/diona/D in src)
 		nymphs++
 		D.forceMove(T)
-		transfer_languages(src, D, WHITELISTED|RESTRICTED)
+		transfer_languages(src, D, LANGUAGE_WHITELISTED|LANGUAGE_RESTRICTED)
 		D.setDir(pick(NORTH, SOUTH, EAST, WEST))
 
 	if(nymphs < number_of_resulting_nymphs)
 		for(var/i in nymphs to (number_of_resulting_nymphs - 1))
 			var/mob/M = new /mob/living/carbon/alien/diona(T)
-			transfer_languages(src, M, WHITELISTED|RESTRICTED)
+			transfer_languages(src, M, LANGUAGE_WHITELISTED|LANGUAGE_RESTRICTED)
 			M.setDir(pick(NORTH, SOUTH, EAST, WEST))
 
 
@@ -214,8 +163,8 @@
 			qdel(Org)
 
 		// Purge the diona verbs.
-		verbs -= /mob/living/carbon/human/proc/diona_split_nymph
-		verbs -= /mob/living/carbon/human/proc/regenerate
+		remove_verb(src, /mob/living/carbon/human/proc/diona_split_nymph)
+		remove_verb(src, /mob/living/carbon/human/proc/regenerate)
 
 		for(var/obj/item/organ/external/E in organs) // Just fall apart.
 			E.droplimb(TRUE)
@@ -292,39 +241,6 @@
 		to_chat(src, SPAN_WARNING("You set your monitor to display [choice]!"))
 		update_icons_body()
 
-/mob/living/carbon/human
-
-/mob/living/carbon/human/proc/sonar_ping()
-	set name = "Sonar Pulse"
-	set desc = "Allows you to listen in to movement and noises around you."
-	set category = "Abilities"
-
-	if(incapacitated())
-		to_chat(src, SPAN_WARNING("You need to recover before you can use this ability."))
-		return
-	if(is_deaf())
-		to_chat(src, SPAN_WARNING("You are for all intents and purposes currently deaf!"))
-		return
-	if(!get_turf(src))
-		to_chat(src, SPAN_WARNING("Not from here you can't."))
-		return
-	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_SONAR_PULSE))
-		to_chat(src, SPAN_WARNING("You need to wait some more to do that!"))
-		return
-	TIMER_COOLDOWN_START(src, COOLDOWN_SONAR_PULSE, 2 SECONDS)
-
-	visible_message(
-		SPAN_WARNING("[src] emits a quiet click."),
-		SPAN_WARNING("You emit a quiet click."),
-		SPAN_WARNING("You hear a quiet, high-pitched click.")
-	)
-	plane_holder.set_vis(VIS_SONAR, TRUE)
-	var/datum/automata/wave/sonar/single_mob/sonar_automata = new
-	sonar_automata.receiver = src
-	sonar_automata.setup_auto(get_turf(src), 14)
-	sonar_automata.start()
-	addtimer(CALLBACK(plane_holder, /datum/plane_holder/proc/set_vis, VIS_SONAR, FALSE), 5 SECONDS, flags = TIMER_OVERRIDE|TIMER_UNIQUE)
-
 /mob/living/carbon/human/proc/regenerate()
 	set name = "Regenerate"
 	set desc = "Allows you to regrow limbs and heal organs after a period of rest."
@@ -342,7 +258,7 @@
 		src.visible_message("<B>[src]</B>'s flesh begins to mend...")
 
 	var/delay_length = round(active_regen_delay * species.active_regen_mult)
-	if(do_after(src,delay_length))
+	if(do_after(src, delay_length, mobility_flags = NONE))
 		nutrition -= 200
 
 		for(var/obj/item/organ/I in internal_organs)
@@ -378,7 +294,7 @@
 				var/organpath = species.has_organ[organtype]
 				var/obj/item/organ/Int = new organpath(src, TRUE)
 
-				Int.rejuvenate(TRUE)
+				Int.rejuvenate_legacy(TRUE)
 
 		handle_organs(2) // Update everything
 

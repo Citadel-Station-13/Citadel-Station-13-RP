@@ -1,14 +1,20 @@
 /obj/structure/grille
 	name = "grille"
 	desc = "A flimsy lattice of metal rods, with screws to secure it to the floor."
-	icon = 'icons/obj/structures_vr.dmi'
+	icon = 'icons/obj/structures/grille.dmi'
 	icon_state = "grille"
 	density = TRUE
 	anchored = TRUE
 	pass_flags_self = ATOM_PASS_GRILLE
 	pressure_resistance = 5*ONE_ATMOSPHERE
+	rad_flags = RAD_BLOCK_CONTENTS
 	layer = TABLE_LAYER
 	explosion_resistance = 1
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_GRILLE)
+	canSmoothWith = (SMOOTH_GROUP_GRILLE)
+
 	var/health = 10
 	var/destroyed = 0
 
@@ -25,7 +31,7 @@
 /obj/structure/grille/Bumped(atom/user)
 	if(ismob(user)) shock(user, 70)
 
-/obj/structure/grille/attack_hand(mob/user as mob)
+/obj/structure/grille/attack_hand(mob/user, list/params)
 
 	user.setClickCooldown(user.get_attack_speed())
 	playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
@@ -50,11 +56,11 @@
 	attack_generic(user,damage_dealt,attack_message)
 
 /obj/structure/grille/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover, /obj/item/projectile) && prob(30))
+	if(istype(mover, /obj/projectile) && prob(30))
 		return TRUE
 	return ..()
 
-/obj/structure/grille/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/grille/bullet_act(var/obj/projectile/Proj)
 	if(!Proj)	return
 
 	//Flimsy grilles aren't so great at stopping projectiles. However they can absorb some of the impact
@@ -135,15 +141,15 @@
 		return
 //window placing end
 
-	else if((W.flags & NOCONDUCT) || !shock(user, 70))
+	else if((W.atom_flags & NOCONDUCT) || !shock(user, 70))
 		user.setClickCooldown(user.get_attack_speed(W))
 		user.do_attack_animation(src)
 		playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
 		switch(W.damtype)
 			if("fire")
-				health -= W.force
+				health -= W.damage_force
 			if("brute")
-				health -= W.force * 0.1
+				health -= W.damage_force * 0.1
 	healthcheck()
 	..()
 	return
@@ -184,7 +190,7 @@
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
-			if(user.stunned)
+			if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 				return 1
 		else
 			return 0

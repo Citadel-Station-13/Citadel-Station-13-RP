@@ -20,8 +20,8 @@
 	icon_state = "secbot0"
 	maxHealth = 100
 	health = 100
-	req_one_access = list(access_security, access_forensics_lockers)
-	botcard_access = list(access_security, access_sec_doors, access_forensics_lockers, access_maint_tunnels)
+	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_FORENSICS)
+	botcard_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_FORENSICS, ACCESS_ENGINEERING_MAINT)
 	patrol_speed = 2
 	target_speed = 3
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/secbot)
@@ -101,8 +101,8 @@
 
 	xeno_harm_strength = 9 // Weaker than regular slimesky but they can stun.
 	baton_glow = "#33CCFF"
-	req_one_access = list(access_research, access_robotics)
-	botcard_access = list(access_research, access_robotics, access_xenobiology, access_xenoarch, access_tox, access_tox_storage, access_maint_tunnels)
+	req_one_access = list(ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_ROBOTICS)
+	botcard_access = list(ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_ROBOTICS, ACCESS_SCIENCE_XENOBIO, ACCESS_SCIENCE_XENOARCH, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_ENGINEERING_MAINT)
 	used_weapon = /obj/item/melee/baton/slime
 	var/xeno_stun_strength = 5 // How hard to slimebatoned()'d naughty slimes. 5 works out to 2 discipline and 5 weaken.
 
@@ -157,15 +157,15 @@
 		data["check_arrest"] = check_arrest
 		data["arrest_type"] = arrest_type
 		data["declare_arrests"] = declare_arrests
-		if(GLOB.using_map.bot_patrolling)
+		if((LEGACY_MAP_DATUM).bot_patrolling)
 			data["will_patrol"] = will_patrol
 
 	return data
 
-/mob/living/bot/secbot/attack_hand(var/mob/user)
+/mob/living/bot/secbot/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
-/mob/living/bot/secbot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/secbot/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -225,7 +225,7 @@
 	if(health < curhealth && on == TRUE)
 		react_to_attack(user)
 
-/mob/living/bot/secbot/bullet_act(var/obj/item/projectile/P)
+/mob/living/bot/secbot/bullet_act(var/obj/projectile/P)
 	var/curhealth = health
 	var/mob/shooter = P.firer
 	. = ..()
@@ -380,7 +380,7 @@
 			if(do_mob(src, H, 60))
 				if(!H.handcuffed)
 					var/type
-					if(istype(H.back, /obj/item/rig) && istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig))
+					if(istype(H.back, /obj/item/hardsuit) && istype(H.gloves,/obj/item/clothing/gloves/gauntlets/hardsuit))
 						type = /obj/item/handcuffs/cable // Better to be cable cuffed than stun-locked
 					else
 						type = /obj/item/handcuffs
@@ -414,7 +414,7 @@
 
 	var/obj/item/secbot_assembly/Sa = new /obj/item/secbot_assembly(Tsec)
 	Sa.build_step = 1
-	Sa.overlays += image('icons/obj/aibots.dmi', "hs_hole")
+	Sa.add_overlay(image('icons/obj/aibots.dmi', "hs_hole"))
 	Sa.created_name = name
 	new /obj/item/assembly/prox_sensor(Tsec)
 	new used_weapon(Tsec)
@@ -485,7 +485,7 @@
 		var/obj/item/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
 			build_step = 1
-			overlays += image('icons/obj/aibots.dmi', "hs_hole")
+			add_overlay(image('icons/obj/aibots.dmi', "hs_hole"))
 			to_chat(user, "You weld a hole in \the [src].")
 
 	else if(isprox(W) && (build_step == 1))
@@ -493,7 +493,7 @@
 			return
 		build_step = 2
 		to_chat(user, "You add \the [W] to [src].")
-		overlays += image('icons/obj/aibots.dmi', "hs_eye")
+		add_overlay(image('icons/obj/aibots.dmi', "hs_eye"))
 		name = "helmet/signaler/prox sensor assembly"
 
 	else if((istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm) || (istype(W, /obj/item/organ/external/arm) && ((W.name == "robotic right arm") || (W.name == "robotic left arm")))) && build_step == 2)
@@ -502,7 +502,7 @@
 		build_step = 3
 		to_chat(user, "You add \the [W] to [src].")
 		name = "helmet/signaler/prox sensor/robot arm assembly"
-		overlays += image('icons/obj/aibots.dmi', "hs_arm")
+		add_overlay(image('icons/obj/aibots.dmi', "hs_arm"))
 
 	else if(istype(W, /obj/item/melee/baton) && build_step == 3)
 		if(!user.attempt_insert_item_for_installation(W, src))

@@ -41,15 +41,16 @@
 	air2.volume = ATMOS_DEFAULT_VOLUME_PUMP * 50//default is 200 L we give it 1000 L or 1m³
 
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
-	default_apply_parts()
 	update_icon()
+	var/list/overlays_to_add = list()
 	// TODO - Make these in actual icon states so its not silly like this
 	var/image/I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = dir)
 	I.color = PIPE_COLOR_GREY
-	overlays += I
-	I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = GLOB.reverse_dir[dir])
+	overlays_to_add += I
+	I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = global.reverse_dir[dir])
 	I.color = PIPE_COLOR_GREY
-	overlays += I
+	overlays_to_add += I
+	add_overlay(overlays_to_add)
 
 /obj/machinery/atmospherics/component/binary/massive_heat_pump/Destroy()
 	. = ..()
@@ -183,7 +184,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/component/binary/massive_heat_pump/attack_hand(mob/user)
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	add_fingerprint(usr)

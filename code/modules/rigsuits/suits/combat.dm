@@ -1,83 +1,128 @@
-/obj/item/clothing/head/helmet/space/rig/combat
+/obj/item/clothing/head/helmet/space/hardsuit/combat
 	light_overlay = "helmet_light_dual_green"
 
-/obj/item/rig/combat
+/datum/armor/hardsuit/combat
+	melee = 0.8
+	bullet = 0.65
+	laser = 0.5
+	energy = 0.25
+	bomb = 0.6
+	bio = 1.0
+	rad = 0.6
+
+/obj/item/hardsuit/combat
 	name = "combat hardsuit control module"
 	desc = "A sleek and dangerous hardsuit for active combat."
 	icon_state = "security_rig"
 	suit_type = "combat hardsuit"
-	armor = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 60)
+	armor_type = /datum/armor/hardsuit/combat
 	slowdown = 1
 	offline_slowdown = 3
 	offline_vision_restriction = 1
 
-	helm_type = /obj/item/clothing/head/helmet/space/rig/combat
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
+	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/combat
+	allowed = list(
+		/obj/item/gun,
+		/obj/item/flashlight,
+		/obj/item/tank,
+		/obj/item/suit_cooling_unit,
+		/obj/item/melee/baton,
+		/obj/item/storage/backpack,
+		/obj/item/bluespace_radio,
+	)
 
 
-/obj/item/rig/combat/equipped
+/obj/item/hardsuit/combat/equipped
 
 	initial_modules = list(
-		/obj/item/rig_module/mounted,
-		/obj/item/rig_module/vision/thermal,
-		/obj/item/rig_module/grenade_launcher,
-		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/power_sink,
-		/obj/item/rig_module/electrowarfare_suite,
-		/obj/item/rig_module/chem_dispenser/combat
+		/obj/item/hardsuit_module/mounted,
+		/obj/item/hardsuit_module/vision/thermal,
+		/obj/item/hardsuit_module/grenade_launcher,
+		/obj/item/hardsuit_module/ai_container,
+		/obj/item/hardsuit_module/power_sink,
+		/obj/item/hardsuit_module/electrowarfare_suite,
+		/obj/item/hardsuit_module/chem_dispenser/combat
 		)
 
-/obj/item/rig/combat/empty
+/obj/item/hardsuit/combat/empty
 	initial_modules = list(
-		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/electrowarfare_suite,
+		/obj/item/hardsuit_module/ai_container,
+		/obj/item/hardsuit_module/electrowarfare_suite,
 		)
 
-/obj/item/rig/military
+/datum/armor/hardsuit/military
+	melee = 0.8
+	bullet = 0.7
+	laser = 0.55
+	energy = 0.15
+	bomb = 0.8
+	bio = 1.0
+	rad = 0.3
+
+/obj/item/hardsuit/military
 	name = "military hardsuit control module"
 	desc = "An austere hardsuit used by paramilitary groups and real soldiers alike."
 	icon_state = "military_rig"
 	suit_type = "military hardsuit"
-	armor = list(melee = 80, bullet = 70, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 30)
+	armor_type = /datum/armor/hardsuit/military
 	slowdown = 1
 	offline_slowdown = 3
 	offline_vision_restriction = 1
-	allowed = list(/obj/item/flashlight, /obj/item/tank,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/handcuffs, \
-	/obj/item/t_scanner, /obj/item/rcd, /obj/item/weldingtool, /obj/item/tool, /obj/item/multitool, \
-	/obj/item/radio, /obj/item/analyzer,/obj/item/storage/briefcase/inflatable, /obj/item/melee/baton, /obj/item/gun, \
-	/obj/item/storage/firstaid, /obj/item/reagent_containers/hypospray, /obj/item/roller, /obj/item/suit_cooling_unit)
+	allowed = list(
+		/obj/item/flashlight,
+		/obj/item/tank,
+		/obj/item/ammo_magazine,
+		/obj/item/ammo_casing,
+		/obj/item/handcuffs,
+		/obj/item/t_scanner,
+		/obj/item/rcd,
+		/obj/item/weldingtool,
+		/obj/item/tool,
+		/obj/item/multitool,
+		/obj/item/radio,
+		/obj/item/analyzer,
+		/obj/item/storage/briefcase/inflatable,
+		/obj/item/melee/baton,
+		/obj/item/gun,
+		/obj/item/storage/firstaid,
+		/obj/item/reagent_containers/hypospray,
+		/obj/item/roller,
+		/obj/item/suit_cooling_unit,
+		/obj/item/storage/backpack,
+		/obj/item/bluespace_radio,
+	)
 
-	chest_type = /obj/item/clothing/suit/space/rig/military
-	helm_type = /obj/item/clothing/head/helmet/space/rig/military
-	boot_type = /obj/item/clothing/shoes/magboots/rig/military
-	glove_type = /obj/item/clothing/gloves/gauntlets/rig/military
+	chest_type = /obj/item/clothing/suit/space/hardsuit/military
+	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/military
+	boot_type = /obj/item/clothing/shoes/magboots/hardsuit/military
+	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/military
 
-/obj/item/clothing/head/helmet/space/rig/military
+/obj/item/clothing/head/helmet/space/hardsuit/military
 	light_overlay = "helmet_light_dual_green"
 	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
-/obj/item/clothing/suit/space/rig/military
+/obj/item/clothing/suit/space/hardsuit/military
 	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
-/obj/item/clothing/shoes/magboots/rig/military
+/obj/item/clothing/shoes/magboots/hardsuit/military
 	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
-/obj/item/clothing/gloves/gauntlets/rig/military
+/obj/item/clothing/gloves/gauntlets/hardsuit/military
 	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
-/obj/item/rig/military/equipped
+/obj/item/hardsuit/military/equipped
 	initial_modules = list(
-		/obj/item/rig_module/mounted/egun,
-		/obj/item/rig_module/vision/multi,
-		/obj/item/rig_module/grenade_launcher,
-		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/power_sink,
-		/obj/item/rig_module/electrowarfare_suite,
-		/obj/item/rig_module/chem_dispenser/combat,
+		/obj/item/hardsuit_module/mounted/egun,
+		/obj/item/hardsuit_module/vision/multi,
+		/obj/item/hardsuit_module/grenade_launcher,
+		/obj/item/hardsuit_module/ai_container,
+		/obj/item/hardsuit_module/power_sink,
+		/obj/item/hardsuit_module/electrowarfare_suite,
+		/obj/item/hardsuit_module/chem_dispenser/combat,
 		)
 
-/obj/item/rig/military/empty
+/obj/item/hardsuit/military/empty
 	initial_modules = list(
-		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/electrowarfare_suite,
+		/obj/item/hardsuit_module/ai_container,
+		/obj/item/hardsuit_module/electrowarfare_suite,
 		)

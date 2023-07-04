@@ -14,19 +14,19 @@ var/datum/controller/rogue/rm_controller
 	// Adjusting the numbers to where, yes, the first scan is going to suck for mining, but hopefully with the base difficulty still at 100 with this then *spawning*
 	// onto the level 5 difficulty will make up for this. - Enzo 9/8/2020
 	var/list/diffstep_nums = list(
-		1,
-		2,
-		3,
 		50,
+		75,
 		100,
+		125,
+		150,
 		200)
 
 	var/list/diffstep_chances = list(
-		10,
 		20,
 		30,
-		45,
-		60,
+		40,
+		50,
+		75,
 		80)
 
 	var/list/diffstep_strs = list(
@@ -189,7 +189,8 @@ var/datum/controller/rogue/rm_controller
 	if(ZM_target)
 		to_chat(world.log, "RM(stats): SCORING [ready_zones.len] zones (if unscored).") //DEBUG code for playtest stats gathering.
 		for(var/datum/rogue/zonemaster/ZM_toscore in ready_zones) //Score all the zones first.
-			if(ZM_toscore.scored) continue
+			if(ZM_toscore.scored)
+				continue
 			ZM_toscore.score_zone()
 		ZM_target.prepare_zone()
 	else

@@ -11,7 +11,7 @@ Contains helper procs for airflow, handled in /connection_group.
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/stun_cooldown, stuncd)
 	if(last_airflow_stun > world.time - stuncd)	return 0
 
-	if(!(status_flags & CANSTUN) && !(status_flags & CANWEAKEN))
+	if(!(status_flags & STATUS_CAN_STUN) && !(status_flags & STATUS_CAN_PARALYZE))
 		to_chat(src, "<span class='notice'>You stay upright as the air rushes past you.</span>")
 		return 0
 	if(buckled)
@@ -19,7 +19,7 @@ Contains helper procs for airflow, handled in /connection_group.
 		return 0
 	if(!lying)
 		to_chat(src, "<span class='warning'>The sudden rush of air knocks you over!</span>")
-	Weaken(2)
+	afflict_paralyze(20 * 2)
 	last_airflow_stun = world.time
 
 /mob/living/silicon/airflow_stun()
@@ -33,7 +33,7 @@ Contains helper procs for airflow, handled in /connection_group.
 
 /atom/movable/proc/check_airflow_movable(n)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, dense_pressure)
-	if(flags & ATOM_ABSTRACT)
+	if(atom_flags & ATOM_ABSTRACT)
 		return 0
 
 	if(anchored && !ismob(src))
@@ -85,7 +85,7 @@ Contains helper procs for airflow, handled in /connection_group.
 	return 1
 
 /mob/AirflowCanMove(n)
-	if(status_flags & GODMODE)
+	if(status_flags & STATUS_GODMODE)
 		return 0
 	if(buckled)
 		return 0
@@ -111,7 +111,7 @@ Contains helper procs for airflow, handled in /connection_group.
 		M.show_message("<span class='danger'>\The [src] slams into \a [A]!</span>",1,"<span class='danger'>You hear a loud slam!</span>",2)
 	playsound(src.loc, "smash.ogg", 25, 1, -1)
 	var/weak_amt = istype(A,/obj/item) ? A:w_class : rand(1,5) //Heheheh
-	Weaken(weak_amt)
+	afflict_paralyze(20 * weak_amt)
 	return ..()
 
 /obj/airflow_hit(atom/A)
@@ -149,16 +149,16 @@ Contains helper procs for airflow, handled in /connection_group.
 	GET_VSC_PROP(atmos_vsc, /atmos/airflow/impact_stun, impact_stun)
 
 	if(airflow_speed > 10)
-		Paralyse(round(airflow_speed * impact_stun))
-		Stun(paralysis + 3)
+		afflict_unconscious(20 * round(airflow_speed * impact_stun))
+		afflict_stun(20 * (round(airflow_speed * impact_stun) + 3))
 	else
-		Stun(round(airflow_speed * impact_stun/2))
+		afflict_stun(20 * round(airflow_speed * impact_stun/2))
 	return ..()
 
 /datum/zas_zone/proc/movables()
 	. = list()
 	for(var/turf/T in contents)
 		for(var/atom/movable/A in T)
-			if((A.flags & ATOM_ABSTRACT) || A.anchored || istype(A, /obj/effect) || istype(A, /mob/observer))
+			if((A.atom_flags & ATOM_ABSTRACT) || A.anchored || istype(A, /obj/effect) || istype(A, /mob/observer))
 				continue
 			. += A

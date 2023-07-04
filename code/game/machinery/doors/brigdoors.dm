@@ -21,7 +21,7 @@
 	icon = 'icons/obj/status_display.dmi'
 	icon_state = "frame"
 	desc = "A remote control for a door."
-	req_access = list(access_brig)
+	req_access = list(ACCESS_SECURITY_BRIG)
 	anchored = TRUE //Can't pick it up
 	density = FALSE //Can walk through it.
 	var/id = null   //Id of door it controls.
@@ -72,7 +72,7 @@
 		return
 
 	if(timing)
-		if(world.time - activation_time >= timer_duration)
+		if(REALTIMEOFDAY - activation_time >= timer_duration)
 			timer_end() //Open doors, reset timer, clear status screen
 		update_icon()
 
@@ -82,7 +82,7 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		return FALSE
 
-	activation_time = world.time
+	activation_time = REALTIMEOFDAY
 	timing = TRUE
 
 	for(var/datum/weakref/door_ref as anything in doors)
@@ -144,7 +144,7 @@
 	return TRUE
 
 /obj/machinery/door_timer/proc/time_left(seconds = FALSE)
-	. = max(0, timer_duration - (activation_time ? (world.time - activation_time) : 0))
+	. = max(0, timer_duration - (activation_time ? (REALTIMEOFDAY - activation_time) : 0))
 	if(seconds)
 		. /= 10
 
@@ -153,12 +153,12 @@
 	. = new_time == timer_duration //return 1 on no change
 	timer_duration = new_time
 	if(timer_duration && activation_time && timing) // Setting it while active will reset the activation time
-		activation_time = world.time
+		activation_time = REALTIMEOFDAY
 
 /obj/machinery/door_timer/attack_ai(mob/user)
 	return src.attack_hand(user)
 
-/obj/machinery/door_timer/attack_hand(mob/user)
+/obj/machinery/door_timer/attack_hand(mob/user, list/params)
 	if(..())
 		return TRUE
 	ui_interact(user)
@@ -192,8 +192,8 @@
 /obj/machinery/door_timer/proc/set_picture(state)
 	if(maptext)
 		maptext = ""
-	cut_overlays()
-	add_overlay(mutable_appearance('icons/obj/status_display.dmi', state))
+
+	set_overlays(state)
 
 //Checks to see if there's 1 line or 2, adds text-icons-numbers/letters over display
 // Stolen from status_display
@@ -275,7 +275,7 @@
 			investigate_log("[key_name(usr)] set cell [id]'s timer to [preset_time/10] seconds", INVESTIGATE_RECORDS)
 			log_attack("set cell [id]'s timer to [preset_time/10] seconds")
 			if(timing)
-				activation_time = world.time
+				activation_time = REALTIMEOFDAY
 		else
 			. = FALSE
 

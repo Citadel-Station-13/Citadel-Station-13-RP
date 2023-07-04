@@ -24,8 +24,7 @@
 
 	species_flags = NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
 
-	vision_flags = SEE_SELF
-	darksight = 5
+	vision_innate = /datum/vision/baseline/species_tier_1
 
 	brute_mod = 0.9
 	burn_mod = 0.9
@@ -37,10 +36,10 @@
 	siemens_coefficient = 0.9
 	heal_rate = 0
 
-	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
+	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 	species_appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR
 
-	valid_transform_species = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_DIONA, SPECIES_TESHARI, SPECIES_MONKEY, SPECIES_VOX)
+	valid_transform_species = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_DIONA, SPECIES_TESHARI, SPECIES_MONKEY, SPECIES_VOX)
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,

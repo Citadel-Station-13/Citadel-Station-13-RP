@@ -16,7 +16,7 @@
  *
  * return UI_state The state of the UI.
  */
-/datum/proc/ui_status(mob/user, datum/ui_state/state)
+/datum/proc/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
 	var/src_object = ui_host(user)
 	. = UI_CLOSE
 	if(!state)
@@ -29,8 +29,8 @@
 
 		// Regular ghosts can always at least view if in range.
 		if(user.client)
-			var/clientviewlist = getviewsize(user.client.view)
-			if(get_dist(src_object, user) < max(clientviewlist[1], clientviewlist[2]))
+			// todo: in view range for zooming
+			if(get_dist(src_object, user) < max(CEILING(user.client.current_viewport_width / 2, 1), CEILING(user.client.current_viewport_height / 2, 1)))
 				. = max(., UI_UPDATE)
 
 	// Check if the state allows interaction
@@ -74,7 +74,7 @@
 /*
 /mob/living/shared_ui_interaction(src_object)
 	. = ..()
-	if(!(mobility_flags & MOBILITY_UI) && . == UI_INTERACTIVE)
+	if(!(mobility_flags & MOBILITY_CAN_UI) && . == UI_INTERACTIVE)
 		return UI_UPDATE
 */
 

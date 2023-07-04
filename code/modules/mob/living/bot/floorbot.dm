@@ -18,7 +18,7 @@
 	icon = 'icons/obj/bots/floorbots.dmi'
 	icon_state = "floorbot"
 	base_icon_state = "toolbox"
-	req_one_access = list(access_robotics, access_construction)
+	req_one_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_ENGINEERING_CONSTRUCTION)
 
 	wait_if_pulled = TRUE
 	min_target_dist = 0
@@ -31,7 +31,7 @@
 	var/eattiles = FALSE
 	var/maketiles = FALSE
 	var/targetdirection = null
-	var/floor_build_type = /decl/flooring/tiling // Basic steel floor.
+	var/floor_build_type = /singleton/flooring/tiling // Basic steel floor.
 	var/toolbox = /obj/item/storage/toolbox/mechanical
 	skin = "blue" // Blue Toolbox is the default
 
@@ -89,7 +89,7 @@
 
 	return data
 
-/mob/living/bot/floorbot/attack_hand(var/mob/user)
+/mob/living/bot/floorbot/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /mob/living/bot/floorbot/emag_act(var/remaining_charges, var/mob/user)
@@ -101,7 +101,7 @@
 			playsound(src.loc, 'sound/machines/buzzbeep.ogg', 50, FALSE)
 		return TRUE
 
-/mob/living/bot/floorbot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/floorbot/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -410,7 +410,7 @@
 	icon_state = "toolbox-blue"
 	base_icon_state = "toolbox"
 	skin = "blue"
-	force = 3
+	damage_force = 3
 	throw_force = 10
 	throw_speed = 2
 	throw_range = 5

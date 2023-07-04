@@ -72,15 +72,19 @@
 		network2.update = 1
 
 /obj/machinery/atmospherics/pipeturbine/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	if (dP > 10)
-		overlays += image('icons/obj/pipeturbine.dmi', "moto-turb")
+		overlays_to_add += image('icons/obj/pipeturbine.dmi', "moto-turb")
 	if (kin_energy > 100000)
-		overlays += image('icons/obj/pipeturbine.dmi', "low-turb")
+		overlays_to_add += image('icons/obj/pipeturbine.dmi', "low-turb")
 	if (kin_energy > 500000)
-		overlays += image('icons/obj/pipeturbine.dmi', "med-turb")
+		overlays_to_add += image('icons/obj/pipeturbine.dmi', "med-turb")
 	if (kin_energy > 1000000)
-		overlays += image('icons/obj/pipeturbine.dmi', "hi-turb")
+		overlays_to_add += image('icons/obj/pipeturbine.dmi', "hi-turb")
+
+	add_overlay(overlays_to_add)
 
 /obj/machinery/atmospherics/pipeturbine/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
@@ -119,7 +123,7 @@
 /obj/machinery/atmospherics/pipeturbine/verb/rotate_clockwise()
 	set name = "Rotate Turbine Clockwise"
 	set category = "Object"
-	set src in view(1)
+	set src in oview(1)
 
 	if (usr.stat || usr.restrained() || anchored)
 		return
@@ -130,7 +134,7 @@
 /obj/machinery/atmospherics/pipeturbine/verb/rotate_counterclockwise()
 	set name = "Rotate Turbine Counterclockwise"
 	set category = "Object"
-	set src in view(1)
+	set src in oview(1)
 
 	if (usr.stat || usr.restrained() || anchored)
 		return

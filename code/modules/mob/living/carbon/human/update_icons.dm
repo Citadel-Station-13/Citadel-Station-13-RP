@@ -80,35 +80,33 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	stack_trace("CANARY: Old human update_icons_huds was called.")
 
 /mob/living/carbon/human/update_transform()
+	var/matrix/old_matrix = transform
+	var/matrix/M = matrix()
+
+	// handle scaling first, we don't want to have massive mobs still shift to align to tile
+	// when they're laying down.
 	var/desired_scale_x = size_multiplier * icon_scale_x
 	var/desired_scale_y = size_multiplier * icon_scale_y
 	if(istype(species))
 		desired_scale_x *= species.icon_scale_x
 		desired_scale_y *= species.icon_scale_y
+	M.Scale(desired_scale_x, desired_scale_y)
+	M.Translate(0, 16 * (desired_scale_y - 1))
 
-	var/matrix/M = matrix()
-	var/anim_time = 3
-
-	//Due to some involuntary means, you're laying now
-	if(lying && !resting && !sleeping)
-		anim_time = 1 //Thud
-
-	if(lying && !species.prone_icon) //Only rotate them if we're not drawing a specific icon for being prone.
-		var/randn = rand(1, 2)
-		if(randn <= 1) // randomly choose a rotation
-			M.Turn(-90)
-		else
-			M.Turn(90)
-		M.Scale(desired_scale_y, desired_scale_x)
+	// handle turning
+	M.Turn(lying)
+	// extremely lazy heuristic to see if we should shift down to appear to be, well, down.
+	if(lying < -45 || lying > 45)
 		M.Translate(1,-6)
-		set_base_layer(MOB_LAYER - 0.01)
-	else
-		M.Scale(desired_scale_x, desired_scale_y)
-		M.Translate(0, 16*(desired_scale_y-1))
-		set_base_layer(MOB_LAYER)
 
-	animate(src, transform = M, time = anim_time)
+	// fall faster if incapacitated
+	var/anim_time = CHECK_MOBILITY(src, MOBILITY_CAN_STAND)? 3 : 1
+
+	animate(src, transform = M, time = anim_time, flags = ANIMATION_PARALLEL)
+	appearance_flags = fuzzy? (appearance_flags & ~(PIXEL_SCALE)) : (appearance_flags | PIXEL_SCALE)
+	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_TRANSFORM, old_matrix, M)
 	update_icon_special() //May contain transform-altering things
+	update_ssd_overlay()
 
 //DAMAGE OVERLAYS
 //constructs damage icon for each organ from mask * damage field and saves it in our overlays_ lists
@@ -151,14 +149,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		else
 			DI = GLOB.damage_icon_parts[cache_index]
 
-		standing_image.overlays += DI
+		standing_image.add_overlay(DI)
 
 	overlays_standing[DAMAGE_LAYER]	= standing_image
 	apply_layer(DAMAGE_LAYER)
 
 //BASE MOB SPRITE
 /mob/living/carbon/human/update_icons_body()
-	if(QDESTROYING(src) || !(flags & INITIALIZED))
+	if(QDESTROYING(src) || !(atom_flags & ATOM_INITIALIZED))
 		return
 
 	var/husk_color_mod = rgb(96,88,80)
@@ -185,7 +183,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		g = "female"
 	*/
 
-	var/icon_key = "[species.get_race_key(src)][g][s_tone][r_skin][g_skin][b_skin]"
+	var/icon_key = "[species.get_race_key(src)][s_base][g][s_tone][r_skin][g_skin][b_skin]"
 	if(lip_style)
 		icon_key += "[lip_style]"
 	else
@@ -207,6 +205,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			icon_key += "0"
 			continue
 		if(part)
+			icon_key += "[part.name]"
 			icon_key += "[part.species.get_race_key(part.owner)]"
 			icon_key += "[part.dna.GetUIState(DNA_UI_GENDER)]"
 			icon_key += "[part.s_tone]"
@@ -228,7 +227,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			if(part.robotic >= ORGAN_ROBOT)
 				icon_key += "2[part.model ? "-[part.model]": ""]"
 				robolimb_count++
-				if((part.robotic == ORGAN_ROBOT || part.robotic == ORGAN_LIFELIKE) && (part.organ_tag == BP_HEAD || part.organ_tag == BP_TORSO || part.organ_tag == BP_GROIN))
+				if((part.robotic == ORGAN_ROBOT || part.robotic == ORGAN_LIFELIKE || part.robotic == ORGAN_NANOFORM) && (part.organ_tag == BP_HEAD || part.organ_tag == BP_TORSO || part.organ_tag == BP_GROIN))
 					robobody_count ++
 			else if(part.status & ORGAN_DEAD)
 				icon_key += "3"
@@ -297,6 +296,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	//tail
 	update_tail_showing()
+	//wing
 	update_wing_showing()
 
 /mob/living/carbon/human/proc/update_skin()
@@ -383,14 +383,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return
 
 	//masks and helmets can obscure our hair.
-	if( (head && (head.flags_inv & BLOCKHAIR)) || (wear_mask && (wear_mask.flags_inv & BLOCKHAIR)))
+	if( (head && (head.inv_hide_flags & BLOCKHAIR)) || (wear_mask && (wear_mask.inv_hide_flags & BLOCKHAIR)))
 		return
 
 	//base icons
 	var/icon/face_standing = icon(icon = 'icons/mob/human_face.dmi', icon_state = "bald_s")
 
 	if(f_style)
-		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[f_style]
+		var/datum/sprite_accessory/facial_hair_style = GLOB.legacy_facial_hair_lookup[f_style]
 		if(facial_hair_style && (!facial_hair_style.apply_restrictions || (src.species.get_bodytype_legacy(src) in facial_hair_style.species_allowed)))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
@@ -399,10 +399,10 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			face_standing.Blend(facial_s, ICON_OVERLAY)
 
 	if(h_style)
-		var/datum/sprite_accessory/hair/hair_style = hair_styles_list[h_style]
-		if(head && (head.flags_inv & BLOCKHEADHAIR))
-			if(!(hair_style.flags & HAIR_VERY_SHORT))
-				hair_style = hair_styles_list["Short Hair"]
+		var/datum/sprite_accessory/hair/hair_style = GLOB.legacy_hair_lookup[h_style]
+		if(head && (head.inv_hide_flags & BLOCKHEADHAIR))
+			if(!(hair_style.hair_flags & HAIR_VERY_SHORT))
+				hair_style = GLOB.legacy_hair_lookup["Short Hair"]
 
 		if(hair_style && (!hair_style.apply_restrictions || (src.species.get_bodytype_legacy(src) in hair_style.species_allowed)))
 			var/icon/grad_s
@@ -425,6 +425,8 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	var/icon/ears_s = get_ears_overlay()
 	if(ears_s)
+		if(ears_s.Height() > face_standing.Height())
+			face_standing.Crop(1, 1, face_standing.Width(), ears_s.Height())
 		face_standing.Blend(ears_s, ICON_OVERLAY)
 	if(istype(head_organ,/obj/item/organ/external/head/vr))
 		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
@@ -434,6 +436,8 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	var/icon/horns_s = get_horns_overlay()
 	if(horns_s)
+		if(horns_s.Height() > face_standing.Height())
+			face_standing.Crop(1, 1, face_standing.Width(), horns_s.Height())
 		face_standing.Blend(horns_s, ICON_OVERLAY)
 	if(istype(head_organ,/obj/item/organ/external/head/vr))
 		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
@@ -466,7 +470,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return
 
 	//Our glowy eyes should be hidden if some equipment hides them.
-	if(!should_have_organ(O_EYES) || (head && (head.flags_inv & BLOCKHAIR)) || (wear_mask && (wear_mask.flags_inv & BLOCKHAIR)))
+	if(!should_have_organ(O_EYES) || (head && (head.inv_hide_flags & BLOCKHAIR)) || (wear_mask && (wear_mask.inv_hide_flags & BLOCKHAIR)))
 		return
 
 	//Get the head, we'll need it later.
@@ -575,14 +579,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!w_uniform)
 		return
 
-	if(wear_suit && (wear_suit.flags_inv & HIDEJUMPSUIT) && !istype(wear_suit, /obj/item/clothing/suit/space/rig))
+	if(wear_suit && (wear_suit.inv_hide_flags & HIDEJUMPSUIT) && !istype(wear_suit, /obj/item/clothing/suit/space/hardsuit))
 		return //Wearing a suit that prevents uniform rendering
 
 	//Build a uniform sprite
 	var/icon/c_mask = tail_style?.clip_mask
 	if(c_mask)
 		var/obj/item/clothing/suit/S = wear_suit
-		if((wear_suit?.flags_inv & HIDETAIL) || (istype(S) && S.taurized)) // Reasons to not mask: 1. If you're wearing a suit that hides the tail or if you're wearing a taurized suit.
+		if((wear_suit?.inv_hide_flags & HIDETAIL) || (istype(S) && S.taurized)) // Reasons to not mask: 1. If you're wearing a suit that hides the tail or if you're wearing a taurized suit.
 			c_mask = null
 	var/list/MA_or_list = w_uniform.render_mob_appearance(src, SLOT_ID_UNIFORM, species.get_effective_bodytype(src, w_uniform, SLOT_ID_UNIFORM))
 
@@ -646,7 +650,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	remove_layer(EARS_LAYER)
 
-	if((head && head.flags_inv & (BLOCKHAIR | BLOCKHEADHAIR)) || (wear_mask && wear_mask.flags_inv & (BLOCKHAIR | BLOCKHEADHAIR)))
+	if((head && head.inv_hide_flags & (BLOCKHAIR | BLOCKHEADHAIR)) || (wear_mask && wear_mask.inv_hide_flags & (BLOCKHAIR | BLOCKHEADHAIR)))
 		return //Ears are blocked (by hair being blocked, overloaded)
 
 	if(!l_ear && !r_ear)
@@ -669,7 +673,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	remove_layer(SHOES_LAYER)
 	remove_layer(SHOES_LAYER_ALT) //Dumb alternate layer for shoes being under the uniform.
 
-	if(!shoes || (wear_suit && wear_suit.flags_inv & HIDESHOES) || (w_uniform && w_uniform.flags_inv & HIDESHOES))
+	if(!shoes || (wear_suit && wear_suit.inv_hide_flags & HIDESHOES) || (w_uniform && w_uniform.inv_hide_flags & HIDESHOES))
 		return //Either nothing to draw, or it'd be hidden.
 
 	for(var/f in list(BP_L_FOOT, BP_R_FOOT))
@@ -785,7 +789,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	remove_layer(FACEMASK_LAYER)
 
-	if(!wear_mask || (head && head.flags_inv & HIDEMASK))
+	if(!wear_mask || (head && head.inv_hide_flags & HIDEMASK))
 		return //Why bother, nothing in mask slot.
 
 	overlays_standing[FACEMASK_LAYER] = wear_mask.render_mob_appearance(src, SLOT_ID_MASK, species.get_effective_bodytype(src, wear_mask, SLOT_ID_MASK))
@@ -809,11 +813,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 /mob/living/carbon/human/update_hud()	//TODO: do away with this if possible
 	if(QDESTROYING(src))
 		return
-
+	// todo: this is utterly shitcode and fucking stupid ~silicons
+	// todo: the rest of hud code here ain't much better LOL
+	var/list/obj/item/relevant = get_equipped_items(TRUE, TRUE)
+	if(hud_used)
+		for(var/obj/item/I as anything in relevant)
+			position_hud_item(I, slot_by_item(I))
 	if(client)
-		client.screen |= contents
-		if(hud_used)
-			hud_used.hidden_inventory_update() 	//Updates the screenloc of the items on the 'other' inventory bar
+		client.screen |= relevant
 
 //update whether handcuffs appears on our hud.
 /mob/living/carbon/proc/update_hud_handcuffed()
@@ -824,7 +831,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		hud_used.l_hand_hud_object.update_icon()
 		hud_used.r_hand_hud_object.update_icon()
 
-/mob/living/carbon/human/update_handcuffed()
+/mob/living/carbon/human/update_inv_handcuffed()
 	if(QDESTROYING(src))
 		return
 
@@ -907,7 +914,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	var/species_tail = species.get_tail(src) // Species tail icon_state prefix.
 
 	//This one is actually not that bad I guess.
-	if(species_tail && !(wear_suit && wear_suit.flags_inv & HIDETAIL))
+	if(species_tail && !(wear_suit && wear_suit.inv_hide_flags & HIDETAIL))
 		var/icon/tail_s = get_tail_icon()
 		overlays_standing[used_tail_layer] = image(icon = tail_s, icon_state = "[species_tail]_s", layer = BODY_LAYER+used_tail_layer)
 		animate_tail_reset()
@@ -1030,6 +1037,13 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	apply_layer(WING_LAYER)
 
+/mob/living/carbon/human/proc/wing_spread_start()
+	if(QDESTROYING(src))
+		return
+
+	update_wing_showing("[species.get_wing(src)]_spr")
+
+
 /mob/living/carbon/human/update_modifier_visuals()
 	if(QDESTROYING(src))
 		return
@@ -1043,7 +1057,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	for(var/datum/modifier/M in modifiers)
 		if(M.mob_overlay_state)
 			var/image/I = image(icon = 'icons/mob/modifier_effects.dmi', icon_state = M.mob_overlay_state)
-			effects.overlays += I //TODO, this compositing is annoying.
+			effects.add_overlay(I) //TODO, this compositing is annoying.
 
 	overlays_standing[MODIFIER_EFFECTS_LAYER] = effects
 
@@ -1125,7 +1139,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	for(var/obj/item/organ/external/E in organs)
 		if(E.open)
 			var/image/I = image(icon = 'icons/mob/surgery.dmi',  icon_state = "[E.icon_name][round(E.open)]", layer = BODY_LAYER+SURGERY_LAYER)
-			total.overlays += I //TODO: This compositing is annoying
+			total.add_overlay(I) //TODO: This compositing is annoying
 
 	if(total.overlays.len)
 		overlays_standing[SURGERY_LAYER] = total
@@ -1143,7 +1157,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return image(wing_s)
 
 	//If you have custom wings selected
-	if(wing_style && (!(wear_suit && wear_suit.flags_inv & HIDETAIL) || !wing_style.clothing_can_hide))
+	if(wing_style && (!(wear_suit && wear_suit.inv_hide_flags & HIDETAIL) || !wing_style.clothing_can_hide))
 		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state))
 		if(wing_style.do_colouration)
 			if(grad_wingstyle)

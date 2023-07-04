@@ -15,7 +15,7 @@
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas."
 	icon = 'icons/obj/doors/DoorHazard.dmi'
 	icon_state = "door_open"
-	req_one_access = list(access_eva)	//access_atmospherics, access_engine_equip)
+	req_one_access = list(ACCESS_COMMAND_EVA)	//ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 	opacity = 0
 	density = 0
 	layer = DOOR_OPEN_LAYER - 0.01
@@ -77,7 +77,7 @@
 /obj/machinery/door/firedoor/get_material()
 	return get_material_by_name(MAT_STEEL)
 
-/obj/machinery/door/firedoor/examine(mob/user)
+/obj/machinery/door/firedoor/examine(mob/user, dist)
 	. = ..()
 	if(!density)
 		return
@@ -130,7 +130,7 @@
 			attack_hand(M)
 	return 0
 
-/obj/machinery/door/firedoor/attack_hand(mob/user as mob)
+/obj/machinery/door/firedoor/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	if(operating)
 		return//Already doing something.
@@ -436,29 +436,34 @@
 
 
 /obj/machinery/door/firedoor/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	if(density)
 		icon_state = "door_closed"
 		if(prying)
 			icon_state = "prying_closed"
 		if(hatch_open)
-			overlays += "hatch"
+			overlays_to_add += "hatch"
 		if(blocked)
-			overlays += "welded"
+			overlays_to_add += "welded"
 		if(pdiff_alert)
-			overlays += "palert"
+			overlays_to_add += "palert"
 		if(dir_alerts)
 			for(var/d=1;d<=4;d++)
 				var/cdir = GLOB.cardinal[d]
 				for(var/i=1;i<=ALERT_STATES.len;i++)
 					if(dir_alerts[d] & (1<<(i-1)))
-						overlays += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
+						overlays_to_add += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
 	else
 		icon_state = "door_open"
 		if(prying)
 			icon_state = "prying_open"
 		if(blocked)
-			overlays += "welded_open"
+			overlays_to_add += "welded_open"
+
+	add_overlay(overlays_to_add)
+
 	return
 
 //These are playing merry hell on ZAS.  Sorry fellas :(
@@ -522,6 +527,12 @@
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This model fits flush with the walls, and has a panel in the floor for maintenance."
 	icon = 'icons/obj/doors/DoorHazardHidden.dmi'
 	plane = TURF_PLANE
+
+	#ifndef IN_MAP_EDITOR
+	layer = HEAVYDUTY_WIRE_LAYER //Just below pipes
+	#else
+	layer = BELOW_OBJ_LAYER
+	#endif
 
 /obj/machinery/door/firedoor/glass/hidden/open()
 	. = ..()

@@ -7,7 +7,7 @@
 	density = 0
 	opacity = 0
 	plane = ABOVE_PLANE
-	flags = ATOM_ABSTRACT
+	atom_flags = ATOM_ABSTRACT
 	mouse_opacity = 0
 
 	var/mob/living/aiming_at   // Who are we currently targeting, if anyone?

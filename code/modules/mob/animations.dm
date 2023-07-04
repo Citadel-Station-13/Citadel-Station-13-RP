@@ -225,6 +225,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 		base_pixel_x = mob.base_pixel_x
 		base_pixel_y = mob.base_pixel_y
 
+	SEND_SIGNAL(src, COMSIG_ATOM_TEMPORARY_ANIMATION_START, 4)
+
 	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2)
 	animate(pixel_x = base_pixel_x, pixel_y = base_pixel_y, time = 2)
 
@@ -272,7 +274,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		I.dir = dir
 
 	// Show the overlay to the clients
-	flick_overlay(I, viewing, 5, TRUE) // 5 ticks/half a second
+	flick_overlay(I, viewing, 5) // 5 ticks/half a second
 
 	// Set the direction of the icon animation.
 	var/direction = get_dir(src, A)

@@ -92,7 +92,7 @@ var/list/all_supply_groups = list("Atmospherics",
 				var/list/L = access
 				O.req_access = L.Copy()
 			else
-				log_debug("<span class='danger'>Supply pack with invalid access restriction [access] encountered!</span>")
+				log_debug(SPAN_DEBUGERROR("Supply pack with invalid access restriction [access] encountered!"))
 
 /**
  * spawn an object of a certain type

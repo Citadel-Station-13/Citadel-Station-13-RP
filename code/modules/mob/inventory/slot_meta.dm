@@ -1,5 +1,6 @@
 /// global slot meta cache - all ids must be string!
-GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
+/// initialized by SSearly_init
+GLOBAL_LIST_EMPTY(inventory_slot_meta)
 /// global slot meta cache by type - only works for hardcoded
 GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
@@ -77,6 +78,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
  * Can equip supports some abstract slots but not others.
  */
 /datum/inventory_slot_meta
+	/// abstract type
+	abstract_type = /datum/inventory_slot_meta
+
 	//! Intrinsics
 	/// slot name
 	var/name = "unknown"
@@ -84,8 +88,6 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/id
 	/// next id
 	var/static/id_next = 0
-	/// abstract type
-	var/abstract_type = /datum/inventory_slot_meta
 	/// flags
 	var/inventory_slot_flags = INV_SLOT_IS_RENDERED
 	/// display order - higher is upper. a <hr> is applied on 0.
@@ -181,7 +183,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			render_default_icons -= bodytype_str
 			continue
 		var/icon/I = render_default_icons[bodytype_str]
-		render_state_cache[bodytype_str] = icon_states(I)
+		render_state_cache[bodytype_str] = fast_icon_states(I)
 		// turn into hash
 		for(var/state in render_state_cache[bodytype_str])
 			render_state_cache[bodytype_str][state] = TRUE
@@ -241,6 +243,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/back.dmi',
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/back.dmi',
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/back.dmi',
+		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/back.dmi',
 	)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"
@@ -263,6 +266,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/uniform.dmi',
 		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/uniform.dmi',
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/uniform.dmi',
+		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/uniform.dmi',
 	)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_",
@@ -296,7 +300,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			render_rolldown_icons -= bodytype_str
 			continue
 		var/icon/I = render_rolldown_icons[bodytype_str]
-		render_rolldown_states[bodytype_str] = icon_states(I)
+		render_rolldown_states[bodytype_str] = fast_icon_states(I)
 		// turn into hash
 		for(var/state in render_rolldown_states[bodytype_str])
 			render_rolldown_states[bodytype_str][state] = TRUE
@@ -308,7 +312,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			render_rollsleeve_icons -= bodytype_str
 			continue
 		var/icon/I = render_rollsleeve_icons[bodytype_str]
-		render_rollsleeve_states[bodytype_str] = icon_states(I)
+		render_rollsleeve_states[bodytype_str] = fast_icon_states(I)
 		// turn into hash
 		for(var/state in render_rollsleeve_states[bodytype_str])
 			render_rollsleeve_states[bodytype_str][state] = TRUE
@@ -363,6 +367,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_XENOHYBRID  = 'icons/mob/clothing/species/unathi/helmet.dmi',
 		BODYTYPE_STRING_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/helmet.dmi',
 		BODYTYPE_STRING_ZORREN_HIGH = 'icons/mob/clothing/species/fox/helmet.dmi',
+		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/head.dmi',
 	)
 	render_layer = HEAD_LAYER
 
@@ -396,6 +401,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_ZORREN_HIGH = 'icons/mob/clothing/species/fox/suits.dmi',
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/suits.dmi',
 		BODYTYPE_STRING_ZADDAT      = 'icons/mob/clothing/species/zaddat/suits.dmi',
+		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/suits.dmi',
 	)
 	render_layer = SUIT_LAYER
 
@@ -414,6 +420,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/belt.dmi',
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/belt.dmi',
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/belt.dmi',
+		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/belt.dmi',
 	)
 	render_layer = list(BELT_LAYER, BELT_LAYER_ALT)
 
@@ -460,6 +467,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi',
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi',
+		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/id.dmi',
 	)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"
@@ -483,6 +491,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/shoes.dmi',
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/feet.dmi',
 		BODYTYPE_STRING_ZADDAT    = 'icons/mob/clothing/species/zaddat/shoes.dmi',
+		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/feet.dmi',
  	)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"	// this doesn't actually exist, so item becomes invis
@@ -505,6 +514,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/gloves.dmi',
 		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/gloves.dmi',
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/hands.dmi',
+		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/hands.dmi',
 	)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"
@@ -527,6 +537,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/eyes.dmi',
 		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/eyes.dmi',
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/eyes.dmi',
+		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/eyes.dmi',
 	)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"
@@ -564,6 +575,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/ears.dmi',
 		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/ears.dmi',
+		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/ears.dmi',
 	)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"
@@ -616,6 +628,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_XENOCHIMERA = 'icons/mob/clothing/species/tajaran/mask.dmi',
 		BODYTYPE_STRING_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/mask.dmi',
 		BODYTYPE_STRING_ZORREN_HIGH = 'icons/mob/clothing/species/fox/mask.dmi',
+		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/mask.dmi',
+	)
+	render_fallback = list(
+		BODYTYPE_STRING_TESHARI = "_fallback_",
 	)
 	render_layer = FACEMASK_LAYER
 
@@ -635,6 +651,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi',
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi',
+		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/handcuffs.dmi',
 	)
 	render_layer = HANDCUFF_LAYER
 
@@ -651,6 +668,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi',
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi',
+		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/handcuffs.dmi'
 	)
 	render_layer = LEGCUFF_LAYER
 
@@ -728,6 +746,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		INHAND_DEFAULT_ICON_GUNS = 'icons/mob/items/lefthand_guns.dmi',
 		INHAND_DEFAULT_ICON_HATS = 'icons/mob/items/lefthand_hats.dmi',
 		INHAND_DEFAULT_ICON_HOLDERS = 'icons/mob/items/lefthand_holder.dmi',
+		INHAND_DEFAULT_ICON_KITCHEN = 'icons/mob/items/lefthand_kitchen.dmi',
 		INHAND_DEFAULT_ICON_MAGIC = 'icons/mob/items/lefthand_magic.dmi',
 		INHAND_DEFAULT_ICON_MASKS = 'icons/mob/items/lefthand_masks.dmi',
 		INHAND_DEFAULT_ICON_MATERIAL = 'icons/mob/items/lefthand_material.dmi',
@@ -755,6 +774,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		INHAND_DEFAULT_ICON_GUNS = 'icons/mob/items/righthand_guns.dmi',
 		INHAND_DEFAULT_ICON_HATS = 'icons/mob/items/righthand_hats.dmi',
 		INHAND_DEFAULT_ICON_HOLDERS = 'icons/mob/items/righthand_holder.dmi',
+		INHAND_DEFAULT_ICON_KITCHEN = 'icons/mob/items/righthand_kitchen.dmi',
 		INHAND_DEFAULT_ICON_MAGIC = 'icons/mob/items/righthand_magic.dmi',
 		INHAND_DEFAULT_ICON_MASKS = 'icons/mob/items/righthand_masks.dmi',
 		INHAND_DEFAULT_ICON_MATERIAL = 'icons/mob/items/righthand_material.dmi',
@@ -766,3 +786,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		INHAND_DEFAULT_ICON_UNIFORMS = 'icons/mob/items/righthand_uniforms.dmi',
 		INHAND_DEFAULT_ICON_64X64 = 'icons/mob/items/64x64_righthand.dmi',
 	)
+
+/datum/inventory_slot_meta/abstract/use_one_for_accessory
+	render_key = "acc"
+
+/datum/inventory_slot_meta/abstract/use_one_for_all
+	render_key = "all"

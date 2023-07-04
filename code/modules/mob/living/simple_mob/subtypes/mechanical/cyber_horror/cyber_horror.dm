@@ -35,7 +35,7 @@
 	movement_cooldown = 3
 	movement_sound = 'sound/effects/houndstep.ogg'
 	// To promote a more diverse weapon selection.
-	armor = list(melee = 25, bullet = 25, laser = -20, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 25, bullet = 25, laser = -20, bio = 100, rad = 100)
 	hovering = FALSE
 
 	say_list_type = /datum/say_list/cyber_horror
@@ -68,7 +68,7 @@
 	icon_state = "plasma_cyber_horror"
 	icon_dead = "plasma_cyber_horror_dead"
 
-	armor = list(melee = 40, bullet = -10, laser = 40, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 40, bullet = -10, laser = 40, bio = 100, rad = 100)
 	maxHealth = 75
 	health = 75
 
@@ -123,7 +123,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
  // You do NOT Want to get in touchy range of this thing.
-	armor = list(melee = 75, bullet = -10, laser = -25, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 75, bullet = -10, laser = -25, bio = 100, rad = 100)
 	hovering = FALSE
 
 
@@ -160,7 +160,7 @@
 
  // Do the actual leap.
  // Lets us pass over everything.
-	status_flags |= LEAPING
+	status_flags |= STATUS_LEAPING
 	visible_message(SPAN_DANGER("\The [src] leaps at \the [A]!"))
 	throw_at_old(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
 	playsound(src, leap_sound, 75, 1)
@@ -168,8 +168,8 @@
 	sleep(5)
 
  // Revert special passage ability.
-	if(status_flags & LEAPING)
-		status_flags &= ~LEAPING
+	if(status_flags & STATUS_LEAPING)
+		status_flags &= ~STATUS_LEAPING
  // Where we landed. This might be different than A's turf.
 	var/turf/T = get_turf(src)
 
@@ -192,7 +192,7 @@
 		break
 
 	if(victim)
-		victim.Weaken(2)
+		victim.afflict_paralyze(20 * 2)
 		victim.visible_message(SPAN_DANGER("\The [src] knocks down \the [victim]!"))
 		to_chat(victim, SPAN_CRITICAL("\The [src] jumps on you!"))
 		. = TRUE
@@ -205,7 +205,7 @@
 	icon_state = "vox_cyber_horror"
 	icon_dead = "vox_cyber_horror_dead"
 
-	armor = list(melee = 40, bullet = 30, laser = 30, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 40, bullet = 30, laser = 30, bio = 100, rad = 100)
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
 	meat_amount = 2
@@ -292,14 +292,14 @@
 	if(stealthed)
 		if(isliving(A))
 			var/mob/living/L = A
-			L.Weaken(stealthed_weaken_amount)
+			L.afflict_paralyze(20 * stealthed_weaken_amount)
 			to_chat(L, SPAN_DANGER("\The [src] tears into you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
 	unstealth()
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/bullet_act(obj/item/projectile/P)
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/bullet_act(obj/projectile/P)
 	. = ..()
 	break_cloak()
 
@@ -316,13 +316,13 @@
 	maxHealth = 100
 	health = 100
 
-	projectiletype = /obj/item/projectile/arc/blue_energy
+	projectiletype = /obj/projectile/arc/blue_energy
 	projectilesound = 'sound/weapons/Laser.ogg'
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
-	armor = list(melee = -30, bullet = 10, laser = 10, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = -30, bullet = 10, laser = 10, bio = 100, rad = 100)
 
-/obj/item/projectile/arc/blue_energy
+/obj/projectile/arc/blue_energy
 	name = "energy missle"
 	icon_state = "force_missile"
 	damage = 12
@@ -338,7 +338,7 @@
 	health = 50
 
 	base_attack_cooldown = 4
-	projectiletype = /obj/item/projectile/beam/drone
+	projectiletype = /obj/projectile/beam/drone
 	projectilesound = 'sound/weapons/laser3.ogg'
 	movement_sound = 'sound/effects/servostep.ogg'
 
@@ -390,9 +390,9 @@
 		L.reagents.add_reagent(poison_type, poison_per_bite)
 
 //These are the projectiles mobs use
-/obj/item/projectile/beam/drone
+/obj/projectile/beam/drone
 	damage = 3
-/obj/item/projectile/arc/blue_energy
+/obj/projectile/arc/blue_energy
 	name = "energy missle"
 	icon_state = "force_missile"
 	damage = 12
@@ -407,7 +407,7 @@
 	icon_dead = "the_changed_dead"
 	maxHealth = 450
 	health = 450
-	armor = list(melee = 30, bullet = 20, laser = 20, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, bio = 100, rad = 100)
 	response_harm = "harmlessly punches"
 	harm_intent_damage = 0
 	melee_damage_lower = 5
@@ -425,17 +425,17 @@
 	var/poison_type = "neurophage_nanites"
 
 	base_attack_cooldown = 30
-	projectiletype = /obj/item/projectile/arc/blue_energy/priest
+	projectiletype = /obj/projectile/arc/blue_energy/priest
 	projectilesound = 'sound/weapons/Laser.ogg'
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/priest
 
-/obj/item/projectile/arc/blue_energy/priest
+/obj/projectile/arc/blue_energy/priest
 	name = "nanite cloud"
 	icon_state = "particle-heavy"
 	damage = 15
 	damage_type = BRUTE
 
-/obj/item/projectile/arc/blue_energy/priest/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/arc/blue_energy/priest/on_hit(var/atom/target, var/blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		M.Confuse(rand(3,5))
@@ -487,7 +487,7 @@
 				visible_message(SPAN_WARNING( "[src] discharges a beam of concentrated energy!"))
 				playsound(src, 'sound/weapons/lasercannonfire.ogg', 70, 1)
 				face_atom(T)
-				var/obj/item/projectile/arc/radioactive/priest/ball = new(loc)
+				var/obj/projectile/arc/radioactive/priest/ball = new(loc)
 				ball.old_style_target(T, src)
 				ball.fire()
 				sleep(2 SECONDS)
@@ -495,15 +495,15 @@
 	visible_message(SPAN_WARNING( "[src] closes its reactor port."))
 	playsound(src, 'sound/effects/turret/move2.wav', 50, 1)
 
-/obj/item/projectile/arc/radioactive/priest
+/obj/projectile/arc/radioactive/priest
 	name  = "superheated plama discharge"
 	icon_state = "plasma3"
-	rad_power = 10
+	rad_power = RAD_INTENSITY_PROJ_ARC_HORROR_PRIEST
 
-/obj/item/projectile/arc/radioactive/priest/on_impact(turf/T)
+/obj/projectile/arc/radioactive/priest/on_impact(turf/T)
+	. = ..()
 	new /obj/effect/explosion(T)
-	SSradiation.radiate(T, rad_power)
-	explosion(T, 0, 1, 4, adminlog = FALSE)
+	explosion(T, 0, 1, 4)
 
 ////////////////////////
 //Lavaland Cyber_Horrors
@@ -588,7 +588,7 @@
 	desc = "The casing and writhing flesh of this body have been adorned in ritual wax and religious icons. Burned prayer sheets daubed in its own dripping blood flap in the stifling air. The cruciform body integrated into the machine wriggles feebly, its jaw tightly wagging up and down - it has no mouth."
 	maxHealth = 1500
 	health = 1500
-	armor = list(melee = 50, bullet = 35, laser = 35, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 50, bullet = 35, laser = 35, bio = 100, rad = 100)
 	movement_cooldown = 4
 	melee_damage_lower = 15
 	melee_damage_upper = 25

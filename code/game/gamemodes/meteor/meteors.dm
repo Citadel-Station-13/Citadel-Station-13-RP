@@ -19,7 +19,7 @@
 ///////////////////////////////
 
 /proc/spawn_meteors(var/number = 10, var/list/meteortypes, var/startSide, var/zlevel)
-	log_debug("Spawning [number] meteors on the [dir2text(startSide)] of [zlevel]")
+	log_debug(SPAN_DEBUG("Spawning [number] meteors on the [dir2text(startSide)] of [zlevel]"))
 	for(var/i = 0; i < number; i++)
 		spawn_meteor(meteortypes, startSide, zlevel)
 
@@ -27,7 +27,7 @@
 	if(isnull(startSide))
 		startSide = pick(GLOB.cardinal)
 	if(isnull(startLevel))
-		startLevel = pick(GLOB.using_map.station_levels - GLOB.using_map.sealed_levels)
+		startLevel = pick((LEGACY_MAP_DATUM).station_levels - (LEGACY_MAP_DATUM).sealed_levels)
 
 	var/turf/pickedstart = spaceDebrisStartLoc(startSide, startLevel)
 	var/turf/pickedgoal = spaceDebrisFinishLoc(startSide, startLevel)
@@ -272,7 +272,7 @@
 	if(explode)
 		explosion(src.loc, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 4, flash_range = 6, adminlog = 0)
 	new /obj/effect/debris/cleanable/greenglow(get_turf(src))
-	SSradiation.radiate(src, 50)
+	radiation_pulse(src, RAD_INTENSITY_RADIOACTIVE_METEOR)
 
 // This meteor fries toasters.
 /obj/effect/meteor/emp

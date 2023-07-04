@@ -8,7 +8,7 @@
 		return
 
 	if(!adult_form)
-		verbs -= /mob/living/carbon/alien/verb/evolve
+		remove_verb(src, /mob/living/carbon/alien/verb/evolve)
 		return
 
 	if(handcuffed || legcuffed)
@@ -34,7 +34,7 @@
 		adult.faction = src.faction
 
 	if(mind)
-		mind.transfer_to(adult)
+		mind.transfer(adult)
 		if (can_namepick_as_adult)
 			var/newname = sanitize(input(adult, "You have become an adult. Choose a name for yourself.", "Adult Name") as null|text, MAX_NAME_LEN)
 

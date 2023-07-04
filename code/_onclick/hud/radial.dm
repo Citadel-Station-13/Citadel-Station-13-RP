@@ -7,8 +7,8 @@ GLOBAL_LIST_EMPTY(radial_menus)
 
 /atom/movable/screen/radial
 	icon = 'icons/mob/radial.dmi'
-	layer = LAYER_HUD_ABOVE
-	plane = PLANE_PLAYER_HUD_ABOVE
+	layer = HUD_LAYER_ABOVE
+	plane = ABOVE_HUD_PLANE
 	var/datum/radial_menu/parent
 
 /atom/movable/screen/radial/slice
@@ -195,6 +195,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		E.name = "Next Page"
 		E.next_page = TRUE
 		E.add_overlay("radial_next")
+		E.compile_overlays()
 	else
 		if(istext(choices_values[choice_id]))
 			E.name = choices_values[choice_id]
@@ -206,6 +207,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		E.next_page = FALSE
 		if(choices_icons[choice_id])
 			E.add_overlay(choices_icons[choice_id])
+			E.compile_overlays()
 
 /datum/radial_menu/New()
 	close_button = new
@@ -240,7 +242,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 /datum/radial_menu/proc/extract_image(E)
 	var/mutable_appearance/MA = new /mutable_appearance(E)
 	if(MA)
-		MA.layer = LAYER_HUD_ABOVE
+		MA.layer = HUD_LAYER_ABOVE
 		MA.appearance_flags |= RESET_TRANSFORM
 	return MA
 
@@ -257,7 +259,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		return
 	current_user = M.client
 	//Blank
-	menu_holder = image(icon='icons/effects/effects.dmi',loc=anchor,icon_state="nothing",layer = LAYER_HUD_ABOVE)
+	menu_holder = image(icon='icons/effects/effects.dmi',loc=anchor,icon_state="nothing",layer = HUD_LAYER_ABOVE)
 	menu_holder.appearance_flags |= KEEP_APART
 	menu_holder.vis_contents += elements + close_button
 	current_user.images += menu_holder

@@ -32,12 +32,20 @@ SUBSYSTEM_DEF(machines)
 
 	var/list/current_run = list()
 
+/datum/controller/subsystem/machines/stat_entry()
+	var/msg = list(
+		"MC/MS: [round((cost ? global.processing_machines.len/cost_machinery : 0),0.1)]",
+		"&emsp;Cost: { PiNet: [round(cost_pipenets,1)] | M: [round(cost_machinery,1)] | PowNet: [round(cost_powernets,1)] | PowObj: [round(cost_power_objects,1)] }",
+		"&emsp;Total: { PiNet [global.pipe_networks.len] | M: [global.processing_machines.len] | PowNet: [global.powernets.len] | PowObj: [global.processing_power_items.len] }"
+	)
+	return ..() + jointext(msg, "<br>")
+
 /datum/controller/subsystem/machines/Initialize(timeofday)
 	makepowernets()
-	admin_notice("<span class='danger'>Initializing atmos machinery.</span>", R_DEBUG)
+	report_progress("Initializing atmos machinery...")
 	setup_atmos_machinery(GLOB.machines)
 	fire()
-	..()
+	return ..()
 
 /datum/controller/subsystem/machines/fire(resumed = 0)
 	var/timer = TICK_USAGE
@@ -81,27 +89,12 @@ SUBSYSTEM_DEF(machines)
 			T.broadcast_status()
 		CHECK_TICK
 
-/datum/controller/subsystem/machines/stat_entry()
-	var/msg = list()
-	msg += "C:{"
-	msg += "PI:[round(cost_pipenets,1)]|"
-	msg += "MC:[round(cost_machinery,1)]|"
-	msg += "PN:[round(cost_powernets,1)]|"
-	msg += "PO:[round(cost_power_objects,1)]"
-	msg += "} "
-	msg += "PI:[global.pipe_networks.len]|"
-	msg += "MC:[global.processing_machines.len]|"
-	msg += "PN:[global.powernets.len]|"
-	msg += "PO:[global.processing_power_items.len]|"
-	msg += "MC/MS:[round((cost ? global.processing_machines.len/cost_machinery : 0),0.1)]"
-	..(jointext(msg, null))
-
 /datum/controller/subsystem/machines/proc/process_pipenets(resumed = 0)
 	if (!resumed)
 		src.current_run = global.pipe_networks.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/current_run = src.current_run
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : max(world.tick_lag, wait * 0.1)
 	while(current_run.len)
 		var/datum/pipe_network/PN = current_run[current_run.len]
 		current_run.len--
@@ -119,7 +112,7 @@ SUBSYSTEM_DEF(machines)
 		src.current_run = global.processing_machines.Copy()
 
 	var/list/current_run = src.current_run
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : max(world.tick_lag, wait * 0.1)
 	while(current_run.len)
 		var/obj/machinery/M = current_run[current_run.len]
 		current_run.len--

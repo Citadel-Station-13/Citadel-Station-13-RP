@@ -5,7 +5,7 @@
 	icon_state = "dcell"
 	item_state = "egg6"
 	w_class = ITEMSIZE_SMALL
-	force = 0
+	damage_force = 0
 	throw_speed = 5
 	throw_range = 7
 	maxcharge = 480

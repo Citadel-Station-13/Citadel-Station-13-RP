@@ -35,7 +35,7 @@
 			qdel(src)
 	..()
 
-/obj/item/material/gravemarker/examine(mob/user)
+/obj/item/material/gravemarker/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) < 4)
 		if(grave_name)
@@ -58,6 +58,9 @@
 	..()
 
 /obj/item/material/gravemarker/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	src.add_fingerprint(user)
 
 	if(!isturf(user.loc))

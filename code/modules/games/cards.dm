@@ -67,7 +67,7 @@
 			return
 	..()
 
-/obj/item/deck/attack_hand(mob/user as mob)
+/obj/item/deck/attack_hand(mob/user, list/params)
 	var/mob/living/carbon/human/H = user
 	if(istype(src.loc, /obj/item/storage) || src == H.r_store || src == H.l_store || src.loc == user) // so objects can be removed from storage containers or pockets. also added a catch-all, so if it's in the mob you'll pick it up.
 		..()
@@ -212,7 +212,10 @@
 
 	..()
 
-/obj/item/deck/attack_self()
+/obj/item/deck/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	shuffle()
 
 
@@ -284,7 +287,10 @@
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 
 
-/obj/item/pack/attack_self(var/mob/user as mob)
+/obj/item/pack/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class ='danger'>[user] rips open \the [src]!</span>")
 	var/obj/item/hand/H = new()
 
@@ -343,12 +349,15 @@
 	if(!cards.len)
 		qdel(src)
 
-/obj/item/hand/attack_self(var/mob/user as mob)
+/obj/item/hand/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	concealed = !concealed
 	update_icon()
 	user.visible_message("<span class = 'notice'>\The [user] [concealed ? "conceals" : "reveals"] their hand.</span>")
 
-/obj/item/hand/examine(mob/user)
+/obj/item/hand/examine(mob/user, dist)
 	. = ..()
 	if((!concealed) && cards.len)
 		. += "It contains: "
@@ -392,7 +401,7 @@
 		qdel(src)
 	return
 
-/obj/item/hand/update_icon(var/direction = 0)
+/obj/item/hand/update_icon(direction = 0)
 	if(!cards.len)
 		return		// about to be deleted
 	if(cards.len > 1)
@@ -402,7 +411,7 @@
 		name = "a playing card"
 		desc = "A playing card."
 
-	overlays.Cut()
+	cut_overlays()
 
 
 	if(cards.len == 1)
@@ -410,7 +419,7 @@
 		var/image/I = new(src.icon, (concealed ? "[P.back_icon]" : "[P.card_icon]") )
 		I.pixel_x += (-5+rand(10))
 		I.pixel_y += (-5+rand(10))
-		overlays += I
+		add_overlay(I)
 		return
 
 	var/offset = FLOOR(20/cards.len, 1)
@@ -442,7 +451,7 @@
 			else
 				I.pixel_x = -7+(offset*i)
 		I.transform = M
-		overlays += I
+		add_overlay(I)
 		i++
 
 /obj/item/hand/dropped(mob/user, flags, atom/newLoc)

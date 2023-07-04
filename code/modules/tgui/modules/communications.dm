@@ -9,7 +9,7 @@
 #define COMM_MSGLEN_MINIMUM 6
 #define COMM_CCMSGLEN_MINIMUM 20
 
-/datum/tgui_module/communications
+/datum/tgui_module_old/communications
 	name = "Command & Communications"
 	tgui_id = "CommunicationsConsole"
 
@@ -37,19 +37,19 @@
 
 	var/list/req_access = list()
 
-/datum/tgui_module/communications/New(host)
+/datum/tgui_module_old/communications/New(host)
 	. = ..()
 	ATC = atc
 	crew_announcement = new()
 	crew_announcement.newscast = TRUE
 
-/datum/tgui_module/communications/ui_interact(mob/user, datum/tgui/ui)
-	if(GLOB.using_map && !(get_z(user) in GLOB.using_map.contact_levels))
+/datum/tgui_module_old/communications/ui_interact(mob/user, datum/tgui/ui)
+	if((LEGACY_MAP_DATUM) && !(get_z(user) in (LEGACY_MAP_DATUM).contact_levels))
 		to_chat(user, SPAN_DANGER("Unable to establish a connection: You're too far away from the station!"))
 		return FALSE
 	. = ..()
 
-/datum/tgui_module/communications/proc/is_authenticated(mob/user, message = TRUE)
+/datum/tgui_module_old/communications/proc/is_authenticated(mob/user, message = TRUE)
 	if(authenticated == COMM_AUTHENTICATION_MAX)
 		return COMM_AUTHENTICATION_MAX
 	else if(isobserver(user))
@@ -63,7 +63,7 @@
 			to_chat(user, SPAN_WARNING("Access denied."))
 		return COMM_AUTHENTICATION_NONE
 
-/datum/tgui_module/communications/proc/change_security_level(new_level)
+/datum/tgui_module_old/communications/proc/change_security_level(new_level)
 	tmp_alertlevel = new_level
 	var/old_level = GLOB.security_level
 	if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
@@ -87,7 +87,7 @@
 				feedback_inc("alert_comms_blue",1)
 	tmp_alertlevel = 0
 
-/datum/tgui_module/communications/ui_data(mob/user)
+/datum/tgui_module_old/communications/ui_data(mob/user)
 	var/list/data = ..()
 	data["is_ai"]         = isAI(user) || isrobot(user)
 	data["menu_state"]    = data["is_ai"] ? ai_menu_state : menu_state
@@ -95,7 +95,7 @@
 	data["authenticated"] = is_authenticated(user, 0)
 	data["authmax"] = data["authenticated"] == COMM_AUTHENTICATION_MAX ? TRUE : FALSE
 	data["atcsquelch"] = ATC.squelched
-	data["boss_short"] = GLOB.using_map.boss_short
+	data["boss_short"] = (LEGACY_MAP_DATUM).boss_short
 
 	data["stat_display"] =  list(
 		"type"   = display_type,
@@ -155,7 +155,7 @@
 		data["esc_status"] += " [timeleft / 60 % 60]:[add_zero(num2text(timeleft % 60), 2)]"
 	return data
 
-/datum/tgui_module/communications/proc/setCurrentMessage(mob/user, value)
+/datum/tgui_module_old/communications/proc/setCurrentMessage(mob/user, value)
 	current_viewing_message_id = value
 
 	var/datum/comm_message_listener/l = obtain_message_listener()
@@ -163,13 +163,13 @@
 		if(m["id"] == current_viewing_message_id)
 			current_viewing_message = m
 
-/datum/tgui_module/communications/proc/setMenuState(mob/user, value)
+/datum/tgui_module_old/communications/proc/setMenuState(mob/user, value)
 	if(isAI(user) || isrobot(user))
 		ai_menu_state = value
 	else
 		menu_state = value
 
-/datum/tgui_module/communications/proc/obtain_message_listener()
+/datum/tgui_module_old/communications/proc/obtain_message_listener()
 	if(istype(host, /datum/computer_file/program/comm))
 		var/datum/computer_file/program/comm/P = host
 		return P.message_core
@@ -197,7 +197,7 @@
 
 	frequency.post_signal(null, status_signal)
 
-/datum/tgui_module/communications/ui_act(action, params)
+/datum/tgui_module_old/communications/ui_act(action, params)
 	if(..())
 		return TRUE
 	if(using_map && !(get_z(usr) in using_map.contact_levels))
@@ -216,9 +216,9 @@
 			setMenuState(usr, COMM_SCREEN_MAIN)
 			return
 		// Login function.
-		if(check_access(usr, access_heads))
+		if(check_access(usr, ACCESS_COMMAND_BRIDGE))
 			authenticated = COMM_AUTHENTICATION_MIN
-		if(check_access(usr, access_captain))
+		if(check_access(usr, ACCESS_COMMAND_CAPTAIN))
 			authenticated = COMM_AUTHENTICATION_MAX
 			var/mob/M = usr
 			var/obj/item/card/id = M.GetIdCard()
@@ -337,7 +337,7 @@
 				if(centcomm_message_cooldown > world.time)
 					to_chat(usr, SPAN_WARNING("Arrays recycling. Please stand by."))
 					return
-				var/input = sanitize(input(usr, "Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement. \
+				var/input = sanitize(input(usr, "Please choose a message to transmit to [(LEGACY_MAP_DATUM).boss_short] via quantum entanglement. \
 				Please be aware that this process is very expensive, and abuse will lead to... termination.  \
 				Transmission does not guarantee a response. \
 				There is a 30 second delay before you may send another message, be clear, full and concise.", "Central Command Quantum Messaging") as null|message)
@@ -346,7 +346,7 @@
 				if(length(input) < COMM_CCMSGLEN_MINIMUM)
 					to_chat(usr, SPAN_WARNING("Message '[input]' is too short. [COMM_CCMSGLEN_MINIMUM] character minimum."))
 					return
-				CentCom_announce(input, usr)
+				message_centcom(input, usr)
 				to_chat(usr, SPAN_NOTICE("Message transmitted."))
 				log_game("[key_name(usr)] has made an IA [using_map.boss_short] announcement: [input]")
 				centcomm_message_cooldown = world.time + 300 // 30 seconds
@@ -374,7 +374,7 @@
 			emagged = FALSE
 			setMenuState(usr, COMM_SCREEN_MAIN)
 
-/datum/tgui_module/communications/ntos
+/datum/tgui_module_old/communications/ntos
 	ntos = TRUE
 
 /* Etc global procs */
@@ -391,7 +391,7 @@
 		return
 
 	if(deathsquad.deployed)
-		to_chat(user, "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
+		to_chat(user, "[(LEGACY_MAP_DATUM).boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
 		return
 
 	if(emergency_shuttle.deny_shuttle)
@@ -403,7 +403,7 @@
 		return
 
 	if(emergency_shuttle.going_to_centcom())
-		to_chat(user, "The emergency shuttle may not be called while returning to [GLOB.using_map.boss_short].")
+		to_chat(user, "The emergency shuttle may not be called while returning to [(LEGACY_MAP_DATUM).boss_short].")
 		return
 
 	if(emergency_shuttle.online())
@@ -426,7 +426,7 @@
 		return
 
 	if(emergency_shuttle.going_to_centcom())
-		to_chat(user, "The shuttle may not be called while returning to [GLOB.using_map.boss_short].")
+		to_chat(user, "The shuttle may not be called while returning to [(LEGACY_MAP_DATUM).boss_short].")
 		return
 
 	if(emergency_shuttle.online())
@@ -436,11 +436,11 @@
 	// if force is 0, some things may stop the shuttle call
 	if(!force)
 		if(emergency_shuttle.deny_shuttle)
-			to_chat(user, "[GLOB.using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later.")
+			to_chat(user, "[(LEGACY_MAP_DATUM).boss_short] does not currently have a shuttle available in your sector. Please try again later.")
 			return
 
 		if(deathsquad.deployed == 1)
-			to_chat(user, "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
+			to_chat(user, "[(LEGACY_MAP_DATUM).boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
 			return
 
 		if(world.time < 54000) // 30 minute grace period to let the game get going

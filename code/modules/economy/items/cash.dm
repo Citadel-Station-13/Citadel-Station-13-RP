@@ -7,13 +7,13 @@
 	opacity = 0
 	density = 0
 	anchored = 0.0
-	force = 1.0
+	damage_force = 1.0
 	throw_force = 1.0
 	throw_speed = 1
 	throw_range = 2
 	w_class = ITEMSIZE_SMALL
 	var/access = list()
-	access = access_crate_cash
+	access = ACCESS_MISC_CASHCRATE
 	var/worth = 0
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
@@ -35,13 +35,16 @@
 		qdel(src)
 
 /obj/item/spacecash/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	name = "[worth] Thaler\s"
 	if(worth in list(1000,500,200,100,50,20,10,1))
 		icon_state = "spacecash[worth]"
 		desc = "It's worth [worth] Thalers."
 		return
-	var/sum = src.worth
+
+	var/sum = worth
 	var/num = 0
 	for(var/i in list(1000,500,200,100,50,20,10,1))
 		while(sum >= i && num < 50)
@@ -52,15 +55,19 @@
 			M.Translate(rand(-6, 6), rand(-4, 8))
 			M.Turn(pick(-45, -27.5, 0, 0, 0, 0, 0, 0, 0, 27.5, 45))
 			banknote.transform = M
-			src.overlays += banknote
+			overlays_to_add += banknote
+
 	if(num == 0) // Less than one thaler, let's just make it look like 1 for ease
 		var/image/banknote = image('icons/obj/items.dmi', "spacecash1")
 		var/matrix/M = matrix()
 		M.Translate(rand(-6, 6), rand(-4, 8))
 		M.Turn(pick(-45, -27.5, 0, 0, 0, 0, 0, 0, 0, 27.5, 45))
 		banknote.transform = M
-		src.overlays += banknote
-	src.desc = "They are worth [worth] Thalers."
+		overlays_to_add += banknote
+
+	desc = "They are worth [worth] Thalers."
+
+	add_overlay(overlays_to_add)
 
 /obj/item/spacecash/proc/adjust_worth(var/adjust_worth = 0, var/update = 1)
 	worth += adjust_worth
@@ -78,7 +85,10 @@
 		update_icon()
 	return worth
 
-/obj/item/spacecash/attack_self()
+/obj/item/spacecash/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/amount = input(usr, "How many Thalers do you want to take? (0 to [src.worth])", "Take Money", 20) as num
 	if(!src || QDELETED(src))
 		return
@@ -108,6 +118,8 @@
 	. = amount
 	if(!worth)
 		qdel(src)
+		return
+	update_appearance()
 
 /obj/item/spacecash/amount_static_currency()
 	return worth
@@ -175,7 +187,10 @@
 	pickup_sound = 'sound/items/pickup/card.ogg'
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
 
-/obj/item/spacecash/ewallet/attack_self()
+/obj/item/spacecash/ewallet/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return //Don't act
 
 /obj/item/spacecash/ewallet/attackby()
@@ -184,7 +199,7 @@
 /obj/item/spacecash/ewallet/update_icon()
 	return //space cash
 
-/obj/item/spacecash/ewallet/examine(mob/user)
+/obj/item/spacecash/ewallet/examine(mob/user, dist)
 	. = ..()
 	if (!(user in view(2)) && user!=src.loc)
 		return

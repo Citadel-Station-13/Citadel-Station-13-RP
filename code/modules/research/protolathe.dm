@@ -3,7 +3,7 @@
 	icon = 'icons/obj/machines/fabricators/protolathe.dmi'
 	icon_state = "protolathe"
 	base_icon_state = "protolathe"
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	circuit = /obj/item/circuitboard/protolathe
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
@@ -20,10 +20,6 @@
 	materials = list(MAT_STEEL = 0, MAT_GLASS = 0, MAT_PLASTEEL = 0, MAT_PLASTIC = 0, MAT_GOLD = 0, MAT_SILVER = 0, MAT_COPPER = 0, MAT_OSMIUM = 0, MAT_LEAD = 0, MAT_PHORON = 0, MAT_URANIUM = 0, MAT_DIAMOND = 0, MAT_DURASTEEL = 0, MAT_VERDANTIUM = 0, MAT_MORPHIUM = 0, MAT_METALHYDROGEN = 0, MAT_SUPERMATTER = 0)
 
 	hidden_materials = list(MAT_PLASTEEL, MAT_DURASTEEL, MAT_VERDANTIUM, MAT_MORPHIUM, MAT_METALHYDROGEN, MAT_SUPERMATTER)
-
-/obj/machinery/r_n_d/protolathe/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
 
 /obj/machinery/r_n_d/protolathe/process(delta_time)
 	..()
@@ -133,9 +129,9 @@
 	if(materials[S.material.name] + amnt <= max_res_amount)
 		if(S && S.get_amount() >= 1)
 			var/count = 0
-			overlays += "fab-load-metal"
+			add_overlay("fab-load-metal")
 			spawn(10)
-				overlays -= "fab-load-metal"
+				cut_overlay("fab-load-metal")
 			while(materials[S.material.name] + amnt <= max_res_amount && S.get_amount() >= 1)
 				materials[S.material.name] += amnt
 				S.use(1)
@@ -147,9 +143,9 @@
 
 	var/stacktype = S.type
 	var/t = getMaterialName(stacktype)
-	overlays += "protolathe_[t]"
+	add_overlay("protolathe_[t]")
 	spawn(10)
-		overlays -= "protolathe_[t]"
+		cut_overlay("protolathe_[t]")
 
 	updateUsrDialog()
 	return

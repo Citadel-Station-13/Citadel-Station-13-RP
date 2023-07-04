@@ -9,7 +9,7 @@
 	item_state = "cutters"
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_WIRECUTTER
-	force = 6
+	damage_force = 6
 	throw_speed = 2
 	throw_range = 9
 	w_class = ITEMSIZE_SMALL
@@ -42,15 +42,15 @@
 				icon_state = "cutters_blue"
 				item_state = "cutters_blue"
 
-/obj/item/tool/wirecutters/attack(mob/living/carbon/C as mob, mob/user as mob)
+/obj/item/tool/wirecutters/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/C = target
 	if(istype(C) && user.a_intent == INTENT_HELP && (C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
 		usr.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
 		"You cut \the [C]'s restraints with \the [src]!",\
 		"You hear cable being cut.")
 		qdel(C.handcuffed)
 		return
-	else
-		..()
+	return ..()
 
 /obj/item/tool/wirecutters/bone
 	name = "primitive wirecutters"
@@ -123,7 +123,7 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	matter = list(MAT_METAL=150, MAT_SILVER=50)
 	tool_sound = 'sound/items/jaws_cut.ogg'
-	force = 15
+	damage_force = 15
 	tool_speed = 0.25
 	random_color = FALSE
 	var/obj/item/tool/crowbar/power/counterpart = null
@@ -141,9 +141,26 @@
 	return ..()
 
 /obj/item/tool/wirecutters/power/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	playsound(get_turf(user), 'sound/items/change_jaws.ogg', 50, 1)
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(!user.put_in_active_hand(counterpart))
 		counterpart.forceMove(get_turf(user))
 	forceMove(counterpart)
 	to_chat(user, "<span class='notice'>You attach the pry jaws to [src].</span>")
+
+/obj/item/tool/wirecutters/crystal
+	name = "crystalline shears"
+	desc = "A crystalline shearing tool of an alien make."
+	icon_state = "crystal_wirecutter"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	matter = list(MATERIAL_CRYSTAL = 1250)
+	tool_speed = 0.2
+
+/obj/item/tool/wirecutters/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)

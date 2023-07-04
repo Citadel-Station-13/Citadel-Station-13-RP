@@ -50,6 +50,8 @@
 	QDEL_NULL(closer)
 	return ..()
 
+
+
 /obj/item/storage/AltClick(mob/user)
 	if(user in is_seeing)
 		src.close(user)
@@ -127,8 +129,8 @@
 	user.client.screen -= src.closer
 	user.client.screen -= src.contents
 
-/obj/item/storage/proc/open(mob/user as mob)
-	if (src.use_sound && !isobserver(user))
+/obj/item/storage/proc/open(mob/user as mob, sound_played = FALSE)
+	if (src.use_sound && !isobserver(user) && !sound_played)
 		playsound(src.loc, src.use_sound, 50, 1, -5)
 
 	orient2hud(user)
@@ -204,7 +206,7 @@
 	src.closer.screen_loc = "LEFT+[3+cols+1]:16,BOTTOM+1:16"
 	return
 
-/obj/item/storage/proc/space_orient_objs(var/list/obj/item/display_contents)
+/obj/item/storage/proc/space_orient_objs(list/obj/item/display_contents)
 
 	var/baseline_max_storage_space = INVENTORY_STANDARD_SPACE / 2 //should be equal to default backpack capacity // This is a lie.
 	// Above var is misleading, what it does upon changing is makes smaller inventory sizes have smaller space on the UI.
@@ -214,15 +216,15 @@
 	var/stored_cap_width = 4 //length of sprite for start and end of the box representing the stored item
 	var/storage_width = min( round( 224 * max_storage_space/baseline_max_storage_space ,1) ,274) //length of sprite for the box representing total storage space
 
-	storage_start.overlays.Cut()
+	storage_start.cut_overlays()
 
 	var/matrix/M = matrix()
 	M.Scale((storage_width-storage_cap_width*2+3)/32,1)
-	src.storage_continue.transform = M
+	storage_continue.transform = M
 
-	src.storage_start.screen_loc = "LEFT+3:16,BOTTOM+1:16"
-	src.storage_continue.screen_loc = "LEFT+3:[storage_cap_width+(storage_width-storage_cap_width*2)/2+2],BOTTOM+1:16"
-	src.storage_end.screen_loc = "LEFT+3:[19+storage_width-storage_cap_width],BOTTOM+1:16"
+	storage_start.screen_loc = "LEFT+3:16,BOTTOM+1:16"
+	storage_continue.screen_loc = "LEFT+3:[storage_cap_width+(storage_width-storage_cap_width*2)/2+2],BOTTOM+1:16"
+	storage_end.screen_loc = "LEFT+3:[19+storage_width-storage_cap_width],BOTTOM+1:16"
 
 	var/startpoint = 0
 	var/endpoint = 1
@@ -238,18 +240,25 @@
 		M_continue.Scale((endpoint-startpoint-stored_cap_width*2)/32,1)
 		M_continue.Translate(startpoint+stored_cap_width+(endpoint-startpoint-stored_cap_width*2)/2 - 16,0)
 		M_end.Translate(endpoint-stored_cap_width,0)
-		src.stored_start.transform = M_start
-		src.stored_continue.transform = M_continue
-		src.stored_end.transform = M_end
-		storage_start.overlays += src.stored_start
-		storage_start.overlays += src.stored_continue
-		storage_start.overlays += src.stored_end
+		stored_start.transform = M_start
+		stored_continue.transform = M_continue
+		stored_end.transform = M_end
+
+		var/list/overlays_to_add = list()
+		overlays_to_add += stored_start
+		overlays_to_add += stored_continue
+		overlays_to_add += stored_end
+		storage_start.add_overlay(overlays_to_add)
 
 		O.screen_loc = "LEFT+3:[round((startpoint+endpoint)/2)+2],BOTTOM+1:16"
 		O.maptext = ""
 		O.hud_layerise()
 
-	src.closer.screen_loc = "LEFT+3:[storage_width+19],BOTTOM+1:16"
+	// If we're not overloaded, force overlays to build now to reduce visual lag.
+	if (!TICK_CHECK)
+		storage_start.compile_overlays()
+
+	closer.screen_loc = "LEFT+3:[storage_width+19],BOTTOM+1:16"
 	return
 
 
@@ -349,7 +358,7 @@
 
 	W.forceMove(src)
 	W.on_enter_storage(src)
-	W.item_flags |= IN_STORAGE
+	W.item_flags |= ITEM_IN_STORAGE
 	if(user)
 		if(!prevent_warning)
 			for(var/mob/M in viewers(user))
@@ -397,14 +406,14 @@
 	if(W.maptext)
 		W.maptext = ""
 	W.on_exit_storage(src)
-	W.item_flags &= ~IN_STORAGE
+	W.item_flags &= ~ITEM_IN_STORAGE
 	update_icon()
 	return 1
 
 /obj/item/storage/Exited(atom/movable/AM, atom/newLoc)
 	if(isitem(AM))
 		var/obj/item/I = AM
-		if(I.item_flags & IN_STORAGE)
+		if(I.item_flags & ITEM_IN_STORAGE)
 			remove_from_storage(I, null, FALSE)
 	return ..()
 
@@ -439,7 +448,7 @@
 	W.add_fingerprint(user)
 	return handle_item_insertion(W, user)
 
-/obj/item/storage/attack_hand(mob/user as mob)
+/obj/item/storage/attack_hand(mob/user, list/params)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.l_store == src && !H.get_active_held_item())	//Prevents opening if it's in a pocket.
@@ -513,14 +522,14 @@
 	. = ..()
 
 	if(allow_quick_empty)
-		verbs += /obj/item/storage/verb/quick_empty
+		add_obj_verb(src, /obj/item/storage/verb/quick_empty)
 	else
-		verbs -= /obj/item/storage/verb/quick_empty
+		remove_obj_verb(src, /obj/item/storage/verb/quick_empty)
 
 	if(allow_quick_gather)
-		verbs += /obj/item/storage/verb/toggle_gathering_mode
+		add_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
 	else
-		verbs -= /obj/item/storage/verb/toggle_gathering_mode
+		remove_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
 
 	src.boxes = new /atom/movable/screen/storage(  )
 	src.boxes.name = "storage"
@@ -589,11 +598,21 @@
 			O.emp_act(severity)
 	..()
 
-/obj/item/storage/attack_self(mob/user as mob)
+/obj/item/storage/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if((user.get_active_held_item() == src) || (isrobot(user)) && allow_quick_empty)
 		if(src.verbs.Find(/obj/item/storage/verb/quick_empty))
 			src.quick_empty()
 			return 1
+
+	if(user in is_seeing)
+		src.close(user)
+	else if(isliving(user) && user.Reachability(src))
+		src.open(user)
+	else
+		return ..()
 
 //Returns the storage depth of an atom. This is the number of storage items the atom is contained in before reaching toplevel (the area).
 //Returns -1 if the atom was not found on container.
@@ -680,7 +699,7 @@
 	var/closed_state
 
 /obj/item/storage/trinketbox/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(open)
 		icon_state = open_state
 
@@ -693,7 +712,7 @@
 			else if(istype(contents[1], /obj/item/clothing/accessory/medal))
 				contained_image = "medal_trinket"
 			if(contained_image)
-				overlays += contained_image
+				add_overlay(contained_image)
 	else
 		icon_state = closed_state
 
@@ -704,12 +723,15 @@
 		closed_state = "[initial(icon_state)]"
 	. = ..()
 
-/obj/item/storage/trinketbox/attack_self()
+/obj/item/storage/trinketbox/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	open = !open
 	update_icon()
 	..()
 
-/obj/item/storage/trinketbox/examine(mob/user)
+/obj/item/storage/trinketbox/examine(mob/user, dist)
 	. = ..()
 	if(open && contents.len)
 		var/display_item = contents[1]
@@ -717,3 +739,10 @@
 
 /obj/item/storage/AllowDrop()
 	return TRUE
+
+/obj/item/storage/clean_radiation(str, mul, cheap)
+	. = ..()
+	if(cheap)
+		return
+	for(var/atom/A as anything in contents)
+		A.clean_radiation(str, mul, cheap)

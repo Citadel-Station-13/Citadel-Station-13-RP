@@ -13,6 +13,8 @@
 #define INHAND_DEFAULT_ICON_HATS "hats"
 /// holders
 #define INHAND_DEFAULT_ICON_HOLDERS "holders"
+/// kitchen
+#define INHAND_DEFAULT_ICON_KITCHEN "kitchen"
 /// magic
 #define INHAND_DEFAULT_ICON_MAGIC "magic"
 /// masks

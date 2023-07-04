@@ -1,9 +1,9 @@
 /*
  * Contains
- * /obj/item/rig_module/ai_container
- * /obj/item/rig_module/datajack
- * /obj/item/rig_module/power_sink
- * /obj/item/rig_module/electrowarfare_suite
+ * /obj/item/hardsuit_module/ai_container
+ * /obj/item/hardsuit_module/datajack
+ * /obj/item/hardsuit_module/power_sink
+ * /obj/item/hardsuit_module/electrowarfare_suite
  */
 
 /obj/item/ai_verbs
@@ -14,18 +14,18 @@
 	set name = "Open Hardsuit Interface"
 	set src in usr
 
-	if(!usr.loc || !usr.loc.loc || !istype(usr.loc.loc, /obj/item/rig_module))
+	if(!usr.loc || !usr.loc.loc || !istype(usr.loc.loc, /obj/item/hardsuit_module))
 		to_chat(usr, "You are not loaded into a hardsuit.")
 		return
 
-	var/obj/item/rig_module/module = usr.loc.loc
+	var/obj/item/hardsuit_module/module = usr.loc.loc
 	if(!module.holder)
 		to_chat(usr, "Your module is not installed in a hardsuit.")
 		return
 
 	module.holder.nano_ui_interact(usr, nano_state = contained_state)
 
-/obj/item/rig_module/ai_container
+/obj/item/hardsuit_module/ai_container
 
 	name = "IIS module"
 	desc = "An integrated intelligence system module suitable for most hardsuits."
@@ -46,22 +46,22 @@
 	var/obj/item/ai_card  // Reference to the MMI, posibrain, intellicard or pAI card previously holding the AI.
 	var/obj/item/ai_verbs/verb_holder
 
-/obj/item/rig_module/ai_container/process(delta_time)
+/obj/item/hardsuit_module/ai_container/process(delta_time)
 	if(integrated_ai)
-		var/obj/item/rig/rig = get_rig()
-		if(rig && rig.ai_override_enabled)
-			integrated_ai.get_rig_stats = 1
+		var/obj/item/hardsuit/hardsuit = get_hardsuit()
+		if(hardsuit && hardsuit.ai_override_enabled)
+			integrated_ai.get_hardsuit_stats = 1
 		else
-			integrated_ai.get_rig_stats = 0
+			integrated_ai.get_hardsuit_stats = 0
 
-/mob/living/Stat()
+/mob/living/statpanel_data(client/C)
 	. = ..()
-	if(get_rig_stats)
-		var/obj/item/rig/rig = get_rig()
-		if(rig)
-			SetupStat(rig)
+	if(get_hardsuit_stats)
+		var/obj/item/hardsuit/hardsuit = get_hardsuit()
+		if(hardsuit)
+			. += legacy_hardsuit_stat(hardsuit, C)
 
-/obj/item/rig_module/ai_container/proc/update_verb_holder()
+/obj/item/hardsuit_module/ai_container/proc/update_verb_holder()
 	if(!verb_holder)
 		verb_holder = new(src)
 	if(integrated_ai)
@@ -69,7 +69,7 @@
 	else
 		verb_holder.forceMove(src)
 
-/obj/item/rig_module/ai_container/accepts_item(var/obj/item/input_device, var/mob/living/user)
+/obj/item/hardsuit_module/ai_container/accepts_item(var/obj/item/input_device, var/mob/living/user)
 
 	// Check if there's actually an AI to deal with.
 	var/mob/living/silicon/ai/target_ai
@@ -132,7 +132,7 @@
 
 	return 0
 
-/obj/item/rig_module/ai_container/engage(atom/target)
+/obj/item/hardsuit_module/ai_container/engage(atom/target)
 
 	if(!..())
 		return 0
@@ -153,11 +153,11 @@
 
 	return 0
 
-/obj/item/rig_module/ai_container/removed()
+/obj/item/hardsuit_module/ai_container/removed()
 	eject_ai()
 	..()
 
-/obj/item/rig_module/ai_container/proc/eject_ai(var/mob/user)
+/obj/item/hardsuit_module/ai_container/proc/eject_ai(var/mob/user)
 
 	if(ai_card)
 		if(istype(ai_card, /obj/item/aicard))
@@ -181,7 +181,7 @@
 	integrated_ai = null
 	update_verb_holder()
 
-/obj/item/rig_module/ai_container/proc/integrate_ai(var/obj/item/ai,var/mob/user)
+/obj/item/hardsuit_module/ai_container/proc/integrate_ai(var/obj/item/ai,var/mob/user)
 	if(!ai) return
 
 	// The ONLY THING all the different AI systems have in common is that they all store the mob inside an item.
@@ -222,7 +222,7 @@
 	update_verb_holder()
 	return
 
-/obj/item/rig_module/datajack
+/obj/item/hardsuit_module/datajack
 
 	name = "datajack module"
 	desc = "A simple induction datalink module."
@@ -238,11 +238,11 @@
 	interface_desc = "An induction-powered high-throughput datalink suitable for hacking encrypted networks."
 	var/list/stored_research
 
-/obj/item/rig_module/datajack/Initialize(mapload)
+/obj/item/hardsuit_module/datajack/Initialize(mapload)
 	. = ..()
 	stored_research = list()
 
-/obj/item/rig_module/datajack/engage(atom/target)
+/obj/item/hardsuit_module/datajack/engage(atom/target)
 
 	if(!..())
 		return 0
@@ -253,7 +253,7 @@
 			return 0
 	return 1
 
-/obj/item/rig_module/datajack/accepts_item(var/obj/item/input_device, var/mob/living/user)
+/obj/item/hardsuit_module/datajack/accepts_item(var/obj/item/input_device, var/mob/living/user)
 
 	if(istype(input_device,/obj/item/disk/tech_disk))
 		to_chat(user, "You slot the disk into [src].")
@@ -292,7 +292,7 @@
 		return 1
 	return 0
 
-/obj/item/rig_module/datajack/proc/load_data(var/incoming_data)
+/obj/item/hardsuit_module/datajack/proc/load_data(var/incoming_data)
 
 	if(islist(incoming_data))
 		for(var/entry in incoming_data)
@@ -313,7 +313,7 @@
 		return 1
 	return 0
 
-/obj/item/rig_module/electrowarfare_suite
+/obj/item/hardsuit_module/electrowarfare_suite
 
 	name = "electrowarfare module"
 	desc = "A bewilderingly complex bundle of fiber optics and chips."
@@ -327,7 +327,7 @@
 	interface_name = "electrowarfare system"
 	interface_desc = "An active counter-electronic warfare suite that disrupts AI tracking."
 
-/obj/item/rig_module/electrowarfare_suite/activate()
+/obj/item/hardsuit_module/electrowarfare_suite/activate()
 
 	if(!..())
 		return
@@ -336,7 +336,7 @@
 	var/mob/living/M = holder.wearer
 	M.digitalcamo++
 
-/obj/item/rig_module/electrowarfare_suite/deactivate()
+/obj/item/hardsuit_module/electrowarfare_suite/deactivate()
 
 	if(!..())
 		return
@@ -344,7 +344,7 @@
 	var/mob/living/M = holder.wearer
 	M.digitalcamo = max(0,(M.digitalcamo-1))
 
-/obj/item/rig_module/power_sink
+/obj/item/hardsuit_module/power_sink
 
 	name = "hardsuit power sink"
 	desc = "An heavy-duty power sink."
@@ -364,7 +364,7 @@
 	var/total_power_drained = 0
 	var/drain_loc
 
-/obj/item/rig_module/power_sink/deactivate()
+/obj/item/hardsuit_module/power_sink/deactivate()
 
 	if(interfaced_with)
 		if(holder && holder.wearer)
@@ -374,12 +374,12 @@
 	total_power_drained = 0
 	return ..()
 
-/obj/item/rig_module/power_sink/activate()
+/obj/item/hardsuit_module/power_sink/activate()
 	interfaced_with = null
 	total_power_drained = 0
 	return ..()
 
-/obj/item/rig_module/power_sink/engage(atom/target)
+/obj/item/hardsuit_module/power_sink/engage(atom/target)
 
 	if(!..())
 		return 0
@@ -409,14 +409,14 @@
 
 	return 1
 
-/obj/item/rig_module/power_sink/accepts_item(var/obj/item/input_device, var/mob/living/user)
+/obj/item/hardsuit_module/power_sink/accepts_item(var/obj/item/input_device, var/mob/living/user)
 	var/can_drain = input_device.can_drain_energy(src, NONE)
 	if(can_drain > 0)
 		engage(input_device)
 		return 1
 	return 0
 
-/obj/item/rig_module/power_sink/process(delta_time)
+/obj/item/hardsuit_module/power_sink/process(delta_time)
 
 	if(!interfaced_with)
 		return ..()
@@ -434,7 +434,7 @@
 	H.break_cloak()
 
 	if(!holder.cell)
-		to_chat(H, "<span class = 'danger'>Your power sink flashes an error; there is no cell in your rig.</span>")
+		to_chat(H, "<span class = 'danger'>Your power sink flashes an error; there is no cell in your hardsuit.</span>")
 		drain_complete(H)
 		return
 
@@ -444,7 +444,7 @@
 		return
 
 	if(holder.cell.fully_charged())
-		to_chat(H, "<span class = 'warning'>Your power sink flashes an amber light; your rig cell is full.</span>")
+		to_chat(H, "<span class = 'warning'>Your power sink flashes an amber light; your hardsuit cell is full.</span>")
 		drain_complete(H)
 		return
 
@@ -460,7 +460,7 @@
 	holder.cell.give(DYNAMIC_KJ_TO_CELL_UNITS(target_drained))
 	total_power_drained += target_drained
 
-/obj/item/rig_module/power_sink/proc/drain_complete(var/mob/living/M)
+/obj/item/hardsuit_module/power_sink/proc/drain_complete(var/mob/living/M)
 	if(!interfaced_with)
 		if(M)
 			to_chat(M, "<font color=#4F49AF><b>Total power drained:</b> [round(DYNAMIC_KJ_TO_CELL_UNITS(total_power_drained))] cell units.</font>")
@@ -475,7 +475,7 @@
 
 /*
 //Maybe make this use power when active or something
-/obj/item/rig_module/emp_shielding
+/obj/item/hardsuit_module/emp_shielding
 	name = "\improper EMP dissipation module"
 	desc = "A bewilderingly complex bundle of fiber optics and chips."
 	toggleable = 1
@@ -488,13 +488,13 @@
 	interface_desc = "A highly experimental system that augments the hardsuit's existing EM shielding."
 	var/protection_amount = 20
 
-/obj/item/rig_module/emp_shielding/activate()
+/obj/item/hardsuit_module/emp_shielding/activate()
 	if(!..())
 		return
 
 	holder.emp_protection += protection_amount
 
-/obj/item/rig_module/emp_shielding/deactivate()
+/obj/item/hardsuit_module/emp_shielding/deactivate()
 	if(!..())
 		return
 

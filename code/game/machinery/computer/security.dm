@@ -12,7 +12,7 @@
 	icon_keyboard = "security_key"
 	icon_screen = "security"
 	light_color = "#a91515"
-	req_one_access = list(access_security, access_forensics_lockers, access_lawyer)
+	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_FORENSICS, ACCESS_COMMAND_IAA)
 	circuit = /obj/item/circuitboard/secure_data
 	var/obj/item/card/id/scan = null
 	var/authenticated = null
@@ -87,7 +87,7 @@
 /obj/machinery/computer/secure_data/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/secure_data/attack_hand(mob/user as mob)
+/obj/machinery/computer/secure_data/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	add_fingerprint(user)
@@ -391,7 +391,7 @@
 						answer = text2num(answer)
 
 					if(field == "rank")
-						if(answer in joblist)
+						if(answer in SSjob.all_job_titles())
 							active1.fields["real_rank"] = answer
 
 					if(field == "criminal")
@@ -471,12 +471,12 @@
 /obj/machinery/computer/secure_data/proc/get_photo(var/mob/user)
 	if(istype(user.get_active_held_item(), /obj/item/photo))
 		var/obj/item/photo/photo = user.get_active_held_item()
-		return photo.img
+		return photo.full_image()
 	if(istype(user, /mob/living/silicon))
 		var/mob/living/silicon/tempAI = usr
 		var/obj/item/photo/selection = tempAI.GetPicture()
 		if (selection)
-			return selection.img
+			return selection.full_image()
 
 /obj/machinery/computer/secure_data/emp_act(severity)
 	if(machine_stat & (BROKEN|NOPOWER))

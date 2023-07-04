@@ -10,6 +10,9 @@
 	density = 1
 	CanAtmosPass = ATMOS_PASS_PROC
 	layer = DOOR_OPEN_LAYER
+	rad_flags = RAD_BLOCK_CONTENTS
+	// todo: rad_insulation_open/closed
+	pass_flags_self = NONE
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 
@@ -163,7 +166,7 @@
 		else
 			do_animate("deny")
 
-/obj/machinery/door/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/door/bullet_act(var/obj/projectile/Proj)
 	..()
 
 	var/damage = Proj.get_structure_damage()
@@ -197,7 +200,7 @@
 /obj/machinery/door/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/door/attack_hand(mob/user as mob)
+/obj/machinery/door/attack_hand(mob/user, list/params)
 	return src.attackby(user, user)
 
 /obj/machinery/door/attack_tk(mob/user as mob)
@@ -275,12 +278,12 @@
 			user.setClickCooldown(user.get_attack_speed(W))
 			if(W.damtype == BRUTE || W.damtype == BURN)
 				user.do_attack_animation(src)
-				if(W.force < min_force)
+				if(W.damage_force < min_force)
 					user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
 				else
 					user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
 					playsound(src.loc, hitsound, 100, 1)
-					take_damage(W.force)
+					take_damage(W.damage_force)
 			return
 
 	if(src.operating > 0 || isrobot(user))
@@ -323,7 +326,7 @@
 	return
 
 
-/obj/machinery/door/examine(mob/user)
+/obj/machinery/door/examine(mob/user, dist)
 	. = ..()
 	if(src.health <= 0)
 		. += "<span class = 'notice'>The [src] is broken!</span>"
@@ -382,9 +385,6 @@
 		icon_state = "door1"
 	else
 		icon_state = "door0"
-	SSradiation.resistance_cache.Remove(get_turf(src))
-	return
-
 
 /obj/machinery/door/proc/do_animate(animation)
 	switch(animation)
@@ -427,6 +427,7 @@
 	explosion_resistance = 0
 	update_icon()
 	set_opacity(0)
+	rad_insulation = RAD_INSULATION_NONE
 	operating = 0
 
 	if(autoclose)
@@ -453,6 +454,7 @@
 	update_icon()
 	if(visible && !glass)
 		set_opacity(1)	//caaaaarn!
+	rad_insulation = initial(rad_insulation)
 	operating = 0
 
 	//I shall not add a check every x ticks if a door has closed over some fire.

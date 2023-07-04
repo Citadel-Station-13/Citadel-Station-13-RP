@@ -93,7 +93,7 @@
 			else
 				to_chat(user, "<font color='red'>You must hold \the [P] steady to burn \the [src].</font>")
 
-/obj/item/paper_bundle/examine(mob/user)
+/obj/item/paper_bundle/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user))
 		src.show_content(user)
@@ -130,14 +130,13 @@
 		user << browse(dat, "window=[name]")
 	else if(istype(pages[page], /obj/item/photo))
 		var/obj/item/photo/P = W
-		user << browse_rsc(P.img, "tmp_photo.png")
-		user << browse(dat + "<html><head><title>[P.name]</title></head>" \
-		+ "<body style='overflow:hidden'>" \
-		+ "<div> <img src='tmp_photo.png' width = '180'" \
-		+ "[P.scribble ? "<div> Written on the back:<br><i>[P.scribble]</i>" : null]"\
-		+ "</body></html>", "window=[name]")
+		dat += P.html(user)
+		user << browse(dat, "window=[name]")
 
-/obj/item/paper_bundle/attack_self(mob/user as mob)
+/obj/item/paper_bundle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	src.show_content(user)
 	add_fingerprint(usr)
 	update_icon()
@@ -162,7 +161,7 @@
 				playsound(src.loc, "pageturn", 50, 1)
 		if(href_list["remove"])
 			var/obj/item/W = pages[page]
-			usr.put_in_hands(W)
+			usr.grab_item_from_interacted_with(W, src)
 			pages.Remove(pages[page])
 
 			to_chat(usr, "<span class='notice'>You remove the [W.name] from the bundle.</span>")
@@ -170,7 +169,7 @@
 			if(pages.len <= 1)
 				var/obj/item/paper/P = src[1]
 				usr.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
-				usr.put_in_hands(P)
+				usr.put_in_hands_or_drop(P)
 				qdel(src)
 				return
 
@@ -191,7 +190,7 @@
 
 	var/n_name = sanitizeSafe(input(usr, "What would you like to label the bundle?", "Bundle Labelling", null)  as text, MAX_NAME_LEN)
 	if((loc == usr || loc.loc && loc.loc == usr) && usr.stat == 0)
-		name = "[(n_name ? text("[n_name]") : "paper")]"
+		name = "[(n_name ? "[n_name]" : "paper")]"
 	add_fingerprint(usr)
 	return
 
@@ -211,7 +210,7 @@
 /obj/item/paper_bundle/update_icon()
 	var/obj/item/paper/P = pages[1]
 	icon_state = P.icon_state
-	overlays = P.overlays
+	copy_overlays(P)
 	underlays = 0
 	var/i = 0
 	var/photo
@@ -227,14 +226,21 @@
 			i++
 		else if(istype(O, /obj/item/photo))
 			var/obj/item/photo/Ph = O
-			img = Ph.tiny
+			INVOKE_ASYNC(src, PROC_REF(add_photo_overlay), Ph)
 			photo = 1
-			overlays += img
 	if(i>1)
 		desc =  "[i] papers clipped to each other."
 	else
 		desc = "A single sheet of paper."
 	if(photo)
 		desc += "\nThere is a photo attached to it."
-	overlays += image('icons/obj/bureaucracy.dmi', "clip")
+	add_overlay(image('icons/obj/bureaucracy.dmi', "clip"))
 	return
+
+// photo overlay fetches can take time because photos are lazy-loaded
+// thus, this is behind a waitfor in update_icon to not block icon updates while the fetch is going on.
+/obj/item/paper_bundle/proc/add_photo_overlay(obj/item/photo/photo)
+	var/mutable_appearance/photo_overlay = mutable_appearance(photo.paperwork_overlay_6x7())
+	photo_overlay.pixel_x = 10
+	photo_overlay.pixel_y = 16
+	add_overlay(photo_overlay)

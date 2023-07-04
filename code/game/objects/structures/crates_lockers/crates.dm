@@ -38,7 +38,7 @@
 				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 				s.set_up(5, 1, src)
 				s.start()
-				if(usr.stunned)
+				if(!CHECK_MOBILITY(usr, MOBILITY_CAN_MOVE))
 					return 2
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
@@ -147,12 +147,11 @@
 
 /obj/structure/closet/crate/secure/Initialize(mapload)
 	. = ..()
+
 	if(locked)
-		overlays.Cut()
-		overlays += redlight
+		set_overlays(redlight)
 	else
-		overlays.Cut()
-		overlays += greenlight
+		set_overlays(greenlight)
 
 /obj/structure/closet/crate/secure/can_open()
 	return !locked
@@ -170,21 +169,22 @@
 		to_chat(user, "<span class='notice'>Access Denied</span>")
 
 /obj/structure/closet/crate/secure/proc/set_locked(var/newlocked, mob/user = null)
-	if(locked == newlocked) return
+	if(locked == newlocked)
+		return
 
 	locked = newlocked
 	if(user)
 		for(var/mob/O in viewers(user, 3))
 			O.show_message( "<span class='notice'>The crate has been [locked ? null : "un"]locked by [user].</span>", 1)
-	overlays.Cut()
-	overlays += locked ? redlight : greenlight
+
+	set_overlays(locked ? redlight : greenlight)
 
 /obj/structure/closet/crate/secure/verb/verb_togglelock()
 	set src in oview(1) // One square distance
 	set category = "Object"
 	set name = "Toggle Lock"
 
-	if(!usr.canmove || usr.stat || usr.restrained()) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
 		return
 
 	if(ishuman(usr) || isrobot(usr))
@@ -193,7 +193,7 @@
 	else
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
-/obj/structure/closet/crate/secure/attack_hand(mob/user as mob)
+/obj/structure/closet/crate/secure/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 	if(locked)
 		src.togglelock(user)
@@ -210,15 +210,20 @@
 		return
 	return ..()
 
-/obj/structure/closet/crate/secure/emag_act(var/remaining_charges, var/mob/user)
+/obj/structure/closet/crate/secure/emag_act(remaining_charges, mob/user)
 	if(!broken)
-		overlays.Cut()
-		overlays += emag
-		overlays += sparks
-		spawn(6) overlays -= sparks //Tried lots of stuff but nothing works right. so i have to use this *sadface*
+		cut_overlays()
+		var/list/overlays_to_add = list()
+		overlays_to_add += emag
+		overlays_to_add += sparks
+		add_overlay(overlays_to_add)
+		compile_overlays()
+		spawn(6)
+			cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
+			compile_overlays()
 		playsound(src.loc, "sparks", 60, 1)
-		src.locked = 0
-		src.broken = 1
+		locked = 0
+		broken = 1
 		to_chat(user, "<span class='notice'>You unlock \the [src].</span>")
 		return 1
 
@@ -226,26 +231,27 @@
 	for(var/obj/O in src)
 		O.emp_act(severity)
 	if(!broken && !opened  && prob(50/severity))
+		cut_overlays()
 		if(!locked)
-			src.locked = 1
-			overlays.Cut()
-			overlays += redlight
+			locked = 1
+			add_overlay(redlight)
 		else
-			overlays.Cut()
-			overlays += emag
-			overlays += sparks
-			spawn(6) overlays -= sparks //Tried lots of stuff but nothing works right. so i have to use this *sadface*
+			add_overlay(list(emag, sparks))
+			compile_overlays()
+			spawn(6)
+				cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
+				compile_overlays()
 			playsound(src.loc, 'sound/effects/sparks4.ogg', 75, 1)
-			src.locked = 0
+			locked = 0
 	if(!opened && prob(20/severity))
 		if(!locked)
 			open()
 		else
-			src.req_access = list()
-			src.req_access += pick(get_all_station_access())
+			req_access = list()
+			req_access += pick(get_all_station_access())
 	..()
 
-/obj/structure/closet/crate/secure/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/closet/crate/secure/bullet_act(var/obj/projectile/Proj)
 	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
 		return
 
@@ -400,14 +406,14 @@
 	icon_closed = "largebin"
 
 /obj/structure/closet/crate/bin/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.is_wrench() && !src.opened)
+	if(W.is_wrench() && !opened)
 		if(anchored)
-			user.show_message(text("<span class='notice'>[src] can now be moved.</span>"))
+			user.show_message(SPAN_NOTICE("[src] can now be moved."))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = FALSE
 
 		else if(!anchored)
-			user.show_message(text("<span class='notice'>[src] is now secured.</span>"))
+			user.show_message(SPAN_NOTICE("[src] is now secured."))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = TRUE
 	else
@@ -736,6 +742,14 @@
 	icon_state = "oss"
 	icon_opened = "ossopen"
 	icon_closed = "oss"
+
+//Ashie Crate - Sprite isn't stellar, maybe some day we can do a better one.
+/obj/structure/closet/crate/ashlander
+	name = "bonemold crate"
+	desc = "A crate shaped out of fused bone plates. It is held shut by a sturdy hide strap."
+	icon_state = "ashcrate"
+	icon_opened = "ashcrateopen"
+	icon_closed = "ashcrate"
 
 //Secure crates
 

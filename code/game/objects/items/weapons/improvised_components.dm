@@ -22,6 +22,13 @@
 	force_divisor = 0.1
 	thrown_force_divisor = 0.1
 
+/obj/item/material/butterflyblade/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W,/obj/item/duct_tape_roll))
+		to_chat(user, "You wrap the blade with the entire roll of duct tape.")
+		new /obj/item/melee/shiv(user.loc)
+		qdel(W)
+		return
+
 /obj/item/material/butterflyhandle
 	name = "concealed knife grip"
 	desc = "A plasteel grip with screw fittings for a blade."
@@ -45,7 +52,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "wiredrod"
 	item_state = "rods"
-	force = 8
+	damage_force = 8
 	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")
@@ -168,12 +175,14 @@
 		playsound(src, 'sound/weapons/smash5.ogg', 100, 1)
 		var/obj/item/material/twohanded/sledgehammer/sledge = new(loc, material.name)
 		var/put_in_hands
-		var/mob/M = src
+		var/mob/M = loc
 		if(istype(M))
 			put_in_hands = M == user
 			M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 		if(put_in_hands)
-			user.put_in_hands(sledge)
+			user.put_in_hands_or_drop(sledge)
+		else
+			sledge.forceMove(drop_location())
 		qdel(src)
 		return
 

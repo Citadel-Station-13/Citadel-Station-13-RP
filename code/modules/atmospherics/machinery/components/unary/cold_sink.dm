@@ -2,7 +2,7 @@
 /obj/machinery/atmospherics/component/unary/freezer
 	name = "gas cooling system"
 	desc = "Cools gas when connected to pipe network"
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "freezer_0"
 	density = 1
 	anchored = 1
@@ -59,7 +59,7 @@
 /obj/machinery/atmospherics/component/unary/freezer/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/unary/freezer/attack_hand(mob/user as mob)
+/obj/machinery/atmospherics/component/unary/freezer/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/atmospherics/component/unary/freezer/ui_interact(mob/user, datum/tgui/ui)
@@ -171,7 +171,7 @@
 
 	..()
 
-/obj/machinery/atmospherics/component/unary/freezer/examine(mob/user)
+/obj/machinery/atmospherics/component/unary/freezer/examine(mob/user, dist)
 	. = ..()
 	if(panel_open)
 		. += "The maintenance hatch is open."

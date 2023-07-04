@@ -79,7 +79,7 @@
 			locstring = "hydroponics"
 			spawncount = rand(3,15)
 		if(LOC_ENGINEERING)
-			spawn_area_type = /area/engineering/
+			spawn_area_type = /area/engineering/hallway //To make sure that we don't have roaches suicide bomb the SME
 			locstring = "engineering"
 			spawncount = rand(3,15)
 	if(!locstring)
@@ -107,13 +107,14 @@
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
 		for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in A.contents)
-			if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
+			if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in (LEGACY_MAP_DATUM).station_levels))
 				vents += temp_vent
-
+	if (vents.len <= 0)
+		return
 	spawn(0)
 		var/num = spawncount
 		var/spawn_type = pick(spawn_types)
-		while(vents.len > 0 && num > 0)
+		while(num > 0)
 			var/obj/machinery/atmospherics/component/unary/vent_pump/V = pick(vents)
 			num--
 			new spawn_type(V.loc)
@@ -134,7 +135,7 @@
 
 // override: cancel if not main ship as this is too dumb to target the actual ship crossing it.
 /datum/event/infestation/overmap/start()
-	if(istype(victim, /obj/effect/overmap/visitable/ship/landable))
+	if(istype(victim, /obj/overmap/entity/visitable/ship/landable))
 		kill()
 		return
 	return ..()

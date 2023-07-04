@@ -24,11 +24,14 @@
 	. = ..()
 	disrupt()
 
-/obj/item/chameleon/attack_self()
+/obj/item/chameleon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	toggle()
 
-/obj/item/chameleon/afterattack(atom/target, mob/user , proximity)
-	if(!proximity) return
+/obj/item/chameleon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(!active_dummy)
 		if(istype(target,/obj/item) && !istype(target, /obj/item/disk/nuclear))
 			playsound(get_turf(src), 'sound/weapons/flash.ogg', 100, 1, -6)
@@ -36,7 +39,7 @@
 			saved_item = target.type
 			saved_icon = target.icon
 			saved_icon_state = target.icon_state
-			saved_overlays = target.overlays
+			saved_overlays = copy_overlays(target)
 
 /obj/item/chameleon/proc/toggle()
 	if(!can_use || !saved_item) return
@@ -107,7 +110,7 @@
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()
 
-/obj/effect/dummy/chameleon/attack_hand()
+/obj/effect/dummy/chameleon/attack_hand(mob/user, list/params)
 	for(var/mob/M in src)
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()

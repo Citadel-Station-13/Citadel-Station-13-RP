@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/musket
+/obj/item/gun/ballistic/musket
 	name = "musket"
 	desc = "The precursor to the modern cased ammuntion firearms, muskets use simple hammer mechanism to produce a spark to ignite black \
 	powder which then propels a ball out the barrel of the gun. Though over a half millenium outdated muskets and other black powder weapons \
@@ -22,12 +22,14 @@
 	fire_delay = 35
 	fire_sound = 'sound/weapons/gunshot/musket.ogg'
 	recoil = 4
+	no_pin_required = 1
 
 	ammo_type = /obj/item/ammo_casing/musket
+	safety_state = GUN_SAFETY_OFF
 
 	var/has_powder = FALSE
 
-/obj/item/gun/projectile/musket/special_check(mob/user)
+/obj/item/gun/ballistic/musket/special_check(mob/user)
 	if(!has_powder)
 		to_chat(user, SPAN_WARNING("\The [src] is not loaded with gunpowder!"))
 		return FALSE
@@ -44,7 +46,7 @@
 		has_powder = FALSE
 		return ..()
 
-/obj/item/gun/projectile/musket/attackby(obj/item/W, mob/user)
+/obj/item/gun/ballistic/musket/attackby(obj/item/W, mob/user)
 	..()
 	if (istype(W, /obj/item/reagent_containers))
 		if(has_powder)
@@ -64,13 +66,17 @@
 	desc = "An ivory container for gunpowder."
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "powderhorn"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(5)
 	volume = 30
 
-/obj/item/reagent_containers/glass/powder_horn/Initialize(mapload)
+/obj/item/reagent_containers/glass/powder_horn/filled
+	name = "powder horn"
+	desc = "An ivory container for gunpowder."
+
+/obj/item/reagent_containers/glass/powder_horn/filled/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("gunpowder", 30)
 
@@ -79,8 +85,15 @@
 	desc = "An literal powder horn constructed from sinew and the horn of an unknown creature."
 	icon_state = "powderhorn-scor"
 
+/obj/item/reagent_containers/glass/powder_horn/tribal/filled
+	name = "tribal powder horn"
+	desc = "An literal powder horn constructed from sinew and the horn of an unknown creature."
 
-/obj/item/gun/projectile/musket/taj
+/obj/item/reagent_containers/glass/powder_horn/tribal/filled/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("gunpowder", 30)
+
+/obj/item/gun/ballistic/musket/taj
 	name = "adhomian musket"
 	desc = "For the Tajara, the era of black powder warfare was not all that long ago. As result many genuine Adhomian both reproduction and \
 	even genuine muskets are often seen in the hands of Tajaran civilians, and weapons collectors, especially since such weapons circumvent the \
@@ -89,14 +102,14 @@
 	item_state = "musket-taj"
 	wielded_item_state = "musket-taj-wielded"
 
-/obj/item/gun/projectile/musket/tribal
+/obj/item/gun/ballistic/musket/tribal
 	name = "tribal musket"
 	desc = "A musket housed in bone furnishing and held together with sinew. It uses as obsidian striker."
 	icon_state = "musket-scor"
 	item_state = "musket-scor"
 	wielded_item_state = "musket-scor-wielded"
 
-/obj/item/gun/projectile/musket/pistol
+/obj/item/gun/ballistic/musket/pistol
 	name = "flintlock pistol"
 	desc = "A pistol sized black powder weapon used primarily by reenactors, criminals who can't get bullets, and collectors."
 	icon_state = "flintlock"
@@ -107,21 +120,19 @@
 	w_class = ITEMSIZE_NORMAL
 	one_handed_penalty = 0
 
-/obj/item/gun/projectile/musket/pistol/brass 
+/obj/item/gun/ballistic/musket/pistol/brass
 	name = "brass wheelock"
 	desc = "A brass black powder pistol with a strange gear like firing mechanism. You are not quite certain how it actually works though."
 	icon_state = "flintlock-brass"
 	item_state = "deagleg"
 
 
-/obj/item/gun/projectile/musket/pistol/tribal
+/obj/item/gun/ballistic/musket/pistol/tribal
 	name = "tribal flintlock"
 	desc = "A flintlock pistol cased in bone and sinew. It uses an obsidian striking mechanism, perhaps it should be called an obsidian-lock?"
 	icon_state = "flintlock-scor"
 
-
-
-/obj/item/gun/projectile/musket/blunderbuss
+/obj/item/gun/ballistic/musket/blunderbuss
 	name = "blunderbuss"
 	desc = "The precursor to the modern shotgun. It uses blackpowder to shoot a spread of shrapnel."
 	icon_state = "blunderbuss"

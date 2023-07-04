@@ -13,6 +13,13 @@
 
 /**
  * call when we ourselves need to update our air pass
+ * acts on all locs we currently occupy - this means that you must call this before and after move
+ * in some cases
+ *
+ * if you're an one tile object calling from Moved(), consider just calling air_update_self()
+ * on old and new locs; it's cheaper.
+ *
+ * works for multi-tile objects
  */
 /atom/proc/air_update_turf()
 
@@ -22,16 +29,17 @@
 /atom/movable/air_update_turf()
 	update_nearby_tiles()
 
+
 /**
- * call when we move to update our air pass
+ * call on oldloc and newloc when moving a potentially air-blocking obj
+ *
+ * *warning*: only works for non-multi-tile objects!
  */
-/atom/proc/air_update_turf_moved(turf/oldLoc)
+/atom/proc/air_update_self()
+	return
 
-/turf/air_update_turf_moved()
+/turf/air_update_self()
 	queue_zone_update()
-
-/atom/movable/air_update_turf_moved()
-	update_nearby_tiles()
 
 /**
  * superconduction - not yet implemented

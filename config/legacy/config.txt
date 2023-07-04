@@ -415,10 +415,6 @@ ENGINE_MAP Supermatter Engine,Edison's Bane
 # Forbids players from joining if they have no set General flavor text
 # REQUIRE_FLAVOR
 
-# Applies a limit to the number of assistants and visitors respectively
-# LIMIT_INTERNS 6
-# LIMIT_VISITORS 6
-
 ## Uncomment to enable the Panic Bunker by default. This will prevent all unseen-before players from connecting. Requires SQL.
 # PANIC_BUNKER
 

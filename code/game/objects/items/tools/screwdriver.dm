@@ -9,7 +9,7 @@
 	item_state = "screwdriver"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	tool_behaviour = TOOL_SCREWDRIVER
-	force = 6
+	damage_force = 6
 	w_class = ITEMSIZE_TINY
 	throw_force = 5
 	throw_speed = 3
@@ -59,14 +59,14 @@
 	if (prob(75))
 		src.pixel_y = rand(0, 16)
 
-/obj/item/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	if(!istype(M) || user.a_intent == "help")
+/obj/item/tool/screwdriver/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent != INTENT_HARM)
 		return ..()
 	if(user.zone_sel.selecting != O_EYES && user.zone_sel.selecting != BP_HEAD)
 		return ..()
 	if((MUTATION_CLUMSY in user.mutations) && prob(50))
-		M = user
-	return eyestab(M,user)
+		target = user
+	return eyestab(target,user)
 
 /obj/item/tool/screwdriver/bone
 	name = "primitive screwdriver"
@@ -142,7 +142,7 @@
 	matter = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	slot_flags = SLOT_BELT
-	force = 8
+	damage_force = 8
 	w_class = ITEMSIZE_SMALL
 	throw_force = 8
 	throw_speed = 2
@@ -167,9 +167,27 @@
 	return ..()
 
 /obj/item/tool/screwdriver/power/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	playsound(get_turf(user),'sound/items/change_drill.ogg',50,1)
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(!user.put_in_active_hand(counterpart))
 		counterpart.forceMove(get_turf(src))
 	forceMove(counterpart)
 	to_chat(user, "<span class='notice'>You attach the bolt driver bit to [src].</span>")
+
+
+/obj/item/tool/screwdriver/crystal
+	name = "crystalline screwdriver"
+	desc = "A crystalline screwdriving tool of an alien make."
+	icon_state = "crystal_screwdriver"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	matter = list(MATERIAL_CRYSTAL = 1250)
+	tool_speed = 0.2
+
+/obj/item/tool/screwdriver/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)

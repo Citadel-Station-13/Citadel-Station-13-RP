@@ -21,7 +21,7 @@
 	icon_state = "smoke"
 	extended_desc = "This smoke generator creates clouds of smoke on command.  It can also hold liquids inside, which will go \
 	into the smoke clouds when activated.  The reagents are consumed when smoke is made."
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	complexity = 20
 	cooldown_per_use = 30 SECONDS
 	inputs = list()
@@ -57,7 +57,7 @@
 	icon_state = "injector"
 	extended_desc = "This autoinjector can push up to 30 units of reagents into another container or someone else outside of the machine.  The target \
 	must be adjacent to the machine, and if it is a person, they cannot be wearing thick clothing.  A negative quantity inverts the injector, sucking out reagents instead."
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	volume = 30
 	complexity = 20
 	cooldown_per_use = 6 SECONDS
@@ -199,7 +199,7 @@
 	extended_desc = "This is a pump, which will move liquids from the source ref to the target ref.  The third pin determines \
 	how much liquid is moved per pulse, between 0 and 50.  The pump can move reagents to any open container inside the machine, or \
 	outside the machine if it is next to the machine.  Note that this cannot be used on entities."
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	complexity = 8
 	inputs = list("source" = IC_PINTYPE_REF, "target" = IC_PINTYPE_REF, "injection amount" = IC_PINTYPE_NUMBER)
 	inputs_default = list("3" = 5)
@@ -239,11 +239,11 @@
 		if(!source.is_open_container() || !target.is_open_container())
 			return
 		if(direc)
-			if(!target.reagents.get_free_space())
+			if(!target.reagents.available_volume())
 				return
 			source.reagents.trans_to(target, transfer_amount)
 		else
-			if(!source.reagents.get_free_space())
+			if(!source.reagents.available_volume())
 				return
 			target.reagents.trans_to(source, transfer_amount)
 		activate_pin(2)
@@ -310,6 +310,9 @@
 
 
 /obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	//Check if no beaker attached
 	if(!current_beaker)
 		to_chat(user, "<span class='notice'>There is currently no beaker attached.</span>")
@@ -347,7 +350,7 @@
 	desc = "Stores liquid inside, and away from electrical components.  Can store up to 60u."
 	icon_state = "reagent_storage"
 	extended_desc = "This is effectively an internal beaker."
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	complexity = 4
 	inputs = list()
 	outputs = list("volume used" = IC_PINTYPE_NUMBER,"self reference" = IC_PINTYPE_REF)
@@ -371,7 +374,7 @@
 	desc = "Stores liquid inside, and away from electrical components.  Can store up to 60u.  This will also suppress reactions."
 	icon_state = "reagent_storage_cryo"
 	extended_desc = "This is effectively an internal cryo beaker."
-	flags = OPENCONTAINER | NOREACT
+	atom_flags = OPENCONTAINER | NOREACT
 	complexity = 8
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
@@ -410,7 +413,7 @@
 	desc = "Stores liquid inside, and away from electrical components.  Can store up to 180u."
 	icon_state = "reagent_storage_big"
 	extended_desc = "This is effectively an internal beaker."
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	complexity = 16
 	volume = 180
 	spawn_flags = IC_SPAWN_RESEARCH
@@ -455,7 +458,7 @@
 	desc = "A length of flexible piping that can be used to connect one container to another."
 	extended_desc = "Use these to supply your fuel cell with never-ending phoron! Beware of leaks."
 	icon_state = "reagent_funnel"
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	inputs = list(
 		"toggle cap"		= IC_PINTYPE_BOOLEAN,
 		"source vol"		= IC_PINTYPE_NUMBER,
@@ -505,7 +508,7 @@
 		"on fail" = IC_PINTYPE_PULSE_OUT,
 		"push ref" = IC_PINTYPE_PULSE_IN
 		)
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	volume = 100
 	power_draw_per_use = 150
 	complexity = 16
@@ -544,7 +547,7 @@
 	desc = "Stores liquid inside, and away from electrical components.  Can store up to 60u.  On pulse this beaker will send list of contained reagents."
 	icon_state = "reagent_scan"
 	extended_desc = "Mostly useful for reagent filter."
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	complexity = 8
 	outputs = list("volume used" = IC_PINTYPE_NUMBER,"self reference" = IC_PINTYPE_REF,"list of reagents" = IC_PINTYPE_LIST)
 	activators = list("scan" = IC_PINTYPE_PULSE_IN)
@@ -567,7 +570,7 @@
 	It will move all reagents, except list, given in fourth pin if amount value is positive.\
 	Or it will move only desired reagents if amount is negative, The third pin determines \
 	how much reagent is moved per pulse, between 0 and 50.  Amount is given for each separate reagent."
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	complexity = 8
 	inputs = list("source" = IC_PINTYPE_REF, "target" = IC_PINTYPE_REF, "injection amount" = IC_PINTYPE_NUMBER, "list of reagents" = IC_PINTYPE_LIST)
 	inputs_default = list("3" = 5)
@@ -604,7 +607,7 @@
 			return
 		if(!source.is_open_container() || !target.is_open_container())
 			return
-		if(!target.reagents.get_free_space())
+		if(!target.reagents.available_volume())
 			return
 		for(var/datum/reagent/G in source.reagents.reagent_list)
 			if (!direc)
@@ -623,7 +626,7 @@
 	extended_desc = "This circuit can hold up to 30 units of any given chemicals.  On each use, it sprays these reagents like a fire extinguisher."
 
 	volume = 30
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 
 	complexity = 20
 	cooldown_per_use = 6 SECONDS

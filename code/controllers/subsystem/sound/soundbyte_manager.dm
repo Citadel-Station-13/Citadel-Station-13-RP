@@ -18,6 +18,7 @@
 				for(var/datum/soundbyte/SB in L)
 					qdel(SB)
 	soundbytes_by_alias = list()
+	global.__sfx_lookup = list()
 	for(var/T in subtypesof(/datum/soundbyte))
 		var/datum/soundbyte/SB = T
 		if(!initial(SB.path) && !ispath(SB, /datum/soundbyte/grouped))
@@ -32,6 +33,22 @@
 			if(!soundbytes_by_alias[SB.alias])
 				soundbytes_by_alias[SB.alias] = list()
 			soundbytes_by_alias[SB.alias] += SB
+		if(SB.is_sfx)
+			if(SB.runtime_loaded)
+				stack_trace("attempted to put a runtime loaded soundbyte into sfx lookup; this is not supported at this time.")
+				// it can be easily supported, we just avoid it because you're probably doing something wrong in tihs case
+			else
+				// stuff path into list
+				global.__sfx_lookup[SB.type] = SB.path
+				// inject alias if needed
+				if(SB.alias)
+					var/existing = global.__sfx_lookup[SB.alias]
+					if(islist(existing))
+						global.__sfx_lookup[SB.alias] += SB.path
+					else if(isnull(existing))
+						global.__sfx_lookup[SB.alias] = SB.path
+					else
+						global.__sfx_lookup[SB.alias] = list(existing, SB.path)
 
 	// TODO: unit test the shit out of soundbytes so no one does stupid things, like empty grouped lists since we can't initial that
 
@@ -51,6 +68,8 @@
  * defaults to alias itself if not found, so passing in a valid sound datum is fine
  */
 /datum/controller/subsystem/sounds/proc/fetch_asset(alias)
+	if(!istext(alias))
+		return alias
 	return fetch_soundbyte(alias)?.get_asset() || alias
 
 /**

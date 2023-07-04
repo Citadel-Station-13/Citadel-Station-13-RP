@@ -61,6 +61,11 @@
 	blocks_air = 0
 	initial_gas_mix = GAS_STRING_STP_HOT
 
+/turf/unsimulated/wall/planetary/desert/standard_temp
+	icon = 'icons/turf/outdoors.dmi'
+	icon_state = "lowdesert"
+	initial_gas_mix = GAS_STRING_STP
+
 /turf/unsimulated/wall/planetary/virgo3b
 	name = "facility wall"
 	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."

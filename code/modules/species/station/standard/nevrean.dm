@@ -1,5 +1,6 @@
 /datum/species/nevrean
 	uid = SPECIES_ID_NEVREAN
+	id = SPECIES_ID_NEVREAN
 	name = SPECIES_NEVREAN
 	name_plural = "Nevreans"
 	primitive_form = SPECIES_MONKEY_NEVREAN
@@ -35,7 +36,7 @@
 	color_mult = 1
 	max_age = 80
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_SECRET
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"
@@ -56,7 +57,8 @@
 
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
+	)
+	abilities = list(
+		/datum/ability/species/toggle_flight
 	)

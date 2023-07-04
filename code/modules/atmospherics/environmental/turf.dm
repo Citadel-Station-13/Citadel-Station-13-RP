@@ -23,10 +23,10 @@
 	if(v)
 		switch(d)
 			if(UP)
-				if(!(z_flags & Z_AIR_UP))
+				if(!(mz_flags & MZ_ATMOS_UP))
 					return ATMOS_PASS_AIR_BLOCKED
 			if(DOWN)
-				if(!(z_flags & Z_AIR_DOWN))
+				if(!(mz_flags & MZ_ATMOS_DOWN))
 					return ATMOS_PASS_AIR_BLOCKED
 		. = ATMOS_PASS_NOT_BLOCKED
 		for(var/atom/movable/AM as anything in contents)
@@ -46,7 +46,7 @@
 	if(other == src)
 		return CanAtmosPass(src, NONE)
 	var/d = other.z == z? get_dir(src, other) : get_dir_multiz(src, other)
-	var/o = REVERSE_DIR(d)
+	var/o = global.reverse_dir[d]
 	return min(CanAtmosPass(other, d), other.CanAtmosPass(src, o))
 
 /**

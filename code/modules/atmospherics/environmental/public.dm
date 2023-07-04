@@ -23,7 +23,7 @@
  */
 /turf/proc/spawn_air(gas_string)
 	var/datum/gas_mixture/G = new
-	G.parse_gas_string(gas_string)
+	G.parse_gas_string(gas_string, src)
 	assume_air(G)
 
 /**

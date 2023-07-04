@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(mobs)
 	var/slept_mobs = 0
 
 /datum/controller/subsystem/mobs/stat_entry()
-	..("P: [global.GLOB.mob_list.len] | S: [slept_mobs]")
+	return ..() + " P: [global.GLOB.mob_list.len] | S: [slept_mobs]"
 
 /datum/controller/subsystem/mobs/fire(resumed = 0)
 	var/list/busy_z_levels = src.busy_z_levels
@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(mobs)
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
 	var/times_fired = src.times_fired
-	var/dt = (subsystem_flags & SS_TICKER)? (world.tick_lag * wait) : (wait * 0.1)
+	var/dt = (subsystem_flags & SS_TICKER)? (world.tick_lag * wait) : max(world.tick_lag, wait * 0.1)
 	while(currentrun.len)
 		var/mob/M = currentrun[currentrun.len]
 		currentrun.len--

@@ -1,9 +1,12 @@
 /obj/structure/girder
+	icon = 'icons/obj/structures/girder.dmi'
 	icon_state = "girder"
-	anchored = 1
-	density = 1
-	plane = PLATING_PLANE
+
+	anchored = TRUE
+	density = TRUE
+	plane = TURF_PLANE
 	w_class = ITEMSIZE_HUGE
+
 	var/state = 0
 	var/health = 200
 	var/max_health = 200
@@ -21,7 +24,7 @@
 	if(!material_key)
 		material_key = default_material
 	set_material(material_key)
-	update_icon()
+	update_appearance()
 
 /obj/structure/girder/Destroy()
 	if(girder_material.products_need_process())
@@ -38,7 +41,7 @@
 	if(!total_radiation)
 		return
 
-	SSradiation.radiate(src, total_radiation)
+	radiation_pulse(src, total_radiation)
 	return total_radiation
 
 
@@ -60,7 +63,8 @@
 /obj/structure/girder/get_material()
 	return girder_material
 
-/obj/structure/girder/update_icon()
+/obj/structure/girder/update_icon_state()
+	. = ..()
 	if(anchored)
 		icon_state = initial(icon_state)
 	else
@@ -91,7 +95,7 @@
 	spawn(1) dismantle()
 	return 1
 
-/obj/structure/girder/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/girder/bullet_act(var/obj/projectile/Proj)
 	//Girders only provide partial cover. There's a chance that the projectiles will just pass through. (unless you are trying to shoot the girder)
 	if(Proj.original != src && !prob(cover))
 		return PROJECTILE_CONTINUE //pass through
@@ -100,7 +104,7 @@
 	if(!damage)
 		return
 
-	if(!istype(Proj, /obj/item/projectile/beam))
+	if(!istype(Proj, /obj/projectile/beam))
 		damage *= 0.4 //non beams do reduced damage
 
 	else if(girder_material && girder_material.reflectivity >= 0.5) // Reflect lasers.
@@ -226,7 +230,7 @@
 		to_chat(user, "<span class='notice'>There isn't enough material here to construct a wall.</span>")
 		return 0
 
-	var/datum/material/M = name_to_material[S.default_type]
+	var/datum/material/M = get_material_by_name(S.default_type)
 	if(!istype(M))
 		return 0
 
@@ -251,7 +255,8 @@
 	var/turf/Tsrc = get_turf(src)
 	Tsrc.PlaceOnTop(/turf/simulated/wall)
 	var/turf/simulated/wall/T = get_turf(src)
-	T.set_material(M, reinf_material, girder_material)
+	T.set_materials(M, reinf_material, girder_material)
+	T.set_rad_insulation()
 	if(wall_fake)
 		T.can_open = 1
 	T.add_hiddenprint(usr)
@@ -267,7 +272,7 @@
 		to_chat(user, "<span class='notice'>There isn't enough material here to reinforce the girder.</span>")
 		return 0
 
-	var/datum/material/M = name_to_material[S.default_type]
+	var/datum/material/M = get_material_by_name(S.default_type)
 	if(!istype(M) || M.integrity < 50)
 		to_chat(user, "You cannot reinforce \the [src] with that; it is too soft.")
 		return 0
@@ -292,7 +297,7 @@
 	girder_material.place_dismantled_product(get_turf(src), 2)
 	qdel(src)
 
-/obj/structure/girder/attack_hand(mob/user as mob)
+/obj/structure/girder/attack_hand(mob/user, list/params)
 	if (MUTATION_HULK in user.mutations)
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
 		dismantle()
@@ -326,7 +331,8 @@
 	girder_material = "cult"
 	applies_material_colour = 0
 
-/obj/structure/girder/cult/update_icon()
+/obj/structure/girder/cult/update_icon_state()
+	. = ..()
 	if(anchored)
 		icon_state = "cultgirder"
 	else
@@ -401,8 +407,8 @@
 			var/turf/simulated/wall/new_T = get_turf(src) // Ref to the wall we just built.
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
-			var/datum/material/M = name_to_material[the_rcd.material_to_use]
-			new_T.set_material(M, the_rcd.make_rwalls ? M : null, girder_material)
+			var/datum/material/M = get_material_by_name(the_rcd.material_to_use)
+			new_T.set_materials(M, the_rcd.make_rwalls ? M : null, girder_material)
 			new_T.add_hiddenprint(user)
 			qdel(src)
 			return TRUE

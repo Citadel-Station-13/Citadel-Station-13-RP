@@ -12,7 +12,7 @@
 	var/cooldown_time = 0
 	var/cooldown_timeleft = 0
 	var/cooldown_on = FALSE
-	req_access = list(access_ai_upload)
+	req_access = list(ACCESS_COMMAND_UPLOAD)
 
 /obj/machinery/ai_slipper/Initialize(mapload, newdir)
 	. = ..()
@@ -57,7 +57,7 @@
 /obj/machinery/ai_slipper/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/ai_slipper/attack_hand(mob/user as mob)
+/obj/machinery/ai_slipper/attack_hand(mob/user, list/params)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if((get_dist(src, user) > 1))
@@ -80,8 +80,8 @@
 	if(locked && (!istype(user, /mob/living/silicon)))
 		t += "<I>(Swipe ID card to unlock control panel.)</I><BR>"
 	else
-		t += text("Dispenser [] - <A href='?src=\ref[];toggleOn=1'>[]?</a><br>\n", disabled?"deactivated":"activated", src, disabled?"Enable":"Disable")
-		t += text("Uses Left: [uses]. <A href='?src=\ref[src];toggleUse=1'>Activate the dispenser?</A><br>\n")
+		t += "Dispenser [(disabled ? "deactivated" : "activated")] - <A href='?src=\ref[src];toggleOn=1'>[(disabled ? "Enable" : "Disable")]?</a><br>\n"
+		t += "Uses Left: [uses]. <A href='?src=\ref[src];toggleUse=1'>Activate the dispenser?</A><br>\n"
 
 	user << browse(t, "window=computer;size=575x450")
 	onclose(user, "computer")

@@ -69,7 +69,7 @@ var/global/list/active_radio_jammers = list()
 		update_icon()
 
 
-/obj/item/radio_jammer/attack_hand(mob/user)
+/obj/item/radio_jammer/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && power_source)
 		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
 		user.put_in_hands(power_source)
@@ -79,6 +79,9 @@ var/global/list/active_radio_jammers = list()
 		return ..()
 
 /obj/item/radio_jammer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(on)
 		turn_off(user)
 	else
@@ -110,9 +113,9 @@ var/global/list/active_radio_jammers = list()
 
 	// Only Cut() if we need to.
 	if(overlay_percent != last_overlay_percent)
-		overlays.Cut()
+		cut_overlays()
 		var/image/I = image(src.icon, src, "jammer_overlay_[overlay_percent]")
-		overlays += I
+		add_overlay(I)
 		last_overlay_percent = overlay_percent
 
 //Unlimited use, unlimited range jammer for admins. Turn it on, drop it somewhere, it works.

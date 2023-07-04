@@ -6,6 +6,8 @@
  * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
  **/
 
+-- core --
+
 --
 -- Table structure for table `schema_revision`
 --
@@ -14,6 +16,116 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%schema_revision` (
   `minor` TINYINT(3) unsigned NOT NULL,
   `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`major`, `minor`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- photography --
+
+--           picture table            --
+-- used to store data about pictures  --
+-- hash is in sha1 format.            --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%pictures` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hash` char(40) NOT NULL,
+  `created` datetime NOT NULL DEFAULT Now(),
+  `width` int NOT NULL,
+  `height` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `hash` (`hash`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--             photograph table              --
+-- used to store data about photographs      --
+-- picture is picture hash in picture table  --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%photographs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `picture` char(40) NOT NULL,
+  `created` datetime NOT NULL DEFAULT Now(),
+  `scene` MEDIUMTEXT null,
+  `desc` MEDIUMTEXT null,
+  CONSTRAINT `linked_picture` FOREIGN KEY (`picture`)
+  REFERENCES `%_PREFIX_%pictures` (`hash`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- players --
+
+--           Player lookup table                   --
+-- Used to look up player ID from ckey, as well as --
+-- store last computerid/ip for a ckey.            --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%player_lookup` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ckey` varchar(32) NOT NULL,
+  `firstseen` datetime NOT NULL,
+  `lastseen` datetime NOT NULL,
+  `ip` varchar(18) NOT NULL,
+  `computerid` varchar(32) NOT NULL,
+  `lastadminrank` varchar(32) NOT NULL DEFAULT 'Player',
+  `playerid` int(11),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ckey` (`ckey`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--              Primary player table               --
+-- Allows for one-to-many player-ckey association. --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `flags` int(24) NOT NULL DEFAULT 0,
+  `firstseen` datetime NOT NULL DEFAULT Now(),
+  `lastseen` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Playtime / JEXP --
+
+--      Role Time Table - Master     --
+-- Stores total role time.           --
+
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime` (
+  `player` INT(11) NOT NULL,
+  `roleid` VARCHAR(64) NOT NULL,
+  `minutes` INT UNSIGNED NOT NULL,
+  PRIMARY KEY(`player`, `roleid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--      Role Time - Logging       --
+-- Stores changes in role time    --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime_log` (
+  `player` INT(11),
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `roleid` VARCHAR(64) NOT NULL,
+  `delta` INT(11) NOT NULL,
+  `datetime` TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  PRIMARY KEY (`id`),
+  KEY `player` (`player`),
+  KEY `roleid` (`roleid`),
+  KEY `datetime` (`datetime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+DELIMITER $$
+CREATE TRIGGER `playtimeTlogupdate` AFTER UPDATE ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes-OLD.minutes);
+END
+$$
+CREATE TRIGGER `playtimeTloginsert` AFTER INSERT ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes);
+END
+$$
+CREATE TRIGGER `playtimeTlogdelete` AFTER DELETE ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (OLD.player, OLD.roleid, 0-OLD.minutes);
+END
+$$
+DELIMITER ;
+
+-- Security - Ipintel --
+
+--        Ipintel Cache Table       --
+-- Stores cache entries for IPIntel --
+-- IP is in INET_ATON.              --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%ipintel` (
+  `ip` INT(10) unsigned NOT NULL,
+  `date` TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `intel` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ip`),
+  KEY `idx_ipintel` (`ip`, `intel`, `date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -29,6 +141,47 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%round` (
   `server_port` SMALLINT(5) UNSIGNED NOT NULL,
   `commit_hash` CHAR(40) NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--            Connection log           --
+-- Logs all connections to the server. --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%connection_log` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `datetime` datetime NOT NULL,
+  `serverip` varchar(16) NOT NULL,
+  `ckey` varchar(32) NOT NULL,
+  `ip` varchar(16) NOT NULL,
+  `computerid` varchar(32) NOT NULL,
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Persistence - Object Storage: Strings --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_keyed_strings` (
+  `created` DATETIME NOT NULL DEFAULT Now(),
+  `modified` DATETIME NOT NULL,
+  `key` VARCHAR(64) NOT NULL,
+  `value` MEDIUMTEXT NULL,
+  `group` VARCHAR(64) NOT NULL,
+  `revision` INT(11) NOT NULL,
+  PRIMARY KEY(`key`, `group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- /datum/character - Character Table --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%character` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `created` DATETIME NOT NULL DEFAULT Now(),
+  `last_played` DATETIME NULL,
+  `last_persisted` DATETIME NULL,
+  `playerid` INT(11) NOT NULL,
+  `canonical_name` VARCHAR(128) NOT NULL,
+  `persist_data` MEDIUMTEXT NULL,
+  `character_type` VARCHAR(64) NOT NULL,
+  PRIMARY KEY(`id`),
+  CONSTRAINT `character_has_player` FOREIGN KEY (`playerid`)
+  REFERENCES `%_PREFIX_%player` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  UNIQUE (`playerid`, `canonical_name`, `character_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%admin` (
@@ -85,29 +238,6 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%feedback` (
   `details` text,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
-
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%player_lookup` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ckey` varchar(32) NOT NULL,
-  `firstseen` datetime NOT NULL,
-  `lastseen` datetime NOT NULL,
-  `ip` varchar(18) NOT NULL,
-  `computerid` varchar(32) NOT NULL,
-  `lastadminrank` varchar(32) NOT NULL DEFAULT 'Player',
-  `playerid` int(11),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `ckey` (`ckey`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
----              Primary player table               ---
---- Allows for one-to-many player-ckey association. ---
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `flags` int(24) NOT NULL DEFAULT 0,
-  `firstseen` datetime NOT NULL DEFAULT Now(),
-  `lastseen` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_option` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -226,13 +356,3 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%population` (
   `time` DATETIME NOT NULL ,
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%connection_log` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `datetime` datetime NOT NULL,
-  `serverip` varchar(16) NOT NULL,
-  `ckey` varchar(32) NOT NULL,
-  `ip` varchar(16) NOT NULL,
-  `computerid` varchar(32) NOT NULL,
-  PRIMARY KEY(`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

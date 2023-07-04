@@ -15,6 +15,15 @@
 	to anything other than Diyaabs, which they seem to have formed a tangential symbiosis with."
 	value = CATALOGUER_REWARD_MEDIUM
 
+/datum/armor/physiology/frostfly
+	melee = 0.20
+	bullet = 0.1
+	laser = 0.05
+	laser_soak = 15
+	bomb = 0.1
+	bio = 1.0
+	rad = 1.0
+
 /mob/living/simple_mob/animal/sif/frostfly
 	name = "frostfly"
 	desc = "A large insect with glittering wings."
@@ -46,32 +55,13 @@
 	base_attack_cooldown = 1.5 SECONDS
 	attacktext = list("nipped", "bit", "pinched")
 
-	projectiletype = /obj/item/projectile/energy/blob/freezing
+	projectiletype = /obj/projectile/energy/blob/freezing
 
 	special_attack_cooldown = 5 SECONDS
 	special_attack_min_range = 0
 	special_attack_max_range = 4
 
-	armor = list(
-		"melee" = 20,
-		"bullet" = 10,
-		"laser" = 5,
-		"energy" = 0,
-		"bomb" = 10,
-		"bio" = 100,
-		"rad" = 100
-		)
-
-	// The frostfly's body is incredibly cold at all times, natural resistance to things trying to burn it.
-	armor_soak = list(
-		"melee" = 0,
-		"bullet" = 0,
-		"laser" = 15,
-		"energy" = 0,
-		"bomb" = 0,
-		"bio" = 0,
-		"rad" = 0
-		)
+	armor_type = /datum/armor/physiology/frostfly
 
 	var/datum/effect_system/smoke_spread/frost/smoke_special
 
@@ -84,8 +74,8 @@
 /mob/living/simple_mob/animal/sif/frostfly/Initialize(mapload)
 	. = ..()
 	smoke_special = new
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 /datum/say_list/frostfly
 	speak = list("Zzzz.", "Kss.", "Zzt?")
@@ -109,15 +99,11 @@
 	if(energy < max_energy)
 		energy++
 
-/mob/living/simple_mob/animal/sif/frostfly/Stat()
-	..()
-	if(client.statpanel == "Status")
-		statpanel("Status")
-		if(SSemergencyshuttle)
-			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
-			if(eta_status)
-				stat(null, eta_status)
-		stat("Energy", energy)
+/mob/living/simple_mob/animal/sif/frostfly/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
+		STATPANEL_DATA_ENTRY("Energy", energy)
 
 /mob/living/simple_mob/animal/sif/frostfly/should_special_attack(atom/A)
 	if(energy >= 20)

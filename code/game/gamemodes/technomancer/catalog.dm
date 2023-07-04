@@ -4,11 +4,6 @@
 #define UTILITY_SPELLS "Utility"
 #define SUPPORT_SPELLS "Support"
 
-var/list/all_technomancer_spells = typesof(/datum/technomancer/spell) - /datum/technomancer/spell
-var/list/all_technomancer_equipment = typesof(/datum/technomancer/equipment) - /datum/technomancer/equipment
-var/list/all_technomancer_consumables = typesof(/datum/technomancer/consumable) - /datum/technomancer/consumable
-var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) - /datum/technomancer/assistance
-
 /datum/technomancer
 	var/name = "technomancer thing"
 	var/desc = "If you can see this, something broke."
@@ -71,16 +66,16 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 // Description: Instantiates all the catalog datums for everything that can be bought.
 /obj/item/technomancer_catalog/proc/set_up()
 	if(!spell_instances.len)
-		for(var/S in all_technomancer_spells)
+		for(var/S in subtypesof(/datum/technomancer/spell))
 			spell_instances += new S()
 	if(!equipment_instances.len)
-		for(var/E in all_technomancer_equipment)
+		for(var/E in subtypesof(/datum/technomancer/equipment))
 			equipment_instances += new E()
 	if(!consumable_instances.len)
-		for(var/C in all_technomancer_consumables)
+		for(var/C in subtypesof(/datum/technomancer/consumable))
 			consumable_instances += new C()
 	if(!assistance_instances.len)
-		for(var/A in all_technomancer_assistance)
+		for(var/A in subtypesof(/datum/technomancer/assistance))
 			assistance_instances += new A()
 
 /obj/item/technomancer_catalog/apprentice/set_up()
@@ -103,6 +98,9 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 // Parameters: 1 (user - the mob clicking on the catalog)
 // Description: Shows an HTML window, to buy equipment and spells, if the user is the legitimate owner.  Otherwise it cannot be used.
 /obj/item/technomancer_catalog/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!user)
 		return 0
 	if(owner && user != owner)
@@ -332,7 +330,7 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 
 		if(href_list["refund_functions"])
 			var/turf/T = get_turf(H)
-			if(T.z in GLOB.using_map.player_levels)
+			if(T.z in (LEGACY_MAP_DATUM).player_levels)
 				to_chat(H, "<span class='danger'>You can only refund at your base, it's too late now!</span>")
 				return
 			var/obj/item/technomancer_core/core = null
@@ -349,7 +347,7 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 
 /obj/item/technomancer_catalog/attackby(var/atom/movable/AM, var/mob/user)
 	var/turf/T = get_turf(user)
-	if(T.z in GLOB.using_map.player_levels)
+	if(T.z in (LEGACY_MAP_DATUM).player_levels)
 		to_chat(user, "<span class='danger'>You can only refund at your base, it's too late now!</span>")
 		return
 	for(var/datum/technomancer/equipment/E in equipment_instances + assistance_instances)

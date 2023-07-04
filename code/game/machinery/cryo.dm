@@ -2,12 +2,12 @@
 #define HEAT_CAPACITY_HUMAN 100
 /obj/machinery/atmospherics/component/unary/cryo_cell
 	name = "cryo cell"
-	icon = 'icons/obj/cryogenics.dmi' // map only
+	icon = 'icons/obj/medical/cryogenics.dmi' // map only
 	icon_state = "pod_preview"
 	density = TRUE
 	anchored = TRUE
 	layer = UNDER_JUNK_LAYER
-	interact_offline = TRUE
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 
 	var/on = FALSE
 	use_power = USE_POWER_IDLE
@@ -27,7 +27,7 @@
 /obj/machinery/atmospherics/component/unary/cryo_cell/Initialize(mapload)
 	. = ..()
 
-	icon = 'icons/obj/cryogenics_split.dmi'
+	icon = 'icons/obj/medical/cryogenics_split.dmi'
 	icon_state = "base"
 	initialize_directions = dir
 
@@ -79,7 +79,7 @@
 	if(occupant == user && !user.stat)
 		go_out()
 
-/obj/machinery/atmospherics/component/unary/cryo_cell/attack_hand(mob/user)
+/obj/machinery/atmospherics/component/unary/cryo_cell/attack_hand(mob/user, list/params)
 	nano_ui_interact(user)
 
  /**
@@ -231,8 +231,8 @@
 		occupant.set_stat(UNCONSCIOUS)
 		occupant.dir = SOUTH
 		if(occupant.bodytemperature < T0C)
-			occupant.Sleeping(max(5, (1/occupant.bodytemperature)*2000))
-			occupant.Paralyse(max(5, (1/occupant.bodytemperature)*3000))
+			occupant.afflict_sleeping(20 * max(5, (1/occupant.bodytemperature)*2000))
+			occupant.afflict_unconscious(20 * max(5, (1/occupant.bodytemperature)*3000))
 			if(air_contents.gas[GAS_ID_OXYGEN] > 2)
 				if(occupant.getOxyLoss()) occupant.adjustOxyLoss(-1)
 			else
@@ -248,7 +248,7 @@
 		var/has_clonexa = occupant.reagents.get_reagent_amount("clonexadone") >= 1
 		var/has_cryo_medicine = has_cryo || has_clonexa
 		if(beaker && !has_cryo_medicine)
-			beaker.reagents.trans_to_mob(occupant, 1, CHEM_BLOOD, 10)
+			beaker.reagents.trans_to_mob(occupant, 1, CHEM_INJECT, 10)
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/proc/heat_gas_contents()
 	if(air_contents.total_moles < 1)
@@ -307,7 +307,7 @@
 		return
 	M.forceMove(src)
 	M.ExtinguishMob()
-	if(M.health > -100 && (M.health < 0 || M.sleeping))
+	if(!IS_DEAD(M))
 		to_chat(M, SPAN_USERDANGER("You feel a cold liquid surround you. Your skin starts to freeze up."))
 	occupant = M
 	occupant.update_perspective()

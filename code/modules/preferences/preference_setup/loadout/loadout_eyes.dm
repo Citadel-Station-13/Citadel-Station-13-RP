@@ -3,7 +3,7 @@
 	name = "Eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch
 	slot = SLOT_ID_GLASSES
-	sort_category = "Glasses and Eyewear"
+	sort_category = LOADOUT_CATEGORY_GLASSES
 
 /datum/gear/eyes/eyepatchwhite
 	name = "Eyepatch (Recolorable)"
@@ -25,7 +25,7 @@
 		tints[initial(tinted_type.name)] = tinted_type
 	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tints, /proc/cmp_text_asc))
 
-/datum/gear/eyes/glasses
+/datum/gear/eyes/glasses/regular
 	name = "Glasses - Prescription"
 	path = /obj/item/clothing/glasses/regular
 
@@ -116,6 +116,10 @@
 /datum/gear/eyes/whiteblindfold
 	name = "White Blindfold"
 	path = /obj/item/clothing/glasses/sunglasses/blindfold/whiteblindfold
+
+/datum/gear/eyes/whiteblindfoldfake
+	name = "White Blindfold (Fake)"
+	path = /obj/item/clothing/glasses/sunglasses/fakeblindfold/whiteblindfold
 
 /datum/gear/eyes/redglasses
 	name = "Red Glasses"

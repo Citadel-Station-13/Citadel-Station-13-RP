@@ -7,7 +7,7 @@
  * old_loc - old turf
  */
 /atom/proc/z_pass_in(atom/movable/AM, dir, turf/old_loc)
-	if(density && !(flags & ON_BORDER))		// dense objects like machinery block by default
+	if(density && !(atom_flags & ATOM_BORDER))		// dense objects like machinery block by default
 		return FALSE
 	return !AM || Cross(AM)
 

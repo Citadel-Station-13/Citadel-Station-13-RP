@@ -20,7 +20,7 @@
 	var/ammo_material = MAT_PHORON
 	var/loading = FALSE
 
-/obj/item/vertibore/examine(mob/user)
+/obj/item/vertibore/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='notice'>The shaft excavator has [mat_storage]cm^3 of phoron inside, and can hold a maximum of [max_mat_storage].</span>"
 	if(cell)
@@ -74,6 +74,9 @@
 	. = ..()
 
 /obj/item/vertibore/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(mat_cost > mat_storage)
 		to_chat(user, "<span class='notice'>The [src] shudders, the phoron feeding mechanism attempting to move things that aren't there.</span>")
 		return

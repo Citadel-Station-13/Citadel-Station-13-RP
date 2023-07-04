@@ -25,17 +25,17 @@
 		new /datum/data/mining_equipment("Umbrella",					    /obj/item/melee/umbrella/random,								20),
 		new /datum/data/mining_equipment("100 Thaler",					    /obj/item/spacecash/c100,									    4),
 		new /datum/data/mining_equipment("1000 Thaler",					    /obj/item/spacecash/c1000,									    40),
-		new /datum/data/mining_equipment("Hardsuit - Control Module",       /obj/item/rig/industrial,									    50),
-		new /datum/data/mining_equipment("Hardsuit - Plasma Cutter",	    /obj/item/rig_module/device/plasmacutter,						10),
-		new /datum/data/mining_equipment("Hardsuit - Maneuvering Jets",	    /obj/item/rig_module/maneuvering_jets,							12),
-		new /datum/data/mining_equipment("Hardsuit - Intelligence Storage",	/obj/item/rig_module/ai_container,								25),
+		new /datum/data/mining_equipment("Hardsuit - Control Module",       /obj/item/hardsuit/industrial,									    50),
+		new /datum/data/mining_equipment("Hardsuit - Plasma Cutter",	    /obj/item/hardsuit_module/device/plasmacutter,						10),
+		new /datum/data/mining_equipment("Hardsuit - Maneuvering Jets",	    /obj/item/hardsuit_module/maneuvering_jets,							12),
+		new /datum/data/mining_equipment("Hardsuit - Intelligence Storage",	/obj/item/hardsuit_module/ai_container,								25),
 		new /datum/data/mining_equipment("Injector (L) - Glucose",          /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose,	50),
 		new /datum/data/mining_equipment("Injector (L) - Panacea",          /obj/item/reagent_containers/hypospray/autoinjector/biginjector/purity,	50),
 		new /datum/data/mining_equipment("Injector (L) - Trauma",           /obj/item/reagent_containers/hypospray/autoinjector/biginjector/brute,	50),
 		new /datum/data/mining_equipment("Nanopaste Tube",				    /obj/item/stack/nanopaste,										10),
 		//Mining vendor steals - Ends
         //Power tools like the CE gets, if kev comes crying: https://cdn.discordapp.com/attachments/296237931587305472/956517623519141908/unknown.png
-		new /datum/data/mining_equipment("Advanced Voidsuit",							/obj/item/rig/ce,									150),
+		new /datum/data/mining_equipment("Advanced Voidsuit",							/obj/item/hardsuit/ce,									150),
         new /datum/data/mining_equipment("Power Tool - Hand Drill",                     /obj/item/tool/screwdriver/power,                   80),
         new /datum/data/mining_equipment("Power Tool - Jaws of life",                   /obj/item/tool/crowbar/power,                       80),
         new /datum/data/mining_equipment("Power Tool - Experimental Welder",            /obj/item/weldingtool/experimental,                 80),
@@ -53,7 +53,7 @@
         new /datum/data/mining_equipment("Stock Parts - Advanced Matter Bin",       /obj/item/stock_parts/matter_bin/adv,       20),
 
 		//Special Resources which the vendor is the primary source off:
-		new /datum/data/mining_equipment("Special Parts - Vimur Tank", 				/obj/item/tank/vimur, 25),
+		new /datum/data/mining_equipment("Special Parts - Vimur Tank", 				/obj/item/tank/vimur, 5),
 		new /datum/data/mining_equipment("Special Parts - TEG Voucher", 			/obj/item/engineering_voucher/teg, 20),
 		new /datum/data/mining_equipment("Special Parts - SM Core Voucher", 		/obj/item/engineering_voucher/smcore, 40),
 		new /datum/data/mining_equipment("Special Parts - Fusion Core Voucher",		/obj/item/engineering_voucher/fusion_core, 20),
@@ -61,6 +61,7 @@
 		new /datum/data/mining_equipment("Special Parts - Gyrotrons Voucher", 		/obj/item/engineering_voucher/gyrotrons, 20),
 		new /datum/data/mining_equipment("Special Parts - Fuel compressor Voucher",	/obj/item/engineering_voucher/fuel_compressor, 10),
 		new /datum/data/mining_equipment("Special Parts - Collector Voucher", 		/obj/item/engineering_voucher/collectors, 10),
+		new /datum/data/mining_equipment("Special Parts - Laser Reflector Voucher", /obj/item/engineering_voucher/reflector, 30),
 		//voucher: Solar crate, Vimur canister
 		new /datum/data/mining_equipment("???", /obj/item/engineering_mystical_tech, 1000)
     )
@@ -92,7 +93,7 @@
 			if(href_list["choice"] == "eject")
 				to_chat(usr, "<span class='notice'>You eject the ID from [src]'s card slot.</span>")
 				if(ishuman(usr))
-					usr.put_in_hands(inserted_id)
+					usr.put_in_hands_or_drop(inserted_id)
 					inserted_id = null
 				else
 					inserted_id.forceMove(get_turf(src))
@@ -222,6 +223,12 @@
 /obj/item/engineering_voucher/fuel_compressor
 	name = "Fuel compressor voucher"
 	desc = "A voucher redeemable, at any NT cargo department, for shipment of a Fuel rod compressor"
+	icon_state = "engineering_voucher"
+	redeemable_for = new /datum/supply_pack/eng/fusion_fuel_compressor
+
+/obj/item/engineering_voucher/reflector
+	name = "Laser reflector voucher"
+	desc = "A voucher redeemable, at any NT cargo department, for a single laser reflector."
 	icon_state = "engineering_voucher"
 	redeemable_for = new /datum/supply_pack/eng/fusion_fuel_compressor
 

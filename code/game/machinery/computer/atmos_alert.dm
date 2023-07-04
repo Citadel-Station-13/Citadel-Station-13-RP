@@ -13,23 +13,23 @@ var/global/list/minor_air_alarms = list()
 
 /obj/machinery/computer/atmos_alert/Initialize(mapload)
 	. = ..()
-	atmosphere_alarm.register_alarm(src, /atom/proc/update_icon)
+	atmosphere_alarm.register_alarm(src, PROC_REF(on_alarm_update))
 
 /obj/machinery/computer/atmos_alert/Destroy()
 	atmosphere_alarm.unregister_alarm(src)
 	return ..()
 
-/obj/machinery/computer/atmos_alert/attack_hand(mob/user)
+/obj/machinery/computer/atmos_alert/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
-/obj/machinery/computer/atmos_alert/ui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/computer/atmos_alert/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AtmosAlertConsole", name)
 		ui.open()
 
 /obj/machinery/computer/atmos_alert/ui_data(mob/user)
-	var/list/data = list()
+	. = ..()
 	var/list/major_alarms = list()
 	var/list/minor_alarms = list()
 
@@ -39,10 +39,8 @@ var/global/list/minor_air_alarms = list()
 	for(var/datum/alarm/alarm in atmosphere_alarm.minor_alarms())
 		minor_alarms[++minor_alarms.len] = list("name" = sanitize(alarm.alarm_name()), "ref" = "\ref[alarm]")
 
-	data["priority_alarms"] = major_alarms
-	data["minor_alarms"] = minor_alarms
-
-	return data
+	.["priority_alarms"] = major_alarms
+	.["minor_alarms"] = minor_alarms
 
 /obj/machinery/computer/atmos_alert/update_icon()
 	if(!(machine_stat & (NOPOWER|BROKEN)))
@@ -56,6 +54,9 @@ var/global/list/minor_air_alarms = list()
 			else
 				icon_screen = initial(icon_screen)
 	..()
+
+/obj/machinery/computer/atmos_alert/proc/on_alarm_update()
+	update_icon()
 
 /obj/machinery/computer/atmos_alert/ui_act(action, params)
 	if(..())

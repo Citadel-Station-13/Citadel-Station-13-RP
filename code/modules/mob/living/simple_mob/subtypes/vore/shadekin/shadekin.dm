@@ -1,3 +1,6 @@
+/datum/vision/baseline/shadekin
+	hard_darksight = 0
+
 /mob/living/simple_mob/shadekin //Spawning the prototype spawns a random one, see initialize()
 	name = "shadekin"
 	desc = "Some sort of fluffer. Big ears, long tail."
@@ -14,9 +17,7 @@
 	health = 200
 
 	movement_cooldown = 2
-	see_in_dark = 10 //SHADEkin
-	has_hands = TRUE //Pawbs
-	seedarkness = FALSE //SHAAAADEkin
+	vision_innate = /datum/vision/baseline/shadekin
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	has_langs = list(LANGUAGE_GALCOM,LANGUAGE_SHADEKIN)
 
@@ -214,19 +215,18 @@
 	add_overlay(tailimage)
 	add_overlay(eye_icon_state)
 
-/mob/living/simple_mob/shadekin/Stat()
+/mob/living/simple_mob/shadekin/statpanel_data(client/C)
 	. = ..()
-	if(statpanel("Shadekin"))
-		abilities_stat()
-
-/mob/living/simple_mob/shadekin/proc/abilities_stat()
-	for(var/A in shadekin_abilities)
-		var/obj/effect/shadekin_ability/ability = A
-		stat("[ability.ability_name]",ability.atom_button_text())
+	if(C.statpanel_tab("Shadekin"))
+		STATPANEL_DATA_LINE("")
+		for(var/A in shadekin_abilities)
+			var/obj/effect/shadekin_ability/ability = A
+			ability.atom_button_text()
+			STATPANEL_DATA_CLICK("[ability.ability_name]", "[ability.name]", "\ref[ability]")
 
 //They phase back to the dark when killed
 /mob/living/simple_mob/shadekin/death(gibbed, deathmessage = "phases to somewhere far away!")
-	overlays = list()
+	cut_overlays()
 	icon_state = ""
 	flick("tp_out",src)
 	spawn(1 SECOND)
@@ -374,9 +374,9 @@
 	hud_elements |= energyhud
 
 // When someone clicks us with an empty hand
-/mob/living/simple_mob/shadekin/attack_hand(mob/living/carbon/human/M as mob)
+/mob/living/simple_mob/shadekin/attack_hand(mob/user, list/params)
 	. = ..()
-	if(M.a_intent == INTENT_HELP)
+	if(user.a_intent == INTENT_HELP)
 		shy_approach = FALSE //ACCLIMATED
 
 /datum/say_list/shadekin

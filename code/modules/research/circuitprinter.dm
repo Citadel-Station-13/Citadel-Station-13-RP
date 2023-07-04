@@ -9,7 +9,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	icon = 'icons/obj/machines/fabricators/imprinter.dmi'
 	icon_state = "imprinter"
 	base_icon_state = "imprinter"
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	circuit = /obj/item/circuitboard/circuit_imprinter
 	var/list/datum/design/queue = list()
 	var/progress = 0
@@ -50,10 +50,6 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 2500
-
-/obj/machinery/r_n_d/circuit_imprinter/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
 
 /obj/machinery/r_n_d/circuit_imprinter/process(delta_time)
 	..()
@@ -174,9 +170,9 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	if(materials[S.material.name] + amnt <= max_res_amount)
 		if(S && S.get_amount() >= 1)
 			var/count = 0
-			overlays += "fab-load-metal"
+			add_overlay("fab-load-metal")
 			spawn(10)
-				overlays -= "fab-load-metal"
+				cut_overlay("fab-load-metal")
 			while(materials[S.material.name] + amnt <= max_res_amount && S.get_amount() >= 1)
 				materials[S.material.name] += amnt
 				S.use(1)

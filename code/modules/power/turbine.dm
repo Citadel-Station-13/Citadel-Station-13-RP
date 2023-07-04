@@ -88,7 +88,6 @@
 
 /obj/machinery/compressor/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	gas_contained = new()
 	inturf = get_step(src, dir)
 	locate_machinery()
@@ -150,7 +149,7 @@
 		return
 	if(!starter)
 		return
-	overlays.Cut()
+	cut_overlays()
 
 	rpm = 0.9* rpm + 0.1 * rpmtarget
 	var/datum/gas_mixture/environment = inturf.return_air()
@@ -172,13 +171,13 @@
 			rpmtarget = 0
 
 	if(rpm>50000)
-		overlays += image('icons/obj/pipes.dmi', "comp-o4", FLY_LAYER)
+		add_overlay(image('icons/obj/pipes.dmi', "comp-o4", FLY_LAYER))
 	else if(rpm>10000)
-		overlays += image('icons/obj/pipes.dmi', "comp-o3", FLY_LAYER)
+		add_overlay(image('icons/obj/pipes.dmi', "comp-o3", FLY_LAYER))
 	else if(rpm>2000)
-		overlays += image('icons/obj/pipes.dmi', "comp-o2", FLY_LAYER)
+		add_overlay(image('icons/obj/pipes.dmi', "comp-o2", FLY_LAYER))
 	else if(rpm>500)
-		overlays += image('icons/obj/pipes.dmi', "comp-o1", FLY_LAYER)
+		add_overlay(image('icons/obj/pipes.dmi', "comp-o1", FLY_LAYER))
 	 //TODO: DEFERRED
 
 
@@ -195,7 +194,6 @@
 
 /obj/machinery/power/turbine/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	// The outlet is pointed at the direction of the turbine component
 	outturf = get_step(src, dir)
 	locate_machinery()
@@ -248,7 +246,7 @@
 		return
 	if(!compressor.starter)
 		return
-	overlays.Cut()
+	cut_overlays()
 
 	// This is the power generation function. If anything is needed it's good to plot it in EXCEL before modifying
 	// the TURBGENQ and TURBGENG values
@@ -271,11 +269,11 @@
 
 	// If it works, put an overlay that it works!
 	if(lastgen > 100)
-		overlays += image('icons/obj/pipes.dmi', "turb-o", FLY_LAYER)
+		add_overlay(image('icons/obj/pipes.dmi', "turb-o", FLY_LAYER))
 
 	updateDialog()
 
-/obj/machinery/power/turbine/attack_hand(var/mob/user as mob)
+/obj/machinery/power/turbine/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	src.interact(user)
@@ -342,7 +340,7 @@
 			id = new_ident
 		return
 
-/obj/machinery/computer/turbine_computer/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/turbine_computer/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	src.interact(user)

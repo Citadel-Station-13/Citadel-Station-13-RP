@@ -7,7 +7,7 @@
 	slot_flags = SLOT_BACK
 
 	//copied from tank.dm
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4
@@ -120,7 +120,10 @@
 	STOP_PROCESSING(SSobj, src)
 	updateicon()
 
-/obj/item/suit_cooling_unit/attack_self(var/mob/user)
+/obj/item/suit_cooling_unit/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(cover_open && cell)
 		if(ishuman(user))
 			user.put_in_hands(cell)
@@ -179,7 +182,7 @@
 	else
 		icon_state = "suitcooler0"
 
-/obj/item/suit_cooling_unit/examine(mob/user)
+/obj/item/suit_cooling_unit/examine(mob/user, dist)
 	. = ..()
 
 	if(Adjacent(user))

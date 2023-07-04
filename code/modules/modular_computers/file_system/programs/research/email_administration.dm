@@ -9,7 +9,7 @@
 	requires_ntnet = 1
 	available_on_ntnet = 1
 	nanomodule_path = /datum/nano_module/email_administration
-	required_access = access_network
+	required_access = ACCESS_SCIENCE_EXONET
 
 
 
@@ -75,7 +75,7 @@
 
 	// High security - can only be operated when the user has an ID with access on them.
 	var/obj/item/card/id/I = user.GetIdCard()
-	if(!istype(I) || !(access_network in I.access))
+	if(!istype(I) || !(ACCESS_SCIENCE_EXONET in I.access))
 		return 1
 
 	if(href_list["back"])
@@ -125,7 +125,7 @@
 		return 1
 
 	if(href_list["newaccount"])
-		var/newdomain = sanitize(input(user,"Pick domain:", "Domain name") as null|anything in GLOB.using_map.usable_email_tlds)
+		var/newdomain = sanitize(input(user,"Pick domain:", "Domain name") as null|anything in (LEGACY_MAP_DATUM).usable_email_tlds)
 		if(!newdomain)
 			return 1
 		var/newlogin = sanitize(input(user,"Pick account name (@[newdomain]):", "Account name"), 100)

@@ -63,7 +63,7 @@
 		return
 	. = ..()
 
-/obj/machinery/computer/timeclock/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/timeclock/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	user.set_machine(src)
@@ -92,13 +92,13 @@
 	if(card)
 		data["card"] = "[card]"
 		data["assignment"] = card.assignment
-		var/datum/job/job = SSjob.get_job(card.rank)
+		var/datum/role/job/job = SSjob.get_job(card.rank)
 		if(job)
 			data["job_datum"] = list(
 				"title" = job.title,
 				"departments" = english_list(job.departments),
 				"selection_color" = job.selection_color,
-				"economic_modifier" = job.economic_modifier,
+				"economic_modifier" = job.get_economic_payscale(),
 				"timeoff_factor" = job.timeoff_factor,
 				"pto_department" = job.pto_type
 			)
@@ -109,7 +109,7 @@
 
 	return data
 
-/obj/machinery/computer/timeclock/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/timeclock/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -132,7 +132,7 @@
 			if(checkFace())
 				if(checkCardCooldown())
 					makeOnDuty(params["switch-to-onduty-rank"], params["switch-to-onduty-assignment"])
-					usr.put_in_hands(card)
+					usr.put_in_hands_or_drop(card)
 					card = null
 			update_icon()
 			return TRUE
@@ -140,24 +140,26 @@
 			if(checkFace())
 				if(checkCardCooldown())
 					makeOffDuty()
-					usr.put_in_hands(card)
+					usr.put_in_hands_or_drop(card)
 					card = null
 			update_icon()
 			return TRUE
 
-
 /obj/machinery/computer/timeclock/proc/getOpenOnDutyJobs(var/mob/user, var/department)
 	var/list/available_jobs = list()
-	for(var/datum/job/job in SSjob.occupations)
+	for(var/datum/role/job/job in SSjob.occupations)
 		if(isOpenOnDutyJob(user, department, job))
-			available_jobs[job.title] = list(job.title)
-			if(job.alt_titles)
-				for(var/alt_job in job.alt_titles)
-					if(alt_job != job.title)
-						available_jobs[job.title] += alt_job
+			var/list/titles = available_titles(user, job)
+			if(!length(titles))
+				continue
+			available_jobs[job.title] = titles
 	return available_jobs
 
-/obj/machinery/computer/timeclock/proc/isOpenOnDutyJob(var/mob/user, var/department, var/datum/job/job)
+/obj/machinery/computer/timeclock/proc/available_titles(mob/user, var/datum/role/job/job)
+	var/list/datum/lore/character_background/backgrounds = user.mind?.original_background_ids()
+	return job.alt_title_query(backgrounds)
+
+/obj/machinery/computer/timeclock/proc/isOpenOnDutyJob(var/mob/user, var/department, var/datum/role/job/job)
 	return job \
 		   && job.is_position_available() \
 		   && !job.whitelist_only \
@@ -165,20 +167,23 @@
 		   && job.player_old_enough(user.client) \
 		   && job.pto_type == department \
 		   && !job.disallow_jobhop \
-		   && job.timeoff_factor > 0
+		   && job.timeoff_factor > 0 \
+		   && (job.check_mob_availability_one(user) == ROLE_AVAILABLE)
 
 /obj/machinery/computer/timeclock/proc/makeOnDuty(var/newrank, var/newassignment)
-	var/datum/job/oldjob = SSjob.get_job(card.rank)
-	var/datum/job/newjob = SSjob.get_job(newrank)
+	var/datum/role/job/oldjob = SSjob.get_job(card.rank)
+	var/datum/role/job/newjob = SSjob.get_job(newrank)
 	if(!oldjob || !isOpenOnDutyJob(usr, oldjob.pto_type, newjob))
 		return
 	if(newassignment != newjob.title && !(newassignment in newjob.alt_titles))
+		return
+	if(!newjob.alt_title_check(newassignment, usr.mind?.original_background_ids()))
 		return
 	if(newjob)
 		card.access = newjob.get_access()
 		card.rank = newjob.title
 		card.assignment = newassignment
-		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
+		card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 		data_core.manifest_modify(card.registered_name, card.assignment, card.rank)
 		card.last_job_switch = world.time
 		callHook("reassign_employee", list(card))
@@ -186,16 +191,16 @@
 		var/mob/living/carbon/human/H = usr
 		H.mind.assigned_role = card.rank
 		H.mind.role_alt_title = card.assignment
-		announce.autosay("[card.registered_name] has moved On-Duty as [card.assignment].", "Employee Oversight", channel, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
+		announce.autosay("[card.registered_name] has moved On-Duty as [card.assignment].", "Employee Oversight", channel, zlevels = (LEGACY_MAP_DATUM).get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/makeOffDuty()
-	var/datum/job/foundjob = SSjob.get_job(card.rank)
+	var/datum/role/job/foundjob = SSjob.get_job(card.rank)
 	if(!foundjob)
 		return
 	var/new_dept = foundjob.pto_type || PTO_CIVILIAN
-	var/datum/job/ptojob = null
-	for(var/datum/job/job in SSjob.occupations)
+	var/datum/role/job/ptojob = null
+	for(var/datum/role/job/job in SSjob.occupations)
 		if(job.pto_type == new_dept && job.timeoff_factor < 0)
 			ptojob = job
 			break
@@ -204,7 +209,7 @@
 		card.access = ptojob.get_access()
 		card.rank = ptojob.title
 		card.assignment = ptojob.title
-		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
+		card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 		data_core.manifest_modify(card.registered_name, card.assignment, card.rank)
 		card.last_job_switch = world.time
 		callHook("reassign_employee", list(card))
@@ -212,13 +217,13 @@
 		H.mind.assigned_role = ptojob.title
 		H.mind.role_alt_title = ptojob.title
 		foundjob.current_positions--
-		announce.autosay("[card.registered_name], [oldtitle], has moved Off-Duty.", "Employee Oversight", channel, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
+		announce.autosay("[card.registered_name], [oldtitle], has moved Off-Duty.", "Employee Oversight", channel, zlevels = (LEGACY_MAP_DATUM).get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/checkCardCooldown()
 	if(!card)
 		return FALSE
-	var/time_left = 10 MINUTES - (world.time - card.last_job_switch)
+	var/time_left = 3 MINUTES - (world.time - card.last_job_switch)
 	if(time_left > 0)
 		to_chat(usr, "You need to wait another [round((time_left/10)/60, 1)] minute\s before you can switch.")
 		return FALSE
@@ -232,7 +237,7 @@
 	if(!(istype(H)))
 		to_chat(usr, "<span class='warning'>Invalid user detected. Access denied.</span>")
 		return FALSE
-	else if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)))	//Face hiding bad
+	else if((H.wear_mask && (H.wear_mask.inv_hide_flags & HIDEFACE)) || (H.head && (H.head.inv_hide_flags & HIDEFACE)))	//Face hiding bad
 		to_chat(usr, "<span class='warning'>Facial recognition scan failed due to physical obstructions. Access denied.</span>")
 		return FALSE
 	else if(H.get_face_name() == "Unknown" || !(H.real_name == card.registered_name))
@@ -240,13 +245,6 @@
 		return FALSE
 	else
 		return TRUE
-
-/obj/item/card/id
-	var/last_job_switch
-
-/obj/item/card/id/Initialize(mapload)
-	. = ..()
-	last_job_switch = world.time
 
 //
 // Frame type for construction

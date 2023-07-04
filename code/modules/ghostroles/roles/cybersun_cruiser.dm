@@ -1,8 +1,8 @@
-/datum/ghostrole/cybersun
-	abstract_type = /datum/ghostrole/cybersun
+/datum/role/ghostrole/cybersun
+	abstract_type = /datum/role/ghostrole/cybersun
 	assigned_role = "Space Syndicate"
 
-/datum/ghostrole/cybersun/ship
+/datum/role/ghostrole/cybersun/ship
 	name = "Cybersun Ship Operative"
 	name = "Syndicate Battlecruiser Ship Operative"
 	desc = "You are a crewmember aboard the syndicate flagship: the SBC Starfury."
@@ -10,14 +10,14 @@
 	<br>Furthermore, the armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives."
 	instantiator = /datum/ghostrole_instantiator/human/random/cybersun/ship
 
-/datum/ghostrole/cybersun/assault
+/datum/role/ghostrole/cybersun/assault
 	name = "Cybersun Assault Operative"
 	desc = "You are an assault operative aboard the syndicate flagship: the SBC Starfury."
 	spawntext = "Your job is to follow your captain's orders, keep intruders out of the ship, and assault Space Station 13. There is an armory, multiple assault ships, and beam cannons to attack the station with. \
 	<br>Work as a team with your fellow operatives and work out a plan of attack. If you are overwhelmed, escape back to your ship!"
 	instantiator = /datum/ghostrole_instantiator/human/random/cybersun/assault
 
-/datum/ghostrole/cybersun/captain
+/datum/role/ghostrole/cybersun/captain
 	name = "Cybersun Ship Captain"
 	desc = "You are the captain aboard the syndicate flagship: the SBC Starfury."
 	spawntext = "Your job is to oversee your crew, defend the ship, and destroy Space Station 13. The ship has an armory, multiple ships, beam cannons, and multiple crewmembers to accomplish this goal. \
@@ -50,13 +50,13 @@
 	role_type = null
 
 /obj/structure/ghost_role_spawner/syndicate/battlecruiser
-	role_type = /datum/ghostrole/cybersun/ship
+	role_type = /datum/role/ghostrole/cybersun/ship
 
 /obj/structure/ghost_role_spawner/syndicate/battlecruiser/assault
-	role_type = /datum/ghostrole/cybersun/assault
+	role_type = /datum/role/ghostrole/cybersun/assault
 
 /obj/structure/ghost_role_spawner/syndicate/battlecruiser/captain
-	role_type = /datum/ghostrole/cybersun/captain
+	role_type = /datum/role/ghostrole/cybersun/captain
 
 /datum/outfit/syndicate_empty
 	name = "Syndicate Operative Empty"

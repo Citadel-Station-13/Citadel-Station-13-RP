@@ -19,6 +19,7 @@
 /obj/item/cataloguer/compact/verb/toggle()
 	set name = "Toggle Cataloguer"
 	set category = "Object"
+	set src in usr
 
 	if(busy)
 		to_chat(usr, SPAN_WARNING( "\The [src] is currently scanning something."))
@@ -37,7 +38,7 @@
 		var/mob/M = usr
 		M.update_action_buttons()
 
-/obj/item/cataloguer/compact/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/cataloguer/compact/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!deployed)
 		to_chat(user, SPAN_WARNING( "\The [src] is closed."))
 		return

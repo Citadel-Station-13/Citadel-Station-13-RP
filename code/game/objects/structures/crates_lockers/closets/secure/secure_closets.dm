@@ -15,6 +15,7 @@
 	var/icon_off = "secureoff"
 	wall_mounted = 0 //never solid (You can always pass over it)
 	health = 200
+//	secure = TRUE
 
 /obj/structure/closet/secure_closet/can_open()
 	if(src.locked)
@@ -118,7 +119,7 @@
 			visible_message("<span class='warning'>\The [src] sparks and breaks open!</span>", "You hear a faint electrical spark.")
 		return 1
 
-/obj/structure/closet/secure_closet/attack_hand(mob/user as mob)
+/obj/structure/closet/secure_closet/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 	if(src.locked)
 		src.togglelock(user)
@@ -134,7 +135,7 @@
 	set category = "Object"
 	set name = "Toggle Lock"
 
-	if(!usr.canmove || usr.stat || usr.restrained() || !Adjacent(usr)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE) || !Adjacent(usr)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
 		return
 
 	if(ishuman(usr) || isrobot(usr))
@@ -144,7 +145,7 @@
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
 /obj/structure/closet/secure_closet/update_icon()//Putting the sealed stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
-	overlays.Cut()
+	cut_overlays()
 
 	if(!opened)
 		if(broken)
@@ -154,12 +155,13 @@
 		else
 			icon_state = icon_closed
 		if(sealed)
-			overlays += "sealed"
+			add_overlay("sealed")
 	else
 		icon_state = icon_opened
 
 /obj/structure/closet/secure_closet/req_breakout()
-	if(!opened && locked) return 1
+	if(!opened && locked)
+		return 1
 	return ..() //It's a secure closet, but isn't locked.
 
 /obj/structure/closet/secure_closet/break_open()

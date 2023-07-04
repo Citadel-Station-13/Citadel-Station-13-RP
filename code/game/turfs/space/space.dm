@@ -3,27 +3,35 @@
 	name = "\proper space"
 	icon_state = "0"
 	plane = SPACE_PLANE
-	z_flags = Z_OPEN_DOWN | Z_OPEN_UP | Z_CONSIDERED_OPEN | Z_AIR_DOWN | Z_AIR_UP
+	mz_flags = MZ_ATMOS_BOTH | MZ_OPEN_BOTH
 
-	light_power = 0.25
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	permit_ao = FALSE
 
 	initial_gas_mix = GAS_STRING_VACUUM
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	temperature = 2.7
 	can_build_into_floor = TRUE
-	var/edge = 0		// If we're an edge
-	var/forced_dirs = 0	// Force this one to pretend it's an overedge turf
+	z_eventually_space = TRUE
+
+	/// If we're an edge.
+	var/edge = 0
+	/// Force this one to pretend it's an overedge turf.
+	var/forced_dirs = 0
 
 /turf/space/basic
-	flags = INITIALIZED
+	atom_flags = ATOM_INITIALIZED
 
 /turf/space/basic/New()	//Do not convert to Initialize
 	//This is used to optimize the map loader
 	return
 
 /turf/space/Initialize(mapload)
-	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+
+	SHOULD_CALL_PARENT(FALSE)
+	atom_flags |= ATOM_INITIALIZED
+
+	icon_state = SPACE_ICON_STATE(x, y, z)
 
 	// We might be an edge
 	if(y == world.maxy || forced_dirs & NORTH)
@@ -36,10 +44,35 @@
 	else if(x == world.maxx || forced_dirs & EAST)
 		edge |= EAST
 
+	if(!HasBelow(z))
+		return INITIALIZE_HINT_NORMAL
+
+	var/turf/below = GetBelow(src)
+	if(isspaceturf(below))
+		return INITIALIZE_HINT_NORMAL
+
+	var/area/A = below.loc
+	if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
+		return INITIALIZE_HINT_NORMAL
+
+	if (CONFIG_GET(flag/starlight))
+		update_starlight()
+
+	return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
+
+/turf/space/Destroy()
+	// Cleanup cached z_eventually_space values above us.
+	if (above)
+		var/turf/T = src
+		while ((T = GetAbove(T)))
+			T.z_eventually_space = FALSE
 	return ..()
 
 /turf/space/is_space()	// Hmmm this Space is made of Space.
-	return 1
+	return TRUE
+
+/turf/space/is_open()
+	return TRUE
 
 // Override for space turfs, since they should never hide anything
 /turf/space/levelupdate()
@@ -50,17 +83,20 @@
 	return locate(/obj/structure/lattice, src)	// Counts as solid structure if it has a lattice
 
 /turf/space/proc/update_starlight()
-	var/power = CONFIG_GET(number/starlight)
-	if(power)
-		for(var/t in RANGE_TURFS(1,src)) //RANGE_TURFS is in code\__HELPERS\game.dm
-			if(isspaceturf(t))
-				//let's NOT update this that much pls
-				continue
-			set_light(power)
-			return
-		set_light(0)
-	else
-		set_light(0)
+	if(!(CONFIG_GET(flag/starlight)))
+		return
+
+	for (var/turf/T in RANGE_TURFS(1, src))
+		// Fuck if I know how these turfs are located in an area that is not an area.
+		if (!isloc(T.loc) || !TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
+			continue
+
+		set_ambient_light(COLOR_WHITE)
+		return
+
+	if (TURF_IS_AMBIENT_LIT_UNSAFE(src))
+		clear_ambient_light()
+
 
 /turf/space/attackby(obj/item/C as obj, mob/user as mob)
 
@@ -125,3 +161,27 @@
 /turf/space/proc/on_atom_edge_touch(atom/movable/AM)
 	if(!QDELETED(AM) && (AM.loc == src))
 		AM.touch_map_edge()
+
+
+//// Special variants used in various maps ////
+
+// Bluespace jump turf!
+/turf/space/bluespace
+	name = "bluespace"
+	icon = 'icons/turf/space.dmi'
+	icon_state = "bluespace"
+
+/turf/space/bluespace/Initialize(mapload)
+	. = ..()
+	icon = 'icons/turf/space.dmi'
+	icon_state = "bluespace"
+
+// Desert jump turf!
+/turf/space/sandyscroll
+	name = "sand transit"
+	icon = 'icons/turf/transit_vr.dmi'
+	icon_state = "desert_ns"
+
+/turf/space/sandyscroll/Initialize(mapload)
+	. = ..()
+	icon_state = "desert_ns"

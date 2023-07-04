@@ -23,6 +23,8 @@ var/list/floor_light_cache = list()
 /obj/machinery/floor_light/prebuilt
 	anchored = TRUE
 
+
+
 /obj/machinery/floor_light/attackby(obj/item/W, mob/user)
 	if(W.is_screwdriver())
 		anchored = !anchored
@@ -56,11 +58,11 @@ var/list/floor_light_cache = list()
 		src.light_color = newcolor
 		update_brightness()
 		visible_message(SPAN_NOTICE("\The [user] has changed \the [src] color."))
-	else if(W.force && user.a_intent == "hurt")
+	else if(W.damage_force && user.a_intent == "hurt")
 		attack_hand(user)
 	return
 
-/obj/machinery/floor_light/attack_hand(mob/user)
+/obj/machinery/floor_light/attack_hand(mob/user, list/params)
 
 	if(user.a_intent == INTENT_HARM && !issmall(user))
 		if(!isnull(damaged) && !(machine_stat & BROKEN))
@@ -119,7 +121,7 @@ var/list/floor_light_cache = list()
 	update_icon()
 
 /obj/machinery/floor_light/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(use_power && !broken())
 		if(isnull(damaged))
 			var/cache_key = "floorlight-[default_light_colour]"
@@ -128,7 +130,7 @@ var/list/floor_light_cache = list()
 				I.color = default_light_colour
 				I.layer = layer+0.001
 				floor_light_cache[cache_key] = I
-			overlays |= floor_light_cache[cache_key]
+			add_overlay(floor_light_cache[cache_key])
 		else
 			if(damaged == 0) //Needs init.
 				damaged = rand(1,4)
@@ -138,7 +140,7 @@ var/list/floor_light_cache = list()
 				I.color = default_light_colour
 				I.layer = layer+0.001
 				floor_light_cache[cache_key] = I
-			overlays |= floor_light_cache[cache_key]
+			add_overlay(floor_light_cache[cache_key])
 
 /obj/machinery/floor_light/proc/broken()
 	return (machine_stat & (BROKEN|NOPOWER))
@@ -171,3 +173,36 @@ var/list/floor_light_cache = list()
 /obj/machinery/floor_light/cultify()
 	default_light_colour = "#FF0000"
 	update_brightness()
+
+/obj/machinery/floor_light/changing
+	name = "changing floor light"
+
+/obj/machinery/floor_light/changing/process(delta_time)
+	. = ..()
+	update_color()
+
+/obj/machinery/floor_light/changing/proc/update_color()
+	switch(default_light_colour)
+		if("#0CD5E8")
+			default_light_colour = "#0CF241"
+		if("#0CF241")
+			default_light_colour = "#ADDB01"
+		if("#ADDB01")
+			default_light_colour = "#F2BA0C"
+		if("#F2BA0C")
+			default_light_colour = "#EB610C"
+		if("#EB610C")
+			default_light_colour = "#F20C30"
+		if("#F20C30")
+			default_light_colour = "#8B00DB"
+		if("#8B00DB")
+			default_light_colour = "#0C37F2"
+		if("#0C37F2")
+			default_light_colour = "#0CD5E8"
+		else
+			default_light_colour = "#0CD5E8"
+	update_brightness(default_light_range, default_light_power, default_light_colour)
+
+/obj/machinery/floor_light/changing/prebuilt
+	anchored = TRUE
+

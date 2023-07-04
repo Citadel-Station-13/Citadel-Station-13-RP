@@ -4,8 +4,8 @@
 
 /obj/item/reagent_containers/syringe
 	name = "syringe"
-	desc = "A syringe."
-	icon = 'icons/obj/syringe.dmi'
+	desc = "A disposable syringe. A small sticker on the side reminds you to dispose after one use."
+	icon = 'icons/obj/medical/syringe.dmi'
 	item_state = "syringe_0"
 	icon_state = "0"
 	matter = list(MAT_GLASS = 150)
@@ -16,6 +16,8 @@
 	slot_flags = SLOT_EARS
 	sharp = 1
 	unacidable = 1 //glass
+	rad_flags = RAD_NO_CONTAMINATE
+	item_flags = ITEM_NOBLUDGEON
 	var/mode = SYRINGE_DRAW
 	var/image/filling //holds a reference to the current filling overlay
 	var/visible_name = "a syringe"
@@ -35,7 +37,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attack_self(mob/user as mob)
+/obj/item/reagent_containers/syringe/attack_self(mob/user)
 	switch(mode)
 		if(SYRINGE_DRAW)
 			mode = SYRINGE_INJECT
@@ -45,15 +47,15 @@
 			return
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attack_hand()
+/obj/item/reagent_containers/syringe/attack_hand(mob/user, list/params)
 	..()
 	update_icon()
 
 /obj/item/reagent_containers/syringe/attackby(obj/item/I as obj, mob/user as mob)
 	return
 
-/obj/item/reagent_containers/syringe/afterattack(obj/target, mob/user, proximity)
-	if(!proximity || !target.reagents)
+/obj/item/reagent_containers/syringe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) || !target.reagents)
 		return
 
 	if(mode == SYRINGE_BROKEN)
@@ -69,7 +71,7 @@
 	var/injtime = time // Calculated 'true' injection time (as added to by hardsuits and whatnot), 66% of this goes to warmup, then every 33% after injects 5u
 	switch(mode)
 		if(SYRINGE_DRAW)
-			if(!reagents.get_free_space())
+			if(!reagents.available_volume())
 				to_chat(user, "<span class='warning'>The syringe is full.</span>")
 				mode = SYRINGE_INJECT
 				return
@@ -80,7 +82,7 @@
 					return
 
 				if(istype(target, /mob/living/carbon))
-					var/amount = reagents.get_free_space()
+					var/amount = reagents.available_volume()
 					var/mob/living/carbon/T = target
 					if(!T.dna)
 						to_chat(user, "<span class='warning'>You are unable to locate any blood. (To be specific, your target seems to be missing their DNA datum).</span>")
@@ -125,6 +127,7 @@
 					to_chat(user, "<span class='notice'>You take a blood sample from [target].</span>")
 					for(var/mob/O in viewers(4, user))
 						O.show_message("<span class='notice'>[user] takes a blood sample from [target].</span>", 1)
+						T.custom_pain(SPAN_WARNING("The needle stings a bit."), 2, TRUE)
 
 			else //if not mob
 				if(!target.reagents.total_volume)
@@ -140,7 +143,7 @@
 				update_icon()
 
 
-			if(!reagents.get_free_space())
+			if(!reagents.available_volume())
 				mode = SYRINGE_INJECT
 				update_icon()
 
@@ -155,7 +158,7 @@
 			if(!target.is_open_container() && !ismob(target) && !istype(target, /obj/item/reagent_containers/food) && !istype(target, /obj/item/slime_extract) && !istype(target, /obj/item/clothing/mask/smokable/cigarette) && !istype(target, /obj/item/storage/fancy/cigarettes))
 				to_chat(user, "<span class='notice'>You cannot directly fill this object.</span>")
 				return
-			if(!target.reagents.get_free_space())
+			if(!target.reagents.available_volume())
 				to_chat(user, "<span class='notice'>[target] is full.</span>")
 				return
 
@@ -205,7 +208,7 @@
 			var/contained = reagentlist()
 			if(ismob(target))
 				while(reagents.total_volume)
-					trans += reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_BLOOD)
+					trans += reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_INJECT)
 					update_icon()
 					if(!reagents.total_volume || !do_after(user,cycle_time,target))
 						break
@@ -220,10 +223,12 @@
 				to_chat(user, "<span class='notice'>You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units.</span>")
 				if(ismob(target))
 					add_attack_logs(user,target,"Injected with [src.name] containing [contained], trasferred [trans] units")
+					H.custom_pain(SPAN_WARNING("The needle stings a bit."), 2, TRUE)
 			else
 				to_chat(user, "<span class='notice'>The syringe is empty.</span>")
 
-			dirty(target,affected) //Reactivated this feature per feedback and constant requests from players. If this proves to be utter crap we'll adjust the numbers before removing outright
+			if(ismob(target) && affected)
+				dirty(target,affected) //Reactivated this feature per feedback and constant requests from players. If this proves to be utter crap we'll adjust the numbers before removing outright
 
 	return
 
@@ -244,9 +249,9 @@
 		if((user != target) && H.check_shields(7, src, user, "\the [src]"))
 			return
 
-		if (target != user && H.getarmor(target_zone, "melee") > 5 && prob(50))
+		if (target != user && H.legacy_mob_armor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message(text("<font color='red'><B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B></font>"), 1)
+				O.show_message(SPAN_BOLDDANGER("[user] tries to stab [target] in \the [hit_area] with [name], but the attack is deflected by armor!"), SAYCODE_TYPE_VISIBLE)
 			qdel(src)
 			add_attack_logs(user,target,"Syringe harmclick")
 			return
@@ -262,7 +267,7 @@
 
 	var/syringestab_amount_transferred = rand(0, (reagents.total_volume - 5)) //nerfed by popular demand
 	var/contained = reagents.get_reagents()
-	var/trans = reagents.trans_to_mob(target, syringestab_amount_transferred, CHEM_BLOOD)
+	var/trans = reagents.trans_to_mob(target, syringestab_amount_transferred, CHEM_INJECT)
 	if(isnull(trans)) trans = 0
 	add_attack_logs(user,target,"Stabbed with [src.name] containing [contained], trasferred [trans] units")
 	break_syringe(target, user)
@@ -284,7 +289,7 @@
 	visible_name = "a giant syringe"
 	time = 300
 
-/obj/item/reagent_containers/syringe/ld50_syringe/afterattack(obj/target, mob/user, flag)
+/obj/item/reagent_containers/syringe/ld50_syringe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(mode == SYRINGE_DRAW && ismob(target)) // No drawing 50 units of blood at once
 		to_chat(user, "<span class='notice'>This needle isn't designed for drawing blood.</span>")
 		return

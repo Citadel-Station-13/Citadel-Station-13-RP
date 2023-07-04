@@ -6,7 +6,7 @@
 	icon_keyboard = "tech_key"
 	icon_screen = "comm"
 	light_color = "#0099ff"
-	req_access = list(access_heads)
+	req_access = list(ACCESS_COMMAND_BRIDGE)
 	circuit = /obj/item/circuitboard/communications
 	var/prints_intercept = 1
 	var/authenticated = 0
@@ -29,17 +29,18 @@
 	var/const/STATE_ALERT_LEVEL = 8
 	var/const/STATE_CONFIRM_LEVEL = 9
 	var/const/STATE_CREWTRANSFER = 10
+	var/const/STATE_NIGHTSHIFT = 11
 
 	var/status_display_freq = "1435"
 	var/stat_msg1
 	var/stat_msg2
 
-	var/datum/lore/atc_controller/ATC
+	var/datum/controller/subsystem/legacy_atc/ATC
 	var/datum/legacy_announcement/priority/crew_announcement = new
 
 /obj/machinery/computer/communications/Initialize(mapload)
 	. = ..()
-	ATC = GLOB.lore_atc
+	ATC = SSlegacy_atc
 	crew_announcement.newscast = 1
 
 /obj/machinery/computer/communications/process(delta_time)
@@ -51,7 +52,7 @@
 /obj/machinery/computer/communications/Topic(href, href_list)
 	if(..())
 		return 1
-	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
+	if ((LEGACY_MAP_DATUM) && !(src.z in (LEGACY_MAP_DATUM).contact_levels))
 		to_chat(usr, "<font color='red'><b>Unable to establish a connection:</b></font> <font color='black'>You're too far away from the station!</font>")
 		return
 	usr.set_machine(src)
@@ -71,7 +72,7 @@
 			if (I && istype(I))
 				if(src.check_access(I))
 					authenticated = 1
-				if(access_captain in I.access)
+				if(ACCESS_COMMAND_CAPTAIN in I.access)
 					authenticated = 2
 					crew_announcement.announcer = GetNameAndAssignmentFromId(I)
 		if("logout")
@@ -138,7 +139,7 @@
 			src.currmsg = 0
 			src.state = STATE_MESSAGELIST
 		if("toggleatc")
-			src.ATC.squelched = !src.ATC.squelched
+			src.ATC.toggle_broadcast()
 		if("viewmessage")
 			src.state = STATE_VIEWMESSAGE
 			if (!src.currmsg)
@@ -164,6 +165,9 @@
 		if("status")
 			src.state = STATE_STATUSDISPLAY
 
+		if("nightshift")
+			src.state = STATE_NIGHTSHIFT
+
 		// Status display stuff
 		if("setstat")
 			switch(href_list["statdisp"])
@@ -187,12 +191,12 @@
 				if(centcomm_message_cooldown)
 					to_chat(usr, "<font color='red'>Arrays recycling.  Please stand by.</font>")
 					return
-				var/input = sanitize(input("Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
+				var/input = sanitize(input("Please choose a message to transmit to [(LEGACY_MAP_DATUM).boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 				if(!input || !(usr in view(1,src)))
 					return
-				CentCom_announce(input, usr)
+				message_centcom(input, usr)
 				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
-				log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
+				log_game("[key_name(usr)] has made an IA [(LEGACY_MAP_DATUM).boss_short] announcement: [input]")
 				centcomm_message_cooldown = 1
 				spawn(300)//10 minute cooldown
 					centcomm_message_cooldown = 0
@@ -207,7 +211,7 @@
 				var/input = sanitize(input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 				if(!input || !(usr in view(1,src)))
 					return
-				Syndicate_announce(input, usr)
+				message_syndicate(input, usr)
 				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
 				log_game("[key_name(usr)] has made an illegal announcement: [input]")
 				centcomm_message_cooldown = 1
@@ -254,6 +258,8 @@
 			src.aistate = STATE_MESSAGELIST
 		if("ai-status")
 			src.aistate = STATE_STATUSDISPLAY
+		if("ai-nightshift")
+			src.aistate = STATE_NIGHTSHIFT
 
 		if("securitylevel")
 			src.tmp_alertlevel = text2num( href_list["newalertlevel"] )
@@ -263,8 +269,22 @@
 		if("changeseclevel")
 			state = STATE_ALERT_LEVEL
 
-
-
+		if("setnightshift")
+			var/oldactive = SSnightshift.nightshift_active
+			var/newactive
+			switch(href_list["newsetting"])
+				if("auto")
+					SSnightshift.overridden = FALSE
+					newactive = oldactive
+				if("on")
+					SSnightshift.overridden = TRUE
+					newactive = TRUE
+				if("off")
+					SSnightshift.overridden = TRUE
+					newactive = FALSE
+			if(oldactive != newactive)
+				SSnightshift.update_nightshift(newactive)
+			src.state = STATE_DEFAULT
 	src.updateUsrDialog()
 
 /obj/machinery/computer/communications/emag_act(var/remaining_charges, var/mob/user)
@@ -276,10 +296,10 @@
 /obj/machinery/computer/communications/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/communications/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/communications/attack_hand(mob/user, list/params)
 	if(..())
 		return
-	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
+	if ((LEGACY_MAP_DATUM) && !(src.z in (LEGACY_MAP_DATUM).contact_levels))
 		to_chat(user, "<font color='red'><b>Unable to establish a connection:</b></font> <font color='black'>You're too far away from the station!</font>")
 		return
 
@@ -305,7 +325,7 @@
 					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=announce'>Make An Announcement</A> \]"
 				if (src.authenticated==2)
 					if(src.emagged == 0)
-						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageCentCom'>Send an emergency message to [GLOB.using_map.boss_short]</A> \]"
+						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageCentCom'>Send an emergency message to [(LEGACY_MAP_DATUM).boss_short]</A> \]"
 					else
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageSyndicate'>Send an emergency message to \[UNKNOWN\]</A> \]"
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=RestoreBackup'>Restore Backup Routing Data</A> \]"
@@ -318,6 +338,7 @@
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=callshuttle'>Call Emergency Shuttle</A> \]"
 
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=status'>Set Status Display</A> \]"
+				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=nightshift'>Set Nightshift Setting</A> \]"
 			else
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=login'>Log In</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message List</A> \]"
@@ -358,6 +379,22 @@
 			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=redalert'>Red Alert</A> |"
 			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=lockdown'>Lockdown</A> |"
 			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=biohazard'>Biohazard</A> \]<BR><HR>"
+		if(STATE_NIGHTSHIFT)
+			if(!SSnightshift.overridden)
+				dat += "Current Nightshift Setting: <b>Auto ([SSnightshift.nightshift_active ? "On" : "Off"])</b><BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=off'>Off</A> \]<BR>"
+				dat += "Auto<BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=on'>On</A> \]<BR>"
+			else if(SSnightshift.nightshift_active)
+				dat += "Current Nightshift Setting: <b>On</b><BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=off'>Off</A> \]<BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=auto'>Auto</A> \]<BR>"
+				dat += "On<BR>"
+			else
+				dat += "Current Nightshift Setting: <b>Off</b><BR>"
+				dat += "Off<BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=auto'>Auto</A> \]<BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=on'>On</A> \]<BR>"
 		if(STATE_ALERT_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
@@ -389,6 +426,7 @@
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-messagelist'>Message List</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-status'>Set Status Display</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleatc'>[ATC.squelched ? "Enable" : "Disable"] ATC Relay</A> \]"
+			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-nightshift'>Set Nightshift Setting</A> \]"
 		if(STATE_CALLSHUTTLE)
 			dat += "Are you sure you want to call the shuttle? \[ <A HREF='?src=\ref[src];operation=ai-callshuttle2'>OK</A> | <A HREF='?src=\ref[src];operation=ai-main'>Cancel</A> \]"
 		if(STATE_MESSAGELIST)
@@ -441,7 +479,7 @@
 		return
 
 	if(deathsquad.deployed)
-		to_chat(user, "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
+		to_chat(user, "[(LEGACY_MAP_DATUM).boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
 		return
 
 	if(SSemergencyshuttle.deny_shuttle)
@@ -453,7 +491,7 @@
 		return
 
 	if(SSemergencyshuttle.going_to_centcom())
-		to_chat(user, "The emergency shuttle may not be called while returning to [GLOB.using_map.boss_short].")
+		to_chat(user, "The emergency shuttle may not be called while returning to [(LEGACY_MAP_DATUM).boss_short].")
 		return
 
 	if(SSemergencyshuttle.online())
@@ -477,7 +515,7 @@
 		return
 
 	if(SSemergencyshuttle.going_to_centcom())
-		to_chat(user, "The shuttle may not be called while returning to [GLOB.using_map.boss_short].")
+		to_chat(user, "The shuttle may not be called while returning to [(LEGACY_MAP_DATUM).boss_short].")
 		return
 
 	if(SSemergencyshuttle.online())
@@ -487,11 +525,11 @@
 	// if force is 0, some things may stop the shuttle call
 	if(!force)
 		if(SSemergencyshuttle.deny_shuttle)
-			to_chat(user, "[GLOB.using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later.")
+			to_chat(user, "[(LEGACY_MAP_DATUM).boss_short] does not currently have a shuttle available in your sector. Please try again later.")
 			return
 
 		if(deathsquad.deployed == 1)
-			to_chat(user, "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
+			to_chat(user, "[(LEGACY_MAP_DATUM).boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
 			return
 
 		if(world.time < 54000) // 30 minute grace period to let the game get going
@@ -559,3 +597,11 @@
 			status_signal.data["picture_state"] = data1
 
 	frequency.post_signal(src, status_signal)
+
+//TODO: Convert to proper cooldowns. A bool for cooldowns is insanely dumb.
+/// Override the cooldown for special actions
+/// Used in places such as CentCom messaging back so that the crew can answer right away
+/obj/machinery/computer/communications/proc/override_cooldown()
+	// COOLDOWN_RESET(src, important_action_cooldown)
+	centcomm_message_cooldown = 0
+	message_cooldown = 0

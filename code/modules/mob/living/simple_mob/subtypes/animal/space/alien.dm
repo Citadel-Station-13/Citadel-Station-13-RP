@@ -88,7 +88,8 @@
 	icon_living = "aliend_running"
 	icon_dead = "aliend_l"
 	icon_rest = "aliend_sleep"
-	health = 100
+	maxHealth = 300
+	health = 300
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/drone)
@@ -113,7 +114,7 @@
 	health = 220
 	melee_damage_lower = 15
 	melee_damage_upper = 15
-	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
+	projectiletype = /obj/projectile/energy/neurotoxin
 	projectilesound = 'sound/weapons/pierce.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/sentinel)
 
@@ -140,9 +141,11 @@
 	health = 400
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/sentinel/praetorian)
 
+	projectiletype = /obj/projectile/energy/neurotoxin/toxic
+
 	base_pixel_x = -16
-	icon_dimension_y = 64
-	icon_dimension_x = 64
+	icon_y_dimension = 64
+	icon_x_dimension = 64
 
 	meat_amount = 5
 
@@ -172,7 +175,7 @@
 	maxHealth = 750
 	melee_damage_lower = 15
 	melee_damage_upper = 15
-	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
+	projectiletype = /obj/projectile/energy/neurotoxin/toxic
 	projectilesound = 'sound/weapons/pierce.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen)
 
@@ -206,8 +209,8 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress)
 
 	base_pixel_x = -16
-	icon_dimension_x = 64
-	icon_dimension_y = 64
+	icon_x_dimension = 64
+	icon_y_dimension = 64
 
 /datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother
 	name = "Feral Xenomorph - Mother"
@@ -227,18 +230,18 @@
 	icon_living = "empress_s"
 	icon_dead = "empress_dead"
 	icon_rest = "empress_rest"
-	maxHealth = 600
-	health = 600
+	maxHealth = 1200
+	health = 1200
 	meat_amount = 10
 	hide_amount = 10
-	melee_damage_lower = 15
+	melee_damage_lower = 20
 	melee_damage_upper = 25
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother)
 
 	base_pixel_x = -32
 	base_pixel_y = -32
-	icon_dimension_x = 96
-	icon_dimension_y = 96
+	icon_x_dimension = 96
+	icon_y_dimension = 96
 
 	mod_min = 100
 	mod_max = 150

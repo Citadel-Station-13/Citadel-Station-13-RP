@@ -82,7 +82,7 @@
 		cure(mob)
 		return
 
-	if(mob.radiation > 50)
+	if(mob.radiation > RAD_VIRUS_MUTATE)
 		if(prob(1))
 			majormutate()
 

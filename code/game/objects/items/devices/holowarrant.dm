@@ -4,6 +4,7 @@
 	desc = "The practical paperwork replacement for the officer on the go."
 	icon_state = "holowarrant"
 	item_state = "flashtool"
+	item_flags = ITEM_NOBLUDGEON
 	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4
@@ -11,7 +12,7 @@
 	var/datum/data/record/warrant/active
 
 //look at it
-/obj/item/holowarrant/examine(mob/user)
+/obj/item/holowarrant/examine(mob/user, dist)
 	. = ..()
 	if(active)
 		. += "It's a holographic warrant for '[active.fields["namewarrant"]]'."
@@ -21,7 +22,10 @@
 		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
 
 //hit yourself with it
-/obj/item/holowarrant/attack_self(mob/living/user as mob)
+/obj/item/holowarrant/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = null
 	var/list/warrants = list()
 	if(!isnull(data_core.general))
@@ -50,10 +54,11 @@
 	..()
 
 //hit other people with it
-/obj/item/holowarrant/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	user.visible_message("<span class='notice'>You show the warrant to [M].</span>", \
-			"<span class='notice'>[user] holds up a warrant projector and shows the contents to [M].</span>")
-	M.examinate(src)
+/obj/item/holowarrant/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	user.visible_message("<span class='notice'>You show the warrant to [target].</span>", \
+			"<span class='notice'>[user] holds up a warrant projector and shows the contents to [target].</span>")
+	target.examinate(src)
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/holowarrant/update_icon()
 	if(active)
@@ -69,13 +74,13 @@
 		<HTML><HEAD><TITLE>[active.fields["namewarrant"]]</TITLE></HEAD>
 		<BODY bgcolor='#FFFFFF'><center><large><b>Sol Central Government Colonial Marshal Bureau</b></large></br>
 		in the jurisdiction of the</br>
-		[GLOB.using_map.boss_name] in [GLOB.using_map.station_name]</br>
+		[(LEGACY_MAP_DATUM).boss_name] in [(LEGACY_MAP_DATUM).station_name]</br>
 		</br>
 		<b>ARREST WARRANT</b></center></br>
 		</br>
 		This document serves as authorization and notice for the arrest of _<u>[active.fields["namewarrant"]]</u>____ for the crime(s) of:</br>[active.fields["charges"]]</br>
 		</br>
-		Vessel or habitat: _<u>[GLOB.using_map.station_name]</u>____</br>
+		Vessel or habitat: _<u>[(LEGACY_MAP_DATUM).station_name]</u>____</br>
 		</br>_<u>[active.fields["auth"]]</u>____</br>
 		<small>Person authorizing arrest</small></br>
 		</BODY></HTML>
@@ -86,7 +91,7 @@
 		var/output= {"
 		<HTML><HEAD><TITLE>Search Warrant: [active.fields["namewarrant"]]</TITLE></HEAD>
 		<BODY bgcolor='#FFFFFF'><center>in the jurisdiction of the</br>
-		[GLOB.using_map.boss_name] in [GLOB.using_map.station_name]</br>
+		[(LEGACY_MAP_DATUM).boss_name] in [(LEGACY_MAP_DATUM).station_name]</br>
 		</br>
 		<b>SEARCH WARRANT</b></center></br>
 		</br>
@@ -105,7 +110,7 @@
 		</br>
 		<b>Warrant issued by: </b> [active.fields ["auth"]]</br>
 		</br>
-		Vessel or habitat: _<u>[GLOB.using_map.station_name]</u>____</br>
+		Vessel or habitat: _<u>[(LEGACY_MAP_DATUM).station_name]</u>____</br>
 		</BODY></HTML>
 		"}
 		show_browser(user, output, "window=Search warrant for [active.fields["namewarrant"]]")

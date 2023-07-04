@@ -165,18 +165,18 @@
 	H.add_language("Cortical Link")
 
 	if(host.stat == 2)
-		H.verbs |= /mob/living/carbon/human/proc/jumpstart
+		add_verb(H, /mob/living/carbon/human/proc/jumpstart)
 
-	H.verbs |= /mob/living/carbon/human/proc/psychic_whisper
-	H.verbs |= /mob/living/carbon/human/proc/tackle
-	H.verbs |= /mob/living/carbon/proc/spawn_larvae
+	add_verb(H, /mob/living/carbon/human/proc/psychic_whisper)
+	add_verb(H, /mob/living/carbon/human/proc/tackle)
+	add_verb(H, /mob/living/carbon/proc/spawn_larvae)
 
 	if(H.client)
 		H.ghostize(0)
 
 	if(src.mind)
 		src.mind.special_role = "Borer Husk"
-		src.mind.transfer_to(host)
+		src.mind.transfer(host)
 
 	H.ChangeToHusk()
 
@@ -262,7 +262,7 @@
 
 	to_chat(src, "<font color='red'>You focus your psychic lance on [M] and freeze their limbs with a wave of terrible dread.</font>")
 	to_chat(M, "<font color='red'>You feel a creeping, horrible sense of dread come over you, freezing your limbs and setting your heart racing.</font>")
-	M.Weaken(10)
+	M.afflict_paralyze(20 * 10)
 
 	used_dominate = world.time
 
@@ -330,9 +330,9 @@
 
 			controlling = 1
 
-			host.verbs += /mob/living/carbon/proc/release_control
-			host.verbs += /mob/living/carbon/proc/punish_host
-			host.verbs += /mob/living/carbon/proc/spawn_larvae
+			add_verb(host, /mob/living/carbon/proc/release_control)
+			add_verb(host, /mob/living/carbon/proc/punish_host)
+			add_verb(host, /mob/living/carbon/proc/spawn_larvae)
 
 			return
 
@@ -345,10 +345,8 @@
 		to_chat(usr, "Your host is already alive.")
 		return
 
-	verbs -= /mob/living/carbon/human/proc/jumpstart
+	remove_verb(src, /mob/living/carbon/human/proc/jumpstart)
 	visible_message("<span class='warning'>With a hideous, rattling moan, [src] shudders back to life!</span>")
 
-	rejuvenate()
-	restore_blood()
-	fixblood()
-	update_canmove()
+	revive(full_heal = TRUE)
+	remove_all_restraints()

@@ -25,7 +25,10 @@
 	else
 		icon_state = "gift[pick(1, 2, 3)]"
 
-/obj/item/gift/attack_self(mob/user as mob)
+/obj/item/gift/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(src.gift)
 		user.put_in_active_hand(gift)
@@ -56,7 +59,10 @@
 
 	qdel(src)
 
-/obj/item/a_gift/attack_self(mob/M as mob)
+/obj/item/a_gift/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/gift_type = pick(
 		/obj/item/storage/wallet,
 		/obj/item/storage/photo_album,
@@ -79,7 +85,7 @@
 		/obj/item/toy/balloon,
 		/obj/item/toy/blink,
 		/obj/item/toy/crossbow,
-		/obj/item/gun/projectile/revolver/capgun,
+		/obj/item/gun/ballistic/revolver/capgun,
 		/obj/item/toy/katana,
 		/obj/item/toy/prize/deathripley,
 		/obj/item/toy/prize/durand,
@@ -103,10 +109,10 @@
 
 	if(!ispath(gift_type,/obj/item))
 		return
-	M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
-	var/obj/item/I = new gift_type(M)
-	M.put_in_hands(I)
-	I.add_fingerprint(M)
+	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+	var/obj/item/I = new gift_type(user)
+	user.put_in_hands(I)
+	I.add_fingerprint(user)
 	qdel(src)
 
 /obj/item/b_gift
@@ -122,7 +128,10 @@
 	pixel_x = rand(-10,10)
 	pixel_y = rand(-10,10)
 
-/obj/item/gift/attack_self(mob/user as mob)
+/obj/item/gift/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(gift)
 		user.put_in_active_hand(gift)
@@ -134,7 +143,10 @@
 /obj/item/b_gift/legacy_ex_act()
 	qdel(src)
 
-/obj/item/b_gift/attack_self(mob/M as mob)
+/obj/item/b_gift/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/gift_type = pick(
 		/obj/item/reagent_containers/hard_candy/lollipop,
 		/obj/item/reagent_containers/hard_candy/lollipop/bicard,
@@ -179,17 +191,17 @@
 		/obj/item/storage/backpack/holding,
 		/obj/item/grenade/smokebomb,
 		/obj/item/toy/crossbow,
-		/obj/item/gun/projectile/revolver/capgun,
+		/obj/item/gun/ballistic/revolver/capgun,
 		/obj/item/toy/katana,
 		/obj/item/toy/sword,
 		/obj/item/storage/belt/utility/full)
 
 	if(!ispath(gift_type,/obj/item))	return
 
-	var/obj/item/I = new gift_type(M)
-	M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
-	M.put_in_hands(I)
-	I.add_fingerprint(M)
+	var/obj/item/I = new gift_type(user)
+	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+	user.put_in_hands(I)
+	I.add_fingerprint(user)
 	qdel(src)
 
 /*
@@ -225,7 +237,7 @@
 				var/obj/item/gift/G = new /obj/item/gift( src.loc )
 				G.size = W.w_class
 				G.w_class = G.size + 1
-				G.icon_state = text("gift[]", G.size)
+				G.icon_state = "gift[G.size]"
 				G.gift = W
 				W.forceMove(G)
 				G.add_fingerprint(user)
@@ -238,15 +250,15 @@
 			to_chat(user, "<span class='warning'>You need scissors!</span>")
 	else
 		to_chat(user, "<span class='warning'>The object is FAR too large!</span>")
-	return
 
 
-/obj/item/wrapping_paper/examine(mob/user)
+/obj/item/wrapping_paper/examine(mob/user, dist)
 	. = ..()
 	. += "There is about [src.amount] square units of paper left!"
 
-/obj/item/wrapping_paper/attack(mob/target as mob, mob/user as mob)
-	if (!istype(target, /mob/living/carbon/human)) return
+/obj/item/wrapping_paper/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if (!istype(target, /mob/living/carbon/human))
+		return
 	var/mob/living/carbon/human/H = target
 
 	if (istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket) || H.stat)

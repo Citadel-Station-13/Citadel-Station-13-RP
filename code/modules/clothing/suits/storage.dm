@@ -16,7 +16,7 @@
 	..()
 	ToggleButtons()
 
-/obj/item/clothing/suit/storage/attack_hand(mob/user as mob)
+/obj/item/clothing/suit/storage/attack_hand(mob/user, list/params)
 	if (pockets.handle_attack_hand(user))
 		..(user)
 
@@ -35,7 +35,7 @@
 
 //Jackets with buttons, used for labcoats, IA jackets, First Responder jackets, and brown jackets.
 /obj/item/clothing/suit/storage/toggle
-	flags_inv = HIDEHOLSTER
+	inv_hide_flags = HIDEHOLSTER
 	var/open = 0	//0 is closed, 1 is open, -1 means it won't be able to toggle
 	action_button_name = "Toggle Coat Buttons"
 
@@ -46,12 +46,12 @@
 	if(open == 1) //Will check whether icon state is currently set to the "open" or "closed" state and switch it around with a message to the user
 		open = 0
 		icon_state = initial(icon_state)
-		flags_inv = HIDETIE|HIDEHOLSTER
+		inv_hide_flags = HIDETIE|HIDEHOLSTER
 		to_chat(usr, "You button up the coat.")
 	else if(open == 0)
 		open = 1
 		icon_state = "[icon_state]_open"
-		flags_inv = HIDEHOLSTER
+		inv_hide_flags = HIDEHOLSTER
 		to_chat(usr, "You unbutton the coat.")
 	else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
 		to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how silly you are.")
@@ -60,25 +60,25 @@
 
 
 /obj/item/clothing/suit/storage/hooded/toggle
-	flags_inv = HIDEHOLSTER
+	inv_hide_flags = HIDEHOLSTER
 	var/open = 0	//0 is closed, 1 is open, -1 means it won't be able to toggle
 
 /obj/item/clothing/suit/storage/hooded/toggle/verb/toggle()
 	set name = "Toggle Coat Buttons"
 	set category = "Object"
 	set src in usr
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return 0
 
 	if(open == 1) //Will check whether icon state is currently set to the "open" or "closed" state and switch it around with a message to the user
 		open = 0
 		icon_state = initial(icon_state)
-		flags_inv = HIDETIE|HIDEHOLSTER
+		inv_hide_flags = HIDETIE|HIDEHOLSTER
 		to_chat(usr, "You button up the coat.")
 	else if(open == 0)
 		open = 1
 		icon_state = "[icon_state]_open"
-		flags_inv = HIDEHOLSTER
+		inv_hide_flags = HIDEHOLSTER
 		to_chat(usr, "You unbutton the coat.")
 	else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
 		to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how silly you are.")
@@ -101,7 +101,7 @@
 	set name ="Adjust Badge"
 	set category = "Object"
 	set src in usr
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return 0
 
 	if(icon_state == icon_badge)

@@ -9,7 +9,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 5000
-	req_access = list(access_robotics)
+	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	circuit = /obj/item/circuitboard/mechfab
 
 	///Current items in the build queue.
@@ -73,6 +73,9 @@
 		"Vehicle",
 		"Rigsuit",
 		"Phazon",
+		"Pinnace",
+		"Baron",
+		"Duke",
 		"Gopher",
 		"Polecat",
 		"Weasel",
@@ -93,15 +96,15 @@
 	. = ..()
 
 	//Go through all materials, and add them to the possible storage, but hide them unless we contain them.
-	for(var/Name in name_to_material)
+	// todo: WHY ARE YOU dOING ThiS JUST DONT STORE THE MATERIAL
+	for(var/datum/material/M as anything in SSmaterials.all_materials())
+		var/Name = M.name
 		if(Name in materials)
 			continue
 
 		materials[Name] = 0
 
-	default_apply_parts()
 	files = new /datum/research(src) //Setup the research data holder.
-
 
 /obj/machinery/mecha_part_fabricator/update_icon_state()
 	. = ..()
@@ -191,6 +194,12 @@
 					category_override += "Durand"
 				if(mech_types & EXOSUIT_MODULE_PHAZON)
 					category_override += "Phazon"
+				if(mech_types & EXOSUIT_MODULE_PINNACE)
+					category_override += "Pinnace"
+				if(mech_types & EXOSUIT_MODULE_BARON)
+					category_override += "Baron"
+				if(mech_types & EXOSUIT_MODULE_DUKE)
+					category_override += "Duke"
 
 	var/list/part = list(
 		"name" = D.name,
@@ -473,7 +482,7 @@
 		get_asset_datum(/datum/asset/spritesheet/sheetmaterials)
 	)
 
-/obj/machinery/mecha_part_fabricator/attack_hand(var/mob/user)
+/obj/machinery/mecha_part_fabricator/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(!allowed(user))
@@ -684,7 +693,7 @@
 			sleep(15)
 			visible_message("[icon2html(src, world)] <b>[src]</b> beeps: \"User DB corrupted \[Code 0x00FA\]. Truncating data structure...\"")
 			sleep(30)
-			visible_message("[icon2html(src, world)] <b>[src]</b> beeps: \"User DB truncated. Please contact your [GLOB.using_map.company_name] system operator for future assistance.\"")
+			visible_message("[icon2html(src, world)] <b>[src]</b> beeps: \"User DB truncated. Please contact your [(LEGACY_MAP_DATUM).company_name] system operator for future assistance.\"")
 			req_access = null
 			emagged = 1
 			return 1

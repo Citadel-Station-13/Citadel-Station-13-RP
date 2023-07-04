@@ -37,7 +37,7 @@
 //todo: cult integration
 /obj/item/vampiric
 	name = "statuette"
-	icon_state = "statuette"
+	icon_state = "statuette1"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	var/charges = 0
 	var/list/nearby_mobs = list()
@@ -189,7 +189,7 @@
 			'sound/hallucinations/turn_around1.ogg',\
 			'sound/hallucinations/turn_around2.ogg',\
 			), 50, 1, -3)
-			M.Sleeping(rand(5, 10))
+			M.afflict_sleeping(20 * rand(5, 10))
 			loc = null
 	else
 		STOP_PROCESSING(SSobj, src)

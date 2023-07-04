@@ -35,6 +35,7 @@ log transactions
 	var/obj/item/card/held_card
 	var/editing_security_level = 0
 	var/view_screen = NO_SCREEN
+	var/account_security_level = 0
 	var/datum/effect_system/spark_spread/spark_system
 
 /obj/machinery/atm/Initialize(mapload)
@@ -127,7 +128,7 @@ log transactions
 	else
 		..()
 
-/obj/machinery/atm/attack_hand(mob/user as mob)
+/obj/machinery/atm/attack_hand(mob/user, list/params)
 	if(istype(user, /mob/living/silicon))
 		to_chat (user, SPAN_WARNING("A firewall prevents you from interfacing with this device!"))
 		return
@@ -213,6 +214,12 @@ log transactions
 							dat += "<A href='?src=\ref[src];choice=balance_statement'>Print balance statement</a><br>"
 							dat += "<A href='?src=\ref[src];choice=logout'>Logout</a><br>"
 			else
+				if(!account_security_level)
+					dat += "To log in to your savings account, press 'submit' with ID clearly displayed. If you wish to log into another account, please enter the account number into the field below or insert a registered ID card into the slot above and then press 'submit'.<BR>"
+				else if (account_security_level == 1)
+					dat += "This account requires a PIN to access. For security reasons the account # will need re-entered or ID bound to this account re-scanned."
+				else
+					dat += "<span class='bad'><b>Due to the security settings on this account, all information needs to be re-entered and the ID bound to this account placed in the slot above.</b></span><BR>"
 				dat += "<form name='atm_auth' action='?src=\ref[src]' method='get'>"
 				dat += "<input type='hidden' name='src' value='\ref[src]'>"
 				dat += "<input type='hidden' name='choice' value='attempt_auth'>"
@@ -263,14 +270,27 @@ log transactions
 					authenticated_account.security_level = new_sec_level
 			if("attempt_auth")
 
-				// check if they have low security enabled
-				scan_user(usr)
+				var/obj/item/card/id/login_card
+				if(held_card)
+					login_card = held_card
+				else
+					login_card = scan_user(usr)
 
-				if(!ticks_left_locked_down && held_card)
+				if(!ticks_left_locked_down)
 					var/tried_account_num = text2num(href_list["account_num"])
-					if(!tried_account_num)
-						tried_account_num = held_card.associated_account_number
+					//We WILL need an account number entered manually if security is high enough, do not automagic account number
+					if(!tried_account_num && login_card && (account_security_level != 2))
+						tried_account_num = login_card.associated_account_number
 					var/tried_pin = text2num(href_list["account_pin"])
+
+					//We'll need more information if an account's security is greater than zero so let's find out what the security setting is
+					var/datum/money_account/D
+					//Below is to avoid a runtime
+					if(tried_account_num)
+						D = get_account(tried_account_num)
+
+						if(D)
+							account_security_level = D.security_level
 
 					authenticated_account = attempt_account_access(tried_account_num, tried_pin, held_card && held_card.associated_account_number == tried_account_num ? 2 : 1)
 					if(!authenticated_account)
@@ -383,7 +403,7 @@ log transactions
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/stamp
-					R.overlays += stampoverlay
+					R.add_overlay(stampoverlay)
 					R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
 
 				if(prob(50))
@@ -425,7 +445,7 @@ log transactions
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/stamp
-					R.overlays += stampoverlay
+					R.add_overlay(stampoverlay)
 					R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
 
 				if(prob(50))
@@ -448,6 +468,7 @@ log transactions
 					release_held_id(usr)
 			if("logout")
 				authenticated_account = null
+				account_security_level = 0
 				//usr << browse(null,"window=atm")
 
 	src.attack_hand(usr)
@@ -485,6 +506,7 @@ log transactions
 
 	held_card.loc = src.loc
 	authenticated_account = null
+	account_security_level = 0
 
 	if(ishuman(human_user) && !human_user.get_active_held_item())
 		human_user.put_in_hands(held_card)

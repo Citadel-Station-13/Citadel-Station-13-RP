@@ -26,7 +26,7 @@
 	for(var/obj/item/briefcase_item in new_briefcase)
 		qdel(briefcase_item)
 	new_briefcase.contents += new /obj/item/toy/crossbow
-	new_briefcase.contents += new /obj/item/gun/projectile/revolver/capgun
+	new_briefcase.contents += new /obj/item/gun/ballistic/revolver/capgun
 	new_briefcase.contents += new /obj/item/clothing/mask/gas/clown_hat
 	H.put_in_hands_or_del(new_briefcase)
 
@@ -38,7 +38,7 @@
 	glasses = /obj/item/clothing/glasses/fakesunglasses
 	mask = /obj/item/clothing/mask/fakemoustache
 	head = /obj/item/clothing/head/beret
-	r_hand = /obj/item/gun/projectile/revolver/capgun
+	r_hand = /obj/item/gun/ballistic/revolver/capgun
 
 /datum/outfit/costume/horrorcop/post_equip(var/mob/living/carbon/human/H)
 	var/obj/item/clothing/under/U = H.w_uniform
@@ -55,7 +55,7 @@
 	head = /obj/item/clothing/head/cowboy_hat
 	gloves = /obj/item/clothing/gloves/fingerless
 	suit = /obj/item/clothing/accessory/poncho
-	r_hand = /obj/item/gun/projectile/revolver/capgun
+	r_hand = /obj/item/gun/ballistic/revolver/capgun
 
 /datum/outfit/costume/cowboy/post_equip(var/mob/living/carbon/human/H)
 	var/obj/item/clothing/under/U = H.w_uniform

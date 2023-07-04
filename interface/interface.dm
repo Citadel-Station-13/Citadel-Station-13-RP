@@ -79,7 +79,7 @@
 			message += GLOB.revdata.GetTestMergeInfo(FALSE)
 		if(tgalert(src, message, "Report Issue","Yes","No")!="Yes")
 			return
-		var/static/issue_template = file2text(".github/ISSUE_TEMPLATE.md")
+		var/issue_template = file2text(".github/ISSUE_TEMPLATE.md")
 		var/servername = "Citadel Station 13 RP" // CONFIG_GET(string/servername)
 		var/url_params = "Reporting client version: [byond_version].[byond_build]\n\n[issue_template]"
 		if(GLOB.round_id || servername)
@@ -222,3 +222,13 @@ Any-Mode: (hotkey doesn't need to be on)
 		to_chat(src, other)
 	if(holder)
 		to_chat(src, admin)
+
+/client/verb/skin_toggle_hotkeys()
+	set name = "Toggle Hotkeys"
+	set category = "Preferences"
+	set desc = "Toggle input control scheme"
+	set hidden = TRUE
+
+	prefs.hotkeys = !prefs.hotkeys
+	set_macros()
+

@@ -4,8 +4,8 @@
 
 /datum/event/meteor_strike/setup()
 	startWhen = rand(8,15)
-	if(LAZYLEN(GLOB.using_map.meteor_strike_areas))
-		strike_target = pick(get_area_turfs(pick(GLOB.using_map.meteor_strike_areas)))
+	if(LAZYLEN((LEGACY_MAP_DATUM).meteor_strike_areas))
+		strike_target = pick(get_area_turfs(pick((LEGACY_MAP_DATUM).meteor_strike_areas)))
 
 	if(!strike_target)
 		kill()
@@ -64,7 +64,7 @@
 			if(!L.buckled && !issilicon(L))
 				if(!L.Check_Shoegrip())
 					L.throw_at_old(get_step_rand(L),1,5)
-				L.Weaken(5)
+				L.afflict_paralyze(20 * 5)
 			if(L.client)
 				to_chat(L, "<span class='danger'>The ground lurches beneath you!</span>")
 				shake_camera(L, 6, 1)

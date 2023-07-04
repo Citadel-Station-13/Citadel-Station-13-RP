@@ -11,6 +11,7 @@
 	var/wall_type =  /turf/simulated/wall/elevator
 	var/floor_type = /turf/simulated/floor/tiled/dark
 	var/door_type =  /obj/machinery/door/airlock/lift
+	var/light_type =  /obj/machinery/light/no_nightshift
 
 	var/list/areas_to_use = list()
 
@@ -79,7 +80,7 @@
 			door_y2 = uy - (make_walls ? 0 : 1)
 
 			light_x1 = ux + (make_walls ? 1 : 0)
-			light_y1 = uy + (make_walls ? 2 : 1)
+			light_y1 = uy + lift_size_y - (make_walls ? 1 : 0)
 			light_x2 = ux + lift_size_x - (make_walls ? 1 : 0)
 			light_y2 = uy + lift_size_y - (make_walls ? 1 : 0)
 
@@ -131,7 +132,7 @@
 				var/turf/checking = locate(tx,ty,cz)
 
 				if(!istype(checking))
-					log_debug("[name] cannot find a component turf at [tx],[ty] on floor [cz]. Aborting.")
+					log_debug(SPAN_DEBUGERROR("[name] cannot find a component turf at [tx],[ty] on floor [cz]. Aborting."))
 					qdel(src)
 					return
 
@@ -153,7 +154,7 @@
 
 				// Clear out contents.
 				for(var/atom/movable/thing in checking.contents)
-					if(!(thing.flags & ATOM_ABSTRACT))
+					if(!(thing.atom_flags & ATOM_ABSTRACT))
 						qdel(thing)
 
 				if(tx >= ux && tx <= ex && ty >= uy && ty <= ey)
@@ -170,7 +171,7 @@
 						checking.ChangeTurf(floor_type)
 						checking = locate(tx,ty,cz)
 					for(var/atom/movable/thing in checking.contents)
-						if(!(thing.flags & ATOM_ABSTRACT))
+						if(!(thing.atom_flags & ATOM_ABSTRACT))
 							qdel(thing)
 				if(checking.type == floor_type) // Don't build over empty space on lower levels.
 					var/obj/machinery/door/airlock/lift/newdoor = new door_type(checking)
@@ -188,21 +189,9 @@
 		panel_ext.setDir(udir)
 		cfloor.ext_panel = panel_ext
 
-        // Place lights
-		var/turf/placing1 = locate(light_x1, light_y1, cz)
-		var/turf/placing2 = locate(light_x2, light_y2, cz)
-		var/obj/machinery/light/light1 = new(placing1)
-		var/obj/machinery/light/light2 = new(placing2)
-		if(udir == NORTH || udir == SOUTH)
-			light1.setDir(WEST)
-			light2.setDir(EAST)
-		else
-			light1.setDir(SOUTH)
-			light2.setDir(NORTH)
-
 		// Update area.
 		if(az > areas_to_use.len)
-			log_debug("Insufficient defined areas in turbolift datum, aborting.")
+			log_debug(SPAN_DEBUGWARNING("Insufficient defined areas in turbolift datum, aborting."))
 			qdel(src)
 			return
 
@@ -219,6 +208,19 @@
 	lift.control_panel_interior = new(T, lift)
 	lift.control_panel_interior.setDir(udir)
 	lift.current_floor = lift.floors[1]
+
+	// Place interior lights
+	if(light_type)
+		var/turf/placing1 = locate(light_x1, light_y1, uz)
+		var/turf/placing2 = locate(light_x2, light_y2, uz)
+		var/obj/machinery/light/light1 = new light_type(placing1, light)
+		var/obj/machinery/light/light2 = new light_type(placing2, light)
+		if(udir == NORTH || udir == SOUTH)
+			light1.setDir(WEST)
+			light2.setDir(EAST)
+		else
+			light1.setDir(SOUTH)
+			light2.setDir(NORTH)
 
 	lift.open_doors()
 	return INITIALIZE_HINT_QDEL

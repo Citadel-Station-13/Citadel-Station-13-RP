@@ -48,7 +48,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/computer/operating/attack_hand(mob/user)
+/obj/machinery/computer/operating/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
@@ -78,7 +78,7 @@
 		occupantData["oxyLoss"] = occupant.getOxyLoss()
 		occupantData["toxLoss"] = occupant.getToxLoss()
 		occupantData["fireLoss"] = occupant.getFireLoss()
-		occupantData["paralysis"] = occupant.paralysis
+		occupantData["paralysis"] = round(occupant.is_unconscious()?.time_left() / 10) / 2
 		occupantData["hasBlood"] = 0
 		occupantData["bodyTemperature"] = occupant.bodytemperature
 		occupantData["maxTemp"] = 1000 // If you get a burning vox armalis into the sleeper, congratulations

@@ -1,6 +1,6 @@
 /obj/item/material/sword
 	name = "claymore"
-	desc = "What are you standing around staring at this for? Get to killing!"
+	desc = "From the former island nation of Britain, comes this enduring design. The claymore's long, heavy blade rewards large sweeping strikes, provided one can even lift this heavy weapon."
 	icon_state = "claymore"
 	slot_flags = SLOT_BELT
 	force_divisor = 0.5 // 30 when wielded with hardnes 60 (steel)
@@ -32,7 +32,7 @@
 
 /obj/item/material/sword/katana
 	name = "katana"
-	desc = "Woefully underpowered in D20. This one looks pretty sharp."
+	desc = "An ancient Terran weapon, from a former island nation. This sharp blade requires skill to use properly. Despite the number of flash-forged knock-offs flooding the market, this looks like the real deal."
 	icon_state = "katana"
 	slot_flags = SLOT_BELT | SLOT_BACK
 

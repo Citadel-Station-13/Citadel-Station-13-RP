@@ -57,9 +57,9 @@
 	icon_state = "folder_hos"
 
 /obj/item/folder/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(contents.len)
-		overlays += "folder_paper"
+		add_overlay("folder_paper")
 	return
 
 /obj/item/folder/attackby(obj/item/W as obj, mob/user as mob)
@@ -71,11 +71,14 @@
 	else if(istype(W, /obj/item/pen))
 		var/n_name = sanitizeSafe(input(usr, "What would you like to label the folder?", "Folder Labelling", null)  as text, MAX_NAME_LEN)
 		if((loc == usr && usr.stat == 0))
-			name = "folder[(n_name ? text("- '[n_name]'") : null)]"
+			name = "folder[(n_name ? "- '[n_name]'" : null)]"
 	else
 		return ..()
 
 /obj/item/folder/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	ui_interact(user)
 
 /obj/item/folder/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)

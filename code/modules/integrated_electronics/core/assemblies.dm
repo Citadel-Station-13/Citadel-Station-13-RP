@@ -58,7 +58,7 @@
 /obj/item/electronic_assembly/GenerateTag()
 	tag = "assembly_[next_assembly_id++]"
 
-/obj/item/electronic_assembly/examine(mob/user)
+/obj/item/electronic_assembly/examine(mob/user, dist)
 	. = ..()
 	if(can_anchor)
 		. += "<span class='notice'>The anchoring bolts [anchored ? "are" : "can be"] <b>wrenched</b> in place and the maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>"
@@ -138,7 +138,6 @@
 		var/obj/item/integrated_circuit/IC = I
 		/* Uncomment for debugging purposes. */
 		if(!IC)
-			TO_WORLD(SPAN_DEBUGERROR("Bad assembly_components entry in [src].  Has remove() been called incorrectly?"))
 			var/x = assembly_components.Find(null)
 			assembly_components.Cut(x,++x)
 			return
@@ -154,7 +153,7 @@
 	return battery
 
 // TGUI
-/obj/item/electronic_assembly/ui_state(mob/user)
+/obj/item/electronic_assembly/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/item/electronic_assembly/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -204,7 +203,7 @@
 				)))*/
 	return data
 
-/obj/item/electronic_assembly/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/electronic_assembly/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -309,6 +308,7 @@
 	set name = "Rename Circuit"
 	set category = "Object"
 	set desc = "Rename your circuit, useful to stay organized."
+	set src in usr
 
 	var/mob/M = usr
 	var/input = tgui_input_text(usr, "What do you want to name this?", "Rename", src.name, MAX_NAME_LEN)
@@ -411,10 +411,10 @@
 	diag_hud_set_circuittracking()
 	*/
 
-/obj/item/electronic_assembly/afterattack(atom/target, mob/user, proximity)
+/obj/item/electronic_assembly/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	for(var/obj/item/integrated_circuit/input/S in assembly_components)
-		if(S.sense(target,user,proximity))
+		if(S.sense(target,user,(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)))
 			visible_message(SPAN_NOTICE("\The [user] waves \the [src] around [target]."))
 
 /obj/item/electronic_assembly/attackby(var/obj/item/I, var/mob/user, intent)
@@ -513,6 +513,9 @@
 	return ..()
 
 /obj/item/electronic_assembly/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!check_interactivity(user))
 		return
 	ui_interact(user)

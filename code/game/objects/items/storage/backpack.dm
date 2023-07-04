@@ -106,6 +106,11 @@
 	desc = "It's a very robust backpack."
 	icon_state = "securitypack"
 
+/obj/item/storage/backpack/blueshield
+	name = "blueshield backpack"
+	desc = "It's a very robust backpack."
+	icon_state = "blueshieldpack"
+
 /obj/item/storage/backpack/captain
 	name = "Facility Director's backpack"
 	desc = "It's a special backpack made exclusively for officers."
@@ -157,6 +162,7 @@
 	name = "dufflebag"
 	desc = "A large dufflebag for holding extra things."
 	icon_state = "duffle"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle", SLOT_ID_LEFT_HAND = "duffle")
 	slowdown = 1
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE
 
@@ -164,12 +170,14 @@
 	name = "black dufflebag"
 	desc = "A large dufflebag for holding extra tactical supplies. This one appears to be made out of lighter material than usual."
 	icon_state = "duffle-syndie"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_syndie", SLOT_ID_LEFT_HAND = "duffle_syndie")
 	slowdown = 0
 
 /obj/item/storage/backpack/dufflebag/syndie/med
 	name = "medical dufflebag"
 	desc = "A large dufflebag for holding extra tactical medical supplies. This one appears to be made out of lighter material than usual."
 	icon_state = "duffle-syndiemed"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_syndiemed", SLOT_ID_LEFT_HAND = "duffle_syndiemed")
 
 /obj/item/storage/backpack/dufflebag/syndie/ammo
 	name = "ammunition dufflebag"
@@ -180,6 +188,7 @@
 	name = "Facility Director's dufflebag"
 	desc = "A large dufflebag for holding extra captainly goods."
 	icon_state = "duffle-captain"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_captain", SLOT_ID_LEFT_HAND = "duffle_captain")
 
 /obj/item/storage/backpack/dufflebag/captain/talon
 	name = "talon captain's dufflebag"
@@ -189,35 +198,48 @@
 	name = "medical dufflebag"
 	desc = "A large dufflebag for holding extra medical supplies."
 	icon_state = "duffle-med"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_med", SLOT_ID_LEFT_HAND = "duffle_med")
 
 /obj/item/storage/backpack/dufflebag/chemistry
 	name = "chemistry duffle bag"
 	desc = "A large duffle bag for holding extra chemical substances."
 	icon_state = "duffle-chemistry"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_med", SLOT_ID_LEFT_HAND = "duffle_med")
 
 /obj/item/storage/backpack/dufflebag/genetics
 	name = "geneticist's duffel bag"
 	desc = "A large duffel bag for holding extra genetic mutations."
 	icon_state = "duffle-genetics"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_med", SLOT_ID_LEFT_HAND = "duffle_med")
 /obj/item/storage/backpack/dufflebag/emt
 	name = "EMT dufflebag"
 	desc = "A large dufflebag for holding extra medical supplies. This one has reflective stripes!"
 	icon_state = "duffle-emt"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_emt", SLOT_ID_LEFT_HAND = "duffle_emt")
 
 /obj/item/storage/backpack/dufflebag/virology
 	name = "virologist's duffle bag"
 	desc = "A large duffle bag for holding extra viral bottles."
 	icon_state = "duffle-virology"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_med", SLOT_ID_LEFT_HAND = "duffle_med")
 
 /obj/item/storage/backpack/dufflebag/sec
 	name = "security dufflebag"
 	desc = "A large dufflebag for holding extra security supplies and ammunition."
 	icon_state = "duffle-sec"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_sec", SLOT_ID_LEFT_HAND = "duffle_sec")
+
+/obj/item/storage/backpack/dufflebag/blueshield
+	name = "blueshield dufflebag"
+	desc = "A large dufflebag for holding extra supplies and ammunition."
+	icon_state = "duffle-blueshield"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_blueshield", SLOT_ID_LEFT_HAND = "duffle_blueshield")
 
 /obj/item/storage/backpack/dufflebag/eng
 	name = "industrial dufflebag"
 	desc = "A large dufflebag for holding extra tools and supplies."
 	icon_state = "duffle-eng"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_eng", SLOT_ID_LEFT_HAND = "duffle_eng")
 
 /obj/item/storage/backpack/dufflebag/sci
 	name = "science dufflebag"
@@ -296,6 +318,12 @@
 	desc = "A robust satchel for security related needs."
 	icon_state = "satchel-sec"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "securitypack", SLOT_ID_LEFT_HAND = "securitypack")
+
+/obj/item/storage/backpack/satchel/blueshield
+	name = "blueshield satchel"
+	desc = "A robust satchel for a blueshield's needs."
+	icon_state = "satchel-blueshield"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blueshieldpack", SLOT_ID_LEFT_HAND = "blueshieldpack")
 
 /obj/item/storage/backpack/satchel/hyd
 	name = "hydroponics satchel"
@@ -413,6 +441,12 @@
 	icon_state = "courierbagsec"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "securitypack", SLOT_ID_LEFT_HAND = "securitypack")
 
+/obj/item/storage/backpack/messenger/blueshield
+	name = "blueshield messenger bag"
+	desc = "A tactical backpack worn over one shoulder. This one is in Blueshield colors."
+	icon_state = "courierbagblueshield"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blueshieldpack", SLOT_ID_LEFT_HAND = "blueshieldpack")
+
 /obj/item/storage/backpack/messenger/black
 	icon_state = "courierbagblk"
 
@@ -424,15 +458,15 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "backpack", SLOT_ID_LEFT_HAND = "backpack")
 
 /*
-/obj/item/storage/backpack/rig/Initialize(mapload)
+/obj/item/storage/backpack/hardsuit/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/storage/backpack/rig/process(mob/living/M)
+/obj/item/storage/backpack/hardsuit/process(mob/living/M)
 	if(M.health <= M.maxHealth)
 		update_icon()
 
-/obj/item/storage/backpack/rig/update_icon(mob/living/M)
+/obj/item/storage/backpack/hardsuit/update_icon(mob/living/M)
 	if(M.stat > 1) // Dead
 		icon_state = "[initial(icon_state)]_0"
 		item_state = "[initial(icon_state)]_0"
@@ -473,7 +507,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "backpack", SLOT_ID_LEFT_HAND = "backpack")
 	max_storage_space = ITEMSIZE_COST_NORMAL * 5
 
-/obj/item/storage/backpack/parachute/examine(mob/user)
+/obj/item/storage/backpack/parachute/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) <= 1)
 		if(parachute)
@@ -596,56 +630,56 @@
 	var/mob/living/carbon/human/H
 	var/datum/sprite_accessory/tail/taur/TT = H.tail_style
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/horse))
-		item_state = "[icon_base]_Horse"
+		item_state = "[icon_base]_horse"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/wolf))
-		item_state = "[icon_base]_Wolf"
+		item_state = "[icon_base]_wolf"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/cow))
-		item_state = "[icon_base]_Cow"
+		item_state = "[icon_base]_cow"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/lizard))
-		item_state = "[icon_base]_Lizard"
+		item_state = "[icon_base]_lizard"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/feline))
-		item_state = "[icon_base]_Feline"
+		item_state = "[icon_base]_feline"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/drake))
-		item_state = "[icon_base]_Drake"
+		item_state = "[icon_base]_drake"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/otie))
-		item_state = "[icon_base]_Otie"
+		item_state = "[icon_base]_otie"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/deer))
-		item_state = "[icon_base]_Deer"
+		item_state = "[icon_base]_deer"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else

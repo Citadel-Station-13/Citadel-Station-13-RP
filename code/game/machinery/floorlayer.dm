@@ -32,7 +32,7 @@
 
 	old_turf = isturf(loc)? loc : null
 
-/obj/machinery/floorlayer/attack_hand(mob/user)
+/obj/machinery/floorlayer/attack_hand(mob/user, list/params)
 	on=!on
 	user.visible_message( \
 		SPAN_NOTICE("[user] has [!on?"de":""]activated \the [src]."), \
@@ -70,7 +70,7 @@
 		return
 	..()
 
-/obj/machinery/floorlayer/examine(mob/user)
+/obj/machinery/floorlayer/examine(mob/user, dist)
 	. = ..()
 	var/dismantle = mode["dismantle"]
 	var/laying = mode["laying"]

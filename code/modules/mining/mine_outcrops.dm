@@ -14,7 +14,7 @@
 /obj/structure/outcrop/Initialize(mapload)
 	. = ..()
 	if(prob(1))
-		overlays += image(icon, "[initial(icon_state)]-egg")
+		add_overlay(image(icon, "[initial(icon_state)]-egg"))
 
 /obj/structure/outcrop/diamond
 	name = "shiny outcrop"
@@ -87,6 +87,14 @@
 	mindrop = 4
 	upperdrop = 8
 	outcropdrop = /obj/item/ore/uranium
+
+/obj/structure/outcrop/elder
+	name = "chiming outcrop"
+	desc = "A rocky outcrop. A faint chiming noise can be heard coming from inside."
+	icon_state = "outcrop"
+	mindrop = 1
+	upperdrop = 2
+	outcropdrop = /obj/item/elderstone
 
 /obj/structure/outcrop/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/pickaxe))

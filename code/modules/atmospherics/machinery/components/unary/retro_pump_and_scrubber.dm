@@ -12,11 +12,11 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on/welded
 	welded = 1
 
-/obj/machinery/atmospherics/component/unary/vent_pump/retro/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/component/unary/vent_pump/retro/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 
-	overlays.Cut()
+	cut_overlays()
 
 	var/vent_icon = "vent"
 
@@ -34,7 +34,7 @@
 	else
 		vent_icon += "[pump_direction ? "retro_out" : "retro_in"]"
 
-	overlays += icon_manager.get_atmos_icon("device", , , vent_icon)
+	add_overlay(icon_manager.get_atmos_icon("device", , , vent_icon))
 
 
 //////////////////////
@@ -50,11 +50,11 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on/welded
 	welded = 1
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/retro/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/retro/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 
-	overlays.Cut()
+	cut_overlays()
 
 	var/scrubber_icon = "scrubber"
 
@@ -69,4 +69,4 @@
 	else
 		scrubber_icon += "[use_power ? "[scrubbing ? "retro_on" : "retro_in"]" : "retro_off"]"
 
-	overlays += icon_manager.get_atmos_icon("device", , , scrubber_icon)
+	add_overlay(icon_manager.get_atmos_icon("device", , , scrubber_icon))

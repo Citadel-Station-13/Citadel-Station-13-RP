@@ -1,6 +1,7 @@
 /datum/species/phoronoid
-	name = SPECIES_PHORONOID
 	uid = SPECIES_ID_PHORONOID
+	id = SPECIES_ID_PHORONOID
+	name = SPECIES_PHORONOID
 	name_plural = "Phoronoids"
 	default_bodytype = BODYTYPE_PHORONOID
 
@@ -22,11 +23,11 @@
 
 	max_age = 180
 	health_hud_intensity = 1.5
-	rarity_value = 5
+	//rarity_value = 5
 	blood_color = "#FC2BC5"
 
 	species_flags = NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
-	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELIST_SELECTABLE
+	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_EYE_COLOR
 
 	show_ssd = "completely motionless"

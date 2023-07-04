@@ -5,7 +5,7 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 
 /obj/item/proc/can_contaminate()
 	//Clothing and backpacks can be contaminated.
-	if(flags & PHORONGUARD)
+	if(atom_flags & PHORONGUARD)
 		return 0
 	else if(istype(src,/obj/item/storage/backpack))
 		return 0 //Cannot be washed :(
@@ -23,11 +23,11 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 	else
 		if(!contaminated)
 			contaminated = 1
-			overlays += contamination_overlay
+			add_overlay(contamination_overlay)
 
 /obj/item/proc/decontaminate()
 	contaminated = 0
-	overlays -= contamination_overlay
+	cut_overlay(contamination_overlay)
 
 /mob/proc/contaminate()
 
@@ -68,22 +68,22 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 			burn_skin(0.75)
 			if(prob(20))
 				to_chat(src, SPAN_USERDANGER("Your skin burns!"))
-			updatehealth()
+			update_health()
 
 	//Burn eyes if exposed.
 	if(eye_burns && species.breath_type && (species.breath_type != GAS_ID_PHORON))
 		var/burn_eyes = 1
 
 		//Check for protective glasses
-		if(glasses && (glasses.body_parts_covered & EYES) && (glasses.clothing_flags & ALLOWINTERNALS))
+		if(glasses && (glasses.body_cover_flags & EYES) && (glasses.clothing_flags & ALLOWINTERNALS))
 			burn_eyes = 0
 
 		//Check for protective maskwear
-		if(burn_eyes && wear_mask && (wear_mask.body_parts_covered & EYES) && (wear_mask.clothing_flags & ALLOWINTERNALS))
+		if(burn_eyes && wear_mask && (wear_mask.body_cover_flags & EYES) && (wear_mask.clothing_flags & ALLOWINTERNALS))
 			burn_eyes = 0
 
 		//Check for protective helmets
-		if(burn_eyes && head && (head.body_parts_covered & EYES) && (head.clothing_flags & ALLOWINTERNALS))
+		if(burn_eyes && head && (head.body_cover_flags & EYES) && (head.clothing_flags & ALLOWINTERNALS))
 			burn_eyes = 0
 
 		// NIF Support
@@ -116,26 +116,26 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 
 /mob/living/carbon/human/proc/pl_head_protected()
 	CACHE_VSC_PROP(atmos_vsc, /atmos/phoron/phoronguard_only, phoronguard_only)
-	//Checks if the head is adequately sealed.	//This is just odd. TODO: Make this respect the body_parts_covered stuff like thermal gear does.
+	//Checks if the head is adequately sealed.	//This is just odd. TODO: Make this respect the body_cover_flags stuff like thermal gear does.
 	if(head)
 		if(phoronguard_only)
-			if(head.flags & PHORONGUARD)
+			if(head.atom_flags & PHORONGUARD)
 				return 1
-		else if(head.body_parts_covered & EYES)
+		else if(head.body_cover_flags & EYES)
 			return 1
 	return 0
 
 /mob/living/carbon/human/proc/pl_suit_protected()
 	CACHE_VSC_PROP(atmos_vsc, /atmos/phoron/phoronguard_only, phoronguard_only)
 
-	//Checks if the suit is adequately sealed.	//This is just odd. TODO: Make this respect the body_parts_covered stuff like thermal gear does.
+	//Checks if the suit is adequately sealed.	//This is just odd. TODO: Make this respect the body_cover_flags stuff like thermal gear does.
 	var/coverage = 0
 	for(var/obj/item/protection in list(wear_suit, gloves, shoes))	//This is why it's odd. If I'm in a full suit, but my shoes and gloves aren't phoron proof, damage.
 		if(!protection)
 			continue
-		if(phoronguard_only && !(protection.flags & PHORONGUARD))
+		if(phoronguard_only && !(protection.atom_flags & PHORONGUARD))
 			return 0
-		coverage |= protection.body_parts_covered
+		coverage |= protection.body_cover_flags
 
 	if(phoronguard_only)
 		return 1

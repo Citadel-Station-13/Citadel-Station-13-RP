@@ -17,6 +17,8 @@ SUBSYSTEM_DEF(air)
 
 	/// Associative id = datum list of generated /datum/atmosphere's.
 	var/list/generated_atmospheres
+	/// cached lists of unpacked gas-strings
+	var/list/cached_strings
 
 	var/cost_turfs = 0
 	var/cost_edges = 0
@@ -33,14 +35,47 @@ SUBSYSTEM_DEF(air)
 	// This is used to tell Travis WHERE the edges are.
 	var/list/startup_active_edge_log = list()
 
-/datum/controller/subsystem/air/PreInit()
+/datum/controller/subsystem/air/stat_entry()
+	var/list/msg = list()
+	msg += "S:[current_step ? part_names[current_step] : ""] "
+	msg += "C:{"
+	msg += "T [round(cost_turfs, 1)] | "
+	msg += "E [round(cost_edges, 1)] | "
+	msg += "F [round(cost_firezones, 1)] | "
+	msg += "H [round(cost_hotspots, 1)] | "
+	msg += "Z [round(cost_zones, 1)] "
+	msg += "}"
+	msg += "Z: [zones.len] "
+	msg += "E: [edges.len] "
+	msg += "Cycle: [current_cycle] {"
+	msg += "T [tiles_to_update.len] | "
+	msg += "E [active_edges.len] | "
+	msg += "F [active_fire_zones.len] | "
+	msg += "H [active_hotspots.len] | "
+	msg += "Z [zones_to_update.len] "
+	msg += "}"
+	return ..() + " [msg.Join()]"
+
+/datum/controller/subsystem/air/PreInit(recovering)
 	if(!gas_data)
 		gas_data = new
 	air_master = src
 
+/datum/controller/subsystem/air/Preload(recovering)
+	cached_strings = list()
+	generate_atmospheres()
+
+/datum/controller/subsystem/air/Recover()
+	// Preload() already generated stock ones
+	if(islist(SSair?.generated_atmospheres))
+		for(var/id in SSair.generated_atmospheres)
+			if(generated_atmospheres[id])
+				continue
+			generated_atmospheres[id] = SSair.generated_atmospheres[id]
+
 /datum/controller/subsystem/air/Initialize(timeofday)
 #ifndef FASTBOOT_DISABLE_ZONES
-	report_progress("Processing Geometry...")
+	report_progress("Initializing [name] subsystem...")
 
 	current_cycle = 0
 	var/simulated_turf_count = 0
@@ -48,17 +83,6 @@ SUBSYSTEM_DEF(air)
 		simulated_turf_count++
 		S.update_air_properties()
 		CHECK_TICK
-
-	var/to_send = "<blockquote class ='info'>"
-	to_send += SPAN_DEBUG("<b>Geometry initialized in [round(0.1*(REALTIMEOFDAY-timeofday),0.1)] seconds.</b><hr>")
-	to_send += SPAN_DEBUGINFO("Total Simulated Turfs: [simulated_turf_count]")
-	to_send += SPAN_DEBUGINFO("\nTotal Zones: [zones.len]")
-	to_send += SPAN_DEBUGINFO("\nTotal Edges: [edges.len]")
-	to_send += SPAN_DEBUGINFO("\nTotal Active Edges: [active_edges.len ? SPAN_DANGER("[active_edges.len]") : "None"]")
-	to_send += SPAN_DEBUGINFO("\nTotal Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_count]")
-	to_send += SPAN_DEBUGINFO("</blockquote>")
-
-	admin_notice(to_send, R_DEBUG)
 
 	// Note - Baystation settles the air by running for one tick.  We prefer to not have active edges.
 	// Maps should not have active edges on boot.  If we've got some, log it so it can get fixed.
@@ -72,10 +96,28 @@ SUBSYSTEM_DEF(air)
 				edge_log += "+--- Connecting Turf [T] ([T.type]) @ [T.x], [T.y], [T.z] ([T.loc])"
 		subsystem_log("Active Edges on ZAS Startup\n" + edge_log.Join("\n"))
 		startup_active_edge_log = edge_log.Copy()
+
+	//! Fancy blockquote of data.
+	var/time = (REALTIMEOFDAY - timeofday) / 10
+	var/list/blockquote_data = list(
+		SPAN_BOLDANNOUNCE("Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!<hr>"),
+		SPAN_DEBUGINFO("<b>Total Zones:</b> [zones.len]"),
+		SPAN_DEBUGINFO("\n<b>Total Edges:</b> [edges.len]"),
+		SPAN_DEBUGINFO("\n<b>Total Active Edges:</b> [active_edges.len ? SPAN_DANGER("[active_edges.len]") : "None"]"),
+		SPAN_DEBUGINFO("\n<b>Total Simulated Turfs:</b> [simulated_turf_count]"),
+		SPAN_DEBUGINFO("\n<b>Total Unsimulated Turfs:</b> [world.maxx*world.maxy*world.maxz - simulated_turf_count]")
+	)
+
+	to_chat(
+		target = world,
+		html   = SPAN_BLOCKQUOTE(JOINTEXT(blockquote_data), "info"),
+		type   = MESSAGE_TYPE_DEBUG,
+	)
+
 #endif
 	return ..()
 
-/datum/controller/subsystem/air/fire(resumed = 0)
+/datum/controller/subsystem/air/fire(resumed = FALSE)
 	var/timer
 	if(!resumed)
 		if(LAZYLEN(currentrun) != 0)
@@ -135,7 +177,7 @@ SUBSYSTEM_DEF(air)
 		T.update_air_properties()
 		T.post_update_air_properties()
 		#ifdef ZAS_DEBUG_GRAPHICS
-		T.overlays -= mark
+		T.cut_overlay(mark)
 		#endif
 		if(MC_TICK_CHECK)
 			return
@@ -152,7 +194,7 @@ SUBSYSTEM_DEF(air)
 		T.update_air_properties()
 		T.post_update_air_properties()
 		#ifdef ZAS_DEBUG_GRAPHICS
-		T.overlays -= mark
+		T.cut_overlay(mark)
 		#endif
 		if(MC_TICK_CHECK)
 			return
@@ -223,27 +265,6 @@ SUBSYSTEM_DEF(air)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/air/stat_entry(msg_prefix)
-	var/list/msg = list(msg_prefix)
-	msg += "S:[current_step ? part_names[current_step] : ""] "
-	msg += "C:{"
-	msg += "T [round(cost_turfs, 1)] | "
-	msg += "E [round(cost_edges, 1)] | "
-	msg += "F [round(cost_firezones, 1)] | "
-	msg += "H [round(cost_hotspots, 1)] | "
-	msg += "Z [round(cost_zones, 1)] "
-	msg += "}"
-	msg += "Z: [zones.len] "
-	msg += "E: [edges.len] "
-	msg += "Cycle: [current_cycle] {"
-	msg += "T [tiles_to_update.len] | "
-	msg += "E [active_edges.len] | "
-	msg += "F [active_fire_zones.len] | "
-	msg += "H [active_hotspots.len] | "
-	msg += "Z [zones_to_update.len] "
-	msg += "}"
-	..(msg.Join())
-
 // ZAS might displace objects as the map loads if an air tick is processed mid-load.
 /datum/controller/subsystem/air/StartLoadingMap(var/quiet = TRUE)
 	can_fire = FALSE
@@ -293,6 +314,8 @@ SUBSYSTEM_DEF(air)
   * Initializes all subtypes of /datum/atmosphere and indexes them by key.
   */
 /datum/controller/subsystem/air/proc/generate_atmospheres()
+	// todo: pretty world init progress reporter for everyone
+	report_progress("SSair: Generating atmospheres...")
 	generated_atmospheres = list()
 	for(var/T in subtypesof(/datum/atmosphere))
 		var/datum/atmosphere/A = T
@@ -302,18 +325,48 @@ SUBSYSTEM_DEF(air)
 		generated_atmospheres[A.id] = A
 
 /**
-  * Preprocess a gas string, replacing it with a specific atmosphere's if necessary.
-  */
-/datum/controller/subsystem/air/proc/preprocess_gas_string(gas_string, turf/T)
-	if(!generated_atmospheres)
-		generate_atmospheres()
-	if(gas_string == ATMOSPHERE_ID_USE_ZTRAIT)
-		gas_string = SSmapping.level_trait(T.z, ZTRAIT_DEFAULT_ATMOS) || GAS_STRING_VACUUM
-	gas_string = "[gas_string]"
-	if(!generated_atmospheres[gas_string])
-		return gas_string
-	var/datum/atmosphere/mix = generated_atmospheres[gas_string]
-	return mix.gas_string
+ * parses a gas string
+ * returns list(gas list, temp)
+ *
+ * @params
+ * - gas_string - gas string
+ * - turf_context - turf location
+ */
+/datum/controller/subsystem/air/proc/_parse_gas_string(gas_string, turf/turf_context)
+	// 1. check if area
+	if(gas_string == ATMOSPHERE_USE_AREA)
+		var/area/A = turf_context.loc
+		gas_string = A.initial_gas_mix
+	// 2. check if it's special and should look up the level's defaults
+	switch(gas_string)
+		if(ATMOSPHERE_USE_INDOORS)
+			gas_string = SSmapping.lookup_outdoors_air(turf_context.z)
+		if(ATMOSPHERE_USE_OUTDOORS)
+			gas_string = SSmapping.lookup_indoors_air(turf_context.z)
+	// 3: process atmosphere
+	if(generated_atmospheres[gas_string])
+		var/datum/atmosphere/A = generated_atmospheres[gas_string]
+		gas_string = A.gas_string
+	. = cached_strings[gas_string]
+	if(.)
+		return
+	return (cached_strings[gas_string] = unpack_gas_string(gas_string))
+
+/datum/controller/subsystem/air/proc/unpack_gas_string(gas_string)
+	var/list/built = new /list(2)
+	var/list/unpacked = params2list(gas_string)
+	var/list/gases = list()
+	built[2] = text2num(unpacked["TEMP"])	// null allowed
+	unpacked -= "TEMP"
+	// convert id to path
+	// todo: remove when we convert gas to ids and not paths why did we ever make it paths aough
+	for(var/i in 1 to length(unpacked))
+		var/id = unpacked[i]
+		var/amount = text2num(unpacked[id])
+		var/path = GLOB.meta_gas_id_lookup[id]
+		gases[path] = amount
+	built[1] = gases
+	return built
 
 #undef SSAIR_TURFS
 #undef SSAIR_EDGES

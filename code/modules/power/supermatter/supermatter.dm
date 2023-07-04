@@ -32,7 +32,7 @@
 #define DAMAGE_HARD_LIMIT 50
 // Base variants are applied to everyone on the same Z level
 // Range variants are applied on per-range basis: numbers here are on point blank, it scales with the map size (assumes square shaped Z levels)
-#define DETONATION_RADS 20
+#define DETONATION_RADS (1500 / RAD_MOB_ACT_COEFFICIENT) // compensates for mob act so everyone still takes this amount
 #define DETONATION_HALLUCINATION_BASE 300
 #define DETONATION_HALLUCINATION_RANGE 300
 #define DETONATION_HALLUCINATION 600
@@ -51,6 +51,7 @@
 	icon_state = "darkmatter"
 	density = 1
 	anchored = 0
+	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	light_range = 4
 
 	var/gasefficency = 0.25
@@ -104,10 +105,20 @@
 
 	var/datum/looping_sound/supermatter/soundloop
 
+	var/list/history = list()
+	var/record_size = 60
+	var/record_interval = 20
+	var/next_record = 0
+
 /obj/machinery/power/supermatter/Initialize(mapload)
 	. = ..()
 	uid = gl_uid++
 	soundloop = new(list(src), TRUE)
+	history["integrity_history"] = list()
+	history["EER_history"] = list()
+	history["temperature_history"] = list()
+	history["pressure_history"] = list()
+	history["EPR_history"] = list()
 
 /obj/machinery/power/supermatter/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -150,11 +161,9 @@
 		return 0
 	return round((air.total_moles / air.group_multiplier) / 23.1, 0.01)
 
-
-
 /obj/machinery/power/supermatter/proc/explode()
 	message_admins("Supermatter exploded at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
-	log_game("SUPERMATTER([x],[y],[z]) Exploded. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
+	investigate_log("SUPERMATTER([x],[y],[z]) Exploded. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]", INVESTIGATE_SUPERMATTER)
 	anchored = 1
 	grav_pulling = 1
 	exploded = 1
@@ -162,7 +171,7 @@
 	if(!TS)
 		return
 	for(var/z in GetConnectedZlevels(TS.z))
-		SSradiation.z_radiate(locate(1, 1, z), DETONATION_RADS, 1)
+		z_radiation(locate(x, y, z), null, DETONATION_RADS, RAD_FALLOFF_ZLEVEL_SUPERMATTER_DELAMINATION)
 	for(var/mob/living/mob in living_mob_list)
 		var/turf/T = get_turf(mob)
 		if(T && (loc.z == T.z))
@@ -211,7 +220,7 @@
 		alert_msg = null
 	if(alert_msg)
 		GLOB.global_announcer.autosay(alert_msg, "Supermatter Monitor", "Engineering")
-		log_game("SUPERMATTER([x],[y],[z]) Emergency engineering announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
+		investigate_log("Emergency engineering announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]", INVESTIGATE_SUPERMATTER)
 		//Public alerts
 		if((damage > emergency_point) && !public_alert)
 			GLOB.global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor")
@@ -220,7 +229,7 @@
 					SEND_SOUND(M, message_sound)
 			admin_chat_message(message = "SUPERMATTER DELAMINATING!", color = "#FF2222")
 			public_alert = 1
-			log_game("SUPERMATTER([x],[y],[z]) Emergency PUBLIC announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
+			investigate_log("Emergency PUBLIC announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]", INVESTIGATE_SUPERMATTER)
 		else if((damage > emergency_point) && public_alert)
 			GLOB.global_announcer.autosay("DANGER: SUPERMATTER CRYSTAL DEGRADATION IN PROGRESS! INTEGRITY AT [integrity]%", "Supermatter Monitor")
 			for(var/mob/M in GLOB.player_list)
@@ -234,14 +243,10 @@
 /obj/machinery/power/supermatter/get_transit_zlevel()
 	//don't send it back to the station -- most of the time
 	if(prob(99))
-		var/list/candidates = GLOB.using_map.accessible_z_levels.Copy()
-		for(var/zlevel in GLOB.using_map.station_levels)
-			candidates.Remove("[zlevel]")
-		candidates.Remove("[src.z]")
-
-		if(candidates.len)
-			return text2num(pickweight(candidates))
-
+		var/list/candidates = SSmapping.crosslinked_levels() - (LEGACY_MAP_DATUM).station_levels
+		. = SAFEPICK(candidates)
+		if(.)
+			return
 	return ..()
 
 /obj/machinery/power/supermatter/process(delta_time)
@@ -352,19 +357,21 @@
 		env.merge(removed)
 
 	for(var/mob/living/carbon/human/l in view(src, min(7, round(sqrt(power/6))))) // If they can see it without mesons on.  Bad on them.
-		if(l.isSynthetic() || (PLANE_MESONS in l.planes_visible))
+		if(l.isSynthetic())
 			continue
 		if(!istype(l.glasses, /obj/item/clothing/glasses/meson)) // Only mesons can protect you!
 			l.hallucination = max(0, min(200, l.hallucination + power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) ) )
 
-	SSradiation.radiate(src, max(power * 1.5, 50) ) //Better close those shutters!
+	//! uh oh!
+	radiation_pulse(src, clamp(power * 4, 0, 50000), RAD_FALLOFF_ENGINE_SUPERMATTER)
 
 	power -= (power/DECAY_FACTOR)**3		//energy losses due to radiation
+	RecordData()
 
 	return 1
 
 
-/obj/machinery/power/supermatter/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/power/supermatter/bullet_act(var/obj/projectile/Proj)
 	var/turf/L = loc
 	if(!istype(L))		// We don't run process() when we are in space
 		return 0	// This stops people from being able to really power up the supermatter
@@ -373,14 +380,14 @@
 	var/added_energy
 	var/added_damage
 	var/proj_damage = Proj.get_structure_damage()
-	if(istype(Proj, /obj/item/projectile/beam))
+	if(istype(Proj, /obj/projectile/beam))
 		added_energy = proj_damage * config_bullet_energy	* CHARGING_FACTOR / POWER_FACTOR
 		power += added_energy
 	else
 		added_damage = proj_damage * config_bullet_energy
 		damage += added_damage
 	if(added_energy || added_damage)
-		log_game("SUPERMATTER([x],[y],[z]) Hit by \"[Proj.name]\". +[added_energy] Energy, +[added_damage] Damage.")
+		investigate_log("Hit by \"[Proj.name]\". +[added_energy] Energy, +[added_damage] Damage.", INVESTIGATE_SUPERMATTER)
 	return 0
 
 /obj/machinery/power/supermatter/attack_robot(mob/user as mob)
@@ -393,7 +400,7 @@
 /obj/machinery/power/supermatter/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/power/supermatter/attack_hand(mob/user as mob)
+/obj/machinery/power/supermatter/attack_hand(mob/user, list/params)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src], inducing a resonance... [TU.his] body starts to glow and bursts into flames before flashing into ash.</span>",\
 		"<span class=\"danger\">You reach out and touch \the [src]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"</span>",\
@@ -458,7 +465,6 @@
 		"<span class=\"warning\">Everything suddenly goes silent.</span>")
 
 	Consume(W)
-	user.apply_effect(150, IRRADIATE)
 
 
 /obj/machinery/power/supermatter/Bumped(atom/AM as mob|obj)
@@ -477,6 +483,7 @@
 	Consume(AM)
 
 /obj/machinery/power/supermatter/proc/Consume(var/mob/living/user)
+	investigate_log("Consumed [user] ([ref(user)]) potentially last touched by [user.fingerprintslast], adding [istype(user)? 400 : 200] energy.", INVESTIGATE_SUPERMATTER)
 	if(istype(user))
 		user.dust()
 		power += 200
@@ -492,14 +499,42 @@
 				"<span class=\"warning\">The unearthly ringing subsides and you notice you have new radiation burns.</span>", 2)
 		else
 			l.show_message("<span class=\"warning\">You hear an uneartly ringing and notice your skin is covered in fresh radiation burns.</span>", 2)
-	var/rads = 500
-	SSradiation.radiate(src, rads)
+	radiation_pulse(src, 3000, RAD_FALLOFF_ENGINE_SUPERMATTER)
 
 /obj/machinery/power/supermatter/GotoAirflowDest(n) //Supermatter not pushed around by airflow
 	return
 
 /obj/machinery/power/supermatter/RepelAirflowDest(n)
 	return
+
+/obj/machinery/power/supermatter/proc/RecordData()
+	if(world.time >= next_record)
+		next_record = world.time + record_interval
+		var/turf/T = get_turf(src)
+		var/datum/gas_mixture/air = T.return_air()
+		var/list/integrity_history = history["integrity_history"]
+		var/list/EER_history = history["EER_history"]
+		var/list/temperature_history = history["temperature_history"]
+		var/list/pressure_history = history["pressure_history"]
+		var/list/EPR_history = history["EPR_history"]
+
+		integrity_history += get_integrity()
+		EER_history += power
+		temperature_history += air.temperature
+		pressure_history += air.return_pressure()
+		EPR_history += get_epr()
+
+		if(integrity_history.len > record_size)
+			integrity_history.Cut(1, 2)
+		if(EER_history.len > record_size)
+			EER_history.Cut(1, 2)
+		if(temperature_history.len > record_size)
+			temperature_history.Cut(1, 2)
+		if(pressure_history.len > record_size)
+			pressure_history.Cut(1, 2)
+		if(EPR_history.len > record_size)
+			EPR_history.Cut(1, 2)
+
 
 /proc/supermatter_pull(T, radius = 20)
 	T = get_turf(T)
@@ -539,10 +574,11 @@
 /obj/item/broken_sm/Initialize(mapload)
 	. = ..()
 	message_admins("Broken SM shard created at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
+	investigate_log("Broken SM shard created.", INVESTIGATE_RADIATION)
 	START_PROCESSING(SSobj, src)
 
 /obj/item/broken_sm/process(delta_time)
-	SSradiation.radiate(src, 50)
+	radiation_pulse(src, RAD_INTENSITY_SM_BROKEN, RAD_FALLOFF_ENGINE_SUPERMATTER)
 
 /obj/item/broken_sm/Destroy()
 	STOP_PROCESSING(SSobj, src)

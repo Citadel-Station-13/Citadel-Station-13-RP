@@ -70,11 +70,3 @@
 	holomap_color = HOLOMAP_AREACOLOR_MEDICAL
 /area/crew_quarters/medbreak
 	holomap_color = HOLOMAP_AREACOLOR_MEDICAL
-
-
-// ### PROCS ###
-// Whether the turfs in the area should be drawn onto the "base" holomap.
-/area/proc/holomapAlwaysDraw()
-	return TRUE
-/area/shuttle/holomapAlwaysDraw()
-	return FALSE

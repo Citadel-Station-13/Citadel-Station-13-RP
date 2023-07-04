@@ -11,7 +11,7 @@
 	program_menu_icon = "flag"
 	nanomodule_path = /datum/nano_module/program/comm
 	extended_desc = "Used to command and control. Can relay long-range communications. This program can not be run on tablet computers."
-	required_access = access_heads
+	required_access = ACCESS_COMMAND_BRIDGE
 	requires_ntnet = 1
 	size = 12
 	usage_flags = PROGRAM_CONSOLE | PROGRAM_LAPTOP
@@ -97,7 +97,7 @@
 
 /datum/nano_module/program/comm/proc/get_authentication_level(var/mob/user)
 	if(program)
-		if(program.can_run(user, 0, access_captain))
+		if(program.can_run(user, 0, ACCESS_COMMAND_CAPTAIN))
 			return 2
 		else
 			return program.can_run(user)
@@ -150,7 +150,7 @@
 						var/input = sanitize(input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", "") as null|text)
 						if(!input || !can_still_topic())
 							return 1
-						Syndicate_announce(input, usr)
+						message_syndicate(input, usr)
 						to_chat(usr, "<span class='notice'>Message transmitted.</span>")
 						log_say("[key_name(usr)] has made an illegal announcement: [input]")
 						centcomm_message_cooldown = 1
@@ -168,7 +168,7 @@
 					var/input = sanitize(input("Please choose a message to transmit to Centcomm via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", "") as null|text)
 					if(!input || !can_still_topic())
 						return 1
-					CentCom_announce(input, usr)
+					message_centcom(input, usr)
 					to_chat(usr, "<span class='notice'>Message transmitted.</span>")
 					log_say("[key_name(usr)] has made an IA Centcomm announcement: [input]")
 					centcomm_message_cooldown = 1

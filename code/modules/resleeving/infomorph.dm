@@ -99,10 +99,10 @@ var/list/infomorph_emotions = list(
 	add_language(LANGUAGE_EAL, 1)
 	add_language(LANGUAGE_SIGN, 0)
 
-	verbs += /mob/living/silicon/infomorph/proc/choose_verbs
-	verbs += /mob/living/proc/hide
-	verbs += /mob/living/silicon/infomorph/proc/fold_out
-	verbs += /mob/living/silicon/infomorph/proc/fold_in
+	add_verb(src, /mob/living/silicon/infomorph/proc/choose_verbs)
+	add_verb(src, /mob/living/proc/hide)
+	add_verb(src, /mob/living/silicon/infomorph/proc/fold_out)
+	add_verb(src, /mob/living/silicon/infomorph/proc/fold_in)
 
 	software = default_infomorph_software.Copy()
 
@@ -110,25 +110,20 @@ var/list/infomorph_emotions = list(
 	pda = new(src)
 	spawn(5)
 		pda.ownjob = "Sleevecard"
-		pda.owner = text("[]", src)
-		pda.name = pda.owner + " (" + pda.ownjob + ")"
+		pda.owner = "[src]"
+		pda.name = "[pda.owner] ([pda.ownjob])"
 		pda.toff = 1
 
 	return ..()
 
 /////////// STAT PANEL
-/mob/living/silicon/infomorph/Stat()
-	..()
-	statpanel("Status")
-	if (src.client.statpanel == "Status")
-		show_silenced()
-
-// this function shows the information about being silenced as a pAI in the Status panel
-/mob/living/silicon/infomorph/proc/show_silenced()
-	if(src.silence_time)
-		var/timeleft = round((silence_time - world.timeofday)/10 ,1)
-		stat(null, "Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
-
+/mob/living/silicon/infomorph/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
+		if(src.silence_time)
+			var/timeleft = round((silence_time - world.timeofday)/10 ,1)
+			STATPANEL_DATA_LINE("Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
 
 /////////// CHECKERS
 /mob/living/silicon/infomorph/check_eye(var/mob/user as mob)
@@ -144,6 +139,10 @@ var/list/infomorph_emotions = list(
 /mob/living/silicon/infomorph/default_can_use_topic(var/src_object)
 	if(src_object in src)
 		return shared_nano_interaction()
+
+/mob/living/silicon/infomorph/make_perspective()
+	. = ..()
+	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
 
 /////////// DAMAGES
 /mob/living/silicon/infomorph/emp_act(severity)
@@ -214,7 +213,7 @@ var/list/infomorph_emotions = list(
 	set category = "Card Commands"
 	set name = "Chassis Open"
 
-	if(stat || sleeping || paralysis || weakened)
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
 	if(src.loc != card)
@@ -256,7 +255,7 @@ var/list/infomorph_emotions = list(
 	set category = "Card Commands"
 	set name = "Chassis Close"
 
-	if(stat || sleeping || paralysis || weakened)
+	if(!IS_CONSCIOUS(src))
 		return
 
 	if(src.loc == card)
@@ -294,7 +293,6 @@ var/list/infomorph_emotions = list(
 	// Move us into the card and move the card to the ground.
 	card.forceMove(get_turf(src))
 	forceMove(card)
-	canmove = 1
 	resting = 0
 	icon_state = "[chassis]"
 
@@ -320,7 +318,7 @@ var/list/infomorph_emotions = list(
 	speak_exclamation = sayverbs[(sayverbs.len>1 ? 2 : sayverbs.len)]
 	speak_query = sayverbs[(sayverbs.len>2 ? 3 : sayverbs.len)]
 
-	verbs -= /mob/living/silicon/infomorph/proc/choose_verbs
+	remove_verb(src, /mob/living/silicon/infomorph/proc/choose_verbs)
 
 /mob/living/silicon/infomorph/lay_down()
 	set name = "Rest"
@@ -330,21 +328,19 @@ var/list/infomorph_emotions = list(
 	icon_state = resting ? "[chassis]_rest" : "[chassis]"
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
 
-	canmove = !resting
-
 ////////////////// ATTACKBY, HAND, SELF etc
 /mob/living/silicon/infomorph/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.force)
+	if(W.damage_force)
 		visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
-		src.adjustBruteLoss(W.force)
-		src.updatehealth()
+		src.adjustBruteLoss(W.damage_force)
+		src.update_health()
 	else
 		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")
 	spawn(1)
 		if(stat != 2) close_up()
 	return
 
-/mob/living/silicon/infomorph/attack_hand(mob/user as mob)
+/mob/living/silicon/infomorph/attack_hand(mob/user, list/params)
 	visible_message("<span class='danger'>[user.name] boops [src] on the head.</span>")
 	close_up()
 
@@ -540,7 +536,7 @@ var/global/list/default_infomorph_software = list()
 			card.setEmotion(img)
 		return 1
 
-/mob/living/silicon/infomorph/examine(mob/user)
+/mob/living/silicon/infomorph/examine(mob/user, dist)
 	. = ..()
 	switch(src.stat)
 		if(CONSCIOUS)
@@ -591,8 +587,8 @@ var/global/list/default_infomorph_software = list()
 	if(health <= 0)
 		death(null,"gives one shrill beep before falling lifeless.")
 
-/mob/living/silicon/infomorph/updatehealth()
-	if(status_flags & GODMODE)
+/mob/living/silicon/infomorph/update_health()
+	if(status_flags & STATUS_GODMODE)
 		health = 100
 		set_stat(CONSCIOUS)
 	else

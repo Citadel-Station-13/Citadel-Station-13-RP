@@ -77,7 +77,3 @@
 #define FIRE_MAX_STACKS           25
 /// If the number of stacks goes above this firesuits won't protect you anymore. If not, you can walk around while on fire like a badass.
 #define FIRE_MAX_FIRESUIT_STACKS  20
-
-// Hair Defines
-#define HAIR_VERY_SHORT 0x1
-#define HAIR_TIEABLE 0x4

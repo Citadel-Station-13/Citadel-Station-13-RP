@@ -16,7 +16,7 @@
 
 	var/obj/item/loaded                                        // Currently loaded object, for retrieval/unloading.
 	var/load_type = /obj/item/stack/rods                       // Type of stack to load with.
-	projectile_type = /obj/item/projectile/bullet/magnetic 	   // Actual fire type, since this isn't throw_at_old rod launcher.
+	projectile_type = /obj/projectile/bullet/magnetic 	   // Actual fire type, since this isn't throw_at_old rod launcher.
 
 	var/power_cost = 950                                       // Cost per fire, should consume almost an entire basic cell.
 	var/power_per_tick                                         // Capacitor charge per process(). Updated based on capacitor rating.
@@ -63,7 +63,7 @@
 	if(loaded)
 		overlays_to_add += image(icon, "[icon_state]_loaded")
 
-	overlays = overlays_to_add
+	add_overlay(overlays_to_add)
 	..()
 
 /obj/item/gun/magnetic/proc/show_ammo(var/mob/user)
@@ -149,7 +149,7 @@
 		return
 	. = ..()
 
-/obj/item/gun/magnetic/attack_hand(var/mob/user)
+/obj/item/gun/magnetic/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		var/obj/item/removing
 
@@ -208,7 +208,7 @@
 	gun_unreliable = 0
 
 	load_type = /obj/item/fuel_assembly
-	projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod
+	projectile_type = /obj/projectile/bullet/magnetic/fuelrod
 
 	power_cost = 500
 
@@ -220,13 +220,13 @@
 		if(istype(loaded, /obj/item/fuel_assembly))
 			var/obj/item/fuel_assembly/rod = loaded
 			if(rod.fuel_type == "composite" || rod.fuel_type == "deuterium") //Safety check for rods spawned in without a fueltype.
-				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod
+				projectile_type = /obj/projectile/bullet/magnetic/fuelrod
 			else if(rod.fuel_type == "tritium")
-				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod/tritium
+				projectile_type = /obj/projectile/bullet/magnetic/fuelrod/tritium
 			else if(rod.fuel_type == "phoron")
-				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod/phoron
+				projectile_type = /obj/projectile/bullet/magnetic/fuelrod/phoron
 			else if(rod.fuel_type == "supermatter")
-				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod/supermatter
+				projectile_type = /obj/projectile/bullet/magnetic/fuelrod/supermatter
 				visible_message("<span class='danger'>The barrel of \the [src] glows a blinding white!</span>")
 				spawn(5)
 					visible_message("<span class='danger'>\The [src] begins to rattle, its acceleration chamber collapsing in on itself!</span>")
@@ -243,7 +243,7 @@
 							explosion(src.loc, -1, 1, 2, 3)
 							qdel(src)
 			else
-				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod
+				projectile_type = /obj/projectile/bullet/magnetic/fuelrod
 
 	use_ammo()
 	capacitor.use(power_cost)

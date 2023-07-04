@@ -1,11 +1,11 @@
-/datum/tgui_module/rcon
+/datum/tgui_module_old/rcon
 	name = "Power RCON"
 	tgui_id = "RCON"
 
 	var/list/known_SMESs = null
 	var/list/known_breakers = null
 
-/datum/tgui_module/rcon/ui_data(mob/user)
+/datum/tgui_module_old/rcon/ui_data(mob/user)
 	FindDevices() // Update our devices list
 	var/list/data = ..()
 
@@ -29,7 +29,7 @@
 
 	return data
 
-/datum/tgui_module/rcon/ui_act(action, params)
+/datum/tgui_module_old/rcon/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -74,7 +74,7 @@
 // Proc: GetSMESByTag()
 // Parameters: 1 (tag - RCON tag of SMES we want to look up)
 // Description: Looks up and returns SMES which has matching RCON tag
-/datum/tgui_module/rcon/proc/GetSMESByTag(var/tag)
+/datum/tgui_module_old/rcon/proc/GetSMESByTag(var/tag)
 	if(!tag)
 		return
 
@@ -85,11 +85,11 @@
 // Proc: FindDevices()
 // Parameters: None
 // Description: Refreshes local list of known devices.
-/datum/tgui_module/rcon/proc/FindDevices()
+/datum/tgui_module_old/rcon/proc/FindDevices()
 	known_SMESs = new /list()
 
 	var/z = get_z(ui_host())
-	var/list/map_levels = GLOB.using_map.get_map_levels(z)
+	var/list/map_levels = (LEGACY_MAP_DATUM).get_map_levels(z)
 
 	for(var/obj/machinery/power/smes/buildable/SMES in GLOB.smeses)
 		if(!(SMES.z in map_levels))
@@ -104,9 +104,9 @@
 		if(breaker.RCon_tag != "NO_TAG")
 			known_breakers.Add(breaker)
 
-/datum/tgui_module/rcon/ntos
+/datum/tgui_module_old/rcon/ntos
 	ntos = TRUE
 
-/datum/tgui_module/rcon/robot
-/datum/tgui_module/rcon/robot/ui_state(mob/user)
+/datum/tgui_module_old/rcon/robot
+/datum/tgui_module_old/rcon/robot/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.self_state

@@ -4,6 +4,12 @@
 		drones++
 	return drones
 
+/proc/count_matriarchs()
+	var/matriarchs = 0
+	for(var/mob/living/silicon/robot/drone/construction/matriarch/M in GLOB.player_list)
+		matriarchs++
+	return matriarchs
+
 /obj/machinery/drone_fabricator
 	name = "drone fabricator"
 	desc = "A large automated factory for producing maintenance drones."
@@ -36,6 +42,11 @@
 	name = "mining drone fabricator"
 	fabricator_tag = "Upper Level Mining"
 	drone_type = /mob/living/silicon/robot/drone/mining
+
+/obj/machinery/drone_fabricator/matriarch
+	name = "matriarch drone fabricator"
+	fabricator_tag = "Upper Level Matriarch"
+	drone_type = /mob/living/silicon/robot/drone/construction/matriarch
 
 /obj/machinery/drone_fabricator/update_icon_state()
 	. = ..()
@@ -71,7 +82,7 @@
 
 	update_appearance()
 
-/obj/machinery/drone_fabricator/examine(mob/user)
+/obj/machinery/drone_fabricator/examine(mob/user, dist)
 	. = ..()
 	if(produce_drones && drone_progress >= 100 && istype(user,/mob/observer/dead) && config_legacy.allow_drone_spawn && count_drones() < config_legacy.max_maint_drones)
 		. += "<BR><B>A drone is prepared. Select 'Join As Drone' from the Ghost tab to spawn as a maintenance drone.</B>"
@@ -84,6 +95,9 @@
 		return
 
 	if(!produce_drones || !config_legacy.allow_drone_spawn || count_drones() >= config_legacy.max_maint_drones)
+		return
+
+	if((drone_type == /mob/living/silicon/robot/drone/construction/matriarch) && (count_matriarchs() > 0))
 		return
 
 	if(player && !istype(player.mob,/mob/observer/dead))
@@ -100,6 +114,7 @@
 		announce_ghost_joinleave(player, 0, "They have taken control over a maintenance drone.")
 		if(player.mob && player.mob.mind) player.mob.mind.reset()
 		new_drone.transfer_personality(player)
+		assign_drone_to_matrix(new_drone, "[(LEGACY_MAP_DATUM).company_name]")
 
 	return new_drone
 
@@ -111,6 +126,11 @@
 
 	if(SSticker.current_state < GAME_STATE_PLAYING)
 		to_chat(src, "<span class='danger'>The game hasn't started yet!</span>")
+		return
+
+	if(client.persistent.ligma)
+		to_chat(src, "<span class='danger'>That verb is not currently permitted.</span>")
+		log_shadowban("[key_name(src)] SC join blocked.")
 		return
 
 	if(!(config_legacy.allow_drone_spawn))
@@ -164,7 +184,7 @@
 		var/obj/machinery/drone_fabricator/chosen_fabricator = all_fabricators[choice]
 		chosen_fabricator.create_drone(src.client)
 
-/obj/machinery/drone_fabricator/attack_hand(mob/user)
+/obj/machinery/drone_fabricator/attack_hand(mob/user, list/params)
 	if(!is_spawn_safe)
 		is_spawn_safe = TRUE
 		to_chat(user, "You inform the fabricator that it is safe for drones to roam around.")

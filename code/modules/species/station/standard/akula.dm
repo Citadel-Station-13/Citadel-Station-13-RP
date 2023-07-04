@@ -1,5 +1,6 @@
 /datum/species/akula
 	uid = SPECIES_ID_AKULA
+	id = SPECIES_ID_AKULA
 	name = SPECIES_AKULA
 	name_plural = SPECIES_AKULA //It's singular and plural. English is weird.
 	primitive_form = SPECIES_MONKEY_AKULA
@@ -42,7 +43,7 @@
 	water_movement = -4
 	max_age = 80
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"

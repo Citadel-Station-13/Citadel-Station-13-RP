@@ -15,7 +15,7 @@
 	sleep(2)
 	for(var/i in 1 to 6)
 		playsound(src, pick('sound/items/drill_use.ogg', 'sound/items/jaws_cut.ogg', 'sound/items/jaws_pry.ogg', 'sound/items/Welder.ogg', 'sound/items/Wirecutter.ogg', 'sound/items/Crowbar.ogg', 'sound/items/Ratchet.ogg'), 80, 1, -1)
-		sleep(8)
+		sleep(4)
 	if(!prev_lockcharge)
 		SetLockdown(0)
 	anchored = FALSE

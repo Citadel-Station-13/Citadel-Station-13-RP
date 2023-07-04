@@ -30,8 +30,22 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
+	/// dynamic state support
+	var/dynamic_state = TRUE
+	/// dynamic state overlay, if any
+	var/dynamic_overlay
+	/// dynamic state x shift, for off-center sprites like cases
+	var/dynamic_x_shift
+	/// dynamic state y shift, for off-center sprites like cases
+	var/dynamic_y_shift
+
+// todo: implement dynamic state, like how /tg/ boxes work
+
 // BubbleWrap - A box can be folded up to make card
-/obj/item/storage/box/attack_self(mob/user as mob)
+/obj/item/storage/box/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(..()) return
 
 	//try to fold it.

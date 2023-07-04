@@ -1,5 +1,6 @@
 /datum/species/unathi
 	uid = SPECIES_ID_UNATHI
+	id = SPECIES_ID_UNATHI
 	name = SPECIES_UNATHI
 	category = "Unathi"
 	name_plural = SPECIES_UNATHI
@@ -46,7 +47,6 @@
 
 	max_age = 260
 
-	economic_modifier = 10
 
 	cold_level_1 = 280
 	cold_level_2 = 220
@@ -68,14 +68,13 @@
 
 	body_temperature = null //mesothermic is basically cold-blooded right?
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED // Species_can_join is the only spawn flag all the races get, so that none of them will be whitelist only if whitelist is enabled.
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER // Species_can_join is the only spawn flag all the races get, so that none of them will be whitelist only if whitelist is enabled.
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	color_mult  = 1
 	flesh_color = "#34AF10"
 	blood_color = "#f24b2e"
 	base_color  = "#066000"
-	organs_icon = 'icons/mob/species/unathi/organs.dmi'
 
 	reagent_tag = IS_UNATHI
 

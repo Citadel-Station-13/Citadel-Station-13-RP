@@ -38,22 +38,25 @@
 	else
 		..()
 
-/obj/item/plastique/attack_self(mob/user as mob)
+/obj/item/plastique/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/newtime = input(usr, "Please set the timer.", "Timer", 10) as num
 	if(user.get_active_held_item() == src)
 		newtime = clamp(newtime, 10, 60000)
 		timer = newtime
 		to_chat(user, "Timer set for [timer] seconds.")
 
-/obj/item/plastique/afterattack(atom/movable/target, mob/user, flag)
-	if (!flag)
+/obj/item/plastique/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if (!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if (ismob(target) || istype(target, /turf/unsimulated) || istype(target, /turf/simulated/shuttle) || istype(target, /obj/item/storage/) || istype(target, /obj/item/clothing/accessory/storage/) || istype(target, /obj/item/clothing/under))
 		return
 	to_chat(user, "Planting explosives...")
 	user.do_attack_animation(target)
 
-	if(do_after(user, 50) && in_range(user, target))
+	if(do_after(user, 50, target, max_distance = 1))
 		if(!user.attempt_void_item_for_installation(src))
 			return
 		src.target = target
@@ -65,7 +68,7 @@
 			message_admins("[key_name(user, user.client)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) planted [src.name] on [target.name] at ([target.x],[target.y],[target.z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[target.x];Y=[target.y];Z=[target.z]'>JMP</a>) with [timer] second fuse",0,1)
 			log_game("[key_name(user)] planted [src.name] on [target.name] at ([target.x],[target.y],[target.z]) with [timer] second fuse")
 
-		target.overlays += image_overlay
+		target.add_overlay(image_overlay)
 		to_chat(user, "Bomb has been planted. Timer counting down from [timer].")
 		spawn(timer*10)
 			explode(get_turf(target))
@@ -87,11 +90,8 @@
 		else
 			LEGACY_EX_ACT(target, 1, null)
 	if(target)
-		target.overlays -= image_overlay
+		target.cut_overlay(image_overlay)
 	qdel(src)
-
-/obj/item/plastique/attack(mob/M as mob, mob/user as mob, def_zone)
-	return
 
 /obj/item/plastique/seismic
 	name = "seismic charge"
@@ -130,7 +130,7 @@
 	var/turf/T = get_turf(target)
 	if(onstation_weapon_locked(T.z))
 		target.visible_message("<span class='danger'>\The [src] lets out a loud beep as safeties trigger, before imploding and falling apart.</span>")
-		target.overlays -= image_overlay
+		target.cut_overlay(image_overlay)
 		qdel(src)
 		return 0
 	else

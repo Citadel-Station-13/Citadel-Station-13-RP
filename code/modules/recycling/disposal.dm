@@ -16,6 +16,7 @@
 	desc = "A pneumatic waste disposal unit."
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "disposal"
+	atom_colouration_system = FALSE
 	anchored = TRUE
 	density = TRUE
 	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
@@ -153,7 +154,7 @@
 // mouse drop another mob or self
 //
 /obj/machinery/disposal/MouseDroppedOnLegacy(mob/target, mob/user)
-	if(user.stat || !user.canmove || !istype(target))
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE) || !istype(target))
 		return
 	if(target.buckled || get_dist(user, src) > 1 || get_dist(user, target) > 1)
 		return
@@ -166,20 +167,20 @@
 	var/target_loc = target.loc
 	var/msg
 	for (var/mob/V in viewers(usr))
-		if(target == user && !user.stat && !user.weakened && !user.stunned && !user.paralysis)
+		if(target == user && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 			V.show_message("[usr] starts climbing into the disposal.", 3)
-		if(target != user && !user.restrained() && !user.stat && !user.weakened && !user.stunned && !user.paralysis)
+		if(target != user && !user.restrained() && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 			if(target.anchored) return
 			V.show_message("[usr] starts stuffing [target.name] into the disposal.", 3)
 	if(!do_after(usr, 20))
 		return
 	if(target_loc != target.loc)
 		return
-	if(target == user && !user.stat && !user.weakened && !user.stunned && !user.paralysis)	// if drop self, then climbed in
+	if(target == user && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))	// if drop self, then climbed in
 											// must be awake, not stunned or whatever
 		msg = "[user.name] climbs into the [src]."
 		to_chat(user, "You climb into the [src].")
-	else if(target != user && !user.restrained() && !user.stat && !user.weakened && !user.stunned && !user.paralysis)
+	else if(target != user && !user.restrained() && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 		msg = "[user.name] stuffs [target.name] into the [src]!"
 		to_chat(user, "You stuff [target.name] into the [src]!")
 
@@ -217,7 +218,7 @@
 	interact(user, 1)
 
 // human interact with machine
-/obj/machinery/disposal/attack_hand(mob/user as mob)
+/obj/machinery/disposal/attack_hand(mob/user, list/params)
 
 	if(machine_stat & BROKEN)
 		return
@@ -323,30 +324,35 @@
 
 // update the icon & overlays to reflect mode & status
 /obj/machinery/disposal/proc/update()
-	overlays.Cut()
+	cut_overlays()
 	if(machine_stat & BROKEN)
 		icon_state = "disposal-broken"
 		mode = 0
 		flush = 0
 		return
 
+	var/list/overlays_to_add = list()
+
 	// flush handle
 	if(flush)
-		overlays += image('icons/obj/pipes/disposal.dmi', "dispover-handle")
+		overlays_to_add += image('icons/obj/pipes/disposal.dmi', "dispover-handle")
 
 	// only handle is shown if no power
 	if(machine_stat & NOPOWER || mode == -1)
+		add_overlay(overlays_to_add)
 		return
 
 	// 	check for items in disposal - occupied light
 	if(contents.len > 0)
-		overlays += image('icons/obj/pipes/disposal.dmi', "dispover-full")
+		overlays_to_add += image('icons/obj/pipes/disposal.dmi', "dispover-full")
 
 	// charging and ready light
 	if(mode == 1)
-		overlays += image('icons/obj/pipes/disposal.dmi', "dispover-charge")
+		overlays_to_add += image('icons/obj/pipes/disposal.dmi', "dispover-charge")
 	else if(mode == 2)
-		overlays += image('icons/obj/pipes/disposal.dmi', "dispover-ready")
+		overlays_to_add += image('icons/obj/pipes/disposal.dmi', "dispover-ready")
+
+	add_overlay(overlays_to_add)
 
 // timed process
 // charge the gas reservoir and perform flush if ready
@@ -462,7 +468,7 @@
 
 /obj/machinery/disposal/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-	if(istype(AM, /obj/item) && !istype(AM, /obj/item/projectile))
+	if(istype(AM, /obj/item) && !istype(AM, /obj/projectile))
 		if(prob(75))
 			AM.forceMove(src)
 			visible_message("\The [AM] lands in \the [src].")
@@ -470,11 +476,11 @@
 			visible_message("\The [AM] bounces off of \the [src]'s rim!")
 
 /obj/machinery/disposal/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover, /obj/item/projectile))
+	if(istype(mover, /obj/projectile))
 		return 1
 	if (istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
-		if(istype(I, /obj/item/projectile))
+		if(istype(I, /obj/projectile))
 			return
 		if(prob(75))
 			I.forceMove(src)
@@ -659,14 +665,19 @@
 	desc = "An underfloor disposal pipe."
 	anchored = 1
 	density = 0
+	level = 1 // underfloor only
+	dir = 0 // dir will contain dominant direction for junction pipes
+	plane = TURF_PLANE
+	layer = DISPOSAL_LAYER // slightly lower than wires and other pipes.
 
-	level = 1			// underfloor only
-	var/dpdir = 0		// bitmask of pipe directions
-	dir = 0				// dir will contain dominant direction for junction pipes
-	var/health = 10 	// health points 0-10
-	plane = PLATING_PLANE
-	layer = DISPOSAL_LAYER	// slightly lower than wires and other pipes
-	base_icon_state	// initial icon state on map
+	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
+	alpha = 128 // Set for the benefit of mapping.
+	#endif
+
+	/// Bitmask of pipe directions.
+	var/dpdir = 0
+	/// Health points 0-10
+	var/health = 10
 	var/sortType = ""
 	var/subtype = 0
 	// new pipe, set the icon_state as on map

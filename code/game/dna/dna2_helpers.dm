@@ -190,21 +190,21 @@
 				E.markings = marklist.Copy()
 
 		//! Hair
-		var/hair = dna.GetUIValueRange(DNA_UI_HAIR_STYLE,hair_styles_list.len)
-		if((0 < hair) && (hair <= hair_styles_list.len))
-			H.h_style = hair_styles_list[hair]
+		var/hair = dna.GetUIValueRange(DNA_UI_HAIR_STYLE, GLOB.legacy_hair_lookup.len)
+		if((0 < hair) && (hair <= GLOB.legacy_hair_lookup.len))
+			H.h_style = GLOB.legacy_hair_lookup[hair]
 
 		//! Facial Hair
-		var/beard = dna.GetUIValueRange(DNA_UI_BEARD_STYLE,facial_hair_styles_list.len)
-		if((0 < beard) && (beard <= facial_hair_styles_list.len))
-			H.f_style = facial_hair_styles_list[beard]
+		var/beard = dna.GetUIValueRange(DNA_UI_BEARD_STYLE, GLOB.legacy_facial_hair_lookup.len)
+		if((0 < beard) && (beard <= GLOB.legacy_facial_hair_lookup.len))
+			H.f_style = GLOB.legacy_facial_hair_lookup[beard]
 
 		//! Ears
-		var/ears = dna.GetUIValueRange(DNA_UI_EAR_STYLE, ear_styles_list.len + 1) - 1
+		var/ears = dna.GetUIValueRange(DNA_UI_EAR_STYLE, GLOB.legacy_ears_lookup.len + 1) - 1
 		if(ears <= 1)
 			H.ear_style = null
-		else if((0 < ears) && (ears <= ear_styles_list.len))
-			H.ear_style = ear_styles_list[ear_styles_list[ears]]
+		else if((0 < ears) && (ears <= GLOB.legacy_ears_lookup.len))
+			H.ear_style = GLOB.legacy_ears_lookup[GLOB.legacy_ears_lookup[ears]]
 
 		//! Ear Color
 		H.r_ears  = dna.GetUIValueRange(DNA_UI_EARS_R,    255)
@@ -218,18 +218,18 @@
 		H.b_ears3 = dna.GetUIValueRange(DNA_UI_EARS3_B,	  255)
 
 		//! Tail
-		var/tail = dna.GetUIValueRange(DNA_UI_TAIL_STYLE, tail_styles_list.len + 1) - 1
+		var/tail = dna.GetUIValueRange(DNA_UI_TAIL_STYLE, GLOB.legacy_tail_lookup.len + 1) - 1
 		if(tail <= 1)
 			H.tail_style = null
-		else if((0 < tail) && (tail <= tail_styles_list.len))
-			H.tail_style = tail_styles_list[tail_styles_list[tail]]
+		else if((0 < tail) && (tail <= GLOB.legacy_tail_lookup.len))
+			H.tail_style = GLOB.legacy_tail_lookup[GLOB.legacy_tail_lookup[tail]]
 
 		//! Wing
-		var/wing = dna.GetUIValueRange(DNA_UI_WING_STYLE, wing_styles_list.len + 1) - 1
+		var/wing = dna.GetUIValueRange(DNA_UI_WING_STYLE, GLOB.legacy_wing_lookup.len + 1) - 1
 		if(wing <= 1)
 			H.wing_style = null
-		else if((0 < wing) && (wing <= wing_styles_list.len))
-			H.wing_style = wing_styles_list[wing_styles_list[wing]]
+		else if((0 < wing) && (wing <= GLOB.legacy_wing_lookup.len))
+			H.wing_style = GLOB.legacy_wing_lookup[GLOB.legacy_wing_lookup[wing]]
 
 		//! Wing Color
 		H.r_wing   = dna.GetUIValueRange(DNA_UI_WING_R,   255)
@@ -287,3 +287,9 @@
 /// Used below, simple injection modifier.
 /proc/probinj(pr, inj)
 	return prob(pr+inj*pr)
+
+/mob/proc/has_dna()
+	return
+
+/mob/living/carbon/has_dna()
+	return dna

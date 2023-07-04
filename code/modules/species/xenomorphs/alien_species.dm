@@ -13,7 +13,7 @@
 	assisted_langs = list()
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno, /datum/unarmed_attack/bite/strong/xeno)
 	hud_type = /datum/hud_data/alien
-	rarity_value = 3
+	//rarity_value = 3
 
 	has_fine_manipulation = 0
 	siemens_coefficient = 0
@@ -30,7 +30,7 @@
 	cold_level_3 = -1
 
 	species_flags =  NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_INFECT
-	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
+	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 
 	reagent_tag = IS_XENOS
 
@@ -178,7 +178,7 @@
 	weeds_plasma_rate = 15
 	slowdown = 1
 	tail = "xenos_drone_tail"
-	rarity_value = 5
+	//rarity_value = 5
 
 	icobase = 'icons/mob/species/xenomorph/drone.dmi'
 	deform =  'icons/mob/species/xenomorph/drone.dmi'
@@ -285,7 +285,7 @@
 	caste_name = "queen"
 	slowdown = 4
 	tail = "xenos_queen_tail"
-	rarity_value = 10
+	//rarity_value = 10
 
 	icobase = 'icons/mob/species/xenomorph/queen.dmi'
 	deform =  'icons/mob/species/xenomorph/queen.dmi'

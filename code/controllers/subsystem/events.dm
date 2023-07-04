@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(events)
 
 	var/datum/event_meta/new_event = new
 
-/datum/controller/subsystem/events/PreInit()
+/datum/controller/subsystem/events/PreInit(recovering)
 	// unfortunately, character setup server startup hooks fire before /Initialize so :/
 	// SScharactersetup but not shit when :)
 	InitializeHolidays(force = TRUE)
@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(events)
 		EC.process(dt)
 
 /datum/controller/subsystem/events/stat_entry()
-	..("E:[active_events.len]")
+	return ..() + " E:[active_events.len]"
 
 /datum/controller/subsystem/events/Recover()
 	if(SSevents.active_events)
@@ -67,7 +67,7 @@ SUBSYSTEM_DEF(events)
 	active_events -= E
 
 	if(!E.event_meta || !E.severity)	// datum/event is used here and there for random reasons, maintaining "backwards compatibility"
-		log_debug("Event of '[E.type]' with missing meta-data has completed.")
+		log_debug(SPAN_DEBUG("Event of '[E.type]' with missing meta-data has completed."))
 		return
 
 	finished_events += E
@@ -78,7 +78,7 @@ SUBSYSTEM_DEF(events)
 	if(EM.add_to_queue)
 		EC.available_events += EM
 
-	log_debug("Event '[EM.name]' has completed at [worldtime2stationtime(world.time)].")
+	log_debug(SPAN_DEBUG("Event '[EM.name]' has completed at [worldtime2stationtime(world.time)]."))
 
 /datum/controller/subsystem/events/proc/delay_events(var/severity, var/delay)
 	var/datum/event_container/EC = event_containers[severity]

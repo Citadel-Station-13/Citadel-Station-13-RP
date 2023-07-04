@@ -1,12 +1,20 @@
 /turf/simulated/floor
 	name = "plating"
 	desc = "Unfinished flooring."
-	icon = 'icons/turf/flooring/plating_vr.dmi'
+	icon = 'icons/turf/flooring/plating.dmi'
 	icon_state = "plating"
-	smoothing_flags = SMOOTH_CUSTOM
 	base_icon_state = "plating"
 	thermal_conductivity = 0.040
 	heat_capacity = 10000
+	permit_ao = TRUE
+
+	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
+	layer = PLATING_LAYER
+	#endif
+
+	smoothing_flags = SMOOTH_CUSTOM
+	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
+	canSmoothWith = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
 
 	// Damage to flooring.
 	var/broken
@@ -15,20 +23,21 @@
 	// Plating data.
 	var/base_name = "plating"
 	var/base_desc = "The naked hull."
-	var/base_icon = 'icons/turf/flooring/plating_vr.dmi'
+	var/base_icon = 'icons/turf/flooring/plating.dmi'
 	var/static/list/base_footstep_sounds = list("human" = list(
 		'sound/effects/footstep/plating1.ogg',
 		'sound/effects/footstep/plating2.ogg',
 		'sound/effects/footstep/plating3.ogg',
 		'sound/effects/footstep/plating4.ogg',
-		'sound/effects/footstep/plating5.ogg'))
+		'sound/effects/footstep/plating5.ogg',
+	))
 
 	var/list/old_decals = null // Remember what decals we had between being pried up and replaced.
 
 	// Flooring data.
 	var/flooring_override
 	var/initial_flooring
-	var/decl/flooring/flooring
+	var/singleton/flooring/flooring
 	var/mineral = MAT_STEEL
 
 /turf/simulated/floor/is_plating()
@@ -70,14 +79,29 @@
  * TODO: REWORK FLOORING GETTERS/INIT/SETTERS THIS IS BAD
  */
 
-/turf/simulated/floor/proc/set_flooring(decl/flooring/newflooring, init)
+/turf/simulated/floor/proc/set_flooring(singleton/flooring/newflooring, init)
+	if(flooring == newflooring)
+		return
 	make_plating(null, TRUE, TRUE)
 	flooring = newflooring
+
 	footstep_sounds = newflooring.footstep_sounds
 	// We are plating switching to flooring, swap out old_decals for decals
 	var/list/overfloor_decals = old_decals
 	old_decals = decals
 	decals = overfloor_decals
+
+	var/check_z_flags
+	if(flooring)
+		check_z_flags = flooring.mz_flags
+	else
+		check_z_flags = initial(mz_flags)
+
+	if(check_z_flags & MZ_MIMIC_BELOW)
+		enable_zmimic(check_z_flags)
+	else
+		disable_zmimic()
+
 	if(!init)
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
@@ -120,6 +144,11 @@
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && src.flooring)
 
+	if(flooring)
+		layer = TURF_LAYER
+	else
+		layer = PLATING_LAYER
+
 /turf/simulated/floor/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_FLOORWALL)
@@ -153,7 +182,7 @@
 			return list(
 				RCD_VALUE_MODE = RCD_DECONSTRUCT,
 				RCD_VALUE_DELAY = 5 SECONDS,
-				RCD_VALUE_COST = RCD_SHEETS_PER_MATTER_UNIT * 10
+				RCD_VALUE_COST = RCD_SHEETS_PER_MATTER_UNIT * 2
 			)
 	return FALSE
 
@@ -166,8 +195,8 @@
 			var/turf/simulated/wall/T = get_turf(src) // Ref to the wall we just built.
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
-			var/datum/material/M = name_to_material[the_rcd.material_to_use]
-			T.set_material(M, the_rcd.make_rwalls ? M : null, M)
+			var/datum/material/M = get_material_by_name(the_rcd.material_to_use)
+			T.set_materials(M, the_rcd.make_rwalls ? M : null, M)
 			T.add_hiddenprint(user)
 			return TRUE
 		if(RCD_AIRLOCK)

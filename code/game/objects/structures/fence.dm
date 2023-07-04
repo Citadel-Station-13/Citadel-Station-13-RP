@@ -30,7 +30,7 @@
 	update_cut_status()
 	return ..()
 
-/obj/structure/fence/examine(mob/user)
+/obj/structure/fence/examine(mob/user, dist)
 	. = ..()
 
 	switch(hole_size)
@@ -39,10 +39,10 @@
 		if(LARGE_HOLE)
 			. += "\The [src] has been completely cut through."
 
-/obj/structure/fence/get_description_interaction()
+/obj/structure/fence/get_description_interaction(mob/user)
 	var/list/results = list()
 	if(cuttable && !invulnerable && hole_size < MAX_HOLE_SIZE)
-		results += "[desc_panel_image("wirecutters")]to [hole_size > NO_HOLE ? "expand the":"cut a"] hole into the fence, allowing passage."
+		results += "[desc_panel_image("wirecutters", user)]to [hole_size > NO_HOLE ? "expand the":"cut a"] hole into the fence, allowing passage."
 	return results
 
 /obj/structure/fence/end
@@ -67,7 +67,7 @@
 
 // Projectiles can pass through fences.
 /obj/structure/fence/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover, /obj/item/projectile))
+	if(istype(mover, /obj/projectile))
 		return TRUE
 	return ..()
 
@@ -139,7 +139,7 @@
 	desc = "It looks like it has a strong padlock attached."
 	locked = TRUE
 
-/obj/structure/fence/door/attack_hand(mob/user)
+/obj/structure/fence/door/attack_hand(mob/user, list/params)
 	if(can_open(user))
 		toggle(user)
 	else
@@ -201,7 +201,7 @@
 	hole_size = LARGE_HOLE
 
 /obj/structure/fence/door/wooden
-	name = "wooden fence gate"
+	name = "wooden gate"
 	icon_state = "door_wood-closed"
 	color = "#824B28"
 
@@ -209,6 +209,62 @@
 	icon_state = "door_wood-opened"
 	open = TRUE
 	density = TRUE
+
+/obj/structure/fence/door/wooden/update_door_status()
+	switch(open)
+		if(FALSE)
+			density = TRUE
+			icon_state = "door_wood-closed"
+		if(TRUE)
+			density = FALSE
+			icon_state = "door_wood-opened"
+
+
+//Bone Fence! (Icons Coming Shortly.)
+/obj/structure/fence/bone
+	name = "bone fence"
+	desc = "A fence made from the carved bones of a giant creature. Not as effective as a wall, but generally it keeps people out."
+	icon_state = "straight_wood"
+	color = "#e6dfc8"
+
+/obj/structure/fence/bone/end
+	icon_state = "end_wood"
+	cuttable = FALSE
+
+/obj/structure/fence/bone/corner
+	icon_state = "corner_wood"
+	cuttable = FALSE
+
+/obj/structure/fence/bone/post
+	icon_state = "post_wood"
+	cuttable = FALSE
+
+/obj/structure/fence/bone/cut/medium
+	icon_state = "straight_wood-cut2"
+	hole_size = MEDIUM_HOLE
+
+/obj/structure/fence/bone/cut/large
+	icon_state = "straight_wood-cut3"
+	hole_size = LARGE_HOLE
+
+/obj/structure/fence/door/bone
+	name = "bone gate"
+	icon_state = "door_wood-closed"
+	color = "#e6dfc8"
+
+/obj/structure/fence/door/bone/opened
+	icon_state = "door_wood-opened"
+	open = TRUE
+	density = TRUE
+
+/obj/structure/fence/door/bone/update_door_status()
+	switch(open)
+		if(FALSE)
+			density = TRUE
+			icon_state = "door_wood-closed"
+		if(TRUE)
+			density = FALSE
+			icon_state = "door_wood-opened"
 
 #undef CUT_TIME
 #undef CLIMB_TIME

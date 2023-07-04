@@ -3,7 +3,7 @@
 	name = "Blazer - Blue"
 	path = /obj/item/clothing/under/blazer
 	slot = SLOT_ID_UNIFORM
-	sort_category = "Uniforms and Casual Dress"
+	sort_category = LOADOUT_CATEGORY_UNIFORMS
 
 /datum/gear/uniform/blazer_skirt
 	name = "Blazer - Skirt "
@@ -650,7 +650,7 @@ Swimsuits
 	path = /obj/item/clothing/under/redcoatformal
 
 /datum/gear/uniform/vice
-	name = "Vice Officer's Jumpsuit"
+	name = "Vice Officers Jumpsuit"
 	path = /obj/item/clothing/under/rank/vice
 
 /datum/gear/uniform/saare
@@ -702,7 +702,7 @@ Swimsuits
 	path = /obj/item/clothing/under/laconic
 
 /datum/gear/uniform/bountyskin
-	name = "Bounty Hunter's Skinsuit"
+	name = "Bounty Hunters Skinsuit"
 	path = /obj/item/clothing/under/bountyskin
 
 /datum/gear/uniform/navy_jumpsuit
@@ -718,19 +718,19 @@ Swimsuits
 	path = /obj/item/clothing/under/chiming_dress
 
 /datum/gear/uniform/waiter
-	name = "Waiter's Outfit"
+	name = "Waiters Outfit"
 	path = /obj/item/clothing/under/waiter
 
 /datum/gear/uniform/waiter_fem
-	name = "Waiter's Outfit - Female"
+	name = "Waiters Outfit - Female"
 	path = /obj/item/clothing/under/waiter_fem
 
 /datum/gear/uniform/assistantformal
-	name = "Assistant's Formal Uniform"
+	name = "Assistants Formal Uniform"
 	path = /obj/item/clothing/under/assistantformal
 
 /datum/gear/uniform/assistantformal_fem
-	name = "Assistant's Formal Uniform - Female"
+	name = "Assistants Formal Uniform - Female"
 	path = /obj/item/clothing/under/assistantformal_fem
 
 /datum/gear/uniform/cropdress
@@ -744,6 +744,26 @@ Swimsuits
 /datum/gear/uniform/antediluvian
 	name = "Antediluvian Corset"
 	path = /obj/item/clothing/under/antediluvian
+
+/datum/gear/uniform/antediluvian_dress
+	name = "Antediluvian Dress"
+	path = /obj/item/clothing/under/antediluvian/dress
+
+/datum/gear/accessory/antediluvian_gloves_alt
+	name = "Antediluvian Bracers Alternate"
+	path = /obj/item/clothing/accessory/antediluvian_gloves/alt
+
+/datum/gear/accessory/antediluvian_socks
+	name = "Antediluvian Socks"
+	path = /obj/item/clothing/accessory/antediluvian_socks
+
+/datum/gear/accessory/antediluvian_necklace
+	name = "Antediluvian Necklace"
+	path = /obj/item/clothing/accessory/antediluvian_necklace
+
+/datum/gear/accessory/antediluvian_flaps
+	name = "Antediluvian Flaps"
+	path = /obj/item/clothing/accessory/antediluvian_flaps
 
 /datum/gear/uniform/hasie
 	name = "Hasie Designer Skirt/Vest"
@@ -760,3 +780,162 @@ Swimsuits
 /datum/gear/uniform/halfmoon
 	name = "Half Moon Outfit"
 	path = /obj/item/clothing/under/half_moon
+
+/datum/gear/uniform/toga
+	name = "Toga"
+	path = /obj/item/clothing/under/toga
+
+/datum/gear/uniform/countess
+	name = "Countess Dress"
+	path = /obj/item/clothing/under/countess
+
+/datum/gear/uniform/baroness
+	name = "Baroness Dress"
+	path = /obj/item/clothing/under/baroness
+
+/datum/gear/uniform/yoko
+	name = "Scavenging Sniper Set"
+	path = /obj/item/clothing/under/yoko
+
+/datum/gear/uniform/kamina
+	name = "Spiral Hero Outfit"
+	path = /obj/item/clothing/under/kamina
+
+/datum/gear/uniform/tape
+	name = "Body Tape Wrapping"
+	path = /obj/item/clothing/under/tape
+
+/datum/gear/uniform/revealing
+	name = "Revealing Cocktail Dress"
+	path = /obj/item/clothing/under/revealing
+
+/datum/gear/uniform/belial
+	name = "Belial Striped Shirt and Shorts"
+	path = /obj/item/clothing/under/belial
+
+/datum/gear/uniform/lilin
+	name = "Lilin Sash Dress"
+	path = /obj/item/clothing/under/lilin
+
+/datum/gear/uniform/asmodai
+	name = "Asmodai Laced Blouse"
+	path = /obj/item/clothing/under/asmodai
+
+/datum/gear/uniform/blackshortsripped
+	name = "Ripped Black Shorts"
+	path = /obj/item/clothing/under/blackshortsripped
+
+/datum/gear/uniform/summerdress_selection
+	name = "Summer Dress Selection"
+	path = /obj/item/clothing/under/dress/summer
+
+/datum/gear/uniform/summerdress_selection/New()
+	..()
+	var/list/summerdress_selection = list()
+	for(var/summerdress in typesof(/obj/item/clothing/under/dress/summer))
+		var/obj/item/clothing/under/summerdress_type = summerdress
+		summerdress_selection[initial(summerdress_type.name)] = summerdress_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(summerdress_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/skinsuit_selection
+	name = "Skinsuit Selection - Male"
+	path = /obj/item/clothing/under/skinsuit
+
+/datum/gear/uniform/skinsuit_selection/New()
+	..()
+	var/list/skinsuit_selection = list()
+	for(var/skinsuit in typesof(/obj/item/clothing/under/skinsuit))
+		var/obj/item/clothing/under/skinsuit_type = skinsuit
+		skinsuit_selection[initial(skinsuit_type.name)] = skinsuit_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(skinsuit_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/skinsuitfem_selection
+	name = "Skinsuit Selection - Female"
+	path = /obj/item/clothing/under/skinsuit_fem
+
+/datum/gear/uniform/skinsuitfem_selection/New()
+	..()
+	var/list/skinsuitfem_selection = list()
+	for(var/skinsuitfem in typesof(/obj/item/clothing/under/skinsuit_fem))
+		var/obj/item/clothing/under/skinsuitfem_type = skinsuitfem
+		skinsuitfem_selection[initial(skinsuitfem_type.name)] = skinsuitfem_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(skinsuitfem_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/altbodysuit_selection
+	name = "Alternate Bodysuit Selection - Male"
+	path = /obj/item/clothing/under/bodysuit/alt
+
+/datum/gear/uniform/altbodysuit_selection/New()
+	..()
+	var/list/altbodysuit_selection = list()
+	for(var/altbodysuit in typesof(/obj/item/clothing/under/bodysuit/alt))
+		var/obj/item/clothing/under/altbodysuit_type = altbodysuit
+		altbodysuit_selection[initial(altbodysuit_type.name)] = altbodysuit_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(altbodysuit_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/altbodysuitfem_selection
+	name = "Alternate Bodysuit Selection - Female"
+	path = /obj/item/clothing/under/bodysuit/alt_fem
+
+/datum/gear/uniform/altbodysuitfem_selection/New()
+	..()
+	var/list/altbodysuitfem_selection = list()
+	for(var/altbodysuitfem in typesof(/obj/item/clothing/under/bodysuit/alt_fem))
+		var/obj/item/clothing/under/altbodysuitfem_type = altbodysuitfem
+		altbodysuitfem_selection[initial(altbodysuitfem_type.name)] = altbodysuitfem_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(altbodysuitfem_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/ballet
+	name = "Antheia Tutu"
+	path = /obj/item/clothing/under/ballet
+
+/datum/gear/uniform/ballet/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
+//Tajaran wears
+
+/datum/gear/uniform/tajaran/summercloths_selection
+	name = "Adhomian summerwear"
+	path = /obj/item/clothing/under/tajaran/summer
+
+/datum/gear/uniform/tajaran/summercloths_selection/New()
+	..()
+	var/list/summercloths_selection = list()
+	for(var/summercloths in (typesof(/obj/item/clothing/under/tajaran/summer)))
+		var/obj/item/clothing/under/summercloths_type = summercloths
+		summercloths_selection[initial(summercloths_type.name)] = summercloths_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(summercloths_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/tajaran/tajara_dress_selection
+	name = "Adhomian dresses selection"
+	description = "A selection of tajaran native dresses."
+	path = /obj/item/clothing/under/dress/tajaran
+
+/datum/gear/uniform/tajaran/tajara_dress_selection/New()
+	..()
+	var/list/tajara_dress_selection = list()
+	for(var/tajara_dress in (typesof(/obj/item/clothing/under/dress/tajaran)))
+		var/obj/item/clothing/under/dress/tajaran/tajara_dress_type = tajara_dress
+		tajara_dress_selection[initial(tajara_dress_type.name)] = tajara_dress_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajara_dress_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/tajaran/laborer
+	name = "Generic Adhomian laborer clothes"
+	path = /obj/item/clothing/under/tajaran
+
+/datum/gear/uniform/tajaran/machinist
+	name = "Adhomian machinist uniform"
+	path = /obj/item/clothing/under/tajaran/mechanic
+
+/datum/gear/uniform/tajaran/raakti_shariim
+	name = "Raakti shariim uniform"
+	path = /obj/item/clothing/under/tajaran/raakti_shariim
+
+/datum/gear/uniform/tajaran/dpra
+	name = "DPRA laborer clothes"
+	path = /obj/item/clothing/under/tajaran/dpra
+
+/datum/gear/uniform/tajaran/dpra/alt
+	name = "DPRA laborer clothes, alternate"
+	path = /obj/item/clothing/under/tajaran/dpra/alt

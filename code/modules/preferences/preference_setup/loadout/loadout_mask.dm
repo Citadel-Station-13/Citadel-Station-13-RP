@@ -3,7 +3,7 @@
 	name = "Bandana - Blue"
 	path = /obj/item/clothing/mask/bandana/blue
 	slot = SLOT_ID_MASK
-	sort_category = "Masks and Facewear"
+	sort_category = LOADOUT_CATEGORY_MASKS
 
 /datum/gear/mask/gold
 	name = "Bandana - Gold"
@@ -57,3 +57,7 @@
 /datum/gear/mask/fox
 	name = "Fox mask" //capitalisation because everything else here is capitalised
 	path = /obj/item/clothing/mask/gas/fox
+
+/datum/gear/mask/opaque
+	name = "Opaque Mask"
+	path = /obj/item/clothing/mask/gas/opaque

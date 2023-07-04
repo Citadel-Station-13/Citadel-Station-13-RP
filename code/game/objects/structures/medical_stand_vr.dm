@@ -29,32 +29,33 @@
 	update_icon()
 
 /obj/structure/medical_stand/update_icon()
-	overlays.Cut()
+	cut_overlays()
 
+	var/list/overlays_to_add = list()
 	if (tank)
 		if (breather)
-			overlays += "tube_active"
+			overlays_to_add += "tube_active"
 		else
-			overlays += "tube"
+			overlays_to_add += "tube"
 		if(istype(tank,/obj/item/tank/anesthetic))
-			overlays += "tank_anest"
+			overlays_to_add += "tank_anest"
 		else if(istype(tank,/obj/item/tank/nitrogen))
-			overlays += "tank_nitro"
+			overlays_to_add += "tank_nitro"
 		else if(istype(tank,/obj/item/tank/oxygen))
-			overlays += "tank_oxyg"
+			overlays_to_add += "tank_oxyg"
 		else if(istype(tank,/obj/item/tank/phoron))
-			overlays += "tank_plasma"
+			overlays_to_add += "tank_plasma"
 		//else if(istype(tank,/obj/item/tank/hydrogen))
-		//	overlays += "tank_hydro"
+		//	overlays_to_add += "tank_hydro"
 		else
-			overlays += "tank_other"
+			overlays_to_add += "tank_other"
 
 	if(beaker)
-		overlays += "beaker"
+		overlays_to_add += "beaker"
 		if(attached)
-			overlays += "line_active"
+			overlays_to_add += "line_active"
 		else
-			overlays += "line"
+			overlays_to_add += "line"
 		var/datum/reagents/reagents = beaker.reagents
 		var/percent = round((reagents.total_volume / beaker.volume) * 100)
 		if(reagents.total_volume)
@@ -69,7 +70,9 @@
 				if(91 to INFINITY)	filling.icon_state = "reagent100"
 			if (filling.icon)
 				filling.icon += reagents.get_color()
-				overlays += filling
+				overlays_to_add += filling
+
+	add_overlay(overlays_to_add)
 
 /obj/structure/medical_stand/Destroy()
 	STOP_PROCESSING(SSobj,src)
@@ -161,7 +164,7 @@
 				update_icon()
 
 
-/obj/structure/medical_stand/attack_hand(mob/user as mob)
+/obj/structure/medical_stand/attack_hand(mob/user, list/params)
 	var/list/available_options = list()
 	if (tank)
 		available_options += "Toggle valve"
@@ -264,7 +267,7 @@
 	if(target.wear_mask && target != breather)
 		to_chat(user, "<span class='warning'>\The [target] is already wearing a mask.</span>")
 		return
-	if(target.head && (target.head.body_parts_covered & FACE))
+	if(target.head && (target.head.body_cover_flags & FACE))
 		to_chat(user, "<span class='warning'>Remove their [target.head] first.</span>")
 		return
 	if(!tank)
@@ -397,7 +400,7 @@
 	if(beaker)
 		if(mode) // Give blood
 			if(beaker.volume > 0)
-				beaker.reagents.trans_to_mob(attached, transfer_amount, CHEM_BLOOD)
+				beaker.reagents.trans_to_mob(attached, transfer_amount, CHEM_INJECT)
 				update_icon()
 		else // Take blood
 			var/amount = beaker.reagents.maximum_volume - beaker.reagents.total_volume

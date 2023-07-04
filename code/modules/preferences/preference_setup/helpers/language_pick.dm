@@ -17,8 +17,9 @@
 		to_chat(user, SPAN_WARNING("You cannot select another language!"))
 		return TRUE
 	var/datum/character_species/CS = character_species_datum()
-	if((L.language_flags & WHITELISTED) && !((L.id in CS.whitelist_languages) || config.check_alien_whitelist(ckey(L.name), client_ckey)))
-		to_chat(user, SPAN_WARNING("[L.name] is a whitelisted language!"))
+	var/list/whitelisted_ids = CS.get_whitelisted_language_ids() // cache ids from character species for speed
+	if((L.language_flags & LANGUAGE_WHITELISTED) && !((L.id in whitelisted_ids) || config.check_alien_whitelist(ckey(L.name), client_ckey)))
+		to_chat(user, SPAN_WARNING("[L] is a whitelisted language!"))
 		return FALSE
 	var/list/current = get_character_data(CHARACTER_DATA_LANGUAGES)
 	current += L.id
@@ -59,7 +60,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 		ui.autoupdate = FALSE			// why the fuck are you updating language data??
 		ui.open()
 
-/datum/tgui_language_picker/ui_status(mob/user, datum/ui_state/state)
+/datum/tgui_language_picker/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
 	return UI_INTERACTIVE
 
 /datum/tgui_language_picker/ui_static_data(mob/user)
@@ -67,7 +68,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 	var/list/built = list()
 	var/list/categories = list("General")
 	for(var/datum/language/L as anything in SScharacters.all_languages())
-		if(L.language_flags & RESTRICTED)
+		if(L.language_flags & LANGUAGE_RESTRICTED)
 			continue
 		built[++built.len] = list(
 			"id" = L.id,
@@ -75,17 +76,17 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 			"desc" = L.desc,
 			"category" = L.category
 		)
-		LAZYOR(categories, L.category)
+		LAZYDISTINCTADD(categories, L.category)
 	data["languages"] = built
 	data["categories"] = categories
 	return data
 
-/datum/tgui_language_picker/ui_close(mob/user)
+/datum/tgui_language_picker/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	if(!QDELING(src))
 		qdel(src)
 
-/datum/tgui_language_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_language_picker/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	switch(action)
 		if("pick")

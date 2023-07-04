@@ -5,14 +5,14 @@
 /obj/item/circuitboard/security
 	name = T_BOARD("security camera monitor")
 	build_path = /obj/machinery/computer/security
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	var/list/network
 	var/locked = TRUE
 	var/emagged = 0
 
 /obj/item/circuitboard/security/Initialize(mapload)
 	. = ..()
-	network = GLOB.using_map.station_networks
+	network = (LEGACY_MAP_DATUM).station_networks
 
 /obj/item/circuitboard/security/tv
 	name = T_BOARD("security camera monitor - television")

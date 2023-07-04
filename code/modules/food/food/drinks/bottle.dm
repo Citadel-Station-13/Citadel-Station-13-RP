@@ -1,13 +1,13 @@
 ///////////////////////////////////////////////Alchohol bottles! -Agouri //////////////////////////
 //Functionally identical to regular drinks. The only difference is that the default bottle size is 100. - Darem
 //Bottles now weaken and break when smashed on people's heads. - Giacom
-//remember to set flags = 0 on a bottle subtype to require opening, otherwise its just an open container by default -buffy
+//remember to set atom_flags = 0 on a bottle subtype to require opening, otherwise its just an open container by default -buffy
 
 /obj/item/reagent_containers/food/drinks/bottle
 	amount_per_transfer_from_this = 10
 	volume = 100
 	item_state = "broken_beer" //Generic held-item sprite until unique ones are made.
-	force = 6
+	damage_force = 6
 	var/smash_duration = 5 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)
 	var/isGlass = 1 //Whether the 'bottle' is made of glass or not so that milk cartons dont shatter when someone gets hit by it
 
@@ -107,6 +107,9 @@
 	..()
 
 /obj/item/reagent_containers/food/drinks/bottle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(rag)
 		remove_rag(user)
 	else
@@ -118,7 +121,7 @@
 	if(user.attempt_insert_item_for_installation(R, src))
 		to_chat(user, "<span class='notice'>You stuff [R] into [src].</span>")
 		rag = R
-		flags &= ~OPENCONTAINER
+		atom_flags &= ~OPENCONTAINER
 		update_icon()
 
 /obj/item/reagent_containers/food/drinks/bottle/proc/remove_rag(mob/user)
@@ -126,7 +129,7 @@
 		return
 	user.put_in_hands_or_drop(rag)
 	rag = null
-	flags |= (initial(flags) & OPENCONTAINER)
+	atom_flags |= (initial(atom_flags) & OPENCONTAINER)
 	update_icon()
 
 /obj/item/reagent_containers/food/drinks/bottle/open(mob/user)
@@ -142,55 +145,52 @@
 	else
 		set_light(0)
 
-/obj/item/reagent_containers/food/drinks/bottle/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	var/blocked = ..()
-
+/obj/item/reagent_containers/food/drinks/bottle/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	var/mob/living/L = target
+	if(!istype(L))
+		return
 	if(user.a_intent != INTENT_HARM)
 		return
 	if(!smash_check(1))
 		return //won't always break on the first hit
 
 	// You are going to knock someone out for longer if they are not wearing a helmet.
-	var/weaken_duration = 0
-	if(blocked < 100)
-		weaken_duration = smash_duration + min(0, force - target.getarmor(hit_zone, "melee") + 10)
+	var/weaken_duration = smash_duration + min(0, damage_force - L.legacy_mob_armor(target_zone, "melee") + 10)
 
-	if(hit_zone == "head" && istype(target, /mob/living/carbon/))
-		user.visible_message("<span class='danger'>\The [user] smashes [src] over [target]'s head!</span>")
+	if(target_zone == "head" && istype(L, /mob/living/carbon/))
+		user.visible_message("<span class='danger'>\The [user] smashes [src] over [L]'s head!</span>")
 		if(weaken_duration)
-			target.apply_effect(min(weaken_duration, 5), WEAKEN, blocked) // Never weaken more than a flash!
+			L.apply_effect(min(weaken_duration, 5), WEAKEN, blocked) // Never weaken more than a flash!
 	else
-		user.visible_message("<span class='danger'>\The [user] smashes [src] into [target]!</span>")
+		user.visible_message("<span class='danger'>\The [user] smashes [src] into [L]!</span>")
 
-	//The reagents in the bottle splash all over the target, thanks for the idea Nodrak
+	//The reagents in the bottle splash all over the L, thanks for the idea Nodrak
 	if(reagents)
-		user.visible_message("<span class='notice'>The contents of \the [src] splash all over [target]!</span>")
-		reagents.splash(target, reagents.total_volume)
+		user.visible_message("<span class='notice'>The contents of \the [src] splash all over [L]!</span>")
+		reagents.splash(L, reagents.total_volume)
 
 	//Finally, smash the bottle. This kills (qdel) the bottle.
-	var/obj/item/broken_bottle/B = smash(target.loc, target)
+	var/obj/item/broken_bottle/B = smash(L.loc, L)
 	user.put_in_active_hand(B)
 
 //Keeping this here for now, I'll ask if I should keep it here.
 /obj/item/broken_bottle
-	name = "Broken Bottle"
+	name = "broken bottle"
 	desc = "A bottle with a sharp broken bottom."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "broken_bottle"
-	force = 10
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	damage_force = 10
 	throw_force = 5
 	throw_speed = 3
 	throw_range = 5
 	item_state = "beer"
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	attack_verb = list("stabbed", "slashed", "attacked")
 	sharp = 1
 	edge = 0
 	var/icon/broken_outline = icon('icons/obj/drinks.dmi', "broken")
-
-/obj/item/broken_bottle/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 50, 1, -1)
-	return ..()
 
 /obj/item/reagent_containers/food/drinks/bottle/gin
 	name = "Griffeater Gin"
@@ -576,7 +576,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/small
 	volume = 50
 	smash_duration = 1
-	flags = 0 //starts closed
+	atom_flags = NONE //starts closed
 	rag_underlay = "rag_small"
 
 /obj/item/reagent_containers/food/drinks/bottle/small/beer
@@ -770,7 +770,7 @@
 	desc = "Hrukhza Leaf, a vital component of any Moghes drinks."
 	icon_state = "hrukhzaextract"
 	item_state = "carton"
-	center_of_mass = "x=16;y=8"
+	center_of_mass = list("x"=16, "y"=8)
 	isGlass = FALSE
 
 /obj/item/reagent_containers/food/drinks/bottle/unathijuice/Initialize()

@@ -189,27 +189,27 @@ var/global/list/datum/gene/dna_genes[0]
 	// FIXME:  Species-specific defaults pls
 	if(!character.h_style)
 		character.h_style = "Skinhead"
-	var/hair = hair_styles_list.Find(character.h_style)
+	var/hair = GLOB.legacy_hair_lookup.Find(character.h_style)
 
 	//! Facial Hair
 	if(!character.f_style)
 		character.f_style = "Shaved"
-	var/beard	= facial_hair_styles_list.Find(character.f_style)
+	var/beard	= GLOB.legacy_facial_hair_lookup.Find(character.f_style)
 
 	//! Demi Ears
 	var/ear_style = 0
 	if(character.ear_style)
-		ear_style = ear_styles_list.Find(character.ear_style.type)
+		ear_style = GLOB.legacy_ears_lookup.Find(character.ear_style.type)
 
 	//! Demi Tails
 	var/tail_style = 0
 	if(character.tail_style)
-		tail_style = tail_styles_list.Find(character.tail_style.type)
+		tail_style = GLOB.legacy_tail_lookup.Find(character.tail_style.type)
 
 	//! Demi Wings
 	var/wing_style = 0
 	if(character.wing_style)
-		wing_style = wing_styles_list.Find(character.wing_style.type)
+		wing_style = GLOB.legacy_wing_lookup.Find(character.wing_style.type)
 
 	//! Playerscale (This assumes list is sorted big->small)
 	var/size_multiplier = player_sizes_list.len // If fail to find, take smallest
@@ -221,6 +221,7 @@ var/global/list/datum/gene/dna_genes[0]
 	// Technically custom_species is not part of the UI, but this place avoids merge problems.
 	src.custom_species = character.custom_species
 	src.base_species = character.species.base_species
+	src.species = character.species.name
 	src.blood_color = character.species.blood_color
 	src.species_traits = character.species.traits.Copy()
 
@@ -231,10 +232,10 @@ var/global/list/datum/gene/dna_genes[0]
 
 	// +1 to account for the none-of-the-above possibility
 
-	SetUIValueRange(DNA_UI_EAR_STYLE,      ear_style + 1,  ear_styles_list.len  + 1,  1)
-	SetUIValueRange(DNA_UI_TAIL_STYLE,    tail_style + 1,  tail_styles_list.len + 1,  1)
+	SetUIValueRange(DNA_UI_EAR_STYLE,      ear_style + 1,  GLOB.legacy_ears_lookup.len  + 1,  1)
+	SetUIValueRange(DNA_UI_TAIL_STYLE,    tail_style + 1,  GLOB.legacy_tail_lookup.len + 1,  1)
 	SetUIValueRange(DNA_UI_PLAYERSCALE,  size_multiplier,     player_sizes_list.len,  1)
-	SetUIValueRange(DNA_UI_WING_STYLE,    wing_style + 1,  wing_styles_list.len + 1,  1)
+	SetUIValueRange(DNA_UI_WING_STYLE,    wing_style + 1,  GLOB.legacy_wing_lookup.len + 1,  1)
 
 	//              DNA BLOCK            VALUE                MAX   MIN
 	SetUIValueRange(DNA_UI_TAIL_R,       character.r_tail,    255,    1)
@@ -293,11 +294,11 @@ var/global/list/datum/gene/dna_genes[0]
 
 	SetUIState(DNA_UI_GENDER,      character.gender!=MALE,        1)
 
-	SetUIValueRange(DNA_UI_HAIR_STYLE,  hair,  hair_styles_list.len,       1)
-	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, facial_hair_styles_list.len,1)
+	SetUIValueRange(DNA_UI_HAIR_STYLE,  hair,  GLOB.legacy_hair_lookup.len,       1)
+	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, GLOB.legacy_facial_hair_lookup.len,1)
 
 	body_markings.Cut()
-	//s_base = character.s_base //doesn't work, fuck me
+	
 	for(var/obj/item/organ/external/E in character.organs)
 		E.s_base = s_base
 		if(E.markings.len)

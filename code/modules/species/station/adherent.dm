@@ -1,7 +1,8 @@
 /datum/species/adherent
+	uid = SPECIES_ID_ADHERENT
+	id = SPECIES_ID_ADHERENT
 	name = SPECIES_ADHERENT
 	name_plural = "Adherents"
-	uid = SPECIES_ID_ADHERENT
 	default_bodytype = BODYTYPE_ADHERENT
 
 	blurb = "The Vigil is a relatively loose association of machine-servitors, Adherents, \
@@ -27,15 +28,26 @@
 	blood_mask      = 'icons/mob/species/adherent/blood_mask.dmi'
 
 	siemens_coefficient  = 0
-	rarity_value         = 6
+	//rarity_value         = 6
 	min_age              = 10000
 	max_age              = 12000
 	// antaghud_offset_y    = 14
-	warning_low_pressure = 50
-	hazard_low_pressure  = -1
 	mob_size             = MOB_LARGE
 	// strength             = STR_HIGH
 	has_glowing_eyes     = TRUE
+
+	warning_low_pressure = 50
+	hazard_low_pressure  = -1
+	hazard_high_pressure = INFINITY
+	radiation_mod		 = 0
+	toxins_mod			 = 0
+	breath_type 		 = null
+	poison_type 		 = null
+	brute_mod			 =	2
+	burn_mod 			 =	0.1
+	total_health 		 = 75
+
+	hunger_factor 		 = 0.04
 
 	speech_sounds = list('sound/voice/chime.ogg')
 	speech_chance = 25
@@ -48,8 +60,8 @@
 	heat_level_2 = 1000
 	heat_level_3 = 2000
 
-	species_flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
-	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_NO_FBP_CONSTRUCT | SPECIES_SPAWN_NO_FBP_SETUP | SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELIST_SELECTABLE
+	species_flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN | NO_POISON | NO_IGNITE
+	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_NO_FBP_CONSTRUCT | SPECIES_SPAWN_NO_FBP_SETUP | SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_EYE_COLOR | HAS_BASE_SKIN_COLOR
 
 	intrinsic_languages = LANGUAGE_ID_ADHERENT
@@ -107,17 +119,20 @@
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/snake
 
 	base_skin_colours = list(
-		"Turquoise"   = "", // First so it's default.
-		"Amethyst"    = "_purple",
-		"Emerald"     = "_green",
-		"Jet"         = "_black",
-		"Quartz"      = "_white",
-		"Ruby"        = "_red",
-		"Sapphire"    = "_blue",
-		"Topaz"       = "_yellow",
+		"Turquoise"   = null, // First so it's default.
+		"Amethyst"    = "purple",
+		"Emerald"     = "green",
+		"Jet"         = "black",
+		"Quartz"      = "white",
+		"Ruby"        = "red",
+		"Sapphire"    = "blue",
+		"Topaz"       = "yellow",
 	)
 
 	wikilink = "N/A"
+
+/datum/species/adherent/equip_survival_gear(mob/living/carbon/human/H, extendedtank = FALSE, comprehensive = FALSE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/crystal, /datum/inventory_slot_meta/abstract/put_in_backpack)
 
 /datum/species/adherent/New()
 	/*equip_adjust = list(

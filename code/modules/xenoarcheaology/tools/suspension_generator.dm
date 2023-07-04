@@ -4,7 +4,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "suspension2"
 	density = 1
-	req_access = list(access_research)
+	req_access = list(ACCESS_SCIENCE_MAIN)
 	var/obj/item/cell/cell
 	var/locked = TRUE
 	var/power_use = 5
@@ -21,7 +21,7 @@
 			var/turf/T = get_turf(suspension_field)
 			for(var/mob/living/M in T)
 				if(cell.use(power_use))
-					M.Weaken(3)
+					M.afflict_paralyze(20 * 3)
 					if(prob(5))
 						to_chat(M, SPAN_WARNING("[pick("You feel tingly","You feel like floating","It is hard to speak","You can barely move")]."))
 				else
@@ -30,12 +30,12 @@
 			for(var/obj/item/I in T)
 				if(!suspension_field.contents.len)
 					suspension_field.icon_state = "energynet"
-					suspension_field.overlays += "shield2"
+					suspension_field.add_overlay("shield2")
 				I.forceMove(suspension_field)
 		else
 			deactivate()
 
-/obj/machinery/suspension_gen/attack_hand(var/mob/user)
+/obj/machinery/suspension_gen/attack_hand(mob/user, list/params)
 	if(panel_open)
 		if(cell)
 			to_chat(user, SPAN_NOTICE("You remove [cell]."))
@@ -67,7 +67,7 @@
 
 	return data
 
-/obj/machinery/suspension_gen/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/suspension_gen/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -138,7 +138,7 @@
 	var/collected = 0
 
 	for(var/mob/living/M in T)
-		M.Weaken(5)
+		M.afflict_paralyze(20 * 5)
 		M.visible_message(SPAN_NOTICE("[icon2html(thing = src, target = world)] [M] begins to float in the air!"),"You feel tingly and light, but it is difficult to move.")
 
 	suspension_field = new(T)
@@ -151,7 +151,7 @@
 
 	if(collected)
 		suspension_field.icon_state = "energynet"
-		suspension_field.overlays += "shield2"
+		suspension_field.add_overlay("shield2")
 		visible_message(SPAN_NOTICE("[icon2html(thing = suspension_field, target = world)] [suspension_field] gently absconds [collected > 1 ? "something" : "several things"]."))
 	else
 		if(istype(T,/turf/simulated/mineral) || istype(T,/turf/simulated/wall))
@@ -165,7 +165,7 @@
 
 	for(var/mob/living/M in T)
 		to_chat(M, SPAN_INFO("You no longer feel like floating."))
-		M.Weaken(3)
+		M.afflict_paralyze(20 * 3)
 
 	visible_message(SPAN_NOTICE("[icon2html(thing = src, target = world)] [src] deactivates with a gentle shudder."))
 	qdel(suspension_field)

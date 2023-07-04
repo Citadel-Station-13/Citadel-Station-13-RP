@@ -54,14 +54,14 @@
 		create_objects_in_loc(src, starts_with)
 		starts_with = null
 	for(var/obj/I in src.loc)
-		if(I.density || I.anchored || I == src || (I.flags & ATOM_ABSTRACT))
+		if(I.density || I.anchored || I == src || (I.atom_flags & ATOM_ABSTRACT))
 			continue
 		I.forceMove(src)
 	update_icon()
 
 */
 
-/obj/structure/largecrate/attack_hand(mob/user as mob)
+/obj/structure/largecrate/attack_hand(mob/user, list/params)
 	to_chat(user, "<span class='notice'>You need a crowbar to pry this open!</span>")
 	return
 
@@ -73,7 +73,7 @@
 		new /obj/item/stack/material/wood(src)
 
 		for(var/atom/movable/AM in contents)
-			if(!(AM.flags & ATOM_ABSTRACT))
+			if(!(AM.atom_flags & ATOM_ABSTRACT))
 				AM.forceMove(T)
 
 		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
@@ -146,6 +146,10 @@
 	name = "goat crate"
 	starts_with = list(/mob/living/simple_mob/animal/goat)
 
+/obj/structure/largecrate/animal/horse
+	name = "horse crate"
+	starts_with = list(/mob/living/simple_mob/horse)
+
 /obj/structure/largecrate/animal/cat
 	name = "cat carrier"
 	starts_with = list(/mob/living/simple_mob/animal/passive/cat)
@@ -196,7 +200,7 @@
 		new /mob/living/simple_mob/animal/passive/bird/parrot/pink_cockatoo(src)
 		var/turf/T = get_turf(src)
 		for(var/atom/movable/AM in contents)
-			if(!(AM.flags & ATOM_ABSTRACT))
+			if(!(AM.atom_flags & ATOM_ABSTRACT))
 				AM.forceMove(T)
 		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
 							 "<span class='notice'>You pry open \the [src].</span>", \
@@ -213,7 +217,6 @@
 /obj/structure/largecrate/animal/pred/Initialize(mapload) //This is nessesary to get a random one each time.
 	starts_with = list(pick(/mob/living/simple_mob/vore/bee,
 						/mob/living/simple_mob/vore/aggressive/frog,
-						/mob/living/simple_mob/vore/horse,
 						/mob/living/simple_mob/vore/aggressive/panther,
 						/mob/living/simple_mob/vore/aggressive/giant_snake,
 						/mob/living/simple_mob/animal/wolf,

@@ -11,7 +11,7 @@
 	var/skip_act = FALSE
 	var/tgui_subtemplate = "ShuttleControlConsoleDefault"
 
-/obj/machinery/computer/shuttle_control/attack_hand(user as mob)
+/obj/machinery/computer/shuttle_control/attack_hand(mob/user, list/params)
 	if(..(user))
 		return
 	if(!allowed(user))
@@ -136,7 +136,7 @@
 		to_chat(user, "You short out the console's ID checking system. It's now available to everyone!")
 		return 1
 
-/obj/machinery/computer/shuttle_control/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/computer/shuttle_control/bullet_act(var/obj/projectile/Proj)
 	visible_message("\The [Proj] ricochets off \the [src]!")
 
 /obj/machinery/computer/shuttle_control/legacy_ex_act()
@@ -160,8 +160,8 @@ GLOBAL_LIST_BOILERPLATE(papers_dockingcode, /obj/item/paper/dockingcodes)
 /obj/item/paper/dockingcodes/proc/populate_info()
 	var/dockingcodes = null
 	var/z_to_check = codes_from_z ? codes_from_z : z
-	if(GLOB.using_map.use_overmap)
-		var/obj/effect/overmap/visitable/location = get_overmap_sector(z_to_check)
+	if((LEGACY_MAP_DATUM).use_overmap)
+		var/obj/overmap/entity/visitable/location = get_overmap_sector(z_to_check)
 		if(location && location.docking_codes)
 			dockingcodes = location.docking_codes
 

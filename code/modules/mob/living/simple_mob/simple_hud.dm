@@ -82,7 +82,7 @@
 	using.icon = ico
 	using.screen_loc = ui_acti
 	using.alpha = ui_alpha
-	using.layer = LAYER_HUD_ITEM //These sit on the intent box
+	using.layer = HUD_LAYER_ITEM //These sit on the intent box
 	hud.adding += using
 	hud.help_intent = using
 
@@ -94,7 +94,7 @@
 	using.icon = ico
 	using.screen_loc = ui_acti
 	using.alpha = ui_alpha
-	using.layer = LAYER_HUD_ITEM
+	using.layer = HUD_LAYER_ITEM
 	hud.adding += using
 	hud.disarm_intent = using
 
@@ -106,7 +106,7 @@
 	using.icon = ico
 	using.screen_loc = ui_acti
 	using.alpha = ui_alpha
-	using.layer = LAYER_HUD_ITEM
+	using.layer = HUD_LAYER_ITEM
 	hud.adding += using
 	hud.grab_intent = using
 
@@ -118,7 +118,7 @@
 	using.icon = ico
 	using.screen_loc = ui_acti
 	using.alpha = ui_alpha
-	using.layer = LAYER_HUD_ITEM
+	using.layer = HUD_LAYER_ITEM
 	hud.adding += using
 	hud.hurt_intent = using
 
@@ -214,8 +214,8 @@
 	zone_sel.icon = ui_style
 	zone_sel.color = ui_color
 	zone_sel.alpha = ui_alpha
-	zone_sel.overlays.Cut()
-	zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[zone_sel.selecting]")
+	zone_sel.cut_overlays()
+	zone_sel.add_overlay(image('icons/mob/zone_sel.dmi', "[zone_sel.selecting]"))
 	hud_elements |= zone_sel
 
 	//Hand things

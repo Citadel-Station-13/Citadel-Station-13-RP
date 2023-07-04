@@ -31,7 +31,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 	contents = list(
 		/obj/item/clothing/gloves/arm_guard/laserproof,
 		/obj/item/clothing/shoes/leg_guard/laserproof,
-		/obj/item/clothing/head/helmet/laserproof,
+		/obj/item/clothing/head/helmet/ablative,
 		/obj/item/clothing/suit/armor/laserproof,
 		/obj/item/clothing/glasses/sunglasses/sechud/tactical,
 		/obj/item/storage/belt/security/tactical/bandolier,
@@ -50,7 +50,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 /datum/supply_drop_loot/ballistics/New()
 	..()
 	contents = list(
-		/obj/item/clothing/head/helmet/bulletproof,
+		/obj/item/clothing/head/helmet/ballistic,
 		/obj/item/clothing/suit/armor/bulletproof,
 		/obj/item/clothing/gloves/arm_guard/bulletproof,
 		/obj/item/clothing/shoes/leg_guard/bulletproof,
@@ -61,10 +61,10 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/shield/riot/tele,
 		/obj/item/storage/box/emps,
 		/obj/item/storage/box/flashbangs,
-		/obj/item/gun/projectile/automatic/sts35,
+		/obj/item/gun/ballistic/automatic/sts35,
 		/obj/item/ammo_magazine/m762/ap,
 		/obj/item/ammo_magazine/m762/ap,
-		/obj/item/gun/projectile/colt,
+		/obj/item/gun/ballistic/colt,
 		/obj/item/ammo_magazine/m45,
 		/obj/item/material/knife/tacknife/combatknife)
 
@@ -82,7 +82,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/storage/belt/security/tactical/bandolier,
 		/obj/item/clothing/accessory/storage/black_drop_pouches,
 		/obj/item/storage/backpack/dufflebag/sec,
-		/obj/item/gun/projectile/automatic/bullpup,
+		/obj/item/gun/ballistic/automatic/bullpup,
 		/obj/item/ammo_magazine/m762/ap,
 		/obj/item/ammo_magazine/m762,
 		/obj/item/shield/energy,
@@ -115,7 +115,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/storage/belt/security,
 		/obj/item/clothing/shoes/boots/jackboots,
 		/obj/item/clothing/gloves/black,
-		/obj/item/gun/projectile/shotgun/pump,
+		/obj/item/gun/ballistic/shotgun/pump,
 		/obj/item/gun/energy/gun,
 		/obj/item/clothing/accessory/holster,
 		/obj/item/gun/launcher/grenade,

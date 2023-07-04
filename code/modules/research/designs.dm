@@ -34,8 +34,9 @@ other types of metals and chemistry for reagents).
 
 ///Datum for object designs, used in construction
 /datum/design
-	/// abstract type
-	var/abstract_type = /datum/design
+	/// Abstract type.
+	abstract_type = /datum/design
+
 	///Name of the created object. If null it will be 'guessed' from build_path if possible.
 	var/name = null
 	///Description of the created object. If null it will use group_desc and name where applicable.

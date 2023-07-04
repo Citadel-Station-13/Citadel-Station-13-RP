@@ -50,7 +50,7 @@
 
 	return 1
 
-/datum/chemical_reaction/distilling/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/distilling/on_reaction(datum/reagents/holder, created_volume)
 	if(istype(holder.my_atom, /obj/item/reagent_containers/glass/distilling))
 		var/obj/item/reagent_containers/glass/distilling/D = holder.my_atom
 		var/obj/machinery/portable_atmospherics/powered/reagent_distillery/RD = D.Master
@@ -118,7 +118,7 @@
 	temp_range = list(T0C + 600, T0C + 700)
 	temp_shift = 4
 
-/datum/chemical_reaction/distilling/berserkjuice/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/distilling/berserkjuice/on_reaction(datum/reagents/holder, created_volume)
 	..()
 
 	if(prob(1))
@@ -137,7 +137,7 @@
 	temp_range = list(0, 15)
 	temp_shift = 20
 
-/datum/chemical_reaction/distilling/cryogel/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/distilling/cryogel/on_reaction(datum/reagents/holder, created_volume)
 	..()
 
 	if(prob(1))

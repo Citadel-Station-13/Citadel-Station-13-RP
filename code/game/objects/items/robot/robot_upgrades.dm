@@ -39,7 +39,10 @@
 	item_state = "cyborg_upgrade"
 	var/heldname = "default name"
 
-/obj/item/borg/upgrade/rename/attack_self(mob/user as mob)
+/obj/item/borg/upgrade/rename/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	heldname = sanitizeSafe(input(user, "Enter new robot name", "Robot Reclassification", heldname), MAX_NAME_LEN)
 
 /obj/item/borg/upgrade/rename/action(var/mob/living/silicon/robot/R)
@@ -87,10 +90,10 @@
 	if(..())
 		return FALSE
 
-	if(R.speed == -1)
+	if(R.speed <= -0.5)
 		return FALSE
 
-	R.speed--
+	R.speed = -0.5
 	return TRUE
 
 
@@ -181,7 +184,7 @@
 		to_chat(usr, "There's no mounting point for the module!")
 		return FALSE
 
-/obj/item/borg/upgrade/syndicate/
+/obj/item/borg/upgrade/syndicate
 	name = "scrambled equipment module"
 	desc = "Unlocks new and often deadly module specific items of a robot"
 	icon_state = "cyborg_upgrade3"
@@ -199,8 +202,8 @@
 	return TRUE
 
 /obj/item/borg/upgrade/language
-	name = "language module"
-	desc = "Used to let cyborgs other than clerical or service speak a variety of languages."
+	name = "adaptive translation module"
+	desc = "Upgrades a cyborg's language processing unit with an adaptive translation module."
 	icon_state = "cyborg_upgrade3"
 	item_state = "cyborg_upgrade"
 
@@ -208,31 +211,11 @@
 	if(..())
 		return FALSE
 
-	R.add_language(LANGUAGE_SOL_COMMON, 1)
-	R.add_language(LANGUAGE_TRADEBAND, 1)
-	R.add_language(LANGUAGE_UNATHI, 1)
-	R.add_language(LANGUAGE_SIIK, 1)
-	R.add_language(LANGUAGE_AKHANI, 1)
-	R.add_language(LANGUAGE_SKRELLIAN, 1)
-	R.add_language(LANGUAGE_SKRELLIANFAR, 0)
-	R.add_language(LANGUAGE_GUTTER, 1)
-	R.add_language(LANGUAGE_SCHECHI, 1)
-	R.add_language(LANGUAGE_ROOTLOCAL, 1)
-	R.add_language(LANGUAGE_TERMINUS, 1)
-	R.add_language(LANGUAGE_ZADDAT, 1)
-	R.add_language(LANGUAGE_AKULA, 1)
-	R.add_language(LANGUAGE_ADHERENT, 1)               //Cephalopod Activity language, Omni Translators have it so borgs should too
-	R.add_language(LANGUAGE_BIRDSONG, 1)			   //Languages moved from robot/upgrades_vr - Papalus
-	R.add_language(LANGUAGE_SAGARU,	1)
-	R.add_language(LANGUAGE_CANILUNZT, 1)
-	R.add_language(LANGUAGE_DAEMON,	1)
-	R.add_language(LANGUAGE_ENOCHIAN, 1)
-	R.add_language(LANGUAGE_SLAVIC, 1)
-	R.add_language(LANGUAGE_SQUEAKISH, 1)
+	R.create_translation_context(/datum/translation_context/variable/learning/silicons)
 
 	return TRUE
-//Robot resizing module, moved from robot/upgrades_vr - Papalus
 
+//Robot resizing module, moved from robot/upgrades_vr - Papalus
 /obj/item/borg/upgrade/sizeshift
 	name = "robot size alteration module"
 	desc = "Using technology similar to one used in sizeguns, allows cyborgs to adjust their own size as neccesary."
@@ -246,5 +229,5 @@
 	if(/mob/living/proc/set_size in R.verbs)
 		return FALSE
 
-	R.verbs += /mob/living/proc/set_size
+	add_verb(R, /mob/living/proc/set_size)
 	return TRUE

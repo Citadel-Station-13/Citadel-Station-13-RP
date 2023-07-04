@@ -1,7 +1,8 @@
 /datum/species/rapala
+	uid = SPECIES_ID_RAPALA
+	id = SPECIES_ID_RAPALA
 	name = SPECIES_RAPALA
 	name_plural = "Rapalans"
-	uid = SPECIES_ID_RAPALA
 
 	icobase      = 'icons/mob/species/rapala/body.dmi'
 	deform       = 'icons/mob/species/rapala/deformed_body.dmi'
@@ -32,7 +33,7 @@
 	// wikilink = ""
 	catalogue_data = list(/datum/category_item/catalogue/fauna/rapala)
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	heat_discomfort_strings = list(
@@ -49,7 +50,8 @@
 	)
 
 	inherent_verbs = list(
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
+	)
+	abilities = list(
+		/datum/ability/species/toggle_flight
 	)

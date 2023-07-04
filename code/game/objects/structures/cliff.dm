@@ -161,14 +161,14 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		return FALSE
 
 	var/turf/T = get_turf(L)
-	if(T && get_dir(T, loc) & GLOB.reverse_dir[dir]) // dir points 'up' the cliff, e.g. cliff pointing NORTH will cause someone to fall if moving SOUTH into it.
+	if(T && get_dir(T, loc) & global.reverse_dir[dir]) // dir points 'up' the cliff, e.g. cliff pointing NORTH will cause someone to fall if moving SOUTH into it.
 		return TRUE
 	return FALSE
 
 /obj/structure/cliff/proc/fall_off_cliff(mob/living/L)
 	if(!istype(L))
 		return FALSE
-	var/turf/T = get_step(src, GLOB.reverse_dir[dir])
+	var/turf/T = get_step(src, global.reverse_dir[dir])
 	var/displaced = FALSE
 
 	if(dir in list(EAST, WEST)) // Apply an offset if flying sideways, to help maintain the illusion of depth.
@@ -192,7 +192,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 			harm /= 2
 
 		playsound(L, 'sound/effects/break_stone.ogg', 70, 1)
-		L.Weaken(5 * harm)
+		L.afflict_paralyze(20 * 5 * harm)
 		var/fall_time = 3
 		if(displaced) // Make the fall look more natural when falling sideways.
 			L.pixel_z = 32 * 2

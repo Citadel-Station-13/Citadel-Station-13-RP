@@ -56,14 +56,14 @@
 		topple()
 	..()
 
-/obj/structure/barricade/cutout/attack_hand(mob/user)
+/obj/structure/barricade/cutout/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 
 	if(toppled)
 		untopple()
 
-/obj/structure/barricade/cutout/examine(mob/user)
+/obj/structure/barricade/cutout/examine(mob/user, dist)
 	. = ..()
 
 	if(Adjacent(user))

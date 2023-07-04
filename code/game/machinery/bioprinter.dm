@@ -61,10 +61,6 @@
 		"Adrenal Valve Cluster" = list(/obj/item/organ/internal/heart/replicant/rage, 80)
 		)
 
-/obj/machinery/organ_printer/Initialize(mapload, newdir)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/organ_printer/update_icon_state()
 	. = ..()
 	if(machine_stat & NOPOWER)
@@ -92,7 +88,7 @@
 		return
 	return ..()
 
-/obj/machinery/organ_printer/examine(mob/user)
+/obj/machinery/organ_printer/examine(mob/user, dist)
 	. = ..()
 	var/biomass = get_biomass_volume()
 	if(biomass)
@@ -129,7 +125,7 @@
 
 	. = ..()
 
-/obj/machinery/organ_printer/attack_hand(mob/user)
+/obj/machinery/organ_printer/attack_hand(mob/user, list/params)
 
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
@@ -241,7 +237,7 @@
 
 	if(malfunctioning && prob(30)) // Alien Tech is a hell of a drug.
 		malfunctioned = TRUE
-		var/possible_species = list(SPECIES_HUMAN, SPECIES_VOX, SPECIES_SKRELL, SPECIES_ZADDAT, SPECIES_UNATHI, SPECIES_GOLEM, SPECIES_SHADOW)
+		var/possible_species = list(SPECIES_HUMAN, SPECIES_VOX, SPECIES_SKRELL, SPECIES_ZADDAT, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_GOLEM, SPECIES_SHADOW)
 		var/new_species = pick(possible_species)
 		var/datum/species/S = SScharacters.resolve_species_name(new_species)
 		if(!S)

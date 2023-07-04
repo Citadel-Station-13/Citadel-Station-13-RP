@@ -16,7 +16,7 @@
 /datum/controller/subsystem/job/proc/AssignRole(mob/new_player/player, rank, latejoin = 0)
 	job_debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 	if(player && player.mind && rank)
-		var/datum/job/job = get_job(rank)
+		var/datum/role/job/job = get_job(rank)
 		var/reasons = job.check_client_availability_one(player.client)
 		if(reasons != ROLE_AVAILABLE)
 			job_debug("AR failed: player [player], rank [rank], latejoin [latejoin], failed for [reasons]")
@@ -34,13 +34,13 @@
 
 /// Making additional slot on the fly.
 /datum/controller/subsystem/job/proc/FreeRole(rank)
-	var/datum/job/job = get_job(rank)
+	var/datum/role/job/job = get_job(rank)
 	if(job && job.total_positions != -1)
 		job.total_positions++
 		return 1
 	return 0
 
-/datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level)
+/datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/role/job/job, level)
 	job_debug("Running FOC, Job: [job], Level: [level]")
 	var/list/candidates = list()
 	for(var/mob/new_player/player in divide_unassigned)
@@ -56,7 +56,7 @@
 
 /datum/controller/subsystem/job/proc/GiveRandomJob(mob/new_player/player)
 	job_debug("GRJ Giving random job, Player: [player]")
-	for(var/datum/job/job in shuffle(occupations))
+	for(var/datum/role/job/job in shuffle(occupations))
 		var/reasons = job.check_client_availability_one(player.client)
 		if(reasons != ROLE_AVAILABLE)
 			job_debug("GRJ failed for [reasons] on [job.id]")
@@ -75,7 +75,7 @@
 /datum/controller/subsystem/job/proc/FillHeadPosition()
 	for(var/level in JOB_PRIORITY_HIGH to JOB_PRIORITY_LOW step -1)
 		for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
-			var/datum/job/job = get_job(command_position)
+			var/datum/role/job/job = get_job(command_position)
 			if(!job)
 				continue
 			var/list/candidates = FindOccupationCandidates(job, level)
@@ -88,25 +88,29 @@
 				// Log-out during round-start? What a bad boy, no head position for you!
 				if(!V.client)
 					continue
-				var/age = V.client.prefs.age
 
-				if(age < job.minimum_character_age) // Nope.
+				var/age = V.client.prefs.age
+				var/min_job_age = job.minimum_character_age
+				var/ideal_job_age = job.ideal_character_age
+
+				if(age < min_job_age) // Nope.
 					continue
 
-				switch(age)
-					if(job.minimum_character_age to (job.minimum_character_age+10))
-						weightedCandidates[V] = 3 // Still a bit young.
-					if((job.minimum_character_age+10) to (job.ideal_character_age-10))
-						weightedCandidates[V] = 6 // Better.
-					if((job.ideal_character_age-10) to (job.ideal_character_age+10))
-						weightedCandidates[V] = 10 // Great.
-					if((job.ideal_character_age+10) to (job.ideal_character_age+20))
-						weightedCandidates[V] = 6 // Still good.
-					if((job.ideal_character_age+20) to INFINITY)
-						weightedCandidates[V] = 3 // Geezer.
-					else
-						// If there's ABSOLUTELY NOBODY ELSE
-						if(candidates.len == 1) weightedCandidates[V] = 1
+				// This used to be a switch, but non-static values are not allowed in switch cases circa 515. @Zandario
+				if((age >= min_job_age) && (age <= min_job_age+10))
+					weightedCandidates[V] = 3 // Still a bit young.
+				else if((age >= min_job_age+10) && (age <= ideal_job_age-10))
+					weightedCandidates[V] = 6 // Better.
+				else if((age >= ideal_job_age-10) && (age <= ideal_job_age+10))
+					weightedCandidates[V] = 10 // Great.
+				else if((age >= ideal_job_age+10) && (age <= ideal_job_age+20))
+					weightedCandidates[V] = 6 // Still good.
+				else if((age >= ideal_job_age+20) && (age <= INFINITY))
+					weightedCandidates[V] = 3 // Geezer.
+				else
+					// If there's ABSOLUTELY NOBODY ELSE
+					if(candidates.len == 1)
+						weightedCandidates[V] = 1
 
 
 			var/mob/new_player/candidate = pickweight(weightedCandidates)
@@ -121,8 +125,8 @@
  */
 /datum/controller/subsystem/job/proc/CheckHeadPositions(level)
 	for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
-		var/datum/job/job = get_job(command_position)
-		if(!job)
+		var/datum/role/job/job = get_job(command_position)
+		if(!job || (job.current_positions >= job.spawn_positions))
 			continue
 		var/list/candidates = FindOccupationCandidates(job, level)
 		if(!candidates.len)
@@ -145,7 +149,7 @@
 
 	//Holder for Triumvirate is stored in the SSticker, this just processes it
 	if(SSticker && SSticker.triai)
-		for(var/datum/job/A in occupations)
+		for(var/datum/role/job/A in occupations)
 			if(A.title == "AI")
 				A.spawn_positions = 3
 				break
@@ -162,7 +166,7 @@
 
 	//People who wants to be assistants, sure, go on.
 	job_debug("DO, Running Assistant Check 1")
-	var/datum/job/assist = new DEFAULT_JOB_TYPE ()
+	var/datum/role/job/assist = new DEFAULT_JOB_TYPE ()
 	var/list/assistant_candidates = FindOccupationCandidates(assist, JOB_PRIORITY_HIGH)
 	job_debug("AC1, Candidates: [assistant_candidates.len]")
 	for(var/mob/new_player/player in assistant_candidates)
@@ -195,7 +199,7 @@
 		for(var/mob/new_player/player in divide_unassigned)
 
 			// Loop through all jobs
-			for(var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
+			for(var/datum/role/job/job in shuffledoccupations) // SHUFFLE ME BABY
 				if(job.title in SSticker.mode.disabled_jobs)
 					continue
 				var/reasons = job.check_client_availability_one(player.client)
@@ -232,6 +236,7 @@
 		if(divide_overflows[player] == JOB_ALTERNATIVE_RETURN_LOBBY)
 			player.ready = 0
 			INVOKE_ASYNC(player, /mob/new_player/proc/new_player_panel_proc)
+			to_chat(player, SPAN_WARNING("You have been returned to the lobby, as you do not qualify for any selected role(s)."))
 			divide_unassigned -= player
 	dispose_unassigned()
 	return 1
@@ -240,7 +245,7 @@
 	if(!H)
 		return null
 
-	var/datum/job/job = get_job(rank)
+	var/datum/role/job/job = get_job(rank)
 	var/list/spawn_in_storage = list()
 	var/real_species_name = H.species.name
 
@@ -404,7 +409,6 @@
 			var/wheelchair_type = R?.unfolded_type || /obj/structure/bed/chair/wheelchair
 			var/obj/structure/bed/chair/wheelchair/W = new wheelchair_type(H.loc)
 			W.buckle_mob(H)
-			H.update_canmove()
 			W.setDir(H.dir)
 			W.add_fingerprint(H)
 			if(R)
@@ -425,8 +429,8 @@
 	// EMAIL GENERATION
 	// Email addresses will be created under this domain name. Mostly for the looks.
 	var/domain = "freemail.nt"
-	if(GLOB.using_map && LAZYLEN(GLOB.using_map.usable_email_tlds))
-		domain = GLOB.using_map.usable_email_tlds[1]
+	if((LEGACY_MAP_DATUM) && LAZYLEN((LEGACY_MAP_DATUM).usable_email_tlds))
+		domain = (LEGACY_MAP_DATUM).usable_email_tlds[1]
 	var/sanitized_name = sanitize(replacetext(replacetext(lowertext(H.real_name), " ", "."), "'", ""))
 	var/complete_login = "[sanitized_name]@[domain]"
 
@@ -457,6 +461,7 @@
 	H.update_hud_sec_job()
 	H.update_hud_sec_implants()
 	H.update_hud_antag()
+	H.reset_perspective(no_optimizations = TRUE)
 	return H
 
 /datum/controller/subsystem/job/proc/LoadJobs(jobsfile) //ran during round setup, reads info from jobs.txt -- Urist
@@ -484,7 +489,7 @@
 			continue
 
 		if(name && value)
-			var/datum/job/J = get_job(name)
+			var/datum/role/job/J = get_job(name)
 			if(!J)	continue
 			J.total_positions = text2num(value)
 			J.spawn_positions = text2num(value)
@@ -495,7 +500,7 @@
 
 
 /datum/controller/subsystem/job/proc/HandleFeedbackGathering()
-	for(var/datum/job/job in occupations)
+	for(var/datum/role/job/job in occupations)
 		var/tmp_str = "|[job.title]|"
 
 		var/level1 = 0 //high
@@ -530,14 +535,14 @@
 
 	var/fail_deadly = FALSE
 
-	var/datum/job/J = SSjob.get_job(rank)
+	var/datum/role/job/J = SSjob.get_job(rank)
 	fail_deadly = J?.offmap_spawn
 	var/preferred_method
 	var/datum/spawnpoint/spawnpos
 
 	//Spawn them at their preferred one
 	if(C && C.prefs.spawnpoint)
-		if(!(C.prefs.spawnpoint in GLOB.using_map.allowed_spawns))
+		if(!(C.prefs.spawnpoint in (LEGACY_MAP_DATUM).allowed_spawns))
 			if(fail_deadly)
 				to_chat(C, SPAN_WARNING("Your chosen spawnpoint is unavailable for this map and your job requires a specific spawnpoint.  Please correct your spawn point choice."))
 				return

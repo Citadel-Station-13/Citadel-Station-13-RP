@@ -98,6 +98,7 @@
 
 /**
  * renders power unit
+ * expensive!
  */
 /proc/render_power(amount, power_scale = ENUM_POWER_SCALE_NONE, unit = ENUM_POWER_UNIT_GENERIC, accuracy = POWER_ACCURACY, conversion = TRUE)
 	if(!conversion)

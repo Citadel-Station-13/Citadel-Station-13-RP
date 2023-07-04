@@ -1,6 +1,6 @@
 /obj/item/gun/energy
 	name = "energy gun"
-	desc = "A basic energy-based gun."
+	desc = "A basic energy-based gun. NanoTrasen, Hephaestus, Ward-Takahashi, and countless other smaller corporations have their own version of this reliable design."
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "energy"
 	fire_sound_text = "laser blast"
@@ -13,7 +13,7 @@
 
 	var/accept_cell_type = /obj/item/cell/device
 	var/cell_type = /obj/item/cell/device/weapon
-	projectile_type = /obj/item/projectile/beam/practice
+	projectile_type = /obj/projectile/beam/practice
 
 	var/modifystate
 	var/charge_meter = 1	//if set, the icon state will be chosen based on the current charge
@@ -155,7 +155,7 @@
 	..()
 	load_ammo(A, user)
 
-/obj/item/gun/energy/attack_hand(mob/user as mob)
+/obj/item/gun/energy/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user)
 	else
@@ -165,17 +165,17 @@
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
 		return R.cell
-	if(istype(src.loc, /obj/item/rig_module))
-		var/obj/item/rig_module/module = src.loc
+	if(istype(src.loc, /obj/item/hardsuit_module))
+		var/obj/item/hardsuit_module/module = src.loc
 		if(module.holder && module.holder.wearer)
 			var/mob/living/carbon/human/H = module.holder.wearer
 			if(istype(H) && H.back)
-				var/obj/item/rig/suit = H.back
+				var/obj/item/hardsuit/suit = H.back
 				if(istype(suit))
 					return suit.cell
 	return null
 
-/obj/item/gun/energy/examine(mob/user)
+/obj/item/gun/energy/examine(mob/user, dist)
 	. = ..()
 	if(power_supply)
 		if(charge_cost)
@@ -225,12 +225,12 @@
 	START_PROCESSING(SSobj, src)
 	update_icon()
 
-/obj/item/gun/energy/get_description_interaction()
+/obj/item/gun/energy/get_description_interaction(mob/user)
 	var/list/results = list()
 
 	if(!battery_lock && !self_recharge)
 		if(power_supply)
-			results += "[desc_panel_image("offhand")]to remove the weapon cell."
+			results += "[desc_panel_image("offhand", user)]to remove the weapon cell."
 		else
 			results += "[desc_panel_image("weapon cell")]to add a new weapon cell."
 

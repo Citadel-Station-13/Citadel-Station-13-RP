@@ -68,7 +68,7 @@ var/const/tk_maxrange = 15
 	item_flags = ITEM_DROPDEL | ITEM_NOBLUDGEON
 	//item_state = null
 	w_class = ITEMSIZE_NO_CONTAINER
-	layer = HUD_LAYER
+	layer = HUD_LAYER_BASE
 
 	var/last_throw = 0
 	var/atom/movable/focus = null
@@ -80,11 +80,14 @@ var/const/tk_maxrange = 15
 	if(slot != SLOT_ID_HANDS)
 		qdel(src)
 
-/obj/item/tk_grab/attack_self(mob/user as mob)
+/obj/item/tk_grab/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(focus)
 		focus.attack_self_tk(user)
 
-/obj/item/tk_grab/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity)//TODO: go over this
+/obj/item/tk_grab/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target || !user)	return
 	if(last_throw+3 > world.time)	return
 	if(!host || host != user)
@@ -123,10 +126,6 @@ var/const/tk_maxrange = 15
 		last_throw = world.time
 	return
 
-/obj/item/tk_grab/attack(mob/living/M as mob, mob/living/user as mob, def_zone)
-	return
-
-
 /obj/item/tk_grab/proc/focus_object(var/obj/target, var/mob/living/user)
 	if(!istype(target,/obj))	return//Cant throw non objects atm might let it do mobs later
 	if(target.anchored || !isturf(target.loc))
@@ -153,7 +152,6 @@ var/const/tk_maxrange = 15
 	return
 
 /obj/item/tk_grab/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(focus && focus.icon && focus.icon_state)
-		overlays += icon(focus.icon,focus.icon_state)
-	return
+		add_overlay(image(focus.icon,focus.icon_state))

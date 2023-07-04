@@ -3,20 +3,27 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/atom/movable/attack_hand(mob/living/user)
+/atom/movable/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
 	if(click_unbuckle_interaction(user))
-		return CLICKCHAIN_DO_NOT_PROPAGATE
-	return ..()
+		return TRUE
 
 /atom/movable/attack_robot(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(click_unbuckle_interaction(user))
-		return CLICKCHAIN_DO_NOT_PROPAGATE
-	return ..()
+		return TRUE
 
 //! movable stuff
 /**
  * use this hook for processing attempted drag/drop buckles
  *
+ * @params
+ * - A - thing something's trying to buckle to us
+ * - user - who's trying to buckle that something to us
  * @return TRUE if the calling proc should consider it as an interaction (aka don't do other click stuff)
  */
 /atom/movable/proc/drag_drop_buckle_interaction(atom/A, mob/user)
@@ -24,7 +31,7 @@
 	. = TRUE
 	if(A == src)
 		return FALSE
-	if(!isliving(A))	// no ghosts, only entities
+	if(!isliving(A) || !isliving(user))	// no ghosts, only entities
 		return FALSE
 	if(!user.Adjacent(src) || !A.Adjacent(src))
 		return FALSE
@@ -176,11 +183,12 @@
 	LAZYINITLIST(buckled_mobs)
 	buckled_mobs[M] = semantic
 	M.setDir(dir)
-	M.update_canmove()
+	M.update_mobility()
 	// todo: refactor the below
 	M.update_floating(M.Check_Dense_Object())
 	if(isliving(M))
 		var/mob/living/L = M
+		L.update_lying()
 		L.update_water()
 	// end
 	M.reset_pixel_shifting()
@@ -210,11 +218,12 @@
 		M.buckled = null
 	buckled_mobs -= M
 	UNSETEMPTY(buckled_mobs)
-	M.update_canmove()
+	M.update_mobility()
 	// todo: refactor the below
 	M.update_floating(M.Check_Dense_Object())
 	if(isliving(M))
 		var/mob/living/L = M
+		L.update_lying()
 		L.update_water()
 	// end
 	M.reset_pixel_offsets()
@@ -301,7 +310,7 @@
 			SPAN_DANGER("[M] attempts to unbuckle themselves from [src]!"),
 			SPAN_WARNING("You attempt to unbuckle yourself. (This will take a little bit and you need to stand still.)")
 		)
-		if(!do_after(M, buckle_restrained_resist_time, src, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
+		if(!do_after(M, buckle_restrained_resist_time, src, mobility_flags = MOBILITY_CAN_RESIST))
 			return FALSE
 		M.visible_message(
 			SPAN_DANGER("[M] manages to unbuckle themselves."),
@@ -368,7 +377,15 @@
  * get the buckle_lying field for a given mob.
  */
 /atom/movable/proc/buckle_lying(mob/M)
-	return buckle_lying
+	switch(buckle_lying)
+		if(null) // don't set
+			return null
+		if(0) // FALSE
+			return 0
+		if(1) // true
+			return M.lying || pick(90, -90) // don't change if already lying
+		else
+			return buckle_lying // explicitly est
 
 //! mob stuff
 /**

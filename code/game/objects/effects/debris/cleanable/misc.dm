@@ -15,13 +15,20 @@
 	icon_state = "ash"
 	anchored = 1
 
-/obj/effect/debris/cleanable/ash/attack_hand(mob/user as mob)
+/obj/effect/debris/cleanable/ash/attack_hand(mob/user, list/params)
 	to_chat(user, "<span class='notice'>[src] sifts through your fingers.</span>")
 	var/turf/simulated/floor/F = get_turf(src)
 	if (istype(F))
 		F.dirt += 4
 	qdel(src)
 
+/obj/effect/debris/cleanable/ash/attackby(obj/item/O as obj, mob/user as mob)
+	var/obj/item/reagent_containers/RG = O
+	if (istype(RG) && RG.is_open_container())
+		RG.reagents.add_reagent("ash", 10)
+		user.visible_message("<span class='notice'>[user] sweeps \the [src] into \the [RG].</span>","<span class='notice'>You collect \the [src] with \the [RG].</span>")
+		//return 1
+	qdel(src)
 
 /obj/effect/debris/cleanable/greenglow/New()
 	..()
@@ -72,7 +79,7 @@
 	density = 0
 	anchored = 1
 	plane = OBJ_PLANE
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "molten"
 
 /obj/effect/debris/cleanable/cobweb2

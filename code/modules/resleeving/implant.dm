@@ -15,7 +15,7 @@
 /obj/item/implant/backup/get_data()
 	var/dat = {"
 <b>Implant Specifications:</b><BR>
-<b>Name:</b> [GLOB.using_map.company_name] Employee Backup Implant<BR>
+<b>Name:</b> [(LEGACY_MAP_DATUM).company_name] Employee Backup Implant<BR>
 <b>Life:</b> ~8 hours.<BR>
 <b>Important Notes:</b> Implant is life-limited. Dissolves into harmless biomaterial after around ~8 hours, the typical work shift.<BR>
 <HR>
@@ -62,7 +62,10 @@
 	icon_state = "[initial(icon_state)][imps.len]"
 	germ_level = 0
 
-/obj/item/backup_implanter/attack_self(mob/user as mob)
+/obj/item/backup_implanter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!istype(user))
 		return
 
@@ -90,25 +93,27 @@
 		else
 			to_chat(user, "<span class='warning'>\The [src] is already full!</span>")
 
-/obj/item/backup_implanter/attack(mob/M as mob, mob/user as mob)
-	if (!istype(M, /mob/living/carbon))
+/obj/item/backup_implanter/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if (!istype(target, /mob/living/carbon))
 		return
 	if (user && imps.len)
-		M.visible_message("<span class='notice'>[user] is injecting a backup implant into [M].</span>")
+		target.visible_message("<span class='notice'>[user] is injecting a backup implant into [target].</span>")
 
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-		user.do_attack_animation(M)
+		user.do_attack_animation(target)
 
-		var/turf/T1 = get_turf(M)
-		if (T1 && ((M == user) || do_after(user, 5 SECONDS, M)))
-			if(user && M && (get_turf(M) == T1) && src && src.imps.len)
-				M.visible_message("<span class='notice'>[M] has been backup implanted by [user].</span>")
+		var/turf/T1 = get_turf(target)
+		if (T1 && ((target == user) || do_after(user, 5 SECONDS, target)))
+			if(user && target && (get_turf(target) == T1) && src && src.imps.len)
+				target.visible_message("<span class='notice'>[target] has been backup implanted by [user].</span>")
 
 				var/obj/item/implant/backup/imp = imps[imps.len]
-				if(imp.handle_implant(M,user.zone_sel.selecting))
-					imp.post_implant(M)
+				if(imp.handle_implant(target,user.zone_sel.selecting))
+					imp.post_implant(target)
 					imps -= imp
-					add_attack_logs(user,M,"Implanted backup implant")
+					add_attack_logs(user,target,"Implanted backup implant")
 
 				update()
 

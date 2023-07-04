@@ -13,6 +13,10 @@
 	Therefore, the top right corner (except during admin shenanigans) is at "15,15"
 */
 
+//! RESIST THE URGE TO DO Y,X.
+//! BYOND will 100% allow you to.
+//! DO NOT DO THIS.
+
 #define ui_entire_screen "LEFT,BOTTOM to RIGHT,TOP"
 
 //Lower left, persistant menu
@@ -70,7 +74,7 @@
 #define ui_borg_module "RIGHT-2:26,BOTTOM+1:7"
 #define ui_borg_panel "RIGHT-1:28,BOTTOM+1:7"
 
-#define ui_ai_core "BOTTOM:6,LEFT:16"
+#define ui_ai_core "LEFT:16,BOTTOM:6"
 #define ui_ai_camera_list "BOTTOM:6,LEFT+1:16"
 #define ui_ai_track_with_camera "BOTTOM:6,LEFT+2:16"
 #define ui_ai_camera_light "BOTTOM:6,LEFT+3:16"
@@ -154,45 +158,46 @@
 #define ui_hand "CENTER-1:14,BOTTOM:5"
 #define ui_hstore1 "CENTER-2,CENTER-2"
 //#define ui_resist "RIGHT+1,BOTTOM-1"
-#define ui_sleep "RIGHT+1, TOP-13"
-#define ui_rest "RIGHT+1, TOP-14"
+#define ui_sleep "RIGHT+1,TOP-13"
+#define ui_rest "RIGHT+1,TOP-14"
 
 
 #define ui_iarrowleft "BOTTOM-1,RIGHT-4"
 #define ui_iarrowright "BOTTOM-1,RIGHT-2"
 
-#define ui_spell_master "RIGHT-2:16,TOP-1:26"
-#define ui_genetic_master "RIGHT-1:16,TOP-3:16"
+#define ui_spell_master "RIGHT-1:16,TOP-1:16"
+#define ui_genetic_master "RIGHT-1:16,TOP-2:16"
+#define ui_ability_master "RIGHT-1:16,TOP-3:16"
 
 #define ui_shadekin_display "RIGHT-1:28,CENTER-3:15"
 #define ui_xenochimera_danger_display "RIGHT-1:28,CENTER-3:15"
 
 // Ghost ones
-#define ui_ghost_returntomenu "BOTTOM:6,CENTER-3:24"
-#define ui_ghost_jumptomob "BOTTOM:6,CENTER-2:24"
-#define ui_ghost_orbit "BOTTOM:6,CENTER-1:24"
-#define ui_ghost_reenter_corpse "BOTTOM:6,CENTER:24"
-#define ui_ghost_teleport "BOTTOM:6,CENTER+1:24"
-#define ui_ghost_pai "BOTTOM: 6,CENTER+2:24"
-#define ui_ghost_updown "BOTTOM: 6,CENTER+3:24"
-#define ui_ghost_spawners "BOTTOM: 6,CENTER+4:24"
+#define ui_ghost_returntomenu "CENTER-3:24,BOTTOM:6"
+#define ui_ghost_jumptomob "CENTER-2:24,BOTTOM:6"
+#define ui_ghost_orbit "CENTER-1:24,BOTTOM:6"
+#define ui_ghost_reenter_corpse "CENTER:24,BOTTOM:6"
+#define ui_ghost_teleport "CENTER+1:24,BOTTOM:6"
+#define ui_ghost_pai "CENTER+2:24,BOTTOM:6"
+#define ui_ghost_updown "CENTER+3:24,BOTTOM:6"
+#define ui_ghost_spawners "CENTER+4:24,BOTTOM:6"
 
-// Rig panel
-#define ui_rig_deco1 "LEFT:-7, BOTTOM+5"
-#define ui_rig_deco2 "LEFT:-7, BOTTOM+6"
-#define ui_rig_pwr "LEFT+1:-7, BOTTOM+6"
-#define ui_rig_health "LEFT+1:-7, BOTTOM+6"
-#define ui_rig_air "LEFT+1:-7, BOTTOM+5"
-#define ui_rig_airtoggle "LEFT+1:-7, BOTTOM+5"
-#define ui_rig_deco1_f "LEFT+2:-7, BOTTOM+5"
-#define ui_rig_deco2_f "LEFT+2:-7, BOTTOM+6"
+// Hardsuit panel
+#define ui_hardsuit_deco1 "LEFT:-7,BOTTOM+5"
+#define ui_hardsuit_deco2 "LEFT:-7,BOTTOM+6"
+#define ui_hardsuit_pwr "LEFT+1:-7,BOTTOM+6"
+#define ui_hardsuit_health "LEFT+1:-7,BOTTOM+6"
+#define ui_hardsuit_air "LEFT+1:-7,BOTTOM+5"
+#define ui_hardsuit_airtoggle "LEFT+1:-7,BOTTOM+5"
+#define ui_hardsuit_deco1_f "LEFT+2:-7,BOTTOM+5"
+#define ui_hardsuit_deco2_f "LEFT+2:-7,BOTTOM+6"
 
 // Mech panel
-#define ui_mech_deco1 "LEFT:-7, BOTTOM+8"
-#define ui_mech_deco2 "LEFT:-7, BOTTOM+9"
-#define ui_mech_pwr "LEFT+1:-7, BOTTOM+9"
-#define ui_mech_health "LEFT+1:-7, BOTTOM+9"
-#define ui_mech_air "LEFT+1:-7, BOTTOM+8"
-#define ui_mech_airtoggle "LEFT+1:-7, BOTTOM+8"
-#define ui_mech_deco1_f "LEFT+2:-7, BOTTOM+8"
-#define ui_mech_deco2_f "LEFT+2:-7, BOTTOM+9"
+#define ui_mech_deco1 "LEFT:-7,BOTTOM+8"
+#define ui_mech_deco2 "LEFT:-7,BOTTOM+9"
+#define ui_mech_pwr "LEFT+1:-7,BOTTOM+9"
+#define ui_mech_health "LEFT+1:-7,BOTTOM+9"
+#define ui_mech_air "LEFT+1:-7,BOTTOM+8"
+#define ui_mech_airtoggle "LEFT+1:-7,BOTTOM+8"
+#define ui_mech_deco1_f "LEFT+2:-7,BOTTOM+8"
+#define ui_mech_deco2_f "LEFT+2:-7,BOTTOM+9"

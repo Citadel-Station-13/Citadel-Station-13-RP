@@ -2,14 +2,14 @@
 
 	if(stat == DEAD)
 		icon_state = "[initial(icon_state)]_dead"
-	else if(lying || resting || stunned)
+	else if(lying || !CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		icon_state = "[initial(icon_state)]_sleep"
 	else
 		icon_state = "[initial(icon_state)]"
 
-	overlays.Cut()
+	cut_overlays()
 	if(hat)
 		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD)
 		MA.pixel_x = 0
 		MA.pixel_y = -8
-		overlays |= MA
+		add_overlay(MA)

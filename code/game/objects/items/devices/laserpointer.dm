@@ -41,10 +41,8 @@
 /obj/item/laser_pointer/upgraded
 	diode = /obj/item/stock_parts/micro_laser/ultra
 
-
-
-/obj/item/laser_pointer/attack(mob/living/M, mob/user)
-	laser_act(M, user)
+/obj/item/laser_pointer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	laser_act(target, user)
 
 /obj/item/laser_pointer/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stock_parts/micro_laser))
@@ -65,8 +63,8 @@
 		..()
 	return
 
-/obj/item/laser_pointer/afterattack(var/atom/target, var/mob/living/user, flag, params)
-	if(flag)	//we're placing the object on a table or in backpack
+/obj/item/laser_pointer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)	//we're placing the object on a table or in backpack
 		return
 	laser_act(target, user)
 
@@ -131,14 +129,14 @@
 					if(3)
 						//rank 1 with minor vulnerability, rank 2 or 3 with no protection, or rank 3 with basic protection
 						if(prob(3 * diode.rating))
-							C.Weaken(1)
+							C.afflict_paralyze(20 * 1)
 						flick("flash", C.flash_eyes())
 						E.damage += 1
 						to_chat(C, "<span class='danger'>A bright light briefly blinds you!</span>")
 					if(4)
 						//rank 3 with no protection, or rank 2 with minor vulnerability
 						if(prob(5 * diode.rating))
-							C.Weaken(1)
+							C.afflict_paralyze(20 * 1)
 						flick("e_flash", C.flash_eyes())
 						E.damage += 2
 						to_chat(C, "<span class='danger'>A blinding light burns your eyes!</span>")
@@ -152,7 +150,7 @@
 		if(prob(effectchance * diode.rating))
 			flick("flash", S.flash_eyes(affect_silicon = TRUE))
 			if (prob(3 * diode.rating))
-				S.Weaken(1)
+				S.afflict_paralyze(20 * 1)
 			to_chat(S, "<span class='warning'>Your sensors were blinded by a laser!</span>")
 			outmsg = "<span class='notice'>You blind [S] by shining [src] at their sensors.</span>"
 			add_attack_logs(user,S,"Tried disabling using [src]")

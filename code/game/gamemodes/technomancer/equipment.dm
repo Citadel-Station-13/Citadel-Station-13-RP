@@ -166,6 +166,7 @@
 	origin_tech = list(TECH_MAGNET = 6, TECH_ENGINEERING = 6)
 	toggleable = 1
 	vision_flags = SEE_TURFS|SEE_MOBS|SEE_OBJS
+	vision_flags_remove = SEE_BLACKNESS
 	prescription = 1 // So two versions of these aren't needed.
 
 /datum/technomancer/equipment/med_hud
@@ -188,20 +189,26 @@
 	desc = "It's a purple gem, attached to a rod and a handle, along with small wires.  It looks like it would make a good club."
 	icon = 'icons/obj/technomancer.dmi'
 	icon_state = "scepter"
-	force = 15
+	damage_force = 15
 	slot_flags = SLOT_BELT
 	attack_verb = list("beaten", "smashed", "struck", "whacked")
 
-/obj/item/scepter/attack_self(mob/living/carbon/human/user)
-	var/obj/item/item_to_test = user.get_other_hand(src)
+/obj/item/scepter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		return
+	var/obj/item/item_to_test = H.get_other_hand(src)
 	if(istype(item_to_test, /obj/item/spell))
 		var/obj/item/spell/S = item_to_test
 		S.on_scepter_use_cast(user)
 
-/obj/item/scepter/afterattack(atom/target, mob/living/carbon/human/user, proximity_flag, click_parameters)
-	if(proximity_flag)
+/obj/item/scepter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return ..()
-	var/obj/item/item_to_test = user.get_other_hand(src)
+	var/obj/item/item_to_test = user.get_inactive_held_item()
 	if(istype(item_to_test, /obj/item/spell))
 		var/obj/item/spell/S = item_to_test
 		S.on_scepter_ranged_cast(target, user)

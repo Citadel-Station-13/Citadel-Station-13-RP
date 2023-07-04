@@ -3,7 +3,7 @@
 		return
 
 	//Health
-	updatehealth()
+	update_health()
 
 /mob/living/simple_mob/BiologicalLife(seconds, times_fired)
 	if((. = ..()))
@@ -11,9 +11,6 @@
 
 	if(!IS_DEAD(src))
 
-		handle_stunned()
-		handle_weakened()
-		handle_paralysed()
 		handle_supernatural()
 		handle_atmos()
 
@@ -22,7 +19,7 @@
 	handle_guts(seconds)
 
 //Should we be dead?
-/mob/living/simple_mob/updatehealth()
+/mob/living/simple_mob/update_health()
 	health = getMaxHealth() - getFireLoss() - getBruteLoss() - getToxLoss() - getOxyLoss() - getCloneLoss()
 
 	//Alive, becoming dead

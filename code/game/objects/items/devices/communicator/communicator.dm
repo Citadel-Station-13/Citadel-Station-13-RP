@@ -126,7 +126,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Proc: examine()
 // Parameters: 1 (user - the person examining the device)
 // Description: Shows all the voice mobs inside the device, and their status.
-/obj/item/communicator/examine(mob/user)
+/obj/item/communicator/examine(mob/user, dist)
 	. = ..()
 
 	for(var/mob/living/voice/voice in contents)
@@ -219,6 +219,9 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Description: Makes an exonet datum if one does not exist, allocates an address for it, maintains the lists of all devies, clears the alert icon, and
 //				finally makes NanoUI appear.
 /obj/item/communicator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	initialize_exonet(user)
 	alert_called = 0
 	update_icon()
@@ -306,9 +309,10 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	QDEL_NULL(exonet)
 
 	last_camera_turf = null
-	qdel(cam_screen)
-	QDEL_LIST(cam_plane_masters)
-	qdel(cam_background)
+	QDEL_NULL(cam_screen)
+	QDEL_NULL(cam_background)
+	QDEL_NULL(planes)
+	QDEL_NULL(parallax)
 
 	return ..()
 
@@ -347,6 +351,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	communications across different stations, planets, or even star systems. You can wear this one on your wrist!"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "commwatch"
+	item_flags = CLOTHING_ALLOW_SINGLE_LIMB
 	slot_flags = SLOT_GLOVES
 
 /obj/item/communicator/watch/update_icon_state()

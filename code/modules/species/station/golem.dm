@@ -1,7 +1,8 @@
 /datum/species/golem
+	uid = SPECIES_ID_GOLEM
+	id = SPECIES_ID_GOLEM
 	name = SPECIES_GOLEM
 	name_plural = "golems"
-	uid = SPECIES_ID_GOLEM
 
 	icobase      = 'icons/mob/species/golem/body.dmi'
 	deform       = 'icons/mob/species/golem/body.dmi'
@@ -10,7 +11,7 @@
 
 	intrinsic_languages = LANGUAGE_ID_HUMAN // todo?
 
-	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
+	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 	species_flags = NO_PAIN | NO_SCAN | NO_POISON | NO_MINOR_CUT
 
 	siemens_coefficient = 0

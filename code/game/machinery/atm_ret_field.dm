@@ -157,7 +157,7 @@
 	//Delete ourselves if we find extra mapped in arfgs
 	for(var/obj/machinery/atmospheric_field_generator/F in loc)
 		if(F != src)
-			log_debug("Duplicate ARFGS at [x],[y],[z]")
+			log_debug(SPAN_DEBUG("Duplicate ARFGS at [x],[y],[z]"))
 			return INITIALIZE_HINT_QDEL
 
 	var/area/A = get_area(src)
@@ -192,7 +192,7 @@
 	//light_on = TRUE
 
 /obj/structure/atmospheric_retention_field/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	var/list/dirs = list()
 	for(var/obj/structure/atmospheric_retention_field/F in orange(src,1))
 		dirs += get_dir(src, F)
@@ -202,7 +202,7 @@
 	icon_state = ""
 	for(var/i = 1 to 4)
 		var/image/I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
-		overlays += I
+		add_overlay(I)
 
 	return
 
@@ -218,7 +218,7 @@
 	update_nearby_tiles() //Force ZAS update
 	. = ..()
 
-/obj/structure/atmospheric_retention_field/attack_hand(mob/user as mob)
+/obj/structure/atmospheric_retention_field/attack_hand(mob/user, list/params)
 	if(density)
 		visible_message("You touch the retention field, and it crackles faintly. Tingly!")
 	else

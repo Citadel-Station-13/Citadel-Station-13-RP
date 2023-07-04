@@ -3,19 +3,11 @@
 	name = "holder"
 	desc = "You shouldn't ever see this."
 	icon = 'icons/obj/objects.dmi'
+	SET_APPEARANCE_FLAGS(KEEP_TOGETHER | PIXEL_SCALE | TILE_BOUND)
 	slot_flags = SLOT_HEAD | SLOT_HOLSTER
 	show_messages = 1
-
-	sprite_sheets = list(
-		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi',
-		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/head.dmi'
-		)
-
 	origin_tech = null
-	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_holder.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_holder.dmi',
-		)
+	inhand_default_type = INHAND_DEFAULT_ICON_HOLDERS
 	pixel_y = 8
 	throw_range = 14
 	throw_force = 10
@@ -40,7 +32,7 @@
 	if(!(flags & INV_OP_DELETING))
 		update_state()
 
-/obj/item/holder/examine(mob/user)
+/obj/item/holder/examine(mob/user, dist)
 	return held_mob?.examine(user) || list("WARNING WARNING: No held_mob on examine. REPORT THIS TO A CODER.")
 
 /obj/item/holder/proc/update_state()
@@ -75,34 +67,38 @@
 	var/obj/item/I = GetID()
 	return I ? I.GetAccess() : ..()
 
-/obj/item/holder/proc/sync(var/mob/living/M)
+/obj/item/holder/proc/sync(mob/living/M)
 	dir = SOUTH
-	overlays.len = 0
+	cut_overlays()
 	// appearance clone their ass
 	var/mutable_appearance/MA = new
 	MA.appearance = M
 	MA.plane = plane
 	MA.dir = SOUTH
-	overlays += MA
+	// ok this was a bad idea
+	// todo: refactor holders entirely, we shouldn't be cloning mob state???
+	// icon = M.icon	// legacy
+	icon_state = M.icon_state	// legacy
+	add_overlay(MA)
 	name = M.name
 	desc = M.desc
 	update_worn_icon()
 
-/obj/item/holder/container_resist(mob/living/held)
+/obj/item/holder/contents_resist(mob/escapee)
 	var/mob/M = loc
 	if(istype(M))
 		M.drop_item_to_ground(src, INV_OP_FORCE)
-		to_chat(M, SPAN_WARNING("\The [held] wriggles out of your grip!"))
-		to_chat(held, SPAN_WARNING("You wiggle out of [M]'s grip!"))
+		to_chat(M, SPAN_WARNING("\The [escapee] wriggles out of your grip!"))
+		to_chat(escapee, SPAN_WARNING("You wiggle out of [M]'s grip!"))
 	else if(istype(loc, /obj/item/clothing/accessory/holster))
 		var/obj/item/clothing/accessory/holster/holster = loc
 		if(holster.holstered == src)
 			holster.clear_holster()
-		to_chat(held, SPAN_WARNING("You extricate yourself from [holster]."))
-		held.forceMove(get_turf(held))
+		to_chat(escapee, SPAN_WARNING("You extricate yourself from [holster]."))
+		escapee.forceMove(get_turf(escapee))
 	else if(isitem(loc))
-		to_chat(held, SPAN_WARNING("You struggle free of [loc]."))
-		held.forceMove(get_turf(held))
+		to_chat(escapee, SPAN_WARNING("You struggle free of [loc]."))
+		escapee.forceMove(get_turf(escapee))
 
 /obj/item/holder/can_equip(mob/M, slot, mob/user, flags)
 	if(M == held_mob)
@@ -149,20 +145,20 @@
 	origin_tech = list(TECH_BIO = 3)
 
 /obj/item/holder/protoblob
-	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER | SLOT_ICLOTHING | SLOT_ID
+	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER | SLOT_ICLOTHING | SLOT_ID | SLOT_MASK
 	w_class = ITEMSIZE_TINY
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
 
 
-/obj/item/holder/fish/afterattack(var/atom/target, var/mob/living/user, proximity)
+/obj/item/holder/fish/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(isliving(target))
 		var/mob/living/L = target
 		if(prob(10))
-			L.Stun(2)
+			L.afflict_stun(20 * 2)
 
 //Roach Types
 /obj/item/holder/roach

@@ -29,7 +29,7 @@
 		return
 	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
 
-/obj/structure/gravemarker/examine(mob/user)
+/obj/structure/gravemarker/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) < 4)
 		if(grave_name)
@@ -74,7 +74,7 @@
 			dismantle()
 	..()
 
-/obj/structure/gravemarker/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/gravemarker/bullet_act(var/obj/projectile/Proj)
 	var/proj_damage = Proj.get_structure_damage()
 	if(!proj_damage)
 		return

@@ -15,9 +15,9 @@
 
 /obj/structure/bed/chair/wheelchair/setDir()
 	..()
-	overlays = null
+	cut_overlays()
 	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "w_overlay", layer = FLY_LAYER, dir = src.dir)
-	overlays += O
+	add_overlay(O)
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
 			var/mob/living/L = A
@@ -33,14 +33,14 @@
 		return
 	last_active_move = world.time
 
-	if(user.stat || user.stunned || user.weakened || user.paralysis || user.lying || user.restrained())
+	if(!CHECK_ALL_MOBILITY(user, MOBILITY_CAN_HOLD))
 		if(user==pulling_along)
 			pulling_along = null
 			user.pulledby = null
 			to_chat(user, "<span class='warning'>You lost your grip!</span>")
 		return
 	if(has_buckled_mobs() && pulling_along && (user in buckled_mobs))
-		if(pulling_along.stat || pulling_along.stunned || pulling_along.weakened || pulling_along.paralysis || pulling_along.lying || pulling_along.restrained())
+		if(!CHECK_ALL_MOBILITY(pulling_along, MOBILITY_CAN_MOVE | MOBILITY_IS_STANDING))
 			pulling_along.pulledby = null
 			pulling_along = null
 	if((user.pulling != src) && (user == pulling_along))
@@ -81,7 +81,8 @@
 	step(src, direction)
 	if(has_buckled_mobs()) // Make sure it stays beneath the occupant
 		var/mob/living/L = buckled_mobs[1]
-		Move(L.loc)
+		if(loc != L.loc)
+			forceMove(L.loc)
 	setDir(direction)
 	if(pulling_along) // Driver
 		if(pulling_along.loc == src.loc) // We moved onto the wheelchair? Revert!
@@ -96,7 +97,7 @@
 		create_track()
 	driving = 0
 
-/obj/structure/bed/chair/wheelchair/attack_hand(mob/living/user as mob)
+/obj/structure/bed/chair/wheelchair/attack_hand(mob/user, list/params)
 	if (pulling_along)
 		MouseDrop(usr)
 	return ..()
@@ -195,6 +196,9 @@
 	var/unfolded_type = /obj/structure/bed/chair/wheelchair
 
 /obj/item/wheelchair/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 		var/obj/structure/bed/chair/wheelchair/R = new /obj/structure/bed/chair/wheelchair(user.loc)
 		R.add_fingerprint(user)
 		R.name = src.name
@@ -224,9 +228,9 @@
 
 /obj/structure/bed/chair/wheelchair/dolly/setDir()
 	..()
-	overlays = null
+	cut_overlays()
 	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "d_overlay", layer = FLY_LAYER, dir = src.dir)
-	overlays += O
+	add_overlay(O)
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
 			var/mob/living/L = A

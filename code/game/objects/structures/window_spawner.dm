@@ -5,7 +5,7 @@
 
 /obj/effect/wingrille_spawn
 	name = "window grille spawner"
-	icon = 'icons/obj/structures.dmi'
+	icon = 'icons/obj/structures/window_spawners.dmi'
 	icon_state = "wingrille"
 	density = TRUE
 	anchored = 1.0
@@ -14,7 +14,7 @@
 	var/win_path = /obj/structure/window/basic
 	var/activated
 
-/obj/effect/wingrille_spawn/attack_hand()
+/obj/effect/wingrille_spawn/attack_hand(mob/user, list/params)
 	attack_generic()
 
 /obj/effect/wingrille_spawn/attack_ghost()

@@ -88,7 +88,7 @@
 	var/turf/going_to = get_step(src, d)
 	if(border_only)
 		for(var/obj/O in src)
-			if(!(O.flags & ON_BORDER))
+			if(!(O.atom_flags & ATOM_BORDER))
 				continue
 			if(O == target || O == mover || (O.pass_flags_self & ATOM_PASS_CLICK))
 				continue

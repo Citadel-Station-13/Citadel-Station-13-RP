@@ -24,7 +24,7 @@
 	update_icon()
 
 // todo: this bad lol
-/obj/item/storage/belt/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/storage/belt/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	. = ..()
 	var/static/icon/funny_belt_icon = 'icons/mob/clothing/belt.dmi'
 	for(var/obj/item/I in contents)
@@ -139,6 +139,8 @@
 		/obj/item/clothing/head/surgery,
 		/obj/item/clothing/gloves,
 		/obj/item/reagent_containers/hypospray,
+		/obj/item/hypospray,
+		/obj/item/reagent_containers/glass/hypovial,
 		/obj/item/clothing/glasses,
 		/obj/item/tool/crowbar,
 		/obj/item/flashlight,
@@ -184,10 +186,10 @@
 		/obj/item/megaphone,
 		/obj/item/melee,
 		/obj/item/clothing/accessory/badge,
-		/obj/item/gun/projectile/sec,
-		/obj/item/gun/projectile/p92x,
+		/obj/item/gun/ballistic/sec,
+		/obj/item/gun/ballistic/p92x,
 		/obj/item/barrier_tape_roll,
-		/obj/item/gun/projectile/colt/detective,
+		/obj/item/gun/ballistic/colt/detective,
 		/obj/item/holowarrant
 		)
 
@@ -230,7 +232,7 @@
 		/obj/item/flame/lighter,
 		/obj/item/reagent_containers/food/snacks/donut/,
 		/obj/item/ammo_magazine,
-		/obj/item/gun/projectile/colt/detective,
+		/obj/item/gun/ballistic/colt/detective,
 		/obj/item/holowarrant
 		)
 
@@ -271,6 +273,7 @@
 		/obj/item/reagent_containers/glass/bottle,
 		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/hypospray,
+		/obj/item/hypospray,
 		/obj/item/storage/pill_bottle,
 		/obj/item/stack/medical,
 		/obj/item/stack/marker_beacon,
@@ -283,7 +286,7 @@
 		/obj/item/tape_recorder,
 		/obj/item/barrier_tape_roll,
 		/obj/item/healthanalyzer,
-		/obj/item/geiger,
+		/obj/item/geiger_counter,
 		/obj/item/gps,
 		/obj/item/switchtool,
 		/obj/item/ano_scanner
@@ -346,6 +349,7 @@
 		/obj/item/clothing/head/surgery,
 		/obj/item/clothing/gloves,
 		/obj/item/reagent_containers/hypospray,
+		/obj/item/hypospray,
 		/obj/item/clothing/glasses,
 		/obj/item/tool/crowbar,
 		/obj/item/flashlight,
@@ -565,22 +569,22 @@
 		/obj/item/gun/energy/taser,
 		/obj/item/gun/energy/toxgun,
 		/obj/item/gun/energy/zip,
-		/obj/item/gun/projectile/colt,
-		/obj/item/gun/projectile/contender,
-		/obj/item/gun/projectile/dartgun,
-		/obj/item/gun/projectile/deagle,
-		/obj/item/gun/projectile/derringer,
-		/obj/item/gun/projectile/gyropistol,
-		/obj/item/gun/projectile/luger,
-		/obj/item/gun/projectile/r9,
-		/obj/item/gun/projectile/revolver,
-		/obj/item/gun/projectile/sec,
-		/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
-		/obj/item/gun/projectile/shotgun/flare,
-		/obj/item/gun/projectile/silenced,
-		/obj/item/gun/projectile/p92x,
-		/obj/item/gun/projectile/pistol,
-		/obj/item/gun/projectile/pirate
+		/obj/item/gun/ballistic/colt,
+		/obj/item/gun/ballistic/contender,
+		/obj/item/gun/ballistic/dartgun,
+		/obj/item/gun/ballistic/deagle,
+		/obj/item/gun/ballistic/derringer,
+		/obj/item/gun/ballistic/gyropistol,
+		/obj/item/gun/ballistic/luger,
+		/obj/item/gun/ballistic/r9,
+		/obj/item/gun/ballistic/revolver,
+		/obj/item/gun/ballistic/sec,
+		/obj/item/gun/ballistic/shotgun/doublebarrel/sawn,
+		/obj/item/gun/ballistic/shotgun/flare,
+		/obj/item/gun/ballistic/silenced,
+		/obj/item/gun/ballistic/p92x,
+		/obj/item/gun/ballistic/pistol,
+		/obj/item/gun/ballistic/pirate
 		)
 
 /obj/item/storage/belt/quiver
@@ -616,5 +620,21 @@
 		/obj/item/ammo_casing/arrow
 		)
 	starts_with = list(
-		/obj/item/ammo_casing/arrow/ash = 15
+		/obj/item/ammo_casing/arrow/bone = 15
 		)
+
+/obj/item/storage/belt/utility/crystal
+	name = "crystalline tool harness"
+	desc = "A segmented belt of strange crystalline material."
+	icon_state = "utilitybelt_crystal"
+	item_state = "utilitybelt_crystal"
+
+/obj/item/storage/belt/utility/crystal/Initialize()
+	new /obj/item/multitool/crystal(src)
+	new /obj/item/tool/wrench/crystal(src)
+	new /obj/item/tool/crowbar/crystal(src)
+	new /obj/item/tool/screwdriver/crystal(src)
+	new /obj/item/tool/wirecutters/crystal(src)
+	new /obj/item/weldingtool/electric/crystal(src)
+	update_icon()
+	. = ..()

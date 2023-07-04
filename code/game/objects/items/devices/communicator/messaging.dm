@@ -78,7 +78,7 @@
 	if(ringer)
 		playsound(src, 'sound/machines/twobeep.ogg', 50, 1)
 		for (var/mob/O in hearers(2, loc))
-			O.show_message(text("[icon2html(src, world)] *beep*"))
+			O.show_message("[icon2html(src, world)] *beep*")
 
 	alert_called = 1
 	update_icon()
@@ -136,6 +136,10 @@
 		var/mob/observer/dead/O = src
 		var/text_message = sanitize(input(src, "What do you want the message to say?") as message|null)
 		if(text_message && O.exonet)
+			if(client.persistent.ligma)
+				show_message("Comm IM - [src] -> [chosen_communicator]: [text_message]")
+				log_shadowban("[key_name(src)] COMMLINK -> [chosen_communicator]: [text_message]")
+				return
 			O.exonet.send_message(chosen_communicator.exonet.address, "text", text_message)
 
 			to_chat(src, "<span class='notice'>You have sent '[text_message]' to [chosen_communicator].</span>")

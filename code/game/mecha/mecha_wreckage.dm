@@ -26,7 +26,7 @@
 			qdel(src)
 	return
 
-/obj/effect/decal/mecha_wreckage/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/decal/mecha_wreckage/bullet_act(var/obj/projectile/Proj)
 	return
 
 
@@ -102,6 +102,10 @@
 	icon_state = "darkgygax-broken"
 
 /obj/effect/decal/mecha_wreckage/gygax/adv
+	name = "Gygax wreckage"
+	icon_state = "gygax_adv-broken"
+
+/obj/effect/decal/mecha_wreckage/gygax/dark_adv
 	name = "Advanced Dark Gygax wreckage"
 	icon_state = "darkgygax_adv-broken"
 

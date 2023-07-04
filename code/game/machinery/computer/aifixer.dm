@@ -1,7 +1,7 @@
 /obj/machinery/computer/aifixer
 	name = "\improper AI system integrity restorer"
 	desc = "Used with intelliCards containing nonfunctional AIs to restore them to working order."
-	req_one_access = list(access_robotics, access_heads)
+	req_one_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_COMMAND_BRIDGE)
 	circuit = /obj/item/circuitboard/aifixer
 	icon_keyboard = "tech_key"
 	icon_screen = "ai-fixer"
@@ -48,7 +48,7 @@
 			to_chat(user, SPAN_NOTICE("There is no AI loaded onto this computer, and no AI loaded onto [I]. What exactly are you trying to do here?"))
 	return ..()
 
-/obj/machinery/computer/aifixer/attack_hand(mob/user)
+/obj/machinery/computer/aifixer/attack_hand(mob/user, list/params)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	ui_interact(user)

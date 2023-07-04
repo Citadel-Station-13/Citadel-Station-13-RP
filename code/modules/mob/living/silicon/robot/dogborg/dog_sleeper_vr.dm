@@ -50,13 +50,14 @@
 /obj/item/dogborg/sleeper/Exit(atom/movable/O)
 	return 0
 
-/obj/item/dogborg/sleeper/afterattack(var/atom/movable/target, mob/living/silicon/user, proximity)
+/obj/item/dogborg/sleeper/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	hound = loc
-	if(!istype(target))
+	var/atom/movable/AM = target
+	if(!istype(AM))
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(target.anchored)
+	if(AM.anchored)
 		return
 	if(target in hound.module.modules)
 		return
@@ -75,7 +76,7 @@
 				return
 			user.visible_message("<span class='warning'>[hound.name] is ingesting [target.name] into their [src.name].</span>", "<span class='notice'>You start ingesting [target] into your [src.name]...</span>")
 			if(do_after(user, 30, target) && length(contents) < max_item_count)
-				target.forceMove(src)
+				AM.forceMove(src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] groans lightly as [target.name] slips inside.</span>", "<span class='notice'>Your [src.name] groans lightly as [target] slips inside.</span>")
 				playsound(hound, gulpsound, vol = 60, vary = 1, falloff = 0.1, preference = /datum/client_preference/eating_noises)
 				if(analyzer && istype(target,/obj/item))
@@ -137,7 +138,7 @@
 			return
 		user.visible_message("<span class='warning'>[hound.name] is ingesting [H.name] into their [src.name].</span>", "<span class='notice'>You start ingesting [H] into your [src]...</span>")
 		if(!patient && !H.buckled && do_after (user, 50, H))
-			if(!proximity)
+			if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 				return //If they moved away, you can't eat them.
 			if(patient)
 				return //If you try to eat two people at once, you can only eat one.
@@ -178,6 +179,9 @@
 	hound.cell.charge = hound.cell.charge - amt
 
 /obj/item/dogborg/sleeper/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(..())
 		return
 	sleeperUI(user)
@@ -189,12 +193,12 @@
 		dat += "<h3>Injector</h3>"
 		if(patient)// && patient.health > min_health) //Not necessary, leave the buttons on, but the feedback during injection will give more information.
 			for(var/re in injection_chems)
-				var/datum/reagent/C = SSchemistry.chemical_reagents[re]
+				var/datum/reagent/C = SSchemistry.reagent_lookup[re]
 				if(C)
 					dat += "<A href='?src=\ref[src];inject=[C.id]'>Inject [C.name]</A><BR>"
 		else
 			for(var/re in injection_chems)
-				var/datum/reagent/C = SSchemistry.chemical_reagents[re]
+				var/datum/reagent/C = SSchemistry.reagent_lookup[re]
 				if(C)
 					dat += "<span class='linkOff'>Inject [C.name]</span><BR>"
 
@@ -216,21 +220,21 @@
 
 	if(!delivery && compactor && length(contents))//garbage counter for trashpup
 		dat += "<font color='red'><B>Current load:</B> [length(contents)] / [max_item_count] objects.</font><BR>"
-		dat += "<font color='gray'>([list2text(contents,", ")])</font><BR><BR>"
+		dat += "<font color='gray'>([jointext(contents,", ")])</font><BR><BR>"
 
 	if(delivery && length(contents))
 		dat += "<font color='red'><B>Current load:</B> [length(contents)] / [max_item_count] objects.</font><BR>"
 		dat += "<font color='gray'>Cargo compartment slot: Cargo 1.</font><BR>"
 		if(length(deliveryslot_1))
-			dat += "<font color='gray'>([list2text(deliveryslot_1,", ")])</font><BR>"
+			dat += "<font color='gray'>([jointext(deliveryslot_1,", ")])</font><BR>"
 		dat += "<font color='gray'>Cargo compartment slot: Cargo 2.</font><BR>"
 		if(length(deliveryslot_2))
-			dat += "<font color='gray'>([list2text(deliveryslot_2,", ")])</font><BR>"
+			dat += "<font color='gray'>([jointext(deliveryslot_2,", ")])</font><BR>"
 		dat += "<font color='gray'>Cargo compartment slot: Cargo 3.</font><BR>"
 		if(length(deliveryslot_3))
-			dat += "<font color='gray'>([list2text(deliveryslot_3,", ")])</font><BR>"
+			dat += "<font color='gray'>([jointext(deliveryslot_3,", ")])</font><BR>"
 		dat += "<font color='red'>Cargo compartment slot: Fuel.</font><BR>"
-		dat += "<font color='red'>([list2text(contents - (deliveryslot_1 + deliveryslot_2 + deliveryslot_3),", ")])</font><BR><BR>"
+		dat += "<font color='red'>([jointext(contents - (deliveryslot_1 + deliveryslot_2 + deliveryslot_3),", ")])</font><BR><BR>"
 
 	if(analyzer && !synced)
 		dat += "<A href='?src=\ref[src];sync=1'>Sync Files</A><BR>"
@@ -274,8 +278,6 @@
 		dat += "<span style='[toxcolor]'>\t-Toxin Content %: [patient.getToxLoss()]</span><BR>"
 		dat += "<span style='[burncolor]'>\t-Burn Severity %: [patient.getFireLoss()]</span><BR>"
 
-		if(round(patient.paralysis / 4) >= 1)
-			dat += text("<HR>Patient paralyzed for: []<BR>", round(patient.paralysis / 4) >= 1 ? "[round(patient.paralysis / 4)] seconds" : "None")
 		if(patient.getBrainLoss())
 			dat += "<div class='line'><span class='average'>Significant brain damage detected.</span></div><br>"
 		if(patient.getCloneLoss())
@@ -399,7 +401,7 @@
 				patient.reagents.add_reagent(chem, inject_amount)
 				drain(750) //-750 charge per injection
 			var/units = round(patient.reagents.get_reagent_amount(chem))
-			to_chat(hound, "<span class='notice'>Injecting [units] unit\s of [SSchemistry.chemical_reagents[chem]] into occupant.</span>") //If they were immersed, the reagents wouldn't leave with them.
+			to_chat(hound, "<span class='notice'>Injecting [units] unit\s of [SSchemistry.reagent_lookup[chem]] into occupant.</span>") //If they were immersed, the reagents wouldn't leave with them.
 
 //For if the dogborg's existing patient uh, doesn't make it.
 /obj/item/dogborg/sleeper/proc/update_patient()
@@ -518,7 +520,7 @@
 		var/volume = 0
 		for(var/mob/living/T in (touchable_items))
 			touchable_items -= T //Exclude mobs from loose item picking.
-			if((T.status_flags & GODMODE) || !T.digestable)
+			if((T.status_flags & STATUS_GODMODE) || !T.digestable)
 				items_preserved |= T
 			else
 				var/old_brute = T.getBruteLoss()
@@ -633,10 +635,10 @@
 		update_patient()
 		if(patient.health < 0)
 			patient.adjustOxyLoss(-1) //Heal some oxygen damage if they're in critical condition
-			patient.updatehealth()
+			patient.update_health()
 			drain()
-		patient.AdjustStunned(-4)
-		patient.AdjustWeakened(-4)
+		patient.adjust_stunned(20 * -4)
+		patient.adjust_paralyzed(20 * -4)
 		drain(1)
 		return
 

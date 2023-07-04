@@ -29,6 +29,7 @@ SUBSYSTEM_DEF(timer)
 	name = "Timer"
 	wait = 1 // SS_TICKER subsystem, so wait is in ticks
 	init_order = INIT_ORDER_TIMER
+	runlevels = RUNLEVELS_ALL
 	priority = FIRE_PRIORITY_TIMER
 	subsystem_flags = SS_TICKER|SS_NO_INIT
 
@@ -61,14 +62,13 @@ SUBSYSTEM_DEF(timer)
 	var/log_all_loop_flagged = FALSE
 #endif
 
-/datum/controller/subsystem/timer/PreInit()
+/datum/controller/subsystem/timer/PreInit(recovering)
 	bucket_list.len = BUCKET_LEN
 	head_offset = world.time
 	bucket_resolution = world.tick_lag
 
-/datum/controller/subsystem/timer/stat_entry(msg)
-	msg = "B:[bucket_count] P:[length(second_queue)] H:[length(hashes)] C:[length(clienttime_timers)] S:[length(timer_id_dict)]"
-	return ..()
+/datum/controller/subsystem/timer/stat_entry()
+	return ..() + " B:[bucket_count] P:[length(second_queue)] H:[length(hashes)] C:[length(clienttime_timers)] S:[length(timer_id_dict)]"
 
 /datum/controller/subsystem/timer/fire(resumed = FALSE)
 	// Store local references to datum vars as it is faster to access them
@@ -664,6 +664,10 @@ SUBSYSTEM_DEF(timer)
 	if (callback.object != GLOBAL_PROC && QDELETED(callback.object) && !QDESTROYING(callback.object))
 		stack_trace("addtimer called with a callback assigned to a qdeleted object. In the future such timers will not \
 			be supported and may refuse to run or run with a 0 wait")
+
+	if (wait == 0 && !flags)
+		SSdpc.queued_calls += callback
+		return
 
 	wait = max(CEILING(wait, world.tick_lag), world.tick_lag)
 

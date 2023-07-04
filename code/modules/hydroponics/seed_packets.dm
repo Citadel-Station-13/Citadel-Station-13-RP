@@ -31,7 +31,9 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 		return
 
 	// Update icon.
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	var/is_seeds = ((seed.seed_noun in list("seeds","pits","nodes")) ? 1 : 0)
 	var/image/seed_mask
 	var/seed_base_key = "base-[is_seeds ? seed.get_trait(TRAIT_PLANT_COLOUR) : "spores"]"
@@ -52,8 +54,9 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 		seed_overlay.color = seed.get_trait(TRAIT_PRODUCT_COLOUR)
 		plant_seed_sprites[seed_overlay_key] = seed_overlay
 
-	overlays |= seed_mask
-	overlays |= seed_overlay
+	overlays_to_add += seed_mask
+	overlays_to_add += seed_overlay
+	add_overlay(overlays_to_add)
 
 	if(is_seeds)
 		src.name = "packet of [seed.seed_name] [seed.seed_noun]"
@@ -62,7 +65,7 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 		src.name = "sample of [seed.seed_name] [seed.seed_noun]"
 		src.desc = "It's labelled as coming from [seed.display_name]."
 
-/obj/item/seeds/examine(mob/user)
+/obj/item/seeds/examine(mob/user, dist)
 	. = ..()
 	if(seed && !seed.roundstart)
 		. += "It's tagged as variety #[seed.uid]."
@@ -347,3 +350,12 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 /obj/item/seeds/ashlander/juhtak
 	seed_type = "juhtak"
+
+/obj/item/seeds/ashlander/cersut
+	seed_type = "cersut"
+
+/obj/item/seeds/ashlander/shimash
+	seed_type = "shimash"
+
+/obj/item/seeds/ashlander/pokalea
+	seed_type = "pokalea"

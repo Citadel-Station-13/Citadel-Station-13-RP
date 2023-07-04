@@ -5,14 +5,17 @@
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_REQUIRES_RESTRAINTS
 
+	use_power = USE_POWER_OFF
+
+	pipe_flags = NONE // Does not have PIPING_DEFAULT_LAYER_ONLY flag.
+
+	#ifdef IN_MAP_EDITOR
+	alpha = 128 // Set for the benefit of mapping.
+	#endif
+
 	var/datum/gas_mixture/air_temporary // used when reconstructing a pipeline that broke
 	var/datum/pipeline/parent
 	var/volume = 0
-
-	layer = PIPES_LAYER
-	use_power = USE_POWER_OFF
-
-	pipe_flags = 0 // Does not have PIPING_DEFAULT_LAYER_ONLY flag.
 
 	var/alert_pressure = 80*ONE_ATMOSPHERE
 		//minimum pressure before check_pressure(...) should be called

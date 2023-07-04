@@ -37,7 +37,6 @@
 	if(!autolathe_recipes)
 		autolathe_recipes = new()
 	wires = new(src)
-	default_apply_parts()
 
 /obj/machinery/autolathe/Destroy()
 	QDEL_NULL(wires)
@@ -204,11 +203,11 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/autolathe/attack_hand(mob/user as mob)
+/obj/machinery/autolathe/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	interact(user)
 
-/obj/machinery/autolathe/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/autolathe/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -239,7 +238,7 @@
 						max_sheets = 0
 				//Build list of multipliers for sheets.
 				multiplier = input(usr, "How many do you want to print? (0-[max_sheets])") as num|null
-				if(!multiplier || multiplier <= 0 || multiplier > max_sheets || ui_status(usr, state) != UI_INTERACTIVE)
+				if(!multiplier || multiplier <= 0 || multiplier > max_sheets || ui_status(usr, ui.state) != UI_INTERACTIVE)
 					return FALSE
 
 			busy = making.name
@@ -283,7 +282,7 @@
 	return FALSE
 
 /obj/machinery/autolathe/update_icon()
-	overlays.Cut()
+	cut_overlays()
 
 	icon_state = initial(icon_state)
 

@@ -102,7 +102,7 @@ var/list/event_last_fired = list()
 	for(var/V in possibleEvents)
 		debug_message += "[V]:[possibleEvents[V]]"
 	debug_message += "|||Picked:[picked_event]"
-	log_debug(debug_message)
+	log_debug(SPAN_DEBUG(debug_message))
 
 	if(!picked_event)
 		return

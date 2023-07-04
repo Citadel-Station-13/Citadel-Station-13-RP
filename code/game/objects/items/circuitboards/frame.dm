@@ -70,12 +70,6 @@
 
 //! Computers
 
-/obj/item/circuitboard/holopad
-	name = T_BOARD("holopad")
-	build_path = /obj/machinery/hologram/holopad
-	board_type = new /datum/frame/frame_types/holopad
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
-
 /obj/item/circuitboard/scanner_console
 	name = T_BOARD("body scanner console")
 	build_path = /obj/machinery/body_scanconsole
@@ -208,6 +202,7 @@
 		/obj/item/stack/cable_coil = 10,
 		/obj/item/stock_parts/capacitor = 2,
 		/obj/item/stock_parts/console_screen = 1,
+		/obj/item/smes_coil = 1,
 	)
 
 /obj/item/circuitboard/body_scanner

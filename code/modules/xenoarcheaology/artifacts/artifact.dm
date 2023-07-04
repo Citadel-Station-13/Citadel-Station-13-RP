@@ -174,7 +174,7 @@
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_NITRO && !secondary_effect.activated)
 			secondary_effect.ToggleActivate(0)
 
-/obj/machinery/artifact/attack_hand(var/mob/user as mob)
+/obj/machinery/artifact/attack_hand(mob/user, list/params)
 	if (get_dist(user, src) > 1)
 		to_chat(user, "<font color='red'>You can't reach [src] from here.</font>")
 		return
@@ -240,7 +240,7 @@
 			secondary_effect.ToggleActivate(0)
 	else
 		..()
-		if (my_effect.trigger == TRIGGER_FORCE && W.force >= 10)
+		if (my_effect.trigger == TRIGGER_FORCE && W.damage_force >= 10)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_FORCE && prob(25))
 			secondary_effect.ToggleActivate(0)
@@ -274,16 +274,16 @@
 			to_chat(M, "<b>You accidentally touch [src].</b>")
 	..()
 
-/obj/machinery/artifact/bullet_act(var/obj/item/projectile/P)
-	if(istype(P,/obj/item/projectile/bullet))
+/obj/machinery/artifact/bullet_act(var/obj/projectile/P)
+	if(istype(P,/obj/projectile/bullet))
 		if(my_effect.trigger == TRIGGER_FORCE)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_FORCE && prob(25))
 			secondary_effect.ToggleActivate(0)
 
-	else if(istype(P,/obj/item/projectile/beam) ||\
-		istype(P,/obj/item/projectile/ion) ||\
-		istype(P,/obj/item/projectile/energy))
+	else if(istype(P,/obj/projectile/beam) ||\
+		istype(P,/obj/projectile/ion) ||\
+		istype(P,/obj/projectile/energy))
 		if(my_effect.trigger == TRIGGER_ENERGY)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_ENERGY && prob(25))

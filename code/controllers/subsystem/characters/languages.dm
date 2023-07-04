@@ -20,16 +20,10 @@
 		if(initial(L.abstract_type) == path)
 			continue
 		L = new path
-		if(language_lookup[L.id])
-			stack_trace("duped language id [L.id] on [path] skipped")
-			continue
-		if(language_names[L.name])
-			stack_trace("duped language name [L.name] on [path] skipped")
-			continue
 		language_lookup[L.id] = L
 		language_names[L.name] = L
 		language_paths[path] = L
-		if(!(L.language_flags & NONGLOBAL))
+		if(!(L.language_flags & LANGUAGE_NONGLOBAL) && L.key)
 			language_keys[L.key] = L
 
 	tim_sort(language_names, /proc/cmp_auto_compare, TRUE)

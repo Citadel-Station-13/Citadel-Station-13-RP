@@ -2,14 +2,14 @@
 	has_sensors = UNIFORM_HAS_NO_SENSORS
 	species_restricted = list(SPECIES_VOX)
 	starting_accessories = list(/obj/item/clothing/accessory/storage/vox)	// Dont' start with a backback, so free webbing
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 
 /obj/item/clothing/under/vox/vox_casual
 	name = "alien clothing"
 	desc = "This doesn't look very comfortable."
 	icon_state = "vox-casual-1"
 	item_state = "vox-casual-1"
-	body_parts_covered = LEGS
+	body_cover_flags = LEGS
 
 /obj/item/clothing/under/vox/vox_robes
 	name = "alien robes"
@@ -29,7 +29,7 @@
 	desc = "An alien mesh. Seems to be made up mostly of pockets and writhing flesh."
 	icon_state = "webbing-vox"
 
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 
 	slots = 3
 
@@ -45,9 +45,9 @@
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Now in classic grey!"
 	icon = 'icons/obj/clothing/uniforms.dmi'
 	icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
-	flags_inv = HIDEGLOVES|HIDESHOES
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	flags = PHORONGUARD
+	inv_hide_flags = HIDEGLOVES|HIDESHOES
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	atom_flags = PHORONGUARD
 
 /obj/item/clothing/under/pressuresuit/voxcivassistant
 	name = "assistant pressure suit"

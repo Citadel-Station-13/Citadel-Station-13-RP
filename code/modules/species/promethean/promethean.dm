@@ -35,9 +35,9 @@ var/datum/species/shapeshifter/promethean/prometheans
 	push_flags = ~HEAVY
 	swap_flags = ~HEAVY
 
-	species_flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
+	species_flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
 	species_appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | RADIATION_GLOWS | HAS_UNDERWEAR
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
 	health_hud_intensity = 2
 
@@ -57,7 +57,6 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	max_age = 80
 
-	economic_modifier = 3
 
 	gluttonous = 0
 	virus_immune = TRUE
@@ -83,7 +82,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	body_temperature = T20C	// Room temperature
 
-	rarity_value = 5
+	//rarity_value = 5
 	siemens_coefficient = 1 //As of writing, original was 0.4 (bad)
 
 	genders = list(MALE, FEMALE, NEUTER, PLURAL)
@@ -123,6 +122,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 		/mob/living/carbon/human/proc/regenerate,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
+		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/carbon/human/proc/shapeshifter_select_gender,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
@@ -136,7 +136,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	)
 
 	valid_transform_species = list(
-		SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL,
+		SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_TAJ, SPECIES_SKRELL,
 		SPECIES_DIONA, SPECIES_TESHARI, SPECIES_MONKEY, SPECIES_SERGAL,
 		SPECIES_AKULA, SPECIES_NEVREAN, SPECIES_ZORREN_HIGH,
 		SPECIES_ZORREN_FLAT, SPECIES_VULPKANIN, SPECIES_VASILISSAN,
@@ -246,7 +246,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 		return
 
 	//Human form
-	else if(stat || paralysis || stunned || weakened || restrained())
+	else if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || restrained())
 		to_chat(src, SPAN_WARNING("You can only do this while not stunned."))
 		return
 	else

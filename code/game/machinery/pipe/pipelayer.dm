@@ -24,7 +24,6 @@
 /obj/machinery/pipelayer/Initialize(mapload)
 	. = ..()
 	W = new(src)
-	default_apply_parts()
 	update_icon()
 
 /obj/machinery/pipelayer/Destroy()
@@ -52,7 +51,7 @@
 	old_turf = new_turf
 	old_dir = turn(M_Dir, 180)
 
-/obj/machinery/pipelayer/attack_hand(mob/user as mob)
+/obj/machinery/pipelayer/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(panel_open)
@@ -112,7 +111,7 @@
 
 	..()
 
-/obj/machinery/pipelayer/examine(mob/user)
+/obj/machinery/pipelayer/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>The [src] has [metal] sheets, is set to produce [P_type_t], and auto-dismantling is [!a_dis?"de":""]activated.</span>"
 

@@ -8,7 +8,7 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 			)
 	item_state = "flamethrower_0"
-	force = 3.0
+	damage_force = 3.0
 	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 5
@@ -44,20 +44,25 @@
 		location.hotspot_expose(700, 2)
 
 /obj/item/flamethrower/update_icon()
-	overlays.Cut()
+	cut_overlays()
+
+	var/list/overlays_to_add = list()
 	if(igniter)
-		overlays += "+igniter[status]"
+		overlays_to_add += "+igniter[status]"
 	if(ptank)
-		overlays += "+ptank"
+		overlays_to_add += "+ptank"
 	if(lit)
-		overlays += "+lit"
+		overlays_to_add += "+lit"
 		item_state = "flamethrower_1"
 	else
 		item_state = "flamethrower_0"
+
+	add_overlay(overlays_to_add)
+
 	return
 
-/obj/item/flamethrower/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
+/obj/item/flamethrower/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	// Make sure our user is still holding us
 	if(user && user.get_active_held_item() == src)
 		var/turf/target_turf = get_turf(target)
@@ -118,19 +123,22 @@
 	return
 
 
-/obj/item/flamethrower/attack_self(mob/user as mob)
+/obj/item/flamethrower/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.stat || user.restrained() || user.lying)	return
 	user.set_machine(src)
 	if(!ptank)
 		to_chat(user, "<span class='notice'>Attach a phoron tank first!</span>")
 		return
-	var/dat = text("<TT><B>Flamethrower (<A HREF='?src=\ref[src];light=1'>[lit ? "<font color='red'>Lit</font>" : "Unlit"]</a>)</B><BR>\n Tank Pressure: [ptank.air_contents.return_pressure()]<BR>\nAmount to throw: <A HREF='?src=\ref[src];amount=-100'>-</A> <A HREF='?src=\ref[src];amount=-10'>-</A> <A HREF='?src=\ref[src];amount=-1'>-</A> [throw_amount] <A HREF='?src=\ref[src];amount=1'>+</A> <A HREF='?src=\ref[src];amount=10'>+</A> <A HREF='?src=\ref[src];amount=100'>+</A><BR>\n<A HREF='?src=\ref[src];remove=1'>Remove phorontank</A> - <A HREF='?src=\ref[src];close=1'>Close</A></TT>")
+	var/dat = "<TT><B>Flamethrower (<A HREF='?src=\ref[src];light=1'>[lit ? "<font color='red'>Lit</font>" : "Unlit"]</a>)</B><BR>\n Tank Pressure: [ptank.air_contents.return_pressure()]<BR>\nAmount to throw: <A HREF='?src=\ref[src];amount=-100'>-</A> <A HREF='?src=\ref[src];amount=-10'>-</A> <A HREF='?src=\ref[src];amount=-1'>-</A> [throw_amount] <A HREF='?src=\ref[src];amount=1'>+</A> <A HREF='?src=\ref[src];amount=10'>+</A> <A HREF='?src=\ref[src];amount=100'>+</A><BR>\n<A HREF='?src=\ref[src];remove=1'>Remove phorontank</A> - <A HREF='?src=\ref[src];close=1'>Close</A></TT>"
 	user << browse(dat, "window=flamethrower;size=600x300")
 	onclose(user, "flamethrower")
 	return
 
 
-/obj/item/flamethrower/Topic(href,href_list[])
+/obj/item/flamethrower/Topic(href, list/href_list)
 	if(href_list["close"])
 		usr.unset_machine()
 		usr << browse(null, "window=flamethrower")

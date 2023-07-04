@@ -17,7 +17,7 @@
 	open = round(rand(0, 1))
 	update_icon()
 
-/obj/structure/toilet/attack_hand(mob/living/user as mob)
+/obj/structure/toilet/attack_hand(mob/user, list/params)
 	if(swirlie)
 		usr.setClickCooldown(user.get_attack_speed())
 		usr.visible_message("<span class='danger'>[user] slams the toilet seat onto [swirlie.name]'s head!</span>", "<span class='notice'>You slam the toilet seat onto [swirlie.name]'s head!</span>", "You hear reverberating porcelain.")
@@ -119,7 +119,22 @@
 			else
 				to_chat(user, "<span class='notice'>You need a tighter grip.</span>")
 
+/obj/item/reagent_containers/food/urinalcake
+	name = "urinal cake"
+	desc = "A small, pleasant smelling air freshener keeping the bathroom smelling clean. It looks tasty... but, no, you shouldn't... Unless?"
+	icon = 'icons/obj/food_snacks.dmi'
+	icon_state = "urinalcake"
+	w_class = WEIGHT_CLASS_TINY
 
+/obj/item/reagent_containers/food/urinalcake/New()
+	. = ..()
+	reagents.add_reagent("chlorine", 3)
+	reagents.add_reagent("ammonia", 1)
+
+/obj/item/reagent_containers/food/urinalcake/attack_self(mob/living/user)
+	user.visible_message("<span class='notice'>[user] squishes [src]!</span>", "<span class='notice'>You squish [src].</span>", "<i>You hear a squish.</i>")
+	icon_state = "urinalcake_squish"
+	addtimer(VARSET_CALLBACK(src, icon_state, "urinalcake"), 8)
 
 /obj/machinery/shower
 	name = "shower"
@@ -157,7 +172,10 @@
 	anchored = 1
 	mouse_opacity = 0
 
-/obj/machinery/shower/attack_hand(mob/M as mob)
+/obj/machinery/shower/attack_hand(mob/user, list/params)
+	var/mob/living/M = user
+	if(!istype(M))
+		return
 	on = !on
 	update_icon()
 	if(on)
@@ -183,13 +201,13 @@
 			add_fingerprint(user)
 
 /obj/machinery/shower/update_icon()	//this is terribly unreadable, but basically it makes the shower mist up
-	overlays.Cut()					//once it's been on for a while, in addition to handling the water overlay.
+	cut_overlays()					//once it's been on for a while, in addition to handling the water overlay.
 	if(mymist)
 		qdel(mymist)
 		mymist = null
 
 	if(on)
-		overlays += image('icons/obj/watercloset.dmi', src, "water", MOB_LAYER + 1, dir)
+		add_overlay(image('icons/obj/watercloset.dmi', src, "water", MOB_LAYER + 1, dir))
 		if(temperature_settings[watertemp] < T20C)
 			return //no mist for cold water
 		if(!ismist)
@@ -211,7 +229,10 @@
 
 //Yes, showers are super powerful as far as washing goes.
 /obj/machinery/shower/proc/wash(atom/movable/O as obj|mob)
-	if(!on) return
+	if(!on)
+		return
+
+	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER, RAD_CONTAMINATION_CLEANSE_FACTOR)
 
 	if(isliving(O))
 		var/mob/living/L = O
@@ -242,19 +263,19 @@
 			var/washglasses = 1
 
 			if(H.wear_suit)
-				washgloves = !(H.wear_suit.flags_inv & HIDEGLOVES)
-				washshoes = !(H.wear_suit.flags_inv & HIDESHOES)
+				washgloves = !(H.wear_suit.inv_hide_flags & HIDEGLOVES)
+				washshoes = !(H.wear_suit.inv_hide_flags & HIDESHOES)
 
 			if(H.head)
-				washmask = !(H.head.flags_inv & HIDEMASK)
-				washglasses = !(H.head.flags_inv & HIDEEYES)
-				washears = !(H.head.flags_inv & HIDEEARS)
+				washmask = !(H.head.inv_hide_flags & HIDEMASK)
+				washglasses = !(H.head.inv_hide_flags & HIDEEYES)
+				washears = !(H.head.inv_hide_flags & HIDEEARS)
 
 			if(H.wear_mask)
 				if (washears)
-					washears = !(H.wear_mask.flags_inv & HIDEEARS)
+					washears = !(H.wear_mask.inv_hide_flags & HIDEEARS)
 				if (washglasses)
-					washglasses = !(H.wear_mask.flags_inv & HIDEEYES)
+					washglasses = !(H.wear_mask.inv_hide_flags & HIDEEYES)
 
 			if(H.head)
 				if(H.head.clean_blood())
@@ -308,12 +329,12 @@
 	for(var/thing in loc)
 		var/atom/movable/AM = thing
 		var/mob/living/L = thing
-		if(istype(AM) && !(AM.flags & ATOM_ABSTRACT))
+		if(istype(AM) && !(AM.atom_flags & ATOM_ABSTRACT))
 			wash(AM)
 			if(istype(L))
 				process_heat(L)
 	wash_floor()
-	reagents.add_reagent("water", reagents.get_free_space())
+	reagents.add_reagent("water", reagents.available_volume())
 
 /obj/machinery/shower/proc/wash_floor()
 	if(!ismist && is_washing)
@@ -367,7 +388,7 @@
 	thing.reagents.clear_reagents()
 	thing.update_icon()
 
-/obj/structure/sink/attack_hand(mob/user as mob)
+/obj/structure/sink/attack_hand(mob/user, list/params)
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
@@ -417,9 +438,9 @@
 		if(B.bcell)
 			if(B.bcell.charge > 0 && B.status == 1)
 				flick("baton_active", src)
-				user.Stun(10)
+				user.afflict_stun(20 * 10)
 				user.stuttering = 10
-				user.Weaken(10)
+				user.afflict_paralyze(20 * 10)
 				if(isrobot(user))
 					var/mob/living/silicon/robot/R = user
 					R.cell.charge -= 20
@@ -476,7 +497,7 @@
 	icon_state = "puddle"
 	desc = "A small pool of some liquid, ostensibly water."
 
-/obj/structure/sink/puddle/attack_hand(mob/M as mob)
+/obj/structure/sink/puddle/attack_hand(mob/user, list/params)
 	icon_state = "puddle-splash"
 	..()
 	icon_state = "puddle"
@@ -500,7 +521,7 @@
 	reagents.add_reagent(dispensedreagent, 20)
 
 /* Okay, just straight up, I tried to code this like blood overlays, but I just do NOT understand the system. If someone wants to sort it, enable this too.
-/obj/structure/sink/oil_well/attack_hand(mob/M)
+/obj/structure/sink/oil_well/attack_hand(mob/user, list/params)
 	flick("puddle-oil-splash",src)
 	reagents.reaction(M, 20) //Covers target in 20u of oil.
 	to_chat(M, "<span class='notice'>You touch the pool of oil, only to get oil all over yourself. It would be wise to wash this off with water.</span>")
@@ -533,9 +554,13 @@
 	var/plunge_mod = 1 //time*plunge_mod = total time we take to plunge an object
 	var/reinforced = FALSE //whether we do heavy duty stuff like geysers
 
-/obj/item/plunger/attack(obj/O, mob/living/user)
-	if(!O.plunger_act(src, user, reinforced))
+/obj/item/plunger/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!isobj(target))
 		return ..()
+	var/obj/O = target
+	if(O.plunger_act(src, user, reinforced))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/plunger/throw_impact(atom/hit_atom, mob/living/carbon/human/target, target_zone)
 	. = ..()

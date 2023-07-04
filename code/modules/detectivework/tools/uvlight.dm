@@ -18,7 +18,10 @@
 	var/on = 0
 	var/step_alpha = 50
 
-/obj/item/uv_light/attack_self(var/mob/user)
+/obj/item/uv_light/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	on = !on
 	if(on)
 		set_light(range, 2, "#007fff")
@@ -43,7 +46,7 @@
 		stored_alpha.Cut()
 	if(reset_objects.len)
 		for(var/obj/item/I in reset_objects)
-			I.overlays -= I.blood_overlay
+			I.cut_overlay(I.blood_overlay)
 			if(I.fluorescent == 2) I.fluorescent = 1
 		reset_objects.Cut()
 
@@ -67,5 +70,5 @@
 					if(istype(A, /obj/item))
 						var/obj/item/O = A
 						if(O.was_bloodied && !(O.blood_overlay in O.overlays))
-							O.overlays |= O.blood_overlay
+							O.add_overlay(O.blood_overlay)
 							reset_objects |= O

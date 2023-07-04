@@ -12,5 +12,9 @@
 	max_damage = 75
 	min_broken_damage = 35
 	eye_icon = "eyes_s"
-	force = 5
+	damage_force = 5
 	throw_force = 10
+
+/obj/item/organ/external/head/unathi/digi
+	eye_icon = "eyes_lizard"
+	eye_icon_location = 'icons/mob/species/unathidigi/eyes.dmi'

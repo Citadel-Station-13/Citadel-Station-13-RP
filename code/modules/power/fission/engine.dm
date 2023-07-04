@@ -1,5 +1,5 @@
-#define REACTOR_RADIATION_MULTIPLIER 20
-#define BREACH_RADIATION_MULTIPLIER 0.1
+#define REACTOR_RADIATION_MULTIPLIER 200
+#define BREACH_RADIATION_MULTIPLIER 1
 #define REACTOR_TEMPERATURE_CUTOFF 10000
 #define REACTOR_RADS_TO_MJ 10000
 
@@ -104,9 +104,9 @@
 
 	var/healthmul = (((health / max_health) - 1) / -1)
 	var/power = (decay_heat / REACTOR_RADS_TO_MJ) * max(healthmul, 0.1)
-	SSradiation.radiate(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0))
+	radiation_pulse(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0), RAD_FALLOFF_ENGINE_FISSION)
 
-/obj/machinery/power/fission/attack_hand(mob/user)
+/obj/machinery/power/fission/attack_hand(mob/user, list/params)
 	nano_ui_interact(user)
 
 /obj/machinery/power/fission/attack_robot(mob/user)
@@ -403,7 +403,7 @@
 /obj/machinery/power/fission/proc/go_nuclear()
 	if(health < 1 && !exploded)
 		var/off_station = 0
-		if(!(src.z in GLOB.using_map.station_levels))
+		if(!(src.z in (LEGACY_MAP_DATUM).station_levels))
 			off_station = 1
 		var/turf/L = get_turf(src)
 		if(!istype(L))
@@ -436,40 +436,7 @@
 
 		// Give the alarm time to play. Then... FLASH! AH-AH!
 		spawn(15 SECONDS)
-			SSradiation.z_radiate(locate(1, 1, L.z), rad_power * BREACH_RADIATION_MULTIPLIER, 1)
-			for(var/mob/living/mob in living_mob_list)
-				var/turf/T = get_turf(mob)
-				if(T && (L.z == T.z))
-					var/root_distance = sqrt(1 / (get_dist(mob, src) + 1))
-					var/rads = rad_power * root_distance
-					if(mob.loc != T) // Not on turf, ergo, sheltered.
-						rads = rads / 2
-					var/eye_safety = 3 // Don't stun unless they have the correct eye organs.
-					if(iscarbon(mob))
-						var/mob/living/carbon/M = mob
-						eye_safety = M.eyecheck()
-					if(eye_safety < 3) // You've got a welding helmet over sunglasses? Congratulations, you're not blind.
-						mob.Stun(2)
-						mob.Weaken(10)
-						mob.flash_eyes()
-					if(istype(mob, /mob/living/carbon/human))
-						var/mob/living/carbon/human/H = mob
-						if(eye_safety < 2)
-							var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
-							if(istype(E))
-								E.damage += root_distance * 100
-								if(E.damage >= E.min_broken_damage)
-									to_chat(H, "<span class='danger'>You are blinded by the flash!</span>")
-									H.sdisabilities |= SDISABILITY_NERVOUS
-								else if(E.damage >= E.min_bruised_damage)
-									to_chat(H, "<span class='danger'>You are blinded by the flash!</span>")
-									H.eye_blind = 5
-									H.eye_blurry = 5
-								else if(E.damage > 10)
-									to_chat(H, "<span class='warning'>Your eyes burn.</span>")
-						if(!H.isSynthetic())
-							H.radiation += max(rads / 10, 0) // Not even a radsuit can save you now.
-						H.apply_damage(max((rads / 10) * H.species.radiation_mod, 0), BURN) // Flash burns
+			z_radiation(get_turf(src), null, rad_power * BREACH_RADIATION_MULTIPLIER / RAD_MOB_ACT_COEFFICIENT, RAD_FALLOFF_ZLEVEL_FISSION_MELTDOWN)
 
 		// Some engines just want to see the world burn.
 		spawn(17 SECONDS)

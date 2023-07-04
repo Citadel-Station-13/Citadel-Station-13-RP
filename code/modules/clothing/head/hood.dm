@@ -2,9 +2,9 @@
 	name = "hood"
 	desc = "A generic hood."
 	icon_state = "generic_hood"
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 	cold_protection = HEAD
-	flags_inv = HIDEEARS | BLOCKHAIR
+	inv_hide_flags = HIDEEARS | BLOCKHAIR
 
 // Winter coats
 /obj/item/clothing/head/hood/winter
@@ -125,42 +125,35 @@
 /obj/item/clothing/head/hood/winter/durathread
 	icon_state = "winterhood_durathread"
 
-//Ronin Coat Hood
-/obj/item/clothing/head/hood/ronin
-	name = "ronin heating coils"
-	desc = "Glowing coils designed to ward off cold temperatures."
-	icon_state = "ronin_hood"
-	flags_inv = NONE
-
 //Hazardous Softsuit Hoods
 /obj/item/clothing/head/hood/explorer
 	name = "explorer hood"
 	desc = "An armoured hood for exploring harsh environments."
 	icon_state = "explorer"
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.9
-	armor = list(melee = 30, bullet = 20, laser = 20, energy = 20, bomb = 35, bio = 75, rad = 35)
+	armor_type = /datum/armor/exploration/soft
 
 /obj/item/clothing/head/hood/miner
 	name = "miner hood"
 	desc = "An armoured hood for mining in harsh environments."
 	icon = 'icons/clothing/suit/mining.dmi'
 	icon_state = "minehood"
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.9
-	armor = list(melee = 50, bullet = 5, laser = 10, energy = 0, bomb = 35, bio = 50, rad = 65)
+	armor_type = /datum/armor/cargo/mining/soft
 
 // Eldritch suit
 /obj/item/clothing/head/hood/eldritch
 	name = "eldritch hood"
 	desc = "A baggy hood smeared with some kind of waxy substance. Up close, what appeared to be burlap is revealed to actually be tanned skin."
 	icon_state = "eldritch"
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	siemens_coefficient = 0.9
-	armor = list(melee = 20, bullet = 0, laser = 40, energy = 40, bomb = 20, bio = 30, rad = 20)
+	armor_type = /datum/armor/lavaland/eldritch
 
 // Costumes
 /obj/item/clothing/head/hood/carp_hood
@@ -194,7 +187,7 @@
 	name = "goliath cloak hood"
 	icon_state = "golhood"
 	desc = "A protective & concealing hood."
-	armor = list("melee" = 35, "bullet" = 10, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60)
+	armor_type = /datum/armor/lavaland/goliath
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
@@ -202,7 +195,7 @@
 	name = "drake helm"
 	icon_state = "dragon"
 	desc = "The skull of a dragon."
-	armor = list("melee" = 70, "bullet" = 20, "laser" = 35, "energy" = 25, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
+	armor_type = /datum/armor/lavaland/drake
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
@@ -227,13 +220,43 @@
 	name = "Springtime Pariah Moto Jacket hood"
 	desc = "The internal cooling system of the jacket can be swapped to fire hot air in cold environments."
 	icon_state = "empty_hood"
-	flags_inv = NONE
+	inv_hide_flags = NONE
 
-/obj/item/clothing/head/hood/runner
-	name = "Runner Jacket hood"
-	desc = "The internal cooling system of the jacket can be swapped to fire hot air in cold environments."
-	icon_state = "empty_hood"
-	flags_inv = NONE
+/obj/item/clothing/head/hood/mercy
+	name = "Mercy Hood"
+	desc = "A comfortable, sterile hood covered in Areaian Silk."
+	icon_state = "mercy_hood"
 
-/obj/item/clothing/head/hood/runner/half_pint
-	name = "Half-Pint hood"
+//The Covert/Overt Spec Ops Carrier Hood - This is technically a helmet, but due to how it works I'm putting it here.
+/obj/item/clothing/head/hood/covertcarrier
+	name = "advanced retractable helmet"
+	desc = "A heavily modified NT-DDO standard issue combat helmet. Although this configuration is necessarily not spaceworthy, it retains its counterpart's protections."
+	icon = 'icons/obj/clothing/spacesuits.dmi'
+	icon_state = "deathsquad"
+	armor_type = /datum/armor/station/heavy
+	clothing_flags = CLOTHING_THICK_MATERIAL
+	inv_hide_flags = BLOCKHAIR
+	siemens_coefficient = 0.7
+
+/obj/item/clothing/head/hood/covertcarrier/blueshield
+	name = "experimental retractable helmet"
+	desc = "A modified NT standard issue helmet. It has been designed to retract and collapse in on itself without sacrificing protection."
+	icon = 'icons/obj/clothing/hats.dmi'
+	icon_state = "helmet"
+	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
+	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
+	clothing_flags = CLOTHING_THICK_MATERIAL
+	armor_type = /datum/armor/station/medium
+	siemens_coefficient = 0.7
+
+/obj/item/clothing/head/hood/covertcarrier/blueshield/navy
+	name = "experimental retractable helmet"
+	desc = "A modified NT standard issue helmet. It has been designed to retract and collapse in on itself without sacrificing protection."
+	icon = 'icons/obj/clothing/hats.dmi'
+	icon_state = "helmet"
+	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
+	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
+	clothing_flags = CLOTHING_THICK_MATERIAL
+	armor_type = /datum/armor/station/medium
+	siemens_coefficient = 0.7
+	starting_accessories = list(/obj/item/clothing/accessory/armor/helmcover/navy)

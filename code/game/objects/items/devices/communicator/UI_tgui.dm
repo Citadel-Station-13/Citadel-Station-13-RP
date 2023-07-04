@@ -5,8 +5,9 @@
 	// Stuff needed to render the map
 	var/map_name
 	var/atom/movable/screen/map_view/cam_screen
-	var/list/cam_plane_masters
 	var/atom/movable/screen/background/cam_background
+	/// plane holder
+	var/datum/plane_holder/tgui_camera/planes
 	/// parallax holder for camera
 	var/datum/parallax_holder/parallax
 
@@ -23,19 +24,15 @@
 	cam_screen.del_on_map_removal = FALSE
 	cam_screen.screen_loc = "[map_name]:1,1"
 
-	cam_plane_masters = get_tgui_plane_masters()
-
-	for(var/plane in cam_plane_masters)
-		var/atom/movable/screen/instance = plane
-		instance.assigned_map = map_name
-		instance.del_on_map_removal = FALSE
-		instance.screen_loc = "[map_name]:CENTER"
-
-	parallax = new(null, map_name, src, locate(/atom/movable/screen/plane_master/parallax) in cam_plane_masters)
-
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
+
+/obj/item/communicator/proc/ensure_tgui_camera()
+	if(isnull(planes))
+		planes = new(map_name)
+	if(isnull(parallax))
+		parallax = new(secondary_map = map_name, forced_eye = src)
 
 // Proc: update_active_camera_screen()
 // Parameters: None
@@ -86,7 +83,7 @@
 // Proc: ui_state()
 // Parameters: User
 // Description: This tells TGUI to only allow us to be interacted with while in a mob inventory.
-/obj/item/communicator/ui_state(mob/user)
+/obj/item/communicator/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 // Proc: ui_interact()
@@ -99,10 +96,10 @@
 	if(!ui)
 		// Register map objects
 		user.client.register_map_obj(cam_screen)
-		for(var/plane in cam_plane_masters)
-			user.client.register_map_obj(plane)
 		user.client.register_map_obj(cam_background)
-		parallax.Apply(user.client)
+		ensure_tgui_camera()
+		planes.apply(user.client)
+		parallax.apply(user.client)
 		// Setup UI
 		ui = new(user, src, "Communicator", name)
 		if(custom_state)
@@ -111,9 +108,12 @@
 	if(custom_state) // Just in case
 		ui.set_state(custom_state)
 
-/obj/item/communicator/ui_close(mob/user)
+/obj/item/communicator/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
-	parallax.Remove(user.client)
+	if(isnull(user.client))
+		return // what???
+	parallax.remove(user.client)
+	planes.remove(user.client)
 
 // Proc: ui_data()
 // Parameters: User, UI, State
@@ -310,7 +310,7 @@
 // Proc: tgui-act()
 // Parameters: 4 (standard ui_act arguments)
 // Description: Responds to UI button presses.
-/obj/item/communicator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/communicator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -49,15 +49,13 @@
 
 /obj/machinery/atmospherics/component/quaternary/update_icon()
 	if(machine_stat & NOPOWER)
-		overlays = overlays_off
+		set_overlays(overlays_off.Copy())
 	else if(error_check())
-		overlays = overlays_error
+		set_overlays(overlays_error.Copy())
 	else
-		overlays = use_power ? (overlays_on) : (overlays_off)
+		set_overlays(use_power ? overlays_on.Copy() : overlays_off.Copy())
 
 	underlays = underlays_current
-
-	return
 
 /obj/machinery/atmospherics/component/quaternary/proc/error_check()
 	return
@@ -104,7 +102,7 @@
 		return TRUE
 	return FALSE
 
-/obj/machinery/atmospherics/component/quaternary/attack_hand(user as mob)
+/obj/machinery/atmospherics/component/quaternary/attack_hand(mob/user, list/params)
 	if(..())
 		return
 

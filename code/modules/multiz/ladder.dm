@@ -37,16 +37,24 @@
 	attack_hand(user)
 	return
 
-/obj/structure/ladder/attack_hand(var/mob/M)
+/obj/structure/ladder/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/M = user
+	if(!istype(M))
+		return
 	if(!M.may_climb_ladders(src))
 		return
 
 	var/obj/structure/ladder/target_ladder = getTargetLadder(M)
 	if(!target_ladder)
 		return
-	if(!(M.loc == loc) && !M.Move(get_turf(src)))
-		to_chat(M, "<span class='notice'>You fail to reach \the [src].</span>")
-		return
+	if(M.loc != loc)
+		step_towards(M, loc)
+		if(M.loc != loc)
+			to_chat(M, "<span class='notice'>You fail to reach \the [src].</span>")
+			return
 
 	climbLadder(M, target_ladder)
 

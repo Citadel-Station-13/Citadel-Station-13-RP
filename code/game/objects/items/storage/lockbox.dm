@@ -6,7 +6,7 @@
 	w_class = ITEMSIZE_LARGE
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4 //The sum of the w_classes of all the items in this storage item.
-	req_access = list(access_armory)
+	req_access = list(ACCESS_SECURITY_ARMORY)
 	preserve_item = 1
 	var/locked = 1
 	var/broken = 0
@@ -74,7 +74,7 @@
 
 /obj/item/storage/lockbox/loyalty
 	name = "lockbox of loyalty implants"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	starts_with = list(
 		/obj/item/implantcase/loyalty = 3,
 		/obj/item/implanter/loyalty,
@@ -83,13 +83,13 @@
 /obj/item/storage/lockbox/clusterbang
 	name = "lockbox of clusterbangs"
 	desc = "You have a bad feeling about opening this."
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	starts_with = list(/obj/item/grenade/flashbang/clusterbang)
 
 /obj/item/storage/lockbox/medal
 	name = "lockbox of medals"
 	desc = "A lockbox filled with commemorative medals, it has the NanoTrasen logo stamped on it."
-	req_access = list(access_heads)
+	req_access = list(ACCESS_COMMAND_BRIDGE)
 	storage_slots = 7
 	starts_with = list(
 		/obj/item/clothing/accessory/medal/conduct,
@@ -104,47 +104,47 @@
 //Exploration "Gimmick" Boxes
 /obj/item/storage/lockbox/colonial
 	name = "Colonial Equipment Pack"
-	req_access = list(access_pathfinder)
+	req_access = list(ACCESS_GENERAL_PATHFINDER)
 	storage_slots = 34
 	starts_with = list(
 		/obj/item/clothing/under/customs/khaki = 4,
 		/obj/item/clothing/suit/colonial_redcoat = 4,
 		/obj/item/clothing/head/redcoat = 4,
-		/obj/item/gun/projectile/musket/pistol = 1,
+		/obj/item/gun/ballistic/musket/pistol = 1,
 		/obj/item/ammo_casing/musket  = 12,
 		/obj/item/storage/belt/sheath = 1,
-		/obj/item/gun/projectile/musket = 3,
+		/obj/item/gun/ballistic/musket = 3,
 		/obj/item/reagent_containers/glass/powder_horn = 4,
 		/obj/item/reagent_containers/food/drinks/tea = 8,
 	)
 
 /obj/item/storage/lockbox/gateway
 	name = "Gateway Guardian Pack"
-	req_access = list(access_pathfinder)
+	req_access = list(ACCESS_GENERAL_PATHFINDER)
 	storage_slots = 24
 	starts_with = list(
 		/obj/item/clothing/under/tactical = 4,
 		/obj/item/clothing/accessory/storage/black_vest = 4,
 		/obj/item/clothing/head/soft/black = 4,
-		/obj/item/gun/projectile/automatic/p90 = 2,
+		/obj/item/gun/ballistic/automatic/p90 = 2,
 		/obj/item/ammo_magazine/m57x28mmp90 = 4,
-		/obj/item/gun/projectile/p92x = 1,
+		/obj/item/gun/ballistic/p92x = 1,
 		/obj/item/ammo_magazine/m9mm = 2,
 	)
 
 /obj/item/storage/lockbox/cowboy
 	name = "Cyan Posse Pack"
-	req_access = list(access_pathfinder)
+	req_access = list(ACCESS_GENERAL_PATHFINDER)
 	storage_slots = 33
 	starts_with = list(
 		/obj/item/clothing/suit/storage/toggle/brown_jacket = 4,
 		/obj/item/clothing/shoes/boots/cowboy/classic = 4,
 		/obj/item/clothing/head/cowboy_hat = 4,
-		/obj/item/gun/projectile/revolver/dirty_harry = 2,
+		/obj/item/gun/ballistic/revolver/dirty_harry = 2,
 		/obj/item/ammo_magazine/s44 = 4,
-		/obj/item/gun/projectile/shotgun/pump/rifle/lever/win1895 = 1,
+		/obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895 = 1,
 		/obj/item/ammo_magazine/clip/c762 = 2,
-		/obj/item/gun/projectile/shotgun/doublebarrel/pellet = 1,
+		/obj/item/gun/ballistic/shotgun/doublebarrel/pellet = 1,
 		/obj/item/storage/box/shotgunshells = 1,
 		/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 3,
 		/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 3,
@@ -153,22 +153,22 @@
 
 /obj/item/storage/lockbox/russian
 	name = "Conscript Pack"
-	req_access = list(access_pathfinder)
+	req_access = list(ACCESS_GENERAL_PATHFINDER)
 	storage_slots = 17
 	starts_with = list(
 		/obj/item/clothing/under/soviet = 4,
 		/obj/item/clothing/head/ushanka = 3,
 		/obj/item/clothing/head/bearpelt = 1,
-		/obj/item/gun/projectile/shotgun/pump/rifle = 3,
+		/obj/item/gun/ballistic/shotgun/pump/rifle = 3,
 		/obj/item/ammo_magazine/clip/c762 = 3,
-		/obj/item/gun/projectile/pistol = 1,
+		/obj/item/gun/ballistic/pistol = 1,
 		/obj/item/ammo_magazine/m9mm/compact = 1,
 		/obj/item/reagent_containers/food/drinks/bottle/vodka = 1,
 	)
 
 /obj/item/storage/lockbox/crusade
 	name = "Holy Crusade Pack"
-	req_access = list(access_pathfinder)
+	req_access = list(ACCESS_GENERAL_PATHFINDER)
 	storage_slots = 34
 	starts_with = list(
 		/obj/item/clothing/suit/armor/medieval/crusader/cross/templar = 4,
@@ -181,7 +181,7 @@
 
 /obj/item/storage/lockbox/maniple
 	name = "Maniple Pack"
-	req_access = list(access_pathfinder)
+	req_access = list(ACCESS_GENERAL_PATHFINDER)
 	storage_slots = 16
 	starts_with = list(
 		/obj/item/clothing/under/roman = 4,
@@ -193,7 +193,7 @@
 
 /obj/item/storage/lockbox/away
 	name = "Away Team Pack"
-	req_access = list(access_pathfinder)
+	req_access = list(ACCESS_GENERAL_PATHFINDER)
 	storage_slots = 17
 	starts_with = list(
 		/obj/item/clothing/under/rank/trek/command/ds9 = 1,
@@ -208,7 +208,7 @@
 /obj/item/storage/lockbox/limb_plate
 	name = "Lightweight Plating Kit"
 	desc = "A lockbox filled with a plate harness and modular limb armor."
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	storage_slots = 5
 	starts_with = list(
 		/obj/item/clothing/suit/armor/plate_harness,
@@ -220,7 +220,7 @@
 
 /obj/item/storage/lockbox/limb_plate/emt
 	name = "Lightweight Plating Kit (Paramedic)"
-	req_access = list(access_medical_equip)
+	req_access = list(ACCESS_MEDICAL_EQUIPMENT)
 	starts_with = list(
 		/obj/item/clothing/suit/armor/plate_harness,
 		/obj/item/clothing/accessory/armor/limb_plate/arm_r/emt,

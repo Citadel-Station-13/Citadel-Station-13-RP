@@ -27,15 +27,11 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 			if(PC != src && PC.id_tag == id_tag)
 				warning("Two [src] with the same id_tag of [id_tag]")
 				id_tag = null
-	// TODO - Remove this bit once machines are converted to Initialize
-	if(ispath(circuit))
-		circuit = new circuit(src)
-	default_apply_parts()
 
-/obj/machinery/pointdefense_control/get_description_interaction()
+/obj/machinery/pointdefense_control/get_description_interaction(mob/user)
 	. = ..()
 	if(!id_tag)
-		. += "[desc_panel_image("multitool")]to set ident tag"
+		. += "[desc_panel_image("multitool", user)]to set ident tag"
 
 /obj/machinery/pointdefense_control/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -43,13 +39,13 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		ui = new(user, src, "PointDefenseControl") // 400, 600
 		ui.open()
 
-/obj/machinery/pointdefense_control/attack_hand(mob/user)
+/obj/machinery/pointdefense_control/attack_hand(mob/user, list/params)
 	if(..())
 		return TRUE
 	ui_interact(user)
 	return TRUE
 
-/obj/machinery/pointdefense_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/pointdefense_control/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -140,10 +136,6 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 
 /obj/machinery/power/pointdefense/Initialize(mapload)
 	. = ..()
-	// TODO - Remove this bit once machines are converted to Initialize
-	if(ispath(circuit))
-		circuit = new circuit(src)
-	default_apply_parts()
 	if(anchored)
 		connect_to_network()
 	update_icon()
@@ -151,15 +143,15 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	I.appearance_flags |= RESET_TRANSFORM
 	underlays += I
 
-/obj/machinery/power/pointdefense/examine(mob/user)
+/obj/machinery/power/pointdefense/examine(mob/user, dist)
 	. = ..()
 	if(powernet)
 		. += "It is connected to a power cable below."
 
-/obj/machinery/power/pointdefense/get_description_interaction()
+/obj/machinery/power/pointdefense/get_description_interaction(mob/user)
 	. = ..()
 	if(!id_tag)
-		. += "[desc_panel_image("multitool")]to set ident tag and connect to a mainframe."
+		. += "[desc_panel_image("multitool", user)]to set ident tag and connect to a mainframe."
 
 /obj/machinery/power/pointdefense/update_icon()
 	if(!active || !id_tag || inoperable())
@@ -247,7 +239,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		engaging = null
 		return
 	engaging = target
-	var/Angle = round(Get_Angle(src,M))
+	var/Angle = round(get_visual_angle(src,M))
 	var/matrix/rot_matrix = matrix()
 	rot_matrix.Turn(Angle)
 	addtimer(CALLBACK(src, .proc/finish_shot, target), rotation_speed)
@@ -273,7 +265,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		flick(src, "[initial(icon_state)]_off")
 		return
 	//We throw a laser but it doesnt have to hit for meteor to explode
-	var/obj/item/projectile/beam/pointdefense/beam = new(get_turf(src))
+	var/obj/projectile/beam/pointdefense/beam = new(get_turf(src))
 	playsound(src, 'sound/weapons/mandalorian.ogg', 75, 1)
 	beam.launch_projectile(target = M.loc, user = src)
 

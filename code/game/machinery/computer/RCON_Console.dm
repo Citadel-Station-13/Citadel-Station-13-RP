@@ -11,9 +11,9 @@
 	icon_screen = "ai_fixer"
 	light_color = "#a97faa"
 	circuit = /obj/item/circuitboard/rcon_console
-	req_one_access = list(access_engine)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN)
 	var/current_tag = null
-	var/datum/tgui_module/rcon/rcon
+	var/datum/tgui_module_old/rcon/rcon
 
 /obj/machinery/computer/rcon/Initialize(mapload)
 	. = ..()
@@ -26,7 +26,7 @@
 // Proc: attack_hand()
 // Parameters: 1 (user - Person which clicked this computer)
 // Description: Opens UI of this machine.
-/obj/machinery/computer/rcon/attack_hand(mob/user)
+/obj/machinery/computer/rcon/attack_hand(mob/user, list/params)
 	..()
 	ui_interact(user)
 
@@ -39,4 +39,4 @@
 /obj/machinery/computer/rcon/update_icon()
 	..()
 	if(!(machine_stat & (NOPOWER|BROKEN)))
-		overlays += image(icon, "ai-fixer-empty", overlay_layer)
+		add_overlay(image(icon, "ai-fixer-empty", overlay_layer))

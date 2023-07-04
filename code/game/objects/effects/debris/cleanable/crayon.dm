@@ -23,8 +23,10 @@
 	mainOverlay.Blend(main,ICON_ADD)
 	shadeOverlay.Blend(shade,ICON_ADD)
 
-	overlays += mainOverlay
-	overlays += shadeOverlay
+	var/list/overlays_to_add = list()
+	overlays_to_add += mainOverlay
+	overlays_to_add += shadeOverlay
+	add_overlay(overlays_to_add)
 
 	add_hiddenprint(usr)
 
@@ -53,7 +55,9 @@
 	mainOverlay.Blend(main,ICON_ADD)
 	shadeOverlay.Blend(shade,ICON_ADD)
 
-	overlays += mainOverlay
-	overlays += shadeOverlay
+	var/list/overlays_to_add = list()
+	overlays_to_add += mainOverlay
+	overlays_to_add += shadeOverlay
+	add_overlay(overlays_to_add)
 
 	add_hiddenprint(usr)

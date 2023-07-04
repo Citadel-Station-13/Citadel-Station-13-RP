@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 	lawsync()
 
 	// Give button to leave.
-	verbs += /mob/living/silicon/robot/proc/undeploy_act
+	add_verb(src, /mob/living/silicon/robot/proc/undeploy_act)
 	to_chat(AI, SPAN_NOTICE("You have connected to an AI Shell remotely, and are now in control of it.<br>\
 	To return to your core, use the <b>Release Control</b> verb."))
 
@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 		return
 	if(message)
 		to_chat(src, SPAN_NOTICE(message))
-	mind.transfer_to(mainframe)
+	mind.transfer(mainframe)
 	deployed = FALSE
 	updateicon()
 	mainframe.teleop = null

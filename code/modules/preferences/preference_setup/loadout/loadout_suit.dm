@@ -3,7 +3,7 @@
 	name = "Apron - Blue"
 	path = /obj/item/clothing/suit/storage/apron
 	slot = SLOT_ID_SUIT
-	sort_category = "Suits and Overwear"
+	sort_category = LOADOUT_CATEGORY_SUITS
 
 /datum/gear/suit/apron_white
 	name = "Apron - Colorable"
@@ -161,6 +161,31 @@
 		ponchos[initial(poncho.name)] = poncho
 	gear_tweaks += new/datum/gear_tweak/path(tim_sort(ponchos, /proc/cmp_text_asc))
 
+/datum/gear/suit/dust_cloak_selection
+	name = "Dust cloak Selection"
+	path = /obj/item/clothing/accessory/poncho/dust_cloak
+
+/datum/gear/suit/dust_cloak_selection/New()
+	..()
+	var/list/dustcloak_selection = list()
+	for(var/dustcloak in typesof(/obj/item/clothing/accessory/poncho/dust_cloak))
+		var/obj/item/clothing/accessory/poncho/dustcloak_type = dustcloak
+		dustcloak_selection[initial(dustcloak_type.name)] = dustcloak_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(dustcloak_selection, /proc/cmp_text_asc))
+
+/datum/gear/suit/cyberpunk_coat_selection
+	name = "Cyberpunk Coat Selection"
+	path = /obj/item/clothing/suit/storage/cyberpunk
+
+/datum/gear/suit/cyberpunk_coat_selection/New()
+	..()
+	var/list/cybercoat_selection = list()
+	for(var/cybercoat in typesof(/obj/item/clothing/suit/storage/cyberpunk))
+		var/obj/item/clothing/accessory/poncho/cybercoat_type = cybercoat
+		cybercoat_selection[initial(cybercoat_type.name)] = cybercoat_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(cybercoat_selection, /proc/cmp_text_asc))
+
+
 // A colorable cloak
 /datum/gear/suit/roles/poncho/cloak
 	name = "Cloak - Glowing Light"
@@ -181,7 +206,9 @@
 /datum/gear/suit/halfcloak
 	name = "Rough Half Cloak (Tan)"
 	path = /obj/item/clothing/accessory/poncho/rough_cloak/tan
-
+/datum/gear/suit/halfcloaktorn
+	name = "Rough Torn Half Cloak (Tan)"
+	path = /obj/item/clothing/accessory/poncho/rough_cloak_torn/tan
 /datum/gear/suit/halfcloak/colorable
 	name = "Rough Half Cloak (Colorable)"
 	path = /obj/item/clothing/accessory/poncho/rough_cloak
@@ -189,6 +216,9 @@
 /datum/gear/suit/halfcloak/colorable/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+/datum/gear/suit/halfcloak/colorable/torn
+	name = "Rough Torn Half Cloak (Colorable)"
+	path = /obj/item/clothing/accessory/poncho/rough_cloak_torn
 
 /datum/gear/suit/black_lawyer_jacket
 	name = "Suit Jacket - Black"
@@ -340,15 +370,15 @@
 
 /datum/gear/suit/ronincoat
 	name = "Ronin Coat"
-	path = /obj/item/clothing/suit/storage/hooded/ronincoat
+	path = /obj/item/clothing/suit/storage/toggle/heated/ronincoat
 
 /datum/gear/suit/runnerjacket
 	name = "Runner Jacket"
-	path = /obj/item/clothing/suit/storage/hooded/runner
+	path = /obj/item/clothing/suit/storage/toggle/heated
 
 /datum/gear/suit/halfpintjacket
 	name = "Half-Pint Jacket"
-	path = /obj/item/clothing/suit/storage/hooded/runner/half_pint
+	path = /obj/item/clothing/suit/storage/toggle/heated/half_pint
 
 /datum/gear/suit/halfmoon
 	name = "Half Moon Jacket"
@@ -453,3 +483,204 @@
 /datum/gear/suit/utility_fur_coat
 	name = "Utility Fur Coat"
 	path = /obj/item/clothing/suit/storage/utility_fur_coat
+
+/datum/gear/suit/hobo
+	name = "Ragged Coat"
+	path = /obj/item/clothing/suit/storage/hobo
+
+/datum/gear/suit/kamina
+	name = "Spiral Hero Cloak"
+	path = /obj/item/clothing/suit/storage/kamina
+
+/datum/gear/suit/nerdshirt
+	name = "Nerdy Shirt"
+	path = /obj/item/clothing/suit/nerdshirt
+
+/datum/gear/suit/brownfancycoat
+	name = "Brown Fancy Coat"
+	path = /obj/item/clothing/suit/storage/toggle/brown_fancycoat
+
+/datum/gear/suit/motojacket
+	name = "Motorcycle Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/moto_jacket
+
+/datum/gear/suit/furcoat
+	name = "Furcoat"
+	path = /obj/item/clothing/suit/storage/furcoat
+
+/datum/gear/suit/noble_coat
+	name = "Colorful Noble Coat"
+	path = /obj/item/clothing/suit/storage/noble_coat
+
+/datum/gear/suit/mercy_hoodie
+	name = "Mercy Robe"
+	path = /obj/item/clothing/suit/storage/hooded/mercy
+
+/datum/gear/suit/cyberpunk
+	name = "Cyber Coat"
+	path = /obj/item/clothing/suit/storage/cyberpunk
+
+/datum/gear/suit/cyberpunk_long
+	name = "Cyber Coat Long"
+	path = /obj/item/clothing/suit/storage/cyberpunk/long
+
+/datum/gear/suit/bladerunner
+	name = "Gun Walker Coat"
+	path = /obj/item/clothing/suit/storage/bladerunner
+
+/datum/gear/suit/overcoat_fancy
+	name = "Fancy Overcoat Brown"
+	path = /obj/item/clothing/suit/storage/overcoat_fancy
+
+/datum/gear/suit/drive
+	name = "Relatable Jacket"
+	path = /obj/item/clothing/suit/storage/drive
+
+/datum/gear/suit/boxer
+	name = "Boxer Jacket"
+	path = /obj/item/clothing/suit/storage/drive/boxer
+
+/datum/gear/suit/tunnelsnake
+	name = "Maintenance Python Jacket"
+	path = /obj/item/clothing/suit/storage/tunnelsnake
+
+/datum/gear/suit/triadkiller
+	name = "Oriental Coat"
+	path = /obj/item/clothing/suit/storage/triadkiller
+
+/datum/gear/suit/furbomberfancy
+	name = "Fancy Fur Bomber Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/fur_bomber
+
+/datum/gear/suit/bomj
+	name = "Bomj Coat"
+	path = /obj/item/clothing/suit/storage/bomj
+
+/datum/gear/suit/violetjacket
+	name = "Violet Jacket"
+	path = /obj/item/clothing/suit/storage/violet
+
+/datum/gear/suit/jamrock
+	name = "Jamrock Blazer"
+	path = /obj/item/clothing/suit/storage/jamrock
+
+/datum/gear/suit/khakijacket
+	name = "Khaki Jacket"
+	path = /obj/item/clothing/suit/storage/khaki
+
+/datum/gear/suit/punkvest
+	name = "Punk Vest"
+	path = /obj/item/clothing/suit/storage/punkvest
+
+/datum/gear/suit/onestar
+	name = "One Star Coat"
+	path = /obj/item/clothing/suit/storage/onestar
+
+/datum/gear/suit/overcoatdark
+	name = "Great Dark Overcoat"
+	path = /obj/item/clothing/suit/storage/vest/formal/dark
+
+/datum/gear/suit/overcoatdark/caped
+	name = "Great Dark Overcoat Caped"
+	path = /obj/item/clothing/suit/storage/vest/formal/dark/caped
+
+/datum/gear/suit/overcoatbleached
+	name = "Great Bleached Overcoat Caped"
+	path = /obj/item/clothing/suit/storage/vest/formal/bleached
+
+/datum/gear/suit/cropped_hoodie
+	name = "Cropped Hoodie"
+	path = /obj/item/clothing/suit/cropped_hoodie
+
+/datum/gear/suit/cropped_hoodie/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/suit/cropped_hoodie/croppier
+	name = "Cropped Hoodie (high crop)"
+	path = /obj/item/clothing/suit/cropped_hoodie/croppier
+
+/datum/gear/suit/cropped_hoodie/veryhighcrop
+	name = "Cropped Hoodie (very high crop)"
+	path = /obj/item/clothing/suit/cropped_hoodie/croppierer
+
+/datum/gear/suit/cropped_hoodie/croppiest
+	name = "Cropped Hoodie (supercrop)"
+	path = /obj/item/clothing/suit/cropped_hoodie/croppiest
+
+/datum/gear/suit/leather_cropped
+	name = "Cropped Leather Jacket"
+	path = /obj/item/clothing/suit/storage/leather_cropped
+
+/datum/gear/suit/leather_supercropped
+	name = "Supercropped Leather Jacket"
+	path = /obj/item/clothing/suit/storage/leather_supercropped
+
+//Tajaran wears
+
+//Cloak no hoods
+
+/datum/gear/suit/tajarancloak
+	name = "Adhomian basic cloak selection"
+	description = "A selection of tajaran native cloaks."
+	path = /obj/item/clothing/accessory/tponcho/tajarancloak
+
+/datum/gear/suit/tajarancloak/New()
+	..()
+	var/list/tajarancloaks = list()
+	for(var/tajarancloak in (typesof(/obj/item/clothing/accessory/tponcho/tajarancloak)))
+		var/obj/item/clothing/accessory/tponcho/tajarancloak/tajarancloak_type = tajarancloak
+		tajarancloaks[initial(tajarancloak_type.name)] = tajarancloak_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajarancloaks, /proc/cmp_text_asc))
+
+/datum/gear/suit/tajarancloakhood
+	name = "Adhomian hooded cloak selection"
+	description = "A selection of tajaran native cloaks. These ones have hoods"
+	path = /obj/item/clothing/suit/storage/hooded/tajaran/cloak
+
+/datum/gear/suit/tajarancloakhood/New()
+	..()
+	var/list/tajarancloakhoods = list()
+	for(var/tajarancloakhood in (typesof(/obj/item/clothing/suit/storage/hooded/tajaran/cloak)))
+		var/obj/item/clothing/suit/storage/hooded/tajaran/cloak/tajarancloakhood_type = tajarancloakhood
+		tajarancloakhoods[initial(tajarancloakhood_type.name)] = tajarancloakhood_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajarancloakhoods, /proc/cmp_text_asc))
+
+/datum/gear/suit/tajara_coat
+	name = "Adhomian coat selection"
+	description = "A selection of tajaran native coats."
+	path = /obj/item/clothing/suit/storage/toggle/tajaran/coat
+
+/datum/gear/suit/tajara_coat/New()
+	..()
+	var/list/tajara_coats = list()
+	for(var/tajara_coat in (typesof(/obj/item/clothing/suit/storage/toggle/tajaran/coat)))
+		var/obj/item/clothing/suit/storage/toggle/tajaran/coat/tajara_coat_type = tajara_coat
+		tajara_coats[initial(tajara_coat_type.name)] = tajara_coat_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajara_coats, /proc/cmp_text_asc))
+
+/datum/gear/suit/tajara_coat_alt //No toggle
+	name = "Adhomian coat alt selection"
+	description = "A alternative selection of tajaran native coats."
+	path = /obj/item/clothing/suit/storage/tajaran/coat
+
+/datum/gear/suit/tajara_coat_alt/New()
+	..()
+	var/list/tajara_coat_alts = list()
+	for(var/tajara_coat_alt in (typesof(/obj/item/clothing/suit/storage/tajaran/coat)))
+		var/obj/item/clothing/suit/storage/tajaran/coat/tajara_coat_alt_type = tajara_coat_alt
+		tajara_coat_alts[initial(tajara_coat_alt_type.name)] = tajara_coat_alt_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajara_coat_alts, /proc/cmp_text_asc))
+
+/datum/gear/suit/tajara_jacket
+	name = "Adhomian jacket selection"
+	description = "A selection of tajaran native jackets."
+	path = /obj/item/clothing/suit/storage/tajaran/jacket
+
+/datum/gear/suit/tajara_jacket/New()
+	..()
+	var/list/tajara_jackets = list()
+	for(var/tajara_jacket in (typesof(/obj/item/clothing/suit/storage/tajaran/jacket)))
+		var/obj/item/clothing/suit/storage/tajaran/jacket/tajara_jacket_type = tajara_jacket
+		tajara_jackets[initial(tajara_jacket_type.name)] = tajara_jacket_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajara_jackets, /proc/cmp_text_asc))

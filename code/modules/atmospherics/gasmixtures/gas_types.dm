@@ -140,7 +140,7 @@
 	//gas_symbol = "CH3Br"
 	//taste_description = "pestkiller"
 	/*vapor_products = list(
-		/decl/material/gas/methyl_bromide = 1
+		/singleton/material/gas/methyl_bromide = 1
 	)
 	value = 0.25*/
 
@@ -240,8 +240,13 @@
 	heating_point = null
 	heating_products = null
 	toxicity = 15*/
+<<<<<<< HEAD
 	visual_overlay = "chlorine"
 	visual_threshold = 1
+=======
+	gas_overlay = "chlorine"
+	moles_visible = 1
+>>>>>>> citrp/master
 
 	gas_reagent_id = "sacid"
 	gas_reagent_amount = 10
@@ -255,8 +260,8 @@
 	/*gas_symbol_html = "SO<sub>2</sub>"
 	gas_symbol = "SO2"
 	dissolves_into = list(
-		/decl/material/solid/sulfur = 0.5,
-		/decl/material/gas/oxygen = 0.5
+		/singleton/material/solid/sulfur = 0.5,
+		/singleton/material/gas/oxygen = 0.5
 	)*/
 
 /datum/gas/hydrogen
@@ -269,11 +274,11 @@
 	specific_heat = 100
 	molar_mass = 0.002
 	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL
-	/*burn_product = /decl/material/liquid/water
+	/*burn_product = /singleton/material/liquid/water
 	gas_symbol_html = "H<sub>2</sub>"
 	gas_symbol = "H2"
 	dissolves_into = list(
-		/decl/material/liquid/fuel/hydrazine = 1
+		/singleton/material/liquid/fuel/hydrazine = 1
 	)
 	value = 0.4*/
 
@@ -304,7 +309,7 @@
 		INTERACTION_ABSORPTION = 1250
 	)
 	absorption_products = list(
-		/decl/material/gas/hydrogen/tritium = 1
+		/singleton/material/gas/hydrogen/tritium = 1
 	)
 	neutron_absorption = 5
 	neutron_cross_section = 3*/

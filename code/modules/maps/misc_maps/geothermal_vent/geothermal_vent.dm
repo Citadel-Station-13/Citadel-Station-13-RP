@@ -25,6 +25,6 @@ GEOTHERMAL_TURF_CREATE_UN(/turf/unsimulated/floor/lava)
 GEOTHERMAL_TURF_CREATE_UN(/turf/simulated/mineral/ignore_cavegen)
 
 /turf/unsimulated/floor/lava
-    icon = 'icons/turf/outdoors.dmi'
-    icon_state = "lava"
-    var/special_temperature
+	icon = 'icons/turf/outdoors.dmi'
+	icon_state = "lava"
+	var/special_temperature

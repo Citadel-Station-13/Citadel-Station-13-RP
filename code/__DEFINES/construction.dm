@@ -65,11 +65,11 @@
 #define PIPING_LAYER_AUX		5
 
 // We offset the layer values of the different pipe types to ensure they look nice
-#define PIPES_FUEL_LAYER		(PIPES_LAYER - 0.04)
-#define PIPES_SUPPLY_LAYER		(PIPES_LAYER - 0.03)
-#define PIPES_SCRUBBER_LAYER	(PIPES_LAYER - 0.02)
-#define PIPES_AUX_LAYER			(PIPES_LAYER - 0.01)
-#define PIPES_HE_LAYER			(PIPES_LAYER + 0.01)
+#define PIPES_FUEL_LAYER		(PIPE_LAYER - 0.004)
+#define PIPES_SUPPLY_LAYER		(PIPE_LAYER - 0.003)
+#define PIPES_SCRUBBER_LAYER	(PIPE_LAYER - 0.002)
+#define PIPES_AUX_LAYER			(PIPE_LAYER - 0.001)
+#define PIPES_HE_LAYER			(EXPOSED_PIPE_LAYER + 0.001) // These are never hidden under tiles.
 
 //MULTIPIPES //Ignore warning below until we update pipes
 //IF YOU EVER CHANGE THESE CHANGE SPRITES TO MATCH.
@@ -112,37 +112,3 @@
 #define DISPOSAL_SORT_NORMAL			0
 #define DISPOSAL_SORT_WILDCARD			1
 #define DISPOSAL_SORT_UNTAGGED			2
-
-//tablecrafting defines
-#define CAT_NONE	""
-#define CAT_WEAPONRY	"Weaponry"
-#define CAT_WEAPON	"Ranged Weapons"
-#define CAT_MELEE	"Melee Weapons"
-#define CAT_MISC	"Misc"
-#define CAT_AMMO	"Ammunition"
-#define CAT_PARTS	"Weapon Parts"
-#define CAT_ROBOT	"Robots"
-#define CAT_MISCELLANEOUS	"Miscellaneous"
-#define CAT_OTHER	"Other"
-#define CAT_TOOL	"Tools & Storage"
-#define CAT_FURNITURE	"Furniture"
-#define CAT_PRIMAL  "Tribal"
-#define CAT_CLOTHING	"Clothing"
-#define CAT_FOOD	"Foods"
-#define CAT_BREAD	"Breads"
-#define CAT_BURGER	"Burgers"
-#define CAT_CAKE	"Cakes"
-#define CAT_DONUT	"Donuts"
-#define CAT_EGG	"Egg-Based Food"
-#define CAT_MEAT	"Meats"
-#define CAT_MEXICAN	"Mexican"
-#define CAT_MISCFOOD	"Misc. Food"
-#define CAT_PASTRY	"Pastries"
-#define CAT_PIE	"Pies & Sweets"
-#define CAT_PIZZA	"Pizzas"
-#define CAT_SALAD	"Salads"
-#define CAT_SEAFOOD    "Seafood"
-#define CAT_SANDWICH	"Sandwiches"
-#define CAT_SOUP	"Soups"
-#define CAT_SPAGHETTI	"Spaghettis"
-#define CAT_ICE	"Frozen"

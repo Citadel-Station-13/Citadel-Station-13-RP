@@ -83,6 +83,9 @@ var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manu
 #define NETWORK_OUTSIDE "Outside"
 #define NETWORK_EXPLORATION "Exploration"
 #define NETWORK_XENOBIO "Xenobiology"
+#define NETWORK_CIV_HELMETS "Public Helmets"
+#define NETWORK_SEC_HELMETS "Security Helmets"
+#define NETWORK_EXPLO_HELMETS "Exploration Helmets"
 
 //! Off Station Camera Networks
 //TODO: Remove. Though we can keep these for now.

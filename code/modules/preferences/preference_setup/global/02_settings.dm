@@ -127,7 +127,7 @@
 	if(!client)
 		return FALSE
 	if(!client.prefs)
-		log_debug("Client prefs found to be null for mob [src] and client [ckey], this should be investigated.")
+		log_debug(SPAN_DEBUGWARNING("Client prefs found to be null for mob [src] and client [ckey], this should be investigated."))
 		return FALSE
 
 	return client.set_preference(preference, set_preference)

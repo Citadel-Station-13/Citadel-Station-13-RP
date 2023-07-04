@@ -98,7 +98,7 @@
 			update_coverage()
 			START_PROCESSING(SSobj, src)
 
-/obj/machinery/camera/bullet_act(var/obj/item/projectile/P)
+/obj/machinery/camera/bullet_act(var/obj/projectile/P)
 	take_damage(P.get_structure_damage())
 
 /obj/machinery/camera/legacy_ex_act(severity)
@@ -128,17 +128,18 @@
 	src.view_range = num
 	GLOB.cameranet.updateVisibility(src, 0)
 
-/obj/machinery/camera/attack_hand(mob/living/carbon/human/user as mob)
-	if(!istype(user))
+/obj/machinery/camera/attack_hand(mob/user, list/params)
+	var/mob/living/carbon/human/L = user
+	if(!istype(L))
 		return
 
-	if(user.species.can_shred(user))
+	if(L.species.can_shred(L))
 		set_status(0)
-		user.do_attack_animation(src)
-		user.setClickCooldown(user.get_attack_speed())
-		visible_message("<span class='warning'>\The [user] slashes at [src]!</span>")
+		L.do_attack_animation(src)
+		L.setClickCooldown(L.get_attack_speed())
+		visible_message("<span class='warning'>\The [L] slashes at [src]!</span>")
 		playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)
-		add_hiddenprint(user)
+		add_hiddenprint(L)
 		destroy()
 
 /obj/machinery/camera/attack_generic(mob/user as mob)
@@ -207,18 +208,18 @@
 			if(!O.client) continue
 			if(U.name == "Unknown") to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
 			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U];trackname=[U.name]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
-			O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
+			O << browse("<HTML><HEAD><TITLE>[itemname]</TITLE></HEAD><BODY><TT>[info]</TT></BODY></HTML>", "window=[itemname]")
 
 	else if(W.damtype == BRUTE || W.damtype == BURN) //bashing cameras
 		user.setClickCooldown(user.get_attack_speed(W))
-		if (W.force >= src.toughness)
+		if (W.damage_force >= src.toughness)
 			user.do_attack_animation(src)
-			visible_message("<span class='warning'><b>[src] has been [W.attack_verb.len? pick(W.attack_verb) : "attacked"] with [W] by [user]!</b></span>")
+			visible_message("<span class='warning'><b>[src] has been [W.get_attack_verb(src, user)] with [W] by [user]!</b></span>")
 			if (istype(W, /obj/item)) //is it even possible to get into attackby() with non-items?
 				var/obj/item/I = W
 				if (I.hitsound)
 					playsound(loc, I.hitsound, 50, 1, -1)
-		take_damage(W.force)
+		take_damage(W.damage_force)
 
 	else
 		..()

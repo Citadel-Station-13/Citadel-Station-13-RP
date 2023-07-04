@@ -1,6 +1,6 @@
 /datum/gear/seasonal/halloween
 	abstract_type = /datum/gear/seasonal/halloween
-	sort_category = "Halloween - Costumes"
+	sort_category = LOADOUT_CATEGORY_SEASONAL_HALLOWEEN
 
 /datum/gear/seasonal/halloween/costumes
 	name = "Gentleman's Cane"
@@ -193,6 +193,10 @@
 /datum/gear/seasonal/halloween/costumes/suit/madscientist
 	name = "Costume Suit - Mad Scientist Coat"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/mad
+
+/datum/gear/seasonal/halloween/costumes/suit/madscientist
+	name = "Costume Suit - Mad Scientist Coat"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/mad/classic
 
 /datum/gear/seasonal/halloween/costumes/suit/carp
 	name = "Costume Suit - Carp"

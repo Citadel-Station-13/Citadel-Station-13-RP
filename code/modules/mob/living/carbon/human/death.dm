@@ -99,7 +99,7 @@
 			B.host_brain.name = "host brain"
 			B.host_brain.real_name = "host brain"
 
-		verbs -= /mob/living/carbon/proc/release_control
+		remove_verb(src, /mob/living/carbon/proc/release_control)
 
 	callHook("death", list(src, gibbed))
 
@@ -107,7 +107,8 @@
 		playsound(loc, species.death_sound, 80, 1, 1)
 
 	if(SSticker && SSticker.mode)
-		INVOKE_ASYNC(GLOBAL_PROC, /proc/sql_report_death, src)
+		ASYNC
+			sql_report_death(src)
 		SSticker.mode.check_win()
 
 	if(wearing_rig)
@@ -139,7 +140,6 @@
 	update_hair(0)
 
 	mutations.Add(MUTATION_HUSK)
-	status_flags |= DISFIGURED	//makes them unknown without fucking up other stuff like admintools
 	update_icons_body()
 	return
 
@@ -158,6 +158,5 @@
 	update_hair(0)
 
 	mutations.Add(MUTATION_SKELETON)
-	status_flags |= DISFIGURED
 	update_icons_body()
 	return

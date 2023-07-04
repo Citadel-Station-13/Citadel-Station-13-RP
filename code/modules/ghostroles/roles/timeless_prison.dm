@@ -1,11 +1,11 @@
-/datum/ghostrole/timeless_prison
+/datum/role/ghostrole/timeless_prison
 	name = "Timeless Prisoner"
 	desc = "Years ago, you sacrificed the lives of your trusted friends and the humanity of yourself to reach the Wish Granter. Though you \
 	did so, it has come at a cost: your very body rejects the light, dooming you to wander endlessly in this horrible wasteland."
 	instantiator = /datum/ghostrole_instantiator/human/random/species/shadow
 	assigned_role = "Exile"
 
-/datum/ghostrole/timeless_prison/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/role/ghostrole/timeless_prison/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	var/wish = rand(1,4)
 	switch(wish)
@@ -33,7 +33,7 @@
 	desc = "Although this stasis pod looks medicinal, it seems as though it's meant to preserve something for a very long time."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	role_type = /datum/ghostrole/timeless_prison
+	role_type = /datum/role/ghostrole/timeless_prison
 
 /obj/structure/ghost_role_spawner/exile/Destroy()
 	new/obj/structure/fluff/empty_sleeper(get_turf(src))

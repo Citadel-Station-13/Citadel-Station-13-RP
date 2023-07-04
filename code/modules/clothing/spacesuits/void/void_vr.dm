@@ -10,6 +10,7 @@
 		SPECIES_TAJ         = 'icons/obj/clothing/species/tajaran/hats.dmi',
 		SPECIES_SKRELL      = 'icons/obj/clothing/species/skrell/hats.dmi',
 		SPECIES_UNATHI      = 'icons/obj/clothing/species/unathi/hats.dmi',
+		SPECIES_UNATHI_DIGI = 'icons/obj/clothing/species/unathi/hats.dmi',
 		SPECIES_TESHARI     = 'icons/obj/clothing/species/teshari/hats.dmi',
 		SPECIES_NEVREAN     = 'icons/obj/clothing/species/nevrean/hats.dmi',
 		SPECIES_AKULA       = 'icons/obj/clothing/species/akula/hats.dmi',
@@ -32,6 +33,7 @@
 		SPECIES_TAJ         = 'icons/obj/clothing/species/tajaran/suits.dmi',
 		SPECIES_TESHARI     = 'icons/obj/clothing/species/teshari/suits.dmi',
 		SPECIES_UNATHI      = 'icons/obj/clothing/species/unathi/suits.dmi',
+		SPECIES_UNATHI_DIGI = 'icons/obj/clothing/species/unathi/suits.dmi',
 		SPECIES_VOX         = 'icons/obj/clothing/species/vox/suits.dmi',
 		SPECIES_VULPKANIN   = 'icons/obj/clothing/species/vulpkanin/suits.dmi',
 		SPECIES_ZORREN_FLAT = 'icons/obj/clothing/species/fennec/suits.dmi',
@@ -60,6 +62,7 @@
 		SPECIES_TAJ,
 		SPECIES_TESHARI,
 		SPECIES_UNATHI,
+		SPECIES_UNATHI_DIGI,
 		SPECIES_VASILISSAN,
 		SPECIES_VOX,
 		SPECIES_VULPKANIN,
@@ -71,6 +74,7 @@
 
 /obj/item/clothing/suit/space/void/explorer/Initialize(mapload)
 	. = ..()
+	LAZYINITLIST(sprite_sheets)
 	sprite_sheets += sprite_sheets_refit
 
 /obj/item/clothing/head/helmet/space/void/explorer
@@ -89,6 +93,7 @@
 		SPECIES_TAJ,
 		SPECIES_TESHARI,
 		SPECIES_UNATHI,
+		SPECIES_UNATHI_DIGI,
 		SPECIES_VASILISSAN,
 		SPECIES_VOX,
 		SPECIES_VULPKANIN,
@@ -100,8 +105,8 @@
 
 /obj/item/clothing/head/helmet/space/void/explorer/Initialize(mapload)
 	. = ..()
+	LAZYINITLIST(sprite_sheets)
 	sprite_sheets += sprite_sheets_refit
-
 
 /obj/item/clothing/suit/space/void/autolok
 	name = "AutoLok pressure suit"
@@ -109,7 +114,7 @@
 	but is equipped with sensors that will automatically deploy the integral helmet to protect the wearer."
 	icon_state = "autoloksuit"
 	item_state = "autoloksuit"
-	armor = list(melee = 15, bullet = 5, laser = 5,energy = 5, bomb = 5, bio = 100, rad = 80)
+	armor_type = /datum/armor/autolok/space
 	slowdown = 0.5
 	siemens_coefficient = 1
 	species_restricted = list("exclude",SPECIES_DIONA,SPECIES_VOX) //this thing can autoadapt
@@ -166,7 +171,7 @@
 	icon_state = "autolokhelmet"
 	item_state = "autolokhelmet"
 	species_restricted = list("exclude",SPECIES_DIONA,SPECIES_VOX)	//this thing can autoadapt too
-	flags_inv = HIDEEARS|BLOCKHAIR //removed HIDEFACE/MASK/EYES flags so sunglasses or facemasks don't disappear. still gotta have BLOCKHAIR or it'll clip out tho.
+	inv_hide_flags = HIDEEARS|BLOCKHAIR //removed HIDEFACE/MASK/EYES flags so sunglasses or facemasks don't disappear. still gotta have BLOCKHAIR or it'll clip out tho.
 
 /obj/item/clothing/head/helmet/space/void/autolok
 	sprite_sheets_obj = list(
@@ -177,6 +182,7 @@
 		SPECIES_TAJ         = 'icons/obj/clothing/hats.dmi',
 		SPECIES_TESHARI     = 'icons/obj/clothing/hats.dmi',
 		SPECIES_UNATHI      = 'icons/obj/clothing/hats.dmi',
+		SPECIES_UNATHI_DIGI = 'icons/obj/clothing/hats.dmi',
 		SPECIES_VULPKANIN   = 'icons/obj/clothing/hats.dmi',
 		SPECIES_XENOHYBRID  = 'icons/obj/clothing/hats.dmi',
 		SPECIES_ZORREN_HIGH = 'icons/obj/clothing/hats.dmi',

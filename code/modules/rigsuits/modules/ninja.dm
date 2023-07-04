@@ -1,12 +1,12 @@
 /*
  * Contains
- * /obj/item/rig_module/stealth_field
- * /obj/item/rig_module/teleporter
- * /obj/item/rig_module/fabricator/energy_net
- * /obj/item/rig_module/self_destruct
+ * /obj/item/hardsuit_module/stealth_field
+ * /obj/item/hardsuit_module/teleporter
+ * /obj/item/hardsuit_module/fabricator/energy_net
+ * /obj/item/hardsuit_module/self_destruct
  */
 
-/obj/item/rig_module/stealth_field
+/obj/item/hardsuit_module/stealth_field
 
 	name = "active camouflage module"
 	desc = "A robust hardsuit-integrated stealth module."
@@ -30,7 +30,7 @@
 	suit_overlay_active =   "stealth_active"
 	suit_overlay_inactive = "stealth_inactive"
 
-/obj/item/rig_module/stealth_field/activate()
+/obj/item/hardsuit_module/stealth_field/activate()
 
 	if(!..())
 		return 0
@@ -44,7 +44,7 @@
 
 	H.visible_message("[H.name] vanishes into thin air!")
 
-/obj/item/rig_module/stealth_field/deactivate()
+/obj/item/hardsuit_module/stealth_field/deactivate()
 
 	if(!..())
 		return 0
@@ -62,7 +62,7 @@
 	playsound(get_turf(H), 'sound/effects/stealthoff.ogg', 75, 1)
 
 
-/obj/item/rig_module/teleporter
+/obj/item/hardsuit_module/teleporter
 
 	name = "teleportation module"
 	desc = "A complex, sleek-looking, hardsuit-integrated teleportation module."
@@ -77,7 +77,7 @@
 	interface_name = "VOID-shift phase projector"
 	interface_desc = "An advanced teleportation system. It is capable of pinpoint precision or random leaps forward."
 
-/obj/item/rig_module/teleporter/proc/phase_in(var/mob/M,var/turf/T)
+/obj/item/hardsuit_module/teleporter/proc/phase_in(var/mob/M,var/turf/T)
 
 	if(!M || !T)
 		return
@@ -87,7 +87,7 @@
 	playsound(T, 'sound/effects/sparks2.ogg', 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phasein",,M.dir)
 
-/obj/item/rig_module/teleporter/proc/phase_out(var/mob/M,var/turf/T)
+/obj/item/hardsuit_module/teleporter/proc/phase_out(var/mob/M,var/turf/T)
 
 	if(!M || !T)
 		return
@@ -95,7 +95,7 @@
 	playsound(T, "sparks", 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phaseout",,M.dir)
 
-/obj/item/rig_module/teleporter/engage(var/atom/target, var/notify_ai)
+/obj/item/hardsuit_module/teleporter/engage(var/atom/target, var/notify_ai)
 
 	var/mob/living/carbon/human/H = holder.wearer
 
@@ -117,7 +117,7 @@
 		to_chat(H, "<span class='warning'>You cannot teleport into solid walls.</span>")
 		return 0
 
-	if(T.z in GLOB.using_map.admin_levels)
+	if(T.z in (LEGACY_MAP_DATUM).admin_levels)
 		to_chat(H, "<span class='warning'>You cannot use your teleporter on this Z-level.</span>")
 		return 0
 
@@ -143,7 +143,7 @@
 
 	return 1
 
-/obj/item/rig_module/fabricator/energy_net
+/obj/item/hardsuit_module/fabricator/energy_net
 
 	name = "net projector"
 	desc = "Some kind of complex energy projector with a hardsuit mount."
@@ -157,7 +157,7 @@
 	fabrication_type = /obj/item/energy_net
 	use_power_cost = 70
 
-/obj/item/rig_module/fabricator/energy_net/engage(atom/target)
+/obj/item/hardsuit_module/fabricator/energy_net/engage(atom/target)
 
 	if(holder && holder.wearer)
 		if(..(target) && target)
@@ -166,7 +166,7 @@
 		return 1
 	return 0
 
-/obj/item/rig_module/self_destruct
+/obj/item/hardsuit_module/self_destruct
 
 	name = "self-destruct module"
 	desc = "Oh my God, a bomb!"
@@ -182,23 +182,23 @@
 	interface_name = "dead man's switch"
 	interface_desc = "An integrated self-destruct module. When the wearer dies, they vanish in smoke. Do not press this button."
 
-/obj/item/rig_module/self_destruct/Initialize(mapload)
+/obj/item/hardsuit_module/self_destruct/Initialize(mapload)
 	. = ..()
 	src.smoke = new /datum/effect_system/smoke_spread/bad()
 	src.smoke.attach(src)
 
-/obj/item/rig_module/self_destruct/Destroy()
+/obj/item/hardsuit_module/self_destruct/Destroy()
 	qdel(smoke)
 	smoke = null
 	return ..()
 
-/obj/item/rig_module/self_destruct/activate()
+/obj/item/hardsuit_module/self_destruct/activate()
 	return
 
-/obj/item/rig_module/self_destruct/deactivate()
+/obj/item/hardsuit_module/self_destruct/deactivate()
 	return
 
-/obj/item/rig_module/self_destruct/process(delta_time)
+/obj/item/hardsuit_module/self_destruct/process(delta_time)
 
 	// Not being worn, leave it alone.
 	if(!holder || !holder.wearer || !holder.wearer.wear_suit == holder)
@@ -208,11 +208,11 @@
 	if(holder.wearer.stat == 2)
 		engage(1)
 
-/obj/item/rig_module/self_destruct/engage(var/skip_check)
+/obj/item/hardsuit_module/self_destruct/engage(var/skip_check)
 	if(!skip_check && usr && alert(usr, "Are you sure you want to push that button?", "Self-destruct", "No", "Yes") == "No")
 		return
 	if(holder && holder.wearer)
 		smoke.set_up(10, 0, holder.loc)
 		for(var/i = 1 to smoke_strength)
-			smoke.start(272727)
+			smoke.start(2)
 		holder.wearer.ash()

@@ -54,9 +54,9 @@ Barricades
 	else
 		switch(W.damtype)
 			if("fire")
-				health -= W.force * 1
+				health -= W.damage_force * 1
 			if("brute")
-				health -= W.force * 0.75
+				health -= W.damage_force * 0.75
 		if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
 			playsound(loc, 'sound/effects/woodcutting.ogg', 100, TRUE)
 		else
@@ -107,7 +107,7 @@ Barricades
 	name = "deployable"
 	desc = "deployable"
 	icon = 'icons/obj/objects.dmi'
-	req_access = list(access_security)//I'm changing this until these are properly tested./N
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)//I'm changing this until these are properly tested./N
 
 /obj/machinery/deployable/barrier
 	name = "deployable barrier"
@@ -120,7 +120,7 @@ Barricades
 	var/health = 100
 	var/maxhealth = 100
 	var/locked = FALSE
-//	req_access = list(access_maint_tunnels)
+//	req_access = list(ACCESS_ENGINEERING_MAINT)
 
 /obj/machinery/deployable/barrier/Initialize(mapload, newdir)
 	. = ..()
@@ -155,21 +155,21 @@ Barricades
 		if(health < maxhealth)
 			health = maxhealth
 			emagged = 0
-			req_access = list(access_security)
+			req_access = list(ACCESS_SECURITY_EQUIPMENT)
 			visible_message(SPAN_WARNING("[user] repairs \the [src]!"))
 			return
 		else if(emagged > 0)
 			emagged = 0
-			req_access = list(access_security)
+			req_access = list(ACCESS_SECURITY_EQUIPMENT)
 			visible_message(SPAN_WARNING("[user] repairs \the [src]!"))
 			return
 		return
 	else
 		switch(W.damtype)
 			if("fire")
-				health -= W.force * 0.75
+				health -= W.damage_force * 0.75
 			if("brute")
-				health -= W.force * 0.5
+				health -= W.damage_force * 0.5
 		playsound(src, 'sound/weapons/smash.ogg', 50, TRUE)
 		CheckHealth()
 		..()

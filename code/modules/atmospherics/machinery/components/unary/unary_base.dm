@@ -14,10 +14,8 @@
 	var/welded = 0 //defining this here for ventcrawl stuff
 
 /obj/machinery/atmospherics/component/unary/Initialize(mapload)
-	. = ..()
-	air_contents = new
-
-	air_contents.volume = 200
+	air_contents = new(200)
+	return ..()
 
 /obj/machinery/atmospherics/component/unary/init_dir()
 	initialize_directions = dir
@@ -108,7 +106,7 @@
 		if((M.pipe_flags & pipe_flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
 			visible_message("<span class='warning'>\The [src]'s cannot be connected, something is hogging the tile!</span>")
 			return TRUE
-		if((M.piping_layer != piping_layer) && !((M.pipe_flags | flags) & PIPING_ALL_LAYER)) // Pipes on different layers can't block each other unless they are ALL_LAYER
+		if((M.piping_layer != piping_layer) && !((M.pipe_flags | pipe_flags) & PIPING_ALL_LAYER)) // Pipes on different layers can't block each other unless they are ALL_LAYER
 			continue
 		if(M.get_init_dirs() & get_init_dirs())	// matches at least one direction on either type of pipe
 			visible_message("<span class='warning'>\The [src]'s connector can't be connected, there is already a pipe at that location!</span>")

@@ -55,13 +55,13 @@ var/list/blobs = list()
 		var/mob/living/L = mover
 		if(L.faction == "blob")
 			return TRUE
-	else if(istype(mover, /obj/item/projectile))
-		var/obj/item/projectile/P = mover
+	else if(istype(mover, /obj/projectile))
+		var/obj/projectile/P = mover
 		if(istype(P.firer) && P.firer.faction == "blob")
 			return TRUE
 	return FALSE
 
-/obj/structure/blob/examine(mob/user)
+/obj/structure/blob/examine(mob/user, dist)
 	. = ..()
 	if(!overmind)
 		. += "It seems inert." // Dead blob.
@@ -223,7 +223,7 @@ var/list/blobs = list()
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)
 	visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
-	var/damage = W.force
+	var/damage = W.damage_force
 	switch(W.damtype)
 		if(BURN)
 			if(overmind)
@@ -250,7 +250,7 @@ var/list/blobs = list()
 	adjust_integrity(-damage)
 	return
 
-/obj/structure/blob/bullet_act(var/obj/item/projectile/P)
+/obj/structure/blob/bullet_act(var/obj/projectile/P)
 	if(!P)
 		return
 

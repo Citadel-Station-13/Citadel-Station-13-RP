@@ -26,7 +26,6 @@
 	var/devourable = FALSE
 	var/feeding = FALSE
 	var/digest_leave_remains = FALSE
-	var/allowmobvore = FALSE
 	var/list/belly_prefs = list()
 	var/vore_taste = "nothing in particular"
 	var/vore_smell = "nothing in particular"
@@ -101,7 +100,6 @@
 	devourable = json_FROM_FILE["devourable"]
 	feeding = json_FROM_FILE["feeding"]
 	digest_leave_remains = json_FROM_FILE["digest_leave_remains"]
-	allowmobvore = json_FROM_FILE["allowmobvore"]
 	vore_taste = json_FROM_FILE["vore_taste"]
 	vore_smell = json_FROM_FILE["vore_smell"]
 	permit_healbelly = json_FROM_FILE["permit_healbelly"]
@@ -122,8 +120,6 @@
 		feeding = TRUE
 	if(isnull(digest_leave_remains))
 		digest_leave_remains = FALSE
-	if(isnull(allowmobvore))
-		allowmobvore = TRUE
 	if(isnull(permit_healbelly))
 		permit_healbelly = TRUE
 	if(isnull(can_be_drop_prey))
@@ -153,7 +149,6 @@
 			"devourable"			= devourable,
 			"feeding"				= feeding,
 			"digest_leave_remains"	= digest_leave_remains,
-			"allowmobvore"			= allowmobvore,
 			"vore_taste"			= vore_taste,
 			"vore_smell"			= vore_smell,
 			"permit_healbelly"		= permit_healbelly,
@@ -169,7 +164,7 @@
 	//List to JSON
 	var/json_TO_FILE = json_encode(settings_list)
 	if(!json_TO_FILE)
-		log_debug("Saving: [path] failed jsonencode")
+		log_debug(SPAN_DEBUG("Saving: [path] failed jsonencode"))
 		return FALSE
 
 	//Write it out
@@ -178,7 +173,7 @@
 		fdel(path) //Byond only supports APPENDING to files, not replacing.
 	text2file(json_TO_FILE, path)
 	if(!fexists(path))
-		log_debug("Saving: [path] failed file write")
+		log_debug(SPAN_DEBUG("Saving: [path] failed file write"))
 		return FALSE
 
 	return TRUE

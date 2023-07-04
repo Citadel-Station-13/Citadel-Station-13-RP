@@ -1,8 +1,9 @@
 
 /datum/species/diona
+	uid = SPECIES_ID_DIONA
+	id = SPECIES_ID_DIONA
 	name = SPECIES_DIONA
 	name_plural = "Dionaea"
-	uid = SPECIES_ID_DIONA
 	//primitive_form = "Nymph"
 
 	icobase      = 'icons/mob/species/diona/body.dmi'
@@ -28,7 +29,6 @@
 
 	max_age = 300
 
-	economic_modifier = 4
 
 	blurb = {"
 	Commonly referred to (erroneously) as 'plant people', the Dionaea are a strange space-dwelling collective
@@ -42,7 +42,7 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Dionea"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/dionaea)
-	rarity_value   = 3
+	//rarity_value   = 3
 
 	has_organ = list(
 		O_NUTRIENT = /obj/item/organ/internal/diona/nutrients,
@@ -96,7 +96,7 @@
 	hunger_factor = 0//Handled in handle_environment_special()
 
 	species_flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD | CONTAMINATION_IMMUNE
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
 
 	blood_color = "#004400"
 	flesh_color = "#907E4A"
@@ -123,7 +123,7 @@
 	var/mob/living/carbon/alien/diona/S = new(get_turf(H))
 
 	if(H.mind)
-		H.mind.transfer_to(S)
+		H.mind.transfer(S)
 
 	if(H.isSynthetic())
 		H.visible_message(SPAN_DANGER("\The [H] collapses into parts, revealing a solitary diona nymph at the core."))
@@ -133,8 +133,8 @@
 			qdel(Org)
 
 		// Purge the diona verbs.
-		H.verbs -= /mob/living/carbon/human/proc/diona_split_nymph
-		H.verbs -= /mob/living/carbon/human/proc/regenerate
+		remove_verb(H, /mob/living/carbon/human/proc/diona_split_nymph)
+		remove_verb(H, /mob/living/carbon/human/proc/regenerate)
 
 		return
 

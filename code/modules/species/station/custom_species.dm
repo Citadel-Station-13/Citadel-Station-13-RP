@@ -1,7 +1,8 @@
 
 /datum/species/custom
-	name = SPECIES_CUSTOM
 	uid = SPECIES_ID_CUSTOM
+	id = SPECIES_ID_CUSTOM
+	name = SPECIES_CUSTOM
 	name_plural = "Custom"
 	selects_bodytype = TRUE
 	base_species = SPECIES_HUMAN
@@ -19,7 +20,7 @@
 	max_additional_languages = 3
 	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	has_limbs = list(

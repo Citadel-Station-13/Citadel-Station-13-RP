@@ -8,7 +8,7 @@
 	icon_opened = "secureexpopen"
 	icon_broken = "secureexpbroken"
 	icon_off = "secureexpoff"
-	req_access = list(access_explorer)
+	req_access = list(ACCESS_GENERAL_EXPLORER)
 
 	starts_with = list(
 		/obj/item/clothing/under/explorer,
@@ -21,7 +21,7 @@
 		/obj/item/flashlight,
 		/obj/item/gps/explorer,
 		/obj/item/storage/box/flare,
-		/obj/item/geiger,
+		/obj/item/geiger_counter,
 		/obj/item/cell/device,
 		/obj/item/radio,
 		/obj/item/stack/marker_beacon/thirty,
@@ -74,14 +74,14 @@
 		/obj/item/clothing/accessory/storage/white_vest,
 		/obj/item/barrier_tape_roll/medical,
 		/obj/item/gps/medical,
-		/obj/item/geiger,
+		/obj/item/geiger_counter,
 		/obj/item/bodybag/cryobag,
 		/obj/item/cataloguer/compact)
 
 //Pilot Locker
 /obj/structure/closet/secure_closet/pilot
 	name = "pilot locker"
-	req_access = list(access_pilot)
+	req_access = list(ACCESS_GENERAL_PILOT)
 
 /obj/structure/closet/secure_closet/pilot
 	starts_with = list(
@@ -101,7 +101,7 @@
 		/obj/item/reagent_containers/food/snacks/liquidprotein,
 		/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 		/obj/item/storage/box/flare,
-		/obj/item/gun/projectile/shotgun/flare/explo,
+		/obj/item/gun/ballistic/shotgun/flare/explo,
 		/obj/item/storage/box/flashshells,
 		/obj/item/cell/device,
 		/obj/item/radio,
@@ -125,7 +125,7 @@
 	icon_opened = "secureexpopen"
 	icon_broken = "secureexpbroken"
 	icon_off = "secureexpoff"
-	req_access = list(access_gateway)
+	req_access = list(ACCESS_GENERAL_GATEWAY)
 
 	starts_with = list(
 		/obj/item/clothing/under/explorer,
@@ -140,18 +140,18 @@
 		/obj/item/storage/belt/explorer,
 		/obj/item/storage/box/flare,
 		/obj/item/storage/box/explorerkeys,
-		/obj/item/geiger,
+		/obj/item/geiger_counter,
 		/obj/item/cell/device,
 		/obj/item/radio,
-		/obj/item/bluespace_radio,
 		/obj/item/stack/marker_beacon/thirty,
 		/obj/item/storage/box/survival_knife,
 		/obj/item/material/knife/machete/deluxe,
 		/obj/item/gun/energy/frontier/locked/carbine,
-		/obj/item/gun/projectile/fnseven,
-		/obj/item/ammo_magazine/m57x28mm,
-		/obj/item/ammo_magazine/m57x28mm,
+		/obj/item/gun/ballistic/ntles/pathfinder,
+		/obj/item/ammo_magazine/m57x28mm/ntles,
+		/obj/item/ammo_magazine/m57x28mm/ntles,
 		/obj/item/clothing/accessory/holster/machete,
+		/obj/item/clothing/accessory/holster/leg,
 		/obj/item/reagent_containers/food/snacks/liquidfood,
 		/obj/item/reagent_containers/food/snacks/liquidprotein,
 		/obj/item/card/mining_point_card/survey/gimmick,

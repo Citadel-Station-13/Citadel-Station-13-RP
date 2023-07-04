@@ -74,15 +74,15 @@
 		spawned_mobs.Remove(L)
 
 /obj/structure/mob_spawner/attackby(var/obj/item/I, var/mob/living/user)
-	if(!I.force || I.item_flags & ITEM_NOBLUDGEON || !destructible)
+	if(!I.damage_force || I.item_flags & ITEM_NOBLUDGEON || !destructible)
 		return
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
-	visible_message("<span class='warning'>\The [src] has been [I.attack_verb.len ? "[pick(I.attack_verb)]":"attacked"] with \the [I] by [user].</span>")
-	take_damage(I.force)
+	visible_message("<span class='warning'>\The [src] has been [I.get_attack_verb(src, user)] with \the [I] by [user].</span>")
+	take_damage(I.damage_force)
 
-/obj/structure/mob_spawner/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/mob_spawner/bullet_act(var/obj/projectile/Proj)
 	..()
 	if(destructible)
 		take_damage(Proj.get_structure_damage())
@@ -162,6 +162,22 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	health = 400
 	spawn_types = list(
 	/mob/living/simple_mob/animal/gutshank = 100
+	)
+
+/obj/structure/mob_spawner/stormdrifter
+	name = "Violent Downdraft"
+	desc = "The air here seems especially hot. A swirling wind agitates the ash and sand, kicking up eddies and small dust devils."
+	icon_state = "punch"
+	spawn_delay = 10 MINUTES
+	simultaneous_spawns = 6
+	mob_faction = "lavaland"
+	total_spawns = 12
+	anchored = 1
+	destructible = 1
+	health = 1000
+	spawn_types = list(
+	/mob/living/simple_mob/animal/stormdrifter = 60,
+	/mob/living/simple_mob/animal/stormdrifter/bull = 30
 	)
 
 //Scanners

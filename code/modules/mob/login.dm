@@ -9,7 +9,8 @@
  * * tells the world to update it's status (for player count)
  * * create mob huds for the mob if needed
  * * reset next_move to 1
- * * parent call
+ * * Set statobj to our mob
+ * * NOT the parent call. The only unique thing it does is a very obtuse move op, see the comment lower down
  * * if the client exists set the perspective to the mob loc
  * * call on_log on the loc (sigh)
  * * reload the huds for the mob
@@ -22,8 +23,6 @@
  * * send signal COMSIG_MOB_CLIENT_LOGIN
  */
 /mob/Login()
-	SHOULD_CALL_PARENT(TRUE)
-
 	GLOB.player_list |= src
 	update_Login_details()
 	world.update_status()
@@ -42,9 +41,21 @@
 	next_move = 1
 	disconnect_time = null // Clear the disconnect time
 
-	..()
+	/**
+	 *! DO NOT CALL PARENT HERE
+	 * BYOND's internal implementation of login does two things
+	 * 1: Set statobj to the mob being logged into (We got this covered)
+	 * 2: And I quote "If the mob has no location, place it near (1,1,1) if possible"
+	 * See, near is doing an agressive amount of legwork there
+	 * What it actually does is takes the area that (1,1,1) is in, and loops through all those turfs
+	 * If you successfully move into one, it stops
+	 * Because we want Move() to mean standard movements rather then just what byond treats it as (ALL moves)
+	 * We don't allow moves from nullspace -> somewhere. This means the loop has to iterate all the turfs in (1,1,1)'s area
+	 * For us, (1,1,1) is a space tile. This means roughly 200,000! calls to Move()
+	 * You do not want this
+	 */
+	client.statobj = src
 
-	reload_fullscreen() // Reload any fullscreen overlays this mob has.
 	update_client_color()
 
 	//Reload alternate appearances
@@ -53,23 +64,6 @@
 			continue
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
-
-	if(!plane_holder) //Lazy
-		plane_holder = new(src) //Not a location, it takes it and saves it.
-	if(!vis_enabled)
-		vis_enabled = list()
-	client.screen += plane_holder.plane_masters
-	recalculate_vis()
-
-	// AO support
-	var/ao_enabled = client.is_preference_enabled(/datum/client_preference/ambient_occlusion)
-	plane_holder.set_ao(VIS_OBJS, ao_enabled)
-	plane_holder.set_ao(VIS_MOBS, ao_enabled)
-
-	// Status indicators
-	var/status_enabled = client.is_preference_enabled(/datum/client_preference/status_indicators)
-	plane_holder.set_vis(VIS_STATUS, status_enabled)
-
 
 	if(!client.tooltips)
 		client.tooltips = new(client)
@@ -86,6 +80,19 @@
 	reset_perspective(no_optimizations = TRUE)
 	// load rendering onto client's screen
 	reload_rendering()
+	// reset statpanel of any verbs/whatnot
+	client.statpanel_reload()
+	// update ssd overlay
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, update_ssd_overlay)), 0)
+	// reset cutscene to default; this is a proc for new players.
+	login_cutscene()
+
+	//* legacy
+	// this is below reset_perspective so self perspective generates.
+	recalculate_vis()
+
+/mob/proc/login_cutscene()
+	client.end_cutscene()
 
 /// Handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 /mob/proc/update_Login_details()

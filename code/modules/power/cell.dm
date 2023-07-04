@@ -9,7 +9,7 @@
 	icon_state = "cell"
 	item_state = "cell"
 	origin_tech = list(TECH_POWER = 1)
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 5.0
 	throw_speed = 3
 	throw_range = 5
@@ -157,7 +157,7 @@
 	return amount_used
 
 
-/obj/item/cell/examine(mob/user)
+/obj/item/cell/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) <= 1)
 		. += " It has a power rating of [maxcharge].\nThe charge meter reads [round(src.percent() )]%."

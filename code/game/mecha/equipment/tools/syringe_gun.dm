@@ -20,7 +20,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/Initialize(mapload)
 	. = ..()
-	flags |= NOREACT
+	atom_flags |= NOREACT
 	syringes = new
 	known_reagents = list("inaprovaline"="Inaprovaline","anti_toxin"="Dylovene")
 	processed_reagents = new
@@ -33,7 +33,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/critfail()
 	..()
-	flags &= ~NOREACT
+	atom_flags &= ~NOREACT
 	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/get_equip_info()
@@ -66,7 +66,7 @@
 	S.forceMove(get_turf(chassis))
 	reagents.trans_to_obj(S, min(S.volume, reagents.total_volume))
 	syringes -= S
-	S.icon = 'icons/obj/chemical.dmi'
+	S.icon = 'icons/obj/medical/chemical.dmi'
 	S.icon_state = "syringeproj"
 	playsound(src, 'sound/items/syringeproj.ogg', 50, 1)
 	log_message("Launched [S] from [src], targeting [target].")
@@ -83,7 +83,7 @@
 				if(M)
 					S.icon_state = initial(S.icon_state)
 					S.icon = initial(S.icon)
-					S.reagents.trans_to_mob(M, S.reagents.total_volume, CHEM_BLOOD)
+					S.reagents.trans_to_mob(M, S.reagents.total_volume, CHEM_INJECT)
 					M.take_organ_damage(2)
 					S.visible_message("<span class=\"attack\"> [M] was hit by the syringe!</span>")
 					break
@@ -370,7 +370,7 @@
 			if(clone_heal)
 				tallydamage += Potential.getCloneLoss()
 			if(rad_heal)
-				tallydamage += Potential.radiation / 2
+				tallydamage += Potential.radiation / 5
 
 			if(tallydamage > TargDamage)
 				Target = Potential
@@ -384,7 +384,7 @@
 
 			if(valid_target(Target))
 				if(!MyBeam)
-					MyBeam = chassis.Beam(Target,icon='icons/effects/beam.dmi',icon_state=beam_state,time=3 SECONDS,maxdistance=max_distance,beam_type = /obj/effect/ebeam,beam_sleep_time=2)
+					MyBeam = chassis.Beam(Target,icon='icons/effects/beam.dmi',icon_state=beam_state,time=3 SECONDS,maxdistance=max_distance,beam_type = /obj/effect/ebeam)
 				heal_target(Target)
 
 	else
@@ -422,7 +422,7 @@
 	if(clone_heal)
 		tallydamage += L.getCloneLoss()
 	if(rad_heal)
-		tallydamage += L.radiation / 2
+		tallydamage += L.radiation / 5
 
 	if(tallydamage < damcap)
 		return FALSE
@@ -448,7 +448,7 @@
 		L.adjustOxyLoss(oxy_heal * -1)
 		L.adjustCloneLoss(clone_heal * -1)
 		L.adjustHalLoss(hal_heal * -1)
-		L.radiation = max(0, L.radiation - rad_heal)
+		L.cure_radiation(rad_heal)
 
 		if(ishuman(L) && bone_heal)
 			var/mob/living/carbon/human/H = L
@@ -493,7 +493,7 @@
 	beam_state = "g_beam"
 
 	tox_heal = 0.5
-	rad_heal = 5
+	rad_heal = 25
 	clone_heal = 0.2
 	hal_heal = 0.2
 

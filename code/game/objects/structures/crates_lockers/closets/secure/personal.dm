@@ -1,7 +1,7 @@
 /obj/structure/closet/secure_closet/personal
 	name = "personal closet"
 	desc = "It's a secure locker for personnel. The first card swiped gains control."
-	req_access = list(access_all_personal_lockers)
+	req_access = list(ACCESS_COMMAND_LOCKERS)
 	var/registered_name = null
 
 /obj/structure/closet/secure_closet/personal/PopulateContents()
@@ -92,7 +92,8 @@
 	set src in oview(1) // One square distance
 	set category = "Object"
 	set name = "Reset Lock"
-	if(!usr.canmove || usr.stat || usr.restrained()) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
+
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
 		return
 	if(ishuman(usr))
 		src.add_fingerprint(usr)

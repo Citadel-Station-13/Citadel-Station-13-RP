@@ -66,32 +66,32 @@ obj/item/gun/energy/laser/retro/sc_retro
 	name ="retro laser"
 	icon_state = "retro"
 	desc = "An older model of the basic lasergun, no longer used by NanoTrasen's security or military forces."
-	projectile_type = "/obj/item/projectile/practice"
+	projectile_type = "/obj/projectile/practice"
 	//clumsy_check = 0 //No sense in having a harmless gun blow up in the clowns face
 
 //Syndicate silenced pistol. This definition is not necessary, it's just habit.
-/obj/item/gun/projectile/silenced/sc_silenced
+/obj/item/gun/ballistic/silenced/sc_silenced
 
 //Make it so that these guns only spawn with a couple bullets... if any
-/obj/item/gun/projectile/silenced/sc_silenced/Initialize(mapload, starts_loaded)
+/obj/item/gun/ballistic/silenced/sc_silenced/Initialize(mapload, starts_loaded)
 	. = ..()
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance
 			loaded -= ammo
 
 //Syndicate sub-machine guns.
-/obj/item/gun/projectile/automatic/c20r/sc_c20r
+/obj/item/gun/ballistic/automatic/c20r/sc_c20r
 
-/obj/item/gun/projectile/automatic/c20r/sc_c20r/Initialize(mapload, starts_loaded)
+/obj/item/gun/ballistic/automatic/c20r/sc_c20r/Initialize(mapload, starts_loaded)
 	. = ..()
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance
 			loaded -= ammo
 
 //Barman's shotgun
-/obj/item/gun/projectile/shotgun/pump/sc_pump
+/obj/item/gun/ballistic/shotgun/pump/sc_pump
 
-/obj/item/gun/projectile/shotgun/pump/sc_pump/Initialize(mapload, starts_loaded)
+/obj/item/gun/ballistic/shotgun/pump/sc_pump/Initialize(mapload, starts_loaded)
 	. = ..()
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance

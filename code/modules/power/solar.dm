@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		return
 	else if (W)
 		src.add_fingerprint(user)
-		src.health -= W.force
+		src.health -= W.damage_force
 		src.healthcheck()
 	..()
 
@@ -99,12 +99,12 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 /obj/machinery/power/solar/update_icon()
 	..()
-	overlays.Cut()
+	cut_overlays()
 	if(machine_stat & BROKEN)
-		overlays += image('icons/obj/power.dmi', icon_state = "solar_panel-b", layer = FLY_LAYER)
+		add_overlay(image('icons/obj/power.dmi', icon_state = "solar_panel-b", layer = FLY_LAYER))
 	else
-		overlays += image('icons/obj/power.dmi', icon_state = "solar_panel", layer = FLY_LAYER)
-		src.setDir(angle2dir(adir))
+		add_overlay(image('icons/obj/power.dmi', icon_state = "solar_panel", layer = FLY_LAYER))
+		setDir(angle2dir(adir))
 	return
 
 //calculates the fraction of the SSsun.sunlight that the panel recieves
@@ -216,7 +216,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	var/tracker = 0
 	var/glass_type = null
 
-/obj/item/solar_assembly/attack_hand(var/mob/user)
+/obj/item/solar_assembly/attack_hand(mob/user, list/params)
 	if(!anchored || !isturf(loc)) // You can't pick it up
 		..()
 
@@ -385,21 +385,19 @@ GLOBAL_LIST_EMPTY(solars_list)
 	updateDialog()
 
 /obj/machinery/power/solar_control/update_icon()
+	cut_overlays()
 	if(machine_stat & BROKEN)
 		icon_state = "broken"
-		overlays.Cut()
 		return
 	if(machine_stat & NOPOWER)
 		icon_state = "c_unpowered"
-		overlays.Cut()
 		return
 	icon_state = "solar"
-	overlays.Cut()
 	if(cdir > -1)
-		overlays += image('icons/obj/computer.dmi', "solcon-o", FLY_LAYER, angle2dir(cdir))
+		add_overlay(image('icons/obj/computer.dmi', "solcon-o", FLY_LAYER, angle2dir(cdir)))
 	return
 
-/obj/machinery/power/solar_control/attack_hand(mob/user)
+/obj/machinery/power/solar_control/attack_hand(mob/user, list/params)
 	if(!..())
 		interact(user)
 

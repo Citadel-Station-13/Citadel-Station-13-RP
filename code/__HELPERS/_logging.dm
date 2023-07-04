@@ -188,6 +188,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>LOOC:</u> - <span style='color:orange'><b>[text]</b></span>"
 
+/proc/log_ipintel(text)
+	WRITE_LOG(GLOB.world_runtime_log, "IPINTEL: [text]")
+
 /proc/log_vote(text)
 	if (config_legacy.log_vote)
 		WRITE_LOG(GLOB.world_game_log, "VOTE: [text]")
@@ -207,6 +210,15 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_qdel(text)
 	WRITE_LOG(GLOB.world_qdel_log, "QDEL: [text]")
 
+/proc/log_reagent(text)
+	WRITE_LOG(GLOB.world_reagent_log, text)
+
+/proc/log_reagent_transfer(text)
+	log_reagent("TRANSFER: [text]")
+
+/proc/log_security(text)
+	WRITE_LOG(GLOB.world_game_log, "SECURITY: [text]")
+
 /proc/log_subsystem(subsystem, text)
 	WRITE_LOG(GLOB.subsystem_log, "[subsystem]: [text]")
 
@@ -224,6 +236,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
  */
 /proc/log_runtime(text)
 	WRITE_LOG(GLOB.world_runtime_log, text)
+
+/proc/log_shadowban(text)
+	WRITE_LOG(GLOB.world_game_log, "SHADOWBAN: [text]")
 
 /**
  * Rarely gets called; just here in case the config breaks.
@@ -315,8 +330,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			M = C.mob
 	else if(istype(whom, /datum/mind))
 		var/datum/mind/mind = whom
-		key = mind.key
-		ckey = ckey(key)
+		ckey = mind.ckey
 		if(mind.current)
 			M = mind.current
 			if(M.client)
@@ -392,14 +406,24 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	else if(A.loc)
 		return "(UNKNOWN (?, ?, ?))"
 
+/proc/ref_name(atom/A)
+	return "[A] ([REF(A)])"
+
+/proc/ref_name_path(atom/A)
+	return "[A] ([REF(A)]) \[[A.type]\]"
+
 /// VSTATION SPECIFIC LOGGING. ///
 /proc/log_debug(text)
 	if (config_legacy.log_debug)
 		WRITE_LOG(GLOB.world_runtime_log, "DEBUG: [text]")
 
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(C.is_preference_enabled(/datum/client_preference/debug/show_debug_logs))
-			to_chat(C, "DEBUG: [text]")
+			to_chat(C,
+				type = MESSAGE_TYPE_DEBUG,
+				html = "DEBUG: [text]",
+				confidential = TRUE,
+			)
 
 /proc/log_ghostsay(text, mob/speaker)
 	if (config_legacy.log_say)
@@ -437,8 +461,8 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_unit_test(text)
 	log_world("## UNIT_TEST: [text]")
 
-/proc/report_progress(var/progress_message)
-	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)
+/proc/report_progress(progress_message)
+	admin_notice(SPAN_BOLDANNOUNCE("[progress_message]"), R_DEBUG)
 	log_world(progress_message)
 
 /proc/log_nsay(text, inside, mob/speaker)

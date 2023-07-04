@@ -137,14 +137,14 @@
 	airlock_type = "/multi_tile/glass"
 	glass = -1 //To prevent bugs in deconstruction process.
 
-/obj/structure/door_assembly/multi_tile/New()
+/obj/structure/door_assembly/multi_tile/Initialize(mapload)
 	if(dir in list(EAST, WEST))
 		bound_width = width * world.icon_size
 		bound_height = world.icon_size
 	else
 		bound_width = world.icon_size
 		bound_height = width * world.icon_size
-	update_state()
+	return ..()
 
 /obj/structure/door_assembly/multi_tile/Move()
 	. = ..()
@@ -324,7 +324,7 @@
 
 // Airlock frames are indestructable, so bullets hitting them would always be stopped.
 // To fix this, airlock assemblies will sometimes let bullets pass through, since generally the sprite shows them partially open.
-/obj/structure/door_assembly/bullet_act(var/obj/item/projectile/P)
+/obj/structure/door_assembly/bullet_act(var/obj/projectile/P)
 	if(prob(40)) // Chance for the frame to let the bullet keep going.
 		return PROJECTILE_CONTINUE
 	return ..()

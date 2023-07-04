@@ -35,8 +35,8 @@
 /obj/item/implant/integrated_circuit/emp_act(severity)
 	IC.emp_act(severity)
 
-/obj/item/implant/integrated_circuit/examine(mob/user)
-	IC.examine(user)
+/obj/item/implant/integrated_circuit/examine(mob/user, dist)
+	return IC.examine(user)
 
 /obj/item/implant/integrated_circuit/attackby(var/obj/item/O, var/mob/user)
 	if(O.is_crowbar() || istype(O, /obj/item/integrated_electronics) || istype(O, /obj/item/integrated_circuit) || O.is_screwdriver() || istype(O, /obj/item/cell/device) )
@@ -45,4 +45,7 @@
 		..()
 
 /obj/item/implant/integrated_circuit/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	IC.attack_self(user)

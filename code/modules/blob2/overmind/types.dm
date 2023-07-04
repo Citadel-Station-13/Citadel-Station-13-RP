@@ -36,7 +36,7 @@
 	var/ranged_spores = FALSE			// For proper spores of the type above.
 	var/spore_firesound = 'sound/effects/slime_squish.ogg'
 	var/spore_range = 7					// The range the spore can fire.
-	var/spore_projectile = /obj/item/projectile/energy/blob
+	var/spore_projectile = /obj/projectile/energy/blob
 
 	var/factory_type = /obj/structure/blob/factory
 	var/resource_type = /obj/structure/blob/resource
@@ -593,7 +593,7 @@
 	attack_verb = "splashes"
 
 /datum/blob_type/radioactive_ooze/on_pulse(var/obj/structure/blob/B)
-	SSradiation.radiate(B, 200)
+	radiation_pulse(src, RAD_INTENSITY_BLOB_RADIOACTIVE_OOZE)
 
 /datum/blob_type/volatile_alluvium
 	name = "volatile alluvium"
@@ -617,7 +617,7 @@
 	spore_type = /mob/living/simple_mob/blob/spore/weak
 	ranged_spores = TRUE
 	spore_range = 3
-	spore_projectile = /obj/item/projectile/energy/blob/splattering
+	spore_projectile = /obj/projectile/energy/blob/splattering
 	factory_type = /obj/structure/blob/factory/sluggish
 	resource_type = /obj/structure/blob/resource/sluggish
 

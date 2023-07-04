@@ -105,6 +105,18 @@
 		))
 	recipes += new/datum/stack_recipe("desk bell", /obj/item/deskbell, 1, on_floor = 1, supplied_material = "[name]")
 	recipes += new/datum/stack_recipe("scooter frame", /obj/item/scooter_frame, 5, time = 20, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe("metal coffin", /obj/structure/closet/coffin/comfy, 5, time = 15, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe_list("teshari nests", list(
+		new/datum/stack_recipe("small teshari nest", /obj/structure/bed/chair/bay/chair/padded/red/smallnest, 1, one_per_turf = 1, on_floor = 1), //So, turns out that I don't know how to edit how much the nests give on deconstruction - Papalus
+		new/datum/stack_recipe("large teshari nest", /obj/structure/bed/chair/bay/chair/padded/red/bignest, 1, one_per_turf = 1, on_floor = 1), //And so, I gave them the construction price equal to decon material gain. You can balance it yourselves. - Papalus
+	))
+	recipes += new/datum/stack_recipe("light switch frame", /obj/item/frame/lightswitch, 2)
+	recipes += new/datum/stack_recipe_list("sofas", list( \
+		new/datum/stack_recipe("sofa middle", /obj/structure/bed/chair/sofa, 1, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("sofa left", /obj/structure/bed/chair/sofa/left, 1, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("sofa right", /obj/structure/bed/chair/sofa/right, 1, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("sofa corner", /obj/structure/bed/chair/sofa/corner, 1, one_per_turf = 1, on_floor = 1), \
+		))
 
 /datum/material/plasteel/generate_recipes()
 	..()
@@ -117,11 +129,13 @@
 	recipes += new/datum/stack_recipe("reinforced skateboard assembly", /obj/item/heavy_skateboard_frame, 10, time = 20, one_per_turf = 1)
 	recipes += new/datum/stack_recipe("plasteel floor tile", /obj/item/stack/tile/plasteel, 1, 4, 20)
 
-/datum/material/stone/generate_recipes()
+/datum/material/sandstone/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("planting bed", /obj/machinery/portable_atmospherics/hydroponics/soil, 3, time = 10, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe("sandstone floor tile", /obj/item/stack/tile/floor/sandstone, 1, 4, 20)
+	recipes += new/datum/stack_recipe("sandstone jar", /obj/item/reagent_containers/glass/bucket/sandstone, 2, time = 4, one_per_turf = 0, on_floor = 0, pass_stack_color = FALSE)
 
-/datum/material/stone/marble/generate_recipes()
+/datum/material/sandstone/marble/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("light marble floor tile", /obj/item/stack/tile/wmarble, 1, 4, 20)
 	recipes += new/datum/stack_recipe("dark marble floor tile", /obj/item/stack/tile/bmarble, 1, 4, 20)
@@ -137,9 +151,9 @@
 	recipes += new/datum/stack_recipe("plastic crate", /obj/structure/closet/crate/plastic, 10, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("plastic bag", /obj/item/storage/bag/plasticbag, 3, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("blood pack", /obj/item/reagent_containers/blood/empty, 4, on_floor = 0, pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("reagent dispenser cartridge (large)", /obj/item/reagent_containers/chem_disp_cartridge,        5, on_floor=0, pass_stack_color = TRUE) // 500u
-	recipes += new/datum/stack_recipe("reagent dispenser cartridge (med)",   /obj/item/reagent_containers/chem_disp_cartridge/medium, 3, on_floor=0, pass_stack_color = TRUE) // 250u
-	recipes += new/datum/stack_recipe("reagent dispenser cartridge (small)", /obj/item/reagent_containers/chem_disp_cartridge/small,  1, on_floor=0, pass_stack_color = TRUE) // 100u
+	recipes += new/datum/stack_recipe("reagent dispenser cartridge (large)", /obj/item/reagent_containers/cartridge/dispenser/large,        5, on_floor=0, pass_stack_color = TRUE) // 500u
+	recipes += new/datum/stack_recipe("reagent dispenser cartridge (med)",   /obj/item/reagent_containers/cartridge/dispenser/medium, 3, on_floor=0, pass_stack_color = TRUE) // 250u
+	recipes += new/datum/stack_recipe("reagent dispenser cartridge (small)", /obj/item/reagent_containers/cartridge/dispenser/small,  1, on_floor=0, pass_stack_color = TRUE) // 100u
 	recipes += new/datum/stack_recipe("white floor tile", /obj/item/stack/tile/floor/white, 1, 4, 20, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("freezer floor tile", /obj/item/stack/tile/floor/freezer, 1, 4, 20, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("shower curtain", /obj/structure/curtain, 4, time = 15, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
@@ -147,7 +161,6 @@
 	recipes += new/datum/stack_recipe("airtight plastic flaps", /obj/structure/plasticflaps/mining, 5, time = 25, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("water-cooler", /obj/structure/reagent_dispensers/water_cooler, 4, time = 10, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("lampshade", /obj/item/lampshade, 1, time = 1, pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("plastic net", /obj/item/material/fishing_net, 25, time = 1 MINUTE, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("rubberized wheels", /obj/item/skate_wheels, 12, time = 24)
 	recipes += new/datum/stack_recipe("plastic raincoat", /obj/item/clothing/suit/storage/hooded/rainponcho, 5, time = 10)
 
@@ -160,6 +173,7 @@
 	recipes += new/datum/stack_recipe("wood circlet", /obj/item/clothing/head/woodcirclet, 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("clipboard", /obj/item/clipboard, 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("wood floor tile", /obj/item/stack/tile/wood, 1, 4, 20, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe("wood roofing tile", /obj/item/stack/tile/roofing/wood, 3, 4, 20)
 	recipes += new/datum/stack_recipe("wooden chair", /obj/structure/bed/chair/wood, 3, time = 10, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("crossbow frame", /obj/item/crossbowframe, 5, time = 25, one_per_turf = 0, on_floor = 0, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("coffin", /obj/structure/closet/coffin, 5, time = 15, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
@@ -175,7 +189,6 @@
 	recipes += new/datum/stack_recipe("noticeboard frame", /obj/item/frame/noticeboard, 4, time = 5, one_per_turf = 0, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("wooden bucket", /obj/item/reagent_containers/glass/bucket/wood, 2, time = 4, one_per_turf = 0, on_floor = 0, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("coilgun stock", /obj/item/coilgun_assembly, 5, pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("crude fishing rod", /obj/item/material/fishing_rod/built, 8, time = 10 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("drying rack", /obj/machinery/smartfridge/drying_rack, 10)
 	recipes += new/datum/stack_recipe("skateboard assembly", /obj/item/skateboard_frame, 10, time = 20, one_per_turf = 1)
 	recipes += new/datum/stack_recipe("bokken blade", /obj/item/bokken_blade, 10, time = 10)
@@ -183,6 +196,13 @@
 	recipes += new/datum/stack_recipe("wakibokken blade", /obj/item/wakibokken_blade, 10, time = 5)
 	recipes += new/datum/stack_recipe("rifle stock", /obj/item/weaponcrafting/stock, 5, time = 5)
 	recipes += new/datum/stack_recipe("wooden panel", /obj/structure/window/wooden, 1, time = 10, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe_list("wooden fencing", list( \
+		new/datum/stack_recipe("fence", /obj/structure/fence/wooden, 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("fence end", /obj/structure/fence/wooden/end, 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("fencepost", /obj/structure/fence/wooden/post, 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("fence corner", /obj/structure/fence/wooden/corner, 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("gate", /obj/structure/fence/door/wooden, 5, one_per_turf = 1, on_floor = 1), \
+		))
 
 /datum/material/wood/hardwood/generate_recipes()
 	//we're not going to ..() since we want to override the list entirely, to cut out all the stuff it'd inherit from wood - important, or else we'd have to fuss around with more subtypes to stop people turning hardwood into regular wood
@@ -281,7 +301,6 @@
 
 /datum/material/cloth/generate_recipes()
 	recipes = list()
-	recipes += new/datum/stack_recipe("woven net", /obj/item/material/fishing_net, 10, time = 30 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("bedsheet", /obj/item/bedsheet, 10, time = 30 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe_list("colored bedsheets", list( \
 		new/datum/stack_recipe("red bedsheet", /obj/item/bedsheet/red, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
@@ -330,7 +349,6 @@
 	recipes += new/datum/stack_recipe("[display_name] nest", /obj/structure/bed/nest, 2, one_per_turf = 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] wall girders", /obj/structure/girder/resin, 2, time = 5 SECONDS, one_per_turf = 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("crude [display_name] bandage", /obj/item/stack/medical/crude_pack, 1, time = 2 SECONDS, pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] net", /obj/item/material/fishing_net, 10, time = 5 SECONDS, supplied_material = "[name]", pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] membrane", /obj/effect/alien/resin/membrane, 1, time = 2 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] node", /obj/effect/alien/weeds/node, 1, time = 4 SECONDS)
 
@@ -423,11 +441,17 @@
 	recipes += new/datum/stack_recipe("voyager satchel", /obj/item/storage/backpack/satchel/voyager, 10)
 	recipes += new/datum/stack_recipe("voyager backpack", /obj/item/storage/backpack/voyager, 10)
 	recipes += new/datum/stack_recipe("voyager harness", /obj/item/clothing/accessory/storage/voyager, 8)
+
+/datum/material/bone/generate_recipes()
+	..()
 	recipes += new/datum/stack_recipe_list("statues", list( \
 		new/datum/stack_recipe("bone statue", /obj/structure/statue/bone, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("skull statue", /obj/structure/statue/bone/skull, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("half skull statue", /obj/structure/statue/bone/skull/half, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		))
+	recipes += new/datum/stack_recipe("bone roofing tile", /obj/item/stack/tile/roofing/bone, 3, 4, 20)
+	recipes += new/datum/stack_recipe("bone table frame", /obj/structure/table, 1, time = 10, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe("bone crate", /obj/structure/closet/crate/ashlander, 10, time = 50, one_per_turf = 1)
 
 /datum/material/sinew/generate_recipes()
 	..()

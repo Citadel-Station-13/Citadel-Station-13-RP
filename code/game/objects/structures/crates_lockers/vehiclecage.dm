@@ -8,7 +8,7 @@
 	var/my_vehicle_type
 	var/paint_color = "#666666"
 
-/obj/structure/vehiclecage/examine(mob/user)
+/obj/structure/vehiclecage/examine(mob/user, dist)
 	. = ..()
 	if(my_vehicle)
 		. += "<span class='notice'>It seems to contain \the [my_vehicle].</span>"
@@ -18,12 +18,12 @@
 	if(my_vehicle_type)
 		my_vehicle = new my_vehicle_type(src)
 		for(var/obj/I in get_turf(src))
-			if(I.density || I.anchored || I == src || (I.flags & ATOM_ABSTRACT) || !istype(I, my_vehicle_type))
+			if(I.density || I.anchored || I == src || (I.atom_flags & ATOM_ABSTRACT) || !istype(I, my_vehicle_type))
 				continue
 			load_vehicle(I)
 	update_icon()
 
-/obj/structure/vehiclecage/attack_hand(mob/user as mob)
+/obj/structure/vehiclecage/attack_hand(mob/user, list/params)
 	to_chat(user, "<span class='notice'>You need a wrench to take this apart!</span>")
 	return
 
@@ -44,13 +44,13 @@
 
 /obj/structure/vehiclecage/update_icon()
 	..()
-	overlays.Cut()
+	cut_overlays()
 	underlays.Cut()
 
 	var/image/framepaint = new(icon = 'icons/obj/storage.dmi', icon_state = "[initial(icon_state)]_a", layer = MOB_LAYER + 1.1)
 	framepaint.plane = MOB_PLANE
 	framepaint.color = paint_color
-	overlays += framepaint
+	add_overlay(framepaint)
 
 	for(var/obj/vehicle_old/V in src.contents)
 		var/image/showcase = new(V)
@@ -87,7 +87,7 @@
 	new /obj/item/stack/material/steel(src.loc, 5)
 
 	for(var/atom/movable/AM in contents)
-		if(!(AM.flags & ATOM_ABSTRACT))
+		if(!(AM.atom_flags & ATOM_ABSTRACT))
 			AM.forceMove(T)
 
 	my_vehicle = null

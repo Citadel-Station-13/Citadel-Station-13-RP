@@ -14,58 +14,58 @@
  * * Intialize the transform of the mob
  */
 /mob/Initialize(mapload)
+	// mob lists
 	GLOB.mob_list += src
-	set_focus(src)
 	if(stat == DEAD)
 		dead_mob_list += src
 	else
 		living_mob_list += src
+	// atom HUDs
+	set_key_focus(src)
 	prepare_huds()
 	for(var/v in GLOB.active_alternate_appearances)
 		if(!v)
 			continue
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
-	init_rendering()
+	// todo: remove hooks
 	hook_vr("mob_new",list(src))
+	// abilities
+	init_abilities()
+	// inventory
+	init_inventory()
+	// rendering
+	init_rendering()
 	// resize
 	update_transform()
 	// offset
 	reset_pixel_offsets()
-	. = ..()
-	update_config_movespeed()
+	// physiology
+	init_physiology()
+	// movespeed
 	update_movespeed(TRUE)
+	update_config_movespeed()
+	// actionspeed
 	initialize_actionspeed()
+	// ssd overlay
+	update_ssd_overlay()
+	return ..()
 
-/**
- * Delete a mob
- *
- * Removes mob from the following global lists
- * * GLOB.mob_list
- * * dead_mob_list
- * * living_mob_list
- *
- * Unsets the focus var
- *
- * Clears alerts for this mob
- *
- * Resets all the observers perspectives to the tile this mob is on
- *
- * qdels any client colours in place on this mob
- *
- * Ghostizes the client attached to this mob
- *
- * Parent call
- *
- * Returns QDEL_HINT_HARDDEL (don't change this)
- */
-/mob/Destroy()//This makes sure that mobs with GLOB.clients/keys are not just deleted from the game.
-	GLOB.mob_list -= src
-	dead_mob_list -= src
-	living_mob_list -= src
-	unset_machine()
+/mob/Destroy()
+	// status effects
+	for(var/id in status_effects)
+		var/datum/status_effect/effect = status_effects[id]
+		qdel(effect)
+	status_effects = null
+	// mob lists
+	mob_list_unregister(stat)
+	// movespeed
 	movespeed_modification = null
+	// actionspeed
 	actionspeed_modification = null
+	// todo: remove machine
+	unset_machine()
+	// hud
 	for(var/alert in alerts)
 		clear_alert(alert)
 	if(client)
@@ -73,21 +73,48 @@
 			qdel(spell_master)
 		remove_screen_obj_references()
 		client.screen = list()
-	if(mind && mind.current == src)
-		spellremove(src)
+	// mind
+	if(!isnull(mind))
+		if(mind.current == src)
+			// mind is ours, let it disassociate
+			// todo: legacy spell
+			spellremove(src)
+			mind?.disassociate()
+		else
+			// mind is not ours, null it out
+			mind = null
+	// abilities
+	dispose_abilities()
 	// this kicks out client
 	ghostize()
+	// rendering
 	if(hud_used)
 		QDEL_NULL(hud_used)
 	dispose_rendering()
-	if(plane_holder)
-		QDEL_NULL(plane_holder)
-	// with no client, we can safely remove perspective this way snow-flakily
-	if(using_perspective)
-		using_perspective.RemoveMob(src)
-		using_perspective = null
+	// perspective
+	using_perspective?.remove_mobs(src, TRUE)
+	if(self_perspective)
+		QDEL_NULL(self_perspective)
 	..()
 	return QDEL_HINT_HARDDEL
+
+/mob/proc/mob_list_register(for_stat)
+	GLOB.mob_list += src
+	if(for_stat == DEAD)
+		dead_mob_list += src
+	else
+		living_mob_list += src
+
+/mob/proc/mob_list_unregister(for_stat)
+	GLOB.mob_list -= src
+	if(for_stat == DEAD)
+		dead_mob_list -= src
+	else
+		living_mob_list -= src
+
+/mob/proc/mob_list_update_stat(old_stat, new_stat)
+	mob_list_unregister(old_stat)
+	mob_list_register(new_stat)
 
 /**
  * Generate the tag for this mob
@@ -139,34 +166,47 @@
 	spell_masters = null
 	zone_sel = null
 
+/mob/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
+		STATPANEL_DATA_ENTRY("Map", "[(LEGACY_MAP_DATUM)?.name || "Loading..."]")
+		if(!isnull(SSmapping.next_station) && (SSmapping.next_station.name != SSmapping.loaded_station.name))
+			STATPANEL_DATA_ENTRY("Next Map", "[SSmapping.next_station.name]")
+
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
-/mob/proc/show_message(msg, type, alt, alt_type)
+// todo: refactor
+/mob/show_message(msg, type, alt, alt_type)
+	if(!client && !teleop)
+		return
 
-	if(!client && !teleop)	return
+	if(!saycode_type_eligible(type))
+		if(alt && saycode_type_eligible(alt_type))
+			msg = alt
+			type = alt_type
+		else
+			return
 
-	if (type)
-		if((type & 1) && (is_blind() || paralysis) )//Vision related
-			if (!( alt ))
-				return
-			else
-				msg = alt
-				type = alt_type
-		if ((type & 2) && is_deaf())//Hearing related
-			if (!( alt ))
-				return
-			else
-				msg = alt
-				type = alt_type
-				if ((type & 1) && (sdisabilities & SDISABILITY_NERVOUS))
-					return
-	// Added voice muffling for Issue 41.
-	if(stat == UNCONSCIOUS || sleeping > 0)
-		to_chat(src,"<I>... You can almost hear someone talking ...</I>")
+	if(IS_ALIVE_BUT_UNCONSCIOUS(src))
+		to_chat(src,"<I>... You can almost hear someone talking ...</I>", type = MESSAGE_TYPE_LOCALCHAT)
 	else
-		to_chat(src,msg)
+		to_chat(src,msg, type = MESSAGE_TYPE_LOCALCHAT)
 		if(teleop)
-			to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[msg]")
-	return
+			to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[msg]", type = MESSAGE_TYPE_LOCALCHAT)
+
+/mob/proc/saycode_type_eligible(type)
+	switch(type)
+		if(SAYCODE_TYPE_VISIBLE)
+			return !is_blind()
+		if(SAYCODE_TYPE_AUDIBLE)
+			return !is_deaf()
+		if(SAYCODE_TYPE_CONSCIOUS)
+			return IS_CONSCIOUS(src)
+		if(SAYCODE_TYPE_LIVING)
+			return !IS_DEAD(src)
+		if(SAYCODE_TYPE_ALWAYS)
+			return TRUE
+	return TRUE
 
 /**
  * Show a message to all mobs in earshot of this one
@@ -200,7 +240,7 @@
 
 /mob/proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
-		if (M.real_name == text("[]", msg))
+		if (M.real_name == "[msg]")
 			return M
 	return 0
 
@@ -224,17 +264,14 @@
 /mob/proc/is_physically_disabled()
 	return incapacitated(INCAPACITATION_DISABLED)
 
-/mob/proc/cannot_stand()
-	return incapacitated(INCAPACITATION_KNOCKDOWN)
-
 /mob/proc/incapacitated(var/incapacitation_flags = INCAPACITATION_DEFAULT)
-	if ((incapacitation_flags & INCAPACITATION_STUNNED) && stunned)
+	if ((incapacitation_flags & INCAPACITATION_STUNNED) && !CHECK_MOBILITY(src, MOBILITY_CAN_USE))
 		return 1
 
-	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && (weakened || resting))
+	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && !CHECK_MOBILITY(src, MOBILITY_IS_STANDING))
 		return 1
 
-	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && (stat || paralysis || sleeping || (status_flags & FAKEDEATH)))
+	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && !CHECK_MOBILITY(src, MOBILITY_IS_CONSCIOUS))
 		return 1
 
 	if((incapacitation_flags & INCAPACITATION_RESTRAINED) && restrained())
@@ -264,7 +301,7 @@
  * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
  * for why this isn't atom/verb/examine()
  */
-/mob/verb/examinate(atom/A as mob|obj|turf in view(get_turf(src))) //It used to be oview(12), but I can't really say why
+/mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
 	set category = "IC"
 
@@ -284,9 +321,16 @@
 			if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
 				to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
 
+	do_examinate(A)
+
+/**
+ * examines something & sends results
+ * no pre-checks for dist/view/whatnot
+ */
+/mob/proc/do_examinate(atom/A)
 	var/list/result
 	if(client)
-		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
+		result = A.examine(src, game_range_to(src, A)) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
 	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
@@ -339,19 +383,35 @@
 	new_layer = clamp(new_layer, -100, 100)
 	set_relative_layer(new_layer)
 
-/mob/verb/shift_relative_behind(mob/M as mob in get_relative_shift_targets())
+/mob/verb/shift_relative_behind()
 	set name = "Move Behind"
 	set desc = "Move behind of a mob with the same base layer as yourself"
 	set src = usr
 	set category = "IC"
 
+	if(!client.throttle_verb())
+		return
+
+	var/mob/M = tgui_input_list(src, "What mob to move behind?", "Move Behind", get_relative_shift_targets())
+
+	if(QDELETED(M))
+		return
+
 	set_relative_layer(M.relative_layer - 1)
 
-/mob/verb/shift_relative_infront(mob/M as mob in get_relative_shift_targets())
+/mob/verb/shift_relative_infront()
 	set name = "Move Infront"
 	set desc = "Move infront of a mob with the same base layer as yourself"
 	set src = usr
 	set category = "IC"
+
+	if(!client.throttle_verb())
+		return
+
+	var/mob/M = tgui_input_list(src, "What mob to move infront?", "Move Infront", get_relative_shift_targets())
+
+	if(QDELETED(M))
+		return
 
 	set_relative_layer(M.relative_layer + 1)
 
@@ -476,8 +536,8 @@
 	// Try harder to find a key to use
 	if(!keytouse && key)
 		keytouse = ckey(key)
-	else if(!keytouse && mind?.key)
-		keytouse = ckey(mind.key)
+	else if(!keytouse && mind?.ckey)
+		keytouse = mind.ckey
 
 	GLOB.respawn_timers[keytouse] = world.time + time
 
@@ -498,6 +558,9 @@
 	set name = "Respawn"
 	set category = "OOC"
 	set desc = "Return to the lobby."
+
+	// don't lose out on that sweet observer playtime
+	SSplaytime.queue_playtimes(client)
 
 	if(stat != DEAD)
 		to_chat(usr, SPAN_BOLDNOTICE("You must be dead to use this!"))
@@ -551,9 +614,7 @@
 	set name = "Observe"
 	set category = "OOC"
 
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified))
-		return
-	else if(stat != DEAD || istype(src, /mob/new_player))
+	if(stat != DEAD || istype(src, /mob/new_player))
 		to_chat(usr, "<font color=#4F49AF>You must be observing to use this!</font>")
 		return
 
@@ -646,12 +707,12 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		handle_strip_topic(usr, href_list, op)
 		return
 	if(href_list["mach_close"])
-		var/t1 = text("window=[href_list["mach_close"]]")
+		var/t1 = "window=[href_list["mach_close"]]"
 		unset_machine()
 		src << browse(null, t1)
 
 	if(href_list["flavor_more"])
-		usr << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", name, replacetext(flavor_text, "\n", "<BR>")), text("window=[];size=500x200", name))
+		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY><TT>[replacetext(flavor_text, "\n", "<BR>")]</TT></BODY></HTML>", "window=[name];size=500x200")
 		onclose(usr, "[name]")
 	if(href_list["flavor_change"])
 		update_flavor_text()
@@ -709,96 +770,9 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	for(var/mob/M in viewers())
 		M.see(message)
 
-/**
- * Output an update to the stat panel for the client
- *
- * calculates client ping, round id, server time, time dilation and other data about the round
- * and puts it in the mob status panel on a regular loop
- */
-/mob/Stat()
-	..()
-
-	//This is only called from client/Stat(), let's assume client exists.
-
-	if(statpanel("Status"))
-		//var/list/L = list()
-		stat("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
-		//L += SSmapping.stat_map_name
-		stat("Round ID", "[GLOB.round_id || "ERROR"]")
-		// VIRGO START
-		stat("Station Time", stationtime2text())
-		stat("Station Date", stationdate2text())
-		stat("Round Duration", roundduration2text())
-		// VIRGO END
-		stat("Time dilation", SStime_track.stat_time_text)
-		//L += SSshuttle.emergency_shuttle_stat_text
-		//stat(null, "[L.Join("\n\n")]")
-
-	if(listed_turf && client)
-		if(!TurfAdjacent(listed_turf))
-			listed_turf = null
-		else
-			statpanel(listed_turf.name, null, listed_turf)
-			var/list/overrides = list()
-			for(var/image/I in client.images)
-				if(I.loc && I.loc.loc == listed_turf && I.override)
-					overrides += I.loc
-			for(var/atom/A in listed_turf)
-				if(!A.mouse_opacity)
-					continue
-				if(A.invisibility > see_invisible)
-					continue
-				if(overrides.len && (A in overrides))
-					continue
-/*
-				if(A.IsObscured())
-					continue
-*/
-				statpanel(listed_turf.name, null, A)
-
-	if(client.holder)
-		if(statpanel("MC"))
-			var/turf/T = get_turf(client.eye)
-			stat("Location:", COORD(T))
-			stat("CPU:", "[world.cpu]")
-			stat("Instances:", "[num2text(world.contents.len, 10)]")
-			stat("World Time:", "[world.time]")
-			stat("Real time of day:", REALTIMEOFDAY)
-			GLOB.stat_entry()
-			config.stat_entry()
-			stat(null)
-			if(Master)
-				Master.stat_entry()
-			else
-				stat("Master Controller:", "ERROR")
-			if(Failsafe)
-				Failsafe.stat_entry()
-			else
-				stat("Failsafe Controller:", "ERROR")
-			if(Master)
-				stat(null)
-				for(var/datum/controller/subsystem/SS in Master.subsystems)
-					SS.stat_entry()
-			//GLOB.GLOB.cameranet.stat_entry()
-		if(statpanel("Tickets"))
-			GLOB.ahelp_tickets.stat_entry()
-		if(length(GLOB.sdql2_queries))
-			if(statpanel("SDQL2"))
-				stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
-				for(var/i in GLOB.sdql2_queries)
-					var/datum/SDQL2_query/Q = i
-					Q.generate_stat()
-
-
-/// Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
-/mob/proc/can_stand_overridden()
-	return 0
-
 /// This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()
 	return 0
-
-
 
 /mob/proc/AdjustLosebreath(amount)
 	losebreath = clamp(0, losebreath + amount, 25)
@@ -886,7 +860,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		visible_message("<span class='warning'><b>[usr] rips [selection] out of [src]'s body.</b></span>","<span class='warning'><b>[usr] rips [selection] out of your body.</b></span>")
 	valid_objects = get_visible_implants(0)
 	if(valid_objects.len == 1) //Yanking out last object - removing verb.
-		src.verbs -= /mob/proc/yank_out_object
+		remove_verb(src, /mob/proc/yank_out_object)
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
@@ -902,8 +876,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")
 
 		if(prob(selection.w_class * 5) && (affected.robotic < ORGAN_ROBOT)) //I'M SO ANEMIC I COULD JUST -DIE-.
-			var/datum/wound/internal_bleeding/I = new (min(selection.w_class * 5, 15))
-			affected.wounds += I
+			affected.create_specific_wound(/datum/wound/internal_bleeding, min(selection.w_class * 5, 15))
 			H.custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 50)
 
 		if (ishuman(U))
@@ -937,11 +910,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/proc/updateicon()
 	return
-
-/// Please always use this proc, never just set the var directly.
-/mob/proc/set_stat(var/new_stat)
-	. = (stat != new_stat)
-	stat = new_stat
 
 /mob/verb/face_direction()
 
@@ -980,18 +948,22 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/verb/northfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(NORTH))
 
 /mob/verb/southfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(SOUTH))
 
 /mob/verb/eastfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(EAST))
 
 /mob/verb/westfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(WEST))
 
 /mob/proc/adjustEarDamage()
@@ -1102,7 +1074,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		else
 			registered_z = null
 
-/mob/onTransitZ(old_z, new_z)
+/mob/on_changed_z_level(old_z, new_z)
 	..()
 	update_client_z(new_z)
 
@@ -1110,6 +1082,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	set name = "diceroll"
 	set category = "OOC"
 	set desc = "Roll a random number between 1 and a chosen number."
+	set src = usr
 
 	n = round(n)		// why are you putting in floats??
 	if(n < 2)
@@ -1162,7 +1135,8 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/z_pass_out(atom/movable/AM, dir, turf/new_loc)
 	return TRUE
 
-//! Pixel Offsets
+//? Pixel Offsets
+
 /mob/proc/get_buckled_pixel_x_offset()
 	if(!buckled)
 		return 0
@@ -1193,6 +1167,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = FALSE
 	pixel_x -= shift_pixel_x
 	pixel_y -= shift_pixel_y
+	wallflowering = NONE
 	shift_pixel_x = 0
 	shift_pixel_y = 0
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
@@ -1203,6 +1178,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	pixel_x += (val - shift_pixel_x)
 	shift_pixel_x = val
+	switch(val)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(EAST)) | WEST
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(EAST|WEST)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(WEST)) | EAST
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/set_pixel_shift_y(val)
@@ -1211,6 +1193,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	pixel_y += (val - shift_pixel_y)
 	shift_pixel_y = val
+	switch(val)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(NORTH)) | SOUTH
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(NORTH|SOUTH)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(SOUTH)) | NORTH
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/adjust_pixel_shift_x(val)
@@ -1219,6 +1208,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	shift_pixel_x += val
 	pixel_x += val
+	switch(shift_pixel_x)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(EAST)) | WEST
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(EAST|WEST)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(WEST)) | EAST
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/adjust_pixel_shift_y(val)
@@ -1227,11 +1223,80 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	shift_pixel_y += val
 	pixel_y += val
+	switch(shift_pixel_y)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(NORTH)) | SOUTH
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(NORTH|SOUTH)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(SOUTH)) | NORTH
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
-//! Reachability
+//? Reachability
+
 /mob/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE
 
 /mob/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE
+
+//? Radioactivity
+
+/mob/clean_radiation(str, mul, cheap)
+	. = ..()
+	if(cheap)
+		return
+	for(var/obj/item/I as anything in get_equipped_items(TRUE, TRUE))
+		I.clean_radiation(str, mul, cheap)
+
+//? Abilities
+
+/mob/proc/init_abilities()
+	var/list/built = list()
+	var/list/registering = list()
+	for(var/datum/ability/ability_path as anything in abilities)
+		if(istype(ability_path))
+			built += ability_path // don't re-associate existing ones.
+		else if(ispath(ability_path, /datum/ability))
+			registering += new ability_path
+	abilities = built
+	for(var/datum/ability/ability as anything in registering)
+		ability.associate(src)
+
+/mob/proc/dispose_abilities()
+	for(var/datum/ability/ability in abilities)
+		ability.disassociate(src)
+	abilities = null
+
+/**
+ * mob side registration of abilities. must be called from /datum/ability/proc/associate!
+ */
+/mob/proc/register_ability(datum/ability/ability)
+	LAZYINITLIST(abilities)
+	abilities += ability
+
+/**
+ * mob side unregistration of abilities. must be called from /datum/ability/proc/disassociate!
+ */
+/mob/proc/unregister_ability(datum/ability/ability)
+	LAZYREMOVE(abilities, ability)
+
+//! Misc
+/**
+ * Whether the mob can use Topic to interact with machines
+ *
+ * Args:
+ * be_close - Whether you need to be next to/on top of M
+ * no_dexterity - Whether you need to be an ADVANCEDTOOLUSER
+ * no_tk - If be_close is TRUE, this will block Telekinesis from bypassing the requirement
+ * need_hands - Whether you need hands to use this
+ * floor_okay - Whether mobility flags should be checked for MOBILITY_CAN_UI to use.
+ */
+/mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
+	return
+
+/**
+ * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
+ */
+/mob/is_avoiding_ground()
+	return ..() || hovering || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST)

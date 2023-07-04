@@ -123,7 +123,7 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(knockdown_chance))
-			L.Weaken(3)
+			L.afflict_paralyze(20 * 3)
 			L.visible_message(SPAN_DANGER("\The [src] knocks down \the [L]!"))
 
 /mob/living/simple_mob/vore/aggressive/mimic/will_show_tooltip()
@@ -214,7 +214,7 @@
 	melee_damage_upper = 30
 	attack_armor_pen = 50 //Its jaw is an airlock. Its got enough bite strength.
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 70,
 				"bullet" = 30,
 				"laser" = 30,
@@ -307,7 +307,7 @@
 	melee_damage_upper = 20
 	attack_armor_pen =  25 // NOM NOM
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 10,
 				"bullet" = 20,
 				"laser" = 20,

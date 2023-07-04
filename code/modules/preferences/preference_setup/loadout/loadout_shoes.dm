@@ -3,7 +3,7 @@
 	name = "Sandals"
 	path = /obj/item/clothing/shoes/sandal
 	slot = SLOT_ID_SHOES
-	sort_category = "Shoes and Footwear"
+	sort_category = LOADOUT_CATEGORY_SHOES
 
 /datum/gear/shoes/jackboots
 	name = "Jackboots"
@@ -216,13 +216,42 @@
 	path = /obj/item/clothing/shoes/boots/laconic
 
 /datum/gear/shoes/bountyskin
-	name = "Bounty Hunter's Heels"
+	name = "Bounty Hunters Heels"
 	path = /obj/item/clothing/shoes/bountyskin
 
 /datum/gear/shoes/antediluvian
 	name = "Antediluvian Legwraps"
 	path = /obj/item/clothing/shoes/antediluvian
 
+/datum/gear/shoes/antediluvian
+	name = "Antediluvian Heels"
+	path = /obj/item/clothing/shoes/antediluvian/heels
+
 /datum/gear/shoes/halfmoon
 	name = "Half Moon boots"
 	path = /obj/item/clothing/shoes/boots/half_moon
+
+/datum/gear/shoes/utilitarian
+	name = "Utilitarian Shoes"
+	path = /obj/item/clothing/shoes/utilitarian
+
+/datum/gear/shoes/duty_alt
+	name = "Duty Boots (Alternate)"
+	path = /obj/item/clothing/shoes/boots/duty/alt
+	cost = 2
+
+/datum/gear/shoes/duty_alt/knee
+	name = "Duty Boots (Alternate), Knee-High"
+	path = /obj/item/clothing/shoes/boots/duty/alt/knee
+
+/datum/gear/shoes/duty_alt/heel
+	name = "Duty Boots (Alternate), Heels"
+	path = /obj/item/clothing/shoes/boots/duty/alt/heel
+
+/datum/gear/shoes/ballet
+	name = "Antheia Pointe Shoes"
+	path = /obj/item/clothing/shoes/ballet
+
+/datum/gear/shoes/ballet/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice

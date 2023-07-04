@@ -15,7 +15,7 @@
 	name = "Soulcatcher"
 	desc = "A mind storage and processing system capable of capturing and supporting human-level minds in a small VR space."
 	list_pos = NIF_SOULCATCHER
-	cost = 100 //If I wanna trap people's minds and lood them, then by god I'll do so.
+	cost = 25 //If I wanna trap people's minds and lood them, then by god I'll do so.
 	wear = 1
 	p_drain = 0.01
 
@@ -47,14 +47,14 @@
 	if((. = ..()))
 		//nif.set_flag(NIF_O_SCOTHERS,NIF_FLAGS_OTHER)	//Only required on install if the flag is in the default setting_flags list defined few lines above.
 		if(nif?.human)
-			nif.human.verbs |= /mob/living/carbon/human/proc/nsay
-			nif.human.verbs |= /mob/living/carbon/human/proc/nme
+			add_verb(nif.human, /mob/living/carbon/human/proc/nsay)
+			add_verb(nif.human, /mob/living/carbon/human/proc/nme)
 
 /datum/nifsoft/soulcatcher/uninstall()
 	QDEL_LIST_NULL(brainmobs)
 	if((. = ..()) && nif?.human) //Sometimes NIFs are deleted outside of a human
-		nif.human.verbs -= /mob/living/carbon/human/proc/nsay
-		nif.human.verbs -= /mob/living/carbon/human/proc/nme
+		remove_verb(nif.human, /mob/living/carbon/human/proc/nsay)
+		remove_verb(nif.human, /mob/living/carbon/human/proc/nme)
 
 /datum/nifsoft/soulcatcher/proc/save_settings()
 	if(!nif)
@@ -114,7 +114,7 @@
 	message = trim(message)
 	if(!length(message))
 		return
-	message = sender.say_emphasis(message)
+	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting
@@ -133,7 +133,7 @@
 	message = trim(message)
 	if(!length(message))
 		return
-	message = sender.say_emphasis(message)
+	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting
@@ -302,7 +302,7 @@
 
 	//Put the mind and player into the mob
 	// login should handle the perspective reset, now that nif is set.
-	M.mind.transfer_to(brainmob)
+	M.mind.transfer(brainmob)
 	brainmob.name = brainmob.mind.name
 	brainmob.real_name = brainmob.mind.name
 
@@ -358,11 +358,6 @@
 	var/datum/nifsoft/soulcatcher/soulcatcher
 	var/identifying_gender
 
-/mob/living/carbon/brain/caught_soul/Login()
-	..()
-	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
-	identifying_gender = client.prefs.identifying_gender
-	reset_perspective((nif?.human) || nif)
 
 /mob/living/carbon/brain/caught_soul/Destroy()
 	if(soulcatcher)
@@ -505,10 +500,13 @@
 /mob/living/carbon/brain/caught_soul/set_typing_indicator(state)
 	return eyeobj?.set_typing_indicator(state)
 
+/mob/living/carbon/brain/caught_soul/update_mobility(blocked, forced)
+	return ..(blocked, ALL)
+
 ///////////////////
 //A projected AR soul thing
 /mob/observer/eye/ar_soul
-	plane = PLANE_AUGMENTED
+	plane = AUGMENTED_PLANE
 	icon = 'icons/obj/machines/ar_elements.dmi'
 	icon_state = "beacon"
 	var/mob/living/carbon/human/parent_human
@@ -538,14 +536,14 @@
 		alpha_mask.blend_mode = BLEND_SUBTRACT
 		alpha_mask.color = list(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,1,1,1,1)
 		dummy.add_overlay(alpha_mask)
-		COMPILE_OVERLAYS(dummy)
+		dummy.compile_overlays()
 		dummy.alpha = 192
 
 		// remove hudlist
-		dummy.overlays -= dummy.hud_list
+		dummy.cut_overlay(dummy.hud_list)
 		// appearance clone immediately
 		appearance = dummy.appearance
-		plane = PLANE_AUGMENTED
+		plane = AUGMENTED_PLANE
 		qdel(dummy)
 
 /mob/observer/eye/ar_soul/Destroy()

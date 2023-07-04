@@ -6,6 +6,10 @@
 
 #define isdatum(D) (istype(D, /datum))
 
+#define ismutableappearance(D) (istype(D, /mutable_appearance))
+
+#define isimage(D) (istype(D, /image))
+
 #define isweakref(D) (istype(D, /datum/weakref))
 
 //Datums
@@ -13,6 +17,8 @@
 #define isTaurTail(A)	istype(A, /datum/sprite_accessory/tail/taur)
 
 //Turfs
+
+#define isfloorturf(A) (istype(A, /turf/simulated/floor))
 
 #define isopenturf(A) istype(A, /turf/simulated/open)
 
@@ -41,7 +47,9 @@
 
 #define isairlock(A) istype(A, /obj/machinery/door/airlock)
 
-#define isbelly(A)		istype(A, /obj/belly)
+#define isbelly(A) istype(A, /obj/belly)
+
+#define is_reagent_container(O) (istype(O, /obj/item/reagent_containers))
 
 //Areas
 
@@ -59,11 +67,15 @@
 
 #define iscorgi(A) istype(A, /mob/living/simple_mob/animal/passive/dog/corgi)
 
+#define isDrone(A) istype(A, /mob/living/silicon/robot/drone)
+
 #define isEye(A) istype(A, /mob/observer/eye)
 
 #define ishuman(A) istype(A, /mob/living/carbon/human)
 
 #define isliving(A) istype(A, /mob/living)
+
+#define isMatriarchDrone(A) istype(A, /mob/living/silicon/robot/drone/construction/matriarch)
 
 #define ismouse(A) istype(A, /mob/living/simple_mob/animal/passive/mouse/)
 

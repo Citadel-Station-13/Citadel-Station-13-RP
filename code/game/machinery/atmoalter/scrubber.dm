@@ -103,7 +103,7 @@
 	. = ..()
 	return src.attack_hand(user)
 
-/obj/machinery/portable_atmospherics/powered/scrubber/attack_hand(var/mob/user)
+/obj/machinery/portable_atmospherics/powered/scrubber/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/ui_interact(mob/user, datum/tgui/ui)
@@ -179,11 +179,11 @@
 
 	name = "[name] (ID [id])"
 
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/attack_hand(var/mob/user as mob)
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/attack_hand(mob/user, list/params)
 		to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the scrubber control console.</span>")
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/update_icon()
-	src.overlays = 0
+	cut_overlays()
 
 	if(on && !(machine_stat & (NOPOWER|BROKEN)))
 		icon_state = "scrubber:1"

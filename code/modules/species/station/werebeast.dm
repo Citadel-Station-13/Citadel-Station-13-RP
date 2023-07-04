@@ -1,6 +1,7 @@
 /datum/species/werebeast
-	name = SPECIES_WEREBEAST
 	uid = SPECIES_ID_WEREBEAST
+	id = SPECIES_ID_WEREBEAST
+	name = SPECIES_WEREBEAST
 	name_plural = "Werebeasts"
 	primitive_form = SPECIES_MONKEY_VULPKANIN
 	default_bodytype = BODYTYPE_WEREBEAST
@@ -21,7 +22,7 @@
 	metabolic_rate = 2
 	item_slowdown_mod = 0.25
 	hunger_factor = 0.4
-	darksight = 8
+	vision_innate = /datum/vision/baseline/species_tier_3
 	mob_size  = MOB_LARGE
 
 	max_age = 200
@@ -35,7 +36,7 @@
 	wikilink="N/A"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/vulpkanin)
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	inherent_verbs = list(

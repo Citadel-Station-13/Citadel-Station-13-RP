@@ -10,7 +10,7 @@
 	drop_sound = 'sound/items/drop/bottle.ogg'
 	pickup_sound = 'sound/items/pickup/bottle.ogg'
 	icon_state = null
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(5,10,15,25,30)
 	volume = 50
@@ -25,7 +25,10 @@
 			price_tag = null
 	return
 
-/obj/item/reagent_containers/food/drinks/attack_self(mob/user as mob)
+/obj/item/reagent_containers/food/drinks/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!is_open_container())
 		open(user)
 
@@ -35,20 +38,17 @@
 	else
 		playsound(loc,"canopen", rand(10,50), 1)
 	to_chat(user, "<span class='notice'>You open [src] with an audible pop!</span>")
-	flags |= OPENCONTAINER
+	atom_flags |= OPENCONTAINER
 
-/obj/item/reagent_containers/food/drinks/attack(mob/M as mob, mob/user as mob, def_zone)
-	if(force && !(item_flags & ITEM_NOBLUDGEON) && user.a_intent == INTENT_HARM)
+/obj/item/reagent_containers/food/drinks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
 		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	standard_feed_mob(user, target)
 
-	if(standard_feed_mob(user, M))
+/obj/item/reagent_containers/food/drinks/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-
-	return 0
-
-/obj/item/reagent_containers/food/drinks/afterattack(obj/target, mob/user, proximity)
-	if(!proximity) return
-
 	if(standard_dispenser_refill(user, target))
 		return
 	if(standard_pour_into(user, target))
@@ -68,7 +68,7 @@
 	return ..()
 
 /obj/item/reagent_containers/food/drinks/standard_pour_into(var/mob/user, var/atom/target)
-	if(!is_open_container())
+	if(!is_open_container() && target.reagents)
 		to_chat(user, "<span class='notice'>You need to open [src]!</span>")
 		return 1
 	if(target == loc) //prevent filling a machine with a glass you just put into it.
@@ -81,7 +81,7 @@
 /obj/item/reagent_containers/food/drinks/feed_sound(var/mob/user)
 	playsound(user.loc, 'sound/items/drink.ogg', rand(10, 50), 1)
 
-/obj/item/reagent_containers/food/drinks/examine(mob/user)
+/obj/item/reagent_containers/food/drinks/examine(mob/user, dist)
 	. = ..()
 	if(!reagents || reagents.total_volume == 0)
 		. += "<span class='notice'>\The [src] is empty!</span>"
@@ -105,12 +105,12 @@
 	icon_state = "golden_cup"
 	item_state = "" //nope :(
 	w_class = ITEMSIZE_LARGE
-	force = 14
+	damage_force = 14
 	throw_force = 10
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = null
 	volume = 150
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 
 /obj/item/reagent_containers/food/drinks/golden_cup/on_reagent_change()
 	..()
@@ -384,3 +384,22 @@
 
 /obj/item/reagent_containers/food/drinks/britcup/on_reagent_change()
 	..()
+
+/obj/item/reagent_containers/food/drinks/glue
+	name = "Glue"
+	desc = "A small bottle full of glue. The orange tip calls to you, and the fluid inside is non-toxic... Should you?"
+	icon_state = "glue"
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	volume = 30
+	center_of_mass = list("x"=15, "y"=13)
+
+/obj/item/reagent_containers/food/drinks/glue/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("safeglue", 30)
+
+/obj/item/reagent_containers/food/drinks/glue/on_reagent_change()
+	..()
+	if(reagents.total_volume)
+		icon_state = "glue"
+	else
+		icon_state = "glue_e"

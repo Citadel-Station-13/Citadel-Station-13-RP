@@ -5,7 +5,7 @@
 	plane = PARALLAX_PLANE
 	screen_loc = "CENTER-7,CENTER-7"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	appearance_flags = PIXEL_SCALE | KEEP_TOGETHER
+	appearance_flags = PIXEL_SCALE | KEEP_TOGETHER | TILE_BOUND
 
 	// notice - all parallax layers are 15x15 tiles. They roll over every 240 pixels.
 	/// pixel x/y shift per real x/y
@@ -68,7 +68,7 @@
 	view_current = client_view
 	if(!dynamic_self_tile)
 		return
-	var/list/real_view = getviewsize(client_view)
+	var/list/real_view = decode_view_size(client_view)
 	var/count_x = CEILING((real_view[1] / 2) / 15, 1) + 1
 	var/count_y = CEILING((real_view[2] / 2) / 15, 1) + 1
 	var/list/new_overlays = GetOverlays()

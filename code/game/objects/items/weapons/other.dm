@@ -5,7 +5,7 @@
 	desc = "Should anything ever go wrong..."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "red_phone"
-	force = 3.0
+	damage_force = 3.0
 	throw_force = 2.0
 	throw_speed = 1
 	throw_range = 4
@@ -31,7 +31,7 @@
 	gender = PLURAL
 	icon = 'icons/obj/items.dmi'
 	icon_state = "soap"
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_HOLSTER
 	throw_force = 0
@@ -52,6 +52,10 @@
 /obj/item/soap/syndie
 	desc = "An untrustworthy bar of soap. Smells of fear."
 	icon_state = "soapsyndie"
+
+/obj/item/soap/primitive
+	desc = "Lye and fat processed into a solid state. This hand crafted bar is unscented and uneven."
+	icon_state = "soapprim"
 
 /obj/item/bikehorn
 	name = "bike horn"
@@ -81,6 +85,9 @@
 	return ..()
 
 /obj/item/bikehorn/golden/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(flip_cooldown < world.time)
 		flip_mobs()
 	..()
@@ -116,7 +123,7 @@
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_NORMAL
 	matter = list(MAT_STEEL = 50)
@@ -132,6 +139,9 @@
 	temp_blade.attack_self()
 
 /obj/item/cane/concealed/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 	if(concealed_blade)
 		user.visible_message(
@@ -145,8 +155,6 @@
 		user.put_in_hands(concealed_blade)
 		user.put_in_hands(src)
 		concealed_blade = null
-	else
-		..()
 
 /obj/item/cane/concealed/attackby(obj/item/material/butterfly/W, mob/user)
 	if(!src.concealed_blade && istype(W))
@@ -178,12 +186,11 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "whitecane"
 
-/obj/item/cane/whitecane/attack(mob/M as mob, mob/user as mob)
+/obj/item/cane/whitecane/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HELP)
-		user.visible_message(SPAN_NOTICE("\The [user] has lightly tapped [M] on the ankle with their white cane!"))
-		return TRUE
-	else
-		. = ..()
+		user.visible_message(SPAN_NOTICE("\The [user] has lightly tapped [target] on the ankle with their white cane!"))
+		return
+	return ..()
 
 //Code for Telescopic White Cane writen by Gozulio
 
@@ -197,11 +204,15 @@
 		)
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	force = 3
+	damage_force = 3
 	var/on = 0
 
-/obj/item/cane/whitecane/collapsible/attack_self(mob/user as mob)
+/obj/item/cane/whitecane/collapsible/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	on = !on
+	LAZYINITLIST(item_state_slots)
 	if(on)
 		user.visible_message(
 			SPAN_NOTICE("\The [user] extends the white cane."),
@@ -211,7 +222,7 @@
 		icon_state = "whitecane1out"
 		item_state_slots = list(SLOT_ID_RIGHT_HAND = "whitecane", SLOT_ID_LEFT_HAND = "whitecane")
 		w_class = ITEMSIZE_NORMAL
-		force = 5
+		damage_force = 5
 		attack_verb = list("smacked", "struck", "cracked", "beaten")
 	else
 		user.visible_message(
@@ -222,7 +233,7 @@
 		icon_state = "whitecane1in"
 		item_state_slots = list(SLOT_ID_RIGHT_HAND = null, SLOT_ID_LEFT_HAND = null)
 		w_class = ITEMSIZE_SMALL
-		force = 3
+		damage_force = 3
 		attack_verb = list("hit", "poked", "prodded")
 
 	if(istype(user,/mob/living/carbon/human))
@@ -281,7 +292,7 @@
 	name = "wet floor sign"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "caution"
-	force = 1.0
+	damage_force = 1.0
 	throw_force = 3.0
 	throw_speed = 1
 	throw_range = 5
@@ -353,7 +364,7 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 	)
-	force = 3.0
+	damage_force = 3.0
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
@@ -378,7 +389,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "stick"
 	item_state = "cane"
-	force = 3.0
+	damage_force = 3.0
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
@@ -848,3 +859,77 @@
 	icon_state = "spring"
 	origin_tech = list(TECH_ENGINEERING = 1)
 	matter = list(MAT_STEEL = 40)
+
+//Yay Saddles.
+/obj/item/saddle
+	name = "saddle"
+	desc = "A portable seat designed to be mounted on trained animals. You shouldn't be seeing this version!"
+	icon = 'icons/obj/items.dmi'
+	icon_state = "saddle"
+	w_class = ITEMSIZE_LARGE
+
+/obj/item/saddle/horse
+	desc = "A portable seat designed to be mounted on trained animals. This leather design originates from Old Earth, where it was primarily used on horses."
+
+/obj/item/saddle/shank
+	name = "goliath hide saddle"
+	desc = "A portable seat designed to be mounted on trained animals. This one is fashioned out of goliath hide and bone, and seems to be designed for a very angular beast."
+	icon_state = "saddle_lavaland"
+
+/obj/item/saddle/stormdrifter
+	name = "harness and gondola"
+	desc = "A hardy gondola designed to be mounted on a floating creature. This one is fashioned out of shank chitin and Goliath bone."
+	icon_state = "saddle_lavaland"
+
+//Ashlander Specific Crafting Items
+/datum/category_item/catalogue/anomalous/scorian_religion/elder_stone
+	name = "Scorian Religion - Elder Stones"
+	desc = "Originally depicted in Scorian carvings and cave paintings discovered at various dig sites around Surt, \
+	actual samples of these curious gems only recently became available. These gems, whose name most closely translates \
+	to 'Elder Stone' in Galactic Common, are considered items of intense religious significance to Scorian tribes. \
+	Outlanders who have been seen in possession of elder stones are frequently treated with hostility by the Scorian people, \
+	leading to several diplomatic incidents in recent months. Elder stones possess subtle anomalous properties, most notably \
+	a musical chiming tone, similar to the constant ringing of a bell. They are considered especially valuable by anomalous \
+	study groups and anthropological initiatives alike."
+	value = CATALOGUER_REWARD_MEDIUM
+
+/obj/item/elderstone
+	name = "elder stone"
+	desc = "This strange gem is considered sacred by the inhabitants of Surt. Jealously protected by the tribes, these stones exhibit anomalous properties - primarily a faintly audible chiming ring."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "elderstone"
+	w_class = ITEMSIZE_SMALL
+	catalogue_data = list(/datum/category_item/catalogue/anomalous/scorian_religion/elder_stone)
+
+/obj/item/condensedphlogiston
+	name = "condensed phlogiston"
+	desc = "Phlogiston stabilized into a putty-like solid. It is less volatile than raw phlogiston, requiring special circumstances to detonate."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "condensedphlogiston"
+	w_class = ITEMSIZE_SMALL
+
+/obj/item/bitterash
+	name = "poultice (bitter ash)"
+	desc = "A pungent poultice used primarily in Scorian religious rites. It is believed to provide protection from rampaging beasts."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "poulticeash"
+	w_class = ITEMSIZE_SMALL
+	var/use_sound = list('sound/effects/ointment.ogg')
+
+//Code isn't working. Figure it out tomorrow.
+
+/obj/item/bitterash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!target.mind)
+		return
+	if(target.faction == user.faction)
+		to_chat(target, "<span class='notice'>You are graced by the familiar gaze of the Mother for a brief moment.</span>")
+
+	to_chat(user, "<span class='notice'>You smear the Mark of the Mother on [target]'s forehead using the [src].</span>")
+	to_chat(target, "<span class='notice'>You sense an unfamiliar presence looming over you. It encases you in a gentle, all-encompassing warmth.</span>")
+	target.faction = user.faction
+	playsound(src, pick(use_sound), 25)
+	qdel(src)

@@ -10,7 +10,6 @@
 /// queued for ZAS rebuild
 #define TURF_ZONE_REBUILD_QUEUED	(1<<5)
 
-
 ///CITMAIN TURF FLAGS - Completely unused
 /*
 /// If a turf can be made dirty at roundstart. This is also used in areas.
@@ -26,24 +25,7 @@
 DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(NO_JAUNT),
 	BITFIELD(UNUSED_RESERVATION_TURF),
-))
-
-// /turf/z_flags
-/// Allow air passage through top
-#define Z_AIR_UP			(1<<0)
-/// Allow air passage through bottom
-#define Z_AIR_DOWN			(1<<1)
-/// Allow atom movement through top
-#define Z_OPEN_UP			(1<<2)
-/// Allow atom movement through bottom
-#define Z_OPEN_DOWN			(1<<3)
-/// Considered open - below turfs will get the openspace overlay if so
-#define Z_CONSIDERED_OPEN	(1<<4)
-
-DEFINE_BITFIELD(z_flags, list(
-	"Z_AIR_UP" = Z_AIR_UP,
-	"Z_AIR_DOWN" = Z_AIR_DOWN,
-	"Z_OPEN_UP" = Z_OPEN_UP,
-	"Z_OPEN_DOWN" = Z_OPEN_DOWN,
-	"Z_CONSIDERED_OPEN" = Z_CONSIDERED_OPEN,
+	BITFIELD(TURF_PLANET_QUEUED),
+	BITFIELD(TURF_PLANET_REGISTERED),
+	BITFIELD(TURF_ZONE_REBUILD_QUEUED),
 ))

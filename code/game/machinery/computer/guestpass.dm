@@ -18,7 +18,7 @@
 	else
 		return temp_access
 
-/obj/item/card/id/guest/examine(mob/user)
+/obj/item/card/id/guest/examine(mob/user, dist)
 	. = ..()
 	if (world.time < expiration_time)
 		. += "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>"
@@ -39,7 +39,10 @@
 	to_chat(usr, "<span class='notice'>Issuing reason: [reason].</span>")
 	return
 
-/obj/item/card/id/guest/attack_self(mob/living/user as mob)
+/obj/item/card/id/guest/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HARM)
 		if(icon_state == "guest_invalid")
 			to_chat(user, "<span class='warning'>This guest pass is already deactivated!</span>")
@@ -52,7 +55,6 @@
 			icon_state = "guest_invalid"
 			expiration_time = world.time
 			expired = 1
-	return ..()
 
 /obj/item/card/id/guest/Initialize(mapload)
 	. = ..()
@@ -113,7 +115,7 @@
 /obj/machinery/computer/guestpass/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/guestpass/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/guestpass/attack_hand(mob/user, list/params)
 	if(..())
 		return
 
@@ -190,7 +192,7 @@
 						accesses.Add(A)
 					else
 						to_chat(usr, "<span class='warning'>Invalid selection, please consult technical support if there are any issues.</span>")
-						log_debug("[key_name_admin(usr)] tried selecting an invalid guest pass terminal option.")
+						log_debug(SPAN_DEBUG("[key_name_admin(usr)] tried selecting an invalid guest pass terminal option."))
 	if (href_list["action"])
 		switch(href_list["action"])
 			if ("id")

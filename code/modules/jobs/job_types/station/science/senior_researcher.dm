@@ -1,5 +1,6 @@
-/datum/job/station/senior_researcher
+/datum/role/job/station/senior_researcher
 	title = "Senior Researcher"
+	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	id = JOB_ID_SENIOR_RESEARCHER
 	flag = SENIOR_RESEARCHER
 	departments = list(DEPARTMENT_RESEARCH)
@@ -9,9 +10,8 @@
 	supervisors = "the Research Director"
 	selection_color = "#633D63"
 	idtype = /obj/item/card/id/science/scientist
-	economic_modifier = 7
-	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_xenoarch, access_xenobotany)
-	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch, access_xenobiology, access_xenobotany)
+	additional_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_XENOBIO, ACCESS_SCIENCE_XENOARCH, ACCESS_SCIENCE_XENOBOTANY)
+	minimal_access = list(ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_XENOARCH, ACCESS_SCIENCE_XENOBIO, ACCESS_SCIENCE_XENOBOTANY)
 
 	minimal_player_age = 14
 

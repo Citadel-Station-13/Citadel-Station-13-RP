@@ -19,7 +19,7 @@
 				H.vessel.add_reagent("blood",5)
 				H.nutrition += 50 * weakness
 				H.adjustBrainLoss(-25 * weakness)
-				H.radiation -= min(H.radiation, 25 * weakness)
+				H.cure_radiation(RAD_MOB_CURE_ANOMALY_BURST * weakness)
 				H.bodytemperature = initial(H.bodytemperature)
 				spawn(1)
 					H.fixblood()
@@ -46,7 +46,7 @@
 				C.adjustToxLoss(-1 * weakness)
 				C.adjustOxyLoss(-1 * weakness)
 				C.adjustBrainLoss(-1 * weakness)
-				C.updatehealth()
+				C.update_health()
 
 /datum/artifact_effect/heal/DoEffectPulse()
 	//todo: check over this properly
@@ -61,4 +61,4 @@
 				C.adjustToxLoss(-5 * weakness)
 				C.adjustOxyLoss(-5 * weakness)
 				C.adjustBrainLoss(-5 * weakness)
-				C.updatehealth()
+				C.update_health()

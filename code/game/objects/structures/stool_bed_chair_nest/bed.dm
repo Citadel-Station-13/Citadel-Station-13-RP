@@ -13,6 +13,7 @@
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "bed"
 	pressure_resistance = 15
+	surgery_odds = 70 // better than nothing
 	anchored = TRUE
 	buckle_allowed = TRUE
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
@@ -22,6 +23,7 @@
 	var/datum/material/padding_material
 	var/base_icon = "bed"
 	var/applies_material_colour = 1
+	var/can_buckle = TRUE
 
 /obj/structure/bed/Initialize(mapload, new_material, new_padding_material)
 	. = ..(mapload)
@@ -43,7 +45,8 @@
 /obj/structure/bed/update_icon()
 	// Prep icon.
 	icon_state = ""
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	// Base icon.
 	var/cache_key = "[base_icon]-[material.name]"
 	if(isnull(stool_cache[cache_key]))
@@ -51,7 +54,7 @@
 		if(applies_material_colour)
 			I.color = material.icon_colour
 		stool_cache[cache_key] = I
-	overlays |= stool_cache[cache_key]
+	overlays_to_add += stool_cache[cache_key]
 	// Padding overlay.
 	if(padding_material)
 		var/padding_cache_key = "[base_icon]-padding-[padding_material.name]"
@@ -59,7 +62,7 @@
 			var/image/I =  image(icon, "[base_icon]_padding")
 			I.color = padding_material.icon_colour
 			stool_cache[padding_cache_key] = I
-		overlays |= stool_cache[padding_cache_key]
+		overlays_to_add += stool_cache[padding_cache_key]
 	// Strings.
 	desc = initial(desc)
 	if(padding_material)
@@ -68,6 +71,8 @@
 	else
 		name = "[material.display_name] [initial(name)]"
 		desc += " It's made of [material.use_name]."
+
+	add_overlay(overlays_to_add)
 
 /obj/structure/bed/legacy_ex_act(severity)
 	switch(severity)
@@ -116,7 +121,7 @@
 		playsound(src, W.tool_sound, 100, 1)
 		remove_padding()
 
-	else if(istype(W, /obj/item/grab))
+	else if(istype(W, /obj/item/grab) && can_buckle)
 		var/obj/item/grab/G = W
 		var/mob/living/affecting = G.affecting
 		if(has_buckled_mobs()) //Handles trying to buckle someone else to a chair when someone else is on it
@@ -155,7 +160,7 @@
 	desc = "For prime comfort during psychiatric evaluations."
 	icon_state = "psychbed"
 	base_icon = "psychbed"
-	icon_dimension_y = 32
+	icon_y_dimension = 32
 
 /obj/structure/bed/psych/Initialize(mapload)
 	. = ..(mapload, "wood", "leather")
@@ -168,7 +173,7 @@
 	icon_state = "doublebed"
 	base_icon = "doublebed"
 	buckle_max_mobs = 2
-	icon_dimension_y = 32
+	icon_y_dimension = 32
 
 /obj/structure/bed/double/padded/Initialize(mapload)
 	. = ..(mapload, "wood", "cotton")
@@ -197,7 +202,7 @@
 /obj/structure/bed/roller
 	name = "roller bed"
 	desc = "A portable bed-on-wheels made for transporting medical patients."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/medical/rollerbed.dmi'
 	icon_state = "rollerbed"
 	base_icon_state = "rollerbed"
 	anchored = FALSE
@@ -266,7 +271,7 @@
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/medical/rollerbed.dmi'
 	icon_state = "folded_rollerbed"
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_LARGE
@@ -276,6 +281,9 @@
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 
 /obj/item/roller/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/obj/structure/bed/roller/R = new bedtype(user.loc)
 	R.add_fingerprint(user)
 	qdel(src)
@@ -303,7 +311,7 @@
 /obj/item/roller_holder
 	name = "roller bed rack"
 	desc = "A rack for carrying a collapsed roller bed."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/medical/rollerbed.dmi'
 	icon_state = "rollerbed"
 	var/obj/item/roller/held
 
@@ -311,7 +319,10 @@
 	. = ..()
 	held = new /obj/item/roller(src)
 
-/obj/item/roller_holder/attack_self(mob/user as mob)
+/obj/item/roller_holder/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	if(!held)
 		to_chat(user, "<span class='notice'>The rack is empty.</span>")

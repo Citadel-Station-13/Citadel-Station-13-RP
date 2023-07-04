@@ -61,11 +61,11 @@
 	STOP_PROCESSING(SSfastprocess, src)
 
 /obj/item/assembly/infra/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	attached_overlays = list()
 	if(on)
-		overlays += "infrared_on"
-		attached_overlays += "infrared_on"
+		add_overlay("infrared_on")
+		attached_overlays += "infrared_on" // TODO: Investigate???
 	if(holder)
 		holder.update_icon()
 
@@ -176,7 +176,7 @@
 
 	return data
 
-/obj/item/assembly/infra/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/assembly/infra/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

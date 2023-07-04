@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		human = H
 		human.nif = src
 		stat = NIF_INSTALLING
-		H.verbs |= /mob/living/carbon/human/proc/set_nif_examine
+		add_verb(H, /mob/living/carbon/human/proc/set_nif_examine)
 		menu = H.AddComponent(/datum/component/nif_menu)
 		if(starting_software)
 			for(var/path in starting_software)
@@ -181,13 +181,20 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 //Being removed from some mob
 /obj/item/nif/proc/unimplant(var/mob/living/carbon/human/H)
+	for(var/i in 1 to length(nifsofts))
+		var/datum/nifsoft/NS = nifsofts[i]
+		if(!NS)
+			continue
+		if(!NS.active)
+			continue
+		NS.deactivate(TRUE)
 	var/datum/nifsoft/soulcatcher/SC = imp_check(NIF_SOULCATCHER)
 	if(SC) //Clean up stored people, this is dirty but the easiest way.
 		QDEL_LIST_NULL(SC.brainmobs)
 		SC.brainmobs = list()
 	stat = NIF_PREINSTALL
 	vis_update()
-	H.verbs -= /mob/living/carbon/human/proc/set_nif_examine
+	remove_verb(H, /mob/living/carbon/human/proc/set_nif_examine)
 	QDEL_NULL(menu)
 	H.nif = null
 	human = null
@@ -332,10 +339,10 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 					human.adjustHalLoss(35)
 					human.custom_pain(message,35)
 				if(2)
-					human.Weaken(5)
+					human.afflict_paralyze(20 * 5)
 					to_chat(human,"<span class='danger'>A wave of weakness rolls over you.</span>")
 				if(3)
-					human.Sleeping(5)
+					human.afflict_sleeping(20 * 5)
 					to_chat(human,"<span class='danger'>You suddenly black out!</span>")
 
 		//Finishing up
@@ -472,6 +479,9 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	var/datum/nifsoft/NS = nifsofts[old_soft.list_pos]
 	if(!NS || NS != old_soft)
 		return FALSE //what??
+
+	if(NS.active)
+		NS.deactivate(TRUE)
 
 	nifsofts[old_soft.list_pos] = null
 	power_usage -= old_soft.p_drain
@@ -636,22 +646,31 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 /obj/item/nif/bioadap
 	name = "bioadaptive NIF"
-	desc = "A NIF that goes out of it's way to accomidate strange body types. \
+	desc = "A NIF that goes out of it's way to accomodate strange body types. \
 	Will function in species where it normally wouldn't."
-	durability = 25
+	durability = 50
 	bioadap = TRUE
 	id = NIF_ID_BIOADAPTIVE
+	
+/obj/item/nif/authenticbioadap
+	name = "\improper Vey-Med bioadaptive NIF"
+	desc = "A genuine Vey-Med nanotechnology fabricator, designed for strange body types. \
+	Will function in species where it normally wouldn't while still being very durable."
+	durability = 500
+	bioadap = TRUE
+	id = NIF_ID_VEYMEDBIOADAPTIVE
 
 ////////////////////////////////
 // Special Promethean """surgery"""
-/obj/item/nif/attack(mob/living/M, mob/living/user, var/target_zone)
-	if(!ishuman(M) || !ishuman(user) || (M == user))
+/obj/item/nif/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!ishuman(target) || !ishuman(user) || (target == user))
 		return ..()
 
 	var/mob/living/carbon/human/U = user
-	var/mob/living/carbon/human/T = M
+	var/mob/living/carbon/human/T = target
 
-	if(istype(T.species,/datum/species/shapeshifter/promethean) && target_zone == BP_TORSO)
+	if(istype(T.species,/datum/species/shapeshifter/promethean) && U.zone_sel.selecting == BP_TORSO)
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(T.w_uniform || T.wear_suit)
 			to_chat(user,"<span class='warning'>Remove any clothing they have on, as it might interfere!</span>")
 			return
@@ -677,7 +696,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	set category = "OOC"
 
 	if(!nif)
-		verbs -= /mob/living/carbon/human/proc/set_nif_examine
+		remove_verb(src, /mob/living/carbon/human/proc/set_nif_examine)
 		to_chat(src,"<span class='warning'>You don't have a NIF, not sure why this was here.</span>")
 		return
 

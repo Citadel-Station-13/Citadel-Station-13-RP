@@ -11,7 +11,7 @@
 
 /obj/spawner/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
-	flags |= INITIALIZED
+	atom_flags |= ATOM_INITIALIZED
 	if(!late)
 		Spawn()	// we always spawn in Initialize(), because if anything we spawn has LateInitialize behavior, that'll be really bad, huh.
 				// keep in mind though, anything requiring even regular Initialize() behavior will be trampled, so, spawners are only good for

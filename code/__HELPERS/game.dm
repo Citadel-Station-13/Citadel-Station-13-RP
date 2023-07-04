@@ -11,17 +11,17 @@
 /proc/is_on_same_plane_or_station(z1, z2)
 	if (z1 == z2)
 		return TRUE
-	if ((z1 in GLOB.using_map.station_levels) &&	(z2 in GLOB.using_map.station_levels))
+	if ((z1 in (LEGACY_MAP_DATUM).station_levels) &&	(z2 in (LEGACY_MAP_DATUM).station_levels))
 		return TRUE
 	return FALSE
 
 /proc/max_default_z_level()
 	var/max_z = 0
-	for(var/z in GLOB.using_map.station_levels)
+	for(var/z in (LEGACY_MAP_DATUM).station_levels)
 		max_z = max(z, max_z)
-	for(var/z in GLOB.using_map.admin_levels)
+	for(var/z in (LEGACY_MAP_DATUM).admin_levels)
 		max_z = max(z, max_z)
-	for(var/z in GLOB.using_map.player_levels)
+	for(var/z in (LEGACY_MAP_DATUM).player_levels)
 		max_z = max(z, max_z)
 	return max_z
 
@@ -88,22 +88,22 @@
 	var/i = 0
 	while(i < length(processing))
 		var/atom/A = processing[++i]
-		if(A.flags & HEAR)
+		if(A.atom_flags & ATOM_HEAR)
 			. += A
 			SEND_SIGNAL(A, COMSIG_ATOM_HEARER_IN_VIEW, processing, .)
 		processing += A.contents
 
 /proc/isStationLevel(level)
-	return level in GLOB.using_map.station_levels
+	return level in (LEGACY_MAP_DATUM).station_levels
 
 /proc/isNotStationLevel(level)
 	return !isStationLevel(level)
 
 /proc/isPlayerLevel(level)
-	return level in GLOB.using_map.player_levels
+	return level in (LEGACY_MAP_DATUM).player_levels
 
 /proc/isAdminLevel(level)
-	return level in GLOB.using_map.admin_levels
+	return level in (LEGACY_MAP_DATUM).admin_levels
 
 /proc/isNotAdminLevel(level)
 	return !isAdminLevel(level)
@@ -298,17 +298,17 @@
 	var/list/mobs = list()
 	var/list/objs = list()
 
-	var/list/hear = dview(range,T,INVISIBILITY_MAXIMUM)
+	var/list/hear = list()
+	DVIEW(hear, range, T, INVISIBILITY_MAXIMUM)
 	var/list/hearturfs = list()
 
-	for(var/thing in hear)
-		// Can't use isobj() because /atom/movable returns true in that, and so lighting overlays would be included.
-		if(istype(thing, /obj))
-			objs += thing
-			hearturfs |= get_turf(thing)
-		if(ismob(thing))
-			mobs += thing
-			hearturfs |= get_turf(thing)
+	for(var/atom/movable/AM in hear)
+		if(ismob(AM))
+			mobs += AM
+			hearturfs += get_turf(AM)
+		else if(isobj(AM))
+			objs += AM
+			hearturfs += get_turf(AM)
 
 	// A list of every mob with a client.
 	for(var/mob in GLOB.player_list)
@@ -333,9 +333,9 @@
 						mobs |= M
 
 	// For objects below the top level who still want to hear.
-	for(var/obj in listening_objects)
-		if(get_turf(obj) in hearturfs)
-			objs |= obj
+	for(var/obj/O in global.listening_objects)
+		if(get_turf(O) in hearturfs)
+			objs |= O
 
 	return list("mobs" = mobs, "objs" = objs)
 
@@ -368,26 +368,6 @@
 			if(T.opacity)
 				return FALSE
 	return TRUE
-
-/proc/flick_overlay(image/I, list/show_to, duration, gc_after)
-	for(var/client/C in show_to)
-		C.images += I
-	spawn(duration)
-		if(gc_after)
-			qdel(I)
-		for(var/client/C in show_to)
-			C.images -= I
-
-/**
- * Wrapper for flick_overlay, flicks to everyone who can see the target atom.
- */
-/proc/flick_overlay_view(image/I, atom/target, duration, gc_after)
-	var/list/viewing = list()
-	for(var/m in viewers(target))
-		var/mob/M = m
-		if(M.client)
-			viewing += M.client
-	flick_overlay(I, viewing, duration, gc_after)
 
 /proc/isInSight(atom/A, atom/B)
 	var/turf/Aturf = get_turf(A)

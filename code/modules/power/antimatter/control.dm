@@ -117,9 +117,9 @@
 	return
 
 
-/obj/machinery/power/am_control_unit/bullet_act(var/obj/item/projectile/Proj)
-	if(Proj.check_armour != "bullet")
-		stability -= Proj.force
+/obj/machinery/power/am_control_unit/bullet_act(var/obj/projectile/Proj)
+	if(Proj.damage_flag != "bullet")
+		stability -= Proj.damage
 	return 0
 
 
@@ -170,14 +170,14 @@
 				"You hear a thunk.")
 		return
 
-	if(W.force >= 20)
-		stability -= W.force/2
+	if(W.damage_force >= 20)
+		stability -= W.damage_force/2
 		check_stability()
 	..()
 	return
 
 
-/obj/machinery/power/am_control_unit/attack_hand(mob/user as mob)
+/obj/machinery/power/am_control_unit/attack_hand(mob/user, list/params)
 	if(anchored)
 		interact(user)
 	return

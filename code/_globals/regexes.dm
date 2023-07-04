@@ -17,3 +17,5 @@ GLOBAL_DATUM_INIT(angular_brackets, /regex, regex(@"[<>]", "g"))
 GLOBAL_DATUM_INIT(filename_forbidden_chars, /regex, regex(@{""|[\\\n\t/?%*:|<>]|\.\."}, "g"))
 GLOBAL_PROTECT(filename_forbidden_chars)
 // had to use the OR operator for quotes instead of putting them in the character class because it breaks the syntax highlighting otherwise.
+
+GLOBAL_DATUM_INIT(multi_space_splitter, /regex, regex("\[ \]+"))

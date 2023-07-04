@@ -41,7 +41,7 @@
 	return total_weight
 
 /datum/event_meta/no_overmap/get_weight()	// These events have overmap equivalents, and shouldn't fire randomly if overmap is used
-	return GLOB.using_map.use_overmap ? 0 : ..()
+	return (LEGACY_MAP_DATUM).use_overmap ? 0 : ..()
 
 // Event datums define and execute the actual events themselves.
 /datum/event			//NOTE: Times are measured in master controller ticks!
@@ -58,7 +58,7 @@
 	var/datum/event_meta/event_meta = null
 	var/list/affecting_z	= null	// List of z-levels to affect, null lets the event choose (usally station_levels)
 	var/has_skybox_image	= FALSE	// True if SSskybox should query this event for an image to put in the skybox.
-	var/obj/effect/overmap/visitable/ship/victim = null	// Ship that triggered this event on itself.  Some messages might be different etc.
+	var/obj/overmap/entity/visitable/ship/victim = null	// Ship that triggered this event on itself.  Some messages might be different etc.
 
 /datum/event/nothing
 
@@ -162,7 +162,7 @@
 	startedAt = world.time
 
 	if(!affecting_z)
-		affecting_z = GLOB.using_map.station_levels.Copy()
+		affecting_z = (LEGACY_MAP_DATUM).station_levels.Copy()
 
 	setup()
 	..()

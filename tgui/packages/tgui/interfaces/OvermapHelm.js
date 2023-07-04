@@ -6,7 +6,7 @@ import { OvermapFlightData, OvermapPanControls } from './common/Overmap';
 
 export const OvermapHelm = (props, context) => {
   return (
-    <Window width={565} height={545} resizable>
+    <Window width={560} height={700} scrollable>
       <Window.Content>
         <OvermapHelmContent />
       </Window.Content>
@@ -176,40 +176,42 @@ const OvermapNavComputer = (props, context) => {
   } = data;
 
   return (
-    <Section title="Navigation Data" m={0.3} mt={1}>
-      <LabeledList>
-        <LabeledList.Item label="Location">
-          {sector}
-        </LabeledList.Item>
-        <LabeledList.Item label="Coordinates">
-          {s_x} : {s_y}
-        </LabeledList.Item>
-        <LabeledList.Item label="Scan Data">
-          {sector_info}
-        </LabeledList.Item>
-        <LabeledList.Item label="Status">
-          {landed}
-        </LabeledList.Item>
-      </LabeledList>
-      <Flex mt={1} align="center" justify="center" spacing={1}>
-        <Flex.Item basis="50%">
-          <Button
-            fluid
-            icon="save"
-            onClick={() => act("add", { add: "current" })}>
-            Save Current Position
-          </Button>
-        </Flex.Item>
-        <Flex.Item basis="50%">
-          <Button
-            fluid
-            icon="sticky-note"
-            onClick={() => act("add", { add: "new" })}>
-            Add New Entry
-          </Button>
-        </Flex.Item>
-      </Flex>
-      <Section mt={1} scrollable height="130px">
+    <>
+      <Section title="Navigation Data" m={0.3} mt={1}>
+        <LabeledList>
+          <LabeledList.Item label="Location">
+            {sector}
+          </LabeledList.Item>
+          <LabeledList.Item label="Coordinates">
+            {s_x} : {s_y}
+          </LabeledList.Item>
+          <LabeledList.Item label="Scan Data">
+            {sector_info}
+          </LabeledList.Item>
+          <LabeledList.Item label="Status">
+            {landed}
+          </LabeledList.Item>
+        </LabeledList>
+        <Flex mt={1} align="center" justify="center" spacing={1}>
+          <Flex.Item basis="50%">
+            <Button
+              fluid
+              icon="save"
+              onClick={() => act("add", { add: "current" })}>
+              Save Current Position
+            </Button>
+          </Flex.Item>
+          <Flex.Item basis="50%">
+            <Button
+              fluid
+              icon="sticky-note"
+              onClick={() => act("add", { add: "new" })}>
+              Add New Entry
+            </Button>
+          </Flex.Item>
+        </Flex>
+      </Section>
+      <Section mt={1}>
         <Table>
           <Table.Row header>
             <Table.Cell>Name</Table.Cell>
@@ -236,6 +238,6 @@ const OvermapNavComputer = (props, context) => {
           ))}
         </Table>
       </Section>
-    </Section>
+    </>
   );
 };

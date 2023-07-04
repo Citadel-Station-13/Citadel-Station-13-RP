@@ -9,7 +9,9 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
-	flags = NOREACT
+	atom_flags = NOREACT
+	pass_flags = NONE
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
 	var/icon_on = "smartfridge"
 	var/icon_off = "smartfridge-off"
@@ -29,17 +31,23 @@
 
 /obj/machinery/smartfridge/Initialize(mapload)
 	. = ..()
+	AIR_UPDATE_ON_INITIALIZE_AUTO
 	if(is_secure)
 		wires = new/datum/wires/smartfridge/secure(src)
 	else
 		wires = new/datum/wires/smartfridge(src)
 
 /obj/machinery/smartfridge/Destroy()
+	AIR_UPDATE_ON_DESTROY_AUTO
 	qdel(wires)
 	for(var/A in item_records)	//Get rid of item records.
 		qdel(A)
 	wires = null
 	return ..()
+
+/obj/machinery/smartfridge/Moved(atom/oldloc)
+	. = ..()
+	AIR_UPDATE_ON_MOVED_AUTO
 
 /obj/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_containers/food/snacks/grown/) || istype(O,/obj/item/seeds/))
@@ -62,7 +70,7 @@
 /obj/machinery/smartfridge/secure/extract
 	name = "\improper Biological Sample Storage"
 	desc = "A refrigerated storage unit for xenobiological samples."
-	req_access = list(access_research)
+	req_access = list(ACCESS_SCIENCE_MAIN)
 
 /obj/machinery/smartfridge/secure/extract/accept_check(var/obj/item/O as obj)
 	if(istype(O, /obj/item/slime_extract))
@@ -76,7 +84,7 @@
 	desc = "A refrigerated storage unit for storing medicine and chemicals."
 	icon_state = "smartfridge" //To fix the icon in the map editor.
 	icon_on = "smartfridge_chem"
-	req_one_access = list(access_medical,access_chemistry)
+	req_one_access = list(ACCESS_MEDICAL_MAIN,ACCESS_MEDICAL_CHEMISTRY)
 
 /obj/machinery/smartfridge/secure/medbay/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_containers/glass/))
@@ -90,7 +98,7 @@
 /obj/machinery/smartfridge/secure/virology
 	name = "\improper Refrigerated Virus Storage"
 	desc = "A refrigerated storage unit for storing viral material."
-	req_access = list(access_virology)
+	req_access = list(ACCESS_MEDICAL_VIROLOGY)
 	icon_state = "smartfridge_virology"
 	icon_on = "smartfridge_virology"
 	icon_off = "smartfridge_virology-off"
@@ -163,7 +171,8 @@
 		update_icon()
 
 /obj/machinery/smartfridge/drying_rack/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	var/not_working = machine_stat & (BROKEN|NOPOWER)
 	if(not_working)
 		icon_state = icon_off
@@ -175,9 +184,10 @@
 			hasItems = 1
 			break
 	if(hasItems)
-		overlays += "drying_rack_filled"
+		overlays_to_add += "drying_rack_filled"
 		if(!not_working)
-			overlays += "drying_rack_drying"
+			overlays_to_add += "drying_rack_drying"
+	add_overlay(overlays_to_add)
 
 /obj/machinery/smartfridge/drying_rack/attackby(var/obj/item/O as obj, mob/user)
 	. = ..()
@@ -234,18 +244,23 @@
 	else
 		icon_state = icon_on
 
+/obj/machinery/smartfridge/drying_rack/ashlander
+	name = "\improper Bone Drying Kiln"
+	desc = "A machine for drying plants and hides."
+	icon = 'icons/obj/lavaland.dmi'
+
 /*******************
 *   Item Adding
 ********************/
 
-/obj/machinery/smartfridge/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/smartfridge/attackby(obj/item/O, mob/user)
 	if(O.is_screwdriver())
 		panel_open = !panel_open
 		user.visible_message("[user] [panel_open ? "opens" : "closes"] the maintenance panel of \the [src].", "You [panel_open ? "open" : "close"] the maintenance panel of \the [src].")
 		playsound(src, O.tool_sound, 50, 1)
-		overlays.Cut()
+		cut_overlays()
 		if(panel_open)
-			overlays += image(icon, icon_panel)
+			add_overlay(image(icon, icon_panel))
 		SSnanoui.update_uis(src)
 		return
 
@@ -323,7 +338,7 @@
 /obj/machinery/smartfridge/attack_ai(mob/user as mob)
 	attack_hand(user)
 
-/obj/machinery/smartfridge/attack_hand(mob/user as mob)
+/obj/machinery/smartfridge/attack_hand(mob/user, list/params)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	wires.Interact(user)

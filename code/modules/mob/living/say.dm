@@ -56,7 +56,6 @@ var/list/department_radio_keys = list(
 
 
 var/list/channel_to_radio_key = new
-
 /proc/get_radio_key_from_channel(channel)
 	var/key = channel_to_radio_key[channel]
 	if(!key)
@@ -103,6 +102,7 @@ var/list/channel_to_radio_key = new
 		. = TRUE
 		message_data[1] = ""
 		return
+
 
 	if((MUTATION_HULK in mutations) && health >= 25 && length_char(message))
 		message = "[uppertext(message)]!!!"
@@ -187,6 +187,9 @@ var/list/channel_to_radio_key = new
 	if(!speaking)
 		speaking = parse_language(message)
 
+	if(speaking == -1)
+		return
+
 	if(!speaking)
 		speaking = get_default_language()
 
@@ -206,8 +209,8 @@ var/list/channel_to_radio_key = new
 	if(speaking && speaking == SScharacters.resolve_language_name("Noise"))
 		message = copytext_char(message,2)
 
-	//HIVEMIND languages always send to all people with that language
-	if(speaking && (speaking.language_flags & HIVEMIND))
+	//LANGUAGE_HIVEMIND languages always send to all people with that language
+	if(speaking && (speaking.language_flags & LANGUAGE_HIVEMIND))
 		speaking.broadcast(src,trim(message))
 		return 1
 
@@ -216,7 +219,7 @@ var/list/channel_to_radio_key = new
 		return
 
 	//Self explanatory.
-	if(is_muzzled() && !(speaking && (speaking.language_flags & SIGNLANG)))
+	if(is_muzzled() && !(speaking && (speaking.language_flags & LANGUAGE_SIGNLANG)))
 		to_chat(src, "<span class='danger'>You're muzzled and cannot speak!</span>")
 		return
 
@@ -231,7 +234,7 @@ var/list/channel_to_radio_key = new
 		message = autocorrect(message)
 
 	//Whisper vars
-	var/w_scramble_range = 5	//The range at which you get ***as*th**wi****
+	var/w_scramble_range = 3	//The range at which you get ***as*th**wi****
 	var/w_adverb				//An adverb prepended to the verb in whispers
 	var/w_not_heard				//The message for people in watching range
 
@@ -247,7 +250,7 @@ var/list/channel_to_radio_key = new
 		w_not_heard = "[speaking.speech_verb] something [w_adverb]"
 
 	//For speech disorders (hulk, slurring, stuttering)
-	if(!(speaking && (speaking.language_flags & NO_STUTTER || speaking.language_flags & SIGNLANG)))
+	if(!(speaking && (speaking.language_flags & LANGUAGE_NO_STUTTER || speaking.language_flags & LANGUAGE_SIGNLANG)))
 		var/list/message_data = list(message, verb, whispering)
 		if(handle_speech_problems(message_data))
 			message = message_data[1]
@@ -286,7 +289,7 @@ var/list/channel_to_radio_key = new
 		if(speaking)
 			message_range = speaking.get_talkinto_msg_range(message)
 		var/msg
-		if(!speaking || !(speaking.language_flags & NO_TALK_MSG))
+		if(!speaking || !(speaking.language_flags & LANGUAGE_NO_TALK_MSG))
 			msg = "<span class='notice'>\The [src] talks into \the [used_radios[1]]</span>"
 		for(var/mob/living/M in hearers(7, src))
 			if((M != src) && msg)
@@ -315,11 +318,11 @@ var/list/channel_to_radio_key = new
 
 	//Handle nonverbal and sign languages here
 	if (speaking)
-		if (speaking.language_flags & SIGNLANG)
+		if (speaking.language_flags & LANGUAGE_SIGNLANG)
 			log_say("(SIGN) [message]", src)
 			return say_signlang(message, pick(speaking.signlang_verb), speaking)
 
-		if (speaking.language_flags & NONVERBAL)
+		if (speaking.language_flags & LANGUAGE_NONVERBAL)
 			if (prob(30))
 				src.custom_emote(1, "[pick(speaking.signlang_verb)].")
 
@@ -369,6 +372,7 @@ var/list/channel_to_radio_key = new
 	images_to_clients[speech_bubble] = list()
 
 	// Attempt Multi-Z Talking
+	/*
 	var/mob/above = src.shadow
 	while(!QDELETED(above))
 		var/turf/ST = get_turf(above)
@@ -381,6 +385,7 @@ var/list/channel_to_radio_key = new
 					listening[item] = z_speech_bubble
 			listening_obj |= results["objs"]
 		above = above.shadow
+	*/
 	var/atom/emitter = src
 	if(!isobserver(emitter) || !IsAdminGhost(emitter))
 		emitter.say_overhead(say_emphasis_strip(message), whispering, message_range, speaking)
@@ -399,8 +404,7 @@ var/list/channel_to_radio_key = new
 						images_to_clients[I1] |= M.client
 						SEND_IMAGE(M, I1)
 					M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
-				if(whispering) //Don't even bother with these unless whispering
-
+				else if(whispering) //Don't even bother with these unless whispering
 					if(dst > message_range && dst <= w_scramble_range) //Inside whisper scramble range
 						if(M.client)
 							var/image/I2 = listening[M] || speech_bubble

@@ -17,7 +17,7 @@
 			/obj/item/reagent_containers/food/snacks/meat = 4
 			)
 	cost = 10
-	container_type = /obj/structure/closet/crate/freezer
+	container_type = /obj/structure/closet/crate/centauri
 	container_name = "Food crate"
 
 /datum/supply_pack/supply/toner
@@ -88,7 +88,7 @@
 /datum/supply_pack/supply/spare_pda
 	name = "Spare PDAs"
 	cost = 10
-	container_type = /obj/structure/closet/crate
+	container_type = /obj/structure/closet/crate/thinktronic
 	container_name = "Spare PDA crate"
 	contains = list(/obj/item/pda = 3)
 
@@ -112,9 +112,9 @@
 			/obj/item/clothing/glasses/meson
 			)
 	cost = 10
-	container_type = /obj/structure/closet/crate/secure
+	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "Shaft miner equipment"
-	access = access_mining
+	access = ACCESS_SUPPLY_MINE
 
 /* //MULE Bots can't traverse the Tether.
 /datum/supply_pack/supply/mule
@@ -134,7 +134,18 @@
 			/obj/item/pickaxe/tyrmalin = 2,
 			/obj/item/grenade/explosive/ied/tyrmalin = 2
 			)
-	cost = 300
+	cost = 60
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Mining crate"
-	access = access_mining
+	access = ACCESS_SUPPLY_MINE
+
+/datum/supply_pack/misc/breathing_nitrogen
+	name = "Emergency Nitrogen Supplies"
+	contains = list(
+			/obj/item/tank/emergency/nitrogen = 2,
+			/obj/item/tank/emergency/nitrogen/double = 1,
+			/obj/item/clothing/mask/gas/opaque = 3
+			)
+	cost = 15
+	container_type = /obj/structure/closet/crate/unathi
+	container_name = "Emergency Nitrogen Supplies"

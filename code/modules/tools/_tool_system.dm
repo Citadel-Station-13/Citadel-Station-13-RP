@@ -221,8 +221,9 @@
  * - delay - how long it'll take to use the tool
  * - cost - optional; cost multiplier to the default cost of 1 per second.
  * - usage - optional; usage flags for tool speed/quality checks.
+ * - volume - optional; volume override
  */
-/atom/proc/use_tool(function, obj/item/I, mob/user, flags, delay, cost = 1, usage)
+/atom/proc/use_tool(function, obj/item/I, mob/user, flags, delay, cost = 1, usage, volume)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/quality = I.tool_check(function, user, src, flags, usage)
 	if(!quality)
@@ -235,15 +236,15 @@
 	delay = delay * speed
 	if(!I.using_as_tool(function, flags, user, src, delay, cost, usage))
 		return FALSE
-	I.tool_feedback_start(function, flags, user, src, delay, cost, usage)
+	I.tool_feedback_start(function, flags, user, src, delay, cost, usage, volume)
 	if(!do_after(user, delay, src))
 		I.used_as_tool(function, flags, user, src, delay, cost, usage, FALSE)
-		I.tool_feedback_end(function, flags, user, src, delay, cost, usage, FALSE)
+		I.tool_feedback_end(function, flags, user, src, delay, cost, usage, FALSE, volume)
 		return FALSE
 	if(!I.used_as_tool(function, flags, user, src, delay, cost, usage, TRUE))
-		I.tool_feedback_end(function, flags, user, src, delay, cost, usage, FALSE)
+		I.tool_feedback_end(function, flags, user, src, delay, cost, usage, FALSE, volume)
 		return FALSE
-	I.tool_feedback_end(function, flags, user, src, delay, cost, usage, TRUE)
+	I.tool_feedback_end(function, flags, user, src, delay, cost, usage, TRUE, volume)
 	return TRUE
 
 //! Dynamic Tool API
@@ -261,6 +262,7 @@
  * - user - the user, if any
  */
 /atom/proc/dynamic_tool_functions(obj/item/I, mob/user)
+	// todo: signal
 	return list()
 
 /atom/proc/_dynamic_tool_act(obj/item/I, mob/user, function, flags, hint)

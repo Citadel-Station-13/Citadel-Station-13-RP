@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items.dmi'
 	name = "Coin"
 	icon_state = "coin"
-	force = 0.0
+	damage_force = 0.0
 	throw_force = 0.0
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
@@ -77,14 +77,14 @@
 	name = "supermatter coin"
 	icon_state = "coin_supermatter"
 
-/obj/item/coin/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/coin/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/CC = W
 		if(string_attached)
 			to_chat(user, "<span class='notice'>There already is a string attached to this coin.</span>")
 			return
 		if (CC.use(1))
-			overlays += image('icons/obj/items.dmi',"coin_string_overlay")
+			add_overlay(image('icons/obj/items.dmi',"coin_string_overlay"))
 			string_attached = 1
 			to_chat(user, "<span class='notice'>You attach a string to the coin.</span>")
 		else
@@ -98,12 +98,15 @@
 		var/obj/item/stack/cable_coil/CC = new/obj/item/stack/cable_coil(user.loc)
 		CC.amount = 1
 		CC.update_icon()
-		overlays = list()
+		cut_overlays()
 		string_attached = null
 		to_chat(user, "<font color=#4F49AF>You detach the string from the coin.</font>")
 	else ..()
 
-/obj/item/coin/attack_self(mob/user as mob)
+/obj/item/coin/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/result = rand(1, sides)
 	var/comment = ""
 	if(result == 1)

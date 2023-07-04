@@ -22,7 +22,7 @@
 	if (machine)
 		machine.console = src
 	else
-		log_debug("Ore processing machine console at [src.x], [src.y], [src.z] could not find its machine!")
+		log_debug(SPAN_DEBUG("Ore processing machine console at [src.x], [src.y], [src.z] [ADMIN_JMP(src)] could not find its machine!"))
 		qdel(src)
 
 /obj/machinery/mineral/processing_unit_console/Destroy()
@@ -30,7 +30,7 @@
 		inserted_id.forceMove(loc) //Prevents deconstructing from deleting whatever ID was inside it.
 	. = ..()
 
-/obj/machinery/mineral/processing_unit_console/attack_hand(mob/user)
+/obj/machinery/mineral/processing_unit_console/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	interact(user)

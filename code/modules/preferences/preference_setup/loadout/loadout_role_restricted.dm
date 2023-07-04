@@ -5,12 +5,12 @@
 	path = /obj/item/bikehorn/rubberducky
 	slot = null                                   //At least you work as null.
 	allowed_roles = list("Facility Director")     //This technically also works as null, but we're supposed to be role restricted so it's the captain's exclusive, special ducky.
-	sort_category = "Role Restricted"
+	sort_category = LOADOUT_CATEGORY_ROLE_RESTRICTED
 
 //*Single Departments
 //Security
 /datum/gear/restricted/security
-	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
+	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Blueshield")
 
 /datum/gear/restricted/security/eyes
 	slot = SLOT_ID_GLASSES
@@ -35,7 +35,7 @@
 
 //Medical
 /datum/gear/restricted/medical
-	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic")
+	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Head Nurse")
 
 /datum/gear/restricted/medical/eyes
 	slot = SLOT_ID_GLASSES
@@ -60,7 +60,7 @@
 
 //Engineering
 /datum/gear/restricted/engineering
-	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/gear/restricted/engineering/eyes
 	slot = SLOT_ID_GLASSES
@@ -85,7 +85,7 @@
 
 //Command
 /datum/gear/restricted/command
-	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary")
+	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary", "Blueshield")
 
 /datum/gear/restricted/command/eyes
 	slot = SLOT_ID_GLASSES
@@ -107,7 +107,7 @@
 
 //Science
 /datum/gear/restricted/science
-	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Pathfinder")
+	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Pathfinder", "Senior Researcher")
 
 /datum/gear/restricted/science/eyes
 	slot = SLOT_ID_GLASSES
@@ -191,7 +191,7 @@
 
 //Engineering + Science + Supply
 /datum/gear/restricted/eng_sci_supply
-	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Scientist", "Xenobiologist",  "Roboticist", "Explorer", "Pathfinder", "Research Director", "Shaft Miner", "Cargo Technician", "Quartermaster")
+	allowed_roles = list("Senior Engineer", "Station Engineer", "Chief Engineer", "Atmospheric Technician", "Scientist", "Xenobiologist",  "Roboticist", "Senior Researcher", "Explorer", "Pathfinder", "Research Director", "Shaft Miner", "Cargo Technician", "Quartermaster")
 
 /datum/gear/restricted/eng_sci_supply/eyes
 	slot = SLOT_ID_GLASSES
@@ -199,7 +199,7 @@
 
 //Medical + Science
 /datum/gear/restricted/med_sci
-	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Pathfinder", "Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic")
+	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Senior Researcher", "Pathfinder", "Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Head Nurse")
 
 /datum/gear/restricted/med_sci/head
 	slot = SLOT_ID_HEAD
@@ -298,7 +298,7 @@
 	allowed_roles = list("Head of Security", "Warden")
 
 /datum/gear/restricted/security/uniform/skirt/warden_pleated
-	name = "Warden's Pleated Skirt"
+	name = "Wardens Pleated Skirt"
 	path = /obj/item/clothing/under/rank/warden/skirt_pleated
 	allowed_roles = list("Head of Security", "Warden")
 
@@ -308,12 +308,12 @@
 	allowed_roles = list("Head of Security")
 
 /datum/gear/restricted/security/uniform/skirt/hos_pleated
-	name = "Head of Security's Pleated Skirt"
+	name = "Head of Securitys Pleated Skirt"
 	path = /obj/item/clothing/under/rank/head_of_security/skirt_pleated
 	allowed_roles = list("Head of Security")
 
 /datum/gear/restricted/security/uniform/skirt/hos_pleated_dark
-	name = "Head of Security's Dark Pleated Skirt"
+	name = "Head of Securitys Dark Pleated Skirt"
 	path = /obj/item/clothing/under/rank/head_of_security/skirt_pleated/alt
 	allowed_roles = list("Head of Security")
 
@@ -496,7 +496,7 @@
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/security
 
 /datum/gear/restricted/security/suit/wintercoat
-	name = "Head of Security's Winter Coat"
+	name = "Head of Securitys Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/security/hos
 	allowed_roles = list("Head of Security")
 
@@ -601,17 +601,17 @@
 	allowed_roles = list("Chief Medical Officer", "Chemist")
 
 /datum/gear/restricted/medical/uniform/skirt/chem_pleated
-	name = "Chemist's Pleated Skirt"
+	name = "Chemists Pleated Skirt"
 	path = /obj/item/clothing/under/rank/chemist/skirt_pleated
 	allowed_roles = list("Chief Medical Officer", "Chemist")
 
 /datum/gear/restricted/medical/uniform/jeans/viro
-	name = "Virologist's Jumpjeans"
+	name = "Virologists Jumpjeans"
 	path = /obj/item/clothing/under/rank/virologist/jeans
 	allowed_roles = list("Chief Medical Officer", "Medical Doctor")
 
 /datum/gear/restricted/medical/uniform/fem_jeans/viro
-	name = "Virologist's Jumpjeans - Female"
+	name = "Virologists Jumpjeans - Female"
 	path = /obj/item/clothing/under/rank/virologist/fem_jeans
 	allowed_roles = list("Chief Medical Officer", "Medical Doctor")
 
@@ -621,17 +621,17 @@
 	allowed_roles = list("Chief Medical Officer", "Medical Doctor")
 
 /datum/gear/restricted/medical/uniform/skirt/viro_pleated
-	name = "Virologist's Pleated Skirt"
+	name = "Virologists Pleated Skirt"
 	path = /obj/item/clothing/under/rank/virologist/skirt_pleated
 	allowed_roles = list("Chief Medical Officer", "Medical Doctor")
 
 /datum/gear/restricted/medical/uniform/jeans/cmo
-	name = "Chief Medical Officer's Jumpjeans"
+	name = "Chief Medical Officers Jumpjeans"
 	path = /obj/item/clothing/under/rank/chief_medical_officer/jeans
 	allowed_roles = list("Chief Medical Officer")
 
 /datum/gear/restricted/medical/uniform/fem_jeans/cmo
-	name = "Chief Medical Officer's Jumpjeans - Female"
+	name = "Chief Medical Officers Jumpjeans - Female"
 	path = /obj/item/clothing/under/rank/chief_medical_officer/fem_jeans
 	allowed_roles = list("Chief Medical Officer")
 
@@ -641,7 +641,7 @@
 	allowed_roles = list("Chief Medical Officer")
 
 /datum/gear/restricted/medical/uniform/skirt/cmo_pleated
-	name = "Chief Medical Officer's Pleated Skirt"
+	name = "Chief Medical Officers Pleated Skirt"
 	path = /obj/item/clothing/under/rank/chief_medical_officer/skirt_pleated
 	allowed_roles = list("Chief Medical Officer")
 
@@ -698,7 +698,7 @@
 	path = /obj/item/clothing/under/bodysuit/bodysuitemt_fem
 
 /datum/gear/restricted/medical/uniform/psych_fem
-	name = "Psychologist's Turtleneck - Female"
+	name = "Psychologists Turtleneck - Female"
 	path = /obj/item/clothing/under/rank/psych/turtleneck_fem
 
 //Suit
@@ -750,7 +750,7 @@
 /datum/gear/restricted/medical/suit/labcoat_blue
 	name = "Medical Labcoat - Blue"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/blue
-	
+
 /datum/gear/restricted/medical/suit/department_jacket
 	name = "Medical Department Jacket"
 	path = /obj/item/clothing/suit/storage/toggle/med_dep_jacket
@@ -768,6 +768,37 @@
 	name = "Medical Poncho"
 	path = /obj/item/clothing/accessory/poncho/roles/medical
 
+/datum/gear/restricted/medical/suit/labcoat_viro_classic
+	name = "Medical Labcoat - Virologist (Classic)"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/virologist/classic
+	allowed_roles = list("Virologist")
+
+/datum/gear/restricted/medical/suit/labcoat_viro
+	name = "Medical Labcoat - Virologist"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/virologist
+	allowed_roles = list("Virologist")
+
+/datum/gear/restricted/medical/suit/labcoat_geneticist
+	name = "Medical Labcoat - Geneticist"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/genetics
+
+/datum/gear/restricted/medical/suit/labcoat_geneticist_classic
+	name = "Medical Labcoat - Geneticist (Classic)"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/genetics/classic
+
+/datum/gear/restricted/medical/suit/labcoat_chemist
+	name = "Medical Labcoat - Chemist"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/chemist
+	allowed_roles = list("Chemist")
+
+/datum/gear/restricted/medical/suit/labcoat_chemist_classic
+	name = "Medical Labcoat - Chemist (Classic)"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/chemist/classic
+	allowed_roles = list("Chemist")
+
+/datum/gear/restricted/medical/suit/labcoat_emt
+	name = "Medical Labcoat - EMT"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/virologist/classic
 
 //Shoes
 /datum/gear/restricted/medical/shoes/winterboots
@@ -804,12 +835,12 @@
 
 //Uniform
 /datum/gear/restricted/engineering/uniform/jeans/ce
-	name = "Chief Engineer's Jumpjeans"
+	name = "Chief Engineers Jumpjeans"
 	path = /obj/item/clothing/under/rank/chief_engineer/jeans
 	allowed_roles = list("Chief Engineer")
 
 /datum/gear/restricted/engineering/uniform/fem_jeans/ce
-	name = "Chief Engineer's Jumpjeans - Female"
+	name = "Chief Engineers Jumpjeans - Female"
 	path = /obj/item/clothing/under/rank/chief_engineer/fem_jeans
 	allowed_roles = list("Chief Engineer")
 
@@ -819,17 +850,17 @@
 	allowed_roles = list("Chief Engineer")
 
 /datum/gear/restricted/engineering/uniform/ce_pleated_skirt
-	name = "Chief Engineer's Pleated Skirt"
+	name = "Chief Engineers Pleated Skirt"
 	path = /obj/item/clothing/under/rank/chief_engineer/skirt_pleated
 	allowed_roles = list("Chief Engineer")
 
 /datum/gear/restricted/engineering/uniform/jeans/atmos
-	name = "Atmospheric Technician's Jumpjeans"
+	name = "Atmospheric Technicians Jumpjeans"
 	path = /obj/item/clothing/under/rank/atmospheric_technician/jeans
 	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
 
 /datum/gear/restricted/engineering/uniform/fem_jeans/atmos
-	name = "Atmospheric Technician's Jumpjeans - Female"
+	name = "Atmospheric Technicians Jumpjeans - Female"
 	path = /obj/item/clothing/under/rank/atmospheric_technician/fem_jeans
 	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
 
@@ -856,7 +887,7 @@
 	path = /obj/item/clothing/under/rank/engineer/skirt
 
 /datum/gear/restricted/engineering/uniform/eng_skirt_pleated
-	name = "Engineer's Pleated Skirt"
+	name = "Engineers Pleated Skirt"
 	path = /obj/item/clothing/under/rank/engineer/skirt_pleated
 	allowed_roles = list("Chief Engineer", "Atmospheric Techician")
 
@@ -899,7 +930,7 @@
 	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
 
 /datum/gear/restricted/engineering/suit/wintercoat/ce
-	name = "Chief Engineer's Winter Coat"
+	name = "Chief Engineers Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/engineering/ce
 	allowed_roles = list("Chief Engineer")
 
@@ -987,7 +1018,7 @@
 	allowed_roles = list("Quartermaster")
 
 /datum/gear/restricted/supply/uniform/qm_skirt_pleated
-	name = "Quartermaster's Pleated Skirt"
+	name = "Quartermasters Pleated Skirt"
 	path = /obj/item/clothing/under/rank/cargo/skirt_pleated
 	allowed_roles = list("Quartermaster")
 
@@ -1023,7 +1054,7 @@
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/cargo
 
 /datum/gear/restricted/supply/suit/wintercoat/qm
-	name = "Quartermaster's Winter Coat"
+	name = "Quartermasters Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/qm
 	allowed_roles = list("Quartermaster")
 
@@ -1053,7 +1084,9 @@
 	name = "Cargo Poncho"
 	path = /obj/item/clothing/accessory/poncho/roles/cargo
 
-
+/datum/gear/restricted/supply/suit/overcoat
+	name = "Cargo Great Overcoat"
+	path = /obj/item/clothing/suit/storage/vest/formal/cargo
 
 //Shoes
 /datum/gear/restricted/supply/shoes/winterboots
@@ -1085,17 +1118,17 @@
 //Uniform
 
 /datum/gear/restricted/science/uniform/rd_pleated_skirt
-	name = "Research Director's Pleated Skirt"
+	name = "Research Directors Pleated Skirt"
 	path = /obj/item/clothing/under/rank/research_director/skirt_pleated
 	allowed_roles = list("Research Director")
 
 /datum/gear/restricted/science/uniform/rd_whimsical_skirt
-	name = "Research Director's Whimsical Pleated Skirt"
+	name = "Research Directors Whimsical Pleated Skirt"
 	path = /obj/item/clothing/under/rank/research_director/skirt_pleated/whimsical
 	allowed_roles = list("Research Director")
 
 /datum/gear/restricted/science/uniform/rd_turtleneck_skirt
-	name = "Research Director's Turtleneck Pleated Skirt"
+	name = "Research Directors Turtleneck Pleated Skirt"
 	path = /obj/item/clothing/under/rank/research_director/skirt_pleated/turtleneck
 
 /datum/gear/restricted/science/uniform/skirt
@@ -1103,11 +1136,11 @@
 	path = /obj/item/clothing/under/rank/scientist/skirt
 
 /datum/gear/restricted/science/uniform/skirt_pleated
-	name = "Scientist's Pleated Skirt"
+	name = "Scientists Pleated Skirt"
 	path = /obj/item/clothing/under/rank/scientist/skirt_pleated
 
 /datum/gear/restricted/science/uniform/alt/roboticist
-	name = "Roboticist's Jumpsuit - Gold"
+	name = "Roboticists Jumpsuit - Gold"
 	path = /obj/item/clothing/under/rank/roboticist/alt
 	allowed_roles = list("Research Director", "Roboticist")
 
@@ -1117,7 +1150,7 @@
 	allowed_roles = list("Research Director", "Roboticist")
 
 /datum/gear/restricted/science/uniform/skirt/roboticist_pleated
-	name = "Roboticist's Pleated Skirt"
+	name = "Roboticists Pleated Skirt"
 	path = /obj/item/clothing/under/rank/roboticist/skirt_pleated
 	allowed_roles = list("Research Director", "Roboticist")
 
@@ -1156,7 +1189,7 @@
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/science
 
 /datum/gear/restricted/science/suit/wintercoat/rd
-	name = "Research Director's Winter Coat"
+	name = "Research Directors Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/science/rd
 	allowed_roles = list("Research Director")
 
@@ -1176,6 +1209,15 @@
 /datum/gear/restricted/science/suit/labcoat/roboticist
 	name = "Research Labcoat - Robotics"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/robotics
+	allowed_roles = list("Research Director", "Roboticist")
+
+/datum/gear/restricted/science/suit/labcoat_classic
+	name = "Research Labcoat (Classic)"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/science/classic
+
+/datum/gear/restricted/science/suit/labcoat/roboticist_classic
+	name = "Research Labcoat - Robotics (Classic)"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/robotics/classic
 	allowed_roles = list("Research Director", "Roboticist")
 
 /datum/gear/restricted/science/suit/labcoat/rd
@@ -1315,6 +1357,14 @@
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/captain
 	allowed_roles = list("Facility Director")
 
+/datum/gear/restricted/command/suit/overcoat
+	name = "Command Formal Overcoat"
+	path = /obj/item/clothing/suit/storage/vest/formal/command
+
+/datum/gear/restricted/command/suit/overcoat/cape
+	name = "Command Formal Overcoat Caped"
+	path = /obj/item/clothing/suit/storage/vest/formal/command/caped
+
 /datum/gear/restricted/command/suit/cloak/hop
 	name = "Head of Personnel - Cloak"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/hop
@@ -1422,13 +1472,13 @@
 
 //*Chaplain
 /datum/gear/restricted/misc/uniform/chaplain/chap_skirt_pleated
-	name = "Chaplain's Pleated Skirt"
+	name = "Chaplains Pleated Skirt"
 	path = /obj/item/clothing/under/rank/chaplain/skirt_pleated
 	allowed_roles = list("Chaplain")
 
 //*Chef
 /datum/gear/restricted/misc/uniform/chef/chef_skirt_pleated
-	name = "Chef's Pleated Skirt"
+	name = "Chefs Pleated Skirt"
 	path = /obj/item/clothing/under/rank/chef/skirt_pleated
 	allowed_roles = list("Chef")
 
@@ -1440,7 +1490,7 @@
 
 //*Janitor
 /datum/gear/restricted/misc/uniform/janitor_fem
-	name = "Janitor's Jumpsuit - Female"
+	name = "Janitors Jumpsuit - Female"
 	path = /obj/item/clothing/under/rank/janitor_fem
 	allowed_roles = list("Janitor")
 
@@ -1460,7 +1510,7 @@
 	allowed_roles = list("Janitor")
 
 /datum/gear/restricted/janitor/wintercoat
-	name = "Janitor's Winter Coat"
+	name = "Janitors Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/janitor
 	allowed_roles = list("Janitor")
 
@@ -1512,24 +1562,3 @@
 	name = "Hydroponics Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/hydro
 	allowed_roles = list("Botanist")
-
-
-//*This clusterfuck of access combinations
-//*Now with Talon roles!
-/datum/gear/restricted/misc/accessory/holster
-	name = "(Command/Security/Exploration/Talon) Holster - Selection"
-	path = /obj/item/clothing/accessory/holster
-	cost = 3
-	allowed_roles = list(
-	"Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary",
-	"Security Officer", "Warden", "Head of Security", "Detective",
-	"Field Medic", "Explorer", "Pathfinder", "Pilot",
-	"Talon Captain", "Talon Doctor", "Talon Medic", "Talon Engineer", "Talon Pilot", "Talon Guard")
-
-/datum/gear/restricted/misc/accessory/holster/New()
-	..()
-	var/list/holsters = list()
-	for(var/holster in typesof(/obj/item/clothing/accessory/holster))
-		var/obj/item/clothing/accessory/holster_type = holster
-		holsters[initial(holster_type.name)] = holster_type
-	gear_tweaks += new/datum/gear_tweak/path(tim_sort(holsters, /proc/cmp_text_asc))

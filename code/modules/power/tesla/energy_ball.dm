@@ -71,7 +71,7 @@
 	else
 		energy = 0 // ensure we dont have miniballs of miniballs
 
-/obj/singularity/energy_ball/examine(mob/user)
+/obj/singularity/energy_ball/examine(mob/user, dist)
 	. = ..()
 	if(orbiting_balls.len)
 		. += "The amount of orbiting mini-balls is [orbiting_balls.len]."
@@ -230,7 +230,7 @@
 		else if(isliving(A))
 			var/dist = get_dist(source, A)
 			var/mob/living/L = A
-			if(dist <= zap_range && (dist < closest_dist || !closest_mob) && L.stat != DEAD && !(L.status_flags & GODMODE))
+			if(dist <= zap_range && (dist < closest_dist || !closest_mob) && L.stat != DEAD && !(L.status_flags & STATUS_GODMODE))
 				closest_mob = L
 				closest_atom = A
 				closest_dist = dist

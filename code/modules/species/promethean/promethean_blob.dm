@@ -31,14 +31,14 @@
 	var/rad_glow = 0
 
 /mob/living/simple_mob/slime/promethean/Initialize(mapload, null)
-	verbs += /mob/living/simple_mob/slime/promethean/proc/prommie_blobform
-	verbs += /mob/living/proc/set_size
-	verbs += /mob/living/proc/hide
-	verbs += /mob/living/simple_mob/proc/animal_nom
-	verbs += /mob/living/proc/shred_limb
-	verbs += /mob/living/simple_mob/slime/promethean/proc/toggle_expand
-	verbs += /mob/living/simple_mob/slime/promethean/proc/prommie_select_colour
-	verbs += /mob/living/simple_mob/slime/promethean/proc/toggle_shine
+	add_verb(src, /mob/living/simple_mob/slime/promethean/proc/prommie_blobform)
+	add_verb(src, /mob/living/proc/set_size)
+	add_verb(src, /mob/living/proc/hide)
+	add_verb(src, /mob/living/simple_mob/proc/animal_nom)
+	add_verb(src, /mob/living/proc/shred_limb)
+	add_verb(src, /mob/living/simple_mob/slime/promethean/proc/toggle_expand)
+	add_verb(src, /mob/living/simple_mob/slime/promethean/proc/prommie_select_colour)
+	add_verb(src, /mob/living/simple_mob/slime/promethean/proc/toggle_shine)
 	update_mood()
 	if(rad_glow)
 		rad_glow = clamp(rad_glow,0,250)
@@ -62,10 +62,10 @@
 		qdel(stored_blob)
 	return ..()
 
-/mob/living/simple_mob/slime/promethean/Stat()
-	..()
+/mob/living/simple_mob/slime/promethean/statpanel_data(client/C)
+	. = ..()
 	if(humanform)
-		humanform.species.Stat(humanform)
+		. += humanform.species.statpanel_status(C, humanform)
 
 /mob/living/simple_mob/slime/promethean/handle_special() // Should disable default slime healing, we'll use nutrition based heals instead.
 	if(rad_glow)
@@ -76,7 +76,7 @@
 	update_icon()
 
 	if(!humanform) // If we somehow have a blob with no human, lets just clean up.
-		log_debug("Cleaning up blob with no prommie!")
+		log_debug(SPAN_DEBUGINFO("Cleaning up blob with no prommie!"))
 		qdel(src)
 	return
 
@@ -85,12 +85,12 @@
 	..()
 	if(H)
 		humanform = H
-		updatehealth()
+		update_health()
 
 	else
 		qdel(src)
 
-/mob/living/simple_mob/slime/promethean/updatehealth()
+/mob/living/simple_mob/slime/promethean/update_health()
 	if(!humanform)
 		return ..()
 
@@ -112,7 +112,6 @@
 	//Grab any other interesting values
 	confused = humanform.confused
 	radiation = humanform.radiation
-	paralysis = humanform.paralysis
 
 	//Update our hud if we have one
 	if(healths)
@@ -188,13 +187,14 @@
 		return ..()
 
 /mob/living/simple_mob/slime/promethean/rad_act(severity)
+	. = ..()
 	rad_glow += severity
 	rad_glow = clamp(rad_glow,0,250)
 	if(rad_glow > 1)
 		set_light(max(1,min(5,rad_glow/15)), max(1,min(10,rad_glow/25)), color)
 		update_icon()
 
-/mob/living/simple_mob/slime/promethean/bullet_act(obj/item/projectile/P)
+/mob/living/simple_mob/slime/promethean/bullet_act(obj/projectile/P)
 	if(humanform)
 		return humanform.bullet_act(P)
 	else
@@ -212,9 +212,9 @@
 	if(!QDELETED(src)) // Human's handle death should have taken us, but maybe we were adminspawned or something without a human counterpart
 		qdel(src)
 
-/mob/living/simple_mob/slime/promethean/Login()
-	..()
-	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
+/mob/living/simple_mob/slime/promethean/make_perspective()
+	. = ..()
+	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
 
 /mob/living/simple_mob/slime/promethean/proc/prommie_blobform()
 	set name = "Toggle Blobform"
@@ -229,7 +229,7 @@
 
 	//Blob form
 	if(!ishuman(src))
-		if(humanform.temporary_form.stat || paralysis || stunned || weakened || restrained())
+		if(humanform.temporary_form.stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || restrained())
 			to_chat(src,"<span class='warning'>You can only do this while not stunned.</span>")
 		else
 			humanform.prommie_outofblob(src)
@@ -290,7 +290,7 @@
 	color = new_skin
 	update_icon()
 
-/mob/living/simple_mob/slime/promethean/get_description_interaction()
+/mob/living/simple_mob/slime/promethean/get_description_interaction(mob/user)
 	return
 
 
@@ -371,7 +371,7 @@
 	if(r_hand) blob.prev_right_hand = r_hand
 
 	//Put our owner in it (don't transfer var/mind)
-	blob.Weaken(2)
+	blob.afflict_paralyze(20 * 2)
 	blob.transforming = TRUE
 	blob.ckey = ckey
 	blob.ooc_notes = ooc_notes
@@ -381,7 +381,8 @@
 	blob.color = rgb(r_skin, g_skin, b_skin)
 	playsound(src.loc, "sound/effects/slime_squish.ogg", 15)
 	if(radiation > 0)
-		blob.rad_glow = clamp(radiation,0,250)
+		blob.rad_glow = clamp(radiation / 5, 0, 250)
+		blob.radiation = radiation
 		set_light(0)
 		blob.set_light(max(1,min(5,radiation/15)), max(1,min(10,radiation/25)), blob.color)
 		blob.handle_light()
@@ -390,8 +391,8 @@
 		new_hat.forceMove(src)
 
 	blob.update_icon()
-	blob.verbs -= /mob/living/proc/ventcrawl // Absolutely not.
-	//blob.verbs -= /mob/living/simple_mob/proc/set_name // We already have a name.
+	remove_verb(blob, /mob/living/proc/ventcrawl) // Absolutely not.
+	//remove_verb(blob, /mob/living/simple_mob/proc/set_name) // We already have a name.
 	temporary_form = blob
 	//Mail them to nullspace
 	moveToNullspace()
@@ -438,7 +439,7 @@
 	forceMove(reform_spot)
 
 	//Put our owner in it (don't transfer var/mind)
-	Weaken(2)
+	afflict_paralyze(20 * 2)
 	playsound(src.loc, "sound/effects/slime_squish.ogg", 15)
 	transforming = TRUE
 	ckey = blob.ckey
@@ -459,8 +460,8 @@
 	if(!blob_color)
 		blob_color = rgb(255, 255, 255)
 	shapeshifter_set_colour(blob_color)
-	if(blob.rad_glow > 0)
-		radiation = clamp(blob.rad_glow,0,250)
+	if(blob.radiation > 0)
+		radiation = blob.radiation
 		set_light(max(1,min(5,radiation/15)), max(1,min(10,radiation/25)), species.get_flesh_colour(src))
 	update_icon()
 
@@ -485,7 +486,7 @@
 	//Return ourselves in case someone wants it
 	return src
 
-/mob/living/simple_mob/slime/promethean/examine(mob/user)
+/mob/living/simple_mob/slime/promethean/examine(mob/user, dist)
 	. = ..()
 	if(hat)
 		. += "They are wearing \a [hat]."
@@ -500,4 +501,3 @@
 	else if(humanform.say_understands(other, speaking))		//So they're speaking something other than promethean or sign, let's just ask our original mob if it understands
 		return TRUE
 	else return FALSE
-

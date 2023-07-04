@@ -46,7 +46,7 @@
 	. = ..()
 	if(merge)
 		for(var/obj/item/stack/S in loc)
-			if(S.stacktype == stacktype)
+			if(can_merge(S))
 				merge(S)
 	update_icon()
 
@@ -77,7 +77,7 @@
 			icon_state = "[initial(icon_state)]_3"
 		item_state = initial(icon_state)
 
-/obj/item/stack/examine(mob/user)
+/obj/item/stack/examine(mob/user, dist)
 	. = ..()
 	if(!uses_charge)
 		. += "There are [amount] [singular_name]\s in the stack."
@@ -85,6 +85,9 @@
 		. += "There is enough charge for [get_amount()]."
 
 /obj/item/stack/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(safety_check())
 		return
 	list_recipes(user)
@@ -99,7 +102,7 @@
 	if (recipes_sublist && recipe_list[recipes_sublist] && istype(recipe_list[recipes_sublist], /datum/stack_recipe_list))
 		var/datum/stack_recipe_list/srl = recipe_list[recipes_sublist]
 		recipe_list = srl.recipes
-	var/t1 = text("<HTML><HEAD><title>Constructions from []</title></HEAD><body><TT>Amount Left: []<br>", src, src.get_amount())
+	var/t1 = "<HTML><HEAD><title>Constructions from [src]</title></HEAD><body><TT>Amount Left: [get_amount()]<br>"
 	for(var/i=1;i<=recipe_list.len,i++)
 		var/E = recipe_list[i]
 		if (isnull(E))
@@ -125,9 +128,9 @@
 				title+= "[R.title]"
 			title+= " ([R.req_amount] [src.singular_name]\s)"
 			if (can_build)
-				t1 += text("<A href='?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  ")
+				t1 += "<A href='?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  "
 			else
-				t1 += text("[]", title)
+				t1 += title
 				continue
 			if (R.max_res_amount>1 && max_multiplier>1)
 				max_multiplier = min(max_multiplier, round(R.max_res_amount/R.res_amount))
@@ -240,6 +243,8 @@
 		return FALSE
 	if(mid_delete || other.mid_delete) // bandaid until new inventory code
 		return FALSE
+	if((strict_color_stacking || other.strict_color_stacking) && (color != other.color))
+		return FALSE
 	return other.stacktype == stacktype
 
 /obj/item/stack/proc/use(used)
@@ -286,8 +291,6 @@
 	if (!get_amount())
 		return 0
 	if (!can_merge(S) && !type_verified)
-		return 0
-	if ((strict_color_stacking || S.strict_color_stacking) && S.color != color)
 		return 0
 
 	if (isnull(tamount))
@@ -361,7 +364,7 @@
 		if(!amount)
 			break
 
-/obj/item/stack/attack_hand(mob/user)
+/obj/item/stack/attack_hand(mob/user, list/params)
 	if(safety_check())
 		return
 	if(user.get_inactive_held_item() == src)
@@ -408,7 +411,7 @@
 
 /obj/item/stack/AltClick(mob/living/user)
 	. = ..()
-	if(!istype(user) || !in_range(user, src) || !user.canmove)
+	if(!istype(user) || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
 		return
 	attempt_split_stack(user)
 
@@ -424,7 +427,7 @@
 		var/stackmaterial = tgui_input_number(user, "How many sheets do you wish to take out of this stack?", "Stack", max, max, 1, round_value=TRUE)
 		max = get_amount() // Not sure why this is done twice but whatever.
 		stackmaterial = min(max, stackmaterial)
-		if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !user.canmove)
+		if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
 			return TRUE
 		else
 			change_stack(user, stackmaterial)

@@ -37,8 +37,8 @@
 /obj/effect/bmode//Cleaning up the tree a bit
 	density = 1
 	anchored = 1
-	layer = LAYER_HUD_BASE
-	plane = PLANE_PLAYER_HUD
+	layer = HUD_LAYER_BASE
+	plane = HUD_PLANE
 	dir = NORTH
 	icon = 'icons/misc/buildmode.dmi'
 	var/obj/effect/bmode/buildholder/master = null
@@ -371,8 +371,15 @@ GLOBAL_LIST_EMPTY(buildholders)
 			if(pa.Find("left") && !pa.Find("ctrl"))
 				var/turf/TC = get_turf(object)
 				if(ispath(holder.buildmode.objholder,/turf))
+					// warning: this is bad heuristics, but for the time being, we don't have another choice / i'm too lazy to think this through.
 					var/turf/T = get_turf(object)
-					T.ChangeTurf(holder.buildmode.objholder)
+					var/turf/making_path = holder.buildmode.objholder
+					if(T.density) // T is dense, we likely want to replace it as it's likely a wall
+						T.ChangeTurf(holder.buildmode.objholder)
+					else if(initial(making_path.density)) // thing we're placing is dense but not existing turf, place on top
+						T.PlaceOnTop(holder.buildmode.objholder)
+					else // densities match / other cases just changeturf.
+						T.ChangeTurf(holder.buildmode.objholder)
 				else
 					var/obj/A = new holder.buildmode.objholder (get_turf(object))
 					A.setDir(holder.builddir.dir)

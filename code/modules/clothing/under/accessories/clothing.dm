@@ -51,9 +51,9 @@
 	icon_override = 'icons/mob/clothing/ties.dmi'
 	var/fire_resist = T0C+100
 	allowed = list(/obj/item/tank/emergency/oxygen)
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
@@ -62,9 +62,9 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == SPECIES_TESHARI)
+		if(H.species.get_species_id() == SPECIES_ID_TESHARI)
 			icon_override = 'icons/mob/clothing/species/teshari/suits.dmi'
-		else if(H.species.name == SPECIES_VOX)
+		else if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
 			icon_override = 'icons/mob/clothing/ties.dmi'
@@ -132,25 +132,49 @@
 	item_state = "roughcloak"
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
+	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
 	action_button_name = "Adjust Cloak"
 
-/obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_open"
 		src.item_state = "[item_state]_open"
-		flags_inv = HIDETIE|HIDEHOLSTER
+		inv_hide_flags = HIDETIE|HIDEHOLSTER
 		to_chat(user, "You flip the cloak over your shoulder.")
 	else
 		src.icon_state = initial(icon_state)
 		src.item_state = initial(item_state)
-		flags_inv = HIDEHOLSTER
+		inv_hide_flags = HIDEHOLSTER
 		to_chat(user, "You pull the cloak over your shoulder.")
 	update_worn_icon()	//so our mob-overlays update
 
 /obj/item/clothing/accessory/poncho/rough_cloak/tan
 	icon_state = "roughcloak_tan"
 	item_state = "roughcloak_tan"
+
+/obj/item/clothing/accessory/poncho/rough_cloak_torn
+	name = "Rough Torn Cloak"
+	desc = "A dark, angled coat meant to protect you from dust, sands and other grime. This one has seen worse days."
+	icon_state = "rough_torn_cloak_color"
+	item_state = "rough_torn_cloak_color"
+
+/obj/item/clothing/accessory/poncho/rough_cloak_torn/tan
+	icon_state = "rough_torn_cloak_brown"
+	item_state = "rough_torn_cloak_brown"
+
+//Just a little extra aesthetic for Goliath armor.
+/obj/item/clothing/accessory/poncho/rough_cloak/ashlander
+	name = "goliath hide half cloak"
+	desc = "Thinner and more lightweight than a hooded Goliath cloak, the half-cloak is more comfortable to wear over armor. However, as a result it does not provide the same protection from heat."
+	color = "#870606"
+	allowed = list(
+		/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/pickaxe, /obj/item/material/twohanded/spear, /obj/item/material/twohanded/spear/bone,
+		/obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/melee/ashlander,
+		/obj/item/gun/ballistic/musket/pistol)
+	action_button_name = "Adjust Cloak"
 
 /*
  * Cloak
@@ -160,7 +184,7 @@
 	desc = "An elaborate brown and gold cloak."
 	icon_state = "qmcloak"
 	item_state = "qmcloak"
-	body_parts_covered = null
+	body_cover_flags = null
 
 /obj/item/clothing/accessory/poncho/roles/cloak/ce
 	name = "chief engineer's cloak"
@@ -275,9 +299,9 @@
 	name = "flower-pattern shirt"
 	desc = "You probably need some welder googles to look at this."
 	icon_state = "hawaii"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
@@ -302,9 +326,9 @@
 	icon_override = 'icons/mob/clothing/ties.dmi'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wcoat", SLOT_ID_LEFT_HAND = "wcoat")
 	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
@@ -354,9 +378,9 @@
 	icon_override = 'icons/mob/clothing/ties.dmi'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "labcoat", SLOT_ID_LEFT_HAND = "labcoat")
 	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_DECOR
@@ -374,7 +398,7 @@
 	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon_state = "sweater"
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
@@ -527,7 +551,27 @@
 	name = "Antediluvian bracers"
 	desc = "Short metallic bracers worked out of a dark metal and inlaid with gold. They appear to have been ceremonial, as all surviving models offer negligible protection."
 	icon_state = "antediluvian"
-	//body_parts_covered = HANDS|ARMS
+	//body_cover_flags = HANDS|ARMS
+
+/obj/item/clothing/accessory/antediluvian_gloves/alt
+	name = "Antediluvian bracers alternative"
+	desc = "Short metallic bracers worked out of a dark metal and inlaid with gold. They appear to have been ceremonial, as all surviving models offer negligible protection. These have a single finger covered in fabric. It isn't fluid proof."
+	icon_state = "ante_hands"
+
+/obj/item/clothing/accessory/antediluvian_socks
+	name = "Antediluvian Socks"
+	desc = "Thigh-length leg-sleeves with a metalic sheen and a golden pattern. Despite the apparent stiffness, they're quite flexible, and have freed toes for maneuverability."
+	icon_state = "ante_socks"
+
+/obj/item/clothing/accessory/antediluvian_necklace
+	name = "Antediluvian Necklace"
+	desc = "A golden cross-necklace. Looks old, and had since lost its meaning."
+	icon_state = "ante_neck"
+
+/obj/item/clothing/accessory/antediluvian_flaps
+	name = "Antediluvian Flaps"
+	desc = "A pair of long extensions attachable around the hips. Made out of stiff, yet flappy enough material to make the wearer appear to make elegant patterns. Or to flop around like the end of a fish-tail. Not for the bottom-endowed."
+	icon_state = "ante_flaps"
 
 /obj/item/clothing/accessory/mekkyaku
 	name = "Mekkyaku turtleneck"
@@ -548,3 +592,37 @@
 	name = "Stirrup Sleeve"
 	desc = "A single of fingerless, full arm sleeves. Perfect for winter. This one is for the right arm."
 	icon_state = "armsock_right"
+
+/obj/item/clothing/accessory/poncho/dust_cloak
+	name = "Dust Cloak"
+	desc = "A dark, angled coat meant to protect you from dust, sands and other grime."
+	icon_override = 'icons/mob/clothing/ties.dmi'
+	icon_state = "terrandress"
+	item_state = "terrandress"
+
+/obj/item/clothing/accessory/poncho/dust_cloak/dark
+	name = "Dust Cloak -- Embroidered"
+	desc = "A dark, angled coat meant to protect you from dust, sands and other grime. This one is embroidered."
+	icon_state = "terrandress_off"
+	item_state = "terrandress_off"
+
+/obj/item/clothing/accessory/poncho/dust_cloak/white
+	name = "Dust Cloak --  White"
+	desc = "A dark, angled coat meant to protect you from dust, sands and other grime. This one is white."
+	icon_state = "terrandress_comm"
+	item_state = "terrandress_comm"
+
+/obj/item/clothing/accessory/legwarmers
+	name = "thigh-length legwarmers"
+	desc = "A comfy pair of legwarmers. These are excessively long."
+	icon_state = "legwarmers_thigh"
+
+/obj/item/clothing/accessory/legwarmersmedium
+	name = "medium-length legwarmers"
+	desc = "A comfy pair of legwarmers. For those unfortunate enough to wear shorts in the cold."
+	icon_state = "legwarmers_medium"
+
+/obj/item/clothing/accessory/legwarmersshort
+	name = "short legwarmers"
+	desc = "A comfy pair of legwarmers. For those better in the cold than others."
+	icon_state = "legwarmers_short"

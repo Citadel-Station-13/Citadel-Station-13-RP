@@ -31,7 +31,9 @@
 */
 
 /atom/movable/screen/click_catcher/proc/UpdateFill(view_size_x, view_size_y)
-	screen_loc = "1,1 to [view_size_x],[view_size_y]"
+	var/matrix/transforming = matrix()
+	transforming.Scale(view_size_x, view_size_y)
+	transform = transforming
 
 /atom/movable/screen/click_catcher/Click(location, control, params)
 	var/list/modifiers = params2list(params)
@@ -55,20 +57,7 @@
 	tY = tY[1]
 	tX = splittext(tX[1], ":")
 	tX = tX[1]
-	var/list/actual_view = getviewsize(C ? C.view : world.view)
+	var/list/actual_view = decode_view_size(C ? C.view : world.view)
 	tX = clamp(origin.x + text2num(tX) - round(actual_view[1] / 2) - 1, 1, world.maxx)
 	tY = clamp(origin.y + text2num(tY) - round(actual_view[2] / 2) - 1, 1, world.maxy)
 	return locate(tX, tY, tZ)
-
-/**
- * Makes a clickcatcher if necessary, and ensures it's fit to our size.
- */
-/client/proc/update_clickcatcher(list/view_override)
-	if(!click_catcher)
-		click_catcher = new
-	screen |= click_catcher
-	if(view_override)
-		click_catcher.UpdateFill(view_override[1], view_override[2])
-	else
-		var/list/view_list = getviewsize(view)
-		click_catcher.UpdateFill(view_list[1], view_list[2])

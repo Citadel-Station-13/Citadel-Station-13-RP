@@ -54,6 +54,12 @@
 /proc/cmp_name_dsc(atom/a, atom/b)
 	return sorttext(a.name, b.name)
 
+/proc/cmp_initial_name_asc(atom/a, atom/b)
+	return sorttext(initial(b.name), initial(a.name))
+
+/proc/cmp_initial_name_dsc(atom/a, atom/b)
+	return sorttext(initial(a.name), initial(b.name))
+
 GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_records_asc(datum/data/record/a, datum/data/record/b)
 	return sorttext(b.fields[GLOB.cmp_field], a.fields[GLOB.cmp_field])
@@ -122,7 +128,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /**
  * Sorts jobs by department, and then by flag within department.
  */
-/proc/cmp_job_datums(datum/job/a, datum/job/b)
+/proc/cmp_job_datums(datum/role/job/a, datum/role/job/b)
 	. = 0
 	if( LAZYLEN(a.departments) && LAZYLEN(b.departments) )
 		// Makes a list that contains only departments that were in both.
@@ -173,6 +179,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_holiday_priority(datum/holiday/A, datum/holiday/B)
 	return A.priority - B.priority
 
+
 //! Line Profiling
 
 /proc/cmp_profile_avg_time_dsc(list/A, list/B)
@@ -184,6 +191,14 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_profile_count_dsc(list/A, list/B)
 	return B[PROFILE_ITEM_COUNT] - A[PROFILE_ITEM_COUNT]
 
+
 //! Preferences
+
 /proc/cmp_preference_load_order(datum/category_item/player_setup_item/A, datum/category_item/player_setup_item/B)
 	return A.load_order - B.load_order
+
+
+//! Rendering
+
+/proc/cmp_planelayer(atom/A, atom/B)
+	return (B.plane - A.plane) || (B.layer - A.layer)

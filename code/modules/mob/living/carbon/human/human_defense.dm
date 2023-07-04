@@ -4,11 +4,10 @@ Contains most of the procs that are called when a mob is attacked by something
 bullet_act
 legacy_ex_act
 meteor_act
-emp_act
 
 */
 
-/mob/living/carbon/human/bullet_act(var/obj/item/projectile/P, var/def_zone)
+/mob/living/carbon/human/bullet_act(var/obj/projectile/P, var/def_zone)
 	def_zone = check_zone(def_zone)
 	if(!has_organ(def_zone))
 		return PROJECTILE_FORCE_MISS //if they don't have the organ in question then the projectile just passes by.
@@ -74,7 +73,7 @@ emp_act
 
 	..(stun_amount, agony_amount, def_zone)
 
-/mob/living/carbon/human/getarmor(var/def_zone, var/type)
+/mob/living/carbon/human/legacy_mob_armor(var/def_zone, var/type)
 	var/armorval = 0
 	var/total = 0
 
@@ -96,8 +95,8 @@ emp_act
 				total += weight
 	return (armorval/max(total, 1))
 
-//Like getarmor, but the value it returns will be numerical damage reduction
-/mob/living/carbon/human/getsoak(var/def_zone, var/type)
+//Like legacy_mob_armor, but the value it returns will be numerical damage reduction
+/mob/living/carbon/human/legacy_mob_soak(var/def_zone, var/type)
 	var/soakval = 0
 	var/total = 0
 
@@ -128,7 +127,7 @@ emp_act
 
 	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes) // What all are we checking?
 	for(var/obj/item/clothing/C in clothing_items)
-		if(istype(C) && (C.body_parts_covered & def_zone.body_part)) // Is that body part being targeted covered?
+		if(istype(C) && (C.body_cover_flags & def_zone.body_part_flags)) // Is that body part being targeted covered?
 			siemens_coefficient *= C.siemens_coefficient
 
 	return siemens_coefficient
@@ -159,7 +158,7 @@ emp_act
 	var/list/results = list()
 	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes)
 	for(var/obj/item/clothing/C in clothing_items)
-		if(istype(C) && (C.body_parts_covered & def_zone.body_part))
+		if(istype(C) && (C.body_cover_flags & def_zone.body_part_flags))
 			results.Add(C)
 	return results
 
@@ -170,7 +169,7 @@ emp_act
 	var/protection = 0
 	var/list/protective_gear = def_zone.get_covering_clothing()
 	for(var/obj/item/clothing/gear in protective_gear)
-		protection += gear.armor[type]
+		protection += gear.fetch_armor().raw(type) * 100
 	return protection
 
 /mob/living/carbon/human/proc/getsoak_organ(var/obj/item/organ/external/def_zone, var/type)
@@ -179,7 +178,7 @@ emp_act
 	var/soaked = 0
 	var/list/protective_gear = def_zone.get_covering_clothing()
 	for(var/obj/item/clothing/gear in protective_gear)
-		soaked += gear.armorsoak[type]
+		soaked += gear.fetch_armor().soak(type)
 	return soaked
 
 // Checked in borer code
@@ -195,7 +194,7 @@ emp_act
 	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
 	var/list/protective_gear = H.get_covering_clothing(FACE)
 	for(var/obj/item/gear in protective_gear)
-		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL))
+		if(istype(gear) && (gear.body_cover_flags & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL))
 			return gear
 	return null
 
@@ -203,7 +202,7 @@ emp_act
 	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
 	var/list/protective_gear = H.get_covering_clothing(FACE)
 	for(var/obj/item/gear in protective_gear)
-		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL) && !(gear.clothing_flags & ALLOW_SURVIVALFOOD))
+		if(istype(gear) && (gear.body_cover_flags & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL) && !(gear.clothing_flags & ALLOW_SURVIVALFOOD))
 			return gear
 	return null
 
@@ -224,12 +223,9 @@ emp_act
 	var/hit_zone = get_zone_with_miss_chance(target_zone, src, user.get_accuracy_penalty())
 
 	if(!hit_zone)
-		user.do_attack_animation(src)
-		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-		visible_message("<span class='danger'>\The [user] misses [src] with \the [I]!</span>")
 		return null
 
-	if(check_shields(I.force, I, user, target_zone, "the [I.name]"))
+	if(check_shields(I.damage_force, I, user, target_zone, "the [I.name]"))
 		return
 
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
@@ -243,8 +239,6 @@ emp_act
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if(!affecting)
 		return //should be prevented by attacked_with_item() but for sanity.
-
-	visible_message("<span class='danger'>[src] has been [I.attack_verb.len? pick(I.attack_verb) : "attacked"] in the [affecting.name] with [I.name] by [user]!</span>")
 
 	var/soaked = get_armor_soak(hit_zone, "melee", I.armor_penetration)
 
@@ -269,7 +263,7 @@ emp_act
 		effective_force -= round(effective_force*0.8)
 	// Handle striking to cripple.
 	if(user.a_intent == INTENT_DISARM)
-		effective_force *= 0.5 //reduced effective force...
+		effective_force *= 0.5 //reduced effective damage_force...
 		if(!..(I, user, effective_force, blocked, soaked, hit_zone))
 			return 0
 
@@ -286,7 +280,7 @@ emp_act
 		if(!((I.damtype == BRUTE) || (I.damtype == HALLOSS)))
 			return
 
-		if(!(I.flags & NOBLOODY))
+		if(!(I.atom_flags & NOBLOODY))
 			I.add_blood(src)
 
 		var/bloody = 0
@@ -365,7 +359,7 @@ emp_act
 		var/obj/O = AM
 
 		if(in_throw_mode && TT.speed <= THROW_SPEED_CATCHABLE)	//empty active hand and we're in throw mode
-			if(canmove && !restrained())
+			if(CHECK_ALL_MOBILITY(src, MOBILITY_CAN_USE | MOBILITY_CAN_PICKUP))
 				if(isturf(O.loc))
 					if(can_catch(O))
 						put_in_active_hand(O)
@@ -521,10 +515,10 @@ emp_act
 	// Tox and oxy don't matter to suits.
 	if(damtype != BURN && damtype != BRUTE) return
 
-	// The rig might soak this hit, if we're wearing one.
-	if(back && istype(back,/obj/item/rig))
-		var/obj/item/rig/rig = back
-		rig.take_hit(damage)
+	// The hardsuit might soak this hit, if we're wearing one.
+	if(back && istype(back,/obj/item/hardsuit))
+		var/obj/item/hardsuit/hardsuit = back
+		hardsuit.take_hit(damage)
 
 	// We may also be taking a suit breach.
 	if(!wear_suit) return
@@ -547,21 +541,21 @@ emp_act
 		)
 
 	for(var/obj/item/clothing/C in src.get_equipped_items())
-		if(C.permeability_coefficient == 1 || !C.body_parts_covered)
+		if(C.permeability_coefficient == 1 || !C.body_cover_flags)
 			continue
-		if(C.body_parts_covered & HEAD)
+		if(C.body_cover_flags & HEAD)
 			perm_by_part["head"] *= C.permeability_coefficient
-		if(C.body_parts_covered & UPPER_TORSO)
+		if(C.body_cover_flags & UPPER_TORSO)
 			perm_by_part["upper_torso"] *= C.permeability_coefficient
-		if(C.body_parts_covered & LOWER_TORSO)
+		if(C.body_cover_flags & LOWER_TORSO)
 			perm_by_part["lower_torso"] *= C.permeability_coefficient
-		if(C.body_parts_covered & LEGS)
+		if(C.body_cover_flags & LEGS)
 			perm_by_part["legs"] *= C.permeability_coefficient
-		if(C.body_parts_covered & FEET)
+		if(C.body_cover_flags & FEET)
 			perm_by_part["feet"] *= C.permeability_coefficient
-		if(C.body_parts_covered & ARMS)
+		if(C.body_cover_flags & ARMS)
 			perm_by_part["arms"] *= C.permeability_coefficient
-		if(C.body_parts_covered & HANDS)
+		if(C.body_cover_flags & HANDS)
 			perm_by_part["hands"] *= C.permeability_coefficient
 
 	for(var/part in perm_by_part)

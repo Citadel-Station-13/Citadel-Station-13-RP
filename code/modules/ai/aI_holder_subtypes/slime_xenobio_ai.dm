@@ -174,8 +174,8 @@
 			var/mob/living/carbon/human/H = AM
 			if(istype(H.species, /datum/species/monkey)) // istype() is so they'll eat the alien monkeys too.
 				return TRUE // Monkeys are always food (sorry Pun Pun).
-			else if(H.species && H.species.name == SPECIES_PROMETHEAN) // Prometheans are always our friends.
-				if(!(H in grudges)) // Unless they're an ass.
+			else if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN) // Prometheans are always our friends.
+				if(!(REF(H) in grudges)) // Unless they're an ass.
 					return FALSE
 		if(discipline && !rabid)
 			return FALSE // We're a good slime.
@@ -185,8 +185,8 @@
 
 	if(ishuman(attacker))
 		var/mob/living/carbon/human/H = attacker
-		if(H.species && H.species.name == SPECIES_PROMETHEAN)	// They're a jerk.
-			grudges |= H
+		if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN)	// They're a jerk.
+			grudges |= REF(H)
 
 // Commands, reactions, etc
 /datum/ai_holder/simple_mob/xenobio_slime/on_hear_say(mob/living/speaker, message)

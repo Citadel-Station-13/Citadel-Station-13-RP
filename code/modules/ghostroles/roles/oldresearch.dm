@@ -1,4 +1,4 @@
-/datum/ghostrole/old_research
+/datum/role/ghostrole/old_research
 	name = "Oldstation Crew"
 	allow_pick_spawner = TRUE
 	desc = "You were a Nanotrasen employee from an era past, stationed upon a state of the art research station. \
@@ -21,7 +21,7 @@
 			return /datum/outfit/old_research/scientist
 
 /obj/structure/ghost_role_spawner/old_research
-	role_type = /datum/ghostrole/old_research
+	role_type = /datum/role/ghostrole/old_research
 	name = "old cryogenics pod"
 	desc = "A humming cryo pod. You can barely recognise a security uniform underneath the built up ice. The machine is attempting to wake up its occupant."
 	icon = 'icons/obj/machines/sleeper.dmi'

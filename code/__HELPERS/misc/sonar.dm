@@ -71,37 +71,52 @@
 	SSsonar.flick_sonar_image(list(I), GLOB.clients)
 */
 
+/**
+ * make a *centered* sonar image.
+ */
 /atom/proc/make_sonar_image(resolution)
+
+/atom/movable/make_sonar_image(resolution)
 	if(resolution == SONAR_RESOLUTION_NONE)
 		return
-	if(invisibility || !x)		// doing !x is turf or on turf check
+	if(invisibility)
 		return
-	var/atom/movable/holder = __vfx_see_anywhere_atom_holder_at(isturf(src)? src : loc)
 	var/mutable_appearance/MA
-	holder.plane = SONAR_PLANE
-	holder.dir = dir
-	holder.pixel_x += pixel_x
-	holder.pixel_y += pixel_y
-	// yea...
-	holder.layer = plane * 100 + layer
-	. = holder
 	switch(resolution)
 		if(SONAR_RESOLUTION_VISIBLE)
-			MA = vfx_clone_as_outline(127)
-			MA.pixel_x = MA.pixel_y = VFX_SEE_ANYWHERE_PIXEL_SHIFT
-			holder.overlays += MA
+			if(ismob(src))
+				MA = vfx_clone_as_outline(127, 1, 0, 0)
+			else
+				MA = vfx_clone_as_outline(127)
 		if(SONAR_RESOLUTION_WALLHACK)
 			MA = vfx_clone_as_greyscale()
-			MA.pixel_x = MA.pixel_y = VFX_SEE_ANYWHERE_PIXEL_SHIFT
-			holder.overlays += MA
 		if(SONAR_RESOLUTION_BLOCKY)
 			MA = make_sonar_shape()
-			MA.pixel_x = MA.pixel_y = VFX_SEE_ANYWHERE_PIXEL_SHIFT
-			if(MA)
-				holder.overlays += MA
+	if(isnull(MA))
+		return
+	. = MA
+	MA.pixel_x = pixel_x - (icon_x_dimension == WORLD_ICON_SIZE)? 0 : ((icon_x_dimension - WORLD_ICON_SIZE) / 2) + step_x
+	MA.pixel_y = pixel_y - (icon_y_dimension == WORLD_ICON_SIZE)? 0 : ((icon_y_dimension - WORLD_ICON_SIZE) / 2) + step_y
 
 /atom/proc/make_sonar_shape()
 	return
+
+/turf/make_sonar_image(resolution)
+	if(!density)
+		return
+	if(invisibility || !x)		// doing !x is turf or on turf check
+		return
+	var/mutable_appearance/MA
+	switch(resolution)
+		if(SONAR_RESOLUTION_VISIBLE)
+			MA = vfx_clone_as_outline(127)
+		if(SONAR_RESOLUTION_WALLHACK)
+			MA = vfx_clone_as_greyscale()
+		if(SONAR_RESOLUTION_BLOCKY)
+			MA = make_sonar_shape()
+	if(isnull(MA))
+		return
+	. = MA
 
 /turf/make_sonar_shape()
 	if(!density)
@@ -156,5 +171,5 @@
 /obj/structure/cable/make_sonar_image(resolution)
 	return
 
-/atom/movable/lighting_object/make_sonar_image(resolution)
+/atom/movable/lighting_overlay/make_sonar_image(resolution)
 	return

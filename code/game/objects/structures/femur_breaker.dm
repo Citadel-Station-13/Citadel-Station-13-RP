@@ -22,7 +22,7 @@
 	var/slat_status = BREAKER_SLAT_RAISED
 	var/current_action = 0 // What's currently happening to the femur breaker
 
-/obj/structure/femur_breaker/examine(mob/user)
+/obj/structure/femur_breaker/examine(mob/user, dist)
 	. = ..()
 	. += "It is [anchored ? "secured to the floor." : "unsecured."]"
 	if (slat_status == BREAKER_SLAT_RAISED)
@@ -94,7 +94,7 @@
 			return
 
 		playsound(src, 'sound/effects/femur_breaker.ogg', 100, FALSE)
-		H.Stun(BREAKER_ANIMATION_LENGTH)
+		H.afflict_stun(20 * BREAKER_ANIMATION_LENGTH)
 		addtimer(CALLBACK(src, .proc/damage_leg, H), BREAKER_ANIMATION_LENGTH, TIMER_UNIQUE)
 		log_combat(user, H, "femur broke", src)
 

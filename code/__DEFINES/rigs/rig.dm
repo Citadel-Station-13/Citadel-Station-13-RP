@@ -1,4 +1,4 @@
-// /obj/item/rig/var/activation_state
+// /obj/item/hardsuit/var/activation_state
 /// suit not activating
 #define RIG_ACTIVATION_OFF			0
 /// suit is cycling on

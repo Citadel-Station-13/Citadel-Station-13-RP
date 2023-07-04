@@ -6,28 +6,45 @@
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
-	icon = 'icons/turf/wall_masks.dmi'
-	icon_state = "generic"
+	icon = 'icons/turf/walls/solid.dmi'
+	icon_state = "wall-0"
+	base_icon_state = "wall"
+	color = "#666666"
+
+	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
+	layer = PLATING_LAYER
+	#endif
+
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
+	rad_insulation = RAD_INSULATION_EXTREME
 //	air_status = AIR_STATUS_BLOCK
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
 	baseturfs = /turf/simulated/floor/plating
-	smoothing_flags = SMOOTH_CUSTOM
-	edge_blending_priority = INFINITY		// let's not have floors render onto us mmkay?
+	edge_blending_priority = INFINITY // let's not have floors render onto us mmkay?
 
-	var/icon/wall_masks = 'icons/turf/wall_masks.dmi'
-	var/damage = 0
-	var/damage_overlay = 0
-	/// damage overlays are cached
-	var/static/list/damage_overlays = generate_wall_damage_overlays()
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_LOW_WALL + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
+
+	/// This is a var we are temporarily using until we have falsewall structures, until then we'll store our previous icon_state so we don't need to resmooth every time.
+	// TODO: Remove this when falsewalls are implemented.
+	var/cached_wall_state
+
+	var/damage
+	var/tmp/image/damage_overlay
+	// Damage overlays are cached.
+	var/global/damage_overlays[16]
+
 	var/active
 	var/can_open = FALSE
-	var/datum/material/girder_material
+
 	var/datum/material/material
 	var/datum/material/reinf_material
+	var/datum/material/girder_material
+
 	var/last_state
 	var/construction_stage
 
@@ -36,27 +53,32 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
-/turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
+/turf/simulated/wall/Initialize(mapload)
 	. = ..()
-	icon_state = "blank"
-	if(!materialtype)
-		materialtype = MAT_STEEL
-	material = get_material_by_name(materialtype)
-	if(!girdertype)
-		girdertype = MAT_STEEL
-	girder_material = get_material_by_name(girdertype)
-	if(!isnull(rmaterialtype))
-		reinf_material = get_material_by_name(rmaterialtype)
-	update_material(TRUE)
+	//? Remove the color that was set for mapping clarity.
+	color = null
+
+	set_materials(material, reinf_material, girder_material)
+	set_rad_insulation()
+
+	if(smoothing_flags & SMOOTH_DIAGONAL_CORNERS && fixed_underlay) //Set underlays for the diagonal walls.
+		var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = TURF_PLANE)
+		if(fixed_underlay["space"])
+			underlay_appearance.icon = 'icons/turf/space.dmi'
+			underlay_appearance.icon_state = "space"
+			underlay_appearance.plane = SPACE_PLANE
+		else
+			underlay_appearance.icon = fixed_underlay["icon"]
+			underlay_appearance.icon_state = fixed_underlay["icon_state"]
+		fixed_underlay = string_assoc_list(fixed_underlay)
+		underlays += underlay_appearance
+
 	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
 		START_PROCESSING(SSturfs, src)
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
 	clear_plants()
-	material = get_material_by_name("placeholder")
-	reinf_material = null
-	girder_material = null
 	return ..()
 
 /turf/simulated/wall/process(delta_time)
@@ -67,10 +89,13 @@
 /turf/simulated/wall/proc/get_material()
 	return material
 
-/turf/simulated/wall/bullet_act(var/obj/item/projectile/Proj)
-	if(istype(Proj,/obj/item/projectile/beam))
+/turf/simulated/wall/proc/get_default_material()
+	. = /datum/material/steel
+
+/turf/simulated/wall/bullet_act(var/obj/projectile/Proj)
+	if(istype(Proj,/obj/projectile/beam))
 		burn(2500)
-	else if(istype(Proj,/obj/item/projectile/ion))
+	else if(istype(Proj,/obj/projectile/ion))
 		burn(500)
 
 	var/proj_damage = Proj.get_structure_damage()
@@ -82,7 +107,7 @@
 		if(thermite)
 			thermitemelt()
 
-	if(istype(Proj,/obj/item/projectile/beam))
+	if(istype(Proj,/obj/projectile/beam))
 		if(material && material.reflectivity >= 0.5) // Time to reflect lasers.
 			var/new_damage = damage * material.reflectivity
 			var/outgoing_damage = damage - new_damage
@@ -125,13 +150,13 @@
 	for(var/obj/effect/plant/plant in range(src, 1))
 		if(!plant.floor) //shrooms drop to the floor
 			plant.floor = 1
-			plant.update_icon()
+			plant.update_appearance()
 			plant.pixel_x = 0
 			plant.pixel_y = 0
 		plant.update_neighbors()
 
 //Appearance
-/turf/simulated/wall/examine(mob/user)
+/turf/simulated/wall/examine(mob/user, dist)
 	. = ..()
 
 	if(!damage)
@@ -182,7 +207,7 @@
 	if(damage >= cap)
 		dismantle_wall()
 	else
-		update_icon()
+		update_appearance()
 
 /turf/simulated/wall/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)//Doesn't fucking work because walls don't interact with air :(
 	burn(exposed_temperature)
@@ -274,8 +299,12 @@
 	if(!total_radiation)
 		return
 
-	SSradiation.radiate(src, total_radiation)
+	radiation_pulse(src, total_radiation)
 	return total_radiation
+
+/turf/simulated/wall/proc/set_rad_insulation()
+	var/total_rad_insulation = material.weight + material.radiation_resistance + (reinf_material ? (reinf_material.weight + reinf_material.radiation_resistance) / 4 : 0) + (girder_material ? (girder_material.weight + girder_material.radiation_resistance) / 16 : 0)
+	rad_insulation = round(1/(total_rad_insulation**1.35*1/21.25**1.35+1),0.01) // 21.25 would be the total_rad_insulation of basic steel walls and return 0.5 rad_insulation. 1.35 exponential function helps us to also hit the plasteel wall goal of 0.25.
 
 /turf/simulated/wall/proc/burn(temperature)
 	if(material.combustion_effect(src, temperature, 0.7))

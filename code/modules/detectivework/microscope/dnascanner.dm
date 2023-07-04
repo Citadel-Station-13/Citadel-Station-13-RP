@@ -121,7 +121,8 @@
 		var/obj/item/paper/P = new(src)
 		P.name = "[src] report #[++report_num]: [bloodsamp.name]"
 		P.stamped = list(/obj/item/stamp)
-		P.overlays = list("paper_stamped")
+		P.cut_overlays()
+		P.add_overlay("paper_stamped")
 		//dna data itself
 		var/data = "No scan information available."
 		if(bloodsamp.dna != null)
@@ -141,7 +142,7 @@
 /obj/machinery/dnaforensics/attack_ai(mob/user)
 	ui_interact(user)
 
-/obj/machinery/dnaforensics/attack_hand(mob/user)
+/obj/machinery/dnaforensics/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/dnaforensics/update_icon()

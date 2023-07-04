@@ -3,15 +3,15 @@ import { Window } from '../layouts';
 import { Section, Stack, Button } from '../components';
 
 type LanguagePickerContext = {
-  categories: String[],
+  categories: string[],
   languages: Language[],
 };
 
 type Language = {
-  id: String,
-  name: String,
-  desc: String,
-  category: String,
+  id: string,
+  name: string,
+  desc: string,
+  category: string,
 };
 
 export const LanguagePicker = (props, context) => {
@@ -38,7 +38,7 @@ export const LanguagePicker = (props, context) => {
 
 const LanguageInfo = (props, context) => {
   const { act, data } = useBackend<LanguagePickerContext>(context);
-  const [selectedLanguage, setSelectedLanguage] = useLocalState<String | null>(context, 'selectedLanguage', null);
+  const [selectedLanguage, setSelectedLanguage] = useLocalState<string | null>(context, 'selectedLanguage', null);
   let lang = data.languages.find((l) => l.id === selectedLanguage);
   if (lang === undefined) {
     return (<Section fill />);
@@ -69,7 +69,7 @@ const LanguageInfo = (props, context) => {
 const LanguageCategories = (props, context) => {
   const { act, data } = useBackend<LanguagePickerContext>(context);
   const { categories } = data;
-  let [selectedCategory, setSelectedCategory] = useLocalState<String | null>(context, 'selectedCategory', null);
+  let [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
   return (
     <Section fill scrollable title="Categories">
       {
@@ -93,8 +93,8 @@ const LanguageCategories = (props, context) => {
 
 const LanguageSelect = (props, context) => {
   const { act, data } = useBackend<LanguagePickerContext>(context);
-  let [selectedLanguage, setSelectedLanguage] = useLocalState<String | null>(context, 'selectedLanguage', null);
-  let [selectedCategory, setSelectedCategory] = useLocalState<String | null>(context, 'selectedCategory', null);
+  let [selectedLanguage, setSelectedLanguage] = useLocalState<string | null>(context, 'selectedLanguage', null);
+  let [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
   if (selectedCategory === null) {
     return (
       <Section fill />

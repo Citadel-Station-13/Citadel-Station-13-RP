@@ -16,10 +16,10 @@
 	update_icon()
 
 /obj/item/storage/box/donut/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	var/i = 0
 	for(var/obj/item/reagent_containers/food/snacks/donut/D in contents)
-		overlays += image('icons/obj/food.dmi', "[i][D.overlay_state]")
+		add_overlay("[i][D.overlay_state]")
 		i++
 
 /obj/item/storage/box/donut/empty
@@ -78,7 +78,7 @@
 	max_storage_space = ITEMSIZE_COST_TINY * 3
 	sharp = 1
 	edge = 1
-	force = 15
+	damage_force = 15
 	throw_force = 15
 	attack_verb = list("stabbed", "chopped", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -180,8 +180,12 @@
 	name = "munition box (musket)"
 	desc = "A tanned leather pouch large enough to hold a few loose musket balls."
 	icon_state = "musket_box"
+	w_class = ITEMSIZE_SMALL
 	max_storage_space = ITEMSIZE_COST_TINY * 6
 	can_hold = list(
 		/obj/item/ammo_casing/musket
 		)
 	starts_with = list(/obj/item/ammo_casing/musket = 6)
+
+/obj/item/storage/box/munition_box/empty
+	starts_with = list()

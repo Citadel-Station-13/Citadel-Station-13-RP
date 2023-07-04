@@ -9,9 +9,10 @@
 /atom/movable/screen
 	name = ""
 	icon = 'icons/mob/screen1.dmi'
-	appearance_flags = TILE_BOUND|PIXEL_SCALE|NO_CLIENT_COLOR
-	layer = LAYER_HUD_BASE
-	plane = PLANE_PLAYER_HUD
+	appearance_flags = PIXEL_SCALE | NO_CLIENT_COLOR
+	layer = HUD_LAYER_BASE
+	plane = HUD_PLANE
+	atom_colouration_system = FALSE
 	var/obj/master = null	//A reference to the object in the slot. Grabs or items, generally.
 	var/datum/hud/hud = null // A reference to the owner HUD, if any.
 
@@ -51,7 +52,7 @@
 	if(!usr.canClick())
 		return
 
-	if(usr.stat || usr.restrained() || usr.stunned || usr.lying)
+	if(usr.stat || usr.restrained() || !CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return 1
 
 	if(!(owner in usr))
@@ -68,7 +69,7 @@
 	G.s_click(src)
 	return 1
 
-/atom/movable/screen/grab/attack_hand()
+/atom/movable/screen/grab/attack_hand(mob/user, list/params)
 	return
 
 /atom/movable/screen/grab/attackby()
@@ -81,7 +82,7 @@
 /atom/movable/screen/storage/Click()
 	if(!usr.canClick())
 		return 1
-	if(usr.stat || usr.paralysis || usr.stunned || usr.weakened)
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_STORAGE))
 		return 1
 	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
 		return 1
@@ -165,8 +166,8 @@
 		update_icon()
 
 /atom/movable/screen/zone_sel/update_icon()
-	overlays.Cut()
-	overlays += image('icons/mob/zone_sel.dmi', "[selecting]")
+	cut_overlays()
+	add_overlay(image('icons/mob/zone_sel.dmi', "[selecting]"))
 
 /// The UI Button to open the TGUI Crafting Menu
 /atom/movable/screen/craft
@@ -207,6 +208,7 @@
 				L.resist()
 
 		if("mov_intent")
+			// todo: reworks
 			if(isliving(usr))
 				if(iscarbon(usr))
 					var/mob/living/carbon/C = usr
@@ -242,7 +244,7 @@
 		if("internal")
 			if(iscarbon(usr))
 				var/mob/living/carbon/C = usr
-				if(!C.stat && !C.stunned && !C.paralysis && !C.restrained())
+				if(CHECK_MOBILITY(C, MOBILITY_CAN_USE))
 					if(C.internal)
 						C.internal = null
 						to_chat(C, "<span class='notice'>No longer running on internals.</span>")
@@ -270,8 +272,8 @@
 							tanks += C.get_active_held_item()
 							// yes, the above can result in duplicates.
 							// snowflake rig handling, second highest priority
-							if(istype(C.back, /obj/item/rig))
-								var/obj/item/rig/R = C.back
+							if(istype(C.back, /obj/item/hardsuit))
+								var/obj/item/hardsuit/R = C.back
 								if(R.air_supply && R?.is_activated())
 									locnames += "in your hardsuit"
 									tanks += R.air_supply

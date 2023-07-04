@@ -247,13 +247,6 @@
 	if(!total_moles)
 		temperature = TCMB
 
-//Returns the pressure of the gas mix.  Only accurate if there have been no gas modifications since update_values() has been called.
-/datum/gas_mixture/proc/return_pressure()
-#ifdef GASMIXTURE_ASSERTIONS
-	ASSERT(volume > 0)
-#endif
-	return (total_moles * R_IDEAL_GAS_EQUATION * temperature) / volume
-
 //Removes moles from the gas mixture and returns a gas_mixture containing the removed air.
 /datum/gas_mixture/proc/remove(amount)
 	amount = min(amount, total_moles * group_multiplier) //Can not take more air than the gas mixture has!
@@ -450,7 +443,7 @@
   * Sets our gas/temperature equal to a turf's initial gas mix.
   */
 /datum/gas_mixture/proc/copy_from_turf(turf/model)
-	parse_gas_string(model.initial_gas_mix)
+	parse_gas_string(model.initial_gas_mix, model)
 
 	//acounts for changes in temperature
 	var/turf/model_parent = model.parent_type
@@ -500,22 +493,28 @@
 
 // todo: sort above
 
-//! Gas Strings
 
+
+//! Getters
+//Returns the pressure of the gas mix.  Only accurate if there have been no gas modifications since update_values() has been called.
+/datum/gas_mixture/proc/return_pressure()
+	return (total_moles * R_IDEAL_GAS_EQUATION * temperature) / volume
+
+//! Gas Strings
 /**
   * Copies from a specially formatted gas string, taking on its gas values as our own as well as their temperature.
+  * if the gas string does not specify temperature, it'll remain unchanged.
+  *
+  * @params
+  * - gas_string - gas string, atmosphere, etc
+  * - turf_context - required for the special atmospheres to look up what zlevel it is
   */
-/datum/gas_mixture/proc/parse_gas_string(gas_string)
-	gas_string = SSair.preprocess_gas_string(gas_string)
-	var/list/gases = src.gas
-	var/list/gas = params2list(gas_string)
-	if(gas["TEMP"])
-		temperature = text2num(gas["TEMP"])
-		gas -= "TEMP"
-	gases.Cut()
-	for(var/id in gas)
-		gases[id] = text2num(gas[id])
-	//archive()
+/datum/gas_mixture/proc/parse_gas_string(gas_string, turf/turf_context)
+	var/list/parsed = SSair._parse_gas_string(gas_string, turf_context)
+	gas = parsed[1]
+	gas = gas.Copy()	// why? because we don't want to fuck with cached list.
+	if(parsed[2])
+		temperature = parsed[2]
 	update_values()
 	return TRUE
 

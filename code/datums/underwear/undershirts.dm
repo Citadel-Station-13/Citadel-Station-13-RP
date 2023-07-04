@@ -192,3 +192,82 @@
 	name = "Off the Shoulder Shirt"
 	icon_state = "one_arm"
 	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/ribbon
+	name = "Ribbon Underwear"
+	icon_state = "ribbon"
+	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/band
+	name = "Band Tee"
+	icon_state = "band"
+
+/datum/category_item/underwear/undershirt/shirt_alien
+	name = "Alien Shirt"
+	icon_state = "shirt_alien"
+
+/datum/category_item/underwear/undershirt/pogoman
+	name = "Pogoman Shirt"
+	icon_state = "pogoman"
+
+/datum/category_item/underwear/undershirt/shirt_question
+	name = "Question Mark Shirt"
+	icon_state = "shirt_question"
+
+/datum/category_item/underwear/undershirt/shirt_clown
+	name = "Clown Shirt"
+	icon_state = "shirt_clown"
+
+/datum/category_item/underwear/undershirt/shirt_commie
+	name = "Communist Shirt"
+	icon_state = "shirt_commie"
+
+/datum/category_item/underwear/undershirt/shirt_ss13
+	name = "Space Man 13 Shirt"
+	icon_state = "shirt_ss13"
+
+/datum/category_item/underwear/undershirt/shirt_skull
+	name = "Skull Shirt"
+	icon_state = "shirt_skull"
+
+/datum/category_item/underwear/undershirt/uk
+	name = "UK Shirt"
+	icon_state = "uk"
+
+/datum/category_item/underwear/undershirt/shirt_redjersey
+	name = "Red Jersey"
+	icon_state = "shirt_redjersey"
+
+/datum/category_item/underwear/undershirt/shirt_bluejersey
+	name = "Blue Jersey"
+	icon_state = "shirt_bluejersey"
+
+/datum/category_item/underwear/undershirt/peace
+	name = "Peace Shirt"
+	icon_state = "peace"
+
+/datum/category_item/underwear/undershirt/bee_shirt
+	name = "Bee Shirt"
+	icon_state = "bee_shirt"
+
+/datum/category_item/underwear/undershirt/cowboyshirt
+	name = "Cowboy Shirt"
+	icon_state = "cowboy_shirt"
+
+/datum/category_item/underwear/undershirt/cowboyshirt_white
+	name = "White Cowboy Shirt"
+	icon_state = "cowboyshirt_white"
+	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/cowboyshirt_navy
+	name = "Navy Cowboy Shirt"
+	icon_state = "cowboyshirt_navy"
+
+/datum/category_item/underwear/undershirt/cowboyshirt_red
+	name = "Red Cowboy Shirt"
+	icon_state = "cowboyshirt_navy"
+
+/datum/category_item/underwear/undershirt/tank_top_midriff
+	name = "Tank Top, Midriff"
+	icon_state = "tank_midriff"
+	has_color = TRUE

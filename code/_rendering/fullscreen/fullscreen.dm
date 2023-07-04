@@ -79,7 +79,7 @@
 	icon = 'icons/screen/fullscreen/fullscreen_15x15.dmi'
 	icon_state = "default"
 	screen_loc = "CENTER-7,CENTER-7"
-	layer = FULLSCREEN_LAYER
+	layer = FULLSCREEN_LAYER_MAIN
 	plane = FULLSCREEN_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	/// current view we're adapted to
@@ -119,38 +119,38 @@
 
 /atom/movable/screen/fullscreen/scaled/SetView(client_view)
 	if(view_current != client_view)
-		var/list/actualview = getviewsize(client_view)
+		var/list/actualview = decode_view_size(client_view)
 		view_current = client_view
 		transform = matrix(actualview[1] / size_x, 0, 0, 0, actualview[2] / size_y, 0)
 	return ..()
 
 /atom/movable/screen/fullscreen/scaled/brute
 	icon_state = "brutedamageoverlay"
-	layer = UI_DAMAGE_LAYER
+	layer = FULLSCREEN_LAYER_DAMAGE
 	plane = FULLSCREEN_PLANE
 
 /atom/movable/screen/fullscreen/scaled/oxy
 	icon_state = "oxydamageoverlay"
-	layer = UI_DAMAGE_LAYER
+	layer = FULLSCREEN_LAYER_DAMAGE
 	plane = FULLSCREEN_PLANE
 
 /atom/movable/screen/fullscreen/scaled/crit
 	icon_state = "passage"
-	layer = CRIT_LAYER
+	layer = FULLSCREEN_LAYER_CRIT
 	plane = FULLSCREEN_PLANE
 
 /atom/movable/screen/fullscreen/scaled/crit/vision
 	icon_state = "oxydamageoverlay"
-	layer = BLIND_LAYER
+	layer = FULLSCREEN_LAYER_BLIND
 
 /atom/movable/screen/fullscreen/scaled/blind
 	icon_state = "blackimageoverlay"
-	layer = BLIND_LAYER
+	layer = FULLSCREEN_LAYER_BLIND
 	plane = FULLSCREEN_PLANE
 
 /atom/movable/screen/fullscreen/scaled/curse
 	icon_state = "curse"
-	layer = CURSE_LAYER
+	layer = FULLSCREEN_LAYER_CURSE
 	plane = FULLSCREEN_PLANE
 
 /atom/movable/screen/fullscreen/scaled/impaired
@@ -198,13 +198,13 @@
 /atom/movable/screen/fullscreen/tiled/noise
 	icon = 'icons/effects/static.dmi'
 	icon_state = "1 light"
-	layer = FULLSCREEN_LAYER
+	layer = FULLSCREEN_LAYER_MAIN
 
 /atom/movable/screen/fullscreen/tiled/scanline
 	icon = 'icons/effects/static.dmi'
 	icon_state = "scanlines"
 	alpha = 50
-	layer = FULLSCREEN_LAYER
+	layer = FULLSCREEN_LAYER_MAIN
 
 /atom/movable/screen/fullscreen/special/lighting_backdrop
 	icon = 'icons/mob/screen_gen.dmi'
@@ -229,6 +229,6 @@
 /atom/movable/screen/fullscreen/special/see_through_darkness
 	icon_state = "nightvision"
 	plane = LIGHTING_PLANE
-	layer = LIGHTING_LAYER
+	layer = LIGHTING_LAYER_MAIN
 	blend_mode = BLEND_ADD
 	show_when_dead = TRUE

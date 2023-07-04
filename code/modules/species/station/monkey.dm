@@ -1,6 +1,7 @@
 /datum/species/monkey
-	name = SPECIES_MONKEY
 	uid = SPECIES_ID_MONKEY
+	id = SPECIES_ID_MONKEY
+	name = SPECIES_MONKEY
 	name_plural = "Monkeys"
 	greater_form = SPECIES_HUMAN
 
@@ -30,12 +31,12 @@
 	hud_type = /datum/hud_data/monkey
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/monkey
 
-	rarity_value = 0.1
+	//rarity_value = 0.1
 	total_health = 75
 	brute_mod = 1.5
 	burn_mod = 1.5
 
-	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
+	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 
 	bump_flag  = MONKEY
 	swap_flags = MONKEY|SLIME|SIMPLE_ANIMAL
@@ -60,7 +61,7 @@
 /datum/species/monkey/handle_npc(mob/living/carbon/human/H)
 	if(H.stat != CONSCIOUS)
 		return
-	if(prob(33) && H.canmove && isturf(H.loc) && !H.pulledby) //won't move if being pulled
+	if(prob(33) && CHECK_MOBILITY(H, MOBILITY_CAN_MOVE) && isturf(H.loc) && !H.pulledby) //won't move if being pulled
 		step(H, pick(GLOB.cardinal))
 	if(prob(1))
 		H.emote(pick("scratch","jump","roll","tail"))

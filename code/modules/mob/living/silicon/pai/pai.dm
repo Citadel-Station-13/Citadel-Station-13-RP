@@ -111,25 +111,16 @@
 			card.radio = new /obj/item/radio(src.card)
 		radio = card.radio
 
-	//Default languages without universal translator software
-	add_language(LANGUAGE_SOL_COMMON, 1)
-	add_language(LANGUAGE_TRADEBAND, 1)
-	add_language(LANGUAGE_GUTTER, 1)
-	add_language(LANGUAGE_EAL, 1)
-	add_language(LANGUAGE_TERMINUS, 1)
-	add_language(LANGUAGE_SIGN, 0)
-
-	verbs += /mob/living/silicon/pai/proc/choose_chassis
-	verbs += /mob/living/silicon/pai/proc/choose_verbs
+	add_verb(src, /mob/living/silicon/pai/proc/choose_chassis)
+	add_verb(src, /mob/living/silicon/pai/proc/choose_verbs)
 
 	//PDA
 	pda = new(src)
 	spawn(5)
 		pda.ownjob = "Personal Assistant"
-		pda.owner = text("[]", src)
+		pda.owner = "[src]"
 		pda.name = pda.owner + " (" + pda.ownjob + ")"
 		pda.toff = 1
-	..()
 
 /mob/living/silicon/pai/Login()
 	..()
@@ -137,19 +128,17 @@
 	if(client.prefs)
 		ooc_notes = client.prefs.metadata
 
-
 // this function shows the information about being silenced as a pAI in the Status panel
 /mob/living/silicon/pai/proc/show_silenced()
+	. = list()
 	if(src.silence_time)
 		var/timeleft = round((silence_time - world.timeofday)/10 ,1)
-		stat(null, "Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
+		STATPANEL_DATA_LINE("Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
 
-
-/mob/living/silicon/pai/Stat()
-	..()
-	statpanel("Status")
-	if (src.client.statpanel == "Status")
-		show_silenced()
+/mob/living/silicon/pai/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		. += show_silenced()
 
 /mob/living/silicon/pai/check_eye(var/mob/user as mob)
 	if (!src.current)
@@ -269,7 +258,7 @@
 	set category = "pAI Commands"
 	set name = "Unfold Chassis"
 
-	if(stat || sleeping || paralysis || weakened)
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
 	if(src.loc != card)
@@ -281,8 +270,8 @@
 	last_special = world.time + 100
 
 	//I'm not sure how much of this is necessary, but I would rather avoid issues.
-	if(istype(card.loc,/obj/item/rig_module))
-		to_chat(src, "There is no room to unfold inside this rig module. You're good and stuck.")
+	if(istype(card.loc,/obj/item/hardsuit_module))
+		to_chat(src, "There is no room to unfold inside this hardsuit module. You're good and stuck.")
 		return 0
 	else if(istype(card.loc,/mob))
 		var/mob/holder = card.loc
@@ -313,15 +302,15 @@
 	if(istype(T))
 		T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
 
-	verbs += /mob/living/silicon/pai/proc/pai_nom
-	verbs += /mob/living/proc/set_size
-	verbs += /mob/living/proc/shred_limb
+	add_verb(src, /mob/living/silicon/pai/proc/pai_nom)
+	add_verb(src, /mob/living/proc/set_size)
+	add_verb(src, /mob/living/proc/shred_limb)
 
 /mob/living/silicon/pai/verb/fold_up()
 	set category = "pAI Commands"
 	set name = "Collapse Chassis"
 
-	if(stat || sleeping || paralysis || weakened)
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
 	if(src.loc == card)
@@ -340,14 +329,19 @@
 	var/finalized = "No"
 	while(finalized == "No" && src.client)
 
-		choice = input(usr,"What would you like to use for your mobile chassis icon?") as null|anything in possible_chassis
-		if(!choice) return
+		choice = input(usr,"What would you like to use for your mobile chassis icon?") as null|anything in (list("-- LOAD CHARACTER SLOT --") + possible_chassis)
+		if(!choice)
+			return
 
-		icon_state = possible_chassis[choice]
+		if(choice == "-- LOAD CHARACTER SLOT --")
+			icon = render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+		else
+			icon = 'icons/mob/pai.dmi'
+			icon_state = possible_chassis[choice]
 		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
 
 	chassis = possible_chassis[choice]
-	verbs |= /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/hide)
 
 /mob/living/silicon/pai/proc/choose_verbs()
 	set category = "pAI Commands"
@@ -365,33 +359,33 @@
 	set name = "Rest"
 	set category = "IC"
 
-	// Pass lying down or getting up to our pet human, if we're in a rig.
+	// Pass lying down or getting up to our pet human, if we're in a hardsuit.
 	if(istype(src.loc,/obj/item/paicard))
-		resting = 0
-		var/obj/item/rig/rig = src.get_rig()
-		if(istype(rig))
-			rig.force_rest(src)
+		set_resting(FALSE)
+		var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+		if(istype(hardsuit))
+			hardsuit.force_rest(src)
 	else
-		resting = !resting
+		toggle_resting()
 		icon_state = resting ? "[chassis]_rest" : "[chassis]"
 		update_icon()
 		to_chat(src, SPAN_NOTICE("You are now [resting ? "resting" : "getting up"]"))
 
-	canmove = !resting
+	update_mobility()
 
 //Overriding this will stop a number of headaches down the track.
 /mob/living/silicon/pai/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.force)
+	if(W.damage_force)
 		visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
-		src.adjustBruteLoss(W.force)
-		src.updatehealth()
+		src.adjustBruteLoss(W.damage_force)
+		src.update_health()
 	else
 		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")
 	spawn(1)
 		if(stat != 2) close_up()
 	return
 
-/mob/living/silicon/pai/attack_hand(mob/user as mob)
+/mob/living/silicon/pai/attack_hand(mob/user, list/params)
 	if(user.a_intent == INTENT_HELP)
 		visible_message("<span class='notice'>[user.name] pats [src].</span>")
 	else
@@ -427,10 +421,10 @@
 	card.forceMove(loc)
 	forceMove(card)
 	update_perspective()
-	canmove = TRUE
-	resting = FALSE
+	set_resting(FALSE)
+	update_mobility()
 	icon_state = "[chassis]"
-	verbs -= /mob/living/silicon/pai/proc/pai_nom
+	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
 // No binary for pAIs.
 /mob/living/silicon/pai/binarycheck()
@@ -493,3 +487,8 @@
 	visible_message("<b>[src]</b> fades away from the screen, the pAI device goes silent.")
 	card.removePersonality()
 	clear_client()
+
+// See software.dm for Topic()
+/mob/living/silicon/pai/canUseTopic(atom/movable/movable, be_close = FALSE, no_dexterity = FALSE, no_tk = FALSE)
+	// Resting is just an aesthetic feature for them.
+	return ..(movable, be_close, no_dexterity, no_tk)

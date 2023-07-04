@@ -31,7 +31,7 @@
 	category = CATEGORY_MOVEMENT
 
 /datum/keybinding/movement/multiz_up
-	hotkey_keys = list()
+	hotkey_keys = list("ShiftC")
 	name = "multiz_move_up"
 	full_name = "Move Up Zlevel"
 	description = "Moves up one zlevel if possible"
@@ -41,7 +41,7 @@
 	user.mob.up()
 
 /datum/keybinding/movement/multiz_down
-	hotkey_keys = list()
+	hotkey_keys = list("CtrlC")
 	name = "multiz_move_down"
 	full_name = "Move down Zlevel"
 	description = "Moves down one zlevel if possible"
@@ -51,7 +51,7 @@
 	user.mob.down()
 
 /datum/keybinding/movement/facenorth
-	hotkey_keys = list("AltCtrlW", "AltCtrlNorth")
+	hotkey_keys = list("AltW", "AltNorth")
 	name = "Permanently Face North"
 	full_name = "Permanently Face North"
 	description = "Force your character to face north until overridden."
@@ -61,7 +61,7 @@
 	user.mob.northfaceperm()
 
 /datum/keybinding/movement/facesouth
-	hotkey_keys = list("AltCtrlS", "AltCtrlSouth")
+	hotkey_keys = list("AltS", "AltSouth")
 	name = "Face South"
 	full_name = "Permanently Face South"
 	description = "Force your character to face south until overridden."
@@ -71,7 +71,7 @@
 	user.mob.southfaceperm()
 
 /datum/keybinding/movement/facewest
-	hotkey_keys = list("AltCtrlA", "AltCtrlWest")
+	hotkey_keys = list("AltA", "AltWest")
 	name = "Face west"
 	full_name = "Permanently Face West"
 	description = "Force your character to face west until overridden."
@@ -81,7 +81,7 @@
 	user.mob.westfaceperm()
 
 /datum/keybinding/movement/faceeast
-	hotkey_keys = list("AltCtrlD", "AltCtrlEast")
+	hotkey_keys = list("AltD", "AltEast")
 	name = "Face east"
 	full_name = "Permanently Face East"
 	description = "Force your character to face east until overridden."

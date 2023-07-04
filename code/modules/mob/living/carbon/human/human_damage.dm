@@ -1,6 +1,6 @@
 //Updates the mob's health from organs and mob damage variables
-/mob/living/carbon/human/updatehealth()
-	if(status_flags & GODMODE)
+/mob/living/carbon/human/update_health()
+	if(status_flags & STATUS_GODMODE)
 		health = getMaxHealth()
 		set_stat(CONSCIOUS)
 		update_hud_med_all()
@@ -23,9 +23,16 @@
 	if(old != health)
 		update_hud_med_all()
 
+// todo: sort file and move to damage_procs
+
+/mob/living/carbon/human/afflict_radiation(amt, run_armor, damage_zone)
+	if(species)
+		amt = amt * species.radiation_mod
+	return ..()
+
 /mob/living/carbon/human/adjustBrainLoss(var/amount)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(should_have_organ("brain"))
 		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name["brain"]
@@ -42,7 +49,7 @@
 
 /mob/living/carbon/human/setBrainLoss(var/amount)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(should_have_organ("brain"))
 		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name["brain"]
@@ -57,7 +64,7 @@
 
 /mob/living/carbon/human/getBrainLoss()
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(should_have_organ("brain"))
 		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name["brain"]
@@ -194,24 +201,6 @@
 
 	update_hud_med_all()
 
-/mob/living/carbon/human/Stun(amount)
-	if(MUTATION_HULK in mutations)
-		return
-	..()
-
-/mob/living/carbon/human/Weaken(amount)
-	if(MUTATION_HULK in mutations)
-		return
-	..()
-
-/mob/living/carbon/human/Paralyse(amount)
-	if(MUTATION_HULK in mutations)
-		return
-	// Notify our AI if they can now control the suit.
-	if(wearing_rig && !stat && paralysis < amount) //We are passing out right this second.
-		wearing_rig.notify_ai("<span class='danger'>Warning: user consciousness failure. Mobility control passed to integrated intelligence system.</span>")
-	..()
-
 /mob/living/carbon/human/proc/Stasis(amount)
 	if((species.species_flags & NO_SCAN) || isSynthetic())
 		in_stasis = 0
@@ -342,7 +331,7 @@
 	var/obj/item/organ/external/picked = pick(parts)
 	if(picked.heal_damage(brute,burn))
 		UpdateDamageIcon()
-	updatehealth()
+	update_health()
 
 /*
 In most cases it makes more sense to use apply_damage() instead! And make sure to check armour if applicable.
@@ -357,7 +346,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	var/obj/item/organ/external/picked = pick(parts)
 	if(picked.take_damage(brute,burn,sharp,edge))
 		UpdateDamageIcon()
-	updatehealth()
+	update_health()
 
 //Heal MANY external organs, in random order
 //'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
@@ -377,13 +366,13 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		burn -= (burn_was-picked.burn_dam)
 
 		parts -= picked
-	updatehealth()
+	update_health()
 	if(update)
 		UpdateDamageIcon()
 
 // damage MANY external organs, in random order
 /mob/living/carbon/human/take_overall_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0, var/used_weapon = null)
-	if(status_flags & GODMODE)	return	//godmode
+	if(status_flags & STATUS_GODMODE)	return	//godmode
 	var/list/obj/item/organ/external/parts = get_damageable_organs()
 	var/update = 0
 	while(parts.len && (brute>0 || burn>0) )
@@ -397,7 +386,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		burn	-= (picked.burn_dam - burn_was)
 
 		parts -= picked
-	updatehealth()
+	update_health()
 	if(update)
 		UpdateDamageIcon()
 
@@ -417,7 +406,7 @@ This function restores all organs.
 */
 /mob/living/carbon/human/restore_all_organs(var/ignore_prosthetic_prefs)
 	for(var/obj/item/organ/external/current_organ in organs)
-		current_organ.rejuvenate(ignore_prosthetic_prefs)
+		current_organ.rejuvenate_legacy(ignore_prosthetic_prefs)
 
 /mob/living/carbon/human/proc/HealDamage(zone, brute, burn)
 	var/obj/item/organ/external/E = get_organ(zone)
@@ -497,5 +486,5 @@ This function restores all organs.
 				UpdateDamageIcon()
 
 	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().
-	updatehealth()
+	update_health()
 	return 1

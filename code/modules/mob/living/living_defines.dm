@@ -1,3 +1,10 @@
+/**
+ * # /mob/living
+ *
+ * mob/living is the base type of mobs that have health
+ * there's probably a better explanation we can type someday but for that, uh
+ * yeah.
+ */
 /mob/living
 	see_invisible = SEE_INVISIBLE_LIVING
 	movable_flags = MOVABLE_NO_THROW_SPIN | MOVABLE_NO_THROW_DAMAGE_SCALING | MOVABLE_NO_THROW_SPEED_SCALING
@@ -10,9 +17,6 @@
 
 	/// A mob's "class", e.g. human, mechanical, animal, etc. Used for certain projectile effects. See __defines/mob.dm for available classes.
 	var/mob_class = null
-
-	/// A list of all status effects the mob has
-	var/list/status_effects
 
 	//* Damage related vars *// NOTE: THESE SHOULD ONLY BE MODIFIED BY PROCS
 	/// Brutal damage caused by brute force. (punching, being clubbed by a toolbox ect... this also accounts for pressure damage)
@@ -29,6 +33,8 @@
 	var/brainloss = 0
 	/// Hallucination damage. 'Fake' damage obtained through hallucinating or the holodeck. Sleeping should cause it to wear off.
 	var/halloss = 0
+	/// radiation stored in us
+	var/radiation = 0
 
 	/// Directly affects how long a mob will hallucinate for
 	var/hallucination = 0
@@ -50,7 +56,6 @@
 	var/mob_always_swap = 0
 
 	var/mob/living/cameraFollow = null
-	var/list/datum/action/actions = list()
 
 	/// Time of death
 	var/tod = null
@@ -69,9 +74,6 @@
 	var/evasion = 0
 	/// If true, the mob runs extremely fast and cannot be slowed.
 	var/force_max_speed = FALSE
-
-	/// Overlay used for darksight eye adjustments
-	var/image/dsoverlay = null
 
 	/// If they're glowing!
 	var/glow_toggle = FALSE
@@ -99,7 +101,17 @@
 	// TODO: execute iamcrystalclear for making this var
 	var/last_blood_warn = -INFINITY
 
-	//! inventory
+	var/ooc_notes = null
+	var/datum/description_profile/profile
+	var/obj/structure/mob_spawner/source_spawner = null
+
+//custom say verbs
+	var/custom_say = null
+	var/custom_ask = null
+	var/custom_exclaim = null
+	var/custom_whisper = null
+
+	//? inventory
 	var/hand = null
 	var/obj/item/l_hand = null
 	var/obj/item/r_hand = null
@@ -111,10 +123,24 @@
 	/// Set to TRUE to enable the use of hands and the hands hud
 	var/has_hands = FALSE
 
-	//! movement
+	//? movement
 	/// are we currently pushing (or trying to push) (or otherwise inside Bump() handling that deals with this crap) another atom?
-	var/_pushing_bumped_atom = FALSE
+	var/pushing_bumped_atom = FALSE
 
-	//! throwing
+	//? throwing
 	/// the force we use when we throw things
 	var/throw_impulse = THROW_FORCE_DEFAULT
+
+	//? mobility
+	/// are we resting either by will or by force
+	var/resting = FALSE
+	/// are we intentionally resting?
+	var/resting_intentionally = FALSE
+	/// are we resisting out of a resting state?
+	var/getting_up = FALSE
+	/// last loc while getting up - used by resist_a_rest
+	var/atom/getting_up_loc
+	/// last penalize time while getting up - used by resist_a_rest
+	var/getting_up_penalized
+	/// last delay before modifications while getting up - used by resist_a_rest, so reducing damage / whatever doesn't leave you with the same delay
+	var/getting_up_original

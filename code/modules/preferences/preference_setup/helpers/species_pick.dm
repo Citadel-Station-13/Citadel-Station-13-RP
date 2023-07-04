@@ -10,17 +10,17 @@
  * gets list of species we can play of those who are whitelisted
  */
 /datum/preferences/proc/resolve_whitelisted_species()
-	var/list/names = config.all_alien_whitelists_for(client_ckey)
+	var/list/ids = config.all_alien_whitelists_for(client_ckey)
 	. = list()
 	for(var/datum/character_species/CS as anything in SScharacters.all_character_species())
-		if(ckey(CS.name) in names)
+		if((ckey(CS.uid) in ids) || (CS.species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE && (ckey(CS.superspecies_id) in ids)))
 			. += CS.uid
 
 /**
  * check if we can play a species
  */
 /datum/preferences/proc/check_character_species(datum/character_species/CS)
-	if(CS.whitelisted && !(config.check_alien_whitelist(ckey(CS.name), client_ckey)))
+	if((CS.species_spawn_flags & SPECIES_SPAWN_SECRET) && !(config.check_alien_whitelist(ckey(CS.name), client_ckey)))
 		return FALSE
 	return TRUE
 
@@ -54,15 +54,17 @@
 	// hair/fhair
 	var/list/valid_hair = get_valid_hairstyles()
 	var/list/valid_fhair = get_valid_facialhairstyles()
-	if(!(h_style in valid_hair))
+	var/datum/sprite_accessory/HS = GLOB.sprite_accessory_hair[h_style_id]
+	var/datum/sprite_accessory/FS = GLOB.sprite_accessory_facial_hair[f_style_id]
+	if(!(HS.name in valid_hair))
 		var/datum/sprite_accessory/hair/H = /datum/sprite_accessory/hair/bald
-		h_style = initial(H.name)
-	if(!(f_style in valid_fhair))
+		h_style_id = initial(H.id)
+	if(!(FS.name in valid_fhair))
 		var/datum/sprite_accessory/facial_hair/FH = /datum/sprite_accessory/facial_hair/shaved
-		f_style = initial(FH.name)
+		f_style_id = initial(FH.id)
 	// limbs/markings
 	reset_limbs()
-	body_markings.Cut()
+	body_marking_ids.Cut()
 	// age
 	age = clamp(age, CS.min_age, CS.max_age)
 	//! END
@@ -111,7 +113,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 		ui.autoupdate = FALSE			// why the fuck are you updating species data??
 		ui.open()
 
-/datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state)
+/datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
 	return UI_INTERACTIVE
 
 /datum/tgui_species_picker/ui_static_data(mob/user)
@@ -122,12 +124,12 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	data["admin"] = !!admin_datums[user.ckey]
 	return data
 
-/datum/tgui_species_picker/ui_close(mob/user)
+/datum/tgui_species_picker/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	if(!QDELING(src))
 		qdel(src)
 
-/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	switch(action)
 		if("pick")

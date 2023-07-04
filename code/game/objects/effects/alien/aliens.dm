@@ -58,7 +58,7 @@
 		qdel(src)
 	return
 
-/obj/effect/alien/resin/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/alien/resin/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
@@ -104,7 +104,7 @@
 	health = max(0, health - tforce)
 	healthcheck()
 
-/obj/effect/alien/resin/attack_hand()
+/obj/effect/alien/resin/attack_hand(mob/user, list/params)
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if (MUTATION_HULK in usr.mutations)
 		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")
@@ -133,7 +133,7 @@
 /obj/effect/alien/resin/attackby(obj/item/W as obj, mob/user as mob)
 
 	user.setClickCooldown(user.get_attack_speed(W))
-	var/aforce = W.force
+	var/aforce = W.damage_force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	healthcheck()
@@ -214,7 +214,8 @@
 
 /obj/effect/alien/weeds/proc/updateWeedOverlays()
 
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 
 	if(!weedImageCache || !weedImageCache.len)
 		weedImageCache = list()
@@ -230,16 +231,18 @@
 	var/turf/W = get_step(src, WEST)
 	if(!locate(/obj/effect/alien) in N.contents)
 		if(istype(N, /turf/simulated/floor))
-			overlays += weedImageCache[WEED_SOUTH_EDGING]
+			overlays_to_add += weedImageCache[WEED_SOUTH_EDGING]
 	if(!locate(/obj/effect/alien) in S.contents)
 		if(istype(S, /turf/simulated/floor))
-			overlays += weedImageCache[WEED_NORTH_EDGING]
+			overlays_to_add += weedImageCache[WEED_NORTH_EDGING]
 	if(!locate(/obj/effect/alien) in E.contents)
 		if(istype(E, /turf/simulated/floor))
-			overlays += weedImageCache[WEED_WEST_EDGING]
+			overlays_to_add += weedImageCache[WEED_WEST_EDGING]
 	if(!locate(/obj/effect/alien) in W.contents)
 		if(istype(W, /turf/simulated/floor))
-			overlays += weedImageCache[WEED_EAST_EDGING]
+			overlays_to_add += weedImageCache[WEED_EAST_EDGING]
+
+	add_overlay(overlays_to_add)
 
 /obj/effect/alien/weeds/proc/fullUpdateWeedOverlays()
 	for (var/obj/effect/alien/weeds/W in range(1,src))
@@ -321,12 +324,9 @@ Alien plants should do something if theres a lot of poison
 
 /obj/effect/alien/weeds/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
-	if(W.attack_verb.len)
-		visible_message("<span class='danger'>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
-	else
-		visible_message("<span class='danger'>\The [src] have been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
+	visible_message("<span class='danger'>\The [src] have been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 
-	var/damage = W.force / 4.0
+	var/damage = W.damage_force / 4.0
 
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
@@ -454,7 +454,7 @@ Alien plants should do something if theres a lot of poison
 		if((status == GROWING) && (BURST == 0))
 			Grow()
 
-/obj/effect/alien/egg/attack_hand(user as mob)
+/obj/effect/alien/egg/attack_hand(mob/user, list/params)
 
 	var/mob/living/carbon/M = user
 	if(!istype(M) || !(locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs))
@@ -502,7 +502,7 @@ Alien plants should do something if theres a lot of poison
 						break
 		return 1
 
-/obj/effect/alien/egg/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/alien/egg/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
@@ -526,11 +526,8 @@ Alien plants should do something if theres a lot of poison
 	if((health <= 0) && (BURST == 0))
 		Burst()
 		return
-	if(W.attack_verb.len)
-		src.visible_message("<span class='danger'>\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
-	else
-		src.visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
-	var/damage = W.force / 4.0
+	visible_message("<span class='danger'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
+	var/damage = W.damage_force / 4.0
 
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W

@@ -173,6 +173,12 @@ var/list/_client_preferences_by_type
 	disabled_description = "Disabled"
 	enabled_by_default = FALSE // Backwards compatibility
 
+/datum/client_preference/subtle_see
+	description = "Subtle Emotes"
+	key = "SUBTLE_SEE"
+	enabled_description = "Show"
+	disabled_description = "Hide"
+
 /datum/client_preference/show_typing_indicator
 	description ="Typing indicator"
 	key = "SHOW_TYPING"
@@ -228,10 +234,8 @@ var/list/_client_preferences_by_type
 
 /datum/client_preference/ambient_occlusion/toggled(var/mob/preference_mob, var/enabled)
 	. = ..()
-	if(preference_mob && preference_mob.plane_holder)
-		var/datum/plane_holder/PH = preference_mob.plane_holder
-		PH.set_ao(VIS_OBJS, enabled)
-		PH.set_ao(VIS_MOBS, enabled)
+	if(preference_mob.client)
+		preference_mob?.using_perspective?.planes?.sync_owner(preference_mob.client)
 
 /datum/client_preference/instrument_toggle
 	description ="Hear In-game Instruments"
@@ -265,18 +269,6 @@ var/list/_client_preferences_by_type
 	enabled_description = "Allow"
 	disabled_description = "Forbid"
 
-/datum/client_preference/status_indicators
-	description = "Status Indicators"
-	key = "SHOW_STATUS"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-
-/datum/client_preference/status_indicators/toggled(mob/preference_mob, enabled)
-	. = ..()
-	if(preference_mob && preference_mob.plane_holder)
-		var/datum/plane_holder/PH = preference_mob.plane_holder
-		PH.set_vis(VIS_STATUS, enabled)
-
 /datum/client_preference/parallax
 	description = "Parallax (fancy space, disable for FPS issues"
 	key = "PARALLAX_ENABLED"
@@ -285,17 +277,10 @@ var/list/_client_preferences_by_type
 
 /datum/client_preference/parallax/toggled(mob/preference_mob, enabled)
 	. = ..()
-	preference_mob?.client?.parallax_holder?.Reset()
+	preference_mob?.client?.parallax_holder?.reset()
 /datum/client_preference/overhead_chat
 	description = "Overhead Chat"
 	key = "OVERHEAD_CHAT"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-	enabled_by_default = TRUE
-
-/datum/client_preference/scaling_viewport
-	description = "Scaling Viewport"
-	key = "scaling_viewport"
 	enabled_description = "Show"
 	disabled_description = "Hide"
 	enabled_by_default = TRUE
@@ -367,14 +352,6 @@ var/list/_client_preferences_by_type
 	enabled_description = "Obfuscate Ghost"
 	disabled_description = "Normal Ghost"
 
-
-/datum/client_preference/debug/age_verified
-	description = "(Debug) Age Verified Status"
-	key = "AGE_VERIFIED"
-	enabled_description = "TRUE"
-	disabled_description = "FALSE"
-	enabled_by_default = FALSE
-
 /datum/client_preference/autocorrect
 	description = "Autocorrect"
 	key = "AUTOCORRECT"
@@ -384,5 +361,11 @@ var/list/_client_preferences_by_type
 /datum/client_preference/examine_look
 	description = "Examine Messages"
 	key = "EXAMINE_LOOK"
+	enabled_description = "Show"
+	disabled_description = "Hide"
+
+/datum/client_preference/language_indicator
+	description = "Language Indicators"
+	key = "LANGUAGE_INDICATOR"
 	enabled_description = "Show"
 	disabled_description = "Hide"

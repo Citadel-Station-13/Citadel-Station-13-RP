@@ -2,7 +2,7 @@
 	for(var/mob/living/carbon/human/Q in living_mob_list)
 		if(self && ignore_self && self == Q)
 			continue
-		if(Q.species.name != SPECIES_XENO_QUEEN)
+		if(Q.species.get_species_id() != SPECIES_ID_XENOMORPH_QUEEN)
 			continue
 		if(!Q.key || !Q.client || Q.stat)
 			continue
@@ -85,7 +85,7 @@
 
 	if(!config_legacy.aliens_allowed)
 		to_chat(src, "You begin to lay an egg, but hesitate. You suspect it isn't allowed.")
-		verbs -= /mob/living/carbon/human/proc/lay_egg
+		remove_verb(src, /mob/living/carbon/human/proc/lay_egg)
 		return
 
 	if(locate(/obj/effect/alien/egg) in get_turf(src))
@@ -142,7 +142,7 @@
 			spitting = FALSE
 			return
 		visible_message("<span class='warning'>[src] spits [spit_name] at \the [A]!</span>", "<span class='green'>You spit [spit_name] at \the [A].</span>")
-		var/obj/item/projectile/P = new spit_projectile(get_turf(src))
+		var/obj/projectile/P = new spit_projectile(get_turf(src))
 		P.firer = src
 		P.old_style_target(A)
 		P.fire()
@@ -201,7 +201,7 @@
 	else
 		last_spit = world.time
 		spitting = TRUE
-		spit_projectile = /obj/item/projectile/energy/neurotoxin
+		spit_projectile = /obj/projectile/energy/neurotoxin
 		spit_name = "neurotoxin"
 		to_chat(src, "<span class='green'>You prepare to spit neurotoxin.</span>")
 
@@ -222,7 +222,7 @@
 	else
 		last_spit = world.time
 		spitting = TRUE
-		spit_projectile = /obj/item/projectile/energy/acid
+		spit_projectile = /obj/projectile/energy/acid
 		spit_name = "acid"
 		to_chat(src, "<span class='green'>You prepare to spit acid.</span>")
 
@@ -267,7 +267,7 @@
 	if(last_special > world.time)
 		return
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot leap in your current state.")
 		return
 
@@ -286,12 +286,12 @@
 	if(last_special > world.time)
 		return
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot leap in your current state.")
 		return
 
 	last_special = world.time + 75
-	status_flags |= LEAPING
+	status_flags |= STATUS_LEAPING
 
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
 	src.throw_at_old(get_step(get_turf(T),get_turf(src)), 4, 1, src)
@@ -299,13 +299,13 @@
 
 	sleep(5)
 
-	if(status_flags & LEAPING) status_flags &= ~LEAPING
+	if(status_flags & STATUS_LEAPING) status_flags &= ~STATUS_LEAPING
 
 	if(!src.Adjacent(T))
 		to_chat(src, "<span class='warning'>You miss!</span>")
 		return
 
-	T.Weaken(3)
+	T.afflict_paralyze(20 * 3)
 
 	var/use_hand = "left"
 	if(l_hand)
@@ -335,7 +335,7 @@
 	if(last_special > world.time)
 		return
 
-	if(stat || paralysis || stunned || weakened || lying)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying)
 		to_chat(src, "<span class='danger'>You cannot do that in your current state.</span>")
 		return
 

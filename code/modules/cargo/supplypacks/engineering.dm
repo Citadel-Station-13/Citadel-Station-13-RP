@@ -84,7 +84,7 @@
 			/obj/item/paper/solar
 			)
 	cost = 20
-	container_type = /obj/structure/closet/crate/engineering
+	container_type = /obj/structure/closet/crate/focalpoint
 	container_name = "Solar pack crate"
 
 /datum/supply_pack/eng/engine
@@ -93,28 +93,28 @@
 	cost = 10
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "Emitter crate"
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 
 /datum/supply_pack/eng/engine/field_gen
 	name = "Field Generator crate"
 	contains = list(/obj/machinery/field_generator = 2)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "Field Generator crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/engine/sing_gen
 	name = "Singularity Generator crate"
 	contains = list(/obj/machinery/the_singularitygen)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "Singularity Generator crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/engine/collector
 	name = "Collector crate"
 	contains = list(/obj/machinery/power/rad_collector = 3)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "collector crate"
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 
 /datum/supply_pack/eng/engine/PA
 	name = "Particle Accelerator crate"
@@ -131,7 +131,7 @@
 			)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "Particle Accelerator crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/shield_generator
 	name = "Shield Generator Construction Kit"
@@ -146,13 +146,14 @@
 	cost = 80
 	container_type = /obj/structure/closet/crate/engineering
 	container_name = "shield generator construction kit crate"
+
 /datum/supply_pack/eng/smbig
 	name = "Supermatter Core"
 	contains = list(/obj/machinery/power/supermatter)
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/phoron
 	container_name = "Supermatter crate (CAUTION)"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/teg
 	contains = list(
@@ -162,7 +163,7 @@
 	cost = 35
 	container_type = /obj/structure/closet/crate/secure/large
 	container_name = "Mk1 TEG crate"
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 /*
 /datum/supply_pack/eng/circulator
 	contains = list(/obj/machinery/atmospherics/component/binary/circulator = 2)
@@ -170,7 +171,7 @@
 	cost = 15
 	container_type = /obj/structure/closet/crate/secure/large
 	container_name = "Atmospheric circulators crate"
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 */
 /datum/supply_pack/eng/radsuit
 	contains = list(
@@ -187,7 +188,7 @@
 	cost = 25
 	container_name = "P.A.C.M.A.N. Portable Generator Construction Kit"
 	container_type = /obj/structure/closet/crate/secure/engineering
-	access = access_tech_storage
+	access = ACCESS_ENGINEERING_TECHSTORAGE
 	contains = list(
 			/obj/item/stock_parts/micro_laser,
 			/obj/item/stock_parts/capacitor,
@@ -200,7 +201,7 @@
 	cost = 35
 	container_name = "Super P.A.C.M.A.N. portable generator construction kit"
 	container_type = /obj/structure/closet/crate/secure/engineering
-	access = access_tech_storage
+	access = ACCESS_ENGINEERING_TECHSTORAGE
 	contains = list(
 			/obj/item/stock_parts/micro_laser,
 			/obj/item/stock_parts/capacitor,
@@ -213,11 +214,11 @@
 	cost = 50
 	container_name = "R-UST Mk. 8 Tokamak Fusion Core crate"
 	container_type = /obj/structure/closet/crate/secure/engineering
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 	contains = list(
 			/obj/item/book/manual/rust_engine,
 			/obj/machinery/power/fusion_core,
-			/obj/item/circuitboard/fusion_core
+			/obj/item/circuitboard/fusion_core_control
 			)
 
 /datum/supply_pack/eng/fusion_fuel_injector
@@ -225,11 +226,11 @@
 	cost = 30
 	container_name = "R-UST Mk. 8 fuel injector crate"
 	container_type = /obj/structure/closet/crate/secure/engineering
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 	contains = list(
 			/obj/machinery/fusion_fuel_injector,
 			/obj/machinery/fusion_fuel_injector,
-			/obj/item/circuitboard/fusion_injector
+			/obj/item/circuitboard/fusion_fuel_control
 			)
 
 /datum/supply_pack/eng/gyrotron
@@ -237,7 +238,7 @@
 	cost = 15
 	container_name = "Gyrotron Crate"
 	container_type = /obj/structure/closet/crate/secure/engineering
-	access = access_engine
+	access = ACCESS_ENGINEERING_MAIN
 	contains = list(
 			/obj/machinery/power/emitter/gyrotron,
 			/obj/item/circuitboard/gyrotron_control
@@ -248,7 +249,22 @@
 	cost = 10
 	container_name = "Fusion Fuel Compressor circuitry crate"
 	container_type = /obj/structure/closet/crate/engineering
-	contains = list(/obj/item/circuitboard/fusion_fuel_compressor)
+	contains = list(
+			/obj/item/circuitboard/fusion_fuel_compressor,
+			/obj/item/stock_parts/manipulator/nano = 2,
+			/obj/item/stock_parts/matter_bin/super = 2,
+			/obj/item/stock_parts/console_screen = 1,
+			/obj/item/stack/cable_coil = 5
+			)
+
+/datum/supply_pack/eng/reflector
+	name = "Reflector crate"
+	cost = 60
+	container_name = "Reflector crate"
+	container_type = /obj/structure/closet/crate/engineering
+	contains = list(
+			/obj/structure/prop/prism/reflector = 1
+			)
 
 /datum/supply_pack/eng/tritium
 	name = "Tritium crate"
@@ -267,7 +283,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "fission core crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/engine/fission/expansion
 	name = "Fission Expansion crate"
@@ -278,7 +294,7 @@
 	cost = 30
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "fission expansion crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/thermoregulator
 	contains = list(/obj/machinery/power/thermoregulator)
@@ -305,7 +321,7 @@
 	contains = list(/obj/machinery/the_singularitygen/tesla)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "Tesla Generator crate"
-	access = access_ce
+	access = ACCESS_ENGINEERING_CE
 
 /datum/supply_pack/eng/point_defense_cannon_circuit
 	name = "Point Defense Turret Circuit"
@@ -320,3 +336,11 @@
 	cost = 30
 	container_type = /obj/structure/closet/crate/heph
 	container_name = "point defense mainframe circuit crate"
+
+/datum/supply_pack/eng/portable_pump
+	name = "Portable Pump (2x)"
+	contains = list(
+		/obj/machinery/portable_atmospherics/powered/pump = 2
+	)
+	cost = 10
+	container_name = "portable pumps crate"

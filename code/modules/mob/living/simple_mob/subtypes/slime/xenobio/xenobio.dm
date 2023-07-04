@@ -72,7 +72,7 @@
 
 	..()
 
-/mob/living/simple_mob/slime/xenobio/examine(mob/user)
+/mob/living/simple_mob/slime/xenobio/examine(mob/user, dist)
 	. = ..()
 	if(hat)
 		. += "It is wearing \a [hat]."
@@ -220,7 +220,7 @@
 			var/mob/living/simple_mob/slime/new_slime = pick(babies)
 			new_slime.universal_speak = universal_speak
 			if(src.mind)
-				src.mind.transfer_to(new_slime)
+				src.mind.transfer(new_slime)
 			else
 				new_slime.key = src.key
 			qdel(src)
@@ -252,11 +252,11 @@
 	step_away(baby, src)
 	return baby
 
-/mob/living/simple_mob/slime/xenobio/get_description_interaction()
+/mob/living/simple_mob/slime/xenobio/get_description_interaction(mob/user)
 	var/list/results = list()
 
 	if(!stat)
-		results += "[desc_panel_image("slimebaton")]to stun the slime, if it's being bad."
+		results += "[desc_panel_image("slimebaton", user)]to stun the slime, if it's being bad."
 
 	results += ..()
 

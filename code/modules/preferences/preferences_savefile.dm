@@ -1,14 +1,18 @@
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
-	if(!ckey)	return
+	if(!ckey)
+		return FALSE
 	path = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/[filename]"
 	savefile_version = SAVEFILE_VERSION_MAX
+	if(!fexists(path))
+		return FALSE
+	return TRUE
 
 /datum/preferences/proc/load_preferences()
 	// todo: storage handler datums...
 	if(!path)
 		return FALSE
 	// check DOS guard
-	if(world.time < loadprefcooldown) //This is done before checking if the file exists to ensure that the server can't hang on read attempts
+	if(initialized && world.time < loadprefcooldown) //This is done before checking if the file exists to ensure that the server can't hang on read attempts
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to load your preferences a little too fast. Wait half a second, then try again.</span>")
 		return FALSE
@@ -32,7 +36,7 @@
 		// todo: wipe
 		savefile_version = SAVEFILE_VERSION_MAX
 	else if(savefile_version < SAVEFILE_VERSION_MAX)
-		perform_global_migrations(S, savefile_version, io_errors, options)
+		SScharacters.perform_global_migrations(S, savefile_version, io_errors, options, src)
 		savefile_version = SAVEFILE_VERSION_MAX
 		// don't flush immediately incase they want to cancel/ahelp about something breaking
 		// save_preferences()
@@ -48,7 +52,7 @@
 	if(!path)
 		return FALSE
 	// check DOS guard
-	if(world.time < saveprefcooldown)
+	if(initialized && world.time < saveprefcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to save your preferences a little too fast. Wait half a second, then try again.</span>")
 		return FALSE
@@ -69,12 +73,43 @@
 		auto_flush_errors()
 	return TRUE
 
+/datum/preferences/proc/save_skin()
+	if(!path)
+		return FALSE
+	// heyooo no interruptions please
+	if(initialized)
+		UNTIL(world.time >= saveprefcooldown)
+	var/savefile/S = new /savefile(path)
+	if(!S)
+		return FALSE
+	S.cd = "/"
+	skin = sanitize_islist(skin)
+	WRITE_FILE(S["skin"], skin)
+	return TRUE
+
+/datum/preferences/proc/load_skin()
+	LAZYINITLIST(skin)	// umm maybe don't be null when menus read this??
+	if(!path)
+		return FALSE
+	// heyooo no interruptions please
+	if(initialized)
+		UNTIL(world.time >= loadprefcooldown)
+	if(!fexists(path))
+		return FALSE
+	var/savefile/S = new /savefile(path)
+	if(!S)
+		return FALSE
+	S.cd = "/"
+	READ_FILE(S["skin"], skin)
+	skin = sanitize_islist(skin)
+	return TRUE
+
 /datum/preferences/proc/load_character(slot)
 	// todo: storage handler datums...
 	if(!path)
 		return FALSE
 	// check DOS guard
-	if(world.time < loadcharcooldown)
+	if(initialized && world.time < loadcharcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to load your character a little too fast. Wait half a second, then try again.</span>")
 		return FALSE
@@ -117,7 +152,7 @@
 		// todo: wipe slot
 		current_version = CHARACTER_VERSION_MAX
 	else if(current_version < CHARACTER_VERSION_MAX)
-		perform_character_migrations(S, current_version, io_errors, character)
+		SScharacters.perform_character_migrations(S, current_version, io_errors, character, src)
 		current_version = CHARACTER_VERSION_MAX
 	queue_errors(io_errors, "error while migrating slot [slot]:")
 	character[CHARACTER_DATA_VERSION] = current_version
@@ -134,7 +169,7 @@
 	if(!path)
 		return FALSE
 	// check DOS guard
-	if(world.time < savecharcooldown)
+	if(initialized && world.time < savecharcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to save your character a little too fast. Wait half a second, then try again.</span>")
 		return FALSE

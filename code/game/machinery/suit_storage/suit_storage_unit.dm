@@ -52,7 +52,7 @@
 		hassuit = 1
 	if(occupant)
 		hashuman = 1
-	icon_state = text("suitstorage[][][][][][][][][]", hashelmet, hassuit, hashuman, isopen, islocked, isUV, ispowered, isbroken, issuperUV)
+	icon_state = "suitstorage[hashelmet][hassuit][hashuman][isopen][islocked][isUV][ispowered][isbroken][issuperUV]"
 
 /obj/machinery/suit_storage_unit/power_change()
 	..()
@@ -78,7 +78,7 @@
 				dump_everything()
 				qdel(src)
 
-/obj/machinery/suit_storage_unit/attack_hand(mob/user as mob)
+/obj/machinery/suit_storage_unit/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(machine_stat & NOPOWER)
@@ -87,7 +87,7 @@
 		return 0
 	ui_interact(user)
 
-/obj/machinery/suit_storage_unit/ui_state(mob/user)
+/obj/machinery/suit_storage_unit/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.notcontained_state
 
 /obj/machinery/suit_storage_unit/ui_interact(mob/user, datum/tgui/ui)
@@ -313,7 +313,7 @@
 	for(i=0,i<4,i++)
 		sleep(50)
 		if(occupant)
-			occupant.apply_effect(50, IRRADIATE)
+			occupant.afflict_radiation(200)
 			var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in occupant.internal_organs
 			if(!rad_organ)
 				if(occupant.can_feel_pain())

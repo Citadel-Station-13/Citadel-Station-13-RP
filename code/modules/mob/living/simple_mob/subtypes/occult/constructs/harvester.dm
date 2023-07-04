@@ -36,7 +36,7 @@
 
 	attack_sound = 'sound/weapons/pierce.ogg'
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 10,
 				"bullet" = 20,
 				"laser" = 20,

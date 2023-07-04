@@ -104,7 +104,7 @@
 
 // Nerfing the value of the base rad to adjust and not cause immediate rad poisoning to a crew member.
 /datum/disease2/effect/radian/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob.apply_effect(1.10*multiplier, IRRADIATE, check_protection = 0)
+	mob.afflict_radiation(RAD_MOB_AFFLICT_VIRUS_RADIAN(multiplier))
 
 /datum/disease2/effect/deaf
 	name = "Deafness"
@@ -294,7 +294,7 @@
 		data = c_data
 	else
 		data = pick("bicaridine", "kelotane", "anti_toxin", "tricordrazine")
-	var/datum/reagent/R = SSchemistry.chemical_reagents[data]
+	var/datum/reagent/R = SSchemistry.reagent_lookup[data]
 	name = "[initial(name)] ([initial(R.name)])"
 
 /datum/disease2/effect/improved_chem_synthesis/activate(var/mob/living/carbon/mob,var/multiplier)
@@ -426,7 +426,7 @@
 		data = pick("bicaridine", "kelotane", "anti_toxin", "inaprovaline", "space_drugs", "sugar",
 					"tramadol", "dexalin", "cryptobiolin", "impedrezene", "hyperzine", "ethylredoxrazine",
 					"mindbreaker", "glucose")
-	var/datum/reagent/R = SSchemistry.chemical_reagents[data]
+	var/datum/reagent/R = SSchemistry.reagent_lookup[data]
 	name = "[initial(name)] ([initial(R.name)])"
 
 /datum/disease2/effect/chem_synthesis/activate(var/mob/living/carbon/mob,var/multiplier)
@@ -526,7 +526,7 @@
 /datum/disease2/effect/hair/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		if(H.species.name == SPECIES_HUMAN && !(H.h_style == "Bald") && !(H.h_style == "Balding Hair"))
+		if(H.species.get_species_id() == SPECIES_ID_HUMAN && !(H.h_style == "Bald") && !(H.h_style == "Balding Hair"))
 			to_chat(H, "<span class='danger'>Your hair starts to fall out in clumps...</span>")
 			spawn(50)
 				H.h_style = "Balding Hair"

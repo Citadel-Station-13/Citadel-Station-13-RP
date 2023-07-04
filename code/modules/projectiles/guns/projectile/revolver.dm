@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/revolver
+/obj/item/gun/ballistic/revolver
 	name = "revolver"
 	desc = "The Lumoco Arms HE Colt is a choice revolver for when you absolutely, positively need to put a hole in the other guy. Uses .357 rounds."
 	icon_state = "revolver"
@@ -8,16 +8,16 @@
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a357
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	projectile_type = /obj/projectile/bullet/pistol/strong
 	mag_insert_sound = 'sound/weapons/guns/interaction/rev_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/rev_magout.ogg'
 	var/chamber_offset = 0 //how many empty chambers in the cylinder until you hit a round
 
-/obj/item/gun/projectile/revolver/holy
+/obj/item/gun/ballistic/revolver/holy
 	name = "blessed revolver"
 	ammo_type = /obj/item/ammo_casing/a357/silver
 
-/obj/item/gun/projectile/revolver/verb/spin_cylinder()
+/obj/item/gun/ballistic/revolver/verb/spin_cylinder()
 	set name = "Spin cylinder"
 	set desc = "Fun when you're bored out of your skull."
 	set category = "Object"
@@ -30,38 +30,38 @@
 	if(rand(1,max_shells) > loaded.len)
 		chamber_offset = rand(0,max_shells - loaded.len)
 
-/obj/item/gun/projectile/revolver/consume_next_projectile()
+/obj/item/gun/ballistic/revolver/consume_next_projectile()
 	if(chamber_offset)
 		chamber_offset--
 		return
 	return ..()
 
-/obj/item/gun/projectile/revolver/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/ballistic/revolver/load_ammo(var/obj/item/A, mob/user)
 	chamber_offset = 0
 	return ..()
 
-/obj/item/gun/projectile/revolver/mateba
+/obj/item/gun/ballistic/revolver/mateba
 	name = "mateba"
 	desc = "This unique looking handgun is named after an Italian company famous for the manufacture of these revolvers, and pasta kneading machines. Uses .357 rounds." // Yes I'm serious. -Spades
 	icon_state = "mateba"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 
-/obj/item/gun/projectile/revolver/mateba/taj
+/obj/item/gun/ballistic/revolver/mateba/taj
 	name = "Adhomai revolver"
 	desc = "The Akhan and Khan Royal Service Revolver. Sophisticated but dated, this weapon is a metaphor for the New Kingdom of Adhomai itself."
 	icon_state = "mateba-taj"
 
-/obj/item/gun/projectile/revolver/mateba/taj/knife
+/obj/item/gun/ballistic/revolver/mateba/taj/knife
 	name = "Adhomai knife revolver"
 	desc = "An ornate knife revolver from an Adhomai gunsmith. Popular among Tajaran nobility just before the civil war and even to this day, many of these revolvers found their way into the market when they were taken as trophies by Grand People's Army soldiers and DPRA guerillas."
 	icon_state = "knifegun"
 	caliber = ".38"
 	ammo_type = /obj/item/ammo_casing/a38
-	force = 15
+	damage_force = 15
 	sharp = 1
 	edge = 1
 
-/obj/item/gun/projectile/revolver/detective
+/obj/item/gun/ballistic/revolver/detective
 	name = "revolver"
 	desc = "A cheap Martian knock-off of a Smith & Wesson Model 10. Uses .38-Special rounds."
 	icon_state = "detective"
@@ -69,7 +69,7 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/a38
 
-/obj/item/gun/projectile/revolver/detective/verb/rename_gun()
+/obj/item/gun/ballistic/revolver/detective/verb/rename_gun()
 	set name = "Name Gun"
 	set category = "Object"
 	set desc = "Click to rename your gun. If you're the detective."
@@ -87,7 +87,7 @@
 		to_chat(M, "You name the gun [input]. Say hello to your new friend.")
 		return 1
 
-/obj/item/gun/projectile/revolver/detective45
+/obj/item/gun/ballistic/revolver/detective45
 	name = ".45 revolver"
 	desc = "A fancy replica of an old revolver, modified for .45 rounds and a seven-shot cylinder."
 	icon_state = "detective"
@@ -97,7 +97,7 @@
 	max_shells = 7
 
 
-/obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
+/obj/item/gun/ballistic/revolver/detective45/verb/rename_gun()
 	set name = "Name Gun"
 	set category = "Object"
 	set desc = "Rename your gun. If you're the Detective."
@@ -116,7 +116,7 @@
 		to_chat(M, "You name the gun [input]. Say hello to your new friend.")
 		return 1
 
-/obj/item/gun/projectile/revolver/detective45/verb/reskin_gun()
+/obj/item/gun/ballistic/revolver/detective45/verb/reskin_gun()
 	set name = "Resprite gun"
 	set category = "Object"
 	set desc = "Click to choose a sprite for your gun."
@@ -141,7 +141,7 @@
 
 
 // Blade Runner pistol.
-/obj/item/gun/projectile/revolver/deckard
+/obj/item/gun/ballistic/revolver/deckard
 	name = "\improper Deckard .38"
 	desc = "A custom-built revolver, based off the semi-popular Detective Special model. Uses .38-Special rounds."
 	icon_state = "deckard-empty"
@@ -149,23 +149,23 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/a38
 
-/obj/item/gun/projectile/revolver/deckard/emp
+/obj/item/gun/ballistic/revolver/deckard/emp
 	ammo_type = /obj/item/ammo_casing/a38/emp
 
 
-/obj/item/gun/projectile/revolver/deckard/update_icon_state()
+/obj/item/gun/ballistic/revolver/deckard/update_icon_state()
 	. = ..()
 	if(loaded.len)
 		icon_state = "deckard-loaded"
 	else
 		icon_state = "deckard-empty"
 
-/obj/item/gun/projectile/revolver/deckard/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/ballistic/revolver/deckard/load_ammo(var/obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		flick("deckard-reload",src)
 	..()
 
-/obj/item/gun/projectile/revolver/capgun
+/obj/item/gun/ballistic/revolver/capgun
 	name = "cap gun"
 	desc = "Looks almost like the real thing! Ages 8 and up."
 	icon_state = "revolver"
@@ -175,9 +175,9 @@
 	handle_casings = CYCLE_CASINGS
 	max_shells = 7
 	ammo_type = /obj/item/ammo_casing/cap
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	projectile_type = /obj/projectile/bullet/pistol/strong
 
-/obj/item/gun/projectile/revolver/judge
+/obj/item/gun/ballistic/revolver/judge
 	name = "\"The Judge\""
 	desc = "A revolving hand-shotgun by Cybersun Industries that packs the power of a 12 guage in the palm of your hand (if you don't break your wrist). Uses 12g rounds."
 	icon_state = "judge"
@@ -187,12 +187,12 @@
 	recoil = 2 // ow my fucking hand
 	accuracy = -15 // smooth bore + short barrel = shit accuracy
 	ammo_type = /obj/item/ammo_casing/a12g
-	projectile_type = /obj/item/projectile/bullet/shotgun
+	projectile_type = /obj/projectile/bullet/shotgun
 	// ToDo: Remove accuracy debuf in exchange for slightly injuring your hand every time you fire it.
 
-/obj/item/gun/projectile/revolver/lemat
+/obj/item/gun/ballistic/revolver/lemat
 	name = "LeMat Revolver"
-	desc = "The LeMat Revolver is a 9 shot revolver with a secondary firing barrel loading shotgun shells. For when you really need something dead. Uses .38-Special and 12g rounds depending on the barrel."
+	desc = "The LeMat revolver is a 9-shot revolver with a secondar barrel for firing shotgun shells. Cybersun Industries still produces this iconic revolver in limited numbers, deliberately inflating the value of these collectible reproduction pistols. Uses .38 rounds and 12g shotgun shells."
 	icon_state = "lemat"
 	item_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -200,7 +200,7 @@
 	max_shells = 9
 	caliber = ".38"
 	ammo_type = /obj/item/ammo_casing/a38
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/projectile/bullet/pistol
 	var/secondary_max_shells = 1
 	var/secondary_caliber = "12g"
 	var/secondary_ammo_type = /obj/item/ammo_casing/a12g
@@ -208,12 +208,12 @@
 	var/list/secondary_loaded = list()
 	var/list/tertiary_loaded = list()
 
-/obj/item/gun/projectile/revolver/lemat/Initialize(mapload)
+/obj/item/gun/ballistic/revolver/lemat/Initialize(mapload)
 	for(var/i in 1 to secondary_max_shells)
 		secondary_loaded += new secondary_ammo_type(src)
 	return ..()
 
-/obj/item/gun/projectile/revolver/lemat/verb/swap_firingmode()
+/obj/item/gun/ballistic/revolver/lemat/verb/swap_firingmode()
 	set name = "Swap Firing Mode"
 	set category = "Object"
 	set desc = "Click to swap from one method of firing to another."
@@ -255,7 +255,7 @@
 
 		flipped_firing = 0
 
-/obj/item/gun/projectile/revolver/lemat/spin_cylinder()
+/obj/item/gun/ballistic/revolver/lemat/spin_cylinder()
 	set name = "Spin cylinder"
 	set desc = "Fun when you're bored out of your skull."
 	set category = "Object"
@@ -269,7 +269,7 @@
 		if(rand(1,max_shells) > loaded.len)
 			chamber_offset = rand(0,max_shells - loaded.len)
 
-/obj/item/gun/projectile/revolver/lemat/examine(mob/user)
+/obj/item/gun/ballistic/revolver/lemat/examine(mob/user, dist)
 	. = ..()
 	if(secondary_loaded)
 		var/to_print
@@ -279,13 +279,13 @@
 	else
 		. += "\The [src] has a secondary barrel that is empty."
 
-/obj/item/gun/projectile/revolver/lemat/holy
+/obj/item/gun/ballistic/revolver/lemat/holy
 	name = "Blessed LeMat Revolver"
 	ammo_type = /obj/item/ammo_casing/a38/silver
 	secondary_ammo_type = /obj/item/ammo_casing/a12g/silver
 
 //Ported from Bay
-/obj/item/gun/projectile/revolver/webley
+/obj/item/gun/ballistic/revolver/webley
 	name = "service revolver"
 	desc = "A rugged top break revolver based on the Webley Mk. VI model, with modern improvements. Uses .44 magnum rounds."
 	icon_state = "webley2"
@@ -296,11 +296,11 @@
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a44
 
-/obj/item/gun/projectile/revolver/webley/holy
+/obj/item/gun/ballistic/revolver/webley/holy
 	name = "blessed service revolver"
 	ammo_type = /obj/item/ammo_casing/a44/silver
 
-/obj/item/gun/projectile/revolver/webley/auto
+/obj/item/gun/ballistic/revolver/webley/auto
 	name = "autorevolver"
 	icon_state = "mosley"
 	desc = "A shiny Mosley Autococker automatic revolver, with black accents. Marketed as the 'Revolver for the Modern Era'. Uses .44 magnum rounds."
@@ -308,7 +308,7 @@
 	fire_anim = "mosley_fire"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 
-/obj/item/gun/projectile/revolver/dirty_harry
+/obj/item/gun/ballistic/revolver/dirty_harry
 	name = "Model 29 Revolver"
 	desc = "A powerful hand cannon made famous by the legendary lawman that wielded it. Even to this day people follow in his legacy. 'Are you feeling lucky punk?'"
 	icon_state = "dirty_harry"
@@ -320,20 +320,21 @@
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a44
 
-/obj/item/gun/projectile/revolver/dirty_harry/holy
+/obj/item/gun/ballistic/revolver/dirty_harry/holy
 	name = "Blessed Model 29"
 	ammo_type = /obj/item/ammo_casing/a44/silver
 
-/obj/item/gun/projectile/revolver/combat
-	name = "NT-R-7 combat revolver"
-	desc = "A semiautomatic revolver tooled for NanoTrasen special operations. Chambered in .44 Magnum, it serves as the perfect sidearm for any off the books endeavor."
+//NT SpecOps Revolver
+/obj/item/gun/ballistic/revolver/combat
+	name = "\improper Ogre combat revolver"
+	desc = "The NT-R-7 'Ogre' combat revolver is tooled for NanoTrasen special operations. Chambered in .44 Magnum with an advanced high-speed firing mechanism, it serves as the perfect sidearm for any off the books endeavor."
 	icon_state = "combatrevolver"
 	caliber = ".44"
 	fire_delay = 5.7
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
 	ammo_type = /obj/item/ammo_casing/a44
 
-/obj/item/gun/projectile/revolver/combat/update_icon_state()
+/obj/item/gun/ballistic/revolver/combat/update_icon_state()
 	. = ..()
 	if(loaded.len)
 		icon_state = "combatrevolver"

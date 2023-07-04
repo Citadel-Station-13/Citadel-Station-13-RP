@@ -77,9 +77,9 @@
 				to_chat(user, "<span class='warning'>This section is too damaged to support anything. Use a welder to fix the damage.</span>")
 				return
 			var/obj/item/stack/S = C
-			var/decl/flooring/use_flooring
+			var/singleton/flooring/use_flooring
 			for(var/flooring_type in flooring_types)
-				var/decl/flooring/F = flooring_types[flooring_type]
+				var/singleton/flooring/F = flooring_types[flooring_type]
 				if(!F.build_type)
 					continue
 				if((S.type == F.build_type) || (S.build_type == F.build_type))
@@ -119,29 +119,29 @@
 		if(broken || burnt)
 			to_chat(user, "<span class='notice'>You remove the broken [flooring.descriptor].</span>")
 			make_plating()
-		else if(flooring.flags & TURF_IS_FRAGILE)
+		else if(flooring.flooring_flags & TURF_IS_FRAGILE)
 			to_chat(user, "<span class='danger'>You forcefully pry off the [flooring.descriptor], destroying them in the process.</span>")
 			make_plating()
-		else if(flooring.flags & TURF_REMOVE_CROWBAR)
+		else if(flooring.flooring_flags & TURF_REMOVE_CROWBAR)
 			to_chat(user, "<span class='notice'>You lever off the [flooring.descriptor].</span>")
 			make_plating(1)
 		else
 			return 0
 		playsound(src, W.tool_sound, 80, 1)
 		return 1
-	else if(W.is_screwdriver() && (flooring.flags & TURF_REMOVE_SCREWDRIVER))
+	else if(W.is_screwdriver() && (flooring.flooring_flags & TURF_REMOVE_SCREWDRIVER))
 		if(broken || burnt)
 			return 0
 		to_chat(user, "<span class='notice'>You unscrew and remove the [flooring.descriptor].</span>")
 		make_plating(1)
 		playsound(src, W.tool_sound, 80, 1)
 		return 1
-	else if(W.is_wrench() && (flooring.flags & TURF_REMOVE_WRENCH))
+	else if(W.is_wrench() && (flooring.flooring_flags & TURF_REMOVE_WRENCH))
 		to_chat(user, "<span class='notice'>You unwrench and remove the [flooring.descriptor].</span>")
 		make_plating(1)
 		playsound(src, W.tool_sound, 80, 1)
 		return 1
-	else if(istype(W, /obj/item/shovel) && (flooring.flags & TURF_REMOVE_SHOVEL))
+	else if(istype(W, /obj/item/shovel) && (flooring.flooring_flags & TURF_REMOVE_SHOVEL))
 		to_chat(user, "<span class='notice'>You shovel off the [flooring.descriptor].</span>")
 		make_plating(1)
 		playsound(src, 'sound/items/Deconstruct.ogg', 80, 1)

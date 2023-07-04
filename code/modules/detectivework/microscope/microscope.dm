@@ -25,7 +25,7 @@
 		return
 	return ..()
 
-/obj/machinery/microscope/attack_hand(mob/user)
+/obj/machinery/microscope/attack_hand(mob/user, list/params)
 
 	if(!sample)
 		to_chat(user, "<span class='warning'>The microscope has no sample to examine.</span>")
@@ -40,7 +40,8 @@
 	to_chat(user, "<span class='notice'>Printing findings now...</span>")
 	var/obj/item/paper/report = new(get_turf(src))
 	report.stamped = list(/obj/item/stamp)
-	report.overlays = list("paper_stamped")
+	report.cut_overlays()
+	report.add_overlay("paper_stamped")
 	report_num++
 
 	if(istype(sample, /obj/item/forensics/swab))

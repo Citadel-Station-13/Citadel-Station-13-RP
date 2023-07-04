@@ -2,7 +2,7 @@
 	name = SPECIES_VOX
 	name_plural = SPECIES_VOX
 	uid = SPECIES_ID_VOX
-	category = "Vox"
+	category = SPECIES_CATEGORY_VOX
 	default_bodytype = BODYTYPE_VOX
 
 	icobase = 'icons/mob/species/vox/body.dmi'
@@ -26,7 +26,7 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_The_Vox"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/vox)
-	rarity_value = 4
+	//rarity_value = 4
 
 //	taste_sensitivity = TASTE_DULL
 
@@ -57,7 +57,7 @@
 	siemens_coefficient = 0.2
 
 	species_flags = NO_SCAN | CONTAMINATION_IMMUNE
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
 	species_appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
 
 	blood_color = "#9066BD"
@@ -112,7 +112,7 @@
 		)
 
 /datum/species/vox/get_random_name(gender)
-	var/datum/language/species_language = SScharacters.resolve_language_id(default_language)
+	var/datum/language/species_language = SScharacters.resolve_language(default_language)
 	return species_language.get_random_name(gender)
 
 /datum/species/vox/equip_survival_gear(mob/living/carbon/human/H, extendedtank = FALSE, comprehensive = FALSE)

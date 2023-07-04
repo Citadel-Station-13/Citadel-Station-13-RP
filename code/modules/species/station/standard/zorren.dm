@@ -1,5 +1,6 @@
 /datum/species/hi_zoxxen
 	uid = SPECIES_ID_ZORREN_HIGH
+	id = SPECIES_ID_ZORREN_HIGH
 	id = SPECIES_ID_ZORREN
 	name = SPECIES_ZORREN_HIGH
 	name_plural = "Zorren"
@@ -35,7 +36,7 @@
 	)
 
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_SECRET
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"
@@ -99,7 +100,7 @@
 		/datum/category_item/catalogue/fauna/flatzorren,
 	)
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_SECRET
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"

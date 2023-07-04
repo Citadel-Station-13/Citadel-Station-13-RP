@@ -44,7 +44,10 @@
 	var/last_scan_time = 0
 	var/scan_delay = 25
 
-/obj/item/ano_scanner/attack_self(var/mob/living/user)
+/obj/item/ano_scanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	interact(user)
 
 /obj/item/ano_scanner/interact(var/mob/living/user)
@@ -85,6 +88,8 @@
 			to_chat(user, "Background radiation levels detected.")
 	else
 		to_chat(user, "Scanning array is recharging.")
+
+/obj/item/ano_scanner/integrated
 
 /obj/item/depth_scanner
 	name = "depth analysis scanner"
@@ -151,10 +156,13 @@
 
 			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
 
-/obj/item/depth_scanner/attack_self(var/mob/living/user)
+/obj/item/depth_scanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	ui_interact(user)
 
-/obj/item/depth_scanner/ui_state(mob/user)
+/obj/item/depth_scanner/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.deep_inventory_state
 
 /obj/item/depth_scanner/ui_interact(mob/user, datum/tgui/ui)
@@ -194,7 +202,7 @@
 
 	return data
 
-/obj/item/depth_scanner/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/depth_scanner/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -276,9 +284,12 @@
 			icon_state = "pinoff"
 
 /obj/item/beacon_locator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return ui_interact(user)
 
-/obj/item/beacon_locator/ui_state(mob/user)
+/obj/item/beacon_locator/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/beacon_locator/ui_interact(mob/user, datum/tgui/ui)
@@ -293,7 +304,7 @@
 	data["scan_ticks"] = scan_ticks
 	data["degrees"] = null
 	if(target_radio)
-		data["degrees"] = round(Get_Angle(get_turf(src), get_turf(target_radio)))
+		data["degrees"] = round(get_visual_angle(get_turf(src), get_turf(target_radio)))
 
 	data["rawfreq"] = frequency
 	data["minFrequency"] = RADIO_LOW_FREQ
@@ -301,7 +312,7 @@
 
 	return data
 
-/obj/item/beacon_locator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/beacon_locator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -332,10 +343,13 @@
 
 /obj/item/xenoarch_multi_tool/Initialize(mapload)
 	. = ..()
-	anomaly_scanner = new/obj/item/ano_scanner(src)
+	anomaly_scanner = new/obj/item/ano_scanner/integrated(src)
 	depth_scanner = new/obj/item/depth_scanner(src)
 
-/obj/item/xenoarch_multi_tool/attack_self(var/mob/living/user)
+/obj/item/xenoarch_multi_tool/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	depth_scanner.interact(usr)
 
 /obj/item/xenoarch_multi_tool/verb/swap_settings()
@@ -354,4 +368,4 @@
 	set desc = "Scan for artifacts and anomalies within your vicinity."
 	if(!(src in usr))
 		return
-	anomaly_scanner.ui_interact(usr)
+	anomaly_scanner.interact(usr)

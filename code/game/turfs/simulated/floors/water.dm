@@ -7,7 +7,7 @@
 	var/water_state = "water_shallow"
 	var/under_state = "rock"
 	edge_icon_state = "water_shallow"
-	movement_cost = 4
+	slowdown = 4
 	outdoors = TRUE
 
 	layer = WATER_FLOOR_LAYER
@@ -20,10 +20,9 @@
 
 /turf/simulated/floor/water/Initialize(mapload)
 	. = ..()
-	var/decl/flooring/F = get_flooring_data(/decl/flooring/water)
+	var/singleton/flooring/F = get_flooring_data(/singleton/flooring/water)
 	footstep_sounds = F?.footstep_sounds
 	update_icon()
-	handle_fish()
 
 /turf/simulated/floor/water/update_icon()
 	..() // To get the edges.
@@ -90,14 +89,24 @@
 			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
 	..()
 
+/turf/simulated/floor/water/pre_fishing_query(obj/item/fishing_rod/rod, mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!GetComponent(/datum/component/fishing_spot))
+		AddComponent(/datum/component/fishing_spot, /datum/fish_source/ocean)
+
 /turf/simulated/floor/water/deep
 	name = "deep water"
 	desc = "A body of water.  It seems quite deep."
 	icon_state = "seadeep" // So it shows up in the map editor as water.
 	under_state = "abyss"
-	movement_cost = 8
+	slowdown = 8
 	depth = 2
 
+/turf/simulated/floor/water/deep/indoors
+	outdoors = FALSE
+	
 /turf/simulated/floor/water/pool
 	name = "pool"
 	desc = "Don't worry, it's not closed."
@@ -147,6 +156,8 @@ var/list/shoreline_icon_cache = list()
 	desc = "The waves look calm and inviting."
 	icon_state = "beach"
 	depth = 0
+	//smoothing_groups = null
+	edge_blending_priority = 0
 
 /turf/simulated/floor/water/beach/update_icon()
 	return
@@ -201,6 +212,9 @@ var/list/shoreline_icon_cache = list()
 		if(poisonlevel > 0)
 			L.adjustToxLoss(poisonlevel)
 
+/turf/simulated/floor/water/indoors
+	outdoors = FALSE
+
 //Supernatural/Horror Pool Turfs
 
 /turf/simulated/floor/water/acid
@@ -210,7 +224,7 @@ var/list/shoreline_icon_cache = list()
 	icon_state = "acid_shallow"
 	var/acid_state = "acid_shallow"
 	under_state = "rock"
-	movement_cost = 4
+	slowdown = 4
 	depth = 4
 	layer = WATER_FLOOR_LAYER
 
@@ -310,7 +324,7 @@ var/list/shoreline_icon_cache = list()
 	desc = "A body of sickly green liquid. It emanates an acrid stench.  It seems quite deep."
 	icon_state = "acid_deep"
 	under_state = "abyss"
-	movement_cost = 8
+	slowdown = 8
 	depth = 5
 
 //Blood
@@ -321,7 +335,7 @@ var/list/shoreline_icon_cache = list()
 	icon_state = "acidb_shallow"
 	var/blood_state = "acidb_shallow"
 	under_state = "rock"
-	movement_cost = 4
+	slowdown = 4
 	layer = WATER_FLOOR_LAYER
 	depth = 6
 
@@ -406,5 +420,5 @@ var/list/shoreline_icon_cache = list()
 	desc = "A body of crimson fluid. It smells like pennies and gasoline.  It seems quite deep."
 	icon_state = "acidb_deep"
 	under_state = "abyss"
-	movement_cost = 8
+	slowdown = 8
 	depth = 7

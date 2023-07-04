@@ -112,7 +112,7 @@
 	// Splatter anything under us that survived the explosion.
 	if(value != SD_EMPTY_TILE && T.contents.len)
 		for(var/atom/movable/AM in T)
-			if(!(AM.flags & ATOM_ABSTRACT) && !istype(AM, /mob/observer))
+			if(!(AM.atom_flags & ATOM_ABSTRACT) && !istype(AM, /mob/observer))
 				qdel(AM)
 
 	// Also spawn doors and loot.
@@ -211,7 +211,7 @@
 	var/automatic_pod
 	if(spawned_mob && selected_player)
 		if(selected_player.mob.mind)
-			selected_player.mob.mind.transfer_to(spawned_mob)
+			selected_player.mob.mind.transfer(spawned_mob)
 		else
 			spawned_mob.ckey = selected_player.mob.ckey
 		spawned_mobs = list(spawned_mob)

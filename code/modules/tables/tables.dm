@@ -6,11 +6,17 @@ var/list/table_icon_cache = list()
 	icon_state = "frame"
 	desc = "It's a table, for putting things on. Or standing on, if you really want to."
 	density = TRUE
-	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_BUCKLED
 	anchored = TRUE
 	climbable = TRUE
 	layer = TABLE_LAYER
 	surgery_odds = 66
+	connections = list("nw0", "ne0", "sw0", "se0")
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_TABLES)
+	canSmoothWith = (SMOOTH_GROUP_TABLES)
+
 	var/flipped = 0
 	var/maxhealth = 10
 	var/health = 10
@@ -20,15 +26,13 @@ var/list/table_icon_cache = list()
 	var/can_plate = 1
 
 	var/manipulating = 0
-	var/datum/material/material = null
-	var/datum/material/reinforced = null
+	var/datum/material/material
+	var/datum/material/reinforced
 
 	// Gambling tables. I'd prefer reinforced with carpet/felt/cloth/whatever, but AFAIK it's either harder or impossible to get /obj/item/stack/material of those.
 	// Convert if/when you can easily get stacks of these.
 	var/carpeted = 0
 	var/carpeted_type = /obj/item/stack/tile/carpet
-
-	connections = list("nw0", "ne0", "sw0", "se0")
 
 	/// Can people place items on us by clicking on us?
 	var/item_place = TRUE
@@ -99,7 +103,7 @@ var/list/table_icon_cache = list()
 	update_connections(TRUE) // Update tables around us to ignore us (material=null forces no connections)
 	. = ..()
 
-/obj/structure/table/examine(mob/user)
+/obj/structure/table/examine(mob/user, dist)
 	. = ..()
 	if(health < maxhealth)
 		switch(health / maxhealth)
@@ -178,7 +182,7 @@ var/list/table_icon_cache = list()
 
 	return ..()
 
-/obj/structure/table/attack_hand(mob/user as mob)
+/obj/structure/table/attack_hand(mob/user, list/params)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))
@@ -354,33 +358,34 @@ var/list/table_icon_cache = list()
 	return I
 
 /obj/structure/table/update_icon()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	if(flipped != 1)
 		icon_state = "blank"
-		overlays.Cut()
 
 		// Base frame shape. Mostly done for glass/diamond tables, where this is visible.
 		for(var/i = 1 to 4)
 			var/image/I = get_table_image(icon, connections[i], 1<<(i-1))
-			overlays += I
+			overlays_to_add += I
 
 		// Standard table image
 		if(material)
 			for(var/i = 1 to 4)
-				var/image/I = get_table_image(icon, "[material.icon_base]_[connections[i]]", 1<<(i-1), material.icon_colour, 255 * material.opacity)
-				overlays += I
+				var/image/I = get_table_image(icon, "[material.table_icon_base]_[connections[i]]", 1<<(i-1), material.icon_colour, 255 * material.opacity)
+				overlays_to_add += I
 
 		// Reinforcements
 		if(reinforced)
 			for(var/i = 1 to 4)
-				var/image/I = get_table_image(icon, "[reinforced.icon_reinf]_[connections[i]]", 1<<(i-1), reinforced.icon_colour, 255 * reinforced.opacity)
-				overlays += I
+				var/image/I = get_table_image(icon, "[reinforced.table_reinf_icon_base]_[connections[i]]", 1<<(i-1), reinforced.icon_colour, 255 * reinforced.opacity)
+				overlays_to_add += I
 
 		if(carpeted)
 			for(var/i = 1 to 4)
 				var/image/I = get_table_image(icon, "carpet_[connections[i]]", 1<<(i-1))
-				overlays += I
+				overlays_to_add += I
 	else
-		overlays.Cut()
 		var/type = 0
 		var/tabledirs = 0
 		for(var/direction in list(turn(dir,90), turn(dir,-90)) )
@@ -398,22 +403,24 @@ var/list/table_icon_cache = list()
 
 		icon_state = "flip[type]"
 		if(material)
-			var/image/I = image(icon, "[material.icon_base]_flip[type]")
+			var/image/I = image(icon, "[material.table_icon_base]_flip[type]")
 			I.color = material.icon_colour
 			I.alpha = 255 * material.opacity
-			overlays += I
+			overlays_to_add += I
 			name = "[material.display_name] table"
 		else
 			name = "table frame"
 
 		if(reinforced)
-			var/image/I = image(icon, "[reinforced.icon_reinf]_flip[type]")
+			var/image/I = image(icon, "[reinforced.table_reinf_icon_base]_flip[type]")
 			I.color = reinforced.icon_colour
 			I.alpha = 255 * reinforced.opacity
-			overlays += I
+			overlays_to_add += I
 
 		if(carpeted)
-			overlays += "carpet_flip[type]"
+			overlays_to_add += "carpet_flip[type]"
+
+	add_overlay(overlays_to_add)
 
 // set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
 /obj/structure/table/update_connections(propagate=0)
@@ -427,7 +434,7 @@ var/list/table_icon_cache = list()
 
 	var/list/blocked_dirs = list()
 	for(var/obj/structure/window/W in get_turf(src))
-		if(W.is_fulltile())
+		if(W.fulltile)
 			connections = list("0", "0", "0", "0")
 			return
 		blocked_dirs |= W.dir
@@ -435,7 +442,7 @@ var/list/table_icon_cache = list()
 	for(var/D in list(NORTH, SOUTH, EAST, WEST) - blocked_dirs)
 		var/turf/T = get_step(src, D)
 		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir == GLOB.reverse_dir[D])
+			if(W.fulltile || W.dir == global.reverse_dir[D])
 				blocked_dirs |= D
 				break
 			else
@@ -446,7 +453,7 @@ var/list/table_icon_cache = list()
 		var/turf/T = get_step(src, D)
 
 		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir & GLOB.reverse_dir[D])
+			if(W.fulltile || W.dir & global.reverse_dir[D])
 				blocked_dirs |= D
 				break
 

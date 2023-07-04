@@ -148,7 +148,7 @@
 		return
 	var/list/remaining_apcs = list()
 	for(var/obj/machinery/power/apc/A in GLOB.apcs)
-		if(!(A.z in GLOB.using_map.station_levels)) 		// Only station APCs
+		if(!(A.z in (LEGACY_MAP_DATUM).station_levels)) 		// Only station APCs
 			continue
 		if(A.hacker == user || A.aidisabled) 		// This one is already hacked, or AI control is disabled on it.
 			continue
@@ -194,7 +194,7 @@
 	sleep(300)
 	// Hack all APCs, including those built during hack sequence.
 	for(var/obj/machinery/power/apc/A in GLOB.apcs)
-		if((!A.hacker || (A.hacker != src)) && !A.aidisabled && (A.z in GLOB.using_map.station_levels))
+		if((!A.hacker || (A.hacker != src)) && !A.aidisabled && (A.z in (LEGACY_MAP_DATUM).station_levels))
 			A.ai_hack(src)
 
 
@@ -203,7 +203,7 @@
 	user.hack_can_fail = 0
 	user.hacking = 0
 	user.system_override = 2
-	user.verbs += new/datum/game_mode/malfunction/verb/ai_destroy_station()
+	add_verb(user, /datum/game_mode/malfunction/verb/ai_destroy_station)
 
 
 // END ABILITY VERBS

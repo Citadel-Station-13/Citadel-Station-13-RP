@@ -88,7 +88,7 @@
 		if(!(technomancers.is_antagonist(wearer.mind))) // In case someone tries to wear a stolen core.
 			wearer.adjust_instability(20)
 	if(!wearer || wearer.stat == DEAD) // Unlock if we're dead or not worn.
-		REMOVE_TRAIT(src, TRAIT_NODROP, TECHNOMANCER_TRAIT)
+		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, TECHNOMANCER_TRAIT)
 
 /obj/item/technomancer_core/proc/regenerate()
 	energy = min(max(energy + regen_rate, 0), max_energy)
@@ -157,23 +157,21 @@
 /obj/spellbutton/DblClick()
 	return Click()
 
-/mob/living/carbon/human/Stat()
+/mob/living/carbon/human/statpanel_data(client/C)
 	. = ..()
-
-	if(. && istype(back,/obj/item/technomancer_core))
+	if(istype(back,/obj/item/technomancer_core) && C.statpanel_tab("Spell Core"))
 		var/obj/item/technomancer_core/core = back
-		setup_technomancer_stat(core)
+		. += technomancer_stat(core)
 
-/mob/living/carbon/human/proc/setup_technomancer_stat(var/obj/item/technomancer_core/core)
-	if(core && statpanel("Spell Core"))
-		var/charge_status = "[core.energy]/[core.max_energy] ([round( (core.energy / core.max_energy) * 100)]%) \
-		([round(core.energy_delta)]/s)"
-		var/instability_delta = instability - last_instability
-		var/instability_status = "[src.instability] ([round(instability_delta, 0.1)]/s)"
-		stat("Core charge", charge_status)
-		stat("User instability", instability_status)
-		for(var/obj/spellbutton/button in core.spells)
-			stat(button)
+/mob/living/carbon/human/proc/technomancer_stat(obj/item/technomancer_core/core)
+	var/charge_status = "[core.energy]/[core.max_energy] ([round( (core.energy / core.max_energy) * 100)]%) \
+	([round(core.energy_delta)]/s)"
+	var/instability_delta = instability - last_instability
+	var/instability_status = "[src.instability] ([round(instability_delta, 0.1)]/s)"
+	STATPANEL_DATA_ENTRY("Core charge", charge_status)
+	STATPANEL_DATA_ENTRY("User instability", instability_status)
+	for(var/obj/spellbutton/button in core.spells)
+		STATPANEL_DATA_CLICK(button.name, "Trigger", "\ref[button]")
 
 /obj/item/technomancer_core/proc/add_spell(var/path, var/new_name, var/ability_icon_state)
 	if(!path || !ispath(path))
@@ -346,9 +344,9 @@
 	set category = "Object"
 	set desc = "Toggles the locking mechanism on your manipulation core."
 
-	var/had = HAS_TRAIT_FROM(src, TRAIT_NODROP, TECHNOMANCER_TRAIT)
+	var/had = HAS_TRAIT_FROM(src, TRAIT_ITEM_NODROP, TECHNOMANCER_TRAIT)
 	if(had)
-		REMOVE_TRAIT(src, TRAIT_NODROP, TECHNOMANCER_TRAIT)
+		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, TECHNOMANCER_TRAIT)
 	else
-		ADD_TRAIT(src, TRAIT_NODROP, TECHNOMANCER_TRAIT)
+		ADD_TRAIT(src, TRAIT_ITEM_NODROP, TECHNOMANCER_TRAIT)
 	to_chat(usr, "<span class='notice'>You [had ? "de" : ""] activate the locking mechanism on [src].</span>")

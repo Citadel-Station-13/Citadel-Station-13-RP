@@ -19,7 +19,10 @@
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 
-/obj/item/stack/material/glass/attack_self(mob/user as mob)
+/obj/item/stack/material/glass/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	construct_window(user)
 
 /obj/item/stack/material/glass/attackby(obj/item/W, mob/user)

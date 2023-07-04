@@ -40,7 +40,7 @@
 
 /obj/item/assembly/prox_sensor/Proximity(datum/proxfield/field, atom/movable/AM)
 	if(!istype(AM))
-		log_debug("DEBUG: HasProximity called with [AM] on [src] ([usr]).")
+		log_debug(SPAN_DEBUGINFO("DEBUG: HasProximity called with [AM] on [src] ([usr])."))
 		return
 	if (istype(AM, /obj/effect/beam))
 		return
@@ -121,7 +121,7 @@
 
 	return data
 
-/obj/item/assembly/prox_sensor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/assembly/prox_sensor/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

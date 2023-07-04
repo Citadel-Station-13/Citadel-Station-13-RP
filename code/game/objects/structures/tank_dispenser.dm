@@ -22,20 +22,29 @@
 	update_icon()
 
 /obj/structure/dispenser/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	switch(oxygentanks)
-		if(1 to 3)	overlays += "oxygen-[oxygentanks]"
-		if(4 to INFINITY) overlays += "oxygen-4"
+		if(1 to 3)
+			overlays_to_add += "oxygen-[oxygentanks]"
+		if(4 to INFINITY)
+			overlays_to_add += "oxygen-4"
+
 	switch(phorontanks)
-		if(1 to 4)	overlays += "phoron-[phorontanks]"
-		if(5 to INFINITY) overlays += "phoron-5"
+		if(1 to 4)
+			overlays_to_add += "phoron-[phorontanks]"
+		if(5 to INFINITY)
+			overlays_to_add += "phoron-5"
+
+	add_overlay(overlays_to_add)
 
 /obj/structure/dispenser/attack_ai(mob/user as mob)
 	if(user.Adjacent(src))
 		return attack_hand(user)
 	..()
 
-/obj/structure/dispenser/attack_hand(mob/user as mob)
+/obj/structure/dispenser/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	var/dat = "[src]<br><br>"
 	dat += "Oxygen tanks: [oxygentanks] - [oxygentanks ? "<A href='?src=\ref[src];oxygen=1'>Dispense</A>" : "empty"]<br>"

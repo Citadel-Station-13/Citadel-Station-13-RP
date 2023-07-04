@@ -4,9 +4,9 @@
 	inhand_default_type = INHAND_DEFAULT_ICON_SUITS
 	name = "suit"
 	var/fire_resist = T0C+100
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	allowed = list(/obj/item/tank/emergency/oxygen)
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 	slot_flags = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	siemens_coefficient = 0.9
@@ -38,19 +38,8 @@
 
 	return ..()
 
-/obj/item/clothing/suit/render_apply_custom(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/clothing/suit/render_apply_custom(mob/M, mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used, align_y)
 	. = ..()
 	if(taurized)
 		MA.pixel_x = -16
 		MA.layer = TAIL_LAYER + 1	// kick it over tail
-
-// todo: accesosries shouldn't be directly done on this proc, use a helper proc to override
-/obj/item/clothing/suit/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
-	if(!inhands && LAZYLEN(accessories) && taurized)
-		for(var/obj/item/clothing/accessory/A in accessories)
-			var/image/I = new(A.get_mob_overlay())
-			I.pixel_x = 16 //Opposite of the pixel_x on the suit (-16) from taurization to cancel it out and puts the accessory in the correct place on the body.
-			MA.overlays += I
-		return MA
-	else
-		return ..()

@@ -182,12 +182,19 @@
 
 GLOBAL_LIST_BOILERPLATE(all_deactivated_AI_cores, /obj/structure/AIcore/deactivated)
 
+// todo: refactor this shit it shouldn't be a subtype
 /obj/structure/AIcore/deactivated
 	name = "inactive AI"
 	icon = 'icons/mob/AI.dmi'
 	icon_state = "ai-empty"
 	anchored = 1
 	state = 20//So it doesn't interact based on the above. Not really necessary.
+
+//! temporary hack to detect improper usage
+/obj/structure/AIcore/deactivated/New()
+	if(loc == null)
+		CRASH("attempted to spawn deactivated aicore at null loc")
+	return ..()
 
 /obj/structure/AIcore/deactivated/Destroy()
 	if(src in GLOB.empty_playable_ai_cores)

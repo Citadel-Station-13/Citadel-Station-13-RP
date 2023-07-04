@@ -1,5 +1,5 @@
 /datum/gear/donator
-	sort_category = "Donator"
+	sort_category = LOADOUT_CATEGORY_DONATOR
 	cost = 0 // If they went out of their way to PAY for a custom item, given our no-gameplay-advantage-granting-items rule, it's only right that they aren't penalized and need to re-adjust their loadout to compensate for their new item's cost.
 	name = "If this item can be chosen or seen, ping a coder immediately!"
 	path = /obj/item/bikehorn
@@ -151,9 +151,9 @@
 	path = /obj/item/clothing/head/donator/hberet
 	ckeywhitelist = list("certifiedhyena")
 
-/datum/gear/donator/woolhat
-	name = "Army Garrison Cap"
-	path = /obj/item/clothing/head/donator/woolhat
+/datum/gear/donator/jacksonb
+	name = "Granite Gear Aid Bag"
+	path = /obj/item/storage/backpack/satchel/donator/jacksonbackpack
 	ckeywhitelist = list("vfivesix")
 
 /datum/gear/donator/carcharodon
@@ -185,12 +185,6 @@
 	name = "Prop Video Recorder"
 	path = /obj/item/faketvcamera
 	ckeywhitelist = list("fauxmagician")
-
-/datum/gear/donator/hueyskirt
-	name = "High-Waisted Business Skirt"
-	slot = SLOT_ID_SUIT
-	path = /obj/item/clothing/under/skirt/donator/doopytoots
-	ckeywhitelist = list("doopytoots")
 
 /datum/gear/donator/mikubikini
 	name = "starlight singer bikini"
@@ -264,10 +258,20 @@
 
 /datum/gear/suit/pariah
 	name = "springtime pariah moto jacket"
-	path = /obj/item/clothing/suit/storage/hooded/pariah
+	path = /obj/item/clothing/suit/storage/toggle/heated/pariah
 	ckeywhitelist = list("rezbit")
 
 /datum/gear/suit/mindelectric
 	name = "「 The Mind Electric 」"
 	path = /obj/item/clothing/suit/storage/mindelectric
 	ckeywhitelist = list("lectronyx")
+
+/datum/gear/donator/tajcigarcase
+	name = "S'rendarr's Hand case"
+	path = /obj/item/storage/fancy/cigar/taj
+	ckeywhitelist = list("vailthewolf")
+
+/datum/gear/donator/noahcloak
+	name = "Noah's Cloak"
+	path = /obj/item/clothing/suit/storage/hooded/donatornoahcloak
+	ckeywhitelist = list("rainbyplays")

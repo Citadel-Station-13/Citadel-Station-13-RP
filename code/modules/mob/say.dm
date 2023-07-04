@@ -35,7 +35,7 @@
 
 	set_typing_indicator(FALSE)
 	if(use_me)
-		usr.emote("me",usr.emote_type,message)
+		usr.emote("me",SAYCODE_TYPE_ALWAYS,message)
 	else
 		usr.emote(message)
 
@@ -49,10 +49,19 @@
 			return
 
 	if(!is_preference_enabled(/datum/client_preference/show_dsay))
-		to_chat(usr, "<span class='danger'>You have deadchat muted.</span>")
+		to_chat(src, "<span class='danger'>You have deadchat muted.</span>")
+		return
+
+	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
+		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
 		return
 
 	message = emoji_parse(say_emphasis(message))
+
+	if(client.persistent.ligma)
+		to_chat(src, "<span class='deadsay'><b>DEAD:</b> [src]([ghost_follow_link(src, src)]) [pick("complains","moans","whines","laments","blubbers")], [message]</span>")
+		log_shadowban("[key_name(src)] DSAY: [message]")
+		return
 
 	say_dead_direct("[pick("complains","moans","whines","laments","blubbers")], <span class='message'>\"<span class='linkify'>[message]</span>\"</span>", src)
 
@@ -77,7 +86,7 @@
 			return 1
 		return 0
 
-	if(speaking.language_flags & INNATE)
+	if(speaking.language_flags & LANGUAGE_INNATE)
 		return 1
 
 	//Language check.
@@ -152,11 +161,14 @@
 		if (can_speak(L))
 			return L
 		else
-			var/alert_result = alert(src, "You dont know the LANGUAGE you are about to speak, instead you will speak Babel. Do you want to?", "Unknown Language Alert","No","Yes")
-			if(alert_result == "Yes")
-				return SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
-			else
-				if(isliving(src))
-					var/mob/living/caller = src
-					return SScharacters.resolve_language_name(caller.default_language)
+			var/alert_result = alert(src, "You don't know that language. Would you rather speak your default language, gibberish, or nothing?", "Unknown Language Alert","Default Language","Gibberish", "Whoops I made a typo!")
+			switch(alert_result)
+				if("Default Language")
+					if(isliving(src))
+						var/mob/living/caller = src
+						return SScharacters.resolve_language_name(caller.default_language)
+				if("Gibberish")
+					return SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
+				if("Whoops I made a typo!")
+					return -1
 	return null

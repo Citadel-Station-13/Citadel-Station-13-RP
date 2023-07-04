@@ -102,27 +102,29 @@
 	. = ..()
 	add_overlay("[icon_state]1")
 
-/obj/item/fbp_backup_cell/attack(mob/living/M as mob, mob/user as mob)
-	if(!used && ishuman(M))
-		var/mob/living/carbon/human/H = M
+/obj/item/fbp_backup_cell/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(!used && ishuman(target))
+		var/mob/living/carbon/human/H = target
 		if(H.isSynthetic())
 			if(H.nutrition <= amount)
 				use(user,H)
 			else
-				to_chat(user,"<span class='warning'>The difference in potential is too great. [user == M ? "You have" : "[H] has"] too much charge to use such a small battery.</span>")
-		else if(M == user)
+				to_chat(user,"<span class='warning'>The difference in potential is too great. [user == target ? "You have" : "[H] has"] too much charge to use such a small battery.</span>")
+		else if(target == user)
 			to_chat(user,"<span class='warning'>You lick the cell, and your tongue tingles slightly.</span>")
 		else
 			to_chat(user,"<span class='warning'>This cell is meant for use on humanoid synthetics only.</span>")
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
-	. = ..()
-
-/obj/item/fbp_backup_cell/proc/use(var/mob/living/user, var/mob/living/target)
+/obj/item/fbp_backup_cell/proc/use(mob/living/user, mob/living/target)
 	if(used)
 		return
 	used = TRUE
 	desc += " This one has already been used."
-	overlays.Cut()
+	cut_overlays()
 	target.nutrition += amount
 	user.custom_emote(message = "connects \the [src] to [user == target ? "their" : "[target]'s"] charging port, expending it.")
 

@@ -6,7 +6,7 @@
 		var/list/turf/simulated/floor/turfs = get_area_turfs(typesof(/area/hallway)) //list of all the empty floor turfs in the hallway areas
 		for(var/i in turfs)
 			var/turf/T = i
-			if(!(T.z in GLOB.using_map.station_levels))
+			if(!(T.z in (LEGACY_MAP_DATUM).station_levels))
 				turfs -= T
 
 		if(turfs.len) //Pick a turf to spawn at if we can
@@ -34,7 +34,7 @@
 	density = 0
 	color = DEAD_PLANT_COLOUR
 
-/obj/effect/dead_plant/attack_hand()
+/obj/effect/dead_plant/attack_hand(mob/user, list/params)
 	qdel(src)
 
 /obj/effect/dead_plant/attackby()
@@ -72,8 +72,9 @@
 	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
 
 /obj/effect/plant/Destroy()
-	if(SSplants)
-		SSplants.remove_plant(src)
+	plant = null
+	parent = null
+	SSplants.remove_plant(src)
 	for(var/obj/effect/plant/neighbor in range(1,src))
 		SSplants.add_plant(neighbor)
 	return ..()
@@ -245,8 +246,8 @@
 		sampled = 1
 	else
 		..()
-		if(W.force)
-			health -= W.force
+		if(W.damage_force)
+			health -= W.damage_force
 	check_health()
 
 //handles being overrun by vines - note that attacker_parent may be null in some cases
