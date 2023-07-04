@@ -240,13 +240,8 @@
 	heating_point = null
 	heating_products = null
 	toxicity = 15*/
-<<<<<<< HEAD
 	visual_overlay = "chlorine"
 	visual_threshold = 1
-=======
-	gas_overlay = "chlorine"
-	moles_visible = 1
->>>>>>> citrp/master
 
 	gas_reagent_id = "sacid"
 	gas_reagent_amount = 10

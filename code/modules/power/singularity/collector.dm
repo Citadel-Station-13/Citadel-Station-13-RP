@@ -126,23 +126,15 @@
 	else
 		update_icons()
 
-<<<<<<< HEAD
-/obj/machinery/power/rad_collector/proc/receive_pulse(var/pulse_strength)
-	if(P && active)
-		var/power_produced = 0
-		power_produced = (min(P.air_contents.gas[GAS_ID_PHORON], 1000)) * pulse_strength * 20
-		add_avail(power_produced * 0.001)
-		last_power_new = power_produced
-=======
 // todo: rework
 /obj/machinery/power/rad_collector/rad_act(strength, datum/radiation_wave/wave)
 	. = ..()
 	var/power_produced = max(0, (strength - flat_loss) * efficiency)
 	var/gas_needed = power_produced * gas_usage_factor
-	if(!power_produced || !P?.air_contents.gas[/datum/gas/phoron])
+	if(!power_produced || !P?.air_contents.gas[GAS_ID_PHORON])
 		return
-	P.air_contents.adjust_gas(/datum/gas/phoron, -gas_needed)
-	if(!P.air_contents.gas[/datum/gas/phoron])
+	P.air_contents.adjust_gas(GAS_ID_PHORON, -gas_needed)
+	if(!P.air_contents.gas[GAS_ID_PHORON])
 		investigate_log("ran out of gas", INVESTIGATE_SINGULO)
 		eject()
 	stored_power += power_produced
@@ -156,7 +148,6 @@
 	stored_power -= attempt
 	//? kj to kw
 	add_avail((last_output = (attempt / delta_time)))
->>>>>>> citrp/master
 
 /obj/machinery/power/rad_collector/proc/update_icons()
 	cut_overlays()
@@ -168,9 +159,6 @@
 		overlays_to_add += image('icons/obj/singularity.dmi', "on")
 
 	add_overlay(overlays_to_add)
-
-	return
-
 
 /obj/machinery/power/rad_collector/proc/toggle_power()
 	active = !active

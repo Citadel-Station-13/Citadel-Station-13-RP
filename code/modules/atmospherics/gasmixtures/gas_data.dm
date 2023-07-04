@@ -131,8 +131,8 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	//? rebuild cheap cache lists
 	//* gas groups
 	LAZYINITLIST(gas_by_group[G.gas_group])
-	LAZYOR(gas_by_group[G.gas_group], G.id)
+	LAZYDISTINCTADD(gas_by_group[G.gas_group], G.id)
 	//* gas flags
 	for(var/bit in bitfield2list(G.gas_flags))
 		LAZYINITLIST(gas_by_flag["[bit]"])
-		LAZYOR(gas_by_flag["[bit]"], G.id)
+		LAZYDISTINCTADD(gas_by_flag["[bit]"], G.id)
