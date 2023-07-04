@@ -68,15 +68,14 @@ const StartVoteOptions = (props, context) => {
     </Stack.Item>
   );
 };
-
 // Display choices
 const ChoicesPanel = (props, context) => {
   const { act, data } = useBackend(context);
-  const { choices, selected_choice } = data;
+  const { choices, selected_choice, question } = data;
 
   return (
     <Stack.Item grow>
-      <Section fill scrollable title="Choices" >
+      <Section fill scrollable title={question} >
         {choices.length !== 0 ? (
           <LabeledList>
             {choices.map((choice, i) => (
