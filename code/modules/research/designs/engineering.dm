@@ -36,7 +36,8 @@
 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 2000)
 	build_path = /obj/item/switchtool
 
-// Other devices
+/datum/design/science/engineering
+	abstract_type = /datum/design/science/engineering
 
 /datum/design/science/engineering/generate_name(template)
 	return "Engineering device prototype ([..()])"

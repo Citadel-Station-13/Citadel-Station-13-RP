@@ -375,6 +375,7 @@ CIRCUITS BELOW
 	build_path = /obj/item/circuitboard/arf_generator
 
 /datum/design/circuit/mecha
+	abstract_type = /datum/design/circuit/mecha
 	req_tech = list(TECH_DATA = 3)
 
 /datum/design/circuit/mecha/generate_name(template)
@@ -485,6 +486,9 @@ CIRCUITS BELOW
 
 ///Fighters///
 
+/datum/design/circuit/mecha/fighter
+	abstract_type = /datum/design/circuit/mecha/fighter
+
 //Pinnace//
 
 /datum/design/circuit/mecha/fighter/pinnace_main
@@ -566,6 +570,7 @@ CIRCUITS BELOW
 //Tcomms//
 
 /datum/design/circuit/tcom
+	abstract_type = /datum/design/circuit/tcom
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4)
 
 /datum/design/circuit/tcom/generate_name(template)

@@ -121,6 +121,9 @@
 	materials = list(MAT_STEEL = 500, MAT_GLASS = 1500, MAT_SILVER = 2000, MAT_GOLD = 1500, MAT_URANIUM = 1000)
 	build_path = /obj/item/hypospray/advanced
 
+/datum/design/science/medical/cell_based
+	abstract_type = /datum/design/science/medical/cell_based
+
 // ML-3M medigun and cells
 /datum/design/science/medical/cell_based/generate_name(template)
 	return "Cell-based medical prototype ([..()])"

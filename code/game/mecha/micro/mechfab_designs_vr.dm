@@ -1,4 +1,5 @@
 /datum/design/science/mechfab/gopher
+	abstract_type = /datum/design/science/mechfab/gopher
 	category = list("Gopher")
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 
@@ -55,6 +56,7 @@
 	materials = list(MAT_STEEL = 2500)
 
 /datum/design/science/mechfab/polecat
+	abstract_type = /datum/design/science/mechfab/polecat
 	category = list("Polecat")
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 
@@ -134,6 +136,7 @@
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/microshotgun
 
 /datum/design/science/mechfab/weasel
+	abstract_type = /datum/design/science/mechfab/weasel
 	category = list("Weasel")
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 

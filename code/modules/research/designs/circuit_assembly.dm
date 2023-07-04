@@ -36,6 +36,9 @@
 
 // Assemblies
 
+/datum/design/science/integrated_circuitry/assembly
+	abstract_type = /datum/design/science/integrated_circuitry/assembly
+
 /datum/design/science/integrated_circuitry/assembly/generate_name(template)
 	return "Circuitry assembly design ([..()])"
 

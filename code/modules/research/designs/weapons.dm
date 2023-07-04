@@ -234,7 +234,8 @@
 	materials = list(MAT_STEEL = 2000, MAT_COPPER = 500)
 	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/hunter
 
-// Phase weapons
+/datum/design/science/weapon/phase
+	abstract_type = /datum/design/science/weapon/phase
 
 /datum/design/science/weapon/phase/generate_name(template)
 	return "Phase weapon prototype ([..()])"
