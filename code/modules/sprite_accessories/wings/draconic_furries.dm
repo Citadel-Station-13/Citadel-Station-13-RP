@@ -18,10 +18,3 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "drago_wing_2"
-
-/datum/sprite_accessory/wing/drake_wing
-	name = "Draketaur Wings"
-	id = "wing_drake"
-	icon_state = "drake_wing"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
