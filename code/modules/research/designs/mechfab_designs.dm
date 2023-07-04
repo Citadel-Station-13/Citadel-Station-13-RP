@@ -1024,6 +1024,8 @@
 ///Fighters///
 ///--------///
 
+/datum/design/science/mechfab/fighter
+	abstract_type = /datum/design/science/mechfab/fighter
 
 ///Pinnace///
 

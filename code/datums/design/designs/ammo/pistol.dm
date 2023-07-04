@@ -49,52 +49,52 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m45uzi
 
-/datum/design/pistol/a9mm
+/datum/design/ammo/pistol/a9mm
 	id = "AmmoPistol9mm"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm
 
-/datum/design/pistol/a9mm_rubber
+/datum/design/ammo/pistol/a9mm_rubber
 	id = "AmmoPistol9mmRubber"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm/rubber
 
-/datum/design/pistol/a9mm_practice
+/datum/design/ammo/pistol/a9mm_practice
 	id = "AmmoPistol9mmPractice"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm/practice
 
-/datum/design/pistol/a9mm_flash
+/datum/design/ammo/pistol/a9mm_flash
 	id = "AmmoPistol9mmFlash"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm/flash
 
-/datum/design/pistol/compact
-	abstract_type = /datum/design/pistol/compact
+/datum/design/ammo/pistol/compact
+	abstract_type = /datum/design/ammo/pistol/compact
 
-/datum/design/pistol/compact/a9mm
+/datum/design/ammo/pistol/compact/a9mm
 	id = "AmmoCompact9mm"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm/compact
 
-/datum/design/pistol/compact/a9mm_rubber
+/datum/design/ammo/pistol/compact/a9mm_rubber
 	id = "AmmoCompact9mmRubber"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm/compact/rubber
 
-/datum/design/pistol/compact/a9mm_practice
+/datum/design/ammo/pistol/compact/a9mm_practice
 	id = "AmmoCompact9mmPractice"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm/compact/practice
 
-/datum/design/pistol/compact/a9mm_flash
+/datum/design/ammo/pistol/compact/a9mm_flash
 	id = "AmmoCompact9mmFlash"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
