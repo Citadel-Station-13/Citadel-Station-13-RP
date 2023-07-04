@@ -79,8 +79,8 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
 
   const windowProps: WindowProps = {
     title: data.latheName,
-    width: 1200,
-    height: 900,
+    width: 1100,
+    height: 700,
   };
 
   const sectionProps: SectionProps = {
@@ -232,7 +232,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                 </Tabs>
               </Section>
             </Stack.Item>
-            <Stack.Item grow={1.3}>
+            <Stack.Item grow={1.15}>
               <Section fill title="Designs" scrollable>
                 {
                   Object.values(data.designs.instances).filter((d) => d.category === category).sort((d1, d2) =>
@@ -454,7 +454,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                 onClick={() => act('enqueue', {
                   id: props.design.id,
                   amount: 1,
-                  immediate: true,
+                  start: true,
                   materials: mats,
                   items: [],
                 })} />

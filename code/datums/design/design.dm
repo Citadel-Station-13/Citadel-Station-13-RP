@@ -153,6 +153,7 @@
 			STACK_TRACE("way too high")
 		if(amount == 1)
 			. = new build_path(where)
+			on_print(., material_parts, ingredient_parts, reagent_parts, cost_multiplier)
 		else
 			. = list()
 			var/atom/made
