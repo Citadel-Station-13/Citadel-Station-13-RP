@@ -23,7 +23,19 @@ DEFINE_BITFIELD(lathe_type, list(
 /// any lathe that can print us can have us uploaded
 #define DESIGN_UNLOCK_UPLOAD (1<<1)
 
+DEFINE_BITFIELD(design_unlock, list(
+	BITFIELD(DESIGN_UNLOCK_INTRINSIC),
+	BITFIELD(DESIGN_UNLOCK_UPLOAD),
+))
+
 //? design_flags bitfield
 
 /// do not scale with efficiency
 #define DESIGN_NO_SCALE (1<<0)
+/// unit tests should ignore the lack of materials
+#define DESIGN_IGNORE_RESOURCE_SANITY (1<<2)
+
+DEFINE_BITFIELD(design_flags, list(
+	BITFIELD(DESIGN_NO_SCALE),
+	BITFIELD(DESIGN_IGNORE_RESOURCE_SANITY),
+))

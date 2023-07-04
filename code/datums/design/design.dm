@@ -78,12 +78,10 @@
 	// lathe designs shouldn't be qdeleting, but incase someone puts in a random..
 	if(QDELETED(instance))
 		return
-	var/detected_materials = FALSE
 	// todo: maybe /obj/proc/detect_materials, /obj/proc/detect_material_parts ? this works fine for now tho.
 	if(isnull(materials))
 		if(!isnull(instance.materials))
 			materials = instance.materials.Copy()
-			detected_materials = TRUE
 		if(!isnull(materials) && !isnull(instance.material_parts) && !isnull(instance.material_defaults))
 			// subtract out the material defaults the instance itself added
 			for(var/key in instance.material_parts)
@@ -91,7 +89,6 @@
 	if(isnull(material_parts))
 		if(!isnull(instance.material_parts))
 			material_parts = instance.material_parts.Copy()
-			detected_materials = TRUE
 	if(isnull(reagents))
 		// if(!isnull(instance.reagents))
 			// reagents = instance.reagents.Copy()
