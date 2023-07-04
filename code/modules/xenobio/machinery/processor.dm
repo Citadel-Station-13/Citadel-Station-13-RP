@@ -20,7 +20,7 @@
 	build_path = /obj/machinery/processor
 	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
 
-/obj/machinery/processor/examine(mob/user)
+/obj/machinery/processor/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='boldnotice'>The automatic intake switch is in the [auto_mode? "On" : "Off"] position.</span>"
 

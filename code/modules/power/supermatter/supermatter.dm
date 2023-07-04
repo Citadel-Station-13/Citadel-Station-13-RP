@@ -105,10 +105,20 @@
 
 	var/datum/looping_sound/supermatter/soundloop
 
+	var/list/history = list()
+	var/record_size = 60
+	var/record_interval = 20
+	var/next_record = 0
+
 /obj/machinery/power/supermatter/Initialize(mapload)
 	. = ..()
 	uid = gl_uid++
 	soundloop = new(list(src), TRUE)
+	history["integrity_history"] = list()
+	history["EER_history"] = list()
+	history["temperature_history"] = list()
+	history["pressure_history"] = list()
+	history["EPR_history"] = list()
 
 /obj/machinery/power/supermatter/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -233,14 +243,10 @@
 /obj/machinery/power/supermatter/get_transit_zlevel()
 	//don't send it back to the station -- most of the time
 	if(prob(99))
-		var/list/candidates = GLOB.using_map.accessible_z_levels.Copy()
-		for(var/zlevel in GLOB.using_map.station_levels)
-			candidates.Remove("[zlevel]")
-		candidates.Remove("[src.z]")
-
-		if(candidates.len)
-			return text2num(pickweight(candidates))
-
+		var/list/candidates = SSmapping.crosslinked_levels() - (LEGACY_MAP_DATUM).station_levels
+		. = SAFEPICK(candidates)
+		if(.)
+			return
 	return ..()
 
 /obj/machinery/power/supermatter/process(delta_time)
@@ -360,6 +366,7 @@
 	radiation_pulse(src, clamp(power * 4, 0, 50000), RAD_FALLOFF_ENGINE_SUPERMATTER)
 
 	power -= (power/DECAY_FACTOR)**3		//energy losses due to radiation
+	RecordData()
 
 	return 1
 
@@ -499,6 +506,35 @@
 
 /obj/machinery/power/supermatter/RepelAirflowDest(n)
 	return
+
+/obj/machinery/power/supermatter/proc/RecordData()
+	if(world.time >= next_record)
+		next_record = world.time + record_interval
+		var/turf/T = get_turf(src)
+		var/datum/gas_mixture/air = T.return_air()
+		var/list/integrity_history = history["integrity_history"]
+		var/list/EER_history = history["EER_history"]
+		var/list/temperature_history = history["temperature_history"]
+		var/list/pressure_history = history["pressure_history"]
+		var/list/EPR_history = history["EPR_history"]
+
+		integrity_history += get_integrity()
+		EER_history += power
+		temperature_history += air.temperature
+		pressure_history += air.return_pressure()
+		EPR_history += get_epr()
+
+		if(integrity_history.len > record_size)
+			integrity_history.Cut(1, 2)
+		if(EER_history.len > record_size)
+			EER_history.Cut(1, 2)
+		if(temperature_history.len > record_size)
+			temperature_history.Cut(1, 2)
+		if(pressure_history.len > record_size)
+			pressure_history.Cut(1, 2)
+		if(EPR_history.len > record_size)
+			EPR_history.Cut(1, 2)
+
 
 /proc/supermatter_pull(T, radius = 20)
 	T = get_turf(T)

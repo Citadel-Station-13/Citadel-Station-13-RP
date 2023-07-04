@@ -5,7 +5,7 @@
 	path = /obj/item/bikehorn/rubberducky
 	slot = null                                   //At least you work as null.
 	allowed_roles = list("Facility Director")     //This technically also works as null, but we're supposed to be role restricted so it's the captain's exclusive, special ducky.
-	sort_category = "Role Restricted"
+	sort_category = LOADOUT_CATEGORY_ROLE_RESTRICTED
 
 //*Single Departments
 //Security

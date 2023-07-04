@@ -195,7 +195,7 @@
 	. = ..()
 	update_held_icon()
 
-/obj/item/gun/ballistic/automatic/z8/examine(mob/user)
+/obj/item/gun/ballistic/automatic/z8/examine(mob/user, dist)
 	. = ..()
 	if(launcher.chambered)
 		. += "\The [launcher] has \a [launcher.chambered] loaded."

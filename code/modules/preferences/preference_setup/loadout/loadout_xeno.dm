@@ -6,7 +6,7 @@
 	path = /obj/item/clothing/suit/storage/fluff/loincloth
 	slot = null
 	allowed_roles = null //Since 99.99% of all items in this file are going to be species-locked, we should keep the role-locked species items here, rather than in the role_restricted.dm file.
-	sort_category = "Xenowear"
+	sort_category = LOADOUT_CATEGORY_XENOWEAR
 
 /datum/gear/xeno/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
@@ -1064,7 +1064,8 @@
 
 
 //*Non-Restricted Items (THIS SHOULD BE KEPT MINIMAL. IF IT HAS A SPECIFIC SPECIES, PLACE IT THERE.)
-/datum/gear/xeno/back/saddlebag
+//These need a taur maintainer before they're readded. None of them work as intended.
+/*/datum/gear/xeno/back/saddlebag
 	name = "Generic - Saddle Bag, Horse"
 	path = /obj/item/storage/backpack/saddlebag
 	cost = 2
@@ -1080,6 +1081,7 @@
 /datum/gear/xeno/back/taur_vest
 	name = "Generic - Taur Duty Vest, Backpack"
 	path = /obj/item/storage/backpack/saddlebag_common/vest
+*/
 
 /datum/gear/xeno/uniform
 	name = "Generic - Gear Harness"

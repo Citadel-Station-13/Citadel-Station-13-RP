@@ -1,4 +1,4 @@
-/obj/item/modular_computer/examine(mob/user)
+/obj/item/modular_computer/examine(mob/user, dist)
 	. = ..()
 	if(damage > broken_damage)
 		. += SPAN_DANGER("It is heavily damaged!")

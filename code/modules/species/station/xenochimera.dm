@@ -691,7 +691,7 @@
 		return
 	var/mob/living/carbon/human/H = owner
 	H.restore_blood()
-	H.species.create_organs(H)
+	H.species.create_organs(H, TRUE)
 	H.restore_all_organs()
 	H.adjustBruteLoss(-healing_amount)
 	H.adjustFireLoss(-healing_amount)

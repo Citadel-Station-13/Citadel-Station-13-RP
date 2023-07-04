@@ -29,14 +29,14 @@
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
-/obj/item/nullrod/afterattack(atom/A, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/nullrod/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if (istype(A, /turf/simulated/floor))
+	if (istype(target, /turf/simulated/floor))
 		to_chat(user, "<span class='notice'>You hit the floor with the [src].</span>")
 		call(/obj/effect/rune/proc/revealrunes)(src)
-	if (isliving(A))
-		var/mob/living/tm = A // targeted mob
+	if (isliving(target))
+		var/mob/living/tm = target // targeted mob
 		if(SA_vulnerability & tm.mob_class)
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
@@ -288,12 +288,12 @@
 	attack_verb = list("attacked", "smashed", "crushed", "splattered", "cracked")
 	hitsound = 'sound/weapons/resonator_blast.ogg'
 
-/obj/item/nullrod/pride_hammer/afterattack(atom/A as mob|obj|turf|area, mob/user, proximity)
+/obj/item/nullrod/pride_hammer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(prob(30) && ishuman(A))
-		var/mob/living/carbon/human/H = A
+	if(prob(30) && ishuman(target))
+		var/mob/living/carbon/human/H = target
 		user.reagents.trans_to(H, user.reagents.total_volume, 1, 1, 0)
 		to_chat(user, "<span class='notice'>Your pride reflects on [H].</span>")
 		to_chat(H, "<span class='userdanger'>You feel insecure, taking on [user]'s burden.</span>")

@@ -82,6 +82,33 @@
 	icon_state = "lpouches_tan"
 
 ////////////////
+//Shotgun Shell Holder
+////////////////
+
+/obj/item/clothing/accessory/storage/shotgun_shell_holder
+	name = "shotgun shell pouch"
+	desc = "A set of eight pouches designed to hold shotgun shells for easy access."
+	icon_override = 'icons/mob/clothing/modular_armor.dmi'
+	icon = 'icons/obj/clothing/modular_armor.dmi'
+	icon_state = "shotholder"
+	slot = ACCESSORY_SLOT_ARMOR_S
+	slots = 4
+
+/obj/item/clothing/accessory/storage/shotgun_shell_holder/update_icon(updates)
+	. = ..()
+	var/amt = length(hold.contents)
+	icon_state = "shotholder-[amt]"
+
+/obj/item/clothing/accessory/storage/shotgun_shell_holder/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/ammo_casing/a12g))
+		. = hold.attackby(W, user)
+		update_icon()
+		accessory_host?.update_icon()
+		return
+	else
+		to_chat(user, SPAN_WARNING("The [src] can only hold 12-gauge shells!"))
+
+////////////////
 //Armor plates
 ////////////////
 /obj/item/clothing/accessory/armor/armorplate
@@ -477,7 +504,7 @@
 		to_chat(usr, "This object does not have a camera.") //Shouldnt ever be visible for helmet cams.
 		return
 
-/obj/item/clothing/accessory/armor/helmetcamera/examine(mob/user)
+/obj/item/clothing/accessory/armor/helmetcamera/examine(mob/user, dist)
 	. = ..()
 	if(camera_networks && get_dist(user,src) <= 1)
 		. += "The [camera ? "" : "in"]active."

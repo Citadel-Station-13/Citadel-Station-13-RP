@@ -89,7 +89,7 @@
 	known_SMESs = new /list()
 
 	var/z = get_z(ui_host())
-	var/list/map_levels = GLOB.using_map.get_map_levels(z)
+	var/list/map_levels = (LEGACY_MAP_DATUM).get_map_levels(z)
 
 	for(var/obj/machinery/power/smes/buildable/SMES in GLOB.smeses)
 		if(!(SMES.z in map_levels))

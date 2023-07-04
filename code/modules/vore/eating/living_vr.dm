@@ -723,7 +723,7 @@
 	set desc = "Switch sharp/fuzzy scaling for current mob."
 	appearance_flags ^= PIXEL_SCALE
 
-/mob/living/examine(mob/user)
+/mob/living/examine(mob/user, dist)
 	. = ..()
 
 	if(ooc_notes)

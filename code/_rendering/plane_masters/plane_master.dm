@@ -13,11 +13,15 @@
 	var/default_invisible = FALSE
 	/// default alpha
 	var/default_alpha = 255
+	/// is occlusion on?
+	var/tmp/fake_occlusion_enabled = FALSE
 
 /atom/movable/screen/plane_master/proc/set_fake_ambient_occlusion(enabled)
-	if(enabled)
-		filters |= AMBIENT_OCCLUSION
-	else
+	if(enabled && !fake_occlusion_enabled)
+		fake_occlusion_enabled = TRUE
+		filters += AMBIENT_OCCLUSION
+	else if(fake_occlusion_enabled)
+		fake_occlusion_enabled = FALSE
 		filters -= AMBIENT_OCCLUSION
 
 //* KEEP THESE SORTED

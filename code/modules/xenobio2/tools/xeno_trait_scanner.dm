@@ -38,7 +38,7 @@
 	print_report(user)
 	return 0
 
-/obj/item/analyzer/xeno_analyzer/afterattack(var/target, mob/user, flag)
+/obj/item/analyzer/xeno_analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!flag) return
 
 	var/datum/xeno/traits/trait_info

@@ -90,8 +90,8 @@
 /obj/item/reagent_containers/glass/self_feed_message(var/mob/user)
 	to_chat(user, "<span class='notice'>You swallow a gulp from \the [src].</span>")
 
-/obj/item/reagent_containers/glass/afterattack(var/obj/target, var/mob/user, var/proximity)
-	if(!is_open_container() || !proximity) //Is the container open & are they next to whatever they're clicking?
+/obj/item/reagent_containers/glass/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!is_open_container() || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) //Is the container open & are they next to whatever they're clicking?
 		return 1 //If not, do nothing.
 	for(var/type in can_be_placed_into) //Is it something it can be placed into?
 		if(istype(target, type))
@@ -304,7 +304,7 @@
 	else
 		return ..()
 
-/obj/item/reagent_containers/glass/bucket/afterattack()
+/obj/item/reagent_containers/glass/bucket/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	.=..()
 	update_icon()
 
@@ -365,7 +365,7 @@
 	w_class = ITEMSIZE_LARGE
 	unacidable = 1
 
-/obj/item/reagent_containers/glass/bucket/sandstone/examine(mob/user)
+/obj/item/reagent_containers/glass/bucket/sandstone/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)
@@ -413,16 +413,16 @@
 	possible_transfer_amounts = list(10,20,50,100)
 	volume = 60
 
-/obj/item/reagent_containers/portable_fuelcan/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/reagent_containers/portable_fuelcan/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
-		O.reagents.trans_to_obj(src, volume)
+	if(istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,target) <= 1)
+		target.reagents.trans_to_obj(src, volume)
 		to_chat(user, "<span class='notice'>You refill [src].</span>")
 		playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 		return
 
-/obj/item/reagent_containers/portable_fuelcan/examine(mob/user)
+/obj/item/reagent_containers/portable_fuelcan/examine(mob/user, dist)
 	. = ..()
 	if(volume)
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.volume] units of fuel!"
@@ -451,7 +451,7 @@
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
 		add_overlay(lid)
 
-/obj/item/reagent_containers/glass/stone/examine(mob/user)
+/obj/item/reagent_containers/glass/stone/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)

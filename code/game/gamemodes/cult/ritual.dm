@@ -83,7 +83,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	rune_list.Remove(src)
 	..()
 
-/obj/effect/rune/examine(mob/user)
+/obj/effect/rune/examine(mob/user, dist)
 	. = ..()
 	if(iscultist(user))
 		. += "This spell circle reads: <i>[word1] [word2] [word3]</i>."
@@ -412,7 +412,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 		to_chat(user, "The book seems full of illegible scribbles. Is this a joke?")
 		return
 
-/obj/item/book/tome/examine(mob/user)
+/obj/item/book/tome/examine(mob/user, dist)
 	. = ..()
 	if(!iscultist(user))
 		. += "An old, dusty tome with frayed edges and a sinister looking cover."

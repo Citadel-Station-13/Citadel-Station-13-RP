@@ -49,20 +49,22 @@
 	var/atom/movable/form = null
 	var/morph_time = 0
 	var/our_size_multiplier = 1
-	var/static/list/blacklist_typecache = typecacheof(list(
-	/atom/movable/screen,
-	/obj/singularity,
-	/mob/living/simple_mob/vore/hostile/morph,
-	/obj/effect))
+	var/list/blacklist_typecache
 
 /mob/living/simple_mob/vore/hostile/morph/Initialize(mapload)
+	blacklist_typecache = cached_typecacheof(list(
+		/atom/movable/screen,
+		/obj/singularity,
+		/mob/living/simple_mob/vore/hostile/morph,
+		/obj/effect,
+	))
 	add_verb(src, /mob/living/proc/ventcrawl)
 	return ..()
 
 /mob/living/simple_mob/vore/hostile/morph/proc/allowed(atom/movable/A)
 	return !is_type_in_typecache(A, blacklist_typecache) && (isobj(A) || ismob(A))
 
-/mob/living/simple_mob/vore/hostile/morph/examine(mob/user)
+/mob/living/simple_mob/vore/hostile/morph/examine(mob/user, dist)
 	if(morphed)
 		form.examine(user)
 		if(get_dist(user,src)<=3)

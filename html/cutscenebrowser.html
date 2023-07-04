@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Cutscene Browser</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Cache-Control" content="max-age=15; must-revalidate" />
+<style>
+	body, html {
+		margin: 0px;
+	}
+	#cutsceneContainer {
+		margin: 0px;
+		position: absolute;
+		top: 0px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
+		overflow: hidden;
+		background-color: black;
+	}
+	#primaryImage {
+		margin: 0px;
+		height: 100%;
+		width: auto;
+	}
+</style>
+</head>
+<body>
+<div id="cutsceneContainer"></div>
+<script>
+
+/// polyfill: element.addEventListener()
+var PROP_ADD_EVENT_LISTENER = (document.addEventListener ? 'addEventListener' : 'attachEvent'); // IE8 handling for Wine users
+/// polyfill: element.textContent
+var PROP_TEXT_CONTENT = (typeof document.body.textContent != 'undefined') ? 'textContent' : 'innerText';
+/// polyfill: window.setTimeout()
+/*\
+|*|
+|*|  Polyfill which enables the passage of arbitrary arguments to the
+|*|  callback functions of JavaScript timers (HTML5 standard syntax).
+|*|
+|*|  https://developer.mozilla.org/en-US/docs/DOM/window.setInterval
+|*|
+|*|  Syntax:
+|*|  var timeoutID = window.setTimeout(func, delay[, arg1, arg2, ...]);
+|*|  var timeoutID = window.setTimeout(code, delay);
+|*|  var intervalID = window.setInterval(func, delay[, arg1, arg2, ...]);
+|*|  var intervalID = window.setInterval(code, delay);
+|*|
+\*/
+(function() {
+  setTimeout(function(arg1) {
+    if (arg1 === 'test') {
+      // feature test is passed, no need for polyfill
+      return;
+    }
+    var __nativeST__ = window.setTimeout;
+    window.setTimeout = function(vCallback, nDelay /*, argumentToPass1, argumentToPass2, etc. */ ) {
+      var aArgs = Array.prototype.slice.call(arguments, 2);
+      return __nativeST__(vCallback instanceof Function ? function() {
+        vCallback.apply(null, aArgs);
+      } : vCallback, nDelay);
+    };
+  }, 0, 'test');
+
+  var interval = setInterval(function(arg1) {
+    clearInterval(interval);
+    if (arg1 === 'test') {
+      // feature test is passed, no need for polyfill
+      return;
+    }
+    var __nativeSI__ = window.setInterval;
+    window.setInterval = function(vCallback, nDelay /*, argumentToPass1, argumentToPass2, etc. */ ) {
+      var aArgs = Array.prototype.slice.call(arguments, 2);
+      return __nativeSI__(vCallback instanceof Function ? function() {
+        vCallback.apply(null, aArgs);
+      } : vCallback, nDelay);
+    };
+  }, 0, 'test');
+}())
+/// polyfill: decode URI
+var decoder = decodeURIComponent || unescape;
+/// polyfill: [].includes()
+if(!Array.prototype.includes) {
+	Array.prototype.includes = function(thing) {
+		for(var i = 0; i < this.length; i++) {
+			if(this[i] == thing) return true;
+		}
+		return false;
+	}
+}
+/// polyfill: "".trim()
+if (!String.prototype.trim) {
+	String.prototype.trim = function () {
+		return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+	};
+}
+
+const ELEMENT_ID_CONTAINER = "cutsceneContainer"
+const ELEMENT_ID_TESTCONTAINER = "testContainer"
+const SKIN_ID_MAP = "map";
+/// how long to wait before re-loading missing images
+var IMAGE_RETRY_DELAY = 1000;
+/// how many times before we give up
+var IMAGE_RETRY_LIMIT = 5;
+
+var container = document.getElementById(ELEMENT_ID_CONTAINER);
+var testContainer = document.getElementById(ELEMENT_ID_TESTCONTAINER);
+
+///////////////////// BOOT //////////////////////////////
+
+function windowBoot() {
+	registerEvents()
+	declareReady(false)
+}
+
+function registerEvents() {
+	// restore focus after press
+	document[PROP_ADD_EVENT_LISTENER]("mouseup", winsetFocusMap);
+	// restore focus after press
+	document[PROP_ADD_EVENT_LISTENER]("keyup", winsetFocusMap);
+}
+
+/// sends a verb
+function transmitVerb(cmd) {
+	var href = "byond://winset?command=" + cmd;
+	window.location.href = href;
+}
+
+/**
+ * creates the onerror function used to load things
+ */
+function lambdaReloadImage(node) {
+	var re_ref = node;
+	return setTimeout(function() {
+		var attempts = parseInt(node.getAttribute('img-reload-n'), 10) || 0;
+		if(attempts >= IMAGE_RETRY_LIMIT){
+			return;
+		}
+		var old_src = re_ref.src
+		re_ref.src = null;
+		re_ref.src = old_src + '#' + (Math.random() * 1000);
+		re_ref.setAttribute('img-reload-n', attempts + 1);
+	}, IMAGE_RETRY_DELAY);
+}
+
+function build(data) {
+	data = JSON.parse(data);
+	loadInnerHTML(data.raw_html);
+}
+
+function dispose() {
+	loadInnerHTML("");
+}
+
+function loadInnerHTML(raw) {
+	container.innerHTML = raw;
+}
+function declareReady(reviving) {
+	if(reviving){
+		transmitVerb(".scenepanel_revive")
+	}
+	else {
+		transmitVerb(".scenepanel_boot")
+	}
+}
+
+/**
+ * restores focus to byond map
+ */
+function winsetFocusMap() {
+	current_mouse_target = null;
+	yieldInvoke(function() {window.location.href = "byond://winset?" + SKIN_ID_MAP + ".focus=true";});
+}
+
+/**
+ * fires a function after the current stack/whatever
+ * used to yield focus and other stuff
+ */
+function yieldInvoke(f) {
+	setTimeout(f, 0);
+}
+
+/**
+ * revives the window
+ * in body so if we're called we can immediately tell byond that we're ready
+ * and if we're not we obviously just, don't.
+ */
+function reviveWindow() {
+	declareReady(true);
+}
+
+window.onload = function() {
+	windowBoot()
+};
+
+</script>
+</body>
+</html>

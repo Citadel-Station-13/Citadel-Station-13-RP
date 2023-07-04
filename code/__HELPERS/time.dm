@@ -1,3 +1,6 @@
+GLOBAL_VAR_INIT(startup_year, text2num(time2text(world.time, "YYYY")))
+GLOBAL_VAR_INIT(startup_month, text2num(time2text(world.time, "MM")))
+GLOBAL_VAR_INIT(startup_day, text2num(time2text(world.time, "DD")))
 
 #define TimeOfGame (get_game_time())
 #define TimeOfTick (TICK_USAGE*0.01*world.tick_lag)

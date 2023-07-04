@@ -52,7 +52,7 @@
 			I.do_work()
 		return
 
-/obj/item/assembly/electronic_assembly/examine(mob/user)
+/obj/item/assembly/electronic_assembly/examine(mob/user, dist)
 	. = ..()
 	if(EA)
 		for(var/obj/item/integrated_circuit/IC in EA.assembly_components)

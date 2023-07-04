@@ -1,4 +1,4 @@
-/mob/living/carbon/human/examine(mob/user)
+/mob/living/carbon/human/examine(mob/user, dist)
 	var/skip_gear = 0
 	var/skip_body = 0
 

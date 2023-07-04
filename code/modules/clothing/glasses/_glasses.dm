@@ -40,11 +40,13 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/equipped(mob/user, slot, flags)
 	. = ..()
 	if((!toggleable || active) && (slot in active_slots))
-		user.add_vision_modifier(vision_modifier)
+		if(!isnull(vision_modifier))
+			user.add_vision_modifier(vision_modifier)
 
 /obj/item/clothing/glasses/unequipped(mob/user, slot, flags)
 	. = ..()
-	user.remove_vision_modifier(vision_modifier)
+	if(!isnull(vision_modifier))
+		user.remove_vision_modifier(vision_modifier)
 
 /obj/item/clothing/glasses/attack_self(mob/user)
 	. = ..()
@@ -58,7 +60,8 @@ BLIND     // can't see anything
 			if(worn_slot != SLOT_ID_HANDS)
 				update_worn_icon()
 			if(worn_slot in active_slots)
-				wearer.remove_vision_modifier(vision_modifier)
+				if(!isnull(vision_modifier))
+					wearer.remove_vision_modifier(vision_modifier)
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
 			away_planes = enables_planes
@@ -70,7 +73,8 @@ BLIND     // can't see anything
 			if(worn_slot != SLOT_ID_HANDS)
 				user.update_inv_glasses()
 			if(worn_slot in active_slots)
-				wearer.add_vision_modifier(vision_modifier)
+				if(!isnull(vision_modifier))
+					wearer.add_vision_modifier(vision_modifier)
 			flash_protection = initial(flash_protection)
 			tint = initial(tint)
 			enables_planes = away_planes
@@ -477,6 +481,23 @@ BLIND     // can't see anything
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = null, SLOT_ID_LEFT_HAND = null)
 	w_class = ITEMSIZE_TINY
 
+/obj/item/clothing/glasses/sunglasses/fakeblindfold
+	name = "blindfold"
+	desc = "Covers the eyes, preventing sight."
+	icon_state = "blindfold"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
+	flash_protection = FLASH_PROTECTION_NONE
+	drop_sound = 'sound/items/drop/gloves.ogg'
+	pickup_sound = 'sound/items/pickup/gloves.ogg'
+
+/obj/item/clothing/glasses/sunglasses/fakeblindfold/tape
+	name = "length of tape"
+	desc = "It's a robust DIY blindfold!"
+	icon = 'icons/obj/bureaucracy.dmi'
+	icon_state = "tape_cross"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = null, SLOT_ID_LEFT_HAND = null)
+	w_class = ITEMSIZE_TINY
+
 /obj/item/clothing/glasses/sunglasses/prescription
 	name = "prescription sunglasses"
 	prescription = 1
@@ -688,6 +709,11 @@ BLIND     // can't see anything
 	desc = "A white blindfold that covers the eyes, preventing sight."
 	icon_state = "blindfoldwhite"
 
+/obj/item/clothing/glasses/sunglasses/fakeblindfold/whiteblindfold
+	name = "white blindfold"
+	desc = "A white blindfold that covers the eyes, preventing sight."
+	icon_state = "blindfoldwhite"
+
 /obj/item/clothing/glasses/redglasses
 	name = "red glasses"
 	desc = "A pair of glasses with red lenses that swirl and pulse hypnotically."
@@ -728,8 +754,8 @@ BLIND     // can't see anything
 	icon_state = "modkit"
 	var/scrip_loaded = 0
 
-/obj/item/glasses_kit/afterattack(var/target, var/mob/living/carbon/human/user, var/proximity)
-	if(!proximity)
+/obj/item/glasses_kit/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(!istype(user))
 		return

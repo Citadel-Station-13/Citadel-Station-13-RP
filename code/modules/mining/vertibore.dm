@@ -20,7 +20,7 @@
 	var/ammo_material = MAT_PHORON
 	var/loading = FALSE
 
-/obj/item/vertibore/examine(mob/user)
+/obj/item/vertibore/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='notice'>The shaft excavator has [mat_storage]cm^3 of phoron inside, and can hold a maximum of [max_mat_storage].</span>"
 	if(cell)

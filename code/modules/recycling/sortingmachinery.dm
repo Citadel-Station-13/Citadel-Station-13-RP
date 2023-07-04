@@ -97,7 +97,7 @@
 			I.pixel_y = -3
 		add_overlay(I)
 
-/obj/structure/bigDelivery/examine(mob/user)
+/obj/structure/bigDelivery/examine(mob/user, dist)
 	. = ..()
 	if(sortTag)
 		. +=  "<span class='notice'>It is labeled \"[sortTag]\"</span>"
@@ -217,7 +217,7 @@
 				I.pixel_y = -3
 		add_overlay(I)
 
-/obj/item/smallDelivery/examine(mob/user)
+/obj/item/smallDelivery/examine(mob/user, dist)
 	. = ..()
 	if(sortTag)
 		. += "<span class='notice'>It is labeled \"[sortTag]\"</span>"
@@ -232,8 +232,8 @@
 	var/amount = 25.0
 
 
-/obj/item/packageWrap/afterattack(var/obj/target as obj, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/packageWrap/afterattack(atom/movable/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(!istype(target))	//this really shouldn't be necessary (but it is).	-Pete
 		return
 	if(istype(target, /obj/item/smallDelivery) || istype(target,/obj/structure/bigDelivery) \
@@ -314,7 +314,7 @@
 		return
 	return
 
-/obj/item/packageWrap/examine(mob/user)
+/obj/item/packageWrap/examine(mob/user, dist)
 	. = ..()
 	. += "<font color=#4F49AF>There are [amount] units of package wrap left!</font>"
 

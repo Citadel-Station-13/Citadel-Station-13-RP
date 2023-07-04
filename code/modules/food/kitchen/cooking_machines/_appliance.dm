@@ -73,7 +73,7 @@
 		qdel(CI)
 	return ..()
 
-/obj/machinery/appliance/examine(mob/user)
+/obj/machinery/appliance/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user))
 		list_contents(user)

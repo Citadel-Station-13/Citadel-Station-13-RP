@@ -213,7 +213,7 @@
 /obj/item/mmi/digital/attackby(obj/item/O as obj, mob/user as mob)
 	return //Doesn't do anything right now because none of the things that can be done to a regular MMI make any sense for these
 
-/obj/item/mmi/digital/examine(mob/user)
+/obj/item/mmi/digital/examine(mob/user, dist)
 	. = ..()
 	if(radio)
 		. += SPAN_NOTICE("There is a switch to toggle the radio system [radio.radio_enabled ? "off" : "on"].[brainobj ? " It is currently being covered by [brainobj]." : null]")
