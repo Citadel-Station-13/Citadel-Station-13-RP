@@ -118,6 +118,9 @@
 	materials = list(MAT_STEEL = 2250, MAT_PLASTIC = 1500, MAT_COPPER = 1000)
 	build_path = /obj/item/ammo_magazine/m57x28mmp90
 
+/datum/design/science/weapon/ballistic/ammo/m57x28mm
+	abstract_type = /datum/design/science/weapon/ballistic/ammo/m57x28mm
+
 /datum/design/science/weapon/ballistic/ammo/m57x28mm/ntles
 	design_name = "5.7 top-mounted magazine"
 	desc = "A standard capacity sidearm magazine (5.7x28mm)."
