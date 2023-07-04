@@ -71,15 +71,19 @@
 		var/obj/item/stack/stack_path = build_path
 		max_stack = initial(stack_path.max_amount)
 	var/obj/item/instance = new build_path
+	var/detected_materials = FALSE
 	if(isnull(materials))
 		materials = instance.materials?.Copy()
 		if(!isnull(materials) && !isnull(instance.material_parts) && !isnull(instance.material_defaults))
 			for(var/key in instance.material_parts)
 				materials[instance.material_defaults[key]] -= instance.material_parts[key]
+		detected_materials = TRUE
 	if(isnull(material_parts))
 		material_parts = instance.material_parts?.Copy()
+		detected_materials = TRUE
 	if(isnull(reagents))
 		reagents = list() // nah no autodetect for now.
+		detected_materials = TRUE
 	if(!build_name)
 		build_name = instance.name
 	if(!build_desc)

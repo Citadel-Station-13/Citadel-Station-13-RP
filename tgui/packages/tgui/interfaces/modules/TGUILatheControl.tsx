@@ -9,12 +9,11 @@ import { BooleanLike } from "common/react";
 import { ModuleData, useLocalState, useModule } from "../../backend";
 import { Box, Button, Collapsible, Dropdown, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
-import { formatSiUnit } from "../../format";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
 import { Design } from "../common/Design";
 import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients";
-import { MaterialRender, MaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME } from "../common/Materials";
+import { MaterialRender, MaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME, renderMaterialAmount } from "../common/Materials";
 import { ReagentContents, ReagentContentsData, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
 
 interface TGUILatheControlProps {
@@ -281,7 +280,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                           materialButtons={(id) => (
                             ((data.materials[id] ?? 0) < queuedMaterials[id]) && (
                               <Box textColor="bad">
-                                {formatSiUnit(queuedMaterials[id] - (data.materials[id] ?? 0))}
+                                {renderMaterialAmount(queuedMaterials[id] - (data.materials[id] ?? 0))}
                               </Box>
                             )
                           )} />

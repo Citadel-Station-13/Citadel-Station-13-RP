@@ -109,7 +109,7 @@ export const MaterialRender = (props: MaterialRenderProps, context) => {
                     <Tooltip position="bottom" content={`${toTitleCase(props.materialContext.materials[id].name)}`} />
                   </Stack.Item>
                   <Stack.Item>
-                    {(amt < 1 && amt > 0)? toFixed(amt, 2) : formatSiUnit(amt, 0)}
+                    {renderMaterialAmount(amt)}
                   </Stack.Item>
                   <Stack.Item>
                     {props.materialButtons && props.materialButtons(id)}
@@ -126,4 +126,8 @@ export const MaterialRender = (props: MaterialRenderProps, context) => {
       Unimplemented
     </Section>
   );
+};
+
+export const renderMaterialAmount = (amt: number): string => {
+  return `${(amt < 1 && amt > 0)? toFixed(amt, 2) : formatSiUnit(amt, 0)}${MATERIAL_STORAGE_UNIT_NAME}`;
 };

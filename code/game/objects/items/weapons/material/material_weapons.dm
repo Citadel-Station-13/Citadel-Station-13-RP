@@ -51,6 +51,12 @@
 /obj/item/material/get_material()
 	return material
 
+/obj/item/material/set_material_parts(list/parts)
+	. = ..()
+	// todo: this is shit but whatever, we'll redo this later.
+	if(length(parts) >= 1)
+		set_material(parts[parts[1]])
+
 /obj/item/material/proc/update_force()
 	if(no_force_calculations)
 		return
@@ -72,8 +78,11 @@
 	//spawn(1)
 	//	to_chat(world, "[src] has damage_force [damage_force] and throw_force [throw_force] when made from default material [material.name]")
 
-/obj/item/material/proc/set_material(var/new_material)
-	material = get_material_by_name(new_material)
+/obj/item/material/proc/set_material(datum/material/new_material)
+	if(istype(new_material))
+		material = new_material
+	else
+		material = get_material_by_name(new_material) || SSmaterials.get_material(new_material)
 	if(!material)
 		qdel(src)
 	else
