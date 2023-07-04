@@ -98,13 +98,14 @@ SUBSYSTEM_DEF(atoms)
  *
  * @params
  * * path - typepath
- * * arguments - args to pass into new; the first argument is loc.
  * * mapload - treat as mapload?
+ * * where - location to init at
+ * * ... - rest of args are passed to new() / Initialize().
  */
-/datum/controller/subsystem/atoms/proc/instance_atom_immediate(path, list/arguments = list(), mapload)
+/datum/controller/subsystem/atoms/proc/instance_atom_immediate(path, mapload, atom/where, ...)
 	var/old_initialized = initialized
 	initialized = mapload? INITIALIZATION_INNEW_MAPLOAD : INITIALIZATION_INNEW_REGULAR
-	var/atom/created = new path(arglist(arguments))
+	var/atom/created = new path(arglist(args.Copy(3)))
 	initialized = old_initialized
 
 /datum/controller/subsystem/atoms/proc/map_loader_begin()
