@@ -113,7 +113,7 @@
 
 //General stuff
 
-/datum/design/item/medical/protohypospray
+/datum/design/science/medical/protohypospray
 	design_name = "advanced hypospray"
 	desc = "This prototype hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
 	id = "protohypospray"

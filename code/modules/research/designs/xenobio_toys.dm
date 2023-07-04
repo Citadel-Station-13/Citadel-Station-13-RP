@@ -24,7 +24,7 @@
 	materials = list(MAT_STEEL = 500, MAT_GLASS = 500)
 	build_path = /obj/item/slime_scanner
 
-/datum/design/item/xenobio/gene_disk
+/datum/design/science/xenobio/gene_disk
 	design_name = "genetics disk"
 	desc = "A disk designed to retain humanoid genetic information."
 	id = "gene_disk"
@@ -32,7 +32,7 @@
 	materials = list(MAT_STEEL = 300, MAT_GLASS = 300)
 	build_path = /obj/item/disk/data
 
-/datum/design/item/xenobio/botany_disk
+/datum/design/science/xenobio/botany_disk
 	design_name = "flora data disk"
 	desc = "A small disk used for carrying data on plant genetics."
 	id = "plant_disk"

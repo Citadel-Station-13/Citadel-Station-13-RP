@@ -129,7 +129,7 @@
 	materials = list(MAT_PLASTIC = 5000, MAT_GOLD = 1500, MAT_URANIUM = 250, MAT_PHORON = 1500)
 	build_path = /obj/item/storage/bag/trash/bluespace
 
-/datum/design/item/reagent_synth_chemistry
+/datum/design/science/reagent_synth_chemistry
 	design_name = "Chemistry Synthesis Module"
 	desc = "A reagent synthesis module required for dispenser functionality"
 	id = "ReagentSynth"
