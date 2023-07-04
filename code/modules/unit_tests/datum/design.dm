@@ -8,6 +8,6 @@
 			Fail("no id on [path].")
 			continue
 		if(lookup[initial(path.id)])
-			Fail("collision on [initial(path.id)] between [path] and [lookup[initial(path.id)]:id]")
+			Fail("collision on [initial(path.id)] between [path] and [lookup[initial(path.id)]]")
 			continue
-		lookup[initial(path.id)] = path
+		lookup[initial(path.id)] = initial(path.id)

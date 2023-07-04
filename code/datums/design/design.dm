@@ -71,6 +71,12 @@
 		var/obj/item/stack/stack_path = build_path
 		max_stack = initial(stack_path.max_amount)
 	var/obj/item/instance = new build_path
+	// this is evil, but hey.
+	if(!(instance.atom_flags & ATOM_INITIALIZED))
+		// lathe designs should not be breaking if init'd; we init designs right before atoms.
+		SSatoms.InitAtom(instance, list(FALSE))
+		// lathe designs shouldn't be qdeleting
+		ASSERT(!QDELETED(instance))
 	var/detected_materials = FALSE
 	// todo: maybe /obj/proc/detect_materials, /obj/proc/detect_material_parts ? this works fine for now tho.
 	if(isnull(materials))
