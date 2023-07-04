@@ -136,13 +136,9 @@
 	item_state = "vax_mask"
 	//body_cover_flags = 0
 	species_restricted = list(SPECIES_ZADDAT)
-<<<<<<< HEAD
 	flags_inv = HIDEEARS //semi-transparent
 	filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE, GAS_ID_NITROGEN)
-=======
 	inv_hide_flags = HIDEEARS //semi-transparent
-	filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide, /datum/gas/nitrogen)
->>>>>>> citrp/master
 
 /obj/item/clothing/mask/gas/opaque
 	name = "Opaque Mask"
