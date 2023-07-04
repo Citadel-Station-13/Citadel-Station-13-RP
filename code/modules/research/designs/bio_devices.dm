@@ -1,4 +1,5 @@
 /datum/design/science/biotech
+	abstract_type = /datum/design/science/biotech
 	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 /datum/design/science/biotech/generate_name(template)

@@ -1,6 +1,5 @@
-// GPS
-
 /datum/design/science/gps
+	abstract_type = /datum/design/science/gps
 	req_tech = list(TECH_MATERIAL = 2, TECH_DATA = 2, TECH_BLUESPACE = 2)
 	materials = list(MAT_STEEL = 500)
 
@@ -47,7 +46,8 @@
 	id = "gps_exp"
 	build_path = /obj/item/gps/explorer
 
-// Other locators
+/datum/design/science/locator
+	abstract_type = /datum/design/science/locator
 
 /datum/design/science/locator/generate_name(template)
 	return "Locator device design ([..()])"

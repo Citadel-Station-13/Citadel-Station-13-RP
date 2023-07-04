@@ -1,4 +1,5 @@
 /datum/design/aimodule
+	abstract_type = /datum/design/aimodule
 	lathe_type = LATHE_TYPE_CIRCUIT
 	materials = list(MAT_GLASS = 2000, MAT_GOLD = 100)
 

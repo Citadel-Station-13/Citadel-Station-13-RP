@@ -1,4 +1,5 @@
-// Various beakers
+/datum/design/science/beaker
+	abstract_type = /datum/design/science/beaker
 
 /datum/design/science/beaker/generate_name(template)
 	return "Beaker prototype ([template])"

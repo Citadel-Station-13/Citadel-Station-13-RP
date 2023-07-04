@@ -6,10 +6,13 @@
  * this will usually be /obj/machinery, but other things are possible.
  */
 /obj/item/circuitboard
-
 	name = "circuit board"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "id_mod"
+	materials = list(
+		MAT_STEEL = 1000,
+		MAT_GLASS = 250,
+	)
 	origin_tech = list(TECH_DATA = 2)
 	density = FALSE
 	anchored = FALSE

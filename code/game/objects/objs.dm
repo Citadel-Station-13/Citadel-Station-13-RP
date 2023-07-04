@@ -24,6 +24,7 @@
 
 	//? Materials
 	/// static materials in us
+	/// material id = amount
 	var/list/materials
 	/// material parts - lazy list; lets us track what we're made of.
 	/// key = cost in cm3

@@ -1,17 +1,4 @@
-/* Make language great again
-/datum/design/science/implant/language
-	design_name = "Language implant"
-	id = "implant_language"
-	req_tech = list(TECH_MATERIAL = 5, TECH_BIO = 5, TECH_DATA = 4, TECH_ENGINEERING = 4) //This is not an easy to make implant.
-	materials = list(MAT_STEEL = 7000, MAT_GLASS = 7000, MAT_GOLD = 2000, MAT_DIAMOND = 3000)
-	build_path = /obj/item/implantcase/vrlanguage
-*/
-// /datum/design/science/implant/backup
-// 	design_name = "Backup implant"
-// 	id = "implant_backup"
-// 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2, TECH_DATA = 4, TECH_ENGINEERING = 2)
-// 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 2000)
-// 	build_path = /obj/item/implantcase/backup
+
 
 /datum/design/science/weapon/sizegun
 	design_name = "Size gun"
@@ -26,20 +13,6 @@
 	req_tech = list(TECH_BLUESPACE = 2, TECH_MATERIAL = 3, TECH_POWER = 2)
 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
 	build_path = /obj/item/clothing/under/bluespace
-
-// /datum/design/science/sleevemate
-// 	design_name = "SleeveMate 3700"
-// 	id = "sleevemate"
-// 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 2, TECH_BIO = 2)
-// 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
-// 	build_path = /obj/item/sleevemate
-//
-// /datum/design/science/bodysnatcher
-// 	design_name = "Body Snatcher"
-// 	id = "bodysnatcher"
-// 	req_tech = list(TECH_MAGNET = 3, TECH_BIO = 3, TECH_ILLEGAL = 2)
-// 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
-// 	build_path = /obj/item/bodysnatcher
 
 /datum/design/science/item/pressureinterlock
 	design_name = "APP pressure interlock"

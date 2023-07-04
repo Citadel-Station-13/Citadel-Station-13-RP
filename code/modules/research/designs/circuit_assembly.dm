@@ -1,4 +1,5 @@
-// Integrated circuits stuff
+/datum/design/science/integrated_circuitry
+	abstract_type = /datum/design/science/integrated_circuitry
 
 /datum/design/science/integrated_circuitry/generate_name(template)
 	return "Circuitry device design ([..()])"

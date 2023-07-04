@@ -1,4 +1,5 @@
-// Tools
+/datum/design/science/tool
+	abstract_type = /datum/design/science/tool
 
 /datum/design/science/tool/generate_name(template)
 	return "Experimental tool prototype ([..()])"

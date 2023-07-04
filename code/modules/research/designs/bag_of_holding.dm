@@ -1,4 +1,5 @@
-// Bags of holding
+/datum/design/science/boh
+	abstract_type = /datum/design/science/boh
 
 /datum/design/science/boh/generate_name(template)
 	return "Bluespace storage prototype ([..()])"

@@ -1,3 +1,6 @@
+/datum/design/science/ai_holder
+	abstract_type = /datum/design/science/ai_holder
+
 // Various AI/mind holding device
 /datum/design/science/ai_holder/generate_name(template)
 	return "Mind storage device prototype ([..()])"

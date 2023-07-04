@@ -1,6 +1,5 @@
-// HUDs
-
 /datum/design/science/hud
+	abstract_type = /datum/design/science/hud
 	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /datum/design/science/hud/generate_name(template)
