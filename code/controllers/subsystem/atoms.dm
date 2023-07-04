@@ -93,6 +93,20 @@ SUBSYSTEM_DEF(atoms)
 
 	return qdeleted || QDELING(A)
 
+/**
+ * immediately creates and inits an atom
+ *
+ * @params
+ * * path - typepath
+ * * arguments - args to pass into new; the first argument is loc.
+ * * mapload - treat as mapload?
+ */
+/datum/controller/subsystem/atoms/proc/instance_atom_immediate(path, list/arguments = list(), mapload)
+	var/old_initialized = initialized
+	initialized = mapload? INITIALIZATION_INNEW_MAPLOAD : INITIALIZATION_INNEW_REGULAR
+	var/atom/created = new path(arglist(arguments))
+	initialized = old_initialized
+
 /datum/controller/subsystem/atoms/proc/map_loader_begin()
 	old_subsystem_initialized = initialized
 	initialized = INITIALIZATION_INSSATOMS
