@@ -16,7 +16,8 @@
 		var/mob/living/silicon/ai/ai = owner
 		if(cancel_tracking)
 			ai.ai_cancel_tracking()
-		ai.move_active_hologram(T)
+		if(ai.hologram_follow)
+			ai.move_active_hologram(T)
 		return 1
 
 // AI MOVEMENT
