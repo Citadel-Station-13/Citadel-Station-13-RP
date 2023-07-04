@@ -38,7 +38,7 @@
 	build_path = /obj/item/ammo_magazine/clip/c762
 
 /datum/design/ammo/rifle/c762_practice
-	id = "AmmoClip762mm"
+	id = "AmmoClip762mmPractice"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/clip/c762/practice
