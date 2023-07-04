@@ -1,10 +1,17 @@
+/datum/design/science/weapon
+	abstract_type = /datum/design/science/weapon
+
 /datum/design/science/weapon/generate_name(template)
 	return "Weapon prototype ([..()])"
+
+/datum/design/science/weapon/ammo
+	abstract_type = /datum/design/science/weapon/ammo
 
 /datum/design/science/weapon/ammo/generate_name(template)
 	return "Weapon ammo ([..()])"
 
-// Energy weapons
+/datum/design/science/weapon/energy
+	abstract_type = /datum/design/science/weapon/energy
 
 /datum/design/science/weapon/energy/generate_name(template)
 	return "Energy weapon prototype ([..()])"
@@ -53,7 +60,8 @@
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 500, MAT_URANIUM = 500)
 	build_path = /obj/item/gun/energy/floragun
 
-// Ballistic weapons
+/datum/design/science/weapon/ballistic
+	abstract_type = /datum/design/science/weapon/ballistic
 
 /datum/design/science/weapon/ballistic/generate_name(template)
 	return "Ballistic weapon prototype ([..()])"
@@ -72,7 +80,8 @@
 	materials = list(MAT_STEEL = 5000, MAT_PLASTIC = 5000, MAT_URANIUM = 1000)
 	build_path = /obj/item/gun/ballistic/automatic/p90
 
-// Ballistic ammo
+/datum/design/science/weapon/ballistic/ammo
+	abstract_type = /datum/design/science/weapon/ballistic/ammo
 
 /datum/design/science/weapon/ballistic/ammo/generate_name(template)
 	return "Ballistic weapon ammo ([..()])"
@@ -308,7 +317,8 @@
 	materials = list(MAT_STEEL = 80, MAT_GOLD = 40, MAT_SILVER = 40, MAT_GLASS = 60)
 	build_path = /obj/item/ammo_casing/chemdart
 
-// Melee weapons
+/datum/design/science/weapon/melee
+	abstract_type = /datum/design/science/weapon/melee
 
 /datum/design/science/weapon/melee/generate_name(template)
 	return "Melee weapon prototype ([..()])"
@@ -327,7 +337,9 @@
 	materials = list(MAT_PLASTEEL = 3500, MAT_OSMIUM = 2000, MAT_LEAD = 2000, MAT_METALHYDROGEN = 500)
 	build_path = /obj/item/melee/energy/axe/charge
 
-// Grenade stuff
+/datum/design/science/weapon/grenade
+	abstract_type = /datum/design/science/weapon/grenade
+
 /datum/design/science/weapon/grenade/generate_name(template)
 	return "Grenade casing prototype ([..()])"
 
@@ -336,30 +348,6 @@
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	materials = list(MAT_STEEL = 3000)
 	build_path = /obj/item/grenade/chem_grenade/large
-
-/*
-	MAU - AP weapons
-	MAV - cell-loaded weapons
-	MAVA - weapon
-	MAVB - cartridge
-	MAVC - cells
-	MAVD - modular energy weps
-	MAVE - modular energy weapon modules
-*/
-
-
-// Energy Weapons
-
-//Commenting this weapon out pending further review.
-/*
-/datum/design/science/weapon/energy/protector
-	design_name = "\'Myrmidon\' code-locked e-gun"
-	desc = "The 'Myrmidon' is a common energy gun that cannot fired lethally on Code Green, requiring Code Blue or higher to unlock its deadly capabilities."
-	id = "protector"
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
-	materials = list(MAT_STEEL = 4000, MAT_GLASS = 2000, MAT_SILVER = 1000)
-	build_path = /obj/item/gun/energy/protector
-*/
 
 /datum/design/science/weapon/energy/netgun
 	design_name = "\'Retiarius\' capture gun"
@@ -375,8 +363,6 @@
 	materials = list(MAT_STEEL = 3000, MAT_GLASS = 2000)
 	build_path = /obj/item/gun/energy/sickshot
 
-// Misc weapons
-
 /datum/design/science/weapon/pummeler
 	desc = "With the 'Pummeler', punt anyone you don't like out of the room!"
 	id = "pummeler"
@@ -384,7 +370,8 @@
 	materials = list(MAT_STEEL = 3000, MAT_GLASS = 3000, MAT_URANIUM = 1000)
 	build_path = /obj/item/gun/energy/pummeler
 
-// Anti-particle stuff
+/datum/design/science/weapon/particle
+	abstract_type = /datum/design/science/weapon/particle
 
 /datum/design/science/weapon/particle/generate_name(template)
 	return "Anti-particle weapon prototype ([..()])"
@@ -410,7 +397,9 @@
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 250)
 	build_path = /obj/item/pressurelock
 
-// NSFW gun and cells
+/datum/design/science/weapon/cell_based
+	abstract_type = /datum/design/science/weapon/cell_based
+
 /datum/design/science/weapon/cell_based/generate_name(template)
 	return "Cell-based weapon prototype ([..()])"
 
@@ -427,6 +416,9 @@
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 4000, MAT_PHORON = 4000)
 	build_path = /obj/item/ammo_magazine/cell_mag/combat/prototype
+
+/datum/design/science/nsfw_cell
+	abstract_type = /datum/design/science/nsfw_cell
 
 /datum/design/science/nsfw_cell/generate_name(template)
 	return "Microbattery prototype ([..()])"
@@ -480,6 +472,8 @@
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_URANIUM = 2000, MAT_PHORON = 2000, MAT_DIAMOND = 500)
 	build_path = /obj/item/ammo_casing/microbattery/combat/stripper
 
+/datum/design/science/modweapon
+	abstract_type = /datum/design/science/modweapon
 
 /datum/design/science/modweapon/generate_name(template)
 	return "Modular weapon prototype ([..()])"
@@ -554,6 +548,9 @@
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 6, TECH_POWER = 6, TECH_COMBAT = 6, TECH_ENGINEERING = 6, TECH_BLUESPACE = 4)
 	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_LEAD = 20000, MAT_URANIUM = 20000, MAT_DIAMOND = 4000)
 	build_path = /obj/item/gun/energy/modular/nuke
+
+/datum/design/science/modweaponnodule
+	abstract_type = /datum/design/science/modweaponnodule
 
 /datum/design/science/modweaponnodule/generate_name(template)
 	return "Modular weapon module design ([..()])"
@@ -817,7 +814,9 @@
 
 */
 
-//Firing pins to shoot your guns with
+/datum/design/science/pin
+	abstract_type = /datum/design/science/pin
+
 /datum/design/science/pin/generate_name(template)
 	return "Weapon firing pin ([..()])"
 

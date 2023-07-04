@@ -1,6 +1,5 @@
-/*
-	P - teleporteing item stuff
-*/
+/datum/design/science/teleport
+	abstract_type = /datum/desgin/science/teleport
 
 /datum/design/science/teleport/generate_name(template)
 	return "Teleportation device prototype ([..()])"

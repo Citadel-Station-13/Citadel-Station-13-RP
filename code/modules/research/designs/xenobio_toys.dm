@@ -1,7 +1,8 @@
+/datum/design/science/xenobio
+	abstract_type = /datum/design/science/xenobio
+
 /datum/design/science/xenobio/generate_name(template)
 	return "Xenobiology equipment design ([..()])"
-
-// Xenobio Weapons
 
 /datum/design/science/xenobio/slimebaton
 	id = "slimebaton"
@@ -14,8 +15,6 @@
 	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 3, TECH_POWER = 4, TECH_COMBAT = 4)
 	materials = list(MAT_STEEL = 5000)
 	build_path = /obj/item/gun/energy/taser/xeno
-
-// Other
 
 /datum/design/science/xenobio/slime_scanner
 	design_name = "slime scanner"

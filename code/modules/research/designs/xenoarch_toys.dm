@@ -1,7 +1,8 @@
+/datum/design/science/xenoarch
+	abstract_type = /datum/design/science/xenoarch
+
 /datum/design/science/xenoarch/generate_name(template)
 	return "Xenoarcheology equipment design ([..()])"
-
-// Xenoarch tools
 
 /datum/design/science/xenoarch/ano_scanner
 	design_name = "Alden-Saraspova counter"

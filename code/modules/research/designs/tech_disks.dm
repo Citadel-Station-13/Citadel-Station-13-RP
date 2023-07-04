@@ -1,3 +1,6 @@
+/datum/design/science/disk
+	abstract_type = /datum/design/science/disk
+
 /datum/design/science/disk/generate_name(template)
 	return "Data storage design ([..()])"
 

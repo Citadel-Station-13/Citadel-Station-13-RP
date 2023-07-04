@@ -1,9 +1,11 @@
 /datum/design/science/prosfab
+	abstract_type = /datum/design/science/prosfab
 	lathe_type = LATHE_TYPE_PROSTHETICS
 	category = list("Misc")
 	req_tech = list(TECH_MATERIAL = 1)
 
 /datum/design/science/prosfab/pros
+	abstract_type = /datum/design/science/prosfab/pros
 	category = list("Prosthetics")
 
 // Make new external organs and make 'em robotish
@@ -91,6 +93,7 @@
 
 //////////////////// Prosthetics ////////////////////
 /datum/design/science/prosfab/pros/torso
+	abstract_type = /datum/design/science/prosfab/pros/torso
 	work = (35 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 30000, MAT_GLASS = 7500)
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 3, TECH_DATA = 3)	//Saving the values just in case
@@ -175,6 +178,7 @@
 	materials = list(MAT_STEEL = 2813)
 
 /datum/design/science/prosfab/pros/internal
+	abstract_type = /datum/design/science/prosfab/pros/internal
 	category = list("Prosthetics, Internal")
 
 /datum/design/science/prosfab/pros/internal/cell
@@ -277,6 +281,7 @@
 //////////////// Cybernetic Augments //////////////////
 
 /datum/design/science/prosfab/augment
+	abstract_type = /datum/design/science/prosfab/augment
 	category = list("Augments")
 	lathe_type = LATHE_TYPE_PROSTHETICS
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -346,6 +351,7 @@
 
 //////////////////// Cyborg Parts ////////////////////
 /datum/design/science/prosfab/cyborg
+	abstract_type = /datum/design/science/prosfab/cyborg
 	category = list("Cyborg Parts")
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 3750)
@@ -402,6 +408,7 @@
 
 //////////////////// Cyborg Internals ////////////////////
 /datum/design/science/prosfab/cyborg/component
+	abstract_type = /datum/design/science/prosfab/cyborg/component
 	category = list("Cyborg Internals")
 	lathe_type = LATHE_TYPE_PROSTHETICS
 	work = (12 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -449,6 +456,7 @@
 
 //////////////////// Cyborg Modules ////////////////////
 /datum/design/science/prosfab/robot_upgrade
+	abstract_type = /datum/design/science/prosfab/robot_upgrade
 	category = list("Cyborg Modules")
 	lathe_type = LATHE_TYPE_PROSTHETICS
 	work = (12 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -516,6 +524,13 @@
 	req_tech = list(TECH_DATA = 6, TECH_MATERIAL = 6)
 	materials = list(MAT_STEEL = 25000, MAT_GLASS = 3000, MAT_GOLD = 350)
 	build_path = /obj/item/borg/upgrade/language
+
+/datum/design/science/prosfab/robot_upgrade/sizeshift
+	design_name = "Size Alteration Module"
+	id = "borg_sizeshift_module"
+	req_tech = list(TECH_BLUESPACE = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
+	materials = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
+	build_path = /obj/item/borg/upgrade/sizeshift
 
 // Synthmorph Bags.
 

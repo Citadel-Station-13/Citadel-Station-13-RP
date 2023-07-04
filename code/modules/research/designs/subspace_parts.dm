@@ -1,4 +1,5 @@
-// Telecomm parts
+/datum/design/science/stock_part/subspace
+	abstract_type = /datum/design/science/stock_part/subspace
 
 /datum/design/science/stock_part/subspace/generate_name(template)
 	return "Subspace component design ([..()])"

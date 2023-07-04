@@ -1,47 +1,5 @@
-/*
-	O - hardsuitsuit stuff
-		OA - hardsuits themselves
-		OB - hardsuit modules
-			OBAA - general purpose
-			OBAB - mining
-			OBAC - medical
-			OBAD - sec/combat
-			OBAE - engineering/maintenance/cleaning
-*/
-
-
-////// RIGSuit Stuff
-/*
-/datum/design/science/hardsuit
-	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
-	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 6000, MAT_URANIUM = 4000)
-
-/datum/design/science/hardsuit/AssembleDesignName()
-	..()
-	design_name = "hardsuit prototype ([name])"
-
-/datum/design/science/hardsuit/eva
-	design_name = "eva hardsuit (empty)"
-	id = "eva_hardsuit"
-	build_path = /obj/item/hardsuit/eva
-
-/datum/design/science/hardsuit/mining
-	design_name = "industrial hardsuit (empty)"
-	id = "ind_hardsuit"
-	build_path = /obj/item/hardsuit/industrial
-
-/datum/design/science/hardsuit/research
-	design_name = "ami hardsuit (empty)"
-	id = "ami_hardsuit"
-	build_path = /obj/item/hardsuit/hazmat
-
-/datum/design/science/hardsuit/medical
-	design_name = "medical hardsuit (empty)"
-	id = "med_hardsuit"
-	build_path = /obj/item/hardsuit/medical
-*/
-
 /datum/design/science/hardsuit_module
+	abstract_type = /datum/design/science/hardsuit_module
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000)
 
