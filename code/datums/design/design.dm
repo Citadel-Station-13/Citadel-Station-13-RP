@@ -75,8 +75,9 @@
 	if(!(instance.atom_flags & ATOM_INITIALIZED))
 		// lathe designs should not be breaking if init'd; we init designs right before atoms.
 		SSatoms.InitAtom(instance, list(FALSE))
-		// lathe designs shouldn't be qdeleting
-		ASSERT(!QDELETED(instance))
+	// lathe designs shouldn't be qdeleting, but incase someone puts in a random..
+	if(QDELETED(instance))
+		return
 	var/detected_materials = FALSE
 	// todo: maybe /obj/proc/detect_materials, /obj/proc/detect_material_parts ? this works fine for now tho.
 	if(isnull(materials))
@@ -100,8 +101,7 @@
 		build_name = instance.name
 	if(!build_desc)
 		build_desc = instance.desc
-	if(!isnull(instance))
-		qdel(instance)
+	qdel(instance)
 
 /datum/design/proc/generate()
 	if(!name)
