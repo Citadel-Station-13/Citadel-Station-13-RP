@@ -1,4 +1,5 @@
 /datum/design/aimodule
+	abstract_type = /datum/design/aimodule
 	lathe_type = LATHE_TYPE_CIRCUIT
 	materials = list(MAT_GLASS = 2000, MAT_GOLD = 100)
 
@@ -64,6 +65,7 @@
 
 // Core modules
 /datum/design/aimodule/core
+	abstract_type = /datum/design/aimodule/core
 	req_tech = list(TECH_DATA = 4, TECH_MATERIAL = 6)
 
 /datum/design/aimodule/core/generate_name(template)
