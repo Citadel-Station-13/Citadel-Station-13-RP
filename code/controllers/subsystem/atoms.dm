@@ -105,8 +105,9 @@ SUBSYSTEM_DEF(atoms)
 /datum/controller/subsystem/atoms/proc/instance_atom_immediate(path, mapload, atom/where, ...)
 	var/old_initialized = initialized
 	initialized = mapload? INITIALIZATION_INNEW_MAPLOAD : INITIALIZATION_INNEW_REGULAR
-	var/atom/created = new path(arglist(args.Copy(3)))
+	var/atom/created = new path(arglist(args.Copy()))
 	initialized = old_initialized
+	return created
 
 /datum/controller/subsystem/atoms/proc/map_loader_begin()
 	old_subsystem_initialized = initialized
