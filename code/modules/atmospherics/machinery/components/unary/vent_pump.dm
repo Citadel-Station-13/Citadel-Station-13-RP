@@ -51,48 +51,11 @@
 	var/datum/looping_sound/air_pump/soundloop
 */
 
-/obj/machinery/atmospherics/component/unary/vent_pump/on
-	use_power = USE_POWER_IDLE
-	icon_state = "map_vent_out"
-
-/obj/machinery/atmospherics/component/unary/vent_pump/on/welded
-	welded = 1
-
-/obj/machinery/atmospherics/component/unary/vent_pump/aux
-	icon_state = "map_vent_aux"
-	icon_connect_type = "-aux"
-	connect_types = CONNECT_TYPE_AUX //connects to aux pipes
-
-/obj/machinery/atmospherics/component/unary/vent_pump/siphon
-	pump_direction = 0
-
-/obj/machinery/atmospherics/component/unary/vent_pump/siphon/on
-	use_power = USE_POWER_IDLE
-	icon_state = "map_vent_in"
-
-/obj/machinery/atmospherics/component/unary/vent_pump/positive // For some reason was buried in tether_things.dm -Bloop
-	use_power = USE_POWER_IDLE
-	icon_state = "map_vent_out"
-	external_pressure_bound = ONE_ATMOSPHERE * 1.1
-
-/obj/machinery/atmospherics/component/unary/vent_pump/siphon/on/atmos
-	use_power = USE_POWER_IDLE
-	icon_state = "map_vent_in"
-	external_pressure_bound = 0
-	external_pressure_bound_default = 0
-	internal_pressure_bound = 2000
-	internal_pressure_bound_default = 2000
-	pressure_checks = 2
-	pressure_checks_default = 2
-
 /obj/machinery/atmospherics/component/unary/vent_pump/Initialize(mapload)
 	. = ..()
 	/*
 	soundloop = new(list(src), FALSE)
 	*/
-
-/obj/machinery/atmospherics/component/unary/vent_pump/Initialize(mapload)
-	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP
 
 	icon = null
@@ -449,6 +412,40 @@
 			"<span class='notice'>You have unfastened \the [src].</span>", \
 			"You hear a ratchet.")
 		deconstruct()
+
+/obj/machinery/atmospherics/component/unary/vent_pump/on
+	use_power = USE_POWER_IDLE
+	icon_state = "map_vent_out"
+
+/obj/machinery/atmospherics/component/unary/vent_pump/on/welded
+	welded = 1
+
+/obj/machinery/atmospherics/component/unary/vent_pump/aux
+	icon_state = "map_vent_aux"
+	icon_connect_type = "-aux"
+	connect_types = CONNECT_TYPE_AUX //connects to aux pipes
+
+/obj/machinery/atmospherics/component/unary/vent_pump/siphon
+	pump_direction = 0
+
+/obj/machinery/atmospherics/component/unary/vent_pump/siphon/on
+	use_power = USE_POWER_IDLE
+	icon_state = "map_vent_in"
+
+/obj/machinery/atmospherics/component/unary/vent_pump/positive // For some reason was buried in tether_things.dm -Bloop
+	use_power = USE_POWER_IDLE
+	icon_state = "map_vent_out"
+	external_pressure_bound = ONE_ATMOSPHERE * 1.1
+
+/obj/machinery/atmospherics/component/unary/vent_pump/siphon/on/atmos
+	use_power = USE_POWER_IDLE
+	icon_state = "map_vent_in"
+	external_pressure_bound = 0
+	external_pressure_bound_default = 0
+	internal_pressure_bound = 2000
+	internal_pressure_bound_default = 2000
+	pressure_checks = 2
+	pressure_checks_default = 2
 
 #undef DEFAULT_PRESSURE_DELTA
 
