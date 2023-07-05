@@ -87,22 +87,11 @@
 		owner = loc
 		w_class = max(src.w_class + mob_size_difference(owner.mob_size, MOB_MEDIUM), 1) //smaller mobs have smaller organs.
 		if(internal)
-			if(!LAZYLEN(owner.internal_organs))
-				owner.internal_organs = list()
-			if(!LAZYLEN(owner.internal_organs_by_name))
-				owner.internal_organs_by_name = list()
-
-			owner.internal_organs |= src
-			owner.internal_organs_by_name[organ_tag] = src
-
+			LAZYDISTINCTADD(owner.internal_organs, src)
+			LAZYSET(owner.internal_organs_by_name, organ_tag, src)
 		else
-			if(!LAZYLEN(owner.organs))
-				owner.organs = list()
-			if(!LAZYLEN(owner.organs_by_name))
-				owner.organs_by_name = list()
-
-			owner.organs |= src
-			owner.organs_by_name[organ_tag] = src
+			LAZYDISTINCTADD(owner.organs, src)
+			LAZYSET(owner.organs_by_name, organ_tag, src)
 
 	if(!max_damage)
 		max_damage = min_broken_damage * 2

@@ -521,14 +521,9 @@
 	},
 /area/tcommsat/chamber)
 "bi" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
-/area/tcommsat/chamber)
+/obj/landmark/spawnpoint/overflow/station,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "bj" = (
 /obj/machinery/light{
 	dir = 1
@@ -1231,12 +1226,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
-"cP" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/medical/medbay)
 "cQ" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -1929,18 +1918,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
-	},
-/turf/simulated/floor/tiled,
-/area/medical/medbay)
-"eA" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
@@ -3026,7 +3003,7 @@
 "hx" = (
 /obj/machinery/computer/shuttle_control/web{
 	dir = 2;
-	my_doors = list("webdemo_docker_hatch" = "Hatch");
+	my_doors = list("webdemo_docker_hatch"="Hatch");
 	name = "Web-Demo Console";
 	shuttle_tag = "Web-Demo"
 	},
@@ -5288,7 +5265,7 @@ gj
 gf
 gr
 gf
-gf
+bi
 gz
 gf
 gf
@@ -5390,7 +5367,7 @@ gk
 gf
 gr
 gf
-gf
+gB
 gf
 gf
 gf
@@ -5443,7 +5420,7 @@ aj
 aj
 aD
 aR
-bi
+bk
 bu
 bu
 bu
@@ -6889,7 +6866,7 @@ cO
 de
 dr
 dF
-cP
+et
 eb
 du
 cM
@@ -6985,9 +6962,9 @@ cz
 cA
 cc
 cH
-cP
-cP
-cP
+et
+et
+et
 df
 ds
 du
@@ -6996,7 +6973,7 @@ ec
 ek
 et
 et
-eA
+df
 et
 eG
 eO
@@ -7604,7 +7581,7 @@ dh
 cM
 dG
 dF
-cP
+et
 en
 cM
 cM
