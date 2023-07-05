@@ -127,7 +127,6 @@
 	if(.)
 		return
 	feeding_port(user)
-	..()
 
 /obj/item/clothing/mask/gas/zaddat
 	name = "Zaddat Veil"

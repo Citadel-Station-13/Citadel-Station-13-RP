@@ -93,7 +93,7 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	if(groups[G.id])
 		var/old_group = groups[G.id]
 		LAZYREMOVE(gas_by_group[old_group], G.id)
-	groups[G.id] = G.gas_group
+	groups[G.id] = G.gas_groups
 	//? physics
 	specific_heats[G.id] = G.specific_heat
 	molar_masses[G.id] = G.molar_mass
@@ -130,9 +130,45 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	rarities[G.id] = G.rarity
 	//? rebuild cheap cache lists
 	//* gas groups
-	LAZYINITLIST(gas_by_group[G.gas_group])
-	LAZYDISTINCTADD(gas_by_group[G.gas_group], G.id)
+	for(var/group in G.gas_groups)
+		LAZYINITLIST(gas_by_group[group])
+		LAZYDISTINCTADD(gas_by_group[group], G.id)
 	//* gas flags
 	for(var/bit in bitfield2list(G.gas_flags))
 		LAZYINITLIST(gas_by_flag["[bit]"])
 		LAZYDISTINCTADD(gas_by_flag["[bit]"], G.id)
+
+/**
+ * tgui gas context
+ *
+ * generates data for tgui/interfaces/Atmos.tsx:
+ * * GasContext
+ * * FullGasContext
+ *
+ * @params
+ * * ids - gas ids; defaults to all.
+ * * full - for FullGasContext? Usually not needed.
+ */
+/datum/gas_data/proc/tgui_gas_context(list/ids, full = FALSE)
+	. = list()
+	var/list/gases = list()
+	.["gases"] = gases
+	var/list/core_ids = list()
+	.["coreGases"] = core_ids
+	var/list/groups = list()
+	.["groups"] = groups
+	for(var/id in (ids || gases))
+		var/datum/gas/instance = gases[id]
+		if(isnull(instance))
+			continue
+		var/list/assembled = list(
+			"id" = instance.id,
+			"name" = instance.name,
+			"flags" = instance.gas_flags,
+			"groups" = instance.gas_groups,
+			"specificHeat" = instance.specific_heat,
+			"molarMass" = instance.molar_mass,
+		)
+		if(instance.gas_flags & GAS_FLAG_CORE)
+			core_ids |= instance.id
+		groups |= instance.gas_groups
