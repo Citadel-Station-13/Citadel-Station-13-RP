@@ -12,8 +12,8 @@ import {
 import { Window } from "../layouts";
 
 export const Vote = (props, context) => {
-  const { data } = useBackend(context);
-  const { mode, question, admin } = data;
+  const { act, data } = useBackend(context);
+  const { mode, question, admin, selected_choice} = data;
 
   // Adds the voting type to title if there is an ongoing vote
   let windowTitle = "Vote";
@@ -31,6 +31,15 @@ export const Vote = (props, context) => {
             </Section>
           )}
           <ChoicesPanel />
+          <Button
+            color={"green"}
+            disabled={!selected_choice}
+            onClick={() => {
+              act("unvote");
+            }}
+          >
+            Unvote
+          </Button>
           <TimePanel />
         </Stack>
       </Window.Content>
@@ -117,15 +126,6 @@ const ChoicesPanel = (props, context) => {
                 <LabeledList.Divider />
               </Box>
             ))}
-            <Button
-              color={"green"}
-              disabled={!selected_choice}
-              onClick={() => {
-                act("unvote");
-              }}
-            >
-              Unvote
-            </Button>
           </LabeledList>
         ) : (
           <NoticeBox>No choices available!</NoticeBox>
