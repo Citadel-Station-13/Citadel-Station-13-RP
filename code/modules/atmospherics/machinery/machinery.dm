@@ -239,3 +239,10 @@ Pipelines + Other Objects -> Pipe network
 		layer = PIPE_LAYER
 	else
 		reset_plane_and_layer()
+
+/**
+ * currently unimplemented
+ * call when our internal settings change to push changes to relevant uis.
+ */
+/obj/machinery/atmospherics/proc/ui_settings_updated()
+	// todo: implement

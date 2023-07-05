@@ -328,6 +328,15 @@
 	else
 		..()
 
+/**
+ * encodes data for AtmosScrubberControl interface component
+ */
+/obj/machinery/atmospherics/component/unary/vent_scrubber/proc/ui_scrubber_data()
+	return list(
+
+	)
+	#warn impl
+
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on
 	use_power = USE_POWER_IDLE
 	icon_state = "map_scrubber_on"
