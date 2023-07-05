@@ -9,44 +9,17 @@
 	RETURN_TYPE(/obj/item)
 	return hand? r_hand : l_hand
 
-/mob/living/get_left_held_item()
-	RETURN_TYPE(/obj/item)
-	return l_hand
-
-/mob/living/get_right_held_item()
-	RETURN_TYPE(/obj/item)
-	return r_hand
-
 /mob/living/get_held_index(obj/item/I)
 	if(l_hand == I)
 		return 1
 	else if(r_hand == I)
 		return 2
 
-/mob/living/get_held_items()
-	RETURN_TYPE(/list)
-	. = list()
-	if(l_hand)
-		. += l_hand
-	if(r_hand)
-		. += r_hand
-
-/mob/living/hands_full()
-	return l_hand && r_hand
-
 /mob/living/put_in_active_hand(obj/item/I, flags)
 	return hand? put_in_left_hand(I, flags) : put_in_right_hand(I, flags)
 
 /mob/living/put_in_inactive_hand(obj/item/I, flags)
 	return hand? put_in_right_hand(I, flags) : put_in_left_hand(I, flags)
-
-/mob/living/get_held_item_of_index(index)
-	RETURN_TYPE(/obj/item)
-	switch(index)
-		if(1)
-			return l_hand
-		if(2)
-			return r_hand
 
 /mob/living/get_number_of_hands()
 	return 2
@@ -124,6 +97,14 @@
 			return put_in_left_hand(I, flags)
 		if(2)
 			return put_in_right_hand(I, flags)
+
+/mob/living/get_number_of_hands()
+	return has_hands? 2 : 0
+
+/mob/living/has_hands()
+	return has_hands
+
+#warn parse above
 
 /mob/living/_unequip_held(obj/item/I, flags)
 	if(l_hand == I)
@@ -246,9 +227,3 @@
 			return TRUE
 
 	return FALSE
-
-/mob/living/get_number_of_hands()
-	return has_hands? 2 : 0
-
-/mob/living/has_hands()
-	return has_hands

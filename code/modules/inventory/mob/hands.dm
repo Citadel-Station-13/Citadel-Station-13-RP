@@ -86,6 +86,48 @@
 //* Public API - Get *//
 
 /**
+ * returns first item on left
+ */
+/mob/proc/get_left_held_item()
+	RETURN_TYPE(/obj/item)
+	for(var/i in 1 to length(held_items) step 2)
+		if(isnull(held_items[i]))
+			continue
+		return held_items[i]
+
+/**
+ * returns first item on right
+ */
+/mob/proc/get_right_held_item()
+	RETURN_TYPE(/obj/item)
+	for(var/i in 2 to length(held_items) step 2)
+		if(isnull(held_items[i]))
+			continue
+		return held_items[i]
+
+/**
+ * returns all items on left
+ */
+/mob/proc/get_left_held_items()
+	RETURN_TYPE(/obj/item)
+	. = list()
+	for(var/i in 1 to length(held_items) step 2)
+		if(isnull(held_items[i]))
+			continue
+		. += held_items[i]
+
+/**
+ * returns all items on right
+ */
+/mob/proc/get_right_held_items()
+	RETURN_TYPE(/obj/item)
+	. = list()
+	for(var/i in 2 to length(held_items) step 2)
+		if(isnull(held_items[i]))
+			continue
+		. += held_items[i]
+
+/**
  * returns held items
  */
 /mob/proc/get_held_items()

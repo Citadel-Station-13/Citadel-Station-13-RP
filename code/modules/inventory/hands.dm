@@ -25,28 +25,6 @@
 	if(!.)
 		I.forceMove(drop_loc)
 
-/mob/proc/get_left_held_item()
-	RETURN_TYPE(/obj/item)
-	return
-
-/mob/proc/get_left_held_items()
-	var/obj/item/I = get_left_held_item()
-	if(I)
-		return list(I)
-	return list()
-	// TODO: actual variable hand count
-
-/mob/proc/get_right_held_item()
-	RETURN_TYPE(/obj/item)
-	return
-
-/mob/proc/get_right_held_items()
-	var/obj/item/I = get_right_held_item()
-	if(I)
-		return list(I)
-	return list()
-	// TODO: actual variable hand count
-
 /**
  * return index of item, or null if not found
  */
