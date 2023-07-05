@@ -94,6 +94,8 @@
 	var/datum/inventory/inventory
 	/// held items; indexed list. defaults to null, lazy.
 	var/list/held_items
+	/// active hand index - null or num. must always be in range of held_items indices!
+	var/active_hand
 
 	//! Size
 	//! todo kill this with fire it should just be part of icon_scale_x/y.
