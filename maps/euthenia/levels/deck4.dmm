@@ -1778,6 +1778,10 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"oh" = (
+/obj/landmark/map_data/euthenia,
+/turf/space,
+/area/space)
 "oi" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
@@ -7181,7 +7185,7 @@ Za
 Za
 Za
 Za
-Za
+oh
 Za
 "}
 (3,1,1) = {"

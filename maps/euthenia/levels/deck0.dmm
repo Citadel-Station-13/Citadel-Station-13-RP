@@ -401,10 +401,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
-"Dq" = (
-/obj/landmark/map_data/euthenia,
-/turf/space,
-/area/space)
 "Ee" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1188,7 +1184,7 @@ NT
 NT
 NT
 NT
-Dq
+NT
 NT
 "}
 (3,1,1) = {"
