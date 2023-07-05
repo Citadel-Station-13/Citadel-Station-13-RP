@@ -2,7 +2,7 @@
 	id = "euthenia"
 	name = "World - Euthenia"
 	levels = list(
-		/datum/map_level/euthenia/deck/five,
+		/datum/map_level/euthenia/deck/zero,
 		/datum/map_level/euthenia/deck/one,
 		/datum/map_level/euthenia/deck/two,
 		/datum/map_level/euthenia/deck/three,
@@ -223,15 +223,15 @@
 	)
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
-	link_above = /datum/map_level/euthenia/deck/five
+	link_above = /datum/map_level/euthenia/deck/zero
 	link_below = /datum/map_level/euthenia/deck/two
 
-/datum/map_level/euthenia/deck/five
-	id = "EutheniaDeck5"
-	name = "Euthenia - Deck 5"
-	display_id = "euthenia-5"
-	display_name = "NSV Euthenia Deck 5"
-	absolute_path = "maps/euthenia/levels/deck5.dmm"
+/datum/map_level/euthenia/deck/zero
+	id = "EutheniaDeck0"
+	name = "Euthenia - Flight Deck"
+	display_id = "euthenia-0"
+	display_name = "NSV Euthenia Flight Deck"
+	absolute_path = "maps/euthenia/levels/deck0.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -239,6 +239,7 @@
 	base_turf = /turf/simulated/open
 	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
 	link_below = /datum/map_level/euthenia/deck/one
+
 /datum/map_level/euthenia/misc
 	id = "EutheniaMisc"
 	name = "Euthenia - Misc"
