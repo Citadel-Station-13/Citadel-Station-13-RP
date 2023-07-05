@@ -13,7 +13,7 @@ import { Window } from "../layouts";
 
 export const Vote = (props, context) => {
   const { act, data } = useBackend(context);
-  const { mode, question, admin, selected_choice} = data;
+  const { mode, question, admin, selected_choice } = data;
 
   // Adds the voting type to title if there is an ongoing vote
   let windowTitle = "Vote";
