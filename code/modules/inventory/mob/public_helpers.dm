@@ -1,4 +1,4 @@
-//* these call other procs in external.dm *//
+//* these have the primary function of calling other procs in public.dm *//
 
 /**
  * dels something or says "x is stuck to your hand"
