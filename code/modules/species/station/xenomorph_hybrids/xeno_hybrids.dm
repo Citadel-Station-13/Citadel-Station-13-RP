@@ -105,13 +105,16 @@
 /datum/species/xenohybrid/can_breathe_water()
 	return TRUE	//they dont quite breathe
 
-/datum/species/xenohybrid/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/xenohybrid/proc/handle_healing_conditions(var/mob/living/carbon/human/H)
 	var/healing_factor = 1
 	if(H.lying)
 		healing_factor *= 1.2
 	if(H.active_regen)
 		if(!H.lying)
 			to_chat(H, SPAN_BOLDWARNING("You need to lie down to benefit from your enhanced regeneration"))
+			H.active_regen = FALSE
+		else if(H.nutrition < 50)
+			to_chat(H, SPAN_BOLDWARNING("You are too hungry to benefit from your enhanced regeneration"))
 			H.active_regen = FALSE
 		healing_factor *= 4
 	var/turf/T = get_turf(H)
@@ -120,43 +123,22 @@
 	if(/obj/structure/bed/hybrid_nest in T.contents)
 		healing_factor *= 1.2
 
-	if(H.nutrition < 50)
-		if(H.active_regen)
-			to_chat(H, SPAN_BOLDWARNING("You are to hungry to benefit from your enhanced regeneration"))
-			H.active_regen = FALSE
-		return
-	//Heal_amount is 0.5, with all bonies above 6.336
+	return healing_factor // highest value is 6,336
 
-	var/heal_amount = heal_rate * healing_factor
-	var/nutrition_debt = (H.getFireLoss() ? heal_rate : 0)
+/datum/species/xenohybrid/handle_environment_special(mob/living/carbon/human/H)
+	var/heal_amount = heal_rate * handle_healing_conditions(H)
+
+	var/nutrition_debt = (H.getFireLoss() ? heal_rate : 0)//Heal rate and not heal_amount, since we want to reward taking the modifiers
 	H.adjustFireLoss(-heal_amount)
 	nutrition_debt += (H.getBruteLoss() ? heal_rate : 0)
 	H.adjustBruteLoss(-heal_amount)
 	nutrition_debt += (H.getToxLoss() ? heal_rate : 0)
 	H.adjustToxLoss(-heal_amount)
 
-	if(heal_amount <= 0.6)
-		H.nutrition -= nutrition_debt
-		return //If we do more than normally resting we can repair more difficult stuff
-
-	for(var/obj/item/organ/external/E in H.bad_external_organs)
-		E.bandage()
-		nutrition_debt += 2 //Costly but not overly expansive, certainly better than bleeding out
-
-	if(H.nutrition < 100)
-		H.nutrition -= nutrition_debt
+	H.nutrition -= nutrition_debt
+	if(H.nutrition < 100 || heal_amount <= 0.6)
 		return
 
-	if (H.getBruteLoss() == 0) //If we have no flat damage remaining, fix internal issues, and not running around
-		for(var/limb_type in src.has_limbs)
-			var/obj/item/organ/external/E = H.organs_by_name[limb_type]
-			if((E.status & ORGAN_BROKEN))
-				E.status &= ~ORGAN_BROKEN
-				nutrition_debt += 20 //Really expansive (Might make it a plasma/phoron cost instead)
-				break // Heal one broken bone per processing
-	H.nutrition -= nutrition_debt
-
-	if(H.vessel.get_reagent_amount("blood") <= blood_level_safe)
+	if(H.vessel.get_reagent_amount("blood") <= blood_level_safe && H.try_take_nutrition(heal_amount * 4))
 		H.vessel.add_reagent("blood", heal_amount)//instead of IB healing, they regenerate blood a lot faster
-		H.nutrition = max(H.nutrition - (heal_amount * 4), 0)//This actually costs nutrition
 
