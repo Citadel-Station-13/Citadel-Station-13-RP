@@ -164,65 +164,6 @@
 		/area/engineering/engineering_airlock,
 		/area/solar/)
 
-/datum/map_level/euthenia/deck/five
-	id = "EutheniaDeck5"
-	name = "Euthenia - Deck 5"
-	display_id = "euthenia-5"
-	display_name = "NSV Euthenia Deck 5"
-	absolute_path = "maps/euthenia/levels/deck5.dmm"
-	traits = list(
-		ZTRAIT_STATION,
-		ZTRAIT_FACILITY_SAFETY,
-	)
-	base_turf = /turf/simulated/open
-	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
-	link_below = /datum/map_level/euthenia/deck/one
-
-
-/datum/map_level/euthenia/deck/one
-	id = "EutheniaDeck1"
-	name = "Euthenia - Deck 1"
-	display_id = "euthenia-1"
-	display_name = "NSV Euthenia Deck 1"
-	absolute_path = "maps/euthenia/levels/deck1.dmm"
-	traits = list(
-		ZTRAIT_STATION,
-		ZTRAIT_FACILITY_SAFETY,
-	)
-	base_turf = /turf/simulated/open
-	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
-	link_above = /datum/map_level/euthenia/deck/five
-	link_below = /datum/map_level/euthenia/deck/two
-
-/datum/map_level/euthenia/deck/two
-	id = "EutheniaDeck2"
-	name = "Euthenia - Deck 2"
-	display_id = "euthenia-2"
-	display_name = "NSV Euthenia Deck 2"
-	absolute_path = "maps/euthenia/levels/deck2.dmm"
-	traits = list(
-		ZTRAIT_STATION,
-		ZTRAIT_FACILITY_SAFETY,
-	)
-	base_turf = /turf/simulated/open
-	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
-	link_above = /datum/map_level/euthenia/deck/one
-	link_below = /datum/map_level/euthenia/deck/three
-
-/datum/map_level/euthenia/deck/three
-	id = "EutheniaDeck3"
-	name = "Euthenia - Deck 3"
-	display_id = "euthenia-3"
-	display_name = "NSV Euthenia Deck 3"
-	absolute_path = "maps/euthenia/levels/deck3.dmm"
-	traits = list(
-		ZTRAIT_STATION,
-		ZTRAIT_FACILITY_SAFETY,
-	)
-	base_turf = /turf/simulated/open
-	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
-	link_above = /datum/map_level/euthenia/deck/two
-	link_below = /datum/map_level/euthenia/deck/four
 
 /datum/map_level/euthenia/deck/four
 	id = "EutheniaDeck4"
@@ -239,6 +180,65 @@
 	link_above = /datum/map_level/euthenia/deck/three
 
 
+/datum/map_level/euthenia/deck/three
+	id = "EutheniaDeck3"
+	name = "Euthenia - Deck 3"
+	display_id = "euthenia-3"
+	display_name = "NSV Euthenia Deck 3"
+	absolute_path = "maps/euthenia/levels/deck3.dmm"
+	traits = list(
+		ZTRAIT_STATION,
+		ZTRAIT_FACILITY_SAFETY,
+	)
+	base_turf = /turf/simulated/open
+	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
+	link_above = /datum/map_level/euthenia/deck/two
+	link_below = /datum/map_level/euthenia/deck/four
+
+
+/datum/map_level/euthenia/deck/two
+	id = "EutheniaDeck2"
+	name = "Euthenia - Deck 2"
+	display_id = "euthenia-2"
+	display_name = "NSV Euthenia Deck 2"
+	absolute_path = "maps/euthenia/levels/deck2.dmm"
+	traits = list(
+		ZTRAIT_STATION,
+		ZTRAIT_FACILITY_SAFETY,
+	)
+	base_turf = /turf/simulated/open
+	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
+	link_above = /datum/map_level/euthenia/deck/one
+	link_below = /datum/map_level/euthenia/deck/three
+
+/datum/map_level/euthenia/deck/one
+	id = "EutheniaDeck1"
+	name = "Euthenia - Deck 1"
+	display_id = "euthenia-1"
+	display_name = "NSV Euthenia Deck 1"
+	absolute_path = "maps/euthenia/levels/deck1.dmm"
+	traits = list(
+		ZTRAIT_STATION,
+		ZTRAIT_FACILITY_SAFETY,
+	)
+	base_turf = /turf/simulated/open
+	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
+	link_above = /datum/map_level/euthenia/deck/five
+	link_below = /datum/map_level/euthenia/deck/two
+
+/datum/map_level/euthenia/deck/five
+	id = "EutheniaDeck5"
+	name = "Euthenia - Deck 5"
+	display_id = "euthenia-5"
+	display_name = "NSV Euthenia Deck 5"
+	absolute_path = "maps/euthenia/levels/deck5.dmm"
+	traits = list(
+		ZTRAIT_STATION,
+		ZTRAIT_FACILITY_SAFETY,
+	)
+	base_turf = /turf/simulated/open
+	flags = LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES | LEGACY_LEVEL_STATION
+	link_below = /datum/map_level/euthenia/deck/one
 /datum/map_level/euthenia/misc
 	id = "EutheniaMisc"
 	name = "Euthenia - Misc"
