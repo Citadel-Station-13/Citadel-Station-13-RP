@@ -30,14 +30,6 @@
 
 #warn groups
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on
-	use_power = USE_POWER_IDLE
-	icon_state = "map_scrubber_on"
-
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on/welded
-	welded = 1
-
-
 /obj/machinery/atmospherics/component/unary/vent_scrubber/Initialize(mapload)
 	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_FILTER
@@ -60,7 +52,6 @@
 		initial_loc.air_scrub_info -= id_tag
 		initial_loc.air_scrub_names -= id_tag
 	return ..()
-
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/update_icon(safety = 0)
 	if(!check_icon_cache())
@@ -336,3 +327,10 @@
 			return 1
 	else
 		..()
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on
+	use_power = USE_POWER_IDLE
+	icon_state = "map_scrubber_on"
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on/welded
+	welded = 1

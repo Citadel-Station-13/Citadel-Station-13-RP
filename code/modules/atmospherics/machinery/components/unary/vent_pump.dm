@@ -413,6 +413,15 @@
 			"You hear a ratchet.")
 		deconstruct()
 
+/**
+ * data for AtmosVentControl interface component
+ */
+/obj/machinery/atmospherics/component/unary/vent_pump/proc/ui_pump_data()
+	return list(
+
+	)
+	#warn impl
+
 /obj/machinery/atmospherics/component/unary/vent_pump/on
 	use_power = USE_POWER_IDLE
 	icon_state = "map_vent_out"
