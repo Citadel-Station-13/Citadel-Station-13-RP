@@ -92,6 +92,8 @@
 	//? Inventory
 	/// our inventory datum, if any.
 	var/datum/inventory/inventory
+	/// held items; indexed list. defaults to null, lazy.
+	var/list/held_items
 
 	//! Size
 	//! todo kill this with fire it should just be part of icon_scale_x/y.

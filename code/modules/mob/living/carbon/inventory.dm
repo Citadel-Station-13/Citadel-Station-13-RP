@@ -35,9 +35,9 @@
 	. = ..()
 	if(include_restraints)
 		if(handcuffed)
-			. += handcuffed._inv_return_attached()
+			. += handcuffed.inv_slot_attached()
 		if(legcuffed)
-			. += legcuffed._inv_return_attached()
+			. += legcuffed.inv_slot_attached()
 
 /mob/living/carbon/_get_inventory_slot_ids()
 	return ..() + list(
