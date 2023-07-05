@@ -9,11 +9,11 @@
 /// Is this gas a valid R-UST fusion fuel? Has NOTHING to do with tg fusion!
 #define GAS_FLAG_FUSION_FUEL		(1<<3)
 /// gas is unknown/alien
-#define GAS_FLAG_UNKONWN			(1<<4)
-/// gas is core gas, always render
+#define GAS_FLAG_UNKNOWN			(1<<4)
+/// gas is core gas, always render & on main filter options. implies [GAS_FLAG_FILTERABLE].
 #define GAS_FLAG_CORE				(1<<5)
 /// gas is common enough to be filtered by machinery without spectrometry/grouping
-#define GAS_FLAG_LISTED				(1<<6)
+#define GAS_FLAG_FILTERABLE				(1<<6)
 /// gas is highly dangerous, mostly used to know when to *loudly* log as opposed to just log
 #define GAS_FLAG_DANGEROUS			(1<<7)
 

@@ -13,7 +13,7 @@
 	/// Textual name
 	var/name = "Unnamed Gas"
 	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
-	var/gas_flags = GAS_FLAG_LISTED
+	var/gas_flags = GAS_FLAG_FILTERABLE
 	/// gas group - list support can be added later
 	var/list/gas_groups = list()
 

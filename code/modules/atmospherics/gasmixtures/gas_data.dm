@@ -172,3 +172,14 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 		if(instance.gas_flags & GAS_FLAG_CORE)
 			core_ids |= instance.id
 		groups |= instance.gas_groups
+
+/**
+ * gets tgui gas context for all non-unknown gasses
+ */
+/datum/gas_data/proc/tgui_known_gas_context(full = FALSE)
+	. = list()
+	for(var/id in flags)
+		if(flags[id] & GAS_FLAG_UNKNOWN)
+			continue
+		. += id
+	return tgui_gas_context(., full)

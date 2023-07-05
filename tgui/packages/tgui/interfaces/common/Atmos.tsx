@@ -1,3 +1,9 @@
+import { SectionProps } from "../../components/Section";
+
+/**
+ * @file
+ * @license MIT
+ */
 export type AtmosGasID = string;
 export type AtmosGasGroup = string;
 
@@ -9,7 +15,7 @@ export enum AtmosGasFlags {
   FusionFuel = (1<<3),
   Unknown = (1<<4),
   Core = (1<<5),
-  Listed = (1<<6),
+  Filterable = (1<<6),
   Dangerous = (1<<7),
 }
 
