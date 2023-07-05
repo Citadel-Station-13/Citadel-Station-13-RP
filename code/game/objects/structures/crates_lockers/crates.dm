@@ -133,6 +133,7 @@
 	name = "Secure crate"
 	closet_appearance = /singleton/closet_appearance/crate/secure
 	var/tamper_proof = 0
+	secure = TRUE
 	locked = TRUE
 
 /obj/structure/closet/crate/secure/can_open()
