@@ -30,21 +30,24 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
  * - more than one chemical it will still only appear in only one of the sublists.
  */
 /datum/controller/subsystem/processing/chemistry/proc/initialize_chemical_reactions()
-	var/paths = typesof(/datum/chemical_reaction) - /datum/chemical_reaction
+	var/paths = subtypesof(/datum/chemical_reaction)
 	chemical_reactions = list()
 	chemical_reactions_by_reagent = list()
 
 	for(var/path in paths)
 		var/datum/chemical_reaction/D = new path
 		chemical_reactions += D
-		if(D.required_reagents && D.required_reagents.len)
-			var/reagent_id = D.required_reagents[1]
-			LAZYINITLIST(chemical_reactions_by_reagent[reagent_id])
-			chemical_reactions_by_reagent[reagent_id] += D
+	tim_sort(chemical_reactions, /proc/cmp_chemical_reaction_priority)
+	for(var/datum/chemical_reaction/D as anything in chemical_reactions)
+		if(!length(D.required_reagents))
+			continue
+		var/reagent_id = D.required_reagents[1]
+		LAZYINITLIST(chemical_reactions_by_reagent[reagent_id])
+		chemical_reactions_by_reagent[reagent_id] += D
 
 /// Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
 /datum/controller/subsystem/processing/chemistry/proc/initialize_chemical_reagents()
-	var/paths = typesof(/datum/reagent) - /datum/reagent
+	var/paths = subtypesof(/datum/reagent)
 	reagent_lookup = list()
 	for(var/datum/reagent/path as anything in paths)
 		if(initial(path.abstract_type) == path)

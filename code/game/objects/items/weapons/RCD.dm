@@ -72,7 +72,7 @@
 	add_overlay("[initial(icon_state)]_charge[nearest_ten]")
 
 
-/obj/item/rcd/examine(mob/user)
+/obj/item/rcd/examine(mob/user, dist)
 	. = ..()
 	. += "It currently holds [stored_matter]/[max_stored_matter] matter-units."
 
@@ -183,10 +183,10 @@
 /obj/item/rcd/proc/can_afford(amount)
 	return stored_matter >= amount
 
-/obj/item/rcd/afterattack(atom/A, mob/living/user, proximity)
-	if(!ranged && !proximity)
+/obj/item/rcd/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!ranged && !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return FALSE
-	use_rcd(A, user)
+	use_rcd(target, user)
 
 // Used to call rcd_act() on the atom hit.
 /obj/item/rcd/proc/use_rcd(atom/A, mob/living/user)
@@ -433,7 +433,7 @@
 	origin_tech = list(TECH_MATERIAL = 4)
 	remaining = RCD_MAX_CAPACITY
 
-/obj/item/rcd_ammo/examine(mob/user)
+/obj/item/rcd_ammo/examine(mob/user, dist)
 	. = ..()
 	. += "It currently holds [remaining]/[initial(remaining)] matter-units."
 

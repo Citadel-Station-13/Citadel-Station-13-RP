@@ -94,7 +94,7 @@
 
 	M.RefreshParts()
 
-/obj/item/circuitboard/examine(mob/user)
+/obj/item/circuitboard/examine(mob/user, dist)
 	. = ..()
 	if(LAZYLEN(req_components))
 		var/list/nice_list = list()

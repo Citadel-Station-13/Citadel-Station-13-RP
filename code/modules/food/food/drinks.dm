@@ -46,8 +46,8 @@
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	standard_feed_mob(user, target)
 
-/obj/item/reagent_containers/food/drinks/afterattack(obj/target, mob/user, proximity)
-	if(!proximity)
+/obj/item/reagent_containers/food/drinks/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(standard_dispenser_refill(user, target))
 		return
@@ -81,7 +81,7 @@
 /obj/item/reagent_containers/food/drinks/feed_sound(var/mob/user)
 	playsound(user.loc, 'sound/items/drink.ogg', rand(10, 50), 1)
 
-/obj/item/reagent_containers/food/drinks/examine(mob/user)
+/obj/item/reagent_containers/food/drinks/examine(mob/user, dist)
 	. = ..()
 	if(!reagents || reagents.total_volume == 0)
 		. += "<span class='notice'>\The [src] is empty!</span>"

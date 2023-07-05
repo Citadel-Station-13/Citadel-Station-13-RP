@@ -3,7 +3,7 @@
 	name = "Blazer - Blue"
 	path = /obj/item/clothing/under/blazer
 	slot = SLOT_ID_UNIFORM
-	sort_category = "Uniforms and Casual Dress"
+	sort_category = LOADOUT_CATEGORY_UNIFORMS
 
 /datum/gear/uniform/blazer_skirt
 	name = "Blazer - Skirt "
@@ -892,3 +892,50 @@ Swimsuits
 /datum/gear/uniform/ballet/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+
+//Tajaran wears
+
+/datum/gear/uniform/tajaran/summercloths_selection
+	name = "Adhomian summerwear"
+	path = /obj/item/clothing/under/tajaran/summer
+
+/datum/gear/uniform/tajaran/summercloths_selection/New()
+	..()
+	var/list/summercloths_selection = list()
+	for(var/summercloths in (typesof(/obj/item/clothing/under/tajaran/summer)))
+		var/obj/item/clothing/under/summercloths_type = summercloths
+		summercloths_selection[initial(summercloths_type.name)] = summercloths_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(summercloths_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/tajaran/tajara_dress_selection
+	name = "Adhomian dresses selection"
+	description = "A selection of tajaran native dresses."
+	path = /obj/item/clothing/under/dress/tajaran
+
+/datum/gear/uniform/tajaran/tajara_dress_selection/New()
+	..()
+	var/list/tajara_dress_selection = list()
+	for(var/tajara_dress in (typesof(/obj/item/clothing/under/dress/tajaran)))
+		var/obj/item/clothing/under/dress/tajaran/tajara_dress_type = tajara_dress
+		tajara_dress_selection[initial(tajara_dress_type.name)] = tajara_dress_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajara_dress_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/tajaran/laborer
+	name = "Generic Adhomian laborer clothes"
+	path = /obj/item/clothing/under/tajaran
+
+/datum/gear/uniform/tajaran/machinist
+	name = "Adhomian machinist uniform"
+	path = /obj/item/clothing/under/tajaran/mechanic
+
+/datum/gear/uniform/tajaran/raakti_shariim
+	name = "Raakti shariim uniform"
+	path = /obj/item/clothing/under/tajaran/raakti_shariim
+
+/datum/gear/uniform/tajaran/dpra
+	name = "DPRA laborer clothes"
+	path = /obj/item/clothing/under/tajaran/dpra
+
+/datum/gear/uniform/tajaran/dpra/alt
+	name = "DPRA laborer clothes, alternate"
+	path = /obj/item/clothing/under/tajaran/dpra/alt

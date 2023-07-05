@@ -119,7 +119,7 @@
 			/obj/item/storage/belt/medical,
 			/obj/item/radio/headset/heads/cmo,
 			/obj/item/clothing/under/rank/chief_medical_officer,
-			/obj/item/reagent_containers/hypospray/vial,
+			/obj/item/storage/hypokit/advanced/cmo,
 			/obj/item/clothing/accessory/stethoscope,
 			/obj/item/clothing/glasses/hud/health,
 			/obj/item/clothing/suit/storage/toggle/labcoat/cmo,
@@ -176,7 +176,8 @@
 			/obj/item/reagent_containers/dropper,
 			/obj/item/healthanalyzer,
 			/obj/item/storage/box/pillbottles,
-			/obj/item/reagent_containers/syringe
+			/obj/item/storage/box/syringes,
+			/obj/item/storage/hypokit,
 			)
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanomed
@@ -203,8 +204,8 @@
 			/obj/item/healthanalyzer,
 			/obj/item/cartridge/medical,
 			/obj/item/flashlight/pen,
-			/obj/item/reagent_containers/syringe,
-			/obj/item/clothing/accessory/storage/white_vest
+			/obj/item/clothing/accessory/storage/white_vest,
+			/obj/item/storage/hypokit,
 			)
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanomed

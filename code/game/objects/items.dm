@@ -25,7 +25,7 @@
 	/// This is used to determine how we persist, in addition to potentially atom_persist_flags and obj_persist_flags (not yet made)
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/item_persist_flags = NONE
-  /// This is used to determine how default item-level interaction hooks are handled.
+	/// This is used to determine how default item-level interaction hooks are handled.
 	/// These flags are listed in [code/__DEFINES/_flags/interaction_flags.dm]
 	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
@@ -43,7 +43,6 @@
 	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
 	var/damage_mode = NONE
 	// todo: port over damtype
-
 
 	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
@@ -234,7 +233,7 @@
 	src.loc = T
 
 /// See inventory_sizes.dm for the defines.
-/obj/item/examine(mob/user)
+/obj/item/examine(mob/user, dist)
 	. = ..()
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weightclass2text(w_class)] item."
 

@@ -90,7 +90,7 @@
 	custom_only = FALSE
 	var_changes = list(
 		"is_vampire" = TRUE,
-		"darksight" = 7,
+		vision_innate = /datum/vision/baseline/species_tier_2, // As per Silicons' suggestion
 		"flash_mod" = 2,
 		"flash_burn" = 5,
 		"burn_mod" = 1.25,
@@ -98,6 +98,7 @@
 
 /datum/trait/neutral/vampire/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
+	H.add_vision_modifier(/datum/vision/augmenting/vetalan)
 	add_verb(H, /mob/living/carbon/human/proc/bloodsuck)
 	add_verb(H, /mob/living/carbon/human/proc/lick_wounds)
 

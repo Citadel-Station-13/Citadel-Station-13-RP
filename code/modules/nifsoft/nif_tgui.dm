@@ -77,9 +77,9 @@
 	screen_loc = ui_smallquad
 
 /atom/movable/screen/nif/Click(location, control, params)
-	..()
-	var/datum/component/nif_menu/N = usr.GetComponent(/datum/component/nif_menu)
-	N?.nif_menu_click(usr)
+	if(ishuman(usr))
+		var/mob/living/carbon/human/H = usr
+		H.nif?.ui_interact(usr)
 
 /**
  * Verb to open the interface

@@ -18,6 +18,7 @@
 	name = "Class-G Mineral Rich Planet"
 	desc = "A mineral rich planet with a volatile atmosphere."
 	current_time = new /datum/time/classg()
+	weather_holder = /datum/weather_holder/classg
 
 /datum/planet/classg/update_sun()
 	..()
@@ -180,7 +181,7 @@
 // Shuttle Path for Mining Planet
 
 // -- Datums -- //
-/*/obj/effect/overmap/visitable/sector/classg
+/*/obj/overmap/entity/visitable/sector/classg
 	name = "Mineral Rich Planet"			// The name of the destination
 	desc = "Sensors indicate that this is a world filled with minerals.  There seems to be a thin atmosphere on the planet."
 	icon_state = "globe"

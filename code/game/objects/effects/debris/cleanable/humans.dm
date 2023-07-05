@@ -177,7 +177,7 @@ var/global/list/image/splatter_cache=list()
 	else
 		icon_state = "writing1"
 
-/obj/effect/debris/cleanable/blood/writing/examine(mob/user)
+/obj/effect/debris/cleanable/blood/writing/examine(mob/user, dist)
 	. = ..()
 	. += "It reads: <font color='[basecolor]'>\"[message]\"</font>"
 

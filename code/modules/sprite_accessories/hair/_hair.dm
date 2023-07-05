@@ -1452,3 +1452,129 @@
 	icon = 'icons/mob/human_face_vr.dmi'
 	icon_add = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "halfcut_rough"
+
+/datum/sprite_accessory/hair/braided_sidetail
+	name = "Braided Sidetail"
+	id = "hair_braidedsidetail"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "braided_sidetail"
+
+/datum/sprite_accessory/hair/baum
+	name = "Baum"
+	id = "hair_baum"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "baum"
+
+/datum/sprite_accessory/hair/bluntbangs
+	name = "Blunt Bangs"
+	id = "hair_bluntbangs"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "bluntbangs"
+
+/datum/sprite_accessory/hair/bluntbangsalt
+	name = "Blunt Bangs 2"
+	id = "hair_bluntbangsalt"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "bluntbangsalt"
+
+/datum/sprite_accessory/hair/slightlymessy
+	name = "Slightly Messy Long"
+	id = "hair_slightlymessy"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "slightlymessy"
+
+/datum/sprite_accessory/hair/kisaragi
+	name = "Kisaragi"
+	id = "hair_kisaragi"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "kisaragi"
+
+/datum/sprite_accessory/hair/fortuneteller
+	name = "Fortune Teller"
+	id = "hair_fortuneteller"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "fortuneteller"
+
+/datum/sprite_accessory/hair/hajime
+	name = "Hajime"
+	id = "hair_hajime"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "hajime"
+
+/datum/sprite_accessory/hair/hajimeshort
+	name = "Hajime Short"
+	id = "hair_hajimealt"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "hajimealt"
+
+/datum/sprite_accessory/hair/quadcurls
+	name = "Quad Curls"
+	id = "hair_quadcurls"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "quadcurls"
+
+/datum/sprite_accessory/hair/combedback
+	name = "Combed Back"
+	id = "hair_combedback"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "combedback"
+
+/datum/sprite_accessory/hair/combedbob
+	name = "Combed Bob"
+	id = "hair_combedbob"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "combedbob"
+
+/datum/sprite_accessory/hair/geisha
+	name = "Geisha"
+	id = "hair_geisha"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "geisha"
+
+/datum/sprite_accessory/hair/cotton
+	name = "Cotton"
+	id = "hair_cotton"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "cotton"
+
+/datum/sprite_accessory/hair/cottonalt
+	name = "Cotton Short"
+	id = "hair_cottonalt"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "cottonalt"
+
+/datum/sprite_accessory/hair/africanpigtails
+	name = "African Pigtails"
+	id = "hair_africanpigtails"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "africanpigtails"
+
+/datum/sprite_accessory/hair/inari
+	name = "Inari"
+	id = "hair_inari"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "inari"
+
+/datum/sprite_accessory/hair/rocksatr
+	name = "Rockstar"
+	id = "hair_rockstar"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "rockstar"

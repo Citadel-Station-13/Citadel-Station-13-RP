@@ -188,6 +188,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>LOOC:</u> - <span style='color:orange'><b>[text]</b></span>"
 
+/proc/log_ipintel(text)
+	WRITE_LOG(GLOB.world_runtime_log, "IPINTEL: [text]")
+
 /proc/log_vote(text)
 	if (config_legacy.log_vote)
 		WRITE_LOG(GLOB.world_game_log, "VOTE: [text]")
@@ -207,6 +210,15 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_qdel(text)
 	WRITE_LOG(GLOB.world_qdel_log, "QDEL: [text]")
 
+/proc/log_reagent(text)
+	WRITE_LOG(GLOB.world_reagent_log, text)
+
+/proc/log_reagent_transfer(text)
+	log_reagent("TRANSFER: [text]")
+
+/proc/log_security(text)
+	WRITE_LOG(GLOB.world_game_log, "SECURITY: [text]")
+
 /proc/log_subsystem(subsystem, text)
 	WRITE_LOG(GLOB.subsystem_log, "[subsystem]: [text]")
 
@@ -224,6 +236,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
  */
 /proc/log_runtime(text)
 	WRITE_LOG(GLOB.world_runtime_log, text)
+
+/proc/log_shadowban(text)
+	WRITE_LOG(GLOB.world_game_log, "SHADOWBAN: [text]")
 
 /**
  * Rarely gets called; just here in case the config breaks.

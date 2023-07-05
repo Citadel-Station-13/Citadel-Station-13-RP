@@ -21,7 +21,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	. = ..()
 	create_reagents(300)
 
-/obj/structure/janitorialcart/examine(mob/user)
+/obj/structure/janitorialcart/examine(mob/user, dist)
 	. = ..()
 	. += "[src] [icon2html(thing = src, target = user)] contains [reagents.total_volume] unit\s of liquid!"
 	//everything else is visible, so doesn't need to be mentioned
@@ -185,7 +185,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	create_reagents(300)
 	update_layer()
 
-/obj/structure/bed/chair/janicart/examine(mob/user)
+/obj/structure/bed/chair/janicart/examine(mob/user, dist)
 	. = ..()
 	. += "[icon2html(thing = src, target = user)] This [callme] contains [reagents.total_volume] unit\s of water!"
 	if(mybag)

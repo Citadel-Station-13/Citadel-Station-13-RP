@@ -66,8 +66,8 @@
 			last_reagents = null
 			return TRUE
 
-/obj/item/analyzer/plant_analyzer/afterattack(obj/target, mob/user, flag)
-	if(!flag)
+/obj/item/analyzer/plant_analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	var/datum/seed/grown_seed

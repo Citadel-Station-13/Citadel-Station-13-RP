@@ -40,6 +40,11 @@
 	///Used for metabolizing reagents.
 	var/reagent_tag
 
+	//? Traits / Physiology
+	/// Intrinsic datum traits to apply to the mob
+	var/list/mob_traits
+	//  todo: list of physiologies to add. list, incase we want to have separate ones for separate biology flags.
+
 	//? Additional info
 	/// what you see on tooltip/examine
 	var/examine_name
@@ -294,8 +299,8 @@
 	var/gluttonous
 
 	//? Sight
-	/// Native darksight distance.
-	var/darksight = 2
+	/// darksight datum - set to typepath, initialized at init
+	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/species_tier_0
 	/// Permanent weldervision.
 	var/short_sighted
 	/// If set, this organ is required for vision. Defaults to "eyes" if the species has them.
@@ -430,10 +435,6 @@
 	var/show_ssd = "fast asleep"
 	/// This allows you to pick up crew
 	var/holder_type = /obj/item/holder/micro
-
-	//? Traits
-	/// Intrinsic datum traits to apply to the mob
-	var/list/mob_traits
 
 	//? on death drops
 	/// The color of the species flesh.
@@ -621,9 +622,21 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
  * called to ensure organs are consistent with our species's
  * this is a destructive operation and will erase old organs!
  */
-/datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
-
+/datum/species/proc/create_organs(var/mob/living/carbon/human/H, var/delete_nif = FALSE) //Handles creation of mob organs.
 	H.mob_size = mob_size
+
+	// if we have a NIF, unimplant it before it gets wiped
+	var/obj/item/nif/our_nif = H.nif
+	if(H.nif)
+		H.nif.unimplant(H)
+
+	// store the markings for each limb we have so we can apply them to our new limbs
+	var/list/temporary_marking_store = list()
+	for(var/limb_type in has_limbs)
+		var/obj/item/organ/external/existing_limb = H.organs_by_name[limb_type]
+		if(existing_limb && istype(existing_limb))
+			temporary_marking_store[limb_type] = existing_limb.markings
+
 	for(var/obj/item/organ/organ in H.contents)
 		if((organ in H.organs) || (organ in H.internal_organs))
 			qdel(organ)
@@ -647,6 +660,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			organ_data = has_limbs[O.parent_organ]
 			organ_data["has_children"] = organ_data["has_children"]+1
 
+		// check if we had an old limb of the same type that had markings
+		var/obj/item/organ/external/limb = O
+		var/markings_for_limb = temporary_marking_store[limb_type]
+		if(istype(O) && markings_for_limb)
+			limb.markings = markings_for_limb
+
 	for(var/organ_tag in has_organ)
 		var/organ_type = has_organ[organ_tag]
 		var/obj/item/organ/O = new organ_type(H,1)
@@ -655,14 +674,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			O.organ_tag = organ_tag
 		H.internal_organs_by_name[organ_tag] = O
 
-	if(H.nif)
-		var/type = H.nif.type
-		var/durability = H.nif.durability
-		var/list/nifsofts = H.nif.nifsofts
-		var/list/nif_savedata = H.nif.save_data.Copy()
-
-		var/obj/item/nif/nif = new type(H,durability,nif_savedata)
-		nif.nifsofts = nifsofts
+	// if we had a NIF, decide if we want to delete it, or put it back
+	if(our_nif)
+		if(delete_nif)
+			QDEL_NULL(our_nif)
+		else
+			our_nif.quick_implant(H)
 
 	if(base_color)
 		H.r_skin = hex2num(copytext(base_color,2,4))
@@ -911,3 +928,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			H.dna.ready_dna(H)
 	else
 		src.traits = traits
+
+//? Darksight
+
+/**
+ * Makes sure innate darksight is there
+ */
+/datum/species/proc/assert_innate_vision()
+	if(ispath(vision_innate))
+		vision_innate = new vision_innate

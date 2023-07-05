@@ -41,7 +41,7 @@
 		// We store the old one, so we can determine if recalculating the sun is needed.
 		old_light_modifier = current_weather.light_modifier
 		old_weather = current_weather
-	current_weather = allowed_weather_types[new_weather]
+	current_weather = allowed_weather_types[new_weather] || new /datum/weather
 	if(!current_weather)
 		current_weather = old_weather
 		// todo: actually unit test this because rp devs fucked it up royally and we can have unknown types!
@@ -327,7 +327,7 @@
 /atom/movable/weather_visuals
 	icon = 'icons/effects/weather.dmi'
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	plane = PLANE_PLANETLIGHTING
+	plane = WEATHER_PLANE
 
 
 /**

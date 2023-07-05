@@ -296,7 +296,7 @@
 			visible_message("<font color='red'> <B>[L] attempted to disarm [src]!</B></font>")
 	return
 
-/mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)
+/mob/living/carbon/human/proc/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	return
 
 /mob/living/carbon/human/attack_generic(var/mob/user, var/damage, var/attack_message, var/armor_type = "melee", var/armor_pen = 0, var/a_sharp = 0, var/a_edge = 0)

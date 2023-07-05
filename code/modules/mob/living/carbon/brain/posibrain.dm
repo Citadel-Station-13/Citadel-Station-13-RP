@@ -121,7 +121,7 @@
 		M.show_message("<font color=#4F49AF>The positronic brain buzzes and beeps, and the golden lights fade away. Perhaps you could try again?</font>")
 	playsound(src, 'sound/misc/buzzbeep.ogg', 50, 1)
 
-/obj/item/mmi/digital/posibrain/examine(mob/user)
+/obj/item/mmi/digital/posibrain/examine(mob/user, dist)
 	. = ..()
 	if(brainmob?.key)
 		switch(brainmob.stat)

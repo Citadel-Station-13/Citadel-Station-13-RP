@@ -283,12 +283,14 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	return
 
 /obj/singularity/Move(atom/newloc, direct)
+	if(ISDIAGONALDIR(direct)) // split diagonal moves
+		return ..()
 	if(current_size >= STAGE_FIVE || check_turfs_in(direct))
 		last_failed_movement = 0//Reset this because we moved
 		return ..()
 	else
 		last_failed_movement = direct
-		return 0
+		return FALSE
 
 /obj/singularity/proc/move(force_move = 0)
 	if(!move_self)
@@ -414,7 +416,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 		to_chat(M, "<span class='danger'>You look directly into The [src.name] and feel [current_size == STAGE_SUPER ? "helpless" : "weak"].</span>")
 		M.apply_effect(3, STUN)
 		for(var/mob/O in viewers(M, null))
-			O.show_message(text("<span class='danger'>[] stares blankly at The []!</span>", M, src), 1)
+			O.show_message(SPAN_DANGER("[M] stares blankly at The [src]!</span>"), SAYCODE_TYPE_VISIBLE)
 
 /obj/singularity/proc/emp_area()
 	if(current_size != STAGE_SUPER)
@@ -431,11 +433,12 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			to_chat(M, "<span class=\"danger\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
 			to_chat(M, "<span class=\"danger\">You don't even have a moment to react as you are reduced to ashes by the intense radiation.</span>")
 			M.dust()
-	radiation_pulse(src, energy, RAD_FALLOFF_ENGINE_SINGULARITY)
+	radiation_pulse(src, energy * 10, RAD_FALLOFF_ENGINE_SINGULARITY)
 
 /obj/singularity/proc/pulse()
 	//! if you hit super you eat shit from 50k :^)
-	radiation_pulse(src, clamp(energy, 0, 50000))
+	// stage 3 is around 10,000 at epicenter
+	radiation_pulse(src, clamp(energy * 10, 0, 50000))
 
 /obj/singularity/proc/on_capture()
 	chained = 1

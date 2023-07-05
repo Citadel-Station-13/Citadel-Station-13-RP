@@ -446,7 +446,7 @@
 	else
 		return 0
 
-/obj/mecha/examine(mob/user)
+/obj/mecha/examine(mob/user, dist)
 	. = ..()
 
 	var/obj/item/mecha_parts/component/armor/AC = internal_components[MECH_ARMOR]
@@ -2662,7 +2662,7 @@
 		src.log_append_to_last("Armor saved.")
 		src.occupant_message("<span class='notice'>\The [user]'s attack is stopped by the armor.</span>")
 		visible_message("<span class='notice'>\The [user] rebounds off [src.name]'s armor!</span>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
+		user.attack_log += "\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>"
 		playsound(src, 'sound/weapons/slash.ogg', 50, 1, -1)
 
 	else if(damage < temp_damage_minimum)//Pathetic damage levels just don't harm MECH.
@@ -2677,7 +2677,7 @@
 		if(damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		visible_message("<span class='danger'>[user] [attack_message] [src]!</span>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
+		user.attack_log += "\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>"
 
 	return 1
 

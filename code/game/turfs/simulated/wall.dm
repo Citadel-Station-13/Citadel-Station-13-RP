@@ -156,7 +156,7 @@
 		plant.update_neighbors()
 
 //Appearance
-/turf/simulated/wall/examine(mob/user)
+/turf/simulated/wall/examine(mob/user, dist)
 	. = ..()
 
 	if(!damage)

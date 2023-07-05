@@ -7,6 +7,7 @@
 #define BIT_TEST_ALL(bitfield, req_mask) ((~(bitfield) & (req_mask)) == 0)
 
 /// Inverts the colour of an HTML string.
+/// TODO: We can probably do this better these days. @Zandario
 /proc/invertHTML(HTMLstring)
 	if (!(istext(HTMLstring)))
 		CRASH("Given non-text argument!")
@@ -22,12 +23,12 @@
 	textg = num2hex(255 - g)
 	textb = num2hex(255 - b)
 	if (length(textr) < 2)
-		textr = text("0[]", textr)
+		textr = "0[textr]"
 	if (length(textg) < 2)
-		textr = text("0[]", textg)
+		textr = "0[textg]"
 	if (length(textb) < 2)
-		textr = text("0[]", textb)
-	return text("#[][][]", textr, textg, textb)
+		textr = "0[textb]"
+	return "#[textr][textg][textb]"
 
 /**
  * Returns location.  Returns null if no location was found.
@@ -835,7 +836,7 @@
 					var/old_underlays = T.underlays.Copy()
 
 					if(platingRequired)
-						if(istype(B, GLOB.using_map.base_turf_by_z[B.z]))
+						if(istype(B, SSmapping.level_baseturf(B.z)))
 							continue moving
 
 					var/turf/X = B
@@ -1459,42 +1460,3 @@ var/list/WALLITEMS = list(
 		if(sender)
 			query_string += "&from=[url_encode(sender)]"
 		world.Export("[config_legacy.chat_webhook_url]?[query_string]")
-
-/// This is a helper for anything that wants to render the map in TGUI.
-/proc/get_tgui_plane_masters()
-	. = list()
-
-	//! 'Utility' planes
-	/// Lighting system (lighting_overlay objects)
-	. += new /atom/movable/screen/plane_master/fullbright
-	/// Lighting system (but different!)
-	. += new /atom/movable/screen/plane_master/lighting
-	. += new /atom/movable/screen/plane_master/emissive
-	/// Ghosts!
-	. += new /atom/movable/screen/plane_master/ghosts
-	/// AI Eye!
-	. += new /atom/movable/screen/plane_master{plane = PLANE_AI_EYE}
-
-	/// For admin use
-	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN1}
-	/// For admin use
-	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN2}
-	/// For admin use
-	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN3}
-
-	/// Meson-specific things like open ceilings.
-	. += new /atom/movable/screen/plane_master{plane = PLANE_MESONS}
-	/// Things that only show up while in build mode.
-	// . += new /atom/movable/screen/plane_master{plane = PLANE_BUILDMODE}
-
-	//! Real tangible stuff planes
-	. += new /atom/movable/screen/plane_master/main{plane = TURF_PLANE}
-	. += new /atom/movable/screen/plane_master/main{plane = OBJ_PLANE}
-	. += new /atom/movable/screen/plane_master/main{plane = MOB_PLANE}
-	/// Cloaked atoms!
-	// . += new /atom/movable/screen/plane_master/cloaked
-
-	//! Random other plane masters from Virgo
-	// Augmented reality.
-	. += new /atom/movable/screen/plane_master{plane = PLANE_AUGMENTED}
-	. += new /atom/movable/screen/plane_master/parallax{plane = PARALLAX_PLANE}

@@ -186,14 +186,15 @@
 
 
 /proc/darkspace_abduction(mob/living/target, user)
-	var/darkspace_abduction_z
+	var/static/darkspace_abduction_z
 	if(darkspace_abduction_z < 0)
 		to_chat(user,"<span class='warning'>The abduction z-level is already being created. Please wait.</span>")
 		return
 	if(!darkspace_abduction_z)
 		darkspace_abduction_z = -1
 		to_chat(user,"<span class='warning'>This is the first use of the verb this shift, it will take a minute to configure the abduction z-level. It will be z[world.maxz+1].</span>")
-		var/z = world.increment_max_z()
+		var/datum/map_level/level = SSmapping.allocate_level()
+		var/z = level.z_index
 		var/area/areaInstance = new /area/darkspace_abduction(null)
 		areaInstance.addSorted()
 		for(var/x = 1 to world.maxx)

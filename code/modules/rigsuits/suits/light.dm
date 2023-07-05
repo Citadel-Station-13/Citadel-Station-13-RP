@@ -15,7 +15,7 @@
 	armor_type = /datum/armor/hardsuit/light
 	emp_protection = 10
 	slowdown = 0
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	offline_slowdown = 0
 	offline_vision_restriction = 0
 

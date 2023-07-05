@@ -1,3 +1,49 @@
+/**
+ * Viewport system
+ *
+ * Even numbers are filtered out in various points other than for lock overrides for debugging.
+ * This is becaues CENTER-50% or CENTER-7 alignment systems don't work with even numbers.
+ */
+
+/client/proc/change_view(new_size, forced, translocate)
+	set waitfor = FALSE	// to async temporary view
+	// todo: refactor this, client view changes should be ephemeral.
+	var/list/L = decode_view_size(new_size)
+	set_temporary_view(L[1], L[2])
+
+/**
+ * directly sets our view
+ * you should probably be using perspective datums most of the time instead
+ * WARNING: this is verbatim; aka, view = 7 is 15 width 15 height, NOT 7x7!
+ *
+ * furthermore, this proc is BLOCKING.
+ */
+/client/proc/set_temporary_view(width, height)
+	if(!width || !height || width < 0 || height < 0)
+		reset_temporary_view()
+		return
+	using_temporary_viewsize = TRUE
+	// round up; even views are illegal.
+	if(!(width % 2))
+		width++
+	if(!(height % 2))
+		height++
+	temporary_viewsize_width = width
+	temporary_viewsize_height = height
+	request_viewport_update()
+
+/**
+ * resets our temporary view
+ * you should probably be using perspective datums most of the time instead
+ *
+ * furthermore, this proc is BLOCKING
+ */
+/client/proc/reset_temporary_view()
+	using_temporary_viewsize = FALSE
+	temporary_viewsize_height = null
+	temporary_viewsize_width = null
+	request_viewport_update()
+
 // these two variables control max dynamic resize for viewport
 GLOBAL_VAR_INIT(max_client_view_x, 19)
 GLOBAL_VAR_INIT(max_client_view_y, 15)
@@ -110,6 +156,11 @@ GLOBAL_VAR(lock_client_view_y)
 	using_perspective.ensure_view_cached()
 	var/max_width = using_perspective.cached_view_width
 	var/max_height = using_perspective.cached_view_height
+	// even numbers not allowed
+	if(!(max_width % 2))
+		max_width++
+	if(!(max_height % 2))
+		max_height++
 	if(stretch_to_fit)
 		// option 1: they're stretching to fit
 		if(assumed_viewport_box)
@@ -125,6 +176,9 @@ GLOBAL_VAR(lock_client_view_y)
 			var/available_width = assumed_viewport_spx / stretch_pixel_amount
 			available_width = CEILING(available_width, 1)
 			available_width = clamp(available_width, GLOB.min_client_view_x, max_width)
+			// even numbers not allowed
+			if(!(available_width % 2))
+				available_width++
 			view = "[available_width]x[max_height]"
 			on_refit_viewsize(available_width, max_height, no_fit)
 			return
@@ -136,6 +190,11 @@ GLOBAL_VAR(lock_client_view_y)
 	div_y = CEILING(div_y, 1)
 	var/desired_width = clamp(div_x, GLOB.min_client_view_x, max_width)
 	var/desired_height = clamp(div_y, GLOB.min_client_view_y, max_height)
+	// evens numbers not allowed
+	if(!(desired_width % 2))
+		desired_width++
+	if(!(desired_height % 2))
+		desired_height++
 	view = "[desired_width]x[desired_height]"
 	on_refit_viewsize(desired_width, desired_height, no_fit)
 

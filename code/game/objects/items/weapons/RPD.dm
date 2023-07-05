@@ -87,7 +87,7 @@
 	return(BRUTELOSS)
 */
 
-/obj/item/pipe_dispenser/examine(mob/user)
+/obj/item/pipe_dispenser/examine(mob/user, dist)
 	. = ..()
 	. += "You can scroll your mouse wheel to change the piping layer."
 
@@ -220,8 +220,8 @@
 		playsound(get_turf(src), 'sound/effects/pop.ogg', 50, FALSE)
 	return TRUE
 
-/obj/item/pipe_dispenser/afterattack(atom/A, mob/user as mob, proximity)
-	if(!user.IsAdvancedToolUser() || istype(A, /turf/space/transit) || !proximity)
+/obj/item/pipe_dispenser/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!user.IsAdvancedToolUser() || istype(target, /turf/space/transit) || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return ..()
 
 	//So that changing the menu settings doesn't affect the pipes already being built.
@@ -233,23 +233,23 @@
 	var/static/list/make_pipe_whitelist
 	if(!make_pipe_whitelist)
 		make_pipe_whitelist = typecacheof(list(/obj/structure/lattice, /obj/structure/girder, /obj/item/pipe))
-	var/can_make_pipe = (isturf(A) || is_type_in_typecache(A, make_pipe_whitelist))
+	var/can_make_pipe = (isturf(target) || is_type_in_typecache(target, make_pipe_whitelist))
 
-	var/can_destroy_pipe = istype(A, /obj/item/pipe) || istype(A, /obj/item/pipe_meter) || istype(A, /obj/structure/disposalconstruct)
+	var/can_destroy_pipe = istype(target, /obj/item/pipe) || istype(target, /obj/item/pipe_meter) || istype(target, /obj/structure/disposalconstruct)
 
 	. = TRUE
 	if((mode & DESTROY_MODE) && can_destroy_pipe)
 		to_chat(user, SPAN_NOTICE("You start destroying a pipe..."))
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
-		if(do_after(user, 2, target = A))
+		if(do_after(user, 2, target = target))
 			activate()
-			animate_deletion(A)
+			animate_deletion(target)
 		return
 
 	//Painting pipes
 	if((mode & PAINT_MODE))
-		if(istype(A, /obj/machinery/atmospherics/pipe))
-			var/obj/machinery/atmospherics/pipe/P = A
+		if(istype(target, /obj/machinery/atmospherics/pipe))
+			var/obj/machinery/atmospherics/pipe/P = target
 			playsound(src, 'sound/machines/click.ogg', 50, 1)
 			P.change_color(pipe_colors[paint_color])
 			user.visible_message(SPAN_NOTICE("[user] paints \the [P] [paint_color]."), SPAN_NOTICE("You paint \the [P] [paint_color]."))
@@ -264,9 +264,9 @@
 				playsound(src, 'sound/machines/click.ogg', 50, 1)
 				if(istype(recipe, /datum/pipe_info/meter))
 					to_chat(user, SPAN_NOTICE("You start building a meter..."))
-					if(do_after(user, 2, target = A))
+					if(do_after(user, 2, target = target))
 						activate()
-						var/obj/item/pipe_meter/PM = new /obj/item/pipe_meter(get_turf(A))
+						var/obj/item/pipe_meter/PM = new /obj/item/pipe_meter(get_turf(target))
 						PM.setAttachLayer(queued_piping_layer)
 						if(mode & WRENCH_MODE)
 							do_wrench(PM, user)
@@ -277,14 +277,14 @@
 					else
 						var/datum/pipe_info/pipe/R = recipe
 						to_chat(user, SPAN_NOTICE("You start building a pipe..."))
-						if(do_after(user, 2, target = A))
+						if(do_after(user, 2, target = target))
 							if(recipe.all_layers == FALSE && (piping_layer == 1 || piping_layer == 5))//double check to stop cheaters (and to not waste time waiting for something that can't be placed)
 								to_chat(user, SPAN_NOTICE("You can't build this object on the layer..."))
 								return ..()
 							activate()
 							var/obj/machinery/atmospherics/path = R.pipe_type
 							var/pipe_item_type = initial(path.construction_type) || /obj/item/pipe
-							var/obj/item/pipe/P = new pipe_item_type(get_turf(A), path, queued_p_dir)
+							var/obj/item/pipe/P = new pipe_item_type(get_turf(target), path, queued_p_dir)
 
 							P.update()
 							P.add_fingerprint(usr)
@@ -303,14 +303,14 @@
 				var/datum/pipe_info/disposal/R = recipe
 				if(!istype(R) || !can_make_pipe)
 					return ..()
-				A = get_turf(A)
-				if(istype(A, /turf/unsimulated))
+				target = get_turf(target)
+				if(istype(target, /turf/unsimulated))
 					to_chat(user, SPAN_WARNING("[src]'s error light flickers; there's something in the way!"))
 					return
 				to_chat(user, SPAN_NOTICE("You start building a disposals pipe..."))
 				playsound(src, 'sound/machines/click.ogg', 50, 1)
-				if(do_after(user, 4, target = A))
-					var/obj/structure/disposalconstruct/C = new(A, R.pipe_type, queued_p_dir, queued_p_flipped, R.subtype)
+				if(do_after(user, 4, target = target))
+					var/obj/structure/disposalconstruct/C = new(target, R.pipe_type, queued_p_dir, queued_p_flipped, R.subtype)
 
 					if(!C.can_place())
 						to_chat(user, SPAN_WARNING("There's not enough room to build that here!"))

@@ -8,8 +8,8 @@
 	var/list/entries
 	var/list/entries_by_type
 
-	var/list/maplist
-	var/datum/map_config/defaultmap
+	// var/list/maplist
+	// var/datum/map_config/defaultmap
 
 	/*
 	var/list/modes			// allowed modes
@@ -52,7 +52,7 @@
 				for(var/J in legacy_configs)
 					LoadEntries(J)
 				break
-	loadmaplist(CONFIG_MAPS_FILE)
+	// loadmaplist(CONFIG_MAPS_FILE)
 	LoadWhitelists()
 	LoadMOTD()
 
@@ -67,9 +67,9 @@
 	entries_by_type.Cut()
 	QDEL_LIST_ASSOC_VAL(entries)
 	entries = null
-	QDEL_LIST_ASSOC_VAL(maplist)
-	maplist = null
-	QDEL_NULL(defaultmap)
+	// QDEL_LIST_ASSOC_VAL(maplist)
+	// maplist = null
+	// QDEL_NULL(defaultmap)
 
 /datum/controller/configuration/Destroy()
 	full_wipe()
@@ -279,6 +279,9 @@
 	if(motd || tm_info)
 		motd = motd ? "[motd]<br>[tm_info]" : tm_info
 
+// todo: actual map config.
+
+/*
 /datum/controller/configuration/proc/loadmaplist(filename)
 	log_config("Loading config file [filename]...")
 	filename = "[directory]/[filename]"
@@ -333,6 +336,7 @@
 				currentmap = null
 			else
 				log_config("Unknown command in map vote config: '[command]'")
+*/
 
 /*
 /datum/controller/configuration/proc/pick_mode(mode_name)

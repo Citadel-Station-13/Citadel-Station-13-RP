@@ -18,6 +18,7 @@
 	name = "Class-H Desert Planet"
 	desc = "A nearly hostile, and almost barren, planet that orbits pretty close to its star. There is a high level of CO2 in the air."
 	current_time = new /datum/time/classh()
+	weather_holder = /datum/weather_holder/classh
 
 /datum/planet/classh/update_sun()
 	..()
