@@ -4692,6 +4692,7 @@
 #include "interface\skin.dmf"
 #include "interface\menus\_menus.dm"
 #include "interface\menus\main.dm"
+#include "maps\euthenia\euthenia.dm"
 #include "maps\generic\death_triggers.dm"
 #include "maps\generic\map_data.dm"
 #include "maps\generic\misc.dm"
