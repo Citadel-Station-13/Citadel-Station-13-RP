@@ -5,7 +5,22 @@
 	// todo: better way, for now, block all rad contamination to interior
 	rad_flags = RAD_BLOCK_CONTENTS
 
-	//? Flags
+	//* Combat
+	/// Amount of damage we do on melee.
+	var/damage_force = 0
+	/// armor flag for melee attacks
+	var/damage_flag = ARMOR_MELEE
+	/// damage tier
+	var/damage_tier = MELEE_TIER_DEFAULT
+	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
+	var/damage_mode = NONE
+	// todo: port over damtype
+
+	//* Economy
+	/// economic category for items
+	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
+
+	//* Flags
 	/// Item flags.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/item_flags = NONE
@@ -29,20 +44,26 @@
 	/// These flags are listed in [code/__DEFINES/_flags/interaction_flags.dm]
 	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
-	//? Economy
-	/// economic category for items
-	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
+	//* Inventory - Main
+	/// currently equipped slot id
+	var/worn_slot
+	/**
+	 * current item we fitted over
+	 * ! DANGER: While this is more or less bug-free for "won't lose the item when you unequip/won't get stuck", we
+	 * ! do not promise anything for functionality - this is a SNOWFLAKE SYSTEM.
+	 */
+	var/obj/item/worn_over
+	/**
+	 * current item we're fitted in.
+	 */
+	var/obj/item/worn_inside
+	/// suppress auto inventory hooks in forceMove
+	var/worn_hook_suppressed = FALSE
 
-	//? Combat
-	/// Amount of damage we do on melee.
-	var/damage_force = 0
-	/// armor flag for melee attacks
-	var/damage_flag = ARMOR_MELEE
-	/// damage tier
-	var/damage_tier = MELEE_TIER_DEFAULT
-	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
-	var/damage_mode = NONE
-	// todo: port over damtype
+	//* Inventory - Rendering
+	/// See [code/modules/mob/inventory/item_rendering.dm]
+	/// There are simply too many variables to put into this file.
+	/// When we get rid of a few of the legacy variables, we can move the variables here.
 
 	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
@@ -153,6 +174,16 @@
 			hitsound = 'sound/items/welder.ogg'
 		if(damtype == "brute")
 			hitsound = "swing_hit"
+
+/obj/item/Destroy()
+	// run inventory hooks
+	if(worn_slot && !worn_hook_suppressed)
+		var/mob/M = worn_mob()
+		if(!ismob(M))
+			stack_trace("invalid current equipped slot [worn_slot] on an item not on a mob.")
+			return ..()
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_DELETING)
+	return ..()
 
 /// Check if target is reasonable for us to operate on.
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)

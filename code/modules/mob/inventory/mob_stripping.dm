@@ -1,3 +1,9 @@
+/**
+ * Stripping system
+ * Procs can be called and overridden as needed
+ * Please be careful when doing so and understand what you are overriding.
+ */
+
 // todo: tgui
 // todo: ui state handles prechecks? interesting to deal with.
 /mob/proc/mouse_drop_strip_interaction(mob/user)

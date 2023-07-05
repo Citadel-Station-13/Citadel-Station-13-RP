@@ -230,6 +230,27 @@
 				return FALSE
 	return TRUE
 
+/**
+ * automatically unequip if we're missing beltlink
+ */
+/obj/item/proc/reconsider_beltlink()
+	var/mob/M = loc
+	if(!istype(M))
+		return
+	if(!worn_slot)
+		return
+	if(!equip_check_beltlink(M, worn_slot, null, INV_OP_SILENT))
+		M.drop_item_to_ground(src)
+		return
+
+//* Speed / Carry Weight *//
+
+/**
+ * get the slowdown we incur when we're worn
+ */
+/obj/item/proc/get_equipment_speed_mod()
+	return slowdown
+
 //* ADVANCED: Wear-Over System *//
 
 /**
