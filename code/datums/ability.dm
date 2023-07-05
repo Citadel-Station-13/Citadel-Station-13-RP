@@ -257,7 +257,7 @@
 		return FALSE
 	if((ability_check_flags & ABILITY_CHECK_STANDING) && IS_PRONE(owner))
 		return FALSE
-	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(owner.has_free_hand()))
+	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(!owner.hands_full()))
 		return FALSE
 	if(!CHECK_MOBILITY(owner, mobility_check_flags))
 		return FALSE
@@ -275,7 +275,7 @@
 		return "You cannot do that while unconscious."
 	if((ability_check_flags & ABILITY_CHECK_STANDING) && owner.lying)
 		return "You cannot do that while on the ground."
-	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(owner.has_free_hand()))
+	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(!owner.hands_full()))
 		return "You cannot do that without a free hand."
 	if(!CHECK_MOBILITY(owner, mobility_check_flags))
 		return "You cannot do that while incapacitated."
