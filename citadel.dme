@@ -1580,6 +1580,7 @@
 #include "code\game\objects\items\id_cards\sprite_stacks_cit.dm"
 #include "code\game\objects\items\id_cards\station_ids.dm"
 #include "code\game\objects\items\id_cards\syndicate_ids.dm"
+#include "code\game\objects\items\robot\gripper.dm"
 #include "code\game\objects\items\robot\robot_items.dm"
 #include "code\game\objects\items\robot\robot_parts.dm"
 #include "code\game\objects\items\robot\robot_upgrades.dm"
