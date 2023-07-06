@@ -1,7 +1,7 @@
 /datum/computer_file/program/card_mod
 	filename = "cardmod"
 	filedesc = "ID card modification program"
-	tguimodule_path = /datum/tgui_module_old/cardmod
+	tgui_id = "NtosIdentificationComputer"
 	program_icon_state = "id"
 	program_key_state = "id_key"
 	program_menu_icon = "key"

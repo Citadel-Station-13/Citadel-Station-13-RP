@@ -171,7 +171,7 @@
 /datum/tgui_module/card_mod/proc/auth_source(var/user)
 	return null
 
-/datum/tgui_module/card_mod/static_data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source(user))
+/datum/tgui_module/card_mod/static_data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source(mob/user))
 	. = ..()
 	.["access"] = SSjob.tgui_access_data()
 	var/list/direct_cache = ((authing?.access || list()) & SSjob.cached_access_edit_relevant)
@@ -191,7 +191,7 @@
 			"ranks" = ranks_by_department[department],
 		))
 
-/datum/tgui_module/card_mod/data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source(user))
+/datum/tgui_module/card_mod/data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source(mob/user))
 	. = ..()
 	.["card_account"] = editing?.associated_account_number
 	.["card_name"] = editing?.registered_name
@@ -344,7 +344,7 @@
 		var/list/allowed = SSjob.editable_access_ids_by_id(id)
 		if(isnull(allowed))
 			continue
-		var/list/got = allowed & accesses
+		var/list/got = allowed & left
 		if(!length(got))
 			continue
 		left -= got
@@ -396,7 +396,7 @@
 	var/obj/machinery/computer/card/target = host
 	return target.editing
 
-/datum/tgui_module/card_mod/standard/id_computer/auth_source(user)
+/datum/tgui_module/card_mod/standard/id_computer/auth_source(mob/user)
 	var/obj/machinery/computer/card/target = host
 	return target.authing
 
@@ -416,7 +416,7 @@
 /datum/tgui_module/card_mod/standard/id_computer/ntos/edit_target()
 	return program.computer.card_slot.stored_card
 
-/datum/tgui_module/card_mod/standard/id_computer/ntos/auth_source(user)
+/datum/tgui_module/card_mod/standard/id_computer/ntos/auth_source(mob/user)
 	if(isliving(user))
 		var/mob/living/L = user
 		return L.GetIdCard()
