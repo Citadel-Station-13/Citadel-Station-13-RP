@@ -2,24 +2,37 @@ import { useBackend } from "../../backend";
 import { Section, SectionProps } from "../../components/Section";
 
 interface AtmosVentControlProps extends SectionProps {
-  // is the vent on
-  powerState: boolean;
   // act() for toggling vent; if this isn't provided, the button is disabled.
   powerAct: (boolean) => void;
-  // is the vent pressurizing or siphoning?
-  pumpOut: boolean;
   // act() for toggling pumping out; if this isn't provided, the button is disabled.
-  pumpAct: (boolean) => void;
-  // vent pressure check internal
-  internalCheck: boolean;
+  siphonAct: (boolean) => void;
   // set internal pressure check
   internalAct: (number) => void;
-  // vent pressure check external
-  externalCheck: boolean;
   // set external pressure check
   externalAct: (number) => void;
+  // vent data
+  vent: AtmosVentState;
 }
 
+export enum AtmosVentPressureChecks {
+  None = 0,
+  Internal = (1<<0),
+  External = (1<<1),
+}
+
+interface AtmosVentState {
+  pressureChecks: AtmosVentPressureChecks;
+  internalPressure: number;
+  externalPressure: number;
+  // on / off
+  power: boolean;
+  // true for in
+  siphon: boolean;
+}
+
+/**
+ * Embeddable atmos vent control.
+ */
 export const AtmosVentControl = (props: AtmosVentControlProps) => {
   return (
     <Section {...props}>
@@ -29,7 +42,8 @@ export const AtmosVentControl = (props: AtmosVentControlProps) => {
 }
 
 interface AtmosVentData {
-
+  // vent state
+  state: AtmosVentState;
 }
 
 export const AtmosVent = (props, context) => {

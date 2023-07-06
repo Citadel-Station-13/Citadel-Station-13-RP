@@ -4,9 +4,6 @@
 #define INTERNAL_PRESSURE_BOUND 0
 #define PRESSURE_CHECKS 1
 
-#define PRESSURE_CHECK_EXTERNAL 1
-#define PRESSURE_CHECK_INTERNAL 2
-
 /obj/machinery/atmospherics/component/unary/vent_pump
 	icon = 'icons/atmos/vent_pump.dmi'
 	icon_state = "map_vent"
@@ -412,15 +409,47 @@
 			"<span class='notice'>You have unfastened \the [src].</span>", \
 			"You hear a ratchet.")
 		deconstruct()
+	#warn hijack with multitool
 
 /**
- * data for AtmosVentControl interface component
+ * Encodes UI data for AtmosVentState in tgui/interfaces/machines/AtmosVent.tsx
  */
 /obj/machinery/atmospherics/component/unary/vent_pump/proc/ui_pump_data()
 	return list(
-
+		"pressureChecks" = pressure_checks,
+		"internalPressure" = internal_pressure_bound,
+		"externalPressure" = external_pressure_bound,
+		"power" = use_power != USE_POWER_OFF,
+		"siphon" = !pump_direction,
 	)
-	#warn impl
+
+/obj/machinery/atmospherics/component/unary/vent_pump/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!isnull(ui))
+		return
+	ui = new(user, src, "AtmosVent")
+	ui.open()
+
+/obj/machinery/atmospherics/component/unary/vent_pump/ui_state(mob/user, datum/tgui_module/module)
+	. = ..()
+
+/obj/machinery/atmospherics/component/unary/vent_pump/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	.["state"] = ui_pump_data()
+
+/obj/machinery/atmospherics/component/unary/vent_pump/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("toggle")
+		if("intPressure")
+		if("extPressure")
+		if("intCheck")
+		if("extCheck")
+		if("siphon")
+
+#warn ui stuff
 
 /obj/machinery/atmospherics/component/unary/vent_pump/on
 	use_power = USE_POWER_IDLE
@@ -461,6 +490,3 @@
 #undef EXTERNAL_PRESSURE_BOUND
 #undef INTERNAL_PRESSURE_BOUND
 #undef PRESSURE_CHECKS
-
-#undef PRESSURE_CHECK_EXTERNAL
-#undef PRESSURE_CHECK_INTERNAL

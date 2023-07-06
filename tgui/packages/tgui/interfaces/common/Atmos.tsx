@@ -1,5 +1,3 @@
-import { SectionProps } from "../../components/Section";
-
 /**
  * @file
  * @license MIT
