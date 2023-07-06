@@ -18,3 +18,16 @@
 #define LOADOUT_CATEGORY_UNIFORMS "Uniforms and Casual Dress"
 #define LOADOUT_CATEGORY_UTILITY "Utility"
 #define LOADOUT_CATEGORY_XENOWEAR "Xenowear"
+
+/// allow customizing name
+#define LOADOUT_CUSTOMIZE_NAME (1<<0)
+/// allow customizing desc
+#define LOADOUT_CUSTOMIZE_DESC (1<<1)
+/// allow customizing color
+#define LOADOUT_CUSTOMIZE_COLOR (1<<2)
+
+DEFINE_BITFIELD(loadout_customize_flags, list(
+	BITFIELD(LOADOUT_CUSTOMIZE_NAME),
+	BITFIELD(LOADOUT_CUSTOMIZE_DESC),
+	BITFIELD(LOADOUT_CUSTOMIZE_COLOR),
+))

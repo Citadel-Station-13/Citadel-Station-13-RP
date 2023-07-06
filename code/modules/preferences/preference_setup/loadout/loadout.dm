@@ -6,6 +6,13 @@ var/list/gear_datums = list()
 	var/list/gear = list()
 
 /datum/gear
+	abstract_type = /datum/gear
+
+	/// unique id - must be unique (duh)
+	var/id
+	/// allowed standard customizations
+	var/loadout_customize_flags = LOADOUT_CUSTOMIZE_COLOR | LOADOUT_CUSTOMIZE_DESC | LOADOUT_CUSTOMIZE_NAME
+
 	/// name used for save/load don't change this or everyone loses it
 	var/name
 	/// what we display our name as. feel free to change this. defaults to name.
@@ -41,6 +48,27 @@ var/list/gear_datums = list()
 	gear_tweaks = list(gear_tweak_free_name, gear_tweak_free_desc, GLOB.gear_tweak_free_matrix_recolor)
 	if(isnull(display_name))
 		display_name = name
+
+#warn nuke the 3 default gear tweaks from orbit
+
+/**
+ * remove & regex this to just directly access the `.id` variable when we have id's on every entry.
+ */
+/datum/gear/proc/legacy_get_id()
+	return name
+
+/**
+ * encodes data for tgui/interfaces/CharacterSetup/CharacterLoadout.tsx's [LoadoutEntry] interface.
+ */
+/datum/gear/proc/tgui_entry_data()
+	return list(
+		"name" = display_name || name,
+		"id" = legacy_get_id(),
+		"cost" = cost,
+		"category" = sort_category,,
+		"customize" = loadout_customize_flags,
+		"desc" = description,
+	)
 
 /datum/gear_data
 	var/path
