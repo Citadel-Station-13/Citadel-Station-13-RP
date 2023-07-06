@@ -123,6 +123,8 @@
 	// end
 	if(item_flags & ITEM_NOBLUDGEON)
 		return NONE
+	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
+		return NONE
 	// todo: not hardcoding this
 	if(IS_PRONE(user))
 		mult *= 0.66

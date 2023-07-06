@@ -54,3 +54,9 @@
 	. = ..()
 	pixel_x = rand(-12, 12)
 	pixel_y = rand(-9, 0)
+
+// pAI space move
+/obj/effect/temp_visual/pai_ion_burst
+	name = "ion burst"
+	icon_state = "ion_fade"
+	duration = 5
