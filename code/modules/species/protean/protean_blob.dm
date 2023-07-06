@@ -51,8 +51,7 @@
 	var/obj/item/organ/internal/nano/refactory/refactory
 	var/datum/modifier/healing
 
-	var/obj/prev_left_hand
-	var/obj/prev_right_hand
+	var/list/obj/item/previously_held
 
 	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
@@ -309,11 +308,12 @@
 	//Drop all our things
 	var/list/things_to_drop = contents.Copy()
 	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear,gloves,glasses,shoes) //And whatever else we decide for balancing.
-	//you can instaflash or pepperspray on unblob with pockets anyways
-	if(l_hand && l_hand.w_class <= ITEMSIZE_SMALL) //Hands but only if small or smaller
-		things_to_not_drop += l_hand
-	if(r_hand && r_hand.w_class <= ITEMSIZE_SMALL)
-		things_to_not_drop += r_hand
+	var/list/prev_held = list()
+	for(var/obj/item/I as anything in get_held_items())
+		if(I.w_class >= WEIGHT_CLASS_SMALL)
+			continue
+		things_to_not_drop += I
+		prev_held += I
 	things_to_drop -= things_to_not_drop //Crunch the lists
 	things_to_drop -= organs //Mah armbs
 	things_to_drop -= internal_organs //Mah sqeedily spooch
@@ -355,9 +355,7 @@
 	//Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
-
-	if(l_hand) blob.prev_left_hand = l_hand //Won't save them if dropped above, but necessary if handdrop is disabled.
-	if(r_hand) blob.prev_right_hand = r_hand
+	blob.previously_held = prev_held
 	//languages!!
 	for(var/datum/language/L in languages)
 		blob.add_language(L.name)
@@ -498,8 +496,8 @@
 		B.forceMove(src)
 		B.owner = src
 
-	if(blob.prev_left_hand) put_in_left_hand(blob.prev_left_hand) //The restore for when reforming.
-	if(blob.prev_right_hand) put_in_right_hand(blob.prev_right_hand)
+	for(var/obj/item/I as anything in blob.previously_held)
+		put_in_hands_or_drop(I)
 
 	Life(1, SSmobs.times_fired)
 

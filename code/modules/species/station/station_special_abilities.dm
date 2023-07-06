@@ -162,8 +162,8 @@
 					if(!halitem)
 						halitem = new
 						var/list/slots_free = list(ui_lhand,ui_rhand)
-						if(l_hand) slots_free -= ui_lhand
-						if(r_hand) slots_free -= ui_rhand
+						if(get_left_held_item()) slots_free -= ui_lhand
+						if(get_right_held_item()) slots_free -= ui_rhand
 						if(istype(src,/mob/living/carbon/human))
 							var/mob/living/carbon/human/H = src
 							if(!H.belt) slots_free += ui_belt

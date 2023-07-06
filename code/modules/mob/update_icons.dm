@@ -35,11 +35,7 @@
 /mob/proc/update_inv_active_hand()
 	return
 
-/mob/living/update_inv_active_hand(var/A)
-	if(hand)
-		update_inv_l_hand(A)
-	else
-		update_inv_r_hand(A)
+#warn uh oh
 
 /mob/proc/update_inv_l_hand()
 	return

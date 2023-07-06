@@ -18,8 +18,6 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
-
-
 /obj/item/paper_bin/OnMouseDropLegacy(mob/user as mob)
 	if((user == usr && (!( usr.restrained() ) && (!( usr.stat ) && (usr.contents.Find(src) || in_range(src, usr))))))
 		if(!istype(usr, /mob/living/simple_mob))
@@ -35,8 +33,6 @@
 
 				to_chat(user, "<span class='notice'>You pick up the [src].</span>")
 				user.put_in_hands(src)
-
-	return
 
 /obj/item/paper_bin/attack_hand(mob/user, list/params)
 	if(ishuman(user))

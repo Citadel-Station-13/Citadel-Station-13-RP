@@ -218,7 +218,7 @@
 			to_chat(M, SPAN_NOTICE("You cannot use your augments when restrained."))
 			return FALSE
 
-	if((slot == /datum/inventory_slot_meta/abstract/hand/left && l_hand) || (slot == /datum/inventory_slot_meta/abstract/hand/right && r_hand))
+	if((slot == /datum/inventory_slot_meta/abstract/hand/left && get_left_held_item()) || (slot == /datum/inventory_slot_meta/abstract/hand/right && get_right_held_item()))
 		to_chat(M, SPAN_WARNING("Your hand is full.  Drop something first."))
 		return FALSE
 
