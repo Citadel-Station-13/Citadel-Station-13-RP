@@ -1,3 +1,4 @@
+import { BooleanLike } from "../../common/react";
 import { useBackend } from "../backend";
 import {
   Box,
@@ -11,15 +12,26 @@ import {
 } from "../components";
 import { Window } from "../layouts";
 
+interface VoteContext {
+  admin : BooleanLike;
+  selected_choice : string;
+  vote_happening : BooleanLike;
+  choices : VoteChoice[];
+  question: string;
+  time_remaining : number;
+}
+
+interface VoteChoice {
+  name : string;
+  votes : number;
+}
+
 export const Vote = (props, context) => {
-  const { act, data } = useBackend(context);
-  const { mode, question, admin, selected_choice } = data;
+  const { act, data } = useBackend<VoteContext>(context);
+  const { admin, selected_choice } = data;
 
   // Adds the voting type to title if there is an ongoing vote
   let windowTitle = "Vote";
-  if (mode) {
-    windowTitle += ": " + (question || mode);
-  }
 
   return (
     <Window title={windowTitle} width={400} height={500}>
@@ -48,7 +60,7 @@ export const Vote = (props, context) => {
 };
 
 const StartVoteOptions = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<VoteContext>(context);
   const { vote_happening } = data;
   return (
     <Stack.Item>
@@ -86,7 +98,7 @@ const StartVoteOptions = (props, context) => {
 };
 // Display choices
 const ChoicesPanel = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<VoteContext>(context);
   const { choices, selected_choice, question } = data;
 
   return (
@@ -95,14 +107,14 @@ const ChoicesPanel = (props, context) => {
         {choices.length !== 0 ? (
           <LabeledList>
             {choices.map((choice, i) => (
-              <Box key={choice.id}>
+              <Box key={i}>
                 <LabeledList.Item
                   label={choice.name}
                   textAlign="right"
                   buttons={
                     <Button
                       color={
-                        selected_choice.name !== choice.name ? "green" : "grey"
+                        selected_choice !== choice.name ? "green" : "grey"
                       }
                       disabled={choice.name === selected_choice}
                       onClick={() => {
@@ -137,16 +149,16 @@ const ChoicesPanel = (props, context) => {
 
 // Countdown timer at the bottom. Includes a cancel vote option for admins
 const TimePanel = (props, context) => {
-  const { act, data } = useBackend(context);
-  const { upper_admin, time_remaining } = data;
+  const { act, data } = useBackend<VoteContext>(context);
+  const { admin, time_remaining, vote_happening } = data;
 
   return (
     <Stack.Item mt={1}>
       <Section>
         <Stack justify="space-between">
           <Box fontSize={1.5}>Time Remaining: {time_remaining || 0}s</Box>
-          {!!upper_admin && (
-            <Button color="red" onClick={() => act("cancel")}>
+          {!!admin && (
+            <Button color="red" onClick={() => act("cancel")} disabled={!vote_happening}>
               Cancel Vote
             </Button>
           )}
