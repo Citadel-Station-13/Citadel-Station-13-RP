@@ -7,9 +7,6 @@ SUBSYSTEM_DEF(ticker)
 	/// Current state of the game
 	var/static/current_state = GAME_STATE_INIT
 
-	/// Did we attempt an automatic gamemode vote?
-	/// fuck this var/static/auto_gamemode_vote_attempted = FALSE
-
 	/// What world.time we ended the game, set at round end.
 	var/static/round_end_time
 
@@ -148,13 +145,6 @@ SUBSYSTEM_DEF(ticker)
 		Master.SetRunLevel(RUNLEVEL_SETUP)
 		if(start_immediately)
 			fire()
-	/*else if(!auto_gamemode_vote_attempted && (timeLeft <= CONFIG_GET(number/lobby_gamemode_vote_delay) SECONDS))
-		auto_gamemode_vote_attempted = TRUE
-		// patch this code later
-		if(!SSvote.time_remaining)
-			SSvote.autogamemode()
-		//end
-	*/
 
 /datum/controller/subsystem/ticker/proc/Reboot(reason, end_string, delay)
 	set waitfor = FALSE
