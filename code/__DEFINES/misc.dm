@@ -257,6 +257,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 
 // Job groups
+// todo: nuke this from fucking orbit during job refactor
 #define DEPARTMENT_CARGO			"cargo"
 #define DEPARTMENT_CIVILIAN			"civilian"
 #define DEPARTMENT_COMMAND			"command"
@@ -284,7 +285,6 @@ var/list/economy_station_departments = list(
 	DEPARTMENT_RESEARCH,
 	DEPARTMENT_SECURITY
 )
-
 
 // Off-duty time
 #define PTO_CARGO			"Cargo"
