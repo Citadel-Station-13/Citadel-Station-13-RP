@@ -14,11 +14,3 @@
 	if(server_file_path && load_file)
 		stored_data = file2text(server_file_path)
 	calculate_size()
-
-
-// NEWS DEFINITIONS BELOW THIS LINE
-/*
-/datum/computer_file/data/news_article/space/vol_one
-	filename = "SPACE Magazine vol. 1"
-	server_file_path = 'news_articles/space_magazine_1.html'
-*/

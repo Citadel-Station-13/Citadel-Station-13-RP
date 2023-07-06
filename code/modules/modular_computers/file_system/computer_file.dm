@@ -36,4 +36,5 @@ var/global/file_uid = 0
 	else
 		temp.filename = filename
 	temp.filetype = filetype
-	return temp 
+	return temp
+	
