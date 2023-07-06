@@ -24,7 +24,11 @@ export interface ModularProps {
  * If not rendering directly, it will act like a <Section>.
  */
 export const Modular = (props: ModularProps, context: any) => {
-  const { is_module } = context;
+  const { is_module, m_section } = context;
+  let sectionProps = {
+    ...props.section,
+    ...m_section,
+  };
   return (
     !is_module? (
       <Window {...props.window}>
@@ -34,7 +38,9 @@ export const Modular = (props: ModularProps, context: any) => {
         </Window.Content>
       </Window>
     ) : (
-      <Section {...props.section}>
+      <Section
+        {...props.section}
+        {...sectionProps}>
         {props.direct}
         {props.children}
       </Section>
