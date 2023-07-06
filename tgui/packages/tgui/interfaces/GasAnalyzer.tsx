@@ -4,7 +4,7 @@ import type { Gasmix } from './common/GasmixParser';
 import {
   AtmosHandbookContent,
   atmosHandbookHooks,
-} from './common/AtmosHandbook';
+} from './AtmosHandbook';
 import { Window } from '../layouts';
 import { Section } from '../components';
 
@@ -37,4 +37,3 @@ export const GasAnalyzer = (props, context) => {
     </Window>
   );
 };
-  

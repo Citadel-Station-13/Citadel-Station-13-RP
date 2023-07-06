@@ -1,5 +1,36 @@
+// todo: this here is a reminder that we need a popup atmos guide that you can pull up.
+
+import { Modal, Section } from "../components"
+import { FullGasContext } from "./common/Atmos"
+
+interface AtmosGuideProps {
+  /// gas context to pull from - must be full
+  gasContext: FullGasContext
+  /// should we render as a section or modal? true for section.
+  embedded?: boolean;
+}
+
+export const AtmosGuide = (props: AtmosGuideProps) => {
+  return props.embedded? (
+    <Section fitted>
+      <AtmosGuideInternal {...props} />
+    </Section>
+  ) : (
+    <Modal>
+      <AtmosGuideInternal {...props} />
+    </Modal>
+  )
+}
+
+const AtmosGuideInternal = (props: AtmosGuideProps) => {
+  return (
+    "Unimplemented"
+  )
+}
+
+/*
 import { InfernoNode } from 'inferno';
-import { useBackend, useLocalState } from '../../backend';
+import { useBackend, useLocalState } from '../backend';
 import {
   Box,
   Button,
@@ -9,7 +40,8 @@ import {
   Section,
   Stack,
   Tooltip,
-} from '../../components';
+} from '../components';
+*/
 
 /**
  * This describes something that influences a particular reaction
@@ -21,6 +53,7 @@ import {
  * desc = 'Influences the burn rate and consumption ratio.'
  */
 
+/*
 type Factor = {
   factor_id?: string;
   factor_type: 'gas' | 'misc';
@@ -242,3 +275,4 @@ export const atmosHandbookHooks = (context) => {
   );
   return [setActiveGasId, setActiveReactionId];
 };
+*/

@@ -12,7 +12,7 @@ import { Window } from '../layouts';
 import {
   AtmosHandbookContent,
   atmosHandbookHooks,
-} from './common/AtmosHandbook';
+} from './AtmosHandbook';
 import { Gasmix, GasmixParser } from './common/GasmixParser';
 
 type Chamber = {
