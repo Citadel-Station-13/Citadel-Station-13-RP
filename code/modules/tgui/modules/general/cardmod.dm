@@ -171,7 +171,7 @@
 /datum/tgui_module/card_mod/proc/auth_source(var/user)
 	return null
 
-/datum/tgui_module/card_mod/static_data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source(mob/user))
+/datum/tgui_module/card_mod/static_data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source(user))
 	. = ..()
 	.["access"] = SSjob.tgui_access_data()
 	var/list/direct_cache = ((authing?.access || list()) & SSjob.cached_access_edit_relevant)
@@ -191,7 +191,7 @@
 			"ranks" = ranks_by_department[department],
 		))
 
-/datum/tgui_module/card_mod/data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source(mob/user))
+/datum/tgui_module/card_mod/data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source(user))
 	. = ..()
 	.["card_account"] = editing?.associated_account_number
 	.["card_name"] = editing?.registered_name
