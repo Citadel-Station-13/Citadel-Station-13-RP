@@ -116,23 +116,13 @@
 					break
 			return TRUE
 
-<<<<<<< HEAD
 		if("newaccount")
-			var/newdomain = sanitize(input(usr,"Pick domain:", "Domain name") as null|anything in GLOB.using_map.usable_email_tlds)
+			var/newdomain = sanitize(input(usr,"Pick domain:", "Domain name") as null|anything in (LEGACY_MAP_DATUM).usable_email_tlds)
 			if(!newdomain)
 				return TRUE
 			var/newlogin = sanitize(input(usr,"Pick account name (@[newdomain]):", "Account name"), 100)
 			if(!newlogin)
 				return TRUE
-=======
-	if(href_list["newaccount"])
-		var/newdomain = sanitize(input(user,"Pick domain:", "Domain name") as null|anything in (LEGACY_MAP_DATUM).usable_email_tlds)
-		if(!newdomain)
-			return 1
-		var/newlogin = sanitize(input(user,"Pick account name (@[newdomain]):", "Account name"), 100)
-		if(!newlogin)
-			return 1
->>>>>>> 787c6065a7ab2843080de41ea1d62e0322e8dd9c
 
 			var/complete_login = "[newlogin]@[newdomain]"
 			if(ntnet_global.does_email_exist(complete_login))

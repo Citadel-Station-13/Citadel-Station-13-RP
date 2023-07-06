@@ -16,13 +16,8 @@
 		if(NETWORK_ERT)
 			return ACCESS_CENTCOM_ERT
 
-<<<<<<< HEAD
-	if(network in GLOB.using_map.station_networks)
-		return ACCESS_SECURITY_MAIN // Default for all other station networks
-=======
 	if(network in (LEGACY_MAP_DATUM).station_networks)
-		return ACCESS_SECURITY_EQUIPMENT // Default for all other station networks
->>>>>>> 787c6065a7ab2843080de41ea1d62e0322e8dd9c
+		return ACCESS_SECURITY_MAIN // Default for all other station networks
 	else
 		return 999	//Inaccessible if not a station network and not mentioned above
 
