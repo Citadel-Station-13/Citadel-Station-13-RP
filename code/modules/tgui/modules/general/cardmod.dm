@@ -344,7 +344,7 @@
 		var/list/allowed = SSjob.editable_access_ids_by_id(id)
 		if(isnull(allowed))
 			continue
-		var/list/got = allowed & accesses
+		var/list/got = allowed & left
 		if(!length(got))
 			continue
 		left -= got
