@@ -1,7 +1,7 @@
 /datum/computer_file/program/card_mod
 	filename = "cardmod"
 	filedesc = "ID card modification program"
-	tguimodule_path = /datum/tgui_module/card_mod/standard/id_computer/ntos
+	tguimodule_path = /datum/tgui_module_old/cardmod
 	program_icon_state = "id"
 	program_key_state = "id_key"
 	program_menu_icon = "key"
@@ -9,39 +9,27 @@
 	required_access = ACCESS_COMMAND_CARDMOD
 	requires_ntnet = 0
 	size = 8
-	var/datum/tgui_module/card_mod/standard/id_computer/ntos/new_module
+	var/datum/tgui_module/card_mod/standard/id_computer/ntos/tgui_cardmod
 
-/datum/computer_file/program/card_mod/run_program(var/mob/living/user)
-	if(can_run(user, 1) || !requires_access_to_run)
-		computer.active_program = src
-		if(tguimodule_path)
-			new_module = new tguimodule_path(src)
-		if(requires_ntnet && network_destination)
-			generate_network_log("Connection opened to [network_destination].")
-		program_state = PROGRAM_STATE_ACTIVE
-		return 1
-	return 0
+/datum/computer_file/program/card_mod/New()
+	tgui_cardmod = new(src)
 
-// Use this proc to kill the program. Designed to be implemented by each program if it requires on-quit logic, such as the NTNRC client.
-/datum/computer_file/program/card_mod/kill_program(var/forced = 0)
-	program_state = PROGRAM_STATE_KILLED
-	if(network_destination)
-		generate_network_log("Connection to [network_destination] closed.")
-	if(new_module)
-		SStgui.close_uis(new_module)
-	QDEL_NULL(new_module)
-	return 1
+/datum/computer_file/program/card_mod/Destroy()
+	. = ..()
+	QDEL_NULL(tgui_cardmod)
 
-/datum/computer_file/program/card_mod/ui_interact(mob/user, datum/tgui/ui)
-	if(program_state != PROGRAM_STATE_ACTIVE)
-		if(ui)
-			ui.close()
-		return computer.ui_interact(user)
-	if(istype(new_module))
-		new_module.ui_interact(user)
-		return 0
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui && tgui_id)
-		ui = new(user, src, tgui_id, filedesc)
-		ui.open()
-	return 1
+/datum/computer_file/program/card_mod/ui_module_route(action, list/params, datum/tgui/ui, id)
+    . = ..()
+    if(.)
+        return
+    switch(id)
+        if("modify")
+            return tgui_cardmod.ui_act(action, params, ui)
+
+/datum/computer_file/program/card_mod/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+    . = ..()
+    .["modify"] = tgui_cardmod.data(user, computer.card_slot.stored_card, user.GetIdCard())
+
+/datum/computer_file/program/card_mod/ui_module_static(mob/user, datum/tgui/ui, datum/ui_state/state)
+    . = ..()
+    .["modify"] = tgui_cardmod.static_data(user, computer.card_slot.stored_card, user.GetIdCard())

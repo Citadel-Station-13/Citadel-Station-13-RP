@@ -6,7 +6,7 @@
 	tgui_id = "IdentificationComputer"
 	var/mod_mode = 1
 	var/is_centcom = 0
-
+/*
 /datum/tgui_module_old/cardmod/ui_static_data(mob/user)
 	var/list/data =  ..()
 	if(data_core)
@@ -231,3 +231,5 @@
 
 	if(id_card)
 		id_card.name = "[id_card.registered_name]'s ID Card ([id_card.assignment])"
+*/
+	
