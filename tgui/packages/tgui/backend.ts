@@ -441,7 +441,7 @@ export interface ModuleProps {
   // module id, this lets it autoload from context
   id: string;
   // override props for rendering its external <Section>
-  section: SectionProps;
+  section?: SectionProps;
 }
 
 export interface ModuleData {
