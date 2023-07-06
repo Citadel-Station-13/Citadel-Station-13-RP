@@ -1,5 +1,5 @@
 import { NtosWindow } from '../layouts';
-import { CameraConsole, CameraConsoleContent, CameraConsoleNTOS } from './CameraConsole';
+import { CameraConsoleNTOS } from './CameraConsole';
 
 export const NtosCameraConsole = () => {
   return (
