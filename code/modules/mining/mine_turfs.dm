@@ -93,7 +93,7 @@
 
 /turf/simulated/mineral/icerock
 	name = "icerock"
-	color = "#a9dbf3"
+	color = "#78a3b8"
 	random_icon = 1
 
 /turf/simulated/mineral/icerock/airmix
