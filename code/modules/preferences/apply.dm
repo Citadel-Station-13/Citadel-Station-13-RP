@@ -68,18 +68,24 @@
 	unset_busy_human_dummy("prefs/render_to_appearance")
 
 /**
- * equips loadout - let SSjobs/SSticker handle this, this is for special cases.
+ * equips loadout
  *
  * @params
  * * character - the mob
  * * flags - PREF_COPY_TO_ flags like in [copy_to]
+ * * role - (optional) the /datum/role being used.
+ * * allow_storage_spawn - spawn extra items in storage instead of deleting.
  */
-/datum/preferences/proc/equip_loadout(mob/character, flags)
-
-	// todo: copypaste, refactor
+/datum/preferences/proc/equip_loadout(mob/character, flags, datum/role/role, allow_storage_spawn)
+	//! todo: copypaste, refactor
 	var/mob/living/carbon/human/H = character
 	if(!istype(H))
 		return
+	//! end
+
+	if(isnull(allow_storage_spawn))
+		// by default, we only spawn stuff in backpack if they're actually spawning in.
+		allow_storage_spawn = PREF_COPYING_TO_CHECK_IS_SPAWNING(flags)
 
 	//Equip custom gear loadout.
 	var/list/custom_equip_slots = list()
@@ -127,3 +133,17 @@
 			if(H.equip_to_slot_or_del(G.spawn_item(H, custom_equip_leftovers[thing]), G.slot))
 				to_chat(H, "<span class='notice'>Equipping you with \the [G.display_name]!</span>")
 				custom_equip_slots.Add(G.slot)
+
+/**
+ * helper to try to equip loadout stuff to slots
+ *
+ * input list should be associated to slot IDs.
+ */
+/datum/preferences/proc/equip_loadout_to_slots(list/stuff)
+
+/**
+ * helper to try to stuff loadout stuff into storage
+ */
+/datum/preferences/proc/equip_loadout_to_storage(list/obj/item/items)
+
+#warn impl all

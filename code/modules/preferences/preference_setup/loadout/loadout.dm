@@ -29,7 +29,7 @@
 		var/numkey = num2text(i)
 		if(isnull(slots[numkey]))
 			continue
-		var/list/slot = (slots[numkey] = sanitize_islist[slots[nukey]])
+		var/list/slot = (slots[numkey] = sanitize_islist(slots[numkey]))
 		if(length(slot) > LOADOUT_MAX_ITEMS)
 			slot.len = LOADOUT_MAX_ITEMS
 		for(var/id in slot)
@@ -63,7 +63,8 @@
 						// else we just don't care because gear tweaks need to sanitize their own stuff.
 			*/
 
-/datum/category_item/player_setup_item/loadout/proc/check_loadout_entry(datum/preferences/prefs)
+/datum/category_item/player_setup_item/loadout/proc/check_loadout_entry(datum/preferences/prefs, datum/loadout_entry/entry)
+
 	#warn impl
 
 /datum/category_item/player_setup_item/loadout/proc/valid_loadout_entries(datum/preferences/prefs)

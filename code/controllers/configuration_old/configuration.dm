@@ -673,9 +673,6 @@
 				if("character_slots")
 					config_legacy.character_slots = text2num(value)
 
-				if("loadout_slots")
-					config_legacy.loadout_slots = text2num(value)
-
 				if("allow_drone_spawn")
 					config_legacy.allow_drone_spawn = text2num(value)
 

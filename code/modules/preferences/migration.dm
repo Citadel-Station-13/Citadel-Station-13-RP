@@ -248,7 +248,7 @@
 						if("color", "matrix_recolor")
 							assembled[LOADOUT_ENTRYDATA_RECOLOR] = data[name]
 						else
-							LAZYSET(assembled[LOADOUT_ENTRYDATA_TWEAKS][name], data[name])
+							LAZYSET(assembled[LOADOUT_ENTRYDATA_TWEAKS], name, data[name])
 					character[CHARACTER_DATA_LOADOUT]["[i]"] = assembled
 
 /**

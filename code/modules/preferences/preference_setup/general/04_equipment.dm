@@ -52,7 +52,6 @@
 	return TRUE
 
 /datum/category_item/player_setup_item/general/equipment/sanitize_character()
-	if(!islist(pref.gear)) pref.gear = list()
 
 	if(!istype(pref.all_underwear))
 		pref.all_underwear = list()
