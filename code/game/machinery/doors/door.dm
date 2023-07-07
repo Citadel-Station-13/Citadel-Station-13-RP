@@ -131,7 +131,7 @@
 			if(mecha.occupant && (src.allowed(mecha.occupant) || src.check_access_list(mecha.operation_req_access)))
 				open()
 			else
-				do_animate("deny")
+				do_animate(DOOR_ANIMATION_DENY)
 		return
 	if(istype(AM, /obj/structure/bed/chair/wheelchair))
 		var/obj/structure/bed/chair/wheelchair/wheel = AM
@@ -139,7 +139,7 @@
 			if(wheel.pulling && (src.allowed(wheel.pulling)))
 				open()
 			else
-				do_animate("deny")
+				do_animate(DOOR_ANIMATION_DENY)
 
 /obj/machinery/door/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!opacity && mover.check_pass_flags(ATOM_PASS_GLASS))
@@ -161,12 +161,10 @@
 		return
 	src.add_fingerprint(user)
 	if(density)
-		if(istype(user, /mob/living/simple_mob) && !(user.ckey))
-			do_animate("smdeny")
-		else if(allowed(user))
+		if(allowed(user))
 			open()
 		else
-			do_animate("deny")
+			do_animate(DOOR_ANIMATION_DENY)
 
 /obj/machinery/door/bullet_act(var/obj/projectile/Proj)
 	..()
@@ -302,12 +300,12 @@
 		return
 
 	if(src.density)
-		do_animate("deny")
+		do_animate(DOOR_ANIMATION_DENY)
 	return
 
 /obj/machinery/door/emag_act(var/remaining_charges)
 	if(density && operable())
-		do_animate("spark")
+		do_animate(DOOR_ANIMATION_SPARK)
 		sleep(6)
 		open()
 		operating = -1
@@ -390,35 +388,30 @@
 
 /obj/machinery/door/proc/do_animate(animation)
 	switch(animation)
-		if("opening")
+		if(DOOR_ANIMATION_OPEN)
 			if(p_open)
 				flick("o_doorc0", src)
 			else
 				flick("doorc0", src)
-		if("closing")
+		if(DOOR_ANIMATION_CLOSE)
 			if(p_open)
 				flick("o_doorc1", src)
 			else
 				flick("doorc1", src)
-		if("spark")
+		if(DOOR_ANIMATION_SPARK)
 			if(density)
 				flick("door_spark", src)
-		if("deny")
+		if(DOOR_ANIMATION_DENY)
 			if(density && !(machine_stat & (NOPOWER|BROKEN)))
 				flick("door_deny", src)
 				playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)
-		if("smdeny")
-			if(density && !(machine_stat & (NOPOWER|BROKEN)))
-				flick("door_deny", src)
-	return
-
 
 /obj/machinery/door/proc/open(var/forced = 0)
 	if(!can_open(forced))
 		return
 	operating = 1
 
-	do_animate("opening")
+	do_animate(DOOR_ANIMATION_OPEN)
 	set_opacity(0)
 	sleep(3)
 	src.density = 0
@@ -445,7 +438,7 @@
 	operating = 1
 
 	close_door_at = 0
-	do_animate("closing")
+	do_animate(DOOR_ANIMATION_CLOSE)
 	sleep(3)
 	src.density = 1
 	explosion_resistance = initial(explosion_resistance)

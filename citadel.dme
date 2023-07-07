@@ -206,6 +206,7 @@
 #include "code\__DEFINES\languages\ids.dm"
 #include "code\__DEFINES\languages\legacy.dm"
 #include "code\__DEFINES\languages\translation.dm"
+#include "code\__DEFINES\machines\door.dm"
 #include "code\__DEFINES\mapping\levels.dm"
 #include "code\__DEFINES\mapping\maploader.dm"
 #include "code\__DEFINES\mapping\maps.dm"

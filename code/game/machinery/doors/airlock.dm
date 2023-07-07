@@ -20,13 +20,6 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	/obj/spawner/window
 	)) //the spawner is there specifically because doors are initializing weird.
 
-#define AIRLOCK_CLOSED	1
-#define AIRLOCK_CLOSING	2
-#define AIRLOCK_OPEN	3
-#define AIRLOCK_OPENING	4
-#define AIRLOCK_DENY	5
-#define AIRLOCK_EMAG	6
-
 #define AIRLOCK_PAINTABLE 1
 #define AIRLOCK_STRIPABLE 2
 #define AIRLOCK_DETAILABLE 4
@@ -258,10 +251,10 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 		if(istype(X.species, /datum/species/xenos))
 			if(src.locked || src.welded)
 				visible_message("<span class='green'>\The [user] begins digging into \the [src] internals!</span>")
-				src.do_animate("deny")
+				src.do_animate(DOOR_ANIMATION_DENY)
 				if(do_after(user,5 SECONDS,src))
 					visible_message("<span class='danger'>\The [user] forces \the [src] open, sparks flying from its electronics!</span>")
-					src.do_animate("spark")
+					src.do_animate(DOOR_ANIMATION_SPARK)
 					playsound(src.loc, 'sound/machines/airlock_creaking.ogg', 100, 1)
 					src.locked = 0
 					src.welded = 0
@@ -278,7 +271,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 				visible_message("<span class='danger'>\The [user] forces \the [src] closed!</span>")
 				close(1)
 		else
-			src.do_animate("deny")
+			src.do_animate(DOOR_ANIMATION_DENY)
 			visible_message("<span class='notice'>\The [user] strains fruitlessly to force \the [src] [density ? "open" : "closed"].</span>")
 			return
 	..()
@@ -525,38 +518,32 @@ About the new airlock wires panel:
 
 	set_airlock_overlays(state)
 
-	return
-
 /obj/machinery/door/airlock/custom_smooth()
 	return //we only custom smooth because we don't need to do anything else.
 
 /obj/machinery/door/airlock/do_animate(animation)
-	if(overlays)
-		overlays.Cut()
-
 	switch(animation)
-		if("opening")
+		if(DOOR_ANIMATION_OPEN)
 			set_airlock_overlays(AIRLOCK_OPENING)
 			flick("opening", src)//[stat ? "_stat":]
 			update_icon(AIRLOCK_OPEN)
-		if("closing")
+		if(DOOR_ANIMATION_CLOSE)
 			set_airlock_overlays(AIRLOCK_CLOSING)
 			flick("closing", src)
 			update_icon(AIRLOCK_CLOSED)
-		if("deny")
+		if(DOOR_ANIMATION_DENY)
 			set_airlock_overlays(AIRLOCK_DENY)
 			if(density && arePowerSystemsOn())
 				flick("deny", src)
 				if(speaker)
 					playsound(loc, denied_sound, 50, 0)
 			update_icon(AIRLOCK_CLOSED)
-		if("emag")
+		if(DOOR_ANIMATION_EMAG)
 			set_airlock_overlays(AIRLOCK_EMAG)
 			if(density && arePowerSystemsOn())
 				flick("deny", src)
 		else
 			update_icon()
-	return
 
 /obj/machinery/door/airlock/attack_ai(mob/user as mob)
 	ui_interact(user)
