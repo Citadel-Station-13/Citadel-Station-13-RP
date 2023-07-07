@@ -3,7 +3,7 @@
 
 /datum/asset/spritesheet/loadout/create_spritesheets()
 	for(var/name in gear_datums)
-		var/datum/gear/entry = gear_datums[name]
+		var/datum/loadout_entry/entry = gear_datums[name]
 		var/item_id = entry.legacy_get_id()
 		if(!item_id)
 			continue

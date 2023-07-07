@@ -23,7 +23,7 @@
 	// todo: loadouts should use char species UID
 	var/real_species_name = prefs.real_species_name()
 	for(var/gear_name in gear_datums)
-		var/datum/gear/G = gear_datums[gear_name]
+		var/datum/loadout_entry/G = gear_datums[gear_name]
 		if(G.legacy_species_lock)
 			if(G.legacy_species_lock != real_species_name)
 				continue
@@ -56,7 +56,7 @@
 			to_chat(preference_mob, SPAN_WARNING("You cannot take \the [gear_name] as you are not whitelisted for the species or item."))
 			pref.gear -= gear_name
 		else
-			var/datum/gear/G = gear_datums[gear_name]
+			var/datum/loadout_entry/G = gear_datums[gear_name]
 			if(total_cost + G.cost > max_gear_points())
 				pref.gear -= gear_name
 				to_chat(preference_mob, SPAN_WARNING("You cannot afford to take \the [gear_name]"))
@@ -69,7 +69,7 @@
 	var/total_cost = 0
 	if(pref.gear && pref.gear.len)
 		for(var/i = 1; i <= pref.gear.len; i++)
-			var/datum/gear/G = gear_datums[pref.gear[i]]
+			var/datum/loadout_entry/G = gear_datums[pref.gear[i]]
 			if(G)
 				total_cost += G.cost
 
@@ -93,7 +93,7 @@
 		var/category_cost = 0
 		for(var/gear in LC.gear)
 			if(gear in pref.gear)
-				var/datum/gear/G = LC.gear[gear]
+				var/datum/loadout_entry/G = LC.gear[gear]
 				category_cost += G.cost
 
 		if(category == current_tab)
@@ -110,7 +110,7 @@
 	. += "<tr><td colspan=3><b><center>[LC.category]</center></b></td></tr>"
 	. += "<tr><td colspan=3><hr></td></tr>"
 	for(var/gear_name in LC.gear)
-		var/datum/gear/G = LC.gear[gear_name]
+		var/datum/loadout_entry/G = LC.gear[gear_name]
 		if(preference_mob && preference_mob.client)
 			if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))
 				continue
@@ -122,45 +122,45 @@
 		. += "<td><font size=2><i>[G.description]</i></font></td></tr>"
 		if(ticked)
 			. += "<tr><td colspan=3>"
-			for(var/datum/gear_tweak/tweak in G.gear_tweaks)
+			for(var/datum/loadout_entry_tweak/tweak in G.gear_tweaks)
 				. += " <a href='?src=\ref[src];gear=[G.name];tweak=\ref[tweak]'>[tweak.get_contents(get_tweak_metadata(G, tweak))]</a>"
 			. += "</td></tr>"
 	. += "</table>"
 	. = jointext(., null)
 
-/datum/category_item/player_setup_item/loadout/proc/get_gear_metadata(var/datum/gear/G)
+/datum/category_item/player_setup_item/loadout/proc/get_gear_metadata(var/datum/loadout_entry/G)
 	. = pref.gear[G.name]
 	if(!.)
 		. = list()
 		pref.gear[G.name] = .
 
-/datum/category_item/player_setup_item/loadout/proc/get_tweak_metadata(var/datum/gear/G, var/datum/gear_tweak/tweak)
+/datum/category_item/player_setup_item/loadout/proc/get_tweak_metadata(var/datum/loadout_entry/G, var/datum/loadout_entry_tweak/tweak)
 	var/list/metadata = get_gear_metadata(G)
 	. = metadata["[tweak]"]
 	if(!.)
 		. = tweak.get_default()
 		metadata["[tweak]"] = .
 
-/datum/category_item/player_setup_item/loadout/proc/set_tweak_metadata(var/datum/gear/G, var/datum/gear_tweak/tweak, var/new_metadata)
+/datum/category_item/player_setup_item/loadout/proc/set_tweak_metadata(var/datum/loadout_entry/G, var/datum/loadout_entry_tweak/tweak, var/new_metadata)
 	var/list/metadata = get_gear_metadata(G)
 	metadata["[tweak]"] = new_metadata
 
 /datum/category_item/player_setup_item/loadout/OnTopic(href, href_list, user)
 	if(href_list["toggle_gear"])
-		var/datum/gear/TG = gear_datums[href_list["toggle_gear"]]
+		var/datum/loadout_entry/TG = gear_datums[href_list["toggle_gear"]]
 		if(TG?.name in pref.gear)
 			pref.gear -= TG.name
 		else
 			var/total_cost = 0
 			for(var/gear_name in pref.gear)
-				var/datum/gear/G = gear_datums[gear_name]
+				var/datum/loadout_entry/G = gear_datums[gear_name]
 				if(istype(G)) total_cost += G.cost
 			if((total_cost+TG.cost) <= max_gear_points())
 				pref.gear += TG.name
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	if(href_list["gear"] && href_list["tweak"])
-		var/datum/gear/gear = gear_datums[href_list["gear"]]
-		var/datum/gear_tweak/tweak = locate(href_list["tweak"])
+		var/datum/loadout_entry/gear = gear_datums[href_list["gear"]]
+		var/datum/loadout_entry_tweak/tweak = locate(href_list["tweak"])
 		if(!tweak || !istype(gear) || !(tweak in gear.gear_tweaks))
 			return PREFERENCES_NOACTION
 		var/metadata = tweak.get_metadata(user, get_tweak_metadata(gear, tweak))

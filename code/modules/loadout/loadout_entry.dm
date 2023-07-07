@@ -5,8 +5,8 @@ var/list/gear_datums = list()
 	var/category = ""
 	var/list/gear = list()
 
-/datum/gear
-	abstract_type = /datum/gear
+/datum/loadout_entry
+	abstract_type = /datum/loadout_entry
 
 	/// unique id - must be unique (duh)
 	var/id
@@ -35,13 +35,13 @@ var/list/gear_datums = list()
 	var/list/gear_tweaks = list()
 	/// Does it go on the exploitable information list?
 	var/exploitable = 0
-	var/static/datum/gear_tweak/color/gear_tweak_free_color_choice = new
+	var/static/datum/loadout_entry_tweak/color/gear_tweak_free_color_choice = new
 	var/list/ckeywhitelist
 	var/list/character_name
 	/// Seasonal whitelist - only create if holiday is active. NOTE: This IGNORES ALLOW_HOLIDAYS config! This is because character setup isn't subsystem-init-synced so we must init all of this dumb shit before config loads.
 	var/list/holiday_whitelist
 
-/datum/gear/New()
+/datum/loadout_entry/New()
 	if(!description)
 		var/obj/O = path
 		description = initial(O.desc)
@@ -54,13 +54,13 @@ var/list/gear_datums = list()
 /**
  * remove & regex this to just directly access the `.id` variable when we have id's on every entry.
  */
-/datum/gear/proc/legacy_get_id()
+/datum/loadout_entry/proc/legacy_get_id()
 	return name
 
 /**
  * encodes data for tgui/interfaces/CharacterSetup/CharacterLoadout.tsx's [LoadoutEntry] interface.
  */
-/datum/gear/proc/tgui_entry_data()
+/datum/loadout_entry/proc/tgui_entry_data()
 	return list(
 		"name" = display_name || name,
 		"id" = legacy_get_id(),
@@ -70,22 +70,22 @@ var/list/gear_datums = list()
 		"desc" = description,
 	)
 
-/datum/gear_data
+/datum/loadout_entry_data
 	var/path
 	var/location
 
-/datum/gear_data/New(var/path, var/location)
+/datum/loadout_entry_data/New(var/path, var/location)
 	src.path = path
 	src.location = location
 
-/datum/gear/proc/spawn_item(var/location, var/metadata)
-	var/datum/gear_data/gd = new(path, location)
+/datum/loadout_entry/proc/spawn_item(var/location, var/metadata)
+	var/datum/loadout_entry_data/gd = new(path, location)
 	if(metadata)
-		for(var/datum/gear_tweak/gt in gear_tweaks)
+		for(var/datum/loadout_entry_tweak/gt in gear_tweaks)
 			gt.tweak_gear_data(metadata["[gt]"], gd)
 	var/item = new gd.path(gd.location)
 	if(metadata)
-		for(var/datum/gear_tweak/gt in gear_tweaks)
+		for(var/datum/loadout_entry_tweak/gt in gear_tweaks)
 			gt.tweak_item(item, metadata["[gt]"])
 	var/mob/M = location
 	if(istype(M) && exploitable)	// Update exploitable info records for the mob without creating a duplicate object at their feet.
@@ -99,8 +99,8 @@ var/list/gear_datums = list()
 /hook/startup/proc/populate_gear_list()
 
 	// Create a list of gear datums to sort
-	for(var/geartype in typesof(/datum/gear)-/datum/gear)
-		var/datum/gear/G = geartype
+	for(var/geartype in typesof(/datum/loadout_entry)-/datum/loadout_entry)
+		var/datum/loadout_entry/G = geartype
 		if(initial(G.abstract_type) == geartype)
 			continue
 		G = new geartype
