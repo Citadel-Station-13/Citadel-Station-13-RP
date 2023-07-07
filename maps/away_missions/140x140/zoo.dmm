@@ -1018,7 +1018,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "de" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(160)
 	},
@@ -1936,7 +1936,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "fO" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_access = list(160)
 	},
@@ -8345,7 +8345,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wq" = (
-/obj/machinery/door/airlock/glass_medical,
+/obj/machinery/door/airlock/glass/medical,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo)
 "wr" = (

@@ -3,8 +3,8 @@
 	id = "plastic"
 	stack_type = /obj/item/stack/material/plastic
 	flags = MATERIAL_BRITTLE
-	icon_base = 'icons/turf/walls/solid.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
+	icon_base = 'icons/turf/walls/solid_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#CCCCCC"
 	hardness = 10
 	weight = 12

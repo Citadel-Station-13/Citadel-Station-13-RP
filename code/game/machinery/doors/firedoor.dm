@@ -1,4 +1,14 @@
-
+GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
+	/obj/structure/window/reinforced/tinted/full,
+	/obj/structure/window/reinforced/full,
+	/obj/structure/window/phoronreinforced/full,
+	/obj/structure/window/phoronbasic/full,
+	/obj/structure/window/basic/full,
+	/obj/structure/window/reinforced/polarized/full,
+	/obj/structure/wall_frame/prepainted/,
+	/obj/structure/wall_frame,
+	/obj/machinery/door/airlock/multi_tile,
+	/obj/machinery/door/airlock)))
 /// kPa
 #define FIREDOOR_MAX_PRESSURE_DIFF 25
 /// °C
@@ -13,14 +23,17 @@
 /obj/machinery/door/firedoor
 	name = "\improper Emergency Shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas."
-	icon = 'icons/obj/doors/DoorHazard.dmi'
-	icon_state = "door_open"
+	icon = 'icons/obj/doors/hazard/door.dmi'
+	var/panel_file = 'icons/obj/doors/hazard/panel.dmi'
+	var/welded_file = 'icons/obj/doors/hazard/welded.dmi'
+	icon_state = "open"
 	req_one_access = list(ACCESS_COMMAND_EVA)	//ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 	opacity = 0
 	density = 0
 	layer = DOOR_OPEN_LAYER - 0.01
-	open_layer = DOOR_OPEN_LAYER - 0.01 // Just below doors when open
-	closed_layer = DOOR_CLOSED_LAYER + 0.01 // Just above doors when closed
+	open_layer = DOOR_OPEN_LAYER - 0.01// Just below doors when open
+	closed_layer = MID_LANDMARK_LAYER // Need this to be above windows/grilles/low walls.
+	smoothing_groups = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
 	//These are frequenly used with windows, so make sure zones can pass.
 	//Generally if a firedoor is at a place where there should be a zone boundery then there will be a regular door underneath it.
@@ -36,12 +49,14 @@
 	var/list/areas_added
 	var/list/users_to_open = new
 	var/next_process_time = 0
+	var/low_profile = FALSE
 
 	var/hatch_open = 0
 
 	power_channel = ENVIRON
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
+	autoset_dir = FALSE
 
 	var/list/tile_info[4]
 	var/list/dir_alerts[4] // 4 dirs, bitflags
@@ -68,6 +83,11 @@
 		if(istype(A) && !(A in areas_added))
 			LAZYADD(A.all_doors, src)
 			areas_added += A
+
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/door/firedoor/LateInitialize()
+	setDir(dir)
 
 /obj/machinery/door/firedoor/Destroy()
 	for(var/area/A in areas_added)
@@ -427,46 +447,82 @@
 /obj/machinery/door/firedoor/do_animate(animation)
 	switch(animation)
 		if("opening")
-			flick("door_opening", src)
+			flick("opening", src)
 			playsound(src, 'sound/machines/firelockopen.ogg', 37, 1)
 		if("closing")
 			playsound(src, 'sound/machines/firelockclose.ogg', 37, 1)
-			flick("door_closing", src)
+			flick("closing", src)
 	return
 
 
 /obj/machinery/door/firedoor/update_icon()
+	var/image/lights_overlay
 	cut_overlays()
-	var/list/overlays_to_add = list()
+	set_light(0)
+	var/do_set_light = FALSE
 
 	if(density)
-		icon_state = "door_closed"
-		if(prying)
-			icon_state = "prying_closed"
-		if(hatch_open)
-			overlays_to_add += "hatch"
-		if(blocked)
-			overlays_to_add += "welded"
+		icon_state = "closed"
+		if(panel_open)
+			add_overlay(panel_file)
 		if(pdiff_alert)
-			overlays_to_add += "palert"
+			lights_overlay += "palert"
+			do_set_light = TRUE
 		if(dir_alerts)
 			for(var/d=1;d<=4;d++)
-				var/cdir = GLOB.cardinal[d]
 				for(var/i=1;i<=ALERT_STATES.len;i++)
-					if(dir_alerts[d] & (1<<(i-1)))
-						overlays_to_add += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
+					if(dir_alerts[d] & BITFLAG(i-1))
+						add_overlay("alert_[ALERT_STATES[i]]")
+						do_set_light = TRUE
 	else
-		icon_state = "door_open"
-		if(prying)
-			icon_state = "prying_open"
-		if(blocked)
-			overlays_to_add += "welded_open"
+		if(low_profile)
+			icon_state = "open_lowprofile"
+		else
+			icon_state = "open"
 
-	add_overlay(overlays_to_add)
+	if(blocked)
+		add_overlay(welded_file)
+
+	if(do_set_light)
+		set_light(2, 0.25, COLOR_SUN)
 
 	return
 
-//These are playing merry hell on ZAS.  Sorry fellas :(
+/obj/machinery/door/firedoor/setDir(ndir)
+	for(var/D in GLOB.cardinal)
+		var/turf/T = get_step(src, D)
+		for(var/obj/A in T.contents)
+			if(A.type in GLOB.firelock_align_types) //this is mainly for the cases where mappers can't manually align firelocks, i.e window spawners.
+				switch(D)
+					if(NORTH)
+						dir = WEST
+						break
+					if(EAST)
+						dir = SOUTH
+						break
+					if(SOUTH)
+						dir = WEST
+						break
+					if(WEST)
+						dir = SOUTH
+						break
+		if(T.density)
+			switch(D)
+				if(NORTH)
+					dir = WEST
+					break
+				if(EAST)
+					dir = SOUTH
+					break
+				if(SOUTH)
+					dir = WEST
+					break
+				if(WEST)
+					dir = SOUTH
+					break
+	..()
+
+
 
 /obj/machinery/door/firedoor/border_only
 /*
@@ -517,32 +573,6 @@
 /obj/machinery/door/firedoor/glass
 	name = "\improper Emergency Glass Shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This one has a resilient glass window, allowing you to see the danger."
-	icon = 'icons/obj/doors/DoorHazardGlass.dmi'
-	icon_state = "door_open"
+	icon_state = "open"
 	glass = 1
 
-
-/obj/machinery/door/firedoor/glass/hidden
-	name = "\improper Emergency Shutter System"
-	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This model fits flush with the walls, and has a panel in the floor for maintenance."
-	icon = 'icons/obj/doors/DoorHazardHidden.dmi'
-	plane = TURF_PLANE
-
-	#ifndef IN_MAP_EDITOR
-	layer = HEAVYDUTY_WIRE_LAYER //Just below pipes
-	#else
-	layer = BELOW_OBJ_LAYER
-	#endif
-
-/obj/machinery/door/firedoor/glass/hidden/open()
-	. = ..()
-	plane = TURF_PLANE
-
-/obj/machinery/door/firedoor/glass/hidden/close()
-	. = ..()
-	plane = OBJ_PLANE
-
-/obj/machinery/door/firedoor/glass/hidden/steel
-	name = "\improper Emergency Shutter System"
-	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This model fits flush with the walls, and has a panel in the floor for maintenance."
-	icon = 'icons/obj/doors/DoorHazardHidden_steel.dmi'

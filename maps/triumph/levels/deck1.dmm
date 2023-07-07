@@ -466,7 +466,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "bM" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Telecomms Control Room"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -875,7 +875,7 @@
 /obj/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/machinery/door/airlock/glass_engineering,
+/obj/machinery/door/airlock/glass/engineering,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
@@ -1070,7 +1070,7 @@
 /area/maintenance/engi_engine)
 "dW" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Hallway";
 	req_one_access = null
 	},
@@ -1194,7 +1194,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled,
@@ -1600,7 +1600,7 @@
 /area/maintenance/engi_engine)
 "gc" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Hallway";
 	req_one_access = null
 	},
@@ -1651,7 +1651,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Equipment"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1742,7 +1742,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineeringatmos{
+/obj/machinery/door/airlock/glass/engineeringatmos{
 	name = "Atmospherics"
 	},
 /obj/structure/cable/green{
@@ -2799,7 +2799,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Telecomms Control Room"
 	},
 /turf/simulated/floor/tiled{
@@ -3251,7 +3251,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -3496,7 +3496,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "mX" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -3521,7 +3521,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_engineeringatmos{
+/obj/machinery/door/airlock/glass/engineeringatmos{
 	name = "Damage Control Storage"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -3703,7 +3703,7 @@
 /area/engineering/atmos)
 "nG" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineeringatmos{
+/obj/machinery/door/airlock/glass/engineeringatmos{
 	name = "Atmospherics"
 	},
 /obj/structure/cable/green{
@@ -3729,7 +3729,7 @@
 /area/tcommsat/entrance)
 "nL" = (
 /obj/structure/railing,
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/computer/guestpass{
 	dir = 4;
 	pixel_x = -28
@@ -3776,7 +3776,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/door/airlock/glass_engineering,
+/obj/machinery/door/airlock/glass/engineering,
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -4237,7 +4237,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 1
 	},
-/obj/machinery/door/airlock/glass_engineeringatmos{
+/obj/machinery/door/airlock/glass/engineeringatmos{
 	name = "Atmospherics"
 	},
 /turf/simulated/floor/tiled,
@@ -4292,7 +4292,7 @@
 /area/maintenance/engi_engine)
 "pE" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Equipment"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -4598,7 +4598,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/alarm{
@@ -4933,7 +4933,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Equipment"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -5914,7 +5914,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 1
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Hallway";
 	req_one_access = null
 	},
@@ -5970,7 +5970,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Hallway";
 	req_one_access = null
 	},
@@ -7724,7 +7724,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "Cy" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -8265,7 +8265,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -8409,7 +8409,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Break Room"
 	},
 /obj/machinery/door/firedoor,
@@ -8474,7 +8474,7 @@
 /area/engineering/atmos/storage)
 "EZ" = (
 /obj/structure/railing,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/orange,
@@ -8525,7 +8525,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Hallway";
 	req_one_access = null
 	},
@@ -8579,7 +8579,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Equipment"
 	},
 /obj/machinery/door/firedoor,
@@ -8729,7 +8729,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Equipment"
 	},
 /obj/structure/cable/green{
@@ -8826,7 +8826,6 @@
 /area/engineering/storage)
 "Gf" = (
 /obj/structure/table/reinforced,
-/obj/item/closet_painter,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/multitool{
 	pixel_x = 5
@@ -8952,7 +8951,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_engineeringatmos{
+/obj/machinery/door/airlock/glass/engineeringatmos{
 	name = "Damage Control Storage"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -9875,7 +9874,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Hallway";
 	req_one_access = null
 	},
@@ -9898,7 +9897,7 @@
 /area/space)
 "Ka" = (
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -9949,7 +9948,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "Ko" = (
@@ -10283,7 +10282,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Hallway";
 	req_one_access = null
 	},
@@ -10398,7 +10397,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "LE" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Hallway";
 	req_one_access = null
 	},
@@ -10848,7 +10847,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
 	},
@@ -10902,7 +10901,7 @@
 /turf/simulated/floor/tiled/white,
 /area/engineering/foyer_mezzenine)
 "NB" = (
-/obj/machinery/door/airlock/glass_engineering,
+/obj/machinery/door/airlock/glass/engineering,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
@@ -11362,7 +11361,7 @@
 /area/engineering/storage)
 "OR" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Shield Room"
 	},
 /turf/simulated/floor/tiled,
@@ -11588,7 +11587,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "PX" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11668,7 +11667,7 @@
 /obj/structure/sign/department/ass{
 	pixel_x = 29
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11857,7 +11856,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Hallway";
 	req_one_access = null
 	},
@@ -11902,7 +11901,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Break Room"
 	},
 /turf/simulated/floor/tiled,
@@ -12326,7 +12325,7 @@
 /turf/simulated/wall/r_wall,
 /area/engineering/portnacelle)
 "Sl" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Equipment"
 	},
 /obj/machinery/door/firedoor,
@@ -13289,7 +13288,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "VF" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -13407,7 +13406,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_engineeringatmos{
+/obj/machinery/door/airlock/glass/engineeringatmos{
 	name = "Atmospherics"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -13712,7 +13711,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering Equipment"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -13878,7 +13877,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Shield Room"
 	},
 /turf/simulated/floor/tiled,
@@ -13926,7 +13925,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/structure/catwalk,
@@ -14462,7 +14461,7 @@
 /area/storage/tech)
 "ZW" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineeringatmos{
+/obj/machinery/door/airlock/glass/engineeringatmos{
 	name = "Damage Control Storage"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,

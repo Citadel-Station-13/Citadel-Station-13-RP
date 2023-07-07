@@ -22,7 +22,7 @@
 	name = "packed snow"
 	flags = MATERIAL_BRITTLE
 	stack_type = /obj/item/stack/material/snowbrick
-	icon_base = 'icons/turf/walls/stone.dmi'
+	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_stone.dmi'
 	icon_reinf_directionals = TRUE
 	icon_colour = "#D8FDFF"

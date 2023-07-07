@@ -3,7 +3,7 @@
 	name = "bone"
 	icon_colour = "#e6dfc8"
 	stack_type = /obj/item/stack/material/bone
-	icon_base = 'icons/turf/walls/stone.dmi'
+	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
 	melting_point = T0C+300
 	sheet_singular_name = "fragment"

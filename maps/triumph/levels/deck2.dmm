@@ -288,7 +288,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "aS" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1178,7 +1178,7 @@
 /area/crew_quarters/lounge/kitchen_freezer)
 "dT" = (
 /obj/structure/railing,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1207,7 +1207,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_10)
 "dY" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "dZ" = (
@@ -2173,7 +2173,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -2270,7 +2270,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -2576,7 +2576,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Cargo Storage"
 	},
 /turf/simulated/floor/tiled,
@@ -2904,7 +2904,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Cargo Bay"
 	},
 /turf/simulated/floor/tiled,
@@ -2967,7 +2967,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "iS" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/structure/cable/green{
@@ -4431,7 +4431,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/door/window{
@@ -4723,7 +4723,7 @@
 	req_access = list(25);
 	req_one_access = list(25)
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5011,7 +5011,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "oI" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -5770,7 +5770,7 @@
 /turf/simulated/floor/crystal,
 /area/station/stairs_two)
 "rg" = (
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Magmatic Rift Leap Pad"
 	},
 /turf/simulated/floor/tiled,
@@ -6285,7 +6285,7 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/foyer)
 "sF" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6326,7 +6326,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
 "sK" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled,
@@ -6591,7 +6591,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Mining Prep Room"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -6602,7 +6602,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -7424,7 +7424,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "vS" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -7471,7 +7471,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Mining Prep Room"
 	},
 /turf/simulated/floor/tiled,
@@ -8030,7 +8030,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Cargo Bay"
 	},
 /turf/simulated/floor/tiled,
@@ -8169,7 +8169,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Cargo Bay"
 	},
 /turf/simulated/floor/tiled,
@@ -8460,7 +8460,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "zg" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -8765,7 +8765,7 @@
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/refinery)
 "Ae" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/structure/table/marble,
@@ -9442,7 +9442,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Mining Prep Room"
 	},
 /turf/simulated/floor/tiled,
@@ -9567,7 +9567,7 @@
 	layer = 3.3;
 	name = "Bar Shutters"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -9618,7 +9618,7 @@
 "CM" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Mining Airlock Storage"
 	},
 /turf/simulated/floor/tiled,
@@ -10309,7 +10309,7 @@
 /area/quartermaster/foyer)
 "EZ" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_mining,
+/obj/machinery/door/airlock/glass/mining,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/eva)
 "Fa" = (
@@ -10412,7 +10412,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "Fk" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/door/blast/shutters{
@@ -10507,7 +10507,7 @@
 /area/hallway/primary/starboard)
 "FB" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Mining Airlock Storage"
 	},
 /obj/structure/cable/green{
@@ -10558,7 +10558,7 @@
 "FG" = (
 /obj/structure/table/marble,
 /obj/item/storage/box/wings,
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "bar";
@@ -10767,7 +10767,7 @@
 /area/hallway/primary/starboard)
 "Gn" = (
 /obj/structure/table/marble,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/door/blast/shutters{
@@ -10984,7 +10984,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -11682,7 +11682,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "Je" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/techfloor{
@@ -11925,7 +11925,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	id_tag = "cargodoor";
 	name = "Cargo Office";
 	req_access = list(31);
@@ -11955,7 +11955,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -12339,7 +12339,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Mining Stroage"
 	},
 /turf/simulated/floor/tiled,
@@ -12537,7 +12537,7 @@
 /area/quartermaster/office)
 "Md" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Cargo Storage"
 	},
 /turf/simulated/floor/tiled,
@@ -12852,7 +12852,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/door/blast/shutters{
@@ -13065,7 +13065,7 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/foyer)
 "NQ" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/door/blast/shutters{
@@ -13091,7 +13091,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled,
@@ -13195,7 +13195,7 @@
 	layer = 3.3;
 	name = "Bar Shutters"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -13273,7 +13273,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_11)
 "Ow" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/door/blast/shutters{
@@ -13296,7 +13296,7 @@
 /area/crew_quarters/fitness)
 "Oz" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Mining Prep Room"
 	},
 /turf/simulated/floor/tiled,
@@ -13560,7 +13560,7 @@
 /turf/simulated/open,
 /area/maintenance/bar/lower)
 "Pr" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/structure/cable{
@@ -14549,7 +14549,7 @@
 	req_access = list(25);
 	req_one_access = list(25)
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -15017,7 +15017,7 @@
 	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -15137,7 +15137,7 @@
 	layer = 3.3;
 	name = "Bar Shutters"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "Ua" = (
@@ -15160,7 +15160,7 @@
 	layer = 3.3;
 	name = "Bar Shutters"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "Uc" = (
@@ -15305,7 +15305,7 @@
 /area/vacant/vacant_shop)
 "UD" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -15566,7 +15566,7 @@
 /area/crew_quarters/barrestroom)
 "Vt" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	id_tag = "cargodoor";
 	name = "Cargo Office";
 	req_access = list(31);
@@ -15627,7 +15627,7 @@
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "VA" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -16060,7 +16060,7 @@
 	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -16202,7 +16202,7 @@
 	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -17069,7 +17069,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled,
@@ -17185,7 +17185,7 @@
 /area/shuttle/belter)
 "ZI" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_mining,
+/obj/machinery/door/airlock/glass/mining,
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "4-8"

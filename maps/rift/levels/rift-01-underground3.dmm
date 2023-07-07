@@ -131,7 +131,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "hH" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted,
 /area/quartermaster/mining_airlock)
 "hN" = (
 /obj/structure/sign/mining{
@@ -171,7 +171,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
 "jJ" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/mining_airlock)
 "jV" = (
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -267,7 +267,7 @@
 /area/rift/surfacebase/underground/under1)
 "pd" = (
 /obj/structure/sign/warning/radioactive,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted,
 /area/rift/surfacebase/underground/under1)
 "pj" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -435,7 +435,7 @@
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "xo" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted,
 /area/engineering/engine_room)
 "xs" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -445,7 +445,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/quartermaster/mining_airlock)
 "xK" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted,
 /area/rift/surfacebase/underground/under1)
 "yh" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -471,6 +471,9 @@
 "yV" = (
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock/lythios43c,
+/area/rift/surfacebase/underground/under1)
+"yX" = (
+/turf/simulated/wall/prepainted,
 /area/rift/surfacebase/underground/under1)
 "zx" = (
 /obj/structure/sign/warning/bomb_range{
@@ -566,9 +569,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
-"Fu" = (
-/turf/simulated/wall,
-/area/rift/surfacebase/underground/under1)
 "FV" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -588,6 +588,10 @@
 /obj/machinery/bioscan_antenna/permanent{
 	network_key_obfuscated = "rift_bioscanners"
 	},
+/turf/simulated/floor/plating,
+/area/quartermaster/mining_airlock)
+"Hk" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
 "Ho" = (
@@ -711,13 +715,9 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
-"Qt" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/quartermaster/mining_airlock)
 "QE" = (
 /obj/structure/sign/mining,
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/mining_airlock)
 "Ro" = (
 /turf/unsimulated/wall/planetary/lythios43c{
@@ -15928,11 +15928,11 @@ dq
 dq
 dq
 dq
-Fu
-Fu
-Fu
-Fu
-Fu
+yX
+yX
+yX
+yX
+yX
 dq
 dq
 dq
@@ -16122,11 +16122,11 @@ dq
 dq
 dq
 dq
-Fu
-Fu
-Fu
-Fu
-Fu
+yX
+yX
+yX
+yX
+yX
 dq
 dq
 dq
@@ -16316,11 +16316,11 @@ dq
 dq
 dq
 dq
-Fu
-Fu
-Fu
-Fu
-Fu
+yX
+yX
+yX
+yX
+yX
 dq
 dq
 dq
@@ -16510,11 +16510,11 @@ dq
 dq
 dq
 dq
-Fu
-Fu
-Fu
-Fu
-Fu
+yX
+yX
+yX
+yX
+yX
 dq
 dq
 dq
@@ -16704,11 +16704,11 @@ dq
 dq
 dq
 dq
-Fu
-Fu
-Fu
-Fu
-Fu
+yX
+yX
+yX
+yX
+yX
 dq
 dq
 dq
@@ -18837,7 +18837,7 @@ Ws
 yh
 ZX
 AB
-Qt
+Hk
 KS
 KS
 KS
@@ -19219,7 +19219,7 @@ jJ
 QE
 jJ
 gG
-Qt
+Hk
 jJ
 jJ
 bX
@@ -20570,7 +20570,7 @@ KS
 KS
 KS
 KS
-Qt
+Hk
 jq
 vr
 zF
@@ -20579,7 +20579,7 @@ jJ
 yS
 LO
 Ji
-Qt
+Hk
 KS
 KS
 KS
@@ -20773,7 +20773,7 @@ wY
 Nq
 Mb
 tB
-Qt
+Hk
 KS
 KS
 KS
@@ -20961,13 +20961,13 @@ KS
 jJ
 QE
 jJ
-hH
+jJ
 QE
 jJ
 jJ
-Qt
-Qt
-hH
+Hk
+Hk
+jJ
 Yr
 KS
 KS

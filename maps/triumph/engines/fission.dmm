@@ -266,7 +266,7 @@
 /obj/machinery/camera/network/engineering{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -708,7 +708,7 @@
 /area/engineering/engine_room)
 "II" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1116,7 +1116,7 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "Tx" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1332,7 +1332,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/techfloor/grid,

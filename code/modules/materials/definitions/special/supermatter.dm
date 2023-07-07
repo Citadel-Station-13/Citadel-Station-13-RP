@@ -7,7 +7,7 @@
 	radioactivity = RAD_INTENSITY_MAT_SUPERMATTER
 	luminescence = 3
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
-	icon_base = 'icons/turf/walls/stone.dmi'
+	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	shard_type = SHARD_SHARD
 	hardness = 30
 	door_icon_base = "stone"

@@ -868,7 +868,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 6
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled{
 	icon_state = "monotile"
 	},
@@ -1004,7 +1004,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/wood,
@@ -1310,7 +1310,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
@@ -1656,7 +1656,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/paramed)
 "adc" = (
@@ -1896,7 +1896,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
@@ -2021,7 +2021,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -2191,7 +2191,7 @@
 /area/tether/surfacebase/medical/mentalhealth)
 "adU" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Mental Health";
 	req_one_access = list()
 	},
@@ -2265,7 +2265,7 @@
 /area/tether/surfacebase/medical/lowerhall)
 "adY" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	id_tag = "Psych";
 	name = "Mental Health"
 	},
@@ -2285,7 +2285,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/lowerhall)
 "adZ" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -2361,7 +2361,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/lowerhall)
 "aee" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -2976,7 +2976,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
@@ -3457,7 +3457,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -3780,7 +3780,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Xenoarch Storage";
 	req_access = list(65)
 	},
@@ -4219,7 +4219,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Chemical Research"
 	},
 /turf/simulated/floor/tiled/white,
@@ -4346,7 +4346,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "ahJ" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -5368,7 +5368,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -7906,7 +7906,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "anO" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -9955,7 +9955,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/first_aid_west)
 "arH" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "First-Aid Station";
 	req_one_access = list()
 	},
@@ -11084,7 +11084,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/lowerhall)
 "atP" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -11942,7 +11942,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	id_tag = null;
 	layer = 2.8;
 	name = "Security Checkpoint";
@@ -12789,7 +12789,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/xenoflora)
 "awE" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -13081,7 +13081,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -13118,7 +13118,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 5
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/dark,
@@ -13253,7 +13253,7 @@
 /obj/machinery/station_map{
 	pixel_y = 32
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled,
@@ -13714,7 +13714,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/xenoflora)
 "axT" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "axU" = (
@@ -13973,7 +13973,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "aym" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/industrial/loading{
@@ -14884,7 +14884,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/xenoflora)
 "azL" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -15132,7 +15132,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 10
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -15867,7 +15867,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "aBx" = (
@@ -15920,7 +15920,7 @@
 "aBA" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -17005,7 +17005,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
@@ -17015,7 +17015,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/lowernorthhall)
 "aDG" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -17033,7 +17033,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -17941,7 +17941,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_site/east)
 "aFt" = (
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Warehouse"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -18898,7 +18898,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/cargostore)
 "aGQ" = (
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	id_tag = "cargodoor";
 	name = "Cargo Office";
 	req_access = list(31);
@@ -21835,7 +21835,7 @@
 /area/engineering/atmos/gas_storage)
 "aMj" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_atmos{
+/obj/machinery/door/airlock/glass/atmos{
 	name = "Canister Storage";
 	req_access = list(24)
 	},
@@ -22149,7 +22149,7 @@
 /area/engineering/atmos/gas_storage)
 "aMQ" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_atmos{
+/obj/machinery/door/airlock/glass/atmos{
 	name = "Canister Storage";
 	req_access = list(24)
 	},
@@ -30020,7 +30020,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
@@ -31420,7 +31420,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
 "gnW" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	id_tag = "briginner";
 	name = "Brig";
 	req_access = list(2);
@@ -31810,7 +31810,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/brig)
 "hDd" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Firing Range";
 	req_access = list(1)
 	},
@@ -32356,7 +32356,7 @@
 "jkt" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -32439,7 +32439,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/visitor_dining)
 "jCD" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	id_tag = "briginner";
 	name = "Brig";
 	req_access = list(2);
@@ -33227,7 +33227,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "lwL" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	id_tag = "brigouter";
 	name = "Brig";
 	req_access = list(2);
@@ -33653,7 +33653,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -34431,7 +34431,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet{
@@ -34634,7 +34634,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/structure/disposalpipe/segment{
@@ -34768,7 +34768,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
 "oVr" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -35110,7 +35110,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
 "qnh" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	id_tag = null;
 	layer = 2.8;
 	name = "Security Checkpoint";
@@ -35147,7 +35147,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
 "qpp" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Construction Tram Airlock";
 	req_access = list()
 	},
@@ -36409,7 +36409,7 @@
 /area/tether/surfacebase/security/gasstorage)
 "ucv" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Solitary Confinement";
 	req_access = list(2)
 	},
@@ -37116,7 +37116,7 @@
 	},
 /area/tether/surfacebase/old_tram)
 "wpZ" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	id_tag = "brigouter";
 	name = "Brig";
 	req_access = list(2);
@@ -37454,7 +37454,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/structure/extinguisher_cabinet{

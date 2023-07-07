@@ -2434,7 +2434,7 @@
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/central/explored)
 "Yb" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Triage";
 	req_one_access = list(48)
 	},
