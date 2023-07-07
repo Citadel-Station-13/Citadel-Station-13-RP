@@ -8,7 +8,7 @@ var/global/file_uid = 0
 	/// File size in GQ. Integers only!
 	var/size = 1
 	/// Holder that contains this file.
-	var/obj/item/computer_hardware/hard_drive/holder
+	var/obj/item/stock_parts/computer/hard_drive/holder
 	/// Whether the file may be sent to someone via NTNet transfer or other means.
 	var/unsendable = FALSE
 	/// Whether the file may be deleted. Setting to 1 prevents deletion/renaming/etc.

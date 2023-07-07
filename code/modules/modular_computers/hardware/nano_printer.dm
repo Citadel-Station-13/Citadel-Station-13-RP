@@ -1,4 +1,4 @@
-/obj/item/computer_hardware/nano_printer
+/obj/item/stock_parts/computer/nano_printer
 	name = "nano printer"
 	desc = "Small integrated printer with paper recycling module."
 	power_usage = 50
@@ -9,11 +9,11 @@
 	var/stored_paper = 5
 	var/max_paper = 10
 
-/obj/item/computer_hardware/nano_printer/diagnostics(var/mob/user)
+/obj/item/stock_parts/computer/nano_printer/diagnostics(var/mob/user)
 	..()
 	to_chat(user, "Paper buffer level: [stored_paper]/[max_paper]")
 
-/obj/item/computer_hardware/nano_printer/proc/print_text(var/text_to_print, var/paper_title = null)
+/obj/item/stock_parts/computer/nano_printer/proc/print_text(var/text_to_print, var/paper_title = null)
 	if(!stored_paper)
 		return 0
 	if(!enabled)
@@ -37,7 +37,7 @@
 	stored_paper--
 	return 1
 
-/obj/item/computer_hardware/nano_printer/proc/count_fields(var/info)
+/obj/item/stock_parts/computer/nano_printer/proc/count_fields(var/info)
 //Count the fields. This is taken directly from paper.dm, /obj/item/paper/proc/parsepencode(). -Hawk_v3
 	var/fields = 0
 	var/t = info
@@ -50,7 +50,7 @@
 		fields++
 	return fields
 
-/obj/item/computer_hardware/nano_printer/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/stock_parts/computer/nano_printer/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/paper))
 		if(stored_paper >= max_paper)
 			to_chat(user, "You try to add \the [W] into \the [src], but its paper bin is full.")
@@ -85,7 +85,7 @@
 		to_chat(user, "You add [num_of_pages_added] papers from \the [W] into \the [src].")
 	return
 
-/obj/item/computer_hardware/nano_printer/Destroy()
+/obj/item/stock_parts/computer/nano_printer/Destroy()
 	if(holder2 && (holder2.nano_printer == src))
 		holder2.nano_printer = null
 	holder2 = null

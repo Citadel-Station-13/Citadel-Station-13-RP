@@ -1,4 +1,4 @@
-/obj/item/computer_hardware/
+/obj/item/stock_parts/computer
 	name = "Hardware"
 	desc = "Unknown Hardware."
 	icon = 'icons/obj/modular_components.dmi'
@@ -22,7 +22,7 @@
 	/// Chance of malfunction when the component is damaged.
 	var/malfunction_probability = 10
 
-/obj/item/computer_hardware/attackby(var/obj/item/W as obj, var/mob/living/user as mob)
+/obj/item/stock_parts/computer/attackby(var/obj/item/W as obj, var/mob/living/user as mob)
 	// Multitool. Runs diagnostics
 	if(istype(W, /obj/item/multitool))
 		to_chat(user, "***** DIAGNOSTICS REPORT *****")
@@ -52,21 +52,21 @@
 
 
 /// Called on multitool click, prints diagnostic information to the user.
-/obj/item/computer_hardware/proc/diagnostics(var/mob/user)
+/obj/item/stock_parts/computer/proc/diagnostics(var/mob/user)
 	to_chat(user, "Hardware Integrity Test... (Corruption: [damage]/[max_damage]) [damage > damage_failure ? "FAIL" : damage > damage_malfunction ? "WARN" : "PASS"]")
 
-/obj/item/computer_hardware/Initialize(mapload)
+/obj/item/stock_parts/computer/Initialize(mapload)
 	w_class = hardware_size
 	if(istype(loc, /obj/item/modular_computer))
 		holder2 = loc
 	return ..()
 
-/obj/item/computer_hardware/Destroy()
+/obj/item/stock_parts/computer/Destroy()
 	holder2 = null
 	return ..()
 
 /// Handles damage checks.
-/obj/item/computer_hardware/proc/check_functionality()
+/obj/item/stock_parts/computer/proc/check_functionality()
 	// Turned off
 	if(!enabled)
 		return FALSE
@@ -80,7 +80,7 @@
 	// Good to go.
 	return TRUE
 
-/obj/item/computer_hardware/examine(mob/user, dist)
+/obj/item/stock_parts/computer/examine(mob/user, dist)
 	. = ..()
 	if(damage > damage_failure)
 		. += SPAN_DANGER("It seems to be severely damaged!")
@@ -90,6 +90,6 @@
 		. += "It seems to be slightly damaged."
 
 // Damages the component. Contains necessary checks. Negative damage "heals" the component.
-/obj/item/computer_hardware/take_damage(amount)
+/obj/item/stock_parts/computer/take_damage(amount)
 	damage += round(amount) // We want nice rounded numbers here.
 	damage = clamp( damage, 0,  max_damage) // Clamp the value.

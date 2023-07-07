@@ -36,11 +36,19 @@
 
 /// Used to perform preset-specific hardware changes.
 /obj/item/modular_computer/proc/install_default_hardware()
-	return TRUE
+	for(var/T in default_hardware)
+		try_install_component(null, new T(src))
 
-/// Used to install preset-specific programs
-/obj/item/modular_computer/proc/install_default_programs()
-	return TRUE
+// Used to install preset-specific programs
+/obj/item/modular_computer/proc/install_default_programs() //TODO re-add job programs.
+	var/obj/item/stock_parts/computer/hard_drive/HDD = get_component(PART_HDD)
+	if(!HDD)
+		return
+	for(var/prog_type in default_programs)
+		var/datum/computer_file/program/prog_file = prog_type
+		if(initial(prog_file.usage_flags) & hardware_flag)
+			prog_file = new prog_file
+			HDD.store_file(prog_file, OS_PROGRAMS_DIR, TRUE)
 
 /obj/item/modular_computer/Initialize(mapload)
 	. = ..()
@@ -54,7 +62,7 @@
 /obj/item/modular_computer/Destroy()
 	kill_program(1)
 	STOP_PROCESSING(SSobj, src)
-	for(var/obj/item/computer_hardware/CH in src.get_all_components())
+	for(var/obj/item/stock_parts/computer/CH in src.get_all_components())
 		uninstall_component(null, CH)
 		qdel(CH)
 	return ..()
@@ -72,6 +80,11 @@
 	icon_state = icon_state_unpowered
 
 	cut_overlays()
+	for(var/decal_state in decals)
+		var/image/I = image(icon, "[icon_state]-[decal_state]")
+		I.color = decals[decal_state]
+		I.appearance_flags |= RESET_COLOR
+		add_overlay(I)
 	var/list/overlays_to_add = list()
 	if(bsod)
 		add_overlay("bsod")
@@ -270,3 +283,7 @@
 		autorun.stored_data = null
 	else
 		autorun.stored_data = program
+
+/obj/item/modular_computer/GetID()
+	if(card_slot && card_slot.stored_card && card_slot.can_broadcast)
+		return card_slot.stored_card

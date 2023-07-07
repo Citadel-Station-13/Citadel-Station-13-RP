@@ -71,14 +71,14 @@
 		/obj/item/stack/material/steel = 60,
 		/obj/item/stock_parts/capacitor = 60,
 		/obj/item/stock_parts/capacitor = 60,
-		/obj/item/computer_hardware/network_card = 40,
-		/obj/item/computer_hardware/network_card = 40,
-		/obj/item/computer_hardware/processor_unit = 40,
-		/obj/item/computer_hardware/processor_unit = 40,
-		/obj/item/computer_hardware/card_slot = 40,
-		/obj/item/computer_hardware/card_slot = 40,
+		/obj/item/stock_parts/computer/network_card = 40,
+		/obj/item/stock_parts/computer/network_card = 40,
+		/obj/item/stock_parts/computer/processor_unit = 40,
+		/obj/item/stock_parts/computer/processor_unit = 40,
+		/obj/item/stock_parts/computer/card_slot = 40,
+		/obj/item/stock_parts/computer/card_slot = 40,
 		/obj/item/stock_parts/capacitor/adv = 30,
-		/obj/item/computer_hardware/network_card/advanced = 20
+		/obj/item/stock_parts/computer/network_card/advanced = 20
 	)
 
 /obj/structure/salvageable/computer/Initialize()
@@ -150,19 +150,19 @@
 		/obj/item/stack/material/glass{amount = 5} = 90,
 		/obj/item/integrated_circuit = 60,
 		/obj/item/stack/material/steel = 60,
-		/obj/item/computer_hardware/network_card = 40,
-		/obj/item/computer_hardware/network_card = 40,
-		/obj/item/computer_hardware/processor_unit = 40,
-		/obj/item/computer_hardware/processor_unit = 40,
-		/obj/item/computer_hardware/hard_drive = 50,
-		/obj/item/computer_hardware/hard_drive = 50,
-		/obj/item/computer_hardware/hard_drive = 50,
-		/obj/item/computer_hardware/hard_drive = 50,
-		/obj/item/computer_hardware/hard_drive = 50,
-		/obj/item/computer_hardware/hard_drive = 50,
-		/obj/item/computer_hardware/hard_drive/advanced = 30,
-		/obj/item/computer_hardware/hard_drive/advanced = 30,
-		/obj/item/computer_hardware/network_card/advanced = 20
+		/obj/item/stock_parts/computer/network_card = 40,
+		/obj/item/stock_parts/computer/network_card = 40,
+		/obj/item/stock_parts/computer/processor_unit = 40,
+		/obj/item/stock_parts/computer/processor_unit = 40,
+		/obj/item/stock_parts/computer/hard_drive = 50,
+		/obj/item/stock_parts/computer/hard_drive = 50,
+		/obj/item/stock_parts/computer/hard_drive = 50,
+		/obj/item/stock_parts/computer/hard_drive = 50,
+		/obj/item/stock_parts/computer/hard_drive = 50,
+		/obj/item/stock_parts/computer/hard_drive = 50,
+		/obj/item/stock_parts/computer/hard_drive/advanced = 30,
+		/obj/item/stock_parts/computer/hard_drive/advanced = 30,
+		/obj/item/stock_parts/computer/network_card/advanced = 20
 	)
 
 /obj/structure/salvageable/data/Initialize()
@@ -178,10 +178,10 @@
 		/obj/item/stack/material/glass{amount = 5} = 90,
 		/obj/item/integrated_circuit = 60,
 		/obj/item/stack/material/steel = 60,
-		/obj/item/computer_hardware/network_card = 40,
-		/obj/item/computer_hardware/network_card = 40,
-		/obj/item/computer_hardware/processor_unit = 40,
-		/obj/item/computer_hardware/processor_unit = 40,
+		/obj/item/stock_parts/computer/network_card = 40,
+		/obj/item/stock_parts/computer/network_card = 40,
+		/obj/item/stock_parts/computer/processor_unit = 40,
+		/obj/item/stock_parts/computer/processor_unit = 40,
 		/obj/item/stock_parts/subspace/amplifier = 40,
 		/obj/item/stock_parts/subspace/amplifier = 40,
 		/obj/item/stock_parts/subspace/analyzer = 40,
@@ -192,7 +192,7 @@
 		/obj/item/stock_parts/subspace/transmitter = 40,
 		/obj/item/stock_parts/subspace/crystal = 30,
 		/obj/item/stock_parts/subspace/crystal = 30,
-		/obj/item/computer_hardware/network_card/advanced = 20
+		/obj/item/stock_parts/computer/network_card/advanced = 20
 	)
 
 /obj/structure/salvageable/server/Initialize()
@@ -208,16 +208,16 @@
 		/obj/item/stack/material/glass{amount = 5} = 70,
 		/obj/item/integrated_circuit = 60,
 		/obj/item/stack/material/steel = 60,
-		/obj/item/computer_hardware/network_card = 60,
-		/obj/item/computer_hardware/network_card/advanced = 40,
-		/obj/item/computer_hardware/network_card/wired = 40,
-		/obj/item/computer_hardware/card_slot = 40,
-		/obj/item/computer_hardware/processor_unit = 60,
-		/obj/item/computer_hardware/processor_unit/small = 50,
-		/obj/item/computer_hardware/processor_unit/photonic = 40,
-		/obj/item/computer_hardware/processor_unit/photonic/small = 30,
-		/obj/item/computer_hardware/hard_drive = 60,
-		/obj/item/computer_hardware/hard_drive/advanced = 40
+		/obj/item/stock_parts/computer/network_card = 60,
+		/obj/item/stock_parts/computer/network_card/advanced = 40,
+		/obj/item/stock_parts/computer/network_card/wired = 40,
+		/obj/item/stock_parts/computer/card_slot = 40,
+		/obj/item/stock_parts/computer/processor_unit = 60,
+		/obj/item/stock_parts/computer/processor_unit/small = 50,
+		/obj/item/stock_parts/computer/processor_unit/photonic = 40,
+		/obj/item/stock_parts/computer/processor_unit/photonic/small = 30,
+		/obj/item/stock_parts/computer/hard_drive = 60,
+		/obj/item/stock_parts/computer/hard_drive/advanced = 40
 	)
 
 /obj/structure/salvageable/personal/Initialize()
@@ -231,8 +231,8 @@
 	salvageable_parts = list(
 		/obj/item/stock_parts/console_screen = 90,
 		/obj/item/stack/cable_coil{amount = 5} = 90,
-		/obj/item/computer_hardware/processor_unit/photonic = 60,
-		/obj/item/computer_hardware/hard_drive/cluster = 50
+		/obj/item/stock_parts/computer/processor_unit/photonic = 60,
+		/obj/item/stock_parts/computer/hard_drive/cluster = 50
 	)
 
 /obj/structure/salvageable/bliss/Initialize()
@@ -274,11 +274,11 @@
 		/obj/item/stack/material/glass{amount = 5} = 90,
 		/obj/item/stock_parts/capacitor = 60,
 		/obj/item/stock_parts/capacitor = 60,
-		/obj/item/computer_hardware/processor_unit/photonic = 40,
-		/obj/item/computer_hardware/processor_unit/photonic = 40,
-		/obj/item/computer_hardware/card_slot = 40,
-		/obj/item/computer_hardware/card_slot = 40,
-		/obj/item/computer_hardware/network_card/advanced = 40
+		/obj/item/stock_parts/computer/processor_unit/photonic = 40,
+		/obj/item/stock_parts/computer/processor_unit/photonic = 40,
+		/obj/item/stock_parts/computer/card_slot = 40,
+		/obj/item/stock_parts/computer/card_slot = 40,
+		/obj/item/stock_parts/computer/network_card/advanced = 40
 	)
 
 /obj/structure/salvageable/implant_container_os
@@ -303,12 +303,12 @@
 		/obj/item/stock_parts/console_screen = 90,
 		/obj/item/stack/cable_coil{amount = 5} = 90,
 		/obj/item/stack/material/glass{amount = 5} = 90,
-		/obj/item/computer_hardware/processor_unit/small = 60,
-		/obj/item/computer_hardware/processor_unit/photonic = 50,
-		/obj/item/computer_hardware/hard_drive/super = 50,
-		/obj/item/computer_hardware/hard_drive/super = 50,
-		/obj/item/computer_hardware/hard_drive/cluster = 50,
-		/obj/item/computer_hardware/network_card/wired = 40
+		/obj/item/stock_parts/computer/processor_unit/small = 60,
+		/obj/item/stock_parts/computer/processor_unit/photonic = 50,
+		/obj/item/stock_parts/computer/hard_drive/super = 50,
+		/obj/item/stock_parts/computer/hard_drive/super = 50,
+		/obj/item/stock_parts/computer/hard_drive/cluster = 50,
+		/obj/item/stock_parts/computer/network_card/wired = 40
 	)
 
 /obj/structure/salvageable/server_os
@@ -318,10 +318,10 @@
 		/obj/item/stock_parts/console_screen = 80,
 		/obj/item/stack/cable_coil{amount = 5} = 90,
 		/obj/item/stack/material/glass{amount = 5} = 90,
-		/obj/item/computer_hardware/network_card/wired = 40,
-		/obj/item/computer_hardware/network_card/wired = 40,
-		/obj/item/computer_hardware/processor_unit = 40,
-		/obj/item/computer_hardware/processor_unit/photonic = 40,
+		/obj/item/stock_parts/computer/network_card/wired = 40,
+		/obj/item/stock_parts/computer/network_card/wired = 40,
+		/obj/item/stock_parts/computer/processor_unit = 40,
+		/obj/item/stock_parts/computer/processor_unit/photonic = 40,
 		/obj/item/stock_parts/subspace/amplifier = 40,
 		/obj/item/stock_parts/subspace/amplifier = 40,
 		/obj/item/stock_parts/subspace/analyzer = 40,
@@ -332,7 +332,7 @@
 		/obj/item/stock_parts/subspace/transmitter = 40,
 		/obj/item/stock_parts/subspace/crystal = 30,
 		/obj/item/stock_parts/subspace/crystal = 30,
-		/obj/item/computer_hardware/network_card/wired = 20
+		/obj/item/stock_parts/computer/network_card/wired = 20
 	)
 
 /obj/structure/salvageable/console_os
@@ -344,11 +344,11 @@
 		/obj/item/stock_parts/console_screen = 80,
 		/obj/item/stock_parts/capacitor = 60,
 		/obj/item/stock_parts/capacitor = 60,
-		/obj/item/computer_hardware/processor_unit/small = 40,
-		/obj/item/computer_hardware/processor_unit/photonic = 40,
-		/obj/item/computer_hardware/card_slot = 40,
-		/obj/item/computer_hardware/card_slot = 40,
-		/obj/item/computer_hardware/network_card/advanced = 40
+		/obj/item/stock_parts/computer/processor_unit/small = 40,
+		/obj/item/stock_parts/computer/processor_unit/photonic = 40,
+		/obj/item/stock_parts/computer/card_slot = 40,
+		/obj/item/stock_parts/computer/card_slot = 40,
+		/obj/item/stock_parts/computer/network_card/advanced = 40
 	)
 
 /obj/structure/salvageable/console_broken_os
@@ -359,9 +359,9 @@
 		/obj/item/stock_parts/console_screen = 80,
 		/obj/item/stock_parts/capacitor = 60,
 		/obj/item/stock_parts/capacitor = 60,
-		/obj/item/computer_hardware/processor_unit = 40,
-		/obj/item/computer_hardware/processor_unit/photonic = 40,
-		/obj/item/computer_hardware/card_slot = 40,
-		/obj/item/computer_hardware/card_slot = 40,
-		/obj/item/computer_hardware/network_card/advanced = 40
+		/obj/item/stock_parts/computer/processor_unit = 40,
+		/obj/item/stock_parts/computer/processor_unit/photonic = 40,
+		/obj/item/stock_parts/computer/card_slot = 40,
+		/obj/item/stock_parts/computer/card_slot = 40,
+		/obj/item/stock_parts/computer/network_card/advanced = 40
 	)

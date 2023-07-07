@@ -457,11 +457,11 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 
 /obj/item/modular_computer/console/preset/talon/install_default_hardware()
 	..()
-	processor_unit = new/obj/item/computer_hardware/processor_unit(src)
-	tesla_link = new/obj/item/computer_hardware/tesla_link(src)
-	hard_drive = new/obj/item/computer_hardware/hard_drive/super(src)
-	network_card = new/obj/item/computer_hardware/network_card/wired(src)
-	nano_printer = new/obj/item/computer_hardware/nano_printer(src)
+	processor_unit = new/obj/item/stock_parts/computer/processor_unit(src)
+	tesla_link = new/obj/item/stock_parts/computer/tesla_link(src)
+	hard_drive = new/obj/item/stock_parts/computer/hard_drive/super(src)
+	network_card = new/obj/item/stock_parts/computer/network_card/wired(src)
+	nano_printer = new/obj/item/stock_parts/computer/nano_printer(src)
 
 /obj/item/modular_computer/console/preset/talon/install_default_programs()
 	..()

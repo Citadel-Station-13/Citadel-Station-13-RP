@@ -63,24 +63,33 @@
 	/// Damage level at which the computer breaks apart.
 	var/max_damage = 100
 
+	var/stores_pen = FALSE
+	var/obj/item/pen/stored_pen
+
 	//! Important hardware (must be installed for computer to work)
 	/// CPU. Without it the computer won't run. Better CPUs can run more programs at once.
-	var/obj/item/computer_hardware/processor_unit/processor_unit
+	var/obj/item/stock_parts/computer/processor_unit/processor_unit
 	/// Network Card component of this computer. Allows connection to NTNet.
-	var/obj/item/computer_hardware/network_card/network_card
+	var/obj/item/stock_parts/computer/network_card/network_card
 	/// Hard Drive component of this computer. Stores programs and files.
-	var/obj/item/computer_hardware/hard_drive/hard_drive
+	var/obj/item/stock_parts/computer/hard_drive/hard_drive
 
 	//! Optional hardware (improves functionality, but is not critical for computer to work in most cases)
 	/// An internal power source for this computer. Can be recharged.
-	var/obj/item/computer_hardware/battery_module/battery_module
+	var/obj/item/stock_parts/computer/battery_module/battery_module
 	/// ID Card slot component of this computer.  Mostly for HoP modification console that needs ID slot for modification.
-	var/obj/item/computer_hardware/card_slot/card_slot
+	var/obj/item/stock_parts/computer/card_slot/card_slot
 	/// Nano Printer component of this computer, for your everyday paperwork needs.
-	var/obj/item/computer_hardware/nano_printer/nano_printer
+	var/obj/item/stock_parts/computer/nano_printer/nano_printer
 	/// Portable data storage.
-	var/obj/item/computer_hardware/hard_drive/portable/portable_drive
+	var/obj/item/stock_parts/computer/hard_drive/portable/portable_drive
 	/// AI slot, an intellicard housing that allows modifications of AIs.
-	var/obj/item/computer_hardware/ai_slot/ai_slot
+	var/obj/item/stock_parts/computer/ai_slot/ai_slot
 	/// Tesla Link, Allows remote charging from nearest APC.
-	var/obj/item/computer_hardware/tesla_link/tesla_link
+	var/obj/item/stock_parts/computer/tesla_link/tesla_link
+
+	var/list/default_hardware
+
+	var/list/default_programs
+
+	var/list/decals

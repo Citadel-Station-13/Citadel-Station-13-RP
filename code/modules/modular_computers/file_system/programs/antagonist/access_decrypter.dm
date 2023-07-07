@@ -29,8 +29,8 @@
 	. = ..()
 	if(!running)
 		return
-	var/obj/item/computer_hardware/processor_unit/CPU = computer.processor_unit
-	var/obj/item/computer_hardware/card_slot/RFID = computer.card_slot
+	var/obj/item/stock_parts/computer/processor_unit/CPU = computer.processor_unit
+	var/obj/item/stock_parts/computer/card_slot/RFID = computer.card_slot
 	if(!istype(CPU) || !CPU.check_functionality() || !istype(RFID) || !RFID.check_functionality())
 		message = "A fatal hardware error has been detected."
 		return
@@ -59,8 +59,8 @@
 			return 1
 		if(text2num(href_list["allowed"]))
 			return 1
-		var/obj/item/computer_hardware/processor_unit/CPU = computer.processor_unit
-		var/obj/item/computer_hardware/card_slot/RFID = computer.card_slot
+		var/obj/item/stock_parts/computer/processor_unit/CPU = computer.processor_unit
+		var/obj/item/stock_parts/computer/card_slot/RFID = computer.card_slot
 		if(!istype(CPU) || !CPU.check_functionality() || !istype(RFID) || !RFID.check_functionality())
 			message = "A fatal hardware error has been detected."
 			return

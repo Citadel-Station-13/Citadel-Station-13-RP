@@ -1,10 +1,31 @@
 /obj/item/modular_computer/proc/update_verbs()
 	verbs.Cut()
+	if(stores_pen && istype(stored_pen))
+		add_obj_verb(/obj/item/modular_computer/proc/remove_pen)
 	if(portable_drive)
 		add_obj_verb(src, /obj/item/modular_computer/verb/eject_usb)
 	if(card_slot)
 		add_obj_verb(src, /obj/item/modular_computer/verb/eject_id)
 	add_obj_verb(src, /obj/item/modular_computer/verb/emergency_shutdown)
+
+/obj/item/modular_computer/proc/remove_pen()
+	set name = "Remove Pen"
+	set category = "Object"
+	set src in view(1)
+
+	if(usr.incapacitated() || !istype(usr, /mob/living))
+		to_chat(usr, "<span class='warning'>You can't do that.</span>")
+		return
+
+	if(!Adjacent(usr))
+		to_chat(usr, "<span class='warning'>You can't reach it.</span>")
+		return
+
+	if(stored_pen)
+		to_chat(usr, "<span class='notice'>You remove [stored_pen] from [src].</span>")
+		usr.put_in_hands(stored_pen)
+		stored_pen = null
+		update_verbs()
 
 // Forcibly shut down the device. To be used when something bugs out and the UI is nonfunctional.
 /obj/item/modular_computer/verb/emergency_shutdown()
@@ -144,8 +165,8 @@
 		if(!nano_printer)
 			return
 		nano_printer.attackby(W, user)
-	if(istype(W, /obj/item/computer_hardware))
-		var/obj/item/computer_hardware/C = W
+	if(istype(W, /obj/item/stock_parts/computer))
+		var/obj/item/stock_parts/computer/C = W
 		if(C.hardware_size <= max_hardware_size)
 			try_install_component(user, C)
 		else
@@ -181,7 +202,7 @@
 			to_chat(user, "This device doesn't have any components installed.")
 			return
 		var/list/component_names = list()
-		for(var/obj/item/computer_hardware/H in all_components)
+		for(var/obj/item/stock_parts/computer/H in all_components)
 			component_names.Add(H.name)
 
 		var/choice = tgui_input_list(user, "Which component do you want to uninstall?", "Computer maintenance", component_names)
@@ -192,13 +213,24 @@
 		if(!Adjacent(usr))
 			return
 
-		var/obj/item/computer_hardware/H = find_hardware_by_name(choice)
+		var/obj/item/stock_parts/computer/H = find_hardware_by_name(choice)
 
 		if(!H)
 			return
 
 		uninstall_component(user, H)
 
+		return
+
+	if(istype(W, /obj/item/pen) && (W.w_class <= ITEM_SIZE_TINY) && stores_pen)
+		if(istype(stored_pen))
+			to_chat(user, "<span class='notice'>There is already a pen in [src].</span>")
+			return
+		if(!user.transfer_item_to_loc(W, src, user=user))
+			return
+		stored_pen = W
+		update_verbs()
+		to_chat(user, "<span class='notice'>You insert [W] into [src].</span>")
 		return
 
 	..()
