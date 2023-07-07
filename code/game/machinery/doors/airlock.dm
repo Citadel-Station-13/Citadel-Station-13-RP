@@ -7,7 +7,7 @@
  * Improper'd all of the names in the new()
  */
 
-GLOBAL_LIST_INIT(airlock_icon_cache)
+GLOBAL_LIST_EMPTY(airlock_icon_cache)
 
 GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	/obj/structure/window/reinforced/tinted/full,
