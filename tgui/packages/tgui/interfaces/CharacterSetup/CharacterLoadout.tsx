@@ -4,8 +4,12 @@ import { ByondColorMatrixRGBC } from "../common/Color";
 export type LoadoutId = string;
 
 export interface LoadoutData {
-  selected: Record<LoadoutId, LoadoutSelected>;
-  selectAct: (id: string) => void;
+  slots?: PartialLoadoutSlot[];
+  slotAct?: (index: number) => void;
+  slot: FullLoadoutSlot;
+  slotRenameAct?:
+  /// toggle
+  toggleAct?: (id: string) => void;
 }
 
 export interface LoadoutContext {
@@ -23,9 +27,18 @@ export interface LoadoutEntry {
 }
 
 export interface LoadoutSelected {
-  reName: string | null;
-  reDesc: string | null;
-  reColor: string | null | ByondColorMatrixRGBC;
+  rename: string | null;
+  redesc: string | null;
+  recolor: string | null | ByondColorMatrixRGBC;
+  tweaks: Record<string, any>;
+}
+
+export interface FullLoadoutSlot extends PartialLoadoutSlot {
+  entries: Record<LoadoutId, LoadoutSelected>;
+}
+
+export interface PartialLoadoutSlot {
+  name: string;
 }
 
 export enum LoadoutCustomizations {

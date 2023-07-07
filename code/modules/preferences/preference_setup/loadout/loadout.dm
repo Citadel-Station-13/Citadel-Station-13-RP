@@ -1,21 +1,86 @@
+/datum/category_group/player_setup_category/loadout_preferences
+	name = "Loadout"
+	sort_order = 5
+	category_item_type = /datum/category_item/player_setup_item/loadout
+
+/datum/category_group/player_setup_category/loadout_preferences/override_tab_to(mob/user)
+	var/datum/category_item/player_setup_item/loadout/entry = locate() in items
+	entry.ui_interact(user)
+
+/datum/category_item/player_setup_item/loadout_slot
+	name = "Loadout Slot"
+	save_key = CHARACTER_DATA_LOADOUT_SLOT
+
+/datum/category_item/player_setup_item/loadout_slot/default_value(randomizing)
+	return 1
+
+/datum/category_item/player_setup_item/loadout_slot/filter_data(datum/preferences/prefs, data, list/errors)
+	return sanitize_integer(data, 1, LOADOUT_MAX_SLOTS)
+
 /datum/category_item/player_setup_item/loadout
 	name = "Loadout"
-	sort_order = 1
-	var/current_tab = "General"
+	save_key = CHARACTER_DATA_LOADOUT
 
-/datum/category_item/player_setup_item/loadout/load_character(var/savefile/S)
-	READ_FILE(S["gear_list"], pref.gear_list)
-	READ_FILE(S["gear_slot"], pref.gear_slot)
-	if(pref.gear_list!=null && pref.gear_slot!=null)
-		pref.gear = pref.gear_list["[pref.gear_slot]"]
-	else
-		READ_FILE(S["gear"], pref.gear)
-		pref.gear_slot = 1
+/datum/category_item/player_setup_item/loadout/filter_data(datum/preferences/prefs, data, list/errors)
+	var/list/slots = sanitize_islist(data)
+	if(length(slots) > LOADOUT_MAX_SLOTS)
+		slots.len = LOADOUT_MAX_SLOTS
+	for(var/i in 1 to LOADOUT_MAX_SLOTS)
+		var/numkey = num2text(i)
+		if(isnull(slots[numkey]))
+			continue
+		var/list/slot = (slots[numkey] = sanitize_islist[slots[nukey]])
+		if(length(slot) > LOADOUT_MAX_ITEMS)
+			slot.len = LOADOUT_MAX_ITEMS
+		for(var/id in slot)
+			var/datum/loadout_entry/entry = GLOB.gear_datums[id]
+			if(isnull(entry))
+				slot -= id
+				errors?.Add("Could not find loadout entry id '[id]'")
+				continue
+			if(!check_loadout_entry(prefs))
+				slot -= id
+				errors?.Add("Not allowed to take loadout entry id '[id]")
+				continue
+			var/list/entry_data = slot[id]
+			for(var/datakey in entry_data)
+				switch(datakey)
+					if(LOADOUT_ENTRYDATA_RECOLOR)
+						if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_COLOR))
+							entry_data -= LOADOUT_ENTRYDATA_RECOLOR
+							errors?.Add("Loadout entry id '[id]' does not allow recoloring.")
+					if(LOADOUT_ENTRYDATA_RENAME)
+						if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_NAME))
+							entry_data -= LOADOUT_ENTRYDATA_RENAME
+							errors?.Add("Loadout entry id '[id]' does not allow renaming.")
+					if(LOADOUT_ENTRYDATA_REDESC)
+						if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_DESC))
+							entry_data -= LOADOUT_ENTRYDATA_REDESC
+							errors?.Add("Loadout entry id '[id]' does not allow setting description.")
+					else
+						// else we just don't care because gear tweaks need to sanitize their own stuff.
 
-/datum/category_item/player_setup_item/loadout/save_character(var/savefile/S)
-	pref.gear_list["[pref.gear_slot]"] = pref.gear
-	WRITE_FILE(S["gear_list"], pref.gear_list)
-	WRITE_FILE(S["gear_slot"], pref.gear_slot)
+/datum/category_item/player_setup_item/loadout/proc/check_loadout_entry(datum/preferences/prefs)
+	#warn impl
+
+/datum/category_item/player_setup_item/loadout/proc/valid_loadout_entries(datum/preferences/prefs)
+	#warn impl
+
+/datum/category_item/player_setup_item/loadout/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	#warn impl
+
+/datum/category_item/player_setup_item/loadout/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	#warn impl
+
+/datum/category_item/player_setup_item/loadout/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+	#warn impl
+
+/datum/category_item/player_setup_item/loadout/load_character(savefile/S)
+	// LITERALLY JUST A SHIM TO TRIGGER UI UPDATES.
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, update_static_data)), 0)
 
 /datum/category_item/player_setup_item/loadout/proc/valid_gear_choices(datum/preferences/prefs ,max_cost)
 	. = list()
@@ -57,7 +122,7 @@
 			pref.gear -= gear_name
 		else
 			var/datum/loadout_entry/G = gear_datums[gear_name]
-			if(total_cost + G.cost > max_gear_points())
+			if(total_cost + G.cost > max_loadout_cost())
 				pref.gear -= gear_name
 				to_chat(preference_mob, SPAN_WARNING("You cannot afford to take \the [gear_name]"))
 			else
@@ -74,11 +139,11 @@
 				total_cost += G.cost
 
 	var/fcolor =  "#3366CC"
-	if(total_cost < max_gear_points())
+	if(total_cost < max_loadout_cost())
 		fcolor = "#E67300"
 
 	. += "<table align = 'center' width = 100%>"
-	. += "<tr><td colspan=3><center><a href='?src=\ref[src];prev_slot=1'>\<\<</a><b><font color = '[fcolor]'>\[[pref.gear_slot]\]</font> </b><a href='?src=\ref[src];next_slot=1'>\>\></a><b><font color = '[fcolor]'>[total_cost]/[max_gear_points()]</font> loadout points spent.</b> \[<a href='?src=\ref[src];clear_loadout=1'>Clear Loadout</a>\]</center></td></tr>"
+	. += "<tr><td colspan=3><center><a href='?src=\ref[src];prev_slot=1'>\<\<</a><b><font color = '[fcolor]'>\[[pref.gear_slot]\]</font> </b><a href='?src=\ref[src];next_slot=1'>\>\></a><b><font color = '[fcolor]'>[total_cost]/[max_loadout_cost()]</font> loadout points spent.</b> \[<a href='?src=\ref[src];clear_loadout=1'>Clear Loadout</a>\]</center></td></tr>"
 
 	. += "<tr><td colspan=3><center><b>"
 	var/firstcat = 1
@@ -122,7 +187,7 @@
 		. += "<td><font size=2><i>[G.description]</i></font></td></tr>"
 		if(ticked)
 			. += "<tr><td colspan=3>"
-			for(var/datum/loadout_entry_tweak/tweak in G.gear_tweaks)
+			for(var/datum/loadout_tweak/tweak in G.gear_tweaks)
 				. += " <a href='?src=\ref[src];gear=[G.name];tweak=\ref[tweak]'>[tweak.get_contents(get_tweak_metadata(G, tweak))]</a>"
 			. += "</td></tr>"
 	. += "</table>"
@@ -134,14 +199,14 @@
 		. = list()
 		pref.gear[G.name] = .
 
-/datum/category_item/player_setup_item/loadout/proc/get_tweak_metadata(var/datum/loadout_entry/G, var/datum/loadout_entry_tweak/tweak)
+/datum/category_item/player_setup_item/loadout/proc/get_tweak_metadata(var/datum/loadout_entry/G, var/datum/loadout_tweak/tweak)
 	var/list/metadata = get_gear_metadata(G)
 	. = metadata["[tweak]"]
 	if(!.)
 		. = tweak.get_default()
 		metadata["[tweak]"] = .
 
-/datum/category_item/player_setup_item/loadout/proc/set_tweak_metadata(var/datum/loadout_entry/G, var/datum/loadout_entry_tweak/tweak, var/new_metadata)
+/datum/category_item/player_setup_item/loadout/proc/set_tweak_metadata(var/datum/loadout_entry/G, var/datum/loadout_tweak/tweak, var/new_metadata)
 	var/list/metadata = get_gear_metadata(G)
 	metadata["[tweak]"] = new_metadata
 
@@ -155,12 +220,12 @@
 			for(var/gear_name in pref.gear)
 				var/datum/loadout_entry/G = gear_datums[gear_name]
 				if(istype(G)) total_cost += G.cost
-			if((total_cost+TG.cost) <= max_gear_points())
+			if((total_cost+TG.cost) <= max_loadout_cost())
 				pref.gear += TG.name
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	if(href_list["gear"] && href_list["tweak"])
 		var/datum/loadout_entry/gear = gear_datums[href_list["gear"]]
-		var/datum/loadout_entry_tweak/tweak = locate(href_list["tweak"])
+		var/datum/loadout_tweak/tweak = locate(href_list["tweak"])
 		if(!tweak || !istype(gear) || !(tweak in gear.gear_tweaks))
 			return PREFERENCES_NOACTION
 		var/metadata = tweak.get_metadata(user, get_tweak_metadata(gear, tweak))
@@ -199,18 +264,9 @@
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	return ..()
 
-/proc/max_gear_points()
-	. = MAX_GEAR_COST
+/proc/max_loadout_cost()
+	. = LOADOUT_MAX_COST
 	for(var/name in SSevents.holidays)
 		var/datum/holiday/H = SSevents.holidays[name]
 		if(H.loadout_spam)
-			return MAX_GEAR_COST_HOLIDAY_SPAM
-
-/datum/category_item/player_setup_item/loadout/proc/ui_loadout_data(datum/preferences/prefs, mob/user)
-	#warn impl
-
-/datum/category_item/player_setup_item/loadout/proc/ui_loadout_act(datum/preferences/prefs, mob/user, action, list/params)
-	#warn impl
-
-/datum/category_item/player_setup_item/loadout/proc/ui_loadout_push(datum/preferences/prefs, mob/user)
-	#warn impl
+			return LOADOUT_MAX_COST_HOLIDAY_SPAM

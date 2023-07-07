@@ -101,7 +101,7 @@
 	ringtype["Ring - Osmium"] = /obj/item/clothing/gloves/ring/material/osmium
 	ringtype["Ring - Mhydrogen"] = /obj/item/clothing/gloves/ring/material/mhydrogen
 	ringtype["Ring - Custom"] = /obj/item/clothing/gloves/ring/custom
-	gear_tweaks += new/datum/loadout_entry_tweak/path(ringtype)
+	gear_tweaks += new/datum/loadout_tweak/path(ringtype)
 
 
 /datum/loadout_entry/gloves/circuitry

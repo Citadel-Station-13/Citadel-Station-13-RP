@@ -76,6 +76,6 @@
 		return
 
 	var/image/I = image(icon = icon, icon_state = icon_state, layer = layer)
-	for(var/datum/loadout_entry_tweak/gt in tweaks)
+	for(var/datum/loadout_tweak/gt in tweaks)
 		gt.tweak_item(I, metadata && metadata["[gt]"] ? metadata["[gt]"] : gt.get_default())
 	return I

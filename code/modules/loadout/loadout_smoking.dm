@@ -9,7 +9,7 @@
 	for(var/pipe_style in typesof(/obj/item/clothing/mask/smokable/pipe))
 		var/obj/item/clothing/mask/smokable/pipe/pipe = pipe_style
 		pipes[initial(pipe.name)] = pipe
-	gear_tweaks += new/datum/loadout_entry_tweak/path(tim_sort(pipes, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(pipes, /proc/cmp_text_asc))
 
 /datum/loadout_entry/matchbook
 	name = "Matchbook"
@@ -31,7 +31,7 @@
 			continue
 		var/obj/item/flame/lighter/zippo/zippo_type = zippo
 		zippos[initial(zippo_type.name)] = zippo_type
-	gear_tweaks += new/datum/loadout_entry_tweak/path(tim_sort(zippos, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(zippos, /proc/cmp_text_asc))
 
 /datum/loadout_entry/ashtray
 	name = "Plastic Ashtray"
@@ -56,4 +56,4 @@
 	for(var/cigarette in (typesof(/obj/item/storage/fancy/cigarettes) - typesof(/obj/item/storage/fancy/cigarettes/killthroat)))
 		var/obj/item/storage/fancy/cigarettes/cigarette_brand = cigarette
 		cigarettes[initial(cigarette_brand.name)] = cigarette_brand
-	gear_tweaks += new/datum/loadout_entry_tweak/path(tim_sort(cigarettes, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(cigarettes, /proc/cmp_text_asc))

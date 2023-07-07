@@ -1,41 +1,41 @@
-/datum/loadout_entry_tweak/proc/get_contents(var/metadata)
+/datum/loadout_tweak/proc/get_contents(var/metadata)
 	return
 
-/datum/loadout_entry_tweak/proc/get_metadata(var/user, var/metadata)
+/datum/loadout_tweak/proc/get_metadata(var/user, var/metadata)
 	return
 
-/datum/loadout_entry_tweak/proc/get_default()
+/datum/loadout_tweak/proc/get_default()
 	return
 
-/datum/loadout_entry_tweak/proc/tweak_gear_data(var/metadata, var/datum/loadout_entry_data)
+/datum/loadout_tweak/proc/tweak_gear_data(var/metadata, var/datum/loadout_entry_data)
 	return
 
-/datum/loadout_entry_tweak/proc/tweak_item(var/obj/item/I, var/metadata)
+/datum/loadout_tweak/proc/tweak_item(var/obj/item/I, var/metadata)
 	return
 
 /*
 * Color adjustment
 */
 
-/datum/loadout_entry_tweak/color
+/datum/loadout_tweak/color
 	var/list/valid_colors
 
-/datum/loadout_entry_tweak/color/New(var/list/valid_colors)
+/datum/loadout_tweak/color/New(var/list/valid_colors)
 	src.valid_colors = valid_colors
 	..()
 
-/datum/loadout_entry_tweak/color/get_contents(var/metadata)
+/datum/loadout_tweak/color/get_contents(var/metadata)
 	return "Color: <font color='[metadata]'>&#9899;</font>"
 
-/datum/loadout_entry_tweak/color/get_default()
+/datum/loadout_tweak/color/get_default()
 	return valid_colors ? valid_colors[1] : COLOR_GRAY
 
-/datum/loadout_entry_tweak/color/get_metadata(var/user, var/metadata, var/title = "Character Preference")
+/datum/loadout_tweak/color/get_metadata(var/user, var/metadata, var/title = "Character Preference")
 	if(valid_colors)
 		return input(user, "Choose a color.", title, metadata) as null|anything in valid_colors
 	return input(user, "Choose a color.", title, metadata) as color|null
 
-/datum/loadout_entry_tweak/color/tweak_item(var/obj/item/I, var/metadata)
+/datum/loadout_tweak/color/tweak_item(var/obj/item/I, var/metadata)
 	if(valid_colors && !(metadata in valid_colors))
 		return
 	if(!metadata || (metadata == "#ffffff"))
@@ -45,19 +45,19 @@
 	else
 		I.color = metadata		// fuck off underwear
 
-GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/loadout_entry_tweak/matrix_recolor, new)
+GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/loadout_tweak/matrix_recolor, new)
 
-/datum/loadout_entry_tweak/matrix_recolor
+/datum/loadout_tweak/matrix_recolor
 
-/datum/loadout_entry_tweak/matrix_recolor/get_contents(var/metadata)
+/datum/loadout_tweak/matrix_recolor/get_contents(var/metadata)
 	if(islist(metadata) && length(metadata))
 		return "Matrix Recolor: [english_list(metadata)]"
 	return "Matrix Recolor"
 
-/datum/loadout_entry_tweak/matrix_recolor/get_default()
+/datum/loadout_tweak/matrix_recolor/get_default()
 	return null
 
-/datum/loadout_entry_tweak/matrix_recolor/get_metadata(user, metadata)
+/datum/loadout_tweak/matrix_recolor/get_metadata(user, metadata)
 	var/list/returned = color_matrix_picker(user, "Pick a color matrix for this item", "Matrix Recolor", "Ok", "Erase", "Cancel", TRUE, 10 MINUTES, islist(metadata) && metadata)
 	var/list/L = returned["matrix"]
 	if(returned["button"] == 3)
@@ -72,7 +72,7 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/loadout_entry_tweak/mat
 			break
 	return identity? list() : L
 
-/datum/loadout_entry_tweak/matrix_recolor/tweak_item(obj/item/I, metadata)
+/datum/loadout_tweak/matrix_recolor/tweak_item(obj/item/I, metadata)
 	. = ..()
 	if(!islist(metadata) || (length(metadata) < 12))
 		return
@@ -85,23 +85,23 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/loadout_entry_tweak/mat
 * Path adjustment
 */
 
-/datum/loadout_entry_tweak/path
+/datum/loadout_tweak/path
 	var/list/valid_paths
 
-/datum/loadout_entry_tweak/path/New(var/list/valid_paths)
+/datum/loadout_tweak/path/New(var/list/valid_paths)
 	src.valid_paths = valid_paths
 	..()
 
-/datum/loadout_entry_tweak/path/get_contents(var/metadata)
+/datum/loadout_tweak/path/get_contents(var/metadata)
 	return "Type: [metadata]"
 
-/datum/loadout_entry_tweak/path/get_default()
+/datum/loadout_tweak/path/get_default()
 	return valid_paths[1]
 
-/datum/loadout_entry_tweak/path/get_metadata(var/user, var/metadata)
+/datum/loadout_tweak/path/get_metadata(var/user, var/metadata)
 	return input(user, "Choose a type.", "Character Preference", metadata) as null|anything in valid_paths
 
-/datum/loadout_entry_tweak/path/tweak_gear_data(var/metadata, var/datum/loadout_entry_data/gear_data)
+/datum/loadout_tweak/path/tweak_gear_data(var/metadata, var/datum/loadout_entry_data/gear_data)
 	if(!(metadata in valid_paths))
 		return
 	gear_data.path = valid_paths[metadata]
@@ -110,22 +110,22 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/loadout_entry_tweak/mat
 * Content adjustment
 */
 
-/datum/loadout_entry_tweak/contents
+/datum/loadout_tweak/contents
 	var/list/valid_contents
 
-/datum/loadout_entry_tweak/contents/New()
+/datum/loadout_tweak/contents/New()
 	valid_contents = args.Copy()
 	..()
 
-/datum/loadout_entry_tweak/contents/get_contents(var/metadata)
+/datum/loadout_tweak/contents/get_contents(var/metadata)
 	return "Contents: [english_list(metadata, and_text = ", ")]"
 
-/datum/loadout_entry_tweak/contents/get_default()
+/datum/loadout_tweak/contents/get_default()
 	. = list()
 	for(var/i = 1 to valid_contents.len)
 		. += "Random"
 
-/datum/loadout_entry_tweak/contents/get_metadata(var/user, var/list/metadata)
+/datum/loadout_tweak/contents/get_metadata(var/user, var/list/metadata)
 	. = list()
 	for(var/i = metadata.len to valid_contents.len)
 		metadata += "Random"
@@ -136,7 +136,7 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/loadout_entry_tweak/mat
 		else
 			return metadata
 
-/datum/loadout_entry_tweak/contents/tweak_item(var/obj/item/I, var/list/metadata)
+/datum/loadout_tweak/contents/tweak_item(var/obj/item/I, var/list/metadata)
 	if(metadata.len != valid_contents.len)
 		return
 	for(var/i = 1 to valid_contents.len)
@@ -155,25 +155,25 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/loadout_entry_tweak/mat
 * Ragent adjustment
 */
 
-/datum/loadout_entry_tweak/reagents
+/datum/loadout_tweak/reagents
 	var/list/valid_reagents
 
-/datum/loadout_entry_tweak/reagents/New(var/list/reagents)
+/datum/loadout_tweak/reagents/New(var/list/reagents)
 	valid_reagents = reagents.Copy()
 	..()
 
-/datum/loadout_entry_tweak/reagents/get_contents(var/metadata)
+/datum/loadout_tweak/reagents/get_contents(var/metadata)
 	return "Reagents: [metadata]"
 
-/datum/loadout_entry_tweak/reagents/get_default()
+/datum/loadout_tweak/reagents/get_default()
 	return "Random"
 
-/datum/loadout_entry_tweak/reagents/get_metadata(var/user, var/list/metadata)
+/datum/loadout_tweak/reagents/get_metadata(var/user, var/list/metadata)
 	. = input(user, "Choose an entry.", "Character Preference", metadata) as null|anything in (valid_reagents + list("Random", "None"))
 	if(!.)
 		return metadata
 
-/datum/loadout_entry_tweak/reagents/tweak_item(var/obj/item/I, var/list/metadata)
+/datum/loadout_tweak/reagents/tweak_item(var/obj/item/I, var/list/metadata)
 	if(metadata == "None")
 		return
 	if(metadata == "Random")
@@ -190,22 +190,22 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/loadout_entry_tweak/mat
 Custom Name
 */
 
-var/datum/loadout_entry_tweak/custom_name/gear_tweak_free_name = new()
+var/datum/loadout_tweak/custom_name/gear_tweak_free_name = new()
 
-/datum/loadout_entry_tweak/custom_name
+/datum/loadout_tweak/custom_name
 	var/list/valid_custom_names
 
-/datum/loadout_entry_tweak/custom_name/New(var/list/valid_custom_names)
+/datum/loadout_tweak/custom_name/New(var/list/valid_custom_names)
 	src.valid_custom_names = valid_custom_names
 	..()
 
-/datum/loadout_entry_tweak/custom_name/get_contents(var/metadata)
+/datum/loadout_tweak/custom_name/get_contents(var/metadata)
 	return "Name: [metadata]"
 
-/datum/loadout_entry_tweak/custom_name/get_default()
+/datum/loadout_tweak/custom_name/get_default()
 	return ""
 
-/datum/loadout_entry_tweak/custom_name/get_metadata(var/user, var/metadata)
+/datum/loadout_tweak/custom_name/get_metadata(var/user, var/metadata)
 	if(jobban_isbanned(user, "Custom loadout"))
 		to_chat(user, WARNING("You are banned from using custom loadout names/descriptions."))
 		return
@@ -213,7 +213,7 @@ var/datum/loadout_entry_tweak/custom_name/gear_tweak_free_name = new()
 		return input(user, "Choose an item name.", "Character Preference", metadata) as null|anything in valid_custom_names
 	return sanitize(input(user, "Choose the item's name. Leave it blank to use the default name.", "Item Name", metadata) as text|null, MAX_LNAME_LEN, extra = 0)
 
-/datum/loadout_entry_tweak/custom_name/tweak_item(var/obj/item/I, var/metadata)
+/datum/loadout_tweak/custom_name/tweak_item(var/obj/item/I, var/metadata)
 	if(!metadata)
 		return I.name
 	I.name = metadata
@@ -221,22 +221,22 @@ var/datum/loadout_entry_tweak/custom_name/gear_tweak_free_name = new()
 /*
 Custom Description
 */
-var/datum/loadout_entry_tweak/custom_desc/gear_tweak_free_desc = new()
+var/datum/loadout_tweak/custom_desc/gear_tweak_free_desc = new()
 
-/datum/loadout_entry_tweak/custom_desc
+/datum/loadout_tweak/custom_desc
 	var/list/valid_custom_desc
 
-/datum/loadout_entry_tweak/custom_desc/New(var/list/valid_custom_desc)
+/datum/loadout_tweak/custom_desc/New(var/list/valid_custom_desc)
 	src.valid_custom_desc = valid_custom_desc
 	..()
 
-/datum/loadout_entry_tweak/custom_desc/get_contents(var/metadata)
+/datum/loadout_tweak/custom_desc/get_contents(var/metadata)
 	return "Description: [metadata]"
 
-/datum/loadout_entry_tweak/custom_desc/get_default()
+/datum/loadout_tweak/custom_desc/get_default()
 	return ""
 
-/datum/loadout_entry_tweak/custom_desc/get_metadata(var/user, var/metadata)
+/datum/loadout_tweak/custom_desc/get_metadata(var/user, var/metadata)
 	if(jobban_isbanned(user, "Custom loadout"))
 		to_chat(user, WARNING("You are banned from using custom loadout names/descriptions."))
 		return
@@ -244,7 +244,7 @@ var/datum/loadout_entry_tweak/custom_desc/gear_tweak_free_desc = new()
 		return input(user, "Choose an item description.", "Character Preference", metadata) as null|anything in valid_custom_desc
 	return sanitize(input(user, "Choose the item's description. Leave it blank to use the default description.", "Item Description", metadata) as message|null, extra = 0)
 
-/datum/loadout_entry_tweak/custom_desc/tweak_item(var/obj/item/I, var/metadata)
+/datum/loadout_tweak/custom_desc/tweak_item(var/obj/item/I, var/metadata)
 	if(!metadata)
 		return I.desc
 	I.desc = metadata
@@ -252,7 +252,7 @@ var/datum/loadout_entry_tweak/custom_desc/gear_tweak_free_desc = new()
 //end of custom description
 
 
-/datum/loadout_entry_tweak/tablet
+/datum/loadout_tweak/tablet
 	var/list/ValidProcessors = list(/obj/item/computer_hardware/processor_unit/small)
 	var/list/ValidBatteries = list(/obj/item/computer_hardware/battery_module/nano, /obj/item/computer_hardware/battery_module/micro, /obj/item/computer_hardware/battery_module)
 	var/list/ValidHardDrives = list(/obj/item/computer_hardware/hard_drive/micro, /obj/item/computer_hardware/hard_drive/small, /obj/item/computer_hardware/hard_drive)
@@ -261,7 +261,7 @@ var/datum/loadout_entry_tweak/custom_desc/gear_tweak_free_desc = new()
 	var/list/ValidCardSlots = list(null, /obj/item/computer_hardware/card_slot)
 	var/list/ValidTeslaLinks = list(null, /obj/item/computer_hardware/tesla_link)
 
-/datum/loadout_entry_tweak/tablet/get_contents(var/list/metadata)
+/datum/loadout_tweak/tablet/get_contents(var/list/metadata)
 	var/list/names = list()
 	var/obj/O = ValidProcessors[metadata[1]]
 	if(O)
@@ -286,7 +286,7 @@ var/datum/loadout_entry_tweak/custom_desc/gear_tweak_free_desc = new()
 		names += initial(O.name)
 	return "[english_list(names, and_text = ", ")]"
 
-/datum/loadout_entry_tweak/tablet/get_metadata(var/user, var/metadata)
+/datum/loadout_tweak/tablet/get_metadata(var/user, var/metadata)
 	. = list()
 
 	var/list/names = list()
@@ -373,10 +373,10 @@ var/datum/loadout_entry_tweak/custom_desc/gear_tweak_free_desc = new()
 	entry = input(user, "Choose a tesla link.", "Character Preference") in names
 	. += names[entry]
 
-/datum/loadout_entry_tweak/tablet/get_default()
+/datum/loadout_tweak/tablet/get_default()
 	return list(1, 1, 1, 1, 1, 1, 1)
 
-/datum/loadout_entry_tweak/tablet/tweak_item(var/obj/item/modular_computer/tablet/I, var/list/metadata)
+/datum/loadout_tweak/tablet/tweak_item(var/obj/item/modular_computer/tablet/I, var/list/metadata)
 	if(ValidProcessors[metadata[1]])
 		var/t = ValidProcessors[metadata[1]]
 		I.processor_unit = new t(I)
@@ -401,7 +401,7 @@ var/datum/loadout_entry_tweak/custom_desc/gear_tweak_free_desc = new()
 		I.tesla_link = new t(I)
 	I.update_verbs()
 
-/datum/loadout_entry_tweak/laptop
+/datum/loadout_tweak/laptop
 	var/list/ValidProcessors = list(/obj/item/computer_hardware/processor_unit/small, /obj/item/computer_hardware/processor_unit)
 	var/list/ValidBatteries = list(/obj/item/computer_hardware/battery_module, /obj/item/computer_hardware/battery_module/advanced, /obj/item/computer_hardware/battery_module/super)
 	var/list/ValidHardDrives = list(/obj/item/computer_hardware/hard_drive, /obj/item/computer_hardware/hard_drive/advanced, /obj/item/computer_hardware/hard_drive/super)
@@ -410,7 +410,7 @@ var/datum/loadout_entry_tweak/custom_desc/gear_tweak_free_desc = new()
 	var/list/ValidCardSlots = list(null, /obj/item/computer_hardware/card_slot)
 	var/list/ValidTeslaLinks = list(null, /obj/item/computer_hardware/tesla_link)
 
-/datum/loadout_entry_tweak/laptop/get_contents(var/list/metadata)
+/datum/loadout_tweak/laptop/get_contents(var/list/metadata)
 	var/list/names = list()
 	var/obj/O = ValidProcessors[metadata[1]]
 	if(O)
@@ -435,7 +435,7 @@ var/datum/loadout_entry_tweak/custom_desc/gear_tweak_free_desc = new()
 		names += initial(O.name)
 	return "[english_list(names, and_text = ", ")]"
 
-/datum/loadout_entry_tweak/laptop/get_metadata(var/user, var/metadata)
+/datum/loadout_tweak/laptop/get_metadata(var/user, var/metadata)
 	. = list()
 
 	var/list/names = list()
@@ -522,10 +522,10 @@ var/datum/loadout_entry_tweak/custom_desc/gear_tweak_free_desc = new()
 	entry = input(user, "Choose a tesla link.", "Character Preference") in names
 	. += names[entry]
 
-/datum/loadout_entry_tweak/laptop/get_default()
+/datum/loadout_tweak/laptop/get_default()
 	return list(1, 1, 1, 1, 1, 1, 1)
 
-/datum/loadout_entry_tweak/laptop/tweak_item(var/obj/item/modular_computer/laptop/preset/I, var/list/metadata)
+/datum/loadout_tweak/laptop/tweak_item(var/obj/item/modular_computer/laptop/preset/I, var/list/metadata)
 	if(ValidProcessors[metadata[1]])
 		var/t = ValidProcessors[metadata[1]]
 		I.processor_unit = new t(I)
@@ -550,16 +550,16 @@ var/datum/loadout_entry_tweak/custom_desc/gear_tweak_free_desc = new()
 		I.tesla_link = new t(I)
 	I.update_verbs()
 
-/datum/loadout_entry_tweak/collar_tag/get_contents(var/metadata)
+/datum/loadout_tweak/collar_tag/get_contents(var/metadata)
 	return "Tag: [metadata]"
 
-/datum/loadout_entry_tweak/collar_tag/get_default()
+/datum/loadout_tweak/collar_tag/get_default()
 	return ""
 
-/datum/loadout_entry_tweak/collar_tag/get_metadata(var/user, var/metadata)
+/datum/loadout_tweak/collar_tag/get_metadata(var/user, var/metadata)
 	return sanitize( input(user, "Choose the tag text", "Character Preference", metadata) as text , MAX_NAME_LEN )
 
-/datum/loadout_entry_tweak/collar_tag/tweak_item(var/obj/item/clothing/accessory/collar/C, var/metadata)
+/datum/loadout_tweak/collar_tag/tweak_item(var/obj/item/clothing/accessory/collar/C, var/metadata)
 	if(metadata == "")
 		return ..()
 	else

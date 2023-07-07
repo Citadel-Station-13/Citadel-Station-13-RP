@@ -120,12 +120,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/g_eyes = 0
 	/// Eye color.
 	var/b_eyes = 0
-	/// Left in for Legacy reasons, will no longer save.
-	var/list/gear
-	/// Custom/fluff item loadouts.
-	var/list/gear_list = list()
-	/// The current gear save slot.
-	var/gear_slot = 1
 	/// Traits which modifier characters for better or worse (mostly worse).
 	var/list/traits
 	/// Lets normally uncolorable synth parts be colorable.
@@ -245,10 +239,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	set_biological_gender(pick(MALE, FEMALE))
 	real_name = random_name(identifying_gender, real_species_name())
 	b_type = RANDOM_BLOOD_TYPE
-
-	gear = list()
-	gear_list = list()
-	gear_slot = 1
 
 	if(client)
 		if(!IsGuestKey(client.key))

@@ -224,8 +224,32 @@
 			character[CHARACTER_DATA_CHAR_SPECIES] = RS.uid
 		else
 			errors?.Add(SPAN_DANGER("Species migration failed - no species datum. Report this to a coder."))
-
-
+	if(current_version < 5)
+		var/gear_slot
+		READ_FILE(S["gear_slot"], gear_slot)
+		if(isnum(gear_slot))
+			character[CHARACTER_DATA_LOADOUT_SLOT] = sanitize_integer(gear_slot, 1, LOADOUT_MAX_SLOTS, 1)
+		var/list/gear_data
+		READ_FILE(S["gear_list"], gear_data)
+		LAZYINITLIST(character[CHARACTER_DATA_LOADOUT])
+		if(islist(gear_data))
+			for(var/i in 1 to LOADOUT_MAX_SLOTS)
+				var/list/data = gear_data["[i]"]
+				if(!islist(data))
+					continue
+				LAZYINITLIST(character[CHARACTER_DATA_LOADOUT]["[i]"])
+				for(var/name in data)
+					var/list/assembled = list()
+					switch(name)
+						if("custom_name")
+							assembled[LOADOUT_ENTRYDATA_RENAME] = data[name]
+						if("custom_desc")
+							assembled[LOADOUT_ENTRYDATA_REDESC] = data[name]
+						if("color", "matrix_recolor")
+							assembled[LOADOUT_ENTRYDATA_RECOLOR] = data[name]
+						else
+							LAZYSET(assembled[LOADOUT_ENTRYDATA_TWEAKS][name], data[name])
+					character[CHARACTER_DATA_LOADOUT]["[i]"] = assembled
 
 /**
  * clientless migration of savefiles

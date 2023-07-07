@@ -23,7 +23,7 @@
 	for(var/tinted in (typesof(/obj/item/clothing/glasses/tinted/color) - typesof(/obj/item/clothing/glasses/tinted/color/purple)))
 		var/obj/item/clothing/glasses/tinted_type = tinted
 		tints[initial(tinted_type.name)] = tinted_type
-	gear_tweaks += new/datum/loadout_entry_tweak/path(tim_sort(tints, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(tints, /proc/cmp_text_asc))
 
 /datum/loadout_entry/eyes/glasses/regular
 	name = "Glasses - Prescription"

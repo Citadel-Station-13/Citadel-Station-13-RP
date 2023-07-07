@@ -40,7 +40,7 @@
 	earrings["Dangle - Gold"] = /obj/item/clothing/ears/earring/dangle/gold
 	earrings["Dangle - Platinum"] = /obj/item/clothing/ears/earring/dangle/platinum
 	earrings["Dangle - Diamond"] = /obj/item/clothing/ears/earring/dangle/diamond
-	gear_tweaks += new/datum/loadout_entry_tweak/path(earrings)
+	gear_tweaks += new/datum/loadout_tweak/path(earrings)
 
 
 /datum/loadout_entry/ears/laurel
@@ -54,4 +54,4 @@
 	laurel["Laurel Wreath - Leaf"] = /obj/item/clothing/ears/laurel
 	laurel["Laurel Wreath - Silver"] = /obj/item/clothing/ears/laurel/silver
 	laurel["Laurel Wreath - Gold"] = /obj/item/clothing/ears/laurel/gold
-	gear_tweaks += new/datum/loadout_entry_tweak/path(laurel)
+	gear_tweaks += new/datum/loadout_tweak/path(laurel)
