@@ -97,6 +97,8 @@ SUBSYSTEM_DEF(vote)
 
 	else
 		text += "<b>Vote Result: Inconclusive - No Votes!</b>"
+	for(var/option in choices)
+		text += SPAN_NOTICE("\n[option] - [votes_by_choice[option] || 0]")
 	log_vote(text)
 	to_chat(world, "<font color='purple'>[text]</font>")
 
