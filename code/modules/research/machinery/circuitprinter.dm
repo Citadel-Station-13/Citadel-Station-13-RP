@@ -18,7 +18,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	var/mat_efficiency = 1
 	var/speed = 1
 
-	materials = list(
+	stored_materials = list(
 		MAT_STEEL = 0,
 		MAT_GLASS = 0,
 		MAT_PLASTEEL = 0,
