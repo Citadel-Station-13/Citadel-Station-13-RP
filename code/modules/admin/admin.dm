@@ -52,9 +52,9 @@ var/global/floorIsLava = 0
 		body += " \[<A href='?src=\ref[src];revive=\ref[M]'>Heal</A>\] "
 
 	if(M.client)
-		body += "<br><b>First connection:</b> [M.client.player_age] days ago"
-		body += "<br><b>BYOND account created:</b> [M.client.account_join_date]"
-		body += "<br><b>BYOND account age (days):</b> [M.client.account_age]"
+		body += "<br><b>First connection:</b> [M.client.player.player_age] days ago"
+		body += "<br><b>BYOND account created:</b> [M.client.persistent.account_join]"
+		body += "<br><b>BYOND account age (days):</b> [M.client.persistent.account_age]"
 
 	body += {"
 		<br><br>\[
@@ -287,7 +287,7 @@ var/global/floorIsLava = 0
 	var/p_age = "unknown"
 	for(var/client/C in GLOB.clients)
 		if(C.ckey == key)
-			p_age = C.player_age
+			p_age = C.player.player_age
 			break
 	dat +="<span style='color:#000000; font-weight: bold'>Player age: [p_age]</span><br>"
 

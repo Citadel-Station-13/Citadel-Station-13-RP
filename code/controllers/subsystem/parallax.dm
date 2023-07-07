@@ -57,9 +57,9 @@ SUBSYSTEM_DEF(parallax)
 /datum/controller/subsystem/parallax/proc/get_parallax_vis_contents(z)
 	. = list()
 	// overmaps
-	var/obj/effect/overmap/visitable/v = get_overmap_sector(z)
+	var/obj/overmap/entity/visitable/v = get_overmap_sector(z)
 	if(istype(v))
-		for(var/obj/effect/overmap/other in v.loc)
+		for(var/obj/overmap/other in v.loc)
 			if(other == v)
 				continue
 			var/atom/movable/AM = other.get_parallax_image()
@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(parallax)
  */
 /datum/controller/subsystem/parallax/proc/get_parallax_motion(z)
 	// right now we only care about overmaps
-	var/obj/effect/overmap/visitable/ship/V = get_overmap_sector(z)
+	var/obj/overmap/entity/visitable/ship/V = get_overmap_sector(z)
 	if(!istype(V))
 		return
 	if(!V.is_moving())

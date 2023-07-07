@@ -36,6 +36,8 @@
 	testing("Beginning search for references to a [type].")
 	last_find_references = world.time
 
+	DoSearchVar(world, "!world!") // world
+	DoSearchVar(global, "!global!") // unmanaged globals
 	DoSearchVar(GLOB) //globals
 	for(var/datum/thing in world) //atoms (don't beleive its lies)
 		DoSearchVar(thing, "World -> [thing]")

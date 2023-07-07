@@ -481,6 +481,23 @@ BLIND     // can't see anything
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = null, SLOT_ID_LEFT_HAND = null)
 	w_class = ITEMSIZE_TINY
 
+/obj/item/clothing/glasses/sunglasses/fakeblindfold
+	name = "blindfold"
+	desc = "Covers the eyes, preventing sight."
+	icon_state = "blindfold"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
+	flash_protection = FLASH_PROTECTION_NONE
+	drop_sound = 'sound/items/drop/gloves.ogg'
+	pickup_sound = 'sound/items/pickup/gloves.ogg'
+
+/obj/item/clothing/glasses/sunglasses/fakeblindfold/tape
+	name = "length of tape"
+	desc = "It's a robust DIY blindfold!"
+	icon = 'icons/obj/bureaucracy.dmi'
+	icon_state = "tape_cross"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = null, SLOT_ID_LEFT_HAND = null)
+	w_class = ITEMSIZE_TINY
+
 /obj/item/clothing/glasses/sunglasses/prescription
 	name = "prescription sunglasses"
 	prescription = 1
@@ -688,6 +705,11 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Out/In"
 
 /obj/item/clothing/glasses/sunglasses/blindfold/whiteblindfold
+	name = "white blindfold"
+	desc = "A white blindfold that covers the eyes, preventing sight."
+	icon_state = "blindfoldwhite"
+
+/obj/item/clothing/glasses/sunglasses/fakeblindfold/whiteblindfold
 	name = "white blindfold"
 	desc = "A white blindfold that covers the eyes, preventing sight."
 	icon_state = "blindfoldwhite"

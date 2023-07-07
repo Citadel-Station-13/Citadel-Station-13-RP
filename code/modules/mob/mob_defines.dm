@@ -82,6 +82,8 @@
 	var/shift_pixel_x = 0
 	/// shifted pixel y
 	var/shift_pixel_y = 0
+	/// pixel-shifted by user enough to let people through. this is a direction flag
+	var/wallflowering = NONE
 
 	//? Abilities
 	/// our abilities - set to list of paths to init to intrinsic abilities.

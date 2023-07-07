@@ -5058,19 +5058,6 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/emt/cockpit)
-"amG" = (
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacethree)
 "amH" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -7728,7 +7715,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/exploration)
 "atn" = (
-/obj/effect/overmap/visitable/sector/lythios43c,
+/obj/overmap/entity/visitable/sector/lythios43c,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "atp" = (
@@ -8221,7 +8208,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9
 	},
-/obj/effect/overmap/visitable/ship/landable/courser,
+/obj/overmap/entity/visitable/ship/landable/courser,
 /obj/effect/shuttle_landmark/rift/deck3/courser,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
@@ -11529,7 +11516,7 @@
 	dir = 4
 	},
 /obj/effect/shuttle_landmark/rift/deck3/emt,
-/obj/effect/overmap/visitable/ship/landable/emt,
+/obj/overmap/entity/visitable/ship/landable/emt,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/emt/general)
 "aCW" = (
@@ -15582,9 +15569,6 @@
 /area/exploration/courser_dock)
 "aNw" = (
 /obj/machinery/disposal,
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
@@ -17840,6 +17824,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "aSS" = (
@@ -18011,7 +17998,7 @@
 /obj/structure/handrail{
 	dir = 4
 	},
-/obj/effect/overmap/visitable/ship/landable/civvie,
+/obj/overmap/entity/visitable/ship/landable/civvie,
 /obj/effect/shuttle_landmark/rift/deck3/civvie,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -21334,7 +21321,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/freezer{
-	icon = 'icons/obj/doors/Doorint.dmi';
 	name = "Hydroponics";
 	req_one_access = list(35,28)
 	},
@@ -22780,7 +22766,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "ilt" = (
-/obj/machinery/camera/network/civilian,
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/machinery/beehive,
 /turf/simulated/floor/grass,
@@ -23190,6 +23175,7 @@
 "jLq" = (
 /obj/machinery/beehive,
 /obj/structure/flora/ausbushes/stalkybush,
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "jLR" = (
@@ -23337,7 +23323,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
-/obj/effect/overmap/visitable/ship/landable/excursion,
+/obj/overmap/entity/visitable/ship/landable/excursion/rift,
 /obj/effect/shuttle_landmark/rift/deck3/excursion,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -27165,10 +27151,6 @@
 "xlc" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
-	},
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12
 	},
 /obj/effect/floor_decal/corner/red/diagonal,
 /obj/machinery/smartfridge/drinks,
@@ -40585,7 +40567,7 @@ kps
 axr
 aIa
 ask
-amG
+axr
 jIg
 cqj
 aXu

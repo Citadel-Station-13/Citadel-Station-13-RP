@@ -321,5 +321,5 @@
 		deconstruct()
 
 /obj/machinery/atmospherics/valve/examine(mob/user, dist)
-	..()
+	. = ..()
 	. += "It is [open ? "open" : "closed"]."

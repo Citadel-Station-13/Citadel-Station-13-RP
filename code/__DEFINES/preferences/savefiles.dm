@@ -3,7 +3,7 @@
 //* We store this on savefile because you can handle global migrations
 //* and advanced direct savefile migrations directly with this.
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	15
+#define SAVEFILE_VERSION_MAX	16
 
 //! Character version - stored in character data list
 //* Slot gets wiped if version < MIN

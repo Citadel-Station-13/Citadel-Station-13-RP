@@ -13,7 +13,7 @@ var/global/list/minor_air_alarms = list()
 
 /obj/machinery/computer/atmos_alert/Initialize(mapload)
 	. = ..()
-	atmosphere_alarm.register_alarm(src, /atom/proc/update_icon)
+	atmosphere_alarm.register_alarm(src, PROC_REF(on_alarm_update))
 
 /obj/machinery/computer/atmos_alert/Destroy()
 	atmosphere_alarm.unregister_alarm(src)
@@ -54,6 +54,9 @@ var/global/list/minor_air_alarms = list()
 			else
 				icon_screen = initial(icon_screen)
 	..()
+
+/obj/machinery/computer/atmos_alert/proc/on_alarm_update()
+	update_icon()
 
 /obj/machinery/computer/atmos_alert/ui_act(action, params)
 	if(..())

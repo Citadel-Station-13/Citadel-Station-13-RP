@@ -1218,7 +1218,6 @@
 /area/antag/antag_base)
 "bV" = (
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/flooring/circuit.dmi';
 	icon_state = "bcircuit"
 	},
 /area/antag/antag_base)
