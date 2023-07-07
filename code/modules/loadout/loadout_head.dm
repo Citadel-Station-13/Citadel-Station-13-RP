@@ -71,7 +71,7 @@
 
 /datum/loadout_entry/head/cap/white/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/cap/mbill
 	name = "Cap - Bill"
@@ -123,7 +123,7 @@
 
 /datum/loadout_entry/head/hairflower/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/pin
 	name = "Pin Selection"
@@ -135,7 +135,7 @@
 	for(var/pin in typesof(/obj/item/clothing/head/pin))
 		var/obj/item/clothing/head/pin/pin_type = pin
 		pins[initial(pin_type.name)] = pin_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(pins, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(pins, /proc/cmp_text_asc))
 
 /datum/loadout_entry/head/hardhat
 	name = "Hardhat Selection"
@@ -148,7 +148,7 @@
 	for(var/hardhat in typesof(/obj/item/clothing/head/hardhat))
 		var/obj/item/clothing/head/hardhat/hardhat_type = hardhat
 		hardhats[initial(hardhat_type.name)] = hardhat_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(hardhats, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(hardhats, /proc/cmp_text_asc))
 
 /datum/loadout_entry/head/boater
 	name = "Hat, Boatsman"
@@ -193,7 +193,7 @@
 	for(var/santahat in typesof(/obj/item/clothing/head/santa))
 		var/obj/item/clothing/head/santa/santahat_type = santahat
 		santahats[initial(santahat_type.name)] = santahat_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(santahats, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(santahats, /proc/cmp_text_asc))
 
 /datum/loadout_entry/head/hijab
 	name = "Hijab (Colorable)"
@@ -201,7 +201,7 @@
 
 /datum/loadout_entry/head/hijab/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/kippa
 	name = "Kippa (Colorable)"
@@ -209,7 +209,7 @@
 
 /datum/loadout_entry/head/kippa/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/turban
 	name = "Turban (Colorable)"
@@ -217,7 +217,7 @@
 
 /datum/loadout_entry/head/turban/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/taqiyah
 	name = "Taqiyah (Colorable)"
@@ -225,7 +225,7 @@
 
 /datum/loadout_entry/head/taqiyah/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/kitty
 	name = "Kitty Ears"
@@ -245,7 +245,7 @@
 
 /datum/loadout_entry/head/beanie/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/loose_beanie
 	name = "Loose Beanie (Colorable)"
@@ -253,7 +253,7 @@
 
 /datum/loadout_entry/head/loose_beanie/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/beretg
 	name = "Beret (Colorable)"
@@ -261,7 +261,7 @@
 
 /datum/loadout_entry/head/beretg/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/beretbs
 	name = "Blueshield Beret"
@@ -269,7 +269,7 @@
 
 /datum/loadout_entry/head/beretbs/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/sombrero
 	name = "Sombrero"
@@ -281,7 +281,7 @@
 
 /datum/loadout_entry/head/flatCapg/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/bow/small
 	name = "Hair Bow, Small (Colorable)"
@@ -289,7 +289,7 @@
 
 /datum/loadout_entry/head/bow/small/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/traveller
 	name = "Traveller Hat (Colorable)"
@@ -297,7 +297,7 @@
 
 /datum/loadout_entry/head/traveller/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/slime
 	name = "Slime hat"
@@ -313,7 +313,7 @@
 	for(var/orion_style in typesof(/obj/item/clothing/head/beret/orion))
 		var/obj/item/clothing/head/beret/orion/orion = orion_style
 		orions[initial(orion.name)] = orion
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(orions, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(orions, /proc/cmp_text_asc))
 
 /datum/loadout_entry/head/surgery
 	name = "Surgical Cap Selection"
@@ -328,7 +328,7 @@
 	Cap_type["Green Cap"] = /obj/item/clothing/head/surgery/green
 	Cap_type["Black Cap"] = /obj/item/clothing/head/surgery/black
 	Cap_type["Navy Cap"] = /obj/item/clothing/head/surgery/navyblue
-	gear_tweaks += new/datum/loadout_tweak/path(Cap_type)
+	tweaks += new/datum/loadout_tweak/path(Cap_type)
 
 /datum/loadout_entry/head/circuitry
 	name = "Headwear, Circuitry (Empty)"
@@ -352,7 +352,7 @@
 
 /datum/loadout_entry/head/headbando/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 // happy valentine's day
 /datum/loadout_entry/head/woodcirclet
@@ -388,7 +388,7 @@
 
 /datum/loadout_entry/head/samurai/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/half_pint
 	name = "Half-Pint Headband"
@@ -415,7 +415,7 @@
 	for(var/tberet in (typesof(/obj/item/clothing/head/beret/tajaran)))
 		var/obj/item/clothing/head/beret/tajaran/tberet_type = tberet
 		tberets[initial(tberet_type.name)] = tberet_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(tberets, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tberets, /proc/cmp_text_asc))
 
 /datum/loadout_entry/head/tajaran/circlet
 	name = "Adhomian circlet selection"
@@ -428,5 +428,5 @@
 	for(var/tcirclet in (typesof(/obj/item/clothing/head/tajaran/circlet)))
 		var/obj/item/clothing/head/tajaran/circlet/tcirclet_type = tcirclet
 		tcirclets[initial(tcirclet_type.name)] = tcirclet_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(tcirclets, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tcirclets, /proc/cmp_text_asc))
 

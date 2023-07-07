@@ -24,7 +24,7 @@
 	for(var/communicator in typesof(/obj/item/communicator) - list(/obj/item/communicator/integrated,/obj/item/communicator/commlink))
 		var/obj/item/communicator_type = communicator
 		communicators[initial(communicator_type.name)] = communicator_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(communicators, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(communicators, /proc/cmp_text_asc))
 
 /datum/loadout_entry/utility/camera
 	name = "Camera"
@@ -161,7 +161,7 @@
 
 /datum/loadout_entry/utility/wheelchair/color/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/utility/umbrella
 	name = "Umbrella"
@@ -170,7 +170,7 @@
 
 /datum/loadout_entry/utility/umbrella/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /****************
 modular computers
@@ -193,7 +193,7 @@ modular computers
 
 /datum/loadout_entry/utility/customtablet/New()
 	..()
-	gear_tweaks += new /datum/loadout_tweak/tablet()
+	tweaks += new /datum/loadout_tweak/tablet()
 
 /datum/loadout_entry/utility/cheaplaptop
 	name = "Laptop Computer - Cheap"
@@ -212,7 +212,7 @@ modular computers
 
 /datum/loadout_entry/utility/customlaptop/New()
 	..()
-	gear_tweaks += new /datum/loadout_tweak/laptop()
+	tweaks += new /datum/loadout_tweak/laptop()
 
 /datum/loadout_entry/utility/dufflebag
 	name = "Dufflebag"

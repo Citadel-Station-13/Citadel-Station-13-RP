@@ -59,7 +59,7 @@
 
 /datum/loadout_entry/gloves/evening/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/gloves/duty
 	name = "Gloves - Work"
@@ -101,7 +101,7 @@
 	ringtype["Ring - Osmium"] = /obj/item/clothing/gloves/ring/material/osmium
 	ringtype["Ring - Mhydrogen"] = /obj/item/clothing/gloves/ring/material/mhydrogen
 	ringtype["Ring - Custom"] = /obj/item/clothing/gloves/ring/custom
-	gear_tweaks += new/datum/loadout_tweak/path(ringtype)
+	tweaks += new/datum/loadout_tweak/path(ringtype)
 
 
 /datum/loadout_entry/gloves/circuitry
@@ -122,7 +122,7 @@
 
 /datum/loadout_entry/gloves/colored/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 
 /datum/loadout_entry/gloves/latex/colorable
@@ -131,7 +131,7 @@
 
 /datum/loadout_entry/gloves/latex/colorable/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/gloves/siren
 	name = "Gloves - Siren"

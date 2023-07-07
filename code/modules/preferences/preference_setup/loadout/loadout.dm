@@ -42,6 +42,8 @@
 				slot -= id
 				errors?.Add("Not allowed to take loadout entry id '[id]")
 				continue
+			// commented out - /datum/loadout_entry checks this on spawn.
+			/*
 			var/list/entry_data = slot[id]
 			for(var/datakey in entry_data)
 				switch(datakey)
@@ -59,6 +61,7 @@
 							errors?.Add("Loadout entry id '[id]' does not allow setting description.")
 					else
 						// else we just don't care because gear tweaks need to sanitize their own stuff.
+			*/
 
 /datum/category_item/player_setup_item/loadout/proc/check_loadout_entry(datum/preferences/prefs)
 	#warn impl
@@ -114,6 +117,7 @@
 	var/total_cost = 0
 	var/list/valid = valid_gear_choices(pref)
 	for(var/gear_name in pref.gear)
+
 		if(!gear_datums[gear_name])
 			to_chat(preference_mob, SPAN_WARNING("You cannot have more than one of the \the [gear_name]"))
 			pref.gear -= gear_name
@@ -187,7 +191,7 @@
 		. += "<td><font size=2><i>[G.description]</i></font></td></tr>"
 		if(ticked)
 			. += "<tr><td colspan=3>"
-			for(var/datum/loadout_tweak/tweak in G.gear_tweaks)
+			for(var/datum/loadout_tweak/tweak in G.tweaks)
 				. += " <a href='?src=\ref[src];gear=[G.name];tweak=\ref[tweak]'>[tweak.get_contents(get_tweak_metadata(G, tweak))]</a>"
 			. += "</td></tr>"
 	. += "</table>"
@@ -226,7 +230,7 @@
 	if(href_list["gear"] && href_list["tweak"])
 		var/datum/loadout_entry/gear = gear_datums[href_list["gear"]]
 		var/datum/loadout_tweak/tweak = locate(href_list["tweak"])
-		if(!tweak || !istype(gear) || !(tweak in gear.gear_tweaks))
+		if(!tweak || !istype(gear) || !(tweak in gear.tweaks))
 			return PREFERENCES_NOACTION
 		var/metadata = tweak.get_metadata(user, get_tweak_metadata(gear, tweak))
 		if(!metadata || !CanUseTopic(user))

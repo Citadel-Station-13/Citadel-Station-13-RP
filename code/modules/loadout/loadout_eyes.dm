@@ -11,7 +11,7 @@
 
 /datum/loadout_entry/eyes/eyepatchwhite/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/eyes/glasses/tinted
 	display_name = "Tinted Glasses Selection"
@@ -23,7 +23,7 @@
 	for(var/tinted in (typesof(/obj/item/clothing/glasses/tinted/color) - typesof(/obj/item/clothing/glasses/tinted/color/purple)))
 		var/obj/item/clothing/glasses/tinted_type = tinted
 		tints[initial(tinted_type.name)] = tinted_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(tints, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tints, /proc/cmp_text_asc))
 
 /datum/loadout_entry/eyes/glasses/regular
 	name = "Glasses - Prescription"

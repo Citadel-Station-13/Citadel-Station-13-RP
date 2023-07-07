@@ -1,3 +1,11 @@
+/datum/loadout_tweak
+	/// unique id; defaults to last part of name
+	var/id
+
+/datum/loadout_tweak/New()
+	if(isnull(id))
+		id = "[src]"
+
 /datum/loadout_tweak/proc/get_contents(var/metadata)
 	return
 
@@ -7,11 +15,14 @@
 /datum/loadout_tweak/proc/get_default()
 	return
 
-/datum/loadout_tweak/proc/tweak_gear_data(var/metadata, var/datum/loadout_entry_data)
+/datum/loadout_tweak/proc/tweak_item(obj/item/I, data)
 	return
 
-/datum/loadout_tweak/proc/tweak_item(var/obj/item/I, var/metadata)
-	return
+/datum/loadout_tweak/proc/tweak_spawn_location(atom/where, data)
+	return where
+
+/datum/loadout_tweak/proc/tweak_spawn_path(path, data)
+	return path
 
 /*
 * Color adjustment
@@ -101,10 +112,10 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/loadout_tweak/matrix_re
 /datum/loadout_tweak/path/get_metadata(var/user, var/metadata)
 	return input(user, "Choose a type.", "Character Preference", metadata) as null|anything in valid_paths
 
-/datum/loadout_tweak/path/tweak_gear_data(var/metadata, var/datum/loadout_entry_data/gear_data)
-	if(!(metadata in valid_paths))
+/datum/loadout_tweak/path/tweak_spawn_path(path, data)
+	if(!(data in valid_paths))
 		return
-	gear_data.path = valid_paths[metadata]
+	return valid_paths[data]
 
 /*
 * Content adjustment
@@ -183,8 +194,8 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/loadout_tweak/matrix_re
 	I.reagents.add_reagent(., I.reagents.available_volume())
 
 //Custom name and desciption code
-//note to devs downstream: where 'gear_tweaks = list(gear_tweak_free_color_choice)' was used before for color selection
-//in the loadout, now 'gear_tweaks += gear_tweak_free_color_choice' will need to be used, otherwise the item will not
+//note to devs downstream: where 'tweaks = list(gear_tweak_free_color_choice)' was used before for color selection
+//in the loadout, now 'tweaks += gear_tweak_free_color_choice' will need to be used, otherwise the item will not
 // be able to be given a custom name or description
 /*
 Custom Name

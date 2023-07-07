@@ -17,7 +17,7 @@
 	for(var/armband in (typesof(/obj/item/clothing/accessory/armband) - typesof(/obj/item/clothing/accessory/armband/med/color)))
 		var/obj/item/clothing/accessory/armband_type = armband
 		armbands[initial(armband_type.name)] = armband_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(armbands, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(armbands, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/armband/colored
 	name = "Armband - Colorable"
@@ -25,7 +25,7 @@
 
 /datum/loadout_entry/accessory/armband/colored/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 
 /datum/loadout_entry/accessory/insignia
@@ -67,7 +67,7 @@
 	insignia["Service - Crew Short"] = /obj/item/clothing/accessory/oricon/department/service/service
 	insignia["Service - Bands"] = /obj/item/clothing/accessory/oricon/department/service/fleet
 	insignia["Service - Echelons"] = /obj/item/clothing/accessory/oricon/department/service/marine
-	gear_tweaks += new/datum/loadout_tweak/path(insignia)
+	tweaks += new/datum/loadout_tweak/path(insignia)
 
 /datum/loadout_entry/accessory/insigniacolored
 	name = "Insignia - Colorable"
@@ -80,8 +80,8 @@
 	insignia["Colorable - Crew Short"] = /obj/item/clothing/accessory/oricon/department/colorable/service
 	insignia["Colorable - Bands"] = /obj/item/clothing/accessory/oricon/department/colorable/fleet
 	insignia["Colorable - Echelons"] = /obj/item/clothing/accessory/oricon/department/colorable/marine
-	gear_tweaks += new/datum/loadout_tweak/path(insignia)
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += new/datum/loadout_tweak/path(insignia)
+	tweaks += gear_tweak_free_color_choice
 
 
 /datum/loadout_entry/accessory/wallet
@@ -101,7 +101,7 @@
 
 /datum/loadout_entry/accessory/wallet/womens/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/accessory/clutch
 	name = "Clutch Bag"
@@ -110,7 +110,7 @@
 
 /datum/loadout_entry/accessory/clutch/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/accessory/purse
 	name = "Purse"
@@ -119,7 +119,7 @@
 
 /datum/loadout_entry/accessory/purse/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/accessory/wcoat
 	name = "Waistcoat - Selection"
@@ -131,7 +131,7 @@
 	for(var/wcoat in typesof(/obj/item/clothing/accessory/wcoat))
 		var/obj/item/clothing/accessory/wcoat_type = wcoat
 		wcoats[initial(wcoat_type.name)] = wcoat_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(wcoats, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(wcoats, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/tie
 	name = "Tie - Selection"
@@ -143,7 +143,7 @@
 	for(var/tie in typesof(/obj/item/clothing/accessory/tie))
 		var/obj/item/clothing/accessory/tie_type = tie
 		ties[initial(tie_type.name)] = tie_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(ties, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(ties, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/scarf
 	name = "Scarf - Selection"
@@ -155,7 +155,7 @@
 	for(var/scarf in typesof(/obj/item/clothing/accessory/scarf))
 		var/obj/item/clothing/accessory/scarf_type = scarf
 		scarfs[initial(scarf_type.name)] = scarf_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(scarfs, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(scarfs, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/scarfcolor
 	name = "Scarf Colorable"
@@ -163,7 +163,7 @@
 
 /datum/loadout_entry/accessory/scarfcolor/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/accessory/jacket
 	name = "Suit Jacket Selection"
@@ -175,7 +175,7 @@
 	for(var/jacket in typesof(/obj/item/clothing/accessory/jacket))
 		var/obj/item/clothing/accessory/jacket_type = jacket
 		jackets[initial(jacket_type.name)] = jacket_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(jackets, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(jackets, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/suitvest
 	name = "Suit Vest"
@@ -214,7 +214,7 @@
 	holstertype["Holster - Hip"] = /obj/item/clothing/accessory/holster/hip
 	holstertype["Holster - Leg"] = /obj/item/clothing/accessory/holster/leg
 	holstertype["Holster - Machete"] = /obj/item/clothing/accessory/holster/machete
-	gear_tweaks += new/datum/loadout_tweak/path(holstertype)
+	tweaks += new/datum/loadout_tweak/path(holstertype)
 
 /datum/loadout_entry/accessory/fannypack
 	name = "Fannypack - Selection"
@@ -227,7 +227,7 @@
 	for(var/fanny in typesof(/obj/item/storage/belt/fannypack))
 		var/obj/item/storage/belt/fannypack/fanny_type = fanny
 		fannys[initial(fanny_type.name)] = fanny_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(fannys, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(fannys, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/chaps
 	name = "Chaps - Brown"
@@ -247,7 +247,7 @@
 	shirts["Blue Hawaii Shirt"] = /obj/item/clothing/accessory/hawaii
 	shirts["Red hawaii Shirt"] = /obj/item/clothing/accessory/hawaii/red
 	shirts["Random Colored Hawaii Shirt"] = /obj/item/clothing/accessory/hawaii/random
-	gear_tweaks += new/datum/loadout_tweak/path(shirts)
+	tweaks += new/datum/loadout_tweak/path(shirts)
 
 
 /datum/loadout_entry/accessory/sweater
@@ -260,7 +260,7 @@
 	for(var/sweater in typesof(/obj/item/clothing/accessory/sweater))
 		var/obj/item/clothing/suit/sweater_type = sweater
 		sweaters[initial(sweater_type.name)] = sweater_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(sweaters, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(sweaters, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/bracelet/material
 	name = "Bracelet - Selection"
@@ -278,7 +278,7 @@
 	bracelettype["Bracelet - Glass"] = /obj/item/clothing/accessory/bracelet/material/glass
 	bracelettype["Bracelet - Wood"] = /obj/item/clothing/accessory/bracelet/material/wood
 	bracelettype["Bracelet - Plastic"] = /obj/item/clothing/accessory/bracelet/material/plastic
-	gear_tweaks += new/datum/loadout_tweak/path(bracelettype)
+	tweaks += new/datum/loadout_tweak/path(bracelettype)
 
 /datum/loadout_entry/accessory/bracelet/friendship
 	name = "Friendship Bracelet"
@@ -311,7 +311,7 @@
 
 /datum/loadout_entry/accessory/sash/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/accessory/asym
 	name = "Asymmetric Jacket - Selection"
@@ -323,7 +323,7 @@
 	for(var/asym in typesof(/obj/item/clothing/accessory/asymmetric))
 		var/obj/item/clothing/accessory/asymmetric_type = asym
 		asyms[initial(asymmetric_type.name)] = asymmetric_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(asyms, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(asyms, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/cowledvest
 	name = "Cowled Vest"
@@ -337,7 +337,7 @@
 
 /datum/loadout_entry/choker/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/collar
 	name = "Collar - Silver"
@@ -347,7 +347,7 @@
 
 /datum/loadout_entry/collar/New()
 	..()
-	gear_tweaks = list(gear_tweak_collar_tag)
+	tweaks = list(gear_tweak_collar_tag)
 
 /datum/loadout_entry/collar/golden
 	name = "Collar - Golden"
@@ -405,7 +405,7 @@
 
 /datum/loadout_entry/accessory/flops/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/accessory/gaiter
 	name = "Neck Gaiter - Selection"
@@ -417,7 +417,7 @@
 	for(var/gaiter in typesof(/obj/item/clothing/accessory/gaiter))
 		var/obj/item/clothing/accessory/gaiter_type = gaiter
 		gaiters[initial(gaiter_type.name)] = gaiter_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(gaiters, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(gaiters, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/laconic
 	name = "Laconic Field Pouch System"
@@ -430,7 +430,7 @@
 
 /datum/loadout_entry/accessory/buttonup/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/accessory/buttonup/untucked
 	name = "Button Up Shirt - Untucked"
@@ -486,7 +486,7 @@
 	var/list/halos = list()
 	for(var/obj/item/clothing/accessory/halo_projector/halo as anything in typesof(/obj/item/clothing/accessory/halo_projector))
 		halos[initial(halo.name)] = halo
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(halos, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(halos, /proc/cmp_text_asc))
 
 //Tajaran wears
 
@@ -501,7 +501,7 @@
 	for(var/tscarf in (typesof(/obj/item/clothing/accessory/tajaran/scarf)))
 		var/obj/item/clothing/accessory/tajaran/scarf/tscarf_type = tscarf
 		tscarfs[initial(tscarf_type.name)] = tscarf_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(tscarfs, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tscarfs, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/civ_exos_mob
 	name = "medical exoframe"

@@ -59,7 +59,7 @@
 	for(var/lace in typesof(/obj/item/clothing/shoes/laceup))
 		var/obj/item/clothing/shoes/laceup/lace_type = lace
 		laces[initial(lace_type.name)] = lace_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(laces, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(laces, /proc/cmp_text_asc))
 
 /datum/loadout_entry/shoes/green
 	name = "Shoes - Green"
@@ -99,7 +99,7 @@
 	for(var/hitop in typesof(/obj/item/clothing/shoes/hitops))
 		var/obj/item/clothing/shoes/hitops/hitop_type = hitop
 		hitops[initial(hitop_type.name)] = hitop_type
-	gear_tweaks += new/datum/loadout_tweak/path(tim_sort(hitops, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(hitops, /proc/cmp_text_asc))
 
 /datum/loadout_entry/shoes/flipflops
 	name = "Flip Flops"
@@ -107,7 +107,7 @@
 
 /datum/loadout_entry/shoes/flipflops/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/shoes/athletic
 	name = "Athletic Shoes"
@@ -115,7 +115,7 @@
 
 /datum/loadout_entry/shoes/athletic/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/shoes/skater
 	name = "Skater Shoes"
@@ -123,7 +123,7 @@
 
 /datum/loadout_entry/shoes/skater/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/shoes/flats
 	name = "Flats"
@@ -131,7 +131,7 @@
 
 /datum/loadout_entry/shoes/flats/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/shoes/cowboy
 	name = "Cowboy Boots"
@@ -169,7 +169,7 @@
 
 /datum/loadout_entry/shoes/heels/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/shoes/slippers
 	name = "Bunny Slippers"
@@ -209,7 +209,7 @@
 
 /datum/loadout_entry/shoes/footwraps/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/shoes/laconic
 	name = "Laconic Field Boots"
@@ -254,4 +254,4 @@
 
 /datum/loadout_entry/shoes/ballet/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice

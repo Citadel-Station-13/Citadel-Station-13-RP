@@ -52,7 +52,7 @@
 
 /datum/loadout_entry/mask/samurai_colorable/New()
 	..()
-	gear_tweaks += gear_tweak_free_color_choice
+	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/mask/fox
 	name = "Fox mask" //capitalisation because everything else here is capitalised

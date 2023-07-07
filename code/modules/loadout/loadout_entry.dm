@@ -32,7 +32,7 @@ var/list/gear_datums = list()
 	var/legacy_species_lock
 	var/sort_category = LOADOUT_CATEGORY_GENERAL
 	/// List of datums which will alter the item after it has been spawned.
-	var/list/gear_tweaks = list()
+	var/list/tweaks = list()
 	/// Does it go on the exploitable information list?
 	var/exploitable = 0
 	var/static/datum/loadout_tweak/color/gear_tweak_free_color_choice = new
@@ -45,7 +45,7 @@ var/list/gear_datums = list()
 	if(!description)
 		var/obj/O = path
 		description = initial(O.desc)
-	gear_tweaks = list(gear_tweak_free_name, gear_tweak_free_desc, GLOB.gear_tweak_free_matrix_recolor)
+	tweaks = list(gear_tweak_free_name, gear_tweak_free_desc, GLOB.gear_tweak_free_matrix_recolor)
 	if(isnull(display_name))
 		display_name = name
 
@@ -70,27 +70,33 @@ var/list/gear_datums = list()
 		"desc" = description,
 	)
 
-/datum/loadout_entry_data
-	var/path
-	var/location
+/datum/loadout_entry/proc/instantiate(atom/where, list/entry_data)
+	var/path = src.path
+	var/list/tweak_assembled = list()
+	for(var/datum/loadout_tweak/tweak as anything in tweaks)
+		var/tweak_data = entry_data[LOADOUT_ENTRYDATA_TWEAKS]?[tweak.id]
+		if(isnull(tweak_data))
+			continue
+		where = tweak.tweak_spawn_location(where, tweak_data)
+		path = tweak.tweak_spawn_path(path, tweak_data)
+		tweak_assembled[tweak] = tweak_data
+	var/obj/item/spawned = new path(where)
+	if((loadout_customize_flags & LOADOUT_CUSTOMIZE_NAME) && entry_data[LOADOUT_ENTRYDATA_RENAME])
+		spawned.name = entry_data[LOADOUT_ENTRYDATA_RENAME]
+	if((loadout_customize_flags & LOADOUT_CUSTOMIZE_DESC) && entry_data[LOADOUT_ENTRYDATA_REDESC])
+		spawned.name = entry_data[LOADOUT_ENTRYDATA_REDESC]
+	if((loadout_customize_flags & LOADOUT_CUSTOMIZE_COLOR) && entry_data[LOADOUT_ENTRYDATA_RECOLOR])
+		spawned.name = entry_data[LOADOUT_ENTRYDATA_RECOLOR]
+	for(var/datum/loadout_tweak/tweak as anything in tweak_assembled)
+		tweak.tweak_item(spawned, tweak_assembled[tweak])
 
-/datum/loadout_entry_data/New(var/path, var/location)
-	src.path = path
-	src.location = location
+	//! legacy start
+	var/mob/M = where
+	if(istype(M) && exploitable)
+		M.amend_exploitable(spawned)
+	//! end
 
-/datum/loadout_entry/proc/spawn_item(var/location, var/metadata)
-	var/datum/loadout_entry_data/gd = new(path, location)
-	if(metadata)
-		for(var/datum/loadout_tweak/gt in gear_tweaks)
-			gt.tweak_gear_data(metadata["[gt]"], gd)
-	var/item = new gd.path(gd.location)
-	if(metadata)
-		for(var/datum/loadout_tweak/gt in gear_tweaks)
-			gt.tweak_item(item, metadata["[gt]"])
-	var/mob/M = location
-	if(istype(M) && exploitable)	// Update exploitable info records for the mob without creating a duplicate object at their feet.
-		M.amend_exploitable(item)
-	return item
+	return spawned
 
 /datum/loadout_category/New(var/cat)
 	category = cat
