@@ -7,7 +7,7 @@
  * Improper'd all of the names in the new()
  */
 
-var/global/list/airlock_icon_cache = list()
+GLOBAL_LIST_INIT(airlock_icon_cache)
 
 GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	/obj/structure/window/reinforced/tinted/full,
@@ -136,45 +136,45 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 
 	if(door_color && !(door_color == "none"))
 		var/ikey = "[airlock_type]-[door_color]-color"
-		color_overlay = airlock_icon_cache["[ikey]"]
+		color_overlay = GLOB.airlock_icon_cache["[ikey]"]
 		if(!color_overlay)
 			color_overlay = new(color_file)
 			color_overlay.Blend(door_color, ICON_MULTIPLY)
-			airlock_icon_cache["[ikey]"] = color_overlay
+			GLOB.airlock_icon_cache["[ikey]"] = color_overlay
 	if(glass)
 		if (window_color && window_color != "none")
 			var/ikey = "[airlock_type]-[window_color]-windowcolor"
-			filling_overlay = airlock_icon_cache["[ikey]"]
+			filling_overlay = GLOB.airlock_icon_cache["[ikey]"]
 			if (!filling_overlay)
 				filling_overlay = new(glass_file)
 				filling_overlay.Blend(window_color, ICON_MULTIPLY)
-				airlock_icon_cache["[ikey]"] = filling_overlay
+				GLOB.airlock_icon_cache["[ikey]"] = filling_overlay
 		else
 			filling_overlay = glass_file
 	else
 		if(door_color && !(door_color == "none"))
 			var/ikey = "[airlock_type]-[door_color]-fillcolor"
-			filling_overlay = airlock_icon_cache["[ikey]"]
+			filling_overlay = GLOB.airlock_icon_cache["[ikey]"]
 			if(!filling_overlay)
 				filling_overlay = new(color_fill_file)
 				filling_overlay.Blend(door_color, ICON_MULTIPLY)
-				airlock_icon_cache["[ikey]"] = filling_overlay
+				GLOB.airlock_icon_cache["[ikey]"] = filling_overlay
 		else
 			filling_overlay = fill_file
 	if(stripe_color && !(stripe_color == "none"))
 		var/ikey = "[airlock_type]-[stripe_color]-stripe"
-		stripe_overlay = airlock_icon_cache["[ikey]"]
+		stripe_overlay = GLOB.airlock_icon_cache["[ikey]"]
 		if(!stripe_overlay)
 			stripe_overlay = new(stripe_file)
 			stripe_overlay.Blend(stripe_color, ICON_MULTIPLY)
-			airlock_icon_cache["[ikey]"] = stripe_overlay
+			GLOB.airlock_icon_cache["[ikey]"] = stripe_overlay
 		if(!glass)
 			var/ikey2 = "[airlock_type]-[stripe_color]-fillstripe"
-			stripe_filling_overlay = airlock_icon_cache["[ikey2]"]
+			stripe_filling_overlay = GLOB.airlock_icon_cache["[ikey2]"]
 			if(!stripe_filling_overlay)
 				stripe_filling_overlay = new(stripe_fill_file)
 				stripe_filling_overlay.Blend(stripe_color, ICON_MULTIPLY)
-				airlock_icon_cache["[ikey2]"] = stripe_filling_overlay
+				GLOB.airlock_icon_cache["[ikey2]"] = stripe_filling_overlay
 
 	if(arePowerSystemsOn())
 		switch(state)
@@ -212,18 +212,20 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	if(panel_open)
 		panel_overlay = panel_file
 
-	overlays.Cut()
-
-	overlays += color_overlay
-	overlays += filling_overlay
-	overlays += stripe_overlay
-	overlays += stripe_filling_overlay
-	overlays += panel_overlay
-	overlays += weld_overlay
-	overlays += brace_overlay
-	overlays += lights_overlay
-	overlays += sparks_overlay
-	overlays += damage_overlay
+	cut_overlays()
+	// todo: micro-optimizations, right now we're just using listclearnulls on SSoverlays side ~silicons
+	add_overlay(list(
+		color_overlay,
+		filling_overlay,
+		stripe_overlay,
+		stripe_filling_overlay,
+		panel_overlay,
+		weld_overlay,
+		brace_overlay,
+		lights_overlay,
+		sparks_overlay,
+		damage_overlay,
+	))
 
 /obj/machinery/door/airlock/attack_generic(var/mob/living/user, var/damage)
 	if(machine_stat & (BROKEN|NOPOWER))
