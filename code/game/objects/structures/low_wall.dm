@@ -83,14 +83,14 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 		STOP_PROCESSING(SSobj, src)
 
 /obj/structure/wall_frame/update_overlays()
-	overlays.len = 0
+	cut_overlays()
 
 	color = const_material.icon_colour
 
 	var/image/smoothed_stripe = image(const_material.wall_stripe_icon, icon_state, layer = ABOVE_WINDOW_LAYER)
 	smoothed_stripe.appearance_flags = RESET_COLOR
 	smoothed_stripe.color = stripe_color || const_material.icon_colour
-	overlays += smoothed_stripe
+	add_overlay(smoothed_stripe)
 
 	if(!GLOB.wallframe_typecache)
 		GLOB.wallframe_typecache = typecacheof(list(/obj/machinery/door/airlock))
@@ -113,44 +113,43 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 		var/image/neighb_stripe_overlay = new ('icons/turf/walls/neighbor_stripe.dmi', "stripe-[neighbor_stripe]", layer = ABOVE_WINDOW_LAYER)
 		neighb_stripe_overlay.appearance_flags = RESET_COLOR
 		neighb_stripe_overlay.color = stripe_color || const_material.icon_colour
-		overlays += neighb_stripe_overlay
+		add_overlay(neighb_stripe_overlay)
 		if(shiny_stripe)
 			var/image/shine = image('icons/turf/walls/neighbor_stripe.dmi', "shine-[smoothing_junction]")
 			shine.appearance_flags = RESET_COLOR
-			overlays += shine
+			add_overlay(shine)
 
 	return ..()
 
-/obj/structure/wall_frame/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return 1
+/obj/structure/wall_frame/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover,/obj/projectile))
-		return 1
+		return TRUE
 	if(istype(mover) && mover.check_pass_flags(ATOM_PASS_TABLE))
-		return 1
+		return TRUE
 
-/obj/structure/wall_frame/attackby(var/obj/item/W, var/mob/user)
+/obj/structure/wall_frame/attackby(var/obj/item/I, var/mob/user)
 
 	. = ..()
 	if(!.)
 		//grille placing
-		if(istype(W, /obj/item/stack/rods))
+		if(istype(I, /obj/item/stack/rods))
 			for(var/obj/structure/window/WINDOW in loc)
 				if(WINDOW.dir == get_dir(src, user))
 					to_chat(user, SPAN_WARNING("There is a window in the way."))
 					return TRUE
-			place_grille(user, loc, W)
+			place_grille(user, loc, I)
 			return TRUE
 
 		//window placing
-		if(istype(W,/obj/item/stack/material/glass))
-			var/obj/item/stack/material/ST = W
+		if(istype(I,/obj/item/stack/material/glass))
+			var/obj/item/stack/material/ST = I
 			if(ST.material.opacity <= 0.7)
 				place_window(user, loc, SOUTHWEST, ST, TRUE)
 			return TRUE
 
-		if(W.is_wrench())
-			if(do_after(user,40 * W.tool_speed))
-				playsound(src, W.tool_sound, 100, 1)
+		if(I.is_wrench())
+			if(do_after(user,40 * I.tool_speed))
+				playsound(src, I.tool_sound, 100, 1)
 				new const_material.stack_type(get_turf(src), 2)
 				qdel(src)
 

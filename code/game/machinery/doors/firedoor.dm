@@ -456,8 +456,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 
 /obj/machinery/door/firedoor/update_icon()
-	var/icon/lights_overlay
-
+	var/image/lights_overlay
 	cut_overlays()
 	set_light(0)
 	var/do_set_light = FALSE
@@ -490,7 +489,6 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	return
 
 /obj/machinery/door/firedoor/setDir(ndir)
-	. = ..()
 	for(var/D in GLOB.cardinal)
 		var/turf/T = get_step(src, D)
 		for(var/obj/A in T.contents)
@@ -522,6 +520,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 				if(WEST)
 					dir = SOUTH
 					break
+	..()
 
 
 

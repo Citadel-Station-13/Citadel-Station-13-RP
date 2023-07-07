@@ -152,7 +152,7 @@
 
 	icon_state = icon_opened
 	opened = 1
-	playsound(loc, open_sound, 15, 1, -3)
+	playsound(src, open_sound, 15, 1, -3)
 	if(initial(density))
 		density = !density
 	return 1
@@ -319,8 +319,8 @@
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, loc)
 			spark_system.start()
-			playsound(loc, 'sound/weapons/blade1.ogg', 50, 1)
-			playsound(loc, "sparks", 50, 1)
+			playsound(src, 'sound/weapons/blade1.ogg', 50, 1)
+			playsound(src, "sparks", 50, 1)
 
 	else if(W.is_wrench())
 		if(sealed)
@@ -519,7 +519,7 @@
 				breakout = 0
 				return
 
-			playsound(loc, breakout_sound, 100, 1)
+			playsound(src, breakout_sound, 100, 1)
 			animate_shake()
 			add_fingerprint(escapee)
 
@@ -527,7 +527,7 @@
 		breakout = 0
 		to_chat(escapee, SPAN_WARNING("You successfully break out!"))
 		visible_message(SPAN_DANGER("\The [escapee] successfully broke out of \the [src]!"))
-		playsound(loc, breakout_sound, 100, 1)
+		playsound(src, breakout_sound, 100, 1)
 		animate_shake()
 		break_open()
 
@@ -587,7 +587,7 @@
 				open()
 			else
 				req_access = list()
-				req_access += pick(get_all_station_access())
+				req_access = list(pick(get_all_station_access()))
 	..()
 
 /obj/structure/closet/proc/togglelock(mob/user as mob)
@@ -604,7 +604,7 @@
 		return
 	if(allowed(user))
 		locked = !locked
-		playsound(loc, 'sound/machines/click.ogg', 15, 1, -3)
+		playsound(src, 'sound/machines/click.ogg', 15, 1, -3)
 		for(var/mob/O in viewers(user, 3))
 			if((O.client && !( O.blinded )))
 				to_chat(O, "<span class='notice'>The locker has been [locked ? null : "un"]locked by [user].</span>")
