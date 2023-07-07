@@ -1,6 +1,7 @@
 /obj/structure/closet/secure_closet/guncabinet
 	name = "gun cabinet"
 	icon = 'icons/obj/guncabinet.dmi'
+	closet_appearance = null
 	icon_state = "base"
 	icon_closed ="base"
 	icon_opened = "base"
