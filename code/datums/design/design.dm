@@ -199,5 +199,5 @@
 /**
  * for legacy lathes
  */
-/datum/design/proc/legacy_print(atom/where, fabsricator)
-	return print(where)
+/datum/design/proc/legacy_print(atom/where, fabricator)
+	return print(where, 1)

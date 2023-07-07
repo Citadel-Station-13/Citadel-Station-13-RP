@@ -228,8 +228,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 		reagents.remove_reagent(C, D.reagents[C] * mat_efficiency)
 
 	if(D.build_path)
-		var/obj/new_item = D.legacy_print(src, src)
-		new_item.loc = loc
+		var/obj/new_item = D.legacy_print(drop_location(), src)
 		if(mat_efficiency != 1) // No materials out of nowhere
 			if(new_item.materials && new_item.materials.len > 0)
 				for(var/i in new_item.materials)
