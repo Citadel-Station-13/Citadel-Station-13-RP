@@ -689,7 +689,7 @@
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "Fs" = (
-/obj/machinery/door/airlock/glass_command,
+/obj/machinery/door/airlock/glass/command,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/HeadscientistHQ)
@@ -739,7 +739,7 @@
 /turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
 "Ga" = (
-/obj/machinery/door/airlock/glass_security,
+/obj/machinery/door/airlock/glass/security,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
@@ -1006,7 +1006,7 @@
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
 "Tw" = (
-/obj/machinery/door/airlock/glass_security,
+/obj/machinery/door/airlock/glass/security,
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
 "Ty" = (

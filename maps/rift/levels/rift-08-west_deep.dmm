@@ -3087,7 +3087,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
 "BW" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Security";
 	req_one_access = list()
 	},
@@ -4418,7 +4418,7 @@
 "NR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Belter Control Room";
 	req_one_access = list(48,66)
 	},

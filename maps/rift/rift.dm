@@ -303,7 +303,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
 	)
-	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
+	base_turf = /turf/simulated/floor/outdoors/icesand/lythios43c/indoor
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 	link_above = /datum/map_level/rift/deep
@@ -333,7 +333,7 @@
 		ZTRAIT_GRAVITY,
 		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
-	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
+	base_turf = /turf/simulated/floor/outdoors/icesand/lythios43c/indoor
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/base
@@ -363,7 +363,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
 	)
-	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
+	base_turf = /turf/simulated/floor/outdoors/icesand/lythios43c/indoor
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/deep

@@ -820,7 +820,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/ward)
 "aHo" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Weapons Testing Range";
 	req_access = list(47)
 	},
@@ -1329,7 +1329,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Xenoflora Research";
 	req_one_access = list(30,35,47,77)
 	},
@@ -1987,7 +1987,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "XenoArcheology"
 	},
 /turf/simulated/floor/tiled,
@@ -2237,7 +2237,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/camera/network/research,
@@ -2297,7 +2297,7 @@
 /area/rnd/xenobiology)
 "bXB" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Paramedic Storage"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2488,7 +2488,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "ciB" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/door/blast/regular{
@@ -3309,7 +3309,7 @@
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -3727,7 +3727,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/sleeper)
 "djB" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -4050,7 +4050,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled,
@@ -4077,7 +4077,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Patient Psychiatric Ward B"
 	},
 /obj/machinery/door/blast/regular{
@@ -4365,7 +4365,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "dPB" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Circuitry Workshop";
 	req_access = list(7);
 	req_one_access = list(7)
@@ -4653,7 +4653,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -5011,7 +5011,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -5261,7 +5261,7 @@
 	dir = 4
 	},
 /obj/machinery/meter,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -5288,7 +5288,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "eDt" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/machinery/door/blast/regular{
@@ -5607,14 +5607,14 @@
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
 "eOy" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "eOY" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Research Lounge";
 	req_access = list(47)
 	},
@@ -5770,7 +5770,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 6
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -6070,7 +6070,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "fno" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -23
@@ -7027,7 +7027,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Chemistry";
 	req_access = list();
 	req_one_access = list(33)
@@ -7349,7 +7349,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Xenoflora Research";
 	req_one_access = list(30,35,47,77)
 	},
@@ -7385,7 +7385,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -8111,7 +8111,7 @@
 /area/medical/virology)
 "gWN" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor{
@@ -8649,7 +8649,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Xenoflora Research";
 	req_one_access = list(30,35,47,77)
 	},
@@ -8689,7 +8689,7 @@
 /area/shuttle/emt/general)
 "htI" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Research Lounge";
 	req_access = list(47)
 	},
@@ -8775,7 +8775,7 @@
 /area/rnd/research/testingrange)
 "hvU" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medbay Reception";
 	req_access = list(5)
 	},
@@ -9046,7 +9046,7 @@
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "hMA" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "hMD" = (
@@ -9099,7 +9099,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "hNf" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -9776,7 +9776,7 @@
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
 "isq" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -10073,7 +10073,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/medbreak/surgery)
 "iJE" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "iKf" = (
@@ -10574,7 +10574,7 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics/surgery)
 "jgE" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/effect/floor_decal/techfloor{
@@ -11031,7 +11031,7 @@
 /turf/simulated/floor/plating,
 /area/triumph/station/stairs_three)
 "jDh" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/machinery/door/blast/regular{
@@ -11398,7 +11398,7 @@
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
 "jSv" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
@@ -11510,7 +11510,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Psychiatric Play-Area Access"
 	},
 /turf/simulated/floor/tiled/white,
@@ -12466,7 +12466,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "kKl" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor{
@@ -12772,7 +12772,7 @@
 /area/rnd/hallway)
 "kZS" = (
 /obj/machinery/light,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -13157,7 +13157,7 @@
 	name = "Firing Range Door";
 	req_access = list(47)
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "ltR" = (
@@ -13324,7 +13324,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
 "lFY" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -14073,7 +14073,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/sleeper)
 "mjp" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Paramedic Storage"
 	},
 /obj/structure/cable/green{
@@ -14220,7 +14220,7 @@
 	name = "Toxins Input Connector"
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -14341,7 +14341,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Patient Psychiatric Ward A"
 	},
 /obj/machinery/door/blast/regular{
@@ -14732,7 +14732,7 @@
 /area/medical/patient_d)
 "mJq" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	id_tag = "psychewaiting";
 	name = "Psyche Lobby Room";
 	req_one_access = null
@@ -14969,7 +14969,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "mQO" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -15697,7 +15697,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "nAL" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -15883,7 +15883,7 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics)
 "nIl" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/machinery/door/blast/regular{
@@ -16956,7 +16956,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -18990,7 +18990,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/machinery/camera/network/research{
@@ -20992,7 +20992,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "rpZ" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -21575,7 +21575,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "rNa" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -22384,7 +22384,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "sxa" = (
@@ -22680,7 +22680,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Xenoflora Research";
 	req_one_access = list(30,35,47,77)
 	},
@@ -22745,7 +22745,7 @@
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
 "sJv" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -22865,7 +22865,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "sPu" = (
@@ -23132,7 +23132,7 @@
 	},
 /area/triumph/station/stairs_three)
 "sZn" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -23160,7 +23160,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak/surgery)
 "taT" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
@@ -23329,7 +23329,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "tix" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled,
@@ -24161,7 +24161,7 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics/surgery)
 "tLH" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
 	id = "mechbay-inner";
 	name = "Mech Bay"
@@ -25053,7 +25053,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -25531,7 +25531,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -25657,7 +25657,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -25715,7 +25715,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "vaS" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/door/blast/regular{
@@ -25945,7 +25945,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Psychiatric Play-Area Access"
 	},
 /obj/machinery/door/blast/regular{
@@ -26653,7 +26653,7 @@
 /area/rnd/xenobiology)
 "vSO" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Xenoflora Research";
 	req_one_access = list(30,35,47,77)
 	},
@@ -27362,7 +27362,7 @@
 /obj/machinery/ai_status_display{
 	pixel_x = -32
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -27975,7 +27975,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
 "wQJ" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/door/blast/regular{
@@ -28325,7 +28325,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "xhl" = (
@@ -28399,7 +28399,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/camera/network/research{
 	dir = 1
 	},
@@ -28521,7 +28521,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "xoj" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/item/radio/intercom{
@@ -28970,7 +28970,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "xFO" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "mechbay";
@@ -29688,7 +29688,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/fore)
 "yjF" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/effect/floor_decal/techfloor{
@@ -29758,7 +29758,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/light_switch{
 	pixel_x = -9;
 	pixel_y = 30
