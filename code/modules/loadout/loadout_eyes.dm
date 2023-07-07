@@ -1,158 +1,158 @@
 // Eyes
-/datum/gear/eyes
+/datum/loadout_entry/eyes
 	name = "Eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch
 	slot = SLOT_ID_GLASSES
 	sort_category = LOADOUT_CATEGORY_GLASSES
 
-/datum/gear/eyes/eyepatchwhite
+/datum/loadout_entry/eyes/eyepatchwhite
 	name = "Eyepatch (Recolorable)"
 	path = /obj/item/clothing/glasses/eyepatchwhite
 
-/datum/gear/eyes/eyepatchwhite/New()
+/datum/loadout_entry/eyes/eyepatchwhite/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
-/datum/gear/eyes/glasses/tinted
+/datum/loadout_entry/eyes/glasses/tinted
 	display_name = "Tinted Glasses Selection"
 	path = /obj/item/clothing/glasses/tinted
 
-/datum/gear/eyes/glasses/tinted/New()
+/datum/loadout_entry/eyes/glasses/tinted/New()
 	..()
 	var/list/tints = list()
 	for(var/tinted in (typesof(/obj/item/clothing/glasses/tinted/color) - typesof(/obj/item/clothing/glasses/tinted/color/purple)))
 		var/obj/item/clothing/glasses/tinted_type = tinted
 		tints[initial(tinted_type.name)] = tinted_type
-	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tints, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/loadout_entry_tweak/path(tim_sort(tints, /proc/cmp_text_asc))
 
-/datum/gear/eyes/glasses/regular
+/datum/loadout_entry/eyes/glasses/regular
 	name = "Glasses - Prescription"
 	path = /obj/item/clothing/glasses/regular
 
-/datum/gear/eyes/glasses/green
+/datum/loadout_entry/eyes/glasses/green
 	name = "Glasses - Green"
 	path = /obj/item/clothing/glasses/gglasses
 
-/datum/gear/eyes/glasses/prescriptionhipster
+/datum/loadout_entry/eyes/glasses/prescriptionhipster
 	name = "Glasses - Hipster"
 	path = /obj/item/clothing/glasses/regular/hipster
 
-/datum/gear/eyes/glasses/monocle
+/datum/loadout_entry/eyes/glasses/monocle
 	name = "Monocle"
 	path = /obj/item/clothing/glasses/monocle
 
-/datum/gear/eyes/goggles
+/datum/loadout_entry/eyes/goggles
 	name = "Plain Goggles"
 	path = /obj/item/clothing/glasses/goggles
 
-/datum/gear/eyes/goggles/scanning
+/datum/loadout_entry/eyes/goggles/scanning
 	name = "Scanning Goggles"
 	path = /obj/item/clothing/glasses/regular/scanners
 
-/datum/gear/eyes/goggles/science
+/datum/loadout_entry/eyes/goggles/science
 	name = "Science Goggles"
 	path = /obj/item/clothing/glasses/science
 
-/datum/gear/eyes/glasses/fakesun
+/datum/loadout_entry/eyes/glasses/fakesun
 	name = "Sunglasses - Stylish"
 	path = /obj/item/clothing/glasses/fakesunglasses
 
-/datum/gear/eyes/glasses/fakeaviator
+/datum/loadout_entry/eyes/glasses/fakeaviator
 	name = "Sunglasses - Stylish Aviators"
 	path = /obj/item/clothing/glasses/fakesunglasses/aviator
 
-/datum/gear/eyes/circuitry
+/datum/loadout_entry/eyes/circuitry
 	name = "goggles, Circuitry (Empty)"
 	path = /obj/item/clothing/glasses/circuitry
 
-/datum/gear/eyes/glasses/rimless
+/datum/loadout_entry/eyes/glasses/rimless
 	name = "Glasses - Rimless"
 	path = /obj/item/clothing/glasses/rimless
 
-/datum/gear/eyes/glasses/prescriptionrimless
+/datum/loadout_entry/eyes/glasses/prescriptionrimless
 	name = "Glasses - Prescription Rimless"
 	path = /obj/item/clothing/glasses/regular/rimless
 
-/datum/gear/eyes/glasses/thin
+/datum/loadout_entry/eyes/glasses/thin
 	name = "Glasses - Thin Frame"
 	path = /obj/item/clothing/glasses/thin
 
-/datum/gear/eyes/glasses/prescriptionthin
+/datum/loadout_entry/eyes/glasses/prescriptionthin
 	name = "Glasses - Prescription Thin Frame"
 	path = /obj/item/clothing/glasses/regular/thin
 
-/datum/gear/eyes/glasses/thick
+/datum/loadout_entry/eyes/glasses/thick
 	name = "Glasses - Thick Lenses"
 	path = /obj/item/clothing/glasses/thick
 
-/datum/gear/eyes/glasses/prescriptionthick
+/datum/loadout_entry/eyes/glasses/prescriptionthick
 	name = "Glasses - Prescription Thick Lenses"
 	path = /obj/item/clothing/glasses/regular/thick
 
-/datum/gear/eyes/glasses/dark
+/datum/loadout_entry/eyes/glasses/dark
 	name = "Glasses - Dark Frame"
 	path = /obj/item/clothing/glasses/dark
 
-/datum/gear/eyes/glasses/prescriptiondark
+/datum/loadout_entry/eyes/glasses/prescriptiondark
 	name = "Glasses - Prescription Dark Frame"
 	path = /obj/item/clothing/glasses/regular/dark
 
-/datum/gear/eyes/glasses/scan
+/datum/loadout_entry/eyes/glasses/scan
 	name = "Glasses - Scanner"
 	path = /obj/item/clothing/glasses/scan
 
-/datum/gear/eyes/glasses/prescriptionscan
+/datum/loadout_entry/eyes/glasses/prescriptionscan
 	name = "Glasses - Prescription Scanner"
 	path = /obj/item/clothing/glasses/regular/scan
 
-/datum/gear/eyes/jamjar
+/datum/loadout_entry/eyes/jamjar
 	name = "Jamjar Glasses"
 	path = /obj/item/clothing/glasses/jamjar
 
-/datum/gear/eyes/jensenshades
+/datum/loadout_entry/eyes/jensenshades
 	name = "Augmented Shades"
 	path = /obj/item/clothing/glasses/augmentedshades
 
-/datum/gear/eyes/whiteblindfold
+/datum/loadout_entry/eyes/whiteblindfold
 	name = "White Blindfold"
 	path = /obj/item/clothing/glasses/sunglasses/blindfold/whiteblindfold
 
-/datum/gear/eyes/whiteblindfoldfake
+/datum/loadout_entry/eyes/whiteblindfoldfake
 	name = "White Blindfold (Fake)"
 	path = /obj/item/clothing/glasses/sunglasses/fakeblindfold/whiteblindfold
 
-/datum/gear/eyes/redglasses
+/datum/loadout_entry/eyes/redglasses
 	name = "Red Glasses"
 	path = /obj/item/clothing/glasses/redglasses
 
-/datum/gear/eyes/badglasses
+/datum/loadout_entry/eyes/badglasses
 	name = "Poorly Made Glasses"
 	path = /obj/item/clothing/glasses/badglasses
 
-/datum/gear/eyes/orangeglasses
+/datum/loadout_entry/eyes/orangeglasses
 	name = "Orange Glasses"
 	path = /obj/item/clothing/glasses/orangeglasses
 
-/datum/gear/eyes/glasses/welding
+/datum/loadout_entry/eyes/glasses/welding
 	name = "Welding Goggles"
 	path = /obj/item/clothing/glasses/welding
 
-/datum/gear/eyes/arglasses
+/datum/loadout_entry/eyes/arglasses
 	name = "AR Glasses"
 	path = /obj/item/clothing/glasses/omnihud
 
-/datum/gear/eyes/arglassespres
+/datum/loadout_entry/eyes/arglassespres
 	name = "AR Glasses, Prescription"
 	path = /obj/item/clothing/glasses/omnihud/prescription
 
-/datum/gear/eyes/spiffygogs
+/datum/loadout_entry/eyes/spiffygogs
 	name = "Slick Orange Goggles"
 	path = /obj/item/clothing/glasses/fluff/spiffygogs
 
-/datum/gear/eyes/science_proper
+/datum/loadout_entry/eyes/science_proper
 	name = "Science Goggles (No Overlay)"
 	path = /obj/item/clothing/glasses/fluff/science_proper
 
-/datum/gear/eyes/laconic
+/datum/loadout_entry/eyes/laconic
 	name = "Laconic Goggles"
 	path = /obj/item/clothing/glasses/welding/laconic

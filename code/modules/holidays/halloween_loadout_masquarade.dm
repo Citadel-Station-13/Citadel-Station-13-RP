@@ -19,15 +19,15 @@
 /**
  * i decided it'd be really funny if we had pseudo antags running around as a reminder that our server could have antags (and therefore fun) but don't
  */
-/datum/gear/seasonal/masquarade
+/datum/loadout_entry/seasonal/masquarade
 	holiday_whitelist = list(HALLOWEEN)
 	sort_category = "Halloween - Masquarade"
-	abstract_type = /datum/gear/seasonal/masquarade
+	abstract_type = /datum/loadout_entry/seasonal/masquarade
 	description = "This is not a real antagonist item. It is highly recommended you rename and set their description yourself using gear tweaks."
 	cost = 1
 	var/antag_name
 
-/datum/gear/seasonal/masquarade/New()
+/datum/loadout_entry/seasonal/masquarade/New()
 	if(isnull(name))
 		name = "[type]"		// yeah we're saving by type, sue me lmao
 	if(antag_name)
@@ -37,11 +37,11 @@
 /**
  * syndicate
  */
-/datum/gear/seasonal/masquarade/syndicate
+/datum/loadout_entry/seasonal/masquarade/syndicate
 	antag_name = "Syndie"
-	abstract_type = /datum/gear/seasonal/masquarade/syndicate
+	abstract_type = /datum/loadout_entry/seasonal/masquarade/syndicate
 
-/datum/gear/seasonal/masquarade/syndicate/sneaksuit_under
+/datum/loadout_entry/seasonal/masquarade/syndicate/sneaksuit_under
 	display_name = "Sneaksuit Uniform"
 	path = /obj/item/clothing/under/fake_sneaksuit
 
@@ -55,7 +55,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
-/datum/gear/seasonal/masquarade/syndicate/sneaksuit_armor
+/datum/loadout_entry/seasonal/masquarade/syndicate/sneaksuit_armor
 	display_name = "Sneaksuit Armor"
 	path = /obj/item/clothing/suit/storage/fake_sneaksuit
 
@@ -69,7 +69,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 
-/datum/gear/seasonal/masquarade/syndicate/sneaksuit_gloves
+/datum/loadout_entry/seasonal/masquarade/syndicate/sneaksuit_gloves
 	display_name = "Sneaksuit Gloves"
 	path = /obj/item/clothing/gloves/fake_sneaksuit
 
@@ -83,7 +83,7 @@
 	body_cover_flags = HANDS
 	cold_protection = HANDS
 
-/datum/gear/seasonal/masquarade/syndicate/sneaksuit_helmet
+/datum/loadout_entry/seasonal/masquarade/syndicate/sneaksuit_helmet
 	display_name = "Sneaksuit Helmet"
 	path = /obj/item/clothing/head/fake_sneaksuit
 
@@ -98,7 +98,7 @@
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
-/datum/gear/seasonal/masquarade/syndicate/sneaksuit_shoes
+/datum/loadout_entry/seasonal/masquarade/syndicate/sneaksuit_shoes
 	display_name = "Sneaksuit Boots"
 	path = /obj/item/clothing/shoes/fake_sneaksuit
 
@@ -112,7 +112,7 @@
 	body_cover_flags = FEET
 	cold_protection = FEET
 
-/datum/gear/seasonal/masquarade/syndicate/sneaksuit_mask
+/datum/loadout_entry/seasonal/masquarade/syndicate/sneaksuit_mask
 	display_name = "Sneaksuit Mask"
 	path = /obj/item/clothing/mask/fake_sneaksuit
 
@@ -127,7 +127,7 @@
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
-/datum/gear/seasonal/masquarade/syndicate/contractor_helmet
+/datum/loadout_entry/seasonal/masquarade/syndicate/contractor_helmet
 	display_name = "Contractor Helmet"
 	path = /obj/item/clothing/head/fake_contractor
 
@@ -142,7 +142,7 @@
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
-/datum/gear/seasonal/masquarade/syndicate/contractor_suit
+/datum/loadout_entry/seasonal/masquarade/syndicate/contractor_suit
 	display_name = "Contractor Suit"
 	path = /obj/item/clothing/suit/storage/fake_contractor
 
@@ -156,28 +156,28 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 
-/datum/gear/seasonal/masquarade/syndicate/esword
+/datum/loadout_entry/seasonal/masquarade/syndicate/esword
 	display_name = "Energy Sword (toy)"
 	path = /obj/item/toy/sword
 
 /*
-/datum/gear/seasonal/masquarade/syndicate/ebow
+/datum/loadout_entry/seasonal/masquarade/syndicate/ebow
 	display_name = "Energy Bow (toy)"
 	path = /obj/item/gun/
 */
 
-/datum/gear/seasonal/masquarade/syndicate/revolver
+/datum/loadout_entry/seasonal/masquarade/syndicate/revolver
 	display_name = ".357 revolver (capgun)"
 	path = /obj/item/gun/ballistic/revolver/capgun
 
 /**
  * changeling
  */
-/datum/gear/seasonal/masquarade/changeling
+/datum/loadout_entry/seasonal/masquarade/changeling
 	antag_name = "Changeling"
-	abstract_type = /datum/gear/seasonal/masquarade/changeling
+	abstract_type = /datum/loadout_entry/seasonal/masquarade/changeling
 
-/datum/gear/seasonal/masquarade/changeling/chitin_hood
+/datum/loadout_entry/seasonal/masquarade/changeling/chitin_hood
 	display_name = "Chitin Hood"
 	path = /obj/item/clothing/head/fake_chitin
 
@@ -190,7 +190,7 @@
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
-/datum/gear/seasonal/masquarade/changeling/chitin_suit
+/datum/loadout_entry/seasonal/masquarade/changeling/chitin_suit
 	display_name = "Chitin Suit"
 	path = /obj/item/clothing/suit/storage/fake_chitin
 
@@ -202,7 +202,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 
-/datum/gear/seasonal/masquarade/changeling/flesh_hood
+/datum/loadout_entry/seasonal/masquarade/changeling/flesh_hood
 	display_name = "Flesh Hood"
 	path = /obj/item/clothing/head/fake_flesh
 
@@ -215,7 +215,7 @@
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
-/datum/gear/seasonal/masquarade/changeling/flesh_suit
+/datum/loadout_entry/seasonal/masquarade/changeling/flesh_suit
 	display_name = "Flesh Suit"
 	path = /obj/item/clothing/suit/storage/fake_flesh
 
@@ -227,7 +227,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 
-/datum/gear/seasonal/masquarade/changeling/arm_blade
+/datum/loadout_entry/seasonal/masquarade/changeling/arm_blade
 	display_name = "Arm Blade"
 	path = /obj/item/toy/armblade
 
@@ -240,7 +240,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
 	)
 
-/datum/gear/seasonal/masquarade/changeling/tentacle
+/datum/loadout_entry/seasonal/masquarade/changeling/tentacle
 	display_name = "Tentacle"
 	path = /obj/item/toy/tentacle
 
@@ -253,7 +253,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
 	)
 
-/datum/gear/seasonal/masquarade/changeling/shield
+/datum/loadout_entry/seasonal/masquarade/changeling/shield
 	display_name = "Shield"
 	path = /obj/item/toy/flesh_shield
 
@@ -269,11 +269,11 @@
 /**
  * clockcult
  */
-/datum/gear/seasonal/masquarade/clockcult
+/datum/loadout_entry/seasonal/masquarade/clockcult
 	antag_name = "Clockcult"
-	abstract_type = /datum/gear/seasonal/masquarade/clockcult
+	abstract_type = /datum/loadout_entry/seasonal/masquarade/clockcult
 
-/datum/gear/seasonal/masquarade/clockcult/helmet
+/datum/loadout_entry/seasonal/masquarade/clockcult/helmet
 	display_name = "Helmet"
 	path = /obj/item/clothing/head/fake_brass
 
@@ -286,7 +286,7 @@
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
-/datum/gear/seasonal/masquarade/clockcult/suit
+/datum/loadout_entry/seasonal/masquarade/clockcult/suit
 	display_name = "Armor"
 	path = /obj/item/clothing/suit/storage/fake_brass
 
@@ -298,7 +298,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
-/datum/gear/seasonal/masquarade/clockcult/boots
+/datum/loadout_entry/seasonal/masquarade/clockcult/boots
 	display_name = "Boots"
 	path = /obj/item/clothing/shoes/fake_brass
 
@@ -310,7 +310,7 @@
 	body_cover_flags = FEET
 	cold_protection = FEET
 
-/datum/gear/seasonal/masquarade/clockcult/gloves
+/datum/loadout_entry/seasonal/masquarade/clockcult/gloves
 	display_name = "Gloves"
 	path = /obj/item/clothing/gloves/fake_brass
 
@@ -322,7 +322,7 @@
 	body_cover_flags = HANDS
 	cold_protection = HANDS
 
-/datum/gear/seasonal/masquarade/clockcult/slab
+/datum/loadout_entry/seasonal/masquarade/clockcult/slab
 	display_name = "Slab"
 	path = /obj/item/toy/slab
 
@@ -335,7 +335,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
 	)
 
-/datum/gear/seasonal/masquarade/clockcult/spear
+/datum/loadout_entry/seasonal/masquarade/clockcult/spear
 	display_name = "Spear"
 	path = /obj/item/toy/ratvar_spear
 
@@ -348,7 +348,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
 	)
 
-/datum/gear/seasonal/masquarade/clockcult/shield
+/datum/loadout_entry/seasonal/masquarade/clockcult/shield
 	display_name = "Shield"
 	path = /obj/item/toy/ratvar_shield
 
@@ -361,7 +361,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
 	)
 
-/datum/gear/seasonal/masquarade/clockcult/claw
+/datum/loadout_entry/seasonal/masquarade/clockcult/claw
 	display_name = "Claw"
 	path = /obj/item/toy/ratvar_claw
 
@@ -374,7 +374,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
 	)
 
-/datum/gear/seasonal/masquarade/clockcult/visor
+/datum/loadout_entry/seasonal/masquarade/clockcult/visor
 	display_name = "Visor"
 	path = /obj/item/clothing/glasses/fake_judicial
 
@@ -384,7 +384,7 @@
 	default_worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
 	icon_state = "judicial_visor_1"
 
-/datum/gear/seasonal/masquarade/clockcult/spectacles
+/datum/loadout_entry/seasonal/masquarade/clockcult/spectacles
 	display_name = "Spectacles"
 	path = /obj/item/clothing/glasses/fake_spectacles
 
@@ -397,11 +397,11 @@
 /**
  * cult
  */
-/datum/gear/seasonal/masquarade/cult
+/datum/loadout_entry/seasonal/masquarade/cult
 	antag_name = "Cult"
-	abstract_type = /datum/gear/seasonal/masquarade/cult
+	abstract_type = /datum/loadout_entry/seasonal/masquarade/cult
 
-/datum/gear/seasonal/masquarade/cult/spear
+/datum/loadout_entry/seasonal/masquarade/cult/spear
 	display_name = "Halbard"
 	path = /obj/item/toy/blood_halbard
 
@@ -414,7 +414,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/antagonists/cult/on_mob/right_hand.dmi'
 	)
 
-/datum/gear/seasonal/masquarade/cult/shield
+/datum/loadout_entry/seasonal/masquarade/cult/shield
 	display_name = "Mirror Shield"
 	path = /obj/item/toy/mirror_shield
 
@@ -427,7 +427,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/antagonists/cult/on_mob/right_hand.dmi'
 	)
 
-/datum/gear/seasonal/masquarade/cult/hardsuit
+/datum/loadout_entry/seasonal/masquarade/cult/hardsuit
 	display_name = "Hardsuit"
 	path = /obj/item/clothing/suit/storage/hooded/fake_cult_hardsuit
 
@@ -449,7 +449,7 @@
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
-/datum/gear/seasonal/masquarade/cult/robes_new
+/datum/loadout_entry/seasonal/masquarade/cult/robes_new
 	display_name = "Robes (new)"
 	path = /obj/item/clothing/suit/storage/hooded/fake_cult_robes_new
 
@@ -470,7 +470,7 @@
 	body_cover_flags = HEAD
 	cold_protection = HEAD
 
-/datum/gear/seasonal/masquarade/cult/robes_old
+/datum/loadout_entry/seasonal/masquarade/cult/robes_old
 	display_name = "Robes (old)"
 	path = /obj/item/clothing/suit/storage/hooded/fake_cult_robes_old
 
@@ -491,18 +491,18 @@
 	body_cover_flags = HEAD
 	cold_protection = HEAD
 
-/datum/gear/seasonal/masquarade/cult/sword
+/datum/loadout_entry/seasonal/masquarade/cult/sword
 	display_name = "Sword"
 	path = /obj/item/toy/cultsword
 
 /**
  * heretic
  */
-/datum/gear/seasonal/masquarade/heretic
+/datum/loadout_entry/seasonal/masquarade/heretic
 	antag_name = "Heretic"
-	abstract_type = /datum/gear/seasonal/masquarade/heretic
+	abstract_type = /datum/loadout_entry/seasonal/masquarade/heretic
 
-/datum/gear/seasonal/masquarade/heretic/robes
+/datum/loadout_entry/seasonal/masquarade/heretic/robes
 	display_name = "Robes"
 	path = /obj/item/clothing/suit/storage/hooded/fake_heretic
 
@@ -523,7 +523,7 @@
 	body_cover_flags = HEAD
 	cold_protection = HEAD
 
-/datum/gear/seasonal/masquarade/heretic/void_cloak
+/datum/loadout_entry/seasonal/masquarade/heretic/void_cloak
 	display_name = "Void Cloak"
 	path = /obj/item/clothing/suit/storage/hooded/fake_void
 
@@ -546,42 +546,42 @@
 	cold_protection = HEAD
 
 /*
-/datum/gear/seasonal/masquarade/heretic/living_heart
+/datum/loadout_entry/seasonal/masquarade/heretic/living_heart
 	display_name = "Heart"
 	path = /obj/item/toy/heretic_heart
 
 /obj/item/toy/heretic_heart
 
-/datum/gear/seasonal/masquarade/heretic/tome
+/datum/loadout_entry/seasonal/masquarade/heretic/tome
 	display_name = "Tome"
 	path = /obj/item/toy/heretic_tome
 
 /obj/item/toy/heretic_tome
 
-/datum/gear/seasonal/masquarade/heretic/laughing_mask
+/datum/loadout_entry/seasonal/masquarade/heretic/laughing_mask
 	display_name = "Laughing Mask"
 	path = /obj/item/clothing/mask/fake_laughing_mask
 
 /obj/item/clothing/mask/fake_laughing_mask
 */
 
-/datum/gear/seasonal/masquarade/heretic/blade
+/datum/loadout_entry/seasonal/masquarade/heretic/blade
 	display_name = "Eldritch Blade"
 	path = /obj/item/toy/heretic_blade
 
-/datum/gear/seasonal/masquarade/heretic/blade/ash
+/datum/loadout_entry/seasonal/masquarade/heretic/blade/ash
 	display_name = "Ash Blade"
 	path = /obj/item/toy/heretic_blade/ash
 
-/datum/gear/seasonal/masquarade/heretic/blade/flesh
+/datum/loadout_entry/seasonal/masquarade/heretic/blade/flesh
 	display_name = "Flesh Blade"
 	path = /obj/item/toy/heretic_blade/flesh
 
-/datum/gear/seasonal/masquarade/heretic/rust
+/datum/loadout_entry/seasonal/masquarade/heretic/rust
 	display_name = "Rust Blade"
 	path = /obj/item/toy/heretic_blade/rust
 
-/datum/gear/seasonal/masquarade/heretic/blade/void
+/datum/loadout_entry/seasonal/masquarade/heretic/blade/void
 	display_name = "Void Blade"
 	path = /obj/item/toy/heretic_blade/void
 
@@ -611,19 +611,19 @@
 /**
  * wizard
  */
-/datum/gear/seasonal/masquarade/wizard
+/datum/loadout_entry/seasonal/masquarade/wizard
 	antag_name = "Wizard"
-	abstract_type = /datum/gear/seasonal/masquarade/wizard
+	abstract_type = /datum/loadout_entry/seasonal/masquarade/wizard
 
 /**
  * ninja
  */
-/datum/gear/seasonal/masquarade/ninja
+/datum/loadout_entry/seasonal/masquarade/ninja
 	antag_name = "Ninja"
-	abstract_type = /datum/gear/seasonal/masquarade/ninja
+	abstract_type = /datum/loadout_entry/seasonal/masquarade/ninja
 
 /*
-/datum/gear/seasonal/masquarade/ninja/suit
+/datum/loadout_entry/seasonal/masquarade/ninja/suit
 	display_name = "Suit"
 	path = /obj/item/clothing/suit/storage/hooded/fake_ninja
 
@@ -631,7 +631,7 @@
 
 /obj/item/clothing/head/hood/fake_ninja
 
-/datum/gear/seasonal/masquarade/ninja/katana
+/datum/loadout_entry/seasonal/masquarade/ninja/katana
 	display_name = "Katana"
 	path = /obj/item/toy/ninja_katana
 

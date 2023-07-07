@@ -86,7 +86,7 @@
 	var/list/custom_equip_leftovers = list()
 	if(gear && gear.len)
 		for(var/thing in gear)
-			var/datum/gear/G = gear_datums[thing]
+			var/datum/loadout_entry/G = gear_datums[thing]
 			if(!G) //Not a real gear datum (maybe removed, as this is loaded from their savefile)
 				continue
 
@@ -122,7 +122,7 @@
 
 	// If some custom items could not be equipped before, try again now.
 	for(var/thing in custom_equip_leftovers)
-		var/datum/gear/G = gear_datums[thing]
+		var/datum/loadout_entry/G = gear_datums[thing]
 		if(!(G.slot in custom_equip_slots))
 			if(H.equip_to_slot_or_del(G.spawn_item(H, custom_equip_leftovers[thing]), G.slot))
 				to_chat(H, "<span class='notice'>Equipping you with \the [G.display_name]!</span>")

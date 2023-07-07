@@ -202,7 +202,7 @@
 	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/role/job/station/ai || previewJob.type == /datum/role/job/station/cyborg)))
 		var/list/equipped_slots = list()
 		for(var/thing in gear)
-			var/datum/gear/G = gear_datums[thing]
+			var/datum/loadout_entry/G = gear_datums[thing]
 			if(G)
 				var/permitted = 0
 				if(!G.allowed_roles)

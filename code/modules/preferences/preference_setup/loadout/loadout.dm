@@ -205,3 +205,12 @@
 		var/datum/holiday/H = SSevents.holidays[name]
 		if(H.loadout_spam)
 			return MAX_GEAR_COST_HOLIDAY_SPAM
+
+/datum/category_item/player_setup_item/loadout/proc/ui_loadout_data(datum/preferences/prefs, mob/user)
+	#warn impl
+
+/datum/category_item/player_setup_item/loadout/proc/ui_loadout_act(datum/preferences/prefs, mob/user, action, list/params)
+	#warn impl
+
+/datum/category_item/player_setup_item/loadout/proc/ui_loadout_push(datum/preferences/prefs, mob/user)
+	#warn impl

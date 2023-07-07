@@ -277,7 +277,7 @@
 		var/list/custom_equip_leftovers = list()
 		if(H.client.prefs.gear && H.client.prefs.gear.len && !(job.mob_type & JOB_SILICON))
 			for(var/thing in H.client.prefs.gear)
-				var/datum/gear/G = gear_datums[thing]
+				var/datum/loadout_entry/G = gear_datums[thing]
 				if(!G) //Not a real gear datum (maybe removed, as this is loaded from their savefile)
 					continue
 
@@ -339,7 +339,7 @@
 
 		// If some custom items could not be equipped before, try again now.
 		for(var/thing in custom_equip_leftovers)
-			var/datum/gear/G = gear_datums[thing]
+			var/datum/loadout_entry/G = gear_datums[thing]
 			if(G.slot in custom_equip_slots)
 				spawn_in_storage[thing] = custom_equip_leftovers[thing]
 			else
@@ -392,7 +392,7 @@
 
 			if(!isnull(B))
 				for(var/thing in spawn_in_storage)
-					var/datum/gear/G = gear_datums[thing]
+					var/datum/loadout_entry/G = gear_datums[thing]
 					G.spawn_item(B, spawn_in_storage[thing])
 					to_chat(H, SPAN_NOTICE("Placing \the [G.display_name] in your [B.name]!"))
 			else
