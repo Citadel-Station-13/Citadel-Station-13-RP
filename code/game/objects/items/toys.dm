@@ -281,13 +281,8 @@
 		src.icon_state = "sword0"
 		src.w_class = ITEMSIZE_SMALL
 
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
-
-	src.add_fingerprint(user)
-	return
+	update_worn_icon()
+	add_fingerprint(user)
 
 /obj/item/toy/katana
 	name = "replica katana"

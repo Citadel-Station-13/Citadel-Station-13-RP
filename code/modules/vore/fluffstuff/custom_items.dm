@@ -1528,14 +1528,8 @@
 		deactivate(user)
 	else
 		activate(user)
-
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
-
+	update_worn_icon()
 	add_fingerprint(user)
-	return
 
 /obj/item/melee/fluffstuff/suicide_act(mob/user)
 	var/tempgender = "[user.gender == MALE ? "he's" : user.gender == FEMALE ? "she's" : "they are"]"

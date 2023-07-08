@@ -84,8 +84,7 @@
 		return
 
 	H.icon_state = "[chassis]"
-	grabber.update_inv_l_hand()
-	grabber.update_inv_r_hand()
+	H.update_worn_icon()
 	return H
 
 // handle movement speed

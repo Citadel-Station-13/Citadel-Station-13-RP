@@ -469,10 +469,7 @@
 	desc = "It's a desert eagle."
 	icon_state = "deagle"
 	update_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_r_hand()
-		M.update_inv_l_hand()
+	update_worn_icon()
 
 /obj/item/gun/energy/chameleon/disguise(var/newtype)
 	var/obj/item/gun/copy = ..()
@@ -501,9 +498,4 @@
 		return
 
 	disguise(gun_choices[picked])
-
-	//so our overlays update.
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_r_hand()
-		M.update_inv_l_hand()
+	update_worn_icon()

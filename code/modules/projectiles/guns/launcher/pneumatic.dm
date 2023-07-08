@@ -130,10 +130,7 @@
 
 /obj/item/gun/launcher/pneumatic/update_icon()
 	. = ..()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_r_hand()
-		M.update_inv_l_hand()
+	update_worn_icon()
 
 /obj/item/gun/launcher/pneumatic/update_icon_state()
 	. = ..()

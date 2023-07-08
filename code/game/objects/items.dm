@@ -215,16 +215,6 @@
 			return TRUE
 	return FALSE
 
-
-///Checks if the item is being held by a mob, and if so, updates the held icons
-/obj/item/proc/update_held_icon()
-	if(isliving(src.loc))
-		var/mob/living/M = src.loc
-		if(M.l_hand == src)
-			M.update_inv_l_hand()
-		else if(M.r_hand == src)
-			M.update_inv_r_hand()
-
 /obj/item/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)

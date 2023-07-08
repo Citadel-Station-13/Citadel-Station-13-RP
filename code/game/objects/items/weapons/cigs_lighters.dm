@@ -200,9 +200,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			lit = 0
 			icon_state = initial(icon_state)
 			item_state = initial(item_state)
-			M.update_inv_wear_mask(0)
-			M.update_inv_l_hand(0)
-			M.update_inv_r_hand(1)
+			update_worn_icon()
 			smoketime = 0
 			reagents.clear_reagents()
 			name = "empty [initial(name)]"
@@ -409,10 +407,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/cigarette/cigar/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-
-	user.update_inv_wear_mask(0)
-	user.update_inv_l_hand(0)
-	user.update_inv_r_hand(1)
+	update_worn_icon()
 
 /obj/item/cigbutt/imp
 	name = "cigarette butt"
