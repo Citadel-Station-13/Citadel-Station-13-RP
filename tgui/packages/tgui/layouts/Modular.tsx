@@ -3,6 +3,7 @@
  * @license MIT
  */
 
+import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
 import { Section } from "../components";
 import { SectionProps } from "../components/Section";
@@ -13,6 +14,7 @@ export interface ModularProps {
   children?: InfernoNode;
   window?: WindowProps;
   section?: SectionProps;
+  scrollable?: BooleanLike;
 }
 
 /**
@@ -22,6 +24,9 @@ export interface ModularProps {
  * <Module>.
  *
  * If not rendering directly, it will act like a <Section>.
+ *
+ * todo: scrolling is broken when embedded. there's no workaround; tgui components and their CSS just can't handle
+ *       proper scrolling behavior when made to auto-fill as opposed to fixed height.
  */
 export const Modular = (props: ModularProps, context: any) => {
   const { is_module } = context;
@@ -29,7 +34,7 @@ export const Modular = (props: ModularProps, context: any) => {
     !is_module? (
       <Window {...props.window}>
         {props.direct}
-        <Window.Content>
+        <Window.Content scrollable={props.scrollable}>
           {props.children}
         </Window.Content>
       </Window>

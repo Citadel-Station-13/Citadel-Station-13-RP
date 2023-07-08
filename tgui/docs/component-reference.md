@@ -47,6 +47,7 @@ Make sure to add new items to this list if you document new components.
     - [`RoundGauge`](#roundgauge)
     - [`Section`](#section)
     - [`Slider`](#slider)
+    - [`Sprite`](#sprite)
     - [`Stack`](#stack)
     - [`Stack.Item`](#stackitem)
     - [`Table`](#table)
@@ -931,6 +932,18 @@ Default is about 250ms, increase it if you still see flickering.
 the input, or successfully enter a number.
 - `onDrag: (e, value) => void` - An event, which fires about every 500ms
 when you drag the input up and down, on release and on manual editing.
+
+### `Sprite`
+
+A way to render a spritesheet icon.
+
+**Props:**
+
+- See inherited props: [Box](#box)
+- `sheet: string` - name of spritesheet (the asset entry, e.g. "sheetmaterials")
+- `sizeKey: string` - the size key to use, e.g. "32x32" usually
+- `prefix?: string` - the prefix of the sprite, e.g. "stack". sometimes, there's no prefix.
+- `sprite: string` - the name of the sprite in the spritesheet, e.g. "metal"
 
 ### `Stack`
 

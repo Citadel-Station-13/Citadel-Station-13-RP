@@ -333,9 +333,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "aok" = (
-/obj/machinery/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "aos" = (
@@ -6812,7 +6810,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "enB" = (
@@ -25025,7 +25023,7 @@
 /obj/machinery/holoposter{
 	pixel_x = -32
 	},
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
 "pyL" = (

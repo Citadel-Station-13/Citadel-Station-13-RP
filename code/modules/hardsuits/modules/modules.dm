@@ -13,7 +13,7 @@
 	desc = "It looks pretty sciency."
 	icon = 'icons/obj/rig_modules.dmi'
 	icon_state = "module"
-	matter = list(MAT_STEEL = 20000, MAT_PLASTIC = 30000, MAT_GLASS = 5000)
+	materials = list(MAT_STEEL = 20000, MAT_PLASTIC = 30000, MAT_GLASS = 5000)
 
 	var/damage = 0
 	var/obj/item/hardsuit/holder
@@ -133,6 +133,10 @@
 	stat_modules +=	new/stat_hardsuit_module/engage(src)
 	stat_modules +=	new/stat_hardsuit_module/select(src)
 	stat_modules +=	new/stat_hardsuit_module/charge(src)
+
+/obj/item/hardsuit_module/Destroy()
+	QDEL_LIST(stat_modules)
+	return ..()
 
 // Called when the module is installed into a suit.
 /obj/item/hardsuit_module/proc/installed(var/obj/item/hardsuit/new_holder)
@@ -258,6 +262,10 @@
 /stat_hardsuit_module/New(var/obj/item/hardsuit_module/module)
 	..()
 	src.module = module
+
+/stat_hardsuit_module/Destroy()
+	module = null
+	return ..()
 
 /stat_hardsuit_module/proc/AddHref(var/list/href_list)
 	return

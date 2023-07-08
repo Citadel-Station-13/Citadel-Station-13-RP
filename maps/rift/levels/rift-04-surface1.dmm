@@ -11964,7 +11964,7 @@
 /turf/simulated/wall/prepainted/medical,
 /area/medical/psych_ward)
 "hIz" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
@@ -35488,7 +35488,7 @@
 /area/maintenance/substation/medical)
 "vLK" = (
 /obj/structure/closet/crate,
-/obj/item/circuitboard/autolathe,
+/obj/item/circuitboard/machine/lathe/autolathe,
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "vLP" = (
@@ -39486,7 +39486,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /obj/machinery/light{
 	dir = 1
 	},

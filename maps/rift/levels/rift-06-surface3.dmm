@@ -10270,9 +10270,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "aCo" = (
-/obj/machinery/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "aCq" = (

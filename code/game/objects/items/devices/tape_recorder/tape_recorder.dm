@@ -9,7 +9,7 @@
 	throw_force = 2
 	throw_speed = 4
 	throw_range = 20
-	matter = list(MAT_STEEL = 60, MAT_GLASS = 30)
+	materials = list(MAT_STEEL = 60, MAT_GLASS = 30)
 
 	/// inserted tape
 	var/obj/item/cassette_tape/tape = /obj/item/cassette_tape/random
