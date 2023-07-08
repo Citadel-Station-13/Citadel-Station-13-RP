@@ -193,17 +193,15 @@
 // Parameters: 1 (I - item being compared to determine what the offhand is)
 // Description: Helper for Aspect spells.
 /mob/living/carbon/human/proc/get_other_hand(var/obj/item/I)
-	if(isnull(owner))
-		return FALSE
-	var/our_index = owner.get_held_index(src)
+	var/our_index = get_held_index(src)
 	if(!our_index)
 		return FALSE
-	for(var/i in 1 to length(owner.held_items))
+	for(var/i in 1 to length(held_items))
 		if(i == our_index)
 			continue
-		if(isnull(owner.held_items[i]))
+		if(isnull(held_items[i]))
 			continue
-		return owner.held_items[i]
+		return held_items[i]
 
 // Proc: attack_self()
 // Parameters: 1 (user - the Technomancer that invoked this proc)

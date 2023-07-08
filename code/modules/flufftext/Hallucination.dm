@@ -326,23 +326,6 @@ proc/check_panel(mob/M)
 	SEND_IMAGE(target, I)
 	spawn(300)
 		qdel(O)
-	return
-
-GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/gun/ballistic, /obj/item/ammo_magazine/s357,\
-	/obj/item/gun/energy/crossbow, /obj/item/melee/energy/sword,\
-	/obj/item/storage/box/syndicate, /obj/item/storage/box/emps,\
-	/obj/item/cartridge/syndicate, /obj/item/clothing/under/chameleon,\
-	/obj/item/clothing/shoes/syndigaloshes, /obj/item/card/id/syndicate,\
-	/obj/item/clothing/mask/gas/voice, /obj/item/clothing/glasses/thermal,\
-	/obj/item/chameleon, /obj/item/card/emag,\
-	/obj/item/storage/toolbox/syndicate, /obj/item/aiModule,\
-	/obj/item/radio/headset/syndicate,	/obj/item/plastique,\
-	/obj/item/powersink, /obj/item/storage/box/syndie_kit,\
-	/obj/item/toy/syndicateballoon, /obj/item/gun/energy/captain,\
-	/obj/item/hand_tele, /obj/item/rcd, /obj/item/tank/jetpack,\
-	/obj/item/clothing/under/rank/captain, /obj/item/aicard,\
-	/obj/item/clothing/shoes/magboots, /obj/item/blueprints, /obj/item/disk/nuclear,\
-	/obj/item/clothing/suit/space/void, /obj/item/tank))
 
 /proc/fake_attack(var/mob/living/target)
 	var/list/possible_clones = new/list()
@@ -364,14 +347,8 @@ GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/gun/ballistic, /obj/item
 
 	//var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(outside_range(target))
 	var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(target.loc)
-	if(clone.l_hand)
-		if(!(locate(clone.l_hand) in GLOB.non_fakeattack_weapons))
-			clone_weapon = clone.l_hand.name
-			F.weap = clone.l_hand
-	else if (clone.r_hand)
-		if(!(locate(clone.r_hand) in GLOB.non_fakeattack_weapons))
-			clone_weapon = clone.r_hand.name
-			F.weap = clone.r_hand
+	// meta-able but whatever we can redo later.
+	F.weap = clone.get_active_held_item() || clone.get_inactive_held_item()
 
 	F.name = clone.name
 	F.my_target = target
