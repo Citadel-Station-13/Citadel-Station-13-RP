@@ -22,6 +22,8 @@
 /obj/structure/closet/grave
 	name = "grave"
 	desc = "Dirt."
+	icon = 'icons/obj/closets/grave.dmi'
+	closet_appearance = null
 	icon_state = "grave"
 	icon_closed = "grave"
 	icon_opened = "grave_open"
@@ -31,6 +33,12 @@
 	max_closets = 1
 	opened = 1
 	color = "#c2b29f"
+
+/obj/structure/closet/grave/update_icon()
+	if(opened)
+		icon_state = "open"
+	else
+		icon_state = "closed"
 
 /obj/structure/closet/grave/attack_hand(mob/user, list/params)
 	if(opened)
