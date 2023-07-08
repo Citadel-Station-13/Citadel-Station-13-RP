@@ -2878,6 +2878,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/surgery)
+"czd" = (
+/obj/structure/lattice,
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "czx" = (
 /obj/machinery/computer/crew{
 	dir = 4
@@ -6822,6 +6826,10 @@
 /obj/landmark/spawnpoint/job/psychiatrist,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_1)
+"fSH" = (
+/obj/structure/lattice,
+/turf/space/basic,
+/area/space)
 "fSY" = (
 /obj/machinery/suspension_gen,
 /obj/machinery/light{
@@ -11964,6 +11972,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
+"kpL" = (
+/turf/space/basic,
+/area/space)
 "kqo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -12575,6 +12586,12 @@
 "kPx" = (
 /turf/simulated/floor/tiled,
 /area/medical/medbay3)
+"kPN" = (
+/obj/machinery/camera/network/outside{
+	dir = 5
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "kPU" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/floor_decal/borderfloorwhite,
@@ -31019,10 +31036,10 @@ gVh
 gVh
 gVh
 gVh
-oCz
-oCz
-oCz
-oCz
+oHo
+oHo
+oHo
+oHo
 bdR
 pYD
 gVh
@@ -31159,12 +31176,12 @@ bdR
 gVh
 gVh
 gVh
-oCz
-oCz
-oCz
-oCz
-oCz
-oCz
+oHo
+oHo
+oHo
+oHo
+oHo
+oHo
 gVh
 pYD
 gVh
@@ -31305,8 +31322,8 @@ oHo
 oHo
 oHo
 oHo
-oCz
-oCz
+oHo
+oHo
 gVh
 bdR
 gVh
@@ -31447,7 +31464,7 @@ unF
 avV
 wOy
 oHo
-oCz
+oHo
 eLn
 iBC
 bdR
@@ -31589,7 +31606,7 @@ cOK
 qYA
 wRJ
 oHo
-oCz
+oHo
 gVh
 gVh
 bdR
@@ -31731,7 +31748,7 @@ bUe
 iRW
 mDs
 oHo
-oCz
+oHo
 gVh
 gVh
 pYD
@@ -38976,7 +38993,7 @@ sCe
 sCe
 sCe
 sCe
-gVh
+kpL
 pYD
 gVh
 gVh
@@ -39260,7 +39277,7 @@ sCe
 sCe
 sCe
 sCe
-gVh
+fSH
 pYD
 gVh
 gVh
@@ -39402,7 +39419,7 @@ wDA
 sCe
 sCe
 sCe
-gVh
+kpL
 pYD
 gVh
 gVh
@@ -39544,7 +39561,7 @@ sCe
 sCe
 sCe
 sCe
-gVh
+kpL
 pYD
 gVh
 gVh
@@ -39686,7 +39703,7 @@ sCe
 sCe
 sCe
 sCe
-gVh
+kpL
 pYD
 gVh
 gVh
@@ -39828,7 +39845,7 @@ sCe
 sCe
 sCe
 sCe
-bdR
+fSH
 pYD
 gVh
 gVh
@@ -39970,7 +39987,7 @@ sCe
 sCe
 sCe
 sCe
-gVh
+kpL
 pYD
 gVh
 gVh
@@ -40112,7 +40129,7 @@ sCe
 sCe
 sCe
 sCe
-gVh
+kpL
 pYD
 gVh
 gVh
@@ -40254,7 +40271,7 @@ sCe
 sCe
 sCe
 sCe
-gVh
+kpL
 pYD
 gVh
 gVh
@@ -40396,7 +40413,7 @@ sCe
 sCe
 sCe
 sCe
-gVh
+fSH
 pYD
 gVh
 gVh
@@ -40534,11 +40551,11 @@ xND
 ilf
 xND
 lUU
+sCe
+sCe
+sCe
+sCe
 gVh
-gVh
-gVh
-bdR
-bdR
 pYD
 gVh
 gVh
@@ -40676,10 +40693,10 @@ tSA
 xwQ
 tSA
 lUU
-dlt
-gVh
-gVh
-bdR
+wDA
+sCe
+sCe
+sCe
 gVh
 pYD
 gVh
@@ -40822,7 +40839,7 @@ bdR
 bdR
 bdR
 bdR
-gVh
+bdR
 bdR
 gVh
 gVh
@@ -46741,11 +46758,11 @@ bdR
 gVh
 eLn
 ioO
-gVh
-bdR
-gVh
-bdR
-gVh
+sCe
+czd
+sCe
+czd
+sCe
 ioO
 hKW
 mhy
@@ -46753,11 +46770,11 @@ geq
 cuU
 qoo
 ioO
-gVh
-gVh
-gVh
-gVh
-gVh
+sCe
+sCe
+sCe
+sCe
+sCe
 ioO
 eLn
 gVh
@@ -46883,11 +46900,11 @@ bdR
 bdR
 iBC
 pYD
-bdR
-bdR
-gVh
-bdR
-gVh
+czd
+czd
+sCe
+czd
+sCe
 ioO
 fhO
 mhy
@@ -46895,11 +46912,11 @@ xOu
 cuU
 oqY
 ioO
-dlt
-gVh
-gVh
-gVh
-gVh
+wDA
+sCe
+sCe
+sCe
+sCe
 gVh
 iBC
 gVh
@@ -47027,9 +47044,9 @@ bdR
 gVh
 gVh
 bdR
-gVh
-bdR
-gVh
+sCe
+czd
+sCe
 ioO
 gAR
 gAR
@@ -47037,9 +47054,9 @@ gAR
 gAR
 gAR
 ioO
-bdR
-bdR
-bdR
+czd
+czd
+czd
 pYD
 pYD
 pYD
@@ -47171,15 +47188,15 @@ gVh
 bdR
 gVh
 bdR
-gVh
-sHK
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
+sCe
+kPN
+sCe
+sCe
+sCe
+sCe
+sCe
+sCe
+sCe
 bdR
 gVh
 gVh
@@ -47314,14 +47331,14 @@ bdR
 gVh
 bdR
 gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
+sCe
+sCe
+sCe
+sCe
+sCe
+sCe
+sCe
+kpL
 bdR
 gVh
 gVh
@@ -47454,16 +47471,16 @@ bdR
 pYD
 bdR
 bdR
-pYD
-pYD
-pYD
-pYD
-pYD
-pYD
-pYD
-pYD
-pYD
-pYD
+fSH
+kpL
+kpL
+sCe
+sCe
+sCe
+sCe
+sCe
+kpL
+fSH
 bdR
 bdR
 bdR
@@ -47596,7 +47613,7 @@ gVh
 gVh
 gVh
 gVh
-gVh
+bdR
 bdR
 gVh
 gVh
@@ -47604,8 +47621,8 @@ gVh
 gVh
 gVh
 bdR
-gVh
-gVh
+bdR
+bdR
 bdR
 gVh
 gVh

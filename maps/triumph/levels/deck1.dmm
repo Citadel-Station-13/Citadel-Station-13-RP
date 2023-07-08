@@ -10838,6 +10838,12 @@
 /obj/item/storage/bag/circuits/basic,
 /turf/simulated/floor,
 /area/storage/tech)
+"Nq" = (
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "Nr" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -29055,7 +29061,7 @@ qw
 em
 em
 em
-Yb
+Nq
 qb
 dv
 ID
