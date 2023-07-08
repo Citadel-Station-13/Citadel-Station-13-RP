@@ -70,13 +70,13 @@
 	uniform = /obj/item/clothing/under/suit_jacket/red
 	l_hand = /obj/item/barcodescanner
 	id_type = /obj/item/card/id/civilian/librarian
-	pda_type = /obj/item/pda/librarian
+	pda_type = /obj/item/modular_computer/pda/service
 
 /datum/outfit/job/station/librarian/reporter
 	name = OUTFIT_JOB_NAME("Reporter")
 	uniform = /obj/item/clothing/under/suit_jacket/red
 	id_type = /obj/item/card/id/civilian/librarian
-	pda_type = /obj/item/pda/librarian
+	pda_type = /obj/item/modular_computer/pda/service
 	belt = /obj/item/camera
 	backpack_contents = list(/obj/item/clothing/accessory/badge/corporate_tag/press = 1,
 							/obj/item/tape_recorder = 1,

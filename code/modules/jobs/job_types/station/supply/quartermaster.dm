@@ -55,4 +55,4 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	l_hand = /obj/item/clipboard
 	id_type = /obj/item/card/id/cargo/head
-	pda_type = /obj/item/pda/quartermaster
+	pda_type = /obj/item/modular_computer/pda/heads/qm

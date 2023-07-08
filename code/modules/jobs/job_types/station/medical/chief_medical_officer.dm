@@ -75,7 +75,7 @@
 	r_pocket = /obj/item/healthanalyzer
 
 	id_type = /obj/item/card/id/medical/head
-	pda_type = /obj/item/pda/heads/cmo
+	pda_type = /obj/item/modular_computer/pda/heads/cmo
 	pda_slot = SLOT_ID_LEFT_POCKET
 	backpack = /obj/item/storage/backpack/medic
 	satchel_one = /obj/item/storage/backpack/satchel/med

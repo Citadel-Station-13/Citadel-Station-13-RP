@@ -46,7 +46,7 @@
 	shoes = /obj/item/clothing/shoes/white
 
 	id_type = /obj/item/card/id/medical/chemist
-	pda_type = /obj/item/pda/chemist
+	pda_type = /obj/item/modular_computer/pda/medical/chemist
 	pda_slot = SLOT_ID_LEFT_POCKET
 
 	backpack = /obj/item/storage/backpack/chemistry

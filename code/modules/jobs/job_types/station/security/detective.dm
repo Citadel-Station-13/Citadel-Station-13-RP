@@ -52,7 +52,7 @@
 	r_hand = /obj/item/storage/briefcase/crimekit
 
 	id_type = /obj/item/card/id/security/detective
-	pda_type = /obj/item/pda/detective
+	pda_type = /obj/item/modular_computer/pda/security
 
 	backpack = /obj/item/storage/backpack
 	backpack_contents = list(/obj/item/storage/box/evidence = 1)

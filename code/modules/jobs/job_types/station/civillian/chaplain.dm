@@ -166,4 +166,4 @@
 	uniform = /obj/item/clothing/under/rank/chaplain
 	l_hand = /obj/item/storage/bible
 	id_type = /obj/item/card/id/civilian/chaplain
-	pda_type = /obj/item/pda/chaplain
+	pda_type = /obj/item/modular_computer/pda/service/iaa

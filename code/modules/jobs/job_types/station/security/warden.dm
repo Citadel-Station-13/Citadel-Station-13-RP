@@ -42,7 +42,7 @@
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 
 	id_type = /obj/item/card/id/security/warden
-	pda_type = /obj/item/pda/warden
+	pda_type = /obj/item/modular_computer/pda/security
 
 	backpack = /obj/item/storage/backpack/security
 	backpack_contents = list(/obj/item/handcuffs = 1)

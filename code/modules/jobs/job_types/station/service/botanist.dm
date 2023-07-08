@@ -24,7 +24,7 @@
 
 /datum/outfit/job/station/botanist
 	name = OUTFIT_JOB_NAME("Botanist")
-	pda_type = /obj/item/pda/botanist
+	pda_type = /obj/item/modular_computer/pda/service
 	id_type = /obj/item/card/id/civilian/botanist
 	l_ear = /obj/item/radio/headset/headset_service
 

@@ -43,4 +43,4 @@
 	uniform = /obj/item/clothing/under/rank/cargotech
 	l_ear = /obj/item/radio/headset/headset_cargo
 	id_type = /obj/item/card/id/cargo/cargo_tech
-	pda_type = /obj/item/pda/cargo
+	pda_type = /obj/item/modular_computer/pda/cargo

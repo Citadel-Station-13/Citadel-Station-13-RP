@@ -78,7 +78,7 @@
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/rd
 
 	id_type = /obj/item/card/id/science/head
-	pda_type = /obj/item/pda/heads/rd
+	pda_type = /obj/item/modular_computer/pda/heads/rd
 
 	backpack = /obj/item/storage/backpack/toxins
 	satchel_one = /obj/item/storage/backpack/satchel/tox

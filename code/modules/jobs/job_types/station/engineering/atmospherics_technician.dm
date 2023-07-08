@@ -55,7 +55,7 @@
 	r_pocket = /obj/item/t_scanner
 
 	id_type = /obj/item/card/id/engineering/atmos
-	pda_type = /obj/item/pda/atmos
+	pda_type = /obj/item/modular_computer/pda/engineering/atmos
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel_one = /obj/item/storage/backpack/satchel/eng

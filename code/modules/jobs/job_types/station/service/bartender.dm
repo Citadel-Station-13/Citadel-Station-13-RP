@@ -37,7 +37,7 @@
 	name = OUTFIT_JOB_NAME("Bartender")
 	uniform = /obj/item/clothing/under/rank/bartender
 	id_type = /obj/item/card/id/civilian/bartender
-	pda_type = /obj/item/pda/bar
+	pda_type = /obj/item/modular_computer/pda/service
 	l_ear = /obj/item/radio/headset/headset_service
 	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/bar = 1)
 

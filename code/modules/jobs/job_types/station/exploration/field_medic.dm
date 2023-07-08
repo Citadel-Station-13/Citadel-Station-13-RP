@@ -37,7 +37,7 @@
 	belt = /obj/item/storage/belt/medical/emt
 	pda_slot = SLOT_ID_LEFT_POCKET
 	r_pocket = /obj/item/flashlight/pen
-	pda_type = /obj/item/pda/sar
+	pda_type = /obj/item/modular_computer/pda/medical/sar
 	id_type = /obj/item/card/id/medical/sar
 	id_pda_assignment = "Field Medic"
 

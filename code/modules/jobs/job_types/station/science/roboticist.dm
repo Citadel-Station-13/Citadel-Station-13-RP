@@ -53,7 +53,7 @@
 
 	id_type = /obj/item/card/id/science/roboticist
 	pda_slot = SLOT_ID_RIGHT_POCKET
-	pda_type = /obj/item/pda/roboticist
+	pda_type = /obj/item/modular_computer/pda/science/robotics
 	l_ear = /obj/item/radio/headset/headset_sci
 
 	backpack = /obj/item/storage/backpack

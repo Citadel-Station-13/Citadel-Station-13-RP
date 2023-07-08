@@ -43,7 +43,7 @@
 	suit = /obj/item/clothing/suit/chef
 	head = /obj/item/clothing/head/chefhat
 	id_type = /obj/item/card/id/civilian/chef
-	pda_type = /obj/item/pda/chef
+	pda_type = /obj/item/modular_computer/pda/service
 	l_ear = /obj/item/radio/headset/headset_service
 
 /datum/outfit/job/station/chef/cook

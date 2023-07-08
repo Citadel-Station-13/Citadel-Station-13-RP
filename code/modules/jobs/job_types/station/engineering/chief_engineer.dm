@@ -77,7 +77,7 @@
 	r_pocket = /obj/item/t_scanner
 
 	id_type = /obj/item/card/id/engineering/head
-	pda_type = /obj/item/pda/heads/ce
+	pda_type = /obj/item/modular_computer/pda/heads/ce
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel_one = /obj/item/storage/backpack/satchel/eng

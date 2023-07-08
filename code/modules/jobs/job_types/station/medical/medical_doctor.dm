@@ -85,7 +85,7 @@
 	l_ear = /obj/item/radio/headset/headset_med
 	shoes = /obj/item/clothing/shoes/white
 
-	pda_type = /obj/item/pda/medical
+	pda_type = /obj/item/modular_computer/pda/medical
 	pda_slot = SLOT_ID_LEFT_POCKET
 	backpack = /obj/item/storage/backpack/medic
 	satchel_one = /obj/item/storage/backpack/satchel/med

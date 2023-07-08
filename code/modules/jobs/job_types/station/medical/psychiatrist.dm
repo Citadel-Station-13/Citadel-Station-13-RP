@@ -47,7 +47,7 @@
 	l_ear = /obj/item/radio/headset/headset_med
 
 	id_type = /obj/item/card/id/medical/psychiatrist
-	pda_type = /obj/item/pda/medical
+	pda_type = /obj/item/modular_computer/pda/medical
 	pda_slot = SLOT_ID_LEFT_POCKET
 	backpack = /obj/item/storage/backpack/medic
 	satchel_one = /obj/item/storage/backpack/satchel/med

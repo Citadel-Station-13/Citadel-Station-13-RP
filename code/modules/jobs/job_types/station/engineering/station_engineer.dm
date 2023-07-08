@@ -71,7 +71,7 @@
 	head = /obj/item/clothing/head/hardhat
 	uniform = /obj/item/clothing/under/rank/engineer
 	id_type = /obj/item/card/id/engineering/engineer
-	pda_type = /obj/item/pda/engineering
+	pda_type = /obj/item/modular_computer/pda/engineering
 	l_ear = /obj/item/radio/headset/headset_eng
 	belt = /obj/item/storage/belt/utility/atmostech
 	belt = /obj/item/storage/belt/utility/full
@@ -79,7 +79,7 @@
 	r_pocket = /obj/item/t_scanner
 
 	id_type = /obj/item/card/id/engineering/atmos
-	pda_type = /obj/item/pda/atmos
+	pda_type = /obj/item/modular_computer/pda/engineering
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel_one = /obj/item/storage/backpack/satchel/eng

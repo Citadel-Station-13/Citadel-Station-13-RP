@@ -33,7 +33,7 @@
 	pda_slot = SLOT_ID_LEFT_POCKET
 
 	id_type = /obj/item/card/id/medical/geneticist
-	pda_type = /obj/item/pda/geneticist
+	pda_type = /obj/item/modular_computer/pda/medical
 
 	backpack = /obj/item/storage/backpack/genetics
 	satchel_one = /obj/item/storage/backpack/satchel/gen

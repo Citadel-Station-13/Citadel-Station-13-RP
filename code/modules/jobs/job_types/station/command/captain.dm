@@ -58,7 +58,7 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 	shoes = /obj/item/clothing/shoes/brown
 
 	id_type = /obj/item/card/id/gold/captain
-	pda_type = /obj/item/pda/captain
+	pda_type = /obj/item/modular_computer/pda/heads/captain
 
 	backpack = /obj/item/storage/backpack/captain
 	satchel_one = /obj/item/storage/backpack/satchel/cap

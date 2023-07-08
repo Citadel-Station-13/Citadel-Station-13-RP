@@ -28,7 +28,7 @@
 /datum/outfit/job/station/centcom_officer
 	name = OUTFIT_JOB_NAME("CentCom Officer")
 	id_type = /obj/item/card/id/centcom
-	pda_type = /obj/item/pda/centcom
+	pda_type = /obj/item/modular_computer/pda/ert
 
 	glasses = /obj/item/clothing/glasses/omnihud/all
 	uniform = /obj/item/clothing/under/rank/centcom

@@ -38,6 +38,6 @@
 	backpack = /obj/item/storage/backpack/industrial
 	satchel_one  = /obj/item/storage/backpack/satchel/eng
 	id_type = /obj/item/card/id/cargo/mining
-	pda_type = /obj/item/pda/shaftminer
+	pda_type = /obj/item/modular_computer/pda/cargo
 	backpack_contents = list(/obj/item/tool/crowbar = 1, /obj/item/storage/bag/ore = 1)
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL

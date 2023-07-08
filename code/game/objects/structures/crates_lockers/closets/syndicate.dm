@@ -40,7 +40,7 @@
 	/obj/item/storage/box/flashbangs,
 	/obj/item/gun/energy/gun = 5,
 	/obj/item/pinpointer/nukeop = 5,
-	/obj/item/pda/syndicate,
+	/obj/item/modular_computer/pda/mercenary,
 	/obj/item/radio/uplink)
 
 /obj/structure/closet/syndicate/resources

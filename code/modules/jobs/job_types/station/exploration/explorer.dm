@@ -48,7 +48,7 @@
 	id_slot = SLOT_ID_WORN_ID
 	pda_slot = SLOT_ID_LEFT_POCKET
 
-	pda_type = /obj/item/pda/explorer
+	pda_type = /obj/item/modular_computer/pda/exploration
 	id_type = /obj/item/card/id/explorer/explorer
 
 	backpack = /obj/item/storage/backpack/voyager

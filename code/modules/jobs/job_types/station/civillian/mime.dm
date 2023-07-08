@@ -35,7 +35,7 @@
 	r_pocket = /obj/item/pen/crayon/mime
 	id_type = /obj/item/card/id/civilian
 	pda_slot = SLOT_ID_BELT
-	pda_type = /obj/item/pda/mime
+	pda_type = /obj/item/modular_computer/pda/service
 	id_pda_assignment = "Mime"
 
 	backpack = /obj/item/storage/backpack/mime

@@ -27,7 +27,7 @@
 /datum/outfit/job/station/emergency_responder
 	name = OUTFIT_JOB_NAME("Emergency Responder")
 	id_type = /obj/item/card/id/centcom/ERT
-	pda_type = /obj/item/pda/centcom
+	pda_type = /obj/item/modular_computer/pda/ert
 
 	uniform = /obj/item/clothing/under/ert
 	shoes = /obj/item/clothing/shoes/boots/swat

@@ -34,7 +34,7 @@
 	always = list(
 		/obj/item/clothing/under/mime,
 		/obj/item/clothing/shoes/black,
-		/obj/item/pda/mime,
+		/obj/item/modular_computer/pda/service,
 		/obj/item/clothing/gloves/white,
 		/obj/item/clothing/mask/gas/mime,
 		/obj/item/clothing/head/beret,

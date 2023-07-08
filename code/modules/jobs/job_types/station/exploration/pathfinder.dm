@@ -41,7 +41,7 @@
 	l_ear = /obj/item/radio/headset/pathfinder
 	id_slot = SLOT_ID_WORN_ID
 	pda_slot = SLOT_ID_LEFT_POCKET
-	pda_type = /obj/item/pda/pathfinder
+	pda_type = /obj/item/modular_computer/pda/exploration/pathfinder
 	id_type = /obj/item/card/id/explorer/head/pathfinder
 	id_pda_assignment = "Pathfinder"
 

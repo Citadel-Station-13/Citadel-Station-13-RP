@@ -38,4 +38,4 @@
 	glasses = /obj/item/clothing/glasses/sunglasses/big
 	l_hand = /obj/item/clipboard
 	id_type = /obj/item/card/id/civilian/internal_affairs_agent
-	pda_type = /obj/item/pda/lawyer
+	pda_type = /obj/item/modular_computer/pda/service/iaa

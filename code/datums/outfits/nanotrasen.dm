@@ -9,7 +9,7 @@
 	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/centcom	//station
 	pda_slot = SLOT_ID_RIGHT_POCKET
-	pda_type = /obj/item/pda/heads
+	pda_type = /obj/item/modular_computer/pda/heads
 
 /datum/outfit/nanotrasen/representative
 	name = "Nanotrasen representative"

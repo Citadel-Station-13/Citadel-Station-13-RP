@@ -50,7 +50,7 @@
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 
 	id_type = /obj/item/card/id/security/officer
-	pda_type = /obj/item/pda/security
+	pda_type = /obj/item/modular_computer/pda/security
 
 	backpack = /obj/item/storage/backpack/security
 	backpack_contents = list(/obj/item/handcuffs = 1)

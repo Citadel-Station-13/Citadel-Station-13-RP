@@ -39,7 +39,7 @@
 	name = OUTFIT_JOB_NAME("Janitor")
 	uniform = /obj/item/clothing/under/rank/janitor
 	id_type = /obj/item/card/id/civilian/janitor
-	pda_type = /obj/item/pda/janitor
+	pda_type = /obj/item/modular_computer/pda/service
 	l_ear = /obj/item/radio/headset/headset_service
 
 /datum/outfit/job/station/janitor/maid

@@ -47,7 +47,7 @@
 	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/syndicate/station_access
 	pda_slot = SLOT_ID_BELT
-	pda_type = /obj/item/pda/heads
+	pda_type = /obj/item/modular_computer/pda/heads
 
 /datum/outfit/professional/post_equip(var/mob/living/carbon/human/H)
 	var/obj/item/storage/secure/briefcase/sec_briefcase = new(H)

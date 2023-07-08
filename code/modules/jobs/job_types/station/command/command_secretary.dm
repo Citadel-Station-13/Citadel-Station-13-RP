@@ -54,7 +54,7 @@
 	l_ear = /obj/item/radio/headset/headset_adj //Citadel Edit: command secretaries get service on their headsets.
 	shoes = /obj/item/clothing/shoes/brown
 	id_type = /obj/item/card/id/silver/secretary
-	pda_type = /obj/item/pda/heads/hop
+	pda_type = /obj/item/modular_computer/pda/heads/hop
 	l_hand = /obj/item/clipboard
 
 /datum/outfit/job/station/command_secretary/pre_equip(mob/living/carbon/human/H)
@@ -68,7 +68,7 @@
 	name = OUTFIT_JOB_NAME("Bridge Officer")
 	shoes = /obj/item/clothing/shoes/laceup
 	id_type = /obj/item/card/id/silver/secretary
-	pda_type = /obj/item/pda/heads/hop
+	pda_type = /obj/item/modular_computer/pda/heads/hop
 	l_hand = /obj/item/clipboard
 	head = /obj/item/clothing/head/bocap
 	suit = /obj/item/clothing/suit/storage/bridgeofficer

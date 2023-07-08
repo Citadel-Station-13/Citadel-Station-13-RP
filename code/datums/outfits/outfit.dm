@@ -239,7 +239,7 @@
 	back = /obj/item/storage/backpack/satchel
 	l_pocket = /obj/item/pen/blue
 	r_pocket = /obj/item/pen/red
-	r_hand = /obj/item/pda/centcom
+	r_hand = /obj/item/modular_computer/pda/ert
 	l_hand = /obj/item/clipboard
 
 /datum/outfit/oricon/representative/equip_id(mob/living/carbon/human/H)

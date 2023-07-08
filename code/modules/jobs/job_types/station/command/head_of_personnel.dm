@@ -86,4 +86,4 @@
 	l_ear = /obj/item/radio/headset/heads/hop
 	shoes = /obj/item/clothing/shoes/brown
 	id_type = /obj/item/card/id/silver/hop
-	pda_type = /obj/item/pda/heads/hop
+	pda_type = /obj/item/modular_computer/pda/heads/hop

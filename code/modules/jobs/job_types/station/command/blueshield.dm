@@ -56,7 +56,7 @@
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 
 	id_type = /obj/item/card/id/silver/blueshield
-	pda_type = /obj/item/pda/heads/blueshield
+	pda_type = /obj/item/modular_computer/pda/heads
 
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel_one = /obj/item/storage/backpack/satchel/blueshield
