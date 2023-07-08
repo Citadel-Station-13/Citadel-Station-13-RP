@@ -69,10 +69,10 @@
 			update_icon()
 
 /obj/structure/closet/proc/update_icon_old()
-	if(closed)
+	if(!opened)
 		icon_state = icon_closed
 	else
-		icon_state = icon_open
+		icon_state = icon_opened
 
 /obj/structure/closet/proc/take_contents()
 	// if(istype(loc, /mob/living))
