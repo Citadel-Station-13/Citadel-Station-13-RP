@@ -4,6 +4,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	desc = "A fragile antenna used to locate nearby biosignatures."
 	default_deconstruct = 0 SECONDS
 	default_unanchor = 5 SECONDS
+	default_panel = 0 SECONDS
 	icon = 'icons/machinery/bioscan.dmi'
 	base_icon_state = "antenna"
 	icon_state = "antenna"
