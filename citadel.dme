@@ -220,6 +220,7 @@
 #include "code\__DEFINES\mobs\mobility.dm"
 #include "code\__DEFINES\mobs\mobs.dm"
 #include "code\__DEFINES\mobs\organs.dm"
+#include "code\__DEFINES\mobs\overlays.dm"
 #include "code\__DEFINES\mobs\silicon_privileges.dm"
 #include "code\__DEFINES\mobs\sprite_accessories.dm"
 #include "code\__DEFINES\mobs\stat.dm"

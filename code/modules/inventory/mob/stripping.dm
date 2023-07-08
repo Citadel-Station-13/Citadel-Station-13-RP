@@ -257,7 +257,7 @@
 			if(!istype(I) || !is_in_inventory(I))
 				return
 			var/slot = I.worn_slot
-			if(!SLOT_ID_IS_HELD_ID(slot))
+			if(slot != SLOT_ID_HANDS)
 				var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
 				var/view_flags = slot_meta.strip_obfuscation_check(I, src, user)
 				if(view_flags & (INV_VIEW_OBFUSCATE_DISALLOW_INTERACT | INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE | INV_VIEW_OBFUSCATE_HIDE_SLOT))
