@@ -12,6 +12,9 @@
 
 //* Public API - Pickup *//
 
+/mob/proc/put_in_hand(obj/item/I, index, flags)
+	return put_in_hand_impl(I, index, flags)
+
 /mob/proc/put_in_hands(obj/item/I, flags)
 	if(is_holding(I))
 		return TRUE
@@ -128,46 +131,14 @@
 /mob/proc/is_holding_inactive(obj/item/I)
 	return is_holding(I) && (get_active_held_item() != I)
 
-
 /**
- * return index of item, or null if not found
+ * hands are all holding items? undefined behavior if we don't have hands.
  */
-/mob/proc/get_held_index(obj/item/I)
+/mob/proc/hands_full()
 	for(var/i in 1 to length(held_items))
-		if(held_items[i] == I)
-			return i
-
-/**
- * returns held item in active hand
- */
-/mob/proc/get_active_held_item()
-	RETURN_TYPE(/obj/item)
-	return held_items[active_hand]
-
-/**
- * returns held item in inactive hand (or any inactive hand if more than 1)
- */
-/mob/proc/get_inactive_held_item()
-	RETURN_TYPE(/obj/item)
-	for(var/i in 1 to length(held_items))
-		if(i == active_hand)
-			continue
 		if(isnull(held_items[i]))
-			continue
-		return held_items[i]
-
-/**
- * returns all items held in non active hands
- */
-/mob/proc/get_inactive_held_items()
-	RETURN_TYPE(/list)
-	. = list()
-	for(var/i in 1 to length(held_items))
-		if(i == active_hand)
-			continue
-		if(isnull(held_items[i]))
-			continue
-		. += held_items[i]
+			return FALSE
+	return TRUE
 
 //* Public API - Get *//
 
@@ -248,12 +219,68 @@
 /mob/proc/get_held_item_of_index(index)
 	RETURN_TYPE(/obj/item)
 	return length(held_items) <= index? held_items[index] : null
+/**
+ * return index of item, or null if not found
+ */
+/mob/proc/get_held_index(obj/item/I)
+	for(var/i in 1 to length(held_items))
+		if(held_items[i] == I)
+			return i
 
 /**
- * hands are all holding items? undefined behavior if we don't have hands.
+ * returns held item in active hand
  */
-/mob/proc/hands_full()
+/mob/proc/get_active_held_item()
+	RETURN_TYPE(/obj/item)
+	return held_items[active_hand]
+
+/**
+ * returns held item in inactive hand (or any inactive hand if more than 1)
+ */
+/mob/proc/get_inactive_held_item()
+	RETURN_TYPE(/obj/item)
 	for(var/i in 1 to length(held_items))
+		if(i == active_hand)
+			continue
 		if(isnull(held_items[i]))
-			return FALSE
-	return TRUE
+			continue
+		return held_items[i]
+
+/**
+ * returns all items held in non active hands
+ */
+/mob/proc/get_inactive_held_items()
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/i in 1 to length(held_items))
+		if(i == active_hand)
+			continue
+		if(isnull(held_items[i]))
+			continue
+		. += held_items[i]
+
+//* Internals *//
+
+/**
+ * the big, bad proc ultimately in charge of putting something into someone's hand
+ * whether it's from the ground, from a slot, or from another hand.
+ */
+/mob/proc/put_in_hand_impl(obj/item/I, index, flags)
+	PRIVATE_PROC(TRUE)
+	if(!I)
+		return TRUE
+	// let's not do that if it's deleted!
+	if(QDELETED(I))
+		to_chat(src, SPAN_DANGER("A deleted item [I] ([REF(I)]) was sent into inventory hand procs with flags [flags]. Report this line to coders immediately."))
+		to_chat(src, SPAN_DANGER("The inventory system will attempt to reject the bad equip. Glitches may occur."))
+		return FALSE
+
+
+	#warn impl
+	#warn update icons unless no update icon op flag is set; after list update..
+
+
+	if(!(I.interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH))
+		I.add_fingerprint(src)
+	else
+		I.add_hiddenprint(src)

@@ -111,6 +111,3 @@
 	for(var/obj/item/I as anything in affected)
 		if(!inventory_slot_bodypart_check(I, I.worn_slot, null, INV_OP_SILENT))
 			drop_item_to_ground(I)
-
-/mob/proc/_unequip_held(obj/item/I, flags)
-	return

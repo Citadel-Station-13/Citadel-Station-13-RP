@@ -67,15 +67,6 @@
 	return TRUE
 
 /mob/living/proc/_common_handle_put_in_hand(obj/item/I, flags)
-	// let's not do that if it's deleted!
-	if(I && QDELETED(I))
-		to_chat(src, SPAN_DANGER("A deleted item [I] ([REF(I)]) was sent into inventory hand procs with flags [flags]. Report this line to coders immediately."))
-		to_chat(src, SPAN_DANGER("The inventory system will attempt to reject the bad equip. Glitches may occur."))
-		return FALSE
-	if(!(I.interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH))
-		I.add_fingerprint(src)
-	else
-		I.add_hiddenprint(src)
 	var/existing_slot = is_in_inventory(I)
 	if(existing_slot)
 		// handle item reequip can fail.
@@ -90,14 +81,6 @@
 	I.equipped(src, SLOT_ID_HANDS, flags)
 	return TRUE
 
-/mob/living/put_in_hand(obj/item/I, index, flags)
-	// TODO: WHEN MULTIHAND IS DONE, BESURE TO MAKE THIS HAVE THE LOGIC I PUT INI PUT IN L/R HANDS!!
-	switch(index)
-		if(1)
-			return put_in_left_hand(I, flags)
-		if(2)
-			return put_in_right_hand(I, flags)
-
 /mob/living/get_number_of_hands()
 	return has_hands? 2 : 0
 
@@ -106,14 +89,7 @@
 
 #warn parse above
 
-/mob/living/_unequip_held(obj/item/I, flags)
-	if(l_hand == I)
-		l_hand = null
-	else if(r_hand == I)
-		r_hand = null
-	if(!(flags & INV_OP_NO_UPDATE_ICONS))
-		update_inv_hands()
-
+/mob/living/_unequip_
 /mob/living/_slot_by_item(obj/item/I)
 	if(back == I)
 		return SLOT_ID_BACK
