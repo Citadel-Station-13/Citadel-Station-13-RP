@@ -2,11 +2,11 @@
 	id = "euthenia"
 	name = "World - Euthenia"
 	levels = list(
-		/datum/map_level/euthenia/deck/zero,
-		/datum/map_level/euthenia/deck/one,
-		/datum/map_level/euthenia/deck/two,
-		/datum/map_level/euthenia/deck/three,
 		/datum/map_level/euthenia/deck/four,
+		/datum/map_level/euthenia/deck/three,
+		/datum/map_level/euthenia/deck/two,
+		/datum/map_level/euthenia/deck/one,
+		/datum/map_level/euthenia/deck/zero,
 		/datum/map_level/euthenia/misc,
 	)
 
