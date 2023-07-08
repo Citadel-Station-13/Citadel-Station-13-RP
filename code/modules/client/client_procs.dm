@@ -5,12 +5,6 @@
 ///Could probably do with being lower.
 ///Restricts client uploads to the server to 1MB
 #define UPLOAD_LIMIT		1048576
-GLOBAL_LIST_INIT(blacklisted_builds, list(
-	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
-	"1408" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
-	"1428" = "bug causing right-click menus to show too many verbs that's been fixed in version 1429",
-
-	))
 
 #define LIMITER_SIZE	5
 #define CURRENT_SECOND	1
@@ -155,12 +149,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	return 1
 
 
+
 	///////////
 	//CONNECT//
 	///////////
 
 /client/New(TopicData)
-	//! pre-connect-ish
+	//* pre-connect-ish
 	// set appadmin for profiling or it might not work (?) (this is old code we just assume it's here for a reason)
 	world.SetConfig("APP/admin", ckey, "role=admin")
 	// block client.Topic() calls from connect
@@ -168,10 +163,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// kick out invalid connections
 	if(connection != "seeker" && connection != "web")
 		return null
-	// is localhost?
-	var/is_localhost = isnull(address) || (address in list("127.0.0.1", "::1"))
 	// kick out guests
-	if(!config_legacy.guests_allowed && IsGuestKey(key) && !is_localhost)
+	if(!config_legacy.guests_allowed && is_guest() && !is_localhost())
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		del(src)
 		return
@@ -181,13 +174,25 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
-	//! Resolve storage datums
+	//* record their existence (tm)
+	// log & lookup updates
+	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
+	// log connection in text file
+	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
+	// log to db
+	log_connection_to_db()
+	// log to player lookup
+	update_lookup_in_db()
+
+	//* Resolve storage datums
 	// resolve persistent data
 	persistent = resolve_client_data(ckey)
-	// todo: move resolve database data up here but above preferences
+	//* Resolve database data
+	player = new(key)
+	player.log_connect()
 	// todo: move preferences up here but above persistent
 
-	//! Setup user interface
+	//* Setup user interface
 	// todo: move top level menu here, for now it has to be under prefs.
 	// Instantiate statpanel
 	statpanel_boot()
@@ -196,16 +201,16 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// Instantiate cutscene system
 	init_cutscene_system()
 
-	//! Setup admin tooling
+	//* Setup admin tooling
 	GLOB.ahelp_tickets.ClientLogin(src)
-	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
+	// var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
 	holder = admin_datums[ckey]
 	var/debug_tools_allowed = FALSE
 	if(holder)
 		GLOB.admins |= src
 		holder.owner = src
-		connecting_admin = TRUE
+		// connecting_admin = TRUE
 		//if(check_rights_for(src, R_DEBUG))
 		if(R_DEBUG & holder?.rights) //same wiht this, check_rights when?
 			debug_tools_allowed = TRUE
@@ -213,26 +218,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	else if(GLOB.deadmins[ckey])
 		add_verb(src, /client/proc/readmin)
 		connecting_admin = TRUE
-	if(CONFIG_GET(flag/autoadmin))
-		if(!GLOB.admin_datums[ckey])
-			var/datum/admin_rank/autorank
-			for(var/datum/admin_rank/R in GLOB.admin_ranks)
-				if(R.name == CONFIG_GET(string/autoadmin_rank))
-					autorank = R
-					break
-			if(!autorank)
-				to_chat(world, "Autoadmin rank not found")
-			else
-				new /datum/admins(autorank, ckey)
 	*/
 	// if(CONFIG_GET(flag/enable_localhost_rank) && !connecting_admin)
-	if(is_localhost)
+	if(is_localhost() && CONFIG_GET(flag/enable_localhost_rank))
 		holder = new /datum/admins("!localhost!", ALL, ckey)
 		holder.owner = src
 		GLOB.admins |= src
 		//admins |= src // this makes them not have admin. what the fuck??
 		// holder.associate(ckey)
-		connecting_admin = TRUE
+		// connecting_admin = TRUE
 	//CITADEL EDIT
 	//if(check_rights_for(src, R_DEBUG))	//check if autoadmin gave us it
 	if(R_DEBUG & holder?.rights) //this is absolutely horrid
@@ -257,82 +251,28 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// build top level menu
 	GLOB.main_window_menu.setup(src)
 
-	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
-	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
-	/*
-	var/alert_mob_dupe_login = FALSE
-	if(CONFIG_GET(flag/log_access))
-		for(var/I in GLOB.clients)
-			if(!I || I == src)
-				continue
-			var/client/C = I
-			if(C.key && (C.key != key) )
-				var/matches
-				if( (C.address == address) )
-					matches += "IP ([address])"
-				if( (C.computer_id == computer_id) )
-					if(matches)
-						matches += " and "
-					matches += "ID ([computer_id])"
-					alert_mob_dupe_login = TRUE
-				if(matches)
-					if(C)
-						message_admins("<span class='danger'><B>Notice: </B></span><span class='notice'>[key_name_admin(src)] has the same [matches] as [key_name_admin(C)].</span>")
-						log_admin_private("Notice: [key_name(src)] has the same [matches] as [key_name(C)].")
-					else
-						message_admins("<span class='danger'><B>Notice: </B></span><span class='notice'>[key_name_admin(src)] has the same [matches] as [key_name_admin(C)] (no longer logged in). </span>")
-						log_admin_private("Notice: [key_name(src)] has the same [matches] as [key_name(C)] (no longer logged in).")
-
-
-	*/
-
-	//! WARNING: mob.login is always called async, aka immediately returns on sleep.
-	//! we cannot enforce nosleep due to SDMM limitations.
-	//! therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
+	//* WARNING: mob.login is always called async, aka immediately returns on sleep.
+	//* we cannot enforce nosleep due to SDMM limitations.
+	//* therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
 	. = ..()	//calls mob.Login()
 
-	// if(!using_perspective)
-	// 	stack_trace("mob login didn't put in perspective")
+	handle_legacy_connection_whatevers()
 
-	if(log_client_to_db() == "BUNKER_DROPPED")
-		disconnect_with_message("Disconnected by bunker: [config_legacy.panic_bunker_message]")
+	//* Connection Security
+	// start caching it immediately
+	INVOKE_ASYNC(SSipintel, TYPE_PROC_REF(/datum/controller/subsystem/ipintel, vpn_connection_check), address, ckey)
+	// run onboarding gauntlet
+	if(!onboarding())
+		if(!queued_security_kick)
+			security_kick("Unknown error during client init. Contact staff on Discord.", TRUE)
 		return FALSE
 
-	// resolve database data
-	// this is down here because player_lookup won't have an entry for us until log_client_to_db() runs!!
-	player = new(ckey)
-	player.log_connect()
-
-	if (byond_version >= 512)
-		if (!byond_build || byond_build < 1386)
-			message_admins("<span class='adminnotice'>[key_name(src)] has been detected as spoofing their byond version. Connection rejected.</span>")
-			add_system_note("Spoofed-Byond-Version", "Detected as using a spoofed byond version.")
-			log_access("Failed Login: [key] - Spoofed byond version")
-			qdel(src)
-
-		if (num2text(byond_build) in GLOB.blacklisted_builds)
-			log_access("Failed login: [key] - blacklisted byond version")
-			to_chat(src, "<span class='userdanger'>Your version of byond is blacklisted.</span>")
-			to_chat(src, "<span class='danger'>Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].</span>")
-			to_chat(src, "<span class='danger'>Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.</span>")
-			if(connecting_admin)
-				to_chat(src, "As an admin, you are being allowed to continue using this version, but please consider changing byond versions")
-			else
-				disconnect_with_message("Your version of BYOND ([byond_version].[byond_build]) is blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]]. Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")
-				return
-
+	//* Initialize Input
 	if(SSinput.initialized)
 		set_macros()
 		update_movement_keys()
 
-	// Initialize stat panel
-	// stat_panel.initialize(
-	// 	inline_html = file2text('html/statbrowser.html'),
-	// 	inline_js = file2text('html/statbrowser.js'),
-	// 	inline_css = file2text('html/statbrowser.css'),
-	// )
-
-	//! Initialize UI
+	//* Initialize UI
 	// initialize statbrowser
 	// (we don't, the JS does it for us. by signalling statpanel_ready().)
 	// Initialize tgui panel
@@ -348,34 +288,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	connection_realtime = world.realtime
 	connection_timeofday = world.timeofday
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
-	var/cev = CONFIG_GET(number/client_error_version)
-	var/ceb = CONFIG_GET(number/client_error_build)
-	var/cwv = CONFIG_GET(number/client_warn_version)
-	if (byond_version < cev || (byond_version == cev && byond_build < ceb))		//Out of date client.
-		to_chat(src, "<span class='danger'><b>Your version of BYOND is too old:</b></span>")
-		to_chat(src, CONFIG_GET(string/client_error_message))
-		to_chat(src, "Your version: [byond_version].[byond_build]")
-		to_chat(src, "Required version: [cev].[ceb] or later")
-		to_chat(src, "Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
-		if (connecting_admin)
-			to_chat(src, "Because you are an admin, you are being allowed to walk past this limitation, But it is still STRONGLY suggested you upgrade")
-		else
-			disconnect_with_message("Your BYOND version ([byond_version].[byond_build]) is too old. Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
-			return 0
-	else if (byond_version < cwv)	//We have words for this client.
-		if(CONFIG_GET(flag/client_warn_popup))
-			var/msg = "<b>Your version of byond may be getting out of date:</b><br>"
-			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
-			msg += "Your version: [byond_version]<br>"
-			msg += "Required version to remove this message: [cwv] or later<br>"
-			msg += "Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
-			src << browse(msg, "window=warning_popup")
-		else
-			to_chat(src, "<span class='danger'><b>Your version of byond may be getting out of date:</b></span>")
-			to_chat(src, CONFIG_GET(string/client_warn_message))
-			to_chat(src, "Your version: [byond_version]")
-			to_chat(src, "Required version to remove this message: [cwv] or later")
-			to_chat(src, "Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 	/*
 	if (connection == "web" && !connecting_admin)
 		if (!CONFIG_GET(flag/allow_webclient))
@@ -421,14 +333,17 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	hook_vr("client_new",list(src))
 
 	if(config_legacy.paranoia_logging)
-		if(isnum(player_age) && player_age == -1)
+		if(isnum(player.player_age) && player.player_age == -1)
 			log_and_message_admins("PARANOIA: [key_name(src)] has connected here for the first time.")
-		if(isnum(account_age) && account_age <= 2)
-			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
+		if(isnum(persistent.account_age) && persistent.account_age <= 2)
+			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([persistent.account_age] days).")
 
 	//? We are done
-	// set initialized
-	initialized = TRUE
+	// set initialized if we're not queued for a security kick
+	if(!queued_security_kick || panic_bunker_pending)
+		initialized = TRUE
+	else
+		addtimer(CALLBACK(src, PROC_REF(deferred_initialization_block)), 0)
 	// show any migration errors
 	prefs.auto_flush_errors()
 	// update our hub label
@@ -444,12 +359,18 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	return ..()
 
 /client/Destroy()
+	// Unregister globals
 	GLOB.clients -= src
 	GLOB.directory -= ckey
+	// log
 	log_access("Logout: [key_name(src)]")
-	GLOB.ahelp_tickets.ClientLogout(src)
+	// unreference storage datums
+	prefs = null
 	persistent = null
 	player = null
+
+	//* unsorted
+	GLOB.ahelp_tickets.ClientLogout(src)
 	if(prefs)
 		prefs.client = null
 		prefs = null
@@ -457,18 +378,21 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(holder)
 		holder.owner = null
 		GLOB.admins -= src //delete them on the managed one too
-	if(using_perspective)
-		set_perspective(null)
 
 	active_mousedown_item = null
 	SSping.currentrun -= src
 
-	//! cleanup UI
-	/// cleanup statbrowser
+	//* cleanup mob-side stuff
+	// clear perspective
+	if(using_perspective)
+		set_perspective(null)
+
+	//* cleanup UI
+	// cleanup statbrowser
 	statpanel_dispose()
-	/// cleanup cutscene system
+	// cleanup cutscene system
 	cleanup_cutscene_system()
-	/// cleanup tgui panel
+	// cleanup tgui panel
 	QDEL_NULL(tgui_panel)
 
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
@@ -503,156 +427,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	create_message("note", key, system_ckey, message, null, null, 0, 0, null, 0, 0)
 */
 
-// Returns null if no DB connection can be established, or -1 if the requested key was not found in the database
-
-/client/proc/log_client_to_db()
-
-	if ( IsGuestKey(src.key) )
-		return
-
-	if(!SSdbcore.Connect())
-		return
-
-	var/sql_ckey = sql_sanitize_text(src.ckey)
-
-	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SELECT id, datediff(Now(), firstseen) as age FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
-		list(
-			"ckey" = sql_ckey
-		)
-	)
-	var/sql_id = 0
-	player_age = -1	// New players won't have an entry so knowing we have a connection we set this to zero to be updated if their is a record.
-	while(query.NextRow())
-		sql_id = query.item[1]
-		player_age = text2num(query.item[2])
-		break
-
-	account_join_date = sanitizeSQL(findJoinDate())
-	if(account_join_date && SSdbcore.Connect())
-		var/datum/db_query/query_datediff = SSdbcore.RunQuery(
-			"SELECT DATEDIFF(Now(), :date)",
-			list(
-				"date" = account_join_date
-			)
-		)
-		if(query_datediff.NextRow())
-			account_age = text2num(query_datediff.item[1])
-
-	var/datum/db_query/query_ip = SSdbcore.RunQuery(
-		"SELECT ckey FROM [format_table_name("player_lookup")] WHERE ip = :addr",
-		list(
-			"addr" = address
-		)
-	)
-	related_accounts_ip = ""
-	while(query_ip.NextRow())
-		related_accounts_ip += "[query_ip.item[1]], "
-		break
-
-	var/datum/db_query/query_cid = SSdbcore.RunQuery(
-		"SELECT ckey FROM [format_table_name("player_lookup")] WHERE computerid = :cid",
-		list(
-			"cid" = sanitizeSQL(computer_id)
-		)
-	)
-	related_accounts_cid = ""
-	while(query_cid.NextRow())
-		related_accounts_cid += "[query_cid.item[1]], "
-		break
-
-	//Just the standard check to see if it's actually a number
-	if(sql_id)
-		if(istext(sql_id))
-			sql_id = text2num(sql_id)
-		if(!isnum(sql_id))
-			return
-
-	var/admin_rank = "Player"
-	if(src.holder)
-		admin_rank = src.holder.rank
-
-	var/sql_ip = sql_sanitize_text(src.address) || "0.0.0.0"
-	var/sql_computerid = sql_sanitize_text(src.computer_id)
-	var/sql_admin_rank = sql_sanitize_text(admin_rank)
-
-	//Panic bunker code
-	if ((player_age == -1) && !(ckey in GLOB.bunker_passthrough)) //first connection
-		if (config_legacy.panic_bunker && !holder && !deadmin_holder)
-			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
-			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
-			to_chat(src, config_legacy.panic_bunker_message)
-			return "BUNKER_DROPPED"
-	if(player_age == -1)
-		player_age = 0		//math requires this to not be -1.
-
-	if(config_legacy.ip_reputation)
-		if(config_legacy.ipr_allow_existing && player_age >= config_legacy.ipr_minimum_age)
-			log_admin("Skipping IP reputation check on [key] with [address] because of player age")
-		else if(update_ip_reputation()) //It is set now
-			if(ip_reputation >= config_legacy.ipr_bad_score) //It's bad
-				//Log it
-				if(config_legacy.paranoia_logging) //We don't block, but we want paranoia log messages
-					log_and_message_admins("[key] at [address] has bad IP reputation: [ip_reputation]. Will be kicked if enabled in config.")
-				else //We just log it
-					log_admin("[key] at [address] has bad IP reputation: [ip_reputation]. Will be kicked if enabled in config.")
-
-				//Take action if required
-				if(config_legacy.ipr_block_bad_ips && config_legacy.ipr_allow_existing) //We allow players of an age, but you don't meet it
-					disconnect_with_message("Sorry, we only allow VPN/Proxy/Tor usage for players who have spent at least [config_legacy.ipr_minimum_age] days on the server. If you are unable to use the internet without your VPN/Proxy/Tor, please contact an admin out-of-game to let them know so we can accommodate this.")
-					return 0
-				else if(config_legacy.ipr_block_bad_ips) //We don't allow players of any particular age
-					disconnect_with_message("Sorry, we do not accept connections from users via VPN/Proxy/Tor connections. If you believe this is in error, contact an admin out-of-game.")
-					return 0
-		else
-			log_admin("Couldn't perform IP check on [key] with [address]")
-
-	// Department Hours
-	if(config_legacy.time_off)
-		var/datum/db_query/query_hours = SSdbcore.RunQuery(
-			"SELECT department, hours FROM [format_table_name("vr_player_hours")] WHERE ckey = :ckey",
-			list(
-				"ckey" = sql_ckey
-			)
-		)
-		while(query_hours.NextRow())
-			LAZYINITLIST(department_hours)
-			department_hours[query_hours.item[1]] = text2num(query_hours.item[2])
-
-	if(sql_id)
-		SSdbcore.RunQuery(
-			"UPDATE [format_table_name("player_lookup")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
-			list(
-				"ip" = sql_ip,
-				"computerid" = sql_computerid,
-				"lastadminrank" = sql_admin_rank,
-				"id" = sql_id
-			)
-		)
-	else
-		//New player!! Need to insert all the stuff
-		SSdbcore.RunQuery(
-			"INSERT INTO [format_table_name("player_lookup")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, :ckey, Now(), Now(), :ip, :cid, :rank)",
-			list(
-				"ckey" = sql_ckey,
-				"ip" = sql_ip,
-				"cid" = sql_computerid,
-				"rank" = sql_admin_rank
-			)
-		)
-
-	//Logging player access
-	var/serverip = "[world.internet_address]:[world.port]"
-	SSdbcore.RunQuery(
-		"INSERT INTO [format_table_name("connection_log")] (id, datetime, serverip, ckey, ip, computerid) VALUES (null, Now(), :serverip, :ckey, :ip, :computerid)",
-		list(
-			"serverip" = serverip,
-			"ckey" = sql_ckey,
-			"ip" = sql_ip,
-			"computerid" = sql_computerid
-		)
-	)
-
 #undef UPLOAD_LIMIT
 
 //checks if a client is afk
@@ -672,7 +446,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		sleep(1)
 	else
 		stoplag(5)
-
 
 /client/Click(atom/object, atom/location, control, params)
 	var/ab = FALSE
@@ -768,81 +541,6 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 /client/proc/setDir(newdir)
 	dir = newdir
 
-/client/vv_edit_var(var_name, var_value)
-	switch (var_name)
-		if (NAMEOF(src, holder))
-			return FALSE
-		if (NAMEOF(src, ckey))
-			return FALSE
-		if (NAMEOF(src, key))
-			return FALSE
-		if(NAMEOF(src, view))
-			change_view(var_value, TRUE)
-			return TRUE
-	. = ..()
-
-/client/proc/change_view(new_size, forced, translocate)
-	set waitfor = FALSE	// to async temporary view
-	// todo: refactor this, client view changes should be ephemeral.
-	var/list/L = decode_view_size(new_size)
-	set_temporary_view(L[1], L[2])
-
-/**
- * directly sets our view
- * you should probably be using perspective datums most of the time instead
- * WARNING: this is verbatim; aka, view = 7 is 15 width 15 height, NOT 7x7!
- *
- * furthermore, this proc is BLOCKING.
- */
-/client/proc/set_temporary_view(width, height)
-	if(!width || !height || width < 0 || height < 0)
-		reset_temporary_view()
-		return
-	using_temporary_viewsize = TRUE
-	// round up; even views are illegal.
-	if(!(width % 2))
-		width++
-	if(!(height % 2))
-		height++
-	temporary_viewsize_width = width
-	temporary_viewsize_height = height
-	request_viewport_update()
-
-/**
- * resets our temporary view
- * you should probably be using perspective datums most of the time instead
- *
- * furthermore, this proc is BLOCKING
- */
-/client/proc/reset_temporary_view()
-	using_temporary_viewsize = FALSE
-	temporary_viewsize_height = null
-	temporary_viewsize_width = null
-	request_viewport_update()
-
-/**
- * switch perspective - null will cause us to shunt our eye to nullspace!
- */
-/client/proc/set_perspective(datum/perspective/P)
-	if(using_perspective)
-		using_perspective.remove_client(src, TRUE)
-		if(using_perspective)
-			stack_trace("using perspective didn't clear")
-			using_perspective = null
-	if(!P)
-		eye = null
-		lazy_eye = 0
-		perspective = EYE_PERSPECTIVE
-		return
-	P.add_client(src)
-	if(using_perspective != P)
-		stack_trace("using perspective didn't set")
-
-/**
- * reset perspective to default - usually to our mob's
- */
-/client/proc/reset_perspective()
-	set_perspective(mob.get_perspective())
 
 /mob/proc/MayRespawn()
 	return 0
@@ -854,91 +552,6 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	// Something went wrong, client is usually kicked or transfered to a new mob at this point
 	return 0
 
-/client/verb/character_setup()
-	set name = "Character Setup"
-	set category = "Preferences"
-	if(prefs)
-		prefs.ShowChoices(usr)
-
-/client/proc/findJoinDate()
-	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
-	if(!http)
-		log_world("Failed to connect to byond age check for [ckey]")
-		return
-	var/F = file2text(http["CONTENT"])
-	if(F)
-		var/regex/R = regex("joined = \"(\\d{4}-\\d{2}-\\d{2})\"")
-		if(R.Find(F))
-			. = R.group[1]
-		else
-			CRASH("Age check regex failed for [src.ckey]")
-
 /client/proc/AnnouncePR(announcement)
-	//if(prefs && prefs.chat_toggles & CHAT_PULLR)
 	to_chat(src, announcement)
 
-//This is for getipintel.net.
-//You're welcome to replace this proc with your own that does your own cool stuff.
-//Just set the client's ip_reputation var and make sure it makes sense with your config settings (higher numbers are worse results)
-/client/proc/update_ip_reputation()
-	var/request = "http://check.getipintel.net/check.php?ip=[address]&contact=[config_legacy.ipr_email]"
-	var/http[] = world.Export(request)
-
-	/* Debug
-	TO_WORLD_log("Requested this: [request]")
-	for(var/entry in http)
-		TO_WORLD_log("[entry] : [http[entry]]")
-	*/
-
-	if(!http || !islist(http)) //If we couldn't check, the service might be down, fail-safe.
-		log_admin("Couldn't connect to getipintel.net to check [address] for [key]")
-		return FALSE
-
-	//429 is rate limit exceeded
-	if(text2num(http["STATUS"]) == 429)
-		log_and_message_admins("getipintel.net reports HTTP status 429. IP reputation checking is now disabled. If you see this, let a developer know.")
-		config_legacy.ip_reputation = FALSE
-		return FALSE
-
-	var/content = file2text(http["CONTENT"]) //world.Export actually returns a file object in CONTENT
-	var/score = text2num(content)
-	if(isnull(score))
-		return FALSE
-
-	//Error handling
-	if(score < 0)
-		var/fatal = TRUE
-		var/ipr_error = "getipintel.net IP reputation check error while checking [address] for [key]: "
-		switch(score)
-			if(-1)
-				ipr_error += "No input provided"
-			if(-2)
-				fatal = FALSE
-				ipr_error += "Invalid IP provided"
-			if(-3)
-				fatal = FALSE
-				ipr_error += "Unroutable/private IP (spoofing?)"
-			if(-4)
-				fatal = FALSE
-				ipr_error += "Unable to reach database"
-			if(-5)
-				ipr_error += "Our IP is banned or otherwise forbidden"
-			if(-6)
-				ipr_error += "Missing contact info"
-
-		log_and_message_admins(ipr_error)
-		if(fatal)
-			config_legacy.ip_reputation = FALSE
-			log_and_message_admins("With this error, IP reputation checking is disabled for this shift. Let a developer know.")
-		return FALSE
-
-	//Went fine
-	else
-		ip_reputation = score
-		return TRUE
-
-/client/proc/disconnect_with_message(var/message = "You have been intentionally disconnected by the server.<br>This may be for security or administrative reasons.")
-	message = "<head><title>You Have Been Disconnected</title></head><body><hr><center><b>[message]</b></center><hr><br>If you feel this is in error, you can contact an administrator out-of-game (for example, on Discord).</body>"
-	window_flash(src)
-	src << browse(message,"window=dropmessage;size=480x360;can_close=1")
-	qdel(src)

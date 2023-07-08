@@ -559,6 +559,9 @@
 	set category = "OOC"
 	set desc = "Return to the lobby."
 
+	// don't lose out on that sweet observer playtime
+	SSplaytime.queue_playtimes(client)
+
 	if(stat != DEAD)
 		to_chat(usr, SPAN_BOLDNOTICE("You must be dead to use this!"))
 		return
@@ -611,9 +614,7 @@
 	set name = "Observe"
 	set category = "OOC"
 
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified))
-		return
-	else if(stat != DEAD || istype(src, /mob/new_player))
+	if(stat != DEAD || istype(src, /mob/new_player))
 		to_chat(usr, "<font color=#4F49AF>You must be observing to use this!</font>")
 		return
 

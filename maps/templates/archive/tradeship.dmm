@@ -584,7 +584,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/trade)
 "bB" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(160);
 	req_one_access = list()
@@ -1437,7 +1437,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "du" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_access = list(160);
 	req_one_access = list()

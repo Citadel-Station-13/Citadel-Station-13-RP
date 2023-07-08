@@ -1,3 +1,5 @@
+#define FULLTILE_SMOOTHING (SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
+
 /obj/structure/window
 	abstract_type = /obj/structure/window
 
@@ -13,6 +15,10 @@
 	CanAtmosPass = ATMOS_PASS_PROC
 	w_class = ITEMSIZE_NORMAL
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
+
+	plane = OBJ_PLANE
+	layer = WINDOW_LAYER
+	atom_flags = ATOM_BORDER
 
 	layer = WINDOW_LAYER
 	pressure_resistance = (4 * ONE_ATMOSPHERE)
@@ -60,6 +66,14 @@
 		update_verbs()
 	health = maxhealth
 	AIR_UPDATE_ON_INITIALIZE_AUTO
+	if(fulltile)
+		if(considered_reinforced)
+			icon = 'icons/obj/structures/window_reinforced.dmi'
+			icon_state = "window-0"
+		else
+			icon = 'icons/obj/structures/window.dmi'
+			icon_state = "window-0"
+
 
 
 /obj/structure/window/Destroy()
@@ -249,6 +263,9 @@
 		set_anchored(FALSE)
 		update_verbs()
 		step(src, get_dir(AM, src))
+		if(fulltile)
+			QUEUE_SMOOTH(src)
+			QUEUE_SMOOTH_NEIGHBORS(src)
 
 	take_damage(tforce)
 
@@ -375,10 +392,11 @@
 
 			if (do_after(user, 20 * C.tool_speed, src) && construction_state == WINDOW_STATE_UNSECURED)
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, TRUE)
-				var/obj/structure/window/reinforced/polarized/P = new(loc, dir)
-				if (fulltile)
-					P.fulltile = TRUE
-					P.icon_state = "fwindow"
+				var/obj/structure/window/reinforced/polarized/P
+				if(fulltile)
+					P = new /obj/structure/window/reinforced/polarized/full(loc)
+				else
+					P = new(loc, dir)
 				P.maxhealth = maxhealth
 				P.health = health
 				P.construction_state = construction_state
@@ -397,6 +415,9 @@
 				set_anchored(FALSE)
 				update_nearby_icons()
 				step(src, get_dir(user, src))
+				if(fulltile)
+					QUEUE_SMOOTH(src)
+					QUEUE_SMOOTH_NEIGHBORS(src)
 		else
 			playsound(loc, 'sound/effects/Glasshit.ogg', 75, TRUE)
 
@@ -566,6 +587,9 @@
 	crack_overlay = mutable_appearance('icons/obj/structures/window_damage.dmi', "damage[ratio]", -(layer+0.1))
 	. += crack_overlay
 
+/obj/structure/window/proc/is_on_frame()
+	if(locate(/obj/structure/wall_frame) in loc)
+		return TRUE
 
 /obj/structure/window/proc/check_fullwindow()
 	if (dir & (dir - 1)) // Diagonal!
@@ -659,6 +683,37 @@
 		add_obj_verb(src, /obj/structure/window/verb/rotate_counterclockwise)
 		add_obj_verb(src, /obj/structure/window/verb/rotate_clockwise)
 
+/proc/place_window(mob/user, loc, dir_to_set, obj/item/stack/material/ST, var/fulltile = FALSE)
+	var/required_amount = (dir_to_set & (dir_to_set - 1)) ? 4 : 1
+	if (!ST.can_use(required_amount))
+		to_chat(user, SPAN_NOTICE("You do not have enough sheets."))
+		return
+	for(var/obj/structure/window/W in loc)
+		if(W.dir == dir_to_set)
+			to_chat(user, SPAN_NOTICE("There is already a window facing this way there."))
+			return
+		if(W.check_fullwindow() && (dir_to_set & (dir_to_set - 1))) //two fulltile windows
+			to_chat(user, SPAN_NOTICE("There is already a window there."))
+			return
+	to_chat(user, SPAN_NOTICE("You start placing the window."))
+	if(do_after(user,20))
+		for(var/obj/structure/window/W in loc)
+			if(W.dir == dir_to_set)//checking this for a 2nd time to check if a window was made while we were waiting.
+				to_chat(user, SPAN_NOTICE("There is already a window facing this way there."))
+				return
+			if(W.check_fullwindow() && (dir_to_set & (dir_to_set - 1)))
+				to_chat(user, SPAN_NOTICE("There is already a window there."))
+				return
+
+		if (ST.use(required_amount))
+			var/obj/structure/window/WD = new(loc, dir_to_set, FALSE)
+			to_chat(user, SPAN_NOTICE("You place [WD]."))
+			WD.construction_state = 0
+			WD.set_anchored(FALSE)
+		else
+			to_chat(user, SPAN_NOTICE("You do not have enough sheets."))
+			return
+
 
 /obj/structure/window/basic
 	desc = "It looks thin and flimsy. A few knocks with... almost anything, really should shatter it."
@@ -678,8 +733,10 @@
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
+	canSmoothWith = FULLTILE_SMOOTHING
+	color = GLASS_COLOR
+	alpha = 180
+
 
 	maxhealth = 24
 	fulltile = TRUE
@@ -698,17 +755,20 @@
 	force_threshold = 5
 
 
+
 /obj/structure/window/phoronbasic/full
 	icon = 'icons/obj/structures/window_full_phoron.dmi'
 	icon_state = "window-0"
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = FULLTILE_SMOOTHING
 	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 	maxhealth = 80
 	fulltile = TRUE
+	color = GLASS_COLOR_SILICATE
+	alpha = 180
 
 
 
@@ -733,11 +793,13 @@
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = FULLTILE_SMOOTHING
 	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 	maxhealth = 160
 	fulltile = TRUE
+	color = GLASS_COLOR_SILICATE
+	alpha = 180
 
 
 /obj/structure/window/reinforced
@@ -760,18 +822,19 @@
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = FULLTILE_SMOOTHING
 	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 	maxhealth = 80
 	fulltile = TRUE
+	color = GLASS_COLOR
+	alpha = 180
 
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
 	desc = "It looks rather strong and opaque. Might take a few good hits to shatter it."
 	icon_state = "twindow"
-
 	opacity = TRUE
 
 
@@ -783,29 +846,33 @@
 	maxhealth = 80
 	fulltile = TRUE
 
-	// smoothing_flags = SMOOTH_BITMASK
+	color = GLASS_COLOR_TINTED
+	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
+	canSmoothWith = FULLTILE_SMOOTHING
 
 /obj/structure/window/reinforced/tinted/frosted
 	name = "frosted window"
 	desc = "It looks rather strong and frosted over. Looks like it might take a few less hits then a normal reinforced window."
 	icon_state = "fwindow"
 
+	color = GLASS_COLOR_FROSTED
+
 	maxhealth = 30
 	force_threshold = 5
+	alpha = 180
 
 
 // TODO: Recreate this.
 /obj/structure/window/shuttle
 	name = "shuttle window"
 	desc = "It looks rather strong. Might take a few good hits to shatter it."
-	icon = 'icons/obj/podwindows.dmi'
+	icon = 'icons/obj/structures/window.dmi'
 	icon_state = "window"
 
-	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE)
-	canSmoothWith = (SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE + SMOOTH_GROUP_SHUTTLE_PARTS)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 	// canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_SHUTTLE_PARTS)
 
 	maxhealth = 40
@@ -826,11 +893,13 @@
 	icon = 'icons/obj/structures/window_full_reinforced.dmi'
 	icon_state = "window-0"
 
+	color = GLASS_COLOR
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
-
+	alpha = 180
+	color = GLASS_COLOR
 
 	maxhealth = 80
 	fulltile = TRUE
@@ -863,18 +932,10 @@
 
 /obj/structure/window/reinforced/polarized/proc/toggle()
 	if (opacity)
-		animate(
-			src,
-			color = "#FFFFFF",
-			time = 5,
-		)
+		animate(src, color = GLASS_COLOR, time=5)
 		set_opacity(FALSE)
 	else
-		animate(
-			src,
-			color = "#222222",
-			time = 5,
-		)
+		animate(src, color = GLASS_COLOR_FROSTED, time=5)
 		set_opacity(TRUE)
 
 
