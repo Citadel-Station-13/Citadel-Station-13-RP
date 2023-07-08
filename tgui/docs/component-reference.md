@@ -728,6 +728,8 @@ systems for rendering. Modules are automatically centered within themselves.
 **Props:**
 
 - See inherited props: [Box](#box)
+- `id` - the ID of the module, as per from within BYOND
+- `section` - override props for the <Section> that the module renders in.
 
 ### `NoticeBox`
 
@@ -1223,6 +1225,7 @@ Known bugs:
 
 **Props:**
 
-- See inherited props: [Window](#window)
 - `direct: InfernoNode` - Child elements that are rendered directly inside the window
 when in standalone mode, and at the same level as other child elements when in embedded mode.
+- `window: WindowProps` - Props from [Window][#window] to use in standalone mode.
+- `section: SectionProps` - Props from [Section][#section] to use when in embedded mode. Overridden by the <Module>'s `section` entry.
