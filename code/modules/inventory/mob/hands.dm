@@ -48,6 +48,39 @@
 		return FALSE
 	return TRUE
 
+/mob/proc/put_in_left_hand(obj/item/I, flags)
+	for(var/i in 1 to length(held_items) step 2)
+		if(put_in_hand(I, i, flags))
+			return TRUE
+	return FALSE
+
+/mob/proc/put_in_right_hand(obj/item/I, flags)
+	for(var/i in 1 to length(held_items) step 2)
+		if(put_in_hand(I, i, flags))
+			return TRUE
+	return FALSE
+
+/mob/proc/put_in_active_hand(obj/item/I, flags)
+	return put_in_hand(I, active_hand, flags)
+
+/mob/proc/put_in_inactive_hand(obj/item/I, flags)
+	for(var/i in 1 to length(held_items))
+		if(i == active_hand)
+			continue
+		if(put_in_hand(I, i, flags))
+			return TRUE
+	return FALSE
+
+/mob/proc/put_in_hand_or_del(obj/item/I, index, flags)
+	. = put_in_hand(I, index, flags)
+	if(!.)
+		qdel(I)
+
+/mob/proc/put_in_hand_or_drop(obj/item/I, index, flags, atom/drop_loc = drop_location())
+	. = put_in_hand(I, index, flags)
+	if(!.)
+		I.forceMove(drop_loc)
+
 //* Public API - Drop *//
 
 /**
@@ -69,6 +102,18 @@
 /mob/proc/drop_held_item_of_index(index, flags)
 	return drop_item_to_ground(get_held_item_of_index(index), flags)
 
+/mob/proc/drop_sequential_left_held_item(flags)
+	for(var/i in 1 to length(held_items) step 2)
+		if(isnull(held_items[i]))
+			continue
+		return drop_held_item_of_index(i, flags)
+
+/mob/proc/drop_sequential_right_held_item(flags)
+	for(var/i in 2 to length(held_items) step 2)
+		if(isnull(held_items[i]))
+			continue
+		return drop_held_item_of_index(i, flags)
+
 //* Public API - Check *//
 
 /**
@@ -82,6 +127,47 @@
  */
 /mob/proc/is_holding_inactive(obj/item/I)
 	return is_holding(I) && (get_active_held_item() != I)
+
+
+/**
+ * return index of item, or null if not found
+ */
+/mob/proc/get_held_index(obj/item/I)
+	for(var/i in 1 to length(held_items))
+		if(held_items[i] == I)
+			return i
+
+/**
+ * returns held item in active hand
+ */
+/mob/proc/get_active_held_item()
+	RETURN_TYPE(/obj/item)
+	return held_items[active_hand]
+
+/**
+ * returns held item in inactive hand (or any inactive hand if more than 1)
+ */
+/mob/proc/get_inactive_held_item()
+	RETURN_TYPE(/obj/item)
+	for(var/i in 1 to length(held_items))
+		if(i == active_hand)
+			continue
+		if(isnull(held_items[i]))
+			continue
+		return held_items[i]
+
+/**
+ * returns all items held in non active hands
+ */
+/mob/proc/get_inactive_held_items()
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/i in 1 to length(held_items))
+		if(i == active_hand)
+			continue
+		if(isnull(held_items[i]))
+			continue
+		. += held_items[i]
 
 //* Public API - Get *//
 
