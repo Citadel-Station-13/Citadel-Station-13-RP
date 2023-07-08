@@ -71,6 +71,8 @@ SUBSYSTEM_DEF(playtime)
 		return
 	if(!C.initialized)
 		CRASH("how was this called on an uninitialized client?")
+	if(!SSdbcore.Connect())
+		return
 	var/list/playtimes = playtime_for(C.mob)
 	var/now = REALTIMEOFDAY
 	// deciseconds to minutes

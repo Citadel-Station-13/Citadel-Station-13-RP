@@ -449,6 +449,8 @@ export type ModuleBackend<TData extends ModuleData> = {
   data: TData;
   act: actFunctionType;
   backend: Backend<{}>;
+  // / module id if is currently embedded module, null otherwise
+  moduleID: string | null;
 }
 
 /**
@@ -475,6 +477,7 @@ export const useModule = <TData extends ModuleData>(context): ModuleBackend<TDat
       backend: backend,
       data: backend.data,
       act: backend.act,
+      moduleID: null,
     };
   }
   let { modules } = backend;
@@ -482,6 +485,7 @@ export const useModule = <TData extends ModuleData>(context): ModuleBackend<TDat
     backend: backend,
     data: (modules && modules[context.m_id]) || {},
     act: constructModuleAct(context.m_id, context.m_ref),
+    moduleID: context.m_id,
   };
 };
 

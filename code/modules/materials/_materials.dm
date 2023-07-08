@@ -169,6 +169,10 @@
 	/// economic category for this
 	var/economic_category_material = ECONOMIC_CATEGORY_MATERIAL_DEFAULT
 
+	//? TGUI
+	/// tgui icon key in icons/interface/materials.dm
+	var/tgui_icon_key = "unknown"
+
 /// Placeholders for light tiles and rglass.
 /datum/material/proc/build_rod_product(mob/user, obj/item/stack/used_stack, obj/item/stack/target_stack)
 	if(!rod_product)
@@ -280,7 +284,6 @@
 /datum/material/proc/place_sheet(turf/target, amount)
 	if(stack_type)
 		return new stack_type(target, ispath(stack_type, /obj/item/stack)? amount : null)
-
 
 // As above.
 /datum/material/proc/place_shard(turf/target)

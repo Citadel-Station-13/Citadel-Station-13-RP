@@ -11344,10 +11344,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
-/obj/machinery/computer/id_restorer{
-	dir = 1;
-	pixel_y = -32
-	},
 /obj/effect/floor_decal/corner/lightgrey/border,
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
@@ -25196,7 +25192,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/general)
 "wZd" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled,
 /area/security/checkpoint/science)
 "xdE" = (
