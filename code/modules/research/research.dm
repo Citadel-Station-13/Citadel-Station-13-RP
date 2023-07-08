@@ -70,6 +70,11 @@ research holder datum.
 	known_tech = null
 	return ..()
 
+/datum/research/proc/debug_max_out()
+	for(var/datum/tech/tech in known_tech)
+		tech.level = 40
+	RefreshResearch()
+
 /datum/research/techonly
 
 /datum/research/techonly/New()

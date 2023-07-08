@@ -44,6 +44,7 @@
 	req_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3)
 	materials = list(MAT_STEEL = 7000, MAT_GLASS = 7000)
 	build_path = /obj/item/stack/nanopaste
+	legacy_stack_amount = 10
 
 /datum/design/science/biotech/plant_analyzer
 	desc = "A device capable of quickly scanning all relevant data about a plant."
