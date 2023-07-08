@@ -186,7 +186,7 @@
 			continue
 		var/hand_str = (i % 2)? "left hand[i > 2? " #[round(i / 2)]" : ""]" : "right hand[i > 2? " #[round(i / 2)]" : ""]"
 		if(held.blood_DNA)
-			. += SPAN_WARNING("[icon2html(held, user)] [T.He] [T.is] holding [held.gender == PLURAL ? "some" : "a"] [(held.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(held)] in [T.his] [hand_str!")
+			. += SPAN_WARNING("[icon2html(held, user)] [T.He] [T.is] holding [held.gender == PLURAL ? "some" : "a"] [(held.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(held)] in [T.his] [hand_str]!")
 		else
 			. += SPAN_INFO("[icon2html(held, user)] [T.He] [T.is] holding \a [FORMAT_TEXT_LOOKITEM(held)] in [T.his] [hand_str].")
 
