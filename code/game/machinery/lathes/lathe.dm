@@ -23,6 +23,8 @@
 	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/machine/lathe
+	default_deconstruct = 0 SECONDS
+	default_panel = 0 SECONDS
 
 	/// icon state when printing, if any
 	var/active_icon_state
