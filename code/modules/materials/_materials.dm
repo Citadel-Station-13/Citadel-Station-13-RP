@@ -91,9 +91,10 @@
 	/// Colour applied to products of this material.
 	var/icon_colour
 	/// Wall and table base icon tag. See header.
-	var/icon_base = 'icons/turf/walls/solid.dmi'
+	var/icon_base = 'icons/turf/walls/solid_wall.dmi'
 	/// Overlay used.
-	var/icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
+	var/icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
+	var/wall_stripe_icon = 'icons/turf/walls/wall_stripe.dmi'
 	/// Door base icon tag.
 	var/door_icon_base = "metal"
 	/// Table base icon tag.

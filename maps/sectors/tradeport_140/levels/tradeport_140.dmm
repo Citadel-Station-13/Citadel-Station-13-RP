@@ -536,7 +536,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "cb" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/structure/catwalk,
@@ -620,7 +620,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
 "cq" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -784,7 +784,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/safarizoo)
 "cV" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(160);
 	req_one_access = null
@@ -2920,7 +2920,7 @@
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
 "lk" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -3092,7 +3092,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/old_tile/red,
@@ -4106,7 +4106,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/red,
@@ -5436,7 +5436,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/pads)
 "up" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/light,
@@ -6520,7 +6520,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport)
 "xU" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/structure/catwalk,
@@ -9982,7 +9982,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/structure/catwalk,
@@ -10504,7 +10504,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/pads)
 "NY" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -10594,7 +10594,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport)
 "Ov" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -10950,7 +10950,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Infirmary";
 	req_one_access = null
 	},
@@ -10987,7 +10987,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "Qe" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/spine)
@@ -11687,7 +11687,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "SL" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_access = list(160);
 	req_one_access = null
@@ -13279,7 +13279,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/structure/catwalk,

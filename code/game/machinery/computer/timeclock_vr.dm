@@ -134,6 +134,9 @@
 					makeOnDuty(params["switch-to-onduty-rank"], params["switch-to-onduty-assignment"])
 					usr.put_in_hands_or_drop(card)
 					card = null
+					flick(icon, "timeclock_approved")
+				else
+					flick(icon, "timeclock_denied")
 			update_icon()
 			return TRUE
 		if("switch-to-offduty")
@@ -142,6 +145,9 @@
 					makeOffDuty()
 					usr.put_in_hands_or_drop(card)
 					card = null
+					flick(icon, "timeclock_approved")
+				else
+					flick(icon, "timeclock_denied")
 			update_icon()
 			return TRUE
 
@@ -232,16 +238,20 @@
 /obj/machinery/computer/timeclock/proc/checkFace()
 	if(!card)
 		to_chat(usr, "<span class='notice'>No ID is inserted.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	var/mob/living/carbon/human/H = usr
 	if(!(istype(H)))
 		to_chat(usr, "<span class='warning'>Invalid user detected. Access denied.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	else if((H.wear_mask && (H.wear_mask.inv_hide_flags & HIDEFACE)) || (H.head && (H.head.inv_hide_flags & HIDEFACE)))	//Face hiding bad
 		to_chat(usr, "<span class='warning'>Facial recognition scan failed due to physical obstructions. Access denied.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	else if(H.get_face_name() == "Unknown" || !(H.real_name == card.registered_name))
 		to_chat(usr, "<span class='warning'>Facial recognition scan failed. Access denied.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	else
 		return TRUE

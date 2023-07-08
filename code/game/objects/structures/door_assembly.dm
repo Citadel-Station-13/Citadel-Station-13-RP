@@ -27,7 +27,7 @@
 /obj/structure/door_assembly/door_assembly_sec
 	base_icon_state = "sec"
 	base_name = "Security airlock"
-	glass_type = "/glass_security"
+	glass_type = "/glass/security"
 	airlock_type = "/security"
 
 /obj/structure/door_assembly/door_assembly_eng
@@ -69,7 +69,7 @@
 /obj/structure/door_assembly/door_assembly_med
 	base_icon_state = "med"
 	base_name = "Medical airlock"
-	glass_type = "/glass_medical"
+	glass_type = "/glass/medical"
 	airlock_type = "/medical"
 
 /obj/structure/door_assembly/door_assembly_ext
