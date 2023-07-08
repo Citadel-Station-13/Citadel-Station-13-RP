@@ -195,7 +195,7 @@
 		return TRUE
 
 /obj/item/proc/update_twohanding()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/proc/is_held_twohanded(mob/living/M)
 	var/check_hand

@@ -131,7 +131,7 @@
 					user.visible_message("[user] inserts [P] into [src].", "<span class='notice'>You insert [P] into [src].</span>")
 					playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
 					update_icon()
-					update_held_icon()
+					update_worn_icon()
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
 	return
@@ -147,7 +147,7 @@
 		power_supply = null
 		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 		update_icon()
-		update_held_icon()
+		update_worn_icon()
 	else
 		to_chat(user, "<span class='notice'>[src] does not have a power cell.</span>")
 
@@ -216,7 +216,7 @@
 			icon_state = "[initial(icon_state)]"
 
 	if(!ignore_inhands)
-		update_held_icon()
+		update_worn_icon()
 
 /obj/item/gun/energy/proc/start_recharge()
 	if(power_supply == null)

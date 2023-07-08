@@ -221,7 +221,7 @@
 			make_announcement("beeps, \"Unit is re-energized.\"", "notice")
 			playsound(src, 'sound/machines/defib_ready.ogg', 50, 0)
 
-/obj/item/shockpaddles/update_held_icon()
+/obj/item/shockpaddles/update_worn_icon()
 	var/mob/living/M = loc
 	if(istype(M) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
@@ -239,7 +239,7 @@
 		icon_state = "defibpaddles[wielded]_cooldown"
 
 /obj/item/shockpaddles/proc/can_use(mob/user, mob/M)
-	update_held_icon()
+	update_worn_icon()
 	if(busy)
 		return 0
 	if(!check_charge(chargecost))

@@ -39,7 +39,7 @@
 	l_hand = I
 	log_inventory("[key_name(src)] put [I] in hand 1")
 	l_hand.update_twohanding()
-	l_hand.update_held_icon()
+	l_hand.update_worn_icon()
 	// ! WARNING: snowflake - at time of equipped, vars aren't set yet.
 	position_hud_item(l_hand, SLOT_ID_HANDS)
 	update_inv_l_hand()
@@ -60,7 +60,7 @@
 	r_hand = I
 	log_inventory("[key_name(src)] put [I] in hand 1")
 	r_hand.update_twohanding()
-	r_hand.update_held_icon()
+	r_hand.update_worn_icon()
 	// ! WARNING: snowflake - at time of equipped, vars aren't set yet.
 	position_hud_item(r_hand, SLOT_ID_HANDS)
 	update_inv_r_hand()

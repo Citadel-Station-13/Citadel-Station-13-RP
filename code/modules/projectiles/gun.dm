@@ -160,7 +160,7 @@
 		update_icon() // In case item_state is set somewhere else.
 	..()
 
-/obj/item/gun/update_held_icon()
+/obj/item/gun/update_worn_icon()
 	if(wielded_item_state)
 		var/mob/living/M = loc
 		if(istype(M))

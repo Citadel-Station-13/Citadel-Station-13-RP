@@ -204,5 +204,5 @@
 		imp = I
 		user.visible_message("[user] inserts the [I] into the [src].", "You insert the [I] into the [src].")
 	update_icon()
-	update_held_icon()
+	update_worn_icon()
 	return

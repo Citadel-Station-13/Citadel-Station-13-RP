@@ -250,6 +250,9 @@
 		return	// acceptable
 	var/mob/M = worn_mob()
 	ASSERT(M)	// not acceptable
+	if(held_index)
+		M.update_inv_hand(held_index)
+		return
 	switch(worn_slot)
 		if(SLOT_ID_BACK)
 			M.update_inv_back()
@@ -262,7 +265,7 @@
 		if(SLOT_ID_HANDCUFFED)
 			M.update_inv_handcuffed()
 		if(SLOT_ID_HANDS)
-			M.update_inv_hand(held_index)
+			ASSERT("why did we go here when we should have short-circuited at the held_index check?")
 		if(SLOT_ID_HEAD)
 			M.update_inv_head()
 		if(SLOT_ID_LEFT_EAR, SLOT_ID_RIGHT_EAR)

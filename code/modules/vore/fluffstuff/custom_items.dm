@@ -1407,7 +1407,7 @@
 	update_icon()
 	return
 
-/obj/item/melee/baton/fluff/stunstaff/update_held_icon()
+/obj/item/melee/baton/fluff/stunstaff/update_worn_icon()
 	var/mob/living/M = loc
 	if(istype(M) && !issmall(M) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
@@ -1441,7 +1441,7 @@
 	if(wielded)
 		wielded = 0
 		spawn(0)
-			update_held_icon()
+			update_worn_icon()
 
 /obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user)
 	. = ..()
@@ -1457,7 +1457,7 @@
 	else
 		status = 0
 		to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
-	update_held_icon()
+	update_worn_icon()
 	add_fingerprint(user)
 
 /obj/item/storage/backpack/fluff/stunstaff

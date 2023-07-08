@@ -30,7 +30,7 @@
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 
-/obj/item/material/twohanded/update_held_icon()
+/obj/item/material/twohanded/update_worn_icon()
 	var/mob/living/M = loc
 	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
 		wielded = 1
@@ -84,7 +84,7 @@
 	..()
 	if(wielded)
 		spawn(0)
-			update_held_icon()
+			update_worn_icon()
 
 /*
  * Fireaxe
@@ -110,7 +110,7 @@
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 	heavy = TRUE
 
-/obj/item/material/twohanded/fireaxe/update_held_icon()
+/obj/item/material/twohanded/fireaxe/update_worn_icon()
 	var/mob/living/M = loc
 	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
@@ -311,7 +311,7 @@
 	armor_penetration = 50
 	heavy = TRUE
 
-/obj/item/material/twohanded/sledgehammer/update_held_icon()
+/obj/item/material/twohanded/sledgehammer/update_worn_icon()
 	var/mob/living/M = loc
 	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
