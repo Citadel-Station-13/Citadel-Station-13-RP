@@ -3268,6 +3268,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/security/upper)
+"bXk" = (
+/obj/structure/bed/chair/wood{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "bXx" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -14743,18 +14749,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
-"jrj" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/obj/structure/ladder/up,
-/obj/effect/floor_decal/spline/plain{
-	dir = 5
-	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
-/area/crew_quarters/coffee_shop)
 "jru" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -16953,13 +16947,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/chamber)
-"kHx" = (
-/obj/structure/extinguisher_cabinet{
-	dir = 4;
-	pixel_x = -30
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
 "kIL" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/surgery2)
@@ -17912,6 +17899,15 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/hallway)
+"lib" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/reagent_containers/food/condiment/small/sugar,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "lig" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -19712,11 +19708,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"mkA" = (
-/obj/structure/table/wooden_reinforced,
-/obj/item/reagent_containers/food/condiment/small/sugar,
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
 "mkP" = (
 /obj/structure/catwalk,
 /obj/structure/railing{
@@ -49279,8 +49270,8 @@ dJH
 nCx
 rnE
 fHU
-kHx
-jrj
+neF
+pqG
 tnj
 hJs
 hJs
@@ -49473,8 +49464,8 @@ neF
 neF
 neF
 neF
-neF
-pqG
+wlU
+lib
 tnj
 pBA
 pBA
@@ -49668,7 +49659,7 @@ tGt
 neF
 neF
 wlU
-mkA
+ipQ
 tnj
 tyH
 nsG
@@ -49861,8 +49852,8 @@ cwF
 tGt
 neF
 neF
-wlU
-ipQ
+neF
+bXk
 tnj
 tyH
 iiF
