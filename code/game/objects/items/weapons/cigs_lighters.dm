@@ -132,11 +132,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		else
 			icon_state = "[initial(icon_state)]_burnt"
 			item_state = "[initial(item_state)]_burnt"
-	if(ismob(loc))
-		var/mob/living/M = loc
-		M.update_inv_wear_mask(0)
-		M.update_inv_l_hand(0)
-		M.update_inv_r_hand(1)
+	update_worn_icon()
 	..()
 
 /obj/item/clothing/mask/smokable/examine(mob/user, dist)
@@ -487,9 +483,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else if(istype(W, /obj/item/assembly/igniter))
 		light("<span class='notice'>[user] fiddles with [W], and manages to light their [name] with the power of science.</span>")
 
-	user.update_inv_wear_mask(0)
-	user.update_inv_l_hand(0)
-	user.update_inv_r_hand(1)
+	update_worn_icon()
 
 /obj/item/clothing/mask/smokable/pipe/cobpipe
 	name = "corn cob pipe"

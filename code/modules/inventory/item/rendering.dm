@@ -262,7 +262,7 @@
 		if(SLOT_ID_HANDCUFFED)
 			M.update_inv_handcuffed()
 		if(SLOT_ID_HANDS)
-			M.update_inv_hands()
+			M.update_inv_hand(held_index)
 		if(SLOT_ID_HEAD)
 			M.update_inv_head()
 		if(SLOT_ID_LEFT_EAR, SLOT_ID_RIGHT_EAR)

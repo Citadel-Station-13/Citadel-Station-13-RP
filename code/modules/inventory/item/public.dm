@@ -22,7 +22,6 @@
 			user.client?.screen |= src
 	if((slot != SLOT_ID_HANDS) && equip_sound)
 		playsound(src, equip_sound, 30, ignore_walls = FALSE)
-	user.update_inv_hands()
 
 /**
  * called when an item is unequipped from inventory or moved around in inventory

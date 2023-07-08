@@ -47,6 +47,8 @@
 	//* Inventory - Main
 	/// currently equipped slot id
 	var/worn_slot
+	/// current hand index, if held in hand
+	var/held_index
 	/**
 	 * current item we fitted over
 	 * ! DANGER: While this is more or less bug-free for "won't lose the item when you unequip/won't get stuck", we
