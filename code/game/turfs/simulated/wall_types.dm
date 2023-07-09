@@ -493,8 +493,8 @@
 	color = COLOR_GOLD
 
 /turf/simulated/wall/prepainted/security
-	stripe_color = COLOR_MAROON
-	color = COLOR_MAROON
+	stripe_color = COLOR_SECURITY_RED
+	color = COLOR_SECURITY_RED
 
 /turf/simulated/wall/prepainted/medical
 	paint_color = COLOR_GRAY80

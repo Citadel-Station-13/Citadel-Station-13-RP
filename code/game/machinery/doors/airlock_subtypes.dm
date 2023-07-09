@@ -288,7 +288,7 @@
 	req_one_access = list(ACCESS_SECURITY_EQUIPMENT)
 	open_sound_powered = 'sound/machines/door/sec1o.ogg'
 	close_sound_powered = 'sound/machines/door/sec1c.ogg'
-	door_color = COLOR_MAROON
+	door_color = COLOR_SECURITY_RED
 	window_color = GLASS_COLOR
 
 /obj/machinery/door/airlock/glass/medical

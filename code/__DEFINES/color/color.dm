@@ -90,7 +90,7 @@
 #define COLOR_ALUMINIUM                 "#bbbbbb"
 #define COLOR_CRYSTAL                   "#00c8a5"
 #define COLOR_DIAMOND                   "#d8d4ea"
-#define COLOR_SECURITY_RED				"#991f25"
+#define COLOR_SECURITY_RED				"#b3363c"
 
 #define WOOD_COLOR_GENERIC     "#d5a66e"
 #define WOOD_COLOR_RICH        "#792f27"
