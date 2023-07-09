@@ -91,7 +91,7 @@
 #define COLOR_CRYSTAL                   "#00c8a5"
 #define COLOR_DIAMOND                   "#d8d4ea"
 #define COLOR_SECURITY_RED				"#b3363c"
-#define COLOR_ATMOSPHERICS_CYAN			"#66ffff"
+#define COLOR_ATMOSPHERICS_CYAN			"#6b9bb3"
 
 #define WOOD_COLOR_GENERIC     "#d5a66e"
 #define WOOD_COLOR_RICH        "#792f27"
