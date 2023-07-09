@@ -46,7 +46,7 @@
 	open_sound_powered = 'sound/machines/door/med1o.ogg'
 	close_sound_powered = 'sound/machines/door/med1c.ogg'
 	door_color = COLOR_WHITE
-	stripe_color = COLOR_DEEP_SKY_BLUE
+	stripe_color = COLOR_BABY_BLUE
 
 /obj/machinery/door/airlock/maintenance
 	name = "Maintenance Access"
@@ -303,7 +303,7 @@
 	open_sound_powered = 'sound/machines/door/med1o.ogg'
 	close_sound_powered = 'sound/machines/door/med1c.ogg'
 	door_color = COLOR_WHITE
-	stripe_color = COLOR_DEEP_SKY_BLUE
+	stripe_color = COLOR_BABY_BLUE
 	window_color = GLASS_COLOR
 
 /obj/machinery/door/airlock/mining
@@ -522,7 +522,7 @@
 
 /obj/machinery/door/airlock/multi_tile/medical
 	door_color = COLOR_WHITE
-	stripe_color = COLOR_DEEP_SKY_BLUE
+	stripe_color = COLOR_BABY_BLUE
 
 /obj/machinery/door/airlock/glass/civilian
 	glass = TRUE
@@ -553,11 +553,11 @@
 
 /obj/machinery/door/airlock/multi_tile/glass/medical
 	door_color = COLOR_WHITE
-	stripe_color = COLOR_DEEP_SKY_BLUE
+	stripe_color = COLOR_BABY_BLUE
 
 /obj/machinery/door/airlock/glass/medical
 	door_color = COLOR_WHITE
-	stripe_color = COLOR_DEEP_SKY_BLUE
+	stripe_color = COLOR_BABY_BLUE
 
 /obj/machinery/door/airlock/glass/exploration
 	door_color = COLOR_GRAY20
