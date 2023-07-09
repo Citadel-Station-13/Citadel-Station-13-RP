@@ -315,7 +315,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_PALE_ORANGE
-	stripe_color = COLOR_BEASTY_BROWN
+	stripe_color = COLOR_CARGO_BROWN
 
 /obj/machinery/door/airlock/atmos
 	name = "Atmospherics Airlock"
@@ -361,7 +361,7 @@
 	open_sound_powered = 'sound/machines/door/cgo1o.ogg'
 	close_sound_powered = 'sound/machines/door/cgo1c.ogg'
 	door_color = COLOR_PALE_ORANGE
-	stripe_color = COLOR_BEASTY_BROWN
+	stripe_color = COLOR_CARGO_BROWN
 	window_color = GLASS_COLOR
 
 /obj/machinery/door/airlock/glass/atmos

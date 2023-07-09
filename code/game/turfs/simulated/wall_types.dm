@@ -475,8 +475,8 @@
 	color = COLOR_PURPLE_GRAY
 
 /turf/simulated/wall/r_wall/prepainted/cargo
-	stripe_color = COLOR_BEASTY_BROWN
-	color = COLOR_BEASTY_BROWN
+	stripe_color = COLOR_CARGO_BROWN
+	color = COLOR_CARGO_BROWN
 
 /turf/simulated/wall/prepainted
 	paint_color = COLOR_WALL_GUNMETAL
@@ -523,5 +523,5 @@
 	color = COLOR_PURPLE_GRAY
 
 /turf/simulated/wall/prepainted/cargo
-	stripe_color = COLOR_BEASTY_BROWN
-	color = COLOR_BEASTY_BROWN
+	stripe_color = COLOR_CARGO_BROWN
+	color = COLOR_CARGO_BROWN
