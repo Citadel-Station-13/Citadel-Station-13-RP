@@ -51,7 +51,7 @@
 #define COLOR_DARK_GREEN_GRAY           "#54654c"
 #define COLOR_DARK_BLUE_GRAY            "#3e4855"
 #define COLOR_SURGERY_BLUE              "#e0f2f6"
-#define COLOR_SUN                       "#ed913b"
+#define COLOR_SUN                       "#ed973b"
 #define COLOR_BLUE_LIGHT                "#33ccff"
 #define COLOR_BABY_BLUE                 "#a3d6f0"
 #define COLOR_ACID_CYAN                 "#00ffc8"
