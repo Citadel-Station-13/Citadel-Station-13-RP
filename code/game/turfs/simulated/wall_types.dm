@@ -497,7 +497,7 @@
 	color = COLOR_SECURITY_RED
 
 /turf/simulated/wall/prepainted/medical
-	paint_color = COLOR_GRAY80
+	paint_color = COLOR_VERY_LIGHT_GRAY
 	stripe_color = COLOR_BABY_BLUE
 	color = COLOR_BABY_BLUE
 

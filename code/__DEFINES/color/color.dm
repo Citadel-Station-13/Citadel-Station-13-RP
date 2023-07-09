@@ -53,7 +53,7 @@
 #define COLOR_SURGERY_BLUE              "#e0f2f6"
 #define COLOR_SUN                       "#ec8b2f"
 #define COLOR_BLUE_LIGHT                "#33ccff"
-#define COLOR_BABY_BLUE                 "#89cff0"
+#define COLOR_BABY_BLUE                 "#95c4db"
 #define COLOR_ACID_CYAN                 "#00ffc8"
 #define COLOR_GRAY80                    "#cccccc"
 #define COLOR_OFF_WHITE                 "#eeeeee"
