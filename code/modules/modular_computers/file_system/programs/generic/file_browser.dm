@@ -43,7 +43,7 @@
 		HDD.remove_file(file)
 	if(href_list["PRG_usbdeletefile"])
 		. = 1
-		var/obj/item/stock_parts/computer/hard_drive/RHDD = computer.portable_drive
+		var/obj/item/stock_parts/computer/hard_drive/RHDD = computer.drive_slot.stored_drive
 		if(!RHDD)
 			return 1
 		var/datum/computer_file/file = RHDD.find_file_by_name(href_list["PRG_usbdeletefile"])
@@ -125,7 +125,7 @@
 	if(href_list["PRG_copytousb"])
 		. = 1
 		var/obj/item/stock_parts/computer/hard_drive/HDD = computer.hard_drive
-		var/obj/item/stock_parts/computer/hard_drive/portable/RHDD = computer.portable_drive
+		var/obj/item/stock_parts/computer/hard_drive/portable/RHDD = computer.drive_slot.stored_drive
 		if(!HDD || !RHDD)
 			return 1
 		var/datum/computer_file/F = HDD.find_file_by_name(href_list["PRG_copytousb"])
@@ -136,7 +136,7 @@
 	if(href_list["PRG_copyfromusb"])
 		. = 1
 		var/obj/item/stock_parts/computer/hard_drive/HDD = computer.hard_drive
-		var/obj/item/stock_parts/computer/hard_drive/portable/RHDD = computer.portable_drive
+		var/obj/item/stock_parts/computer/hard_drive/portable/RHDD = computer.drive_slot.stored_drive
 		if(!HDD || !RHDD)
 			return 1
 		var/datum/computer_file/F = RHDD.find_file_by_name(href_list["PRG_copyfromusb"])
@@ -177,7 +177,7 @@
 			data["error"] = "I/O ERROR: Unable to access hard drive."
 		else
 			HDD = PRG.computer.hard_drive
-			RHDD = PRG.computer.portable_drive
+			RHDD = PRG.computer.drive_slot.stored_drive
 			var/list/files[0]
 			for(var/datum/computer_file/F in HDD.stored_files)
 				files.Add(list(list(

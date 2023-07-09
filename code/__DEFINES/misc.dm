@@ -157,11 +157,12 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define NTNETSPEED_DOS_AMPLIFICATION	5
 
 // Program bitflags
-#define PROGRAM_ALL			15
+#define PROGRAM_ALL			(PROGRAM_CONSOLE|PROGRAM_LAPTOP|PROGRAM_TABLET|PROGRAM_TELESCREEN|PROGRAM_PDA)
 #define PROGRAM_CONSOLE		1
 #define PROGRAM_LAPTOP		2
 #define PROGRAM_TABLET		4
 #define PROGRAM_TELESCREEN	8
+#define PROGRAM_PDA			16
 
 #define PROGRAM_STATE_KILLED		0
 #define PROGRAM_STATE_BACKGROUND	1

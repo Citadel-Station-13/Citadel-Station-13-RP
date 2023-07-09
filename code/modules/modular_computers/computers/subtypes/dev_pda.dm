@@ -1,9 +1,14 @@
 /obj/item/modular_computer/pda
+	name = "PDA"
+	desc = "A microcomputer device intended to handle communications."
 	icon = 'icons/obj/modular_computer/modular_pda.dmi'
-	slot_flags = SLOT_ID | SLOT_BELT
+	icon_state = "world"
+	icon_state_unpowered = "world"
+	w_class = ITEM_SIZE_SMALL
+	slot_flags = SLOT_ID | SLOT_BELT | SLOT_POCKET
 	stores_pen = TRUE
 	stored_pen = /obj/item/pen
-	icon_state = "pda"
+	hardware_flag = PROGRAM_PDA
 	default_hardware = list(
 		/obj/item/stock_parts/computer/network_card,
 		/obj/item/stock_parts/computer/hard_drive/small,

@@ -1,9 +1,13 @@
 /obj/item/modular_computer/console/preset/install_default_hardware()
-	..()
-	processor_unit = new/obj/item/stock_parts/computer/processor_unit(src)
-	tesla_link = new/obj/item/stock_parts/computer/tesla_link(src)
-	hard_drive = new/obj/item/stock_parts/computer/hard_drive/super(src)
-	network_card = new/obj/item/stock_parts/computer/network_card/wired(src)
+	default_hardware = list(
+		/obj/item/stock_parts/computer/processor_unit,
+		/obj/item/stock_parts/computer/tesla_link,
+		/obj/item/stock_parts/computer/hard_drive/super,
+		/obj/item/stock_parts/computer/network_card/wired,
+		/obj/item/stock_parts/computer/nano_printer,
+		/obj/item/stock_parts/computer/card_slot
+	)
+
 
 // Engineering
 /obj/item/modular_computer/console/preset/engineering/install_default_programs()
@@ -26,7 +30,7 @@
 // Research
 /obj/item/modular_computer/console/preset/research/install_default_hardware()
 	..()
-	//ai_slot = new/obj/item/stock_parts/computer/ai_slot(src)
+	//ai_slot = new/obj/item/stock_parts/computer/ai_slot,
 
 /obj/item/modular_computer/console/preset/research/install_default_programs()
 	..()
@@ -41,7 +45,7 @@
 // Administrator
 /obj/item/modular_computer/console/preset/sysadmin/install_default_hardware()
 	..()
-	//ai_slot = new/obj/item/stock_parts/computer/ai_slot(src)
+	//ai_slot = new/obj/item/stock_parts/computer/ai_slot,
 
 /obj/item/modular_computer/console/preset/sysadmin/install_default_programs()
 	..()
@@ -55,11 +59,6 @@
 	hard_drive.store_file(new/datum/computer_file/program/wordprocessor())
 
 // Command
-/obj/item/modular_computer/console/preset/command/install_default_hardware()
-	..()
-	nano_printer = new/obj/item/stock_parts/computer/nano_printer(src)
-	card_slot = new/obj/item/stock_parts/computer/card_slot(src)
-
 /obj/item/modular_computer/console/preset/command/install_default_programs()
 	..()
 	hard_drive.store_file(new/datum/computer_file/program/chatclient())
@@ -86,11 +85,6 @@
 	hard_drive.store_file(new/datum/computer_file/program/wordprocessor())
 
 // ERT
-/obj/item/modular_computer/console/preset/ert/install_default_hardware()
-	..()
-	//ai_slot = new/obj/item/stock_parts/computer/ai_slot(src)
-	nano_printer = new/obj/item/stock_parts/computer/nano_printer(src)
-	card_slot = new/obj/item/stock_parts/computer/card_slot(src)
 
 /obj/item/modular_computer/console/preset/ert/install_default_programs()
 	..()
@@ -103,12 +97,6 @@
 // Mercenary
 /obj/item/modular_computer/console/preset/mercenary/
 	computer_emagged = TRUE
-
-/obj/item/modular_computer/console/preset/mercenary/install_default_hardware()
-	..()
-	//ai_slot = new/obj/item/stock_parts/computer/ai_slot(src)
-	nano_printer = new/obj/item/stock_parts/computer/nano_printer(src)
-	card_slot = new/obj/item/stock_parts/computer/card_slot(src)
 
 /obj/item/modular_computer/console/preset/mercenary/install_default_programs()
 	..()

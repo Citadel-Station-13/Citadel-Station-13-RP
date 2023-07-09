@@ -337,9 +337,9 @@
 			blob.mob_radio.adhoc_fallback = TRUE
 		blob.mob_radio.recalculateChannels()
 
-	for(var/obj/item/pda/P in things_to_not_drop)
-		if(P.id)
-			var/obj/item/card/id/PID = P.id
+	for(var/obj/item/modular_computer/pda/P in things_to_not_drop)
+		if(P.card_slot && P.card_slot.stored_card)
+			var/obj/item/card/id/PID = P.card_slot.stored_card
 			blob.access_card.access += PID.access
 
 	for(var/obj/item/card/id/I in things_to_not_drop)

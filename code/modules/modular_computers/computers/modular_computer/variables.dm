@@ -81,12 +81,12 @@
 	var/obj/item/stock_parts/computer/card_slot/card_slot
 	/// Nano Printer component of this computer, for your everyday paperwork needs.
 	var/obj/item/stock_parts/computer/nano_printer/nano_printer
-	/// Portable data storage.
-	var/obj/item/stock_parts/computer/hard_drive/portable/portable_drive
 	/// AI slot, an intellicard housing that allows modifications of AIs.
 	var/obj/item/stock_parts/computer/ai_slot/ai_slot
 	/// Tesla Link, Allows remote charging from nearest APC.
 	var/obj/item/stock_parts/computer/tesla_link/tesla_link
+	/// Drive Slot, used for portable hard drive interfacing.
+	var/obj/item/stock_parts/computer/drive_slot/drive_slot
 
 	var/list/default_hardware
 

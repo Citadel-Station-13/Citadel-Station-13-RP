@@ -69,7 +69,7 @@
 		battery.charge = 0
 	return ..()
 
-/obj/item/computer_hardware/battery_module/Destroy()
+/obj/item/stock_parts/computer/battery_module/Destroy()
 	if(!isnull(battery) && !ispath(battery))
 		QDEL_NULL(battery)
 	return ..()

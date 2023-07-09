@@ -32,6 +32,6 @@
 	recalculate_size()
 
 /obj/item/stock_parts/computer/hard_drive/portable/Destroy()
-	if(holder2 && (holder2.portable_drive == src))
-		holder2.portable_drive = null
+	if(holder2 && (holder2.drive_slot.stored_drive == src))
+		holder2.drive_slot.stored_drive = null
 	return ..()

@@ -1,49 +1,49 @@
 /// Attempts to install the hardware into apropriate slot.
 /obj/item/modular_computer/proc/try_install_component(mob/living/user, obj/item/stock_parts/computer/H, found = FALSE)
 	// "USB" flash drive.
-	if(istype(H, /obj/item/stock_parts/computer/hard_drive/portable))
-		if(portable_drive)
-			to_chat(user, "This computer's portable drive slot is already occupied by \the [portable_drive].")
+	if(istype(H, PART_D_SLOT))
+		if(drive_slot)
+			to_chat(user, "This computer's portable drive slot is already occupied by \the [drive_slot].")
 			return
 		found = TRUE
-		portable_drive = H
-	else if(istype(H, /obj/item/stock_parts/computer/hard_drive))
+		drive_slot = H
+	else if(istype(H, PART_DRIVE))
 		if(hard_drive)
 			to_chat(user, "This computer's hard drive slot is already occupied by \the [hard_drive].")
 			return
 		found = TRUE
 		hard_drive = H
-	else if(istype(H, /obj/item/stock_parts/computer/network_card))
+	else if(istype(H, PART_NETWORK))
 		if(network_card)
 			to_chat(user, "This computer's network card slot is already occupied by \the [network_card].")
 			return
 		found = TRUE
 		network_card = H
-	else if(istype(H, /obj/item/stock_parts/computer/nano_printer))
+	else if(istype(H, PART_PRINTER))
 		if(nano_printer)
 			to_chat(user, "This computer's nano printer slot is already occupied by \the [nano_printer].")
 			return
 		found = TRUE
 		nano_printer = H
-	else if(istype(H, /obj/item/stock_parts/computer/card_slot))
+	else if(istype(H, PART_CARD))
 		if(card_slot)
 			to_chat(user, "This computer's card slot is already occupied by \the [card_slot].")
 			return
 		found = TRUE
 		card_slot = H
-	else if(istype(H, /obj/item/stock_parts/computer/battery_module))
+	else if(istype(H, PART_BATTERY))
 		if(battery_module)
 			to_chat(user, "This computer's battery slot is already occupied by \the [battery_module].")
 			return
 		found = TRUE
 		battery_module = H
-	else if(istype(H, /obj/item/stock_parts/computer/processor_unit))
+	else if(istype(H, PART_CPU))
 		if(processor_unit)
 			to_chat(user, "This computer's processor slot is already occupied by \the [processor_unit].")
 			return
 		found = TRUE
 		processor_unit = H
-	else if(istype(H, /obj/item/stock_parts/computer/tesla_link))
+	else if(istype(H, PART_TESLA))
 		if(tesla_link)
 			to_chat(user, "This computer's tesla link slot is already occupied by \the [tesla_link].")
 			return
@@ -56,10 +56,58 @@
 		H.holder2 = src
 		update_verbs()
 
+/obj/item/modular_computer/proc/try_install_defaults(obj/item/stock_parts/computer/H, found = FALSE)
+	// "USB" flash drive.
+	if(istype(H, PART_D_SLOT))
+		if(drive_slot)
+			return
+		found = TRUE
+		drive_slot = H
+	else if(istype(H, PART_DRIVE))
+		if(hard_drive)
+			return
+		found = TRUE
+		hard_drive = H
+	else if(istype(H, PART_NETWORK))
+		if(network_card)
+			return
+		found = TRUE
+		network_card = H
+	else if(istype(H, PART_PRINTER))
+		if(nano_printer)
+			return
+		found = TRUE
+		nano_printer = H
+	else if(istype(H, PART_CARD))
+		if(card_slot)
+			return
+		found = TRUE
+		card_slot = H
+	else if(istype(H, PART_BATTERY))
+		if(battery_module)
+			return
+		found = TRUE
+		battery_module = H
+		battery_module.charge_to_full()
+	else if(istype(H, PART_CPU))
+		if(processor_unit)
+			return
+		found = TRUE
+		processor_unit = H
+	else if(istype(H, PART_TESLA))
+		if(tesla_link)
+			return
+		found = TRUE
+		tesla_link = H
+	if(found)
+		H.forceMove(src)
+		H.holder2 = src
+		update_verbs()
+
 /// Uninstalls component. Found and Critical vars may be passed by parent types, if they have additional hardware.
 /obj/item/modular_computer/proc/uninstall_component(mob/living/user, obj/item/stock_parts/computer/H, found = FALSE, critical = FALSE)
-	if(portable_drive == H)
-		portable_drive = null
+	if(drive_slot == H)
+		drive_slot = null
 		found = TRUE
 	if(hard_drive == H)
 		hard_drive = null
@@ -99,8 +147,8 @@
 
 /// Checks all hardware pieces to determine if name matches, if yes, returns the hardware piece, otherwise returns null.
 /obj/item/modular_computer/proc/find_hardware_by_name(name)
-	if(portable_drive && (portable_drive.name == name))
-		return portable_drive
+	if(drive_slot && (drive_slot.name == name))
+		return drive_slot
 	if(hard_drive && (hard_drive.name == name))
 		return hard_drive
 	if(network_card && (network_card.name == name))
@@ -124,8 +172,8 @@
 		all_components.Add(hard_drive)
 	if(network_card)
 		all_components.Add(network_card)
-	if(portable_drive)
-		all_components.Add(portable_drive)
+	if(drive_slot)
+		all_components.Add(drive_slot)
 	if(nano_printer)
 		all_components.Add(nano_printer)
 	if(card_slot)

@@ -2,10 +2,10 @@
 	verbs.Cut()
 	if(stores_pen && istype(stored_pen))
 		add_obj_verb(/obj/item/modular_computer/proc/remove_pen)
-	if(portable_drive)
-		add_obj_verb(src, /obj/item/modular_computer/verb/eject_usb)
 	if(card_slot)
 		add_obj_verb(src, /obj/item/modular_computer/verb/eject_id)
+	if(drive_slot)
+		add_obj_verb(src, /obj/item/modular_computer/verb/eject_usb)
 	add_obj_verb(src, /obj/item/modular_computer/verb/emergency_shutdown)
 
 /obj/item/modular_computer/proc/remove_pen()
@@ -81,7 +81,10 @@
 		to_chat(usr, SPAN_WARNING("You can't reach it."))
 		return
 
-	proc_eject_usb(usr)
+	if(!drive_slot)
+		to_chat(usr, SPAN_WARNING("There isn't a portable drive slot in this computer."))
+
+	drive_slot.eject_drive(usr)
 
 /obj/item/modular_computer/proc/proc_eject_id(mob/user)
 	if(!user)
@@ -105,18 +108,6 @@
 	card_slot.stored_card = null
 	update_uis()
 	to_chat(user, "You remove the card from \the [src]")
-
-
-/obj/item/modular_computer/proc/proc_eject_usb(mob/user)
-	if(!user)
-		user = usr
-
-	if(!portable_drive)
-		to_chat(user, "There is no portable device connected to \the [src].")
-		return
-
-	uninstall_component(user, portable_drive)
-	update_uis()
 
 /obj/item/modular_computer/attack_ghost(mob/observer/ghost/user)
 	. = ..()
@@ -232,5 +223,12 @@
 		update_verbs()
 		to_chat(user, "<span class='notice'>You insert [W] into [src].</span>")
 		return
+
+	if(istype(W, /obj/item/stock_parts/computer/hard_drive/portable))
+		if(!drive_slot)
+			to_chat(user, SPAN_WARNING("This computer lacks a portable drive slot."))
+		if(drive_slot.stored_drive)
+			to_chat(user, SPAN_WARNING("The portable drive slot is already occupied."))
+		drive_slot.insert_drive(W, user)
 
 	..()

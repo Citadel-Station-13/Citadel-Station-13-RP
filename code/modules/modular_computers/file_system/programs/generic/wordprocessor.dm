@@ -208,7 +208,7 @@
 					)))
 			data["files"] = files
 
-			RHDD = PRG.computer.portable_drive
+			RHDD = PRG.computer.drive_slot.stored_drive
 			if(RHDD)
 				data["usbconnected"] = 1
 				var/list/usbfiles[0]

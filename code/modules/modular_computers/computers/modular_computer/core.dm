@@ -37,7 +37,7 @@
 /// Used to perform preset-specific hardware changes.
 /obj/item/modular_computer/proc/install_default_hardware()
 	for(var/T in default_hardware)
-		try_install_component(null, new T(src))
+		try_install_defaults(new T(src))
 
 // Used to install preset-specific programs
 /obj/item/modular_computer/proc/install_default_programs() //TODO re-add job programs.
@@ -91,16 +91,24 @@
 		return
 	if(!enabled)
 		if(icon_state_screensaver)
-			add_overlay(icon_state_screensaver)
+			var/image/S = image(icon, icon_state_screensaver)
+			S.appearance_flags |= RESET_COLOR
+			add_overlay(S)
 		set_light(0)
 		return
 	set_light(light_strength)
 	if(active_program)
-		overlays_to_add.Add(active_program.program_icon_state ? active_program.program_icon_state : icon_state_menu)
+		var/image/P = image(icon, active_program.program_icon_state ? active_program.program_icon_state : icon_state_menu)
+		P.appearance_flags |= RESET_COLOR
+		overlays_to_add.Add(P)
 		if(active_program.program_key_state)
-			overlays_to_add.Add(active_program.program_key_state)
+			var/image/K = image(icon, active_program.program_key_state)
+			K.appearance_flags |= RESET_COLOR
+			overlays_to_add.Add(K)
 	else
-		overlays_to_add.Add(icon_state_menu)
+		var/image/M = image(icon, icon_state_menu)
+		M.appearance_flags |= RESET_COLOR
+		overlays_to_add.Add(M)
 
 	add_overlay(overlays_to_add)
 

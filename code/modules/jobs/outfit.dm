@@ -9,7 +9,7 @@
 	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/civilian
 	pda_slot = SLOT_ID_BELT
-	pda_type = /obj/item/pda
+	pda_type = /obj/item/modular_computer/pda
 
 	flags = OUTFIT_HAS_BACKPACK
 

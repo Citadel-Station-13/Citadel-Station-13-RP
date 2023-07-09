@@ -164,14 +164,7 @@
 /datum/outfit/proc/equip_pda(mob/living/carbon/human/H, rank, assignment)
 	if(!pda_slot || !pda_type)
 		return
-	var/obj/item/pda/pda = new pda_type(H)
-	pda.owner = H.real_name
-	pda.ownjob = assignment
-	pda.ownrank = rank
-	pda.name = "PDA-[H.real_name] ([assignment])"
-	if(H.client.prefs.ringtone) // if null we use the job default
-		pda.ringtone = H.client.prefs.ringtone
-	tim_sort(GLOB.PDAs, /proc/cmp_name_asc)
+	var/obj/item/modular_computer/pda/pda = new pda_type(H)
 	if(H.equip_to_slot_if_possible(pda, pda_slot))
 		return pda
 	if(H.force_equip_to_slot(pda, /datum/inventory_slot_meta/abstract/put_in_backpack))

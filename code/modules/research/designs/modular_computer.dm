@@ -13,14 +13,12 @@
 	req_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 100)
 	build_path = /obj/item/stock_parts/computer/hard_drive/
-	sort_string = "VAAAA"
 
 /datum/design/science/modularcomponent/disk/advanced
 	design_name = "advanced hard drive"
 	id = "hdd_advanced"
 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 200)
 	build_path = /obj/item/stock_parts/computer/hard_drive/advanced
-	sort_string = "VAAAB"
 
 /datum/design/science/modularcomponent/disk/super
 	design_name = "super hard drive"
@@ -28,7 +26,6 @@
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 400)
 	build_path = /obj/item/stock_parts/computer/hard_drive/super
-	sort_string = "VAAAC"
 
 /datum/design/science/modularcomponent/disk/cluster
 	design_name = "cluster hard drive"
@@ -36,7 +33,6 @@
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4)
 	materials = list(MAT_STEEL = 16000, MAT_GLASS = 800)
 	build_path = /obj/item/stock_parts/computer/hard_drive/cluster
-	sort_string = "VAAAD"
 
 /datum/design/science/modularcomponent/disk/small
 	design_name = "small hard drive"
@@ -44,7 +40,6 @@
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 200)
 	build_path = /obj/item/stock_parts/computer/hard_drive/small
-	sort_string = "VAAAE"
 
 /datum/design/science/modularcomponent/disk/micro
 	design_name = "micro hard drive"
@@ -52,7 +47,6 @@
 	req_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 100)
 	build_path = /obj/item/stock_parts/computer/hard_drive/micro
-	sort_string = "VAAAF"
 
 /datum/design/science/modularcomponent/netcard
 	abstract_type = /datum/design/science/modularcomponent/netcard
@@ -63,7 +57,6 @@
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 1)
 	materials = list(MAT_STEEL = 500, MAT_GLASS = 100)
 	build_path = /obj/item/stock_parts/computer/network_card
-	sort_string = "VBAAA"
 
 /datum/design/science/modularcomponent/netcard/advanced
 	design_name = "advanced network card"
@@ -71,7 +64,6 @@
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 200)
 	build_path = /obj/item/stock_parts/computer/network_card/advanced
-	sort_string = "VBAAB"
 
 /datum/design/science/modularcomponent/netcard/wired
 	design_name = "wired network card"
@@ -79,7 +71,6 @@
 	req_tech = list(TECH_DATA = 5, TECH_ENGINEERING = 3)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 400)
 	build_path = /obj/item/stock_parts/computer/network_card/wired
-	sort_string = "VBAAC"
 
 /datum/design/science/modularcomponent/battery
 	abstract_type = /datum/design/science/modularcomponent/battery
@@ -90,7 +81,6 @@
 	req_tech = list(TECH_POWER = 1, TECH_ENGINEERING = 1)
 	materials = list(MAT_STEEL = 2000)
 	build_path = /obj/item/stock_parts/computer/battery_module
-	sort_string = "VCAAA"
 
 /datum/design/science/modularcomponent/battery/advanced
 	design_name = "advanced battery module"
@@ -98,7 +88,6 @@
 	req_tech = list(TECH_POWER = 2, TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 4000)
 	build_path = /obj/item/stock_parts/computer/battery_module/advanced
-	sort_string = "VCAAB"
 
 /datum/design/science/modularcomponent/battery/super
 	design_name = "super battery module"
@@ -106,7 +95,6 @@
 	req_tech = list(TECH_POWER = 3, TECH_ENGINEERING = 3)
 	materials = list(MAT_STEEL = 8000)
 	build_path = /obj/item/stock_parts/computer/battery_module/super
-	sort_string = "VCAAC"
 
 /datum/design/science/modularcomponent/battery/ultra
 	design_name = "ultra battery module"
@@ -114,7 +102,6 @@
 	req_tech = list(TECH_POWER = 5, TECH_ENGINEERING = 4)
 	materials = list(MAT_STEEL = 16000)
 	build_path = /obj/item/stock_parts/computer/battery_module/ultra
-	sort_string = "VCAAD"
 
 /datum/design/science/modularcomponent/battery/nano
 	design_name = "nano battery module"
@@ -122,7 +109,6 @@
 	req_tech = list(TECH_POWER = 1, TECH_ENGINEERING = 1)
 	materials = list(MAT_STEEL = 2000)
 	build_path = /obj/item/stock_parts/computer/battery_module/nano
-	sort_string = "VCAAE"
 
 /datum/design/science/modularcomponent/battery/micro
 	design_name = "micro battery module"
@@ -130,7 +116,6 @@
 	req_tech = list(TECH_POWER = 2, TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 4000)
 	build_path = /obj/item/stock_parts/computer/battery_module/micro
-	sort_string = "VCAAF"
 
 /datum/design/science/modularcomponent/cpu
 	abstract_type = /datum/design/science/modularcomponent/cpu
@@ -141,7 +126,6 @@
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 8000)
 	build_path = /obj/item/stock_parts/computer/processor_unit
-	sort_string = "VDAAA"
 
 /datum/design/science/modularcomponent/cpu/small
 	design_name = "computer microprocessor unit"
@@ -149,7 +133,6 @@
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 4000)
 	build_path = /obj/item/stock_parts/computer/processor_unit/small
-	sort_string = "VDAAB"
 
 /datum/design/science/modularcomponent/cpu/photonic
 	design_name = "computer photonic processor unit"
@@ -157,7 +140,6 @@
 	req_tech = list(TECH_DATA = 5, TECH_ENGINEERING = 4)
 	materials = list(MAT_STEEL = 32000, glass = 8000)
 	build_path = /obj/item/stock_parts/computer/processor_unit/photonic
-	sort_string = "VDAAC"
 
 /datum/design/science/modularcomponent/cpu/photonic/small
 	design_name = "computer photonic microprocessor unit"
@@ -165,7 +147,6 @@
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3)
 	materials = list(MAT_STEEL = 16000, glass = 4000)
 	build_path = /obj/item/stock_parts/computer/processor_unit/photonic/small
-	sort_string = "VDAAD"
 
 /datum/design/science/modularcomponent/cardslot
 	design_name = "RFID card slot"
@@ -173,7 +154,6 @@
 	req_tech = list(TECH_DATA = 2)
 	materials = list(MAT_STEEL = 3000)
 	build_path = /obj/item/stock_parts/computer/card_slot
-	sort_string = "VEAAA"
 
 /datum/design/science/modularcomponent/nanoprinter
 	design_name = "nano printer"
@@ -181,7 +161,6 @@
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 3000)
 	build_path = /obj/item/stock_parts/computer/nano_printer
-	sort_string = "VEAAB"
 
 /datum/design/science/modularcomponent/teslalink
 	design_name = "tesla link"
@@ -189,7 +168,6 @@
 	req_tech = list(TECH_DATA = 2, TECH_POWER = 3, TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 10000)
 	build_path = /obj/item/stock_parts/computer/tesla_link
-	sort_string = "VEAAC"
 
 /datum/design/science/modularcomponent/portabledrive
 	abstract_type = /datum/design/science/modularcomponent/portabledrive
@@ -203,7 +181,6 @@
 	req_tech = list(TECH_DATA = 1)
 	materials = list(MAT_GLASS = 8000)
 	build_path = /obj/item/stock_parts/computer/hard_drive/portable
-	sort_string = "VFAAA"
 
 /datum/design/science/modularcomponent/portabledrive/advanced
 	design_name = "advanced data crystal"
@@ -211,7 +188,6 @@
 	req_tech = list(TECH_DATA = 2)
 	materials = list(MAT_GLASS = 16000)
 	build_path = /obj/item/stock_parts/computer/hard_drive/portable/advanced
-	sort_string = "VFAAB"
 
 /datum/design/science/modularcomponent/portabledrive/super
 	design_name = "super data crystal"
@@ -219,4 +195,3 @@
 	req_tech = list(TECH_DATA = 4)
 	materials = list(MAT_GLASS = 32000)
 	build_path = /obj/item/stock_parts/computer/hard_drive/portable/super
-	sort_string = "VFAAC"

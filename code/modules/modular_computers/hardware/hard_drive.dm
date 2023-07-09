@@ -44,7 +44,7 @@
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	max_capacity = 64
 	icon_state = "hdd_small"
-	hardware_size = 1
+	hardware_size = 0
 
 /obj/item/stock_parts/computer/hard_drive/micro
 	name = "micro hard drive"

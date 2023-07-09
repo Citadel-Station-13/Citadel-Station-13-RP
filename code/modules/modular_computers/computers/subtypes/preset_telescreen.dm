@@ -1,9 +1,11 @@
 /obj/item/modular_computer/telescreen/preset/install_default_hardware()
-	..()
-	processor_unit = new/obj/item/stock_parts/computer/processor_unit(src)
-	tesla_link = new/obj/item/stock_parts/computer/tesla_link(src)
-	hard_drive = new/obj/item/stock_parts/computer/hard_drive(src)
-	network_card = new/obj/item/stock_parts/computer/network_card(src)
+	default_hardware = list(
+		/obj/item/stock_parts/computer/processor_unit,
+		/obj/item/stock_parts/computer/tesla_link,
+		/obj/item/stock_parts/computer/hard_drive,
+		/obj/item/stock_parts/computer/network_card
+	)
+
 
 /obj/item/modular_computer/telescreen/preset/generic/install_default_programs()
 	..()

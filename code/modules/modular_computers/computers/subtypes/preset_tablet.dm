@@ -1,28 +1,28 @@
-/obj/item/modular_computer/tablet/preset/custom_loadout/cheap/install_default_hardware()
-	..()
-	processor_unit = new/obj/item/stock_parts/computer/processor_unit/small(src)
-	tesla_link = new/obj/item/stock_parts/computer/tesla_link(src)
-	hard_drive = new/obj/item/stock_parts/computer/hard_drive/micro(src)
-	network_card = new/obj/item/stock_parts/computer/network_card(src)
-	battery_module = new/obj/item/stock_parts/computer/battery_module/nano(src)
-	battery_module.charge_to_full()
+/obj/item/modular_computer/tablet/preset/custom_loadout/cheap
+	default_hardware = list(
+		/obj/item/stock_parts/computer/processor_unit/small,
+		/obj/item/stock_parts/computer/tesla_link,
+		/obj/item/stock_parts/computer/hard_drive/micro,
+		/obj/item/stock_parts/computer/network_card,
+		/obj/item/stock_parts/computer/battery_module/nano
+	)
 
-/obj/item/modular_computer/tablet/preset/custom_loadout/advanced/install_default_hardware()
-	..()
-	processor_unit = new/obj/item/stock_parts/computer/processor_unit/small(src)
-	tesla_link = new/obj/item/stock_parts/computer/tesla_link(src)
-	hard_drive = new/obj/item/stock_parts/computer/hard_drive/small(src)
-	network_card = new/obj/item/stock_parts/computer/network_card/advanced(src)
-	nano_printer = new/obj/item/stock_parts/computer/nano_printer(src)
-	card_slot = new/obj/item/stock_parts/computer/card_slot(src)
-	battery_module = new/obj/item/stock_parts/computer/battery_module(src)
-	battery_module.charge_to_full()
+/obj/item/modular_computer/tablet/preset/custom_loadout/advanced
+	default_hardware = list(
+		/obj/item/stock_parts/computer/processor_unit/small,
+		/obj/item/stock_parts/computer/tesla_link,
+		/obj/item/stock_parts/computer/hard_drive/small,
+		/obj/item/stock_parts/computer/network_card/advanced,
+		/obj/item/stock_parts/computer/nano_printer,
+		/obj/item/stock_parts/computer/card_slot,
+		/obj/item/stock_parts/computer/battery_module
+	)
 
-/obj/item/modular_computer/tablet/preset/custom_loadout/standard/install_default_hardware()
-	..()
-	processor_unit = new/obj/item/stock_parts/computer/processor_unit/small(src)
-	tesla_link = new/obj/item/stock_parts/computer/tesla_link(src)
-	hard_drive = new/obj/item/stock_parts/computer/hard_drive/small(src)
-	network_card = new/obj/item/stock_parts/computer/network_card(src)
-	battery_module = new/obj/item/stock_parts/computer/battery_module/micro(src)
-	battery_module.charge_to_full()
+/obj/item/modular_computer/tablet/preset/custom_loadout/standard
+	default_hardware = list(
+		/obj/item/stock_parts/computer/processor_unit/small,
+		/obj/item/stock_parts/computer/tesla_link,
+		/obj/item/stock_parts/computer/hard_drive/small,
+		/obj/item/stock_parts/computer/network_card,
+		/obj/item/stock_parts/computer/battery_module/micro
+	)
