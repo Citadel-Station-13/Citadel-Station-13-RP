@@ -37,7 +37,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
-	stripe_color = COLOR_CYAN
+	stripe_color = COLOR_ATMOSPHERICS_CYAN
 
 /obj/machinery/door/airlock/medical
 	name = "Medical Airlock"
@@ -276,7 +276,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
-	stripe_color = COLOR_CYAN
+	stripe_color = COLOR_ATMOSPHERICS_CYAN
 	window_color = GLASS_COLOR
 
 /obj/machinery/door/airlock/glass/security
@@ -324,7 +324,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
-	stripe_color = COLOR_CYAN
+	stripe_color = COLOR_ATMOSPHERICS_CYAN
 
 /obj/machinery/door/airlock/research
 	name = "Research Airlock"
@@ -376,7 +376,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
-	stripe_color = COLOR_CYAN
+	stripe_color = COLOR_ATMOSPHERICS_CYAN
 	window_color = GLASS_COLOR
 
 

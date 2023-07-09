@@ -51,7 +51,7 @@
 #define COLOR_DARK_GREEN_GRAY           "#54654c"
 #define COLOR_DARK_BLUE_GRAY            "#3e4855"
 #define COLOR_SURGERY_BLUE              "#e0f2f6"
-#define COLOR_SUN                       "#ec8b2f"
+#define COLOR_SUN                       "#ed913b"
 #define COLOR_BLUE_LIGHT                "#33ccff"
 #define COLOR_BABY_BLUE                 "#a3d6f0"
 #define COLOR_ACID_CYAN                 "#00ffc8"
@@ -91,6 +91,7 @@
 #define COLOR_CRYSTAL                   "#00c8a5"
 #define COLOR_DIAMOND                   "#d8d4ea"
 #define COLOR_SECURITY_RED				"#b3363c"
+#define COLOR_ATMOSPHERICS_CYAN			"#66ffff"
 
 #define WOOD_COLOR_GENERIC     "#d5a66e"
 #define WOOD_COLOR_RICH        "#792f27"

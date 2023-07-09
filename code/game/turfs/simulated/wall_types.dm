@@ -458,8 +458,8 @@
 	color = COLOR_SUN
 
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos
-	stripe_color = COLOR_CYAN_DARK
-	color = COLOR_CYAN_DARK
+	stripe_color = COLOR_ATMOSPHERICS_CYAN
+	color = COLOR_ATMOSPHERICS_CYAN
 
 /turf/simulated/wall/r_wall/prepainted/civilian
 	stripe_color = COLOR_PALE_BTL_GREEN
@@ -506,8 +506,8 @@
 	color = COLOR_SUN
 
 /turf/simulated/wall/prepainted/engineering/atmos
-	stripe_color = COLOR_CYAN_DARK
-	color = COLOR_CYAN_DARK
+	stripe_color = COLOR_ATMOSPHERICS_CYAN
+	color = COLOR_ATMOSPHERICS_CYAN
 
 /turf/simulated/wall/prepainted/civilian
 	stripe_color = COLOR_PALE_BTL_GREEN
