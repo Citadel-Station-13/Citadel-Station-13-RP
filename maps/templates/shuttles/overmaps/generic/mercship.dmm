@@ -267,8 +267,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/med)
 "aJ" = (
-/obj/machinery/autolathe{
-	hacked = 1;
+/obj/machinery/lathe/autolathe{
 	name = "unlocked autolathe"
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -2920,8 +2919,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/mercenary/fighter)
 "fX" = (
-/obj/machinery/autolathe{
-	hacked = 1;
+/obj/machinery/lathe/autolathe{
 	name = "unlocked autolathe"
 	},
 /obj/effect/floor_decal/borderfloorblack{

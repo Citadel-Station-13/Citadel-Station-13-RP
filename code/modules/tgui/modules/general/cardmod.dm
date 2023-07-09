@@ -344,11 +344,13 @@
 		var/list/allowed = SSjob.editable_access_ids_by_id(id)
 		if(isnull(allowed))
 			continue
-		var/list/got = allowed & accesses
+		var/list/got = allowed & left
 		if(!length(got))
 			continue
 		left -= got
 		. += got
+		if(!length(left))
+			break
 
 /datum/tgui_module/card_mod/standard/auth_account_edit(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_number, new_number)
 	return (ACCESS_COMMAND_BANKING in authing?.access)

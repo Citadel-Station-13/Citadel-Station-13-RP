@@ -714,7 +714,6 @@
 			to_chat(user, SPAN_NOTICE("You do not have enough sheets."))
 			return
 
-
 /obj/structure/window/basic
 	desc = "It looks thin and flimsy. A few knocks with... almost anything, really should shatter it."
 	icon_state = "window"

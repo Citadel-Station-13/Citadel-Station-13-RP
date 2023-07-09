@@ -134,6 +134,12 @@ GLOBAL_LIST_EMPTY(asset_datums)
  * spritesheet implementation - coalesces various icons into a single .png file
  * and uses CSS to select icons out of that file - saves on transferring some
  * 1400-odd individual PNG files
+ *
+ * To use, use classes of "[name][size_key]" and the state name used in Insert().
+ * If you used InsertAll(), don't forget the prefix.
+ *
+ * Example: <div class='sheetmaterials32x32 glass-3'>
+ * In tgui, usually would be clsasName={classes(['sheetmaterials32x32', 'glass-3'])}
  */
 #define SPR_SIZE 1
 #define SPR_IDX  2
