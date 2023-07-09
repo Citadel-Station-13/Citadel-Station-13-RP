@@ -17,7 +17,7 @@
 	assembly_type = /obj/structure/door_assembly/door_assembly_sec
 	open_sound_powered = 'sound/machines/door/sec1o.ogg'
 	close_sound_powered = 'sound/machines/door/sec1c.ogg'
-	door_color = COLOR_MAROON
+	door_color = COLOR_SECURITY_RED
 
 /obj/machinery/door/airlock/engineering
 	name = "Engineering Airlock"

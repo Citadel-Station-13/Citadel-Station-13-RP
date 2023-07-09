@@ -445,8 +445,8 @@
 	color = COLOR_COMMAND_BLUE
 
 /turf/simulated/wall/r_wall/prepainted/security
-	stripe_color = COLOR_MAROON
-	color = COLOR_MAROON
+	stripe_color = COLOR_SECURITY_RED
+	color = COLOR_SECURITY_RED
 
 /turf/simulated/wall/r_wall/prepainted/medical
 	paint_color = COLOR_GRAY80
