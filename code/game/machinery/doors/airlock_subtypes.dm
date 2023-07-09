@@ -27,6 +27,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
+	stripe_color = COLOR_SUN
 
 /obj/machinery/door/airlock/engineeringatmos
 	name = "Atmospherics Airlock"
@@ -260,6 +261,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
+	stripe_color = COLOR_SUN
 	window_color = GLASS_COLOR
 
 /obj/machinery/door/airlock/glass/engineeringatmos
