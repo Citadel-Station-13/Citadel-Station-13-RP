@@ -37,7 +37,7 @@
 #define COLOR_NAVY_BLUE                 "#000080"
 #define COLOR_DARK_GRAY                 "#404040"
 #define COLOR_VIOLET                    "#9933ff"
-#define COLOR_EXPLO_VIOLET              "#410083"
+#define COLOR_EXPLO_VIOLET              "#604080"
 #define COLOR_BROWN_ORANGE              "#824b28"
 #define COLOR_GRAY40                    "#666666"
 #define COLOR_GRAY20                    "#333333"
