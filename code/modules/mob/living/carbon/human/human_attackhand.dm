@@ -350,20 +350,11 @@
 		success = TRUE
 		stop_pulling()
 
-	if(istype(l_hand, /obj/item/grab))
-		var/obj/item/grab/lgrab = l_hand
-		if(lgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [lgrab.affecting]!</span>")
+	for(var/obj/item/grab/grab as anything in get_held_items_of_type(/obj/item/grab))
+		if(grab.affecting)
+			visible_message("<span class='danger'>[user] has broken [src]'s grip on [grab.affecting]!</span>")
 			success = TRUE
-		spawn(1)
-			qdel(lgrab)
-	if(istype(r_hand, /obj/item/grab))
-		var/obj/item/grab/rgrab = r_hand
-		if(rgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [rgrab.affecting]!</span>")
-			success = TRUE
-		spawn(1)
-			qdel(rgrab)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), grab)
 	return success
 
 /*
