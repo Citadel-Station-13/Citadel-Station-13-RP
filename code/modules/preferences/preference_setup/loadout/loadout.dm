@@ -25,23 +25,39 @@
 	var/list/slots = sanitize_islist(data)
 	if(length(slots) > LOADOUT_MAX_SLOTS)
 		slots.len = LOADOUT_MAX_SLOTS
+	var/list/datum/loadout_entry/valid_entries = valid_loadout_entries(prefs)
+	var/total_cost = max_loadout_cost()
 	for(var/i in 1 to LOADOUT_MAX_SLOTS)
 		var/numkey = num2text(i)
 		if(isnull(slots[numkey]))
 			continue
 		var/list/slot = (slots[numkey] = sanitize_islist(slots[numkey]))
+		var/list/dedupe = list()
 		if(length(slot) > LOADOUT_MAX_ITEMS)
 			slot.len = LOADOUT_MAX_ITEMS
+		var/used_cost = 0
 		for(var/id in slot)
 			var/datum/loadout_entry/entry = GLOB.gear_datums[id]
 			if(isnull(entry))
 				slot -= id
 				errors?.Add("Could not find loadout entry id '[id]'")
 				continue
-			if(!check_loadout_entry(prefs))
+			if(dedupe[id])
+				slot -= id
+				errors?.Add("Fatal: Removed duplicate loadout entry for id '[id]'")
+				continue
+			else
+				dedupe[id] = TRUE
+			if(!(entry in valid_entries))
 				slot -= id
 				errors?.Add("Not allowed to take loadout entry id '[id]")
 				continue
+			if(entry.cost + used_cost > total_cost)
+				slot -= id
+				errors?.Add("Out of cost to take loadout entry '[id]'")
+				continue
+			else
+				used_cost += entry.cost
 			// commented out - /datum/loadout_entry checks this on spawn.
 			/*
 			var/list/entry_data = slot[id]
@@ -64,11 +80,24 @@
 			*/
 
 /datum/category_item/player_setup_item/loadout/proc/check_loadout_entry(datum/preferences/prefs, datum/loadout_entry/entry)
-
-	#warn impl
+	if(entry.legacy_species_lock && (entry.legacy_species_lock != prefs.real_species_name()))
+		return FALSE
+	if(entry.ckeywhitelist && (prefs.client_ckey != entry.ckeywhitelist))
+		return FALSE
+	return TRUE
 
 /datum/category_item/player_setup_item/loadout/proc/valid_loadout_entries(datum/preferences/prefs)
-	#warn impl
+	RETURN_TYPE(/list)
+	. = list()
+	var/datum/species/real_species = prefs.real_species_datum()
+	var/real_species_name = real_species.name
+	for(var/entry_name in gear_datums)
+		var/datum/loadout_entry/entry = gear_datums[entry_name]
+		if(entry.legacy_species_lock && (entry.legacy_species_lock != real_species_name))
+			continue
+		if(entry.ckeywhitelist && (prefs.client_ckey != entry.ckeywhitelist))
+			continue
+		. += entry
 
 /datum/category_item/player_setup_item/loadout/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -85,53 +114,6 @@
 /datum/category_item/player_setup_item/loadout/load_character(savefile/S)
 	// LITERALLY JUST A SHIM TO TRIGGER UI UPDATES.
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, update_static_data)), 0)
-
-/datum/category_item/player_setup_item/loadout/proc/valid_gear_choices(datum/preferences/prefs ,max_cost)
-	. = list()
-	var/mob/preference_mob = preference_mob()
-	// todo: loadouts should use char species UID
-	var/real_species_name = prefs.real_species_name()
-	for(var/gear_name in gear_datums)
-		var/datum/loadout_entry/G = gear_datums[gear_name]
-		if(G.legacy_species_lock)
-			if(G.legacy_species_lock != real_species_name)
-				continue
-		if(max_cost && G.cost > max_cost)
-			continue
-		if(preference_mob && preference_mob.client)
-			if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))
-				continue
-			if(G.character_name && !(preference_mob.client.prefs.real_name in G.character_name))
-				continue
-		. += gear_name
-
-/datum/category_item/player_setup_item/loadout/sanitize_character()
-	var/mob/preference_mob = preference_mob()
-	if(!islist(pref.gear))
-		pref.gear = list()
-	if(!islist(pref.gear_list))
-		pref.gear_list = list()
-
-	for(var/gear_name in pref.gear)
-		if(!(gear_name in gear_datums))
-			pref.gear -= gear_name
-	var/total_cost = 0
-	var/list/valid = valid_gear_choices(pref)
-	for(var/gear_name in pref.gear)
-
-		if(!gear_datums[gear_name])
-			to_chat(preference_mob, SPAN_WARNING("You cannot have more than one of the \the [gear_name]"))
-			pref.gear -= gear_name
-		else if(!(gear_name in valid))
-			to_chat(preference_mob, SPAN_WARNING("You cannot take \the [gear_name] as you are not whitelisted for the species or item."))
-			pref.gear -= gear_name
-		else
-			var/datum/loadout_entry/G = gear_datums[gear_name]
-			if(total_cost + G.cost > max_loadout_cost())
-				pref.gear -= gear_name
-				to_chat(preference_mob, SPAN_WARNING("You cannot afford to take \the [gear_name]"))
-			else
-				total_cost += G.cost
 
 /datum/category_item/player_setup_item/loadout/content(datum/preferences/prefs, mob/user, data)
 	. = list()
@@ -275,3 +257,10 @@
 		var/datum/holiday/H = SSevents.holidays[name]
 		if(H.loadout_spam)
 			return LOADOUT_MAX_COST_HOLIDAY_SPAM
+
+/**
+ * generate list of gear entry datums associated to data
+ */
+/datum/preferences/proc/generate_loadout_entry_list()
+	RETURN_TYPE(/list)
+	#warn impl

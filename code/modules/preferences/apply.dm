@@ -83,9 +83,13 @@
 		return
 	//! end
 
+	// check allow storage spawns
 	if(isnull(allow_storage_spawn))
 		// by default, we only spawn stuff in backpack if they're actually spawning in.
 		allow_storage_spawn = PREF_COPYING_TO_CHECK_IS_SPAWNING(flags)
+
+	// generate gear datum + data list
+	#warn impl
 
 	//Equip custom gear loadout.
 	var/list/custom_equip_slots = list()
@@ -135,15 +139,43 @@
 				custom_equip_slots.Add(G.slot)
 
 /**
+ * helper to build loadout list
+ *
+ * input is list of entries to instance associated to data
+ *
+ * return list of instances associated to slot id or null; null means it should be put in storage.
+ */
+/datum/preferences/proc/instance_loadout_items(list/datum/loadout_entry/entries)
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/datum/loadout_entry/entry as anything in entries)
+		var/slot = entry.slot
+		if(ispath(slot, /datum/inventory_slot_meta))
+			var/datum/inventory_slot_meta/casted_slot = slot
+			slot = initial(casted_slot.id)
+		.[entry.instantiate(entries[entry])] = slot
+
+/**
  * helper to try to equip loadout stuff to slots
  *
  * input list should be associated to slot IDs.
+ *
+ * returns list of failed items
  */
-/datum/preferences/proc/equip_loadout_to_slots(list/stuff)
+/datum/preferences/proc/equip_loadout_to_slots(mob/target, list/stuff)
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/obj/item/thing as anything in stuff)
+		#warn impl
+
 
 /**
  * helper to try to stuff loadout stuff into storage
+ *
+ * returns list of failed items
  */
-/datum/preferences/proc/equip_loadout_to_storage(list/obj/item/items)
-
-#warn impl all
+/datum/preferences/proc/equip_loadout_to_storage(mob/target, list/obj/item/items)
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/obj/item/thing as anything in items)
+		#warn impl
