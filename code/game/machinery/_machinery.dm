@@ -116,6 +116,13 @@
 	/// Can be anchored / unanchored by players without deconstructing by default with a wrench. null for off, number for time needed.
 	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
 	var/default_unanchor
+	/// tool used for deconstruction
+	var/tool_deconstruct = TOOL_CROWBAR
+	/// tool used for panel open
+	var/tool_panel = TOOL_SCREWDRIVER
+	/// tool used for unanchor
+	var/tool_unanchor = TOOL_WRENCH
+	#warn impl 3 above + impl for atmospherics
 	/// default icon state overlay for panel open
 	var/panel_icon_state
 	/// is the maintenance panel open?

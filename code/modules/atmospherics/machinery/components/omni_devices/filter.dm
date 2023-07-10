@@ -1,6 +1,9 @@
 //--------------------------------------------
 // Gas filter - omni variant
 //--------------------------------------------
+
+// todo: refactor omni, and add gas group support for filters.
+
 /obj/machinery/atmospherics/component/quaternary/atmos_filter
 	name = "omni gas filter"
 	icon_state = "map_filter"
@@ -18,8 +21,6 @@
 	var/set_flow_rate = 200
 
 	var/list/filtering_outputs = list()	//maps gasids to gas_mixtures
-
-#warn groups
 
 /obj/machinery/atmospherics/component/quaternary/atmos_filter/Initialize(mapload)
 	. = ..()

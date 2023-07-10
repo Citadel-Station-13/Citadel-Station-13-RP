@@ -343,3 +343,34 @@
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on/welded
 	welded = 1
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/retro
+	icon_state = "map_scrubber_off"	/// Will get replaced on mapload
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on
+	use_power = USE_POWER_IDLE
+	icon_state = "map_scrubber_on"
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on/welded
+	welded = 1
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/retro/update_icon(safety = 0)
+	if(!check_icon_cache())
+		return
+
+	cut_overlays()
+
+	var/scrubber_icon = "scrubber"
+
+	var/turf/T = get_turf(src)
+	if(!istype(T))
+		return
+
+	if(welded)
+		scrubber_icon += "retro_weld"
+	else if(!powered())
+		scrubber_icon += "retro_off"
+	else
+		scrubber_icon += "[use_power ? "[scrubbing ? "retro_on" : "retro_in"]" : "retro_off"]"
+
+	add_overlay(icon_manager.get_atmos_icon("device", , , scrubber_icon))

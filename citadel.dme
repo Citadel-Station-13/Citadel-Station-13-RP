@@ -2203,7 +2203,6 @@
 #include "code\modules\atmospherics\machinery\components\unary\outlet_injector.dm"
 #include "code\modules\atmospherics\machinery\components\unary\oxygen_generator.dm"
 #include "code\modules\atmospherics\machinery\components\unary\portables_connector.dm"
-#include "code\modules\atmospherics\machinery\components\unary\retro_pump_and_scrubber.dm"
 #include "code\modules\atmospherics\machinery\components\unary\unary_base.dm"
 #include "code\modules\atmospherics\machinery\components\unary\vent_pump.dm"
 #include "code\modules\atmospherics\machinery\components\unary\vent_scrubber.dm"

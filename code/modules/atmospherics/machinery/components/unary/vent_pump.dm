@@ -169,14 +169,14 @@
 	var/environment_pressure = environment.return_pressure()
 
 	if(pump_direction) //internal -> external
-		if(pressure_checks & PRESSURE_CHECK_EXTERNAL)
+		if(pressure_checks & ATMOS_VENT_CHECK_EXTERNAL)
 			pressure_delta = min(pressure_delta, external_pressure_bound - environment_pressure) //increasing the pressure here
-		if(pressure_checks & PRESSURE_CHECK_INTERNAL)
+		if(pressure_checks & ATMOS_VENT_CHECK_INTERNAL)
 			pressure_delta = min(pressure_delta, air_contents.return_pressure() - internal_pressure_bound) //decreasing the pressure here
 	else //external -> internal
-		if(pressure_checks & PRESSURE_CHECK_EXTERNAL)
+		if(pressure_checks & ATMOS_VENT_CHECK_EXTERNAL)
 			pressure_delta = min(pressure_delta, environment_pressure - external_pressure_bound) //decreasing the pressure here
-		if(pressure_checks & PRESSURE_CHECK_INTERNAL)
+		if(pressure_checks & ATMOS_VENT_CHECK_INTERNAL)
 			pressure_delta = min(pressure_delta, internal_pressure_bound - air_contents.return_pressure()) //increasing the pressure here
 
 	return pressure_delta
@@ -483,6 +483,40 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/engine/Initialize(mapload)
 	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 500 //meant to match air injector
+
+/obj/machinery/atmospherics/component/unary/vent_pump/retro
+	icon_state = "map_vent"
+
+/obj/machinery/atmospherics/component/unary/vent_pump/retro/on
+	use_power = USE_POWER_IDLE
+	icon_state = "map_vent_out"
+
+/obj/machinery/atmospherics/component/unary/vent_pump/retro/on/welded
+	welded = 1
+
+/obj/machinery/atmospherics/component/unary/vent_pump/retro/update_icon(safety = 0)
+	if(!check_icon_cache())
+		return
+
+	cut_overlays()
+
+	var/vent_icon = "vent"
+
+	var/turf/T = get_turf(src)
+	if(!istype(T))
+		return
+
+	if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+		vent_icon += "h"
+
+	if(welded)
+		vent_icon += "retro_weld"
+	else if(!use_power || !node || (machine_stat & (NOPOWER|BROKEN)))
+		vent_icon += "retro_off"
+	else
+		vent_icon += "[pump_direction ? "retro_out" : "retro_in"]"
+
+	add_overlay(icon_manager.get_atmos_icon("device", , , vent_icon))
 
 #undef DEFAULT_PRESSURE_DELTA
 
