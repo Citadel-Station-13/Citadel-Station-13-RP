@@ -123,6 +123,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
 	TLV["pressure"] =		list(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE * 0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20) /* kpa */
 	TLV["temperature"] =	list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
+	setDir(dir)
 
 /obj/machinery/alarm/Initialize(mapload)
 	. = ..()
@@ -326,6 +327,23 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			alarm_area.master_air_alarm = AA
 			return TRUE
 	return FALSE
+
+/obj/machinery/alarm/setDir(ndir)
+	. = ..()
+	base_pixel_x = 0
+	base_pixel_y = 0
+	var/turf/T = get_step(get_turf(src), turn(dir, 180))
+	if(istype(T) && T.density)
+		switch(dir)
+			if(NORTH)
+				base_pixel_y = -21
+			if(SOUTH)
+				base_pixel_y = 21
+			if(WEST)
+				base_pixel_x = 21
+			if(EAST)
+				base_pixel_x = -21
+	reset_pixel_offsets()
 
 /obj/machinery/alarm/update_icon()
 	cut_overlays()

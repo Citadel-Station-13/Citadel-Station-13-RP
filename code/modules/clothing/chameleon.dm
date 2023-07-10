@@ -429,7 +429,7 @@
 	icon_state = "deagle"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
-	matter = list()
+	materials = list()
 
 	fire_sound = 'sound/weapons/Gunshot1.ogg'
 	projectile_type = /obj/projectile/chameleon

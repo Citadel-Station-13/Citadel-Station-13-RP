@@ -152,7 +152,7 @@
 /area/tether/midpoint)
 "qD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -200,7 +200,7 @@
 /area/maintenance/tether_midpoint)
 "tl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/structure/cable{
@@ -240,7 +240,7 @@
 /area/tether/midpoint)
 "vC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},

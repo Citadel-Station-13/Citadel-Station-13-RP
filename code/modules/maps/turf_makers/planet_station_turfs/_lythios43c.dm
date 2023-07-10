@@ -59,6 +59,25 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/ignore_cavegen)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 
 
+/turf/simulated/mineral/icerock/lythios43c/make_floor()
+	if(!density && !opacity)
+		return
+	density = FALSE
+	opacity = FALSE
+	recalc_atom_opacity()
+	reconsider_lights()
+	regenerate_ao()
+	blocks_air = FALSE
+	can_build_into_floor = TRUE
+	smoothing_groups = (SMOOTH_GROUP_FLOOR_SNOW)
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_state = "asteroid"
+	color = LIGHT_COLOR_BLUE
+	queue_zone_update()
+	QUEUE_SMOOTH(src)
+	QUEUE_SMOOTH_NEIGHBORS(src)
+
+
 /turf/simulated/open/lythios43c
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
 
@@ -85,11 +104,19 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
 	outdoors = FALSE
 
+/turf/simulated/floor/outdoors/icesand/lythios43c/indoor
+	outdoors = FALSE
+	smoothing_groups = (SMOOTH_GROUP_FLOOR_SNOW)
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_state = "asteroid"
+	color = LIGHT_COLOR_BLUE
+
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 	outdoors = FALSE
 
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen	// I hate having to make such a long typepath for this, very annyoing -Bloop
 	ignore_cavegen = TRUE
+	smoothing_groups = (SMOOTH_GROUP_FLOOR_SNOW)
 
 /turf/simulated/floor/lythios43c/indoors
 	outdoors = FALSE

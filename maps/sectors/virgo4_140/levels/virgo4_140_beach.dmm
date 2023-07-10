@@ -1900,7 +1900,7 @@
 /turf/simulated/floor/outdoors/grass,
 /area/tether_away/beach/cavebase)
 "ST" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "First Aid Staton";
 	req_one_access = list()
 	},
