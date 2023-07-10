@@ -3,7 +3,7 @@
  * @license MIT
  */
 export type AtmosGasID = string;
-export type AtmosGasGroup = string;
+export type AtmosGasGroups = AtmosGroupFlags;
 
 export enum AtmosGasFlags {
   None = (0),
@@ -17,9 +17,17 @@ export enum AtmosGasFlags {
   Dangerous = (1<<7),
 }
 
+export enum AtmosGroupFlags {
+  None = (0),
+  Core = (1<<0),
+  Unknown = (1<<1),
+  Chemical = (1<<2),
+  Other = (1<<3),
+}
+
 interface BaseGasContext {
   coreGases: AtmosGasID[];
-  groups: AtmosGasGroup[];
+  groupNames: string[];
 }
 
 export interface GasContext extends BaseGasContext {
@@ -34,7 +42,7 @@ export interface AtmosGas {
   id: AtmosGasID;
   name: string;
   flags: AtmosGasFlags;
-  groups: AtmosGasGroup[];
+  groups: AtmosGasGroups;
   specificHeat: number;
   molarMass: number;
 }

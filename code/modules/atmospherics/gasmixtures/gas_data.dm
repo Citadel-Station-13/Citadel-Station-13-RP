@@ -130,7 +130,7 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	rarities[G.id] = G.rarity
 	//? rebuild cheap cache lists
 	//* gas groups
-	for(var/group in G.gas_groups)
+	for(var/group in bitfield2list(G.gas_groups))
 		LAZYINITLIST(gas_by_group[group])
 		LAZYDISTINCTADD(gas_by_group[group], G.id)
 	//* gas flags
@@ -155,8 +155,7 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	.["gases"] = gases
 	var/list/core_ids = list()
 	.["coreGases"] = core_ids
-	var/list/groups = list()
-	.["groups"] = groups
+	.["groupNames"] = global.gas_group_names
 	for(var/id in (ids || gases))
 		var/datum/gas/instance = gases[id]
 		if(isnull(instance))
@@ -171,7 +170,7 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 		)
 		if(instance.gas_flags & GAS_FLAG_CORE)
 			core_ids |= instance.id
-		groups |= instance.gas_groups
+
 
 /**
  * gets tgui gas context for all non-unknown gasses

@@ -35,7 +35,7 @@
 		transfer_moles = min(source.total_moles, transfer_moles)
 
 	//Calculate the amount of energy required and limit transfer_moles based on available power
-	var/specific_power = calculate_specific_power(source, sink)/ATMOS_PUMP_EFFICIENCY //this has to be calculated before we modify any gas mixtures
+	var/specific_power = calculate_specific_power(source, sink)/ATMOS_ABSTRACT_PUMP_EFFICIENCY //this has to be calculated before we modify any gas mixtures
 	if (!isnull(available_power) && specific_power > 0)//specific_power > 0 means we need to use power to move moles, otherwise we can get away with just letting it flow passive
 		transfer_moles = min(transfer_moles, available_power / specific_power)
 
@@ -108,7 +108,7 @@
 //total_transfer_moles - Limits the amount of moles to scrub. The actual amount of gas scrubbed may also be limited by available_power, if given.
 //available_power - the maximum amount of power that may be used when scrubbing gas. If null then the scrubbing is not limited by power.
 /proc/scrub_gas(var/obj/machinery/M, var/list/filtering, var/datum/gas_mixture/source, var/datum/gas_mixture/sink, var/total_transfer_moles = null, var/available_power = null)
-	if (source.total_moles < MINIMUM_MOLES_TO_FILTER) //if we cant transfer enough gas just stop to avoid further processing
+	if (source.total_moles < MINIMUM_MOLES_TO_SCRUB) //if we cant transfer enough gas just stop to avoid further processing
 		return -1
 
 	filtering = filtering & source.gas	//only filter gasses that are actually there. DO NOT USE &=
@@ -117,14 +117,14 @@
 	var/total_filterable_moles = 0			//the total amount of filterable gas
 	var/list/specific_power_gas = list()	//the power required to remove one mole of pure gas, for each gas type
 	for (var/g in filtering)
-		if (source.gas[g] < MINIMUM_MOLES_TO_FILTER)
+		if (source.gas[g] < MINIMUM_MOLES_TO_SCRUB)
 			continue
 
-		var/specific_power = calculate_specific_power_gas(g, source, sink)/ATMOS_FILTER_EFFICIENCY
+		var/specific_power = calculate_specific_power_gas(g, source, sink)/ATMOS_ABSTRACT_SCRUB_EFFICIENCY
 		specific_power_gas[g] = specific_power
 		total_filterable_moles += source.gas[g]
 
-	if (total_filterable_moles < MINIMUM_MOLES_TO_FILTER) //if we cant transfer enough gas just stop to avoid further processing
+	if (total_filterable_moles < MINIMUM_MOLES_TO_SCRUB) //if we cant transfer enough gas just stop to avoid further processing
 		return -1
 
 	//now that we know the total amount of filterable gas, we can calculate the amount of power needed to scrub one mole of gas
@@ -143,7 +143,7 @@
 	if (!isnull(available_power) && total_specific_power > 0)
 		total_transfer_moles = min(total_transfer_moles, available_power/total_specific_power)
 
-	if (total_transfer_moles < MINIMUM_MOLES_TO_FILTER) //if we cant transfer enough gas just stop to avoid further processing
+	if (total_transfer_moles < MINIMUM_MOLES_TO_SCRUB) //if we cant transfer enough gas just stop to avoid further processing
 		return -1
 
 	//Update flow rate var
@@ -193,10 +193,10 @@
 			continue
 
 		if (g in filtering)
-			specific_power_gas[g] = calculate_specific_power_gas(g, source, sink_filtered)/ATMOS_FILTER_EFFICIENCY
+			specific_power_gas[g] = calculate_specific_power_gas(g, source, sink_filtered)/ATMOS_ABSTRACT_FILTER_EFFICIENCY
 			total_filterable_moles += source.gas[g]
 		else
-			specific_power_gas[g] = calculate_specific_power_gas(g, source, sink_clean)/ATMOS_FILTER_EFFICIENCY
+			specific_power_gas[g] = calculate_specific_power_gas(g, source, sink_clean)/ATMOS_ABSTRACT_FILTER_EFFICIENCY
 			total_unfilterable_moles += source.gas[g]
 
 		var/ratio = source.gas[g]/source.total_moles //converts the specific power per mole of pure gas to specific power per mole of input gas mix
@@ -266,10 +266,10 @@
 
 		if (g in filtering)
 			var/datum/gas_mixture/sink_filtered = filtering[g]
-			specific_power_gas[g] = calculate_specific_power_gas(g, source, sink_filtered)/ATMOS_FILTER_EFFICIENCY
+			specific_power_gas[g] = calculate_specific_power_gas(g, source, sink_filtered)/ATMOS_ABSTRACT_FILTER_EFFICIENCY
 			total_filterable_moles += source.gas[g]
 		else
-			specific_power_gas[g] = calculate_specific_power_gas(g, source, sink_clean)/ATMOS_FILTER_EFFICIENCY
+			specific_power_gas[g] = calculate_specific_power_gas(g, source, sink_clean)/ATMOS_ABSTRACT_FILTER_EFFICIENCY
 			total_unfilterable_moles += source.gas[g]
 
 		var/ratio = source.gas[g]/source.total_moles //converts the specific power per mole of pure gas to specific power per mole of input gas mix
@@ -349,7 +349,7 @@
 		if (isnull(total_mixing_moles) || total_mixing_moles > this_mixing_moles)
 			total_mixing_moles = this_mixing_moles
 
-		source_specific_power[source] = calculate_specific_power(source, sink)*mix_ratio/ATMOS_FILTER_EFFICIENCY
+		source_specific_power[source] = calculate_specific_power(source, sink)*mix_ratio/ATMOS_ABSTRACT_FILTER_EFFICIENCY
 		total_specific_power += source_specific_power[source]
 		total_input_volume += source.volume
 		total_input_moles += source.total_moles
@@ -411,7 +411,8 @@
 
 	return specific_power
 
-//Calculates the amount of power needed to move one mole of a certain gas from source to sink.
+// Calculates the amount of power needed to move one mole of a certain gas from source to sink.
+// returns wattage
 /proc/calculate_specific_power_gas(var/gasid, datum/gas_mixture/source, datum/gas_mixture/sink)
 	//Calculate the amount of energy required
 	var/air_temperature = (sink.temperature > 0)? sink.temperature : source.temperature

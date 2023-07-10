@@ -96,42 +96,6 @@
 
 	update_values()
 
-#warn impl this microoptimization
-/**
- * merges all the gas from another mixture into this one, taking into accounts contents amount
- *
- * this does not take group multiplier into account! our_multiplier is passed in externally.
- * used for ZAS; assumes all tiles are same size
- * assumes giver is same volume, and a multiplier of **1**.
- * does not modify giver
- */
-/datum/gas_mixture/proc/tile_incrementing_merge(datum/gas_mixture/giver, our_multiplier)
-    var/self_heat_capacity = heat_capacity() * our_multiplier
-    var/giver_heat_capacity = giver.heat_capacity()
-    var/combined_heat_capacity = giver_heat_capacity + self_heat_capacity
-    if(combined_heat_capacity != 0)
-        temperature = (giver.temperature * giver_heat_capacity + temperature * self_heat_capacity) / combined_heat_capacity
-    var/list/our_gas = src.gas
-    var/list/their_gas = giver.gas
-    if(our_multiplier == 1)
-        for(var/id in their_gas)
-            our_gas[id] += their_gas[id] * (1 / 2)
-    else
-        var/factor = 1 / (our_multiplier + 1)
-        for(var/id in their_gas)
-            our_gas[id] += (their_gas[id] - our_gas[id]) * factor
-    update_values()
-
-#warn impl this microopt
-/**
- * adds a tile's worth of air and increments air group multiplier
- */
-/datum/zas_zone/proc/add_tile_and_merge_air(turf/T)
-    var/datum/gas_mixture/turf_air = T.return_air()
-    air.tile_incrementing_merge(turf_air, contents.len)
-    air.group_multiplier = contents.len + 1
-    contents += T
-
 // Used to equalize the mixture between two zones before sleeping an edge.
 /datum/gas_mixture/proc/equalize(datum/gas_mixture/sharer)
 	var/our_heatcap = heat_capacity()

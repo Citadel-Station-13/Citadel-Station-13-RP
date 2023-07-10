@@ -20,7 +20,7 @@ export enum AtmosVentPressureChecks {
   External = (1<<1),
 }
 
-interface AtmosVentState {
+export interface AtmosVentState {
   pressureChecks: AtmosVentPressureChecks;
   internalPressure: number;
   externalPressure: number;

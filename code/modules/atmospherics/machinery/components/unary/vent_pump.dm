@@ -17,8 +17,8 @@
 
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SUPPLY //connects to regular and supply pipes
 
-	var/area/initial_loc
 	level = 1
+	var/area/initial_loc
 	var/area_uid
 	var/id_tag = null
 
@@ -69,40 +69,6 @@
 		initial_loc.air_vent_names -= id_tag
 	//QDEL_NULL(soundloop)
 	return ..()
-
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume
-	name = "Large Air Vent"
-	power_channel = EQUIP
-	power_rating = 45000
-
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux
-	icon_state = "map_vent_aux"
-	icon_connect_type = "-aux"
-	connect_types = CONNECT_TYPE_AUX //connects to aux pipes
-
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/Initialize(mapload)
-	. = ..()
-	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 800
-
-// Wall mounted vents
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/wall_mounted
-	name = "Wall Mounted Air Vent"
-
-// Return the air from the turf in "front" of us (opposite the way the pipe is facing)
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/wall_mounted/return_air()
-	var/turf/T = get_step(src, global.reverse_dir[dir])
-	if(isnull(T))
-		return ..()
-	return T.return_air()
-
-/obj/machinery/atmospherics/component/unary/vent_pump/engine
-	name = "Engine Core Vent"
-	power_channel = ENVIRON
-	power_rating = 30000	//15 kW ~ 20 HP
-
-/obj/machinery/atmospherics/component/unary/vent_pump/engine/Initialize(mapload)
-	. = ..()
-	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 500 //meant to match air injector
 
 /obj/machinery/atmospherics/component/unary/vent_pump/update_icon(safety = 0)
 	if(!check_icon_cache())
@@ -247,7 +213,6 @@
 	radio_connection.post_signal(src, signal, radio_filter_out)
 
 	return 1
-
 
 /obj/machinery/atmospherics/component/unary/vent_pump/atmos_init()
 	..()
@@ -484,6 +449,40 @@
 	internal_pressure_bound_default = 2000
 	pressure_checks = 2
 	pressure_checks_default = 2
+
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume
+	name = "Large Air Vent"
+	power_channel = EQUIP
+	power_rating = 45000
+
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux
+	icon_state = "map_vent_aux"
+	icon_connect_type = "-aux"
+	connect_types = CONNECT_TYPE_AUX //connects to aux pipes
+
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/Initialize(mapload)
+	. = ..()
+	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 800
+
+// Wall mounted vents
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/wall_mounted
+	name = "Wall Mounted Air Vent"
+
+// Return the air from the turf in "front" of us (opposite the way the pipe is facing)
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/wall_mounted/return_air()
+	var/turf/T = get_step(src, global.reverse_dir[dir])
+	if(isnull(T))
+		return ..()
+	return T.return_air()
+
+/obj/machinery/atmospherics/component/unary/vent_pump/engine
+	name = "Engine Core Vent"
+	power_channel = ENVIRON
+	power_rating = 30000	//15 kW ~ 20 HP
+
+/obj/machinery/atmospherics/component/unary/vent_pump/engine/Initialize(mapload)
+	. = ..()
+	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 500 //meant to match air injector
 
 #undef DEFAULT_PRESSURE_DELTA
 

@@ -9,6 +9,13 @@ export const AtmosScrubberControl = (props: AtmosScrubberControlProps) => {
 
 }
 
+export interface AtmosScrubberState {
+  // are we on siphon mode
+  siphon: boolean;
+  // are we on high power mode
+  overclock: boolean;
+}
+
 interface AtmosScrubberData {
 
 }

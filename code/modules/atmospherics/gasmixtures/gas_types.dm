@@ -14,8 +14,8 @@
 	var/name = "Unnamed Gas"
 	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
 	var/gas_flags = GAS_FLAG_FILTERABLE
-	/// gas group - list support can be added later
-	var/list/gas_groups = list()
+	/// gas group - flag
+	var/gas_groups = GAS_GROUP_UNKNOWN
 
 	//! physics
 	/// Specific heat in J/(mol*K)
