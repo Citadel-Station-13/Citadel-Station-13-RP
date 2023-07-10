@@ -9,10 +9,6 @@
 	name = "Eyepatch (Recolorable)"
 	path = /obj/item/clothing/glasses/eyepatchwhite
 
-/datum/loadout_entry/eyes/eyepatchwhite/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/eyes/glasses/tinted
 	display_name = "Tinted Glasses Selection"
 	path = /obj/item/clothing/glasses/tinted

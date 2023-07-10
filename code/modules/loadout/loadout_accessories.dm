@@ -23,11 +23,6 @@
 	name = "Armband - Colorable"
 	path = /obj/item/clothing/accessory/armband/med/color
 
-/datum/loadout_entry/accessory/armband/colored/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
-
 /datum/loadout_entry/accessory/insignia
 	name = "Insignia Selection"
 	path = /obj/item/clothing/accessory/oricon/department
@@ -81,8 +76,6 @@
 	insignia["Colorable - Bands"] = /obj/item/clothing/accessory/oricon/department/colorable/fleet
 	insignia["Colorable - Echelons"] = /obj/item/clothing/accessory/oricon/department/colorable/marine
 	tweaks += new/datum/loadout_tweak/path(insignia)
-	tweaks += gear_tweak_free_color_choice
-
 
 /datum/loadout_entry/accessory/wallet
 	name = "Wallet - Orange"
@@ -99,27 +92,15 @@
 	path = /obj/item/storage/wallet/womens
 	cost = 0
 
-/datum/loadout_entry/accessory/wallet/womens/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/accessory/clutch
 	name = "Clutch Bag"
 	path = /obj/item/storage/briefcase/clutch
 	cost = 2
 
-/datum/loadout_entry/accessory/clutch/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/accessory/purse
 	name = "Purse"
 	path = /obj/item/storage/backpack/purse
 	cost = 3
-
-/datum/loadout_entry/accessory/purse/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/accessory/wcoat
 	name = "Waistcoat - Selection"
@@ -160,10 +141,6 @@
 /datum/loadout_entry/accessory/scarfcolor
 	name = "Scarf Colorable"
 	path = /obj/item/clothing/accessory/scarf/white
-
-/datum/loadout_entry/accessory/scarfcolor/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/accessory/jacket
 	name = "Suit Jacket Selection"
@@ -309,10 +286,6 @@
 	name = "Sash - Colorable"
 	path = /obj/item/clothing/accessory/sash
 
-/datum/loadout_entry/accessory/sash/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/accessory/asym
 	name = "Asymmetric Jacket - Selection"
 	path = /obj/item/clothing/accessory/asymmetric
@@ -334,10 +307,6 @@
 	path = /obj/item/clothing/accessory/choker
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 	sort_category = LOADOUT_CATEGORY_ACCESSORIES
-
-/datum/loadout_entry/choker/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/collar
 	name = "Collar - Silver"
@@ -403,10 +372,6 @@
 	description = "Wearing suspenders over shoulders? That's been so out for centuries and you know better."
 	path = /obj/item/clothing/accessory/flops
 
-/datum/loadout_entry/accessory/flops/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/accessory/gaiter
 	name = "Neck Gaiter - Selection"
 	path = /obj/item/clothing/accessory/gaiter
@@ -427,10 +392,6 @@
 	name = "Button Up Shirt"
 	path = /obj/item/clothing/accessory/buttonup
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-
-/datum/loadout_entry/accessory/buttonup/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/accessory/buttonup/untucked
 	name = "Button Up Shirt - Untucked"

@@ -159,18 +159,10 @@
 	path = /obj/item/wheelchair
 	cost = 4
 
-/datum/loadout_entry/utility/wheelchair/color/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/utility/umbrella
 	name = "Umbrella"
 	path = /obj/item/melee/umbrella
 	cost = 3
-
-/datum/loadout_entry/utility/umbrella/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /****************
 modular computers

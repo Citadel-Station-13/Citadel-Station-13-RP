@@ -200,34 +200,7 @@
 	var/datum/role/job/previewJob = SSjob.job_by_id(preview_job_id())
 
 	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/role/job/station/ai || previewJob.type == /datum/role/job/station/cyborg)))
-		var/list/equipped_slots = list()
-		for(var/thing in gear)
-			var/datum/loadout_entry/G = gear_datums[thing]
-			if(G)
-				var/permitted = 0
-				if(!G.allowed_roles)
-					permitted = 1
-				else if(!previewJob)
-					permitted = 0
-				else
-					for(var/job_name in G.allowed_roles)
-						if(previewJob.title == job_name)
-							permitted = 1
-
-				if(G.legacy_species_lock && (G.legacy_species_lock != mannequin.species.name))
-					permitted = 0
-
-				if(!permitted)
-					continue
-
-				if(G.slot && !(G.slot in equipped_slots))
-					var/metadata = gear[G.display_name]
-					if(G.slot == "implant")
-						// todo: remove fucking snowflake
-						continue
-					if(mannequin.force_equip_to_slot_or_del(G.spawn_item(mannequin, metadata), G.slot, INV_OP_SILENT))
-						if(G.slot != /datum/inventory_slot_meta/abstract/attach_as_accessory)
-							equipped_slots += G.slot
+		equip_loadout(mannequin, flags, previewJob)
 
 	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)
 		mannequin.job = previewJob.title

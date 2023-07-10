@@ -105,33 +105,17 @@
 	name = "Flip Flops"
 	path = /obj/item/clothing/shoes/flipflop
 
-/datum/loadout_entry/shoes/flipflops/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/shoes/athletic
 	name = "Athletic Shoes"
 	path = /obj/item/clothing/shoes/athletic
-
-/datum/loadout_entry/shoes/athletic/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/shoes/skater
 	name = "Skater Shoes"
 	path = /obj/item/clothing/shoes/skater
 
-/datum/loadout_entry/shoes/skater/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/shoes/flats
 	name = "Flats"
 	path = /obj/item/clothing/shoes/flats/white/color
-
-/datum/loadout_entry/shoes/flats/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/shoes/cowboy
 	name = "Cowboy Boots"
@@ -166,10 +150,6 @@
 /datum/loadout_entry/shoes/heels
 	name = "High Heels"
 	path = /obj/item/clothing/shoes/heels
-
-/datum/loadout_entry/shoes/heels/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/shoes/slippers
 	name = "Bunny Slippers"
@@ -206,10 +186,6 @@
 /datum/loadout_entry/shoes/footwraps
 	name = "Cloth Footwraps (Colorable)"
 	path = /obj/item/clothing/shoes/footwraps
-
-/datum/loadout_entry/shoes/footwraps/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/shoes/laconic
 	name = "Laconic Field Boots"
@@ -251,7 +227,3 @@
 /datum/loadout_entry/shoes/ballet
 	name = "Antheia Pointe Shoes"
 	path = /obj/item/clothing/shoes/ballet
-
-/datum/loadout_entry/shoes/ballet/New()
-	..()
-	tweaks += gear_tweak_free_color_choice

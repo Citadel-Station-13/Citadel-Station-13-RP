@@ -98,10 +98,6 @@
 	name = "Towel"
 	path = /obj/item/towel
 
-/datum/loadout_entry/towel/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/cahwhite
 	name = "Cards Against The Galaxy - White Deck"
 	path = /obj/item/deck/cah

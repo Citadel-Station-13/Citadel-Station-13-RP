@@ -57,10 +57,6 @@
 	name = "Evening Gloves"
 	path = /obj/item/clothing/gloves/evening
 
-/datum/loadout_entry/gloves/evening/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/gloves/duty
 	name = "Gloves - Work"
 	path = /obj/item/clothing/gloves/duty
@@ -120,18 +116,10 @@
 	name = "Gloves - Colorable"
 	path = /obj/item/clothing/gloves/color
 
-/datum/loadout_entry/gloves/colored/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 
 /datum/loadout_entry/gloves/latex/colorable
 	name = "Gloves - Latex - Colorable"
 	path = /obj/item/clothing/gloves/sterile/latex
-
-/datum/loadout_entry/gloves/latex/colorable/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/gloves/siren
 	name = "Gloves - Siren"

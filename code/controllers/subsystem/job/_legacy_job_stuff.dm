@@ -295,7 +295,7 @@
 	else
 		to_chat(H, "Your job is [rank] and the game just can't handle it! Please report this bug to an administrator.")
 
-	H.client.prefs.overflow_loadout(H, instances = lodaout_rejected)
+	H.client.prefs.overflow_loadout(H, instances = loadout_rejected)
 
 	H.job = rank
 	log_game("JOINED [key_name(H)] as \"[rank]\"")
@@ -328,21 +328,6 @@
 		if(rank == "Facility Director")
 			var/sound/announce_sound = (SSticker.current_state <= GAME_STATE_SETTING_UP) ? null : sound('sound/misc/boatswain.ogg', volume=20)
 			captain_announcement.Announce("All hands, [alt_title ? alt_title : "Facility Director"] [H.real_name] on deck!", new_sound = announce_sound, zlevel = H.z)
-
-		//Deferred item spawning.
-		if(spawn_in_storage && spawn_in_storage.len)
-			var/obj/item/storage/B
-			for(var/obj/item/storage/S in H.contents)
-				B = S
-				break
-
-			if(!isnull(B))
-				for(var/thing in spawn_in_storage)
-					var/datum/loadout_entry/G = gear_datums[thing]
-					G.spawn_item(B, spawn_in_storage[thing])
-					to_chat(H, SPAN_NOTICE("Placing \the [G.display_name] in your [B.name]!"))
-			else
-				to_chat(H, SPAN_DANGER("Failed to locate a storage object on your mob, either you spawned with no arms and no backpack or this is a bug."))
 
 	if(istype(H)) //give humans wheelchairs, if they need them.
 		var/obj/item/organ/external/l_foot = H.get_organ("l_foot")

@@ -103,7 +103,7 @@
 		switch(use_slot)
 			if("implant")
 				var/obj/item/implant/implant = instanced
-				implant.implant_loadout(character)
+				INVOKE_ASYNC(implant, TYPE_PROC_REF(/obj/item/implant, implant_loadout), character)
 				succeeded = TRUE
 			else
 				succeeded = H.equip_to_slot_if_possible(instanced, use_slot, INV_OP_SILENT | INV_OP_DISALLOW_DELAY)
@@ -148,7 +148,7 @@
 	if(allow_storage_spawn)
 		for(var/obj/item/instance as anything in instances)
 			if(character.force_equip_to_slot(instance, /datum/inventory_slot_meta/abstract/put_in_backpack))
-				overflow -= instance
+				instances -= instance
 				if(!(flags & PREF_COPY_TO_SILENT))
 					to_chat(character, SPAN_NOTICE("Putting \the [instance] into your backpack."))
 				continue

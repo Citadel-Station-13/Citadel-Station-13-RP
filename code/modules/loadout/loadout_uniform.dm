@@ -229,25 +229,13 @@
 	name = "Long Dress"
 	path = /obj/item/clothing/under/dress/white2
 
-/datum/loadout_entry/uniform/longdress/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/uniform/shortplaindress
 	name = "Plain Dress"
 	path = /obj/item/clothing/under/dress/white3
 
-/datum/loadout_entry/uniform/shortplaindress/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/uniform/longwidedress
 	name = "Long Wide Dress"
 	path = /obj/item/clothing/under/dress/white4
-
-/datum/loadout_entry/uniform/longwidedress/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/uniform/reddress
 	name = "Red Dress - Belted"
@@ -325,10 +313,6 @@
 /datum/loadout_entry/uniform/yogapants
 	name = "Yoga Pants"
 	path = /obj/item/clothing/under/pants/yogapants
-
-/datum/loadout_entry/uniform/yogapants/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/uniform/black_corset
 	name = "Black Corset"
@@ -458,10 +442,6 @@
 	name = "Pleated Skirt"
 	path = /obj/item/clothing/under/skirt/pleated
 
-/datum/loadout_entry/uniform/pleated/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/uniform/lilacdress
 	name = "Lilac Dress"
 	path = /obj/item/clothing/under/dress/lilacdress
@@ -542,10 +522,6 @@
 	name = "Colored Leotard"
 	path = /obj/item/clothing/under/leotardcolor
 
-/datum/loadout_entry/uniform/leotardcolor/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/uniform/verglasdress
 	name = "Verglas Dress"
 	path = /obj/item/clothing/under/verglasdress
@@ -553,10 +529,6 @@
 /datum/loadout_entry/uniform/fashionminiskirt
 	name = "Fashionable Miniskirt"
 	path = /obj/item/clothing/under/fashionminiskirt
-
-/datum/loadout_entry/uniform/fashionminiskirt/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/uniform/bodysuit
 	name = "Standard Bodysuit"
@@ -888,10 +860,6 @@ Swimsuits
 /datum/loadout_entry/uniform/ballet
 	name = "Antheia Tutu"
 	path = /obj/item/clothing/under/ballet
-
-/datum/loadout_entry/uniform/ballet/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 //Tajaran wears
 

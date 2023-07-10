@@ -552,18 +552,10 @@
 	name = "Skrell - Colored Bands"
 	path = /obj/item/clothing/ears/skrell/colored/band
 
-/datum/loadout_entry/xeno/skrell/colored/band/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 
 /datum/loadout_entry/xeno/skrell/colored/chain
 	name = "Skrell - Colored Chain"
 	path = /obj/item/clothing/ears/skrell/colored/chain
-
-/datum/loadout_entry/xeno/skrell/colored/chain/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 
 
@@ -715,18 +707,10 @@
 	name = "Teshari - Smock (Colorable)"
 	path = /obj/item/clothing/under/teshari/smock/white
 
-/datum/loadout_entry/xeno/teshari/uniform/smock_colorable/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 
 /datum/loadout_entry/xeno/teshari/uniform/undercoat_colorable
 	name = "Teshari - Undercoat (Colorable)"
 	path = /obj/item/clothing/under/teshari/undercoat/standard/white_grey
-
-/datum/loadout_entry/xeno/teshari/uniform/undercoat_colorable/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 
 //Suit
@@ -867,36 +851,20 @@
 	name = "Teshari - Cloak (Colorable)"
 	path = /obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey
 
-/datum/loadout_entry/xeno/teshari/suit/cloak_colorable/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 
 /datum/loadout_entry/xeno/teshari/suit/labcoat_colorable
 	name = "Teshari - Labcoat (Colorable)"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/teshari
-
-/datum/loadout_entry/xeno/teshari/suit/labcoat_colorable/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 
 /datum/loadout_entry/xeno/teshari/suit/smallcoat
 	name = "Teshari - Smallcoat (Colorable)"
 	path = /obj/item/clothing/suit/storage/toggle/tesharicoat
 
-/datum/loadout_entry/xeno/teshari/suit/smallcoat/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 
 /datum/loadout_entry/xeno/teshari/suit/smallcoat_alt
 	name = "Teshari - Smallcoat Alt (Colorable)"
 	path = /obj/item/clothing/suit/storage/toggle/tesharicoatwhite
-
-/datum/loadout_entry/xeno/teshari/suit/smallcoat_alt/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 
 
@@ -910,10 +878,6 @@
 	name = "Teshari - Neckscarf (Colorable)"
 	path = /obj/item/clothing/accessory/scarf/teshari/neckscarf
 
-
-/datum/loadout_entry/xeno/teshari/accessories/neckscarf_colorable/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 
 //*Moth

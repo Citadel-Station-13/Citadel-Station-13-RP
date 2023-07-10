@@ -97,46 +97,6 @@
 
 /datum/category_item/player_setup_item/loadout/content(datum/preferences/prefs, mob/user, data)
 	. = list()
-	var/mob/preference_mob = preference_mob()
-	var/total_cost = 0
-	if(pref.gear && pref.gear.len)
-		for(var/i = 1; i <= pref.gear.len; i++)
-			var/datum/loadout_entry/G = gear_datums[pref.gear[i]]
-			if(G)
-				total_cost += G.cost
-
-	var/fcolor =  "#3366CC"
-	if(total_cost < max_loadout_cost())
-		fcolor = "#E67300"
-
-	. += "<table align = 'center' width = 100%>"
-	. += "<tr><td colspan=3><center><a href='?src=\ref[src];prev_slot=1'>\<\<</a><b><font color = '[fcolor]'>\[[pref.gear_slot]\]</font> </b><a href='?src=\ref[src];next_slot=1'>\>\></a><b><font color = '[fcolor]'>[total_cost]/[max_loadout_cost()]</font> loadout points spent.</b> \[<a href='?src=\ref[src];clear_loadout=1'>Clear Loadout</a>\]</center></td></tr>"
-
-	. += "<tr><td colspan=3><center><b>"
-	var/firstcat = 1
-	for(var/category in loadout_categories)
-
-		if(firstcat)
-			firstcat = 0
-		else
-			. += " |"
-
-		var/datum/loadout_category/LC = loadout_categories[category]
-		var/category_cost = 0
-		for(var/gear in LC.gear)
-			if(gear in pref.gear)
-				var/datum/loadout_entry/G = LC.gear[gear]
-				category_cost += G.cost
-
-		if(category == current_tab)
-			. += " <span class='linkOn'>[category] - [category_cost]</span> "
-		else
-			if(category_cost)
-				. += " <a href='?src=\ref[src];select_category=[category]'><font color = '#E67300'>[category] - [category_cost]</font></a> "
-			else
-				. += " <a href='?src=\ref[src];select_category=[category]'>[category] - 0</a> "
-	. += "</b></center></td></tr>"
-
 	var/datum/loadout_category/LC = loadout_categories[current_tab]
 	. += "<tr><td colspan=3><hr></td></tr>"
 	. += "<tr><td colspan=3><b><center>[LC.category]</center></b></td></tr>"
@@ -223,9 +183,6 @@
 			pref.gear_list["[pref.gear_slot]"] = list()
 		// Refresh?
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
-	else if(href_list["select_category"])
-		current_tab = href_list["select_category"]
-		return PREFERENCES_REFRESH
 	else if(href_list["clear_loadout"])
 		pref.gear.Cut()
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW

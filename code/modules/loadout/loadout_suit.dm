@@ -9,10 +9,6 @@
 	name = "Apron - Colorable"
 	path = /obj/item/clothing/suit/storage/apron/white
 
-/datum/loadout_entry/suit/apron_white/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/suit/greatcoat
 	name = "Greatcoat"
 	path = /obj/item/clothing/suit/greatcoat
@@ -109,10 +105,6 @@
 	name = "Cowboy Duster"
 	path = /obj/item/clothing/suit/storage/duster
 
-/datum/loadout_entry/suit/duster/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/suit/hazard_vest
 	name = "Hazard Vest - Selection"
 	path = /obj/item/clothing/suit/storage/hazardvest
@@ -199,10 +191,6 @@
 	name = "Cloak - Colorable"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/custom
 
-/datum/loadout_entry/suit/roles/poncho/cloak/colorable/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/suit/halfcloak
 	name = "Rough Half Cloak (Tan)"
 	path = /obj/item/clothing/accessory/poncho/rough_cloak/tan
@@ -212,10 +200,6 @@
 /datum/loadout_entry/suit/halfcloak/colorable
 	name = "Rough Half Cloak (Colorable)"
 	path = /obj/item/clothing/accessory/poncho/rough_cloak
-
-/datum/loadout_entry/suit/halfcloak/colorable/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 /datum/loadout_entry/suit/halfcloak/colorable/torn
 	name = "Rough Torn Half Cloak (Colorable)"
 	path = /obj/item/clothing/accessory/poncho/rough_cloak_torn
@@ -320,17 +304,9 @@
 	name = "Kimono"
 	path = /obj/item/clothing/suit/kimono
 
-/datum/loadout_entry/suit/miscellaneous/kimono/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/suit/miscellaneous/peacoat
 	name = "Peacoat"
 	path = /obj/item/clothing/suit/storage/toggle/peacoat
-
-/datum/loadout_entry/suit/miscellaneous/peacoat/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/suit/miscellaneous/kamishimo
 	name = "Kamishimo"
@@ -343,10 +319,6 @@
 /datum/loadout_entry/suit/miscellaneous/cardigan
 	name = "Cardigan (Colorable)"
 	path = /obj/item/clothing/suit/storage/toggle/cardigan
-
-/datum/loadout_entry/suit/miscellaneous/cardigan/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/suit/storage/dutchcoat
 	name = "Western Coat"
@@ -388,10 +360,6 @@
 	name = "Labcoat - Colorable"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat
 
-/datum/loadout_entry/suit/labcoat_colorable/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/suit/jacket_modular
 	name = "Jacket - Modular"
 	path = /obj/item/clothing/suit/storage/fluff/jacket
@@ -419,10 +387,6 @@
 /datum/loadout_entry/suit/samurai
 	name = "Replica Karuta-Gane (Colorable)"
 	path = /obj/item/clothing/suit/samurai_replica
-
-/datum/loadout_entry/suit/samurai/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/suit/laconic
 	name = "Laconic Field Coat"
@@ -591,10 +555,6 @@
 /datum/loadout_entry/suit/cropped_hoodie
 	name = "Cropped Hoodie"
 	path = /obj/item/clothing/suit/cropped_hoodie
-
-/datum/loadout_entry/suit/cropped_hoodie/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/suit/cropped_hoodie/croppier
 	name = "Cropped Hoodie (high crop)"

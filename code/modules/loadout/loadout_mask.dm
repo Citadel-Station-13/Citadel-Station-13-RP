@@ -50,10 +50,6 @@
 	name = "Samurai Mask (Colorable)"
 	path = /obj/item/clothing/mask/samurai/colorable
 
-/datum/loadout_entry/mask/samurai_colorable/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/mask/fox
 	name = "Fox mask" //capitalisation because everything else here is capitalised
 	path = /obj/item/clothing/mask/gas/fox

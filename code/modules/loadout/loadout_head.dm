@@ -69,10 +69,6 @@
 	name = "Cap (Colorable)"
 	path = /obj/item/clothing/head/soft/mime
 
-/datum/loadout_entry/head/cap/white/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/head/cap/mbill
 	name = "Cap - Bill"
 	path = /obj/item/clothing/head/soft/mbill
@@ -120,10 +116,6 @@
 /datum/loadout_entry/head/hairflower
 	name = "Hair Flower Pin (Colorable)"
 	path = /obj/item/clothing/head/pin/flower/white
-
-/datum/loadout_entry/head/hairflower/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/pin
 	name = "Pin Selection"
@@ -199,33 +191,17 @@
 	name = "Hijab (Colorable)"
 	path = /obj/item/clothing/head/hijab
 
-/datum/loadout_entry/head/hijab/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/head/kippa
 	name = "Kippa (Colorable)"
 	path = /obj/item/clothing/head/kippa
-
-/datum/loadout_entry/head/kippa/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/turban
 	name = "Turban (Colorable)"
 	path = /obj/item/clothing/head/turban
 
-/datum/loadout_entry/head/turban/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/head/taqiyah
 	name = "Taqiyah (Colorable)"
 	path = /obj/item/clothing/head/taqiyah
-
-/datum/loadout_entry/head/taqiyah/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/kitty
 	name = "Kitty Ears"
@@ -243,33 +219,17 @@
 	name = "Beanie (Colorable)"
 	path = /obj/item/clothing/head/beanie
 
-/datum/loadout_entry/head/beanie/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/head/loose_beanie
 	name = "Loose Beanie (Colorable)"
 	path = /obj/item/clothing/head/beanie_loose
-
-/datum/loadout_entry/head/loose_beanie/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/beretg
 	name = "Beret (Colorable)"
 	path = /obj/item/clothing/head/beretg
 
-/datum/loadout_entry/head/beretg/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/head/beretbs
 	name = "Blueshield Beret"
 	path = /obj/item/clothing/head/beret/sec/corporate/blueshield
-
-/datum/loadout_entry/head/beretbs/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/sombrero
 	name = "Sombrero"
@@ -279,25 +239,13 @@
 	name = "Flat Cap"
 	path = /obj/item/clothing/head/flatcap/grey
 
-/datum/loadout_entry/head/flatCapg/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/head/bow/small
 	name = "Hair Bow, Small (Colorable)"
 	path = /obj/item/clothing/head/pin/bow
 
-/datum/loadout_entry/head/bow/small/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 /datum/loadout_entry/head/traveller
 	name = "Traveller Hat (Colorable)"
 	path = /obj/item/clothing/head/traveller
-
-/datum/loadout_entry/head/traveller/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/slime
 	name = "Slime hat"
@@ -314,7 +262,6 @@
 		var/obj/item/clothing/head/beret/orion/orion = orion_style
 		orions[initial(orion.name)] = orion
 	tweaks += new/datum/loadout_tweak/path(tim_sort(orions, /proc/cmp_text_asc))
-
 /datum/loadout_entry/head/surgery
 	name = "Surgical Cap Selection"
 	description = "Choose from a number of rings of different Caps."
@@ -350,10 +297,6 @@
 	name = "Basic Headband (Colorable)"
 	path = /obj/item/clothing/head/fluff/headbando
 
-/datum/loadout_entry/head/headbando/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
-
 // happy valentine's day
 /datum/loadout_entry/head/woodcirclet
 	name = "Wooden Circlet"
@@ -385,10 +328,6 @@
 /datum/loadout_entry/head/samurai
 	name = "Replica Kabuto (Colorable)"
 	path = /obj/item/clothing/head/samurai_replica
-
-/datum/loadout_entry/head/samurai/New()
-	..()
-	tweaks += gear_tweak_free_color_choice
 
 /datum/loadout_entry/head/half_pint
 	name = "Half-Pint Headband"
