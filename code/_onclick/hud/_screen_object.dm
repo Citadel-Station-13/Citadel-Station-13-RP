@@ -283,11 +283,10 @@
 								// suit storage
 								locnames += "on your suit"
 								tanks += H.s_store
-								// right/left hands
-								locnames += "in your right hand"
-								tanks += H.r_hand
-								locnames += "in your left hand"
-								tanks += H.l_hand
+								// hands
+								for(var/obj/item/tank/tank as anything in H.get_held_items_of_type(/obj/item/tank))
+									locnames += "in your [tank.held_index % 2? "right" : "left"] hand"
+									tanks += tank
 								// pockets
 								locnames += "in your left pocket"
 								tanks += H.l_store
@@ -300,11 +299,6 @@
 								locnames += "on your back"
 								tanks += H.back
 							else
-								// right/left hands
-								locnames += "in your right hand"
-								tanks += C.r_hand
-								locnames += "in your left hand"
-								tanks += C.l_hand
 								// back
 								locnames += "on your back"
 								tanks += C.back

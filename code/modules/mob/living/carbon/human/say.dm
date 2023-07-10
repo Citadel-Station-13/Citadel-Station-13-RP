@@ -175,9 +175,10 @@
 			if(r_ear && istype(r_ear,/obj/item/radio))
 				R = r_ear
 				has_radio = 1
-			if(r_hand && istype(r_hand, /obj/item/radio))
-				R = r_hand
-				has_radio = 1
+			for(var/obj/item/radio/potential in get_right_held_items())
+				R = potential
+				has_radio = TRUE
+				break
 			if(has_radio)
 				R.talk_into(src,message,null,verb,speaking)
 				used_radios += R
@@ -187,9 +188,10 @@
 			if(l_ear && istype(l_ear,/obj/item/radio))
 				R = l_ear
 				has_radio = 1
-			if(l_hand && istype(l_hand,/obj/item/radio))
-				R = l_hand
-				has_radio = 1
+			for(var/obj/item/radio/potential in get_left_held_items())
+				R = potential
+				has_radio = TRUE
+				break
 			if(has_radio)
 				R.talk_into(src,message,null,verb,speaking)
 				used_radios += R

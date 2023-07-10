@@ -58,13 +58,13 @@ var/global/list/sparring_attack_cache = list()
 				if (knocked_away)
 					// Disarm left hand
 					//Urist McAssistant dropped the macguffin with a scream just sounds odd.
-					target.visible_message("<span class='danger'>\The [target.knocked_away] was knocked right out of [target]'s grasp!</span>")
+					target.visible_message("<span class='danger'>\The [knocked_away] was knocked right out of [target]'s grasp!</span>")
 					target.drop_item_to_ground(knocked_away)
 			if(BP_R_ARM, BP_R_HAND)
 				var/obj/item/knocked_away = target.get_left_held_item()
-				if (target.knocked_away)
+				if (knocked_away)
 					// Disarm right hand
-					target.visible_message("<span class='danger'>\The [target.knocked_away] was knocked right out of [target]'s grasp!</span>")
+					target.visible_message("<span class='danger'>\The [knocked_away] was knocked right out of [target]'s grasp!</span>")
 					target.drop_item_to_ground(knocked_away)
 			if(BP_TORSO)
 				if(!target.lying)

@@ -976,10 +976,10 @@
 					if(check_belly(I))
 						continue
 					if(src.species && !(src.species.species_flags & CONTAMINATION_IMMUNE))
-						// This is hacky, I'm so sorry.
-						if(I != l_hand && I != r_hand)	//If the item isn't in your hands, you're probably wearing it. Full damage for you.
+						if(isnull(I.held_index))
+							//If the item isn't in your hands, you're probably wearing it. Full damage for you.
 							total_phoronloss += loss_per_part
-						else if((I == l_hand | I == r_hand) && !((src.wear_suit.body_cover_flags & HANDS) | src.gloves | (src.w_uniform.body_cover_flags & HANDS)))	//If the item is in your hands, but you're wearing protection, you might be alright.
+						else if(!((src.wear_suit.body_cover_flags & HANDS) | src.gloves | (src.w_uniform.body_cover_flags & HANDS)))	//If the item is in your hands, but you're wearing protection, you might be alright.
 							//If you hold it in hand, and your hands arent covered by anything
 							total_phoronloss += loss_per_part
 			if(total_phoronloss)

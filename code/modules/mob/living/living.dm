@@ -697,7 +697,14 @@ default behaviour is:
 		animate(client, color = null, time = 10)
 
 /mob/living/swap_hand()
-	src.hand = !( src.hand )
+	var/obj/item/was_active = length(held_items) <= active_hand? held_items[active_hand] : null
+
+	if(active_hand >= length(held_items))
+		active_hand = length(held_items)? 1 : null
+	else
+		++active_hand
+
+	#warn hud elements
 	if(hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
 		if(hand)	//This being 1 means the left hand is in use
 			hud_used.l_hand_hud_object.icon_state = "l_hand_active"
@@ -706,12 +713,12 @@ default behaviour is:
 			hud_used.l_hand_hud_object.icon_state = "l_hand_inactive"
 			hud_used.r_hand_hud_object.icon_state = "r_hand_active"
 
+	//! LEGACY
 	// We just swapped hands, so the thing in our inactive hand will notice it's not the focus
-	var/obj/item/I = get_inactive_held_item()
-	if(I)
-		if(I.zoom)
-			I.zoom()
-	return
+	if(!isnull(was_active))
+		if(was_active.zoom)
+			was_active.zoom()
+	//! End
 
 /mob/proc/activate_hand(selhand)
 

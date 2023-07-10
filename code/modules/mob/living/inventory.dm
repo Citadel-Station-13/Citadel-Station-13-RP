@@ -1,38 +1,6 @@
-/mob/living/init_inventory()
-	inventory = new(src)
-
-/mob/living/get_active_held_item()
-	RETURN_TYPE(/obj/item)
-	return hand? l_hand : r_hand
-
-/mob/living/get_inactive_held_item()
-	RETURN_TYPE(/obj/item)
-	return hand? r_hand : l_hand
-
-/mob/living/get_held_index(obj/item/I)
-	if(l_hand == I)
-		return 1
-	else if(r_hand == I)
-		return 2
-
-/mob/living/put_in_active_hand(obj/item/I, flags)
-	return hand? put_in_left_hand(I, flags) : put_in_right_hand(I, flags)
-
-/mob/living/put_in_inactive_hand(obj/item/I, flags)
-	return hand? put_in_right_hand(I, flags) : put_in_left_hand(I, flags)
 
 /mob/living/get_number_of_hands()
 	return 2
-
-/mob/living/put_in_left_hand(obj/item/I, flags)
-	// ! WARNING: snowflake - at time of equipped, vars aren't set yet.
-	position_hud_item(l_hand, SLOT_ID_HANDS)
-	return TRUE
-
-/mob/living/put_in_right_hand(obj/item/I, flags)
-	// ! WARNING: snowflake - at time of equipped, vars aren't set yet.
-	position_hud_item(r_hand, SLOT_ID_HANDS)
-	return TRUE
 
 /mob/living/get_number_of_hands()
 	return has_hands? 2 : 0
@@ -41,6 +9,8 @@
 	return has_hands
 
 #warn parse above
+
+//* Abstraction *//
 
 /mob/living/_slot_by_item(obj/item/I)
 	if(back == I)
@@ -93,6 +63,13 @@
 		SLOT_ID_BACK,
 		SLOT_ID_MASK
 	)
+
+//* Init *//
+
+/mob/living/init_inventory()
+	inventory = new(src)
+
+//* Misc - Legacy *//
 
 /mob/living/ret_grab(obj/effect/list_container/mobl/L as obj, flag)
 	if ((!( istype(l_hand, /obj/item/grab) ) && !( istype(r_hand, /obj/item/grab) )))

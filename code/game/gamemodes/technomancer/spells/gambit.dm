@@ -94,7 +94,7 @@
 			if(is_ally(H)) // Don't get scared by our apprentice.
 				continue
 
-			for(var/obj/item/I in list(H.l_hand, H.r_hand))
+			for(var/obj/item/I in H.get_held_items())
 				// Guns are scary.
 				if(istype(I, /obj/item/gun)) // Toy guns will count as well but oh well.
 					hostile_mobs++

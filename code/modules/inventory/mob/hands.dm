@@ -135,7 +135,7 @@
  * hands are all holding items? undefined behavior if we don't have hands.
  */
 /mob/proc/hands_full()
-	for(var/i in 1 to length(held_items))
+	for(var/i in get_usable_hand_indices())
 		if(isnull(held_items[i]))
 			return FALSE
 	return TRUE
@@ -258,6 +258,39 @@
 		if(isnull(held_items[i]))
 			continue
 		. += held_items[i]
+
+//* Abstraction *//
+
+/**
+ * get number of physical hands / arms / whatever that we have and should check for
+ *
+ * this is not number we can use
+ * this is the number we should use for things like rendering
+ * a hand stump is still rendered, and we should never render less than 2 hands for mobs
+ * that nominally have hands.
+ */
+/mob/proc/get_nominal_hand_count()
+	#warn impl
+
+/**
+ * get number of usable hands / arms / whatever that we have and should check for
+ *
+ * this is the number we can use
+ * missing = can't use
+ * stump = can't use
+ * broken = *can* use.
+ *
+ * basically if a red deny symbol is in the hand it is not usable, otherwise it's usable.
+ */
+/mob/proc/get_usable_hand_count()
+	#warn impl
+
+/**
+ * get indices of usable hands
+ */
+/mob/proc/get_usable_hand_indices()
+	RETURN_TYPE(/list)
+	#warn impl
 
 //* Internals *//
 

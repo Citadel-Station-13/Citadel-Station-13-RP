@@ -1432,3 +1432,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		for(var/obj/item/I in L.implants)
 			if(!istype(I,/obj/item/implant) && !istype(I,/obj/item/nif))
 				return TRUE
+
+//* Hand Integration *//
+
+#warn impl
