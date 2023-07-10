@@ -236,6 +236,7 @@
 		// lol we're done (unless it was hands)
 		return TRUE
 	if(slot == SLOT_ID_HANDS)
+		#warn impl
 		// if we're going into hands,
 		// just check can unequip
 		if(!can_unequip(I, old_slot, flags, user))

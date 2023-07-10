@@ -9,7 +9,7 @@
 #define INV_OP_SUPPRESS_WARNING		(1<<3)
 /// do not run logic like checking if you should drop something when something's unequipped
 #define INV_OP_NO_LOGIC				(1<<4)
-/// do not updatei cons
+/// do not update icons
 #define INV_OP_NO_UPDATE_ICONS		(1<<5)
 /// hint: we are directly dropping to ground/off omb
 #define INV_OP_DIRECTLY_DROPPING	(1<<6)

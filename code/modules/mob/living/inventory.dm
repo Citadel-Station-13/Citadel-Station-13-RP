@@ -25,60 +25,13 @@
 	return 2
 
 /mob/living/put_in_left_hand(obj/item/I, flags)
-	if(!I)
-		return TRUE
-	if(!has_hands)
-		return FALSE
-	if(l_hand)
-		if(flags & INV_OP_FORCE)
-			drop_item_to_ground(l_hand, flags)
-		if(l_hand)	// incase drop item fails which is potentially possible
-			return FALSE
-	if(!_common_handle_put_in_hand(I, flags))
-		return FALSE
-	l_hand = I
-	log_inventory("[key_name(src)] put [I] in hand 1")
-	l_hand.update_twohanding()
-	l_hand.update_worn_icon()
 	// ! WARNING: snowflake - at time of equipped, vars aren't set yet.
 	position_hud_item(l_hand, SLOT_ID_HANDS)
-	update_inv_l_hand()
 	return TRUE
 
 /mob/living/put_in_right_hand(obj/item/I, flags)
-	if(!I)
-		return TRUE
-	if(!has_hands)
-		return FALSE
-	if(r_hand)
-		if(flags & INV_OP_FORCE)
-			drop_item_to_ground(r_hand, flags)
-		if(r_hand)	// incase drop item fails which is potentially possible
-			return FALSE
-	if(!_common_handle_put_in_hand(I, flags))
-		return FALSE
-	r_hand = I
-	log_inventory("[key_name(src)] put [I] in hand 1")
-	r_hand.update_twohanding()
-	r_hand.update_worn_icon()
 	// ! WARNING: snowflake - at time of equipped, vars aren't set yet.
 	position_hud_item(r_hand, SLOT_ID_HANDS)
-	update_inv_r_hand()
-	return TRUE
-
-/mob/living/proc/_common_handle_put_in_hand(obj/item/I, flags)
-	var/existing_slot = is_in_inventory(I)
-	if(existing_slot)
-		// handle item reequip can fail.
-		return _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, flags)
-	// newly equipped
-	var/atom/oldLoc = I.loc
-	if(I.loc != src)
-		I.forceMove(src)
-	if(I.loc != src)
-		return FALSE
-	I.pickup(src, flags, oldLoc)
-	I.equipped(src, SLOT_ID_HANDS, flags)
 	return TRUE
 
 /mob/living/get_number_of_hands()
@@ -89,7 +42,6 @@
 
 #warn parse above
 
-/mob/living/_unequip_
 /mob/living/_slot_by_item(obj/item/I)
 	if(back == I)
 		return SLOT_ID_BACK

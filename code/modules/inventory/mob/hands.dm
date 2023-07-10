@@ -275,12 +275,51 @@
 		to_chat(src, SPAN_DANGER("The inventory system will attempt to reject the bad equip. Glitches may occur."))
 		return FALSE
 
+	if(length(held_items) < index)
+		return FALSE
 
-	#warn impl
-	#warn update icons unless no update icon op flag is set; after list update..
+	var/obj/item/existing = held_items[index]
+	if(!isnull(existing))
+		if(flags & INV_OP_FORCE)
+			drop_held_item_of_index(index, flags | INV_OP_NO_UPDATE_ICONS)
+			if(!isnull(held_items[index]))
+				// failed to drop
+				return FALSE
+		else
+			return FALSE
 
+	var/existing_slot = is_in_inventory(I)
+	if(existing_slot)
+		// already in inv
+		if(!_handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, flags))
+			return FALSE
+	else
+		// newly eqiupped
+		var/atom/old_loc = I.loc
+		if(I.loc != src)
+			I.forceMove(src)
+		if(I.loc != src)
+			return FALSE
+		I.pickup(src, flags, old_loc)
+		I.equipped(src, SLOT_ID_HANDS, flags)
+		log_inventory("pickup-to-hand: keyname [key_name(src)] index [index] item [I]([ref(I)])")
+
+	held_items[index] = I
+
+	//! LEGACY BEGIN
+	I.update_twohanding()
+	//! END
+
+	if(!(flags & INV_OP_NO_UPDATE_ICONS))
+		update_inv_hand(index)
 
 	if(!(I.interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH))
 		I.add_fingerprint(src)
 	else
 		I.add_hiddenprint(src)
+
+/**
+ * handle swapping item from one hand index to another
+ */
+/mob/proc/handle_item_handswap(obj/item/I, index, old_index, flags, mob/user = src)
+	#warn impl

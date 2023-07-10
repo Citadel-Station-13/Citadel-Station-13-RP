@@ -27,8 +27,10 @@
 #define ui_id "LEFT+3:12,BOTTOM:5"
 #define ui_belt "LEFT+4:14,BOTTOM:5"
 #define ui_back "CENTER-2:14,BOTTOM:5"
+
 #define ui_rhand "CENTER-1:16,BOTTOM:5"
 #define ui_lhand "CENTER:16,BOTTOM:5"
+
 #define ui_equip "CENTER-1:16,BOTTOM+1:5"
 #define ui_swaphand1 "CENTER-1:16,BOTTOM+1:5"
 #define ui_swaphand2 "CENTER:16,BOTTOM+1:5"
