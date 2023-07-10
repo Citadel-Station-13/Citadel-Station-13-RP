@@ -15,6 +15,8 @@
 #define PREF_COPY_TO_LOADOUT_IGNORE_CHECKS (1<<6)
 /// ignore loadout whitelist checks
 #define PREF_COPY_TO_LOADOUT_IGNORE_WHITELIST (1<<7)
+/// avoid making messages like "equipping x to you in loadout"
+#define PREF_COPY_TO_SILENT (1<<8)
 
 /// DO NOT update icons
 #define PREF_COPY_TO_DO_NOT_RENDER (1<<23)

@@ -74,9 +74,10 @@
  * * character - the mob
  * * flags - PREF_COPY_TO_ flags like in [copy_to]
  * * role - (optional) the /datum/role being used.
- * * allow_storage_spawn - spawn extra items in storage instead of deleting.
+ * * allow_storage_spawn - spawn extra items in storage instead of stuffing into reject.
+ * * reject - list to stuff rejected items into. if null, they're deleted.
  */
-/datum/preferences/proc/equip_loadout(mob/character, flags, datum/role/role, allow_storage_spawn)
+/datum/preferences/proc/equip_loadout(mob/character, flags, datum/role/role, allow_storage_spawn, list/reject)
 	//! todo: copypaste, refactor
 	var/mob/living/carbon/human/H = character
 	if(!istype(H))
@@ -89,93 +90,69 @@
 		allow_storage_spawn = PREF_COPYING_TO_CHECK_IS_SPAWNING(flags)
 
 	// generate gear datum + data list
-	#warn impl
+	var/list/loadout = generate_loadout_entry_list()
+	// overflow list of items associated to slot IDs
+	var/list/obj/item/overflow = list()
 
-	//Equip custom gear loadout.
-	var/list/custom_equip_slots = list()
-	var/list/custom_equip_leftovers = list()
-	if(gear && gear.len)
-		for(var/thing in gear)
-			var/datum/loadout_entry/G = gear_datums[thing]
-			if(!G) //Not a real gear datum (maybe removed, as this is loaded from their savefile)
+	// first pass
+	for(var/datum/loadout_entry/entry as anything in loadout)
+		var/list/data = loadout[entry]
+		var/obj/item/instanced = entry.instantiate(entry_data = data)
+		var/use_slot = entry.slot
+		var/succeeded = FALSE
+		switch(use_slot)
+			if("implant")
+				var/obj/item/implant/implant = instanced
+				implant.implant_loadout(character)
+				succeeded = TRUE
+			else
+				succeeded = H.equip_to_slot_if_possible(instanced, use_slot, INV_OP_SILENT | INV_OP_DISALLOW_DELAY)
+		if(!succeeded)
+			overflow[instanced] = use_slot
+		else
+			if(!(flags & PREF_COPY_TO_SILENT))
+				to_chat(character, SPAN_NOTICE("Equipping you with \the [instanced]"))
+
+	// second pass
+	for(var/obj/item/instance as anything in overflow)
+		var/slot = overflow[instance]
+		if(character.equip_to_slot_if_possible(instance, slot, INV_OP_SILENT | INV_OP_DISALLOW_DELAY))
+			overflow -= instance
+			if(!(flags & PREF_COPY_TO_SILENT))
+				to_chat(character, SPAN_NOTICE("Equipping you with \the [instance]"))
+			continue
+
+	// storage?
+	if(allow_storage_spawn)
+		for(var/obj/item/instance as anything in overflow)
+			if(character.force_equip_to_slot(instance, /datum/inventory_slot_meta/abstract/put_in_backpack))
+				overflow -= instance
+				if(!(flags & PREF_COPY_TO_SILENT))
+					to_chat(character, SPAN_NOTICE("Putting \the [instance] into your backpack."))
 				continue
 
-			var/permitted = TRUE
+	// failed, reject or delete
+	for(var/obj/item/instance as anything in overflow)
+		if(!isnull(reject))
+			reject += instance
+		else
+			qdel(instance)
 
-			// If they aren't, tell them
-			if(!permitted)
-				to_chat(H, SPAN_WARNING("Your current species, job or whitelist status does not permit you to spawn with [G.display_name]!"))
+/datum/preferences/proc/overflow_loadout(mob/character, flags, list/obj/item/instances, allow_storage_spawn)
+	// check allow storage spawns
+	if(isnull(allow_storage_spawn))
+		// by default, we only spawn stuff in backpack if they're actually spawning in.
+		allow_storage_spawn = PREF_COPYING_TO_CHECK_IS_SPAWNING(flags)
+
+	// storage?
+	if(allow_storage_spawn)
+		for(var/obj/item/instance as anything in instances)
+			if(character.force_equip_to_slot(instance, /datum/inventory_slot_meta/abstract/put_in_backpack))
+				overflow -= instance
+				if(!(flags & PREF_COPY_TO_SILENT))
+					to_chat(character, SPAN_NOTICE("Putting \the [instance] into your backpack."))
 				continue
 
-			// Implants get special treatment
-			if(G.slot == "implant")
-				var/obj/item/implant/I = G.spawn_item(H, gear[G.display_name])
-				I.invisibility = 100
-				I.implant_loadout(H)
-				continue
-
-			// Try desperately (and sorta poorly) to equip the item. Now with increased desperation!
-			// why are we stuffing metadata in assoclists?
-			// because client might not be valid later down, so
-			// we're gonna just grab it once and call it a day
-			// sigh.
-			var/metadata = gear[G.name]
-			if(G.slot && !(G.slot in custom_equip_slots))
-				if(G.slot == SLOT_ID_MASK || G.slot == SLOT_ID_SUIT || G.slot == SLOT_ID_HEAD)
-					custom_equip_leftovers[thing] = metadata
-				else if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
-					to_chat(H, SPAN_NOTICE("Equipping you with \the [G.display_name]!"))
-					if(G.slot != /datum/inventory_slot_meta/abstract/attach_as_accessory)
-						custom_equip_slots.Add(G.slot)
-				else
-					custom_equip_leftovers[thing] = metadata
-
-	// If some custom items could not be equipped before, try again now.
-	for(var/thing in custom_equip_leftovers)
-		var/datum/loadout_entry/G = gear_datums[thing]
-		if(!(G.slot in custom_equip_slots))
-			if(H.equip_to_slot_or_del(G.spawn_item(H, custom_equip_leftovers[thing]), G.slot))
-				to_chat(H, "<span class='notice'>Equipping you with \the [G.display_name]!</span>")
-				custom_equip_slots.Add(G.slot)
-
-/**
- * helper to build loadout list
- *
- * input is list of entries to instance associated to data
- *
- * return list of instances associated to slot id or null; null means it should be put in storage.
- */
-/datum/preferences/proc/instance_loadout_items(list/datum/loadout_entry/entries)
-	RETURN_TYPE(/list)
-	. = list()
-	for(var/datum/loadout_entry/entry as anything in entries)
-		var/slot = entry.slot
-		if(ispath(slot, /datum/inventory_slot_meta))
-			var/datum/inventory_slot_meta/casted_slot = slot
-			slot = initial(casted_slot.id)
-		.[entry.instantiate(entries[entry])] = slot
-
-/**
- * helper to try to equip loadout stuff to slots
- *
- * input list should be associated to slot IDs.
- *
- * returns list of failed items
- */
-/datum/preferences/proc/equip_loadout_to_slots(mob/target, list/stuff)
-	RETURN_TYPE(/list)
-	. = list()
-	for(var/obj/item/thing as anything in stuff)
-		#warn impl
-
-
-/**
- * helper to try to stuff loadout stuff into storage
- *
- * returns list of failed items
- */
-/datum/preferences/proc/equip_loadout_to_storage(mob/target, list/obj/item/items)
-	RETURN_TYPE(/list)
-	. = list()
-	for(var/obj/item/thing as anything in items)
-		#warn impl
+	// failed, reject or delete
+	for(var/obj/item/instance as anything in instances)
+		qdel(instance)

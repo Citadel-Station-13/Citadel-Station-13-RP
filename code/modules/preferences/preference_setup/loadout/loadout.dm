@@ -79,26 +79,6 @@
 						// else we just don't care because gear tweaks need to sanitize their own stuff.
 			*/
 
-/datum/category_item/player_setup_item/loadout/proc/check_loadout_entry(datum/preferences/prefs, datum/loadout_entry/entry)
-	if(entry.legacy_species_lock && (entry.legacy_species_lock != prefs.real_species_name()))
-		return FALSE
-	if(entry.ckeywhitelist && (prefs.client_ckey != entry.ckeywhitelist))
-		return FALSE
-	return TRUE
-
-/datum/category_item/player_setup_item/loadout/proc/valid_loadout_entries(datum/preferences/prefs)
-	RETURN_TYPE(/list)
-	. = list()
-	var/datum/species/real_species = prefs.real_species_datum()
-	var/real_species_name = real_species.name
-	for(var/entry_name in gear_datums)
-		var/datum/loadout_entry/entry = gear_datums[entry_name]
-		if(entry.legacy_species_lock && (entry.legacy_species_lock != real_species_name))
-			continue
-		if(entry.ckeywhitelist && (prefs.client_ckey != entry.ckeywhitelist))
-			continue
-		. += entry
-
 /datum/category_item/player_setup_item/loadout/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	#warn impl
@@ -251,16 +231,65 @@
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	return ..()
 
+// These checks should all be on /datum/loadout_entry
+// However, for performance reasons, we're going to avoid doing that
+// Because this is way faster than
+// manually calling procs and fetching species name every time.
+
+/datum/category_item/player_setup_item/loadout/proc/check_loadout_entry(datum/preferences/prefs, datum/loadout_entry/entry)
+	if(entry.legacy_species_lock && (entry.legacy_species_lock != prefs.real_species_name()))
+		return FALSE
+	if(entry.ckeywhitelist && (prefs.client_ckey != entry.ckeywhitelist))
+		return FALSE
+	return TRUE
+
+/datum/category_item/player_setup_item/loadout/proc/valid_loadout_entries(datum/preferences/prefs)
+	RETURN_TYPE(/list)
+	. = list()
+	var/datum/species/real_species = prefs.real_species_datum()
+	var/real_species_name = real_species.name
+	for(var/entry_name in gear_datums)
+		var/datum/loadout_entry/entry = gear_datums[entry_name]
+		if(entry.legacy_species_lock && (entry.legacy_species_lock != real_species_name))
+			continue
+		if(entry.ckeywhitelist && (prefs.client_ckey != entry.ckeywhitelist))
+			continue
+		. += entry
+
+/**
+ * generate list of gear entry datums associated to data
+ *
+ * @params
+ * * flags - PREF_COPY_TO flags
+ * * role - the role being used for equip
+ */
+/datum/preferences/proc/generate_loadout_entry_list(flags, datum/role/role)
+	RETURN_TYPE(/list)
+	. = list()
+	var/list/loadout_slots = get_character_data(CHARACTER_DATA_LOADOUT)
+	var/loadout_slot = get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
+	var/list/loadout_data = loadout_slots?["[loadout_slot]"]
+	if(isnull(loadout_data))
+		return
+	var/max_cost = max_loadout_cost()
+	var/used_cost = 0
+	for(var/id in loadout_data)
+		var/datum/loadout_entry/entry = gear_datums[id]
+		if(!(flags & PREF_COPY_TO_LOADOUT_IGNORE_ROLE))
+
+		if(!(flags & PREF_COPY_TO_LOADOUT_IGNORE_WHITELIST))
+
+		if(!(flags & PREF_COPY_TO_LOADOUT_IGNORE_CHECKS))
+
+		#warn impl all
+		if(max_cost < (used_cost + entry.cost))
+			continue
+		used_cost += entry.cost
+		.[entry] = loadout_data[id]
+
 /proc/max_loadout_cost()
 	. = LOADOUT_MAX_COST
 	for(var/name in SSevents.holidays)
 		var/datum/holiday/H = SSevents.holidays[name]
 		if(H.loadout_spam)
 			return LOADOUT_MAX_COST_HOLIDAY_SPAM
-
-/**
- * generate list of gear entry datums associated to data
- */
-/datum/preferences/proc/generate_loadout_entry_list()
-	RETURN_TYPE(/list)
-	#warn impl
