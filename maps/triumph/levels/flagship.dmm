@@ -1920,9 +1920,8 @@
 	},
 /area/centcom/specops)
 "de" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -2168,9 +2167,8 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "dI" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Centcom Autolathe"
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -2272,9 +2270,8 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/control)
 "dP" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Centcom Autolathe"
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -3124,7 +3121,7 @@
 	},
 /area/centcom/control)
 "fB" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Research and Development";
 	req_access = list(7)
 	},
@@ -3342,7 +3339,7 @@
 	},
 /area/centcom/control)
 "fS" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Robotics Lab";
 	req_access = list(29,47)
 	},
@@ -5720,7 +5717,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "kQ" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Virology Laboratory"
 	},
 /turf/unsimulated/floor/steel{
@@ -5816,7 +5813,7 @@
 	},
 /area/centcom/security)
 "la" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Colonial Security Airlock";
 	req_access = list(63)
 	},
@@ -6856,7 +6853,7 @@
 	},
 /area/centcom/security)
 "mO" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Security";
 	req_access = list()
 	},
@@ -11887,7 +11884,7 @@
 	},
 /area/centcom/security)
 "wA" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Confiscated Items";
 	req_access = list(3)
 	},
@@ -12642,7 +12639,7 @@
 	},
 /area/centcom/restaurant)
 "xS" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	id_tag = "innerS";
 	name = "Colonial Security Airlock";
 	req_access = list(63)
@@ -12652,7 +12649,7 @@
 	},
 /area/centcom/security)
 "xT" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Warden's Office";
 	req_access = list(3)
 	},
@@ -12867,7 +12864,7 @@
 	},
 /area/centcom/security)
 "yi" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Security Processing";
 	req_access = list(1)
 	},
@@ -13108,7 +13105,7 @@
 	},
 /area/centcom/restaurant)
 "yD" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Security";
 	req_access = list()
 	},

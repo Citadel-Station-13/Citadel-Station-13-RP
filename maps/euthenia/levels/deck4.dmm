@@ -827,7 +827,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_research,
+/obj/machinery/door/airlock/glass/research,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1477,7 +1477,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/maintenance/deck_four/forward)
 "kz" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -2355,7 +2355,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_research,
+/obj/machinery/door/airlock/glass/research,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/lower)
@@ -3038,7 +3038,7 @@
 /turf/simulated/floor/tiled/white,
 /area/gateway)
 "vE" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Research Entrance";
 	req_access = list(47)
 	},
@@ -4604,7 +4604,7 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "HQ" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor{
@@ -5418,7 +5418,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/deck_four/aft/port)
 "NN" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor{
@@ -5781,7 +5781,7 @@
 /area/space)
 "PZ" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Weapons Testing Range";
 	req_access = list(47)
 	},
@@ -6137,7 +6137,7 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/secure_storage/lower)
 "Sz" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_ridged,

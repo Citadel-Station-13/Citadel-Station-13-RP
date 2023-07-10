@@ -39,6 +39,11 @@
 // Returns the key based on the index
 #define KEYBYINDEX(L, index) (((index <= length(L)) && (index > 0)) ? L[index] : null)
 
+/// sanitize a lazy null-or-entry-or-list into always a list
+#define COERCE_OPTIONS_LIST(Entry) (islist(Entry)? Entry : (isnull(Entry)? list() : list(Entry)))
+/// COERCE_OPTIONS_LIST but does it to an existing variablew.
+#define COERCE_OPTIONS_LIST_IN(Variable) Variable = COERCE_OPTIONS_LIST(Variable)
+
 /// Passed into BINARY_INSERT to compare keys
 #define COMPARE_KEY __BIN_LIST[__BIN_MID]
 /// Passed into BINARY_INSERT to compare values

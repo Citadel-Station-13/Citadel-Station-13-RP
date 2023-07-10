@@ -1,7 +1,7 @@
 /turf/simulated/wall/r_wall
 	icon = 'icons/turf/walls/_previews.dmi'
-	icon_state = "rgeneric"
-	color = null
+	icon_state = "reinforced_solid"
+	color = "#666666"
 	rad_insulation = RAD_INSULATION_SUPER
 
 	material        = /datum/material/plasteel
@@ -16,7 +16,6 @@
 	girder_material = /datum/material/steel/hull
 
 /turf/simulated/wall/rshull
-	icon = 'icons/turf/walls/hull.dmi'
 	color = "#666677"
 	material        = /datum/material/steel/hull
 	reinf_material  = /datum/material/steel/hull
@@ -146,7 +145,7 @@
 	girder_material = null
 
 /turf/simulated/wall/sandstone
-	icon = 'icons/turf/walls/stone.dmi'
+	icon = 'icons/turf/walls/stone_wall.dmi'
 	color = "#D9C179"
 
 	material        = /datum/material/sandstone
@@ -154,7 +153,7 @@
 	girder_material = null
 
 /turf/simulated/wall/bone
-	icon = 'icons/turf/walls/stone.dmi'
+	icon = 'icons/turf/walls/stone_wall.dmi'
 	color = "#e6dfc8"
 
 	material        = /datum/material/bone
@@ -186,7 +185,7 @@
 	girder_material = null
 
 /turf/simulated/wall/sandstonediamond
-	icon = 'icons/turf/walls/stone.dmi'
+	icon = 'icons/turf/walls/stone_wall.dmi'
 	color = "#D9C179"
 
 	material        = /datum/material/sandstone
@@ -194,7 +193,7 @@
 	girder_material = null
 
 /turf/simulated/wall/snowbrick
-	icon = 'icons/turf/walls/stone.dmi'
+	icon = 'icons/turf/walls/stone_wall.dmi'
 	color = "#D8FDFF"
 
 	material        = /datum/material/snowbrick
@@ -229,23 +228,22 @@
 	girder_material = null
 
 /turf/simulated/wall/wood
-	icon = 'icons/turf/walls/wood.dmi'
+	icon = 'icons/turf/walls/_previews.dmi'
+	icon_state = "wood"
 	color = "#9c5930"
 
 	material        = /datum/material/wood
 	reinf_material  = null
 	girder_material = null
 
-/turf/simulated/wall/sifwood
-	icon = 'icons/turf/walls/wood.dmi'
+/turf/simulated/wall/wood/sifwood
 	color = "#0099cc"
 
 	material        = /datum/material/wood/sif
 	reinf_material  = null
 	girder_material = null
 
-/turf/simulated/wall/hardwood
-	icon = 'icons/turf/walls/wood.dmi'
+/turf/simulated/wall/wood/hardwood
 	color = "#42291a"
 
 	material        = /datum/material/wood/hardwood
@@ -436,3 +434,94 @@
 		var/image/I = image(icon = src.icon, icon_state = "o_[icon_state]")
 		I.color = stripe_color
 		add_overlay(I)
+
+/turf/simulated/wall/r_wall/prepainted
+	color = COLOR_WALL_GUNMETAL
+	paint_color = COLOR_WALL_GUNMETAL
+	icon_state = "reinforced_solid"
+
+/turf/simulated/wall/r_wall/prepainted/command
+	stripe_color = COLOR_COMMAND_BLUE
+	color = COLOR_COMMAND_BLUE
+
+/turf/simulated/wall/r_wall/prepainted/security
+	stripe_color = COLOR_MAROON
+	color = COLOR_MAROON
+
+/turf/simulated/wall/r_wall/prepainted/medical
+	paint_color = COLOR_GRAY80
+	stripe_color = COLOR_BABY_BLUE
+	color = COLOR_BABY_BLUE
+
+/turf/simulated/wall/r_wall/prepainted/engineering
+	stripe_color = COLOR_SUN
+	color = COLOR_SUN
+
+/turf/simulated/wall/r_wall/prepainted/engineering/atmos
+	stripe_color = COLOR_CYAN_DARK
+	color = COLOR_CYAN_DARK
+
+/turf/simulated/wall/r_wall/prepainted/civilian
+	stripe_color = COLOR_PALE_BTL_GREEN
+	color = COLOR_PALE_BTL_GREEN
+
+/turf/simulated/wall/r_wall/prepainted/exploration
+	stripe_color = COLOR_EXPLO_VIOLET
+	color = COLOR_EXPLO_VIOLET
+
+/turf/simulated/wall/r_wall/prepainted/science
+	paint_color = COLOR_GRAY80
+	stripe_color = COLOR_PURPLE_GRAY
+	color = COLOR_PURPLE_GRAY
+
+/turf/simulated/wall/r_wall/prepainted/cargo
+	stripe_color = COLOR_BEASTY_BROWN
+	color = COLOR_BEASTY_BROWN
+
+/turf/simulated/wall/prepainted
+	paint_color = COLOR_WALL_GUNMETAL
+	color = COLOR_WALL_GUNMETAL
+	icon_state = "solid"
+
+/turf/simulated/wall/prepainted/command
+	stripe_color = COLOR_COMMAND_BLUE
+	color = COLOR_COMMAND_BLUE
+
+/turf/simulated/wall/prepainted/command/alt
+	paint_color = COLOR_GRAY15
+	stripe_color = COLOR_GOLD
+	color = COLOR_GOLD
+
+/turf/simulated/wall/prepainted/security
+	stripe_color = COLOR_MAROON
+	color = COLOR_MAROON
+
+/turf/simulated/wall/prepainted/medical
+	paint_color = COLOR_GRAY80
+	stripe_color = COLOR_BABY_BLUE
+	color = COLOR_BABY_BLUE
+
+/turf/simulated/wall/prepainted/engineering
+	stripe_color = COLOR_SUN
+	color = COLOR_SUN
+
+/turf/simulated/wall/prepainted/engineering/atmos
+	stripe_color = COLOR_CYAN_DARK
+	color = COLOR_CYAN_DARK
+
+/turf/simulated/wall/prepainted/civilian
+	stripe_color = COLOR_PALE_BTL_GREEN
+	color = COLOR_PALE_BTL_GREEN
+
+/turf/simulated/wall/prepainted/exploration
+	stripe_color = COLOR_EXPLO_VIOLET
+	color = COLOR_EXPLO_VIOLET
+
+/turf/simulated/wall/prepainted/science
+	paint_color = COLOR_GRAY80
+	stripe_color = COLOR_PURPLE_GRAY
+	color = COLOR_PURPLE_GRAY
+
+/turf/simulated/wall/prepainted/cargo
+	stripe_color = COLOR_BEASTY_BROWN
+	color = COLOR_BEASTY_BROWN

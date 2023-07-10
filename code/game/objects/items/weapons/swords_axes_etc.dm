@@ -163,7 +163,7 @@
 	embed_chance = 100 // these should probably come in a bandolier or have some sort of fabricator, tbf
 	damage_force = 5 // HAVING A STICK JAMMED INTO YOU IS LIKELY BAD FOR YOUR HEALTH // well to be fair most of the damage comes from the embed not the stab
 	w_class = WEIGHT_CLASS_SMALL
-	matter = list(MAT_STEEL = 2500)
+	materials = list(MAT_STEEL = 2500)
 	sharp = TRUE
 	edge = TRUE
 	icon_state = "embed_spike"
