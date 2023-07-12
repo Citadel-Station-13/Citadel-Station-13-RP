@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 		if(istype(I,/obj/item/stack/material/glass))
 			var/obj/item/stack/material/ST = I
 			if(ST.material.opacity <= 0.7)
-				place_window(user, loc, SOUTHWEST, ST, TRUE)
+				place_window(user, loc, ST, TRUE, TRUE)
 			return TRUE
 
 		if(I.is_wrench())
