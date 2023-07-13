@@ -196,7 +196,7 @@
 
 /obj/machinery/lathe/proc/insert_item(obj/item/I, mob/user)
 	if(LAZYLEN(stored_items) >= items_max)
-		user.action_feedback(SPAN_WARNING("[src] can't hold [items_max && "more"] items for machining."), src)
+		user.action_feedback(SPAN_WARNING("[src] can't hold [items_max? "any more" : ""]items for machining."), src)
 		return FALSE
 	if(!isnull(user))
 		if(user.is_in_inventory(I) && !user.transfer_item_to_loc(I, src))
