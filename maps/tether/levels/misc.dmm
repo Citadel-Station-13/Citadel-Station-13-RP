@@ -108,6 +108,9 @@
 /obj/effect/step_trigger/teleporter/random,
 /turf/space,
 /area/space)
+"ar" = (
+/turf/unsimulated/wall,
+/area/space)
 "as" = (
 /obj/structure/window/reinforced,
 /turf/unsimulated/wall,
@@ -1045,9 +1048,6 @@
 /obj/item/towel/random,
 /turf/simulated/shuttle/floor/alien,
 /area/unknown/dorm6)
-"dg" = (
-/turf/unsimulated/wall,
-/area/space)
 "dh" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1380;
@@ -2289,6 +2289,13 @@
 	},
 /turf/space/transit/west,
 /area/space)
+"iR" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/machinery/door/blast/regular/open,
+/turf/simulated/floor/tiled/steel,
+/area/centcom/simulated/evac)
 "iU" = (
 /obj/structure/bed/chair/shuttle,
 /obj/effect/floor_decal/borderfloor/corner{
@@ -4282,6 +4289,12 @@
 /obj/item/chess/brook,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
+"Mw" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/simulated/terminal)
 "MA" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/lino,
@@ -5522,12 +5535,6 @@
 "Vu" = (
 /turf/unsimulated/wall,
 /area/centcom/simulated/main_hall)
-"Vv" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 8
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/simulated/terminal)
 "Vw" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/steel,
@@ -5559,13 +5566,6 @@
 /area/beach)
 "VD" = (
 /obj/effect/floor_decal/corner_steel_grid/diagonal,
-/turf/simulated/floor/tiled/steel,
-/area/centcom/simulated/evac)
-"VE" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 8
-	},
-/obj/machinery/door/blast/regular/open,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "VF" = (
@@ -11086,48 +11086,48 @@ NH
 (32,1,1) = {"
 Hy
 Hy
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
 Hy
 ap
 ap
@@ -11269,7 +11269,7 @@ Mb
 in
 sN
 Mb
-dg
+ar
 Av
 ap
 ap
@@ -11411,7 +11411,7 @@ FT
 FT
 uG
 FT
-dg
+ar
 Hy
 ap
 ap
@@ -11553,7 +11553,7 @@ FT
 FT
 uG
 FT
-dg
+ar
 Hy
 ap
 ap
@@ -11695,7 +11695,7 @@ cq
 cq
 yk
 cq
-dg
+ar
 Hy
 ap
 ap
@@ -11837,7 +11837,7 @@ FT
 FT
 uG
 FT
-dg
+ar
 Hy
 ap
 ap
@@ -11979,7 +11979,7 @@ FT
 FT
 uG
 FT
-dg
+ar
 Hy
 ap
 ap
@@ -12121,7 +12121,7 @@ FT
 FT
 uG
 FT
-dg
+ar
 Hy
 ap
 ap
@@ -12263,7 +12263,7 @@ FT
 FT
 uG
 FT
-dg
+ar
 Hy
 ap
 ap
@@ -12405,7 +12405,7 @@ FT
 FT
 uG
 FT
-dg
+ar
 Hy
 ap
 ap
@@ -12547,7 +12547,7 @@ cq
 cq
 yk
 cq
-dg
+ar
 Hy
 ap
 ap
@@ -12689,7 +12689,7 @@ FT
 FT
 uG
 FT
-dg
+ar
 Hy
 ap
 ap
@@ -12831,7 +12831,7 @@ FT
 FT
 uG
 FT
-dg
+ar
 Hy
 ap
 ap
@@ -12973,7 +12973,7 @@ PU
 is
 FX
 PU
-dg
+ar
 Fp
 ap
 ap
@@ -13074,48 +13074,48 @@ NH
 (46,1,1) = {"
 Hy
 Hy
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
-dg
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
 Hy
 ap
 ap
@@ -13924,7 +13924,7 @@ ap
 ap
 "}
 (52,1,1) = {"
-dg
+ar
 aI
 aI
 aI
@@ -13935,7 +13935,7 @@ aI
 aI
 aI
 aI
-dg
+ar
 aI
 aI
 aI
@@ -13946,7 +13946,7 @@ aI
 aI
 aI
 aI
-dg
+ar
 ap
 ap
 ap
@@ -15486,7 +15486,7 @@ El
 iO
 "}
 (63,1,1) = {"
-dg
+ar
 aL
 aL
 aL
@@ -15497,7 +15497,7 @@ aL
 aL
 aL
 aL
-dg
+ar
 aL
 aL
 aL
@@ -15508,7 +15508,7 @@ aL
 aL
 aL
 aL
-dg
+ar
 ap
 ap
 ap
@@ -17048,7 +17048,7 @@ El
 iO
 "}
 (74,1,1) = {"
-dg
+ar
 aL
 aL
 aL
@@ -17059,7 +17059,7 @@ aL
 aL
 aL
 aL
-dg
+ar
 aL
 aL
 aL
@@ -17070,7 +17070,7 @@ aL
 aL
 aL
 aL
-dg
+ar
 ap
 ap
 ap
@@ -18610,7 +18610,7 @@ El
 iO
 "}
 (85,1,1) = {"
-dg
+ar
 aL
 aL
 aL
@@ -18621,7 +18621,7 @@ aL
 aL
 aL
 aL
-dg
+ar
 aL
 aL
 aL
@@ -18632,7 +18632,7 @@ aL
 aL
 aL
 aL
-dg
+ar
 ae
 ae
 ae
@@ -19640,9 +19640,9 @@ wl
 wl
 wl
 wl
-VE
-VE
-VE
+iR
+iR
+iR
 wl
 sT
 Rc
@@ -20083,9 +20083,9 @@ Nq
 Nq
 wd
 dZ
-Vv
-Vv
-Vv
+Mw
+Mw
+Mw
 dZ
 VM
 VQ
@@ -20172,7 +20172,7 @@ El
 iO
 "}
 (96,1,1) = {"
-dg
+ar
 aL
 aL
 aL
@@ -20183,7 +20183,7 @@ aL
 aL
 aL
 aL
-dg
+ar
 aL
 aL
 aL
@@ -20194,7 +20194,7 @@ aL
 aL
 aL
 aL
-dg
+ar
 Vu
 YE
 Ru
@@ -21734,7 +21734,7 @@ jf
 Jz
 "}
 (107,1,1) = {"
-dg
+ar
 aL
 aL
 aL
@@ -21745,7 +21745,7 @@ aL
 aL
 aL
 aL
-dg
+ar
 aL
 aL
 aL
@@ -21756,7 +21756,7 @@ aL
 aL
 aL
 aL
-dg
+ar
 aq
 uc
 ue
@@ -23296,7 +23296,7 @@ jf
 Jz
 "}
 (118,1,1) = {"
-dg
+ar
 aL
 aL
 aL
@@ -23307,7 +23307,7 @@ aL
 aL
 aL
 aL
-dg
+ar
 aL
 aL
 aL
@@ -23318,7 +23318,7 @@ aL
 aL
 aL
 aL
-dg
+ar
 aq
 aq
 aq
@@ -23464,15 +23464,15 @@ fZ
 aI
 aI
 aI
-dg
+ar
 aI
 aI
 aI
-dg
+ar
 aI
 aI
 aI
-dg
+ar
 ap
 ap
 ae
@@ -24458,15 +24458,15 @@ fZ
 aL
 aL
 aL
-dg
+ar
 aL
 aL
 aL
-dg
+ar
 aL
 aL
 aL
-dg
+ar
 ap
 ap
 ae
@@ -24858,7 +24858,7 @@ jf
 Jz
 "}
 (129,1,1) = {"
-dg
+ar
 aL
 aL
 aL
@@ -24869,7 +24869,7 @@ aL
 aL
 aL
 aL
-dg
+ar
 aL
 aL
 aL
@@ -25452,15 +25452,15 @@ fZ
 aL
 aL
 aL
-dg
+ar
 aL
 aL
 aL
-dg
+ar
 aL
 aL
 aL
-dg
+ar
 ap
 ap
 ae
@@ -26420,7 +26420,7 @@ jf
 Jz
 "}
 (140,1,1) = {"
-dg
+ar
 bb
 bb
 bb
@@ -26431,7 +26431,7 @@ bb
 bb
 bb
 bb
-dg
+ar
 bb
 bb
 bb
@@ -26442,19 +26442,19 @@ bb
 bb
 bb
 bb
-dg
+ar
 bb
 bb
 bb
-dg
+ar
 bb
 bb
 bb
-dg
+ar
 bb
 bb
 bb
-dg
+ar
 ap
 ap
 ae

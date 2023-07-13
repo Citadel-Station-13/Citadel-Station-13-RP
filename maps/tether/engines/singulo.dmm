@@ -660,7 +660,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass_engineering,
+/obj/machinery/door/airlock/glass/engineering,
 /turf/simulated/floor/tiled,
 /area/submap/pa_room)
 "bk" = (
@@ -1052,7 +1052,7 @@
 /turf/simulated/floor,
 /area/submap/pa_room)
 "ca" = (
-/obj/machinery/door/airlock/glass_engineering,
+/obj/machinery/door/airlock/glass/engineering,
 /turf/simulated/floor/tiled,
 /area/submap/pa_room)
 "cb" = (

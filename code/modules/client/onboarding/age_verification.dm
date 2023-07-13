@@ -1,4 +1,6 @@
 /client/proc/age_verification()
+	if(!SSdbcore.Connect())
+		return TRUE
 	if(!player.block_on_available(10 SECONDS))
 		message_admins("FATAL: player data unavailable during age verification.")
 		. = TRUE

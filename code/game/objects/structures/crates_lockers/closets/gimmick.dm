@@ -1,15 +1,7 @@
 /obj/structure/closet/cabinet
 	name = "cabinet"
 	desc = "Old will forever be in fashion."
-	icon_state = "cabinet_closed"
-	icon_closed = "cabinet_closed"
-	icon_opened = "cabinet_open"
-
-/obj/structure/closet/cabinet/update_icon()
-	if(!opened)
-		icon_state = icon_closed
-	else
-		icon_state = icon_opened
+	closet_appearance = /singleton/closet_appearance/cabinet
 
 /obj/structure/closet/acloset
 	name = "strange closet"
@@ -17,7 +9,6 @@
 	icon_state = "acloset"
 	icon_closed = "acloset"
 	icon_opened = "aclosetopen"
-
 
 /obj/structure/closet/gimmick
 	name = "administrative supply closet"
@@ -94,6 +85,7 @@
 	icon_closed = "alien_locker"
 	icon_opened = "alien_locker_open"
 	anchored = TRUE
+	
 /obj/structure/closet/largecardboard
 	name = "Large Cardboard Box"
 	desc = "It was my destiny to be here."

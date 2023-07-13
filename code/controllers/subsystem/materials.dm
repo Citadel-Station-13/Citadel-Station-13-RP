@@ -79,3 +79,32 @@ SUBSYSTEM_DEF(materials)
  */
 /proc/get_material_by_name(name)
 	return SSmaterials.legacy_material_lookup[name]
+
+/**
+ * tgui materials context
+ *
+ * generates data for tgui/interfaces/common/Materials.tsx:
+ * * MaterialsContext
+ * * FullMaterialsContext
+ *
+ * @params
+ * * ids - material ids. defaults to all.
+ * * full - for FullMaterialsContext? usually not needed.
+ */
+/datum/controller/subsystem/materials/proc/tgui_materials_context(list/ids, full = FALSE)
+	var/list/data = list()
+	// a hack to make this default to all if not specified.
+	for(var/id in ids || material_lookup)
+		var/datum/material/mat = material_lookup[id]
+		var/list/built = list(
+			"name" = mat.display_name || mat.name,
+			"id" = mat.id,
+			"iconKey" = mat.tgui_icon_key,
+			"sheetAmount" = SHEET_MATERIAL_AMOUNT,
+		)
+		data[mat.id] = built
+	// todo: per-material sheetAmount
+	return list(
+		"materials" = data,
+		"sheetAmount" = SHEET_MATERIAL_AMOUNT,
+	)

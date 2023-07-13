@@ -39,8 +39,8 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
-"cn" = (
-/obj/machinery/computer/ship/navigation{
+"cc" = (
+/obj/machinery/computer/ship/engines{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -69,6 +69,14 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
+"eT" = (
+/obj/machinery/door/airlock/glass/research{
+	name = "Research Entrance";
+	req_access = list(47)
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "eU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -80,10 +88,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
-"fy" = (
-/obj/structure/table/steel_reinforced,
-/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "gj" = (
 /obj/machinery/oxygen_pump,
@@ -123,6 +127,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
+"jM" = (
+/obj/machinery/computer/ship/navigation{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
 "kd" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/space)
@@ -136,16 +146,6 @@
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"lQ" = (
-/obj/machinery/door/airlock/glass_security{
-	id_tag = "BrigFoyer";
-	layer = 2.8;
-	name = "Security";
-	req_one_access = list(38,63)
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "my" = (
 /obj/structure/railing{
@@ -286,6 +286,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"wA" = (
+/obj/machinery/computer/ship/sensors{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
 "wJ" = (
 /turf/simulated/floor/plating,
 /area/space)
@@ -294,25 +300,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
-"wU" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/obj/machinery/door/airlock/glass_engineeringatmos{
-	name = "Atmospherics"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/space)
-"xL" = (
-/obj/machinery/computer/ship/sensors{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "yU" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
@@ -338,15 +325,6 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
-"zd" = (
-/obj/structure/catwalk,
-/obj/machinery/shield_diffuser,
-/obj/item/sign{
-	icon_state = "warning";
-	name = "hazard stripes"
-	},
-/turf/simulated/floor/airless/ceiling,
-/area/space)
 "zl" = (
 /obj/structure/handrail{
 	dir = 8
@@ -355,12 +333,6 @@
 /area/space)
 "zp" = (
 /turf/simulated/floor/tiled/monotile,
-/area/space)
-"zr" = (
-/obj/machinery/computer/ship/engines{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "zO" = (
 /obj/structure/railing{
@@ -384,6 +356,10 @@
 /area/space)
 "AQ" = (
 /obj/machinery/computer/ship/sensors,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"Bc" = (
+/obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "Bf" = (
@@ -424,18 +400,19 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"EN" = (
+/obj/structure/catwalk,
+/obj/machinery/shield_diffuser,
+/obj/item/sign{
+	icon_state = "warning";
+	name = "hazard stripes"
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "ES" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
-/area/space)
-"Fm" = (
-/obj/machinery/door/airlock/glass_research{
-	name = "Research Entrance";
-	req_access = list(47)
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/techfloor,
 /area/space)
 "Fp" = (
 /turf/simulated/wall/r_wall,
@@ -550,6 +527,17 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/wall/r_wall,
 /area/space)
+"KN" = (
+/obj/structure/ladder,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"KV" = (
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/pilot{
+	pixel_y = 3
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "LA" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -566,6 +554,19 @@
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/space)
+"Mg" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass/engineeringatmos{
+	name = "Atmospherics"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
@@ -610,13 +611,6 @@
 "Ox" = (
 /turf/simulated/open,
 /area/space)
-"OE" = (
-/obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/pilot{
-	pixel_y = 3
-	},
-/obj/structure/table/steel_reinforced,
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
 "OM" = (
 /turf/simulated/floor/glass/reinforced,
 /area/space)
@@ -628,10 +622,6 @@
 /area/space)
 "Qd" = (
 /obj/structure/table/reinforced,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"QY" = (
-/obj/structure/ladder,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "Rj" = (
@@ -788,6 +778,16 @@
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled/techmaint,
+/area/space)
+"Zq" = (
+/obj/machinery/door/airlock/glass/security{
+	id_tag = "BrigFoyer";
+	layer = 2.8;
+	name = "Security";
+	req_one_access = list(38,63)
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "Zt" = (
 /obj/structure/catwalk,
@@ -8270,7 +8270,7 @@ VJ
 VJ
 VJ
 JP
-wU
+Mg
 Fp
 Fp
 Fp
@@ -8859,7 +8859,7 @@ Kt
 Fp
 Fp
 Fp
-zd
+EN
 VJ
 VJ
 VJ
@@ -9053,7 +9053,7 @@ eU
 Fp
 ny
 hh
-zd
+EN
 VJ
 VJ
 VJ
@@ -11797,8 +11797,8 @@ Fp
 Fp
 Fp
 Fp
-lQ
-lQ
+Zq
+Zq
 Fp
 Fp
 Fp
@@ -12205,7 +12205,7 @@ oE
 oE
 oE
 oE
-Fm
+eT
 pq
 Hu
 HA
@@ -12399,7 +12399,7 @@ oE
 oE
 oE
 oE
-Fm
+eT
 Rp
 dl
 Sq
@@ -27877,17 +27877,17 @@ Ox
 Ox
 Ox
 Xi
-QY
+KN
 Hu
 Hu
 Hu
-OE
+KV
 wN
 Hu
 Hu
 Hu
 Hu
-fy
+Bc
 Xi
 Ox
 Ox
@@ -28071,17 +28071,17 @@ Ox
 Ox
 Ox
 Xi
-fy
+Bc
 wN
 Ti
 Ti
-fy
+Bc
 Ha
-fy
+Bc
 Ti
 Ti
 wN
-fy
+Bc
 Xi
 Ox
 Ox
@@ -28265,17 +28265,17 @@ Ox
 Ox
 Ox
 Xi
-fy
-cn
-fy
+Bc
+jM
+Bc
 Fp
 Xi
 Xi
 Xi
 Fp
-zr
-xL
-fy
+cc
+wA
+Bc
 Xi
 Ox
 Ox
