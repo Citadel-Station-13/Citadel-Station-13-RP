@@ -1145,7 +1145,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/break_room)
 "cB" = (
-/obj/machinery/door/airlock/glass_mining,
+/obj/machinery/door/airlock/glass/mining,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -1455,7 +1455,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "db" = (
-/obj/machinery/door/airlock/glass_mining,
+/obj/machinery/door/airlock/glass/mining,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},

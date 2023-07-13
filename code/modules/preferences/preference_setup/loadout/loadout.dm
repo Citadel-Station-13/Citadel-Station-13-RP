@@ -89,6 +89,47 @@
 
 /datum/category_item/player_setup_item/loadout/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("toggle")
+			#warn impl
+		if("rename")
+			#warn impl
+		if("redesc")
+			#warn impl
+		if("recolor")
+			#warn impl
+		if("tweak")
+			#warn impl
+		if("clear")
+			var/list/loadout_slot = current_loadout_slot(pref)
+			loadout_slot.Cut()
+			push_loadout_data()
+			return TRUE
+		if("slot")
+			var/index = text2num(params["index"])
+			if(!index)
+				return
+			if(index > LOADOUT_MAX_SLOTS)
+				return
+			pref.set_character_data(CHARACTER_DATA_LOADOUT_SLOT, index)
+			var/list/loadout_slot = current_loadout_slot(pref)
+			push_loadout_data()
+			return TRUE
+		if("slotName")
+			#warn impl
+	#warn impl
+
+/datum/category_item/player_setup_item/loadout/proc/current_loadout_slot(datum/preferences/prefs)
+	var/list/all_slots = prefs.get_character_data(CHARACTER_DATA_LOADOUT)
+	var/index_slot = prefs.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
+	return all_slots["[index_slot]"] || (all_slots["[index_slot]"] = list())
+
+/datum/category_item/player_setup_item/loadout/proc/push_loadout_data()
+	#warn impl
+
+/datum/category_item/player_setup_item/loadout/proc/push_loadout_slots()
 	#warn impl
 
 /datum/category_item/player_setup_item/loadout/load_character(savefile/S)
@@ -159,29 +200,6 @@
 		if(!metadata || !CanUseTopic(user))
 			return PREFERENCES_NOACTION
 		set_tweak_metadata(gear, tweak, metadata)
-		return PREFERENCES_REFRESH_UPDATE_PREVIEW
-	if(href_list["next_slot"] || href_list["prev_slot"])
-		// Set the current slot in the gear list to the currently selected gear
-		pref.gear_list["[pref.gear_slot]"] = pref.gear
-		// If we're moving up a slot..
-		if(href_list["next_slot"])
-			// Change the current slot number
-			pref.gear_slot = pref.gear_slot+1
-			if(pref.gear_slot>config_legacy.loadout_slots)
-				pref.gear_slot = 1
-		// If we're moving down a slot..
-		else if(href_list["prev_slot"])
-			// Change current slot one down
-			pref.gear_slot = pref.gear_slot-1
-			if(pref.gear_slot<1)
-				pref.gear_slot = config_legacy.loadout_slots
-		// Set the currently selected gear to whatever's in the new slot
-		if(pref.gear_list["[pref.gear_slot]"])
-			pref.gear = pref.gear_list["[pref.gear_slot]"]
-		else
-			pref.gear = list()
-			pref.gear_list["[pref.gear_slot]"] = list()
-		// Refresh?
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	else if(href_list["clear_loadout"])
 		pref.gear.Cut()

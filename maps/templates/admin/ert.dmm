@@ -388,7 +388,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/med)
 "dA" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(103)
 	},
@@ -895,9 +895,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engineering)
 "hP" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1069,7 +1068,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/teleporter)
 "jK" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_access = list(103)
 	},
@@ -1592,7 +1591,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/med_surg)
 "nn" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_access = list(103)
 	},
@@ -1662,7 +1661,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/airlock/glass_engineeringatmos{
+/obj/machinery/door/airlock/glass/engineeringatmos{
 	req_one_access = list(103)
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1977,7 +1976,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "po" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(103)
 	},
@@ -2365,7 +2364,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/atmos)
 "rV" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(103)
 	},
@@ -2677,7 +2676,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/eng_storage)
 "un" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(103)
 	},
@@ -2775,7 +2774,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/atmos)
 "vi" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_access = list(103)
 	},
@@ -3477,7 +3476,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "Ay" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list(103)
 	},
 /obj/machinery/door/blast/regular{
@@ -3605,7 +3604,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_dl)
 "Bq" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list(103)
 	},
 /obj/structure/cable/yellow{
@@ -4112,7 +4111,7 @@
 /turf/space,
 /area/space)
 "FJ" = (
-/obj/machinery/door/airlock/glass_command{
+/obj/machinery/door/airlock/glass/command{
 	req_one_access = list(103)
 	},
 /obj/machinery/door/firedoor/border_only,
@@ -4167,7 +4166,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/med_surg)
 "FQ" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list(103)
 	},
 /obj/machinery/door/firedoor/multi_tile{
@@ -4298,7 +4297,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hallways)
 "GO" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list(103)
 	},
 /obj/machinery/door/firedoor/border_only,
@@ -5367,7 +5366,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/armoury_dl)
 "NY" = (
-/obj/machinery/door/airlock/glass_command{
+/obj/machinery/door/airlock/glass/command{
 	req_one_access = list(103)
 	},
 /obj/structure/cable/yellow{
@@ -5395,7 +5394,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/engineering)
 "Oa" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_access = list(103)
 	},
@@ -5908,7 +5907,7 @@
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 1
 	},
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(103)
 	},
@@ -5919,7 +5918,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "Rz" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list(103)
 	},
 /obj/machinery/door/blast/regular{
@@ -5959,7 +5958,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engine)
 "RQ" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_access = list(103)
 	},
@@ -5997,7 +5996,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engineering)
 "Sh" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(103)
 	},
@@ -6291,7 +6290,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/teleporter)
 "UT" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list(103)
 	},
 /obj/structure/cable/yellow{
@@ -6359,7 +6358,7 @@
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 1
 	},
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(103)
 	},
@@ -6437,7 +6436,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/bridge)
 "Wu" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list(103)
 	},
 /obj/machinery/door/firedoor/border_only,
@@ -6779,7 +6778,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/med)
 "ZX" = (
-/obj/machinery/door/airlock/glass_command{
+/obj/machinery/door/airlock/glass/command{
 	req_one_access = list(103)
 	},
 /obj/structure/cable/yellow{
