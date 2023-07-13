@@ -4853,6 +4853,7 @@
 /obj/machinery/door/window/eastleft{
 	name = "Gear Storage"
 	},
+/obj/item/hardsuit/hazmat/equipped,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
 "ddZ" = (
