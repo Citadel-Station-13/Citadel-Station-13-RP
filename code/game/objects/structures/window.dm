@@ -683,33 +683,35 @@
 		add_obj_verb(src, /obj/structure/window/verb/rotate_counterclockwise)
 		add_obj_verb(src, /obj/structure/window/verb/rotate_clockwise)
 
-/proc/place_window(mob/user, loc, dir_to_set, obj/item/stack/material/ST, var/fulltile = FALSE)
-	var/required_amount = (dir_to_set & (dir_to_set - 1)) ? 4 : 1
+/proc/place_window(mob/user, loc, obj/item/stack/material/ST, var/fulltile = FALSE, var/constructed = FALSE)
+	var/required_amount = 4
+	var/windowtype
+	if(istype(ST, /obj/item/stack/material/glass))
+		windowtype = /obj/structure/window/basic/full
+	if(istype(ST, /obj/item/stack/material/glass/reinforced))
+		windowtype = /obj/structure/window/reinforced/full
+	if(istype(ST, /obj/item/stack/material/glass/phoronglass))
+		windowtype = /obj/structure/window/phoronbasic/full
+	if(istype(ST, /obj/item/stack/material/glass/phoronrglass))
+		windowtype = /obj/structure/window/phoronreinforced/full
+
 	if (!ST.can_use(required_amount))
 		to_chat(user, SPAN_NOTICE("You do not have enough sheets."))
 		return
 	for(var/obj/structure/window/W in loc)
-		if(W.dir == dir_to_set)
-			to_chat(user, SPAN_NOTICE("There is already a window facing this way there."))
-			return
-		if(W.check_fullwindow() && (dir_to_set & (dir_to_set - 1))) //two fulltile windows
+		if(W.check_fullwindow()) //two fulltile windows
 			to_chat(user, SPAN_NOTICE("There is already a window there."))
 			return
 	to_chat(user, SPAN_NOTICE("You start placing the window."))
 	if(do_after(user,20))
 		for(var/obj/structure/window/W in loc)
-			if(W.dir == dir_to_set)//checking this for a 2nd time to check if a window was made while we were waiting.
-				to_chat(user, SPAN_NOTICE("There is already a window facing this way there."))
-				return
-			if(W.check_fullwindow() && (dir_to_set & (dir_to_set - 1)))
+			if(W.check_fullwindow())
 				to_chat(user, SPAN_NOTICE("There is already a window there."))
 				return
 
 		if (ST.use(required_amount))
-			var/obj/structure/window/WD = new(loc, dir_to_set, FALSE)
+			var/obj/structure/window/WD = new windowtype(get_turf(loc), null, TRUE)
 			to_chat(user, SPAN_NOTICE("You place [WD]."))
-			WD.construction_state = 0
-			WD.set_anchored(FALSE)
 		else
 			to_chat(user, SPAN_NOTICE("You do not have enough sheets."))
 			return
@@ -726,8 +728,6 @@
 
 
 /obj/structure/window/basic/full
-	icon = 'icons/obj/structures/window_full.dmi'
-	icon_state = "window-0"
 	base_icon_state = "window"
 
 	smoothing_flags = SMOOTH_BITMASK
@@ -756,9 +756,6 @@
 
 
 /obj/structure/window/phoronbasic/full
-	icon = 'icons/obj/structures/window_full_phoron.dmi'
-	icon_state = "window-0"
-
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = FULLTILE_SMOOTHING
@@ -787,9 +784,6 @@
 
 
 /obj/structure/window/phoronreinforced/full
-	icon = 'icons/obj/structures/window_full_reinforced_phoron.dmi'
-	icon_state = "window-0"
-
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = FULLTILE_SMOOTHING
@@ -816,9 +810,6 @@
 
 
 /obj/structure/window/reinforced/full
-	icon = 'icons/obj/structures/window_full_reinforced.dmi'
-	icon_state = "window-0"
-
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = FULLTILE_SMOOTHING
