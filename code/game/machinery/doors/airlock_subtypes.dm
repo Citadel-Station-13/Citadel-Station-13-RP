@@ -17,7 +17,7 @@
 	assembly_type = /obj/structure/door_assembly/door_assembly_sec
 	open_sound_powered = 'sound/machines/door/sec1o.ogg'
 	close_sound_powered = 'sound/machines/door/sec1c.ogg'
-	door_color = COLOR_MAROON
+	door_color = COLOR_SECURITY_RED
 
 /obj/machinery/door/airlock/engineering
 	name = "Engineering Airlock"
@@ -27,6 +27,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
+	stripe_color = COLOR_SUN
 
 /obj/machinery/door/airlock/engineeringatmos
 	name = "Atmospherics Airlock"
@@ -36,7 +37,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
-	stripe_color = COLOR_CYAN
+	stripe_color = COLOR_ATMOSPHERICS_CYAN
 
 /obj/machinery/door/airlock/medical
 	name = "Medical Airlock"
@@ -46,7 +47,7 @@
 	open_sound_powered = 'sound/machines/door/med1o.ogg'
 	close_sound_powered = 'sound/machines/door/med1c.ogg'
 	door_color = COLOR_WHITE
-	stripe_color = COLOR_DEEP_SKY_BLUE
+	stripe_color = COLOR_BABY_BLUE
 
 /obj/machinery/door/airlock/maintenance
 	name = "Maintenance Access"
@@ -260,6 +261,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
+	stripe_color = COLOR_SUN
 	window_color = GLASS_COLOR
 
 /obj/machinery/door/airlock/glass/engineeringatmos
@@ -274,7 +276,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
-	stripe_color = COLOR_CYAN
+	stripe_color = COLOR_ATMOSPHERICS_CYAN
 	window_color = GLASS_COLOR
 
 /obj/machinery/door/airlock/glass/security
@@ -288,7 +290,7 @@
 	req_one_access = list(ACCESS_SECURITY_EQUIPMENT)
 	open_sound_powered = 'sound/machines/door/sec1o.ogg'
 	close_sound_powered = 'sound/machines/door/sec1c.ogg'
-	door_color = COLOR_MAROON
+	door_color = COLOR_SECURITY_RED
 	window_color = GLASS_COLOR
 
 /obj/machinery/door/airlock/glass/medical
@@ -303,7 +305,7 @@
 	open_sound_powered = 'sound/machines/door/med1o.ogg'
 	close_sound_powered = 'sound/machines/door/med1c.ogg'
 	door_color = COLOR_WHITE
-	stripe_color = COLOR_DEEP_SKY_BLUE
+	stripe_color = COLOR_BABY_BLUE
 	window_color = GLASS_COLOR
 
 /obj/machinery/door/airlock/mining
@@ -313,7 +315,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_PALE_ORANGE
-	stripe_color = COLOR_BEASTY_BROWN
+	stripe_color = COLOR_CARGO_BROWN
 
 /obj/machinery/door/airlock/atmos
 	name = "Atmospherics Airlock"
@@ -322,7 +324,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
-	stripe_color = COLOR_CYAN
+	stripe_color = COLOR_ATMOSPHERICS_CYAN
 
 /obj/machinery/door/airlock/research
 	name = "Research Airlock"
@@ -359,7 +361,7 @@
 	open_sound_powered = 'sound/machines/door/cgo1o.ogg'
 	close_sound_powered = 'sound/machines/door/cgo1c.ogg'
 	door_color = COLOR_PALE_ORANGE
-	stripe_color = COLOR_BEASTY_BROWN
+	stripe_color = COLOR_CARGO_BROWN
 	window_color = GLASS_COLOR
 
 /obj/machinery/door/airlock/glass/atmos
@@ -374,7 +376,7 @@
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
-	stripe_color = COLOR_CYAN
+	stripe_color = COLOR_ATMOSPHERICS_CYAN
 	window_color = GLASS_COLOR
 
 
@@ -522,7 +524,7 @@
 
 /obj/machinery/door/airlock/multi_tile/medical
 	door_color = COLOR_WHITE
-	stripe_color = COLOR_DEEP_SKY_BLUE
+	stripe_color = COLOR_BABY_BLUE
 
 /obj/machinery/door/airlock/glass/civilian
 	glass = TRUE
@@ -553,11 +555,11 @@
 
 /obj/machinery/door/airlock/multi_tile/glass/medical
 	door_color = COLOR_WHITE
-	stripe_color = COLOR_DEEP_SKY_BLUE
+	stripe_color = COLOR_BABY_BLUE
 
 /obj/machinery/door/airlock/glass/medical
 	door_color = COLOR_WHITE
-	stripe_color = COLOR_DEEP_SKY_BLUE
+	stripe_color = COLOR_BABY_BLUE
 
 /obj/machinery/door/airlock/glass/exploration
 	door_color = COLOR_GRAY20
