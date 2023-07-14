@@ -273,6 +273,8 @@
 	// todo: better hinting to user for this
 	if(buckle_allowed && user.a_intent != INTENT_GRAB)
 		return FALSE
+	if(!user.Adjacent(src))
+		return FALSE
 	. = TRUE
 	INVOKE_ASYNC(src, PROC_REF(attempt_climb_on), user)
 
@@ -282,18 +284,38 @@
 	if(!allow_climb_on(climber))
 		climber.action_feedback(SPAN_WARNING("You can't climb onto [src]!"), src)
 		return FALSE
-	#warn impl
+	if(INTERACTING_WITH_FOR(climber, src, INTERACTING_FOR_CLIMB))
+		return FALSE
+	climber.visible_action_feedback(SPAN_WARNING("[climber] starts climbing onto \the [src]!", src, MESSAGE_RANGE_COMBAT_LOUD))
+	START_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
+	LAZYDISTINCTADD(climbing, climber)
+	. = do_after(climber, climb_delay * delay_mod, src, mobility_flags = MOBILITY_CAN_MOVE | MOBILITY_CAN_STAND | MOBILITY_IS_STANDING)
+	if(!INTERACTING_WITH_FOR(user, src, INTERACTING_FOR_CLIMB))
+		. = FALSE
+	LAZYREMOVE(climbing, climber)
+	STOP_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
+	if(!allow_climb_on(climber))
+		climber.action_feedback(SPAN_WARNING("You couldn't climb onto [src]!"), src)
+		return FALSE
+	do_climb_on(climber)
 
 /obj/proc/allow_climb_on(mob/living/climber)
 	if(!istype(climber))
 		return FALSE
+	if(!climb_allowed)
+		return FALSE
+	if(!climber.Adjacent(src))
+		return FALSE
+	return TRUE
 	#warn impl
 
 /obj/proc/do_climb_on(mob/living/climber)
-	climber.visible_message(SPAN_WARNING("[M] climbs onto \the [src]!"))
+	climber.visible_message(SPAN_WARNING("[climber] climbs onto \the [src]!"))
 	// all this effort just to avoid a splurtstation railing spare ID speedrun incident
 	if(climber.depth_current < depth_level)
-		climber.change_depth(depth)
+		// basically, we don't force move them, we just elevate them to our level
+		// if something else blocks them, L + ratio + get parried
+		climber.change_depth(depth_level)
 	step_towards(climber, src)
 
 /obj/attack_hand(mob/user, list/params)
@@ -306,30 +328,6 @@
 		shake_climbers()
 		return TRUE
 
-// todo: climbable obj-level (to avoid element/signal spam)
-/obj/structure/proc/do_climb(var/mob/living/user)
-	if (!can_climb(user))
-		return
-
-	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
-	climbers |= user
-
-	if(!do_after(user, issmall(user) ? climb_delay * 0.6 : climb_delay, src, mobility_flags = MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
-		climbers -= user
-		return
-
-	if (!can_climb(user, post_climb_check=1))
-		climbers -= user
-		return
-
-	var/old = pass_flags & (ATOM_PASS_BUCKLED)
-	pass_flags |= ATOM_PASS_BUCKLED
-	usr.locationTransitForceMove(get_turf(src), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
-	pass_flags = (pass_flags & ~(ATOM_PASS_BUCKLED)) | (old & ATOM_PASS_BUCKLED)
-
-	if (get_turf(user) == get_turf(src))
-		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")
-	climbers -= user
 
 /obj/structure/proc/can_climb(var/mob/living/user, post_climb_check=0)
 	if (!climbable || !can_touch(user) || (!post_climb_check && (user in climbers)))
