@@ -25,6 +25,10 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_LOW_WALL)
 	canSmoothWith = (SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_LOW_WALL+SMOOTH_GROUP_WALLS)
+	depth_projected = TRUE
+	depth = 12
+	climb_allowed = TRUE
+	climb_delay = 2.0 SECONDS
 	plane = OBJ_PLANE
 
 	var/default_material = MAT_STEEL

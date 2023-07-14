@@ -6,6 +6,7 @@
 	density = TRUE
 	plane = TURF_PLANE
 	w_class = ITEMSIZE_HUGE
+	depth_projected = TRUE
 
 	var/state = 0
 	var/health = 200

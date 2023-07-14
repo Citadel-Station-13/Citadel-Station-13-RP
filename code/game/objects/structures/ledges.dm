@@ -4,7 +4,7 @@
 	icon = 'icons/obj/ledges.dmi'
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_BUCKLED
 	density = TRUE
-	climbable = TRUE
+	climb_allowed = TRUE
 	anchored = TRUE
 	var/solidledge = 1
 	atom_flags = ATOM_BORDER
@@ -19,7 +19,7 @@
 	icon = 'icons/obj/ledges.dmi'
 	density = TRUE
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_BUCKLED
-	climbable = TRUE
+	climb_allowed = TRUE
 	anchored = TRUE
 	layer = STAIRS_LAYER
 

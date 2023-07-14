@@ -18,6 +18,27 @@
 	/// If set, at least one of these accesses are needed to access this object.
 	var/list/req_one_access
 
+	//? Climbing
+	/// people can climb onto us
+	var/climb_allowed = FALSE
+	/// people are allowed to knock climbers off of us
+	var/climb_knockable = TRUE
+	/// list of people currently climbing on us
+	var/list/mob/climbing
+	/// nominal climb delay before modifiers
+	var/climb_delay = 3.5 SECONDS
+
+	//? Depth
+	/// logical depth in pixels. people can freely run from high to low objects without being blocked.
+	///
+	/// negative values are ignored as turfs are assumed to be depth 0
+	/// unless we change that in the future
+	///
+	/// defaults to 28 which works for most "fulltile" objects
+	var/depth = 28
+	/// contributes to depth when we're on a turf
+	var/depth_projected = FALSE
+
 	//? Economy
 	/// economic category for objects
 	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
@@ -163,7 +184,7 @@
 /obj/proc/hides_under_flooring()
 	return 0
 
-	/**
+/**
  * This proc is used for telling whether something can pass by this object in a given direction, for use by the pathfinding system.
  *
  * Trying to generate one long path across the station will call this proc on every single object on every single tile that we're seeing if we can move through, likely
@@ -235,6 +256,126 @@
 	if(Adjacent(user))
 		add_fingerprint(user)
 	..()
+
+//? Climbing
+
+/obj/proc/attempt_climb_on(mob/M, delay_mod = 1)
+	#warn impl
+
+/obj/proc/allow_climb_on(mob/M)
+	#warn impl
+
+/obj/proc/do_climb_on(mob/M)
+	M.visible_message(SPAN_WARNING("[M] climbs onto \the [src]!"))
+	// all this effort just to avoid a splurtstation railing spare ID speedrun incident
+	#warn impl
+
+/obj/proc/shake_climbers()
+	#warn impl
+
+// todo: climbable obj-level (to avoid element/signal spam)
+/obj/structure/proc/do_climb(var/mob/living/user)
+	if (!can_climb(user))
+		return
+
+	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
+	climbers |= user
+
+	if(!do_after(user, issmall(user) ? climb_delay * 0.6 : climb_delay, src, mobility_flags = MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
+		climbers -= user
+		return
+
+	if (!can_climb(user, post_climb_check=1))
+		climbers -= user
+		return
+
+	var/old = pass_flags & (ATOM_PASS_BUCKLED)
+	pass_flags |= ATOM_PASS_BUCKLED
+	usr.locationTransitForceMove(get_turf(src), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
+	pass_flags = (pass_flags & ~(ATOM_PASS_BUCKLED)) | (old & ATOM_PASS_BUCKLED)
+
+	if (get_turf(user) == get_turf(src))
+		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")
+	climbers -= user
+
+/obj/strcutre/attack_hand(mob/user, list/params)
+	. = ..()
+
+	if(climbers.len && !(user in climbers))
+		user.visible_message("<span class='warning'>[user.name] shakes \the [src].</span>", \
+					"<span class='notice'>You shake \the [src].</span>")
+		structure_shaken()
+
+
+/obj/structure/proc/structure_shaken()
+	for(var/mob/living/M in climbers)
+		M.afflict_paralyze(20 * 1)
+		to_chat(M, "<span class='danger'>You topple as you are shaken off \the [src]!</span>")
+		climbers.Cut(1,2)
+
+	for(var/mob/living/M in get_turf(src))
+		if(M.lying) return //No spamming this on people.
+
+		M.afflict_paralyze(20 * 3)
+		to_chat(M, "<span class='danger'>You topple as \the [src] moves under you!</span>")
+
+		if(prob(25))
+
+			var/damage = rand(15,30)
+			var/mob/living/carbon/human/H = M
+			if(!istype(H))
+				to_chat(H, "<span class='danger'>You land heavily!</span>")
+				M.adjustBruteLoss(damage)
+				return
+
+			var/obj/item/organ/external/affecting
+
+			switch(pick(list("ankle","wrist","head","knee","elbow")))
+				if("ankle")
+					affecting = H.get_organ(pick(BP_L_FOOT, BP_R_FOOT))
+				if("knee")
+					affecting = H.get_organ(pick(BP_L_LEG, BP_R_LEG))
+				if("wrist")
+					affecting = H.get_organ(pick(BP_L_HAND, BP_R_HAND))
+				if("elbow")
+					affecting = H.get_organ(pick(BP_L_ARM, BP_R_ARM))
+				if("head")
+					affecting = H.get_organ(BP_HEAD)
+
+			if(affecting)
+				to_chat(M, "<span class='danger'>You land heavily on your [affecting.name]!</span>")
+				affecting.take_damage(damage, 0)
+				if(affecting.parent)
+					affecting.parent.add_autopsy_data("Misadventure", damage)
+			else
+				to_chat(H, "<span class='danger'>You land heavily!</span>")
+				H.adjustBruteLoss(damage)
+
+			H.UpdateDamageIcon()
+			H.update_health()
+	return
+
+/obj/structure/MouseDroppedOnLegacy(mob/target, mob/user)
+
+	var/mob/living/H = user
+	if(istype(H) && can_climb(H) && target == user)
+		do_climb(target)
+	else
+		return ..()
+
+/obj/structure/proc/can_climb(var/mob/living/user, post_climb_check=0)
+	if (!climbable || !can_touch(user) || (!post_climb_check && (user in climbers)))
+		return 0
+
+	if (!user.Adjacent(src))
+		to_chat(user, "<span class='danger'>You can't climb there, the way is blocked.</span>")
+		return 0
+
+	var/obj/occupied = turf_is_crowded()
+	if(occupied)
+		to_chat(user, "<span class='danger'>There's \a [occupied] in the way.</span>")
+		return 0
+	return 1
 
 //? Materials
 

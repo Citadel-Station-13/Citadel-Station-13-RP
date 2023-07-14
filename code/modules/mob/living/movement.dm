@@ -9,6 +9,7 @@
 			. += config_legacy.walk_speed
 
 /mob/living/Move(atom/newloc, direct, glide_size_override)
+	depth_staged = 0
 	if(buckled && buckled.loc != newloc)
 		return FALSE
 	return ..()
@@ -17,6 +18,9 @@
 	. = ..()
 	if(s_active && !CheapReachability(s_active))
 		s_active.close(src)
+	if(!isnull(depth_staged))
+		change_depth(depth_staged)
+		depth_staged = null
 
 /mob/living/forceMove(atom/destination)
 	if(buckled && (buckled.loc != destination))
@@ -43,6 +47,15 @@
 	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
 		return TRUE
 	return ..()
+
+/mob/living/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	. = ..()
+	if(isobj(blocker))
+		var/obj/O = blocker
+		if(!(O.obj_flags & OBJ_IGNORE_MOB_DEPTH) && O.depth < depth_current)
+			return TRUE
+		else if(O.depth_projected)
+			depth_staged = max(depth_staged, O.depth)
 
 /mob/living/can_cross_under(atom/movable/mover)
 	if(isliving(mover))
@@ -83,6 +96,8 @@
 	if(!prob(50))
 		return FALSE
 	return TRUE
+
+//? Bumping / Crawling
 
 /mob/living/Bump(atom/A)
 	var/skip_atom_bump_handling
@@ -357,3 +372,12 @@
 	// restore dir if needed
 	if(their_dir)
 		pushing.setDir(their_dir)
+
+//? Depth
+
+/mob/living/proc/change_depth(new_depth)
+	if(new_depth == depth_current)
+		return
+	. = new_depth - depth_current
+	depth_current = new_depth
+	pixel_y += .

@@ -4,7 +4,9 @@
 	name = "crate"
 	desc = "A rectangular steel crate."
 	closet_appearance = /singleton/closet_appearance/crate
-	climbable = 1
+	climb_allowed = TRUE
+	depth_projected = TRUE
+	depth = 8
 	var/points_per_crate = 5
 //	mouse_drag_pointer = MOUSE_ACTIVE_POINTER	//???
 	var/rigged = 0
@@ -43,9 +45,7 @@
 		O.forceMove(get_turf(src))
 	icon_state = icon_opened
 	src.opened = 1
-
-	if(climbable)
-		structure_shaken()
+	shake_climbers()
 	return 1
 
 /obj/structure/closet/crate/close()

@@ -31,7 +31,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 	anchored = TRUE
 	density = TRUE
 	opacity = FALSE
-	climbable = TRUE
+	climb_allowed = TRUE
 	climb_delay = 10 SECONDS
 	// TODO: IMPLEMENT THIS AGAIN, this was done in a horrifically slow and stupid way
 	// block_turf_edges = TRUE // Don't want turf edges popping up from the cliff edge.

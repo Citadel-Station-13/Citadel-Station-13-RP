@@ -192,7 +192,7 @@
 	icon_state = "stair_u"
 	opacity   = TRUE
 	density   = TRUE // Too high to simply step up on
-	climbable = TRUE // But they can be climbed if the bottom is out
+	climb_allowed = TRUE
 
 	var/obj/structure/stairs/top/top = null
 	var/obj/structure/stairs/bottom/bottom = null

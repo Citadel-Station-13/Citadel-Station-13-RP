@@ -144,3 +144,9 @@
 	var/getting_up_penalized
 	/// last delay before modifications while getting up - used by resist_a_rest, so reducing damage / whatever doesn't leave you with the same delay
 	var/getting_up_original
+
+	//? movement
+	/// current depth on turf in pixels
+	var/depth_current = 0
+	/// set during move: staged depth; on successful move, we update depth_current if it's different.
+	var/tmp/depth_staged = 0

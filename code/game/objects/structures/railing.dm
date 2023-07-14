@@ -5,7 +5,8 @@
 	icon = 'icons/obj/railing.dmi'
 	density = TRUE
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_CLICK | ATOM_PASS_BUCKLED
-	climbable = TRUE
+	climb_allowed = TRUE
+	depth = 24
 	layer = WINDOW_LAYER
 	anchored = TRUE
 	atom_flags = ATOM_BORDER
@@ -25,8 +26,6 @@
 	// TODO - "constructed" is not passed to us. We need to find a way to do this safely.
 	if (constructed) // player-constructed railings
 		anchored = 0
-	if(climbable)
-		add_obj_verb(src, /obj/structure/proc/climb_on)
 	if(src.anchored)
 		update_icon(0)
 
@@ -326,6 +325,7 @@
 	for(var/obj/O in T.contents)
 		if(istype(O,/obj/structure))
 			var/obj/structure/S = O
-			if(S.climbable) continue
+			if(S.climb_allowed)
+				continue
 		if(O && O.density && !(O.atom_flags & ATOM_BORDER && !(turn(O.dir, 180) & dir)))
 			return O
