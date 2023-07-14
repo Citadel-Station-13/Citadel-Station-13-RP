@@ -236,6 +236,30 @@
 		add_fingerprint(user)
 	..()
 
+//? Materials
+
+/obj/get_materials()
+	. = materials.Copy()
+
+/**
+ * initialize materials
+ */
+/obj/proc/init_materials()
+	if(!isnull(material_defaults))
+		set_material_parts(material_defaults)
+		for(var/key in material_defaults)
+			var/mat = material_defaults[key]
+			var/amt = material_parts[key]
+			materials[mat] += amt
+
+/**
+ * sets our material parts to a list by key / value
+ * this does not update [materials], you have to do that manually
+ * this is usually done in init using init_materials
+ */
+/obj/proc/set_material_parts(list/parts)
+	return
+
 //? Resists
 
 /**
@@ -308,27 +332,3 @@
 	var/shake_dir = pick(-1, 1)
 	animate(src, transform=turn(matrix(), 8*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
-
-//? materials
-
-/obj/get_materials()
-	. = materials.Copy()
-
-/**
- * initialize materials
- */
-/obj/proc/init_materials()
-	if(!isnull(material_defaults))
-		set_material_parts(material_defaults)
-		for(var/key in material_defaults)
-			var/mat = material_defaults[key]
-			var/amt = material_parts[key]
-			materials[mat] += amt
-
-/**
- * sets our material parts to a list by key / value
- * this does not update [materials], you have to do that manually
- * this is usually done in init using init_materials
- */
-/obj/proc/set_material_parts(list/parts)
-	return
