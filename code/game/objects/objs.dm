@@ -270,8 +270,11 @@
 	// all this effort just to avoid a splurtstation railing spare ID speedrun incident
 	#warn impl
 
-/obj/proc/shake_climbers()
-	#warn impl
+/obj/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
+	if(length(climbers) && user.a_intent == INTENT_HARM)
 
 // todo: climbable obj-level (to avoid element/signal spam)
 /obj/structure/proc/do_climb(var/mob/living/user)
@@ -307,12 +310,39 @@
 		structure_shaken()
 
 
-/obj/structure/proc/structure_shaken()
-	for(var/mob/living/M in climbers)
-		M.afflict_paralyze(20 * 1)
-		to_chat(M, "<span class='danger'>You topple as you are shaken off \the [src]!</span>")
-		climbers.Cut(1,2)
+/obj/structure/MouseDroppedOnLegacy(mob/target, mob/user)
 
+	var/mob/living/H = user
+	if(istype(H) && can_climb(H) && target == user)
+		do_climb(target)
+	else
+		return ..()
+
+/obj/structure/proc/can_climb(var/mob/living/user, post_climb_check=0)
+	if (!climbable || !can_touch(user) || (!post_climb_check && (user in climbers)))
+		return 0
+
+	if (!user.Adjacent(src))
+		to_chat(user, "<span class='danger'>You can't climb there, the way is blocked.</span>")
+		return 0
+
+	var/obj/occupied = turf_is_crowded()
+	if(occupied)
+		to_chat(user, "<span class='danger'>There's \a [occupied] in the way.</span>")
+		return 0
+	return 1
+
+/obj/proc/shake_climbers()
+	for(var/mob/M as anything in climbers)
+		M.afflict_knockdown(1 SECONDS)
+		M.visible_message(SPAN_WARNING("[M] is toppled off of \the [src]!"))
+		STOP_INTERACTING_WITH(M, src, INTERACTING_FOR_CLIMB)
+	climbers = null
+
+	// disabled old, but fun code that knocks people on their ass if something is shaken without climbers
+	// being ontop of it
+	// consider re-enabling this sometime.
+	/*
 	for(var/mob/living/M in get_turf(src))
 		if(M.lying) return //No spamming this on people.
 
@@ -353,29 +383,7 @@
 
 			H.UpdateDamageIcon()
 			H.update_health()
-	return
-
-/obj/structure/MouseDroppedOnLegacy(mob/target, mob/user)
-
-	var/mob/living/H = user
-	if(istype(H) && can_climb(H) && target == user)
-		do_climb(target)
-	else
-		return ..()
-
-/obj/structure/proc/can_climb(var/mob/living/user, post_climb_check=0)
-	if (!climbable || !can_touch(user) || (!post_climb_check && (user in climbers)))
-		return 0
-
-	if (!user.Adjacent(src))
-		to_chat(user, "<span class='danger'>You can't climb there, the way is blocked.</span>")
-		return 0
-
-	var/obj/occupied = turf_is_crowded()
-	if(occupied)
-		to_chat(user, "<span class='danger'>There's \a [occupied] in the way.</span>")
-		return 0
-	return 1
+	*/
 
 //? Materials
 
