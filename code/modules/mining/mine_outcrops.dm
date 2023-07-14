@@ -5,7 +5,7 @@
 	density = TRUE
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
 	climb_allowed = TRUE
-	depth = 12
+	depth_level = 12
 	anchored = TRUE
 	icon_state = "outcrop"
 	var/mindrop = 5

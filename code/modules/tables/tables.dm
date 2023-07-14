@@ -17,7 +17,7 @@ var/list/table_icon_cache = list()
 	canSmoothWith = (SMOOTH_GROUP_TABLES + SMOOTH_GROUP_LOW_WALL)
 
 	climb_allowed = TRUE
-	depth = 8
+	depth_level = 8
 	depth_projected = TRUE
 
 	var/flipped = 0

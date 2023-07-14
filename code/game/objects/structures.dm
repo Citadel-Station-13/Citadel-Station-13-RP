@@ -5,6 +5,7 @@
 
 	// todo: rename to default_unanchor, allow generic structure unanchoring.
 	var/allow_unanchor = FALSE
+	var/breakable = FALSE
 
 	var/list/connections
 	var/list/other_connections

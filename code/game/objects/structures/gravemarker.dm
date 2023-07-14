@@ -6,7 +6,7 @@
 	density = TRUE
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	climb_allowed = TRUE
-	depth = 8
+	depth_level = 8
 	anchored = TRUE
 
 	layer = ABOVE_JUNK_LAYER

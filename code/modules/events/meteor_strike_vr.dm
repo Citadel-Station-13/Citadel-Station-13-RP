@@ -78,8 +78,8 @@
 	icon = 'icons/obj/meteor.dmi'
 	icon_state = "large"
 	density = TRUE
-	climb_allowed = TURE
-	depth = 16
+	climb_allowed = TRUE
+	depth_level = 16
 
 /obj/structure/meteorite/Initialize(mapload)
 	. = ..()

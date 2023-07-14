@@ -6,7 +6,7 @@
 	density = TRUE
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_CLICK | ATOM_PASS_BUCKLED
 	climb_allowed = TRUE
-	depth = 24
+	depth_level = 24
 	layer = WINDOW_LAYER
 	anchored = TRUE
 	atom_flags = ATOM_BORDER

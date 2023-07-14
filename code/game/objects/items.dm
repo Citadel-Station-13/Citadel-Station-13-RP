@@ -5,7 +5,7 @@
 	// todo: better way, for now, block all rad contamination to interior
 	rad_flags = RAD_BLOCK_CONTENTS
 	obj_flags = OBJ_IGNORE_MOB_DEPTH
-	depth = 0
+	depth_level = 0
 	climb_allowed = FALSE
 
 	//? Flags

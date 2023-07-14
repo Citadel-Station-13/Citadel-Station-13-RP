@@ -6,7 +6,7 @@
 	closet_appearance = /singleton/closet_appearance/crate
 	climb_allowed = TRUE
 	depth_projected = TRUE
-	depth = 8
+	depth_level = 8
 	var/points_per_crate = 5
 //	mouse_drag_pointer = MOUSE_ACTIVE_POINTER	//???
 	var/rigged = 0

@@ -348,7 +348,7 @@
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
 	climb_allowed = TRUE
 	depth_projected = TRUE
-	depth = 24
+	depth_level = 24
 
 /obj/structure/memorial/small
 	icon = 'icons/obj/structures.dmi'
