@@ -8,6 +8,7 @@
 /mob/living
 	see_invisible = SEE_INVISIBLE_LIVING
 	movable_flags = MOVABLE_NO_THROW_SPIN | MOVABLE_NO_THROW_DAMAGE_SCALING | MOVABLE_NO_THROW_SPEED_SCALING
+	buckle_flags = BUCKLING_PROJECTS_DEPTH
 
 	//* Health and life related vars *//
 	/// Maximum health that should be possible.  Avoid adjusting this if you can, and instead use modifiers datums.

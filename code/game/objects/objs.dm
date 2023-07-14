@@ -24,7 +24,8 @@
 	/// people are allowed to knock climbers off of us
 	var/climb_knockable = TRUE
 	/// list of people currently climbing on us
-	var/list/mob/climbing
+	/// currently, only /mob/living is allowed to climb
+	var/list/mob/living/climbing
 	/// nominal climb delay before modifiers
 	var/climb_delay = 3.5 SECONDS
 
@@ -259,24 +260,47 @@
 
 //? Climbing
 
-/obj/proc/attempt_climb_on(mob/M, delay_mod = 1)
+/obj/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	if(drag_drop_climb_interaction(user, dropping))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
+
+/obj/proc/drag_drop_climb_interaction(mob/user, atom/dropping)
+	if(!climb_allowed)
+		return FALSE
+	if(user != dropping)
+		return FALSE
+	// todo: better hinting to user for this
+	if(buckle_allowed && user.a_intent != INTENT_GRAB)
+		return FALSE
+	. = TRUE
+	INVOKE_ASYNC(src, PROC_REF(attempt_climb_on), user)
+
+/obj/proc/attempt_climb_on(mob/living/climber, delay_mod = 1)
+	if(!istype(climber))
+		return FALSE
+	if(!allow_climb_on(climber))
+		climber.action_feedback(SPAN_WARNING("You can't climb onto [src]!"), src)
+		return FALSE
 	#warn impl
 
-/obj/proc/allow_climb_on(mob/M)
+/obj/proc/allow_climb_on(mob/living/climber)
+	if(!istype(climber))
+		return FALSE
 	#warn impl
 
-/obj/proc/do_climb_on(mob/M)
-	M.visible_message(SPAN_WARNING("[M] climbs onto \the [src]!"))
+/obj/proc/do_climb_on(mob/living/climber)
+	climber.visible_message(SPAN_WARNING("[M] climbs onto \the [src]!"))
 	// all this effort just to avoid a splurtstation railing spare ID speedrun incident
-	if(M.depth_current < depth)
-		M.change_depth(depth)
-	step_towards(M, src)
+	if(climber.depth_current < depth_level)
+		climber.change_depth(depth)
+	step_towards(climber, src)
 
 /obj/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return
-	if(length(climbers) && user.a_intent == INTENT_HARM)
+	if(length(climbing) && user.a_intent == INTENT_HARM)
 		user.visible_message(SPAN_WARNING("[user] slams against \the [src]!"))
 		user.do_attack_animation(src)
 		shake_climbers()
@@ -307,14 +331,6 @@
 		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")
 	climbers -= user
 
-/obj/structure/MouseDroppedOnLegacy(mob/target, mob/user)
-
-	var/mob/living/H = user
-	if(istype(H) && can_climb(H) && target == user)
-		do_climb(target)
-	else
-		return ..()
-
 /obj/structure/proc/can_climb(var/mob/living/user, post_climb_check=0)
 	if (!climbable || !can_touch(user) || (!post_climb_check && (user in climbers)))
 		return 0
@@ -330,11 +346,11 @@
 	return 1
 
 /obj/proc/shake_climbers()
-	for(var/mob/M as anything in climbers)
-		M.afflict_knockdown(1 SECONDS)
-		M.visible_message(SPAN_WARNING("[M] is toppled off of \the [src]!"))
-		STOP_INTERACTING_WITH(M, src, INTERACTING_FOR_CLIMB)
-	climbers = null
+	for(var/mob/living/climber as anything in climbing)
+		climber.afflict_knockdown(1 SECONDS)
+		climber.visible_message(SPAN_WARNING("[M] is toppled off of \the [src]!"))
+		STOP_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
+	climbing = null
 
 	// disabled old, but fun code that knocks people on their ass if something is shaken without climbers
 	// being ontop of it

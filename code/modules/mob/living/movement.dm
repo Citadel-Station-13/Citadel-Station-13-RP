@@ -377,8 +377,17 @@
 //? Depth
 
 /mob/living/proc/change_depth(new_depth)
+	// depth is propagated up/down our buckled objects, and overridden by what we're buckled to
+	if(isliving(buckled) && (buckled.buckle_flags & BUCKLING_PROJECTS_DEPTH))
+		var/mob/living/L = buckled
+		new_depth = L.depth_current
+	else if(isobj(buckled) && (buckled.buckle_flags & BUCKLING_PROJECTS_DEPTH))
+		var/obj/O = buckled
+		new_depth = O.depth_level
 	if(new_depth == depth_current)
 		return
 	. = new_depth - depth_current
 	depth_current = new_depth
 	pixel_y += .
+	for(var/mob/living/L in buckled_mobs)
+		L.change_depth(new_depth)

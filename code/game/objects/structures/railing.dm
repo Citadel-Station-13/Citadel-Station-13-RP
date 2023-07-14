@@ -267,40 +267,10 @@
 	switch(severity)
 		if(1.0)
 			qdel(src)
-			return
 		if(2.0)
 			qdel(src)
-			return
 		if(3.0)
 			qdel(src)
-			return
-		else
-	return
-
-// Duplicated from structures.dm, but its a bit different.
-/obj/structure/railing/do_climb(var/mob/living/user)
-	if(!can_climb(user))
-		return
-
-	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
-	climbers |= user
-
-	if(!do_after(user,(issmall(user) ? 20 : 34)))
-		climbers -= user
-		return
-
-	if(!can_climb(user, post_climb_check=1))
-		climbers -= user
-		return
-
-	if(get_turf(user) == get_turf(src))
-		usr.locationTransitForceMove(get_step(src, src.dir), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
-	else
-		usr.locationTransitForceMove(get_turf(src), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
-
-	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
-	if(!anchored)	take_damage(maxhealth) // Fatboy
-	climbers -= user
 
 /obj/structure/railing/can_climb(var/mob/living/user, post_climb_check=0)
 	if(!..())
@@ -314,6 +284,8 @@
 			to_chat(user, "<span class='danger'>You can't climb there, there's \a [occupied] in the way.</span>")
 			return 0
 	return 1
+
+#warn AAA
 
 // TODO - This here might require some investigation
 /obj/structure/proc/neighbor_turf_impassable()
