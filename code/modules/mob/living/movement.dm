@@ -52,10 +52,11 @@
 	. = ..()
 	if(isobj(blocker))
 		var/obj/O = blocker
-		if(!(O.obj_flags & OBJ_IGNORE_MOB_DEPTH) && O.depth < depth_current)
+		if(!(O.obj_flags & OBJ_IGNORE_MOB_DEPTH) && O.depth <= depth_current)
 			return TRUE
 		else if(O.depth_projected)
-			depth_staged = max(depth_staged, O.depth)
+			// FINE ILL USE UNLINT INSTEAD OF REMOVE PURITY
+			UNLINT(depth_staged = max(depth_staged, O.depth))
 
 /mob/living/can_cross_under(atom/movable/mover)
 	if(isliving(mover))

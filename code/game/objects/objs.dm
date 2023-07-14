@@ -268,13 +268,19 @@
 /obj/proc/do_climb_on(mob/M)
 	M.visible_message(SPAN_WARNING("[M] climbs onto \the [src]!"))
 	// all this effort just to avoid a splurtstation railing spare ID speedrun incident
-	#warn impl
+	if(M.depth_current < depth)
+		M.change_depth(depth)
+	step_towards(M, src)
 
 /obj/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return
 	if(length(climbers) && user.a_intent == INTENT_HARM)
+		user.visible_message(SPAN_WARNING("[user] slams against \the [src]!"))
+		user.do_attack_animation(src)
+		shake_climbers()
+		return TRUE
 
 // todo: climbable obj-level (to avoid element/signal spam)
 /obj/structure/proc/do_climb(var/mob/living/user)
@@ -300,15 +306,6 @@
 	if (get_turf(user) == get_turf(src))
 		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")
 	climbers -= user
-
-/obj/strcutre/attack_hand(mob/user, list/params)
-	. = ..()
-
-	if(climbers.len && !(user in climbers))
-		user.visible_message("<span class='warning'>[user.name] shakes \the [src].</span>", \
-					"<span class='notice'>You shake \the [src].</span>")
-		structure_shaken()
-
 
 /obj/structure/MouseDroppedOnLegacy(mob/target, mob/user)
 
