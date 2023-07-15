@@ -381,7 +381,7 @@
 	icon_state = "hostrench"
 	inv_hide_flags = HIDEHOLSTER
 
-/obj/item/clothing/suit/storage/vest/hoscoat/syndicate
+/obj/item/clothing/suit/storage/vest/hoscoat/combatvest
 	name = "security combat coat"
 	desc = "A heavily armored vest worn over a thick coat. The gold embroidery suggests whoever wears this possesses a high rank."
 	icon_state = "hoscombatvest"
