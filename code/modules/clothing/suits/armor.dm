@@ -381,10 +381,10 @@
 	icon_state = "hostrench"
 	inv_hide_flags = HIDEHOLSTER
 
-/obj/item/clothing/suit/storage/vest/hoscoat/combatvest
+/obj/item/clothing/suit/storage/vest/hoscoat/combatcoat
 	name = "security combat coat"
-	desc = "A heavily armored vest worn over a thick coat. The gold embroidery suggests whoever wears this possesses a high rank."
-	icon_state = "hoscombatvest"
+	desc = "A heavily armored vest worn under a thick coat. The gold embroidery suggests whoever wears this possesses a high rank."
+	icon_state = "hoscombatcoat"
 	blood_overlay_type = "armor"
 	valid_accessory_slots = null
 
