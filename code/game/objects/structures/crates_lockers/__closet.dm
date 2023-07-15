@@ -1,7 +1,7 @@
 /obj/structure/closet
 	name = "closet"
 	desc = "It's a basic storage unit."
-	icon = 'icons/obj/closets/closet.dmi'
+	icon = 'icons/obj/closets/bases/closet.dmi'
 	icon_state = "base"
 	density = 1
 	w_class = ITEMSIZE_HUGE

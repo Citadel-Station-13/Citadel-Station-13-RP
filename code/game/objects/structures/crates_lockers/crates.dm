@@ -3,6 +3,7 @@
 /obj/structure/closet/crate
 	name = "crate"
 	desc = "A rectangular steel crate."
+	icon = 'icons/obj/closets/bases/crate.dmi'
 	closet_appearance = /singleton/closet_appearance/crate
 	climbable = 1
 	var/points_per_crate = 5
