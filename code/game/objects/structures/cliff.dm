@@ -219,19 +219,24 @@ two tiles on initialization, and which way a cliff is facing may change during m
 			sleep(5)
 			bottom_cliff.fall_off_cliff(L)
 
-/obj/structure/cliff/can_climb(mob/living/user, post_climb_check = FALSE)
+/obj/structure/cliff/allow_climb_on(mob/living/climber)
+	. = ..()
+	if(!.)
+		return
+	//! LEGAYC CODE START
+	var/mob/living/user = climber
 	// Cliff climbing requires climbing gear.
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/clothing/shoes/shoes = H.shoes
 		if(shoes && shoes.rock_climbing)
-			return ..() // Do the other checks too.
+			return TRUE
 		var/obj/item/held = H.get_active_held_item()
 		if(held && istype(held, /obj/item/pickaxe/icepick))
-			return ..() //climb rock wall with ice pick. Makes sense.
-
+			return TRUE
 	to_chat(user, SPAN_WARNING( "\The [src] is too steep to climb unassisted."))
 	return FALSE
+	//! END
 
 // This tells AI mobs to not be dumb and step off cliffs willingly.
 /obj/structure/cliff/is_safe_to_step(mob/living/L)

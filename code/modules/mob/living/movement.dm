@@ -52,7 +52,7 @@
 	. = ..()
 	if(isobj(blocker))
 		var/obj/O = blocker
-		if(!(O.obj_flags & OBJ_IGNORE_MOB_DEPTH) && O.depth <= depth_current)
+		if(!(O.obj_flags & OBJ_IGNORE_MOB_DEPTH) && O.depth_level <= depth_current)
 			return TRUE
 		else if(O.depth_projected)
 			// FINE ILL USE UNLINT INSTEAD OF REMOVE PURITY

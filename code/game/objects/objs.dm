@@ -286,11 +286,11 @@
 		return FALSE
 	if(INTERACTING_WITH_FOR(climber, src, INTERACTING_FOR_CLIMB))
 		return FALSE
-	climber.visible_action_feedback(SPAN_WARNING("[climber] starts climbing onto \the [src]!", src, MESSAGE_RANGE_COMBAT_LOUD))
+	climber.visible_action_feedback(SPAN_WARNING("[climber] starts climbing onto \the [src]!"), src, MESSAGE_RANGE_COMBAT_LOUD)
 	START_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
 	LAZYDISTINCTADD(climbing, climber)
 	. = do_after(climber, climb_delay * delay_mod, src, mobility_flags = MOBILITY_CAN_MOVE | MOBILITY_CAN_STAND | MOBILITY_IS_STANDING)
-	if(!INTERACTING_WITH_FOR(user, src, INTERACTING_FOR_CLIMB))
+	if(!INTERACTING_WITH_FOR(climber, src, INTERACTING_FOR_CLIMB))
 		. = FALSE
 	LAZYREMOVE(climbing, climber)
 	STOP_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
@@ -307,7 +307,6 @@
 	if(!climber.Adjacent(src))
 		return FALSE
 	return TRUE
-	#warn impl
 
 /obj/proc/do_climb_on(mob/living/climber)
 	climber.visible_message(SPAN_WARNING("[climber] climbs onto \the [src]!"))
@@ -328,25 +327,10 @@
 		shake_climbers()
 		return TRUE
 
-
-/obj/structure/proc/can_climb(var/mob/living/user, post_climb_check=0)
-	if (!climbable || !can_touch(user) || (!post_climb_check && (user in climbers)))
-		return 0
-
-	if (!user.Adjacent(src))
-		to_chat(user, "<span class='danger'>You can't climb there, the way is blocked.</span>")
-		return 0
-
-	var/obj/occupied = turf_is_crowded()
-	if(occupied)
-		to_chat(user, "<span class='danger'>There's \a [occupied] in the way.</span>")
-		return 0
-	return 1
-
 /obj/proc/shake_climbers()
 	for(var/mob/living/climber as anything in climbing)
 		climber.afflict_knockdown(1 SECONDS)
-		climber.visible_message(SPAN_WARNING("[M] is toppled off of \the [src]!"))
+		climber.visible_message(SPAN_WARNING("[climber] is toppled off of \the [src]!"))
 		STOP_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
 	climbing = null
 

@@ -265,7 +265,7 @@
 /obj/structure/stairs/middle/MouseDroppedOnLegacy(mob/target, mob/user)
 	. = ..()
 	if(check_integrity())
-		do_climb(user)
+		do_climb_on(user)
 		transition_atom(user, get_turf(top)) // You can't really drag things when you have to climb up the gap in the stairs yourself
 
 /obj/structure/stairs/middle/Bumped(mob/user)

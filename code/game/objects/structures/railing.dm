@@ -272,22 +272,8 @@
 		if(3.0)
 			qdel(src)
 
-/obj/structure/railing/can_climb(var/mob/living/user, post_climb_check=0)
-	if(!..())
-		return 0
-
-	// Normal can_climb() handles climbing from adjacent turf onto our turf.  But railings also allow climbing
-	// from our turf onto an adjacent! If that is the case we need to do checks for that too...
-	if(get_turf(user) == get_turf(src))
-		var/obj/occupied = neighbor_turf_impassable()
-		if(occupied)
-			to_chat(user, "<span class='danger'>You can't climb there, there's \a [occupied] in the way.</span>")
-			return 0
-	return 1
-
-#warn AAA
-
 // TODO - This here might require some investigation
+// todo: no, this here needs to be thrown out, we have depth system now
 /obj/structure/proc/neighbor_turf_impassable()
 	var/turf/T = get_step(src, src.dir)
 	if(!T || !istype(T))
