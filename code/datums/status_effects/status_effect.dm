@@ -231,10 +231,8 @@
 	return LAZYACCESS(status_effects, id)
 
 /mob/proc/has_alerting_status_effect()
-	var/list_length = LAZYLEN(status_effects)
-	for(var/i = list_length;i>=0; i--)
-		var/datum/status_effect/S = LAZYACCESS(status_effects, i)
-		if(S.alert_admins_when_leaving)
+	for (var/datum/status_effect/S in status_effects)
+		if (S.alert_admins_when_leaving)
 			return S
 
 
