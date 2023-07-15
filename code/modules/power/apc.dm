@@ -480,8 +480,6 @@ GLOBAL_LIST_EMPTY(apcs)
 // update the APC icon to show the three base states
 // also add overlays for indicator lights
 /obj/machinery/power/apc/update_icon()
-
-
 	if (!status_overlays)
 		status_overlays = 1
 		status_overlays_lock = new
@@ -542,8 +540,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		cut_overlays()
 
 	if(update & 2)
-		if(overlays.len)
-			overlays.Cut()
+		cut_overlays()
 		if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
 			add_overlay(status_overlays_lock[locked+1])
 			add_overlay(status_overlays_charging[charging+1])
