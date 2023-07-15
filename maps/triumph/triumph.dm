@@ -21,7 +21,7 @@
 		/datum/map/sector/piratebase_140,
 		/datum/map/sector/tradeport_140,
 		/datum/map/sector/lavaland_140,
-		/datum/map/sector/roguemining_140,
+		/datum/map/sector/roguemining_140/one,
 	)
 
 	//* LEGACY BELOW *//
