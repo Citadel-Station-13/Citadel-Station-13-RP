@@ -21,8 +21,10 @@
 	suffix = "burn.dmm"
 	display_name = list("Toxins Lab", "We Knew You Liked Tether Fires, so we Brought One in a Box", "100 Solarmoths", "Teshari's Bane")
 
+/*
 /datum/map_template/engine/triumph/fission
 	name = "ProcEngine_Triumph_Fission"
 	desc = "The Fission Reactor"
 	suffix = "fission.dmm"
 	display_name = list("Chernobyl", "Not as Cool as the Stormdrive", "Radiation Rework", "Spicy Sticks")
+*/
