@@ -29,7 +29,7 @@
 	if (!possible_transfer_amounts)
 		remove_obj_verb(src, /obj/structure/reagent_dispensers/verb/set_APTFT)
 
-/obj/structure/reagent_dispensers/examine(mob/user)
+/obj/structure/reagent_dispensers/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(user, src) <= 2)
 		. += "<span class='notice'>It contains:</span>"

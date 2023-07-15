@@ -48,7 +48,7 @@
 
 	tim_sort(species_lookup, /proc/cmp_auto_compare, TRUE)
 	tim_sort(species_names, /proc/cmp_auto_compare, TRUE)
-	tim_sort(species_lookup, /proc/cmp_auto_compare, TRUE)
+	tim_sort(species_paths, /proc/cmp_auto_compare, TRUE)
 	tim_sort(playable_species, /proc/cmp_auto_compare)
 	tim_sort(custom_species_bases, /proc/cmp_auto_compare)
 

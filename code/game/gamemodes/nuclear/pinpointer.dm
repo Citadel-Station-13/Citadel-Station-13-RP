@@ -7,7 +7,7 @@
 	item_state = "electronic"
 	throw_speed = 4
 	throw_range = 20
-	matter = list(MAT_STEEL = 500)
+	materials = list(MAT_STEEL = 500)
 	preserve_item = 1
 	var/obj/item/disk/nuclear/the_disk = null
 	var/active = 0
@@ -46,7 +46,7 @@
 			icon_state = "pinonfar"
 	spawn(5) .()
 
-/obj/item/pinpointer/examine(mob/user)
+/obj/item/pinpointer/examine(mob/user, dist)
 	. = ..()
 	for(var/obj/machinery/nuclearbomb/bomb in GLOB.machines)
 		if(bomb.timing)

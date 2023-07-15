@@ -790,7 +790,7 @@
 	icon_state = "collar_holo"
 	item_state = "collar_holo_overlay"
 	overlay_state = "collar_holo_overlay"
-	matter = list(MAT_STEEL = 50)
+	materials = list(MAT_STEEL = 50)
 
 /obj/item/clothing/accessory/collar/silvercolor
 	name = "Dyeable Silver tag collar"
@@ -933,3 +933,10 @@
 	name = "short legwarmers"
 	desc = "A comfy pair of legwarmers. For those better in the cold than others."
 	icon_state = "legwarmers_short"
+
+
+//misc
+/obj/item/clothing/accessory/civ_exos_mob
+	name = "medical exoframe"
+	desc = "A cheap medical exoframe mass-produced by NanoTrasen and provided to employees who cannot function in gravity without assistance."
+	icon_state = "civ_exos_mob"

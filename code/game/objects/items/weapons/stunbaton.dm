@@ -71,7 +71,7 @@
 	else
 		set_light(0)
 
-/obj/item/melee/baton/examine(mob/user)
+/obj/item/melee/baton/examine(mob/user, dist)
 	. = ..()
 	if(bcell)
 		. += "<span class='notice'>The [src] is [round(bcell.percent())]% charged.</span>"

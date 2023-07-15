@@ -43,12 +43,10 @@ export const WarningParameter = new Juke.Parameter({
 
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
+    // include all maps
+    // exclude WIP maps
     const folders = [
-      // Everything but primary station map files.
-      ...Juke.glob('maps/away_missions/**/*.dmm'),
-      // ...Juke.glob('maps/map_levels/**/*.dmm'),
-      // ...Juke.glob('maps/submaps/**/*.dmm'),
-      ...Juke.glob('maps/templates/**/*.dmm'),
+      ...Juke.glob('maps/**/*.dmm'),
     ];
     const content = folders
       .map((file) => file.replace('maps/', ''))
@@ -64,7 +62,7 @@ export const DmTarget = new Juke.Target({
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
   ],
   inputs: [
-    'maps/map_files/generic/**',
+    'maps/**/*.dm',
     'code/**',
     'html/**',
     'icons/**',

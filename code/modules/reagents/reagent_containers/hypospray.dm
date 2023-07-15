@@ -169,7 +169,7 @@
 	else
 		icon_state = "[initial(icon_state)]0"
 
-/obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user)
+/obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		. += "<span class='notice'>It is currently loaded.</span>"
@@ -431,7 +431,7 @@
 	else
 		icon_state = "[initial(icon_state)]_ready"
 
-/obj/item/reagent_containers/hypospray/glukoz/examine(mob/user)
+/obj/item/reagent_containers/hypospray/glukoz/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		. += "<span class='notice'>It is currently loaded.</span>"

@@ -149,7 +149,7 @@
 	attack_verb = list("attacked", "struck", "hit")
 	var/bullets = 5
 
-/obj/item/toy/crossbow/examine(mob/user)
+/obj/item/toy/crossbow/examine(mob/user, dist)
 	if(..(user, 2) && bullets)
 		to_chat(user, "<span class='notice'>It is loaded with [bullets] foam darts!</span>")
 
@@ -408,7 +408,7 @@
 
 		return
 
-/obj/item/toy/waterflower/examine(mob/user)
+/obj/item/toy/waterflower/examine(mob/user, dist)
 	. = ..()
 	. += "[src] has [src.reagents.total_volume] units of water left!"
 

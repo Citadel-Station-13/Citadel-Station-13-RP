@@ -227,7 +227,7 @@
 	. = ..()
 	AddComponent(/datum/component/jousting)
 
-/obj/item/material/twohanded/spear/examine(mob/user)
+/obj/item/material/twohanded/spear/examine(mob/user, dist)
 	. = ..()
 	if(explosive)
 		. += "<span class='notice'>Alt-click to set your war cry.</span>"

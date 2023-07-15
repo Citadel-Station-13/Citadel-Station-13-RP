@@ -403,7 +403,7 @@
 /obj/machinery/power/fission/proc/go_nuclear()
 	if(health < 1 && !exploded)
 		var/off_station = 0
-		if(!(src.z in GLOB.using_map.station_levels))
+		if(!(src.z in (LEGACY_MAP_DATUM).station_levels))
 			off_station = 1
 		var/turf/L = get_turf(src)
 		if(!istype(L))

@@ -139,7 +139,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		M.update_inv_r_hand(1)
 	..()
 
-/obj/item/clothing/mask/smokable/examine(mob/user)
+/obj/item/clothing/mask/smokable/examine(mob/user, dist)
 	. = ..()
 	if(is_pipe)
 		return

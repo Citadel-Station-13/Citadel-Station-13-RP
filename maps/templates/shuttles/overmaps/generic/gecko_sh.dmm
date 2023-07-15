@@ -533,7 +533,7 @@
 	dir = 4
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/gecko_sh,
-/obj/effect/overmap/visitable/ship/landable/gecko_sh,
+/obj/overmap/entity/visitable/ship/landable/gecko_sh,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_sh)
 "lr" = (

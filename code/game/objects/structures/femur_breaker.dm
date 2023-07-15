@@ -22,7 +22,7 @@
 	var/slat_status = BREAKER_SLAT_RAISED
 	var/current_action = 0 // What's currently happening to the femur breaker
 
-/obj/structure/femur_breaker/examine(mob/user)
+/obj/structure/femur_breaker/examine(mob/user, dist)
 	. = ..()
 	. += "It is [anchored ? "secured to the floor." : "unsecured."]"
 	if (slat_status == BREAKER_SLAT_RAISED)

@@ -104,7 +104,7 @@
 	item_storage.remove_from_storage(launched, src)
 	return launched
 
-/obj/item/gun/launcher/pneumatic/examine(mob/user)
+/obj/item/gun/launcher/pneumatic/examine(mob/user, dist)
 	. = ..()
 	. += "The valve is dialed to [pressure_setting]%."
 	if(tank)
@@ -157,7 +157,7 @@
 /obj/item/cannonframe/update_icon()
 	icon_state = "pneumatic[buildstate]"
 
-/obj/item/cannonframe/examine(mob/user)
+/obj/item/cannonframe/examine(mob/user, dist)
 	. = ..()
 	switch(buildstate)
 		if(1)

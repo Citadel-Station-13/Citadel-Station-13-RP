@@ -4,9 +4,10 @@
 	desc = "A magazine for some kind of gun."
 	icon_state = ".357"
 	icon = 'icons/obj/ammo.dmi'
+	item_flags = ITEM_EASY_LATHE_DECONSTRUCT
 	slot_flags = SLOT_BELT
 	item_state = "syringe_kit"
-	matter = list(MAT_STEEL = 500)
+	materials = list(MAT_STEEL = 500)
 	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4
@@ -126,7 +127,7 @@
 	if(ammo_mark)
 		add_overlay("[initial(icon_state)]_[ammo_mark]")
 
-/obj/item/ammo_magazine/examine(mob/user)
+/obj/item/ammo_magazine/examine(mob/user, dist)
 	. = ..()
 	. += "There [(stored_ammo.len == 1)? "is" : "are"] [stored_ammo.len] round\s left!"
 

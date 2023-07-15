@@ -542,7 +542,7 @@
 	damage_force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 50)
+	materials = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
 /obj/item/cane/fluff/tasald
@@ -561,7 +561,7 @@
     damage_force = 1.0
     throw_force = 2.0
     w_class = ITEMSIZE_SMALL
-    matter = list(MAT_STEEL = 50)
+    materials = list(MAT_STEEL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
     hitsound = 'sound/weapons/sparkle.ogg'
     var/last_use = 0
@@ -962,7 +962,7 @@
 	var/turf/uT = get_turf(user)
 	var/turf/dT = get_turf(destination)
 	var/list/dat = list()
-	dat["z_level_detection"] = GLOB.using_map.get_map_levels(uT.z, TRUE)
+	dat["z_level_detection"] = (LEGACY_MAP_DATUM).get_map_levels(uT.z, TRUE)
 
 	if(!uT || !dT)
 		return FALSE

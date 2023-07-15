@@ -134,6 +134,9 @@
 					makeOnDuty(params["switch-to-onduty-rank"], params["switch-to-onduty-assignment"])
 					usr.put_in_hands_or_drop(card)
 					card = null
+					flick(icon, "timeclock_approved")
+				else
+					flick(icon, "timeclock_denied")
 			update_icon()
 			return TRUE
 		if("switch-to-offduty")
@@ -142,6 +145,9 @@
 					makeOffDuty()
 					usr.put_in_hands_or_drop(card)
 					card = null
+					flick(icon, "timeclock_approved")
+				else
+					flick(icon, "timeclock_denied")
 			update_icon()
 			return TRUE
 
@@ -191,7 +197,7 @@
 		var/mob/living/carbon/human/H = usr
 		H.mind.assigned_role = card.rank
 		H.mind.role_alt_title = card.assignment
-		announce.autosay("[card.registered_name] has moved On-Duty as [card.assignment].", "Employee Oversight", channel, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
+		announce.autosay("[card.registered_name] has moved On-Duty as [card.assignment].", "Employee Oversight", channel, zlevels = (LEGACY_MAP_DATUM).get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/makeOffDuty()
@@ -217,7 +223,7 @@
 		H.mind.assigned_role = ptojob.title
 		H.mind.role_alt_title = ptojob.title
 		foundjob.current_positions--
-		announce.autosay("[card.registered_name], [oldtitle], has moved Off-Duty.", "Employee Oversight", channel, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
+		announce.autosay("[card.registered_name], [oldtitle], has moved Off-Duty.", "Employee Oversight", channel, zlevels = (LEGACY_MAP_DATUM).get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/checkCardCooldown()
@@ -232,16 +238,20 @@
 /obj/machinery/computer/timeclock/proc/checkFace()
 	if(!card)
 		to_chat(usr, "<span class='notice'>No ID is inserted.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	var/mob/living/carbon/human/H = usr
 	if(!(istype(H)))
 		to_chat(usr, "<span class='warning'>Invalid user detected. Access denied.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	else if((H.wear_mask && (H.wear_mask.inv_hide_flags & HIDEFACE)) || (H.head && (H.head.inv_hide_flags & HIDEFACE)))	//Face hiding bad
 		to_chat(usr, "<span class='warning'>Facial recognition scan failed due to physical obstructions. Access denied.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	else if(H.get_face_name() == "Unknown" || !(H.real_name == card.registered_name))
 		to_chat(usr, "<span class='warning'>Facial recognition scan failed. Access denied.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	else
 		return TRUE

@@ -411,8 +411,12 @@
  * the [TRANSPARENT] flag is set on the reagents holder
  *
  * Produces a signal [COMSIG_PARENT_EXAMINE]
+ *
+ * @params
+ * * user - who's examining. can be null
+ * * dist - effective distance of examine, usually from user to src.
  */
-/atom/proc/examine(mob/user)
+/atom/proc/examine(mob/user, dist = 1)
 	var/examine_string = get_examine_string(user, thats = TRUE)
 	if(examine_string)
 		. = list("[examine_string].")
@@ -1113,3 +1117,12 @@
 /atom/proc/auto_pixel_offset_to_center()
 	set_base_pixel_y(get_centering_pixel_y_offset())
 	set_base_pixel_x(get_centering_pixel_x_offset())
+
+//? materials
+
+/**
+ * get raw materials remaining in us as list (not reagents)
+ * used from everything from economy to lathe recycling
+ */
+/atom/proc/get_materials()
+	return list()

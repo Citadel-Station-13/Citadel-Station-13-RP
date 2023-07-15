@@ -11,7 +11,7 @@
 	throw_range = 20
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
-	matter = list("cloth" = 2)
+	materials = list("cloth" = 2)
 	max_amount = 50
 	attack_verb = list("tapped", "smacked", "flapped")
 
@@ -58,7 +58,7 @@
 	throw_range = 10
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
-	matter = list("cloth" = 2)
+	materials = list("cloth" = 2)
 	max_amount = 50
 	attack_verb = list("hit", "bludgeoned", "whacked")
 
@@ -136,7 +136,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	//update_connections(TRUE)
 	. = ..()
 
-/obj/structure/sandbag/examine(mob/user)
+/obj/structure/sandbag/examine(mob/user, dist)
 	. = ..()
 	if(health < maxhealth)
 		switch(health / maxhealth)

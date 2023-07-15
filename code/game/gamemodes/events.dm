@@ -10,7 +10,7 @@ var/hadevent    = 0
 /proc/alien_infestation(var/spawncount = 1) // -- TLE
 	var/list/vents = list()
 	for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in GLOB.machines)
-		if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
+		if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in (LEGACY_MAP_DATUM).station_levels))
 			if(temp_vent.network.normal_members.len > 50) // Stops Aliens getting stuck in small networks. See: Security, Virology
 				vents += temp_vent
 
@@ -91,7 +91,7 @@ var/hadevent    = 0
 			for (var/obj/machinery/door/airlock/security/temp_airlock in A)
 				spawn(0) temp_airlock.prison_open()
 
-			for (var/obj/machinery/door/airlock/glass_security/temp_glassairlock in A)
+			for (var/obj/machinery/door/airlock/glass/security/temp_glassairlock in A)
 				spawn(0) temp_glassairlock.prison_open()
 
 			for (var/obj/machinery/door_timer/temp_timer in A)

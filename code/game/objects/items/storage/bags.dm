@@ -165,7 +165,7 @@
 	if(O)
 		gather_all(get_turf(src), ismob(source)? source : null)
 
-/obj/item/storage/bag/ore/examine(mob/user)
+/obj/item/storage/bag/ore/examine(mob/user, dist)
 	. = ..()
 	if(!Adjacent(user)) //Can only check the contents of ore bags if you can physically reach them.
 		return
@@ -387,7 +387,12 @@
 	max_storage_space = 200
 	w_class = ITEMSIZE_LARGE
 	slowdown = 1
-	can_hold = list(/obj/item/reagent_containers/pill,/obj/item/reagent_containers/glass/beaker,/obj/item/reagent_containers/glass/bottle)
+	can_hold = list(
+		/obj/item/reagent_containers/pill,
+		/obj/item/reagent_containers/glass/beaker,
+		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/glass/hypovial,
+	)
 
 	// -----------------------------
 	//           Food Bag

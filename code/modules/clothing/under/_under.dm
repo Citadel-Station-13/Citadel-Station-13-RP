@@ -225,7 +225,7 @@
 	return wow_this_sucks.check_rollsleeve_cache(bodytype, resolve_legacy_state(null, wow_this_sucks, FALSE, bodytype))
 
 //! Examine
-/obj/item/clothing/under/examine(mob/user)
+/obj/item/clothing/under/examine(mob/user, dist)
 	. = ..()
 	switch(sensor_mode)
 		if(0)

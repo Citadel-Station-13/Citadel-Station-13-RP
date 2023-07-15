@@ -5,7 +5,7 @@
 	icon_state = "flashlight"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	action_button_name = "Toggle Flashlight"
 	light_wedge = LIGHT_WIDE
 
@@ -101,7 +101,7 @@
 	else
 		icon_state = "[initial(icon_state)]"
 
-/obj/item/flashlight/examine(mob/user)
+/obj/item/flashlight/examine(mob/user, dist)
 	. = ..()
 	if(power_use && brightness_level)
 		. += "\The [src] is set to [brightness_level]. "
@@ -267,7 +267,7 @@
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list ("smacked", "thwacked", "thunked")
-	matter = list(MAT_STEEL = 200, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 200, MAT_GLASS = 50)
 	hitsound = "swing_hit"
 	light_color = LIGHT_COLOR_FLUORESCENT_FLASHLIGHT
 	light_wedge = LIGHT_NARROW

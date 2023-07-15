@@ -98,7 +98,7 @@
 	to_chat(brainmob, SPAN_NOTICE("You feel slightly disoriented. That's normal when you're just \a [initial(src.name)]."))
 	callHook("debrain", list(brainmob))
 
-/obj/item/organ/internal/brain/examine(mob/user) // -- TLE
+/obj/item/organ/internal/brain/examine(mob/user, dist) // -- TLE
 	. = ..()
 	if(brainmob && brainmob.client)//if thar be a brain inside... the brain.
 		. += "You can feel the small spark of life still left in this one."

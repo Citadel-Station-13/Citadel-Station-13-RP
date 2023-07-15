@@ -8,7 +8,7 @@
 	icon = 'icons/obj/medical/syringe.dmi'
 	item_state = "syringe_0"
 	icon_state = "0"
-	matter = list(MAT_GLASS = 150)
+	materials = list(MAT_GLASS = 150)
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = null
 	volume = 15

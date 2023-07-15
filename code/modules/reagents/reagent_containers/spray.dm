@@ -76,7 +76,7 @@
 	spray_size = next_list_item(spray_size, spray_sizes)
 	to_chat(user, "<span class='notice'>You adjusted the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>")
 
-/obj/item/reagent_containers/spray/examine(mob/user)
+/obj/item/reagent_containers/spray/examine(mob/user, dist)
 	. = ..()
 	if(loc == user)
 		. += "[round(reagents.total_volume)] units left."
@@ -129,7 +129,7 @@
 	. = ..()
 	reagents.add_reagent("condensedcapsaicin", 40)
 
-/obj/item/reagent_containers/spray/pepper/examine(mob/user)
+/obj/item/reagent_containers/spray/pepper/examine(mob/user, dist)
 	. = ..()
 	. += "The safety is [safety ? "on" : "off"]."
 
@@ -230,7 +230,7 @@
 	. = ..()
 	reagents.add_reagent("water", 100)
 
-/obj/item/reagent_containers/spray/squirt/examine(mob/user)
+/obj/item/reagent_containers/spray/squirt/examine(mob/user, dist)
 	. = ..()
 	. += "The tank is [pumped ? "depressurized" : "pressurized"]."
 
