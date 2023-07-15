@@ -8,11 +8,15 @@
 		if(MOVE_INTENT_WALK)
 			. += config_legacy.walk_speed
 
+// todo: all this depth staged stuff is stupid and it should all be on /turf and cached someday
+//       this is however, faster, so that'll be a very long 'someday'.
+
 /mob/living/Move(atom/newloc, direct, glide_size_override)
 	depth_staged = 0
 	if(buckled && buckled.loc != newloc)
 		return FALSE
-	return ..()
+	. = ..()
+	depth_staged = null
 
 /mob/living/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()

@@ -34,7 +34,7 @@
 	///
 	/// negative values are ignored as turfs are assumed to be depth 0
 	/// unless we change that in the future
-	var/depth_level = 12
+	var/depth_level = 28
 	/// contributes to depth when we're on a turf
 	var/depth_projected = FALSE
 
@@ -309,11 +309,13 @@
 /obj/proc/do_climb_on(mob/living/climber)
 	climber.visible_message(SPAN_WARNING("[climber] climbs onto \the [src]!"))
 	// all this effort just to avoid a splurtstation railing spare ID speedrun incident
+	var/old_depth = climber.depth_current
 	if(climber.depth_current < depth_level)
 		// basically, we don't force move them, we just elevate them to our level
 		// if something else blocks them, L + ratio + get parried
 		climber.change_depth(depth_level)
-	step_towards(climber, src)
+	if(!step_towards(climber, src))
+		climber.change_depth(old_depth)
 
 /obj/attack_hand(mob/user, list/params)
 	. = ..()

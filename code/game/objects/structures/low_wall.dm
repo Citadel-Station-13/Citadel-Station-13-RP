@@ -26,7 +26,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	smoothing_groups = (SMOOTH_GROUP_LOW_WALL)
 	canSmoothWith = (SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_LOW_WALL+SMOOTH_GROUP_WALLS)
 	depth_projected = TRUE
-	depth_level = 12
+	depth_level = 8
 	climb_allowed = TRUE
 	climb_delay = 2.0 SECONDS
 	plane = OBJ_PLANE
