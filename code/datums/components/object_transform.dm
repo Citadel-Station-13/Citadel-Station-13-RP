@@ -6,6 +6,7 @@
 	put_in_object()
 
 /datum/component/object_transform/proc/swap_object(new_object)
+	. = new_object
 	if(parent in transformed_object.contents)
 		parent.forceMove(transformed_object.loc)
 	qdel(transformed_object)

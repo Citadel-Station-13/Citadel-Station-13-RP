@@ -19,9 +19,6 @@
 
 	stop_pulling()
 
-	//stop resting
-	resting = FALSE
-
 	// If we are being held, handle removing our holder from their inv.
 	var/obj/item/holder/H = loc
 	if(istype(H))
@@ -40,7 +37,7 @@
 /mob/living/silicon/pai/proc/open_up()
 	last_special = world.time + 20
 
-	//I'm not sure how much of this is necessary, but I would rather avoid issues.
+	// stops unfolding in hardsuits and vore bellies, if implanted you explode out
 	if(istype(card.loc,/obj/item/hardsuit_module))
 		to_chat(src, "There is no room to unfold inside this hardsuit module. You're good and stuck.")
 		return FALSE
