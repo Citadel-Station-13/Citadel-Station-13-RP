@@ -5032,6 +5032,24 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -3
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "dSN" = (
@@ -23739,14 +23757,6 @@
 /area/bridge)
 "qZL" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/suit/armor/vest/wolftaur{
-	pixel_x = -16;
-	pixel_y = 4
-	},
-/obj/item/clothing/suit/armor/vest/wolftaur{
-	pixel_x = -12;
-	pixel_y = 9
-	},
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
