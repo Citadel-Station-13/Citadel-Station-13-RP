@@ -29,8 +29,8 @@
 		forceMove(get_turf(src))
 
 	// Move us into the card and move the card to the ground.
-	card.forceMove(loc)
-	forceMove(card)
+	transform_component.put_in_object()
+
 	update_perspective()
 	set_resting(FALSE)
 	update_mobility()
@@ -63,8 +63,9 @@
 		var/obj/item/pda/holder = card.loc
 		holder.pai = null
 
-	forceMove(card.loc)
-	card.forceMove(src)
+	// handle the actual object stuffing via the component
+	transform_component.put_in_mob()
+
 	update_perspective()
 
 	card.screen_loc = null

@@ -105,12 +105,16 @@
 	// space movement related
 	var/last_space_movement = 0
 
+	// transformation component
+	var/datum/component/object_transform/transform_component
+
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()
 	card = loc
 	sradio = new(src)
 	communicator = new(src)
 	if(card)
+		transform_component = new(card)
 		if(!card.radio)
 			card.radio = new /obj/item/radio(src.card)
 		radio = card.radio
