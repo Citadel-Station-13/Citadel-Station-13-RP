@@ -34,9 +34,7 @@
 	///
 	/// negative values are ignored as turfs are assumed to be depth 0
 	/// unless we change that in the future
-	///
-	/// defaults to 28 which works for most "fulltile" objects
-	var/depth_level = 28
+	var/depth_level = 12
 	/// contributes to depth when we're on a turf
 	var/depth_projected = FALSE
 

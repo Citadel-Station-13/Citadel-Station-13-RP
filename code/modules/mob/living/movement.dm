@@ -14,10 +14,13 @@
 		return FALSE
 	return ..()
 
-/mob/living/Moved()
+/mob/living/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	if(s_active && !CheapReachability(s_active))
 		s_active.close(src)
+	if(forced && isnull(depth_staged) && isturf(loc))
+		var/turf/T = loc
+		depth_staged = T.depth_level()
 	if(!isnull(depth_staged))
 		change_depth(depth_staged)
 		depth_staged = null
@@ -52,11 +55,11 @@
 	. = ..()
 	if(isobj(blocker))
 		var/obj/O = blocker
+		if(O.depth_projected)
+			// FINE ILL USE UNLINT INSTEAD OF REMOVE PURITY
+			UNLINT(depth_staged = max(depth_staged, O.depth_level))
 		if(!(O.obj_flags & OBJ_IGNORE_MOB_DEPTH) && O.depth_level <= depth_current)
 			return TRUE
-		else if(O.depth_projected)
-			// FINE ILL USE UNLINT INSTEAD OF REMOVE PURITY
-			UNLINT(depth_staged = max(depth_staged, O.depth))
 
 /mob/living/can_cross_under(atom/movable/mover)
 	if(isliving(mover))
