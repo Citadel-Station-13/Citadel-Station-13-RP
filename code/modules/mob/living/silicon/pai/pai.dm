@@ -118,8 +118,9 @@
 	communicator = new(src)
 	if(shell)
 		transform_component = AddComponent(/datum/component/object_transform, shell)
-		if(!radio)
-			radio = new /obj/item/radio(src)
+	if(card && !card.radio)
+		card.radio = new /obj/item/radio(src.card)
+		radio = card.radio
 
 	add_verb(src, /mob/living/silicon/pai/proc/choose_chassis)
 	add_verb(src, /mob/living/silicon/pai/proc/choose_verbs)
