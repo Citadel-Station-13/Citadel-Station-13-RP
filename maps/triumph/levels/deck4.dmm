@@ -907,8 +907,6 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "aMe" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -922,16 +920,10 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced/full,
 /obj/structure/curtain/black{
 	anchored = 1
 	},
+/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/security/brig)
 "aME" = (
@@ -1479,12 +1471,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "bkw" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "bky" = (
@@ -2430,12 +2420,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "bSB" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/range)
 "bTf" = (
@@ -2970,8 +2958,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "cnI" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -2980,13 +2966,7 @@
 	opacity = 0
 	},
 /obj/structure/cable/green,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/security/brig)
 "cnK" = (
@@ -6661,8 +6641,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "ePd" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -6671,16 +6649,10 @@
 	opacity = 0
 	},
 /obj/structure/cable/green,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced/full,
 /obj/structure/curtain/black{
 	anchored = 1
 	},
+/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/security/brig)
 "ePg" = (
@@ -6852,16 +6824,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "eWD" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "sec_processing"
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -6874,6 +6836,9 @@
 	id = "security_lockdown";
 	name = "Security Blast Doors";
 	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "sec_processing"
 	},
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -6902,21 +6867,8 @@
 /turf/simulated/floor/carpet,
 /area/maintenance/security/starboard)
 "eWL" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "sec_processing"
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
-	},
-/obj/structure/window/reinforced{
-	dir = 4
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -6924,6 +6876,9 @@
 	id = "security_lockdown";
 	name = "Security Blast Doors";
 	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "sec_processing"
 	},
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -9700,12 +9655,10 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/sauna)
 "heB" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/forensics)
 "heR" = (
@@ -9823,13 +9776,11 @@
 /turf/simulated/floor/tiled,
 /area/exploration/excursion_dock)
 "hhJ" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green,
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "hhP" = (
@@ -10178,9 +10129,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "hvN" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "hvO" = (
@@ -10780,8 +10729,6 @@
 /area/exploration/explorer_prep)
 "hOa" = (
 /obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green,
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -10790,6 +10737,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "hOO" = (
@@ -11749,12 +11697,10 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "ity" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "itM" = (
@@ -12582,12 +12528,10 @@
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "jao" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "jaC" = (
@@ -12787,16 +12731,6 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/hos)
 "jik" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "sec_processing"
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -12806,6 +12740,9 @@
 	id = "security_lockdown";
 	name = "Security Blast Doors";
 	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "sec_processing"
 	},
 /turf/simulated/floor/plating,
 /area/security/lobby)
@@ -16293,10 +16230,8 @@
 /turf/simulated/floor/tiled,
 /area/security/eva)
 "lIz" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "lIC" = (
@@ -17969,8 +17904,6 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "mWQ" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -17984,13 +17917,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/security/brig)
 "mWX" = (
@@ -18768,12 +18695,10 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/maintenance/central)
 "nBV" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "nBX" = (
@@ -19795,9 +19720,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "ooz" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "ooF" = (
@@ -20301,13 +20224,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
 "oIi" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full{
-	id = "hos_office"
-	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "hos_office"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
@@ -20542,8 +20463,6 @@
 /turf/simulated/open,
 /area/medical/patient_wing)
 "oRJ" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -20551,11 +20470,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/phoronreinforced,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/security/hanger)
 "oRN" = (
@@ -20587,12 +20502,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "oTf" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/prison)
 "oTs" = (
@@ -21249,10 +21162,8 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/civvie/general)
 "pkC" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/range)
 "plC" = (
@@ -22197,6 +22108,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
+"pXk" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/security/lobby)
 "pXl" = (
 /obj/effect/floor_decal/techfloor,
 /obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
@@ -22857,13 +22772,11 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/breakroom)
 "qpW" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "qpZ" = (
@@ -23295,16 +23208,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "qEu" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full{
-	id = "hos_office"
-	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "hos_office"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
@@ -23624,11 +23535,10 @@
 /area/hallway/secondary/docking_hallway)
 "qPg" = (
 /obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "qPI" = (
@@ -23650,12 +23560,10 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "qQW" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
 "qRg" = (
@@ -24857,10 +24765,8 @@
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "rzp" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
 "rzr" = (
@@ -26268,12 +26174,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/prison)
 "sAd" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
 "sAi" = (
@@ -27614,15 +27518,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "trW" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/security/hanger)
 "tsv" = (
@@ -28260,13 +28156,11 @@
 /turf/simulated/floor/plating,
 /area/security/brig)
 "tSR" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full{
-	id = "hos_office"
-	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "hos_office"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
@@ -28651,11 +28545,10 @@
 /area/maintenance/security/starboard)
 "ugB" = (
 /obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "ugO" = (
@@ -30813,15 +30706,13 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "vFo" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/forensics)
 "vFH" = (
@@ -30876,12 +30767,10 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "vGB" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
 "vGG" = (
@@ -31110,9 +30999,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "vLR" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -31120,6 +31006,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "vMk" = (
@@ -32078,12 +31965,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "wne" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/prison)
 "wns" = (
@@ -32739,12 +32624,10 @@
 /turf/simulated/floor/airless/ceiling,
 /area/security/hanger)
 "wKb" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "wMH" = (
@@ -33680,12 +33563,10 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/lounge)
 "xqv" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
 "xqQ" = (
@@ -41186,7 +41067,7 @@ jIb
 nWX
 jIb
 lrZ
-xxQ
+pXk
 qjp
 tJG
 wEy
