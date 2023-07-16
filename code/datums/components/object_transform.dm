@@ -6,7 +6,7 @@
 	put_in_object()
 
 /datum/component/object_transform/proc/swap_object(new_object)
-	. = new_object
+	. = transformed_object
 	var/mob/owner = parent
 	if(parent in transformed_object.contents)
 		owner.forceMove(transformed_object.loc)
