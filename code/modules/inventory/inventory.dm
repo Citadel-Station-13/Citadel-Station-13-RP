@@ -5,6 +5,8 @@
 	//? basics
 	/// owning mob
 	var/mob/owner
+	/// hud datum
+
 
 	//? slots
 

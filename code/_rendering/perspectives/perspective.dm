@@ -46,6 +46,15 @@
  * however, perspectives are designed to force synchronization of the vars it does trample,
  * because there's no better way to do it (because those vars are, semantically, only relevant to our perspective),
  * while screen/images can be used for embedded maps/hud/etc.
+ *
+ * ## Use Case
+ *
+ * Perspectives should for the management of an atom's semantic world-view.
+ * This is what they can / can not see around them.
+ * This should not be used for things like inventory HUDs and action buttons.
+ * Those are "internal" viewing / a mob's internal state.
+ *
+ * Basically, these are for what you can see, if you looked through someone's eyes.
  */
 /datum/perspective
 	/// eye - where visual calcs go from
