@@ -214,15 +214,19 @@
 
 	last_special = world.time + 20
 
+	// setup transform text
+	if(istype(new_shell, /obj/item/paicard))
+		transform_component.to_object_text = "neatly folds inwards, compacting down to a rectangular card"
+	else
+		transform_component.to_object_text = "neatly folds inwards, compacting down into their shell"
+
 	// swap the shell, if the old shell is our card we keep it, otherwise we delete it because it's not important
 	shell = new_shell
 	var/obj/item/old_shell = transform_component.swap_object(new_shell)
 	if(istype(old_shell, /obj/item/paicard))
 		old_shell.forceMove(src)
-		transform_component.to_object_text = "neatly folds inwards, compacting down to a rectangular card"
 	else
 		QDEL_NULL(old_shell)
-		transform_component.to_object_text = "neatly folds inwards, compacting down into their shell"
 
 	// some sanity stuff because this is also putting us inside an object so we want to interrupt a couple of possible things such as pulling, resting, eating, viewing camera
 	release_vore_contents()
