@@ -126,11 +126,10 @@
 				var/obj/item/clothing/new_clothing = new base_uploaded_path
 				new_clothing.forceMove(src.loc)
 				new_clothing.name = src.name
-				new_clothing.description = src.description
+				new_clothing.desc = src.desc
 				new_clothing.icon = icon
 				new_clothing.icon_state = state
 				switch_shell(new_clothing)
-
 
 /mob/living/silicon/pai/verb/revert_shell_to_card()
 	set name = "Reset Shell"

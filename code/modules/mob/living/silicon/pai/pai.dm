@@ -81,8 +81,8 @@
 		"Grey Pleated Skirt" = /obj/item/clothing/under/color/grey_skirt,
 		"Last Uploaded Clothing" = null,
 		)
-	var/last_uploaded_path
-	var/base_uploaded_path
+	var/obj/item/clothing/last_uploaded_path
+	var/obj/item/clothing/base_uploaded_path
 
 	/// The cable we produce and use when door or camera jacking.
 	var/obj/item/pai_cable/cable
@@ -252,7 +252,7 @@
 
 	var/obj/item/new_object = new object_path
 	new_object.name = src.name
-	new_object.description = src.description
+	new_object.desc = src.desc
 	new_object.forceMove(src.loc)
 	switch_shell(new_object)
 	return TRUE
