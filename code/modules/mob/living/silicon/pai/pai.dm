@@ -45,7 +45,7 @@
 	var/ram = 100	// Used as currency to purchase different abilities
 	var/list/software = list()
 	var/userDNA		// The DNA string of our assigned user
-	var/shell	// The shell we inhabit
+	var/obj/item/shell	// The shell we inhabit
 	var/obj/item/paicard/card // The card we belong to, it is not always our shell, but it is linked to us regardless
 	var/obj/item/radio/radio		// Our primary radio
 	var/obj/item/communicator/integrated/communicator	// Our integrated communicator.
