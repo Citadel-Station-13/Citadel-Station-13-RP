@@ -205,3 +205,18 @@
 			new_people_eaten += M.size_multiplier
 	people_eaten = min(1, new_people_eaten)
 
+// changing the shell
+/mob/living/silicon/pai/proc/switchShell(var/obj/item/new_shell)
+	// we're on cooldown or we are dead
+	if(!can_action())
+		return FALSE
+
+	last_special = world.time + 20
+
+	// swap the shell, if the old shell is our card we keep it, otherwise we delete it because it's not important
+	shell = new_shell
+	var/obj/item/old_shell = transform_component.swap_object(new_shell)
+	if(istype(old_shell, /obj/item/paicard))
+		old_shell.forceMove(src)
+	else
+		QDEL_NULL(old_shell)
