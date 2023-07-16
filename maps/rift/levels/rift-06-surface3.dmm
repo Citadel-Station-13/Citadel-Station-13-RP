@@ -9960,25 +9960,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hop)
 "aBw" = (
-/obj/machinery/holopad,
-/obj/machinery/ai_slipper,
-/obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "AILockdown";
-	name = "AI Upload Lockdown";
-	pixel_x = -26;
-	pixel_y = 6
-	},
-/obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "AICore";
-	name = "AI Bunker Lockdown";
-	pixel_x = -26;
-	pixel_y = -6
-	},
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/media/jukebox,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "aBy" = (
@@ -20178,6 +20163,11 @@
 /obj/structure/railing,
 /turf/simulated/open,
 /area/maintenance/station/exploration)
+"fax" = (
+/obj/structure/foamedmetal,
+/obj/structure/grille,
+/turf/space/basic,
+/area/rift/surfacebase/outside/outside3)
 "fbX" = (
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/reinforced,
@@ -21591,6 +21581,11 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
+"iKl" = (
+/obj/structure/foamedmetal,
+/obj/structure/grille,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/outside/outside3)
 "iLh" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -23313,6 +23308,24 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
+"neL" = (
+/obj/machinery/holopad,
+/obj/machinery/ai_slipper,
+/obj/machinery/button/remote/blast_door{
+	id = "AILockdown";
+	name = "AI Upload Lockdown";
+	pixel_x = -26;
+	pixel_y = 30
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	id = "AICore";
+	name = "AI Bunker Lockdown";
+	pixel_x = -26;
+	pixel_y = -30
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/ai)
 "nfJ" = (
 /turf/simulated/wall/prepainted,
 /area/hallway/primary/surfacethree)
@@ -24527,6 +24540,11 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
+"quy" = (
+/obj/structure/grille,
+/obj/structure/foamedmetal,
+/turf/simulated/wall/prepainted,
+/area/rift/surfacebase/outside/outside3)
 "qvL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -27323,6 +27341,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
+"xUe" = (
+/obj/structure/foamedmetal,
+/obj/structure/grille,
+/turf/space/basic,
+/area/ai)
 "xVh" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -54161,23 +54184,23 @@ hNS
 hNS
 aBL
 bWN
-aXk
-aCI
+fax
+xUe
 eod
-aCa
-aAi
-aAi
+eod
+aTG
+aTG
 aSo
-aNN
+aza
 aBw
-aNN
-aEW
-akH
-akH
-aVl
-uom
-huX
-aXk
+aza
+aAi
+aTG
+aTG
+eod
+eod
+eod
+fax
 cYF
 afq
 afq
@@ -54355,23 +54378,23 @@ alx
 hNS
 aBL
 bWN
-aXk
+iKl
 aCI
 eod
-eod
-awN
-aTG
+aCa
+aAi
+aAi
 aSo
-aza
-aOb
-aza
-agK
-aTG
-awN
-eod
-eod
-eod
-aXk
+aNN
+neL
+aNN
+aEW
+akH
+akH
+aVl
+uom
+huX
+iKl
 cYF
 afq
 afq
@@ -54550,22 +54573,22 @@ hNS
 aBL
 bWN
 aXk
-aXk
+aCI
 eod
 eod
-eod
+awN
 aTG
-acv
+aSo
 aza
+aOb
 aza
-aza
-aFj
+agK
 aTG
+awN
 eod
 eod
 eod
-aXk
-aXk
+quy
 cYF
 afq
 afq
@@ -54748,18 +54771,18 @@ aXk
 eod
 eod
 eod
-awN
-aOw
-atr
-aAi
-aEW
-anS
-awN
+aTG
+acv
+aza
+aza
+aza
+aFj
+aTG
+eod
 eod
 eod
 aXk
 aXk
-cYF
 cYF
 afq
 afq
@@ -54939,22 +54962,22 @@ aBL
 bWN
 aXk
 aXk
+eod
+eod
+eod
+awN
+aOw
+atr
+aAi
+aEW
+anS
+awN
+eod
+eod
 aXk
-eod
-eod
-eod
-eod
-ahF
-aQU
-aWy
-eod
-eod
-eod
-eod
 aXk
 cYF
 cYF
-afq
 afq
 afq
 afq
@@ -55131,23 +55154,23 @@ mEN
 aBL
 bWN
 bWN
+aXk
+aXk
+aXk
+eod
+eod
+eod
+eod
+ahF
+aQU
+aWy
+eod
+eod
+eod
+eod
+aXk
 cYF
 cYF
-aXk
-aXk
-eod
-eod
-eod
-eod
-eod
-eod
-eod
-eod
-eod
-aXk
-aXk
-cYF
-afq
 afq
 afq
 afq
@@ -55325,7 +55348,6 @@ mEN
 aBL
 bWN
 bWN
-afq
 cYF
 cYF
 aXk
@@ -55336,10 +55358,11 @@ eod
 eod
 eod
 eod
+eod
+eod
+eod
 aXk
 aXk
-aXk
-cYF
 cYF
 afq
 afq
@@ -55520,21 +55543,21 @@ aBL
 aBL
 bWN
 afq
-afq
 cYF
 cYF
 aXk
 aXk
-aXk
-aXk
-aXk
+eod
+eod
+eod
+eod
+eod
+eod
 aXk
 aXk
 aXk
 cYF
 cYF
-cYF
-afq
 afq
 afq
 afq
@@ -55715,19 +55738,19 @@ aBL
 bWN
 afq
 afq
-afq
+cYF
+cYF
+aXk
+aXk
+aXk
+aXk
+aXk
+aXk
+aXk
+aXk
 cYF
 cYF
 cYF
-cYF
-cYF
-cYF
-cYF
-cYF
-cYF
-cYF
-afq
-afq
 afq
 afq
 afq
@@ -55910,16 +55933,16 @@ bWN
 afq
 afq
 afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
+cYF
+cYF
+cYF
+cYF
+cYF
+cYF
+cYF
+cYF
+cYF
+cYF
 afq
 afq
 afq
