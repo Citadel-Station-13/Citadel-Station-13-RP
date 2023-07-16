@@ -117,7 +117,7 @@
 	sradio = new(src)
 	communicator = new(src)
 	if(shell)
-		transform_component = new(shell)
+		transform_component = AddComponent(/datum/component/object_transform, shell)
 		if(!radio)
 			radio = new /obj/item/radio(src)
 

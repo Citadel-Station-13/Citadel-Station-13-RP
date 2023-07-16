@@ -10,7 +10,6 @@
 	var/mob/owner = parent
 	if(parent in transformed_object.contents)
 		owner.forceMove(transformed_object.loc)
-	qdel(transformed_object)
 	transformed_object = new_object
 	put_in_object()
 
