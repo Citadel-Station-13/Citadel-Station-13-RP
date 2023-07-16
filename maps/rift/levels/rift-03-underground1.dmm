@@ -5938,7 +5938,7 @@
 	pixel_y = 1
 	},
 /obj/item/circuitboard/rdconsole,
-/obj/item/circuitboard/autolathe{
+/obj/item/circuitboard/machine/lathe/autolathe{
 	pixel_x = 1;
 	pixel_y = -1
 	},
@@ -10848,7 +10848,6 @@
 /obj/item/stock_parts/matter_bin,
 /obj/item/stock_parts/manipulator,
 /obj/item/stock_parts/console_screen,
-/obj/item/circuitboard/partslathe,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/plating,
 /area/storage/tech)
@@ -11086,7 +11085,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "KJ" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay/maintenance)
 "KK" = (
@@ -12762,7 +12761,7 @@
 /obj/item/stock_parts/matter_bin,
 /obj/item/stock_parts/manipulator,
 /obj/item/stock_parts/console_screen,
-/obj/item/circuitboard/autolathe,
+/obj/item/circuitboard/machine/lathe/autolathe,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/plating,
 /area/storage/tech)

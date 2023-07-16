@@ -1,7 +1,7 @@
 /obj/structure/closet
 	name = "closet"
 	desc = "It's a basic storage unit."
-	icon = 'icons/obj/closet.dmi'
+	icon = 'icons/obj/closets/bases/closet.dmi'
 	icon_state = "base"
 	density = 1
 	w_class = ITEMSIZE_HUGE
@@ -35,6 +35,7 @@
 	var/broken = FALSE
 	var/secure = FALSE
 	var/locked = FALSE
+	var/use_old_icon_update = FALSE
 
 
 	var/obj/item/electronics/airlock/lockerelectronics //Installed electronics
@@ -66,6 +67,12 @@
 			icon = app.icon
 			color = null
 			update_icon()
+
+/obj/structure/closet/proc/update_icon_old()
+	if(!opened)
+		icon_state = icon_closed
+	else
+		icon_state = icon_opened
 
 /obj/structure/closet/proc/take_contents()
 	// if(istype(loc, /mob/living))
@@ -464,6 +471,9 @@
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
 /obj/structure/closet/update_icon()//Putting the sealed stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
+	if(use_old_icon_update)
+		update_icon_old()
+		return
 	if(opened)
 		icon_state = "open"
 	else if(broken)
