@@ -14,7 +14,10 @@
 
 	var/turf/T = get_turf(src)
 	if(istype(T))
-		T.visible_message("<b>[src]</b> neatly folds inwards, compacting down to a rectangular card.")
+		if(istype(shell, /obj/item/paicard))
+			T.visible_message("<b>[src]</b> neatly folds inwards, compacting down to a rectangular card.")
+		else
+			T.visible_message("<b>[src]</b> neatly folds inwards, compacting down into their shell.")
 
 	stop_pulling()
 
