@@ -4930,6 +4930,11 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/firealarm{
+	dir = 4;
+	layer = 3.3;
+	pixel_x = 26
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "dOp" = (
@@ -11235,10 +11240,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
-"ibB" = (
-/obj/effect/floor_decal/corner/black/full,
-/turf/simulated/wall/r_wall,
-/area/security/tactical)
 "ich" = (
 /obj/machinery/light/small/emergency{
 	dir = 1
@@ -12105,16 +12106,9 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/security/security_processing)
 "iGE" = (
-/obj/effect/floor_decal/corner/black{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/black{
-	dir = 6
-	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/effect/floor_decal/corner/black/full,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "iHh" = (
@@ -15083,7 +15077,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "kWY" = (
@@ -15993,7 +15986,6 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hos)
 "lAR" = (
@@ -19987,10 +19979,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/mimeoffice)
 "ovC" = (
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/structure/table/rack/shelf/steel,
-/obj/item/melee/baton/loaded,
-/obj/item/melee/baton/loaded,
 /turf/space/basic,
 /area/space)
 "ovY" = (
@@ -24707,7 +24695,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "rrP" = (
@@ -29010,7 +28997,6 @@
 "usF" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "usH" = (
@@ -31157,7 +31143,6 @@
 	pixel_x = -26
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "vMM" = (
@@ -31446,7 +31431,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "vSM" = (
@@ -34726,7 +34710,6 @@
 /obj/structure/closet/secure_closet/security,
 /obj/structure/window/basic,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "yat" = (
@@ -44918,7 +44901,7 @@ xAC
 iga
 xAC
 xAC
-ibB
+xAC
 xAC
 xAC
 nIK
