@@ -117,7 +117,7 @@
 	sradio = new(src)
 	communicator = new(src)
 	if(shell)
-		transform_component = AddComponent(/datum/component/object_transform, shell)
+		transform_component = AddComponent(/datum/component/object_transform, shell, "neatly folds inwards, compacting down to a rectangular card", "folds outwards, expanding into a mobile form.")
 	if(card && !card.radio)
 		card.radio = new /obj/item/radio(src.card)
 		radio = card.radio
@@ -219,5 +219,15 @@
 	var/obj/item/old_shell = transform_component.swap_object(new_shell)
 	if(istype(old_shell, /obj/item/paicard))
 		old_shell.forceMove(src)
+		transform_component.to_object_text = "neatly folds inwards, compacting down to a rectangular card"
 	else
 		QDEL_NULL(old_shell)
+		transform_component.to_object_text = "neatly folds inwards, compacting down into their shell"
+
+	// some sanity stuff because this is also putting us inside an object so we want to interrupt a couple of possible things such as pulling, resting, eating, viewing camera
+	release_vore_contents()
+	stop_pulling()
+	update_perspective()
+	set_resting(FALSE)
+	update_mobility()
+	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)

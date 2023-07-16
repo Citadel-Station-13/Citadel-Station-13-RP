@@ -12,13 +12,6 @@
 
 	release_vore_contents()
 
-	var/turf/T = get_turf(src)
-	if(istype(T))
-		if(istype(shell, /obj/item/paicard))
-			T.visible_message("<b>[src]</b> neatly folds inwards, compacting down to a rectangular card.")
-		else
-			T.visible_message("<b>[src]</b> neatly folds inwards, compacting down into their shell.")
-
 	stop_pulling()
 
 	// If we are being held, handle removing our holder from their inv.
