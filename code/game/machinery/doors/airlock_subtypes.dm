@@ -142,8 +142,8 @@
 	close_sound_powered = 'sound/machines/door/hall1c.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
-	opacity = 1
-	glass = 1
+	opacity = FALSE
+	glass = TRUE
 	window_color = GLASS_COLOR
 
 /obj/machinery/door/airlock/centcom
