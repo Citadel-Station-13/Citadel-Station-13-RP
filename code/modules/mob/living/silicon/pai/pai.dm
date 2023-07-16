@@ -75,6 +75,12 @@
 		"Canine" = list("yaps","barks","woofs"),
 		)
 
+	// shell transformation
+	var/global/list/possible_clothing_options = list(
+		"Test1" = /obj/item/clothing/under/color/yellow_skirt,
+		"Test2" = /obj/item/clothing/under/syndicate/skirt_pleated,
+		)
+
 	/// The cable we produce and use when door or camera jacking.
 	var/obj/item/pai_cable/cable
 
@@ -207,13 +213,7 @@
 	people_eaten = min(1, new_people_eaten)
 
 // changing the shell
-/mob/living/silicon/pai/proc/switchShell(var/obj/item/new_shell)
-	// we're on cooldown or we are dead
-	if(!can_action())
-		return FALSE
-
-	last_special = world.time + 20
-
+/mob/living/silicon/pai/proc/switch_shell(obj/item/new_shell)
 	// setup transform text
 	if(istype(new_shell, /obj/item/paicard))
 		transform_component.to_object_text = "neatly folds inwards, compacting down to a rectangular card"
@@ -235,3 +235,15 @@
 	set_resting(FALSE)
 	update_mobility()
 	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
+
+// changing the shell into clothing
+/mob/living/silicon/pai/proc/change_shell_by_path(object_path)
+	if(!can_change_shell())
+		return FALSE
+
+	last_special = world.time + 20
+
+	var/obj/item/new_object = new object_path
+	new_object.forceMove(src.loc)
+	switch_shell(new_object)
+	return TRUE

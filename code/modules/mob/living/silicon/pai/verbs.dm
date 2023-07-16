@@ -16,15 +16,6 @@
 	set category = "pAI Commands"
 	set name = "Collapse Chassis"
 
-	// we check mobility here to stop people folding up if they currently cannot move
-	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
-		return
-	if(!can_action())
-		return
-	// to fold up we need to not be in the card already
-	if(src.loc == shell)
-		return
-
 	close_up()
 
 /mob/living/silicon/pai/proc/choose_chassis()
@@ -115,3 +106,26 @@
 	if (stat != CONSCIOUS)
 		return
 	return feed_grabbed_to_self(src,T)
+
+/mob/living/silicon/pai/verb/change_shell_clothing()
+	set name = "pAI Clothing"
+	set category = "pAI Commands"
+	set desc = "Allows you to transform your shell into clothing."
+
+	if(!can_change_shell())
+		return
+
+	var/clothing_entry = input(usr, "What clothing would you like to change your shell to?") as null|anything in possible_clothing_options
+	if(clothing_entry)
+		change_shell_by_path(possible_clothing_options[clothing_entry])
+
+/mob/living/silicon/pai/verb/revert_shell_to_card()
+	set name = "Reset Shell"
+	set category = "pAI Commands"
+	set desc = "Reverts your shell back to card form."
+
+	if(!can_change_shell())
+		return
+	if(!card || card.loc != shell || card == shell)
+		return
+	switch_shell(card)

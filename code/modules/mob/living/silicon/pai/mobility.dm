@@ -4,11 +4,18 @@
 	..()
 
 /mob/living/silicon/pai/proc/close_up()
-	last_special = world.time + 20
-
 	// we can't close up if already inside our shell
 	if(src.loc == shell)
 		return
+
+	// we check mobility here to stop people folding up if they currently cannot move
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
+		return
+
+	if(!can_action())
+		return
+
+	last_special = world.time + 20
 
 	release_vore_contents()
 
@@ -107,3 +114,15 @@
 			// place an effect for the movement
 			new /obj/effect/temp_visual/pai_ion_burst(get_turf(src))
 			return TRUE
+
+/mob/living/silicon/pai/proc/can_change_shell()
+	if(istype(src.loc, /mob))
+		to_chat(src, "<span class='notice'>You're not able to change your shell while being held.</span>")
+		return FALSE
+	if(stat != CONSCIOUS)
+		return FALSE
+	if(!can_action())
+		return FALSE
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
+		return FALSE
+	return TRUE
