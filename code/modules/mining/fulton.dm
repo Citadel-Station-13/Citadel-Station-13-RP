@@ -25,7 +25,7 @@ var/global/list/total_extraction_beacons = list()
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "phoroncrate"
 
-/obj/item/extraction_pack/examine(mob/user)
+/obj/item/extraction_pack/examine(mob/user, dist)
 	. = ..()
 	. +="It has [uses_left] use\s remaining."
 

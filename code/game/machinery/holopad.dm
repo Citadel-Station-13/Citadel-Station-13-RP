@@ -13,11 +13,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 
-/obj/item/circuitboard/holopad
+/obj/item/circuitboard/machine/holopad
 	name = T_BOARD("holopad")
 	build_path = /obj/machinery/holopad
 	board_type = new /datum/frame/frame_types/holopad
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/machinery/holopad
 	name = "holopad"
@@ -28,7 +27,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	anchored = TRUE
 	atom_flags = ATOM_HEAR
 	show_messages = TRUE
-	circuit = /obj/item/circuitboard/holopad
+	circuit = /obj/item/circuitboard/machine/holopad
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	use_power = USE_POWER_IDLE
@@ -203,8 +202,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
  * returns if we can reach another holopad
  */
 /obj/machinery/holopad/proc/holocall_connectivity(obj/machinery/holopad/other)
-	var/obj/effect/overmap/visitable/our_sector = get_overmap_sector(get_z(src))
-	var/obj/effect/overmap/visitable/their_sector = get_overmap_sector(get_z(other))
+	var/obj/overmap/entity/visitable/our_sector = get_overmap_sector(get_z(src))
+	var/obj/overmap/entity/visitable/their_sector = get_overmap_sector(get_z(other))
 	if(!our_sector || !their_sector)
 		return !(sector_only || other.sector_only) && (get_z(src) == get_z(other))
 	if(our_sector != their_sector)
@@ -216,12 +215,12 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
  */
 /obj/machinery/holopad/proc/holocall_query()
 	. = list()
-	var/obj/effect/overmap/visitable/our_sector = get_overmap_sector(get_z(src))
+	var/obj/overmap/entity/visitable/our_sector = get_overmap_sector(get_z(src))
 	for(var/id in GLOB.holopad_lookup)
 		var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
 		if(!pad.operable() || !pad.call_visibility)
 			continue
-		var/obj/effect/overmap/visitable/their_sector = get_overmap_sector(get_z(pad))
+		var/obj/overmap/entity/visitable/their_sector = get_overmap_sector(get_z(pad))
 		if(!our_sector || !their_sector)
 			if((sector_only || pad.sector_only) || (get_z(src) != get_z(pad)))
 				continue
@@ -243,9 +242,9 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/machinery/holopad/proc/holocall_name(obj/machinery/holopad/in_respects_to)
 	if(holopad_name)
 		return holopad_name
-	var/obj/effect/overmap/visitable/sector = get_overmap_sector(get_z(src))
+	var/obj/overmap/entity/visitable/sector = get_overmap_sector(get_z(src))
 	if(in_respects_to && call_anonymous_sector)
-		var/obj/effect/overmap/visitable/other = get_overmap_sector(in_respects_to)
+		var/obj/overmap/entity/visitable/other = get_overmap_sector(in_respects_to)
 		if(sector != other)
 			return "Anonymous"
 	return "[sector? "[sector.scanner_name || sector.name]: " : ""][get_area(src)?:name] - [holopad_uid]"
@@ -264,7 +263,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/machinery/holopad/proc/ui_connectivity_data()
 	var/list/built = list()
 	for(var/obj/machinery/holopad/pad as anything in holocall_query())
-		var/obj/effect/overmap/visitable/sector = get_overmap_sector(get_z(pad))
+		var/obj/overmap/entity/visitable/sector = get_overmap_sector(get_z(pad))
 		var/sector_name = sector?.scanner_name || sector?.name
 		built[++built.len] = list(
 			"id" = pad.holopad_uid,
@@ -391,7 +390,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	if(world.time < holocall_last_radio + 30 SECONDS)
 		return
 	holocall_last_radio = world.time
-	GLOB.global_announcer.autosay("Incoming call from [incoming.caller_id_source()] at [get_area(src)].", name, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
+	GLOB.global_announcer.autosay("Incoming call from [incoming.caller_id_source()] at [get_area(src)].", name, zlevels = (LEGACY_MAP_DATUM).get_map_levels(get_z(src)))
 
 /**
  * get hung up by a call
@@ -863,7 +862,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/machinery/holopad/proc/unregister_hologram(obj/effect/overlay/hologram/holopad/holo)
 	LAZYREMOVE(holograms, holo)
 
-/obj/item/circuitboard/holopad/ship
+/obj/item/circuitboard/machine/holopad/ship
 	name = T_BOARD("sector holopad")
 	build_path = /obj/machinery/holopad/ship
 
@@ -872,9 +871,9 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	desc = "An expensive and immobile holopad used for long range ship-to-ship communications."
 	icon_state = "shippad"
 	base_icon_state = "shippad"
-	circuit = /obj/item/circuitboard/holopad/ship
-	allow_unanchor = FALSE
-	allow_deconstruct = FALSE
+	circuit = /obj/item/circuitboard/machine/holopad/ship
+	default_unanchor = 5 SECONDS
+	default_deconstruct = 5 SECONDS
 	long_range = TRUE
 
 /obj/machinery/holopad/ship/starts_inactive
@@ -924,7 +923,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 
 /datum/holocall/proc/ui_caller_id_source()
 	// todo: overmap sector names for anonymous.
-	var/obj/effect/overmap/visitable/sector = get_overmap_sector(get_z(source))
+	var/obj/overmap/entity/visitable/sector = get_overmap_sector(get_z(source))
 	var/scanner_name = sector?.scanner_name || sector?.name || "Unknown"
 	return list(
 		"name" = (source.call_anonymous_sector && cross_sector)? "Anonymous" : source.holocall_name(),
@@ -937,7 +936,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 
 /datum/holocall/proc/ui_caller_id_destination()
 	// todo: overmap sector names for anonymous.
-	var/obj/effect/overmap/visitable/sector = get_overmap_sector(get_z(destination))
+	var/obj/overmap/entity/visitable/sector = get_overmap_sector(get_z(destination))
 	var/scanner_name = sector?.scanner_name || sector?.name || "Unknown"
 	return list(
 		"name" = (destination.call_anonymous_sector && cross_sector)? "Anonymous" : destination.holocall_name(),
@@ -1256,7 +1255,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		AM.forceMove(loc)
 	return ..()
 
-/obj/effect/overlay/hologram/holopad/ai/examine(mob/user)
+/obj/effect/overlay/hologram/holopad/ai/examine(mob/user, dist)
 	. = ..()
 	//If you need an ooc_notes copy paste, this is NOT the one to use.
 	var/ooc_notes = owner.ooc_notes

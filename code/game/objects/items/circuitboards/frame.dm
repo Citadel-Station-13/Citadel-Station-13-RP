@@ -10,37 +10,37 @@
 	name = T_BOARD("guestpass console")
 	build_path = /obj/machinery/computer/guestpass
 	board_type = new /datum/frame/frame_types/guest_pass_console
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/item/circuitboard/status_display
 	name = T_BOARD("status display")
 	build_path = /obj/machinery/status_display
 	board_type = new /datum/frame/frame_types/display
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/item/circuitboard/ai_status_display
 	name = T_BOARD("ai status display")
 	build_path = /obj/machinery/ai_status_display
 	board_type = new /datum/frame/frame_types/display
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/item/circuitboard/newscaster
 	name = T_BOARD("newscaster")
 	build_path = /obj/machinery/newscaster
 	board_type = new /datum/frame/frame_types/newscaster
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/item/circuitboard/atm
 	name = T_BOARD("atm")
 	build_path = /obj/machinery/atm
 	board_type = new /datum/frame/frame_types/atm
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/item/circuitboard/request
 	name = T_BOARD("request console")
 	build_path = /obj/machinery/requests_console
 	board_type = new /datum/frame/frame_types/supply_request_console
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 //! Alarms
 
@@ -48,25 +48,25 @@
 	name = T_BOARD("fire alarm")
 	build_path = /obj/machinery/firealarm
 	board_type = new /datum/frame/frame_types/fire_alarm
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/item/circuitboard/airalarm
 	name = T_BOARD("air alarm")
 	build_path = /obj/machinery/alarm
 	board_type = new /datum/frame/frame_types/air_alarm
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/item/circuitboard/intercom
 	name = T_BOARD("intercom")
 	build_path = /obj/item/radio/intercom
 	board_type = new /datum/frame/frame_types/intercom
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/item/circuitboard/keycard_auth
 	name = T_BOARD("keycard authenticator")
 	build_path = /obj/machinery/keycard_auth
 	board_type = new /datum/frame/frame_types/keycard_authenticator
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 //! Computers
 
@@ -88,7 +88,7 @@
 	name = T_BOARD("photocopier")
 	build_path = /obj/machinery/photocopier
 	board_type = new /datum/frame/frame_types/photocopier
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 	req_components = list(
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/micro_laser = 1,
@@ -100,7 +100,7 @@
 	name = T_BOARD("fax")
 	build_path = /obj/machinery/photocopier/faxmachine
 	board_type = new /datum/frame/frame_types/fax
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 	req_components = list(
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/micro_laser = 1,
@@ -122,7 +122,7 @@
 	name = T_BOARD("microwave")
 	build_path = /obj/machinery/microwave
 	board_type = new /datum/frame/frame_types/microwave
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 	req_components = list(
 		/obj/item/stock_parts/capacitor = 1,
 		/obj/item/stock_parts/console_screen = 1,
@@ -156,7 +156,7 @@
 	name = T_BOARD("washing machine")
 	build_path = /obj/machinery/washing_machine
 	board_type = new /datum/frame/frame_types/washing_machine
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 	req_components = list(
 		/obj/item/stock_parts/gear = 2,
 		/obj/item/stock_parts/motor = 1,
@@ -202,6 +202,7 @@
 		/obj/item/stack/cable_coil = 10,
 		/obj/item/stock_parts/capacitor = 2,
 		/obj/item/stock_parts/console_screen = 1,
+		/obj/item/smes_coil = 1,
 	)
 
 /obj/item/circuitboard/body_scanner

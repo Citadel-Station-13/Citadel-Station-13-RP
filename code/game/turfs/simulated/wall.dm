@@ -6,8 +6,8 @@
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
-	icon = 'icons/turf/walls/solid.dmi'
-	icon_state = "wall-0"
+	icon = 'icons/turf/walls/_previews.dmi'
+	icon_state = "solid"
 	base_icon_state = "wall"
 	color = "#666666"
 
@@ -18,6 +18,7 @@
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
+	layer = WALL_LAYER
 	rad_insulation = RAD_INSULATION_EXTREME
 //	air_status = AIR_STATUS_BLOCK
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
@@ -27,7 +28,7 @@
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS)
-	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_LOW_WALL + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_LOW_WALL + SMOOTH_GROUP_GRILLE + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 	/// This is a var we are temporarily using until we have falsewall structures, until then we'll store our previous icon_state so we don't need to resmooth every time.
 	// TODO: Remove this when falsewalls are implemented.
@@ -47,6 +48,14 @@
 
 	var/last_state
 	var/construction_stage
+	/// Paint color of which the wall has been painted with.
+	var/paint_color
+	/// Paint color of which the stripe has been painted with. Will not overlay a stripe if no paint is applied
+	var/stripe_color
+	var/stripe_icon
+	var/cache_key
+	var/shiny_wall
+	var/shiny_stripe
 
 // Walls always hide the stuff below them.
 /turf/simulated/wall/levelupdate()
@@ -75,6 +84,9 @@
 
 	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
 		START_PROCESSING(SSturfs, src)
+
+	stripe_icon = material.wall_stripe_icon
+	update_overlays()
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
@@ -156,7 +168,7 @@
 		plant.update_neighbors()
 
 //Appearance
-/turf/simulated/wall/examine(mob/user)
+/turf/simulated/wall/examine(mob/user, dist)
 	. = ..()
 
 	if(!damage)

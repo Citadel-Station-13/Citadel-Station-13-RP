@@ -731,7 +731,7 @@
 	update_icon()
 	..()
 
-/obj/item/storage/trinketbox/examine(mob/user)
+/obj/item/storage/trinketbox/examine(mob/user, dist)
 	. = ..()
 	if(open && contents.len)
 		var/display_item = contents[1]

@@ -584,10 +584,10 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/trade)
 "bB" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(160);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -968,7 +968,7 @@
 	dir = 4;
 	name = "Cigarette machine";
 	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	products = list(/obj/item/storage/fancy/cigarettes=10,/obj/item/storage/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2)
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -1082,7 +1082,7 @@
 /obj/machinery/door/airlock/command{
 	name = "Bridge";
 	req_access = list(160);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -1176,7 +1176,7 @@
 /obj/machinery/vending/assist{
 	contraband = null;
 	name = "Old Vending Machine";
-	products = list(/obj/item/assembly/prox_sensor = 5, /obj/item/assembly/signaler = 4, /obj/item/assembly/infra = 4, /obj/item/assembly/prox_sensor = 4, /obj/item/handcuffs = 8, /obj/item/flash = 4, /obj/item/cartridge/signal = 4, /obj/item/clothing/glasses/sunglasses = 4)
+	products = list(/obj/item/assembly/prox_sensor=5,/obj/item/assembly/signaler=4,/obj/item/assembly/infra=4,/obj/item/assembly/prox_sensor=4,/obj/item/handcuffs=8,/obj/item/flash=4,/obj/item/cartridge/signal=4,/obj/item/clothing/glasses/sunglasses=4)
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -1211,7 +1211,7 @@
 "cX" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2;
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -1354,9 +1354,8 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dm" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
 /turf/simulated/shuttle/floor/black,
@@ -1437,10 +1436,10 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "du" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_access = list(160);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -1610,7 +1609,7 @@
 /obj/machinery/door/airlock/command{
 	name = "Captain's Quarters";
 	req_access = list(160);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -1892,7 +1891,7 @@
 /area/shuttle/trade)
 "jo" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)

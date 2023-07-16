@@ -801,7 +801,7 @@
 	dir = 8
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/mackerel_lc_wreck,
-/obj/effect/overmap/visitable/ship/landable/mackerel_lc_wreck,
+/obj/overmap/entity/visitable/ship/landable/mackerel_lc_wreck,
 /obj/machinery/airlock_sensor{
 	pixel_x = 7;
 	pixel_y = 21

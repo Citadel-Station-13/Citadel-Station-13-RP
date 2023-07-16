@@ -45,7 +45,7 @@
 	set_state(1)
 	return ..()
 
-/obj/machinery/power/breakerbox/examine(mob/user)
+/obj/machinery/power/breakerbox/examine(mob/user, dist)
 	. = ..()
 	if(on)
 		. += "<font color='green'>It seems to be online.</font>"

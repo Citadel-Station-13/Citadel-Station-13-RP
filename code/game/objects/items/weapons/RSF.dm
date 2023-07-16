@@ -32,7 +32,7 @@ RSF
 
 	w_class = ITEMSIZE_NORMAL
 
-/obj/item/rsf/examine(mob/user)
+/obj/item/rsf/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='notice'>It currently holds [stored_matter]/30 fabrication-units.</span>"
 

@@ -307,7 +307,7 @@
 			"You hear a ratchet.")
 		deconstruct()
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/examine(mob/user)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/examine(mob/user, dist)
 	. = ..()
 	. += "A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W"
 	if(welded)

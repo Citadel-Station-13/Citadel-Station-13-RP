@@ -7,7 +7,6 @@
 /area/centcom/specops)
 "ac" = (
 /turf/unsimulated/wall{
-	icon = 'icons/obj/doors/Doorext.dmi';
 	icon_state = "door_locked";
 	name = "Sealed Door"
 	},
@@ -538,7 +537,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/specops/centcom)
 "be" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(103)
 	},
@@ -1520,7 +1519,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/specops/centcom)
 "dj" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_access = list(103)
 	},
@@ -1706,9 +1705,8 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dB" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
 /turf/simulated/shuttle/floor/black,
@@ -2083,7 +2081,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "zV" = (
-/obj/machinery/door/airlock/glass_command{
+/obj/machinery/door/airlock/glass/command{
 	req_one_access = list(103)
 	},
 /turf/simulated/shuttle/floor/black,

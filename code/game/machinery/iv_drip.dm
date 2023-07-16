@@ -291,7 +291,7 @@
 	to_chat(usr, SPAN_NOTICE("The IV drip is now [injection_mode ? "injecting" : "taking blood"]."))
 	update_appearance()
 
-/obj/machinery/iv_drip/examine(mob/user)
+/obj/machinery/iv_drip/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(user, src) > 2)
 		return

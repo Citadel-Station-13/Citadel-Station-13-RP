@@ -182,7 +182,7 @@ LINEN BINS
 	var/obj/item/hidden = null
 
 
-/obj/structure/bedsheetbin/examine(mob/user)
+/obj/structure/bedsheetbin/examine(mob/user, dist)
 	. = ..()
 
 	if(amount < 1)

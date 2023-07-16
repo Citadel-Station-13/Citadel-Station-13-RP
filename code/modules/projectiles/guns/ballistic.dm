@@ -5,7 +5,7 @@
 	icon_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	w_class = ITEMSIZE_NORMAL
-	matter = list(MAT_STEEL = 1000)
+	materials = list(MAT_STEEL = 1000)
 	recoil = 0
 	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
@@ -269,7 +269,7 @@
 		ammo_magazine = null
 		update_icon() //make sure to do this after unsetting ammo_magazine
 
-/obj/item/gun/ballistic/examine(mob/user)
+/obj/item/gun/ballistic/examine(mob/user, dist)
 	. = ..()
 	if(ammo_magazine)
 		. += "It has \a [ammo_magazine] loaded."

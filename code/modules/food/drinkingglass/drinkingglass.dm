@@ -25,9 +25,9 @@
 	possible_transfer_amounts = list(5,10,15,30)
 	atom_flags = OPENCONTAINER
 
-	matter = list(MAT_GLASS = 60)
+	materials = list(MAT_GLASS = 60)
 
-/obj/item/reagent_containers/food/drinks/glass2/examine(mob/user)
+/obj/item/reagent_containers/food/drinks/glass2/examine(mob/user, dist)
 	. = ..()
 
 	for(var/I in extras)

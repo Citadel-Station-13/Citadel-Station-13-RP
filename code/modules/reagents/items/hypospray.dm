@@ -40,7 +40,7 @@
 		loaded = new loaded(src)
 		update_icon()
 
-/obj/item/hypospray/examine(mob/user)
+/obj/item/hypospray/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(get_turf(src), user) <= 1)
 		if(!isnull(loaded))

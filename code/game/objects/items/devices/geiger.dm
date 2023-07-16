@@ -16,7 +16,7 @@
 	item_state = "multitool"
 	w_class = ITEMSIZE_SMALL
 	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
-	matter = list(MAT_STEEL = 200, MAT_GLASS = 100)
+	materials = list(MAT_STEEL = 200, MAT_GLASS = 100)
 
 	var/grace = RAD_GRACE_PERIOD
 	var/datum/looping_sound/geiger/soundloop
@@ -66,7 +66,7 @@
 	update_appearance()
 	update_sound()
 
-/obj/item/geiger_counter/examine(mob/user)
+/obj/item/geiger_counter/examine(mob/user, dist)
 	. = ..()
 	if(!scanning)
 		return

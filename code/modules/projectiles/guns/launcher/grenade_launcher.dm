@@ -16,7 +16,7 @@
 
 	var/list/grenades = new/list()
 	var/max_grenades = 5 //holds this + one in the chamber
-	matter = list(MAT_STEEL = 2000)
+	materials = list(MAT_STEEL = 2000)
 
 //revolves the magazine, allowing players to choose between multiple grenade types
 /obj/item/gun/launcher/grenade/proc/pump(mob/M as mob)
@@ -36,7 +36,7 @@
 		to_chat(M, "<span class='warning'>You pump [src], but the magazine is empty.</span>")
 	update_icon()
 
-/obj/item/gun/launcher/grenade/examine(mob/user)
+/obj/item/gun/launcher/grenade/examine(mob/user, dist)
 	. = ..()
 	var/grenade_count = grenades.len + (chambered? 1 : 0)
 	. += "Has [grenade_count] grenade\s remaining."

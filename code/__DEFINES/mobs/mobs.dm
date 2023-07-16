@@ -356,3 +356,7 @@
 #define BLOOD_VOLUME_OKAY        336
 #define BLOOD_VOLUME_BAD         224
 #define BLOOD_VOLUME_SURVIVE     122
+
+//* misc
+/// how far you have to shift to not be bumped by people
+#define WALLFLOWERING_PIXEL_SHIFT 8

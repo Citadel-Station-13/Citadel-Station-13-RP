@@ -63,7 +63,7 @@
 	if(!parts)
 		qdel(src)
 
-/obj/item/modkit/examine(mob/user)
+/obj/item/modkit/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>It looks as though it modifies hardsuits to fit [target_species] users.</span>"
 

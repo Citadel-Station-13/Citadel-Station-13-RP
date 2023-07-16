@@ -296,21 +296,23 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 
 /datum/category_item/catalogue/information/organization/New()
 	..()
-	if(datum_to_copy)
-		// I'd just access the loremaster object but it might not exist because its ugly.
-		var/datum/lore/organization/O = new datum_to_copy()
-		// I would also change the name based on the org datum but changing the name messes up indexing in some lists in the category/collection object attached to us.
+	spawn(-1)
+		UNTIL(SSlegacy_lore.initialized)
+		if(datum_to_copy)
+			// I'd just access the loremaster object but it might not exist because its ugly.
+			var/datum/lore/organization/O = new datum_to_copy()
+			// I would also change the name based on the org datum but changing the name messes up indexing in some lists in the category/collection object attached to us.
 
-		// Now lets combine the data in the datum for a slightly more presentable entry.
-		var/constructed_desc = ""
+			// Now lets combine the data in the datum for a slightly more presentable entry.
+			var/constructed_desc = ""
 
-		if(O.motto)
-			constructed_desc += "<center><b><i>\"[O.motto]\"</i></b></center><br><br>"
+			if(O.motto)
+				constructed_desc += "<center><b><i>\"[O.motto]\"</i></b></center><br><br>"
 
-		constructed_desc += O.desc
+			constructed_desc += O.desc
 
-		desc = constructed_desc
-		qdel(O)
+			desc = constructed_desc
+			qdel(O)
 
 /datum/category_item/catalogue/information/organization/nanotrasen
 	name = "TSC - NanoTrasen Incorporated"

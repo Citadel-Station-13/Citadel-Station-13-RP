@@ -72,7 +72,7 @@
 
 	..()
 
-/mob/living/simple_mob/slime/xenobio/examine(mob/user)
+/mob/living/simple_mob/slime/xenobio/examine(mob/user, dist)
 	. = ..()
 	if(hat)
 		. += "It is wearing \a [hat]."
