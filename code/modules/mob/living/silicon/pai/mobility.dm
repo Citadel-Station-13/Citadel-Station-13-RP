@@ -1,14 +1,13 @@
 /mob/living/silicon/pai/restrained()
-	if(istype(src.loc,/obj/item/paicard))
+	if(src in shell.contents)
 		return FALSE
 	..()
 
-//I'm not sure how much of this is necessary, but I would rather avoid issues.
 /mob/living/silicon/pai/proc/close_up()
-
 	last_special = world.time + 20
 
-	if(src.loc == card)
+	// we can't close up if already inside our shell
+	if(src.loc == shell)
 		return
 
 	release_vore_contents()
@@ -38,26 +37,26 @@
 	last_special = world.time + 20
 
 	// stops unfolding in hardsuits and vore bellies, if implanted you explode out
-	if(istype(card.loc,/obj/item/hardsuit_module))
+	if(istype(shell.loc,/obj/item/hardsuit_module))
 		to_chat(src, "There is no room to unfold inside this hardsuit module. You're good and stuck.")
 		return FALSE
-	else if(istype(card.loc,/mob))
-		var/mob/holder = card.loc
-		var/datum/belly/inside_belly = check_belly(card)
+	else if(istype(shell.loc,/mob))
+		var/mob/holder = shell.loc
+		var/datum/belly/inside_belly = check_belly(shell)
 		if(inside_belly)
 			to_chat(src, "<span class='notice'>There is no room to unfold in here. You're good and stuck.</span>")
 			return FALSE
 		if(ishuman(holder))
 			var/mob/living/carbon/human/H = holder
 			for(var/obj/item/organ/external/affecting in H.organs)
-				if(card in affecting.implants)
+				if(shell in affecting.implants)
 					affecting.take_damage(rand(30,50))
-					affecting.implants -= card
+					affecting.implants -= shell
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
 					break
-		holder.drop_item_to_ground(card, INV_OP_FORCE)
-	else if(istype(card.loc,/obj/item/pda))
-		var/obj/item/pda/holder = card.loc
+		holder.drop_item_to_ground(shell, INV_OP_FORCE)
+	else if(istype(shell.loc,/obj/item/pda))
+		var/obj/item/pda/holder = shell.loc
 		holder.pai = null
 
 	// handle the actual object stuffing via the component
@@ -65,7 +64,9 @@
 
 	update_perspective()
 
-	card.screen_loc = null
+	var/obj/item/paicard/card = shell
+	if(istype(card))
+		card.screen_loc = null
 
 	var/turf/T = get_turf(src)
 	if(istype(T))

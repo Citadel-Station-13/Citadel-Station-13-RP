@@ -45,7 +45,7 @@
 	var/ram = 100	// Used as currency to purchase different abilities
 	var/list/software = list()
 	var/userDNA		// The DNA string of our assigned user
-	var/obj/item/paicard/card	// The card we inhabit
+	var/shell	// The shell we inhabit
 	var/obj/item/radio/radio		// Our primary radio
 	var/obj/item/communicator/integrated/communicator	// Our integrated communicator.
 	var/obj/item/pda/ai/pai/pda = null // Our integrated PDA
@@ -110,14 +110,13 @@
 
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()
-	card = loc
+	shell = loc
 	sradio = new(src)
 	communicator = new(src)
-	if(card)
-		transform_component = new(card)
-		if(!card.radio)
-			card.radio = new /obj/item/radio(src.card)
-		radio = card.radio
+	if(shell)
+		transform_component = new(shell)
+		if(!radio)
+			radio = new /obj/item/radio(src)
 
 	add_verb(src, /mob/living/silicon/pai/proc/choose_chassis)
 	add_verb(src, /mob/living/silicon/pai/proc/choose_verbs)
