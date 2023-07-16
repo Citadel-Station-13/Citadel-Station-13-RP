@@ -77,9 +77,12 @@
 
 	// shell transformation
 	var/global/list/possible_clothing_options = list(
-		"Test1" = /obj/item/clothing/under/color/yellow_skirt,
-		"Test2" = /obj/item/clothing/under/syndicate/skirt_pleated,
+		"Maid Costume" = /obj/item/clothing/under/dress/maid/sexy,
+		"Grey Pleated Skirt" = /obj/item/clothing/under/color/grey_skirt,
+		"Last Uploaded Clothing" = null,
 		)
+	var/last_uploaded_path
+	var/base_uploaded_path
 
 	/// The cable we produce and use when door or camera jacking.
 	var/obj/item/pai_cable/cable
@@ -236,6 +239,10 @@
 	update_mobility()
 	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
+	// pass attack self on to the card regardless of our shell
+	if(!istype(new_shell, /obj/item/paicard))
+		RegisterSignal(shell, COMSIG_ITEM_ATTACK_SELF, .proc/pass_attack_self_to_card)
+
 // changing the shell into clothing
 /mob/living/silicon/pai/proc/change_shell_by_path(object_path)
 	if(!can_change_shell())
@@ -244,6 +251,11 @@
 	last_special = world.time + 20
 
 	var/obj/item/new_object = new object_path
+	new_object.name = src.name
+	new_object.description = src.description
 	new_object.forceMove(src.loc)
 	switch_shell(new_object)
 	return TRUE
+
+/mob/living/silicon/pai/proc/pass_attack_self_to_card(user)
+	card.attack_self(user)

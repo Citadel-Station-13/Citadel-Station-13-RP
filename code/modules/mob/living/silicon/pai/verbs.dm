@@ -117,7 +117,20 @@
 
 	var/clothing_entry = input(usr, "What clothing would you like to change your shell to?") as null|anything in possible_clothing_options
 	if(clothing_entry)
-		change_shell_by_path(possible_clothing_options[clothing_entry])
+		if(clothing_entry != "Last Uploaded Clothing")
+			change_shell_by_path(possible_clothing_options[clothing_entry])
+		else
+			if(last_uploaded_path && can_change_shell())
+				var/state = initial(last_uploaded_path.icon_state)
+				var/icon = initial(last_uploaded_path.icon)
+				var/obj/item/clothing/new_clothing = new base_uploaded_path
+				new_clothing.forceMove(src.loc)
+				new_clothing.name = src.name
+				new_clothing.description = src.description
+				new_clothing.icon = icon
+				new_clothing.icon_state = state
+				switch_shell(new_clothing)
+
 
 /mob/living/silicon/pai/verb/revert_shell_to_card()
 	set name = "Reset Shell"
@@ -126,6 +139,6 @@
 
 	if(!can_change_shell())
 		return
-	if(!card || card.loc != shell || card == shell)
+	if(!card || card.loc != src || card == shell)
 		return
 	switch_shell(card)
