@@ -1,5 +1,5 @@
 /mob/living/silicon/pai/restrained()
-	if(src in shell.contents)
+	if(src.loc == shell)
 		return FALSE
 	..()
 
@@ -24,7 +24,7 @@
 		H.forceMove(get_turf(src))
 		forceMove(get_turf(src))
 
-	// Move us into the card and move the card to the ground.
+	// Move us into the shell and move the shell to the ground.
 	transform_component.put_in_object()
 
 	update_perspective()

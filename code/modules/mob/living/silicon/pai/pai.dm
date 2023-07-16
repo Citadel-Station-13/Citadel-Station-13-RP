@@ -46,6 +46,7 @@
 	var/list/software = list()
 	var/userDNA		// The DNA string of our assigned user
 	var/shell	// The shell we inhabit
+	var/obj/item/paicard/card // The card we belong to, it is not always our shell, but it is linked to us regardless
 	var/obj/item/radio/radio		// Our primary radio
 	var/obj/item/communicator/integrated/communicator	// Our integrated communicator.
 	var/obj/item/pda/ai/pai/pda = null // Our integrated PDA
@@ -111,6 +112,8 @@
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()
 	shell = loc
+	if(istype(shell, /obj/item/paicard))
+		card = loc
 	sradio = new(src)
 	communicator = new(src)
 	if(shell)
