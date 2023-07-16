@@ -5232,7 +5232,7 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/mineshaft)
 "ST" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "First Aid Staton";
 	req_one_access = list()
 	},

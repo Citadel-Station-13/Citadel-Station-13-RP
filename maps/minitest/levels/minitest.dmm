@@ -521,16 +521,6 @@
 	},
 /area/tcommsat/chamber)
 "bi" = (
-/obj/landmark/spawnpoint/overflow/station,
-/turf/simulated/floor/tiled,
-/area/bridge)
-"bj" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/camera/network/telecom{
-	c_tag = "Telecoms Central Compartment North"
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -539,7 +529,13 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
-"bk" = (
+"bj" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/camera/network/telecom{
+	c_tag = "Telecoms Central Compartment North"
+	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -743,20 +739,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/engine_room)
-"bI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/glass_engineering,
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"bJ" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/airlock/glass_engineering,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "bK" = (
 /obj/structure/grille,
@@ -1224,6 +1206,12 @@
 "cO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/medical/medbay)
+"cP" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
 "cQ" = (
@@ -1867,12 +1855,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
-"et" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/medical/medbay)
 "eu" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2;
@@ -3000,15 +2982,6 @@
 /obj/structure/shuttle,
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/webdemo)
-"hx" = (
-/obj/machinery/computer/shuttle_control/web{
-	dir = 2;
-	my_doors = list("webdemo_docker_hatch"="Hatch");
-	name = "Web-Demo Console";
-	shuttle_tag = "Web-Demo"
-	},
-/turf/simulated/shuttle/floor,
-/area/shuttle/webdemo)
 "hy" = (
 /obj/machinery/light{
 	dir = 4;
@@ -3049,6 +3022,10 @@
 /turf/space,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/overmapdemo)
+"hH" = (
+/obj/landmark/spawnpoint/overflow/station,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "kU" = (
 /obj/structure/shuttle,
 /turf/simulated/shuttle/wall/voidcraft/green,
@@ -3099,6 +3076,15 @@
 /obj/overmap/entity/visitable/sector/citadel_minitest/station,
 /turf/space,
 /area/space)
+"LJ" = (
+/obj/machinery/computer/shuttle_control/web{
+	dir = 2;
+	my_doors = list("webdemo_docker_hatch"="Hatch");
+	name = "Web-Demo Console";
+	shuttle_tag = "Web-Demo"
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/webdemo)
 "ML" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	id_tag = "station_dock2";
@@ -3119,11 +3105,25 @@
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)
+"Og" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/glass/engineering,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "Pg" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/space,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/multidemo)
+"RZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/glass/engineering,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "SN" = (
 /obj/machinery/door/airlock/external{
 	frequency = 1379;
@@ -5168,7 +5168,7 @@ gz
 gf
 gf
 gN
-hx
+LJ
 hz
 ht
 gN
@@ -5265,7 +5265,7 @@ gj
 gf
 gr
 gf
-bi
+hH
 gz
 gf
 gf
@@ -5420,7 +5420,7 @@ aj
 aj
 aD
 aR
-bk
+bi
 bu
 bu
 bu
@@ -5624,7 +5624,7 @@ aj
 aj
 aF
 aT
-bk
+bi
 bu
 bu
 bu
@@ -6850,7 +6850,7 @@ aB
 at
 bs
 by
-bI
+RZ
 bN
 cb
 ch
@@ -6866,7 +6866,7 @@ cO
 de
 dr
 dF
-et
+cP
 eb
 du
 cM
@@ -6952,7 +6952,7 @@ aB
 aZ
 bs
 bz
-bJ
+Og
 bO
 cc
 ci
@@ -6962,19 +6962,19 @@ cz
 cA
 cc
 cH
-et
-et
-et
+cP
+cP
+cP
 df
 ds
 du
 cM
 ec
 ek
-et
-et
+cP
+cP
 df
-et
+cP
 eG
 eO
 eO
@@ -7581,7 +7581,7 @@ dh
 cM
 dG
 dF
-et
+cP
 en
 cM
 cM

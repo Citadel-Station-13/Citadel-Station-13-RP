@@ -41,17 +41,6 @@
 		/obj/item/stock_parts/scanning_module = 1,
 	)
 
-/obj/item/circuitboard/autolathe
-	name = T_BOARD("autolathe")
-	build_path = /obj/machinery/autolathe
-	board_type = new /datum/frame/frame_types/machine
-	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2)
-	req_components = list(
-		/obj/item/stock_parts/console_screen = 1,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/matter_bin = 3,
-	)
-
 /obj/item/circuitboard/protolathe
 	name = T_BOARD("protolathe")
 	build_path = /obj/machinery/r_n_d/protolathe
