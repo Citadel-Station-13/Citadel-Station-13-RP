@@ -207,7 +207,7 @@
 	people_eaten = min(1, new_people_eaten)
 
 // changing the shell
-/mob/living/silicon/pai/proc/switchShell(var/obj/item/new_shell)
+/mob/living/silicon/pai/proc/switch_shell(var/obj/item/new_shell)
 	// we're on cooldown or we are dead
 	if(!can_action())
 		return FALSE
