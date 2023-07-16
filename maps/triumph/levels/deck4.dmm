@@ -2700,6 +2700,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
+"ccp" = (
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "ccu" = (
 /obj/machinery/camera/network/civilian{
 	dir = 8
@@ -4152,9 +4155,7 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "dpQ" = (
@@ -24689,9 +24690,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "rGT" = (
-/obj/machinery/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
@@ -38166,10 +38165,10 @@ dqm
 vgx
 xLf
 oRJ
+ccp
+ccp
+ccp
 pkc
-nIK
-nIK
-nIK
 nIK
 nIK
 nIK
@@ -38308,10 +38307,10 @@ lbX
 xFn
 xOh
 oRJ
+ccp
+ccp
+ccp
 pkc
-nIK
-nIK
-nIK
 nIK
 nIK
 nIK
@@ -38450,11 +38449,11 @@ tzb
 vgG
 xRX
 oRJ
+ccp
+ccp
+ccp
 pkc
-nIK
-nIK
-nIK
-nIK
+pkc
 nIK
 nIK
 nIK

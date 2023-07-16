@@ -3,6 +3,7 @@
 /obj/structure/closet/crate
 	name = "crate"
 	desc = "A rectangular steel crate."
+	icon = 'icons/obj/closets/bases/crate.dmi'
 	closet_appearance = /singleton/closet_appearance/crate
 	climbable = 1
 	var/points_per_crate = 5
@@ -348,10 +349,7 @@
 /obj/structure/closet/crate/bin
 	name = "large bin"
 	desc = "A large bin."
-	icon = 'icons/obj/storage.dmi'
-	icon_state = "largebin"
-	icon_opened = "largebinopen"
-	icon_closed = "largebin"
+	closet_appearance = /singleton/closet_appearance/cart/trash
 
 /obj/structure/closet/crate/bin/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() && !opened)

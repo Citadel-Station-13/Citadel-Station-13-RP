@@ -40,7 +40,7 @@
 /// should not get harmed if this gets caught by an explosion?
 #define PREVENT_CONTENTS_EXPLOSION	(1<<22)
 */
-#define HTML_USE_INITAL_ICON		(1<<23)
+#define HTML_USE_INITIAL_ICON		(1<<23)
 
 DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(ATOM_INITIALIZED),
@@ -56,6 +56,7 @@ DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(OPENCONTAINER),
 	BITFIELD(PHORONGUARD),
 	BITFIELD(NOPRINT),
+	BITFIELD(HTML_USE_INITIAL_ICON),
 ))
 
 //! /atom/movable/var/movable_flags

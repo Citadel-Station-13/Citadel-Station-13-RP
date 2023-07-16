@@ -348,6 +348,24 @@ var/global/list/light_type_cache = list()
 	construct_type = /obj/machinery/light_construct/fairy
 	shows_alerts = FALSE
 
+/obj/machinery/light/fairy/update_icon()
+	switch(status) // set icon_states
+		if(LIGHT_OK)
+			if(shows_alerts && current_alert && on)
+				icon_state = "[base_icon_state]-alert-[current_alert]"
+			else
+				icon_state = "[base_icon_state][on]"
+		if(LIGHT_EMPTY)
+			icon_state = "[base_icon_state]-empty"
+			on = 0
+		if(LIGHT_BURNED)
+			icon_state = "[base_icon_state]-burned"
+			on = 0
+		if(LIGHT_BROKEN)
+			icon_state = "[base_icon_state]-broken"
+			on = 0
+
+
 /obj/machinery/light/flamp
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flamp1"
@@ -359,6 +377,23 @@ var/global/list/light_type_cache = list()
 	construct_type = /obj/machinery/light_construct/flamp
 	shows_alerts = FALSE
 	var/lamp_shade = 1
+
+/obj/machinery/light/flamp/update_icon()
+	switch(status) // set icon_states
+		if(LIGHT_OK)
+			if(shows_alerts && current_alert && on)
+				icon_state = "[base_icon_state]-alert-[current_alert]"
+			else
+				icon_state = "[base_icon_state][on]"
+		if(LIGHT_EMPTY)
+			icon_state = "[base_icon_state]-empty"
+			on = 0
+		if(LIGHT_BURNED)
+			icon_state = "[base_icon_state]-burned"
+			on = 0
+		if(LIGHT_BROKEN)
+			icon_state = "[base_icon_state]-broken"
+			on = 0
 
 /obj/machinery/light/flamp/Initialize(mapload, obj/machinery/light_construct/construct)
 	. = ..()

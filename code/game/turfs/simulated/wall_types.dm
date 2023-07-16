@@ -445,8 +445,8 @@
 	color = COLOR_COMMAND_BLUE
 
 /turf/simulated/wall/r_wall/prepainted/security
-	stripe_color = COLOR_MAROON
-	color = COLOR_MAROON
+	stripe_color = COLOR_SECURITY_RED
+	color = COLOR_SECURITY_RED
 
 /turf/simulated/wall/r_wall/prepainted/medical
 	paint_color = COLOR_GRAY80
@@ -458,8 +458,8 @@
 	color = COLOR_SUN
 
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos
-	stripe_color = COLOR_CYAN_DARK
-	color = COLOR_CYAN_DARK
+	stripe_color = COLOR_ATMOSPHERICS_CYAN
+	color = COLOR_ATMOSPHERICS_CYAN
 
 /turf/simulated/wall/r_wall/prepainted/civilian
 	stripe_color = COLOR_PALE_BTL_GREEN
@@ -475,8 +475,8 @@
 	color = COLOR_PURPLE_GRAY
 
 /turf/simulated/wall/r_wall/prepainted/cargo
-	stripe_color = COLOR_BEASTY_BROWN
-	color = COLOR_BEASTY_BROWN
+	stripe_color = COLOR_CARGO_BROWN
+	color = COLOR_CARGO_BROWN
 
 /turf/simulated/wall/prepainted
 	paint_color = COLOR_WALL_GUNMETAL
@@ -493,8 +493,8 @@
 	color = COLOR_GOLD
 
 /turf/simulated/wall/prepainted/security
-	stripe_color = COLOR_MAROON
-	color = COLOR_MAROON
+	stripe_color = COLOR_SECURITY_RED
+	color = COLOR_SECURITY_RED
 
 /turf/simulated/wall/prepainted/medical
 	paint_color = COLOR_GRAY80
@@ -506,8 +506,8 @@
 	color = COLOR_SUN
 
 /turf/simulated/wall/prepainted/engineering/atmos
-	stripe_color = COLOR_CYAN_DARK
-	color = COLOR_CYAN_DARK
+	stripe_color = COLOR_ATMOSPHERICS_CYAN
+	color = COLOR_ATMOSPHERICS_CYAN
 
 /turf/simulated/wall/prepainted/civilian
 	stripe_color = COLOR_PALE_BTL_GREEN
@@ -523,5 +523,5 @@
 	color = COLOR_PURPLE_GRAY
 
 /turf/simulated/wall/prepainted/cargo
-	stripe_color = COLOR_BEASTY_BROWN
-	color = COLOR_BEASTY_BROWN
+	stripe_color = COLOR_CARGO_BROWN
+	color = COLOR_CARGO_BROWN

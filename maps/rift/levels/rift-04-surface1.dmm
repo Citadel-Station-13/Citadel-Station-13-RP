@@ -10749,6 +10749,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
+/obj/item/hardsuit/medical/equipped,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "gZK" = (
@@ -11963,7 +11964,7 @@
 /turf/simulated/wall/prepainted/medical,
 /area/medical/psych_ward)
 "hIz" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
@@ -27737,6 +27738,7 @@
 /obj/item/clothing/mask/breath/anesthetic,
 /obj/item/clothing/gloves/sterile/nitrile,
 /obj/item/clothing/mask/muzzle,
+/obj/item/hardsuit/medical/equipped,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/cmo)
 "reE" = (
@@ -35486,7 +35488,7 @@
 /area/maintenance/substation/medical)
 "vLK" = (
 /obj/structure/closet/crate,
-/obj/item/circuitboard/autolathe,
+/obj/item/circuitboard/machine/lathe/autolathe,
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "vLP" = (
@@ -39484,7 +39486,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /obj/machinery/light{
 	dir = 1
 	},
