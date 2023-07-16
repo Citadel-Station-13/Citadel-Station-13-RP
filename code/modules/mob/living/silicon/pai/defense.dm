@@ -17,6 +17,7 @@
 			to_chat(user, "<span class='notice'>[src] is not accepting access modifcations at this time.</span>")
 			return
 	else if(istype(W, /obj/item/clothing))
+		message_admins("clothing use")
 		var/obj/item/clothing/C = W
 		if(C.slot_flags & SLOT_HEAD)
 			base_uploaded_path = /obj/item/clothing/head
@@ -33,8 +34,14 @@
 		if(C.slot_flags & SLOT_OCLOTHING)
 			base_uploaded_path = /obj/item/clothing/suit
 		last_uploaded_path = W.type
+
+		var/obj/item/clothing/under/U = C
+		if(istype(U))
+			uploaded_snowflake_worn_state = U.snowflake_worn_state
+
 		return
 	else
+		message_admins("attackby passed successfully")
 		. = ..()
 
 /mob/living/silicon/pai/emp_act(severity)

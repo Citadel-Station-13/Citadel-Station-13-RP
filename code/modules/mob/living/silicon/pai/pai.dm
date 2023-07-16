@@ -83,6 +83,7 @@
 		)
 	var/obj/item/clothing/last_uploaded_path
 	var/obj/item/clothing/base_uploaded_path
+	var/uploaded_snowflake_worn_state
 
 	/// The cable we produce and use when door or camera jacking.
 	var/obj/item/pai_cable/cable
@@ -257,5 +258,6 @@
 	switch_shell(new_object)
 	return TRUE
 
-/mob/living/silicon/pai/proc/pass_attack_self_to_card(user)
-	card.attack_self(user)
+/mob/living/silicon/pai/proc/pass_attack_self_to_card()
+	if(istype(shell.loc, /mob/living/carbon))
+		card.attack_self(shell.loc)

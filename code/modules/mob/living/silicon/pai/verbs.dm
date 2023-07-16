@@ -129,6 +129,11 @@
 				new_clothing.desc = src.desc
 				new_clothing.icon = icon
 				new_clothing.icon_state = state
+
+				var/obj/item/clothing/under/U = new_clothing
+				if(istype(U))
+					U.snowflake_worn_state = uploaded_snowflake_worn_state
+
 				switch_shell(new_clothing)
 
 /mob/living/silicon/pai/verb/revert_shell_to_card()
