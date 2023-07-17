@@ -1,7 +1,26 @@
 var/list/gear_datums = list()
 
 /proc/tgui_loadout_context()
-	#warn impl
+	. = list()
+	var/list/instances = list()
+	var/list/categories = list()
+	for(var/id in global.gear_datums)
+		var/datum/loadout_entry/entry = global.gear_datums[id]
+		categories[entry.sort_category] = TRUE
+		var/list/instance = list(
+			"id" = entry.id,
+			"name" = entry.name,
+			"cost" = entry.cost,
+			"category" = entry.sort_category,
+			"desc" = entry.description,
+			"customize" = entry.loadout_customize_flags,
+		)
+		instances[++instances.len] = instance
+	var/list/flattened_categories = list()
+	for(var/i in categories)
+		flattened_categories += i
+	.["instances"] = instances
+	.["categories"] = flattened_categories
 
 /datum/loadout_entry
 	abstract_type = /datum/loadout_entry

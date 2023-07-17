@@ -47,7 +47,7 @@ export enum LoadoutCustomizations {
   None = 0,
   Rename = (1<<0),
   Redesc = (1<<1),
-  Color = (1<<3),
+  Color = (1<<2),
 }
 
 interface LoadoutProps extends SectionProps {

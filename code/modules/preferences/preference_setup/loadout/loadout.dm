@@ -138,15 +138,52 @@
 		return
 	switch(action)
 		if("toggle")
-			#warn impl
+			var/id = params["id"]
+			if(!id)
+				return TRUE
+			var/datum/loadout_entry/entry = global.gear_datums[id]
+			if(isnull(entry))
+				return TRUE
+			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
+			loadout = loadout.Copy()
+			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
+			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			slot = slot?.Copy()
+			var/list/entries = slot[LOADOUT_SLOTDATA_ENTRIES]
+			if(entries[id])
+				entries -= id
+			else
+				entries[id] = list()
+			push_loadout_data()
+			return TRUE
 		if("rename")
 			#warn impl
+			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
+			loadout = loadout.Copy()
+			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
+			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			slot = slot?.Copy()
 		if("redesc")
 			#warn impl
+			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
+			loadout = loadout.Copy()
+			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
+			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			slot = slot?.Copy()
 		if("recolor")
 			#warn impl
+			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
+			loadout = loadout.Copy()
+			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
+			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			slot = slot?.Copy()
 		if("tweak")
 			#warn impl
+			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
+			loadout = loadout.Copy()
+			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
+			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			slot = slot?.Copy()
 		if("clear")
 			var/list/loadout_slot = current_loadout_slot(pref)
 			loadout_slot.Cut()
@@ -155,16 +192,26 @@
 		if("slot")
 			var/index = text2num(params["index"])
 			if(!index)
-				return
+				return TRUE
 			if(index > LOADOUT_MAX_SLOTS)
-				return
+				return TRUE
 			pref.set_character_data(CHARACTER_DATA_LOADOUT_SLOT, index)
 			var/list/loadout_slot = current_loadout_slot(pref)
 			push_loadout_data()
 			return TRUE
 		if("slotName")
-			#warn impl
-	#warn impl
+			var/name = params["name"]
+			if(!name)
+				return TRUE
+			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
+			loadout = loadout.Copy()
+			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
+			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			slot = slot?.Copy()
+			slot?[LOADOUT_SLOTDATA_NAME] = name
+			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
+			push_loadout_data()
+			return TRUE
 
 /datum/category_item/player_setup_item/loadout/proc/current_loadout_slot(datum/preferences/prefs)
 	var/list/all_slots = prefs.get_character_data(CHARACTER_DATA_LOADOUT)
