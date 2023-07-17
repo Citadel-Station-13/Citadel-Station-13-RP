@@ -13,6 +13,10 @@
 		return
 
 	if(!can_action())
+    return
+
+	// we can't close up if already inside our shell
+	if(src.loc == shell)
 		return
 
 	last_special = world.time + 20
@@ -25,7 +29,6 @@
 	var/obj/item/holder/H = loc
 	if(istype(H))
 		H.forceMove(get_turf(src))
-		forceMove(get_turf(src))
 
 	// Move us into the shell and move the shell to the ground.
 	transform_component.put_in_object()
