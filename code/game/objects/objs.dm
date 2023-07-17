@@ -12,9 +12,36 @@
 	/// ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
 	var/set_obj_flags
 
+	//? Access - see [modules/jobs/access.dm]
+	/// If set, all of these accesses are needed to access this object.
+	var/list/req_access
+	/// If set, at least one of these accesses are needed to access this object.
+	var/list/req_one_access
+
+	//? Economy
+	/// economic category for objects
+	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
+
+	//? Materials
+	/// static materials in us
+	/// material id = amount
+	var/list/materials
+	/// material parts - lazy list; lets us track what we're made of.
+	/// key = cost in cm3
+	var/list/material_parts
+	/// material parts on spawn
+	/// key = material id
+	var/list/material_defaults
+
+	//? Sounds
+	/// volume when breaking out using resist process
+	var/breakout_sound = 'sound/effects/grillehit.ogg'
+	/// volume when breaking out using resist process
+	var/breakout_volume = 100
+
 	//? misc / legacy
-	//Used to store information about the contents of the object.
-	var/list/matter
+	/// Set when a player renames a renamable object.
+	var/renamed_by_player = FALSE
 	var/w_class // Size of the object.
 	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
 	var/sharp = 0		// whether this object cuts
@@ -31,30 +58,17 @@
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
 	var/register_as_dangerous_object = FALSE // Should this tell its turf that it is dangerous automatically?
 
-	//? Access - see [modules/jobs/access.dm]
-	/// If set, all of these accesses are needed to access this object.
-	var/list/req_access
-	/// If set, at least one of these accesses are needed to access this object.
-	var/list/req_one_access
-
-	//? Economy
-	/// economic category for objects
-	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
-
-	//? Sounds
-	/// volume when breaking out using resist process
-	var/breakout_sound = 'sound/effects/grillehit.ogg'
-	/// volume when breaking out using resist process
-	var/breakout_volume = 100
-
-	//? misc / legacy
-	/// Set when a player renames a renamable object.
-	var/renamed_by_player = FALSE
-
 /obj/Initialize(mapload)
 	if(register_as_dangerous_object)
 		register_dangerous_to_step()
 	. = ..()
+	if(!isnull(materials))
+		materials = typelist(NAMEOF(src, materials), materials)
+	if(!isnull(material_parts))
+		material_parts = typelist(NAMEOF(src, material_parts), material_parts)
+	if(!isnull(material_defaults))
+		material_defaults = typelist(NAMEOF(src, material_defaults), material_defaults)
+		init_materials()
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
 		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]
@@ -201,16 +215,16 @@
 
 /obj/examine(mob/user, dist)
 	. = ..()
-	if(matter)
-		if(!matter.len)
+	if(materials)
+		if(!materials.len)
 			return
 		var/materials_list
 		var/i = 1
-		while(i<matter.len)
-			materials_list += lowertext(matter[i])
+		while(i<materials.len)
+			materials_list += lowertext(materials[i])
 			materials_list += ", "
 			i++
-		materials_list += matter[i]
+		materials_list += materials[i]
 		. += "<u>It is made out of [materials_list]</u>."
 	return
 
@@ -294,3 +308,27 @@
 	var/shake_dir = pick(-1, 1)
 	animate(src, transform=turn(matrix(), 8*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
+
+//? materials
+
+/obj/get_materials()
+	. = materials.Copy()
+
+/**
+ * initialize materials
+ */
+/obj/proc/init_materials()
+	if(!isnull(material_defaults))
+		set_material_parts(material_defaults)
+		for(var/key in material_defaults)
+			var/mat = material_defaults[key]
+			var/amt = material_parts[key]
+			materials[mat] += amt
+
+/**
+ * sets our material parts to a list by key / value
+ * this does not update [materials], you have to do that manually
+ * this is usually done in init using init_materials
+ */
+/obj/proc/set_material_parts(list/parts)
+	return

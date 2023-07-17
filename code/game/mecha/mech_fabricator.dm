@@ -35,7 +35,7 @@
 	///Coefficient for the efficiency of material usage in item building. Based on the installed parts.
 	var/component_coeff = 1
 
-	var/list/materials = list(
+	var/list/stored_materials = list(
 		MAT_STEEL = 0,
 		MAT_GLASS = 0,
 		MAT_PLASTIC = 0,
@@ -59,8 +59,8 @@
 	var/res_max_amount = 200000
 
 	var/datum/research/files
-	var/valid_buildtype = MECHFAB
-	///A list of categories that valid MECHFAB design datums will broadly categorise themselves under.
+	var/valid_buildtype = LATHE_TYPE_MECHA
+	///A list of categories that valid LATHE_TYPE_MECHA design datums will broadly categorise themselves under.
 	var/list/part_sets = list(
 		"Cyborg",
 		"Ripley",
@@ -99,10 +99,10 @@
 	// todo: WHY ARE YOU dOING ThiS JUST DONT STORE THE MATERIAL
 	for(var/datum/material/M as anything in SSmaterials.all_materials())
 		var/Name = M.name
-		if(Name in materials)
+		if(Name in stored_materials)
 			continue
 
-		materials[Name] = 0
+		stored_materials[Name] = 0
 
 	files = new /datum/research(src) //Setup the research data holder.
 
@@ -122,7 +122,7 @@
 		add_overlay("[base_icon_state]-active")
 
 /obj/machinery/mecha_part_fabricator/dismantle()
-	for(var/f in materials)
+	for(var/f in stored_materials)
 		eject_materials(f, -1)
 	..()
 
@@ -204,12 +204,12 @@
 	var/list/part = list(
 		"name" = D.name,
 		"desc" = initial(built_item.desc),
-		"printTime" = get_construction_time_w_coeff(initial(D.time))/10,
+		"printTime" = get_construction_time_w_coeff(initial(D.work)),
 		"cost" = cost,
 		"id" = D.id,
 		"subCategory" = sub_category,
 		"categoryOverride" = category_override,
-		"searchMeta" = D.search_metadata
+		"searchMeta" = "", // temporarily removed
 	)
 
 	return part
@@ -224,8 +224,8 @@
 /obj/machinery/mecha_part_fabricator/proc/output_available_resources()
 	var/list/material_data = list()
 
-	for(var/mat_id in materials)
-		var/amount = materials[mat_id]
+	for(var/mat_id in stored_materials)
+		var/amount = stored_materials[mat_id]
 		var/list/material_info = list(
 			"name" = mat_id,
 			"amount" = amount,
@@ -279,12 +279,12 @@
   * * D - Design datum to calculate the modified resource cost of.
   */
 /obj/machinery/mecha_part_fabricator/proc/check_resources(datum/design/D)
-	if(length(D.chemicals)) // No reagents storage - no reagent designs.
+	if(length(D.reagents)) // No reagents storage - no reagent designs.
 		return FALSE
 	. = TRUE
 	var/list/coeff_required = get_resources_w_coeff(D)
 	for(var/mat_id in coeff_required)
-		if(materials[mat_id] < coeff_required[mat_id])
+		if(stored_materials[mat_id] < coeff_required[mat_id])
 			return FALSE
 
 /**
@@ -324,10 +324,10 @@
 
 	build_materials = get_resources_w_coeff(D)
 	for(var/mat_id in build_materials)
-		materials[mat_id] -= build_materials[mat_id]
+		stored_materials[mat_id] -= build_materials[mat_id]
 
 	being_built = D
-	build_finish = world.time + get_construction_time_w_coeff(initial(D.time))
+	build_finish = world.time + get_construction_time_w_coeff(initial(D.work))
 	build_start = world.time
 	desc = "It's building \a [D.name]."
 
@@ -370,7 +370,7 @@
   * * D - Design datum to attempt to dispense.
   */
 /obj/machinery/mecha_part_fabricator/proc/dispense_built_part(datum/design/D)
-	var/obj/item/I = D.Fabricate(src, src)
+	var/obj/item/I = D.legacy_print(src, src)
 	// I.material_flags |= MATERIAL_NO_EFFECTS //Find a better way to do this.
 	// I.set_custom_materials(build_materials)
 
@@ -396,7 +396,7 @@
   */
 /obj/machinery/mecha_part_fabricator/proc/add_part_set_to_queue(list/part_list)
 	for(var/datum/design/D in files.known_designs)
-		if((D.build_type & valid_buildtype) && (D.id in part_list))
+		if((D.lathe_type & valid_buildtype) && (D.id in part_list))
 			add_to_queue(D)
 
 /**
@@ -479,7 +479,7 @@
 
 /obj/machinery/mecha_part_fabricator/ui_assets(mob/user)
 	return list(
-		get_asset_datum(/datum/asset/spritesheet/sheetmaterials)
+		get_asset_datum(/datum/asset/spritesheet/materials)
 	)
 
 /obj/machinery/mecha_part_fabricator/attack_hand(mob/user, list/params)
@@ -505,7 +505,7 @@
 		final_sets += part_set
 
 	for(var/datum/design/D in files.known_designs)
-		if((D.build_type & valid_buildtype) && D.id != "id") // bugfix for weird null entries
+		if((D.lathe_type & valid_buildtype) && D.id != "id") // bugfix for weird null entries
 			// This is for us.
 			var/list/part = output_part_info(D, TRUE)
 
@@ -541,7 +541,7 @@
 		var/list/part = list(
 			"name" = being_built.name,
 			"duration" = build_finish - world.time,
-			"printTime" = get_construction_time_w_coeff(initial(being_built.time))
+			"printTime" = get_construction_time_w_coeff(initial(being_built.work))
 		)
 		data["buildingPart"] = part
 	else
@@ -581,7 +581,7 @@
 			// Add a specific part to queue
 			var/T = params["id"]
 			for(var/datum/design/D in files.known_designs)
-				if((D.build_type & valid_buildtype) && (D.id == T))
+				if((D.lathe_type & valid_buildtype) && (D.id == T))
 					add_to_queue(D)
 					break
 			return
@@ -615,7 +615,7 @@
 			var/id = params["id"]
 			var/datum/design/D = null
 			for(var/datum/design/D_new in files.known_designs)
-				if((D_new.build_type == valid_buildtype) && (D_new.id == id))
+				if((D_new.lathe_type == valid_buildtype) && (D_new.id == id))
 					D = D_new
 					break
 
@@ -657,22 +657,22 @@
 
 	if(istype(I,/obj/item/stack/material))
 		var/obj/item/stack/material/S = I
-		if(!(S.material.name in materials))
+		if(!(S.material.name in stored_materials))
 			to_chat(user, SPAN_WARNING("The [src] doesn't accept [S.material]!"))
 			return
 
 		var/sname = "[S.name]"
 		var/matname = "[S.material.name]"
 		var/amnt = S.perunit
-		if(materials[S.material.name] + amnt <= res_max_amount)
+		if(stored_materials[S.material.name] + amnt <= res_max_amount)
 			if(S && S.get_amount() >= 1)
 				var/count = 0
 				//This is dumb that it happens here but whatever. I guess it's a TODO then.
 				add_overlay("[initial(icon_state)]-load-[matname]")
 				spawn(10)
 					cut_overlay("[initial(icon_state)]-load-[matname]")
-				while(materials[S.material.name] + amnt <= res_max_amount && S.get_amount() >= 1)
-					materials[S.material.name] += amnt
+				while(stored_materials[S.material.name] + amnt <= res_max_amount && S.get_amount() >= 1)
+					stored_materials[S.material.name] += amnt
 					S.use(1)
 					count++
 				to_chat(user, "You insert [count] [sname] into the fabricator.")
@@ -705,7 +705,7 @@
 /obj/machinery/mecha_part_fabricator/proc/eject_materials(var/material, var/amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 	var/recursive = amount == -1 ? 1 : 0
 	var/matstring = lowertext(material)
-	var/contains = materials[matstring]
+	var/contains = stored_materials[matstring]
 	if(!contains)
 		return
 	var/datum/material/M = get_material_by_name(matstring)
@@ -718,6 +718,6 @@
 	if(S.amount <= 0)
 		qdel(S)
 		return
-	materials[matstring] -= ejected * S.perunit
+	stored_materials[matstring] -= ejected * S.perunit
 	if(recursive && contains >= S.perunit)
 		eject_materials(matstring, -1)

@@ -12178,7 +12178,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/space)
 "jLd" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/hallway)
 "jLf" = (
@@ -23618,9 +23618,7 @@
 /turf/simulated/floor/plating,
 /area/space)
 "sCZ" = (
-/obj/machinery/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /obj/machinery/requests_console{
 	department = "Robotics";
 	departmentType = 2;

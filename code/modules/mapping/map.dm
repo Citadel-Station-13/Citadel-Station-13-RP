@@ -349,9 +349,9 @@
 	// Traditional behavior
 	else
 		if (long_range && (srcz in map_levels))
-			return map_levels
+			return map_levels.Copy()
 		else if (srcz in station_levels)
-			return list(srcz)
+			return station_levels.Copy()
 		else
 			return list(srcz)
 

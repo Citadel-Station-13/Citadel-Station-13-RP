@@ -13135,10 +13135,6 @@
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 8
 	},
-/obj/machinery/computer/id_restorer{
-	dir = 4;
-	pixel_x = -30
-	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "axc" = (
@@ -38377,9 +38373,7 @@
 	layer = 3.3;
 	pixel_y = 26
 	},
-/obj/machinery/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "nnK" = (
@@ -38486,10 +38480,7 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 10
 	},
-/obj/machinery/autolathe{
-	dir = 1;
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "nyy" = (

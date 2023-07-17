@@ -7397,8 +7397,7 @@
 /obj/item/stock_parts/matter_bin,
 /obj/item/stock_parts/manipulator,
 /obj/item/stock_parts/console_screen,
-/obj/item/circuitboard/autolathe,
-/obj/item/circuitboard/partslathe,
+/obj/item/circuitboard/machine/lathe/autolathe,
 /turf/simulated/floor,
 /area/storage/tech)
 "Bm" = (
@@ -10838,6 +10837,12 @@
 /obj/item/storage/bag/circuits/basic,
 /turf/simulated/floor,
 /area/storage/tech)
+"Nq" = (
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "Nr" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -10936,7 +10941,7 @@
 	dir = 10
 	},
 /obj/structure/cable/green,
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "NG" = (
@@ -13612,7 +13617,7 @@
 	pixel_x = 1;
 	pixel_y = 3
 	},
-/obj/item/circuitboard/autolathe,
+/obj/item/circuitboard/machine/lathe/autolathe,
 /obj/item/circuitboard/scan_consolenew{
 	pixel_x = 6;
 	pixel_y = -3
@@ -29055,7 +29060,7 @@ qw
 em
 em
 em
-Yb
+Nq
 qb
 dv
 ID
