@@ -165,6 +165,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	desc = "A piece of arcadey carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-carpet-arcade"
 
+/obj/item/stack/tile/carpet/patterned
+	no_variants = TRUE
+
 /obj/item/stack/tile/carpet/patterned/brown
 	name = "brown patterned carpet"
 	singular_name = "brown patterned carpet"
