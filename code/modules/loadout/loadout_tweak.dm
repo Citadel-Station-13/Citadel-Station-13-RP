@@ -1,3 +1,8 @@
+/**
+ * arbitrary loadout tweaks
+ *
+ * stored data should always be a string.
+ */
 /datum/loadout_tweak
 	/// unique id; defaults to last part of name
 	var/id

@@ -29,7 +29,7 @@ export interface LoadoutSelected {
   rename: string | null;
   redesc: string | null;
   recolor: string | null | ByondColorMatrixRGBC;
-  tweaks: Record<string, any>;
+  tweaks: Record<string, any> | null;
   tweakTexts: Record<string, any>;
 }
 

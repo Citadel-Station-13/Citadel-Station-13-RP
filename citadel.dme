@@ -373,6 +373,7 @@
 #include "code\__HELPERS\rendering\positioning.dm"
 #include "code\__HELPERS\rendering\screen_loc.dm"
 #include "code\__HELPERS\rendering\view.dm"
+#include "code\__HELPERS\sanitize\color.dm"
 #include "code\__HELPERS\sanitize\datatypes.dm"
 #include "code\__HELPERS\sanitize\list.dm"
 #include "code\__HELPERS\sorts\__main.dm"

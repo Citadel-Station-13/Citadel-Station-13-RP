@@ -125,12 +125,37 @@
 		var/list/transformed = our_entries[id]
 		var/list/tweak_texts = list()
 		for(var/datum/loadout_tweak/tweak as anything in entry.tweaks)
-			tweak_texts[id] = tweak.get_contents(our_entries[id][LOADOUT_ENTRYDATA_TWEAKS]?[tweak.id])
+			tweak_texts[id] = tweak.get_contents(our_entries[id][LOADOUT_ENTRYDATA_TWEAKS]?[tweak.id] || tweak.get_default())
 		transformed["tweakTexts"] = tweak_texts
 		entries[++entries.len] = transformed
 
 /datum/category_item/player_setup_item/loadout/proc/tgui_loadout_data()
-	#warn impl
+	. = list()
+	var/list/slots = list()
+	var/list/slot = list()
+	var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
+	var/list/all_slots = pref.get_character_data(CHARACTER_DATA_LOADOUT)
+	for(var/i in 1 to LOADOUT_MAX_SLOTS)
+		var/list/the_slot = length(all_slots) >= i? all_slots[i] : null
+		slots[++slots.len] = list(
+			"name" = the_slot?[LOADOUT_SLOTDATA_NAME] || "Slot [i]"
+		)
+	var/list/the_slot = length(all_slots) >= slot_index? all_slots[slot_index] : list()
+	var/list/entries = the_slot[LOADOUT_SLOTDATA_ENTRIES] || list()
+	var/cost_used = 0
+	var/cost_max = max_loadout_cost()
+	for(var/id in entries)
+		var/datum/loadout_entry/entry = global.gear_datums[id]
+		if(isnull(entry))
+			entries -= id
+			continue
+		cost_used += entry.cost
+	slot["entries"] = entries
+	slot["costUsed"] = cost_used
+	slot["costMax"] = cost_max
+	.["slots"] = slots
+	.["slot"] = slot
+	.["slotIndex"] = slot_index
 
 /datum/category_item/player_setup_item/loadout/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -148,45 +173,139 @@
 			loadout = loadout.Copy()
 			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
 			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
-			slot = slot?.Copy()
+			slot = slot?.Copy() || list()
+			loadout[slot_index] = slot
 			var/list/entries = slot[LOADOUT_SLOTDATA_ENTRIES]
 			if(entries[id])
 				entries -= id
 			else
 				entries[id] = list()
+			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
 			push_loadout_data()
 			return TRUE
 		if("rename")
-			#warn impl
+			var/id = params["id"]
+			if(!id)
+				return TRUE
+			var/datum/loadout_entry/entry = global.gear_datums[id]
+			if(isnull(entry))
+				return TRUE
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
 			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
 			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
-			slot = slot?.Copy()
+			slot = slot?.Copy() || list()
+			loadout[slot_index] = slot
+			var/list/entries = slot[LOADOUT_SLOTDATA_ENTRIES]
+			var/list/entry_data = entries[id]
+			if(isnull(entry_data))
+				return TRUE
+			entry_data = entry_data.Copy()
+			entries[id] = entry_data
+			if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_NAME))
+				return TRUE
+			var/name = sanitize(params["name"], MAX_NAME_LEN)
+			if(!name)
+				return TRUE
+			entry_data[LOADOUT_ENTRYDATA_RENAME] = name
+			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
+			push_loadout_data()
+			return TRUE
 		if("redesc")
-			#warn impl
+			var/id = params["id"]
+			if(!id)
+				return TRUE
+			var/datum/loadout_entry/entry = global.gear_datums[id]
+			if(isnull(entry))
+				return TRUE
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
 			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
 			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
-			slot = slot?.Copy()
+			slot = slot?.Copy() || list()
+			loadout[slot_index] = slot
+			var/list/entries = slot[LOADOUT_SLOTDATA_ENTRIES]
+			var/list/entry_data = entries[id]
+			if(isnull(entry_data))
+				return TRUE
+			entry_data = entry_data.Copy()
+			entries[id] = entry_data
+			if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_DESC))
+				return TRUE
+			var/desc = sanitize(params["desc"], MAX_MESSAGE_LEN)
+			if(!desc)
+				return TRUE
+			entry_data[LOADOUT_ENTRYDATA_RENAME] = desc
+			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
+			push_loadout_data()
+			return TRUE
 		if("recolor")
-			#warn impl
+			var/id = params["id"]
+			if(!id)
+				return TRUE
+			var/datum/loadout_entry/entry = global.gear_datums[id]
+			if(isnull(entry))
+				return TRUE
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
 			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
 			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
-			slot = slot?.Copy()
+			slot = slot?.Copy() || list()
+			loadout[slot_index] = slot
+			var/list/entries = slot[LOADOUT_SLOTDATA_ENTRIES]
+			var/list/entry_data = entries[id]
+			if(isnull(entry_data))
+				return TRUE
+			entry_data = entry_data.Copy()
+			entries[id] = entry_data
+			if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_COLOR))
+				return TRUE
+			var/color = sanitize_probably_a_byond_color(params["color"], null)
+			if(!color)
+				return TRUE
+			entry_data[LOADOUT_ENTRYDATA_RENAME] = color
+			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
+			push_loadout_data()
+			return TRUE
 		if("tweak")
-			#warn impl
+			var/id = params["id"]
+			if(!id)
+				return TRUE
+			var/datum/loadout_entry/entry = global.gear_datums[id]
+			if(isnull(entry))
+				return TRUE
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
 			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
 			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
-			slot = slot?.Copy()
+			slot = slot?.Copy() || list()
+			loadout[slot_index] = slot
+			var/list/entries = slot[LOADOUT_SLOTDATA_ENTRIES]
+			var/list/entry_data = entries[id]
+			if(isnull(entry_data))
+				return TRUE
+			entry_data = entry_data.Copy()
+			entries[id] = entry_data
+			var/list/tweak_data = entry_data[LOADOUT_ENTRYDATA_TWEAKS] || list()
+			tweak_data = deep_copy_list(tweak_data)
+			entry_data[LOADOUT_ENTRYDATA_TWEAKS] = tweak_data
+			var/tweak_id = params["tweak_id"]
+			for(var/datum/loadout_tweak/tweak as anything in entry.tweaks)
+				if(tweak.id != tweak_id)
+					continue
+				tweak_data[tweak.id] = tweak.get_metadata(usr, tweak_data[tweak.id])
+				pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
+				push_loadout_data()
+			return TRUE
 		if("clear")
-			var/list/loadout_slot = current_loadout_slot(pref)
-			loadout_slot.Cut()
+			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
+			loadout = loadout.Copy()
+			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
+			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			slot = slot.Copy()
+			loadout[slot_index] = slot
+			slot[LOADOUT_SLOTDATA_ENTRIES] = list()
+			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
 			push_loadout_data()
 			return TRUE
 		if("slot")
