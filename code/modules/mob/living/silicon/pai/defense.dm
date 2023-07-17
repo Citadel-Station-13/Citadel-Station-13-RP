@@ -16,6 +16,29 @@
 		else if(istype(W, /obj/item/card/id) && idaccessible == 0)
 			to_chat(user, "<span class='notice'>[src] is not accepting access modifcations at this time.</span>")
 			return
+	else if(istype(W, /obj/item/clothing))
+		var/obj/item/clothing/C = W
+		if(C.slot_flags & SLOT_HEAD)
+			base_uploaded_path = /obj/item/clothing/head
+		if(C.slot_flags & SLOT_ICLOTHING)
+			base_uploaded_path = /obj/item/clothing/under
+		if(C.slot_flags & SLOT_EYES)
+			base_uploaded_path = /obj/item/clothing/glasses
+		if(C.slot_flags & SLOT_GLOVES)
+			base_uploaded_path = /obj/item/clothing/gloves
+		if(C.slot_flags & SLOT_MASK)
+			base_uploaded_path = /obj/item/clothing/mask
+		if(C.slot_flags & SLOT_FEET)
+			base_uploaded_path = /obj/item/clothing/shoes
+		if(C.slot_flags & SLOT_OCLOTHING)
+			base_uploaded_path = /obj/item/clothing/suit
+		last_uploaded_path = W.type
+
+		var/obj/item/clothing/under/U = C
+		if(istype(U))
+			uploaded_snowflake_worn_state = U.snowflake_worn_state
+
+		return
 	else
 		. = ..()
 

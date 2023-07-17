@@ -428,7 +428,7 @@
 		if(inserted)
 			investigate_log("[key_name(user)] ejected [ref_name_path(inserted)]", INVESTIGATE_REAGENTS)
 			user.visible_action_feedback(SPAN_NOTICE("[user] quickly swaps [src]'s [inserted] for [I]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
-			user.put_in_hand_or_drop(inserted)
+			user.put_in_hands_or_drop(inserted)
 		else
 			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
 		investigate_log("[key_name(user)] inserted [ref_name_path(I)]", INVESTIGATE_REAGENTS)
