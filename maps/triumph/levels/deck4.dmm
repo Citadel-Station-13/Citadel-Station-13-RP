@@ -29274,6 +29274,10 @@
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
+"vbT" = (
+/obj/landmark/spawnpoint/overflow/station,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/primary/aft)
 "vbU" = (
 /obj/machinery/power/smes/buildable{
 	charge = 5000;
@@ -40410,7 +40414,7 @@ mSI
 psD
 psD
 psD
-psD
+vbT
 opV
 psD
 byi
