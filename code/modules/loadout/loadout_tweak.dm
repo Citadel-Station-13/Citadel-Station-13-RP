@@ -25,6 +25,38 @@
 	return path
 
 /*
+* Color adjustment
+*/
+
+/datum/loadout_tweak/color
+	var/list/valid_colors
+
+/datum/loadout_tweak/color/New(var/list/valid_colors)
+	src.valid_colors = valid_colors
+	..()
+
+/datum/loadout_tweak/color/get_contents(var/metadata)
+	return "Color: <font color='[metadata]'>&#9899;</font>"
+
+/datum/loadout_tweak/color/get_default()
+	return valid_colors ? valid_colors[1] : COLOR_GRAY
+
+/datum/loadout_tweak/color/get_metadata(var/user, var/metadata, var/title = "Character Preference")
+	if(valid_colors)
+		return input(user, "Choose a color.", title, metadata) as null|anything in valid_colors
+	return input(user, "Choose a color.", title, metadata) as color|null
+
+/datum/loadout_tweak/color/tweak_item(var/obj/item/I, var/metadata)
+	if(valid_colors && !(metadata in valid_colors))
+		return
+	if(!metadata || (metadata == "#ffffff"))
+		return
+	if(istype(I))
+		I.add_atom_colour(metadata, FIXED_COLOUR_PRIORITY)
+	else
+		I.color = metadata		// fuck off underwear
+
+/*
 * Path adjustment
 */
 

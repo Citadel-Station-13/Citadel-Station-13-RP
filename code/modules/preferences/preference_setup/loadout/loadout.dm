@@ -96,7 +96,7 @@
 		if(current_cost + entry.cost > max_cost)
 			if(current_cost <= max_cost)
 				// only when going over.
-				erorrs?.Add("Insufficient loadout points for all items selected.")
+				errors?.Add("Insufficient loadout points for all items selected.")
 			. = FALSE
 		current_cost += entry.cost
 
@@ -123,11 +123,11 @@
 			continue
 		cost_used += entry.cost
 		var/list/transformed = our_entries[id]
-		entries[++entries.len] = transformed
+		var/list/tweak_texts = list()
 		for(var/datum/loadout_tweak/tweak as anything in entry.tweaks)
 			tweak_texts[id] = tweak.get_contents(our_entries[id][LOADOUT_ENTRYDATA_TWEAKS]?[tweak.id])
-		var/list/tweak_texts = list()
 		transformed["tweakTexts"] = tweak_texts
+		entries[++entries.len] = transformed
 
 /datum/category_item/player_setup_item/loadout/proc/tgui_loadout_data()
 	#warn impl
