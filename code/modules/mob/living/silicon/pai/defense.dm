@@ -44,6 +44,7 @@
 			uploaded_color = W.get_atom_colour()
 
 			to_chat(user, "<span class='notice'>You successfully upload the clothing item to [src].</span>")
+			to_chat(src, "<span class='notice'>[user] has successfully uploaded the clothing item [W.name] to you.</span>")
 
 		return
 	else
