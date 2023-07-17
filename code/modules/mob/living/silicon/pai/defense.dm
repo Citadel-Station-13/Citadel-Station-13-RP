@@ -20,22 +20,22 @@
 		var/obj/item/clothing/C = W
 		var/new_base_uploaded_path
 		if(C.slot_flags & SLOT_HEAD)
-			new_uploaded_path = /obj/item/clothing/head
+			new_base_uploaded_path = /obj/item/clothing/head
 		if(C.slot_flags & SLOT_ICLOTHING)
-			new_uploaded_path = /obj/item/clothing/under
+			new_base_uploaded_path = /obj/item/clothing/under
 		if(C.slot_flags & SLOT_EYES)
-			new_uploaded_path = /obj/item/clothing/glasses
+			new_base_uploaded_path = /obj/item/clothing/glasses
 		if(C.slot_flags & SLOT_GLOVES)
-			new_uploaded_path = /obj/item/clothing/gloves
+			new_base_uploaded_path = /obj/item/clothing/gloves
 		if(C.slot_flags & SLOT_MASK)
-			new_uploaded_path = /obj/item/clothing/mask
+			new_base_uploaded_path = /obj/item/clothing/mask
 		if(C.slot_flags & SLOT_FEET)
-			new_uploaded_path = /obj/item/clothing/shoes
+			new_base_uploaded_path = /obj/item/clothing/shoes
 		if(C.slot_flags & SLOT_OCLOTHING)
-			new_uploaded_path = /obj/item/clothing/suit
+			new_base_uploaded_path = /obj/item/clothing/suit
 
 		if(new_base_uploaded_path != null)
-			base_uploaded_path = new_uploaded_path
+			base_uploaded_path = new_base_uploaded_path
 			last_uploaded_path = W.type
 
 			var/obj/item/clothing/under/U = C
