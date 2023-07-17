@@ -170,7 +170,7 @@
 		to_chat(user, SPAN_WARNING("[src] is still on cooldown! ([round((world.time - last_used) * 0.1, 0.1)] / [round(cooldown * 0.1, 0.1)])"))
 		return FALSE
 	if(!available_check())
-		to_chat(user, SPAN_WARNING("You can't do that right now!"))
+		to_chat(user, SPAN_WARNING(unavailable_reason()))
 		return FALSE
 	return TRUE
 
@@ -259,6 +259,8 @@
 		return FALSE
 	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(!owner.hands_full()))
 		return FALSE
+	if((ability_check_flags & ABILITY_CHECK_RESTING) && !IS_PRONE(owner))
+		return FALSE
 	if(!CHECK_MOBILITY(owner, mobility_check_flags))
 		return FALSE
 	return TRUE
@@ -277,6 +279,8 @@
 		return "You cannot do that while on the ground."
 	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(!owner.hands_full()))
 		return "You cannot do that without a free hand."
+	if((ability_check_flags & ABILITY_CHECK_RESTING) && !owner.lying)
+		return "You must be lying down to do that."
 	if(!CHECK_MOBILITY(owner, mobility_check_flags))
 		return "You cannot do that while incapacitated."
 
