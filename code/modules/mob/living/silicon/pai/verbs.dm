@@ -130,6 +130,7 @@
 			change_shell_by_path(possible_clothing_options[clothing_entry])
 		else
 			if(last_uploaded_path && can_change_shell())
+				last_special = world.time + 20
 				var/state = initial(last_uploaded_path.icon_state)
 				var/icon = initial(last_uploaded_path.icon)
 				var/obj/item/clothing/new_clothing = new base_uploaded_path
