@@ -180,7 +180,11 @@
 		// todo: 'friendly name' so limbs can stay concealed of their true names while under clothing?
 		inject_message = SPAN_WARNING("[user] starts to intrusively align [src] up against [target]'s [limb]!")
 	if(!silent)
-		user.visible_action_feedback(inject_message, target, MESSAGE_RANGE_COMBAT_SUPPRESSED)
+		user.visible_action_feedback(
+			target = target,
+			visible_soft = inject_message,
+			soft_range = MESSAGE_RANGE_COMBAT_SUPPRESSED,
+		)
 	if(!do_after(user, delay, target, mobility_flags = MOBILITY_CAN_USE))
 		return FALSE
 	if(!loaded?.reagents?.total_volume)

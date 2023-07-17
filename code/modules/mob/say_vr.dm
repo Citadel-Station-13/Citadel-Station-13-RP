@@ -58,6 +58,10 @@
 			spawn(0)
 				O.see_emote(src, message, 2)
 
+		var/list/other_viewers = get_hearers_in_view(source = src)
+		for(var/mob/M in other_viewers - vis_mobs)
+			M.show_message(SPAN_SMALL("[src] does something [pick("subtly", "discreetly", "hidden", "obscured")]."), SAYCODE_TYPE_VISIBLE)
+
 /mob/proc/emote_vr(var/act, var/type, var/message) //This would normally go in say.dm
 	if(act == "me")
 		return custom_emote_vr(type, message)
@@ -110,6 +114,10 @@
 		for(var/visobj in vis_objs)
 			var/obj/O = visobj
 			O.see_emote(src, message, 2)
+
+		var/list/other_viewers = get_hearers_in_view(source = src)
+		for(var/mob/M in (other_viewers - vis_mobs) | GLOB.observer_list)
+			M.show_message(SPAN_SMALL("[src] does something [pick("subtly", "discreetly", "hidden", "obscured")]."), SAYCODE_TYPE_VISIBLE)
 
 /////// END
 

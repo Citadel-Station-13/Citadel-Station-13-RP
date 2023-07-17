@@ -951,6 +951,7 @@
 #include "code\game\area\Space Station 13 areas.dm"
 #include "code\game\area\ss13_deprecated_areas.dm"
 #include "code\game\area\Tether_areas.dm"
+#include "code\game\atoms\action_feedback.dm"
 #include "code\game\atoms\appearance.dm"
 #include "code\game\atoms\atom.dm"
 #include "code\game\atoms\buckling.dm"
