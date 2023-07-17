@@ -7,7 +7,7 @@
 	if(!can_action())
 		return
 	// to fold out we need to be in the card
-	if(src.loc != card)
+	if(src.loc != shell)
 		return
 
 	open_up()
@@ -22,7 +22,7 @@
 	if(!can_action())
 		return
 	// to fold up we need to not be in the card already
-	if(src.loc == card)
+	if(src.loc == shell)
 		return
 
 	close_up()
@@ -66,7 +66,7 @@
 	set category = "IC"
 
 	// Pass lying down or getting up to our pet human, if we're in a hardsuit.
-	if(istype(src.loc,/obj/item/paicard))
+	if(src.loc == shell)
 		set_resting(FALSE)
 		var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
 		if(istype(hardsuit))
