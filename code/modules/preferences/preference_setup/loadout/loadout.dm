@@ -87,6 +87,31 @@
 	. = ..()
 	#warn impl
 
+/datum/category_item/player_setup_item/loadout/proc/tgui_loadout_selected(list/loadout_slot)
+	. = list()
+	.["name"] = loadout_slot[LOADOUT_SLOTDATA_NAME]
+	var/cost_used = 0
+	var/cost_max = max_loadout_cost()
+	var/list/our_entries = loadout_slot[LOADOUT_SLOTDATA_ENTRIES]
+	var/list/entries = list()
+	.["entries"] = entries
+	.["costUsed"] = cost_used
+	.["costMax"] = cost_max
+	for(var/id in our_entries)
+		var/datum/loadout_entry/entry = global.gear_datums[id]
+		if(isnull(entry))
+			our_entries -= id
+			continue
+		cost_used += entry.cost
+		#warn impl for LoadoutSelected
+		entries[++entries.len] = list(
+			"rename" = "test,
+			"redesc" = "test",
+			"recolor" = "test",
+			"tweaks" = list(),
+			"tweakTexts" = list(),
+		)
+
 /datum/category_item/player_setup_item/loadout/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)

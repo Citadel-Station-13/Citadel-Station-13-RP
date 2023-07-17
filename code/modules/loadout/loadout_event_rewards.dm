@@ -52,7 +52,7 @@
 	path = /obj/item/clothing/accessory/medal/nka_miaphus
 	ckeywhitelist = list("trubus", "alphamach", "monara", "pixelthekitty", "biteroankles", "jacksontmurphy", "slybrowngote", "r0adic", "mazian")
 
-/datum/gear/event_reward/tacskirt
+/datum/loadout_entry/event_reward/tacskirt
 	name = "Tactical Skirt"
 	path = /obj/item/clothing/under/syndicate/skirt_pleated
 	ckeywhitelist = list("GrapePantaSoda")

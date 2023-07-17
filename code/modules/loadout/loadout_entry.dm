@@ -47,8 +47,6 @@ var/list/gear_datums = list()
 	if(isnull(display_name))
 		display_name = name
 
-#warn nuke the 3 default gear tweaks from orbit
-
 /**
  * remove & regex this to just directly access the `.id` variable when we have id's on every entry.
  */
@@ -66,6 +64,7 @@ var/list/gear_datums = list()
 		"category" = sort_category,,
 		"customize" = loadout_customize_flags,
 		"desc" = description,
+		"tweaks" = tweaks,
 	)
 
 /datum/loadout_entry/proc/instantiate(atom/where, list/entry_data)

@@ -30,6 +30,7 @@ export interface LoadoutSelected {
   redesc: string | null;
   recolor: string | null | ByondColorMatrixRGBC;
   tweaks: Record<string, any>;
+  tweakTexts: Record<string, any>;
 }
 
 export interface FullLoadoutSlot extends PartialLoadoutSlot {
@@ -111,18 +112,14 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
           <Stack>
             <Stack.Item>
               <Tabs vertical>
-                {
-                  props.gearContext.categories.map(
-                    (cat) => (
-                      <Tabs.Tab
-                        key={cat}
-                        selected={cat === loadoutCategory}
-                        onClick={() => setLoadoutCategory(cat)}>
-                        {cat}
-                      </Tabs.Tab>
-                    )
-                  )
-                }
+                {props.gearContext.categories.map((cat) => (
+                  <Tabs.Tab
+                    key={cat}
+                    selected={cat === loadoutCategory}
+                    onClick={() => setLoadoutCategory(cat)}>
+                    {cat}
+                  </Tabs.Tab>
+                ))}
               </Tabs>
             </Stack.Item>
             <Stack.Item grow>
