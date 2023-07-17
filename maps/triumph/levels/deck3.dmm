@@ -4550,6 +4550,10 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
+"dWe" = (
+/obj/landmark/spawnpoint/latejoin/station/cyborg,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/assembly/robotics)
 "dWq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/structure/cable/green{
@@ -26959,6 +26963,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"whU" = (
+/obj/landmark/spawnpoint/job/cyborg,
+/turf/simulated/floor/tiled/techfloor,
+/area/assembly/chargebay)
 "whY" = (
 /obj/machinery/light{
 	dir = 1
@@ -34688,7 +34696,7 @@ ixf
 vGq
 wLK
 vGq
-vGq
+dWe
 wgM
 wor
 fUO
@@ -36105,7 +36113,7 @@ biL
 jgu
 wQJ
 dXc
-jEz
+whU
 rLt
 sGT
 oYT
@@ -36247,7 +36255,7 @@ fJP
 afy
 sGT
 mrJ
-jEz
+whU
 rLt
 sGT
 vQV
