@@ -60,7 +60,7 @@
 
 		var/list/other_viewers = get_hearers_in_view(source = src)
 		for(var/mob/M in other_viewers - vis_mobs)
-			M.show_message(SPAN_SMALL("[src] does something [pick("subtly", "discreetly", "hidden", "obscured")]."), SAYCODE_TYPE_VISIBLE)
+			M.show_message(SPAN_SMALL("<i>[src] does something [pick("subtly", "discreetly", "hidden", "obscured")].</i>"), SAYCODE_TYPE_VISIBLE)
 
 /mob/proc/emote_vr(var/act, var/type, var/message) //This would normally go in say.dm
 	if(act == "me")
@@ -117,7 +117,7 @@
 
 		var/list/other_viewers = get_hearers_in_view(source = src)
 		for(var/mob/M in (other_viewers - vis_mobs) | GLOB.observer_list)
-			M.show_message(SPAN_SMALL("[src] does something [pick("subtly", "discreetly", "hidden", "obscured")]."), SAYCODE_TYPE_VISIBLE)
+			M.show_message(SPAN_SMALL("<i>[src] does something [pick("subtly", "discreetly", "hidden", "obscured")].</i>"), SAYCODE_TYPE_VISIBLE)
 
 /////// END
 
