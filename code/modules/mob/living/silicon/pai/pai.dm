@@ -84,6 +84,7 @@
 	var/obj/item/clothing/last_uploaded_path
 	var/obj/item/clothing/base_uploaded_path
 	var/uploaded_snowflake_worn_state
+	var/uploaded_color
 
 	/// The cable we produce and use when door or camera jacking.
 	var/obj/item/pai_cable/cable
