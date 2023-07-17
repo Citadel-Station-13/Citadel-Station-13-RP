@@ -1,9 +1,7 @@
-var/list/loadout_categories = list()
 var/list/gear_datums = list()
 
-/datum/loadout_category
-	var/category = ""
-	var/list/gear = list()
+/proc/tgui_loadout_context()
+	#warn impl
 
 /datum/loadout_entry
 	abstract_type = /datum/loadout_entry
@@ -95,10 +93,6 @@ var/list/gear_datums = list()
 
 	return spawned
 
-/datum/loadout_category/New(var/cat)
-	category = cat
-	..()
-
 /hook/startup/proc/populate_gear_list()
 
 	// Create a list of gear datums to sort
@@ -128,14 +122,5 @@ var/list/gear_datums = list()
 					break
 			if(!found)
 				continue
-		if(!loadout_categories[G.sort_category])
-			loadout_categories[G.sort_category] = new /datum/loadout_category(G.sort_category)
-		var/datum/loadout_category/LC = loadout_categories[G.sort_category]
-		gear_datums[G.name] = G
-		LC.gear[G.name] = gear_datums[G.name]
 
-	loadout_categories = tim_sort(loadout_categories, /proc/cmp_text_asc)
-	for(var/loadout_category in loadout_categories)
-		var/datum/loadout_category/LC = loadout_categories[loadout_category]
-		LC.gear = tim_sort(LC.gear, /proc/cmp_text_asc)	// DO NOT ADD A ", TRUE" TO THE END OF THIS FUCKING LINE IT'S WHAT WAS CAUSING ALPHABETIZATION TO BREAK
 	return 1

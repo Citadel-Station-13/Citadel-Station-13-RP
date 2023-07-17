@@ -1,81 +1,10 @@
 
 /datum/loadout_entry/accessory
-	name = "Blue Silk Tie"
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 	sort_category = LOADOUT_CATEGORY_ACCESSORIES
 	abstract_type = /datum/loadout_entry/accessory
 	path = /obj/item/clothing/accessory
 	cost = 1
-
-/datum/loadout_entry/accessory/armband
-	name = "Armband Selection"
-	path = /obj/item/clothing/accessory/armband
-
-/datum/loadout_entry/accessory/armband/New()
-	..()
-	var/list/armbands = list()
-	for(var/armband in (typesof(/obj/item/clothing/accessory/armband) - typesof(/obj/item/clothing/accessory/armband/med/color)))
-		var/obj/item/clothing/accessory/armband_type = armband
-		armbands[initial(armband_type.name)] = armband_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(armbands, /proc/cmp_text_asc))
-
-/datum/loadout_entry/accessory/armband/colored
-	name = "Armband - Colorable"
-	path = /obj/item/clothing/accessory/armband/med/color
-
-/datum/loadout_entry/accessory/insignia
-	name = "Insignia Selection"
-	path = /obj/item/clothing/accessory/oricon/department
-
-/datum/loadout_entry/accessory/insignia/New()
-	..()
-	var/insignia = list()
-	insignia["Command - Crew"] = /obj/item/clothing/accessory/oricon/department/command/crew
-	insignia["Command - Crew Short"] = /obj/item/clothing/accessory/oricon/department/command/service
-	insignia["Command - Bands"] = /obj/item/clothing/accessory/oricon/department/command/fleet
-	insignia["Command - Echelons"] = /obj/item/clothing/accessory/oricon/department/command/marine
-	insignia["Blueshield - Crew"] = /obj/item/clothing/accessory/oricon/department/blueshield/crew
-	insignia["Blueshield - Crew Short"] = /obj/item/clothing/accessory/oricon/department/blueshield/service
-	insignia["Blueshield - Bands"] = /obj/item/clothing/accessory/oricon/department/blueshield/fleet
-	insignia["Blueshield - Echelons"] = /obj/item/clothing/accessory/oricon/department/blueshield/marine
-	insignia["Security - Crew"] = /obj/item/clothing/accessory/oricon/department/security/crew
-	insignia["Security - Crew Short"] = /obj/item/clothing/accessory/oricon/department/security/service
-	insignia["Security - Bands"] = /obj/item/clothing/accessory/oricon/department/security/fleet
-	insignia["Security - Echelons"] = /obj/item/clothing/accessory/oricon/department/security/marine
-	insignia["Medical - Crew"] = /obj/item/clothing/accessory/oricon/department/medical/crew
-	insignia["Medical - Crew Short"] = /obj/item/clothing/accessory/oricon/department/medical/service
-	insignia["Medical - Bands"] = /obj/item/clothing/accessory/oricon/department/medical/fleet
-	insignia["Medical - Echelons"] = /obj/item/clothing/accessory/oricon/department/medical/marine
-	insignia["Science - Crew"] = /obj/item/clothing/accessory/oricon/department/research/crew
-	insignia["Science - Crew Short"] = /obj/item/clothing/accessory/oricon/department/research/service
-	insignia["Science - Bands"] = /obj/item/clothing/accessory/oricon/department/research/fleet
-	insignia["Science - Echelons"] = /obj/item/clothing/accessory/oricon/department/research/marine
-	insignia["Engineering - Crew"] = /obj/item/clothing/accessory/oricon/department/engineering/crew
-	insignia["Engineering - Crew Short"] = /obj/item/clothing/accessory/oricon/department/engineering/service
-	insignia["Engineering - Bands"] = /obj/item/clothing/accessory/oricon/department/engineering/fleet
-	insignia["Engineering - Echelons"] = /obj/item/clothing/accessory/oricon/department/engineering/marine
-	insignia["Supply - Crew"] = /obj/item/clothing/accessory/oricon/department/supply/crew
-	insignia["Supply - Crew Short"] = /obj/item/clothing/accessory/oricon/department/supply/service
-	insignia["Supply - Bands"] = /obj/item/clothing/accessory/oricon/department/supply/fleet
-	insignia["Supply - Echelons"] = /obj/item/clothing/accessory/oricon/department/supply/marine
-	insignia["Service - Crew"] = /obj/item/clothing/accessory/oricon/department/service/crew
-	insignia["Service - Crew Short"] = /obj/item/clothing/accessory/oricon/department/service/service
-	insignia["Service - Bands"] = /obj/item/clothing/accessory/oricon/department/service/fleet
-	insignia["Service - Echelons"] = /obj/item/clothing/accessory/oricon/department/service/marine
-	tweaks += new/datum/loadout_tweak/path(insignia)
-
-/datum/loadout_entry/accessory/insigniacolored
-	name = "Insignia - Colorable"
-	path = /obj/item/clothing/accessory/oricon/department/colorable
-
-/datum/loadout_entry/accessory/insigniacolored/New()
-	..()
-	var/insignia = list()
-	insignia["Colorable - Crew"] = /obj/item/clothing/accessory/oricon/department/colorable
-	insignia["Colorable - Crew Short"] = /obj/item/clothing/accessory/oricon/department/colorable/service
-	insignia["Colorable - Bands"] = /obj/item/clothing/accessory/oricon/department/colorable/fleet
-	insignia["Colorable - Echelons"] = /obj/item/clothing/accessory/oricon/department/colorable/marine
-	tweaks += new/datum/loadout_tweak/path(insignia)
 
 /datum/loadout_entry/accessory/wallet
 	name = "Wallet - Orange"
@@ -163,36 +92,6 @@
 	path = /obj/item/clothing/accessory/collar/lifecrystal
 	description = "A smart medical necklace that pings an offsite recovery facility and acts as a beacon, should you die."
 
-/datum/loadout_entry/accessory/brown_drop_pouches
-	name = "Drop Pouches - Brown"
-	path = /obj/item/clothing/accessory/storage/brown_drop_pouches
-	cost = 2
-
-/datum/loadout_entry/accessory/black_drop_pouches
-	name = "Drop Pouches - Black"
-	path = /obj/item/clothing/accessory/storage/black_drop_pouches
-	cost = 2
-
-/datum/loadout_entry/accessory/white_drop_pouches
-	name = "Drop Pouches - White"
-	path = /obj/item/clothing/accessory/storage/white_drop_pouches
-	cost = 2
-
-/datum/loadout_entry/accessory/holster_selection
-	name = "Holster - Selection"
-	path = /obj/item/clothing/accessory/holster
-
-/datum/loadout_entry/accessory/holster_selection/New()
-	..()
-	var/holstertype = list()
-	holstertype["Holster - Shoulder"] = /obj/item/clothing/accessory/holster
-	holstertype["Holster - Armpit"] = /obj/item/clothing/accessory/holster/armpit
-	holstertype["Holster - Waist"] = /obj/item/clothing/accessory/holster/waist
-	holstertype["Holster - Hip"] = /obj/item/clothing/accessory/holster/hip
-	holstertype["Holster - Leg"] = /obj/item/clothing/accessory/holster/leg
-	holstertype["Holster - Machete"] = /obj/item/clothing/accessory/holster/machete
-	tweaks += new/datum/loadout_tweak/path(holstertype)
-
 /datum/loadout_entry/accessory/fannypack
 	name = "Fannypack - Selection"
 	cost = 2
@@ -274,17 +173,6 @@
 	name = "Box of Treats"
 	path = /obj/item/storage/box/treats
 	cost = 2
-/datum/loadout_entry/accessory/halfcape
-	name = "Half Cape"
-	path = /obj/item/clothing/accessory/halfcape
-
-/datum/loadout_entry/accessory/fullcape
-	name = "Full Cape"
-	path = /obj/item/clothing/accessory/fullcape
-
-/datum/loadout_entry/accessory/sash
-	name = "Sash - Colorable"
-	path = /obj/item/clothing/accessory/sash
 
 /datum/loadout_entry/accessory/asym
 	name = "Asymmetric Jacket - Selection"
@@ -301,54 +189,6 @@
 /datum/loadout_entry/accessory/cowledvest
 	name = "Cowled Vest"
 	path = /obj/item/clothing/accessory/cowledvest
-
-/datum/loadout_entry/choker	// A colorable choker
-	name = "Choker"
-	path = /obj/item/clothing/accessory/choker
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = LOADOUT_CATEGORY_ACCESSORIES
-
-/datum/loadout_entry/collar
-	name = "Collar - Silver"
-	path = /obj/item/clothing/accessory/collar/silver
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = LOADOUT_CATEGORY_ACCESSORIES
-
-/datum/loadout_entry/collar/New()
-	..()
-	tweaks = list(gear_tweak_collar_tag)
-
-/datum/loadout_entry/collar/golden
-	name = "Collar - Golden"
-	path = /obj/item/clothing/accessory/collar/gold
-
-/datum/loadout_entry/collar/bell
-	name = "Collar - Bell"
-	path = /obj/item/clothing/accessory/collar/bell
-
-/datum/loadout_entry/collar/shock
-	name = "Collar - Shock"
-	path = /obj/item/clothing/accessory/collar/shock
-
-/datum/loadout_entry/collar/spike
-	name = "Collar - Spike"
-	path = /obj/item/clothing/accessory/collar/spike
-
-/datum/loadout_entry/collar/pink
-	name = "Collar - Pink"
-	path = /obj/item/clothing/accessory/collar/pink
-
-/datum/loadout_entry/collar/holo
-	name = "Collar - Holo"
-	path = /obj/item/clothing/accessory/collar/holo
-
-/datum/loadout_entry/collar/cow
-	name = "Collar - Cowbell"
-	path = /obj/item/clothing/accessory/collar/cowbell
-
-/datum/loadout_entry/collar/holo/indigestible
-	name = "Collar - Holo - Indigestible"
-	path = /obj/item/clothing/accessory/collar/holo/indigestible
 
 /datum/loadout_entry/accessory/webbing
 

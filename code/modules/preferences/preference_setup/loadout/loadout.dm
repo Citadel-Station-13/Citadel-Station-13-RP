@@ -79,13 +79,32 @@
 						// else we just don't care because gear tweaks need to sanitize their own stuff.
 			*/
 
-/datum/category_item/player_setup_item/loadout/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	#warn impl
+/datum/category_item/player_setup_item/loadout/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
+	var/list/slots = sanitize_islist(data)
+	var/slot_index = prefs.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
+	var/list/slot = SAFEINDEXACCESS(slots, slot_index)
+	if(!islist(slot))
+		return TRUE
+	var/max_cost = max_loadout_cost()
+	var/current_cost = 0
+	. = TRUE
+	for(var/id in slot)
+		var/datum/loadout_entry/entry = global.gear_datums[id]
+		if(isnull(entry))
+			errors?.Add("Could not find loadout item [id].")
+			. = FALSE
+		if(current_cost + entry.cost > max_cost)
+			if(current_cost <= max_cost)
+				// only when going over.
+				erorrs?.Add("Insufficient loadout points for all items selected.")
+			. = FALSE
+		current_cost += entry.cost
 
 /datum/category_item/player_setup_item/loadout/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	#warn impl
+	.["gearContext"] = tgui_loadout_context()
+	.["gearData"] = tgui_loadout_data()
+	.["characterName"] = pref.real_name
 
 /datum/category_item/player_setup_item/loadout/proc/tgui_loadout_selected(list/loadout_slot)
 	. = list()
@@ -103,14 +122,15 @@
 			our_entries -= id
 			continue
 		cost_used += entry.cost
-		#warn impl for LoadoutSelected
-		entries[++entries.len] = list(
-			"rename" = "test,
-			"redesc" = "test",
-			"recolor" = "test",
-			"tweaks" = list(),
-			"tweakTexts" = list(),
-		)
+		var/list/transformed = our_entries[id]
+		entries[++entries.len] = transformed
+		for(var/datum/loadout_tweak/tweak as anything in entry.tweaks)
+			tweak_texts[id] = tweak.get_contents(our_entries[id][LOADOUT_ENTRYDATA_TWEAKS]?[tweak.id])
+		var/list/tweak_texts = list()
+		transformed["tweakTexts"] = tweak_texts
+
+/datum/category_item/player_setup_item/loadout/proc/tgui_loadout_data()
+	#warn impl
 
 /datum/category_item/player_setup_item/loadout/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -152,84 +172,23 @@
 	return all_slots["[index_slot]"] || (all_slots["[index_slot]"] = list())
 
 /datum/category_item/player_setup_item/loadout/proc/push_loadout_data()
-	#warn impl
+	push_ui_data(
+		data = list(
+			"gearData" = tgui_loadout_data(),
+		)
+	)
 
-/datum/category_item/player_setup_item/loadout/proc/push_loadout_slots()
-	#warn impl
+/datum/category_item/player_setup_item/loadout/proc/push_character_name()
+	push_ui_data(
+		data = list(
+			"characterName" = pref.real_name,
+		)
+	)
 
 /datum/category_item/player_setup_item/loadout/load_character(savefile/S)
 	// LITERALLY JUST A SHIM TO TRIGGER UI UPDATES.
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, update_static_data)), 0)
-
-/datum/category_item/player_setup_item/loadout/content(datum/preferences/prefs, mob/user, data)
-	. = list()
-	var/datum/loadout_category/LC = loadout_categories[current_tab]
-	. += "<tr><td colspan=3><hr></td></tr>"
-	. += "<tr><td colspan=3><b><center>[LC.category]</center></b></td></tr>"
-	. += "<tr><td colspan=3><hr></td></tr>"
-	for(var/gear_name in LC.gear)
-		var/datum/loadout_entry/G = LC.gear[gear_name]
-		if(preference_mob && preference_mob.client)
-			if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))
-				continue
-			if(G.character_name && !(preference_mob.client.prefs.real_name in G.character_name))
-				continue
-		var/ticked = (G.name in pref.gear)
-		. += "<tr style='vertical-align:top;'><td width=25%><a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='?src=\ref[src];toggle_gear=[html_encode(G.name)]'>[G.display_name]</a></td>"
-		. += "<td width = 10% style='vertical-align:top'>[G.cost]</td>"
-		. += "<td><font size=2><i>[G.description]</i></font></td></tr>"
-		if(ticked)
-			. += "<tr><td colspan=3>"
-			for(var/datum/loadout_tweak/tweak in G.tweaks)
-				. += " <a href='?src=\ref[src];gear=[G.name];tweak=\ref[tweak]'>[tweak.get_contents(get_tweak_metadata(G, tweak))]</a>"
-			. += "</td></tr>"
-	. += "</table>"
-	. = jointext(., null)
-
-/datum/category_item/player_setup_item/loadout/proc/get_gear_metadata(var/datum/loadout_entry/G)
-	. = pref.gear[G.name]
-	if(!.)
-		. = list()
-		pref.gear[G.name] = .
-
-/datum/category_item/player_setup_item/loadout/proc/get_tweak_metadata(var/datum/loadout_entry/G, var/datum/loadout_tweak/tweak)
-	var/list/metadata = get_gear_metadata(G)
-	. = metadata["[tweak]"]
-	if(!.)
-		. = tweak.get_default()
-		metadata["[tweak]"] = .
-
-/datum/category_item/player_setup_item/loadout/proc/set_tweak_metadata(var/datum/loadout_entry/G, var/datum/loadout_tweak/tweak, var/new_metadata)
-	var/list/metadata = get_gear_metadata(G)
-	metadata["[tweak]"] = new_metadata
-
-/datum/category_item/player_setup_item/loadout/OnTopic(href, href_list, user)
-	if(href_list["toggle_gear"])
-		var/datum/loadout_entry/TG = gear_datums[href_list["toggle_gear"]]
-		if(TG?.name in pref.gear)
-			pref.gear -= TG.name
-		else
-			var/total_cost = 0
-			for(var/gear_name in pref.gear)
-				var/datum/loadout_entry/G = gear_datums[gear_name]
-				if(istype(G)) total_cost += G.cost
-			if((total_cost+TG.cost) <= max_loadout_cost())
-				pref.gear += TG.name
-		return PREFERENCES_REFRESH_UPDATE_PREVIEW
-	if(href_list["gear"] && href_list["tweak"])
-		var/datum/loadout_entry/gear = gear_datums[href_list["gear"]]
-		var/datum/loadout_tweak/tweak = locate(href_list["tweak"])
-		if(!tweak || !istype(gear) || !(tweak in gear.tweaks))
-			return PREFERENCES_NOACTION
-		var/metadata = tweak.get_metadata(user, get_tweak_metadata(gear, tweak))
-		if(!metadata || !CanUseTopic(user))
-			return PREFERENCES_NOACTION
-		set_tweak_metadata(gear, tweak, metadata)
-		return PREFERENCES_REFRESH_UPDATE_PREVIEW
-	else if(href_list["clear_loadout"])
-		pref.gear.Cut()
-		return PREFERENCES_REFRESH_UPDATE_PREVIEW
-	return ..()
+	addtimer(CALLBACK(src, PROC_REF(push_loadout_data)), 0)
+	addtimer(CALLBACK(src, PROC_REF(push_character_name)), 0)
 
 // These checks should all be on /datum/loadout_entry
 // However, for performance reasons, we're going to avoid doing that
