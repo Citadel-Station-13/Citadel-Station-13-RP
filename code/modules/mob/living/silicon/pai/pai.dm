@@ -218,6 +218,12 @@
 
 // changing the shell
 /mob/living/silicon/pai/proc/switch_shell(obj/item/new_shell)
+	// we're on cooldown or we are dead
+	if(!can_action())
+		return FALSE
+
+	last_special = world.time + 20
+
 	// setup transform text
 	if(istype(new_shell, /obj/item/paicard))
 		transform_component.to_object_text = "neatly folds inwards, compacting down to a rectangular card"

@@ -16,6 +16,15 @@
 	set category = "pAI Commands"
 	set name = "Collapse Chassis"
 
+	// we check mobility here to stop people folding up if they currently cannot move
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
+		return
+	if(!can_action())
+		return
+	// to fold up we need to not be in the card already
+	if(src.loc == shell)
+		return
+
 	close_up()
 
 /mob/living/silicon/pai/proc/choose_chassis()

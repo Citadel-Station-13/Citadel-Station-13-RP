@@ -363,8 +363,7 @@
 /turf/simulated/shuttle/wall/voidcraft/survival/hard_corner,
 /area/survivalpod)
 "K" = (
-/obj/machinery/autolathe{
-	hacked = 1;
+/obj/machinery/lathe/autolathe{
 	name = "military autolathe"
 	},
 /turf/simulated/shuttle/floor/voidcraft/dark,

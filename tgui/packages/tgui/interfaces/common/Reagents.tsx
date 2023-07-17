@@ -1,14 +1,19 @@
 /**
  * Collection of common reagent things.
  *
+ * todo: make array a dict instead for fast lookup?
+ *
  * @file
  * @license MIT
  */
 
 import { InfernoNode } from "inferno";
 import { LabeledList, NoticeBox, Section } from "../../components";
+import { SectionProps } from "../../components/Section";
 
-interface ReagentContentsProps {
+export const REAGENT_STORAGE_UNIT_NAME = "u";
+
+interface ReagentContentsProps extends SectionProps {
   buttons?: InfernoNode;
   reagentButtons?: Function; // called to generate buttons with (id)
   reagents: ReagentContentsData;
@@ -24,7 +29,7 @@ interface ReagentContentsEntry {
 
 export const ReagentContents = (props: ReagentContentsProps, context) => {
   return (
-    <Section buttons={props.buttons}>
+    <Section {...props}>
       <LabeledList>
         {props.reagents.length === 0 && (
           <NoticeBox>
