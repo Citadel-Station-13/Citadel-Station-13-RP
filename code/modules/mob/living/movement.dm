@@ -8,15 +8,26 @@
 		if(MOVE_INTENT_WALK)
 			. += config_legacy.walk_speed
 
+// todo: all this depth staged stuff is stupid and it should all be on /turf and cached someday
+//       this is however, faster, so that'll be a very long 'someday'.
+
 /mob/living/Move(atom/newloc, direct, glide_size_override)
+	depth_staged = 0
 	if(buckled && buckled.loc != newloc)
 		return FALSE
-	return ..()
+	. = ..()
+	depth_staged = null
 
-/mob/living/Moved()
+/mob/living/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	if(s_active && !CheapReachability(s_active))
 		s_active.close(src)
+	if(forced && isnull(depth_staged) && isturf(loc))
+		var/turf/T = loc
+		depth_staged = T.depth_level()
+	if(!isnull(depth_staged))
+		change_depth(depth_staged)
+		depth_staged = null
 
 /mob/living/forceMove(atom/destination)
 	if(buckled && (buckled.loc != destination))
@@ -43,6 +54,16 @@
 	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
 		return TRUE
 	return ..()
+
+/mob/living/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	. = ..()
+	if(isobj(blocker))
+		var/obj/O = blocker
+		if(O.depth_projected)
+			// FINE ILL USE UNLINT INSTEAD OF REMOVE PURITY
+			UNLINT(depth_staged = max(depth_staged, O.depth_level))
+		if(!(O.obj_flags & OBJ_IGNORE_MOB_DEPTH) && O.depth_level <= depth_current)
+			return TRUE
 
 /mob/living/can_cross_under(atom/movable/mover)
 	if(isliving(mover))
@@ -83,6 +104,8 @@
 	if(!prob(50))
 		return FALSE
 	return TRUE
+
+//? Bumping / Crawling
 
 /mob/living/Bump(atom/A)
 	var/skip_atom_bump_handling
@@ -357,3 +380,21 @@
 	// restore dir if needed
 	if(their_dir)
 		pushing.setDir(their_dir)
+
+//? Depth
+
+/mob/living/proc/change_depth(new_depth)
+	// depth is propagated up/down our buckled objects, and overridden by what we're buckled to
+	if(isliving(buckled) && (buckled.buckle_flags & BUCKLING_PROJECTS_DEPTH))
+		var/mob/living/L = buckled
+		new_depth = L.depth_current
+	else if(isobj(buckled) && (buckled.buckle_flags & BUCKLING_PROJECTS_DEPTH))
+		var/obj/O = buckled
+		new_depth = O.depth_level
+	if(new_depth == depth_current)
+		return
+	. = new_depth - depth_current
+	depth_current = new_depth
+	pixel_y += .
+	for(var/mob/living/L in buckled_mobs)
+		L.change_depth(new_depth)
