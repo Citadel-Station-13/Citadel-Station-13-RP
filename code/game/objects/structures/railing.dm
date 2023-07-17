@@ -45,6 +45,10 @@
 		return TRUE
 	if(!(get_dir(src, newLoc) & dir))
 		return TRUE
+	if(isliving(mover))
+		var/mob/living/L = mover
+		if((L.depth_current >= depth_level) && !(obj_flags & OBJ_IGNORE_MOB_DEPTH))
+			return TRUE
 	return !density
 
 /obj/structure/railing/examine(mob/user, dist)
@@ -287,3 +291,6 @@
 				continue
 		if(O && O.density && !(O.atom_flags & ATOM_BORDER && !(turn(O.dir, 180) & dir)))
 			return O
+
+/obj/structure/railing/do_climb_target(mob/living/climber)
+	return climber.loc == get_turf(src)? get_step(src, dir) : ..()

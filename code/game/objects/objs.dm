@@ -314,8 +314,11 @@
 		// basically, we don't force move them, we just elevate them to our level
 		// if something else blocks them, L + ratio + get parried
 		climber.change_depth(depth_level)
-	if(!step_towards(climber, src))
+	if(!step_towards(climber, do_climb_target(climber)))
 		climber.change_depth(old_depth)
+
+/obj/proc/do_climb_target(mob/living/climber)
+	return get_turf(src)
 
 /obj/attack_hand(mob/user, list/params)
 	. = ..()
