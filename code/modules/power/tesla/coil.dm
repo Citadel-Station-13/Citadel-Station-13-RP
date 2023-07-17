@@ -59,7 +59,7 @@
 		return wires.Interact(user)
 	return ..()
 
-/obj/machinery/power/tesla_coil/attack_hand(mob/user, list/params)
+/obj/machinery/power/tesla_coil/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(user.a_intent == INTENT_GRAB && user_buckle_mob(user.pulling, user))
 		return
 	..()
@@ -125,7 +125,7 @@
 		return
 	return ..()
 
-/obj/machinery/power/grounding_rod/attack_hand(mob/user, list/params)
+/obj/machinery/power/grounding_rod/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(user.a_intent == INTENT_GRAB && user_buckle_mob(user.pulling, user))
 		return
 	..()

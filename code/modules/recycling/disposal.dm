@@ -218,7 +218,7 @@
 	interact(user, 1)
 
 // human interact with machine
-/obj/machinery/disposal/attack_hand(mob/user, list/params)
+/obj/machinery/disposal/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 
 	if(machine_stat & BROKEN)
 		return

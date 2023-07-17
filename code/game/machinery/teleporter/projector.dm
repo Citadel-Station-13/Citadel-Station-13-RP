@@ -182,7 +182,7 @@
 /obj/machinery/tele_projector/attack_ai()
 	attack_hand()
 
-/obj/machinery/tele_projector/attack_hand(mob/user, list/params)
+/obj/machinery/tele_projector/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(engaged)
 		disengage()
 	else

@@ -107,7 +107,7 @@
 	// One cane mitigates a broken leg+foot, or a missing foot.
 	// Two canes are needed for a lost leg. If you are missing both legs, canes aren't gonna help you.
 	for(var/obj/item/cane/cane as anything in get_held_items_of_type(/obj/item/cane))
-		stance_damgae -= 2
+		stance_damage -= 2
 
 	// standing is poor
 	if(stance_damage >= 4 || (stance_damage >= 2 && prob(5)))
@@ -118,67 +118,37 @@
 		afflict_paralyze(20 * 5) //can't emote while weakened, apparently.
 
 /mob/living/carbon/human/proc/handle_grasp()
-	if(!l_hand && !r_hand)
-		return
-
-	// You should not be able to pick anything up, but stranger things have happened.
-	if(l_hand)
-		for(var/limb_tag in list(BP_L_HAND, BP_L_ARM))
-			var/obj/item/organ/external/E = get_organ(limb_tag)
-			if(!E)
-				visible_message("<span class='danger'>Lacking a functioning left hand, \the [src] drops \the [l_hand].</span>")
-				drop_left_held_item(INV_OP_FORCE)
-				break
-
-	if(r_hand)
-		for(var/limb_tag in list(BP_R_HAND, BP_R_ARM))
-			var/obj/item/organ/external/E = get_organ(limb_tag)
-			if(!E)
-				visible_message("<span class='danger'>Lacking a functioning right hand, \the [src] drops \the [r_hand].</span>")
-				drop_right_held_item(INV_OP_FORCE)
-				break
-
-	// Check again...
-	if(!l_hand && !r_hand)
-		return
-
-	for (var/obj/item/organ/external/E in organs)
-		if(!E || !E.can_grasp)
+	for(var/i in 1 to length(held_items))
+		var/obj/item/held = held_items[i]
+		if(isnull(held))
 			continue
-
-		if((E.is_broken() || E.is_dislocated()) && !E.splinted)
-			switch(E.body_part_flags)
-				if(HAND_LEFT, ARM_LEFT)
-					if(!l_hand)
-						continue
-					drop_left_held_item()
-				if(HAND_RIGHT, ARM_RIGHT)
-					if(!r_hand)
-						continue
-					drop_right_held_item()
-
+		var/obj/item/organ/external/hand = get_hand_organ(i)
+		var/obj/item/organ/external/arm = get_arm_organ(i)
+		if(isnull(arm) || isnull(hand))
+			visible_message("<span class='danger'>Lacking a functioning left hand, \the [src] drops \the [held].</span>")
+			drop_item_to_ground(held, INV_OP_FORCE)
+			continue
+		if(((hand.is_broken() || hand.is_dislocated()) && !hand.splinted) || ((arm.is_broken() || arm.is_dislocated()) && !arm.splinted))
 			var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
-			emote("me", 1, "[(can_feel_pain()) ? "" : emote_scream ]drops what they were holding in their [E.name]!")
-
-		else if(E.is_malfunctioning())
-			switch(E.body_part_flags)
-				if(HAND_LEFT, ARM_LEFT)
-					if(!l_hand)
-						continue
-					drop_left_held_item()
-				if(HAND_RIGHT, ARM_RIGHT)
-					if(!r_hand)
-						continue
-					drop_right_held_item()
-
-			emote("me", 1, "drops what they were holding, their [E.name] malfunctioning!")
-
+			emote("me", 1, "[(can_feel_pain()) ? "" : emote_scream ]drops what they were holding in their [hand.name]!")
+			drop_item_to_ground(held, INV_OP_FORCE)
+			continue
+		else if(hand.is_malfunctioning())
+			emote("me", 1, "drops what they were holding, their [hand.name] malfunctioning!")
+			drop_item_to_ground(held, INV_OP_FORCE)
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, src)
 			spark_system.attach(src)
 			spark_system.start()
-			spawn(10)
-				qdel(spark_system)
+			QDEL_IN(spark_system, 1 SECONDS)
+		else if(arm.is_malfunctioning())
+			emote("me", 1, "drops what they were holding, their [hand.name] malfunctioning!")
+			drop_item_to_ground(held, INV_OP_FORCE)
+			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
+			spark_system.set_up(5, 0, src)
+			spark_system.attach(src)
+			spark_system.start()
+			QDEL_IN(spark_system, 1 SECONDS)
 
 //Handles chem traces
 /mob/living/carbon/human/proc/handle_trace_chems()

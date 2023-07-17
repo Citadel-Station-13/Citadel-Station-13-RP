@@ -23,7 +23,7 @@
 /obj/machinery/computer/crew/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/computer/crew/attack_hand(mob/user, list/params)
+/obj/machinery/computer/crew/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	..()
 	if(machine_stat & (BROKEN|NOPOWER))
 		return

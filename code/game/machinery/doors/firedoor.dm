@@ -150,7 +150,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 			attack_hand(M)
 	return 0
 
-/obj/machinery/door/firedoor/attack_hand(mob/user, list/params)
+/obj/machinery/door/firedoor/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	add_fingerprint(user)
 	if(operating)
 		return//Already doing something.

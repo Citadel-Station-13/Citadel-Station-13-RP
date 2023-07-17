@@ -22,7 +22,7 @@
 		return
 	return ..()
 
-/obj/structure/foodcart/attack_hand(mob/user, list/params)
+/obj/structure/foodcart/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(contents.len)
 		var/obj/item/reagent_containers/food/choice = input("What would you like to grab from the cart?") as null|obj in contents
 		if(choice)

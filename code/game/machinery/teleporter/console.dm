@@ -86,7 +86,7 @@
 
 	return
 
-/obj/machinery/computer/teleporter/attack_hand(mob/user, list/params)
+/obj/machinery/computer/teleporter/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	ui_interact(user)
 
 /obj/machinery/computer/teleporter/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)

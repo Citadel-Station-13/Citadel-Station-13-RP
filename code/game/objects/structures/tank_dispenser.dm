@@ -44,7 +44,7 @@
 		return attack_hand(user)
 	..()
 
-/obj/structure/dispenser/attack_hand(mob/user, list/params)
+/obj/structure/dispenser/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	user.set_machine(src)
 	var/dat = "[src]<br><br>"
 	dat += "Oxygen tanks: [oxygentanks] - [oxygentanks ? "<A href='?src=\ref[src];oxygen=1'>Dispense</A>" : "empty"]<br>"

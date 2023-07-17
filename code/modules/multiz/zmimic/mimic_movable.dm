@@ -186,7 +186,7 @@
 /atom/movable/openspace/mimic/attackby(obj/item/W, mob/user)
 	to_chat(user, SPAN_NOTICE("\The [src] is too far away."))
 
-/atom/movable/openspace/mimic/attack_hand(mob/user, list/params)
+/atom/movable/openspace/mimic/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	to_chat(user, SPAN_NOTICE("You cannot reach \the [src] from here."))
 
 /atom/movable/openspace/mimic/examine(...)
@@ -218,7 +218,7 @@
 /atom/movable/openspace/turf_proxy/attackby(obj/item/W, mob/user)
 	loc.attackby(W, user)
 
-/atom/movable/openspace/turf_proxy/attack_hand(mob/user, list/params)
+/atom/movable/openspace/turf_proxy/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	loc.attack_hand(user)
 
 /atom/movable/openspace/turf_proxy/attack_generic(mob/user as mob)
@@ -245,7 +245,7 @@
 /atom/movable/openspace/turf_mimic/attackby(obj/item/W, mob/user)
 	loc.attackby(W, user)
 
-/atom/movable/openspace/turf_mimic/attack_hand(mob/user, list/params)
+/atom/movable/openspace/turf_mimic/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	to_chat(user, SPAN_NOTICE("You cannot reach \the [src] from here."))
 
 /atom/movable/openspace/turf_mimic/attack_generic(mob/user as mob)

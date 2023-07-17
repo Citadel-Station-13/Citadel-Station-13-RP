@@ -77,7 +77,7 @@
 /obj/machinery/computer/telescience/attack_ai(mob/user)
 	src.attack_hand(user)
 
-/obj/machinery/computer/telescience/attack_hand(mob/user, list/params)
+/obj/machinery/computer/telescience/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 	nano_ui_interact(user)

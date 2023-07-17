@@ -39,7 +39,7 @@
 	else
 		..()
 
-/turf/simulated/floor/outdoors/snow/attack_hand(mob/user, list/params)
+/turf/simulated/floor/outdoors/snow/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	visible_message("[user] starts scooping up some snow.", "You start scooping up some snow.")
 	if(do_after(user, 1 SECOND))
 		user.put_in_hands_or_drop(new /obj/item/stack/material/snow)

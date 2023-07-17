@@ -77,7 +77,7 @@ var/global/list/light_type_cache = list()
 	else
 		to_chat(user, "<span class='danger'>This casing doesn't support power cells for backup power.</span>")
 
-/obj/machinery/light_construct/attack_hand(mob/user, list/params)
+/obj/machinery/light_construct/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return . // obj/machinery/attack_hand returns 1 if user can't use the machine
@@ -852,7 +852,7 @@ var/global/list/light_type_cache = list()
 
 // attack with hand - remove tube/bulb
 // if hands aren't protected and the light is on, burn the player
-/obj/machinery/light/attack_hand(mob/user, list/params)
+/obj/machinery/light/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 
 	add_fingerprint(user)
 
@@ -898,7 +898,7 @@ var/global/list/light_type_cache = list()
 	// create a light tube/bulb item and put it in the user's hand
 	user.put_in_active_hand(remove_bulb())	//puts it in our active hand
 
-/obj/machinery/light/flamp/attack_hand(mob/user, list/params)
+/obj/machinery/light/flamp/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(lamp_shade)
 		if(status == LIGHT_EMPTY)
 			to_chat(user, "There is no [get_fitting_name()] in this light.")

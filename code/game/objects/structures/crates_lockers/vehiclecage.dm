@@ -23,7 +23,7 @@
 			load_vehicle(I)
 	update_icon()
 
-/obj/structure/vehiclecage/attack_hand(mob/user, list/params)
+/obj/structure/vehiclecage/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	to_chat(user, "<span class='notice'>You need a wrench to take this apart!</span>")
 	return
 

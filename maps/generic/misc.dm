@@ -68,7 +68,7 @@
 /turf/simulated/floor/maglev/Entered(var/atom/movable/AM, var/atom/old_loc)
 	if(isliving(AM) && prob(50))
 		track_zap(AM)
-/turf/simulated/floor/maglev/attack_hand(mob/user, list/params)
+/turf/simulated/floor/maglev/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(prob(75))
 		track_zap(user)
 /turf/simulated/floor/maglev/proc/track_zap(var/mob/living/user)

@@ -38,7 +38,7 @@
 
 	return ..()
 
-/obj/structure/attack_hand(mob/user, list/params)
+/obj/structure/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(breakable)
 		if(MUTATION_HULK in user.mutations)
 			user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))

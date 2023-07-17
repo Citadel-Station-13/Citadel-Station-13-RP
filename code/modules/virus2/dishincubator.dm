@@ -45,7 +45,7 @@
 
 		src.attack_hand(user)
 
-/obj/machinery/disease2/incubator/attack_hand(mob/user, list/params)
+/obj/machinery/disease2/incubator/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	nano_ui_interact(user)

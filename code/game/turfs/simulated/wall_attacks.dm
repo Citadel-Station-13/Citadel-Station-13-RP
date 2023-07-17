@@ -106,7 +106,7 @@
 
 	return 0
 
-/turf/simulated/wall/attack_hand(mob/user, list/params)
+/turf/simulated/wall/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 
 	radiate()
 	add_fingerprint(user)
@@ -130,7 +130,7 @@
 				//it's hacky but it works
 				if(ishuman(user))
 					var/mob/living/carbon/human/H = user
-					var/obj/item/organ/external/E = H.organs_by_name[M.hand ? BP_L_HAND : BP_R_HAND]
+					var/obj/item/organ/external/E = H.organs_by_name[M.hand % 2? BP_L_HAND : BP_R_HAND]
 					if (!(E.is_usable()))
 						to_chat(user, SPAN_WARNING("You can't use that hand."))
 						return
@@ -140,7 +140,7 @@
 					playsound(src, get_sfx("punch"), 20)
 				else
 					M.visible_message(SPAN_DANGER("[M.name] punches \the [src]!"), SPAN_DANGER("You punch \the [src]!"))
-					M.apply_damage(3, BRUTE, M.hand ? BP_L_HAND : BP_R_HAND)
+					M.apply_damage(3, BRUTE, M.hand % 2? BP_L_HAND : BP_R_HAND)
 					playsound(src, get_sfx("punch"), 20)
 
 	else

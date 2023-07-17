@@ -18,7 +18,7 @@
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -28 : 28)
 		pixel_y = (dir & 3)? (dir == 1 ? -30 : 30) : 0
 
-/obj/structure/mirror/attack_hand(mob/user, list/params)
+/obj/structure/mirror/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(!glass) return
 	if(shattered)	return
 

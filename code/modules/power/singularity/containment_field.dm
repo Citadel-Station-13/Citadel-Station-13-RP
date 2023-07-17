@@ -21,7 +21,7 @@
 		FG2.cleanup()
 	. = ..()
 
-/obj/machinery/containment_field/attack_hand(mob/user, list/params)
+/obj/machinery/containment_field/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(get_dist(src, user) > 1)
 		return 0
 	else

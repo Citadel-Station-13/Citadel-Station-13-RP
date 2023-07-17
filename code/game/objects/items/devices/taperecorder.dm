@@ -57,7 +57,7 @@
 	return ..()
 
 
-/obj/item/tape_recorder/attack_hand(mob/user, list/params)
+/obj/item/tape_recorder/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(mytape)
 			eject()

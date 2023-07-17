@@ -189,11 +189,8 @@
  */
 /mob/proc/get_held_items()
 	. = list()
-	// intentionally not casted
-	for(var/item in held_items)
-		if(isnull(item))
-			continue
-		. += item
+	for(var/obj/item/I in held_items)
+		. += I
 
 /**
  * get held items of type
@@ -219,20 +216,20 @@
 /mob/proc/get_held_item_of_index(index)
 	RETURN_TYPE(/obj/item)
 	return length(held_items) <= index? held_items[index] : null
+
 /**
  * return index of item, or null if not found
  */
 /mob/proc/get_held_index(obj/item/I)
-	for(var/i in 1 to length(held_items))
-		if(held_items[i] == I)
-			return i
+	. = held_items?.Find(I)
+	return .? . : null
 
 /**
  * returns held item in active hand
  */
 /mob/proc/get_active_held_item()
 	RETURN_TYPE(/obj/item)
-	return held_items[active_hand]
+	return held_items?[active_hand]
 
 /**
  * returns held item in inactive hand (or any inactive hand if more than 1)

@@ -78,7 +78,7 @@
 				dump_everything()
 				qdel(src)
 
-/obj/machinery/suit_storage_unit/attack_hand(mob/user, list/params)
+/obj/machinery/suit_storage_unit/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 	if(machine_stat & NOPOWER)

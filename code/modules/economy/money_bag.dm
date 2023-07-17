@@ -8,7 +8,7 @@
 	throw_force = 2.0
 	w_class = ITEMSIZE_LARGE
 
-/obj/item/moneybag/attack_hand(mob/user, list/params)
+/obj/item/moneybag/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	var/amt_supermatter = 0
 	var/amt_bananium = 0
 	var/amt_mhydrogen = 0

@@ -140,7 +140,7 @@
 	else
 		icon_state = "cleanbot[on]"
 
-/mob/living/bot/cleanbot/attack_hand(mob/user, list/params)
+/mob/living/bot/cleanbot/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	ui_interact(user)
 
 /mob/living/bot/cleanbot/ui_interact(mob/user, datum/tgui/ui)

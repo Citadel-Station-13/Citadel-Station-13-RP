@@ -400,7 +400,7 @@
 /obj/machinery/power/supermatter/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/power/supermatter/attack_hand(mob/user, list/params)
+/obj/machinery/power/supermatter/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src], inducing a resonance... [TU.his] body starts to glow and bursts into flames before flashing into ash.</span>",\
 		"<span class=\"danger\">You reach out and touch \the [src]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"</span>",\

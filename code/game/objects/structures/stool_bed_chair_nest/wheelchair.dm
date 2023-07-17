@@ -97,7 +97,7 @@
 		create_track()
 	driving = 0
 
-/obj/structure/bed/chair/wheelchair/attack_hand(mob/user, list/params)
+/obj/structure/bed/chair/wheelchair/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if (pulling_along)
 		MouseDrop(usr)
 	return ..()

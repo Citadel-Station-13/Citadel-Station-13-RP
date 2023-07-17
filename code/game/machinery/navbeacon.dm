@@ -100,7 +100,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 /obj/machinery/navbeacon/attack_ai(var/mob/user)
 	interact(user, 1)
 
-/obj/machinery/navbeacon/attack_hand(mob/user, list/params)
+/obj/machinery/navbeacon/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 
 	if(!user.IsAdvancedToolUser())
 		return FALSE

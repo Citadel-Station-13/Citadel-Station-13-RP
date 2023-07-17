@@ -32,7 +32,7 @@
 
 	old_turf = isturf(loc)? loc : null
 
-/obj/machinery/floorlayer/attack_hand(mob/user, list/params)
+/obj/machinery/floorlayer/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	on=!on
 	user.visible_message( \
 		SPAN_NOTICE("[user] has [!on?"de":""]activated \the [src]."), \

@@ -21,7 +21,7 @@
 	say_verbs = list("mumbles", "says")
 
 // Clumsy folks can't take the mask off themselves.
-/obj/item/clothing/mask/muzzle/attack_hand(mob/user, list/params)
+/obj/item/clothing/mask/muzzle/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(user.item_by_slot(SLOT_ID_MASK) == src && !user.IsAdvancedToolUser())
 		return 0
 	..()

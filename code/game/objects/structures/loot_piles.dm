@@ -42,7 +42,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	var/list/rare_loot = list()		// Rare is powerful, or somewhat unique items.
 	var/list/very_rare_loot = list()// Very Rare really powerful, or at least unique items.
 
-/obj/structure/loot_pile/attack_hand(mob/user, list/params)
+/obj/structure/loot_pile/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	//Human mob
 	if(isliving(user))
 		var/mob/living/L = user

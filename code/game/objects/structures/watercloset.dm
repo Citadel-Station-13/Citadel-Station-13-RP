@@ -17,7 +17,7 @@
 	open = round(rand(0, 1))
 	update_icon()
 
-/obj/structure/toilet/attack_hand(mob/user, list/params)
+/obj/structure/toilet/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(swirlie)
 		usr.setClickCooldown(user.get_attack_speed())
 		usr.visible_message("<span class='danger'>[user] slams the toilet seat onto [swirlie.name]'s head!</span>", "<span class='notice'>You slam the toilet seat onto [swirlie.name]'s head!</span>", "You hear reverberating porcelain.")
@@ -172,7 +172,7 @@
 	anchored = 1
 	mouse_opacity = 0
 
-/obj/machinery/shower/attack_hand(mob/user, list/params)
+/obj/machinery/shower/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	var/mob/living/M = user
 	if(!istype(M))
 		return
@@ -241,10 +241,8 @@
 
 	if(iscarbon(O))
 		var/mob/living/carbon/M = O
-		if(M.r_hand)
-			M.r_hand.clean_blood()
-		if(M.l_hand)
-			M.l_hand.clean_blood()
+		for(var/obj/item/I as anything in M.get_held_items())
+			I.clean_blood()
 		if(M.back)
 			if(M.back.clean_blood())
 				M.update_inv_back(0)
@@ -388,7 +386,7 @@
 	thing.reagents.clear_reagents()
 	thing.update_icon()
 
-/obj/structure/sink/attack_hand(mob/user, list/params)
+/obj/structure/sink/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
@@ -497,7 +495,7 @@
 	icon_state = "puddle"
 	desc = "A small pool of some liquid, ostensibly water."
 
-/obj/structure/sink/puddle/attack_hand(mob/user, list/params)
+/obj/structure/sink/puddle/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	icon_state = "puddle-splash"
 	..()
 	icon_state = "puddle"
@@ -521,7 +519,7 @@
 	reagents.add_reagent(dispensedreagent, 20)
 
 /* Okay, just straight up, I tried to code this like blood overlays, but I just do NOT understand the system. If someone wants to sort it, enable this too.
-/obj/structure/sink/oil_well/attack_hand(mob/user, list/params)
+/obj/structure/sink/oil_well/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	flick("puddle-oil-splash",src)
 	reagents.reaction(M, 20) //Covers target in 20u of oil.
 	to_chat(M, "<span class='notice'>You touch the pool of oil, only to get oil all over yourself. It would be wise to wash this off with water.</span>")

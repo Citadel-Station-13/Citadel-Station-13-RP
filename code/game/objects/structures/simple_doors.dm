@@ -61,7 +61,7 @@
 		if(get_dist(user,src) <= 1) //not remotely though
 			return TryToSwitchState(user)
 
-/obj/structure/simple_door/attack_hand(mob/user, list/params)
+/obj/structure/simple_door/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	return TryToSwitchState(user)
 
 /obj/structure/simple_door/CanAllowThrough(atom/movable/mover, turf/target)

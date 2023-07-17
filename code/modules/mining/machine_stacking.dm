@@ -24,7 +24,7 @@
 		stack_trace("Stacking machine console at [COORD(src)] could not find its machine!")
 		qdel(src)
 
-/obj/machinery/mineral/stacking_unit_console/attack_hand(mob/user, list/params)
+/obj/machinery/mineral/stacking_unit_console/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	add_fingerprint(user)
 	interact(user)
 

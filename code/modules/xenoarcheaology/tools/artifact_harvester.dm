@@ -35,7 +35,7 @@
 	else
 		return..()
 
-/obj/machinery/artifact_harvester/attack_hand(mob/user, list/params)
+/obj/machinery/artifact_harvester/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	add_fingerprint(user)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return

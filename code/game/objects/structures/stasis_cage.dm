@@ -14,7 +14,7 @@
 	if(A)
 		contain(A)
 
-/obj/structure/stasis_cage/attack_hand(mob/user, list/params)
+/obj/structure/stasis_cage/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	release()
 
 /obj/structure/stasis_cage/attack_robot(var/mob/user)

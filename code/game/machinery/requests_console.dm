@@ -119,7 +119,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			req_console_information -= department
 	return ..()
 
-/obj/machinery/requests_console/attack_hand(mob/user, list/params)
+/obj/machinery/requests_console/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(..(user))
 		return
 	nano_ui_interact(user)

@@ -117,7 +117,7 @@ var/last_chew = 0
 	if (H.wear_mask) return
 	if (istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket)) return
 
-	var/obj/item/organ/external/O = H.organs_by_name[(H.hand ? BP_L_HAND : BP_R_HAND)]
+	var/obj/item/organ/external/O = H.organs_by_name[(H.hand % 2? BP_L_HAND : BP_R_HAND)]
 	if (!O) return
 
 	var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()]

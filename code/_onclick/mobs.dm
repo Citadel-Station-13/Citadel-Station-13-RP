@@ -24,3 +24,17 @@
 	// todo: NO. MORE. LIST. PARAMS. WHY. ARE. WE. UNPACKING. THE. LIST. MULTIPLE. TIMES?
 	var/stupid_fucking_shim = list2params(params)
 	RangedAttack(target, stupid_fucking_shim)
+
+/**
+ * construct default event args for what we're doing to a target
+ */
+/mob/proc/default_clickchain_event_args(atom/target, list/params, unarmed = FALSE)
+	var/datum/event_args/clickchain/constructed = new
+	constructed.initiator = src
+	constructed.actor = src
+	constructed.target = target
+	constructed.click_params = params
+	constructed.attack_intent = a_intent
+	constructed.hand_index = active_hand
+	if(!unarmed)
+		constructed.using = get_active_held_item()

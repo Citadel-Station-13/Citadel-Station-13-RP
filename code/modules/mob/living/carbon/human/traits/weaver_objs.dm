@@ -34,7 +34,7 @@ var/global/list/weavable_items = list()
 	if(damage)
 		qdel(src)
 
-/obj/effect/weaversilk/attack_hand(mob/user, list/params)
+/obj/effect/weaversilk/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	..()
 	if(user.a_intent == INTENT_HARM)
 		to_chat(user,"<span class='warning'>You easily tear down [name].</span>")
@@ -81,7 +81,7 @@ var/global/list/weavable_items = list()
 		return
 	..()
 
-/obj/structure/bed/double/weaversilk_nest/attack_hand(mob/user, list/params)
+/obj/structure/bed/double/weaversilk_nest/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	..()
 	if(user.a_intent == INTENT_HARM && !has_buckled_mobs())
 		to_chat(user,"<span class='warning'>You easily tear down [name].</span>")

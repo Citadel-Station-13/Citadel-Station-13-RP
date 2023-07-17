@@ -10,7 +10,7 @@
 /obj/machinery/computer/fusion_fuel_control/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/computer/fusion_fuel_control/attack_hand(mob/user, list/params)
+/obj/machinery/computer/fusion_fuel_control/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	add_fingerprint(user)
 	interact(user)
 

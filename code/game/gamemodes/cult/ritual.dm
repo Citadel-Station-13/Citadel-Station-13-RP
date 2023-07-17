@@ -101,7 +101,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	return
 
 
-/obj/effect/rune/attack_hand(mob/user, list/params)
+/obj/effect/rune/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user

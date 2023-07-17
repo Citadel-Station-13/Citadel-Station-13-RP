@@ -275,7 +275,7 @@
 	playsound(loc, 'sound/effects/Glasshit.ogg', 50, TRUE)
 
 
-/obj/structure/window/attack_hand(mob/user, list/params)
+/obj/structure/window/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	user.setClickCooldown(user.get_attack_speed())
 
 	if (MUTATION_HULK in user.mutations) // Do we really still need these?
@@ -937,7 +937,7 @@
 	var/range = 7
 
 
-/obj/machinery/button/windowtint/attack_hand(mob/user, list/params)
+/obj/machinery/button/windowtint/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if (..())
 		return TRUE
 	else

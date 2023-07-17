@@ -452,7 +452,7 @@
 
 	nano_ui_interact(user)
 
-/obj/machinery/porta_turret/attack_hand(mob/user, list/params)
+/obj/machinery/porta_turret/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(isLocked(user))
 		return
 
@@ -1145,7 +1145,7 @@
 
 	..()
 
-/obj/machinery/porta_turret_construct/attack_hand(mob/user, list/params)
+/obj/machinery/porta_turret_construct/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	switch(build_step)
 		if(4)
 			if(!installation)

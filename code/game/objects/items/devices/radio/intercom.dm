@@ -135,7 +135,7 @@
 	spawn (0)
 		attack_self(user)
 
-/obj/item/radio/intercom/attack_hand(mob/user, list/params)
+/obj/item/radio/intercom/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	src.add_fingerprint(user)
 	spawn (0)
 		attack_self(user)

@@ -31,7 +31,7 @@
 	else if (tripped)
 		icon_state = "[initial(icon_state)]_tripped"
 
-/turf/simulated/floor/trap/attack_hand(mob/user, list/params)
+/turf/simulated/floor/trap/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(tripped)
 		to_chat(usr, "<span class='notice'>You reset the triggered mechanism.</span>")
 		tripped = 0

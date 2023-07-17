@@ -110,7 +110,7 @@
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/vehicle_old/train/attack_hand(mob/user, list/params)
+/obj/vehicle_old/train/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(user.stat || user.restrained() || !Adjacent(user))
 		return 0
 

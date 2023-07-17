@@ -7,7 +7,7 @@
 /obj/structure/signpost/attackby(obj/item/W, mob/user)
 	return attack_hand(user)
 
-/obj/structure/signpost/attack_hand(mob/user, list/params)
+/obj/structure/signpost/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	switch(tgui_alert(user, "Do you want to go to SS13?", "Travel", list("Yes", "No")))
 		if("Yes")
 			user.forceMove(SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION))

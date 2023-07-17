@@ -14,7 +14,7 @@
 	var/win_path = /obj/structure/window/basic
 	var/activated
 
-/obj/effect/wingrille_spawn/attack_hand(mob/user, list/params)
+/obj/effect/wingrille_spawn/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	attack_generic()
 
 /obj/effect/wingrille_spawn/attack_ghost()

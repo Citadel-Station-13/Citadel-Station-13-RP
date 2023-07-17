@@ -14,7 +14,7 @@
 	if(A)
 		contain(A)
 
-/obj/structure/anomaly_container/attack_hand(mob/user, list/params)
+/obj/structure/anomaly_container/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	release()
 
 /obj/structure/anomaly_container/attack_robot(var/mob/user)

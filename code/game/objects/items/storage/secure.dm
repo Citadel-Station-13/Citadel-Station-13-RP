@@ -155,7 +155,7 @@
 	w_class = ITEMSIZE_LARGE
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4
 
-/obj/item/storage/secure/briefcase/attack_hand(mob/user, list/params)
+/obj/item/storage/secure/briefcase/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if ((src.loc == user) && (src.locked == 1))
 		to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
 	else if ((src.loc == user) && (!src.locked))
@@ -216,5 +216,5 @@
 		/obj/item/pen
 	)
 
-/obj/item/storage/secure/safe/attack_hand(mob/user, list/params)
+/obj/item/storage/secure/safe/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	return attack_self(user)

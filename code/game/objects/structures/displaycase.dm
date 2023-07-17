@@ -63,7 +63,7 @@
 	..()
 	return
 
-/obj/structure/displaycase/attack_hand(mob/user, list/params)
+/obj/structure/displaycase/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if (src.destroyed && src.occupied)
 		new /obj/item/gun/energy/captain( src.loc )
 		to_chat(user, "<span class='notice'>You deactivate the hover field built into the case.</span>")

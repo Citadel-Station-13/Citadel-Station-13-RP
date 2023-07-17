@@ -66,7 +66,7 @@
 		w_class = initial(w_class)
 		clear_holster()
 
-/obj/item/clothing/accessory/holster/attack_hand(mob/user, list/params)
+/obj/item/clothing/accessory/holster/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if (accessory_host && (slot & ACCESSORY_SLOT_UTILITY))
 		if(holstered)
 			unholster(user)

@@ -21,7 +21,7 @@
 	return
 
 
-/obj/item/implantpad/attack_hand(mob/user, list/params)
+/obj/item/implantpad/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if ((src.case && user.is_holding(src)))
 		user.put_in_active_hand(case)
 

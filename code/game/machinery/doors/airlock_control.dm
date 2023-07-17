@@ -174,7 +174,7 @@
 	else
 		icon_state = "airlock_sensor_off"
 
-/obj/machinery/airlock_sensor/attack_hand(mob/user, list/params)
+/obj/machinery/airlock_sensor/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	var/datum/signal/signal = new
 	signal.transmission_method = TRANSMISSION_RADIO //radio signal
 	signal.data["tag"] = master_tag
@@ -260,7 +260,7 @@
 		return
 	..()
 
-/obj/machinery/access_button/attack_hand(mob/user, list/params)
+/obj/machinery/access_button/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	..()
 	if(!allowed(user))
 		to_chat(user, "<span class='warning'>Access Denied</span>")

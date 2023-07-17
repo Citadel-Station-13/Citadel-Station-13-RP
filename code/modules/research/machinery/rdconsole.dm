@@ -165,7 +165,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	dat += "</UL>"
 	return dat.Join()
 
-/obj/machinery/computer/rdconsole/attack_hand(mob/user, list/params)
+/obj/machinery/computer/rdconsole/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)

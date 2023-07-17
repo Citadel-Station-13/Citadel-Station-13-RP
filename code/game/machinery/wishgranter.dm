@@ -9,7 +9,7 @@
 	var/charges = 1
 	var/insisting = 0
 
-/obj/machinery/wish_granter/attack_hand(mob/user, list/params)
+/obj/machinery/wish_granter/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	usr.set_machine(src)
 
 	if(charges <= 0)

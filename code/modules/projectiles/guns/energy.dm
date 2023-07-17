@@ -155,7 +155,7 @@
 	..()
 	load_ammo(A, user)
 
-/obj/item/gun/energy/attack_hand(mob/user, list/params)
+/obj/item/gun/energy/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user)
 	else

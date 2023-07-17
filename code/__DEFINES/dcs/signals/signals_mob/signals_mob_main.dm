@@ -129,7 +129,7 @@
 ////#define COMSIG_MOB_CLUMSY_SHOOT_FOOT "mob_clumsy_shoot_foot"
 /// From /obj/item/hand_item/slapper/attack_atom(): (source=obj/structure/table/slammed_table, mob/living/slammer)
 ////#define COMSIG_TABLE_SLAMMED "table_slammed"
-/// From base of atom/attack_hand(mob/user, list/params): (mob/user, modifiers)
+/// From base of atom/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args): (mob/user, modifiers)
 ////#define COMSIG_MOB_ATTACK_HAND "mob_attack_hand"
 /// From base of /obj/item/attack(): (mob/M, mob/user)
 ////#define COMSIG_MOB_ITEM_ATTACK "mob_item_attack"

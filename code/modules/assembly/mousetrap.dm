@@ -69,7 +69,7 @@
 	playsound(user.loc, 'sound/weapons/handcuffs.ogg', 30, 1, -3)
 
 
-/obj/item/assembly/mousetrap/attack_hand(mob/user, list/params)
+/obj/item/assembly/mousetrap/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return
@@ -104,7 +104,7 @@
 	if(armed)
 		finder.visible_message("<span class='warning'>[finder] accidentally sets off [src], breaking their fingers.</span>", \
 							   "<span class='warning'>You accidentally trigger [src]!</span>")
-		triggered(finder, finder.hand ? "l_hand" : "r_hand")
+		triggered(finder, finder.hand % 2? "l_hand" : "r_hand")
 		return 1	//end the search!
 	return 0
 

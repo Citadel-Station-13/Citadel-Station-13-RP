@@ -94,7 +94,7 @@
 	volume = loaded_vial.volume
 	reagents.maximum_volume = loaded_vial.reagents.maximum_volume
 
-/obj/item/reagent_containers/hypospray/vial/attack_hand(mob/user, list/params)
+/obj/item/reagent_containers/hypospray/vial/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(loaded_vial)
 			reagents.trans_to_holder(loaded_vial.reagents,volume)

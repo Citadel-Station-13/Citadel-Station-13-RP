@@ -240,7 +240,7 @@
 	. = ..()
 	return attack_hand(user)
 
-/obj/machinery/body_scanconsole/attack_hand(mob/user, list/params)
+/obj/machinery/body_scanconsole/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 

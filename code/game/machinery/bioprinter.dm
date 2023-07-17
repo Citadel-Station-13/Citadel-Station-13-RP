@@ -125,7 +125,7 @@
 
 	. = ..()
 
-/obj/machinery/organ_printer/attack_hand(mob/user, list/params)
+/obj/machinery/organ_printer/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 
 	if(machine_stat & (BROKEN|NOPOWER))
 		return

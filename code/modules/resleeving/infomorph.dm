@@ -340,7 +340,7 @@ var/list/infomorph_emotions = list(
 		if(stat != 2) close_up()
 	return
 
-/mob/living/silicon/infomorph/attack_hand(mob/user, list/params)
+/mob/living/silicon/infomorph/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	visible_message("<span class='danger'>[user.name] boops [src] on the head.</span>")
 	close_up()
 

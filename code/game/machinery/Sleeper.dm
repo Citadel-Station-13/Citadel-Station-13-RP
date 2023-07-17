@@ -37,7 +37,7 @@
 /obj/machinery/sleep_console/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/sleep_console/attack_hand(mob/user, list/params)
+/obj/machinery/sleep_console/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(..())
 		return 1
 

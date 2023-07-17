@@ -191,7 +191,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 /obj/machinery/computer/syndicate_elite_shuttle/emag_act(var/remaining_charges, var/mob/user)
 	to_chat(user, "<span class='notice'>The electronic systems in this console are far too advanced for your primitive hacking peripherals.</span>")
 
-/obj/machinery/computer/syndicate_elite_shuttle/attack_hand(mob/user, list/params)
+/obj/machinery/computer/syndicate_elite_shuttle/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(!allowed(user))
 		to_chat(user, "<span class='warning'>Access Denied.</span>")
 		return

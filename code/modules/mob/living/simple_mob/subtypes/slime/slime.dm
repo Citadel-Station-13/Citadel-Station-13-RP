@@ -155,7 +155,7 @@
 	adjustBruteLoss(-1)
 
 // Clicked on by empty hand.
-/mob/living/simple_mob/slime/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/slime/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return

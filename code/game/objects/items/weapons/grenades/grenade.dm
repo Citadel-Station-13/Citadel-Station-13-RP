@@ -111,7 +111,7 @@
 	..()
 	return
 
-/obj/item/grenade/attack_hand(mob/user, list/params)
+/obj/item/grenade/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	walk(src, null, null)
 	..()
 	return

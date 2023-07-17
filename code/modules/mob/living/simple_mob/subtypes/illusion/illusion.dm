@@ -54,7 +54,7 @@
 
 	return PROJECTILE_FORCE_MISS
 
-/mob/living/simple_mob/illusion/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/illusion/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	var/mob/living/M = user
 	if(!istype(M))
 		return

@@ -110,7 +110,7 @@
 		var/obj/belly/B = loc
 		sting(B.owner)
 
-/mob/living/simple_mob/animal/passive/fish/koi/poisonous/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

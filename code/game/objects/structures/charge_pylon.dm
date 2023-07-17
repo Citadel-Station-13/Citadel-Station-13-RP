@@ -12,7 +12,7 @@
 	if(Adjacent(user))
 		attack_hand(user)
 
-/obj/structure/adherent_pylon/attack_hand(mob/user, list/params)
+/obj/structure/adherent_pylon/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	charge_user(user)
 
 /obj/structure/adherent_pylon/proc/charge_user(var/mob/living/user)

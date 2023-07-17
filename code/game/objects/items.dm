@@ -282,7 +282,7 @@
 		else
 			. = ""
 
-/obj/item/attack_hand(mob/user, list/params)
+/obj/item/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	attempt_pickup(user)
 
 /obj/item/proc/attempt_pickup(mob/user)

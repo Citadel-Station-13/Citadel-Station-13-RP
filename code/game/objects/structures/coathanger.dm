@@ -6,7 +6,7 @@
 	var/obj/item/clothing/suit/coat
 	var/list/allowed = list(/obj/item/clothing/suit/storage/toggle/labcoat, /obj/item/clothing/suit/storage/det_trench)
 
-/obj/structure/coatrack/attack_hand(mob/user, list/params)
+/obj/structure/coatrack/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	user.visible_message("[user] takes [coat] off \the [src].", "You take [coat] off the \the [src]")
 	if(!user.put_in_active_hand(coat))
 		coat.loc = get_turf(user)

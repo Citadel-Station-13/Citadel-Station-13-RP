@@ -19,7 +19,7 @@
 	if (!hide_on_roll)
 		on_rolled["down"] = icon_state
 
-/obj/item/clothing/accessory/storage/attack_hand(mob/user, list/params)
+/obj/item/clothing/accessory/storage/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if (accessory_host)	//if we are part of a suit
 		hold.open(user)
 		return

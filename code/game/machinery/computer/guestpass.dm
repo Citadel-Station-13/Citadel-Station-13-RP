@@ -115,7 +115,7 @@
 /obj/machinery/computer/guestpass/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/guestpass/attack_hand(mob/user, list/params)
+/obj/machinery/computer/guestpass/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 

@@ -82,7 +82,7 @@
 	else
 		return ..()
 
-/obj/structure/trash_pile/attack_hand(mob/user, list/params)
+/obj/structure/trash_pile/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	//Human mob
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user

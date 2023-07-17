@@ -200,7 +200,7 @@
 /obj/machinery/door/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/door/attack_hand(mob/user, list/params)
+/obj/machinery/door/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	return src.attackby(user, user)
 
 /obj/machinery/door/attack_tk(mob/user as mob)

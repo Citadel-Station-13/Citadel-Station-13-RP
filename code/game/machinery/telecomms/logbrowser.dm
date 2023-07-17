@@ -62,7 +62,7 @@
 
 	return data
 
-/obj/machinery/computer/telecomms/server/attack_hand(mob/user, list/params)
+/obj/machinery/computer/telecomms/server/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)

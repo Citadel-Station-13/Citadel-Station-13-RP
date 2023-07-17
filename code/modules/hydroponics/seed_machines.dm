@@ -63,7 +63,7 @@
 /obj/machinery/botany/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/botany/attack_hand(mob/user, list/params)
+/obj/machinery/botany/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	ui_interact(user)
 
 /obj/machinery/botany/proc/finished_task()

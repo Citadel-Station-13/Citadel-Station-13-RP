@@ -184,7 +184,7 @@
 		var/obj/machinery/drone_fabricator/chosen_fabricator = all_fabricators[choice]
 		chosen_fabricator.create_drone(src.client)
 
-/obj/machinery/drone_fabricator/attack_hand(mob/user, list/params)
+/obj/machinery/drone_fabricator/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(!is_spawn_safe)
 		is_spawn_safe = TRUE
 		to_chat(user, "You inform the fabricator that it is safe for drones to roam around.")

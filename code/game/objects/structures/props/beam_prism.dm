@@ -43,7 +43,7 @@
 	var/degrees_to_rotate = -1 * degrees_from_north
 	animate(src, transform = turn(src.transform, degrees_to_rotate), time = 2)
 
-/obj/structure/prop/prism/attack_hand(mob/user, list/params)
+/obj/structure/prop/prism/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	..()
 
 	if(rotation_lock)
@@ -157,7 +157,7 @@
 	var/list/my_turrets = list()
 	var/dialID = null
 
-/obj/structure/prop/prismcontrol/attack_hand(mob/user, list/params)
+/obj/structure/prop/prismcontrol/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	..()
 
 	var/confirm = input("Do you want to try to rotate \the [src]?", "[name]") in list("Yes", "No")

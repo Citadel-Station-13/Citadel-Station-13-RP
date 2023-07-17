@@ -110,7 +110,7 @@
 	. = ..()
 	return src.attack_hand(user)
 
-/obj/machinery/portable_atmospherics/powered/pump/attack_hand(mob/user, list/params)
+/obj/machinery/portable_atmospherics/powered/pump/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	ui_interact(user)
 
 /obj/machinery/portable_atmospherics/powered/pump/ui_interact(mob/user, datum/tgui/ui)
@@ -208,7 +208,7 @@
 
 	name = "[name] (ID [id])"
 
-/obj/machinery/portable_atmospherics/powered/pump/huge/attack_hand(mob/user, list/params)
+/obj/machinery/portable_atmospherics/powered/pump/huge/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the pump control console.</span>")
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/update_icon()

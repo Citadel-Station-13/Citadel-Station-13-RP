@@ -94,7 +94,7 @@
 /obj/machinery/shield_gen/attack_ai(user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/shield_gen/attack_hand(mob/user, list/params)
+/obj/machinery/shield_gen/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(machine_stat & (BROKEN))
 		return
 	interact(user)

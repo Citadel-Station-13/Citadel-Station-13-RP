@@ -2,7 +2,7 @@
 
 // Clicked on by empty hand.
 // Handles trying to wrestle a slime off of someone being eatten.
-/mob/living/simple_mob/slime/xenobio/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/slime/xenobio/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return

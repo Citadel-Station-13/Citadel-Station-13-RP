@@ -150,7 +150,7 @@
 	return ..()
 
 // attack with hand, move pulled object onto conveyor
-/obj/machinery/conveyor/attack_hand(mob/user, list/params)
+/obj/machinery/conveyor/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(!CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 		return
 	if(isnull(user.pulling) || user.pulling.anchored)
@@ -254,7 +254,7 @@
 		C.setmove()
 
 // attack with hand, switch position
-/obj/machinery/conveyor_switch/attack_hand(mob/user, list/params)
+/obj/machinery/conveyor_switch/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(!allowed(user))
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
@@ -315,7 +315,7 @@
 	desc = "A conveyor control switch. It appears to only go in one direction."
 
 // attack with hand, switch position
-/obj/machinery/conveyor_switch/oneway/attack_hand(mob/user, list/params)
+/obj/machinery/conveyor_switch/oneway/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(position == 0)
 		position = convdir
 	else

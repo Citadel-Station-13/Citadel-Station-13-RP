@@ -106,7 +106,7 @@
 	var/power = (decay_heat / REACTOR_RADS_TO_MJ) * max(healthmul, 0.1)
 	radiation_pulse(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0), RAD_FALLOFF_ENGINE_FISSION)
 
-/obj/machinery/power/fission/attack_hand(mob/user, list/params)
+/obj/machinery/power/fission/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	nano_ui_interact(user)
 
 /obj/machinery/power/fission/attack_robot(mob/user)

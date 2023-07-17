@@ -37,7 +37,7 @@
 	attack_hand(user)
 	return
 
-/obj/structure/ladder/attack_hand(mob/user, list/params)
+/obj/structure/ladder/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

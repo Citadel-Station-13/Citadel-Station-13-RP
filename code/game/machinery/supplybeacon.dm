@@ -57,7 +57,7 @@
 		return
 	return ..()
 
-/obj/machinery/power/supply_beacon/attack_hand(mob/user, list/params)
+/obj/machinery/power/supply_beacon/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 
 	if(expended)
 		update_use_power(USE_POWER_OFF)

@@ -523,7 +523,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 /obj/machinery/alarm/attack_ai(mob/user)
 	ui_interact(user)
 
-/obj/machinery/alarm/attack_hand(mob/user, list/params)
+/obj/machinery/alarm/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

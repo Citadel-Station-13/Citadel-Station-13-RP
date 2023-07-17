@@ -48,7 +48,7 @@
 /obj/machinery/embedded_controller/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/embedded_controller/attack_hand(mob/user, list/params)
+/obj/machinery/embedded_controller/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(!user.IsAdvancedToolUser())
 		return 0
 

@@ -70,7 +70,7 @@
 /obj/item/powersink/attack_ai()
 	return
 
-/obj/item/powersink/attack_hand(mob/user, list/params)
+/obj/item/powersink/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	switch(mode)
 		if(0)
 			..()

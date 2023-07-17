@@ -28,7 +28,7 @@
 /obj/structure/grille/Bumped(atom/user)
 	if(ismob(user)) shock(user, 70)
 
-/obj/structure/grille/attack_hand(mob/user, list/params)
+/obj/structure/grille/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 
 	user.setClickCooldown(user.get_attack_speed())
 	playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)

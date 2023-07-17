@@ -85,7 +85,7 @@
 	if(!has_buckled_mobs())
 		anchored = FALSE
 
-/obj/item/beartrap/attack_hand(mob/user, list/params)
+/obj/item/beartrap/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	// check unbuckle first
 	if(click_unbuckle_interaction(user))
 		return CLICKCHAIN_DO_NOT_PROPAGATE

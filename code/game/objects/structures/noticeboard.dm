@@ -43,7 +43,7 @@
 			new /obj/item/frame/noticeboard( src.loc )
 			qdel(src)
 
-/obj/structure/noticeboard/attack_hand(mob/user, list/params)
+/obj/structure/noticeboard/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	user.do_examinate(src)
 
 // Since Topic() never seems to interact with usr on more than a superficial

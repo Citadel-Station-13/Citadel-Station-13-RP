@@ -134,7 +134,7 @@
 	opened = 1	//shows open so you can diagnose 'oops, no gas' easily
 	icon_state = "fuel_port_empty"	//set the default state just to be safe
 
-/obj/structure/fuel_port/attack_hand(mob/user, list/params)
+/obj/structure/fuel_port/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(!opened)
 		to_chat(user, "<spawn class='notice'>The door is secured tightly. You'll need a crowbar to open it.")
 		return

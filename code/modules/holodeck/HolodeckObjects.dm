@@ -418,7 +418,7 @@
 /obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
-/obj/machinery/readybutton/attack_hand(mob/user, list/params)
+/obj/machinery/readybutton/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 
 	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")

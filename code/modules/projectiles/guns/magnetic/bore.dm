@@ -48,7 +48,7 @@
 	if(mat_storage)
 		. += image(icon, "[icon_state]_loaded")
 
-/obj/item/gun/magnetic/matfed/attack_hand(mob/user, list/params) // It doesn't keep a loaded item inside.
+/obj/item/gun/magnetic/matfed/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args) // It doesn't keep a loaded item inside.
 	if(user.get_inactive_held_item() == src)
 		var/obj/item/removing
 

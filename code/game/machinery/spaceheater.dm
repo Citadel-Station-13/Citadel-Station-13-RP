@@ -74,7 +74,7 @@
 		..()
 	return
 
-/obj/machinery/space_heater/attack_hand(mob/user, list/params)
+/obj/machinery/space_heater/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	interact(user)
 
 /obj/machinery/space_heater/interact(mob/user as mob)
@@ -230,7 +230,7 @@
 		return
 	..()
 
-/obj/machinery/power/thermoregulator/attack_hand(mob/user, list/params)
+/obj/machinery/power/thermoregulator/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	add_fingerprint(user)
 	interact(user)
 

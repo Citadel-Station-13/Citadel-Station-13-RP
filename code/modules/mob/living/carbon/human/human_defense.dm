@@ -58,9 +58,9 @@ meteor_act
 		if(BP_L_HAND, BP_R_HAND)
 			var/c_hand
 			if (def_zone == BP_L_HAND)
-				c_hand = l_hand
+				c_hand = get_left_held_item()
 			else
-				c_hand = r_hand
+				c_hand = get_right_held_item()
 
 			if(c_hand && (stun_amount || agony_amount > 10))
 				msg_admin_attack("[key_name(src)] was disarmed by a stun effect")
@@ -207,7 +207,7 @@ meteor_act
 	return null
 
 /mob/living/carbon/human/proc/check_shields(var/damage = 0, var/atom/damage_source = null, var/mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	for(var/obj/item/shield in list(l_hand, r_hand, wear_suit))
+	for(var/obj/item/shield in get_held_items() | list(wear_suit))
 		if(!shield) continue
 		. = shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text)
 		if(.) return

@@ -341,7 +341,7 @@
 
 	return 1
 
-/obj/machinery/transhuman/synthprinter/attack_hand(mob/user, list/params)
+/obj/machinery/transhuman/synthprinter/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if((busy == 0) || (machine_stat & NOPOWER))
 		return
 	to_chat(user, "Current print cycle is [busy]% complete.")
@@ -430,7 +430,7 @@
 		manip_rating += M.rating
 	blur_amount = (48 - manip_rating * 8)
 
-/obj/machinery/transhuman/resleever/attack_hand(mob/user, list/params)
+/obj/machinery/transhuman/resleever/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	user.set_machine(src)
 	var/health_text = ""
 	var/mind_text = ""

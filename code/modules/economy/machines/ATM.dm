@@ -308,7 +308,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 			authenticated_account = null
 			account_security_level = 0
 
-/obj/machinery/atm/attack_hand(mob/user, list/params)
+/obj/machinery/atm/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(istype(user, /mob/living/silicon))
 		to_chat (user, SPAN_WARNING("A firewall prevents you from interfacing with this device!"))
 		return

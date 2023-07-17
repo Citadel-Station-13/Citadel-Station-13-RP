@@ -23,7 +23,7 @@
 /obj/structure/droppod_door/attack_generic(var/mob/user)
 	attack_hand(user)
 
-/obj/structure/droppod_door/attack_hand(mob/user, list/params)
+/obj/structure/droppod_door/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(deploying) return
 	to_chat(user, "<span class='danger'>You prime the explosive bolts. Better get clear!</span>")
 	sleep(30)

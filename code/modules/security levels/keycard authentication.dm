@@ -68,7 +68,7 @@
 	if(machine_stat & NOPOWER)
 		icon_state = "auth_off"
 
-/obj/machinery/keycard_auth/attack_hand(mob/user, list/params)
+/obj/machinery/keycard_auth/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return

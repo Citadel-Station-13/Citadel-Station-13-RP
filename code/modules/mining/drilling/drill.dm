@@ -174,7 +174,7 @@
 		return
 	..()
 
-/obj/machinery/mining/drill/attack_hand(mob/user, list/params)
+/obj/machinery/mining/drill/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	check_supports()
 
 	if (panel_open && cell && user.Adjacent(src))

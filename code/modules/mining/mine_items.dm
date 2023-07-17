@@ -364,7 +364,7 @@
 	else
 		..()
 
-/obj/item/stack/flag/attack_hand(mob/user, list/params)
+/obj/item/stack/flag/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(upright)
 		upright = 0
 		icon_state = base_state

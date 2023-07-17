@@ -149,7 +149,7 @@
 	else
 		icon_state = "cameracase"
 
-/obj/item/camera_assembly/attack_hand(mob/user, list/params)
+/obj/item/camera_assembly/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
 	if(!anchored)
 		..()
 
