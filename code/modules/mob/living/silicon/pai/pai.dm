@@ -252,7 +252,7 @@
 	last_special = world.time + 20
 
 	var/obj/item/new_object = new object_path
-	new_object.name = src.name
+	new_object.name = "[src.name] (pAI)"
 	new_object.desc = src.desc
 	new_object.forceMove(src.loc)
 	switch_shell(new_object)

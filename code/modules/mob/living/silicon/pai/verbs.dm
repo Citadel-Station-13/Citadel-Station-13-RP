@@ -135,7 +135,7 @@
 				var/icon = initial(last_uploaded_path.icon)
 				var/obj/item/clothing/new_clothing = new base_uploaded_path
 				new_clothing.forceMove(src.loc)
-				new_clothing.name = src.name
+				new_clothing.name = "[src.name] (pAI)"
 				new_clothing.desc = src.desc
 				new_clothing.icon = icon
 				new_clothing.icon_state = state
