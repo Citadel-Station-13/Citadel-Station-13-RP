@@ -114,7 +114,7 @@
 /////// END
 
 //////// SHITTIER COPYPASTE CODE FOR VORE SUBTLE
-/mob/verb/subtle_vore(message as message)
+/mob/living/verb/subtle_vore(message as message)
 	set name = "Subtle Vore"
 	set category = "Vore"
 	set desc = "Emote to people within your vore holders and/or the person whos vore holder you are inside."
@@ -126,7 +126,7 @@
 	set_typing_indicator(FALSE)
 	run_subtle_vore(message)
 
-/mob/proc/run_subtle_vore(message)
+/mob/living/proc/run_subtle_vore(message)
 	if(stat || !use_me && usr == src)
 		to_chat(src, "You are unable to emote.")
 		return
@@ -156,10 +156,13 @@
 			for(var/visible in vore_holder.contents)
 				if(ismob(visible))
 					vis_mobs.Add(visible)
-				else if(isobject(visible))
+				else if(isobj(visible))
 					vis_objs.Add(visible)
 			if(vore_holder.owner)
 				vis_mobs.Add(vore_holder.owner)
+		else
+			// in this case we don't implicitly get added to the list
+			vis_mobs.Add(src)
 
 		// if we have vore holders, display to everything inside them (assuming there is anything)
 		if(LAZYLEN(src.vore_organs))
@@ -168,11 +171,8 @@
 					for(var/visible in vore_holder.contents)
 						if(ismob(visible))
 							vis_mobs.Add(visible)
-						else if(isobject(visible))
+						else if(isobj(visible))
 							vis_objs.Add(visible)
-
-		// we can also see it ourselves
-		vis_mobs.Add(src)
 
 		for(var/vismob in vis_mobs)
 			var/mob/M = vismob
