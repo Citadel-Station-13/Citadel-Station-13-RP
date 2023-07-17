@@ -186,7 +186,7 @@
 		return
 	user.visible_action_feedback(
 		target = src,
-		visible_loud = SPAN_WARNING("[user] starts to put [living_pulled] into [src]!"),
+		visible_hard = SPAN_WARNING("[user] starts to put [living_pulled] into [src]!"),
 		visible_soft = SPAN_WARNING("[user] starts to put something into [src]!")
 	)
 	if(!do_after(user, 10 SECONDS, target = src))
@@ -198,7 +198,7 @@
 		return
 	user.visible_action_feedback(
 		target = src,
-		visible_loud = SPAN_WARNING("[user] stuffs [living_pulled] into [src]!"),
+		visible_hard = SPAN_WARNING("[user] stuffs [living_pulled] into [src]!"),
 		visible_soft = SPAN_WARNING("[user] stuffs something into [src]!"),
 	)
 	living_pulled.forceMove(src)
