@@ -53,10 +53,20 @@
 /**
  * public
  *
- * Forces an UI update.
+ * Forces an update to regular UI data.
+ *
+ * If no user is provided, every user will be updated.
+ *
+ * @params
+ * * user - (optional) the mob to update
+ * * ui - (optional) the /datum/tgui to update
  */
-/datum/proc/update_uis()
-	SStgui.update_uis(src)
+/datum/proc/update_ui_data(mob/user, datum/tgui/ui)
+	if(isnull(user))
+		SStgui.update_uis(src)
+	else
+		SStgui.try_update_ui(user, src, ui)
+
 
 /**
  * public

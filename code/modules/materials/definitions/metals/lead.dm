@@ -8,3 +8,4 @@
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	radiation_resistance = 25 // Lead is Special and so gets to block more radiation than it normally would with just weight, totalling in 48 protection.
+	tgui_icon_key = "ingots"

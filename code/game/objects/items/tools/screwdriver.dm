@@ -18,7 +18,7 @@
 	tool_sound = 'sound/items/screwdriver.ogg'
 	drop_sound = 'sound/items/drop/screwdriver.ogg'
 	pickup_sound = 'sound/items/pickup/screwdriver.ogg'
-	matter = list(MAT_STEEL = 75)
+	materials = list(MAT_STEEL = 75)
 	attack_verb = list("stabbed")
 	sharp  = 1
 	tool_speed = 1
@@ -139,7 +139,7 @@
 	desc = "A simple powered hand drill. It's fitted with a screw bit."
 	icon_state = "drill_screw"
 	item_state = "drill"
-	matter = list(MAT_STEEL = 150, MAT_SILVER = 50)
+	materials = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	slot_flags = SLOT_BELT
 	damage_force = 8
@@ -184,7 +184,7 @@
 	icon_state = "crystal_screwdriver"
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
-	matter = list(MATERIAL_CRYSTAL = 1250)
+	materials = list(MATERIAL_CRYSTAL = 1250)
 	tool_speed = 0.2
 
 /obj/item/tool/screwdriver/crystal/Initialize()

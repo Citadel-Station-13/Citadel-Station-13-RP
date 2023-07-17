@@ -1323,7 +1323,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/ashlander_village)
 "zl" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Infirmary"
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -1709,7 +1709,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
 "IK" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Surgery"
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -2229,7 +2229,7 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/ashlander_village)
 "TB" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Triage"
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -2362,7 +2362,7 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/east/ashlander_village)
 "Wn" = (
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Refinery"
 	},
 /turf/simulated/floor/tiled/lavaland,

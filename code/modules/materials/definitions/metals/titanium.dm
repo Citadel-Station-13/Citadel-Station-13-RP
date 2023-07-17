@@ -3,18 +3,17 @@
 	name = MAT_TITANIUM
 	stack_type = /obj/item/stack/material/titanium
 	conductivity = 2.38
-	icon_base = 'icons/turf/walls/metal.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	door_icon_base = "metal"
 	icon_colour = "#D1E6E3"
 	table_icon_base = "metal"
+	tgui_icon_key = "titanium"
 
 /datum/material/plasteel/titanium/hull
 	id = "titanium_hull"
 	name = MAT_TITANIUMHULL
 	stack_type = null
-	icon_base = 'icons/turf/walls/hull.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
 	integrity = 400
 	melting_point = 6000
 	icon_colour = "#777777"

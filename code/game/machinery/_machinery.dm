@@ -105,16 +105,21 @@
 	// todo: don't block rad contents and just have component parts be unable to be contaminated while inside
 	// todo: wow rad contents is a weird system
 	rad_flags = RAD_BLOCK_CONTENTS
+	// todo: anchored / unanchored should be replaced by movement force someday, how to handle that?
 
 	//* Construction / Deconstruction
-	/// Can be constructed / deconstructed by players by default
+	/// Can be constructed / deconstructed by players by default. null for off, number for time needed. Panel must be open.
 	//  todo: proc for allow / disallow, refactor
-	var/allow_deconstruct = FALSE
-	/// Can be anchored / unanchored by players without deconstructing by default
+	var/default_deconstruct
+	/// Can have panel open / closed by players by default. null for off, number for time needed. You usually want 0 for instant.
+	var/default_panel
+	/// Can be anchored / unanchored by players without deconstructing by default with a wrench. null for off, number for time needed.
 	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
-	var/allow_unanchor = FALSE
-	/// overlay state added when panel is open
+	var/default_unanchor
+	/// default icon state overlay for panel open
 	var/panel_icon_state
+	/// is the maintenance panel open?
+	var/panel_open = FALSE
 
 	//* unsorted
 	var/machine_stat = 0
@@ -135,7 +140,6 @@
 	///List of all the parts used to build it, if made from certain kinds of frames.
 	var/list/component_parts = null
 	var/uid
-	var/panel_open = FALSE
 	var/global/gl_uid = 1
 	///Sound played on succesful interface. Just put it in the list of vars at the start.
 	var/clicksound
@@ -189,13 +193,57 @@
 				qdel(A)
 	return ..()
 
+/obj/machinery/screwdriver_act(obj/item/I, mob/user, flags, hint)
+	if(!isnull(default_panel))
+		default_deconstruction_screwdriver(user, I)
+		return TRUE
+	return ..()
+
+/obj/machinery/crowbar_act(obj/item/I, mob/user, flags, hint)
+	if(!isnull(default_deconstruct))
+		default_deconstruction_crowbar(user, I)
+		return TRUE
+	return ..()
+
+/obj/machinery/wrench_act(obj/item/I, mob/user, flags, hint)
+	if(!isnull(default_unanchor))
+		default_unfasten_wrench(user, I, default_unanchor)
+		return TRUE
+	return ..()
+
+/obj/machinery/dynamic_tool_functions(obj/item/I, mob/user)
+	. = ..()
+	if(!isnull(default_unanchor))
+		COERCE_OPTIONS_LIST_IN(.[TOOL_WRENCH])
+		.[TOOL_WRENCH] += anchored? "unfasten" : "fasten"
+	if(!isnull(default_deconstruct) && panel_open)
+		COERCE_OPTIONS_LIST_IN(.[TOOL_CROWBAR])
+		.[TOOL_CROWBAR] += "deconstruct"
+	if(!isnull(default_panel))
+		COERCE_OPTIONS_LIST_IN(.[TOOL_SCREWDRIVER])
+		.[TOOL_SCREWDRIVER] += panel_open? "close panel" : "open panel"
+
+/obj/machinery/dynamic_tool_image(function, hint)
+	. = ..()
+	switch(hint)
+		if("unfasten")
+			return dyntool_image_backward(TOOL_WRENCH)
+		if("fasten")
+			return dyntool_image_forward(TOOL_WRENCH)
+		if("deconstruct")
+			return dyntool_image_backward(TOOL_CROWBAR)
+		if("open panel")
+			return dyntool_image_backward(TOOL_SCREWDRIVER)
+		if("close panel")
+			return dyntool_image_forward(TOOL_SCREWDRIVER)
+
+/obj/machinery/process(delta_time)//If you dont use process or power why are you here
+	return PROCESS_KILL
+
 /obj/machinery/update_overlays()
 	. = ..()
 	if(panel_open && panel_icon_state)
 		. += panel_icon_state
-
-/obj/machinery/process()//If you dont use process or power why are you here
-	return PROCESS_KILL
 
 /obj/machinery/emp_act(severity)
 	if(use_power && machine_stat == NONE)
@@ -211,6 +259,11 @@
 		spawn(10)
 			qdel(pulse2)
 	..()
+
+/obj/machinery/update_overlays()
+	. = ..()
+	if(panel_open && panel_icon_state)
+		. += panel_icon_state
 
 /obj/machinery/legacy_ex_act(severity)
 	switch(severity)

@@ -7,3 +7,4 @@
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	conductivity = 100
+	tgui_icon_key = "ingots"

@@ -4,8 +4,8 @@
 	stack_type = /obj/item/stack/material/plasteel
 	integrity = 400
 	melting_point = 6000
-	icon_base = 'icons/turf/walls/solid.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#777777"
 	explosion_resistance = 25
 	hardness = 80
@@ -16,14 +16,13 @@
 	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT, MAT_PLATINUM = SHEET_MATERIAL_AMOUNT) //todo
 	radiation_resistance = 14
 	table_icon_base = "metal"
+	tgui_icon_key = "plasteel"
 
 /datum/material/plasteel/hull
 	id = "plasteel_hull"
 	name = MAT_PLASTEELHULL
 	stack_type = /obj/item/stack/material/plasteel/hull
 	integrity = 600
-	icon_base = 'icons/turf/walls/hull.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
 	icon_colour = "#777788"
 	explosion_resistance = 40
 

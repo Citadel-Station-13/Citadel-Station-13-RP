@@ -21,7 +21,8 @@
 		/datum/map/sector/piratebase_140,
 		/datum/map/sector/tradeport_140,
 		/datum/map/sector/lavaland_140,
-		/datum/map/sector/roguemining_140,
+		/datum/map/sector/roguemining_140/one,
+		/datum/map/sector/mining_140,
 	)
 
 	//* LEGACY BELOW *//
@@ -34,6 +35,7 @@
 		/datum/shuttle/autodock/overmap/mining/triumph,
 		/datum/shuttle/autodock/overmap/civvie/triumph,
 		/datum/shuttle/autodock/overmap/courser/triumph,
+		/datum/shuttle/autodock/ferry/belter,
 	)
 
 	full_name = "NSV Triumph"

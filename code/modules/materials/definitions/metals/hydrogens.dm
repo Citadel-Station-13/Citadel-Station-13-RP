@@ -6,6 +6,7 @@
 	stack_origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 6, TECH_MAGNET = 5)
 	conductivity = 100
 	is_fusion_fuel = 1
+	tgui_icon_key = "mhydrogen"
 
 /datum/material/tritium
 	name = "tritium"
@@ -17,6 +18,7 @@
 	sheet_plural_name = "ingots"
 	is_fusion_fuel = 1
 	conductive = 0
+	tgui_icon_key = "ingots"
 
 /datum/material/deuterium
 	name = "deuterium"
@@ -28,3 +30,4 @@
 	sheet_plural_name = "ingots"
 	is_fusion_fuel = 1
 	conductive = 0
+	tgui_icon_key = "ingots"

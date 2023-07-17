@@ -33,6 +33,8 @@
 #define CLICKCHAIN_DID_SOMETHING			(1<<5)
 /// attack missed
 #define CLICKCHAIN_ATTACK_MISSED			(1<<6)
+/// completely block attacking (notably, attack_mob, attack_obj) from happening by halting standard_melee_attack.
+#define CLICKCHAIN_DO_NOT_ATTACK			(1<<7)
 
 //! Reachability Depths - checked from level of DirectAccess and turf adjacency.
 /// default reachability depth

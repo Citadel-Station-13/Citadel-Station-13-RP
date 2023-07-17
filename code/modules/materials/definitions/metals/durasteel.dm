@@ -4,8 +4,8 @@
 	stack_type = /obj/item/stack/material/durasteel
 	integrity = 600
 	melting_point = 7000
-	icon_base = 'icons/turf/walls/metal.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#6EA7BE"
 	explosion_resistance = 75
 	hardness = 100
@@ -15,12 +15,11 @@
 	stack_origin_tech = list(TECH_MATERIAL = 8)
 	composite_material = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT, MAT_DIAMOND = SHEET_MATERIAL_AMOUNT) //shrug
 	table_icon_base = "metal"
+	tgui_icon_key = "durasteel"
 
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
 	id = "durasteel_hull"
 	name = MAT_DURASTEELHULL
-	icon_base = 'icons/turf/walls/hull.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
 	icon_colour = "#45829a"
 	explosion_resistance = 90
 	reflectivity = 0.9

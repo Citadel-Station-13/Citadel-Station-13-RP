@@ -610,7 +610,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/command)
 "hd" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Modified Security Airlock";
 	req_one_access = list(150)
 	},
@@ -717,7 +717,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/barracks)
 "hp" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Modified Security Airlock";
 	req_one_access = list(150)
 	},
@@ -1200,7 +1200,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Modified Security Airlock";
 	req_one_access = list(150)
 	},
@@ -1276,7 +1276,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Modified Security Airlock";
 	req_one_access = list(150)
 	},

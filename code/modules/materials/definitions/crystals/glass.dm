@@ -21,6 +21,7 @@
 	rod_product = /obj/item/stack/material/glass/reinforced
 	table_icon_base = "glass"
 	table_reinf_icon_base = "rglass"
+	tgui_icon_key = "glass"
 
 /datum/material/glass/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
 
@@ -118,6 +119,7 @@
 	created_fulltile_window = /obj/structure/window/reinforced/full
 	wire_product = null
 	rod_product = null
+	tgui_icon_key = "rglass"
 
 /datum/material/glass/phoron
 	id = "glass_boro"
@@ -133,6 +135,7 @@
 	created_fulltile_window = /obj/structure/window/phoronbasic/full
 	wire_product = null
 	rod_product = /obj/item/stack/material/glass/phoronrglass
+	tgui_icon_key = "pglass"
 
 /datum/material/glass/phoron/reinforced
 	id = "glass_boro_reinf"
@@ -149,3 +152,4 @@
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	composite_material = list() //todo
 	rod_product = null
+	tgui_icon_key = "prglass"

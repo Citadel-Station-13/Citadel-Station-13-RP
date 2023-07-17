@@ -27,7 +27,7 @@
 	var/trajectory_ignore_forcemove = FALSE	//instructs forceMove to NOT reset our trajectory to the new location!
 	var/ignore_source_check = FALSE
 
-	var/speed = 0.8			//Amount of deciseconds it takes for projectile to travel
+	var/speed = 0.55			//Amount of deciseconds it takes for projectile to travel
 	var/Angle = 0
 	var/original_angle = 0		//Angle at firing
 	var/nondirectional_sprite = FALSE //Set TRUE to prevent projectiles from having their sprites rotated based on firing angle

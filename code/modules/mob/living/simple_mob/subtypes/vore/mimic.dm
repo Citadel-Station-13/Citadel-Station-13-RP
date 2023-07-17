@@ -14,6 +14,7 @@
 	icon_state = "mimic"
 	icon_opened = "open"
 	icon_closed = "mimic"
+	closet_appearance = null
 	var/mimic_chance = 30
 	var/mimic_active = TRUE
 

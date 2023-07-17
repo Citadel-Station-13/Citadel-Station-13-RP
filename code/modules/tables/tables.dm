@@ -15,7 +15,7 @@ var/list/table_icon_cache = list()
 
 	// smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_TABLES)
-	canSmoothWith = (SMOOTH_GROUP_TABLES)
+	canSmoothWith = (SMOOTH_GROUP_TABLES + SMOOTH_GROUP_LOW_WALL)
 
 	integrity = 200
 	integrity_max = 200

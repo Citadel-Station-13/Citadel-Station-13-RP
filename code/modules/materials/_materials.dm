@@ -91,9 +91,10 @@
 	/// Colour applied to products of this material.
 	var/icon_colour
 	/// Wall and table base icon tag. See header.
-	var/icon_base = 'icons/turf/walls/solid.dmi'
+	var/icon_base = 'icons/turf/walls/solid_wall.dmi'
 	/// Overlay used.
-	var/icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
+	var/icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
+	var/wall_stripe_icon = 'icons/turf/walls/wall_stripe.dmi'
 	/// Door base icon tag.
 	var/door_icon_base = "metal"
 	/// Table base icon tag.
@@ -199,6 +200,10 @@
 	var/worth = 0
 	/// economic category for this
 	var/economic_category_material = ECONOMIC_CATEGORY_MATERIAL_DEFAULT
+
+	//? TGUI
+	/// tgui icon key in icons/interface/materials.dm
+	var/tgui_icon_key = "unknown"
 
 /// Placeholders for light tiles and rglass.
 /datum/material/proc/build_rod_product(mob/user, obj/item/stack/used_stack, obj/item/stack/target_stack)
@@ -311,7 +316,6 @@
 /datum/material/proc/place_sheet(turf/target, amount)
 	if(stack_type)
 		return new stack_type(target, ispath(stack_type, /obj/item/stack)? amount : null)
-
 
 // As above.
 /datum/material/proc/place_shard(turf/target)

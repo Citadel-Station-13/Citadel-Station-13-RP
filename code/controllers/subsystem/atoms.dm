@@ -93,6 +93,22 @@ SUBSYSTEM_DEF(atoms)
 
 	return qdeleted || QDELING(A)
 
+/**
+ * immediately creates and inits an atom
+ *
+ * @params
+ * * path - typepath
+ * * mapload - treat as mapload?
+ * * where - location to init at
+ * * ... - rest of args are passed to new() / Initialize().
+ */
+/datum/controller/subsystem/atoms/proc/instance_atom_immediate(path, mapload, atom/where, ...)
+	var/old_initialized = initialized
+	initialized = mapload? INITIALIZATION_INNEW_MAPLOAD : INITIALIZATION_INNEW_REGULAR
+	var/atom/created = new path(arglist(args.Copy()))
+	initialized = old_initialized
+	return created
+
 /datum/controller/subsystem/atoms/proc/map_loader_begin()
 	old_subsystem_initialized = initialized
 	initialized = INITIALIZATION_INSSATOMS

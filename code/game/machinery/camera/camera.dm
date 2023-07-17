@@ -1,7 +1,7 @@
 /obj/machinery/camera
 	name = "security camera"
 	desc = "It's used to monitor rooms."
-	icon = 'icons/obj/monitors_vr.dmi'
+	icon = 'icons/obj/monitors.dmi'
 	icon_state = "camera"
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
@@ -64,6 +64,7 @@
 	if(!c_tag)
 		var/area/A = get_area(src)
 		c_tag = "[A ? A.name : "Unknown"] #[rand(111,999)]"
+	update_icon()
 	return ..()
 
 /obj/machinery/camera/Destroy()
@@ -261,6 +262,23 @@
 		icon_state = "[initial(icon_state)]emp"
 	else
 		icon_state = initial(icon_state)
+
+/obj/machinery/camera/setDir(ndir)
+	. = ..()
+	base_pixel_x = 0
+	base_pixel_y = 0
+	var/turf/T = get_step(get_turf(src), turn(src.dir, 180))
+	for(var/obj/O in T.contents)
+		if(O.density)
+			switch(dir)
+				if(SOUTH)
+					base_pixel_y = 21
+				if(WEST)
+					base_pixel_x = 10
+				if(EAST)
+					base_pixel_x = -10
+			break
+	reset_pixel_offsets()
 
 /obj/machinery/camera/proc/triggerCameraAlarm(duration = 0)
 	alarm_on = 1

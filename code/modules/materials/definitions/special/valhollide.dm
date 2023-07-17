@@ -2,7 +2,7 @@
 	name = MAT_VALHOLLIDE
 	id = "valhollide"
 	stack_type = /obj/item/stack/material/valhollide
-	icon_base = 'icons/turf/walls/stone.dmi'
+	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	door_icon_base = "stone"
 	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
 	icon_colour = "##FFF3B2"
