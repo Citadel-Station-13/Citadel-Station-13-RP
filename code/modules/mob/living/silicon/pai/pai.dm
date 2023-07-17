@@ -75,6 +75,16 @@
 		"Canine" = list("yaps","barks","woofs"),
 		)
 
+	// shell transformation
+	var/global/list/possible_clothing_options = list(
+		"Maid Costume" = /obj/item/clothing/under/dress/maid/sexy,
+		"Grey Pleated Skirt" = /obj/item/clothing/under/color/grey_skirt,
+		"Last Uploaded Clothing" = null,
+		)
+	var/obj/item/clothing/last_uploaded_path
+	var/obj/item/clothing/base_uploaded_path
+	var/uploaded_snowflake_worn_state
+
 	/// The cable we produce and use when door or camera jacking.
 	var/obj/item/pai_cable/cable
 
@@ -207,13 +217,7 @@
 	people_eaten = min(1, new_people_eaten)
 
 // changing the shell
-/mob/living/silicon/pai/proc/switch_shell(var/obj/item/new_shell)
-	// we're on cooldown or we are dead
-	if(!can_action())
-		return FALSE
-
-	last_special = world.time + 20
-
+/mob/living/silicon/pai/proc/switch_shell(obj/item/new_shell)
 	// setup transform text
 	if(istype(new_shell, /obj/item/paicard))
 		transform_component.to_object_text = "neatly folds inwards, compacting down to a rectangular card"
@@ -235,3 +239,25 @@
 	set_resting(FALSE)
 	update_mobility()
 	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
+
+	// pass attack self on to the card regardless of our shell
+	if(!istype(new_shell, /obj/item/paicard))
+		RegisterSignal(shell, COMSIG_ITEM_ATTACK_SELF, .proc/pass_attack_self_to_card)
+
+// changing the shell into clothing
+/mob/living/silicon/pai/proc/change_shell_by_path(object_path)
+	if(!can_change_shell())
+		return FALSE
+
+	last_special = world.time + 20
+
+	var/obj/item/new_object = new object_path
+	new_object.name = src.name
+	new_object.desc = src.desc
+	new_object.forceMove(src.loc)
+	switch_shell(new_object)
+	return TRUE
+
+/mob/living/silicon/pai/proc/pass_attack_self_to_card()
+	if(istype(shell.loc, /mob/living/carbon))
+		card.attack_self(shell.loc)

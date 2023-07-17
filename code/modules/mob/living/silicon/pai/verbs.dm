@@ -115,3 +115,44 @@
 	if (stat != CONSCIOUS)
 		return
 	return feed_grabbed_to_self(src,T)
+
+/mob/living/silicon/pai/verb/change_shell_clothing()
+	set name = "pAI Clothing"
+	set category = "pAI Commands"
+	set desc = "Allows you to transform your shell into clothing."
+
+	if(!can_change_shell())
+		return
+
+	var/clothing_entry = input(usr, "What clothing would you like to change your shell to?") as null|anything in possible_clothing_options
+	if(clothing_entry)
+		if(clothing_entry != "Last Uploaded Clothing")
+			change_shell_by_path(possible_clothing_options[clothing_entry])
+		else
+			if(last_uploaded_path && can_change_shell())
+				last_special = world.time + 20
+				var/state = initial(last_uploaded_path.icon_state)
+				var/icon = initial(last_uploaded_path.icon)
+				var/obj/item/clothing/new_clothing = new base_uploaded_path
+				new_clothing.forceMove(src.loc)
+				new_clothing.name = src.name
+				new_clothing.desc = src.desc
+				new_clothing.icon = icon
+				new_clothing.icon_state = state
+
+				var/obj/item/clothing/under/U = new_clothing
+				if(istype(U))
+					U.snowflake_worn_state = uploaded_snowflake_worn_state
+
+				switch_shell(new_clothing)
+
+/mob/living/silicon/pai/verb/revert_shell_to_card()
+	set name = "Reset Shell"
+	set category = "pAI Commands"
+	set desc = "Reverts your shell back to card form."
+
+	if(!can_change_shell())
+		return
+	if(!card || card.loc != src || card == shell)
+		return
+	switch_shell(card)
