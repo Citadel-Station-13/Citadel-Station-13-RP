@@ -191,34 +191,6 @@
 	g_skin = green
 	b_skin = blue
 
-/datum/preferences/proc/dress_preview_mob(var/mob/living/carbon/human/mannequin, flags)
-	copy_to(mannequin, flags)
-
-	if(!equip_preview_mob)
-		return
-
-	var/datum/role/job/previewJob = SSjob.job_by_id(preview_job_id())
-
-	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/role/job/station/ai || previewJob.type == /datum/role/job/station/cyborg)))
-		equip_loadout(mannequin, flags, previewJob)
-
-	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)
-		mannequin.job = previewJob.title
-		previewJob.equip_preview(mannequin, get_job_alt_title_name(previewJob))
-
-/datum/preferences/proc/update_character_previews()
-	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
-	mannequin.delete_inventory(TRUE)
-	if(regen_limbs)
-		var/datum/species/current_species = real_species_datum()
-		current_species.create_organs(mannequin)
-		regen_limbs = 0
-	dress_preview_mob(mannequin)
-	mannequin.update_transform()
-	mannequin.compile_overlays()
-
-	set_character_renders(new /mutable_appearance(mannequin))
-
 //TFF 5/8/19 - add randomised sensor setting for random button clicking
 /datum/preferences/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
 	sensorpref = rand(1,5)

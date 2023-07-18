@@ -1,5 +1,7 @@
 /**
  * Lines up and un-overlaps character edit previews. Also un-splits taurs.
+ *
+ * todo: refactor
  */
 /datum/preferences/proc/update_character_previews()
 	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
@@ -16,6 +18,22 @@
 	mannequin.toggle_wing_vr(setting = TRUE)
 	mannequin.compile_overlays()
 	set_character_renders(new /mutable_appearance(mannequin))
+
+// todo: refactor
+/datum/preferences/proc/dress_preview_mob(var/mob/living/carbon/human/mannequin, flags)
+	copy_to(mannequin, flags)
+
+	if(!equip_preview_mob)
+		return
+
+	var/datum/role/job/previewJob = SSjob.job_by_id(preview_job_id())
+
+	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/role/job/station/ai || previewJob.type == /datum/role/job/station/cyborg)))
+		equip_loadout(mannequin, flags, previewJob)
+
+	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)
+		mannequin.job = previewJob.title
+		previewJob.equip_preview(mannequin, get_job_alt_title_name(previewJob))
 
 /datum/preferences/proc/set_character_renders(mutable_appearance/MA)
 	if(!client)
