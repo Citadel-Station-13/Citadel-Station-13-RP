@@ -37,31 +37,32 @@
 		if(length(slot) > LOADOUT_MAX_ITEMS)
 			slot.len = LOADOUT_MAX_ITEMS
 		var/used_cost = 0
-		for(var/id in slot)
+		var/list/slot_entries = slot[LOADOUT_SLOTDATA_ENTRIES]
+		for(var/id in slot_entries)
 			var/datum/loadout_entry/entry = global.gear_datums[id]
 			if(isnull(entry))
-				slot -= id
+				slot_entries -= id
 				errors?.Add("Could not find loadout entry id '[id]'")
 				continue
 			if(dedupe[id])
-				slot -= id
+				slot_entries -= id
 				errors?.Add("Fatal: Removed duplicate loadout entry for id '[id]'")
 				continue
 			else
 				dedupe[id] = TRUE
 			if(!(entry in valid_entries))
-				slot -= id
+				slot_entries -= id
 				errors?.Add("Not allowed to take loadout entry id '[id]")
 				continue
 			if(entry.cost + used_cost > total_cost)
-				slot -= id
+				slot_entries -= id
 				errors?.Add("Out of cost to take loadout entry '[id]'")
 				continue
 			else
 				used_cost += entry.cost
 			// commented out - /datum/loadout_entry checks this on spawn.
 			/*
-			var/list/entry_data = slot[id]
+			var/list/entry_data = slot_entries[id]
 			for(var/datakey in entry_data)
 				switch(datakey)
 					if(LOADOUT_ENTRYDATA_RECOLOR)
@@ -151,7 +152,7 @@
 		slots[++slots.len] = list(
 			"name" = the_slot?[LOADOUT_SLOTDATA_NAME] || "Slot [i]"
 		)
-	var/list/the_slot = length(all_slots) >= slot_index? all_slots[slot_index] : list()
+	var/list/the_slot = length(all_slots) >= slot_index? all_slots[all_slots[slot_index]]: list()
 	var/list/entries = the_slot[LOADOUT_SLOTDATA_ENTRIES] || list()
 	var/cost_used = 0
 	var/cost_max = max_loadout_cost()
@@ -186,16 +187,22 @@
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
 			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
-			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			var/list/slot = loadout["[slot_index]"]
 			slot = slot?.Copy() || list()
-			loadout[slot_index] = slot
+			loadout["[slot_index]"] = slot
 			var/list/entries = slot[LOADOUT_SLOTDATA_ENTRIES]
+			if(isnull(entries))
+				slot[LOADOUT_SLOTDATA_ENTRIES] = (entries = list())
+			else
+				entries = entries.Copy()
+				slot[LOADOUT_SLOTDATA_ENTRIES] = entries
 			if(entries[id])
 				entries -= id
 			else
 				entries[id] = list()
 			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
 			push_loadout_data()
+			pref.update_character_previews()
 			return TRUE
 		if("rename")
 			var/id = params["id"]
@@ -207,9 +214,9 @@
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
 			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
-			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			var/list/slot = loadout["[slot_index]"]
 			slot = slot?.Copy() || list()
-			loadout[slot_index] = slot
+			loadout["[slot_index]"] = slot
 			var/list/entries = slot[LOADOUT_SLOTDATA_ENTRIES]
 			var/list/entry_data = entries[id]
 			if(isnull(entry_data))
@@ -235,9 +242,9 @@
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
 			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
-			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			var/list/slot = loadout["[slot_index]"]
 			slot = slot?.Copy() || list()
-			loadout[slot_index] = slot
+			loadout["[slot_index]"] = slot
 			var/list/entries = slot[LOADOUT_SLOTDATA_ENTRIES]
 			var/list/entry_data = entries[id]
 			if(isnull(entry_data))
@@ -263,9 +270,9 @@
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
 			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
-			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			var/list/slot = loadout["[slot_index]"]
 			slot = slot?.Copy() || list()
-			loadout[slot_index] = slot
+			loadout["[slot_index]"] = slot
 			var/list/entries = slot[LOADOUT_SLOTDATA_ENTRIES]
 			var/list/entry_data = entries[id]
 			if(isnull(entry_data))
@@ -280,6 +287,7 @@
 			entry_data[LOADOUT_ENTRYDATA_RENAME] = color
 			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
 			push_loadout_data()
+			pref.update_character_previews()
 			return TRUE
 		if("tweak")
 			var/id = params["id"]
@@ -291,9 +299,9 @@
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
 			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
-			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			var/list/slot = loadout["[slot_index]"]
 			slot = slot?.Copy() || list()
-			loadout[slot_index] = slot
+			loadout["[slot_index]"] = slot
 			var/list/entries = slot[LOADOUT_SLOTDATA_ENTRIES]
 			var/list/entry_data = entries[id]
 			if(isnull(entry_data))
@@ -310,6 +318,7 @@
 				tweak_data[tweak.id] = tweak.get_metadata(usr, tweak_data[tweak.id])
 				pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
 				push_loadout_data()
+				pref.update_character_previews()
 			return TRUE
 		if("clear")
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
@@ -318,12 +327,13 @@
 			var/wanted_index = text2num(params["index"])
 			if(slot_index != wanted_index)
 				return TRUE
-			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			var/list/slot = loadout["[slot_index]"]
 			slot = slot.Copy()
-			loadout[slot_index] = slot
+			loadout["[slot_index]"] = slot
 			slot[LOADOUT_SLOTDATA_ENTRIES] = list()
 			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
 			push_loadout_data()
+			pref.update_character_previews()
 			return TRUE
 		if("slot")
 			var/index = text2num(params["index"])
@@ -344,7 +354,7 @@
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
 			var/slot_index = index
-			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
+			var/list/slot = loadout["[slot_index]"]
 			slot = slot?.Copy()
 			slot?[LOADOUT_SLOTDATA_NAME] = name
 			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
