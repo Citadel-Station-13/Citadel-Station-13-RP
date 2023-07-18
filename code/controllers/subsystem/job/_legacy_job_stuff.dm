@@ -246,8 +246,6 @@
 		return null
 
 	var/datum/role/job/job = get_job(rank)
-	var/list/spawn_in_storage = list()
-	var/real_species_name = H.species.name
 
 	if(!joined_late)
 		var/obj/landmark/spawnpoint/S = SSjob.get_roundstart_spawnpoint(H, H.client, job.type, job.faction)

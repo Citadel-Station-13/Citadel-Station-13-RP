@@ -6,6 +6,7 @@
 /datum/category_group/player_setup_category/loadout_preferences/override_tab_to(mob/user)
 	var/datum/category_item/player_setup_item/loadout/entry = locate() in items
 	entry.ui_interact(user)
+	return TRUE
 
 /datum/category_item/player_setup_item/loadout_slot
 	name = "Loadout Slot"
@@ -37,7 +38,7 @@
 			slot.len = LOADOUT_MAX_ITEMS
 		var/used_cost = 0
 		for(var/id in slot)
-			var/datum/loadout_entry/entry = GLOB.gear_datums[id]
+			var/datum/loadout_entry/entry = global.gear_datums[id]
 			if(isnull(entry))
 				slot -= id
 				errors?.Add("Could not find loadout entry id '[id]'")
@@ -106,6 +107,15 @@
 	.["gearData"] = tgui_loadout_data()
 	.["characterName"] = pref.real_name
 
+/datum/category_item/player_setup_item/loadout/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "CharacterLoadoutStandalone")
+		ui.open()
+
+/datum/category_item/player_setup_item/loadout/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+	return UI_INTERACTIVE
+
 /datum/category_item/player_setup_item/loadout/proc/tgui_loadout_selected(list/loadout_slot)
 	. = list()
 	.["name"] = loadout_slot[LOADOUT_SLOTDATA_NAME]
@@ -160,6 +170,9 @@
 /datum/category_item/player_setup_item/loadout/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
+		return
+	// todo: we really need a better way, tgui prefs when lol
+	if(pref.client_ckey != usr.ckey && !check_rights(usr))
 		return
 	switch(action)
 		if("toggle")
@@ -315,7 +328,6 @@
 			if(index > LOADOUT_MAX_SLOTS)
 				return TRUE
 			pref.set_character_data(CHARACTER_DATA_LOADOUT_SLOT, index)
-			var/list/loadout_slot = current_loadout_slot(pref)
 			push_loadout_data()
 			return TRUE
 		if("slotName")
@@ -398,15 +410,22 @@
 		return
 	var/max_cost = max_loadout_cost()
 	var/used_cost = 0
+	var/real_species_name = real_species_name()
 	for(var/id in loadout_data)
 		var/datum/loadout_entry/entry = gear_datums[id]
 		if(!(flags & PREF_COPY_TO_LOADOUT_IGNORE_ROLE))
-
+			if(length(entry.allowed_roles))
+				if(!istype(role, /datum/role/job))
+					continue
+				var/datum/role/job/J = role
+				if(!(J.title in entry.allowed_roles))
+					continue
 		if(!(flags & PREF_COPY_TO_LOADOUT_IGNORE_WHITELIST))
-
+			if(length(entry.ckeywhitelist) && !(client_ckey in entry.ckeywhitelist))
+				continue
 		if(!(flags & PREF_COPY_TO_LOADOUT_IGNORE_CHECKS))
-
-		#warn impl all
+			if(entry.legacy_species_lock && (entry.legacy_species_lock != real_species_name))
+				continue
 		if(max_cost < (used_cost + entry.cost))
 			continue
 		used_cost += entry.cost

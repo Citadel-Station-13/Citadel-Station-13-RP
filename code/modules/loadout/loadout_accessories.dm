@@ -138,6 +138,9 @@
 		sweaters[initial(sweater_type.name)] = sweater_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(sweaters, /proc/cmp_text_asc))
 
+/datum/loadout_entry/accessory/bracelet
+	abstract_type = /datum/loadout_entry/accessory/bracelet
+
 /datum/loadout_entry/accessory/bracelet/material
 	name = "Bracelet - Selection"
 	description = "Choose from a number of bracelets."
@@ -189,8 +192,6 @@
 /datum/loadout_entry/accessory/cowledvest
 	name = "Cowled Vest"
 	path = /obj/item/clothing/accessory/cowledvest
-
-/datum/loadout_entry/accessory/webbing
 
 /datum/loadout_entry/accessory/vmcrystal
 	name = "Life Crystal"
