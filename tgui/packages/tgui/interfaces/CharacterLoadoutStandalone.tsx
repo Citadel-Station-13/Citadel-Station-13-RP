@@ -20,12 +20,13 @@ export const CharacterLoadoutStandalone = (props, context) => {
   let { data, act } = useBackend<CharacterLoadoutStandaloneContext>(context);
   return (
     <Window width={800} height={600} title={`Loadout - ${data.characterName}`}>
-      <CharacterLoadout
-        gearContext={data.gearContext}
-        gearData={data.gearData}
-        fill
-        fitted
-        scrollable />
+      <Window.Content>
+        <CharacterLoadout
+          gearContext={data.gearContext}
+          gearData={data.gearData}
+          fill
+          scrollable />
+      </Window.Content>
     </Window>
   );
 };

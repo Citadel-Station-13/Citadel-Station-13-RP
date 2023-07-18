@@ -8,14 +8,14 @@ var/list/gear_datums = list()
 		var/datum/loadout_entry/entry = global.gear_datums[id]
 		categories[entry.sort_category] = TRUE
 		var/list/instance = list(
-			"id" = entry.id,
+			"id" = entry.legacy_get_id(),
 			"name" = entry.name,
 			"cost" = entry.cost,
 			"category" = entry.sort_category,
 			"desc" = entry.description,
 			"customize" = entry.loadout_customize_flags,
 		)
-		instances[++instances.len] = instance
+		instances[instance["id"]] = instance
 	var/list/flattened_categories = list()
 	for(var/i in categories)
 		flattened_categories += i
@@ -141,5 +141,6 @@ var/list/gear_datums = list()
 					break
 			if(!found)
 				continue
+		global.gear_datums[G.legacy_get_id()] = G
 
 	return 1

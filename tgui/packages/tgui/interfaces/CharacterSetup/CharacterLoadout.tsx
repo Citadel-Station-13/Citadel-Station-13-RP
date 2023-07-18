@@ -117,7 +117,7 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
                     key={cat}
                     selected={cat === loadoutCategory}
                     onClick={() => setLoadoutCategory(cat)}>
-                    {cat}
+                    {cat} test
                   </Tabs.Tab>
                 ))}
               </Tabs>
