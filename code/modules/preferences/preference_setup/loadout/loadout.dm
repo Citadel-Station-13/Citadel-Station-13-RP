@@ -230,9 +230,12 @@
 			if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_NAME))
 				return TRUE
 			var/name = sanitize(params["name"], MAX_NAME_LEN)
-			if(!name)
+			if(isnull(name))
 				return TRUE
-			entry_data[LOADOUT_ENTRYDATA_RENAME] = name
+			if(name)
+				entry_data[LOADOUT_ENTRYDATA_RENAME] = name
+			else
+				entry_data -= LOADOUT_ENTRYDATA_RENAME
 			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
 			push_loadout_data()
 			return TRUE
@@ -258,9 +261,12 @@
 			if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_DESC))
 				return TRUE
 			var/desc = sanitize(params["desc"], MAX_MESSAGE_LEN)
-			if(!desc)
+			if(isnull(desc))
 				return TRUE
-			entry_data[LOADOUT_ENTRYDATA_RENAME] = desc
+			if(desc)
+				entry_data[LOADOUT_ENTRYDATA_REDESC] = desc
+			else
+				entry_data -= LOADOUT_ENTRYDATA_REDESC
 			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
 			push_loadout_data()
 			return TRUE
@@ -286,9 +292,10 @@
 			if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_COLOR))
 				return TRUE
 			var/color = sanitize_probably_a_byond_color(params["color"], null)
-			if(!color)
-				return TRUE
-			entry_data[LOADOUT_ENTRYDATA_RENAME] = color
+			if(!isnull(color))
+				entry_data[LOADOUT_ENTRYDATA_RECOLOR] = color
+			else
+				entry_data -= LOADOUT_ENTRYDATA_RECOLOR
 			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
 			push_loadout_data()
 			pref.update_character_previews()
@@ -353,7 +360,7 @@
 			if(!ISINRANGE(index, 1, LOADOUT_MAX_SLOTS))
 				return FALSE
 			var/name = params["name"] || (input(usr, "Choose a name for slot [index]", "Slot Rename", "Slot [index]") as text|null)
-			if(!name)
+			if(isnull(name))
 				return TRUE
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
@@ -361,7 +368,10 @@
 			var/list/slot = loadout["[slot_index]"]
 			slot = slot?.Copy()
 			loadout["[slot_index]"] = slot
-			slot?[LOADOUT_SLOTDATA_NAME] = name
+			if(name)
+				slot?[LOADOUT_SLOTDATA_NAME] = name
+			else
+				slot?.Remove(LOADOUT_SLOTDATA_NAME)
 			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
 			push_loadout_data()
 			return TRUE

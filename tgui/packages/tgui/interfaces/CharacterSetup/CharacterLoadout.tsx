@@ -195,6 +195,7 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
     return (
       <Stack.Item>
         <Collapsible
+          captureKeys={false}
           title={(
             <>
               {this.props.entry.customize & LoadoutCustomizations.Rename && (
@@ -203,13 +204,16 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
                     ...prevState,
                     editingName: !prevState.editingName,
                   }))
-                } color="transparent" selected={this.state.editingName} />
+                } color="transparent" selected={this.state.editingName || !!this.props.selected?.rename} />
               )}
               {this.state.editingName? (
                 <Input
                   value={this.props.selected?.rename}
-                  onChange={(e, val) => this.props.customizeNameAct?.(this.props.entry.id, val)} />
-              ) : this.props.entry.name}
+                  onChange={(e, val) => {
+                    this.props.customizeNameAct?.(this.props.entry.id, val);
+                    this.setState((prevState) => ({ ...prevState, editingName: false }));
+                  }} />
+              ) : (this.props.selected?.rename !== undefined? this.props.selected.rename : this.props.entry.name)}
             </>
           )}
           color="transparent"
@@ -222,9 +226,21 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
           <Box ml={4.25}>
             <Box>
               {this.props.entry.customize & LoadoutCustomizations.Redesc && (
-                <Button icon="pen" onClick={() => this.props.customizeDescAct?.(this.props.entry.id)} color="transparent" />
+                <Button icon="pen" onClick={
+                  () => this.props.selected && this.setState((prevState) => ({
+                    ...prevState,
+                    editingDesc: !prevState.editingDesc,
+                  }))
+                } color="transparent" selected={this.state.editingDesc || !!this.props.selected?.redesc} />
               )}
-              {this.props.entry.desc}
+              {this.state.editingDesc? (
+                <Input
+                  value={this.props.selected?.redesc}
+                  onChange={(e, val) => {
+                    this.props.customizeDescAct?.(this.props.entry.id, val);
+                    this.setState((prevState) => ({ ...prevState, editingDesc: false }));
+                  }} />
+              ) : (this.props.selected?.redesc !== undefined? this.props.selected.redesc : this.props.entry.desc)}
             </Box>
             {
               this.props.entry.tweaks?.map((id) => {

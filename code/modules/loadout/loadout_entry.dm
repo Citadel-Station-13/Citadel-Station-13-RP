@@ -7,14 +7,7 @@ var/list/gear_datums = list()
 	for(var/id in global.gear_datums)
 		var/datum/loadout_entry/entry = global.gear_datums[id]
 		categories[entry.sort_category] = TRUE
-		var/list/instance = list(
-			"id" = entry.legacy_get_id(),
-			"name" = entry.name,
-			"cost" = entry.cost,
-			"category" = entry.sort_category,
-			"desc" = entry.description,
-			"customize" = entry.loadout_customize_flags,
-		)
+		var/list/instance = entry.tgui_entry_data()
 		instances[instance["id"]] = instance
 	var/list/flattened_categories = list()
 	for(var/i in categories)
@@ -81,7 +74,7 @@ var/list/gear_datums = list()
 		"name" = display_name || name,
 		"id" = legacy_get_id(),
 		"cost" = cost,
-		"category" = sort_category,,
+		"category" = sort_category,
 		"customize" = loadout_customize_flags,
 		"desc" = description,
 		"tweaks" = tweaks,
