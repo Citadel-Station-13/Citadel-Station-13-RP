@@ -139,11 +139,12 @@
 			continue
 		cost_used += entry.cost
 		var/list/transformed = our_entries[id]
+		transformed = transformed.Copy()
 		var/list/tweak_texts = list()
 		for(var/datum/loadout_tweak/tweak as anything in entry.tweaks)
 			tweak_texts[id] = tweak.get_contents(our_entries[id][LOADOUT_ENTRYDATA_TWEAKS]?[tweak.id] || tweak.get_default())
 		transformed["tweakTexts"] = tweak_texts
-		entries[++entries.len] = transformed
+		entries[entry.legacy_get_id()] = transformed
 
 /datum/category_item/player_setup_item/loadout/proc/tgui_loadout_data()
 	. = list()

@@ -199,12 +199,13 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
           title={(
             <>
               {this.props.entry.customize & LoadoutCustomizations.Rename && (
-                <Button icon="pen" onClick={
-                  () => this.props.selected && this.setState((prevState) => ({
-                    ...prevState,
-                    editingName: !prevState.editingName,
-                  }))
-                } color="transparent" selected={this.state.editingName || !!this.props.selected?.rename} />
+                <Button mr={1} icon="pen"
+                  onClick={
+                    () => this.props.selected && this.setState((prevState) => ({
+                      ...prevState,
+                      editingName: !prevState.editingName,
+                    }))
+                  } color="transparent" selected={this.state.editingName || !!this.props.selected?.rename} />
               )}
               {this.state.editingName? (
                 <Input
@@ -226,7 +227,7 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
           <Box ml={4.25}>
             <Box>
               {this.props.entry.customize & LoadoutCustomizations.Redesc && (
-                <Button icon="pen" onClick={
+                <Button mr={1} icon="pen" onClick={
                   () => this.props.selected && this.setState((prevState) => ({
                     ...prevState,
                     editingDesc: !prevState.editingDesc,
@@ -242,16 +243,13 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
                   }} />
               ) : (this.props.selected?.redesc !== undefined? this.props.selected.redesc : this.props.entry.desc)}
             </Box>
-            {
-              this.props.entry.tweaks?.map((id) => {
+            {!!this.props.selected && this.props.entry.tweaks?.map((id) => {
 
-                return (
-                  <Box key={id}>
-                    test
-                  </Box>
-                );
-              })
-            }
+              return (
+                <Button key={id} content={this.props.selected?.tweakTexts[id]}
+                  color="transparent" />
+              );
+            })}
           </Box>
         </Collapsible>
       </Stack.Item>
