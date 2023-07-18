@@ -1,6 +1,6 @@
 /datum/preferences/proc/refresh(mob/user, update_previews)
 	if(update_previews)
-		update_preview_icon()
+		update_character_previews()
 	ShowChoices(user)
 
 /datum/preferences/proc/show(mob/user)
@@ -20,8 +20,8 @@
 		return
 
 	if(!char_render_holders)
-		update_preview_icon()
-	show_character_previews()
+		update_character_previews()
+	show_character_renders()
 
 	var/dat = "<html><body><center>"
 

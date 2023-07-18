@@ -4031,6 +4031,7 @@
 #include "code\modules\preferences\preferences_setup.dm"
 #include "code\modules\preferences\preferences_spawnpoints.dm"
 #include "code\modules\preferences\preferences_toggle_procs.dm"
+#include "code\modules\preferences\preview.dm"
 #include "code\modules\preferences\shims.dm"
 #include "code\modules\preferences\ui.dm"
 #include "code\modules\preferences\preference_setup\preference_category_new.dm"

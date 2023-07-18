@@ -422,7 +422,7 @@
 	. = list()
 	var/list/loadout_slots = get_character_data(CHARACTER_DATA_LOADOUT)
 	var/loadout_slot = get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
-	var/list/loadout_data = loadout_slots?["[loadout_slot]"]
+	var/list/loadout_data = loadout_slots?["[loadout_slot]"]?[LOADOUT_SLOTDATA_ENTRIES]
 	if(isnull(loadout_data))
 		return
 	var/max_cost = max_loadout_cost()

@@ -159,7 +159,7 @@
 	// load legacy data
 	player_setup.load_character(S)
 	// rebuild previews
-	clear_character_previews() // Recalculate them on next show
+	clear_character_renders() // Recalculate them on next show
 	if(initialized)
 		auto_flush_errors()
 	return TRUE

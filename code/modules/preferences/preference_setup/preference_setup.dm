@@ -239,7 +239,7 @@
 	. |= act(pref, usr, resolved, href_list)
 
 	if(. & PREFERENCES_UPDATE_PREVIEW)
-		pref_mob.client.prefs.update_preview_icon()
+		pref_mob.client.prefs.update_character_previews()
 	if(. & PREFERENCES_REFRESH)
 		pref_mob.client.prefs.ShowChoices(usr)
 
