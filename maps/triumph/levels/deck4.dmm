@@ -1084,13 +1084,13 @@
 /turf/simulated/floor/tiled,
 /area/security/warden)
 "aTx" = (
-/obj/machinery/holopad,
 /obj/machinery/turretid/lethal{
 	pixel_x = -35
 	},
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "aUx" = (
@@ -2729,6 +2729,13 @@
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"cdE" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/machinery/holopad/ship,
+/turf/simulated/floor/tiled,
+/area/shuttle/excursion/general)
 "ceg" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
@@ -16481,7 +16488,7 @@
 "lWJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/holopad,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/wood,
 /area/library)
 "lXk" = (
@@ -22646,6 +22653,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "qpA" = (
@@ -27182,6 +27190,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "tuN" = (
@@ -36711,7 +36720,7 @@ ahf
 nmi
 ieD
 ieD
-qsk
+cdE
 ieD
 nmi
 hBX

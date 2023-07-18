@@ -4795,6 +4795,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "eeE" = (
@@ -6651,7 +6652,7 @@
 "fJP" = (
 /obj/machinery/camera/network/research{
 	dir = 8;
-	network = list("Research","Toxins Test Area")
+	network = list("Research","Toxins  Test  Area")
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics/surgery)
@@ -8628,7 +8629,7 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/camera/network/research{
 	dir = 6;
-	network = list("Research","Toxins Test Area")
+	network = list("Research","Toxins  Test  Area")
 	},
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -9053,7 +9054,7 @@
 /obj/machinery/transhuman/synthprinter,
 /obj/machinery/camera/network/research{
 	dir = 8;
-	network = list("Research","Toxins Test Area")
+	network = list("Research","Toxins  Test  Area")
 	},
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
@@ -9586,7 +9587,7 @@
 "iiV" = (
 /obj/machinery/camera/network/research{
 	dir = 8;
-	network = list("Research","Toxins Test Area")
+	network = list("Research","Toxins  Test  Area")
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -14385,7 +14386,7 @@
 "mrJ" = (
 /obj/machinery/camera/network/research{
 	dir = 8;
-	network = list("Research","Toxins Test Area")
+	network = list("Research","Toxins  Test  Area")
 	},
 /obj/structure/closet/secure_closet/guncabinet/robotics,
 /turf/simulated/floor/tiled/techfloor,
@@ -15077,7 +15078,7 @@
 	},
 /obj/machinery/camera/network/research{
 	dir = 8;
-	network = list("Research","Toxins Test Area")
+	network = list("Research","Toxins  Test  Area")
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
@@ -18015,7 +18016,7 @@
 "pmN" = (
 /obj/machinery/camera/network/research{
 	dir = 8;
-	network = list("Research","Toxins Test Area")
+	network = list("Research","Toxins  Test  Area")
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -18982,7 +18983,7 @@
 	name = "Burn Chamber Air Control";
 	output_tag = "burn_out";
 	pressure_setting = 0;
-	sensors = list("burn_sensor"="Burn Chamber")
+	sensors = list("burn_sensor"="Burn  Chamber")
 	},
 /obj/machinery/button/ignition{
 	id = "burn_chamber";
@@ -26137,7 +26138,7 @@
 /obj/item/suit_cooling_unit,
 /obj/machinery/camera/network/research{
 	dir = 8;
-	network = list("Research","Toxins Test Area")
+	network = list("Research","Toxins  Test  Area")
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
