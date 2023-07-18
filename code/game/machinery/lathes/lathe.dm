@@ -25,6 +25,9 @@
 	circuit = /obj/item/circuitboard/machine/lathe
 	default_deconstruct = 0 SECONDS
 	default_panel = 0 SECONDS
+	depth_projected = TRUE
+	depth_level = 8
+	climb_allowed = TRUE
 
 	/// icon state when printing, if any
 	var/active_icon_state
