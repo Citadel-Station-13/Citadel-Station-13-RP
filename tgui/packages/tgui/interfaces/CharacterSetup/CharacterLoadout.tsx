@@ -1,6 +1,6 @@
 import { Component } from "inferno";
 import { useLocalState } from "../../backend";
-import { Box, Button, Collapsible, Dropdown, Stack, Tabs } from "../../components";
+import { Box, Button, Collapsible, Dropdown, Input, Stack, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
 import { ByondAtomColor, ByondColorMatrixRGBC } from "../common/Color";
 
@@ -55,6 +55,8 @@ export enum LoadoutCustomizations {
 
 interface LoadoutProps extends SectionProps {
   gearContext: LoadoutContext;
+  // ids
+  gearAllowed: string[];
   gearData: LoadoutData;
   slotChangeAct?: (index: number) => void;
   slotRenameAct?: (index: number, name?: string) => void;
@@ -84,7 +86,7 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
                 <Dropdown
                   color="transparent"
                   selected={
-                    props.gearData.slot.name || props.gearData.slotIndex.toFixed(0)
+                    props.gearData.slot.name || `Slot ${props.gearData.slotIndex.toFixed(0)}`
                   }
                   options={
                     props.gearData.slots?.map((slot, index) => slot.name || index.toFixed(0))
@@ -138,16 +140,16 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
               <Section title="Items" fill scrollable>
                 <Stack vertical>
                   {
-                    Object.entries(props.gearContext.instances).filter(
-                      ([id, entry]) => entry.category === loadoutCategory
+                    props.gearAllowed.map((id) => props.gearContext.instances[id]).filter(
+                      (entry) => entry.category === loadoutCategory
                     ).sort(
-                      ([id1, e1], [id2, e2]) => e1.name.localeCompare(e2.name)
+                      (e1, e2) => e1.name.localeCompare(e2.name)
                     ).map(
-                      ([id, entry]) => {
+                      (entry) => {
                         return (
                           <CharacterLoadoutEntry
-                            key={id}
-                            selected={props.gearData.slot.entries[id] !== undefined}
+                            key={entry.id}
+                            selected={props.gearData.slot.entries[entry.id] || null}
                             entry={entry}
                             toggleAct={props.toggleAct}
                             customizeColorAct={props.customizeColorAct}
@@ -170,7 +172,7 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
 
 interface CharacterLoadoutEntryProps {
   entry: LoadoutEntry;
-  selected: boolean;
+  selected: LoadoutSelected | null;
   toggleAct?: (id: string) => void;
   customizeNameAct?: (id: string, name?: string) => void;
   customizeDescAct?: (id: string, desc?: string) => void;
@@ -196,16 +198,25 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
           title={(
             <>
               {this.props.entry.customize & LoadoutCustomizations.Rename && (
-                <Button icon="pen" onClick={() => this.props.customizeNameAct?.(this.props.entry.id)} color="transparent" />
+                <Button icon="pen" onClick={
+                  () => this.props.selected && this.setState((prevState) => ({
+                    ...prevState,
+                    editingName: !prevState.editingName,
+                  }))
+                } color="transparent" selected={this.state.editingName} />
               )}
-              {this.props.entry.name}
+              {this.state.editingName? (
+                <Input
+                  value={this.props.selected?.rename}
+                  onChange={(e, val) => this.props.customizeNameAct?.(this.props.entry.id, val)} />
+              ) : this.props.entry.name}
             </>
           )}
           color="transparent"
           buttons={(
             <Button
               content={this.props.selected? "Selected" : "Select"}
-              selected={this.props.selected}
+              selected={!!this.props.selected}
               color="transparent"
               onClick={() => this.props.toggleAct?.(this.props.entry.id)} />)}>
           <Box ml={4.25}>

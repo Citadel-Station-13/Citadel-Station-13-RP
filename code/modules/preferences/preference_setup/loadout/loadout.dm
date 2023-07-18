@@ -106,6 +106,10 @@
 /datum/category_item/player_setup_item/loadout/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["gearContext"] = tgui_loadout_context()
+	var/list/allowed_ids = list()
+	for(var/datum/loadout_entry/entry as anything in valid_loadout_entries(pref))
+		allowed_ids += entry.legacy_get_id()
+	.["gearAllowed"] = allowed_ids
 	.["gearData"] = tgui_loadout_data()
 	.["characterName"] = pref.real_name
 
@@ -356,6 +360,7 @@
 			var/slot_index = index
 			var/list/slot = loadout["[slot_index]"]
 			slot = slot?.Copy()
+			loadout["[slot_index]"] = slot
 			slot?[LOADOUT_SLOTDATA_NAME] = name
 			pref.set_character_data(CHARACTER_DATA_LOADOUT, loadout)
 			push_loadout_data()

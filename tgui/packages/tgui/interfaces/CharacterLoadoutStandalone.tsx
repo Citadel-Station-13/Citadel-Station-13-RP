@@ -10,6 +10,8 @@ import { CharacterLoadout, LoadoutContext, LoadoutData } from "./CharacterSetup/
 interface CharacterLoadoutStandaloneContext {
   gearContext: LoadoutContext;
   gearData: LoadoutData;
+  // ids
+  gearAllowed: string[];
   characterName: string;
 }
 
@@ -24,6 +26,7 @@ export const CharacterLoadoutStandalone = (props, context) => {
         <CharacterLoadout
           gearContext={data.gearContext}
           gearData={data.gearData}
+          gearAllowed={data.gearAllowed}
           fill
           customizeDescAct={(id, desc) => act('redesc', { id: id, desc: desc })}
           customizeColorAct={(id, color) => act('recolor', { id: id, color: color })}

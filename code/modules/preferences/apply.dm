@@ -105,6 +105,8 @@
 				var/obj/item/implant/implant = instanced
 				INVOKE_ASYNC(implant, TYPE_PROC_REF(/obj/item/implant, implant_loadout), character)
 				succeeded = TRUE
+			if(null)
+				succeeded = FALSE
 			else
 				succeeded = H.equip_to_slot_if_possible(instanced, use_slot, INV_OP_SILENT | INV_OP_DISALLOW_DELAY)
 		if(!succeeded)
@@ -116,6 +118,8 @@
 	// second pass
 	for(var/obj/item/instance as anything in overflow)
 		var/slot = overflow[instance]
+		if(isnull(slot))
+			continue
 		if(character.equip_to_slot_if_possible(instance, slot, INV_OP_SILENT | INV_OP_DISALLOW_DELAY))
 			overflow -= instance
 			if(!(flags & PREF_COPY_TO_SILENT))
