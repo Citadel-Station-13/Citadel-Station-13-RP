@@ -74,6 +74,9 @@ var/list/gear_datums = list()
  * encodes data for tgui/interfaces/CharacterSetup/CharacterLoadout.tsx's [LoadoutEntry] interface.
  */
 /datum/loadout_entry/proc/tgui_entry_data()
+	var/list/tweaks = list()
+	for(var/datum/loadout_tweak/tweak as anything in src.tweaks)
+		tweaks += tweak.id
 	return list(
 		"name" = display_name || name,
 		"id" = legacy_get_id(),

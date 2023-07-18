@@ -302,7 +302,7 @@
 			var/list/tweak_data = entry_data[LOADOUT_ENTRYDATA_TWEAKS] || list()
 			tweak_data = deep_copy_list(tweak_data)
 			entry_data[LOADOUT_ENTRYDATA_TWEAKS] = tweak_data
-			var/tweak_id = params["tweak_id"]
+			var/tweak_id = params["tweakId"]
 			for(var/datum/loadout_tweak/tweak as anything in entry.tweaks)
 				if(tweak.id != tweak_id)
 					continue
@@ -314,6 +314,9 @@
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
 			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
+			var/wanted_index = text2num(params["index"])
+			if(slot_index != wanted_index)
+				return TRUE
 			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
 			slot = slot.Copy()
 			loadout[slot_index] = slot
@@ -331,12 +334,15 @@
 			push_loadout_data()
 			return TRUE
 		if("slotName")
-			var/name = params["name"]
+			var/index = text2num(params["index"])
+			if(!ISINRANGE(index, 1, LOADOUT_MAX_SLOTS))
+				return FALSE
+			var/name = params["name"] || (input(usr, "Choose a name for slot [index]", "Slot Rename", "Slot [index]") as text|null)
 			if(!name)
 				return TRUE
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
-			var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
+			var/slot_index = index
 			var/list/slot = SAFEINDEXACCESS(loadout, slot_index)
 			slot = slot?.Copy()
 			slot?[LOADOUT_SLOTDATA_NAME] = name

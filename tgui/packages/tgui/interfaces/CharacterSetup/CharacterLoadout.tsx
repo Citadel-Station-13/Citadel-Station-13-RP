@@ -1,5 +1,6 @@
+import { Component } from "inferno";
 import { useLocalState } from "../../backend";
-import { Button, Dropdown, LabeledList, Stack, Tabs } from "../../components";
+import { Box, Button, Collapsible, Dropdown, Stack, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
 import { ByondAtomColor, ByondColorMatrixRGBC } from "../common/Color";
 
@@ -23,6 +24,8 @@ export interface LoadoutEntry {
   category: string;
   desc: string;
   customize: LoadoutCustomizations;
+  // ids
+  tweaks: string[];
 }
 
 export interface LoadoutSelected {
@@ -59,6 +62,7 @@ interface LoadoutProps extends SectionProps {
   customizeNameAct?: (id: string, name?: string) => void;
   customizeDescAct?: (id: string, desc?: string) => void;
   customizeColorAct?: (id: string, color?: ByondAtomColor) => void;
+  tweakAct?: (id: string, tweakId: string) => void;
   clearSlotAct?: (index: number) => void;
 }
 
@@ -67,73 +71,88 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
   let [loadoutCategory, setLoadoutCategory] = useLocalState<string | null>(context, "loadoutCategory", null);
   return (
     <Section {...props}>
-      <Stack vertical>
+      <Stack vertical grow fill>
         <Stack.Item>
-          <Stack>
-            <Stack.Item>
-              <LabeledList>
-                <LabeledList.Item label="Slot">
-                  <Dropdown
-                    color="transparent"
-                    selected={
-                      props.gearData.slot.name || props.gearData.slotIndex.toFixed(0)
-                    }
-                    options={
-                      props.gearData.slots?.map((slot, index) => slot.name || index.toFixed(0))
-                    }
-                    onSelected={(val) => props.slotChangeAct?.(
-                      props.gearData.slots?.findIndex((slot) => slot.name === val)
+          <Section>
+            <Stack fill>
+              <Stack.Item>
+                <Box mt={0.5}>
+                  Slot:
+                </Box>
+              </Stack.Item>
+              <Stack.Item>
+                <Dropdown
+                  color="transparent"
+                  selected={
+                    props.gearData.slot.name || props.gearData.slotIndex.toFixed(0)
+                  }
+                  options={
+                    props.gearData.slots?.map((slot, index) => slot.name || index.toFixed(0))
+                  }
+                  onSelected={(val) => props.slotChangeAct?.(
+                    props.gearData.slots?.findIndex((slot) => slot.name === val)
                         || Number.parseInt(val, 10)
-                    )} />
-                  <Button
-                    color="transparent"
-                    icon="pen"
-                    onClick={() => props.slotRenameAct?.(props.gearData.slotIndex)} />
-                </LabeledList.Item>
-              </LabeledList>
-            </Stack.Item>
-            <Stack.Item grow>
-              <LabeledList>
-                <LabeledList.Item label="Points">
-                  {props.gearData.slot.costUsed} / {props.gearData.slot.costMax}
-                </LabeledList.Item>
-              </LabeledList>
-            </Stack.Item>
-            <Stack.Item>
-              <Button.Confirm
-                color="transparent"
-                icon="trash"
-                onClick={() => props.clearSlotAct?.(props.gearData.slotIndex)}
-                content="Clear Loadout" />
-            </Stack.Item>
-          </Stack>
+                  )} />
+              </Stack.Item>
+              <Stack.Item>
+                <Button
+                  color="transparent"
+                  icon="pen"
+                  onClick={() => props.slotRenameAct?.(props.gearData.slotIndex)} />
+              </Stack.Item>
+              <Stack.Item>
+                <Box mt={0.5}>
+                  Points: {props.gearData.slot.costUsed} / {props.gearData.slot.costMax}
+                </Box>
+              </Stack.Item>
+              <Stack.Item grow />
+              <Stack.Item>
+                <Button.Confirm
+                  color="transparent"
+                  icon="trash"
+                  onClick={() => props.clearSlotAct?.(props.gearData.slotIndex)}
+                  content="Clear" />
+              </Stack.Item>
+            </Stack>
+          </Section>
         </Stack.Item>
         <Stack.Item grow>
-          <Stack>
+          <Stack fill>
             <Stack.Item>
-              <Tabs vertical>
-                {props.gearContext.categories.map((cat) => (
-                  <Tabs.Tab
-                    key={cat}
-                    selected={cat === loadoutCategory}
-                    onClick={() => setLoadoutCategory(cat)}>
-                    {cat} test
-                  </Tabs.Tab>
-                ))}
-              </Tabs>
+              <Section fill title="Categories">
+                <Tabs vertical>
+                  {props.gearContext.categories.sort(
+                    (a, b) => a.localeCompare(b)
+                  ).map((cat) => (
+                    <Tabs.Tab
+                      key={cat}
+                      selected={cat === loadoutCategory}
+                      onClick={() => setLoadoutCategory(cat)}>
+                      {cat}
+                    </Tabs.Tab>
+                  ))}
+                </Tabs>
+              </Section>
             </Stack.Item>
             <Stack.Item grow>
-              <Section scrollable>
+              <Section title="Items" fill scrollable>
                 <Stack vertical>
                   {
                     Object.entries(props.gearContext.instances).filter(
                       ([id, entry]) => entry.category === loadoutCategory
+                    ).sort(
+                      ([id1, e1], [id2, e2]) => e1.name.localeCompare(e2.name)
                     ).map(
                       ([id, entry]) => {
                         return (
-                          <Stack.Item key={id}>
-                            Test
-                          </Stack.Item>
+                          <CharacterLoadoutEntry
+                            key={id}
+                            entry={entry}
+                            toggleAct={props.toggleAct}
+                            customizeColorAct={props.customizeColorAct}
+                            customizeDescAct={props.customizeDescAct}
+                            customizeNameAct={props.customizeNameAct}
+                            tweakAct={props.tweakAct} />
                         );
                       }
                     )
@@ -147,3 +166,53 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
     </Section>
   );
 };
+
+interface CharacterLoadoutEntryProps {
+  entry: LoadoutEntry;
+  toggleAct?: (id: string) => void;
+  customizeNameAct?: (id: string, name?: string) => void;
+  customizeDescAct?: (id: string, desc?: string) => void;
+  customizeColorAct?: (id: string, color?: ByondAtomColor) => void;
+  tweakAct?: (id: string, tweakId: string) => void;
+}
+
+interface CharacterLoadoutEntryState {
+  editingName: boolean;
+  editingDesc: boolean;
+}
+
+class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, CharacterLoadoutEntryState> {
+  state: CharacterLoadoutEntryState = {
+    editingName: false,
+    editingDesc: false,
+  };
+
+  render() {
+    return (
+      <Stack.Item>
+        <Collapsible
+          title={(
+            <>
+              {this.props.entry.customize & LoadoutCustomizations.Rename && (
+                <Button icon="pen" onClick={() => this.props.customizeNameAct?.(this.props.entry.id)} color="transparent" />
+              )}
+              {this.props.entry.name}
+            </>
+          )}
+          color="transparent"
+          buttons={(
+            <Button
+              content="Select"
+              color="transparent"
+              onClick={() => this.props.toggleAct?.(this.props.entry.id)} />)}>
+          <Box ml={4.5}>
+            {this.props.entry.customize & LoadoutCustomizations.Redesc && (
+              <Button icon="pen" onClick={() => this.props.customizeDescAct?.(this.props.entry.id)} color="transparent" />
+            )}
+            {this.props.entry.desc}
+          </Box>
+        </Collapsible>
+      </Stack.Item>
+    );
+  }
+}
