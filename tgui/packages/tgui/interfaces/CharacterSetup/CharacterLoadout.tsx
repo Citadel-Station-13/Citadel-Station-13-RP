@@ -147,6 +147,7 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
                         return (
                           <CharacterLoadoutEntry
                             key={id}
+                            selected={props.gearData.slot.entries[id] !== undefined}
                             entry={entry}
                             toggleAct={props.toggleAct}
                             customizeColorAct={props.customizeColorAct}
@@ -169,6 +170,7 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
 
 interface CharacterLoadoutEntryProps {
   entry: LoadoutEntry;
+  selected: boolean;
   toggleAct?: (id: string) => void;
   customizeNameAct?: (id: string, name?: string) => void;
   customizeDescAct?: (id: string, desc?: string) => void;
@@ -202,14 +204,27 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
           color="transparent"
           buttons={(
             <Button
-              content="Select"
+              content={this.props.selected? "Selected" : "Select"}
+              selected={this.props.selected}
               color="transparent"
               onClick={() => this.props.toggleAct?.(this.props.entry.id)} />)}>
-          <Box ml={4.5}>
-            {this.props.entry.customize & LoadoutCustomizations.Redesc && (
-              <Button icon="pen" onClick={() => this.props.customizeDescAct?.(this.props.entry.id)} color="transparent" />
-            )}
-            {this.props.entry.desc}
+          <Box ml={4.25}>
+            <Box>
+              {this.props.entry.customize & LoadoutCustomizations.Redesc && (
+                <Button icon="pen" onClick={() => this.props.customizeDescAct?.(this.props.entry.id)} color="transparent" />
+              )}
+              {this.props.entry.desc}
+            </Box>
+            {
+              this.props.entry.tweaks?.map((id) => {
+
+                return (
+                  <Box key={id}>
+                    test
+                  </Box>
+                );
+              })
+            }
           </Box>
         </Collapsible>
       </Stack.Item>

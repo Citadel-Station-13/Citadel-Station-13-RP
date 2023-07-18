@@ -79,6 +79,7 @@
 					else
 						// else we just don't care because gear tweaks need to sanitize their own stuff.
 			*/
+	return slots
 
 /datum/category_item/player_setup_item/loadout/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	var/list/slots = sanitize_islist(data)
