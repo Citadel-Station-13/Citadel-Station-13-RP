@@ -292,6 +292,9 @@
 
 //Tajaran wears
 
+/datum/loadout_entry/accessory/tajaran
+	abstract_type = /datum/loadout_entry/accessory/tajaran
+
 /datum/loadout_entry/accessory/tajaran/scarf
 	name = "Adhomian fur scarf"
 	description = "A selection of tajaran colored fur scarfs."

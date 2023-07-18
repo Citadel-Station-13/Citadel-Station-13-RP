@@ -147,7 +147,7 @@
 	var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
 	var/list/all_slots = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 	for(var/i in 1 to LOADOUT_MAX_SLOTS)
-		var/list/the_slot = length(all_slots) >= i? all_slots[i] : null
+		var/list/the_slot = length(all_slots) >= i? all_slots[all_slots[i]] : null
 		slots[++slots.len] = list(
 			"name" = the_slot?[LOADOUT_SLOTDATA_NAME] || "Slot [i]"
 		)
