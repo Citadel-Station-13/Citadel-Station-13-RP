@@ -252,3 +252,4 @@
 	log_and_message_admins("[key_name(src)] is changing the next map from [was.name] ([was.id]) to [changing_to.name] ([changing_to.id])")
 
 	SSmapping.next_station = changing_to
+	SSmapping.write_next_map(changing_to)
