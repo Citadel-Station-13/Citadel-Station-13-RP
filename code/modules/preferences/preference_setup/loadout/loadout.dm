@@ -142,36 +142,23 @@
 		transformed = transformed.Copy()
 		var/list/tweak_texts = list()
 		for(var/datum/loadout_tweak/tweak as anything in entry.tweaks)
-			tweak_texts[id] = tweak.get_contents(our_entries[id][LOADOUT_ENTRYDATA_TWEAKS]?[tweak.id] || tweak.get_default())
+			tweak_texts[tweak.id] = tweak.get_contents(our_entries[id][LOADOUT_ENTRYDATA_TWEAKS]?[tweak.id] || tweak.get_default())
 		transformed["tweakTexts"] = tweak_texts
 		entries[entry.legacy_get_id()] = transformed
 
 /datum/category_item/player_setup_item/loadout/proc/tgui_loadout_data()
 	. = list()
 	var/list/slots = list()
-	var/list/slot = list()
 	var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
 	var/list/all_slots = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 	for(var/i in 1 to LOADOUT_MAX_SLOTS)
-		var/list/the_slot = length(all_slots) >= i? all_slots[all_slots[i]] : null
+		var/list/the_slot = all_slots["[i]"]
 		slots[++slots.len] = list(
 			"name" = the_slot?[LOADOUT_SLOTDATA_NAME] || "Slot [i]"
 		)
 	var/list/the_slot = length(all_slots) >= slot_index? all_slots[all_slots[slot_index]]: list()
-	var/list/entries = the_slot[LOADOUT_SLOTDATA_ENTRIES] || list()
-	var/cost_used = 0
-	var/cost_max = max_loadout_cost()
-	for(var/id in entries)
-		var/datum/loadout_entry/entry = global.gear_datums[id]
-		if(isnull(entry))
-			entries -= id
-			continue
-		cost_used += entry.cost
-	slot["entries"] = entries
-	slot["costUsed"] = cost_used
-	slot["costMax"] = cost_max
 	.["slots"] = slots
-	.["slot"] = slot
+	.["slot"] = tgui_loadout_selected(the_slot)
 	.["slotIndex"] = slot_index
 
 /datum/category_item/player_setup_item/loadout/ui_act(action, list/params, datum/tgui/ui)
@@ -360,13 +347,13 @@
 			var/index = text2num(params["index"])
 			if(!ISINRANGE(index, 1, LOADOUT_MAX_SLOTS))
 				return FALSE
-			var/name = params["name"] || (input(usr, "Choose a name for slot [index]", "Slot Rename", "Slot [index]") as text|null)
+			var/name = params["name"] || (input(usr, "Choose a name for Slot [index]", "Slot Rename", "Slot [index]") as text|null)
 			if(isnull(name))
 				return TRUE
 			var/list/loadout = pref.get_character_data(CHARACTER_DATA_LOADOUT)
 			loadout = loadout.Copy()
 			var/slot_index = index
-			var/list/slot = loadout["[slot_index]"]
+			var/list/slot = loadout["[slot_index]"] || list()
 			slot = slot?.Copy()
 			loadout["[slot_index]"] = slot
 			if(name)

@@ -76,14 +76,16 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
       <Stack vertical grow fill>
         <Stack.Item>
           <Section>
+            {JSON.stringify(props.gearData)}
             <Stack fill>
               <Stack.Item>
                 <Box mt={0.5}>
                   Slot:
                 </Box>
               </Stack.Item>
-              <Stack.Item>
+              <Stack.Item width="30%">
                 <Dropdown
+                  width="100%"
                   color="transparent"
                   selected={
                     props.gearData.slot.name || `Slot ${props.gearData.slotIndex.toFixed(0)}`
@@ -92,8 +94,8 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
                     props.gearData.slots?.map((slot, index) => slot.name || index.toFixed(0))
                   }
                   onSelected={(val) => props.slotChangeAct?.(
-                    props.gearData.slots?.findIndex((slot) => slot.name === val)
-                        || Number.parseInt(val, 10)
+                    (props.gearData.slots?.findIndex((slot) => slot.name === val)
+                        || Number.parseInt(val, 10)) + 1
                   )} />
               </Stack.Item>
               <Stack.Item>
@@ -148,7 +150,7 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
                       (entry) => {
                         return (
                           <CharacterLoadoutEntry
-                            key={entry.id}
+                            key={`${entry.id}-${JSON.stringify(props.gearData.slot.entries[entry.id])}`}
                             selected={props.gearData.slot.entries[entry.id] || null}
                             entry={entry}
                             toggleAct={props.toggleAct}
@@ -243,11 +245,12 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
                   }} />
               ) : (this.props.selected?.redesc !== undefined? this.props.selected.redesc : this.props.entry.desc)}
             </Box>
+            {JSON.stringify(this.props.entry)}
+            {JSON.stringify(this.props.selected)}
             {!!this.props.selected && this.props.entry.tweaks?.map((id) => {
-
               return (
-                <Button key={id} content={this.props.selected?.tweakTexts[id]}
-                  color="transparent" />
+                <Button key={id} content={this.props.selected?.tweakTexts?.[id]}
+                  color="transparent" onClick={() => this.props.tweakAct?.(this.props.entry.id, id)} />
               );
             })}
           </Box>
