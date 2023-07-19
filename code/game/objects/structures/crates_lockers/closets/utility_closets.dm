@@ -88,12 +88,6 @@
 		/obj/item/extinguisher = 2,
 		/obj/item/clothing/head/hardhat/red = 2)
 
-/obj/structure/closet/firecloset/update_icon()
-	if(!opened)
-		icon_state = icon_closed
-	else
-		icon_state = icon_opened
-
 /*
  * Tool Closet
  */

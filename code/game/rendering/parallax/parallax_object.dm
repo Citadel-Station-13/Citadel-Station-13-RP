@@ -45,7 +45,10 @@
 			offset_y -= 480
 		if(offset_y < -240)
 			offset_y += 480
-	screen_loc = "[map_id && "[map_id]:"]CENTER-7:[round(offset_x,1)],CENTER-7:[round(offset_y,1)]"
+	if(map_id)
+		screen_loc = "[map_id]:1,1"
+	else
+		screen_loc = "CENTER-7:[round(offset_x,1)],CENTER-7:[round(offset_y,1)]"
 
 /atom/movable/screen/parallax_layer/proc/RelativePosition(x, y, rel_x, rel_y)
 	if(absolute)

@@ -72,19 +72,24 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
+	// todo: hopefully someday we can get simulated/open to just be turf/open or something once
+	//       we refactor ZAS
+	//       then we can skip all this bullshit and have proper space zmimic
+	//       as long as zm overhead isn't too high.
 	switch(path)
 		if(null)
 			return
 		if(/turf/baseturf_bottom)
 			path = SSmapping.level_baseturf(z) || /turf/space
 			if(!ispath(path))
-				path = text2path(path)
-				if (!ispath(path))
-					warning("Z-level [z] has invalid baseturf '[SSmapping.level_baseturf(z)]'")
-					path = /turf/space
+				stack_trace("Z-level [z] has invalid baseturf '[SSmapping.level_baseturf(z)]'")
+				path = /turf/space
 			if(path == /turf/space)		// no space/basic check, if you use space/basic in a map honestly get bent
 				if(istype(GetBelow(src), /turf/simulated))
 					path = /turf/simulated/open
+			else if(path == /turf/simulated/open)
+				if(istype(GetBelow(src), /turf/space))
+					path = /turf/space
 		if(/turf/space/basic)
 			// basic doesn't initialize and this will cause issues
 			// no warning though because this can happen naturaly as a result of it being built on top of

@@ -45,7 +45,8 @@
 	var/ram = 100	// Used as currency to purchase different abilities
 	var/list/software = list()
 	var/userDNA		// The DNA string of our assigned user
-	var/obj/item/paicard/card	// The card we inhabit
+	var/obj/item/shell	// The shell we inhabit
+	var/obj/item/paicard/card // The card we belong to, it is not always our shell, but it is linked to us regardless
 	var/obj/item/radio/radio		// Our primary radio
 	var/obj/item/communicator/integrated/communicator	// Our integrated communicator.
 	var/obj/item/pda/ai/pai/pda = null // Our integrated PDA
@@ -73,6 +74,17 @@
 		"Feline" = list("purrs","yowls","meows"),
 		"Canine" = list("yaps","barks","woofs"),
 		)
+
+	// shell transformation
+	var/global/list/possible_clothing_options = list(
+		"Maid Costume" = /obj/item/clothing/under/dress/maid/sexy,
+		"Grey Pleated Skirt" = /obj/item/clothing/under/color/grey_skirt,
+		"Last Uploaded Clothing" = null,
+		)
+	var/obj/item/clothing/last_uploaded_path
+	var/obj/item/clothing/base_uploaded_path
+	var/uploaded_snowflake_worn_state
+	var/uploaded_color
 
 	/// The cable we produce and use when door or camera jacking.
 	var/obj/item/pai_cable/cable
@@ -105,14 +117,20 @@
 	// space movement related
 	var/last_space_movement = 0
 
+	// transformation component
+	var/datum/component/object_transform/transform_component
+
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()
-	card = loc
+	shell = loc
+	if(istype(shell, /obj/item/paicard))
+		card = loc
 	sradio = new(src)
 	communicator = new(src)
-	if(card)
-		if(!card.radio)
-			card.radio = new /obj/item/radio(src.card)
+	if(shell)
+		transform_component = AddComponent(/datum/component/object_transform, shell, "neatly folds inwards, compacting down to a rectangular card", "folds outwards, expanding into a mobile form.")
+	if(card && !card.radio)
+		card.radio = new /obj/item/radio(src.card)
 		radio = card.radio
 
 	add_verb(src, /mob/living/silicon/pai/proc/choose_chassis)
@@ -199,3 +217,48 @@
 			new_people_eaten += M.size_multiplier
 	people_eaten = min(1, new_people_eaten)
 
+// changing the shell
+/mob/living/silicon/pai/proc/switch_shell(obj/item/new_shell)
+	// setup transform text
+	if(istype(new_shell, /obj/item/paicard))
+		transform_component.to_object_text = "neatly folds inwards, compacting down to a rectangular card"
+	else
+		transform_component.to_object_text = "neatly folds inwards, compacting down into their shell"
+
+	// swap the shell, if the old shell is our card we keep it, otherwise we delete it because it's not important
+	shell = new_shell
+	var/obj/item/old_shell = transform_component.swap_object(new_shell)
+	if(istype(old_shell, /obj/item/paicard))
+		old_shell.forceMove(src)
+	else
+		QDEL_NULL(old_shell)
+
+	// some sanity stuff because this is also putting us inside an object so we want to interrupt a couple of possible things such as pulling, resting, eating, viewing camera
+	release_vore_contents()
+	stop_pulling()
+	update_perspective()
+	set_resting(FALSE)
+	update_mobility()
+	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
+
+	// pass attack self on to the card regardless of our shell
+	if(!istype(new_shell, /obj/item/paicard))
+		RegisterSignal(shell, COMSIG_ITEM_ATTACK_SELF, .proc/pass_attack_self_to_card)
+
+// changing the shell into clothing
+/mob/living/silicon/pai/proc/change_shell_by_path(object_path)
+	if(!can_change_shell())
+		return FALSE
+
+	last_special = world.time + 20
+
+	var/obj/item/new_object = new object_path
+	new_object.name = "[src.name] (pAI)"
+	new_object.desc = src.desc
+	new_object.forceMove(src.loc)
+	switch_shell(new_object)
+	return TRUE
+
+/mob/living/silicon/pai/proc/pass_attack_self_to_card()
+	if(istype(shell.loc, /mob/living/carbon))
+		card.attack_self(shell.loc)

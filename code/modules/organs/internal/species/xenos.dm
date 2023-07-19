@@ -130,11 +130,17 @@
 	icon_state = "xenode"
 	organ_tag = O_RESIN
 
-	/*organ_verbs = list(
+	organ_verbs = list(
 		/mob/living/carbon/human/proc/resin,
 		/mob/living/carbon/human/proc/plant
 		)
-	edit because the xenos that use it have the verbs anyways and hybrids dont want the plant verb*/
+
+/obj/item/organ/internal/xenos/resinspinner/hybrid
+	name = "weakend resinspinner"
+	organ_verbs = list(
+		/mob/living/carbon/human/proc/hybrid_resin,
+		/mob/living/carbon/human/proc/hybrid_plant//replaced from the normal weed node to place a singular weed
+	)
 
 /obj/item/organ/internal/xenos/resinspinner/grey
 	icon_state = "xenode_grey"
@@ -148,3 +154,8 @@
 		var/mob/living/carbon/human/H = owner
 		if(H.species.blood_color)
 			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)
+
+/obj/item/organ/internal/heart/xenomorph
+	name = "xenomorph heart"
+
+

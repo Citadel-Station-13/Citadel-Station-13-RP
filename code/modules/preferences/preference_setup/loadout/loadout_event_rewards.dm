@@ -55,4 +55,4 @@
 /datum/gear/event_reward/tacskirt
 	name = "Tactical Skirt"
 	path = /obj/item/clothing/under/syndicate/skirt_pleated
-	ckeywhitelist = list("GrapePantaSoda")
+	ckeywhitelist = list("grapepantasoda")
