@@ -187,10 +187,10 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
       // matrix
       return {
         mode: ColorPickerMode.Matrix,
-        cRed: 1,
-        cGreen: 1,
-        cBlue: 1,
-        cAlpha: 1,
+        cRed: 255,
+        cGreen: 255,
+        cBlue: 255,
+        cAlpha: 255,
         cMatrix: ConvertByondColorMatrixtoRGBAC(this.props.currentColor as ByondColorMatrix),
       };
     }
@@ -308,7 +308,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                           step={1}
                           value={cHue}
                           onDrag={(e, val) => {
-                            let [r, g, b] = HSVtoRGB(val, cSat, cVal);
+                            let [r, g, b] = HSVtoRGB(val, cSat, cVal).map((n) => Math.round(n));
                             this.setState((prev) => ({
                               ...prev,
                               cRed: r,
@@ -323,10 +323,10 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                         <Slider
                           minValue={0}
                           maxValue={100}
-                          step={1}
+                          step={0.5}
                           value={cSat}
                           onDrag={(e, val) => {
-                            let [r, g, b] = HSVtoRGB(cHue, val, cVal);
+                            let [r, g, b] = HSVtoRGB(cHue, val, cVal).map((n) => Math.round(n));
                             this.setState((prev) => ({
                               ...prev,
                               cRed: r,
@@ -341,10 +341,10 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                         <Slider
                           minValue={0}
                           maxValue={100}
-                          step={1}
+                          step={0.5}
                           value={cVal}
                           onDrag={(e, val) => {
-                            let [r, g, b] = HSVtoRGB(cHue, cSat, val);
+                            let [r, g, b] = HSVtoRGB(cHue, cSat, val).map((n) => Math.round(n));
                             this.setState((prev) => ({
                               ...prev,
                               cRed: r,
@@ -439,7 +439,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                   ].map((arr, i1) => (
                     <Table.Row key={i1}>
                       {arr.map((l, i2) => {
-                        let ifull = ((i1 === 3? i1 : 4) * 4) + (i2);
+                        let ifull = ((i1 === 3? 4 : i1) * 4) + (i2);
                         return (
                           <Table.Cell key={i2}>
                             {l}: <NumberInput width="50px"

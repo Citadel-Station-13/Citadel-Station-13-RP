@@ -77,6 +77,7 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
       <Stack vertical grow fill>
         <Stack.Item>
           <Section>
+            {JSON.stringify(props.gearData.slot)}
             <Stack fill>
               <Stack.Item>
                 <Box mt={0.5}>
@@ -93,10 +94,19 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
                   options={
                     props.gearData.slots?.map((slot, index) => slot.name || index.toFixed(0))
                   }
-                  onSelected={(val) => props.slotChangeAct?.(
-                    (props.gearData.slots?.findIndex((slot) => slot.name === val)
-                        || Number.parseInt(val, 10)) + 1
-                  )} />
+                  onSelected={(val) => {
+                    let index = (props.gearData.slots?.findIndex((slot) => slot.name === val));
+                    if (index === undefined) {
+                      index = -1;
+                    }
+                    else {
+                      index += 1;
+                    }
+                    if (index === -1) {
+                      index = Number.parseInt(val, 10) + 1;
+                    }
+                    props.slotChangeAct?.(index);
+                  }} />
               </Stack.Item>
               <Stack.Item>
                 <Button
@@ -259,7 +269,7 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
                     }} />
                 ) : (this.props.selected?.redesc !== undefined? this.props.selected.redesc : this.props.entry.desc)}
               </Box>
-              {this.state.editingColor && (
+              {this.state.editingColor && !!this.props.selected && (
                 <Section>
                   <ColorPicker
                     allowMatrix

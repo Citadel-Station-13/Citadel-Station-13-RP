@@ -67,7 +67,7 @@ export const DecodeRGBString = (str: string): [number, number, number, number] =
  * @param includeHash
  */
 export const EncodeRGBString = (r: number, g: number, b: number, includeHash: boolean): string => {
-  return `${includeHash && "#"}${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+  return `${includeHash && "#"}${Math.round(r).toString(16).padStart(2, "0")}${Math.round(g).toString(16).padStart(2, "0")}${Math.round(b).toString(16).padStart(2, "0")}`;
 };
 
 /**
@@ -79,7 +79,7 @@ export const EncodeRGBString = (r: number, g: number, b: number, includeHash: bo
  * @param includeHash
  */
 export const EncodeRGBAString = (r: number, g: number, b: number, a: number, includeHash: boolean): string => {
-  return `${includeHash && "#"}${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}${a.toString(16).padStart(2, "0")}`;
+  return `${includeHash && "#"}${Math.round(r).toString(16).padStart(2, "0")}${Math.round(g).toString(16).padStart(2, "0")}${Math.round(b).toString(16).padStart(2, "0")}${Math.round(a).toString(16).padStart(2, "0")}`;
 };
 
 /**
