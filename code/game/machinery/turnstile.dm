@@ -87,7 +87,9 @@
 		return TRUE
 
 /obj/machinery/turnstile/entry
-req_one_access = 111
+	name = "\improper Entrance"
+	req_one_access = 111
 
 /obj/machinery/turnstile/exit
-req_one_access = 112
+	name = "\improper Exit"
+	req_one_access = 112
