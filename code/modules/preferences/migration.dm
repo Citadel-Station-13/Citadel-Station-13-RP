@@ -231,25 +231,32 @@
 			character[CHARACTER_DATA_LOADOUT_SLOT] = sanitize_integer(gear_slot, 1, LOADOUT_MAX_SLOTS, 1)
 		var/list/gear_data
 		READ_FILE(S["gear_list"], gear_data)
-		LAZYINITLIST(character[CHARACTER_DATA_LOADOUT])
+		var/list/translated_slots = LAZYGETLIST(character[CHARACTER_DATA_LOADOUT])
 		if(islist(gear_data))
 			for(var/i in 1 to LOADOUT_MAX_SLOTS)
 				var/list/data = gear_data["[i]"]
 				if(!islist(data))
 					continue
-				LAZYINITLIST(character[CHARACTER_DATA_LOADOUT]["[i]"])
+				var/list/translated_slot = LAZYGETLIST(translated_slots["[i]"])
+				var/list/translated_entries = LAZYGETLIST(translated_slot[LOADOUT_SLOTDATA_ENTRIES])
 				for(var/name in data)
 					var/list/assembled = list()
-					switch(name)
-						if("custom_name")
-							assembled[LOADOUT_ENTRYDATA_RENAME] = data[name]
-						if("custom_desc")
-							assembled[LOADOUT_ENTRYDATA_REDESC] = data[name]
-						if("color", "matrix_recolor")
-							assembled[LOADOUT_ENTRYDATA_RECOLOR] = data[name]
-						else
-							LAZYSET(assembled[LOADOUT_ENTRYDATA_TWEAKS], name, data[name])
-					character[CHARACTER_DATA_LOADOUT]["[i]"] = assembled
+					var/datum/loadout_entry/entry = global.gear_datums[name]
+					if(isnull(entry))
+						errors?.Add("unable to translate loadout slot-entry [i]-[name]: name not found.")
+						continue
+					var/list/old_tweaks = data[name]
+					for(var/old_tweak in old_tweaks)
+						switch(old_tweak)
+							if("custom_name")
+								assembled[LOADOUT_ENTRYDATA_RENAME] = old_tweaks[old_tweak]
+							if("custom_desc")
+								assembled[LOADOUT_ENTRYDATA_REDESC] = old_tweaks[old_tweak]
+							if("color", "matrix_recolor")
+								assembled[LOADOUT_ENTRYDATA_RECOLOR] = old_tweaks[old_tweak]
+							else
+								LAZYSET(assembled[LOADOUT_ENTRYDATA_TWEAKS], old_tweak, old_tweaks[old_tweak])
+					translated_entries[entry.legacy_get_id()] = assembled
 
 /**
  * clientless migration of savefiles

@@ -156,7 +156,7 @@
 		slots[++slots.len] = list(
 			"name" = the_slot?[LOADOUT_SLOTDATA_NAME] || "Slot [i]"
 		)
-	var/list/the_slot = length(all_slots) >= slot_index? all_slots[all_slots[slot_index]]: list()
+	var/list/the_slot = all_slots["[slot_index]"]
 	.["slots"] = slots
 	.["slot"] = tgui_loadout_selected(the_slot)
 	.["slotIndex"] = slot_index
@@ -280,7 +280,7 @@
 			if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_COLOR))
 				return TRUE
 			var/color = sanitize_probably_a_byond_color(params["color"], null)
-			if(!isnull(color))
+			if(!isnull(color) && (color != "#ffffff"))
 				entry_data[LOADOUT_ENTRYDATA_RECOLOR] = color
 			else
 				entry_data -= LOADOUT_ENTRYDATA_RECOLOR

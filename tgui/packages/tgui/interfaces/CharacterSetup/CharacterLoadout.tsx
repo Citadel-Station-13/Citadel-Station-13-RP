@@ -258,7 +258,7 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
                       ...prevState,
                       editingDesc: !prevState.editingDesc,
                     }))
-                  } color="transparent" selected={this.state.editingDesc || !!this.props.selected?.redesc} />
+                  } color={this.props.selected.recolor? undefined : "transparent"} selected={this.state.editingDesc || !!this.props.selected?.redesc} />
                 )}
                 {this.state.editingDesc? (
                   <Input
