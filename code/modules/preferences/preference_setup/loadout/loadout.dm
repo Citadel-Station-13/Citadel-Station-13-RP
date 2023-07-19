@@ -201,7 +201,7 @@
 			return TRUE
 		if("rename")
 			var/id = params["id"]
-			if(!id)
+			if(isnull(id))
 				return TRUE
 			var/datum/loadout_entry/entry = global.gear_datums[id]
 			if(isnull(entry))
@@ -232,7 +232,7 @@
 			return TRUE
 		if("redesc")
 			var/id = params["id"]
-			if(!id)
+			if(isnull(id))
 				return TRUE
 			var/datum/loadout_entry/entry = global.gear_datums[id]
 			if(isnull(entry))
@@ -263,7 +263,7 @@
 			return TRUE
 		if("recolor")
 			var/id = params["id"]
-			if(!id)
+			if(isnull(id))
 				return TRUE
 			var/datum/loadout_entry/entry = global.gear_datums[id]
 			if(isnull(entry))

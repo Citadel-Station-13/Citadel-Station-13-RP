@@ -77,7 +77,6 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
       <Stack vertical grow fill>
         <Stack.Item>
           <Section>
-            {JSON.stringify(props.gearData.slot)}
             <Stack fill>
               <Stack.Item>
                 <Box mt={0.5}>
@@ -213,7 +212,7 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
           title={(
             <>
               {(this.props.entry.customize & LoadoutCustomizations.Rename) && !!this.props.selected && (
-                <Button mr={1} icon="pen"
+                <Button width="22px" icon="pen" mr={1}
                   onClick={
                     () => this.props.selected && this.setState((prevState) => ({
                       ...prevState,
