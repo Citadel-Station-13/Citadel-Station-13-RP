@@ -248,11 +248,11 @@
 					var/list/old_tweaks = data[name]
 					for(var/old_tweak in old_tweaks)
 						switch(old_tweak)
-							if("custom_name")
+							if("/datum/gear_tweak/custom_name")
 								assembled[LOADOUT_ENTRYDATA_RENAME] = old_tweaks[old_tweak]
-							if("custom_desc")
+							if("/datum/gear_tweak/custom_desc")
 								assembled[LOADOUT_ENTRYDATA_REDESC] = old_tweaks[old_tweak]
-							if("color", "matrix_recolor")
+							if("/datum/gear_tweak/color", "/datum/gear_tweak/matrix_recolor")
 								assembled[LOADOUT_ENTRYDATA_RECOLOR] = old_tweaks[old_tweak]
 							else
 								LAZYSET(assembled[LOADOUT_ENTRYDATA_TWEAKS], old_tweak, old_tweaks[old_tweak])
