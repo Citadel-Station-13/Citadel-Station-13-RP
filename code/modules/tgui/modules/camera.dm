@@ -73,7 +73,7 @@
 	if(isnull(planes))
 		planes = new(map_name)
 	if(isnull(parallax))
-		parallax = new(secondary_map = map_name, forced_eye = src)
+		parallax = new(secondary_map = map_name, forced_eye = host)
 
 /datum/tgui_module_old/camera/ui_interact(mob/user, datum/tgui/ui = null)
 	// Update UI

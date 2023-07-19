@@ -77,8 +77,9 @@
 	desc = "A big hunk of star-stuff."
 	icon = 'icons/obj/meteor.dmi'
 	icon_state = "large"
-	density = 1
-	climbable = 1
+	density = TRUE
+	climb_allowed = TRUE
+	depth_level = 16
 
 /obj/structure/meteorite/Initialize(mapload)
 	. = ..()
