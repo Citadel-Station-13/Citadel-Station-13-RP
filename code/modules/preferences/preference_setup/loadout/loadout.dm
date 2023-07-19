@@ -159,7 +159,7 @@
 		slots[++slots.len] = list(
 			"name" = the_slot?[LOADOUT_SLOTDATA_NAME] || "Slot [i]"
 		)
-	var/list/the_slot = all_slots["[slot_index]"]
+	var/list/the_slot = all_slots["[slot_index]"] || list()
 	.["slots"] = slots
 	.["slot"] = tgui_loadout_selected(the_slot)
 	.["slotIndex"] = slot_index
