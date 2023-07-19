@@ -265,7 +265,6 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
                     currentColor={this.props.selected?.recolor || "#ffffff"}
                     setColor={(color) => {
                       this.props.customizeColorAct?.(this.props.entry.id, color);
-                      this.setState((prev) => ({ ...prev, editingColor: false }));
                     }} />
                 </Section>
               )}

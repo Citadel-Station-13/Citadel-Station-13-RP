@@ -138,7 +138,10 @@ export const RGBtoHSV = (r: number, g: number, b: number): [number, number, numb
   let cMin = Math.min(r, g, b);
   let delta = cMax - cMin;
   let h;
-  if (cMax === r) {
+  if (delta === 0) {
+    h = 0;
+  }
+  else if (cMax === r) {
     h = (60 * ((g - b) / delta) + 360) % 360;
   }
   else if (cMax === g) {
@@ -148,7 +151,7 @@ export const RGBtoHSV = (r: number, g: number, b: number): [number, number, numb
     h = (60 * ((r - g) / delta) + 240) % 360;
   }
   else {
-    throw new Error("Neither R nor G nor B matched cMax.");
+    throw new Error("Neither R nor G nor B matched cMax and Delta is nonzero.");
   }
   let s = cMax === 0? 0 : delta / cMax;
   return [h, s * 100, cMax * 100];
