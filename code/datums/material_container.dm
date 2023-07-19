@@ -64,6 +64,8 @@
  * @return sheets dumped
  */
 /datum/material_container/proc/dump(atom/where, datum/material/material, amount = INFINITY)
+	if(amount < 0)
+	
 	if(!istype(material))
 		material = SSmaterials.get_material(material)
 	var/can_dump = round(stored[material.id] / SHEET_MATERIAL_AMOUNT)
