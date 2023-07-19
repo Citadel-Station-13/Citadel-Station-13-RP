@@ -5,7 +5,8 @@
 /turf/simulated/open
 	name = "open space"
 	icon = 'icons/turf/space.dmi'
-	icon_state = ""
+	icon_state = "white"
+	color = COLOR_BLUE_GRAY
 	density = FALSE
 	pathweight = INFINITY //Seriously, don't try and path over this one numbnuts
 	can_build_into_floor = TRUE
@@ -14,6 +15,8 @@
 
 /turf/simulated/open/Initialize(mapload)
 	. = ..()
+	icon_state = ""
+	color = null
 	ASSERT(HasBelow(z))
 	queue()
 
