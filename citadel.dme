@@ -722,6 +722,7 @@
 #include "code\datums\components\gps_signal.dm"
 #include "code\datums\components\horror_aura.dm"
 #include "code\datums\components\jousting.dm"
+#include "code\datums\components\object_transform.dm"
 #include "code\datums\components\orbiter.dm"
 #include "code\datums\components\simple_access.dm"
 #include "code\datums\components\slaved_atom_to_loc.dm"

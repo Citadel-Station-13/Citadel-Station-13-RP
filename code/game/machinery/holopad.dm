@@ -35,6 +35,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	active_power_usage = 100
 	light_range = 1.5
 	light_power = 0
+	depth_projected = FALSE
+	climb_allowed = FALSE
 
 	//? balancing
 	/// base power used to project at all

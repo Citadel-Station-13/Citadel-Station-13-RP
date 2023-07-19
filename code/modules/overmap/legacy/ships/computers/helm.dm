@@ -282,7 +282,9 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	icon_keyboard = null
 	icon_screen = null
 	circuit = /obj/item/circuitboard/nav/tele
-	density = 0
+	density = FALSE
+	depth_projected = FALSE
+	climb_allowed = FALSE
 
 /obj/machinery/computer/ship/navigation/telescreen/update_icon()
 	if(machine_stat & NOPOWER || machine_stat & BROKEN)
