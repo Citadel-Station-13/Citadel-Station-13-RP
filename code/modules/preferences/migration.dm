@@ -257,6 +257,19 @@
 							else
 								LAZYSET(assembled[LOADOUT_ENTRYDATA_TWEAKS], old_tweak, old_tweaks[old_tweak])
 					translated_entries[entry.legacy_get_id()] = assembled
+		var/all_underwear_metadata
+		READ_FILE(S["all_underwear_metadata"], all_underwear_metadata)
+		for(var/category in all_underwear_metadata)
+			if(!islist(category))
+				continue
+			var/list/catlist = all_underwear_metadata[category]
+			for(var/key in catlist)
+				if(key != "/datum/gear_tweak/color")
+					continue
+				var/val = catlist[key]
+				catlist -= key
+				catlist["/datum/loadout_tweak/color"] = key
+		WRITE_FILE(S["all_underwear_metadata"], all_underwear_metadata)
 
 /**
  * clientless migration of savefiles
