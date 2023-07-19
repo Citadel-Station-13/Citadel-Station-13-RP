@@ -84,6 +84,7 @@
 	var/obj/item/clothing/last_uploaded_path
 	var/obj/item/clothing/base_uploaded_path
 	var/uploaded_snowflake_worn_state
+	var/uploaded_color
 
 	/// The cable we produce and use when door or camera jacking.
 	var/obj/item/pai_cable/cable
@@ -252,7 +253,7 @@
 	last_special = world.time + 20
 
 	var/obj/item/new_object = new object_path
-	new_object.name = src.name
+	new_object.name = "[src.name] (pAI)"
 	new_object.desc = src.desc
 	new_object.forceMove(src.loc)
 	switch_shell(new_object)
