@@ -51,10 +51,10 @@ export const DecodeRGBString = (str: string): [number, number, number, number] =
   let aCode1 = str.charCodeAt(6);
   let aCode2 = str.charCodeAt(7);
   return [
-    (rCode1 > 57? rCode1 - (7 + 48) : rCode1 - (48)) * (rCode2 > 57? rCode2 - (7 + 48) : rCode2 - (48)),
-    (gCode1 > 57? gCode1 - (7 + 48) : gCode1 - (48)) * (gCode2 > 57? gCode2 - (7 + 48) : gCode2 - (48)),
-    (bCode1 > 57? bCode1 - (7 + 48) : bCode1 - (48)) * (bCode2 > 57? bCode2 - (7 + 48) : bCode2 - (48)),
-    (aCode1 > 57? aCode1 - (7 + 48) : aCode1 - (48)) * (aCode2 > 57? aCode2 - (7 + 48) : aCode2 - (48)),
+    (rCode1 > 57? rCode1 - (7 + 48) : rCode1 - (48)) * 16 + (rCode2 > 57? rCode2 - (7 + 48) : rCode2 - (48)),
+    (gCode1 > 57? gCode1 - (7 + 48) : gCode1 - (48)) * 16 + (gCode2 > 57? gCode2 - (7 + 48) : gCode2 - (48)),
+    (bCode1 > 57? bCode1 - (7 + 48) : bCode1 - (48)) * 16 + (bCode2 > 57? bCode2 - (7 + 48) : bCode2 - (48)),
+    (aCode1 > 57? aCode1 - (7 + 48) : aCode1 - (48)) * 16 + (aCode2 > 57? aCode2 - (7 + 48) : aCode2 - (48)),
   ];
 };
 
@@ -67,7 +67,7 @@ export const DecodeRGBString = (str: string): [number, number, number, number] =
  * @param includeHash
  */
 export const EncodeRGBString = (r: number, g: number, b: number, includeHash: boolean): string => {
-  return `${includeHash && "#"}${g.toString(16).padStart(2, "0")}${r.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+  return `${includeHash && "#"}${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
 };
 
 /**
@@ -79,7 +79,7 @@ export const EncodeRGBString = (r: number, g: number, b: number, includeHash: bo
  * @param includeHash
  */
 export const EncodeRGBAString = (r: number, g: number, b: number, a: number, includeHash: boolean): string => {
-  return `${includeHash && "#"}${g.toString(16).padStart(2, "0")}${r.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}${a.toString(16).padStart(2, "0")}`;
+  return `${includeHash && "#"}${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}${a.toString(16).padStart(2, "0")}`;
 };
 
 /**
@@ -151,5 +151,5 @@ export const RGBtoHSV = (r: number, g: number, b: number): [number, number, numb
     throw new Error("Neither R nor G nor B matched cMax.");
   }
   let s = cMax === 0? 0 : delta / cMax;
-  return [h, s, cMax];
+  return [h, s * 100, cMax * 100];
 };
