@@ -94,9 +94,9 @@ var/list/gear_datums = list()
 	if((loadout_customize_flags & LOADOUT_CUSTOMIZE_NAME) && entry_data[LOADOUT_ENTRYDATA_RENAME])
 		spawned.name = entry_data[LOADOUT_ENTRYDATA_RENAME]
 	if((loadout_customize_flags & LOADOUT_CUSTOMIZE_DESC) && entry_data[LOADOUT_ENTRYDATA_REDESC])
-		spawned.name = entry_data[LOADOUT_ENTRYDATA_REDESC]
+		spawned.desc = entry_data[LOADOUT_ENTRYDATA_REDESC]
 	if((loadout_customize_flags & LOADOUT_CUSTOMIZE_COLOR) && entry_data[LOADOUT_ENTRYDATA_RECOLOR])
-		spawned.name = entry_data[LOADOUT_ENTRYDATA_RECOLOR]
+		spawned.color = entry_data[LOADOUT_ENTRYDATA_RECOLOR]
 	for(var/datum/loadout_tweak/tweak as anything in tweak_assembled)
 		tweak.tweak_item(spawned, tweak_assembled[tweak])
 
