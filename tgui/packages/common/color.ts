@@ -37,7 +37,7 @@ export const DecodeRGBString = (str: string): [number, number, number, number] =
   // sanitize string
   for (let i = 0; i < 8; ++i) {
     let char = str.charCodeAt(i);
-    if (char < 48 || char > 57 || char < 65 || char > 70) {
+    if ((char < 48 || char > 57) && (char < 65 || char > 70)) {
       throw new Error(`unexpected char ${str.charAt(i)} at position ${i}}`);
     }
   }
@@ -56,6 +56,30 @@ export const DecodeRGBString = (str: string): [number, number, number, number] =
     (bCode1 > 57? bCode1 - (7 + 48) : bCode1 - (48)) * (bCode2 > 57? bCode2 - (7 + 48) : bCode2 - (48)),
     (aCode1 > 57? aCode1 - (7 + 48) : aCode1 - (48)) * (aCode2 > 57? aCode2 - (7 + 48) : aCode2 - (48)),
   ];
+};
+
+/**
+ * inputs are 0 to 255.
+ *
+ * @param r
+ * @param g
+ * @param b
+ * @param includeHash
+ */
+export const EncodeRGBString = (r: number, g: number, b: number, includeHash: boolean): string => {
+  return `${includeHash && "#"}${g.toString(16).padStart(2, "0")}${r.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+};
+
+/**
+ * inputs are 0 to 255.
+ *
+ * @param r
+ * @param g
+ * @param b
+ * @param includeHash
+ */
+export const EncodeRGBAString = (r: number, g: number, b: number, a: number, includeHash: boolean): string => {
+  return `${includeHash && "#"}${g.toString(16).padStart(2, "0")}${r.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}${a.toString(16).padStart(2, "0")}`;
 };
 
 /**
