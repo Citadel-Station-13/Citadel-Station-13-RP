@@ -4,25 +4,28 @@
 	category_item_type = /datum/category_item/player_setup_item/loadout
 
 /datum/category_group/player_setup_category/loadout_preferences/override_tab_to(mob/user)
-	var/datum/category_item/player_setup_item/loadout/entry = locate() in items
+	var/datum/category_item/player_setup_item/loadout/gear/entry = locate() in items
 	entry.ui_interact(user)
 	return TRUE
 
-/datum/category_item/player_setup_item/loadout_slot
+/datum/category_item/player_setup_item/loadout
+	abstract_type = /datum/category_item/player_setup_item/loadout
+
+/datum/category_item/player_setup_item/loadout/slot
 	name = "Loadout Slot"
 	save_key = CHARACTER_DATA_LOADOUT_SLOT
 
-/datum/category_item/player_setup_item/loadout_slot/default_value(randomizing)
+/datum/category_item/player_setup_item/loadout/slot/default_value(randomizing)
 	return 1
 
-/datum/category_item/player_setup_item/loadout_slot/filter_data(datum/preferences/prefs, data, list/errors)
-	return sanitize_integer(data, 1, LOADOUT_MAX_SLOTS)
+/datum/category_item/player_setup_item/loadout/slot/filter_data(datum/preferences/prefs, data, list/errors)
+	return sanitize_integer(data, 1, LOADOUT_MAX_SLOTS, 1)
 
-/datum/category_item/player_setup_item/loadout
+/datum/category_item/player_setup_item/loadout/gear
 	name = "Loadout"
 	save_key = CHARACTER_DATA_LOADOUT
 
-/datum/category_item/player_setup_item/loadout/filter_data(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/loadout/gear/filter_data(datum/preferences/prefs, data, list/errors)
 	var/list/slots = sanitize_islist(data)
 	if(length(slots) > LOADOUT_MAX_SLOTS)
 		slots.len = LOADOUT_MAX_SLOTS
@@ -82,7 +85,7 @@
 			*/
 	return slots
 
-/datum/category_item/player_setup_item/loadout/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
+/datum/category_item/player_setup_item/loadout/gear/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	var/list/slots = sanitize_islist(data)
 	var/slot_index = prefs.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
 	var/list/slot = SAFEINDEXACCESS(slots, slot_index)
@@ -103,7 +106,7 @@
 			. = FALSE
 		current_cost += entry.cost
 
-/datum/category_item/player_setup_item/loadout/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/category_item/player_setup_item/loadout/gear/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["gearContext"] = tgui_loadout_context()
 	var/list/allowed_ids = list()
@@ -113,16 +116,16 @@
 	.["gearData"] = tgui_loadout_data()
 	.["characterName"] = pref.real_name
 
-/datum/category_item/player_setup_item/loadout/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+/datum/category_item/player_setup_item/loadout/gear/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "CharacterLoadoutStandalone")
 		ui.open()
 
-/datum/category_item/player_setup_item/loadout/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+/datum/category_item/player_setup_item/loadout/gear/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
 	return UI_INTERACTIVE
 
-/datum/category_item/player_setup_item/loadout/proc/tgui_loadout_selected(list/loadout_slot)
+/datum/category_item/player_setup_item/loadout/gear/proc/tgui_loadout_selected(list/loadout_slot)
 	. = list()
 	.["name"] = loadout_slot[LOADOUT_SLOTDATA_NAME]
 	var/cost_used = 0
@@ -146,7 +149,7 @@
 	.["costUsed"] = cost_used
 	.["costMax"] = cost_max
 
-/datum/category_item/player_setup_item/loadout/proc/tgui_loadout_data()
+/datum/category_item/player_setup_item/loadout/gear/proc/tgui_loadout_data()
 	. = list()
 	var/list/slots = list()
 	var/slot_index = pref.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
@@ -161,7 +164,7 @@
 	.["slot"] = tgui_loadout_selected(the_slot)
 	.["slotIndex"] = slot_index
 
-/datum/category_item/player_setup_item/loadout/ui_act(action, list/params, datum/tgui/ui)
+/datum/category_item/player_setup_item/loadout/gear/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -342,6 +345,7 @@
 				return TRUE
 			pref.set_character_data(CHARACTER_DATA_LOADOUT_SLOT, index)
 			push_loadout_data()
+			pref.update_character_previews()
 			return TRUE
 		if("slotName")
 			var/index = text2num(params["index"])
@@ -364,26 +368,26 @@
 			push_loadout_data()
 			return TRUE
 
-/datum/category_item/player_setup_item/loadout/proc/current_loadout_slot(datum/preferences/prefs)
+/datum/category_item/player_setup_item/loadout/gear/proc/current_loadout_slot(datum/preferences/prefs)
 	var/list/all_slots = prefs.get_character_data(CHARACTER_DATA_LOADOUT)
 	var/index_slot = prefs.get_character_data(CHARACTER_DATA_LOADOUT_SLOT)
 	return all_slots["[index_slot]"] || (all_slots["[index_slot]"] = list())
 
-/datum/category_item/player_setup_item/loadout/proc/push_loadout_data()
+/datum/category_item/player_setup_item/loadout/gear/proc/push_loadout_data()
 	push_ui_data(
 		data = list(
 			"gearData" = tgui_loadout_data(),
 		)
 	)
 
-/datum/category_item/player_setup_item/loadout/proc/push_character_name()
+/datum/category_item/player_setup_item/loadout/gear/proc/push_character_name()
 	push_ui_data(
 		data = list(
 			"characterName" = pref.real_name,
 		)
 	)
 
-/datum/category_item/player_setup_item/loadout/load_character(savefile/S)
+/datum/category_item/player_setup_item/loadout/gear/load_character(savefile/S)
 	// LITERALLY JUST A SHIM TO TRIGGER UI UPDATES.
 	addtimer(CALLBACK(src, PROC_REF(push_loadout_data)), 0)
 	addtimer(CALLBACK(src, PROC_REF(push_character_name)), 0)
@@ -393,14 +397,14 @@
 // Because this is way faster than
 // manually calling procs and fetching species name every time.
 
-/datum/category_item/player_setup_item/loadout/proc/check_loadout_entry(datum/preferences/prefs, datum/loadout_entry/entry)
+/datum/category_item/player_setup_item/loadout/gear/proc/check_loadout_entry(datum/preferences/prefs, datum/loadout_entry/entry)
 	if(entry.legacy_species_lock && (entry.legacy_species_lock != prefs.real_species_name()))
 		return FALSE
 	if(entry.ckeywhitelist && (prefs.client_ckey != entry.ckeywhitelist))
 		return FALSE
 	return TRUE
 
-/datum/category_item/player_setup_item/loadout/proc/valid_loadout_entries(datum/preferences/prefs)
+/datum/category_item/player_setup_item/loadout/gear/proc/valid_loadout_entries(datum/preferences/prefs)
 	RETURN_TYPE(/list)
 	. = list()
 	var/datum/species/real_species = prefs.real_species_datum()
