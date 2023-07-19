@@ -268,7 +268,7 @@
 					continue
 				var/val = catlist[key]
 				catlist -= key
-				catlist["/datum/loadout_tweak/color"] = key
+				catlist["/datum/loadout_tweak/color"] = val
 		WRITE_FILE(S["all_underwear_metadata"], all_underwear_metadata)
 
 /**
