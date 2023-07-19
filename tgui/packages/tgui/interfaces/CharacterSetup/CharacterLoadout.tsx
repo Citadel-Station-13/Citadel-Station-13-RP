@@ -40,6 +40,7 @@ export interface FullLoadoutSlot extends PartialLoadoutSlot {
   entries: Record<LoadoutId, LoadoutSelected>;
   costUsed: number;
   costMax: number;
+
 }
 
 export interface PartialLoadoutSlot {
