@@ -74,6 +74,12 @@ export const IdentityByondMatrixRGB = (): ByondColorMatrixRGB => {
 // RGB or RGBA string, usually used to do color multiply operations / set color vars.
 export type ByondColorString = string;
 
+export type ByondColorMatrix =
+  ByondColorMatrixRGB |
+  ByondColorMatrixRGBA |
+  ByondColorMatrixRGBAC |
+  ByondColorMatrixRGBC;
+
 // byond color var compatible
 export type ByondAtomColor =
   ByondColorString |
@@ -103,10 +109,24 @@ enum ColorPickerMode {
   Matrix = 1,
 }
 
+export const ConvertByondColorMatrixtoRGBAC = (
+  matrix: ByondColorMatrixRGB | ByondColorMatrixRGBA | ByondColorMatrixRGBAC | ByondColorMatrixRGBC)
+  : ByondColorMatrixRGBAC => {
+
+};
+
 export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
   assembleState = (): ColorPickerState => {
     if ((typeof this.props.currentColor) !== 'string') {
       // matrix
+      return {
+        mode: ColorPickerMode.Matrix,
+        cRed: 1,
+        cGreen: 1,
+        cBlue: 1,
+        cAlpha: 1,
+        cMatrix: ConvertByondColorMatrixtoRGBAC(this.props.currentColor as ByondColorMatrix),
+      };
     }
     else {
       // string
@@ -120,6 +140,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
         cMatrix: IdentityByondMatrixRGBAC(),
       };
     }
+    throw new Error("not matrix or string");
   };
 
   state: ColorPickerState = this.assembleState();
