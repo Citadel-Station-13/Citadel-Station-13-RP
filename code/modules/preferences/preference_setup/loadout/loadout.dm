@@ -130,8 +130,6 @@
 	var/list/our_entries = loadout_slot[LOADOUT_SLOTDATA_ENTRIES]
 	var/list/entries = list()
 	.["entries"] = entries
-	.["costUsed"] = cost_used
-	.["costMax"] = cost_max
 	for(var/id in our_entries)
 		var/datum/loadout_entry/entry = global.gear_datums[id]
 		if(isnull(entry))
@@ -145,6 +143,8 @@
 			tweak_texts[tweak.id] = tweak.get_contents(our_entries[id][LOADOUT_ENTRYDATA_TWEAKS]?[tweak.id] || tweak.get_default())
 		transformed["tweakTexts"] = tweak_texts
 		entries[entry.legacy_get_id()] = transformed
+	.["costUsed"] = cost_used
+	.["costMax"] = cost_max
 
 /datum/category_item/player_setup_item/loadout/proc/tgui_loadout_data()
 	. = list()

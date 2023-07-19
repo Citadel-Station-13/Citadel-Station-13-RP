@@ -2,7 +2,7 @@ import { Component } from "inferno";
 import { useLocalState } from "../../backend";
 import { Box, Button, Collapsible, Dropdown, Input, Stack, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
-import { ByondAtomColor, ByondColorMatrixRGBC } from "../common/Color";
+import { ByondAtomColor, ByondColorMatrixRGBC, ColorPicker } from "../common/Color";
 
 export type LoadoutId = string;
 
@@ -76,7 +76,6 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
       <Stack vertical grow fill>
         <Stack.Item>
           <Section>
-            {JSON.stringify(props.gearData)}
             <Stack fill>
               <Stack.Item>
                 <Box mt={0.5}>
@@ -150,7 +149,7 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
                       (entry) => {
                         return (
                           <CharacterLoadoutEntry
-                            key={`${entry.id}-${JSON.stringify(props.gearData.slot.entries[entry.id])}`}
+                            key={`${entry.id}`}
                             selected={props.gearData.slot.entries[entry.id] || null}
                             entry={entry}
                             toggleAct={props.toggleAct}
@@ -185,12 +184,14 @@ interface CharacterLoadoutEntryProps {
 interface CharacterLoadoutEntryState {
   editingName: boolean;
   editingDesc: boolean;
+  editingColor: boolean;
 }
 
 class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, CharacterLoadoutEntryState> {
   state: CharacterLoadoutEntryState = {
     editingName: false,
     editingDesc: false,
+    editingColor: false,
   };
 
   render() {
@@ -200,7 +201,7 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
           captureKeys={false}
           title={(
             <>
-              {this.props.entry.customize & LoadoutCustomizations.Rename && (
+              {(this.props.entry.customize & LoadoutCustomizations.Rename) && !!this.props.selected && (
                 <Button mr={1} icon="pen"
                   onClick={
                     () => this.props.selected && this.setState((prevState) => ({
@@ -226,34 +227,56 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
               selected={!!this.props.selected}
               color="transparent"
               onClick={() => this.props.toggleAct?.(this.props.entry.id)} />)}>
-          <Box ml={4.25}>
-            <Box>
-              {this.props.entry.customize & LoadoutCustomizations.Redesc && (
-                <Button mr={1} icon="pen" onClick={
-                  () => this.props.selected && this.setState((prevState) => ({
-                    ...prevState,
-                    editingDesc: !prevState.editingDesc,
-                  }))
-                } color="transparent" selected={this.state.editingDesc || !!this.props.selected?.redesc} />
+          <div style={{ position: "relative" }}>
+            {(this.props.entry.customize & LoadoutCustomizations.Color) && !!this.props.selected && (
+              <Button
+                icon="tint"
+                position="absolute"
+                left={0.35}
+                top={0}
+                color="transparent"
+                selected={this.state.editingColor}
+                onClick={() => this.props.selected
+                        && this.setState((prev) => ({ ...prev, editingColor: !prev.editingColor }))} />
+            )}
+            <Box ml={4.25}>
+              <Box>
+                {(this.props.entry.customize & LoadoutCustomizations.Redesc) && !!this.props.selected && (
+                  <Button mr={1} icon="pen" onClick={
+                    () => this.props.selected && this.setState((prevState) => ({
+                      ...prevState,
+                      editingDesc: !prevState.editingDesc,
+                    }))
+                  } color="transparent" selected={this.state.editingDesc || !!this.props.selected?.redesc} />
+                )}
+                {this.state.editingDesc? (
+                  <Input
+                    value={this.props.selected?.redesc}
+                    onChange={(e, val) => {
+                      this.props.customizeDescAct?.(this.props.entry.id, val);
+                      this.setState((prevState) => ({ ...prevState, editingDesc: false }));
+                    }} />
+                ) : (this.props.selected?.redesc !== undefined? this.props.selected.redesc : this.props.entry.desc)}
+              </Box>
+              {this.state.editingColor && (
+                <Section>
+                  <ColorPicker
+                    allowMatrix
+                    currentColor={this.props.selected?.recolor || "#ffffff"}
+                    setColor={(color) => {
+                      this.props.customizeColorAct?.(this.props.entry.id, color);
+                      this.setState((prev) => ({ ...prev, editingColor: false }));
+                    }} />
+                </Section>
               )}
-              {this.state.editingDesc? (
-                <Input
-                  value={this.props.selected?.redesc}
-                  onChange={(e, val) => {
-                    this.props.customizeDescAct?.(this.props.entry.id, val);
-                    this.setState((prevState) => ({ ...prevState, editingDesc: false }));
-                  }} />
-              ) : (this.props.selected?.redesc !== undefined? this.props.selected.redesc : this.props.entry.desc)}
+              {!!this.props.selected && this.props.entry.tweaks?.map((id) => {
+                return (
+                  <Button key={id} content={this.props.selected?.tweakTexts?.[id]}
+                    color="transparent" onClick={() => this.props.tweakAct?.(this.props.entry.id, id)} />
+                );
+              })}
             </Box>
-            {JSON.stringify(this.props.entry)}
-            {JSON.stringify(this.props.selected)}
-            {!!this.props.selected && this.props.entry.tweaks?.map((id) => {
-              return (
-                <Button key={id} content={this.props.selected?.tweakTexts?.[id]}
-                  color="transparent" onClick={() => this.props.tweakAct?.(this.props.entry.id, id)} />
-              );
-            })}
-          </Box>
+          </div>
         </Collapsible>
       </Stack.Item>
     );
