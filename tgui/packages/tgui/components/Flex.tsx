@@ -8,10 +8,10 @@ import { BooleanLike, classes, pureComponentHooks } from 'common/react';
 import { BoxProps, computeBoxClassName, computeBoxProps, unit } from './Box';
 
 export type FlexProps = BoxProps & {
-  direction?: CSSWideKeyword | "column" | "row" | "row-reverse" | "column-reverse" | undefined;
-  wrap?: CSSWideKeyword | "wrap" | "nowrap" | "wrap-reverse" | boolean | undefined;
-  align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | undefined;
-  justify?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "stretch" | "space-between" | "space-around" | "space-evenly" | undefined;
+  direction?: string | BooleanLike;
+  wrap?: string | BooleanLike;
+  align?: string | BooleanLike;
+  justify?: string | BooleanLike;
   inline?: BooleanLike;
 };
 
@@ -28,17 +28,20 @@ export const computeFlexClassName = (props: FlexProps) => {
 export const computeFlexProps = (props: FlexProps) => {
   const {
     className,
+    direction,
     wrap,
+    align,
+    justify,
     inline,
     ...rest
   } = props;
   return computeBoxProps({
     style: {
       ...rest.style,
-      'flex-direction': props.direction,
-      'flex-wrap': wrap === true ? 'wrap' : (wrap === false? undefined : wrap),
-      'align-items': props.align,
-      'justify-content': props.justify,
+      'flex-direction': direction,
+      'flex-wrap': wrap === true ? 'wrap' : wrap,
+      'align-items': align,
+      'justify-content': justify,
     },
     ...rest,
   });
@@ -60,11 +63,11 @@ export const Flex = props => {
 Flex.defaultHooks = pureComponentHooks;
 
 export type FlexItemProps = BoxProps & {
-  grow?: number | CSSWideKeyword | undefined;
+  grow?: number;
   order?: number;
-  shrink?: number | CSSWideKeyword | undefined;
+  shrink?: number;
   basis?: string | BooleanLike;
-  align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | "auto" | undefined;
+  align?: string | BooleanLike;
 };
 
 export const computeFlexItemClassName = (props: FlexItemProps) => {
@@ -79,7 +82,11 @@ export const computeFlexItemProps = (props: FlexItemProps) => {
   const {
     className,
     style,
+    grow,
+    order,
+    shrink,
     basis,
+    align,
     ...rest
   } = props;
   const computedBasis = basis
@@ -88,15 +95,15 @@ export const computeFlexItemProps = (props: FlexItemProps) => {
     ?? props.width
     // If grow is used, basis should be set to 0 to be consistent with
     // flex css shorthand `flex: 1`.
-    ?? (props.grow !== undefined ? 0 : undefined);
+    ?? (grow !== undefined ? 0 : undefined);
   return computeBoxProps({
     style: {
       ...style,
-      'flex-grow': props.grow,
-      'flex-shrink': props.shrink,
+      'flex-grow': grow !== undefined && Number(grow),
+      'flex-shrink': shrink !== undefined && Number(shrink),
       'flex-basis': unit(computedBasis),
-      'order': props.order,
-      'align-self': props.align,
+      'order': order,
+      'align-self': align,
     },
     ...rest,
   });
