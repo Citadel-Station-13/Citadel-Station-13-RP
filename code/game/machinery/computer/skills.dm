@@ -14,6 +14,9 @@
 	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	circuit = /obj/item/circuitboard/skills/pcu
 	density = FALSE
+	depth_level = 0
+	depth_projected = FALSE
+	climb_allowed = FALSE
 	var/obj/item/card/id/scan = null
 	var/authenticated = null
 	var/rank = null

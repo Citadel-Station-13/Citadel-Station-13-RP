@@ -16,6 +16,8 @@
 	density = FALSE
 	circuit = /obj/item/circuitboard/timeclock
 	clicksound = null
+	climb_allowed = FALSE
+	depth_projected = FALSE
 	var/channel = "Common" //Radio channel to announce on
 
 	var/obj/item/card/id/card // Inserted Id card

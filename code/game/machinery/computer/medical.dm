@@ -507,7 +507,9 @@
 	light_color = "#5284e7"
 	circuit = /obj/item/circuitboard/med_data/pcu
 	density = FALSE
-
+	depth_level = 0
+	depth_projected = FALSE
+	climb_allowed = FALSE
 
 #undef FIELD
 #undef MED_FIELD

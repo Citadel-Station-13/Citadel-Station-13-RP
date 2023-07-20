@@ -6,12 +6,14 @@
 	desc = "A virtual map of the surrounding station."
 	icon = 'icons/obj/machines/stationmap.dmi'
 	icon_state = "station_map"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
 	circuit = /obj/item/circuitboard/station_map
+	depth_projected = FALSE
+	climb_allowed = FALSE
 
 	// TODO - Port use_auto_lights from /vg - for now declare here
 	var/use_auto_lights = 1
