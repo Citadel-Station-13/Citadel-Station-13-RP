@@ -151,7 +151,7 @@
 	// storage?
 	if(allow_storage_spawn)
 		for(var/obj/item/instance as anything in instances)
-			if(character.force_equip_to_slot(instance, /datum/inventory_slot_meta/abstract/put_in_backpack))
+			if(character.force_equip_to_slot(instance, /datum/inventory_slot_meta/abstract/put_in_backpack, INV_OP_SILENT))
 				instances -= instance
 				if(!(flags & PREF_COPY_TO_SILENT))
 					to_chat(character, SPAN_NOTICE("Putting \the [instance] into your backpack."))

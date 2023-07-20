@@ -223,7 +223,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
       this.state.cGreen,
       this.state.cBlue,
       true);
-    let [cHue, cSat, cVal] = RGBtoHSV(this.state.cRed, this.state.cGreen, this.state.cBlue).map((n) => Math.round(n));
+    let [cHue, cSat, cVal] = RGBtoHSV(this.state.cRed, this.state.cGreen, this.state.cBlue).map((n) => round(n, 2));
     return (
       <Box {...this.props}>
         <Stack vertical>
@@ -309,7 +309,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                           step={1}
                           value={cHue}
                           onDrag={(e, val) => {
-                            let [r, g, b] = HSVtoRGB(val, cSat, cVal).map((n) => Math.round(n));
+                            let [r, g, b] = HSVtoRGB(val, cSat, cVal).map((n) => round(n, 2));
                             this.setState((prev) => ({
                               ...prev,
                               cRed: r,
@@ -327,7 +327,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                           step={0.5}
                           value={cSat}
                           onDrag={(e, val) => {
-                            let [r, g, b] = HSVtoRGB(cHue, val, cVal).map((n) => Math.round(n));
+                            let [r, g, b] = HSVtoRGB(cHue, val, cVal).map((n) => round(n, 2));
                             this.setState((prev) => ({
                               ...prev,
                               cRed: r,
@@ -345,7 +345,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                           step={0.5}
                           value={cVal}
                           onDrag={(e, val) => {
-                            let [r, g, b] = HSVtoRGB(cHue, cSat, val).map((n) => Math.round(n));
+                            let [r, g, b] = HSVtoRGB(cHue, cSat, val).map((n) => round(n, 2));
                             this.setState((prev) => ({
                               ...prev,
                               cRed: r,
@@ -445,7 +445,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                           <Table.Cell key={i2}>
                             {l}: <NumberInput width="50px"
                               minValue={-10} maxValue={10}
-                              step={0.01} value={round(this.state.cMatrix[ifull], 0.001)}
+                              step={0.01} value={round(this.state.cMatrix[ifull], 4)}
                               onChange={(e, val) => {
                                 this.setState((prev) => {
                                   let modified = prev.cMatrix.slice();
