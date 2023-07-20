@@ -120,13 +120,13 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
                   icon="pen"
                   onClick={() => props.slotRenameAct?.(props.gearData.slotIndex)} />
               </Stack.Item>
-              <Stack.Item>
+              <Stack.Item grow>
                 <Box mt={0.5} textColor={props.gearData.slot.costUsed > props.gearData.slot.costMax? "bad" : undefined}>
                   Points: {props.gearData.slot.costUsed} / {props.gearData.slot.costMax}
                 </Box>
               </Stack.Item>
-              <Stack.Item>
-                <Box mt={0.5} textColor={Object.keys(props.gearData.slot.entries).length / props.gearContext.maxEntries? "bad" : undefined}>
+              <Stack.Item grow>
+                <Box mt={0.5} textColor={Object.keys(props.gearData.slot.entries).length > props.gearContext.maxEntries? "bad" : undefined}>
                   Items: {Object.keys(props.gearData.slot.entries).length} / {props.gearContext.maxEntries}
                 </Box>
               </Stack.Item>
