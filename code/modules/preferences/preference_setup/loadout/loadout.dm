@@ -30,7 +30,6 @@
 	if(length(slots) > LOADOUT_MAX_SLOTS)
 		slots.len = LOADOUT_MAX_SLOTS
 	var/list/datum/loadout_entry/valid_entries = valid_loadout_entries(prefs)
-	var/total_cost = max_loadout_cost()
 	for(var/i in 1 to LOADOUT_MAX_SLOTS)
 		var/numkey = num2text(i)
 		if(isnull(slots[numkey]))
