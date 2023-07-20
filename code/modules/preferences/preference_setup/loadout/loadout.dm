@@ -413,7 +413,7 @@
 		var/datum/loadout_entry/entry = gear_datums[entry_name]
 		if(entry.legacy_species_lock && (entry.legacy_species_lock != real_species_name))
 			continue
-		if(entry.ckeywhitelist && (prefs.client_ckey != entry.ckeywhitelist))
+		if(entry.ckeywhitelist && !(prefs.client_ckey in entry.ckeywhitelist))
 			continue
 		. += entry
 
