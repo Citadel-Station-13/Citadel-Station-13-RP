@@ -10,8 +10,10 @@
 		/datum/map_level/triumph/transit,
 		/datum/map_level/triumph/flagship,
 	)
-	width = 192
-	height = 192
+	width = 140
+	height = 140
+	world_width = 192
+	world_height = 192
 	lateload = list(
 		/datum/map/sector/debrisfield_192,
 		/datum/map/sector/piratebase_192,
