@@ -10,19 +10,19 @@
 		/datum/map_level/triumph/transit,
 		/datum/map_level/triumph/flagship,
 	)
-	width = 140
-	height = 140
+	width = 192
+	height = 192
 	lateload = list(
-		/datum/map/sector/debrisfield_140,
-		/datum/map/sector/wasteland_140,
-		/datum/map/sector/desert_140,
-		/datum/map/sector/gaia_140,
-		/datum/map/sector/frozen_140,
-		/datum/map/sector/piratebase_140,
-		/datum/map/sector/tradeport_140,
-		/datum/map/sector/lavaland_140,
-		/datum/map/sector/roguemining_140/one,
-		/datum/map/sector/mining_140,
+		/datum/map/sector/debrisfield_192,
+		/datum/map/sector/piratebase_192,
+		/datum/map/sector/mining_192,
+		/datum/map/sector/gaia_192,
+		/datum/map/sector/frozen_192,
+		/datum/map/sector/wasteland_192,
+		/datum/map/sector/tradeport_192,
+		/datum/map/sector/lavaland_192,
+		/datum/map/sector/miaphus_192,
+		/datum/map/sector/roguemining_192/one,
 	)
 
 	//* LEGACY BELOW *//
