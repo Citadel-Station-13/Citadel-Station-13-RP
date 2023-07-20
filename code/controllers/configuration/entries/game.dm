@@ -79,5 +79,5 @@
 /datum/config_entry/flag/emojis
 	default = TRUE
 
-/datum/config_entry/flag/almost_everyone_has_maintennace_access
+/datum/config_entry/flag/almost_everyone_has_maintenance_access
 	default = TRUE
