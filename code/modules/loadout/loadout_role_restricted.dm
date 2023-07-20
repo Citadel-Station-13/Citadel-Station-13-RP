@@ -5,11 +5,12 @@
 	path = /obj/item/bikehorn/rubberducky
 	slot = null                                   //At least you work as null.
 	allowed_roles = list("Facility Director")     //This technically also works as null, but we're supposed to be role restricted so it's the captain's exclusive, special ducky.
-	sort_category = LOADOUT_CATEGORY_ROLE_RESTRICTED
+	category = LOADOUT_CATEGORY_ROLE_RESTRICTED
 
 //*Single Departments
 //Security
 /datum/loadout_entry/restricted/security
+	subcategory = "Security"
 	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Blueshield")
 
 /datum/loadout_entry/restricted/security/eyes
@@ -35,6 +36,7 @@
 
 //Medical
 /datum/loadout_entry/restricted/medical
+	subcategory = "Medical"
 	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Head Nurse")
 
 /datum/loadout_entry/restricted/medical/eyes
@@ -60,6 +62,7 @@
 
 //Engineering
 /datum/loadout_entry/restricted/engineering
+	subcategory = "Engineering"
 	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/restricted/engineering/eyes
@@ -85,6 +88,7 @@
 
 //Command
 /datum/loadout_entry/restricted/command
+	subcategory = "Command"
 	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary", "Blueshield")
 
 /datum/loadout_entry/restricted/command/eyes
@@ -107,6 +111,7 @@
 
 //Science
 /datum/loadout_entry/restricted/science
+	subcategory = "Science"
 	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Pathfinder", "Senior Researcher")
 
 /datum/loadout_entry/restricted/science/eyes
@@ -132,6 +137,7 @@
 
 //Supply
 /datum/loadout_entry/restricted/supply
+	subcategory = "Supply"
 	allowed_roles = list("Shaft Miner", "Cargo Technician", "Quartermaster")
 
 /datum/loadout_entry/restricted/supply/eyes
@@ -183,6 +189,7 @@
 //*Multi-Department Combinations (Aka Multi-Department Drifting)
 //Security + Command
 /datum/loadout_entry/restricted/sec_com
+	subcategory = "Sec-Com"
 	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Facility Director", "Head of Personnel", "Internal Affairs Agent")
 
 /datum/loadout_entry/restricted/sec_com/eyes
@@ -199,6 +206,7 @@
 
 //Medical + Science
 /datum/loadout_entry/restricted/med_sci
+	subcategory = "Med-Sci"
 	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Senior Researcher", "Pathfinder", "Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Head Nurse")
 
 /datum/loadout_entry/restricted/med_sci/head

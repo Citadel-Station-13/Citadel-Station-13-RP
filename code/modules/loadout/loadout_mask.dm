@@ -3,7 +3,7 @@
 	name = "Bandana - Blue"
 	path = /obj/item/clothing/mask/bandana/blue
 	slot = SLOT_ID_MASK
-	sort_category = LOADOUT_CATEGORY_MASKS
+	category = LOADOUT_CATEGORY_MASKS
 
 /datum/loadout_entry/mask/gold
 	name = "Bandana - Gold"

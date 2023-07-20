@@ -1,7 +1,7 @@
 
 /datum/loadout_entry/accessory
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = LOADOUT_CATEGORY_ACCESSORIES
+	category = LOADOUT_CATEGORY_ACCESSORIES
 	abstract_type = /datum/loadout_entry/accessory
 	path = /obj/item/clothing/accessory
 	cost = 1

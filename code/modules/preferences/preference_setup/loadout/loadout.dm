@@ -39,7 +39,6 @@
 		var/list/dedupe = list()
 		if(length(slot) > LOADOUT_MAX_ITEMS)
 			slot.len = LOADOUT_MAX_ITEMS
-		var/used_cost = 0
 		var/list/slot_entries = slot[LOADOUT_SLOTDATA_ENTRIES]
 		for(var/id in slot_entries)
 			var/datum/loadout_entry/entry = global.gear_datums[id]
@@ -57,12 +56,6 @@
 				slot_entries -= id
 				errors?.Add("Not allowed to take loadout entry id '[id]")
 				continue
-			if(entry.cost + used_cost > total_cost)
-				slot_entries -= id
-				errors?.Add("Out of cost to take loadout entry '[id]'")
-				continue
-			else
-				used_cost += entry.cost
 			// commented out - /datum/loadout_entry checks this on spawn.
 			/*
 			var/list/entry_data = slot_entries[id]
@@ -132,6 +125,8 @@
 	var/cost_max = max_loadout_cost()
 	var/list/our_entries = loadout_slot[LOADOUT_SLOTDATA_ENTRIES]
 	var/list/entries = list()
+	var/list/cost_categories = list()
+	var/list/cost_subcategories = list()
 	.["entries"] = entries
 	for(var/id in our_entries)
 		var/datum/loadout_entry/entry = global.gear_datums[id]
@@ -146,8 +141,14 @@
 			tweak_texts[tweak.id] = tweak.get_contents(our_entries[id][LOADOUT_ENTRYDATA_TWEAKS]?[tweak.id] || tweak.get_default())
 		transformed["tweakTexts"] = tweak_texts
 		entries[entry.legacy_get_id()] = transformed
+		cost_categories[entry.category] += entry.cost
+		LAZYINITLIST(cost_subcategories[entry.category])
+		cost_subcategories[entry.category][entry.subcategory] += entry.cost
+
 	.["costUsed"] = cost_used
 	.["costMax"] = cost_max
+	.["costCategories"] = cost_categories
+	.["costSubcategories"] = cost_subcategories
 
 /datum/category_item/player_setup_item/loadout/gear/proc/tgui_loadout_data()
 	. = list()

@@ -6,14 +6,12 @@ var/list/gear_datums = list()
 	var/list/categories = list()
 	for(var/id in global.gear_datums)
 		var/datum/loadout_entry/entry = global.gear_datums[id]
-		categories[entry.sort_category] = TRUE
+		LAZYDISTINCTADD(categories[entry.category], entry.subcategory)
 		var/list/instance = entry.tgui_entry_data()
 		instances[instance["id"]] = instance
-	var/list/flattened_categories = list()
-	for(var/i in categories)
-		flattened_categories += i
 	.["instances"] = instances
-	.["categories"] = flattened_categories
+	.["categories"] = categories
+	.["maxEntries"] = LOADOUT_MAX_ITEMS
 
 /datum/loadout_entry
 	abstract_type = /datum/loadout_entry
@@ -40,7 +38,10 @@ var/list/gear_datums = list()
 	// todo: remove in favor of uid locks and or just a better system.
 	// Term to check the whitelist for.
 	var/legacy_species_lock
-	var/sort_category = LOADOUT_CATEGORY_GENERAL
+	/// category. can't be null.
+	var/category = LOADOUT_CATEGORY_GENERAL
+	/// subcategory. can't be null.
+	var/subcategory = "Miscellaneous"
 	/// List of datums which will alter the item after it has been spawned.
 	var/list/tweaks = list()
 	/// Does it go on the exploitable information list?
@@ -74,7 +75,8 @@ var/list/gear_datums = list()
 		"name" = display_name || name,
 		"id" = legacy_get_id(),
 		"cost" = cost,
-		"category" = sort_category,
+		"category" = category,
+		"subcategory" = subcategory,
 		"customize" = loadout_customize_flags,
 		"desc" = description,
 		"tweaks" = tweaks,
@@ -126,8 +128,11 @@ var/list/gear_datums = list()
 		if(!G.path)
 			stack_trace("Missing path on [G.type].")
 			continue
-		if(!G.sort_category)
-			stack_trace("Missing sort category on [G.type].")
+		if(!G.category)
+			stack_trace("Missing category on [G.type].")
+			continue
+		if(!G.subcategory)
+			stack_trace("Missing subcategory on [G.type].")
 			continue
 		if(length(G.holiday_whitelist))
 			var/found = FALSE

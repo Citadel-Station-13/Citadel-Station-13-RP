@@ -1,6 +1,6 @@
 /datum/loadout_entry/seasonal/halloween
 	abstract_type = /datum/loadout_entry/seasonal/halloween
-	sort_category = LOADOUT_CATEGORY_SEASONAL_HALLOWEEN
+	category = LOADOUT_CATEGORY_SEASONAL_HALLOWEEN
 
 /datum/loadout_entry/seasonal/halloween/costumes
 	name = "Gentleman's Cane"

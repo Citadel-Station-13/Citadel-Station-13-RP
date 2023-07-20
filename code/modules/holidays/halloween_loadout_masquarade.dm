@@ -21,7 +21,7 @@
  */
 /datum/loadout_entry/seasonal/masquarade
 	holiday_whitelist = list(HALLOWEEN)
-	sort_category = "Halloween - Masquarade"
+	category = "Halloween - Masquarade"
 	abstract_type = /datum/loadout_entry/seasonal/masquarade
 	description = "This is not a real antagonist item. It is highly recommended you rename and set their description yourself using gear tweaks."
 	cost = 1

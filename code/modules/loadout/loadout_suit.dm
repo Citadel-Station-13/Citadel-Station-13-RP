@@ -3,7 +3,7 @@
 	name = "Apron - Blue"
 	path = /obj/item/clothing/suit/storage/apron
 	slot = SLOT_ID_SUIT
-	sort_category = LOADOUT_CATEGORY_SUITS
+	category = LOADOUT_CATEGORY_SUITS
 
 /datum/loadout_entry/suit/apron_white
 	name = "Apron - Colorable"

@@ -2,13 +2,13 @@
 	name = "Choker"
 	path = /obj/item/clothing/accessory/choker
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = LOADOUT_CATEGORY_ACCESSORIES
+	category = LOADOUT_CATEGORY_ACCESSORIES
 
 /datum/loadout_entry/collar
 	name = "Collar - Silver"
 	path = /obj/item/clothing/accessory/collar/silver
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = LOADOUT_CATEGORY_ACCESSORIES
+	category = LOADOUT_CATEGORY_ACCESSORIES
 
 /datum/loadout_entry/collar/New()
 	..()

@@ -2,7 +2,7 @@
 /datum/loadout_entry/utility
 	name = "Briefcase"
 	path = /obj/item/storage/briefcase
-	sort_category = LOADOUT_CATEGORY_UTILITY
+	category = LOADOUT_CATEGORY_UTILITY
 
 /datum/loadout_entry/utility/clipboard
 	name = "Clipboard"

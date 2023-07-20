@@ -1,6 +1,6 @@
 /datum/loadout_entry/seasonal/christmas
 	abstract_type = /datum/loadout_entry/seasonal/christmas
-	sort_category = LOADOUT_CATEGORY_SEASONAL_CHRISTMAS
+	category = LOADOUT_CATEGORY_SEASONAL_CHRISTMAS
 
 /datum/loadout_entry/seasonal/christmas/costumes
 	name = "Gentleman's Cane"

@@ -1,5 +1,5 @@
 /datum/loadout_entry/seasonal
-	sort_category = LOADOUT_CATEGORY_SEASONAL // seasonal ones are usually tied to holidays we don't want a category just for this
+	category = LOADOUT_CATEGORY_SEASONAL // seasonal ones are usually tied to holidays we don't want a category just for this
 	abstract_type = /datum/loadout_entry/seasonal
 	cost = 1
 

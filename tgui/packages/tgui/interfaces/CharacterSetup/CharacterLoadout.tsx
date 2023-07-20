@@ -14,7 +14,10 @@ export interface LoadoutData {
 
 export interface LoadoutContext {
   instances: Record<LoadoutId, LoadoutEntry>;
-  categories: string[];
+  // category to list of subcategories
+  categories: Record<string, string[]>;
+  // hard maximum limit of items
+  maxEntries: number;
 }
 
 export interface LoadoutEntry {
@@ -22,6 +25,7 @@ export interface LoadoutEntry {
   name: string;
   cost: number;
   category: string;
+  subcategory: string;
   desc: string;
   customize: LoadoutCustomizations;
   // ids
@@ -40,7 +44,8 @@ export interface FullLoadoutSlot extends PartialLoadoutSlot {
   entries: Record<LoadoutId, LoadoutSelected>;
   costUsed: number;
   costMax: number;
-
+  costCategories: Record<string, number>;
+  costSubcategories: Record<string, Record<string, number>>;
 }
 
 export interface PartialLoadoutSlot {
@@ -72,6 +77,8 @@ interface LoadoutProps extends SectionProps {
 export const CharacterLoadout = (props: LoadoutProps, context) => {
   // todo: get rid of 'context' requirement.
   let [loadoutCategory, setLoadoutCategory] = useLocalState<string | null>(context, "loadoutCategory", null);
+  let [loadoutSubcategory, setLoadoutSubcategory] = useLocalState<string | null>(context, "loadoutSubcategory", null);
+  let currentCategoryHasSubcategories = !!loadoutCategory && props.gearContext.categories[loadoutCategory].length > 1;
   return (
     <Section {...props}>
       <Stack vertical grow fill>
@@ -114,8 +121,13 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
                   onClick={() => props.slotRenameAct?.(props.gearData.slotIndex)} />
               </Stack.Item>
               <Stack.Item>
-                <Box mt={0.5}>
+                <Box mt={0.5} textColor={props.gearData.slot.costUsed > props.gearData.slot.costMax? "bad" : undefined}>
                   Points: {props.gearData.slot.costUsed} / {props.gearData.slot.costMax}
+                </Box>
+              </Stack.Item>
+              <Stack.Item>
+                <Box mt={0.5} textColor={Object.keys(props.gearData.slot.entries).length / props.gearContext.maxEntries? "bad" : undefined}>
+                  Items: {Object.keys(props.gearData.slot.entries).length} / {props.gearContext.maxEntries}
                 </Box>
               </Stack.Item>
               <Stack.Item grow />
@@ -132,27 +144,46 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
         <Stack.Item grow>
           <Stack fill>
             <Stack.Item>
-              <Section fill title="Categories">
+              <Section fill title="Category">
                 <Tabs vertical>
-                  {props.gearContext.categories.sort(
+                  {Object.keys(props.gearContext.categories).sort(
                     (a, b) => a.localeCompare(b)
                   ).map((cat) => (
                     <Tabs.Tab
                       key={cat}
                       selected={cat === loadoutCategory}
-                      onClick={() => setLoadoutCategory(cat)}>
-                      {cat}
+                      onClick={() => { setLoadoutCategory(cat); setLoadoutSubcategory(null); }}>
+                      {cat}{props.gearData.slot.costCategories[cat] && ` - ${props.gearData.slot.costCategories[cat]}`}
                     </Tabs.Tab>
                   ))}
                 </Tabs>
               </Section>
             </Stack.Item>
+            {currentCategoryHasSubcategories && (
+              <Stack.Item>
+                <Section fill title="​">
+                  <Tabs vertical>
+                    {props.gearContext.categories[loadoutCategory as string].sort(
+                      (a, b) => a.localeCompare(b)
+                    ).map((subcat) => (
+                      <Tabs.Tab
+                        key={subcat}
+                        selected={subcat === loadoutSubcategory}
+                        onClick={() => setLoadoutSubcategory(subcat)}>
+                        {subcat}{props.gearData.slot.costSubcategories[loadoutCategory as string]?.[subcat] && ` - ${props.gearData.slot.costSubcategories[loadoutCategory as string][subcat]}`}
+                      </Tabs.Tab>
+                    ))}
+                  </Tabs>
+                </Section>
+              </Stack.Item>
+            )}
             <Stack.Item grow>
               <Section title="Items" fill scrollable>
                 <Stack vertical>
                   {
                     props.gearAllowed.map((id) => props.gearContext.instances[id]).filter(
                       (entry) => entry.category === loadoutCategory
+                      && (!currentCategoryHasSubcategories || entry.subcategory === loadoutSubcategory)
                     ).sort(
                       (e1, e2) => e1.name.localeCompare(e2.name)
                     ).map(

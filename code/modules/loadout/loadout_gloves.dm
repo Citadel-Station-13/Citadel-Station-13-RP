@@ -3,7 +3,7 @@
 	name = "Gloves - Black"
 	path = /obj/item/clothing/gloves/black
 	slot = SLOT_ID_GLOVES
-	sort_category = LOADOUT_CATEGORY_GLOVES
+	category = LOADOUT_CATEGORY_GLOVES
 
 /datum/loadout_entry/gloves/blue
 	name = "Gloves - Blue"

@@ -1,5 +1,5 @@
 /datum/loadout_entry/event_reward
-	sort_category = LOADOUT_CATEGORY_EVENTS
+	category = LOADOUT_CATEGORY_EVENTS
 	cost = 0 // If they got something custom, it's only right that they aren't penalized and need to re-adjust their loadout to compensate for their new item's cost.
 	name = "If this item can be chosen or seen, ping a coder immediately!"
 	path = /obj/item/bikehorn
