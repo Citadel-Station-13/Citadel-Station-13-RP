@@ -90,7 +90,7 @@
 		allow_storage_spawn = PREF_COPYING_TO_CHECK_IS_SPAWNING(flags)
 
 	// generate gear datum + data list
-	var/list/loadout = generate_loadout_entry_list()
+	var/list/loadout = generate_loadout_entry_list(flags, role)
 	// overflow list of items associated to slot IDs
 	var/list/obj/item/overflow = list()
 

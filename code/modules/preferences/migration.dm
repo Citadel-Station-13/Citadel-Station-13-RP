@@ -257,9 +257,10 @@
 							if("/datum/gear_tweak/color", "/datum/gear_tweak/matrix_recolor")
 								assembled[LOADOUT_ENTRYDATA_RECOLOR] = old_tweaks[old_tweak]
 							else
-								if(findtext(old_tweak, "gear_tweak"))
-									old_tweak = replacetext(old_tweak, "gear_tweak", "loadout_tweak")
-								LAZYSET(assembled[LOADOUT_ENTRYDATA_TWEAKS], old_tweak, old_tweaks[old_tweak])
+								var/replaced = old_tweak
+								if(findtext(replaced, "gear_tweak"))
+									replaced = replacetext(replaced, "gear_tweak", "loadout_tweak")
+								LAZYSET(assembled[LOADOUT_ENTRYDATA_TWEAKS], replaced, old_tweaks[old_tweak])
 					translated_entries[entry.legacy_get_id()] = assembled
 		var/all_underwear_metadata
 		READ_FILE(S["all_underwear_metadata"], all_underwear_metadata)
