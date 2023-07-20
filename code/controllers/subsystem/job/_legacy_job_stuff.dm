@@ -293,7 +293,7 @@
 	else
 		to_chat(H, "Your job is [rank] and the game just can't handle it! Please report this bug to an administrator.")
 
-	H.client.prefs.overflow_loadout(H, instances = loadout_rejected)
+	H.client.prefs.overflow_loadout(H, joined_late? PREF_COPY_TO_FOR_LATEJOIN : PREF_COPY_TO_FOR_ROUNDSTART, loadout_rejected)
 
 	H.job = rank
 	log_game("JOINED [key_name(H)] as \"[rank]\"")
