@@ -159,11 +159,11 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
                 </Tabs>
               </Section>
             </Stack.Item>
-            {currentCategoryHasSubcategories && (
+            {currentCategoryHasSubcategories && loadoutCategory && (
               <Stack.Item>
                 <Section fill title="​">
                   <Tabs vertical>
-                    {props.gearContext.categories[loadoutCategory as string].sort(
+                    {props.gearContext.categories[loadoutCategory].sort(
                       (a, b) => a.localeCompare(b)
                     ).map((subcat) => (
                       <Tabs.Tab
