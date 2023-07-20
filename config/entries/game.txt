@@ -40,3 +40,6 @@ ENGINE_SUBMAP EngineSubmap_Singulo 20
 
 ## Set to 0 to disable emoji parse
 EMOJIS
+
+## Set to 0 to disable everyone on station having maint.
+ALMOST_EVERYONE_HAS_MAINTENANCE_ACCESS
