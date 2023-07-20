@@ -25,6 +25,9 @@
 	circuit = /obj/item/circuitboard/machine/lathe
 	default_deconstruct = 0 SECONDS
 	default_panel = 0 SECONDS
+	depth_projected = TRUE
+	depth_level = 8
+	climb_allowed = TRUE
 
 	/// icon state when printing, if any
 	var/active_icon_state
@@ -196,7 +199,7 @@
 
 /obj/machinery/lathe/proc/insert_item(obj/item/I, mob/user)
 	if(LAZYLEN(stored_items) >= items_max)
-		user.action_feedback(SPAN_WARNING("[src] can't hold [items_max && "more"] items for machining."), src)
+		user.action_feedback(SPAN_WARNING("[src] can't hold [items_max? "any more" : ""]items for machining."), src)
 		return FALSE
 	if(!isnull(user))
 		if(user.is_in_inventory(I) && !user.transfer_item_to_loc(I, src))

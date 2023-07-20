@@ -176,6 +176,10 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	if (config_legacy.log_emote)
 		WRITE_LOG(GLOB.world_game_log, "SUBTLER: [speaker.simple_info_line()]: [html_decode(text)]")
 
+/proc/log_subtle_vore(text, mob/speaker)
+	if (config_legacy.log_emote)
+		WRITE_LOG(GLOB.world_game_log, "SUBTLE_VORE: [speaker.simple_info_line()]: [html_decode(text)]")
+
 /proc/log_aooc(text, client/user)
 	if (config_legacy.log_ooc)
 		WRITE_LOG(GLOB.world_game_log, "AOOC: [user.simple_info_line()]: [html_decode(text)]")
