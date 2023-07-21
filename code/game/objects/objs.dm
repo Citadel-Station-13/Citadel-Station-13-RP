@@ -563,6 +563,12 @@
 	return islist(material_parts)? material_parts[1] : material_parts
 
 /**
+ * get material part
+ */
+/obj/proc/get_material_part(part)
+	return material_parts?[material_defaults?.Find(part)]
+
+/**
  * get material costs
  */
 /obj/proc/get_material_costs()

@@ -226,7 +226,7 @@ var/list/table_icon_cache = list()
 		return ..()
 
 /obj/structure/table/proc/reinforce_table(obj/item/stack/material/S, mob/user)
-	if(reinforced)
+	if(get_material_part("reinf"))
 		to_chat(user, "<span class='warning'>\The [src] is already reinforced!</span>")
 		return
 
@@ -234,7 +234,7 @@ var/list/table_icon_cache = list()
 		to_chat(user, "<span class='warning'>\The [src] cannot be reinforced!</span>")
 		return
 
-	if(!material)
+	if(!get_material_part("base"))
 		to_chat(user, "<span class='warning'>Plate \the [src] before reinforcing it!</span>")
 		return
 
