@@ -135,10 +135,11 @@
 				var/icon = initial(last_uploaded_path.icon)
 				var/obj/item/clothing/new_clothing = new base_uploaded_path
 				new_clothing.forceMove(src.loc)
-				new_clothing.name = src.name
+				new_clothing.name = "[src.name] (pAI)"
 				new_clothing.desc = src.desc
 				new_clothing.icon = icon
 				new_clothing.icon_state = state
+				new_clothing.add_atom_colour(uploaded_color, FIXED_COLOUR_PRIORITY)
 
 				var/obj/item/clothing/under/U = new_clothing
 				if(istype(U))

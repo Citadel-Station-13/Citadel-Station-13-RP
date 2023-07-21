@@ -10,7 +10,8 @@
 	anchored = TRUE
 	unacidable = TRUE
 	pass_flags = ATOM_PASS_TABLE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	depth_level = INFINITY // nothing should be passing over us from depth
 
 	////TG PROJECTILE SYTSEM
 	//Projectile stuff

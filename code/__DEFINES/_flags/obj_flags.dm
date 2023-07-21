@@ -9,8 +9,10 @@
 #define OBJ_MELEE_TARGETABLE        (1<<3)
 /// can be targeted by projectiles
 #define OBJ_RANGE_TARGETABLE        (1<<4)
-/// Is a hologram
+/// is a hologram
 #define OBJ_HOLOGRAM                (1<<5)
+/// We ignore depth system when blocking mobs
+#define OBJ_IGNORE_MOB_DEPTH        (1<<6)
 
 DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(OBJ_EMAGGED),
@@ -19,4 +21,5 @@ DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(OBJ_MELEE_TARGETABLE),
 	BITFIELD(OBJ_RANGE_TARGETABLE),
 	BITFIELD(OBJ_HOLOGRAM),
+	BITFIELD(OBJ_IGNORE_MOB_DEPTH),
 ))

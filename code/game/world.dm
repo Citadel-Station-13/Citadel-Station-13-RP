@@ -5,6 +5,21 @@ GLOBAL_VAR(restart_counter)
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
+/world
+	mob = /mob/new_player
+	turf = /turf/space/basic
+	area = /area/space
+	view = "15x15"
+	hub = "Exadv1.spacestation13"
+	hub_password = "kMZy3U5jJHSiBQjr"
+	name = "Citadel Station 13 - Roleplay"
+	status = "ERROR: Default status"
+	visibility = TRUE
+	fps = 20
+#ifdef FIND_REF_NO_CHECK_TICK
+	loop_checks = FALSE
+#endif
+
 /**
  * World creation
  *

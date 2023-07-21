@@ -37,6 +37,7 @@
 		wires = new/datum/wires/smartfridge/secure(src)
 	else
 		wires = new/datum/wires/smartfridge(src)
+	update_icon()
 
 /obj/machinery/smartfridge/Destroy()
 	AIR_UPDATE_ON_DESTROY_AUTO

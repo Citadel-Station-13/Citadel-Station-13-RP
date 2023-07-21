@@ -8,6 +8,8 @@
 	w_class = ITEMSIZE_HUGE
 	integrity = 200
 	integrity_max = 200
+	depth_level = 24
+	depth_projected = TRUE
 
 	var/state = 0
 	var/displaced_health = 50

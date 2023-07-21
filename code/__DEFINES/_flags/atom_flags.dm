@@ -177,7 +177,9 @@ DEFINE_BITFIELD(integrity_flags, list(
 /// Don't let us buckle people to ourselves.
 #define BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF (1<<6)
 /// Lets the user avoid step checks.
-#define BUCKLING_GROUND_HOIST				  (1<<7)
+#define BUCKLING_GROUND_HOIST                 (1<<7)
+/// projects our depth to the buckled object. you usually don't want this.
+#define BUCKLING_PROJECTS_DEPTH               (1<<8)
 
 DEFINE_BITFIELD(buckle_flags, list(
 	BITFIELD(BUCKLING_REQUIRES_RESTRAINTS),
@@ -188,4 +190,5 @@ DEFINE_BITFIELD(buckle_flags, list(
 	BITFIELD(BUCKLING_NO_DEFAULT_RESIST),
 	BITFIELD(BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF),
 	BITFIELD(BUCKLING_GROUND_HOIST),
+	BITFIELD(BUCKLING_PROJECTS_DEPTH),
 ))
