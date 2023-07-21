@@ -1156,6 +1156,10 @@
 			message = "prbts."
 			playsound(src.loc, 'sound/misc/prbt.ogg', 50, 1, -1)
 			m_type = 2
+		if ("mrrp")
+			message = "mrrps"
+			m_type = 2
+			playsound(src.loc, "sound/voice/mrrp.ogg", 50, 1, -1)
 		if ("weh")
 			message = "lets out a weh."
 			m_type = 2
