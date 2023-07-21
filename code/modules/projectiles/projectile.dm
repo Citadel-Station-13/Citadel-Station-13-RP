@@ -8,7 +8,7 @@
 	icon_state = "bullet"
 	density = FALSE
 	anchored = TRUE
-	unacidable = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
 	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	depth_level = INFINITY // nothing should be passing over us from depth

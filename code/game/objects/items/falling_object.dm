@@ -1,10 +1,10 @@
 /obj/effect/falling_effect
 	name = "you should not see this"
 	desc = "no data"
-	invisibility = 101
+	invisibility = INVISIBILITY_ABSTRACT
 	anchored = TRUE
 	density = FALSE
-	unacidable = TRUE
+	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_INDESTRUCTIBLE | INTEGRITY_INDESTRUCTIBLE
 	var/falling_type = /obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita
 	var/crushing = TRUE
 

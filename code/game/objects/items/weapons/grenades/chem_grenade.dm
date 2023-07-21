@@ -6,7 +6,6 @@
 	w_class = ITEMSIZE_SMALL
 	damage_force = 2.0
 	det_time = 50
-	unacidable = 1
 
 	var/stage = 0
 	var/state = 0

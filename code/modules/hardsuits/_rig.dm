@@ -29,7 +29,7 @@
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.2
 	permeability_coefficient = 0.1
-	unacidable = 1
+	integrity_flags = INTEGRITY_ACIDPROOF
 	preserve_item = 1
 
 	// Activation

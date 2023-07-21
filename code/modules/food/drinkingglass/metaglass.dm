@@ -4,7 +4,7 @@
 	icon_state = "glass_empty"
 	amount_per_transfer_from_this = 5
 	volume = 30
-	unacidable = 1 //glass
+	integrity_flags = INTEGRITY_ACIDPROOF
 	center_of_mass = list("x"=16, "y"=10)
 	materials = list(MAT_GLASS = 500)
 	icon = 'icons/obj/drinks.dmi'

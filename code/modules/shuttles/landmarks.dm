@@ -3,10 +3,10 @@
 	name = "Nav Point"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "energynet"
-	anchored = 1
-	unacidable = 1
+	anchored = TRUE
+	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_INDESTRUCTIBLE | INTEGRITY_LAVAPROOF
 	atom_flags = ATOM_ABSTRACT
-	invisibility = 101
+	invisibility = INVISIBILITY_ABSTRACT
 	var/shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET	// We generally want to use current area/turf as base.
 
 	// ID of the landmark

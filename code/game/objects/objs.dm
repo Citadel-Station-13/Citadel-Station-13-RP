@@ -92,8 +92,6 @@
 	var/renamed_by_player = FALSE
 	var/w_class // Size of the object.
 	//! LEGACY: DO NOT USE
-	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
-	//! LEGACY: DO NOT USE
 	var/sharp = 0		// whether this object cuts
 	//! LEGACY: DO NOT USE
 	var/edge = 0		// whether this object is more likely to dismember

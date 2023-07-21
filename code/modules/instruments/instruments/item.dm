@@ -100,8 +100,7 @@
 	desc = "A golden musical instrument with four strings and a bow. \"The devil went down to space, he was looking for an assistant to grief.\""
 	icon_state = "golden_violin"
 	item_state = "golden_violin"
-	unacidable = TRUE
-//	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
 
 /obj/item/instrument/piano_synth
 	name = "synthesizer"

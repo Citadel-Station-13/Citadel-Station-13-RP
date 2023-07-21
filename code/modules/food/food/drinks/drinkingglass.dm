@@ -4,7 +4,7 @@
 	icon_state = "glass_empty"
 	amount_per_transfer_from_this = 5
 	volume = 30
-	unacidable = 1 //glass
+	integrity_flags = INTEGRITY_ACIDPROOF
 	center_of_mass = list("x"=16, "y"=10)
 	drop_sound = 'sound/items/drop/drinkglass.ogg'
 	pickup_sound =  'sound/items/pickup/drinkglass.ogg'

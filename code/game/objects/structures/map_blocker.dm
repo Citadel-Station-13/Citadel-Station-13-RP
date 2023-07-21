@@ -7,7 +7,8 @@
 	anchored = TRUE
 	opacity = FALSE
 	density = TRUE
-	unacidable = TRUE
+	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_INDESTRUCTIBLE | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
+	atom_flags = ATOM_ABSTRACT
 	zmm_flags = ZMM_IGNORE
 
 /obj/effect/blocker/Initialize(mapload) // For non-gateway maps.
