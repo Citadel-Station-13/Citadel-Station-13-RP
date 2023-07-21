@@ -56,7 +56,7 @@
 	/// * Always use get_materials to get this list unless you know what you're doing.
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
 	var/list/materials
-	/// material parts - lets us track what we're made of.
+	/// material parts - lets us track the costs of what we're made of.
 	/// key = cost in cm3
 	/// this is either a lazy list of part names to costs in cm3,
 	/// or a single number.

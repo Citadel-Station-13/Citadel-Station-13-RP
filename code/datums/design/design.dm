@@ -74,7 +74,6 @@
 	// lathe designs shouldn't be qdeleting, but incase someone puts in a random..
 	if(QDELETED(instance))
 		return
-	// todo: maybe /obj/proc/detect_materials, /obj/proc/detect_material_parts ? this works fine for now tho.
 	if(isnull(materials))
 		var/list/fetched = instance.detect_material_base_costs()
 		if(length(fetched))
