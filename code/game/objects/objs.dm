@@ -59,34 +59,25 @@
 	/// * This does not include material parts.
 	var/list/materials
 	/// material parts - lets us track what we're made of
-	/// this is either a lazy list of ordered material ids,
+	/// this is either a lazy list of material keys to IDs,
 	/// or a single material id
 	/// or null for defaults.
-	/// * This should never specified at compile time, and is instead created on init. Use [material_defaults].
+	/// ! This must be set for anything using the materials system.
+	/// ! This is what determines how many, and if something uses the material parts system.
+	/// * This may be a typelist, use is_typelist to check.
+	/// * Use [MATERIAL_DEFAULT_DISABLED] if something doesn't use material parts system.
+	/// * Use [MATERIAL_DEFAULT_NONE] if something uses material parts system, but has only one material with default of null.
+	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
 	/// * Always use get_material_parts to get this list unless you know what you're doing.
-	/// * This list has the same ordering as [material_defaults].
-	var/list/material_parts
+	var/list/material_parts = MATERIAL_DEFAULT_DISABLED
 	/// material costs - lets us track the costs of what we're made of.
 	/// this is either a lazy list of ordered costs in cm3,
 	/// or a single number.
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Always use get_material_costs to get this list unless you know what you're doing.
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
-	/// * This list has the same ordering as [material_defaults].
+	/// * This list has the same ordering as [material_parts].
 	var/list/material_costs
-	/// material parts on spawn
-	/// key = material id
-	/// this is either a lazy list of key to material ids,
-	/// or a single material id
-	/// ! This must be set for anything using the materials system.
-	/// ! This is what determines how many, and if something uses the material parts system.
-	/// * This may be a typelist, use is_typelist to check.
-	/// * Always use get_material_defaults to get this list unless you know what you're doing.
-	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
-	/// * List of parts may have nulls to signify that a part is missing.
-	/// * Use [MATERIAL_DEFAULT_DISABLED] if something doesn't use material parts system.
-	/// * Use [MATERIAL_DEFAULT_NONE] if something uses material parts system, but has only one material with default of null.
-	var/list/material_defaults = MATERIAL_DEFAULT_DISABLED
 
 	//? Sounds
 	/// volume when breaking out using resist process
@@ -117,6 +108,8 @@
 	if(register_as_dangerous_object)
 		register_dangerous_to_step()
 	. = ..()
+	// cache materiald
+	#warn oh no
 	if(!isnull(materials))
 		if(has_typelist(materials))
 			materials = get_typelist(materials)
@@ -124,22 +117,25 @@
 			// preprocess
 			materials = SSmaterials.preprocess_kv_keys_to_ids(materials)
 			materials = typelist(NAMEOF(src, materials), materials)
+	// cache material costs
 	if(islist(material_costs))
 		if(has_typelist(material_costs))
 			material_costs = get_typelist(material_costs)
 		else
 			material_costs = typelist(NAMEOF(src, material_costs), material_costs)
-	if(material_defaults != MATERIAL_DEFAULT_DISABLED)
-		if(islist(material_defaults))
-			if(has_typelist(material_defaults))
-				material_defaults = get_typelist(material_defaults)
+	// initialize material parts system
+	if(material_parts != MATERIAL_DEFAULT_DISABLED)
+		// process material parts only if it wasn't set already
+		// this allows children of /obj to modify their material parts prior to init.
+		if(islist(material_parts) && !(obj_flags & OBJ_MATERIAL_MODIFIED))
+			if(has_typelist(material_parts))
+				material_parts = get_typelist(material_parts)
 			else
 				// preprocess
-				material_defaults = SSmaterials.preprocess_kv_values_to_ids(material_defaults)
-				material_defaults = typelist(NAMEOF(src, material_defaults), material_defaults)
-		// init material parts only if it wasn't set already
-		// this allows children of /obj to call set material parts in Initialize() before ..()
-		if(isnull(material_parts))
+				material_parts = SSmaterials.preprocess_kv_values_to_ids(material_parts)
+				material_parts = typelist(NAMEOF(src, material_parts), material_parts)
+		// init material parts only if it wasn't initialized already
+		if(!(obj_flags & OBJ_MATERIAL_INITIALIZED))
 			init_material_parts()
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
@@ -456,7 +452,7 @@
  * do we use material parts system?
  */
 /obj/proc/has_material_parts()
-	return material_defaults != MATERIAL_DEFAULT_DISABLED
+	return material_parts != MATERIAL_DEFAULT_DISABLED
 
 /**
  * autodetect proc used by lathes
@@ -509,11 +505,23 @@
 			materials[mat] += amt
 
 /**
- * sets our material parts to a list by key / value
+ * sets a single material part
+ *
+ * @params
+ * * part - part key
+ * * material_like - material. ids and paths are not allowed for performance reasons
+ */
+/obj/proc/set_material_part(part, datum/material/material)
+	#warn impl
+
+/**
+ * sets our material parts to a list by key / value. values should be material datums.
+ * ids and typepaths are not allowed in part_instances for performance reasons.
+ *
  * this does not update [materials], you have to do that manually
  * this is usually done in init using init_materials
  */
-/obj/proc/set_material_parts(list/parts)
+/obj/proc/set_material_parts(list/part_instances)
 	#warn impl
 
 /**

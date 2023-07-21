@@ -22,7 +22,7 @@ var/list/table_icon_cache = list()
 	depth_level = 8
 	depth_projected = TRUE
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/steel,
 		"reinf" = null,
 	)
@@ -51,8 +51,11 @@ var/list/table_icon_cache = list()
 	/// Do people pixel-place items or center place?
 	var/item_pixel_place = TRUE
 
-/obj/structure/table/Initialize(mapload, datum/material/base = material_defaults[1], datum/material/reinforcing = material_defaults[2])
-	set_material_parts(list("base" = base, "reinf" = reinforcing))
+/obj/structure/table/Initialize(mapload, datum/material/base, datum/material/reinforcing)
+	if(!isnull(base))
+		set_material_part("base", SSmaterials.resolve_material(base))
+	if(!isnull(reinf))
+		set_material_part("reinf", SSmaterials.resolve_material(reinforcing))
 	. = ..()
 
 	// One table per turf.

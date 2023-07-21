@@ -9,7 +9,7 @@
 	integrity = 200
 	integrity_max = 200
 
-	material_defaults = /datum/material/wood
+	material_parts = /datum/material/wood
 
 /obj/structure/barricade/Initialize(mapload, datum/material/material_like)
 	if(!isnull(material_like))

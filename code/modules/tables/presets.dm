@@ -4,7 +4,7 @@
 /obj/structure/table/standard
 	icon_state = "plain_preview"
 	color = "#EEEEEE"
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/plastic,
 		"reinf"= null,
 	)
@@ -12,7 +12,7 @@
 /obj/structure/table/steel
 	icon_state = "plain_preview"
 	color = "#666666"
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/steel,
 		"reinf"= null,
 	)
@@ -20,7 +20,7 @@
 /obj/structure/table/marble
 	icon_state = "stone_preview"
 	color = "#CCCCCC"
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/sandstone/marble,
 		"reinf"= null,
 	)
@@ -28,7 +28,7 @@
 /obj/structure/table/reinforced
 	icon_state = "reinf_preview"
 	color = "#EEEEEE"
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/plastic,
 		"reinf"= /datum/material/steel,
 	)
@@ -36,7 +36,7 @@
 /obj/structure/table/steel_reinforced
 	icon_state = "reinf_preview"
 	color = "#666666"
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/steel,
 		"reinf"= /datum/material/steel,
 	)
@@ -48,7 +48,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/wood,
 		"reinf"= /datum/material/steel,
 	)
@@ -60,7 +60,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/wood,
 		"reinf"= null,
 	)
@@ -72,7 +72,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/wood/sif,
 		"reinf"= null,
 	)
@@ -84,7 +84,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/wood/sif,
 		"reinf"= /datum/material/steel,
 	)
@@ -96,7 +96,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/wood/hardwood,
 		"reinf"= null,
 	)
@@ -104,7 +104,7 @@
 /obj/structure/table/gamblingtable
 	icon_state = "gamble_preview"
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/wood,
 		"reinf"= null,
 	)
@@ -118,7 +118,7 @@
 	smoothing_groups = (SMOOTH_GROUP_GLASS_TABLES)
 	canSmoothWith = (SMOOTH_GROUP_GLASS_TABLES)
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/glass,
 		"reinf"= null,
 	)
@@ -132,7 +132,7 @@
 	color = "#4D3EAC"
 	alpha = 77
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/glass/phoron,
 		"reinf"= null,
 	)
@@ -141,7 +141,7 @@
 	icon_state = "holo_preview"
 	color = "#EEEEEE"
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/plastic/holographic,
 		"reinf"= null,
 	)
@@ -149,7 +149,7 @@
 /obj/structure/table/woodentable/holotable
 	icon_state = "holo_preview"
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/wood/holographic,
 		"reinf"= null,
 	)
@@ -161,7 +161,7 @@
 	can_reinforce = FALSE
 	can_plate = FALSE
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/alienalloy/alium,
 		"reinf"= null,
 	)
@@ -179,7 +179,7 @@
 	icon_state = "plain_preview"
 	color = "#d6c100"
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/bananium,
 		"reinf"= null,
 	)
@@ -188,7 +188,7 @@
 	icon_state = "reinf_preview"
 	color = "#d6c100"
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/bananium,
 		"reinf"= /datum/material/steel,
 	)
@@ -200,7 +200,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/sandstone,
 		"reinf"= null,
 	)
@@ -212,7 +212,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/bone,
 		"reinf"= null,
 	)
@@ -222,7 +222,7 @@
 	icon_state = "plain_preview"
 	color = "#EEEEEE"
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/plastic,
 		"reinf"= null,
 	)
@@ -231,7 +231,7 @@
 	icon_state = "plain_preview"
 	color = "#666666"
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/steel,
 		"reinf"= null,
 	)
@@ -240,7 +240,7 @@
 	icon_state = "stone_preview"
 	color = "#CCCCCC"
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/sandstone/marble,
 		"reinf"= null,
 	)
@@ -249,7 +249,7 @@
 	icon_state = "plain_preview"
 	color = "#824B28"
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/wood,
 		"reinf"= null,
 	)
@@ -258,7 +258,7 @@
 	icon_state = "plain_preview"
 	color = "#824B28"
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/wood/sif,
 		"reinf"= null,
 	)
@@ -270,7 +270,7 @@
 /obj/structure/table/bench/padded
 	icon_state = "padded_preview"
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/steel,
 		"reinf"= null,
 	)
@@ -281,7 +281,7 @@
 	color = "#00E1FF"
 	alpha = 77 // 0.3 * 255
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/glass,
 		"reinf"= null,
 	)
@@ -290,7 +290,7 @@
 	icon_state = "stone_preview"
 	color = "#D9C179"
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/sandstone,
 		"reinf"= null,
 	)
@@ -299,7 +299,7 @@
 	icon_state = "stone_preview"
 	color = "#e6dfc8"
 
-	material_defaults = list(
+	material_parts = list(
 		"base" = /datum/material/bone,
 		"reinf"= null,
 	)

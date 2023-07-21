@@ -13,6 +13,10 @@
 #define OBJ_HOLOGRAM                (1<<5)
 /// We ignore depth system when blocking mobs
 #define OBJ_IGNORE_MOB_DEPTH        (1<<6)
+/// Materials have been modified
+#define OBJ_MATERIAL_MODIFIED       (1<<7)
+/// Materials have been initialized
+#define OBJ_MATERIAL_INITIALIZED    (1<<8)
 
 DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(OBJ_EMAGGED),
@@ -22,4 +26,6 @@ DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(OBJ_RANGE_TARGETABLE),
 	BITFIELD(OBJ_HOLOGRAM),
 	BITFIELD(OBJ_IGNORE_MOB_DEPTH),
+	BITFIELD(OBJ_MATERIAL_MODIFIED),
+	BITFIELD(OBJ_MATERIAL_INITIALIZED),
 ))
