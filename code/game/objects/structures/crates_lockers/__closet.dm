@@ -45,6 +45,10 @@
 	var/lock_in_use = FALSE //Someone is doing some stuff with the lock here, better not proceed further
 //	var/secure = FALSE //secure locker or not
 
+	//! legacy
+	/// override attackby and anything else closet-like
+	var/not_actually_a_closet = FALSE
+	//! end
 
 /obj/structure/closet/Initialize(mapload)
 	. = ..()
@@ -267,27 +271,15 @@
 					A.forceMove(loc)
 				qdel(src)
 
-/obj/structure/closet/blob_act()
-	damage(100)
+/obj/structure/closet/deconstructed(method)
+	dump_contents()
+	return ..()
 
-/obj/structure/closet/proc/damage(var/damage)
-	health -= damage
-	if(health <= 0)
-		for(var/atom/movable/A in src)
-			A.forceMove(loc)
-		qdel(src)
-
-/obj/structure/closet/bullet_act(var/obj/projectile/Proj)
-	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage)
-		return
-
-	..()
-	damage(proj_damage)
-
-	return
-
-/obj/structure/closet/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/closet/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(not_actually_a_closet)
+		return ..()
 	if(opened)
 		if(istype(W, /obj/item/grab))
 			var/obj/item/grab/G = W
