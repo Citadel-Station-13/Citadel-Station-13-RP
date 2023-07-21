@@ -451,6 +451,12 @@
 	#warn how to deal with material parts and lathes?
 
 /**
+ * do we use material parts system?
+ */
+/obj/proc/has_material_parts()
+	return !!material_defaults
+
+/**
  * autodetect proc used by lathes
  * called only right after init
  * should never be called after materials are mutated in any way, including by init.

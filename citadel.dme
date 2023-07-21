@@ -1731,6 +1731,7 @@
 #include "code\game\objects\random\underdark.dm"
 #include "code\game\objects\random\unidentified\medicine.dm"
 #include "code\game\objects\structures\ashlander.dm"
+#include "code\game\objects\structures\barricade.dm"
 #include "code\game\objects\structures\barsign.dm"
 #include "code\game\objects\structures\bedsheet_bin.dm"
 #include "code\game\objects\structures\bonfire.dm"
