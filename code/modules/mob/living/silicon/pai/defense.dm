@@ -16,6 +16,37 @@
 		else if(istype(W, /obj/item/card/id) && idaccessible == 0)
 			to_chat(user, "<span class='notice'>[src] is not accepting access modifcations at this time.</span>")
 			return
+	else if(istype(W, /obj/item/clothing))
+		var/obj/item/clothing/C = W
+		var/new_base_uploaded_path
+		if(C.slot_flags & SLOT_HEAD)
+			new_base_uploaded_path = /obj/item/clothing/head
+		if(C.slot_flags & SLOT_ICLOTHING)
+			new_base_uploaded_path = /obj/item/clothing/under
+		if(C.slot_flags & SLOT_EYES)
+			new_base_uploaded_path = /obj/item/clothing/glasses
+		if(C.slot_flags & SLOT_GLOVES)
+			new_base_uploaded_path = /obj/item/clothing/gloves
+		if(C.slot_flags & SLOT_MASK)
+			new_base_uploaded_path = /obj/item/clothing/mask
+		if(C.slot_flags & SLOT_FEET)
+			new_base_uploaded_path = /obj/item/clothing/shoes
+		if(C.slot_flags & SLOT_OCLOTHING)
+			new_base_uploaded_path = /obj/item/clothing/suit
+
+		if(new_base_uploaded_path != null)
+			base_uploaded_path = new_base_uploaded_path
+			last_uploaded_path = W.type
+
+			var/obj/item/clothing/under/U = C
+			if(istype(U))
+				uploaded_snowflake_worn_state = U.snowflake_worn_state
+			uploaded_color = W.get_atom_colour()
+
+			to_chat(user, "<span class='notice'>You successfully upload the [W.name] to [src].</span>")
+			to_chat(src, "<span class='notice'>[user] has successfully uploaded the [W.name] to you.</span>")
+
+		return
 	else
 		. = ..()
 

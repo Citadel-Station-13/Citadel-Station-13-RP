@@ -432,7 +432,7 @@
 	)
 
 /singleton/closet_appearance/secure_closet/security
-	color = COLOR_MAROON
+	color = COLOR_SECURITY_RED
 	decals = list(
 		"lower_holes"
 	)

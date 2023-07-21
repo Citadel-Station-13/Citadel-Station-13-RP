@@ -896,9 +896,10 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Gf" = (
+/obj/fiftyspawner/tritium,
 /obj/structure/table/reinforced,
 /obj/fiftyspawner/deuterium,
-/obj/fiftyspawner/tritium,
+/obj/fiftyspawner/deuterium,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Gq" = (

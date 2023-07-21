@@ -317,6 +317,7 @@
 		ui.open()
 
 /obj/machinery/power/port_gen/pacman/ui_data(mob/user)
+	// todo: rewrite the whole fuckin' UI.
 	var/list/data = list()
 
 	data["active"] = active

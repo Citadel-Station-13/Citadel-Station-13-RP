@@ -266,7 +266,11 @@
 			if(!inserted)
 				return TRUE
 			usr.grab_item_from_interacted_with(inserted, src)
-			usr.visible_action_feedback(SPAN_NOTICE("[usr] ejects [inserted] from [src]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
+			usr.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[usr] ejects [inserted] from [src]."),
+				soft_range = MESSAGE_RANGE_INVENTORY_SOFT,
+			)
 			investigate_log("[key_name(usr)] ejected [ref_name_path(inserted)]", INVESTIGATE_REAGENTS)
 			inserted = null
 			return TRUE
@@ -284,7 +288,11 @@
 				return TRUE
 			remove_cartridge(cart, usr)
 			usr.grab_item_from_interacted_with(cart, src)
-			usr.visible_action_feedback(SPAN_NOTICE("[usr] removes [cart] from [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
+			usr.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[usr] removes [cart] from [src]."),
+				soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			)
 			update_static_data()
 			return TRUE
 		if("eject_cell")
@@ -293,7 +301,11 @@
 			if(!cell)
 				return TRUE
 			usr.grab_item_from_interacted_with(cell, src)
-			usr.visible_action_feedback(SPAN_NOTICE("[usr] removes [cell] from [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
+			usr.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[usr] removes [cell] from [src]."),
+				soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			)
 			component_parts -= cell
 			cell = null
 			return TRUE
@@ -380,7 +392,11 @@
 			if(!insert_cartridge(I))
 				I.forceMove(drop_location())
 				return CLICKCHAIN_DO_NOT_PROPAGATE
-			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
+			user.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
+				soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(istype(I, /obj/item/reagent_synth))
 			var/obj/item/reagent_synth/synth = I
@@ -393,7 +409,11 @@
 				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			LAZYADD(synthesizers, synth)
-			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
+			user.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
+				soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			)
 			update_static_data()
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(istype(I, /obj/item/cell))
@@ -405,7 +425,11 @@
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			cell = I
 			component_parts |= cell
-			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
+			user.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
+				soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(istype(I, /obj/item/reagent_containers))
@@ -427,10 +451,18 @@
 		// process swap?
 		if(inserted)
 			investigate_log("[key_name(user)] ejected [ref_name_path(inserted)]", INVESTIGATE_REAGENTS)
-			user.visible_action_feedback(SPAN_NOTICE("[user] quickly swaps [src]'s [inserted] for [I]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
-			user.put_in_hand_or_drop(inserted)
+			user.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[user] quickly swaps [src]'s [inserted] for [I]."),
+				soft_range = MESSAGE_RANGE_INVENTORY_SOFT,
+			)
+			user.put_in_hands_or_drop(inserted)
 		else
-			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
+			user.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
+				soft_range = MESSAGE_RANGE_INVENTORY_SOFT,
+			)
 		investigate_log("[key_name(user)] inserted [ref_name_path(I)]", INVESTIGATE_REAGENTS)
 		inserted = I
 		SStgui.update_uis(src)

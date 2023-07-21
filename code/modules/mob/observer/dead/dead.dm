@@ -1,3 +1,6 @@
+/// all player ghosts
+GLOBAL_LIST_EMPTY(observer_list)
+
 /mob/observer/dead
 	name = "ghost"
 	desc = "It's a g-g-g-g-ghooooost!" //jinkies!
@@ -93,6 +96,7 @@
 	var/datum/orbit_menu/orbit_menu
 
 /mob/observer/dead/Initialize(mapload)
+	GLOB.observer_list += src
 	var/mob/body = loc
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = world.view //I mean. I don't even know if byond has occlusion culling... but...
@@ -147,6 +151,10 @@
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 	real_name = name
+	return ..()
+
+/mob/observer/dead/Destroy()
+	GLOB.observer_list -= src
 	return ..()
 
 /mob/observer/dead/Topic(href, href_list)

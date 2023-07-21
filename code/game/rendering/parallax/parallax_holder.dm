@@ -9,6 +9,10 @@
  * - Layers - normal layers, scroll with movement to relative position, can scroll
  * - Absolute - absolute layers, scroll with movement to absolute position, cannot scroll
  * - Vis - vis_contents-like model - things in this are directly applied and get no processing whatsoever. Things like overmap ships can use this.
+ *
+ * ## Known Issues
+ *
+ * Secondary map support just affixes layers. There's no way to shift them around as the eye moves automatically.
  */
 /datum/parallax_holder
 	/// Client that owns us
