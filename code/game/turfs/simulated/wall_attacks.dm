@@ -107,6 +107,9 @@
 	return 0
 
 /turf/simulated/wall/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
 
 	radiate()
 	add_fingerprint(user)
@@ -128,19 +131,15 @@
 			if(INTENT_HARM)
 				//since only humans have organs_by_name but carbons still have intents this check only applies to humans
 				//it's hacky but it works
-				if(ishuman(user))
-					var/mob/living/carbon/human/H = user
-					var/obj/item/organ/external/E = H.organs_by_name[M.hand % 2? BP_L_HAND : BP_R_HAND]
-					if (!(E.is_usable()))
-						to_chat(user, SPAN_WARNING("You can't use that hand."))
-						return
+				if(!user.standard_hand_usability_check(src, e_args.hand_index, HAND_MANIPULATION_DULL))
+					return
 				if(rotting && !reinf_material)
 					M.visible_message(SPAN_DANGER("[M.name] punches \the [src] and it crumbles!"), SPAN_DANGER("You punch \the [src] and it crumbles!"))
 					dismantle_wall()
 					playsound(src, get_sfx("punch"), 20)
 				else
 					M.visible_message(SPAN_DANGER("[M.name] punches \the [src]!"), SPAN_DANGER("You punch \the [src]!"))
-					M.apply_damage(3, BRUTE, M.hand % 2? BP_L_HAND : BP_R_HAND)
+					M.apply_damage(3, BRUTE, e_args.hand_index? BP_L_HAND : BP_R_HAND)
 					playsound(src, get_sfx("punch"), 20)
 
 	else

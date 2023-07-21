@@ -23,7 +23,7 @@
 /**
  * returns everyone we're grabbing, recursively; this can include ourselves!
  */
-/mob/proc/grabbing_recursive(list/L = list())
+/mob/proc/grabbing_recursive_flat(list/L = list())
 	RETURN_TYPE(/list)
 	if(src in L)
 		return
@@ -61,10 +61,11 @@
 /**
  * are we being grabbed
  *
- * @return TRUE / FALSE
+ * @return null, or highest state
  */
 /mob/proc/is_grabbed()
-	return length(grabbed_by)
+	for(var/mob/M as anything in grabbed_by)
+		. = max(., M.check_grab(src))
 
 /**
  * are we being grabbed by someone

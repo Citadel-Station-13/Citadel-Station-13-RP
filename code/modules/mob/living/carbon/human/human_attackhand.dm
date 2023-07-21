@@ -318,14 +318,8 @@
 
 //Used to attack a joint through grabbing
 /mob/living/carbon/human/proc/grab_joint(var/mob/living/user, var/def_zone)
-	var/has_grab = 0
-	for(var/obj/item/grab/G in list(user.l_hand, user.r_hand))
-		if(G.affecting == src && G.state == GRAB_NECK)
-			has_grab = 1
-			break
-
-	if(!has_grab)
-		return FALSE
+	if(user.check_grab(src) < GRAB_NECK)
+		return
 
 	if(!def_zone) def_zone = user.zone_sel.selecting
 	var/target_zone = check_zone(def_zone)
