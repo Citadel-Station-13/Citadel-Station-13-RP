@@ -285,7 +285,7 @@
 		else
 			. = ""
 
-/obj/item/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	attempt_pickup(user)
 
 /obj/item/proc/attempt_pickup(mob/user)
@@ -781,7 +781,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	// SHOULD_CALL_PARENT(TRUE)
 	// attack_self isn't really part of the item attack chain.
 	if(isnull(e_args))
-		e_args = user.default_clickchain_event_args(src, params, TRUE)
+		e_args = user.default_clickchain_event_args(src, TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
 		interact(user)

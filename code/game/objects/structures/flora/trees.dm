@@ -170,7 +170,7 @@
 /obj/structure/flora/tree/pine/xmas/presents/choose_icon_state()
 	return "pinepresents"
 
-/obj/structure/flora/tree/pine/xmas/presents/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/flora/tree/pine/xmas/presents/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

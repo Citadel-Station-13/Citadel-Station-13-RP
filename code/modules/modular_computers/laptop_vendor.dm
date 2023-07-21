@@ -214,7 +214,7 @@
 		return 1
 	return 0
 
-/obj/machinery/lapvend/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/lapvend/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	nano_ui_interact(user)
 
 /obj/machinery/lapvend/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)

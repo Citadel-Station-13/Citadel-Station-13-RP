@@ -75,7 +75,7 @@
 	G.s_click(src)
 	return 1
 
-/atom/movable/screen/grab/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/atom/movable/screen/grab/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	return
 
 /atom/movable/screen/grab/attackby()

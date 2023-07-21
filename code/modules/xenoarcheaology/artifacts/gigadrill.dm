@@ -9,7 +9,7 @@
 	density = 1
 	layer = ABOVE_JUNK_LAYER
 
-/obj/machinery/giga_drill/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/giga_drill/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(active)
 		active = 0
 		icon_state = "gigadrill"

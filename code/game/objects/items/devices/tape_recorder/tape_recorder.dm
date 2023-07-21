@@ -62,7 +62,7 @@
 		tape.ruin() //Fires destroy the tape
 	return ..()
 
-/obj/item/tape_recorder/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/tape_recorder/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(tape)
 			eject()

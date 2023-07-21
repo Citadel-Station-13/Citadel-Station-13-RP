@@ -48,7 +48,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/computer/operating/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/operating/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)

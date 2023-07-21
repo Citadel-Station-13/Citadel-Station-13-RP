@@ -65,7 +65,7 @@
 		return
 	. = ..()
 
-/obj/machinery/computer/timeclock/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/timeclock/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 	user.set_machine(src)

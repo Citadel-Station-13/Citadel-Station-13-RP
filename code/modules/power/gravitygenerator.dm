@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 /obj/machinery/gravity_generator/part/get_status()
 	return main_part?.get_status()
 
-/obj/machinery/gravity_generator/part/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/gravity_generator/part/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	return main_part.attack_hand(user)
 
 /obj/machinery/gravity_generator/part/set_broken()
@@ -237,7 +237,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 				return
 	return ..()
 
-/obj/machinery/gravity_generator/main/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/gravity_generator/main/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if((. = ..()))
 		return
 	ui_interact(user)

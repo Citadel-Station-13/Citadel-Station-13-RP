@@ -119,7 +119,7 @@
 				return
 
 
-/obj/structure/transit_tube/station/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/transit_tube/station/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(!pod_moving)
 		for(var/obj/structure/transit_tube_pod/pod in loc)
 			if(!pod.moving && (pod.dir in directions()))

@@ -581,7 +581,7 @@
 	else if(harvest)
 		harvest(user)
 
-/obj/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 
 	if(istype(usr,/mob/living/silicon))
 		return

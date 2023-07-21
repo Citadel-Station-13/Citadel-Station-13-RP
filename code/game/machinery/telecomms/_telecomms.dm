@@ -363,7 +363,7 @@
 			return UI_CLOSE
 	. = ..()
 
-/obj/machinery/telecomms/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/telecomms/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	ui_interact(user)
 
 /obj/machinery/telecomms/ui_interact(mob/user, datum/tgui/ui)

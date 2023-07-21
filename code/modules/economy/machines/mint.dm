@@ -81,7 +81,7 @@
 			if(processed)
 				qdel(O)
 
-/obj/machinery/mineral/mint/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/mineral/mint/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 
 	var/dat = "<b>Coin Press</b><br>"
 
@@ -474,7 +474,7 @@
 /obj/machinery/coinbank/attack_ai(mob/user as mob)
 	attack_hand(user)
 
-/obj/machinery/coinbank/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/coinbank/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	wires.Interact(user)

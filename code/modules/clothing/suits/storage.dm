@@ -16,7 +16,7 @@
 	..()
 	ToggleButtons()
 
-/obj/item/clothing/suit/storage/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/clothing/suit/storage/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if (pockets.handle_attack_hand(user))
 		..(user)
 

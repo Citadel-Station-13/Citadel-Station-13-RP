@@ -73,7 +73,7 @@ field_generator power level display
 	return
 
 
-/obj/machinery/field_generator/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/field_generator/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(state == 2)
 		if(get_dist(src, user) <= 1)//Need to actually touch the thing to turn it on
 			if(src.active >= 1)

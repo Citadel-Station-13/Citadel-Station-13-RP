@@ -21,7 +21,7 @@
 /obj/machinery/computer/fusion_core_control/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/computer/fusion_core_control/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/fusion_core_control/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	add_fingerprint(user)
 	interact(user)
 

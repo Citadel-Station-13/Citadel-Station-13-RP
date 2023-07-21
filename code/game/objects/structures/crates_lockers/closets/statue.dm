@@ -110,7 +110,7 @@
 /obj/structure/closet/statue/relaymove()
 	return
 
-/obj/structure/closet/statue/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/closet/statue/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	return
 
 /obj/structure/closet/statue/verb_toggleopen()

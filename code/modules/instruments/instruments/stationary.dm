@@ -23,7 +23,7 @@
 	return (usr.default_can_use_topic(src) < UI_UPDATE)		//can play with MUTATION_TELEKINESIS and while resting because fun.
 
 /// CITRP EDIT UNTIL INTERACTION REFACTOR PORT!
-/obj/structure/musician/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/musician/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

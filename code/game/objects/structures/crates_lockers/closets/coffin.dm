@@ -40,7 +40,7 @@
 	else
 		icon_state = "closed"
 
-/obj/structure/closet/grave/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/closet/grave/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(opened)
 		visible_message("<span class='notice'>[user] starts to climb into \the [src.name].</span>", \
 						"<span class='notice'>You start to lower yourself into \the [src.name].</span>")

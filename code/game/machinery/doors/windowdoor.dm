@@ -147,7 +147,7 @@
 /obj/machinery/door/window/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/door/window/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/door/window/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	src.add_fingerprint(user)
 
 	if(istype(user,/mob/living/carbon/human))

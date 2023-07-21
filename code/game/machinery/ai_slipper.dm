@@ -57,7 +57,7 @@
 /obj/machinery/ai_slipper/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/ai_slipper/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/ai_slipper/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if((get_dist(src, user) > 1))

@@ -431,7 +431,7 @@
 
 	return data
 
-/obj/machinery/power/shield_generator/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/power/shield_generator/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if((. = ..()))
 		return
 	if(panel_open && Adjacent(user))

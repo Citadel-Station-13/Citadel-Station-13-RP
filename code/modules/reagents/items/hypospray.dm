@@ -58,7 +58,7 @@
 	icon_state = "[initial(icon_state)][vial_state]"
 	return ..()
 
-/obj/item/hypospray/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/hypospray/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(user.is_holding_inactive(src))
 		if(isnull(loaded))
 			user.action_feedback(SPAN_WARNING("[src] has no vial loaded."), src)

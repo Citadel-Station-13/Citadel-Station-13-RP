@@ -60,7 +60,7 @@
 	add_hiddenprint(user)
 	return attack_hand(user)
 
-/obj/machinery/clonepod/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/clonepod/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if((isnull(occupant)) || (machine_stat & NOPOWER))
 		return
 	if((!isnull(occupant)) && (occupant.stat != 2))

@@ -129,7 +129,7 @@
 	src.view_range = num
 	GLOB.cameranet.updateVisibility(src, 0)
 
-/obj/machinery/camera/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/camera/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	var/mob/living/carbon/human/L = user
 	if(!istype(L))
 		return

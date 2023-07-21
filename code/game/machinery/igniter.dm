@@ -13,7 +13,7 @@
 /obj/machinery/igniter/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/igniter/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/igniter/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 
@@ -121,7 +121,7 @@
 	name = "ignition switch"
 	desc = "A remote control switch for a mounted igniter."
 
-/obj/machinery/button/ignition/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/button/ignition/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 
 	if(..())
 		return

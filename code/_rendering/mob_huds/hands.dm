@@ -23,7 +23,7 @@
 	src.host = host
 
 /atom/movable/screen/hand/sync_style(datum/hud_style/style)
-	icon = hud.inventory_icons
+	icon = style.inventory_icons
 
 /**
  * handle an inventory operation
@@ -44,7 +44,7 @@
 /atom/movable/screen/hand/instance/Initialize(mapload, datum/inventory/host, hand_index)
 	. = ..()
 	src.hand_index = hand_index
-	synx_index(hand_index)
+	sync_index(hand_index)
 
 /atom/movable/screen/hand/instance/proc/sync_index(index = hand_index)
 	screen_loc = SCREEN_LOC_INV_HAND(index)
@@ -55,7 +55,7 @@
 /atom/movable/screen/hand/swap_hand
 
 /atom/movable/screen/hand/swap_hand/sync_style(datum/hud_style/style)
-	icon = hud.inventory_icons_wide
+	icon = style.inventory_icons_wide
 
 /atom/movable/screen/hand/equip_hand
 

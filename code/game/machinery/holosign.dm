@@ -59,7 +59,7 @@
 	icon = 'icons/obj/power.dmi'
 	icon_state = "crema_switch"
 
-/obj/machinery/button/holosign/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/button/holosign/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 

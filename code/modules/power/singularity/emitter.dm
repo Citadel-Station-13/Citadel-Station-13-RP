@@ -58,7 +58,7 @@
 	else
 		icon_state = "emitter"
 
-/obj/machinery/power/emitter/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/power/emitter/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	src.add_fingerprint(user)
 	activate(user)
 

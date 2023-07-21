@@ -61,7 +61,7 @@
 	to_chat(user, "The charge meter reads [cell ? cell.percent() : 0]%")
 	to_chat(user, "It is [enabled ? "enabled" : "disabled"].")
 
-/obj/item/shield_diffuser/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/shield_diffuser/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(cell)
 			cell.update_icon()

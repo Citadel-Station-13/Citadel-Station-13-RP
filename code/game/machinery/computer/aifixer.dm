@@ -48,7 +48,7 @@
 			to_chat(user, SPAN_NOTICE("There is no AI loaded onto this computer, and no AI loaded onto [I]. What exactly are you trying to do here?"))
 	return ..()
 
-/obj/machinery/computer/aifixer/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/aifixer/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	ui_interact(user)

@@ -933,7 +933,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		wires.cut_all()
 		update_icon()
 
-/obj/machinery/power/apc/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/power/apc/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 //	if (!can_use(user)) This already gets called in interact() and in topic()
 //		return
 	if(!user)

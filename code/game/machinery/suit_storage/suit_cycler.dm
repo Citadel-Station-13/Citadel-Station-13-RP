@@ -260,7 +260,7 @@
 	updateUsrDialog()
 	return 1
 
-/obj/machinery/suit_cycler/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/suit_cycler/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 
 	add_fingerprint(user)
 

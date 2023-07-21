@@ -19,7 +19,7 @@ var/global/list/minor_air_alarms = list()
 	atmosphere_alarm.unregister_alarm(src)
 	return ..()
 
-/obj/machinery/computer/atmos_alert/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/atmos_alert/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	ui_interact(user)
 
 /obj/machinery/computer/atmos_alert/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)

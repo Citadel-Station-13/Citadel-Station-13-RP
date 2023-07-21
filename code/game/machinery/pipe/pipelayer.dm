@@ -51,7 +51,7 @@
 	old_turf = new_turf
 	old_dir = turn(M_Dir, 180)
 
-/obj/machinery/pipelayer/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/pipelayer/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 	if(panel_open)

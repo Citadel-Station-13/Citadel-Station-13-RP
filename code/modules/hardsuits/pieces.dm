@@ -85,7 +85,7 @@
 	hardsuit = null
 	return ..()
 
-/obj/item/clothing/suit/space/hardsuit/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/clothing/suit/space/hardsuit/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(tacknife)
 		tacknife.loc = get_turf(src)
 		if(user.put_in_active_hand(tacknife))

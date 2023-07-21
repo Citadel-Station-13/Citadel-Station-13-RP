@@ -45,7 +45,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/rocket/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/gun/ballistic/rocket/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload(user)
 	else
@@ -86,7 +86,7 @@
 	to_chat(user, "<span class='danger'>You cannot reload the [src]!</span>")
 	return
 
-/obj/item/gun/ballistic/rocket/collapsible/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/gun/ballistic/rocket/collapsible/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		to_chat(user, "<span class='danger'>You cannot unload the [src]'s munition!</span>")
 		return

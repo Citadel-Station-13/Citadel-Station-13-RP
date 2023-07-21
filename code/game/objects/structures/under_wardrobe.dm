@@ -5,7 +5,7 @@
 	icon_state = "cabinet_closed"
 	density = 1
 
-/obj/structure/undies_wardrobe/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/undies_wardrobe/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(!human_who_can_use_underwear(user))
 		to_chat(user, "<span class='warning'>Sadly there's nothing in here for you to wear.</span>")
 		return

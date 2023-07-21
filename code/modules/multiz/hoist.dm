@@ -28,7 +28,7 @@
 	var/obj/structure/hoist/source_hoist
 	description_info = "Click and drag someone (or any object) to this to attach them to the clamp. If you are within reach, when you click and drag this to a turf adjacent to you, it will move the attached object there and release it."
 
-/obj/effect/hoist_hook/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/effect/hoist_hook/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	return // This has to be overridden so that it works properly.
 
 /obj/effect/hoist_hook/MouseDroppedOnLegacy(atom/movable/AM,mob/user)
@@ -175,7 +175,7 @@
 			return
 
 
-/obj/structure/hoist/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/hoist/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if (!ishuman(user))
 		return
 

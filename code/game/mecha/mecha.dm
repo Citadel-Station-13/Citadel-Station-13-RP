@@ -1006,7 +1006,7 @@
 		qdel(src)
 	return
 
-/obj/mecha/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/mecha/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(user == occupant)
 		show_radial_occupant(user)
 		return

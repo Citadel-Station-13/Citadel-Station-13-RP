@@ -419,7 +419,7 @@
 	if(!open())
 		to_chat(user, "<span class='notice'>It won't budge!</span>")
 
-/obj/structure/closet/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/closet/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	add_fingerprint(user)
 	if(locked && secure)
 		togglelock(user)

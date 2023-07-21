@@ -273,7 +273,7 @@
 
 	updateDialog()
 
-/obj/machinery/power/turbine/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/power/turbine/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if((. = ..()))
 		return
 	src.interact(user)
@@ -340,7 +340,7 @@
 			id = new_ident
 		return
 
-/obj/machinery/computer/turbine_computer/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/turbine_computer/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if((. = ..()))
 		return
 	src.interact(user)

@@ -20,7 +20,7 @@
 	else
 		..(P, def_zone)
 
-/obj/structure/curtain/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/curtain/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	playsound(get_turf(loc), "rustle", 15, 1, -5)
 	toggle()
 	..()

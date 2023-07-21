@@ -251,7 +251,7 @@
 /obj/proc/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
 	return
 
-/obj/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(Adjacent(user))
 		add_fingerprint(user)
 	..()

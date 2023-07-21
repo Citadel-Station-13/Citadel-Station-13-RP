@@ -80,7 +80,7 @@
 
 // If you don't call parent in this proc, you must make all appropriate checks yourself.
 // If you do, you must respect the return value.
-/obj/machinery/computer/ship/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/ship/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if((. = ..()))
 		return
 	if(!allowed(user))

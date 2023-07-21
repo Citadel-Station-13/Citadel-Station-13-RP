@@ -11,7 +11,7 @@
 	var/disposals = FALSE
 
 
-/obj/machinery/pipedispenser/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/pipedispenser/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if((. = ..()))
 		return
 	ui_interact(user)

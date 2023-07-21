@@ -9,7 +9,7 @@
 	anchored = TRUE
 	var/interaction_message = null
 
-/obj/structure/prop/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args) // Used to tell the player that this isn't useful for anything.
+/obj/structure/prop/attack_hand(mob/user, datum/event_args/clickchain/e_args) // Used to tell the player that this isn't useful for anything.
 	if(!istype(user))
 		return FALSE
 	if(!interaction_message)

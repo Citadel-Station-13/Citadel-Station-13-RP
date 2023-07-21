@@ -106,7 +106,7 @@
 
 	return 0
 
-/turf/simulated/wall/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/turf/simulated/wall/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 
 	radiate()
 	add_fingerprint(user)

@@ -374,7 +374,7 @@
 	hud_elements |= energyhud
 
 // When someone clicks us with an empty hand
-/mob/living/simple_mob/shadekin/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/mob/living/simple_mob/shadekin/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(user.a_intent == INTENT_HELP)
 		shy_approach = FALSE //ACCLIMATED

@@ -105,7 +105,7 @@
 /obj/machinery/computer/card/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/card/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/card/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 	if(machine_stat & (NOPOWER|BROKEN))

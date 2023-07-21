@@ -28,12 +28,12 @@
 /**
  * construct default event args for what we're doing to a target
  */
-/mob/proc/default_clickchain_event_args(atom/target, list/params, unarmed = FALSE)
+/mob/proc/default_clickchain_event_args(atom/target, unarmed = FALSE)
 	var/datum/event_args/clickchain/constructed = new
 	constructed.initiator = src
 	constructed.actor = src
 	constructed.target = target
-	constructed.click_params = params
+	constructed.click_params = list()
 	constructed.attack_intent = a_intent
 	constructed.hand_index = active_hand
 	if(!unarmed)

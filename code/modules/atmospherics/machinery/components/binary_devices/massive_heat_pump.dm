@@ -184,7 +184,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/component/binary/massive_heat_pump/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 	add_fingerprint(usr)

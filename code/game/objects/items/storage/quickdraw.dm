@@ -14,7 +14,7 @@
 	//When set to 1, a click while it is equipped will instead move the first item inside it to your hand
 	var/quickmode = 0
 
-/obj/item/storage/quickdraw/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/storage/quickdraw/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(src.loc == user) //If they aren't holding us, we do nothing special
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user

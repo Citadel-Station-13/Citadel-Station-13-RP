@@ -39,7 +39,7 @@
 			. += "It's completely empty."
 
 
-/obj/machinery/cash_register/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/cash_register/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	// Don't be accessible from the wrong side of the machine
 	if(get_dir(src, user) & global.reverse_dir[src.dir]) return
 

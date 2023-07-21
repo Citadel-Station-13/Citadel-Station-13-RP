@@ -216,7 +216,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	var/tracker = 0
 	var/glass_type = null
 
-/obj/item/solar_assembly/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/solar_assembly/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(!anchored || !isturf(loc)) // You can't pick it up
 		..()
 
@@ -397,7 +397,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		add_overlay(image('icons/obj/computer.dmi', "solcon-o", FLY_LAYER, angle2dir(cdir)))
 	return
 
-/obj/machinery/power/solar_control/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/power/solar_control/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(!..())
 		interact(user)
 

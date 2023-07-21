@@ -1,5 +1,5 @@
 // When someone clicks us with an empty hand
-/mob/living/simple_mob/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/mob/living/simple_mob/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

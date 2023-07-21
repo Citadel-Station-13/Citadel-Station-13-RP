@@ -22,7 +22,7 @@
 		..()
 	return
 
-/obj/item/mecha_parts/chassis/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/mecha_parts/chassis/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	return
 
 //! Ripley
@@ -467,7 +467,7 @@
 		..()
 	return
 
-/obj/item/mecha_parts/fighter/chassis/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/mecha_parts/fighter/chassis/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	return
 
 

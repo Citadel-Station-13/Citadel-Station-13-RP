@@ -26,7 +26,7 @@
 // Proc: attack_hand()
 // Parameters: 1 (user - Person which clicked this computer)
 // Description: Opens UI of this machine.
-/obj/machinery/computer/rcon/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/rcon/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	..()
 	ui_interact(user)
 

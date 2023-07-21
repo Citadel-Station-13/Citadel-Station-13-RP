@@ -101,7 +101,7 @@
 /obj/machinery/computer/med_data/attack_ai(user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/med_data/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/med_data/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 

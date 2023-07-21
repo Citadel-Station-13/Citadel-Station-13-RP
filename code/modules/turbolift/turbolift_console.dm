@@ -39,7 +39,7 @@
 /obj/structure/lift/attack_generic(var/mob/user)
 	return attack_hand(user)
 
-/obj/structure/lift/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/lift/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	return interact(user)
 
 /obj/structure/lift/interact(var/mob/user)

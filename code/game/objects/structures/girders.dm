@@ -299,7 +299,7 @@
 	girder_material.place_dismantled_product(get_turf(src), 2)
 	qdel(src)
 
-/obj/structure/girder/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/girder/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if (MUTATION_HULK in user.mutations)
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
 		dismantle()

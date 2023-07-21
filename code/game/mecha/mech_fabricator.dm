@@ -482,7 +482,7 @@
 		get_asset_datum(/datum/asset/spritesheet/materials)
 	)
 
-/obj/machinery/mecha_part_fabricator/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/mecha_part_fabricator/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 	if(!allowed(user))

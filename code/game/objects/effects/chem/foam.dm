@@ -171,7 +171,7 @@
 	else if(metal == 1 || prob(50))
 		qdel(src)
 
-/obj/structure/foamedmetal/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/foamedmetal/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if ((MUTATION_HULK in user.mutations) || (prob(75 - metal * 25)))
 		user.visible_message("<span class='warning'>[user] smashes through the foamed metal.</span>", "<span class='notice'>You smash through the metal foam wall.</span>")
 		qdel(src)

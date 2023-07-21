@@ -78,7 +78,7 @@
 			linkedServer = message_servers[1]
 	return ..()
 
-/obj/machinery/computer/message_monitor/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/message_monitor/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(!istype(user))

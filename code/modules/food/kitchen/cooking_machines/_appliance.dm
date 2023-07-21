@@ -543,7 +543,7 @@
 	smoke.set_up(10, 0, get_turf(src), 300)
 	smoke.start()
 
-/obj/machinery/appliance/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/appliance/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if (cooking_objs.len)
 		if (removal_menu(user))
 			return

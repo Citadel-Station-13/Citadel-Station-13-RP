@@ -15,7 +15,7 @@
 	QDEL_NULL(monitor)
 	..()
 
-/obj/machinery/computer/shutoff_monitor/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/shutoff_monitor/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	..()
 	monitor.ui_interact(user)
 

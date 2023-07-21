@@ -29,7 +29,7 @@
 	else
 		return ..()
 
-/obj/structure/target_stake/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/target_stake/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	// taking pinned targets off!
 	if(pinned_target)
 		pinned_target.layer = OBJ_LAYER

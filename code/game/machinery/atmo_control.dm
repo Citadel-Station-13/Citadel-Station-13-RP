@@ -86,7 +86,7 @@
 		radio_controller.remove_object(src, frequency)
 	..()
 
-/obj/machinery/computer/general_air_control/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/general_air_control/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(..(user))
 		return
 

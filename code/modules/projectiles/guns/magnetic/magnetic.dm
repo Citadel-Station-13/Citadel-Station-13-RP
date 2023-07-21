@@ -149,7 +149,7 @@
 		return
 	. = ..()
 
-/obj/item/gun/magnetic/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/gun/magnetic/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		var/obj/item/removing
 

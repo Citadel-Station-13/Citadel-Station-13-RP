@@ -51,7 +51,7 @@
 		attach_mask(target)
 		src.add_fingerprint(usr)
 
-/obj/machinery/oxygen_pump/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/oxygen_pump/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if((machine_stat & MAINT) && tank)
 		user.visible_message( \
 			SPAN_NOTICE("\The [user] removes \the [tank] from \the [src]."), \

@@ -35,7 +35,7 @@
 		..()
 
 
-/obj/machinery/computer/aiupload/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/aiupload/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(machine_stat & NOPOWER)
 		to_chat(user, "The upload computer has no power!")
 		return
@@ -71,7 +71,7 @@
 		return ..()
 
 
-/obj/machinery/computer/borgupload/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/borgupload/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(machine_stat& NOPOWER)
 		to_chat(user, "The upload computer has no power!")
 		return

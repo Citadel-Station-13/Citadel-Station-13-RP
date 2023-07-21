@@ -50,7 +50,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 		.[TOOL_MULTITOOL] = "change network"
 	return merge_double_lazy_assoc_list(., ..())
 
-/obj/machinery/bioscan_antenna/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/bioscan_antenna/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	// todo: better xenomorphs
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user

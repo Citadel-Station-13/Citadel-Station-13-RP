@@ -92,7 +92,7 @@
 			toggle_close_open()
 
 
-/obj/structure/fireaxecabinet/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/fireaxecabinet/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	//var/hasaxe = 0	//Fuck this. Fuck everything about this. Who wrote this. Why.
 	//if(fireaxe)
 	//	hasaxe = 1

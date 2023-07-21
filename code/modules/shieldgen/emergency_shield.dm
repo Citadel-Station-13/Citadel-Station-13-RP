@@ -250,7 +250,7 @@
 				malfunction = 1
 	checkhp()
 
-/obj/machinery/shieldgen/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/shieldgen/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(locked)
 		to_chat(user, "The machine is locked, you are unable to use it.")
 		return

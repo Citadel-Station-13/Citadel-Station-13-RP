@@ -70,7 +70,7 @@ FLOOR SAFES
 		icon_state = initial(icon_state)
 
 
-/obj/structure/safe/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/structure/safe/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	user.set_machine(src)
 	var/dat = "<center>"
 	dat += "<a href='?src=\ref[src];open=1'>[open ? "Close" : "Open"] [src]</a> | <a href='?src=\ref[src];decrement=1'>-</a> [dial * 5] <a href='?src=\ref[src];increment=1'>+</a>"

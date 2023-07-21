@@ -79,7 +79,7 @@ var/list/fuel_injectors = list()
 
 	return ..()
 
-/obj/machinery/fusion_fuel_injector/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/fusion_fuel_injector/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 
 	if(injecting)
 		to_chat(user, "<span class='warning'>Shut \the [src] off before playing with the fuel rod!</span>")

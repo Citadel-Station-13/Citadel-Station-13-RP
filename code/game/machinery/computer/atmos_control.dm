@@ -33,7 +33,7 @@
 /obj/machinery/computer/atmoscontrol/attack_ai(mob/user)
 	ui_interact(user)
 
-/obj/machinery/computer/atmoscontrol/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/atmoscontrol/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(..())
 		return TRUE
 	ui_interact(user)

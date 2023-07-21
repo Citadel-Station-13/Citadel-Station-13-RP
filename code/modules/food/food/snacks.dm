@@ -3263,7 +3263,7 @@
 	icon_state = "pizzabox[boxes.len+1]"
 	add_overlay(overlays_to_add)
 
-/obj/item/pizzabox/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/pizzabox/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 
 	if( open && pizza )
 		user.put_in_hands( pizza )
@@ -4825,7 +4825,7 @@ END CITADEL CHANGE */
 	bitesize = 1
 	nutriment_amt = 10
 
-/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	var/obj/item/reagent_containers/food/snacks/returningitem = new vendingobject(loc)
 	returningitem.reagents.clear_reagents()

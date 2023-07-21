@@ -87,7 +87,7 @@
 /obj/machinery/computer/secure_data/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/secure_data/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/secure_data/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 	add_fingerprint(user)

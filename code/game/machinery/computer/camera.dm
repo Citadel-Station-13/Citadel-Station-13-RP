@@ -28,7 +28,7 @@
 /obj/machinery/computer/security/ui_interact(mob/user, datum/tgui/ui = null)
 	camera.ui_interact(user, ui)
 
-/obj/machinery/computer/security/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/security/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	add_fingerprint(user)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return

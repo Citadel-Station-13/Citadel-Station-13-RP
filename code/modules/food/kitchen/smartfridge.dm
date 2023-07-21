@@ -200,7 +200,7 @@
 /obj/machinery/smartfridge/attack_ai(mob/user as mob)
 	attack_hand(user)
 
-/obj/machinery/smartfridge/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/smartfridge/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	wires.Interact(user)

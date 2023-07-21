@@ -166,7 +166,7 @@
 	else
 		return ..()
 
-/obj/machinery/iv_drip/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/iv_drip/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(reagent_container)
 		reagent_container.loc = get_turf(src)
 		reagent_container = null

@@ -78,7 +78,7 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/power/quantumpad/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/power/quantumpad/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

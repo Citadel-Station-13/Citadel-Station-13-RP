@@ -65,7 +65,7 @@
 	return attack_hand(user)
 
 //Someone needs to break down the dat += into chunks instead of long ass lines.
-/obj/machinery/computer/skills/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/skills/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 	if ((LEGACY_MAP_DATUM) && !(src.z in (LEGACY_MAP_DATUM).contact_levels))

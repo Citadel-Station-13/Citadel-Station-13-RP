@@ -46,7 +46,7 @@
 /obj/machinery/computer/pod/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/pod/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/pod/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(..())
 		return
 
@@ -142,7 +142,7 @@
 	title = "External Airlock Controls"
 	req_access = list(ACCESS_FACTION_SYNDICATE)
 
-/obj/machinery/computer/pod/old/syndicate/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/pod/old/syndicate/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(!allowed(user))
 		to_chat(user, "<span class='warning'>Access Denied</span>")
 		return

@@ -32,7 +32,7 @@
 /obj/machinery/computer/roguezones/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/roguezones/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/roguezones/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	add_fingerprint(user)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return

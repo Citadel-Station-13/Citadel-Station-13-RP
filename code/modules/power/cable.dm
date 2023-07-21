@@ -999,7 +999,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 
 
-/obj/item/stack/cable_coil/alien/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/obj/item/stack/cable_coil/alien/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if (user.get_inactive_held_item() == src)
 		var/N = input("How many units of wire do you want to take from [src]?  You can only take up to [amount] at a time.", "Split stacks", 1) as num|null
 		if(N && N <= amount)

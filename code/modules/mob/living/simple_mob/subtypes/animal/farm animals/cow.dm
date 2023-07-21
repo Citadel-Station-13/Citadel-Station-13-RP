@@ -62,7 +62,7 @@
 		if(udder && prob(5))
 			udder.add_reagent("milk", rand(5, 10))
 
-/mob/living/simple_mob/animal/passive/cow/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
+/mob/living/simple_mob/animal/passive/cow/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	var/mob/living/M = user
 	if(!istype(M))
 		return
