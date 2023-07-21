@@ -61,24 +61,6 @@
 	speak_exclamation = sayverbs[(sayverbs.len>1 ? 2 : sayverbs.len)]
 	speak_query = sayverbs[(sayverbs.len>2 ? 3 : sayverbs.len)]
 
-/mob/living/silicon/pai/lay_down()
-	set name = "Rest"
-	set category = "IC"
-
-	// Pass lying down or getting up to our pet human, if we're in a hardsuit.
-	if(src.loc == shell)
-		set_resting(FALSE)
-		var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
-		if(istype(hardsuit))
-			hardsuit.force_rest(src)
-	else
-		toggle_resting()
-		icon_state = resting ? "[chassis]_rest" : "[chassis]"
-		update_icon()
-		to_chat(src, SPAN_NOTICE("You are now [resting ? "resting" : "getting up"]"))
-
-	//update_mobility()
-
 /mob/living/silicon/pai/verb/allowmodification()
 	set name = "Change Access Modifcation Permission"
 	set category = "pAI Commands"
