@@ -59,30 +59,31 @@
 	/// * This does not include material parts.
 	var/list/materials
 	/// material parts - lets us track what we're made of
-	/// key = material id
-	/// this is either a lazy list of key to material ids,
+	/// this is either a lazy list of ordered material ids,
 	/// or a single material id
 	/// or null for defaults.
 	/// * This should never specified at compile time, and is instead created on init. Use [material_defaults].
 	/// * Always use get_material_parts to get this list unless you know what you're doing.
+	/// * This list has the same ordering as [material_defaults].
 	var/list/material_parts
 	/// material costs - lets us track the costs of what we're made of.
-	/// key = cost in cm3
-	/// this is either a lazy list of part names to costs in cm3,
+	/// this is either a lazy list of ordered costs in cm3,
 	/// or a single number.
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Always use get_material_costs to get this list unless you know what you're doing.
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
+	/// * This list has the same ordering as [material_defaults].
 	var/list/material_costs
 	/// material parts on spawn
 	/// key = material id
 	/// this is either a lazy list of key to material ids,
 	/// or a single material id
-	/// ! This must absolutely be set for anything using the materials system.
+	/// ! This must be set for anything using the materials system.
 	/// ! This is what determines how many, and if something uses the material parts system.
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Always use get_material_defaults to get this list unless you know what you're doing.
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
+	/// * Parts may be not be null by default, as null signifies that we do not use the materials system.
 	var/list/material_defaults
 
 	//? Sounds
@@ -282,41 +283,6 @@
 /obj/proc/is_safe_to_step(mob/living/L)
 	return TRUE
 
-
-//? Examine
-
-/obj/examine(mob/user, dist)
-	. = ..()
-	if(integrity_examine)
-		. += examine_integrity(user)
-	if(materials)
-		if(!materials.len)
-			return
-		var/materials_list
-		var/i = 1
-		while(i<materials.len)
-			materials_list += lowertext(materials[i])
-			materials_list += ", "
-			i++
-		materials_list += materials[i]
-		. += "<u>It is made out of [materials_list]</u>."
-	return
-
-/obj/examine_integrity(mob/user)
-	. = list()
-	if(integrity == integrity_max)
-		. += SPAN_NOTICE("It looks fully intact.")
-	else
-		var/perc = percent_integrity()
-		if(perc > 0.75)
-			. += SPAN_NOTICE("It looks a bit dented.")
-		else if(perc > 0.5)
-			. += SPAN_WARNING("It looks damaged.")
-		else if(perc > 0.25)
-			. += SPAN_RED("It looks severely damaged.")
-		else
-			. += SPAN_BOLDWARNING("It's falling apart!")
-
 //? Climbing
 
 /obj/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
@@ -444,6 +410,40 @@
 			H.update_health()
 	*/
 
+//? Examine
+
+/obj/examine(mob/user, dist)
+	. = ..()
+	if(integrity_examine)
+		. += examine_integrity(user)
+	if(materials)
+		if(!materials.len)
+			return
+		var/materials_list
+		var/i = 1
+		while(i<materials.len)
+			materials_list += lowertext(materials[i])
+			materials_list += ", "
+			i++
+		materials_list += materials[i]
+		. += "<u>It is made out of [materials_list]</u>."
+	return
+
+/obj/examine_integrity(mob/user)
+	. = list()
+	if(integrity == integrity_max)
+		. += SPAN_NOTICE("It looks fully intact.")
+	else
+		var/perc = percent_integrity()
+		if(perc > 0.75)
+			. += SPAN_NOTICE("It looks a bit dented.")
+		else if(perc > 0.5)
+			. += SPAN_WARNING("It looks damaged.")
+		else if(perc > 0.25)
+			. += SPAN_RED("It looks severely damaged.")
+		else
+			. += SPAN_BOLDWARNING("It's falling apart!")
+
 //? Materials
 
 /obj/get_materials()
@@ -454,7 +454,7 @@
  * do we use material parts system?
  */
 /obj/proc/has_material_parts()
-	return !!material_defaults
+	return !isnull(material_defaults)
 
 /**
  * autodetect proc used by lathes
@@ -476,6 +476,8 @@
 /obj/proc/detect_material_base_costs()
 	var/list/our_materials = isnull(materials)? list() : materials.Copy()
 	// subtract out material parts, we assume we're initialized
+	#warn what do we do with this
+	#warn handle below - how to still be able to do lathe cost modifications?
 	if(atom_flags & ATOM_INITIALIZED)
 		if(islist(material_parts))
 			for(var/key in material_parts)
@@ -495,7 +497,7 @@
 		if(!istext(material_defaults))
 			CRASH("material defaults wasn't a string when material parts wasn't a list.")
 		set_material_parts(list(MATERIAL_PART_DEFAULT = material_defaults))
-	#warn handle below
+	#warn handle below - how to still be able to do lathe cost modifications?
 	if(!isnull(material_defaults))
 		set_material_parts(material_defaults)
 		for(var/key in material_defaults)
@@ -509,21 +511,21 @@
  * this is usually done in init using init_materials
  */
 /obj/proc/set_material_parts(list/parts)
-	#warn uh oh
+	#warn impl
 
 /**
  * get material parts
  */
 /obj/proc/get_material_parts()
-	if(isnull(material_parts))
-		return material_parts.Copy()
-	return islist(material_parts)? material_parts.Copy() : list(MATERIAL_PART_DEFAULT = material_parts)
-	#warn uh oh
+	#warn impl
 
 /**
  * update material parts
  *
  * only called if material_defaults is in list format.
+ *
+ * @params
+ * * parts - list of key-value key to material id.
  */
 /obj/proc/update_material_parts(list/parts)
 	#warn impl
@@ -553,15 +555,13 @@
 /obj/proc/get_primary_material()
 	if(isnull(material_parts))
 		return islist(material_defaults)? material_defaults[material_defaults[1]] : material_defaults
-	return islist(material_parts)? material_parts[material_parts[1]] : material_parts
+	return islist(material_parts)? material_parts[1] : material_parts
 
 /**
  * get material costs
  */
 /obj/proc/get_material_costs()
-	if(isnull(material_costs))
-		return material_costs.Copy()
-	return islist(material_costs)? material_costs.Copy() : list(MATERIAL_PART_DEFAULT = material_costs)
+	#warn impl
 
 /**
  * get material defaults

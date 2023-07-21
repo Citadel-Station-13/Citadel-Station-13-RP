@@ -64,6 +64,18 @@ SUBSYSTEM_DEF(materials)
 /**
  * ensures a list is full of material ids for keys
  */
+/datum/controller/subsystem/materials/proc/preprocess_flat_keys_to_ids(list/L)
+	#warn impl
+
+/**
+ * ensures a list is full of material references for keys
+ */
+/datum/controller/subsystem/materials/proc/preprocess_flat_keys_to_instances(list/L)
+	#warn impl
+
+/**
+ * ensures a list is full of material ids for keys
+ */
 /datum/controller/subsystem/materials/proc/preprocess_kv_keys_to_ids(list/L)
 	#warn impl
 
