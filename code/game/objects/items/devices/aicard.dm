@@ -21,7 +21,7 @@
 	to_chat(user, "<b>ERROR ERROR ERROR</b>")
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/item/aicard/attack_self(mob/user)
+/obj/item/aicard/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

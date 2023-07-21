@@ -223,7 +223,7 @@
 	var/countdown = 10
 	var/minetype = /obj/effect/mine		//This MUST be an /obj/effect/mine type, or it'll runtime.
 
-/obj/item/mine/attack_self(mob/user)
+/obj/item/mine/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return	// You do not want to move or throw a land mine while priming it... Explosives + Sudden Movement = Bad Times

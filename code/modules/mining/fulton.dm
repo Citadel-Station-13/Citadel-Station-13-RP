@@ -29,7 +29,7 @@ var/global/list/total_extraction_beacons = list()
 	. = ..()
 	. +="It has [uses_left] use\s remaining."
 
-/obj/item/extraction_pack/attack_self(mob/user)
+/obj/item/extraction_pack/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -165,7 +165,7 @@ var/global/list/total_extraction_beacons = list()
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "subspace_amplifier"
 
-/obj/item/fulton_core/attack_self(mob/user)
+/obj/item/fulton_core/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -168,7 +168,7 @@
 	O.brainmob.remote_control=src
 	set_pin_data(IC_OUTPUT, 1, O)
 
-/obj/item/integrated_circuit/input/mmi_tank/attack_self(mob/user)
+/obj/item/integrated_circuit/input/mmi_tank/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -295,7 +295,7 @@
 	O.pai.remote_control=src
 	set_pin_data(IC_OUTPUT, 1, O)
 
-/obj/item/integrated_circuit/input/pAI_connector/attack_self(mob/user)
+/obj/item/integrated_circuit/input/pAI_connector/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

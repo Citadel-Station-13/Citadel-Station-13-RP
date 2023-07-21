@@ -18,6 +18,10 @@
 	/// our innate darksight
 	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/default
 
+	//? Inventory
+	/// how many hands we have
+	var/hand_count = 0
+
 	///Tooltip description
 	var/tt_desc = null
 

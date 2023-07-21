@@ -49,35 +49,38 @@
 
 //* Hands *//
 
-/mob/living/carbon/proc/get_active_hand_organ_key()
+/mob/living/carbon/get_active_hand_organ_key()
 	return get_hand_organ_key(active_hand)
 
-/mob/living/carbon/proc/get_active_hand_organ()
+/mob/living/carbon/get_active_hand_organ()
 	RETURN_TYPE(/obj/item/organ/external)
 	return get_organ(get_hand_organ_key(active_hand))
 
-/mob/living/carbon/proc/get_hand_organ_key(index)
+/mob/living/carbon/get_hand_organ_key(index)
 	#warn impl
 
-/mob/living/carbon/proc/get_hand_organ(index)
+/mob/living/carbon/get_hand_organ(index)
 	return get_organ(get_hand_organ_key(index))
 
-/mob/living/carbon/proc/is_hand_functional(index)
+/mob/living/carbon/is_hand_functional(index, fine_manipulation)
 	var/obj/item/organ/external/part = get_hand_organ(index)
 	#warn impl
 
-/mob/living/carbon/proc/get_hand_index_of_organ(obj/item/organ/external/organ)
+/mob/living/carbon/get_hand_index_of_organ(obj/item/organ/external/organ)
 	#warn impl
 
-/mob/living/carbon/proc/get_active_arm_organ_key()
-	return get_arm_organ_key(active_arm)
+/mob/living/carbon/get_active_arm_organ_key()
+	return get_arm_organ_key(active_hand)
 
-/mob/living/carbon/proc/get_active_arm_organ()
+/mob/living/carbon/get_active_arm_organ()
 	RETURN_TYPE(/obj/item/organ/external)
 	return get_organ(get_arm_organ_key(active_hand))
 
-/mob/living/carbon/proc/get_arm_organ_key(index)
+/mob/living/carbon/get_arm_organ_key(index)
 	#warn impl
 
-/mob/living/carbon/proc/get_arm_organ(index)
+/mob/living/carbon/get_arm_organ(index)
 	return get_organ(get_arm_organ_key(index))
+
+/mob/living/carbon/get_hand_fail_message(index)
+	#warn impl

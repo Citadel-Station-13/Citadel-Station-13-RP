@@ -39,7 +39,7 @@
 	to_chat(usr, "<span class='notice'>Issuing reason: [reason].</span>")
 	return
 
-/obj/item/card/id/guest/attack_self(mob/user)
+/obj/item/card/id/guest/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

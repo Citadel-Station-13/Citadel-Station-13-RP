@@ -65,7 +65,7 @@
 	else
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 
-/obj/item/gun/launcher/grenade/attack_self(mob/user)
+/obj/item/gun/launcher/grenade/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -104,7 +104,7 @@
 	damage_force = 5
 	max_grenades = 0
 
-/obj/item/gun/launcher/grenade/underslung/attack_self(mob/user)
+/obj/item/gun/launcher/grenade/underslung/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

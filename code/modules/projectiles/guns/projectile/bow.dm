@@ -41,7 +41,7 @@
 		return
 	update_icon()
 
-/obj/item/gun/ballistic/bow/attack_self(mob/user)
+/obj/item/gun/ballistic/bow/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

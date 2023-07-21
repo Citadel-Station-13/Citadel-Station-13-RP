@@ -211,7 +211,7 @@
 		return PROJECTILE_FORCE_MISS
 	return 0
 
-/obj/item/clothing/suit/armor/reactive/attack_self(mob/user)
+/obj/item/clothing/suit/armor/reactive/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -763,7 +763,7 @@
 	var/anti_magic = FALSE
 	var/blessed = FALSE
 
-/obj/item/clothing/suit/armor/vest/para/attack_self(mob/user)
+/obj/item/clothing/suit/armor/vest/para/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

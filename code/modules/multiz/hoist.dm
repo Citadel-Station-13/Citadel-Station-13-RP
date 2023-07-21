@@ -10,7 +10,7 @@
 	icon = 'icons/obj/hoists.dmi'
 	icon_state = "hoist_case"
 
-/obj/item/hoist_kit/attack_self(mob/user)
+/obj/item/hoist_kit/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

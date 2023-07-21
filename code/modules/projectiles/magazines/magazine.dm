@@ -78,7 +78,7 @@
 	update_icon()
 
 // This dumps all the bullets right on the floor
-/obj/item/ammo_magazine/attack_self(mob/user)
+/obj/item/ammo_magazine/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

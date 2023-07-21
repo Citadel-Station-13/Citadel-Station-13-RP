@@ -253,7 +253,7 @@
 	update_icon()
 	update_worn_icon()
 
-/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user)
+/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	if(cover_open)
 		toggle_cover(user) //close the cover
 	else

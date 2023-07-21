@@ -686,11 +686,8 @@
 		if ("signal")
 			if (!src.restrained())
 				var/t1 = round(text2num(param))
-				if (isnum(t1))
-					if (t1 <= 5 && (!src.r_hand || !src.l_hand))
-						message = "raises [t1] finger\s."
-					else if (t1 <= 10 && (!src.r_hand && !src.l_hand))
-						message = "raises [t1] finger\s."
+				if (isnum(t1) && t1 <= (count_empty_hands() * 5))
+					message = "raises [t1] finger\s."
 			m_type = 1
 
 		if ("smile")

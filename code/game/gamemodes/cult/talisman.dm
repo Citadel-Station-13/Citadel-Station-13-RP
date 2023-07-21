@@ -5,7 +5,7 @@
 	var/uses = 0
 	info = "<center><img src='talisman.png'></center><br/><br/>"
 
-/obj/item/paper/talisman/attack_self(mob/user)
+/obj/item/paper/talisman/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

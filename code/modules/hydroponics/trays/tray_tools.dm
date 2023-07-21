@@ -25,7 +25,7 @@
 	var/datum/seed/last_seed
 	var/list/last_reagents
 
-/obj/item/analyzer/plant_analyzer/attack_self(mob/user)
+/obj/item/analyzer/plant_analyzer/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

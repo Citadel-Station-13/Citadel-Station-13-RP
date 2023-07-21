@@ -25,7 +25,7 @@
 			price_tag = null
 	return
 
-/obj/item/reagent_containers/food/drinks/attack_self(mob/user)
+/obj/item/reagent_containers/food/drinks/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

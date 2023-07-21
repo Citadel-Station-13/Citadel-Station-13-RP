@@ -44,7 +44,7 @@
 	var/last_scan_time = 0
 	var/scan_delay = 25
 
-/obj/item/ano_scanner/attack_self(mob/user)
+/obj/item/ano_scanner/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -156,7 +156,7 @@
 
 			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
 
-/obj/item/depth_scanner/attack_self(mob/user)
+/obj/item/depth_scanner/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -283,7 +283,7 @@
 		else
 			icon_state = "pinoff"
 
-/obj/item/beacon_locator/attack_self(mob/user)
+/obj/item/beacon_locator/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -346,7 +346,7 @@
 	anomaly_scanner = new/obj/item/ano_scanner/integrated(src)
 	depth_scanner = new/obj/item/depth_scanner(src)
 
-/obj/item/xenoarch_multi_tool/attack_self(mob/user)
+/obj/item/xenoarch_multi_tool/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

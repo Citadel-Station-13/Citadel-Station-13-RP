@@ -25,7 +25,7 @@
 	QDEL_LIST_NULL(beakers)
 	return ..()
 
-/obj/item/grenade/chem_grenade/attack_self(mob/user)
+/obj/item/grenade/chem_grenade/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

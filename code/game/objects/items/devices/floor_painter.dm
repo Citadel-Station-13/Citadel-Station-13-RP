@@ -100,7 +100,7 @@
 
 	new painting_decal(F, painting_dir, painting_colour)
 
-/obj/item/floor_painter/attack_self(mob/user)
+/obj/item/floor_painter/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

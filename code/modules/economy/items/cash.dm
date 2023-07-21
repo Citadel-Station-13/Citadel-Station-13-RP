@@ -85,7 +85,7 @@
 		update_icon()
 	return worth
 
-/obj/item/spacecash/attack_self(mob/user)
+/obj/item/spacecash/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -187,7 +187,7 @@
 	pickup_sound = 'sound/items/pickup/card.ogg'
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
 
-/obj/item/spacecash/ewallet/attack_self(mob/user)
+/obj/item/spacecash/ewallet/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

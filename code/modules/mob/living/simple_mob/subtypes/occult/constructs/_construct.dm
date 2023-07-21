@@ -103,16 +103,14 @@
 		if(S.run_checks())
 			S.on_innate_cast(src)
 
-	if(l_hand && r_hand) //Make sure our hands aren't full.
-		if(istype(r_hand, /obj/item/spell)) //If they are full, perhaps we can still be useful.
-			var/obj/item/spell/r_spell = r_hand
-			if(r_spell.aspect == ASPECT_CHROMATIC) //Check if we can combine the new spell with one in our hands.
-				r_spell.on_combine_cast(S, src)
-		else if(istype(l_hand, /obj/item/spell))
-			var/obj/item/spell/l_spell = l_hand
-			if(l_spell.aspect == ASPECT_CHROMATIC) //Check the other hand too.
-				l_spell.on_combine_cast(S, src)
-		else //Welp
+	if(hands_full())
+		var/found = FALSE
+		for(var/obj/item/spell/spell as anything in get_held_item_of_type(/obj/item/spell))
+			if(spell.aspect != ASPECT_CHROMATIC)
+				continue
+			found = TRUE
+			spell.on_combine_cast(S, src)
+		if(!found)
 			to_chat(src, "<span class='warning'>You require a free manipulator to use this power.</span>")
 			return 0
 

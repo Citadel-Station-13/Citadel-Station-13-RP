@@ -109,7 +109,7 @@
 	..()
 
 //TODO: ORGAN REMOVAL UPDATE. Make the brain remain in the MMI so it doesn't lose organ data.
-/obj/item/mmi/attack_self(mob/user)
+/obj/item/mmi/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -249,7 +249,7 @@
 		H.mind.transfer(brainmob)
 	return
 
-/obj/item/mmi/digital/attack_self(mob/user)
+/obj/item/mmi/digital/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	if(brainmob && !brainmob.key && searching == 0)
 		//Start the process of searching for a new user.
 		to_chat(user, "<font color=#4F49AF>You carefully locate the manual activation switch and start the [src]'s boot process.</font>")

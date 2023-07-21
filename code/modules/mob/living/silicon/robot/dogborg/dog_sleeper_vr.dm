@@ -178,7 +178,7 @@
 		hound = hound.loc
 	hound.cell.charge = hound.cell.charge - amt
 
-/obj/item/dogborg/sleeper/attack_self(mob/user)
+/obj/item/dogborg/sleeper/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

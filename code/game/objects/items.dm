@@ -773,12 +773,15 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  *
  * @params
  * * user - The person using us in hand
+ * * e_args - clickchain args
  *
  * @return TRUE to signal to overrides to stop the chain and do nothing.
  */
-/obj/item/proc/attack_self(mob/user)
+/obj/item/proc/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	// SHOULD_CALL_PARENT(TRUE)
 	// attack_self isn't really part of the item attack chain.
+	if(isnull(e_args))
+		e_args = user.default_clickchain_event_args(src, params, TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
 		interact(user)
@@ -789,7 +792,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  * Used to allow for attack_self to be interrupted by signals in nearly all cases.
  * You should usually override this instead of attack_self.
  */
-/obj/item/proc/on_attack_self(mob/user)
+/obj/item/proc/on_attack_self(mob/user, datum/event_args/clickchain/e_args)
 	return
 
 //? Mob Armor

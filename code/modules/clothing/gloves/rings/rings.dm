@@ -6,7 +6,7 @@
 	icon_state = "diamond"
 	item_state = "diamond_s"
 
-/obj/item/clothing/gloves/ring/engagement/attack_self(mob/user)
+/obj/item/clothing/gloves/ring/engagement/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -100,7 +100,7 @@
 	icon_state = "seal-signet"
 	var/nameset = FALSE
 
-/obj/item/clothing/gloves/ring/seal/signet/attack_self(mob/user)
+/obj/item/clothing/gloves/ring/seal/signet/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -124,7 +124,7 @@
 	item_state = "wedring_g"
 	var/partnername = ""
 
-/obj/item/clothing/gloves/ring/wedding/attack_self(mob/user)
+/obj/item/clothing/gloves/ring/wedding/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

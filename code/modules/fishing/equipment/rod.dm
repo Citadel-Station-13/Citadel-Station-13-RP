@@ -80,7 +80,7 @@
 	SStgui.update_uis(src)
 	update_icon()
 
-/obj/item/fishing_rod/on_attack_self(mob/user)
+/obj/item/fishing_rod/on_attack_self(mob/user, datum/event_args/clickchain/e_args)
 	reel(user)
 
 /obj/item/fishing_rod/proc/reel(mob/user, atom/target)

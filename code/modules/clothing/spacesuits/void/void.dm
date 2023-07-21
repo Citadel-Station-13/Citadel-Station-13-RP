@@ -223,7 +223,7 @@
 			to_chat(H, "<span class='info'>You deploy your magboots.</span>")
 
 // below is code for the action button method. im dumb. but it works? if you figure out a way to make it better tell me // hey peesh i made it better -hatter
-/obj/item/clothing/suit/space/void/attack_self(mob/user)
+/obj/item/clothing/suit/space/void/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

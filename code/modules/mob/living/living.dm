@@ -697,6 +697,7 @@ default behaviour is:
 		animate(client, color = null, time = 10)
 
 /mob/living/swap_hand()
+	#warn nuke from orbit
 	var/obj/item/was_active = length(held_items) <= active_hand? held_items[active_hand] : null
 
 	if(active_hand >= length(held_items))

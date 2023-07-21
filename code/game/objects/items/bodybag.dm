@@ -7,7 +7,7 @@
 	icon_state = "bodybag_folded"
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/bodybag/attack_self(mob/user)
+/obj/item/bodybag/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -127,7 +127,7 @@
 	origin_tech = list(TECH_BIO = 4)
 	var/obj/item/reagent_containers/syringe/syringe
 
-/obj/item/bodybag/cryobag/attack_self(mob/user)
+/obj/item/bodybag/cryobag/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

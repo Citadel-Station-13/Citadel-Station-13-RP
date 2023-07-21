@@ -206,7 +206,7 @@
 // Proc: attack_self()
 // Parameters: 1 (user - the Technomancer that invoked this proc)
 // Description: Tries to call on_use_cast() if it is allowed to do so.  Don't override this, override on_use_cast() instead.
-/obj/item/spell/attack_self(mob/user)
+/obj/item/spell/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

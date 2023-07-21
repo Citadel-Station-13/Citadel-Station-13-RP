@@ -105,32 +105,6 @@
 		user.drop_all_held_items()
 		user.stop_pulling()
 
-var/last_chew = 0
-/mob/living/carbon/human/RestrainedClickOn(var/atom/A)
-	if (A != src) return ..()
-	if (last_chew + 26 > world.time) return
-
-	var/mob/living/carbon/human/H = A
-	if (!H.handcuffed) return
-	if (H.a_intent != INTENT_HARM) return
-	if (H.zone_sel.selecting != O_MOUTH) return
-	if (H.wear_mask) return
-	if (istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket)) return
-
-	var/obj/item/organ/external/O = H.organs_by_name[(H.hand % 2? BP_L_HAND : BP_R_HAND)]
-	if (!O) return
-
-	var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()]
-
-	var/s = "<span class='warning'>[H.name] chews on [T.his] [O.name]!</span>"
-	H.visible_message(s, "<span class='warning'>You chew on your [O.name]!</span>")
-	add_attack_logs(H,H,"chewed own [O.name]")
-
-	if(O.take_damage(3,0,1,1,"teeth marks"))
-		H:UpdateDamageIcon()
-
-	last_chew = world.time
-
 /obj/item/handcuffs/fuzzy
 	name = "fuzzy cuffs"
 	icon_state = "fuzzycuff"

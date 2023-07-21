@@ -194,7 +194,7 @@
 	active = 0
 	update_icon()
 
-/obj/item/pickaxe/tyrmalin/attack_self(mob/user)
+/obj/item/pickaxe/tyrmalin/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -373,7 +373,7 @@
 	else
 		..()
 
-/obj/item/stack/flag/attack_self(mob/user)
+/obj/item/stack/flag/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

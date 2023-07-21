@@ -145,7 +145,7 @@
 	w_class = ITEMSIZE_NORMAL
 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
 
-/obj/item/cell_charger_kit/attack_self(mob/user)
+/obj/item/cell_charger_kit/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

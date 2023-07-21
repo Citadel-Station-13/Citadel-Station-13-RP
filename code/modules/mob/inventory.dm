@@ -57,3 +57,46 @@
 	// todo: actual flag like BUCKLING_IS_CONSIDERED_RESTRICTING or something
 	if(buckled?.buckle_flags & (BUCKLING_NO_DEFAULT_RESIST | BUCKLING_NO_DEFAULT_UNBUCKLE))
 		unbuckle(BUCKLE_OP_FORCE)
+
+//* Hands *//
+
+/mob/proc/swap_hand(to_index)
+	#warn impl
+
+/mob/proc/get_active_hand_organ_key()
+	return null
+
+/mob/proc/get_active_hand_organ()
+	RETURN_TYPE(/obj/item/organ/external)
+	return null
+
+/mob/proc/get_hand_organ_key(index)
+	return null
+
+/mob/proc/get_hand_organ(index)
+	return null
+
+/mob/proc/is_hand_functional(index, fine_manipulation)
+	return TRUE
+
+/mob/proc/get_hand_index_of_organ(obj/item/organ/external/organ)
+	return null
+
+/mob/proc/get_active_arm_organ_key()
+	return null
+
+/mob/proc/get_active_arm_organ()
+	return null
+
+/mob/proc/get_arm_organ_key(index)
+	return null
+
+/mob/proc/get_arm_organ(index)
+	return null
+
+/mob/proc/get_hand_fail_message(index)
+	return "You try to move your [get_generalized_hand_name(index)], and should be able to, but can't. Report this to coders!"
+
+/mob/proc/get_generalized_hand_name(index)
+	var/number_on_side = round(index / 2)
+	return "[index % 2? "left" : "right"] hand[number_on_side > 1 && " #[number_on_side]"]"

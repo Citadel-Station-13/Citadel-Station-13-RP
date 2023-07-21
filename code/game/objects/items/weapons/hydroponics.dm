@@ -14,7 +14,7 @@
 	w_class = ITEMSIZE_TINY
 	var/list/item_quants = list()
 
-/obj/item/seedbag/attack_self(mob/user)
+/obj/item/seedbag/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -5,8 +5,6 @@
 	//? basics
 	/// owning mob
 	var/mob/owner
-	/// hud datum
-
 
 	//? slots
 
@@ -36,6 +34,8 @@
 
 /mob/proc/init_inventory()
 	return
+
+//! unsorted below
 
 /mob/proc/handle_item_denesting(obj/item/I, old_slot, flags, mob/user)
 	// if the item was inside something,

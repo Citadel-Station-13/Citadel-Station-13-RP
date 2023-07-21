@@ -5,9 +5,17 @@
 	UI_STYLE_ORANGE       = 'icons/mob/screen/orange.dmi',
 	UI_STYLE_OLD          = 'icons/mob/screen/old.dmi',
 	UI_STYLE_WHITE        = 'icons/mob/screen/white.dmi',
-	UI_STYLE_OLD_NOBORDER = 'icons/mob/screen/old-noborder.dmi',
 	UI_STYLE_MINIMALIST   = 'icons/mob/screen/minimalist.dmi',
-	UI_STYLE_HOLOGRAM     = 'icons/mob/screen/holo.dmi'
+	UI_STYLE_HOLOGRAM     = 'icons/mob/screen/holo.dmi',
+	)
+
+/var/all_ui_style_ids = list(
+	UI_STYLE_MIDNIGHT     = "midnight",
+	UI_STYLE_ORANGE       = "orange",
+	UI_STYLE_OLD          = "old",
+	UI_STYLE_WHITE        = "white",
+	UI_STYLE_MINIMALIST   = "minimalist",
+	UI_STYLE_HOLOGRAM     = "holo",
 	)
 
 /var/all_ui_styles_robot = list(
@@ -15,9 +23,8 @@
 	UI_STYLE_ORANGE       = 'icons/mob/screen1_robot.dmi',
 	UI_STYLE_OLD          = 'icons/mob/screen1_robot.dmi',
 	UI_STYLE_WHITE        = 'icons/mob/screen1_robot.dmi',
-	UI_STYLE_OLD_NOBORDER = 'icons/mob/screen1_robot.dmi',
 	UI_STYLE_MINIMALIST   = 'icons/mob/screen1_robot_minimalist.dmi',
-	UI_STYLE_HOLOGRAM     = 'icons/mob/screen1_robot_minimalist.dmi'
+	UI_STYLE_HOLOGRAM     = 'icons/mob/screen1_robot_minimalist.dmi',
 	)
 
 var/global/list/all_tooltip_styles = list(

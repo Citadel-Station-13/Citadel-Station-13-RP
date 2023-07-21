@@ -57,7 +57,7 @@
 	update_icon()
 
 
-/obj/item/reagent_containers/organic/attack_self(mob/user)
+/obj/item/reagent_containers/organic/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

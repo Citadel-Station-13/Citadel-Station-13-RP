@@ -129,7 +129,7 @@
 				return
 	return ..()
 
-/obj/item/duct_tape_roll/attack_self(mob/user)
+/obj/item/duct_tape_roll/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -180,7 +180,7 @@
 	name = W.name + " (taped)"
 	copy_overlays(W)
 
-/obj/item/duct_tape_piece/attack_self(mob/user)
+/obj/item/duct_tape_piece/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

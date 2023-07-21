@@ -84,7 +84,7 @@
 		flip_mobs()
 	return ..()
 
-/obj/item/bikehorn/golden/attack_self(mob/user)
+/obj/item/bikehorn/golden/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -138,7 +138,7 @@
 	concealed_blade = temp_blade
 	temp_blade.attack_self()
 
-/obj/item/cane/concealed/attack_self(mob/user)
+/obj/item/cane/concealed/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -207,7 +207,7 @@
 	damage_force = 3
 	var/on = 0
 
-/obj/item/cane/whitecane/collapsible/attack_self(mob/user)
+/obj/item/cane/whitecane/collapsible/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

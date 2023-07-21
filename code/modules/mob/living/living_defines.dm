@@ -117,10 +117,6 @@
 	var/obj/item/tank/internal = null//Human/Monkey
 	var/obj/item/clothing/mask/wear_mask = null//Carbon
 
-	// TODO: /tg/ arbitrary hand numbers
-	/// Set to TRUE to enable the use of hands and the hands hud
-	var/has_hands = FALSE
-
 	//? movement
 	/// are we currently pushing (or trying to push) (or otherwise inside Bump() handling that deals with this crap) another atom?
 	var/pushing_bumped_atom = FALSE

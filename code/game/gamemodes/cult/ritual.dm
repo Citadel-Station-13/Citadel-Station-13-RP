@@ -308,7 +308,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 		O.show_message("<span class='warning'>\The [user] beats \the [L] with \the [src]!</span>", 1)
 	to_chat(target, "<span class='danger'>You feel searing heat inside!</span>")
 
-/obj/item/book/tome/attack_self(mob/user)
+/obj/item/book/tome/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -426,7 +426,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	w_class = ITEMSIZE_SMALL
 	var/cultistsonly = 1
 
-/obj/item/book/tome/imbued/attack_self(mob/user)
+/obj/item/book/tome/imbued/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

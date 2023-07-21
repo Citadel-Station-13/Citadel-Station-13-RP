@@ -41,7 +41,7 @@
 	if(N)
 		amount_per_transfer_from_this = N
 
-/obj/item/reagent_containers/attack_self(mob/user)
+/obj/item/reagent_containers/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -123,7 +123,7 @@
 	STOP_PROCESSING(SSobj, src)
 	updateicon()
 
-/obj/item/suit_cooling_unit/attack_self(mob/user)
+/obj/item/suit_cooling_unit/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

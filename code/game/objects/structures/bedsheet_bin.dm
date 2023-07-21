@@ -19,7 +19,7 @@ LINEN BINS
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
-/obj/item/bedsheet/attack_self(mob/user)
+/obj/item/bedsheet/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

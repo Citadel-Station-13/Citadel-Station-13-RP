@@ -10,7 +10,7 @@
 	var/obj/item/implant/imp = null
 	var/active = 1
 
-/obj/item/implanter/attack_self(mob/user)
+/obj/item/implanter/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

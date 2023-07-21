@@ -303,7 +303,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/holo/esword/attack_self(mob/user)
+/obj/item/holo/esword/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

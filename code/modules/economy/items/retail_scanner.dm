@@ -46,7 +46,7 @@
 	setDir(SOUTH)
 	pixel_y = 0
 
-/obj/item/retail_scanner/attack_self(mob/user)
+/obj/item/retail_scanner/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

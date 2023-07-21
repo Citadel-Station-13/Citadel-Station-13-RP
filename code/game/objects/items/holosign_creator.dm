@@ -48,7 +48,7 @@
 				else
 					to_chat(user, "<span class='notice'>[src] is projecting at max capacity!</span>")
 
-/obj/item/holosign_creator/attack_self(mob/user)
+/obj/item/holosign_creator/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -114,7 +114,7 @@
 	holosign_type = /obj/structure/holosign/barrier/cyborg
 	var/shock = 0
 
-/obj/item/holosign_creator/cyborg/attack_self(mob/user)
+/obj/item/holosign_creator/cyborg/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

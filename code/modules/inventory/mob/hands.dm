@@ -140,6 +140,25 @@
 			return FALSE
 	return TRUE
 
+/**
+ * hands are all empty? undefined behavior if we don't have hands.
+ */
+/mob/proc/hands_empty()
+	for(var/i in get_usable_hand_indices())
+		if(isnull(held_items[i]))
+			continue
+		return FALSE
+	return TRUE
+
+/**
+ * returns number of empty hands
+ */
+/mob/proc/count_empty_hands()
+	. = 0
+	for(var/i in 1 to length(held_items))
+		if(isnull(held_items[i]))
+			.++
+
 //* Public API - Get *//
 
 /**

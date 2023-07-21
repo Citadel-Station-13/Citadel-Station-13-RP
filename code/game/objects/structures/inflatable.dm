@@ -6,7 +6,7 @@
 	w_class = ITEMSIZE_NORMAL
 	var/deploy_path = /obj/structure/inflatable
 
-/obj/item/inflatable/attack_self(mob/user)
+/obj/item/inflatable/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -252,7 +252,7 @@
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "folded_wall_torn"
 
-/obj/item/inflatable/torn/attack_self(mob/user)
+/obj/item/inflatable/torn/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -265,7 +265,7 @@
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "folded_door_torn"
 
-/obj/item/inflatable/door/torn/attack_self(mob/user)
+/obj/item/inflatable/door/torn/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

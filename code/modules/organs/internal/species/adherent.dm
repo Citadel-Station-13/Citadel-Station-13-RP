@@ -35,7 +35,7 @@
 		action.button_icon_state = "[base_action_state]-[active ? "on" : "off"]"
 		if(action.button) action.button.UpdateIcon()
 
-/obj/item/organ/internal/powered/attack_self(mob/user)
+/obj/item/organ/internal/powered/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

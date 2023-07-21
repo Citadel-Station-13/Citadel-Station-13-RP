@@ -25,7 +25,7 @@
 			T.visible_message("[icon2html(thing = src, target = world)] beeps, \"[listening ? "Now" : "No longer"] recording input.\"")
 
 
-/obj/item/assembly/voice/attack_self(mob/user)
+/obj/item/assembly/voice/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

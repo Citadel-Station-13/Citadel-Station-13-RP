@@ -185,7 +185,7 @@
 	if(burn_damage)
 		take_damage(0, burn_damage * emp_mod)
 
-/obj/item/organ/external/attack_self(mob/user)
+/obj/item/organ/external/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

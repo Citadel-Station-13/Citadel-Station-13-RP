@@ -25,14 +25,10 @@
 		to_chat(user, "<span class='notice'>You pick up the [src].</span>")
 
 /obj/item/paper_bin/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (H.hand)
-			temp = H.organs_by_name["l_hand"]
-		if(temp && !temp.is_usable())
-			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
-			return
+	if(!user.is_hand_functional(e_args.hand_index))
+		user.action_feedback(SPAN_WARNING(user.get_hand_fail_message(e_args.hand_index)), src)
+		return TRUE
+
 	var/response = ""
 	if(!papers.len)
 		response = alert(user, "Do you take regular paper, or Carbon copy paper?", "Paper type request", "Regular", "Carbon-Copy", "Cancel")

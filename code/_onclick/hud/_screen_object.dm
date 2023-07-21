@@ -20,6 +20,12 @@
 	master = null
 	return ..()
 
+/**
+ * called to resync to a hud_style datum
+ */
+/atom/movable/screen/proc/sync_style(datum/hud_style/style)
+	return
+
 /atom/movable/screen/text
 	icon = null
 	icon_state = null

@@ -41,7 +41,7 @@
 	STOP_PROCESSING(SSobj, src) //so we don't continue turning to ash while gc'd
 	return ..()
 
-/obj/item/reagent_containers/glass/rag/attack_self(mob/user)
+/obj/item/reagent_containers/glass/rag/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

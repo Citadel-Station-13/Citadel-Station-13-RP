@@ -18,6 +18,6 @@
 	icon_state = "construction_kit"
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/aquarium_kit/attack_self(mob/user)
+/obj/item/aquarium_kit/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	to_chat(user, SPAN_NOTICE("There's instruction and tools necessary to build aquarium inside. All you need is to start crafting."))

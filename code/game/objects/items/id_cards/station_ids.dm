@@ -138,7 +138,7 @@
 	//dat += "</tr></table>"
 	return dat
 
-/obj/item/card/id/attack_self(mob/user)
+/obj/item/card/id/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

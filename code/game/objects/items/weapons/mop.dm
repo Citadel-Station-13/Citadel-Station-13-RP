@@ -26,7 +26,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	create_reagents(30)
 
 
-/obj/item/mop/attack_self(mob/user)
+/obj/item/mop/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -136,7 +136,7 @@
 		for(var/obj/item/reagent_containers/glass/beaker/B in mixing)
 			B.reagents.trans_to_obj(dart, mix_amount)
 
-/obj/item/gun/ballistic/dartgun/attack_self(mob/user)
+/obj/item/gun/ballistic/dartgun/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

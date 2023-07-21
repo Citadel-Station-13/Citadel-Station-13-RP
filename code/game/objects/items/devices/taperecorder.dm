@@ -341,7 +341,7 @@
 	canprint = 1
 
 
-/obj/item/tape_recorder/attack_self(mob/user)
+/obj/item/tape_recorder/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -389,7 +389,7 @@
 /obj/item/cassette_tape/fire_act()
 	ruin()
 
-/obj/item/cassette_tape/attack_self(mob/user)
+/obj/item/cassette_tape/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

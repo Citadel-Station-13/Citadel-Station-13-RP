@@ -70,7 +70,7 @@
 	if (magpulse)
 		slowdown += 1		//It's already tied to a slowdown suit, 6 slowdown is huge.
 
-/obj/item/clothing/shoes/magboots/changeling/attack_self(mob/user)
+/obj/item/clothing/shoes/magboots/changeling/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

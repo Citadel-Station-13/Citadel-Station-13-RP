@@ -11,7 +11,7 @@
 	var/open
 	var/obj/item/held //Item inside locket.
 
-/obj/item/clothing/accessory/locket/attack_self(mob/user)
+/obj/item/clothing/accessory/locket/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -8,7 +8,7 @@
 	item_state = "bodybag_cryo_folded"
 	origin_tech = list(TECH_ENGINEERING = 3)
 
-/obj/item/bodybag/cryobag/robobag/attack_self(mob/user)
+/obj/item/bodybag/cryobag/robobag/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

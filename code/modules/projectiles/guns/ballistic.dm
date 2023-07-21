@@ -236,7 +236,7 @@
 	..()
 	load_ammo(A, user)
 
-/obj/item/gun/ballistic/attack_self(mob/user)
+/obj/item/gun/ballistic/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	if(firemodes.len > 1)
 		switch_firemodes(user)
 	else if(ammo_magazine)

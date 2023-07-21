@@ -21,21 +21,12 @@
 	var/linked
 
 /obj/item/storage/laundry_basket/attack_hand(mob/user, list/params, datum/event_args/clickchain/e_args)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/temp = H.get_organ("r_hand")
-		if (H.hand)
-			temp = H.get_organ("l_hand")
-		if(!temp)
-			to_chat(user, "<span class='warning'>You need two hands to pick this up!</span>")
-			return
-
 	if(user.get_inactive_held_item())
 		to_chat(user, "<span class='warning'>You need your other hand to be empty</span>")
 		return
 	return ..()
 
-/obj/item/storage/laundry_basket/attack_self(mob/user)
+/obj/item/storage/laundry_basket/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

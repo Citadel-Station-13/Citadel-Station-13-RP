@@ -48,7 +48,7 @@
 	icon_state = "oldshieldoff"
 	ghost_query_type = /datum/ghost_query/apprentice
 
-/obj/item/antag_spawner/technomancer_apprentice/attack_self(mob/user)
+/obj/item/antag_spawner/technomancer_apprentice/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -97,7 +97,7 @@
 	ghost_query_type = /datum/ghost_query/syndicate_drone
 	var/drone_type = null
 
-/obj/item/antag_spawner/syndicate_drone/attack_self(mob/user)
+/obj/item/antag_spawner/syndicate_drone/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -97,7 +97,7 @@
 // Proc: attack_self()
 // Parameters: 1 (user - the mob clicking on the catalog)
 // Description: Shows an HTML window, to buy equipment and spells, if the user is the legitimate owner.  Otherwise it cannot be used.
-/obj/item/technomancer_catalog/attack_self(mob/user)
+/obj/item/technomancer_catalog/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

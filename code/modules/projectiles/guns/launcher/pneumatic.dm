@@ -75,7 +75,7 @@
 	else if(istype(W) && item_storage.can_be_inserted(W))
 		item_storage.handle_item_insertion(W, user)
 
-/obj/item/gun/launcher/pneumatic/attack_self(mob/user)
+/obj/item/gun/launcher/pneumatic/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

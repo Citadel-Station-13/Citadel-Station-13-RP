@@ -131,7 +131,7 @@
 	current_tick_amount += amount
 	update_appearance()
 
-/obj/item/geiger_counter/attack_self(mob/user)
+/obj/item/geiger_counter/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

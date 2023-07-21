@@ -73,7 +73,7 @@
 	playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
 	return 0 // This shield does not block all damage, so returning 0 is needed to tell the game to apply the new damage.
 
-/obj/item/clothing/suit/armor/shield/attack_self(mob/user)
+/obj/item/clothing/suit/armor/shield/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

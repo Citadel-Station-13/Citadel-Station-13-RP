@@ -42,7 +42,7 @@
 	colourName = "mime"
 	uses = 0
 
-/obj/item/pen/crayon/mime/attack_self(mob/user)
+/obj/item/pen/crayon/mime/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return //inversion
@@ -63,7 +63,7 @@
 	colourName = "rainbow"
 	uses = 0
 
-/obj/item/pen/crayon/rainbow/attack_self(mob/user)
+/obj/item/pen/crayon/rainbow/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -165,7 +165,7 @@
 	colourName = "mime"
 	uses = 0
 
-/obj/item/pen/crayon/marker/mime/attack_self(mob/user)
+/obj/item/pen/crayon/marker/mime/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return //inversion
@@ -186,7 +186,7 @@
 	colourName = "rainbow"
 	uses = 0
 
-/obj/item/pen/crayon/marker/rainbow/attack_self(mob/user)
+/obj/item/pen/crayon/marker/rainbow/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
