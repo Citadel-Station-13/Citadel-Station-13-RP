@@ -122,6 +122,7 @@
 #define SPAN_SUPPRADIO(str) ("<span class='suppradio'>[str]</span>")
 #define SPAN_SYNDRADIO(str) ("<span class='syndradio'>[str]</span>")
 #define SPAN_TAPE_RECORDER(str) ("<span class='tape_recorder'>[str]</span>")
+#define SPAN_TINY(str) ("<span class='tiny'>[str]</span>")
 #define SPAN_TINYNOTICE(str) ("<span class='tinynotice'>[str]</span>")
 #define SPAN_TINYNOTICEITAL(str) ("<span class='tinynoticeital'>[str]</span>")
 #define SPAN_UNCONSCIOUS(str) ("<span class='unconscious'>[str]</span>")

@@ -13486,9 +13486,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2
 	},
-/turf/unsimulated/floor/steel{
-	icon_state = "wood"
-	},
+/turf/unsimulated/floor/steel,
 /area/centcom/restaurant)
 "zs" = (
 /obj/machinery/door/firedoor,
