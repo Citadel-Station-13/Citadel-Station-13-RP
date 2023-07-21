@@ -84,9 +84,7 @@
 /atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult = 1)
 	return
 
-	#warn ipl
-
-
+	#warn impl on subtypes for melee/unarmed maybe?
 
 //? Damage API
 
@@ -232,15 +230,6 @@
 		atom_fix()
 	if(!integrity)
 		atom_destruction()
-
-/**
- * directly sets max integrity
- *
- * @params
- * * amount - how much to set to
- */
-/atom/proc/set_max_integrity(amount)
-	#warn impl
 
 /**
  * adjusts integrity - routes directly to [damage_integrity] and [heal_integrity]

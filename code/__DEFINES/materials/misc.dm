@@ -58,3 +58,8 @@
 #define TABLE_BRITTLE_MATERIAL_MULTIPLIER 4
 
 #define SHEET_MATERIAL_AMOUNT 2000
+
+//* Material - Misc IDs/Keys/Identifiers
+
+/// material part key that a single-material-part object is treated as having
+#define MATERIAL_PART_DEFAULT "structure"

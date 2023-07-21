@@ -111,7 +111,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 			var/obj/item/organ/external/affecting = target.get_organ(zone)
 			var/attack_message
 			var/datum/wound/W
-			if(edge)
+			if(damage_mode & DAMAGE_MODE_EDGE)
 				W = affecting.create_specific_wound(/datum/wound/cut/small, 5)
 				attack_message = "leaves behind infested residue in [target]!"
 			else
@@ -303,5 +303,5 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	attack_noun = list("tap","light strike")
 	attack_verb = list("tapped", "lightly struck")
 	damage = 5
-	damagE_mode = NONE
+	damage_mode = NONE
 	damage_type = AGONY

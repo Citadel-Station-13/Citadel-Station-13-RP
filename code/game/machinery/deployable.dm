@@ -15,6 +15,7 @@ Barricades
 	density = TRUE
 	integrity = 200
 	integrity_max = 200
+
 	var/datum/material/material
 
 /obj/structure/barricade/Initialize(mapload, material_name)

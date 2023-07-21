@@ -53,3 +53,6 @@ GLOBAL_LIST_EMPTY(typelistkeys)
 	if(!dlist)
 		return
 	return dlist[key]
+
+/datum/proc/is_typelist(key, list/L)
+	return L == GLOB.typelists[type]?[key]

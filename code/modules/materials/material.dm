@@ -58,6 +58,8 @@
 /datum/material
 	abstract_type = /datum/material
 
+	//? Core
+
 	/**
 	 * ID.
 	 * Must be unique.
@@ -111,44 +113,54 @@
 	//? Attributes
 
 	/// relative HP multiplier for something made out of this
-	var/regex_this_integrity = 1
+	var/relative_integrity = 1
 	/// relative reactivity multiplier for something made out of this
-	/// * impacts
-	var/reactivity = 1
+	/// * impacts fire/acid armor
+	var/relative_reactivity = 0
 	/// relative permeability multiplier for something made out of this
 	/// * impacts permeability armor
-	/// * impacts bomb armor
-	var/permeability = 1
-	/// relative hardness multiplier for something made out of this
+	/// * impacts bomb armor a little bit
+	/// * impacts acid armor
+	var/relative_permeability = 0
+	/// kinetic penetration resistance for something made out of this
+	/// based on MATERIAL_RESISTANCE_ defines
 	/// * impacts sharp / blade damage
 	/// * impacts kinetic penetration resistance
 	/// * impacts bomb armor
-	var/regex_this_hardness = 1
-	/// relative kinetic scattering/dampening multiplier for something made out of this
+	var/regex_this_hardness = 0
+	/// kinetic scattering/dampening for something made out of this
+	/// based on MATERIAL_RESISTANCE_ defines
 	/// * impacts kinetic damage resistance
 	/// * impacts bomb armor
-	var/toughness = 1
-	/// relative multiplier for how easily this material scatters energy
+	var/toughness = 0
+	/// how easily this material scatters energy
+	/// based on MATERIAL_RESISTANCE_ defines
 	/// * impacts laser armor penetration resistance
 	/// * impacts special energy armor
 	/// * impacts exotic energy armor (minor)
 	/// * slight modifier to radiation resist
-	var/scattering = 1
-	/// relative mutliplier for how easily this material absorbs regular energy blasts
+	var/refraction = 0
+	/// how easily this material absorbs regular energy blasts
+	/// based on MATERIAL_RESISTANCE_ defines
 	/// * impacts laser armor
 	/// * impacts special energy armor (minor)
 	/// * very slight modifier to radiation resist
-	var/absorption = 1
-	/// relative multiplier for how easily this material deflects exotic energy
+	var/absorption = 0
+	/// for how easily this material deflects exotic energy
+	/// based on MATERIAL_RESISTANCE_ defines
 	/// * impacts special energy armor (minor)
 	/// * impacts laser armor penetration resistance (moderate)
 	/// * impacts anomaly armor
-	var/nullification = 1
-	/// relative multiplier for how heavy this material is
+	var/nullification = 0
+	/// relative density multiplier for how heavy this material is
 	/// * impacts carry weight of things made out of this
 	/// * impacts radiation armor (major)
 	/// * impacts bomb armor
-	var/density = 1
+	var/relative_density = 0
+	/// relative multiplier for how easily this material passes electricity
+	/// * impacts conductivity
+	/// * impacts usage as a conductor
+	var/relative_conductivity = 0
 
 	#warn pain
 
@@ -334,23 +346,3 @@
 
 /datum/material/proc/wall_touch_special(turf/simulated/wall/W, mob/living/L)
 	return
-
-//? Attribute Computations
-
-/**
- * mutates a base armor datum according to our stats
- *
- * @params
- * * armor_or_list - an armor datum or a list of k-v armor values
- * *
- */
-/datum/material/proc/mutate_armor(datum/armor/armor_or_list, ratio = 1)
-	#warn params
-	#warn impl
-
-/**
- * creates an armor datum based off of our stats
- */
-/datum/material/proc/create_armor(significance = 1, ratio = 1)
-	#warn params
-	#warn impl

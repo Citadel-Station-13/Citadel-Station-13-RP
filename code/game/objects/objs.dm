@@ -52,12 +52,22 @@
 	//? Materials
 	/// static materials in us
 	/// material id = amount
+	/// * This may be a typelist, use is_typelist to check.
+	/// * Always use get_materials to get this list unless you know what you're doing.
 	var/list/materials
-	/// material parts - lazy list; lets us track what we're made of.
+	/// material parts - lets us track what we're made of.
 	/// key = cost in cm3
+	/// this is either a lazy list of part names to costs in cm3,
+	/// or a single number.
+	/// * This may be a typelist, use is_typelist to check.
+	/// * Always use get_material_parts to get this list unless you know what you're doing.
 	var/list/material_parts
 	/// material parts on spawn
 	/// key = material id
+	/// this is either a lazy list of key to material ids,
+	/// or a single material id
+	/// * This may be a typelist, use is_typelist to check.
+	/// * Always use get_material_defaults to get this list unless you know what you're doing.
 	var/list/material_defaults
 
 	//? Sounds
@@ -91,11 +101,12 @@
 	. = ..()
 	if(!isnull(materials))
 		materials = typelist(NAMEOF(src, materials), materials)
-	if(!isnull(material_parts))
+	if(islist(material_parts))
 		material_parts = typelist(NAMEOF(src, material_parts), material_parts)
 	if(!isnull(material_defaults))
-		material_defaults = typelist(NAMEOF(src, material_defaults), material_defaults)
-		init_materials()
+		if(islist(material_defaults))
+			material_defaults = typelist(NAMEOF(src, material_defaults), material_defaults)
+		init_material_parts()
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
 		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]
@@ -408,9 +419,45 @@
 	. = materials.Copy()
 
 /**
+ * autodetect proc used by lathes
+ * called only right after init
+ * should never be called after materials are mutated in any way, including by init.
+ *
+ * return key-value associative list of part name to cost
+ */
+/obj/proc/detect_material_part_costs()
+	return get_material_parts()
+
+/**
+ * autodetect proc used by lathes
+ * called only right after init
+ * should never be called after materials are mutated in any way, including by init.
+ *
+ * return key-value associative list of our *own* baseline materials, without material parts.
+ */
+/obj/proc/detect_material_base_costs()
+	var/list/our_materials = isnull(materials)? list() : materials.Copy()
+	// subtract out material parts, we assume we're initialized
+	if(atom_flags & ATOM_INITIALIZED)
+		if(islist(material_parts))
+			for(var/key in material_parts)
+				our_materials[key] = max(0, our_materials[key] - material_defaults[key])
+		else if(!isnull(material_parts))
+			our_materials[material_defaults] = max(0, our_materials[material_defaults] - material_parts)
+
+/**
  * initialize materials
  */
-/obj/proc/init_materials()
+/obj/proc/init_material_parts()
+	if(islist(material_parts))
+		if(length(material_parts) != length(material_defaults))
+			CRASH("material_parts list did not equate material_defaults list in length!")
+		set_material_parts(material_defaults)
+	else
+		if(!istext(material_defaults))
+			CRASH("material defaults wasn't a string when material parts wasn't a list.")
+		set_material_parts(list(MATERIAL_PART_DEFAULT = material_defaults))
+	#warn handle below
 	if(!isnull(material_defaults))
 		set_material_parts(material_defaults)
 		for(var/key in material_defaults)
@@ -425,6 +472,23 @@
  */
 /obj/proc/set_material_parts(list/parts)
 	return
+#warn does not update?
+
+/**
+ * get material parts
+ */
+/obj/proc/get_material_parts()
+	if(isnull(material_parts))
+		return material_parts.Copy()
+	return islist(material_parts)? material_parts.Copy() : list(MATERIAL_PART_DEFAULT = material_parts)
+
+/**
+ * get material defaults
+ */
+/obj/proc/get_material_defaults()
+	if(isnull(material_defaults))
+		return list()
+	return islist(material_defaults)? material_defaults.Copy() : list(MATERIAL_PART_DEFAULT = material_defaults)
 
 //? Resists
 

@@ -76,15 +76,13 @@
 		return
 	// todo: maybe /obj/proc/detect_materials, /obj/proc/detect_material_parts ? this works fine for now tho.
 	if(isnull(materials))
-		if(!isnull(instance.materials))
-			materials = instance.materials.Copy()
-		if(!isnull(materials) && !isnull(instance.material_parts) && !isnull(instance.material_defaults))
-			// subtract out the material defaults the instance itself added
-			for(var/key in instance.material_parts)
-				materials[instance.material_defaults[key]] -= instance.material_parts[key]
+		var/list/fetched = instance.detect_material_base_costs()
+		if(length(fetched))
+			materials = fetched
 	if(isnull(material_parts))
-		if(!isnull(instance.material_parts))
-			material_parts = instance.material_parts.Copy()
+		var/list/fetched = instance.detect_material_part_costs()
+		if(length(fetched))
+			material_parts = fetched
 	if(isnull(reagents))
 		// if(!isnull(instance.reagents))
 			// reagents = instance.reagents.Copy()
