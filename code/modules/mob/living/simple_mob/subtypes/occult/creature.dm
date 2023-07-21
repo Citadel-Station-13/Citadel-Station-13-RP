@@ -25,8 +25,8 @@
 
 	harm_intent_damage = 8
 
-	melee_damage_lower = 8
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 8
+	legacy_melee_damage_upper = 15
 	attack_armor_pen = 5	//It's a horror from beyond, I ain't gotta explain 5 AP
 	attack_sharp = 1
 	attack_edge = 1
@@ -54,8 +54,8 @@
 	health = 160
 
 	harm_intent_damage = 5
-	melee_damage_lower = 13
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 13
+	legacy_melee_damage_upper = 25
 
 // Cult Variant
 /mob/living/simple_mob/creature/cult
@@ -84,5 +84,5 @@
 	health = 160
 
 	harm_intent_damage = 5
-	melee_damage_lower = 13
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 13
+	legacy_melee_damage_upper = 25

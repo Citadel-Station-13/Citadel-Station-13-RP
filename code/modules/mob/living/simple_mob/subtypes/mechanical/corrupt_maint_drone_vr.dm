@@ -36,8 +36,8 @@
 	mob_swap_flags = 0
 	mob_push_flags = 0
 
-	melee_damage_lower = 6 // Approx 12 DPS.
-	melee_damage_upper = 6
+	legacy_melee_damage_lower = 6 // Approx 12 DPS.
+	legacy_melee_damage_upper = 6
 	base_attack_cooldown = 2.5 // Four attacks per second.
 	attack_sharp = 1
 	attack_edge = 1
@@ -73,7 +73,7 @@
 /mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison
 	name = "Derelict Maintenance Drone"
 	base_attack_cooldown = 8 // Slower attack rate
-	melee_damage_lower = 4	// Slightly less DPS for this version
+	legacy_melee_damage_lower = 4	// Slightly less DPS for this version
 	poison_chance = 0	// No welding fuel poison
 //	pass_flags = Null // Lets see if this stops the bastards from going under barricades
 

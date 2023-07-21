@@ -100,8 +100,8 @@
 		return
 
 	is_adult = TRUE
-	melee_damage_lower = round(melee_damage_lower * 2) // 20
-	melee_damage_upper = round(melee_damage_upper * 2) // 30
+	legacy_melee_damage_lower = round(legacy_melee_damage_lower * 2) // 20
+	legacy_melee_damage_upper = round(legacy_melee_damage_upper * 2) // 30
 	maxHealth = maxHealth_adult
 	amount_grown = 0
 	update_icon()
@@ -152,8 +152,8 @@
 	faction = "neutral"
 
 	// If for whatever reason the mob AI (or player) decides to try to attack something anyways.
-	melee_damage_upper = 0
-	melee_damage_lower = 0
+	legacy_melee_damage_upper = 0
+	legacy_melee_damage_lower = 0
 
 	update_mood()
 

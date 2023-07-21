@@ -76,8 +76,8 @@
 	response_harm   = "stomps on"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 5
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 5
 	attack_edge = 1
 	attacktext = list("bit", "scratched","clawed")
 	attack_sound = 'sound/weapons/bite.ogg'
@@ -128,8 +128,8 @@
     size_multiplier = 1
     maxHealth = maxHealth
     health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
+    legacy_melee_damage_lower = legacy_melee_damage_lower
+    legacy_melee_damage_upper = legacy_melee_damage_upper
     movement_cooldown = movement_cooldown
     meat_amount = meat_amount
     update_icons()
@@ -162,8 +162,8 @@
 
 	movement_cooldown = 4
 
-	melee_damage_lower = 2
-	melee_damage_upper = 3
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 3
 
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
 
@@ -254,8 +254,8 @@
 
 	taser_kill = 0
 
-	melee_damage_lower = 7
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 7
+	legacy_melee_damage_upper = 10
 
 	movement_cooldown = 4
 
@@ -341,8 +341,8 @@
 
 	taser_kill = 0
 
-	melee_damage_lower = 2
-	melee_damage_upper = 3
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 3
 
 	armor_type = /datum/armor/physiology/roach/atomar
 
@@ -384,8 +384,8 @@
 	taser_kill = 0
 	movement_cooldown = 8
 
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 	armor_type = /datum/armor/physiology/roach/uberfallen
 
 	base_attack_cooldown = 8
@@ -462,8 +462,8 @@
 
 	taser_kill = 0
 
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 
 	movement_cooldown = 3
 
@@ -577,8 +577,8 @@
 
 	taser_kill = 0
 
-	melee_damage_lower = 10
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 20
 
 	movement_cooldown = 6
 

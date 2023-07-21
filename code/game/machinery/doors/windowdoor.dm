@@ -4,11 +4,11 @@
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "left"
 	pass_flags_self = ATOM_PASS_GLASS
+	armor_type = /datum/armor/door/windoor
 	var/base_state = "left"
-	min_force = 4
 	hit_sound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 150 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
-	health = 150
+	integrity = 140
+	integrity_max = 140
 	visible = 0.0
 	use_power = USE_POWER_OFF
 	atom_flags = ATOM_BORDER
@@ -179,7 +179,9 @@
 		open()
 		return 1
 
-/obj/machinery/door/window/attackby(obj/item/I as obj, mob/user as mob)
+/obj/machinery/door/window/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 
 	//If it's in the process of opening/closing, ignore the click
 	if (src.operating == 1)
@@ -247,17 +249,6 @@
 				qdel(src)
 				return
 
-		//If it's a weapon, smash windoor. Unless it's an id card, agent card, ect.. then ignore it (Cards really shouldnt damage a door anyway)
-		if(src.density && istype(I, /obj/item) && !istype(I, /obj/item/card))
-			user.setClickCooldown(user.get_attack_speed(I))
-			var/aforce = I.damage_force
-			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
-			visible_message("<span class='danger'>[src] was hit by [I].</span>")
-			if(I.damtype == BRUTE || I.damtype == BURN)
-				take_damage(aforce)
-			return
-
-
 	src.add_fingerprint(user, 0, I)
 
 	if (src.allowed(user))
@@ -277,9 +268,10 @@
 	icon_state = "leftsecure"
 	base_state = "leftsecure"
 	req_access = list(ACCESS_SECURITY_EQUIPMENT)
+	armor_type = /datum/armor/door/windoor/reinforced
+	integrity = 280
+	integrity_max = 280
 	var/id = null
-	maxhealth = 300
-	health = 300.0 //Stronger doors for prison (regular window door health is 150)
 
 /obj/machinery/door/window/brigdoor/shatter()
 	new /obj/item/stack/rods(src.loc, 2)

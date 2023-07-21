@@ -60,8 +60,8 @@
 	maxbodytemp = 5000	//Above 50 Degrees Celcius
 
 	//Mob melee settings
-	melee_damage_lower = 5
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 15
 	attacktext = list("attacked", "chomped", "gnawed on")
 	friendly = list("baps", "nuzzles")
 	attack_armor_type = "melee"
@@ -191,8 +191,8 @@
 	health = 30
 
 	//Mob melee settings
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 	attack_sharp = 0
 	attack_edge = 0
 
@@ -263,8 +263,8 @@
 	health = 30
 
 	//Mob melee settings
-	melee_damage_lower = 1
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 5
 	attack_sharp = 0
 	attack_edge = 0
 
@@ -329,8 +329,8 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/stealth)
 
 	//Mob melee settings
-	melee_damage_lower = 15
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 20
 	attack_sharp = 1
 	attack_edge = 1
 

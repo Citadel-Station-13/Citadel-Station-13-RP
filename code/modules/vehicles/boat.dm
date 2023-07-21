@@ -35,8 +35,8 @@
 	icon_state = "dragon_boat"
 	integrity = 250
 	integrity_max = 250
-	icon_dimension_x = 64
-	icon_dimension_y = 32
+	icon_x_dimension = 64
+	icon_y_dimension = 32
 	base_pixel_x = -16
 	buckle_max_mobs = 5
 	riding_handler_type = /datum/component/riding_handler/vehicle/boat/big

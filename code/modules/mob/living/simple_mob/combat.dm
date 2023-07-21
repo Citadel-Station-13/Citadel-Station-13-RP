@@ -45,7 +45,7 @@
 		visible_message(SPAN_WARNING( "\The [src] misses their attack."))
 		return FALSE
 
-	var/damage_to_do = rand(melee_damage_lower, melee_damage_upper)
+	var/damage_to_do = rand(legacy_melee_damage_lower, legacy_melee_damage_upper)
 
 	damage_to_do = apply_bonus_melee_damage(A, damage_to_do)
 

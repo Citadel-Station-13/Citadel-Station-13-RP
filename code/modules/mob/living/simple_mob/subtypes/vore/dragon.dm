@@ -12,8 +12,8 @@
 	health = 500
 	randomized = TRUE
 
-	melee_damage_lower = 5
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 30
 	attack_sound = 'sound/weapons/bite.ogg'
 
 	//Space dragons aren't affected by atmos.

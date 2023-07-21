@@ -22,8 +22,8 @@
 	health = 50
 	response_harm = "viciously beaten"
 	harm_intent_damage = 5
-	melee_damage_lower = 8 //It's not the strongest of the bunch, but that doesn't mean it can't hurt you.
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 8 //It's not the strongest of the bunch, but that doesn't mean it can't hurt you.
+	legacy_melee_damage_upper = 10
 	attack_armor_pen = 50 // Does so little damage already, that this can be justified.
 	attacktext = list("rammed")
 	attack_sound = 'sound/weapons/rapidslice.ogg'

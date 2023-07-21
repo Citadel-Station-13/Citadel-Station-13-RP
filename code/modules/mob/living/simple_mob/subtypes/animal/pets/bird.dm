@@ -25,8 +25,8 @@
 
 	health = 30
 	maxHealth = 30
-	melee_damage_lower = 3
-	melee_damage_upper = 3
+	legacy_melee_damage_lower = 3
+	legacy_melee_damage_upper = 3
 	randomized = TRUE
 
 	movement_cooldown = 0

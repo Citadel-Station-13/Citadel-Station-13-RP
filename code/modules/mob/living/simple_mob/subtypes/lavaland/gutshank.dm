@@ -58,8 +58,8 @@
 	taser_kill = FALSE
 	movement_cooldown = 6
 	movement_sound = 'sound/effects/spider_loop.ogg'
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
@@ -179,8 +179,8 @@
 	mob_class = MOB_CLASS_ANIMAL
 	taser_kill = FALSE
 	movement_cooldown = 4
-	melee_damage_lower = 10
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 15
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 

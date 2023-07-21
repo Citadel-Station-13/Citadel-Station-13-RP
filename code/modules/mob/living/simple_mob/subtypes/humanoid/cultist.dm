@@ -64,8 +64,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 30	//Cult Sword Damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30	//Cult Sword Damage
+	legacy_melee_damage_upper = 30
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -231,8 +231,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15	//Ritual Knife
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15	//Ritual Knife
+	legacy_melee_damage_upper = 15
 	attack_armor_pen = 25
 	attack_sharp = 1
 	attack_edge = 1
@@ -282,8 +282,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15	//Ritual Knife
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15	//Ritual Knife
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -333,8 +333,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15	//Ritual Knife
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15	//Ritual Knife
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -384,8 +384,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15	//Ritual Knife
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15	//Ritual Knife
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -432,8 +432,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15	//Ritual Knife
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15	//Ritual Knife
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -482,8 +482,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 30	//Cult Sword Damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30	//Cult Sword Damage
+	legacy_melee_damage_upper = 30
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -557,8 +557,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 30	//Ritual Knife
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30	//Ritual Knife
+	legacy_melee_damage_upper = 30
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -630,8 +630,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 42	//Saw Cleaver Brutality
-	melee_damage_upper = 42
+	legacy_melee_damage_lower = 42	//Saw Cleaver Brutality
+	legacy_melee_damage_upper = 42
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")

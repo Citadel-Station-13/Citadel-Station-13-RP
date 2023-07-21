@@ -23,8 +23,8 @@
 	maxHealth = 100
 	health = 100
 
-	melee_damage_lower = 8
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 8
+	legacy_melee_damage_upper = 25
 
 	poison_per_bite = 3
 	poison_type = "chloralhydrate"
@@ -53,13 +53,13 @@
 			if(prob(swarmling_prob) && src)
 				var/mob/living/simple_mob/animal/giant_spider/swarmling = new swarmling_type(src.loc)
 				var/swarm_health = FLOOR(swarmling.maxHealth * 0.4, 1)
-				var/swarm_dam_lower = FLOOR(melee_damage_lower * 0.4, 1)
-				var/swarm_dam_upper = FLOOR(melee_damage_upper * 0.4, 1)
+				var/swarm_dam_lower = FLOOR(legacy_melee_damage_lower * 0.4, 1)
+				var/swarm_dam_upper = FLOOR(legacy_melee_damage_upper * 0.4, 1)
 				swarmling.name = "spiderling"
 				swarmling.maxHealth = swarm_health
 				swarmling.health = swarm_health
-				swarmling.melee_damage_lower = swarm_dam_lower
-				swarmling.melee_damage_upper = swarm_dam_upper
+				swarmling.legacy_melee_damage_lower = swarm_dam_lower
+				swarmling.legacy_melee_damage_upper = swarm_dam_upper
 				swarmling.faction = swarmling_faction
 				swarmling.adjust_scale(0.75)
 				new_spiders += swarmling

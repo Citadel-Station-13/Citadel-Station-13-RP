@@ -35,8 +35,8 @@
 
 	movement_cooldown = 5	// A bit faster so that they can inject the eggs easier.
 
-	melee_damage_lower = 5	// Doesn't do a lot of damage, since the goal is to make more spiders with egg attacks.
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5	// Doesn't do a lot of damage, since the goal is to make more spiders with egg attacks.
+	legacy_melee_damage_upper = 10
 	poison_per_bite = 5
 	poison_type = "stoxin"
 
@@ -276,8 +276,8 @@
 	maxHealth = 320
 	health = 320
 
-	melee_damage_lower = 20
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 20
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 25
 
 	base_pixel_x = -16

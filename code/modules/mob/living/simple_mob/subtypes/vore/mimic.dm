@@ -86,8 +86,8 @@
 	response_disarm = "pushes"
 	response_harm = "hits"
 
-	melee_damage_lower = 7
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 7
+	legacy_melee_damage_upper = 15
 	attacktext = list("attacked")
 	attack_sound = 'sound/weapons/bite.ogg'
 
@@ -211,8 +211,8 @@
 	health = 250
 	movement_cooldown = 10
 
-	melee_damage_lower = 15
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 50 //Its jaw is an airlock. Its got enough bite strength.
 
 	armor_legacy_mob = list(
@@ -304,8 +304,8 @@
 	health = 150
 	movement_cooldown = 7
 
-	melee_damage_lower = 10
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 20
 	attack_armor_pen =  25 // NOM NOM
 
 	armor_legacy_mob = list(
@@ -405,8 +405,8 @@
 	response_disarm = "pushes"
 	response_harm = "hits"
 
-	melee_damage_lower = 5
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 5
 	base_attack_cooldown = 5
 
 /mob/living/simple_mob/vore/aggressive/mimic/floor/death()
@@ -449,8 +449,8 @@
 	response_disarm = "pushes"
 	response_harm = "hits"
 
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	base_attack_cooldown = 10
 
 /obj/effect/floormimic/plating
@@ -490,7 +490,7 @@
 	response_disarm = "pushes"
 	response_harm = "hits"
 
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	base_attack_cooldown = 10
 	attack_armor_pen = 50

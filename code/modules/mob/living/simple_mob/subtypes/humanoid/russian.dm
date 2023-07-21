@@ -28,8 +28,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	attacktext = list("punched")
 
 	loot_list = list(/obj/item/material/knife = 100)

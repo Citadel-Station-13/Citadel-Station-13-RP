@@ -22,8 +22,8 @@
 	maxHealth = 200
 	health = 200
 
-	melee_damage_lower = 5
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 30
 
 	base_pixel_x = -16
 

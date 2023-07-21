@@ -42,8 +42,8 @@
 
 	movement_cooldown = 1
 
-	melee_damage_lower = 15
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 25
 	attack_armor_pen = 40
 	base_attack_cooldown = 2 SECONDS
 	attacktext = list("gouged", "bit", "cut", "clawed", "whipped")
@@ -102,11 +102,11 @@
 			var/mob/living/carbon/human/H = L
 			if(H.get_active_held_item())
 				var/obj/item/I = H.get_active_held_item()
-				if(I.damage_force >= 1.20 * melee_damage_upper)
+				if(I.damage_force >= 1.20 * legacy_melee_damage_upper)
 					return TRUE
 		else if(istype(L, /mob/living/simple_mob))
 			var/mob/living/simple_mob/S = L
-			if(S.melee_damage_upper > 1.20 * melee_damage_upper)
+			if(S.legacy_melee_damage_upper > 1.20 * legacy_melee_damage_upper)
 				return TRUE
 
 /mob/living/simple_mob/animal/sif/kururak/handle_special()
@@ -257,7 +257,7 @@
 
 	if(!(src.Adjacent(A))) return
 
-	var/damage_to_apply = rand(melee_damage_lower, melee_damage_upper) + 10
+	var/damage_to_apply = rand(legacy_melee_damage_lower, legacy_melee_damage_upper) + 10
 	if(isliving(A))
 		visible_message(SPAN_DANGER("\The [src] rakes its claws across [A]."))
 		var/mob/living/L = A

@@ -14,6 +14,10 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY
 
+	//? Attacks - Basic
+	/// melee style
+	var/datum/unarmed_attack/melee_style
+
 	//? Darksight
 	/// our innate darksight
 	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/default
@@ -152,10 +156,13 @@
 	var/reload_sound = 'sound/weapons/flipblade.ogg'
 
 	//* Mob melee settings *//
+
 	/// Lower bound of randomized melee damage.
-	var/melee_damage_lower = 2
+	//! Legacy var, do not use
+	var/legacy_melee_damage_lower = 2
 	/// Upper bound of randomized melee damage.
-	var/melee_damage_upper = 6
+	//! Legacy var, do not use
+	var/legacy_melee_damage_upper = 6
 	/// "You are [attacktext] by the mob!"
 	var/list/attacktext = list("attacked")
 	/// "The mob [friendly] the person."
@@ -245,6 +252,9 @@
 		for(var/key in armor_legacy_mob)
 			translated[key] = armor_legacy_mob[key] * 0.01 // new armor is / 100
 		set_armor(translated)
+	if(legacy_melee_damage_upper && legacy_melee_damage_lower)
+		#warn build melee_style
+
 	remove_verb(src, /mob/verb/observe)
 	health = maxHealth
 	randomize()
@@ -278,8 +288,8 @@
 		size_multiplier = mod
 		maxHealth = round(maxHealth*mod)
 		health = round(health*mod)
-		melee_damage_lower = round(melee_damage_lower*mod)
-		melee_damage_upper = round(melee_damage_upper*mod)
+		legacy_melee_damage_lower = round(legacy_melee_damage_lower*mod)
+		legacy_melee_damage_upper = round(legacy_melee_damage_upper*mod)
 		movement_cooldown = round(movement_cooldown*mod)
 		meat_amount = round(meat_amount*mod)
 		update_icons()

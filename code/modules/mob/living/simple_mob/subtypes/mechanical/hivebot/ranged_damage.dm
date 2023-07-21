@@ -46,8 +46,8 @@
 	desc = "A robot with a crude ballistic weapon and strong armor."
 	maxHealth = 4 LASERS_TO_KILL // 120 health.
 	health = 4 LASERS_TO_KILL
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 
 // Also beefy, but tries to stay at their 'home', ideal for base defense.
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong/guard

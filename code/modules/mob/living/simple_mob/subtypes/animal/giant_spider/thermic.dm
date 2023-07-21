@@ -26,8 +26,8 @@
 	maxHealth = 175
 	health = 175
 
-	melee_damage_lower = 10
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 25
 
 	heat_resist = 0.75
 	cold_resist = -0.50

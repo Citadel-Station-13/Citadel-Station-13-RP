@@ -21,8 +21,8 @@
 	health = 50
 	randomized = TRUE
 
-	melee_damage_lower = 2
-	melee_damage_upper = 7
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 7
 
 	response_help = "gently pets"
 	response_disarm = "tries to shove"

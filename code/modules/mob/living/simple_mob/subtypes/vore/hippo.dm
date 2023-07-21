@@ -39,8 +39,8 @@
 	response_harm = "hits the"
 	attacktext = list("bit")
 
-	melee_damage_upper = 12
-	melee_damage_lower = 7
+	legacy_melee_damage_upper = 12
+	legacy_melee_damage_lower = 7
 	attack_sharp = TRUE
 
 	base_pixel_x = -16

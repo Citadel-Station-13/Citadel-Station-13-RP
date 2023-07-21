@@ -25,8 +25,8 @@
 	movement_cooldown = 0
 	turn_sound = 'sound/mecha/mechmove01.ogg'
 
-	melee_damage_lower = 5
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 5
 	base_attack_cooldown = 2 SECONDS
 	attacktext = list("injected")
 	projectiletype = /obj/projectile/fake_syringe/poison

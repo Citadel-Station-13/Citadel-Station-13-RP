@@ -34,8 +34,8 @@
 	maxHealth = 200 // Tanky fuckers.
 	health = 200 // Tanky fuckers.
 
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 
 	movement_cooldown = 5
 

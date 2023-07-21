@@ -72,8 +72,8 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "desperately attacks"
 
-	melee_damage_lower = 20
-	melee_damage_upper = 50 // srsly u gon get rekt
+	legacy_melee_damage_lower = 20
+	legacy_melee_damage_upper = 50 // srsly u gon get rekt
 
 	minbodytemp = 0
 

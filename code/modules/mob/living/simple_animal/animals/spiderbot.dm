@@ -28,8 +28,8 @@
 	response_disarm = "shoos"
 	response_harm   = "stomps on"
 
-	melee_damage_lower = 1
-	melee_damage_upper = 3
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 3
 	attacktext = list("shocked")
 
 	min_oxy = 0

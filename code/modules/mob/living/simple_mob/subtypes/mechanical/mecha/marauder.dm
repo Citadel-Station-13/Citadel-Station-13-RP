@@ -28,8 +28,8 @@
 				"bio"		= 100,
 				"rad"		= 100
 				)
-	melee_damage_lower = 45
-	melee_damage_upper = 45
+	legacy_melee_damage_lower = 45
+	legacy_melee_damage_upper = 45
 	base_attack_cooldown = 2 SECONDS
 	projectiletype = /obj/projectile/beam/heavylaser
 
@@ -56,8 +56,8 @@
 	icon_state = "seraph"
 	wreckage = /obj/structure/loot_pile/mecha/marauder/seraph
 	health = 550
-	melee_damage_lower = 55 // The real version hits this hard apparently. Ouch.
-	melee_damage_upper = 55
+	legacy_melee_damage_lower = 55 // The real version hits this hard apparently. Ouch.
+	legacy_melee_damage_upper = 55
 
 /datum/category_item/catalogue/technology/mauler
 	name = "Exosuit - Mauler"

@@ -27,8 +27,8 @@
 	health = 120
 
 	poison_per_bite = 5
-	melee_damage_lower = 9
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 9
+	legacy_melee_damage_upper = 15
 
 	movement_cooldown = 0 // Hunters are FAST.
 

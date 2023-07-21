@@ -5,8 +5,8 @@
 	icon_living = "white"
 	attacktext = list("prodded")
 	movement_cooldown = 5
-	melee_damage_lower = 2
-	melee_damage_upper = 2
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 2
 
 
 // This hivebot supplies a general buff to nearby hivebots that improve their performance.

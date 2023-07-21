@@ -83,8 +83,8 @@
 
 	hovering = TRUE
 
-	melee_damage_lower = 10
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 25
 	attack_sharp = TRUE
 	attack_edge = TRUE
 	attack_armor_pen = 30
@@ -289,7 +289,7 @@
 			var/atom/movable/objectOrMob = target
 			if(istype(objectOrMob, /obj/machinery/door))	// Doors and airlocks take time based on their durability and our damageo.
 				var/obj/machinery/door/D = objectOrMob
-				var/total_hits = max(2, round(D.maxhealth / (2 * melee_damage_upper)))
+				var/total_hits = max(2, round(D.maxhealth / (2 * legacy_melee_damage_upper)))
 
 				for(var/I = 1 to total_hits)
 
@@ -299,7 +299,7 @@
 
 					if(do_after(src, 5))
 						D.visible_message("<span class='danger'>Something crashes against \the [D]!</span>")
-						D.take_damage(2 * melee_damage_upper)
+						D.take_damage(2 * legacy_melee_damage_upper)
 					else
 						objectOrMob = null
 						break

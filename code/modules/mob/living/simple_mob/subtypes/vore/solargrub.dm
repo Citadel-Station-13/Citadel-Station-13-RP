@@ -39,8 +39,8 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	maxHealth = 50 //grubs can take a lot of harm
 	health = 50
 
-	melee_damage_lower = 1
-	melee_damage_upper = 3	//low damage, but poison and stuns are strong
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 3	//low damage, but poison and stuns are strong
 
 	movement_cooldown = 8
 

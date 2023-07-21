@@ -65,7 +65,6 @@
 		layer = open_layer
 		explosion_resistance = 0
 
-
 	if(width > 1)
 		if(dir in list(EAST, WEST))
 			bound_width = world.icon_size
@@ -74,7 +73,6 @@
 			bound_width = width * world.icon_size
 			bound_height = world.icon_size
 
-	health = maxhealth
 	update_icon()
 
 	update_nearby_tiles()
@@ -170,37 +168,6 @@
 		else
 			do_animate(DOOR_ANIMATION_DENY)
 
-/obj/machinery/door/bullet_act(var/obj/projectile/Proj)
-	..()
-
-	var/damage = Proj.get_structure_damage()
-
-	// Emitter Blasts - these will eventually completely destroy the door, given enough time.
-	if (damage > 90)
-		destroy_hits--
-		if (destroy_hits <= 0)
-			visible_message("<span class='danger'>\The [src.name] disintegrates!</span>")
-			switch (Proj.damage_type)
-				if(BRUTE)
-					new /obj/item/stack/material/steel(src.loc, 2)
-					new /obj/item/stack/rods(src.loc, 3)
-				if(BURN)
-					new /obj/effect/debris/cleanable/ash(src.loc) // Turn it to ashes!
-			qdel(src)
-
-	if(damage)
-		//cap projectile damage so that there's still a minimum number of hits required to break the door
-		take_damage(min(damage, 100))
-
-
-
-/obj/machinery/door/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	. = ..()
-	visible_message("<span class='danger'>[src.name] was hit by [AM].</span>")
-	var/tforce = AM.throw_force * TT.get_damage_multiplier()
-	playsound(src, hit_sound, 100, 1)
-	take_damage(tforce)
-
 /obj/machinery/door/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
@@ -212,7 +179,9 @@
 		return
 	..()
 
-/obj/machinery/door/attackby(obj/item/I as obj, mob/user as mob)
+/obj/machinery/door/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	src.add_fingerprint(user, 0, I)
 
 	if(istype(I))
@@ -300,74 +269,40 @@
 		operating = -1
 		return 1
 
-/obj/machinery/door/take_damage_legacy(var/damage)
-	var/initialhealth = src.health
-	src.health = max(0, src.health - damage)
-	if(src.health <= 0 && initialhealth > 0)
-		src.set_broken()
-	else if(src.health < src.maxhealth / 4 && initialhealth >= src.maxhealth / 4)
-		visible_message("\The [src] looks like it's about to break!" )
-	else if(src.health < src.maxhealth / 2 && initialhealth >= src.maxhealth / 2)
-		visible_message("\The [src] looks seriously damaged!" )
-	else if(src.health < src.maxhealth * 3/4 && initialhealth >= src.maxhealth * 3/4)
-		visible_message("\The [src] shows signs of damage!" )
-	update_icon()
-	return
-
-
-/obj/machinery/door/examine(mob/user, dist)
+/obj/machinery/door/damage_integrity(amount, gradual)
+	var/initial_integrity = integrity
 	. = ..()
-	if(src.health <= 0)
-		. += "<span class = 'notice'>The [src] is broken!</span>"
-	if(src.health < src.maxhealth / 4)
-		. += "<span class = 'notice'>The [src] looks like it's about to break!</span>"
-	else if(src.health < src.maxhealth / 2)
-		. += "<span class = 'notice'>The [src] looks seriously damaged!</span>"
-	else if(src.health < src.maxhealth * 3/4)
-		. += "<span class = 'notice'>The [src] shows signs of damage!</span>"
+	if(gradual)
+		update_appearance(UPDATE_ICON)
+		return
+	if(integrity < integrity_max / 4 && initial_integrity >= integrity_max / 4)
+		visible_message("[src] looks like it's about to break!" )
+		update_appearance(UPDATE_ICON)
+	else if(integrity < integrity_max / 2 && initial_integrity >= integrity_max / 2)
+		visible_message("[src] looks seriously damaged!" )
+		update_appearance(UPDATE_ICON)
+	else if(integrity < integrity_max * 3/4 && initial_integrity >= integrity_max * 3/4 && integrity > 0)
+		visible_message("[src] shows signs of damage!" )
+		update_appearance(UPDATE_ICON)
 
-
-/obj/machinery/door/proc/set_broken()
+/obj/machinery/door/atom_break()
+	. = ..()
 	machine_stat |= BROKEN
 	for (var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))
 			O.show_message("[src.name] breaks!" )
 	update_icon()
-	return
 
+/obj/machinery/door/atom_fix()
+	. = ..()
+	machine_stat &= (~BROKEN)
+	update_icon()
 
 /obj/machinery/door/emp_act(severity)
 	if(prob(20/severity) && (istype(src,/obj/machinery/door/airlock) || istype(src,/obj/machinery/door/window)) )
 		spawn(0)
 			open()
 	..()
-
-
-/obj/machinery/door/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-		if(2.0)
-			if(prob(25))
-				qdel(src)
-			else
-				take_damage(300)
-		if(3.0)
-			if(prob(80))
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(2, 1, src)
-				s.start()
-			else
-				take_damage(150)
-	return
-
-/obj/machinery/door/blob_act()
-	if(density) // If it's closed.
-		if(machine_stat & BROKEN)
-			spawn(0)
-				open(1)
-		else
-			take_damage(100)
 
 /obj/machinery/door/update_icon()
 	if(density)

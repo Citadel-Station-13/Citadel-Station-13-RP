@@ -64,8 +64,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15		//Tac Knife damage
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15		//Tac Knife damage
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -147,8 +147,8 @@
 	icon_state = "syndicatemelee"
 	icon_living = "syndicatemelee"
 
-	melee_damage_lower = 30
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 50
 	attack_sharp = 1
 	attack_edge = 1
@@ -600,8 +600,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 20		//Vox Hunting rifle blade damage
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 20		//Vox Hunting rifle blade damage
+	legacy_melee_damage_upper = 20
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -654,8 +654,8 @@
 	icon_dead = "voxboarder_m_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/boarder)
 
-	melee_damage_lower = 30		//Energy sword damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30		//Energy sword damage
+	legacy_melee_damage_upper = 30
 	attack_sharp = 1
 	attack_edge = 1
 

@@ -46,8 +46,8 @@
 	// Makes their new pal big and strong, if they have spell power.
 	summoned.maxHealth = calculate_spell_power(summoned.maxHealth)
 	summoned.health = calculate_spell_power(summoned.health)
-	summoned.melee_damage_lower = calculate_spell_power(summoned.melee_damage_lower)
-	summoned.melee_damage_upper = calculate_spell_power(summoned.melee_damage_upper)
+	summoned.legacy_melee_damage_lower = calculate_spell_power(summoned.legacy_melee_damage_lower)
+	summoned.legacy_melee_damage_upper = calculate_spell_power(summoned.legacy_melee_damage_upper)
 	// This makes the summon slower, so the crew has a chance to flee from massive monsters.
 	summoned.movement_cooldown = calculate_spell_power(round(summoned.movement_cooldown))
 

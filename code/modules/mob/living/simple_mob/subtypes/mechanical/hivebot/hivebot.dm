@@ -53,8 +53,8 @@
 	desc = "A robot. It looks fragile and weak."
 	maxHealth = 1 LASERS_TO_KILL
 	health = 1 LASERS_TO_KILL
-	melee_damage_lower = 8
-	melee_damage_upper = 8
+	legacy_melee_damage_lower = 8
+	legacy_melee_damage_upper = 8
 
 /datum/ai_holder/simple_mob/hivebot
 	pointblank = TRUE

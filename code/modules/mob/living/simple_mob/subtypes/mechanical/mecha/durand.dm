@@ -34,8 +34,8 @@
 				"bio"		= 100,
 				"rad"		= 100
 				)
-	melee_damage_lower = 40
-	melee_damage_upper = 40
+	legacy_melee_damage_lower = 40
+	legacy_melee_damage_upper = 40
 	base_attack_cooldown = 2 SECONDS
 	projectiletype = /obj/projectile/beam/heavylaser
 

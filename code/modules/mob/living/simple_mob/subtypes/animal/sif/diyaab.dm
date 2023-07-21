@@ -32,8 +32,8 @@
 
 	movement_cooldown = 0
 
-	melee_damage_lower = 2
-	melee_damage_upper = 6
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 6
 	base_attack_cooldown = 1 SECOND
 	attack_sharp = 1 //Bleeds, but it shouldn't rip off a limb?
 	attacktext = list("gouged")

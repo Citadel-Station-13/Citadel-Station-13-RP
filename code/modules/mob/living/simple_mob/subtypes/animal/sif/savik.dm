@@ -34,8 +34,8 @@
 
 	movement_cooldown = 0.5 SECONDS
 
-	melee_damage_lower = 15
-	melee_damage_upper = 35
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 35
 	attack_armor_pen = 15
 	attack_sharp = TRUE
 	attack_edge = TRUE

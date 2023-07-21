@@ -20,8 +20,8 @@
 
 	maxHealth = 200
 
-	melee_damage_lower = 10
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 10
 	base_attack_cooldown = 5 // About 20 DPS.
 	attack_armor_pen = 50
 	attack_sharp = TRUE
@@ -67,8 +67,8 @@
 	icon_state = "deathripley"
 	wreckage = /obj/structure/loot_pile/mecha/deathripley
 
-	melee_damage_lower = 0
-	melee_damage_upper = 0
+	legacy_melee_damage_lower = 0
+	legacy_melee_damage_upper = 0
 	friendly = list("utterly obliterates", "furiously destroys", "permanently removes", "unflichingly decimates", "brutally murders", "absolutely demolishes", "completely annihilates")
 
 /mob/living/simple_mob/mechanical/mecha/ripley/deathripley/manned

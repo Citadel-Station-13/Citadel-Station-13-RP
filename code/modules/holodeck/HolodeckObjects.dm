@@ -445,12 +445,12 @@
 /mob/living/simple_mob/animal/space/carp/holodeck/proc/set_safety(var/safe)
 	if (safe)
 		faction = "neutral"
-		melee_damage_lower = 0
-		melee_damage_upper = 0
+		legacy_melee_damage_lower = 0
+		legacy_melee_damage_upper = 0
 	else
 		faction = "carp"
-		melee_damage_lower = initial(melee_damage_lower)
-		melee_damage_upper = initial(melee_damage_upper)
+		legacy_melee_damage_lower = initial(legacy_melee_damage_lower)
+		legacy_melee_damage_upper = initial(legacy_melee_damage_upper)
 
 /mob/living/simple_mob/animal/space/carp/holodeck/gib()
 	derez() //holograms can't gib

@@ -37,8 +37,8 @@
 
 	movement_cooldown = 5
 
-	melee_damage_lower = 6
-	melee_damage_upper = 14
+	legacy_melee_damage_lower = 6
+	legacy_melee_damage_upper = 14
 	base_attack_cooldown = 1 SECOND
 	melee_attack_delay = 0.5 SECONDS
 	attack_armor_pen = 5

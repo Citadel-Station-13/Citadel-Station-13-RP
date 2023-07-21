@@ -9,8 +9,8 @@
 	icon_living = "blobpod"
 	health = 30
 	maxHealth = 30
-	melee_damage_lower = 2
-	melee_damage_upper = 4
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 4
 	layer = MOB_LAYER + 0.2 // Over the blob.
 	attacktext = list("slams into")
 	attack_sound = 'sound/effects/slime_squish.ogg'
@@ -27,8 +27,8 @@
 	name = "fragile blob spore"
 	health = 15
 	maxHealth = 15
-	melee_damage_lower = 1
-	melee_damage_upper = 2
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 2
 
 /mob/living/simple_mob/hostile/blob/spore/Initialize(mapload, obj/structure/blob/factory/my_factory)
 	if(istype(my_factory))
@@ -95,8 +95,8 @@
 	health = maxHealth
 	name = "Infested [H.real_name]" // Not using the Z word.
 	desc = "A parasitic organism attached to a deceased body, controlling it directly as if it were a puppet."
-	melee_damage_lower += 8  // 10 total.
-	melee_damage_upper += 11 // 15 total.
+	legacy_melee_damage_lower += 8  // 10 total.
+	legacy_melee_damage_upper += 11 // 15 total.
 	emote_see = list("shambles around", "twitches", "stares")
 	attacktext = list("claws")
 

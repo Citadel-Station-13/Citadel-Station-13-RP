@@ -61,8 +61,8 @@
 	special_attack_cooldown = 10 SECONDS
 
 	response_harm = "harmlessly punches"
-	melee_damage_lower = 18
-	melee_damage_upper = 22
+	legacy_melee_damage_lower = 18
+	legacy_melee_damage_upper = 22
 
 	attacktext = list ("pulverizes", "batters", "hammers")
 	attack_sound = 'sound/weapons/punch1.ogg'
@@ -330,8 +330,8 @@
 	special_attack_cooldown = 15 SECONDS
 
 	response_harm = "kicks"
-	melee_damage_lower = 8
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 8
+	legacy_melee_damage_upper = 15
 
 	meat_amount = 1
 	bone_amount = 2

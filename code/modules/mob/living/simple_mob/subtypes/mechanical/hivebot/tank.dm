@@ -6,8 +6,8 @@
 	attacktext = list("prodded")
 	projectiletype = null // To force the AI to melee.
 	movement_cooldown = 10
-	melee_damage_lower = 3
-	melee_damage_upper = 3
+	legacy_melee_damage_lower = 3
+	legacy_melee_damage_upper = 3
 	attack_sound = 'sound/weapons/Egloves.ogg'
 
 // All tank hivebots apply a modifier to their target, and force them to attack them if they're AI controlled.
@@ -113,7 +113,7 @@
 				"bio"		= 100,
 				"rad"		= 100
 				)
-				
+
 	var/reflect_chance = 40 // Same as regular ablative.
 
 // Ablative Hivebots can reflect lasers just like humans.

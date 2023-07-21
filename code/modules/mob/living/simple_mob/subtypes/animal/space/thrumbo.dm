@@ -19,8 +19,8 @@
 	minbodytemp = 0
 	min_oxy = 0
 	attack_sharp = 1
-	melee_damage_lower = 30
-	melee_damage_upper = 50
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 50
 	attack_armor_pen = 30 //That huge horn cleaves through armor.
 	attack_sharp = TRUE //It is a pretty sharp horn.
 	attack_edge = TRUE

@@ -40,8 +40,8 @@ Divergence proc, used in mutation to make unique datums.
 	else
 		speak_chance = 0
 
-	melee_damage_lower = traitdat.get_trait(TRAIT_XENO_STRENGTH) - traitdat.get_trait(TRAIT_XENO_STR_RANGE)
-	melee_damage_upper = traitdat.traits[TRAIT_XENO_STRENGTH] + traitdat.get_trait(TRAIT_XENO_STR_RANGE)
+	legacy_melee_damage_lower = traitdat.get_trait(TRAIT_XENO_STRENGTH) - traitdat.get_trait(TRAIT_XENO_STR_RANGE)
+	legacy_melee_damage_upper = traitdat.traits[TRAIT_XENO_STRENGTH] + traitdat.get_trait(TRAIT_XENO_STR_RANGE)
 
 
 

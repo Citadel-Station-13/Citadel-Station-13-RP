@@ -42,8 +42,8 @@
 	movement_cooldown = -1
 	hovering = TRUE
 
-	melee_damage_lower = 1
-	melee_damage_upper = 2
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 2
 	attack_armor_pen = 80
 	attack_sharp = TRUE
 
@@ -75,7 +75,7 @@
 
 	movement_cooldown = -2
 
-	melee_damage_upper = 5
+	legacy_melee_damage_upper = 5
 
 	plane = ABOVE_LIGHTING_PLANE
 

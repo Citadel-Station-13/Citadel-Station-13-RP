@@ -34,12 +34,12 @@
 	return ..()
 
 // Returns true only if one of the actions unique to reinforcing is done, otherwise false and continuing normal attackby
-/obj/machinery/door/proc/attackby_vr(obj/item/I as obj, mob/user as mob)
+/obj/machinery/door/proc/attackby_vr(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/stack/material) && I.get_material_name() == "plasteel")
 		if(heat_proof)
 			to_chat(user, "<span class='warning'>\The [src] is already reinforced.</span>")
 			return TRUE
-		if((machine_stat & BROKEN) || (health < maxhealth))
+		if(machine_stat & BROKEN)
 			to_chat(user, "<span class='notice'>It looks like \the [src] broken. Repair it before reinforcing it.</span>")
 			return TRUE
 		if(!density)

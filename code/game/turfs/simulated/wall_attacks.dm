@@ -68,11 +68,11 @@
 	if(isanimal(user))
 		var/mob/living/simple_mob/S = user
 		playsound(src, S.attack_sound, 75, 1)
-		if(!(S.melee_damage_upper >= STRUCTURE_MIN_DAMAGE_THRESHOLD * 2))
+		if(!(S.legacy_melee_damage_upper >= STRUCTURE_MIN_DAMAGE_THRESHOLD * 2))
 			to_chat(user, "<span class='notice'>You bounce against the wall.</span>")
 			return FALSE
-		damage_lower = S.melee_damage_lower
-		damage_upper = S.melee_damage_upper
+		damage_lower = S.legacy_melee_damage_lower
+		damage_upper = S.legacy_melee_damage_upper
 	to_chat(user, "<span class='danger'>You smash against the wall!</span>")
 	user.do_attack_animation(src)
 	take_damage(rand(damage_lower,damage_upper))

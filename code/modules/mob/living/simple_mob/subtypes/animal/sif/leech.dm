@@ -76,8 +76,8 @@
 	movement_cooldown = 0
 	aquatic_movement = -2
 
-	melee_damage_lower = 1
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 5
 	attack_armor_pen = 15
 	attack_sharp = TRUE
 	attacktext = list("nipped", "bit", "pinched")
