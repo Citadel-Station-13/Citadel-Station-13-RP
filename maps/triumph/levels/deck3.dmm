@@ -645,8 +645,6 @@
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 4
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "azP" = (
@@ -729,7 +727,9 @@
 /turf/simulated/wall/r_wall,
 /area/maintenance/fpmaint2)
 "aDc" = (
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor/westright{
 	dir = 4;
@@ -898,13 +898,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
-"aJl" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/turf/simulated/floor/plating,
-/area/rnd/reception_desk)
 "aJF" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -2046,13 +2039,6 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/emt/general)
 "bNs" = (
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -2060,12 +2046,6 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "bNz" = (
@@ -2286,8 +2266,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "bXx" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_two)
@@ -2615,12 +2593,6 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/xenobiology)
 "coJ" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora_storage)
 "cpc" = (
@@ -3014,15 +2986,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology)
-"cEs" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced/full,
-/turf/simulated/floor/plating,
-/area/medical/psych_ward)
 "cGf" = (
 /obj/machinery/optable,
 /obj/machinery/alarm{
@@ -3057,11 +3020,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "cGY" = (
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -3069,17 +3027,9 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "cHO" = (
@@ -3519,17 +3469,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology)
 "daE" = (
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -3537,8 +3476,6 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "dbA" = (
@@ -3957,15 +3894,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
-"dvY" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced/full,
-/turf/simulated/floor/plating,
-/area/rnd/xenobiology)
 "dwW" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -4951,12 +4879,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "enj" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -5236,15 +5158,6 @@
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
-"eAL" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/rnd/reception_desk)
 "eBt" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
@@ -5348,15 +5261,6 @@
 "eEn" = (
 /turf/simulated/floor/grass,
 /area/rnd/research_foyer_auxiliary)
-"eFM" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/rnd/breakroom)
 "eGb" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -5556,16 +5460,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
-"eLU" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
-/turf/simulated/floor/plating,
-/area/rnd/reception_desk)
 "eMH" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
@@ -5601,12 +5495,6 @@
 /turf/simulated/floor/plating,
 /area/assembly/chargebay)
 "eOj" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -7306,8 +7194,6 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "goi" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/rnd/research_foyer_auxiliary)
 "goC" = (
@@ -7378,8 +7264,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "gsE" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
@@ -7699,15 +7583,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/storage)
 "gCR" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full,
-/obj/structure/curtain/black{
-	anchored = 1
-	},
 /turf/simulated/floor/plating,
 /area/rnd/hallway)
 "gDf" = (
@@ -8253,14 +8128,6 @@
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "hbo" = (
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -8268,11 +8135,6 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "hbs" = (
@@ -8316,10 +8178,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "hda" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_one)
 "hdz" = (
@@ -8579,12 +8438,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
 "hor" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -9817,15 +9670,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
 "isK" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/curtain/black{
-	anchored = 1
-	},
 /turf/simulated/floor/plating,
 /area/rnd/workshop)
 "isM" = (
@@ -10257,10 +10101,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/patient_b)
 "iTo" = (
-/obj/structure/window/reinforced/polarized/full{
-	id = "rd_office"
-	},
-/obj/structure/grille,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -10540,11 +10380,6 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "jfr" = (
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -10552,14 +10387,6 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "jfZ" = (
@@ -12472,15 +12299,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
-"kKg" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced/full,
-/turf/simulated/floor/plating,
-/area/maintenance/research)
 "kKl" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -12706,12 +12524,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "kUK" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
 /area/teleporter/departing)
 "kVJ" = (
@@ -13622,6 +13434,9 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "lRq" = (
+/obj/structure/curtain/black{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "lRv" = (
@@ -13648,18 +13463,6 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "lSq" = (
@@ -13826,12 +13629,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room/exam_2)
 "lXD" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "lYd" = (
@@ -14207,17 +14004,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "mlX" = (
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -14226,8 +14012,6 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "mmr" = (
@@ -14712,8 +14496,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "mGq" = (
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /obj/structure/sign/warning/caution,
 /turf/simulated/floor/plating,
 /area/rnd/test_area)
@@ -14911,8 +14693,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "mNz" = (
@@ -14981,15 +14761,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
-"mQw" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced/full,
-/turf/simulated/floor/plating,
-/area/maintenance/research)
 "mQO" = (
 /obj/machinery/door/firedoor{
 	dir = 2
@@ -16982,12 +16753,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "oBy" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab)
 "oBA" = (
@@ -17085,10 +16850,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "oEF" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/phoronreinforced/full,
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
 	dir = 4
@@ -17943,23 +17704,12 @@
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
 "pjI" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /turf/simulated/floor/plating,
 /area/rnd/reception_desk)
 "pjO" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "pjX" = (
@@ -18033,15 +17783,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
 "poi" = (
-/obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -18050,12 +17793,6 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "poz" = (
@@ -19568,9 +19305,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "qon" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora)
 "qoo" = (
@@ -19700,10 +19434,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "qwx" = (
-/obj/structure/window/reinforced/polarized/full{
-	id = "rd_office"
-	},
-/obj/structure/grille,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -20609,8 +20339,6 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "rbr" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
@@ -20891,10 +20619,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "rmJ" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "rmS" = (
@@ -20962,12 +20686,6 @@
 /turf/simulated/floor/tiled,
 /area/medical/sleeper)
 "roB" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -21620,15 +21338,8 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "rNQ" = (
-/obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -21637,12 +21348,6 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "rOC" = (
@@ -23399,21 +23104,9 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "tkv" = (
@@ -25234,13 +24927,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
 "uHZ" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -25249,11 +24935,6 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "uIG" = (
@@ -25270,12 +24951,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "uII" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced/full,
 /obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/plating,
 /area/rnd/test_area)
@@ -25341,11 +25016,6 @@
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "uML" = (
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -25353,14 +25023,6 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "uMZ" = (
@@ -26172,12 +25834,6 @@
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
 "vsJ" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
 /area/medical/psych_ward)
 "vsO" = (
@@ -26780,9 +26436,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "vYL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_one)
 "vYM" = (
@@ -27123,8 +26776,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "wlL" = (
@@ -27260,15 +26911,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
-"wpm" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced/full,
-/turf/simulated/floor/plating,
-/area/maintenance/medbay/aft)
 "wpC" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -27800,15 +27442,6 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
-"wLe" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/rnd/breakroom)
 "wLq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -27856,12 +27489,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/fore)
 "wME" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /turf/simulated/floor/plating,
 /area/rnd/breakroom)
 "wNb" = (
@@ -28101,14 +27728,6 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "wTt" = (
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -28116,11 +27735,6 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "wTy" = (
@@ -28689,15 +28303,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
-"xvY" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced/full,
-/turf/simulated/floor/plating,
-/area/rnd/xenobiology/xenoflora)
 "xwd" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -29139,14 +28744,6 @@
 /turf/simulated/wall,
 /area/medical/patient_c)
 "xNz" = (
-/obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -29155,11 +28752,6 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "xNB" = (
@@ -31320,8 +30912,8 @@ oHo
 oHo
 oHo
 oHo
-cEs
-cEs
+vsJ
+vsJ
 oHo
 oHo
 oHo
@@ -31745,7 +31337,7 @@ jWw
 oHo
 oHo
 oHo
-uXJ
+vsJ
 cOK
 cOK
 cOK
@@ -31850,12 +31442,12 @@ bdR
 gVh
 gVh
 slN
-mQw
+sQl
 slN
 slN
 slN
-mQw
-mQw
+sQl
+sQl
 slN
 slN
 slN
@@ -31867,9 +31459,9 @@ nhq
 nhq
 nhq
 nhq
-wpm
-wpm
-wpm
+lsY
+lsY
+lsY
 nhq
 nhq
 nhq
@@ -31887,7 +31479,7 @@ cmO
 gsx
 vOG
 czx
-uXJ
+vsJ
 pgR
 vOF
 jLU
@@ -32029,14 +31621,14 @@ fqy
 duR
 cOK
 kPU
-uXJ
+vsJ
 rbt
 ncu
 wKE
 pah
 pJA
 nZs
-uXJ
+vsJ
 gVh
 gVh
 gVh
@@ -32171,14 +31763,14 @@ uTo
 cOK
 sDI
 goc
-uXJ
+vsJ
 wwW
 xkO
 pGm
 wby
 pJA
 pyT
-uXJ
+vsJ
 gVh
 gVh
 gVh
@@ -32313,14 +31905,14 @@ kDq
 cOK
 nRA
 rat
-uXJ
+vsJ
 fxC
 hpF
 pyt
 pah
 pJA
 pyT
-uXJ
+vsJ
 gVh
 gVh
 gVh
@@ -32455,7 +32047,7 @@ qiN
 qig
 nRA
 rat
-uXJ
+vsJ
 pBu
 hpF
 hSc
@@ -32597,7 +32189,7 @@ bIM
 jfZ
 aFS
 mok
-uXJ
+vsJ
 puT
 oro
 vWw
@@ -32739,7 +32331,7 @@ asO
 cOK
 cOK
 kPU
-uXJ
+vsJ
 sig
 xFV
 xFV
@@ -32881,7 +32473,7 @@ rbK
 xkL
 gDf
 nFy
-uXJ
+vsJ
 trk
 asd
 asd
@@ -34526,7 +34118,7 @@ gVh
 pYD
 gVh
 gVh
-dvY
+rmJ
 xDW
 xDW
 lSq
@@ -34668,7 +34260,7 @@ gVh
 pYD
 gVh
 gVh
-dvY
+rmJ
 tPc
 xDW
 lSq
@@ -34952,7 +34544,7 @@ gVh
 bdR
 gVh
 gVh
-dvY
+rmJ
 sSY
 vYE
 vpv
@@ -35094,7 +34686,7 @@ gVh
 bdR
 gVh
 gVh
-dvY
+rmJ
 lNY
 pgP
 yki
@@ -36514,7 +36106,7 @@ gVh
 gVh
 pYD
 gVh
-xvY
+qon
 pAW
 jcC
 wFx
@@ -36800,10 +36392,10 @@ pYD
 gVh
 dXj
 gsE
-gsE
-gsE
+lXD
+lXD
 sFS
-gsE
+lXD
 oje
 dXj
 oZO
@@ -38815,11 +38407,11 @@ vdi
 xBB
 jdj
 fAJ
-eAL
-eLU
+pjI
+pjI
 aDc
 pjI
-eAL
+pjI
 fAJ
 fAJ
 wBx
@@ -39105,7 +38697,7 @@ tkF
 nuY
 nuY
 hWP
-aJl
+pjI
 tHx
 lRv
 jlX
@@ -39247,7 +38839,7 @@ pXD
 nuY
 nuY
 rgV
-aJl
+pjI
 wCQ
 tLO
 ecA
@@ -39389,7 +38981,7 @@ qyK
 gJF
 kzQ
 jPJ
-aJl
+pjI
 wCQ
 dem
 pKw
@@ -39531,7 +39123,7 @@ nuY
 nuY
 nuY
 swb
-aJl
+pjI
 wCQ
 jhw
 pKw
@@ -40368,11 +39960,11 @@ cXH
 ycY
 pqs
 izT
-eFM
-eFM
-wLe
+wME
+wME
+wME
 izT
-wLe
+wME
 htI
 izT
 pPC
@@ -42207,8 +41799,8 @@ gzi
 fRr
 xAj
 slN
-kKg
-kKg
+sQl
+sQl
 vGB
 qwx
 iTo
