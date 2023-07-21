@@ -66,13 +66,8 @@
 				return
 			if(INTENT_HARM)
 				H.do_attack_animation(src)
-				if(H.species.can_shred(H))
-					attack_generic(H, rand(15,20), "slashed")
-					return
-				else
-					playsound(src.loc, 'sound/effects/bang.ogg', 10, 1)
-					visible_message("<span class='warning'>[H] punches [src], but doesn't leave a dent.</span>")
-					return
+				attack_generic(H, rand(15,20), "slashed")
+				return
 			if(INTENT_DISARM)
 				H.do_attack_animation(src)
 				playsound(src.loc, 'sound/effects/clang1.ogg', 10, 1)
