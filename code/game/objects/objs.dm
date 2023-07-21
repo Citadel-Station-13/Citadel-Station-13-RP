@@ -67,7 +67,7 @@
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Use [MATERIAL_DEFAULT_DISABLED] if something doesn't use material parts system.
 	/// * Use [MATERIAL_DEFAULT_NONE] if something uses material parts system, but has only one material with default of null.
-	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
+	/// * This may use typepath keys at compile time, but is immediately converted to material instances on boot.
 	/// * Always use [get_material_parts] to get this list unless you know what you're doing.
 	/// * This var should never be changed from a list to a normal value or vice versa at runtime,
 	///   as we use this to detect which material update proc to call!

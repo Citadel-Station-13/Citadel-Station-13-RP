@@ -1,39 +1,3 @@
-/*
-	MATERIAL DATUMS
-	This data is used by various parts of the game for basic physical properties and behaviors
-	of the metals/materials used for constructing many objects. Each var is commented and should be pretty
-	self-explanatory but the various object types may have their own documentation. ~Z
-
-	PATHS THAT USE DATUMS
-		turf/simulated/wall
-		obj/item/material
-		obj/structure/barricade
-		obj/item/stack/material
-		obj/structure/table
-
-	VALID ICONS
-		WALLS
-			stone
-			metal
-			solid
-			resin
-			ONLY WALLS
-				cult
-				hull
-				curvy
-				jaggy
-				brick
-				REINFORCEMENT
-					reinf_over
-					reinf_mesh
-					reinf_cult
-					reinf_metal
-		DOORS
-			stone
-			metal
-			resin
-			wood
-*/
 
 // todo: put everything into their own files
 

@@ -136,10 +136,10 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	src.add_fingerprint(user, 0, I)
-	if(istype(C, /obj/item)) // For reasons unknown, sometimes C is actually not what it is advertised as, like a mob.
-		if(C.pry == 1 && (user.a_intent != INTENT_HARM || (machine_stat & BROKEN))) // Can we pry it open with something, like a crowbar/fireaxe/lingblade?
+	if(istype(CI, /obj/item)) // For reasons unknown, sometimes C is actually not what it is advertised as, like a mob.
+		if(I.pry == 1 && (user.a_intent != INTENT_HARM || (machine_stat & BROKEN))) // Can we pry it open with something, like a crowbar/fireaxe/lingblade?
 			if(istype(C,/obj/item/material/twohanded/fireaxe)) // Fireaxes need to be in both hands to pry.
-				var/obj/item/material/twohanded/fireaxe/F = C
+				var/obj/item/material/twohanded/fireaxe/F = I
 				if(!F.wielded)
 					to_chat(user, "<span class='warning'>You need to be wielding \the [F] to do that.</span>")
 					return

@@ -387,8 +387,8 @@
 
 	step_in = 3 //slightly slower than a baron (this shit doesnt actually work atm, likely due to the whole equipment weight nonsense)
 
-	health = 800
-	maxhealth = 800 //double baron HP, only room for one defensive upgrade. No specials(cloaking, speed, ect) or universals.
+	integrity = 800
+	integrity_max = 800 //double baron HP, only room for one defensive upgrade. No specials(cloaking, speed, ect) or universals.
 
 	max_hull_equip = 1
 	max_weapon_equip = 4
