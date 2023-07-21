@@ -108,7 +108,7 @@
 			if(null)
 				succeeded = FALSE
 			else
-				succeeded = H.equip_to_slot_if_possible(instanced, use_slot, INV_OP_SILENT | INV_OP_DISALLOW_DELAY)
+				succeeded = H.equip_to_slot_if_possible(instanced, use_slot, INV_OP_SILENT | INV_OP_FLUFFLESS)
 		if(!succeeded)
 			overflow[instanced] = use_slot
 		else
@@ -120,7 +120,7 @@
 		var/slot = overflow[instance]
 		if(isnull(slot))
 			continue
-		if(character.equip_to_slot_if_possible(instance, slot, INV_OP_SILENT | INV_OP_DISALLOW_DELAY))
+		if(character.equip_to_slot_if_possible(instance, slot, INV_OP_SILENT | INV_OP_FLUFFLESS))
 			overflow -= instance
 			if(!(flags & PREF_COPY_TO_SILENT))
 				to_chat(character, SPAN_NOTICE("Equipping you with \the [instance]"))
