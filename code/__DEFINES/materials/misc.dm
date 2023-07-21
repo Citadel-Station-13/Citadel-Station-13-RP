@@ -67,3 +67,5 @@
 #define MATERIAL_DEFAULT_NONE null
 /// material_defaults value for object does not use material parts system
 #define MATERIAL_DEFAULT_DISABLED FALSE
+/// material ID to pass to Initialize() procs for "erase the default material of this slot"
+#define MATERIAL_ID_ERASE "___ERASE___"

@@ -27,8 +27,8 @@ var/list/table_icon_cache = list()
 		"reinf" = null,
 	)
 	material_costs = list(
-		2 * SHEET_MATERIAL_AMOUNT,
-		2 * SHEET_MATERIAL_AMOUNT,
+		1 * SHEET_MATERIAL_AMOUNT,
+		1 * SHEET_MATERIAL_AMOUNT,
 	)
 
 	var/flipped = 0
@@ -50,6 +50,40 @@ var/list/table_icon_cache = list()
 	var/item_place = TRUE
 	/// Do people pixel-place items or center place?
 	var/item_pixel_place = TRUE
+
+/obj/structure/table/Initialize(mapload, datum/material/base = material_defaults[1], datum/material/reinforcing = material_defaults[2])
+	set_material_parts(list("base" = base, "reinf" = reinforcing))
+	. = ..()
+
+	// One table per turf.
+	for(var/obj/structure/table/T in loc)
+		if(T != src)
+			// There's another table here that's not us, break to metal.
+			// break_to_parts calls qdel(src)
+			break_to_parts(full_return = 1)
+			return
+
+	// reset color/alpha, since they're set for nice map previews
+	color = "#ffffff"
+	alpha = 255
+	if(mapload)		// screw off
+		return INITIALIZE_HINT_LATELOAD
+	else
+		update_connections(TRUE)
+		update_icon()
+		update_desc()
+
+/obj/structure/table/LateInitialize()		// CURSE YOU DUMB AS ROCKS MATERIAL SYSTEM
+	. = ..()
+	update_connections(FALSE)
+	update_icon()
+	update_desc()
+
+/obj/structure/table/Destroy()
+	material = null
+	reinforced = null
+	update_connections(TRUE) // Update tables around us to ignore us (material=null forces no connections)
+	. = ..()
 
 /obj/structure/table/proc/update_material()
 	var/old_maxhealth = maxhealth
@@ -78,42 +112,6 @@ var/list/table_icon_cache = list()
 
 /obj/structure/table/blob_act()
 	take_damage(100)
-
-/obj/structure/table/Initialize(mapload)
-	. = ..()
-
-	// One table per turf.
-	for(var/obj/structure/table/T in loc)
-		if(T != src)
-			// There's another table here that's not us, break to metal.
-			// break_to_parts calls qdel(src)
-			break_to_parts(full_return = 1)
-			return
-
-	// reset color/alpha, since they're set for nice map previews
-	color = "#ffffff"
-	alpha = 255
-	if(mapload)		// screw off
-		return INITIALIZE_HINT_LATELOAD
-	else
-		update_connections(TRUE)
-		update_icon()
-		update_desc()
-		update_material()
-
-
-/obj/structure/table/LateInitialize()		// CURSE YOU DUMB AS ROCKS MATERIAL SYSTEM
-	. = ..()
-	update_connections(FALSE)
-	update_icon()
-	update_desc()
-	update_material()
-
-/obj/structure/table/Destroy()
-	material = null
-	reinforced = null
-	update_connections(TRUE) // Update tables around us to ignore us (material=null forces no connections)
-	. = ..()
 
 /obj/structure/table/examine(mob/user, dist)
 	. = ..()
