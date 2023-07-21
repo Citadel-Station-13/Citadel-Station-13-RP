@@ -56,14 +56,22 @@
 	/// * Always use get_materials to get this list unless you know what you're doing.
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
 	var/list/materials
-	/// material parts - lets us track the costs of what we're made of.
+	/// material parts - lets us track what we're made of
+	/// key = material id
+	/// this is either a lazy list of key to material ids,
+	/// or a single material id
+	/// or null for defaults.
+	/// * This should never specified at compile time, and is instead created on init. Use [material_defaults].
+	/// * Always use get_material_parts to get this list unless you know what you're doing.
+	var/list/material_parts
+	/// material costs - lets us track the costs of what we're made of.
 	/// key = cost in cm3
 	/// this is either a lazy list of part names to costs in cm3,
 	/// or a single number.
 	/// * This may be a typelist, use is_typelist to check.
-	/// * Always use get_material_parts to get this list unless you know what you're doing.
+	/// * Always use get_material_costs to get this list unless you know what you're doing.
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
-	var/list/material_parts
+	var/list/material_costs
 	/// material parts on spawn
 	/// key = material id
 	/// this is either a lazy list of key to material ids,
@@ -109,11 +117,11 @@
 			// preprocess
 			materials = SSmaterials.preprocess_kv_keys_to_ids(materials)
 			materials = typelist(NAMEOF(src, materials), materials)
-	if(islist(material_parts))
-		if(has_typelist(material_parts))
-			material_parts = get_typelist(material_parts)
+	if(islist(material_costs))
+		if(has_typelist(material_costs))
+			material_costs = get_typelist(material_costs)
 		else
-			material_parts = typelist(NAMEOF(src, material_parts), material_parts)
+			material_costs = typelist(NAMEOF(src, material_costs), material_costs)
 	if(!isnull(material_defaults))
 		if(islist(material_defaults))
 			if(has_typelist(material_defaults))
@@ -442,7 +450,7 @@
  * return key-value associative list of part name to cost
  */
 /obj/proc/detect_material_part_costs()
-	return get_material_parts()
+	return get_material_costs()
 
 /**
  * autodetect proc used by lathes
@@ -487,8 +495,7 @@
  * this is usually done in init using init_materials
  */
 /obj/proc/set_material_parts(list/parts)
-	return
-#warn does not update?
+	#warn uh oh
 
 /**
  * get material parts
@@ -497,6 +504,23 @@
 	if(isnull(material_parts))
 		return material_parts.Copy()
 	return islist(material_parts)? material_parts.Copy() : list(MATERIAL_PART_DEFAULT = material_parts)
+	#warn uh oh
+
+/**
+ * get the only material we're made out of, or first material part
+ */
+/obj/proc/get_primary_material()
+	if(isnull(material_parts))
+		return islist(material_defaults)? material_defaults[material_defaults[1]] : material_defaults
+	return islist(material_parts)? material_parts[material_parts[1]] : material_parts
+
+/**
+ * get material costs
+ */
+/obj/proc/get_material_costs()
+	if(isnull(material_costs))
+		return material_costs.Copy()
+	return islist(material_costs)? material_costs.Copy() : list(MATERIAL_PART_DEFAULT = material_costs)
 
 /**
  * get material defaults

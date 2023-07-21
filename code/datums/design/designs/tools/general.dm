@@ -74,6 +74,7 @@
 	material_parts = list(
 		"tip" = 250
 	)
+	#warn do on obj side
 
 /datum/design/tool/prybar
 	id = "ToolPrybar"

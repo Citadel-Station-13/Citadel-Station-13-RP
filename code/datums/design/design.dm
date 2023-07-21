@@ -48,7 +48,7 @@
 	/// the key will be fed into print() during creation with the material id the user picked
 	/// autodetected if null.
 	/// this should obviously match material_parts on the /obj in question.
-	var/list/material_parts
+	var/list/material_costs
 	/// Items needed, as ingredients list - see [code/__HELPERS/datastructs/ingredients.dm]
 	var/list/ingredients
 	/// list of reagents needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
@@ -78,10 +78,10 @@
 		var/list/fetched = instance.detect_material_base_costs()
 		if(length(fetched))
 			materials = fetched
-	if(isnull(material_parts))
+	if(isnull(material_costs))
 		var/list/fetched = instance.detect_material_part_costs()
 		if(length(fetched))
-			material_parts = fetched
+			material_costs = fetched
 	if(isnull(reagents))
 		// if(!isnull(instance.reagents))
 			// reagents = instance.reagents.Copy()
@@ -116,7 +116,7 @@
 		"work" = work,
 		"category" = category,
 		"materials" = length(materials)? materials : null,
-		"material_parts" = length(material_parts)? material_parts : null,
+		"material_parts" = length(material_costs)? material_costs : null,
 		"reagents" = length(reagents)? reagents : null,
 		"ingredients" = length(ingredients)? ingredients : null,
 		"resultItem" = list(
@@ -172,8 +172,8 @@
 	if(isobj(created))
 		var/obj/O = created
 		var/list/effective_materials = materials.Copy()
-		for(var/key in material_parts)
-			effective_materials[material_parts[key]] += src.material_parts[key]
+		for(var/key in material_costs)
+			effective_materials[material_parts[key]] += src.material_costs[key]
 		if(cost_multiplier != 1)
 			for(var/key in effective_materials)
 				effective_materials[key] *= cost_multiplier

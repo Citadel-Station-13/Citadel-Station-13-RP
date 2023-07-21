@@ -10,3 +10,4 @@
 	material_parts = list(
 		"blade" = 3000,
 	)
+	#warn do on obj side

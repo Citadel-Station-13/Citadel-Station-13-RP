@@ -280,9 +280,9 @@
 	. = INFINITY
 	if(length(instance.materials))
 		var/list/materials = instance.materials.Copy()
-		for(var/key in instance.material_parts)
+		for(var/key in instance.material_costs)
 			var/id = material_parts[key]
-			materials[id] += instance.material_parts[key]
+			materials[id] += instance.material_costs[key]
 		. = stored_materials.has_multiple(materials, efficiency_multiplier)
 	if(!.)
 		return
@@ -343,7 +343,7 @@
 		return
 	var/list/materials_used = instance.materials?.Copy() || list()
 	for(var/key in material_parts)
-		materials_used[material_parts[key]] += instance.material_parts[key]
+		materials_used[material_parts[key]] += instance.material_costs[key]
 	use_resources(materials_used, instance.reagents, instance.ingredients, ingredient_parts, amount * efficiency)
 	. = instance.lathe_print(drop_location(), amount, material_parts, ingredient_parts, null, src, efficiency_multiplier)
 	if(!isnull(print_icon_state))
@@ -480,8 +480,8 @@
  * amount variable is reserved but unused at this given time.
  */
 /obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts, list/ingredient_parts, start_immediately)
-	if(instance.material_parts)
-		for(var/key in instance.material_parts)
+	if(!isnull(instance.material_costs))
+		for(var/key in instance.material_costs)
 			if(!material_parts[key])
 				return FALSE
 	var/datum/lathe_queue_entry/last = length(queue)? queue[length(queue)] : null
