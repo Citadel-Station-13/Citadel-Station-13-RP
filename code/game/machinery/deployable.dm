@@ -16,7 +16,7 @@ Barricades
 	integrity = 200
 	integrity_max = 200
 
-	var/datum/material/material
+	material_defaults = MAT_WOOD
 
 /obj/structure/barricade/Initialize(mapload, material_name)
 	. = ..()

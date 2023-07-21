@@ -54,6 +54,7 @@
 	/// material id = amount
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Always use get_materials to get this list unless you know what you're doing.
+	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
 	var/list/materials
 	/// material parts - lets us track what we're made of.
 	/// key = cost in cm3
@@ -61,6 +62,7 @@
 	/// or a single number.
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Always use get_material_parts to get this list unless you know what you're doing.
+	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
 	var/list/material_parts
 	/// material parts on spawn
 	/// key = material id
@@ -68,6 +70,7 @@
 	/// or a single material id
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Always use get_material_defaults to get this list unless you know what you're doing.
+	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
 	var/list/material_defaults
 
 	//? Sounds
@@ -100,12 +103,25 @@
 		register_dangerous_to_step()
 	. = ..()
 	if(!isnull(materials))
-		materials = typelist(NAMEOF(src, materials), materials)
+		if(has_typelist(materials))
+			materials = get_typelist(materials)
+		else
+			// preprocess
+			materials = SSmaterials.preprocess_kv_keys_to_ids(materials)
+			materials = typelist(NAMEOF(src, materials), materials)
 	if(islist(material_parts))
-		material_parts = typelist(NAMEOF(src, material_parts), material_parts)
+		if(has_typelist(material_parts))
+			material_parts = get_typelist(material_parts)
+		else
+			material_parts = typelist(NAMEOF(src, material_parts), material_parts)
 	if(!isnull(material_defaults))
 		if(islist(material_defaults))
-			material_defaults = typelist(NAMEOF(src, material_defaults), material_defaults)
+			if(has_typelist(material_defaults))
+				material_defaults = get_typelist(material_defaults)
+			else
+				// preprocess
+				material_defaults = SSmaterials.preprocess_kv_values_to_ids(material_defaults)
+				material_defaults = typelist(NAMEOF(src, material_defaults), material_defaults)
 		init_material_parts()
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")

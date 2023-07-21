@@ -60,6 +60,30 @@ SUBSYSTEM_DEF(materials)
 		CRASH("tried to fetch neither a text string (id) or a typepath (compiled in material type)")
 
 /**
+ * ensures a list is full of material ids for keys
+ */
+/datum/controller/subsystem/materials/proc/preprocess_kv_keys_to_ids(list/L)
+	#warn impl
+
+/**
+ * ensures a list is full of material references for keys
+ */
+/datum/controller/subsystem/materials/proc/preprocess_kv_keys_to_instances(list/L)
+	#warn impl
+
+/**
+ * ensures a list is full of material ids for values
+ */
+/datum/controller/subsystem/materials/proc/preprocess_kv_values_to_ids(list/L)
+	#warn impl
+
+/**
+ * ensures a list is full of material references for values
+ */
+/datum/controller/subsystem/materials/proc/preprocess_kv_values_to_instances(list/L)
+	#warn impl
+
+/**
  * returns all material datums
  *
  * expensive (duh) use sparingly
