@@ -245,10 +245,7 @@
 	if((user == usr && (!( usr.restrained() ) && (!( usr.stat ) && (usr.contents.Find(src) || in_range(src, usr))))))
 		if(!istype(usr, /mob/living/simple_mob))
 			if( !usr.get_active_held_item() )		//if active hand is empty
-				var/mob/living/carbon/human/H = user
-				var/obj/item/organ/external/temp = H.get_active_hand_organ()
-				if(temp && !temp.is_usable())
-					to_chat(user,"<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+				if(!user.standard_hand_usability_check(src, user.active_hand, HAND_MANIPULATION_GENERAL))
 					return
 
 				to_chat(user,"<span class='notice'>You pick up [src].</span>")
@@ -258,10 +255,7 @@
 	if((user == usr && (!( usr.restrained() ) && (!( usr.stat ) && (usr.contents.Find(src) || in_range(src, usr))))))
 		if(!istype(usr, /mob/living/simple_mob))
 			if( !usr.get_active_held_item() )		//if active hand is empty
-				var/mob/living/carbon/human/H = user
-				var/obj/item/organ/external/temp = H.get_active_hand_organ()
-				if(temp && !temp.is_usable())
-					to_chat(user,"<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+				if(!user.standard_hand_usability_check(src, user.active_hand, HAND_MANIPULATION_GENERAL))
 					return
 
 				to_chat(user,"<span class='notice'>You pick up [src].</span>")

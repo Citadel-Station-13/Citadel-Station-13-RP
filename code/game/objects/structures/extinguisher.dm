@@ -48,9 +48,8 @@
 /obj/structure/extinguisher_cabinet/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(isrobot(user))
 		return
-	if(!user.is_hand_functional(e_args.hand_index, TRUE))
-		user.action_feedback(SPAN_WARNING(user.get_hand_fail_message(e_args.hand_index)), src)
-		return TRUE
+	if(!user.standard_hand_usability_check(src, e_args.hand_index, HAND_MANIPULATION_GENERAL))
+		return
 	if(has_extinguisher)
 		user.put_in_hands_or_drop(has_extinguisher)
 		to_chat(user, "<span class='notice'>You take [has_extinguisher] from [src].</span>")

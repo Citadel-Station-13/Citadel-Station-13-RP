@@ -301,9 +301,8 @@
 		return FALSE
 
 	var/hand_index = isnull(e_args)? active_hand : e_args.hand_index
-	if(!user.is_hand_functional(isnull(e_args)? active_hand : e_args.hand_index))
-		user.action_feedback(SPAN_WARNING(user.get_hand_fail_message(hand_index)), src)
-		return FALSE
+	if(!user.standard_hand_usability_check(src, hand_index, HAND_MANIPULATION_GENERAL))
+		return
 
 	var/old_loc = src.loc
 

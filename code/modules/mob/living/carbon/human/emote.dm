@@ -806,7 +806,7 @@
 
 		if ("handshake")
 			m_type = 1
-			if (!src.restrained() && !src.r_hand)
+			if (!restrained() && !hands_full())
 				var/mob/living/M = null
 				if (param)
 					for (var/mob/living/A in view(1, null))

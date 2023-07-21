@@ -61,6 +61,8 @@
 //* Hands *//
 
 /mob/proc/swap_hand(to_index)
+	#warn all of this doesn't properly support multi-user.
+
 	var/obj/item/was_active = length(held_items) <= active_hand? held_items[active_hand] : null
 	var/old_index = active_hand
 
@@ -98,7 +100,7 @@
 /mob/proc/get_hand_organ(index)
 	return null
 
-/mob/proc/is_hand_functional(index, fine_manipulation)
+/mob/proc/is_hand_functional(index, manipulation_level)
 	return TRUE
 
 /mob/proc/get_hand_index_of_organ(obj/item/organ/external/organ)
@@ -116,9 +118,16 @@
 /mob/proc/get_arm_organ(index)
 	return null
 
-/mob/proc/get_hand_fail_message(index)
+/mob/proc/get_hand_fail_message(index, manipulation_level)
 	return "You try to move your [get_generalized_hand_name(index)], and should be able to, but can't. Report this to coders!"
 
 /mob/proc/get_generalized_hand_name(index)
 	var/number_on_side = round(index / 2)
 	return "[index % 2? "left" : "right"] hand[number_on_side > 1 && " #[number_on_side]"]"
+
+
+//* Hands - Helpers *//
+
+/mob/proc/standard_hand_usability_check(atom/target, hand_index, manipulation_level)
+	if(!is_hand_functional(hand_index, manipulation_level))
+		action_feedback(SPAN_WARNING(get_hand_fail_message(hand_index, manipulation_level)), target)

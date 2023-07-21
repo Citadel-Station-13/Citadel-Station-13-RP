@@ -221,6 +221,7 @@
 #include "code\__DEFINES\mobs\actions.dm"
 #include "code\__DEFINES\mobs\characteristics.dm"
 #include "code\__DEFINES\mobs\grab.dm"
+#include "code\__DEFINES\mobs\hands.dm"
 #include "code\__DEFINES\mobs\health.dm"
 #include "code\__DEFINES\mobs\intent.dm"
 #include "code\__DEFINES\mobs\mobility.dm"

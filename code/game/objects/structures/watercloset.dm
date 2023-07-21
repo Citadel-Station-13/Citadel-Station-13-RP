@@ -387,9 +387,8 @@
 	thing.update_icon()
 
 /obj/structure/sink/attack_hand(mob/user, datum/event_args/clickchain/e_args)
-	if(!user.is_hand_functional(e_args.hand_index, FALSE))
-		user.action_feedback(SPAN_WARNING(user.get_hand_fail_message(e_args.hand_index)), src)
-		return TRUE
+	if(!user.standard_hand_usability_check(src, e_args.hand_index, HAND_MANIPULATION_GENERAL))
+		return
 
 	if(isrobot(user) || isAI(user))
 		return

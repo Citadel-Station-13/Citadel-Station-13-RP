@@ -37,9 +37,9 @@ Gunshots/explosions/opening doors/less rare audio (done)
 				//to_chat(src, "Traitor Items")
 				if(!halitem)
 					halitem = new
-					var/list/slots_free = list(ui_lhand,ui_rhand)
-					if(l_hand) slots_free -= ui_lhand
-					if(r_hand) slots_free -= ui_rhand
+					var/list/slots_free = list()
+					for(var/i in get_empty_hand_indices())
+						slots_free += SCREEN_LOC_INV_HAND(i)
 					if(istype(src,/mob/living/carbon/human))
 						var/mob/living/carbon/human/H = src
 						if(!H.belt) slots_free += ui_belt

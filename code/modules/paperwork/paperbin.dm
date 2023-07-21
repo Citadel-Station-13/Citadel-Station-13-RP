@@ -25,9 +25,8 @@
 		to_chat(user, "<span class='notice'>You pick up the [src].</span>")
 
 /obj/item/paper_bin/attack_hand(mob/user, datum/event_args/clickchain/e_args)
-	if(!user.is_hand_functional(e_args.hand_index))
-		user.action_feedback(SPAN_WARNING(user.get_hand_fail_message(e_args.hand_index)), src)
-		return TRUE
+	if(!user.standard_hand_usability_check(src, e_args.hand_index, HAND_MANIPULATION_GENERAL))
+		return
 
 	var/response = ""
 	if(!papers.len)

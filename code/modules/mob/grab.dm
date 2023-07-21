@@ -7,14 +7,31 @@
 	for(var/obj/item/grab/G in get_held_items())
 		.[G.affecting] = G.state
 
+
 /**
- * returns everyone we're grabbing, recursively; this can include ourselves!
+ * returns everyone we're grabbing, recursively, associated to grab state; this can include ourselves!
  */
 /mob/proc/grabbing_recursive(list/L = list())
 	RETURN_TYPE(/list)
 	. = L
 	for(var/obj/item/grab/G in get_held_items())
+		if(.[G.affecting] >= G.state)
+			continue
 		.[G.affecting] = max(.[G.affecting], G.state)
+		grabbing_recursive(G.affecting)
+
+/**
+ * returns everyone we're grabbing, recursively; this can include ourselves!
+ */
+/mob/proc/grabbing_recursive(list/L = list())
+	RETURN_TYPE(/list)
+	if(src in L)
+		return
+	. = L
+	for(var/obj/item/grab/G in get_held_items())
+		if(G.affecting in .)
+			continue
+		. |= G.affecting
 		grabbing_recursive(G.affecting)
 
 /**

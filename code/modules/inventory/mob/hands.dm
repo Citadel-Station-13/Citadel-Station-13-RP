@@ -244,6 +244,24 @@
 	return .? . : null
 
 /**
+ * get full indices
+ */
+/mob/proc/get_full_hand_indices()
+	. = list()
+	for(var/i in 1 to length(held_items))
+		if(!isnull(held_items[i]))
+			. += i
+
+/**
+ * get empty indices
+ */
+/mob/proc/get_empty_hand_indices()
+	. = list()
+	for(var/i in 1 to length(held_items))
+		if(isnull(held_items[i]))
+			. += i
+
+/**
  * returns held item in active hand
  */
 /mob/proc/get_active_held_item()
