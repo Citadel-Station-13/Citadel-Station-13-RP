@@ -83,7 +83,7 @@
 	if(isnull(snowflake_worn_state))
 		snowflake_worn_state = item_state_slots?[SLOT_ID_UNIFORM] || item_state || icon_state
 	var/mob/living/carbon/human/H = loc
-	init_sensors(istype(H)? H : null)
+	addtimer(CALLBACK(src, PROC_REF(init_sensors), H), 0)
 
 /obj/item/clothing/under/proc/init_sensors(mob/living/carbon/human/H)
 	if(has_sensors == UNIFORM_HAS_LOCKED_SENSORS)
