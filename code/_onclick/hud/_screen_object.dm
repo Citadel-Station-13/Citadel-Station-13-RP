@@ -23,7 +23,7 @@
 /**
  * called to resync to a hud_style datum
  */
-/atom/movable/screen/proc/sync_style(datum/hud_style/style)
+/atom/movable/screen/proc/sync_style(datum/hud_style/style, alpha, color)
 	return
 
 /atom/movable/screen/text

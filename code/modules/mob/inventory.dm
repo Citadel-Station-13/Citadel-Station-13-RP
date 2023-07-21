@@ -61,7 +61,29 @@
 //* Hands *//
 
 /mob/proc/swap_hand(to_index)
-	#warn impl
+	var/obj/item/was_active = length(held_items) <= active_hand? held_items[active_hand] : null
+	var/old_index = active_hand
+
+	if(isnull(to_index))
+		if(active_hand >= length(held_items))
+			active_hand = length(held_items)? 1 : null
+		else
+			++active_hand
+	else
+		if(to_index > length(held_items))
+			return FALSE
+		active_hand = to_index
+
+	. = TRUE
+
+	inventory?.hud?.swap_active_hand(old_index, active_hand)
+
+	//! LEGACY
+	// We just swapped hands, so the thing in our inactive hand will notice it's not the focus
+	if(!isnull(was_active))
+		if(was_active.zoom)
+			was_active.zoom()
+	//! End
 
 /mob/proc/get_active_hand_organ_key()
 	return null

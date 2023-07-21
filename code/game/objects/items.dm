@@ -286,36 +286,29 @@
 			. = ""
 
 /obj/item/attack_hand(mob/user, datum/event_args/clickchain/e_args)
-	attempt_pickup(user)
+	attempt_pickup(user, e_args)
 
-/obj/item/proc/attempt_pickup(mob/user)
+/obj/item/proc/attempt_pickup(mob/user, datum/event_args/clickchain/e_args)
 	if (!user)
 		return
 
 	if(anchored)
 		user.action_feedback(SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"), src)
-		return
+		return FALSE
 
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
 		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
-		return
+		return FALSE
 
-	if (hasorgans(user))
-		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (H.hand)
-			temp = H.organs_by_name["l_hand"]
-		if(temp && !temp.is_usable())
-			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
-			return
-		if(!temp)
-			to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
-			return
+	var/hand_index = isnull(e_args)? active_hand : e_args.hand_index
+	if(!user.is_hand_functional(isnull(e_args)? active_hand : e_args.hand_index))
+		user.action_feedback(SPAN_WARNING(user.get_hand_fail_message(hand_index)), src)
+		return FALSE
 
 	var/old_loc = src.loc
 
 	throwing?.terminate()
-	if(user.put_in_active_hand(src))
+	if(user.put_in_hand(src, hand_index))
 		if(isturf(old_loc))
 			var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
 			ghost.assumeform(src)

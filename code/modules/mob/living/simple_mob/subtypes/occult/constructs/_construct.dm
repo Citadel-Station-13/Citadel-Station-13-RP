@@ -40,7 +40,7 @@
 	mob_class = MOB_CLASS_DEMONIC
 
 	ui_icons = 'icons/mob/screen1_construct.dmi'
-	has_hands = 1
+	hand_count = 2
 	hand_form = "stone manipulators"
 
 	response_help  = "thinks better of touching"

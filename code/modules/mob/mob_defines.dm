@@ -92,9 +92,8 @@
 	//? Inventory
 	/// our inventory datum, if any.
 	var/datum/inventory/inventory
-	/// hand huds
-	var/list/datum/mob_hud/hand_huds
-	#warn bad api for remote huds
+	/// inventory hud used
+	var/datum/mob_hud/inventory/using_inventory_hud
 	/// held items; indexed list. defaults to null, lazy.
 	/// the length of this is also the abstracted number of hands we should have
 	/// * 1, 3, 5, ... are left

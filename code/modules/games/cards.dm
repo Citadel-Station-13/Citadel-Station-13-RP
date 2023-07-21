@@ -246,10 +246,7 @@
 		if(!istype(usr, /mob/living/simple_mob))
 			if( !usr.get_active_held_item() )		//if active hand is empty
 				var/mob/living/carbon/human/H = user
-				var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-
-				if (H.hand)
-					temp = H.organs_by_name["l_hand"]
+				var/obj/item/organ/external/temp = H.get_active_hand_organ()
 				if(temp && !temp.is_usable())
 					to_chat(user,"<span class='notice'>You try to move your [temp.name], but cannot!</span>")
 					return
@@ -262,10 +259,7 @@
 		if(!istype(usr, /mob/living/simple_mob))
 			if( !usr.get_active_held_item() )		//if active hand is empty
 				var/mob/living/carbon/human/H = user
-				var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-
-				if (H.hand)
-					temp = H.organs_by_name["l_hand"]
+				var/obj/item/organ/external/temp = H.get_active_hand_organ()
 				if(temp && !temp.is_usable())
 					to_chat(user,"<span class='notice'>You try to move your [temp.name], but cannot!</span>")
 					return

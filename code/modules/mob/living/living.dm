@@ -696,31 +696,6 @@ default behaviour is:
 	else // No colors, so remove the client's color.
 		animate(client, color = null, time = 10)
 
-/mob/living/swap_hand()
-	#warn nuke from orbit
-	var/obj/item/was_active = length(held_items) <= active_hand? held_items[active_hand] : null
-
-	if(active_hand >= length(held_items))
-		active_hand = length(held_items)? 1 : null
-	else
-		++active_hand
-
-	#warn hud elements
-	if(hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
-		if(hand)	//This being 1 means the left hand is in use
-			hud_used.l_hand_hud_object.icon_state = "l_hand_active"
-			hud_used.r_hand_hud_object.icon_state = "r_hand_inactive"
-		else
-			hud_used.l_hand_hud_object.icon_state = "l_hand_inactive"
-			hud_used.r_hand_hud_object.icon_state = "r_hand_active"
-
-	//! LEGACY
-	// We just swapped hands, so the thing in our inactive hand will notice it's not the focus
-	if(!isnull(was_active))
-		if(was_active.zoom)
-			was_active.zoom()
-	//! End
-
 /mob/proc/activate_hand(selhand)
 
 /mob/living/activate_hand(selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.

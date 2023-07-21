@@ -5,6 +5,8 @@
 	//? basics
 	/// owning mob
 	var/mob/owner
+	/// hud datum, if any
+	var/datum/mob_hud/inventory/hud
 
 	//? slots
 
@@ -18,6 +20,20 @@
 /datum/inventory/Destroy()
 	owner = null
 	return ..()
+
+/**
+ * called when an item is added to inventory
+ */
+/datum/inventory/proc/item_entered(obj/item/item, datum/inventory_slot_meta/slot_or_index)
+	hud?.add_item(item, slot_or_index)
+
+/**
+ * called when an item is removed from inventory
+ */
+/datum/inventory/proc/item_exited(obj/item/item, datum/inventory_slot_meta/slot_or_index)
+	hud?.remove_item(item, slot_or_index)
+
+#warn hook above 2
 
 /**
  * returns list() of items with body_cover_flags

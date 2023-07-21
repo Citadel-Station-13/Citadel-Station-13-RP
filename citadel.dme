@@ -463,7 +463,7 @@
 #include "code\_rendering\atom_huds\other_huds.dm"
 #include "code\_rendering\clickcatcher\clickcatcher.dm"
 #include "code\_rendering\fullscreen\fullscreen.dm"
-#include "code\_rendering\mob_huds\hands.dm"
+#include "code\_rendering\mob_huds\inventory.dm"
 #include "code\_rendering\mob_huds\mob_hud.dm"
 #include "code\_rendering\parallax\parallax.dm"
 #include "code\_rendering\parallax\parallax_holder.dm"
