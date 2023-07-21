@@ -193,7 +193,8 @@
 				m_type = 1
 
 		if("law")
-			if (module.is_the_law)
+			var/mob/living/silicon/robot/R = src
+			if (istype(R) && R.module.is_the_law)
 				message = "shows its legal authorization barcode."
 
 				playsound(src.loc, 'sound/voice/biamthelaw.ogg', 50, 0)
@@ -202,7 +203,8 @@
 				to_chat(src, "You are not THE LAW, pal.")
 
 		if("halt")
-			if (module.is_the_law)
+			var/mob/living/silicon/robot/R = src
+			if (istype(R) && R.module.is_the_law)
 				message = "<B>'s</B> speakers skreech, \"Halt! Security!\"."
 
 				playsound(src.loc, 'sound/voice/halt.ogg', 50, 0)
@@ -211,7 +213,8 @@
 				to_chat(src, "You are not security.")
 
 		if("bark")
-			if (module.is_dog())
+			var/mob/living/silicon/robot/R = src
+			if (istype(R) && R.module.is_dog())
 				if (emote_target)
 					message = "barks at [emote_target]."
 				else
@@ -223,7 +226,8 @@
 				to_chat(src, "You're not a dog!")
 
 		if("arfe")
-			if (module.is_dog())
+			var/mob/living/silicon/robot/R = src
+			if (istype(R) && R.module.is_dog())
 				message = "lets out an A R F E."
 
 				playsound(loc, 'sound/voice/arfe.ogg', 50, 1, -1)
