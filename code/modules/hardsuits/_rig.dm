@@ -188,7 +188,7 @@
 		if(piece.siemens_coefficient > siemens_coefficient) //So that insulated gloves keep their insulation.
 			piece.siemens_coefficient = siemens_coefficient
 		piece.permeability_coefficient = permeability_coefficient
-		piece.unacidable = unacidable
+		piece.integrity_flags = integrity_flags
 		piece.set_armor(fetch_armor())
 
 	update_icon(1)

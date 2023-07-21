@@ -368,7 +368,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.head)
-			if(H.head.unacidable)
+			if(H.head.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.head] protects you from the acid.</span>")
 				remove_self(volume)
 				return
@@ -382,7 +382,7 @@
 			return
 
 		if(H.wear_mask)
-			if(H.wear_mask.unacidable)
+			if(H.wear_mask.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.wear_mask] protects you from the acid.</span>")
 				remove_self(volume)
 				return
@@ -396,7 +396,7 @@
 			return
 
 		if(H.glasses)
-			if(H.glasses.unacidable)
+			if(H.glasses.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.glasses] partially protect you from the acid!</span>")
 				removed /= 2
 			else if(removed > meltdose)

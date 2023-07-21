@@ -19,7 +19,8 @@
 
 /obj/item/reagent_containers/food/drinks/bottle/Initialize(mapload)
 	. = ..()
-	if(isGlass) unacidable = 1
+	if(isGlass)
+		integrity_flags |= INTEGRITY_ACIDPROOF
 
 /obj/item/reagent_containers/food/drinks/bottle/Destroy()
 	if(rag)

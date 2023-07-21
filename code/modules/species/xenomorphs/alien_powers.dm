@@ -161,7 +161,7 @@
 	var/cannot_melt
 	if(isobj(O))
 		var/obj/I = O
-		if(I.unacidable)
+		if(I.integrity_flags & INTEGRITY_ACIDPROOF)
 			cannot_melt = 1
 	else
 		if(istype(O, /turf/simulated/wall))

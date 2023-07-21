@@ -91,10 +91,15 @@
 	/// Set when a player renames a renamable object.
 	var/renamed_by_player = FALSE
 	var/w_class // Size of the object.
+	//! LEGACY: DO NOT USE
 	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
+	//! LEGACY: DO NOT USE
 	var/sharp = 0		// whether this object cuts
+	//! LEGACY: DO NOT USE
 	var/edge = 0		// whether this object is more likely to dismember
+	//! LEGACY: DO NOT USE
 	var/pry = 0			//Used in attackby() to open doors
+	//! LEGACY: DO NOT USE
 	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/damtype = "brute"
 	// todo: /obj/item level, /obj/projectile level, how to deal with armor?

@@ -281,14 +281,14 @@
 	if(not_actually_a_closet)
 		return ..()
 	if(opened)
-		if(istype(W, /obj/item/grab))
-			var/obj/item/grab/G = W
+		if(istype(I, /obj/item/grab))
+			var/obj/item/grab/G = I
 			MouseDroppedOn(G.affecting, user)      //act like they were dragged onto the closet
 			return 0
-		if(istype(W,/obj/item/tk_grab))
+		if(istype(I,/obj/item/tk_grab))
 			return 0
-		if(istype(W, /obj/item/weldingtool))
-			var/obj/item/weldingtool/WT = W
+		if(istype(I, /obj/item/weldingtool))
+			var/obj/item/weldingtool/WT = I
 			if(!WT.remove_fuel(0,user))
 				if(!WT.isOn())
 					return
@@ -301,8 +301,8 @@
 				M.show_message("<span class='notice'>\The [src] has been cut apart by [user] with \the [WT].</span>", 3, "You hear welding.", 2)
 			qdel(src)
 			return
-		if(istype(W, /obj/item/storage/laundry_basket) && W.contents.len)
-			var/obj/item/storage/laundry_basket/LB = W
+		if(istype(I, /obj/item/storage/laundry_basket) && I.contents.len)
+			var/obj/item/storage/laundry_basket/LB = I
 			var/turf/T = get_turf(src)
 			for(var/obj/item/I in LB.contents)
 				LB.remove_from_storage(I, T)
@@ -312,38 +312,38 @@
 			return
 		if(isrobot(user))
 			return
-		if(W.loc != user) // This should stop mounted modules ending up outside the module.
+		if(I.loc != user) // This should stop mounted modules ending up outside the module.
 			return
-		if(!user.attempt_insert_item_for_installation(W, opened? loc : src))
+		if(!user.attempt_insert_item_for_installation(I, opened? loc : src))
 			return
-	else if(istype(W, /obj/item/melee/energy/blade))
-		if(emag_act(INFINITY, user, "<span class='danger'>The locker has been sliced open by [user] with \an [W]</span>!", "<span class='danger'>You hear metal being sliced and sparks flying.</span>"))
+	else if(istype(I, /obj/item/melee/energy/blade))
+		if(emag_act(INFINITY, user, "<span class='danger'>The locker has been sliced open by [user] with \an [I]</span>!", "<span class='danger'>You hear metal being sliced and sparks flying.</span>"))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, loc)
 			spark_system.start()
 			playsound(src, 'sound/weapons/blade1.ogg', 50, 1)
 			playsound(src, "sparks", 50, 1)
 
-	else if(W.is_wrench())
+	else if(I.is_wrench())
 		if(sealed)
 			if(anchored)
 				user.visible_message("\The [user] begins unsecuring \the [src] from the floor.", "You start unsecuring \the [src] from the floor.")
 			else
 				user.visible_message("\The [user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
-			if(do_after(user, 20 * W.tool_speed))
+			if(do_after(user, 20 * I.tool_speed))
 				if(!src) return
 				to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
 				anchored = !anchored
 				return
 
-	else if(istype(W, /obj/item/packageWrap))
+	else if(istype(I, /obj/item/packageWrap))
 		return
-	else if(istype(W, /obj/item/extraction_pack)) //so fulton extracts dont open closets
+	else if(istype(I, /obj/item/extraction_pack)) //so fulton extracts dont open closets
 		close()
 		return
 	else if(seal_tool)
-		if(istype(W, seal_tool))
-			var/obj/item/S = W
+		if(istype(I, seal_tool))
+			var/obj/item/S = I
 			if(istype(S, /obj/item/weldingtool))
 				var/obj/item/weldingtool/WT = S
 				if(!WT.remove_fuel(0,user))
@@ -360,14 +360,14 @@
 				update_icon()
 				for(var/mob/M in viewers(src))
 					M.show_message("<span class='warning'>[src] has been [sealed?"sealed":"unsealed"] by [user.name].</span>", 3)
-	else if(W.is_wrench())
+	else if(I.is_wrench())
 		if(sealed)
 			if(anchored)
 				user.visible_message("\The [user] begins unsecuring \the [src] from the floor.", "You start unsecuring \the [src] from the floor.")
 			else
 				user.visible_message("\The [user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
-			playsound(src, W.tool_sound, 50)
-			if(do_after(user, 20 * W.tool_speed))
+			playsound(src, I.tool_sound, 50)
+			if(do_after(user, 20 * I.tool_speed))
 				if(!src) return
 				to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
 				anchored = !anchored

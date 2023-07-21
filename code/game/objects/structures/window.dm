@@ -8,6 +8,7 @@
 	icon = 'icons/obj/structures/windowpanes.dmi'
 	icon_state = null
 	base_icon_state = "window"
+	armor_type = /datum/armor/window
 
 	density = TRUE
 	can_be_unanchored = TRUE
@@ -149,9 +150,6 @@
 	playsound(src, "shatter", 70, 1)
 	visible_message("[src] shatters!")
 
-/obj/structure/window/blob_act()
-	take_damage(50)
-
 /obj/structure/window/setDir(newdir)
 	. = ..()
 	update_nearby_tiles()
@@ -164,30 +162,6 @@
 	else
 		smoothing_flags &= ~SMOOTH_OBJ
 	update_nearby_icons() // Icon update
-
-/obj/structure/window/bullet_act(obj/projectile/Proj)
-
-	var/proj_damage = Proj.get_structure_damage()
-	if (!proj_damage)
-		return
-
-	take_damage(proj_damage)
-
-	return ..()
-
-/obj/structure/window/legacy_ex_act(severity)
-	switch (severity)
-		if (1.0)
-			qdel(src)
-		if (2.0)
-			shatter(FALSE)
-		if (3.0)
-			if (prob(50))
-				shatter(FALSE)
-	return
-
-/obj/structure/window/blob_act()
-	take_damage(50)
 
 /obj/structure/window/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
