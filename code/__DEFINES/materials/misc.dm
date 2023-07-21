@@ -63,8 +63,6 @@
 
 /// material part key that a single-material-part object is treated as having
 #define MATERIAL_PART_DEFAULT "structure"
-/// material_parts value for no material
-#define MATERIAL_DEFAULT_NONE null
 /// material_parts value for object does not use material parts system
 #define MATERIAL_DEFAULT_DISABLED FALSE
 /// material ID to pass to Initialize() procs for "erase the default material of this slot"

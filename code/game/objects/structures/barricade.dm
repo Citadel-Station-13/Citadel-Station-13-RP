@@ -13,7 +13,7 @@
 
 /obj/structure/barricade/Initialize(mapload, datum/material/material_like)
 	if(!isnull(material_like))
-		set_primary_material(material_like)
+		set_primary_material(SSmaterials.resolve_material(material_like))
 	return ..()
 
 /obj/structure/barricade/update_primary_material(datum/material/material)
