@@ -83,9 +83,10 @@
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Always use get_material_defaults to get this list unless you know what you're doing.
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
-	/// * This may be not be null by default, as null signifies that we do not use the materials system.
-	/// * List of parts, however, may have nulls to signify that a part is missing.
-	var/list/material_defaults
+	/// * List of parts may have nulls to signify that a part is missing.
+	/// * Use [MATERIAL_DEFAULT_DISABLED] if something doesn't use material parts system.
+	/// * Use [MATERIAL_DEFAULT_NONE] if something uses material parts system, but has only one material with default of null.
+	var/list/material_defaults = MATERIAL_DEFAULT_DISABLED
 
 	//? Sounds
 	/// volume when breaking out using resist process
@@ -128,7 +129,7 @@
 			material_costs = get_typelist(material_costs)
 		else
 			material_costs = typelist(NAMEOF(src, material_costs), material_costs)
-	if(!isnull(material_defaults))
+	if(material_defaults != MATERIAL_DEFAULT_DISABLED)
 		if(islist(material_defaults))
 			if(has_typelist(material_defaults))
 				material_defaults = get_typelist(material_defaults)
@@ -455,7 +456,7 @@
  * do we use material parts system?
  */
 /obj/proc/has_material_parts()
-	return !isnull(material_defaults)
+	return material_defaults != MATERIAL_DEFAULT_DISABLED
 
 /**
  * autodetect proc used by lathes
@@ -480,11 +481,12 @@
 	#warn what do we do with this
 	#warn handle below - how to still be able to do lathe cost modifications?
 	if(atom_flags & ATOM_INITIALIZED)
-		if(islist(material_parts))
-			for(var/key in material_parts)
-				our_materials[key] = max(0, our_materials[key] - material_defaults[key])
-		else if(!isnull(material_parts))
-			our_materials[material_defaults] = max(0, our_materials[material_defaults] - material_parts)
+		if(material_defaults != MATERIAL_DEFAULT_DISABLED)
+			if(islist(material_parts))
+				for(var/key in material_parts)
+					our_materials[key] = max(0, our_materials[key] - material_defaults[key])
+			else if(!isnull(material_parts))
+				our_materials[material_defaults] = max(0, our_materials[material_defaults] - material_parts)
 
 /**
  * initialize materials
@@ -499,7 +501,7 @@
 			CRASH("material defaults wasn't a string when material parts wasn't a list.")
 		set_material_parts(list(MATERIAL_PART_DEFAULT = material_defaults))
 	#warn handle below - how to still be able to do lathe cost modifications?
-	if(!isnull(material_defaults))
+	if(material_defaults != MATERIAL_DEFAULT_DISABLED)
 		set_material_parts(material_defaults)
 		for(var/key in material_defaults)
 			var/mat = material_defaults[key]
@@ -554,6 +556,8 @@
  * get the only material we're made out of, or first material part
  */
 /obj/proc/get_primary_material()
+	if(material_defaults == MATERIAL_DEFAULT_DISABLED)
+		return null
 	if(isnull(material_parts))
 		return islist(material_defaults)? material_defaults[material_defaults[1]] : material_defaults
 	return islist(material_parts)? material_parts[1] : material_parts
@@ -568,7 +572,7 @@
  * get material defaults
  */
 /obj/proc/get_material_defaults()
-	if(isnull(material_defaults))
+	if(material_defaults == MATERIAL_DEFAULT_DISABLED)
 		return list()
 	return islist(material_defaults)? material_defaults.Copy() : list(MATERIAL_PART_DEFAULT = material_defaults)
 
