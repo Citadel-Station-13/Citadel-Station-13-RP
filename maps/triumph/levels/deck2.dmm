@@ -8,6 +8,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
+"ab" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/quartermaster/warehouse)
 "ac" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
@@ -714,7 +718,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_1)
 "cp" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "cq" = (
@@ -1440,9 +1444,7 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/dormitory)
 "eJ" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "eK" = (
@@ -1878,16 +1880,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
-"fS" = (
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
-	icon_state = "space";
-	layer = 4;
-	name = "EXTERNAL AIRLOCK"
-	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/quartermaster/warehouse)
 "fT" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/tiled/white,
@@ -2287,9 +2279,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
 "gV" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/full/firelocks/nogrille,
 /turf/simulated/floor/plating,
 /area/crew_quarters/visitor_dining)
 "gW" = (
@@ -3047,15 +3037,18 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "jl" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/curtain/black{
-	anchored = 1
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
-/obj/structure/window/reinforced,
-/turf/simulated/floor/plating,
-/area/crew_quarters/coffee_shop)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/tiled,
+/area/hallway/primary/port)
 "jm" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -4078,10 +4071,6 @@
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
-"mv" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "mw" = (
 /obj/machinery/light{
 	dir = 4
@@ -5833,8 +5822,6 @@
 /turf/simulated/shuttle/wall/voidcraft/no_join,
 /area/shuttle/mining_ship/general)
 "rx" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/uxstorage)
 "rA" = (
@@ -6192,6 +6179,13 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"sA" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/curtain/black,
+/turf/simulated/floor/tiled,
+/area/hallway/primary/starboard)
 "sB" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -6202,9 +6196,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_8)
 "sD" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/full/firelocks/nogrille,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
 "sE" = (
@@ -7564,6 +7556,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals_central6{
 	dir = 4
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "wD" = (
@@ -8482,6 +8475,10 @@
 "zq" = (
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
+"zr" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "zt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -8696,9 +8693,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "Ai" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/full/firelocks/nogrille,
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/cryo)
 "Aj" = (
@@ -9492,13 +9487,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
-"CJ" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/curtain/black,
-/turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
 "CK" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6{
 	dir = 4
@@ -9990,6 +9978,10 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/mining_ship/general)
+"Ev" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/station/stairs_two)
 "Ew" = (
 /obj/structure/stairs/spawner/east,
 /obj/structure/railing{
@@ -10525,6 +10517,16 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
+"FS" = (
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK"
+	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/quartermaster/warehouse)
 "FT" = (
 /obj/machinery/ai_status_display{
 	pixel_y = -32
@@ -12555,10 +12557,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"MH" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/station/stairs_two)
 "MI" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -13110,11 +13108,7 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "Or" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/curtain/black,
-/obj/structure/window/reinforced,
+/obj/spawner/window/low_wall/full/firelocks/nogrille,
 /turf/simulated/floor/plating,
 /area/crew_quarters/coffee_shop)
 "Ou" = (
@@ -15106,10 +15100,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_1)
-"Uv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/quartermaster/warehouse)
+"Ux" = (
+/obj/spawner/window/low_wall/full/firelocks/nogrille,
+/turf/simulated/floor/wood,
+/area/crew_quarters/fitness)
 "Uy" = (
 /turf/simulated/wall,
 /area/crew_quarters/sleep/Dorm_2)
@@ -15760,9 +15754,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "Wg" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "Wh" = (
@@ -16014,9 +16006,7 @@
 /turf/simulated/floor/wood,
 /area/hallway/primary/port)
 "WP" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/qm)
 "WQ" = (
@@ -16322,9 +16312,7 @@
 /turf/simulated/floor/crystal,
 /area/station/stairs_two)
 "XH" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/storage)
 "XI" = (
@@ -22886,7 +22874,7 @@ Pc
 LR
 WU
 sU
-ub
+jl
 mM
 Wg
 Hx
@@ -23611,7 +23599,7 @@ Ki
 Vh
 gC
 tA
-mv
+cp
 tA
 tA
 tA
@@ -24184,7 +24172,7 @@ ai
 ox
 oE
 oE
-mv
+cp
 rC
 ii
 ii
@@ -24326,7 +24314,7 @@ ai
 ox
 oE
 oE
-mv
+cp
 rC
 ii
 ii
@@ -24468,7 +24456,7 @@ ai
 ai
 qH
 oE
-mv
+cp
 rC
 ii
 ii
@@ -25444,7 +25432,7 @@ RE
 sU
 Vv
 mM
-VL
+Ux
 jd
 LJ
 Jf
@@ -25586,7 +25574,7 @@ IX
 nv
 zV
 Iw
-VL
+Ux
 iq
 Yd
 Nx
@@ -25747,16 +25735,16 @@ CU
 ai
 fZ
 tA
-mv
+cp
 tA
 tA
 tA
 tA
 tA
 tA
-mv
+cp
 tA
-mv
+cp
 tA
 tA
 tA
@@ -25870,7 +25858,7 @@ mQ
 ar
 On
 PF
-VL
+Ux
 GD
 Yd
 SF
@@ -25901,7 +25889,7 @@ Mr
 OQ
 Ou
 KT
-mv
+cp
 ii
 ii
 rC
@@ -26614,7 +26602,7 @@ lV
 tA
 Gi
 ZG
-cp
+zr
 Jg
 cG
 yI
@@ -26756,7 +26744,7 @@ gL
 Wr
 lL
 dg
-cp
+zr
 CH
 cG
 yI
@@ -28139,7 +28127,7 @@ pX
 aV
 aV
 Or
-nM
+sA
 oc
 Lm
 Uy
@@ -28173,7 +28161,7 @@ Yu
 Yu
 oE
 rF
-cp
+zr
 ii
 ii
 rC
@@ -28249,7 +28237,7 @@ ii
 Ed
 ii
 vH
-Uv
+ab
 BR
 kk
 YI
@@ -28280,7 +28268,7 @@ Ib
 pX
 Us
 Us
-jl
+Or
 Yp
 jN
 mB
@@ -28391,7 +28379,7 @@ ii
 kD
 Ed
 Ed
-Uv
+ab
 hC
 kk
 kk
@@ -28457,7 +28445,7 @@ TT
 Yu
 nj
 rF
-cp
+zr
 ii
 ii
 rC
@@ -28533,7 +28521,7 @@ ii
 Ed
 ii
 ii
-Uv
+ab
 rJ
 kk
 kk
@@ -28741,7 +28729,7 @@ KT
 oE
 oE
 rF
-cp
+zr
 ii
 ii
 rC
@@ -28962,16 +28950,16 @@ ii
 rP
 rP
 rP
-Uv
-Uv
-Uv
+ab
+ab
+ab
 hg
 dq
-Uv
+ab
 dq
 ln
-Uv
-Uv
+ab
+ab
 rP
 da
 da
@@ -29106,13 +29094,13 @@ Ed
 qu
 Mh
 qu
-Uv
+ab
 wl
 kk
-Uv
+ab
 kk
 TH
-Uv
+ab
 qu
 Rj
 be
@@ -29248,13 +29236,13 @@ Ed
 Mh
 Mh
 Mh
-fS
+FS
 UF
 XJ
-fS
+FS
 XJ
 QZ
-fS
+FS
 Mh
 Rj
 tB
@@ -29417,7 +29405,7 @@ AI
 Lg
 ft
 Or
-nM
+sA
 FC
 VV
 cX
@@ -29578,7 +29566,7 @@ nx
 yb
 Qe
 gC
-cp
+zr
 ii
 ii
 Ed
@@ -29862,7 +29850,7 @@ yb
 yb
 Qe
 gC
-cp
+zr
 ii
 ii
 rC
@@ -30268,7 +30256,7 @@ NB
 KK
 La
 eM
-CJ
+sD
 nM
 FC
 hT
@@ -30410,8 +30398,8 @@ NB
 GY
 La
 eM
-CJ
-nM
+sD
+sA
 FC
 hQ
 zk
@@ -30567,7 +30555,7 @@ zk
 zk
 oE
 gC
-cp
+zr
 ii
 ii
 ii
@@ -32977,7 +32965,7 @@ jT
 oE
 CU
 oE
-mv
+cp
 ii
 ii
 rC
@@ -33119,7 +33107,7 @@ mq
 nj
 CU
 iM
-mv
+cp
 ii
 ii
 rC
@@ -33261,7 +33249,7 @@ mq
 qH
 CU
 hZ
-mv
+cp
 ii
 ii
 rC
@@ -33823,7 +33811,7 @@ OM
 bV
 OM
 it
-MH
+Ev
 UE
 rf
 Tb
@@ -33965,7 +33953,7 @@ Et
 bg
 Rl
 it
-MH
+Ev
 bx
 Qk
 aA
@@ -34107,7 +34095,7 @@ TU
 iO
 TU
 it
-MH
+Ev
 vO
 DP
 LF
@@ -34669,13 +34657,13 @@ ii
 ii
 ii
 ii
-MH
-MH
+Ev
+Ev
 Nc
 tb
 dA
-MH
-MH
+Ev
+Ev
 ii
 ii
 ii
@@ -34812,11 +34800,11 @@ ii
 ii
 ii
 ii
-MH
-MH
-MH
-MH
-MH
+Ev
+Ev
+Ev
+Ev
+Ev
 ii
 ii
 ii
