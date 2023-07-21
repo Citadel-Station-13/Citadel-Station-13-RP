@@ -84,7 +84,7 @@
 		to_chat(user, "<span class='warning'>Pressure: [round(pressure,0.1)] kPa</span>")
 	if(total_moles)
 		for(var/g in environment.gas)
-			to_chat(user, "<span class='notice'>[gas_data.names[g]]: [round((environment.gas[g] / total_moles) * 100)]%</span>")
+			to_chat(user, "<span class='notice'>[global.gas_data.names[g]]: [round((environment.gas[g] / total_moles) * 100)]%</span>")
 		to_chat(user, "<span class='notice'>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</span>")
 
 /obj/item/dogborg/boop_module/afterattack(atom/target, mob/user, clickchain_flags, list/params)

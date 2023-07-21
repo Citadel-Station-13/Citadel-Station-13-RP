@@ -35,7 +35,7 @@
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_FILTER
 
 	for(var/id in scrubbing_gas)
-		if(!gas_data.gases[id])
+		if(!global.gas_data.gases[id])
 			scrubbing_gas -= id
 			stack_trace("Invalid gas id [id]")
 

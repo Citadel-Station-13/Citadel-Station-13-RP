@@ -18,10 +18,7 @@
 		icon_state = "intact_[on?("on"):("off")]"
 	else
 		icon_state = "exposed_off"
-
 		on = 0
-
-	return
 
 /obj/machinery/atmospherics/component/unary/oxygen_generator/New()
 	..()

@@ -581,7 +581,7 @@
 	for(var/gasname in breath.gas)
 		if(gasname == breath_type)
 			continue
-		var/list/reagent_gas_data = gas_data.reagents[gasname]
+		var/list/reagent_gas_data = global.gas_data.reagents[gasname]
 		if(!reagent_gas_data)
 			continue
 		if(breath.gas[gasname] < reagent_gas_data[GAS_REAGENT_LIST_THRESHOLD])
@@ -712,7 +712,7 @@
 
 	//Check for contaminants before anything else because we don't want to skip it.
 	for(var/g in environment.gas)
-		if(gas_data.flags[g] & GAS_FLAG_CONTAMINANT && environment.gas[g] > 1)
+		if(global.gas_data.flags[g] & GAS_FLAG_CONTAMINANT && environment.gas[g] > 1)
 			pl_effects()
 			break
 

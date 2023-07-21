@@ -184,7 +184,7 @@ Class Procs:
 /datum/zas_zone/proc/dbg_data(mob/M)
 	to_chat(M, name)
 	for(var/g in air.gas)
-		to_chat(M, "[gas_data.names[g]]: [air.gas[g]]")
+		to_chat(M, "[global.gas_data.names[g]]: [air.gas[g]]")
 	to_chat(M, "P: [air.return_pressure()] kPa V: [air.volume]L T: [air.temperature]�K ([air.temperature - T0C]�C)")
 	to_chat(M, "O2 per N2: [(air.gas[GAS_ID_NITROGEN] ? air.gas[GAS_ID_OXYGEN]/air.gas[GAS_ID_NITROGEN] : "N/A")] Moles: [air.total_moles]")
 	to_chat(M, "Simulated: [contents.len] ([air.group_multiplier])")

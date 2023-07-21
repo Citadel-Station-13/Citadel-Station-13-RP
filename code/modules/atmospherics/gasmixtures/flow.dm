@@ -15,12 +15,23 @@
 		return 0
 
 	// get actually existing gas
-	gas_ids = gas_ids & source.gas
+	var/list/filtered_ids
+	if(gas_groups)
+		filtered_ids = list()
+		// sigh; iterate through source
+		for(var/id in source.gas)
+			if(global.gas_data.groups[id] & gas_groups)
+				filtered_ids += id
+		// then get the explicitly filtered ones if needed
+		if(length(gas_ids))
+			filtered_ids |= (source.gas | gas_ids)
+	else if(length(gas_ids))
+		filtered_ids = gas_ids & source.gas
 
 	// gather
 	var/total_filterable_moles = 0
 	var/list/specific_power_gas = list()
-	for(var/id in gas_ids)
+	for(var/id in filtered_ids)
 		var/specific_power = calculate_specific_power_gas(id, source, sink) / ATMOS_ABSTRACT_SCRUB_EFFICIENCY
 		specific_power_gas[id] = specific_power
 		total_filterable_moles += source.gas[id]
@@ -31,7 +42,7 @@
 
 	// calculate work per mole in watts
 	var/total_specific_power
-	for(var/id in gas_ids)
+	for(var/id in filtered_ids)
 		var/ratio = source.gas[id] / total_filterable_moles
 		total_specific_power += specific_power_gas[id] * ratio
 
@@ -44,11 +55,22 @@
 	if(limit_moles < MINIMUM_MOLES_TO_SCRUB)
 		return 0
 
-	#warn impl
+	// do the actual filtering
+	var/power_draw = 0
+	for(var/id in filtered_ids)
+		// todo: this esction isn't fully optimized/parsed
+		var/transfer = source.gas[id]
+		transfer = min(transfer, limit_moles * source.gas[id] / total_filterable_moles)
+		source.adjust_gas(id, -transfer, FALSE)
+		sink.adjust_gas_temp(id, transfer, source.temperature, FALSE)
+		power_draw += specific_power_gas[id] * transfer
 
 	// update values
 	source.update_values()
 	sink.update_values()
+
+	// return power used in W
+	return power_draw
 
 /**
  * @params

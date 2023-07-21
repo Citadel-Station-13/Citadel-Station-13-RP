@@ -27,7 +27,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/Initialize(mapload)
 	. = ..()
 	for(var/id in scrubbing_gas)
-		if(!gas_data.gases[id])
+		if(!global.gas_data.gases[id])
 			scrubbing_gas -= id
 			stack_trace("Invalid gas id [id]")
 	cell = new/obj/item/cell/apc(src)

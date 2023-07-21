@@ -32,7 +32,7 @@
 		var/total_moles = mixture.total_moles
 		results += "<span class='notice'>Pressure: [QUANTIZE(pressure)] kPa</span>"
 		for(var/mix in mixture.gas)
-			results += "<span class='notice'>[gas_data.names[mix]]: [QUANTIZE((mixture.gas[mix] / total_moles) * 100)]%</span>"
+			results += "<span class='notice'>[global.gas_data.names[mix]]: [QUANTIZE((mixture.gas[mix] / total_moles) * 100)]%</span>"
 		results += "<span class='notice'>Temperature: [QUANTIZE(mixture.temperature-T0C)]&deg;C</span>"
 		results += "<span class='notice'>Total Moles: [QUANTIZE(total_moles)]</span>"
 	else
