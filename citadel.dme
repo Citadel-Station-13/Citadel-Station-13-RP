@@ -3950,6 +3950,8 @@
 #include "code\modules\power\fission\engine.dm"
 #include "code\modules\power\fission\modular_computer.dm"
 #include "code\modules\power\fission\rods.dm"
+#include "code\modules\power\fission_ic2\fission_core.dm"
+#include "code\modules\power\fission_ic2\fission_parts.dm"
 #include "code\modules\power\fusion\_setup.dm"
 #include "code\modules\power\fusion\fusion_circuits.dm"
 #include "code\modules\power\fusion\fusion_particle_catcher.dm"
