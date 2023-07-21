@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 			material.place_dismantled_product(src)
 
 	clear_plants()
-	material = SSmaterials.get_material(/datum/material/placeholder)
+	material = SSmaterials.resolve_material(/datum/material/placeholder)
 	reinf_material = null
 	girder_material = null
 

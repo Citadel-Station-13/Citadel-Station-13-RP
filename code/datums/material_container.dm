@@ -32,7 +32,7 @@
 	if(isnull(stored))
 		return
 	for(var/mat_id in stored)
-		var/datum/material/M = SSmaterials.get_material(mat_id)
+		var/datum/material/M = SSmaterials.resolve_material(mat_id)
 		if(isnull(M))
 			continue
 		var/safety = 50
@@ -67,7 +67,7 @@
 	if(amount < 0)
 		CRASH("negative amount?")
 	if(!istype(material))
-		material = SSmaterials.get_material(material)
+		material = SSmaterials.resolve_material(material)
 	var/can_dump = round(stored[material.id] / SHEET_MATERIAL_AMOUNT)
 	var/dumping = min(amount, can_dump)
 	stored[material.id] -= dumping * SHEET_MATERIAL_AMOUNT

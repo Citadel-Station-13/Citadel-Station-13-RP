@@ -16,21 +16,20 @@ Barricades
 	integrity = 200
 	integrity_max = 200
 
-	material_defaults = MAT_WOOD
+	material_defaults = /datum/material/wood
 
-/obj/structure/barricade/Initialize(mapload, material_name)
-	. = ..()
-	if(!material_name)
-		material_name = "wood"
-	material = get_material_by_name("[material_name]")
-	if(!material)
-		qdel(src)
-		return
+/obj/structure/barricade/Initialize(mapload, datum/material/material_like)
+	if(!isnull(material_like))
+		set_primary_material(material_like)
+	return ..()
+
+/obj/structure/barricade/update_primary_material(datum/material/material)
 	name = "[material.display_name] barricade"
 	desc = "This space is blocked off by a barricade made of [material.display_name]."
 	color = material.icon_colour
-	maxhealth = material.integrity
-	health = maxhealth
+	var/initial_max_integrity = initial(integrity_max)
+	var/ratio = initial_max_integrity / integrity_max
+	set_full_integrity(integrity * ratio, initial_max_integrity * material.relative_integrity)
 
 /obj/structure/barricade/get_material()
 	return material
@@ -94,14 +93,6 @@ Barricades
 	visible_message("<span class='danger'>\The [src] falls apart!</span>")
 	qdel(src)
 	return
-
-/obj/structure/barricade/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			dismantle()
-		if(2.0)
-			health -= 25
-			CheckHealth()
 
 //Actual Deployable machinery stuff
 /obj/machinery/deployable

@@ -6,7 +6,7 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/standard/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/plastic)
+	material = SSmaterials.resolve_material(/datum/material/plastic)
 	return ..()
 
 /obj/structure/table/steel
@@ -14,7 +14,7 @@
 	color = "#666666"
 
 /obj/structure/table/steel/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/steel)
+	material = SSmaterials.resolve_material(/datum/material/steel)
 	return ..()
 
 /obj/structure/table/marble
@@ -22,7 +22,7 @@
 	color = "#CCCCCC"
 
 /obj/structure/table/marble/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/sandstone/marble)
+	material = SSmaterials.resolve_material(/datum/material/sandstone/marble)
 	return ..()
 
 /obj/structure/table/reinforced
@@ -30,8 +30,8 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/reinforced/Initialize(mapload)
-	material   = SSmaterials.get_material(/datum/material/plastic)
-	reinforced = SSmaterials.get_material(/datum/material/steel)
+	material   = SSmaterials.resolve_material(/datum/material/plastic)
+	reinforced = SSmaterials.resolve_material(/datum/material/steel)
 	return ..()
 
 /obj/structure/table/steel_reinforced
@@ -39,8 +39,8 @@
 	color = "#666666"
 
 /obj/structure/table/steel_reinforced/Initialize(mapload)
-	material   = SSmaterials.get_material(/datum/material/steel)
-	reinforced = SSmaterials.get_material(/datum/material/steel)
+	material   = SSmaterials.resolve_material(/datum/material/steel)
+	reinforced = SSmaterials.resolve_material(/datum/material/steel)
 	return ..()
 
 /obj/structure/table/wooden_reinforced
@@ -51,8 +51,8 @@
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/wooden_reinforced/Initialize(mapload)
-	material   = SSmaterials.get_material(/datum/material/wood)
-	reinforced = SSmaterials.get_material(/datum/material/steel)
+	material   = SSmaterials.resolve_material(/datum/material/wood)
+	reinforced = SSmaterials.resolve_material(/datum/material/steel)
 	return ..()
 
 /obj/structure/table/woodentable
@@ -63,7 +63,7 @@
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/woodentable/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood)
+	material = SSmaterials.resolve_material(/datum/material/wood)
 	return ..()
 
 /obj/structure/table/sifwoodentable
@@ -74,7 +74,7 @@
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/sifwoodentable/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood/sif)
+	material = SSmaterials.resolve_material(/datum/material/wood/sif)
 	return ..()
 
 /obj/structure/table/sifwooden_reinforced
@@ -85,8 +85,8 @@
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/sifwooden_reinforced/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood/sif)
-	reinforced = SSmaterials.get_material(MAT_STEEL)
+	material = SSmaterials.resolve_material(/datum/material/wood/sif)
+	reinforced = SSmaterials.resolve_material(MAT_STEEL)
 	return ..()
 
 /obj/structure/table/hardwoodtable
@@ -97,14 +97,14 @@
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/hardwoodtable/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood/hardwood)
+	material = SSmaterials.resolve_material(/datum/material/wood/hardwood)
 	return ..()
 
 /obj/structure/table/gamblingtable
 	icon_state = "gamble_preview"
 
 /obj/structure/table/gamblingtable/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood/)
+	material = SSmaterials.resolve_material(/datum/material/wood/)
 	carpeted = 1
 	return ..()
 
@@ -117,7 +117,7 @@
 	canSmoothWith = (SMOOTH_GROUP_GLASS_TABLES)
 
 /obj/structure/table/glass/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/glass)
+	material = SSmaterials.resolve_material(/datum/material/glass)
 	return ..()
 
 /obj/structure/table/borosilicate
@@ -126,7 +126,7 @@
 	alpha = 77
 
 /obj/structure/table/borosilicate/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/glass/phoron)
+	material = SSmaterials.resolve_material(/datum/material/glass/phoron)
 	return ..()
 
 /obj/structure/table/holotable
@@ -134,14 +134,14 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/holotable/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/plastic/holographic)
+	material = SSmaterials.resolve_material(/datum/material/plastic/holographic)
 	return ..()
 
 /obj/structure/table/woodentable/holotable
 	icon_state = "holo_preview"
 
 /obj/structure/table/woodentable/holotable/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood/holographic)
+	material = SSmaterials.resolve_material(/datum/material/wood/holographic)
 	return ..()
 
 /obj/structure/table/alien
@@ -152,7 +152,7 @@
 	can_plate = FALSE
 
 /obj/structure/table/alien/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/alienalloy/alium)
+	material = SSmaterials.resolve_material(/datum/material/alienalloy/alium)
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
 	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 	return ..()
@@ -166,7 +166,7 @@
 	color = "#d6c100"
 
 /obj/structure/table/bananium/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/bananium)
+	material = SSmaterials.resolve_material(/datum/material/bananium)
 	return ..()
 
 /obj/structure/table/bananium_reinforced
@@ -174,8 +174,8 @@
 	color = "#d6c100"
 
 /obj/structure/table/bananium_reinforced/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/bananium)
-	reinforced = SSmaterials.get_material(/datum/material/steel)
+	material = SSmaterials.resolve_material(/datum/material/bananium)
+	reinforced = SSmaterials.resolve_material(/datum/material/steel)
 	return ..()
 
 /obj/structure/table/sandstone
@@ -186,7 +186,7 @@
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/sandstone/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/sandstone)
+	material = SSmaterials.resolve_material(/datum/material/sandstone)
 	return ..()
 
 /obj/structure/table/bone
@@ -197,7 +197,7 @@
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/bone/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/bone)
+	material = SSmaterials.resolve_material(/datum/material/bone)
 	return ..()
 
 //BENCH PRESETS
@@ -206,7 +206,7 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/bench/standard/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/plastic)
+	material = SSmaterials.resolve_material(/datum/material/plastic)
 	return ..()
 
 /obj/structure/table/bench/steel
@@ -214,7 +214,7 @@
 	color = "#666666"
 
 /obj/structure/table/bench/steel/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/steel)
+	material = SSmaterials.resolve_material(/datum/material/steel)
 	return ..()
 
 /obj/structure/table/bench/marble
@@ -222,7 +222,7 @@
 	color = "#CCCCCC"
 
 /obj/structure/table/bench/marble/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/sandstone/marble)
+	material = SSmaterials.resolve_material(/datum/material/sandstone/marble)
 	return ..()
 
 /*
@@ -231,8 +231,8 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/bench/reinforced/New()
-	material = SSmaterials.get_material(/datum/material/plastic)
-	reinforced = SSmaterials.get_material(/datum/material/steel)
+	material = SSmaterials.resolve_material(/datum/material/plastic)
+	reinforced = SSmaterials.resolve_material(/datum/material/steel)
 	..()
 
 /obj/structure/table/bench/steel_reinforced
@@ -240,8 +240,8 @@
 	color = "#666666"
 
 /obj/structure/table/bench/steel_reinforced/New()
-	material = SSmaterials.get_material(/datum/material/steel)
-	reinforced = SSmaterials.get_material(/datum/material/steel)
+	material = SSmaterials.resolve_material(/datum/material/steel)
+	reinforced = SSmaterials.resolve_material(/datum/material/steel)
 	..()
 
 /obj/structure/table/bench/wooden_reinforced
@@ -249,8 +249,8 @@
 	color = "#824B28"
 
 /obj/structure/table/bench/wooden_reinforced/New()
-	material = SSmaterials.get_material(/datum/material/wood)
-	reinforced = SSmaterials.get_material(/datum/material/steel)
+	material = SSmaterials.resolve_material(/datum/material/wood)
+	reinforced = SSmaterials.resolve_material(/datum/material/steel)
 	..()
 */
 /obj/structure/table/bench/wooden
@@ -258,7 +258,7 @@
 	color = "#824B28"
 
 /obj/structure/table/bench/wooden/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood)
+	material = SSmaterials.resolve_material(/datum/material/wood)
 	return ..()
 
 /obj/structure/table/bench/sifwooden
@@ -266,7 +266,7 @@
 	color = "#824B28"
 
 /obj/structure/table/bench/sifwooden/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood/sif)
+	material = SSmaterials.resolve_material(/datum/material/wood/sif)
 	return ..()
 
 /obj/structure/table/bench/sifwooden/padded
@@ -277,7 +277,7 @@
 	icon_state = "padded_preview"
 
 /obj/structure/table/bench/padded/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/steel)
+	material = SSmaterials.resolve_material(/datum/material/steel)
 	carpeted = 1
 	return ..()
 
@@ -287,7 +287,7 @@
 	alpha = 77 // 0.3 * 255
 
 /obj/structure/table/bench/glass/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/glass)
+	material = SSmaterials.resolve_material(/datum/material/glass)
 	return ..()
 
 /obj/structure/table/bench/sandstone
@@ -295,7 +295,7 @@
 	color = "#D9C179"
 
 /obj/structure/table/bench/sandstone/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/sandstone)
+	material = SSmaterials.resolve_material(/datum/material/sandstone)
 	return ..()
 
 /obj/structure/table/bench/bone
@@ -303,7 +303,7 @@
 	color = "#e6dfc8"
 
 /obj/structure/table/bench/bone/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/bone)
+	material = SSmaterials.resolve_material(/datum/material/bone)
 	return ..()
 
 /*
@@ -312,13 +312,13 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/bench/holotable/New()
-	material = SSmaterials.get_material(/datum/material/plastic/holographic)
+	material = SSmaterials.resolve_material(/datum/material/plastic/holographic)
 	..()
 
 /obj/structure/table/bench/wooden/holotable
 	icon_state = "holo_preview"
 
 /obj/structure/table/bench/wooden/holotable/New()
-	material = SSmaterials.get_material(/datum/material/wood/holographic)
+	material = SSmaterials.resolve_material(/datum/material/wood/holographic)
 	..()
 */

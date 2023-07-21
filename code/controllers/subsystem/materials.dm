@@ -45,10 +45,12 @@ SUBSYSTEM_DEF(materials)
  * ids are acceptable on maps
  *
  * @params
- * id_or_path - id or typepath
+ * id_or_path - id or typepath; if this is already a material instance, it will be returned as-is.
  */
-/datum/controller/subsystem/materials/proc/get_material(datum/material/id_or_path)
-	if(istext(id_or_path))
+/datum/controller/subsystem/materials/proc/resolve_material(datum/material/id_or_path)
+	if(istype(id_or_path))
+		return id_or_path
+	else if(istext(id_or_path))
 		// yay it's an id
 		return material_lookup[id_or_path]
 	else if(ispath(id_or_path))
@@ -98,7 +100,7 @@ SUBSYSTEM_DEF(materials)
  * drop a material sheet
  */
 /datum/controller/subsystem/materials/proc/drop_sheets(datum/material/id_or_path, amount, atom/where)
-	var/datum/material/mat = get_material(id_or_path)
+	var/datum/material/mat = resolve_material(id_or_path)
 	mat.place_sheet(where, amount)
 
 /**
@@ -106,7 +108,7 @@ SUBSYSTEM_DEF(materials)
  * todo: REMOVE
  *
  * DO NOT USE THIS PROC
- * Use SSmaterials.get_material()!
+ * Use SSmaterials.resolve_material()!
  */
 /proc/get_material_by_name(name)
 	return SSmaterials.legacy_material_lookup[name]

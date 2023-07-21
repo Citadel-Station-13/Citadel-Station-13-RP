@@ -82,7 +82,7 @@
 	if(istype(new_material))
 		material = new_material
 	else
-		material = get_material_by_name(new_material) || SSmaterials.get_material(new_material)
+		material = get_material_by_name(new_material) || SSmaterials.resolve_material(new_material)
 	if(!material)
 		qdel(src)
 	else

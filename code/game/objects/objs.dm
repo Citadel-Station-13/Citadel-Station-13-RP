@@ -50,11 +50,13 @@
 	var/integrity_examine = TRUE
 
 	//? Materials
-	/// static materials in us
+	/// Material amounts in us
+	/// For sheets, this represents the per-sheet amount.
 	/// material id = amount
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Always use get_materials to get this list unless you know what you're doing.
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
+	/// * This does not include material parts.
 	var/list/materials
 	/// material parts - lets us track what we're made of
 	/// key = material id
@@ -76,6 +78,8 @@
 	/// key = material id
 	/// this is either a lazy list of key to material ids,
 	/// or a single material id
+	/// ! This must absolutely be set for anything using the materials system.
+	/// ! This is what determines how many, and if something uses the material parts system.
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Always use get_material_defaults to get this list unless you know what you're doing.
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
@@ -130,7 +134,10 @@
 				// preprocess
 				material_defaults = SSmaterials.preprocess_kv_values_to_ids(material_defaults)
 				material_defaults = typelist(NAMEOF(src, material_defaults), material_defaults)
-		init_material_parts()
+		// init material parts only if it wasn't set already
+		// this allows children of /obj to call set material parts in Initialize() before ..()
+		if(isnull(material_parts))
+			init_material_parts()
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
 		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]
@@ -441,6 +448,7 @@
 
 /obj/get_materials()
 	. = materials.Copy()
+	#warn how to deal with material parts and lathes?
 
 /**
  * autodetect proc used by lathes
@@ -505,6 +513,33 @@
 		return material_parts.Copy()
 	return islist(material_parts)? material_parts.Copy() : list(MATERIAL_PART_DEFAULT = material_parts)
 	#warn uh oh
+
+/**
+ * update material parts
+ *
+ * only called if material_defaults is in list format.
+ */
+/obj/proc/update_material_parts(list/parts)
+	#warn impl
+
+/**
+ * update primary material
+ *
+ * only called if material_defaults is in singleton format
+ */
+/obj/proc/update_primary_material(datum/material/material)
+	#warn impl
+
+/**
+ * sets our primary material to something
+ *
+ * if we have more than one material part (as determined by materials_default),
+ * this sets the first one.
+ *
+ * if we don't, this sets our only material.
+ */
+/obj/proc/set_primary_material(datum/material/material_like)
+	#warn impl
 
 /**
  * get the only material we're made out of, or first material part

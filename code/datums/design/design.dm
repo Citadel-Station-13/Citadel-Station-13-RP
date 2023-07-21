@@ -179,6 +179,7 @@
 				effective_materials[key] *= cost_multiplier
 		O.materials = effective_materials
 		O.set_material_parts(material_parts)
+		#warn how to deal with base materials vs part costs?
 
 /**
  * called when a lathe prints a design, instead of print()

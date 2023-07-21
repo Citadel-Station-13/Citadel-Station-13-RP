@@ -216,6 +216,9 @@
 /**
  * directly sets integrity - ignores armor / sihelds
  *
+ * will not call [damage_integrity] or [heal_integrity]
+ * will call [atom_break], [atom_fix], [atom_destruction]
+ *
  * @params
  * * amount - how much to set to?
  */
@@ -232,7 +235,35 @@
 		atom_destruction()
 
 /**
+ * sets max integrity - will automatically reduce integrity if it's above max.
+ *
+ * will not call [damage_integrity]
+ * will call [atom_break], [atom_fix], [atom_destruction]
+ *
+ * @params
+ * * amount - how much to set to
+ */
+/atom/proc/set_max_integrity(amount)
+	#warn impl
+
+/**
+ * sets integrity and max integrity - will automatically reduce integrity if it's above max.
+ *
+ * will not call [damage_integrity]
+ * will call [atom_break], [atom_fix], [atom_destruction]
+ *
+ * @params
+ * * integrity - how much to set integrity to
+ * * integrity_max - how much to set integrity_max to
+ */
+/atom/proc/set_full_integrity(integrity, integrity_max)
+	#warn impl
+
+/**
  * adjusts integrity - routes directly to [damage_integrity] and [heal_integrity]
+ *
+ * will call [damage_integrity]
+ * will call [atom_break], [atom_fix], [atom_destruction]
  *
  * @params
  * * amount - how much
@@ -247,14 +278,16 @@
 		return damage_integrity(amount, gradual)
 
 /**
- * adjusts max integrity - will automatically reduce integrity if it's above max. will call [damage_integrity].
+ * adjusts max integrity - will automatically reduce integrity if it's above max.
+ *
+ * will call [damage_integrity]
+ * will call [atom_break], [atom_fix], [atom_destruction]
  *
  * @params
- * * amount - how much to adjust
- * * damaging - is this considered damage, if we end up reducing integrity?
+ * * amount - how much to adjust by
  * * gradual - burst or gradual?
  */
-/atom/proc/set_max_integrity(amount, damaging, gradual)
+/atom/proc/adjust_max_integrity(amount, gradual)
 	#warn impl
 
 /**

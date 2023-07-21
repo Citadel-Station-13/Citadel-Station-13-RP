@@ -1,31 +1,31 @@
 /turf/simulated/wall/proc/set_materials(materialtype, rmaterialtype, girdertype)
 	// var/datum/material/plating_mat_ref
 	// if(materialtype)
-	// 	plating_mat_ref = SSmaterials.get_material(materialtype)
+	// 	plating_mat_ref = SSmaterials.resolve_material(materialtype)
 	// var/datum/material/reinf_mat_ref
 	// if(rmaterialtype)
-	// 	reinf_mat_ref = SSmaterials.get_material(rmaterialtype)
+	// 	reinf_mat_ref = SSmaterials.resolve_material(rmaterialtype)
 	// var/datum/material/girder_mat_ref
 	// if(girdertype)
-	// 	girder_mat_ref = SSmaterials.get_material(girdertype)
+	// 	girder_mat_ref = SSmaterials.resolve_material(girdertype)
 
 	material = materialtype
 	if(ispath(material, /datum/material))
-		material = SSmaterials.get_material(material)
+		material = SSmaterials.resolve_material(material)
 	else if(!istype(material))
-		material = SSmaterials.get_material(get_default_material())
+		material = SSmaterials.resolve_material(get_default_material())
 
 	reinf_material = rmaterialtype
 	if(ispath(reinf_material, /datum/material))
-		reinf_material = SSmaterials.get_material(reinf_material)
+		reinf_material = SSmaterials.resolve_material(reinf_material)
 	else if(!istype(reinf_material))
 		reinf_material = null
 
 	girder_material = girdertype
 	if(ispath(girder_material, /datum/material))
-		girder_material = SSmaterials.get_material(girder_material)
+		girder_material = SSmaterials.resolve_material(girder_material)
 	else if(!istype(girder_material))
-		girder_material = SSmaterials.get_material(/datum/material/steel)
+		girder_material = SSmaterials.resolve_material(/datum/material/steel)
 
 	if(reinf_material)
 		construction_stage = 6
