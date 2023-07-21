@@ -48,7 +48,6 @@
 		emitter_health = emitter_max_health - (getBruteLoss() + getFireLoss())
 		if(emitter_health <= 0)
 			if(last_emitter_death == 0)
+				close_up()
 				last_emitter_death = world.time
 				visible_message("<span class='danger'>[src]'s holo-emitter fizzles out!</span>")
-				close_up()
-

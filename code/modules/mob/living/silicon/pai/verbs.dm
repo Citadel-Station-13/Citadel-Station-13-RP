@@ -6,7 +6,7 @@
 	// we don't check mobility here because while folded up, you can't move
 	if(!can_action())
 		return
-	// to fold out we need to be in the card
+	// to fold out we need to be in the shell
 	if(src.loc != shell)
 		return
 
@@ -77,7 +77,7 @@
 		update_icon()
 		to_chat(src, SPAN_NOTICE("You are now [resting ? "resting" : "getting up"]"))
 
-	update_mobility()
+	//update_mobility()
 
 /mob/living/silicon/pai/verb/allowmodification()
 	set name = "Change Access Modifcation Permission"
