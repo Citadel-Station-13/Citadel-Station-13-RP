@@ -219,7 +219,7 @@ STANDARD_ACCESS_DATUM(ACCESS_SECURITY_HOS, station/security/hos, "Head of Securi
 STANDARD_ACCESS_DATUM(ACCESS_SECURITY_GENPOP_ENTER, station/security/genpop_enter, "Genpop - Enter")
 
 #define ACCESS_SECURITY_GENPOP_EXIT 112
-STANDARD_ACCESS_DATUM(ACCESS_SECURITY_GENPOP_EXIT, station/security/genpop_exit, "Genpop - Enter")
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_GENPOP_EXIT, station/security/genpop_exit, "Genpop - Exit")
 
 
 #define ACCESS_SECURITY_EDIT 306
