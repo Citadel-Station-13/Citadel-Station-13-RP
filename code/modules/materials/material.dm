@@ -110,6 +110,13 @@
 	/// Will stacks made from this material pass their colors onto objects?
 	var/pass_stack_colors = FALSE
 
+	//? Flags
+
+	/// material flags
+	var/material_flags = NONE
+	/// material constraint flags - what we are considered
+	var/material_constraints = NONE
+
 	//? Attributes
 
 	/// relative HP multiplier for something made out of this

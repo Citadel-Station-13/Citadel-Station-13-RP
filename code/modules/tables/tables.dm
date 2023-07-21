@@ -22,6 +22,15 @@ var/list/table_icon_cache = list()
 	depth_level = 8
 	depth_projected = TRUE
 
+	material_defaults = list(
+		"base" = /datum/material/steel,
+		"reinf" = null,
+	)
+	material_costs = list(
+		2 * SHEET_MATERIAL_AMOUNT,
+		2 * SHEET_MATERIAL_AMOUNT,
+	)
+
 	var/flipped = 0
 
 	// For racks.

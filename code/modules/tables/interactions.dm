@@ -45,14 +45,7 @@
 			else
 				return 1					//But only from one side
 		if(prob(chance))
-			health -= P.damage/2
-			if (health > 0)
-				visible_message("<span class='warning'>[P] hits \the [src]!</span>")
-				return 0
-			else
-				visible_message("<span class='warning'>[src] breaks down!</span>")
-				break_to_parts()
-				return 1
+			return 0
 	return 1
 
 /obj/structure/table/attackby(obj/item/W, mob/user, list/params)

@@ -83,7 +83,8 @@
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Always use get_material_defaults to get this list unless you know what you're doing.
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
-	/// * Parts may be not be null by default, as null signifies that we do not use the materials system.
+	/// * This may be not be null by default, as null signifies that we do not use the materials system.
+	/// * List of parts, however, may have nulls to signify that a part is missing.
 	var/list/material_defaults
 
 	//? Sounds

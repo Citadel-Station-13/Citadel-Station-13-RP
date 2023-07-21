@@ -48,6 +48,7 @@
 	/// the key will be fed into print() during creation with the material id the user picked
 	/// autodetected if null.
 	/// this should obviously match material_parts on the /obj in question.
+	/// todo: add optional parts and constraints
 	var/list/material_costs
 	/// Items needed, as ingredients list - see [code/__HELPERS/datastructs/ingredients.dm]
 	var/list/ingredients
