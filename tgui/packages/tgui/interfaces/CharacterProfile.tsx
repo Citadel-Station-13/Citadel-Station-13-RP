@@ -68,7 +68,7 @@ export const CharacterProfile = (props, context) => {
             <Stack.Item pl="10px">
               <CharacterProfileImageElement />
             </Stack.Item>
-            <Stack.Item Stack-direction="column" pl="10px" width="65%">
+            <Stack.Item Stack-direction="column" pl="10px">
               <Collapsible title={combinedspeciesname}>
                 <Section>
                   {data.species_text}

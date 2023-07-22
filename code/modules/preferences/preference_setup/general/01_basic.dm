@@ -170,7 +170,7 @@
 	else if(href_list["fullref"])
 		if(pref.full_ref_url)
 			if(alert(user, "Do you want to unset your headshot URL? An admin must set it again.", "Unset Headshot", "No", "Yes") == "Yes")
-				pref.headshot_url = null
+				pref.full_ref_url = null
 		else
 			to_chat(user, SPAN_BOLDWARNING("You must join the Discord and open a ticket in order to have your full reference URL set!"))
 		return PREFERENCES_REFRESH
