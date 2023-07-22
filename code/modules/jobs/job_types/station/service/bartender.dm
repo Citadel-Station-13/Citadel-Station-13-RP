@@ -10,8 +10,13 @@
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/bartender
 	pto_type = PTO_CIVILIAN
-	additional_access = list(ACCESS_GENERAL_BOTANY, ACCESS_GENERAL_BAR, ACCESS_GENERAL_KITCHEN)
-	minimal_access = list(ACCESS_GENERAL_BAR)
+	additional_access = list(
+		ACCESS_GENERAL_BOTANY,
+		ACCESS_GENERAL_KITCHEN,
+	)
+	minimal_access = list(
+		ACCESS_GENERAL_BAR,
+	)
 
 	outfit_type = /datum/outfit/job/station/bartender
 	desc = "A Bartender mixes drinks for the crew. They generally have permission to charge for drinks or deny service to unruly patrons."

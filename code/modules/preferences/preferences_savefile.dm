@@ -40,6 +40,7 @@
 		savefile_version = SAVEFILE_VERSION_MAX
 		// don't flush immediately incase they want to cancel/ahelp about something breaking
 		// save_preferences()
+	sanitize_global(io_errors)
 	queue_errors(io_errors, "error while migrating global data:")
 	// load legacy data
 	player_setup.load_preferences(S)
@@ -154,12 +155,13 @@
 	else if(current_version < CHARACTER_VERSION_MAX)
 		SScharacters.perform_character_migrations(S, current_version, io_errors, character, src)
 		current_version = CHARACTER_VERSION_MAX
+	sanitize_character(io_errors)
 	queue_errors(io_errors, "error while migrating slot [slot]:")
 	character[CHARACTER_DATA_VERSION] = current_version
 	// load legacy data
 	player_setup.load_character(S)
 	// rebuild previews
-	clear_character_previews() // Recalculate them on next show
+	clear_character_renders() // Recalculate them on next show
 	if(initialized)
 		auto_flush_errors()
 	return TRUE

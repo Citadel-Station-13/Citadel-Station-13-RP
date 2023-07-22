@@ -80,14 +80,13 @@
  * * source - mixture to filter
  * * sink - mixture to send unfiltered gas into
  * * divert - mixture to send filtered gas into
- * * gas_ids - list of gas ids to filter
- * * gas_groups - list of gas groups to filter
+ * * to_filter - what to filter, either a gas id or a set of gas groups.
  * * limit_moles - if set, only scrubs this many moles of gas at most
  * * limit_power - power limit in watts
  *
  * @return power draw
  */
-/proc/xgm_filter_gas(datum/gas_mixture/source, datum/gas_mixture/sink, datum/gas_mixture/divert, list/gas_ids, gas_groups, limit_moles, limit_power)
+/proc/xgm_filter_gas(datum/gas_mixture/source, datum/gas_mixture/sink, datum/gas_mixture/divert, to_filter, limit_moles, limit_power)
 	if(source.total_moles < MINIMUM_MOLES_TO_FILTER)
 		return 0
 	#warn impl
@@ -96,14 +95,32 @@
  * @params
  * * source - mixture to filter
  * * sink - mixture to send unfiltered gas into
- * * divert - mixture to send filtered gas into; this is anything with molar mass between lower and upper, inclusive
- * * lower - lower bound of moles we're targeting
- * * upper - upper bound of moles we're targeting
+ * * filtering - mixture to send filtered gas into, associated to gas id or set of gas groups.
  * * limit_moles - if set, only scrubs this many moles of gas at most
  * * limit_power - power limit in watts
  *
  * @return power draw
  */
-/proc/xgm_molar_filter_gas(datum/gas_mixture/source, datum/gas_mixture/sink, datum/gas_mixture/divert, lower, upper, limit_moles, limit_power)
+/proc/xgm_multi_filter_gas(datum/gas_mixture/source, datum/gas_mixture/sink, datum/gas_mixture/divert, to_filter, limit_moles, limit_power)
+	if(source.total_moles < MINIMUM_MOLES_TO_FILTER)
+		return 0
+
+
+/**
+ * @params
+ * * source - mixture to filter
+ * * sink - mixture to send unfiltered gas into
+ * * divert - mixture to send filtered gas into; this is anything with molar mass between lower and upper, inclusive
+ * * lower - lower bound of moles we're targeting
+ * * upper - upper bound of moles we're targeting
+ * * invert - divert anything outside of lower/upper instead.
+ * * limit_moles - if set, only scrubs this many moles of gas at most
+ * * limit_power - power limit in watts
+ *
+ * @return power draw
+ */
+/proc/xgm_molar_filter_gas(datum/gas_mixture/source, datum/gas_mixture/sink, datum/gas_mixture/divert, lower, upper, invert, limit_moles, limit_power)
+	if(source.total_moles < MINIMUM_MOLES_TO_FILTER)
+		return 0
 
 	#warn impl

@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+#warn port in rest from gas_types_hardcoded and audit heats/masses.
+
 /datum/gas/oxygen
 	id = GAS_ID_OXYGEN
 	name = "O2"
