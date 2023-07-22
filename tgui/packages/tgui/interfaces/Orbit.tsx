@@ -150,6 +150,11 @@ export const Orbit = (props: any, context: any) => {
             <Flex.Item>
               <Divider vertical />
             </Flex.Item>
+            <Flex.Item>
+              <Button onClick={() => act("refresh")}>
+                Refresh
+              </Button>
+            </Flex.Item>
           </Flex>
         </Section>
 
