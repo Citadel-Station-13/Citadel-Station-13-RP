@@ -1850,6 +1850,7 @@
 #include "code\game\rendering\hud_style.dm"
 #include "code\game\rendering\mob.dm"
 #include "code\game\rendering\screen.dm"
+#include "code\game\rendering\screen_legacy.dm"
 #include "code\game\rendering\atom_huds\alternate_appearance.dm"
 #include "code\game\rendering\atom_huds\atom_hud.dm"
 #include "code\game\rendering\atom_huds\data_huds.dm"

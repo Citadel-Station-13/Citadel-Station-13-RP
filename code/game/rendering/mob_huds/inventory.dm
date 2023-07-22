@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /datum/mob_hud/inventory
 	/// owning inventory
 	var/datum/inventory/host

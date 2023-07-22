@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 GLOBAL_LIST_INIT(hud_styles, init_hud_styles())
 
 /proc/init_hud_styles()

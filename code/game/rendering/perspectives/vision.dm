@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 GLOBAL_LIST_EMPTY(cached_vision_holders)
 
 /proc/cached_vision_holder(datum/vision/path_or_instance)
