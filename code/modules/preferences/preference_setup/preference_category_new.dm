@@ -7,3 +7,5 @@
 			. = FALSE
 
 // todo: multi stage random character generation
+// todo: categories should probably go; entries should have the ability to render as the TGUI section fully as
+//       opposed to defining categories manually.

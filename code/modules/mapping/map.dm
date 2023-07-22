@@ -142,6 +142,13 @@
 	abstract_type = /datum/map/station
 	category = "Stations"
 
+	/// force world to be bigger width
+	var/world_width
+	/// force world to be bigger height
+	var/world_height
+
+	//! legacy below
+
 	var/full_name = "Unnamed Map"
 
 	// Automatically populated lists made static for faster lookups

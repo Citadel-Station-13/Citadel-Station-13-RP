@@ -87,7 +87,13 @@
 	if(found)
 		if(user)
 			to_chat(user, "You remove \the [H] from \the [src].")
-		H.forceMove(get_turf(src))
+		//! Legacy code start
+		var/turf/T = get_turf(src)
+		if(T)
+			H.forceMove(T)
+		else
+			H.moveToNullspace()
+		//! End
 		H.holder2 = null
 		update_verbs()
 	if(critical && enabled)

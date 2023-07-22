@@ -14,6 +14,7 @@ interface CollapsibleProps extends BoxProps {
   color?: string;
   title?: string | InfernoNode;
   open?: BooleanLike;
+  captureKeys?: BooleanLike;
 }
 
 interface CollapsibleState {
@@ -50,6 +51,7 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
             <div className="Collapsible__toggle">
               <Button
                 fluid
+                captureKeys={props.captureKeys === undefined? false : props.captureKeys}
                 color={color}
                 icon={open ? 'chevron-down' : 'chevron-right'}
                 onClick={() => this.setState({ open: !open })}
