@@ -124,6 +124,11 @@ var/list/cached_space = list()
 		ny = TRANSITIONEDGE + 2
 		nx = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
 
+	nz = SAFEPICK(M.map_z)
+	if(!isnull(nz))
+		A.forceMove(locate(nx, ny, nz))
+		return
+
 	testing("[A] spacemoving from [M] ([M.x], [M.y]).")
 
 	var/turf/map = locate(M.x,M.y,(LEGACY_MAP_DATUM).overmap_z)

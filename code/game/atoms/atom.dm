@@ -750,11 +750,13 @@
 // todo: refactor
 /atom/proc/visible_message(message, self_message, blind_message, range = world.view)
 	var/list/see
+	//! LEGACY
 	if(isbelly(loc))
 		var/obj/belly/B = loc
 		see = B.effective_emote_hearers()
 	else
 		see = get_hearers_in_view(range, src)
+	//! end
 	for(var/atom/movable/AM as anything in see)
 		if(ismob(AM))
 			var/mob/M = AM

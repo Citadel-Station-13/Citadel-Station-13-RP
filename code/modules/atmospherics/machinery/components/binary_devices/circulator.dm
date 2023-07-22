@@ -8,7 +8,12 @@
 	desc = "A gas circulator turbine and heat exchanger."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "circ-unassembled"
-	anchored = 0
+	layer = OBJ_LAYER
+	plane = OBJ_PLANE
+	climb_allowed = TRUE
+	depth_projected = TRUE
+	depth_level = 12
+	anchored = FALSE
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
 
 	var/kinetic_efficiency = 0.04 //combined kinetic and kinetic-to-electric efficiency
