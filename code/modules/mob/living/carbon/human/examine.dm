@@ -100,7 +100,7 @@
 	var/speciesblurb
 	var/skip_species = FALSE
 
-	if(skipface || get_visible_name() == "Unknown")
+	if(skipface || get_visible_name_legacy() == "Unknown")
 		skip_species = TRUE
 
 	else if(looks_synth)

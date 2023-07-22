@@ -3214,6 +3214,7 @@
 #include "code\modules\mob\perspective.dm"
 #include "code\modules\mob\physiology.dm"
 #include "code\modules\mob\pulling.dm"
+#include "code\modules\mob\recognition.dm"
 #include "code\modules\mob\say.dm"
 #include "code\modules\mob\say_vr.dm"
 #include "code\modules\mob\ssd.dm"

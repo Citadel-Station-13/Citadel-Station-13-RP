@@ -1,7 +1,7 @@
 /mob/living/carbon/human/say(var/message,var/whispering=0)
 	var/alt_name = ""
 	if(name != GetVoice())
-		alt_name = "(as [get_id_name("Unknown")])"
+		alt_name = "(as [get_id_name_legacy("Unknown")])"
 
 	message = sanitize_or_reflect(message,src) // Reflect too-long messages, within reason
 	..(message, alt_name = alt_name, whispering = whispering)
@@ -92,7 +92,7 @@
 				if(changer.voice)
 					voice_sub = changer.voice
 				else
-					voice_sub = get_id_name()
+					voice_sub = get_id_name_legacy()
 	if(voice_sub)
 		return voice_sub
 	if(mind && mind.changeling && mind.changeling.mimicing)

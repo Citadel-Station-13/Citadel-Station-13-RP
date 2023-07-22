@@ -214,7 +214,7 @@
 /mob/living/simple_mob/otie/security/proc/target_name(mob/living/T)
 	if(ishuman(T))
 		var/mob/living/carbon/human/H = T
-		return H.get_id_name("unidentified person")
+		return H.get_id_name_legacy("unidentified person")
 	return "unidentified lifeform"
 
 //Pet 4 friendly

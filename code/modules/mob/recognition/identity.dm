@@ -65,6 +65,18 @@ GLOBAL_LIST_EMPTY(active_identity_holders)
 /datum/identity_holder/proc/seeded_identifier(seed)
 	return sha1(seed)
 
+/datum/identity_holder/proc/facial_discriminator()
+	return recognition_identifier_discriminator(facial_identifier)
+
+/datum/identity_holder/proc/voice_discriminator()
+	return recognition_identifier_discriminator(voice_identifier)
+
+/proc/recognition_identifier_discriminator(identifier)
+	var/identifier_length = length(identifier)
+	if(identifier_length < 4)
+		return identifier
+	return copytext(identifier, length(identifier) - 4 + 1)
+
 /datum/identity_holder/serialize()
 	. = ..()
 	.["face"] = facial_identifier

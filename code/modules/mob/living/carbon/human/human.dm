@@ -263,20 +263,20 @@
 		else
 			return if_no_id
 
-//repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a seperate proc as it'll be useful elsewhere
-/mob/living/carbon/human/proc/get_visible_name()
+//repurposed proc. Now it combines get_id_name_legacy() and get_face_name_legacy() to determine a mob's name variable. Made into a seperate proc as it'll be useful elsewhere
+/mob/living/carbon/human/proc/get_visible_name_legacy()
 	if( wear_mask && (wear_mask.inv_hide_flags&HIDEFACE) )	//Wearing a mask which hides our face, use id-name if possible
-		return get_id_name("Unknown")
+		return get_id_name_legacy("Unknown")
 	if( head && (head.inv_hide_flags&HIDEFACE) )
-		return get_id_name("Unknown")		//Likewise for hats
-	var/face_name = get_face_name()
-	var/id_name = get_id_name("")
+		return get_id_name_legacy("Unknown")		//Likewise for hats
+	var/face_name = get_face_name_legacy()
+	var/id_name = get_id_name_legacy("")
 	if((face_name == "Unknown") && id_name && (id_name != face_name))
 		return "[face_name] (as [id_name])"
 	return face_name
 
 //Returns "Unknown" if facially disfigured and real_name if not. Useful for setting name when polyacided or when updating a human's name variable
-/mob/living/carbon/human/proc/get_face_name()
+/mob/living/carbon/human/proc/get_face_name_legacy()
 	var/obj/item/organ/external/head = get_organ(BP_HEAD)
 	if(!head || head.disfigured || head.is_stump() || !real_name || (MUTATION_HUSK in mutations) )	//disfigured. use id-name if possible
 		return "Unknown"
@@ -284,7 +284,7 @@
 
 //gets name from ID or PDA itself, ID inside PDA doesn't matter
 //Useful when player is being seen by other mobs
-/mob/living/carbon/human/proc/get_id_name(var/if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_id_name_legacy(var/if_no_id = "Unknown")
 	. = if_no_id
 	if(istype(wear_id,/obj/item/pda))
 		var/obj/item/pda/P = wear_id

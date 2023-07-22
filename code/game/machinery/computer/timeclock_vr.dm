@@ -251,7 +251,7 @@
 		to_chat(usr, "<span class='warning'>Facial recognition scan failed due to physical obstructions. Access denied.</span>")
 		flick(icon, "timeclock_denied")
 		return FALSE
-	else if(H.get_face_name() == "Unknown" || !(H.real_name == card.registered_name))
+	else if(H.get_face_name_legacy() == "Unknown" || !(H.real_name == card.registered_name))
 		to_chat(usr, "<span class='warning'>Facial recognition scan failed. Access denied.</span>")
 		flick(icon, "timeclock_denied")
 		return FALSE
