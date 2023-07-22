@@ -217,7 +217,7 @@
 	ASSERT(!initialized)
 	ASSERT(!world_is_loaded)
 	// bootstrap
-	load_server_initial_reservation_area(instance.width, instance.height)
+	load_server_initial_reservation_area(max(instance.world_width, instance.width), max(instance.world_height, instance.height))
 	// mark
 	world_is_loaded = TRUE
 	loaded_station = instance
