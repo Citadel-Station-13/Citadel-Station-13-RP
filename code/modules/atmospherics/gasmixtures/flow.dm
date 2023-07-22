@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * @params
  * * source - mixture to scrub
@@ -85,7 +88,8 @@
  * @return power draw
  */
 /proc/xgm_filter_gas(datum/gas_mixture/source, datum/gas_mixture/sink, datum/gas_mixture/divert, list/gas_ids, gas_groups, limit_moles, limit_power)
-
+	if(source.total_moles < MINIMUM_MOLES_TO_FILTER)
+		return 0
 	#warn impl
 
 /**
