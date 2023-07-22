@@ -280,10 +280,6 @@
 								// suit storage
 								locnames += "on your suit"
 								tanks += H.s_store
-								// hands
-								for(var/obj/item/tank/tank as anything in H.get_held_items_of_type(/obj/item/tank))
-									locnames += "in your [tank.held_index % 2? "right" : "left"] hand"
-									tanks += tank
 								// pockets
 								locnames += "in your left pocket"
 								tanks += H.l_store
@@ -523,4 +519,4 @@
 
 /atom/movable/screen/setup_preview/bg/Click(params)
 	pref?.bgstate = next_list_item(pref.bgstate, pref.bgstate_options)
-	pref?.update_preview_icon()
+	pref?.update_character_previews()
