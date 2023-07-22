@@ -167,6 +167,10 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAX_NTNET_LOGS	500
 #define MIN_NTNET_LOGS	10
 
+#define NTOS_EMAIL_NONEWMESSAGES	0
+#define NTOS_EMAIL_NOTIFALREADY		1
+#define NTOS_EMAIL_NEWMESSAGE		2
+
 
 // Special return values from bullet_act(). Positive return values are already used to indicate the blocked level of the projectile.
 /// If the projectile should continue flying after calling bullet_act()
