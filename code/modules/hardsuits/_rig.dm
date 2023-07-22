@@ -34,7 +34,7 @@
 
 	// Activation
 	/// activation state
-	var/activation_state = RIG_ACTIVATION_OFF
+	var/activation_state = HARDSUIT_ACTIVATION_OFF
 	/// last online, set in process()
 	var/last_online = FALSE
 
@@ -244,7 +244,7 @@
 
 
 /obj/item/hardsuit/proc/reset()
-	set_activation_state(RIG_ACTIVATION_OFF)
+	set_activation_state(HARDSUIT_ACTIVATION_OFF)
 	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 	//Reset the trap and upgrade it. Won't affect standard rigs.
 	trapSprung = 0
@@ -324,7 +324,7 @@
 		M.client.screen += booting_R
 
 	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
-	set_activation_state(is_sealing? RIG_ACTIVATION_STARTUP : RIG_ACTIVATION_SHUTDOWN)
+	set_activation_state(is_sealing? HARDSUIT_ACTIVATION_STARTUP : HARDSUIT_ACTIVATION_SHUTDOWN)
 
 	if(is_sealing && !suit_is_deployed())
 		M.visible_message("<span class='danger'>[M]'s suit flashes an error light.</span>","<span class='danger'>Your suit flashes an error light. It can't function properly without being fully deployed.</span>")
@@ -410,10 +410,10 @@
 
 	// Success!
 	if(is_sealing)
-		set_activation_state(RIG_ACTIVATION_ON)
+		set_activation_state(HARDSUIT_ACTIVATION_ON)
 		ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 	else
-		set_activation_state(RIG_ACTIVATION_OFF)
+		set_activation_state(HARDSUIT_ACTIVATION_OFF)
 		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 
 	if(M.hud_used)

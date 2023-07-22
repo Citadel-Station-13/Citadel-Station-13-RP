@@ -1,9 +1,30 @@
 /datum/component/rig_piece
-
+	#warn more vars?
+	/// display name - what is used for UIs
+	var/display_name
+	/// are we sealed?
+	var/sealed = FALSE
 	/// piece intrinsic flags
 	var/rig_piece_flags = NONE
-	/// multiplier to armor to apply - does *not* impact tier
+	/// multiplier to armor to apply - does *not* affect armor tier
 	var/armor_multiplier = 1
+
+/datum/component/rig_piece/Initialize()
+	. = ..()
+	if(. & COMPONENT_INCOMPATIBLE)
+		return
+	if(!isitem(parent))
+		return . | COMPONENT_INCOMPATIBLE
+	#warn impl
+
+/datum/component/rig_piece/RegisterWithParent()
+	. = ..()
+
+/datum/component/rig_piece/UnregisterFromParent()
+	. = ..()
+
+
+#warn impl all
 
 /obj/item/clothing/head/rig
 
