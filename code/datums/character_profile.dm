@@ -28,16 +28,16 @@ GLOBAL_LIST_EMPTY(cached_previews)
 	data["vore_tag"] = H?.client?.prefs?.directory_tag || "Unset"
 	data["erp_tag"] = H?.client?.prefs?.directory_erptag || "Unset"
 	data["species_name"] = H?.species?.name
-	data["species_text"] = replacetext(H?.species?.blurb, "<br/>", "\n")
-	data["flavortext_general"] = replacetext(H?.flavor_texts["general"], "\n", "<BR>") || ""
-	data["flavortext_head"] = replacetext(H?.flavor_texts["head"], "\n", "<BR>") || ""
-	data["flavortext_face"] = replacetext(H?.flavor_texts["face"], "\n", "<BR>") || ""
-	data["flavortext_eyes"] = replacetext(H?.flavor_texts["eyes"], "\n", "<BR>") || ""
-	data["flavortext_torso"] = replacetext(H?.flavor_texts["torso"], "\n", "<BR>") || ""
-	data["flavortext_arms"] = replacetext(H?.flavor_texts["arms"], "\n", "<BR>") || ""
-	data["flavortext_hands"] = replacetext(H?.flavor_texts["hands"], "\n", "<BR>") || ""
-	data["flavortext_legs"] = replacetext(H?.flavor_texts["legs"], "\n", "<BR>") || ""
-	data["flavortext_feet"] = replacetext(H?.flavor_texts["feet"], "\n", "<BR>") || ""
+	data["species_text"] = html_decode(replacetext(H?.species?.blurb, "<br/>", "\n"))
+	data["flavortext_general"] = html_decode(replacetext(H?.flavor_texts["general"], "\n", "<BR>") || "")
+	data["flavortext_head"] = html_decode(replacetext(H?.flavor_texts["head"], "\n", "<BR>") || "")
+	data["flavortext_face"] = html_decode(replacetext(H?.flavor_texts["face"], "\n", "<BR>") || "")
+	data["flavortext_eyes"] = html_decode(replacetext(H?.flavor_texts["eyes"], "\n", "<BR>") || "")
+	data["flavortext_torso"] = html_decode(replacetext(H?.flavor_texts["torso"], "\n", "<BR>") || "")
+	data["flavortext_arms"] = html_decode(replacetext(H?.flavor_texts["arms"], "\n", "<BR>") || "")
+	data["flavortext_hands"] = html_decode(replacetext(H?.flavor_texts["hands"], "\n", "<BR>") || "")
+	data["flavortext_legs"] = html_decode(replacetext(H?.flavor_texts["legs"], "\n", "<BR>") || "")
+	data["flavortext_feet"] = html_decode(replacetext(H?.flavor_texts["feet"], "\n", "<BR>") || "")
 
 	return data
 
