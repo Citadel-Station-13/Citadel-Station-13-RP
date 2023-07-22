@@ -196,7 +196,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 
 		if(machine_stat & BROKEN)
 			damage_overlay = sparks_broken_file
-		else if(health < maxhealth * 3/4)
+		else if(integrity < integrity_max * 2 / 3)
 			damage_overlay = sparks_damaged_file
 
 	if(welded)
@@ -221,8 +221,9 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	))
 
 /obj/machinery/door/airlock/attack_generic(var/mob/living/user, var/damage)
+	// todo: refactor
 	if(machine_stat & (BROKEN|NOPOWER))
-		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
+		if(damage >= 5)
 			if(src.locked || src.welded)
 				visible_message("<span class='danger'>\The [user] begins breaking into \the [src] internals!</span>")
 				user.set_AI_busy(TRUE) // If the mob doesn't have an AI attached, this won't do anything.
@@ -991,22 +992,20 @@ About the new airlock wires panel:
 /mob/living/blocks_airlock()
 	return 1
 
+// todo: refactor
 /atom/movable/proc/airlock_crush(var/crush_damage)
 	return 0
 
 /obj/machinery/portable_atmospherics/canister/airlock_crush(var/crush_damage)
 	. = ..()
-	health -= crush_damage
-	healthcheck()
+	damage_integrity(crush_damage)
 
 /obj/effect/energy_field/airlock_crush(var/crush_damage)
 	adjust_strength(crush_damage)
 
 /obj/structure/closet/airlock_crush(var/crush_damage)
 	..()
-	damage(crush_damage)
-	for(var/atom/movable/AM in src)
-		AM.airlock_crush()
+	damage_integrity(crush_damage)
 	return 1
 
 /mob/living/airlock_crush(var/crush_damage)

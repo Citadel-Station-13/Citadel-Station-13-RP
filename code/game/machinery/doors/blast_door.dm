@@ -136,9 +136,9 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	src.add_fingerprint(user, 0, I)
-	if(istype(CI, /obj/item)) // For reasons unknown, sometimes C is actually not what it is advertised as, like a mob.
+	if(istype(I, /obj/item)) // For reasons unknown, sometimes C is actually not what it is advertised as, like a mob.
 		if(I.pry == 1 && (user.a_intent != INTENT_HARM || (machine_stat & BROKEN))) // Can we pry it open with something, like a crowbar/fireaxe/lingblade?
-			if(istype(C,/obj/item/material/twohanded/fireaxe)) // Fireaxes need to be in both hands to pry.
+			if(istype(I,/obj/item/material/twohanded/fireaxe)) // Fireaxes need to be in both hands to pry.
 				var/obj/item/material/twohanded/fireaxe/F = I
 				if(!F.wielded)
 					to_chat(user, "<span class='warning'>You need to be wielding \the [F] to do that.</span>")
@@ -152,7 +152,7 @@
 				to_chat(user, "<span class='notice'>[src]'s motors resist your effort.</span>")
 			return
 	else if(istype(I, /obj/item/stack/material) && I.get_material_name() == "plasteel") // Repairing.
-		var/amt = CEILING((maxhealth - health)/150, 1)
+		var/amt = CEILING((integrity_max - integrity)/150, 1)
 		if(!amt)
 			to_chat(user, "<span class='notice'>\The [src] is already fully repaired.</span>")
 			return

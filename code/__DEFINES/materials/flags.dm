@@ -18,7 +18,7 @@ DEFINE_BITFIELD(material_constraints, list(
 //* /datum/material_trait material_trait_flags
 
 /// outgoing melee or throw impact
-#define MATERIAL_TRAIT_MELEE_ATTACK (1<<0)
+#define MATERIAL_TRAIT_MELEE_OUTBOUND (1<<0)
 /// incoming melee or throw impact
 #define MATERIAL_TRAIT_MELEE_INBOUND (1<<1)
 /// incoming projectile

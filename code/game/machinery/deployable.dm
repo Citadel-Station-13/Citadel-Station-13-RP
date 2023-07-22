@@ -51,7 +51,7 @@
 	else if(I.is_wrench())
 		if(integrity < integrity_max)
 			set_integrity(integrity_max)
-			emagged = FALSe
+			emagged = FALSE
 			req_access = list(ACCESS_SECURITY_EQUIPMENT)
 			visible_message(SPAN_WARNING("[user] repairs \the [src]!"))
 			return
