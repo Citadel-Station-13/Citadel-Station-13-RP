@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /datum/controller/subsystem/job
 	/// all access datums
 	var/tmp/list/datum/access/access_datums
