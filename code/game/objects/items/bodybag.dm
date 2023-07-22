@@ -36,11 +36,11 @@
 	name = "body bag"
 	desc = "A plastic bag designed for the storage and transportation of cadavers."
 	icon = 'icons/obj/medical/bodybag.dmi'
-	icon_state = "bodybag_closed"
-	icon_closed = "bodybag_closed"
-	icon_opened = "bodybag_open"
+	closet_appearance = null
 	open_sound = 'sound/items/zip.ogg'
 	close_sound = 'sound/items/zip.ogg'
+	icon_opened = "bodybag_open"
+	icon_closed = "bodybag_closed"
 	var/item_path = /obj/item/bodybag
 	density = 0
 	storage_capacity = (MOB_MEDIUM * 2) - 1
@@ -111,7 +111,7 @@
 	if(opened)
 		icon_state = icon_opened
 	else
-		if(contains_body > 0)
+		if(contains_body)
 			icon_state = "bodybag_closed1"
 		else
 			icon_state = icon_closed
@@ -218,9 +218,9 @@
 		return
 
 	if(H.reagents)
-		syringe.reagents.trans_to_mob(H, 30, CHEM_BLOOD)
+		syringe.reagents.trans_to_mob(H, 30, CHEM_INJECT)
 
-/obj/structure/closet/body_bag/cryobag/examine(mob/user)
+/obj/structure/closet/body_bag/cryobag/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user)) //The bag's rather thick and opaque from a distance.
 		. += "<span class='info'>You peer into \the [src].</span>"

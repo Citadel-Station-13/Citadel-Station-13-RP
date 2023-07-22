@@ -6,7 +6,7 @@
 	item_state = "pen"
 	var/pointer_icon_state
 	slot_flags = SLOT_BELT
-	matter = list(MAT_GLASS = 500,"metal" = 500)
+	materials = list(MAT_GLASS = 500,"metal" = 500)
 	w_class = 2 //Increased to 2, because diodes are w_class 2. Conservation of matter.
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 1)
 	var/turf/pointer_loc
@@ -63,8 +63,8 @@
 		..()
 	return
 
-/obj/item/laser_pointer/afterattack(var/atom/target, var/mob/living/user, flag, params)
-	if(flag)	//we're placing the object on a table or in backpack
+/obj/item/laser_pointer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)	//we're placing the object on a table or in backpack
 		return
 	laser_act(target, user)
 

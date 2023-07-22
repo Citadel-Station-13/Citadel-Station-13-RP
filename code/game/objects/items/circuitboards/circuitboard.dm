@@ -9,6 +9,10 @@
 	name = "circuit board"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "id_mod"
+	materials = list(
+		MAT_STEEL = 1000,
+		MAT_GLASS = 250,
+	)
 	origin_tech = list(TECH_DATA = 2)
 	density = FALSE
 	anchored = FALSE
@@ -94,7 +98,7 @@
 
 	M.RefreshParts()
 
-/obj/item/circuitboard/examine(mob/user)
+/obj/item/circuitboard/examine(mob/user, dist)
 	. = ..()
 	if(LAZYLEN(req_components))
 		var/list/nice_list = list()

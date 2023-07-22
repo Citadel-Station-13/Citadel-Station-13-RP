@@ -1,13 +1,7 @@
 //SC Exploration Secure Closets Port
 /obj/structure/closet/secure_closet/explorer
 	name = "explorer locker"
-	icon = 'icons/obj/closet.dmi'
-	icon_state = "secureexp1"
-	icon_closed = "secureexp"
-	icon_locked = "secureexp1"
-	icon_opened = "secureexpopen"
-	icon_broken = "secureexpbroken"
-	icon_off = "secureexpoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/expedition
 	req_access = list(ACCESS_GENERAL_EXPLORER)
 
 	starts_with = list(
@@ -42,7 +36,7 @@
 //SC Misc_vr locker.
 /obj/structure/closet/secure_closet/sar
 	name = "field medic locker"
-
+	closet_appearance = /singleton/closet_appearance/secure_closet/expedition/medic
 	starts_with = list(
 		/obj/item/storage/backpack/dufflebag/emt,
 		/obj/item/storage/box/autoinjectors,
@@ -81,6 +75,7 @@
 //Pilot Locker
 /obj/structure/closet/secure_closet/pilot
 	name = "pilot locker"
+	closet_appearance = /singleton/closet_appearance/secure_closet/expedition
 	req_access = list(ACCESS_GENERAL_PILOT)
 
 /obj/structure/closet/secure_closet/pilot
@@ -118,13 +113,7 @@
 //Pathfinder
 /obj/structure/closet/secure_closet/pathfinder
 	name = "pathfinder locker"
-	icon = 'icons/obj/closet.dmi'
-	icon_state = "secureexp1"
-	icon_closed = "secureexp"
-	icon_locked = "secureexp1"
-	icon_opened = "secureexpopen"
-	icon_broken = "secureexpbroken"
-	icon_off = "secureexpoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/expedition/pathfinder
 	req_access = list(ACCESS_GENERAL_GATEWAY)
 
 	starts_with = list(

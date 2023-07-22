@@ -1,7 +1,7 @@
 /obj/item/clothing/suit/armor
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_OVER\
 		|ACCESSORY_SLOT_MEDAL\
@@ -138,7 +138,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	slowdown = 1
@@ -304,7 +304,7 @@
 	allowed = list(/obj/item/gun,/obj/item/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
@@ -380,6 +380,13 @@
 	desc = "A trenchcoat augmented with a special alloy for some protection and style."
 	icon_state = "hostrench"
 	inv_hide_flags = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/vest/hoscoat/combatcoat
+	name = "security combat coat"
+	desc = "A heavily armored vest worn under a thick coat. The gold embroidery suggests whoever wears this possesses a high rank."
+	icon_state = "hoscombatcoat"
+	blood_overlay_type = "armor"
+	valid_accessory_slots = null
 
 /obj/item/clothing/suit/storage/vest/pcrc
 	name = "PCRC armor vest"
@@ -592,13 +599,6 @@
 	siemens_coefficient = 0.6
 	valid_accessory_slots = null
 
-/obj/item/clothing/suit/armor/combat/syndicate
-	name = "syndicate combat vest"
-	desc = "A heavily armored vest worn over a thick coat. The gold embroidery suggests whoever wears this possesses a high rank."
-	icon_state = "syndievest"
-	blood_overlay_type = "armor"
-	valid_accessory_slots = null
-
 //Modular plate carriers
 /obj/item/clothing/suit/armor/pcarrier
 	name = "plate carrier"
@@ -809,12 +809,6 @@
 	else
 		to_chat(H,"<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
 		return FALSE
-
-/obj/item/clothing/suit/storage/vest/hoscoat/jensen
-	name = "armored trenchcoat"
-	desc = "A trenchcoat augmented with a special alloy for some protection and style."
-	icon_state = "hostrench"
-	inv_hide_flags = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/vest/oricon
 	name = "\improper Orion Confederation Government armored vest"

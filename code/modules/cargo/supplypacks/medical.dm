@@ -119,7 +119,7 @@
 			/obj/item/storage/belt/medical,
 			/obj/item/radio/headset/heads/cmo,
 			/obj/item/clothing/under/rank/chief_medical_officer,
-			/obj/item/reagent_containers/hypospray/vial,
+			/obj/item/storage/hypokit/advanced/cmo,
 			/obj/item/clothing/accessory/stethoscope,
 			/obj/item/clothing/glasses/hud/health,
 			/obj/item/clothing/suit/storage/toggle/labcoat/cmo,
@@ -176,7 +176,8 @@
 			/obj/item/reagent_containers/dropper,
 			/obj/item/healthanalyzer,
 			/obj/item/storage/box/pillbottles,
-			/obj/item/reagent_containers/syringe
+			/obj/item/storage/box/syringes,
+			/obj/item/storage/hypokit,
 			)
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanomed
@@ -203,8 +204,8 @@
 			/obj/item/healthanalyzer,
 			/obj/item/cartridge/medical,
 			/obj/item/flashlight/pen,
-			/obj/item/reagent_containers/syringe,
-			/obj/item/clothing/accessory/storage/white_vest
+			/obj/item/clothing/accessory/storage/white_vest,
+			/obj/item/storage/hypokit,
 			)
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanomed
@@ -422,7 +423,7 @@
 	container_name = "Compact Defibrillator crate"
 	access = ACCESS_MEDICAL_EQUIPMENT
 
-/datum/supply_pack/med/ml3m
+/datum/supply_pack/med/medigun
 	name = "Cell-Loaded Medigun crate"
 	contains = list(
 			/obj/item/gun/ballistic/cell_loaded/medical = 1,
@@ -433,7 +434,7 @@
 	container_name = "Cell-Loaded Medigun crate"
 	access = ACCESS_MEDICAL_CMO
 
-/datum/supply_pack/med/ml3m_cells
+/datum/supply_pack/med/medigun_cells
 	name = "Cell-Loaded Medigun Cell Pack crate"
 	contains = list(
 			/obj/item/ammo_casing/microbattery/medical/brute = 3,

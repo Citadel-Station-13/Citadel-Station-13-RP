@@ -25,7 +25,7 @@
 		set_context(context)
 
 /obj/item/universal_translator/Destroy()
-	if(context)
+	if(context && !ispath(context))
 		QDEL_NULL(context)
 	return ..()
 
@@ -47,7 +47,7 @@
 		return
 	to_chat(loc, SPAN_NOTICE("New language detected. Beginning translation network training."))
 
-/obj/item/universal_translator/examine(mob/user)
+/obj/item/universal_translator/examine(mob/user, dist)
 	. = ..()
 	if(cassette_translation)
 		. += SPAN_NOTICE("Use a cassette tape on this to translate the tape's contents where possible.")

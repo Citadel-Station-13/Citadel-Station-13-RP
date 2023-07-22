@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/effect/overmap/visitable/ship/manta_ship,
+/obj/overmap/entity/visitable/ship/manta_ship,
 /turf/space,
 /area/space)
 "ab" = (
@@ -2019,7 +2019,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/effect/overmap/visitable/ship/landable/manta_ship_boat,
+/obj/overmap/entity/visitable/ship/landable/manta_ship_boat,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "jF" = (
@@ -4833,7 +4833,7 @@
 /area/ship/manta/hallways_star)
 "xQ" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/airlock/glass_engineeringatmos{
+/obj/machinery/door/airlock/glass/engineeringatmos{
 	req_one_access = list(150)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8376,10 +8376,6 @@
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
-"Qz" = (
-/obj/machinery/holopad/ship/starts_inactive,
-/turf/space,
-/area/space)
 "QD" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -9249,7 +9245,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_one_access = list(150)
 	},
@@ -14281,7 +14277,7 @@ yz
 yz
 yz
 yz
-Qz
+yz
 yz
 yz
 yz

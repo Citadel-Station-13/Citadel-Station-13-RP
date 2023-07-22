@@ -14,7 +14,13 @@
  * * Intialize the transform of the mob
  */
 /mob/Initialize(mapload)
-	mob_list_register(stat)
+	// mob lists
+	GLOB.mob_list += src
+	if(stat == DEAD)
+		dead_mob_list += src
+	else
+		living_mob_list += src
+	// atom HUDs
 	set_key_focus(src)
 	prepare_huds()
 	for(var/v in GLOB.active_alternate_appearances)
@@ -22,6 +28,7 @@
 			continue
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
+	// todo: remove hooks
 	hook_vr("mob_new",list(src))
 	// abilities
 	init_abilities()
@@ -44,29 +51,7 @@
 	update_ssd_overlay()
 	return ..()
 
-/**
- * Delete a mob
- *
- * Removes mob from the following global lists
- * * GLOB.mob_list
- * * dead_mob_list
- * * living_mob_list
- *
- * Unsets the focus var
- *
- * Clears alerts for this mob
- *
- * Resets all the observers perspectives to the tile this mob is on
- *
- * qdels any client colours in place on this mob
- *
- * Ghostizes the client attached to this mob
- *
- * Parent call
- *
- * Returns QDEL_HINT_HARDDEL (don't change this)
- */
-/mob/Destroy()//This makes sure that mobs with GLOB.clients/keys are not just deleted from the game.
+/mob/Destroy()
 	// status effects
 	for(var/id in status_effects)
 		var/datum/status_effect/effect = status_effects[id]
@@ -74,9 +59,13 @@
 	status_effects = null
 	// mob lists
 	mob_list_unregister(stat)
-	unset_machine()
+	// movespeed
 	movespeed_modification = null
+	// actionspeed
 	actionspeed_modification = null
+	// todo: remove machine
+	unset_machine()
+	// hud
 	for(var/alert in alerts)
 		clear_alert(alert)
 	if(client)
@@ -101,15 +90,14 @@
 	QDEL_NULL(recognition)
 	// this kicks out client
 	ghostize()
+	// rendering
 	if(hud_used)
 		QDEL_NULL(hud_used)
 	dispose_rendering()
-	if(plane_holder)
-		QDEL_NULL(plane_holder)
-	// with no client, we can safely remove perspective this way snow-flakily
-	if(using_perspective)
-		using_perspective.RemoveMob(src)
-		using_perspective = null
+	// perspective
+	using_perspective?.remove_mobs(src, TRUE)
+	if(self_perspective)
+		QDEL_NULL(self_perspective)
 	..()
 	return QDEL_HINT_HARDDEL
 
@@ -185,6 +173,9 @@
 	. = ..()
 	if(C.statpanel_tab("Status"))
 		STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
+		STATPANEL_DATA_ENTRY("Map", "[(LEGACY_MAP_DATUM)?.name || "Loading..."]")
+		if(!isnull(SSmapping.next_station) && (SSmapping.next_station.name != SSmapping.loaded_station.name))
+			STATPANEL_DATA_ENTRY("Next Map", "[SSmapping.next_station.name]")
 
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 // todo: refactor
@@ -342,7 +333,7 @@
 /mob/proc/do_examinate(atom/A)
 	var/list/result
 	if(client)
-		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
+		result = A.examine(src, game_range_to(src, A)) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
 	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
@@ -571,6 +562,9 @@
 	set category = "OOC"
 	set desc = "Return to the lobby."
 
+	// don't lose out on that sweet observer playtime
+	SSplaytime.queue_playtimes(client)
+
 	if(stat != DEAD)
 		to_chat(usr, SPAN_BOLDNOTICE("You must be dead to use this!"))
 		return
@@ -623,9 +617,7 @@
 	set name = "Observe"
 	set category = "OOC"
 
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified))
-		return
-	else if(stat != DEAD || istype(src, /mob/new_player))
+	if(stat != DEAD || istype(src, /mob/new_player))
 		to_chat(usr, "<font color=#4F49AF>You must be observing to use this!</font>")
 		return
 
@@ -1178,6 +1170,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = FALSE
 	pixel_x -= shift_pixel_x
 	pixel_y -= shift_pixel_y
+	wallflowering = NONE
 	shift_pixel_x = 0
 	shift_pixel_y = 0
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
@@ -1188,6 +1181,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	pixel_x += (val - shift_pixel_x)
 	shift_pixel_x = val
+	switch(val)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(EAST)) | WEST
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(EAST|WEST)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(WEST)) | EAST
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/set_pixel_shift_y(val)
@@ -1196,6 +1196,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	pixel_y += (val - shift_pixel_y)
 	shift_pixel_y = val
+	switch(val)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(NORTH)) | SOUTH
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(NORTH|SOUTH)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(SOUTH)) | NORTH
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/adjust_pixel_shift_x(val)
@@ -1204,6 +1211,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	shift_pixel_x += val
 	pixel_x += val
+	switch(shift_pixel_x)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(EAST)) | WEST
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(EAST|WEST)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(WEST)) | EAST
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/adjust_pixel_shift_y(val)
@@ -1212,6 +1226,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	shift_pixel_y += val
 	pixel_y += val
+	switch(shift_pixel_y)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(NORTH)) | SOUTH
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(NORTH|SOUTH)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(SOUTH)) | NORTH
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 //? Reachability

@@ -34,7 +34,7 @@
 	defer_initialisation = TRUE
 
 // The 'ship' of the excursion shuttle
-/obj/effect/overmap/visitable/ship/landable/skipjack
+/obj/overmap/entity/visitable/ship/landable/skipjack
 	name = "Unknown Vessel"
 	desc = "Scans inconclusive."
 	vessel_mass = 4000

@@ -10,7 +10,7 @@
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
-	matter = list(MAT_STEEL = 4000, MAT_GLASS = 6000)
+	materials = list(MAT_STEEL = 4000, MAT_GLASS = 6000)
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5)
 	var/datum/reagents/supply
 	var/efficiency = 15 //How many units reagent per 1 unit nanopaste
@@ -37,7 +37,7 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/nifrepairer/afterattack(var/atom/target, var/mob/user, var/proximity)
+/obj/item/nifrepairer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target.is_open_container() || !target.reagents)
 		return 0
 
@@ -54,7 +54,7 @@
 	update_icon()
 	return 1
 
-/obj/item/nifrepairer/examine(mob/user)
+/obj/item/nifrepairer/examine(mob/user, dist)
 	. = ..()
 	if(supply.total_volume)
 		. += "<span class='notice'>\The [src] contains [supply.total_volume] units of programmed nanites, ready for dispensing.</span>"

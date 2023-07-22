@@ -38,13 +38,13 @@
 	var/to_suit = /obj/item/clothing/suit/cardborg
 
 	//Conversion proc
-/obj/item/modkit_conversion/afterattack(obj/O, mob/user as mob)
+/obj/item/modkit_conversion/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/flag
 	var/to_type
-	if(istype(O,from_helmet))
+	if(istype(target,from_helmet))
 		flag = 1
 		to_type = to_helmet
-	else if(istype(O,from_suit))
+	else if(istype(target,from_suit))
 		flag = 2
 		to_type = to_suit
 	else
@@ -52,16 +52,16 @@
 	if(!(parts & flag))
 		to_chat(user, "<span class='warning'>This kit has no parts for this modification left.</span>")
 		return
-	if(istype(O,to_type))
-		to_chat(user, "<span class='notice'>[O] is already modified.</span>")
+	if(istype(target,to_type))
+		to_chat(user, "<span class='notice'>[target] is already modified.</span>")
 		return
-	if(!isturf(O.loc))
-		to_chat(user, "<span class='warning'>[O] must be safely placed on the ground for modification.</span>")
+	if(!isturf(target.loc))
+		to_chat(user, "<span class='warning'>[target] must be safely placed on the ground for modification.</span>")
 		return
 	playsound(user.loc, 'sound/items/Screwdriver.ogg', 100, 1)
-	var/N = new to_type(O.loc)
-	user.visible_message("<span class='warning'>[user] opens \the [src] and modifies \the [O] into \the [N].</span>","<span class='warning'>You open \the [src] and modify \the [O] into \the [N].</span>")
-	qdel(O)
+	var/N = new to_type(target.loc)
+	user.visible_message("<span class='warning'>[user] opens \the [src] and modifies \the [target] into \the [N].</span>","<span class='warning'>You open \the [src] and modify \the [target] into \the [N].</span>")
+	qdel(target)
 	parts &= ~flag
 	if(!parts)
 		qdel(src)
@@ -311,16 +311,16 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 
-/obj/item/fluff/id_kit_mime/afterattack(obj/O, mob/user as mob)
+/obj/item/fluff/id_kit_mime/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/new_icon = "mime"
-	if(istype(O,/obj/item/card/id) && O.icon_state != new_icon)
-		//O.icon = icon // just in case we're using custom sprite paths with fluff items.
-		O.icon_state = new_icon // Changes the icon without changing the access.
+	if(istype(target,/obj/item/card/id) && target.icon_state != new_icon)
+		//target.icon = icon // just in case we're using custom sprite paths with fluff items.
+		target.icon_state = new_icon // Changes the icon without changing the access.
 		playsound(user.loc, 'sound/items/polaroid2.ogg', 100, 1)
 		user.visible_message("<span class='warning'> [user] reprints their ID.</span>")
 		qdel(src)
-	else if(O.icon_state == new_icon)
-		to_chat(user, "<span class='notice'>[O] already has been reprinted.</span>")
+	else if(target.icon_state == new_icon)
+		to_chat(user, "<span class='notice'>[target] already has been reprinted.</span>")
 		return
 	else
 		to_chat(user, "<span class='warning'>This isn't even an ID card you idiot.</span>")
@@ -542,7 +542,7 @@
 	damage_force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 50)
+	materials = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
 /obj/item/cane/fluff/tasald
@@ -561,7 +561,7 @@
     damage_force = 1.0
     throw_force = 2.0
     w_class = ITEMSIZE_SMALL
-    matter = list(MAT_STEEL = 50)
+    materials = list(MAT_STEEL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
     hitsound = 'sound/weapons/sparkle.ogg'
     var/last_use = 0
@@ -586,19 +586,19 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 
-/obj/item/fluff/id_kit_ivy/afterattack(obj/O, mob/user as mob)
+/obj/item/fluff/id_kit_ivy/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/new_icon_state = "ivyholoid"
 	var/new_icon = 'icons/vore/custom_items_vr.dmi'
 	var/new_desc = "Its a thin screen showing ID information, but it seems to be flickering."
-	if(istype(O,/obj/item/card/id) && O.icon_state != new_icon)
-		O.icon = new_icon
-		O.icon_state = new_icon_state // Changes the icon without changing the access.
-		O.desc = new_desc
+	if(istype(target,/obj/item/card/id) && target.icon_state != new_icon)
+		target.icon = new_icon
+		target.icon_state = new_icon_state // Changes the icon without changing the access.
+		target.desc = new_desc
 		playsound(user.loc, 'sound/items/polaroid2.ogg', 100, 1)
 		user.visible_message("<span class='warning'> [user] reprints their ID.</span>")
 		qdel(src)
-	else if(O.icon_state == new_icon)
-		to_chat(user, "<span class='notice'>[O] already has been reprinted.</span>")
+	else if(target.icon_state == new_icon)
+		to_chat(user, "<span class='notice'>[target] already has been reprinted.</span>")
 		return
 	else
 		to_chat(user, "<span class='warning'>This isn't even an ID card you idiot.</span>")
@@ -766,7 +766,7 @@
 	slot_flags = SLOT_EYES | SLOT_EARS
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	toggleable = 1
-	off_state = "spiffygogsup"
+	inactive_icon_state = "spiffygogsup"
 
 //General use
 /obj/item/clothing/accessory/tronket
@@ -962,7 +962,7 @@
 	var/turf/uT = get_turf(user)
 	var/turf/dT = get_turf(destination)
 	var/list/dat = list()
-	dat["z_level_detection"] = GLOB.using_map.get_map_levels(uT.z, TRUE)
+	dat["z_level_detection"] = (LEGACY_MAP_DATUM).get_map_levels(uT.z, TRUE)
 
 	if(!uT || !dT)
 		return FALSE
@@ -978,14 +978,14 @@
 	//Seems okay to me!
 	return TRUE
 
-/obj/item/perfect_tele/afterattack(mob/living/target, mob/living/user, proximity)
+/obj/item/perfect_tele/afterattack(mob/living/target, mob/user, clickchain_flags, list/params)
 	//No, you can't teleport people from over there.
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	if(!teleport_checks(target,user))
 		return //The checks proc can send them a message if it wants.
-	
+
 	if(user != target && !do_after(user, 5 SECONDS, target))
 		return
 

@@ -3,7 +3,7 @@
 	name = "Apron - Blue"
 	path = /obj/item/clothing/suit/storage/apron
 	slot = SLOT_ID_SUIT
-	sort_category = "Suits and Overwear"
+	sort_category = LOADOUT_CATEGORY_SUITS
 
 /datum/gear/suit/apron_white
 	name = "Apron - Colorable"
@@ -271,6 +271,10 @@
 		var/obj/item/clothing/suit/varsity/varsity = varsity_style
 		varsities[initial(varsity.name)] = varsity
 	gear_tweaks += new/datum/gear_tweak/path(tim_sort(varsities, /proc/cmp_text_asc))
+
+/datum/gear/suit/varsity_worn
+	name = "Varsity Jacket - Worn"
+	path = /obj/item/clothing/suit/storage/toggle/varsity/worn
 
 /datum/gear/suit/track
 	name = "Track Jacket - Selection"

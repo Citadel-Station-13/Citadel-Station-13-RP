@@ -20,8 +20,9 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 	anchored = TRUE
-	allow_unanchor = TRUE
-	allow_deconstruct = TRUE
+	default_unanchor = 3 SECONDS
+	default_deconstruct = 0 SECONDS
+	default_panel = 0 SECONDS
 
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_OPEN | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OFFLINE_SILICON
 
@@ -102,7 +103,7 @@
 	var/obj/item/cell/comp_cell = locate() in component_parts
 	cell = comp_cell
 
-/obj/machinery/chemical_dispenser/examine(mob/user)
+/obj/machinery/chemical_dispenser/examine(mob/user, dist)
 	. = ..()
 	. += "It has [length(cartridges)] cartridges installed, and has space for [cartridges_max - length(cartridges)] more."
 
@@ -265,7 +266,11 @@
 			if(!inserted)
 				return TRUE
 			usr.grab_item_from_interacted_with(inserted, src)
-			usr.visible_action_feedback(SPAN_NOTICE("[usr] ejects [inserted] from [src]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
+			usr.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[usr] ejects [inserted] from [src]."),
+				soft_range = MESSAGE_RANGE_INVENTORY_SOFT,
+			)
 			investigate_log("[key_name(usr)] ejected [ref_name_path(inserted)]", INVESTIGATE_REAGENTS)
 			inserted = null
 			return TRUE
@@ -283,7 +288,11 @@
 				return TRUE
 			remove_cartridge(cart, usr)
 			usr.grab_item_from_interacted_with(cart, src)
-			usr.visible_action_feedback(SPAN_NOTICE("[usr] removes [cart] from [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
+			usr.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[usr] removes [cart] from [src]."),
+				soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			)
 			update_static_data()
 			return TRUE
 		if("eject_cell")
@@ -292,7 +301,11 @@
 			if(!cell)
 				return TRUE
 			usr.grab_item_from_interacted_with(cell, src)
-			usr.visible_action_feedback(SPAN_NOTICE("[usr] removes [cell] from [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
+			usr.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[usr] removes [cell] from [src]."),
+				soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			)
 			component_parts -= cell
 			cell = null
 			return TRUE
@@ -379,7 +392,11 @@
 			if(!insert_cartridge(I))
 				I.forceMove(drop_location())
 				return CLICKCHAIN_DO_NOT_PROPAGATE
-			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
+			user.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
+				soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(istype(I, /obj/item/reagent_synth))
 			var/obj/item/reagent_synth/synth = I
@@ -392,7 +409,11 @@
 				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			LAZYADD(synthesizers, synth)
-			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
+			user.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
+				soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			)
 			update_static_data()
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(istype(I, /obj/item/cell))
@@ -404,7 +425,11 @@
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			cell = I
 			component_parts |= cell
-			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
+			user.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
+				soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(istype(I, /obj/item/reagent_containers))
@@ -426,10 +451,18 @@
 		// process swap?
 		if(inserted)
 			investigate_log("[key_name(user)] ejected [ref_name_path(inserted)]", INVESTIGATE_REAGENTS)
-			user.visible_action_feedback(SPAN_NOTICE("[user] quickly swaps [src]'s [inserted] for [I]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
-			user.put_in_hand_or_drop(inserted)
+			user.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[user] quickly swaps [src]'s [inserted] for [I]."),
+				soft_range = MESSAGE_RANGE_INVENTORY_SOFT,
+			)
+			user.put_in_hands_or_drop(inserted)
 		else
-			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_INVENTORY_SOFT)
+			user.visible_action_feedback(
+				target = src,
+				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
+				soft_range = MESSAGE_RANGE_INVENTORY_SOFT,
+			)
 		investigate_log("[key_name(user)] inserted [ref_name_path(I)]", INVESTIGATE_REAGENTS)
 		inserted = I
 		SStgui.update_uis(src)
@@ -459,47 +492,6 @@
 	cart.forceMove(src)
 	update_static_data()
 	return TRUE
-
-/obj/machinery/chemical_dispenser/crowbar_act(obj/item/I, mob/user, flags, hint)
-	if(!allow_deconstruct || !panel_open)
-		return ..()
-	if(default_deconstruction_crowbar(user, I))
-		user.visible_message(SPAN_NOTICE("[user] dismantles [src]."), range = MESSAGE_RANGE_CONSTRUCTION)
-		return TRUE
-	return ..()
-
-/obj/machinery/chemical_dispenser/screwdriver_act(obj/item/I, mob/user, flags, hint)
-	if(!allow_deconstruct)
-		return ..()
-	if(default_deconstruction_screwdriver(user, I))
-		user.visible_message(SPAN_NOTICE("[user] [panel_open? "opens" : "closes"] the panel on [src]."), range = MESSAGE_RANGE_CONSTRUCTION)
-		return TRUE
-	return ..()
-
-/obj/machinery/chemical_dispenser/wrench_act(obj/item/I, mob/user, flags, hint)
-	if(!allow_unanchor)
-		return ..()
-	if(default_unfasten_wrench(user, I, 4 SECONDS))
-		user.visible_message(SPAN_NOTICE("[user] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."), range = MESSAGE_RANGE_CONSTRUCTION)
-		return TRUE
-	return ..()
-
-/obj/machinery/chemical_dispenser/dynamic_tool_functions(obj/item/I, mob/user)
-	. = list()
-	if(allow_unanchor)
-		.[TOOL_WRENCH] = anchored? "anchor" : "unanchor"
-	if(allow_deconstruct)
-		.[TOOL_SCREWDRIVER] = panel_open? "close panel" : "open panel"
-		if(panel_open)
-			.[TOOL_CROWBAR] = "deconstruct"
-
-/obj/machinery/chemical_dispenser/dynamic_tool_image(function, hint)
-	switch(function)
-		if(TOOL_WRENCH)
-			return anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH)
-		if(TOOL_SCREWDRIVER)
-			return panel_open? dyntool_image_forward(TOOL_SCREWDRIVER) : dyntool_image_backward(TOOL_SCREWDRIVER)
-	return ..()
 
 /obj/machinery/chemical_dispenser/drop_products(method)
 	. = ..()

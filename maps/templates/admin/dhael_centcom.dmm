@@ -302,7 +302,6 @@
 	},
 /obj/item/reagent_containers/food/snacks/cheeseburger,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -1172,9 +1171,8 @@
 	},
 /area/centcom/specops)
 "de" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -1443,9 +1441,8 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "dI" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Centcom Autolathe"
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -1547,9 +1544,8 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/control)
 "dP" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Centcom Autolathe"
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -2302,7 +2298,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "fB" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Research and Development";
 	req_access = list(7)
 	},
@@ -2495,7 +2491,7 @@
 	},
 /area/centcom/control)
 "fS" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Robotics Lab";
 	req_access = list(29,47)
 	},
@@ -2505,7 +2501,6 @@
 /area/centcom/control)
 "fT" = (
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/flooring/circuit.dmi';
 	icon_state = "bcircuit"
 	},
 /area/centcom/control)
@@ -2671,7 +2666,6 @@
 /obj/structure/table/reinforced,
 /obj/item/gun/energy/gun/nuclear,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -3237,7 +3231,6 @@
 /obj/structure/table/reinforced,
 /obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -3731,7 +3724,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "kQ" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Virology Laboratory"
 	},
 /turf/unsimulated/floor/steel{
@@ -3849,7 +3842,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/lasagna,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -4264,9 +4256,9 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "mO" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Security";
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -6814,7 +6806,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "si" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Warden's Office";
 	req_access = list(3)
 	},
@@ -7509,7 +7501,6 @@
 /obj/item/ammo_magazine/m44,
 /obj/item/gun/ballistic/deagle,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7730,7 +7721,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -8169,7 +8159,6 @@
 	base_icon_state = "door_closed";
 	desc = "A small elevator";
 	dir = 2;
-	icon = 'icons/obj/doors/Door2x1glass.dmi';
 	icon_state = "door_closed";
 	name = "elevator";
 	on_enter_occupant_message = "The elevator doors close slowly. You can now head off for the residential, commercial, and other floors.";
@@ -8183,7 +8172,6 @@
 "vb" = (
 /obj/machinery/vending/sovietsoda,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -8564,14 +8552,12 @@
 /area/centcom/main_hall)
 "wI" = (
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/outdoors.dmi';
 	icon_state = "grass"
 	},
 /area/centcom/main_hall)
 "wJ" = (
 /obj/structure/table/bench/wooden,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/outdoors.dmi';
 	icon_state = "grass"
 	},
 /area/centcom/main_hall)
@@ -8636,14 +8622,12 @@
 "xg" = (
 /obj/machinery/light/flamp/noshade,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/outdoors.dmi';
 	icon_state = "grass"
 	},
 /area/centcom/main_hall)
 "xh" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/outdoors.dmi';
 	icon_state = "grass"
 	},
 /area/centcom/main_hall)
@@ -8684,7 +8668,6 @@
 "xI" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/outdoors.dmi';
 	icon_state = "grass"
 	},
 /area/centcom/main_hall)
@@ -8879,7 +8862,6 @@
 "ze" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/outdoors.dmi';
 	icon_state = "grass"
 	},
 /area/centcom/main_hall)
@@ -9518,7 +9500,6 @@
 /obj/item/storage/box/trackimp,
 /obj/item/storage/box/cdeathalarm_kit,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -9527,7 +9508,6 @@
 /obj/item/hardsuit/ert,
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -10050,7 +10030,6 @@
 	prices = list()
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -10317,7 +10296,6 @@
 "EY" = (
 /obj/machinery/vending/coffee,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -10352,14 +10330,13 @@
 	pixel_y = -3
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
 "Fg" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Security";
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -10497,7 +10474,6 @@
 	dir = 8
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -10532,7 +10508,6 @@
 	products = list(/obj/item/storage/fancy/cigarettes=10,/obj/item/storage/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2)
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -10659,7 +10634,6 @@
 /area/centcom/security)
 "Gj" = (
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -10772,7 +10746,6 @@
 /area/centcom/security)
 "GI" = (
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -10948,7 +10921,7 @@
 	},
 /area/centcom/security)
 "HA" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	id_tag = "innerS";
 	name = "Colonial Security Airlock";
 	req_access = list(63)
@@ -10960,7 +10933,6 @@
 "HB" = (
 /obj/item/stool/padded,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -10986,7 +10958,6 @@
 	pixel_y = 30
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11029,7 +11000,6 @@
 /obj/machinery/chemical_dispenser/catering/bar_coffee,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11226,7 +11196,6 @@
 	pixel_y = 29
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11261,7 +11230,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
 	req_access = list(63);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "residential";
@@ -11290,7 +11259,6 @@
 /obj/structure/closet/wardrobe/ert,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -11359,7 +11327,6 @@
 "IB" = (
 /obj/machinery/vending/cigarette,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11415,7 +11382,6 @@
 "IN" = (
 /obj/structure/table/woodentable,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -11433,7 +11399,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11441,7 +11406,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/roastbeef,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11512,7 +11476,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
 	req_access = list(63);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -11524,7 +11488,6 @@
 	req_access = list(103)
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -11582,7 +11545,6 @@
 "JN" = (
 /obj/structure/bed/chair/wood/wings,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -11778,7 +11740,6 @@
 "KJ" = (
 /obj/machinery/vending/boozeomat,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -11909,14 +11870,12 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/meatsteak,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
 "Ll" = (
 /obj/item/stool/padded,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -12013,7 +11972,6 @@
 	icon_state = "plant-22"
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12022,7 +11980,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
 	req_access = list(63);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -12067,7 +12025,6 @@
 	prices = list()
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -12075,7 +12032,6 @@
 /obj/structure/table/reinforced,
 /obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -12184,7 +12140,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/grilledcheese,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12226,7 +12181,6 @@
 "MG" = (
 /obj/structure/undies_wardrobe,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -12234,7 +12188,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
 	req_access = list(63);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/button/remote/airlock{
 	id = "front";
@@ -12273,7 +12227,6 @@
 /obj/item/reagent_containers/glass/rag,
 /obj/item/reagent_containers/food/drinks/flask/vacuumflask,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -12281,7 +12234,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/pastatomato,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12384,7 +12336,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/grenadine,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -12393,7 +12344,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12608,7 +12558,7 @@
 	},
 /area/centcom/security)
 "Of" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Colonial Security Airlock";
 	req_access = list(63)
 	},
@@ -12817,7 +12767,6 @@
 "OW" = (
 /obj/machinery/smartfridge/drinks,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -12839,7 +12788,7 @@
 /turf/unsimulated/floor/techfloor_grid,
 /area/centcom/evac)
 "Pj" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Confiscated Items";
 	req_access = list(3)
 	},
@@ -12870,7 +12819,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/meatballspagetti,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -12911,7 +12859,6 @@
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
 /obj/item/material/knife/tacknife/combatknife,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -12979,7 +12926,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/bigbiteburger,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -13108,7 +13054,6 @@
 "PZ" = (
 /obj/machinery/door/firedoor,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -13223,7 +13168,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/space_mountain_wind,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -13427,7 +13371,6 @@
 	dir = 2
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -13456,7 +13399,6 @@
 "Rp" = (
 /obj/machinery/vending/cola,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -13634,7 +13576,6 @@
 "RT" = (
 /obj/machinery/vending/snack,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -13656,7 +13597,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/cola,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -13781,7 +13721,6 @@
 	pixel_y = 12
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -13864,7 +13803,6 @@
 "SF" = (
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -13908,7 +13846,6 @@
 	pixel_y = 10
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -13977,9 +13914,8 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "Tx" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
 /turf/unsimulated/floor{
@@ -14041,7 +13977,6 @@
 /obj/item/clothing/head/helmet/ert/command,
 /obj/item/storage/backpack/ert/commander,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -14063,7 +13998,6 @@
 /obj/item/pinpointer/advpinpointer,
 /obj/item/stamp/centcomm,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -14139,7 +14073,6 @@
 	pixel_y = 26
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -14149,7 +14082,6 @@
 /obj/item/perfect_tele,
 /obj/item/hand_tele,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -14384,7 +14316,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/fries,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -14466,7 +14397,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -14515,7 +14445,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/meatballsoup,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -14580,7 +14509,6 @@
 "WE" = (
 /obj/machinery/vending/nifsoft_shop,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -14588,7 +14516,6 @@
 /obj/structure/table/woodentable,
 /obj/machinery/cash_register/civilian,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/bar)
@@ -14765,7 +14692,7 @@
 	},
 /area/centcom/security)
 "Xn" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Security Processing";
 	req_access = list(1)
 	},
@@ -14796,7 +14723,6 @@
 /area/centcom/specops)
 "XB" = (
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -14826,7 +14752,6 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -14903,7 +14828,6 @@
 "Yf" = (
 /obj/structure/closet/crate/bin,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -14911,7 +14835,7 @@
 /obj/machinery/door/airlock/highsecurity{
 	desc = "SHIT IS LIT";
 	name = "TACTICAL TOILET";
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -14978,7 +14902,6 @@
 "YF" = (
 /obj/structure/table/woodentable,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -15147,7 +15070,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/kitsuneudon,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
@@ -15238,7 +15160,6 @@
 	pixel_y = 4
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)

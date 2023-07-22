@@ -33,7 +33,7 @@
 	else
 		cut_overlays()
 
-/obj/machinery/cell_charger/examine(mob/user)
+/obj/machinery/cell_charger/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("[charging ? "[charging]" : "Nothing"] is in [src].")
 	if(charging)
@@ -143,7 +143,7 @@
 		)
 	item_state = "syringe_kit"
 	w_class = ITEMSIZE_NORMAL
-	matter = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
 
 /obj/item/cell_charger_kit/attack_self(mob/user)
 	. = ..()

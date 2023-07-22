@@ -826,7 +826,7 @@
 /turf/space,
 /area/space)
 "bV" = (
-/obj/effect/overmap/visitable/sector/fueldepot,
+/obj/overmap/entity/visitable/sector/fueldepot,
 /turf/space,
 /area/space)
 "bW" = (

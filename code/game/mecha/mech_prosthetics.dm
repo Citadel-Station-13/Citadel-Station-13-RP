@@ -35,8 +35,8 @@
 		MAT_MORPHIUM = 0)
 	res_max_amount = 200000
 
-	valid_buildtype = PROSFAB
-	///A list of categories that valid PROSFAB design datums will broadly categorise themselves under.
+	valid_buildtype = LATHE_TYPE_PROSTHETICS
+	///A list of categories that valid LATHE_TYPE_PROSTHETICS design datums will broadly categorise themselves under.
 	part_sets = list(
 					"Cyborg",
 					"Ripley",
@@ -48,6 +48,8 @@
 					"Rigsuit",
 					"Phazon",
 					"Pinnace",
+					"Baron",
+					"Duke",
 					"Gopher",
 					"Polecat",
 					"Weasel",
@@ -73,9 +75,9 @@
 
 /obj/machinery/mecha_part_fabricator/pros/dispense_built_part(datum/design/D)
 	var/obj/item/I = ..()
-	if(isobj(I) && I.matter && I.matter.len > 0)
-		for(var/i in I.matter)
-			I.matter[i] = I.matter[i] * component_coeff
+	if(isobj(I) && I.materials && I.materials.len > 0)
+		for(var/i in I.materials)
+			I.materials[i] = I.materials[i] * component_coeff
 
 /obj/machinery/mecha_part_fabricator/pros/ui_data(mob/user)
 	var/list/data = ..()

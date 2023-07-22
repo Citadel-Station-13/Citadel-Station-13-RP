@@ -37,8 +37,8 @@
 /obj/effect/bmode//Cleaning up the tree a bit
 	density = 1
 	anchored = 1
-	layer = LAYER_HUD_BASE
-	plane = PLANE_PLAYER_HUD
+	layer = HUD_LAYER_BASE
+	plane = HUD_PLANE
 	dir = NORTH
 	icon = 'icons/misc/buildmode.dmi'
 	var/obj/effect/bmode/buildholder/master = null
@@ -363,8 +363,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 						var/obj/structure/window/reinforced/WIN = new/obj/structure/window/reinforced(get_turf(object))
 						WIN.setDir(WEST)
 					if(NORTHWEST)
-						var/obj/structure/window/reinforced/WIN = new/obj/structure/window/reinforced(get_turf(object))
-						WIN.setDir(NORTHWEST)
+						new /obj/spawner/window/reinforced/full(get_turf(object))
 				var/turf/TC = get_turf(object)
 				log_admin("[key_name(usr)] made a window at [COORD(TC)]")
 		if(2) // Adv. Build

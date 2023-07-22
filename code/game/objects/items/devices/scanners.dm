@@ -22,7 +22,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
-	matter = list(MAT_STEEL = 200)
+	materials = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 1)
 	var/mode = 1
 	var/advscan = 0
@@ -347,7 +347,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	throw_speed = 4
 	throw_range = 20
 
-	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
 
@@ -367,7 +367,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
-	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3)
 
 /obj/item/analyzer/atmosanalyze(var/mob/user)
@@ -390,17 +390,17 @@ HALOGEN COUNTER	- Radcount on mobs
 	analyze_gases(src, user)
 	return
 
-/obj/item/analyzer/afterattack(var/obj/O, var/mob/user, var/proximity)
-	if(proximity)
-		if(istype(O, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
+/obj/item/analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
+		if(istype(target, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
 			return
-		analyze_gases(O, user)
+		analyze_gases(target, user)
 	return
 
-/obj/item/analyzer/longrange/afterattack(var/obj/O, var/mob/user, var/proximity)
-	if(istype(O, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
+/obj/item/analyzer/longrange/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(istype(target, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
 		return
-	analyze_gases(O, user)
+	analyze_gases(target, user)
 	return
 
 /obj/item/mass_spectrometer
@@ -415,7 +415,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	throw_speed = 4
 	throw_range = 20
 
-	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	var/details = 0
@@ -479,34 +479,34 @@ HALOGEN COUNTER	- Radcount on mobs
 	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
-	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	var/details = 0
 	var/recent_fail = 0
 
-/obj/item/reagent_scanner/afterattack(obj/O, mob/living/user, proximity)
-	if(!proximity || user.stat || !istype(O))
+/obj/item/reagent_scanner/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) || user.stat || !istype(target))
 		return
 	if(!istype(user))
 		return
 
-	if(!isnull(O.reagents))
-		if(!(O.atom_flags & OPENCONTAINER)) // The idea is that the scanner has to touch the reagents somehow. This is done to prevent cheesing unidentified autoinjectors.
-			to_chat(user, SPAN_WARNING( "\The [O] is sealed, and cannot be scanned by \the [src] until unsealed."))
+	if(!isnull(target.reagents))
+		if(!(target.atom_flags & OPENCONTAINER)) // The idea is that the scanner has to touch the reagents somehow. This is done to prevent cheesing unidentified autoinjectors.
+			to_chat(user, SPAN_WARNING( "\The [target] is sealed, and cannot be scanned by \the [src] until unsealed."))
 			return
 
 		var/dat = ""
-		if(O.reagents.reagent_list.len > 0)
-			var/one_percent = O.reagents.total_volume / 100
-			for (var/datum/reagent/R in O.reagents.reagent_list)
+		if(target.reagents.reagent_list.len > 0)
+			var/one_percent = target.reagents.total_volume / 100
+			for (var/datum/reagent/R in target.reagents.reagent_list)
 				dat += "\n \t " + SPAN_NOTICE("[R][details ? ": [R.volume / one_percent]%" : ""]")
 		if(dat)
 			to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
 		else
-			to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
+			to_chat(user, SPAN_NOTICE("No active chemical agents found in [target]."))
 	else
-		to_chat(user, SPAN_NOTICE("No significant chemical agents found in [O]."))
+		to_chat(user, SPAN_NOTICE("No significant chemical agents found in [target]."))
 
 	return
 
@@ -531,7 +531,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	throw_force = 0
 	throw_speed = 3
 	throw_range = 7
-	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 /obj/item/slime_scanner/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = CLICKCHAIN_DO_NOT_PROPAGATE

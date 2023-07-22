@@ -47,12 +47,12 @@
 	if(cell)
 		cell.emp_act(severity)
 
-/obj/item/inducer/afterattack(atom/A, mob/living/carbon/user, proximity)
+/obj/item/inducer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(cantbeused(user))
 		return
-	recharge(A, user)
+	recharge(target, user)
 
 /obj/item/inducer/proc/cantbeused(mob/user)
 	if(!user.IsAdvancedToolUser())
@@ -168,7 +168,7 @@
 	if(opened && cell)
 		user.visible_message("<span class='notice'>[user] removes [cell] from [src]!</span>", "<span class='notice'>You remove [cell].</span>")
 		cell.update_icon()
-		user.put_in_hands(cell)
+		user.put_in_hands_or_drop(cell)
 		cell = null
 		update_icon()
 

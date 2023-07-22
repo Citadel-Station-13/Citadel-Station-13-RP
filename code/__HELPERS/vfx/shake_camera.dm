@@ -10,7 +10,7 @@
 			return
 	if(!AM.self_perspective)
 		return
-	for(var/client/C in AM.self_perspective.GetClients())
+	for(var/client/C in AM.self_perspective.get_clients())
 		var/min = -world.icon_size * strength
 		var/max = world.icon_size * strength
 		var/old_x = C.pixel_x

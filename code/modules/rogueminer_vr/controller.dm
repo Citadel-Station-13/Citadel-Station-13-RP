@@ -142,7 +142,7 @@ var/datum/controller/rogue/rm_controller
 			oldest_zone = ZM
 			oldest_time = ZM.prepared_at
 
-	return oldest_zone
+	return oldest_zone || SAFEINDEXACCESS(all_zones, 1)
 
 /datum/controller/rogue/proc/mark_clean(var/datum/rogue/zonemaster/ZM)
 	if(!(ZM in all_zones)) //What? Who?
@@ -183,6 +183,11 @@ var/datum/controller/rogue/rm_controller
 /datum/controller/rogue/proc/prepare_new_zone()
 	var/datum/rogue/zonemaster/ZM_target
 
+	if(clean_zones.len <= 1) //Need to clean the oldest one, too.
+		rm_controller.dbg("RMC(pnz): Cleaning up oldest zone.")
+		var/datum/rogue/zonemaster/ZM_oldest = get_oldest_zone()
+		ZM_oldest.clean_zone()
+
 	if(clean_zones.len)
 		ZM_target = pick(clean_zones)
 
@@ -195,11 +200,5 @@ var/datum/controller/rogue/rm_controller
 		ZM_target.prepare_zone()
 	else
 		rm_controller.dbg("RMC(pnz): I was asked for a new zone but there's no space.")
-
-	if(clean_zones.len <= 1) //Need to clean the oldest one, too.
-		rm_controller.dbg("RMC(pnz): Cleaning up oldest zone.")
-		spawn(0) //Detatch it so we can return the new zone for now.
-			var/datum/rogue/zonemaster/ZM_oldest = get_oldest_zone()
-			ZM_oldest.clean_zone()
 
 	return ZM_target

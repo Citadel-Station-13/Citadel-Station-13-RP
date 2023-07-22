@@ -18,7 +18,7 @@
 	else
 		return temp_access
 
-/obj/item/card/id/guest/examine(mob/user)
+/obj/item/card/id/guest/examine(mob/user, dist)
 	. = ..()
 	if (world.time < expiration_time)
 		. += "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>"
@@ -84,7 +84,9 @@
 	layer = ABOVE_TURF_LAYER
 	icon_keyboard = null
 	icon_screen = "pass"
-	density = 0
+	depth_projected = FALSE
+	climb_allowed = FALSE
+	density = FALSE
 	circuit = /obj/item/circuitboard/guestpass
 
 	var/obj/item/card/id/giver

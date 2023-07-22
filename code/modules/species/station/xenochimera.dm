@@ -17,7 +17,7 @@
 
 	max_additional_languages = 5
 
-	darksight     = 8     //critters with instincts to hide in the dark need to see in the dark - about as good as tajara.
+	vision_innate = /datum/vision/baseline/species_tier_3
 	slowdown      = -0.2  //scuttly, but not as scuttly as a tajara or a teshari.
 	brute_mod     = 0.8   //About as tanky to brute as a Unathi. They'll probably snap and go feral when hurt though.
 	burn_mod      = 1.15  //As vulnerable to burn as a Tajara.
@@ -691,7 +691,7 @@
 		return
 	var/mob/living/carbon/human/H = owner
 	H.restore_blood()
-	H.species.create_organs(H)
+	H.species.create_organs(H, TRUE)
 	H.restore_all_organs()
 	H.adjustBruteLoss(-healing_amount)
 	H.adjustFireLoss(-healing_amount)
@@ -738,12 +738,16 @@
 	if(!active)
 		to_chat(H, "<span class='notice'>We focus outward, gaining a keen sense of all those around us.</span>")
 		H.species.vision_flags |= SEE_MOBS
+		H.species.vision_flags &= ~SEE_BLACKNESS
 		H.species.has_glowing_eyes = TRUE
+		H.add_vision_modifier(/datum/vision/augmenting/legacy_ghetto_nvgs)
 		active = TRUE
 	else
 		to_chat(H, "<span class='notice'>Our senses dull.</span>")
 		H.species.vision_flags &= ~SEE_MOBS
+		H.species.vision_flags |= SEE_BLACKNESS
 		H.species.has_glowing_eyes = FALSE
+		H.remove_vision_modifier(/datum/vision/augmenting/legacy_ghetto_nvgs)
 		active = FALSE
 	H.update_eyes()
 
@@ -798,13 +802,17 @@
 	var/emp_long = 12
 	var/smoke_spread = 1
 	var/smoke_amt = 1
-	cooldown = 3 MINUTES	//Let's not be able to spam this
-	nutrition_enforced = FALSE
+	cooldown = 10 MINUTES	//Let's not be able to spam this
+	nutrition_enforced = TRUE
 	is_feral = TRUE
 
 
 /datum/ability/species/xenochimera/dissonant_shriek/on_trigger()
 	. = ..()
+
+	if(owner.incapacitated())
+		return
+
 	for(var/mob/living/T in get_hearers_in_view(range, owner))
 		if(iscarbon(T))
 			if(T.mind)

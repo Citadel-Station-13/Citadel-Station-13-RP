@@ -13,7 +13,7 @@
 	throw_speed = 5
 	throw_range = 10
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 1, TECH_ENGINEERING = 2)
-	matter = list(MAT_STEEL = 500, MAT_GLASS = 200)
+	materials = list(MAT_STEEL = 500, MAT_GLASS = 200)
 	var/mode = 1;
 
 /obj/item/robotanalyzer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)

@@ -411,8 +411,12 @@
  * the [TRANSPARENT] flag is set on the reagents holder
  *
  * Produces a signal [COMSIG_PARENT_EXAMINE]
+ *
+ * @params
+ * * user - who's examining. can be null
+ * * dist - effective distance of examine, usually from user to src.
  */
-/atom/proc/examine(mob/user)
+/atom/proc/examine(mob/user, dist = 1)
 	var/examine_string = get_examine_string(user, thats = TRUE)
 	if(examine_string)
 		. = list("[examine_string].")
@@ -746,17 +750,19 @@
 // todo: refactor
 /atom/proc/visible_message(message, self_message, blind_message, range = world.view)
 	var/list/see
+	//! LEGACY
 	if(isbelly(loc))
 		var/obj/belly/B = loc
 		see = B.effective_emote_hearers()
 	else
 		see = get_hearers_in_view(range, src)
+	//! end
 	for(var/atom/movable/AM as anything in see)
 		if(ismob(AM))
 			var/mob/M = AM
 			if(self_message && (M == src))
 				M.show_message(self_message, 1, blind_message, 2)
-			else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
+			else if((M.see_invisible >= invisibility) && M.can_see_plane(plane))
 				M.show_message(message, 1, blind_message, 2)
 			else if(blind_message)
 				M.show_message(blind_message, 2)
@@ -990,6 +996,9 @@
 	if(update)
 		update_filters()
 
+/atom/proc/has_filter(name)
+	return !isnull(filter_data?[name])
+
 /atom/proc/clear_filters()
 	filter_data = null
 	filters = null
@@ -1018,8 +1027,8 @@
 	layer = base_layer + 0.001 * relative_layer
 
 /atom/proc/hud_layerise()
-	plane = PLANE_PLAYER_HUD_ITEMS
-	set_base_layer(LAYER_HUD_ITEM)
+	plane = INVENTORY_PLANE
+	set_base_layer(HUD_LAYER_ITEM)
 	// appearance_flags |= NO_CLIENT_COLOR
 
 /atom/proc/hud_unlayerise()
@@ -1110,3 +1119,12 @@
 /atom/proc/auto_pixel_offset_to_center()
 	set_base_pixel_y(get_centering_pixel_y_offset())
 	set_base_pixel_x(get_centering_pixel_x_offset())
+
+//? materials
+
+/**
+ * get raw materials remaining in us as list (not reagents)
+ * used from everything from economy to lathe recycling
+ */
+/atom/proc/get_materials()
+	return list()

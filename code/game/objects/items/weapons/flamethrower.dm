@@ -14,7 +14,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 1, TECH_PHORON = 1)
-	matter = list(MAT_STEEL = 500)
+	materials = list(MAT_STEEL = 500)
 	var/status = 0
 	var/throw_amount = 100
 	var/lit = 0	//on or off
@@ -61,8 +61,8 @@
 
 	return
 
-/obj/item/flamethrower/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
+/obj/item/flamethrower/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	// Make sure our user is still holding us
 	if(user && user.get_active_held_item() == src)
 		var/turf/target_turf = get_turf(target)

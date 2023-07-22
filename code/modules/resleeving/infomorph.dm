@@ -140,6 +140,10 @@ var/list/infomorph_emotions = list(
 	if(src_object in src)
 		return shared_nano_interaction()
 
+/mob/living/silicon/infomorph/make_perspective()
+	. = ..()
+	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
+
 /////////// DAMAGES
 /mob/living/silicon/infomorph/emp_act(severity)
 	// Silence for 2 minutes
@@ -532,7 +536,7 @@ var/global/list/default_infomorph_software = list()
 			card.setEmotion(img)
 		return 1
 
-/mob/living/silicon/infomorph/examine(mob/user)
+/mob/living/silicon/infomorph/examine(mob/user, dist)
 	. = ..()
 	switch(src.stat)
 		if(CONSCIOUS)

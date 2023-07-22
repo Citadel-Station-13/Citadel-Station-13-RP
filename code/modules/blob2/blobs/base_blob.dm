@@ -61,7 +61,7 @@ var/list/blobs = list()
 			return TRUE
 	return FALSE
 
-/obj/structure/blob/examine(mob/user)
+/obj/structure/blob/examine(mob/user, dist)
 	. = ..()
 	if(!overmind)
 		. += "It seems inert." // Dead blob.

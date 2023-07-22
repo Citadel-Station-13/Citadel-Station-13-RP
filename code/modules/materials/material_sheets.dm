@@ -44,7 +44,7 @@
 	if(!material.conductive)
 		atom_flags |= NOCONDUCT
 
-	matter = material.get_matter()
+	materials = material.get_matter()
 	update_strings()
 
 /obj/item/stack/material/get_material()
@@ -297,7 +297,7 @@
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/clothing/gloves/G = H.gloves
-		if(istype(G) && ((G.clothing_flags & THICKMATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
+		if(istype(G) && ((G.clothing_flags & CLOTHING_THICK_MATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
 			burn_user = FALSE
 
 		if(burn_user)

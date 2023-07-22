@@ -62,7 +62,7 @@
 
 /atom/movable/openspace
 	name = ""
-	// simulated = FALSE
+	atom_flags = ATOM_ABSTRACT
 	anchored = TRUE
 	mouse_opacity = FALSE
 	abstract_type = /atom/movable/openspace // unsure if this is valid, check with Lohi
@@ -104,9 +104,9 @@
 	name = "openspace multiplier"
 	desc = "You shouldn't see this."
 	icon = LIGHTING_ICON
-	icon_state = LIGHTING_DARKNESS_ICON_STATE
+	icon_state = "blank"
 	plane = OPENTURF_MAX_PLANE
-	layer = MIMICED_LIGHTING_LAYER
+	layer = MIMICED_LIGHTING_LAYER_MAIN
 	blend_mode = BLEND_MULTIPLY
 	color = SHADOWER_DARKENING_COLOR
 
@@ -121,7 +121,7 @@
 
 /atom/movable/openspace/multiplier/proc/copy_lighting(atom/movable/lighting_overlay/LO)
 	appearance = LO
-	layer = MIMICED_LIGHTING_LAYER
+	layer = MIMICED_LIGHTING_LAYER_MAIN
 	plane = OPENTURF_MAX_PLANE
 	blend_mode = BLEND_MULTIPLY
 	invisibility = 0

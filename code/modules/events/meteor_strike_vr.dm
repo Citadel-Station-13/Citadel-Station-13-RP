@@ -4,8 +4,8 @@
 
 /datum/event/meteor_strike/setup()
 	startWhen = rand(8,15)
-	if(LAZYLEN(GLOB.using_map.meteor_strike_areas))
-		strike_target = pick(get_area_turfs(pick(GLOB.using_map.meteor_strike_areas)))
+	if(LAZYLEN((LEGACY_MAP_DATUM).meteor_strike_areas))
+		strike_target = pick(get_area_turfs(pick((LEGACY_MAP_DATUM).meteor_strike_areas)))
 
 	if(!strike_target)
 		kill()
@@ -77,8 +77,9 @@
 	desc = "A big hunk of star-stuff."
 	icon = 'icons/obj/meteor.dmi'
 	icon_state = "large"
-	density = 1
-	climbable = 1
+	density = TRUE
+	climb_allowed = TRUE
+	depth_level = 16
 
 /obj/structure/meteorite/Initialize(mapload)
 	. = ..()

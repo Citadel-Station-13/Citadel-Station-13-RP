@@ -16,7 +16,7 @@
 	item_state = "multitool"
 	w_class = ITEMSIZE_SMALL
 	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
-	matter = list(MAT_STEEL = 200, MAT_GLASS = 100)
+	materials = list(MAT_STEEL = 200, MAT_GLASS = 100)
 
 	var/grace = RAD_GRACE_PERIOD
 	var/datum/looping_sound/geiger/soundloop
@@ -66,7 +66,7 @@
 	update_appearance()
 	update_sound()
 
-/obj/item/geiger_counter/examine(mob/user)
+/obj/item/geiger_counter/examine(mob/user, dist)
 	. = ..()
 	if(!scanning)
 		return
@@ -143,7 +143,7 @@
 	update_appearance()
 	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch [scanning ? "on" : "off"] [src]."))
 
-/obj/item/geiger_counter/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/geiger_counter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	if(user.a_intent == INTENT_HELP)
 		if(!(obj_flags & EMAGGED))

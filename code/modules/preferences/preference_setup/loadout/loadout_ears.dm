@@ -3,7 +3,7 @@
 /datum/gear/ears
 	name = "Earmuffs"
 	path = /obj/item/clothing/ears/earmuffs
-	sort_category = "Earwear"
+	sort_category = LOADOUT_CATEGORY_EARS
 	slot = SLOT_ID_RIGHT_EAR
 
 /datum/gear/ears/headphones

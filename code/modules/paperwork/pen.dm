@@ -24,7 +24,7 @@
 	w_class = ITEMSIZE_TINY
 	throw_speed = 7
 	throw_range = 15
-	matter = list(MAT_STEEL = 10)
+	materials = list(MAT_STEEL = 10)
 	var/colour = "black"	//what colour the ink is!
 	pressure_resistance = 2
 	drop_sound = 'sound/items/drop/accessory.ogg'
@@ -125,7 +125,7 @@
 		if(reagents.total_volume)
 			if(target.reagents)
 				var/contained = reagents.get_reagents()
-				var/trans = reagents.trans_to_mob(target, 30, CHEM_BLOOD)
+				var/trans = reagents.trans_to_mob(target, 30, CHEM_INJECT)
 				add_attack_logs(user,target,"Injected with [src.name] containing [contained], trasferred [trans] units")
 
 /*
@@ -362,4 +362,4 @@
 	name = "charcoal stick"
 	desc = "Carefully burnt carbon, compacted and held together with a binding agent. One of the oldest common implements for writing across the galaxy."
 	icon_state = "charcoal"
-	matter = list(MAT_CARBON = 10)
+	materials = list(MAT_CARBON = 10)
