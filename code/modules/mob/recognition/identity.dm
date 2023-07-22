@@ -10,10 +10,6 @@ GLOBAL_LIST_EMPTY(active_identity_holders)
 	var/facial_identifier
 	/// say / vocal identifier
 	var/voice_identifier
-	/// cached image for unknown identity
-	var/image/unknown_image
-	/// cached image for named images
-	var/list/named_images = list()
 
 /datum/identity_holder/New(mob/host, list/data)
 	src.host = host
@@ -32,23 +28,25 @@ GLOBAL_LIST_EMPTY(active_identity_holders)
 
 /datum/identity_holder/proc/attach()
 	GLOB.active_identity_holders += src
-	// add to active recognition datums
-	for(var/datum/recognition_holder/holder as anything in GLOB.active_recognition_holders)
-		holder.register_identity(src)
 
 /datum/identity_holder/proc/detach()
 	GLOB.active_identity_holders -= src
-	// remove from active recognition datums
-	for(var/datum/recognition_holder/holder as anything in GLOB.active_recognition_holders)
-		holder.unregister_identity(src)
-
-/datum/identity_holder/proc/get_unknown_image()
-
-/datum/identity_holder/proc/get_named_image(name)
 
 /datum/identity_holder/proc/change_facial_identifier(identifier)
+	detach()
+	facial_identifier = identifier
+	attach()
 
 /datum/identity_holder/proc/change_voice_identifier(identifier)
+	detach()
+	voice_identifier = identifier
+	attach()
+
+/datum/identity_holder/proc/seed_facial_identity(seed)
+	return change_facial_identifier(seeded_identifier(seed))
+
+/datum/identity_holder/proc/seed_voice_identity(seed)
+	return change_voice_identifier(seeded_identifier(seed))
 
 /datum/identity_holder/proc/random_facial_identifier()
 	return random_identifier()
@@ -59,4 +57,15 @@ GLOBAL_LIST_EMPTY(active_identity_holders)
 /datum/identity_holder/proc/random_identifier()
 	return sha1(GUID())
 
-#warn impl all
+/datum/identity_holder/proc/seeded_identifier(seed)
+	return sha1(seed)
+
+/datum/identity_holder/serialize()
+	. = ..()
+	.["face"] = facial_identifier
+	.["voice"] = voice_identifier
+
+/datum/identity_holder/deserialize(list/data)
+	. = ..()
+	facial_identifier = data["face"]
+	voice_identifier = data["voice"]

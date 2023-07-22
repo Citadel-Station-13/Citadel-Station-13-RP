@@ -24,35 +24,66 @@ GLOBAL_LIST_EMPTY(active_recognition_holders)
 
 /datum/recognition_holder/proc/attach()
 	GLOB.active_recognition_holders += src
-	host.ensure_self_perspective()
-	// add all holders
-	for(var/datum/identity_holder/holder as anything in GLOB.active_identity_holders)
-		register_identity(holder)
 
 /datum/recognition_holder/proc/detach()
 	GLOB.active_recognition_holders -= src
-	// clear out holders
-	for(var/datum/identity_holder/holder as anything in GLOB.active_identity_holders)
-		unregister_identity(holder)
-
-/datum/recognition_holder/proc/register_identity(datum/identity_holder/holder)
-
-/datum/recognition_holder/proc/unregister_identity(datum/identity_holder/holder)
 
 /**
  * @return old name if there was one
  */
 /datum/recognition_holder/proc/set_face_identity(identifier, name)
+	. = voice_lookup[identifier]
+	// we always remove first so oldest non-updated entries are first.
+	face_lookup -= identifier
+	// blank name counts as null
+	if(!name)
+		return
+	face_lookup[identifier] = name
+	if(length(face_lookup) > MOB_RECOGNITION_MAX_ENTRIES)
+		face_lookup.Cut(1, length(face_lookup) - MOB_RECOGNITION_MAX_ENTRIES + 1)
 
 /**
  * @return old name if there was one
  */
 /datum/recognition_holder/proc/set_voice_identity(identifier, name)
 	. = voice_lookup[identifier]
+	// we always remove first so oldest non-updated entries are first.
+	voice_lookup -= identifier
 	// blank name counts as null
 	if(!name)
-		voice_lookup -= identifier
-	else
-		voice_lookup[identifier] = name
+		return
+	voice_lookup[identifier] = name
+	if(length(voice_lookup) > MOB_RECOGNITION_MAX_ENTRIES)
+		voice_lookup.Cut(1, length(voice_lookup) - MOB_RECOGNITION_MAX_ENTRIES + 1)
 
-#warn impl all
+/datum/recognition_holder/proc/face_lookup(identifier)
+	return face_lookup[identifier]
+
+/datum/recognition_holder/proc/voice_lookup(identifier)
+	return voice_lookup[identifier]
+
+/datum/recognition_holder/deserialize(list/data)
+	. = ..()
+	face_lookup = data["face"]
+	if(!islist(face_lookup))
+		face_lookup = list()
+	if(length(face_lookup) > MOB_RECOGNITION_MAX_ENTRIES)
+		face_lookup.len = MOB_RECOGNITION_MAX_ENTRIES
+	voice_lookup = data["voice"]
+	if(!islist(voice_lookup))
+		voice_lookup = list()
+	if(length(voice_lookup) > MOB_RECOGNITION_MAX_ENTRIES)
+		voice_lookup.len = MOB_RECOGNITION_MAX_ENTRIES
+
+/datum/recognition_holder/serialize()
+	. = ..()
+	if(!islist(face_lookup))
+		face_lookup = list()
+	if(length(face_lookup) > MOB_RECOGNITION_MAX_ENTRIES)
+		face_lookup.len = MOB_RECOGNITION_MAX_ENTRIES
+	.["face"] = face_lookup
+	if(!islist(voice_lookup))
+		voice_lookup = list()
+	if(length(voice_lookup) > MOB_RECOGNITION_MAX_ENTRIES)
+		voice_lookup.len = MOB_RECOGNITION_MAX_ENTRIES
+	.["voice"] = voice_lookup

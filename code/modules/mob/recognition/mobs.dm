@@ -2,7 +2,7 @@
  * recognition system
  *
  * basically,
- * * mobs get a face and voice identifier that participate in this
+ * * mobs that participate in this get a face and voice identifier
  * * mobs that want to use this have a recognition holder to hold lookup data
  *
  * yeah we'll see how this goes
@@ -20,6 +20,10 @@
 /mob/proc/change_facial_identity(identifier)
 
 /mob/proc/change_vocal_identity(identifier)
+
+/mob/proc/seed_facial_identity(identifier)
+
+/mob/proc/seed_vocal_identity(identifier)
 
 /mob/proc/randomize_facial_identity(identifier)
 
