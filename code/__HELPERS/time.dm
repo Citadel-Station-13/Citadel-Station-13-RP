@@ -25,8 +25,10 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 /var/station_date = ""
 /var/next_station_date_change = 1 DAY
 
-#define duration2stationtime(time) time2text(station_time_in_ds + time, "hh:mm")
-#define worldtime2stationtime(time) time2text(GLOB.roundstart_hour HOURS + time, "hh:mm")
+// todo: better subsystem based way of tracking this, this is fucky.
+
+#define duration2stationtime(time) time2text(station_time_in_ds + GLOB.timezoneOffset + time, "hh:mm")
+#define worldtime2stationtime(time) time2text((GLOB.roundstart_hour HOURS) - SSticker.round_start_time + GLOB.timezoneOffset + time, "hh:mm")
 #define round_duration_in_ds (SSticker.round_start_time ? world.time - SSticker.round_start_time : 0)
 #define station_time_in_ds (GLOB.roundstart_hour HOURS + round_duration_in_ds)
 

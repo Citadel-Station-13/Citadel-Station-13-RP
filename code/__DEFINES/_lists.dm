@@ -4,7 +4,9 @@
 /// Picks from the list, with some safeties, and returns the "default" arg if it fails
 #define DEFAULTPICK(L, default) ((istype(L, /list) && L:len) ? pick(L) : default)
 /// Ensures L is initailized after this point
-#define LAZYINITLIST(L) if (!L) L = list()
+#define LAZYINITLIST(L) if (isnull(L)) L = list()
+/// Ensures L is initialized and uses it as a rvalue
+#define LAZYGETLIST(L) (isnull(L)? (L = list()) : L)
 /// Sets a L back to null iff it is empty
 #define UNSETEMPTY(L) if (L && !length(L)) L = null
 /// Removes I from list L, and sets I to null if it is now empty

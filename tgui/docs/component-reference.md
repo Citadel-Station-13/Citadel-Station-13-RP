@@ -322,6 +322,7 @@ toggle, closed by default.
 **Props:**
 
 - See inherited props: [Box](#box)
+- `captureKeys: boolean` - Should we capture keys to open/close?
 - `children: any` - What is collapsed when closed
 - `title: string` - Text to display on the button for collapsing
 - `color: string` - Color of the button; see [Button](#button)

@@ -186,6 +186,8 @@ var/datum/controller/rogue/rm_controller
 	if(clean_zones.len <= 1) //Need to clean the oldest one, too.
 		rm_controller.dbg("RMC(pnz): Cleaning up oldest zone.")
 		var/datum/rogue/zonemaster/ZM_oldest = get_oldest_zone()
+		if(!ZM_oldest.scored)
+			ZM_oldest.score_zone()
 		ZM_oldest.clean_zone()
 
 	if(clean_zones.len)

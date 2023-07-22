@@ -1,11 +1,17 @@
 /**
  * sets a character data key to a value
+ *
+ * warning: lists are actually a shared reference, this is a known issue
+ *          todo: on character setup refactor, redo this behavior if possible
  */
 /datum/preferences/proc/set_character_data(key, value)
 	character[key] = value
 
 /**
  * reads a character data key
+ *
+ * warning: lists are actually a shared reference, this is a known issue
+ *          todo: on character setup refactor, redo this behavior if possible
  */
 /datum/preferences/proc/get_character_data(key)
 	return character[key]

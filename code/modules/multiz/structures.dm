@@ -192,7 +192,7 @@
 	icon_state = "stair_u"
 	opacity   = TRUE
 	density   = TRUE // Too high to simply step up on
-	climbable = TRUE // But they can be climbed if the bottom is out
+	climb_allowed = TRUE
 
 	var/obj/structure/stairs/top/top = null
 	var/obj/structure/stairs/bottom/bottom = null
@@ -265,7 +265,7 @@
 /obj/structure/stairs/middle/MouseDroppedOnLegacy(mob/target, mob/user)
 	. = ..()
 	if(check_integrity())
-		do_climb(user)
+		do_climb_on(user)
 		transition_atom(user, get_turf(top)) // You can't really drag things when you have to climb up the gap in the stairs yourself
 
 /obj/structure/stairs/middle/Bumped(mob/user)

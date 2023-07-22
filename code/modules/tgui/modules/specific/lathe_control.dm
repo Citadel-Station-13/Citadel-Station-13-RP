@@ -50,6 +50,8 @@
 		if("enqueue")
 			var/id = params["id"]
 			var/amount = text2num(params["amount"])
+			if(amount <= 0)
+				return FALSE
 			var/immediate = text2num(params["start"])
 			var/list/material_parts = params["materials"]
 			var/list/item_parts = params["items"]
@@ -78,9 +80,9 @@
 			var/datum/lathe_queue_entry/entry = SAFEINDEXACCESS(lathe.queue, index)
 			var/datum/design/D = SSresearch.fetch_design(entry.design_id)
 			if(isnull(entry))
-				return
-			if(isnull(new_amount))
-				return
+				return FALSE
+			if(isnull(new_amount) || (new_amount <= 0))
+				return FALSE
 			entry.amount = clamp(new_amount, 0, length(D.ingredients)? 1 : (D.is_stack? lathe.queue_max_entry_stack : lathe.queue_max_entry))
 			ui_queue_update()
 			return TRUE
@@ -93,13 +95,15 @@
 		if("ejectMaterial")
 			var/id = params["id"]
 			var/amt = params["amount"]
-			if(!amt || isnull(id))
-				return
+			if((amt <= 0) || isnull(id))
+				return FALSE
 			lathe.eject_sheets(id, amt)
 			ui_materials_update()
 			return TRUE
 		if("disposeReagent")
 			var/amount = text2num(params["amount"]) || INFINITY
+			if(amount <= 0)
+				return FALSE
 			lathe.reagents.remove_reagent(params["id"], amount)
 			ui_reagents_update()
 			return TRUE
