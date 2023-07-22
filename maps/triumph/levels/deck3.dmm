@@ -17039,6 +17039,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
+"oHz" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/landmark/spawnpoint/latejoin,
+/turf/simulated/floor/tiled/techfloor,
+/area/teleporter/departing)
 "oIJ" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
@@ -17642,6 +17649,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "pdH" = (
+/obj/landmark/spawnpoint/latejoin/station/gateway,
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "pdK" = (
@@ -32215,7 +32223,7 @@ pRL
 rKu
 tbg
 rWx
-rWx
+oHz
 rWx
 qwm
 ljr
