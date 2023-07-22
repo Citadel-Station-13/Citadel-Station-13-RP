@@ -3,7 +3,9 @@
 	/// display name - what is used for UIs
 	var/display_name
 	/// are we sealed?
-	var/sealed = FALSE
+	var/sealed = RIG_PIECE_UNSEALED
+	/// in the process of a seal operation - used internally as a mutex. don't fuck with this var.
+	var/seal_mutex
 	/// piece intrinsic flags
 	var/rig_piece_flags = NONE
 	/// multiplier to armor to apply - does *not* affect armor tier
