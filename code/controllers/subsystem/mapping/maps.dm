@@ -217,7 +217,7 @@
 	ASSERT(!initialized)
 	ASSERT(!world_is_loaded)
 	// bootstrap
-	load_server_initial_reservation_area(instance.width, instance.height)
+	load_server_initial_reservation_area(max(instance.world_width, instance.width), max(instance.world_height, instance.height))
 	// mark
 	world_is_loaded = TRUE
 	loaded_station = instance
@@ -252,3 +252,4 @@
 	log_and_message_admins("[key_name(src)] is changing the next map from [was.name] ([was.id]) to [changing_to.name] ([changing_to.id])")
 
 	SSmapping.next_station = changing_to
+	SSmapping.write_next_map(changing_to)

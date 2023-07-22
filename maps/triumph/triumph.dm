@@ -12,16 +12,19 @@
 	)
 	width = 140
 	height = 140
+	world_width = 192
+	world_height = 192
 	lateload = list(
-		/datum/map/sector/debrisfield_140,
-		/datum/map/sector/wasteland_140,
-		/datum/map/sector/desert_140,
-		/datum/map/sector/gaia_140,
-		/datum/map/sector/frozen_140,
-		/datum/map/sector/piratebase_140,
-		/datum/map/sector/tradeport_140,
-		/datum/map/sector/lavaland_140,
-		/datum/map/sector/roguemining_140,
+		/datum/map/sector/debrisfield_192,
+		/datum/map/sector/piratebase_192,
+		/datum/map/sector/mining_192,
+		/datum/map/sector/gaia_192,
+		/datum/map/sector/frozen_192,
+		/datum/map/sector/wasteland_192,
+		/datum/map/sector/tradeport_192,
+		/datum/map/sector/lavaland_192,
+		/datum/map/sector/miaphus_192,
+		/datum/map/sector/roguemining_192/one,
 	)
 
 	//* LEGACY BELOW *//
@@ -34,6 +37,7 @@
 		/datum/shuttle/autodock/overmap/mining/triumph,
 		/datum/shuttle/autodock/overmap/civvie/triumph,
 		/datum/shuttle/autodock/overmap/courser/triumph,
+		/datum/shuttle/autodock/ferry/belter,
 	)
 
 	full_name = "NSV Triumph"
@@ -114,9 +118,9 @@
 
 // For making the 4-in-1 holomap, we calculate some offsets
 /// Width and height of compiled in triumph z levels.
-#define TRIUMPH_MAP_SIZE 140
+#define TRIUMPH_MAP_SIZE 192
 /// 40px central gutter between columns
-#define TRIUMPH_HOLOMAP_CENTER_GUTTER 40
+#define TRIUMPH_HOLOMAP_CENTER_GUTTER 20
 /// 100
 #define TRIUMPH_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TRIUMPH_MAP_SIZE) - TRIUMPH_HOLOMAP_CENTER_GUTTER) / 2)
 /// 60
@@ -125,8 +129,6 @@
 
 /datum/map_level/triumph/ship
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
-	holomap_legend_x = 220
-	holomap_legend_y = 160
 
 /datum/map_level/triumph/ship/deck_one
 	id = "TriumphDeck1"
@@ -137,13 +139,10 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/space
 	link_above = /datum/map_level/triumph/ship/deck_two
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
-	holomap_offset_x = TRIUMPH_HOLOMAP_MARGIN_X
-	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*1
 
 /datum/map_level/triumph/ship/deck_two
 	id = "TriumphDeck2"
@@ -154,15 +153,12 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
 	link_above = /datum/map_level/triumph/ship/deck_three
 	link_below = /datum/map_level/triumph/ship/deck_one
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
-	holomap_offset_x = TRIUMPH_HOLOMAP_MARGIN_X
-	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*2
 
 /datum/map_level/triumph/ship/deck_three
 	id = "TriumphDeck3"
@@ -173,14 +169,11 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/open
 	link_above = /datum/map_level/triumph/ship/deck_four
 	link_below = /datum/map_level/triumph/ship/deck_two
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TRIUMPH_HOLOMAP_MARGIN_X - TRIUMPH_MAP_SIZE
-	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*1
 
 /datum/map_level/triumph/ship/deck_four
 	id = "TriumphDeck4"
@@ -191,13 +184,10 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/open
 	link_below = /datum/map_level/triumph/ship/deck_three
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TRIUMPH_HOLOMAP_MARGIN_X - TRIUMPH_MAP_SIZE
-	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*2
 
 /datum/map_level/triumph/flagship
 	id = "TriumphFlagship"
@@ -221,3 +211,8 @@
 	name = "Triumph - Misc"
 	absolute_path = "maps/triumph/levels/misc.dmm"
 	flags = LEGACY_LEVEL_ADMIN
+
+#undef TRIUMPH_MAP_SIZE
+#undef TRIUMPH_HOLOMAP_CENTER_GUTTER
+#undef TRIUMPH_HOLOMAP_MARGIN_X
+#undef TRIUMPH_HOLOMAP_MARGIN_Y

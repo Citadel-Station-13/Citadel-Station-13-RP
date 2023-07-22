@@ -8,7 +8,6 @@ var/list/table_icon_cache = list()
 	density = TRUE
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_BUCKLED
 	anchored = TRUE
-	climbable = TRUE
 	layer = TABLE_LAYER
 	surgery_odds = 66
 	connections = list("nw0", "ne0", "sw0", "se0")
@@ -16,6 +15,10 @@ var/list/table_icon_cache = list()
 	// smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_TABLES)
 	canSmoothWith = (SMOOTH_GROUP_TABLES + SMOOTH_GROUP_LOW_WALL)
+
+	climb_allowed = TRUE
+	depth_level = 8
+	depth_projected = TRUE
 
 	var/flipped = 0
 	var/maxhealth = 10

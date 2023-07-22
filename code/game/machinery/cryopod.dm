@@ -15,6 +15,8 @@
 	icon_state = "cellconsole"
 	circuit = /obj/item/circuitboard/cryopodcontrol
 	density = FALSE
+	climb_allowed = FALSE
+	depth_projected = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 	var/mode = null
 

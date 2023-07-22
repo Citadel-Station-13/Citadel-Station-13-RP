@@ -64,6 +64,10 @@
 				npcs += list(serialized)
 			else
 				players += list(serialized)
+		else if(isrobot(M))
+			players += list(serialized)
+		else if(isAI(M))
+			players += list(serialized)
 
 	data["players"] = players
 	data["simplemobs"] = simplemobs
