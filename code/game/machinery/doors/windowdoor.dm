@@ -185,12 +185,12 @@
 		// Fixing.
 		if(istype(I, /obj/item/weldingtool) && user.a_intent == INTENT_HELP)
 			var/obj/item/weldingtool/WT = I
-			if(health < maxhealth)
+			if(integrity < integrity_max)
 				if(WT.remove_fuel(1 ,user))
 					to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
 					playsound(src, WT.tool_sound, 50, 1)
 					if(do_after(user, 40 * WT.tool_speed, target = src))
-						health = maxhealth
+						set_integrity(integrity_max)
 						update_icon()
 						to_chat(user, "<span class='notice'>You repair [src].</span>")
 			else

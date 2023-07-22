@@ -238,7 +238,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 /obj/machinery/door/firedoor/attack_generic(var/mob/living/user, var/damage)
 	if(machine_stat & (BROKEN|NOPOWER))
-		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
+		if(damage >= 5)
 			var/time_to_force = (2 + (2 * blocked)) * 5
 			if(src.density)
 				visible_message("<span class='danger'>\The [user] starts forcing \the [src] open!</span>")

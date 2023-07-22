@@ -191,7 +191,7 @@
 			if(machine_stat & BROKEN)
 				to_chat(user, "<span class='notice'>It looks like \the [src] is pretty busted. It's going to need more than just patching up now.</span>")
 				return
-			if(health >= maxhealth)
+			if(integrity >= integrity_max)
 				to_chat(user, "<span class='notice'>Nothing to fix!</span>")
 				return
 			if(!density)
@@ -199,7 +199,7 @@
 				return
 
 			//figure out how much metal we need
-			var/amount_needed = (maxhealth - health) / DOOR_REPAIR_AMOUNT
+			var/amount_needed = (integrity_max - integrity) / DOOR_REPAIR_AMOUNT
 			amount_needed = (round(amount_needed) == amount_needed)? amount_needed : round(amount_needed) + 1 //Why does BYOND not have a ceiling proc?
 
 			var/obj/item/stack/stack = I
@@ -231,7 +231,7 @@
 				playsound(src, welder.tool_sound, 50, 1)
 				if(do_after(user, (5 * repairing) * welder.tool_speed) && welder && welder.isOn())
 					to_chat(user, "<span class='notice'>You finish repairing the damage to \the [src].</span>")
-					health = between(health, health + repairing*DOOR_REPAIR_AMOUNT, maxhealth)
+					integrity = clamp(integrity + repairing * DOOR_REPAIR_AMOUNT, 0, integrity_max)
 					update_icon()
 					repairing = 0
 			return
