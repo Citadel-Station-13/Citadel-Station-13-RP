@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /datum/component/rig_piece
 	#warn more vars?
 	/// display name - what is used for UIs

@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //* WELCOME TO THE SEVENTH CIRCLE OF WEBDEV HELL
 /// For efficiency, rigs will internally track and cache what needs to update.
 /// We heavily abuse the TGUI modules system to selectively update data
