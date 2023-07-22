@@ -2170,6 +2170,7 @@
 #include "code\modules\atmospherics\gasmixtures\immutable_mixtures.dm"
 #include "code\modules\atmospherics\gasmixtures\reactions.dm"
 #include "code\modules\atmospherics\gasmixtures\transfer_helpers.dm"
+#include "code\modules\atmospherics\gasmixtures\gas_types\core.dm"
 #include "code\modules\atmospherics\machinery\_atmos_setup.dm"
 #include "code\modules\atmospherics\machinery\_atmospherics_helpers.dm"
 #include "code\modules\atmospherics\machinery\analyzer_hooks.dm"

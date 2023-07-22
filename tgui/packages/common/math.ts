@@ -103,7 +103,7 @@ export const numberOfDecimalDigits = value => {
  * Get array of bits from a bitfield
  */
 export const bitfieldToBits = (field: number) => {
-  let got = [];
+  let got: number[] = [];
   for (let bit = 0; bit < 24; bit++) {
     if(field & (1<<bit)) {
       got.push(1<<bit);
@@ -116,7 +116,7 @@ export const bitfieldToBits = (field: number) => {
  * Get array of positions from a bitfield
  */
 export const bitfieldToPositions = (field: number) => {
-  let got = [];
+  let got: number[] = [];
   for (let bit = 0; bit < 24; bit++) {
     if(field & (1<<bit)) {
       got.push(1);

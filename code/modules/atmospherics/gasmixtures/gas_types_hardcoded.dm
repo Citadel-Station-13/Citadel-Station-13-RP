@@ -1,26 +1,17 @@
 
 /datum/gas/oxygen
-	id = GAS_ID_OXYGEN
-	name = "Oxygen"
 	specific_heat = 20
 	molar_mass = 0.032
-	gas_flags = GAS_FLAG_OXIDIZER
 
 /datum/gas/nitrogen
-	id = GAS_ID_NITROGEN
-	name = "Nitrogen"
 	specific_heat = 20
 	molar_mass = 0.028
 
 /datum/gas/carbon_dioxide
-	id = GAS_ID_CARBON_DIOXIDE
-	name = "Carbon Dioxide"
 	specific_heat = 30
 	molar_mass = 0.044
 
 /datum/gas/phoron
-	id = GAS_ID_PHORON
-	name = "Phoron"
 	//Note that this has a significant impact on TTV yield.
 	//Because it is so high, any leftover phoron soaks up a lot of heat and drops the yield pressure.
 	specific_heat = 200	// J/(mol*K)
@@ -30,11 +21,20 @@
 	//and following a N/Z ratio of 1.5, the molar mass of a monatomic gas is:
 	molar_mass = 0.405	// kg/mol
 
-	visual_overlay = "phoron"
-
-	visual_threshold = 0.7
-
-	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL | GAS_FLAG_CONTAMINANT
+/datum/gas/hydrogen
+	//lore_text = "A colorless, flammable gas."
+	//flags = MAT_FLAG_FUSION_FUEL
+	//wall_name = "bulkhead"
+	//construction_difficulty = MAT_VALUE_HARD_DIY
+	specific_heat = 100
+	molar_mass = 0.002
+	/*burn_product = /singleton/material/liquid/water
+	gas_symbol_html = "H<sub>2</sub>"
+	gas_symbol = "H2"
+	dissolves_into = list(
+		/singleton/material/liquid/fuel/hydrazine = 1
+	)
+	value = 0.4*/
 
 /datum/gas/volatile_fuel
 	id = GAS_ID_VOLATILE_FUEL
@@ -45,15 +45,8 @@
 	gas_flags = GAS_FLAG_FUEL
 
 /datum/gas/nitrous_oxide
-	id = GAS_ID_NITROUS_OXIDE
-	name = "Nitrous Oxide"
 	specific_heat = 40
 	molar_mass = 0.044
-
-	visual_overlay = "nitrous_oxide"
-	visual_threshold = 1
-
-	gas_flags = GAS_FLAG_OXIDIZER
 
 //The following is partially stolen from Nebula
 //I am not rewriting our handling of air for this, at least for now.
@@ -205,24 +198,6 @@
 		/singleton/material/solid/sulfur = 0.5,
 		/singleton/material/gas/oxygen = 0.5
 	)*/
-
-/datum/gas/hydrogen
-	id = GAS_ID_HYDROGEN
-	name = "Hydrogen"
-	//lore_text = "A colorless, flammable gas."
-	//flags = MAT_FLAG_FUSION_FUEL
-	//wall_name = "bulkhead"
-	//construction_difficulty = MAT_VALUE_HARD_DIY
-	specific_heat = 100
-	molar_mass = 0.002
-	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL
-	/*burn_product = /singleton/material/liquid/water
-	gas_symbol_html = "H<sub>2</sub>"
-	gas_symbol = "H2"
-	dissolves_into = list(
-		/singleton/material/liquid/fuel/hydrazine = 1
-	)
-	value = 0.4*/
 
 /datum/gas/tritium
 	id = GAS_ID_TRITIUM

@@ -88,15 +88,22 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	//? intrinsics
 	gases[G.id] = G
 	names[G.id] = G.name
+	if(groups[G.id])
+		var/old_group = groups[G.id]
+		LAZYREMOVE(gas_by_group[old_group], G.id)
+	groups[G.id] = G.gas_groups
+	if(G.gas_groups & GAS_GROUP_CORE)
+		if(!((G.gas_flags & (GAS_FLAG_CORE | GAS_FLAG_FILTERABLE)) == (GAS_FLAG_CORE | GAS_FLAG_FILTERABLE)))
+			stack_trace("[G.id] didn't have core/filterable flags even though it was marked as core group. Adding the flags...")
+			G.gas_flags |= (GAS_FLAG_CORE | GAS_FLAG_FILTERABLE)
+	else if(!(G.gas_groups & GAS_GROUPS_FILTERABLE))
+		stack_trace("[G.id] didn't have a filterable gas group. This is probably a bad thing. Adding filterable flag...")
+		G.gas_flags |= (GAS_FLAG_FILTERABLE)
 	if(flags[G.id])
 		var/old_flags = flags[G.id]
 		for(var/bit in bitfield2list(old_flags))
 			LAZYREMOVE(gas_by_flag["[bit]"], G.id)
 	flags[G.id] = G.gas_flags
-	if(groups[G.id])
-		var/old_group = groups[G.id]
-		LAZYREMOVE(gas_by_group[old_group], G.id)
-	groups[G.id] = G.gas_groups
 	//? physics
 	specific_heats[G.id] = G.specific_heat
 	molar_masses[G.id] = G.molar_mass
@@ -185,3 +192,15 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 			continue
 		. += id
 	return tgui_gas_context(., full)
+
+/**
+ * checks if a gas group is filterable
+ */
+/datum/gas_data/proc/gas_group_filterable(group_flag)
+	return TRUE
+
+/**
+ * checks if a gas id is specifically filterable
+ */
+/datum/gas_data/proc/gas_id_filterable(gas_id)
+	return flags[gas_id] & (GAS_FLAG_FILTERABLE | GAS_FLAG_CORE)

@@ -1,10 +1,10 @@
 import { SectionProps } from "../../components/Section";
-import { AtmosGasGroup, AtmosGasID, GasContext } from "../common/Atmos";
+import { AtmosGasGroups, AtmosGasID, GasContext } from "../common/Atmos";
 
 interface AtmosFilterControlProps extends SectionProps {
   atmosContext: GasContext;
   filteredGases: AtmosGasID[];
-  filteredGroups: AtmosGasGroup[];
+  filteredGroups: AtmosGasGroups;
 
 }
 

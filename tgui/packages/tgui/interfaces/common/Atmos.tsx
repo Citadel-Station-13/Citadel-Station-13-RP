@@ -20,10 +20,17 @@ export enum AtmosGasFlags {
 export enum AtmosGroupFlags {
   None = (0),
   Core = (1<<0),
-  Unknown = (1<<1),
-  Chemical = (1<<2),
-  Other = (1<<3),
+  Other = (1<<1),
+  Unknown = (1<<2),
+  Reagents = (1<<3),
 }
+
+export const AtmosGroupFlagNames = [
+  "Core",
+  "Other",
+  "Unknown",
+  "Reagents",
+]
 
 interface BaseGasContext {
   coreGases: AtmosGasID[];

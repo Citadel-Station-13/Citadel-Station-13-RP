@@ -9,10 +9,4 @@
 	default_panel = null
 	tool_panel = null
 
-/obj/machinery/atmospherics/component/dynamic_tool_image(function, hint)
-	. = ..()
-
-/obj/machinery/atmospherics/component/dynamic_tool_functions(obj/item/I, mob/user)
-	. = ..()
-
-#warn impl all
+#warn impl default deconstruct

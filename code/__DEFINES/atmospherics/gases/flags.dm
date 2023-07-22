@@ -16,4 +16,3 @@
 #define GAS_FLAG_FILTERABLE				(1<<6)
 /// gas is highly dangerous, mostly used to know when to *loudly* log as opposed to just log
 #define GAS_FLAG_DANGEROUS			(1<<7)
-
