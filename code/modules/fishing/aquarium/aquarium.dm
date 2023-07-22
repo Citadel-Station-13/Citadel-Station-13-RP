@@ -184,7 +184,11 @@
 	if(living_pulled.buckled || living_pulled.has_buckled_mobs())
 		user.action_feedback(SPAN_WARNING("[living_pulled] is attached to something!"))
 		return
-	user.visible_action_feedback(SPAN_DANGER("[user] starts to put [living_pulled] into src!"), src)
+	user.visible_action_feedback(
+		target = src,
+		visible_hard = SPAN_WARNING("[user] starts to put [living_pulled] into [src]!"),
+		visible_soft = SPAN_WARNING("[user] starts to put something into [src]!")
+	)
 	if(!do_after(user, 10 SECONDS, target = src))
 		return
 	if(QDELETED(living_pulled) || user.pulling != living_pulled || living_pulled.buckled || living_pulled.has_buckled_mobs())
@@ -192,7 +196,11 @@
 	var/datum/component/aquarium_content/content_component = living_pulled.GetComponent(/datum/component/aquarium_content)
 	if(content_component || content_component.is_ready_to_insert(src))
 		return
-	user.visible_action_feedback(SPAN_DANGER("[user] stuffs [living_pulled] into [src]!"), src)
+	user.visible_action_feedback(
+		target = src,
+		visible_hard = SPAN_WARNING("[user] stuffs [living_pulled] into [src]!"),
+		visible_soft = SPAN_WARNING("[user] stuffs something into [src]!"),
+	)
 	living_pulled.forceMove(src)
 	update_appearance()
 

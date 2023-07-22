@@ -272,6 +272,10 @@
 		varsities[initial(varsity.name)] = varsity
 	gear_tweaks += new/datum/gear_tweak/path(tim_sort(varsities, /proc/cmp_text_asc))
 
+/datum/gear/suit/varsity_worn
+	name = "Varsity Jacket - Worn"
+	path = /obj/item/clothing/suit/storage/toggle/varsity/worn
+
 /datum/gear/suit/track
 	name = "Track Jacket - Selection"
 	path = /obj/item/clothing/suit/storage/toggle/track

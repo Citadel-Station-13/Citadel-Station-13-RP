@@ -1,26 +1,25 @@
 /mob/living/silicon/pai/restrained()
-	if(istype(src.loc,/obj/item/paicard))
+	if(src.loc == shell)
 		return FALSE
 	..()
 
-//I'm not sure how much of this is necessary, but I would rather avoid issues.
 /mob/living/silicon/pai/proc/close_up()
+	// we can't close up if already inside our shell
+	if(src.loc == shell)
+		return
+
+	// we check mobility here to stop people folding up if they currently cannot move
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
+		return
+
+	if(!can_action())
+		return
 
 	last_special = world.time + 20
 
-	if(src.loc == card)
-		return
-
 	release_vore_contents()
 
-	var/turf/T = get_turf(src)
-	if(istype(T))
-		T.visible_message("<b>[src]</b> neatly folds inwards, compacting down to a rectangular card.")
-
 	stop_pulling()
-
-	//stop resting
-	resting = FALSE
 
 	// If we are being held, handle removing our holder from their inv.
 	var/obj/item/holder/H = loc
@@ -28,9 +27,9 @@
 		H.forceMove(get_turf(src))
 		forceMove(get_turf(src))
 
-	// Move us into the card and move the card to the ground.
-	card.forceMove(loc)
-	forceMove(card)
+	// Move us into the shell and move the shell to the ground.
+	transform_component.put_in_object()
+
 	update_perspective()
 	set_resting(FALSE)
 	update_mobility()
@@ -40,34 +39,37 @@
 /mob/living/silicon/pai/proc/open_up()
 	last_special = world.time + 20
 
-	//I'm not sure how much of this is necessary, but I would rather avoid issues.
-	if(istype(card.loc,/obj/item/hardsuit_module))
+	// stops unfolding in hardsuits and vore bellies, if implanted you explode out
+	if(istype(shell.loc,/obj/item/hardsuit_module))
 		to_chat(src, "There is no room to unfold inside this hardsuit module. You're good and stuck.")
 		return FALSE
-	else if(istype(card.loc,/mob))
-		var/mob/holder = card.loc
-		var/datum/belly/inside_belly = check_belly(card)
+	else if(istype(shell.loc,/mob))
+		var/mob/holder = shell.loc
+		var/datum/belly/inside_belly = check_belly(shell)
 		if(inside_belly)
 			to_chat(src, "<span class='notice'>There is no room to unfold in here. You're good and stuck.</span>")
 			return FALSE
 		if(ishuman(holder))
 			var/mob/living/carbon/human/H = holder
 			for(var/obj/item/organ/external/affecting in H.organs)
-				if(card in affecting.implants)
+				if(shell in affecting.implants)
 					affecting.take_damage(rand(30,50))
-					affecting.implants -= card
+					affecting.implants -= shell
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
 					break
-		holder.drop_item_to_ground(card, INV_OP_FORCE)
-	else if(istype(card.loc,/obj/item/pda))
-		var/obj/item/pda/holder = card.loc
+		holder.drop_item_to_ground(shell, INV_OP_FORCE)
+	else if(istype(shell.loc,/obj/item/pda))
+		var/obj/item/pda/holder = shell.loc
 		holder.pai = null
 
-	forceMove(card.loc)
-	card.forceMove(src)
+	// handle the actual object stuffing via the component
+	transform_component.put_in_mob()
+
 	update_perspective()
 
-	card.screen_loc = null
+	var/obj/item/paicard/card = shell
+	if(istype(card))
+		card.screen_loc = null
 
 	var/turf/T = get_turf(src)
 	if(istype(T))
@@ -106,9 +108,21 @@
 // space movement (we get one ion burst every 3 seconds)
 /mob/living/silicon/pai/Process_Spacemove(movement_dir = NONE)
 	. = ..()
-	if(!.)
+	if(!. && src.loc != shell)
 		if(world.time >= last_space_movement + 30)
 			last_space_movement = world.time
 			// place an effect for the movement
 			new /obj/effect/temp_visual/pai_ion_burst(get_turf(src))
 			return TRUE
+
+/mob/living/silicon/pai/proc/can_change_shell()
+	if(istype(src.loc, /mob))
+		to_chat(src, "<span class='notice'>You're not able to change your shell while being held.</span>")
+		return FALSE
+	if(stat != CONSCIOUS)
+		return FALSE
+	if(!can_action())
+		return FALSE
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
+		return FALSE
+	return TRUE

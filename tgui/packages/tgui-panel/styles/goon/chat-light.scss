@@ -1,3 +1,5 @@
+@import './chat.scss';
+
 /**
  * Copyright (c) 2020 Aleksej Komarov
  * SPDX-License-Identifier: MIT
@@ -994,40 +996,19 @@ blockquote.brass {
   font-family: "Courier New", cursive, sans-serif;
 }
 
-.command_headset {
-  font-weight: bold;
-  font-size: 125%; /* 160% default, changed so command can scream less */
-}
-
-.small {
-  font-size: 60%;
-}
-
-.big {
-  font-size: 185%;
-}
-
-.reallybig {
-  font-size: 245%;
-}
-
-.extremelybig {
-  font-size: 310%;
-}
-
 .greentext {
+  @include size-ll;
   color: #00FF00;
-  font-size: 185%;
-}
-
-.redtext {
-  color: #FF0000;
-  font-size: 185%;
 }
 
 .yellowtext	{
+  @include size-ll;
   color: #FFCC00;
-  font-size: 185%;
+}
+
+.redtext {
+  @include size-ll;
+  color: #FF0000;
 }
 
 .clown {
