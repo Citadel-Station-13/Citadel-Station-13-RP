@@ -7,7 +7,7 @@
 
 import { BooleanLike } from "common/react";
 import { ModuleData, useLocalState, useModule } from "../../backend";
-import { Box, Button, Collapsible, Dropdown, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "../../components";
+import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
@@ -75,6 +75,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
     `${data.$ref}-rSelect`,
     "Materials",
   );
+  const [searchText, setSearchText] = useLocalState<string>(context, `${data.$ref}-search`, "");
 
   const windowProps: WindowProps = {
     title: data.latheName,
@@ -232,17 +233,28 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
               </Section>
             </Stack.Item>
             <Stack.Item grow={1.15}>
-              <Section fill title="Designs" scrollable>
-                {
-                  Object.values(data.designs.instances).filter((d) => d.category === category).sort((d1, d2) =>
-                    d1.name.localeCompare(d2.name)
-                  ).map((d) => (
-                    <LatheDesign
-                      key={d.id}
-                      design={d} />
-                  ))
-                }
-              </Section>
+              <Stack vertical fill>
+                <Stack.Item>
+                  <Section>
+                    <Input placeholder="Search (3+ characters)" width="100%" value={searchText} onInput={(e, val) => setSearchText(val)} />
+                  </Section>
+                </Stack.Item>
+                <Stack.Item grow>
+                  <Section fill title="Designs" scrollable>
+                    {
+                      Object.values(data.designs.instances).filter(
+                        (d) => searchText.length > 2? d.name.includes(searchText) : (d.category === category)
+                      ).sort((d1, d2) =>
+                        d1.name.localeCompare(d2.name)
+                      ).map((d) => (
+                        <LatheDesign
+                          key={d.id}
+                          design={d} />
+                      ))
+                    }
+                  </Section>
+                </Stack.Item>
+              </Stack>
             </Stack.Item>
             <Stack.Item grow={0.9}>
               <Stack vertical fill>
