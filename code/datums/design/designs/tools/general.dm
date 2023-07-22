@@ -71,10 +71,9 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/material/minihoe
 	materials = list(MAT_STEEL = 50)
-	material_parts = list(
+	material_costs = list(
 		"tip" = 250
 	)
-	#warn do on obj side
 
 /datum/design/tool/prybar
 	id = "ToolPrybar"

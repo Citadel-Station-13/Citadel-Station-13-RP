@@ -7,7 +7,6 @@
 	materials = list(
 		MAT_STEEL = 500,
 	)
-	material_parts = list(
+	material_costs = list(
 		"blade" = 3000,
 	)
-	#warn do on obj side

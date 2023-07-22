@@ -162,7 +162,7 @@
 	if(T)
 		if(istype(T, /turf/simulated/wall))
 			var/turf/simulated/wall/W = T
-			W.take_damage(wall_power) // Stronger walls can halt asteroids.
+			W.inflict_atom_damage(wall_power, flag = ARMOR_BOMB) // Stronger walls can halt asteroids.
 
 /obj/effect/meteor/proc/get_shield_damage()
 	return max(((max(hits, 2)) * (heavy + 1) * rand(6, 12)) / hitpwr , 0)

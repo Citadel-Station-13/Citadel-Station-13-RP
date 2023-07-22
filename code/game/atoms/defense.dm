@@ -333,7 +333,7 @@
  * called to semantically deconstruct an atom
  *
  * @params
- * - method - how we were deconstructed
+ * * method - how we were deconstructed
  */
 /atom/proc/deconstruct(method = ATOM_DECONSTRUCT_DISASSEMBLED)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -343,7 +343,7 @@
 	// do da funny logic
 	deconstructed(method)
 	// drop things after so things that rely on having objects don't break
-	drop_products(method, where)
+	drop_products(method, drop_location())
 	// goodbye, cruel world
 	qdel(src)
 
