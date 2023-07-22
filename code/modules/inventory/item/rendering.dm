@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * Item rendering system
  * Procs in here can be called and overridden as needed, but you should know what you're doing

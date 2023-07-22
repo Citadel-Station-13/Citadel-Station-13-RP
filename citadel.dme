@@ -3261,6 +3261,7 @@
 #include "code\modules\mob\living\defense.dm"
 #include "code\modules\mob\living\health.dm"
 #include "code\modules\mob\living\inventory.dm"
+#include "code\modules\mob\living\inventory_legacy.dm"
 #include "code\modules\mob\living\life.dm"
 #include "code\modules\mob\living\living.dm"
 #include "code\modules\mob\living\living_defines.dm"

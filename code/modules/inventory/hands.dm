@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 // todo: we need a set of 'core' procs subtypes need to override, and the rest are composites of those procs.
 
 /**
