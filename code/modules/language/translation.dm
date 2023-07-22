@@ -65,7 +65,7 @@
 	if(has_typelist(NAMEOF(src, translated_ids)))
 		translated_ids = get_typelist(NAMEOF(src, translated_ids))
 	else
-		translated_ids = typelist(NAMEFO(src, translated_ids), make_associative_inplace_keep_values(translated_ids))
+		translated_ids = typelist(NAMEOF(src, translated_ids), make_associative_inplace_keep_values(translated_ids))
 
 /datum/translation_context/simple/can_translate(datum/language/L, atom/movable/speaker, require_perfect)
 	if(translated_ids?[L.id])
