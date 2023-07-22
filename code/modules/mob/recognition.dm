@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+//* Get - Names
+
 /**
  * get visible name used for examine
  *
@@ -14,14 +16,7 @@
 /mob/proc/get_visible_name(mob/recognizing, dist)
 	if(isnull(dist))
 		dist = isnull(recognizing)? get_dist(src, recognizing) : 0
-	// todo: proper cached hide flags on /datum/inventory
-	var/face_name
-	if(wear_mask?.inv_hide_flags & HIDEFACE)
-		face_name = "Unknown"
-	else if(head?.inv_hide_flags & HIDEFACE)
-		face_name = "Unknown"
-	else
-		face_name = get_face_name(recognizing, dist)
+	var/face_name = is_face_obscured(recognizing, dist)? "Unknown" : face_name = get_face_name(recognizing, dist)
 	var/id_name = get_id_name(recognizing, dist)
 	if(face_name == id_name)
 		return face_name
@@ -67,3 +62,23 @@
 	var/obj/item/card/id/used = get_idcard()
 	if(!isnull(used))
 		. = used.registered_name
+
+//* Check - Obscure
+
+/**
+ * check if our face is obscured
+ *
+ * @params
+ * * recognizing - if specified, we get name from recognition perspective of this mob
+ * * dist - override distance of seeing mob
+ */
+/mob/proc/is_face_obscured()
+	var/obj/item/checking
+	// todo: proper cached hide flags on /datum/inventory
+	checking = item_by_slot(SLOT_ID_MASK)
+	if(checking.inv_hide_flags & HIDEFACE)
+		return TRUE
+	checking = item_by_slot(SLOT_ID_HEAD)
+	if(checking.inv_hide_flags & HIDEFACE)
+		return TRUE
+	return FALSE
