@@ -23,6 +23,8 @@
 /datum/component/rig_piece/UnregisterFromParent()
 	. = ..()
 
+/datum/component/rig_piece/proc/tgui_piece_data()
+	#warn impl
 
 #warn impl all
 
