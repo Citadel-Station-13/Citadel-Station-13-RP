@@ -65,7 +65,7 @@
 	if(has_typelist(NAMEOF(src, translated_ids)))
 		translated_ids = get_typelist(NAMEOF(src, translated_ids))
 	else
-		translated_ids = typelist(src, make_associative_inplace_keep_values(translated_ids))
+		translated_ids = typelist(NAMEFO(src, translated_ids), make_associative_inplace_keep_values(translated_ids))
 
 /datum/translation_context/simple/can_translate(datum/language/L, atom/movable/speaker, require_perfect)
 	if(translated_ids?[L.id])
@@ -111,7 +111,7 @@
 			if(!isnull(translated_ids[id]))
 				continue
 			translated_ids[id] = translate_factor
-		translated_ids = typelist(src, make_associative_inplace_keep_values(translated_ids))
+		translated_ids = typelist(NAMEOF(src, translated_ids), make_associative_inplace_keep_values(translated_ids))
 
 /datum/translation_context/variable/Destroy()
 	translated_ids = null
@@ -228,7 +228,7 @@
 			if(!isnull(learnable_ids[id]))
 				continue
 			learnable_ids[id] = learn_factor
-		learnable_ids = typelist(src, make_associative_inplace_keep_values(learnable_ids))
+		learnable_ids = typelist(NAMEOF(src, learnable_ids), make_associative_inplace_keep_values(learnable_ids))
 
 /datum/translation_context/variable/learning/Destroy()
 	learnable_ids = null
