@@ -1571,6 +1571,7 @@
 #include "code\game\objects\items\id_cards\cards.dm"
 #include "code\game\objects\items\id_cards\contractor_ids.dm"
 #include "code\game\objects\items\id_cards\emag.dm"
+#include "code\game\objects\items\id_cards\guest.dm"
 #include "code\game\objects\items\id_cards\sprite_stacks_cit.dm"
 #include "code\game\objects\items\id_cards\station_ids.dm"
 #include "code\game\objects\items\id_cards\syndicate_ids.dm"
