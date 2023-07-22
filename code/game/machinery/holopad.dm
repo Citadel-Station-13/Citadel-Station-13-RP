@@ -1258,9 +1258,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/effect/overlay/hologram/holopad/ai/examine(mob/user, dist)
 	. = ..()
 	//If you need an ooc_notes copy paste, this is NOT the one to use.
-	var/ooc_notes = owner.ooc_notes
-	if(ooc_notes)
-		. += SPAN_BOLDNOTICE("OOC Notes: <a href='?src=\ref[owner];ooc_notes=1'>\[View\]</a>\n")
+	. += SPAN_BOLDNOTICE("Character Profile: <a href='?owner=\ref[src];character_profile=1'>\[View\]</a>")
 	if(vored)
 		. += SPAN_WARNING("It seems to have [vored] inside of it!")
 

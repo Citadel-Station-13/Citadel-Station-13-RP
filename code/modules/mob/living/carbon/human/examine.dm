@@ -480,8 +480,7 @@
 	if(print_flavor_text())
 		. += "[print_flavor_text()]"
 
-	if(ooc_notes)
-		. += SPAN_BOLDNOTICE("OOC Notes: <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>")
+	. += SPAN_BOLDNOTICE("Character Profile: <a href='?src=\ref[src];character_profile=1'>\[View\]</a>")
 
 	. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")
 

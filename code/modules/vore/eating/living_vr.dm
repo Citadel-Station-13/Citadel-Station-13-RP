@@ -726,9 +726,6 @@
 /mob/living/examine(mob/user, dist)
 	. = ..()
 
-	if(ooc_notes)
-		. += SPAN_BOLDNOTICE("OOC Notes: <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>")
-
 	if(print_flavor_text())
 		. += "\n[print_flavor_text()]"
 

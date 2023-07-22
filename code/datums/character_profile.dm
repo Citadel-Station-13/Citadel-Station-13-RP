@@ -19,28 +19,25 @@ GLOBAL_LIST_EMPTY(cached_previews)
 	. = ..()
 	var/data[0]
 	var/mob/living/carbon/human/H = host.resolve()
-	var/image/ingame_preview
-	var/preview_name = "preview_[rand(1,9999)]_[H.name].png" //nobody should ever be named the same in a round, but just in case, a little randomness to prevent collisions.
 
-	if (!(H.name in GLOB.cached_previews))
-		ingame_preview = get_flat_icon(H)
-		if(!ingame_preview) //flat icon fails for whatever reason, this should probably throw an error.
-			ingame_preview = image('icons/404_profile_not_found.dmi')
-		GLOB.cached_previews[H.name] = ingame_preview
-	else
-		ingame_preview = GLOB.cached_previews[H.name]
-
-	user << browse_rsc(ingame_preview, preview_name)
-
-	data["flavortext"] = H?.flavor_text || ""
 	data["oocnotes"] = H?.ooc_notes || ""
-	data["headshot_url"] = H?.client?.prefs?.headshot_url || ""
-	data["preview_name"] = preview_name
+	data["headshot_url"] = H?.client?.prefs?.headshot_url
+	data["fullref_url"] = H?.client?.prefs?.full_ref_url
+	data["fullref_toggle"] = H?.client?.prefs?.full_ref_toggle
 	data["directory_visible"] = H?.client?.prefs?.show_in_directory
 	data["vore_tag"] = H?.client?.prefs?.directory_tag || "Unset"
 	data["erp_tag"] = H?.client?.prefs?.directory_erptag || "Unset"
 	data["species_name"] = H?.species?.name
 	data["species_text"] = replacetext(H?.species?.blurb, "<br/>", "\n")
+	data["flavortext_general"] = replacetext(H?.flavor_texts["general"], "\n", "<BR>") || ""
+	data["flavortext_head"] = replacetext(H?.flavor_texts["head"], "\n", "<BR>") || ""
+	data["flavortext_face"] = replacetext(H?.flavor_texts["face"], "\n", "<BR>") || ""
+	data["flavortext_eyes"] = replacetext(H?.flavor_texts["eyes"], "\n", "<BR>") || ""
+	data["flavortext_torso"] = replacetext(H?.flavor_texts["torso"], "\n", "<BR>") || ""
+	data["flavortext_arms"] = replacetext(H?.flavor_texts["arms"], "\n", "<BR>") || ""
+	data["flavortext_hands"] = replacetext(H?.flavor_texts["hands"], "\n", "<BR>") || ""
+	data["flavortext_legs"] = replacetext(H?.flavor_texts["legs"], "\n", "<BR>") || ""
+	data["flavortext_feet"] = replacetext(H?.flavor_texts["feet"], "\n", "<BR>") || ""
 
 	return data
 

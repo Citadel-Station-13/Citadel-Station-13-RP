@@ -503,6 +503,10 @@ var/list/ai_verbs_default = list(
 			ai_actual_track(target)
 		else
 			to_chat(src, "<font color='red'>System error. Cannot locate [html_decode(href_list["trackname"])].</font>")
+	if(href_list["character_profile"])
+		if(!profile)
+			profile = new(src)
+		profile.ui_interact(usr)
 
 /mob/living/silicon/ai/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
 	. = ..()
