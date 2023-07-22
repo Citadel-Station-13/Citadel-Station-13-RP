@@ -7939,10 +7939,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
-"Db" = (
-/obj/structure/curtain/black,
-/turf/simulated/floor/carpet,
-/area/maintenance/dormitory)
 "Df" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -11576,6 +11572,8 @@
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/tcommsat/computer)
 "Px" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/structure/curtain/black,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "Py" = (
@@ -21745,7 +21743,7 @@ ib
 Tz
 Od
 jd
-Db
+ht
 Px
 fN
 fN
