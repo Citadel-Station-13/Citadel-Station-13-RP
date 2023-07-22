@@ -49,9 +49,9 @@
 				return
 		return
 	else if(I.is_wrench())
-		if(health < maxhealth)
-			health = maxhealth
-			emagged = 0
+		if(integrity < integrity_max)
+			set_integrity(integrity_max)
+			emagged = FALSe
 			req_access = list(ACCESS_SECURITY_EQUIPMENT)
 			visible_message(SPAN_WARNING("[user] repairs \the [src]!"))
 			return
