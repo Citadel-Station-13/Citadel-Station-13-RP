@@ -8,8 +8,11 @@
 	spawn_positions = 1
 	supervisors = "the spirit of performance"
 	selection_color = "#515151"
-	additional_access = list(ACCESS_GENERAL_ENTERTAINMENT)
-	minimal_access = list(ACCESS_GENERAL_ENTERTAINMENT)
+	minimal_access = list(
+		ACCESS_GENERAL_ENTERTAINMENT,
+		ACCESS_GENERAL_CLOWN,
+		ACCESS_GENERAL_MIME,
+	)
 	desc = "A Mime is there to entertain the crew and keep high morale using unbelievable performances and acting skills!"
 	alt_titles = list("Poseur" = /datum/prototype/struct/alt_title/mime/poseur)
 	whitelist_only = 1
@@ -18,12 +21,6 @@
 
 /datum/prototype/struct/alt_title/mime/poseur
 	title = "Poseur"
-
-/datum/role/job/station/mime/get_access()
-	if(config_legacy.assistant_maint)
-		return list(ACCESS_ENGINEERING_MAINT, ACCESS_GENERAL_ENTERTAINMENT, ACCESS_GENERAL_TOMFOOLERY, ACCESS_GENERAL_MIME)
-	else
-		return list(ACCESS_GENERAL_ENTERTAINMENT, ACCESS_GENERAL_TOMFOOLERY, ACCESS_GENERAL_MIME)
 
 /datum/outfit/job/station/mime
 	name = OUTFIT_JOB_NAME("Mime")
