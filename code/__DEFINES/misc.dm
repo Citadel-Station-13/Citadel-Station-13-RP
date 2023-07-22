@@ -47,10 +47,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 // Some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 /// Used to trigger removal from a processing list.
 #define PROCESS_KILL	26
-/// Used in chargen for accessory loadout limit.
-#define MAX_GEAR_COST					20
-/// Used in chargen for accessory loadout limit on holidays.
-#define MAX_GEAR_COST_HOLIDAY_SPAM		30
 
 //	Shuttles.
 
@@ -170,6 +166,10 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 // Caps for NTNet logging. Less than 10 would make logging useless anyway, more than 500 may make the log browser too laggy. Defaults to 100 unless user changes it.
 #define MAX_NTNET_LOGS	500
 #define MIN_NTNET_LOGS	10
+
+#define NTOS_EMAIL_NONEWMESSAGES	0
+#define NTOS_EMAIL_NOTIFALREADY		1
+#define NTOS_EMAIL_NEWMESSAGE		2
 
 
 // Special return values from bullet_act(). Positive return values are already used to indicate the blocked level of the projectile.
