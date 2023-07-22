@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * recognition system
  *
@@ -18,15 +21,21 @@
 	identity = new /datum/identity_holder(src, restore_data)
 
 /mob/proc/change_facial_identity(identifier)
+	return isnull(identity)? FALSE : identity.change_facial_identifier(identifier)
 
 /mob/proc/change_vocal_identity(identifier)
+	return isnull(identity)? FALSE : identity.change_voice_identifier(identifier)
 
 /mob/proc/seed_facial_identity(identifier)
+	return isnull(identity)? FALSE : identity.seed_facial_identity(identifier)
 
 /mob/proc/seed_vocal_identity(identifier)
+	return isnull(identity)? FALSE : identity.seed_voice_identity(identifier)
 
 /mob/proc/randomize_facial_identity(identifier)
+	return isnull(identity)? FALSE : identity.change_facial_identifier(identity.random_facial_identifier)
 
 /mob/proc/randomize_vocal_identity(identifier)
+	return isnull(identity)? FALSE : identity.change_voice_identifier(identity.random_voice_identifier)
 
 #warn impl all

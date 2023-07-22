@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 GLOBAL_LIST_EMPTY(active_identity_holders)
 
 /**
@@ -36,11 +39,13 @@ GLOBAL_LIST_EMPTY(active_identity_holders)
 	detach()
 	facial_identifier = identifier
 	attach()
+	return TRUE
 
 /datum/identity_holder/proc/change_voice_identifier(identifier)
 	detach()
 	voice_identifier = identifier
 	attach()
+	return TRUE
 
 /datum/identity_holder/proc/seed_facial_identity(seed)
 	return change_facial_identifier(seeded_identifier(seed))
