@@ -388,3 +388,36 @@
 			var/new_amount = besk.get_energy(src) + amount
 			besk.set_energy(src, new_amount)
 	return FALSE
+
+/mob/living/carbon/human/proc/hide_tail()
+	set name = "Toggle Hide Tail"
+	set desc = "Hide or reveal your tail."
+	set category = "IC"
+
+	if(tail_style && !tail_style.can_be_hidden)
+		return
+	hiding_tail = !hiding_tail
+	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_tail ? "showing" : "hiding"] your tail."))
+	update_icon()
+
+/mob/living/carbon/human/proc/hide_wings()
+	set name = "Toggle Hide Wings"
+	set desc = "Hide or reveal your wings."
+	set category = "IC"
+
+	if(wing_style && !wing_style.can_be_hidden)
+		return
+	hiding_wings = !hiding_wings
+	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_wings ? "showing" : "hiding"] your wings."))
+	update_icon()
+
+/mob/living/carbon/human/proc/hide_horns()
+	set name = "Toggle Hide Horns"
+	set desc = "Hide or reveal your horns."
+	set category = "IC"
+
+	if(horn_style && !horn_style.can_be_hidden)
+		return
+	hiding_horns = !hiding_horns
+	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_horns ? "showing" : "hiding"] your horns."))
+	update_icon()

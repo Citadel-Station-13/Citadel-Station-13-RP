@@ -951,7 +951,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	remove_layer(TAIL_LAYER)
 	remove_layer(TAIL_LAYER_ALT)
 
-	if(!tail_overlays)
+	if(!tail_overlays || hiding_tail)
 		return
 	if(islist(tail_overlays))
 		for(var/image/tail_overlay as anything in tail_overlays)
@@ -1022,6 +1022,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return
 
 	remove_layer(WING_LAYER)
+
+	if(hiding_wings)
+		return
 
 	overlays_standing[WING_LAYER] = list()
 
