@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //* Action feedback module
 //* Handles giving chat feedback for actions performed by an atom,
 //* whether to the atom, to the target, or to everyone around
