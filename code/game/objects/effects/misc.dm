@@ -100,10 +100,9 @@
 	var/mark = ""
 	icon = 'icons/misc/mark.dmi'
 	icon_state = "blank"
-	anchored = 1
+	anchored = TRUE
 	layer = 99
-	mouse_opacity = 0
-	unacidable = 1//Just to be sure.
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/beam
 	name = "beam"

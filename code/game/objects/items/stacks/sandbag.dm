@@ -117,7 +117,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 
 /obj/structure/sandbag/Initialize(mapload, material_name)
 	. = ..()
-	health = maxhealth
+	#warn handle materials
 	for(var/obj/structure/sandbag/S in loc)
 		if(S != src)
 			break_to_parts(full_return = 1)
@@ -137,18 +137,6 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	//update_connections(TRUE)
 	. = ..()
 
-/obj/structure/sandbag/examine(mob/user, dist)
-	. = ..()
-	if(health < maxhealth)
-		switch(health / maxhealth)
-			if(0.0 to 0.5)
-				. += "<span class='warning'>It looks severely damaged!</span>"
-			if(0.25 to 0.5)
-				. += "<span class='warning'>It looks damaged!</span>"
-			if(0.5 to 1.0)
-				. += "<span class='notice'>It has a few nicks and holes.</span>"
-
-
 /obj/structure/sandbag/attackby(obj/item/W as obj, mob/user as mob)
 	user.setClickCooldown(user.get_attack_speed(W))
 	if(istype(W, /obj/item/stack/sandbags))
@@ -164,47 +152,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 					visible_message("<span class='notice'>[user] repairs \the [src].</span>")
 				return
 		return
-	else
-		switch(W.damtype)
-			if("fire")
-				health -= W.damage_force * 1
-			if("brute")
-				health -= W.damage_force * 0.75
-		playsound(src, 'sound/weapons/smash.ogg', 50, 1)
-		CheckHealth()
-		..()
-
-/obj/structure/sandbag/proc/CheckHealth()
-	if(health <= 0)
-		dismantle()
-	return
-
-/obj/structure/sandbag/take_damage_legacy(var/damage)
-	health -= damage
-	CheckHealth()
-	return
-
-/obj/structure/sandbag/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
-	playsound(src, 'sound/weapons/smash.ogg', 50, 1)
-	user.do_attack_animation(src)
-	health -= damage
-	CheckHealth()
-	return
-
-/obj/structure/sandbag/proc/dismantle()
-	visible_message("<span class='danger'>\The [src] falls apart!</span>")
-	qdel(src)
-	//Make it drop materials? I dunno. For now it just disappears.
-	return
-
-/obj/structure/sandbag/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			dismantle()
-		if(2.0)
-			health -= 25
-			CheckHealth()
+	return ..()
 
 /obj/structure/sandbag/proc/break_to_parts(full_return = 0)
 	if(full_return || prob(20))

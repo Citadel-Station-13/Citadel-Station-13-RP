@@ -86,7 +86,8 @@
 	icon_state = "spiderling"
 	anchored = 0
 	layer = HIDING_LAYER
-	health = 3
+	integrity = 5
+	integrity_max = 5
 	var/last_itch = 0
 	var/amount_grown = -1
 	var/obj/machinery/atmospherics/component/unary/vent_pump/entry_vent
@@ -250,7 +251,8 @@
 	name = "cocoon"
 	desc = "Something wrapped in silky spider web"
 	icon_state = "cocoon1"
-	health = 10
+	integrity = 30
+	integrity_max = 30
 
 /obj/effect/spider/cocoon/Initialize(mapload)
 	. = ..()

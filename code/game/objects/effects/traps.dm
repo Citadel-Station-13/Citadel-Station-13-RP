@@ -62,14 +62,14 @@ Add those other swinging traps you mentioned above!
 	desc = "The dust hangs strangely in the air here."
 	icon = 'icons/turf/flooring/trap.dmi'
 	icon_state = "trap_frame"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
+	integrity_flags = INTEGRITY_NO_DECONSTRUCT
 	//invisibility = INVISIBILITY_MAXIMUM  - Commented this invis variant out due to balancing issues/its blocking of warning text and effect icons.
 	//mouse_opacity = MOUSE_OPACITY_TRANSPARENT - Commented out for admin QOL and cleanup.
 	var/trap_floor_type = /turf/simulated/floor/water/acid
 	var/tripped = FALSE
 	var/id = "trap_debug_controller"
-	var/broken = FALSE
 
 /obj/effect/trap/Initialize(mapload)
 	. = ..()
@@ -93,15 +93,18 @@ Add those other swinging traps you mentioned above!
 	var/turf/deploy_location = get_turf(src)
 	deploy_location.ChangeTurf(trap_floor_type)
 
-/obj/effect/trap/proc/Break()
-	desc += " Whatever nefarious purpose this one once had, it's broken now."
-	update_icon()
-	broken = TRUE
+/obj/effect/trap/examine_integrity(mob/user)
+	. = list()
+	if(atom_flags & ATOM_BROKEN)
+		. += SPAN_WARNING("Whatever nefarious purpose this one once had, it's broken now.")
 
-/obj/effect/trap/proc/Reset()
+/obj/effect/trap/atom_break()
+	. = ..()
 	update_icon()
-	broken = FALSE
-	tripped = FALSE
+
+/obj/effect/trap/atom_fix()
+	. = ..()
+	update_icon()
 
 /obj/effect/trap/update_icon()
 	if(!tripped)
@@ -340,9 +343,9 @@ Add those other swinging traps you mentioned above!
 /obj/effect/trap/launcher/process(delta_time)
 	if(!tripped)
 		return
-	if(broken)
+	if(atom_flags & ATOM_BROKEN)
 		return
-	if(((src.last_shot + src.fire_delay) <= world.time) && (!broken) && (src.tripped))
+	if(((src.last_shot + src.fire_delay) <= world.time) && (src.tripped))
 
 		src.last_shot = world.time
 		if(src.shot_number < burst_shots)
@@ -382,7 +385,7 @@ Add those other swinging traps you mentioned above!
 			to_chat(user, "<span class='warning'>You need five rods to jam the mechanism.</span>")
 
 	if(istype(W,/obj/item/tool/crowbar))
-		if(broken)
+		if((atom_flags & ATOM_BROKEN))
 			Reset()
 			to_chat(user, "<span class='notice'>You pry the obstruction out, resetting the trap.</span>")
 		else
@@ -391,9 +394,9 @@ Add those other swinging traps you mentioned above!
 /obj/effect/trap/launcher/update_icon()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
-	else if (tripped && !broken)
+	else if (tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
-	else if (tripped && broken)
+	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_jammed"
 
 //Stake Launcher
@@ -445,47 +448,29 @@ Add those other swinging traps you mentioned above!
 	var/min_damage = 15
 	var/max_damage = 25
 
-/obj/effect/trap/pop_up/bullet_act(var/obj/projectile/Proj)
-	health -= Proj.damage
-	..()
-	healthcheck()
-	return
-
 /obj/effect/trap/pop_up/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
 
 		if(WT.remove_fuel(0, user))
-			if(health < maxhealth)
+			if(integrity < integrity_max)
 				to_chat(user, SPAN_NOTICE("You begin repairing \the [src.name] with \the [WT].>"))
 			if(do_after(user, 20, src))
-				health = maxhealth
+				set_integrity(integrity_max)
 				broken = FALSE
-			playsound(src.loc, 'sound/items/Welder.ogg', 100, TRUE)
-
-	if(broken)
 		return
-	if((health <= 0))
-		Break()
-		src.visible_message(SPAN_DANGER("\The [src] breaks! It was a trap!"))
-		return
-	visible_message("<span class='danger'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
-	var/damage = W.damage_force / 4.0
+	return ..()
 
-	src.health -= damage
-	healthcheck()
-
-/obj/effect/trap/pop_up/proc/healthcheck()
-	if((health <= 0))
-		Break()
-		src.visible_message(SPAN_DANGER("\The [src] breaks! It was a trap!"))
+/obj/effect/trap/pop_up/atom_break()
+	. = ..()
+	visible_message(SPAN_DANGER("\The [src] breaks! It was a trap!"))
 
 /obj/effect/trap/pop_up/update_icon()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
-	else if(tripped && !broken)
+	else if(tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
-	else if (tripped && broken)
+	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_broken"
 
 //Spear Trap
@@ -507,7 +492,7 @@ Add those other swinging traps you mentioned above!
 	if(AM.is_incorporeal())
 		return
 
-	if(broken)
+	if((atom_flags & ATOM_BROKEN))
 		return
 
 	if(!tripped)
@@ -541,7 +526,7 @@ Add those other swinging traps you mentioned above!
 	if(AM.is_incorporeal())
 		return
 
-	if(broken)
+	if((atom_flags & ATOM_BROKEN))
 		return
 
 	if(!tripped)
@@ -597,7 +582,7 @@ if (istype(AM, /mob/living))
 	if(AM.is_incorporeal())
 		return
 
-	if(broken)
+	if((atom_flags & ATOM_BROKEN))
 		return
 
 	if(!tripped)
@@ -635,7 +620,7 @@ if (istype(AM, /mob/living))
 	if(AM.is_incorporeal())
 		return
 
-	if(broken)
+	if((atom_flags & ATOM_BROKEN))
 		return
 
 	if(!tripped)
@@ -670,7 +655,7 @@ if (istype(AM, /mob/living))
 	if(AM.is_incorporeal())
 		return
 
-	if(broken)
+	if((atom_flags & ATOM_BROKEN))
 		return
 
 	if (!tripped)
@@ -702,7 +687,7 @@ if (istype(AM, /mob/living))
 			to_chat(user, "<span class='warning'>You need three rods to jam the mechanism.</span>")
 
 	if(istype(W,/obj/item/tool/wirecutters))
-		if(broken)
+		if((atom_flags & ATOM_BROKEN))
 			Reset()
 			to_chat(user, "<span class='notice'>You slice the rods and remove them, resetting the trap.</span>")
 		else
@@ -710,7 +695,7 @@ if (istype(AM, /mob/living))
 
 /obj/effect/trap/pop_up/thrower/Reset()
 	update_icon()
-	broken = FALSE
+	set_integrity(integrity_max)
 	tripped = FALSE
 	name = "crooked tile"
 	desc = "The edges of this tile are lifted slightly."
@@ -718,9 +703,9 @@ if (istype(AM, /mob/living))
 /obj/effect/trap/pop_up/thrower/update_icon()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
-	else if (tripped && !broken)
+	else if (tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
-	else if (tripped && broken)
+	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_jammed"
 
 //////////////////
@@ -739,13 +724,13 @@ if (istype(AM, /mob/living))
 /obj/effect/trap/falling/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/M = W
-		if(M.amount >= 5 && broken)
+		if(M.amount >= 5 && (atom_flags & ATOM_BROKEN))
 			M.use(5)
 			Reset()
 			to_chat(user, "<span class='notice'>You use the coils to raise the [src] back up, resetting it.</span>")
 
 	if(istype(W,/obj/item/tool/wirecutters) || is_sharp(W))
-		if(!broken)
+		if(!(atom_flags & ATOM_BROKEN))
 			Break()
 			to_chat(user, "<span class='notice'>You cut the ropes suspending the [src], breaking it.</span>")
 			update_icon()
@@ -753,9 +738,9 @@ if (istype(AM, /mob/living))
 /obj/effect/trap/falling/update_icon()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
-	else if (tripped && !broken)
+	else if (tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
-	else if (tripped && broken)
+	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_jammed"
 
 //Falling Log
@@ -779,7 +764,7 @@ if (istype(AM, /mob/living))
 	if(AM.is_incorporeal())
 		return
 
-	if(broken)
+	if((atom_flags & ATOM_BROKEN))
 		return
 
 	if(tripped)
@@ -807,7 +792,7 @@ if (istype(AM, /mob/living))
 		M.afflict_paralyze(20 * 12)
 
 /obj/effect/trap/falling/log/Reset()
-	broken = FALSE
+	set_integrity(integrity_max)
 	tripped = FALSE
 	name = "wavering tile"
 	desc = "There's something strange about the lighting around this tile."
@@ -816,7 +801,7 @@ if (istype(AM, /mob/living))
 /obj/effect/trap/falling/log/update_icon()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
-	else if (tripped && !broken)
+	else if (tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
-	else if (tripped && broken)
+	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_jammed"
