@@ -2365,6 +2365,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/plating,
 /area/teleporter/departing)
 "caM" = (
