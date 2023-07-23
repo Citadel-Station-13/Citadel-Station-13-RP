@@ -54,7 +54,7 @@
 	/// For sheets, this represents the per-sheet amount.
 	/// material id = amount
 	/// * This may be a typelist, use is_typelist to check.
-	/// * Always use get_materials to get this list unless you know what you're doing.
+	/// * Always use get_base_materials to get this list unless you know what you're doing.
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
 	/// * This does not include material parts.
 	var/list/materials_base
@@ -80,6 +80,8 @@
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
 	/// * This list has the same ordering as [material_parts].
 	var/list/material_costs
+	/// make the actual materials multiplied by this amount. used by lathes to prevent duping with efficiency upgrades.
+	var/material_multiplier = 1
 
 	//? Sounds
 	/// volume when breaking out using resist process
@@ -113,17 +115,16 @@
 	if(register_as_dangerous_object)
 		register_dangerous_to_step()
 	. = ..()
-	// cache materiald
-	#warn oh no
-	if(!isnull(materials))
-		if(has_typelist(materials))
+	// cache base materials if it's not modified
+	if(!isnull(materials_base) && !(obj_flags & OBJ_MATERIALS_MODIFIED))
+		if(has_typelist(materials_base))
 			materials = get_typelist(materials)
 		else
 			// preprocess
 			materials = SSmaterials.preprocess_kv_keys_to_ids(materials)
 			materials = typelist(NAMEOF(src, materials), materials)
-	// cache material costs
-	if(islist(material_costs))
+	// cache material costs if it's not modified
+	if(!islist(material_costs) && !(obj_flags & OBJ_MATERIAL_COSTS_MODIFIED))
 		if(has_typelist(material_costs))
 			material_costs = get_typelist(material_costs)
 		else
@@ -132,7 +133,7 @@
 	if(material_parts != MATERIAL_DEFAULT_DISABLED)
 		// process material parts only if it wasn't set already
 		// this allows children of /obj to modify their material parts prior to init.
-		if(islist(material_parts) && !(obj_flags & OBJ_MATERIAL_MODIFIED))
+		if(islist(material_parts) && !(obj_flags & OBJ_MATERIAL_PARTS_MODIFIED))
 			if(has_typelist(material_parts))
 				material_parts = get_typelist(material_parts)
 			else
@@ -446,145 +447,6 @@
 			. += SPAN_RED("It looks severely damaged.")
 		else
 			. += SPAN_BOLDWARNING("It's falling apart!")
-
-//? Materials
-
-/obj/get_materials()
-	. = materials.Copy()
-	#warn how to deal with material parts and lathes?
-
-/**
- * do we use material parts system?
- */
-/obj/proc/uses_material_parts()
-	return material_parts != MATERIAL_DEFAULT_DISABLED
-
-/**
- * autodetect proc used by lathes
- * called only right after init
- * should never be called after materials are mutated in any way, including by init.
- *
- * return key-value associative list of part name to cost
- */
-/obj/proc/detect_material_part_costs()
-	return get_material_part_costs()
-
-/**
- * autodetect proc used by lathes
- * called only right after init
- * should never be called after materials are mutated in any way, including by init.
- *
- * return key-value associative list of our *own* baseline materials, without material parts.
- */
-/obj/proc/detect_material_base_costs()
-	var/list/our_materials = isnull(materials)? list() : materials.Copy()
-	// subtract out material parts, we assume we're initialized
-	#warn what do we do with this
-	#warn handle below - how to still be able to do lathe cost modifications?
-	if(atom_flags & ATOM_INITIALIZED)
-		if(material_defaults != MATERIAL_DEFAULT_DISABLED)
-			if(islist(material_parts))
-				for(var/key in material_parts)
-					our_materials[key] = max(0, our_materials[key] - material_defaults[key])
-			else if(!isnull(material_parts))
-				our_materials[material_defaults] = max(0, our_materials[material_defaults] - material_parts)
-
-/**
- * initialize materials
- */
-/obj/proc/init_material_parts()
-	#warn flag interplay
-	obj_flags |= OBJ_MATERIAL_INITIALIZED
-	set_material_parts(islist(material_parts)? material_parts : list(MATERIAL_PART_DEFAULT = material_parts))
-	#warn handle below - how to still be able to do lathe cost modifications?
-	if(material_parts != MATERIAL_DEFAULT_DISABLED)
-		set_material_parts(material_defaults)
-		for(var/key in material_defaults)
-			var/mat = material_defaults[key]
-			var/amt = material_parts[key]
-			materials[mat] += amt
-
-/**
- * sets a single material part
- *
- * @params
- * * part - part key
- * * material_like - material. ids and paths are not allowed for performance reasons
- */
-/obj/proc/set_material_part(part, datum/material/material)
-	obj_flags |= OBJ_MATERIAL_MODIFIED
-	#warn impl
-
-/**
- * sets our material parts to a list by key / value. values should be material datums.
- * ids and typepaths are not allowed in part_instances for performance reasons.
- *
- * this does not update [materials], you have to do that manually
- * this is usually done in init using init_materials
- */
-/obj/proc/set_material_parts(list/part_instances)
-	obj_flags |= OBJ_MATERIAL_MODIFIED
-	#warn impl
-
-/**
- * get the only material we're made out of, or first material part
- */
-/obj/proc/get_primary_material()
-	if(material_parts == MATERIAL_DEFAULT_DISABLED)
-		return null
-	return islist(material_parts)? material_parts[1] : material_parts
-
-/**
- * get material part
- */
-/obj/proc/get_material_part(part)
-	if(material_parts == MATERIAL_DEFAULT_DISABLED)
-		return null
-	if(islist(material_parts))
-		return material_parts[part]
-	return (part == MATERIAL_PART_DEFAULT)? material_parts : null
-
-/**
- * get material parts
- */
-/obj/proc/get_material_parts()
-	#warn impl
-
-/**
- * update material parts
- *
- * only called if material_parts is in list format.
- *
- * @params
- * * parts - list of key-value key to material id.
- */
-/obj/proc/update_material_parts(list/parts)
-	#warn impl
-
-/**
- * update primary material
- *
- * only called if material_parts is in singleton format
- */
-/obj/proc/update_primary_material(datum/material/material)
-	#warn impl
-
-/**
- * sets our primary material to something
- *
- * if we have more than one material part (as determined by materials_default),
- * this sets the first one.
- *
- * if we don't, this sets our only material.
- */
-/obj/proc/set_primary_material(datum/material/material)
-	return length(material_parts)? set_material_part(material_parts[1], material) : set_material_part(MATERIAL_PART_DEFAULT, material)
-
-/**
- * get material costs
- */
-/obj/proc/get_material_part_costs()
-	#warn impl
 
 //? Resists
 

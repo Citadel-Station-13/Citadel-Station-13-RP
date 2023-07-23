@@ -1393,6 +1393,7 @@
 #include "code\game\objects\explosion.dm"
 #include "code\game\objects\explosion_recursive.dm"
 #include "code\game\objects\items.dm"
+#include "code\game\objects\materials.dm"
 #include "code\game\objects\misc.dm"
 #include "code\game\objects\mob_spawner.dm"
 #include "code\game\objects\objs.dm"
