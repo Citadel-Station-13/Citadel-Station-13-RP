@@ -91,7 +91,7 @@
 		return
 	if(istype(W, /obj/item/pipe))
 		// NOTE - We must check for matter, otherwise the (free) pipe dispenser can be used to get infinite steel.
-		if(!W.materials || W.materials[MAT_STEEL] < pipe_cost * SHEET_MATERIAL_AMOUNT)
+		if(!W.materials_base || W.materials_base[MAT_STEEL] < pipe_cost * SHEET_MATERIAL_AMOUNT)
 			to_chat(user, "<span class='warning'>\The [W] doesn't contain enough [MAT_STEEL] to recycle.</span>")
 		else if(metal + pipe_cost > max_metal)
 			to_chat(user, "<span class='notice'>\The [src] is full.</span>")

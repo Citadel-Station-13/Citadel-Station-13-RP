@@ -137,7 +137,6 @@
 /turf/simulated/floor,
 /area/awaymission/northblock)
 "aN" = (
-/obj/machinery/robotic_fabricator,
 /turf/simulated/floor,
 /area/awaymission/northblock)
 "aP" = (

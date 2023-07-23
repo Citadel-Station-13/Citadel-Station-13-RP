@@ -2920,7 +2920,6 @@
 	},
 /area/awaymission/labs/researchdivision)
 "iD" = (
-/obj/machinery/robotic_fabricator,
 /turf/simulated/floor{
 	temperature = 393.15
 	},

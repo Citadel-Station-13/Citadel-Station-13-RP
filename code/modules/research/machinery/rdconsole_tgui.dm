@@ -171,7 +171,7 @@
 			if(d_disk.blueprint)
 				data["info"]["d_disk"]["name"] = d_disk.blueprint.name
 				data["info"]["d_disk"]["build_type"] = d_disk.blueprint.lathe_type
-				data["info"]["d_disk"]["materials"] = d_disk.blueprint.materials
+				data["info"]["d_disk"]["materials"] = d_disk.blueprint.materials_base
 
 	return data
 
@@ -224,8 +224,8 @@
 			continue
 
 		var/list/mat_list = list()
-		for(var/M in D.materials)
-			mat_list.Add("[D.materials[M] * P.mat_efficiency] [CallMaterialName(M)]")
+		for(var/M in D.materials_base)
+			mat_list.Add("[D.materials_base[M] * P.mat_efficiency] [CallMaterialName(M)]")
 
 		var/list/chem_list = list()
 		for(var/T in D.reagents)
@@ -262,8 +262,8 @@
 			continue
 
 		var/list/mat_list = list()
-		for(var/M in D.materials)
-			mat_list.Add("[D.materials[M] * P.mat_efficiency] [CallMaterialName(M)]")
+		for(var/M in D.materials_base)
+			mat_list.Add("[D.materials_base[M] * P.mat_efficiency] [CallMaterialName(M)]")
 
 		var/list/chem_list = list()
 		for(var/T in D.reagents)
@@ -427,7 +427,7 @@
 
 					for(var/T in linked_destroy.loaded_item.origin_tech)
 						files.UpdateTech(T, linked_destroy.loaded_item.origin_tech[T])
-					if(linked_lathe && linked_destroy.loaded_item.materials) // Also sends salvaged materials to a linked protolathe, if any.
+					if(linked_lathe && linked_destroy.loaded_item.materials_base) // Also sends salvaged materials to a linked protolathe, if any.
 						for(var/t in linked_destroy.loaded_item.materials)
 							if(t in linked_lathe.stored_materials)
 								linked_lathe.stored_materials[t] += min(linked_lathe.max_material_storage - linked_lathe.TotalMaterials(), linked_destroy.loaded_item.materials[t] * linked_destroy.decon_mod)

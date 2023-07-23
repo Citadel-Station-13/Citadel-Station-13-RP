@@ -43,7 +43,7 @@
 
 	//? Build Costs
 	/// list of materials needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
-	var/list/materials
+	var/list/materials_base
 	/// for variable-material designs: assoc list of key to amounts
 	/// the key will be fed into print() during creation with the material id the user picked
 	/// autodetected if null.
@@ -75,10 +75,10 @@
 	// lathe designs shouldn't be qdeleting, but incase someone puts in a random..
 	if(QDELETED(instance))
 		return
-	if(isnull(materials))
+	if(isnull(materials_base))
 		var/list/fetched = instance.detect_material_base_costs()
 		if(length(fetched))
-			materials = fetched
+			materials_base = fetched
 	if(isnull(material_costs))
 		var/list/fetched = instance.detect_material_part_costs()
 		if(length(fetched))
@@ -116,7 +116,7 @@
 		"id" = id,
 		"work" = work,
 		"category" = category,
-		"materials" = length(materials)? materials : null,
+		"materials_base" = length(materials_base)? materials_base : null,
 		"material_parts" = length(material_costs)? material_costs : null,
 		"reagents" = length(reagents)? reagents : null,
 		"ingredients" = length(ingredients)? ingredients : null,
@@ -172,7 +172,7 @@
 /datum/design/proc/on_print(atom/created, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
 	if(isobj(created))
 		var/obj/O = created
-		var/list/effective_materials = materials.Copy()
+		var/list/effective_materials = materials_base.Copy()
 		for(var/key in material_costs)
 			effective_materials[material_parts[key]] += src.material_costs[key]
 		if(cost_multiplier != 1)

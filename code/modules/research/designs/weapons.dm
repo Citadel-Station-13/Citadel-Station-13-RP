@@ -570,7 +570,7 @@
 	design_name = "weak stun medium"
 	id = "stunweak"
 	req_tech = list(TECH_MAGNET = 1, TECH_POWER = 2, TECH_COMBAT = 1)
-	materials =	list(MAT_STEEL = 8000, MAT_GLASS = 8000)
+	materials_base =	list(MAT_STEEL = 8000, MAT_GLASS = 8000)
 	build_path = /obj/item/modularlaser/lasermedium/stun/weak
 
 /*
@@ -611,14 +611,14 @@
 	design_name = "laser sniper medium"
 	id = "sniperlaser"
 	req_tech =  list(TECH_MAGNET = 5, TECH_POWER = 6, TECH_COMBAT = 4)
-	materials =	list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_DIAMOND = 10)
+	materials_base =	list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_DIAMOND = 10)
 	build_path = /obj/item/modularlaser/lasermedium/laser/sniper
 
 /datum/design/science/modweaponnodule/heavylaser
 	design_name = "heavy laser medium"
 	id = "heavylasermedium"
 	req_tech =  list(TECH_MAGNET = 6, TECH_POWER = 6, TECH_COMBAT = 5, TECH_ILLEGAL = 2)
-	materials =	list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
+	materials_base =	list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
 	build_path = /obj/item/modularlaser/lasermedium/laser/heavy
 
 /datum/design/science/modweaponnodule/cannonmedium
@@ -655,7 +655,7 @@
 	design_name = "graviton grapple tube"
 	id = "hook"
 	req_tech = list(TECH_ARCANE = 4, TECH_POWER = 2)
-	materials =list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_MORPHIUM = 4000, MAT_VERDANTIUM = 4000)
+	materials_base =list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_MORPHIUM = 4000, MAT_VERDANTIUM = 4000)
 	build_path = /obj/item/modularlaser/lasermedium/hook
 
 /datum/design/science/modweaponnodule/phasemedium

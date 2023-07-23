@@ -159,8 +159,8 @@
 	return
 
 /obj/machinery/r_n_d/protolathe/proc/canBuild(var/datum/design/D)
-	for(var/M in D.materials)
-		if(stored_materials[M] < (D.materials[M] * mat_efficiency))
+	for(var/M in D.materials_base)
+		if(stored_materials[M] < (D.materials_base[M] * mat_efficiency))
 			return 0
 	for(var/C in D.reagents)
 		if(!reagents.has_reagent(C, D.reagents[C] * mat_efficiency))
@@ -169,11 +169,11 @@
 
 /obj/machinery/r_n_d/protolathe/proc/getLackingMaterials(var/datum/design/D)
 	var/ret = ""
-	for(var/M in D.materials)
-		if(stored_materials[M] < D.materials[M])
+	for(var/M in D.materials_base)
+		if(stored_materials[M] < D.materials_base[M])
 			if(ret != "")
 				ret += ", "
-			ret += "[D.materials[M] - stored_materials[M]] [M]"
+			ret += "[D.materials_base[M] - stored_materials[M]] [M]"
 	for(var/C in D.reagents)
 		if(!reagents.has_reagent(C, D.reagents[C]))
 			if(ret != "")
@@ -183,21 +183,21 @@
 
 /obj/machinery/r_n_d/protolathe/proc/build(var/datum/design/D)
 	var/power = active_power_usage
-	for(var/M in D.materials)
-		power += round(D.materials[M] / 5)
+	for(var/M in D.materials_base)
+		power += round(D.materials_base[M] / 5)
 	power = max(active_power_usage, power)
 	use_power(power)
-	for(var/M in D.materials)
-		stored_materials[M] = max(0, stored_materials[M] - D.materials[M] * mat_efficiency)
+	for(var/M in D.materials_base)
+		stored_materials[M] = max(0, stored_materials[M] - D.materials_base[M] * mat_efficiency)
 	for(var/C in D.reagents)
 		reagents.remove_reagent(C, D.reagents[C] * mat_efficiency)
 
 	if(D.build_path)
 		var/obj/new_item = D.legacy_print(drop_location(), src)
 		if(mat_efficiency != 1) // No materials out of nowhere
-			if(new_item.materials && new_item.materials.len > 0)
-				for(var/i in new_item.materials)
-					new_item.materials[i] = new_item.materials[i] * mat_efficiency
+			if(new_item.materials_base && new_item.materials_base.len > 0)
+				for(var/i in new_item.materials_base)
+					new_item.materials_base[i] = new_item.materials_base[i] * mat_efficiency
 
 /obj/machinery/r_n_d/protolathe/proc/eject_materials(var/material, var/amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 	var/recursive = amount == -1 ? 1 : 0
