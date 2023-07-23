@@ -1,5 +1,4 @@
 /mob/living/silicon/pai/attackby(obj/item/W as obj, mob/user as mob)
-	message_admins("hit by [W]")
 	var/obj/item/card/id/ID = W.GetID()
 	if(ID)
 		if(idaccessible == 1)
