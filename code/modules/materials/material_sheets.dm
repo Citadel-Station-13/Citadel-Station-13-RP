@@ -44,8 +44,10 @@
 	if(!material.conductive)
 		atom_flags |= NOCONDUCT
 
-	materials = material.get_matter()
 	update_strings()
+
+/obj/item/stack/material/get_materials(respect_multiplier)
+	return list(material.id = (respect_multiplier? material_multiplier : 1) * SHEET_MATERIAL_AMOUNT)
 
 /obj/item/stack/material/get_material()
 	return material

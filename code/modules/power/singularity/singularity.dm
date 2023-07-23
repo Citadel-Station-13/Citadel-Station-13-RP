@@ -11,7 +11,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	density = 1
 	plane = ABOVE_PLANE
 	light_range = 6
-	integrity_flags = INTEGRITY_INDESTRUCTIBLE.
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
 
 	var/current_size = 1
 	var/allowed_size = 1

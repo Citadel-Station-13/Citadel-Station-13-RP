@@ -85,14 +85,6 @@
 		return 0
 	return 1
 
-/obj/structure/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	if(!breakable || damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
-		return 0
-	visible_message("<span class='danger'>[user] [attack_verb] the [src] apart!</span>")
-	user.do_attack_animation(src)
-	spawn(1) qdel(src)
-	return 1
-
 /obj/structure/proc/can_visually_connect()
 	return anchored
 

@@ -145,29 +145,6 @@ GLOBAL_LIST_EMPTY(solars_list)
 	machine_stat &= ~(BROKEN)
 	update_icon()
 
-/obj/machinery/power/solar/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			if(prob(15))
-				new /obj/item/material/shard( src.loc )
-			qdel(src)
-			return
-
-		if(2.0)
-			if (prob(25))
-				new /obj/item/material/shard( src.loc )
-				qdel(src)
-				return
-
-			if (prob(50))
-				broken()
-
-		if(3.0)
-			if (prob(25))
-				broken()
-	return
-
-
 /obj/machinery/power/solar/fake/Initialize(mapload, obj/item/solar_assembly/S)
 	. = ..(mapload, S, FALSE)
 

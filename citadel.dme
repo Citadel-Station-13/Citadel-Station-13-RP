@@ -909,6 +909,7 @@
 #include "code\game\atoms\buckling.dm"
 #include "code\game\atoms\defense.dm"
 #include "code\game\atoms\defense_old.dm"
+#include "code\game\atoms\materials.dm"
 #include "code\game\atoms\movement.dm"
 #include "code\game\atoms\say.dm"
 #include "code\game\atoms\vv.dm"

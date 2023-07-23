@@ -118,11 +118,11 @@
 	// cache base materials if it's not modified
 	if(!isnull(materials_base) && !(obj_flags & OBJ_MATERIALS_MODIFIED))
 		if(has_typelist(materials_base))
-			materials = get_typelist(materials)
+			materials_base = get_typelist(materials_base)
 		else
 			// preprocess
-			materials = SSmaterials.preprocess_kv_keys_to_ids(materials)
-			materials = typelist(NAMEOF(src, materials), materials)
+			materials_base = SSmaterials.preprocess_kv_keys_to_ids(materials_base)
+			materials_base = typelist(NAMEOF(src, materials), materials_base)
 	// cache material costs if it's not modified
 	if(!islist(material_costs) && !(obj_flags & OBJ_MATERIAL_COSTS_MODIFIED))
 		if(has_typelist(material_costs))
