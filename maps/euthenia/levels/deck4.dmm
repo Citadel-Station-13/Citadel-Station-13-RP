@@ -506,6 +506,16 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
+"eb" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/trash_pit)
 "ee" = (
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/maintenance/deck_four/starboard)
@@ -661,6 +671,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab/containment_one)
+"fj" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/vent,
+/turf/simulated/floor/plating,
+/area/maintenance/trash_pit)
 "fq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -705,6 +722,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four)
+"fB" = (
+/turf/simulated/wall/prepainted/engineering,
+/area/maintenance/trash_pit)
 "fC" = (
 /obj/structure/lattice,
 /obj/structure/transit_tube/high_velocity{
@@ -997,6 +1017,26 @@
 /obj/structure/railing,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_four/starboard)
+"hg" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -28
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/trash_pit)
 "hi" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
@@ -1132,6 +1172,25 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/deck_four/aft/port)
+"ig" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/trash_pit)
 "ij" = (
 /obj/machinery/door/airlock/maintenance/rnd,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1651,6 +1710,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
+"lT" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/atmospherics/component/binary/passive_gate/on{
+	regulate_mode = 1;
+	target_pressure = 80;
+	pressure_resistance = 80
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/trash_pit)
 "lW" = (
 /obj/machinery/light{
 	dir = 8
@@ -1811,7 +1881,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "mX" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/command,
 /area/ai)
 "mY" = (
 /turf/simulated/wall/r_wall,
@@ -1926,6 +1996,13 @@
 /obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled,
 /area/space)
+"nR" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Trash Pit"
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/trash_pit)
 "nS" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /obj/structure/cable/green{
@@ -2492,6 +2569,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
+"ru" = (
+/obj/map_helper/airlock/sensor/int_sensor,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/forward)
 "rv" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -2771,6 +2852,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"tQ" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/trash_pit)
 "tR" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -2940,6 +3031,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/secure_storage/critical/records)
+"vm" = (
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
+/obj/machinery/vending/wallmed1{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/trash_pit)
 "vn" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -3088,6 +3188,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
+"wH" = (
+/obj/structure/disposaloutlet{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/forward)
 "wP" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
 /obj/map_helper/airlock/atmos/chamber_pump,
@@ -3255,6 +3361,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
+"yq" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/trash_pit)
 "yr" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -3328,6 +3443,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
+"zn" = (
+/obj/map_helper,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/forward)
 "zo" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/deck_four/starboard)
@@ -4159,7 +4278,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "FB" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/command,
 /area/ai_upload)
 "FC" = (
 /turf/simulated/floor/tiled/techfloor,
@@ -4299,6 +4418,19 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/space)
+"GA" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/trash_pit)
 "GD" = (
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -4331,6 +4463,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
+"GM" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/universal,
+/turf/simulated/floor/plating,
+/area/maintenance/trash_pit)
 "GN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -4694,6 +4834,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
+"Jx" = (
+/turf/simulated/wall/prepainted,
+/area/maintenance/trash_pit)
 "Jz" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/flashlight/lamp/green{
@@ -4820,6 +4963,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"Kh" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Trash Pit"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/trash_pit)
 "Kk" = (
 /obj/spawner/window/full/firelocks,
 /turf/simulated/floor/plating,
@@ -4956,6 +5108,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab/containment_one)
+"Ln" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/trash_pit)
 "Lw" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -5217,6 +5378,10 @@
 /obj/effect/floor_decal/borderfloor/corner,
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/critical)
+"Ob" = (
+/obj/machinery/conveyor,
+/turf/space,
+/area/space)
 "Od" = (
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/starboard)
@@ -5491,6 +5656,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/rnd/secure_storage/critical)
+"PO" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/trash_pit)
 "PR" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/secure_storage/critical/vault2)
@@ -5529,6 +5697,17 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_four/forward)
+"Qn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/maintenance/engi,
+/turf/simulated/floor/plating,
+/area/maintenance/trash_pit)
 "Qr" = (
 /obj/machinery/artifact_analyser,
 /turf/simulated/floor/tiled/dark,
@@ -5555,6 +5734,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/starboard)
+"QG" = (
+/obj/machinery/atmospherics/pipe/vent,
+/turf/simulated/floor/plating,
+/area/maintenance/trash_pit)
 "QH" = (
 /obj/machinery/libraryscanner,
 /turf/simulated/floor/wood,
@@ -5637,6 +5820,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
+"Rk" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/trash_pit)
 "Rl" = (
 /obj/structure/curtain/black{
 	anchored = 1;
@@ -6088,6 +6277,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"Uw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/trash_pit)
 "UE" = (
 /obj/machinery/camera/network/research_outpost{
 	dir = 4;
@@ -6329,6 +6522,21 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/wall/r_wall,
 /area/gateway)
+"Wj" = (
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/obj/structure/railing,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced,
+/turf/simulated/floor/plating,
+/area/maintenance/trash_pit)
 "Wk" = (
 /obj/structure/table/reinforced,
 /obj/item/bodybag/cryobag,
@@ -6444,6 +6652,14 @@
 "WX" = (
 /turf/simulated/floor/tiled/monotile,
 /area/space)
+"Xa" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/trash_pit)
 "Xf" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/monotile,
@@ -6526,6 +6742,13 @@
 /obj/machinery/mining/drill,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
+"XQ" = (
+/obj/effect/debris/cleanable/blood/splatter,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/trash_pit)
 "XR" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 2;
@@ -6842,6 +7065,15 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/deck_four/aft/port)
+"ZO" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/trash_pit)
 "ZU" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled,
@@ -32188,7 +32420,7 @@ If
 Es
 Es
 Es
-Es
+ru
 Es
 Es
 Es
@@ -32575,7 +32807,7 @@ If
 Es
 Es
 Es
-Es
+zn
 Es
 Es
 Es
@@ -33544,7 +33776,7 @@ If
 If
 If
 If
-Es
+wH
 If
 If
 If
@@ -35282,7 +35514,7 @@ Za
 Za
 Za
 Za
-Za
+Ob
 Za
 Za
 Za
@@ -36248,13 +36480,13 @@ Za
 Za
 Za
 Za
-Za
-Za
-Za
-Za
-Za
-Za
-Za
+Jx
+Jx
+Jx
+Jx
+Kh
+Jx
+Jx
 Za
 Za
 Za
@@ -36442,13 +36674,13 @@ Za
 Za
 Za
 Za
-Za
-Za
-Za
-Za
-Za
-Za
-Za
+nR
+PO
+vm
+Xa
+Uw
+Ln
+fB
 Za
 Za
 Za
@@ -36636,13 +36868,13 @@ Za
 Za
 Za
 Za
-Za
-Za
-Za
-Za
-Za
-Za
-Za
+Jx
+fj
+yq
+lT
+GM
+ig
+Qn
 Za
 Za
 Za
@@ -36830,13 +37062,13 @@ Za
 Za
 Za
 Za
-Za
-Za
-Za
-Za
-Za
-Za
-Za
+Jx
+QG
+XQ
+eb
+Wj
+hg
+fB
 Za
 Za
 Za
@@ -37024,13 +37256,13 @@ Za
 Za
 Za
 Za
-Za
-Za
-Za
-Za
-Za
-Za
-Za
+Jx
+ZO
+Rk
+Rk
+tQ
+GA
+fB
 Za
 Za
 Za
@@ -37218,13 +37450,13 @@ Za
 Za
 Za
 Za
-Za
-Za
-Za
-Za
-Za
-Za
-Za
+Jx
+Jx
+Jx
+Jx
+Jx
+Jx
+fB
 Za
 Za
 Za

@@ -7,7 +7,7 @@
 
 /obj/machinery/conveyor
 	icon = 'icons/obj/recycling.dmi'
-	icon_state = "conveyor0"
+	icon_state = "conveyor_map"
 	name = "conveyor belt"
 	desc = "A conveyor belt."
 	plane = TURF_PLANE
@@ -32,6 +32,7 @@
 	// create a conveyor
 /obj/machinery/conveyor/Initialize(mapload, newdir, on = 0)
 	. = ..()
+	icon_state = "conveyor0"
 	if(newdir)
 		setDir(newdir)
 

@@ -7,7 +7,7 @@
 
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on
 	use_power = USE_POWER_IDLE
-	icon_state = "map_vent_out"
+	icon_state = "map_vent_out_retro"
 
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on/welded
 	welded = 1
@@ -41,11 +41,11 @@
 /// Scrubbers now ////
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/retro
-	icon_state = "map_scrubber_off"	/// Will get replaced on mapload
+	icon_state = "map_scrubber_on_retro"	/// Will get replaced on mapload
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on
 	use_power = USE_POWER_IDLE
-	icon_state = "map_scrubber_on"
+	icon_state = "map_scrubber_on_retro"
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on/welded
 	welded = 1

@@ -588,6 +588,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
+"aDY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/hallway/primary/central_one)
 "aEl" = (
 /obj/machinery/atmospherics/component/unary/engine/biggest{
 	dir = 8
@@ -2115,6 +2119,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/mob/living/simple_mob/humanoid/clown,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
 "cHM" = (
@@ -2170,7 +2175,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/grille/rustic,
+/obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/space)
 "cNl" = (
@@ -2747,6 +2752,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/airlock/glass/security,
 /turf/simulated/floor/tiled/red,
 /area/tether/surfacebase/security/hallway)
 "dGX" = (
@@ -3716,7 +3722,7 @@
 	dir = 1
 	},
 /obj/structure/railing,
-/obj/structure/grille/rustic,
+/obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/space)
 "eUu" = (
@@ -4359,6 +4365,7 @@
 /obj/structure/bed/chair/comfy/orange{
 	dir = 4
 	},
+/mob/living/simple_mob/humanoid/clown,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "fJs" = (
@@ -5209,6 +5216,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/mob/living/simple_mob/humanoid/clown,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
 "gCL" = (
@@ -5293,6 +5301,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
+/mob/living/simple_mob/humanoid/clown,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "gJf" = (
@@ -5608,6 +5617,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/security/tactical)
+"hei" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/space)
 "hfG" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
@@ -6547,6 +6562,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/mob/living/simple_mob/humanoid/clown,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
 "inC" = (
@@ -7068,6 +7084,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
+/mob/living/simple_mob/humanoid/clown,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
 "iXB" = (
@@ -8312,14 +8329,10 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
+/obj/machinery/turnstile{
+	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/monotile,
 /area/tether/surfacebase/security/lobby)
 "kJL" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -8531,6 +8544,17 @@
 "kSS" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/robotics)
+"kTa" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/red,
+/area/tether/surfacebase/security/lobby)
 "kTs" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -8627,6 +8651,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"kZM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/space)
 "laC" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -9174,6 +9204,7 @@
 	pixel_x = -24;
 	pixel_y = -5
 	},
+/mob/living/simple_mob/humanoid/clown,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
 "lTB" = (
@@ -10456,6 +10487,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/red,
 /area/tether/surfacebase/security/lobby)
 "nAe" = (
@@ -11831,6 +11865,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics/mechbay)
+"psI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/central_one)
 "psK" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -13787,6 +13827,12 @@
 	},
 /turf/simulated/open,
 /area/rnd/research/researchdivision)
+"srW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/space)
 "ssY" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
@@ -13908,6 +13954,15 @@
 "sBQ" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/solars)
+"sCF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/loading{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/tether/surfacebase/security/lobby)
 "sEi" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -14011,11 +14066,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/window/brigdoor/southright,
 /turf/simulated/floor/tiled/red,
 /area/tether/surfacebase/security/lobby)
 "sMq" = (
@@ -14395,6 +14448,7 @@
 /area/crew_quarters/sleep/Dorm_8)
 "toM" = (
 /obj/structure/bed/chair/comfy/blue,
+/mob/living/simple_mob/humanoid/clown,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "toR" = (
@@ -14408,6 +14462,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research/researchdivision)
+"tpj" = (
+/obj/machinery/door/window/brigdoor/southleft,
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/security/lobby)
 "tqf" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 1
@@ -15565,6 +15623,7 @@
 	pixel_x = -32
 	},
 /obj/structure/bed/chair/comfy/brown,
+/mob/living/simple_mob/humanoid/clown,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "uLX" = (
@@ -16927,6 +16986,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/machinery/door/airlock/glass/security,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/security/hallway)
 "wql" = (
@@ -17001,6 +17061,9 @@
 "wwF" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/tether/surfacebase/security/hallway)
+"wxt" = (
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/space)
 "wxQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -17164,6 +17227,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/space)
+"wDi" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/techmaint,
+/area/hallway/primary/central_one)
 "wEl" = (
 /turf/simulated/floor/wood,
 /area/bridge/hallway)
@@ -17274,14 +17343,10 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/structure/cable/green{
-	icon_state = "0-2"
+/obj/machinery/turnstile/entry{
+	dir = 4
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/monotile,
 /area/tether/surfacebase/security/lobby)
 "wLA" = (
 /obj/structure/railing{
@@ -17563,6 +17628,12 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_5)
+"xcK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/central_one)
 "xcX" = (
 /turf/simulated/wall,
 /area/maintenance/deck_one/port)
@@ -31635,7 +31706,7 @@ pPz
 nZH
 hCH
 nZH
-nZH
+tpj
 nZH
 nZH
 srv
@@ -31828,7 +31899,7 @@ pPy
 rhg
 pem
 nzX
-epg
+kTa
 sMf
 epg
 epg
@@ -32001,14 +32072,14 @@ izy
 izy
 izy
 svY
-svY
-mpI
-rKw
-rKw
+ide
+wDi
+aDY
+aDY
 rKw
 mpI
 xKi
-xKi
+kZM
 jpc
 djY
 tQd
@@ -32021,7 +32092,7 @@ vmA
 fgX
 eUz
 hwq
-fgX
+wLn
 wLn
 kJy
 hwq
@@ -32202,7 +32273,7 @@ bcx
 bcx
 jpc
 vYy
-xKi
+hei
 jpc
 tQd
 tQd
@@ -32217,7 +32288,7 @@ iUa
 uGn
 mHg
 mHg
-mHg
+sCF
 vkN
 ylO
 jAe
@@ -32396,7 +32467,7 @@ bcx
 bcx
 jpc
 vYy
-xKi
+hei
 jpc
 tQd
 tQd
@@ -32590,7 +32661,7 @@ bcx
 bcx
 jpc
 vYy
-xKi
+hei
 jpc
 tQd
 tQd
@@ -32784,7 +32855,7 @@ jpc
 jpc
 jpc
 vYy
-xKi
+hei
 jpc
 lVO
 tQd
@@ -32978,9 +33049,9 @@ tQX
 tQX
 nxk
 vYy
-xKi
+hei
 jpc
-djY
+psI
 rKw
 djY
 djY
@@ -33172,9 +33243,9 @@ ntn
 tQX
 vYy
 vYy
-xKi
-mpI
-rKw
+srW
+wDi
+xcK
 rKw
 rKw
 tQd
@@ -45384,19 +45455,19 @@ bmU
 lLO
 lLO
 lLO
-aBR
-aBR
-aBR
-aBR
-aBR
-aBR
-aBR
-aBR
-aBR
-aBR
-aBR
-aBR
-aBR
+wxt
+wxt
+wxt
+wxt
+wxt
+wxt
+wxt
+wxt
+wxt
+wxt
+wxt
+wxt
+wxt
 lLO
 lLO
 lLO
@@ -45578,19 +45649,19 @@ bmU
 lLO
 lLO
 lLO
-aBR
+wxt
 oRY
 eEc
 eEc
-aBR
+wxt
 eEc
 lIW
 eEc
-aBR
+wxt
 eEc
 eEc
 eEc
-aBR
+wxt
 lLO
 lLO
 lLO
@@ -45966,19 +46037,19 @@ bmU
 chI
 lLO
 lLO
-aBR
+wxt
 eEc
 sXB
 bhF
-aBR
+wxt
 eEc
 swK
 eEc
-aBR
+wxt
 eEc
 bFt
 eEc
-aBR
+wxt
 lLO
 lLO
 chI
@@ -46160,19 +46231,19 @@ bmU
 bmU
 bmU
 lLO
-aBR
-aBR
-aBR
-aBR
-aBR
-aBR
+wxt
+wxt
+wxt
+wxt
+wxt
+wxt
 peD
-aBR
-aBR
-aBR
-aBR
-aBR
-aBR
+wxt
+wxt
+wxt
+wxt
+wxt
+wxt
 lLO
 bmU
 bmU
