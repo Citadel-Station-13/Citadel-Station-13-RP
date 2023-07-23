@@ -49,29 +49,29 @@ var/global/list/ashtray_cache = list()
 	add_overlay(overlays_to_add)
 
 /obj/item/material/ashtray/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	if (istype(W,/obj/item/cigbutt) || istype(W,/obj/item/clothing/mask/smokable/cigarette) || istype(W, /obj/item/flame/match))
+	if (istype(I,/obj/item/cigbutt) || istype(I,/obj/item/clothing/mask/smokable/cigarette) || istype(I, /obj/item/flame/match))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if (contents.len >= max_butts)
 			to_chat(user, "\The [src] is full.")
 			return
-		if(!user.attempt_insert_item_for_installation(W, src))
+		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 
-		if (istype(W,/obj/item/clothing/mask/smokable/cigarette))
-			var/obj/item/clothing/mask/smokable/cigarette/cig = W
+		if (istype(I,/obj/item/clothing/mask/smokable/cigarette))
+			var/obj/item/clothing/mask/smokable/cigarette/cig = I
 			if (cig.lit == 1)
 				src.visible_message("[user] crushes [cig] in \the [src], putting it out.")
 				STOP_PROCESSING(SSobj, cig)
 				var/obj/item/butt = new cig.type_butt(src)
 				cig.transfer_fingerprints_to(butt)
 				qdel(cig)
-				W = butt
+				I = butt
 				//spawn(1)
 				//	TemperatureAct(150)
 			else if (cig.lit == 0)
 				to_chat(user, "You place [cig] in [src] without even smoking it. Why would you do that?")
 
-		visible_message("[user] places [W] in [src].")
+		visible_message("[user] places [I] in [src].")
 		add_fingerprint(user)
 		update_icon()
 		return

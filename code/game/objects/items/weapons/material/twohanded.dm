@@ -327,7 +327,7 @@
 	if(target && wielded)
 		if(istype(target,/obj/structure/window))
 			var/obj/structure/window/W = target
-			W.shatter()
+			W.atom_destruction()
 		else if(istype(target,/obj/structure/grille))
 			qdel(target)
 		else if(istype(target,/obj/effect/plant))

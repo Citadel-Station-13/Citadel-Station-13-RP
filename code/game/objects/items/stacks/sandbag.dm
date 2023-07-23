@@ -115,9 +115,8 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 
 	var/vestigial = TRUE
 
-/obj/structure/sandbag/Initialize(mapload, material_name)
+/obj/structure/sandbag/Initialize(mapload)
 	. = ..()
-	#warn handle materials
 	for(var/obj/structure/sandbag/S in loc)
 		if(S != src)
 			break_to_parts(full_return = 1)
@@ -141,17 +140,17 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	user.setClickCooldown(user.get_attack_speed(W))
 	if(istype(W, /obj/item/stack/sandbags))
 		var/obj/item/stack/sandbags/S = W
-		if(health < maxhealth)
+		if(integrity < integrity_max)
 			if(S.get_amount() < 1)
 				to_chat(user, "<span class='warning'>You need one sandbag to repair \the [src].</span>")
-				return
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			visible_message("<span class='notice'>[user] begins to repair \the [src].</span>")
-			if(do_after(user,20) && health < maxhealth)
+			if(do_after(user,20) && integrity < integrity_max)
 				if(S.use(1))
-					health = maxhealth
+					integrity = integrity_max
 					visible_message("<span class='notice'>[user] repairs \the [src].</span>")
-				return
-		return
+				return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/structure/sandbag/proc/break_to_parts(full_return = 0)
