@@ -7,6 +7,7 @@ var/global/list/ashtray_cache = list()
 	force_divisor = 0.1
 	thrown_force_divisor = 0.1
 	materials_base = list(MAT_STEEL = 4000)
+	material_parts = /datum/material/steel
 	var/image/base_image
 	var/max_butts = 10
 
@@ -15,11 +16,9 @@ var/global/list/ashtray_cache = list()
 	if(!material)
 		qdel(src)
 		return
-	max_butts = round(material.hardness/5) //This is arbitrary but whatever.
 	src.pixel_y = rand(-5, 5)
 	src.pixel_x = rand(-6, 6)
 	update_icon()
-	return
 
 /obj/item/material/ashtray/update_icon()
 	color = null
@@ -49,9 +48,7 @@ var/global/list/ashtray_cache = list()
 
 	add_overlay(overlays_to_add)
 
-/obj/item/material/ashtray/attackby(obj/item/W as obj, mob/user as mob)
-	if (health <= 0)
-		return ..()
+/obj/item/material/ashtray/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if (istype(W,/obj/item/cigbutt) || istype(W,/obj/item/clothing/mask/smokable/cigarette) || istype(W, /obj/item/flame/match))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if (contents.len >= max_butts)
@@ -77,32 +74,14 @@ var/global/list/ashtray_cache = list()
 		visible_message("[user] places [W] in [src].")
 		add_fingerprint(user)
 		update_icon()
-	else
-		health = max(0,health - W.damage_force)
-		to_chat(user, "You hit [src] with [W].")
-		if (health < 1)
-			shatter()
-		return CLICKCHAIN_DO_NOT_PROPAGATE
+		return
 	return ..()
 
-/obj/item/material/ashtray/throw_impact(atom/hit_atom)
-	if (health > 0)
-		health = max(0,health - 3)
-		if (contents.len)
-			src.visible_message("<span class='danger'>\The [src] slams into [hit_atom], spilling its contents!</span>")
-		for (var/obj/item/clothing/mask/smokable/cigarette/O in contents)
-			O.loc = src.loc
-		if (health < 1)
-			shatter()
-			return
-		update_icon()
-	return ..()
+/obj/item/material/ashtray/plastic
+	material_parts = /datum/material/plastic
 
-/obj/item/material/ashtray/plastic/Initialize(mapload, material_key)
-	return ..(mapload, "plastic")
+/obj/item/material/ashtray/bronze
+	material_parts = /datum/material/bronze
 
-/obj/item/material/ashtray/bronze/Initialize(mapload, material_key)
-	return ..(mapload, "bronze")
-
-/obj/item/material/ashtray/glass/Initialize(mapload, material_key)
-	return ..(mapload, "glass")
+/obj/item/material/ashtray/glass
+	material_parts = /datum/material/glass

@@ -123,6 +123,7 @@
 		else if(!dulled && can_dull)
 			dull()
 
+#warn shatter on impact?
 /obj/item/material/proc/shatter(var/consumed)
 	var/turf/T = get_turf(src)
 	visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
