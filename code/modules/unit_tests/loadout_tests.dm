@@ -1,6 +1,6 @@
 /datum/unit_test/loadout_test_shall_have_name_cost_path/Run()
-	for(var/geartype in typesof(/datum/gear) - /datum/gear)
-		var/datum/gear/G = geartype
+	for(var/geartype in typesof(/datum/loadout_entry) - /datum/loadout_entry)
+		var/datum/loadout_entry/G = geartype
 
 		if(!initial(G.display_name))
 			Fail("[G]: Loadout - Missing display name.")

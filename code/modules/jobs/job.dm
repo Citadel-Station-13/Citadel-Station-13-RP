@@ -364,7 +364,9 @@
 	. = outfit.equip_base(H, title, alt_title)
 
 /datum/role/job/proc/get_access()
-	return minimal_access | (config_legacy.jobs_have_minimal_access? list() : additional_access)
+	. = minimal_access | (config_legacy.jobs_have_minimal_access? list() : additional_access)
+	if(faction == JOB_FACTION_STATION && CONFIG_GET(flag/almost_everyone_has_maintenance_access))
+		. |= ACCESS_ENGINEERING_MAINT
 
 // If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/role/job/proc/player_old_enough(client/C)

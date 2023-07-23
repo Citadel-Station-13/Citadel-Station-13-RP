@@ -10749,6 +10749,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
+/obj/item/hardsuit/medical/equipped,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "gZK" = (
@@ -27737,6 +27738,7 @@
 /obj/item/clothing/mask/breath/anesthetic,
 /obj/item/clothing/gloves/sterile/nitrile,
 /obj/item/clothing/mask/muzzle,
+/obj/item/hardsuit/medical/equipped,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/cmo)
 "reE" = (

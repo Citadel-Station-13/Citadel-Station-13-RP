@@ -142,6 +142,13 @@
 	abstract_type = /datum/map/station
 	category = "Stations"
 
+	/// force world to be bigger width
+	var/world_width
+	/// force world to be bigger height
+	var/world_height
+
+	//! legacy below
+
 	var/full_name = "Unnamed Map"
 
 	// Automatically populated lists made static for faster lookups
@@ -349,9 +356,9 @@
 	// Traditional behavior
 	else
 		if (long_range && (srcz in map_levels))
-			return map_levels
+			return map_levels.Copy()
 		else if (srcz in station_levels)
-			return list(srcz)
+			return station_levels.Copy()
 		else
 			return list(srcz)
 

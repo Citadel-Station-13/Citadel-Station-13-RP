@@ -39,6 +39,8 @@
 	closet_appearance = null
 	open_sound = 'sound/items/zip.ogg'
 	close_sound = 'sound/items/zip.ogg'
+	icon_opened = "bodybag_open"
+	icon_closed = "bodybag_closed"
 	var/item_path = /obj/item/bodybag
 	density = 0
 	storage_capacity = (MOB_MEDIUM * 2) - 1
@@ -109,7 +111,7 @@
 	if(opened)
 		icon_state = icon_opened
 	else
-		if(contains_body > 0)
+		if(contains_body)
 			icon_state = "bodybag_closed1"
 		else
 			icon_state = icon_closed

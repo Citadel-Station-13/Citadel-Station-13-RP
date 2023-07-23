@@ -25,6 +25,9 @@
 	circuit = /obj/item/circuitboard/machine/lathe
 	default_deconstruct = 0 SECONDS
 	default_panel = 0 SECONDS
+	depth_projected = TRUE
+	depth_level = 8
+	climb_allowed = TRUE
 
 	/// icon state when printing, if any
 	var/active_icon_state
@@ -186,9 +189,11 @@
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	else if(isitem(I) && (user.a_intent == INTENT_HELP))
 		if(!(I.item_flags & ITEM_EASY_LATHE_DECONSTRUCT))
-			if(!insert_item(I, user))
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+			if(items_max)
+				if(!insert_item(I, user))
+					return CLICKCHAIN_DO_NOT_PROPAGATE
+				return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+			return ..()
 		if(recycle_item(I, user))
 			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -196,7 +201,7 @@
 
 /obj/machinery/lathe/proc/insert_item(obj/item/I, mob/user)
 	if(LAZYLEN(stored_items) >= items_max)
-		user.action_feedback(SPAN_WARNING("[src] can't hold [items_max && "more"] items for machining."), src)
+		user.action_feedback(SPAN_WARNING("[src] can't hold [items_max? "any more" : ""]items for machining."), src)
 		return FALSE
 	if(!isnull(user))
 		if(user.is_in_inventory(I) && !user.transfer_item_to_loc(I, src))
