@@ -246,8 +246,6 @@
 		return null
 
 	var/datum/role/job/job = get_job(rank)
-	var/list/spawn_in_storage = list()
-	var/real_species_name = H.species.name
 
 	if(!joined_late)
 		var/obj/landmark/spawnpoint/S = SSjob.get_roundstart_spawnpoint(H, H.client, job.type, job.faction)
@@ -270,60 +268,15 @@
 			H.buckled.forceMove(H.loc)
 			H.buckled.setDir(H.dir)
 
+	var/list/obj/item/loadout_rejected = list()
+	H.client.prefs.equip_loadout(
+		H,
+		joined_late? PREF_COPY_TO_FOR_LATEJOIN : PREF_COPY_TO_FOR_ROUNDSTART,
+		job,
+		reject = loadout_rejected
+	)
+
 	if(job)
-
-		//Equip custom gear loadout.
-		var/list/custom_equip_slots = list()
-		var/list/custom_equip_leftovers = list()
-		if(H.client.prefs.gear && H.client.prefs.gear.len && !(job.mob_type & JOB_SILICON))
-			for(var/thing in H.client.prefs.gear)
-				var/datum/gear/G = gear_datums[thing]
-				if(!G) //Not a real gear datum (maybe removed, as this is loaded from their savefile)
-					continue
-
-				var/permitted
-				// Check if it is restricted to certain roles
-				if(G.allowed_roles)
-					for(var/job_name in G.allowed_roles)
-						if(job.title == job_name)
-							permitted = 1
-				else
-					permitted = 1
-
-				// Check if they're whitelisted for this gear (in alien whitelist? seriously?)
-				if(G.legacy_species_lock && (real_species_name != G.legacy_species_lock))
-					permitted = 0
-
-				// If they aren't, tell them
-				if(!permitted)
-					to_chat(H, SPAN_WARNING("Your current species, job or whitelist status does not permit you to spawn with [G.display_name]!"))
-					continue
-
-				// Implants get special treatment
-				if(G.slot == "implant")
-					var/obj/item/implant/I = G.spawn_item(H, H.client.prefs.gear[G.display_name])
-					I.invisibility = 100
-					I.implant_loadout(H)
-					continue
-
-				// Try desperately (and sorta poorly) to equip the item. Now with increased desperation!
-				// why are we stuffing metadata in assoclists?
-				// because client might not be valid later down, so
-				// we're gonna just grab it once and call it a day
-				// sigh.
-				var/metadata = H.client.prefs.gear[G.name]
-				if(G.slot && !(G.slot in custom_equip_slots))
-					if(G.slot == SLOT_ID_MASK || G.slot == SLOT_ID_SUIT || G.slot == SLOT_ID_HEAD)
-						custom_equip_leftovers[thing] = metadata
-					else if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
-						to_chat(H, SPAN_NOTICE("Equipping you with \the [G.display_name]!"))
-						if(G.slot != /datum/inventory_slot_meta/abstract/attach_as_accessory)
-							custom_equip_slots.Add(G.slot)
-					else
-						custom_equip_leftovers[thing] = metadata
-				else
-					spawn_in_storage[thing] = metadata
-
 		// Set up their account
 		job.setup_account(H)
 
@@ -337,19 +290,10 @@
 		if(!(job.mob_type & JOB_SILICON))
 			H.equip_post_job()
 
-		// If some custom items could not be equipped before, try again now.
-		for(var/thing in custom_equip_leftovers)
-			var/datum/gear/G = gear_datums[thing]
-			if(G.slot in custom_equip_slots)
-				spawn_in_storage[thing] = custom_equip_leftovers[thing]
-			else
-				if(H.equip_to_slot_or_del(G.spawn_item(H, custom_equip_leftovers[thing]), G.slot))
-					to_chat(H, "<span class='notice'>Equipping you with \the [G.display_name]!</span>")
-					custom_equip_slots.Add(G.slot)
-				else
-					spawn_in_storage[thing] = custom_equip_leftovers[thing]
 	else
 		to_chat(H, "Your job is [rank] and the game just can't handle it! Please report this bug to an administrator.")
+
+	H.client.prefs.overflow_loadout(H, joined_late? PREF_COPY_TO_FOR_LATEJOIN : PREF_COPY_TO_FOR_ROUNDSTART, loadout_rejected)
 
 	H.job = rank
 	log_game("JOINED [key_name(H)] as \"[rank]\"")
@@ -382,21 +326,6 @@
 		if(rank == "Facility Director")
 			var/sound/announce_sound = (SSticker.current_state <= GAME_STATE_SETTING_UP) ? null : sound('sound/misc/boatswain.ogg', volume=20)
 			captain_announcement.Announce("All hands, [alt_title ? alt_title : "Facility Director"] [H.real_name] on deck!", new_sound = announce_sound, zlevel = H.z)
-
-		//Deferred item spawning.
-		if(spawn_in_storage && spawn_in_storage.len)
-			var/obj/item/storage/B
-			for(var/obj/item/storage/S in H.contents)
-				B = S
-				break
-
-			if(!isnull(B))
-				for(var/thing in spawn_in_storage)
-					var/datum/gear/G = gear_datums[thing]
-					G.spawn_item(B, spawn_in_storage[thing])
-					to_chat(H, SPAN_NOTICE("Placing \the [G.display_name] in your [B.name]!"))
-			else
-				to_chat(H, SPAN_DANGER("Failed to locate a storage object on your mob, either you spawned with no arms and no backpack or this is a bug."))
 
 	if(istype(H)) //give humans wheelchairs, if they need them.
 		var/obj/item/organ/external/l_foot = H.get_organ("l_foot")

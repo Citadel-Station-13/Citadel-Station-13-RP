@@ -2,6 +2,7 @@ import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
+import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
 import { Button, ByondUi, Flex, Input, Section } from '../components';
 import { Window } from '../layouts';
@@ -116,7 +117,7 @@ export const CameraConsoleContent = (props, context) => {
           scrollable>
           {cameras.map(camera => (
           // We're not using the component here because performance
-          // would be absolutely abysmal (50+ ms for each re-render).
+          // would be absolutely abysmal (50+ ms for each re-render)
             <div
               key={camera.name}
               title={camera.name}
@@ -138,5 +139,52 @@ export const CameraConsoleContent = (props, context) => {
         </Section>
       </Flex.Item>
     </Flex>
+  );
+};
+
+export const CameraConsoleNTOS = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { mapRef, activeCamera } = data;
+  const cameras = selectCameras(data.cameras);
+  const [
+    prevCameraName,
+    nextCameraName,
+  ] = prevNextCamera(cameras, activeCamera);
+  return (
+    <Fragment>
+      <div className="CameraConsole__left">
+        <Window.Content scrollable>
+          <CameraConsoleContent />
+        </Window.Content>
+      </div>
+      <div className="CameraConsole__right">
+        <div className="CameraConsole__toolbar">
+          <b>Camera: </b>
+          {activeCamera
+            && activeCamera.name
+            || '—'}
+        </div>
+        <div className="CameraConsole__toolbarRight">
+          <Button
+            icon="chevron-left"
+            disabled={!prevCameraName}
+            onClick={() => act('switch_camera', {
+              name: prevCameraName,
+            })} />
+          <Button
+            icon="chevron-right"
+            disabled={!nextCameraName}
+            onClick={() => act('switch_camera', {
+              name: nextCameraName,
+            })} />
+        </div>
+        <ByondUi
+          className="CameraConsole__map"
+          params={{
+            id: mapRef,
+            type: 'map',
+          }} />
+      </div>
+    </Fragment>
   );
 };
