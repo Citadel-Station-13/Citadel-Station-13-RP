@@ -7,7 +7,7 @@
 	item_flags = ITEM_EASY_LATHE_DECONSTRUCT
 	slot_flags = SLOT_BELT
 	item_state = "syringe_kit"
-	materials = list(MAT_STEEL = 500)
+	materials_base = list(MAT_STEEL = 500)
 	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4

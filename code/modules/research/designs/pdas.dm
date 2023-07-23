@@ -5,7 +5,7 @@
 	desc = "Cheaper than whiny non-digital assistants."
 	id = "pda"
 	req_tech = list(TECH_ENGINEERING = 2, TECH_POWER = 3)
-	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 50)
 	build_path = /obj/item/pda
 
 // Cartridges
@@ -13,7 +13,7 @@
 /datum/design/science/pda_cartridge
 	abstract_type = /datum/design/science/pda_cartridge
 	req_tech = list(TECH_ENGINEERING = 2, TECH_POWER = 3)
-	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /datum/design/science/pda_cartridge/generate_name(template)
 	return "PDA cartridge ([..()])"

@@ -6,7 +6,7 @@
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "gear"
 	origin_tech = list(TECH_ENGINEERING = 1)
-	materials = list(MAT_STEEL = 50)
+	materials_base = list(MAT_STEEL = 50)
 
 /obj/item/stock_parts/motor
 	name = "motor"
@@ -14,7 +14,7 @@
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "motor"
 	origin_tech = list(TECH_ENGINEERING = 1)
-	materials = list(MAT_STEEL = 60, MAT_GLASS = 10)
+	materials_base = list(MAT_STEEL = 60, MAT_GLASS = 10)
 
 /obj/item/stock_parts/spring
 	name = "spring"
@@ -22,4 +22,4 @@
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "spring"
 	origin_tech = list(TECH_ENGINEERING = 1)
-	materials = list(MAT_STEEL = 40)
+	materials_base = list(MAT_STEEL = 40)

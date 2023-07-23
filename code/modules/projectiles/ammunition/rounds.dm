@@ -27,14 +27,14 @@
 	desc = "A .357 bullet casing."
 	caliber = ".357"
 	projectile_type = /obj/projectile/bullet/pistol/strong
-	materials = list(MAT_STEEL = 210)
+	materials_base = list(MAT_STEEL = 210)
 
 /obj/item/ammo_casing/a357/silver
 	desc = "A .357 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
 	caliber = ".357"
 	icon_state = "ag-casing"
 	projectile_type = /obj/projectile/bullet/pistol/strong
-	materials = list(MAT_STEEL = 350, MAT_SILVER = 200)
+	materials_base = list(MAT_STEEL = 350, MAT_SILVER = 200)
 
 /*
  * .38
@@ -44,7 +44,7 @@
 	desc = "A .38 bullet casing."
 	caliber = ".38"
 	projectile_type = /obj/projectile/bullet/pistol
-	materials = list(MAT_STEEL = 60)
+	materials_base = list(MAT_STEEL = 60)
 
 /obj/item/ammo_casing/a38/rubber
 	desc = "A .38 rubber bullet casing."
@@ -56,13 +56,13 @@
 	desc = "A .38 bullet casing fitted with a single-use ion pulse generator."
 	icon_state = "empcasing"
 	projectile_type = /obj/projectile/ion/small
-	materials = list(MAT_STEEL = 130, MAT_URANIUM = 100)
+	materials_base = list(MAT_STEEL = 130, MAT_URANIUM = 100)
 
 /obj/item/ammo_casing/a38/silver
 	desc = "A .38 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
 	icon_state = "ag-casing"
 	projectile_type = /obj/projectile/bullet/pistol/silver
-	materials = list(MAT_STEEL = 130, MAT_SILVER = 100)
+	materials_base = list(MAT_STEEL = 130, MAT_SILVER = 100)
 
 
 /*
@@ -73,19 +73,19 @@
 	desc = "A .44 bullet casing."
 	caliber = ".44"
 	projectile_type = /obj/projectile/bullet/pistol/strong
-	materials = list(MAT_STEEL = 210)
+	materials_base = list(MAT_STEEL = 210)
 
 /obj/item/ammo_casing/a44/rubber
 	icon_state = "r-casing"
 	desc = "A .44 rubber bullet casing."
 	projectile_type = /obj/projectile/bullet/pistol/rubber/strong
-	materials = list(MAT_STEEL = 60)
+	materials_base = list(MAT_STEEL = 60)
 
 /obj/item/ammo_casing/a44/silver
 	desc = "A .44 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
 	icon_state = "ag_casing"
 	projectile_type = /obj/projectile/bullet/pistol/strong/silver
-	materials = list(MAT_STEEL = 350, MAT_SILVER = 200)
+	materials_base = list(MAT_STEEL = 350, MAT_SILVER = 200)
 
 /*
  * .75 (aka Gyrojet Rockets, aka admin abuse)
@@ -95,7 +95,7 @@
 	desc = "A .75 gyrojet rocket sheathe."
 	caliber = ".75"
 	projectile_type = /obj/projectile/bullet/gyro
-	materials = list(MAT_STEEL = 4000)
+	materials_base = list(MAT_STEEL = 4000)
 
 /*
  * 9mm
@@ -105,12 +105,12 @@
 	desc = "A 9mm bullet casing."
 	caliber = "9mm"
 	projectile_type = /obj/projectile/bullet/pistol
-	materials = list(MAT_STEEL = 60)
+	materials_base = list(MAT_STEEL = 60)
 
 /obj/item/ammo_casing/a9mm/ap
 	desc = "A 9mm armor-piercing bullet casing."
 	projectile_type = /obj/projectile/bullet/pistol/ap
-	materials = list(MAT_STEEL = 80)
+	materials_base = list(MAT_STEEL = 80)
 
 /obj/item/ammo_casing/a9mm/hp
 	desc = "A 9mm hollow-point bullet casing."
@@ -119,7 +119,7 @@
 /obj/item/ammo_casing/a9mm/hunter
 	desc = "A 9mm hunting bullet casing."
 	projectile_type = /obj/projectile/bullet/pistol/hunter
-	materials = list(MAT_STEEL = 80)
+	materials_base = list(MAT_STEEL = 80)
 
 /obj/item/ammo_casing/a9mm/flash
 	desc = "A 9mm flash shell casing."
@@ -140,7 +140,7 @@
 	desc = "A 9mm silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
 	icon_state = "ag-casing"
 	projectile_type = /obj/projectile/bullet/pistol/silver
-	materials = list(MAT_STEEL = 130, MAT_SILVER = 100)
+	materials_base = list(MAT_STEEL = 130, MAT_SILVER = 100)
 
 /*
  * 5.7
@@ -149,22 +149,22 @@
 	desc = "A 5.7x28mm bullet casing."
 	caliber = "5.7x28mm"
 	projectile_type = /obj/projectile/bullet/pistol/lap
-	materials = list(MAT_STEEL = 30, MAT_COPPER = 30)
+	materials_base = list(MAT_STEEL = 30, MAT_COPPER = 30)
 
 /obj/item/ammo_casing/a57x28mm/ap
 	desc = "A 5.7x28mm armor-piercing bullet casing."
 	projectile_type = /obj/projectile/bullet/pistol/ap
-	materials = list(MAT_STEEL = 80, MAT_COPPER = 30)
+	materials_base = list(MAT_STEEL = 80, MAT_COPPER = 30)
 
 /obj/item/ammo_casing/a57x28mm/hp
 	desc = "A 5.7x28mm hollow-point bullet casing."
 	projectile_type = /obj/projectile/bullet/pistol/hp
-	materials = list(MAT_STEEL = 60, MAT_COPPER = 30)
+	materials_base = list(MAT_STEEL = 60, MAT_COPPER = 30)
 
 /obj/item/ammo_casing/a57x28mm/hunter
 	desc = "A 5.7x28mm hunting bullet casing."
 	projectile_type = /obj/projectile/bullet/pistol/hunter
-	materials = list(MAT_STEEL = 30, MAT_COPPER = 50)
+	materials_base = list(MAT_STEEL = 30, MAT_COPPER = 50)
 
 /*
  * .45
@@ -174,7 +174,7 @@
 	desc = "A .45 bullet casing."
 	caliber = ".45"
 	projectile_type = /obj/projectile/bullet/pistol/medium
-	materials = list(MAT_STEEL = 75)
+	materials_base = list(MAT_STEEL = 75)
 
 /obj/item/ammo_casing/a45/ap
 	desc = "A .45 Armor-Piercing bullet casing."
@@ -184,32 +184,32 @@
 /obj/item/ammo_casing/a45/hunter
 	desc = "A .45 hunting bullet casing."
 	projectile_type = /obj/projectile/bullet/pistol/medium/hunter
-	materials = list(MAT_STEEL = 75)
+	materials_base = list(MAT_STEEL = 75)
 
 /obj/item/ammo_casing/a45/practice
 	desc = "A .45 practice bullet casing."
 	icon_state = "r-casing"
 	projectile_type = /obj/projectile/bullet/practice
-	materials = list(MAT_STEEL = 60)
+	materials_base = list(MAT_STEEL = 60)
 
 /obj/item/ammo_casing/a45/rubber
 	desc = "A .45 rubber bullet casing."
 	icon_state = "r-casing"
 	projectile_type = /obj/projectile/bullet/pistol/rubber
-	materials = list(MAT_STEEL = 60)
+	materials_base = list(MAT_STEEL = 60)
 
 /obj/item/ammo_casing/a45/flash
 	desc = "A .45 flash shell casing."
 	icon_state = "r-casing"
 	projectile_type = /obj/projectile/energy/flash
-	materials = list(MAT_STEEL = 60)
+	materials_base = list(MAT_STEEL = 60)
 
 /obj/item/ammo_casing/a45/emp
 	name = ".45 haywire round"
 	desc = "A .45 bullet casing fitted with a single-use ion pulse generator."
 	projectile_type = /obj/projectile/ion/small
 	icon_state = "empcasing"
-	materials = list(MAT_STEEL = 130, MAT_URANIUM = 100)
+	materials_base = list(MAT_STEEL = 130, MAT_URANIUM = 100)
 
 /obj/item/ammo_casing/a45/hp
 	desc = "A .45 hollow-point bullet casing."
@@ -220,7 +220,7 @@
 	desc = "A .45 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
 	icon_state = "ag-casing"
 	projectile_type = /obj/projectile/bullet/pistol/silver
-	materials = list(MAT_STEEL = 130, MAT_SILVER = 100)
+	materials_base = list(MAT_STEEL = 130, MAT_SILVER = 100)
 
 
 /*
@@ -231,14 +231,14 @@
 	desc = "A 10mm bullet casing."
 	caliber = "10mm"
 	projectile_type = /obj/projectile/bullet/pistol/medium
-	materials = list(MAT_STEEL = 75)
+	materials_base = list(MAT_STEEL = 75)
 
 /obj/item/ammo_casing/a10mm/emp
 	name = "10mm haywire round"
 	desc = "A 10mm bullet casing fitted with a single-use ion pulse generator."
 	projectile_type = /obj/projectile/ion/small
 	icon_state = "empcasing"
-	materials = list(MAT_STEEL = 130, MAT_URANIUM = 100)
+	materials_base = list(MAT_STEEL = 130, MAT_URANIUM = 100)
 
 /*
  * 12g (aka shotgun ammo)
@@ -250,7 +250,7 @@
 	icon_state = "slshell"
 	caliber = "12g"
 	projectile_type = /obj/projectile/bullet/shotgun
-	materials = list(MAT_STEEL = 360)
+	materials_base = list(MAT_STEEL = 360)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
 
 /obj/item/ammo_casing/a12g/pellet
@@ -264,28 +264,28 @@
 	desc = "A blank shell."
 	icon_state = "blshell"
 	projectile_type = /obj/projectile/bullet/blank
-	materials = list(MAT_STEEL = 90)
+	materials_base = list(MAT_STEEL = 90)
 
 /obj/item/ammo_casing/a12g/practice
 	name = "shotgun shell"
 	desc = "A practice shell."
 	icon_state = "pshell"
 	projectile_type = /obj/projectile/bullet/practice
-	materials = list(MAT_STEEL = 90)
+	materials_base = list(MAT_STEEL = 90)
 
 /obj/item/ammo_casing/a12g/beanbag
 	name = "beanbag shell"
 	desc = "A beanbag shell."
 	icon_state = "bshell"
 	projectile_type = /obj/projectile/bullet/shotgun/beanbag
-	materials = list(MAT_STEEL = 180)
+	materials_base = list(MAT_STEEL = 180)
 
 /obj/item/ammo_casing/a12g/improvised
 	name = "improvised shell"
 	desc = "An extremely weak shotgun shell with multiple small pellets made out of metal shards."
 	icon_state = "improvshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_improvised
-	materials = list(MAT_STEEL = 500, MAT_GLASS = 200)
+	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 200)
 
 //Can stun in one hit if aimed at the head, but
 //is blocked by clothing that stops tasers and is vulnerable to EMP
@@ -294,7 +294,7 @@
 	desc = "A 12 gauge taser cartridge."
 	icon_state = "stunshell"
 	projectile_type = /obj/projectile/energy/electrode/stunshot
-	materials = list(MAT_STEEL = 360, MAT_GLASS = 720)
+	materials_base = list(MAT_STEEL = 360, MAT_GLASS = 720)
 
 //Does not stun, only blinds, but has area of effect.
 /obj/item/ammo_casing/a12g/flare
@@ -302,7 +302,7 @@
 	desc = "A chemical shell used to signal distress or provide illumination."
 	icon_state = "fshell"
 	projectile_type = /obj/projectile/energy/flash/flare
-	materials = list(MAT_STEEL = 90, MAT_GLASS = 90)
+	materials_base = list(MAT_STEEL = 90, MAT_GLASS = 90)
 
 //Silver 12g
 /obj/item/ammo_casing/a12g/silver
@@ -311,7 +311,7 @@
 	icon_state = "agshell"
 	caliber = "12g"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
-	materials = list(MAT_STEEL = 360, MAT_SILVER = 240)
+	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
 
 //Wooden Stake 12g
 /obj/item/ammo_casing/a12g/stake
@@ -320,7 +320,7 @@
 	icon_state = "agshell"
 	caliber = "12g"
 	projectile_type = /obj/projectile/bullet/shotgun/stake
-	materials = list(MAT_STEEL = 500)
+	materials_base = list(MAT_STEEL = 500)
 
 //Techshell & Derivatives
 /obj/item/ammo_casing/a12g/techshell
@@ -329,14 +329,14 @@
 	icon_state = "cshell"
 	caliber = "12g"
 	projectile_type = null
-	materials = list(MAT_STEEL = 500, MAT_PHORON = 200)
+	materials_base = list(MAT_STEEL = 500, MAT_PHORON = 200)
 
 /obj/item/ammo_casing/a12g/techshell/meteorslug
 	name = "meteorslug shell"
 	desc = "A shotgun shell rigged with CMC technology, which launches a massive slug when fired."
 	icon_state = "mshell"
 	projectile_type = /obj/projectile/meteor/slug
-	materials = list(MAT_STEEL = 500, MAT_GOLD = 200)
+	materials_base = list(MAT_STEEL = 500, MAT_GOLD = 200)
 
 /obj/item/ammo_casing/a12g/techshell/emp
 	name = "ion shell"
@@ -344,7 +344,7 @@
 	icon_state = "empshell"
 	projectile_type = /obj/projectile/scatter/ion
 //	projectile_type = /obj/projectile/bullet/shotgun/ion
-	materials = list(MAT_STEEL = 360, MAT_URANIUM = 240)
+	materials_base = list(MAT_STEEL = 360, MAT_URANIUM = 240)
 
 /obj/item/ammo_casing/a12g/techshell/pulseslug
 	name = "pulse slug"
@@ -353,7 +353,7 @@
 	would have difficulty with."
 	icon_state = "plshell"
 	projectile_type = /obj/projectile/beam/pulse/shotgun
-	materials = list(MAT_STEEL = 500, MAT_SILVER = 200)
+	materials_base = list(MAT_STEEL = 500, MAT_SILVER = 200)
 
 /obj/item/ammo_casing/a12g/techshell/dragonsbreath
 	name = "dragonsbreath shell"
@@ -366,14 +366,14 @@
 	desc = "A high explosive breaching round for a 12 gauge shotgun."
 	icon_state = "heshell"
 	projectile_type = /obj/projectile/bullet/shotgun/frag12
-	materials = list(MAT_STEEL = 500, MAT_PHORON = 200)
+	materials_base = list(MAT_STEEL = 500, MAT_PHORON = 200)
 
 /obj/item/ammo_casing/a12g/techshell/laserslug
 	name = "scatter laser shell"
 	desc = "An advanced shotgun shell that uses a micro laser to replicate the effects of a scatter laser weapon in a ballistic package."
 	icon_state = "lshell"
 	projectile_type = /obj/projectile/scatter/laser
-	materials = list(MAT_STEEL = 500, MAT_GLASS = 200)
+	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 200)
 
 /*
  * 7.62mm
@@ -384,23 +384,23 @@
 	caliber = "7.62mm"
 	icon_state = "rifle-casing"
 	projectile_type = /obj/projectile/bullet/rifle/a762
-	materials = list(MAT_STEEL = 200)
+	materials_base = list(MAT_STEEL = 200)
 
 /obj/item/ammo_casing/a762/ap
 	desc = "A 7.62mm armor-piercing bullet casing."
 	projectile_type = /obj/projectile/bullet/rifle/a762/ap
-	materials = list(MAT_STEEL = 300)
+	materials_base = list(MAT_STEEL = 300)
 
 /obj/item/ammo_casing/a762/practice
 	desc = "A 7.62mm practice bullet casing."
 	icon_state = "rifle-casing" // Need to make an icon for these
 	projectile_type = /obj/projectile/bullet/practice
-	materials = list(MAT_STEEL = 90)
+	materials_base = list(MAT_STEEL = 90)
 
 /obj/item/ammo_casing/a762/blank
 	desc = "A blank 7.62mm bullet casing."
 	projectile_type = /obj/projectile/bullet/blank
-	materials = list(MAT_STEEL = 90)
+	materials_base = list(MAT_STEEL = 90)
 
 /obj/item/ammo_casing/a762/hp
 	desc = "A 7.62mm hollow-point bullet casing."
@@ -422,7 +422,7 @@
 	desc = "A 7.62mm hunting bullet casing. Bless and Sancitfied to banish otherworlds entities."
 	icon_state = "agrifle-casing"
 	projectile_type = /obj/projectile/bullet/rifle/a762/silver
-	materials = list(MAT_STEEL = 300, MAT_SILVER = 150)
+	materials_base = list(MAT_STEEL = 300, MAT_SILVER = 150)
 
 /*
  * 14.5mm (anti-materiel rifle round)
@@ -433,7 +433,7 @@
 	icon_state = "lcasing"
 	caliber = "14.5mm"
 	projectile_type = /obj/projectile/bullet/rifle/a145
-	materials = list(MAT_STEEL = 1250)
+	materials_base = list(MAT_STEEL = 1250)
 
 /*
  * 5.45mm
@@ -444,23 +444,23 @@
 	caliber = "5.45mm"
 	icon_state = "rifle-casing"
 	projectile_type = /obj/projectile/bullet/rifle/a545
-	materials = list(MAT_STEEL = 180)
+	materials_base = list(MAT_STEEL = 180)
 
 /obj/item/ammo_casing/a545/ap
 	desc = "A 5.45mm armor-piercing bullet casing."
 	projectile_type = /obj/projectile/bullet/rifle/a545/ap
-	materials = list(MAT_STEEL = 270)
+	materials_base = list(MAT_STEEL = 270)
 
 /obj/item/ammo_casing/a545/practice
 	desc = "A 5.45mm practice bullet casing."
 	icon_state = "rifle-casing" // Need to make an icon for these
 	projectile_type = /obj/projectile/bullet/practice
-	materials = list(MAT_STEEL = 90)
+	materials_base = list(MAT_STEEL = 90)
 
 /obj/item/ammo_casing/a545/blank
 	desc = "A blank 5.45mm bullet casing."
 	projectile_type = /obj/projectile/bullet/blank
-	materials = list(MAT_STEEL = 90)
+	materials_base = list(MAT_STEEL = 90)
 
 /obj/item/ammo_casing/a545/hp
 	desc = "A 5.45mm hollow-point bullet casing."
@@ -479,7 +479,7 @@
 	caliber = "10mmCL"
 	icon_state = "casing"
 	projectile_type = /obj/projectile/bullet/pistol/medium
-	materials = list(MAT_STEEL = 180)
+	materials_base = list(MAT_STEEL = 180)
 	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/a10x24mmcaseless/ap
@@ -487,14 +487,14 @@
 	caliber = "10mmCL"
 	icon_state = "casing"
 	projectile_type = /obj/projectile/bullet/pistol/medium/ap
-	materials = list(MAT_STEEL = 180)
+	materials_base = list(MAT_STEEL = 180)
 
 /obj/item/ammo_casing/a10x24mmcaseless/hp
 	desc = "A 10x24mm caseless round, common during the Xenomorph wars due to its use the the battle rifles of the United Solar Marine Corps. This one was meant to shred armored targets."
 	caliber = "10mmCL"
 	icon_state = "casing"
 	projectile_type = /obj/projectile/bullet/pistol/medium/hp
-	materials = list(MAT_STEEL = 180)
+	materials_base = list(MAT_STEEL = 180)
 
 /*
  * 5mm Caseless
@@ -505,7 +505,7 @@
 	caliber = "5mm caseless"
 	icon_state = "casing" // Placeholder. Should probably be purple.
 	projectile_type = /obj/projectile/bullet/pistol // Close enough to be comparable.
-	materials = list(MAT_STEEL = 180)
+	materials_base = list(MAT_STEEL = 180)
 	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/a5mmcaseless/stun
@@ -522,12 +522,12 @@
 	icon_state = "rocketshell"
 	projectile_type = /obj/projectile/bullet/srmrocket
 	caliber = "rocket"
-	materials = list(MAT_STEEL = 10000)
+	materials_base = list(MAT_STEEL = 10000)
 
 /obj/item/ammo_casing/rocket/weak
 	name = "low-yield rocket shell"
 	projectile_type = /obj/projectile/bullet/srmrocket/weak
-	materials = list(MAT_STEEL = 5000)
+	materials_base = list(MAT_STEEL = 5000)
 
 /obj/item/ammo_casing/cap
 	name = "cap"
@@ -536,7 +536,7 @@
 	icon_state = "r-casing"
 	color = "#FF0000"
 	projectile_type = /obj/projectile/bullet/pistol/cap
-	materials = list(MAT_STEEL = 85)
+	materials_base = list(MAT_STEEL = 85)
 
 /obj/item/ammo_casing/spent // For simple hostile mobs only, so they don't cough up usable bullets when firing. This is for literally nothing else.
 	icon_state = "s-casing-spent"
@@ -549,7 +549,7 @@
 	icon_state = "globule"
 	color = "#FFE0E2"
 	projectile_type = /obj/projectile/bullet/organic
-	materials = list("flesh" = 100)
+	materials_base = list("flesh" = 100)
 
 /obj/item/ammo_casing/organic/wax
 	name = "wax globule"
@@ -558,7 +558,7 @@
 	icon_state = "globule"
 	color = "#E6E685"
 	projectile_type = /obj/projectile/bullet/organic/wax
-	materials = list("wax" = 100)
+	materials_base = list("wax" = 100)
 
 /obj/item/ammo_casing/musket
 	name = "musket ball"
@@ -566,7 +566,7 @@
 	icon_state = "musketball"
 	caliber = "musket"
 	projectile_type = /obj/projectile/bullet/musket
-	materials = list("lead" = 100)
+	materials_base = list("lead" = 100)
 	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/musket/silver
@@ -574,7 +574,7 @@
 	desc = "A solid ball made of a lead-silver alloy."
 	icon_state = "silverball"
 	projectile_type = /obj/projectile/bullet/musket/silver
-	materials = list("lead" = 100, "silver" = 100)
+	materials_base = list("lead" = 100, "silver" = 100)
 
 /obj/item/ammo_casing/musket/blunderbuss
 	name = "shot"
@@ -582,14 +582,14 @@
 	icon_state = "blunderbuss"
 	caliber = "blunderbuss"
 	projectile_type = /obj/projectile/bullet/pellet/blunderbuss
-	materials = list("lead" = 500)
+	materials_base = list("lead" = 500)
 
 /obj/item/ammo_casing/musket/blunderbuss/silver
 	name = "sliver shot"
 	desc = "A bundle of silver lead allow balls and other assorted bits of silver."
 	icon_state = "silverbuss"
 	projectile_type = /obj/projectile/bullet/pellet/blunderbuss/silver
-	materials = list("lead" = 500, "silver" = 500)
+	materials_base = list("lead" = 500, "silver" = 500)
 
 //Ten Gauge Rounds for Exotic Shotguns
 /obj/item/ammo_casing/a10g
@@ -598,7 +598,7 @@
 	icon_state = "brshell"
 	caliber = "10g"
 	projectile_type = /obj/projectile/bullet/heavy_shotgun
-	materials = list(MAT_STEEL = 300, "brass" = 200)
+	materials_base = list(MAT_STEEL = 300, "brass" = 200)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
 
 /obj/item/ammo_casing/a10g/pellet //Spread variant.

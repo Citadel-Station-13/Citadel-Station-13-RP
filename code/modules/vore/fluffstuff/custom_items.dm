@@ -542,7 +542,7 @@
 	damage_force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
-	materials = list(MAT_STEEL = 50)
+	materials_base = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
 /obj/item/cane/fluff/tasald
@@ -561,7 +561,7 @@
     damage_force = 1.0
     throw_force = 2.0
     w_class = ITEMSIZE_SMALL
-    materials = list(MAT_STEEL = 50)
+    materials_base = list(MAT_STEEL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
     attack_sound = 'sound/weapons/sparkle.ogg'
     var/last_use = 0

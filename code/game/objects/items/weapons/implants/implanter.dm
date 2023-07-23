@@ -6,7 +6,7 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
-	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
+	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	var/obj/item/implant/imp = null
 	var/active = 1
 

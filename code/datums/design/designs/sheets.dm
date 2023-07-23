@@ -5,7 +5,7 @@
 	id = "SheetReinforcedGlass"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 1000,
 		MAT_GLASS = 2000,
 	)
@@ -16,7 +16,7 @@
 	id = "SheetSteelRods"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 1000
 	)
 	build_path = /obj/item/stack/rods

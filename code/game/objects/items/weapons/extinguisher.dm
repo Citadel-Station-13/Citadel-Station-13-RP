@@ -9,7 +9,7 @@
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 2
 	throw_range = 10
-	materials = list(MAT_STEEL = 90)
+	materials_base = list(MAT_STEEL = 90)
 	damage_force = 10
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
 	drop_sound = 'sound/items/drop/gascan.ogg'

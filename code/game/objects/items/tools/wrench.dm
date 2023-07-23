@@ -13,7 +13,7 @@
 	throw_force = 7
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	materials = list(MAT_STEEL = 150)
+	materials_base = list(MAT_STEEL = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 	tool_sound = 'sound/items/ratchet.ogg'
 	tool_speed = 1
@@ -121,7 +121,7 @@
 	icon_state = "drill_bolt"
 	item_state = "drill"
 	tool_sound = 'sound/items/drill_use.ogg'
-	materials = list(MAT_STEEL = 150, MAT_SILVER = 50)
+	materials_base = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	damage_force = 8
 	w_class = ITEMSIZE_SMALL
@@ -160,7 +160,7 @@
 	icon_state = "crystal_wrench"
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
-	materials = list(MATERIAL_CRYSTAL = 1250)
+	materials_base = list(MATERIAL_CRYSTAL = 1250)
 	tool_speed = 0.2
 
 /obj/item/tool/wrench/crystal/Initialize()

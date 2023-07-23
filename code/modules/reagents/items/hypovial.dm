@@ -4,7 +4,7 @@
 	desc = "A standard issue vial used for hyposprays."
 	icon = 'icons/modules/reagents/items/hypospray.dmi'
 	icon_state = "vial"
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 250,
 		MAT_GLASS = 1000,
 	)
@@ -28,7 +28,7 @@
 	name = "large hypospray vial"
 	desc = "A larger variant of the common hypospray vial. Only compatible with advanced units."
 	icon_state = "vial-l"
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 500,
 		MAT_GLASS = 2000,
 	)

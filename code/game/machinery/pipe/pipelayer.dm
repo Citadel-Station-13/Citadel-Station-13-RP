@@ -174,7 +174,7 @@
 	var/obj/item/pipe/P = new pi_type(w_turf, p_type, p_dir)
 	P.setPipingLayer(p_layer)
 	// We used metal to make these, so should be reclaimable!
-	P.materials = list(MAT_STEEL = pipe_cost * SHEET_MATERIAL_AMOUNT)
+	P.materials_base = list(MAT_STEEL = pipe_cost * SHEET_MATERIAL_AMOUNT)
 	P.attackby(W , src)
 
 	return 1

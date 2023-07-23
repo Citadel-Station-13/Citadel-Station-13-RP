@@ -109,7 +109,7 @@
 	w_class = ITEMSIZE_NORMAL
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2)
-	materials = list(MAT_STEEL = 2000)
+	materials_base = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/imperial
 /* CITADEL CHANGE - Removes Virgo Fluff
 // jertheace : Jeremiah 'Ace' Acacius
@@ -584,7 +584,7 @@ END OF CITADEL CHANGES */
 	icon_state = "smg"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
-	materials = list(MAT_STEEL = 1800)
+	materials_base = list(MAT_STEEL = 1800)
 	caliber = "9mm"
 	ammo_type = /obj/item/ammo_casing/a9mm
 	max_ammo = 30
@@ -670,7 +670,7 @@ END OF CITADEL CHANGES */
 	icon_state = "9x19p"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
-	materials = list(MAT_STEEL = 480)
+	materials_base = list(MAT_STEEL = 480)
 	caliber = ".380"
 	ammo_type = /obj/item/ammo_casing/a380
 	max_ammo = 8
@@ -693,7 +693,7 @@ END OF CITADEL CHANGES */
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "s357"
 	caliber = ".44"
-	materials = list(MAT_STEEL = 1260)
+	materials_base = list(MAT_STEEL = 1260)
 	ammo_type = /obj/item/ammo_casing/a44
 	max_ammo = 6
 	multiple_sprites = 1

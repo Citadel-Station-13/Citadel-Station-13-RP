@@ -12,7 +12,7 @@
 	display_contents_with_number = 1
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = 200
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 8000,
 		MAT_GLASS = 2500,
 	)
@@ -22,7 +22,7 @@
 	name = "basic part exchanger"
 	desc = "A basic part exchanger. It can't seem to store much."
 	storage_slots = 35
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 4000,
 		MAT_GLASS = 1500,
 	)
@@ -41,7 +41,7 @@
 	display_contents_with_number = 1
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = 400
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 12000,
 		MAT_GLASS = 4000,
 	)

@@ -70,7 +70,7 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/material/minihoe
-	materials = list(MAT_STEEL = 50)
+	materials_base = list(MAT_STEEL = 50)
 	material_costs = list(
 		"tip" = 250
 	)

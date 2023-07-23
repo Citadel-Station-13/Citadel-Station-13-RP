@@ -57,7 +57,7 @@
 	/// * Always use get_materials to get this list unless you know what you're doing.
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
 	/// * This does not include material parts.
-	var/list/materials
+	var/list/materials_base
 	/// material parts - lets us track what we're made of
 	/// this is either a lazy list of material keys to IDs,
 	/// or a single material id

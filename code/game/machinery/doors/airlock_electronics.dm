@@ -4,7 +4,7 @@
 	icon_state = "door_electronics"
 	w_class = ITEMSIZE_SMALL //It should be tiny! -Agouri
 
-	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 	var/list/conf_req_access
 	var/list/conf_req_one_access

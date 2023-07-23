@@ -6,7 +6,7 @@
 	icon = 'icons/obj/device.dmi'
 	w_class = ITEMSIZE_SMALL
 
-	materials = list(MAT_STEEL = 60, MAT_GLASS = 30)
+	materials_base = list(MAT_STEEL = 60, MAT_GLASS = 30)
 
 	var/emagged = 0.0
 	var/recording = 0.0
@@ -370,7 +370,7 @@
 	icon_state = "tape_white"
 	item_state = "analyzer"
 	w_class = ITEMSIZE_TINY
-	materials = list(MAT_STEEL=20, "glass"=5)
+	materials_base = list(MAT_STEEL=20, "glass"=5)
 	damage_force = 1
 	throw_force = 0
 	var/max_capacity = 1800

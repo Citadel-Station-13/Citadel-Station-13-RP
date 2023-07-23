@@ -3,7 +3,7 @@
 	desc = "A tiny little manipulator used in the construction of certain devices."
 	icon_state = "micro_mani"
 	origin_tech = list(TECH_MATERIAL = 1, TECH_DATA = 1)
-	materials = list(MAT_STEEL = 30)
+	materials_base = list(MAT_STEEL = 30)
 
 /obj/item/stock_parts/manipulator/nano
 	name = "nano-manipulator"
@@ -11,7 +11,7 @@
 	icon_state = "nano_mani"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_DATA = 2)
 	rating = 2
-	materials = list(MAT_STEEL = 30)
+	materials_base = list(MAT_STEEL = 30)
 
 /obj/item/stock_parts/manipulator/pico
 	name = "pico-manipulator"
@@ -19,7 +19,7 @@
 	icon_state = "pico_mani"
 	origin_tech = list(TECH_MATERIAL = 5, TECH_DATA = 2)
 	rating = 3
-	materials = list(MAT_STEEL = 30)
+	materials_base = list(MAT_STEEL = 30)
 
 /obj/item/stock_parts/manipulator/hyper
 	name = "planck-manipulator"
@@ -27,7 +27,7 @@
 	icon_state = "hyper_mani"
 	origin_tech = list(TECH_MATERIAL = 6, TECH_DATA = 3, TECH_ARCANE = 1)
 	rating = 4
-	materials = list(MAT_STEEL = 30)
+	materials_base = list(MAT_STEEL = 30)
 
 /obj/item/stock_parts/manipulator/omni
 	name = "omni-manipulator"
@@ -35,4 +35,4 @@
 	icon_state = "omni_mani"
 	origin_tech = list(TECH_MATERIAL = 7, TECH_DATA = 4, TECH_PRECURSOR  = 1)
 	rating = 5
-	materials = list(MAT_STEEL = 30)
+	materials_base = list(MAT_STEEL = 30)

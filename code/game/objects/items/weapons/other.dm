@@ -126,7 +126,7 @@
 	damage_force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_NORMAL
-	materials = list(MAT_STEEL = 50)
+	materials_base = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
 /obj/item/cane/concealed
@@ -333,7 +333,7 @@
 	item_state = "radio"
 	throw_speed = 4
 	throw_range = 20
-	materials = list("metal" = 100
+	materials_base = list("metal" = 100
 	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 3)*/
 
 /obj/item/SWF_uplink
@@ -352,7 +352,7 @@
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4
 	throw_range = 20
-	materials = list(MAT_STEEL = 100)
+	materials_base = list(MAT_STEEL = 100)
 	origin_tech = list(TECH_MAGNET = 1)
 
 /obj/item/staff
@@ -413,7 +413,7 @@
 	icon_state = "power_mod"
 	item_state = "std_mod"
 	desc = "Heavy-duty switching circuits for power control."
-	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/item/module/power_control/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/multitool))

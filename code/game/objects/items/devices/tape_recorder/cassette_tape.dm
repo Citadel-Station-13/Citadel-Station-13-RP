@@ -19,7 +19,7 @@
 	icon_state = "tape_white"
 	item_state = "analyzer"
 	w_class = ITEMSIZE_TINY
-	materials = list(MAT_STEEL=20, "glass"=5)
+	materials_base = list(MAT_STEEL=20, "glass"=5)
 	damage_force = 1
 	throw_force = 0
 

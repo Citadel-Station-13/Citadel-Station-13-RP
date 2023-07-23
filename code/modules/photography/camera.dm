@@ -10,7 +10,7 @@
 	item_flags = ITEM_NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
-	materials = list(MAT_STEEL = 2000)
+	materials_base = list(MAT_STEEL = 2000)
 	var/pictures_max = 10
 	var/pictures_left = 10
 	var/on = 1

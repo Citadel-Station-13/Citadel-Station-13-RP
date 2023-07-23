@@ -66,7 +66,7 @@
 				"busy" = linked_lathe.busy,
 			)
 
-			var/list/materials = list()
+			var/list/materials_base = list()
 			for(var/M in linked_lathe.stored_materials)
 				var/amount = linked_lathe.stored_materials[M]
 				var/hidden_mat = FALSE
@@ -114,7 +114,7 @@
 				"busy" = linked_imprinter.busy,
 			)
 
-			var/list/materials = list()
+			var/list/materials_base = list()
 			for(var/M in linked_imprinter.stored_materials)
 				var/amount = linked_imprinter.stored_materials[M]
 				var/hidden_mat = FALSE

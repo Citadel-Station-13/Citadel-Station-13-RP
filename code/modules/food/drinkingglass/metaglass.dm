@@ -6,7 +6,7 @@
 	volume = 30
 	integrity_flags = INTEGRITY_ACIDPROOF
 	center_of_mass = list("x"=16, "y"=10)
-	materials = list(MAT_GLASS = 500)
+	materials_base = list(MAT_GLASS = 500)
 	icon = 'icons/obj/drinks.dmi'
 
 /obj/item/reagent_containers/food/drinks/metaglass/on_reagent_change()

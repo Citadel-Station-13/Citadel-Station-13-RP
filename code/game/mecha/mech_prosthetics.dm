@@ -16,7 +16,7 @@
 	var/species_types = list(SPECIES_HUMAN)
 	var/species = SPECIES_HUMAN
 
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 0,
 		MAT_GLASS = 0,
 		MAT_PLASTIC = 0,

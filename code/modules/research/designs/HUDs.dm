@@ -1,6 +1,6 @@
 /datum/design/science/hud
 	abstract_type = /datum/design/science/hud
-	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /datum/design/science/hud/generate_name(template)
 	return "HUD glasses prototype ([..()])"
@@ -37,7 +37,7 @@
 	design_name = "graviton visor"
 	id = "graviton_goggles"
 	req_tech = list(TECH_MAGNET = 5, TECH_ENGINEERING = 3, TECH_BLUESPACE = 3, TECH_PHORON = 3)
-	materials = list(MAT_PLASTEEL = 2000, MAT_GLASS = 3000, MAT_PHORON = 1500)
+	materials_base = list(MAT_PLASTEEL = 2000, MAT_GLASS = 3000, MAT_PHORON = 1500)
 	build_path = /obj/item/clothing/glasses/graviton
 */
 
@@ -45,5 +45,5 @@
 	design_name = "AR glasses"
 	id = "omnihud"
 	req_tech = list(TECH_MAGNET = 4, TECH_COMBAT = 3, TECH_BIO = 3)
-	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
+	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/clothing/glasses/omnihud
