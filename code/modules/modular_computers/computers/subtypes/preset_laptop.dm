@@ -98,3 +98,11 @@
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/pathfinder/install_default_programs()
 	..()
 	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/explohelmet())
+
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/searchandrescue
+	name = "\improper S&R's laptop"
+
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/searchandrescue/install_default_programs()
+	..()
+	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/explohelmet())
+	hard_drive.store_file(new/datum/computer_file/program/suit_sensors())

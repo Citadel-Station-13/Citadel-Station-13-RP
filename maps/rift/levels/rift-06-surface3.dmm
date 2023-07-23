@@ -2150,8 +2150,18 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "agL" = (
-/obj/item/folder/blue,
+/obj/item/folder/blue{
+	pixel_x = -11
+	},
 /obj/structure/table/wooden_reinforced,
+/obj/item/paper_bin{
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/obj/item/pen{
+	pixel_x = 3;
+	pixel_y = 4
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/pathfinder_office)
 "agN" = (
@@ -5907,8 +5917,6 @@
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "aqH" = (
-/obj/item/paper_bin,
-/obj/item/pen,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -5919,6 +5927,7 @@
 	pixel_y = 32
 	},
 /obj/structure/table/wooden_reinforced,
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/pathfinder,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
 "aqI" = (
@@ -9222,7 +9231,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "ayY" = (
-/obj/structure/bed/roller,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
@@ -9234,6 +9242,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/table/standard,
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/searchandrescue,
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/searchandrescue,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/explorer_prep)
 "aza" = (
@@ -14514,7 +14525,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "aOy" = (
-/obj/structure/medical_stand/anesthetic,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
@@ -14527,6 +14537,8 @@
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/machinery/light,
+/obj/structure/bed/roller,
+/obj/structure/medical_stand/anesthetic,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/explorer_prep)
 "aOB" = (
@@ -15259,6 +15271,43 @@
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
 	pixel_x = 30
+	},
+/obj/structure/table/steel,
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_y = 7
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_y = 7
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_y = 7
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_y = 7
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_y = 7
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration{
+	pixel_y = 7
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body{
+	pixel_y = -2
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
@@ -16243,6 +16292,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/industrial/outline,
 /obj/structure/closet/secure_closet/pilot,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "aTf" = (
@@ -18525,6 +18575,9 @@
 "aZT" = (
 /obj/item/binoculars,
 /obj/structure/table/wooden_reinforced,
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_y = 9
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/pathfinder_office)
 "aZU" = (

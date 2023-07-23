@@ -5836,9 +5836,7 @@
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/item/pinpointer{
-	pixel_x = -8
-	},
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/security/hos,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "dGm" = (
@@ -12386,71 +12384,87 @@
 	alpha = 255
 	},
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = 5
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = 5;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = 5;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = 5;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = 5;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = 5
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = 5
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = 5
-	},
 /obj/effect/floor_decal/corner/red/border,
+/obj/item/clothing/head/helmet{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security/body{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = -5;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = -5;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = -5;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = -5;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = -5;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = -5;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security/body{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security/body{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security/body{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security/body{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security/body{
+	pixel_x = 5;
+	pixel_y = -7
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "hPU" = (
@@ -17555,7 +17569,6 @@
 "kYo" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -19152,7 +19165,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "lUM" = (
@@ -26946,7 +26958,6 @@
 "qNS" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
@@ -28952,6 +28963,24 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_y = 16
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_y = 16
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_y = 16
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_y = 16
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_y = 16
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_y = 16
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "rVC" = (
@@ -29290,7 +29319,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "ske" = (
@@ -37322,18 +37350,18 @@
 	pixel_y = 4
 	},
 /obj/item/clothing/accessory/armor/legguards/navy{
-	pixel_y = -1;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = -1
 	},
 /obj/item/clothing/accessory/armor/legguards/navy{
-	pixel_y = -1;
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = -1
 	},
 /obj/item/clothing/accessory/armor/armguards/navy,
 /obj/item/clothing/accessory/armor/armguards/navy,
 /obj/item/clothing/accessory/armor/legguards/navy{
-	pixel_y = -1;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = -1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
@@ -38172,7 +38200,10 @@
 	},
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/item/paper/armory_info,
+/obj/item/paper/armory_info{
+	pixel_x = 18
+	},
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/security/warden,
 /turf/simulated/floor/carpet,
 /area/security/warden)
 "yeu" = (
