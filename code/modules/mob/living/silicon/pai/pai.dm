@@ -62,8 +62,7 @@
 		"Parrot" = "pai-parrot",
 		"Rabbit" = "pai-rabbit",
 		"Bear" = "pai-bear",
-		"Fennec" = "pai-fen",
-		"Fennec" = "pai-typezero",
+		"Fox" = "pai-fox",
 		)
 
 	var/global/list/possible_say_verbs = list(
@@ -224,6 +223,12 @@
 		transform_component.to_object_text = "neatly folds inwards, compacting down to a rectangular card"
 	else
 		transform_component.to_object_text = "neatly folds inwards, compacting down into their shell"
+
+	// if our shell is clothing, drop any accessories first
+	if(istype(shell, /obj/item/clothing))
+		var/obj/item/clothing/C = shell
+		for(var/obj/item/clothing/accessory/A in C.accessories)
+			C.remove_accessory(null, A)
 
 	// swap the shell, if the old shell is our card we keep it, otherwise we delete it because it's not important
 	shell = new_shell
