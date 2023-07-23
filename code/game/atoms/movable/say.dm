@@ -4,4 +4,6 @@
 //! Say Module
 //! Contains all relevant core procs for displaying (transmitting) messages, visible or audible.
 
+// todo: atom/movable /say()code rewrite
+
 #warn impl all

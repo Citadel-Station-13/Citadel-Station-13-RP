@@ -285,7 +285,7 @@
 	if(!recording)
 		return
 	var/datum/cassette_tape_iterator/write/writer = tape_iterator
-	if(speaking.id == LANGUAGE_ID_NOISE)
+	if(istype(speaking, /datum/language/audible_action))
 		writer.write_emote(msg, M.name)
 	else
 		writer.write_speech(msg, M.name, speaking.id)

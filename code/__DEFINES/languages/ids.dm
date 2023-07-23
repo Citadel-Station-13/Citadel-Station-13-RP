@@ -111,7 +111,7 @@
 #define LANGUAGE_ID_BIRD "bird"
 
 //? Abstract-ish
-#define LANGUAGE_ID_NOISE "noise"
+#define LANGUAGE_ID_AUDIBLE_ACTION "noise"
 #define LANGUAGE_ID_GIBBERISH "gibberish"
 
 //? Event

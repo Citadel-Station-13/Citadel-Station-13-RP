@@ -19,10 +19,12 @@
  * * message - the message. this might be preformatted HTML. this is the one you should edit.
  * * name - if specified, this is the real name of the person or entity that outputted. leave blank to omit name.
  * * face_ident - if specified, this is the facial identifier of the person or entity that outputted. leave blank to omit name. overrides name if used and target has recognition system.
- * * actor - (optional) atom that the message originated from
- * * remote - (optional) this message is not direct, and was relayed. defaults to FALSE.
+ * * actor - (optional) atom that the message originated from. you should not be reading name off of this.
+ * * remote - (optional) this message is not direct, and was relayed. defaults to FALSE. cameras count as this.
+ *
+ * @return successful see? mob logged out is still successful because the *mob* saw it, even if the *player* didn't get it.
  */
-/atom/proc/see(raw_message, message, name, voice_ident, atom/actor, remote)
+/atom/movable/proc/see(raw_message, message, name, voice_ident, atom/actor, remote)
 	#warn impl
 
 /**
@@ -36,8 +38,17 @@
  * @params
  * * raw_message - raw message. this might be preformatted HTML.
  * * message - the message. this might be preformatted HTML. this is the one you should edit.
+ * * name - if specified, this is the real voice name of the person or entity that emitted this message. leave blank to omit name.
+ * * voice_ident - if specified, this is the voice identifier of the person or entity that outputted. leave blank to omit name. overrides name if used and target has recognition system.
+ * * actor - (optional) atom that the message originated from. you should not be reading name off of this.
+ * * remote - (optional) this message is not direct, and was relayed. defaults to FALSE. radio counts as this.
+ * * lang - (optional) language used. this is /datum/language/audible_action if it's an audible emote.
+ * * spans - list of span classes to use. this will wrap the entire message without wrapping the name.
+ * * params - list of say parameters associated to value. this is for arbitrary behavior. this list should be read only, as it's a shared list.
+ *
+ * @return successful hear? mob logged out is still successful because the *mob* heard it, even if the *player* didn't get it.
  */
-/atom/proc/hear(raw_message)
+/atom/movable/proc/hear(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
 	#warn impl
 
 /**
@@ -50,5 +61,5 @@
  * @params
  * * raw_message - raw message. this might be preformatted HTML.
  */
-/atom/proc/narrate(raw_message)
+/atom/movable/proc/narrate(raw_message)
 	#warn impl
