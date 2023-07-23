@@ -397,8 +397,8 @@
 	if(tail_style && !tail_style.can_be_hidden)
 		return
 	hiding_tail = !hiding_tail
-	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_tail ? "showing" : "hiding"] your tail."))
-	update_icon()
+	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_tail ? "hiding" : "showing"] your tail."))
+	update_tail_showing()
 
 /mob/living/carbon/human/proc/hide_wings()
 	set name = "Toggle Hide Wings"
@@ -408,8 +408,8 @@
 	if(wing_style && !wing_style.can_be_hidden)
 		return
 	hiding_wings = !hiding_wings
-	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_wings ? "showing" : "hiding"] your wings."))
-	update_icon()
+	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_wings ? "hiding" : "showing"] your wings."))
+	update_wing_showing()
 
 /mob/living/carbon/human/proc/hide_horns()
 	set name = "Toggle Hide Horns"
@@ -419,5 +419,5 @@
 	if(horn_style && !horn_style.can_be_hidden)
 		return
 	hiding_horns = !hiding_horns
-	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_horns ? "showing" : "hiding"] your horns."))
-	update_icon()
+	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_horns ? "hiding" : "showing"] your horns."))
+	update_hair()

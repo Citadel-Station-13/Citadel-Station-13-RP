@@ -435,7 +435,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return
 
 	var/icon/horns_s = get_horns_overlay()
-	if(horns_s)
+	if(horns_s && !hiding_horns)
 		if(horns_s.Height() > face_standing.Height())
 			face_standing.Crop(1, 1, face_standing.Width(), horns_s.Height())
 		face_standing.Blend(horns_s, ICON_OVERLAY)

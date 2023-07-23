@@ -22,8 +22,6 @@ var/global/list/wing_icon_cache = list()
 	return null
 
 /mob/living/carbon/human/proc/get_horns_overlay()
-	if(hiding_horns)
-		return
 	if(horn_style && !(head && (head.inv_hide_flags & BLOCKHEADHAIR)))
 		var/icon/horn_s = new/icon("icon" = horn_style.icon, "icon_state" = horn_style.icon_state)
 		if(horn_style.do_colouration)
