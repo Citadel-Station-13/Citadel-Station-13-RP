@@ -26,3 +26,5 @@
 /obj/blob_act(obj/structure/blob/blob)
 	. = ..()
 	#warn impl
+
+#warn attack sounds for materials

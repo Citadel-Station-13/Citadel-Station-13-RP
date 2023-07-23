@@ -48,26 +48,76 @@
 
 /**
  * get the only material we're made out of, or first material part
+ *
+ * @return material instance
  */
 /obj/proc/get_primary_material()
 	if(material_parts == MATERIAL_DEFAULT_DISABLED)
-		return null
-	return islist(material_parts)? material_parts[1] : material_parts
+		. = null
+	else
+		. = islist(material_parts)? material_parts[1] : material_parts
+	if(isnull(.))
+		return
+	return SSmaterials.resolve_material(.)
+
+/**
+ * get the only material we're made out of, or first material part
+ */
+/obj/proc/get_primary_material_id()
+	if(material_parts == MATERIAL_DEFAULT_DISABLED)
+		. = null
+	else
+		. = islist(material_parts)? material_parts[1] : material_parts
+
+/**
+ * get material part
+ *
+ * @return material instance
+ */
+/obj/proc/get_material_part(part)
+	if(material_parts == MATERIAL_DEFAULT_DISABLED)
+		. = null
+	if(islist(material_parts))
+		. = material_parts[part]
+	else
+		. = (part == MATERIAL_PART_DEFAULT)? material_parts : null
+	if(isnull(.))
+		return
+	return SSmaterials.resolve_material(.)
 
 /**
  * get material part
  */
-/obj/proc/get_material_part(part)
+/obj/proc/get_material_part_id(part)
 	if(material_parts == MATERIAL_DEFAULT_DISABLED)
-		return null
+		. = null
 	if(islist(material_parts))
-		return material_parts[part]
-	return (part == MATERIAL_PART_DEFAULT)? material_parts : null
+		. = material_parts[part]
+	else
+		. = (part == MATERIAL_PART_DEFAULT)? material_parts : null
+
+/**
+ * get material parts
+ *
+ * @return keys to instances
+ */
+/obj/proc/get_material_parts()
+	if(islist(material_parts))
+		var/list/resolving = list()
+		for(var/key in material_parts)
+			resolving[key] = isnull(material_parts[key])? null : SSmaterials.resolve_material(material_parts[key])
+		return resolving
+	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
+		return list()
+	else
+		if(isnull(material_parts))
+			return list(MATERIAL_PART_DEFAULT = null)
+		return list(MATERIAL_PART_DEFAULT = SSmaterials.resolve_material(material_parts))
 
 /**
  * get material parts
  */
-/obj/proc/get_material_parts()
+/obj/proc/get_material_part_ids()
 	if(islist(material_parts))
 		return material_parts.Copy()
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)

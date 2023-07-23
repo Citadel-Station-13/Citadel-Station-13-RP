@@ -24,6 +24,7 @@
 	sheet_plural_name = "planks"
 	table_icon_base = "wood"
 	tgui_icon_key = "plank"
+	sound_melee_brute = 'sound/effects/woodcutting.ogg'
 
 /datum/material/wood/log
 	id = "log"

@@ -184,6 +184,12 @@
 	/// economic category for this
 	var/economic_category_material = ECONOMIC_CATEGORY_MATERIAL_DEFAULT
 
+	//? Sounds
+	/// melee sound on blunt force - getsfx compatible
+	var/sound_melee_brute = 'sound/weapons/smash.ogg'
+	/// melee sound on burn damage - getsfx compatible
+	var/sound_melee_burn = 'sound/items/Welder.ogg'
+
 	//? TGUI
 	/// tgui icon key in icons/interface/materials.dm
 	var/tgui_icon_key = "unknown"

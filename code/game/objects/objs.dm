@@ -122,7 +122,7 @@
 		else
 			// preprocess
 			materials_base = SSmaterials.preprocess_kv_keys_to_ids(materials_base)
-			materials_base = typelist(NAMEOF(src, materials), materials_base)
+			materials_base = typelist(NAMEOF(src, materials_base), materials_base)
 	// cache material costs if it's not modified
 	if(!islist(material_costs) && !(obj_flags & OBJ_MATERIAL_COSTS_MODIFIED))
 		if(has_typelist(material_costs))
@@ -420,18 +420,10 @@
 	. = ..()
 	if(integrity_examine)
 		. += examine_integrity(user)
-	if(materials)
-		if(!materials.len)
-			return
-		var/materials_list
-		var/i = 1
-		while(i<materials.len)
-			materials_list += lowertext(materials[i])
-			materials_list += ", "
-			i++
-		materials_list += materials[i]
-		. += "<u>It is made out of [materials_list]</u>."
-	return
+	var/list/parts = get_material_parts()
+	for(var/key in parts)
+		var/datum/material/mat = parts[key]
+		. += "Its [key] is made out of [mat.display_name]"
 
 /obj/examine_integrity(mob/user)
 	. = list()

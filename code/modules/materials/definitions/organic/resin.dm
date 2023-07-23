@@ -14,6 +14,7 @@
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
 	stack_type = /obj/item/stack/material/resin
+	sound_melee_brute = 'sound/effects/attackblob.ogg'
 
 /datum/material/resin/can_open_material_door(var/mob/living/user)
 	var/mob/living/carbon/M = user

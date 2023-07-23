@@ -25,7 +25,7 @@
 /datum/material/alienalloy/dungeonium
 	id = "dungeonium"
 	name = "dungeonium"
-	display_name = "ultra-durable"
+	display_name = "ultra-durable metal"
 	icon_base = 'icons/turf/walls/dungeon.dmi'
 	icon_colour = "#FFFFFF"
 
