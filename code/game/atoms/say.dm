@@ -6,74 +6,14 @@
 
 #warn impl all
 
-/**
- * old visible message implementation, translated to work with new code.
- *
- * please try not to use this.
- */
-/atom/proc/visible_message(message, self_message, blind_message, range)
-	#warn impl
+/atom/proc/visible_action_dual(hard_range, soft_range, visible_hard, visible_soft, list/exclude_cache, visible_self)
 
-/**
- * old audible message implementation, translated to work with new code
- *
- * please try not to use this
- */
-/atom/proc/audible_message(message, deaf_message, range, datum/language/lang)
-	#warn impl
+/atom/proc/audible_action_dual(hard_range, soft_range, audible_hard, audible_soft, list/exclude_cache, audible_self)
 
-//* Action feedback module
-//* Handles giving chat feedback for actions performed by an atom,
-//* whether to the atom, to the target, or to everyone around
+/atom/proc/full_action_dual(hard_range, soft_range, visible_hard, audible_hard, visible_soft, audible_soft, list/exclude_cache, visible_self, audible_self)
 
-/**
- * gives feedback for an action we're doing and makes it visible for everyone around us too.
- *
- * @params
- * * target - target atom
- * * hard_range - how far to display hard message; defaults to MESSAGE_RANGE_COMBAT_LOUD. if doesn't exist we use soft.
- * * soft_range - how far to display soft message; defaults to MESSAGE_RANGE_COMBAT_LOUD. overrides hard range if smaller.
- * * visible_hard - hard message. if doesn't exist we use soft message.
- * * audible_hard - what blind people hear when inside hard range. if doesn't exist we use soft message.
- * * visible_soft - soft message.
- * * audible_soft - what blind people hear when inside soft range (overridden by self and them if specified)
- * * visible_self - what we see
- * * audible_self - override if self is blind. if null, defaults to 'self.
- * * visible_them - what the target see
- * * audible_them - what the target sees if they are blind. if null, defaults to 'them'.
- */
-/atom/proc/visible_action_dual(atom/target, hard_range = MESSAGE_RANGE_COMBAT_LOUD, soft_range, visible_hard, audible_hard, audible_soft, visible_soft, visible_self, audible_self, visible_them, audible_them)
-	var/list/viewing
-	var/viewing_range = max(soft_range, hard_range)
-	//! LEGACY
-	if(isbelly(loc))
-		var/obj/belly/B = loc
-		viewing = B.effective_emote_hearers()
-	else
-		viewing = get_hearers_in_view(viewing_range, src)
-	//! end
-	var/hard_visible = visible_hard || visible_soft
-	var/hard_audible = audible_hard || audible_soft
-	for(var/atom/movable/AM as anything in viewing)
-		if(get_dist(AM, src) <= hard_range)
-			if(ismob(AM))
-				var/mob/M = AM
-				if(visible_self && (M == src))
-					M.show_message(visible_self, 1, audible_hard, 2)
-				else if((M.see_invisible >= invisibility) && M.can_see_plane(plane))
-					M.show_message(hard_visible, 1, hard_audible, 2)
-				else if(hard_audible)
-					M.show_message(hard_audible, 2)
-			else
-				AM.show_message(hard_visible, 1, hard_audible, 2)
-		else
-			if(ismob(AM))
-				var/mob/M = AM
-				if(visible_self && (M == src))
-					M.show_message(visible_self, 1, audible_hard, 2)
-				else if((M.see_invisible >= invisibility) && M.can_see_plane(plane))
-					M.show_message(visible_soft, 1, audible_soft, 2)
-				else if(audible_soft)
-					M.show_message(audible_soft, 2)
-			else
-				AM.show_message(visible_soft, 1, audible_soft, 2)
+/atom/proc/visible_action(range, message, list/exclude_cache, self)
+
+/atom/proc/audible_action(range, message, list/exclude_cache, self)
+
+/atom/proc/full_action(range, visible, audible, list/exclude_cache, self)

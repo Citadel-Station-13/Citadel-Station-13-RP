@@ -287,7 +287,7 @@
 		return FALSE
 	if(INTERACTING_WITH_FOR(climber, src, INTERACTING_FOR_CLIMB))
 		return FALSE
-	climber.visible_action_dual(SPAN_WARNING("[climber] starts climbing onto \the [src]!"), src, MESSAGE_RANGE_COMBAT_LOUD)
+	climber.visible_action_feedback(SPAN_WARNING("[climber] starts climbing onto \the [src]!"), src, MESSAGE_RANGE_COMBAT_LOUD)
 	START_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
 	LAZYDISTINCTADD(climbing, climber)
 	. = do_after(climber, climb_delay * delay_mod, src, mobility_flags = MOBILITY_CAN_MOVE | MOBILITY_CAN_STAND | MOBILITY_IS_STANDING)
