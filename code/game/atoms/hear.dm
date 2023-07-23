@@ -12,7 +12,7 @@
  * called on things with ATOM_HEAR flag.
  *
  * @params
- * * message - raw message of what we should see. this might already be HTML-formatted by the sender.
+ * * e_args - event_args of the visible message [/datum/event_args/visible_message]
  */
 /atom/proc/see(message)
 	#warn impl
@@ -23,7 +23,7 @@
  * called on things with ATOM_HEAR flag.
  *
  * @params
- * * message - raw message of what we should hear. this might already be HTML-formatted by the sender.
+ * * e_args - event_args of the audible message [/datum/event_args/audible_message]
  */
 /atom/proc/hear(message)
 	#warn impl
