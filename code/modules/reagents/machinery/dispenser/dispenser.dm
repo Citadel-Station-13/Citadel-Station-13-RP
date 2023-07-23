@@ -266,7 +266,7 @@
 			if(!inserted)
 				return TRUE
 			usr.grab_item_from_interacted_with(inserted, src)
-			usr.visible_action_feedback(
+			usr.visible_action_dual(
 				target = src,
 				visible_soft = SPAN_NOTICE("[usr] ejects [inserted] from [src]."),
 				soft_range = MESSAGE_RANGE_INVENTORY_SOFT,
@@ -288,7 +288,7 @@
 				return TRUE
 			remove_cartridge(cart, usr)
 			usr.grab_item_from_interacted_with(cart, src)
-			usr.visible_action_feedback(
+			usr.visible_action_dual(
 				target = src,
 				visible_soft = SPAN_NOTICE("[usr] removes [cart] from [src]."),
 				soft_range = MESSAGE_RANGE_CONSTRUCTION,
@@ -301,7 +301,7 @@
 			if(!cell)
 				return TRUE
 			usr.grab_item_from_interacted_with(cell, src)
-			usr.visible_action_feedback(
+			usr.visible_action_dual(
 				target = src,
 				visible_soft = SPAN_NOTICE("[usr] removes [cell] from [src]."),
 				soft_range = MESSAGE_RANGE_CONSTRUCTION,
@@ -392,7 +392,7 @@
 			if(!insert_cartridge(I))
 				I.forceMove(drop_location())
 				return CLICKCHAIN_DO_NOT_PROPAGATE
-			user.visible_action_feedback(
+			user.visible_action_dual(
 				target = src,
 				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
 				soft_range = MESSAGE_RANGE_CONSTRUCTION,
@@ -409,7 +409,7 @@
 				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			LAZYADD(synthesizers, synth)
-			user.visible_action_feedback(
+			user.visible_action_dual(
 				target = src,
 				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
 				soft_range = MESSAGE_RANGE_CONSTRUCTION,
@@ -425,7 +425,7 @@
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			cell = I
 			component_parts |= cell
-			user.visible_action_feedback(
+			user.visible_action_dual(
 				target = src,
 				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
 				soft_range = MESSAGE_RANGE_CONSTRUCTION,
@@ -451,14 +451,14 @@
 		// process swap?
 		if(inserted)
 			investigate_log("[key_name(user)] ejected [ref_name_path(inserted)]", INVESTIGATE_REAGENTS)
-			user.visible_action_feedback(
+			user.visible_action_dual(
 				target = src,
 				visible_soft = SPAN_NOTICE("[user] quickly swaps [src]'s [inserted] for [I]."),
 				soft_range = MESSAGE_RANGE_INVENTORY_SOFT,
 			)
 			user.put_in_hands_or_drop(inserted)
 		else
-			user.visible_action_feedback(
+			user.visible_action_dual(
 				target = src,
 				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
 				soft_range = MESSAGE_RANGE_INVENTORY_SOFT,

@@ -201,6 +201,7 @@
 			return TRUE
 	. = !density
 
+#warn ugh
 /obj/proc/hear_talk(mob/M as mob, text, verb, datum/language/speaking)
 	if(talking_atom)
 		talking_atom.catchMessage(text, M)
@@ -212,9 +213,11 @@
 		*/
 	return
 
+#warn ugh
 /obj/proc/hear_signlang(mob/M as mob, text, verb, datum/language/speaking) // Saycode gets worse every day.
 	return FALSE
 
+#warn ugh
 /obj/proc/see_emote(mob/M as mob, text, var/emote_type)
 	return
 
@@ -284,7 +287,7 @@
 		return FALSE
 	if(INTERACTING_WITH_FOR(climber, src, INTERACTING_FOR_CLIMB))
 		return FALSE
-	climber.visible_action_feedback(SPAN_WARNING("[climber] starts climbing onto \the [src]!"), src, MESSAGE_RANGE_COMBAT_LOUD)
+	climber.visible_action_dual(SPAN_WARNING("[climber] starts climbing onto \the [src]!"), src, MESSAGE_RANGE_COMBAT_LOUD)
 	START_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
 	LAZYDISTINCTADD(climbing, climber)
 	. = do_after(climber, climb_delay * delay_mod, src, mobility_flags = MOBILITY_CAN_MOVE | MOBILITY_CAN_STAND | MOBILITY_IS_STANDING)
