@@ -13512,9 +13512,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "lRq" = (
-/obj/structure/curtain/black{
-	anchored = 1
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "lRv" = (
