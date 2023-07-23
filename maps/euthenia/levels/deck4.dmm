@@ -126,7 +126,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab/containment_two)
 "bg" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/anomaly_lab/containment_two)
 "bi" = (
 /turf/simulated/wall/r_wall,
@@ -1464,7 +1464,7 @@
 /area/maintenance/deck_four/aft/port)
 "ko" = (
 /obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
+/turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/research)
 "kr" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -1488,7 +1488,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "kw" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/research)
 "ky" = (
 /obj/machinery/button/crematorium{
@@ -1685,7 +1685,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/maintenance/deck_four)
 "mm" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/anomaly_lab)
 "mn" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -2830,6 +2830,9 @@
 	},
 /turf/space,
 /area/space)
+"ur" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/rnd/secure_storage/critical)
 "ux" = (
 /obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled/monotile,
@@ -2985,10 +2988,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_one)
 "vE" = (
-/obj/machinery/door/airlock/glass_research{
-	name = "Research Entrance";
-	req_access = list(47)
-	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/deck_four/aft/starboard)
@@ -3039,18 +3038,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/gateway)
-"vZ" = (
-/obj/machinery/door/airlock/glass_research{
-	name = "XenoArcheology"
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/anomaly_lab)
 "wa" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/gateway)
+"wf" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/rnd/secure_storage/critical/vault1)
 "wi" = (
 /obj/machinery/gateway,
 /turf/simulated/floor/reinforced,
@@ -3511,6 +3507,9 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/gateway)
+"AM" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/rnd/secure_storage/critical/records)
 "AN" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
@@ -4078,6 +4077,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
+"Fb" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/rnd/research/testingrange)
 "Fe" = (
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
@@ -4428,6 +4430,9 @@
 /obj/structure/lattice,
 /turf/space,
 /area/space)
+"Hu" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/rnd/anomaly_lab/containment_one)
 "Hv" = (
 /obj/machinery/camera/network/command,
 /turf/simulated/floor/greengrid,
@@ -5486,6 +5491,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/rnd/secure_storage/critical)
+"PR" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/rnd/secure_storage/critical/vault2)
 "PS" = (
 /obj/machinery/power/apc/direction_bump/north,
 /turf/simulated/floor/carpet/bcarpet,
@@ -5756,6 +5764,9 @@
 "Sk" = (
 /turf/simulated/wall,
 /area/rnd/outpost/underground)
+"Sl" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/maintenance/deck_four/aft/starboard)
 "Ss" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -5803,7 +5814,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
 "Sw" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/secure_storage/lower)
 "Sy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -5913,9 +5924,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
 "Tj" = (
-/obj/machinery/door/airlock/glass_research{
-	name = "XenoArcheology"
-	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
@@ -12631,15 +12639,15 @@ qk
 qk
 qQ
 qk
-gk
-gk
-gk
-gk
-gk
-bi
-bi
-bi
-bi
+wf
+wf
+wf
+wf
+wf
+PR
+PR
+PR
+PR
 bi
 bi
 Ji
@@ -12825,15 +12833,15 @@ qQ
 qQ
 qQ
 qk
-gk
+wf
 Bt
 jp
 Bt
-gk
+wf
 ty
 bR
 ty
-bi
+PR
 bi
 bi
 Ji
@@ -13019,15 +13027,15 @@ qk
 qk
 qk
 qk
-gk
+wf
 BV
 zB
 Is
-gk
+wf
 Bo
 cm
 DB
-bi
+PR
 bi
 Ji
 Ji
@@ -13213,15 +13221,15 @@ qk
 qk
 qk
 qk
-gk
+wf
 Ne
 Ox
 Bt
-gk
+wf
 Uf
 jL
 ty
-bi
+PR
 bi
 bi
 Ji
@@ -13407,16 +13415,16 @@ Sw
 Sw
 Sw
 Sw
-gk
-gk
+wf
+wf
 Ch
-gk
-gk
-bi
+wf
+wf
+PR
 AS
-bi
-bi
-bi
+PR
+PR
+PR
 bi
 Ji
 Ji
@@ -13610,7 +13618,7 @@ eM
 Aq
 yr
 JQ
-VX
+ur
 VX
 kL
 kL
@@ -13804,7 +13812,7 @@ tg
 jD
 jD
 pD
-VX
+ur
 VX
 kL
 kL
@@ -13991,14 +13999,14 @@ VN
 Sw
 OE
 qI
-Vc
-Vc
-Vc
+AM
+AM
+AM
 wQ
-Vc
-Vc
-Vc
-Vc
+AM
+AM
+AM
+AM
 Vc
 kL
 kL
@@ -14173,9 +14181,9 @@ Ji
 Ji
 Ji
 kL
-YE
-YE
-YE
+Sl
+Sl
+Sl
 sX
 Sw
 Sw
@@ -14185,13 +14193,13 @@ Sw
 Sw
 ca
 eL
-Vc
+AM
 qW
 rK
 vh
 rK
 qW
-Vc
+AM
 Vc
 Vc
 Ji
@@ -14367,7 +14375,7 @@ py
 py
 py
 kL
-YE
+Sl
 DR
 Zn
 aG
@@ -14379,13 +14387,13 @@ aG
 XO
 Br
 Da
-Vc
+AM
 WA
 bk
 SU
 jJ
 bN
-Vc
+AM
 Vc
 Vc
 Ji
@@ -14573,13 +14581,13 @@ DR
 Xv
 jD
 tC
-Vc
+AM
 tf
 rK
 NR
 rK
 WA
-Vc
+AM
 Vc
 Ji
 Ji
@@ -14759,21 +14767,21 @@ RR
 LD
 HW
 Sf
-YE
+Sl
 jR
 ot
 VK
 jR
-VX
+ur
 Kv
 PL
-Vc
+AM
 iB
 RH
 IB
 UZ
 Su
-Vc
+AM
 Vc
 Vc
 kL
@@ -14949,25 +14957,25 @@ Za
 Za
 Za
 kL
-YE
+Sl
 LD
 HW
 Sf
-YE
+Sl
 JF
 ot
 OR
 JF
-VX
+ur
 cR
-VX
-Vc
-Vc
-Vc
-Vc
-Vc
-Vc
-Vc
+ur
+AM
+AM
+AM
+AM
+AM
+AM
+AM
 Vc
 Vc
 kL
@@ -15143,18 +15151,18 @@ Ji
 Ji
 Ji
 kL
-YE
+Sl
 LD
 HW
 Sf
-YE
+Sl
 Ld
 fL
 tA
 PK
-VX
-VX
-VX
+ur
+ur
+ur
 YE
 YE
 YE
@@ -15337,16 +15345,16 @@ YE
 YE
 YE
 YE
-YE
+Sl
 LD
 DR
 Sf
-YE
+Sl
 PK
 Ro
 YZ
 PK
-YE
+Sl
 qk
 YE
 YE
@@ -15531,16 +15539,16 @@ qQ
 qQ
 qQ
 qQ
-YE
+Sl
 LD
 DR
 Sf
-YE
-YE
-YE
-YE
-YE
-YE
+Sl
+Sl
+Sl
+Sl
+Sl
+Sl
 qk
 qk
 qk
@@ -15729,7 +15737,7 @@ vE
 yN
 DR
 Sf
-YE
+Sl
 qk
 qk
 qk
@@ -15923,7 +15931,7 @@ vE
 ei
 DR
 Sf
-YE
+Sl
 qk
 qk
 qk
@@ -16113,11 +16121,11 @@ qQ
 qQ
 qQ
 qQ
-YE
+Sl
 LD
 DR
 Sf
-YE
+Sl
 qk
 qk
 qk
@@ -16311,7 +16319,7 @@ mm
 LD
 DR
 Sf
-YE
+Sl
 qk
 qk
 qk
@@ -16505,7 +16513,7 @@ mm
 LD
 DR
 Sf
-YE
+Sl
 qk
 qk
 qk
@@ -16699,7 +16707,7 @@ mm
 LD
 DR
 Sf
-YE
+Sl
 qk
 qk
 qk
@@ -17471,7 +17479,7 @@ IA
 LA
 LA
 LA
-vZ
+LA
 LD
 DR
 IJ
@@ -18432,7 +18440,7 @@ YE
 YE
 di
 qk
-Ec
+Hu
 mm
 mm
 mm
@@ -18451,10 +18459,10 @@ kw
 Fk
 kw
 kw
-uX
+Fb
 qL
 qL
-uX
+Fb
 kw
 kw
 kw
@@ -18626,7 +18634,7 @@ YE
 YE
 ok
 qk
-Ec
+Hu
 vD
 hz
 Ic
@@ -18638,17 +18646,17 @@ tM
 mm
 LD
 Ve
-YE
+Sl
 qk
 qk
 qk
 JP
 qk
 qk
-uX
+Fb
 eC
 eC
-uX
+Fb
 qk
 qk
 qk
@@ -18820,7 +18828,7 @@ YE
 hc
 QD
 qk
-Ec
+Hu
 yg
 fd
 fi
@@ -18832,17 +18840,17 @@ AN
 mm
 LD
 Ve
-YE
+Sl
 qk
 qk
 qk
 JP
 qk
 qk
-uX
+Fb
 eC
 OA
-uX
+Fb
 qk
 qk
 qk
@@ -19014,7 +19022,7 @@ YE
 YE
 Xr
 Xr
-Ec
+Hu
 Qr
 dr
 Lk
@@ -19026,26 +19034,26 @@ Mn
 Tj
 Ue
 Ve
-YE
+Sl
 qk
 qk
 qk
 JP
 qk
-uX
-uX
+Fb
+Fb
 qL
 qL
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
 uX
 uX
 Za
@@ -19208,7 +19216,7 @@ YE
 YE
 qo
 qo
-Ec
+Hu
 Ec
 Ec
 Ec
@@ -19220,13 +19228,13 @@ eq
 Im
 LD
 Ve
-YE
+Sl
 qk
 qk
 qk
 JP
 qk
-uX
+Fb
 AV
 eC
 eC
@@ -19239,7 +19247,7 @@ Eh
 cW
 cW
 cW
-uX
+Fb
 uX
 uX
 uX
@@ -19414,13 +19422,13 @@ Mn
 Tj
 Ue
 OD
-YE
+Sl
 qk
 qk
 qk
 JP
 qk
-uX
+Fb
 SK
 eC
 eC
@@ -19433,7 +19441,7 @@ ZZ
 cW
 oH
 cW
-uX
+Fb
 uX
 uX
 uX
@@ -19608,13 +19616,13 @@ AN
 mm
 LD
 OD
-YE
+Sl
 qk
 qk
 qk
 JP
 qk
-uX
+Fb
 JH
 eC
 xp
@@ -19627,7 +19635,7 @@ cW
 cW
 cW
 cW
-uX
+Fb
 uX
 uX
 uX
@@ -19802,13 +19810,13 @@ GG
 mm
 LD
 OD
-YE
+Sl
 qk
 qk
 qk
 JP
 qk
-uX
+Fb
 YK
 eC
 eC
@@ -19821,7 +19829,7 @@ ZZ
 cW
 bU
 cW
-uX
+Fb
 uX
 uX
 uX
@@ -19994,15 +20002,15 @@ mm
 mm
 mm
 mm
-YE
+Sl
 Rq
-YE
+Sl
 qk
 qk
 qk
 JP
 qk
-uX
+Fb
 ZL
 eC
 Wb
@@ -20015,7 +20023,7 @@ cW
 cW
 cW
 cW
-uX
+Fb
 uX
 uX
 uX
@@ -20209,7 +20217,7 @@ ZZ
 cW
 bU
 cW
-uX
+Fb
 uX
 uX
 uX
@@ -20390,7 +20398,7 @@ qk
 qk
 qk
 qB
-uX
+Fb
 Yk
 eC
 BO
@@ -20403,7 +20411,7 @@ cW
 cW
 cW
 cW
-uX
+Fb
 uX
 uX
 uX
@@ -20584,7 +20592,7 @@ qk
 qk
 qk
 WG
-uX
+Fb
 Eq
 eC
 eC
@@ -20597,7 +20605,7 @@ ZZ
 cW
 bU
 cW
-uX
+Fb
 uX
 uX
 uX
@@ -20778,7 +20786,7 @@ qk
 qk
 qk
 qk
-uX
+Fb
 Tb
 EG
 VY
@@ -20791,7 +20799,7 @@ eJ
 cW
 cW
 cW
-uX
+Fb
 uX
 uX
 uX
@@ -20972,20 +20980,20 @@ qk
 qk
 qk
 qk
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
 uX
 uX
 Za
