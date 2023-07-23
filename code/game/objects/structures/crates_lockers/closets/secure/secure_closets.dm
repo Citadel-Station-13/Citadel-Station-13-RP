@@ -2,10 +2,10 @@
 	name = "secure locker"
 	desc = "It's an immobile card-locked storage unit."
 	closet_appearance = /singleton/closet_appearance/secure_closet
-	density = 1
-	opened = 0
-	wall_mounted = 0 //never solid (You can always pass over it)
-	health = 200
+	density = TRUE
+	wall_mounted = FALSE //never solid (You can always pass over it)
+	integrity = 200
+	integrity_max = 200
 	secure = TRUE
 	locked = TRUE
 

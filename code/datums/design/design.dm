@@ -134,17 +134,22 @@
  * This is called even before the fabricator can touch the item.
  *
  * @params
- * * where - where to put the finished product
- * * fabricator - the lathe printing the product
+ * * where - where to print
+ * * amount - how many to print
+ * * material_parts - keys to ids
+ * * ingredient_parts - ingredients
+ * * reagent_parts - keys to ids
+ * * cost_multiplier - the cost multiplier used to print it
  *
  * @return created atom, or list of created atoms.
  */
 /datum/design/proc/print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
+	var/list/resolved_material_parts = SSmaterials.preprocess_kv_values_to_instances(material_parts)
 	if(is_stack)
 		var/stack_size = max_stack
 		if(stack_size >= amount)
 			. = new build_path(where, amount)
-			on_print(., material_parts, ingredient_parts, reagent_parts, cost_multiplier)
+			on_print(., resolved_material_parts, ingredient_parts, reagent_parts, cost_multiplier)
 		else
 			. = list()
 			var/safety = 0
@@ -157,33 +162,30 @@
 				made = new build_path(where, making)
 				left -= making
 				. += made
-				on_print(made, material_parts, ingredient_parts, reagent_parts, cost_multiplier)
+				on_print(made, resolved_material_parts, ingredient_parts, reagent_parts, cost_multiplier)
 	else
 		if(amount > 50)
 			STACK_TRACE("way too high")
 		if(amount == 1)
 			. = new build_path(where)
-			on_print(., material_parts, ingredient_parts, reagent_parts, cost_multiplier)
+			on_print(., resolved_material_parts, ingredient_parts, reagent_parts, cost_multiplier)
 		else
 			. = list()
 			var/atom/made
 			for(var/i in 1 to min(amount, 50))
 				made = new build_path(where)
-				on_print(made, material_parts, ingredient_parts, reagent_parts, cost_multiplier)
+				on_print(made, resolved_material_parts, ingredient_parts, reagent_parts, cost_multiplier)
 				. += made
 
-/datum/design/proc/on_print(atom/created, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
+/**
+ * material parts gets resolved to instances
+ */
+/datum/design/proc/on_print(atom/created, list/resolved_material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
 	if(isobj(created))
 		var/obj/O = created
-		var/list/effective_materials = materials_base.Copy()
-		for(var/key in material_costs)
-			effective_materials[material_parts[key]] += src.material_costs[key]
-		if(cost_multiplier != 1)
-			for(var/key in effective_materials)
-				effective_materials[key] *= cost_multiplier
-		O.materials = effective_materials
-		O.set_material_parts(material_parts)
-		#warn how to deal with base materials vs part costs?
+		O.set_materials_base(materials_base)
+		O.set_material_parts(resolved_material_parts)
+		O.material_multiplier = cost_multiplier
 
 /**
  * called when a lathe prints a design, instead of print()

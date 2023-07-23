@@ -17,4 +17,14 @@
  * * materials - material instances associated to significance.
  */
 /datum/controller/subsystem/materials/proc/combined_materials_armor(list/datum/material/materials)
-	CRASH("not implemented")
+	#warn impl
+
+/**
+ * combines multiple material armors into one
+ * used for reinforcing / whatevers
+ *
+ * @params
+ * * materials - material instances associated to significance.
+ */
+/datum/controller/subsystem/materials/proc/reinforcing_materials_armor(list/datum/material/materials)
+	#warn impl

@@ -37,7 +37,6 @@
 		if(integrity == integrity_max)
 			user.action_feedback(SPAN_WARNING("[src] does not need repairs!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-
 		user.visible_action_feedback(
 			target = src,
 			hard_range = MESSAGE_RANGE_CONSTRUCTION,

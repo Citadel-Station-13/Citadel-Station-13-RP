@@ -190,27 +190,25 @@
 				qdel(src)
 				visible_message("<span class='danger'>The planks splinter and disintegrate beneath the weight!</span>")
 			if(6 to 50)
-				take_damage(rand(10,20))
+				inflict_atom_damage(
+					rand(10, 20),
+					flag = ARMOR_MELEE,
+				)
 				visible_message("<span class='danger'>The planks creak and groan as they're crossed.</span>")
 			if(51 to 100)
 				return
 
-/obj/structure/catwalk/plank/take_damage_legacy(amount)
-	health -= amount
-	update_icon()
-	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
-		Destroy()
-
-/obj/structure/catwalk/plank/update_icon()
-	if(health > 75)
+/obj/structure/catwalk/plank/update_icon_state()
+	var/perc = percent_integrity()
+	if(perc >= 0.75)
 		icon_state = "[initial(icon_state)]"
-	if(health < 75)
+	else if(perc >= 0.5)
 		icon_state = "[initial(icon_state)]_scuffed"
-	if(health < 50)
+	else if(perc >= 0.25)
 		icon_state = "[initial(icon_state)]_rickety"
-	if(health < 25)
+	else
 		icon_state = "[initial(icon_state)]_dangerous"
+	return ..()
 
 //Ashlander Catwalks, for bridges?
 /obj/structure/catwalk/ashlander

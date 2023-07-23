@@ -797,7 +797,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	for(var/datum/unarmed_attack/attack in unarmed_attacks)
 		if(!attack.is_usable(H))
 			continue
-		if(attack.damagE_mode & DAMAGE_MODE_SHRED)
+		if(attack.damage_mode & DAMAGE_MODE_SHRED)
 			return 1
 
 	return 0

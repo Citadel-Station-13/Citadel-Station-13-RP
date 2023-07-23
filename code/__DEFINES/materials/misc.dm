@@ -54,9 +54,6 @@
 #define MATERIAL_BRITTLE	0x2
 #define MATERIAL_PADDING	0x4
 
-/// Amount table damage is multiplied by if it is made of a brittle material (e.g. glass)
-#define TABLE_BRITTLE_MATERIAL_MULTIPLIER 4
-
 #define SHEET_MATERIAL_AMOUNT 2000
 
 //* Material - Misc IDs/Keys/Identifiers

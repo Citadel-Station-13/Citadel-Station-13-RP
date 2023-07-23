@@ -5,7 +5,7 @@
 	flags = MATERIAL_BRITTLE
 	icon_colour = "#00E1FF"
 	opacity = 0.3
-	integrity = 100
+	relative_integrity = 0.25
 	shard_type = SHARD_SHARD
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
 	hardness = 30
@@ -106,8 +106,8 @@
 	stack_type = /obj/item/stack/material/glass/reinforced
 	flags = MATERIAL_BRITTLE
 	icon_colour = "#00E1FF"
-	opacity = 0.3
-	integrity = 100
+	opacity = 0.
+	relative_integrity = 0.5
 	shard_type = SHARD_SHARD
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
 	hardness = 40
@@ -127,7 +127,7 @@
 	display_name = "borosilicate glass"
 	stack_type = /obj/item/stack/material/glass/phoronglass
 	flags = MATERIAL_BRITTLE
-	integrity = 100
+	relative_integrity = 1
 	icon_colour = "#FC2BC5"
 	stack_origin_tech = list(TECH_MATERIAL = 4)
 	window_options = list("One Direction" = 1, "Full Window" = 2)
@@ -143,6 +143,7 @@
 	display_name = "reinforced borosilicate glass"
 	stack_type = /obj/item/stack/material/glass/phoronrglass
 	stack_origin_tech = list(TECH_MATERIAL = 5)
+	relative_integrity = 1.25
 	composite_material = list() //todo
 	window_options = list("One Direction" = 1, "Full Window" = 2)
 	created_window = /obj/structure/window/phoronreinforced

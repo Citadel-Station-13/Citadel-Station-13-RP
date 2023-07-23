@@ -12,8 +12,8 @@
 
 	var/icon_closed = "closed"
 	var/icon_opened = "open"
-	var/opened = 0
-	var/sealed = 0
+	var/opened = FALSE
+	var/sealed = FALSE
 	var/seal_tool = /obj/item/weldingtool	//Tool used to seal the closet, defaults to welder
 	var/wall_mounted = 0 //never solid (You can always pass over it)
 
@@ -478,15 +478,6 @@
 	else
 		icon_state = "closed_unlocked[sealed ? "_welded" : ""]"
 
-/obj/structure/closet/attack_generic(var/mob/user, var/damage, var/attack_message = "destroys")
-	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
-		return
-	user.do_attack_animation(src)
-	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
-	dump_contents()
-	spawn(1) qdel(src)
-	return 1
-
 /obj/structure/closet/proc/req_breakout()
 	if(opened)
 		return FALSE //Door's open... wait, why are you in it's contents then?
@@ -566,13 +557,6 @@
 		if(istype(loc, /obj/structure/closet))
 			return (loc.return_air_for_internal_lifeform(L))
 	return return_air()
-
-/obj/structure/closet/take_damage_legacy(var/damage)
-	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
-		return
-	dump_contents()
-	spawn(1) qdel(src)
-	return 1
 
 /obj/structure/closet/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE

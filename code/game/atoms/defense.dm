@@ -293,7 +293,7 @@
  *
  * if integrity_failure is 0, this still works.
  */
-/atom/proc/atom_fix()
+/atom/proc/atom_fixs()
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	atom_flags &= ~ATOM_BROKEN

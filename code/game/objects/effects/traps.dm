@@ -378,16 +378,15 @@ Add those other swinging traps you mentioned above!
 		var/obj/item/stack/rods/M = W
 		if(M.amount >= 5)
 			M.use(5)
-			Break()
+			atom_break()
 			to_chat(user, "<span class='notice'>You slip the rods into the firing mechanism, jamming it.</span>")
-			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need five rods to jam the mechanism.</span>")
 
 	if(istype(W,/obj/item/tool/crowbar))
 		if((atom_flags & ATOM_BROKEN))
-			Reset()
 			to_chat(user, "<span class='notice'>You pry the obstruction out, resetting the trap.</span>")
+			atom_fix()
 		else
 			to_chat(user, "<span class='warning'>You can't pry this sculpture off of the wall.</span>")
 
@@ -680,15 +679,14 @@ if (istype(AM, /mob/living))
 		var/obj/item/stack/rods/M = W
 		if(M.amount >= 3)
 			M.use(3)
-			Break()
+			atom_break()
 			to_chat(user, "<span class='notice'>You slip the rods between the plate and its base, jamming it.</span>")
-			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need three rods to jam the mechanism.</span>")
 
 	if(istype(W,/obj/item/tool/wirecutters))
 		if((atom_flags & ATOM_BROKEN))
-			Reset()
+			atom_fix()
 			to_chat(user, "<span class='notice'>You slice the rods and remove them, resetting the trap.</span>")
 		else
 			to_chat(user, "<span class='warning'>You can't disarm the trap this way!</span>")
@@ -726,12 +724,12 @@ if (istype(AM, /mob/living))
 		var/obj/item/stack/cable_coil/M = W
 		if(M.amount >= 5 && (atom_flags & ATOM_BROKEN))
 			M.use(5)
-			Reset()
+			atom_fix()
 			to_chat(user, "<span class='notice'>You use the coils to raise the [src] back up, resetting it.</span>")
 
 	if(istype(W,/obj/item/tool/wirecutters) || is_sharp(W))
 		if(!(atom_flags & ATOM_BROKEN))
-			Break()
+			atom_break()
 			to_chat(user, "<span class='notice'>You cut the ropes suspending the [src], breaking it.</span>")
 			update_icon()
 
