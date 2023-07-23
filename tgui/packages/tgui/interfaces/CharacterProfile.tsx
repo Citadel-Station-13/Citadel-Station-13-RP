@@ -1,4 +1,4 @@
-import { Section, Stack, Divider, Table, Collapsible, Box, Flex } from "../components";
+import { Section, Flex, Divider, Table, Collapsible, Box } from "../components";
 import { Window } from "../layouts";
 import { useBackend, useLocalState } from "../backend";
 import { Tabs } from "../components";
@@ -64,13 +64,13 @@ export const CharacterProfile = (props, context) => {
           </Tabs.Tab>
         </Tabs>
         {selectedTab === 1 && (
-          <Stack>
-            <Stack.Item pl="10px">
+          <Flex>
+            <Flex.Item pl="10px">
               <CharacterProfileImageElement />
-            </Stack.Item>
-            <Stack.Item Stack-direction="column" pl="10px" width="100%">
+            </Flex.Item>
+            <Flex.Item Flex-direction="column" pl="10px" width="100%">
               <Collapsible title={combinedspeciesname}>
-                <Section>
+                <Section style={{ "white-space": "pre-line" }}>
                   {data.species_text}
                 </Section>
               </Collapsible>
@@ -80,17 +80,17 @@ export const CharacterProfile = (props, context) => {
                 </Section>
               </Collapsible>
               <Collapsible title="OOC Notes">
-                <Section>
+                <Section style={{ "white-space": "pre-line" }}>
                   {data.oocnotes}
                 </Section>
               </Collapsible>
-            </Stack.Item>
-          </Stack>
+            </Flex.Item>
+          </Flex>
         )}
         {selectedTab === 2 && (
-          <Stack>
+          <Flex>
             <Divider vertical />
-            <Stack.Item>
+            <Flex.Item>
               {data.directory_visible ? (
                 <Section title="Character Directory Info" width="100%">
                   <Table backgroundColor={getTagColor(data.erp_tag)}>
@@ -107,9 +107,9 @@ export const CharacterProfile = (props, context) => {
               ) : (
                 <Divider vertical />
               )}
-            </Stack.Item>
+            </Flex.Item>
             <Divider vertical />
-          </Stack>
+          </Flex>
         )}
       </Window.Content>
     </Window>
@@ -129,15 +129,15 @@ const CharacterProfileDescElement = (props, context) => {
   const { act, data } = useBackend<CharacterProfileContext>(context);
 
   return (
-    <Flex flex-direction="column">
-      {data.flavortext_general !== "" ? (<Flex.Item><Divider /><b>General</b><br />{data.flavortext_general}<Divider /></Flex.Item>): (<Box />) }
-      {data.flavortext_head !== "" ? (<Flex.Item><Divider /><b>General</b><br />{data.flavortext_head}<Divider /></Flex.Item>): (<Box />) }
-      {data.flavortext_face !== "" ? (<Flex.Item><Divider /><b>General</b><br />{data.flavortext_face}<Divider /></Flex.Item>): (<Box />) }
-      {data.flavortext_eyes !== "" ? (<Flex.Item><Divider /><b>General</b><br />{data.flavortext_eyes}<Divider /></Flex.Item>): (<Box />) }
-      {data.flavortext_torso !== "" ? (<Flex.Item><Divider /><b>General</b><br />{data.flavortext_torso}<Divider /></Flex.Item>): (<Box />) }
-      {data.flavortext_arms !== "" ? (<Flex.Item><Divider /><b>General</b><br />{data.flavortext_arms}<Divider /></Flex.Item>): (<Box />) }
-      {data.flavortext_hands !== "" ? (<Flex.Item><Divider /><b>General</b><br />{data.flavortext_hands}<Divider /></Flex.Item>): (<Box />) }
-      {data.flavortext_legs !== "" ? (<Flex.Item><Divider /><b>General</b><br />{data.flavortext_legs}<Divider /></Flex.Item>): (<Box />) }
-      {data.flavortext_feet !== "" ? (<Flex.Item><Divider /><b>General</b><br />{data.flavortext_feet}<Divider /></Flex.Item>): (<Box />) }
+    <Flex direction="column">
+      {data.flavortext_general !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>General</b><br />{data.flavortext_general}</Flex.Item>): (<Box />) }
+      {data.flavortext_head !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Head</b><br />{data.flavortext_head}</Flex.Item>): (<Box />) }
+      {data.flavortext_face !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Face</b><br />{data.flavortext_face}</Flex.Item>): (<Box />) }
+      {data.flavortext_eyes !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Eyes</b><br />{data.flavortext_eyes}</Flex.Item>): (<Box />) }
+      {data.flavortext_torso !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Torso</b><br />{data.flavortext_torso}</Flex.Item>): (<Box />) }
+      {data.flavortext_arms !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Arms</b><br />{data.flavortext_arms}</Flex.Item>): (<Box />) }
+      {data.flavortext_hands !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Hands</b><br />{data.flavortext_hands}</Flex.Item>): (<Box />) }
+      {data.flavortext_legs !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Legs</b><br />{data.flavortext_legs}</Flex.Item>): (<Box />) }
+      {data.flavortext_feet !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Feet</b><br />{data.flavortext_feet}</Flex.Item>): (<Box />) }
     </Flex>
   ); };

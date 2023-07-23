@@ -29,15 +29,15 @@ GLOBAL_LIST_EMPTY(cached_previews)
 	data["erp_tag"] = H?.client?.prefs?.directory_erptag || "Unset"
 	data["species_name"] = H?.species?.name
 	data["species_text"] = html_decode(replacetext(H?.species?.blurb, "<br/>", "\n"))
-	data["flavortext_general"] = html_decode(replacetext(H?.flavor_texts["general"], "\n", "<BR>") || "")
-	data["flavortext_head"] = html_decode(replacetext(H?.flavor_texts["head"], "\n", "<BR>") || "")
-	data["flavortext_face"] = html_decode(replacetext(H?.flavor_texts["face"], "\n", "<BR>") || "")
-	data["flavortext_eyes"] = html_decode(replacetext(H?.flavor_texts["eyes"], "\n", "<BR>") || "")
-	data["flavortext_torso"] = html_decode(replacetext(H?.flavor_texts["torso"], "\n", "<BR>") || "")
-	data["flavortext_arms"] = html_decode(replacetext(H?.flavor_texts["arms"], "\n", "<BR>") || "")
-	data["flavortext_hands"] = html_decode(replacetext(H?.flavor_texts["hands"], "\n", "<BR>") || "")
-	data["flavortext_legs"] = html_decode(replacetext(H?.flavor_texts["legs"], "\n", "<BR>") || "")
-	data["flavortext_feet"] = html_decode(replacetext(H?.flavor_texts["feet"], "\n", "<BR>") || "")
+	data["flavortext_general"] = html_decode(H?.flavor_texts["general"] || "")
+	data["flavortext_head"] = html_decode(H?.flavor_texts["head"] || "")
+	data["flavortext_face"] = html_decode(H?.flavor_texts["face"] || "")
+	data["flavortext_eyes"] = html_decode(H?.flavor_texts["eyes"] || "")
+	data["flavortext_torso"] = html_decode(H?.flavor_texts["torso"] || "")
+	data["flavortext_arms"] = html_decode(H?.flavor_texts["arms"] || "")
+	data["flavortext_hands"] = html_decode(H?.flavor_texts["hands"] || "")
+	data["flavortext_legs"] = html_decode(H?.flavor_texts["legs"] || "")
+	data["flavortext_feet"] = html_decode(H?.flavor_texts["feet"] || "")
 
 	return data
 
