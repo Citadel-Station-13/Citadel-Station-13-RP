@@ -104,7 +104,7 @@
 	name = "openspace multiplier"
 	desc = "You shouldn't see this."
 	icon = LIGHTING_ICON
-	icon_state = LIGHTING_DARKNESS_ICON_STATE
+	icon_state = "blank"
 	plane = OPENTURF_MAX_PLANE
 	layer = MIMICED_LIGHTING_LAYER_MAIN
 	blend_mode = BLEND_MULTIPLY
