@@ -737,6 +737,12 @@
 	if(showvoreprefs && ckey) //ckey so non-controlled mobs don't display it.
 		. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")
 
+	// handle status effects
+	// todo: this should probably be a signal but it's not urgent, this isn't a hot path
+	for(var/id in status_effects)
+		var/datum/status_effect/effect = status_effects[id]
+		effect.on_examine(.)
+
 /mob/living/Topic(href, href_list)	//Can't find any instances of Topic() being overridden by /mob/living in polaris' base code, even though /mob/living/carbon/human's Topic() has a ..() call
 	if(href_list["vore_prefs"])
 		display_voreprefs(usr)
