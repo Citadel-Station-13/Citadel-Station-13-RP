@@ -5,3 +5,5 @@
 //! Contains all relevant core procs for displaying (transmitting) messages, visible or audible.
 
 // todo: atom /say()code rewrite
+
+#warn impl all
