@@ -24871,6 +24871,18 @@
 /obj/effect/floor_decal/corner/blue{
 	dir = 10
 	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_y = 16
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_y = 16
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_y = 16
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/body{
+	pixel_y = 16
+	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "usN" = (
