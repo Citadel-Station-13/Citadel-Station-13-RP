@@ -1207,13 +1207,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "aXm" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "chapel"
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/plating,
 /area/hallway/primary/aft)
 "aXJ" = (
@@ -3654,12 +3651,11 @@
 "cOS" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
+/obj/structure/wall_frame/prepainted,
+/obj/structure/window/reinforced/polarized/full{
+	name = "Internal Aiffars window";
 	id = "lawyer_blast"
 	},
-/obj/structure/wall_frame/prepainted,
 /turf/simulated/floor,
 /area/lawoffice)
 "cPE" = (
@@ -3742,13 +3738,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
-"cUD" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1;
-	faction = "neutral"
-	},
-/turf/simulated/floor/airless/ceiling,
-/area/space)
 "cUK" = (
 /obj/machinery/vending/security,
 /obj/machinery/newscaster/security_unit{
@@ -4025,13 +4014,8 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/captain)
 "dki" = (
-/obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "chapel"
-	},
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "dkB" = (
@@ -5104,10 +5088,8 @@
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/disposalpipe/segment,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "chapel"
+/obj/structure/window/reinforced/polarized/full{
+	id = "pathfinder_office"
 	},
 /obj/structure/wall_frame/prepainted,
 /turf/simulated/floor/plating,
@@ -5220,7 +5202,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/station/stairs_one)
+/area/hallway/secondary/civilian_hallway_mid)
 "dZO" = (
 /obj/structure/table/woodentable,
 /obj/structure/cable/green{
@@ -7518,18 +7500,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "fxw" = (
-/obj/structure/window/reinforced/polarized{
-	dir = 8
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 4
-	},
 /obj/structure/grille,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "Interr"
-	},
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
@@ -7541,6 +7512,10 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-8"
+	},
+/obj/structure/window/reinforced/polarized/full{
+	id = "Interr";
+	name = "interrogation window"
 	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
@@ -15430,23 +15405,16 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "llb" = (
-/obj/structure/window/reinforced/polarized{
-	dir = 8
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 4
-	},
 /obj/structure/grille,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "Interr"
-	},
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
+	},
+/obj/structure/window/reinforced/polarized/full{
+	id = "Interr";
+	name = "interrogation window"
 	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
@@ -20086,22 +20054,15 @@
 /turf/simulated/floor/wood,
 /area/maintenance/central)
 "oDb" = (
-/obj/structure/window/reinforced/polarized{
-	dir = 8
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 4
-	},
 /obj/structure/grille,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "Interr"
-	},
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/structure/cable/green,
+/obj/structure/window/reinforced/polarized/full{
+	id = "Interr";
+	name = "interrogation window"
+	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "oEc" = (
@@ -20332,11 +20293,6 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "hop_office"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -20345,6 +20301,10 @@
 	},
 /obj/structure/wall_frame/prepainted,
 /obj/structure/wall_frame/prepainted,
+/obj/structure/window/reinforced/polarized/full{
+	name = "HoP Office window";
+	id = "hop_office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "oKD" = (
@@ -24252,7 +24212,7 @@
 	name = "Bridge Lockdown";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
+/obj/spawner/window/low_wall/borosillicate/reinforced/full,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
 "rkX" = (
@@ -26443,16 +26403,15 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "hop_office"
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
 /obj/structure/wall_frame/prepainted,
 /obj/structure/wall_frame/prepainted,
+/obj/structure/window/reinforced/polarized/full{
+	name = "HoP Office window";
+	id = "hop_office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "sMO" = (
@@ -26751,6 +26710,7 @@
 /area/hallway/primary/aft)
 "sSz" = (
 /obj/machinery/door/firedoor,
+/obj/spawner/window/low_wall/borosillicate/reinforced/full,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
 "sSZ" = (
@@ -28198,10 +28158,8 @@
 "ucJ" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "chapel"
+/obj/structure/window/reinforced/polarized/full{
+	id = "pathfinder_office"
 	},
 /obj/structure/wall_frame/prepainted,
 /turf/simulated/floor/plating,
@@ -33645,7 +33603,7 @@
 /area/exploration/medical)
 "xPq" = (
 /obj/machinery/door/firedoor{
-	dir = 8
+	dir = 2
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
@@ -38270,8 +38228,8 @@ nIK
 nIK
 nIK
 nIK
-cBE
-cUD
+mmk
+kCH
 hMa
 bFX
 bFX
@@ -38838,8 +38796,8 @@ nIK
 nIK
 nIK
 nIK
-cBE
-cUD
+mmk
+kCH
 hMa
 dRj
 bFX
