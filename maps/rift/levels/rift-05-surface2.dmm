@@ -5836,7 +5836,6 @@
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/item/modular_computer/laptop/preset/custom_loadout/standard/security/hos,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "dGm" = (
@@ -38203,7 +38202,6 @@
 /obj/item/paper/armory_info{
 	pixel_x = 18
 	},
-/obj/item/modular_computer/laptop/preset/custom_loadout/standard/security/warden,
 /turf/simulated/floor/carpet,
 /area/security/warden)
 "yeu" = (
