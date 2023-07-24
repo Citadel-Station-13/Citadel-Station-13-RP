@@ -61,7 +61,6 @@
 		"Fox" = "pai-fox",
 		"Parrot" = "pai-parrot",
 		"Rabbit" = "pai-rabbit",
-		"Bear" = "pai-bear",
 		"Fox" = "pai-fox",
 		)
 
