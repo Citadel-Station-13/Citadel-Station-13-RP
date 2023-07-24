@@ -42,7 +42,7 @@
 		if(choice == "-- LOAD CHARACTER SLOT --")
 			icon = render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
 		else
-			icon = 'icons/mob/pai.dmi'
+			icon = 'icons/mob/pai_vr.dmi'
 			icon_state = possible_chassis[choice]
 		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
 

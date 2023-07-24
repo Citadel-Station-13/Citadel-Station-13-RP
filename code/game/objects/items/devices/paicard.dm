@@ -283,7 +283,8 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 /obj/item/paicard/proc/setPersonality(mob/living/silicon/pai/personality)
 	pai = personality
 	cut_overlays()
-	add_overlay("pai-happy")
+	add_overlay("pai-underlay")
+	add_overlay("pai-null")
 
 /obj/item/paicard/proc/removePersonality()
 	pai = null
@@ -291,45 +292,15 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	add_overlay("pai-off")
 
 /obj/item/paicard
-	var/current_emotion = 1
+	var/current_emotion = "off"
 
-//! WHAT THE FUCK
 /obj/item/paicard/proc/setEmotion(emotion)
 	if(pai)
 		cut_overlays()
-		switch(emotion)
-			if(1)
-				add_overlay("pai-happy")
-			if(2)
-				add_overlay("pai-cat")
-			if(3)
-				add_overlay("pai-extremely-happy")
-			if(4)
-				add_overlay("pai-face")
-			if(5)
-				add_overlay("pai-laugh")
-			if(6)
-				add_overlay("pai-off")
-			if(7)
-				add_overlay("pai-sad")
-			if(8)
-				add_overlay("pai-angry")
-			if(9)
-				add_overlay("pai-what")
-			if(10)
-				add_overlay("pai-neutral")
-			if(11)
-				add_overlay("pai-silly")
-			if(12)
-				add_overlay("pai-nose")
-			if(13)
-				add_overlay("pai-smirk")
-			if(14)
-				add_overlay("pai-exclamation")
-			if(15)
-				add_overlay("pai-question")
-
 		current_emotion = emotion
+		if(emotion != "off")
+			add_overlay("pai-underlay")
+			add_overlay("pai-[emotion]")
 
 /obj/item/paicard/proc/alertUpdate()
 	var/turf/T = get_turf_or_move(src.loc)

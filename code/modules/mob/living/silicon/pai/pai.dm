@@ -61,7 +61,8 @@
 		"Fox" = "pai-fox",
 		"Parrot" = "pai-parrot",
 		"Rabbit" = "pai-rabbit",
-		"Fox" = "pai-fox",
+		"Fennec" = "pai-fen",
+		"Bear" = "pai-bear"
 		)
 
 	var/global/list/possible_say_verbs = list(
