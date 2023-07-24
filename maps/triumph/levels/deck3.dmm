@@ -13512,6 +13512,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/item/radio/beacon/anchored,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "lLh" = (

@@ -12150,6 +12150,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/item/radio/beacon/anchored,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "KS" = (
