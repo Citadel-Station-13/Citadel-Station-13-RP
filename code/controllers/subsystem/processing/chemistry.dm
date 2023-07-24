@@ -37,7 +37,7 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
 	for(var/path in paths)
 		var/datum/chemical_reaction/D = new path
 		chemical_reactions += D
-	tim_sort(chemical_reactions, GLOBAL_PROC_REF(chemical_reaction_priority))
+	tim_sort(chemical_reactions, GLOBAL_PROC_REF(cmp_chemical_reaction_priority))
 	for(var/datum/chemical_reaction/D as anything in chemical_reactions)
 		if(!length(D.required_reagents))
 			continue

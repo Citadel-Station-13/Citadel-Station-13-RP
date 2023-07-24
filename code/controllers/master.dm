@@ -107,7 +107,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			qdel(Master)
 		else
 			var/list/subsytem_types = subtypesof(/datum/controller/subsystem)
-			tim_sort(subsytem_types, GLOBAL_PROC_REF(subsystem_init))
+			tim_sort(subsytem_types, GLOBAL_PROC_REF(cmp_subsystem_init))
 			for(var/I in subsytem_types)
 				var/datum/controller/subsystem/S = new I
 				_subsystems += S
@@ -142,7 +142,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 /datum/controller/master/Shutdown()
 	processing = FALSE
-	tim_sort(subsystems, GLOBAL_PROC_REF(subsystem_init))
+	tim_sort(subsystems, GLOBAL_PROC_REF(cmp_subsystem_init))
 	reverseRange(subsystems)
 	for(var/datum/controller/subsystem/ss in subsystems)
 		log_world("Shutting down [ss.name] subsystem...")
@@ -245,7 +245,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	to_chat(world, SPAN_BOLDANNOUNCE("Initializing subsystems..."))
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
-	tim_sort(subsystems, GLOBAL_PROC_REF(subsystem_init))
+	tim_sort(subsystems, GLOBAL_PROC_REF(cmp_subsystem_init))
 
 	var/start_timeofday = REALTIMEOFDAY
 	// Initialize subsystems.
