@@ -42,7 +42,7 @@
 	if(HAS_TRAIT(src, TRAIT_CPR_IN_PROGRESS))
 		to_chat(user, SPAN_WARNING("Someone is already doing CPR on [src]!"))
 		return
-	INVOKE_ASYNC(src, .proc/attempt_cpr, user)
+	INVOKE_ASYNC(src, PROC_REF(attempt_cpr), user)
 
 /mob/living/carbon/proc/attempt_cpr(atom/actor, delay_mod = 1)
 	actor.visible_message(SPAN_NOTICE("[actor] is trying to perform CPR on [src]!"))

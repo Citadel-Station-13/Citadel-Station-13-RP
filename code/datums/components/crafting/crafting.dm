@@ -324,7 +324,7 @@
 	// SIGNAL_HANDLER
 
 	if(user == parent)
-		INVOKE_ASYNC(src, .proc/ui_interact, user)
+		INVOKE_ASYNC(src, PROC_REF(ui_interact), user)
 
 /datum/component/personal_crafting/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.not_incapacitated_turf_state

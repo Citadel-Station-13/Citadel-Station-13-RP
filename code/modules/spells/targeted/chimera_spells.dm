@@ -87,7 +87,7 @@
 		addtimer(CALLBACK(H, /atom/.proc/visible_message,"<span class = 'warning'> <i>[H]'s body begins to lose its shape, skin sloughing off and melting, losing form and composure.</i></span>","<span class = 'notice'>There is little left. We will soon be ready.</span>"), 8 SECONDS)
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat,H,"<span class = 'notice'>There is little left. We will soon be ready.</span>"), 8 MINUTES)
 
-		addtimer(CALLBACK(src, .proc/add_pop,H,), 10 MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(add_pop),H,), 10 MINUTES)
 
 /spell/targeted/chimera/hatch/proc/add_pop(mob/user = usr)
 	if(ishuman(user))

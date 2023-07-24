@@ -75,7 +75,7 @@
 	SIGNAL_HANDLER
 
 	// gives a chance for dropped to fire
-	addtimer(CALLBACK(src, .proc/check_item_yank, source), 0)
+	addtimer(CALLBACK(src, PROC_REF(check_item_yank), source), 0)
 
 /obj/item/organ/internal/augment/proc/on_item_dropped(datum/source)
 	SIGNAL_HANDLER

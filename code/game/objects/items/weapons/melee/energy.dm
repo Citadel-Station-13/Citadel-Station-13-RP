@@ -351,7 +351,7 @@
 
 /obj/item/melee/energy/sword/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	if(prob(50))
-		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
 	return ..()
 
 /obj/item/melee/energy/sword/dualsaber/proc/jedi_spin(mob/living/user)
@@ -469,7 +469,7 @@
 
 /obj/item/melee/energy/sword/charge/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	if(prob(50))
-		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
 	return ..()
 
 /obj/item/melee/energy/sword/charge/dualsaber/proc/jedi_spin(mob/living/user)
