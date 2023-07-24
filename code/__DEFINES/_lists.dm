@@ -4,7 +4,9 @@
 /// Picks from the list, with some safeties, and returns the "default" arg if it fails
 #define DEFAULTPICK(L, default) ((istype(L, /list) && L:len) ? pick(L) : default)
 /// Ensures L is initailized after this point
-#define LAZYINITLIST(L) if (!L) L = list()
+#define LAZYINITLIST(L) if (isnull(L)) L = list()
+/// Ensures L is initialized and uses it as a rvalue
+#define LAZYGETLIST(L) (isnull(L)? (L = list()) : L)
 /// Sets a L back to null iff it is empty
 #define UNSETEMPTY(L) if (L && !length(L)) L = null
 /// Removes I from list L, and sets I to null if it is now empty
@@ -38,6 +40,11 @@
 #define SAFEINDEXACCESS(L, I) (ISINRANGE(I, 1, length(L))? L[I] : null)
 // Returns the key based on the index
 #define KEYBYINDEX(L, index) (((index <= length(L)) && (index > 0)) ? L[index] : null)
+
+/// sanitize a lazy null-or-entry-or-list into always a list
+#define COERCE_OPTIONS_LIST(Entry) (islist(Entry)? Entry : (isnull(Entry)? list() : list(Entry)))
+/// COERCE_OPTIONS_LIST but does it to an existing variablew.
+#define COERCE_OPTIONS_LIST_IN(Variable) Variable = COERCE_OPTIONS_LIST(Variable)
 
 /// Passed into BINARY_INSERT to compare keys
 #define COMPARE_KEY __BIN_LIST[__BIN_MID]

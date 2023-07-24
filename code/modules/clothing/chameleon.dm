@@ -429,7 +429,7 @@
 	icon_state = "deagle"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
-	matter = list()
+	materials = list()
 
 	fire_sound = 'sound/weapons/Gunshot1.ogg'
 	projectile_type = /obj/projectile/chameleon
@@ -476,6 +476,8 @@
 
 /obj/item/gun/energy/chameleon/disguise(var/newtype)
 	var/obj/item/gun/copy = ..()
+
+	modifystate = copy.icon_state
 
 	inv_hide_flags = copy.inv_hide_flags
 	if(copy.fire_sound)

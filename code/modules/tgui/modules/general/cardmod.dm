@@ -168,10 +168,10 @@
 /**
  * return source id to auth with
  */
-/datum/tgui_module/card_mod/proc/auth_source()
+/datum/tgui_module/card_mod/proc/auth_source(var/user)
 	return null
 
-/datum/tgui_module/card_mod/static_data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source())
+/datum/tgui_module/card_mod/static_data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source(user))
 	. = ..()
 	.["access"] = SSjob.tgui_access_data()
 	var/list/direct_cache = ((authing?.access || list()) & SSjob.cached_access_edit_relevant)
@@ -191,7 +191,7 @@
 			"ranks" = ranks_by_department[department],
 		))
 
-/datum/tgui_module/card_mod/data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source())
+/datum/tgui_module/card_mod/data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source(user))
 	. = ..()
 	.["card_account"] = editing?.associated_account_number
 	.["card_name"] = editing?.registered_name
@@ -203,7 +203,7 @@
 /datum/tgui_module/card_mod/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	var/obj/item/card/id/target = edit_target()
-	var/obj/item/card/id/source = auth_source()
+	var/obj/item/card/id/source = auth_source(usr)
 	switch(action)
 		if("account")
 			if(!target)
@@ -344,11 +344,13 @@
 		var/list/allowed = SSjob.editable_access_ids_by_id(id)
 		if(isnull(allowed))
 			continue
-		var/list/got = allowed & accesses
+		var/list/got = allowed & left
 		if(!length(got))
 			continue
 		left -= got
 		. += got
+		if(!length(left))
+			break
 
 /datum/tgui_module/card_mod/standard/auth_account_edit(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, old_number, new_number)
 	return (ACCESS_COMMAND_BANKING in authing?.access)
@@ -396,9 +398,30 @@
 	var/obj/machinery/computer/card/target = host
 	return target.editing
 
-/datum/tgui_module/card_mod/standard/id_computer/auth_source()
+/datum/tgui_module/card_mod/standard/id_computer/auth_source(mob/user)
 	var/obj/machinery/computer/card/target = host
 	return target.authing
+
+/datum/tgui_module/card_mod/standard/id_computer/ntos
+	expected_type = /datum/computer_file/program/card_mod
+	var/datum/computer_file/program/program
+
+
+/datum/tgui_module/card_mod/standard/id_computer/ntos/New(datum/host)
+	. = ..()
+	program = host
+
+/datum/tgui_module/card_mod/standard/id_computer/ntos/Destroy()
+	. = ..()
+	program = null
+
+/datum/tgui_module/card_mod/standard/id_computer/ntos/edit_target()
+	return program.computer.card_slot.stored_card
+
+/datum/tgui_module/card_mod/standard/id_computer/ntos/auth_source(mob/user)
+	if(isliving(user))
+		var/mob/living/L = user
+		return L.GetIdCard()
 
 /**
  * admin implementation of card_mod modules
