@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(garbage)
 	var/list/dellog = list()
 
 	//sort by how long it's wasted hard deleting
-	tim_sort(items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
+	tim_sort(items, cmp= GLOBAL_PROC_REF(cmp_qdel_item_time), associative = TRUE)
 	for(var/path in items)
 		var/datum/qdel_item/I = items[path]
 		dellog += "Path: [path]"
