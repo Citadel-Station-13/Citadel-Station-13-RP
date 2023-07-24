@@ -214,19 +214,13 @@
 	turret_type = "industrial"
 
 /obj/machinery/porta_turret/industrial/bullet_act(obj/projectile/Proj)
-	var/damage = round(Proj.get_structure_damage() * 1.33)
-
-	if(!damage)
-		return
-
+	. = ..()
 	if(enabled)
 		if(!attacked && !emagged)
 			attacked = TRUE
 			spawn()
 				sleep(60)
 				attacked = FALSE
-
-	take_damage(damage)
 
 /obj/machinery/porta_turret/industrial/attack_generic(mob/living/L, damage)
 	return ..(L, damage * 0.8)

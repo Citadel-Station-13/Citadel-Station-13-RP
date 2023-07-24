@@ -79,7 +79,7 @@
 	color = "#321a49"
 	material = "resin compound"
 	padding_material = "resin compound"
-	hit_sound = 'sound/effects/attackblob.ogg'
+	hit_sound_brute = 'sound/effects/attackblob.ogg'
 
 	integrity = 100
 	integrity_max = 100
@@ -132,7 +132,7 @@
 	integrity = 200
 	integrity_max = 200
 
-	hit_sound = 'sound/effects/attackblob.ogg'
+	hit_sound_brute = 'sound/effects/attackblob.ogg'
 
 /obj/structure/alien/hybrid_resin/wall
 	name = "resin wall"

@@ -12,10 +12,11 @@
 	integrity = 200
 	integrity_max = 200
 
+	hit_sound_brute = 'sound/effects/EMPulse.ogg'
+	hit_sound_burn = 'sound/effects/EMPulse.ogg'
+
 	var/shield_generate_power = 7500	//how much power we use when regenerating
 	var/shield_idle_power = 1500		//how much power we use when just being sustained.
-
-	#warn use 'sound/effects/EMPulse.ogg' for sound
 
 /obj/machinery/shield/Initialize(mapload)
 	. = ..()
@@ -149,43 +150,6 @@
 		else
 			check_delay--
 
-/obj/machinery/shieldgen/proc/checkhp()
-	if(health <= 30)
-		src.malfunction = 1
-	if(health <= 0)
-		spawn(0)
-			explosion(get_turf(src.loc), 0, 0, 1, 0, 0, 0)
-		qdel(src)
-	update_icon()
-	return
-
-/obj/machinery/shieldgen/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			src.health -= 75
-			src.checkhp()
-		if(2.0)
-			src.health -= 30
-			if (prob(15))
-				src.malfunction = 1
-			src.checkhp()
-		if(3.0)
-			src.health -= 10
-			src.checkhp()
-	return
-
-/obj/machinery/shieldgen/emp_act(severity)
-	switch(severity)
-		if(1)
-			src.health /= 2 //cut health in half
-			malfunction = 1
-			locked = pick(0,1)
-		if(2)
-			if(prob(50))
-				src.health *= 0.3 //chop off a third of the health
-				malfunction = 1
-	checkhp()
-
 /obj/machinery/shieldgen/attack_hand(mob/user, list/params)
 	if(locked)
 		to_chat(user, "The machine is locked, you are unable to use it.")
@@ -231,7 +195,7 @@
 		//if(do_after(user, min(60, round( ((getMaxHealth()/health)*10)+(malfunction*10) ))) //Take longer to repair heavier damage
 		if(do_after(user, 30))
 			if (coil.use(1))
-				health = max_health
+				integrity = integrity_max
 				malfunction = 0
 				to_chat(user, "<span class='notice'>You repair the [src]!</span>")
 				update_icon()

@@ -220,24 +220,24 @@
 
 //////////////Containment Field START
 /obj/machinery/shieldwall
-		name = "Shield"
-		desc = "An energy shield."
-		icon = 'icons/effects/effects.dmi'
-		icon_state = "shieldwall"
-		anchored = 1
-		density = 1
-		unacidable = 1
-		light_range = 3
-		var/needs_power = 0
-		var/active = 1
+	name = "Shield"
+	desc = "An energy shield."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "shieldwall"
+	anchored = TRUE
+	density = TRUE
+	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
+	light_range = 3
+	var/needs_power = 0
+	var/active = 1
 //		var/power = 10
-		var/delay = 5
-		var/last_active
-		var/mob/U
-		var/obj/machinery/shieldwallgen/gen_primary
-		var/obj/machinery/shieldwallgen/gen_secondary
-		var/power_usage = 2500	//how much power it takes to sustain the shield
-		var/generate_power_usage = 7500	//how much power it takes to start up the shield
+	var/delay = 5
+	var/last_active
+	var/mob/U
+	var/obj/machinery/shieldwallgen/gen_primary
+	var/obj/machinery/shieldwallgen/gen_secondary
+	var/power_usage = 2500	//how much power it takes to sustain the shield
+	var/generate_power_usage = 7500	//how much power it takes to start up the shield
 
 /obj/machinery/shieldwall/Initialize(mapload, obj/machinery/shieldwallgen/A, obj/machinery/shieldwallgen/B)
 	. = ..()

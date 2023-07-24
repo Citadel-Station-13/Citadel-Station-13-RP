@@ -69,7 +69,7 @@
 						playsound(loc, material.tableslam_noise, 50, 1)
 					else
 						playsound(loc, 'sound/weapons/tablehit1.ogg', 50, 1)
-					var/list/L = take_damage(rand(1,5))
+					var/list/L = break_to_parts()
 					// Shards. Extra damage, plus potentially the fact YOU LITERALLY HAVE A PIECE OF GLASS/METAL/WHATEVER IN YOUR FACE
 					for(var/obj/item/material/shard/S in L)
 						if(prob(50))

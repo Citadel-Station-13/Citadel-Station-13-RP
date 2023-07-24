@@ -30,7 +30,7 @@
 	integrity_max = 20
 	integrity_failure = 0
 
-	hit_sound = 'sound/effects/Glasshit.ogg'
+	hit_sound_brute = 'sound/effects/Glasshit.ogg'
 
 	/// are we reinforced? this is only to modify our construction state/steps.
 	var/considered_reinforced = FALSE

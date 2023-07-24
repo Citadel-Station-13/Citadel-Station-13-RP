@@ -14,7 +14,7 @@
 	name = "alien thing"
 	desc = "theres something alien about this"
 	icon = 'icons/mob/alien.dmi'
-	hit_sound = 'sound/effects/attackblob.ogg'
+	hit_sound_brute = 'sound/effects/attackblob.ogg'
 
 /*
  * Resin

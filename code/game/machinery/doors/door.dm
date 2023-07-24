@@ -20,7 +20,7 @@
 	integrity_max = 300
 	integrity_failure = 100
 
-	hit_sound = 'sound/weapons/smash.ogg'
+	hit_sound_brute = 'sound/weapons/smash.ogg'
 
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER

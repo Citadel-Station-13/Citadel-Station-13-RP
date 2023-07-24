@@ -38,39 +38,23 @@
 		. = TRUE
 	return .
 
-/obj/structure/flora/tree/attackby(var/obj/item/W, var/mob/living/user)
-	if(can_harvest(W))
-		..(W, user)
-		return
-
-	if(!istype(W))
+/obj/structure/flora/tree/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(user.a_intent == INTENT_HARM)
 		return ..()
-
+	if(can_harvest(I))
+		return ..(I, user)
 	if(is_stump)
-		if(istype(W,/obj/item/shovel))
+		if(istype(I,/obj/item/shovel))
 			if(do_after(user, 5 SECONDS))
 				visible_message("<span class='notice'>\The [user] digs up \the [src] stump with \the [W].</span>")
 				qdel(src)
 		return
+	return ..()
 
-	visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W]!</span>")
-
-	var/damage_to_do = W.damage_force
-	if(!W.sharp && !W.edge)
-		damage_to_do = round(damage_to_do / 4)
-	if(damage_to_do > 0)
-		if(W.sharp && W.edge)
-			playsound(get_turf(src), 'sound/effects/woodcutting.ogg', 50, 1)
-		else
-			playsound(get_turf(src), W.attack_sound, 50, 1)
-		if(damage_to_do > 5 && !indestructable)
-			adjust_health(-damage_to_do)
-		else
-			to_chat(user, "<span class='warning'>\The [W] is ineffective at harming \the [src].</span>")
-
-	hit_animation()
-	user.setClickCooldown(user.get_attack_speed(W))
-	user.do_attack_animation(src)
+/obj/structure/flora/tree/hitsound_melee(obj/item/I)
+	if((I.damage_mode & DAMAGE_MODE_EDGE) && I.damage_force >= 5)
+		return 'sound/effects/woodcutting.ogg'
+	return ..()
 
 // Shakes the tree slightly, more or less stolen from lockers.
 /obj/structure/flora/tree/proc/hit_animation()
@@ -194,7 +178,7 @@
 	icon_state = "palm1"
 	base_state = "palm"
 	product = /obj/item/stack/material/log
-	product_amount = 5
+	product_amount = 10
 	health = 200
 	max_health = 200
 	pixel_x = 0
@@ -210,9 +194,9 @@
 	icon_state = "tree_1"
 	base_state = "tree"
 	product = /obj/item/stack/material/log
-	product_amount = 5
-	health = 200
-	max_health = 200
+	product_amount = 10
+	integrity = 200
+	integrity_max = 200
 
 /obj/structure/flora/tree/dead/choose_icon_state()
 	return "[base_state]_[rand(1, 6)]"
@@ -224,9 +208,9 @@
 	icon_state = "tree"
 	base_state = "tree"
 	product = /obj/item/stack/material/log
-	product_amount = 10
-	health = 400
-	max_health = 400
+	product_amount = 20
+	integrity = 400
+	integrity_max = 400
 	pixel_x = -32
 
 /obj/structure/flora/tree/jungle_small/choose_icon_state()
@@ -239,9 +223,9 @@
 	icon_state = "tree"
 	base_state = "tree"
 	product = /obj/item/stack/material/log
-	product_amount = 20
-	health = 800
-	max_health = 800
+	product_amount = 40
+	integrity = 800
+	integrity_max = 800
 	pixel_x = -48
 	pixel_y = -16
 	shake_animation_degrees = 2

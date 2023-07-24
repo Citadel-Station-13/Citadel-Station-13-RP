@@ -174,7 +174,10 @@
 
 	//? Sounds
 	/// Default sound played on impact when damaged by a weapon / projectile / whatnot. This is usually null for default.
-	var/hit_sound
+	var/hit_sound_brute
+	/// Default sound played on a burn type impact. This is usually null for default.
+	var/hit_sound_burn
+
 
 /**
  * Called when an atom is created in byond (built in engine proc)

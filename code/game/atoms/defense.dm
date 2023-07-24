@@ -92,6 +92,8 @@
 
 //? Hitsound API
 
+#warn parse all of below for hit_sound_brute and hit_sound_burn support
+
 /**
  * gets hitsound override. return a value to be fed into playsound, or null for default.
  *
@@ -108,7 +110,7 @@
 	. = hitsound_override(I.damtype, I.damage_mode, ATTACK_TYPE_MELEE, I)
 	if(.)
 		return
-	. = hit_sound || I.attack_sound
+	. = hit_sound_brute || I.attack_sound
 	if(.)
 		return
 	switch(I.damtype)
@@ -129,14 +131,14 @@
 	. = hitsound_override(I.damtype, I.damage_mode, ATTACK_TYPE_THROWN, I)
 	if(.)
 		return
-	. = hit_sound || I.attack_sound
+	. = hit_sound_brute || I.attack_sound
 	if(.)
 		return
 	switch(I.damtype)
 		if(BRUTE)
 			return "swing_hit"
 		if(BURN)
-			return "'sound/items/welder.ogg"
+			return 'sound/items/welder.ogg'
 		else
 			return "swing_hit"
 
@@ -144,7 +146,7 @@
 	. = hitsound_override(M, style.damage_mode, ATTACK_TYPE_UNARMED, style)
 	if(.)
 		return
-	. = hit_sound || style.attack_sound
+	. = hit_sound_brute || style.attack_sound
 
 //? Direct Integrity
 

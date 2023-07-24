@@ -14,7 +14,7 @@
 
 	integrity = 150
 	integrity_max = 150
-	hit_sound = 'sound/effects/grillehit.ogg'
+	hit_sound_brute = 'sound/effects/grillehit.ogg'
 
 	var/broken = FALSE
 	var/check = 0

@@ -6,7 +6,7 @@
 	pass_flags_self = ATOM_PASS_GLASS
 	armor_type = /datum/armor/door/windoor
 	var/base_state = "left"
-	hit_sound = 'sound/effects/Glasshit.ogg'
+	hit_sound_brute = 'sound/effects/Glasshit.ogg'
 	integrity = 140
 	integrity_max = 140
 	visible = 0.0

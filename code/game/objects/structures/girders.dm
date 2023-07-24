@@ -218,14 +218,6 @@
 	else
 		return ..()
 
-/obj/structure/girder/take_damage_legacy(var/damage)
-	health -= damage
-	if(health <= 0)
-		dismantle()
-	else
-		current_damage = current_damage + damage //Rather than calculate this every time we need to use it, just calculate it here and save it.
-
-
 /obj/structure/girder/proc/construct_wall(obj/item/stack/material/S, mob/user)
 	var/amount_to_use = reinf_material ? 1 : 2
 	if(S.get_amount() < amount_to_use)
@@ -295,9 +287,9 @@
 	icon_state = "reinforced"
 	reinforcing = 0
 
-/obj/structure/girder/proc/dismantle()
-	girder_material.place_dismantled_product(get_turf(src), 2)
-	qdel(src)
+/obj/structure/girder/drop_products(method, atom/where)
+	. = ..()
+	girder_material.place_dismantled_product(where, 2)
 
 /obj/structure/girder/attack_hand(mob/user, list/params)
 	if (MUTATION_HULK in user.mutations)
@@ -305,71 +297,6 @@
 		dismantle()
 		return
 	return ..()
-
-
-/obj/structure/girder/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			if (prob(30))
-				dismantle()
-			return
-		if(3.0)
-			if (prob(5))
-				dismantle()
-			return
-		else
-	return
-
-/obj/structure/girder/cult
-	name = "column"
-	icon= 'icons/obj/cult.dmi'
-	icon_state= "cultgirder"
-	max_health = 250
-	health = 250
-	cover = 70
-	girder_material = "cult"
-	applies_material_colour = 0
-
-/obj/structure/girder/cult/update_icon_state()
-	. = ..()
-	if(anchored)
-		icon_state = "cultgirder"
-	else
-		icon_state = "displaced"
-
-/obj/structure/girder/cult/dismantle()
-	new /obj/effect/decal/remains/human(get_turf(src))
-	qdel(src)
-
-/obj/structure/girder/cult/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.is_wrench())
-		playsound(src, W.tool_sound, 100, 1)
-		to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
-		if(do_after(user,40 * W.tool_speed))
-			to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")
-			dismantle()
-
-	else if(istype(W, /obj/item/pickaxe/plasmacutter))
-		to_chat(user, "<span class='notice'>Now slicing apart the girder...</span>")
-		if(do_after(user,30 * W.tool_speed))
-			to_chat(user, "<span class='notice'>You slice apart the girder!</span>")
-		dismantle()
-
-	else if(istype(W, /obj/item/pickaxe/diamonddrill))
-		to_chat(user, "<span class='notice'>You drill through the girder!</span>")
-		new /obj/effect/decal/remains/human(get_turf(src))
-		dismantle()
-
-/obj/structure/girder/resin
-	name = "soft girder"
-	icon_state = "girder_resin"
-	max_health = 225
-	health = 225
-	cover = 60
-	girder_material = "resin"
 
 /obj/structure/girder/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	var/turf/simulated/T = get_turf(src)
@@ -419,3 +346,51 @@
 			to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
 			qdel(src)
 			return TRUE
+
+/obj/structure/girder/cult
+	name = "column"
+	icon= 'icons/obj/cult.dmi'
+	icon_state= "cultgirder"
+	max_health = 250
+	health = 250
+	cover = 70
+	girder_material = "cult"
+	applies_material_colour = 0
+
+/obj/structure/girder/cult/update_icon_state()
+	. = ..()
+	if(anchored)
+		icon_state = "cultgirder"
+	else
+		icon_state = "displaced"
+
+/obj/structure/girder/cult/dismantle()
+	new /obj/effect/decal/remains/human(get_turf(src))
+	qdel(src)
+
+/obj/structure/girder/cult/attackby(obj/item/W as obj, mob/user as mob)
+	if(W.is_wrench())
+		playsound(src, W.tool_sound, 100, 1)
+		to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
+		if(do_after(user,40 * W.tool_speed))
+			to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")
+			dismantle()
+
+	else if(istype(W, /obj/item/pickaxe/plasmacutter))
+		to_chat(user, "<span class='notice'>Now slicing apart the girder...</span>")
+		if(do_after(user,30 * W.tool_speed))
+			to_chat(user, "<span class='notice'>You slice apart the girder!</span>")
+		dismantle()
+
+	else if(istype(W, /obj/item/pickaxe/diamonddrill))
+		to_chat(user, "<span class='notice'>You drill through the girder!</span>")
+		new /obj/effect/decal/remains/human(get_turf(src))
+		dismantle()
+
+/obj/structure/girder/resin
+	name = "soft girder"
+	icon_state = "girder_resin"
+	max_health = 225
+	health = 225
+	cover = 60
+	girder_material = "resin"

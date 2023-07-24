@@ -40,25 +40,26 @@
 	if(harvest_count < max_harvests)
 		. += "<span class='notice'>\The [src] seems to have something hanging from it.</span>"
 
-/obj/structure/flora/attackby(var/obj/item/W, var/mob/living/user)
-	if(can_harvest(W))
+/obj/structure/flora/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(can_harvest(I))
 		var/harvest_spawn = pickweight(harvest_loot)
 		var/atom/movable/AM = spawn_harvest(harvest_spawn, user)
 
 		if(!AM)
 			to_chat(user, "<span class='notice'>You fail to harvest anything from \the [src].</span>")
+			return
 
 		else
 			to_chat(user, "<span class='notice'>You harvest \the [AM] from \the [src].</span>")
 			return
-
-	..(W, user)
+	return ..()
 
 /obj/structure/flora/proc/can_harvest(var/obj/item/I)
 	. = FALSE
 	if(harvest_tool && istype(I, harvest_tool) && harvest_loot && harvest_loot.len && harvest_count < max_harvests)
 		. = TRUE
-	return .
 
 /obj/structure/flora/proc/spawn_harvest(var/path = null, var/mob/user = null)
 	if(!ispath(path))

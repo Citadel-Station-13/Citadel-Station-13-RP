@@ -128,7 +128,6 @@
 	attack_verb = list("hit", "clawed", "slashed", "scratched")
 	attack_sound = 'sound/weapons/slice.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
-	shredding = FALSE
 
 /datum/unarmed_attack/shadekinharmbap/apply_effects(mob/living/carbon/human/shadekin/user, mob/living/carbon/human/target, armour, attack_damage, zone)
 	..()
