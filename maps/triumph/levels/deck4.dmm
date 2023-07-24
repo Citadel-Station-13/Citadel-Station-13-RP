@@ -3384,7 +3384,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /obj/machinery/door/airlock/command{
 	name = "Bridge"
 	},
@@ -3824,8 +3826,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "dcd" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = Blueshield_Office
+/obj/spawner/window/low_wall/reinforced/full,
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/blueshield)
@@ -13016,6 +13019,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/blueshield)
