@@ -15,7 +15,7 @@
 	volume = 60
 	w_class = ITEMSIZE_SMALL
 	atom_flags = OPENCONTAINER | NOCONDUCT
-	unacidable = 1 //glass doesn't dissolve in acid
+	integrity_flags = INTEGRITY_ACIDPROOF
 	drop_sound = 'sound/items/drop/bottle.ogg'
 	pickup_sound = 'sound/items/pickup/bottle.ogg'
 
@@ -267,10 +267,9 @@
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
 	atom_flags = OPENCONTAINER
-	unacidable = 0
+	integrity_flags = NONE
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
-
 
 /obj/item/reagent_containers/glass/bucket/attackby(var/obj/item/D, mob/user as mob)
 	if(isprox(D))
@@ -330,7 +329,7 @@
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
 	atom_flags = OPENCONTAINER
-	unacidable = 0
+	atom_flags = ATOM_FLAMMABLE
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
 
@@ -363,7 +362,7 @@
 	item_state = "woodbucket"
 	materials_base = list("sandstone" = 50)
 	w_class = ITEMSIZE_LARGE
-	unacidable = 1
+	integrity_flags = INTEGRITY_ACIDPROOF
 
 /obj/item/reagent_containers/glass/bucket/sandstone/examine(mob/user, dist)
 	. = ..()

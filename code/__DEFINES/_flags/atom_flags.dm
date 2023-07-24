@@ -39,7 +39,10 @@
 /// should not get harmed if this gets caught by an explosion?
 #define PREVENT_CONTENTS_EXPLOSION	(1<<22)
 */
-#define HTML_USE_INITIAL_ICON		(1<<23)
+/// Can be set on fire by dynamic atom fire
+#define ATOM_FLAMMABLE				(1<<24)
+/// Use initial icon/icon state for HTML renders in things like VV
+#define ATOM_HTML_INITIAL_ICON		(1<<23)
 
 DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(ATOM_INITIALIZED),
@@ -53,7 +56,8 @@ DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(OPENCONTAINER),
 	BITFIELD(PHORONGUARD),
 	BITFIELD(NOPRINT),
-	BITFIELD(HTML_USE_INITIAL_ICON),
+	BITFIELD(ATOM_FLAMMABLE),
+	BITFIELD(ATOM_HTML_INITIAL_ICON),
 ))
 
 //? /atom/movable/var/movable_flags
@@ -149,19 +153,12 @@ DEFINE_BITFIELD(movement_type, list(
 /// don't delete on atom_destruction()
 #define INTEGRITY_NO_DECONSTRUCT (1<<4)
 
-/// can be lit on fire
-#define INTEGRITY_FLAMMABLE (1<<23)
-
-/// all integrity flags for abstract objects
-#define INTEGRITY_ABSTRACT_INDESTRUCTIBLE (INTEGRITY_INDESTRUCTIBLE | INTEGRITY_FIREPROOF | INTEGRITY_ACIDPROOF | INTEGRITY_LAVAPROOF)
-
 DEFINE_BITFIELD(integrity_flags, list(
 	BITFIELD(INTEGRITY_INDESTRUCTIBLE),
 	BITFIELD(INTEGRITY_FIREPROOF),
 	BITFIELD(INTEGRITY_ACIDPROOF),
 	BITFIELD(INTEGRITY_LAVAPROOF),
 	BITFIELD(INTEGRITY_NO_DECONSTRUCT),
-	BITFIELD(INTEGRITY_FLAMMABLE),
 ))
 
 //? /atom/movable buckle_flags

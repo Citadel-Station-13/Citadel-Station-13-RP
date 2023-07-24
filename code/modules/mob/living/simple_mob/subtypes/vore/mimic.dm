@@ -43,19 +43,6 @@
 	else
 		return ..()
 
-/obj/structure/closet/crate/mimic/legacy_ex_act(severity) //Stores Mimic Contents for later
-	for(var/obj/O in src.contents)
-		qdel(O)
-	qdel(src)
-	return
-
-/obj/structure/closet/crate/mimic/damage(var/damage)
-	if(contents.len)
-		visible_message("<font color='red'><b>The [src] makes out a crunchy noise as its contents are destroyed!</b></font>")
-		for(var/obj/O in src.contents)
-			qdel(O)
-	..()
-
 /obj/structure/closet/crate/mimic/safe
 	mimic_chance = 0
 	mimic_active = FALSE
@@ -176,19 +163,6 @@
 	else
 		return ..()
 
-/obj/structure/closet/crate/mimic/airlock/legacy_ex_act(severity) //Stores Mimic Contents for later
-	for(var/obj/O in src.contents)
-		qdel(O)
-	qdel(src)
-	return
-
-/obj/structure/closet/crate/mimic/airlock/damage(var/damage)
-	if(contents.len)
-		visible_message("<font color='red'><b>The [src] let's out an enraged screach!</b></font>")
-		for(var/obj/O in src.contents)
-			qdel(O)
-	..()
-
 /obj/structure/closet/crate/mimic/airlock/safe
 	mimic_chance = 0
 
@@ -266,19 +240,6 @@
 			return ..()
 	else
 		return ..()
-
-/obj/structure/closet/crate/mimic/closet/legacy_ex_act(severity) //Stores Mimic Contents for later
-	for(var/obj/O in src.contents)
-		qdel(O)
-	qdel(src)
-	return
-
-/obj/structure/closet/crate/mimic/closet/damage(var/damage)
-	if(contents.len)
-		visible_message("<font color='red'><b>The [src] makes out a crunchy noise as its contents are destroyed!</b></font>")
-		for(var/obj/O in src.contents)
-			qdel(O)
-	..()
 
 /obj/structure/closet/crate/mimic/closet/safe
 	mimic_chance = 0

@@ -1,7 +1,5 @@
 
 /obj/structure/table/proc/straight_table_check(var/direction)
-	if(health > 100)
-		return 0
 	var/obj/structure/table/T
 	for(var/angle in list(-90,90))
 		T = locate() in get_step(src.loc,turn(direction,angle))

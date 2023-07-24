@@ -66,7 +66,7 @@
 				"busy" = linked_lathe.busy,
 			)
 
-			var/list/materials_base = list()
+			var/list/materials = list()
 			for(var/M in linked_lathe.stored_materials)
 				var/amount = linked_lathe.stored_materials[M]
 				var/hidden_mat = FALSE
@@ -427,10 +427,11 @@
 
 					for(var/T in linked_destroy.loaded_item.origin_tech)
 						files.UpdateTech(T, linked_destroy.loaded_item.origin_tech[T])
-					if(linked_lathe && linked_destroy.loaded_item.materials_base) // Also sends salvaged materials to a linked protolathe, if any.
-						for(var/t in linked_destroy.loaded_item.materials)
+					if(linked_lathe) // Also sends salvaged materials to a linked protolathe, if any.
+						var/list/mats = linked_destroy.loaded_item.get_materials(TRUE)
+						for(var/t in mats)
 							if(t in linked_lathe.stored_materials)
-								linked_lathe.stored_materials[t] += min(linked_lathe.max_material_storage - linked_lathe.TotalMaterials(), linked_destroy.loaded_item.materials[t] * linked_destroy.decon_mod)
+								linked_lathe.stored_materials[t] += min(linked_lathe.max_material_storage - linked_lathe.TotalMaterials(), mats[t] * linked_destroy.decon_mod)
 
 
 					linked_destroy.loaded_item = null

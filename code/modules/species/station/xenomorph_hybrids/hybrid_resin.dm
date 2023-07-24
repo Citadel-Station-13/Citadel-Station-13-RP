@@ -16,7 +16,6 @@
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	stack_type = /obj/item/stack/material/hybrid_resin
-	armor_type = /datum/armor/none
 
 /obj/item/stack/material/hybrid_resin
 	name = "resin compound"

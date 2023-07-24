@@ -15,7 +15,7 @@
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
 	sharp = 1
-	unacidable = 1 //glass
+	integrity_flags = INTEGRITY_ACIDPROOF
 	rad_flags = RAD_NO_CONTAMINATE
 	item_flags = ITEM_NOBLUDGEON
 	var/mode = SYRINGE_DRAW

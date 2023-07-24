@@ -118,7 +118,7 @@
 			H.active_regen = FALSE
 		healing_factor *= 4
 	var/turf/T = get_turf(H)
-	if(/obj/effect/alien/weeds in T.contents)
+	if(/obj/structure/alien/weeds in T.contents)
 		healing_factor *= 1.1
 	if(/obj/structure/bed/hybrid_nest in T.contents)
 		healing_factor *= 1.2
