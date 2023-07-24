@@ -406,6 +406,7 @@
 #include "code\_globals\time_vars.dm"
 #include "code\_globals\traits.dm"
 #include "code\_globals\lists\clients.dm"
+#include "code\_globals\lists\clothing.dm"
 #include "code\_globals\lists\keybindings.dm"
 #include "code\_globals\lists\mapping.dm"
 #include "code\_globals\lists\medical.dm"

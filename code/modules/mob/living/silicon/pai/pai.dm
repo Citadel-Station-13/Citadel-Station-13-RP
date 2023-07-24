@@ -74,11 +74,6 @@
 		)
 
 	// shell transformation
-	var/global/list/possible_clothing_options = list(
-		"Maid Costume" = /obj/item/clothing/under/dress/maid/sexy,
-		"Grey Pleated Skirt" = /obj/item/clothing/under/color/grey_skirt,
-		"Last Uploaded Clothing" = null,
-		)
 	var/obj/item/clothing/last_uploaded_path
 	var/obj/item/clothing/base_uploaded_path
 	var/uploaded_snowflake_worn_state
