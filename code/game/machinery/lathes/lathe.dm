@@ -189,9 +189,11 @@
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	else if(isitem(I) && (user.a_intent == INTENT_HELP))
 		if(!(I.item_flags & ITEM_EASY_LATHE_DECONSTRUCT))
-			if(!insert_item(I, user))
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+			if(items_max)
+				if(!insert_item(I, user))
+					return CLICKCHAIN_DO_NOT_PROPAGATE
+				return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+			return ..()
 		if(recycle_item(I, user))
 			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		return CLICKCHAIN_DO_NOT_PROPAGATE
