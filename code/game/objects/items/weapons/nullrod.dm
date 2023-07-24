@@ -34,7 +34,7 @@
 		return
 	if (istype(target, /turf/simulated/floor))
 		to_chat(user, "<span class='notice'>You hit the floor with the [src].</span>")
-		call(/obj/effect/rune/proc/revealrunes)(src)
+		call(TYPE_PROC_REF(/obj/effect/rune, revealrunes))(src)
 	if (isliving(target))
 		var/mob/living/tm = target // targeted mob
 		if(SA_vulnerability & tm.mob_class)
