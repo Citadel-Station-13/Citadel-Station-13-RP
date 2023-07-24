@@ -374,7 +374,6 @@
 			"<span class='notice'>You have unfastened \the [src].</span>", \
 			"You hear a ratchet.")
 		deconstruct()
-	#warn hijack with multitool
 
 /**
  * Encodes UI data for AtmosVentState in tgui/interfaces/machines/AtmosVent.tsx

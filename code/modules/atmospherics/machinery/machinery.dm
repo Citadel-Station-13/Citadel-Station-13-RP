@@ -91,8 +91,8 @@ Pipelines + Other Objects -> Pipe network
 /obj/machinery/atmospherics/proc/check_connectable(obj/machinery/atmospherics/target)
 	return (src.connect_types & target.connect_types)
 
-/obj/machinery/atmospherics/attackby(atom/A, mob/user as mob)
-	if(istype(A, /obj/item/pipe_painter))
+/obj/machinery/atmospherics/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/pipe_painter))
 		return
 	..()
 
