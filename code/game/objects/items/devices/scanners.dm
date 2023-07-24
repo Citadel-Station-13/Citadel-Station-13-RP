@@ -31,7 +31,7 @@ HALOGEN COUNTER	- Radcount on mobs
 /obj/item/healthanalyzer/Initialize(mapload)
 	. = ..()
 	if(advscan >= 1)
-		add_obj_verb(src, TYPE_PROC_REF(/obj/item/healthanalyzer, toggle_adv))
+		add_obj_verb(src, /obj/item/healthanalyzer/proc/toggle_adv)
 
 /obj/item/healthanalyzer/do_surgery(mob/living/M, mob/living/user)
 	if(user.a_intent != INTENT_HELP) //in case it is ever used as a surgery tool

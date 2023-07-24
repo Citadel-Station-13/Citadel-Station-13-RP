@@ -209,7 +209,7 @@
 /obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A)
 	LAZYADD(accessories,A)
 	A.on_attached(src, user)
-	add_obj_verb(src, TYPE_PROC_REF(/obj/item/clothing, removetie_verb))
+	add_obj_verb(src, /obj/item/clothing/proc/removetie_verb)
 	update_accessory_slowdown()
 	update_worn_icon()
 
@@ -247,7 +247,7 @@
 	if(A)
 		remove_accessory(usr,A)
 	if(!LAZYLEN(accessories))
-		remove_obj_verb(src, TYPE_PROC_REF(/obj/item/clothing, removetie_verb))
+		remove_obj_verb(src, /obj/item/clothing/proc/removetie_verb)
 		accessories = null
 
 /obj/item/clothing/emp_act(severity)

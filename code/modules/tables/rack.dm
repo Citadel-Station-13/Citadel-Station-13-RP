@@ -11,7 +11,7 @@
 /obj/structure/table/rack/Initialize(mapload)
 	. = ..()
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
-	remove_obj_verb(src, TYPE_PROC_REF(/obj/structure/table, do_put))
+	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 
 /obj/structure/table/rack/update_connections()
 	return
