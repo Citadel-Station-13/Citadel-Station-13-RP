@@ -1029,12 +1029,8 @@
 
 //*Non-Restricted Items (THIS SHOULD BE KEPT MINIMAL. IF IT HAS A SPECIFIC SPECIES, PLACE IT THERE.)
 //These need a taur maintainer before they're readded. None of them work as intended.
-/*/datum/loadout_entry/xeno/back/saddlebag
-	name = "Generic - Saddle Bag, Horse"
-	path = /obj/item/storage/backpack/saddlebag
-	cost = 2
 
-/datum/loadout_entry/xeno/back/saddlebag/common
+/datum/loadout_entry/xeno/back/saddlebag
 	name = "Generic - Saddle Bag, Common"
 	path = /obj/item/storage/backpack/saddlebag_common
 
@@ -1049,4 +1045,3 @@
 /datum/loadout_entry/xeno/uniform
 	name = "Generic - Gear Harness"
 	path = /obj/item/clothing/under/harness
-*/
