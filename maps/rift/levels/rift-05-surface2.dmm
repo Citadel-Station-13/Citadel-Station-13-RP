@@ -1243,6 +1243,14 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
+"aQC" = (
+/obj/structure/disposalpipe/sortjunction{
+	dir = 1;
+	name = "HoS Office";
+	sortType = "HoS Office"
+	},
+/turf/simulated/floor/carpet,
+/area/crew_quarters/heads/hos)
 "aQG" = (
 /obj/structure/cable/green{
 	icon_state = "32-8"
@@ -3188,6 +3196,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"bRW" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "bRZ" = (
 /turf/simulated/wall/prepainted,
 /area/space)
@@ -4719,9 +4733,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
@@ -8855,6 +8866,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacetwo)
+"fEW" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/space)
 "fGi" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -9685,9 +9705,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/machinery/light,
@@ -12582,9 +12599,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "hUs" = (
@@ -13429,6 +13443,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
+"ivn" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/machinery/holopad,
+/turf/simulated/floor/tiled/steel,
+/area/security/hallway)
 "iwt" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -16677,9 +16701,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/red/bordercorner,
 /turf/simulated/floor/tiled/steel,
@@ -19592,6 +19613,9 @@
 "mcs" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
+"mcT" = (
+/turf/simulated/wall/r_wall/prepainted/security,
+/area/security/security_bathroom)
 "mea" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/overlay/snow/floor,
@@ -21805,9 +21829,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "nvo" = (
@@ -22974,6 +22995,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"obK" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/space)
 "obN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
@@ -23328,6 +23355,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
+"oqQ" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/space)
 "ora" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -23678,6 +23711,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"oCC" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red/border,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/security/hallway)
 "oCF" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -23956,6 +23997,9 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
+"oMX" = (
+/turf/simulated/mineral/icerock/lythios43c,
+/area/maintenance/security/upper)
 "oNk" = (
 /obj/structure/railing{
 	dir = 4
@@ -24082,11 +24126,11 @@
 "oQS" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
@@ -24419,11 +24463,7 @@
 	dir = 10
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
-/obj/structure/disposalpipe/sortjunction{
-	dir = 1;
-	name = "Warden";
-	sortType = "Warden"
-	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "oWM" = (
@@ -26111,19 +26151,6 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
-"qbk" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/holopad,
-/turf/simulated/floor/tiled/monotile,
-/area/security/hallway)
 "qbw" = (
 /obj/machinery/button/remote/blast_door{
 	id = "xenobiodiv2";
@@ -26773,9 +26800,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -28487,9 +28511,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/holoposter{
 	pixel_y = -32
 	},
@@ -29578,13 +29599,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/disposalpipe/sortjunction{
-	dir = 1;
-	name = "HoS Office";
-	sortType = "HoS Office"
-	},
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/red/bordercorner,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "scS" = (
@@ -29898,15 +29915,17 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+/obj/structure/cable/green{
+	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/hallway)
@@ -30365,9 +30384,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor/corner{
@@ -31353,6 +31369,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"tmk" = (
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/disposal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "tmt" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -32562,6 +32583,14 @@
 /obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
+"tZV" = (
+/obj/structure/disposalpipe/sortjunction{
+	dir = 8;
+	name = "Warden";
+	sortType = "Warden"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "tZW" = (
 /turf/simulated/floor,
 /area/maintenance/substation/security)
@@ -33054,6 +33083,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"uqb" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/outside/outside2)
 "uqC" = (
 /obj/structure/table/glass,
 /turf/simulated/floor/carpet/blue,
@@ -37163,13 +37198,6 @@
 /obj/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
-"wYR" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
 "xax" = (
 /obj/structure/railing{
 	dir = 1
@@ -56807,8 +56835,8 @@ bbZ
 nhR
 bNq
 sBK
-bbZ
-bbZ
+tmk
+tZV
 yfc
 uWL
 gEL
@@ -57002,7 +57030,7 @@ bVK
 hEn
 bVK
 yfc
-bbZ
+bRW
 yfc
 yfc
 yfc
@@ -57785,14 +57813,14 @@ iEc
 iEc
 kGI
 kGI
-rJD
-rJD
-rJD
+yfc
+yfc
+yfc
 vrq
 vrq
 vrq
 vrq
-rJD
+yfc
 tiu
 uUo
 hUf
@@ -57959,7 +57987,7 @@ sZb
 uAn
 jux
 lMt
-iEc
+yfc
 iEc
 iEc
 iEc
@@ -58153,7 +58181,7 @@ qly
 uAn
 pCP
 lMt
-iEc
+yfc
 iEc
 iEc
 iEc
@@ -58173,7 +58201,7 @@ bVK
 iEc
 ruT
 ruT
-qex
+ruT
 qex
 qex
 qex
@@ -58347,7 +58375,7 @@ cbV
 uAn
 pCP
 lMt
-iEc
+yfc
 iEc
 iEc
 iEc
@@ -58366,15 +58394,15 @@ hoy
 bVK
 iEc
 ruT
-xVp
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-rJD
+ruT
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+yfc
 tiu
 bhS
 gjq
@@ -58541,7 +58569,7 @@ qly
 uAn
 pCP
 lMt
-iEc
+yfc
 iEc
 iEc
 iEc
@@ -58561,13 +58589,13 @@ yfc
 iEc
 ruT
 xVp
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
 vrq
 tiu
 bhS
@@ -58735,7 +58763,7 @@ rtk
 uAn
 vBG
 lMt
-iEc
+yfc
 iEc
 iEc
 iEc
@@ -58755,13 +58783,13 @@ bVK
 iEc
 ruT
 xVp
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
 vrq
 tiu
 bhS
@@ -58929,7 +58957,7 @@ qly
 uAn
 vBG
 lMt
-iEc
+yfc
 iEc
 iEc
 iEc
@@ -58947,19 +58975,19 @@ yfc
 yfc
 yfc
 iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
+nlb
+nlb
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
 vrq
 tiu
 bhS
-nuH
+oCC
 nyQ
 lWe
 hGI
@@ -59123,6 +59151,7 @@ sZb
 uAn
 vBG
 lMt
+yfc
 iEc
 iEc
 iEc
@@ -59140,16 +59169,15 @@ iEc
 iEc
 iEc
 iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
+nlb
+nlb
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
 vrq
 tiu
 bhS
@@ -59317,6 +59345,7 @@ hMX
 uAn
 vBG
 lMt
+yfc
 iEc
 iEc
 iEc
@@ -59334,17 +59363,16 @@ iEc
 iEc
 iEc
 iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-rJD
+nlb
+nlb
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+yfc
 ofz
 oBU
 cUn
@@ -59511,7 +59539,7 @@ qly
 uAn
 vBG
 lMt
-iEc
+yfc
 iEc
 iEc
 iEc
@@ -59529,16 +59557,16 @@ iEc
 iEc
 iEc
 iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-rJD
+nlb
+nlb
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+yfc
 oqK
 bhS
 quY
@@ -59705,6 +59733,7 @@ qly
 uAn
 vBG
 lMt
+yfc
 iEc
 iEc
 iEc
@@ -59722,17 +59751,16 @@ iEc
 iEc
 iEc
 iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-rJD
+nlb
+nlb
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+yfc
 tiu
 bhS
 nuH
@@ -59899,6 +59927,7 @@ qly
 uAn
 dwd
 lMt
+yfc
 iEc
 iEc
 iEc
@@ -59916,18 +59945,17 @@ iEc
 iEc
 iEc
 iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-rJD
-mve
+nlb
+nlb
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+yfc
+ivn
 bhS
 nuH
 nyQ
@@ -60093,6 +60121,7 @@ uAn
 uAn
 vBG
 lMt
+yfc
 iEc
 iEc
 iEc
@@ -60110,19 +60139,18 @@ iEc
 iEc
 iEc
 iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-qjI
-eCN
-qbk
+nlb
+nlb
+eGx
+eGx
+eGx
+eGx
+fEW
+obK
+obK
+yfc
+mve
+bhS
 oQS
 uaX
 uaX
@@ -60279,14 +60307,15 @@ pBj
 pBj
 pBj
 pBj
+oMX
 kcn
-aOv
-aOv
+kcn
+kcn
+kcn
+kcn
+vBG
 lMt
-wYR
-nCi
-lMt
-lMt
+yfc
 iEc
 iEc
 iEc
@@ -60304,18 +60333,17 @@ iEc
 iEc
 iEc
 iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-rJD
-wXp
+nlb
+nlb
+eGx
+eGx
+eGx
+eGx
+oqQ
+ruT
+ruT
+qjI
+eCN
 smH
 ewu
 dJb
@@ -60473,14 +60501,15 @@ pBj
 pBj
 pBj
 pBj
+oMX
 kcn
-fzS
-fzS
+vjN
+vjN
+jux
+kcn
 vBG
-vBG
-kcn
-kcn
-kcn
+lMt
+yfc
 iEc
 iEc
 iEc
@@ -60498,18 +60527,17 @@ iEc
 iEc
 iEc
 iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-rJD
-tiu
+ruT
+ruT
+obK
+obK
+obK
+obK
+ruT
+ruT
+ruT
+yfc
+wXp
 gQY
 mgL
 mll
@@ -60667,14 +60695,15 @@ pBj
 pBj
 pBj
 pBj
+oMX
 kcn
-kcn
-kcn
-kcn
-kcn
-kcn
-vBG
-pCP
+aOv
+aOv
+lMt
+nCi
+lMt
+lMt
+yfc
 iEc
 iEc
 iEc
@@ -60692,17 +60721,16 @@ iEc
 iEc
 iEc
 iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-rJD
+ruT
+ruT
+ruT
+ruT
+ruT
+ruT
+ruT
+ruT
+ruT
+yfc
 jqg
 pPS
 amk
@@ -60862,41 +60890,41 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
+aKq
+uqb
+uqb
+uJq
 kcn
 vBG
 vBG
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-iEc
-uJn
-uJn
-uJn
-uJn
-uJn
-bqU
-bqU
-bqU
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+yfc
+mcT
+mcT
+mcT
+mcT
+mcT
+tPw
+tPw
+tPw
 lUI
 cwI
 bqU
@@ -61056,10 +61084,10 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
+aKq
+aKq
+aKq
+aKq
 kcn
 vBG
 vBG
@@ -67669,7 +67697,7 @@ ecf
 sqF
 mbW
 dWJ
-tOd
+aQC
 suI
 wRc
 gFO
