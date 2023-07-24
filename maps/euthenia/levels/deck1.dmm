@@ -1872,7 +1872,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/atmospheric_substation/medical)
 "cmq" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/orange/border,
@@ -4029,7 +4029,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/open,
-/area/space)
+/area/maintenance/atmospheric_substation/medical)
 "fca" = (
 /obj/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -5856,7 +5856,7 @@
 "hgF" = (
 /obj/structure/ladder,
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/atmospheric_substation/medical)
 "hhh" = (
 /obj/machinery/holopad,
 /obj/map_helper/network_builder/power_cable/auto{
@@ -6443,7 +6443,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/atmospheric_substation/medical)
 "hUW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on{
 	dir = 8
@@ -7447,6 +7447,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
+"jeV" = (
+/turf/simulated/floor/plating,
+/area/maintenance/atmospheric_substation/medical)
 "jfB" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/tiled/techmaint,
@@ -9526,6 +9529,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_one/starboard)
+"lRo" = (
+/turf/simulated/wall/r_wall,
+/area/maintenance/atmospheric_substation/medical)
 "lRr" = (
 /obj/effect/floor_decal/techfloor/orange/corner,
 /turf/simulated/floor/tiled/techmaint,
@@ -16773,7 +16779,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/atmospheric_substation/medical)
 "vtL" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/security_space_law,
@@ -36731,10 +36737,10 @@ nJl
 uFM
 lrB
 mEM
-aBR
-vYy
+lRo
+jeV
 hgF
-aBR
+lRo
 mEM
 lrB
 mEM
@@ -36925,10 +36931,10 @@ vwI
 hXT
 lrB
 mEM
-aBR
-vYy
-vYy
-aBR
+lRo
+jeV
+jeV
+lRo
 mEM
 lrB
 mEM
@@ -37121,8 +37127,8 @@ qsH
 lRk
 vtc
 clL
-vYy
-aBR
+jeV
+lRo
 mEM
 lrB
 mEM
@@ -37313,10 +37319,10 @@ fdk
 hXT
 mEo
 mEM
-aBR
+lRo
 hUm
 faR
-aBR
+lRo
 mEM
 lrB
 mEM
@@ -37507,10 +37513,10 @@ hXT
 hXT
 mEo
 xYG
-aBR
-aBR
-aBR
-aBR
+lRo
+lRo
+lRo
+lRo
 xYG
 lrB
 xYG

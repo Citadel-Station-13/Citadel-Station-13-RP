@@ -275,7 +275,7 @@
 	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "cc" = (
 /obj/effect/floor_decal/techfloor/corner,
 /turf/simulated/floor/tiled/techfloor,
@@ -885,7 +885,7 @@
 	name = "Ore Processing"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "gq" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "auto"
@@ -1305,7 +1305,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "iM" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -1514,7 +1514,7 @@
 	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "jY" = (
 /obj/machinery/button/remote/blast_door{
 	id = "PubPrep";
@@ -1579,12 +1579,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
-"ku" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/maintenance/deck_four/aft/port)
 "kw" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/research)
@@ -1826,7 +1820,7 @@
 	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "mx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
@@ -1999,7 +1993,7 @@
 	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "nu" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
@@ -2050,6 +2044,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
+"nN" = (
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/miningdock)
 "nP" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/door/firedoor/multi_tile,
@@ -2460,7 +2457,7 @@
 /area/maintenance/deck_four/aft/starboard)
 "qq" = (
 /turf/simulated/floor/reinforced,
-/area/maintenance/deck_four/port)
+/area/quartermaster/miningdock)
 "qr" = (
 /turf/simulated/wall,
 /area/library)
@@ -2846,6 +2843,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
+"tp" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/quartermaster/miningdock)
 "tq" = (
 /obj/item/radio/intercom{
 	pixel_y = -24
@@ -3116,7 +3117,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "vs" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -3390,6 +3391,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
+"xW" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/int_door,
+/turf/simulated/floor/tiled/techfloor,
+/area/quartermaster/miningdock)
 "ya" = (
 /obj/machinery/power/apc/direction_bump/south,
 /obj/structure/cable/green{
@@ -3419,7 +3425,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "ym" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -3508,6 +3514,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
+"zj" = (
+/obj/effect/floor_decal/industrial/loading,
+/turf/simulated/floor/plating,
+/area/quartermaster/miningdock)
 "zn" = (
 /obj/map_helper,
 /turf/simulated/floor/plating,
@@ -3761,7 +3771,7 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "Be" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8
@@ -3824,10 +3834,20 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/maintenance/deck_four/aft/port)
+"BM" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/quartermaster/miningdock)
 "BO" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"BS" = (
+/obj/map_helper/network_builder/power_cable/auto{
+	cable_color = "Green"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/miningdock)
 "BU" = (
 /obj/structure/cable/green,
 /obj/structure/cable/green{
@@ -3966,6 +3986,13 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
+"CS" = (
+/obj/machinery/door/airlock/maintenance/cargo,
+/obj/map_helper/network_builder/power_cable/auto{
+	cable_color = "Green"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/quartermaster/miningdock)
 "CV" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
@@ -4110,7 +4137,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced/airless,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "DR" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/deck_four/aft/starboard)
@@ -4162,7 +4189,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "Eq" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
@@ -4351,7 +4378,7 @@
 "FD" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "FE" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -4464,7 +4491,7 @@
 /obj/machinery/door/airlock/maintenance/cargo,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/tiled/techmaint,
-/area/maintenance/deck_four/port)
+/area/quartermaster/miningdock)
 "Gp" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -4561,7 +4588,7 @@
 "GR" = (
 /obj/machinery/door/airlock/maintenance/cargo,
 /turf/simulated/floor/plating,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "GT" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /obj/machinery/door/blast/regular{
@@ -4600,7 +4627,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "Hd" = (
 /turf/simulated/wall,
 /area/gateway)
@@ -4641,6 +4668,9 @@
 /obj/machinery/camera/network/command,
 /turf/simulated/floor/greengrid,
 /area/ai)
+"HA" = (
+/turf/simulated/wall/r_wall,
+/area/quartermaster/miningdock)
 "HN" = (
 /obj/machinery/mineral/unloading_machine,
 /obj/machinery/conveyor{
@@ -4750,7 +4780,7 @@
 	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "Ir" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/deck_four/forward/port)
@@ -5297,7 +5327,7 @@
 	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "Mi" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -5386,9 +5416,9 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/lower)
-"Nn" = (
+"Ni" = (
 /turf/simulated/wall,
-/area/maintenance/deck_four/port)
+/area/quartermaster/miningdock)
 "Nq" = (
 /obj/machinery/conveyor{
 	dir = 4
@@ -6422,7 +6452,7 @@
 	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "Vb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -6502,7 +6532,7 @@
 	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "Vw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -6513,18 +6543,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
-"VA" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/maintenance/deck_four/port)
 "VG" = (
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "VK" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 2;
@@ -6557,7 +6581,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "VR" = (
 /obj/machinery/door/morgue{
 	dir = 2;
@@ -6703,6 +6727,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/starboard)
+"WH" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/quartermaster/miningdock)
 "WJ" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -6755,7 +6782,7 @@
 "Xf" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "Xj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -6884,7 +6911,7 @@
 	cable_color = "Green"
 	},
 /turf/simulated/floor/reinforced,
-/area/maintenance/deck_four/port)
+/area/quartermaster/miningdock)
 "Ye" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -7027,7 +7054,7 @@
 "YP" = (
 /obj/machinery/door/airlock/maintenance/cargo,
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/deck_four/aft/port)
+/area/quartermaster/miningdock)
 "YU" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -17941,15 +17968,15 @@ QS
 BI
 BI
 Ji
-tZ
-tZ
-tZ
-tZ
-tZ
+HA
+HA
+HA
+HA
+HA
 YP
-tZ
-tZ
-tZ
+HA
+HA
+HA
 Cu
 mX
 mX
@@ -18135,15 +18162,15 @@ tl
 JY
 BL
 py
-tZ
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-tZ
+HA
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+HA
 Wv
 mX
 mR
@@ -18331,13 +18358,13 @@ aL
 CK
 VQ
 VG
-MP
-MP
-MP
-MP
-MP
-MP
-tZ
+BS
+BS
+BS
+BS
+nN
+nN
+HA
 Cu
 mX
 mR
@@ -18523,15 +18550,15 @@ Kz
 Fy
 ax
 py
-tZ
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-tZ
+HA
+nN
+nN
+nN
+nN
+BS
+nN
+nN
+HA
 Cu
 mX
 mR
@@ -18716,16 +18743,16 @@ cp
 RC
 xl
 BI
-tZ
-tZ
-tZ
-tZ
-tZ
-MP
-MP
-MP
-MP
-tZ
+HA
+HA
+HA
+HA
+HA
+nN
+BS
+nN
+nN
+HA
 Cu
 mX
 Hv
@@ -18911,15 +18938,15 @@ Be
 Ot
 RG
 Bc
-ug
-ug
-ug
-Uc
-MP
-MP
-MP
-MP
-tZ
+WH
+WH
+WH
+xW
+nN
+BS
+nN
+nN
+HA
 Cu
 mX
 qg
@@ -19105,15 +19132,15 @@ ug
 CV
 RG
 Bc
-ug
-ug
-ug
-Uc
-MP
-MP
-MP
-MP
-tZ
+WH
+WH
+WH
+xW
+nN
+BS
+nN
+nN
+HA
 Wv
 mX
 qg
@@ -19299,15 +19326,15 @@ Ii
 kE
 Wd
 Bc
-ug
-ug
-ug
-Uc
-MP
-MP
-MP
-MP
-tZ
+WH
+WH
+WH
+xW
+nN
+BS
+nN
+nN
+HA
 Wv
 mX
 qg
@@ -19492,16 +19519,16 @@ IW
 VL
 ia
 BI
-tZ
-Wz
-Wz
-Wz
-tZ
-MP
-MP
-MP
-MP
-tZ
+HA
+BM
+BM
+BM
+HA
+nN
+BS
+nN
+nN
+HA
 Wv
 mX
 qg
@@ -19686,16 +19713,16 @@ eT
 eT
 Mi
 BI
-tZ
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-tZ
+HA
+nN
+nN
+nN
+nN
+nN
+BS
+nN
+nN
+HA
 Cu
 mX
 qg
@@ -19879,17 +19906,17 @@ py
 py
 py
 Ji
-tZ
-tZ
+HA
+HA
 yi
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-tZ
+nN
+nN
+nN
+BS
+BS
+nN
+nN
+HA
 Cu
 mX
 Hv
@@ -20055,35 +20082,35 @@ Za
 Za
 tZ
 tZ
-tZ
-iH
+HA
+Ni
 GR
-iH
-tZ
-tZ
-tZ
-tZ
-Wz
-Wz
-tZ
-tZ
-tZ
-tZ
-Wz
-Wz
-tZ
-tZ
-tZ
-MP
-MP
-MP
-MP
-MP
-MP
+Ni
+HA
+HA
+HA
+HA
+BM
+BM
+HA
+HA
+HA
+HA
+BM
+BM
+HA
+HA
+HA
+nN
+nN
+nN
+nN
+nN
+BS
 FD
-iH
-iH
-tZ
+Ni
+Ni
+HA
 Cu
 mX
 mR
@@ -20250,34 +20277,34 @@ Za
 Ji
 Ji
 DO
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+BS
+BS
+BS
+BS
+BS
+BS
 Xf
-av
+zj
 cb
-tZ
+HA
 Cu
 mX
 mR
@@ -20444,8 +20471,8 @@ Za
 Ji
 Ji
 DO
-MP
-MP
+nN
+nN
 ly
 DY
 Zg
@@ -20459,19 +20486,19 @@ nX
 nX
 nX
 vL
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
+nN
+nN
+nN
+BS
+nN
+nN
+nN
+nN
+nN
 Ej
-qn
+tp
 mu
-tZ
+HA
 Wv
 mX
 mR
@@ -20638,8 +20665,8 @@ Za
 Ji
 Ji
 DO
-MP
-MP
+nN
+nN
 ly
 ly
 KJ
@@ -20653,19 +20680,19 @@ ug
 ug
 nX
 nX
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-qn
+nN
+nN
+nN
+BS
+nN
+nN
+nN
+nN
+nN
+nN
+tp
 Vu
-tZ
+HA
 Cu
 mX
 mX
@@ -20832,8 +20859,8 @@ Za
 Ji
 Ji
 DO
-MP
-MP
+nN
+nN
 MP
 NL
 KJ
@@ -20847,19 +20874,19 @@ ug
 ug
 ug
 vv
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-iH
+nN
+nN
+nN
+BS
+nN
+nN
+nN
+Ni
 go
-MP
-qn
+nN
+tp
 Iq
-tZ
+HA
 py
 Cu
 Wv
@@ -21026,8 +21053,8 @@ Za
 Ji
 Ji
 DO
-MP
-MP
+nN
+nN
 ly
 DY
 KJ
@@ -21041,19 +21068,19 @@ ug
 ug
 nX
 nX
-MP
-MP
-MP
-MP
-MP
+nN
+nN
+nN
+BS
+nN
 FD
 vp
-iH
-qn
-qn
-qn
+Ni
+tp
+tp
+tp
 cb
-tZ
+HA
 tZ
 tZ
 tZ
@@ -21220,8 +21247,8 @@ Za
 Za
 Ji
 DO
-MP
-MP
+nN
+nN
 ly
 ly
 Zg
@@ -21235,11 +21262,11 @@ EH
 nX
 nX
 ZN
-MP
-MP
-MP
-MP
-MP
+nN
+nN
+nN
+BS
+nN
 Xf
 iI
 Hc
@@ -21247,7 +21274,7 @@ Md
 Md
 jX
 ns
-tZ
+HA
 KJ
 KJ
 KJ
@@ -21413,35 +21440,35 @@ Za
 Za
 Za
 Za
-tZ
-tZ
-tZ
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-tZ
-tZ
-iH
-tZ
-tZ
-tZ
-iH
-tZ
-tZ
+HA
+HA
+HA
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+BS
+HA
+HA
+Ni
+HA
+HA
+HA
+Ni
+HA
+HA
 tZ
 KJ
 tZ
@@ -21608,34 +21635,34 @@ Za
 Za
 Za
 Za
-tZ
-tZ
-tZ
-MP
-MP
-MP
+HA
+HA
+HA
+nN
+nN
+nN
 Va
-MP
-MP
-ku
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-MP
-tZ
-tZ
-tZ
-tZ
-tZ
-tZ
-tZ
-tZ
-tZ
+nN
+nN
+BS
+BS
+BS
+BS
+BS
+BS
+BS
+BS
+BS
+BS
+HA
+HA
+HA
+HA
+HA
+HA
+HA
+HA
+HA
 tZ
 tZ
 tZ
@@ -21817,11 +21844,11 @@ Oe
 Oe
 Oe
 Oe
-Oe
-VA
-VA
-VA
-Oe
+HA
+vp
+vp
+vp
+HA
 Oe
 hR
 Oe
@@ -22011,11 +22038,11 @@ hR
 hR
 hR
 hR
-Nn
+Ni
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -22205,11 +22232,11 @@ Sx
 Sx
 hR
 hR
-Nn
+Ni
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -22399,11 +22426,11 @@ hR
 Sx
 hR
 hR
-Nn
+Ni
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -22593,11 +22620,11 @@ hR
 Sx
 Sx
 Sx
-cS
+CS
 Ya
 Ya
 Ya
-cS
+CS
 Sx
 Sx
 hR
@@ -22787,11 +22814,11 @@ hR
 oq
 hR
 hR
-Nn
+Ni
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -22981,11 +23008,11 @@ hR
 oq
 hR
 hR
-Nn
+Ni
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -23175,11 +23202,11 @@ hR
 oq
 oq
 oq
-Nn
+Ni
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -23369,11 +23396,11 @@ hR
 mA
 hR
 hR
-Nn
+Ni
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -23563,11 +23590,11 @@ hR
 bn
 hR
 hR
-Nn
+Ni
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -23757,11 +23784,11 @@ hR
 hR
 hR
 hR
-Nn
+Ni
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -23955,7 +23982,7 @@ ra
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -24149,7 +24176,7 @@ TU
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -24343,7 +24370,7 @@ WX
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -24537,7 +24564,7 @@ WX
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -24731,7 +24758,7 @@ TU
 qq
 qq
 qq
-Nn
+Ni
 hR
 hR
 hR
@@ -24922,10 +24949,10 @@ TU
 TU
 TU
 ra
-Nn
+Ni
 Gl
-Nn
-Nn
+Ni
+Ni
 hR
 hR
 hR
