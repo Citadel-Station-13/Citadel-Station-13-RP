@@ -122,7 +122,6 @@
 	var/tool_panel = TOOL_SCREWDRIVER
 	/// tool used for unanchor
 	var/tool_unanchor = TOOL_WRENCH
-	#warn impl 3 above + impl for atmospherics
 	/// default icon state overlay for panel open
 	var/panel_icon_state
 	/// is the maintenance panel open?

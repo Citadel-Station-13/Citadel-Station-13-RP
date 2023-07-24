@@ -1120,6 +1120,7 @@
 #include "code\game\legacy_html_uis\menus.dm"
 #include "code\game\machinery\_frame.dm"
 #include "code\game\machinery\_machinery.dm"
+#include "code\game\machinery\_machinery_construction.dm"
 #include "code\game\machinery\_machinery_power.dm"
 #include "code\game\machinery\adv_med.dm"
 #include "code\game\machinery\ai_slipper.dm"

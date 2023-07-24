@@ -13,7 +13,8 @@
 	var/gas_groups = GAS_GROUP_UNKNOWN
 
 	//! physics
-	/// Specific heat in J/(mol*K)
+	/// Specific heat in J/(mol*K).
+	/// For chemicals that exist in real life this is the specific heat value under constant volume.
 	var/specific_heat = 0
 	/// Molar mass in kg/mol
 	var/molar_mass = 0
@@ -46,3 +47,6 @@
 	var/fusion_power = 0
 	/// Relative rarity compared to other gases, used when setting up the reactions list.
 	var/rarity = 0
+
+	// todo: combustion enthalpies / oxidizer powers
+	// todo: combustion product gases

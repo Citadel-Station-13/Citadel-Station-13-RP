@@ -1,41 +1,4 @@
-
-/datum/gas/oxygen
-	specific_heat = 20
-	molar_mass = 0.032
-
-/datum/gas/nitrogen
-	specific_heat = 20
-	molar_mass = 0.028
-
-/datum/gas/carbon_dioxide
-	specific_heat = 30
-	molar_mass = 0.044
-
-/datum/gas/phoron
-	//Note that this has a significant impact on TTV yield.
-	//Because it is so high, any leftover phoron soaks up a lot of heat and drops the yield pressure.
-	specific_heat = 200	// J/(mol*K)
-
-	//Hypothetical group 14 (same as carbon), period 8 element.
-	//Using multiplicity rule, it's atomic number is 162
-	//and following a N/Z ratio of 1.5, the molar mass of a monatomic gas is:
-	molar_mass = 0.405	// kg/mol
-
-/datum/gas/hydrogen
-	//lore_text = "A colorless, flammable gas."
-	//flags = MAT_FLAG_FUSION_FUEL
-	//wall_name = "bulkhead"
-	//construction_difficulty = MAT_VALUE_HARD_DIY
-	specific_heat = 100
-	molar_mass = 0.002
-	/*burn_product = /singleton/material/liquid/water
-	gas_symbol_html = "H<sub>2</sub>"
-	gas_symbol = "H2"
-	dissolves_into = list(
-		/singleton/material/liquid/fuel/hydrazine = 1
-	)
-	value = 0.4*/
-
+// todo: eithre rename or remove this and overhaul its uses, fucks sakes.
 /datum/gas/volatile_fuel
 	id = GAS_ID_VOLATILE_FUEL
 	name = "Volatile Fuel"
@@ -43,10 +6,6 @@
 	molar_mass = 0.114	// kg/mol. 		same.
 
 	gas_flags = GAS_FLAG_FUEL
-
-/datum/gas/nitrous_oxide
-	specific_heat = 40
-	molar_mass = 0.044
 
 //The following is partially stolen from Nebula
 //I am not rewriting our handling of air for this, at least for now.
