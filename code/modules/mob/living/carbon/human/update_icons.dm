@@ -435,7 +435,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return
 
 	var/icon/horns_s = get_horns_overlay()
-	if(horns_s && !hiding_horns)
+	if(horns_s && (!hiding_horns && horn_style.can_be_hidden))
 		if(horns_s.Height() > face_standing.Height())
 			face_standing.Crop(1, 1, face_standing.Width(), horns_s.Height())
 		face_standing.Blend(horns_s, ICON_OVERLAY)
@@ -891,6 +891,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	remove_layer(TAIL_LAYER)
 	remove_layer(TAIL_LAYER_ALT)
 
+	if(hiding_tail && tail_style.can_be_hidden)
+		return
+
 	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
 
 	var/list/image/tail_images = list()
@@ -1023,7 +1026,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	remove_layer(WING_LAYER)
 
-	if(hiding_wings)
+	if(hiding_wings && wing_style.can_be_hidden)
 		return
 
 	overlays_standing[WING_LAYER] = list()
