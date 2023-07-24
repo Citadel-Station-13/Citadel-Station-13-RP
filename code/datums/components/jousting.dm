@@ -18,12 +18,12 @@
 /datum/component/jousting/Initialize()
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
-	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/on_equip)
-	RegisterSignal(parent, COMSIG_ITEM_DROPPED, .proc/on_drop)
-	RegisterSignal(parent, COMSIG_ITEM_ATTACK, .proc/on_attack)
+	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equip))
+	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(on_drop))
+	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(on_attack))
 
 /datum/component/jousting/proc/on_equip(datum/source, mob/user, slot)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/mob_move, TRUE)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(mob_move), TRUE)
 	current_holder = user
 
 /datum/component/jousting/proc/on_drop(datum/source, mob/user)

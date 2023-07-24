@@ -21,10 +21,10 @@
 		src.falloff = falloff
 
 	if(istype(parent, /atom))
-		RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/rad_examine)
+		RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(rad_examine))
 		// if(istype(parent, /obj/item))
-		// 	RegisterSignal(parent, COMSIG_ITEM_ATTACK, .proc/rad_attack)
-		// 	RegisterSignal(parent, COMSIG_ITEM_ATTACK_OBJ, .proc/rad_attack)
+		// 	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(rad_attack))
+		// 	RegisterSignal(parent, COMSIG_ITEM_ATTACK_OBJ, PROC_REF(rad_attack))
 	else
 		. = COMPONENT_INCOMPATIBLE
 		CRASH("Something that wasn't an atom was given /datum/component/radioactive")

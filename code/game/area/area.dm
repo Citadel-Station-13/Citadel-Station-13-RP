@@ -206,7 +206,7 @@
 				A.power_light = FALSE
 				A.power_equip = FALSE
 				A.power_environ = FALSE
-			INVOKE_ASYNC(A, .proc/power_change)
+			INVOKE_ASYNC(A, PROC_REF(power_change))
 */
 	STOP_PROCESSING(SSobj, src)
 	return ..()

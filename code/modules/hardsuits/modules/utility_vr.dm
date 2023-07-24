@@ -38,7 +38,7 @@
 
 	var/mob/living/carbon/human/H = holder.wearer
 	to_chat(H,"<span class='notice'>You activate the P.A.T. module.</span>")
-	RegisterSignal(H, COMSIG_MOVABLE_MOVED, .proc/boop)
+	RegisterSignal(H, COMSIG_MOVABLE_MOVED, PROC_REF(boop))
 
 /obj/item/hardsuit_module/pat_module/deactivate()
 	if(!..())

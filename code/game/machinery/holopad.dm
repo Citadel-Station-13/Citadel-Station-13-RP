@@ -960,8 +960,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		user.action_feedback(SPAN_WARNING("You're already focusing somewhere else!"), source)
 		return FALSE
 	remoting = user
-	RegisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE, .proc/cleanup_remote_presence)
-	RegisterSignal(remoting, COMSIG_MOB_ITEM_EQUIPPED, .proc/on_item_equipped)
+	RegisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE, PROC_REF(cleanup_remote_presence))
+	RegisterSignal(remoting, COMSIG_MOB_ITEM_EQUIPPED, PROC_REF(on_item_equipped))
 	action_hang_up.grant(remoting)
 	action_swap_view.grant(remoting)
 	if(isAI(user))
