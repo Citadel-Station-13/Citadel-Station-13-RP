@@ -28,17 +28,23 @@
 	return //Stub for subtypes
 
 /obj/map_helper/conveyor/belt
+	name = "Rename me Jerry!"
+	icon_state = "belt"
 	my_device_type = /obj/machinery/conveyor
 
 /obj/map_helper/conveyor/belt/setup()
 	var/obj/machinery/conveyor/my_belt = my_device
 	my_belt.tag = id_tag
+	my_belt.name = name
 
 
 
 /obj/map_helper/conveyor/lever
+	name = "Rename me Jerry!"
+	icon_state = "lever"
 	my_device_type = /obj/machinery/conveyor_switch
 
 /obj/map_helper/conveyor/lever/setup()
 	var/obj/machinery/conveyor_switch/my_switch = my_device
 	my_switch.tag = id_tag
+	my_switch.name = name

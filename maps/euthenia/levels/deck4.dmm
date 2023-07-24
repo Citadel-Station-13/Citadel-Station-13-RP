@@ -135,6 +135,15 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/secure_storage/critical/records)
+"bn" = (
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "16-0"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/port)
 "br" = (
 /obj/machinery/ai_slipper,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -259,8 +268,11 @@
 "cb" = (
 /obj/machinery/mineral/input,
 /obj/machinery/conveyor{
-	id = "mining_interior";
 	dir = 4
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "mining_interior";
+	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
@@ -374,6 +386,9 @@
 /area/rnd/secure_storage/critical)
 "cS" = (
 /obj/machinery/door/airlock/maintenance/cargo,
+/obj/map_helper/network_builder/power_cable/auto{
+	cable_color = "Green"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_four/port)
 "cW" = (
@@ -657,8 +672,11 @@
 "fh" = (
 /obj/machinery/mineral/input,
 /obj/machinery/conveyor{
-	id = "mobile_mining_interior";
 	dir = 4
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "_mobile_mining_interior";
+	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
@@ -820,7 +838,11 @@
 "gh" = (
 /obj/machinery/mineral/output,
 /obj/machinery/conveyor{
-	id = "mobile_mining_interior"
+	dir = 9
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "_mobile_mining_interior";
+	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
@@ -856,10 +878,11 @@
 	pixel_y = 30
 	},
 /obj/machinery/conveyor_switch/oneway{
-	id = "mining_interior";
-	layer = 3.3;
-	name = "refining conveyor";
 	pixel_y = 14
+	},
+/obj/map_helper/conveyor/lever{
+	id_tag = "_mobile_mining_interior";
+	name = "Ore Processing"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/maintenance/deck_four/aft/port)
@@ -1288,11 +1311,14 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/maintenance/deck_four/starboard)
 "iO" = (
+/obj/machinery/mineral/input,
 /obj/machinery/conveyor{
-	id = "mobile_mining_interior";
 	dir = 1
 	},
-/obj/machinery/mineral/input,
+/obj/map_helper/conveyor/belt{
+	id_tag = "_mobile_mining_interior";
+	name = "Ore processing belt"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
 "iP" = (
@@ -1352,9 +1378,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "jj" = (
-/obj/machinery/conveyor{
-	id = "mobile_mining_interior"
-	},
 /obj/structure/plasticflaps/mining,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
@@ -1484,8 +1507,11 @@
 "jX" = (
 /obj/machinery/mineral/output,
 /obj/machinery/conveyor{
-	id = "mining_interior";
 	dir = 1
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "mining_interior";
+	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
@@ -1529,6 +1555,13 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
+/obj/machinery/conveyor_switch/oneway{
+	pixel_y = 14
+	},
+/obj/map_helper/conveyor/lever{
+	id_tag = "mining_interior";
+	name = "Ore Processing"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/deck_four/aft/port)
 "ks" = (
@@ -1546,6 +1579,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
+"ku" = (
+/obj/map_helper/network_builder/power_cable/auto{
+	cable_color = "Green"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/maintenance/deck_four/aft/port)
 "kw" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/research)
@@ -1779,6 +1818,13 @@
 /area/gateway)
 "mu" = (
 /obj/machinery/mineral/unloading_machine,
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "mining_interior";
+	name = "Ore processing belt"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
 "mx" = (
@@ -1808,6 +1854,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
+"mA" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/port)
 "mE" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1939,6 +1991,13 @@
 /area/rnd/anomaly_lab)
 "ns" = (
 /obj/machinery/mineral/processing_unit,
+/obj/machinery/conveyor{
+	dir = 1
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "mining_interior";
+	name = "Ore processing belt"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
 "nu" = (
@@ -2052,6 +2111,12 @@
 /obj/structure/railing,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rnd/research)
+"oq" = (
+/obj/map_helper/network_builder/power_cable/auto{
+	cable_color = "Green"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/port)
 "os" = (
 /obj/machinery/blackbox_recorder,
 /turf/simulated/floor/tiled/techfloor,
@@ -4530,11 +4595,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/deck_four/aft/port)
 "Hc" = (
+/obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
-	id = "mining_interior";
 	dir = 1
 	},
-/obj/structure/plasticflaps/mining,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
 "Hd" = (
@@ -4577,6 +4641,17 @@
 /obj/machinery/camera/network/command,
 /turf/simulated/floor/greengrid,
 /area/ai)
+"HN" = (
+/obj/machinery/mineral/unloading_machine,
+/obj/machinery/conveyor{
+	dir = 1
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "_mobile_mining_interior";
+	name = "Ore processing belt"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/aft/port)
 "HS" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -4668,8 +4743,11 @@
 /area/rnd/anomaly_lab/containment_one)
 "Iq" = (
 /obj/machinery/conveyor{
-	id = "mining_interior";
 	dir = 4
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "mining_interior";
+	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
@@ -4720,8 +4798,11 @@
 "IH" = (
 /obj/machinery/mineral/output,
 /obj/machinery/conveyor{
-	id = "mobile_mining_interior";
 	dir = 4
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "_mobile_mining_interior";
+	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
@@ -5209,8 +5290,11 @@
 /area/gateway/prep_room)
 "Md" = (
 /obj/machinery/conveyor{
-	id = "mining_interior";
 	dir = 1
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "mining_interior";
+	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
@@ -5307,8 +5391,11 @@
 /area/maintenance/deck_four/port)
 "Nq" = (
 /obj/machinery/conveyor{
-	id = "mobile_mining_interior";
 	dir = 4
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "_mobile_mining_interior";
+	name = "Ore processing belt"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
@@ -5378,10 +5465,6 @@
 /obj/effect/floor_decal/borderfloor/corner,
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/critical)
-"Ob" = (
-/obj/machinery/conveyor,
-/turf/space,
-/area/space)
 "Od" = (
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/starboard)
@@ -6005,6 +6088,12 @@
 "Sw" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/secure_storage/lower)
+"Sx" = (
+/obj/map_helper/network_builder/power_cable/auto{
+	cable_color = "Green"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/deck_four/port)
 "Sy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/techfloor{
@@ -6404,11 +6493,14 @@
 /turf/simulated/floor/wood,
 /area/library)
 "Vu" = (
+/obj/machinery/mineral/output,
 /obj/machinery/conveyor{
-	id = "mining_interior";
 	dir = 4
 	},
-/obj/machinery/mineral/output,
+/obj/map_helper/conveyor/belt{
+	id_tag = "mining_interior";
+	name = "Ore processing belt"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
 "Vw" = (
@@ -6702,6 +6794,17 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/maintenance/deck_four/forward)
+"XD" = (
+/obj/machinery/mineral/processing_unit,
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "_mobile_mining_interior";
+	name = "Ore processing belt"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/aft/port)
 "XF" = (
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/reinforced/airless,
@@ -6776,6 +6879,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/starboard)
+"Ya" = (
+/obj/map_helper/network_builder/power_cable/auto{
+	cable_color = "Green"
+	},
+/turf/simulated/floor/reinforced,
+/area/maintenance/deck_four/port)
 "Ye" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -17432,7 +17541,7 @@ Ji
 py
 BI
 IH
-mu
+HN
 iO
 ln
 Lw
@@ -18013,7 +18122,7 @@ tZ
 Ji
 py
 BI
-ns
+XD
 iH
 bQ
 Ct
@@ -21508,7 +21617,7 @@ MP
 Va
 MP
 MP
-MP
+ku
 MP
 MP
 MP
@@ -21896,7 +22005,7 @@ Oe
 Oe
 hR
 hR
-Vo
+Sx
 hR
 hR
 hR
@@ -22090,10 +22199,10 @@ Oe
 Oe
 Oe
 Oe
-Vo
-Vo
-Vo
-Vo
+Sx
+Sx
+Sx
+Sx
 hR
 hR
 Nn
@@ -22287,7 +22396,7 @@ Oe
 TH
 hR
 hR
-Vo
+Sx
 hR
 hR
 Nn
@@ -22481,16 +22590,16 @@ Oe
 TE
 hR
 hR
-Vo
-Vo
-Vo
+Sx
+Sx
+Sx
 cS
-qq
-qq
-qq
+Ya
+Ya
+Ya
 cS
-Vo
-Vo
+Sx
+Sx
 hR
 hR
 hR
@@ -22675,7 +22784,7 @@ Oe
 Oe
 hR
 hR
-hR
+oq
 hR
 hR
 Nn
@@ -22869,7 +22978,7 @@ Oe
 Oe
 hR
 hR
-hR
+oq
 hR
 hR
 Nn
@@ -23063,9 +23172,9 @@ Oe
 hR
 hR
 hR
-hR
-hR
-hR
+oq
+oq
+oq
 Nn
 qq
 qq
@@ -23257,7 +23366,7 @@ Oe
 Oe
 hR
 hR
-hR
+mA
 hR
 hR
 Nn
@@ -23451,7 +23560,7 @@ Oe
 Oe
 hR
 hR
-hR
+bn
 hR
 hR
 Nn
@@ -35514,7 +35623,7 @@ Za
 Za
 Za
 Za
-Ob
+Za
 Za
 Za
 Za
