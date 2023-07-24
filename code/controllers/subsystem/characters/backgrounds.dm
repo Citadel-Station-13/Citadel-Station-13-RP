@@ -48,11 +48,11 @@
 			character_cultures[L.id] = L
 
 
-	tim_sort(character_origins, GLOBAL_PROC_REF(auto_compare), TRUE)
-	tim_sort(character_citizenships, GLOBAL_PROC_REF(auto_compare), TRUE)
-	tim_sort(character_religions, GLOBAL_PROC_REF(auto_compare), TRUE)
-	tim_sort(character_factions, GLOBAL_PROC_REF(auto_compare), TRUE)
-	tim_sort(character_cultures, GLOBAL_PROC_REF(auto_compare), TRUE)
+	tim_sort(character_origins, GLOBAL_PROC_REF(cmp_auto_compare), TRUE)
+	tim_sort(character_citizenships, GLOBAL_PROC_REF(cmp_auto_compare), TRUE)
+	tim_sort(character_religions, GLOBAL_PROC_REF(cmp_auto_compare), TRUE)
+	tim_sort(character_factions, GLOBAL_PROC_REF(cmp_auto_compare), TRUE)
+	tim_sort(character_cultures, GLOBAL_PROC_REF(cmp_auto_compare), TRUE)
 
 /datum/controller/subsystem/characters/proc/available_citizenships(species_id, category)
 	. = list()

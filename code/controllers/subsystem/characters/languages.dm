@@ -26,9 +26,9 @@
 		if(!(L.language_flags & LANGUAGE_NONGLOBAL) && L.key)
 			language_keys[L.key] = L
 
-	tim_sort(language_names, GLOBAL_PROC_REF(auto_compare), TRUE)
-	tim_sort(language_keys, GLOBAL_PROC_REF(auto_compare))
-	tim_sort(language_paths, GLOBAL_PROC_REF(auto_compare), TRUE)
+	tim_sort(language_names, GLOBAL_PROC_REF(cmp_auto_compare), TRUE)
+	tim_sort(language_keys, GLOBAL_PROC_REF(cmp_auto_compare))
+	tim_sort(language_paths, GLOBAL_PROC_REF(cmp_auto_compare), TRUE)
 
 /datum/controller/subsystem/characters/proc/resolve_language(id_path_name)
 	if(ispath(id_path_name))

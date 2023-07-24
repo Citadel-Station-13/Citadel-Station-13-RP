@@ -29,7 +29,7 @@
 	src.preferences = preferences
 	..()
 	selected_category = categories[1]
-	tim_sort(preferences.preference_by_key, GLOBAL_PROC_REF(preference_load_order), TRUE)
+	tim_sort(preferences.preference_by_key, GLOBAL_PROC_REF(cmp_preference_load_order), TRUE)
 
 /datum/category_collection/player_setup_collection/Destroy()
 	preferences = null

@@ -14,7 +14,7 @@ GLOBAL_LIST_INIT(holograms, __init_holograms())
 			stack_trace("collision on [H.type] vs [.[H.name]:type].")
 			continue
 		.[H.name] = H
-	tim_sort(., GLOBAL_PROC_REF(name_asc), TRUE)
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc), TRUE)
 
 /**
  * fetches a hologram datum

@@ -146,7 +146,7 @@ SUBSYSTEM_DEF(events)
 		else
 			qdel(holiday)
 
-	tim_sort(holidays, GLOBAL_PROC_REF(holiday_priority))
+	tim_sort(holidays, GLOBAL_PROC_REF(cmp_holiday_priority))
 	// // regenerate station name because holiday prefixes.
 	// set_station_name(new_station_name())
 	// world.update_status()

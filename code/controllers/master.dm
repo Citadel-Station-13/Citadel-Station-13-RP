@@ -268,7 +268,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		SetRunLevel(RUNLEVEL_LOBBY)
 
 	// Sort subsystems by display setting for easy access.
-	tim_sort(subsystems, GLOBAL_PROC_REF(subsystem_display))
+	tim_sort(subsystems, GLOBAL_PROC_REF(cmp_subsystem_display))
 
 	if(world.system_type == MS_WINDOWS && CONFIG_GET(flag/toast_notification_on_init) && !length(GLOB.clients))
 		world.shelleo("start /min powershell -ExecutionPolicy Bypass -File tools/initToast/initToast.ps1 -name \"[world.name]\" -icon %CD%\\icons\\CS13_16.png -port [world.port]")
@@ -378,9 +378,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	 * These sort by lower priorities first to reduce the number of loops needed to add subsequent SS's to the queue.
 	 * (higher subsystems will be sooner in the queue, adding them later in the loop means we don't have to loop thru them next queue add)
 	 */
-	tim_sort(SStickersubsystems, GLOBAL_PROC_REF(subsystem_priority))
+	tim_sort(SStickersubsystems, GLOBAL_PROC_REF(cmp_subsystem_priority))
 	for(var/I in runlevel_sorted_subsystems)
-		tim_sort(I, GLOBAL_PROC_REF(subsystem_priority))
+		tim_sort(I, GLOBAL_PROC_REF(cmp_subsystem_priority))
 		I += SStickersubsystems
 
 	var/cached_runlevel = current_runlevel

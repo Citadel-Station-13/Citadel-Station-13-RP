@@ -299,7 +299,7 @@
 	for(var/tajara_wrap in (typesof(/obj/item/clothing/accessory/tajaran_wrap)))
 		var/obj/item/clothing/accessory/tajaran_wrap/tajara_wrap_type = tajara_wrap
 		tajara_wraps[initial(tajara_wrap_type.name)] = tajara_wrap_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tajara_wraps, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tajara_wraps, GLOBAL_PROC_REF(cmp_text_asc)))
 
 //Foot wear
 
@@ -314,7 +314,7 @@
 	for(var/tworkboot in (typesof(/obj/item/clothing/shoes/tajara/workboots)))
 		var/obj/item/clothing/shoes/tajara/workboots/tworkboot_type = tworkboot
 		tworkboots[initial(tworkboot_type.name)] = tworkboot_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tworkboots, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tworkboots, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/tajaran/shoes/footwraps
 	name = "Tajaran - Native foot-wear"
@@ -337,7 +337,7 @@
 	for(var/tflat in (typesof(/obj/item/clothing/shoes/flats/tajara)))
 		var/obj/item/clothing/shoes/flats/tajara/tflat_type = tflat
 		tflats[initial(tflat_type.name)] = tflat_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tflats, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tflats, GLOBAL_PROC_REF(cmp_text_asc)))
 
 //*Promethean
 /datum/loadout_entry/xeno/promethean/uniform/cohesion_suit
@@ -350,7 +350,7 @@
 	for(var/cohesionsuit in (typesof(/obj/item/clothing/under/cohesion)))
 		var/obj/item/clothing/under/cohesion/cohesion_type = cohesionsuit
 		cohesionsuits[initial(cohesion_type.name)] = cohesion_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(cohesionsuits, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(cohesionsuits, GLOBAL_PROC_REF(cmp_text_asc)))
 
 
 //*Vox
@@ -489,7 +489,7 @@
 	for(var/plasman in (typesof(/obj/item/clothing/accessory/plasman)))
 		var/obj/item/clothing/accessory/plasman/plasaccessory_type = plasman
 		plasaccessories[initial(plasaccessory_type.name)] = plasaccessory_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(plasaccessories, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(plasaccessories, GLOBAL_PROC_REF(cmp_text_asc)))
 
 
 
@@ -506,7 +506,7 @@
 	for(var/chain_style in typesof(/obj/item/clothing/ears/skrell/chain))
 		var/obj/item/clothing/ears/skrell/chain/chain = chain_style
 		chaintypes[initial(chain.name)] = chain
-	tweaks += new/datum/loadout_tweak/path(tim_sort(chaintypes, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(chaintypes, GLOBAL_PROC_REF(cmp_text_asc)))
 
 
 /datum/loadout_entry/xeno/skrell/bands
@@ -519,7 +519,7 @@
 	for(var/band_style in typesof(/obj/item/clothing/ears/skrell/band))
 		var/obj/item/clothing/ears/skrell/band/band = band_style
 		bandtypes[initial(band.name)] = band
-	tweaks += new/datum/loadout_tweak/path(tim_sort(bandtypes, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(bandtypes, GLOBAL_PROC_REF(cmp_text_asc)))
 
 
 /datum/loadout_entry/xeno/skrell/cloth/short
@@ -532,7 +532,7 @@
 	for(var/short_style in typesof(/obj/item/clothing/ears/skrell/cloth_male))
 		var/obj/item/clothing/ears/skrell/cloth_male/short = short_style
 		shorttypes[initial(short.name)] = short
-	tweaks += new/datum/loadout_tweak/path(tim_sort(shorttypes, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(shorttypes, GLOBAL_PROC_REF(cmp_text_asc)))
 
 
 /datum/loadout_entry/xeno/skrell/cloth/long
@@ -545,7 +545,7 @@
 	for(var/long_style in typesof(/obj/item/clothing/ears/skrell/cloth_female))
 		var/obj/item/clothing/ears/skrell/cloth_female/long = long_style
 		longtypes[initial(long.name)] = long
-	tweaks += new/datum/loadout_tweak/path(tim_sort(longtypes, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(longtypes, GLOBAL_PROC_REF(cmp_text_asc)))
 
 
 /datum/loadout_entry/xeno/skrell/colored/band
@@ -571,7 +571,7 @@
 	for(var/smock in typesof(/obj/item/clothing/under/teshari/smock))
 		var/obj/item/clothing/under/teshari/smock/smock_type = smock
 		smocks[initial(smock_type.name)] = smock_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(smocks, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(smocks, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/teshari/uniform/standard_undercoat_selection
 	name = "Teshari - Standard Undercoat Selection"
@@ -583,7 +583,7 @@
 	for(var/undercoat in typesof(/obj/item/clothing/under/teshari/undercoat/standard))
 		var/obj/item/clothing/under/teshari/undercoat/standard/undercoat_type = undercoat
 		undercoats[initial(undercoat_type.name)] = undercoat_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(undercoats, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(undercoats, GLOBAL_PROC_REF(cmp_text_asc)))
 
 
 /datum/loadout_entry/xeno/teshari/uniform/dress_smock_selection
@@ -596,7 +596,7 @@
 	for(var/dresssmock in typesof(/obj/item/clothing/under/teshari/dresssmock))
 		var/obj/item/clothing/under/teshari/dresssmock/dresssmock_type = dresssmock
 		dresssmocks[initial(dresssmock_type.name)] = dresssmock_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(dresssmocks, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(dresssmocks, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/teshari/uniform/role_undercoat
 	name = "Teshari - Facility Director Undercoat"
@@ -724,7 +724,7 @@
 	for(var/cloak in typesof(/obj/item/clothing/suit/storage/teshari/cloak/standard))
 		var/obj/item/clothing/suit/storage/teshari/cloak/standard/cloak_type = cloak
 		cloaks[initial(cloak_type.name)] = cloak_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(cloaks, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(cloaks, GLOBAL_PROC_REF(cmp_text_asc)))
 
 
 /datum/loadout_entry/xeno/teshari/suit/role_cloak
@@ -843,7 +843,7 @@
 	for(var/cloak in typesof(/obj/item/clothing/suit/storage/hooded/teshari/standard))
 		var/obj/item/clothing/suit/storage/teshari/cloak/cloak_type = cloak
 		cloaks[initial(cloak_type.name)] = cloak_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(cloaks, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(cloaks, GLOBAL_PROC_REF(cmp_text_asc)))
 
 
 
@@ -893,7 +893,7 @@
 	for(var/puffy_pant in typesof(/obj/item/clothing/under/moth/puffy_pants))
 		var/obj/item/clothing/under/moth/puffy_pants/puffy_pant_type = puffy_pant
 		puffy_pants[initial(puffy_pant_type.name)] = puffy_pant_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(puffy_pants, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(puffy_pants, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/uniform/tight_pants
 	name = "Moth - Pants Selection"
@@ -905,7 +905,7 @@
 	for(var/tight_pant in typesof(/obj/item/clothing/under/moth/tight_pants))
 		var/obj/item/clothing/under/moth/tight_pants/tight_pant_type = tight_pant
 		tight_pants[initial(tight_pant_type.name)] = tight_pant_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tight_pants, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tight_pants, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/uniform/moth_skirt
 	name = "Moth - Skirt Selection"
@@ -917,7 +917,7 @@
 	for(var/moth_skirts in typesof(/obj/item/clothing/under/moth/moth_skirt))
 		var/obj/item/clothing/under/moth/moth_skirt/moth_skirts_type = moth_skirts
 		moth_skirt[initial(moth_skirts_type.name)] = moth_skirts_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(moth_skirt, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(moth_skirt, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/accessories/abdomen_guard
 	name = "Moth - Abdomen Guards Selection"
@@ -929,7 +929,7 @@
 	for(var/abdomen_guards in typesof(/obj/item/clothing/accessory/vest/moth/abdomen_guard))
 		var/obj/item/clothing/accessory/vest/moth/abdomen_guard/abdomen_guards_type = abdomen_guards
 		abdomen_guard[initial(abdomen_guards_type.name)] = abdomen_guards_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(abdomen_guard, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(abdomen_guard, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/accessories/tunic_top
 	name = "Moth - Tunic Tops Selection"
@@ -941,7 +941,7 @@
 	for(var/tunic_tops in typesof(/obj/item/clothing/accessory/vest/moth/tunic_top))
 		var/obj/item/clothing/accessory/vest/moth/tunic_top/tunic_tops_type = tunic_tops
 		tunic_top[initial(tunic_tops_type.name)] = tunic_tops_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tunic_top, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tunic_top, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/accessories/cloth_strap_top
 	name = "Moth - Cloth Strap Tops Selection"
@@ -953,7 +953,7 @@
 	for(var/cloth_strap_tops in typesof(/obj/item/clothing/accessory/vest/moth/cloth_strap_top))
 		var/obj/item/clothing/accessory/vest/moth/cloth_strap_top/cloth_strap_tops_type = cloth_strap_tops
 		cloth_strap_top[initial(cloth_strap_tops_type.name)] = cloth_strap_tops_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(cloth_strap_top, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(cloth_strap_top, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/accessories/shoulder_pad_right
 	name = "Moth - Right Shoulder Pads Selection"
@@ -965,7 +965,7 @@
 	for(var/shoulder_pad_rights in typesof(/obj/item/clothing/accessory/vest/moth/shoulder_pad_right))
 		var/obj/item/clothing/accessory/vest/moth/shoulder_pad_right/shoulder_pad_rights_type = shoulder_pad_rights
 		shoulder_pad_right[initial(shoulder_pad_rights_type.name)] = shoulder_pad_rights_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(shoulder_pad_right, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(shoulder_pad_right, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/accessories/shoulder_pad_left
 	name = "Moth - Left Shoulder Pads Selection"
@@ -977,7 +977,7 @@
 	for(var/shoulder_pad_lefts in typesof(/obj/item/clothing/accessory/vest/moth/shoulder_pad_left))
 		var/obj/item/clothing/accessory/vest/moth/shoulder_pad_left/shoulder_pad_lefts_type = shoulder_pad_lefts
 		shoulder_pad_left[initial(shoulder_pad_lefts_type.name)] = shoulder_pad_lefts_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(shoulder_pad_left, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(shoulder_pad_left, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/accessories/front_tunic
 	name = "Moth - Front Tunics Selection"
@@ -989,7 +989,7 @@
 	for(var/front_tunics in typesof(/obj/item/clothing/accessory/vest/moth/front_tunic))
 		var/obj/item/clothing/accessory/vest/moth/front_tunic/front_tunics_type = front_tunics
 		front_tunic[initial(front_tunics_type.name)] = front_tunics_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(front_tunic, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(front_tunic, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/accessories/gaiter
 	name = "Moth - Gaiters Selection"
@@ -1001,7 +1001,7 @@
 	for(var/gaiters in typesof(/obj/item/clothing/accessory/vest/moth/gaiter))
 		var/obj/item/clothing/accessory/vest/moth/gaiter/gaiters_type = gaiters
 		gaiter[initial(gaiters_type.name)] = gaiters_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(gaiter, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(gaiter, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/shoes/legwrap
 	name = "Moth - Legwraps Selection"
@@ -1013,7 +1013,7 @@
 	for(var/legwraps in typesof(/obj/item/clothing/shoes/moth/legwrap))
 		var/obj/item/clothing/shoes/moth/legwrap/legwraps_type = legwraps
 		legwrap[initial(legwraps_type.name)] = legwraps_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(legwrap, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(legwrap, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/xeno/shoes/moth/jackboots
 	name = "Moth - Jackboots"

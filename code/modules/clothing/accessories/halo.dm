@@ -72,7 +72,7 @@
 
 /obj/item/clothing/accessory/halo_projector/proc/generate_styles()
 	var/obj/item/clothing/accessory/halo_projector/parsing
-	var/list/parsing_types = tim_sort(subtypesof(/obj/item/clothing/accessory/halo_projector), GLOBAL_PROC_REF(initial_name_asc))
+	var/list/parsing_types = tim_sort(subtypesof(/obj/item/clothing/accessory/halo_projector), GLOBAL_PROC_REF(cmp_initial_name_asc))
 	global_halo_styles = list()
 	for(parsing as anything in parsing_types)
 		global_halo_styles[initial(parsing.name)] = initial(parsing.icon_state)

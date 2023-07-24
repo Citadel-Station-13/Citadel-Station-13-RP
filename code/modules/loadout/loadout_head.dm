@@ -127,7 +127,7 @@
 	for(var/pin in typesof(/obj/item/clothing/head/pin))
 		var/obj/item/clothing/head/pin/pin_type = pin
 		pins[initial(pin_type.name)] = pin_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(pins, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(pins, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/head/hardhat
 	name = "Hardhat Selection"
@@ -140,7 +140,7 @@
 	for(var/hardhat in typesof(/obj/item/clothing/head/hardhat))
 		var/obj/item/clothing/head/hardhat/hardhat_type = hardhat
 		hardhats[initial(hardhat_type.name)] = hardhat_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(hardhats, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(hardhats, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/head/boater
 	name = "Hat, Boatsman"
@@ -185,7 +185,7 @@
 	for(var/santahat in typesof(/obj/item/clothing/head/santa))
 		var/obj/item/clothing/head/santa/santahat_type = santahat
 		santahats[initial(santahat_type.name)] = santahat_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(santahats, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(santahats, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/head/hijab
 	name = "Hijab (Colorable)"
@@ -261,7 +261,7 @@
 	for(var/orion_style in typesof(/obj/item/clothing/head/beret/orion))
 		var/obj/item/clothing/head/beret/orion/orion = orion_style
 		orions[initial(orion.name)] = orion
-	tweaks += new/datum/loadout_tweak/path(tim_sort(orions, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(orions, GLOBAL_PROC_REF(cmp_text_asc)))
 /datum/loadout_entry/head/surgery
 	name = "Surgical Cap Selection"
 	description = "Choose from a number of rings of different Caps."
@@ -354,7 +354,7 @@
 	for(var/tberet in (typesof(/obj/item/clothing/head/beret/tajaran)))
 		var/obj/item/clothing/head/beret/tajaran/tberet_type = tberet
 		tberets[initial(tberet_type.name)] = tberet_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tberets, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tberets, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/head/tajaran/circlet
 	name = "Adhomian circlet selection"
@@ -367,5 +367,5 @@
 	for(var/tcirclet in (typesof(/obj/item/clothing/head/tajaran/circlet)))
 		var/obj/item/clothing/head/tajaran/circlet/tcirclet_type = tcirclet
 		tcirclets[initial(tcirclet_type.name)] = tcirclet_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tcirclets, GLOBAL_PROC_REF(text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tcirclets, GLOBAL_PROC_REF(cmp_text_asc)))
 
