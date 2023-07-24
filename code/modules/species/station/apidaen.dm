@@ -142,8 +142,8 @@
 		var/selection = input(src, "Choose your character's nectar. Choosing nothing will result in a default of honey.", "Nectar Type", honey_stomach.nectar_type) as null|anything in acceptable_nectar_types
 		if(selection)
 			honey_stomach.nectar_type = selection
-		add_verb(src, /mob/living/carbon/human/proc/nectar_pick)
-		remove_verb(src, /mob/living/carbon/human/proc/nectar_select)
+		add_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, nectar_pick))
+		remove_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, nectar_select))
 		honey_stomach.emote_descriptor = list("nectar fresh from [honey_stomach.owner]!", "nectar from [honey_stomach.owner]!")
 
 	else

@@ -54,7 +54,7 @@ var/global/list/image/splatter_cache=list()
 					if (B.blood_DNA)
 						blood_DNA |= B.blood_DNA.Copy()
 					qdel(B)
-	addtimer(CALLBACK(src, .proc/dry), DRYING_TIME * (amount + 1))
+	addtimer(CALLBACK(src, PROC_REF(dry)), DRYING_TIME * (amount + 1))
 
 /obj/effect/debris/cleanable/blood/update_icon()
 	if(basecolor == "rainbow")
@@ -140,7 +140,7 @@ var/global/list/image/splatter_cache=list()
 		l.bloody_hands += taken
 		l.hand_blood_color = basecolor
 		l.update_inv_gloves(1)
-		add_verb(l, /mob/living/carbon/human/proc/bloody_doodle)
+		add_verb(l, TYPE_PROC_REF(/mob/living/carbon/human, bloody_doodle))
 
 /obj/effect/debris/cleanable/blood/splatter
         random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")

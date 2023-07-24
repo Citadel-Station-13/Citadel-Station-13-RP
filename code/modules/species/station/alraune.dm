@@ -354,8 +354,8 @@
 		var/selection = input(src, "Choose your character's fruit type. Choosing nothing will result in a default of apples.", "Fruit Type", fruit_gland.fruit_type) as null|anything in acceptable_fruit_types
 		if(selection)
 			fruit_gland.fruit_type = selection
-		add_verb(src, /mob/living/carbon/human/proc/alraune_fruit_pick)
-		remove_verb(src, /mob/living/carbon/human/proc/alraune_fruit_select)
+		add_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, alraune_fruit_pick))
+		remove_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, alraune_fruit_select))
 		fruit_gland.emote_descriptor = list("fruit right off of [fruit_gland.owner]!", "a fruit from [fruit_gland.owner]!")
 	else
 		to_chat(src, SPAN_NOTICE("You lack the organ required to produce fruit."))

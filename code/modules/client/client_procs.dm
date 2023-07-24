@@ -216,7 +216,7 @@
 			debug_tools_allowed = TRUE
 	/*
 	else if(GLOB.deadmins[ckey])
-		add_verb(src, /client/proc/readmin)
+		add_verb(src, TYPE_PROC_REF(/client, readmin))
 		connecting_admin = TRUE
 	*/
 	// if(CONFIG_GET(flag/enable_localhost_rank) && !connecting_admin)
@@ -527,7 +527,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
 		if (CONFIG_GET(flag/asset_simple_preload))
-			addtimer(CALLBACK(SSassets.transport, /datum/asset_transport.proc/send_assets_slow, src, SSassets.transport.preload), 5 SECONDS)
+			addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
 /*	// We don't have vox_sounds atm
 		#if (PRELOAD_RSC == 0)
 		for (var/name in GLOB.vox_sounds)

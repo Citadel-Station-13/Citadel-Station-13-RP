@@ -56,7 +56,7 @@
 		if(name in .)    // STILL?
 			name += " \[[++i]\]"
 		.[name] = path
- 	tim_sort(., /proc/cmp_text_asc)
+ 	tim_sort(., GLOBAL_PROC_REF(cmp_text_asc))
 
 /obj/item/clothing/under/chameleon
 //starts off as black

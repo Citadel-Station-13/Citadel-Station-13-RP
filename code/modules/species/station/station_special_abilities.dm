@@ -42,7 +42,7 @@
 				// Was dead, still dead.
 				else
 					to_chat(src, "<span class='notice'>Consciousness begins to stir as your new body awakens, ready to hatch.</span>")
-					add_verb(src, /mob/living/carbon/human/proc/hatch)
+					add_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, hatch))
 					revive_ready = REVIVING_DONE
 
 		//Dead until nutrition injected.
@@ -60,13 +60,13 @@
 			//If they're still alive after regenning.
 			if(stat != DEAD)
 				to_chat(src, "<span class='notice'>Consciousness begins to stir as your new body awakens, ready to hatch..</span>")
-				add_verb(src, /mob/living/carbon/human/proc/hatch)
+				add_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, hatch))
 				revive_ready = REVIVING_DONE
 
 			//Was alive, now dead
 			else if(hasnutriment())
 				to_chat(src, "<span class='notice'>Consciousness begins to stir as your new body awakens, ready to hatch..</span>")
-				add_verb(src, /mob/living/carbon/human/proc/hatch)
+				add_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, hatch))
 				revive_ready = REVIVING_DONE
 
 			//Dead until nutrition injected.
@@ -84,7 +84,7 @@
 
 	if(revive_ready != REVIVING_DONE)
 		//Hwhat?
-		remove_verb(src, /mob/living/carbon/human/proc/hatch)
+		remove_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, hatch))
 		return
 
 	var/confirm = alert(usr, "Are you sure you want to hatch right now? This will be very obvious to anyone in view.", "Confirm Regeneration", "Yes", "No")
@@ -103,7 +103,7 @@
 			visible_message("<span class='danger'><p><font size=4>The dormant husk of [src] bursts open, revealing a new, intact copy in the pool of viscera.</font></p></span>") //Bloody hell...
 
 /mob/living/carbon/human/proc/chimera_hatch()
-	remove_verb(src, /mob/living/carbon/human/proc/hatch)
+	remove_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, hatch))
 	to_chat(src, "<span class='notice'>Your new body awakens, bursting free from your old skin.</span>")
 
 	//Modify and record values (half nutrition and braindamage)

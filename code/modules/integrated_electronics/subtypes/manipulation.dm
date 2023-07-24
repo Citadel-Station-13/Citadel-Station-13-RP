@@ -509,7 +509,7 @@
 		)
 
 /obj/item/integrated_circuit/manipulation/matman/ComponentInitialize()
-	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, mtypes, 100000, FALSE, /obj/item/stack, CALLBACK(src, .proc/is_insertion_ready), CALLBACK(src, .proc/AfterMaterialInsert))
+	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, mtypes, 100000, FALSE, /obj/item/stack, CALLBACK(src, PROC_REF(is_insertion_ready)), CALLBACK(src, PROC_REF(AfterMaterialInsert)))
 	materials.precise_insertion = TRUE
 	.=..()
 
@@ -677,7 +677,7 @@
 		targx = target.loc.x
 		targy = target.loc.y
 		playsound(src, 'sound/items/drill_use.ogg',50,1)
-		addtimer(CALLBACK(src, .proc/drill), drill_delay)
+		addtimer(CALLBACK(src, PROC_REF(drill)), drill_delay)
 
 
 /obj/item/integrated_circuit/mining/mining_drill/proc/drill()
@@ -988,7 +988,7 @@
 /// These procs do not relocate the grenade, that's the callers responsibility
 /obj/item/integrated_circuit/manipulation/grenade/proc/attach_grenade(var/obj/item/grenade/G)
 	attached_grenade = G
-	RegisterSignal(attached_grenade, COMSIG_PARENT_QDELETING, .proc/detach_grenade)
+	RegisterSignal(attached_grenade, COMSIG_PARENT_QDELETING, PROC_REF(detach_grenade))
 	size += G.w_class
 	desc += " \An [attached_grenade] is attached to it!"
 

@@ -128,7 +128,7 @@
 	// LEGACY: remove changeling
 	if(changeling)
 		current.remove_changeling_powers()
-		remove_verb(current, /datum/changeling/proc/EvolutionMenu)
+		remove_verb(current, TYPE_PROC_REF(/datum/changeling, EvolutionMenu))
 	// remove characteristics
 	characteristics?.disassociate_from_mob(current)
 	// remove abilities
@@ -574,7 +574,7 @@
 		mind.name = real_name
 	mind.current = src
 	if(player_is_antag(mind))
-		add_verb(client, /client/proc/aooc)
+		add_verb(client, TYPE_PROC_REF(/client, aooc))
 
 //HUMAN
 /mob/living/carbon/human/mind_initialize()

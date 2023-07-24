@@ -34,7 +34,7 @@
 	set_resting(FALSE)
 	update_mobility()
 	icon_state = "[chassis]"
-	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
+	remove_verb(src, TYPE_PROC_REF(/mob/living/silicon/pai, pai_nom))
 
 /mob/living/silicon/pai/proc/open_up()
 	last_special = world.time + 20
@@ -75,9 +75,9 @@
 	if(istype(T))
 		T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
 
-	add_verb(src, /mob/living/silicon/pai/proc/pai_nom)
-	add_verb(src, /mob/living/proc/set_size)
-	add_verb(src, /mob/living/proc/shred_limb)
+	add_verb(src, TYPE_PROC_REF(/mob/living/silicon/pai, pai_nom))
+	add_verb(src, TYPE_PROC_REF(/mob/living, set_size))
+	add_verb(src, TYPE_PROC_REF(/mob/living, shred_limb))
 
 // Handle being picked up.
 /mob/living/silicon/pai/get_scooped(var/mob/living/carbon/grabber, var/self_drop)

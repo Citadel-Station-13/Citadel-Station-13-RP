@@ -69,8 +69,8 @@
 /mob/living/simple_mob/mouse/Initialize(mapload)
 	. = ..()
 
-	add_verb(src, /mob/living/proc/ventcrawl)
-	add_verb(src, /mob/living/proc/hide)
+	add_verb(src, TYPE_PROC_REF(/mob/living, ventcrawl))
+	add_verb(src, TYPE_PROC_REF(/mob/living, hide))
 
 	if(name == initial(name))
 		name = "[name] ([rand(1, 1000)])"

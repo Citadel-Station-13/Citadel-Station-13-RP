@@ -35,9 +35,9 @@
 			everyone at the end of the shift with the <b>Set Ambition</b> verb, located in the IC tab.  You can change this at any time, \
 			and it otherwise has no bearing on your round.</span>")
 
-	add_verb(player.current, /mob/living/proc/write_ambition)
+	add_verb(player.current, TYPE_PROC_REF(/mob/living, write_ambition))
 	if(can_speak_aooc)
-		add_verb(player.current.client, /client/proc/aooc)
+		add_verb(player.current.client, TYPE_PROC_REF(/client, aooc))
 
 	// Handle only adding a mind and not bothering with gear etc.
 	if(nonstandard_role_type)
@@ -60,8 +60,8 @@
 		update_icons_removed(player)
 		player.current.update_hud_antag()
 		if(!is_special_character(player))
-			remove_verb(player.current, /mob/living/proc/write_ambition)
-			remove_verb(player.current.client, /client/proc/aooc)
+			remove_verb(player.current, TYPE_PROC_REF(/mob/living, write_ambition))
+			remove_verb(player.current.client, TYPE_PROC_REF(/client, aooc))
 			player.ambitions = ""
 		return 1
 	return 0

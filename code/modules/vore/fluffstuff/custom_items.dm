@@ -696,7 +696,7 @@
 	if(.)
 		return
 	if(user.ckey == "pontifexminimus")
-		add_verb(user, /mob/living/carbon/human/proc/shapeshifter_select_gender)
+		add_verb(user, TYPE_PROC_REF(/mob/living/carbon/human, shapeshifter_select_gender))
 	else
 		return
 
@@ -1000,7 +1000,7 @@
 		if(!teleport_checks(target, user))	// no using this to bypass range checks
 			to_chat(user, "<span class='warning'>[src] malfunctions and fizzles out uselessly!</span>")
 			// penalty: 10 second recharge, but no using charge.
-			addtimer(CALLBACK(src, .proc/recharge), 10 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(recharge)), 10 SECONDS)
 			return
 		else
 			to_chat(user,"<span class='warning'>\The [src] malfunctions and sends you to the wrong beacon!</span>")
@@ -1057,7 +1057,7 @@
 			//Phase-in effect for grabbed person
 			phase_in(G.affecting,get_turf(G.affecting))
 
-	addtimer(CALLBACK(src, .proc/recharge), 30 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(recharge)), 30 SECONDS)
 
 	logged_events["[world.time]"] = "[user] teleported [target] to [real_dest] [televored ? "(Belly: [lowertext(real_dest.name)])" : null]"
 

@@ -15,14 +15,15 @@
 	} \
 	else { \
 		ASYNC { \
-			call(proc_owner, proc_path)(##proc_arguments); \
+			/* Written with `0 ||` to avoid the compiler seeing call("string"), and thinking it's a deprecated DLL */ \
+			call(0 || proc_owner, proc_path)(##proc_arguments); \
 		}; \
 	}
 
 /// Varset callback for a list
-#define VARSET_LIST_CALLBACK(target, var_name, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##target, ##var_name, ##var_value)
+#define VARSET_LIST_CALLBACK(target, var_name, var_value) CALLBACK(GLOBAL_PROC_REF(___callbackvarset), ##target, ##var_name, ##var_value)
 /// Varset callback for a datum
-#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##datum, NAMEOF(##datum, ##var), ##var_value)
+#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC_REF(___callbackvarset), ##datum, NAMEOF(##datum, ##var), ##var_value)
 /// Create a varset timer
 #define VARSET_IN(datum, var, var_value, time) addtimer(VARSET_CALLBACK(datum, var, var_value), time)
 
@@ -37,9 +38,9 @@
 		datum.vars[var_name] = var_value
 
 /// flick() callback
-#define FLICK_CALLBACK(state, target) CALLBACK(GLOBAL_PROC, /proc/___callbackflick, target, state)
+#define FLICK_CALLBACK(state, target) CALLBACK(GLOBAL_PROC_REF(___callbackflick), target, state)
 /// flick() using timer
-#define FLICK_IN(state, target, time) addtimer(CALLBACK(GLOBAL_PROC, /proc/___callbackflick, target, state), time)
+#define FLICK_IN(state, target, time) addtimer(CALLBACK(GLOBAL_PROC_REF(___callbackflick), target, state), time)
 
 /proc/___callbackflick(target, state)
 	flick(target, state)
