@@ -22545,7 +22545,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/button/windowtint,
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
 "qid" = (
