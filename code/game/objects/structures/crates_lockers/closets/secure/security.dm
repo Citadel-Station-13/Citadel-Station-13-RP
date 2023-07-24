@@ -302,7 +302,8 @@
 		/obj/item/clothing/under/bodysuit/bodysuitsec,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
-		/obj/item/flashlight/maglight)
+		/obj/item/flashlight/maglight,
+		/obj/item/holowarrant)
 
 /obj/structure/closet/secure_closet/security/Initialize(mapload)
 	if(prob(50))
