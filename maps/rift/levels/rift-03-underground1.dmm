@@ -5862,14 +5862,6 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
-"sQ" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 9
-	},
-/obj/structure/bed/padded,
-/obj/item/bedsheet,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/elevator)
 "sR" = (
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -5991,16 +5983,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
-"th" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/structure/closet/secure_closet,
-/obj/item/storage/box/survival_knife,
-/obj/random/maintenance/security,
-/obj/random/maintenance/security,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/elevator)
 "ti" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -6443,14 +6425,6 @@
 "uN" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/transport_tunnel)
-"uO" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/structure/table/steel,
-/obj/random/mre,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/elevator)
 "uP" = (
 /obj/structure/railing{
 	dir = 8
@@ -7232,15 +7206,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
-"xo" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 5
-	},
-/obj/structure/table/rack/shelf,
-/obj/item/storage/firstaid/regular,
-/obj/random/maintenance/security,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/elevator)
 "xq" = (
 /obj/machinery/telecomms/relay/preset/rift/under_shallow,
 /turf/simulated/floor/tiled/dark,
@@ -7317,12 +7282,6 @@
 	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
-"xA" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/elevator)
 "xB" = (
 /obj/machinery/camera/network/research{
 	dir = 5
@@ -8479,9 +8438,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
-"By" = (
-/turf/simulated/mineral/icerock/lythios43c,
-/area/space)
 "Bz" = (
 /obj/structure/railing/grey,
 /obj/structure/window/basic,
@@ -9116,8 +9072,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "Ee" = (
-/obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled/techfloor,
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "Ef" = (
 /obj/item/tank/emergency/oxygen/engi,
@@ -10496,9 +10455,11 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/elevator)
 "IF" = (
-/obj/effect/floor_decal/techfloor,
-/obj/structure/barricade,
-/turf/simulated/floor/tiled/techfloor,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "IG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -11733,6 +11694,9 @@
 	},
 /turf/simulated/floor/wood/broken,
 /area/maintenance/engineering)
+"MV" = (
+/turf/space/basic,
+/area/maintenance/elevator)
 "MW" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -12287,11 +12251,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
-"OE" = (
-/obj/effect/floor_decal/techfloor,
-/obj/structure/bookcase,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/elevator)
 "OH" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/green{
@@ -12489,13 +12448,6 @@
 	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
-"Po" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 6
-	},
-/obj/structure/barricade,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/elevator)
 "Pr" = (
 /obj/structure/stairs/spawner/north,
 /turf/simulated/floor/tiled/white,
@@ -14170,6 +14122,13 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"VW" = (
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/elevator)
 "VY" = (
 /obj/effect/debris/cleanable/blood/gibs/robot/up,
 /turf/simulated/floor/plating,
@@ -32048,10 +32007,10 @@ ys
 ys
 ys
 Tl
-By
-By
-By
-By
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 sj
@@ -33839,8 +33798,8 @@ aa
 aa
 aa
 IE
-sQ
-xA
+cp
+cp
 IE
 VZ
 XZ
@@ -34033,7 +33992,7 @@ aa
 aa
 aa
 IE
-IE
+RB
 Ee
 IE
 Wf
@@ -34227,7 +34186,7 @@ aa
 aa
 aa
 IE
-th
+cp
 IF
 IE
 Wf
@@ -34421,8 +34380,8 @@ aa
 aa
 aa
 IE
-uO
-OE
+IE
+IF
 UQ
 Wf
 Bj
@@ -34614,9 +34573,9 @@ aa
 aa
 aa
 aa
+MV
 IE
-xo
-Po
+IF
 IE
 Ci
 XZ
@@ -34807,10 +34766,10 @@ aa
 aa
 aa
 aa
+aa
+MV
 IE
-IE
-IE
-IE
+IF
 IE
 IE
 IE
@@ -35001,10 +34960,10 @@ aa
 aa
 aa
 aa
+aa
+MV
 IE
-cp
-cp
-cp
+IF
 cp
 cp
 cp
@@ -35195,10 +35154,10 @@ aa
 aa
 aa
 aa
+aa
+MV
 IE
-RB
-lI
-lI
+VW
 lI
 lI
 lI
@@ -35389,9 +35348,9 @@ aa
 aa
 aa
 aa
+aa
+MV
 IE
-cp
-cp
 cp
 cp
 cp
@@ -35583,8 +35542,8 @@ aa
 aa
 aa
 aa
-IE
-IE
+aa
+MV
 IE
 IE
 IE
