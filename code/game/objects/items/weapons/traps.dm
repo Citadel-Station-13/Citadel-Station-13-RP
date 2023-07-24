@@ -25,13 +25,13 @@
 	if(ishuman(src.loc))
 		var/mob/living/carbon/human/H = src.loc
 		if(H.wear_mask == src)
-			add_verb(H, /mob/living/proc/shred_limb_temp)
+			add_verb(H, TYPE_PROC_REF(/mob/living, shred_limb_temp))
 		else
-			remove_verb(H, /mob/living/proc/shred_limb_temp)
+			remove_verb(H, TYPE_PROC_REF(/mob/living, shred_limb_temp))
 	..()
 
 /obj/item/beartrap/dropped(mob/user, flags, atom/newLoc)
-	remove_verb(user, /mob/living/proc/shred_limb_temp)
+	remove_verb(user, TYPE_PROC_REF(/mob/living, shred_limb_temp))
 	..()
 
 /obj/item/beartrap/suicide_act(mob/user)

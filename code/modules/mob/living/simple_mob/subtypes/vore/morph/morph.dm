@@ -58,7 +58,7 @@
 		/mob/living/simple_mob/vore/hostile/morph,
 		/obj/effect,
 	))
-	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, TYPE_PROC_REF(/mob/living, ventcrawl))
 	return ..()
 
 /mob/living/simple_mob/vore/hostile/morph/proc/allowed(atom/movable/A)

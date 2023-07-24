@@ -165,11 +165,11 @@
 	H.add_language("Cortical Link")
 
 	if(host.stat == 2)
-		add_verb(H, /mob/living/carbon/human/proc/jumpstart)
+		add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, jumpstart))
 
-	add_verb(H, /mob/living/carbon/human/proc/psychic_whisper)
-	add_verb(H, /mob/living/carbon/human/proc/tackle)
-	add_verb(H, /mob/living/carbon/proc/spawn_larvae)
+	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, psychic_whisper))
+	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, tackle))
+	add_verb(H, TYPE_PROC_REF(/mob/living/carbon, spawn_larvae))
 
 	if(H.client)
 		H.ghostize(0)
@@ -330,9 +330,9 @@
 
 			controlling = 1
 
-			add_verb(host, /mob/living/carbon/proc/release_control)
-			add_verb(host, /mob/living/carbon/proc/punish_host)
-			add_verb(host, /mob/living/carbon/proc/spawn_larvae)
+			add_verb(host, TYPE_PROC_REF(/mob/living/carbon, release_control))
+			add_verb(host, TYPE_PROC_REF(/mob/living/carbon, punish_host))
+			add_verb(host, TYPE_PROC_REF(/mob/living/carbon, spawn_larvae))
 
 			return
 
@@ -345,7 +345,7 @@
 		to_chat(usr, "Your host is already alive.")
 		return
 
-	remove_verb(src, /mob/living/carbon/human/proc/jumpstart)
+	remove_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, jumpstart))
 	visible_message("<span class='warning'>With a hideous, rattling moan, [src] shudders back to life!</span>")
 
 	revive(full_heal = TRUE)

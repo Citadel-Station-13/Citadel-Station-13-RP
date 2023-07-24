@@ -37,7 +37,7 @@
 	// if it is there and we can't tell because byond is byond, send it a signal to reload
 	src << output(null, "statbrowser:byond_reconnect")
 	// check for it incase it breaks
-	addtimer(CALLBACK(src, /client/proc/statpanel_check), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/client, statpanel_check)), 30 SECONDS)
 
 /**
  * cleans up statpanel stuff during disconnect

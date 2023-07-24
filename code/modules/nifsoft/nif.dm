@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		human = H
 		human.nif = src
 		stat = NIF_INSTALLING
-		add_verb(H, /mob/living/carbon/human/proc/set_nif_examine)
+		add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, set_nif_examine))
 		menu = H.AddComponent(/datum/component/nif_menu)
 		if(starting_software)
 			for(var/path in starting_software)
@@ -194,7 +194,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		SC.brainmobs = list()
 	stat = NIF_PREINSTALL
 	vis_update()
-	remove_verb(H, /mob/living/carbon/human/proc/set_nif_examine)
+	remove_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, set_nif_examine))
 	QDEL_NULL(menu)
 	H.nif = null
 	human = null
@@ -651,7 +651,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	durability = 50
 	bioadap = TRUE
 	id = NIF_ID_BIOADAPTIVE
-	
+
 /obj/item/nif/authenticbioadap
 	name = "\improper Vey-Med bioadaptive NIF"
 	desc = "A genuine Vey-Med nanotechnology fabricator, designed for strange body types. \
@@ -696,7 +696,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	set category = "OOC"
 
 	if(!nif)
-		remove_verb(src, /mob/living/carbon/human/proc/set_nif_examine)
+		remove_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, set_nif_examine))
 		to_chat(src,"<span class='warning'>You don't have a NIF, not sure why this was here.</span>")
 		return
 

@@ -47,14 +47,14 @@
 	if((. = ..()))
 		//nif.set_flag(NIF_O_SCOTHERS,NIF_FLAGS_OTHER)	//Only required on install if the flag is in the default setting_flags list defined few lines above.
 		if(nif?.human)
-			add_verb(nif.human, /mob/living/carbon/human/proc/nsay)
-			add_verb(nif.human, /mob/living/carbon/human/proc/nme)
+			add_verb(nif.human, TYPE_PROC_REF(/mob/living/carbon/human, nsay))
+			add_verb(nif.human, TYPE_PROC_REF(/mob/living/carbon/human, nme))
 
 /datum/nifsoft/soulcatcher/uninstall()
 	QDEL_LIST_NULL(brainmobs)
 	if((. = ..()) && nif?.human) //Sometimes NIFs are deleted outside of a human
-		remove_verb(nif.human, /mob/living/carbon/human/proc/nsay)
-		remove_verb(nif.human, /mob/living/carbon/human/proc/nme)
+		remove_verb(nif.human, TYPE_PROC_REF(/mob/living/carbon/human, nsay))
+		remove_verb(nif.human, TYPE_PROC_REF(/mob/living/carbon/human, nme))
 
 /datum/nifsoft/soulcatcher/proc/save_settings()
 	if(!nif)

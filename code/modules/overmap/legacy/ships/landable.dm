@@ -122,7 +122,7 @@
 	core_landmark = master
 	name = _name
 	landmark_tag = master.shuttle_name + _name
-	RegisterSignal(master, COMSIG_PARENT_QDELETING, /datum/proc/qdel_self)
+	RegisterSignal(master, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/datum, qdel_self))
 	. = ..()
 
 

@@ -24,8 +24,8 @@
 		range = range + 3
 		to_chat(src, "<span class='notice'>We can fire our next sting from five squares away.</span>")
 	changeling.sting_range = range
-	remove_verb(src, /mob/proc/changeling_boost_range)
+	remove_verb(src, TYPE_PROC_REF(/mob, changeling_boost_range))
 	spawn(5)
-		add_verb(src, /mob/proc/changeling_boost_range)
+		add_verb(src, TYPE_PROC_REF(/mob, changeling_boost_range))
 	feedback_add_details("changeling_powers","RS")
 	return 1

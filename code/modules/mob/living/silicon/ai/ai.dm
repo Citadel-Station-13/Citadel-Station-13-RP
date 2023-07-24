@@ -199,7 +199,7 @@ var/list/ai_verbs_default = list(
 			on_mob_init()
 
 	if(config_legacy.allow_ai_shells)
-		add_verb(src, /mob/living/silicon/ai/proc/deploy_to_shell_act)
+		add_verb(src, TYPE_PROC_REF(/mob/living/silicon/ai, deploy_to_shell_act))
 
 	spawn(5)
 		new /obj/machinery/ai_powersupply(src)

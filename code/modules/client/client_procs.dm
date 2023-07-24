@@ -216,7 +216,7 @@
 			debug_tools_allowed = TRUE
 	/*
 	else if(GLOB.deadmins[ckey])
-		add_verb(src, /client/proc/readmin)
+		add_verb(src, TYPE_PROC_REF(/client, readmin))
 		connecting_admin = TRUE
 	*/
 	// if(CONFIG_GET(flag/enable_localhost_rank) && !connecting_admin)

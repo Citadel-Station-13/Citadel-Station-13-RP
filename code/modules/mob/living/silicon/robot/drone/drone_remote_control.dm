@@ -21,7 +21,7 @@
 	user.teleop = src
 	radio.channels = user.aiRadio.keyslot2.channels
 	controlling_ai = user
-	add_verb(src, /mob/living/silicon/robot/drone/proc/release_ai_control_verb)
+	add_verb(src, TYPE_PROC_REF(/mob/living/silicon/robot/drone, release_ai_control_verb))
 	local_transmit = FALSE
 	languages = controlling_ai.languages.Copy()
 	speech_synthesizer_langs = controlling_ai.speech_synthesizer_langs.Copy()
@@ -59,7 +59,7 @@
 	user.teleop = new_drone
 	new_drone.radio.channels = user.aiRadio.keyslot2.channels
 	new_drone.controlling_ai = user
-	add_verb(new_drone, /mob/living/silicon/robot/drone/proc/release_ai_control_verb)
+	add_verb(new_drone, TYPE_PROC_REF(/mob/living/silicon/robot/drone, release_ai_control_verb))
 	new_drone.local_transmit = FALSE
 	new_drone.languages = new_drone.controlling_ai.languages.Copy()
 	new_drone.speech_synthesizer_langs = new_drone.controlling_ai.speech_synthesizer_langs.Copy()
@@ -92,7 +92,7 @@
 		controlling_ai = null
 
 	radio.channels = module.channels
-	remove_verb(src, /mob/living/silicon/robot/drone/proc/release_ai_control_verb)
+	remove_verb(src, TYPE_PROC_REF(/mob/living/silicon/robot/drone, release_ai_control_verb))
 	module.remove_languages(src) //Removes excess, adds 'default'.
 	remove_language("Robot Talk")
 	add_language("Robot Talk", 0)

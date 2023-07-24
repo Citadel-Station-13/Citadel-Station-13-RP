@@ -288,7 +288,7 @@
 
 	add_cell()
 	// TODO: BURN ITERATORS WITH FUCKING FIRE
-	INVOKE_ASYNC(src, /obj/mecha/proc/add_iterators)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/mecha, add_iterators))
 	removeVerb(/obj/mecha/verb/disconnect_from_port)
 	log_message("[src.name] created.")
 	loc.Entered(src)
