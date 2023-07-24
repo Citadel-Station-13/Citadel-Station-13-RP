@@ -39,11 +39,65 @@
 	if(isnull(.))
 		return ..()
 
+// todo: better verb/message support
 /obj/machinery/proc/default_deconstruction_panel(obj/item/tool, mob/user, speed_mult = 1, flags)
+	var/needed_time = default_panel * speed_mult * (isnull(tool)? 1 : tool.tool_speed)
+	if(needed_time)
+		user.visible_action_feedback(
+			target = src,
+			soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			visible_soft = SPAN_WARNING("[user] starts to [panel_open? "close" : "open"] [src]'s maintenance panel."),
+			audible_soft = SPAN_WARNING("You hear something being (un)fastened."),
+		)
+	if(!use_tool(tool_panel, tool, user, flags, needed_time))
+		return FALSE
+	set_panel_open(!panel_open)
+	user.visible_action_feedback(
+		target = src,
+		soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			visible_soft = SPAN_WARNING("[user] [panel_open? "closes" : "opens"] [src]'s maintenance panel."),
+		audible_soft = SPAN_WARNING("You hear something being (un)fastened."),
+	)
+	return TRUE
 
+// todo: better verb/message support
 /obj/machinery/proc/default_deconstruction_dismantle(obj/item/tool, mob/user, speed_mult = 1, flags)
+	var/needed_time = default_deconstruct * speed_mult * (isnull(tool)? 1 : tool.tool_speed)
+	if(needed_time)
+		user.visible_action_feedback(
+			target = src,
+			soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			visible_soft = SPAN_WARNING("[user] starts to dismantle [src]."),
+			audible_soft = SPAN_WARNING("You hear a series of small parts being removed from something."),
+		)
+	if(!use_tool(tool_deconstruct, tool, user, flags, needed_time))
+		return FALSE
+	dismantle()
+	user.visible_action_feedback(
+		target = src,
+		soft_range = MESSAGE_RANGE_CONSTRUCTION,
+		visible_soft = SPAN_WARNING("[user] [anchored? "bolts" : "unbolts"] [src] [anchored? "to" : "from"] from the floor."),
+		audible_soft = SPAN_WARNING("You hear something getting dismantled."),
+	)
+	return TRUE
 
+// todo: better verb/message support
 /obj/machinery/proc/default_deconstruction_anchor(obj/item/tool, mob/user, speed_mult = 1, flags)
-	if(!use_tool(tool_unanchor, tool, user, flags, default_unanchor * speed_mult))
-		return
-#warn impl all
+	var/needed_time = default_unanchor * speed_mult * (isnull(tool)? 1 : tool.tool_speed)
+	if(needed_time)
+		user.visible_action_feedback(
+			target = src,
+			soft_range = MESSAGE_RANGE_CONSTRUCTION,
+			visible_soft = SPAN_WARNING("[user] starts to [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
+			audible_soft = SPAN_WARNING("You hear something heavy being (un)fastened."),
+		)
+	if(!use_tool(tool_unanchor, tool, user, flags, needed_time))
+		return FALSE
+	set_anchored(!anchored)
+	user.visible_action_feedback(
+		target = src,
+		soft_range = MESSAGE_RANGE_CONSTRUCTION,
+		visible_soft = SPAN_WARNING("[user] [anchored? "bolts" : "unbolts"] [src] [anchored? "to" : "from"] from the floor."),
+		audible_soft = SPAN_WARNING("You hear something heavy being (un)fastened."),
+	)
+	return TRUE

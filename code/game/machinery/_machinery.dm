@@ -199,50 +199,6 @@
 				qdel(A)
 	return ..()
 
-/obj/machinery/screwdriver_act(obj/item/I, mob/user, flags, hint)
-	if(!isnull(default_panel))
-		default_deconstruction_screwdriver(user, I)
-		return TRUE
-	return ..()
-
-/obj/machinery/crowbar_act(obj/item/I, mob/user, flags, hint)
-	if(!isnull(default_deconstruct))
-		default_deconstruction_crowbar(user, I)
-		return TRUE
-	return ..()
-
-/obj/machinery/wrench_act(obj/item/I, mob/user, flags, hint)
-	if(!isnull(default_unanchor))
-		default_unfasten_wrench(user, I, default_unanchor)
-		return TRUE
-	return ..()
-
-/obj/machinery/dynamic_tool_functions(obj/item/I, mob/user)
-	. = ..()
-	if(!isnull(default_unanchor))
-		COERCE_OPTIONS_LIST_IN(.[TOOL_WRENCH])
-		.[TOOL_WRENCH] += anchored? "unfasten" : "fasten"
-	if(!isnull(default_deconstruct) && panel_open)
-		COERCE_OPTIONS_LIST_IN(.[TOOL_CROWBAR])
-		.[TOOL_CROWBAR] += "deconstruct"
-	if(!isnull(default_panel))
-		COERCE_OPTIONS_LIST_IN(.[TOOL_SCREWDRIVER])
-		.[TOOL_SCREWDRIVER] += panel_open? "close panel" : "open panel"
-
-/obj/machinery/dynamic_tool_image(function, hint)
-	. = ..()
-	switch(hint)
-		if("unfasten")
-			return dyntool_image_backward(TOOL_WRENCH)
-		if("fasten")
-			return dyntool_image_forward(TOOL_WRENCH)
-		if("deconstruct")
-			return dyntool_image_backward(TOOL_CROWBAR)
-		if("open panel")
-			return dyntool_image_backward(TOOL_SCREWDRIVER)
-		if("close panel")
-			return dyntool_image_forward(TOOL_SCREWDRIVER)
-
 /obj/machinery/process(delta_time)//If you dont use process or power why are you here
 	return PROCESS_KILL
 
@@ -270,6 +226,10 @@
 	. = ..()
 	if(panel_open && panel_icon_state)
 		. += panel_icon_state
+
+/obj/machinery/proc/set_panel_open(panel_opened)
+	panel_open = panel_opened
+	update_appearance()
 
 /obj/machinery/legacy_ex_act(severity)
 	switch(severity)
@@ -467,6 +427,12 @@
 			RefreshParts()
 	return 1
 
+// todo: refactor
+/obj/machinery/set_anchored(anchorvalue)
+	. = ..()
+	power_change()
+	update_appearance()
+
 // Default behavior for wrenching down machines.  Supports both delay and instant modes.
 /obj/machinery/proc/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time = 0)
 	if(!W.is_wrench())
@@ -489,8 +455,6 @@
 	return TRUE
 
 /obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, var/obj/item/C)
-
-
 	if(!C.is_crowbar())
 		return 0
 	if(!panel_open)
