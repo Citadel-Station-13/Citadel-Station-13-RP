@@ -179,7 +179,7 @@
 	if(HAS_TRAIT(src, "VERB_UPDATE_QUEUED"))
 		return
 	ADD_TRAIT(src, "VERB_UPDATE_QUEUED", "FUCK")
-	addtimer(CALLBACK(src, .proc/legacy_verb_update), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(legacy_verb_update)), 1 SECONDS)
 
 /// -_-
 /client/proc/legacy_verb_update()

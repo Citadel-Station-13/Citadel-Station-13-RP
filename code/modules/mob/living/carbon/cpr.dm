@@ -98,7 +98,7 @@
 	if(clipping)
 		to_chat(actor, SPAN_WARNING("Too fast! Wait [(CPR_NOMINAL_COOLDOWN - CPR_ACTION_TIME) * 0.1] seconds after finishing a set of compressions to start another!"))
 
-	addtimer(CALLBACK(src, .proc/__cpr_ventilation_end), CPR_VENTILATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
-	addtimer(CALLBACK(src, .proc/__cpr_off_cooldown), CPR_NOMINAL_COOLDOWN, TIMER_OVERRIDE | TIMER_UNIQUE)
-	addtimer(CALLBACK(src, .proc/__cpr_organ_stasis_end), CPR_BRAIN_STASIS_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
-	addtimer(CALLBACK(src, .proc/__cpr_circulation_end), CPR_CIRCULATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(__cpr_ventilation_end)), CPR_VENTILATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(__cpr_off_cooldown)), CPR_NOMINAL_COOLDOWN, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(__cpr_organ_stasis_end)), CPR_BRAIN_STASIS_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(__cpr_circulation_end)), CPR_CIRCULATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)

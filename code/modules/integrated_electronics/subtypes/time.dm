@@ -99,7 +99,7 @@
 
 /obj/item/integrated_circuit/time/ticker/proc/tick()
 	if(is_running)
-		addtimer(CALLBACK(src, .proc/tick), delay)
+		addtimer(CALLBACK(src, PROC_REF(tick)), delay)
 		if(world.time > next_fire)
 			next_fire = world.time + delay
 			activate_pin(1)

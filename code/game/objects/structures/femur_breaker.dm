@@ -45,7 +45,7 @@
 		if (BREAKER_SLAT_DROPPED)
 			slat_status = BREAKER_SLAT_MOVING
 			icon_state = "breaker_raise"
-			addtimer(CALLBACK(src, .proc/raise_slat), BREAKER_ANIMATION_LENGTH)
+			addtimer(CALLBACK(src, PROC_REF(raise_slat)), BREAKER_ANIMATION_LENGTH)
 			return
 		if (BREAKER_SLAT_RAISED)
 			if (LAZYLEN(buckled_mobs))

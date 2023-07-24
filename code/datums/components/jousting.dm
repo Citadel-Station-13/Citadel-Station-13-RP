@@ -69,7 +69,7 @@
 		current_tile_charge++
 	if(current_timerid)
 		deltimer(current_timerid)
-	current_timerid = addtimer(CALLBACK(src, .proc/reset_charge), movement_reset_tolerance, TIMER_STOPPABLE)
+	current_timerid = addtimer(CALLBACK(src, PROC_REF(reset_charge)), movement_reset_tolerance, TIMER_STOPPABLE)
 
 /datum/component/jousting/proc/reset_charge()
 	current_tile_charge = 0

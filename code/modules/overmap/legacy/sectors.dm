@@ -211,7 +211,7 @@
 	I.appearance_flags = KEEP_APART|RESET_TRANSFORM|RESET_COLOR
 	add_overlay(I)
 
-	addtimer(CALLBACK(src, .proc/distress_update), 5 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(distress_update)), 5 MINUTES)
 	return TRUE
 
 /obj/overmap/entity/visitable/proc/get_distress_info()

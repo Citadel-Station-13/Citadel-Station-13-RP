@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(events)
 	return ..()
 
 /datum/controller/subsystem/events/Initialize()
-	SSticker.OnRoundstart(CALLBACK(src, .proc/HolidayRoundstart))
+	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(HolidayRoundstart)))
 	allEvents = typesof(/datum/event) - /datum/event
 	event_containers = list(
 			EVENT_LEVEL_MUNDANE 	= new/datum/event_container/mundane,

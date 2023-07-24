@@ -110,7 +110,7 @@
 	if(start_sound)
 		play(start_sound)
 		start_wait = start_length
-	addtimer(CALLBACK(src, .proc/sound_loop), start_wait)
+	addtimer(CALLBACK(src, PROC_REF(sound_loop)), start_wait)
 
 /datum/looping_sound/proc/on_stop()
 	if(end_sound)

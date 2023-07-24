@@ -56,7 +56,7 @@
 	radiation_pulse(parent, (strength - becoming) * RAD_CONTAMINATION_CHEAT_FACTOR, falloff, FALSE, can_contaminate)
 	strength = becoming
 	if(strength <= RAD_BACKGROUND_RADIATION)
-		addtimer(CALLBACK(src, .proc/check_dissipate), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(check_dissipate)), 5 SECONDS)
 		SSradiation.sources -= src
 
 /datum/component/radioactive/proc/check_dissipate()

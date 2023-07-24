@@ -245,7 +245,7 @@
 
 /obj/mecha/Initialize(mapload)
 	. = ..()
-	INVOKE_ASYNC(src, .proc/create_components)
+	INVOKE_ASYNC(src, PROC_REF(create_components))
 	update_transform()
 
 //! shitcode

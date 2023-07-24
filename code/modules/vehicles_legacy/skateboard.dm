@@ -139,7 +139,7 @@
 			playsound(src, 'sound/weapons/skateboard_ollie.ogg', 50, TRUE)
 			if(prob (50))
 				sparks.start() //the most radical way to start plasma fires
-			addtimer(CALLBACK(src, .proc/grind), 2)
+			addtimer(CALLBACK(src, PROC_REF(grind)), 2)
 			return
 	else
 		grinding = FALSE

@@ -138,7 +138,7 @@
 	if(istype(owner))
 		replaced(owner)
 		sync_colour_to_human(owner)
-	addtimer(CALLBACK(src, .proc/get_icon), 1)
+	addtimer(CALLBACK(src, PROC_REF(get_icon)), 1)
 
 /obj/item/organ/external/Destroy()
 
@@ -1417,7 +1417,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/queue_syringe_infection()
 	if(!syringe_infection_queued)
 		syringe_infection_queued = 100
-		addtimer(CALLBACK(src, .proc/do_syringe_infection), rand(5, 10) MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(do_syringe_infection)), rand(5, 10) MINUTES)
 	else
 		syringe_infection_queued = clamp(syringe_infection_queued + 10, 0, 300)
 
