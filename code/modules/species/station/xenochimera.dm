@@ -732,7 +732,7 @@
 		return
 	var/mob/living/carbon/human/H = owner
 	toggle_sight(owner)
-	addtimer(CALLBACK(src, .proc/toggle_sight,H), duration, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(toggle_sight),H), duration, TIMER_UNIQUE)
 
 /datum/ability/species/xenochimera/thermal_sight/proc/toggle_sight(mob/living/carbon/human/H)
 	if(!active)
@@ -870,13 +870,13 @@
 
 		//These are only messages to give the player and everyone around them an idea of which stage they're at
 		//visible_message doesn't seem to relay selfmessages if you're paralysed, so we use to_chat
-		addtimer(CALLBACK(H, /atom/.proc/visible_message,"<span class = 'warning'> [H]'s skin begins to ripple and move, as if something was crawling underneath.</span>"), 4 MINUTES)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat,H,"<span class = 'notice'>We begin to recycle the dead tissue.</span>"), 2 MINUTES)
+		addtimer(CALLBACK(H, TYPE_PROC_REF(/atom, visible_message),"<span class = 'warning'> [H]'s skin begins to ripple and move, as if something was crawling underneath.</span>"), 4 MINUTES)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat),H,"<span class = 'notice'>We begin to recycle the dead tissue.</span>"), 2 MINUTES)
 
-		addtimer(CALLBACK(H, /atom/.proc/visible_message,"<span class = 'warning'> <i>[H]'s body begins to lose its shape, skin sloughing off and melting, losing form and composure.</i></span>","<span class = 'notice'>There is little left. We will soon be ready.</span>"), 8 SECONDS)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat,H,"<span class = 'notice'>There is little left. We will soon be ready.</span>"), 4 MINUTES)
+		addtimer(CALLBACK(H, TYPE_PROC_REF(/atom, visible_message),"<span class = 'warning'> <i>[H]'s body begins to lose its shape, skin sloughing off and melting, losing form and composure.</i></span>","<span class = 'notice'>There is little left. We will soon be ready.</span>"), 8 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat),H,"<span class = 'notice'>There is little left. We will soon be ready.</span>"), 4 MINUTES)
 
-		addtimer(CALLBACK(src, .proc/add_pop,H,), 5 MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(add_pop),H,), 5 MINUTES)
 
 /datum/ability/species/xenochimera/hatch/proc/add_pop()
 	if(ishuman(owner))

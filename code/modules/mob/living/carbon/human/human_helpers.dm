@@ -109,8 +109,8 @@
 
 	var/obj/item/organ/external/T = organs_by_name[BP_TORSO]
 	if(T && T.robotic >= ORGAN_ROBOT)
-		add_verb(T.owner, /mob/living/carbon/human/proc/self_diagnostics)
-		add_verb(T.owner, /mob/living/carbon/human/proc/setmonitor_state)
+		add_verb(T.owner, TYPE_PROC_REF(/mob/living/carbon/human, self_diagnostics))
+		add_verb(T.owner, TYPE_PROC_REF(/mob/living/carbon/human, setmonitor_state))
 		var/datum/robolimb/R = GLOB.all_robolimbs[T.model]
 		synthetic = R
 		return synthetic

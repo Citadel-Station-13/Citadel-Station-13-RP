@@ -111,8 +111,8 @@
 /mob/living/simple_mob/animal/sif/leech/Initialize(mapload)
 	. = ..()
 
-	add_verb(src, /mob/living/proc/ventcrawl)
-	add_verb(src, /mob/living/proc/hide)
+	add_verb(src, TYPE_PROC_REF(/mob/living, ventcrawl))
+	add_verb(src, TYPE_PROC_REF(/mob/living, hide))
 
 /mob/living/simple_mob/animal/sif/leech/statpanel_data(client/C)
 	. = ..()

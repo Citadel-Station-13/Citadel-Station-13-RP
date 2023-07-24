@@ -11,7 +11,7 @@
 /obj/item/organ/internal/eyes/robotize()
 	..()
 	name = "optical sensor"
-	add_obj_verb(src, /obj/item/organ/internal/eyes/proc/change_eye_color)
+	add_obj_verb(src, TYPE_PROC_REF(/obj/item/organ/internal/eyes, change_eye_color))
 
 /obj/item/organ/internal/eyes/robot
 	name = "optical sensor"
@@ -25,7 +25,7 @@
 
 /obj/item/organ/internal/eyes/grey/colormatch/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/sync_color), 15)
+	addtimer(CALLBACK(src, PROC_REF(sync_color)), 15)
 
 /obj/item/organ/internal/eyes/grey/colormatch/proc/sync_color()
 	if(ishuman(owner))

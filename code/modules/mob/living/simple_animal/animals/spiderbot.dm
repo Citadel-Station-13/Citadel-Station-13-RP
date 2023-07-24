@@ -65,8 +65,8 @@
 	. = ..()
 	add_language(LANGUAGE_GALCOM)
 	default_language = SScharacters.resolve_language_name(LANGUAGE_GALCOM)
-	add_verb(src, /mob/living/proc/ventcrawl)
-	add_verb(src, /mob/living/proc/hide)
+	add_verb(src, TYPE_PROC_REF(/mob/living, ventcrawl))
+	add_verb(src, TYPE_PROC_REF(/mob/living, hide))
 
 /mob/living/simple_mob/spiderbot/attackby(var/obj/item/O as obj, var/mob/user as mob)
 

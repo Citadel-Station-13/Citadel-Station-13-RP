@@ -110,15 +110,15 @@
 		return
 
 	if(!IsAdvancedToolUser())
-		add_verb(src, /mob/living/simple_mob/proc/animal_nom)
-		add_verb(src, /mob/living/proc/shred_limb)
+		add_verb(src, TYPE_PROC_REF(/mob/living/simple_mob, animal_nom))
+		add_verb(src, TYPE_PROC_REF(/mob/living, shred_limb))
 
 	if(LAZYLEN(vore_organs))
 		return
 
 	// Since they have bellies, add verbs to toggle settings on them.
-	add_verb(src, /mob/living/simple_mob/proc/toggle_digestion)
-	add_verb(src, /mob/living/simple_mob/proc/toggle_fancygurgle)
+	add_verb(src, TYPE_PROC_REF(/mob/living/simple_mob, toggle_digestion))
+	add_verb(src, TYPE_PROC_REF(/mob/living/simple_mob, toggle_fancygurgle))
 
 	//A much more detailed version of the default /living implementation
 	var/obj/belly/B = new /obj/belly(src)

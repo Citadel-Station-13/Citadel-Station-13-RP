@@ -85,7 +85,7 @@
 
 	if(!config_legacy.aliens_allowed)
 		to_chat(src, "You begin to lay an egg, but hesitate. You suspect it isn't allowed.")
-		remove_verb(src, /mob/living/carbon/human/proc/lay_egg)
+		remove_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, lay_egg))
 		return
 
 	if(locate(/obj/effect/alien/egg) in get_turf(src))

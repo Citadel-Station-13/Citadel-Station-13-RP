@@ -79,7 +79,7 @@
 	emote_hear = list("squishes")
 
 /mob/living/simple_mob/slime/Initialize(mapload)
-	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, TYPE_PROC_REF(/mob/living, ventcrawl))
 	update_mood()
 	glow_color = color
 	handle_light()

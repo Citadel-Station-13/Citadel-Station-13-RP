@@ -10,7 +10,7 @@
 /obj/structure/table/darkglass/New()
 	material = get_material_by_name("darkglass")
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
-	remove_obj_verb(src, /obj/structure/table/proc/do_put)
+	remove_obj_verb(src, TYPE_PROC_REF(/obj/structure/table, do_put))
 
 	..()
 
@@ -33,7 +33,7 @@
 /obj/structure/table/fancyblack/Initialize(mapload)
 	material = get_material_by_name("fancyblack")
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
-	remove_obj_verb(src, /obj/structure/table/proc/do_put)
+	remove_obj_verb(src, TYPE_PROC_REF(/obj/structure/table, do_put))
 	. = ..()
 
 /obj/structure/table/fancyblack/dismantle(obj/item/tool/wrench/W, mob/user)

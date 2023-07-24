@@ -20,7 +20,7 @@
 
 /datum/gene/basic/remoteview/activate(mob/M, connected, flags)
 	..(M,connected,flags)
-	add_verb(M, /mob/living/carbon/human/proc/remoteobserve)
+	add_verb(M, TYPE_PROC_REF(/mob/living/carbon/human, remoteobserve))
 
 /datum/gene/basic/regenerate
 	name = "Regenerate"
@@ -48,7 +48,7 @@
 
 /datum/gene/basic/remotetalk/activate(mob/M, connected, flags)
 	..(M,connected,flags)
-	add_verb(M, /mob/living/carbon/human/proc/remotesay)
+	add_verb(M, TYPE_PROC_REF(/mob/living/carbon/human, remotesay))
 
 /datum/gene/basic/morph
 	name = "Morph"
@@ -60,7 +60,7 @@
 
 /datum/gene/basic/morph/activate(mob/M)
 	..(M)
-	add_verb(M, /mob/living/carbon/human/proc/morph)
+	add_verb(M, TYPE_PROC_REF(/mob/living/carbon/human, morph))
 
 /* Not used on bay
 /datum/gene/basic/heat_resist

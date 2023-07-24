@@ -142,7 +142,7 @@
 			UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 		active_camera = C
 		START_PROCESSING(SSmoving_cameras, src)
-		RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
+		RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, PROC_REF(update_active_camera_screen))
 		playsound(ui_host(), get_sfx(SFX_ALIAS_TERMINAL), 25, FALSE)
 		update_active_camera_screen()
 		return TRUE
@@ -169,7 +169,7 @@
 				if(active_camera)
 					UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 				active_camera = target
-				RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
+				RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, PROC_REF(update_active_camera_screen))
 				playsound(ui_host(), get_sfx(SFX_ALIAS_TERMINAL), 25, FALSE)
 				update_active_camera_screen()
 				. = TRUE

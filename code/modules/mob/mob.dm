@@ -860,7 +860,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		visible_message("<span class='warning'><b>[usr] rips [selection] out of [src]'s body.</b></span>","<span class='warning'><b>[usr] rips [selection] out of your body.</b></span>")
 	valid_objects = get_visible_implants(0)
 	if(valid_objects.len == 1) //Yanking out last object - removing verb.
-		remove_verb(src, /mob/proc/yank_out_object)
+		remove_verb(src, TYPE_PROC_REF(/mob, yank_out_object))
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src

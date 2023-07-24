@@ -74,8 +74,8 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	if(!mind.changeling)
 		mind.changeling = new /datum/changeling(gender)
 
-	add_verb(src, /datum/changeling/proc/EvolutionMenu)
-	add_verb(src, /mob/proc/changeling_respec)
+	add_verb(src, TYPE_PROC_REF(/datum/changeling, EvolutionMenu))
+	add_verb(src, TYPE_PROC_REF(/mob, changeling_respec))
 	add_language("Changeling")
 
 	var/lesser_form = !ishuman(src)
@@ -217,7 +217,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 		to_chat(src, SPAN_WARNING("We cannot reach \the [M] with a sting!"))
 		return 0 //One is inside, the other is outside something.
 	// Maximum queued turfs set to 25; I don't *think* anything raises sting_range above 2, but if it does the 25 may need raising
-	if(!AStar(src.loc, M.loc, /turf/proc/AdjacentTurfsRangedSting, /turf/proc/Distance, max_nodes=25, max_node_depth=sting_range)) //If we can't find a path, fail
+	if(!AStar(src.loc, M.loc, TYPE_PROC_REF(/turf, AdjacentTurfsRangedSting), TYPE_PROC_REF(/turf, Distance), max_nodes=25, max_node_depth=sting_range)) //If we can't find a path, fail
 		to_chat(src, SPAN_WARNING("We cannot find a path to sting \the [M] by!"))
 		return 0
 	return 1

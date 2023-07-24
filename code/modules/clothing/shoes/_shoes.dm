@@ -63,7 +63,7 @@
 	else
 		to_chat(usr, "<span class='warning'>Your need an empty, unbroken hand to do that.</span>")
 	if(!holding)
-		remove_obj_verb(src, /obj/item/clothing/shoes/proc/draw_knife)
+		remove_obj_verb(src, TYPE_PROC_REF(/obj/item/clothing/shoes, draw_knife))
 
 	update_icon()
 
@@ -87,7 +87,7 @@
 			return
 		holding = I
 		user.visible_message("<span class='notice'>\The [user] shoves \the [I] into \the [src].</span>")
-		add_obj_verb(src, /obj/item/clothing/shoes/proc/draw_knife)
+		add_obj_verb(src, TYPE_PROC_REF(/obj/item/clothing/shoes, draw_knife))
 		update_icon()
 	else if(istype(I,/obj/item/holder/micro)) //MICROS IN MY SHOES
 		var/full = 0

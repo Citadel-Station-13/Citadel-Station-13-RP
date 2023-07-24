@@ -138,7 +138,7 @@
 	if(istype(owner))
 		replaced(owner)
 		sync_colour_to_human(owner)
-	addtimer(CALLBACK(src, .proc/get_icon), 1)
+	addtimer(CALLBACK(src, PROC_REF(get_icon)), 1)
 
 /obj/item/organ/external/Destroy()
 
@@ -263,7 +263,7 @@
 
 	dislocated = 1
 	if(istype(owner))
-		add_verb(owner, /mob/living/carbon/human/proc/relocate)
+		add_verb(owner, TYPE_PROC_REF(/mob/living/carbon/human, relocate))
 
 /obj/item/organ/external/proc/relocate()
 	if(dislocated == -1)
@@ -277,7 +277,7 @@
 		for(var/obj/item/organ/external/limb in owner.organs)
 			if(limb.dislocated == 1)
 				return
-		remove_verb(owner, /mob/living/carbon/human/proc/relocate)
+		remove_verb(owner, TYPE_PROC_REF(/mob/living/carbon/human, relocate))
 
 /obj/item/organ/external/update_health()
 	damage = min(max_damage, (brute_dam + burn_dam))
@@ -1064,7 +1064,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			"<span class='danger'>You hear a sickening crack.</span>")
 		jostle_bone()
 		if(organ_can_feel_pain() && IS_CONSCIOUS(owner) && !isbelly(owner.loc))
-			INVOKE_ASYNC(owner, /mob/proc/emote, "scream")
+			INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), "scream")
 
 	playsound(src.loc, "fracture", 10, 1, -2)
 	status |= ORGAN_BROKEN
@@ -1224,7 +1224,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		owner.visible_message("<span class='danger'>\The [W] sticks in the wound!</span>")
 	implants += W
 	owner.embedded_flag = 1
-	add_verb(owner, /mob/proc/yank_out_object)
+	add_verb(owner, TYPE_PROC_REF(/mob, yank_out_object))
 	W.add_blood(owner)
 	W.forceMove(owner)
 
@@ -1417,7 +1417,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/queue_syringe_infection()
 	if(!syringe_infection_queued)
 		syringe_infection_queued = 100
-		addtimer(CALLBACK(src, .proc/do_syringe_infection), rand(5, 10) MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(do_syringe_infection)), rand(5, 10) MINUTES)
 	else
 		syringe_infection_queued = clamp(syringe_infection_queued + 10, 0, 300)
 
