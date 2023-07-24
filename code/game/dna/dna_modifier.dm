@@ -289,7 +289,7 @@
 /obj/machinery/computer/scan_consolenew/LateInitialize()
 	. = ..()
 	scan_for_scanner()
-	addtimer(CALLBACK(src, PROC_REF(recharge_injector)), 25 SECONDS)
+	addtimer(CALLBACK(src, .proc/recharge_injector), 25 SECONDS)
 
 /obj/machinery/computer/scan_consolenew/proc/recharge_injector()
 	injector_ready = TRUE

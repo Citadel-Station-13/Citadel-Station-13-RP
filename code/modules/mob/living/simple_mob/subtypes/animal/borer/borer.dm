@@ -63,13 +63,13 @@
 /mob/living/simple_mob/animal/borer/Initialize(mapload)
 	add_language("Cortical Link")
 
-	add_verb(src, TYPE_PROC_REF(/mob/living, ventcrawl))
-	add_verb(src, TYPE_PROC_REF(/mob/living, hide))
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 	true_name = "[pick("Primary","Secondary","Tertiary","Quaternary")] [rand(1000,9999)]"
 
 	if(!roundstart)
-		INVOKE_ASYNC(src, PROC_REF(request_player))
+		INVOKE_ASYNC(src, .proc/request_player)
 
 	return ..()
 
@@ -123,9 +123,9 @@
 	controlling = FALSE
 
 	host.remove_language("Cortical Link")
-	remove_verb(host, TYPE_PROC_REF(/mob/living/carbon, release_control))
-	remove_verb(host, TYPE_PROC_REF(/mob/living/carbon, punish_host))
-	remove_verb(host, TYPE_PROC_REF(/mob/living/carbon, spawn_larvae))
+	remove_verb(host, /mob/living/carbon/proc/release_control)
+	remove_verb(host, /mob/living/carbon/proc/punish_host)
+	remove_verb(host, /mob/living/carbon/proc/spawn_larvae)
 
 	if(host_brain)
 		// these are here so bans and multikey warnings are not triggered on the wrong people when ckey is changed.

@@ -449,7 +449,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	make_terminal()
 
-	addtimer(CALLBACK(src, PROC_REF(update)), 5)
+	addtimer(CALLBACK(src, .proc/update), 5)
 
 /obj/machinery/power/apc/examine(mob/user, dist)
 	. = ..()
@@ -1122,7 +1122,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			for(var/obj/machinery/light/L in area)
 				if(!initial(L.no_emergency)) //If there was an override set on creation, keep that override
 					L.no_emergency = emergency_lights
-					INVOKE_ASYNC(L, TYPE_PROC_REF(/obj/machinery/light, update), FALSE)
+					INVOKE_ASYNC(L, /obj/machinery/light/.proc/update, FALSE)
 				CHECK_TICK
 		if("overload")
 			if(locked_exception) // Reusing for simplicity!

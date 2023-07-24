@@ -192,7 +192,7 @@
 
 	switch(action)
 		if("activate")
-			INVOKE_ASYNC(src, PROC_REF(activate))
+			INVOKE_ASYNC(src, .proc/activate)
 			return TRUE
 		if("detach")
 			eject_beaker(usr)

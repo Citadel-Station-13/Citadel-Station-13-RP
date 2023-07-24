@@ -12,7 +12,7 @@
 		// gotta deal with nullspace :/
 		SSradiation.z_listeners[T.z] += target
 	A.rad_flags |= RAD_Z_LISTENING
-	RegisterSignal(A, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(z_change))
+	RegisterSignal(A, COMSIG_MOVABLE_Z_CHANGED, .proc/z_change)
 
 /datum/element/z_radiation_listener/Detach(datum/source, force)
 	. = ..()

@@ -76,7 +76,7 @@
 			W.assignment = corpseidjob
 		M.set_id_info(W)
 		M.equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
-	INVOKE_ASYNC(M, TYPE_PROC_REF(/mob, death))
+	INVOKE_ASYNC(M, /mob/proc/death)
 
 /obj/spawner/corpse/syndicatesoldier
 	name = "Mercenary"

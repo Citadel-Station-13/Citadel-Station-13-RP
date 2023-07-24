@@ -16,4 +16,4 @@ SUBSYSTEM_DEF(overmaps)
 /datum/controller/subsystem/overmaps/proc/queue_helm_computer_rebuild()
 	if(!initialized)
 		return
-	addtimer(CALLBACK(src, PROC_REF(rebuild_helm_computers)), 0, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/rebuild_helm_computers), 0, TIMER_UNIQUE)

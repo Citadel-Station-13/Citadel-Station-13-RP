@@ -156,7 +156,7 @@
 	. = ..()
 
 	if(edge)
-		addtimer(CALLBACK(src, PROC_REF(on_atom_edge_touch), A), 0)
+		addtimer(CALLBACK(src, .proc/on_atom_edge_touch, A), 0)
 
 /turf/space/proc/on_atom_edge_touch(atom/movable/AM)
 	if(!QDELETED(AM) && (AM.loc == src))

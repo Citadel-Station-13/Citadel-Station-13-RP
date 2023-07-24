@@ -25,7 +25,7 @@
 	set_stat(CONSCIOUS)
 	forbid_seeing_deadchat = FALSE
 	timeofdeath = null
-	remove_verb(src, TYPE_PROC_REF(/mob, changeling_revive))
+	remove_verb(src, /mob/proc/changeling_revive)
 	// re-add our changeling powers
 	make_changeling()
 

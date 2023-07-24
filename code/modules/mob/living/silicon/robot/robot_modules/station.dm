@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.set_module_sprites(sprites)
 
 	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
-	INVOKE_ASYNC(R, TYPE_PROC_REF(/mob/living/silicon/robot, choose_icon), R.module_sprites.len + 1, R.module_sprites)
+	INVOKE_ASYNC(R, /mob/living/silicon/robot/proc/choose_icon, R.module_sprites.len + 1, R.module_sprites)
 
 	// Setup synths, modules, and modules with custom init code.
 	synths_by_kind = get_synths(R)
@@ -248,7 +248,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		/mob/living/silicon/robot/proc/rest_style
 	))
 	if (can_shred)
-		add_verb(R, TYPE_PROC_REF(/mob/living, shred_limb))
+		add_verb(R, /mob/living/proc/shred_limb)
 
 /obj/item/robot_module/robot/quad/Reset(mob/living/silicon/robot/R)
 	. = ..()

@@ -19,9 +19,9 @@
 		created.name = created.real_name
 		created.real_name = "[owner.name]'s best friend"
 		if(QDELETED(owner.current) || owner.current.stat == DEAD)
-			addtimer(CALLBACK(created, TYPE_PROC_REF(/mob, dust)), 15 SECONDS)
+			addtimer(CALLBACK(created, /mob/proc/dust), 15 SECONDS)
 	else
-		addtimer(CALLBACK(created, TYPE_PROC_REF(/mob, dust)), 15 SECONDS)
+		addtimer(CALLBACK(created, /mob/proc/dust), 15 SECONDS)
 
 /datum/role/ghostrole/demonic_friend/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()

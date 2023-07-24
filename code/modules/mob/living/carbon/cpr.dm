@@ -42,7 +42,7 @@
 	if(HAS_TRAIT(src, TRAIT_CPR_IN_PROGRESS))
 		to_chat(user, SPAN_WARNING("Someone is already doing CPR on [src]!"))
 		return
-	INVOKE_ASYNC(src, PROC_REF(attempt_cpr), user)
+	INVOKE_ASYNC(src, .proc/attempt_cpr, user)
 
 /mob/living/carbon/proc/attempt_cpr(atom/actor, delay_mod = 1)
 	actor.visible_message(SPAN_NOTICE("[actor] is trying to perform CPR on [src]!"))
@@ -98,7 +98,7 @@
 	if(clipping)
 		to_chat(actor, SPAN_WARNING("Too fast! Wait [(CPR_NOMINAL_COOLDOWN - CPR_ACTION_TIME) * 0.1] seconds after finishing a set of compressions to start another!"))
 
-	addtimer(CALLBACK(src, PROC_REF(__cpr_ventilation_end)), CPR_VENTILATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
-	addtimer(CALLBACK(src, PROC_REF(__cpr_off_cooldown)), CPR_NOMINAL_COOLDOWN, TIMER_OVERRIDE | TIMER_UNIQUE)
-	addtimer(CALLBACK(src, PROC_REF(__cpr_organ_stasis_end)), CPR_BRAIN_STASIS_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
-	addtimer(CALLBACK(src, PROC_REF(__cpr_circulation_end)), CPR_CIRCULATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/__cpr_ventilation_end), CPR_VENTILATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/__cpr_off_cooldown), CPR_NOMINAL_COOLDOWN, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/__cpr_organ_stasis_end), CPR_BRAIN_STASIS_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/__cpr_circulation_end), CPR_CIRCULATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)

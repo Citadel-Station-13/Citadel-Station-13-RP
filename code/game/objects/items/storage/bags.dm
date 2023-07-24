@@ -154,7 +154,7 @@
 
 /obj/item/storage/bag/ore/equipped(mob/user, slot, flags)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(autoload), override = TRUE)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/autoload, override = TRUE)
 
 /obj/item/storage/bag/ore/dropped(mob/user, flags, atom/newLoc)
 	. = ..()

@@ -62,7 +62,7 @@ var/global/list/grub_machine_overlays = list()
 	sparks = new(src)
 	sparks.set_up()
 	sparks.attach(src)
-	add_verb(src, TYPE_PROC_REF(/mob/living, ventcrawl))
+	add_verb(src, /mob/living/proc/ventcrawl)
 
 /mob/living/simple_mob/animal/solargrub_larva/death()
 	powermachine.draining = 0

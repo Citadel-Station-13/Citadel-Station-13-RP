@@ -336,7 +336,7 @@
 							"<span class='userdanger'>[pick(fluffmessages)]</span>")
 	playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
 	if(prob(25))
-		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
+		INVOKE_ASYNC(src, .proc/jedi_spin, user)
 
 //Kanabo
 /obj/item/melee/kanabo // parrying stick

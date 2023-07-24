@@ -310,7 +310,7 @@ GLOBAL_LIST_INIT(changeling_powers, init_changeling_powers())
 		if(!istype(M))
 			return
 		purchasePower(M, href_list["P"])
-		call(TYPE_PROC_REF(/datum/changeling, EvolutionMenu))()
+		call(/datum/changeling/proc/EvolutionMenu)()
 
 
 

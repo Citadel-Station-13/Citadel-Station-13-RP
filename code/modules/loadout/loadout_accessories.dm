@@ -41,7 +41,7 @@
 	for(var/wcoat in typesof(/obj/item/clothing/accessory/wcoat))
 		var/obj/item/clothing/accessory/wcoat_type = wcoat
 		wcoats[initial(wcoat_type.name)] = wcoat_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(wcoats, GLOBAL_PROC_REF(cmp_text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(wcoats, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/tie
 	name = "Tie - Selection"
@@ -53,7 +53,7 @@
 	for(var/tie in typesof(/obj/item/clothing/accessory/tie))
 		var/obj/item/clothing/accessory/tie_type = tie
 		ties[initial(tie_type.name)] = tie_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(ties, GLOBAL_PROC_REF(cmp_text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(ties, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/scarf
 	name = "Scarf - Selection"
@@ -65,7 +65,7 @@
 	for(var/scarf in typesof(/obj/item/clothing/accessory/scarf))
 		var/obj/item/clothing/accessory/scarf_type = scarf
 		scarfs[initial(scarf_type.name)] = scarf_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(scarfs, GLOBAL_PROC_REF(cmp_text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(scarfs, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/scarfcolor
 	name = "Scarf Colorable"
@@ -81,7 +81,7 @@
 	for(var/jacket in typesof(/obj/item/clothing/accessory/jacket))
 		var/obj/item/clothing/accessory/jacket_type = jacket
 		jackets[initial(jacket_type.name)] = jacket_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(jackets, GLOBAL_PROC_REF(cmp_text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(jackets, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/suitvest
 	name = "Suit Vest"
@@ -103,7 +103,7 @@
 	for(var/fanny in typesof(/obj/item/storage/belt/fannypack))
 		var/obj/item/storage/belt/fannypack/fanny_type = fanny
 		fannys[initial(fanny_type.name)] = fanny_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(fannys, GLOBAL_PROC_REF(cmp_text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(fannys, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/chaps
 	name = "Chaps - Brown"
@@ -136,7 +136,7 @@
 	for(var/sweater in typesof(/obj/item/clothing/accessory/sweater))
 		var/obj/item/clothing/suit/sweater_type = sweater
 		sweaters[initial(sweater_type.name)] = sweater_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(sweaters, GLOBAL_PROC_REF(cmp_text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(sweaters, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/bracelet
 	abstract_type = /datum/loadout_entry/accessory/bracelet
@@ -187,7 +187,7 @@
 	for(var/asym in typesof(/obj/item/clothing/accessory/asymmetric))
 		var/obj/item/clothing/accessory/asymmetric_type = asym
 		asyms[initial(asymmetric_type.name)] = asymmetric_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(asyms, GLOBAL_PROC_REF(cmp_text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(asyms, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/cowledvest
 	name = "Cowled Vest"
@@ -223,7 +223,7 @@
 	for(var/gaiter in typesof(/obj/item/clothing/accessory/gaiter))
 		var/obj/item/clothing/accessory/gaiter_type = gaiter
 		gaiters[initial(gaiter_type.name)] = gaiter_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(gaiters, GLOBAL_PROC_REF(cmp_text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(gaiters, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/laconic
 	name = "Laconic Field Pouch System"
@@ -288,7 +288,7 @@
 	var/list/halos = list()
 	for(var/obj/item/clothing/accessory/halo_projector/halo as anything in typesof(/obj/item/clothing/accessory/halo_projector))
 		halos[initial(halo.name)] = halo
-	tweaks += new/datum/loadout_tweak/path(tim_sort(halos, GLOBAL_PROC_REF(cmp_text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(halos, /proc/cmp_text_asc))
 
 //Tajaran wears
 
@@ -306,7 +306,7 @@
 	for(var/tscarf in (typesof(/obj/item/clothing/accessory/tajaran/scarf)))
 		var/obj/item/clothing/accessory/tajaran/scarf/tscarf_type = tscarf
 		tscarfs[initial(tscarf_type.name)] = tscarf_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tscarfs, GLOBAL_PROC_REF(cmp_text_asc)))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tscarfs, /proc/cmp_text_asc))
 
 /datum/loadout_entry/accessory/civ_exos_mob
 	name = "medical exoframe"

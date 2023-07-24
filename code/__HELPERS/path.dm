@@ -126,7 +126,7 @@
 /datum/pathfind/New(atom/movable/caller, atom/goal, id, max_distance, mintargetdist, simulated_only, avoid)
 	src.caller = caller
 	end = get_turf(goal)
-	open = new /datum/heap(GLOBAL_PROC_REF(HeapPathWeightCompare))
+	open = new /datum/heap(/proc/HeapPathWeightCompare)
 	sources = new()
 	src.id = id
 	src.max_distance = max_distance

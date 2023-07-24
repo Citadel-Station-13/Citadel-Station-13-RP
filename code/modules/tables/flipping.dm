@@ -70,7 +70,7 @@
 		return 0
 
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
-	add_obj_verb(src, TYPE_PROC_REF(/obj/structure/table, do_put))
+	add_obj_verb(src, /obj/structure/table/proc/do_put)
 
 	var/list/targets = list(get_step(src,dir),get_step(src,turn(dir, 45)),get_step(src,turn(dir, -45)))
 	for (var/atom/movable/A in get_turf(src))
@@ -96,7 +96,7 @@
 	return 1
 
 /obj/structure/table/proc/unflip()
-	remove_obj_verb(src, TYPE_PROC_REF(/obj/structure/table, do_put))
+	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 	add_obj_verb(src, /obj/structure/table/verb/do_flip)
 
 	reset_plane_and_layer()

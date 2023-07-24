@@ -46,7 +46,7 @@ var/global/list/narsie_list = list()
 		to_chat(world, "<font size='15' color='red'><b>[uppertext(name)] HAS RISEN</b></font>")
 		SEND_SOUND(world, sound('sound/effects/weather/wind/wind_5_1.ogg'))
 
-	INVOKE_ASYNC(src, PROC_REF(narsie_spawn_animation))
+	INVOKE_ASYNC(src, .proc/narsie_spawn_animation)
 
 	if(!narsie_cometh)//so we don't initiate Hell more than one time.
 		if(cause_hell)

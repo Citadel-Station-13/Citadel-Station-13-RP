@@ -74,7 +74,7 @@
 	// lathe designs shouldn't be qdeleting, but incase someone puts in a random..
 	if(QDELETED(instance))
 		return
-	// todo: maybe /obj/proc/detect_materials, TYPE_PROC_REF(/obj, detect_material_parts) ? this works fine for now tho.
+	// todo: maybe /obj/proc/detect_materials, /obj/proc/detect_material_parts ? this works fine for now tho.
 	if(isnull(materials))
 		if(!isnull(instance.materials))
 			materials = instance.materials.Copy()

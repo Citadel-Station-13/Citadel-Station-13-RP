@@ -101,7 +101,7 @@ GLOBAL_LIST_EMPTY(observer_list)
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = world.view //I mean. I don't even know if byond has occlusion culling... but...
 	plane = OBSERVER_PLANE //Why doesn't the var above work...???
-	add_verb(src, TYPE_PROC_REF(/mob/observer/dead, dead_tele))
+	add_verb(src, /mob/observer/dead/proc/dead_tele)
 
 	var/turf/T
 	if(ismob(body))
@@ -616,8 +616,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/observer/dead/proc/manifest(mob/user)
 	is_manifest = TRUE
-	add_verb(src, TYPE_PROC_REF(/mob/observer/dead, toggle_visibility))
-	add_verb(src, TYPE_PROC_REF(/mob/observer/dead, ghost_whisper))
+	add_verb(src, /mob/observer/dead/proc/toggle_visibility)
+	add_verb(src, /mob/observer/dead/proc/ghost_whisper)
 	to_chat(src,"<font color='purple'>As you are now in the realm of the living, you can whisper to the living with the <b>Spectral Whisper</b> verb, inside the IC tab.</font>")
 	if(plane != BYOND_PLANE)
 		user.visible_message( \

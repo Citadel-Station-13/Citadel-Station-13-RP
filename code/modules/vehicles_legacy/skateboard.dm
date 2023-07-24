@@ -139,7 +139,7 @@
 			playsound(src, 'sound/weapons/skateboard_ollie.ogg', 50, TRUE)
 			if(prob (50))
 				sparks.start() //the most radical way to start plasma fires
-			addtimer(CALLBACK(src, PROC_REF(grind)), 2)
+			addtimer(CALLBACK(src, .proc/grind), 2)
 			return
 	else
 		grinding = FALSE
@@ -194,7 +194,7 @@
 		if(locate(/obj/structure/table) in V.loc.contents)
 			V.grinding = TRUE
 			V.icon_state = "[V.board_icon]-grind"
-			addtimer(CALLBACK(V, TYPE_PROC_REF(/obj/vehicle_old/skateboard, grind)), 2)
+			addtimer(CALLBACK(V, /obj/vehicle_old/skateboard/.proc/grind), 2)
 		next_ollie = world.time + 5
 */
 

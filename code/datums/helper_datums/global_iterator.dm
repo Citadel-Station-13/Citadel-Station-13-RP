@@ -69,7 +69,7 @@
 		tag = "\ref[src]"
 	set_process_args(arguments)
 	if(autostart)
-		INVOKE_ASYNC(src, PROC_REF(start))
+		INVOKE_ASYNC(src, .proc/start)
 	return
 
 /datum/global_iterator/proc/main()

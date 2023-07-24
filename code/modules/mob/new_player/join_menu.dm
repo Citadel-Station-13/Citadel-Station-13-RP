@@ -12,7 +12,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		ui.open()
 
 /datum/join_menu/proc/queue_update()
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, update_static_data)), 0, TIMER_UNIQUE | TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, /datum/proc/update_static_data), 0, TIMER_UNIQUE | TIMER_OVERRIDE)
 
 /datum/join_menu/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.explicit_new_player_state

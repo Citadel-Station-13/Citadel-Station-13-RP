@@ -45,7 +45,7 @@ var/list/sacrificed = list()
 	if(istype(src,/obj/effect/rune))
 		return	fizzle() //Use friggin manuals, Dorf, your list was of zero length.
 	else
-		call(TYPE_PROC_REF(/obj/effect/rune, fizzle))()
+		call(/obj/effect/rune/proc/fizzle)()
 		return
 
 
@@ -415,7 +415,7 @@ var/list/sacrificed = list()
 	if(istype(src,/obj/effect/rune))
 		return	fizzle()
 	else
-		call(TYPE_PROC_REF(/obj/effect/rune, fizzle))()
+		call(/obj/effect/rune/proc/fizzle)()
 		return
 
 //! TENTH RUNE
@@ -786,7 +786,7 @@ var/list/sacrificed = list()
 	if(istype(W,/obj/effect/rune))
 		return	fizzle()
 	if(istype(W,/obj/item/paper/talisman))
-		call(TYPE_PROC_REF(/obj/effect/rune, fizzle))()
+		call(/obj/effect/rune/proc/fizzle)()
 		return
 
 //! SEVENTEENTH RUNE

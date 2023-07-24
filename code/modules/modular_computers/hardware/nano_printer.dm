@@ -38,7 +38,7 @@
 	return 1
 
 /obj/item/computer_hardware/nano_printer/proc/count_fields(var/info)
-//Count the fields. This is taken directly from paper.dm, TYPE_PROC_REF(/obj/item/paper, parsepencode)(). -Hawk_v3
+//Count the fields. This is taken directly from paper.dm, /obj/item/paper/proc/parsepencode(). -Hawk_v3
 	var/fields = 0
 	var/t = info
 	var/laststart = 1

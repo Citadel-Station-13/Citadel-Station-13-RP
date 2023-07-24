@@ -93,7 +93,7 @@
 	. = ..()
 	update_power_on_move(src, old_loc, loc)
 	if(ismovable(loc)) // Register for recursive movement (if the thing we're inside moves)
-		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, PROC_REF(update_power_on_move))
+		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/update_power_on_move)
 	if(ismovable(old_loc)) // Unregister recursive movement.
 		UnregisterSignal(old_loc, COMSIG_MOVABLE_MOVED)
 

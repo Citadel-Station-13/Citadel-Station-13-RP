@@ -27,20 +27,26 @@
  * (these operate on paths, not types, so to these shortcuts, datum is NOT a parent of atom, etc...)
  *
  * ### global proc while in another global proc:
- * GLOBAL_PROC_REF(some_proc_here)
+ * .procname
  *
- * `CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(some_proc_here))`
+ * `CALLBACK(GLOBAL_PROC, .some_proc_here)`
  *
  * ### proc defined on current(src) object (when in a /proc/ and not an override) OR overridden at src or any of it's parents:
- * PROC_REF(some_proc_here)
+ * .procname
  *
- * `CALLBACK(src, PROC_REF(some_proc_here))`
+ * `CALLBACK(src, .some_proc_here)`
+ *
+ * ### when the above doesn't apply:
+ *.proc/procname
+ *
+ * `CALLBACK(src, .proc/some_proc_here)`
+ *
  *
  * proc defined on a parent of a some type
  *
- * `TYPE_PROC_REF(/some/type, some_proc_here)`
+ * `/some/type/.proc/some_proc_here`
  *
- * Otherwise you must always provide the full typepath of the proc via TYPE_PROC_REF(/type/of/thing, procname)
+ * Otherwise you must always provide the full typepath of the proc (/type/of/thing/proc/procname)
  */
 /datum/callback
 

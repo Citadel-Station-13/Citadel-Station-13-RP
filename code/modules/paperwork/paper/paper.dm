@@ -73,7 +73,7 @@
 	if(info != initial(info))
 		info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
-		INVOKE_ASYNC(src, PROC_REF(init_parsepencode), info)
+		INVOKE_ASYNC(src, .proc/init_parsepencode, info)
 	else
 		// TODO: REFACTOR PAPER
 		spawn(0)

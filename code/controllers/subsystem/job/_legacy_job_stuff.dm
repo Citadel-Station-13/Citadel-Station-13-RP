@@ -235,7 +235,7 @@
 	for(var/mob/new_player/player in divide_unassigned)
 		if(divide_overflows[player] == JOB_ALTERNATIVE_RETURN_LOBBY)
 			player.ready = 0
-			INVOKE_ASYNC(player, TYPE_PROC_REF(/mob/new_player, new_player_panel_proc))
+			INVOKE_ASYNC(player, /mob/new_player/proc/new_player_panel_proc)
 			to_chat(player, SPAN_WARNING("You have been returned to the lobby, as you do not qualify for any selected role(s)."))
 			divide_unassigned -= player
 	dispose_unassigned()

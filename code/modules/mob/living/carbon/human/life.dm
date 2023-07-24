@@ -343,7 +343,7 @@
 		if(radiation >= RAD_MOB_HAIRLOSS_THRESHOLD)
 			if(prob(RAD_MOB_HAIRLOSS_CHANCE(radiation, seconds)))
 				to_chat(src, SPAN_WARNING("Your hair starts falling out in clumps..."))
-				addtimer(CALLBACK(src, PROC_REF(radiation_hairloss)), 8 SECONDS)
+				addtimer(CALLBACK(src, .proc/radiation_hairloss), 8 SECONDS)
 		if(radiation >= RAD_MOB_DECLONE_THRESHOLD)
 			if(prob(RAD_MOB_DECLONE_CHANCE(radiation, seconds)))
 				to_chat(src, SPAN_WARNING("You feel a sharp pain, and a strange, numb feeling."))
