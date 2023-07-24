@@ -70,12 +70,12 @@
 	if(H)
 		humanform = H
 		refactory = locate() in humanform.internal_organs
-		add_verb(src, TYPE_PROC_REF(/mob/living, hide))
-		add_verb(src, TYPE_PROC_REF(/mob/living/simple_mob/protean_blob, useradio))
-		add_verb(src, TYPE_PROC_REF(/mob/living/simple_mob/protean_blob, appearanceswitch))
-		add_verb(src, TYPE_PROC_REF(/mob/living/simple_mob/protean_blob, rig_transform))
-		add_verb(src, TYPE_PROC_REF(/mob/living/simple_mob/protean_blob, leap_attack))
-		add_verb(src, TYPE_PROC_REF(/mob/living, usehardsuit))
+		add_verb(src, /mob/living/proc/hide)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/useradio)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/appearanceswitch)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/rig_transform)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/leap_attack)
+		add_verb(src, /mob/living/proc/usehardsuit)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, update_health))
 	else
 		update_icon()

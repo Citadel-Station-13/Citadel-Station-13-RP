@@ -31,14 +31,14 @@
 	var/rad_glow = 0
 
 /mob/living/simple_mob/slime/promethean/Initialize(mapload, null)
-	add_verb(src, TYPE_PROC_REF(/mob/living/simple_mob/slime/promethean, prommie_blobform))
-	add_verb(src, TYPE_PROC_REF(/mob/living, set_size))
-	add_verb(src, TYPE_PROC_REF(/mob/living, hide))
-	add_verb(src, TYPE_PROC_REF(/mob/living/simple_mob, animal_nom))
-	add_verb(src, TYPE_PROC_REF(/mob/living, shred_limb))
-	add_verb(src, TYPE_PROC_REF(/mob/living/simple_mob/slime/promethean, toggle_expand))
-	add_verb(src, TYPE_PROC_REF(/mob/living/simple_mob/slime/promethean, prommie_select_colour))
-	add_verb(src, TYPE_PROC_REF(/mob/living/simple_mob/slime/promethean, toggle_shine))
+	add_verb(src, /mob/living/simple_mob/slime/promethean/proc/prommie_blobform)
+	add_verb(src, /mob/living/proc/set_size)
+	add_verb(src, /mob/living/proc/hide)
+	add_verb(src, /mob/living/simple_mob/proc/animal_nom)
+	add_verb(src, /mob/living/proc/shred_limb)
+	add_verb(src, /mob/living/simple_mob/slime/promethean/proc/toggle_expand)
+	add_verb(src, /mob/living/simple_mob/slime/promethean/proc/prommie_select_colour)
+	add_verb(src, /mob/living/simple_mob/slime/promethean/proc/toggle_shine)
 	update_mood()
 	if(rad_glow)
 		rad_glow = clamp(rad_glow,0,250)
@@ -391,8 +391,8 @@
 		new_hat.forceMove(src)
 
 	blob.update_icon()
-	remove_verb(blob, TYPE_PROC_REF(/mob/living, ventcrawl)) // Absolutely not.
-	//remove_verb(blob, TYPE_PROC_REF(/mob/living/simple_mob, set_name)) // We already have a name.
+	remove_verb(blob, /mob/living/proc/ventcrawl) // Absolutely not.
+	//remove_verb(blob, /mob/living/simple_mob/proc/set_name) // We already have a name.
 	temporary_form = blob
 	//Mail them to nullspace
 	moveToNullspace()

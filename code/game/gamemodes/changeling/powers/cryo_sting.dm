@@ -24,8 +24,8 @@
 	if(T.reagents)
 		T.reagents.add_reagent("cryotoxin", inject_amount)
 	feedback_add_details("changeling_powers","CS")
-	remove_verb(src, TYPE_PROC_REF(/mob, changeling_cryo_sting))
+	remove_verb(src, /mob/proc/changeling_cryo_sting)
 	spawn(3 MINUTES)
 		to_chat(src, "<span class='notice'>Our cryogenic string is ready to be used once more.</span>")
-		add_verb(src, TYPE_PROC_REF(/mob, changeling_cryo_sting))
+		add_verb(src, /mob/proc/changeling_cryo_sting)
 	return 1

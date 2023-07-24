@@ -70,7 +70,7 @@
 
 /datum/trait/neutral/bloodsucker/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, bloodsuck))
+	add_verb(H, /mob/living/carbon/human/proc/bloodsuck)
 
 /datum/trait/neutral/succubus_drain
 	name = "Succubus Drain"
@@ -79,9 +79,9 @@
 
 /datum/trait/neutral/succubus_drain/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, succubus_drain))
-	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, succubus_drain_finalize))
-	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, succubus_drain_lethal))
+	add_verb(H, /mob/living/carbon/human/proc/succubus_drain)
+	add_verb(H, /mob/living/carbon/human/proc/succubus_drain_finalize)
+	add_verb(H, /mob/living/carbon/human/proc/succubus_drain_lethal)
 
 /datum/trait/neutral/vampire
 	name = "Vetalan / Vampiric"
@@ -99,8 +99,8 @@
 /datum/trait/neutral/vampire/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
 	H.add_vision_modifier(/datum/vision/augmenting/vetalan)
-	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, bloodsuck))
-	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, lick_wounds))
+	add_verb(H, /mob/living/carbon/human/proc/bloodsuck)
+	add_verb(H, /mob/living/carbon/human/proc/lick_wounds)
 
 /datum/trait/neutral/hard_vore
 	name = "Brutal Predation"
@@ -110,7 +110,7 @@
 
 /datum/trait/neutral/hard_vore/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	add_verb(H, TYPE_PROC_REF(/mob/living, shred_limb))
+	add_verb(H, /mob/living/proc/shred_limb)
 
 /datum/trait/neutral/trashcan
 	name = "Trash Can"
@@ -121,7 +121,7 @@
 
 /datum/trait/neutral/trashcan/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	add_verb(H, TYPE_PROC_REF(/mob/living, eat_trash))
+	add_verb(H, /mob/living/proc/eat_trash)
 
 /datum/trait/neutral/glowing_eyes
 	name = "Glowing Eyes"
@@ -138,8 +138,8 @@
 
 /datum/trait/neutral/glowing_body/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	add_verb(H, TYPE_PROC_REF(/mob/living, glow_toggle))
-	add_verb(H, TYPE_PROC_REF(/mob/living, glow_color))
+	add_verb(H, /mob/living/proc/glow_toggle)
+	add_verb(H, /mob/living/proc/glow_color)
 
 //! ## Body shape traits
 /datum/trait/neutral/taller
@@ -246,7 +246,7 @@
 
 /datum/trait/neutral/antiseptic_saliva/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, lick_wounds))
+	add_verb(H, /mob/living/carbon/human/proc/lick_wounds)
 
 /datum/trait/neutral/size_change
 	name = "Sizeshift"
@@ -255,7 +255,7 @@
 
 /datum/trait/neutral/size_change/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
-	add_verb(H, TYPE_PROC_REF(/mob/living, set_size))
+	add_verb(H, /mob/living/proc/set_size)
 
 /datum/trait/neutral/nitrogen_breathing
 	name = "Nitrogen Breathing"

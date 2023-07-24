@@ -696,7 +696,7 @@
 	if(.)
 		return
 	if(user.ckey == "pontifexminimus")
-		add_verb(user, TYPE_PROC_REF(/mob/living/carbon/human, shapeshifter_select_gender))
+		add_verb(user, /mob/living/carbon/human/proc/shapeshifter_select_gender)
 	else
 		return
 

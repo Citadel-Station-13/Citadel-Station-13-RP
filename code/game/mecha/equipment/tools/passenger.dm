@@ -34,7 +34,7 @@
 			spawn(world.tick_lag)
 				user.forceMove(src)
 				user.update_perspective()
-			add_verb(user, TYPE_PROC_REF(/mob, verb_eject_mech_passenger))
+			add_verb(user, /mob/proc/verb_eject_mech_passenger)
 			occupant = user
 			log_message("[user] boarded.")
 			occupant_message("[user] boarded.")
@@ -51,11 +51,11 @@
 
 	var/obj/item/mecha_parts/mecha_equipment/tool/passenger/pod = loc
 	if(!istype(pod))
-		remove_verb(src, TYPE_PROC_REF(/mob, verb_eject_mech_passenger))
+		remove_verb(src, /mob/proc/verb_eject_mech_passenger)
 		return
 	if(src != pod.occupant)
 		forceMove(get_turf(pod))
-		remove_verb(src, TYPE_PROC_REF(/mob, verb_eject_mech_passenger))
+		remove_verb(src, /mob/proc/verb_eject_mech_passenger)
 		return
 	to_chat(src, "You climb out from \the [src].")
 	pod.go_out()
@@ -66,7 +66,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/proc/go_out()
 	if(!occupant)
 		return
-	remove_verb(occupant, TYPE_PROC_REF(/mob, verb_eject_mech_passenger))
+	remove_verb(occupant, /mob/proc/verb_eject_mech_passenger)
 	occupant.forceMove(get_turf(src))
 	occupant.update_perspective()
 	occupant = null
@@ -85,7 +85,7 @@
 	var/obj/mecha/M = chassis
 	..()
 	if (M && !(locate(/obj/item/mecha_parts/mecha_equipment/tool/passenger) in M))
-		remove_verb(M, TYPE_PROC_REF(/obj/mecha, move_inside_passenger))
+		remove_verb(M, /obj/mecha/proc/move_inside_passenger)
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/get_equip_info()
 	return "[..()] <br />[occupant? "\[Occupant: [occupant]\]|" : ""]Exterior Hatch: <a href='?src=\ref[src];toggle_lock=1'>Toggle Lock</a>"

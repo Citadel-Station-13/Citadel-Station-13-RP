@@ -133,8 +133,8 @@
 		card.radio = new /obj/item/radio(src.card)
 		radio = card.radio
 
-	add_verb(src, TYPE_PROC_REF(/mob/living/silicon/pai, choose_chassis))
-	add_verb(src, TYPE_PROC_REF(/mob/living/silicon/pai, choose_verbs))
+	add_verb(src, /mob/living/silicon/pai/proc/choose_chassis)
+	add_verb(src, /mob/living/silicon/pai/proc/choose_verbs)
 
 	//PDA
 	pda = new(src)
@@ -239,7 +239,7 @@
 	update_perspective()
 	set_resting(FALSE)
 	update_mobility()
-	remove_verb(src, TYPE_PROC_REF(/mob/living/silicon/pai, pai_nom))
+	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
 	// pass attack self on to the card regardless of our shell
 	if(!istype(new_shell, /obj/item/paicard))

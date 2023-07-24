@@ -248,7 +248,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		/mob/living/silicon/robot/proc/rest_style
 	))
 	if (can_shred)
-		add_verb(R, TYPE_PROC_REF(/mob/living, shred_limb))
+		add_verb(R, /mob/living/proc/shred_limb)
 
 /obj/item/robot_module/robot/quad/Reset(mob/living/silicon/robot/R)
 	. = ..()

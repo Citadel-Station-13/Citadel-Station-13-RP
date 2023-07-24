@@ -229,5 +229,5 @@
 	if(/mob/living/proc/set_size in R.verbs)
 		return FALSE
 
-	add_verb(R, TYPE_PROC_REF(/mob/living, set_size))
+	add_verb(R, /mob/living/proc/set_size)
 	return TRUE

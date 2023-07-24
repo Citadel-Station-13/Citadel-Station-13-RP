@@ -98,8 +98,8 @@
 /mob/living/simple_mob/animal/space/mouse_army/Initialize(mapload)
 	. = ..()
 
-	add_verb(src, TYPE_PROC_REF(/mob/living, ventcrawl))
-	add_verb(src, TYPE_PROC_REF(/mob/living, hide))
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 	if(name == initial(name))
 		name = "[name] ([rand(1, 1000)])"

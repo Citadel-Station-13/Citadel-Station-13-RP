@@ -125,7 +125,7 @@
 
 /mob/living/simple_animal/slime/Initialize(mapload, start_as_adult = FALSE)
 	. = ..()
-	add_verb(src, TYPE_PROC_REF(/mob/living, ventcrawl))
+	add_verb(src, /mob/living/proc/ventcrawl)
 	if(start_as_adult)
 		make_adult()
 	health = maxHealth
