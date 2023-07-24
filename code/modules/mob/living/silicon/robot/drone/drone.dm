@@ -91,8 +91,8 @@
 
 /mob/living/silicon/robot/drone/Initialize(mapload)
 	. = ..()
-	add_verb(src, TYPE_PROC_REF(/mob/living, ventcrawl))
-	add_verb(src, TYPE_PROC_REF(/mob/living, hide))
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 	remove_language("Robot Talk")
 	add_language("Robot Talk", 0)
 	add_language("Drone Talk", 1)

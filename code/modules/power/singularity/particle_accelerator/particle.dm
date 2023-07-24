@@ -42,7 +42,7 @@
 	. = ..()
 	src.loc = loc
 	src.setDir(dir)
-	INVOKE_ASYNC(src, PROC_REF(move), 1)
+	INVOKE_ASYNC(src, .proc/move, 1)
 
 /obj/effect/accelerated_particle/Moved()
 	. = ..()

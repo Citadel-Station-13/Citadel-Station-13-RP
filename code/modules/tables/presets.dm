@@ -154,7 +154,7 @@
 /obj/structure/table/alien/Initialize(mapload)
 	material = SSmaterials.get_material(/datum/material/alienalloy/alium)
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
-	remove_obj_verb(src, TYPE_PROC_REF(/obj/structure/table, do_put))
+	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 	return ..()
 
 /obj/structure/table/alien/dismantle(obj/item/tool/wrench/W, mob/user)

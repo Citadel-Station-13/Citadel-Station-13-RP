@@ -50,7 +50,7 @@
 	if(istype(M))
 		return
 	stored_mmi = new brain_type(src)
-	addtimer(CALLBACK(src, PROC_REF(update_from_mmi)), 0)
+	addtimer(CALLBACK(src, .proc/update_from_mmi), 0)
 
 /obj/item/organ/internal/mmi_holder/proc/get_control_efficiency()
 	. = max(0, 1 - round(damage / max_damage, 0.1))

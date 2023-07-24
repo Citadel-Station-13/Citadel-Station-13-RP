@@ -22,7 +22,7 @@
 		return ..()
 	var/obj/item/fossil/mosquito = I
 	if(mosquito.processable == "seed")
-		addtimer(CALLBACK(src, PROC_REF(findsaway), "seed"), 100)
+		addtimer(CALLBACK(src, .proc/findsaway, "seed"), 100)
 		reviving = TRUE
 		mosquito.processable = FALSE
 	else

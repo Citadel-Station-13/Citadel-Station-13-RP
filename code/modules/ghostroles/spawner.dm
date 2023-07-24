@@ -38,7 +38,7 @@
 		if(mapload)
 			stack_trace("No role type")
 	else
-		AddComponent(/datum/component/ghostrole_spawnpoint, role_type, role_spawns, role_params, TYPE_PROC_REF(/obj/structure/ghost_role_spawner, on_spawn), null, special_spawntext)
+		AddComponent(/datum/component/ghostrole_spawnpoint, role_type, role_spawns, role_params, /obj/structure/ghost_role_spawner/proc/on_spawn, null, special_spawntext)
 
 /obj/structure/ghost_role_spawner/proc/on_spawn(mob/created, datum/role/ghostrole/role, list/params, datum/component/ghostrole_spawnpoint/spawnpoint)
 	if(qdel_on_deplete && !spawnpoint.SpawnsLeft())

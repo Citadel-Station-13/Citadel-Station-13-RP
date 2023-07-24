@@ -151,7 +151,7 @@
 		deltimer(emp_timerid)
 	else
 		visible_message(SPAN_WARNING("[src] overloads!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
-	emp_timerid = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/gps, reset_emped)), 5 MINUTES / severity, TIMER_STOPPABLE)
+	emp_timerid = addtimer(CALLBACK(src, /obj/item/gps/proc/reset_emped), 5 MINUTES / severity, TIMER_STOPPABLE)
 
 /obj/item/gps/proc/reset_emped()
 	if(!emped)
@@ -205,7 +205,7 @@
 	if(tracking)
 		stop_tracking()
 	tracking = target
-	RegisterSignal(tracking, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/obj/item/gps, stop_tracking))
+	RegisterSignal(tracking, COMSIG_PARENT_QDELETING, /obj/item/gps/proc/stop_tracking)
 	if(!hud_arrow)
 		hud_arrow = new /atom/movable/screen/waypoint_tracker/gps
 		hud_bound?.add_screen(hud_arrow)

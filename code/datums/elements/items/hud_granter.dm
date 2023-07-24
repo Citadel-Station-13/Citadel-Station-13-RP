@@ -14,8 +14,8 @@
 		return ELEMENT_INCOMPATIBLE
 	src.huds = huds
 	src.slots = islist(slots)? slots : list(slots)
-	RegisterSignal(target, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equip))
-	RegisterSignal(target, COMSIG_ITEM_UNEQUIPPED, PROC_REF(on_unequip))
+	RegisterSignal(target, COMSIG_ITEM_EQUIPPED, .proc/on_equip)
+	RegisterSignal(target, COMSIG_ITEM_UNEQUIPPED, .proc/on_unequip)
 
 /datum/element/hud_granter/Detach(datum/source)
 	. = ..()

@@ -21,7 +21,7 @@
 	. = ..()
 	radio_controller.remove_object(src, air_frequency)
 	air_connection = radio_controller.add_object(src, air_frequency, RADIO_TO_AIRALARM)
-	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/machinery/door, open))
+	INVOKE_ASYNC(src, /obj/machinery/door/proc/open)
 
 /obj/machinery/door/airlock/alarmlock/receive_signal(datum/signal/signal)
 	..()

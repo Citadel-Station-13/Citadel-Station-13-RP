@@ -82,7 +82,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/item/communicator/Initialize(mapload)
 	. = ..()
 	all_communicators += src
-	tim_sort(all_communicators, GLOBAL_PROC_REF(cmp_name_asc))
+	tim_sort(all_communicators, /proc/cmp_name_asc)
 	node = get_exonet_node(src)
 	START_PROCESSING(SSobj, src)
 	camera = new(src)
@@ -92,7 +92,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	setup_tgui_camera()
 
 	//This is a pretty terrible way of doing this.
-	addtimer(CALLBACK(src, PROC_REF(register_to_holder)), 5 SECONDS)
+	addtimer(CALLBACK(src, .proc/register_to_holder), 5 SECONDS)
 
 // Proc: register_to_holder()
 // Parameters: None

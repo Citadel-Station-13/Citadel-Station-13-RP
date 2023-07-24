@@ -23,4 +23,4 @@
 	. = SSsounds.reserve_sound_channel_datumless()
 	if(!.)
 		CRASH("Failed to reserve channel.")
-	addtimer(CALLBACK(SSsounds, TYPE_PROC_REF(/datum/controller/subsystem/sounds, free_sound_channel), .), time)
+	addtimer(CALLBACK(SSsounds, /datum/controller/subsystem/sounds/proc/free_sound_channel, .), time)

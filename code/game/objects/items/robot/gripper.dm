@@ -45,7 +45,7 @@
 		remove_item(drop_location())
 	wrapped = I
 	I.forceMove(src)
-	RegisterSignal(I, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED), PROC_REF(unwrap_hook))
+	RegisterSignal(I, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED), .proc/unwrap_hook)
 
 /**
  * newloc false to not move

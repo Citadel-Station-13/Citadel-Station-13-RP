@@ -757,7 +757,7 @@
 	set category = "Superpower"
 
 	if(!(MUTATION_MORPH in mutations))
-		remove_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, morph))
+		remove_verb(src, /mob/living/carbon/human/proc/morph)
 		return
 
 	var/new_facial = input("Please select facial hair color.", "Character Generation",rgb(r_facial,g_facial,b_facial)) as color
@@ -827,7 +827,7 @@
 	set category = "Superpower"
 
 	if(!(MUTATION_REMOTE_TALK in src.mutations))
-		remove_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, remotesay))
+		remove_verb(src, /mob/living/carbon/human/proc/remotesay)
 		return
 
 	var/list/creatures = list()
@@ -859,7 +859,7 @@
 	if(!(MUTATION_REMOTE_VIEW in src.mutations))
 		remoteview_target = null
 		reset_perspective()
-		remove_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, remoteobserve))
+		remove_verb(src, /mob/living/carbon/human/proc/remoteobserve)
 		return
 
 	if(IsRemoteViewing())
@@ -950,7 +950,7 @@
 			blood_DNA[M.dna.unique_enzymes] = M.dna.b_type
 	hand_blood_color = blood_color
 	update_bloodied()
-	add_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, bloody_doodle))
+	add_verb(src, /mob/living/carbon/human/proc/bloody_doodle)
 	return 1 //we applied blood to the item
 
 /mob/living/carbon/human/proc/get_full_print()
@@ -1193,7 +1193,7 @@
 		return 0 //something is terribly wrong
 
 	if (!bloody_hands)
-		remove_verb(src, TYPE_PROC_REF(/mob/living/carbon/human, bloody_doodle))
+		remove_verb(src, /mob/living/carbon/human/proc/bloody_doodle)
 
 	if (src.gloves)
 		to_chat(src, "<span class='warning'>Your [src.gloves] are getting in the way.</span>")

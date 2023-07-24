@@ -38,7 +38,7 @@
 	context = context_or_path
 	if(istype(context, /datum/translation_context/variable/learning))
 		var/datum/translation_context/variable/learning/CTX = context
-		CTX.on_train = CALLBACK(src, PROC_REF(on_learn))
+		CTX.on_train = CALLBACK(src, .proc/on_learn)
 
 /obj/item/universal_translator/proc/on_learn(datum/translation_context/context, datum/language/L, old_efficiency)
 	if(old_efficiency)

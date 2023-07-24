@@ -9,7 +9,7 @@
 /datum/controller/subsystem/characters/proc/perform_global_migrations(savefile/S, current_version, list/errors, list/options, datum/preferences/prefs)
 	if(current_version < 13)
 		if(prefs)
-			addtimer(CALLBACK(prefs, TYPE_PROC_REF(/datum/preferences, force_reset_keybindings)), 5 SECONDS)
+			addtimer(CALLBACK(prefs, /datum/preferences/proc/force_reset_keybindings), 5 SECONDS)
 		else
 			var/list/new_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds
 			WRITE_FILE(S["key_bindings"], new_bindings)

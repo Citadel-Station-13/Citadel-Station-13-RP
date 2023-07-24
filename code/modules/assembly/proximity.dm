@@ -74,7 +74,7 @@
 
 /obj/item/assembly/prox_sensor/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
-	INVOKE_ASYNC(src, PROC_REF(sense))
+	INVOKE_ASYNC(src, .proc/sense)
 
 /obj/item/assembly/prox_sensor/proc/toggle_scan()
 	if(!secured)

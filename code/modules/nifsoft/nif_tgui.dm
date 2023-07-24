@@ -31,7 +31,7 @@
 
 /datum/component/nif_menu/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(create_mob_button))
+	RegisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN, .proc/create_mob_button)
 	var/mob/owner = parent
 	if(owner.client)
 		create_mob_button(parent)
@@ -46,26 +46,26 @@
 			UnregisterSignal(screen_icon, COMSIG_CLICK)
 			QDEL_NULL(screen_icon)
 		if(ishuman(parent))
-			remove_verb(owner, TYPE_PROC_REF(/mob/living/carbon/human, nif_menu))
+			remove_verb(owner, /mob/living/carbon/human/proc/nif_menu)
 
 
 /datum/component/nif_menu/proc/create_mob_button(mob/user)
 	var/datum/hud/HUD = user.hud_used
 	if(!screen_icon)
 		screen_icon = new()
-		RegisterSignal(screen_icon, COMSIG_CLICK, PROC_REF(nif_menu_click))
+		RegisterSignal(screen_icon, COMSIG_CLICK, .proc/nif_menu_click)
 	screen_icon.icon = HUD.ui_style
 	screen_icon.color = HUD.ui_color
 	screen_icon.alpha = HUD.ui_alpha
 	LAZYADD(HUD.other_important, screen_icon)
 	user.client?.screen += screen_icon
 
-	add_verb(user, TYPE_PROC_REF(/mob/living/carbon/human, nif_menu))
+	add_verb(user, /mob/living/carbon/human/proc/nif_menu)
 
 /datum/component/nif_menu/proc/nif_menu_click(mob/user)
 	var/mob/living/carbon/human/H = user
 	if(istype(H) && H.nif)
-		INVOKE_ASYNC(H.nif, PROC_REF(ui_interact), user)
+		INVOKE_ASYNC(H.nif, .proc/ui_interact, user)
 
 /**
  * Screen atom for NIF menu access

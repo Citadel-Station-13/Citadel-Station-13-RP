@@ -23,6 +23,6 @@
 	owner.visible_message("<span class='danger'>\The [owner] pulls the trigger reflexively!</span>")
 	var/obj/item/gun/G = aiming_with
 	if(istype(G))
-		INVOKE_ASYNC(G, TYPE_PROC_REF(/obj/item/gun, Fire), aiming_at, owner, null, null, TRUE)
+		INVOKE_ASYNC(G, /obj/item/gun/proc/Fire, aiming_at, owner, null, null, TRUE)
 		locked = 0
 		lock_time = world.time+10

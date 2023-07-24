@@ -1,5 +1,5 @@
 #define TURF_IS_MIMICKING(T) (isturf(T) && (T:mz_flags & MZ_MIMIC_BELOW))
-#define CHECK_OO_EXISTENCE(OO) if (OO && !MOVABLE_IS_ON_ZTURF(OO) && !OO.destruction_timer) { OO.destruction_timer = addtimer(CALLBACK(OO, TYPE_PROC_REF(/datum, qdel_self)), 10 SECONDS, TIMER_STOPPABLE); }
+#define CHECK_OO_EXISTENCE(OO) if (OO && !MOVABLE_IS_ON_ZTURF(OO) && !OO.destruction_timer) { OO.destruction_timer = addtimer(CALLBACK(OO, /datum/.proc/qdel_self), 10 SECONDS, TIMER_STOPPABLE); }
 #define UPDATE_OO_IF_PRESENT CHECK_OO_EXISTENCE(bound_overlay); if (bound_overlay) { update_above(); }
 
 // I do not apologize.

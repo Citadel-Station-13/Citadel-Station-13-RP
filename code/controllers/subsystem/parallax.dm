@@ -139,4 +139,4 @@ SUBSYSTEM_DEF(parallax)
  * z
  */
 /datum/controller/subsystem/parallax/proc/queue_z_vis_update(z)
-	addtimer(CALLBACK(src, PROC_REF(update_z_vis_contents), z), flags = TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/update_z_vis_contents, z), flags = TIMER_UNIQUE)

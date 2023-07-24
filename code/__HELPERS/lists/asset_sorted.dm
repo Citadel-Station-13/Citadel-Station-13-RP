@@ -1,5 +1,5 @@
 /// Runtimes if the passed in list is not sorted.
-/proc/assert_sorted(list/list, name, cmp = GLOBAL_PROC_REF(cmp_numeric_asc))
+/proc/assert_sorted(list/list, name, cmp = /proc/cmp_numeric_asc)
 	var/last_value = list[1]
 
 	for (var/index in 2 to list.len)

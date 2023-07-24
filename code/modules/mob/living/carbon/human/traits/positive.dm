@@ -146,7 +146,7 @@
 
 /datum/trait/positive/winged_flight/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
-	add_verb(H, TYPE_PROC_REF(/mob/living, flying_toggle))
+	add_verb(H, /mob/living/proc/flying_toggle)
 
 /datum/trait/positive/hardfeet
 	name = "Hard Feet"
@@ -164,7 +164,7 @@
 
 /datum/trait/positive/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..()
-	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, lick_wounds))
+	add_verb(H, /mob/living/carbon/human/proc/lick_wounds)
 
 /datum/trait/positive/thick_blood
 	name = "Thick Blood"
@@ -180,11 +180,11 @@
 
 /datum/trait/positive/positive/weaver/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..()
-	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, check_silk_amount))
-	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, toggle_silk_production))
-	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, weave_structure))
-	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, weave_item))
-	add_verb(H, TYPE_PROC_REF(/mob/living/carbon/human, set_silk_color))
+	add_verb(H, /mob/living/carbon/human/proc/check_silk_amount)
+	add_verb(H, /mob/living/carbon/human/proc/toggle_silk_production)
+	add_verb(H, /mob/living/carbon/human/proc/weave_structure)
+	add_verb(H, /mob/living/carbon/human/proc/weave_item)
+	add_verb(H, /mob/living/carbon/human/proc/set_silk_color)
 	var/obj/item/organ/internal/weaver/weak/silk = new(H)
 	H.internal_organs += silk
 	H.internal_organs_by_name[O_WEAVER] = silk

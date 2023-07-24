@@ -53,7 +53,7 @@
 	component_parts += /obj/item/stock_parts/matter_bin
 	component_parts += /obj/item/stock_parts/matter_bin
 	if(output_options.len)
-		add_obj_verb(src, TYPE_PROC_REF(/obj/machinery/appliance, choose_output))
+		add_obj_verb(src, /obj/machinery/appliance/proc/choose_output)
 
 	if (!available_recipes)
 		available_recipes = new

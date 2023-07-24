@@ -47,14 +47,14 @@
 	if((. = ..()))
 		//nif.set_flag(NIF_O_SCOTHERS,NIF_FLAGS_OTHER)	//Only required on install if the flag is in the default setting_flags list defined few lines above.
 		if(nif?.human)
-			add_verb(nif.human, TYPE_PROC_REF(/mob/living/carbon/human, nsay))
-			add_verb(nif.human, TYPE_PROC_REF(/mob/living/carbon/human, nme))
+			add_verb(nif.human, /mob/living/carbon/human/proc/nsay)
+			add_verb(nif.human, /mob/living/carbon/human/proc/nme)
 
 /datum/nifsoft/soulcatcher/uninstall()
 	QDEL_LIST_NULL(brainmobs)
 	if((. = ..()) && nif?.human) //Sometimes NIFs are deleted outside of a human
-		remove_verb(nif.human, TYPE_PROC_REF(/mob/living/carbon/human, nsay))
-		remove_verb(nif.human, TYPE_PROC_REF(/mob/living/carbon/human, nme))
+		remove_verb(nif.human, /mob/living/carbon/human/proc/nsay)
+		remove_verb(nif.human, /mob/living/carbon/human/proc/nme)
 
 /datum/nifsoft/soulcatcher/proc/save_settings()
 	if(!nif)
@@ -522,7 +522,7 @@
 	real_name = brainmob.real_name	//And the OTHER name
 
 	forceMove(get_turf(parent_human))
-	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, PROC_REF(human_moved))
+	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, .proc/human_moved)
 
 	//Time to play dressup
 	if(brainmob.client.prefs)

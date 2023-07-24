@@ -62,8 +62,8 @@
 /obj/item/kinetic_crusher/Initialize(mapload)
 	. = ..()
 	if(requires_Wield)
-		RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_wield))
-		RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, PROC_REF(on_unwield))
+		RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
+		RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
 /obj/item/kinetic_crusher/ComponentInitialize()
 	. = ..()
 	if(requires_wield)
@@ -159,7 +159,7 @@
 		D.fire()
 		charged = FALSE
 		update_icon()
-		addtimer(CALLBACK(src, PROC_REF(Recharge)), charge_time * (user?.ConflictElementCount(CONFLICT_ELEMENT_CRUSHER) || 1))
+		addtimer(CALLBACK(src, .proc/Recharge), charge_time * (user?.ConflictElementCount(CONFLICT_ELEMENT_CRUSHER) || 1))
 		return
 	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && isliving(target))
 		detonate(target, user)
@@ -478,7 +478,7 @@
 			continue
 		playsound(L, 'sound/magic/fireball.ogg', 20, 1)
 		new /obj/effect/temp_visual/fire(L.loc)
-		addtimer(CALLBACK(src, PROC_REF(pushback), L, user), 1) //no free backstabs, we push AFTER module stuff is done
+		addtimer(CALLBACK(src, .proc/pushback, L, user), 1) //no free backstabs, we push AFTER module stuff is done
 		L.adjustFireLoss(bonus_value, forced = TRUE)
 /obj/item/crusher_trophy/tail_spike/proc/pushback(mob/living/target, mob/living/user)
 	if(!QDELETED(target) && !QDELETED(user) && (!target.anchored || ismegafauna(target))) //megafauna will always be pushed
@@ -536,7 +536,7 @@
 		deadly_shot = FALSE
 /obj/item/crusher_trophy/blaster_tubes/on_mark_detonation(mob/living/target, mob/living/user)
 	deadly_shot = TRUE
-	addtimer(CALLBACK(src, PROC_REF(reset_deadly_shot)), 300, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, .proc/reset_deadly_shot), 300, TIMER_UNIQUE|TIMER_OVERRIDE)
 /obj/item/crusher_trophy/blaster_tubes/proc/reset_deadly_shot()
 	deadly_shot = FALSE
 //hierophant

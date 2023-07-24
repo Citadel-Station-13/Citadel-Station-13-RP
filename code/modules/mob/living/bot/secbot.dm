@@ -256,7 +256,7 @@
 	say("Down on the floor, [suspect_name]! You have [SECBOT_WAIT_TIME*2] seconds to comply.")
 	playsound(src.loc, pick(preparing_arrest_sounds), 50)
 	// Register to be told when the target moves
-	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(target_moved))
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/target_moved)
 
 // Callback invoked if the registered target moves
 /mob/living/bot/secbot/proc/target_moved(atom/movable/moving_instance, atom/old_loc, atom/new_loc)

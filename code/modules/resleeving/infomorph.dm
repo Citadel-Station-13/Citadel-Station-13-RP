@@ -99,10 +99,10 @@ var/list/infomorph_emotions = list(
 	add_language(LANGUAGE_EAL, 1)
 	add_language(LANGUAGE_SIGN, 0)
 
-	add_verb(src, TYPE_PROC_REF(/mob/living/silicon/infomorph, choose_verbs))
-	add_verb(src, TYPE_PROC_REF(/mob/living, hide))
-	add_verb(src, TYPE_PROC_REF(/mob/living/silicon/infomorph, fold_out))
-	add_verb(src, TYPE_PROC_REF(/mob/living/silicon/infomorph, fold_in))
+	add_verb(src, /mob/living/silicon/infomorph/proc/choose_verbs)
+	add_verb(src, /mob/living/proc/hide)
+	add_verb(src, /mob/living/silicon/infomorph/proc/fold_out)
+	add_verb(src, /mob/living/silicon/infomorph/proc/fold_in)
 
 	software = default_infomorph_software.Copy()
 
@@ -318,7 +318,7 @@ var/list/infomorph_emotions = list(
 	speak_exclamation = sayverbs[(sayverbs.len>1 ? 2 : sayverbs.len)]
 	speak_query = sayverbs[(sayverbs.len>2 ? 3 : sayverbs.len)]
 
-	remove_verb(src, TYPE_PROC_REF(/mob/living/silicon/infomorph, choose_verbs))
+	remove_verb(src, /mob/living/silicon/infomorph/proc/choose_verbs)
 
 /mob/living/silicon/infomorph/lay_down()
 	set name = "Rest"

@@ -87,7 +87,7 @@ var/list/blob_cores = list()
 	START_PROCESSING(SSobj, src)
 	update_icon() //so it atleast appears
 	if(!placed && !overmind)
-		INVOKE_ASYNC(src, PROC_REF(create_overmind), new_overmind)
+		INVOKE_ASYNC(src, .proc/create_overmind, new_overmind)
 	if(overmind)
 		update_icon()
 	point_rate = new_rate

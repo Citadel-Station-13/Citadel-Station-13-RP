@@ -66,13 +66,13 @@
 		if(istype(bot))
 			if(density && src.check_access(bot.botcard))
 				open()
-				addtimer(CALLBACK(src, PROC_REF(close)), 50)
+				addtimer(CALLBACK(src, .proc/close), 50)
 		else if(istype(AM, /obj/mecha))
 			var/obj/mecha/mecha = AM
 			if(density)
 				if(mecha.occupant && src.allowed(mecha.occupant))
 					open()
-					addtimer(CALLBACK(src, PROC_REF(close)), 50)
+					addtimer(CALLBACK(src, .proc/close), 50)
 		return
 	if (!( SSticker ))
 		return
@@ -80,7 +80,7 @@
 		return
 	if (density && allowed(AM))
 		open()
-		addtimer(CALLBACK(src, PROC_REF(close)), check_access(null)? 50 : 20)
+		addtimer(CALLBACK(src, .proc/close), check_access(null)? 50 : 20)
 
 /obj/machinery/door/window/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!(get_dir(mover, loc) & turn(dir, 180)))

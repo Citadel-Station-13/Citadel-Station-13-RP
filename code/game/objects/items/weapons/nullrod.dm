@@ -34,7 +34,7 @@
 		return
 	if (istype(target, /turf/simulated/floor))
 		to_chat(user, "<span class='notice'>You hit the floor with the [src].</span>")
-		call(TYPE_PROC_REF(/obj/effect/rune, revealrunes))(src)
+		call(/obj/effect/rune/proc/revealrunes)(src)
 	if (isliving(target))
 		var/mob/living/tm = target // targeted mob
 		if(SA_vulnerability & tm.mob_class)
@@ -68,7 +68,7 @@
 
 	nullrod_icons = sortList(nullrod_icons)
 
-	var/choice = show_radial_menu(L, src , nullrod_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), L), radius = 42, require_near = TRUE)
+	var/choice = show_radial_menu(L, src , nullrod_icons, custom_check = CALLBACK(src, .proc/check_menu, L), radius = 42, require_near = TRUE)
 	if(!choice || !check_menu(L))
 		return
 

@@ -47,7 +47,7 @@
 		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
 
 	chassis = possible_chassis[choice]
-	add_verb(src, TYPE_PROC_REF(/mob/living, hide))
+	add_verb(src, /mob/living/proc/hide)
 
 /mob/living/silicon/pai/proc/choose_verbs()
 	set category = "pAI Commands"

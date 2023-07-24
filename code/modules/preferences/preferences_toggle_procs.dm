@@ -386,7 +386,7 @@
 		make_jittery(duration + 100)
 
 	if(duration)
-		addtimer(CALLBACK(src, PROC_REF(acting_expiry)), duration SECONDS)
+		addtimer(CALLBACK(src, .proc/acting_expiry), duration SECONDS)
 		var/aduration = duration SECONDS / 10
 		to_chat(src,"You will now performatively act as if you were experiencing [impairment] for [aduration] seconds. (Do NOT abuse this)")
 	feedback_add_details("admin_verb","actimpaired") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

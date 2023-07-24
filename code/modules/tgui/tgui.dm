@@ -206,7 +206,7 @@
 		return
 	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
 		refreshing = max(refreshing, hard_refresh? UI_HARD_REFRESHING : UI_SOFT_REFRESHING)
-		addtimer(CALLBACK(src, PROC_REF(send_full_update)), TGUI_REFRESH_FULL_UPDATE_COOLDOWN, TIMER_UNIQUE)
+		addtimer(CALLBACK(src, .proc/send_full_update), TGUI_REFRESH_FULL_UPDATE_COOLDOWN, TIMER_UNIQUE)
 		return
 	refreshing = UI_NOT_REFRESHING
 	var/should_update_data = force || status >= UI_UPDATE

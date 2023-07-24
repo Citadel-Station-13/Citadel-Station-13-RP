@@ -18,7 +18,7 @@
 /datum/proxfield/New(datum/parent, ...)
 	ASSERT(parent)
 	src.parent = parent
-	RegisterSignal(parent, COMSIG_PARENT_QDELETING, PROC_REF(on_parent_qdel))
+	RegisterSignal(parent, COMSIG_PARENT_QDELETING, .proc/on_parent_qdel)
 	Init(arglist(args.Copy(2)))
 
 /datum/proxfield/Destroy()
@@ -51,9 +51,9 @@
 	else
 		attached = A
 	if(attached != parent)
-		RegisterSignal(attached, COMSIG_PARENT_QDELETING, PROC_REF(on_attached_qdel))
-	RegisterSignal(attached, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
-	RegisterSignal(attached, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_z_transit))
+		RegisterSignal(attached, COMSIG_PARENT_QDELETING, .proc/on_attached_qdel)
+	RegisterSignal(attached, COMSIG_MOVABLE_MOVED, .proc/on_move)
+	RegisterSignal(attached, COMSIG_MOVABLE_Z_CHANGED, .proc/on_z_transit)
 
 /datum/proxfield/proc/on_move(datum/source, atom/movable/oldLoc, dir, forced)
 	SIGNAL_HANDLER

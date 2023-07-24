@@ -141,11 +141,11 @@
 	if(obj_flags & EMAGGED)
 		tape.ruin()
 		audible_message("<font color=Maroon><B>Tape Recorder</B>: This tape recorder will self-destruct in... Five.</font>")
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, audible_message), "<font color=Maroon><B>Tape Recorder</B>: Four.</font>"), 1 SECONDS)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, audible_message), "<font color=Maroon><B>Tape Recorder</B>: Three.</font>"), 2 SECONDS)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, audible_message), "<font color=Maroon><B>Tape Recorder</B>: Two.</font>"), 3 SECONDS)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, audible_message), "<font color=Maroon><B>Tape Recorder</B>: One.</font>"), 4 SECONDS)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/tape_recorder, explode)), 5 SECONDS)
+		addtimer(CALLBACK(src, /atom/proc/audible_message, "<font color=Maroon><B>Tape Recorder</B>: Four.</font>"), 1 SECONDS)
+		addtimer(CALLBACK(src, /atom/proc/audible_message, "<font color=Maroon><B>Tape Recorder</B>: Three.</font>"), 2 SECONDS)
+		addtimer(CALLBACK(src, /atom/proc/audible_message, "<font color=Maroon><B>Tape Recorder</B>: Two.</font>"), 3 SECONDS)
+		addtimer(CALLBACK(src, /atom/proc/audible_message, "<font color=Maroon><B>Tape Recorder</B>: One.</font>"), 4 SECONDS)
+		addtimer(CALLBACK(src, /obj/item/tape_recorder/proc/explode), 5 SECONDS)
 
 /obj/item/tape_recorder/proc/start_playing(mob/user, silent)
 	if(!tape)
@@ -198,7 +198,7 @@
 	if(delay > play_skip_threshold)
 		audible_message("[SPAN_BOLD("[src]")]: Skipping [round(delay * 0.1)] seconds of silence.")
 		delay = 3 SECONDS
-	play_timerid = addtimer(CALLBACK(src, PROC_REF(_play_next)), delay, TIMER_STOPPABLE)
+	play_timerid = addtimer(CALLBACK(src, .proc/_play_next), delay, TIMER_STOPPABLE)
 
 /obj/item/tape_recorder/verb/playback_memory()
 	set name = "Playback Tape"

@@ -199,7 +199,7 @@ var/list/ai_verbs_default = list(
 			on_mob_init()
 
 	if(config_legacy.allow_ai_shells)
-		add_verb(src, TYPE_PROC_REF(/mob/living/silicon/ai, deploy_to_shell_act))
+		add_verb(src, /mob/living/silicon/ai/proc/deploy_to_shell_act)
 
 	spawn(5)
 		new /obj/machinery/ai_powersupply(src)
@@ -540,7 +540,7 @@ var/list/ai_verbs_default = list(
 		for(var/i in tempnetwork)
 			cameralist[i] = i
 
-	cameralist = tim_sort(cameralist, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
+	cameralist = tim_sort(cameralist, /proc/cmp_text_asc, TRUE)
 	return cameralist
 
 /mob/living/silicon/ai/proc/ai_network_change(var/network in get_camera_network_list())
