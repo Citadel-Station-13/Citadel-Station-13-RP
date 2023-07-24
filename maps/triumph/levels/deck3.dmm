@@ -4956,6 +4956,7 @@
 /obj/machinery/ai_status_display{
 	pixel_y = -32
 	},
+/obj/landmark/spawnpoint/overflow,
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "enK" = (
@@ -14403,6 +14404,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
 	},
+/obj/landmark/spawnpoint/overflow,
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "myx" = (
@@ -17037,13 +17039,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
-"oHz" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 8
-	},
-/obj/landmark/spawnpoint/latejoin,
-/turf/simulated/floor/tiled/techfloor,
-/area/teleporter/departing)
 "oIJ" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
@@ -17647,7 +17642,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "pdH" = (
-/obj/landmark/spawnpoint/latejoin/station/gateway,
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "pdK" = (
@@ -19570,6 +19565,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "qwx" = (
@@ -21609,6 +21605,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "rWU" = (
@@ -23086,6 +23083,7 @@
 	pixel_x = -28;
 	req_access = list()
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "tbt" = (
@@ -32221,7 +32219,7 @@ pRL
 rKu
 tbg
 rWx
-oHz
+rWx
 rWx
 qwm
 ljr
