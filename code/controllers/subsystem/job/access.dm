@@ -39,7 +39,7 @@
 		if(A.is_edit_relevant())
 			cached_access_edit_relevant += A.access_value
 
-	tim_sort(access_datums, /proc/cmp_auto_compare)
+	tim_sort(access_datums, GLOBAL_PROC_REF(auto_compare))
 
 // todo: register access; maybe mandate custom access to start at -1? databaes query? haha?
 
@@ -122,7 +122,7 @@
 		for(var/datum/access/A as anything in access_datums)
 			if(A.access_type & access_type)
 				. += A
-		tim_sort(generating, /proc/cmp_auto_compare)
+		tim_sort(generating, GLOBAL_PROC_REF(auto_compare))
 
 /datum/controller/subsystem/job/proc/access_region_list(access_region)
 	PRIVATE_PROC(TRUE)
@@ -135,7 +135,7 @@
 		for(var/datum/access/A as anything in access_datums)
 			if(A.access_region & access_region)
 				. += A
-		tim_sort(generating, /proc/cmp_auto_compare)
+		tim_sort(generating, GLOBAL_PROC_REF(auto_compare))
 
 /datum/controller/subsystem/job/proc/access_category_list(access_category)
 	PRIVATE_PROC(TRUE)
@@ -148,7 +148,7 @@
 		for(var/datum/access/A as anything in access_datums)
 			if(A.access_category == access_category)
 				. += A
-		tim_sort(generating, /proc/cmp_auto_compare)
+		tim_sort(generating, GLOBAL_PROC_REF(auto_compare))
 
 /**
  * looks up an access datum by id or typepath

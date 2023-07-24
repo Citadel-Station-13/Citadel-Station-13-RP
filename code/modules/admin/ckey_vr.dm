@@ -10,7 +10,7 @@
 	var/list/keys = list()
 	for(var/client/C as anything in GLOB.clients)
 		keys += C
-	var/client/selection = input("Please, select a player!", "Set ckey", null, null) as null|anything in tim_sort(keys, /proc/cmp_ckey_asc)
+	var/client/selection = input("Please, select a player!", "Set ckey", null, null) as null|anything in tim_sort(keys, GLOBAL_PROC_REF(ckey_asc))
 	if(!selection || !istype(selection))
 		return
 

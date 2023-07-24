@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(pipe_colors_ordered, tim_sort(list(
 	PIPE_COLOR_PURPLE = 2,
 	PIPE_COLOR_RED = 3,
 	PIPE_COLOR_YELLOW = 4
-), /proc/cmp_text_asc))
+), GLOBAL_PROC_REF(text_asc)))
 
 ///Names shown in the examine for every colored atmos component
 GLOBAL_LIST_INIT(pipe_color_name, tim_sort(list(
@@ -51,4 +51,4 @@ GLOBAL_LIST_INIT(pipe_color_name, tim_sort(list(
 	PIPE_COLOR_YELLOW = "yellow",
 	PIPE_COLOR_BROWN = "brown",
 	PIPE_COLOR_PURPLE = "purple"
-), /proc/cmp_text_asc))
+), GLOBAL_PROC_REF(text_asc)))

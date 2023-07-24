@@ -714,7 +714,7 @@ var/list/zmimic_fixed_planes = list(
 			found_oo += D
 			temp_objects += D
 
-	tim_sort(found_oo, /proc/cmp_planelayer)
+	tim_sort(found_oo, GLOBAL_PROC_REF(planelayer))
 
 	var/list/atoms_list_list = list()
 	for (var/thing in found_oo)
