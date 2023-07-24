@@ -185,7 +185,8 @@
 		/obj/item/flashlight/maglight,
 		/obj/item/storage/box/flashbangs,
 		/obj/item/barrier_tape_roll/police,
-		/obj/item/megaphone)
+		/obj/item/megaphone,
+		/obj/item/holowarrant)
 
 /obj/structure/closet/secure_closet/blueshield
 	name = "blueshield's locker"
@@ -264,7 +265,8 @@
 		/obj/item/flashlight/maglight,
 		/obj/item/megaphone,
 		/obj/item/clothing/mask/gas/half,
-		/obj/item/gun/ballistic/shotgun/pump/combat/warden)
+		/obj/item/gun/ballistic/shotgun/pump/combat/warden,
+		/obj/item/holowarrant)
 
 /obj/structure/closet/secure_closet/warden/Initialize(mapload)
 	if(prob(50))
