@@ -7,7 +7,8 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	icon_state = "cart"
 	anchored = 0
 	density = 1
-	climbable = 1
+	climb_allowed = TRUE
+	depth_level = 20
 	atom_flags = OPENCONTAINER
 	//copypaste sorry
 	var/amount_per_transfer_from_this = 5 //shit I dunno, adding this so syringes stop runtime erroring. --NeoFite

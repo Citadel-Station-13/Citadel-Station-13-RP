@@ -67,7 +67,6 @@
 /obj/item/implant/proc/implant_loadout(var/mob/living/carbon/human/H)
 	if(H)
 		if(handle_implant(H, initialize_loc))
-			invisibility = initial(invisibility)
 			post_implant(H)
 
 /obj/item/implant/Destroy()

@@ -1293,13 +1293,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
-"en" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 8
-	},
-/obj/machinery/door/blast/regular/open,
-/turf/simulated/floor/tiled/steel,
-/area/centcom/simulated/evac)
 "eo" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
@@ -4031,12 +4024,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/terminal)
-"mt" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 8
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/simulated/main_hall)
 "mu" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
@@ -7257,6 +7244,13 @@
 /obj/machinery/vending/loadout/loadout_misc,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
+"Ae" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/machinery/door/blast/regular/open,
+/turf/simulated/floor/tiled/steel,
+/area/centcom/simulated/evac)
 "Ah" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/metal{
@@ -7671,9 +7665,8 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Cb" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -8877,6 +8870,12 @@
 /obj/item/storage/firstaid/insiderepair,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Pn" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/simulated/main_hall)
 "Pr" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 1
@@ -15223,9 +15222,9 @@ cN
 cN
 cN
 cN
-en
-en
-en
+Ae
+Ae
+Ae
 fC
 gk
 gG
@@ -15239,9 +15238,9 @@ fC
 fC
 ls
 aD
-mt
-mt
-mt
+Pn
+Pn
+Pn
 aD
 nx
 nx

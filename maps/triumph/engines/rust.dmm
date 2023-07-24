@@ -614,7 +614,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -795,7 +795,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -896,9 +896,10 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Gf" = (
+/obj/fiftyspawner/tritium,
 /obj/structure/table/reinforced,
 /obj/fiftyspawner/deuterium,
-/obj/fiftyspawner/tritium,
+/obj/fiftyspawner/deuterium,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Gq" = (
@@ -984,7 +985,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "JD" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -1174,7 +1175,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -1224,7 +1225,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Sg" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1265,7 +1266,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning/corner{

@@ -21,14 +21,14 @@
 	normalspeed = FALSE // So it closes faster and hopefully keeps the warm air inside.
 	hackProof = TRUE // No borgs
 
-/obj/machinery/door/airlock/glass_security/polarized
+/obj/machinery/door/airlock/glass/security/polarized
 	name = "Electrochromic Security Airlock"
 	icon_tinted = 'icons/obj/doors/Doorsectinted_vr.dmi'
 
-/obj/machinery/door/airlock/glass_medical/polarized
+/obj/machinery/door/airlock/glass/medical/polarized
 	name = "Electrochromic Medical Airlock"
 	icon_tinted = 'icons/obj/doors/doormedtinted_vr.dmi'
 
-/obj/machinery/door/airlock/glass_command/polarized
+/obj/machinery/door/airlock/glass/command/polarized
 	name = "Electrochormic Command Airlock"
 	icon_tinted = 'icons/obj/doors/Doorcomtinted_vr.dmi'

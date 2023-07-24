@@ -1,14 +1,13 @@
-/obj/item/modular_computer/process(delta_time)
+/obj/item/modular_computer/process()
 	if(!enabled) // The computer is turned off
 		last_power_usage = 0
-		return FALSE
+		return 0
 
 	if(damage > broken_damage)
 		shutdown_computer()
-		return FALSE
+		return 0
 
-	// Active program requires NTNet to run but we've just lost connection. Crash.
-	if(active_program && active_program.requires_ntnet && !get_ntnet_status(active_program.requires_ntnet_feature))
+	if(active_program && active_program.requires_ntnet && !get_ntnet_status(active_program.requires_ntnet_feature)) // Active program requires NTNet to run but we've just lost connection. Crash.
 		active_program.event_networkfailure(0)
 
 	for(var/datum/computer_file/program/P in idle_threads)
@@ -34,22 +33,22 @@
 	handle_power() // Handles all computer power interaction
 	check_update_ui_need()
 
-/// Used to perform preset-specific hardware changes.
+// Used to perform preset-specific hardware changes.
 /obj/item/modular_computer/proc/install_default_hardware()
-	return TRUE
+	return 1
 
-/// Used to install preset-specific programs
+// Used to install preset-specific programs
 /obj/item/modular_computer/proc/install_default_programs()
-	return TRUE
+	return 1
 
-/obj/item/modular_computer/Initialize(mapload)
-	. = ..()
+/obj/item/modular_computer/Initialize()
 	START_PROCESSING(SSobj, src)
 	install_default_hardware()
 	if(hard_drive)
 		install_default_programs()
 	update_icon()
 	update_verbs()
+	. = ..()
 
 /obj/item/modular_computer/Destroy()
 	kill_program(1)
@@ -64,9 +63,9 @@
 		to_chat(user, "\The [src] was already emagged.")
 		return //NO_EMAG_ACT
 	else
-		computer_emagged = TRUE
+		computer_emagged = 1
 		to_chat(user, "You emag \the [src]. It's screen briefly shows a \"OVERRIDE ACCEPTED: New software downloads available.\" message.")
-		return TRUE
+		return 1
 
 /obj/item/modular_computer/update_icon()
 	icon_state = icon_state_unpowered
@@ -91,11 +90,11 @@
 
 	add_overlay(overlays_to_add)
 
-/obj/item/modular_computer/proc/turn_on(mob/user)
+/obj/item/modular_computer/proc/turn_on(var/mob/user)
 	if(bsod)
 		return
 	if(tesla_link)
-		tesla_link.enabled = TRUE
+		tesla_link.enabled = 1
 	var/issynth = issilicon(user) // Robots and AIs get different activation messages.
 	if(damage > broken_damage)
 		if(issynth)
@@ -116,39 +115,39 @@
 		else
 			to_chat(user, "You press the power button but \the [src] does not respond")
 
-/// Relays kill program request to currently active program. Use this to quit current program.
-/obj/item/modular_computer/proc/kill_program(forced = FALSE)
+// Relays kill program request to currently active program. Use this to quit current program.
+/obj/item/modular_computer/proc/kill_program(var/forced = 0)
 	if(active_program)
 		active_program.kill_program(forced)
 		active_program = null
 	var/mob/user = usr
 	if(user && istype(user))
-		nano_ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
+		ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
 	update_icon()
 
 // Returns 0 for No Signal, 1 for Low Signal and 2 for Good Signal. 3 is for wired connection (always-on)
-/obj/item/modular_computer/proc/get_ntnet_status(specific_action = 0)
+/obj/item/modular_computer/proc/get_ntnet_status(var/specific_action = 0)
 	if(network_card)
 		return network_card.get_signal(specific_action)
 	else
-		return FALSE
+		return 0
 
-/obj/item/modular_computer/proc/add_log(text)
+/obj/item/modular_computer/proc/add_log(var/text)
 	if(!get_ntnet_status())
-		return FALSE
+		return 0
 	return ntnet_global.add_log(text, network_card)
 
-/obj/item/modular_computer/proc/shutdown_computer(loud = TRUE)
+/obj/item/modular_computer/proc/shutdown_computer(var/loud = 1)
 	kill_program(1)
 	for(var/datum/computer_file/program/P in idle_threads)
 		P.kill_program(1)
 		idle_threads.Remove(P)
 	if(loud)
 		visible_message("\The [src] shuts down.")
-	enabled = FALSE
+	enabled = 0
 	update_icon()
 
-/obj/item/modular_computer/proc/enable_computer(mob/user = null)
+/obj/item/modular_computer/proc/enable_computer(var/mob/user = null)
 	enabled = 1
 	update_icon()
 
@@ -158,7 +157,7 @@
 		run_program(autorun.stored_data)
 
 	if(user)
-		nano_ui_interact(user)
+		ui_interact(user)
 
 /obj/item/modular_computer/proc/minimize_program(mob/user)
 	if(!active_program || !processor_unit)
@@ -166,12 +165,12 @@
 
 	idle_threads.Add(active_program)
 	active_program.program_state = PROGRAM_STATE_BACKGROUND // Should close any existing UIs
-	SSnanoui.close_uis(active_program.NM ? active_program.NM : active_program)
 	SStgui.close_uis(active_program.TM ? active_program.TM : active_program)
 	active_program = null
 	update_icon()
 	if(istype(user))
-		nano_ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
+		ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
+
 
 /obj/item/modular_computer/proc/run_program(prog)
 	var/datum/computer_file/program/P = null
@@ -180,7 +179,7 @@
 		P = hard_drive.find_file_by_name(prog)
 
 	if(!P || !istype(P)) // Program not found or it's not executable program.
-		to_chat(user, SPAN_DANGER("\The [src]'s screen shows \"I/O ERROR - Unable to run [prog]\" warning."))
+		to_chat(user, "<span class='danger'>\The [src]'s screen shows \"I/O ERROR - Unable to run [prog]\" warning.</span>")
 		return
 
 	P.computer = src
@@ -195,11 +194,11 @@
 		return
 
 	if(idle_threads.len >= processor_unit.max_idle_programs+1)
-		to_chat(user, SPAN_NOTICE("\The [src] displays a \"Maximal CPU load reached. Unable to run another program.\" error"))
+		to_chat(user, "<span class='notice'>\The [src] displays a \"Maximal CPU load reached. Unable to run another program.\" error</span>")
 		return
 
 	if(P.requires_ntnet && !get_ntnet_status(P.requires_ntnet_feature)) // The program requires NTNet connection, but we are not connected to NTNet.
-		to_chat(user, SPAN_DANGER("\The [src]'s screen shows \"NETWORK ERROR - Unable to connect to NTNet. Please retry. If problem persists contact your system administrator.\" warning."))
+		to_chat(user, "<span class='danger'>\The [src]'s screen shows \"NETWORK ERROR - Unable to connect to NTNet. Please retry. If problem persists contact your system administrator.\" warning.</span>")
 		return
 
 	if(active_program)
@@ -207,15 +206,15 @@
 
 	if(P.run_program(user))
 		update_icon()
-	return TRUE
+	return 1
 
 /obj/item/modular_computer/proc/update_uis()
-	if(active_program) //Should we update program ui or computer ui?
-		SSnanoui.update_uis(active_program)
-		if(active_program.NM)
-			SSnanoui.update_uis(active_program.NM)
+	if(active_program)
+		SStgui.update_uis(active_program)
+		if(active_program.TM)
+			SStgui.update_uis(active_program.TM)
 	else
-		SSnanoui.update_uis(src)
+		SStgui.update_uis(src)
 
 /obj/item/modular_computer/proc/check_update_ui_need()
 	var/ui_update_needed = FALSE
@@ -252,11 +251,15 @@
 		update_uis()
 
 // Used by camera monitor program
-/obj/item/modular_computer/check_eye(mob/user)
+/obj/item/modular_computer/check_eye(var/mob/user)
 	if(active_program)
 		return active_program.check_eye(user)
 	else
 		return ..()
+
+/obj/item/modular_computer/relaymove(var/mob/user, direction)
+	if(active_program)
+		return active_program.relaymove(user, direction)
 
 /obj/item/modular_computer/proc/set_autorun(program)
 	if(!hard_drive)

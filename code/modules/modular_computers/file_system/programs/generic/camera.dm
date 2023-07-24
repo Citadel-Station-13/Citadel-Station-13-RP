@@ -17,7 +17,7 @@
 			return ACCESS_CENTCOM_ERT
 
 	if(network in (LEGACY_MAP_DATUM).station_networks)
-		return ACCESS_SECURITY_EQUIPMENT // Default for all other station networks
+		return ACCESS_SECURITY_MAIN // Default for all other station networks
 	else
 		return 999	//Inaccessible if not a station network and not mentioned above
 

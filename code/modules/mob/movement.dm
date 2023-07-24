@@ -519,14 +519,15 @@
 
 // Called when a mob successfully moves.
 // Would've been an /atom/movable proc but it caused issues.
-/mob/Moved(atom/oldloc)
+/mob/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	client?.parallax_holder?.Update()
 	for(var/obj/O in contents)
-		O.on_loc_moved(oldloc)
+		O.on_loc_moved(old_loc)
 	reset_pixel_shifting()
 
 // Received from Moved(), useful for items that need to know that their loc just moved.
+// todo: REMOVE, this is bad for performance.
 /obj/proc/on_loc_moved(atom/oldloc)
 	return
 
