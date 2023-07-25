@@ -200,6 +200,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
+/obj/effect/paint_stripe/purple,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "aht" = (
@@ -212,7 +213,7 @@
 	icon_state = "0-2"
 	},
 /obj/structure/wall_frame/prepainted,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "ahB" = (
@@ -307,7 +308,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "akv" = (
-/turf/simulated/wall/prepainted/engineering,
+/turf/simulated/wall/prepainted,
 /area/maintenance/substation/exploration)
 "akM" = (
 /obj/structure/railing{
@@ -997,7 +998,7 @@
 	icon_state = "0-8"
 	},
 /obj/structure/wall_frame/prepainted,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "aME" = (
@@ -1724,8 +1725,8 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "brg" = (
-/turf/simulated/wall/r_wall,
-/area/hallway/primary/aft)
+/turf/simulated/floor/airless,
+/area/maintenance/security/starboard)
 "brp" = (
 /obj/item/handcuffs/cable,
 /turf/simulated/floor/plating,
@@ -1855,6 +1856,8 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "pathfinder_office"
 	},
+/obj/effect/paint_stripe/purple,
+/obj/structure/wall_frame/prepainted,
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "bxS" = (
@@ -2875,7 +2878,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/range)
 "cky" = (
@@ -3315,12 +3318,9 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "cBG" = (
-/obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purple,
 /turf/simulated/floor/plating,
 /area/exploration/meeting)
 "cBH" = (
@@ -3525,6 +3525,8 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "pathfinder_office"
 	},
+/obj/effect/paint_stripe/purple,
+/obj/structure/wall_frame/prepainted,
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "cHL" = (
@@ -3665,6 +3667,7 @@
 	name = "Internal Aiffars window";
 	id = "lawyer_blast"
 	},
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor,
 /area/lawoffice)
 "cPE" = (
@@ -3837,6 +3840,7 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/blueshield)
 "dcf" = (
@@ -4303,7 +4307,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor,
 /area/security/hanger)
 "duk" = (
@@ -5106,6 +5110,7 @@
 	id = "pathfinder_office"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/chapel/office)
 "dWA" = (
@@ -5311,6 +5316,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
 "ech" = (
@@ -5397,10 +5403,8 @@
 	icon_state = "fwindow";
 	id = "chapel"
 	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
+/obj/effect/paint_stripe/purple,
+/obj/structure/wall_frame/prepainted,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "eeo" = (
@@ -5580,7 +5584,7 @@
 	icon_state = "0-4"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/prison)
 "ejP" = (
@@ -5717,7 +5721,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/range)
 "eqn" = (
@@ -5807,7 +5811,7 @@
 	icon_state = "2-4"
 	},
 /obj/structure/wall_frame/prepainted,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "esK" = (
@@ -5941,7 +5945,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "ezD" = (
@@ -6053,7 +6057,7 @@
 "eCL" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "eCV" = (
@@ -6478,7 +6482,7 @@
 	icon_state = "2-4"
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor,
 /area/security/brig)
 "eMf" = (
@@ -6519,7 +6523,7 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
 "eNu" = (
@@ -6745,7 +6749,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "eUd" = (
@@ -7068,7 +7072,7 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/forensics)
 "fgf" = (
@@ -7540,7 +7544,7 @@
 	id = "Interr";
 	name = "interrogation window"
 	},
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "fyz" = (
@@ -7681,7 +7685,7 @@
 	icon_state = "2-4"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/forensics)
 "fAY" = (
@@ -7851,7 +7855,7 @@
 	icon_state = "0-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "fIn" = (
@@ -8141,7 +8145,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "fVV" = (
@@ -8545,94 +8549,6 @@
 "goh" = (
 /turf/simulated/wall/prepainted/command,
 /area/crew_quarters/heads/blueshield)
-"gop" = (
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/accessory/armor/armorplate/medium{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/medium{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/medium{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/medium{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/medium{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/medium{
-	pixel_x = -4;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/medium{
-	pixel_x = -4;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/medium{
-	pixel_x = -4;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/medium{
-	pixel_x = -4;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/medium{
-	pixel_x = -4;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
-	pixel_x = -4;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
-	pixel_x = -4;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
-	pixel_x = -4;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
-	pixel_x = -4;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
-	pixel_x = -4;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/armoury)
 "goI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -8906,7 +8822,7 @@
 	icon_state = "0-4"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
 "gvI" = (
@@ -9110,7 +9026,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "gDS" = (
@@ -9143,7 +9059,7 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/forensics)
 "gFZ" = (
@@ -9654,7 +9570,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "hbO" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted,
 /area/crew_quarters/lounge)
 "hcp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9905,6 +9821,7 @@
 	},
 /obj/structure/grille,
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/airless/ceiling,
 /area/crew_quarters/sleep/HOP_quarters)
 "hkj" = (
@@ -10403,11 +10320,11 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/mimeoffice)
 "hzC" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purple,
 /turf/simulated/floor/plating,
 /area/exploration/pilot_prep)
 "hzN" = (
@@ -11465,7 +11382,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "ihu" = (
-/turf/simulated/wall/prepainted/engineering,
+/turf/simulated/wall/prepainted,
 /area/maintenance/substation/command)
 "ihS" = (
 /obj/machinery/camera/network/exploration,
@@ -11497,6 +11414,7 @@
 /area/bridge/meeting_room)
 "ijD" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/airless/ceiling,
 /area/bridge)
 "ijM" = (
@@ -11612,7 +11530,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/wall/prepainted/engineering,
+/turf/simulated/wall/prepainted,
 /area/maintenance/substation/exploration)
 "inQ" = (
 /obj/machinery/atm{
@@ -11908,8 +11826,14 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
+"iyk" = (
+/obj/structure/grille,
+/obj/structure/lattice,
+/turf/space,
+/area/space)
 "iyp" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge/office)
 "iyy" = (
@@ -12692,7 +12616,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "jel" = (
@@ -14084,7 +14008,7 @@
 	icon_state = "0-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/prison)
 "kfJ" = (
@@ -14163,7 +14087,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/hallway)
 "kiY" = (
@@ -14363,8 +14287,8 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "ksy" = (
-/turf/simulated/wall,
-/area/maintenance/tool_storage)
+/turf/space/basic,
+/area/space)
 "ksA" = (
 /obj/structure/closet/wardrobe,
 /turf/simulated/floor/wood,
@@ -14785,6 +14709,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
+/obj/effect/paint_stripe/purple,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/cockpit)
 "kJr" = (
@@ -15100,6 +15025,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
+"kTm" = (
+/obj/structure/bed/chair/sofa/black/right{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/maintenance/security/starboard)
 "kTt" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -15374,7 +15305,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "ldg" = (
@@ -15607,7 +15538,7 @@
 	id = "Interr";
 	name = "interrogation window"
 	},
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "lli" = (
@@ -15958,6 +15889,10 @@
 /obj/structure/flora/pottedplant/stoutbush,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
+"luf" = (
+/obj/structure/bed/chair/sofa/black,
+/turf/simulated/floor/wood,
+/area/maintenance/security/starboard)
 "luh" = (
 /turf/simulated/wall/prepainted/security,
 /area/security/interrogation)
@@ -16122,7 +16057,7 @@
 	icon_state = "0-4"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "lyQ" = (
@@ -16270,7 +16205,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "lEt" = (
@@ -16657,6 +16592,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
+"lTC" = (
+/obj/structure/bed/chair/sofa/black{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/maintenance/security/starboard)
 "lTO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -17430,7 +17371,7 @@
 	icon_state = "0-4"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
 "mtg" = (
@@ -17698,6 +17639,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge/meeting_room)
 "mFj" = (
@@ -18273,6 +18215,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
+/obj/effect/paint_stripe/purple,
 /turf/simulated/floor/plating,
 /area/crew_quarters/lounge)
 "mZM" = (
@@ -19154,6 +19097,7 @@
 	id = "library_study"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/library/study)
 "nIK" = (
@@ -19328,7 +19272,7 @@
 "nQi" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "nRa" = (
@@ -19579,6 +19523,7 @@
 "obo" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /obj/spawner/window/low_wall/borosillicate/full,
+/obj/effect/paint_stripe/purple,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "obs" = (
@@ -19672,7 +19617,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "oet" = (
@@ -20183,7 +20128,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green,
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "ous" = (
@@ -20350,7 +20295,7 @@
 	id = "Interr";
 	name = "interrogation window"
 	},
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "oEc" = (
@@ -20556,7 +20501,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "oJJ" = (
-/turf/simulated/wall/prepainted/engineering,
+/turf/simulated/wall/prepainted,
 /area/maintenance/substation/security)
 "oJL" = (
 /obj/machinery/light,
@@ -20593,6 +20538,7 @@
 	name = "HoP Office window";
 	id = "hop_office"
 	},
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "oKD" = (
@@ -21059,6 +21005,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/airless/ceiling,
 /area/bridge)
 "pak" = (
@@ -21069,7 +21016,7 @@
 "pat" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "pbe" = (
@@ -21776,6 +21723,59 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
+"pAy" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/item/clothing/accessory/storage/pouches/large{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/large{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/large{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/large{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/large{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/large{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches/large/navy{
+	pixel_y = 3
+	},
+/obj/item/clothing/accessory/storage/pouches/large/navy{
+	pixel_y = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armoury)
 "pAA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -22147,6 +22147,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/palebottlegreen,
 /turf/simulated/floor,
 /area/hallway/secondary/docking_hallway)
 "pON" = (
@@ -22843,8 +22844,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "qgG" = (
-/turf/simulated/wall/r_wall,
-/area/crew_quarters/lounge)
+/obj/structure/bed/chair/sofa/black/left{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/maintenance/security/starboard)
 "qgL" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -22935,7 +22939,7 @@
 	icon_state = "0-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
 "qiX" = (
@@ -24249,6 +24253,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/bridge)
 "qZE" = (
@@ -24324,6 +24329,10 @@
 /obj/item/bedsheet/hopdouble,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/HOP_quarters)
+"rbn" = (
+/obj/structure/bed/chair/sofa/black/right,
+/turf/simulated/floor/wood,
+/area/maintenance/security/starboard)
 "rbu" = (
 /obj/structure/table/glass,
 /obj/item/clothing/glasses/sunglasses/blindfold/tape,
@@ -24456,7 +24465,7 @@
 	id = "det_office"
 	},
 /obj/structure/wall_frame/prepainted,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "rgN" = (
@@ -24521,6 +24530,7 @@
 	name = "Colony Directo's Shutters"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
 "rjc" = (
@@ -24587,6 +24597,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
 "rkX" = (
@@ -24842,53 +24853,88 @@
 "rtD" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/head/helmet/combat{
+/obj/item/clothing/accessory/armor/armorplate/medium{
 	pixel_x = 5;
-	pixel_y = -6
+	pixel_y = -3
 	},
-/obj/item/clothing/head/helmet/combat{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet/combat{
-	pixel_x = -6;
-	pixel_y = 5
-	},
-/obj/item/clothing/head/helmet/combat{
+/obj/item/clothing/accessory/armor/armorplate/medium{
 	pixel_x = 5;
-	pixel_y = 5
+	pixel_y = -3
 	},
-/obj/item/clothing/head/helmet/combat{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet/combat{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet/combat{
+/obj/item/clothing/accessory/armor/armorplate/medium{
 	pixel_x = 5;
-	pixel_y = -6
+	pixel_y = -3
 	},
-/obj/item/clothing/head/helmet/combat{
+/obj/item/clothing/accessory/armor/armorplate/medium{
 	pixel_x = 5;
-	pixel_y = -6
+	pixel_y = -3
 	},
-/obj/item/clothing/head/helmet/combat{
-	pixel_x = -6;
-	pixel_y = 5
-	},
-/obj/item/clothing/head/helmet/combat{
-	pixel_x = -6;
-	pixel_y = 5
-	},
-/obj/item/clothing/head/helmet/combat{
+/obj/item/clothing/accessory/armor/armorplate/medium{
 	pixel_x = 5;
-	pixel_y = 5
+	pixel_y = -3
 	},
-/obj/item/clothing/head/helmet/combat{
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
 	pixel_x = 5;
-	pixel_y = 5
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
@@ -24920,7 +24966,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "ruM" = (
@@ -25644,7 +25690,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor,
 /area/security/hanger)
 "rWj" = (
@@ -25824,6 +25870,7 @@
 	name = "Colony Directo's Shutters"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
 "scG" = (
@@ -26342,7 +26389,7 @@
 /area/security/riot_control)
 "sup" = (
 /obj/structure/sign/deck/fourth,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/prepainted,
 /area/crew_quarters/lounge)
 "suu" = (
 /turf/simulated/wall/prepainted/civilian,
@@ -26744,7 +26791,7 @@
 	id = "det_office"
 	},
 /obj/structure/wall_frame/prepainted,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "sGS" = (
@@ -26899,6 +26946,7 @@
 	name = "HoP Office window";
 	id = "hop_office"
 	},
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "sMO" = (
@@ -27136,7 +27184,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor,
 /area/security/brig)
 "sRs" = (
@@ -27199,6 +27247,7 @@
 "sSz" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
 "sSZ" = (
@@ -27757,8 +27806,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "trB" = (
-/turf/simulated/wall,
-/area/exploration/meeting)
+/obj/structure/fireplace{
+	pixel_y = 23
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/starboard)
 "trF" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
@@ -28650,6 +28702,7 @@
 	id = "pathfinder_office"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/chapel/office)
 "ucZ" = (
@@ -28715,7 +28768,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "ufB" = (
@@ -29352,7 +29405,7 @@
 	icon_state = "1-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "uAU" = (
@@ -29393,6 +29446,7 @@
 	icon_state = "1-2"
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
+/obj/effect/paint_stripe/purple,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "uEc" = (
@@ -30136,7 +30190,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "ved" = (
@@ -30189,6 +30243,7 @@
 /area/security/hanger)
 "vgr" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge/meeting_room)
 "vgx" = (
@@ -30286,6 +30341,7 @@
 	icon_state = "0-4"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_four)
 "vil" = (
@@ -31489,6 +31545,10 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
+"vTn" = (
+/obj/structure/bed/chair/sofa/black/left,
+/turf/simulated/floor/wood,
+/area/maintenance/security/starboard)
 "vTx" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -31623,7 +31683,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/breakroom)
 "vYs" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/exploration,
 /area/exploration/pilot_prep)
 "vYx" = (
 /obj/structure/closet,
@@ -31678,7 +31738,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor,
 /area/security/hanger)
 "wbh" = (
@@ -31833,6 +31893,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/commandblue,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge/office)
 "wfD" = (
@@ -32043,7 +32104,7 @@
 /obj/structure/curtain/black{
 	anchored = 1
 	},
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor,
 /area/security/brig)
 "wns" = (
@@ -32413,7 +32474,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green,
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
 "wCh" = (
@@ -32712,7 +32773,7 @@
 /obj/structure/curtain/black{
 	anchored = 1
 	},
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor,
 /area/security/brig)
 "wNX" = (
@@ -32802,6 +32863,14 @@
 /obj/structure/bed/chair/office/light,
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/security/forensics)
+"wSc" = (
+/obj/spawner/window/low_wall/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/curtain/black{
+	anchored = 1
+	},
+/turf/simulated/floor/airless,
+/area/maintenance/security/starboard)
 "wSl" = (
 /obj/machinery/light{
 	dir = 1
@@ -33244,6 +33313,7 @@
 	icon_state = "0-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "xiF" = (
@@ -33396,58 +33466,13 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
 "xpv" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/clothing/accessory/storage/pouches/large{
-	pixel_y = -2
+/obj/spawner/window/low_wall/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/curtain/black{
+	anchored = 1
 	},
-/obj/item/clothing/accessory/storage/pouches/large{
-	pixel_y = -2
-	},
-/obj/item/clothing/accessory/storage/pouches/large{
-	pixel_y = -2
-	},
-/obj/item/clothing/accessory/storage/pouches/large{
-	pixel_y = -2
-	},
-/obj/item/clothing/accessory/storage/pouches/large{
-	pixel_y = -2
-	},
-/obj/item/clothing/accessory/storage/pouches/large{
-	pixel_y = -2
-	},
-/obj/item/clothing/accessory/storage/pouches{
-	pixel_x = 6;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/storage/pouches{
-	pixel_x = 6;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/storage/pouches{
-	pixel_x = 6;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/storage/pouches{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/storage/pouches{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/storage/pouches{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/storage/pouches/large/navy{
-	pixel_y = 3
-	},
-/obj/item/clothing/accessory/storage/pouches/large/navy{
-	pixel_y = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/armoury)
+/turf/simulated/floor/plating,
+/area/maintenance/security/starboard)
 "xqd" = (
 /obj/machinery/door/firedoor{
 	dir = 2
@@ -33707,6 +33732,59 @@
 /obj/item/reagent_containers/food/drinks/shaker,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
+"xxF" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armoury)
 "xxK" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -33729,7 +33807,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "xyv" = (
@@ -34035,7 +34113,7 @@
 	id = "det_office"
 	},
 /obj/structure/wall_frame/prepainted,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "xJD" = (
@@ -34138,6 +34216,13 @@
 /obj/item/material/shard,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
+"xNy" = (
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 25
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/starboard)
 "xOb" = (
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled,
@@ -34189,7 +34274,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
-/obj/effect/paint_stripe/red,
+/obj/effect/paint_stripe/darkred,
 /turf/simulated/floor,
 /area/security/brig)
 "xPk" = (
@@ -37569,7 +37654,7 @@ gAv
 pJe
 oGp
 kYL
-trB
+gAv
 vgZ
 lnO
 xPk
@@ -37708,10 +37793,10 @@ hzC
 hzC
 qsa
 gAv
-trB
-trB
-trB
-trB
+gAv
+gAv
+gAv
+gAv
 oHV
 mcm
 xPk
@@ -40269,8 +40354,8 @@ vLL
 vLL
 vLL
 vLL
-jbl
-jbl
+aAv
+aAv
 ihS
 rVT
 xZs
@@ -40294,7 +40379,7 @@ rTa
 rTa
 rTa
 dDM
-qgG
+hbO
 ejc
 qzc
 pET
@@ -40434,16 +40519,16 @@ orq
 rTa
 uah
 hbO
-qgG
-qgG
-qgG
-brg
+hbO
+hbO
+hbO
+oUF
 tnk
 ipk
-brg
-brg
-brg
-brg
+oUF
+oUF
+oUF
+oUF
 tVr
 tVr
 pUS
@@ -40578,11 +40663,11 @@ rTa
 eiZ
 hvY
 hvY
-qgG
+hbO
 sSd
 bgD
 sXq
-brg
+oUF
 dQv
 dQv
 vtg
@@ -40696,7 +40781,7 @@ sTa
 cVO
 cVO
 brT
-jbl
+aAv
 oiQ
 kqN
 iqx
@@ -40720,11 +40805,11 @@ rTa
 eiZ
 hvY
 hvY
-qgG
+hbO
 tfP
 gfV
 rEz
-brg
+oUF
 dQv
 dQv
 vtg
@@ -40861,15 +40946,15 @@ hkj
 hkj
 hbO
 sup
-qgG
-qgG
+hbO
+hbO
 raF
 llj
 pre
-brg
-brg
-brg
-pUS
+oUF
+oUF
+oUF
+oUF
 lvd
 pFE
 qFq
@@ -43165,9 +43250,9 @@ neS
 lUE
 eFy
 qda
-xpv
-gop
+pAy
 rtD
+xxF
 nzO
 neS
 neS
@@ -45126,7 +45211,7 @@ tcj
 qNU
 tzJ
 hgp
-brg
+oUF
 oVB
 eSm
 tZH
@@ -47428,8 +47513,8 @@ gMN
 jYA
 twg
 twg
-nIK
-nIK
+twg
+jJF
 nIK
 nIK
 pkc
@@ -47569,13 +47654,13 @@ ugw
 oqv
 oqv
 oqv
+gMN
 twg
-jJF
+xpv
+nIK
 nIK
 pkc
 pkc
-pkc
-nIK
 nIK
 nIK
 nIK
@@ -47682,7 +47767,7 @@ vFJ
 eFC
 mIF
 ico
-ksy
+fzz
 sNi
 xvg
 lqI
@@ -47711,13 +47796,13 @@ ugw
 oqv
 gMN
 pww
-twg
+gMN
+gMN
+xpv
+wSc
 nIK
 nIK
-pkc
-nIK
-nIK
-nIK
+iyk
 nIK
 nIK
 nIK
@@ -47853,13 +47938,13 @@ ugw
 fIf
 gMN
 gMN
-twg
-nIK
-nIK
+gMN
+gMN
+gMN
+wSc
+wSc
 pkc
-nIK
-nIK
-nIK
+iyk
 nIK
 nIK
 nIK
@@ -47995,13 +48080,13 @@ oqv
 oqv
 lTk
 gMN
-cev
+gMN
+gMN
+gMN
+brg
+wSc
 nIK
-nIK
-pkc
-nIK
-nIK
-nIK
+iyk
 nIK
 nIK
 nIK
@@ -48137,13 +48222,13 @@ oqv
 gYA
 gMN
 gMN
-cev
+gMN
+gMN
+gMN
+brg
+wSc
 nIK
-nIK
-clY
-nIK
-nIK
-nIK
+pkc
 nIK
 nIK
 nIK
@@ -48279,13 +48364,13 @@ oqv
 baX
 gMN
 gMN
-cev
+gMN
+xNy
+gMN
+brg
+wSc
 nIK
-pkc
-clY
-nIK
-nIK
-nIK
+iyk
 nIK
 nIK
 nIK
@@ -48421,13 +48506,13 @@ oqv
 hzP
 oqv
 oqv
+oqv
+oqv
+oqv
+oqv
 twg
-nIK
-nIK
-clY
-nIK
-nIK
-nIK
+jJF
+iyk
 nIK
 nIK
 nIK
@@ -48563,13 +48648,13 @@ oqv
 gMN
 gMN
 gMN
-cev
+gMN
+rYP
+rYP
+rYP
+wSc
 nIK
-nIK
-clY
-nIK
-nIK
-nIK
+iyk
 nIK
 nIK
 nIK
@@ -48705,13 +48790,13 @@ oqv
 vKA
 gMN
 gMN
-cev
+gMN
+qgG
+rbn
+rYP
+wSc
 nIK
-nIK
-clY
-nIK
-nIK
-nIK
+iyk
 nIK
 nIK
 nIK
@@ -48845,15 +48930,15 @@ ugw
 qfo
 oqv
 oqv
+oqv
+trB
 gMN
-gMN
-cev
+lTC
+luf
+rYP
+wSc
 nIK
-nIK
-clY
-nIK
-nIK
-nIK
+pkc
 nIK
 nIK
 nIK
@@ -48986,16 +49071,16 @@ oqv
 pZU
 oqv
 oqv
-gMN
+baX
 gMN
 lTk
-twg
+gMN
+kTm
+vTn
+rYP
+wSc
+nIK
 pkc
-pkc
-clY
-nIK
-nIK
-nIK
 nIK
 nIK
 nIK
@@ -49131,13 +49216,13 @@ oqv
 gYA
 gMN
 gMN
-twg
-nIK
-nIK
-clY
-nIK
-nIK
-nIK
+gMN
+rYP
+rYP
+wSc
+wSc
+pkc
+iyk
 nIK
 nIK
 nIK
@@ -49268,18 +49353,18 @@ tec
 gMN
 oqv
 ugl
-gMN
+ugw
 okN
-gMN
-gMN
-gMN
-twg
-jJF
+ugw
+ugw
+ugw
+ugw
+rYP
+xpv
+wSc
 nIK
-clY
 nIK
-nIK
-nIK
+iyk
 nIK
 nIK
 nIK
@@ -49415,13 +49500,13 @@ oqv
 jYA
 myb
 gMN
+gMN
 twg
+xpv
+ksy
 nIK
 nIK
-clY
-nIK
-nIK
-nIK
+iyk
 nIK
 nIK
 nIK
@@ -49558,12 +49643,12 @@ oqv
 oqv
 oqv
 twg
+twg
+jJF
 nIK
 nIK
-clY
 nIK
-nIK
-nIK
+pkc
 nIK
 nIK
 nIK
@@ -49702,10 +49787,10 @@ ccW
 cev
 nIK
 nIK
-clY
-nIK
-nIK
-nIK
+iyk
+iyk
+iyk
+iyk
 nIK
 nIK
 nIK
