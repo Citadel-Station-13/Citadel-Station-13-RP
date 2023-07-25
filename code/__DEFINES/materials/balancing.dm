@@ -3,7 +3,7 @@
 //* Attributes - Resistance
 
 /// the level at which vulnerability is comedically high
-#define MATERIAL_RESISATNCE_SUPER_VULNERABLE -200
+#define MATERIAL_RESISTANCE_SUPER_VULNERABLE -200
 /// the level at which vulnerability is high
 #define MATERIAL_RESISTANCE_VERY_VULNERABLE -100
 /// the level at which vulnerability is moderate

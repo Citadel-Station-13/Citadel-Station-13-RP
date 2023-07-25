@@ -3,9 +3,18 @@
 	id = "lead"
 	stack_type = /obj/item/stack/material/lead
 	icon_colour = "#273956"
-	weight = 23 // Lead is a bit more dense than silver IRL, and silver has 22 ingame.
 	conductivity = 10
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
-	radiation_resistance = 25 // Lead is Special and so gets to block more radiation than it normally would with just weight, totalling in 48 protection.
 	tgui_icon_key = "ingots"
+
+	relative_integrity = 1
+	relative_density = 3
+	relative_conductivity = 0.3
+	relative_permeability = 0
+	relative_reactivity = 0.5
+	regex_this_hardness = MATERIAL_RESISTANCE_LOW
+	toughness = MATERIAL_RESISTANCE_MODERATE
+	refraction = MATERIAL_RESISTANCE_LOW
+	absorption = MATERIAL_RESISTANCE_MODERATE
+	nullification = MATERIAL_RESISTANCE_LOW

@@ -13,4 +13,6 @@
 	nullification = MATERIAL_RESISTANCE_NONE
 	relative_density = 0.9
 	relative_conductivity = 0.8
+	relative_reactivity = 0.5
+	relative_permeability = 0
 

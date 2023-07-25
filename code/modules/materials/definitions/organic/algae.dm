@@ -1,6 +1,6 @@
 /datum/material/algae
 	id = "algae"
-	name = MATERIAL_ALGAE
+	name = MAT_ALGAE
 	stack_type = /obj/item/stack/material/algae
 	icon_colour = "#557722"
 	shard_type = SHARD_STONE_PIECE

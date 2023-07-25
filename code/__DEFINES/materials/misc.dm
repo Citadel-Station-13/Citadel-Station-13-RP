@@ -1,5 +1,7 @@
 
 // Material Defines
+// todo: stop using these please, we're reliance on them out.
+#define MAT_ALGAE			"algae"
 #define MAT_BANANIUM		"bananium"
 #define MAT_CARBON			"carbon"
 #define MAT_CHITIN			"chitin"
@@ -42,7 +44,6 @@
 #define MAT_VAUDIUM			"vaudium"
 #define MAT_VERDANTIUM		"verdantium"
 #define MAT_WOOD			"wood"
-
 
 #define SHARD_SHARD			"shard"
 #define SHARD_SHRAPNEL		"shrapnel"

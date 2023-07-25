@@ -13,10 +13,12 @@
 	relative_integrity = 1
 	relative_density = 1
 	relative_conductivity = 1
+	relative_permeability = 0
+	relative_reactivity = 1
 	regex_this_hardness = MATERIAL_RESISTANCE_MODERATE
 	toughness = MATERIAL_RESISTANCE_HIGH
 	refraction = MATERIAL_RESISTANCE_NONE
-	absorption = MATERIAL_RESISTANCE_LOW
+	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_NONE
 
 /datum/material/steel/hull

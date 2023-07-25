@@ -105,7 +105,7 @@
 	return 1
 
 /datum/material/glass/proc/is_reinforced()
-	return (hardness > 35) //todo
+	return FALSE
 
 /datum/material/glass/reinforced
 	id = "glass_reinf"
@@ -134,6 +134,9 @@
 	absorption = MATERIAL_RESISTANCE_NONE
 	nullification = MATERIAL_RESISTANCE_NONE
 	relative_density = 1.15
+
+/datum/material/glass/reinforced/is_reinforced()
+	return TRUE
 
 /datum/material/glass/phoron
 	id = "glass_boro"
@@ -170,8 +173,6 @@
 	window_options = list("One Direction" = 1, "Full Window" = 2)
 	created_window = /obj/structure/window/phoronreinforced
 	created_fulltile_window = /obj/structure/window/phoronreinforced/full
-	hardness = 40
-	weight = 30
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	composite_material = list() //todo
 	rod_product = null
@@ -184,3 +185,6 @@
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_NONE
 	relative_density = 1.6
+
+/datum/material/glass/phoron/reinforced/is_reinforced()
+	return TRUE

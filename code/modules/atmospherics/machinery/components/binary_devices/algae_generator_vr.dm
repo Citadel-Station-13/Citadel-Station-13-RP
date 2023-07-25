@@ -1,5 +1,3 @@
-#define MATERIAL_ALGAE "algae"
-#define MATERIAL_CARBON "carbon"
 
 /obj/machinery/atmospherics/component/binary/algae_farm
 	name = "algae oxygen generator"
@@ -16,9 +14,9 @@
 	//power_rating = 7500			//7500 W ~ 10 HP
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
 
-	var/list/stored_material =  list(MATERIAL_ALGAE = 0, MATERIAL_CARBON = 0)
+	var/list/stored_material =  list(MAT_ALGAE = 0, MAT_CARBON = 0)
 	// Capacity increases with matter bin quality
-	var/list/storage_capacity = list(MATERIAL_ALGAE = 10000, MATERIAL_CARBON = 10000)
+	var/list/storage_capacity = list(MAT_ALGAE = 10000, MAT_CARBON = 10000)
 	// Speed at which we convert CO2 to O2.  Increases with manipulator quality
 	var/moles_per_tick = 1
 	// Power required to convert one mole of CO2 to O2 (this is powering the grow lights).  Improves with capacitors
@@ -35,7 +33,7 @@
 	var/const/output_gas = /datum/gas/oxygen
 
 /obj/machinery/atmospherics/component/binary/algae_farm/filled
-	stored_material = list(MATERIAL_ALGAE = 10000, MATERIAL_CARBON = 0)
+	stored_material = list(MAT_ALGAE = 10000, MAT_CARBON = 0)
 
 /obj/machinery/atmospherics/component/binary/algae_farm/Initialize(mapload)
 	. = ..()
@@ -71,17 +69,17 @@
 	last_power_draw = active_power_usage
 
 	// STEP 1 - Check material resources
-	if(stored_material[MATERIAL_ALGAE] < algae_per_mole)
-		ui_error = "Insufficient [material_display_name(MATERIAL_ALGAE)] to process."
+	if(stored_material[MAT_ALGAE] < algae_per_mole)
+		ui_error = "Insufficient [material_display_name(MAT_ALGAE)] to process."
 		update_icon()
 		return
-	if(stored_material[MATERIAL_CARBON] + carbon_per_mole > storage_capacity[MATERIAL_CARBON])
-		ui_error = "[material_display_name(MATERIAL_CARBON)] output storage is full."
+	if(stored_material[MAT_CARBON] + carbon_per_mole > storage_capacity[MAT_CARBON])
+		ui_error = "[material_display_name(MAT_CARBON)] output storage is full."
 		update_icon()
 		return
 	var/moles_to_convert = min(moles_per_tick,\
-		stored_material[MATERIAL_ALGAE] * algae_per_mole,\
-		storage_capacity[MATERIAL_CARBON] - stored_material[MATERIAL_CARBON])
+		stored_material[MAT_ALGAE] * algae_per_mole,\
+		storage_capacity[MAT_CARBON] - stored_material[MAT_CARBON])
 
 	// STEP 2 - Take the CO2 out of the input!
 	var/power_draw = scrub_gas(src, list(input_gas), air1, internal, moles_to_convert)
@@ -102,8 +100,8 @@
 	var/converted_moles = min(co2_moles, moles_per_tick)
 	use_power(converted_moles * power_per_mole)
 	last_power_draw += converted_moles * power_per_mole
-	stored_material[MATERIAL_ALGAE] -= converted_moles * algae_per_mole
-	stored_material[MATERIAL_CARBON] += converted_moles * carbon_per_mole
+	stored_material[MAT_ALGAE] -= converted_moles * algae_per_mole
+	stored_material[MAT_CARBON] += converted_moles * carbon_per_mole
 
 	// STEP 5 - Output the converted oxygen. Fow now we output for free!
 	internal.adjust_gas(input_gas, -converted_moles)
@@ -267,6 +265,3 @@
 	else
 		to_chat(user, "<span class='warning'>\The [src] cannot hold more [S.name].</span>")
 	return 1
-
-#undef MATERIAL_ALGAE
-#undef MATERIAL_CARBON
