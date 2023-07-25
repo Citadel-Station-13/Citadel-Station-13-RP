@@ -180,7 +180,7 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 		)
 		if(instance.gas_flags & GAS_FLAG_CORE)
 			core_ids |= instance.id
-
+		gases[instance.id] = assembled
 
 /**
  * gets tgui gas context for all non-unknown gasses
