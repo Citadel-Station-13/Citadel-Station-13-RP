@@ -10,7 +10,6 @@
 	integrity = 400
 	integrity_max = 400
 
-	var/base_state = null	// Used for stumps.
 	var/shake_animation_degrees = 4	// How much to shake the tree when struck.  Larger trees should have smaller numbers or it looks weird.
 	var/obj/item/stack/material/product = null	// What you get when chopping this tree down.  Generally it will be a type of wood.
 	var/product_amount = 10 // How much of a stack you get, if the above is defined.
@@ -46,7 +45,7 @@
 	if(is_stump)
 		if(istype(I,/obj/item/shovel))
 			if(do_after(user, 5 SECONDS))
-				visible_message("<span class='notice'>\The [user] digs up \the [src] stump with \the [W].</span>")
+				visible_message("<span class='notice'>\The [user] digs up \the [src] stump with \the [I].</span>")
 				qdel(src)
 		return
 	return ..()
@@ -66,25 +65,14 @@
 	animate(src, transform=turn(M, shake_animation_degrees * shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
 	animate(transform=M, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
 
-// Used when the tree gets hurt.
-/obj/structure/flora/tree/proc/adjust_health(var/amount, var/damage_wood = FALSE)
-	if(is_stump || indestructable)
-		return
+/obj/structure/flora/tree/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
+	. = ..()
+	// ruins some of the wood if you use high power modes or types
+	if(. > 5 && ((mode & (DAMAGE_MODE_ABLATING | DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHRED)) || (flag == ARMOR_BOMB)))
+		product_amount -= round((. * 0.5) / integrity_max * initial(product_amount))
 
-	// Bullets and lasers ruin some of the wood
-	if(damage_wood && product_amount > 0)
-		var/wood = initial(product_amount)
-		product_amount -= round(wood * (abs(amount)/max_health))
-
-	health = clamp( health + amount, 0,  max_health)
-	if(health <= 0)
-		die()
-		return
-
-// Called when the tree loses all health, for whatever reason.
-/obj/structure/flora/tree/proc/die()
-	if(is_stump || indestructable)
-		return
+/obj/structure/flora/tree/atom_break()
+	. = ..()
 
 	if(product && product_amount) // Make wooden logs.
 		var/obj/item/stack/material/M = new product(get_turf(src))
@@ -100,7 +88,7 @@
 
 	is_stump = TRUE
 	density = FALSE
-	icon_state = "[base_state]_stump"
+	icon_state = "[base_icon_state]_stump"
 	cut_overlays() // For the Sif tree and other future glowy trees.
 	set_light(0)
 
@@ -133,12 +121,12 @@
 	name = "pine tree"
 	icon = 'icons/obj/flora/pinetrees.dmi'
 	icon_state = "pine_1"
-	base_state = "pine"
+	base_icon_state = "pine"
 	product = /obj/item/stack/material/log
 	shake_animation_degrees = 3
 
 /obj/structure/flora/tree/pine/choose_icon_state()
-	return "[base_state]_[rand(1, 3)]"
+	return "[base_icon_state]_[rand(1, 3)]"
 
 
 /obj/structure/flora/tree/pine/xmas
@@ -176,7 +164,7 @@
 /obj/structure/flora/tree/palm
 	icon = 'icons/obj/flora/palmtrees.dmi'
 	icon_state = "palm1"
-	base_state = "palm"
+	base_icon_state = "palm"
 	product = /obj/item/stack/material/log
 	product_amount = 10
 	health = 200
@@ -184,7 +172,7 @@
 	pixel_x = 0
 
 /obj/structure/flora/tree/palm/choose_icon_state()
-	return "[base_state][rand(1, 2)]"
+	return "[base_icon_state][rand(1, 2)]"
 
 
 // Dead trees
@@ -192,21 +180,21 @@
 /obj/structure/flora/tree/dead
 	icon = 'icons/obj/flora/deadtrees.dmi'
 	icon_state = "tree_1"
-	base_state = "tree"
+	base_icon_state = "tree"
 	product = /obj/item/stack/material/log
 	product_amount = 10
 	integrity = 200
 	integrity_max = 200
 
 /obj/structure/flora/tree/dead/choose_icon_state()
-	return "[base_state]_[rand(1, 6)]"
+	return "[base_icon_state]_[rand(1, 6)]"
 
 // Small jungle trees
 
 /obj/structure/flora/tree/jungle_small
 	icon = 'icons/obj/flora/jungletreesmall.dmi'
 	icon_state = "tree"
-	base_state = "tree"
+	base_icon_state = "tree"
 	product = /obj/item/stack/material/log
 	product_amount = 20
 	integrity = 400
@@ -214,14 +202,14 @@
 	pixel_x = -32
 
 /obj/structure/flora/tree/jungle_small/choose_icon_state()
-	return "[base_state][rand(1, 6)]"
+	return "[base_icon_state][rand(1, 6)]"
 
 // Big jungle trees
 
 /obj/structure/flora/tree/jungle
 	icon = 'icons/obj/flora/jungletree.dmi'
 	icon_state = "tree"
-	base_state = "tree"
+	base_icon_state = "tree"
 	product = /obj/item/stack/material/log
 	product_amount = 40
 	integrity = 800
@@ -231,7 +219,7 @@
 	shake_animation_degrees = 2
 
 /obj/structure/flora/tree/jungle/choose_icon_state()
-	return "[base_state][rand(1, 6)]"
+	return "[base_icon_state][rand(1, 6)]"
 
 // Sif trees
 
@@ -250,7 +238,7 @@
 	desc = "It's a tree, except this one seems quite alien.  It glows a deep blue."
 	icon = 'icons/obj/flora/deadtrees.dmi'
 	icon_state = "tree_sif"
-	base_state = "tree_sif"
+	base_icon_state = "tree_sif"
 	product = /obj/item/stack/material/log/sif
 	catalogue_data = list(/datum/category_item/catalogue/flora/sif_tree)
 	randomize_size = TRUE
@@ -266,7 +254,7 @@
 
 /obj/structure/flora/tree/sif/choose_icon_state()
 	light_shift = rand(0, 5)
-	return "[base_state][light_shift]"
+	return "[base_icon_state][light_shift]"
 
 /obj/structure/flora/tree/sif/Initialize(mapload)
 	. = ..()
@@ -274,6 +262,6 @@
 
 /obj/structure/flora/tree/sif/update_icon()
 	set_light(5 - light_shift, 1, "#33ccff")	// 5 variants, missing bulbs. 5th has no bulbs, so no glow.
-	var/image/glow = image(icon = icon, icon_state = "[base_state][light_shift]_glow")
+	var/image/glow = image(icon = icon, icon_state = "[base_icon_state][light_shift]_glow")
 	glow.plane = ABOVE_LIGHTING_PLANE
 	add_overlay(glow)

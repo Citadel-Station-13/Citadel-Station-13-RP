@@ -299,7 +299,7 @@
 
 					if(do_after(src, 5))
 						D.visible_message("<span class='danger'>Something crashes against \the [D]!</span>")
-						D.take_damage(2 * legacy_melee_damage_upper)
+						D.inflict_atom_damage(5 * legacy_melee_damage_upper)
 					else
 						objectOrMob = null
 						break

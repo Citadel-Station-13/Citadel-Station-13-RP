@@ -62,39 +62,89 @@ SUBSYSTEM_DEF(materials)
 
 /**
  * ensures a list is full of material ids for keys
+ *
+ * if key is not a valid material or is null, it will be nulled.
  */
 /datum/controller/subsystem/materials/proc/preprocess_flat_keys_to_ids(list/L)
-	#warn impl
+	// todo: optimize
+	for(var/i in 1 to length(L))
+		var/datum/material/resolved = resolve_material(L[i])
+		L[i] = resolved?.id
 
 /**
  * ensures a list is full of material references for keys
+ *
+ * if key is not a valid material or is null, it will be nulled.
  */
 /datum/controller/subsystem/materials/proc/preprocess_flat_keys_to_instances(list/L)
-	#warn impl
+	// todo: optimize
+	for(var/i in 1 to length(L))
+		var/datum/material/resolved = resolve_material(L[i])
+		L[i] = resolved
 
 /**
  * ensures a list is full of material ids for keys
+ *
+ * if key is not a valid material or is null, it will be dropped.
+ * undefined behavior if there's duped ids / materials - this should never happen.
  */
 /datum/controller/subsystem/materials/proc/preprocess_kv_keys_to_ids(list/L)
-	#warn impl
+	// todo: optimize
+	. = list()
+	for(var/i in 1 to length(L))
+		var/key = L[i]
+		var/datum/material/resolved = resolve_material(key)
+		if(isnull(resolved))
+			continue
+		var/value = L[key]
+		.[resolved.id] = value
 
 /**
  * ensures a list is full of material references for keys
+ *
+ * if key is not a valid material or is null, it will be dropped.
+ * undefined behavior if there's duped ids / materials - this should never happen.
  */
 /datum/controller/subsystem/materials/proc/preprocess_kv_keys_to_instances(list/L)
+	// todo: optimize
+	. = list()
+	for(var/i in 1 to length(L))
+		var/key = L[i]
+		var/datum/material/resolved = resolve_material(key)
+		if(isnull(resolved))
+			continue
+		var/value = L[key]
+		.[resolved] = value
+
 	#warn impl
 
 /**
  * ensures a list is full of material ids for values
+ *
+ * if value is not a valid material or is null, it will be nulled.
  */
 /datum/controller/subsystem/materials/proc/preprocess_kv_values_to_ids(list/L)
-	#warn impl
+	// todo: optimize
+	. = list()
+	for(var/i in 1 to length(L))
+		var/key = L[i]
+		var/value = L[key]
+		var/datum/material/resolved = resolve_material(value)
+		.[key] = resolved?.id
 
 /**
  * ensures a list is full of material references for values
+ *
+ * if value is not a valid material or is null, it will be nulled.
  */
 /datum/controller/subsystem/materials/proc/preprocess_kv_values_to_instances(list/L)
-	#warn impl
+	// todo: optimize
+	. = list()
+	for(var/i in 1 to length(L))
+		var/key = L[i]
+		var/value = L[key]
+		var/datum/material/resolved = resolve_material(value)
+		.[key] = resolved
 
 /**
  * returns all material datums
