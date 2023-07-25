@@ -164,7 +164,7 @@
 	integrity = max(0, integrity - amount)
 	if(was_working && integrity <= integrity_failure)
 		atom_break()
-	if(!integrity)
+	if(integrity <= 0)
 		atom_destruction()
 
 /**
@@ -204,7 +204,7 @@
 		atom_break()
 	else if(was_failing && integrity > integrity_failure)
 		atom_fix()
-	if(!integrity)
+	if(integrity <= 0)
 		atom_destruction()
 
 /**
@@ -217,7 +217,15 @@
  * * amount - how much to set to
  */
 /atom/proc/set_max_integrity(amount)
-	#warn impl
+	integrity_max = max(amonut, 0)
+	if(integrity < integrity_max)
+		return
+	var/was_broken = integrity <= integrity_failure
+	integrity = integrity_max
+	if(!was_broken && (integrity <= integrity_failure))
+		atom_break()
+	if(integrity <= 0)
+		atom_destruction()
 
 /**
  * sets integrity and max integrity - will automatically reduce integrity if it's above max.
@@ -230,7 +238,16 @@
  * * integrity_max - how much to set integrity_max to
  */
 /atom/proc/set_full_integrity(integrity, integrity_max)
-	#warn impl
+	src.integrity_max = max(integrity_max, 0)
+	var/was_broken = src.integrity <= integrity_failure
+	src.integrity = clamp(integrity, 0, integrity_max)
+	var/now_broken = integrity <= integrity_failure
+	if(!was_broken && now_broken)
+		atom_break()
+	else if(was_broken && !now_broken)
+		atom_fix()
+	if(integrity <= 0)
+		atom_destruction()
 
 /**
  * adjusts integrity - routes directly to [damage_integrity] and [heal_integrity]
@@ -261,13 +278,20 @@
  * * gradual - burst or gradual?
  */
 /atom/proc/adjust_max_integrity(amount, gradual)
-	#warn impl
+	// lazy route lmao
+	set_max_integrity(integrity_max + amount)
 
 /**
  * percent integrity, rounded.
  */
 /atom/proc/percent_integrity(round_to = 0.1)
 	return integrity_max? round(integrity / integrity_max, round_to) : 0
+
+/atom/proc/is_integrity_broken()
+	return atom_flags & ATOM_BROKEN
+
+/atom/proc/is_integrity_damaged()
+	return integrity < integrity_max
 
 //? Thresholds & Events
 
