@@ -122,6 +122,7 @@
 	/// * impacts special energy armor (minor)
 	/// * impacts laser armor penetration resistance (moderate)
 	/// * impacts anomaly armor
+	/// * impacts radiation armor
 	var/nullification = 0
 	/// relative density multiplier for how heavy this material is
 	/// * impacts carry weight of things made out of this
@@ -132,6 +133,9 @@
 	/// * impacts conductivity
 	/// * impacts usage as a conductor
 	var/relative_conductivity = 0
+	/// relative multiplier for how light this material is
+	/// * basically, low values = high density stats without the penalties from weight
+	var/relative_weight = 1
 
 	//? Traits
 	/// Material traits - set to list of paths to instance on New / register.
