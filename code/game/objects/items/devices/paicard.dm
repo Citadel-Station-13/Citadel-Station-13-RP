@@ -14,6 +14,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	var/obj/item/radio/radio
 	var/looking_for_personality = 0
 	var/mob/living/silicon/pai/pai
+	var/image/cached_holo_image
 
 /obj/item/paicard/relaymove(var/mob/user, var/direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
@@ -288,8 +289,9 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 
 /obj/item/paicard/proc/removePersonality()
 	pai = null
+	cached_holo_image = null
 	cut_overlays()
-	add_overlay("pai-off")
+	setEmotion("null")
 
 /obj/item/paicard
 	var/current_emotion = "off"
@@ -298,9 +300,23 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	if(pai)
 		cut_overlays()
 		current_emotion = emotion
-		if(emotion != "off")
+		if(emotion != "off" && emotion != "character")
 			add_overlay("pai-underlay")
 			add_overlay("pai-[emotion]")
+		else if(emotion == "character" && pai.last_rendered_hologram_icon)
+			var/image = get_holo_image()
+			add_overlay(image)
+
+/obj/item/paicard/proc/get_holo_image()
+	if(cached_holo_image)
+		return cached_holo_image
+	if(!pai.last_rendered_hologram_icon)
+		pai.last_rendered_hologram_icon = render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+	var/icon/new_icon = icon(pai.last_rendered_hologram_icon)
+	new_icon.Crop(12, 21, 21, 30)
+	var/image/image = image(new_icon, pixel_x = 11, pixel_y = 9)
+	cached_holo_image = image
+	return image
 
 /obj/item/paicard/proc/alertUpdate()
 	var/turf/T = get_turf_or_move(src.loc)

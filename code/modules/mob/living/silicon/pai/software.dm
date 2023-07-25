@@ -13,6 +13,7 @@ var/list/pai_emotions = list(
 		"woozy",
 		"bookworm",
 		"greenjary",
+		"character",
 	)
 
 

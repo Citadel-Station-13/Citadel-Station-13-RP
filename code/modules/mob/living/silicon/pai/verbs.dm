@@ -40,7 +40,9 @@
 			return
 
 		if(choice == "-- LOAD CHARACTER SLOT --")
-			icon = render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+			last_rendered_hologram_icon = render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+			card.get_holo_image()
+			icon = last_rendered_hologram_icon
 		else
 			icon = 'icons/mob/pai_vr.dmi'
 			icon_state = possible_chassis[choice]

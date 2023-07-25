@@ -114,6 +114,8 @@
 	// transformation component
 	var/datum/component/object_transform/transform_component
 
+	var/icon/last_rendered_hologram_icon
+
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()
 	shell = loc
