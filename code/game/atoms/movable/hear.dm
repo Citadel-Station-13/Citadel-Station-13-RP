@@ -60,6 +60,8 @@
  *
  * @params
  * * raw_message - raw message. this might be preformatted HTML.
+ *
+ * @return successful narration? mob logged out is still successful because the *mob* got it, even if the *player* didn't.
  */
 /atom/movable/proc/narrate(raw_message)
 	#warn impl

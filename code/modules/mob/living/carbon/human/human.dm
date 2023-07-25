@@ -296,9 +296,9 @@
 	return
 
 //gets ID card object from special clothes slot or null.
-/mob/living/carbon/human/proc/get_idcard()
-	if(wear_id)
-		return wear_id.GetID()
+/mob/living/carbon/proc/get_idcard()
+	var/obj/item/I = item_by_slot(SLOT_ID_WORN_ID)
+	return I?.GetID()
 
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default

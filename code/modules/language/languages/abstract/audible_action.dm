@@ -2,7 +2,7 @@
  * The language used when someone does an audible emote / there is a hearable narration
  */
 /datum/language/audible_action
-	id = LANGUAGE_ID_NOISE
+	id = LANGUAGE_ID_AUDIBLE_ACTION
 	name = "Noise"
 	desc = "Noises"
 	key = ""

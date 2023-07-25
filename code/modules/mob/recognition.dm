@@ -16,7 +16,7 @@
 /mob/proc/get_visible_name(mob/recognizing, dist)
 	if(isnull(dist))
 		dist = isnull(recognizing)? get_dist(src, recognizing) : 0
-	var/face_name = is_face_obscured(recognizing, dist)? "Unknown" : face_name = get_face_name(recognizing, dist)
+	var/face_name = is_face_obscured(recognizing, dist)? "Unknown" : get_face_name(recognizing, dist)
 	var/id_name = get_id_name(recognizing, dist)
 	if(face_name == id_name)
 		return face_name
@@ -32,13 +32,6 @@
 /mob/proc/get_face_name(mob/recognizing, dist)
 	if(isnull(dist))
 		dist = isnull(recognizing)? get_dist(src, recognizing) : 0
-	// check disfigurement
-	// todo: different species might not have a head for recognition?
-	var/obj/item/organ/external/head_organ = get_organ(BP_HEAD)
-	if(isnull(head_organ) || head_organ.disfigured || head_organ.is_stump())
-		return "Unknown"
-	if(MUTATION_HUSK in mutations)
-		return "Unknown"
 	// if there's a recognizing mob, use their procs to identify us
 	if(!isnull(recognition) && !isnull(recognizing?.identity))
 		return recognizing.recognize_face(src)
@@ -53,15 +46,7 @@
  * * dist - override distance of seeing mob
  */
 /mob/proc/get_id_name(mob/recognizing, dist)
-	if(isnull(dist))
-		dist = isnull(recognizing)? get_dist(src, recognizing) : 0
-	. = "Unknown"
-	// todo: modifiers? sight?
-	if(dist > 2)
-		return
-	var/obj/item/card/id/used = get_idcard()
-	if(!isnull(used))
-		. = used.registered_name
+	return "Unknown"
 
 //* Check - Obscure
 
