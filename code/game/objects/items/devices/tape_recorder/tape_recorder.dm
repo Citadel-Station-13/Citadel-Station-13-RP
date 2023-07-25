@@ -6,6 +6,7 @@
 	icon = 'icons/obj/device.dmi'
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
+	atom_flags = ATOM_HEAr
 	throw_force = 2
 	throw_speed = 4
 	throw_range = 20
@@ -280,8 +281,8 @@
 	var/datum/cassette_tape_iterator/write/writer = tape_iterator
 	writer.tick(delta_time)
 
-//! todo : saycode refactor
-/obj/item/tape_recorder/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/tape_recorder/hear(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+	. = ..()
 	if(!recording)
 		return
 	var/datum/cassette_tape_iterator/write/writer = tape_iterator
@@ -289,28 +290,6 @@
 		writer.write_emote(msg, M.name)
 	else
 		writer.write_speech(msg, M.name, speaking.id)
-
-/obj/item/tape_recorder/see_emote(mob/M as mob, text, var/emote_type)
-	if(emote_type != 2) //only hearable emotes
-		return
-	if(!recording)
-		return
-	var/datum/cassette_tape_iterator/write/writer = tape_iterator
-	writer.write_emote(text, M.name)
-
-/obj/item/tape_recorder/show_message(msg, type, alt, alt_type)
-	var/recordedtext
-	if (msg && type == 2) //must be hearable
-		recordedtext = msg
-	else if (alt && alt_type == 2)
-		recordedtext = alt
-	else
-		return
-	if(!recording)
-		return
-	var/datum/cassette_tape_iterator/write/writer = tape_iterator
-	writer.write_emote(recordedtext)
-//! end
 
 /obj/item/tape_recorder/emag_act(var/remaining_charges, var/mob/user)
 	if(obj_flags & EMAGGED)

@@ -230,53 +230,13 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 		P.pixel_x = WORLD_ICON_SIZE * P.portal_distance_x
 		P.pixel_y = WORLD_ICON_SIZE * P.portal_distance_y
 
-// Allows portals to transfer emotes.
-// Only portal masters do this to avoid flooding the other side with duplicate messages.
-/obj/effect/map_effect/portal/master/see_emote(mob/M, text)
-	if(!counterpart)
-		return
-	var/turf/T = counterpart.get_focused_turf()
-	var/list/in_range = get_mobs_and_objs_in_view_fast(T, world.view, 0)
-	var/list/mobs_to_relay = in_range["mobs"]
+/obj/effect/map_effect/portal/master/see(raw_message, message, name, face_ident, atom/actor, remote)
+	. = ..()
+	counterpart?.get_focused_turf?.saycode_relay_see(7, args)
 
-	for(var/thing in mobs_to_relay)
-		var/mob/mob = thing
-		var/rendered = "<span class='message'>[text]</span>"
-		mob.show_message(rendered)
-
-	..()
-
-// Allows portals to transfer visible messages.
-/obj/effect/map_effect/portal/master/show_message(msg, type, alt, alt_type)
-	if(!counterpart)
-		return
-	var/rendered = "<span class='message'>[msg]</span>"
-	var/turf/T = counterpart.get_focused_turf()
-	var/list/in_range = get_mobs_and_objs_in_view_fast(T, world.view, 0)
-	var/list/mobs_to_relay = in_range["mobs"]
-
-	for(var/thing in mobs_to_relay)
-		var/mob/mob = thing
-		mob.show_message(rendered)
-
-	..()
-
-// Allows portals to transfer speech.
-/obj/effect/map_effect/portal/master/hear_talk(mob/living/M, message, verb)
-	if(!counterpart)
-		return
-	var/turf/T = counterpart.get_focused_turf()
-	var/list/in_range = get_mobs_and_objs_in_view_fast(T, world.view, 0)
-	var/list/mobs_to_relay = in_range["mobs"]
-
-	for(var/thing in mobs_to_relay)
-		var/mob/mob = thing
-		var/name_used = M.GetVoice()
-		var/rendered = null
-		rendered = "<span class='game say'><span class='name'>[name_used]</span> [message]</span>"
-		mob.show_message(rendered, 2)
-
-	..()
+/obj/effect/map_effect/portal/master/hear(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+	. = ..()
+	counterpart?.get_focused_turf?.saycode_relay_hear(7, args)
 
 // Returns the position that an atom that's hopefully on the other side of the portal would be if it were really there.
 // Z levels not taken into account.

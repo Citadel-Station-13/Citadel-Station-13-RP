@@ -201,26 +201,6 @@
 			return TRUE
 	. = !density
 
-#warn ugh
-/obj/proc/hear_talk(mob/M as mob, text, verb, datum/language/speaking)
-	if(talking_atom)
-		talking_atom.catchMessage(text, M)
-/*
-	var/mob/mo = locate(/mob) in src
-	if(mo)
-		var/rendered = "<span class='game say'><span class='name'>[M.name]: </span> <span class='message'>[text]</span></span>"
-		mo.show_message(rendered, 2)
-		*/
-	return
-
-#warn ugh
-/obj/proc/hear_signlang(mob/M as mob, text, verb, datum/language/speaking) // Saycode gets worse every day.
-	return FALSE
-
-#warn ugh
-/obj/proc/see_emote(mob/M as mob, text, var/emote_type)
-	return
-
 // Used to mark a turf as containing objects that are dangerous to step onto.
 /obj/proc/register_dangerous_to_step()
 	var/turf/T = get_turf(src)

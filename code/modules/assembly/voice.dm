@@ -7,14 +7,15 @@
 	var/listening = 0
 	var/recorded	//the activation message
 
-/obj/item/assembly/voice/hear_talk(mob/living/M as mob, msg)
+/obj/item/assembly/voice/hear(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+	. = ..()
 	if(listening)
-		recorded = msg
+		recorded = message
 		listening = 0
 		var/turf/T = get_turf(src)	//otherwise it won't work in hand
 		T.visible_message("[icon2html(thing = src, target = world)] beeps, \"Activation message is '[recorded]'.\"")
-	else
-		if(findtext(msg, recorded))
+	else if(recorded)
+		if(findtext(message, recorded))
 			pulse(0)
 
 /obj/item/assembly/voice/activate()

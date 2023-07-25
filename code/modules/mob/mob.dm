@@ -179,6 +179,7 @@
 
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 // todo: refactor
+#warn uhhhh
 /mob/show_message(msg, type, alt, alt_type)
 	if(!client && !teleop)
 		return

@@ -2,6 +2,18 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /**
+ * gives feedback for doing an action, e.g. using a tool on something
+ *
+ * use this instead of direct to_chats so mob remote control can be done better.
+ *
+ * @params
+ * * msg - what we see/know
+ * * target - what we're messing with
+ */
+/atom/proc/action_feedback(msg, atom/target)
+	return
+
+/**
  * gives feedback for an action we're doing and makes it visible for everyone around us too.
  *
  * @params
@@ -18,15 +30,9 @@
  * * audible_them - what the target sees if they are blind. if null, defaults to 'them'.
  */
 /atom/proc/visible_action_feedback(atom/target, hard_range = MESSAGE_RANGE_COMBAT_LOUD, soft_range, visible_hard, audible_hard, audible_soft, visible_soft, visible_self, audible_self, visible_them, audible_them)
-	var/list/viewing
+	#warn rewrite this aaaaa
 	var/viewing_range = max(soft_range, hard_range)
-	//! LEGACY
-	if(isbelly(loc))
-		var/obj/belly/B = loc
-		viewing = B.effective_emote_hearers()
-	else
-		viewing = get_hearers_in_view(viewing_range, src)
-	//! end
+	var/list/viewing = saycode_query(viewing_range)
 	var/hard_visible = visible_hard || visible_soft
 	var/hard_audible = audible_hard || audible_soft
 	for(var/atom/movable/AM as anything in viewing)

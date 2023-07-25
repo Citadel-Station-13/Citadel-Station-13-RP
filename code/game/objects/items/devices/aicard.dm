@@ -147,18 +147,6 @@
 	carded_ai = null
 	update_icon()
 
-/obj/item/aicard/see_emote(mob/living/M, text)
-	if(carded_ai && carded_ai.client)
-		var/rendered = "<span class='message'>[text]</span>"
-		carded_ai.show_message(rendered, 2)
-	..()
-
-/obj/item/aicard/show_message(msg, type, alt, alt_type)
-	if(carded_ai && carded_ai.client)
-		var/rendered = "<span class='message'>[msg]</span>"
-		carded_ai.show_message(rendered, type)
-	..()
-
 /obj/item/aicard/relaymove(var/mob/user, var/direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return

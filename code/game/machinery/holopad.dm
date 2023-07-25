@@ -727,21 +727,20 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 
 //? Say / Emote
 
-/obj/machinery/holopad/see_emote(mob/living/M, text)
-	. = ..()
-	relay_intercepted_emote(M, M.name, say_emphasis(text))
 
-/obj/machinery/holopad/show_message(msg, type, alt, alt_type)
+/obj/machinery/holopad/see(raw_message, message, name, face_ident, atom/actor, remote)
 	. = ..()
-	relay_intercepted_emote(null, "-- INTERCEPTED -- ", say_emphasis(msg))
+	if(remote)
+		return
+	relay_intercepted_emote(actor, name || actor.name, message)
+	#warn handle identification
 
-/obj/machinery/holopad/hear_talk(mob/living/M, text, verb, datum/language/speaking)
+/obj/machinery/holopad/hear(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
 	. = ..()
-	relay_intercepted_say(M, M.name, say_emphasis(text), speaking, FALSE)
-
-/obj/machinery/holopad/hear_signlang(mob/M, text, verb, datum/language/speaking)
-	. = ..()
-	relay_intercepted_say(M, M.name, say_emphasis(text), speaking, TRUE)
+	if(remote)
+		return
+	relay_intercepted_say(actor, name || actor.name, message, lang, lang?.language_flags & LANGUAGE_NONVERBAL)
+	#warn handle identification
 
 /**
  * relays a heard say

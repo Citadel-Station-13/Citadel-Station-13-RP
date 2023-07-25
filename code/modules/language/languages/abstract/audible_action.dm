@@ -1,3 +1,6 @@
+/// Separate global singleton used in saycode
+GLOBAL_DATUM_INIT(audible_action_language, /datum/language/audible_action, new)
+
 /**
  * The language used when someone does an audible emote / there is a hearable narration
  */
