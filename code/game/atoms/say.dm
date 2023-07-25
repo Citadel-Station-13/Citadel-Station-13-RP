@@ -21,18 +21,18 @@
 /atom/proc/visible_action(range, message, list/exclude_cache, self)
 	var/list/atom/movable/targets = saycode_query(range)
 	for(var/atom/movable/AM as anything in targets)
-		AM.see(message, message, name, null, src, FALSE)
+		AM.see_action(message, message, name, null, src, FALSE)
 
 /atom/proc/audible_action(range, message, list/exclude_cache, self)
 	var/list/atom/movable/targets = saycode_query(range)
 	for(var/atom/movable/AM as anything in targets)
-		AM.hear(message, message, name, null, src, FALSE, GLOB.audible_action_language, list(), list())
+		AM.hear_say(message, message, name, null, src, FALSE, GLOB.audible_action_language, list(), list())
 
 /atom/proc/full_action(range, visible, audible, list/exclude_cache, self)
 	var/list/atom/movable/targets = saycode_query(range)
 	for(var/atom/movable/AM as anything in targets)
-		if(!AM.see(visible, visible, name, null, src, FALSE))
-			AM.hear(audible, audible, name, null, src, FALSE, GLOB.audible_action_language, list(), list())
+		if(!AM.see_action(visible, visible, name, null, src, FALSE))
+			AM.hear_say(audible, audible, name, null, src, FALSE, GLOB.audible_action_language, list(), list())
 
 /**
  * gets stuff that might be able to hear us
@@ -52,7 +52,7 @@
 		return
 	var/list/atom/movable/targets = saycode_query(range)
 	for(var/atom/movable/AM as anything in targets)
-		AM.hear(arglist(heard_args))
+		AM.hear_say(arglist(heard_args))
 
 /**
  * standard proc for "extending" a see across a portal" or similar
@@ -63,4 +63,4 @@
 		return
 	var/list/atom/movable/targets = saycode_query(range)
 	for(var/atom/movable/AM as anything in targets)
-		AM.see(arglist(saw_args))
+		AM.see_action(arglist(saw_args))
