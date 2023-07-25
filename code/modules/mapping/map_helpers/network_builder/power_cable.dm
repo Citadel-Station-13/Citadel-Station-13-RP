@@ -33,7 +33,7 @@
 			continue
 		var/opp = turn(i, 180)
 		for(var/obj/structure/cable/C in T)
-			if(C.d1 == opp || C.d2 == opp)
+			if((C.d1 == opp || C.d2 == opp) && C.color == cable_color)
 				. |= i
 				continue
 
