@@ -598,9 +598,10 @@
 						drain(-50 * digested)
 					if(volume)
 						water.add_charge(volume)
-					if(recycles && T.materials)
-						for(var/material in T.materials)
-							var/total_material = T.materials[material]
+					var/list/mats = T.get_materials(TRUE)
+					if(recycles && mats)
+						for(var/material in mats)
+							var/total_material = mats[material]
 							if(istype(T,/obj/item/stack))
 								var/obj/item/stack/stack = T
 								total_material *= stack.get_amount()

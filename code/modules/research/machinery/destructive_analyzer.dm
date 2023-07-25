@@ -110,7 +110,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 				var/list/mats = B.get_materials(TRUE)
 				for(var/t in mats)
 					if(t in lathe_to_fill.stored_materials)
-						lathe_to_fill.stored_materials[t] += mat[t] * src.decon_mod
+						lathe_to_fill.stored_materials[t] += mats[t] * src.decon_mod
 			qdel(B)
 		playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 		rped_recycler_ready = FALSE

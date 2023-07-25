@@ -133,6 +133,11 @@
 	/// * impacts usage as a conductor
 	var/relative_conductivity = 0
 
+	//? Traits
+	/// Material traits - set to list of paths to instance on New / register.
+	var/list/material_traits
+	#warn hook traits
+
 	#warn pain
 
 	//! Attributes - legacy

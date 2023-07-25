@@ -8,9 +8,6 @@
 	relative_integrity = 0.25
 	shard_type = SHARD_SHARD
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
-	hardness = 30
-	weight = 15
-	protectiveness = 0 // 0%
 	conductive = 0
 	conductivity = 1 // Glass shards don't conduct.
 	door_icon_base = "stone"
@@ -22,6 +19,17 @@
 	table_icon_base = "glass"
 	table_reinf_icon_base = "rglass"
 	tgui_icon_key = "glass"
+
+	relative_integrity = 0.75
+	relative_reactivity = 0
+	relative_permeability = 0
+	regex_this_hardness = MATERIAL_RESISTANCE_HIGH
+	toughness = MATERIAL_RESISTANCE_VERY_VULNERABLE
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_NONE
+	nullification = MATERIAL_RESISTANCE_NONE
+	relative_density = 1
+	relative_conductivity = 0
 
 /datum/material/glass/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
 
@@ -110,8 +118,6 @@
 	relative_integrity = 0.5
 	shard_type = SHARD_SHARD
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
-	hardness = 40
-	weight = 30
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 2, MAT_GLASS = SHEET_MATERIAL_AMOUNT)
 	window_options = list("One Direction" = 1, "Full Window" = 2, "Windoor" = 2)
@@ -120,6 +126,14 @@
 	wire_product = null
 	rod_product = null
 	tgui_icon_key = "rglass"
+
+	relative_integrity = 1
+	regex_this_hardness = MATERIAL_RESISTANCE_HIGH
+	toughness = MATERIAL_RESISTANCE_VULNERABLE
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_NONE
+	nullification = MATERIAL_RESISTANCE_NONE
+	relative_density = 1.15
 
 /datum/material/glass/phoron
 	id = "glass_boro"
@@ -136,6 +150,14 @@
 	wire_product = null
 	rod_product = /obj/item/stack/material/glass/phoronrglass
 	tgui_icon_key = "pglass"
+
+	relative_integrity = 1.25
+	regex_this_hardness = MATERIAL_RESISTANCE_HIGH
+	toughness = MATERIAL_RESISTANCE_MODERATE
+	refraction = MATERIAL_RESISTANCE_LOW
+	absorption = MATERIAL_RESISTANCE_LOW
+	nullification = MATERIAL_RESISTANCE_NONE
+	relative_density = 1.3
 
 /datum/material/glass/phoron/reinforced
 	id = "glass_boro_reinf"
@@ -154,3 +176,11 @@
 	composite_material = list() //todo
 	rod_product = null
 	tgui_icon_key = "prglass"
+
+	relative_integrity = 1.5
+	regex_this_hardness = MATERIAL_RESISTANCE_HIGH
+	toughness = MATERIAL_RESISTANCE_HIGH
+	refraction = MATERIAL_RESISTANCE_LOW
+	absorption = MATERIAL_RESISTANCE_HIGH
+	nullification = MATERIAL_RESISTANCE_NONE
+	relative_density = 1.6

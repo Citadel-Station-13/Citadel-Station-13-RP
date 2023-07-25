@@ -11,7 +11,7 @@
 /// the level at which vulnerability is minor
 #define MATERIAL_RESISTANCE_SOMEWHAT_VULNERABLE -20
 /// baseline MATERIAL_RESISTANCE for nothing
-#define MATERIAL_RESISTANCE_BASELINE 0
+#define MATERIAL_RESISTANCE_NONE 0
 /// the level at which resistance is workable
 #define MATERIAL_RESISTANCE_LOW 50
 /// the level at which resistance is good

@@ -1,9 +1,10 @@
 //* /datum/material material_flags
 
-// None yet
+/// vulnerability applies to mob armor (uh oh)
+#define MATERIAL_FLAG_VULNERABLE_MOB_ARMOR (1<<0)
 
 DEFINE_BITFIELD(material_flags, list(
-	// none yet
+	BITFIELD(MATERIAL_FLAG_VULNERABLE_MOB_ARMOR),
 ))
 
 //* /datum/material material_constraints

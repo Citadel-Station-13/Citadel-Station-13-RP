@@ -8,6 +8,9 @@
  * used from everything from economy to lathe recycling
  *
  * for things like stacks, this is amount per sheet.
+ *
+ * @params
+ * * respect_multiplier - respect material_multiplier which is often used to modify atom materials when efficiency is higher in lathes.
  */
-/atom/proc/get_materials()
+/atom/proc/get_materials(respect_multiplier)
 	return list()

@@ -92,6 +92,8 @@
 		return
 	return ..()
 
+// todo: we need a better way of doing this, holy shit
+
 /obj/item/stack/material/iron
 	name = "iron"
 	icon_state = "sheet-silver"
@@ -540,3 +542,18 @@
 	default_type = "wax"
 	no_variants = FALSE
 	pass_color = TRUE
+
+/obj/item/stack/material/algae
+	name = "algae sheet"
+	icon_state = "sheet-uranium"
+	color = "#557722"
+	default_type = MATERIAL_ALGAE
+
+/obj/item/stack/material/algae/ten
+	amount = 10
+
+/obj/item/stack/material/carbon
+	name = "carbon sheet"
+	icon_state = "sheet-metal"
+	color = "#303030"
+	default_type = MATERIAL_CARBON

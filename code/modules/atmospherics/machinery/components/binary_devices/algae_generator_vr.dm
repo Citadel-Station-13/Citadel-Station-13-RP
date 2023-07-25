@@ -268,46 +268,5 @@
 		to_chat(user, "<span class='warning'>\The [src] cannot hold more [S.name].</span>")
 	return 1
 
-/datum/material/algae
-	id = "algae"
-	name = MATERIAL_ALGAE
-	stack_type = /obj/item/stack/material/algae
-	icon_colour = "#557722"
-	shard_type = SHARD_STONE_PIECE
-	weight = 10
-	hardness = 10
-	sheet_singular_name = "sheet"
-	sheet_plural_name = "sheets"
-
-/obj/item/stack/material/algae
-	name = "algae sheet"
-	icon_state = "sheet-uranium"
-	color = "#557722"
-	default_type = MATERIAL_ALGAE
-
-/obj/item/stack/material/algae/ten
-	amount = 10
-
-/datum/material/carbon
-	id = "carbon"
-	name = MATERIAL_CARBON
-	stack_type = /obj/item/stack/material/carbon
-	icon_colour = "#303030"
-	shard_type = SHARD_SPLINTER
-	weight = 5
-	hardness = 20
-	icon_base = "stone"
-	icon_reinf = "reinf_stone"
-	icon_reinf_directionals = TRUE
-	door_icon_base = "stone"
-	sheet_singular_name = "sheet"
-	sheet_plural_name = "sheets"
-
-/obj/item/stack/material/carbon
-	name = "carbon sheet"
-	icon_state = "sheet-metal"
-	color = "#303030"
-	default_type = MATERIAL_CARBON
-
 #undef MATERIAL_ALGAE
 #undef MATERIAL_CARBON
