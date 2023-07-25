@@ -4,6 +4,7 @@
 	desc = "This handy device appears to translate the languages it hears into onscreen text for a user."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "translator"
+	atom_flags = ATOM_HEAR
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	/// our translation context; set to path to start as path
@@ -118,7 +119,9 @@
 		icon_state = "[initial(icon_state)]"
 		to_chat(user, "<span class='notice'>You disable \the [src].</span>")
 
-/obj/item/universal_translator/hear_talk(var/mob/speaker, var/message, var/vrb, var/datum/language/language)
+/obj/item/universal_translator/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+	. = ..()
+
 	if(!listening || !istype(speaker))
 		return
 
@@ -132,10 +135,10 @@
 
 	var/mob/living/L = loc
 
-	if(!language)
+	if(!lang)
 		return //Borgs were causing runtimes when passing language=null
 
-	if (language && (language.language_flags & LANGUAGE_NONVERBAL))
+	if (lang && (lang.language_flags & LANGUAGE_NONVERBAL))
 		return //Not gonna translate sign language
 
 	if (visual && ((L.sdisabilities & SDISABILITY_NERVOUS) || L.eye_blind))
@@ -148,7 +151,7 @@
 	//I'll just assume they don't look at the screen in that case
 
 	//They don't understand the spoken language we're translating FROM
-	if(!L.say_understands(speaker, language))
+	if(!L.say_understands(speaker, lang))
 		//They understand the output language
 		if(L.say_understands(null,langset))
 			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[context.attempt_translation(language, speaker, message)]</span>\"")

@@ -10,6 +10,8 @@
 	var/reel_index
 	/// current speaker name
 	var/current_speaker_name
+	/// current speaker vocal identifier
+	var/current_speaker_voice
 	/// current language id
 	var/current_language_id
 	/// current language datum to save on lookups
@@ -87,6 +89,7 @@
 		return
 	reel_index = 1
 	current_speaker_name = "Unknown"
+	current_speaker_voice = unl
 	current_language_id = LANGUAGE_ID_COMMON
 	current_language = SScharacters.resolve_language_id(LANGUAGE_ID_COMMON)
 	staged_msg = null
@@ -116,6 +119,8 @@
 					if(CASSETTE_METADATA_LANGUAGE)
 						current_language_id = val
 						current_language = SScharacters.resolve_language_id(val)
+					if(CASSETTE_METADATA_VOICE)
+						current_speaker_voice = val
 		else if(ispath(read, /datum/cassette_opcode))
 			staged_opcode = read
 		index++
@@ -175,7 +180,8 @@
 		current_speaker_name,
 		current_language,
 		staged_delay,
-		staged_opcode
+		staged_opcode,
+		current_speaker_voice,
 	)
 
 /**
@@ -194,12 +200,15 @@
 	L[CASSETTE_TAPE_DATA_NAME] = current_speaker_name
 	L[CASSETTE_TAPE_DATA_OPCODE] = staged_opcode
 	L[CASSETTE_TAPE_DATA_MESSAGE] = staged_msg
+	L[CASSETTE_TAPE_DATA_VOICE] = current_speaker_voice
 	return TRUE
 
 /**
  * used to **write** to a tape.
  */
 /datum/cassette_tape_iterator/write
+
+#warn beow
 
 /**
  * expects **raw** message
@@ -244,6 +253,8 @@
 		return
 	if(tape.last_language_id != LANGUAGE_ID_COMMON)
 		tape.inject_latest_language(LANGUAGE_ID_COMMON)
+	if(tape.last_speaker_voice != null)
+		tape.inject_latest_voice(null)
 	if(tape.last_speaker_name != "\[Recorder\]")
 		tape.inject_latest_name("\[Recorder\]")
 	tape.reel += world.time - tape.last_message_time

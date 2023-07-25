@@ -45,6 +45,8 @@
 	var/list/language_lookup
 	/// lookup for verbatim names to metadata indeix
 	var/list/name_lookup
+	/// lookup for voice hashes to metadata index
+	var/list/voice_lookup
 	/// active iterators
 	VAR_PRIVATE/list/datum/cassette_tape_iterator/iterators
 	/// active recording iterator
@@ -67,6 +69,8 @@
 	var/last_language_id
 	/// last speaker name
 	var/last_speaker_name
+	/// last speaker voice
+	var/last_speaker_voice
 	/// data list length - [text, speaker name, language id, opcode]
 	var/const/data_list_length = 4
 
@@ -86,8 +90,10 @@
 	last_recording_tick = null
 	last_language_id = null
 	last_speaker_name = null
+	last_speaker_voice = null
 	language_lookup = null
 	name_lookup = null
+	voice_lookup = null
 
 /obj/item/cassette_tape/update_overlays()
 	. = ..()
@@ -178,6 +184,7 @@
 	LAZYINITLIST(metadata)
 	LAZYINITLIST(language_lookup)
 	LAZYINITLIST(name_lookup)
+	LAZYINITLIST(voice_lookup)
 	recording_lock = new /datum/cassette_tape_iterator/write
 	recording_lock.tape = src
 	recording_lock.current_language_id = last_language_id
@@ -226,6 +233,17 @@
 		metadata += "%[id]"
 		language_lookup[id] = index = metadata.len
 	last_language_id = id
+	reel += -index
+
+/**
+ * returns index in metadata
+ */
+/obj/item/cassette_tape/proc/inject_latest_voice(hash)
+	var/index = voice_lookup[hash]
+	if(!index)
+		metadata += "&[id]"
+		voice_lookup[id] = index = metadata.len
+	last_speaker_voice = id
 	reel += -index
 
 //Random colour tapes
