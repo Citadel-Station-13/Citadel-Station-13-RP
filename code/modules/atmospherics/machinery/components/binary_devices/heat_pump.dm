@@ -32,7 +32,6 @@
 	var/lowest_temp = TCMB
 	var/max_temp = 99999999//Need to bottle it somewhere, the sun's core has 15 million kelvin
 
-	var/on = 0
 	var/efficiency = 0
 
 /obj/machinery/atmospherics/component/binary/heat_pump/CtrlClick(mob/user)

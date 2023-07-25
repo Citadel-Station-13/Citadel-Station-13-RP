@@ -9,7 +9,6 @@
 	layer = UNDER_JUNK_LAYER
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 
-	var/on = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 200

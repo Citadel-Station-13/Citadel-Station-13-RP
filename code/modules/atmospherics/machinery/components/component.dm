@@ -15,6 +15,19 @@
 	/// tgui interface ID - set to non-null to use new atmospherics UI system
 	//  todo: convert all atmos machinery to new system
 	var/tgui_interface
+	/// allowed default ui controls
+	var/atmos_component_ui_flags = NONE
+	/// are we on?
+	var/on = FALSE
+	/// maximum power limit in watts
+	var/power_rating = 0
+	/// power setting configured in watts
+	var/power_setting
+
+/obj/machinery/atmospherics/component/Initialize(mapload, newdir)
+	. = ..()
+	if(isnull(power_setting))
+		power_setting = power_rating
 
 /obj/machinery/atmospherics/component/ui_status(mob/user)
 	if(!tgui_interface)

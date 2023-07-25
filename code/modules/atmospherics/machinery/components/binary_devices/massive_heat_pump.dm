@@ -29,7 +29,6 @@
 	var/obj/machinery/power/powersupply/power_machine //for funky massive power machines
 	//if its not null the machine attempts to draw from the grid the power machinery is connected to
 	//see examples in the file "code\modules\atmospherics\components\binary_devices\massive_heat_pump.dm"
-	var/on = 0
 	var/efficiency = 0
 
 /obj/machinery/atmospherics/component/binary/massive_heat_pump/Initialize(mapload)

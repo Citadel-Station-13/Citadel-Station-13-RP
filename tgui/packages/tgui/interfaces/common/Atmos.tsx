@@ -30,7 +30,7 @@ export const AtmosGroupFlagNames = [
   "Other",
   "Unknown",
   "Reagents",
-]
+];
 
 interface BaseGasContext {
   coreGases: AtmosGasID[];
@@ -55,5 +55,28 @@ export interface AtmosGas {
 }
 
 export interface FullAtmosGas extends AtmosGas {
+
+}
+
+export enum AtmosComponentUIFlags {
+  None = 0,
+  TogglePower = (1<<0),
+  SetPowerLimit = (1<<1),
+}
+
+export interface AtmosComponentData {
+  // on?
+  on: boolean;
+  // power limit in W
+  powerLimit: number;
+}
+
+export interface AtmosComponentProps {
+  // forbid injecting default acts for non-specified acts
+  forbidDefaultActs?: boolean;
+  // power toggle
+  togglePowerAct?: () => void;
+  // set target maximum power draw
+  setPowerLimitAct?: (watts: number) => void;
 
 }
