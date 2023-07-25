@@ -17,7 +17,7 @@
 #define OBJ_MATERIALS_MODIFIED      (1<<7)
 /// Material parts have been modified
 #define OBJ_MATERIAL_PARTS_MODIFIED (1<<8)
-/// Material part costs have been modified
+/// Material part costs have been modified.
 #define OBJ_MATERIAL_COSTS_MODIFIED (1<<9)
 /// Materials have been initialized
 #define OBJ_MATERIAL_INITIALIZED    (1<<10)

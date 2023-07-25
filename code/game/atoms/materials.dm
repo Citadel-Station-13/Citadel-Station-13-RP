@@ -6,6 +6,8 @@
 /**
  * get raw materials remaining in us as list (not reagents)
  * used from everything from economy to lathe recycling
+ *
+ * for things like stacks, this is amount per sheet.
  */
 /atom/proc/get_materials()
 	return list()

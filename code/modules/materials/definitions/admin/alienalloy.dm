@@ -5,12 +5,19 @@
 	display_name = "durable alloy"
 	stack_type = null
 	icon_colour = "#6C7364"
-	integrity = 1200
 	melting_point = 6000       // Hull plating.
 	explosion_resistance = 200 // Hull plating.
-	hardness = 500
-	weight = 500
-	protectiveness = 80 // 80%
+
+	relative_integrity = 2
+	relative_reactivity = 0
+	relative_permeability = 0
+	regex_this_hardness = MATERIAL_RESISTANCE_EXTREME
+	toughness = MATERIAL_RESISTANCE_EXTREME
+	refraction = MATERIAL_RESISTANCE_EXTREME
+	absorption = MATERIAL_RESISTANCE_EXTREME
+	nullification = MATERIAL_RESISTANCE_EXTREME
+	relative_density = 0.5
+	relative_conductivity = 0
 
 // Likewise.
 // todo: kill with fire

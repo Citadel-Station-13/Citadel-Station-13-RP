@@ -1,6 +1,56 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+#warn rewrite this again for abstraction layer
+
+//* Abstraction API
+//! Override these procs to implement more efficient material systems.
+//! If your subtype has more than a few hundred instances on the map,
+//! it's a good sign you should do so.
+//!
+//! Don't forget to set material_parts to MATERIAL_DEFAULT_ABSTRACTED.
+
+/**
+ * @return key-value list of material part keys to ids
+ */
+/obj/proc/get_material_part_ids()
+	if(islist(material_parts))
+		return material_parts.Copy()
+	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
+		return list()
+	else
+		return list(MATERIAL_PART_DEFAULT = material_parts)
+
+/**
+ * @return material id of part key. null if part doesn't exist.
+ */
+/obj/proc/get_material_part_id(part)
+	if(material_parts == MATERIAL_DEFAULT_DISABLED)
+		. = null
+	if(islist(material_parts))
+		. = material_parts[part]
+	else
+		. = (part == MATERIAL_PART_DEFAULT)? material_parts : null
+
+//* Base API
+//! Override these procs to implement behavior.
+
+//* Helpers
+
+/**
+ * @return key-value list of material part keys to instances
+ */
+/obj/proc/get_material_parts()
+	return SSmaterials.preprocess_kv_values_to_instances(get_material_part_ids())
+
+/**
+ * @return material instance
+ */
+/obj/proc/get_material_part(part)
+	return SSmaterials.resolve_material(get_material_part_id(part))
+
+#warn parse below
+
 //* Init
 
 /**
@@ -68,62 +118,6 @@
 		. = null
 	else
 		. = islist(material_parts)? material_parts[1] : material_parts
-
-/**
- * get material part
- *
- * @return material instance
- */
-/obj/proc/get_material_part(part)
-	if(material_parts == MATERIAL_DEFAULT_DISABLED)
-		. = null
-	if(islist(material_parts))
-		. = material_parts[part]
-	else
-		. = (part == MATERIAL_PART_DEFAULT)? material_parts : null
-	if(isnull(.))
-		return
-	return SSmaterials.resolve_material(.)
-
-/**
- * get material part
- */
-/obj/proc/get_material_part_id(part)
-	if(material_parts == MATERIAL_DEFAULT_DISABLED)
-		. = null
-	if(islist(material_parts))
-		. = material_parts[part]
-	else
-		. = (part == MATERIAL_PART_DEFAULT)? material_parts : null
-
-/**
- * get material parts
- *
- * @return keys to instances
- */
-/obj/proc/get_material_parts()
-	if(islist(material_parts))
-		var/list/resolving = list()
-		for(var/key in material_parts)
-			resolving[key] = isnull(material_parts[key])? null : SSmaterials.resolve_material(material_parts[key])
-		return resolving
-	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
-		return list()
-	else
-		if(isnull(material_parts))
-			return list(MATERIAL_PART_DEFAULT = null)
-		return list(MATERIAL_PART_DEFAULT = SSmaterials.resolve_material(material_parts))
-
-/**
- * get material parts
- */
-/obj/proc/get_material_part_ids()
-	if(islist(material_parts))
-		return material_parts.Copy()
-	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
-		return list()
-	else
-		return list(MATERIAL_PART_DEFAULT = material_parts)
 
 /**
  * get material amounts of parts
@@ -204,7 +198,7 @@
 /**
  * update material parts
  *
- * only called if material_parts is in list format.
+ * only called if material_parts is in list format, or materials is using the abstraction system
  *
  * @params
  * * parts - list of key-value key to material id.
@@ -221,6 +215,7 @@
 	return
 
 //* Lathe Autodetect
+//! Do not override these. These are automatic based on the APIs.
 
 /**
  * autodetect proc used by lathes
@@ -232,6 +227,7 @@
  * @return key-value associative list of part name to cost
  */
 /obj/proc/detect_material_part_costs()
+	#warn impl
 	if(material_parts == MATERIAL_DEFAULT_DISABLED)
 		return list()
 	else if(islist(material_parts))

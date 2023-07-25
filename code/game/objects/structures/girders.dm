@@ -21,6 +21,8 @@
 	var/reinforcing = 0
 	var/applies_material_colour = 1
 
+	#warn use material abstraction API
+
 /obj/structure/girder/Initialize(mapload, material_key)
 	. = ..()
 	if(!material_key)

@@ -59,13 +59,14 @@
 	/// * This does not include material parts.
 	var/list/materials_base
 	/// material parts - lets us track what we're made of
-	/// this is either a lazy list of material keys to IDs,
+	/// this is either a lazy key-value list of material keys to IDs,
 	/// or a single material id
 	/// or null for defaults.
 	/// ! This must be set for anything using the materials system.
 	/// ! This is what determines how many, and if something uses the material parts system.
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Use [MATERIAL_DEFAULT_DISABLED] if something doesn't use material parts system.
+	/// * Use [MATERIAL_DEFAULT_ABSTRACTED] if something uses the abstraction API to implement material parts themselves.
 	/// * Use [MATERIAL_DEFAULT_NONE] if something uses material parts system, but has only one material with default of null.
 	/// * This may use typepath keys at compile time, but is immediately converted to material instances on boot.
 	/// * Always use [get_material_parts] to get this list unless you know what you're doing.
@@ -73,12 +74,11 @@
 	///   as we use this to detect which material update proc to call!
 	var/list/material_parts = MATERIAL_DEFAULT_DISABLED
 	/// material costs - lets us track the costs of what we're made of.
-	/// this is either a lazy list of ordered costs in cm3,
+	/// this is either a lazy key-value list of material keys to cost in cm3,
 	/// or a single number.
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Always use [get_material_part_costs] to get this list unless you know what you're doing.
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
-	/// * This list has the same ordering as [material_parts].
 	var/list/material_costs
 	/// make the actual materials multiplied by this amount. used by lathes to prevent duping with efficiency upgrades.
 	var/material_multiplier = 1
@@ -128,6 +128,8 @@
 		if(has_typelist(material_costs))
 			material_costs = get_typelist(material_costs)
 		else
+			// preprocess
+			material_costs = SSmaterials.preprocess_kv_keys_to_ids(material_costs)
 			material_costs = typelist(NAMEOF(src, material_costs), material_costs)
 	// initialize material parts system
 	if(material_parts != MATERIAL_DEFAULT_DISABLED)

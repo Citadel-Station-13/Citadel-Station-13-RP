@@ -48,18 +48,17 @@ SUBSYSTEM_DEF(materials)
  * id_or_path - id or typepath; if this is already a material instance, it will be returned as-is.
  */
 /datum/controller/subsystem/materials/proc/resolve_material(datum/material/id_or_path)
-	if(istype(id_or_path))
-		return id_or_path
-	else if(istext(id_or_path))
+	if(istext(id_or_path))
 		// yay it's an id
 		return material_lookup[id_or_path]
+	else if(istype(id_or_path))
+		return id_or_path
 	else if(ispath(id_or_path))
 		// yay it's a path
 		return material_lookup[initial(id_or_path.id)]
-	else
-		// what
-		// yes you get a runtime if you pass null in, the subsystem shouldn't have to sanitycheck for you.
-		CRASH("tried to fetch neither a text string (id) or a typepath (compiled in material type)")
+	else if(isnull(id_or_path))
+		return
+	CRASH("what?")
 
 /**
  * ensures a list is full of material ids for keys

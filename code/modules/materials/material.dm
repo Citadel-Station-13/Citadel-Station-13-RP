@@ -87,14 +87,14 @@
 	var/relative_integrity = 1
 	/// relative reactivity multiplier for something made out of this
 	/// * impacts fire/acid armor
-	var/relative_reactivity = 0
+	var/relative_reactivity = 1
 	/// relative permeability multiplier for something made out of this
 	/// * impacts permeability armor
 	/// * impacts bomb armor a little bit
 	/// * impacts acid armor
-	var/relative_permeability = 0
+	var/relative_permeability = 1
 	/// kinetic penetration resistance for something made out of this
-	/// based on MATERIAL_RESISTANCE_ defines
+	/// based on MATERIAL_RESISTANCE_ definesw
 	/// * impacts sharp / blade damage
 	/// * impacts kinetic penetration resistance
 	/// * impacts bomb armor
