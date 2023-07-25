@@ -1,3 +1,5 @@
+import { BooleanLike } from "../../../common/react";
+
 /**
  * @file
  * @license MIT
@@ -65,10 +67,14 @@ export enum AtmosComponentUIFlags {
 }
 
 export interface AtmosComponentData {
+  // component UI flags
+  controlFlags: AtmosComponentUIFlags;
   // on?
-  on: boolean;
+  on: BooleanLike;
   // power limit in W
-  powerLimit: number;
+  powerSetting: number;
+  // max power limit in W
+  powerRating: number;
 }
 
 export interface AtmosComponentProps {

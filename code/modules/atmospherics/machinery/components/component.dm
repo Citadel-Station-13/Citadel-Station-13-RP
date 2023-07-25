@@ -29,15 +29,21 @@
 	if(isnull(power_setting))
 		power_setting = power_rating
 
-/obj/machinery/atmospherics/component/ui_status(mob/user)
-	if(!tgui_interface)
-		return ..()
+/obj/machinery/atmospherics/component/ui_state(mob/user, datum/tgui_module/module)
+	return GLOB.default_state
+	#warn impl
+
+/obj/machinery/atmospherics/component/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	.["powerRating"] = power_rating
+	.["controlFlags"] = atmos_component_ui_flags
 
 /obj/machinery/atmospherics/component/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(!tgui_interface)
 		return
+	.["on"] = on
+	.["powerSetting"] = power_setting
 
 /obj/machinery/atmospherics/component/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -46,14 +52,14 @@
 	if(!tgui_interface)
 		return
 
-/obj/machinery/atmospherics/component/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(!tgui_interface)
-		return
-
 /obj/machinery/atmospherics/component/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	if(!tgui_interface)
 		return ..()
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(isnull(ui))
+		ui = new(user, src, tgui_interface)
+		ui.open()
 
 /obj/machinery/atmospherics/component/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	. = ..()
