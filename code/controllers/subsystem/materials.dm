@@ -67,9 +67,10 @@ SUBSYSTEM_DEF(materials)
  */
 /datum/controller/subsystem/materials/proc/preprocess_flat_keys_to_ids(list/L)
 	// todo: optimize
+	. = list()
 	for(var/i in 1 to length(L))
 		var/datum/material/resolved = resolve_material(L[i])
-		L[i] = resolved?.id
+		. += resolved?.id
 
 /**
  * ensures a list is full of material references for keys
@@ -78,9 +79,10 @@ SUBSYSTEM_DEF(materials)
  */
 /datum/controller/subsystem/materials/proc/preprocess_flat_keys_to_instances(list/L)
 	// todo: optimize
+	. = list()
 	for(var/i in 1 to length(L))
 		var/datum/material/resolved = resolve_material(L[i])
-		L[i] = resolved
+		. += resolved
 
 /**
  * ensures a list is full of material ids for keys
@@ -115,8 +117,6 @@ SUBSYSTEM_DEF(materials)
 			continue
 		var/value = L[key]
 		.[resolved] = value
-
-	#warn impl
 
 /**
  * ensures a list is full of material ids for values

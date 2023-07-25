@@ -1,7 +1,140 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-#warn rewrite this again for abstraction layer
+//? TL;DR
+//?
+//? Three ways of using materials
+//?
+//? 1. You only need one material
+//? - set material_parts to MATERIAL_DEFAULT_NONE or a material typepath / id
+//? - set material_costs to a number to indicate how much cm3 of the material is in there
+//? - on update, update_material_single will be called; hook modifications to this
+//? - on init, the system will call update_material_single for you.
+//?
+//? 2. You need multiple materials, and your item is rare enough there isn't more than a few hundred of it
+//? - set material_parts to a k-v list.
+//?   note that the key needs to be player-readable
+//?
+//?   example: material_parts = list("structure" = /datum/material/steel, "reinforcement" = /datum/material/wood)
+//?
+//? - set material_costs to an ordered list of costs
+//?
+//?   example: list(2000, 1000) = 1 sheet of steel and 0.5 sheets of wood as per above
+//?
+//? - update_material_parts will be called with list of keys to instances as values
+//?   so you can implement your behaviors there
+//?
+//? 3. You need multiple materials, and your object is spammed on the map and you need it to be more efficient
+//? - Define material vars yourself. a hard-coded material variable is more than 10x as efficient as setting it
+//?   in material_parts list.
+//? - Override the procs in the abstraction API to point to and use those variables.
+//? - See [code/game/objects/structures/girder.dm] for an example.
+//? - The system will still call update_material_parts for you as long as you call the
+//?   parts API instead of the abstraction API directly.
+//? - **Do not ever call the abstraction API directly.**
+
+//* Base API
+//! Override these procs to implement behavior.
+//! Do not skip parent calls, as these are not meant to be overridden
+
+/**
+ * initialize materials
+ */
+/obj/proc/init_material_parts()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	obj_flags |= OBJ_MATERIAL_INITIALIZED
+	if(islist(material_parts))
+		var/list/parts = list()
+		for(var/key in material_parts)
+			parts[key] = SSmaterials.resolve_material(key)
+		update_material_parts(parts)
+	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
+	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
+		material_init_parts()
+		update_material_parts(material_get_parts())
+	else
+		update_material_single(SSmaterials.resolve_material(material_parts))
+
+/**
+ * sets our base materials
+ *
+ * * note that this takes material ids, not instances, unlike set_material_part(s).
+ *
+ * @params
+ * * materials - material ids associated to costs
+ */
+/obj/proc/set_materials_base(list/materials)
+	obj_flags |= OBJ_MATERIALS_MODIFIED
+	materials_base = materials.Copy()
+
+/**
+ * get base material amounts
+ */
+/obj/proc/get_base_material_amounts(respect_multiplier)
+	. = isnull(materials_base)? list() : materials_base.Copy()
+	if(respect_multiplier && material_multiplier != 1)
+		for(var/key in .)
+			.[key] *= material_multiplier
+
+//* Parts API
+//! These cannot be overridden, and instead call the abstraction API.
+//! This restriction is for code organization reasons.
+
+/**
+ * @return key-value list of material part keys to ids
+ */
+/obj/proc/get_material_part_ids()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return material_get_part_ids()
+
+/**
+ * @return material id of part key. null if part doesn't exist.
+ */
+/obj/proc/get_material_part_id(part)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return material_get_part_id(part)
+
+/**
+ * @return key-value list of material part keys to instances
+ */
+/obj/proc/get_material_parts()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return material_get_parts()
+
+/**
+ * @return material instance
+ */
+/obj/proc/get_material_part(part)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return material_get_part(part)
+
+/**
+ * sets a single material part
+ *
+ * @params
+ * * part - part key
+ * * material - material. ids and paths are not allowed for performance reasons.
+ */
+/obj/proc/set_material_part(part, datum/material/material)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	obj_flags |= OBJ_MATERIAL_PARTS_MODIFIED
+	return material_set_part(part, material)
+
+/**
+ * sets our material parts to a list by key / value. values should be material datums.
+ * ids and typepaths are not allowed in part_instances for performance reasons.
+ */
+/obj/proc/set_material_parts(list/part_instances)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	obj_flags |= OBJ_MATERIAL_PARTS_MODIFIED
+	return material_set_parts(part_intsances)
+
+/**
+ * do we use material parts system?
+ */
+/obj/proc/uses_material_parts()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return material_parts != MATERIAL_DEFAULT_DISABLED
 
 //* Abstraction API
 //! Override these procs to implement more efficient material systems.
@@ -13,7 +146,8 @@
 /**
  * @return key-value list of material part keys to ids
  */
-/obj/proc/get_material_part_ids()
+/obj/proc/material_get_part_ids()
+	PROTECTED_PROC(TRUE) // Do not ever call directly.
 	if(islist(material_parts))
 		return material_parts.Copy()
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
@@ -21,10 +155,12 @@
 	else
 		return list(MATERIAL_PART_DEFAULT = material_parts)
 
+
 /**
  * @return material id of part key. null if part doesn't exist.
  */
-/obj/proc/get_material_part_id(part)
+/obj/proc/material_get_part_id(part)
+	PROTECTED_PROC(TRUE) // Do not ever call directly.
 	if(material_parts == MATERIAL_DEFAULT_DISABLED)
 		. = null
 	if(islist(material_parts))
@@ -32,46 +168,71 @@
 	else
 		. = (part == MATERIAL_PART_DEFAULT)? material_parts : null
 
-//* Base API
-//! Override these procs to implement behavior.
-
-//* Helpers
-
 /**
  * @return key-value list of material part keys to instances
  */
-/obj/proc/get_material_parts()
+/obj/proc/material_get_parts()
+	PROTECTED_PROC(TRUE) // Do not ever call directly.
 	return SSmaterials.preprocess_kv_values_to_instances(get_material_part_ids())
 
 /**
  * @return material instance
  */
-/obj/proc/get_material_part(part)
+/obj/proc/material_get_part(part)
+	PROTECTED_PROC(TRUE) // Do not ever call directly.
 	return SSmaterials.resolve_material(get_material_part_id(part))
 
+/**
+ * sets a single material part
+ *
+ * @params
+ * * part - part key
+ * * material - material. ids and paths are not allowed for performance reasons.
+ */
+/obj/proc/material_set_part(part, datum/material/material)
+	PROTECTED_PROC(TRUE) // Do not ever call directly.
+	if(is_typelist(NAMEOF(src, material_parts), material_parts))
+		material_parts = material_parts.Copy()
+	material_parts[part] = material.id
+
+/**
+ * sets our material parts to a list by key / value. values should be material datums.
+ * ids and typepaths are not allowed in part_instances for performance reasons.
+ */
+/obj/proc/material_set_parts(list/part_instances)
+	PROTECTED_PROC(TRUE) // Do not ever call directly.
+	material_parts = SSmaterials.preprocess_kv_values_to_ids(part_instances)
+
+/**
+ * Called to initialize material parts.
+ */
+/obj/proc/material_init_parts()
+	PROTECTED_PROC(TRUE) // Do not ever call directly.
+	CRASH("unimplemented abstracted material_init_parts even when abstraction is enabled")
+
+//* User API
+//! Override these to implement the actual behaviors your object uses with materials.
+
+/**
+ * update material parts
+ *
+ * only called if material_parts is in list format, or materials is using the abstraction system
+ *
+ * @params
+ * * parts - list of key-value key to material id.
+ */
+/obj/proc/update_material_parts(list/parts)
+	return
+
+/**
+ * update material default part
+ *
+ * only called if material_parts is in singleton format
+ */
+/obj/proc/update_material_single(datum/material/material)
+	return
+
 #warn parse below
-
-//* Init
-
-/**
- * initialize materials
- */
-/obj/proc/init_material_parts()
-	obj_flags |= OBJ_MATERIAL_INITIALIZED
-	if(islist(material_parts))
-		var/list/parts = list()
-		for(var/key in material_parts)
-			parts[key] = SSmaterials.resolve_material(key)
-		update_material_parts(parts)
-	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
-	else
-		update_material_single(SSmaterials.resolve_material(material_parts))
-
-/**
- * do we use material parts system?
- */
-/obj/proc/uses_material_parts()
-	return material_parts != MATERIAL_DEFAULT_DISABLED
 
 //* Get
 
@@ -83,15 +244,6 @@
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
 	else
 		.[material_parts] = material_costs
-	if(respect_multiplier && material_multiplier != 1)
-		for(var/key in .)
-			.[key] *= material_multiplier
-
-/**
- * get base material amounts
- */
-/obj/proc/get_base_material_amounts(respect_multiplier)
-	. = isnull(materials_base)? list() : materials_base.Copy()
 	if(respect_multiplier && material_multiplier != 1)
 		for(var/key in .)
 			.[key] *= material_multiplier
@@ -141,45 +293,6 @@
 //* Set
 
 /**
- * sets our base materials
- *
- * * note that this takes material ids, not instances, unlike set_material_part(s).
- *
- * @params
- * * materials - material ids associated to costs
- */
-/obj/proc/set_materials_base(list/materials)
-	obj_flags |= OBJ_MATERIALS_MODIFIED
-	materials_base = materials.Copy()
-
-/**
- * sets a single material part
- *
- * @params
- * * part - part key
- * * material_like - material. ids and paths are not allowed for performance reasons
- */
-/obj/proc/set_material_part(part, datum/material/material)
-	obj_flags |= OBJ_MATERIAL_PARTS_MODIFIED
-	#warn impl
-
-/**
- * sets our material parts to a list by key / value. values should be material datums.
- * ids and typepaths are not allowed in part_instances for performance reasons.
- */
-/obj/proc/set_material_parts(list/part_instances)
-	obj_flags |= OBJ_MATERIAL_PARTS_MODIFIED
-	#warn impl
-
-/**
- * sets our material costs, for.. whatever reason?
- * ids and typepaths are not allowed in part_instances for performance reasons.
- */
-/obj/proc/set_material_costs(list/part_costs)
-	obj_flags |= OBJ_MATERIAL_COSTS_MODIFIED
-	#warn impl
-
-/**
  * sets our primary material to something
  *
  * if we have more than one material part (as determined by material_parts),
@@ -193,26 +306,7 @@
 	#warn impl
 	return length(material_parts)? set_material_part(material_parts[1], material) : set_material_part(MATERIAL_PART_DEFAULT, material)
 
-//* Update
-
-/**
- * update material parts
- *
- * only called if material_parts is in list format, or materials is using the abstraction system
- *
- * @params
- * * parts - list of key-value key to material id.
- */
-/obj/proc/update_material_parts(list/parts)
-	return
-
-/**
- * update material default part
- *
- * only called if material_parts is in singleton format
- */
-/obj/proc/update_material_single(datum/material/material)
-	return
+#warn parse above
 
 //* Lathe Autodetect
 //! Do not override these. These are automatic based on the APIs.
