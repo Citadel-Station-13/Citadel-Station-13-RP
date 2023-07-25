@@ -212,6 +212,7 @@
 	icon_state = "0-2"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "ahB" = (
@@ -495,6 +496,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -22
 	},
+/obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "arG" = (
@@ -995,6 +997,7 @@
 	icon_state = "0-8"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "aME" = (
@@ -2872,6 +2875,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/range)
 "cky" = (
@@ -3171,6 +3175,9 @@
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 9
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -3974,6 +3981,9 @@
 /obj/item/ammo_magazine/m762,
 /obj/item/gun/ballistic/automatic/z8,
 /obj/effect/floor_decal/industrial/outline/grey,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "dii" = (
@@ -4293,6 +4303,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor,
 /area/security/hanger)
 "duk" = (
@@ -5569,6 +5580,7 @@
 	icon_state = "0-4"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/prison)
 "ejP" = (
@@ -5705,6 +5717,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/range)
 "eqn" = (
@@ -5794,6 +5807,7 @@
 	icon_state = "2-4"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "esK" = (
@@ -5927,6 +5941,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "ezD" = (
@@ -6038,6 +6053,7 @@
 "eCL" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "eCV" = (
@@ -6462,6 +6478,7 @@
 	icon_state = "2-4"
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor,
 /area/security/brig)
 "eMf" = (
@@ -6502,6 +6519,7 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
 "eNu" = (
@@ -6727,6 +6745,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "eUd" = (
@@ -7049,6 +7068,7 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/forensics)
 "fgf" = (
@@ -7520,6 +7540,7 @@
 	id = "Interr";
 	name = "interrogation window"
 	},
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "fyz" = (
@@ -7660,6 +7681,7 @@
 	icon_state = "2-4"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/forensics)
 "fAY" = (
@@ -7760,6 +7782,9 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "fEa" = (
@@ -7826,6 +7851,7 @@
 	icon_state = "0-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "fIn" = (
@@ -8115,6 +8141,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "fVV" = (
@@ -8518,6 +8545,94 @@
 "goh" = (
 /turf/simulated/wall/prepainted/command,
 /area/crew_quarters/heads/blueshield)
+"gop" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/medium{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/mediumtreated{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armoury)
 "goI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -8791,6 +8906,7 @@
 	icon_state = "0-4"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
 "gvI" = (
@@ -8994,6 +9110,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "gDS" = (
@@ -9026,6 +9143,7 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/forensics)
 "gFZ" = (
@@ -10153,8 +10271,27 @@
 	dir = 8
 	},
 /obj/machinery/camera/network/security,
-/obj/structure/closet/wardrobe/tactical,
 /obj/effect/floor_decal/industrial/outline/grey,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/ballistic/automatic/wt550{
+	pixel_y = 7
+	},
+/obj/item/gun/ballistic/automatic/wt550{
+	pixel_y = -7
+	},
+/obj/item/gun/ballistic/automatic/wt550,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "hxc" = (
@@ -12555,6 +12692,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "jel" = (
@@ -13946,6 +14084,7 @@
 	icon_state = "0-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/prison)
 "kfJ" = (
@@ -14024,6 +14163,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/hallway)
 "kiY" = (
@@ -14576,19 +14716,63 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "kJc" = (
-/obj/structure/table/rack/steel,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/item/clothing/shoes/leg_guard/combat,
-/obj/item/clothing/gloves/arm_guard/combat,
-/obj/item/clothing/suit/armor/combat,
-/obj/item/clothing/head/helmet/combat,
 /obj/effect/floor_decal/corner/black/full,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/accessory/armor/armorplate/heavy{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/heavy{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/heavy{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/ballistic{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/ballistic{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/ballistic{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/combat{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/combat{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/combat{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armorplate/tactical{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/tactical{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/tactical{
+	pixel_x = 5;
+	pixel_y = -3
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
@@ -15190,6 +15374,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "ldg" = (
@@ -15422,6 +15607,7 @@
 	id = "Interr";
 	name = "interrogation window"
 	},
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "lli" = (
@@ -15936,6 +16122,7 @@
 	icon_state = "0-4"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "lyQ" = (
@@ -16083,6 +16270,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "lEt" = (
@@ -16856,10 +17044,6 @@
 "mhu" = (
 /obj/structure/table/rack/steel,
 /obj/structure/window/reinforced,
-/obj/item/clothing/shoes/leg_guard/bulletproof,
-/obj/item/clothing/gloves/arm_guard/bulletproof,
-/obj/item/clothing/suit/armor/bulletproof/alt,
-/obj/item/clothing/head/helmet/ballistic,
 /obj/machinery/light,
 /obj/effect/floor_decal/corner/red{
 	dir = 10
@@ -16868,6 +17052,10 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/effect/floor_decal/corner/red{
+	dir = 10
+	},
+/obj/item/storage/toolbox/syndicate,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "mhY" = (
@@ -16877,28 +17065,46 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
 "mir" = (
+/obj/structure/table/rack/shelf/steel,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/item/clothing/suit/armor/pcarrier/riot{
+	pixel_x = 5;
+	pixel_y = -2
 	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 1
+/obj/item/clothing/suit/armor/pcarrier/riot{
+	pixel_x = 5;
+	pixel_y = -2
+	},
+/obj/item/clothing/suit/armor/pcarrier/riot{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/item/clothing/suit/armor/pcarrier/riot{
+	pixel_x = -5;
+	pixel_y = -2
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 5
 	},
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/machinery/camera/network/security,
-/obj/structure/table/rack/steel,
-/obj/item/clothing/shoes/leg_guard/riot,
-/obj/item/clothing/gloves/arm_guard/riot,
-/obj/item/clothing/mask/balaclava,
-/obj/item/clothing/suit/armor/riot,
-/obj/item/clothing/head/helmet/riot,
-/obj/item/shield/riot,
-/obj/item/melee/baton/loaded,
+/obj/item/shield/riot{
+	pixel_x = 11;
+	pixel_y = -3
+	},
+/obj/item/shield/riot{
+	pixel_x = 11;
+	pixel_y = -3
+	},
+/obj/item/shield/riot{
+	pixel_x = 11;
+	pixel_y = -3
+	},
+/obj/item/shield/riot{
+	pixel_x = 11;
+	pixel_y = -3
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "miY" = (
@@ -17224,6 +17430,7 @@
 	icon_state = "0-4"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
 "mtg" = (
@@ -17525,7 +17732,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/closet/wardrobe/tactical,
 /obj/effect/floor_decal/corner/black/full{
 	dir = 1
 	},
@@ -17535,6 +17741,19 @@
 	layer = 3.3;
 	pixel_x = 26
 	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/ballistic/fiveseven,
+/obj/item/gun/ballistic/fiveseven,
+/obj/item/gun/ballistic/fiveseven,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "mGQ" = (
@@ -17634,18 +17853,66 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/captain)
 "mKH" = (
-/obj/structure/table/steel,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/light{
+	dir = 1
 	},
-/obj/item/storage/box/empslite{
-	pixel_y = 3
+/obj/item/clothing/accessory/armor/armguards/ablative{
+	pixel_x = -4;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/armor/armguards/ablative{
+	pixel_x = -4;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/armor/armguards/ablative{
+	pixel_x = -4;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/armor/armguards/ablative{
+	pixel_x = -4;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/armor/legguards/ablative{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/legguards/ablative{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/legguards/ablative{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/legguards/ablative{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/head/helmet/ablative{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/ablative{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/ablative{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/ablative{
+	pixel_x = -5;
+	pixel_y = 4
 	},
 /obj/effect/floor_decal/corner/red/full{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "mKP" = (
@@ -17903,8 +18170,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
 	name = "Interrogation";
-	req_access = list(4);
-	req_one_access = list()
+	req_one_access = list(1,2,4,38)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -18798,19 +19064,31 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/triumph/surfacebase/tram)
 "nFw" = (
-/obj/structure/table/rack/steel,
-/obj/structure/window/reinforced,
-/obj/item/clothing/shoes/leg_guard/laserproof,
-/obj/item/clothing/gloves/arm_guard/laserproof,
-/obj/item/clothing/suit/armor/laserproof,
-/obj/item/clothing/head/helmet/ablative,
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/item/clothing/suit/armor/pcarrier/ablative{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/item/clothing/suit/armor/pcarrier/ablative{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/item/clothing/suit/armor/pcarrier/ablative{
+	pixel_x = 5;
+	pixel_y = -2
+	},
+/obj/item/clothing/suit/armor/pcarrier/ablative{
+	pixel_x = 5;
+	pixel_y = -2
+	},
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
-/obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "nGt" = (
@@ -19050,6 +19328,7 @@
 "nQi" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "nRa" = (
@@ -19393,6 +19672,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "oet" = (
@@ -19903,6 +20183,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "ous" = (
@@ -20069,6 +20350,7 @@
 	id = "Interr";
 	name = "interrogation window"
 	},
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/interrogation)
 "oEc" = (
@@ -20361,8 +20643,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
 	name = "Interrogation";
-	req_access = list(4);
-	req_one_access = list()
+	req_one_access = list(1,2,4,38)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
@@ -20485,12 +20766,6 @@
 /turf/simulated/open,
 /area/medical/patient_wing)
 "oRw" = (
-/obj/effect/floor_decal/corner/black{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/black{
-	dir = 6
-	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
@@ -20794,6 +21069,7 @@
 "pat" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "pbe" = (
@@ -21635,6 +21911,14 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	layer = 3.3;
+	pixel_x = 26
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "pHl" = (
@@ -22353,11 +22637,94 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/security/lobby)
 "qda" = (
-/obj/effect/floor_decal/corner/blue{
-	dir = 9
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = -3;
+	pixel_y = -4
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/deployable/barrier,
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/legguards/navy{
+	pixel_y = -1;
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/armor/legguards/navy{
+	pixel_y = -1;
+	pixel_x = 7
+	},
+/obj/item/clothing/accessory/armor/armguards/navy,
+/obj/item/clothing/accessory/armor/armguards/navy,
+/obj/item/clothing/accessory/armor/legguards/navy{
+	pixel_y = -1;
+	pixel_x = -4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "qdb" = (
@@ -22568,6 +22935,7 @@
 	icon_state = "0-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
 "qiX" = (
@@ -24088,6 +24456,7 @@
 	id = "det_office"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "rgN" = (
@@ -24471,11 +24840,56 @@
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
 "rtD" = (
-/obj/machinery/deployable/barrier,
-/obj/effect/floor_decal/corner/blue{
-	dir = 9
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = -6
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = 5;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "rtF" = (
@@ -24506,6 +24920,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "ruM" = (
@@ -25063,11 +25478,6 @@
 /turf/simulated/floor/plating,
 /area/security/hanger)
 "rRv" = (
-/obj/structure/table/rack/steel,
-/obj/item/clothing/shoes/leg_guard/combat,
-/obj/item/clothing/gloves/arm_guard/combat,
-/obj/item/clothing/suit/armor/combat,
-/obj/item/clothing/head/helmet/combat,
 /obj/machinery/light,
 /obj/effect/floor_decal/corner/black/full{
 	dir = 4
@@ -25078,6 +25488,40 @@
 	dir = 4;
 	name = "east bump";
 	pixel_x = 24
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/head/helmet/ballistic{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -5;
+	pixel_y = -7
+	},
+/obj/item/clothing/head/helmet/ballistic{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/ballistic{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -5;
+	pixel_y = -7
+	},
+/obj/item/clothing/head/helmet/combat{
+	pixel_x = -5;
+	pixel_y = -7
+	},
+/obj/item/shield/riot/tower/swat{
+	pixel_x = 4
+	},
+/obj/item/shield/riot/tower/swat{
+	pixel_x = 4
+	},
+/obj/item/shield/riot/tower/swat{
+	pixel_x = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
@@ -25200,6 +25644,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor,
 /area/security/hanger)
 "rWj" = (
@@ -25833,30 +26278,66 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/courser/cockpit)
 "sul" = (
-/obj/structure/table/rack/steel,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/table/rack/shelf/steel,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/clothing/shoes/leg_guard/riot,
-/obj/item/clothing/gloves/arm_guard/riot,
-/obj/item/clothing/mask/balaclava,
-/obj/item/clothing/suit/armor/riot,
-/obj/item/clothing/head/helmet/riot,
-/obj/item/shield/riot,
-/obj/item/melee/baton/loaded,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/item/clothing/accessory/armor/legguards/ballistic{
+	pixel_x = 6;
+	pixel_y = -6
 	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 1
+/obj/item/clothing/accessory/armor/legguards/ballistic{
+	pixel_x = 6;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/armor/legguards/ballistic{
+	pixel_x = 6;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/armor/legguards/ballistic{
+	pixel_x = 6;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/armor/armguards/ballistic{
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/armor/armguards/ballistic{
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/armor/armguards/ballistic{
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/obj/item/clothing/accessory/armor/armguards/ballistic{
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet/ballistic{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/ballistic{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/ballistic{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/ballistic{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 5
 	},
-/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "sup" = (
@@ -26263,6 +26744,7 @@
 	id = "det_office"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "sGS" = (
@@ -26654,6 +27136,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor,
 /area/security/brig)
 "sRs" = (
@@ -27424,29 +27907,29 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/maintenance/security/starboard)
 "tza" = (
-/obj/structure/table/rack/steel,
+/obj/structure/table/rack/shelf/steel,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/clothing/shoes/leg_guard/riot,
-/obj/item/clothing/gloves/arm_guard/riot,
-/obj/item/clothing/mask/balaclava,
-/obj/item/clothing/suit/armor/riot,
-/obj/item/clothing/head/helmet/riot,
-/obj/item/shield/riot,
-/obj/item/melee/baton/loaded,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/item/clothing/suit/armor/pcarrier/ballistic{
+	pixel_x = -5;
+	pixel_y = -2
 	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 1
+/obj/item/clothing/suit/armor/pcarrier/ballistic{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/item/clothing/suit/armor/pcarrier/ballistic{
+	pixel_x = 5;
+	pixel_y = -2
+	},
+/obj/item/clothing/suit/armor/pcarrier/ballistic{
+	pixel_x = 5;
+	pixel_y = -2
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 5
-	},
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/machinery/light{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -28232,6 +28715,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/warden)
 "ufB" = (
@@ -28868,6 +29352,7 @@
 	icon_state = "1-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "uAU" = (
@@ -28931,35 +29416,81 @@
 /turf/simulated/floor/wood,
 /area/library)
 "uFc" = (
-/obj/structure/table/rack/steel,
-/obj/item/clothing/shoes/leg_guard/riot,
-/obj/item/clothing/gloves/arm_guard/riot,
-/obj/item/clothing/mask/balaclava,
-/obj/item/clothing/suit/armor/riot,
-/obj/item/clothing/head/helmet/riot,
-/obj/item/shield/riot,
-/obj/item/melee/baton/loaded,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 5
-	},
+/obj/structure/table/rack/shelf/steel,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 5
+/obj/item/clothing/mask/balaclava{
+	pixel_x = -4;
+	pixel_y = 7
 	},
-/obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
-	pixel_x = 26
+/obj/item/clothing/mask/balaclava{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/balaclava{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/balaclava{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/accessory/armor/legguards/riot{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/legguards/riot{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/legguards/riot{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/legguards/riot{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/armguards/riot{
+	pixel_x = -4;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/armguards/riot{
+	pixel_x = -4;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/armguards/riot{
+	pixel_x = -4;
+	pixel_y = -7
+	},
+/obj/item/clothing/accessory/armor/armguards/riot{
+	pixel_x = -4;
+	pixel_y = -7
 	},
 /obj/effect/floor_decal/corner/red/full{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "uFs" = (
@@ -29605,6 +30136,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/brig)
 "ved" = (
@@ -31146,6 +31678,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor,
 /area/security/hanger)
 "wbh" = (
@@ -31510,6 +32043,7 @@
 /obj/structure/curtain/black{
 	anchored = 1
 	},
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor,
 /area/security/brig)
 "wns" = (
@@ -31879,6 +32413,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/security_processing)
 "wCh" = (
@@ -32177,6 +32712,7 @@
 /obj/structure/curtain/black{
 	anchored = 1
 	},
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor,
 /area/security/brig)
 "wNX" = (
@@ -32860,8 +33396,58 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
 "xpv" = (
-/turf/simulated/wall/r_wall,
-/area/security/riot_control)
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/item/clothing/accessory/storage/pouches/large{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/large{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/large{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/large{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/large{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/large{
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/storage/pouches/large/navy{
+	pixel_y = 3
+	},
+/obj/item/clothing/accessory/storage/pouches/large/navy{
+	pixel_y = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armoury)
 "xqd" = (
 /obj/machinery/door/firedoor{
 	dir = 2
@@ -33143,6 +33729,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "xyv" = (
@@ -33448,6 +34035,7 @@
 	id = "det_office"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "xJD" = (
@@ -33601,6 +34189,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/red,
 /turf/simulated/floor,
 /area/security/brig)
 "xPk" = (
@@ -42576,8 +43165,8 @@ neS
 lUE
 eFy
 qda
-qda
-rtD
+xpv
+gop
 rtD
 nzO
 neS
@@ -43283,13 +43872,13 @@ oVk
 gsX
 rtF
 iUy
-xpv
-xpv
+ous
+ous
 wvd
 dYZ
 onD
-xpv
-xpv
+ous
+ous
 ous
 kCH
 cBE
