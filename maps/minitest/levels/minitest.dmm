@@ -177,8 +177,8 @@
 /area/space)
 "aA" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	icon_state = "map";
-	dir = 4
+	dir = 4;
+	icon_state = "map"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -432,8 +432,8 @@
 /area/engineering/engine_room)
 "aY" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	icon_state = "intact";
-	dir = 5
+	dir = 5;
+	icon_state = "intact"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -491,8 +491,8 @@
 /area/engineering/engine_room)
 "bf" = (
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bg" = (
@@ -506,8 +506,8 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bh" = (
@@ -516,8 +516,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bi" = (
@@ -525,8 +525,8 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bj" = (
@@ -540,8 +540,8 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bl" = (
@@ -550,8 +550,8 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bm" = (
@@ -567,8 +567,8 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bn" = (
@@ -587,8 +587,8 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bo" = (
@@ -606,8 +606,8 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bq" = (
@@ -753,8 +753,8 @@
 	anchored = 1
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bM" = (
@@ -789,12 +789,12 @@
 	pixel_y = 0
 	},
 /obj/machinery/light{
-	icon_state = "tube1";
-	dir = 8
+	dir = 8;
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bQ" = (
@@ -818,29 +818,29 @@
 "bT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bU" = (
 /obj/machinery/telecomms/broadcaster/preset_right,
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bV" = (
 /obj/machinery/telecomms/hub/preset,
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bW" = (
 /obj/machinery/telecomms/receiver/preset_right,
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "bX" = (
@@ -870,8 +870,8 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "cb" = (
@@ -1030,13 +1030,13 @@
 	external_pressure_bound = 140;
 	external_pressure_bound_default = 140;
 	icon_state = "map_vent_out";
-	use_power = 1;
 	pressure_checks = 0;
-	pressure_checks_default = 0
+	pressure_checks_default = 0;
+	use_power = 1
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "cw" = (
@@ -1046,8 +1046,8 @@
 	dir = 1
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "cx" = (
@@ -1059,14 +1059,14 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
-	use_power = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0
+	pump_direction = 0;
+	use_power = 1
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "cy" = (
@@ -2588,8 +2588,8 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gg" = (
-/obj/machinery/alarm{
-	pixel_y = 22
+/obj/structure/atmos_tank_segment{
+	icon_state = "3,4"
 	},
 /turf/simulated/floor/tiled,
 /area/bridge)
@@ -2740,8 +2740,8 @@
 "gF" = (
 /obj/machinery/ntnet_relay,
 /turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	initial_gas_mix = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80";
+	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
 "gG" = (
@@ -3026,10 +3026,46 @@
 /obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled,
 /area/bridge)
+"jw" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "1,4"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
+"jV" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "4,0"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
+"jX" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "3,0"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
+"ko" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "3,3"
+	},
+/turf/simulated/floor/reinforced/nitrogen,
+/area/bridge)
+"kA" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "1,1"
+	},
+/turf/simulated/floor/reinforced/nitrogen,
+/area/bridge)
 "kU" = (
 /obj/structure/shuttle,
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/overmapdemo)
+"nq" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "4,3"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
 "ql" = (
 /obj/machinery/door/airlock/external{
 	frequency = 1379;
@@ -3051,16 +3087,40 @@
 /turf/space,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/multidemo)
+"uW" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "1,0"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
 "vP" = (
 /obj/machinery/computer/ship/engines{
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)
+"wV" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "1,3"
+	},
+/turf/simulated/floor/reinforced/nitrogen,
+/area/bridge)
 "zf" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/shuttle/floor/voidcraft/external/light,
 /area/shuttle/overmapdemo)
+"zh" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "0,1"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
+"zs" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "3,1"
+	},
+/turf/simulated/floor/reinforced/nitrogen,
+/area/bridge)
 "zX" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -3069,9 +3129,27 @@
 /obj/overmap/entity/visitable/ship/landable/overmapdemo,
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)
+"Gy" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "4,2"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
 "Gz" = (
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/overmapdemo)
+"HZ" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "0,3"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
+"IU" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "4,4"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
 "JA" = (
 /obj/overmap/entity/visitable/sector/citadel_minitest/station,
 /turf/space,
@@ -3085,11 +3163,29 @@
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/webdemo)
+"ME" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "0,4"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
+"MK" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "4,1"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
 "ML" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	id_tag = "station_dock2";
 	layer = 3.1;
 	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
+"MT" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "0,0"
 	},
 /turf/simulated/floor/tiled,
 /area/bridge)
@@ -3133,12 +3229,39 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge)
+"SU" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "2,0"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
+"Ub" = (
+/turf/space/basic,
+/area/space)
 "Uh" = (
 /obj/machinery/computer/ship/sensors{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)
+"UC" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "2,4"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
+"UD" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "1,2"
+	},
+/turf/simulated/floor/reinforced/nitrogen,
+/area/bridge)
+"UE" = (
+/obj/structure/atmos_tank_segment{
+	icon_state = "0,2"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
 "XZ" = (
 /obj/machinery/computer/ship/helm,
 /turf/simulated/shuttle/floor/voidcraft/light,
@@ -3525,11 +3648,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+Ub
+Ub
+Ub
+Ub
+Ub
 aa
 aa
 aa
@@ -3627,11 +3750,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+Ub
+Ub
+Ub
+Ub
+Ub
 aa
 aa
 aa
@@ -3729,11 +3852,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+Ub
+Ub
+Ub
+Ub
+Ub
 aa
 aa
 aa
@@ -3831,11 +3954,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+Ub
+Ub
+Ub
+Ub
+Ub
 aa
 aa
 aa
@@ -3933,11 +4056,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+Ub
+Ub
+Ub
+Ub
+Ub
 aa
 aa
 aa
@@ -4445,11 +4568,11 @@ aa
 aa
 aa
 fY
-gf
-go
-gf
-gf
-go
+ME
+HZ
+UE
+zh
+MT
 gf
 gf
 gf
@@ -4547,11 +4670,11 @@ aa
 aa
 aa
 fY
-gf
-gf
-gf
-gf
-gf
+jw
+wV
+UD
+kA
+uW
 gf
 gf
 gf
@@ -4649,11 +4772,11 @@ sA
 Pg
 aa
 fY
-gf
-gf
-gf
-gf
-gf
+UC
+UD
+UD
+UD
+SU
 gf
 gf
 gf
@@ -4752,10 +4875,10 @@ aa
 aa
 fY
 gg
-gf
-gf
-gf
-gf
+ko
+UD
+zs
+jX
 gx
 gA
 gB
@@ -4853,11 +4976,11 @@ gY
 aa
 aa
 fY
-gf
-gf
-gf
-gf
-gf
+IU
+nq
+Gy
+MK
+jV
 gf
 go
 gf
