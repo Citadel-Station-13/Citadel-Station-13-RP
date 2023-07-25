@@ -2,12 +2,13 @@
 	name = "voice analyzer"
 	desc = "A small electronic device able to record a voice sample, and send a signal when that sample is repeated."
 	icon_state = "voice"
+	atom_flags = ATOM_HEAR
 	origin_tech = list(TECH_MAGNET = 1)
 	materials = list(MAT_STEEL = 500, MAT_GLASS = 50)
 	var/listening = 0
 	var/recorded	//the activation message
 
-/obj/item/assembly/voice/hear(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+/obj/item/assembly/voice/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
 	. = ..()
 	if(listening)
 		recorded = message

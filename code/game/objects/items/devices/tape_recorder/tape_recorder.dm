@@ -6,7 +6,7 @@
 	icon = 'icons/obj/device.dmi'
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
-	atom_flags = ATOM_HEAr
+	atom_flags = ATOM_HEAR
 	throw_force = 2
 	throw_speed = 4
 	throw_range = 20
@@ -281,7 +281,9 @@
 	var/datum/cassette_tape_iterator/write/writer = tape_iterator
 	writer.tick(delta_time)
 
-/obj/item/tape_recorder/hear(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+#warn identifiers
+
+/obj/item/tape_recorder/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
 	. = ..()
 	if(!recording)
 		return

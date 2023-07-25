@@ -103,6 +103,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 // 'Focused turf' is the turf directly in front of a portal,
 // and it is used both as the destination when crossing, as well as the PoV for visuals.
 /obj/effect/map_effect/portal/proc/get_focused_turf()
+	RETURN_TYPE(/turf)
 	return get_step(get_turf(src), dir)
 
 // Determines the size of the block of turfs inside `vis_contents`, and where the portal is in relation to that.
@@ -230,13 +231,13 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 		P.pixel_x = WORLD_ICON_SIZE * P.portal_distance_x
 		P.pixel_y = WORLD_ICON_SIZE * P.portal_distance_y
 
-/obj/effect/map_effect/portal/master/see(raw_message, message, name, face_ident, atom/actor, remote)
+/obj/effect/map_effect/portal/master/see_action(raw_message, message, name, face_ident, atom/actor, remote)
 	. = ..()
-	counterpart?.get_focused_turf?.saycode_relay_see(7, args)
+	counterpart?.get_focused_turf()?.saycode_relay_see(7, args)
 
-/obj/effect/map_effect/portal/master/hear(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+/obj/effect/map_effect/portal/master/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
 	. = ..()
-	counterpart?.get_focused_turf?.saycode_relay_hear(7, args)
+	counterpart?.get_focused_turf()?.saycode_relay_hear(7, args)
 
 // Returns the position that an atom that's hopefully on the other side of the portal would be if it were really there.
 // Z levels not taken into account.

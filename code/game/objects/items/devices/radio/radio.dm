@@ -28,6 +28,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	suffix = "\[3\]"
 	icon_state = "walkietalkie"
 	item_state = "radio"
+	atom_flags = ATOM_HEAR
 
 	///FALSE for off
 	var/on = TRUE

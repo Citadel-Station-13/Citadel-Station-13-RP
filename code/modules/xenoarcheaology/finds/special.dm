@@ -12,6 +12,7 @@
 
 //a talking gas mask!
 /obj/item/clothing/mask/gas/poltergeist
+	atom_flags = ATOM_HEAR
 	var/list/heard_talk = list()
 	var/last_twitch = 0
 	var/max_stored_messages = 100
@@ -25,11 +26,11 @@
 		var/mob/living/M = loc
 		M.say(pick(heard_talk))
 
-/obj/item/clothing/mask/gas/poltergeist/hear_talk(mob/M as mob, text)
-	..()
+/obj/item/clothing/mask/gas/poltergeist/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+	. = ..()
 	if(heard_talk.len > max_stored_messages)
 		heard_talk.Remove(pick(heard_talk))
-	heard_talk.Add(text)
+	heard_talk.Add(message)
 	if(istype(loc, /mob/living) && world.time - last_twitch > 50)
 		last_twitch = world.time
 
@@ -39,6 +40,7 @@
 	name = "statuette"
 	icon_state = "statuette1"
 	icon = 'icons/obj/xenoarchaeology.dmi'
+	atom_flags = ATOM_HEAR
 	var/charges = 0
 	var/list/nearby_mobs = list()
 	var/last_bloodcall = 0
@@ -110,9 +112,9 @@
 		else if(get_dist(W, src) > 10)
 			shadow_wights.Remove(wight_check_index)
 
-/obj/item/vampiric/hear_talk(mob/M as mob, text)
-	..()
-	if(world.time - last_bloodcall >= bloodcall_interval && (M in view(7, src)))
+/obj/item/vampiric/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+	. = ..()
+	if(actor && world.time - last_bloodcall >= bloodcall_interval && (actor in view(7, src)))
 		bloodcall(M)
 
 /obj/item/vampiric/proc/bloodcall(var/mob/living/carbon/human/M)

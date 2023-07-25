@@ -39,6 +39,8 @@
 	radio.icon_state = src.icon_state
 	update_icon()
 
+#warn pain
+
 /obj/item/tvcamera/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
 	radio.hear_talk(M,msg,verb,speaking)
 	..()

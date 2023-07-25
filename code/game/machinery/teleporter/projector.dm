@@ -202,7 +202,7 @@
 			teleport_cost += BASE_MOB_KJ_COST
 		else if(isobj(AM))
 			var/obj/O = AM
-			teleport_cost += BASE_ITEM_KJ_COST * O.w_clsas
+			teleport_cost += BASE_ITEM_KJ_COST * O.w_class
 
 	if(current_joules >= teleport_cost)
 		current_joules -= teleport_cost

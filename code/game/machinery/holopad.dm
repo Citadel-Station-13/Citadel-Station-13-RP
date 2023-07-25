@@ -728,14 +728,14 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 //? Say / Emote
 
 
-/obj/machinery/holopad/see(raw_message, message, name, face_ident, atom/actor, remote)
+/obj/machinery/holopad/see_action(raw_message, message, name, face_ident, atom/actor, remote)
 	. = ..()
 	if(remote)
 		return
 	relay_intercepted_emote(actor, name || actor.name, message)
 	#warn handle identification
 
-/obj/machinery/holopad/hear(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+/obj/machinery/holopad/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
 	. = ..()
 	if(remote)
 		return

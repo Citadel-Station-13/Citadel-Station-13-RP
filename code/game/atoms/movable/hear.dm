@@ -24,7 +24,7 @@
  *
  * @return successful see? mob logged out is still successful because the *mob* saw it, even if the *player* didn't get it.
  */
-/atom/movable/proc/see(raw_message, message, name, face_ident, atom/actor, remote)
+/atom/movable/proc/see_action(raw_message, message, name, face_ident, atom/actor, remote)
 	SHOULD_CALL_PARENT(TRUE)
 	if(isnull(message))
 		message = raw_message
@@ -51,7 +51,7 @@
  *
  * @return successful hear? mob logged out is still successful because the *mob* heard it, even if the *player* didn't get it.
  */
-/atom/movable/proc/hear(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+/atom/movable/proc/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
 	SHOULD_CALL_PARENT(TRUE)
 	if(isnull(message))
 		message = raw_message
@@ -69,5 +69,5 @@
  *
  * @return successful narration? mob logged out is still successful because the *mob* got it, even if the *player* didn't.
  */
-/atom/movable/proc/narrate(raw_message)
+/atom/movable/proc/narrate_to(raw_message)
 	return
