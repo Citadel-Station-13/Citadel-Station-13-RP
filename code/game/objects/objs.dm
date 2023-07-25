@@ -62,6 +62,7 @@
 	/// this is either a lazy key-value list of material keys to IDs,
 	/// or a single material id
 	/// or null for defaults.
+	/// todo: this should store instances instead of ids for speed.
 	/// ! This must be set for anything using the materials system.
 	/// ! This is what determines how many, and if something uses the material parts system.
 	/// * This may be a typelist, use is_typelist to check.

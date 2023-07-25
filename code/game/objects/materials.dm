@@ -37,23 +37,21 @@
 //! Override these procs to implement behavior.
 //! Do not skip parent calls, as these are not meant to be overridden
 
-/**
- * initialize materials
- */
-/obj/proc/init_material_parts()
-	SHOULD_NOT_OVERRIDE(TRUE)
-	obj_flags |= OBJ_MATERIAL_INITIALIZED
+/obj/get_materials(respect_multiplier)
+	. = isnull(materials_base)? list() : materials_base.Copy()
 	if(islist(material_parts))
-		var/list/parts = list()
-		for(var/key in material_parts)
-			parts[key] = SSmaterials.resolve_material(key)
-		update_material_parts(parts)
+		for(var/i in 1 to length(material_parts))
+			.[material_parts[i]] = material_costs[i]
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
 	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
-		material_init_parts()
-		update_material_parts(material_get_parts())
+		var/list/got = material_get_part_ids()
+		for(var/i in 1 to length(got))
+			.[got[got[i]]] += material_costs[i]
 	else
-		update_material_single(SSmaterials.resolve_material(material_parts))
+		.[material_parts] = material_costs
+	if(respect_multiplier && material_multiplier != 1)
+		for(var/key in .)
+			.[key] *= material_multiplier
 
 /**
  * sets our base materials
@@ -79,6 +77,24 @@
 //* Parts API
 //! These cannot be overridden, and instead call the abstraction API.
 //! This restriction is for code organization reasons.
+
+/**
+ * initialize materials
+ */
+/obj/proc/init_material_parts()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	obj_flags |= OBJ_MATERIAL_INITIALIZED
+	if(islist(material_parts))
+		var/list/parts = list()
+		for(var/key in material_parts)
+			parts[key] = SSmaterials.resolve_material(key)
+		update_material_parts(parts)
+	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
+	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
+		material_init_parts()
+		update_material_parts(material_get_parts())
+	else
+		update_material_single(SSmaterials.resolve_material(material_parts))
 
 /**
  * @return key-value list of material part keys to ids
@@ -112,7 +128,7 @@
  * sets a single material part
  *
  * @params
- * * part - part key
+ * * part - part key. **undefined behavior if it does not exist.**
  * * material - material. ids and paths are not allowed for performance reasons.
  */
 /obj/proc/set_material_part(part, datum/material/material)
@@ -191,6 +207,8 @@
  */
 /obj/proc/material_set_part(part, datum/material/material)
 	PROTECTED_PROC(TRUE) // Do not ever call directly.
+	// todo: remove the assert later but right now the system needs it because heehoo, byond has no static analysis.
+	ASSERT(part in material_parts)
 	if(is_typelist(NAMEOF(src, material_parts), material_parts))
 		material_parts = material_parts.Copy()
 	material_parts[part] = material.id
@@ -235,18 +253,6 @@
 #warn parse below
 
 //* Get
-
-/obj/get_materials(respect_multiplier)
-	. = isnull(materials_base)? list() : materials_base.Copy()
-	if(islist(material_parts))
-		for(var/i in 1 to length(material_parts))
-			.[material_parts[i]] = material_costs[i]
-	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
-	else
-		.[material_parts] = material_costs
-	if(respect_multiplier && material_multiplier != 1)
-		for(var/key in .)
-			.[key] *= material_multiplier
 
 /**
  * get the only material we're made out of, or first material part
