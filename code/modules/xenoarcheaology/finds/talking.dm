@@ -3,7 +3,7 @@
 /obj/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
 	. = ..()
 	if(ismob(actor))
-		talking_atom?.catchMessage(message, source)
+		talking_atom?.catchMessage(message, actor)
 
 /datum/talking_atom
 	var/list/heard_words = list()

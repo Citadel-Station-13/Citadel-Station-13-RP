@@ -3,11 +3,11 @@
 
 /mob/see_action(raw_message, message, name, face_ident, atom/actor, remote)
 	..()
-	return mob_see(arglist(args))
+	return mob_see_action(arglist(args))
 
 /mob/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
 	..()
-	return mob_hear(arglist(args))
+	return mob_hear_say(arglist(args))
 
 /mob/narrate_to(raw_message)
 	..()

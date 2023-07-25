@@ -115,11 +115,11 @@
 /obj/item/vampiric/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
 	. = ..()
 	if(actor && world.time - last_bloodcall >= bloodcall_interval && (actor in view(7, src)))
-		bloodcall(M)
+		bloodcall(actor)
 
 /obj/item/vampiric/proc/bloodcall(var/mob/living/carbon/human/M)
-	last_bloodcall = world.time
 	if(istype(M))
+		last_bloodcall = world.time
 		playsound(loc, pick('sound/hallucinations/wail.ogg','sound/hallucinations/veryfar_noise.ogg','sound/hallucinations/far_noise.ogg'), 50, 1, -3)
 		nearby_mobs.Add(M)
 

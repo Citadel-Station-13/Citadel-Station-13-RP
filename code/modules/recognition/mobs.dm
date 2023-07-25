@@ -34,10 +34,10 @@
 	return isnull(identity)? FALSE : identity.seed_voice_identity(identifier)
 
 /mob/proc/randomize_facial_identity(identifier)
-	return isnull(identity)? FALSE : identity.change_facial_identifier(identity.random_facial_identifier)
+	return isnull(identity)? FALSE : identity.change_facial_identifier(identity.random_facial_identifier())
 
 /mob/proc/randomize_vocal_identity(identifier)
-	return isnull(identity)? FALSE : identity.change_voice_identifier(identity.random_voice_identifier)
+	return isnull(identity)? FALSE : identity.change_voice_identifier(identity.random_voice_identifier())
 
 /**
  * returns what someone's name should be when we hear them
