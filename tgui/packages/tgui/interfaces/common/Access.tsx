@@ -22,6 +22,8 @@ export enum AccessListSet {
 
 export interface AccessListProps {
   access: Array<Access>, // all available accesses
+  // override: what accesses to show. must be subset of access.
+  accessShown?: AccessId[],
   uid: string, // must be unique in a window, to avoid localstate collisions.
   fill?: boolean,
 }
@@ -74,7 +76,10 @@ export const AccessListMod = (props: AccessListModProps, context) => {
   const [selectedCategory, setSelectedCategory] = useLocalState<string | undefined>(context, `${props.uid}_selectedCategory`, undefined);
   let categories: string[] = [];
   let lookup = new Map<number, Access>();
-  props.access.forEach((a) => {
+  let effectiveAccess = props.accessShown === undefined? props.access : props.access.filter(
+    (a) => props.accessShown?.includes(a.value)
+  );
+  effectiveAccess.forEach((a) => {
     if (!categories.includes(a.category)) {
       categories.push(a.category);
     }
@@ -83,7 +88,7 @@ export const AccessListMod = (props: AccessListModProps, context) => {
   categories.sort();
   const checkCategory = (cat: string) => {
     let needed: number[] = [];
-    props.access.forEach((a) => {
+    effectiveAccess.forEach((a) => {
       if (a.category === cat) {
         needed.push(a.value);
       }
@@ -158,7 +163,7 @@ export const AccessListMod = (props: AccessListModProps, context) => {
                   </>
                 }>
                 {
-                  props.access.filter((_a) => _a.category === selectedCategory).sort(
+                  effectiveAccess.filter((_a) => _a.category === selectedCategory).sort(
                     (a, b) => (a.name.localeCompare(b.name))
                   ).map((a) => (
                     <Button.Checkbox
@@ -182,7 +187,10 @@ export const AccessListAuth = (props: AccessListAuthProps, context) => {
   const [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
   let categories: string[] = [];
   let lookup = new Map<number, Access>();
-  props.access.forEach((a) => {
+  let effectiveAccess = props.accessShown === undefined? props.access : props.access.filter(
+    (a) => props.accessShown?.includes(a.value)
+  );
+  effectiveAccess.forEach((a) => {
     if (!categories.includes(a.category)) {
       categories.push(a.category);
     }
@@ -253,7 +261,7 @@ export const AccessListAuth = (props: AccessListAuthProps, context) => {
                 }>
                 <LabeledList>
                   {
-                    props.access.filter((_a) => _a.category === selectedCategory).sort(
+                    effectiveAccess.filter((_a) => _a.category === selectedCategory).sort(
                       (a, b) => (a.name.localeCompare(b.name))
                     ).map((a) => {
                       return (
@@ -289,7 +297,10 @@ export const AccessListAuth = (props: AccessListAuthProps, context) => {
 export const AccessListSelect = (props: AccessListSelectProps, context) => {
   const [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
   let categories: string[] = [];
-  props.access.forEach((a) => {
+  let effectiveAccess = props.accessShown === undefined? props.access : props.access.filter(
+    (a) => props.accessShown?.includes(a.value)
+  );
+  effectiveAccess.forEach((a) => {
     if (!categories.includes(a.category)) {
       categories.push(a.category);
     }
@@ -306,7 +317,7 @@ export const AccessListSelect = (props: AccessListSelectProps, context) => {
             {
               categories.map((cat) => {
                 const { icon, color } = diffMap[
-                  props.selected && (props.access.find((a) => a.value === props.selected))?1 : 0];
+                  props.selected && (effectiveAccess.find((a) => a.value === props.selected))?1 : 0];
                 return (
                   <Tabs.Tab
                     key={cat}
@@ -323,7 +334,7 @@ export const AccessListSelect = (props: AccessListSelectProps, context) => {
           </Tabs>
         </Flex.Item>
         <Flex.Item grow={1}>
-          {props.access.filter((_a) => _a.category === selectedCategory).sort(
+          {effectiveAccess.filter((_a) => _a.category === selectedCategory).sort(
             (a, b) => (a.name.localeCompare(b.name))
           ).map((a) => {
             return (
