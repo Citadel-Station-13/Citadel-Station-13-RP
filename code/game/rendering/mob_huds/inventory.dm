@@ -64,6 +64,7 @@
 	icon_state = "hand-[index % 2? "left" : "right"]"
 
 /atom/movable/screen/inventory/swap_hand
+	icon_state = "swap"
 
 /atom/movable/screen/inventory/swap_hand/sync_style(datum/hud_style/style, style_alpha, style_color)
 	icon = style.inventory_icons_wide
@@ -71,5 +72,6 @@
 	color = style_color
 
 /atom/movable/screen/inventory/equip_hand
+	icon_state = "equip"
 
-/atom/movable/screen/inventory/use_self_hand
+// /atom/movable/screen/inventory/use_self_hand
