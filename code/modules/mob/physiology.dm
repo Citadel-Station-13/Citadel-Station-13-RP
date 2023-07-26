@@ -3,14 +3,14 @@
  *
  * todo: on biologies update, we might need to lazy-cache this, and have different physiologies for each biology.
  */
-/datum/physiology
-	// todo: /datum/physiology should hold global body physiology, limbs should hold modifiers/whatever themselves.
+/datum/global_physiology
+	// todo: /datum/global_physiology should hold global body physiology, limbs should hold modifiers/whatever themselves.
 	//       this way biologies can be supported as efficiently as possible.
 
-/datum/physiology/proc/apply(datum/physiology_modifier/modifier)
+/datum/global_physiology/proc/apply(datum/physiology_modifier/modifier)
 	// todo: modifier/apply_global, modifier/apply_bodypart
 
-/datum/physiology/proc/revert(datum/physiology_modifier/modifier)
+/datum/global_physiology/proc/revert(datum/physiology_modifier/modifier)
 	// todo: modifier/apply_global, modifier/apply_bodypart
 
 /**

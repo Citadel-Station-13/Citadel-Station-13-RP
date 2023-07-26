@@ -1,4 +1,4 @@
-// ui_status
+//* ui_status
 /// Green eye; fully interactive
 #define UI_INTERACTIVE 2
 /// Orange eye; updates but is not interactive
@@ -8,7 +8,7 @@
 /// UI Should close
 #define UI_CLOSE -1
 
-// refreshing var
+//* refreshing var
 /// no refresh queued
 #define UI_NOT_REFRESHING 0
 /// soft refreshing - can show a status, won't block viewport
@@ -46,6 +46,7 @@
 	"%7b%22type%22%3a%22[type]%22%2c%22payload%22%3a[url_encode(json_encode(payload))]%7d" \
 )
 
+//* Legacy Modal Stuff
 
 /// Max length for Modal Input
 #define UI_MODAL_INPUT_MAX_LENGTH 1024
@@ -56,3 +57,21 @@
 #define UI_MODAL_DELEGATE 2
 #define UI_MODAL_ANSWER 3
 #define UI_MODAL_CLOSE 4
+
+//* tgui dynamic input
+//* all constraints must be specified if it is included.
+
+#define TGUI_INPUT_DATA_KEY "key"
+#define TGUI_INPUT_DATA_TYPE "type"
+#define TGUI_INPUT_DATA_NAME "name"
+#define TGUI_INPUT_DATA_CONSTRAINTS "constraints"
+#define TGUI_INPUT_DATA_DEFAULT "default"
+
+/// constraints: [maxlength]
+#define TGUI_INPUT_DATATYPE_TEXT "text"
+/// constraints: [min, max, round]
+#define TGUI_INPUT_DATATYPE_NUM "num"
+/// constraints (required): [str1, str2, ...]
+#define TGUI_INPUT_DATATYPE_LIST_PICK "list_single"
+/// constraints: nothing
+#define TGUI_INPUT_DATATYPE_TOGGLE "bool"

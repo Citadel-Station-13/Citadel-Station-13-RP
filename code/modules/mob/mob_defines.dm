@@ -63,7 +63,7 @@
 
 	//? Physiology
 	/// overall physiology - see physiology.dm
-	var/datum/physiology/physiology
+	var/datum/global_physiology/physiology
 	/// physiology modifiers - see physiology.dm; set to list of paths at init to initialize into instances.
 	var/list/datum/physiology_modifier/physiology_modifiers
 
