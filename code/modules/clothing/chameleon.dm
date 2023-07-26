@@ -408,6 +408,8 @@
 /obj/item/gun/energy/chameleon/disguise(var/newtype)
 	var/obj/item/gun/copy = ..()
 
+	modifystate = copy.icon_state
+
 	inv_hide_flags = copy.inv_hide_flags
 	if(copy.fire_sound)
 		fire_sound = copy.fire_sound
