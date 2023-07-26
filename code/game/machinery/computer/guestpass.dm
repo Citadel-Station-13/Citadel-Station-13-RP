@@ -115,11 +115,6 @@
 			deltimer(print_timer)
 			print_timer = null
 
-<<<<<<< HEAD
-/obj/machinery/computer/guestpass/attack_hand(mob/user, datum/event_args/clickchain/e_args)
-	if(..())
-		return
-=======
 /obj/machinery/computer/guestpass/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["access"] = SSjob.tgui_access_data()
@@ -128,7 +123,6 @@
 	.["durationMax"] = max_duration
 	.["durationMin"] = min_duration
 	.["auth"] = tgui_inserted_card()
->>>>>>> citrp/master
 
 /obj/machinery/computer/guestpass/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
