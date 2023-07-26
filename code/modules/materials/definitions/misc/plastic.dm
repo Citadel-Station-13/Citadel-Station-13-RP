@@ -14,6 +14,18 @@
 	melting_point = T0C+371 //assuming heat resistant plastic
 	stack_origin_tech = list(TECH_MATERIAL = 3)
 
+	relative_integrity = 0.65
+	relative_weight = 0.75
+	relative_density = 1
+	relative_conductivity = 0.5
+	relative_permeability = 0
+	relative_reactivity = 0.25
+	regex_this_hardness = MATERIAL_RESISTANCE_LOW
+	toughness = MATERIAL_RESISTANCE_LOW
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_LOW
+	nullification = MATERIAL_RESISTANCE_NONE
+
 /datum/material/plastic/holographic
 	name = "holoplastic"
 	id = "plastic_holo"
