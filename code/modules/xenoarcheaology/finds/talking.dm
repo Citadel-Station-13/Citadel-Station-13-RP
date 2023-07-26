@@ -1,6 +1,6 @@
 /obj/var/datum/talking_atom/talking_atom
 
-/obj/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+/obj/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
 	. = ..()
 	if(ismob(actor))
 		talking_atom?.catchMessage(message, actor)

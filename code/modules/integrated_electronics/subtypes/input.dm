@@ -984,7 +984,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 				msg = speaking.scramble(msg)
 			else
 				msg = translation_context.attempt_translation(speaking, M, msg)
-			if(!istype(speaking, /datum/language/common) && !istype(speaking, /datum/language/audible_action))
+			if(!istype(speaking, /datum/language/common) && !istype(speaking, /datum/language/noise))
 				translated = TRUE
 		set_pin_data(IC_OUTPUT, 1, M.GetVoice())
 		set_pin_data(IC_OUTPUT, 2, msg)

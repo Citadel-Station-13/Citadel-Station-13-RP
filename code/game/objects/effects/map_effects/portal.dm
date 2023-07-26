@@ -231,11 +231,11 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 		P.pixel_x = WORLD_ICON_SIZE * P.portal_distance_x
 		P.pixel_y = WORLD_ICON_SIZE * P.portal_distance_y
 
-/obj/effect/map_effect/portal/master/see_action(raw_message, message, name, face_ident, atom/actor, remote)
+/obj/effect/map_effect/portal/master/see_action(raw_message, message, name, face_ident, atom/actor, remote, list/params)
 	. = ..()
 	counterpart?.get_focused_turf()?.saycode_relay_see(7, args)
 
-/obj/effect/map_effect/portal/master/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+/obj/effect/map_effect/portal/master/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
 	. = ..()
 	counterpart?.get_focused_turf()?.saycode_relay_hear(7, args)
 

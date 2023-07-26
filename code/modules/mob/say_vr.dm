@@ -1,7 +1,3 @@
-//////////////////////////////////////////////////////
-////////////////////SUBTLE COMMAND////////////////////
-//////////////////////////////////////////////////////
-
 /mob/verb/me_verb_subtle(message as message) //This would normally go in say.dm
 	set name = "Subtle"
 	set category = "IC"
@@ -40,6 +36,12 @@
 	if (message)
 		message = say_emphasis(message)
 		SEND_SIGNAL(src, COMSIG_MOB_SUBTLE_EMOTE, src, message)
+		#warn subtle shit and ugh
+		switch(m_type)
+			if(1)
+				emote(message)
+			if(2)
+				say(message, lang = GLOB.audible_action_language)
 
 		var/list/vis = get_mobs_and_objs_in_view_fast(get_turf(src),1,2) //Turf, Range, and type 2 is emote
 		var/list/vis_mobs = vis["mobs"]

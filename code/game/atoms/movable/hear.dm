@@ -21,10 +21,11 @@
  * * face_ident - if specified, this is the facial identifier of the person or entity that outputted. leave blank to omit name. overrides name if used and target has recognition system.
  * * actor - (optional) atom that the message originated from. you should not be reading name off of this.
  * * remote - (optional) this message is not direct, and was relayed. defaults to FALSE. cameras count as this.
+ * * params - list of saycode parameters associated to value. This is in the same format as hear_say's params. This list should not be directly mutated, as it's a shared list.
  *
  * @return successful see? mob logged out is still successful because the *mob* saw it, even if the *player* didn't get it.
  */
-/atom/movable/proc/see_action(raw_message, message, name, face_ident, atom/actor, remote)
+/atom/movable/proc/see_action(raw_message, message, name, face_ident, atom/actor, remote, list/params)
 	SHOULD_CALL_PARENT(TRUE)
 	if(isnull(message))
 		message = raw_message
@@ -45,13 +46,13 @@
  * * voice_ident - if specified, this is the voice identifier of the person or entity that outputted. leave blank to omit name. overrides name if used and target has recognition system.
  * * actor - (optional) atom that the message originated from. you should not be reading name off of this.
  * * remote - (optional) this message is not direct, and was relayed. defaults to FALSE. radio counts as this.
+ * * params - list of saycode parameters associated to value. This is in the same format as see_action's params. This list should not be directly mutated, as it's a shared list.
  * * lang - (optional) language used. this is /datum/language/audible_action if it's an audible emote.
  * * spans - list of span classes to use. this will wrap the entire message without wrapping the name.
- * * params - list of say parameters associated to value. this is for arbitrary behavior. this list should be read only, as it's a shared list.
  *
  * @return successful hear? mob logged out is still successful because the *mob* heard it, even if the *player* didn't get it.
  */
-/atom/movable/proc/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+/atom/movable/proc/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
 	SHOULD_CALL_PARENT(TRUE)
 	if(isnull(message))
 		message = raw_message

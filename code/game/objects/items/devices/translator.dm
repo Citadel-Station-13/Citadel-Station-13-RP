@@ -119,10 +119,10 @@
 		icon_state = "[initial(icon_state)]"
 		to_chat(user, "<span class='notice'>You disable \the [src].</span>")
 
-/obj/item/universal_translator/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+/obj/item/universal_translator/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
 	. = ..()
 
-	if(!listening || !istype(speaker))
+	if(!listening || !istype(actor))
 		return
 
 	//Show the "I heard something" animation.
@@ -151,10 +151,10 @@
 	//I'll just assume they don't look at the screen in that case
 
 	//They don't understand the spoken language we're translating FROM
-	if(!L.say_understands(speaker, lang))
+	if(!L.say_understands(actor, lang))
 		//They understand the output language
 		if(L.say_understands(null,langset))
-			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[context.attempt_translation(language, speaker, message)]</span>\"")
+			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[context.attempt_translation(lang, actor, message)]</span>\"")
 
 //Let's try an ear-worn version
 /obj/item/universal_translator/ear

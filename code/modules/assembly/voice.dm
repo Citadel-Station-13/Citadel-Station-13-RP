@@ -8,7 +8,7 @@
 	var/listening = 0
 	var/recorded	//the activation message
 
-/obj/item/assembly/voice/hear_say(raw_message, message, name, voice_ident, atom/movable/actor, remote, datum/language/lang, list/spans, list/params)
+/obj/item/assembly/voice/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
 	. = ..()
 	if(listening)
 		recorded = message

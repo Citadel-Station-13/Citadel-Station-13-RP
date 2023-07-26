@@ -416,7 +416,7 @@
 	else
 		ear_deaf = 0
 
-/mob/living/carbon/brain/caught_soul/hear_say()
+/mob/living/carbon/brain/caught_soul/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
 	if(ext_deaf || !client)
 		return FALSE
 	..()
