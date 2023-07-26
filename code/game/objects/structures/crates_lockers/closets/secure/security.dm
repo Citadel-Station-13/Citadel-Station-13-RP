@@ -281,6 +281,7 @@
 	req_access = list(ACCESS_SECURITY_BRIG)
 
 	starts_with = list(
+		/obj/item/modular_computer/tablet/preset/custom_loadout/standard/security,
 		/obj/item/cartridge/security,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
@@ -299,6 +300,7 @@
 		/obj/item/gun/energy/secutor,
 		/obj/item/cell/device/weapon,
 		/obj/item/gps/security,
+		/obj/item/holowarrant,
 		/obj/item/clothing/under/bodysuit/bodysuitsec,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
