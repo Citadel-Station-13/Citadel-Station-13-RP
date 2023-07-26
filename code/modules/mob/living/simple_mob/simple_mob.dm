@@ -364,20 +364,6 @@
 		icon_state = icon_living
 	update_icon()
 
-#warn deal wit hthis shit
-/mob/living/simple_mob/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
-	verb = "says"
-	if(speak_emote.len)
-		verb = pick(speak_emote)
-
-	message = sanitize(message)
-
-	return ..()
-
-/mob/living/simple_mob/get_speech_ending(verb, var/ending)
-	return verb
-
-
 //TODO: This needs to be phased out for a newer butchering system. Though I am too scared to undo all our custom stuff. -Zandario
 // Harvest an animal's delicious byproducts
 /mob/living/simple_mob/harvest(mob/user)

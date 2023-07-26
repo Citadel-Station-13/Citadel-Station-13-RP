@@ -12,7 +12,7 @@
 /// Do not add to general languages list.
 #define LANGUAGE_NONGLOBAL    (1<<5)
 /// All mobs can be assumed to speak and understand this language. (audible emotes)
-#define LANGUAGE_INNATE       (1<<6)
+#define LANGUAGE_EVERYONE     (1<<6)
 /// Do not show the "\The [speaker] talks into \the [radio]" message
 #define LANGUAGE_NO_TALK_MSG  (1<<7)
 /// No stuttering, slurring, or other speech problems.
@@ -27,7 +27,7 @@ DEFINE_BITFIELD(language_flags, list(
 	BITFIELD(LANGUAGE_SIGNLANG),
 	BITFIELD(LANGUAGE_HIVEMIND),
 	BITFIELD(LANGUAGE_NONGLOBAL),
-	BITFIELD(LANGUAGE_INNATE),
+	BITFIELD(LANGUAGE_EVERYONE),
 	BITFIELD(LANGUAGE_NO_TALK_MSG),
 	BITFIELD(LANGUAGE_NO_STUTTER),
 	BITFIELD(LANGUAGE_ALT_TRANSMIT),

@@ -1,8 +1,3 @@
-#warn deal wit hthis shit
-/mob/proc/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
-	return
-
-
 /mob/proc/whisper_wrapper()
 	var/message = input("","whisper (text)") as text|null
 	if(message)
@@ -87,7 +82,7 @@
 			return 1
 		return 0
 
-	if(speaking.language_flags & LANGUAGE_INNATE)
+	if(speaking.language_flags & LANGUAGE_EVERYONE)
 		return 1
 
 	//Language check.

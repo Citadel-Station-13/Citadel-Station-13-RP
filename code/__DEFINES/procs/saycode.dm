@@ -29,6 +29,8 @@
 #define SAYCODE_PARAM_NO_OBSERVERS "no_observers"
 /// stuff to append before the message when sending to players, and specifically players
 #define SAYCODE_PARAM_PREPEND_FOR_PLAYERS "cliented_prepend"
+/// we're whispering or subtling
+#define SAYCODE_PARAM_SUBTLEWHISPER "subtlewhisper"
 
 //* /atom/movable/proc/narrate() args
 

@@ -9,7 +9,7 @@
 
 	pass_flags = ATOM_PASS_TABLE
 	makes_dirt = FALSE	// Goop
-	speak_emote = list("chirps")
+	sayverb_say = "chirps"
 
 	maxHealth = 150
 	var/maxHealth_adult = 200

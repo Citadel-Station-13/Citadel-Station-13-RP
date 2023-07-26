@@ -3,7 +3,7 @@
 	real_name = "Construct"
 	var/construct_type = "shade"
 	desc = ""
-	speak_emote = list("hisses")
+	sayverb_say = "hisses"
 	emote_hear = list("wails","screeches")
 
 	ui_icons = 'icons/mob/screen1_construct.dmi'
@@ -337,7 +337,7 @@
 	icon_living = "behemoth"
 	maxHealth = 750
 	health = 750
-	speak_emote = list("rumbles")
+	sayverb_say = "rumbles"
 	response_harm   = "harmlessly punched"
 	harm_intent_damage = 0
 	melee_damage_lower = 50

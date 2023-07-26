@@ -5,7 +5,7 @@ Slime definitions, Life and New live here.
 	nameVar = "grey"		//When mutated, nameVar might change.
 	desc = "A shifting, mass of goo."
 	faction = "slime"
-	speak_emote = list("garbles", "chirps", "blurbles")
+	sayverb_say = "blorbles"
 	colored = 1
 	color = "#CACACA"
 	icon = 'icons/mob/slime2.dmi'

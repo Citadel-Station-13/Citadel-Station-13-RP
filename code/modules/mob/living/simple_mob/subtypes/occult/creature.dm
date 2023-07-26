@@ -35,7 +35,7 @@
 	attacktext = list("chomped")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	speak_emote = list("gibbers")
+	sayverb_say = "gibbers"
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 

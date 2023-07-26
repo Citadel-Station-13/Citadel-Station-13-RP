@@ -224,8 +224,6 @@
 	var/species_language = null
 	/// For species who can only speak their default and no other languages. Does not affect understanding.
 	var/only_species_language  = 0
-	/// Verbs used when speaking. Defaults to 'say' if speak_emote is null.
-	var/list/speak_emote = list("says")
 	/// Define emote default type, 1 for seen emotes, 2 for heard emotes.
 	var/emote_type = 1
 	/// Used for the ancient art of moonwalking.

@@ -12,14 +12,6 @@
 		if (!speaker || (src.sdisabilities & SDISABILITY_NERVOUS || src.blinded) || !(speaker in view(src)))
 			message = stars(message)
 
-
-	if(!(language && (language.language_flags & LANGUAGE_INNATE))) // skip understanding checks for LANGUAGE_INNATE languages
-		if(!say_understands(speaker,language))
-			if(language)
-				message = language_scramble(language, message)
-			else
-				message = stars(message)
-
 	var/speaker_name = speaker.name
 	if(istype(speaker, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = speaker
@@ -34,7 +26,7 @@
 			message = "<b>[message]</b>"
 
 	if(is_deaf())
-		if(!language || !(language.language_flags & LANGUAGE_INNATE)) // LANGUAGE_INNATE is the flag for audible-emote-language, so we don't want to show an "x talks but you cannot hear them" message if it's set
+		if(!language || !(language.language_flags & LANGUAGE_EVERYONE)) // LANGUAGE_EVERYONE is the flag for audible-emote-language, so we don't want to show an "x talks but you cannot hear them" message if it's set
 			if(speaker == src)
 				to_chat(src, "<span class='warning'>You cannot hear yourself speak!</span>")
 			else
@@ -57,17 +49,6 @@
 		if (speech_sound && (get_dist(speaker, src) <= world.view && src.z == speaker.z))
 			var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 			src.playsound_local(source, speech_sound, sound_vol, 1)
-
-/mob/proc/language_scramble(datum/language/L, str)
-	return L.scramble(str, languages)
-
-//! "silicons, why are you putting this here?"
-//? Because saycode needs a full rewrite so I'm shoving stuff in here until we do
-//? as if I don't, it's just harder to find later.
-/mob/living/silicon/language_scramble(datum/language/L, str)
-	// todo: this still does the "unknown language" highlighting potentially, oops
-	var/translated = translation_context.attempt_translation(L, msg = str)
-	return isnull(translated)? L.scramble(str, languages) : translated
 
 /mob/proc/on_hear_say(var/message)
 	to_chat(src, message)
@@ -121,7 +102,7 @@
 		if (!speaker || (src.sdisabilities & SDISABILITY_NERVOUS || src.blinded) || !(speaker in view(src)))
 			message = stars(message)
 
-	if(!(language && (language.language_flags & LANGUAGE_INNATE))) // skip understanding checks for LANGUAGE_INNATE languages
+	if(!(language && (language.language_flags & LANGUAGE_EVERYONE))) // skip understanding checks for LANGUAGE_EVERYONE languages
 		if(!say_understands(speaker,language))
 			if(language)
 				message = language_scramble(language, message)

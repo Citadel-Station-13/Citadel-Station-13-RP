@@ -17,3 +17,7 @@
 		var/list/spans = hear_args[MOVABLE_HEAR_ARG_SPANS]
 		spans += SPAN_CLASS_ITALICS
 		hear_args[MOVABLE_HEAR_ARG_SPANS] = spans
+
+/mob/living/mob_hear_language_scramble(list/hear_args)
+	var/datum/language/lang = hear_args[MOVABLE_HEAR_ARG_LANG]
+	hear_args[MOVABLE_HEAR_ARG_MESSAGE] = lang.scramble(hear_args[MOVABLE_HEAR_ARG_MESSAGE], languages)

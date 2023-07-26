@@ -29,11 +29,15 @@
 		return TRUE
 
 	// check if air can transmit speech - hearer's side
-	if(!mob_hear_pressure_check())
+	if(!mob_hear_pressure_check(args))
 		// full fail
 		return FALSE
 
 	#warn mob_hear
+
+	// encode language
+	if((lang.language_flags & LANGUAGE_EVERYONE) && !say_understands(actor, lang))
+		mob_hear_language_scramble(args)
 
 	// encode emphasis
 	message = saycode_emphasis(message)
@@ -43,3 +47,6 @@
 
 /mob/proc/mob_hear_pressure_check(list/hear_args)
 	return TRUE
+
+/mob/proc/mob_hear_language_scramble(list/hear_args)
+	return

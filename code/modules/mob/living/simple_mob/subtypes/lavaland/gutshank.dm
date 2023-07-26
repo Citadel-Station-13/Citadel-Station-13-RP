@@ -67,7 +67,7 @@
 	bone_amount = 5
 
 	faction = "lavaland"
-	speak_emote = list("chatters")
+	sayverb_say = "chatters"
 	say_list_type = /datum/say_list/gutshank
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
@@ -188,7 +188,7 @@
 	bone_amount = 5
 
 	faction = "lavaland"
-	speak_emote = list("chatters")
+	sayverb_say = "chatters"
 	say_list_type = /datum/say_list/gutshank
 	//I changed the ai_holder from simple/melee to retaliate/coop because when riding a Shank, it would override user inputs to charge non-faction mobs. Which is annoying.
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative

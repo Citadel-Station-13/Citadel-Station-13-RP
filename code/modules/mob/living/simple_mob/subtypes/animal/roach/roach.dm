@@ -86,7 +86,7 @@
 	minbodytemp = 150
 	maxbodytemp = 323
 
-	speak_emote = list("chitters")
+	sayverb_say = "chitters"
 	say_list_type = /datum/say_list/roach
 	holder_type = /obj/item/holder/roach
 	ai_holder_type = /datum/ai_holder/simple_mob/melee

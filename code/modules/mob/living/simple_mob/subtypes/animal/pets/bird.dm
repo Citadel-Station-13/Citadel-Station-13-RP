@@ -35,7 +35,7 @@
 	parachuting = TRUE
 
 	attacktext = list("claws", "pecks")
-	speak_emote = list("chirps", "caws")
+	sayverb_say = "caws"
 	has_langs = list("Bird")
 	response_help  = "pets"
 	response_disarm = "gently moves aside"

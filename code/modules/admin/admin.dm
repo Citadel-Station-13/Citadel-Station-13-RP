@@ -193,7 +193,7 @@ var/global/floorIsLava = 0
 	body += "<br><br><b>Languages:</b><br>"
 	var/f = 1
 	for(var/datum/language/L as anything in SScharacters.all_languages())
-		if(!(L.language_flags & LANGUAGE_INNATE))
+		if(!(L.language_flags & LANGUAGE_EVERYONE))
 			if(!f) body += " | "
 			else f = 0
 			if(L in M.languages)
