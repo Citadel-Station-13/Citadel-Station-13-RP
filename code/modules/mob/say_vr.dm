@@ -34,7 +34,7 @@
 		return
 
 	if (message)
-		message = say_emphasis(message)
+		message = saycode_emphasis(message)
 		SEND_SIGNAL(src, COMSIG_MOB_SUBTLE_EMOTE, src, message)
 		#warn subtle shit and ugh
 		switch(m_type)
@@ -100,7 +100,7 @@
 		return
 
 	if (message)
-		message = say_emphasis(message)
+		message = saycode_emphasis(message)
 		SEND_SIGNAL(src, COMSIG_MOB_SUBTLE_EMOTE, src, message)
 
 		var/list/vis = get_mobs_and_objs_in_view_fast(get_turf(src),1,2) //Turf, Range, and type 2 is emote
@@ -154,7 +154,7 @@
 		return
 
 	if (message)
-		message = say_emphasis(message)
+		message = saycode_emphasis(message)
 		SEND_SIGNAL(src, COMSIG_MOB_SUBTLE_EMOTE, src, message)
 
 		var/list/vis_mobs = new()

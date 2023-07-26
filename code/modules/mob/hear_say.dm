@@ -1,24 +1,7 @@
 // At minimum every mob has a hear_say proc.
-
-/mob/proc/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
-	if(!client && !teleop)
-		return
-
-	if(speaker && !speaker.client && istype(src,/mob/observer/dead) && is_preference_enabled(/datum/client_preference/ghost_ears) && !(speaker in view(src)))
-			//Does the speaker have a client?  It's either random stuff that observers won't care about (Experiment 97B says, 'EHEHEHEHEHEHEHE')
-			//Or someone snoring.  So we make it where they won't hear it.
-		return
-
-	//make sure the air can transmit speech - hearer's side
-	var/turf/T = get_turf(src)
-	if ((T) && (!(istype(src, /mob/observer/dead)))) //Ghosts can hear even in vacuum.
-		var/pressure = T.return_pressure()
-		if(pressure < SOUND_MINIMUM_PRESSURE && get_dist(speaker, src) > 1)
-			return
-
-		if (pressure < ONE_ATMOSPHERE*0.4) //sound distortion pressure, to help clue people in that the air is thin, even if it isn't a vacuum yet
-			italics = 1
-			sound_vol *= 0.5 //muffle the sound a bit, so it's like we're actually talking through contact
+#warn below
+/mob/proc/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans, say_verb)
+	#warn below
 
 	if(IS_ALIVE_BUT_UNCONSCIOUS(src))
 		hear_sleep(message)
@@ -41,11 +24,6 @@
 	if(istype(speaker, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = speaker
 		speaker_name = H.GetVoice()
-
-	if(italics)
-		message = "<i>[message]</i>"
-
-	message = say_emphasis(message)
 
 	var/track = null
 	if(istype(src, /mob/observer/dead))
@@ -79,12 +57,6 @@
 		if (speech_sound && (get_dist(speaker, src) <= world.view && src.z == speaker.z))
 			var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 			src.playsound_local(source, speech_sound, sound_vol, 1)
-
-// Done here instead of on_hear_say() since that is NOT called if the mob is clientless (which includes most AI mobs).
-/mob/living/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
-	..()
-	if(has_AI()) // Won't happen if no ai_holder exists or there's a player inside w/o autopilot active.
-		ai_holder.on_hear_say(speaker, message)
 
 /mob/proc/language_scramble(datum/language/L, str)
 	return L.scramble(str, languages)
@@ -127,27 +99,6 @@
 
 /mob/living/silicon/ai/special_mentions()
 	return list("AI") // AI door!
-
-// Converts specific characters, like +, |, and _ to formatted output.
-/proc/say_emphasis(input)
-	var/static/regex/italics = regex("\\|(?=\\S)(.+?)(?=\\S)\\|", "g")
-	input = replacetext_char(input, italics, "<i>$1</i>")
-	var/static/regex/bold = regex("\\+(?=\\S)(.+?)(?=\\S)\\+", "g")
-	input = replacetext_char(input, bold, "<b>$1</b>")
-	var/static/regex/underline = regex("_(?=\\S)(.+?)(?=\\S)_", "g")
-	input = replacetext_char(input, underline, "<u>$1</u>")
-	var/static/regex/strikethrough = regex("~~(?=\\S)(.+?)(?=\\S)~~", "g")
-	input = replacetext_char(input, strikethrough, "<s>$1</s>")
-	return input
-
-/proc/say_emphasis_strip(input)
-	var/static/regex/italics = regex("\\|(?=\\S)(.*?)(?=\\S)\\|", "g")
-	input = replacetext_char(input, italics, "$1")
-	var/static/regex/bold = regex("\\+(?=\\S)(.*?)(?=\\S)\\+", "g")
-	input = replacetext_char(input, bold, "$1")
-	var/static/regex/underline = regex("_(?=\\S)(.*?)(?=\\S)_", "g")
-	input = replacetext_char(input, underline, "$1")
-	return input
 
 /mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
 
@@ -248,7 +199,7 @@
 			speaker_name = "[speaker.real_name] ([speaker_name])"
 		track = "[speaker_name] ([ghost_follow_link(speaker, src)])"
 
-	message = say_emphasis(message)
+	message = saycode_emphasis(message)
 
 	var/formatted
 	if(language)

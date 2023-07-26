@@ -5,7 +5,7 @@
 	..()
 	return mob_see_action(arglist(args))
 
-/mob/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
+/mob/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans, say_verb)
 	..()
 	return mob_hear_say(arglist(args))
 
@@ -22,6 +22,24 @@
 
 	#warn mob_see
 
-/mob/proc/mob_hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
+/mob/proc/mob_hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans, say_verb)
+	// todo: rework teleop
+	if(!client && !teleop)
+		// "send complaints to /dev/null"
+		return TRUE
+
+	// check if air can transmit speech - hearer's side
+	if(!mob_hear_pressure_check())
+		// full fail
+		return FALSE
+
 	#warn mob_hear
 
+	// encode emphasis
+	message = saycode_emphasis(message)
+
+/mob/proc/mob_hear_encode_name(list/hear_args)
+	#warn impl
+
+/mob/proc/mob_hear_pressure_check(list/hear_args)
+	return TRUE

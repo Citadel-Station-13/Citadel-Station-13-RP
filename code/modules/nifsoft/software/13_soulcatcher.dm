@@ -114,7 +114,7 @@
 	message = trim(message)
 	if(!length(message))
 		return
-	message = say_emphasis(message)
+	message = saycode_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting
@@ -133,7 +133,7 @@
 	message = trim(message)
 	if(!length(message))
 		return
-	message = say_emphasis(message)
+	message = saycode_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting
@@ -416,15 +416,15 @@
 	else
 		ear_deaf = 0
 
-/mob/living/carbon/brain/caught_soul/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
+/mob/living/carbon/brain/caught_soul/mob_hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans, say_verb)
 	if(ext_deaf || !client)
 		return FALSE
-	..()
+	return ..()
 
-/mob/living/carbon/brain/caught_soul/show_message(msg, type, alt, alt_type)
+/mob/living/carbon/brain/caught_soul/mob_see_action(raw_message, message, name, face_ident, atom/actor, remote, list/params)
 	if(ext_blind || !client)
 		return FALSE
-	..()
+	return ..()
 
 /mob/living/carbon/brain/caught_soul/me_verb_subtle()
 	set hidden = TRUE
@@ -448,6 +448,7 @@
 	else
 		return ..(direction)
 
+#warn deal wit hthis shit
 /mob/living/carbon/brain/caught_soul/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	if(silent)
 		return FALSE

@@ -112,7 +112,7 @@ Divergence proc, used in mutation to make unique datums.
 /mob/living/simple_mob/xeno/proc/RandomizeTraits()
 	return
 
-/mob/living/simple_mob/xeno/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
+/mob/living/simple_mob/xeno/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans, say_verb)
 	if(traitdat.traits[TRAIT_XENO_CANLEARN])
 		/*
 		Until this gets sorted out to a functioning point, or waiting on Psi's saycode update.

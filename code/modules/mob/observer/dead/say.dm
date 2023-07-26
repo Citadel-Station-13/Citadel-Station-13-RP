@@ -1,3 +1,4 @@
+#warn deal wit hthis shit
 /mob/observer/dead/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	message = sanitize(message)
 

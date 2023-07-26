@@ -119,7 +119,7 @@
 		icon_state = "[initial(icon_state)]"
 		to_chat(user, "<span class='notice'>You disable \the [src].</span>")
 
-/obj/item/universal_translator/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
+/obj/item/universal_translator/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans, say_verb)
 	. = ..()
 
 	if(!listening || !istype(actor))

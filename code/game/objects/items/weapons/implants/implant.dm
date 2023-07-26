@@ -224,9 +224,9 @@ Implant Specifics:<BR>"}
 <b>Integrity:</b> Implant will occasionally be degraded by the body's immune system and thus will occasionally malfunction."}
 	return dat
 
-/obj/item/implant/explosive/hear_talk(mob/M as mob, msg)
-	hear_legacy(msg)
-	return
+/obj/item/implant/explosive/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans, say_verb)
+	. = ..()
+	hear_legacy(raw_message)
 
 /obj/item/implant/explosive/hear_legacy(var/msg)
 	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")

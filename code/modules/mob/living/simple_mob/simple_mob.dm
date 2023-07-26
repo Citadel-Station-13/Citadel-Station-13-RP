@@ -364,6 +364,7 @@
 		icon_state = icon_living
 	update_icon()
 
+#warn deal wit hthis shit
 /mob/living/simple_mob/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	verb = "says"
 	if(speak_emote.len)

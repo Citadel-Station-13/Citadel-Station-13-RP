@@ -241,9 +241,9 @@
 /obj/item/cassette_tape/proc/inject_latest_voice(hash)
 	var/index = voice_lookup[hash]
 	if(!index)
-		metadata += "&[id]"
-		voice_lookup[id] = index = metadata.len
-	last_speaker_voice = id
+		metadata += "&[hash]"
+		voice_lookup[hash] = index = metadata.len
+	last_speaker_voice = hash
 	reel += -index
 
 //Random colour tapes

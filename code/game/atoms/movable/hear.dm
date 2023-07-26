@@ -29,7 +29,10 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(isnull(message))
 		message = raw_message
+	if(isnull(params))
+		params = list()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_SEE, args)
+	return FALSE
 
 /**
  * hear an audible message or action
@@ -48,15 +51,20 @@
  * * remote - (optional) this message is not direct, and was relayed. defaults to FALSE. radio counts as this.
  * * params - list of saycode parameters associated to value. This is in the same format as see_action's params. This list should not be directly mutated, as it's a shared list.
  * * lang - (optional) language used. this is /datum/language/audible_action if it's an audible emote.
- * * spans - list of span classes to use. this will wrap the entire message without wrapping the name.
+ * * spans - list of span classes to use. this will wrap the entire message without wrapping the name. This list should not be directly modified, as it's a shared list.
  *
  * @return successful hear? mob logged out is still successful because the *mob* heard it, even if the *player* didn't get it.
  */
-/atom/movable/proc/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
+/atom/movable/proc/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans, say_verb)
 	SHOULD_CALL_PARENT(TRUE)
 	if(isnull(message))
 		message = raw_message
+	if(isnull(params))
+		params = list()
+	if(isnull(spans))
+		spans = list()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_HEAR, args)
+	return FALSE
 
 /**
  * receive a direct narration

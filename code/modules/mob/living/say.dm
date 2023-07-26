@@ -146,6 +146,7 @@ var/list/channel_to_radio_key = new
 		return "asks"
 	return verb
 
+#warn handle this shit
 /mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	//If you're muted for IC chat
 	if(client)
@@ -388,7 +389,7 @@ var/list/channel_to_radio_key = new
 	*/
 	var/atom/emitter = src
 	if(!isobserver(emitter) || !IsAdminGhost(emitter))
-		emitter.say_overhead(say_emphasis_strip(message), whispering, message_range, speaking)
+		emitter.say_overhead(saycode_emphasis_strip(message), whispering, message_range, speaking)
 
 
 	//Main 'say' and 'whisper' message delivery

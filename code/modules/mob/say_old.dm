@@ -1,3 +1,4 @@
+#warn deal wit hthis shit
 /mob/proc/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	return
 
@@ -56,7 +57,7 @@
 		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
 		return
 
-	message = emoji_parse(say_emphasis(message))
+	message = emoji_parse(saycode_emphasis(message))
 
 	if(client.persistent.ligma)
 		to_chat(src, "<span class='deadsay'><b>DEAD:</b> [src]([ghost_follow_link(src, src)]) [pick("complains","moans","whines","laments","blubbers")], [message]</span>")

@@ -235,7 +235,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	. = ..()
 	counterpart?.get_focused_turf()?.saycode_relay_see(7, args)
 
-/obj/effect/map_effect/portal/master/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
+/obj/effect/map_effect/portal/master/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans, say_verb)
 	. = ..()
 	counterpart?.get_focused_turf()?.saycode_relay_hear(7, args)
 

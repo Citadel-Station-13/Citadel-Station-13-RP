@@ -1,4 +1,5 @@
 //TODO: Convert this over for languages.
+#warn deal wit hthis shit
 /mob/living/carbon/brain/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	if (silent)
 		return

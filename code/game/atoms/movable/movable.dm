@@ -65,6 +65,18 @@
 	/// our default perspective - if none, a temporary one will be generated when a mob requires it
 	var/datum/perspective/self_perspective
 
+	//? Saycode
+	/// saying
+	var/sayverb_say = "says"
+	/// exclaiming
+	var/sayverb_exclaim = "exclaims"
+	/// yelling
+	var/sayverb_yell = "yells"
+	/// whispering
+	var/sayverb_whisper = "whispers"
+	/// questioning
+	var/sayverb_question = "asks"
+
 	//? Buckling
 	/// do we support the buckling system - if not, none of the default interactions will work, but comsigs will still fire!
 	var/buckle_allowed = FALSE

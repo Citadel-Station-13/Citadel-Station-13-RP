@@ -56,6 +56,16 @@
   @include size-llll;
 }
 
+//* Utility: Style *//
+
+@mixin style-italics {
+  font-style: italic;
+}
+
+.italics {
+  @include style-italics;
+}
+
 //* General: Radio *//
 
 .command_headset {

@@ -283,7 +283,7 @@
 
 #warn identifiers
 
-/obj/item/tape_recorder/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
+/obj/item/tape_recorder/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans, say_verb)
 	. = ..()
 	if(!recording)
 		return

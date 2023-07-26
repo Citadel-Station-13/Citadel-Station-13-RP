@@ -6,33 +6,33 @@
 
 #warn impl all
 
-/atom/proc/visible_action_dual(list/params, hard_range, soft_range, visible_hard, visible_soft, list/exclude_cache, self, face_ident)
+/atom/proc/visible_action_dual(list/params, hard_range, soft_range, visible_hard, visible_soft, self, ident, ghosts)
 	var/list/atom/movable/targets = saycode_query(max(hard_range, soft_range))
 	#warn impl
 
-/atom/proc/audible_action_dual(list/params, hard_range, soft_range, audible_hard, audible_soft, list/exclude_cache, self, voice_ident)
+/atom/proc/audible_action_dual(list/params, hard_range, soft_range, audible_hard, audible_soft, self, ident, ghosts)
 	var/list/atom/movable/targets = saycode_query(max(hard_range, soft_range))
 	#warn impl
 
-/atom/proc/full_action_dual(list/params, hard_range, soft_range, visible_hard, audible_hard, visible_soft, audible_soft, list/exclude_cache, visible_self, audible_self, face_ident, voice_ident)
+/atom/proc/full_action_dual(list/params, hard_range, soft_range, visible_hard, audible_hard, visible_soft, audible_soft, visible_self, audible_self, face_ident, voice_identv)
 	var/list/atom/movable/targets = saycode_query(max(hard_range, soft_range))
 	#warn impl
 
-/atom/proc/visible_action(list/params, range, message, list/exclude_cache, self, ident)
+/atom/proc/visible_action(message, range, list/params, list/exclude_cache, self, ident, ghosts)
 	var/list/atom/movable/targets = saycode_query(range)
 	for(var/atom/movable/AM as anything in targets)
-		AM.see_action(message, message, name, null, src, FALSE, list())
+		AM.see_action(message, message, name, ident, src, FALSE, list())
 
-/atom/proc/audible_action(list/params, range, message, list/exclude_cache, self, ident)
+/atom/proc/audible_action(message, range, list/params, list/exclude_cache, self, ident, ghosts)
 	var/list/atom/movable/targets = saycode_query(range)
 	for(var/atom/movable/AM as anything in targets)
-		AM.hear_say(message, message, name, null, src, FALSE, list(), GLOB.audible_action_language, list())
+		AM.hear_say(message, message, name, ident, src, FALSE, list(), GLOB.audible_action_language, list())
 
-/atom/proc/full_action(list/params, range, visible, audible, list/exclude_cache, visible_self, audible_self, face_ident, voice_ident)
+/atom/proc/full_action(visible, audible, range, list/params, list/exclude_cache, visible_self, audible_self, face_ident, voice_ident, ghosts)
 	var/list/atom/movable/targets = saycode_query(range)
 	for(var/atom/movable/AM as anything in targets)
-		if(!AM.see_action(visible, visible, name, null, src, FALS, list()E))
-			AM.hear_say(audible, audible, name, null, src, FALSE, list(), GLOB.audible_action_language, list())
+		if(!AM.see_action(visible, visible, name, face_ident, src, FALSE, list()))
+			AM.hear_say(audible, audible, name, voice_ident, src, FALSE, list(), GLOB.audible_action_language, list())
 
 /**
  * gets stuff that might be able to hear us

@@ -5,6 +5,7 @@
 	real_name = "host brain"
 	universal_understand = 1
 
+#warn deal wit hthis shit
 /mob/living/captive_brain/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 
 	if (src.client)

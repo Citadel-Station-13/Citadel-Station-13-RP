@@ -26,7 +26,7 @@
 
 	var/loopstop = 0 //To prevent circular awoooos.
 /*
-/mob/living/simple_mob/retaliate/wolfgirl/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans)
+/mob/living/simple_mob/retaliate/wolfgirl/hear_say(raw_message, message, name, voice_ident, atom/actor, remote, list/params, datum/language/lang, list/spans, say_verb)
 	if(world.time - loopstop < 5 SECONDS)
 		return
 	else

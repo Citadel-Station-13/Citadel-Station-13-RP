@@ -1,3 +1,4 @@
+#warn deal wit hthis shit
 /mob/living/carbon/human/say(var/message,var/whispering=0)
 	var/alt_name = ""
 	if(name != GetVoice())
