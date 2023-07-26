@@ -1,4 +1,9 @@
 /datum/ic2_core //the actual 'reactor' - processes, handles processing of components, etc
+	var/id //reactor ID
+	var/list/included_frames
+	var/list/included_components //sorted by xy
+	var/heat = 0 //heat in AHU
+	var/heat_max = 5000//in AHU
 
 //reactor process loop:
 //pulses are sent out and tallied
