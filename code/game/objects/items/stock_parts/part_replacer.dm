@@ -18,7 +18,7 @@
 	)
 	var/panel_req = TRUE
 
-/obj/item/storage/part_repalcer/basic
+/obj/item/storage/part_replacer/basic
 	name = "basic part exchanger"
 	desc = "A basic part exchanger. It can't seem to store much."
 	storage_slots = 35
