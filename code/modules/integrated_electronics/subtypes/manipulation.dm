@@ -771,7 +771,7 @@
 
 	switch(ord)
 		if(1)
-			assembly.desc = get_pin_data(IC_INPUT, 1)
+			assembly.desc = sanitizeSafe(get_pin_data(IC_INPUT, 1), 2048)
 
 		else
 			set_pin_data(IC_OUTPUT, 1, assembly.desc)
