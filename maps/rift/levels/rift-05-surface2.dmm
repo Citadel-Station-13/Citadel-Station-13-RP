@@ -7398,9 +7398,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
-"eEq" = (
-/turf/simulated/floor/plating,
-/area/maintenance/substation/security)
 "eEI" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -7429,7 +7426,7 @@
 "eFw" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/wall/r_wall/prepainted/security,
-/area/maintenance/lower/medsec_maintenance)
+/area/space)
 "eFJ" = (
 /obj/machinery/shower{
 	pixel_y = 17
@@ -19304,9 +19301,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
-"lTi" = (
-/turf/simulated/wall/r_wall/prepainted/security,
-/area/maintenance/lower/medsec_maintenance)
 "lTI" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -19998,6 +19992,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/recovery_room)
+"mpj" = (
+/obj/structure/catwalk,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/space)
 "mpk" = (
 /obj/structure/table/steel,
 /obj/item/clothing/ears/earmuffs,
@@ -22002,10 +22003,6 @@
 "nxY" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/crew_quarters/coffee_shop)
-"nyq" = (
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/maintenance/substation/security)
 "nyt" = (
 /obj/structure/table/steel,
 /obj/item/folder/red,
@@ -23342,7 +23339,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor,
-/area/maintenance/substation/security)
+/area/maintenance/lower/medsec_maintenance)
 "oqK" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -24079,9 +24076,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
-"oPZ" = (
-/turf/space/basic,
-/area/maintenance/substation/security)
 "oQa" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
@@ -29731,7 +29725,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor,
-/area/maintenance/substation/security)
+/area/maintenance/lower/medsec_maintenance)
 "sfB" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
@@ -34058,9 +34052,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)
-"uUy" = (
-/turf/simulated/wall/r_wall/prepainted/security,
-/area/maintenance/substation/security)
 "uVM" = (
 /obj/structure/bed/chair/sofa/red/right{
 	dir = 1
@@ -34665,7 +34656,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/substation/security)
+/area/maintenance/lower/medsec_maintenance)
 "vmU" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -38031,10 +38022,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
-"xFu" = (
-/obj/structure/catwalk,
-/turf/simulated/open,
-/area/maintenance/lower/medsec_maintenance)
 "xFv" = (
 /obj/machinery/power/apc/direction_bump/south,
 /obj/structure/cable/green{
@@ -55468,7 +55455,7 @@ lxh
 lQX
 qDJ
 wcY
-sZU
+szQ
 yfc
 yfc
 yfc
@@ -55657,10 +55644,10 @@ qly
 qly
 sZb
 uAn
-oPZ
+bWq
 sfs
 oqx
-nyq
+wcY
 wcY
 yfc
 yfc
@@ -55851,11 +55838,11 @@ qly
 qly
 hMX
 uAn
-uUy
+uAn
 vmG
-eEq
-tZW
-lTi
+szQ
+jPP
+yfc
 yfc
 eGx
 eGx
@@ -56045,11 +56032,11 @@ qly
 qly
 qly
 qRD
-lTi
+uAn
 aEk
 yiF
 eFw
-lTi
+yfc
 eGx
 eGx
 eGx
@@ -56239,11 +56226,11 @@ qly
 tll
 kXL
 hPc
-lTi
+uAn
 aEk
 jPP
-lTi
-xFu
+yfc
+nlb
 eGx
 eGx
 nlb
@@ -56433,11 +56420,11 @@ qly
 cVK
 tll
 eWf
-lTi
+uAn
 aEk
 jPP
-lTi
-xFu
+yfc
+nlb
 nlb
 nlb
 nlb
@@ -56627,11 +56614,11 @@ qly
 cVK
 fxj
 uAn
-lTi
+uAn
 gne
 szQ
-lTi
-xFu
+yfc
+nlb
 nlb
 nlb
 nlb
@@ -56821,11 +56808,11 @@ qly
 cVK
 gQB
 uAn
-lTi
+uAn
 gne
 szQ
-lTi
-xFu
+yfc
+nlb
 eGx
 eGx
 jAr
@@ -57019,7 +57006,7 @@ uAn
 msH
 uAn
 uAn
-yga
+yfc
 bVK
 bVK
 yfc
@@ -58005,7 +57992,7 @@ nqB
 tFY
 yfc
 iEc
-ruT
+oqQ
 ruT
 ruT
 ruT
@@ -58199,7 +58186,7 @@ ucy
 pmU
 bVK
 iEc
-ruT
+oqQ
 ruT
 ruT
 qex
@@ -58393,7 +58380,7 @@ kPo
 hoy
 bVK
 iEc
-ruT
+oqQ
 ruT
 eGx
 eGx
@@ -58587,7 +58574,7 @@ wlT
 sho
 yfc
 iEc
-ruT
+oqQ
 xVp
 eGx
 eGx
@@ -58781,7 +58768,7 @@ nEf
 ebv
 bVK
 iEc
-ruT
+oqQ
 xVp
 eGx
 eGx
@@ -58975,7 +58962,7 @@ yfc
 yfc
 yfc
 iEc
-nlb
+mpj
 nlb
 eGx
 eGx
@@ -59169,7 +59156,7 @@ iEc
 iEc
 iEc
 iEc
-nlb
+mpj
 nlb
 eGx
 eGx
@@ -59363,7 +59350,7 @@ iEc
 iEc
 iEc
 iEc
-nlb
+mpj
 nlb
 eGx
 eGx
@@ -59557,7 +59544,7 @@ iEc
 iEc
 iEc
 iEc
-nlb
+mpj
 nlb
 eGx
 eGx
@@ -59751,7 +59738,7 @@ iEc
 iEc
 iEc
 iEc
-nlb
+mpj
 nlb
 eGx
 eGx
@@ -59945,7 +59932,7 @@ iEc
 iEc
 iEc
 iEc
-nlb
+mpj
 nlb
 eGx
 eGx
@@ -60139,7 +60126,7 @@ iEc
 iEc
 iEc
 iEc
-nlb
+mpj
 nlb
 eGx
 eGx
@@ -60333,7 +60320,7 @@ iEc
 iEc
 iEc
 iEc
-nlb
+mpj
 nlb
 eGx
 eGx

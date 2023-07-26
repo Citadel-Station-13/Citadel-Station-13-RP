@@ -775,6 +775,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/testingroom)
+"aBH" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/space)
 "aBW" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor,
@@ -3092,15 +3098,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
-"cdJ" = (
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "cdP" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/brflowers,
@@ -3628,6 +3625,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
+"cwD" = (
+/obj/structure/stairs/spawner/north,
+/turf/simulated/floor/tiled/steel,
+/area/space)
 "cwV" = (
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 1
@@ -4442,6 +4443,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
@@ -5809,12 +5813,6 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/cargo)
-"dMy" = (
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "dMB" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -7381,9 +7379,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
-"eHz" = (
-/turf/space/basic,
-/area/space)
 "eHL" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -7848,10 +7843,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
-"fcO" = (
-/obj/structure/stairs/spawner/east,
-/turf/simulated/floor/plating,
-/area/space)
 "fdn" = (
 /obj/machinery/papershredder,
 /turf/simulated/floor/wood,
@@ -7925,10 +7916,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_stairs)
-"fgI" = (
-/obj/structure/railing/grey,
-/turf/space/basic,
-/area/space)
 "fgL" = (
 /obj/structure/railing{
 	dir = 4
@@ -8608,12 +8595,6 @@
 /obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/outpost/xenobiology/outpost_storage)
-"fFB" = (
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "fFD" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/beakers,
@@ -9525,6 +9506,9 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
+"gly" = (
+/turf/simulated/wall/prepainted,
+/area/space)
 "glF" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -10226,12 +10210,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
-"gKI" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lowmedbaymaint)
 "gKJ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -11542,12 +11520,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
-"huh" = (
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/turf/space/basic,
-/area/space)
 "huw" = (
 /obj/structure/railing{
 	dir = 1
@@ -12494,6 +12466,9 @@
 /obj/structure/sign/department/medbay,
 /turf/simulated/wall/prepainted/science,
 /area/rnd/hallway)
+"hWU" = (
+/turf/simulated/floor/tiled/white,
+/area/space)
 "hXi" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/maintenance/lowmedbaymaint)
@@ -16137,6 +16112,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
+"kio" = (
+/obj/structure/railing/grey,
+/turf/simulated/floor/tiled/steel,
+/area/space)
 "kiE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
@@ -25262,10 +25241,6 @@
 /obj/random/maintenance/security,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/library)
-"pvu" = (
-/obj/structure/railing/grey,
-/turf/simulated/floor/plating,
-/area/space)
 "pvv" = (
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
@@ -25478,12 +25453,6 @@
 /obj/item/instrument/violin,
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment)
-"pCi" = (
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/turf/space/basic,
-/area/space)
 "pCr" = (
 /obj/structure/railing{
 	dir = 8
@@ -27080,15 +27049,6 @@
 /obj/structure/railing,
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/outside1)
-"qEb" = (
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "qEh" = (
 /obj/machinery/power/apc/direction_bump/north,
 /obj/structure/cable{
@@ -30326,6 +30286,12 @@
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/medical/virologyisolation)
+"sDy" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/space)
 "sDz" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/light_construct/small{
@@ -30638,6 +30604,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/library)
+"sKA" = (
+/obj/structure/bed,
+/turf/simulated/floor/concrete/rng/indoors,
+/area/space)
 "sKI" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -33293,13 +33263,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
-"umo" = (
-/obj/structure/railing/grey,
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "und" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 1
@@ -34731,6 +34694,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
+"vbv" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/space)
 "vbL" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/disposalpipe/segment,
@@ -38833,13 +38802,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
-"xCU" = (
-/obj/structure/railing/grey,
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "xDd" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/babyblue,
@@ -55928,18 +55890,18 @@ oKE
 bxi
 oYs
 sDY
-pOR
-buH
-pOR
-pOR
-pOR
-pOR
-pOR
-pOR
-pOR
-pOR
-gKI
-pOR
+gTC
+nQl
+gTC
+gTC
+gTC
+gTC
+gTC
+gTC
+gTC
+gTC
+gTC
+gTC
 hXi
 hXi
 hXi
@@ -56122,25 +56084,25 @@ cCA
 uEt
 fJW
 sDY
-gTC
-nQl
-gTC
-gTC
-gTC
-gTC
-gTC
-gTC
-gTC
-gTC
-gTC
+dMX
+uSG
 gRM
 gRM
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
+gRM
+gRM
+gRM
+gRM
+gRM
+gRM
+gRM
+gRM
+gRM
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
 gRM
 gRM
 pOR
@@ -56318,24 +56280,24 @@ pNx
 sDY
 dMX
 uSG
-dMX
-dMX
-dMX
-dMX
-dMX
-dMX
-dMX
-dMX
+gRM
+hWU
+hWU
+hWU
+hWU
+hWU
+hWU
 gRM
 gRM
-eHz
-eHz
-eHz
-uLI
-uLI
-eHz
-eHz
-eHz
+gRM
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
 gRM
 gRM
 pOR
@@ -56512,25 +56474,25 @@ flr
 sDY
 dMX
 uSG
-dMX
-dMX
-dMX
-dMX
-dMX
-dMX
-dMX
+gRM
+hWU
+hWU
+hWU
+hWU
+hWU
+hWU
 gRM
 gRM
-eHz
-eHz
-eHz
-fgI
-fcO
-fcO
-huh
-eHz
-eHz
-eHz
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
 gRM
 gRM
 gRM
@@ -56706,26 +56668,26 @@ njD
 sDY
 ouV
 uSG
-dMX
-dMX
-dMX
-dMX
-dMX
-dMX
-dMX
 gRM
-eHz
-eHz
-eHz
-eHz
-eHz
-pCi
-pCi
-eHz
-eHz
-eHz
-eHz
-eHz
+hWU
+hWU
+hWU
+hWU
+hWU
+hWU
+gRM
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
 gRM
 oQd
 oQd
@@ -56900,26 +56862,26 @@ vNy
 sDY
 ovB
 uSG
-dMX
-dMX
-dMX
-dMX
-dMX
-dMX
-dMX
 gRM
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
+hWU
+hWU
+hWU
+hWU
+hWU
+hWU
+gRM
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
 tAs
 oQd
 oQd
@@ -57094,26 +57056,26 @@ toa
 sDY
 dMX
 uSG
-dMX
-dMX
-dMX
-dMX
-dMX
-dMX
-dMX
 gRM
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
+hWU
+hWU
+hWU
+hWU
+hWU
+hWU
+gRM
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
 tAs
 oQd
 oQd
@@ -57288,26 +57250,26 @@ gKx
 sDY
 dMX
 uSG
-dMX
-dMX
-dMX
-dMX
-dMX
-dMX
-dMX
 gRM
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
-eHz
+hWU
+hWU
+hWU
+hWU
+hWU
+hWU
+gRM
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
+ikS
 gRM
 oQd
 oQd
@@ -57484,20 +57446,20 @@ ouV
 uSG
 gRM
 gRM
-gRM
-gRM
-gRM
-gRM
+sNp
 gRM
 gRM
 sNp
 gRM
-sNp
 gRM
-qEb
-dMy
-xCU
-aMv
+sNp
+sNp
+sNp
+sNp
+sNp
+sNp
+sNp
+sNp
 sNp
 sNp
 sNp
@@ -57687,12 +57649,12 @@ sNp
 sNp
 sNp
 sNp
-qEb
+sNp
+sNp
 gRM
-gRM
-gRM
-xCU
 aMv
+sNp
+sNp
 sNp
 sNp
 qra
@@ -57881,12 +57843,12 @@ sNp
 sNp
 sNp
 sNp
-gwc
+sNp
 gRM
 gRM
 gRM
-pvu
 aMv
+sNp
 sNp
 sNp
 qra
@@ -58075,12 +58037,12 @@ sNp
 sNp
 sNp
 sNp
-cdJ
+sNp
+sNp
 gRM
-gRM
-gRM
-umo
 aMv
+sNp
+sNp
 sNp
 sNp
 qra
@@ -58267,13 +58229,13 @@ sNp
 gRM
 gRM
 sNp
-gRM
 sNp
-gRM
-cdJ
-fFB
-umo
-aMv
+sNp
+sNp
+sNp
+sNp
+sNp
+sNp
 sNp
 sNp
 sNp
@@ -58453,12 +58415,12 @@ sDY
 sny
 nau
 gRM
-sNp
-sNp
-sNp
-sNp
-sNp
-sNp
+gRM
+gRM
+gRM
+gRM
+gRM
+gRM
 ikS
 ikS
 ikS
@@ -58646,13 +58608,13 @@ sDY
 sDY
 dMX
 nau
+gly
 gRM
+sKA
 sNp
 sNp
 sNp
-sNp
-sNp
-sNp
+gRM
 ikS
 ikS
 ikS
@@ -58840,13 +58802,13 @@ vpu
 sDY
 dMX
 uSG
+gly
 gRM
+gRM
+sDy
 sNp
 sNp
-sNp
-sNp
-sNp
-sNp
+ikS
 ikS
 ikS
 ikS
@@ -59034,13 +58996,13 @@ upJ
 chz
 dMX
 uSG
+gly
 gRM
-sNp
-sNp
-sNp
-sNp
-sNp
-sNp
+gRM
+gRM
+gRM
+gRM
+gRM
 ikS
 ikS
 ikS
@@ -59228,13 +59190,13 @@ wtn
 sDY
 dMX
 uSG
+gly
 gRM
+sKA
 sNp
 sNp
 sNp
-sNp
-sNp
-sNp
+gRM
 ikS
 ikS
 ikS
@@ -59422,13 +59384,13 @@ sDY
 sDY
 dMX
 uSG
+gly
 gRM
+gRM
+sDy
 sNp
 sNp
-sNp
-sNp
-sNp
-sNp
+ikS
 ikS
 ikS
 ikS
@@ -59448,7 +59410,7 @@ ikS
 ikS
 uAL
 jHI
-jHI
+vbv
 jHI
 jHI
 jHI
@@ -59616,13 +59578,13 @@ hgE
 tdI
 dMX
 uSG
+gly
 gRM
-sNp
-sNp
-sNp
-sNp
-sNp
-sNp
+gRM
+gRM
+gRM
+gRM
+gRM
 ikS
 ikS
 ikS
@@ -59641,8 +59603,8 @@ ikS
 ikS
 ikS
 uAL
-jHI
-jHI
+kio
+cwD
 jHI
 jHI
 jHI
@@ -59810,13 +59772,13 @@ hgE
 tdI
 dMX
 uSG
+gly
 gRM
+sKA
 sNp
 sNp
 sNp
-sNp
-sNp
-sNp
+gRM
 ikS
 ikS
 ikS
@@ -59835,8 +59797,8 @@ ikS
 ikS
 ikS
 uAL
-jHI
-jHI
+kio
+cwD
 jHI
 jHI
 jHI
@@ -60004,13 +59966,13 @@ tdI
 tdI
 ovB
 uSG
+gly
 gRM
+gRM
+sDy
 sNp
 sNp
-sNp
-sNp
-sNp
-sNp
+ikS
 ikS
 ikS
 ikS
@@ -60029,8 +59991,8 @@ ikS
 ikS
 ikS
 uAL
-jHI
-jHI
+kio
+cwD
 jHI
 jHI
 jHI
@@ -60198,13 +60160,13 @@ tdI
 dMX
 dMX
 uSG
+gly
 gRM
-sNp
-sNp
-sNp
-sNp
-sNp
-sNp
+gRM
+gRM
+gRM
+gRM
+gRM
 ikS
 ikS
 ikS
@@ -60224,7 +60186,7 @@ ikS
 ikS
 uAL
 jHI
-jHI
+aBH
 jHI
 jHI
 jHI
@@ -60392,12 +60354,12 @@ tdI
 dMX
 dMX
 uSG
-gRM
-gRM
-gRM
-gRM
-gRM
-gRM
+tdI
+sSC
+sSC
+sSC
+sSC
+sSC
 gRM
 ikS
 ikS
@@ -60587,10 +60549,10 @@ dMX
 dMX
 uSG
 tdI
-sSC
-sSC
-sSC
-sSC
+tdI
+tdI
+tdI
+tdI
 sSC
 gRM
 ikS
@@ -60780,10 +60742,10 @@ tdI
 dMX
 uSG
 uSG
-tdI
-tdI
-tdI
-tdI
+uSG
+uSG
+uSG
+uSG
 tdI
 sSC
 gRM
@@ -60974,9 +60936,9 @@ tdI
 dMX
 uSG
 uSG
-uSG
 dMX
-uSG
+dMX
+dMX
 uSG
 tdI
 sSC
@@ -61169,7 +61131,7 @@ ouV
 iBg
 jub
 eSv
-dMX
+tdI
 dMX
 uSG
 tdI
