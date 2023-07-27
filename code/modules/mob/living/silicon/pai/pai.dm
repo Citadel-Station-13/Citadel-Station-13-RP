@@ -245,7 +245,7 @@
 
 	// pass attack self on to the card regardless of our shell
 	if(!istype(new_shell, /obj/item/paicard))
-		RegisterSignal(shell, COMSIG_ITEM_ATTACK_SELF, .proc/pass_attack_self_to_card)
+		RegisterSignal(shell, COMSIG_ITEM_ATTACK_SELF, PROC_REF(pass_attack_self_to_card))
 
 // changing the shell into clothing
 /mob/living/silicon/pai/proc/change_shell_by_path(obj/item/clothing/object_path)

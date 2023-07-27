@@ -263,7 +263,7 @@
 
 /obj/effect/temporary_effect/goliath_tentacle/proc/trip()
 	var/latched = FALSE
-	var/timerid = addtimer(CALLBACK(src, .proc/retract), 5, TIMER_STOPPABLE)
+	var/timerid = addtimer(CALLBACK(src, PROC_REF(retract)), 5, TIMER_STOPPABLE)
 	for(var/mob/living/carbon/C in loc)
 		if(C.stat == DEAD)
 			continue
@@ -281,7 +281,7 @@
 
 /obj/effect/temporary_effect/goliath_tentacle/proc/tripanim()
 	icon_state = "goliath_tentacle_wiggle"
-	var/timerid = addtimer(CALLBACK(src, .proc/trip), 3, TIMER_STOPPABLE)
+	var/timerid = addtimer(CALLBACK(src, PROC_REF(trip)), 3, TIMER_STOPPABLE)
 	deltimer(timerid)
 
 /obj/effect/temporary_effect/goliath_tentacle/proc/retract()

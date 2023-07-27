@@ -19,7 +19,7 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 		var/list/choices = flist(path)
 		if(path != root)
 			choices.Insert(1,"/")
-		tim_sort(choices, /proc/cmp_text_asc)
+		tim_sort(choices, GLOBAL_PROC_REF(cmp_text_asc))
 
 		var/choice = input(src,"Choose a file to access:","Download",null) as null|anything in choices
 		switch(choice)

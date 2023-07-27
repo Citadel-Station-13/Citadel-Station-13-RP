@@ -189,14 +189,14 @@
 				usr.action_feedback(SPAN_WARNING("[src] is still printing something!"), src)
 				return
 			TIMER_COOLDOWN_START(src, CD_INDEX_IDCONSOLE_PRINT, 5 SECONDS)
-			addtimer(CALLBACK(src, /obj/machinery/computer/card/proc/print_manifest), 5 SECONDS)
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/machinery/computer/card, print_manifest)), 5 SECONDS)
 			return TRUE
 		if("print_card_report")
 			if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_IDCONSOLE_PRINT))
 				usr.action_feedback(SPAN_WARNING("[src] is still printing something!"), src)
 				return
 			TIMER_COOLDOWN_START(src, CD_INDEX_IDCONSOLE_PRINT, 5 SECONDS)
-			addtimer(CALLBACK(src, /obj/machinery/computer/card/proc/print_card_report), 5 SECONDS)
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/machinery/computer/card, print_card_report)), 5 SECONDS)
 			return TRUE
 
 /obj/machinery/computer/card/proc/print_manifest()
