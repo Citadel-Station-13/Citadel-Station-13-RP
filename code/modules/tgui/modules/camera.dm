@@ -303,6 +303,7 @@
 
 /datum/tgui_module_old/camera/ntos/helmet/New(host)
 	. = ..(host, list(NETWORK_CIV_HELMETS))
+
 /datum/tgui_module_old/camera/ntos/security_helmet
 	name = "Security Helmet Camera Monitor"
 

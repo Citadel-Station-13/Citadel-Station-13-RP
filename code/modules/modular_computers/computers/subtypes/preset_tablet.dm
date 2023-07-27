@@ -26,3 +26,12 @@
 	network_card = new/obj/item/computer_hardware/network_card(src)
 	battery_module = new/obj/item/computer_hardware/battery_module/micro(src)
 	battery_module.charge_to_full()
+
+/obj/item/modular_computer/tablet/preset/custom_loadout/standard/security
+	name = "\improper Security Officer's tablet"
+
+/obj/item/modular_computer/tablet/preset/custom_loadout/standard/security/install_default_programs()
+	..()
+	hard_drive.store_file(new/datum/computer_file/program/camera_monitor())
+	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/sechelmet())
+	hard_drive.store_file(new/datum/computer_file/program/digitalwarrant())
