@@ -7,6 +7,10 @@
 	allowed_roles = list("Facility Director")     //This technically also works as null, but we're supposed to be role restricted so it's the captain's exclusive, special ducky.
 	category = LOADOUT_CATEGORY_ROLE_RESTRICTED
 
+// Bedsheets
+/datum/loadout_entry/restricted/misc/bedsheet
+	slot = SLOT_ID_BACK
+
 //*Single Departments
 //Security
 /datum/loadout_entry/restricted/security
@@ -541,6 +545,10 @@
 	name = "Security - Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/security
 
+/datum/loadout_entry/restricted/security/bedsheet
+	name = "Security Bedsheet"
+	path = /obj/item/bedsheet/sec
+	slot = SLOT_ID_BACK
 
 //*Medical
 //Eyes
@@ -818,6 +826,10 @@
 	name = "Medical - Stethoscope"
 	path = /obj/item/clothing/accessory/stethoscope
 
+/datum/loadout_entry/restricted/medical/bedsheet
+	name = "Medical Bedsheet"
+	path = /obj/item/bedsheet/medical2
+	slot = SLOT_ID_BACK
 
 //*Engineering
 //Eyes
@@ -981,7 +993,10 @@
 	path = /obj/item/clothing/shoes/boots/winter/atmos
 	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
 
-
+/datum/loadout_entry/restricted/engineering/bedsheet
+	name = "Engineering Bedsheet"
+	path = /obj/item/bedsheet/engineering
+	slot = SLOT_ID_BACK
 
 //*Supply
 //Eyes
@@ -1256,6 +1271,10 @@
 	name = "Science - Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/science
 
+/datum/loadout_entry/restricted/science/bedsheet
+ 	name = "Science Bedsheet"
+ 	path = /obj/item/bedsheet/hydro
+ 	slot = SLOT_ID_BACK
 
 //*Command
 //Eyes
@@ -1384,7 +1403,10 @@
 	path = /obj/item/clothing/shoes/boots/winter/command
 	allowed_roles = list("Facility Director")
 
-
+/datum/loadout_entry/restricted/command/bedsheet
+	name = "Command Bedsheet"
+	path = /obj/item/bedsheet/command
+	slot = SLOT_ID_BACK
 
 //*Service (Poor Service and their ONE item)
 /datum/loadout_entry/restricted/service/suit/cloak
@@ -1490,6 +1512,11 @@
 	path = /obj/item/clothing/under/rank/chef/skirt_pleated
 	allowed_roles = list("Chef")
 
+/datum/loadout_entry/restricted/misc/bedsheet/cook
+ 	name = "Cook Bedsheet"
+ 	path = /obj/item/bedsheet/cook
+ 	allowed_roles = list("Chef")
+
 //*Internal Affairs Agent
 /datum/loadout_entry/restricted/misc/uniform/iaskirt
 	name = "Internal Affairs Uniform - Skirt"
@@ -1527,6 +1554,11 @@
 	path = /obj/item/clothing/shoes/galoshes/starcon
 	allowed_roles = list("Janitor")
 	cost = 2
+
+/datum/loadout_entry/restricted/misc/bedsheet/janitor
+ 	name = "Janitor Bedsheet"
+ 	path = /obj/item/bedsheet/janitor
+ 	allowed_roles = list("Janitor")
 
 //*Exploration
 /datum/loadout_entry/restricted/misc/uniform/bodysuit_explo/command
@@ -1570,3 +1602,15 @@
 	name = "Hydroponics Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/hydro
 	allowed_roles = list("Botanist")
+
+/datum/loadout_entry/restricted/misc/bedsheet/hydroponics
+ 	name = "Hydroponics Bedsheet"
+ 	path = /obj/item/bedsheet/hydro
+ 	allowed_roles = list("Botanist")
+
+ //*Clown
+
+ /datum/loadout_entry/restricted/misc/bedsheet/clown
+ 	name = "Clown Bedsheet"
+ 	path = /obj/item/bedsheet/clown2
+ 	allowed_roles = list("Clown")

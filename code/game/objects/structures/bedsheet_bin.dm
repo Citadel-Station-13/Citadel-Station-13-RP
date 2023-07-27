@@ -102,38 +102,47 @@ LINEN BINS
 /obj/item/bedsheet/janitor
 	name = "janitor bedsheet"
 	desc = "This bedsheet also functions as a wet sign!"
+	icon_state = "sheetjanitor"
 
 /obj/item/bedsheet/cook
 	name = "cook bedsheet"
 	desc = "A bedsheet designed to look incredibly tasty."
+	icon_state = "sheetcook"
 
 /obj/item/bedsheet/clown2
 	name = "clown bedsheet"
 	desc = "Honk."
+	icon_state = "sheetclown2"
 
 /obj/item/bedsheet/command
 	name = "command bedsheet"
 	desc = "A bedsheet fit for a command officer."
+	icon_state = "sheetcommand"
 
 /obj/item/bedsheet/hydro
 	name = "hydroponics bedsheet"
 	desc = "It is incredibly unlikely that you can plant this."
+	icon_state = "sheethydro"
 
 /obj/item/bedsheet/science
 	name = "science bedsheet"
 	desc = "Sadly, deconstructing this will not give you anything useful."
+	icon_state = "sheetscience"
 
 /obj/item/bedsheet/engineering
 	name = "engineering bedsheet"
 	desc = "An incredibly dangerous bedsheet."
+	icon_state = "sheetengineering"
 
 /obj/item/bedsheet/medical2
 	name = "medical bedsheet"
 	desc = "Sleep is the best medicine, right?"
+	icon_state = "sheetmedical2"
 
 /obj/item/bedsheet/sec
 	name = "security bedsheet"
 	desc = "For sleeping on the job."
+	icon_state = "sheetsec" // badum tss
 
 // double sheets
 
