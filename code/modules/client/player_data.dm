@@ -42,7 +42,7 @@
 		if(isnull(available))
 			available = FALSE
 		return FALSE
-	INVOKE_ASYNC(src, .proc/load_blocking)
+	INVOKE_ASYNC(src, PROC_REF(load_blocking))
 	return TRUE
 
 /datum/player_data/proc/load_blocking()
