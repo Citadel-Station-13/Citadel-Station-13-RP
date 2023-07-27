@@ -9,10 +9,13 @@
 	throw_range = 7
 	throw_force = 10
 	damtype = BURN
-	force = 10
+	damage_force = 10
 	hitsound = 'sound/items/welder2.ogg'
 
-/obj/item/scrying/attack_self(mob/user as mob)
+/obj/item/scrying/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if((user.mind && !wizards.is_antagonist(user.mind)))
 		to_chat(user, "<span class='warning'>You stare into the orb and see nothing but your own reflection.</span>")
 		return
@@ -34,7 +37,7 @@
 	item_state = "knife"
 	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
-	force = 15
+	damage_force = 15
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -46,6 +49,9 @@
 	var/spawn_fast = 0 //if 1, ignores checking for mobs on loc before spawning
 
 /obj/item/veilrender/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(charges > 0)
 		new /obj/effect/rend(get_turf(user), spawn_type, spawn_amt, rend_desc, spawn_fast)
 		charges--
@@ -143,7 +149,7 @@
 		insaneinthemembrane.sanity = 0
 		for(var/lore in typesof(/datum/brain_trauma/severe))
 			C.gain_trauma(lore)
-		addtimer(CALLBACK(src, /obj/singularity/wizard.proc/deranged, C), 100)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/singularity/wizard, deranged), C), 100)
 
 /obj/singularity/wizard/proc/deranged(mob/living/carbon/C)
 	if(!C || C.stat == DEAD)
@@ -194,7 +200,8 @@
 		return
 
 	H.set_species(/datum/species/skeleton, regen_icons=0)
-	H.revive()//full_heal = 1, admin_revive = 1)
+	H.revive(full_heal = TRUE)
+	H.remove_all_restraints()
 	spooky_scaries |= H
 	to_chat(H, "<span class='userdanger'>You have been revived by </span><B>[user.real_name]!</B>")
 	to_chat(H, "<span class='userdanger'>[user] is your master now, assist [user] them even if it costs you your new life!</span>")
@@ -253,7 +260,7 @@
 			GiveHint(target)
 		else if(I.get_sharpness())
 			to_chat(target, "<span class='userdanger'>You feel a stabbing pain in [parse_zone(user.zone_selected)]!</span>")
-			target.DefaultCombatKnockdown(40)
+			target.default_combat_knockdown(40)
 			GiveHint(target)
 		else if(istype(I, /obj/item/bikehorn))
 			to_chat(target, "<span class='userdanger'>HONK</span>")
@@ -276,6 +283,9 @@
 		user.unset_machine()
 
 /obj/item/voodoo/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!target && length(possible))
 		target = input(user, "Select your victim!", "Voodoo") as null|anything in possible
 		return
@@ -369,13 +379,16 @@
 
 /obj/item/warpwhistle/proc/end_effect(mob/living/carbon/user)
 	user.invisibility = initial(user.invisibility)
-	user.status_flags &= ~GODMODE
+	user.status_flags &= ~STATUS_GODMODE
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOMOVE, src)
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOUSE, src)
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOPICKUP, src)
-	user.update_mobility()
+	user.update_mobility_blocked()
 
-/obj/item/warpwhistle/attack_self(mob/living/carbon/user)
+/obj/item/warpwhistle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!istype(user) || on_cooldown)
 		return
 	var/turf/T = get_turf(user)
@@ -389,13 +402,13 @@
 	ADD_TRAIT(user, TRAIT_MOBILITY_NOMOVE, src)
 	ADD_TRAIT(user, TRAIT_MOBILITY_NOUSE, src)
 	ADD_TRAIT(user, TRAIT_MOBILITY_NOPICKUP, src)
-	user.update_mobility()
+	user.update_mobility_blocked()
 	new /obj/effect/temp_visual/tornado(T)
 	sleep(20)
 	if(interrupted(user))
 		return
 	user.invisibility = INVISIBILITY_MAXIMUM
-	user.status_flags |= GODMODE
+	user.status_flags |= STATUS_GODMODE
 	sleep(20)
 	if(interrupted(user))
 		end_effect(user)

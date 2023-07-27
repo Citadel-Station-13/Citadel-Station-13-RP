@@ -32,4 +32,13 @@ DEFINE_BITFIELD(worn_render_flags, list(
 #define WORN_DATA_LAYER 3
 #define WORN_DATA_SIZE_X 4
 #define WORN_DATA_SIZE_Y 5
-#define WORN_DATA_LIST_SIZE 5
+#define WORN_DATA_ALIGN_Y 6
+#define WORN_DATA_LIST_SIZE 6
+
+//? stuff to turn off legacy stuff that we can easily regex
+
+/// prevent cycling from changing sprites
+#define RENDER_LEGACY_PATCH_NO_CYCLING \
+	sprite_sheets = list(); \
+	sprite_sheets_obj = list(); \
+	sprite_sheets_refit = list();

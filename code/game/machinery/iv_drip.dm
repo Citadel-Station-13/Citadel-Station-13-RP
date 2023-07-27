@@ -166,7 +166,7 @@
 	else
 		return ..()
 
-/obj/machinery/iv_drip/attack_hand(mob/user)
+/obj/machinery/iv_drip/attack_hand(mob/user, list/params)
 	if(reagent_container)
 		reagent_container.loc = get_turf(src)
 		reagent_container = null
@@ -183,7 +183,7 @@
 		var/list/arm_zones = shuffle(list(BP_R_ARM, BP_L_ARM))
 		var/obj/item/organ/external/chosen_limb = attached_victim.get_organ(arm_zones[1]) || attached_victim.get_organ(arm_zones[2]) || attached_victim.get_organ(BP_TORSO)
 		chosen_limb.take_damage(3)
-		chosen_limb.createwound(CUT, 5)
+		chosen_limb.create_wound(CUT, 5)
 		detach_iv()
 		return PROCESS_KILL
 
@@ -196,7 +196,7 @@
 				if(istype(reagent_container, /obj/item/reagent_containers/blood))
 					// speed up transfer on blood packs
 					real_transfer_amount *= 2
-				target_reagents.trans_to_mob(attached_victim, real_transfer_amount * delta_time * 0.5, type = CHEM_BLOOD)
+				target_reagents.trans_to_mob(attached_victim, real_transfer_amount * delta_time * 0.5, type = CHEM_INJECT)
 				update_appearance()
 
 		// Take blood
@@ -291,7 +291,7 @@
 	to_chat(usr, SPAN_NOTICE("The IV drip is now [injection_mode ? "injecting" : "taking blood"]."))
 	update_appearance()
 
-/obj/machinery/iv_drip/examine(mob/user)
+/obj/machinery/iv_drip/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(user, src) > 2)
 		return

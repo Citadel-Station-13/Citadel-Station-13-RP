@@ -7,9 +7,6 @@ SUBSYSTEM_DEF(ticker)
 	/// Current state of the game
 	var/static/current_state = GAME_STATE_INIT
 
-	/// Did we attempt an automatic gamemode vote?
-	var/static/auto_gamemode_vote_attempted = FALSE
-
 	/// What world.time we ended the game, set at round end.
 	var/static/round_end_time
 
@@ -148,12 +145,6 @@ SUBSYSTEM_DEF(ticker)
 		Master.SetRunLevel(RUNLEVEL_SETUP)
 		if(start_immediately)
 			fire()
-	else if(!auto_gamemode_vote_attempted && (timeLeft <= CONFIG_GET(number/lobby_gamemode_vote_delay) SECONDS))
-		auto_gamemode_vote_attempted = TRUE
-		// patch this code later
-		if(!SSvote.time_remaining)
-			SSvote.autogamemode()
-		//end
 
 /datum/controller/subsystem/ticker/proc/Reboot(reason, end_string, delay)
 	set waitfor = FALSE
@@ -300,7 +291,16 @@ SUBSYSTEM_DEF(ticker)
 		mode.post_setup()
 		//Cleanup some stuff
 		to_chat(world, "<font color=#4F49AF><B>Enjoy the game!</B></FONT>")
-		SEND_SOUND(world, sound('sound/AI/welcome.ogg')) // Skie
+		var/startupsound = rand(1,4)
+		switch(startupsound)
+			if(1)
+				SEND_SOUND(world, sound('sound/roundStart/start_up_1.ogg'))
+			if(2)
+				SEND_SOUND(world, sound('sound/roundStart/start_up_2.ogg'))
+			if(3)
+				SEND_SOUND(world, sound('sound/roundStart/start_up_3.ogg'))
+			if(4)
+				SEND_SOUND(world, sound('sound/roundStart/start_up_4.ogg'))//the original sound
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 
@@ -322,8 +322,8 @@ SUBSYSTEM_DEF(ticker)
 	Master.SetRunLevel(RUNLEVEL_GAME)
 
 	if(CONFIG_GET(flag/sql_enabled))
-		//THIS REQUIRES THE INVOKE ASYNC.
-		INVOKE_ASYNC(GLOBAL_PROC, .proc/statistic_cycle) // Polls population totals regularly and stores them in an SQL DB -- TLE
+		ASYNC // THIS REQUIRES THE ASYNC!
+			statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
 	return TRUE
 
 //These callbacks will fire after roundstart key transfer
@@ -349,7 +349,7 @@ SUBSYSTEM_DEF(ticker)
 	cinematic.icon = 'icons/effects/station_explosion.dmi'
 	cinematic.icon_state = "station_intact"
 	cinematic.layer = 100
-	cinematic.plane = PLANE_PLAYER_HUD
+	cinematic.plane = HUD_PLANE
 	cinematic.mouse_opacity = 0
 	cinematic.screen_loc = "1,0"
 
@@ -369,7 +369,7 @@ SUBSYSTEM_DEF(ticker)
 			switch(M.z)
 				if(0)	//inside a crate or something
 					var/turf/T = get_turf(M)
-					if(T && (T.z in GLOB.using_map.station_levels))				//we don't use M.death(0) because it calls a for(/mob) loop and
+					if(T && (T.z in (LEGACY_MAP_DATUM).station_levels))				//we don't use M.death(0) because it calls a for(/mob) loop and
 						M.health = 0
 						M.set_stat(DEAD)
 				if(1)	//on a z-level 1 turf.
@@ -429,7 +429,7 @@ SUBSYSTEM_DEF(ticker)
 					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					cinematic.icon_state = "summary_selfdes"
 			for(var/mob/living/M in living_mob_list)
-				if(M.loc.z in GLOB.using_map.station_levels)
+				if(M.loc.z in (LEGACY_MAP_DATUM).station_levels)
 					M.death()//No mercy
 	//If its actually the end of the round, wait for it to end.
 	//Otherwise if its a verb it will continue on afterwards.
@@ -451,18 +451,25 @@ SUBSYSTEM_DEF(ticker)
 		log_and_message_admins("Unable to get overflow spawnpoint; roundstart is going to lag.")
 	//! END
 	for(var/mob/new_player/player in GLOB.player_list)
-		if(player && player.ready && player.mind)
-			if(player.mind.assigned_role=="AI")
-				player.close_spawn_windows()
-				player.AIize()
-			else if(!player.mind.assigned_role)
-				continue
-			else
-				var/mob/living/carbon/human/new_char = player.create_character(S)
-				if(new_char)
-					qdel(player)
-				if(istype(new_char) && !(new_char.mind.assigned_role=="Cyborg"))
-					data_core.manifest_inject(new_char)
+		if(!player.mind)
+			continue
+
+		if(!player.ready)
+			player.new_player_panel_proc()
+			continue
+
+		if(player.mind.assigned_role=="AI")
+			player.close_spawn_windows()
+			player.AIize()
+		else if(!player.mind.assigned_role)
+			player.new_player_panel_proc()
+			continue
+		else
+			var/mob/living/carbon/human/new_char = player.create_character(S)
+			if(new_char)
+				qdel(player)
+			if(istype(new_char) && !(new_char.mind.assigned_role=="Cyborg"))
+				data_core.manifest_inject(new_char)
 
 
 /datum/controller/subsystem/ticker/proc/collect_minds()

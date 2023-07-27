@@ -30,7 +30,7 @@
 			to_chat(user, "<span class='warning'>You need to have something in your active hand, to use this verb.</span>")
 			return
 		var/weapon_attack_speed = user.get_attack_speed(I) / 10
-		var/weapon_damage = I.force
+		var/weapon_damage = I.damage_force
 		var/modified_damage_percent = 1
 
 		for(var/datum/modifier/M in user.modifiers)
@@ -40,7 +40,7 @@
 
 		if(istype(I, /obj/item/gun))
 			var/obj/item/gun/G = I
-			var/obj/item/projectile/P
+			var/obj/projectile/P
 
 			if(istype(I, /obj/item/gun/energy))
 				var/obj/item/gun/energy/energy_gun = G
@@ -235,7 +235,7 @@
 
 	if(!check_rights(R_DEBUG))	return
 	var/list/dellog = list("<B>List of things that have gone through qdel this round</B><BR><BR><ol>")
-	tim_sort(SSgarbage.items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
+	tim_sort(SSgarbage.items, cmp=GLOBAL_PROC_REF(cmp_qdel_item_time), associative = TRUE)
 	for(var/path in SSgarbage.items)
 		var/datum/qdel_item/I = SSgarbage.items[path]
 		dellog += "<li><u>[path]</u><ul>"
@@ -281,7 +281,7 @@
 	render_stats(SSoverlays.stats, src)
 
 // Render stats list for round-end statistics.
-/proc/render_stats(list/stats, user, sort = /proc/cmp_generic_stat_item_time)
+/proc/render_stats(list/stats, user, sort = GLOBAL_PROC_REF(cmp_generic_stat_item_time))
 	tim_sort(stats, sort, TRUE)
 
 	var/list/lines = list()
@@ -723,27 +723,23 @@
 		to_chat(usr,"<span class='warning'>Target already has a NIF.</span>")
 		return
 
-	if(H.species.species_flags & NO_SCAN)
-		var/obj/item/nif/S = /obj/item/nif/bioadap
-		input_NIF = initial(S.name)
-		new /obj/item/nif/bioadap(H)
+	//if the admins want to adminbus a prommie with a full veymed, let them. screw the system. NIFs aren't in the plans to last long anyways. :^)
+	var/list/NIF_types = typesof(/obj/item/nif)
+	var/list/NIFs = list()
+
+	for(var/NIF_type in NIF_types)
+		var/obj/item/nif/S = NIF_type
+		NIFs[capitalize(initial(S.name))] = NIF_type
+
+	var/list/show_NIFs = sortList(NIFs) // the list that will be shown to the user to pick from
+
+	input_NIF = input("Pick the NIF type","Quick NIF") in show_NIFs
+	var/chosen_NIF = NIFs[capitalize(input_NIF)]
+
+	if(chosen_NIF)
+		new chosen_NIF(H)
 	else
-		var/list/NIF_types = typesof(/obj/item/nif)
-		var/list/NIFs = list()
-
-		for(var/NIF_type in NIF_types)
-			var/obj/item/nif/S = NIF_type
-			NIFs[capitalize(initial(S.name))] = NIF_type
-
-		var/list/show_NIFs = sortList(NIFs) // the list that will be shown to the user to pick from
-
-		input_NIF = input("Pick the NIF type","Quick NIF") in show_NIFs
-		var/chosen_NIF = NIFs[capitalize(input_NIF)]
-
-		if(chosen_NIF)
-			new chosen_NIF(H)
-		else
-			new /obj/item/nif(H)
+		new /obj/item/nif(H)
 
 	log_and_message_admins("[key_name(src)] Quick NIF'd [H.real_name] with a [input_NIF].")
 	feedback_add_details("admin_verb","QNIF") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

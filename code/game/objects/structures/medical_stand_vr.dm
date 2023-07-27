@@ -164,7 +164,7 @@
 				update_icon()
 
 
-/obj/structure/medical_stand/attack_hand(mob/user as mob)
+/obj/structure/medical_stand/attack_hand(mob/user, list/params)
 	var/list/available_options = list()
 	if (tank)
 		available_options += "Toggle valve"
@@ -267,7 +267,7 @@
 	if(target.wear_mask && target != breather)
 		to_chat(user, "<span class='warning'>\The [target] is already wearing a mask.</span>")
 		return
-	if(target.head && (target.head.body_parts_covered & FACE))
+	if(target.head && (target.head.body_cover_flags & FACE))
 		to_chat(user, "<span class='warning'>Remove their [target.head] first.</span>")
 		return
 	if(!tank)
@@ -400,7 +400,7 @@
 	if(beaker)
 		if(mode) // Give blood
 			if(beaker.volume > 0)
-				beaker.reagents.trans_to_mob(attached, transfer_amount, CHEM_BLOOD)
+				beaker.reagents.trans_to_mob(attached, transfer_amount, CHEM_INJECT)
 				update_icon()
 		else // Take blood
 			var/amount = beaker.reagents.maximum_volume - beaker.reagents.total_volume

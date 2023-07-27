@@ -421,6 +421,14 @@
 	name = "Full Head Color"
 	id = "marking_head_full"
 	icon_state = "fullhead"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_HEAD)
+
+/datum/sprite_accessory/marking/nosehuman
+	name = "Human Nose Color"
+	id = "marking_nose"
+	icon_state = "nose"
+	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/jackal_backpattern

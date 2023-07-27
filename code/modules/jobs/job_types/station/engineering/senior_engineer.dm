@@ -12,8 +12,16 @@
 	idtype = /obj/item/card/id/engineering/engineer
 	pto_type = PTO_ENGINEERING
 
-	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics)
-	minimal_access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction)
+	minimal_access = list(
+		ACCESS_COMMAND_EVA,
+		ACCESS_ENGINEERING_ATMOS,
+		ACCESS_ENGINEERING_MAIN,
+		ACCESS_ENGINEERING_ENGINE,
+		ACCESS_ENGINEERING_TECHSTORAGE,
+		ACCESS_ENGINEERING_MAINT,
+		ACCESS_ENGINEERING_AIRLOCK,
+		ACCESS_ENGINEERING_CONSTRUCTION,
+	)
 
 	minimal_player_age = 14
 
@@ -25,10 +33,10 @@
 					and making sure the Chief's orders are followed to the letter. You are not in command of the Engineering departement."
 
 	alt_titles = list(
-		"Artificer-Adept" = /datum/prototype/alt_title/artificer_adept
+		"Artificer-Adept" = /datum/prototype/struct/alt_title/artificer_adept
 		)
 
-/datum/prototype/alt_title/artificer_adept
+/datum/prototype/struct/alt_title/artificer_adept
 	title = "Artificer-Adept"
 	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds

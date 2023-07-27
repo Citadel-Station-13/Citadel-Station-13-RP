@@ -23,7 +23,7 @@
 	//Used to stop deepfried meat from looking like slightly tanned raw meat, and make it actually look cooked
 	center_of_mass = list("x"=16, "y"=16)
 	w_class = ITEMSIZE_SMALL
-	force = 1
+	damage_force = 1
 
 /obj/item/reagent_containers/food/snacks/Initialize(mapload)
 	. = ..()
@@ -44,7 +44,10 @@
 				M.put_in_hands(trash)
 		qdel(src)
 
-/obj/item/reagent_containers/food/snacks/attack_self(mob/user as mob)
+/obj/item/reagent_containers/food/snacks/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
 
 /obj/item/reagent_containers/food/snacks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -139,7 +142,7 @@
 
 	return 0
 
-/obj/item/reagent_containers/food/snacks/examine(mob/user)
+/obj/item/reagent_containers/food/snacks/examine(mob/user, dist)
 	. = ..()
 	if (coating) // BEGIN CITADEL CHANGE
 		. += "<span class='notice'>It's coated in [coating.name]!</span>"
@@ -608,13 +611,13 @@
 	. = ..()
 	reagents.add_reagent("egg", 3)
 
-/obj/item/reagent_containers/food/snacks/egg/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(istype(O,/obj/machinery/microwave))
+/obj/item/reagent_containers/food/snacks/egg/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(istype(target,/obj/machinery/microwave))
 		return ..()
-	if(!(proximity && O.is_open_container()))
+	if(!((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && target.is_open_container()))
 		return
-	to_chat(user, "You crack \the [src] into \the [O].")
-	reagents.trans_to(O, reagents.total_volume)
+	to_chat(user, "You crack \the [src] into \the [target].")
+	reagents.trans_to(target, reagents.total_volume)
 	qdel(src)
 
 /obj/item/reagent_containers/food/snacks/egg/throw_impact(atom/hit_atom)
@@ -637,6 +640,11 @@
 		icon_state = "egg-[clr]"
 	else
 		. = ..()
+
+/obj/item/reagent_containers/food/snacks/egg/randomized/Initialize(mapload)
+	. = ..()
+	var/randeggicon = pick("egg-blue","egg-green","egg-orange","egg-purple","egg-red","egg-yellow","egg-rainbow")
+	icon_state = (randeggicon)
 
 /obj/item/reagent_containers/food/snacks/egg/blue
 	icon_state = "egg-blue"
@@ -759,14 +767,16 @@
 	toxin_type = "neurotoxic_protein"
 	toxin_amount = 2
 
-/obj/item/reagent_containers/food/snacks/carpmeat/sif/murkfish
-	toxin_type = "murk_protein"
-
 /obj/item/reagent_containers/food/snacks/carpmeat/fish // Removed toxin and added a bit more oomph
 	desc = "A fillet of fish meat."
 	toxin_amount = 0
 	toxin_type = null
 	nutriment_amt = 2
+
+/obj/item/reagent_containers/food/snacks/carpmeat/fish/murkfish
+	desc = "A fillet of murkfish meat."
+	filling_color = "#4d331a"
+	color = "#4d331a"
 
 /obj/item/reagent_containers/food/snacks/carpmeat/fish/Initialize(mapload)
 	. = ..()
@@ -920,6 +930,9 @@
 	var/has_been_heated = 0
 
 /obj/item/reagent_containers/food/snacks/donkpocket/sinpocket/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(has_been_heated)
 		to_chat(user, "<span class='notice'>The heating chemicals have already been spent.</span>")
 		return
@@ -1835,7 +1848,10 @@
 	. = ..()
 	reagents.add_reagent("protein", 10)
 
-/obj/item/reagent_containers/food/snacks/monkeycube/attack_self(mob/user as mob)
+/obj/item/reagent_containers/food/snacks/monkeycube/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(wrapped)
 		Unwrap(user)
 
@@ -2131,6 +2147,20 @@
 /obj/item/reagent_containers/food/snacks/jelliedtoast/slime/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("slimejelly", 5)
+
+/obj/item/reagent_containers/food/snacks/gluetoast
+	name = "Glue Toast"
+	desc = "A slice of bread covered with... delicious.... glue?"
+	icon_state = "gluetoast"
+	trash = /obj/item/trash/plate
+	filling_color = "#fff6f6"
+	nutriment_amt = 5
+	nutriment_desc = list("toasted bread" = 2, "delicious glue" = 2)
+
+/obj/item/reagent_containers/food/snacks/gluetoast/Initialize(mapload)
+	. = ..()
+	bitesize = 1
+	reagents.add_reagent("glue", 5)
 
 /obj/item/reagent_containers/food/snacks/jellyburger
 	name = "Jelly Burger"
@@ -2499,6 +2529,8 @@
 	. = ..()
 	reagents.add_reagent("nutriment", 4)
 	bitesize = 4
+	ADD_TRAIT(src, GOOD_QUALITY_BAIT_TRAIT, INNATE_TRAIT)
+	ADD_TRAIT(src, FISHING_BAIT_TRAIT, INNATE_TRAIT)
 
 /////////////////////////////////////////////////Sliceable////////////////////////////////////////
 // All the food items that can be sliced into smaller bits like Meatbread and Cheesewheels
@@ -3231,7 +3263,7 @@
 	icon_state = "pizzabox[boxes.len+1]"
 	add_overlay(overlays_to_add)
 
-/obj/item/pizzabox/attack_hand( mob/user as mob )
+/obj/item/pizzabox/attack_hand(mob/user, list/params)
 
 	if( open && pizza )
 		user.put_in_hands( pizza )
@@ -3256,7 +3288,10 @@
 		return
 	. = ..()
 
-/obj/item/pizzabox/attack_self( mob/user as mob )
+/obj/item/pizzabox/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	if( boxes.len > 0 )
 		return
@@ -3386,12 +3421,6 @@
 	icon_state = "vox_jerky"
 	nutriment_amt = 6
 	nutriment_desc = list("spicy teriyaki" = 6)
-
-/obj/item/reagent_containers/food/snacks/voxjerky/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 6)
-	reagents.add_reagent("phoron", 6)
-	bitesize = 2
 
 ///////////////////////////////////////////
 // new old food stuff from bs12
@@ -3698,7 +3727,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/unajerky/Initialize(mapload)
 		. = ..()
 		reagents.add_reagent("protein", 10)
-		reagents.add_reagent("capsaicin", 2)
+		reagents.add_reagent("hexaisin", 3)
 		bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/croissant
@@ -3965,9 +3994,9 @@ END CITADEL CHANGE */
 	bitesize = 3
 
 //Code for dipping food in batter
-/obj/item/reagent_containers/food/snacks/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(O.is_open_container() && O.reagents && !(istype(O, /obj/item/reagent_containers/food)))
-		for (var/r in O.reagents.reagent_list)
+/obj/item/reagent_containers/food/snacks/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(target.is_open_container() && target.reagents && !(istype(target, /obj/item/reagent_containers/food)))
+		for (var/r in target.reagents.reagent_list)
 
 			var/datum/reagent/R = r
 			if (istype(R, /datum/reagent/nutriment/coating))
@@ -4004,8 +4033,8 @@ END CITADEL CHANGE */
 	var/id = C.id
 
 	//First make sure there's space for our batter
-	if (reagents.get_free_space() < req+5)
-		var/extra = req+5 - reagents.get_free_space()
+	if (reagents.available_volume() < req+5)
+		var/extra = req+5 - reagents.available_volume()
 		reagents.maximum_volume += extra
 
 	//Suck the coating out of the holder
@@ -4796,7 +4825,7 @@ END CITADEL CHANGE */
 	bitesize = 1
 	nutriment_amt = 10
 
-/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user)
+/obj/item/reagent_containers/food/snacks/chipplate/attack_hand(mob/user, list/params)
 	. = ..()
 	var/obj/item/reagent_containers/food/snacks/returningitem = new vendingobject(loc)
 	returningitem.reagents.clear_reagents()
@@ -5572,13 +5601,13 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("sifsap", 2)
 
-/obj/item/reagent_containers/food/snacks/siffruit/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(istype(O,/obj/machinery/microwave))
+/obj/item/reagent_containers/food/snacks/siffruit/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(istype(target,/obj/machinery/microwave))
 		return ..()
-	if(!(proximity && O.is_open_container()))
+	if(!((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && target.is_open_container()))
 		return
-	to_chat(user, "<span class='notice'>You tear \the [src]'s sac open, pouring it into \the [O].</span>")
-	reagents.trans_to(O, reagents.total_volume)
+	to_chat(user, "<span class='notice'>You tear \the [src]'s sac open, pouring it into \the [target].</span>")
+	reagents.trans_to(target, reagents.total_volume)
 	qdel(src)
 
 /obj/item/reagent_containers/food/snacks/baschbeans

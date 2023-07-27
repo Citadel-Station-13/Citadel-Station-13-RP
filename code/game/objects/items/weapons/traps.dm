@@ -10,7 +10,7 @@
 	throw_force = 0
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)
-	matter = list(MAT_STEEL = 18750)
+	materials = list(MAT_STEEL = 18750)
 	buckle_restrained_resist_time = 15 SECONDS
 	var/deployed = 0
 	var/camo_net = FALSE
@@ -39,7 +39,10 @@
 	user.visible_message("<span class='danger'>[user] is putting the [src.name] on [T.his] head! It looks like [T.hes] trying to commit suicide.</span>")
 	return (BRUTELOSS)
 
-/obj/item/beartrap/attack_self(mob/user as mob)
+/obj/item/beartrap/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	..()
 	if(!deployed)
 		user.visible_message(
@@ -82,7 +85,7 @@
 	if(!has_buckled_mobs())
 		anchored = FALSE
 
-/obj/item/beartrap/attack_hand(mob/user)
+/obj/item/beartrap/attack_hand(mob/user, list/params)
 	// check unbuckle first
 	if(click_unbuckle_interaction(user))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -133,7 +136,7 @@
 	// allow it so they can do buckle interactions at all
 	buckle_allowed = TRUE
 	buckle_mob(L, BUCKLE_OP_FORCE)
-	L.Stun(stun_length)
+	L.afflict_stun(20 * stun_length)
 	to_chat(L, "<span class='danger'>The steel jaws of \the [src] bite into you, trapping you in place!</span>")
 	deployed = FALSE
 

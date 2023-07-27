@@ -34,7 +34,7 @@
 	if(!M.apply_damage(base_damage, BRUTE, target_zone, blocked, soaked, used_weapon=src))
 		return 0
 
-/obj/effect/plant/attack_hand(var/mob/user)
+/obj/effect/plant/attack_hand(mob/user, list/params)
 	manual_unbuckle(user)
 
 /obj/effect/plant/attack_generic(var/mob/user)
@@ -69,15 +69,9 @@
 
 
 /obj/effect/plant/proc/unbuckle()
-	if(has_buckled_mobs())
-		for(var/A in buckled_mobs)
-			var/mob/living/L = A
-			if(L.buckled == src)
-				L.buckled = null
-				L.anchored = initial(L.anchored)
-				L.update_canmove()
-		buckled_mobs = list()
-	return
+	if(!has_buckled_mobs())
+		return
+	unbuckle_all_mobs(BUCKLE_OP_FORCE)
 
 /obj/effect/plant/proc/manual_unbuckle(mob/user as mob)
 	if(has_buckled_mobs())
@@ -131,11 +125,11 @@
 				buckle_mob(victim)
 				victim.setDir(pick(GLOB.cardinal))
 				to_chat(victim, "<span class='danger'>Tendrils [pick("wind", "tangle", "tighten")] around you!</span>")
-				victim.Weaken(1)
+				victim.afflict_paralyze(20 * 1)
 				victim.adjustToxLoss(rand(0.5,1.25))
 				seed.do_thorns(victim,src)
 			else // Adding a non-grab attack chance since we will be increasing the rate at which the vines check for nearby targets
 				src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and swipe across [victim]!</span>")
-				victim.Weaken(1.5)
+				victim.afflict_paralyze(20 * 1.5)
 				victim.adjustToxLoss(rand(1,3.5))
 				attack_mob(victim,rand(2,3.5))

@@ -86,7 +86,7 @@
 	var/list/log = list()
 
 	/// Default access for checking logs is cargo.
-	var/req_log_access = access_cargo
+	var/req_log_access = ACCESS_SUPPLY_BAY
 	/// Defaults to 0, set to anything else for vendor to have logs.
 	var/has_logs = NONE
 
@@ -281,7 +281,7 @@
 /obj/machinery/vending/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/vending/attack_hand(mob/user as mob)
+/obj/machinery/vending/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
@@ -682,8 +682,8 @@
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a friend?;Quite delighted to serve you!;Is nobody thirsty on this station?"
 	product_ads = "Drink up!;Booze is good for you!;Alcohol is humanity's best friend.;Quite delighted to serve you!;Care for a nice, cold beer?;Nothing cures you like booze!;Have a sip!;Have a drink!;Have a beer!;Beer is good for you!;Only the finest alcohol!;Best quality booze since 2053!;Award-winning wine!;Maximum alcohol!;Man loves beer.;A toast for progress!"
-	req_access = list(access_bar)
-	req_log_access = access_bar
+	req_access = list(ACCESS_GENERAL_BAR)
+	req_log_access = ACCESS_GENERAL_BAR
 	has_logs = 1
 
 /obj/machinery/vending/assist
@@ -881,7 +881,7 @@
 	product_slogans = "Carts to go!"
 	icon_state = "cart"
 	icon_deny = "cart-deny"
-	req_access = list(access_hop)
+	req_access = list(ACCESS_COMMAND_HOP)
 	products = list(
 		/obj/item/cartridge/medical = 10,
 		/obj/item/cartridge/engineering = 10,
@@ -892,7 +892,7 @@
 		/obj/item/cartridge/captain = 3,
 		/obj/item/cartridge/quartermaster = 10,
 	)
-	req_log_access = access_hop
+	req_log_access = ACCESS_COMMAND_HOP
 	has_logs = 1
 
 /obj/machinery/vending/cigarette
@@ -942,7 +942,7 @@
 	icon_state = "med"
 	icon_deny = "med-deny"
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 	products = list(
 		/obj/item/reagent_containers/glass/bottle/antitoxin = 4,
 		/obj/item/reagent_containers/glass/bottle/inaprovaline = 4,
@@ -968,6 +968,7 @@
 		/obj/item/storage/single_use/med_pouch/oxyloss = 3,
 		/obj/item/storage/single_use/med_pouch/burn = 3,
 		/obj/item/storage/single_use/med_pouch/trauma = 3,
+		/obj/item/storage/hypokit = 6,
 	)
 	contraband = list(
 		/obj/item/reagent_containers/pill/tox = 3,
@@ -975,7 +976,7 @@
 		/obj/item/reagent_containers/pill/antitox = 6,
 	)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 /obj/machinery/vending/phoronresearch
@@ -991,7 +992,7 @@
 		/obj/item/assembly/prox_sensor = 6,
 		/obj/item/assembly/igniter = 6,
 	)
-	req_log_access = access_rd
+	req_log_access = ACCESS_SCIENCE_RD
 	has_logs = 1
 
 /obj/machinery/vending/wallmed1
@@ -1014,7 +1015,7 @@
 		/obj/item/reagent_containers/syringe/antiviral = 4,
 		/obj/item/reagent_containers/pill/tox = 1,
 	)
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 // Modified version from tether_things.dm
@@ -1041,7 +1042,7 @@
 		/obj/item/healthanalyzer = 1,
 	)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 /obj/machinery/vending/wallmed2
@@ -1066,7 +1067,7 @@
 	contraband = list(
 		/obj/item/reagent_containers/pill/tox = 3,
 	)
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 /obj/machinery/vending/security
@@ -1075,7 +1076,7 @@
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	products = list(
 		/obj/item/handcuffs = 8,
 		/obj/item/grenade/flashbang = 4,
@@ -1095,7 +1096,7 @@
 		/obj/item/clothing/glasses/sunglasses = 2,
 		/obj/item/storage/box/donut = 2,
 	)
-	req_log_access = access_armory
+	req_log_access = ACCESS_SECURITY_ARMORY
 	has_logs = 1
 
 /obj/machinery/vending/hydronutrients
@@ -1167,6 +1168,7 @@
 		/obj/item/seeds/shrinkshroom = 3,
 		/obj/item/seeds/megashroom = 3,
 		/obj/item/seeds/peaseed = 3,
+		/obj/item/seeds/tobaccoseed = 3,
 	)
 	contraband = list(
 		/obj/item/seeds/amanitamycelium = 2,
@@ -1180,6 +1182,7 @@
 	)
 	premium = list(
 		/obj/item/toy/waterflower = 1,
+		/obj/item/toy/gnome = 1,
 	)
 
 /**
@@ -1277,7 +1280,7 @@
 	desc = "Tools for tools."
 	icon_state = "tool"
 	icon_deny = "tool-deny"
-	//req_access = list(access_maint_tunnels) //Maintenance access
+	//req_access = list(ACCESS_ENGINEERING_MAINT) //Maintenance access
 	products = list(
 		/obj/item/stack/cable_coil/random = 10,
 		/obj/item/tool/crowbar = 5,
@@ -1301,7 +1304,7 @@
 	premium = list(
 		/obj/item/clothing/gloves/yellow = 1,
 	)
-	req_log_access = access_ce
+	req_log_access = ACCESS_ENGINEERING_CE
 	has_logs = 1
 
 /obj/machinery/vending/engivend
@@ -1309,7 +1312,7 @@
 	desc = "Spare tool vending. What? Did you expect some witty description?"
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	products = list(
 		/obj/item/geiger_counter = 4,
 		/obj/item/clothing/glasses/meson = 2,
@@ -1322,7 +1325,7 @@
 		/obj/item/circuitboard/status_display = 2,
 		/obj/item/circuitboard/ai_status_display = 2,
 		/obj/item/circuitboard/newscaster = 2,
-		/obj/item/circuitboard/holopad = 2,
+		/obj/item/circuitboard/machine/holopad = 2,
 		/obj/item/circuitboard/intercom = 4,
 		/obj/item/circuitboard/security/telescreen/entertainment = 4,
 		/obj/item/stock_parts/motor = 2,
@@ -1350,7 +1353,7 @@
 		/obj/item/storage/belt/utility = 3,
 	)
 	product_records = list()
-	req_log_access = access_ce
+	req_log_access = ACCESS_ENGINEERING_CE
 	has_logs = 1
 
 /obj/machinery/vending/engineering
@@ -1358,7 +1361,7 @@
 	desc = "Everything you need for do-it-yourself station repair."
 	icon_state = "engi"
 	icon_deny = "engi-deny"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	products = list(
 		/obj/item/clothing/under/rank/chief_engineer = 4,
 		/obj/item/clothing/under/rank/engineer = 4,
@@ -1388,7 +1391,7 @@
 	// There was an incorrect entry (cablecoil/power).  I improvised to cablecoil/heavyduty.
 	// Another invalid entry, /obj/item/circuitry.  I don't even know what that would translate to, removed it.
 	// The original products list wasn't finished.  The ones without given quantities became quantity 5.  -Sayu
-	req_log_access = access_ce
+	req_log_access = ACCESS_ENGINEERING_CE
 	has_logs = 1
 
 /obj/machinery/vending/robotics
@@ -1396,7 +1399,7 @@
 	desc = "All the tools you need to create your own robot army."
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
-	req_access = list(access_robotics)
+	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	products = list(
 		/obj/item/clothing/suit/storage/toggle/labcoat = 4,
 		/obj/item/clothing/under/rank/roboticist = 4,
@@ -1414,7 +1417,7 @@
 		/obj/item/tool/crowbar = 5,
 	)
 	//everything after the power cell had no amounts, I improvised.  -Sayu
-	req_log_access = access_rd
+	req_log_access = ACCESS_SCIENCE_RD
 	has_logs = 1
 
 /obj/machinery/vending/giftvendor
@@ -1459,6 +1462,7 @@
 		/obj/item/toy/plushie/bear_space = 1,
 		/obj/item/toy/plushie/doll = 3,
 		/obj/item/storage/daki = 10,
+		/obj/item/toy/gnome = 4,
 	)
 	premium = list(
 		/obj/item/reagent_containers/food/drinks/bottle/champagne = 1,
@@ -1501,6 +1505,7 @@
 		/obj/item/toy/plushie/bear_space = 50,
 		/obj/item/toy/plushie/doll = 50,
 		/obj/item/storage/daki = 100,
+		/obj/item/toy/gnome = 20,
 	)
 
 /obj/machinery/vending/fishing
@@ -1509,22 +1514,32 @@
 	product_ads = "Tired of trawling across the ocean floor? Get our loot!;Chum and rods.;Don't get baited into fishing without us!;Baby is your star-sign pisces? We'd make a perfect match.;Do not fear, plenty to catch around here.;Don't get reeled in helplessly, get your own rod today!"
 	icon_state = "fishvendor"
 	products = list(
-		/obj/item/material/fishing_rod/modern/cheap = 10,
-		/obj/item/storage/box/wormcan = 20,
-		/obj/item/material/fishing_net = 2,
-		/obj/item/stack/cable_coil/random = 10,
+		/obj/item/fishing_rod = 10,
+		/obj/item/fishing_hook = 20,
+		/obj/item/fishing_line = 20,
+		/obj/item/fishing_hook/magnet = 10,
+		/obj/item/fishing_hook/rescue = 10,
+		/obj/item/fishing_hook/shiny = 10,
+		/obj/item/fishing_hook/weighted = 10,
+		/obj/item/fishing_line = 20,
+		/obj/item/fishing_line/bouncy = 10,
+		/obj/item/fishing_line/reinforced = 10,
+		/obj/item/bait_can/worm = 80,
+		/obj/item/aquarium_kit = 20,
+		/obj/item/storage/box/aquarium_props = 20,
+		/obj/item/storage/fish_case = 30,
+		/obj/item/book/fish_catalog = 20,
 	)
+	price_default = 10
 	prices = list(
-		/obj/item/material/fishing_rod/modern/cheap = 30,
-		/obj/item/storage/box/wormcan = 12,
-		/obj/item/material/fishing_net = 30,
-		/obj/item/stack/cable_coil/random = 4,
+		/obj/item/fishing_rod = 50,
+		/obj/item/bait_can/worm = 5,
+		/obj/item/aquarium_kit = 50,
+		/obj/item/storage/box/aquarium_props = 25,
 	)
 
 //Custom vendors
 
-
-//I want this not just as part of the zoo. ;v
 /obj/machinery/vending/food
 	name = "Food-O-Mat"
 	desc = "A technological marvel, supposedly able to cook or mix a large variety of food or drink."
@@ -1615,7 +1630,7 @@
 	product_ads = "The true life juice!;Vampire's choice!;Home-grown blood only!;Donate today, be saved tomorrow!;Approved by Zeng-Hu Pharmaceuticals Incorporated!; Curse you, Vey-Med artificial blood!"
 	icon_state = "blood"
 	idle_power_usage = 211
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 	products = list(
 		/obj/item/reagent_containers/blood/prelabeled/APlus = 3,
 		/obj/item/reagent_containers/blood/prelabeled/AMinus = 3,
@@ -1632,7 +1647,7 @@
 	contraband = list(
 		/obj/item/reagent_containers/glass/bottle/stoxin = 2,
 	)
-	req_log_access = access_cmo
+	req_log_access = ACCESS_MEDICAL_CMO
 	has_logs = 1
 
 /obj/machinery/vending/loadout
@@ -1882,6 +1897,7 @@
 		/obj/item/clothing/under/cheongsam/blue = 5,
 		/obj/item/clothing/under/cheongsam/black = 5,
 		/obj/item/clothing/under/cheongsam/darkred = 5,
+		/obj/item/clothing/under/cheongsam/darkgreen = 5,
 		/obj/item/clothing/under/cheongsam/green = 5,
 		/obj/item/clothing/under/cheongsam/purple = 5,
 		/obj/item/clothing/under/cheongsam/darkblue = 5,
@@ -2458,3 +2474,26 @@
 		/obj/item/reagent_containers/hypospray/glukoz/pyrholidon = 50,
 		/obj/item/reagent_containers/hypospray/glukoz/viraplus = 25,
 	)
+
+/obj/machinery/vending/tool/adherent
+	name = "\improper Adherent Tool Dispenser"
+	desc = "This looks like a heavily modified vending machine. It contains technology that doesn't appear to be human in origin."
+	product_ads = "\[C#\]\[Cb\]\[Db\]. \[Ab\]\[A#\]\[Bb\]. \[E\]\[C\]\[Gb\]\[B#\]. \[C#\].;\[Cb\]\[A\]\[F\]\[Cb\]\[C\]\[E\]\[Cb\]\[E\]\[Fb\]. \[G#\]\[C\]\[Ab\]\[A\]\[C#\]\[B\]. \[Eb\]\[choral\]. \[E#\]\[C#\]\[Ab\]\[E\]\[C#\]\[Fb\]\[Cb\]\[F#\]\[C#\]\[Gb\]."
+	icon_state = "adh-tool"
+	icon_deny = "adh-tool-deny"
+	icon_vend = "adh-tool-vend"
+	vend_delay = 5
+	products = list(/obj/item/weldingtool/electric/crystal = 5,
+					/obj/item/tool/wirecutters/crystal = 5,
+					/obj/item/tool/screwdriver/crystal = 5,
+					/obj/item/tool/crowbar/crystal = 5,
+					/obj/item/tool/wrench/crystal = 5,
+					/obj/item/multitool/crystal = 5,
+					/obj/item/storage/belt/utility/crystal = 5,
+					/obj/item/storage/toolbox/crystal = 5)
+
+/obj/machinery/vending/tool/adherent/vend(datum/stored_item/vending_product/, mob/living/carbon/user)
+	if (emagged || istype(user) && user.species.name == SPECIES_ADHERENT)
+		return ..()
+	to_chat(user, SPAN_WARNING("\The [src] emits a discordant chime."))
+

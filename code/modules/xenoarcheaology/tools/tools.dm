@@ -4,7 +4,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "measuring"
 	origin_tech = list(TECH_MATERIAL = 1)
-	matter = list(MAT_STEEL = 100)
+	materials = list(MAT_STEEL = 100)
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/storage/bag/fossils
@@ -37,14 +37,17 @@
 	icon_state = "flashgun"
 	item_state = "lampgreen"
 	origin_tech = list(TECH_BLUESPACE = 3, TECH_MAGNET = 3, TECH_ARCANE = 1)
-	matter = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
+	materials = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 
 	var/last_scan_time = 0
 	var/scan_delay = 25
 
-/obj/item/ano_scanner/attack_self(var/mob/living/user)
+/obj/item/ano_scanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	interact(user)
 
 /obj/item/ano_scanner/interact(var/mob/living/user)
@@ -95,7 +98,7 @@
 	icon_state = "depth_scanner"
 	item_state = "analyzer"
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2, TECH_BLUESPACE = 2)
-	matter = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	var/list/positive_locations = list()
@@ -153,10 +156,13 @@
 
 			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
 
-/obj/item/depth_scanner/attack_self(var/mob/living/user)
+/obj/item/depth_scanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	ui_interact(user)
 
-/obj/item/depth_scanner/ui_state(mob/user)
+/obj/item/depth_scanner/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.deep_inventory_state
 
 /obj/item/depth_scanner/ui_interact(mob/user, datum/tgui/ui)
@@ -196,7 +202,7 @@
 
 	return data
 
-/obj/item/depth_scanner/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/depth_scanner/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -226,7 +232,7 @@
 	icon_state = "pinoff"	//pinonfar, pinonmedium, pinonclose, pinondirect, pinonnull
 	item_state = "electronic"
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 2, TECH_BLUESPACE = 3)
-	matter = list(MAT_STEEL = 1000, MAT_GLASS = 500)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500)
 	var/frequency = PUB_FREQ
 	var/scan_ticks = 0
 	var/obj/item/radio/target_radio
@@ -278,9 +284,12 @@
 			icon_state = "pinoff"
 
 /obj/item/beacon_locator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return ui_interact(user)
 
-/obj/item/beacon_locator/ui_state(mob/user)
+/obj/item/beacon_locator/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/beacon_locator/ui_interact(mob/user, datum/tgui/ui)
@@ -295,7 +304,7 @@
 	data["scan_ticks"] = scan_ticks
 	data["degrees"] = null
 	if(target_radio)
-		data["degrees"] = round(Get_Angle(get_turf(src), get_turf(target_radio)))
+		data["degrees"] = round(get_visual_angle(get_turf(src), get_turf(target_radio)))
 
 	data["rawfreq"] = frequency
 	data["minFrequency"] = RADIO_LOW_FREQ
@@ -303,7 +312,7 @@
 
 	return data
 
-/obj/item/beacon_locator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/beacon_locator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -325,7 +334,7 @@
 	item_state = "lampgreen"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3, TECH_BLUESPACE = 2, TECH_ARCANE = 1)
-	matter = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
+	materials = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	var/mode = 1 //Start off scanning. 1 = scanning, 0 = measuring
@@ -337,7 +346,10 @@
 	anomaly_scanner = new/obj/item/ano_scanner/integrated(src)
 	depth_scanner = new/obj/item/depth_scanner(src)
 
-/obj/item/xenoarch_multi_tool/attack_self(var/mob/living/user)
+/obj/item/xenoarch_multi_tool/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	depth_scanner.interact(usr)
 
 /obj/item/xenoarch_multi_tool/verb/swap_settings()

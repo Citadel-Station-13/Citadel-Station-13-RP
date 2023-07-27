@@ -11,7 +11,7 @@
 /datum/map_template/shuttle/overmap/generic/salamander_wreck
 	name = "OM Ship - Salamander Corvette Wreckage"
 	desc = "A medium multirole spacecraft, or at least what's left of it."
-	mappath = "_maps/submaps/level_specific/debrisfield_vr/salamander_wreck.dmm"
+	map_path = "maps/submaps/level_specific/debrisfield_vr/salamander_wreck.dmm"
 	annihilate = TRUE
 
 // The shuttle's area(s)
@@ -144,7 +144,7 @@
 	shuttle_type = /datum/shuttle/autodock/overmap/salamander
 
 // The 'ship'
-/obj/effect/overmap/visitable/ship/landable/salamander
+/obj/overmap/entity/visitable/ship/landable/salamander
 	scanner_name = "Salamander-class Corvette"
 	scanner_desc = @{"[i]Registration[/i]: ITV Independence
 [i]Class[/i]: Corvette
@@ -175,7 +175,7 @@
 	shuttle_type = /datum/shuttle/autodock/overmap/salamander_wreck
 
 // The 'ship'
-/obj/effect/overmap/visitable/ship/landable/salamander_wreck
+/obj/overmap/entity/visitable/ship/landable/salamander_wreck
 	scanner_name = "Wrecked Salamander-class Corvette"
 	scanner_desc = @{"[i]Registration[/i]: ITV Unity
 [i]Class[/i]: Corvette

@@ -36,7 +36,7 @@
 	parent_type = /datum
 	show_verb_panel = FALSE
 
-	//! Intrinsics
+	//? Intrinsics
 	/// did New() finish?
 	var/initialized = FALSE
 	/// Persistent round-by-round data holder
@@ -44,17 +44,25 @@
 	/// Database data
 	var/datum/player_data/player
 
-	//! Rendering
+	//? Connection
+	/// queued client security kick
+	var/queued_security_kick
+	/// currently age gate blocked
+	var/age_verification_open = FALSE
+	/// panic bunker is still resolving
+	var/panic_bunker_pending = FALSE
+
+	//? Rendering
 	/// Click catcher
 	var/atom/movable/screen/click_catcher/click_catcher
 	/// Parallax holder
 	var/datum/parallax_holder/parallax_holder
-
-	//! Perspectives
 	/// the perspective we're currently using
 	var/datum/perspective/using_perspective
+	/// Client global planes
+	var/datum/plane_holder/client_global/global_planes
 
-	//! Viewport
+	//? Viewport
 	/// what we *think* their current viewport size is in pixels
 	var/assumed_viewport_spx
 	/// what we *think* their current viewport size is in pixels
@@ -68,7 +76,7 @@
 	/// current view y - for fast access
 	var/current_viewport_height
 	/// if things are manipulating the viewport we don't want other things to touch it
-	var/viewport_rwlock = TRUE	//! default block so we can release it during init_viewport
+	var/viewport_rwlock = TRUE	//? default block so we can release it during init_viewport
 	/// viewport update queued?
 	var/viewport_queued = FALSE
 	/// forced temporary view
@@ -78,13 +86,13 @@
 	/// temporary view active?
 	var/using_temporary_viewsize = FALSE
 
-	//! Datum Menus
+	//? Datum Menus
 	/// menu button statuses
 	var/list/menu_buttons_checked = list()
 	/// menu group statuses
 	var/list/menu_group_status = list()
 
-	//! Statpanel
+	//? Statpanel
 	/// statpanel tab ; can be null (e.g. we're looking at verb tabs)
 	var/statpanel_tab
 	/// statpanel initialized
@@ -100,9 +108,22 @@
 	/// did we get autoswitched to byond stat for turf? if so we'll switch back when we un-list
 	var/statpanel_for_turf = FALSE
 
-	//! throttling
+	//? Throttling
 	/// block re-execution of expensive verbs
 	var/verb_throttle = 0
+
+	//? Cutscenes
+	/// active cutscene
+	var/datum/cutscene/cutscene
+	/// is the cutscene browser in use?
+	var/cutscene_browser = FALSE
+	/// is the cutscene system init'd?
+	var/cutscene_init = FALSE
+	/// is the cutscene browser ready?
+	var/cutscene_ready = FALSE
+	/// cutscene lockout: set after a browser synchronization command to delay the next one
+	/// since byond is deranged and will send winsets and browse calls out of order sometimes.
+	var/cutscene_lockout = FALSE
 
 		////////////////
 		//ADMIN THINGS//
@@ -158,16 +179,6 @@
 		////////////////////////////////////
 		//things that require the database//
 		////////////////////////////////////
-	///So admins know why it isn't working - Used to determine how old the account is - in days.
-	var/player_age = "(Requires database)"
-	///So admins know why it isn't working - Used to determine what other accounts previously logged in from this ip
-	var/related_accounts_ip = "(Requires database)"
-	///So admins know why it isn't working - Used to determine what other accounts previously logged in from this computer id
-	var/related_accounts_cid = "(Requires database)"
- 	///Date that this account was first seen in the server
-	var/account_join_date = "(Requires database)"
-	///Age of byond account in days
-	var/account_age = "(Requires database)"
 	///Track hours of leave accured for each department.
 	var/list/department_hours = list()
 
@@ -200,3 +211,34 @@
 
 	/// If this client has been fully initialized or not
 	var/fully_created = FALSE
+
+/client/vv_edit_var(var_name, var_value)
+	switch (var_name)
+		if (NAMEOF(src, holder))
+			return FALSE
+		if (NAMEOF(src, ckey))
+			return FALSE
+		if (NAMEOF(src, key))
+			return FALSE
+		if(NAMEOF(src, view))
+			change_view(var_value, TRUE)
+			return TRUE
+	return ..()
+
+/**
+ * are we a guest account?
+ */
+/client/proc/is_guest()
+	return IsGuestKey(key)
+
+/**
+ * are we localhost?
+ */
+/client/proc/is_localhost()
+	return isnull(address) || (address in list("127.0.0.1", "::1"))
+
+/**
+ * are we any sort of staff rank?
+ */
+/client/proc/is_staff()
+	return !isnull(holder)

@@ -7,13 +7,13 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	name = "mop"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "mop"
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 10.0
 	throw_speed = 5
 	throw_range = 10
 	w_class = ITEMSIZE_NORMAL
 	attack_verb = list("mopped", "bashed", "bludgeoned", "whacked")
-	matter = list(MAT_PLASTIC = 3)
+	materials = list(MAT_PLASTIC = 3)
 	var/mopping = 0
 	var/mopcount = 0
 	var/mopspeed = 23
@@ -26,7 +26,10 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	create_reagents(30)
 
 
-/obj/item/mop/attack_self(var/mob/user)
+/obj/item/mop/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	.=..()
 	if (mopmode == MOPMODE_TILE)
 		mopmode = MOPMODE_SWEEP
@@ -35,13 +38,13 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 		mopmode = MOPMODE_TILE
 		to_chat(user, "<span class='warning'>You will now thoroughly clean a single tile at a time</span>")
 
-/obj/item/mop/afterattack(atom/A, mob/user, proximity)
-	if(!proximity) return
-	if(istype(A, /turf) || istype(A, /obj/effect/debris/cleanable) || istype(A, /obj/effect/overlay))
+/obj/item/mop/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
+	if(istype(target, /turf) || istype(target, /obj/effect/debris/cleanable) || istype(target, /obj/effect/overlay))
 		if(reagents.total_volume < 1)
 			to_chat(user, "<span class='warning'>Your mop is dry!</span>")
 			return
-		var/turf/T = get_turf(A)
+		var/turf/T = get_turf(target)
 		if(!T)
 			return
 		spawn()
@@ -57,7 +60,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 		else if (mopmode == MOPMODE_SWEEP)
 			sweep(user, T)
 	else
-		makeWet(A, user)
+		makeWet(target, user)
 
 // TO DO : MAKE SWEEPING WORK
 
@@ -111,7 +114,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 		else if (user)
 			//You hit a wall!
 			user.setClickCooldown(2)
-			user.Stun(2)
+			user.afflict_stun(20 * 2)
 			shake_camera(user, 1, 1)
 			playsound(T,"thud", 20, 1, -3)
 			to_chat(user, "<span class='warning'>There's not enough space for broad sweeps here!</span>")
@@ -142,7 +145,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	name = "advanced mop"
 	icon_state = "advmop"
 	item_state = "mop"
-	force = 6
+	damage_force = 6
 	throw_force = 11
 	mopspeed = 15
 	var/refill_enabled = TRUE //Self-refill toggle for when a janitor decides to mop with something other than water.
@@ -166,7 +169,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	if(reagents.total_volume < 30)
 		reagents.add_reagent(refill_reagent, refill_rate)
 
-/obj/item/mop/advanced/examine(mob/user)
+/obj/item/mop/advanced/examine(mob/user, dist)
 	. = ..()
 	. += "The condenser switch is set to <b>[refill_enabled ? "ON" : "OFF"]</b>."
 

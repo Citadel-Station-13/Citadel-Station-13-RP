@@ -39,7 +39,10 @@
 	item_state = "cyborg_upgrade"
 	var/heldname = "default name"
 
-/obj/item/borg/upgrade/rename/attack_self(mob/user as mob)
+/obj/item/borg/upgrade/rename/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	heldname = sanitizeSafe(input(user, "Enter new robot name", "Robot Reclassification", heldname), MAX_NAME_LEN)
 
 /obj/item/borg/upgrade/rename/action(var/mob/living/silicon/robot/R)
@@ -87,10 +90,10 @@
 	if(..())
 		return FALSE
 
-	if(R.speed == -1)
+	if(R.speed <= -0.5)
 		return FALSE
 
-	R.speed--
+	R.speed = -0.5
 	return TRUE
 
 

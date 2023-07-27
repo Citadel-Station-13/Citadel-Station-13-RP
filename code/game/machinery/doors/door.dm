@@ -34,8 +34,8 @@
 	var/close_door_at = 0 //When to automatically close the door, if possible
 
 	//Multi-tile doors
-	dir = EAST
 	var/width = 1
+	var/autoset_dir = TRUE
 
 	// turf animation
 	var/atom/movable/overlay/c_animation = null
@@ -64,16 +64,18 @@
 
 	if(width > 1)
 		if(dir in list(EAST, WEST))
-			bound_width = width * world.icon_size
-			bound_height = world.icon_size
-		else
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
+		else
+			bound_width = width * world.icon_size
+			bound_height = world.icon_size
 
 	health = maxhealth
 	update_icon()
 
 	update_nearby_tiles()
+	if(autoset_dir)
+		setDir(dir)
 
 /obj/machinery/door/Destroy()
 	density = FALSE
@@ -129,7 +131,7 @@
 			if(mecha.occupant && (src.allowed(mecha.occupant) || src.check_access_list(mecha.operation_req_access)))
 				open()
 			else
-				do_animate("deny")
+				do_animate(DOOR_ANIMATION_DENY)
 		return
 	if(istype(AM, /obj/structure/bed/chair/wheelchair))
 		var/obj/structure/bed/chair/wheelchair/wheel = AM
@@ -137,7 +139,7 @@
 			if(wheel.pulling && (src.allowed(wheel.pulling)))
 				open()
 			else
-				do_animate("deny")
+				do_animate(DOOR_ANIMATION_DENY)
 
 /obj/machinery/door/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!opacity && mover.check_pass_flags(ATOM_PASS_GLASS))
@@ -159,14 +161,12 @@
 		return
 	src.add_fingerprint(user)
 	if(density)
-		if(istype(user, /mob/living/simple_mob) && !(user.ckey))
-			do_animate("smdeny")
-		else if(allowed(user))
+		if(allowed(user))
 			open()
 		else
-			do_animate("deny")
+			do_animate(DOOR_ANIMATION_DENY)
 
-/obj/machinery/door/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/door/bullet_act(var/obj/projectile/Proj)
 	..()
 
 	var/damage = Proj.get_structure_damage()
@@ -200,7 +200,7 @@
 /obj/machinery/door/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/door/attack_hand(mob/user as mob)
+/obj/machinery/door/attack_hand(mob/user, list/params)
 	return src.attackby(user, user)
 
 /obj/machinery/door/attack_tk(mob/user as mob)
@@ -278,12 +278,12 @@
 			user.setClickCooldown(user.get_attack_speed(W))
 			if(W.damtype == BRUTE || W.damtype == BURN)
 				user.do_attack_animation(src)
-				if(W.force < min_force)
+				if(W.damage_force < min_force)
 					user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
 				else
 					user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
 					playsound(src.loc, hitsound, 100, 1)
-					take_damage(W.force)
+					take_damage(W.damage_force)
 			return
 
 	if(src.operating > 0 || isrobot(user))
@@ -300,12 +300,12 @@
 		return
 
 	if(src.density)
-		do_animate("deny")
+		do_animate(DOOR_ANIMATION_DENY)
 	return
 
 /obj/machinery/door/emag_act(var/remaining_charges)
 	if(density && operable())
-		do_animate("spark")
+		do_animate(DOOR_ANIMATION_SPARK)
 		sleep(6)
 		open()
 		operating = -1
@@ -326,7 +326,7 @@
 	return
 
 
-/obj/machinery/door/examine(mob/user)
+/obj/machinery/door/examine(mob/user, dist)
 	. = ..()
 	if(src.health <= 0)
 		. += "<span class = 'notice'>The [src] is broken!</span>"
@@ -388,36 +388,30 @@
 
 /obj/machinery/door/proc/do_animate(animation)
 	switch(animation)
-		if("opening")
+		if(DOOR_ANIMATION_OPEN)
 			if(p_open)
 				flick("o_doorc0", src)
 			else
 				flick("doorc0", src)
-		if("closing")
+		if(DOOR_ANIMATION_CLOSE)
 			if(p_open)
 				flick("o_doorc1", src)
 			else
 				flick("doorc1", src)
-		if("spark")
+		if(DOOR_ANIMATION_SPARK)
 			if(density)
 				flick("door_spark", src)
-		if("deny")
+		if(DOOR_ANIMATION_DENY)
 			if(density && !(machine_stat & (NOPOWER|BROKEN)))
 				flick("door_deny", src)
 				playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)
-		if("smdeny")
-			if(density && !(machine_stat & (NOPOWER|BROKEN)))
-				flick("door_deny", src)
-	return
-
 
 /obj/machinery/door/proc/open(var/forced = 0)
 	if(!can_open(forced))
 		return
 	operating = 1
 
-	do_animate("opening")
-	icon_state = "door0"
+	do_animate(DOOR_ANIMATION_OPEN)
 	set_opacity(0)
 	sleep(3)
 	src.density = 0
@@ -444,7 +438,7 @@
 	operating = 1
 
 	close_door_at = 0
-	do_animate("closing")
+	do_animate(DOOR_ANIMATION_CLOSE)
 	sleep(3)
 	src.density = 1
 	explosion_resistance = initial(explosion_resistance)

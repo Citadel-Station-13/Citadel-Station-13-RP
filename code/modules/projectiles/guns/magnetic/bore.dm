@@ -14,7 +14,7 @@
 	wielded_item_state = "bore-wielded"
 	one_handed_penalty = 5
 
-	projectile_type = /obj/item/projectile/bullet/magnetic/bore
+	projectile_type = /obj/projectile/bullet/magnetic/bore
 
 	gun_unreliable = 0
 
@@ -27,7 +27,7 @@
 	var/ammo_material = MAT_PHORON
 	var/loading = FALSE
 
-/obj/item/gun/magnetic/matfed/examine(mob/user)
+/obj/item/gun/magnetic/matfed/examine(mob/user, dist)
 	. = ..()
 	if(mat_storage)
 		. += SPAN_NOTICE("It has [mat_storage] out of [max_mat_storage] units of [ammo_material] loaded.")
@@ -48,7 +48,7 @@
 	if(mat_storage)
 		. += image(icon, "[icon_state]_loaded")
 
-/obj/item/gun/magnetic/matfed/attack_hand(var/mob/user) // It doesn't keep a loaded item inside.
+/obj/item/gun/magnetic/matfed/attack_hand(mob/user, list/params) // It doesn't keep a loaded item inside.
 	if(user.get_inactive_held_item() == src)
 		var/obj/item/removing
 
@@ -168,7 +168,7 @@
 	description_fluff = "A revision of an aging Grayson design, the NanoTrasen Man-Portable Phorogenic Tunneler, or NT-MPPT is capable of drilling through longer swathes of rock, at the cost of slightly worse power efficiency than the Grayson design."
 	description_antag = "This device is exceptional at breaking down walls, though it is incredibly loud when doing so."
 	description_info = "The projectile of this tool will travel twelve tiles before dissipating, excavating mineral walls as it does so. It can be reloaded with phoron sheets, and can hold a maximum of ten sheets."
-	projectile_type = /obj/item/projectile/bullet/magnetic/bore/powerful
+	projectile_type = /obj/projectile/bullet/magnetic/bore/powerful
 	power_cost = 1000
 	max_mat_storage = 20000
 	manipulator = null

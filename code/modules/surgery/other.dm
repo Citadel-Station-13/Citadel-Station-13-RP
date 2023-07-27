@@ -26,9 +26,10 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if(!affected) return
 	var/internal_bleeding = 0
-	for(var/datum/wound/W in affected.wounds) if(W.internal)
-		internal_bleeding = 1
-		break
+	for(var/datum/wound/W as anything in affected.wounds)
+		if(W.internal)
+			internal_bleeding = 1
+			break
 
 	return affected.open == (affected.encased ? 3 : 2) && internal_bleeding
 
@@ -44,10 +45,18 @@
 	user.visible_message("<font color=#4F49AF>[user] has patched the damaged vein in [target]'s [affected.name] with \the [tool].</font>", \
 		"<font color=#4F49AF>You have patched the damaged vein in [target]'s [affected.name] with \the [tool].</font>")
 
-	for(var/datum/wound/W in affected.wounds) if(W.internal)
-		affected.wounds -= W
+	var/cured = FALSE
+	for(var/datum/wound/W as anything in affected.wounds)
+		if(!W.internal)
+			continue
+		cured = TRUE
+		affected.cure_exact_wound(W)
+	if(cured)
 		affected.update_damages()
-	if (ishuman(user) && prob(40)) user:bloody_hands(target, 0)
+
+	if (ishuman(user) && prob(40))
+		var/mob/living/carbon/human/H = user
+		H.bloody_hands(target, 0)
 
 /datum/surgery_step/fix_vein/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -101,7 +110,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, slicing an artery inside [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, slicing an artery inside [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(CUT, 20, 1)
+	affected.create_wound(CUT, 20, 1)
 
 ///////////////////////////////////////////////////////////////
 // Necrosis Surgery Step 2
@@ -154,7 +163,7 @@
 
 	var/obj/item/reagent_containers/container = tool
 
-	var/trans = container.reagents.trans_to_mob(target, container.amount_per_transfer_from_this, CHEM_BLOOD) //technically it's contact, but the reagents are being applied to internal tissue
+	var/trans = container.reagents.trans_to_mob(target, container.amount_per_transfer_from_this, CHEM_INJECT) //technically it's contact, but the reagents are being applied to internal tissue
 	if (trans > 0)
 		affected.status &= ~ORGAN_DEAD
 		affected.owner.update_icons_body()
@@ -170,7 +179,7 @@
 
 	var/obj/item/reagent_containers/container = tool
 
-	var/trans = container.reagents.trans_to_mob(target, container.amount_per_transfer_from_this, CHEM_BLOOD)
+	var/trans = container.reagents.trans_to_mob(target, container.amount_per_transfer_from_this, CHEM_INJECT)
 
 	user.visible_message("<font color='red'>[user]'s hand slips, applying [trans] units of the solution to the wrong place in [target]'s [affected.name] with the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, applying [trans] units of the solution to the wrong place in [target]'s [affected.name] with the [tool]!</font>")
@@ -205,22 +214,22 @@
 			return 0
 	if(!(target_zone == BP_TORSO))
 		return FALSE
-	var/obj/item/rig/R = target.get_rig(TRUE)
+	var/obj/item/hardsuit/R = target.get_hardsuit(TRUE)
 	if(!R)
 		return FALSE
 	return TRUE
 
 /datum/surgery_step/hardsuit/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/rig/rig = target.get_rig(TRUE)
-	user.visible_message("[user] starts cutting through the support systems of \the [rig] on [target] with \the [tool]." , \
-	"You start cutting through the support systems of \the [rig] on [target] with \the [tool].")
+	var/obj/item/hardsuit/hardsuit = target.get_hardsuit(TRUE)
+	user.visible_message("[user] starts cutting through the support systems of \the [hardsuit] on [target] with \the [tool]." , \
+	"You start cutting through the support systems of \the [hardsuit] on [target] with \the [tool].")
 	..()
 
 /datum/surgery_step/hardsuit/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/rig/rig = target.get_rig(TRUE)
-	rig.reset()
-	user.visible_message("<span class='notice'>[user] has cut through the support systems of \the [rig] on [target] with \the [tool].</span>", \
-		"<span class='notice'>You have cut through the support systems of \the [rig] on [target] with \the [tool].</span>")
+	var/obj/item/hardsuit/hardsuit = target.get_hardsuit(TRUE)
+	hardsuit.reset()
+	user.visible_message("<span class='notice'>[user] has cut through the support systems of \the [hardsuit] on [target] with \the [tool].</span>", \
+		"<span class='notice'>You have cut through the support systems of \the [hardsuit] on [target] with \the [tool].</span>")
 
 /datum/surgery_step/hardsuit/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='danger'>[user]'s [tool] can't quite seem to get through the metal...</span>", \
@@ -271,8 +280,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='danger'>[user]'s hand slips, and the mesh falls, with \the [tool] scraping [target]'s body.</span>", \
 	"<span class='danger'>Your hand slips, and the mesh falls, with \the [tool] scraping [target]'s body.</span>")
-	affected.createwound(CUT, 15)
-	affected.createwound(BRUISE, 10)
+	affected.create_wound(CUT, 15)
+	affected.create_wound(BRUISE, 10)
 	..()
 
 /datum/surgery_step/dehusk/relocateflesh
@@ -303,8 +312,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='danger'>[user] accidentally rips a massive chunk out of [target]'s flesh with \the [tool], causing massive damage.</span>", \
 	"<span class='danger'>You accidentally rip a massive chunk out of [target]'s flesh with \the [tool], causing massive damage.</span>")
-	affected.createwound(CUT, 25)
-	affected.createwound(BRUISE, 10)
+	affected.create_wound(CUT, 25)
+	affected.create_wound(BRUISE, 10)
 	..()
 
 /datum/surgery_step/dehusk/structfinish
@@ -332,7 +341,6 @@
 	"<span class='notice'>You finish recreating the missing biological structures and filling in gaps in [target]'s flesh with \the [tool].</span>")
 	target.op_stage.dehusk = 0
 	target.mutations.Remove(MUTATION_HUSK)
-	target.status_flags &= ~DISFIGURED
 	target.update_icons_body()
 	..()
 
@@ -344,8 +352,8 @@
 	else if(istype(tool,/obj/item/surgical/FixOVein))
 		user.visible_message("<span class='danger'>[user] fails to finish the structure over the gaps in [target]'s flesh, doing more damage than good.</span>", \
 	"<span class='danger'>You fail to finish the structure over the gaps in [target]'s flesh, doing more damage than good.</span>")
-	affected.createwound(CUT, 15)
-	affected.createwound(BRUISE, 10)
+	affected.create_wound(CUT, 15)
+	affected.create_wound(BRUISE, 10)
 	..()
 
 ///////////////////////////////////////////////////////////////
@@ -379,6 +387,6 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='danger'>[user]'s hand slips, failing to finish the surgery, and damaging [target] with \the [tool].</span>", \
 	"<span class='danger'>Your hand slips, failing to finish the surgery, and damaging [target] with \the [tool].</span>")
-	affected.createwound(CUT, 15)
-	affected.createwound(BRUISE, 10)
+	affected.create_wound(CUT, 15)
+	affected.create_wound(BRUISE, 10)
 	..()

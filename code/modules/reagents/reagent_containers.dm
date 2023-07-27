@@ -4,9 +4,34 @@
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = null
 	w_class = ITEMSIZE_SMALL
+
+	/// start reagent list. overrides reagent/volume. list(id = volume); volume must be specified.
+	var/list/start_with
+	/// start reagent id or path
+	var/start_reagent
+	/// start reagent amount. null for max.
+	var/start_volume
+	/// volume of our default reagents holder
+	var/volume = 30
+	/// automatically rename to [[start_reagent]]
+	var/start_rename = FALSE
+
 	var/amount_per_transfer_from_this = 5
 	var/possible_transfer_amounts = list(5,10,15,25,30)
-	var/volume = 30
+
+/obj/item/reagent_containers/Initialize(mapload)
+	. = ..()
+	if(!possible_transfer_amounts)
+		remove_obj_verb(src, /obj/item/reagent_containers/verb/set_APTFT)
+	create_reagents(volume)
+	if(!isnull(start_with))
+		for(var/id in start_with)
+			reagents.add_reagent(id, start_with[id])
+	else if(!isnull(start_reagent))
+		reagents.add_reagent(start_reagent, isnull(start_volume)? volume : start_volume)
+		if(start_rename)
+			var/datum/reagent/R = start_reagent
+			name = "[name] ([initial(R.name)])"
 
 /obj/item/reagent_containers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
@@ -16,16 +41,10 @@
 	if(N)
 		amount_per_transfer_from_this = N
 
-/obj/item/reagent_containers/Initialize(mapload)
+/obj/item/reagent_containers/attack_self(mob/user)
 	. = ..()
-	if(!possible_transfer_amounts)
-		remove_obj_verb(src, /obj/item/reagent_containers/verb/set_APTFT)
-	create_reagents(volume)
-
-/obj/item/reagent_containers/attack_self(mob/user as mob)
-	return
-
-/obj/item/reagent_containers/afterattack(obj/target, mob/user, flag)
+	if(.)
+		return
 	return
 
 /obj/item/reagent_containers/proc/reagentlist() // For attack logs
@@ -41,7 +60,7 @@
 		to_chat(user, "<span class='notice'>[target] is empty.</span>")
 		return 1
 
-	if(reagents && !reagents.get_free_space())
+	if(reagents && !reagents.available_volume())
 		to_chat(user, "<span class='notice'>[src] is full.</span>")
 		return 1
 
@@ -57,7 +76,7 @@
 		to_chat(user, "<span class='notice'>[src] is empty.</span>")
 		return 1
 
-	if(target.reagents && !target.reagents.get_free_space())
+	if(target.reagents && !target.reagents.available_volume())
 		to_chat(user, "<span class='notice'>[target] is full.</span>")
 		return 1
 
@@ -136,7 +155,7 @@
 		to_chat(user, "<span class='notice'>[src] is empty.</span>")
 		return 1
 
-	if(!target.reagents.get_free_space())
+	if(!target.reagents.available_volume())
 		to_chat(user, "<span class='notice'>[target] is full.</span>")
 		return 1
 

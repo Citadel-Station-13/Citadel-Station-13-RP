@@ -15,7 +15,7 @@
 	desc = "An old pair of trimmers with a pretty dull blade. You would probably have a hard time cutting anything but plants with it."
 	icon_state = "hedget"
 	item_state = "hedget"
-	force = 7 //One point extra than standard wire cutters.
+	damage_force = 7 //One point extra than standard wire cutters.
 
 /obj/item/analyzer/plant_analyzer
 	name = "plant analyzer"
@@ -26,6 +26,9 @@
 	var/list/last_reagents
 
 /obj/item/analyzer/plant_analyzer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	ui_interact(user)
 
 /obj/item/analyzer/plant_analyzer/ui_interact(mob/user, datum/tgui/ui)
@@ -34,7 +37,7 @@
 		ui = new(user, src, "PlantAnalyzer", name)
 		ui.open()
 
-/obj/item/analyzer/plant_analyzer/ui_state(mob/user)
+/obj/item/analyzer/plant_analyzer/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/analyzer/plant_analyzer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
@@ -50,7 +53,7 @@
 
 	return data
 
-/obj/item/analyzer/plant_analyzer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/analyzer/plant_analyzer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -63,8 +66,8 @@
 			last_reagents = null
 			return TRUE
 
-/obj/item/analyzer/plant_analyzer/afterattack(obj/target, mob/user, flag)
-	if(!flag)
+/obj/item/analyzer/plant_analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	var/datum/seed/grown_seed
@@ -149,9 +152,9 @@
 
 	dat += "<h2>Other Data</h2>"
 
-	var/list/tgui_data = grown_seed.get_tgui_analyzer_data()
+	var/list/ui_data = grown_seed.get_tgui_analyzer_data()
 
-	dat += jointext(tgui_data["trait_info"], "<br>\n")
+	dat += jointext(ui_data["trait_info"], "<br>\n")
 
 	var/obj/item/paper/P = new /obj/item/paper(get_turf(src))
 	P.name = "paper - [form_title]"

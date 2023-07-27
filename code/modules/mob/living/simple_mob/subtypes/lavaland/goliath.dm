@@ -263,13 +263,13 @@
 
 /obj/effect/temporary_effect/goliath_tentacle/proc/trip()
 	var/latched = FALSE
-	var/timerid = addtimer(CALLBACK(src, .proc/retract), 5, TIMER_STOPPABLE)
+	var/timerid = addtimer(CALLBACK(src, PROC_REF(retract)), 5, TIMER_STOPPABLE)
 	for(var/mob/living/carbon/C in loc)
 		if(C.stat == DEAD)
 			continue
 		visible_message("<span class='danger'>[src] grabs hold of [C]!</span>")
 		tripanim()
-		C.Stun(2)
+		C.afflict_stun(20 * 2)
 		C.adjustBruteLoss(rand(5,10))
 		latched = TRUE
 	for(var/obj/mecha/M in loc)
@@ -281,7 +281,7 @@
 
 /obj/effect/temporary_effect/goliath_tentacle/proc/tripanim()
 	icon_state = "goliath_tentacle_wiggle"
-	var/timerid = addtimer(CALLBACK(src, .proc/trip), 3, TIMER_STOPPABLE)
+	var/timerid = addtimer(CALLBACK(src, PROC_REF(trip)), 3, TIMER_STOPPABLE)
 	deltimer(timerid)
 
 /obj/effect/temporary_effect/goliath_tentacle/proc/retract()

@@ -24,7 +24,6 @@
 /obj/machinery/pipelayer/Initialize(mapload)
 	. = ..()
 	W = new(src)
-	default_apply_parts()
 	update_icon()
 
 /obj/machinery/pipelayer/Destroy()
@@ -52,7 +51,7 @@
 	old_turf = new_turf
 	old_dir = turn(M_Dir, 180)
 
-/obj/machinery/pipelayer/attack_hand(mob/user as mob)
+/obj/machinery/pipelayer/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(panel_open)
@@ -92,7 +91,7 @@
 		return
 	if(istype(W, /obj/item/pipe))
 		// NOTE - We must check for matter, otherwise the (free) pipe dispenser can be used to get infinite steel.
-		if(!W.matter || W.matter[MAT_STEEL] < pipe_cost * SHEET_MATERIAL_AMOUNT)
+		if(!W.materials || W.materials[MAT_STEEL] < pipe_cost * SHEET_MATERIAL_AMOUNT)
 			to_chat(user, "<span class='warning'>\The [W] doesn't contain enough [MAT_STEEL] to recycle.</span>")
 		else if(metal + pipe_cost > max_metal)
 			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
@@ -112,7 +111,7 @@
 
 	..()
 
-/obj/machinery/pipelayer/examine(mob/user)
+/obj/machinery/pipelayer/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>The [src] has [metal] sheets, is set to produce [P_type_t], and auto-dismantling is [!a_dis?"de":""]activated.</span>"
 
@@ -175,7 +174,7 @@
 	var/obj/item/pipe/P = new pi_type(w_turf, p_type, p_dir)
 	P.setPipingLayer(p_layer)
 	// We used metal to make these, so should be reclaimable!
-	P.matter = list(MAT_STEEL = pipe_cost * SHEET_MATERIAL_AMOUNT)
+	P.materials = list(MAT_STEEL = pipe_cost * SHEET_MATERIAL_AMOUNT)
 	P.attackby(W , src)
 
 	return 1

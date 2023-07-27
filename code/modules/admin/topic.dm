@@ -840,6 +840,64 @@
 				var/job = t_split[2]
 				DB_ban_unban(ckey(key), BANTYPE_JOB_PERMA, job)
 
+	else if(href_list["oocban"])
+
+		if(!check_rights(R_MOD,0) && !check_rights(R_BAN, 0))
+			to_chat(usr, "<span class='warning'>You do not have the appropriate permissions to add bans!</span>")
+			return
+
+		if(check_rights(R_MOD,0) && !check_rights(R_ADMIN, 0) && !config_legacy.mods_can_job_tempban) // If mod and tempban disabled
+			to_chat(usr, "<span class='warning'>Mod jobbanning is disabled!</span>")
+			return
+
+		var/target_ckey = href_list["oocban"]
+		// clients can gc at any time, do not use this outside of getting existing mob
+		var/client/_existing_client = GLOB.directory[target_ckey]
+		// i lied check it first
+		if(_existing_client?.holder)
+			// if you have to be ooc banned as an admin you should just be de-adminned?
+			// we'll add the function later when we overhaul banning
+			return
+
+		if(is_role_banned_ckey(target_ckey, role = BAN_ROLE_OOC))
+			to_chat(usr, SPAN_WARNING("[target_ckey] is already OOC banned. Use Unban-Panel to unban them."))
+			return
+
+		switch(alert(usr, "Temporary OOC Ban?", "OOC Ban", "Yes", "No", "Cancel"))
+			if("Yes")
+				var/minutes = input(usr, "How long in minutes?", "OOC Ban", 1440) as num|null
+				if(minutes <= 0)
+					return
+				var/reason = sanitize(input(usr, "Reason?", "OOC Ban") as text|null)
+				if(!reason)
+					return
+				role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, minutes = minutes, reason = reason, admin = src)
+				// incase they switched mobs
+				var/client/target_client = GLOB.directory[target_ckey]
+				notes_add(target_ckey, "[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason]. This will be removed in [minutes] minutes.")
+				message_admins("<font color=#4F49AF>[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason]. This will be removed in [minutes] minutes.</font>")
+				log_admin("[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason]. This will be removed in [minutes] minutes.")
+				to_chat(target_client, SPAN_BIG(SPAN_BOLDWARNING("You have been banned from OOC by [usr.ckey]. Reason: [reason]. This will be removed in [minutes] minutes.")))
+
+			if("No")
+				var/reason = sanitize(input(usr, "Reason?", "OOC Ban") as text|null)
+				if(!reason)
+					return
+				role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, reason = reason, admin = src)
+				// incase they switched mobs
+				var/client/target_client = GLOB.directory[target_ckey]
+				notes_add(target_ckey, "[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason].")
+				message_admins("<font color=#4F49AF>[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason].</font>")
+				log_admin("[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason].")
+				to_chat(target_client, SPAN_BIG(SPAN_BOLDWARNING("You have been banned from OOC by [usr.ckey]. Reason: [reason].")))
+
+			if("Cancel")
+				return
+
+		// todo: i'm not going to put feedback gathering in right now for this
+		//       because this verb needs redone later anyways
+		//       and our feedback system is frankly a mess
+
 	else if(href_list["newban"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN, 0))
 			to_chat(usr, "<span class='warning'>You do not have the appropriate permissions to add bans!</span>")
@@ -1046,7 +1104,7 @@
 			M.transfer_item_to_loc(I, locker, INV_OP_FORCE)
 
 		//so they black out before warping
-		M.Unconscious(5)
+		M.afflict_unconscious(20 * 5)
 		sleep(5)
 		if(!M)	return
 
@@ -1077,7 +1135,7 @@
 		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
 			M.drop_item_to_ground(I, INV_OP_FORCE)
 
-		M.Unconscious(5)
+		M.afflict_unconscious(20 * 5)
 		sleep(5)
 		M.loc = pick(tdome1)
 		spawn(50)
@@ -1102,7 +1160,7 @@
 		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
 			M.drop_item_to_ground(I, INV_OP_FORCE)
 
-		M.Unconscious(5)
+		M.afflict_unconscious(20 * 5)
 		sleep(5)
 		M.loc = pick(tdome2)
 		spawn(50)
@@ -1124,7 +1182,7 @@
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
 			return
 
-		M.Unconscious(5)
+		M.afflict_unconscious(20 * 5)
 		sleep(5)
 		M.loc = pick(tdomeadmin)
 		spawn(50)
@@ -1153,7 +1211,7 @@
 			var/mob/living/carbon/human/observer = M
 			observer.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket(observer), SLOT_ID_UNIFORM)
 			observer.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(observer), SLOT_ID_SHOES)
-		M.Unconscious(5)
+		M.afflict_unconscious(20 * 5)
 		sleep(5)
 		M.loc = pick(tdomeobserve)
 		spawn(50)
@@ -1169,12 +1227,10 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living")
 			return
 
-		if(config_legacy.allow_admin_rev)
-			L.revive()
-			message_admins("<font color='red'>Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!</font>", 1)
-			log_admin("[key_name(usr)] healed / Rrvived [key_name(L)]")
-		else
-			to_chat(usr, "Admin Rejuvinates have been disabled")
+		L.revive(full_heal = TRUE)
+		L.remove_all_restraints()
+		message_admins("<font color='red'>Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!</font>", 1)
+		log_admin("[key_name(usr)] healed / Rrvived [key_name(L)]")
 
 	else if(href_list["makeai"])
 		if(!check_rights(R_SPAWN))	return

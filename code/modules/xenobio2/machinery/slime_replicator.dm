@@ -99,7 +99,7 @@
 	eject_core()
 
 //Here lies the UI
-/obj/machinery/slime/replicator/attack_hand(mob/user as mob)
+/obj/machinery/slime/replicator/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	interact(user)
 

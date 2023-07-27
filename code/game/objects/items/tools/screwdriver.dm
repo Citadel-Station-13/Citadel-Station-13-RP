@@ -9,7 +9,7 @@
 	item_state = "screwdriver"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	tool_behaviour = TOOL_SCREWDRIVER
-	force = 6
+	damage_force = 6
 	w_class = ITEMSIZE_TINY
 	throw_force = 5
 	throw_speed = 3
@@ -18,7 +18,7 @@
 	tool_sound = 'sound/items/screwdriver.ogg'
 	drop_sound = 'sound/items/drop/screwdriver.ogg'
 	pickup_sound = 'sound/items/pickup/screwdriver.ogg'
-	matter = list(MAT_STEEL = 75)
+	materials = list(MAT_STEEL = 75)
 	attack_verb = list("stabbed")
 	sharp  = 1
 	tool_speed = 1
@@ -139,10 +139,10 @@
 	desc = "A simple powered hand drill. It's fitted with a screw bit."
 	icon_state = "drill_screw"
 	item_state = "drill"
-	matter = list(MAT_STEEL = 150, MAT_SILVER = 50)
+	materials = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	slot_flags = SLOT_BELT
-	force = 8
+	damage_force = 8
 	w_class = ITEMSIZE_SMALL
 	throw_force = 8
 	throw_speed = 2
@@ -167,9 +167,27 @@
 	return ..()
 
 /obj/item/tool/screwdriver/power/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	playsound(get_turf(user),'sound/items/change_drill.ogg',50,1)
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(!user.put_in_active_hand(counterpart))
 		counterpart.forceMove(get_turf(src))
 	forceMove(counterpart)
 	to_chat(user, "<span class='notice'>You attach the bolt driver bit to [src].</span>")
+
+
+/obj/item/tool/screwdriver/crystal
+	name = "crystalline screwdriver"
+	desc = "A crystalline screwdriving tool of an alien make."
+	icon_state = "crystal_screwdriver"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	materials = list(MATERIAL_CRYSTAL = 1250)
+	tool_speed = 0.2
+
+/obj/item/tool/screwdriver/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)

@@ -16,8 +16,8 @@
 	taser_kill = 0
 
 	var/idle = 4 //how long between the breathing sounds, in seconds.
-	var/rig1 = /obj/item/rig/eva/old //First rig chance, likely just trapped.
-	var/rig2 = /obj/item/rig/eva/old/spring //Second rig chance, likely springtrapped. Have first as same for just one type.
+	var/rig1 = /obj/item/hardsuit/eva/old //First rig chance, likely just trapped.
+	var/rig2 = /obj/item/hardsuit/eva/old/spring //Second rig chance, likely springtrapped. Have first as same for just one type.
 	var/silenced = 0 //Wither or not the sounds and speaking will play.
 
 	//It's a RIG. It's spaceproof.
@@ -36,7 +36,7 @@
 	melee_damage_upper = 25
 	attacktext = list("punched", "kicked", "smacked")
 	attack_sound = "punch"
-	armor = list(melee = 30, bullet = 10, laser = 20,energy = 25, bomb = 20, bio = 100, rad = 100) //This should be the same as the base RIG.
+	armor_legacy_mob = list(melee = 30, bullet = 10, laser = 20,energy = 25, bomb = 20, bio = 100, rad = 100) //This should be the same as the base RIG.
 
 	has_hands = 1
 	humanoid_hands = 1
@@ -127,12 +127,12 @@
 	. = ..()
 	to_chat(src,"<b>Why are you in this [src]? Why can't you say more than a few phrases? Why. What. Kill. Kill. Kill. Kill. KILL! KILL! KILL!</b> [player_msg]")
 
-/obj/item/rig/eva/old
+/obj/item/hardsuit/eva/old
 	name = "old EVA suit control module"
 	desc = "A light hardsuit for repairs and maintenance to the outside of habitats and vessels. It appears to be pretty old and worn down."
 	isTrapped = 1
 
-/obj/item/rig/eva/old/spring
+/obj/item/hardsuit/eva/old/spring
 	springtrapped = 1
 
 //Now let's make some more!
@@ -140,32 +140,32 @@
 	name = "old industrial RIG suit"
 	desc = "A heavy, powerful hardsuit used by construction crews and mining corporations. Seems to be worn down and damaged. But it seems to still be moving. Is someone in it?"
 	icon_state = "industrial-rig"
-	rig1 = /obj/item/rig/industrial/old
-	rig2 = /obj/item/rig/industrial/old/spring
-	armor = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
+	rig1 = /obj/item/hardsuit/industrial/old
+	rig2 = /obj/item/hardsuit/industrial/old/spring
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
 
-/obj/item/rig/industrial/old
+/obj/item/hardsuit/industrial/old
 	name = "old Industrial hardsuit"
 	desc = "A heavy, powerful hardsuit used by construction crews and mining corporations. It appears to be pretty old and worn down."
 	isTrapped = 1
 
-/obj/item/rig/industrial/old/spring
+/obj/item/hardsuit/industrial/old/spring
 	springtrapped = 1
 
 /mob/living/simple_mob/humanoid/possessed/merc
 	name = "old crimson hardsuit"
 	desc = "A blood-red hardsuit featuring some fairly illegal technology. Seems to be worn down and damaged. But it seems to still be moving. Is someone in it?"
 	icon_state = "merc-rig"
-	rig1 = /obj/item/rig/merc/old
-	rig2 = /obj/item/rig/merc/old/spring
-	armor = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 60)
+	rig1 = /obj/item/hardsuit/merc/old
+	rig2 = /obj/item/hardsuit/merc/old/spring
+	armor_legacy_mob = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 60)
 
-/obj/item/rig/merc/old
+/obj/item/hardsuit/merc/old
 	name = "old crimson hardsuit control module"
 	desc = "A blood-red hardsuit featuring some fairly illegal technology. It appears to be pretty old and worn down."
 	isTrapped = 1
 
-/obj/item/rig/merc/old/spring
+/obj/item/hardsuit/merc/old/spring
 	springtrapped = 1
 
 /mob/living/simple_mob/humanoid/possessed/merc/feral	// Special one that moves faster attacks faster. Intended as a special mech pilot

@@ -28,8 +28,8 @@
 	attack_sharp = TRUE
 
 	base_pixel_x = -16
-	icon_dimension_x = 64
-	icon_dimension_y = 64
+	icon_x_dimension = 64
+	icon_y_dimension = 64
 
 	say_list_type = /datum/say_list/panther
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive

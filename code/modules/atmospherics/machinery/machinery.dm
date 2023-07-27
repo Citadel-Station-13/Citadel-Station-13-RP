@@ -19,6 +19,9 @@ Pipelines + Other Objects -> Pipe network
 	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS
 	// why block contents? so you ventcrawling little fucks don't pull a 2020 Citadel Main.
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
+	atom_colouration_system = FALSE
+	climb_allowed = FALSE
+	depth_projected = FALSE
 
 	///The color of the pipe
 	var/pipe_color

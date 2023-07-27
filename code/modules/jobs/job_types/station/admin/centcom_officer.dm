@@ -10,7 +10,7 @@
 	supervisors = "company officials and Corporate Regulations"
 	selection_color = "#1D1D4F"
 	idtype = /obj/item/card/id/centcom
-	access = list()
+	additional_access = list()
 	minimal_access = list()
 	minimal_player_age = 14
 	join_types = JOB_LATEJOIN
@@ -27,13 +27,13 @@
 
 /datum/outfit/job/station/centcom_officer
 	name = OUTFIT_JOB_NAME("CentCom Officer")
+	id_type = /obj/item/card/id/centcom
+	pda_type = /obj/item/pda/centcom
+
 	glasses = /obj/item/clothing/glasses/omnihud/all
 	uniform = /obj/item/clothing/under/rank/centcom
 	l_ear = /obj/item/radio/headset/centcom
 	shoes = /obj/item/clothing/shoes/laceup
-	id_type = /obj/item/card/id/centcom
 	belt = /obj/item/gun/energy/pulse_pistol
 	gloves = /obj/item/clothing/gloves/white
 	head = /obj/item/clothing/head/beret/centcom/officer
-	r_pocket = /obj/item/pda/centcom
-	id_pda_assignment = "CentCom Officer"

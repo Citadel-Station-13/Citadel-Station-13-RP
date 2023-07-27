@@ -4,7 +4,7 @@
 	var/radio_desc = ""
 	icon_state = "headset"
 	item_state = null	// To remove the radio's state
-	matter = list(MAT_STEEL = 75)
+	materials = list(MAT_STEEL = 75)
 	subspace_transmission = 1
 	canhear_range = 0	// Can't hear headsets from very far away
 	slot_flags = SLOT_EARS
@@ -39,7 +39,7 @@
 /obj/item/radio/headset/list_channels(var/mob/user)
 	return list_secure_channels()
 
-/obj/item/radio/headset/examine(mob/user)
+/obj/item/radio/headset/examine(mob/user, dist)
 	. = ..()
 	if(!radio_desc)
 		return
@@ -68,7 +68,7 @@
 			return ..(freq, level)
 	return -1
 
-/obj/item/radio/headset/ui_state(mob/user)
+/obj/item/radio/headset/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/radio/headset/syndicate
@@ -238,6 +238,19 @@
 /obj/item/radio/headset/heads/hos/alt
 	name = "head of security's bowman headset"
 	desc = "The headset of the man who protects your worthless lifes."
+	icon_state = "com_headset_alt"
+	ear_protection = 2
+	ks2type = /obj/item/encryptionkey/heads/hos
+
+/obj/item/radio/headset/heads/blueshield
+	name = "blueshield's headset"
+	desc = "The headset of the person who protects command's valuable lives."
+	icon_state = "com_headset"
+	ks2type = /obj/item/encryptionkey/heads/hos
+
+/obj/item/radio/headset/heads/blueshield/alt
+	name = "blueshield's bowman headset"
+	desc = "The headset of the person who protects command's valuable lives."
 	icon_state = "com_headset_alt"
 	ear_protection = 2
 	ks2type = /obj/item/encryptionkey/heads/hos
@@ -483,8 +496,8 @@
 	ui = new(user, src, ui_key, "radio_basic.tmpl", "[name]", 400, 430, state = interactive_state)
 	..()
 
-/obj/item/radio/headset/mob_headset/afterattack(var/atom/movable/target, mob/living/user, proximity)
-	if(!proximity)
+/obj/item/radio/headset/mob_headset/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(istype(target,/mob/living/simple_mob))
 		var/mob/living/simple_mob/M = target

@@ -260,6 +260,52 @@ var/list/flooring_types
 	icon_base = "arcade"
 	build_type = /obj/item/stack/tile/carpet/arcadecarpet
 
+/singleton/flooring/carpet/patterened/brown
+	name = "brown patterened carpet"
+	icon_base = "brown"
+	build_type = /obj/item/stack/tile/carpet/patterned/brown
+
+/singleton/flooring/carpet/patterened/red
+	name = "red patterened carpet"
+	icon_base = "red"
+	build_type = /obj/item/stack/tile/carpet/patterned/red
+
+/singleton/flooring/carpet/patterened/blue
+	name = "blue patterened carpet"
+	icon_base = "blue1"
+	build_type = /obj/item/stack/tile/carpet/patterned/blue
+
+/singleton/flooring/carpet/patterened/blue/alt
+	name = "blue patterened carpet"
+	icon_base = "blue2"
+	build_type = /obj/item/stack/tile/carpet/patterned/blue/alt
+
+/singleton/flooring/carpet/patterened/blue/alt2
+	name = "blue patterened carpet"
+	icon_base = "blue3"
+	build_type = /obj/item/stack/tile/carpet/patterned/blue/alt2
+
+/singleton/flooring/carpet/patterened/green
+	name = "green patterened carpet"
+	icon_base = "green"
+	build_type = /obj/item/stack/tile/carpet/patterned/green
+
+/singleton/flooring/carpet/patterened/magenta
+	name = "magenta patterened carpet"
+	icon_base = "magenta"
+	build_type = /obj/item/stack/tile/carpet/patterned/magenta
+
+/singleton/flooring/carpet/patterened/purple
+	name = "purple patterened carpet"
+	icon_base = "purple"
+	build_type = /obj/item/stack/tile/carpet/patterned/purple
+
+/singleton/flooring/carpet/patterened/orange
+	name = "orange patterened carpet"
+	icon_base = "orange"
+	build_type = /obj/item/stack/tile/carpet/patterned/orange
+
+
 /singleton/flooring/tiling
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."
@@ -288,6 +334,11 @@ var/list/flooring_types
 	icon_base = "techfloor_grid"
 	build_type = /obj/item/stack/tile/floor/techgrid
 
+/singleton/flooring/tiling/tech/monogrid
+	icon_base = "techfloor_monogrid"
+	flooring_flags = TURF_IS_FRAGILE
+	build_type = null
+
 /singleton/flooring/tiling/new_tile
 	name = "floor"
 	icon_base = "tile_full"
@@ -311,6 +362,12 @@ var/list/flooring_types
 
 /singleton/flooring/tiling/new_tile/monowhite
 	icon_base = "monowhite"
+
+/singleton/flooring/tiling/new_tile/monodark
+	icon_base = "monodark"
+
+/singleton/flooring/tiling/new_tile/monotechmaint
+	icon_base = "monotechmaint"
 
 /singleton/flooring/tiling/new_tile/steel_grid
 	icon_base = "steel_grid"
@@ -403,6 +460,24 @@ var/list/flooring_types
 	icon_base = "darkmarble"
 	build_type = /obj/item/stack/tile/bmarble
 	flooring_flags = TURF_REMOVE_CROWBAR
+
+/singleton/flooring/concrete
+	name = "concrete"
+	desc = "That's concrete baby!"
+	icon = 'icons/turf/flooring/concrete.dmi'
+	icon_base = "concrete"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/singleton/flooring/concrete/tile
+	name = "concrete tile"
+	desc = "That's concrete baby!"
+	icon = 'icons/turf/flooring/concrete.dmi'
+	icon_base = "concrete3"
 
 /singleton/flooring/bananium
 	name = "bananium floor"
@@ -640,14 +715,15 @@ var/list/flooring_types
 	icon_base = "flesh_floor"
 
 /singleton/flooring/outdoors/beach/sand/desert
-	name = "sand"
+	name = "beach"
 	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "sand"
+	icon_base = "desert"
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/asteroid1.ogg',
 		'sound/effects/footstep/asteroid2.ogg',
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
+
 /turf/simulated/floor/tiled/freezer/cold
 	temperature = T0C - 5
 
@@ -706,3 +782,29 @@ var/list/flooring_types
 	name = "engraved bone floor"
 	desc = "A plate of solid bone with intricate symbols and patterns engraved into it."
 	icon_base = "bonecarve"
+
+/singleton/flooring/glass
+	name = "glass flooring"
+	desc = "A window to the world outside. Or the world beneath your feet, rather."
+	icon = 'icons/turf/flooring/glass.dmi'
+	icon_base = "glass"
+	build_type = /obj/item/stack/material/glass
+	build_cost = 1
+	build_time = 30
+	damage_temperature = T100C
+	flooring_flags = TURF_REMOVE_CROWBAR | TURF_ACID_IMMUNE
+	// can_engrave = FALSE
+	// color = GLASS_COLOR
+	mz_flags = MZ_MIMIC_DEFAULTS
+	// footstep_type = /decl/footsteps/plating
+
+/singleton/flooring/glass/reinforced
+	name = "reinforced glass flooring"
+	desc = "Heavily reinforced with steel rods."
+	icon = 'icons/turf/flooring/glass_reinf.dmi'
+	icon_base = "glass_reinf"
+	// build_type = /obj/item/stack/material/glass/reinforced
+	build_cost = 2
+	flooring_flags = TURF_REMOVE_WRENCH | TURF_ACID_IMMUNE
+
+	mz_flags = MZ_MIMIC_DEFAULTS

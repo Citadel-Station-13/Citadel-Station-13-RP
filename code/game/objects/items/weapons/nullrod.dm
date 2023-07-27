@@ -5,7 +5,7 @@
 	icon_state = "nullrod"
 	item_state = "nullrod"
 	slot_flags = SLOT_BELT
-	force = 15
+	damage_force = 15
 	throw_speed = 1
 	throw_range = 4
 	throw_force = 10
@@ -29,18 +29,21 @@
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
-/obj/item/nullrod/afterattack(atom/A, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/nullrod/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if (istype(A, /turf/simulated/floor))
+	if (istype(target, /turf/simulated/floor))
 		to_chat(user, "<span class='notice'>You hit the floor with the [src].</span>")
-		call(/obj/effect/rune/proc/revealrunes)(src)
-	if (isliving(A))
-		var/mob/living/tm = A // targeted mob
+		call(TYPE_PROC_REF(/obj/effect/rune, revealrunes))(src)
+	if (isliving(target))
+		var/mob/living/tm = target // targeted mob
 		if(SA_vulnerability & tm.mob_class)
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
 /obj/item/nullrod/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user && (user.mind.isholy) && !reskinned)
 		reskin_holy_weapon(user)
 
@@ -65,7 +68,7 @@
 
 	nullrod_icons = sortList(nullrod_icons)
 
-	var/choice = show_radial_menu(L, src , nullrod_icons, custom_check = CALLBACK(src, .proc/check_menu, L), radius = 42, require_near = TRUE)
+	var/choice = show_radial_menu(L, src , nullrod_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), L), radius = 42, require_near = TRUE)
 	if(!choice || !check_menu(L))
 		return
 
@@ -118,7 +121,7 @@
 	item_state = "godstaff-red"
 	name = "red holy staff"
 	desc = "It has a mysterious, protective aura."
-	force = 5
+	damage_force = 5
 	slot_flags = SLOT_BACK
 	defend_chance = 50
 	var/shield_icon = "shield-red"
@@ -181,7 +184,7 @@
 	slot_flags = SLOT_BELT
 
 /obj/item/nullrod/claymore/multiverse/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	force = rand(1, 30)
+	damage_force = rand(1, 30)
 	return ..()
 
 /obj/item/nullrod/claymore/saber
@@ -210,7 +213,7 @@
 	icon_state = "sord"
 	item_state = "sord"
 	slot_flags = SLOT_BELT
-	force = 4.13
+	damage_force = 4.13
 	throw_force = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -278,19 +281,19 @@
 	item_state = "pride"
 	name = "Pride-struck Hammer"
 	desc = "It resonates an aura of Pride."
-	force = 16
+	damage_force = 16
 	throw_force = 15
 	w_class = 4
 	slot_flags = SLOT_BACK
 	attack_verb = list("attacked", "smashed", "crushed", "splattered", "cracked")
 	hitsound = 'sound/weapons/resonator_blast.ogg'
 
-/obj/item/nullrod/pride_hammer/afterattack(atom/A as mob|obj|turf|area, mob/user, proximity)
+/obj/item/nullrod/pride_hammer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(prob(30) && ishuman(A))
-		var/mob/living/carbon/human/H = A
+	if(prob(30) && ishuman(target))
+		var/mob/living/carbon/human/H = target
 		user.reagents.trans_to(H, user.reagents.total_volume, 1, 1, 0)
 		to_chat(user, "<span class='notice'>Your pride reflects on [H].</span>")
 		to_chat(H, "<span class='userdanger'>You feel insecure, taking on [user]'s burden.</span>")
@@ -301,7 +304,7 @@
 	icon_state = "chain"
 	item_state = "chain"
 	slot_flags = SLOT_BELT
-	force = 12
+	damage_force = 12
 	reach = 2
 	attack_verb = list("whipped", "lashed")
 	hitsound = 'sound/weapons/towelwhip.ogg'
@@ -313,7 +316,7 @@
 	item_state = "fedora"
 	slot_flags = SLOT_HEAD
 	icon = 'icons/obj/clothing/hats.dmi'
-	force = 0
+	damage_force = 0
 	throw_speed = 4
 	throw_range = 7
 	throw_force = 30
@@ -348,12 +351,15 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "basecarp"
 	item_state = "basecarp"
-	force = 15
+	damage_force = 15
 	attack_verb = list("bitten", "eaten", "fin slapped")
 	hitsound = 'sound/weapons/bite.ogg'
 	var/used_blessing = FALSE
 
-/obj/item/nullrod/carp/attack_self(mob/living/user)
+/obj/item/nullrod/carp/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(used_blessing)
 	else if(user.mind && (user.mind.isholy))
 		to_chat(user, "You are blessed by Carp-Sie. Wild space carp will no longer attack you.")
@@ -363,7 +369,7 @@
 /obj/item/nullrod/claymore/bostaff //May as well make it a "claymore" and inherit the blocking
 	name = "monk's staff"
 	desc = "A long, tall staff made of polished wood. Traditionally used in ancient old-Earth martial arts, it is now used to harass the clown."
-	force = 15
+	damage_force = 15
 	defend_chance = 40
 	slot_flags = SLOT_BACK
 	sharp = 1
@@ -429,7 +435,7 @@
 	item_state = null
 	name = "prayer beads"
 	desc = "A set of prayer beads used by many of the more traditional religions in space"
-	force = 4
+	damage_force = 4
 	throw_force = 0
 	attack_verb = list("whipped", "repented", "lashed", "flagellated")
 	drop_sound = 'sound/items/drop/card.ogg'

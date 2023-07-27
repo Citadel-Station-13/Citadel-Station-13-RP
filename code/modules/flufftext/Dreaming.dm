@@ -35,7 +35,7 @@ var/list/dreams = list(
 		for(var/i = rand(1,4),i > 0, i--)
 			to_chat(src, "<font color=#4F49AF><i>... [pick(dreams)] ...</i></font>")
 			sleep(rand(40,70))
-			if(paralysis <= 0)
+			if(!is_sleeping())
 				dreaming = 0
 				return
 		dreaming = 0

@@ -31,7 +31,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 	anchored = TRUE
 	density = TRUE
 	opacity = FALSE
-	climbable = TRUE
+	climb_allowed = TRUE
 	climb_delay = 10 SECONDS
 	// TODO: IMPLEMENT THIS AGAIN, this was done in a horrifically slow and stupid way
 	// block_turf_edges = TRUE // Don't want turf edges popping up from the cliff edge.
@@ -161,14 +161,14 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		return FALSE
 
 	var/turf/T = get_turf(L)
-	if(T && get_dir(T, loc) & GLOB.reverse_dir[dir]) // dir points 'up' the cliff, e.g. cliff pointing NORTH will cause someone to fall if moving SOUTH into it.
+	if(T && get_dir(T, loc) & global.reverse_dir[dir]) // dir points 'up' the cliff, e.g. cliff pointing NORTH will cause someone to fall if moving SOUTH into it.
 		return TRUE
 	return FALSE
 
 /obj/structure/cliff/proc/fall_off_cliff(mob/living/L)
 	if(!istype(L))
 		return FALSE
-	var/turf/T = get_step(src, GLOB.reverse_dir[dir])
+	var/turf/T = get_step(src, global.reverse_dir[dir])
 	var/displaced = FALSE
 
 	if(dir in list(EAST, WEST)) // Apply an offset if flying sideways, to help maintain the illusion of depth.
@@ -192,7 +192,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 			harm /= 2
 
 		playsound(L, 'sound/effects/break_stone.ogg', 70, 1)
-		L.Weaken(5 * harm)
+		L.afflict_paralyze(20 * 5 * harm)
 		var/fall_time = 3
 		if(displaced) // Make the fall look more natural when falling sideways.
 			L.pixel_z = 32 * 2
@@ -219,19 +219,24 @@ two tiles on initialization, and which way a cliff is facing may change during m
 			sleep(5)
 			bottom_cliff.fall_off_cliff(L)
 
-/obj/structure/cliff/can_climb(mob/living/user, post_climb_check = FALSE)
+/obj/structure/cliff/allow_climb_on(mob/living/climber)
+	. = ..()
+	if(!.)
+		return
+	//! LEGAYC CODE START
+	var/mob/living/user = climber
 	// Cliff climbing requires climbing gear.
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/clothing/shoes/shoes = H.shoes
 		if(shoes && shoes.rock_climbing)
-			return ..() // Do the other checks too.
+			return TRUE
 		var/obj/item/held = H.get_active_held_item()
 		if(held && istype(held, /obj/item/pickaxe/icepick))
-			return ..() //climb rock wall with ice pick. Makes sense.
-
+			return TRUE
 	to_chat(user, SPAN_WARNING( "\The [src] is too steep to climb unassisted."))
 	return FALSE
+	//! END
 
 // This tells AI mobs to not be dumb and step off cliffs willingly.
 /obj/structure/cliff/is_safe_to_step(mob/living/L)

@@ -11,7 +11,7 @@
 	plane = ABOVE_LIGHTING_PLANE //In case we color them
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-	//! intrinsics
+	//? intrinsics
 	/// area flags
 	var/area_flags = NONE
 	/// stores the next uid to use
@@ -24,13 +24,17 @@
 	 */
 	var/unique = TRUE
 
-	//! defaults
+	//? defaults
 	/// outdoors by default?
 	var/initial_outdoors = FALSE
 	/// default initial gas mix
 	var/initial_gas_mix = GAS_STRING_STP
 
-	//! unsorted
+	//? tracking lists for machinery
+	/// holopads - lazyinit'd
+	var/list/obj/machinery/holopad/holopads
+
+	//? unsorted
 	var/fire = null
 	var/atmos = 1
 	var/atmosalm = 0
@@ -101,6 +105,9 @@
 	// This interacts with the map loader, so it needs to be set immediately
 	// rather than waiting for atoms to initialize.
 	if (unique)
+		// todo: something is double initing reserve area god damnit...
+		// if(GLOB.areas_by_type[type])
+		// 	STACK_TRACE("duplicated unique area, someone fucked up")
 		GLOB.areas_by_type[type] = src
 
 	uid = ++global_uid
@@ -199,7 +206,7 @@
 				A.power_light = FALSE
 				A.power_equip = FALSE
 				A.power_environ = FALSE
-			INVOKE_ASYNC(A, .proc/power_change)
+			INVOKE_ASYNC(A, PROC_REF(power_change))
 */
 	STOP_PROCESSING(SSobj, src)
 	return ..()
@@ -219,11 +226,12 @@
 	A.contents.Add(T)
 	if(old_area)
 		// Handle dynamic lighting update if
-		if(T.dynamic_lighting && old_area.dynamic_lighting != A.dynamic_lighting)
-			if(A.dynamic_lighting)
-				T.lighting_build_overlay()
-			else
-				T.lighting_clear_overlay()
+		if(SSlighting.initialized)
+			if(T.dynamic_lighting && old_area.dynamic_lighting != A.dynamic_lighting)
+				if(A.dynamic_lighting)
+					T.lighting_build_overlay()
+				else
+					T.lighting_clear_overlay()
 		for(var/atom/movable/AM in T)
 			old_area.Exited(AM, A)
 
@@ -585,11 +593,11 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 		if(H.species.species_flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
 			return
 		if(H.m_intent == MOVE_INTENT_RUN)
-			H.AdjustStunned(6)
-			H.AdjustWeakened(6)
+			H.adjust_stunned(20 * 6)
+			H.adjust_paralyzed(20 * 6)
 		else
-			H.AdjustStunned(3)
-			H.AdjustWeakened(3)
+			H.adjust_stunned(20 * 3)
+			H.adjust_paralyzed(20 * 3)
 		to_chat(mob, "<span class='notice'>The sudden appearance of gravity makes you fall to the floor!</span>")
 		playsound(get_turf(src), "bodyfall", 50, 1)
 
@@ -636,7 +644,7 @@ var/list/teleportlocs = list()
 			continue
 		var/station = FALSE
 		for(var/turf/T in AR.contents)
-			if(T.z in GLOB.using_map.station_levels)
+			if(T.z in (LEGACY_MAP_DATUM).station_levels)
 				station = TRUE
 				break
 			else
@@ -644,7 +652,7 @@ var/list/teleportlocs = list()
 		if(station)
 			teleportlocs[AR.name] = AR
 
-	teleportlocs = tim_sort(teleportlocs, /proc/cmp_text_asc, TRUE)
+	teleportlocs = tim_sort(teleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 
 	return 1
 
@@ -657,10 +665,10 @@ var/list/ghostteleportlocs = list()
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 		var/turf/picked = pick(get_area_turfs(AR.type))
-		if (picked.z in GLOB.using_map.player_levels)
+		if (picked.z in (LEGACY_MAP_DATUM).player_levels)
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 
-	ghostteleportlocs = tim_sort(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
+	ghostteleportlocs = tim_sort(ghostteleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 
 	return 1

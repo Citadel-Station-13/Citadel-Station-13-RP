@@ -16,8 +16,8 @@
 	var/slowdown = 1			//people said this was too fast. meh.
 
 	see_in_dark = 7
-	status_flags = GODMODE
-	plane = PLANE_AI_EYE
+	plane = OBSERVER_PLANE
+	status_flags = STATUS_GODMODE
 
 	var/mob/owner = null
 	var/list/visibleChunks = list()
@@ -51,7 +51,7 @@
 	set src = usr.contents
 	return 0
 
-/mob/observer/eye/examine(mob/user)
+/mob/observer/eye/examine(mob/user, dist)
 	return list(
 		"An eye object belonging to [owner || "no one in particular."]"
 	)

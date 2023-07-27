@@ -7,6 +7,7 @@
 #define BIT_TEST_ALL(bitfield, req_mask) ((~(bitfield) & (req_mask)) == 0)
 
 /// Inverts the colour of an HTML string.
+/// TODO: We can probably do this better these days. @Zandario
 /proc/invertHTML(HTMLstring)
 	if (!(istext(HTMLstring)))
 		CRASH("Given non-text argument!")
@@ -22,28 +23,12 @@
 	textg = num2hex(255 - g)
 	textb = num2hex(255 - b)
 	if (length(textr) < 2)
-		textr = text("0[]", textr)
+		textr = "0[textr]"
 	if (length(textg) < 2)
-		textr = text("0[]", textg)
+		textr = "0[textg]"
 	if (length(textb) < 2)
-		textr = text("0[]", textb)
-	return text("#[][][]", textr, textg, textb)
-
-/// Calculate the angle between two points and the west|east coordinate.
-/proc/Get_Angle(atom/movable/start, atom/movable/end) //For beams.
-	if(!start || !end)
-		return 0
-	var/dy
-	var/dx
-	dy=(32 * end.y + end.pixel_y) - (32 * start.y + start.pixel_y)
-	dx=(32 * end.x + end.pixel_x) - (32 * start.x + start.pixel_x)
-	if(!dy)
-		return (dx >= 0) ? 90 : 270
-	. = arctan(dx/dy)
-	if(dy < 0)
-		. += 180
-	else if(dx < 0)
-		. += 360
+		textr = "0[textb]"
+	return "#[textr][textg][textb]"
 
 /**
  * Returns location.  Returns null if no location was found.
@@ -471,7 +456,7 @@
 /// Orders mobs by type then by name.
 /proc/sortmobs()
 	var/list/moblist = list()
-	var/list/sortmob = sortList(GLOB.mob_list, cmp=/proc/cmp_name_asc)
+	var/list/sortmob = sortList(GLOB.mob_list, cmp= GLOBAL_PROC_REF(cmp_name_asc))
 	for(var/mob/observer/eye/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/observer/blob/M in sortmob)
@@ -748,7 +733,7 @@
 						O.loc = X
 						O.update_light()
 						if(z_level_change) // The objects still need to know if their z-level changed.
-							O.onTransitZ(T.z, X.z)
+							O.on_changed_z_level(T.z, X.z)
 
 					//Move the mobs unless it's an AI eye or other eye type.
 					for(var/mob/M in T)
@@ -757,7 +742,7 @@
 						M.loc = X
 
 						if(z_level_change) // Same goes for mobs.
-							M.onTransitZ(T.z, X.z)
+							M.on_changed_z_level(T.z, X.z)
 
 					if(turftoleave)
 						T.ChangeTurf(turftoleave)
@@ -851,7 +836,7 @@
 					var/old_underlays = T.underlays.Copy()
 
 					if(platingRequired)
-						if(istype(B, GLOB.using_map.base_turf_by_z[B.z]))
+						if(istype(B, SSmapping.level_baseturf(B.z)))
 							continue moving
 
 					var/turf/X = B
@@ -1374,7 +1359,7 @@ var/list/WALLITEMS = list(
  * N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW
  */
 /proc/get_adir(turf/A, turf/B)
-	var/degree = Get_Angle(A, B)
+	var/degree = get_visual_angle(A, B)
 	switch(round(degree%360, 22.5))
 		if(0)
 			return "North"
@@ -1475,42 +1460,3 @@ var/list/WALLITEMS = list(
 		if(sender)
 			query_string += "&from=[url_encode(sender)]"
 		world.Export("[config_legacy.chat_webhook_url]?[query_string]")
-
-/// This is a helper for anything that wants to render the map in TGUI.
-/proc/get_tgui_plane_masters()
-	. = list()
-
-	//! 'Utility' planes
-	/// Lighting system (lighting_overlay objects)
-	. += new /atom/movable/screen/plane_master/fullbright
-	/// Lighting system (but different!)
-	. += new /atom/movable/screen/plane_master/lighting
-	. += new /atom/movable/screen/plane_master/emissive
-	/// Ghosts!
-	. += new /atom/movable/screen/plane_master/ghosts
-	/// AI Eye!
-	. += new /atom/movable/screen/plane_master{plane = PLANE_AI_EYE}
-
-	/// For admin use
-	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN1}
-	/// For admin use
-	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN2}
-	/// For admin use
-	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN3}
-
-	/// Meson-specific things like open ceilings.
-	. += new /atom/movable/screen/plane_master{plane = PLANE_MESONS}
-	/// Things that only show up while in build mode.
-	// . += new /atom/movable/screen/plane_master{plane = PLANE_BUILDMODE}
-
-	//! Real tangible stuff planes
-	. += new /atom/movable/screen/plane_master/main{plane = TURF_PLANE}
-	. += new /atom/movable/screen/plane_master/main{plane = OBJ_PLANE}
-	. += new /atom/movable/screen/plane_master/main{plane = MOB_PLANE}
-	/// Cloaked atoms!
-	// . += new /atom/movable/screen/plane_master/cloaked
-
-	//! Random other plane masters from Virgo
-	// Augmented reality.
-	. += new /atom/movable/screen/plane_master{plane = PLANE_AUGMENTED}
-	. += new /atom/movable/screen/plane_master/parallax{plane = PARALLAX_PLANE}

@@ -1,4 +1,4 @@
-/obj/effect/overmap/visitable/ship/triumph
+/obj/overmap/entity/visitable/ship/triumph
 	name = "NSV Triumph"	// Name of the location on the overmap.
 	desc = "The Triumph is one of the many ships that is a part of the NDV Marksmans Fleet in this sector"
 
@@ -18,6 +18,7 @@
 	initial_restricted_waypoints = list(
 		"Excursion Shuttle" = list("triumph_excursion_hangar"),
 		"Courser Scouting Vessel" = list("triumph_courser_hangar"),
+		"Hammerhead Patrol Barge" = list("triumph_hammerhead_hangar"),
 		"Civilian Transport" = list("triumph_civvie_home"),
 		"Dart EMT Shuttle" = list("triumph_emt_dock"),
 		"Beruang Trade Ship" = list("triumph_annex_dock"),

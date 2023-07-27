@@ -46,12 +46,14 @@
 	var/can_expand_areas_into = AREA_SPACE	// Can expand station areas only into space.
 	var/can_rename_areas_in = AREA_STATION	// Only station areas can be reanamed
 
-/obj/item/blueprints/attack_self(mob/M as mob)
-	if (!istype(M,/mob/living/carbon/human))
-		to_chat(M, "This stack of blue paper means nothing to you.") //monkeys cannot into projecting
+/obj/item/blueprints/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	if (!istype(user, /mob/living/carbon/human))
+		to_chat(user, "This stack of blue paper means nothing to you.") //monkeys cannot into projecting
 		return
 	interact()
-	return
 
 /obj/item/blueprints/Topic(href, href_list)
 	..()
@@ -83,7 +85,7 @@
 	var/area/A = get_area()
 	var/text = {"<HTML><head><title>[src]</title></head><BODY>
 <h2>[station_name()] blueprints</h2>
-<small>Property of [GLOB.using_map.company_name]. For heads of staff only. Store in high-secure storage.</small><hr>
+<small>Property of [(LEGACY_MAP_DATUM).company_name]. For heads of staff only. Store in high-secure storage.</small><hr>
 "}
 	var/curAreaType = get_area_type()
 	switch (curAreaType)

@@ -72,6 +72,8 @@
 #define LANGUAGE_ID_ZADDAT "zaddat"
 /// scori
 #define LANGUAGE_ID_SCORI "scori"
+/// keisani
+#define LANGUAGE_ID_KEISANI "keisani"
 
 //? Antagonist
 #define LANGUAGE_ID_CHANGELING "changeling"

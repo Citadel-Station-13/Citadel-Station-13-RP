@@ -7,7 +7,7 @@
 #define ITEM_NOBLUDGEON			(1<<2)
 /// for all things that are technically items but used for various different stuff
 #define ITEM_ABSTRACT			(1<<3)
-/// is this item in a storage component?
+/// is this item in a storage datum?
 #define ITEM_IN_STORAGE			(1<<4)
 /// we can't be caught when hitting a mob on throw
 #define ITEM_THROW_UNCATCHABLE	(1<<5)
@@ -17,6 +17,12 @@
 #define ITEM_MULTIHAND_WIELDED	(1<<7)
 /// don't allow help intent attacking
 #define ITEM_CAREFUL_BLUDGEON	(1<<8)
+/// allow easy lathe deconstruction
+#define ITEM_EASY_LATHE_DECONSTRUCT (1<<9)
+/// do not allow lathe deconstruction
+#define ITEM_NO_LATHE_DECONSTRUCT (1<<10)
+/// stack-like handling for ingredients
+#define ITEM_MASS_INGREDIENT (1<<11)
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_IN_INVENTORY),
@@ -28,61 +34,55 @@ DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_NO_TOOL_ATTACK),
 	BITFIELD(ITEM_MULTIHAND_WIELDED),
 	BITFIELD(ITEM_CAREFUL_BLUDGEON),
+	BITFIELD(ITEM_EASY_LATHE_DECONSTRUCT),
+	BITFIELD(ITEM_NO_LATHE_DECONSTRUCT),
+	BITFIELD(ITEM_MASS_INGREDIENT),
 ))
 
 //! Flags for the clothing_flags var on /obj/item
-/*
-#define LAVAPROTECT				(1<<0)
-/// SUIT and HEAD items which stop pressure damage. To stop you taking all pressure damage you must have both a suit and head item with this flag.
-#define STOPSPRESSUREDAMAGE		(1<<1)
-*/
 /// Blocks the effect that chemical clouds would have on a mob --glasses, mask and helmets ONLY! (NOTE: flag shared with ONESIZEFITSALL)
-#define BLOCK_GAS_SMOKE_EFFECT	(1<<2)
-/// Mask allows internals
-#define ALLOWINTERNALS			(1<<3)
-/// Prevents from slipping on wet floors, in space etc
-#define NOSLIP					(1<<4)
-/*
-/// Prevents from slipping on frozen floors
-#define NOSLIP_ICE				(1<<5)
-*/
-/// Prevents syringes, parapens and hyposprays if equipped to slot_suit or SLOT_ID_HEAD.
-#define THICKMATERIAL			(1<<6)
-/*
-/// The voicebox in this clothing can be toggled.
-#define VOICEBOX_TOGGLABLE		(1<<7)
-/// The voicebox is currently turned off.
-#define VOICEBOX_DISABLED		(1<<8)
-/// Hats with negative effects when worn (i.e the tinfoil hat).
-#define IGNORE_HAT_TOSS			(1<<9)
-*/
-/// Allows helmets and glasses to scan reagents.
-#define SCAN_REAGENTS			(1<<10)
-/// At the moment, masks with this flag will not prevent eating even if they are covering your face.
-#define FLEXIBLEMATERIAL		(1<<11)
-/// Allows special survival food items to be eaten through it
-#define ALLOW_SURVIVALFOOD		(1<<12)
 /// ignores "is this limb here" for equip.
-#define EQUIP_IGNORE_DELIMB		(1<<13)
+#define CLOTHING_IGNORE_DELIMB		(1<<1)
 /// ignores "do we have a jumpsuit" for belt
-#define EQUIP_IGNORE_BELTLINK	(1<<14)
+#define CLOTHING_IGNORE_BELTLINK	(1<<2)
 /// for plural limbs, wearable with just one
-#define EQUIP_ALLOW_SINGLE_LIMB	(1<<15)
+#define CLOTHING_ALLOW_SINGLE_LIMB	(1<<3)
+/// Prevents syringes, parapens and hyposprays if equipped to slot_suit or SLOT_ID_HEAD.
+#define CLOTHING_THICK_MATERIAL		(1<<4)
+/// Syringes / hyposprays / etc can get through, but need to pass through an injection port.
+#define CLOTHING_INJECTION_PORT		(1<<5)
+// todo: audit
+#define BLOCK_GAS_SMOKE_EFFECT	(1<<6)
+/// Mask allows internals
+// todo: audit
+#define ALLOWINTERNALS			(1<<7)
+/// Prevents from slipping on wet floors, in space etc
+// todo: audit
+#define NOSLIP					(1<<8)
+/// Allows helmets and glasses to scan reagents.
+// todo: audit
+#define SCAN_REAGENTS			(1<<9)
+/// At the moment, masks with this flag will not prevent eating even if they are covering your face.
+// todo: audit
+#define FLEXIBLEMATERIAL		(1<<10)
+/// Allows special survival food items to be eaten through it
+// todo: audit
+#define ALLOW_SURVIVALFOOD		(1<<11)
 
 DEFINE_BITFIELD(clothing_flags, list(
 	BITFIELD(BLOCK_GAS_SMOKE_EFFECT),
 	BITFIELD(ALLOWINTERNALS),
 	BITFIELD(NOSLIP),
-	BITFIELD(THICKMATERIAL),
+	BITFIELD(CLOTHING_THICK_MATERIAL),
 	BITFIELD(SCAN_REAGENTS),
 	BITFIELD(FLEXIBLEMATERIAL),
 	BITFIELD(ALLOW_SURVIVALFOOD),
-	BITFIELD(EQUIP_IGNORE_DELIMB),
-	BITFIELD(EQUIP_IGNORE_BELTLINK),
-	BITFIELD(EQUIP_ALLOW_SINGLE_LIMB),
+	BITFIELD(CLOTHING_IGNORE_DELIMB),
+	BITFIELD(CLOTHING_IGNORE_BELTLINK),
+	BITFIELD(CLOTHING_ALLOW_SINGLE_LIMB),
 ))
 
-//!# bitflags for the /obj/item/var/flags_inv variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.
+//!# bitflags for the /obj/item/var/inv_hide_flags variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.
 // WARNING: The following flags apply only to the external suit!
 #define HIDEGLOVES      	(1<<0)
 #define HIDESUITSTORAGE 	(1<<1)
@@ -105,7 +105,7 @@ DEFINE_BITFIELD(clothing_flags, list(
 /// Hides the user's hair, facial and otherwise.
 #define BLOCKHAIR			(1<<12)
 
-DEFINE_BITFIELD(flags_inv, list(
+DEFINE_BITFIELD(inv_hide_flags, list(
 	BITFIELD(HIDEGLOVES),
 	BITFIELD(HIDESUITSTORAGE),
 	BITFIELD(HIDEJUMPSUIT),
@@ -121,7 +121,7 @@ DEFINE_BITFIELD(flags_inv, list(
 	BITFIELD(BLOCKHAIR),
 ))
 
-//!# bitflags for /obj/item/var/body_parts_covered
+//!# bitflags for /obj/item/var/body_cover_flags
 #define HEAD        (1<<0)
 #define FACE        (1<<1)
 #define EYES        (1<<2)
@@ -141,7 +141,10 @@ DEFINE_BITFIELD(flags_inv, list(
 #define HANDS       (HAND_LEFT | HAND_RIGHT)
 #define FULL_BODY   (ALL)
 
-DEFINE_BITFIELD(body_parts_covered, list(
+DEFINE_SHARED_BITFIELD(body_cover_flags, list(
+	"body_cover_flags",
+	"body_part_flags",
+), list(
 	BITFIELD(HEAD),
 	BITFIELD(FACE),
 	BITFIELD(EYES),
@@ -157,24 +160,18 @@ DEFINE_BITFIELD(body_parts_covered, list(
 	BITFIELD(HAND_RIGHT),
 ))
 
-// Flags for the organ_flags var on /obj/item/organ
-/*
-/// Synthetic organs, or cybernetic organs. Reacts to EMPs and don't deteriorate or heal
-#define ORGAN_SYNTHETIC			(1<<0)
-/// Frozen organs, don't deteriorate
-#define ORGAN_FROZEN			(1<<1)
-/// Failing organs perform damaging effects until replaced or fixed
-#define ORGAN_FAILING			(1<<2)
-/// Was this organ implanted/inserted/etc, if true will not be removed during species change.
-#define ORGAN_EXTERNAL			(1<<3)
-/// Currently only the brain
-#define ORGAN_VITAL				(1<<4)
-/// Do not spoil under any circumstances
-#define ORGAN_NO_SPOIL			(1<<5)
-/// Immune to disembowelment.
-#define ORGAN_NO_DISMEMBERMENT	(1<<6)
-/// Is a snack? :D
-#define ORGAN_EDIBLE			(1<<7)
-/// Synthetic organ affected by an EMP. Deteriorates over time.
-#define ORGAN_SYNTHETIC_EMP		(1<<6)
-*/
+//? Bitflags for /obj/item/var/item_persist_flags
+/// consider this item for loadout at all
+#define ITEM_PERSIST_LOADOUT (1<<0)
+/// item can survive a loadout reset - great for reward items you want someone to keep.
+#define ITEM_PERSIST_LOADOUT_PERMANENT (1<<1)
+
+/// these flags are persisted with the item when item is being stored into generic obj storage system.
+#define ITEM_PERSIST_FLAGS_STICKY (ITEM_PERSIST_LOADOUT | ITEM_PERSIST_LOADOUT_PERMANENT)
+
+DEFINE_BITFIELD(item_persist_flags, list(
+	BITFIELD(ITEM_PERSIST_LOADOUT),
+	BITFIELD(ITEM_PERSIST_LOADOUT_PERMANENT),
+))
+
+

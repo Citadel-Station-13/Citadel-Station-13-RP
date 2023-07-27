@@ -34,12 +34,12 @@
 	var/mob/living/M = loc
 	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
 		wielded = 1
-		force = force_wielded
+		damage_force = force_wielded
 		name = "[base_name] (wielded)"
 		update_icon()
 	else
 		wielded = 0
-		force = force_unwielded
+		damage_force = force_unwielded
 		name = "[base_name]"
 	update_icon()
 	..()
@@ -52,7 +52,7 @@
 		force_unwielded = 150 //double the force of a durasteel claymore.
 		armor_penetration = 100 //regardless of armor
 		throw_force = 150
-		force = force_unwielded
+		damage_force = force_unwielded
 		return
 	if(sharp || edge)
 		force_wielded = material.get_edge_damage()
@@ -60,9 +60,9 @@
 		force_wielded = material.get_blunt_damage()
 	force_wielded = round(force_wielded*force_divisor)
 	force_unwielded = round(force_wielded*unwielded_force_divisor)
-	force = force_unwielded
-	throw_force = round(force*thrown_force_divisor)
-	//to_chat(world, "[src] has unwielded force [force_unwielded], wielded force [force_wielded] and throw_force [throw_force] when made from default material [material.name]")
+	damage_force = force_unwielded
+	throw_force = round(damage_force*thrown_force_divisor)
+	//to_chat(world, "[src] has unwielded damage_force [force_unwielded], wielded damage_force [force_wielded] and throw_force [throw_force] when made from default material [material.name]")
 
 /obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
@@ -94,7 +94,7 @@
 	base_icon = "fireaxe"
 	name = "fire axe"
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
-	description_info = "This weapon can cleave, striking nearby lesser, hostile enemies close to the primary target.  It must be held in both hands to do this."
+	description_info = "A hefty two-handed cutting implement. Used for chopping through wood, glass, metal grating, wild animals, and even trees, shockingly enough. Good thing NanoTrasen stocks these for free."
 	unwielded_force_divisor = 0.25
 	force_divisor = 0.5 // 12/30 with hardness 60 (steel) and 0.25 unwielded divisor
 	dulled_divisor = 0.6	//Still metal on a stick
@@ -115,35 +115,35 @@
 	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
 		pry = 1
-		force = force_wielded
+		damage_force = force_wielded
 		name = "[base_name] (wielded)"
 		update_icon()
 	else
 		wielded = 0
 		pry = 0
-		force = force_unwielded
+		damage_force = force_unwielded
 		name = "[base_name]"
 	update_icon()
 	..()
 
-/obj/item/material/twohanded/fireaxe/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/material/twohanded/fireaxe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
-	if(A && wielded)
-		if(istype(A,/obj/structure/window))
-			var/obj/structure/window/W = A
+	if(target && wielded)
+		if(istype(target,/obj/structure/window))
+			var/obj/structure/window/W = target
 			W.shatter()
-		else if(istype(A,/obj/structure/grille))
-			qdel(A)
-		else if(istype(A,/obj/effect/plant))
-			var/obj/effect/plant/P = A
+		else if(istype(target,/obj/structure/grille))
+			qdel(target)
+		else if(istype(target,/obj/effect/plant))
+			var/obj/effect/plant/P = target
 			P.die_off()
 
 /obj/item/material/twohanded/fireaxe/foam
 	attack_verb = list("bonked","whacked")
 	force_wielded = 0
 	force_divisor = 0
-	force = 0
+	damage_force = 0
 	applies_material_colour = 1
 	icon_state = "fireaxe_mask0"
 	base_icon = "fireaxe_mask"
@@ -157,11 +157,11 @@
 /obj/item/material/twohanded/fireaxe/foam/Initialize(mapload, material_key)
 	return ..(mapload,"foam")
 
-/obj/item/material/twohanded/fireaxe/foam/afterattack()
+/obj/item/material/twohanded/fireaxe/foam/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	return
 
 /obj/item/material/twohanded/fireaxe/bone
-	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
+	desc = "A primitive version of a hefty fire axe, made from bone. Whoever made this didn't make it to save lives."
 	default_material = "bone"
 	icon_state = "bone_axe0"
 	base_icon = "bone_axe"
@@ -186,7 +186,7 @@
 	icon_state = "scythe0"
 	base_icon = "scythe"
 	name = "scythe"
-	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
+	desc = "A sharp and curved blade on a long fibremetal handle. An ancient design from Terra, it's useful for cutting large swaths of grain, but the shape alone implies much more grim work."
 	force_divisor = 0.65
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 2)
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
@@ -202,7 +202,7 @@
 	name = "spear"
 	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
 	description_info = "This weapon can strike from two tiles away, and over certain objects such as tables, or other people."
-	force = 10
+	damage_force = 10
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
 	force_divisor = 0.35 			// 10 when wielded with hardness 30 (glass)
@@ -227,13 +227,13 @@
 	. = ..()
 	AddComponent(/datum/component/jousting)
 
-/obj/item/material/twohanded/spear/examine(mob/user)
+/obj/item/material/twohanded/spear/examine(mob/user, dist)
 	. = ..()
 	if(explosive)
 		. += "<span class='notice'>Alt-click to set your war cry.</span>"
 		. += "<span class='notice'>Right-click in combat mode to activate the attached explosive.</span>"
 
-/obj/item/material/twohanded/spear/afterattack(atom/movable/AM, mob/user, proximity)
+/obj/item/material/twohanded/spear/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	if(explosive && wielded) //Citadel edit removes qdel and explosive.forcemove(AM)
 		user.say("[war_cry]")
@@ -275,7 +275,7 @@
 
 /obj/item/material/twohanded/spear/bone
 	name = "spear"
-	desc = "A primitive yet deadly weapon of ancient design."
+	desc = "A simple, yet effective, weapon, built from bone."
 	default_material = "bone"
 	icon_state = "bone_spear0"
 	base_icon = "bone_spear"
@@ -296,7 +296,7 @@
 	icon_state = "sledgehammer0"
 	base_icon = "sledgehammer"
 	name = "sledgehammer"
-	desc = "A long, heavy hammer meant to be used with both hands. Typically used for breaking rocks and driving posts, it can also be used for breaking bones or driving points home."
+	desc = "A long, heavy hammer meant to be used with both hands. For breaking rocks or breaking bones, accept no substitutes."
 	description_info = "This weapon can cleave, striking nearby lesser, hostile enemies close to the primary target.  It must be held in both hands to do this."
 	unwielded_force_divisor = 0.25
 	force_divisor = 0.6 // 9/36 with hardness 60 (steel) and 0.25 unwielded divisor
@@ -316,28 +316,28 @@
 	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
 		pry = 1
-		force = force_wielded
+		damage_force = force_wielded
 		name = "[base_name] (wielded)"
 		update_icon()
 	else
 		wielded = 0
 		pry = 0
-		force = force_unwielded
+		damage_force = force_unwielded
 		name = "[base_name]"
 	update_icon()
 	..()
 
-/obj/item/material/twohanded/sledgehammer/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/material/twohanded/sledgehammer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
-	if(A && wielded)
-		if(istype(A,/obj/structure/window))
-			var/obj/structure/window/W = A
+	if(target && wielded)
+		if(istype(target,/obj/structure/window))
+			var/obj/structure/window/W = target
 			W.shatter()
-		else if(istype(A,/obj/structure/grille))
-			qdel(A)
-		else if(istype(A,/obj/effect/plant))
-			var/obj/effect/plant/P = A
+		else if(istype(target,/obj/structure/grille))
+			qdel(target)
+		else if(istype(target,/obj/effect/plant))
+			var/obj/effect/plant/P = target
 			P.die_off()
 
 // This cannot go into afterattack since some mobs delete themselves upon dying.

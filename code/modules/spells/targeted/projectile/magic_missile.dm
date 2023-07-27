@@ -12,7 +12,7 @@
 
 	max_targets = 0
 
-	proj_type = /obj/item/projectile/spell_projectile/seeking/magic_missile
+	proj_type = /obj/projectile/spell_projectile/seeking/magic_missile
 	duration = 10
 	proj_step_delay = 5
 
@@ -31,7 +31,7 @@
 
 //PROJECTILE
 
-/obj/item/projectile/spell_projectile/seeking/magic_missile
+/obj/projectile/spell_projectile/seeking/magic_missile
 	name = "magic missile"
 	icon_state = "magicm"
 

@@ -139,7 +139,7 @@
 			L.visible_message("<span class='danger'>[acting_object] is trying to inject [L]!</span>", \
 								"<span class='userdanger'>[acting_object] is trying to inject you!</span>")
 			busy = TRUE
-			if(do_atom(src, L, extra_checks=CALLBACK(L, /mob/living/proc/can_inject,null,0)))
+			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0)))
 				reagents.trans_to(L, transfer_amount)
 				log_attack(src, L, "attempted to inject [L] which had [contained]")
 				L.visible_message("<span class='danger'>[acting_object] injects [L] with its needle!</span>", \
@@ -164,7 +164,7 @@
 			L.visible_message("<span class='danger'>[acting_object] is trying to take a blood sample from [L]!</span>", \
 								"<span class='userdanger'>[acting_object] is trying to take a blood sample from you!</span>")
 			busy = TRUE
-			if(do_atom(src, L, extra_checks=CALLBACK(L, /mob/living/proc/can_inject,null,0)))
+			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0)))
 				var/mob/living/carbon/LB = L
 				if(LB.take_blood(src, tramount))
 					L.visible_message("<span class='danger'>[acting_object] takes a blood sample from [L]!</span>", \
@@ -239,11 +239,11 @@
 		if(!source.is_open_container() || !target.is_open_container())
 			return
 		if(direc)
-			if(!target.reagents.get_free_space())
+			if(!target.reagents.available_volume())
 				return
 			source.reagents.trans_to(target, transfer_amount)
 		else
-			if(!source.reagents.get_free_space())
+			if(!source.reagents.available_volume())
 				return
 			target.reagents.trans_to(source, transfer_amount)
 		activate_pin(2)
@@ -310,6 +310,9 @@
 
 
 /obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	//Check if no beaker attached
 	if(!current_beaker)
 		to_chat(user, "<span class='notice'>There is currently no beaker attached.</span>")
@@ -525,7 +528,7 @@
 		activate_pin(3)
 		return FALSE
 	var/obj/item/I = get_pin_data_as_type(IC_INPUT, 1, /obj/item)
-	if(istype(I) && (I.reagents.total_volume) && check_target(I))
+	if(istype(I) && (I.reagents?.total_volume) && check_target(I))
 		var/list/reagent_names_list = list()
 		for(var/datum/reagent/R in reagents?.reagent_list)
 			reagent_names_list.Add(R.name)
@@ -604,7 +607,7 @@
 			return
 		if(!source.is_open_container() || !target.is_open_container())
 			return
-		if(!target.reagents.get_free_space())
+		if(!target.reagents.available_volume())
 			return
 		for(var/datum/reagent/G in source.reagents.reagent_list)
 			if (!direc)

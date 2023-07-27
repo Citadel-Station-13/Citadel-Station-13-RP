@@ -120,6 +120,8 @@
 		if(ishuman(L) || issilicon(L))
 			if(L.key && !L.client)	// SSD players get a pass
 				return FALSE
+		if(holder.IIsAlly(L))
+			return FALSE
 		if(L.stat)
 			if(L.stat == DEAD && !handle_corpse) // Leave dead things alone
 				return FALSE
@@ -128,8 +130,6 @@
 					return TRUE
 				else
 					return FALSE
-		if(holder.IIsAlly(L))
-			return FALSE
 		return TRUE
 
 	if(istype(the_target, /obj/mecha))
@@ -181,6 +181,11 @@
 
 	if(holder.see_invisible < the_target.invisibility) // Real invis.
 		ai_log("can_see_target() : Target ([the_target]) was invisible to holder. Exiting.", AI_LOG_TRACE)
+		return FALSE
+
+	var/turf/T = get_turf(the_target)
+	if(T.get_lumcount() <= LIGHT_THRESHOLD_MOB_AI_UNSEEN && get_dist(holder, the_target) > 2)
+		ai_log("can_see_target() : Target ([the_target]) is in an unlit turf. Exiting.", AI_LOG_TRACE)
 		return FALSE
 
 	if(respect_alpha && the_target.alpha <= alpha_vision_threshold) // Fake invis.

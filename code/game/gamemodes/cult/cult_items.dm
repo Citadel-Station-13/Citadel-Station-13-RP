@@ -4,7 +4,7 @@
 	icon_state = "cultblade"
 	origin_tech = list(TECH_COMBAT = 1, TECH_ARCANE = 1)
 	w_class = ITEMSIZE_LARGE
-	force = 30
+	damage_force = 30
 	throw_force = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	drop_sound = 'sound/items/drop/sword.ogg'
@@ -29,8 +29,8 @@
 		var/obj/item/organ/external/affecting = H.get_organ(zone)
 		to_chat(user, "<span class='danger'>An inexplicable force rips through your [affecting.name], tearing the sword from your grasp!</span>")
 		//random amount of damage between half of the blade's force and the full force of the blade.
-		H.apply_damage(rand(force/2, force), BRUTE, zone, 0, sharp=1, edge=1)
-		H.Weaken(5)
+		H.apply_damage(rand(damage_force/2, damage_force), BRUTE, zone, 0, sharp=1, edge=1)
+		H.afflict_paralyze(20 * 5)
 	else if(!istype(user, /mob/living/simple_mob/construct))
 		to_chat(user, "<span class='danger'>An inexplicable force rips through you, tearing the sword from your grasp!</span>")
 	else
@@ -57,9 +57,9 @@
 	icon_state = "culthood"
 	desc = "A hood worn by the followers of Nar-Sie."
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
-	flags_inv = HIDEFACE
-	body_parts_covered = HEAD
-	armor = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 10, rad = 0)
+	inv_hide_flags = HIDEFACE
+	body_cover_flags = HEAD
+	armor_type = /datum/armor/cult/robes
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
@@ -71,8 +71,8 @@
 	name = "magus helm"
 	icon_state = "magus"
 	desc = "A helm worn by the followers of Nar-Sie."
-	flags_inv = HIDEFACE | BLOCKHAIR
-	body_parts_covered = HEAD|FACE|EYES
+	inv_hide_flags = HIDEFACE | BLOCKHAIR
+	body_cover_flags = HEAD|FACE|EYES
 
 /obj/item/clothing/head/culthood/alt
 	icon_state = "cult_hoodalt"
@@ -82,10 +82,10 @@
 	desc = "A set of armored robes worn by the followers of Nar-Sie."
 	icon_state = "cultrobes"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	allowed = list(/obj/item/book/tome,/obj/item/melee/cultblade)
-	armor = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 10, rad = 0)
-	flags_inv = HIDEJUMPSUIT
+	armor_type = /datum/armor/cult/robes
+	inv_hide_flags = HIDEJUMPSUIT
 	siemens_coefficient = 0
 
 /obj/item/clothing/suit/cultrobes/cultify()
@@ -98,15 +98,15 @@
 	name = "magus robes"
 	desc = "A set of armored robes worn by the followers of Nar-Sie."
 	icon_state = "magusred"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 
 /obj/item/clothing/head/helmet/space/cult
 	name = "cult helmet"
 	desc = "A space worthy helmet used by the followers of Nar-Sie."
 	icon_state = "cult_helmet"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
-	armor = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 30, rad = 30)
+	armor_type = /datum/armor/cult/space
 	siemens_coefficient = 0
 
 /obj/item/clothing/head/helmet/space/cult/cultify()
@@ -120,10 +120,10 @@
 	w_class = ITEMSIZE_NORMAL
 	allowed = list(/obj/item/book/tome,/obj/item/melee/cultblade,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
 	slowdown = 1
-	armor = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 30, rad = 30)
+	armor_type = /datum/armor/cult/space
 	siemens_coefficient = 0
-	flags_inv = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS
+	inv_hide_flags = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS
 
 /obj/item/clothing/suit/space/cult/cultify()
 	return

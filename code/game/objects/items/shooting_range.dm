@@ -29,7 +29,7 @@
 		return ..()
 
 
-/obj/item/target/attack_hand(mob/user as mob)
+/obj/item/target/attack_hand(mob/user, list/params)
 	// taking pinned targets off!
 	var/obj/structure/target_stake/stake
 	for(var/obj/structure/target_stake/T in view(3,src))
@@ -67,12 +67,12 @@
 		desc = "A shooting target with a threatening silhouette."
 		hp = 2350 // alium onest too kinda
 
-/obj/item/target/bullet_act(var/obj/item/projectile/Proj)
+/obj/item/target/bullet_act(var/obj/projectile/Proj)
 	var/p_x = Proj.p_x + pick(0,0,0,0,0,-1,1) // really ugly way of coding "sometimes offset Proj.p_x!"
 	var/p_y = Proj.p_y + pick(0,0,0,0,0,-1,1)
 	var/decaltype = 1 // 1 - scorch, 2 - bullet
 
-	if(istype(/obj/item/projectile/bullet, Proj))
+	if(istype(/obj/projectile/bullet, Proj))
 		decaltype = 2
 
 
@@ -101,7 +101,7 @@
 			bmark.pixel_x--
 			bmark.pixel_y--
 
-			if(Proj.damage >= 20 || istype(Proj, /obj/item/projectile/beam/practice))
+			if(Proj.damage >= 20 || istype(Proj, /obj/projectile/beam/practice))
 				bmark.icon_state = "scorch"
 				bmark.setDir(pick(NORTH,SOUTH,EAST,WEST)) // random scorch design
 

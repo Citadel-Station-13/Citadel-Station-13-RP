@@ -241,7 +241,7 @@
 	unity = TRUE
 	attack_same = FALSE
 
-/mob/living/simple_animal/slime/examine(mob/user)
+/mob/living/simple_animal/slime/examine(mob/user, dist)
 	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!")
 	if(hat)
 		. += "It is wearing \a [hat]." //slime hat. slat? hlime?
@@ -363,7 +363,7 @@
 			var/mob/living/simple_animal/slime/new_slime = pick(babies)
 			new_slime.universal_speak = universal_speak
 			if(src.mind)
-				src.mind.transfer_to(new_slime)
+				src.mind.transfer(new_slime)
 			else
 				new_slime.key = src.key
 			qdel(src)

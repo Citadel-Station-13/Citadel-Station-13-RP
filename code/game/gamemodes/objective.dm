@@ -132,7 +132,7 @@ var/global/list/all_objectives = list()
 	..()
 	if(target && target.current)
 		var/datum/gender/T = GLOB.gender_datums[target.current.get_visible_gender()]
-		explanation_text = "[target.current.real_name], the [target.assigned_role]  has been classified as harmful to [GLOB.using_map.company_name]'s goals. Demote [T.him] to assistant."
+		explanation_text = "[target.current.real_name], the [target.assigned_role]  has been classified as harmful to [(LEGACY_MAP_DATUM).company_name]'s goals. Demote [T.him] to assistant."
 	else
 		explanation_text = "Free Objective"
 	return target
@@ -141,7 +141,7 @@ var/global/list/all_objectives = list()
 	..(role, role_type)
 	if(target && target.current)
 		var/datum/gender/T = GLOB.gender_datums[target.current.get_visible_gender()]
-		explanation_text = "[target.current.real_name], the [!role_type ? target.assigned_role : target.special_role] has been classified as harmful to [GLOB.using_map.company_name]'s goals. Demote [T.him] to assistant."
+		explanation_text = "[target.current.real_name], the [!role_type ? target.assigned_role : target.special_role] has been classified as harmful to [(LEGACY_MAP_DATUM).company_name]'s goals. Demote [T.him] to assistant."
 	else
 		explanation_text = "Free Objective"
 	return target
@@ -566,7 +566,7 @@ var/global/list/all_objectives = list()
 		return FALSE
 
 	var/current_amount
-	var/obj/item/rig/S
+	var/obj/item/hardsuit/S
 	if(istype(owner.current,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = owner.current
 		S = H.back
@@ -574,7 +574,7 @@ var/global/list/all_objectives = list()
 	if(!istype(S) || !S.installed_modules || !S.installed_modules.len)
 		return FALSE
 
-	var/obj/item/rig_module/datajack/stolen_data = locate() in S.installed_modules
+	var/obj/item/hardsuit_module/datajack/stolen_data = locate() in S.installed_modules
 	if(!istype(stolen_data))
 		return FALSE
 
@@ -593,27 +593,7 @@ var/global/list/all_objectives = list()
 
 
 /datum/objective/capture/check_completion()//Basically runs through all the mobs in the area to determine how much they are worth.
-	var/captured_amount = 0
-	var/area/centcom/holding/A = locate()
-
-	for(var/mob/living/carbon/human/M in A) // Humans (and subtypes).
-		var/worth = M.species.rarity_value
-		if(M.stat==2)//Dead folks are worth less.
-			worth*=0.5
-			continue
-		captured_amount += worth
-
-	for(var/mob/living/carbon/alien/larva/M in A)//Larva are important for research.
-		if(M.stat==2)
-			captured_amount+=0.5
-			continue
-		captured_amount+=1
-
-
-	if(captured_amount<target_amount)
-		return FALSE
-	return TRUE
-
+	CRASH("This function wants to use a rarety value for the mobs, which was removed.")
 
 /datum/objective/absorb/proc/gen_amount_goal(lowbound = 4, highbound = 6)
 	target_amount = rand (lowbound,highbound)

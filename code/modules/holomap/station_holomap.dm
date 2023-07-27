@@ -6,12 +6,14 @@
 	desc = "A virtual map of the surrounding station."
 	icon = 'icons/obj/machines/stationmap.dmi'
 	icon_state = "station_map"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
 	circuit = /obj/item/circuitboard/station_map
+	depth_projected = FALSE
+	climb_allowed = FALSE
 
 	// TODO - Port use_auto_lights from /vg - for now declare here
 	var/use_auto_lights = 1
@@ -60,7 +62,7 @@
 
 	small_station_map = image(SSholomaps.extraMiniMaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[original_zLevel]"], dir = dir)
 	// small_station_map.plane = LIGHTING_PLANE // Not until we do planes ~Leshana
-	// small_station_map.layer = LIGHTING_LAYER+1 // Weird things will happen!
+	// small_station_map.layer = LIGHTING_LAYER_MAIN+1 // Weird things will happen!
 
 	floor_markings = image('icons/obj/machines/stationmap.dmi', "decal_station_map")
 	floor_markings.dir = src.dir
@@ -68,7 +70,7 @@
 	// floor_markings.layer = FLOOR_DECAL_LAYER
 	update_icon()
 
-/obj/machinery/station_map/attack_hand(var/mob/user)
+/obj/machinery/station_map/attack_hand(mob/user, list/params)
 	if(watching_mob && (watching_mob != user))
 		to_chat(user, "<span class='warning'>Someone else is currently watching the holomap.</span>")
 		return
@@ -118,9 +120,9 @@
 			user.client.images |= holomap_datum.station_map
 
 			watching_mob = user
-			RegisterSignal(watching_mob, COMSIG_ATOM_DIR_CHANGE, .proc/checkPosition)
-			RegisterSignal(watching_mob, COMSIG_MOVABLE_MOVED, .proc/checkPosition)
-			RegisterSignal(watching_mob, COMSIG_PARENT_QDELETING, .proc/stopWatching)
+			RegisterSignal(watching_mob, COMSIG_ATOM_DIR_CHANGE, PROC_REF(checkPosition))
+			RegisterSignal(watching_mob, COMSIG_MOVABLE_MOVED, PROC_REF(checkPosition))
+			RegisterSignal(watching_mob, COMSIG_PARENT_QDELETING, PROC_REF(stopWatching))
 			update_use_power(USE_POWER_ACTIVE)
 
 			if(bogus)

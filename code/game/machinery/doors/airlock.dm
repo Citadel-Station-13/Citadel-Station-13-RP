@@ -7,10 +7,28 @@
  * Improper'd all of the names in the new()
  */
 
+GLOBAL_LIST_EMPTY(airlock_icon_cache)
+
+GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
+	/obj/structure/window/reinforced/tinted/full,
+	/obj/structure/window/reinforced/full,
+	/obj/structure/window/phoronreinforced/full,
+	/obj/structure/window/phoronbasic/full,
+	/obj/structure/window/basic/full,
+	/obj/structure/window/reinforced/polarized/full,
+	/obj/structure/wall_frame,
+	/obj/spawner/window
+	)) //the spawner is there specifically because doors are initializing weird.
+
+#define AIRLOCK_PAINTABLE 1
+#define AIRLOCK_STRIPABLE 2
+#define AIRLOCK_DETAILABLE 4
+#define AIRLOCK_WINDOW_PAINTABLE 8
+
 /obj/machinery/door/airlock
 	name = "Airlock"
-	icon = 'icons/obj/doors/Doorint.dmi'
-	icon_state = "door_closed"
+	icon = 'icons/obj/doors/station/door.dmi'
+	icon_state = "preview"
 	power_channel = ENVIRON
 	rad_flags = RAD_BLOCK_CONTENTS
 	rad_insulation = RAD_INSULATION_MEDIUM
@@ -19,7 +37,9 @@
 	autoclose = 1
 	normalspeed = 1
 
+	smoothing_flags = SMOOTH_CUSTOM
 	smoothing_groups = (SMOOTH_GROUP_AIRLOCK)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_GRILLE + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS )
 
 	/**
 	 * If -1, the control is enabled but the AI had bypassed it earlier, so if it is disabled again the AI would have no trouble getting back in.
@@ -64,8 +84,141 @@
 	var/bolt_up_sound = 'sound/machines/boltsup.ogg'
 	var/bolt_down_sound = 'sound/machines/boltsdown.ogg'
 
+	var/paintable = AIRLOCK_PAINTABLE|AIRLOCK_STRIPABLE|AIRLOCK_WINDOW_PAINTABLE
+	var/door_color = null
+	var/stripe_color = null
+	var/symbol_color = null
+	var/window_color = GLASS_COLOR
+	var/window_material = /datum/material/glass
+
+	var/fill_file = 'icons/obj/doors/station/fill_steel.dmi'
+	var/color_file = 'icons/obj/doors/station/color.dmi'
+	var/color_fill_file = 'icons/obj/doors/station/fill_color.dmi'
+	var/stripe_file = 'icons/obj/doors/station/stripe.dmi'
+	var/stripe_fill_file = 'icons/obj/doors/station/fill_stripe.dmi'
+	var/glass_file = 'icons/obj/doors/station/fill_glass.dmi'
+	var/bolts_file = 'icons/obj/doors/station/lights_bolts.dmi'
+	var/deny_file = 'icons/obj/doors/station/lights_deny.dmi'
+	var/lights_file = 'icons/obj/doors/station/lights_green.dmi'
+	var/panel_file = 'icons/obj/doors/station/panel.dmi'
+	var/sparks_damaged_file = 'icons/obj/doors/station/sparks_damaged.dmi'
+	var/sparks_broken_file = 'icons/obj/doors/station/sparks_broken.dmi'
+	var/welded_file = 'icons/obj/doors/station/welded.dmi'
+	var/emag_file = 'icons/obj/doors/station/emag.dmi'
+	var/airlock_type = "Standard"
+	var/state = AIRLOCK_CLOSED
+	var/speaker = TRUE
+
 	/// Bandaid around a problem.
 	var/last_spark = 0
+
+
+/obj/machinery/door/airlock/proc/set_airlock_overlays(state)
+	var/icon/color_overlay
+	var/icon/filling_overlay
+	var/icon/stripe_overlay
+	var/icon/stripe_filling_overlay
+	var/icon/lights_overlay
+	var/icon/panel_overlay
+	var/icon/weld_overlay
+	var/icon/damage_overlay
+	var/icon/sparks_overlay
+	var/icon/brace_overlay
+
+	set_light(0)
+
+	if(door_color && !(door_color == "none"))
+		var/ikey = "[airlock_type]-[door_color]-color"
+		color_overlay = GLOB.airlock_icon_cache["[ikey]"]
+		if(!color_overlay)
+			color_overlay = new(color_file)
+			color_overlay.Blend(door_color, ICON_MULTIPLY)
+			GLOB.airlock_icon_cache["[ikey]"] = color_overlay
+	if(glass)
+		if (window_color && window_color != "none")
+			var/ikey = "[airlock_type]-[window_color]-windowcolor"
+			filling_overlay = GLOB.airlock_icon_cache["[ikey]"]
+			if (!filling_overlay)
+				filling_overlay = new(glass_file)
+				filling_overlay.Blend(window_color, ICON_MULTIPLY)
+				GLOB.airlock_icon_cache["[ikey]"] = filling_overlay
+		else
+			filling_overlay = glass_file
+	else
+		if(door_color && !(door_color == "none"))
+			var/ikey = "[airlock_type]-[door_color]-fillcolor"
+			filling_overlay = GLOB.airlock_icon_cache["[ikey]"]
+			if(!filling_overlay)
+				filling_overlay = new(color_fill_file)
+				filling_overlay.Blend(door_color, ICON_MULTIPLY)
+				GLOB.airlock_icon_cache["[ikey]"] = filling_overlay
+		else
+			filling_overlay = fill_file
+	if(stripe_color && !(stripe_color == "none"))
+		var/ikey = "[airlock_type]-[stripe_color]-stripe"
+		stripe_overlay = GLOB.airlock_icon_cache["[ikey]"]
+		if(!stripe_overlay)
+			stripe_overlay = new(stripe_file)
+			stripe_overlay.Blend(stripe_color, ICON_MULTIPLY)
+			GLOB.airlock_icon_cache["[ikey]"] = stripe_overlay
+		if(!glass)
+			var/ikey2 = "[airlock_type]-[stripe_color]-fillstripe"
+			stripe_filling_overlay = GLOB.airlock_icon_cache["[ikey2]"]
+			if(!stripe_filling_overlay)
+				stripe_filling_overlay = new(stripe_fill_file)
+				stripe_filling_overlay.Blend(stripe_color, ICON_MULTIPLY)
+				GLOB.airlock_icon_cache["[ikey2]"] = stripe_filling_overlay
+
+	if(arePowerSystemsOn())
+		switch(state)
+			if(AIRLOCK_CLOSED)
+				if(lights && locked)
+					lights_overlay = bolts_file
+					set_light(1, 2, l_color = COLOR_RED_LIGHT)
+
+			if(AIRLOCK_DENY)
+				if(lights)
+					lights_overlay = deny_file
+					set_light(1, 2, l_color = COLOR_RED_LIGHT)
+
+			if(AIRLOCK_EMAG)
+				sparks_overlay = emag_file
+
+			if(AIRLOCK_CLOSING)
+				if(lights)
+					lights_overlay = lights_file
+					set_light(1, 2, l_color = COLOR_LIME)
+
+			if(AIRLOCK_OPENING)
+				if(lights)
+					lights_overlay = lights_file
+					set_light(1, 2, l_color = COLOR_LIME)
+
+		if(machine_stat & BROKEN)
+			damage_overlay = sparks_broken_file
+		else if(health < maxhealth * 3/4)
+			damage_overlay = sparks_damaged_file
+
+	if(welded)
+		weld_overlay = welded_file
+
+	if(panel_open)
+		panel_overlay = panel_file
+
+	cut_overlays()
+	// todo: micro-optimizations, right now we're just using listclearnulls on SSoverlays side ~silicons
+	add_overlay(list(
+		color_overlay,
+		filling_overlay,
+		stripe_overlay,
+		stripe_filling_overlay,
+		panel_overlay,
+		weld_overlay,
+		brace_overlay,
+		lights_overlay,
+		sparks_overlay,
+		damage_overlay,
+	))
 
 /obj/machinery/door/airlock/attack_generic(var/mob/living/user, var/damage)
 	if(machine_stat & (BROKEN|NOPOWER))
@@ -98,10 +251,10 @@
 		if(istype(X.species, /datum/species/xenos))
 			if(src.locked || src.welded)
 				visible_message("<span class='green'>\The [user] begins digging into \the [src] internals!</span>")
-				src.do_animate("deny")
+				src.do_animate(DOOR_ANIMATION_DENY)
 				if(do_after(user,5 SECONDS,src))
 					visible_message("<span class='danger'>\The [user] forces \the [src] open, sparks flying from its electronics!</span>")
-					src.do_animate("spark")
+					src.do_animate(DOOR_ANIMATION_SPARK)
 					playsound(src.loc, 'sound/machines/airlock_creaking.ogg', 100, 1)
 					src.locked = 0
 					src.welded = 0
@@ -118,7 +271,7 @@
 				visible_message("<span class='danger'>\The [user] forces \the [src] closed!</span>")
 				close(1)
 		else
-			src.do_animate("deny")
+			src.do_animate(DOOR_ANIMATION_DENY)
 			visible_message("<span class='notice'>\The [user] strains fruitlessly to force \the [src] [density ? "open" : "closed"].</span>")
 			return
 	..()
@@ -127,351 +280,6 @@
 	if(mineral)
 		return get_material_by_name(mineral)
 	return get_material_by_name(MAT_STEEL)
-
-/obj/machinery/door/airlock/command
-	name = "Command Airlock"
-	icon = 'icons/obj/doors/Doorcom.dmi'
-	req_one_access = list(access_heads)
-	assembly_type = /obj/structure/door_assembly/door_assembly_com
-	open_sound_powered = 'sound/machines/door/cmd3o.ogg'
-	close_sound_powered = 'sound/machines/door/cmd3c.ogg'
-
-/obj/machinery/door/airlock/security
-	name = "Security Airlock"
-	icon = 'icons/obj/doors/Doorsec.dmi'
-	req_one_access = list(access_security)
-	assembly_type = /obj/structure/door_assembly/door_assembly_sec
-	open_sound_powered = 'sound/machines/door/sec1o.ogg'
-	close_sound_powered = 'sound/machines/door/sec1c.ogg'
-
-/obj/machinery/door/airlock/engineering
-	name = "Engineering Airlock"
-	icon = 'icons/obj/doors/Dooreng.dmi'
-	req_one_access = list(access_engine)
-	assembly_type = /obj/structure/door_assembly/door_assembly_eng
-	open_sound_powered = 'sound/machines/door/eng1o.ogg'
-	close_sound_powered = 'sound/machines/door/eng1c.ogg'
-
-/obj/machinery/door/airlock/engineeringatmos
-	name = "Atmospherics Airlock"
-	icon = 'icons/obj/doors/Doorengatmos.dmi'
-	req_one_access = list(access_atmospherics)
-	assembly_type = /obj/structure/door_assembly/door_assembly_eat
-	open_sound_powered = 'sound/machines/door/eng1o.ogg'
-	close_sound_powered = 'sound/machines/door/eng1c.ogg'
-
-/obj/machinery/door/airlock/medical
-	name = "Medical Airlock"
-	icon = 'icons/obj/doors/Doormed.dmi'
-	req_one_access = list(access_medical)
-	assembly_type = /obj/structure/door_assembly/door_assembly_med
-	open_sound_powered = 'sound/machines/door/med1o.ogg'
-	close_sound_powered = 'sound/machines/door/med1c.ogg'
-
-/obj/machinery/door/airlock/maintenance
-	name = "Maintenance Access"
-	icon = 'icons/obj/doors/Doormaint.dmi'
-	//req_one_access = list(access_maint_tunnels) // Maintenance is open access
-	assembly_type = /obj/structure/door_assembly/door_assembly_mai
-	open_sound_powered = 'sound/machines/door/door2o.ogg'
-	close_sound_powered = 'sound/machines/door/door2c.ogg'
-
-/obj/machinery/door/airlock/maintenance/cargo
-	icon = 'icons/obj/doors/Doormaint_cargo.dmi'
-	req_one_access = list(access_cargo)
-	open_sound_powered = 'sound/machines/door/door2o.ogg'
-	close_sound_powered = 'sound/machines/door/door2c.ogg'
-
-/obj/machinery/door/airlock/maintenance/command
-	icon = 'icons/obj/doors/Doormaint_command.dmi'
-	req_one_access = list(access_heads)
-
-/obj/machinery/door/airlock/maintenance/common
-	icon = 'icons/obj/doors/Doormaint_common.dmi'
-	open_sound_powered = 'sound/machines/door/hall3o.ogg'
-	close_sound_powered = 'sound/machines/door/hall3c.ogg'
-
-/obj/machinery/door/airlock/maintenance/engi
-	icon = 'icons/obj/doors/Doormaint_engi.dmi'
-	req_one_access = list(access_engine)
-
-/obj/machinery/door/airlock/maintenance/int
-	icon = 'icons/obj/doors/Doormaint_int.dmi'
-
-/obj/machinery/door/airlock/maintenance/medical
-	icon = 'icons/obj/doors/Doormaint_med.dmi'
-	req_one_access = list(access_medical)
-
-/obj/machinery/door/airlock/maintenance/rnd
-	icon = 'icons/obj/doors/Doormaint_rnd.dmi'
-	req_one_access = list(access_research)
-
-/obj/machinery/door/airlock/maintenance/sec
-	icon = 'icons/obj/doors/Doormaint_sec.dmi'
-	req_one_access = list(access_security)
-
-/obj/machinery/door/airlock/external
-	name = "External Airlock"
-	icon = 'icons/obj/doors/Doorext.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_ext
-	open_sound_powered = 'sound/machines/door/space1o.ogg'
-	close_sound_powered = 'sound/machines/door/space1c.ogg'
-
-/obj/machinery/door/airlock/external/glass/bolted
-	icon_state = "door_locked" // So it looks visibly bolted in map editor
-	locked = 1
-
-// For convenience in making docking ports: one that is pre-bolted with frequency set!
-/obj/machinery/door/airlock/external/glass/bolted/cycling
-	frequency = 1379
-
-/obj/machinery/door/airlock/glass_external
-	name = "External Airlock"
-	icon = 'icons/obj/doors/Doorextglass.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_ext
-	opacity = 0
-	glass = 1
-	req_one_access = list(access_external_airlocks)
-	open_sound_powered = 'sound/machines/door/space1o.ogg'
-	close_sound_powered = 'sound/machines/door/space1c.ogg'
-
-/obj/machinery/door/airlock/glass
-	name = "Glass Airlock"
-	icon = 'icons/obj/doors/Doorglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
-	open_sound_powered = 'sound/machines/door/hall1o.ogg'
-	close_sound_powered = 'sound/machines/door/hall1c.ogg'
-	maxhealth = 300
-	explosion_resistance = 5
-	opacity = 0
-	glass = 1
-
-/obj/machinery/door/airlock/centcom
-	name = "Centcom Airlock"
-	icon = 'icons/obj/doors/Doorele.dmi'
-	req_one_access = list(access_cent_general)
-	opacity = 1
-	open_sound_powered = 'sound/machines/door/cmd3o.ogg'
-	close_sound_powered = 'sound/machines/door/cmd3c.ogg'
-
-/obj/machinery/door/airlock/glass_centcom
-	name = "Airlock"
-	icon = 'icons/obj/doors/Dooreleglass.dmi'
-	opacity = 0
-	glass = 1
-	open_sound_powered = 'sound/machines/door/cmd3o.ogg'
-	close_sound_powered = 'sound/machines/door/cmd3c.ogg'
-
-/obj/machinery/door/airlock/vault
-	name = "Vault"
-	icon = 'icons/obj/doors/vault.dmi'
-	explosion_resistance = 20
-	opacity = 1
-	secured_wires = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity //Until somebody makes better sprites.
-	req_one_access = list(access_heads_vault)
-	open_sound_powered = 'sound/machines/door/vault1o.ogg'
-	close_sound_powered = 'sound/machines/door/vault1c.ogg'
-
-/obj/machinery/door/airlock/vault/bolted
-	icon_state = "door_locked"
-	locked = 1
-
-/obj/machinery/door/airlock/freezer
-	name = "Freezer Airlock"
-	icon = 'icons/obj/doors/Doorfreezer.dmi'
-	opacity = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_fre
-
-/obj/machinery/door/airlock/hatch
-	name = "Airtight Hatch"
-	icon = 'icons/obj/doors/Doorhatchele.dmi'
-	explosion_resistance = 20
-	opacity = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_hatch
-	req_one_access = list(access_maint_tunnels)
-	open_sound_powered = 'sound/machines/door/hatchopen.ogg'
-	close_sound_powered = 'sound/machines/door/hatchclose.ogg'
-	open_sound_unpowered = 'sound/machines/door/hatchforced.ogg'
-
-/obj/machinery/door/airlock/maintenance_hatch
-	name = "Maintenance Hatch"
-	icon = 'icons/obj/doors/Doorhatchmaint2.dmi'
-	explosion_resistance = 20
-	opacity = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_mhatch
-	req_one_access = list(access_maint_tunnels)
-	open_sound_powered = 'sound/machines/door/hatchopen.ogg'
-	close_sound_powered = 'sound/machines/door/hatchclose.ogg'
-	open_sound_unpowered = 'sound/machines/door/hatchforced.ogg'
-
-/obj/machinery/door/airlock/glass_command
-	name = "Command Airlock"
-	icon = 'icons/obj/doors/Doorcomglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
-	explosion_resistance = 5
-	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_com
-	glass = 1
-	req_one_access = list(access_heads)
-	open_sound_powered = 'sound/machines/door/cmd1o.ogg'
-	close_sound_powered = 'sound/machines/door/cmd1c.ogg'
-
-
-/obj/machinery/door/airlock/glass_engineering
-	name = "Engineering Airlock"
-	icon = 'icons/obj/doors/Doorengglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
-	explosion_resistance = 5
-	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_eng
-	glass = 1
-	req_one_access = list(access_engine)
-	open_sound_powered = 'sound/machines/door/eng1o.ogg'
-	close_sound_powered = 'sound/machines/door/eng1c.ogg'
-
-/obj/machinery/door/airlock/glass_engineeringatmos
-	name = "Atmospherics Airlock"
-	icon = 'icons/obj/doors/Doorengatmoglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
-	explosion_resistance = 5
-	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_eat
-	glass = 1
-	req_one_access = list(access_atmospherics)
-	open_sound_powered = 'sound/machines/door/eng1o.ogg'
-	close_sound_powered = 'sound/machines/door/eng1c.ogg'
-
-/obj/machinery/door/airlock/glass_security
-	name = "Security Airlock"
-	icon = 'icons/obj/doors/Doorsecglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
-	explosion_resistance = 5
-	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_sec
-	glass = 1
-	req_one_access = list(access_security)
-	open_sound_powered = 'sound/machines/door/sec1o.ogg'
-	close_sound_powered = 'sound/machines/door/sec1c.ogg'
-
-/obj/machinery/door/airlock/glass_medical
-	name = "Medical Airlock"
-	icon = 'icons/obj/doors/Doormedglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
-	explosion_resistance = 5
-	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_med
-	glass = 1
-	req_one_access = list(access_medical)
-	open_sound_powered = 'sound/machines/door/med1o.ogg'
-	close_sound_powered = 'sound/machines/door/med1c.ogg'
-
-/obj/machinery/door/airlock/mining
-	name = "Mining Airlock"
-	icon = 'icons/obj/doors/Doormining.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_min
-	req_one_access = list(access_mining)
-	open_sound_powered = 'sound/machines/door/eng1o.ogg'
-	close_sound_powered = 'sound/machines/door/eng1c.ogg'
-
-/obj/machinery/door/airlock/atmos
-	name = "Atmospherics Airlock"
-	icon = 'icons/obj/doors/Dooratmo.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
-	req_one_access = list(access_atmospherics)
-	open_sound_powered = 'sound/machines/door/eng1o.ogg'
-	close_sound_powered = 'sound/machines/door/eng1c.ogg'
-
-/obj/machinery/door/airlock/research
-	name = "Research Airlock"
-	icon = 'icons/obj/doors/Doorresearch.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_research
-	open_sound_powered = 'sound/machines/door/sci1o.ogg'
-	close_sound_powered = 'sound/machines/door/sci1c.ogg'
-
-/obj/machinery/door/airlock/glass_research
-	name = "Research Airlock"
-	icon = 'icons/obj/doors/Doorresearchglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
-	explosion_resistance = 5
-	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_research
-	glass = 1
-	req_one_access = list(access_research)
-	open_sound_powered = 'sound/machines/door/sci1o.ogg'
-	close_sound_powered = 'sound/machines/door/sci1c.ogg'
-
-/obj/machinery/door/airlock/glass_mining
-	name = "Mining Airlock"
-	icon = 'icons/obj/doors/Doorminingglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
-	explosion_resistance = 5
-	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_min
-	glass = 1
-	req_one_access = list(access_mining)
-	open_sound_powered = 'sound/machines/door/cgo1o.ogg'
-	close_sound_powered = 'sound/machines/door/cgo1c.ogg'
-
-/obj/machinery/door/airlock/glass_atmos
-	name = "Atmospherics Airlock"
-	icon = 'icons/obj/doors/Dooratmoglass.dmi'
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
-	explosion_resistance = 5
-	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
-	glass = 1
-	req_one_access = list(access_atmospherics)
-	open_sound_powered = 'sound/machines/door/eng1o.ogg'
-	close_sound_powered = 'sound/machines/door/eng1c.ogg'
-
-
-/obj/machinery/door/airlock/gold
-	name = "Gold Airlock"
-	icon = 'icons/obj/doors/Doorgold.dmi'
-	mineral = "gold"
-
-/obj/machinery/door/airlock/silver
-	name = "Silver Airlock"
-	icon = 'icons/obj/doors/Doorsilver.dmi'
-	mineral = "silver"
-
-/obj/machinery/door/airlock/diamond
-	name = "Diamond Airlock"
-	icon = 'icons/obj/doors/Doordiamond.dmi'
-	mineral = "diamond"
-
-/obj/machinery/door/airlock/uranium
-	name = "Uranium Airlock"
-	desc = "And they said I was crazy."
-	icon = 'icons/obj/doors/Dooruranium.dmi'
-	mineral = "uranium"
-	var/last_event = 0
-	var/rad_power = RAD_INTENSITY_MAT_SPECIAL_URANIUM_AIRLOCK
-
-/obj/machinery/door/airlock/bananium
-	name = "Bananium Airlock"
-	desc = "An absolute atrocity."
-	icon = 'icons/obj/doors/Doorbananium.dmi'
-	mineral = "bananium"
-	open_sound_powered = 'sound/items/bikehorn.ogg'
-	close_sound_powered = 'sound/items/bikehorn.ogg'
-
-/obj/machinery/door/airlock/silencium
-	name = "Silencium Airlock"
-	desc = "The pinnacle of noise cancelling door technology."
-	icon = 'icons/obj/doors/Doorsilencium.dmi'
-	mineral = "silencium"
-	open_sound_powered = 'sound/effects/footstep/carpet1.ogg'
-	close_sound_powered = 'sound/effects/footstep/carpet1.ogg'
 
 /obj/machinery/door/airlock/process(delta_time)
 	// Deliberate no call to parent.
@@ -519,107 +327,6 @@
 	new/obj/structure/door_assembly( src.loc )
 	qdel(src)
 
-/obj/machinery/door/airlock/sandstone
-	name = "Sandstone Airlock"
-	icon = 'icons/obj/doors/Doorsand.dmi'
-	mineral = "sandstone"
-
-/obj/machinery/door/airlock/science
-	name = "Research Airlock"
-	icon = 'icons/obj/doors/Doorsci.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_science
-	req_one_access = list(access_research)
-	open_sound_powered = 'sound/machines/door/sci1o.ogg'
-	close_sound_powered = 'sound/machines/door/sci1c.ogg'
-
-/obj/machinery/door/airlock/glass_science
-	name = "Glass Airlocks"
-	icon = 'icons/obj/doors/Doorsciglass.dmi'
-	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_science
-	glass = 1
-	req_one_access = list(access_research)
-	open_sound_powered = 'sound/machines/door/sci1o.ogg'
-	close_sound_powered = 'sound/machines/door/sci1c.ogg'
-
-/obj/machinery/door/airlock/highsecurity
-	name = "Secure Airlock"
-	icon = 'icons/obj/doors/hightechsecurity.dmi'
-	explosion_resistance = 20
-	secured_wires = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity
-	req_one_access = list(access_heads_vault)
-	open_sound_powered = 'sound/machines/door/secure1o.ogg'
-	close_sound_powered = 'sound/machines/door/secure1c.ogg'
-
-/obj/machinery/door/airlock/voidcraft
-	name = "voidcraft hatch"
-	desc = "It's an extra resilient airlock intended for spacefaring vessels."
-	icon = 'icons/obj/doors/shuttledoors.dmi'
-	explosion_resistance = 20
-	opacity = 0
-	glass = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_voidcraft
-	open_sound_powered = 'sound/machines/door/shuttle1o.ogg'
-	close_sound_powered = 'sound/machines/door/shuttle1c.ogg'
-
-// Airlock opens from top-bottom instead of left-right.
-/obj/machinery/door/airlock/voidcraft/vertical
-	icon = 'icons/obj/doors/shuttledoors_vertical.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_voidcraft/vertical
-	open_sound_powered = 'sound/machines/door/shuttle1o.ogg'
-	close_sound_powered = 'sound/machines/door/shuttle1c.ogg'
-
-/datum/category_item/catalogue/anomalous/precursor_a/alien_airlock
-	name = "Precursor Alpha Object - Doors"
-	desc = "This object appears to be used in order to restrict or allow access to \
-	rooms based on its physical state. In other words, a door. \
-	Despite being designed and created by unknown ancient alien hands, this door has \
-	a large number of similarities to the conventional airlock, such as being driven by \
-	electricity, opening and closing by physically moving, and being air tight. \
-	It also operates by responding to signals through internal electrical conduits. \
-	These characteristics make it possible for one with experience with a multitool \
-	to manipulate the door.\
-	<br><br>\
-	The symbol on the door does not match any living species' patterns, giving further \
-	implications that this door is very old, and yet it remains operational after \
-	thousands of years. It is unknown if that is due to superb construction, or \
-	unseen autonomous maintenance having been performed."
-	value = CATALOGUER_REWARD_EASY
-
-/obj/machinery/door/airlock/alien
-	name = "alien airlock"
-	desc = "You're fairly sure this is a door."
-	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_airlock)
-	icon = 'icons/obj/doors/Dooralien.dmi'
-	explosion_resistance = 20
-	secured_wires = TRUE
-	hackProof = TRUE
-	assembly_type = /obj/structure/door_assembly/door_assembly_alien
-	req_one_access = list(access_alien)
-
-/obj/machinery/door/airlock/alien/locked
-	icon_state = "door_locked"
-	locked = TRUE
-
-/obj/machinery/door/airlock/alien/public // Entry to UFO.
-	req_one_access = list()
-	normalspeed = FALSE // So it closes faster and hopefully keeps the warm air inside.
-	hackProof = TRUE // No borgs
-
-//"Red" Armory Door
-/obj/machinery/door/airlock/security/armory
-	name = "Red Armory"
-	//color = ""
-
-/obj/machinery/door/airlock/security/armory/allowed(mob/user)
-	if(get_security_level() in list("green","blue"))
-		return FALSE
-
-	return ..(user)
-
-
-
 /*
 About the new airlock wires panel:
 *	An airlock wire dialog can be accessed by the normal way or by using wirecutters or a multitool on the door while the wire-panel is open. This would show the following wires, which you can either wirecut/mend or send a multitool pulse through. There are 9 wires.
@@ -650,7 +357,7 @@ About the new airlock wires panel:
 		else if(user.hallucination > 50 && prob(10) && src.operating == 0)
 			to_chat(user, "<span class='danger'>You feel a powerful shock course through your body!</span>")
 			user.halloss += 10
-			user.stunned += 10
+			user.afflict_stun(5 SECONDS)
 			return
 	..(user)
 
@@ -733,20 +440,20 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/proc/electrify(var/duration, var/feedback = 0)
 	var/message = ""
 	if(wires.is_cut(WIRE_ELECTRIFY) && arePowerSystemsOn())
-		message = text("The electrification wire is cut - Door permanently electrified.")
+		message = "The electrification wire is cut - Door permanently electrified."
 		src.electrified_until = -1
 	else if(duration && !arePowerSystemsOn())
-		message = text("The door is unpowered - Cannot electrify the door.")
+		message = "The door is unpowered - Cannot electrify the door."
 		src.electrified_until = 0
 	else if(!duration && electrified_until != 0)
 		message = "The door is now un-electrified."
 		src.electrified_until = 0
 	else if(duration)	//electrify door for the given duration seconds
 		if(usr)
-			shockedby += text("\[[time_stamp()]\] - [usr](ckey:[usr.ckey])")
+			shockedby += "\[[time_stamp()]\] - [usr](ckey:[usr.ckey])"
 			add_attack_logs(usr,name,"Electrified a door")
 		else
-			shockedby += text("\[[time_stamp()]\] - EMP)")
+			shockedby += "\[[time_stamp()]\] - EMP)"
 		message = "The door is now electrified [duration == -1 ? "permanently" : "for [duration] second\s"]."
 		src.electrified_until = duration == -1 ? -1 : world.time + SecondsToTicks(duration)
 
@@ -774,7 +481,7 @@ About the new airlock wires panel:
 	var/message = ""
 	// Safeties!  We don't need no stinking safeties!
 	if (wires.is_cut(WIRE_SAFETY))
-		message = text("The safety wire is cut - Cannot enable safeties.")
+		message = "The safety wire is cut - Cannot enable safeties."
 	else if (!activate && src.safe)
 		safe = 0
 	else if (activate && !src.safe)
@@ -800,68 +507,43 @@ About the new airlock wires panel:
 		return 0
 
 
-/obj/machinery/door/airlock/update_icon()
-	if(overlays)
-		cut_overlays()
+/obj/machinery/door/airlock/update_icon(var/doorstate)
+	switch(doorstate)
+		if(AIRLOCK_OPEN)
+			icon_state = "open"
+		if(AIRLOCK_CLOSED)
+			icon_state = "closed"
+		if(AIRLOCK_OPENING, AIRLOCK_CLOSING, AIRLOCK_EMAG, AIRLOCK_DENY)
+			icon_state = ""
 
-	var/list/overlays_to_add = list()
+	set_airlock_overlays(state)
 
-	if(density)
-		if(locked && lights && src.arePowerSystemsOn())
-			icon_state = "door_locked"
-		else
-			icon_state = "door_closed"
-		if(p_open || welded)
-			if(p_open)
-				overlays_to_add += image(icon, "panel_open")
-			if (!(machine_stat & NOPOWER))
-				if(machine_stat & BROKEN)
-					overlays_to_add += image(icon, "sparks_broken")
-				else if (health < maxhealth * 3/4)
-					overlays_to_add += image(icon, "sparks_damaged")
-			if(welded)
-				overlays_to_add += image(icon, "welded")
-		else if (health < maxhealth * 3/4 && !(machine_stat & NOPOWER))
-			overlays_to_add += image(icon, "sparks_damaged")
-	else
-		icon_state = "door_open"
-		if((machine_stat & BROKEN) && !(machine_stat & NOPOWER))
-			overlays_to_add += image(icon, "sparks_open")
-
-	add_overlay(overlays_to_add)
-
-	return
+/obj/machinery/door/airlock/custom_smooth()
+	return //we only custom smooth because we don't need to do anything else.
 
 /obj/machinery/door/airlock/do_animate(animation)
 	switch(animation)
-		if("opening")
-			if(overlays)
-				cut_overlays()
-			if(p_open)
-				spawn(2) // The only work around that works. Downside is that the door will be gone for a millisecond.
-					flick("o_door_opening", src)  //can not use flick due to BYOND bug updating overlays right before flicking
-					update_icon()
-			else
-				flick("door_opening", src)//[machine_stat ? "_stat":]
-				update_icon()
-		if("closing")
-			if(overlays)
-				cut_overlays()
-			if(p_open)
-				spawn(2)
-					flick("o_door_closing", src)
-					update_icon()
-			else
-				flick("door_closing", src)
-				update_icon()
-		if("spark")
-			if(density)
-				flick("door_spark", src)
-		if("deny")
-			if(density && src.arePowerSystemsOn())
-				flick("door_deny", src)
-				playsound(src, denied_sound, 50, 0, 3)
-	return
+		if(DOOR_ANIMATION_OPEN)
+			set_airlock_overlays(AIRLOCK_OPENING)
+			flick("opening", src)//[stat ? "_stat":]
+			update_icon(AIRLOCK_OPEN)
+		if(DOOR_ANIMATION_CLOSE)
+			set_airlock_overlays(AIRLOCK_CLOSING)
+			flick("closing", src)
+			update_icon(AIRLOCK_CLOSED)
+		if(DOOR_ANIMATION_DENY)
+			set_airlock_overlays(AIRLOCK_DENY)
+			if(density && arePowerSystemsOn())
+				flick("deny", src)
+				if(speaker)
+					playsound(loc, denied_sound, 50, 0)
+			update_icon(AIRLOCK_CLOSED)
+		if(DOOR_ANIMATION_EMAG)
+			set_airlock_overlays(AIRLOCK_EMAG)
+			if(density && arePowerSystemsOn())
+				flick("deny", src)
+		else
+			update_icon()
 
 /obj/machinery/door/airlock/attack_ai(mob/user as mob)
 	ui_interact(user)
@@ -965,14 +647,14 @@ About the new airlock wires panel:
 		if (istype(mover, /obj/item))
 			var/obj/item/i = mover
 			if(world.time > last_spark + 2 SECONDS)
-				if (i.matter && (MAT_STEEL in i.matter) && i.matter[MAT_STEEL] > 0)
+				if (i.materials && (MAT_STEEL in i.materials) && i.materials[MAT_STEEL] > 0)
 					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
 					s.set_up(5, 1, src)
 					s.start()
 					last_spark = world.time
 	return ..()
 
-/obj/machinery/door/airlock/attack_hand(mob/user as mob)
+/obj/machinery/door/airlock/attack_hand(mob/user, list/params)
 	if(!istype(usr, /mob/living/silicon))
 		if(src.isElectrified())
 			if(src.shock(user, 100))
@@ -1330,8 +1012,8 @@ About the new airlock wires panel:
 /mob/living/airlock_crush(var/crush_damage)
 	. = ..()
 	adjustBruteLoss(crush_damage)
-	SetStunned(5)
-	SetWeakened(5)
+	set_stunned(20 * 5)
+	set_paralyzed(20 * 5)
 	var/turf/T = get_turf(src)
 	T.add_blood(src)
 
@@ -1390,10 +1072,8 @@ About the new airlock wires panel:
 
 		//update the door's access to match the electronics'
 		secured_wires = electronics.secure
-		if(electronics.one_access)
-			req_one_access = src.electronics.conf_access
-		else
-			req_access = src.electronics.conf_access
+		req_one_access = electronics.conf_req_one_access?.Copy()
+		req_access = electronics.conf_req_access?.Copy()
 
 		//get the name from the assembly
 		if(assembly.created_name)
@@ -1406,7 +1086,7 @@ About the new airlock wires panel:
 
 	//wires
 	var/turf/T = get_turf(loc)
-	if(T && (T.z in GLOB.using_map.admin_levels))
+	if(T && (T.z in (LEGACY_MAP_DATUM).admin_levels))
 		secured_wires = 1
 	if (secured_wires)
 		wires = new/datum/wires/airlock/secure(src)
@@ -1419,6 +1099,33 @@ About the new airlock wires panel:
 				src.closeOther = A
 				break
 	name = "\improper [name]"
+	if(autoset_dir)
+		for (var/cardinal in GLOB.cardinal) //No list copy please good sir
+			var/turf/step_turf = get_step(src, cardinal)
+			for(var/atom/thing as anything in step_turf)
+				if(thing.type in airlock_typecache)
+					switch(cardinal)
+						if(EAST)
+							setDir(SOUTH)
+						if(WEST)
+							setDir(SOUTH)
+						if(NORTH)
+							setDir(WEST)
+						if(SOUTH)
+							setDir(WEST)
+					break
+			if (step_turf.density == TRUE)
+				switch(cardinal)
+					if(EAST)
+						setDir(SOUTH)
+					if(WEST)
+						setDir(SOUTH)
+					if(NORTH)
+						setDir(WEST)
+					if(SOUTH)
+						setDir(WEST)
+				break
+	update_icon(AIRLOCK_CLOSED)
 	. = ..()
 
 /obj/machinery/door/airlock/Destroy()
@@ -1439,11 +1146,8 @@ About the new airlock wires panel:
 	//update the electronics to match the door's access
 	if(!src.req_access)
 		src.check_access()
-	if(src.req_access.len)
-		electronics.conf_access = src.req_access
-	else if (src.req_one_access.len)
-		electronics.conf_access = src.req_one_access
-		electronics.one_access = 1
+	electronics.conf_req_access = req_access.Copy()
+	electronics.conf_req_one_access = req_one_access.Copy()
 
 /obj/machinery/door/airlock/emp_act(var/severity)
 	if(prob(40/severity))

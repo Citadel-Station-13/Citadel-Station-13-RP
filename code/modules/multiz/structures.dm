@@ -168,13 +168,6 @@
 	// Out of the dir check, we have no valid neighbors, and thus are not complete.
 	return FALSE
 
-/obj/structure/stairs/bottom/Crossed(var/atom/movable/AM, var/atom/oldloc)
-	if(isliving(AM))
-		var/mob/living/L = AM
-		if(L.has_AI())
-			use_stairs(AM, oldloc)
-	..()
-
 /obj/structure/stairs/bottom/use_stairs(atom/movable/AM, atom/oldloc)
 	if(!common_prechecks(AM, oldloc))
 		return
@@ -199,7 +192,7 @@
 	icon_state = "stair_u"
 	opacity   = TRUE
 	density   = TRUE // Too high to simply step up on
-	climbable = TRUE // But they can be climbed if the bottom is out
+	climb_allowed = TRUE
 
 	var/obj/structure/stairs/top/top = null
 	var/obj/structure/stairs/bottom/bottom = null
@@ -272,7 +265,7 @@
 /obj/structure/stairs/middle/MouseDroppedOnLegacy(mob/target, mob/user)
 	. = ..()
 	if(check_integrity())
-		do_climb(user)
+		do_climb_on(user)
 		transition_atom(user, get_turf(top)) // You can't really drag things when you have to climb up the gap in the stairs yourself
 
 /obj/structure/stairs/middle/Bumped(mob/user)
@@ -348,19 +341,6 @@
 
 	// Out of the dir check, we have no valid neighbors, and thus are not complete. `.` was set by ..()
 	return
-
-/obj/structure/stairs/top/Crossed(var/atom/movable/AM, var/atom/oldloc)
-	if(isliving(AM))
-		var/mob/living/L = AM
-		if(L.has_AI())
-			use_stairs(AM, oldloc)
-	..()
-
-/obj/structure/stairs/top/Uncrossed(var/atom/movable/AM)
-	// Going down stairs from the topstair piece
-	if(AM.dir == turn(dir, 180) && check_integrity())
-		use_stairs_instant(AM)
-		return
 
 /obj/structure/stairs/top/get_destination_turf()
 	return get_turf(bottom)

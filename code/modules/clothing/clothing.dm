@@ -5,18 +5,24 @@
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/clothing.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
+
+	//? equip
+	/// Inventory slot IDs where this is active for any effects. Used by subtypes, to be potentially refactored in the future.
+	var/list/active_slots
+
+	//? legacy
+
 	var/list/species_restricted = null //Only these species can wear this kit.
 	var/gunshot_residue //Used by forensics.
 
-	var/list/accessories
 	var/list/valid_accessory_slots
 	var/list/restricted_accessory_slots
 	var/list/starting_accessories
 
 	var/flash_protection = FLASH_PROTECTION_NONE
 	var/tint = TINT_NONE
+	// todo: probably refactor these two
 	var/list/enables_planes		//Enables these planes in the wearing mob's plane_holder
-	var/list/plane_slots		//But only if it's equipped into this specific slot
 
 	// todo: kill this stupid shit lmao
 	/*
@@ -29,11 +35,40 @@
 	var/ear_protection = 0
 	var/blood_sprite_state
 
-	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
 	var/recent_struggle = 0
 
 	/// is considered wizard garb?
 	var/wizard_garb = FALSE
+
+	//? accessory system - used as accessory
+	/// are we an accessory?
+	var/is_accessory = FALSE
+	/// accessory render as _acc slot key instead of obeying worn render.
+	/// accessories will use one for all if flagged as such, otherwise they'll inherit the real slot of where they are.
+	var/accessory_render_specific = FALSE
+	/// use legacy system - only works for /obj/item/clothing/accessory.
+	var/accessory_render_legacy = FALSE
+	/// FALSE for no render at all when accessory - /obj/item has this by default as it doesn't have clothing procs.
+	var/accessory_renders = TRUE
+	/// what we're attached to if we're an accessory
+	var/obj/item/clothing/accessory_host
+	/// what state we render as for the inventory overlay, *not* worn overlay. defaults to icon_state.
+	var/accessory_inv_state
+	/// currently cached inv state
+	var/mutable_appearance/accessory_inv_cached
+
+	//? accessory system - attached to by accessories
+	/// full list of accessories, everything inside must be an /obj/item. *not* /obj/item/clothing.
+	var/list/accessories
+
+/obj/item/clothing/Initialize(mapload)
+	. = ..()
+	if(islist(active_slots))
+		active_slots = typelist(NAMEOF(src, active_slots), active_slots)
+	if(starting_accessories)
+		for(var/T in starting_accessories)
+			var/obj/item/clothing/accessory/tie = new T(src)
+			src.attach_accessory(null, tie)
 
 // Aurora forensics port.
 /obj/item/clothing/clean_blood()
@@ -49,13 +84,6 @@
 	if(acc.len)
 		. += " with traces of [english_list(acc)]"
 
-/obj/item/clothing/Initialize(mapload)
-	. = ..()
-	if(starting_accessories)
-		for(var/T in starting_accessories)
-			var/obj/item/clothing/accessory/tie = new T(src)
-			src.attach_accessory(null, tie)
-
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
 	if(enables_planes)
@@ -65,6 +93,23 @@
 	. = ..()
 	if(enables_planes)
 		user.recalculate_vis()
+
+/obj/item/clothing/examine_more(mob/user)
+	. = ..()
+	if(user.using_perspective?.eye && get_dist(user.using_perspective?.eye, src) <= 2)
+		. += "From this distance you can determine its <a href='?src=[REF(src)];examine_armor=1'>armor</a> with a close examination."
+
+/obj/item/clothing/Topic(href, list/href_list)
+	. = ..()
+	if(.)
+		return
+	if(href_list["examine_armor"])
+		if(!usr.using_perspective || get_dist(usr.using_perspective?.eye, src) > 2)
+			to_chat(usr, SPAN_WARNING("You are too far away!"))
+			return TRUE
+		var/list/assembled = fetch_armor().describe_list()
+		to_chat(usr, SPAN_BLOCKQUOTE("<center>--- Armor: [src] ---</center><hr>[jointext(assembled, "<br>")]", null))
+		return TRUE
 
 /obj/item/clothing/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()
@@ -125,6 +170,7 @@
 			species_restricted = list(target_species)
 
 	//Set icon
+	LAZYINITLIST(sprite_sheets)
 	if (sprite_sheets_refit && (target_species in sprite_sheets_refit))
 		sprite_sheets[target_species] = sprite_sheets_refit[target_species]
 
@@ -155,3 +201,58 @@
 		icon = sprite_sheets_obj[target_species]
 	else
 		icon = initial(icon)
+
+//? styles
+
+/**
+ * returns available styles as name = state or image or mutable_appearance
+ */
+/obj/item/clothing/proc/available_styles(mob/user)
+	. = list()
+
+/**
+ * sets us to a specific style
+ */
+/obj/item/clothing/proc/set_style(style, mob/user)
+	return FALSE
+
+/**
+ * prompts a user to pick style
+ */
+/obj/item/clothing/proc/pick_style(mob/user)
+	var/list/available = available_styles(user)
+	var/list/assembled = list()
+	for(var/name in available)
+		var/using = available[name]
+		if(istext(using))
+			assembled[name] = image(icon,
+					icon_state = using,
+					pixel_x = -((icon_x_dimension - WORLD_ICON_SIZE) / 2),
+					pixel_y = -((icon_y_dimension - WORLD_ICON_SIZE) / 2),
+				)
+		else if(isimage(using) || ismutableappearance(using))
+			assembled[name] = using
+		else if(islist(using))
+			var/mutable_appearance/collated = mutable_appearance()
+			collated.dir = SOUTH
+			collated.overlays = using
+			assembled[name] = collated
+	if(!length(available))
+		to_chat(user, SPAN_WARNING("[src] can only be worn one way."))
+		return
+	var/choice = show_radial_menu(user, src, assembled, radius = 48)
+	if(isnull(choice))
+		return
+	set_style(choice, user)
+
+/obj/item/clothing/verb/pick_style_verb()
+	set name = "Set Worn Style"
+	set category = "IC"
+	set desc = "Wear this piece of clothing in a different style."
+	set src in usr
+
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
+		usr.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+		return
+
+	pick_style(usr)

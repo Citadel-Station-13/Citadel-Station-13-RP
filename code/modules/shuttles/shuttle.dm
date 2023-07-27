@@ -51,13 +51,13 @@
 			if(ceiling_type)
 				var/turf/above = GetAbove(T)
 				if(above && !(above.loc in shuttle_area))
-					above.PlaceBelowLogicalBottom(ceiling_type)
+					above.PlaceBelowLogicalBottom(ceiling_type, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 			// inject floor
 			// but only if we are.. floor
 			if(GLOB.multiz_hole_baseturfs[T.type])
 				// don't bother
 				continue
-			T.PlaceBelowLogicalTop(/turf/simulated/floor/plating, CHANGETURF_INHERIT_AIR)
+			T.PlaceBelowLogicalTop(/turf/simulated/floor/plating, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 
 	shuttle_area = areas
 
@@ -340,7 +340,7 @@
 						shake_camera(M, 10, 1)
 						// TODO - tossing?
 						if(istype(M, /mob/living/carbon))
-							M.Weaken(3)
+							M.afflict_paralyze(20 * 3)
 							if(move_direction)
 								throw_a_mob(M,move_direction)
 		// We only need to rebuild powernets for our cables.  No need to check machines because they are on top of cables.

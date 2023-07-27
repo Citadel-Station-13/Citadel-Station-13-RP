@@ -94,77 +94,13 @@
 		send2irc("Panic Bunker", "AUTO BUNKER: [ckeytobypass] given access (incoming comms from [sender]).")
 	return "Success"
 
-
-/*
-/datum/world_topic/ahelp_relay
-	keyword = "Ahelp"
-	require_comms_key = TRUE
-
-/datum/world_topic/ahelp_relay/Run(list/input)
-	relay_msg_admins("<span class='adminnotice'><b><font color=red>HELP: </font> [input["source"]] [input["message_sender"]]: [input["message"]]</b></span>")
-
-/datum/world_topic/comms_console
-	keyword = "Comms_Console"
-	require_comms_key = TRUE
-
-/datum/world_topic/comms_console/Run(list/input)
-	minor_announce(input["message"], "Incoming message from [input["message_sender"]]")
-	for(var/obj/machinery/computer/communications/CM in GLOB.machines)
-		CM.overrideCooldown()
-
-/datum/world_topic/news_report
-	keyword = "News_Report"
-	require_comms_key = TRUE
-
-/datum/world_topic/news_report/Run(list/input)
-	minor_announce(input["message"], "Breaking Update From [input["message_sender"]]")
-
-/datum/world_topic/server_hop
-	keyword = "server_hop"
-
-/datum/world_topic/server_hop/Run(list/input)
-	var/expected_key = input[keyword]
-	for(var/mob/observer/dead/O in GLOB.GLOB.player_list)
-		if(O.key == expected_key)
-			if(O.client)
-				new /atom/movable/screen/splash(O.client, TRUE)
-			break
-
-/datum/world_topic/adminmsg
-	keyword = "adminmsg"
-	require_comms_key = TRUE
-
-/datum/world_topic/adminmsg/Run(list/input)
-	return IrcPm(input[keyword], input["msg"], input["sender"])
-
-/datum/world_topic/namecheck
-	keyword = "namecheck"
-	require_comms_key = TRUE
-
-/datum/world_topic/namecheck/Run(list/input)
-	//Oh this is a hack, someone refactor the functionality out of the chat command PLS
-	var/datum/tgs_chat_command/namecheck/NC = new
-	var/datum/tgs_chat_user/user = new
-	user.friendly_name = input["sender"]
-	user.mention = user.friendly_name
-	return NC.Run(user, input["namecheck"])
-
-/datum/world_topic/adminwho
-	keyword = "adminwho"
-	require_comms_key = TRUE
-
-/datum/world_topic/adminwho/Run(list/input)
-	return ircadminwho()
-
-*/
-
 /datum/world_topic/jsonstatus
 	keyword = "jsonstatus"
 
 /datum/world_topic/jsonstatus/Run(list/input, addr)
 	. = list()
 	.["mode"] = master_mode
-	// .["round_id"] = null // GLOB.round_id
+	.["round_id"] = GLOB.round_id
 	.["players"] = GLOB.clients.len
 	var/list/adm = get_admin_counts()
 	var/list/presentmins = adm["present"]
@@ -172,7 +108,7 @@
 	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
 	.["security_level"] = get_security_level()
 	.["round_duration"] = roundduration2text()
-	.["map"] = SSmapping.config.map_name
+	.["map"] = (LEGACY_MAP_DATUM).name
 	return json_encode(.)
 
 /datum/world_topic/jsonplayers

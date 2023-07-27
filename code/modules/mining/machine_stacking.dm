@@ -24,7 +24,7 @@
 		stack_trace("Stacking machine console at [COORD(src)] could not find its machine!")
 		qdel(src)
 
-/obj/machinery/mineral/stacking_unit_console/attack_hand(mob/user)
+/obj/machinery/mineral/stacking_unit_console/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	interact(user)
 
@@ -33,13 +33,13 @@
 
 	var/dat
 
-	dat += text("<h1>Stacking unit console</h1><hr><table>")
+	dat += "<h1>Stacking unit console</h1><hr><table>"
 
 	for(var/stacktype in machine.stack_storage)
 		if(machine.stack_storage[stacktype] > 0)
 			dat += "<tr><td width = 150><b>[capitalize(stacktype)]:</b></td><td width = 30>[machine.stack_storage[stacktype]]</td><td width = 50><A href='?src=\ref[src];release_stack=[stacktype]'>\[release\]</a></td></tr>"
 	dat += "</table><hr>"
-	dat += text("<br>Stacking: [machine.stack_amt] <A href='?src=\ref[src];change_stack=1'>\[change\]</a><br><br>")
+	dat += "<br>Stacking: [machine.stack_amt] <A href='?src=\ref[src];change_stack=1'>\[change\]</a><br><br>"
 
 	user << browse("[dat]", "window=console_stacking_machine")
 	onclose(user, "console_stacking_machine")

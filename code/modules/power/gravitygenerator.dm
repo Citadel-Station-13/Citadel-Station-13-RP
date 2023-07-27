@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 /obj/machinery/gravity_generator/part/get_status()
 	return main_part?.get_status()
 
-/obj/machinery/gravity_generator/part/attack_hand(mob/user)
+/obj/machinery/gravity_generator/part/attack_hand(mob/user, list/params)
 	return main_part.attack_hand(user)
 
 /obj/machinery/gravity_generator/part/set_broken()
@@ -237,7 +237,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 				return
 	return ..()
 
-/obj/machinery/gravity_generator/main/attack_hand(mob/user)
+/obj/machinery/gravity_generator/main/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	ui_interact(user)
@@ -409,8 +409,8 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	var/my_z = get_z(src)
 
 	//Actually doing it special this time instead of letting using_map decide
-	if(GLOB.using_map.use_overmap)
-		var/obj/effect/overmap/visitable/S = get_overmap_sector(my_z)
+	if((LEGACY_MAP_DATUM).use_overmap)
+		var/obj/overmap/entity/visitable/S = get_overmap_sector(my_z)
 		if(S)
 			levels = S.get_space_zlevels() //Just the spacey ones
 		else

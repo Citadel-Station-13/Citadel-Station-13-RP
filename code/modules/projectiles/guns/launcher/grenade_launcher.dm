@@ -5,7 +5,7 @@
 	item_state = "riotgun"
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
-	force = 10
+	damage_force = 10
 	one_handed_penalty = 5
 
 	fire_sound = 'sound/weapons/grenade_launcher.ogg'
@@ -16,7 +16,7 @@
 
 	var/list/grenades = new/list()
 	var/max_grenades = 5 //holds this + one in the chamber
-	matter = list(MAT_STEEL = 2000)
+	materials = list(MAT_STEEL = 2000)
 
 //revolves the magazine, allowing players to choose between multiple grenade types
 /obj/item/gun/launcher/grenade/proc/pump(mob/M as mob)
@@ -36,7 +36,7 @@
 		to_chat(M, "<span class='warning'>You pump [src], but the magazine is empty.</span>")
 	update_icon()
 
-/obj/item/gun/launcher/grenade/examine(mob/user)
+/obj/item/gun/launcher/grenade/examine(mob/user, dist)
 	. = ..()
 	var/grenade_count = grenades.len + (chambered? 1 : 0)
 	. += "Has [grenade_count] grenade\s remaining."
@@ -66,6 +66,9 @@
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 
 /obj/item/gun/launcher/grenade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	pump(user)
 
 /obj/item/gun/launcher/grenade/attackby(obj/item/I, mob/user)
@@ -74,7 +77,7 @@
 	else
 		..()
 
-/obj/item/gun/launcher/grenade/attack_hand(mob/user)
+/obj/item/gun/launcher/grenade/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload(user)
 	else
@@ -98,10 +101,13 @@
 	name = "underslung grenade launcher"
 	desc = "Not much more than a tube and a firing mechanism, this grenade launcher is designed to be fitted to a rifle."
 	w_class = ITEMSIZE_NORMAL
-	force = 5
+	damage_force = 5
 	max_grenades = 0
 
-/obj/item/gun/launcher/grenade/underslung/attack_self()
+/obj/item/gun/launcher/grenade/underslung/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
 
 //load and unload directly into chambered

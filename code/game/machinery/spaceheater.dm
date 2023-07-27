@@ -28,7 +28,7 @@
 	else
 		set_light(0)
 
-/obj/machinery/space_heater/examine(mob/user)
+/obj/machinery/space_heater/examine(mob/user, dist)
 	. = ..()
 	. += "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"]."
 	if(panel_open)
@@ -74,7 +74,7 @@
 		..()
 	return
 
-/obj/machinery/space_heater/attack_hand(mob/user as mob)
+/obj/machinery/space_heater/attack_hand(mob/user, list/params)
 	interact(user)
 
 /obj/machinery/space_heater/interact(mob/user as mob)
@@ -200,11 +200,7 @@
 	var/target_temp = T20C
 	var/mode = MODE_IDLE
 
-/obj/machinery/power/thermoregulator/Initialize(mapload)
-	.=..()
-	default_apply_parts()
-
-/obj/machinery/power/thermoregulator/examine(mob/user)
+/obj/machinery/power/thermoregulator/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>There is a small display that reads [target_temp]K.</span>"
 
@@ -234,7 +230,7 @@
 		return
 	..()
 
-/obj/machinery/power/thermoregulator/attack_hand(mob/user)
+/obj/machinery/power/thermoregulator/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	interact(user)
 

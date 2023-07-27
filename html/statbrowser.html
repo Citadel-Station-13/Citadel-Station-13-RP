@@ -257,7 +257,7 @@ function set_style_sheet(sheet) {
 	.grid-item-text:hover {
 		padding: 0 3px;
 	}
-	
+
 	.dark .grid-item-text {
 		background-color: #222222;
 	}
@@ -372,6 +372,8 @@ const ELEMENT_ID_ATOM_TABLE = "atom_elem"
 
 /// how long to wait before re-loading missing images
 var IMAGE_RETRY_DELAY = 1000;
+/// how many times before we give up
+var IMAGE_RETRY_LIMIT = 5;
 
 /////////////////////// ELEMENTS ////////////////////////
 
@@ -721,6 +723,7 @@ function quote_verb_text(text) {
 //////////////////// WINSET / WINGET / SKIN /////////////
 
 function winset_focus_map() {
+	current_mouse_target = null;
 	yield_invoke(function() {window.location.href = "byond://winset?" + SKIN_ID_MAP + ".focus=true";});
 }
 
@@ -932,6 +935,8 @@ function erase_turf_tab() { erase_tab("Turf"); }
 
 ///////////////////////// VERBS /////////////////////////
 
+var current_mouse_target = null;
+
 ///////////////////// DRAWING - MISC ////////////////////
 
 function draw_loading(){
@@ -955,7 +960,8 @@ function draw_tab(tab) {
 		for(var i = 0; i < iterating.length; ++i) {
 			var verb = iterating[i];
 			var button = document.createElement("button");
-			button.onclick = lambda_onclick_verb(verb.replace(/\s/g, "-"));
+			button.onmousedown = lambda_onmousedown_verb(button, verb.replace(/\s/g, "-"));
+			button.onmouseup = lambda_onmouseup_verb(button, verb.replace(/\s/g, "-"))
 			button.className = "grid-item";
 			var t = document.createElement("span");
 			t[PROP_TEXT_CONTENT] = verb;
@@ -1102,9 +1108,18 @@ function atom_invoke(event, ref){
 /**
  * creates the onclick for verbs
  */
-function lambda_onclick_verb(verb) {
+function lambda_onmousedown_verb(element, verb) {
 	return function(e) {
-		yield_invoke(function() {transmit_verb(verb);});
+		current_mouse_target = element;
+	}
+}
+
+function lambda_onmouseup_verb(element, verb) {
+	return function(e) {
+		if(current_mouse_target === element){
+			yield_invoke(function() {transmit_verb(verb);});
+		}
+		current_mouse_target = null;
 	}
 }
 
@@ -1124,9 +1139,14 @@ function lambda_onclick_verb(verb) {
 function lambda_reload_image(node) {
 	var re_ref = node;
 	return setTimeout(function() {
-		var old_src = re_ref.old_src
+		var attempts = parseInt(node.getAttribute('img-reload-n'), 10) || 0;
+		if(attempts >= IMAGE_RETRY_LIMIT){
+			return;
+		}
+		var old_src = re_ref.src
 		re_ref.src = null;
 		re_ref.src = old_src + '#' + (Math.random() * 1000);
+		re_ref.setAttribute('img-reload-n', attempts + 1);
 	}, IMAGE_RETRY_DELAY);
 }
 

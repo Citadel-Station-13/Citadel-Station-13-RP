@@ -5,7 +5,7 @@
 	icon_state = "camgrenade"
 	item_state = "empgrenade"
 	w_class = ITEMSIZE_SMALL
-	force = 0
+	damage_force = 0
 	throw_force = 5.0
 	throw_range = 15
 	throw_speed = 3
@@ -21,6 +21,9 @@
 	camera = new camtype(src)
 
 /obj/item/camerabug/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HARM)
 		to_chat(user, "<span class='notice'>You crush the [src] under your foot, breaking it.</span>")
 		visible_message("[user.name] crushes the [src] under their foot, breaking it!</span>")
@@ -44,7 +47,7 @@
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "camgrenadebroken"
 	item_state = "empgrenade"
-	force = 5.0
+	damage_force = 5.0
 	w_class = ITEMSIZE_SMALL
 	throw_force = 5.0
 	throw_range = 15
@@ -61,7 +64,7 @@
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
 	origin_tech = list(TECH_ENGINEERING = 1, TECH_ILLEGAL = 3) //crush it and you lose the data
-	force = 0
+	damage_force = 0
 	throw_force = 5.0
 	throw_range = 15
 	throw_speed = 3
@@ -78,7 +81,7 @@
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1, TECH_ILLEGAL = 3)
 	camtype = /obj/machinery/camera/bug/spy
 
-/obj/item/camerabug/examine(mob/user)
+/obj/item/camerabug/examine(mob/user, dist)
 	. = ..()
 	. += "It has a tiny camera inside. Needs to be both configured and brought in contact with monitor device to be fully functional."
 
@@ -96,7 +99,7 @@
 		else
 			to_chat(user, "Error: The device is linked to another monitor.")
 	else
-		if(W.force >= 5)
+		if(W.damage_force >= 5)
 			visible_message("\The [src] lens shatters!")
 			new brokentype(get_turf(src))
 			if(linkedmonitor)
@@ -135,6 +138,9 @@
 	var/list/obj/machinery/camera/bug/cameras = new()
 
 /obj/item/bug_monitor/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(operating)
 		return
 
@@ -203,7 +209,7 @@
 	item_state = "electronic"
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1, TECH_ILLEGAL = 3)
 
-/obj/item/bug_monitor/spy/examine(mob/user)
+/obj/item/bug_monitor/spy/examine(mob/user, dist)
 	. = ..()
 	. += "The time '12:00' is blinking in the corner of the screen and \the [src] looks very cheaply made."
 

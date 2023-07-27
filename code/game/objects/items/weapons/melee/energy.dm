@@ -33,7 +33,7 @@
 	else
 		item_state = "[icon_state]_blade"
 	embed_chance = active_embed_chance
-	force = active_force
+	damage_force = active_force
 	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
@@ -50,7 +50,7 @@
 	item_state = "[icon_state]"
 	active = 0
 	embed_chance = initial(embed_chance)
-	force = initial(force)
+	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
@@ -67,7 +67,7 @@
 				return 0
 	return null
 
-/obj/item/melee/energy/examine(mob/user)
+/obj/item/melee/energy/examine(mob/user, dist)
 	. = ..()
 	if(use_cell)
 		if(bcell)
@@ -75,7 +75,10 @@
 		if(!bcell)
 			. += "<span class='warning'>The blade does not have a power source installed.</span>"
 
-/obj/item/melee/energy/attack_self(mob/living/user as mob)
+/obj/item/melee/energy/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(use_cell)
 		if((!bcell || bcell.charge < hitcost) && !active)
 			to_chat(user, "<span class='notice'>\The [src] does not seem to have power.</span>")
@@ -86,7 +89,8 @@
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts [TU.himself] with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
-			user.take_organ_damage(5,5)
+			var/mob/living/carbon/human/H = ishuman(user)? user : null
+			H.take_organ_damage(5,5)
 		deactivate(user)
 	else
 		activate(user)
@@ -192,9 +196,9 @@
 	active_force = 60
 	active_throwforce = 35
 	active_w_class = ITEMSIZE_HUGE
-	//force = 40
+	//damage_force = 40
 	//throw_force = 25
-	force = 20
+	damage_force = 20
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
@@ -225,7 +229,7 @@
 	desc = "An energised axe."
 	active_force = 35
 	active_throwforce = 20
-	force = 15
+	damage_force = 15
 	use_cell = TRUE
 	hitcost = 120
 
@@ -239,13 +243,13 @@
 /obj/item/melee/energy/sword
 	color
 	name = "energy sword"
-	desc = "May the force be within you."
+	desc = "May the damage_force be within you."
 	icon_state = "esword"
 	item_state = "esword"
 	active_force = 30
 	active_throwforce = 20
 	active_w_class = ITEMSIZE_LARGE
-	force = 3
+	damage_force = 3
 	throw_force = 5
 	throw_speed = 1
 	throw_range = 5
@@ -298,10 +302,10 @@
 	return 0
 
 /obj/item/melee/energy/sword/unique_parry_check(mob/user, mob/attacker, atom/damage_source)
-	if(user.incapacitated() || !istype(damage_source, /obj/item/projectile/))
+	if(user.incapacitated() || !istype(damage_source, /obj/projectile/))
 		return 0
 
-	var/bad_arc = REVERSE_DIR(user.dir)
+	var/bad_arc = global.reverse_dir[user.dir]
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
 		return 0
 
@@ -336,19 +340,18 @@
 	desc = "Handle with care."
 	icon_state = "dualsaber"
 	item_state = "dualsaber"
-	force = 3
+	damage_force = 3
 	active_force = 60
 	throw_force = 5
 	throw_speed = 3
 	armor_penetration = 35
 	colorable = TRUE
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70)
 	projectile_parry_chance = 85
 
 /obj/item/melee/energy/sword/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	if(prob(50))
-		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
 	return ..()
 
 /obj/item/melee/energy/sword/dualsaber/proc/jedi_spin(mob/living/user)
@@ -382,10 +385,10 @@
 	lcolor = "#0000FF"
 	projectile_parry_chance = 30	// It's not specifically designed for cutting and slashing, but it can still, maybe, save your life.
 
-/obj/item/melee/energy/sword/ionic_rapier/afterattack(var/atom/movable/AM, var/mob/living/user, var/proximity)
-	if(istype(AM, /obj) && proximity && active)
+/obj/item/melee/energy/sword/ionic_rapier/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(istype(target, /obj) && (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && active)
 		// EMP stuff.
-		var/obj/O = AM
+		var/obj/O = target
 		O.emp_act(3) // A weaker severity is used because this has infinite uses.
 		playsound(get_turf(O), 'sound/effects/EMPulse.ogg', 100, 1)
 		user.setClickCooldown(user.get_attack_speed(src)) // A lot of objects don't set click delay.
@@ -400,14 +403,14 @@
 		// Do some extra damage.  Not a whole lot more since emp_act() is pretty nasty on FBPs already.
 		L.emp_act(3) // A weaker severity is used because this has infinite uses.
 		playsound(get_turf(L), 'sound/effects/EMPulse.ogg', 100, 1)
-		L.adjustFireLoss(force * 3) // 15 Burn, for 20 total.
+		L.adjustFireLoss(damage_force * 3) // 15 Burn, for 20 total.
 		playsound(get_turf(L), 'sound/weapons/blade1.ogg', 100, 1)
 
 		// Make lesser robots really mad at us.
 		if(L.mob_class & MOB_CLASS_SYNTHETIC)
 			if(L.has_AI())
 				L.taunt(user)
-			L.adjustFireLoss(force * 6) // 30 Burn, for 50 total.
+			L.adjustFireLoss(damage_force * 6) // 30 Burn, for 50 total.
 
 /obj/item/melee/energy/sword/ionic_rapier/lance
 	name = "zero-point lance"
@@ -454,20 +457,19 @@
 	desc = "Make sure you bought batteries."
 	icon_state = "dualsaber"
 	item_state = "dualsaber"
-	force = 3
+	damage_force = 3
 	active_force = 50
 	throw_force = 5
 	throw_speed = 3
 	armor_penetration = 30
 	colorable = TRUE
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70)
 	projectile_parry_chance = 65
 	hitcost = 150
 
 /obj/item/melee/energy/sword/charge/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	if(prob(50))
-		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
 	return ..()
 
 /obj/item/melee/energy/sword/charge/dualsaber/proc/jedi_spin(mob/living/user)
@@ -485,7 +487,7 @@
 	desc = "A concentrated beam of energy in the shape of a blade. Very stylish... and lethal."
 	icon_state = "blade"
 	item_state = "blade"
-	force = 40 //Normal attacks deal very high damage - about the same as wielded fire axe
+	damage_force = 40 //Normal attacks deal very high damage - about the same as wielded fire axe
 	armor_penetration = 100
 	sharp = 1
 	edge = 1
@@ -514,7 +516,10 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/melee/energy/blade/attack_self(mob/user as mob)
+/obj/item/melee/energy/blade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	qdel(src)
 
 /obj/item/melee/energy/blade/dropped(mob/user, atom_flags, atom/newLoc)
@@ -558,10 +563,10 @@
 
 /obj/item/melee/energy/blade/unique_parry_check(mob/user, mob/attacker, atom/damage_source)
 
-	if(user.incapacitated() || !istype(damage_source, /obj/item/projectile/))
+	if(user.incapacitated() || !istype(damage_source, /obj/projectile/))
 		return 0
 
-	var/bad_arc = REVERSE_DIR(user.dir)
+	var/bad_arc = global.reverse_dir[user.dir]
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
 		return 0
 
@@ -576,7 +581,7 @@
 	armor_penetration = 75
 	sharp = 1
 	edge = 1
-	force = 5
+	damage_force = 5
 	throw_force = 10
 	throw_speed = 7
 	throw_range = 11
@@ -619,7 +624,7 @@
 	icon_state = "hfmachete0"
 	sharp = TRUE
 	edge = TRUE
-	force = 20 // You can be crueler than that, Jack.
+	damage_force = 20 // You can be crueler than that, Jack.
 	throw_force = 40
 	throw_speed = 8
 	throw_range = 8
@@ -636,7 +641,10 @@
 /obj/item/melee/energy/hfmachete/update_icon()
 	icon_state = "[base_state][active]"
 
-/obj/item/melee/energy/hfmachete/attack_self(mob/living/user)
+/obj/item/melee/energy/hfmachete/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	toggleActive(user)
 	add_fingerprint(user)
 
@@ -649,7 +657,7 @@
 		else
 			active = !active
 	if(active)
-		force = 40
+		damage_force = 40
 		throw_force = 20
 		throw_speed = 3
 		// sharpness = 1.7
@@ -658,9 +666,9 @@
 		to_chat(user, "<span class='warning'> [src] starts vibrating.</span>")
 		playsound(user, 'sound/weapons/hf_machete/hfmachete1.ogg', 40, 0)
 		w_class = WEIGHT_CLASS_BULKY
-		// user.lazy_register_event(/lazy_event/on_moved, src, .proc/mob_moved)
+		// user.lazy_register_event(/lazy_event/on_moved, src, PROC_REF(mob_moved))
 	else
-		force = initial(force)
+		damage_force = initial(damage_force)
 		throw_force = initial(throw_force)
 		throw_speed = initial(throw_speed)
 		// sharpness = initial(sharpness)
@@ -669,11 +677,11 @@
 		to_chat(user, "<span class='notice'> [src] stops vibrating.</span>")
 		playsound(user, 'sound/weapons/hf_machete/hfmachete0.ogg', 40, 0)
 		w_class = WEIGHT_CLASS_NORMAL
-		// user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
+		// user.lazy_unregister_event(/lazy_event/on_moved, src, PROC_REF(mob_moved))
 	update_icon()
 
-/obj/item/melee/energy/hfmachete/afterattack(atom/target, mob/user, proximity)
-	if(!proximity)
+/obj/item/melee/energy/hfmachete/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	..()
 	if(target)
@@ -683,7 +691,7 @@
 
 /*
 /obj/item/melee/energy/hfmachete/dropped(mob/user, atom_flags, atom/newLoc)
-	user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
+	user.lazy_unregister_event(/lazy_event/on_moved, src, PROC_REF(mob_moved))
 
 /obj/item/melee/energy/hfmachete/throw_at_old(atom/target, range, speed, thrower) // todo: get silicons to interpret this because >sleeps
 	if(!usr)

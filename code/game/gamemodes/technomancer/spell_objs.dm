@@ -9,7 +9,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_magic.dmi',
 		)
 	throw_force = 0
-	force = 0
+	damage_force = 0
 	show_examine = FALSE
 //	var/mob/living/carbon/human/owner = null
 	var/mob/living/owner = null
@@ -198,9 +198,11 @@
 // Parameters: 1 (user - the Technomancer that invoked this proc)
 // Description: Tries to call on_use_cast() if it is allowed to do so.  Don't override this, override on_use_cast() instead.
 /obj/item/spell/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(run_checks() && (cast_methods & CAST_USE))
 		on_use_cast(user)
-	..()
 
 // Proc: attackby()
 // Parameters: 2 (W - the item this spell object is hitting, user - the technomancer who clicked the other object)
@@ -214,15 +216,15 @@
 		..()
 
 // Proc: afterattack()
-// Parameters: 4 (target - the atom clicked on by user, user - the technomancer who clicked with the spell, proximity_flag - argument
+// Parameters: 4 (target - the atom clicked on by user, user - the technomancer who clicked with the spell, (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) - argument
 // telling the proc if target is adjacent to user, click_parameters - information on where exactly the click occured on the screen.)
 // Description: Tests to make sure it can cast, then casts a combined, ranged, or melee spell based on what it can do and the
 // range the click occured.  Melee casts have higher priority than ranged if both are possible.  Sets cooldown at the end.
 // Don't override this for spells, override the on_*_cast() spells shown above.
-/obj/item/spell/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/spell/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!run_checks())
 		return
-	if(!proximity_flag)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		if(cast_methods & CAST_RANGED)
 			on_ranged_cast(target, user)
 	else

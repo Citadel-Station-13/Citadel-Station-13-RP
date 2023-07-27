@@ -24,7 +24,7 @@
 	update_icon()
 
 // todo: this bad lol
-/obj/item/storage/belt/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/storage/belt/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	. = ..()
 	var/static/icon/funny_belt_icon = 'icons/mob/clothing/belt.dmi'
 	for(var/obj/item/I in contents)
@@ -139,6 +139,8 @@
 		/obj/item/clothing/head/surgery,
 		/obj/item/clothing/gloves,
 		/obj/item/reagent_containers/hypospray,
+		/obj/item/hypospray,
+		/obj/item/reagent_containers/glass/hypovial,
 		/obj/item/clothing/glasses,
 		/obj/item/tool/crowbar,
 		/obj/item/flashlight,
@@ -271,6 +273,7 @@
 		/obj/item/reagent_containers/glass/bottle,
 		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/hypospray,
+		/obj/item/hypospray,
 		/obj/item/storage/pill_bottle,
 		/obj/item/stack/medical,
 		/obj/item/stack/marker_beacon,
@@ -346,6 +349,7 @@
 		/obj/item/clothing/head/surgery,
 		/obj/item/clothing/gloves,
 		/obj/item/reagent_containers/hypospray,
+		/obj/item/hypospray,
 		/obj/item/clothing/glasses,
 		/obj/item/tool/crowbar,
 		/obj/item/flashlight,
@@ -616,5 +620,21 @@
 		/obj/item/ammo_casing/arrow
 		)
 	starts_with = list(
-		/obj/item/ammo_casing/arrow/ash = 15
+		/obj/item/ammo_casing/arrow/bone = 15
 		)
+
+/obj/item/storage/belt/utility/crystal
+	name = "crystalline tool harness"
+	desc = "A segmented belt of strange crystalline material."
+	icon_state = "utilitybelt_crystal"
+	item_state = "utilitybelt_crystal"
+
+/obj/item/storage/belt/utility/crystal/Initialize()
+	new /obj/item/multitool/crystal(src)
+	new /obj/item/tool/wrench/crystal(src)
+	new /obj/item/tool/crowbar/crystal(src)
+	new /obj/item/tool/screwdriver/crystal(src)
+	new /obj/item/tool/wirecutters/crystal(src)
+	new /obj/item/weldingtool/electric/crystal(src)
+	update_icon()
+	. = ..()

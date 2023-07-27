@@ -46,7 +46,7 @@
 	if(other == src)
 		return CanAtmosPass(src, NONE)
 	var/d = other.z == z? get_dir(src, other) : get_dir_multiz(src, other)
-	var/o = REVERSE_DIR(d)
+	var/o = global.reverse_dir[d]
 	return min(CanAtmosPass(other, d), other.CanAtmosPass(src, o))
 
 /**

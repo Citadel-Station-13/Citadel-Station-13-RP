@@ -4,7 +4,7 @@
 /obj/item/material/sword/foam
 	attack_verb = list("bonked","whacked")
 	force_divisor = 1
-	force = 0
+	damage_force = 0
 	unbreakable = 1
 	drop_sound = 'sound/items/drop/device.ogg'
 	pickup_sound = 'sound/items/pickup/device.ogg'
@@ -14,7 +14,7 @@
 	attack_verb = list("bonked","whacked")
 	force_wielded = 0
 	force_divisor = 1
-	force = 0
+	damage_force = 0
 	unbreakable = 1
 	drop_sound = 'sound/items/drop/device.ogg'
 	pickup_sound = 'sound/items/pickup/device.ogg'
@@ -27,7 +27,7 @@
 	attack_verb = list("bonked","whacked")
 	force_wielded = 0
 	force_divisor = 1
-	force = 0
+	damage_force = 0
 	applies_material_colour = 1
 	base_icon = "spear_mask0"
 	icon_state = "spear_mask0"
@@ -43,7 +43,7 @@
 	attack_verb = list("bonked","whacked")
 	force_wielded = 0
 	force_divisor = 1
-	force = 0
+	damage_force = 0
 	applies_material_colour = 1
 	base_icon = "fireaxe_mask0"
 	icon_state = "fireaxe_mask0"
@@ -60,5 +60,5 @@
 /obj/item/material/twohanded/fireaxe/foam/Initialize(mapload, material_key)
 	return ..(mapload,"foam")
 
-/obj/item/material/twohanded/fireaxe/foam/afterattack()
+/obj/item/material/twohanded/fireaxe/foam/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	return

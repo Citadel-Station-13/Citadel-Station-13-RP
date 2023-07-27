@@ -3,7 +3,7 @@
 	desc = "A small electronic device able to ignite combustable substances."
 	icon_state = "igniter"
 	origin_tech = list(TECH_MAGNET = 1)
-	matter = list(MAT_STEEL = 500, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 500, MAT_GLASS = 50)
 
 	secured = TRUE
 	wires = WIRE_RECEIVE
@@ -32,7 +32,10 @@
 	return TRUE
 
 
-/obj/item/assembly/igniter/attack_self(var/mob/user)
+/obj/item/assembly/igniter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	activate()
 	add_fingerprint(user)
 

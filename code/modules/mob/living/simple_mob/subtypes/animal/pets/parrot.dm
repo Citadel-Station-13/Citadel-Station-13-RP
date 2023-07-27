@@ -72,7 +72,10 @@
 	return ..()
 
 // Clicked on by empty hand.
-/mob/living/simple_mob/animal/passive/bird/parrot/attack_hand(mob/living/L)
+/mob/living/simple_mob/animal/passive/bird/parrot/attack_hand(mob/user, list/params)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(L.a_intent == INTENT_GRAB && my_headset)
 		remove_headset(L)
 	else
@@ -104,7 +107,7 @@
 		to_chat(src, SPAN_WARNING( "\The [user] takes your [my_headset.name] away! How cruel!"))
 		my_headset = null
 
-/mob/living/simple_mob/animal/passive/bird/parrot/examine(mob/user)
+/mob/living/simple_mob/animal/passive/bird/parrot/examine(mob/user, dist)
 	. = ..()
 	if(my_headset)
 		. += "It is wearing \a [my_headset]."

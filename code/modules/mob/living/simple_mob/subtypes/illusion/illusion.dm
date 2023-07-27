@@ -39,13 +39,13 @@
 
 // Because we can't perfectly duplicate some examine() output, we directly examine the AM it is copying.  It's messy but
 // this is to prevent easy checks from the opposing force.
-/mob/living/simple_mob/illusion/examine(mob/user)
+/mob/living/simple_mob/illusion/examine(mob/user, dist)
 	if(copying)
 		copying.examine(user)
 		return
 
 
-/mob/living/simple_mob/illusion/bullet_act(obj/item/projectile/P)
+/mob/living/simple_mob/illusion/bullet_act(obj/projectile/P)
 	if(!P)
 		return
 
@@ -54,7 +54,10 @@
 
 	return PROJECTILE_FORCE_MISS
 
-/mob/living/simple_mob/illusion/attack_hand(mob/living/carbon/human/M)
+/mob/living/simple_mob/illusion/attack_hand(mob/user, list/params)
+	var/mob/living/M = user
+	if(!istype(M))
+		return
 	if(!realistic)
 		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 		visible_message(SPAN_WARNING( "\The [M]'s hand goes through \the [src]!"))

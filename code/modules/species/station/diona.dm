@@ -42,7 +42,7 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Dionea"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/dionaea)
-	rarity_value   = 3
+	//rarity_value   = 3
 
 	has_organ = list(
 		O_NUTRIENT = /obj/item/organ/internal/diona/nutrients,
@@ -123,7 +123,7 @@
 	var/mob/living/carbon/alien/diona/S = new(get_turf(H))
 
 	if(H.mind)
-		H.mind.transfer_to(S)
+		H.mind.transfer(S)
 
 	if(H.isSynthetic())
 		H.visible_message(SPAN_DANGER("\The [H] collapses into parts, revealing a solitary diona nymph at the core."))

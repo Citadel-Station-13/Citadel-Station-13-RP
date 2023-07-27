@@ -4,7 +4,7 @@
 	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 rounds."
 	magazine_type = /obj/item/ammo_magazine/m45
 	allowed_magazines = list(/obj/item/ammo_magazine/m45)
-	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	projectile_type = /obj/projectile/bullet/pistol/medium
 	icon_state = "colt"
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -74,7 +74,7 @@
 	icon_state = "colt-taj"
 
 /*//apart of reskins that have two sprites, touching may result in frustration and breaks
-/obj/item/gun/ballistic/colt/detective/attack_hand(var/mob/living/user)
+/obj/item/gun/ballistic/colt/detective/attack_hand(mob/user, list/params)
 	if(!unique_reskin && loc == user)
 		reskin_gun(user)
 		return
@@ -87,7 +87,7 @@
 	icon_state = "secguncomp"
 	magazine_type = /obj/item/ammo_magazine/m45/rubber
 	allowed_magazines = list(/obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash, /obj/item/ammo_magazine/m45/practice)
-	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	projectile_type = /obj/projectile/bullet/pistol/medium
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
@@ -128,14 +128,14 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m45
 	allowed_magazines = list(/obj/item/ammo_magazine/m45)
-	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	projectile_type = /obj/projectile/bullet/pistol/medium
 
 /obj/item/gun/ballistic/deagle
 	name = "desert eagle"
 	desc = "The perfect handgun for shooters with a need to hit targets through a wall and behind a fridge in your neighbor's house. Uses .44 rounds."
 	icon_state = "deagle"
 	item_state = "deagle"
-	force = 14.0
+	damage_force = 14.0
 	caliber = ".44"
 	fire_sound = 'sound/weapons/Gunshot_deagle.ogg'
 	load_method = MAGAZINE
@@ -198,7 +198,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/projectile/bullet/pistol
 
 /obj/item/gun/ballistic/pistol/update_icon_state()
 	. = ..()
@@ -211,7 +211,7 @@
 	name = "compact signal pistol"
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact/flash
 
-/obj/item/gun/ballistic/pistol/attack_hand(mob/living/user as mob)
+/obj/item/gun/ballistic/pistol/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(silenced)
 			if(!user.is_holding(src))
@@ -300,7 +300,7 @@
 	load_method = SINGLE_CASING
 	max_shells = 2
 	ammo_type = /obj/item/ammo_casing/a357
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	projectile_type = /obj/projectile/bullet/pistol/strong
 
 /obj/item/gun/ballistic/luger
 	name = "\improper P08 Luger"
@@ -311,7 +311,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/projectile/bullet/pistol
 
 /obj/item/gun/ballistic/luger/update_icon_state()
 	. = ..()
@@ -363,7 +363,7 @@
 
 /obj/item/gun/ballistic/r9
 	name = "C96-Red 9"
-	desc = "A variation on the Mauser C-96 - the first semi firearm ever to be widely adopted by a human military. This version is chambered for 9mm and reloads using stripper clips."
+	desc = "A variation on the Mauser C-96, remade for a modern day. A Glithari Exports product, for gun collectors and private militaries alike. Uses 9mm stripper clips."
 	icon_state = "r9"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL =1) //VERY OLD
 	caliber = "9mm"
@@ -388,7 +388,7 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	magazine_type = /obj/item/ammo_magazine/mcompressedbio/compact
 	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/compact)
-	projectile_type = /obj/item/projectile/bullet/organic
+	projectile_type = /obj/projectile/bullet/organic
 
 /obj/item/gun/ballistic/clown_pistol/update_icon_state()
 	. = ..()
@@ -410,7 +410,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/projectile/bullet/pistol
 
 /obj/item/gun/ballistic/konigin
 	firemodes = list(
@@ -431,7 +431,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/konigin/attack_hand(mob/user)
+/obj/item/gun/ballistic/konigin/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && use_shotgun)
 		shotgun.unload_ammo(user)
 	else
@@ -453,7 +453,7 @@
 		icon_state = "[initial(icon_state)]-e"
 
 /* Having issues with getting this to work atm.
-/obj/item/gun/ballistic/konigin/examine(mob/user)
+/obj/item/gun/ballistic/konigin/examine(mob/user, dist)
 	. = ..()
 
 	if(shotgun.loaded)
@@ -463,33 +463,33 @@
 */
 
 //Exploration/Pathfinder Sidearms
-/obj/item/gun/ballistic/fnseven
+/obj/item/gun/ballistic/ntles
 	name = "NT-57 'LES'"
 	desc = "The NT-57 'LES' (Light Expeditionary Sidearm) is a tried and tested pistol often issued to Pathfinders. Featuring a polymer frame, collapsible stock, and integrated optics, the LES is lightweight and reliably functions in nearly any hazardous environment, including vacuum."
-	icon_state = "nt57"
+	icon_state = "ntles"
 	item_state = "pistol"
 	caliber = "5.7x28mm"
 	load_method = MAGAZINE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/m57x28mm
-	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm)
-	projectile_type = /obj/item/projectile/bullet/pistol/lap
+	magazine_type = /obj/item/ammo_magazine/m57x28mm/ntles
+	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/ntles)
+	projectile_type = /obj/projectile/bullet/pistol/lap
 	one_handed_penalty = 30
 	var/collapsible = 1
 	var/extended = 0
 
-/obj/item/gun/ballistic/fnseven/update_icon_state()
+/obj/item/gun/ballistic/ntles/update_icon_state()
 	. = ..()
 	if(!extended && ammo_magazine)
-		icon_state = "nt57"
+		icon_state = "ntles"
 	else if(extended && ammo_magazine)
-		icon_state = "nt57_extended"
+		icon_state = "ntles_extended"
 	else if(extended && !ammo_magazine)
-		icon_state = "nt57_extended-e"
+		icon_state = "ntles_extended-e"
 	else
-		icon_state = "nt57-e"
+		icon_state = "ntles-e"
 
-/obj/item/gun/ballistic/fnseven/attack_self(mob/user, obj/item/gun/G)
+/obj/item/gun/ballistic/ntles/attack_self(mob/user, obj/item/gun/G)
 	if(collapsible && !extended)
 		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
 		w_class = ITEMSIZE_LARGE
@@ -506,22 +506,31 @@
 		extended = 0
 		update_icon()
 
-/obj/item/gun/ballistic/fnseven/pathfinder
+/obj/item/gun/ballistic/ntles/pathfinder
 	pin = /obj/item/firing_pin/explorer
 
-/obj/item/gun/ballistic/fnseven/vintage
-	name = "5.7 sidearm"
-	desc = "This classic sidearm design utilizes an adaptable round considered to be superior to 9mm parabellum. It shares a round type with the H90K."
-	icon_state = "fnseven"
-	collapsible = 0
-	extended = 1
+/obj/item/gun/ballistic/fiveseven
+	name = "\improper Five-seven sidearm"
+	desc = "This classic sidearm design utilizes an adaptable round considered by some to be superior to 9mm parabellum. Favored amongst sheild bearers in tactical units for its stability in one-handed use, and high capacity magazines."
+	icon_state = "fiveseven"
+	item_state = "pistol"
+	caliber = "5.7x28mm"
+	load_method = MAGAZINE
+	w_class = ITEMSIZE_SMALL
+	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
+	magazine_type = /obj/item/ammo_magazine/m57x28mm/fiveseven
+	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/fiveseven)
+	one_handed_penalty = 0
 
-/obj/item/gun/ballistic/fnseven/vintage/update_icon_state()
+/obj/item/gun/ballistic/fiveseven/update_icon_state()
 	. = ..()
-	if(ammo_magazine)
-		icon_state = "fnseven"
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/m57x28mm/fiveseven/highcap))
+		icon_state = "fiveseven-extended"
 	else
-		icon_state = "fnseven-e"
+		if(ammo_magazine)
+			icon_state = "fiveseven"
+		else
+			icon_state = "fiveseven-e"
 
 //Apidean Weapons
 /obj/item/gun/ballistic/apinae_pistol
@@ -535,7 +544,7 @@
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_BIO = 5)
 	magazine_type = /obj/item/ammo_magazine/biovial
 	allowed_magazines = list(/obj/item/ammo_magazine/biovial)
-	projectile_type = /obj/item/projectile/bullet/organic/wax
+	projectile_type = /obj/projectile/bullet/organic/wax
 
 /obj/item/gun/ballistic/apinae_pistol/update_icon_state()
 	. = ..()

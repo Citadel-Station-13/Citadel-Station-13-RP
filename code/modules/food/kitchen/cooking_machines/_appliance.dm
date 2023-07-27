@@ -73,7 +73,7 @@
 		qdel(CI)
 	return ..()
 
-/obj/machinery/appliance/examine(mob/user)
+/obj/machinery/appliance/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user))
 		list_contents(user)
@@ -189,7 +189,7 @@
 /obj/machinery/appliance/proc/can_insert(var/obj/item/I, var/mob/user)
 	if (istype(I.loc, /mob/living/silicon))
 		return 0
-	else if (istype(I.loc, /obj/item/rig_module))
+	else if (istype(I.loc, /obj/item/hardsuit_module))
 		return 0
 
 	// We are trying to cook a grabbed mob.
@@ -543,7 +543,7 @@
 	smoke.set_up(10, 0, get_turf(src), 300)
 	smoke.start()
 
-/obj/machinery/appliance/attack_hand(var/mob/user)
+/obj/machinery/appliance/attack_hand(mob/user, list/params)
 	if (cooking_objs.len)
 		if (removal_menu(user))
 			return

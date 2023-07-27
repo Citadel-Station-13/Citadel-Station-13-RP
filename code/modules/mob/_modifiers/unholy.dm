@@ -130,22 +130,21 @@
 				for(var/obj/item/organ/external/O in H.organs) // Fix limbs, no matter if they are Man or Machine.
 					O.heal_damage(rand(1,3), rand(1,3), internal = 1, robo_repair = 1)
 
-				for(var/obj/item/organ/E in H.bad_external_organs) // Fix bones
+				// check limbs
+				for(var/obj/item/organ/E in H.bad_external_organs)
+					// Fix bones
 					var/obj/item/organ/external/affected = E
 					if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
 						affected.status &= ~ORGAN_BROKEN
-
-					for(var/datum/wound/W in affected.wounds) // Fix IB
-						if(istype(W, /datum/wound/internal_bleeding))
-							affected.wounds -= W
-							affected.update_damages()
+					// fix IB
+					affected.cure_specific_wound(/datum/wound/internal_bleeding, all = TRUE)
 
 				H.restore_blood()
 				if(!iscultist(H))
 					H.apply_effect(2, AGONY)
 				if(prob(10))
 					to_chat(H, "<span class='danger'>It feels as though your body is being torn apart!</span>")
-			L.updatehealth()
+			L.update_health()
 
 /datum/modifier/gluttonyregeneration
 	name = "gluttonous regeneration"

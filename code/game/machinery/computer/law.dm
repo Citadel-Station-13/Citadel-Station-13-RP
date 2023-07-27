@@ -25,7 +25,7 @@
 
 
 /obj/machinery/computer/aiupload/attackby(obj/item/O, mob/user)
-	if (GLOB.using_map && !(user.z in GLOB.using_map.contact_levels))
+	if ((LEGACY_MAP_DATUM) && !(user.z in (LEGACY_MAP_DATUM).contact_levels))
 		to_chat(user, "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!")
 		return
 	if(istype(O, /obj/item/aiModule))
@@ -35,7 +35,7 @@
 		..()
 
 
-/obj/machinery/computer/aiupload/attack_hand(mob/user)
+/obj/machinery/computer/aiupload/attack_hand(mob/user, list/params)
 	if(machine_stat & NOPOWER)
 		to_chat(user, "The upload computer has no power!")
 		return
@@ -71,7 +71,7 @@
 		return ..()
 
 
-/obj/machinery/computer/borgupload/attack_hand(mob/user)
+/obj/machinery/computer/borgupload/attack_hand(mob/user, list/params)
 	if(machine_stat& NOPOWER)
 		to_chat(user, "The upload computer has no power!")
 		return

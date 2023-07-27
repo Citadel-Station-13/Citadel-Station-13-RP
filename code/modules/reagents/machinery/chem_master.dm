@@ -1,7 +1,8 @@
 //TODO: We don't have check_reactions or something like it, so we can't prevent idiot transfers. @Zandario
+// todo: this is horrifying and needs refactored. ESPECIALLY ITS TGUI. ~silicons
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
-	desc = "Used to seperate and package chemicals in to autoinjectors, lollipops, patches, pills, or bottles. Warranty void if used to create Space Drugs."
+	desc = "Used to seperate and package chemicals in to autoinjectors, patches, pills, or bottles. Warranty void if used to create Space Drugs."
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/medical/chemical.dmi'
@@ -19,10 +20,8 @@
 	var/obj/item/storage/pill_bottle/pill_bottle = null
 	var/useramount = 15 // Last used amount
 	var/pillamount = 10
-	var/lolliamount = 5
 	var/autoamount = 5
 	var/max_pill_count = 20
-	var/max_lolli_count = 10
 	var/max_auto_count = 5
 	var/printing = FALSE
 	var/autosprite = TRUE
@@ -36,6 +35,8 @@
 	var/mode = 1
 	/// Decides what UI to show. If TRUE shows UI of CondiMaster, if FALSE - ChemMaster
 	var/condi = FALSE
+	/// The same as the above, but for the Primitive UI, instead of the CondiMaster.
+	//var/primi = FALSE
 
 	/// Currently selected pill style.
 	var/chosen_pill_style = 1
@@ -61,10 +62,9 @@
 	name = "CondiMaster 3000"
 	condi = TRUE
 
-/obj/machinery/chem_master/Initialize(mapload, newdir)
-	. = ..()
-	create_reagents(1000)
-	default_apply_parts()
+/obj/machinery/chem_master/Initialize(mapload)
+	create_reagents(1000) // refreshparts needs reagents
+	return ..()
 
 /obj/machinery/chem_master/Destroy()
 	QDEL_NULL(beaker)
@@ -100,7 +100,7 @@
 	if (prob(50))
 		qdel(src)
 
-/obj/machinery/chem_master/attackby(obj/item/I, mob/user, params)
+/obj/machinery/chem_master/attackby(obj/item/I, mob/user)
 	if(default_unfasten_wrench(user, I, 20))
 		return
 	else if(default_deconstruction_screwdriver(user, I))
@@ -147,7 +147,7 @@
 		pill_bottle = null
 	return ..()
 
-/obj/machinery/chem_master/attack_hand(mob/user)
+/obj/machinery/chem_master/attack_hand(mob/user, list/params)
 	if(machine_stat & BROKEN)
 		return
 	user.set_machine(src)
@@ -360,6 +360,8 @@
 				else
 					style = styles[chosen_condi_style]
 				vol_each_max = min(50, vol_each_max)
+			else if(item_type == "hypovial")
+				vol_each_max = min(vol_each_max, 60)
 			else
 				return FALSE
 			if(vol_each_text == "auto")
@@ -392,6 +394,9 @@
 				return FALSE
 
 			//! Start filling
+			var/atom/where = drop_location()
+			name = trim(name)
+
 			if(item_type == "pill")
 				var/obj/item/reagent_containers/pill/P
 				var/target_loc = drop_location()
@@ -445,6 +450,15 @@
 					P.icon_state = "bottle-[chosen_bottle_style]"
 					P.renamed_by_player = TRUE
 					reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
+				return TRUE
+
+			if(item_type == "hypovial")
+				var/obj/item/reagent_containers/glass/hypovial/P
+				for(var/i in 1 to amount)
+					P = new(where)
+					P.name = "[initial(P.name)] ([name])"
+					P.renamed_by_player = TRUE
+					reagents.trans_to_obj(P, vol_each)
 				return TRUE
 
 			// if(item_type == "condiment_pack")

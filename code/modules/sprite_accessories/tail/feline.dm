@@ -33,13 +33,14 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
-/datum/sprite_accessory/tail/kitty_tg
+/*/datum/sprite_accessory/tail/kitty_tg
 	name = "kitty, colorable, main"
 	id = "tail_cat_tg"
 	icon_state = "kittytg"
 	ani_state = "kittytg_wag"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+	Currently fucked - Tail renders ontop of the player even if it should be invisible. TODO: Find time to fix this.*/
 
 /datum/sprite_accessory/tail/kittyup
 	name = "kitty, colorable, upwards"

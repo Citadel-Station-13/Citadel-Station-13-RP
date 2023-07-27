@@ -106,7 +106,7 @@
 	var/power = (decay_heat / REACTOR_RADS_TO_MJ) * max(healthmul, 0.1)
 	radiation_pulse(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0), RAD_FALLOFF_ENGINE_FISSION)
 
-/obj/machinery/power/fission/attack_hand(mob/user)
+/obj/machinery/power/fission/attack_hand(mob/user, list/params)
 	nano_ui_interact(user)
 
 /obj/machinery/power/fission/attack_robot(mob/user)
@@ -403,7 +403,7 @@
 /obj/machinery/power/fission/proc/go_nuclear()
 	if(health < 1 && !exploded)
 		var/off_station = 0
-		if(!(src.z in GLOB.using_map.station_levels))
+		if(!(src.z in (LEGACY_MAP_DATUM).station_levels))
 			off_station = 1
 		var/turf/L = get_turf(src)
 		if(!istype(L))

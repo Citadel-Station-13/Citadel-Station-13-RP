@@ -93,7 +93,7 @@
 			else
 				to_chat(user, "<font color='red'>You must hold \the [P] steady to burn \the [src].</font>")
 
-/obj/item/paper_bundle/examine(mob/user)
+/obj/item/paper_bundle/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user))
 		src.show_content(user)
@@ -130,14 +130,13 @@
 		user << browse(dat, "window=[name]")
 	else if(istype(pages[page], /obj/item/photo))
 		var/obj/item/photo/P = W
-		user << browse_rsc(P.img, "tmp_photo.png")
-		user << browse(dat + "<html><head><title>[P.name]</title></head>" \
-		+ "<body style='overflow:hidden'>" \
-		+ "<div> <img src='tmp_photo.png' width = '180'" \
-		+ "[P.scribble ? "<div> Written on the back:<br><i>[P.scribble]</i>" : null]"\
-		+ "</body></html>", "window=[name]")
+		dat += P.html(user)
+		user << browse(dat, "window=[name]")
 
-/obj/item/paper_bundle/attack_self(mob/user as mob)
+/obj/item/paper_bundle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	src.show_content(user)
 	add_fingerprint(usr)
 	update_icon()
@@ -191,7 +190,7 @@
 
 	var/n_name = sanitizeSafe(input(usr, "What would you like to label the bundle?", "Bundle Labelling", null)  as text, MAX_NAME_LEN)
 	if((loc == usr || loc.loc && loc.loc == usr) && usr.stat == 0)
-		name = "[(n_name ? text("[n_name]") : "paper")]"
+		name = "[(n_name ? "[n_name]" : "paper")]"
 	add_fingerprint(usr)
 	return
 
@@ -227,9 +226,8 @@
 			i++
 		else if(istype(O, /obj/item/photo))
 			var/obj/item/photo/Ph = O
-			img = Ph.tiny
+			INVOKE_ASYNC(src, PROC_REF(add_photo_overlay), Ph)
 			photo = 1
-			add_overlay(img)
 	if(i>1)
 		desc =  "[i] papers clipped to each other."
 	else
@@ -238,3 +236,11 @@
 		desc += "\nThere is a photo attached to it."
 	add_overlay(image('icons/obj/bureaucracy.dmi', "clip"))
 	return
+
+// photo overlay fetches can take time because photos are lazy-loaded
+// thus, this is behind a waitfor in update_icon to not block icon updates while the fetch is going on.
+/obj/item/paper_bundle/proc/add_photo_overlay(obj/item/photo/photo)
+	var/mutable_appearance/photo_overlay = mutable_appearance(photo.paperwork_overlay_6x7())
+	photo_overlay.pixel_x = 10
+	photo_overlay.pixel_y = 16
+	add_overlay(photo_overlay)

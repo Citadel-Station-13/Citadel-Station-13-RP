@@ -46,7 +46,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	idle_power_usage = 80
 	active_power_usage = 1000 //For heating/cooling rooms. 1000 joules equates to about 1 degree every 2 seconds for a single tile of air.
 	power_channel = ENVIRON
-	req_one_access = list(access_atmospherics, access_engine_equip)
+	req_one_access = list(ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 	clicksound = "button"
 	clickvol = 30
 	//blocks_emissive = NONE
@@ -114,13 +114,14 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 /obj/machinery/alarm/server/Initialize(mapload)
 	. = ..()
-	req_access = list(access_rd, access_atmospherics, access_engine_equip)
+	req_access = list(ACCESS_SCIENCE_RD, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 	TLV[/datum/gas/oxygen] =			list(16,   19,   135, 140) // Partial pressure, kpa
 	TLV[/datum/gas/carbon_dioxide] =	list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
 	TLV[/datum/gas/phoron] =			list(-1.0, -1.0,   0, 0.5) // Partial pressure, kpa
 	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
 	TLV["pressure"] =		list(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE * 0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20) /* kpa */
 	TLV["temperature"] =	list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
+	setDir(dir)
 
 /obj/machinery/alarm/Initialize(mapload)
 	. = ..()
@@ -325,6 +326,23 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			return TRUE
 	return FALSE
 
+/obj/machinery/alarm/setDir(ndir)
+	. = ..()
+	base_pixel_x = 0
+	base_pixel_y = 0
+	var/turf/T = get_step(get_turf(src), turn(dir, 180))
+	if(istype(T) && T.density)
+		switch(dir)
+			if(NORTH)
+				base_pixel_y = -21
+			if(SOUTH)
+				base_pixel_y = 21
+			if(WEST)
+				base_pixel_x = 21
+			if(EAST)
+				base_pixel_x = -21
+	reset_pixel_offsets()
+
 /obj/machinery/alarm/update_icon()
 	cut_overlays()
 
@@ -505,7 +523,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 /obj/machinery/alarm/attack_ai(mob/user)
 	ui_interact(user)
 
-/obj/machinery/alarm/attack_hand(mob/user)
+/obj/machinery/alarm/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return
@@ -664,7 +682,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		data["thresholds"] = thresholds
 	return data
 
-/obj/machinery/alarm/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/alarm/ui_act(action, params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -696,7 +714,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	// Yes, this is kinda snowflaky; however, I would argue it would be far more snowflakey
 	// to include "custom hrefs" and all the other bullshit that nano states have just for the
 	// like, two UIs, that want remote access to other UIs.
-	if((locked && !issilicon(usr) && !istype(state, /datum/ui_state/air_alarm_remote)) || (issilicon(usr) && aidisabled))
+	if((locked && !issilicon(usr) && !istype(ui.state, /datum/ui_state/air_alarm_remote)) || (issilicon(usr) && aidisabled))
 		return
 
 	var/device_id = params["id_tag"]

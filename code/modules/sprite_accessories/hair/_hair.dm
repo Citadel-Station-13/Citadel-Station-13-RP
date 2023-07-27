@@ -95,6 +95,12 @@
 	icon_state = "hair_long_bedhead"
 	hair_flags = HAIR_TIEABLE
 
+/datum/sprite_accessory/hair/bedheadlongest
+	name = "Bedhead Concerning"
+	id = "hair_bedhead_longest"
+	icon_state = "hair_longest_bedhead"
+	hair_flags = HAIR_TIEABLE
+
 /datum/sprite_accessory/hair/beehive
 	name = "Beehive"
 	id = "hair_beehive"
@@ -473,12 +479,7 @@
 	id = "hair_long_shoulder"
 	icon_state = "hair_b"
 	hair_flags = HAIR_TIEABLE
-/*
-	longish
-	name = "Longer Hair"
-	icon_state = "hair_b2"
-	hair_flags = HAIR_TIEABLE
-*/
+
 /datum/sprite_accessory/hair/longer
 	name = "Long Hair"
 	id = "hair_long"
@@ -800,6 +801,7 @@
 	name = "Shy"
 	id = "hair_fluttershy"	// let's be brutally honest about what htis is
 	icon_state = "hair_shy"
+	hair_flags = HAIR_TIEABLE
 
 /datum/sprite_accessory/hair/sideponytail
 	name = "Side Ponytail"
@@ -1113,6 +1115,243 @@
 	icon_state = "hair_taro"
 	hair_flags = HAIR_TIEABLE
 
+/datum/sprite_accessory/hair/judge
+	name = "Judge"
+	id = "hair_judge"
+	icon_state = "hair_judge"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/mia
+	name = "Mia"
+	id = "hair_mia"
+	icon_state = "hair_mia"
+
+/datum/sprite_accessory/hair/elize
+	name = "Elize"
+	id = "hair_elize"
+	icon_state = "hair_elize"
+
+/datum/sprite_accessory/hair/longbraid
+	name = "Long Braid"
+	id = "hair_longbraid"
+	icon_state = "hair_longbraid"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/emoright
+	name = "Emo Right"
+	id = "hair_emoright"
+	icon_state = "hair_emoright"
+
+/datum/sprite_accessory/hair/aradia
+	name = "Aradia"
+	id = "hair_aradia"
+	icon_state = "hair_aradia"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/dirk
+	name = "Dirk"
+	id = "hair_dirk"
+	icon_state = "hair_dirk"
+
+/datum/sprite_accessory/hair/equius
+	name = "Equius"
+	id = "hair_equius"
+	icon_state = "hair_equius"
+
+/datum/sprite_accessory/hair/feferi
+	name = "Feferi"
+	id = "hair_feferi"
+	icon_state = "hair_feferi"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/gamzee
+	name = "Gamzee"
+	id = "hair_gamzee"
+	icon_state = "hair_gamzee"
+
+/datum/sprite_accessory/hair/kanaya
+	name = "Kanaya"
+	id = "hair_kanaya"
+	icon_state = "hair_kanaya"
+
+/datum/sprite_accessory/hair/nepeta
+	name = "Nepeta"
+	id = "hair_nepeta"
+	icon_state = "hair_nepeta"
+
+/datum/sprite_accessory/hair/rose
+	name = "Rose"
+	id = "hair_rose"
+	icon_state = "hair_rose"
+
+/datum/sprite_accessory/hair/roxy
+	name = "Roxy"
+	id = "hair_roxy"
+	icon_state = "hair_roxy"
+
+/datum/sprite_accessory/hair/terezi
+	name = "Terezi"
+	id = "hair_terezi"
+	icon_state = "hair_terezi"
+
+/datum/sprite_accessory/hair/vriska
+	name = "Vriska"
+	id = "hair_vriska"
+	icon_state = "hair_vriska"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/flipped
+	name = "Flipped"
+	id = "hair_flipped"
+	icon_state = "hair_flipped"
+
+/datum/sprite_accessory/hair/darcy
+	name = "Darcy"
+	id = "hair_darcy"
+	icon_state = "hair_darcy"
+
+/datum/sprite_accessory/hair/antonio
+	name = "Antonio"
+	id = "hair_antonio"
+	icon_state = "hair_antonio"
+
+/datum/sprite_accessory/hair/sweptfringe
+	name = "Swept Fringe"
+	id = "hair_sweptfringe"
+	icon_state = "hair_sweptfringe"
+
+/datum/sprite_accessory/hair/mialong
+	name = "Mia Long"
+	id = "hair_mialong"
+	icon_state = "hair_mialong"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/dreadslong
+	name = "Long Dreadlocks"
+	id = "hair_dreadslong"
+	icon_state = "hair_dreadslong"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/jeanponytail
+	name = "Jean Ponytail"
+	id = "hair_jeanponytail"
+	icon_state = "hair_jeanponytail"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/shouldersweep
+	name = "Shoulder Swept"
+	id = "hair_shouldersweep"
+	icon_state = "hair_shouldersweep"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/afropuffdouble
+	name = "Afropuff"
+	id = "hair_afropuffdouble"
+	icon_state = "hair_afropuffdouble"
+
+/datum/sprite_accessory/hair/afropuffleft
+	name = "Afropuff Left"
+	id = "hair_afropuffleft"
+	icon_state = "hair_afropuffleft"
+
+/datum/sprite_accessory/hair/afropuffright
+	name = "Afropuff Right"
+	id = "hair_afropuffright"
+	icon_state = "hair_afropuffright"
+
+/datum/sprite_accessory/hair/suave
+	name = "Suave"
+	id = "hair_suave"
+	icon_state = "hair_suave"
+
+/datum/sprite_accessory/hair/suave2
+	name = "Suave Alt"
+	id ="hair_suave2"
+	icon_state = "hair_suave2"
+
+/datum/sprite_accessory/hair/jane
+	name = "Jane"
+	id = "hair_jane"
+	icon_state = "hair_jane"
+
+/datum/sprite_accessory/hair/rockstarcurls
+	name = "Rockstar Curls"
+	id = "hair_rockstarcurls"
+	icon_state = "hair_rockstarcurls"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/band
+	name = "Banded Long"
+	id = "hair_band"
+	icon_state = "hair_band"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/bieb
+	name = "Beaver"
+	id = "hair_bieb"
+	icon_state = "hair_bieb"
+
+/datum/sprite_accessory/hair/fabio
+	name = "Fabio"
+	id = "hair_fabio"
+	icon_state = "hair_fabio"
+
+/datum/sprite_accessory/hair/froofylong
+	name = "Froofy Long"
+	id = "hair_froofy_long"
+	icon_state = "hair_froofy_long"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/glammetal
+	name = "Glammetal"
+	id = "hair_glammetal"
+	icon_state = "hair_glammetal"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/midb
+	name = "Mid-length hair"
+	id = "hair_midb"
+	icon_state = "hair_midb"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/halfshavedL
+	name = "Half Shaved Left"
+	id = "hair_halfshavedL"
+	icon_state = "hair_halfshavedL"
+
+/datum/sprite_accessory/hair/rockandroll
+	name = "Rock and Roll"
+	id = "hair_rockandroll"
+	icon_state = "hair_rockandroll"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/shortflip
+	name = "Flip Short"
+	id = "hair_shortflip"
+	icon_state = "hair_shortflip"
+
+/datum/sprite_accessory/hair/dreadlongalt
+	name = "Long Dreadlocks Alt"
+	id = "hair_dreadlongalt"
+	icon_state = "hair_dreadlongalt"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/keanu
+	name = "Keanu"
+	id = "hair_keanu"
+	icon_state = "hair_keanu"
+
+/datum/sprite_accessory/hair/long3
+	name = "Long Hair Alt 3"
+	id = "hair_long3"
+	icon_state = "hair_long3"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/supernova
+	name = "Supernova"
+	id = "hair_supernova"
+	icon_state = "hair_supernova"
+
 /datum/sprite_accessory/hair/astolfo
 	name = "Astolfo"
 	id = "hair_astolfo"
@@ -1187,3 +1426,155 @@
 	icon_state = "grudge"
 	hair_flags = HAIR_TIEABLE
 
+/datum/sprite_accessory/hair/zone
+	name = "Zone"
+	id = "hair_zone"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "zone"
+/datum/sprite_accessory/hair/halfcut
+	name = "Halfcut"
+	id = "hair_halfcut"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "halfcut"
+
+/datum/sprite_accessory/hair/halfcut_smooth
+	name = "Halfcut Smooth"
+	id = "hair_halfcutsmooth"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "halfcut_smooth"
+
+/datum/sprite_accessory/hair/halfcut_rough
+	name = "Halfcut Rough"
+	id = "hair_halfcutrough"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "halfcut_rough"
+
+/datum/sprite_accessory/hair/braided_sidetail
+	name = "Braided Sidetail"
+	id = "hair_braidedsidetail"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "braided_sidetail"
+
+/datum/sprite_accessory/hair/baum
+	name = "Baum"
+	id = "hair_baum"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "baum"
+
+/datum/sprite_accessory/hair/bluntbangs
+	name = "Blunt Bangs"
+	id = "hair_bluntbangs"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "bluntbangs"
+
+/datum/sprite_accessory/hair/bluntbangsalt
+	name = "Blunt Bangs 2"
+	id = "hair_bluntbangsalt"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "bluntbangsalt"
+
+/datum/sprite_accessory/hair/slightlymessy
+	name = "Slightly Messy Long"
+	id = "hair_slightlymessy"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "slightlymessy"
+
+/datum/sprite_accessory/hair/kisaragi
+	name = "Kisaragi"
+	id = "hair_kisaragi"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "kisaragi"
+
+/datum/sprite_accessory/hair/fortuneteller
+	name = "Fortune Teller"
+	id = "hair_fortuneteller"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "fortuneteller"
+
+/datum/sprite_accessory/hair/hajime
+	name = "Hajime"
+	id = "hair_hajime"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "hajime"
+
+/datum/sprite_accessory/hair/hajimeshort
+	name = "Hajime Short"
+	id = "hair_hajimealt"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "hajimealt"
+
+/datum/sprite_accessory/hair/quadcurls
+	name = "Quad Curls"
+	id = "hair_quadcurls"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "quadcurls"
+
+/datum/sprite_accessory/hair/combedback
+	name = "Combed Back"
+	id = "hair_combedback"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "combedback"
+
+/datum/sprite_accessory/hair/combedbob
+	name = "Combed Bob"
+	id = "hair_combedbob"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "combedbob"
+
+/datum/sprite_accessory/hair/geisha
+	name = "Geisha"
+	id = "hair_geisha"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "geisha"
+
+/datum/sprite_accessory/hair/cotton
+	name = "Cotton"
+	id = "hair_cotton"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "cotton"
+
+/datum/sprite_accessory/hair/cottonalt
+	name = "Cotton Short"
+	id = "hair_cottonalt"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "cottonalt"
+
+/datum/sprite_accessory/hair/africanpigtails
+	name = "African Pigtails"
+	id = "hair_africanpigtails"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "africanpigtails"
+
+/datum/sprite_accessory/hair/inari
+	name = "Inari"
+	id = "hair_inari"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "inari"
+
+/datum/sprite_accessory/hair/rocksatr
+	name = "Rockstar"
+	id = "hair_rockstar"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "rockstar"

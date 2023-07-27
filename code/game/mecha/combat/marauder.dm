@@ -11,7 +11,7 @@
 	damage_absorption = list("brute"=0.5,"fire"=0.7,"bullet"=0.45,"laser"=0.6,"energy"=0.7,"bomb"=0.7)
 	max_temperature = 60000
 	infra_luminosity = 3
-	operation_req_access = list(access_cent_specops)
+	operation_req_access = list(ACCESS_CENTCOM_ERT)
 	wreckage = /obj/effect/decal/mecha_wreckage/marauder
 	add_req_access = 0
 	internal_damage_threshold = 25
@@ -53,7 +53,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/seraph)
 	icon_state = "seraph"
 	initial_icon = "seraph"
-	operation_req_access = list(access_cent_creed)
+	operation_req_access = list(ACCESS_CENTCOM_ERT_LEAD)
 	step_in = 3
 	health = 450
 	wreckage = /obj/effect/decal/mecha_wreckage/seraph
@@ -75,7 +75,7 @@
 	name = "Mauler"
 	icon_state = "mauler"
 	initial_icon = "mauler"
-	operation_req_access = list(access_syndicate)
+	operation_req_access = list(ACCESS_FACTION_SYNDICATE)
 	wreckage = /obj/effect/decal/mecha_wreckage/mauler
 	mech_faction = MECH_FACTION_SYNDI
 

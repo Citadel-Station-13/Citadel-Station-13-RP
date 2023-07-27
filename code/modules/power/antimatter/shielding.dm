@@ -99,9 +99,9 @@
 	return
 
 
-/obj/machinery/am_shielding/bullet_act(var/obj/item/projectile/Proj)
-	if(Proj.check_armour != "bullet")
-		stability -= Proj.force/2
+/obj/machinery/am_shielding/bullet_act(var/obj/projectile/Proj)
+	if(Proj.damage_flag != "bullet")
+		stability -= Proj.damage/2
 	return 0
 
 
@@ -125,8 +125,8 @@
 
 /obj/machinery/am_shielding/attackby(obj/item/W, mob/user)
 	if(!istype(W) || !user) return
-	if(W.force > 10)
-		stability -= W.force/2
+	if(W.damage_force > 10)
+		stability -= W.damage_force/2
 		check_stability()
 	..()
 	return
@@ -197,7 +197,7 @@
 	throw_force = 5
 	throw_speed = 1
 	throw_range = 2
-	matter = list(MAT_STEEL = 100)
+	materials = list(MAT_STEEL = 100)
 
 /obj/item/am_shielding_container/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/multitool) && istype(src.loc,/turf))

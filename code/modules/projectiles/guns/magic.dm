@@ -12,11 +12,11 @@
 	var/recharge_rate = 4
 	var/charge_tick = 0
 	var/can_charge = 1
-	var/ammo_type = /obj/item/projectile/magic
+	var/ammo_type = /obj/projectile/magic
 	var/no_den_usage
 	pin = /obj/item/firing_pin/magic
 
-/obj/item/gun/magic/afterattack(atom/target, mob/living/user, flag)
+/obj/item/gun/magic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(no_den_usage)
 		var/area/A = get_area(user)
 		if(istype(A, /area/wizard_station))

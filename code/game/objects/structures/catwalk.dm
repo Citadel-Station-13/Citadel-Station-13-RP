@@ -94,7 +94,7 @@
 			if(do_after(user, 20, src))
 				health = maxhealth
 	else
-		take_damage(C.force)
+		take_damage(C.damage_force)
 		user.setClickCooldown(user.get_attack_speed(C))
 	return ..()
 
@@ -143,7 +143,7 @@
 	. = ..()
 	activate()
 
-/obj/effect/catwalk_plated/attack_hand()
+/obj/effect/catwalk_plated/attack_hand(mob/user, list/params)
 	attack_generic()
 
 /obj/effect/catwalk_plated/attack_ghost()

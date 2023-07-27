@@ -15,10 +15,6 @@
 	light_color = "#00FF00"
 	var/obj/machinery/body_scanconsole/console
 
-/obj/machinery/bodyscanner/Initialize(mapload, newdir)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/bodyscanner/Destroy()
 	if(console)
 		console.scanner = null
@@ -244,7 +240,7 @@
 	. = ..()
 	return attack_hand(user)
 
-/obj/machinery/body_scanconsole/attack_hand(user as mob)
+/obj/machinery/body_scanconsole/attack_hand(mob/user, list/params)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
@@ -289,8 +285,8 @@
 			occupantData["radLoss"] = H.radiation
 			occupantData["cloneLoss"] = H.getCloneLoss()
 			occupantData["brainLoss"] = H.getBrainLoss()
-			occupantData["paralysis"] = H.paralysis
-			occupantData["paralysisSeconds"] = round(H.paralysis / 4)
+			occupantData["paralysis"] = H.is_unconscious()
+			occupantData["paralysisSeconds"] = round(H.is_unconscious()?.time_left() / 10)
 			occupantData["bodyTempC"] = H.bodytemperature-T0C
 			occupantData["bodyTempF"] = (((H.bodytemperature-T0C) * 1.8) + 32)
 
@@ -359,7 +355,7 @@
 					organStatus["bleeding"] = 1
 				if(E.status & ORGAN_DEAD)
 					organStatus["dead"] = 1
-				for(var/datum/wound/W in E.wounds)
+				for(var/datum/wound/W as anything in E.wounds)
 					if(W.internal)
 						organStatus["internalBleeding"] = 1
 						break
@@ -476,7 +472,7 @@
 			extra_font = "<font color=[occupant.getBrainLoss() < 1 ? "blue" : "red"]>"
 			dat += "[extra_font]\tApprox. Brain Damage %: [occupant.getBrainLoss()]</font><br>"
 
-			dat += "Paralysis Summary %: [occupant.paralysis] ([round(occupant.paralysis / 4)] seconds left!)<br>"
+			dat += "Paralysis Summary: [round(occupant.is_unconscious()?.time_left() / 10)] seconds left!)<br>"
 			dat += "Body Temperature: [occupant.bodytemperature-T0C]&deg;C ([occupant.bodytemperature*1.8-459.67]&deg;F)<br>"
 
 			dat += "<hr>"
@@ -521,9 +517,10 @@
 				var/internal_bleeding = ""
 				var/lung_ruptured = ""
 				var/o_dead = ""
-				for(var/datum/wound/W in e.wounds) if(W.internal)
-					internal_bleeding = "<br>Internal bleeding"
-					break
+				for(var/datum/wound/W as anything in e.wounds)
+					if(W.internal)
+						internal_bleeding = "<br>Internal bleeding"
+						break
 				if(istype(e, /obj/item/organ/external/chest) && occupant.is_lung_ruptured())
 					lung_ruptured = "Lung ruptured:"
 				if(e.splinted)

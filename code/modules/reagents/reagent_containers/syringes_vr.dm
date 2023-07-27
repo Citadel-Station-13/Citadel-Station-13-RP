@@ -66,7 +66,7 @@
 	eo.queue_syringe_infection()
 
 //Allow for capped syringe mode
-/obj/item/reagent_containers/syringe/attack_self(mob/user as mob)
+/obj/item/reagent_containers/syringe/attack_self(mob/user)
 	switch(mode)
 		if(SYRINGE_CAPPED)
 			mode = SYRINGE_DRAW

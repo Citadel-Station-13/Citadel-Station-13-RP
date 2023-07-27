@@ -6,8 +6,8 @@
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
-	icon = 'icons/turf/walls/solid.dmi'
-	icon_state = "wall-0"
+	icon = 'icons/turf/walls/_previews.dmi'
+	icon_state = "solid"
 	base_icon_state = "wall"
 	color = "#666666"
 
@@ -18,6 +18,7 @@
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
+	layer = WALL_LAYER
 	rad_insulation = RAD_INSULATION_EXTREME
 //	air_status = AIR_STATUS_BLOCK
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
@@ -27,7 +28,7 @@
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS)
-	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_LOW_WALL + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_LOW_WALL + SMOOTH_GROUP_GRILLE + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 	/// This is a var we are temporarily using until we have falsewall structures, until then we'll store our previous icon_state so we don't need to resmooth every time.
 	// TODO: Remove this when falsewalls are implemented.
@@ -47,6 +48,14 @@
 
 	var/last_state
 	var/construction_stage
+	/// Paint color of which the wall has been painted with.
+	var/paint_color
+	/// Paint color of which the stripe has been painted with. Will not overlay a stripe if no paint is applied
+	var/stripe_color
+	var/stripe_icon
+	var/cache_key
+	var/shiny_wall
+	var/shiny_stripe
 
 // Walls always hide the stuff below them.
 /turf/simulated/wall/levelupdate()
@@ -59,6 +68,7 @@
 	color = null
 
 	set_materials(material, reinf_material, girder_material)
+	set_rad_insulation()
 
 	if(smoothing_flags & SMOOTH_DIAGONAL_CORNERS && fixed_underlay) //Set underlays for the diagonal walls.
 		var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = TURF_PLANE)
@@ -74,6 +84,9 @@
 
 	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
 		START_PROCESSING(SSturfs, src)
+
+	stripe_icon = material.wall_stripe_icon
+	update_overlays()
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
@@ -91,10 +104,10 @@
 /turf/simulated/wall/proc/get_default_material()
 	. = /datum/material/steel
 
-/turf/simulated/wall/bullet_act(var/obj/item/projectile/Proj)
-	if(istype(Proj,/obj/item/projectile/beam))
+/turf/simulated/wall/bullet_act(var/obj/projectile/Proj)
+	if(istype(Proj,/obj/projectile/beam))
 		burn(2500)
-	else if(istype(Proj,/obj/item/projectile/ion))
+	else if(istype(Proj,/obj/projectile/ion))
 		burn(500)
 
 	var/proj_damage = Proj.get_structure_damage()
@@ -106,7 +119,7 @@
 		if(thermite)
 			thermitemelt()
 
-	if(istype(Proj,/obj/item/projectile/beam))
+	if(istype(Proj,/obj/projectile/beam))
 		if(material && material.reflectivity >= 0.5) // Time to reflect lasers.
 			var/new_damage = damage * material.reflectivity
 			var/outgoing_damage = damage - new_damage
@@ -155,7 +168,7 @@
 		plant.update_neighbors()
 
 //Appearance
-/turf/simulated/wall/examine(mob/user)
+/turf/simulated/wall/examine(mob/user, dist)
 	. = ..()
 
 	if(!damage)
@@ -300,6 +313,10 @@
 
 	radiation_pulse(src, total_radiation)
 	return total_radiation
+
+/turf/simulated/wall/proc/set_rad_insulation()
+	var/total_rad_insulation = material.weight + material.radiation_resistance + (reinf_material ? (reinf_material.weight + reinf_material.radiation_resistance) / 4 : 0) + (girder_material ? (girder_material.weight + girder_material.radiation_resistance) / 16 : 0)
+	rad_insulation = round(1/(total_rad_insulation**1.35*1/21.25**1.35+1),0.01) // 21.25 would be the total_rad_insulation of basic steel walls and return 0.5 rad_insulation. 1.35 exponential function helps us to also hit the plasteel wall goal of 0.25.
 
 /turf/simulated/wall/proc/burn(temperature)
 	if(material.combustion_effect(src, temperature, 0.7))

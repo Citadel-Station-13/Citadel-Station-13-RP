@@ -39,7 +39,7 @@
 		// var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
 		active_regen = TRUE
 		src.visible_message("<B>[src]</B>'s flesh begins to bubble, growing oily tendrils from their limb stump...")  // Gives a visualization for regenerating limbs.
-		if(do_after(src,5 SECONDS))  // Makes you not need to blob to regen a single limb. I'm keeping the full-body regen as blob-only, though
+		if(do_self(src, 5 SECONDS, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))  // Makes you not need to blob to regen a single limb. I'm keeping the full-body regen as blob-only, though
 			if(!refactory.use_stored_material(MAT_STEEL,PER_LIMB_STEEL_COST))
 				return
 			var/list/limblist = species.has_limbs[choice]
@@ -132,7 +132,7 @@
 
 		var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
 		active_regen = TRUE
-		if(do_after(blob,5 SECONDS))
+		if(do_self(blob, 5 SECONDS, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
 			synthetic = usable_manufacturers[manu_choice]
 			torso.robotize(manu_choice) //Will cascade to all other organs.
 			regenerate_icons()
@@ -152,13 +152,13 @@
 	active_regen = TRUE
 
 	var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
-	if(do_after(blob, delay_length, null, 0))
+	if(do_self(blob, 5 SECONDS, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
 		if(stat != DEAD && refactory)
 			//Not enough resources (AND spends the resources, should be the last check)
 			if(!refactory.use_stored_material(MAT_STEEL,refactory.max_storage))
 				to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
 				return
-			var/list/holder = refactory.materials
+			var/list/holder = refactory.stored_materials
 			species.create_organs(src)
 			var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
 			torso.robotize() //synthetic wasn't defined here.
@@ -171,7 +171,7 @@
 			if(!new_refactory)
 				log_debug(SPAN_DEBUGWARNING("[src] protean-regen'd but lacked a refactory when done."))
 			else
-				new_refactory.materials = holder
+				new_refactory.stored_materials = holder
 			to_chat(src, "<span class='notice'>Your refactoring is complete.</span>") //Guarantees the message shows no matter how bad the timing.
 			to_chat(blob, "<span class='notice'>Your refactoring is complete!</span>")
 		else
@@ -206,7 +206,7 @@
 
 	var/obj/item/stack/material/matstack = held
 	var/substance = matstack.material.name
-	var/list/edible_materials = list(MAT_STEEL, MAT_SILVER, MAT_GOLD, MAT_URANIUM, MAT_METALHYDROGEN) //Can't eat all materials, just useful ones.
+	var/list/edible_materials = list(MAT_STEEL) //Can't eat all materials, just useful ones.
 	var allowed = FALSE
 	for(var/material in edible_materials)
 		if(material == substance) allowed = TRUE

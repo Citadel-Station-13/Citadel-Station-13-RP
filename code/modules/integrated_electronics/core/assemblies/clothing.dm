@@ -48,7 +48,7 @@
 		EA.emp_act(severity)
 	..()
 
-/obj/item/clothing/examine(mob/user)
+/obj/item/clothing/examine(mob/user, dist)
 	if(EA)
 		EA.examine(user)
 	. = ..()
@@ -69,6 +69,9 @@
 		..()
 
 /obj/item/clothing/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(EA && EA.opened)
 		EA.attack_self(user)
 	else

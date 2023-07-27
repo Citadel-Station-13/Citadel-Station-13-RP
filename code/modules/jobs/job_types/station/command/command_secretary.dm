@@ -7,45 +7,48 @@
 	department_accounts = list(DEPARTMENT_COMMAND)
 	department_flag = CIVILIAN
 	disallow_jobhop = TRUE
-	pto_type = PTO_CIVILIAN
+	pto_type = PTO_COMMAND
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "command staff"
 	selection_color = "#1D1D4F"
 	minimal_player_age = 5
 
-	access = list(access_heads, access_keycard_auth)
-	minimal_access = list(access_heads, access_keycard_auth)
+	minimal_access = list(
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_COMMAND_KEYAUTH,
+		ACCESS_ENGINEERING_MAINT,
+	)
 
 	outfit_type = /datum/outfit/job/station/command_secretary
 	desc = "A Command Secretary handles paperwork duty for the Heads of Staff, so they can better focus on managing their departments. \
 						They are not Heads of Staff, and have no real authority."
 
 	alt_titles = list(
-		"Command Liaison" = /datum/prototype/alt_title/command_liaison,
-		"Bridge Secretary" = /datum/prototype/alt_title/bridge_secretary,
-		"Command Assistant" = /datum/prototype/alt_title/command_assistant,
-		"Command Intern" = /datum/prototype/alt_title/command_intern,
-		"Helmsman" = /datum/prototype/alt_title/commsec/helmsman,
-		"Bridge Officer" = /datum/prototype/alt_title/commsec/officer
+		"Command Liaison" = /datum/prototype/struct/alt_title/command_liaison,
+		"Bridge Secretary" = /datum/prototype/struct/alt_title/bridge_secretary,
+		"Command Assistant" = /datum/prototype/struct/alt_title/command_assistant,
+		"Command Intern" = /datum/prototype/struct/alt_title/command_intern,
+		"Helmsman" = /datum/prototype/struct/alt_title/commsec/helmsman,
+		"Bridge Officer" = /datum/prototype/struct/alt_title/commsec/officer
 	)
 
-/datum/prototype/alt_title/command_liaison
+/datum/prototype/struct/alt_title/command_liaison
 	title = "Command Liaison"
 
-/datum/prototype/alt_title/bridge_secretary
+/datum/prototype/struct/alt_title/bridge_secretary
 	title = "Bridge Secretary"
 
-/datum/prototype/alt_title/command_assistant
+/datum/prototype/struct/alt_title/command_assistant
 	title = "Command Assistant"
 
-/datum/prototype/alt_title/command_intern
+/datum/prototype/struct/alt_title/command_intern
 	title = "Command Intern"
 
-/datum/prototype/alt_title/commsec/helmsman
+/datum/prototype/struct/alt_title/commsec/helmsman
 	title = "Helmsman"
 
-/datum/prototype/alt_title/commsec/officer
+/datum/prototype/struct/alt_title/commsec/officer
 	title = "Bridge Officer"
 	title_outfit = /datum/outfit/job/station/command_secretary/bridge_officer
 

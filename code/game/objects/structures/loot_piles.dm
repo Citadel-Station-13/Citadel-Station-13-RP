@@ -42,7 +42,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	var/list/rare_loot = list()		// Rare is powerful, or somewhat unique items.
 	var/list/very_rare_loot = list()// Very Rare really powerful, or at least unique items.
 
-/obj/structure/loot_pile/attack_hand(mob/user)
+/obj/structure/loot_pile/attack_hand(mob/user, list/params)
 	//Human mob
 	if(isliving(user))
 		var/mob/living/L = user
@@ -376,7 +376,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/cell/device,
 		/obj/item/circuitboard/broken,
 		/obj/item/circuitboard/arcade,
-		/obj/item/circuitboard/autolathe,
+		/obj/item/circuitboard/machine/lathe/autolathe,
 		/obj/item/circuitboard/atmos_alert,
 		/obj/item/circuitboard/airalarm,
 		/obj/item/circuitboard/fax,
@@ -433,16 +433,16 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/borg/upgrade/tasercooler,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/riggedlaser,
 		/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill,
-		/obj/item/rig_module/device/drill,
-		/obj/item/rig_module/device/plasmacutter,
-		/obj/item/rig_module/device/healthscanner,
-		/obj/item/rig_module/device/orescanner,
-		/obj/item/rig_module/device/anomaly_scanner,
-		/obj/item/rig_module/datajack,
-		/obj/item/rig_module/vision/medhud,
-		/obj/item/rig_module/vision/meson,
-		/obj/item/rig_module/vision/sechud,
-		/obj/item/rig_module/sprinter,
+		/obj/item/hardsuit_module/device/drill,
+		/obj/item/hardsuit_module/device/plasmacutter,
+		/obj/item/hardsuit_module/device/healthscanner,
+		/obj/item/hardsuit_module/device/orescanner,
+		/obj/item/hardsuit_module/device/anomaly_scanner,
+		/obj/item/hardsuit_module/datajack,
+		/obj/item/hardsuit_module/vision/medhud,
+		/obj/item/hardsuit_module/vision/meson,
+		/obj/item/hardsuit_module/vision/sechud,
+		/obj/item/hardsuit_module/sprinter,
 		/obj/item/skub
 	)
 

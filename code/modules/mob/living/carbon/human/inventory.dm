@@ -204,7 +204,7 @@
 	if(!covering)
 		return
 
-	if(!(covering.body_parts_covered & (I.body_parts_covered | extra_flags)))
+	if(!(covering.body_cover_flags & (I.body_cover_flags | extra_flags)))
 		return
 
 	return covering
@@ -223,9 +223,9 @@
 		return FALSE
 
 	// then, check bodyparts
-	if(I.item_flags & EQUIP_IGNORE_DELIMB)
-		return
-	var/allow_single = (I.item_flags & EQUIP_ALLOW_SINGLE_LIMB)
+	if(I.clothing_flags & CLOTHING_IGNORE_DELIMB)
+		return TRUE
+	var/allow_single = (I.clothing_flags & CLOTHING_ALLOW_SINGLE_LIMB)
 
 	var/has_part = TRUE
 	var/part_text

@@ -48,6 +48,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	desc = "A flexible superconducting cable for heavy-duty power transfer."
 	icon = 'icons/obj/power_cond_white.dmi'
 	icon_state = "0-1"
+	atom_colouration_system = FALSE
 
 	plane = TURF_PLANE
 	layer = EXPOSED_WIRE_LAYER
@@ -186,6 +187,8 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	return 1
 
 /obj/structure/cable/update_icon()
+	if(!(atom_flags & ATOM_INITIALIZED))
+		return // do NOT trample d1/d2 before they're set..
 	icon_state = "[d1]-[d2]"
 	alpha = invisibility ? 127 : 255
 
@@ -273,7 +276,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
-		if(usr.stunned)
+		if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 			return 1
 	return 0
 
@@ -351,7 +354,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 // merge with the powernets of power objects in the given direction
 /obj/structure/cable/proc/mergeConnectedNetworks(var/direction)
 
-	var/fdir = direction ? GLOB.reverse_dir[direction] : 0 //flip the direction, to match with the source position on its turf
+	var/fdir = direction ? global.reverse_dir[direction] : 0 //flip the direction, to match with the source position on its turf
 
 	if(!(d1 == direction || d2 == direction)) //if the cable is not pointed in this direction, do nothing
 		return
@@ -431,7 +434,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	for(var/cable_dir in list(d1, d2))
 		if(cable_dir == 0)
 			continue
-		var/reverse = GLOB.reverse_dir[cable_dir]
+		var/reverse = global.reverse_dir[cable_dir]
 		T = get_zstep(src, cable_dir)
 		if(T)
 			for(var/obj/structure/cable/C in T)
@@ -532,7 +535,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
@@ -544,7 +547,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	name = "cable coil synthesizer"
 	desc = "A device that makes cable."
 	gender = NEUTER
-	matter = null
+	materials = null
 	uses_charge = 1
 	charge_costs = list(1)
 
@@ -579,7 +582,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 			to_chat(user, SPAN_WARNING("That isn't a robotic limb."))
 			return
 
-		var/use_amt = min(src.amount, CEILING(S.burn_dam/5, 1), 5)
+		var/use_amt = min(src.amount, CEILING(S.burn_dam / 20, 1), 5)
 		if(can_use(use_amt))
 			if(S.robo_repair(5*use_amt, BURN, "some damaged wiring", src, user))
 				use(use_amt)
@@ -616,7 +619,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	else
 		w_class = ITEMSIZE_SMALL
 
-/obj/item/stack/cable_coil/examine(mob/user)
+/obj/item/stack/cable_coil/examine(mob/user, dist)
 	. = ..()
 
 	if(get_amount() == 1)
@@ -631,7 +634,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	set category = "Object"
 	var/mob/M = usr
 
-	if(ishuman(M) && !M.restrained() && !M.stat && !M.paralysis && ! M.stunned)
+	if(CHECK_MOBILITY(M, MOBILITY_CAN_USE))
 		if(!istype(usr.loc,/turf)) return
 		if(src.amount <= 14)
 			to_chat(usr, "<span class='warning'>You need at least 15 lengths to make restraints!</span>")
@@ -659,14 +662,14 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		return
 	..()
 
-/obj/item/stack/cable_coil/use()
+/obj/item/stack/cable_coil/use(used)
 	. = ..()
-	update_icon()
+	update_appearance()
 	return
 
 /obj/item/stack/cable_coil/add()
 	. = ..()
-	update_icon()
+	update_appearance()
 	return
 
 ///////////////////////////////////////////////
@@ -963,7 +966,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stacktype = null
@@ -973,9 +976,9 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	. = ..()
 	if(embed_chance == -1)		//From /obj/item, don't want to do what the normal cable_coil does
 		if(sharp)
-			embed_chance = force/w_class
+			embed_chance = damage_force/w_class
 		else
-			embed_chance = force/(w_class*3)
+			embed_chance = damage_force/(w_class*3)
 	update_icon()
 	remove_obj_verb(src, /obj/item/stack/cable_coil/verb/make_restraint)
 
@@ -994,9 +997,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/item/stack/cable_coil/alien/update_wclass()
 	return 0
 
+/obj/item/stack/cable_coil/alien/split(tamount)
+	return null // no split
 
-
-/obj/item/stack/cable_coil/alien/attack_hand(mob/user as mob)
+/obj/item/stack/cable_coil/alien/attack_hand(mob/user, list/params)
 	if (user.get_inactive_held_item() == src)
 		var/N = input("How many units of wire do you want to take from [src]?  You can only take up to [amount] at a time.", "Split stacks", 1) as num|null
 		if(N && N <= amount)

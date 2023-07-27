@@ -29,13 +29,16 @@
 	template = null // without this, capsules would be one use. per round.
 	. = ..()
 
-/obj/item/survivalcapsule/examine(mob/user)
+/obj/item/survivalcapsule/examine(mob/user, dist)
 	. = ..()
 	get_template()
 	. += "This capsule has the [template.name] stored."
 	. += template.description
 
-/obj/item/survivalcapsule/attack_self()
+/obj/item/survivalcapsule/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	//Can't grab when capsule is New() because templates aren't loaded then
 	get_template()
 	if(!used)
@@ -139,14 +142,8 @@
 	name = "pod window"
 	icon = 'icons/obj/survival_pod.dmi'
 	icon_state = "pwindow"
-	basestate = "pwindow"
+	fulltile = FALSE
 
-//The windows have diagonal versions, and will never be a full window
-/obj/structure/window/reinforced/survival_pod/is_fulltile()
-	return FALSE
-
-/obj/structure/window/reinforced/survival_pod/update_icon()
-	icon_state = basestate
 
 //Windoor
 /obj/machinery/door/window/survival_pod
@@ -162,7 +159,8 @@
 	can_reinforce = FALSE
 	can_plate = FALSE
 
-/obj/structure/table/survival_pod/update_icon()
+/obj/structure/table/survival_pod/update_icon_state()
+	. = ..()
 	icon_state = "table"
 
 /obj/structure/table/survival_pod/Initialize(mapload)
@@ -182,11 +180,13 @@
 	icon_state = "sleeper"
 	stasis_level = 100 //Just one setting
 
-/obj/machinery/sleeper/survival_pod/update_icon()
+
+/obj/machinery/sleeper/survival_pod/update_overlays()
+	. = ..()
+	cut_overlays()
 	if(occupant)
-		add_overlay("sleeper_cover")
-	else
-		cut_overlays()
+		. += "sleeper_cover"
+
 
 //Computer
 /obj/item/gps/computer
@@ -210,7 +210,7 @@
 
 	return FALSE
 
-/obj/item/gps/computer/attack_hand(mob/user)
+/obj/item/gps/computer/attack_hand(mob/user, list/params)
 	attack_self(user)
 
 //Bed
@@ -227,8 +227,6 @@
 	desc = "A heated storage unit."
 	icon_state = "donkvendor"
 	icon = 'icons/obj/survival_pod_vend.dmi'
-	icon_on = "donkvendor"
-	icon_off = "donkvendor"
 	light_range = 5
 	light_power = 1.2
 	light_color = "#DDFFD3"

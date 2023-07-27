@@ -181,6 +181,13 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 //Being removed from some mob
 /obj/item/nif/proc/unimplant(var/mob/living/carbon/human/H)
+	for(var/i in 1 to length(nifsofts))
+		var/datum/nifsoft/NS = nifsofts[i]
+		if(!NS)
+			continue
+		if(!NS.active)
+			continue
+		NS.deactivate(TRUE)
 	var/datum/nifsoft/soulcatcher/SC = imp_check(NIF_SOULCATCHER)
 	if(SC) //Clean up stored people, this is dirty but the easiest way.
 		QDEL_LIST_NULL(SC.brainmobs)
@@ -332,10 +339,10 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 					human.adjustHalLoss(35)
 					human.custom_pain(message,35)
 				if(2)
-					human.Weaken(5)
+					human.afflict_paralyze(20 * 5)
 					to_chat(human,"<span class='danger'>A wave of weakness rolls over you.</span>")
 				if(3)
-					human.Sleeping(5)
+					human.afflict_sleeping(20 * 5)
 					to_chat(human,"<span class='danger'>You suddenly black out!</span>")
 
 		//Finishing up
@@ -472,6 +479,9 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	var/datum/nifsoft/NS = nifsofts[old_soft.list_pos]
 	if(!NS || NS != old_soft)
 		return FALSE //what??
+
+	if(NS.active)
+		NS.deactivate(TRUE)
 
 	nifsofts[old_soft.list_pos] = null
 	power_usage -= old_soft.p_drain
@@ -636,11 +646,19 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 /obj/item/nif/bioadap
 	name = "bioadaptive NIF"
-	desc = "A NIF that goes out of it's way to accomidate strange body types. \
+	desc = "A NIF that goes out of it's way to accomodate strange body types. \
 	Will function in species where it normally wouldn't."
-	durability = 25
+	durability = 50
 	bioadap = TRUE
 	id = NIF_ID_BIOADAPTIVE
+
+/obj/item/nif/authenticbioadap
+	name = "\improper Vey-Med bioadaptive NIF"
+	desc = "A genuine Vey-Med nanotechnology fabricator, designed for strange body types. \
+	Will function in species where it normally wouldn't while still being very durable."
+	durability = 500
+	bioadap = TRUE
+	id = NIF_ID_VEYMEDBIOADAPTIVE
 
 ////////////////////////////////
 // Special Promethean """surgery"""

@@ -11,7 +11,6 @@
 	var/localopened = 0 //Setting this to keep it from behaviouring like a normal closet and obstructing movement in the map. -Agouri
 	opened = 1
 	var/hitstaken = 0
-	var/locked = 1
 	var/smashed = 0
 
 /obj/structure/closet/fireaxecabinet/PopulateContents()
@@ -44,12 +43,13 @@
 			if(src.smashed || src.localopened)
 				if(localopened)
 					localopened = 0
-					icon_state = text("fireaxe[][][][]closing",hasaxe,src.localopened,src.hitstaken,src.smashed)
-					spawn(10) update_icon()
+					icon_state = "fireaxe[hasaxe][localopened][hitstaken][smashed]closing"
+					spawn(10)
+						update_icon()
 				return
 			else
 				playsound(user, 'sound/effects/Glasshit.ogg', 100, 1) //We don't want this playing every time
-			if(W.force < 15)
+			if(W.damage_force < 15)
 				to_chat(user, "<span class='notice'>The cabinet's protective glass glances off the hit.</span>")
 			else
 				src.hitstaken++
@@ -76,10 +76,10 @@
 			else
 				localopened = !localopened
 				if(localopened)
-					icon_state = text("fireaxe[][][][]opening",hasaxe,src.localopened,src.hitstaken,src.smashed)
+					icon_state = "fireaxe[hasaxe][localopened][hitstaken][smashed]opening"
 					spawn(10) update_icon()
 				else
-					icon_state = text("fireaxe[][][][]closing",hasaxe,src.localopened,src.hitstaken,src.smashed)
+					icon_state = "fireaxe[hasaxe][localopened][hitstaken][smashed]closing"
 					spawn(10) update_icon()
 	else
 		if(src.smashed)
@@ -87,7 +87,7 @@
 		if(istype(O, /obj/item/multitool))
 			if(localopened)
 				localopened = 0
-				icon_state = text("fireaxe[][][][]closing",hasaxe,src.localopened,src.hitstaken,src.smashed)
+				icon_state = "fireaxe[hasaxe][localopened][hitstaken][smashed]closing"
 				spawn(10) update_icon()
 				return
 			else
@@ -100,14 +100,16 @@
 		else
 			localopened = !localopened
 			if(localopened)
-				icon_state = text("fireaxe[][][][]opening",hasaxe,src.localopened,src.hitstaken,src.smashed)
-				spawn(10) update_icon()
+				icon_state = "fireaxe[hasaxe][localopened][hitstaken][smashed]opening"
+				spawn(10)
+					update_icon()
 			else
-				icon_state = text("fireaxe[][][][]closing",hasaxe,src.localopened,src.hitstaken,src.smashed)
-				spawn(10) update_icon()
+				icon_state = "fireaxe[hasaxe][localopened][hitstaken][smashed]closing"
+				spawn(10)
+					update_icon()
 
 
-/obj/structure/closet/fireaxecabinet/attack_hand(mob/user as mob)
+/obj/structure/closet/fireaxecabinet/attack_hand(mob/user, list/params)
 	var/hasaxe = 0
 	if(fireaxe)
 		hasaxe = 1
@@ -129,20 +131,24 @@
 			else
 				localopened = !localopened
 				if(localopened)
-					src.icon_state = text("fireaxe[][][][]opening",hasaxe,src.localopened,src.hitstaken,src.smashed)
-					spawn(10) update_icon()
+					src.icon_state = "fireaxe[hasaxe][localopened][hitstaken][smashed]opening"
+					spawn(10)
+						update_icon()
 				else
-					src.icon_state = text("fireaxe[][][][]closing",hasaxe,src.localopened,src.hitstaken,src.smashed)
-					spawn(10) update_icon()
+					src.icon_state = "fireaxe[hasaxe][localopened][hitstaken][smashed]closing"
+					spawn(10)
+						update_icon()
 
 	else
 		localopened = !localopened //I'm pretty sure we don't need an if(src.smashed) in here. In case I'm wrong and it fucks up teh cabinet, **MARKER**. -Agouri
 		if(localopened)
-			src.icon_state = text("fireaxe[][][][]opening",hasaxe,src.localopened,src.hitstaken,src.smashed)
-			spawn(10) update_icon()
+			src.icon_state = "fireaxe[hasaxe][localopened][hitstaken][smashed]opening"
+			spawn(10)
+				update_icon()
 		else
-			src.icon_state = text("fireaxe[][][][]closing",hasaxe,src.localopened,src.hitstaken,src.smashed)
-			spawn(10) update_icon()
+			src.icon_state = "fireaxe[hasaxe][localopened][hitstaken][smashed]closing"
+			spawn(10)
+				update_icon()
 
 /obj/structure/closet/fireaxecabinet/attack_tk(mob/user as mob)
 	if(localopened && fireaxe)
@@ -203,7 +209,7 @@
 	var/hasaxe = 0
 	if(fireaxe)
 		hasaxe = 1
-	icon_state = text("fireaxe[][][][]",hasaxe,src.localopened,src.hitstaken,src.smashed)
+	icon_state = "fireaxe[hasaxe][localopened][hitstaken][smashed]"
 
 /obj/structure/closet/fireaxecabinet/open()
 	return

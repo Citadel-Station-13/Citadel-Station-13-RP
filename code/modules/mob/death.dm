@@ -2,11 +2,10 @@
 //added different sort of gibs and animations. N
 /mob/proc/gib(anim="gibbed-m", do_gibs, gib_file = 'icons/mob/mob.dmi')
 	death(1)
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	mobility_flags = NONE
 	icon = null
 	invisibility = 101
-	update_canmove()
 	dead_mob_list -= src
 
 	var/atom/movable/overlay/animation = null
@@ -28,8 +27,8 @@
 /mob/proc/dust(anim="dust-m",remains=/obj/effect/debris/cleanable/ash)
 	death(1)
 	var/atom/movable/overlay/animation = null
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	mobility_flags = NONE
 	icon = null
 	invisibility = 101
 
@@ -58,7 +57,6 @@
 	qdel(src)
 
 /mob/proc/death(gibbed, deathmessage = "seizes up and falls limp...")
-
 	if(stat == DEAD)
 		return 0
 	if(istype(loc, /obj/belly) || istype(loc, /obj/item/dogborg/sleeper))
@@ -68,9 +66,11 @@
 	if(!gibbed && deathmessage != "no message") // This is gross, but reliable. Only brains use it.
 		visible_message("<b>[src]</b> [deathmessage]")
 
+	SSplaytime.queue_playtimes(client)
 	set_stat(DEAD)
 
-	update_canmove()
+	update_ssd_overlay()
+	update_mobility()
 
 	dizziness = 0
 	jitteriness = 0

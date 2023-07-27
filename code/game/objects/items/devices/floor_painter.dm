@@ -39,11 +39,11 @@
 		"precise" = 0
 		)
 
-/obj/item/floor_painter/afterattack(var/atom/A, var/mob/user, proximity, params)
-	if(!proximity)
+/obj/item/floor_painter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
-	var/turf/simulated/floor/F = A
+	var/turf/simulated/floor/F = target
 	if(!istype(F))
 		to_chat(user, "<span class='warning'>\The [src] can only be used on station flooring.</span>")
 		return
@@ -100,7 +100,10 @@
 
 	new painting_decal(F, painting_dir, painting_colour)
 
-/obj/item/floor_painter/attack_self(var/mob/user)
+/obj/item/floor_painter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/choice = input("Do you wish to change the decal type, paint direction, or paint colour?") as null|anything in list("Decal","Direction", "Colour")
 	if(choice == "Decal")
 		choose_decal()
@@ -109,7 +112,7 @@
 	else if(choice == "Colour")
 		choose_colour()
 
-/obj/item/floor_painter/examine(mob/user)
+/obj/item/floor_painter/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>It is configured to produce the '[decal]' decal with a direction of '[paint_dir]' using [paint_colour] paint.</span>"
 

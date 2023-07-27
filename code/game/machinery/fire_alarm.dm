@@ -4,8 +4,8 @@ FIRE ALARM
 /obj/machinery/firealarm
 	name = "fire alarm"
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
-	icon = 'icons/obj/monitors.dmi'
-	icon_state = "fire0"
+	icon = 'icons/obj/firealarm.dmi'
+	icon_state = "casing"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	var/detecting = TRUE
@@ -30,37 +30,85 @@ FIRE ALARM
 
 /obj/machinery/firealarm/Initialize(mapload)
 	. = ..()
-	if(z in GLOB.using_map.contact_levels)
+	if(z in (LEGACY_MAP_DATUM).contact_levels)
 		set_security_level(GLOB.security_level ? get_security_level() : "green")
+	setDir(dir)
+
+/obj/machinery/firealarm/setDir(ndir)
+	. = ..()
+	base_pixel_x = 0
+	base_pixel_y = 0
+	switch(dir)
+		if(NORTH)
+			base_pixel_y = -21
+		if(SOUTH)
+			base_pixel_y = 21
+		if(WEST)
+			base_pixel_x = -21
+		if(EAST)
+			base_pixel_x = 21
+	reset_pixel_offsets()
 
 /obj/machinery/firealarm/update_icon()
 	cut_overlays()
+	add_overlay("casing")
 
 	if(panel_open)
 		set_light(0)
 		return
 
 	if(machine_stat & BROKEN)
-		icon_state = "firex"
+		add_overlay("broken")
 		set_light(0)
 	else if(machine_stat & NOPOWER)
-		icon_state = "firep"
 		set_light(0)
+		return
 	else
 		if(!detecting)
-			icon_state = "fire1"
+			add_overlay("fire1")
 			set_light(l_range = 4, l_power = 0.9, l_color = "#ff0000")
 		else
-			icon_state = "fire0"
+			add_overlay("fire0")
+			var/image/alarm_img
 			switch(seclevel)
-				if("green")	set_light(l_range = 2, l_power = 0.25, l_color = "#00ff00")
-				if("yellow")	set_light(l_range = 2, l_power = 0.25, l_color = "#ffff00")
-				if("violet")	set_light(l_range = 2, l_power = 0.25, l_color = "#9933ff")
-				if("orange")	set_light(l_range = 2, l_power = 0.25, l_color = "#ff9900")
-				if("blue")	set_light(l_range = 2, l_power = 0.25, l_color = "#1024A9")
-				if("red")	set_light(l_range = 4, l_power = 0.9, l_color = "#ff0000")
-				if("delta")	set_light(l_range = 4, l_power = 0.9, l_color = "#FF6633")
-		add_overlay("overlay_[seclevel]")
+				if("green")
+					alarm_img = image(icon, "alarm_normal")
+					alarm_img.color = "#00ff00"
+					add_overlay(alarm_img)
+					set_light(l_range = 2, l_power = 0.25, l_color = "#00ff00")
+				if("yellow")
+					alarm_img = image(icon, "alarm_blinking")
+					alarm_img.color = "#ffff00"
+					add_overlay(alarm_img)
+					set_light(l_range = 2, l_power = 0.25, l_color = "#ffff00")
+				if("violet")
+					alarm_img = image(icon, "alarm_blinking")
+					alarm_img.color = "#9933ff"
+					add_overlay(alarm_img)
+					set_light(l_range = 2, l_power = 0.25, l_color = "#9933ff")
+				if("orange")
+					alarm_img = image(icon, "alarm_blinking")
+					alarm_img.color = "#ff9900"
+					add_overlay(alarm_img)
+					set_light(l_range = 2, l_power = 0.25, l_color = "#ff9900")
+				if("blue")
+					alarm_img = image(icon, "alarm_blinking")
+					alarm_img.color = "#1024A9"
+					add_overlay(alarm_img)
+					set_light(l_range = 2, l_power = 0.25, l_color = "#1024A9")
+				if("red")
+					alarm_img = image(icon, "alarm_blinking")
+					alarm_img.color = "#ff0000"
+					add_overlay(alarm_img)
+					set_light(l_range = 4, l_power = 0.9, l_color = "#ff0000")
+				if("delta")
+					alarm_img = image(icon, "alarm_blinking_twotone1")
+					alarm_img.color = COLOR_YELLOW
+					var/image/alarm_img2 = image(icon, "alarm_blinking_twotone2")
+					alarm_img2.color = COLOR_RED
+					add_overlay(alarm_img)
+					add_overlay(alarm_img2)
+					set_light(l_range = 4, l_power = 0.9, l_color = "#FF6633")
 
 /obj/machinery/firealarm/fire_act(datum/gas_mixture/air, temperature, volume)
 	if(detecting)
@@ -128,7 +176,7 @@ FIRE ALARM
 	spawn(rand(0,15))
 		update_icon()
 
-/obj/machinery/firealarm/attack_hand(mob/user)
+/obj/machinery/firealarm/attack_hand(mob/user, list/params)
 	if(user.stat || machine_stat & (NOPOWER | BROKEN))
 		return
 
@@ -140,13 +188,13 @@ FIRE ALARM
 		A = A.loc
 
 		if(A.fire)
-			d1 = text("<A href='?src=\ref[];reset=1'>Reset - Lockdown</A>", src)
+			d1 = "<A href='?src=\ref[src];reset=1'>Reset - Lockdown</A>"
 		else
-			d1 = text("<A href='?src=\ref[];alarm=1'>Alarm - Lockdown</A>", src)
+			d1 = "<A href='?src=\ref[src];alarm=1'>Alarm - Lockdown</A>"
 		if(timing)
-			d2 = text("<A href='?src=\ref[];time=0'>Stop Time Lock</A>", src)
+			d2 = "<A href='?src=\ref[src];time=0'>Stop Time Lock</A>"
 		else
-			d2 = text("<A href='?src=\ref[];time=1'>Initiate Time Lock</A>", src)
+			d2 = "<A href='?src=\ref[src];time=1'>Initiate Time Lock</A>"
 		var/second = round(time) % 60
 		var/minute = (round(time) - second) / 60
 		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>Fire alarm</B> [d1]\n<HR>The current alert level is: <b>[get_security_level()]</b><br><br>\nTimer System: [d2]<BR>\nTime Left: [(minute ? "[minute]:" : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
@@ -155,16 +203,16 @@ FIRE ALARM
 	else
 		A = A.loc
 		if(A.fire)
-			d1 = text("<A href='?src=\ref[];reset=1'>[]</A>", src, stars("Reset - Lockdown"))
+			d1 = "<A href='?src=\ref[src];reset=1'>[stars("Reset - Lockdown")]</A>"
 		else
-			d1 = text("<A href='?src=\ref[];alarm=1'>[]</A>", src, stars("Alarm - Lockdown"))
+			d1 = "<A href='?src=\ref[src];alarm=1'>[stars("Alarm - Lockdown")]</A>"
 		if(timing)
-			d2 = text("<A href='?src=\ref[];time=0'>[]</A>", src, stars("Stop Time Lock"))
+			d2 = "<A href='?src=\ref[src];time=0'>[stars("Stop Time Lock")]</A>"
 		else
-			d2 = text("<A href='?src=\ref[];time=1'>[]</A>", src, stars("Initiate Time Lock"))
+			d2 = "<A href='?src=\ref[src];time=1'>[stars("Initiate Time Lock")]</A>"
 		var/second = round(time) % 60
 		var/minute = (round(time) - second) / 60
-		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>[stars("Fire alarm")]</B> [d1]\n<HR><b>The current alert level is: [stars(get_security_level())]</b><br><br>\nTimer System: [d2]<BR>\nTime Left: [(minute ? text("[]:", minute) : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
+		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>[stars("Fire alarm")]</B> [d1]\n<HR><b>The current alert level is: [stars(get_security_level())]</b><br><br>\nTimer System: [d2]<BR>\nTime Left: [(minute ? "[minute]:" : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
 		user << browse(dat, "window=firealarm")
 		onclose(user, "firealarm")
 	return
@@ -230,7 +278,7 @@ Just a object used in constructing fire alarms
 	icon_state = "door_electronics"
 	desc = "A circuit. It has a label on it, it says \"Can handle heat levels up to 40 degrees celsius!\""
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 */
 /obj/machinery/partyalarm
 	name = "\improper PARTY BUTTON"
@@ -247,7 +295,7 @@ Just a object used in constructing fire alarms
 	idle_power_usage = 2
 	active_power_usage = 6
 
-/obj/machinery/partyalarm/attack_hand(mob/user)
+/obj/machinery/partyalarm/attack_hand(mob/user, list/params)
 	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		return
 
@@ -259,30 +307,32 @@ Just a object used in constructing fire alarms
 	if(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon/ai))
 
 		if(A.party)
-			d1 = text("<A href='?src=\ref[];reset=1'>No Party :(</A>", src)
+			d1 = "<A href='?src=\ref[src];reset=1'>No Party :(</A>"
 		else
-			d1 = text("<A href='?src=\ref[];alarm=1'>PARTY!!!</A>", src)
+			d1 = "<A href='?src=\ref[src];alarm=1'>PARTY!!!</A>"
 		if(timing)
-			d2 = text("<A href='?src=\ref[];time=0'>Stop Time Lock</A>", src)
+			d2 = "<A href='?src=\ref[src];time=0'>Stop Time Lock</A>"
 		else
-			d2 = text("<A href='?src=\ref[];time=1'>Initiate Time Lock</A>", src)
+			d2 = "<A href='?src=\ref[src];time=1'>Initiate Time Lock</A>"
 		var/second = time % 60
 		var/minute = (time - second) / 60
-		var/dat = text("<HTML><HEAD></HEAD><BODY><TT><B>Party Button</B> []\n<HR>\nTimer System: []<BR>\nTime Left: [][] <A href='?src=\ref[];tp=-30'>-</A> <A href='?src=\ref[];tp=-1'>-</A> <A href='?src=\ref[];tp=1'>+</A> <A href='?src=\ref[];tp=30'>+</A>\n</TT></BODY></HTML>", d1, d2, (minute ? text("[]:", minute) : null), second, src, src, src, src)
+		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>Party Button</B> [d1]\n<HR>\nTimer System: [d2]<BR>\nTime Left: [(minute ? "[minute]:" : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
+
 		user << browse(dat, "window=partyalarm")
 		onclose(user, "partyalarm")
 	else
 		if(A.fire)
-			d1 = text("<A href='?src=\ref[];reset=1'>[]</A>", src, stars("No Party :("))
+			d1 = "<A href='?src=\ref[src];reset=1'>[stars("No Party :(")]</A>"
 		else
-			d1 = text("<A href='?src=\ref[];alarm=1'>[]</A>", src, stars("PARTY!!!"))
+			d1 = "<A href='?src=\ref[src];alarm=1'>[stars("PARTY!!!")]</A>"
 		if(timing)
-			d2 = text("<A href='?src=\ref[];time=0'>[]</A>", src, stars("Stop Time Lock"))
+			d2 = "<A href='?src=\ref[src];time=0'>[stars("Stop Time Lock")]</A>"
 		else
-			d2 = text("<A href='?src=\ref[];time=1'>[]</A>", src, stars("Initiate Time Lock"))
+			d2 = "<A href='?src=\ref[src];time=1'>[stars("Initiate Time Lock")]</A>"
 		var/second = time % 60
 		var/minute = (time - second) / 60
-		var/dat = text("<HTML><HEAD></HEAD><BODY><TT><B>[]</B> []\n<HR>\nTimer System: []<BR>\nTime Left: [][] <A href='?src=\ref[];tp=-30'>-</A> <A href='?src=\ref[];tp=-1'>-</A> <A href='?src=\ref[];tp=1'>+</A> <A href='?src=\ref[];tp=30'>+</A>\n</TT></BODY></HTML>", stars("Party Button"), d1, d2, (minute ? text("[]:", minute) : null), second, src, src, src, src)
+		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>[stars("Party Button")]</B> [d1]\n<HR>\nTimer System: [d2]<BR>\nTime Left: [(minute ? "[minute]:" : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
+
 		user << browse(dat, "window=partyalarm")
 		onclose(user, "partyalarm")
 	return

@@ -78,6 +78,9 @@
 				return
 
 /obj/item/integrated_electronics/wirer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	switch(mode)
 		if(WIRE)
 			mode = UNWIRE
@@ -113,6 +116,9 @@
 	var/copy_values = FALSE
 
 /obj/item/integrated_electronics/debugger/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/type_to_use = tgui_input_list(usr, "Please choose a type to use.","[src] type setting", list("string","number","ref", "copy", "list", "null"))
 	if(!CanInteract(user, GLOB.physical_state))
 		return
@@ -150,8 +156,8 @@
 			copy_values = FALSE
 			to_chat(user, "<span class='notice'>You set \the [src]'s memory to absolutely nothing.</span>")
 
-/obj/item/integrated_electronics/debugger/afterattack(atom/target, mob/living/user, proximity)
-	if(accepting_refs && proximity)
+/obj/item/integrated_electronics/debugger/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(accepting_refs && (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		data_to_write = WEAKREF(target)
 		visible_message("<span class='notice'>[user] slides \a [src]'s over \the [target].</span>")
 		to_chat(user, "<span class='notice'>You set \the [src]'s memory to a reference to [target.name] \[Ref\].  The ref scanner is \
@@ -198,6 +204,9 @@
 	var/mode = 0
 
 /obj/item/multitool/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(selected_io)
 		selected_io = null
 		to_chat(user, "<span class='notice'>You clear the wired connection from the multitool.</span>")
@@ -267,8 +276,8 @@
 		io1.holder.interact(user) // This is to update the UI.
 		update_icon()
 
-/obj/item/multitool/afterattack(atom/target, mob/living/user, proximity)
-	if(accepting_refs && toolmode == MULTITOOL_MODE_INTCIRCUITS && proximity)
+/obj/item/multitool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(accepting_refs && toolmode == MULTITOOL_MODE_INTCIRCUITS && (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		weakref_wiring = WEAKREF(target)
 		visible_message("<span class='notice'>[user] slides \a [src]'s over \the [target].</span>")
 		to_chat(user, "<span class='notice'>You set \the [src]'s memory to a reference to [target.name] \[Ref\].  The ref scanner is \

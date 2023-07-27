@@ -19,10 +19,6 @@
 	var/set_temperature = T20C	//thermostat
 	var/heating = 0		//mainly for icon updates
 
-/obj/machinery/atmospherics/component/unary/heater/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/atmospherics/component/unary/heater/atmos_init()
 	if(node)
 		return
@@ -77,7 +73,7 @@
 /obj/machinery/atmospherics/component/unary/heater/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/unary/heater/attack_hand(mob/user as mob)
+/obj/machinery/atmospherics/component/unary/heater/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/atmospherics/component/unary/heater/ui_interact(mob/user, datum/tgui/ui)
@@ -154,7 +150,7 @@
 
 	..()
 
-/obj/machinery/atmospherics/component/unary/heater/examine(mob/user)
+/obj/machinery/atmospherics/component/unary/heater/examine(mob/user, dist)
 	. = ..()
 	if(panel_open)
 		. += "The maintenance hatch is open."

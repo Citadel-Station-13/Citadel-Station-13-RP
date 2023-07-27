@@ -4,7 +4,7 @@
 	item_state = "grenade"
 	desc = "A hand made chemical grenade."
 	w_class = ITEMSIZE_SMALL
-	force = 2.0
+	damage_force = 2.0
 	det_time = 50
 	unacidable = 1
 
@@ -25,12 +25,15 @@
 	QDEL_LIST_NULL(beakers)
 	return ..()
 
-/obj/item/grenade/chem_grenade/attack_self(mob/user as mob)
+/obj/item/grenade/chem_grenade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!stage || stage==1)
 		if(detonator)
 //				detonator.loc=src.loc
 			detonator.detached()
-			usr.put_in_hands(detonator)
+			usr.put_in_hands_or_drop(detonator)
 			detonator=null
 			det_time = null
 			stage=0
@@ -39,7 +42,7 @@
 			for(var/obj/B in beakers)
 				if(istype(B))
 					beakers -= B
-					user.put_in_hands(B)
+					user.put_in_hands_or_drop(B)
 		name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
 	if(stage > 1 && !active && clown_check(user))
 		to_chat(user, "<span class='warning'>You prime \the [name]!</span>")
@@ -117,7 +120,7 @@
 			else
 				to_chat(user, "<span class='warning'>\The [W] is empty.</span>")
 
-/obj/item/grenade/chem_grenade/examine(mob/user)
+/obj/item/grenade/chem_grenade/examine(mob/user, dist)
 	. = ..()
 	if(detonator)
 		. += "With attached [detonator.name]"

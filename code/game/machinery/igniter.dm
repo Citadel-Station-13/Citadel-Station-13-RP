@@ -13,13 +13,13 @@
 /obj/machinery/igniter/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/igniter/attack_hand(mob/user)
+/obj/machinery/igniter/attack_hand(mob/user, list/params)
 	if(..())
 		return
 
 	use_power(50)
 	on = !(on)
-	icon_state = text("igniter[]", on)
+	icon_state = "igniter[on]"
 
 /obj/machinery/igniter/process(delta_time)	//ugh why is this even in process()?
 	if(on && !(machine_stat & NOPOWER))
@@ -121,7 +121,7 @@
 	name = "ignition switch"
 	desc = "A remote control switch for a mounted igniter."
 
-/obj/machinery/button/ignition/attack_hand(mob/user)
+/obj/machinery/button/ignition/attack_hand(mob/user, list/params)
 
 	if(..())
 		return
@@ -140,7 +140,7 @@
 		if(M.id == id)
 			use_power(50)
 			M.on = !(M.on)
-			M.icon_state = text("igniter[]", M.on)
+			M.icon_state = "igniter[M.on]"
 
 	sleep(50)
 

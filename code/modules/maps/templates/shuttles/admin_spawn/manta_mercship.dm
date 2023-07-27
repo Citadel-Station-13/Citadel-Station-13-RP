@@ -4,7 +4,7 @@
 /datum/map_template/shuttle/overmap/generic/manta_ship
 	name = "OM Ship - Mercenary Cruiser Manta Class (New Z)"
 	desc = "Mercenary Manta Cruiser."
-	mappath = "_maps/templates/admin/kk_mercship.dmm"
+	map_path = "maps/templates/admin/kk_mercship.dmm"
 
 // The ship's area(s)
 /area/ship/manta
@@ -120,7 +120,7 @@
 //	fuel_consumption = 3
 
 // The 'ship'
-/obj/effect/overmap/visitable/ship/manta_ship
+/obj/overmap/entity/visitable/ship/manta_ship
 	name = "SAARE Typhon Four-Niner"
 	desc = "Spacefaring vessel. Broadcasting Private Military Contractor IFF."
 	scanner_desc = @{"[i]Registration[/i]: SAARE Mercenary Cruiser Typhon Four-Niner
@@ -188,7 +188,7 @@
 	fuel_consumption = 0 //this thing is too big already, let's just handwave everything
 	defer_initialisation = TRUE
 
-/obj/effect/overmap/visitable/ship/landable/manta_ship_boat
+/obj/overmap/entity/visitable/ship/landable/manta_ship_boat
 	scanner_name = "SAARE Landing Craft"
 	desc = "Spacefaring vessel. Broadcasting Private Military Contractor IFF."
 	scanner_desc = @{"[i]Registration[/i]: SAARE Mercenary Cruiser Typhon Four-Niner's Lander

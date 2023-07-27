@@ -101,8 +101,8 @@
 			STATPANEL_DATA_LINE("Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
 
 
-		if(back && istype(back,/obj/item/rig))
-			var/obj/item/rig/suit = back
+		if(back && istype(back,/obj/item/hardsuit))
+			var/obj/item/hardsuit/suit = back
 			var/cell_status = "ERROR"
 			if(suit.cell)
 				cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
@@ -126,7 +126,7 @@
 	switch (severity)
 		if (1.0)
 			b_loss += 500
-			if (!prob(run_mob_armor(null, "bomb")))
+			if (!prob(legacy_mob_armor(null, "bomb")))
 				gib()
 				return
 			else
@@ -142,7 +142,7 @@
 
 			f_loss += 60
 
-			if (prob(run_mob_armor(null, "bomb")))
+			if (prob(legacy_mob_armor(null, "bomb")))
 				b_loss = b_loss/1.5
 				f_loss = f_loss/1.5
 
@@ -150,17 +150,17 @@
 				ear_damage += 30
 				ear_deaf += 120
 			if (prob(70) && !shielded)
-				Unconscious(10)
+				afflict_unconscious(20 * 10)
 
 		if(3.0)
 			b_loss += 30
-			if (prob(run_mob_armor(null, "bomb")))
+			if (prob(legacy_mob_armor(null, "bomb")))
 				b_loss = b_loss/2
 			if (!get_ear_protection() >= 2)
 				ear_damage += 15
 				ear_deaf += 60
 			if (prob(50) && !shielded)
-				Unconscious(10)
+				afflict_unconscious(20 * 10)
 
 	var/update = 0
 
@@ -267,9 +267,9 @@
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a seperate proc as it'll be useful elsewhere
 /mob/living/carbon/human/proc/get_visible_name()
-	if( wear_mask && (wear_mask.flags_inv&HIDEFACE) )	//Wearing a mask which hides our face, use id-name if possible
+	if( wear_mask && (wear_mask.inv_hide_flags&HIDEFACE) )	//Wearing a mask which hides our face, use id-name if possible
 		return get_id_name("Unknown")
-	if( head && (head.flags_inv&HIDEFACE) )
+	if( head && (head.inv_hide_flags&HIDEFACE) )
 		return get_id_name("Unknown")		//Likewise for hats
 	var/face_name = get_face_name()
 	var/id_name = get_id_name("")
@@ -306,7 +306,7 @@
 //Now checks siemens_coefficient of the affected area by default
 /mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if (!def_zone)
 		def_zone = pick("l_hand", "r_hand")
@@ -327,7 +327,7 @@
 
 /mob/living/carbon/human/Topic(href, href_list)
 	if (href_list["mach_close"])
-		var/t1 = text("window=[]", href_list["mach_close"])
+		var/t1 = "window=[href_list["mach_close"]]"
 		unset_machine()
 		src << browse(null, t1)
 
@@ -406,8 +406,8 @@
 							if(hasHUD(usr,"security"))
 								read = 1
 								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
-									to_chat(usr, text("[]", R.fields[text("com_[]", counter)]))
+								while(R.fields["com_[counter]"])
+									to_chat(usr, "[R.fields["com_[counter]"]]")
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")
@@ -433,14 +433,14 @@
 								if ( !(t1) || usr.stat || usr.restrained() || !(hasHUD(usr,"security")) )
 									return
 								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
+								while(R.fields["com_[counter]"])
 									counter++
 								if(istype(usr,/mob/living/carbon/human))
 									var/mob/living/carbon/human/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+									R.fields["com_[counter]"] = "Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]"
 								if(istype(usr,/mob/living/silicon/robot))
 									var/mob/living/silicon/robot/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+									R.fields["com_[counter]"] = "Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]"
 
 	if (href_list["medical"])
 		if(hasHUD(usr,"medical"))
@@ -523,8 +523,8 @@
 							if(hasHUD(usr,"medical"))
 								read = 1
 								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
-									to_chat(usr, text("[]", R.fields[text("com_[]", counter)]))
+								while(R.fields["com_[counter]"])
+									to_chat(usr, "[R.fields["com_[counter]"]]")
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")
@@ -550,14 +550,14 @@
 								if ( !(t1) || usr.stat || usr.restrained() || !(hasHUD(usr,"medical")) )
 									return
 								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
+								while(R.fields["com_[counter]"])
 									counter++
 								if(istype(usr,/mob/living/carbon/human))
 									var/mob/living/carbon/human/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+									R.fields["com_[counter]"] = "Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]"
 								if(istype(usr,/mob/living/silicon/robot))
 									var/mob/living/silicon/robot/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+									R.fields["com_[counter]"] = "Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]"
 
 	if (href_list["emprecord"])
 		if(hasHUD(usr,"best"))
@@ -622,6 +622,11 @@
 				flavor_texts[href_list["flavor_change"]] = msg
 				set_flavor()
 				return
+
+	if(href_list["character_profile"])
+		if(!profile)
+			profile = new(src)
+		profile.ui_interact(usr)
 	..()
 	return
 /mob/living/carbon/human/needs_to_breathe()
@@ -883,7 +888,7 @@
 		reset_perspective()
 
 /mob/living/carbon/human/get_visible_gender()
-	if(wear_suit && wear_suit.flags_inv & HIDEJUMPSUIT && ((head && head.flags_inv & HIDEMASK) || wear_mask))
+	if(wear_suit && wear_suit.inv_hide_flags & HIDEJUMPSUIT && ((head && head.inv_hide_flags & HIDEMASK) || wear_mask))
 		return PLURAL //plural is the gender-neutral default
 	if(species)
 		if(species.ambiguous_genders)
@@ -895,38 +900,6 @@
 		gloves.germ_level += n
 	else
 		germ_level += n
-
-/mob/living/carbon/human/revive()
-
-	if(should_have_organ(O_HEART))
-		vessel.add_reagent("blood",species.blood_volume-vessel.total_volume)
-		fixblood()
-
-	species.create_organs(src) // Reset our organs/limbs.
-	restore_all_organs()       // Reapply robotics/amputated status from preferences.
-
-	if(!client || !key) //Don't boot out anyone already in the mob.
-		for (var/obj/item/organ/internal/brain/H in GLOB.all_brain_organs)
-			if(H.brainmob)
-				if(H.brainmob.real_name == src.real_name)
-					if(H.brainmob.mind)
-						H.brainmob.mind.transfer_to(src)
-						qdel(H)
-
-	// Reapply markings/appearance from prefs for player mobs
-	if(client) //just to be sure
-		client.prefs.copy_to(src)
-		if(dna)
-			dna.ResetUIFrom(src)
-			sync_organ_dna()
-
-	for (var/ID in virus2)
-		var/datum/disease2/disease/V = virus2[ID]
-		V.cure(src)
-
-	losebreath = 0
-
-	..()
 
 /mob/living/carbon/human/proc/is_lung_ruptured()
 	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
@@ -1054,7 +1027,7 @@
 	if(istype(O, /obj/item/melee/spike))
 		organ.take_damage(rand(3,9), 0, 0) // it has spikes on it it's going to stab you
 		to_chat(src, "<span class='danger'>The edges of [O] in your [organ.name] are not doing you any favors.</span>")
-		Weaken(2) // having a very jagged stick jammed into your bits is Bad for your health
+		afflict_paralyze(20 * 2) // having a very jagged stick jammed into your bits is Bad for your health
 	organ.take_damage(rand(1,3), 0, 0)
 	if(!(organ.robotic >= ORGAN_ROBOT) && (should_have_organ(O_HEART))) //There is no blood in protheses.
 		organ.status |= ORGAN_BLEEDING
@@ -1156,9 +1129,8 @@
 	if(hud_used)
 		qdel(hud_used) //remove the hud objects
 	hud_used = new /datum/hud(src)
-	// todo: this is awful lol
-	if(plane_holder && client)
-		client.screen |= plane_holder.plane_masters
+	reload_rendering()
+	update_vision()
 
 	// skip the rest
 	if(skip)
@@ -1168,7 +1140,7 @@
 	species.create_blood(src)
 	species.handle_post_spawn(src)
 	species.update_attack_types() // Required for any trait that updates unarmed_types in setup.
-	updatehealth()	// uh oh stinky - some species just have more/less maxhealth, this is a shit fix imo but deal with it for now ~silicons
+	update_health()	// uh oh stinky - some species just have more/less maxhealth, this is a shit fix imo but deal with it for now ~silicons
 
 	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
 	update_hud()
@@ -1270,12 +1242,17 @@
 	if(isSynthetic())
 		switch(severity)
 			if(1)
+				afflict_stagger(EMP_TRAIT_N(1), 2, 10)
+				afflict_stagger(EMP_TRAIT_N(2), 5, 2)
 				Confuse(10)
 			if(2)
+				afflict_stagger(EMP_TRAIT_N(1), 2, 10)
 				Confuse(7)
 			if(3)
+				afflict_stagger(EMP_TRAIT_N(1), 1, 5)
 				Confuse(5)
 			if(4)
+				afflict_stagger(EMP_TRAIT_N(1), 0.5, 3)
 				Confuse(2)
 		flash_eyes()
 		to_chat(src, "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>")
@@ -1310,10 +1287,10 @@
 	else
 		switch(target_zone)
 			if(BP_HEAD) //If targeting head, check helmets
-				if(head && (head.clothing_flags & THICKMATERIAL) && !ignore_thickness && !istype(head, /obj/item/clothing/head/helmet/space)) //If they're wearing a head piece, if that head piece is thick, the injector doesn't bypass thickness, and that headpiece isn't a space helmet with an injection port - it fails
+				if(head && (head.clothing_flags & CLOTHING_THICK_MATERIAL) && !ignore_thickness && !istype(head, /obj/item/clothing/head/helmet/space)) //If they're wearing a head piece, if that head piece is thick, the injector doesn't bypass thickness, and that headpiece isn't a space helmet with an injection port - it fails
 					. = 0
 			else //Otherwise, if not targeting head, check the suit
-				if(wear_suit && (wear_suit.clothing_flags & THICKMATERIAL) && !ignore_thickness&& !istype(wear_suit, /obj/item/clothing/suit/space)) //If they're wearing a suit piece, if that suit piece is thick, the injector doesn't bypass thickness, and that suit isn't a space suit with an injection port - it fails
+				if(wear_suit && (wear_suit.clothing_flags & CLOTHING_THICK_MATERIAL) && !ignore_thickness&& !istype(wear_suit, /obj/item/clothing/suit/space)) //If they're wearing a suit piece, if that suit piece is thick, the injector doesn't bypass thickness, and that suit isn't a space suit with an injection port - it fails
 					. = 0
 	if(!. && error_msg && user)
 		if(!fail_msg)
@@ -1332,21 +1309,21 @@
 	var/feet_exposed = 1
 
 	for(var/obj/item/clothing/C in equipment)
-		if(C.body_parts_covered & HEAD)
+		if(C.body_cover_flags & HEAD)
 			head_exposed = 0
-		if(C.body_parts_covered & FACE)
+		if(C.body_cover_flags & FACE)
 			face_exposed = 0
-		if(C.body_parts_covered & EYES)
+		if(C.body_cover_flags & EYES)
 			eyes_exposed = 0
-		if(C.body_parts_covered & UPPER_TORSO)
+		if(C.body_cover_flags & UPPER_TORSO)
 			torso_exposed = 0
-		if(C.body_parts_covered & ARMS)
+		if(C.body_cover_flags & ARMS)
 			arms_exposed = 0
-		if(C.body_parts_covered & HANDS)
+		if(C.body_cover_flags & HANDS)
 			hands_exposed = 0
-		if(C.body_parts_covered & LEGS)
+		if(C.body_cover_flags & LEGS)
 			legs_exposed = 0
-		if(C.body_parts_covered & FEET)
+		if(C.body_cover_flags & FEET)
 			feet_exposed = 0
 
 	flavor_text = ""
@@ -1392,7 +1369,7 @@
 	var/list/equipment = list(src.w_uniform,src.wear_suit,src.shoes)
 	var/footcoverage_check = FALSE
 	for(var/obj/item/clothing/C in equipment)
-		if(C.body_parts_covered & FEET)
+		if(C.body_cover_flags & FEET)
 			footcoverage_check = TRUE
 			break
 	if((species.species_flags & NO_SLIP && !footcoverage_check) || (shoes && (shoes.clothing_flags & NOSLIP))) //Footwear negates a species' natural traction.
@@ -1456,16 +1433,6 @@
 	if(shoes && (shoes.clothing_flags & NOSLIP) && istype(shoes, /obj/item/clothing/shoes/magboots))  //magboots + dense_object = no floating
 		return 1
 	if(flying) // Checks to see if they have wings and are flying.
-		return 1
-	return 0
-
-/mob/living/carbon/human/can_stand_overridden()
-	if(wearing_rig && wearing_rig.ai_can_move_suit(check_for_ai = 1))
-		// Actually missing a leg will screw you up. Everything else can be compensated for.
-		for(var/limbcheck in list("l_leg","r_leg"))
-			var/obj/item/organ/affecting = get_organ(limbcheck)
-			if(!affecting)
-				return 0
 		return 1
 	return 0
 
@@ -1541,9 +1508,9 @@
 		equip_to_appropriate_slot(permit) // If for some reason it can't find room, it'll still be on the floor.
 
 /mob/living/carbon/human/proc/update_icon_special() //For things such as teshari hiding and whatnot.
-	if(status_flags & HIDING) // Hiding? Carry on.
+	if(status_flags & STATUS_HIDING) // Hiding? Carry on.
 		// Stunned/knocked down by something that isn't the rest verb? Note: This was tried with INCAPACITATION_STUNNED, but that refused to work.
-		if(stat == DEAD || paralysis || weakened || stunned || restrained() || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs())
+		if(!CHECK_MOBILITY(src, MOBILITY_CAN_USE) || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs())
 			reveal(null)
 		else
 			set_base_layer(HIDING_LAYER)
@@ -1651,19 +1618,19 @@
 	return BULLET_IMPACT_MEAT
 
 /mob/living/carbon/human/reduce_cuff_time()
-	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/rig))
+	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/hardsuit))
 		return 2
 	return ..()
 
 /mob/living/carbon/human/check_obscured_slots()
 	. = ..()
 	if(wear_suit)
-		if(wear_suit.flags_inv & HIDEGLOVES)
-			LAZYOR(., SLOT_GLOVES)
-		if(wear_suit.flags_inv & HIDEJUMPSUIT)
-			LAZYOR(., SLOT_ICLOTHING)
-		if(wear_suit.flags_inv & HIDESHOES)
-			LAZYOR(., SLOT_FEET)
+		if(wear_suit.inv_hide_flags & HIDEGLOVES)
+			LAZYDISTINCTADD(., SLOT_GLOVES)
+		if(wear_suit.inv_hide_flags & HIDEJUMPSUIT)
+			LAZYDISTINCTADD(., SLOT_ICLOTHING)
+		if(wear_suit.inv_hide_flags & HIDESHOES)
+			LAZYDISTINCTADD(., SLOT_FEET)
 
 //! Pixel Offsets
 /mob/living/carbon/human/get_centering_pixel_x_offset(dir, atom/aligning)

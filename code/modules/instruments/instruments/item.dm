@@ -1,7 +1,7 @@
 //copy pasta of the space piano, don't hurt me -Pete
 /obj/item/instrument
 	name = "generic instrument"
-	force = 10
+	damage_force = 10
 //	max_integrity = 100
 //	resistance_flags = FLAMMABLE
 	icon = 'icons/obj/musician.dmi'
@@ -51,6 +51,9 @@
 	return (BRUTELOSS)
 
 /obj/item/instrument/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return TRUE
@@ -125,7 +128,7 @@
 	desc = "Makes all your shredding needs possible."
 	icon_state = "eguitar"
 	item_state = "eguitar"
-	force = 12
+	damage_force = 12
 	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
 	hitsound = 'sound/weapons/stringsmash.ogg'
 	allowed_instrument_ids = "eguitar"
@@ -156,7 +159,7 @@
 	desc = "Things are about to get spooky!"
 	icon_state = "trumpet"
 	item_state = "trombone"
-	force = 0
+	damage_force = 0
 	attack_verb = list("played","jazzed","trumpeted","mourned","dooted","spooked")
 
 /*
@@ -181,7 +184,7 @@
 	desc = "This spooky sound will be sure to leave mortals in bones."
 	icon_state = "saxophone"
 	item_state = "saxophone"
-	force = 0
+	damage_force = 0
 	attack_verb = list("played","jazzed","saxxed","mourned","dooted","spooked")
 
 /*
@@ -206,7 +209,7 @@
 	desc = "A skeleton's favorite instrument. Apply directly on the mortals."
 	icon_state = "trombone"
 	item_state = "trombone"
-	force = 0
+	damage_force = 0
 	attack_verb = list("played","jazzed","tromboned","mourned","dooted","spooked")
 
 /*
@@ -222,7 +225,7 @@
 /obj/item/instrument/recorder
 	name = "recorder"
 	desc = "Just like in school, playing ability and all."
-	force = 5
+	damage_force = 5
 	icon_state = "recorder"
 	item_state = "recorder"
 	allowed_instrument_ids = "recorder"
@@ -234,7 +237,7 @@
 	item_state = "harmonica"
 	allowed_instrument_ids = "harmonica"
 //	slot_flags = ITEM_SLOT_MASK
-	force = 5
+	damage_force = 5
 	w_class = WEIGHT_CLASS_SMALL
 //	actions_types = list(/datum/action/item_action/instrument)
 
@@ -246,7 +249,7 @@
 
 /obj/item/instrument/harmonica/equipped(mob/M, slot)
 	. = ..()
-	RegisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
+	RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
 /obj/item/instrument/harmonica/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
@@ -265,7 +268,7 @@
 	attack_verb = list("beautifully honks")
 	allowed_instrument_ids = list("honk", "bikehorn")
 	w_class = WEIGHT_CLASS_TINY
-	force = 0
+	damage_force = 0
 	throw_speed = 3
 	throw_range = 15
 	hitsound = 'sound/items/bikehorn.ogg'

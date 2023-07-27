@@ -64,25 +64,21 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 /mob/living/proc/resize(var/new_size, var/animate = FALSE)
 	if(size_multiplier == new_size)
 		return 1
-
+	if(last_special > world.time)
+		to_chat(src, SPAN_WARNING("You are trying to resize to fast!"))
+		return 0
+	var/change = new_size - size_multiplier
 	size_multiplier = new_size //Change size_multiplier so that other items can interact with them
 	if(animate)
-		var/change = new_size - size_multiplier
-		var/duration = (abs(change)+0.25) SECONDS
+		var/duration = (abs(change * 5)+0.25) SECONDS
 		var/matrix/resize = matrix() // Defines the matrix to change the player's size
 		resize.Scale(new_size * icon_scale_x, size_multiplier * icon_scale_y) //Change the size of the matrix
 		resize.Translate(0, 16 * (new_size - 1)) //Move the player up in the tile so their feet align with the bottom
 		animate(src, transform = resize, time = duration) //Animate the player resizing
-
-		var/aura_grow_to = change > 0 ? 2 : 0.5
-		var/aura_anim_duration = 5
-		var/aura_offset = change > 0 ? 0 : 10
-		var/aura_color = size_multiplier > new_size ? "#FF2222" : "#2222FF"
-		var/aura_loops = round((duration)/aura_anim_duration)
-
-		animate_aura(src, color = aura_color, offset = aura_offset, anim_duration = aura_anim_duration, loops = aura_loops, grow_to = aura_grow_to)
+		last_special = world.time + duration
 	else
 		update_transform() //Lame way
+		last_special = world.time + base_attack_cooldown
 
 /mob/living/carbon/human/resize(var/new_size, var/animate = TRUE)
 	. = ..()
@@ -121,33 +117,34 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 */
 
 /**
- * Attempt to scoop up this mob up into H's hands, if the size difference is large enough.
- * @return false if normal code should continue, 1 to prevent normal code.
+ * Attempt to scoop up this mob up into M's hands, if the size difference is large enough.
+ * @return false if normal code should continue, true to prevent normal code.
  */
 /mob/living/proc/attempt_to_scoop(var/mob/living/M)
 	var/size_diff = M.get_effective_size() - get_effective_size()
 	if(!holder_default && holder_type)
 		holder_default = holder_type
 	if(!istype(M))
-		return 0
+		return FALSE
 	if(isanimal(M))
 		var/mob/living/simple_mob/SA = M
 		if(!SA.has_hands)
-			return 0
+			return FALSE
 	if(M.buckled)
 		to_chat(usr,"<span class='notice'>You have to unbuckle \the [M] before you pick them up.</span>")
-		return 0
+		return FALSE
 	if(size_diff >= 0.50)
-		if(M.get_effective_size() >= RESIZE_PREF_LIMIT && !M.permit_size_pickup)
+		// if the person being scooped up is past a set size limit then the pickup pref is applied
+		if(get_effective_size() >= RESIZE_PREF_LIMIT && !permit_size_pickup)
 			to_chat(src, "<span class='warning'>[M] is far too skittish to casually scoop up.</span>")
 			return TRUE
 		holder_type = /obj/item/holder/micro
 		var/obj/item/holder/m_holder = get_scooped(M)
 		holder_type = holder_default
 		if (m_holder)
-			return 1
+			return TRUE
 		else
-			return 0; // Unable to scoop, let other code run
+			return FALSE; // Unable to scoop, let other code run
 
 //! Fuck you.
 #define STEP_TEXT_OWNER_NON_SHITCODE(x, m) "[replacetext(x,"%prey",m)]"
@@ -273,7 +270,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 			return
 
 	//They can't be stepping on anyone
-	if(!canmove || buckled)
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
 	//Test/set if human

@@ -6,9 +6,9 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal
 	name = "floor decal"
 	icon = 'icons/turf/flooring/decals.dmi'
-	
+
 	plane = TURF_PLANE
-	
+
 	#ifdef IN_MAP_EDITOR
 	// Display disposal pipes etc. above walls in map editors.
 	layer = PLATING_DECAL_LAYER
@@ -527,6 +527,10 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/spline/plain
 	name = "spline - plain"
 	icon_state = "spline_plain"
+
+/obj/effect/floor_decal/spline/plain/corner
+	name = "spline - plain"
+	icon_state = "spline_plain_corner"
 
 /obj/effect/floor_decal/spline/fancy
 	name = "spline - fancy"

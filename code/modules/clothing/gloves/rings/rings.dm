@@ -7,6 +7,9 @@
 	item_state = "diamond_s"
 
 /obj/item/clothing/gloves/ring/engagement/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class='warning'>\The [user] gets down on one knee, presenting \the [src].</span>","<span class='warning'>You get down on one knee, presenting \the [src].</span>")
 
 /obj/item/clothing/gloves/ring/cti
@@ -64,7 +67,7 @@
 			to_chat(H, "<span class='danger'>You feel a prick as you slip on \the [src].</span>")
 			if(H.reagents)
 				var/contained = reagents.get_reagents()
-				var/trans = reagents.trans_to_mob(H, 15, CHEM_BLOOD)
+				var/trans = reagents.trans_to_mob(H, 15, CHEM_INJECT)
 				add_attack_logs(usr, H, "Injected with [name] containing [contained] transferred [trans] units")
 	return
 
@@ -98,6 +101,9 @@
 	var/nameset = FALSE
 
 /obj/item/clothing/gloves/ring/seal/signet/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(nameset)
 		to_chat(user, "<span class='notice'>The [src] has already been claimed!</span>")
 		return
@@ -119,6 +125,9 @@
 	var/partnername = ""
 
 /obj/item/clothing/gloves/ring/wedding/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	partnername = copytext(sanitize(input(user, "Would you like to change the holoengraving on the ring?", "Name your spouse", "Bae") as null|text),1,MAX_NAME_LEN)
 	name = "[initial(name)] - [partnername]"
 

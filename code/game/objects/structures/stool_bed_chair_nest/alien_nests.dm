@@ -26,7 +26,7 @@
 		"<span class='warning'>You struggle to break free from the gelatinous resin...</span>",\
 		"<span class='notice'>You hear squelching...</span>")
 	add_fingerprint(L)
-	if(!do_after(L, NEST_RESIST_TIME, src, FALSE))
+	if(!do_after(L, NEST_RESIST_TIME, src, DO_AFTER_IGNORE_ACTIVE_ITEM, MOBILITY_CAN_RESIST))
 		L.visible_message(
 			SPAN_WARNING("[L] fails to break out of [src]!"),
 			SPAN_WARNING("You fail to break out of [src].")
@@ -71,7 +71,7 @@
 		"<span class='notice'>You hear squelching...</span>")
 
 /obj/structure/bed/nest/attackby(obj/item/W as obj, mob/user as mob)
-	var/aforce = W.force
+	var/aforce = W.damage_force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	for(var/mob/M in viewers(src, 7))

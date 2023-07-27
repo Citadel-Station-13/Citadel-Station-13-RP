@@ -17,10 +17,6 @@
 
 /obj/machinery/vr_sleeper/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
-
-/obj/machinery/vr_sleeper/Initialize(mapload)
-	. = ..()
 	update_icon()
 
 /obj/machinery/vr_sleeper/process(delta_time)
@@ -209,7 +205,7 @@
 		if(occupant.species.get_species_id() != SPECIES_ID_PROMETHEAN && occupant.species.get_species_id() != SPECIES_ID_HUMAN)
 			avatar.shapeshifter_change_shape(occupant.species.name)
 		avatar.forceMove(get_turf(S))			// Put the mob on the landmark, instead of inside it
-		avatar.Sleeping(1)
+		avatar.afflict_sleeping(20 * 1)
 
 		occupant.enter_vr(avatar)
 

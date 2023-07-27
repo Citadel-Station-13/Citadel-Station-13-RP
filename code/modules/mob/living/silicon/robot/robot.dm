@@ -123,7 +123,7 @@
 	var/wiresexposed = FALSE
 	var/locked = TRUE
 	var/has_power = TRUE
-	var/list/req_access = list(access_robotics)
+	var/list/req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	var/ident = 0
 	//var/list/laws = list()
 	var/viewalerts = FALSE
@@ -292,7 +292,7 @@
 			else
 				mmi.brainmob.languages = languages
 			mmi.brainmob.remove_language("Robot Talk")
-			mind.transfer_to(mmi.brainmob)
+			mind.transfer(mmi.brainmob)
 		else if(!shell) // Shells don't have brainmbos in their MMIs.
 			to_chat(src, "<span class='danger'>Oops! Something went very wrong, your MMI was unable to receive your mind. You have been ghosted. Please make a bug report so we can fix this bug.</span>")
 			ghostize()
@@ -507,12 +507,12 @@
 	if(C.statpanel_tab("Status"))
 		STATPANEL_DATA_LINE("")
 		if(cell)
-			STATPANEL_DATA_LINE( text("Charge Left: [round(cell.percent())]%"))
-			STATPANEL_DATA_LINE( text("Cell Rating: [round(cell.maxcharge)]")) // Round just in case we somehow get crazy values
-			STATPANEL_DATA_LINE( text("Power Cell Load: [round(used_power_this_tick)]W"))
+			STATPANEL_DATA_LINE("Charge Left: [round(cell.percent())]%")
+			STATPANEL_DATA_LINE("Cell Rating: [round(cell.maxcharge)]") // Round just in case we somehow get crazy values
+			STATPANEL_DATA_LINE("Power Cell Load: [round(used_power_this_tick)]W")
 		else
-			STATPANEL_DATA_LINE( text("No Cell Inserted!"))
-		STATPANEL_DATA_LINE( text("Lights: [lights_on ? "ON" : "OFF"]"))
+			STATPANEL_DATA_LINE("No Cell Inserted!")
+		STATPANEL_DATA_LINE("Lights: [lights_on ? "ON" : "OFF"]")
 		STATPANEL_DATA_LINE("")
 		// if you have a jetpack, show the internal tank pressure
 		var/obj/item/tank/jetpack/current_jetpack = installed_jetpack()
@@ -526,7 +526,7 @@
 /mob/living/silicon/robot/restrained()
 	return 0
 
-/mob/living/silicon/robot/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/silicon/robot/bullet_act(var/obj/projectile/Proj)
 	..(Proj)
 	if(prob(75) && Proj.damage > 0)
 		spark_system.start()
@@ -591,10 +591,10 @@
 		if (WT.remove_fuel(0))
 			user.setClickCooldown(user.get_attack_speed(WT))
 			adjustBruteLoss(-30)
-			updatehealth()
+			update_health()
 			add_fingerprint(user)
 			for(var/mob/O in viewers(user, null))
-				O.show_message(text("<font color='red'>[user] has fixed some of the dents on [src]!</font>"), 1)
+				O.show_message(SPAN_RED("[user] has fixed some of the dents on [src]!"), SAYCODE_TYPE_VISIBLE)
 		else
 			to_chat(user, "Need more welding fuel!")
 			return
@@ -607,9 +607,9 @@
 		if (coil.use(1))
 			user.setClickCooldown(user.get_attack_speed(W))
 			adjustFireLoss(-30)
-			updatehealth()
+			update_health()
 			for(var/mob/O in viewers(user, null))
-				O.show_message(text("<font color='red'>[user] has fixed some of the burnt wires on [src]!</font>"), 1)
+				O.show_message(SPAN_RED("[user] has fixed some of the burnt wires on [src]!"), SAYCODE_TYPE_VISIBLE)
 
 	else if (W.is_crowbar() && user.a_intent != INTENT_HARM)	// crowbar means open or close the cover
 		if(opened)
@@ -758,7 +758,7 @@
 
 	else
 		if( !(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/healthanalyzer)) )
-			if(W.force > 0)
+			if(W.damage_force > 0)
 				spark_system.start()
 		return ..()
 
@@ -782,7 +782,7 @@
 			visible_message( \
 				SPAN_DANGER("[src] is trying to break their [bolt]!"), \
 				SPAN_WARNING("You attempt to break your [bolt]. (This will take around 90 seconds and you need to stand still)"))
-			if(do_after(src, 1.5 MINUTES, src, incapacitation_flags = INCAPACITATION_DISABLED))
+			if(do_after(src, 1.5 MINUTES, src, mobility_flags = MOBILITY_CAN_RESIST))
 				visible_message( \
 					SPAN_DANGER("[src] manages to break \the [bolt]!"), \
 					SPAN_WARNING("You successfully break your [bolt]."))
@@ -811,7 +811,7 @@
 	module = null
 	updatename("Default")
 
-/mob/living/silicon/robot/attack_hand(mob/user)
+/mob/living/silicon/robot/attack_hand(mob/user, list/params)
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
@@ -892,11 +892,6 @@
 		if(req in access_found) //have one of the required accesses
 			return 1
 	return 0
-
-/mob/living/silicon/robot/update_canmove()
-	. = ..()
-	updateicon()
-
 
 /mob/living/silicon/robot/updateicon()
 	cut_overlays()
@@ -987,21 +982,21 @@
 
 	for (var/obj in module.modules)
 		if (!obj)
-			dat += text("<B>Resource depleted</B><BR>")
+			dat += "<B>Resource depleted</B><BR>"
 		else if(activated(obj))
-			dat += text("[obj]: <B>Activated</B><BR>")
+			dat += "[obj]: <B>Activated</B><BR>"
 		else
-			dat += text("[obj]: <A HREF=?src=\ref[src];act=\ref[obj]>Activate</A><BR>")
+			dat += "[obj]: <A HREF=?src=\ref[src];act=\ref[obj]>Activate</A><BR>"
 	if (emagged || emag_items)
 		if(activated(module.emag))
-			dat += text("[module.emag]: <B>Activated</B><BR>")
+			dat += "[module.emag]: <B>Activated</B><BR>"
 		else
-			dat += text("[module.emag]: <A HREF=?src=\ref[src];act=\ref[module.emag]>Activate</A><BR>")
+			dat += "[module.emag]: <A HREF=?src=\ref[src];act=\ref[module.emag]>Activate</A><BR>"
 /*
 		if(activated(obj))
-			dat += text("[obj]: \[<B>Activated</B> | <A HREF=?src=\ref[src];deact=\ref[obj]>Deactivate</A>\]<BR>")
+			dat += "[obj]: \[<B>Activated</B> | <A HREF=?src=\ref[src];deact=\ref[obj]>Deactivate</A>\]<BR>"
 		else
-			dat += text("[obj]: \[<A HREF=?src=\ref[src];act=\ref[obj]>Activate</A> | <B>Deactivated</B>\]<BR>")
+			dat += "[obj]: \[<A HREF=?src=\ref[src];act=\ref[obj]>Activate</A> | <B>Deactivated</B>\]<BR>"
 */
 	src << browse(dat, "window=robotmod")
 
@@ -1076,6 +1071,12 @@
 			to_chat(src, "Module isn't activated")
 		installed_modules()
 		return 1
+		
+	if(href_list["character_profile"])
+		if(!profile)
+			profile = new(src)
+		profile.ui_interact(usr)
+
 	return
 
 /mob/living/silicon/robot/proc/radio_menu()
@@ -1170,8 +1171,9 @@
 	lawupdate = 0
 	lockcharge = 0
 	lockdown = 0
-	canmove = 1
 	scrambledcodes = 1
+	update_stat(update_mobility = FALSE)
+	update_mobility()
 	//Disconnect it's camera so it's not so easily tracked.
 	if(src.camera)
 		src.camera.clear_all_networks()
@@ -1195,7 +1197,7 @@
 		state = 1
 	lockdown = state
 	lockcharge = state
-	update_canmove()
+	update_mobility()
 
 /mob/living/silicon/robot/mode()
 	set name = "Activate Held Object"
@@ -1443,13 +1445,6 @@
 				to_chat(src, "You refill the extinguisher using your water reserves.")
 			else
 				to_chat(src, "Insufficient water reserves.")
-
-/mob/living/silicon/robot/onTransitZ(old_z, new_z)
-	if(shell)
-		if(deployed && GLOB.using_map.ai_shell_restricted && !(new_z in GLOB.using_map.ai_shell_allowed_levels))
-			to_chat(src,"<span class='warning'>Your connection with the shell is suddenly interrupted!</span>")
-			undeploy()
-	..()
 
 /mob/living/silicon/robot/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(lockcharge)

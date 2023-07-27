@@ -32,9 +32,8 @@
 	/// Power used per point of burn damage repaired.
 	var/wire_power_use = 500
 
-/obj/machinery/recharge_station/Initialize(mapload, newdir)
+/obj/machinery/recharge_station/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	update_icon()
 
 /obj/machinery/recharge_station/proc/has_cell_power()
@@ -120,9 +119,9 @@
 
 			// And clear up radiation
 			H.cure_radiation(RAD_MOB_CURE_SYNTH_CHARGER)
-		var/obj/item/rig/wornrig = H.get_rig()
+		var/obj/item/hardsuit/wornrig = H.get_hardsuit()
 		if(wornrig) // just to make sure
-			for(var/obj/item/rig_module/storedmod in wornrig)
+			for(var/obj/item/hardsuit_module/storedmod in wornrig)
 				if(weld_rate && storedmod.damage != 0 && cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(weld_power_use * weld_rate, 1)))
 					to_chat(H, "<span class='notice'>\The [storedmod] is repaired!</span>")
 					storedmod.damage = 0
@@ -132,7 +131,7 @@
 				var/charge_used = cell.use(diff)
 				rigcell.give(charge_used)
 
-/obj/machinery/recharge_station/examine(mob/user)
+/obj/machinery/recharge_station/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>The charge meter reads: [round(chargepercentage())]%</span>"
 

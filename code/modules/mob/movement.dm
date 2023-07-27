@@ -45,15 +45,19 @@
 
 /mob/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
+	if(.)
+		return
 	if(ismob(mover))
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
 			return TRUE
-	if(istype(mover, /obj/item/projectile))
-		var/obj/item/projectile/P = mover
+		if((wallflowering != NONE) && (ISDIAGONALDIR(wallflowering) || (wallflowering != turn(get_dir(mover, target), 180))))
+			return TRUE
+	if(istype(mover, /obj/projectile))
+		var/obj/projectile/P = mover
 		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
 	// thrown things still hit us even when nondense
-	if(!mover.density && !mover.throwing)
+	if(can_cross_under(mover))
 		return TRUE
 
 /mob/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
@@ -62,6 +66,15 @@
 		if(AM.pass_flags & ATOM_PASS_BUCKLED)
 			return TRUE
 	return ..()
+
+/mob/CheckExit(atom/movable/AM, atom/newLoc)
+	// clip their ass if they're in us and we're wallflowering
+	if((wallflowering != NONE) && !ISDIAGONALDIR(wallflowering) && (wallflowering == get_dir(AM, newLoc)))
+		return FALSE
+	return ..()
+
+/mob/proc/can_cross_under(atom/movable/mover)
+	return !mover.density && !mover.throwing
 
 /**
   * Toggle the move intent of the mob
@@ -102,7 +115,7 @@
   * * being grabbed
   * * being buckled  (relaymove() is called to the buckled atom instead)
   * * having your loc be some other mob (relaymove() is called on that mob instead)
-  * * Not having MOBILITY_MOVE
+  * * Not having MOBILITY_CAN_MOVE
   * * Failing Process_Spacemove() call
   *
   * At this point, if the mob is is confused, then a random direction and target turf will be calculated for you to travel to instead
@@ -128,14 +141,18 @@
 	if(!n || !direct || mob.transforming) // i'm moving something ahead of that check
 		return FALSE
 	// commented out - not needed without momentum preservation
-	// var/old_delay = mob.move_delay
+	var/old_delay = mob.move_delay
 	// prevent more than one move per tick if we get interrupted from normal movement
 	mob.move_delay = world.time + world.tick_lag
 	// admin control (?)
 	if(mob.control_object)
 		return Move_object(direct)
+	//* movement intercept
+	if(mob.movement_intercept?.intercept_mob_move(mob, direct))
+		return
 	// nonliving get handled differently
 	if(!isliving(mob))
+		mob.move_delay = world.time + mob.cached_multiplicative_slowdown
 		return mob.Move(n, direct)
 	// autoghost if needed
 	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
@@ -188,14 +205,14 @@
 	if(mob.buckled)
 		return mob.buckled.relaymove_from_buckled(mob, direct)
 
-	// todo: mobility refactor & move to mob
+	// todo: move to mob
 	// mobility check
-	if(!mob.canmove)
+	if(!CHECK_MOBILITY(mob, MOBILITY_CAN_MOVE))
 		return
 
 	// new mobility flags check todo
 /*
-	if(!(L.mobility_flags & MOBILITY_MOVE))
+	if(!(L.mobility_flags & MOBILITY_CAN_MOVE))
 		return FALSE
 */
 
@@ -260,9 +277,13 @@
 			else if(mob.confused)
 				switch(mob.m_intent)
 					if("run")
-						if(prob(50))	direct = turn(direct, pick(90, -90))
+						if(prob(25))
+							to_chat(src, SPAN_WARNING("You stumble around confusedly."))
+							direct = turn(direct, pick(90, -90))
 					if("walk")
-						if(prob(25))	direct = turn(direct, pick(90, -90))
+						if(prob(10))
+							to_chat(src, SPAN_WARNING("You stumble around confusedly."))
+							direct = turn(direct, pick(90, -90))
 			add_delay += 2
 			return mob.buckled.relaymove(mob,direct)
 	//! oh god I hate this so much todo proper relaymove system for pulling fr fr
@@ -302,14 +323,17 @@
 						M.animate_movement = 2
 						return
 	else
-		if(mob.confused)
+
+		if(mob.confused && !IS_PRONE(mob))
 			switch(mob.m_intent)
-				if("run")
-					if(prob(75))
+				if(MOVE_INTENT_RUN)
+					if(prob(20))
+						to_chat(src, SPAN_WARNING("You stumble around confusedly."))
 						direct = turn(direct, pick(90, -90))
 						n = get_step(mob, direct)
-				if("walk")
-					if(prob(25))
+				if(MOVE_INTENT_WALK)
+					if(prob(10))
+						to_chat(src, SPAN_WARNING("You stumble around confusedly."))
 						direct = turn(direct, pick(90, -90))
 						n = get_step(mob, direct)
 		. = mob.SelfMove(n, direct)
@@ -318,7 +342,7 @@
 	//! WARNING: MORE LEGACY CODE
 	for (var/obj/item/grab/G in mob)
 		if (G.state == GRAB_NECK)
-			mob.setDir(GLOB.reverse_dir[direct])
+			mob.setDir(global.reverse_dir[direct])
 		G.adjust_position()
 	for (var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()
@@ -332,9 +356,8 @@
 		add_delay *= SQRT_2
 
 	// round to tick to prevent lurching instead of preserving momentum
-	mob.move_delay = world.time + round(add_delay, world.tick_lag)
+	// mob.move_delay = world.time + round(add_delay, world.tick_lag)
 
-/*
 	// preserve momentum: for non-evenly-0.5-multiple movespeeds (HELLO, DIAGONAL MOVES),
 	// we need to store how much we're cheated out of our tick and carry it through
 	// make an intelligent guess at if they're trying to keep moving, tho!
@@ -342,18 +365,17 @@
 		mob.move_delay = old_delay + add_delay
 	else
 		mob.move_delay = world.time + add_delay
-*/
 
 	SMOOTH_GLIDE_SIZE(mob, DELAY_TO_GLIDE_SIZE(add_delay))
 
 	mob.last_move_time = world.time
 
 /mob/proc/SelfMove(turf/T, dir)
+	in_selfmove = TRUE
 	. = Move(T, dir)
+	in_selfmove = FALSE
 	if(.)
 		throwing?.terminate()
-	if(pulling && !ismob(pulling) && pulling.density)
-		setDir(turn(dir, 180))	// face pulling
 
 ///Process_Incorpmove
 ///Called by client/Move()
@@ -497,14 +519,15 @@
 
 // Called when a mob successfully moves.
 // Would've been an /atom/movable proc but it caused issues.
-/mob/Moved(atom/oldloc)
+/mob/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	client?.parallax_holder?.Update()
 	for(var/obj/O in contents)
-		O.on_loc_moved(oldloc)
+		O.on_loc_moved(old_loc)
 	reset_pixel_shifting()
 
 // Received from Moved(), useful for items that need to know that their loc just moved.
+// todo: REMOVE, this is bad for performance.
 /obj/proc/on_loc_moved(atom/oldloc)
 	return
 
@@ -606,3 +629,20 @@
 		return FALSE
 	if(shift_pixel_y > -16)
 		adjust_pixel_shift_y(-1)
+
+//? Movement Intercepts
+
+/mob/proc/request_movement_intercept(datum/requesting)
+	if(movement_intercept)
+		if(requesting == movement_intercept)
+			return TRUE
+		return FALSE
+	movement_intercept = requesting
+	return TRUE
+
+/mob/proc/clear_movement_intercept()
+	movement_intercept = null
+	return TRUE
+
+/datum/proc/intercept_mob_move(mob/moving, dir)
+	return

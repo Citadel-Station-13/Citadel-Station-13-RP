@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /datum/controller/subsystem/job
 	/// All spawnpoints
 	var/static/list/spawnpoints = list()
@@ -148,6 +151,7 @@
 		subsystem_log("get_latejoin_spawnpoint() failed to get a spawnpoint, trying against with harder = TRUE")
 		return get_roundstart_spawnpoint(C, job_path, faction, method, random, TRUE)
 	else
+		. = null
 		CRASH("get_latejoin_spawnpoint() failed to get a spawnpoint.")
 
 /**

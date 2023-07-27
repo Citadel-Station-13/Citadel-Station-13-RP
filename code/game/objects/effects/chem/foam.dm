@@ -23,9 +23,9 @@
 	metal = ismetal
 	playsound(src, 'sound/effects/bubbles2.ogg', 80, 1, -3)
 	if(dries)
-		addtimer(CALLBACK(src, .proc/post_spread), 3 + metal * 3)
-		addtimer(CALLBACK(src, .proc/pre_harden), 12 SECONDS)
-		addtimer(CALLBACK(src, .proc/harden), 15 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(post_spread)), 3 + metal * 3)
+		addtimer(CALLBACK(src, PROC_REF(pre_harden)), 12 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(harden)), 15 SECONDS)
 
 /obj/effect/foam/proc/post_spread()
 	process()
@@ -165,13 +165,13 @@
 /obj/structure/foamedmetal/legacy_ex_act(severity)
 	qdel(src)
 
-/obj/structure/foamedmetal/bullet_act(var/obj/item/projectile/P)
-	if(istype(P, /obj/item/projectile/test))
+/obj/structure/foamedmetal/bullet_act(var/obj/projectile/P)
+	if(istype(P, /obj/projectile/test))
 		return
 	else if(metal == 1 || prob(50))
 		qdel(src)
 
-/obj/structure/foamedmetal/attack_hand(var/mob/user)
+/obj/structure/foamedmetal/attack_hand(mob/user, list/params)
 	if ((MUTATION_HULK in user.mutations) || (prob(75 - metal * 25)))
 		user.visible_message("<span class='warning'>[user] smashes through the foamed metal.</span>", "<span class='notice'>You smash through the metal foam wall.</span>")
 		qdel(src)
@@ -188,7 +188,7 @@
 		qdel(src)
 		return
 
-	if(prob(I.force * 20 - metal * 25))
+	if(prob(I.damage_force * 20 - metal * 25))
 		user.visible_message("<span class='warning'>[user] smashes through the foamed metal.</span>", "<span class='notice'>You smash through the foamed metal with \the [I].</span>")
 		qdel(src)
 	else

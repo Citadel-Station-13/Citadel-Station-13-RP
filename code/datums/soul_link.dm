@@ -125,12 +125,12 @@
 /datum/soul_link/shared_body/owner_died(gibbed, mob/living/owner)
 	if(soul_owner && soul_sharer)
 		if(soul_sharer.mind)
-			soul_sharer.mind.transfer_to(soul_owner)
+			soul_sharer.mind.transfer(soul_owner)
 		soul_sharer.death(gibbed)
 
 /datum/soul_link/shared_body/sharer_died(gibbed, mob/living/sharer)
 	if(soul_owner && soul_sharer && soul_sharer.mind)
-		soul_sharer.mind.transfer_to(soul_owner)
+		soul_sharer.mind.transfer(soul_owner)
 
 
 
@@ -147,8 +147,8 @@
 		for(var/l in souls)
 			var/mob/living/L = l
 			if(L.stat != DEAD && L.mind)
-				L.mind.transfer_to(soul_owner)
-				soul_owner.revive(TRUE, TRUE)
+				L.mind.transfer(soul_owner)
+				soul_owner.revive(full_heal = TRUE)
 				L.death(FALSE)
 
 // Lose your claim to the throne!

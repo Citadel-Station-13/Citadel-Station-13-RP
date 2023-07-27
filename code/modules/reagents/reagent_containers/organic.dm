@@ -52,12 +52,15 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/organic/attack_hand()
+/obj/item/reagent_containers/organic/attack_hand(mob/user, list/params)
 	..()
 	update_icon()
 
 
 /obj/item/reagent_containers/organic/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	..()
 	if(is_open_container())
 		to_chat(usr, "<span class = 'notice'>You crush \the [src] in your hands.</span>")
@@ -95,8 +98,8 @@
 /obj/item/reagent_containers/organic/self_feed_message(var/mob/user)
 	to_chat(user, "<span class='notice'>You swallow a gulp from \the [src].</span>")
 
-/obj/item/reagent_containers/organic/afterattack(var/obj/target, var/mob/user, var/proximity)
-	if(!is_open_container() || !proximity) //Is the container open & are they next to whatever they're clicking?
+/obj/item/reagent_containers/organic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!is_open_container() || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) //Is the container open & are they next to whatever they're clicking?
 		return 1 //If not, do nothing.
 	for(var/type in can_be_placed_into) //Is it something it can be placed into?
 		if(istype(target, type))
@@ -151,7 +154,7 @@
 	name = "waxcomb (honey)"
 	desc = "A glob of freshly produced honey encased in sturdy wax."
 	icon_state = "waxcomb"
-	matter = list("wax" = 100)
+	materials = list("wax" = 100)
 	volume = 30
 	w_class = ITEMSIZE_TINY
 	amount_per_transfer_from_this = 10
@@ -162,7 +165,7 @@
 	name = "waxcomb (jelly)"
 	desc = "A glob of freshly produced jelly encased in sturdy wax."
 	icon_state = "waxcomb"
-	matter = list("wax" = 100)
+	materials = list("wax" = 100)
 	volume = 30
 	w_class = ITEMSIZE_TINY
 	amount_per_transfer_from_this = 10

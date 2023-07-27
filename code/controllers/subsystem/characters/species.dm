@@ -46,11 +46,11 @@
 		if((!(S.species_spawn_flags & (SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_SPECIAL)) && !(S.get_species_id() in blacklisted_icon_ids)) || (S.get_species_id() in whitelisted_icon_ids))
 			custom_species_bases += S.name
 
-	tim_sort(species_lookup, /proc/cmp_auto_compare, TRUE)
-	tim_sort(species_names, /proc/cmp_auto_compare, TRUE)
-	tim_sort(species_lookup, /proc/cmp_auto_compare, TRUE)
-	tim_sort(playable_species, /proc/cmp_auto_compare)
-	tim_sort(custom_species_bases, /proc/cmp_auto_compare)
+	tim_sort(species_lookup, GLOBAL_PROC_REF(cmp_auto_compare), TRUE)
+	tim_sort(species_names, GLOBAL_PROC_REF(cmp_auto_compare), TRUE)
+	tim_sort(species_paths, GLOBAL_PROC_REF(cmp_auto_compare), TRUE)
+	tim_sort(playable_species, GLOBAL_PROC_REF(cmp_auto_compare))
+	tim_sort(custom_species_bases, GLOBAL_PROC_REF(cmp_auto_compare))
 
 /datum/controller/subsystem/characters/proc/resolve_species(id_path_name)
 	RETURN_TYPE(/datum/species)

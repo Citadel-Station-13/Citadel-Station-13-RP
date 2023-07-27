@@ -40,6 +40,7 @@
 	var/obj/temp_chem_holder   // Something to hold reagents during process_reagents()
 	var/labelled
 	var/frozen = 0				//Is the plant frozen? -1 is used to define trays that can't be frozen. 0 is unfrozen and 1 is frozen.
+	var/hostile_soil = 0		//Does the soil make-up allow for weed invasion?
 
 	// Seed details/line data.
 	var/datum/seed/seed = null // The currently planted seed
@@ -154,7 +155,7 @@
 	if(istype(user,/mob/living/carbon/alien/diona))
 		var/mob/living/carbon/alien/diona/nymph = user
 
-		if(nymph.stat == DEAD || nymph.paralysis || nymph.weakened || nymph.stunned || nymph.restrained())
+		if(!CHECK_MOBILITY(nymph, MOBILITY_CAN_USE))
 			return
 
 		if(weedlevel > 0)
@@ -200,22 +201,22 @@
 	check_health()
 	update_icon()
 
-/obj/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/projectile/Proj)
 
 	//Don't act on seeds like dionaea that shouldn't change.
 	if(seed && seed.get_trait(TRAIT_IMMUTABLE) > 0)
 		return
 
 	//Override for somatoray projectiles.
-	if(istype(Proj ,/obj/item/projectile/energy/floramut)&& prob(20))
-		if(istype(Proj, /obj/item/projectile/energy/floramut/gene))
-			var/obj/item/projectile/energy/floramut/gene/G = Proj
+	if(istype(Proj ,/obj/projectile/energy/floramut)&& prob(20))
+		if(istype(Proj, /obj/projectile/energy/floramut/gene))
+			var/obj/projectile/energy/floramut/gene/G = Proj
 			if(seed)
 				seed = seed.diverge_mutate_gene(G.gene, get_turf(loc))	//get_turf just in case it's not in a turf.
 		else
 			mutate(1)
 			return
-	else if(istype(Proj ,/obj/item/projectile/energy/florayield) && prob(20))
+	else if(istype(Proj ,/obj/projectile/energy/florayield) && prob(20))
 		yield_mod = min(10,yield_mod+rand(1,2))
 		return
 
@@ -565,11 +566,11 @@
 		update_icon()
 		return
 
-	else if(O.force && seed)
+	else if(O.damage_force && seed)
 		user.setClickCooldown(user.get_attack_speed(O))
 		user.visible_message("<span class='danger'>\The [seed.display_name] has been attacked by [user] with \the [O]!</span>")
 		if(!dead)
-			health -= O.force
+			health -= O.damage_force
 			check_health()
 
 	return
@@ -580,7 +581,7 @@
 	else if(harvest)
 		harvest(user)
 
-/obj/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user as mob)
+/obj/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user, list/params)
 
 	if(istype(usr,/mob/living/silicon))
 		return
@@ -591,7 +592,7 @@
 	else if(dead)
 		remove_dead(user)
 
-/obj/machinery/portable_atmospherics/hydroponics/examine(mob/user)
+/obj/machinery/portable_atmospherics/hydroponics/examine(mob/user, dist)
 	. = ..()
 	if(seed)
 		. += "<span class='notice'>[seed.display_name] are growing here.</span>"

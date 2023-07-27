@@ -4,7 +4,7 @@
 	icon_state = "bow"
 	item_state = "bow"
 	w_class = ITEMSIZE_LARGE
-	force = 5
+	damage_force = 5
 	load_method = SINGLE_CASING
 	caliber = "arrow"
 	max_shells = 1
@@ -41,7 +41,10 @@
 		return
 	update_icon()
 
-/obj/item/gun/ballistic/bow/attack_self(mob/living/user)
+/obj/item/gun/ballistic/bow/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(loaded.len)
 		src.ready = 1
 		to_chat(user, "<span class='notice'>You draw back the bowstring.</span>")
@@ -51,7 +54,7 @@
 	else
 		return
 
-/obj/item/gun/ballistic/bow/attack_hand(mob/user as mob)
+/obj/item/gun/ballistic/bow/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)
 	else
@@ -61,7 +64,7 @@
 	if (istype(A, /obj/item/ammo_casing/arrow))
 		load_ammo(A, user)
 
-/obj/item/gun/ballistic/bow/afterattack(atom/A, mob/living/user)
+/obj/item/gun/ballistic/bow/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 	src.ready = 0
 	update_icon()
@@ -80,11 +83,11 @@
 	desc = "Some sort of primitive projectile weapon made of bone and sinew. Used to fire arrows."
 	icon_state = "bow_ashen"
 	item_state = "bow_ashen"
-	force = 8
+	damage_force = 8
 
 /obj/item/gun/ballistic/bow/pipe
 	name = "pipe bow"
 	desc = "Some sort of pipe-based projectile weapon made of string and lots of bending. Used to fire arrows."
 	icon_state = "bow_pipe"
 	item_state = "bow_pipe"
-	force = 2
+	damage_force = 2

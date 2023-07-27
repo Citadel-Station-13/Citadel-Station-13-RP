@@ -4,7 +4,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "signmaker"
 	item_state = "electronic"
-	force = 0
+	damage_force = 0
 	w_class = WEIGHT_CLASS_SMALL
 	throw_force = 0
 	throw_speed = 3
@@ -16,9 +16,9 @@
 	var/holosign_type = /obj/structure/holosign/wetsign
 	var/holocreator_busy = FALSE //to prevent placing multiple holo barriers at once
 
-/obj/item/holosign_creator/afterattack(atom/target, mob/user, flag)
+/obj/item/holosign_creator/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
-	if(flag)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		if(!check_allowed_items(target, 1))
 			return
 		var/turf/T = get_turf(target)
@@ -49,6 +49,9 @@
 					to_chat(user, "<span class='notice'>[src] is projecting at max capacity!</span>")
 
 /obj/item/holosign_creator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(signs.len)
 		for(var/H in signs)
 			qdel(H)
@@ -112,6 +115,9 @@
 	var/shock = 0
 
 /obj/item/holosign_creator/cyborg/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/R = user
 

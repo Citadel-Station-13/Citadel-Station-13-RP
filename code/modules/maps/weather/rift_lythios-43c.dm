@@ -9,7 +9,6 @@
 	minimum_temp = 220.14
 	maximum_temp = 241.72
 
-
 /datum/time/lythios43c
 	seconds_in_day = 10 HOURS
 
@@ -18,31 +17,7 @@
 	desc = "A freezing ball of ice,"
 	current_time = new /datum/time/lythios43c()
 	planetary_wall_type = /turf/unsimulated/wall/planetary/lythios43c
-
-
-/* // These need to be defined in your map's define folders
-var/datum/planet/lythios43c/planet_lythios43c = null
-
-/datum/planet/lythios43c
-	expected_z_levels = list(
-						Z_LEVEL_UNDERGROUND_FLOOR,
-						Z_LEVEL_UNDERGROUND_DEEP,
-						Z_LEVEL_UNDERGROUND,
-						Z_LEVEL_SURFACE_LOW,
-						Z_LEVEL_SURFACE_MID,
-						Z_LEVEL_SURFACE_HIGH,
-						Z_LEVEL_WEST_BASE,
-						Z_LEVEL_WEST_DEEP,
-						Z_LEVEL_WEST_CAVERN,
-						Z_LEVEL_WEST_PLAIN
-						)
-*/
-
-
-/datum/planet/lythios43c/New()
-	..()
-	planet_lythios43c = src
-	weather_holder = new /datum/weather_holder/lythios43c(src)
+	weather_holder = /datum/weather_holder/lythios43c
 
 /datum/planet/lythios43c/update_sun()
 	..()
@@ -333,7 +308,7 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 					var/obj/item/melee/umbrella/U = L.get_active_held_item()
 					if(U.open)
 						to_chat(L, "<span class='danger'>You struggle to keep hold of your umbrella!</span>")
-						L.Stun(20)	// This is not nearly as long as it seems
+						L.afflict_stun(20 * 20)	// This is not nearly as long as it seems
 						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)	// Closest sound I've got to "Umbrella in the wind"
 				else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
 					var/obj/item/melee/umbrella/U = L.get_inactive_held_item()

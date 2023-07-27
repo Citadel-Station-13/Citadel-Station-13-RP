@@ -5,7 +5,7 @@
 	icon_state = "flashlight"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	action_button_name = "Toggle Flashlight"
 	light_wedge = LIGHT_WIDE
 
@@ -101,7 +101,7 @@
 	else
 		icon_state = "[initial(icon_state)]"
 
-/obj/item/flashlight/examine(mob/user)
+/obj/item/flashlight/examine(mob/user, dist)
 	. = ..()
 	if(power_use && brightness_level)
 		. += "\The [src] is set to [brightness_level]. "
@@ -153,7 +153,7 @@
 		var/mob/living/carbon/human/H = L	//mob has protective eyewear
 		if(istype(H))
 			for(var/obj/item/clothing/C in list(H.head,H.wear_mask,H.glasses))
-				if(istype(C) && (C.body_parts_covered & EYES))
+				if(istype(C) && (C.body_cover_flags & EYES))
 					to_chat(user, SPAN_WARNING("You're going to need to remove [C.name] first."))
 					return
 
@@ -192,7 +192,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/obj/item/flashlight/attack_hand(mob/user as mob)
+/obj/item/flashlight/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(cell)
 			cell.update_appearance()
@@ -263,11 +263,11 @@
 	name = "maglight"
 	desc = "A very, very heavy duty flashlight."
 	icon_state = "maglight"
-	force = 10
+	damage_force = 10
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list ("smacked", "thwacked", "thunked")
-	matter = list(MAT_STEEL = 200, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 200, MAT_GLASS = 50)
 	hitsound = "swing_hit"
 	light_color = LIGHT_COLOR_FLUORESCENT_FLASHLIGHT
 	light_wedge = LIGHT_NARROW
@@ -287,7 +287,7 @@
 	name = "desk lamp"
 	desc = "A desk lamp with an adjustable mount."
 	icon_state = "lamp"
-	force = 10
+	damage_force = 10
 	brightness_on = 5
 	w_class = ITEMSIZE_LARGE
 	power_use = 0
@@ -353,7 +353,7 @@
 
 /obj/item/flashlight/flare/proc/turn_off()
 	on = FALSE
-	src.force = initial(src.force)
+	src.damage_force = initial(src.damage_force)
 	src.damtype = initial(src.damtype)
 	update_appearance()
 
@@ -370,14 +370,14 @@
 	// All good, turn it on.
 	if(.)
 		user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
-		src.force = on_damage
+		src.damage_force = on_damage
 		src.damtype = "fire"
 		START_PROCESSING(SSobj, src)
 
 /obj/item/flashlight/flare/proc/ignite() //Used for flare launchers.
 	on = !on
 	update_appearance()
-	force = on_damage
+	damage_force = on_damage
 	damtype = "fire"
 	START_PROCESSING(SSobj, src)
 	return TRUE
@@ -463,6 +463,7 @@
 	icon_state = "floor1" //not a slime extract sprite but... something close enough!
 	item_state = "slime"
 	light_color = LIGHT_COLOR_YELLOW
+	light_wedge = LIGHT_OMNI
 	w_class = ITEMSIZE_TINY
 	brightness_on = 6
 	on = TRUE //Bio-luminesence has one setting, on.

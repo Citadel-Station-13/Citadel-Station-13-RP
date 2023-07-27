@@ -1,28 +1,32 @@
 // Does a melee attack.
-/mob/living/simple_mob/proc/attack_target(atom/A)
+/mob/living/simple_mob/proc/attack_target(atom/target)
 	set waitfor = FALSE // For attack animations. Don't want the AI processor to get held up.
+	if(SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, target) & COMPONENT_HOSTILE_NO_ATTACK)
+		return FALSE //but more importantly return before attack_animal called
 
-	if(!A.Adjacent(src))
+	if(!target.Adjacent(src))
 		return FALSE
-	var/turf/their_T = get_turf(A)
+	var/turf/their_T = get_turf(target)
 
-	face_atom(A)
+	face_atom(target)
 
 	if(melee_attack_delay)
 	//	their_T.color = "#FF0000"
-		melee_pre_animation(A)
-		handle_attack_delay(A, melee_attack_delay) // This will sleep this proc for a bit, which is why waitfor is false.
+		melee_pre_animation(target)
+		handle_attack_delay(target, melee_attack_delay) // This will sleep this proc for a bit, which is why waitfor is false.
 
 	// Cooldown testing is done at click code (for players) and interface code (for AI).
 	setClickCooldown(get_attack_speed())
 
-	. = do_attack(A, their_T)
+	var/result = do_attack(target, their_T)
 
 	if(melee_attack_delay)
-		melee_post_animation(A)
+		melee_post_animation(target)
 	//	their_T.color = "#FFFFFF"
 
+	SEND_SIGNAL(src, COMSIG_HOSTILE_POST_ATTACKINGTARGET, target, result)
 
+	return result
 
 // This does the actual attack.
 // This is a seperate proc for the purposes of attack animations.
@@ -119,7 +123,7 @@
 
 	face_atom(A)
 
-	var/obj/item/projectile/P = new projectiletype(src.loc)
+	var/obj/projectile/P = new projectiletype(src.loc)
 	if(!P)
 		return
 

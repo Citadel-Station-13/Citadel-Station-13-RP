@@ -39,6 +39,7 @@ Make sure to add new items to this list if you document new components.
     - [`LabeledList.Item`](#labeledlistitem)
     - [`LabeledList.Divider`](#labeledlistdivider)
     - [`Modal`](#modal)
+    - [`Module`](#module)
     - [`NoticeBox`](#noticebox)
     - [`NumberInput`](#numberinput)
     - [`Popper`](#popper)
@@ -46,6 +47,7 @@ Make sure to add new items to this list if you document new components.
     - [`RoundGauge`](#roundgauge)
     - [`Section`](#section)
     - [`Slider`](#slider)
+    - [`Sprite`](#sprite)
     - [`Stack`](#stack)
     - [`Stack.Item`](#stackitem)
     - [`Table`](#table)
@@ -57,6 +59,7 @@ Make sure to add new items to this list if you document new components.
   - [`tgui/layouts`](#tguilayouts)
     - [`Window`](#window)
     - [`Window.Content`](#windowcontent)
+    - [`Modular`](#modular)
 
 ## General Concepts
 
@@ -216,6 +219,7 @@ Buttons allow users to take actions, and make choices, with a single click.
 - See inherited props: [Box](#box)
 - `fluid: boolean` - Fill all available horizontal space.
 - `icon: string` - Adds an icon to the button.
+- `content: any` - What renders in the button.
 - `color: string` - Button color, as defined in `variables.scss`.
   - There is also a special color `transparent` - makes the button
   transparent and slightly dim when inactive.
@@ -318,6 +322,7 @@ toggle, closed by default.
 **Props:**
 
 - See inherited props: [Box](#box)
+- `captureKeys: boolean` - Should we capture keys to open/close?
 - `children: any` - What is collapsed when closed
 - `title: string` - Text to display on the button for collapsing
 - `color: string` - Color of the button; see [Button](#button)
@@ -716,6 +721,17 @@ Must be a direct child of a layout component (e.g. [Window](#window)).
 
 - See inherited props: [Box](#box)
 
+### `Module`
+
+A TGUI module. Data is pushed via ui_module_data(), and modules have their own
+systems for rendering. Modules are automatically centered within themselves.
+
+**Props:**
+
+- See inherited props: [Box](#box)
+- `id` - the ID of the module, as per from within BYOND
+- `section` - override props for the <Section> that the module renders in.
+
 ### `NoticeBox`
 
 A notice box, which warns you about something very important.
@@ -846,6 +862,10 @@ They should be easy to scan for relevant and actionable information.
 Elements, like text and images, should be placed in them in a way that
 clearly indicates hierarchy.
 
+Known bugs:
+
+- Scrollbars are broken. If you need one, put it on the parent window.
+
 Section can also be titled to clearly define its purpose.
 
 ```jsx
@@ -915,6 +935,18 @@ Default is about 250ms, increase it if you still see flickering.
 the input, or successfully enter a number.
 - `onDrag: (e, value) => void` - An event, which fires about every 500ms
 when you drag the input up and down, on release and on manual editing.
+
+### `Sprite`
+
+A way to render a spritesheet icon.
+
+**Props:**
+
+- See inherited props: [Box](#box)
+- `sheet: string` - name of spritesheet (the asset entry, e.g. "sheetmaterials")
+- `sizeKey: string` - the size key to use, e.g. "32x32" usually
+- `prefix?: string` - the prefix of the sprite, e.g. "stack". sometimes, there's no prefix.
+- `sprite: string` - the name of the sprite in the spritesheet, e.g. "metal"
 
 ### `Stack`
 
@@ -1181,3 +1213,20 @@ Can be scrollable.
 - `fitted: boolean` - If true, removes all padding.
 - `scrollable: boolean` - Shows or hides the scrollbar.
 - `children: any` - Main content of your window.
+
+### `Modular`
+
+Automatically renders as either a centered box, or a full window.
+Used for /datum/tgui_module's, which are interfaces that can act both as standalone and as embedded..
+
+Known bugs:
+
+- Do not use `fill` and `scrollable` at the same time on the Section-specific props, or it will mis-position and become invisible.
+- Scrollbars are broken. If you need one, put it on the parent window.
+
+**Props:**
+
+- `direct: InfernoNode` - Child elements that are rendered directly inside the window
+when in standalone mode, and at the same level as other child elements when in embedded mode.
+- `window: WindowProps` - Props from [Window][#window] to use in standalone mode.
+- `section: SectionProps` - Props from [Section][#section] to use when in embedded mode. Overridden by the <Module>'s `section` entry.

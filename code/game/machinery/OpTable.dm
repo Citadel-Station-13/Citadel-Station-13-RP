@@ -17,10 +17,6 @@
 
 /obj/machinery/optable/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
-
-/obj/machinery/optable/Initialize(mapload)
-	. = ..()
 	for(var/direction in list(NORTH,EAST,SOUTH,WEST))
 		computer = locate(/obj/machinery/computer/operating, get_step(src, direction))
 		if(computer)
@@ -45,7 +41,7 @@
 			if(prob(25))
 				density = 0
 
-/obj/machinery/optable/attack_hand(mob/user)
+/obj/machinery/optable/attack_hand(mob/user, list/params)
 	if(MUTATION_HULK in usr.mutations)
 		visible_message(SPAN_DANGER("\The [usr] destroys \the [src]!"))
 		density = FALSE

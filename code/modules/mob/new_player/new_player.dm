@@ -3,24 +3,28 @@
 	var/spawning = 0			// Referenced when you want to delete the new_player later on in the code.
 	var/totalPlayers = 0		// Player counts for the Lobby tab
 	var/totalPlayersReady = 0
-	var/show_hidden_jobs = 0	// Show jobs that are set to "Never" in preferences
 	var/datum/browser/panel
-	var/age_gate_result
 	universal_speak = 1
 
 	invisibility = 101
 
 	density = 0
 	stat = DEAD
-	canmove = 0
+	mobility_flags = NONE
 
 	anchored = 1	// Don't get pushed around
 
 /mob/new_player/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)	// "yes i know what I'm doing"
-	GLOB.mob_list += src
+	mob_list_register(stat)
 	atom_flags |= ATOM_INITIALIZED
 	return INITIALIZE_HINT_NORMAL
+
+/mob/new_player/mob_list_register(for_stat)
+	GLOB.mob_list += src
+
+/mob/new_player/mob_list_unregister(for_stat)
+	GLOB.mob_list -= src
 
 /mob/new_player/verb/new_player_panel()
 	set src = usr
@@ -28,10 +32,6 @@
 	new_player_panel_proc()
 
 /mob/new_player/proc/new_player_panel_proc()
-	if(age_gate_result == null && client.prefs && !client.is_preference_enabled(/datum/client_preference/debug/age_verified)) // run first time verification
-		verifyage()
-	if(!client)
-		return	// verifyage sleeps what the fuck
 	var/output = "<div align='center'>"
 	output +="<hr>"
 	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Character Setup</A></p>"
@@ -81,74 +81,6 @@
 	panel.open()
 	return
 
-/mob/new_player/proc/age_gate()
-	var/list/dat = list("<center>")
-	dat += "Enter your date of birth here, to confirm that you are over 18.<BR>"
-	dat += "<b>Your date of birth is not saved, only the fact that you are over/under 18 is.</b><BR>"
-	dat += "</center>"
-
-	dat += "<form action='?src=[REF(src)]'>"
-	dat += "<input type='hidden' name='src' value='[REF(src)]'>"
-	dat += "<select name = 'Month'>"
-	var/monthList = list("January" = 1, "February" = 2, "March" = 3, "April" = 4, "May" = 5, "June" = 6, "July" = 7, "August" = 8, "September" = 9, "October" = 10, "November" = 11, "December" = 12)
-	for(var/month in monthList)
-		dat += "<option value = [monthList[month]]>[month]</option>"
-	dat += "</select>"
-	dat += "<select name = 'Year' style = 'float:right'>"
-	var/current_year = text2num(time2text(world.realtime, "YYYY"))
-	var/start_year = 1920
-	for(var/year in start_year to current_year)
-		var/reverse_year = 1920 + (current_year - year)
-		dat += "<option value = [reverse_year]>[reverse_year]</option>"
-	dat += "</select>"
-	dat += "<center><input type='submit' value='Submit information'></center>"
-	dat += "</form>"
-
-	winshow(src, "age_gate", TRUE)
-	var/datum/browser/popup = new(src, "age_gate", "<div align='center'>Age Gate</div>", 400, 250)
-	popup.set_window_options("can_close=0")
-	popup.set_content(dat.Join())
-	popup.open(FALSE)
-	onclose(src, "age_gate")
-
-	while(age_gate_result == null)
-		stoplag(1)
-
-	popup.close()
-
-	return age_gate_result
-
-/mob/new_player/proc/verifyage()
-	UNTIL(client.prefs.initialized)	// fuck this stupid ass broken piece of shit age gate
-	if(client.holder)		// they're an admin
-		client.set_preference(/datum/client_preference/debug/age_verified, 1)
-		return TRUE
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) //make sure they are verified
-		if(!client.prefs)
-			message_admins("Blocked [src] from new player panel because age gate could not access client preferences.")
-			return FALSE
-		else
-			var/hasverified = client.is_preference_enabled(/datum/client_preference/debug/age_verified)
-			if(!hasverified) //they have not completed age gate
-				var/verify = age_gate()
-				if(verify == FALSE)
-					client.add_system_note("Automated-Age-Gate", "Failed automatic age gate process")
-					//ban them and kick them
-					to_chat(src, "You have failed the initial age verification check. \nIf you believe this was in error, you MUST submit to additional verification on the forums at citadel-station.net/forum/")
-					if(client)
-						AddBan(ckey, computer_id, "Failed initial age verification check. Appeal at citadel-station.net/forum/", "SYSTEM", 0, 0)
-						Logout()
-					return FALSE
-				else
-					//they claim to be of age, so allow them to continue and update their flags
-					client.set_preference(/datum/client_preference/debug/age_verified, 1)
-					SScharacters.queue_preferences_save(client.prefs)
-					//log this
-					message_admins("[ckey] has joined through the automated age gate process.")
-					return TRUE
-	return TRUE
-
-
 
 /mob/new_player/statpanel_data(client/C)
 	. = ..()
@@ -175,70 +107,44 @@
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
 
+/mob/new_player/update_mobility()
+	return
+
 /mob/new_player/Topic(href, href_list[])
 	if(src != usr)
 		return 0
 
-	if(!client)
-		return 0
-
-	//don't let people get to this unless they are specifically not verified
-	if(href_list["Month"] && !client.is_preference_enabled(/datum/client_preference/debug/age_verified))
-		var/player_month = text2num(href_list["Month"])
-		var/player_year = text2num(href_list["Year"])
-
-		var/current_time = world.realtime
-		var/current_month = text2num(time2text(current_time, "MM"))
-		var/current_year = text2num(time2text(current_time, "YYYY"))
-
-		var/player_total_months = (player_year * 12) + player_month
-
-		var/current_total_months = (current_year * 12) + current_month
-
-		var/months_in_eighteen_years = 18 * 12
-
-		var/month_difference = current_total_months - player_total_months
-		if(month_difference > months_in_eighteen_years)
-			age_gate_result = TRUE // they're fine
-		else
-			if(month_difference < months_in_eighteen_years)
-				age_gate_result = FALSE
-			else
-				//they could be 17 or 18 depending on the /day/ they were born in
-				var/current_day = text2num(time2text(current_time, "DD"))
-				var/days_in_months = list(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
-				if((player_year % 4) == 0) // leap year so february actually has 29 days
-					days_in_months[2] = 29
-				var/total_days_in_player_month = days_in_months[player_month]
-				var/list/days = list()
-				for(var/number in 1 to total_days_in_player_month)
-					days += number
-				var/player_day = input(src, "What day of [player_month] were you born in.") as anything in days
-				if(player_day <= current_day)
-					//their birthday has passed
-					age_gate_result = TRUE
-				else
-					//it has NOT been their 18th birthday yet
-					age_gate_result = FALSE
-
-	if(!verifyage())
-		return
-
-	if(!client)	return 0
-
 	if(href_list["show_preferences"])
+		if(!client.reject_age_unverified())
+			return
+		if(!client.reject_on_initialization_block())
+			return
 		client.prefs.ShowChoices(src)
 		return 1
 
 	if(href_list["ready"])
+		if(!client.reject_age_unverified())
+			return
+		if(!client.reject_on_initialization_block())
+			return
 		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)	// Make sure we don't ready up after the round has started
-			var/list/warnings = list()
-			client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, warnings = warnings)
-			if(length(warnings))
-				to_chat(src, "<h3><center>--- Character Setup Warnings---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
-				if(tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to ready up? Check the chat panel for details.", "Spawn Checks", list("Yes", "No")) != "Yes")
+			var/want_to_be_ready = text2num(href_list["ready"])
+			if(want_to_be_ready)
+				var/list/errors = list()
+				var/list/warnings = list()
+				var/failing = FALSE
+				if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, errors = errors, warnings = warnings))
+					to_chat(src, "<h3><center>--- Character Setup Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
+					failing = TRUE
+				if(length(warnings))
+					to_chat(src, "<h3><center>--- Character Setup Warnings---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
+				if(failing)
 					return
-			ready = text2num(href_list["ready"])
+				else if(length(warnings))
+					if(tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to join the game?", "Spawn Checks", list("Yes", "No")) != "Yes")
+						return
+
+			ready = want_to_be_ready
 		else
 			ready = 0
 
@@ -248,7 +154,12 @@
 		new_player_panel_proc()
 
 	if(href_list["observe"])
-		if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
+		// don't lose out if we join fast
+		SSplaytime.queue_playtimes(client)
+		if(!client.reject_age_unverified())
+			return
+		if(!client.reject_on_initialization_block())
+			return
 		var/alert_time = SSticker?.current_state <= GAME_STATE_SETTING_UP ? 1 : round(config_legacy.respawn_time/10/60)
 
 		if(alert(src,"Are you sure you wish to observe? You will have to wait up to [alert_time] minute\s before being able to spawn into the game!","Player Setup","Yes","No") == "Yes")
@@ -290,6 +201,10 @@
 			return 1
 
 	if(href_list["late_join"])
+		if(!client.reject_age_unverified())
+			return
+		if(!client.reject_on_initialization_block())
+			return
 
 		if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
@@ -311,9 +226,15 @@
 		LateChoices()
 
 	if(href_list["manifest"])
+		if(!client.reject_age_unverified())
+			return
+
 		ViewManifest()
 
 	if(href_list["privacy_poll"])
+		if(!client.reject_age_unverified())
+			return
+
 		if(!SSdbcore.Connect())
 			return
 		var/voted = 0
@@ -423,10 +344,6 @@
 		handle_server_news()
 		return
 
-	if(href_list["hidden_jobs"])
-		show_hidden_jobs = !show_hidden_jobs
-		LateChoices()
-
 /mob/new_player/proc/handle_server_news()
 	if(!client)
 		return
@@ -465,7 +382,8 @@
 	return timer - world.time
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
+	// don't lose out if we join fast
+	SSplaytime.queue_playtimes(client)
 	if (src != usr)
 		return 0
 	if(SSticker.current_state != GAME_STATE_PLAYING)
@@ -473,6 +391,10 @@
 		return 0
 	if(!config_legacy.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
+		return 0
+	if(client.persistent.ligma)
+		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
+		log_shadowban("[key_name(src)] latejoin as [rank] blocked.")
 		return 0
 	var/datum/role/job/J = SSjob.job_by_title(rank)
 	var/reason
@@ -483,11 +405,15 @@
 		return FALSE
 	var/list/errors = list()
 	var/list/warnings = list()
-	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_LATEJOIN, errors, warnings))
-		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
-		return FALSE
+	var/failing = FALSE
+	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_LATEJOIN, errors = errors, warnings = warnings))
+		to_chat(src, "<h3><center>--- Character Setup Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
+		failing = TRUE
 	if(length(warnings))
 		to_chat(src, "<h3><center>--- Character Setup Warnings---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(warnings, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>")
+	if(failing)
+		return FALSE
+	else if(length(warnings))
 		if(tgui_alert(src, "You do not seem to have your preferences set properly. Are you sure you wish to join the game?", "Spawn Checks", list("Yes", "No")) != "Yes")
 			return
 
@@ -551,7 +477,7 @@
 
 		//Grab some data from the character prefs for use in random news procs.
 
-		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = character.mind.name, job_name = (character.mind.role_alt_title || rank)))
+		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = character.mind.name, job_name = (GetAssignment(character) || rank)))
 
 	qdel(src)
 
@@ -564,14 +490,14 @@
 
 
 /mob/new_player/proc/create_character(var/turf/T)
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified))
-		return FALSE
+	// don't lose out if we join fast
+	SSplaytime.queue_playtimes(client)
 	if(!spawn_checks_vr())
 		return FALSE
 	var/list/errors = list()
 	// warnings ignored for now.
 	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, errors))
-		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
+		to_chat(src, SPAN_WARNING("<h3><center>--- Character Setup Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
 		return FALSE
 	spawning = 1
 	close_spawn_windows()
@@ -614,7 +540,7 @@
 		//mind.traits = client.prefs.traits.Copy()	// Conflict
 		//! Preferences shim: transfer stuff over
 		client.prefs.imprint_mind(mind)
-		mind.transfer_to(new_character)				// Won't transfer key since the mind is not active
+		mind.transfer(new_character)				// Won't transfer key since the mind is not active
 
 	new_character.name = real_name
 	new_character.dna.ready_dna(new_character)
@@ -748,7 +674,3 @@
 		spawn()
 			alert(src,"There were problems with spawning your character. Check your message log for details.","Error","OK")
 	return pass
-
-/mob/new_player/make_perspective()
-	. = ..()
-	self_perspective.AddScreen(GLOB.lobby_image)

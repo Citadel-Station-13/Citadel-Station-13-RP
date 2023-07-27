@@ -16,14 +16,14 @@
 	if(active)
 		edge = 1
 		sharp = 1
-		..() //Updates force.
-		throw_force = max(3,force-3)
+		..() //Updates damage_force.
+		throw_force = max(3,damage_force-3)
 		hitsound = 'sound/weapons/bladeslice.ogg'
 		icon_state += "_open"
 		w_class = ITEMSIZE_NORMAL
 		attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	else
-		force = 3
+		damage_force = 3
 		edge = 0
 		sharp = 0
 		hitsound = initial(hitsound)
@@ -56,6 +56,9 @@
 	thrown_force_divisor = 0.2 // 4 when thrown with weight 20 (steel)
 
 /obj/item/material/butterfly/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = !active
 	if(active)
 		to_chat(user, "<span class='notice'>You flip out \the [src].</span>")
@@ -72,11 +75,11 @@
 	name = "kitchen knife"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "knife"
-	desc = "A general purpose Chef's Knife made by SpaceCook Incorporated. Guaranteed to stay sharp for years to come."
+	desc = "A general purpose chef's knife. Glithari Exports filet knives, Centauri bread knives, all pale in comparison to NanoTrasen's very own Cookware line of cheap, affordable chef's knives."
 	sharp = 1
 	edge = 1
 	force_divisor = 0.15 // 9 when wielded with hardness 60 (steel)
-	matter = list(MAT_STEEL = 12000)
+	materials = list(MAT_STEEL = 12000)
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -90,7 +93,7 @@
 // These no longer inherit from hatchets.
 /obj/item/material/knife/tacknife
 	name = "tactical knife"
-	desc = "You'd be killing loads of people if this was Medal of Valor: Heroes of Space."
+	desc = "A knife with a sturdy steel blade and a matte-black handle. The maker's mark is worn out; you can faintly make out an 'S'."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "tacknife"
 	item_state = "knife"
@@ -100,7 +103,7 @@
 
 /obj/item/material/knife/tacknife/combatknife
 	name = "combat knife"
-	desc = "If only you had a boot to put it in."
+	desc = "A reliable-looking knife. The blade's thin enough to slide into your boot, or between somebody's ribs."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "buckknife"
 	item_state = "knife"
@@ -137,7 +140,7 @@
 
 /obj/item/material/knife/hook
 	name = "meat hook"
-	desc = "A sharp, metal hook what sticks into things."
+	desc = "Used for stringing up butchered animals, or a surprise stabbing implemant."
 	icon_state = "hook_knife"
 
 /obj/item/material/knife/ritual
@@ -150,7 +153,7 @@
 /obj/item/material/knife/butch
 	name = "butcher's cleaver"
 	icon_state = "butch"
-	desc = "A huge thing used for chopping and chopping up meat. This includes clowns and clown-by-products."
+	desc = "Another fine product from NanoTrasen's Cookware line. The heavy head and grooved grip makes chopping meat a breeze."
 	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -163,9 +166,10 @@
 	can_cleave = TRUE //Now hatchets inherit from the machete, and thus knives. Tables turned.
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	default_material = "plasteel"
+
 /obj/item/material/knife/machete/armblade
 	name = "arm-mounted blade"
-	desc = "A long, machete-like blade, mounted to your arm. The size and location of it lends itself to parrying blows in melee."
+	desc = "A long, machete-like blade, mounted to your arm. Courtesy of Hephaestus, this machete is ideal for parrying blows."
 	icon_state = "armblade"
 	item_state = "armblade"
 	force_divisor = 0.5 // long and arm-mounted but you gotta use a suit for it
@@ -180,11 +184,11 @@
 		return TRUE
 	return FALSE
 
-/obj/item/material/knife/machete/armblade/rig
+/obj/item/material/knife/machete/armblade/hardsuit
 	default_material = MAT_STEEL
-	var/obj/item/rig_module/armblade/storing_module
+	var/obj/item/hardsuit_module/armblade/storing_module
 
-/obj/item/material/knife/machete/armblade/rig/dropped(mob/user, flags, atom/newLoc)
+/obj/item/material/knife/machete/armblade/hardsuit/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(storing_module)
 		src.forceMove(storing_module)
@@ -223,7 +227,7 @@
 //The Return of the Data Knife
 /obj/item/material/knife/tacknife/dataknife
 	name = "data knife"
-	desc = "A special operations close combat weapon. Its razor sharp blade is inlaid with complex circuitry capable of hacking a variety of electronics."
+	desc = "Oddly enough, a Ward-Takahashi product. This sleek combat knife's blade is inlaid with complex circuitry, capable of hacking electronics. It also sports a GPS system in the pommel, ensuring you'll never be lost."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "dataknife"
 	item_state = "knife"

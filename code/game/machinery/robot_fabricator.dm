@@ -22,7 +22,7 @@
 					if(!M.get_amount())
 						return
 					while(metal_amount < 150000 && M.amount)
-						metal_amount += O.matter[MAT_STEEL] /*O:height * O:width * O:length * 100000.0*/
+						metal_amount += O.materials[MAT_STEEL] /*O:height * O:width * O:length * 100000.0*/
 						M.use(1)
 						count++
 
@@ -32,7 +32,7 @@
 		else
 			to_chat(user, "The robot part maker is full. Please remove metal from the robot part maker in order to insert more.")
 
-/obj/machinery/robotic_fabricator/attack_hand(user as mob)
+/obj/machinery/robotic_fabricator/attack_hand(mob/user, list/params)
 	var/dat
 	if(..())
 		return

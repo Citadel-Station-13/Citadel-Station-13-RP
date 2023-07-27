@@ -29,7 +29,7 @@ export const HoloPay = (_, context) => {
   };
 
   return (
-    <Window height="300" width="250" title="Holo Pay">
+    <Window height={300} width={250} title="Holo Pay">
       <Window.Content>
         {!owner ? (
           <NoticeBox>Error! Swipe an ID first.</NoticeBox>

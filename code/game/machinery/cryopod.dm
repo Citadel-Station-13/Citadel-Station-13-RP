@@ -15,7 +15,9 @@
 	icon_state = "cellconsole"
 	circuit = /obj/item/circuitboard/cryopodcontrol
 	density = FALSE
-	interact_offline = TRUE
+	climb_allowed = FALSE
+	depth_projected = FALSE
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 	var/mode = null
 
 	//Used for logging people entering cryosleep and important items they are carrying.
@@ -27,7 +29,7 @@
 	var/storage_name = "Cryogenic Oversight Control"
 	var/allow_items = TRUE
 
-	req_one_access = list(access_heads)
+	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 
 /obj/machinery/computer/cryopod/update_icon()
 	..()
@@ -72,6 +74,24 @@
 
 	storage_type = "visitors"
 	storage_name = "Travel Oversight Control"
+	allow_items = TRUE
+
+/obj/machinery/computer/cryopod/psych_ward
+	name = "psych ward oversight console"
+	desc = "An interface between patients and the cryo pod oversight systems tasked with keeping track of all patients who enter deep storage."
+	circuit = "/obj/item/circuitboard/robotstoragecontrol"
+
+	storage_type = "patients"
+	storage_name = "Patient Storage Control"
+	allow_items = TRUE
+
+/obj/machinery/computer/cryopod/ashlander
+	name = "protective warrens token"
+	desc = "A hand carved fetish meant to be hung near entrances to the Warrens, to ward off evil spirits."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "cryocomputer"
+	storage_type = "Scori"
+	storage_name = "Surt-nar-Cthardamz"
 	allow_items = TRUE
 
 /obj/machinery/computer/cryopod/attack_ai()
@@ -299,7 +319,7 @@
 /obj/machinery/cryopod/Destroy()
 	if(occupant)
 		occupant.forceMove(loc)
-		occupant.resting = 1
+		occupant.update_perspective()
 	return ..()
 
 /obj/machinery/cryopod/Initialize(mapload)
@@ -496,7 +516,7 @@
 	if(!silent)
 		//Make an announcement and log the person entering storage.
 		control_computer.frozen_crew += "[to_despawn.real_name], [to_despawn.mind.role_alt_title] - [stationtime2text()]"
-		announce.autosay("[to_despawn.real_name], [to_despawn.mind.role_alt_title], [on_store_message]", "[on_store_name]", announce_channel, GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
+		announce.autosay("[to_despawn.real_name], [to_despawn.mind.role_alt_title], [on_store_message]", "[on_store_name]", announce_channel, (LEGACY_MAP_DATUM).get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
 		//visible_message(SPAN_NOTICE("\The [initial(name)] hums and hisses as it moves [to_despawn.real_name] into storage."), 3)
 		visible_message(SPAN_NOTICE("\The [initial(name)] [on_store_visible_message_1] [to_despawn.real_name] [on_store_visible_message_2]."), 3)
 	control_computer._admin_logs += "[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) at [stationtime2text()]"
@@ -719,7 +739,7 @@
 	if(occupant)
 		var/image/I = image(icon, src, "[base_icon_state]_active_overlay")
 		I.plane = ABOVE_LIGHTING_PLANE
-		I.layer = ABOVE_LIGHTING_LAYER
+		I.layer = ABOVE_LIGHTING_LAYER_MAIN
 		add_overlay(I)
 		set_light(0.4, 1.2, 4, 10)
 	else
@@ -727,7 +747,7 @@
 		if(operable())
 			var/image/I = image(icon, src, "[base_icon_state]_idle_overlay")
 			I.plane = ABOVE_LIGHTING_PLANE
-			I.layer = ABOVE_LIGHTING_LAYER
+			I.layer = ABOVE_LIGHTING_LAYER_MAIN
 			add_overlay(I)
 
 /obj/machinery/computer/cryopod/gateway

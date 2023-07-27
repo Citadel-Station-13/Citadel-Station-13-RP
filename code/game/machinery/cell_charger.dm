@@ -16,10 +16,6 @@
 	var/obj/item/cell/charging = null
 	circuit = /obj/item/circuitboard/cell_charger
 
-/obj/machinery/cell_charger/Initialize(mapload, newdir)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/cell_charger/update_icon()
 	icon_state = "ccharger[charging ? 1 : 0]"
 
@@ -37,7 +33,7 @@
 	else
 		cut_overlays()
 
-/obj/machinery/cell_charger/examine(mob/user)
+/obj/machinery/cell_charger/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("[charging ? "[charging]" : "Nothing"] is in [src].")
 	if(charging)
@@ -85,7 +81,7 @@
 	else if(default_part_replacement(user, W))
 		return
 
-/obj/machinery/cell_charger/attack_hand(mob/user)
+/obj/machinery/cell_charger/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 
 	if(charging)
@@ -147,11 +143,14 @@
 		)
 	item_state = "syringe_kit"
 	w_class = ITEMSIZE_NORMAL
-	matter = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
 
 /obj/item/cell_charger_kit/attack_self(mob/user)
-		to_chat(user, SPAN_NOTICE("You assemble and deploy the cell charger in place."))
-		playsound(user, 'sound/machines/click.ogg', 50, TRUE)
-		var/obj/machinery/cell_charger/C = new(user.loc)
-		C.add_fingerprint(user)
-		qdel(src)
+	. = ..()
+	if(.)
+		return
+	to_chat(user, SPAN_NOTICE("You assemble and deploy the cell charger in place."))
+	playsound(user, 'sound/machines/click.ogg', 50, TRUE)
+	var/obj/machinery/cell_charger/C = new(user.loc)
+	C.add_fingerprint(user)
+	qdel(src)

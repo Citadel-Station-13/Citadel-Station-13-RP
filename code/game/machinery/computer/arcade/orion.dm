@@ -500,13 +500,16 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 	w_class = ITEMSIZE_SMALL
 	var/active = FALSE //if the ship is on
 
-/obj/item/orion_ship/examine(mob/user)
+/obj/item/orion_ship/examine(mob/user, dist)
 	if(!active)
 		. += SPAN_NOTICE("There's a little switch on the bottom. It's flipped down.")
 	else
 		. += SPAN_NOTICE("There's a little switch on the bottom. It's flipped up.")
 
 /obj/item/orion_ship/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(active)
 		return
 

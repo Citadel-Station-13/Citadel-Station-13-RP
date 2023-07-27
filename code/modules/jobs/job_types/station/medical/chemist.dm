@@ -10,31 +10,40 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/chemist
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
-	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
+	additional_access = list(
+		ACCESS_MEDICAL_MORGUE,
+		ACCESS_MEDICAL_SURGERY,
+		ACCESS_MEDICAL_VIROLOGY,
+		ACCESS_SCIENCE_GENETICS,
+	)
+	minimal_access = list(
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_MEDICAL_EQUIPMENT,
+		ACCESS_MEDICAL_CHEMISTRY,
+	)
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/chemist
 	desc = "A Chemist produces and maintains a stock of basic to advanced chemicals for medical and occasionally research use. \
 						They are likely to know the use and dangers of many lab-produced chemicals."
 	alt_titles = list(
-		"Pharmacist" = /datum/prototype/alt_title/pharmacist,
-		"Pharmacologist" = /datum/prototype/alt_title/pharmacologist,
-		"Biochemist" = /datum/prototype/alt_title/biochemist
+		"Pharmacist" = /datum/prototype/struct/alt_title/pharmacist,
+		"Pharmacologist" = /datum/prototype/struct/alt_title/pharmacologist,
+		"Biochemist" = /datum/prototype/struct/alt_title/biochemist
 		)
 
-/datum/prototype/alt_title/biochemist
+/datum/prototype/struct/alt_title/biochemist
 	title = "Biochemist"
 	background_allow = list(
 		/datum/lore/character_background/faction/onkhera_necropolis
 	)
 	background_enforce = TRUE
 
-/datum/prototype/alt_title/pharmacist
+/datum/prototype/struct/alt_title/pharmacist
 	title = "Pharmacist"
 	title_blurb = "A Pharmacist focuses on the chemical needs of the Medical Department, and often offers to fill crew prescriptions at their discretion."
 
-/datum/prototype/alt_title/pharmacologist
+/datum/prototype/struct/alt_title/pharmacologist
 	title = "Pharmacologist"
 	title_blurb = "A Pharmacologist focuses on the chemical needs of the Medical Department, primarily specializing in producing more advanced forms of medicine."
 

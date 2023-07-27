@@ -57,3 +57,4 @@
 	// these two are moved up for now
 	var/extra_overlay // Icon state of an additional overlay to blend in.
 	var/extra_overlay2
+	var/can_be_hidden = TRUE

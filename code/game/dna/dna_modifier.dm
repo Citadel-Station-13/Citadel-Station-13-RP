@@ -49,17 +49,13 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 	active_power_usage = 300
-	interact_offline = TRUE
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 	circuit = /obj/item/circuitboard/clonescanner
 
 	var/locked = FALSE
 	var/opened = FALSE
 	var/mob/living/carbon/occupant = null
 	var/obj/item/reagent_containers/glass/beaker = null
-
-/obj/machinery/dna_scannernew/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
 
 /obj/machinery/dna_scannernew/relaymove(mob/user)
 	if (user.stat)
@@ -293,7 +289,7 @@
 /obj/machinery/computer/scan_consolenew/LateInitialize()
 	. = ..()
 	scan_for_scanner()
-	addtimer(CALLBACK(src, .proc/recharge_injector), 25 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(recharge_injector)), 25 SECONDS)
 
 /obj/machinery/computer/scan_consolenew/proc/recharge_injector()
 	injector_ready = TRUE
@@ -335,7 +331,7 @@
 	src.add_hiddenprint(user)
 	nano_ui_interact(user)
 
-/obj/machinery/computer/scan_consolenew/attack_hand(mob/user)
+/obj/machinery/computer/scan_consolenew/attack_hand(mob/user, list/params)
 	if(!..())
 		nano_ui_interact(user)
 
@@ -602,7 +598,7 @@
 			inject_amount = 0
 		if (inject_amount > 50)
 			inject_amount = 50
-		connected.beaker.reagents.trans_to_mob(connected.occupant, inject_amount, CHEM_BLOOD)
+		connected.beaker.reagents.trans_to_mob(connected.occupant, inject_amount, CHEM_INJECT)
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
 	////////////////////////////////////////////////////////

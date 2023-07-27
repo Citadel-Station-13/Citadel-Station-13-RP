@@ -3,7 +3,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "jaws"
 	desc = "The jaws of the law."
-	force = 10
+	damage_force = 10
 	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
@@ -14,7 +14,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "smalljaws"
 	desc = "The jaws of a small dog."
-	force = 5
+	damage_force = 5
 	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
@@ -22,6 +22,9 @@
 	var/emagged = 0
 
 /obj/item/dogborg/jaws/small/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/silicon/robot/R = user
 	if(R.emagged || R.emag_items)
 		emagged = !emagged
@@ -30,7 +33,7 @@
 			icon = 'icons/mob/dogborg_vr.dmi'
 			icon_state = "jaws"
 			desc = "The jaws of the law."
-			force = 10
+			damage_force = 10
 			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
@@ -40,7 +43,7 @@
 			icon = 'icons/mob/dogborg_vr.dmi'
 			icon_state = "smalljaws"
 			desc = "The jaws of a small dog."
-			force = 5
+			damage_force = 5
 			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
@@ -53,13 +56,16 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
-	force = 0
+	damage_force = 0
 	item_flags = ITEM_NOBLUDGEON
 	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = ITEMSIZE_TINY
 
 /obj/item/dogborg/boop_module/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (!( istype(user.loc, /turf) ))
 		return
 
@@ -81,8 +87,8 @@
 			to_chat(user, "<span class='notice'>[GLOB.meta_gas_names[g]]: [round((environment.gas[g] / total_moles) * 100)]%</span>")
 		to_chat(user, "<span class='notice'>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</span>")
 
-/obj/item/dogborg/boop_module/afterattack(atom/target, mob/user, proximity)
-	if(!proximity)
+/obj/item/dogborg/boop_module/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if (user.stat)
 		return
@@ -187,6 +193,9 @@
 		. += "<span class='notice'>[src] is dry.</span>"
 
 /obj/item/dogborg/tongue/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/silicon/robot/R = user
 	if(R.emagged || R.emag_items)
 		emagged = !emagged
@@ -202,8 +211,8 @@
 			icon_state = "synthtongue"
 		update_icon()
 
-/obj/item/dogborg/tongue/afterattack(atom/target, mob/user, proximity)
-	if(!proximity)
+/obj/item/dogborg/tongue/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
@@ -259,8 +268,8 @@
 			var/mob/living/L = target
 			if(R.cell.charge <= 666)
 				return
-			L.Stun(1)
-			L.Weaken(1)
+			L.afflict_stun(20 * 1)
+			L.afflict_paralyze(20 * 1)
 			L.apply_effect(STUTTER, 1)
 			L.visible_message("<span class='danger'>[user] has shocked [L] with its tongue!</span>", \
 								"<span class='userdanger'>[user] has shocked you with its tongue! You can feel the betrayal.</span>")
@@ -272,7 +281,7 @@
 			water.use_charge(5)
 			var/mob/living/carbon/human/H = target
 			if(H.species.lightweight == 1)
-				H.Weaken(3)
+				H.afflict_paralyze(20 * 3)
 	else
 		user.visible_message("[user] begins to lick [target] clean...", "<span class='notice'>You begin to lick [target] clean...</span>")
 		if(do_after(user, 50, target = target))
@@ -295,6 +304,9 @@
 	var/enabled = FALSE
 
 /obj/item/pupscrubber/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/silicon/robot/R = user
 	if(!enabled)
 		R.scrubbing = TRUE
@@ -311,7 +323,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "projgun"
 	fire_sound = 'sound/weapons/eLuger.ogg'
-	projectile_type = /obj/item/projectile/beam/disable
+	projectile_type = /obj/projectile/beam/disable
 	charge_cost = 240 //Normal cost of a taser. It used to be 1000, but after some testing it was found that it would sap a borg's battery to quick
 	recharge_time = 10 //Takes ten ticks to recharge a shot, so don't waste them all!
 	//cell_type = null //Same cell as a taser until edits are made.
@@ -321,7 +333,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "swordtail"
 	desc = "A glowing pink dagger normally attached to the end of a cyborg's tail. It appears to be extremely sharp."
-	force = 20 //Takes 5 hits to 100-0
+	damage_force = 20 //Takes 5 hits to 100-0
 	sharp = 1
 	edge = 1
 	throw_force = 0 //This shouldn't be thrown in the first place.
@@ -337,7 +349,10 @@
 	var/cooldown = 0
 	var/datum/matter_synth/glass = null
 
-/obj/item/lightreplacer/dogborg/attack_self(mob/user)//Recharger refill is so last season. Now we recycle without magic!
+/obj/item/lightreplacer/dogborg/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return//Recharger refill is so last season. Now we recycle without magic!
 	if(uses >= max_uses)
 		to_chat(user, "<span class='warning'>[src.name] is full.</span>")
 		return
@@ -363,11 +378,14 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
-	force = 0
+	damage_force = 0
 	item_flags = ITEM_NOBLUDGEON
 	throw_force = 0
 
 /obj/item/dogborg/pounce/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/silicon/robot/R = user
 	R.leap()
 
@@ -404,7 +422,7 @@
 		return
 
 	last_special = world.time + 10
-	status_flags |= LEAPING
+	status_flags |= STATUS_LEAPING
 	pixel_y = pixel_y + 10
 
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
@@ -415,7 +433,7 @@
 
 	sleep(5)
 
-	if(status_flags & LEAPING) status_flags &= ~LEAPING
+	if(status_flags & STATUS_LEAPING) status_flags &= ~STATUS_LEAPING
 
 	if(!src.Adjacent(T))
 		to_chat(src, "<span class='warning'>You miss!</span>")
@@ -424,7 +442,7 @@
 	if(ishuman(T))
 		var/mob/living/carbon/human/H = T
 		if(H.species.lightweight == 1)
-			H.Weaken(3)
+			H.afflict_paralyze(20 * 3)
 			return
 	var/armor_block = run_armor_check(T, "melee")
 	var/armor_soak = get_armor_soak(T, "melee")
@@ -475,6 +493,8 @@
 	else
 		to_chat(usr, "You must target the torso.")
 
-/obj/item/dogborg/mirrortool/afterattack(var/obj/machinery/computer/transhuman/resleeving/target, mob/user)
-	target.active_mr = imp.stored_mind
-	. = ..()
+/obj/item/dogborg/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	var/obj/machinery/computer/transhuman/resleeving/comp = target
+	if(!istype(comp))
+		return
+	comp.active_mr = imp.stored_mind

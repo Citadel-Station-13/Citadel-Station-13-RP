@@ -8,15 +8,26 @@
 		if(MOVE_INTENT_WALK)
 			. += config_legacy.walk_speed
 
+// todo: all this depth staged stuff is stupid and it should all be on /turf and cached someday
+//       this is however, faster, so that'll be a very long 'someday'.
+
 /mob/living/Move(atom/newloc, direct, glide_size_override)
+	depth_staged = 0
 	if(buckled && buckled.loc != newloc)
 		return FALSE
-	return ..()
+	. = ..()
+	depth_staged = null
 
-/mob/living/Moved()
+/mob/living/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	if(s_active && !CheapReachability(s_active))
 		s_active.close(src)
+	if(forced && isnull(depth_staged) && isturf(loc))
+		var/turf/T = loc
+		depth_staged = T.depth_level()
+	if(!isnull(depth_staged))
+		change_depth(depth_staged)
+		depth_staged = null
 
 /mob/living/forceMove(atom/destination)
 	if(buckled && (buckled.loc != destination))
@@ -26,13 +37,12 @@
 ///Checks mobility move as well as parent checks
 /mob/living/canface()
 /*
-	if(!(mobility_flags & MOBILITY_MOVE))
+	if(!(mobility_flags & MOBILITY_CAN_MOVE))
 		return FALSE
 */
 	if(stat != CONSCIOUS)
 		return FALSE
 	return ..()
-
 
 /mob/living/CanAllowThrough(atom/movable/mover, turf/target)
 	if(ismob(mover))
@@ -43,6 +53,23 @@
 	// can't throw blob stuff through blob stuff
 	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
 		return TRUE
+	return ..()
+
+/mob/living/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	. = ..()
+	if(isobj(blocker))
+		var/obj/O = blocker
+		if(O.depth_projected)
+			// FINE ILL USE UNLINT INSTEAD OF REMOVE PURITY
+			UNLINT(depth_staged = max(depth_staged, O.depth_level))
+		if(!(O.obj_flags & OBJ_IGNORE_MOB_DEPTH) && O.depth_level <= depth_current)
+			return TRUE
+
+/mob/living/can_cross_under(atom/movable/mover)
+	if(isliving(mover))
+		var/mob/living/L = mover
+		if(IS_PRONE(L) && IS_STANDING(src))
+			return FALSE
 	return ..()
 
 //Called when something steps onto us. This allows for mulebots and vehicles to run things over. <3
@@ -78,6 +105,8 @@
 		return FALSE
 	return TRUE
 
+//? Bumping / Crawling
+
 /mob/living/Bump(atom/A)
 	var/skip_atom_bump_handling
 	if(throwing)
@@ -88,21 +117,21 @@
 
 /mob/living/proc/_handle_atom_bumping(atom/A)
 	set waitfor = FALSE
-	if(_pushing_bumped_atom)
+	if(pushing_bumped_atom)
 		return
 	if(buckled)		// nope!
 		return
-	_pushing_bumped_atom = TRUE
+	pushing_bumped_atom = TRUE
 	if(isliving(A) && handle_living_bump(A))
-		_pushing_bumped_atom = FALSE
+		pushing_bumped_atom = FALSE
 		return
 	if(isobj(A) && handle_obj_bump(A))
-		_pushing_bumped_atom = FALSE
+		pushing_bumped_atom = FALSE
 		return
 	if(ismovable(A) && handle_movable_bump(A))
-		_pushing_bumped_atom = FALSE
+		pushing_bumped_atom = FALSE
 		return
-	_pushing_bumped_atom = FALSE
+	pushing_bumped_atom = FALSE
 
 /**
  * handles mob bumping/fire spread/pushing/etc
@@ -133,33 +162,10 @@
 				to_chat(src, SPAN_WARNING("[L] is restraining [M], you cannot push past."))
 			return TRUE
 
-	// todo: crawling
-	//CIT CHANGES START HERE - makes it so resting stops you from moving through standing folks or over prone bodies without a short delay
-	/*
-		if(!CHECK_MOBILITY(src, MOBILITY_STAND))
-			var/origtargetloc = L.loc
-			if(!pulledby)
-				if(combat_flags & COMBAT_FLAG_ATTEMPTING_CRAWL)
-					return TRUE
-				if(IS_STAMCRIT(src))
-					to_chat(src, "<span class='warning'>You're too exhausted to crawl [(CHECK_MOBILITY(L, MOBILITY_STAND)) ? "under": "over"] [L].</span>")
-					return TRUE
-				combat_flags |= COMBAT_FLAG_ATTEMPTING_CRAWL
-				visible_message("<span class='notice'>[src] is attempting to crawl [(CHECK_MOBILITY(L, MOBILITY_STAND)) ? "under" : "over"] [L].</span>",
-					"<span class='notice'>You are now attempting to crawl [(CHECK_MOBILITY(L, MOBILITY_STAND)) ? "under": "over"] [L].</span>",
-					target = L, target_message = "<span class='notice'>[src] is attempting to crawl [(CHECK_MOBILITY(L, MOBILITY_STAND)) ? "under" : "over"] you.</span>")
-				if(!do_after(src, CRAWLUNDER_DELAY, target = src) || CHECK_MOBILITY(src, MOBILITY_STAND))
-					combat_flags &= ~(COMBAT_FLAG_ATTEMPTING_CRAWL)
-					return TRUE
-			var/src_ATOM_PASS_mob = (pass_flags & ATOM_PASS_MOB)
-			pass_flags |= ATOM_PASS_MOB
-			Move(origtargetloc)
-			if(!src_ATOM_PASS_mob)
-				pass_flags &= ~ATOM_PASS_MOB
-			combat_flags &= ~(COMBAT_FLAG_ATTEMPTING_CRAWL)
-			return TRUE
-	*/
-	//END OF CIT CHANGES
+	// can crawl under
+	if(should_crawl_under(L))
+		try_crawl_under(L)
+		return TRUE
 
 	// we can either push past or swap
 	if(can_bump_position_swap(L))
@@ -170,7 +176,7 @@
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(H.species.lightweight && prob(50))
-			H.Weaken(5)
+			H.afflict_paralyze(20 * 5)
 			H.visible_message(SPAN_WARNING("[src] bumps into [H], knocking them to the floor!"))
 			return TRUE
 
@@ -257,7 +263,7 @@
  */
 /mob/living/proc/can_bump_push_mob(mob/living/them)
 	// check status flags
-	if(!(them.status_flags & CANPUSH))
+	if(!(them.status_flags & STATUS_CAN_PUSH))
 		return FALSE
 	//? TRAIT_PUSHIMMUNE checked in movable bump
 	//! this isn't active until we get mobility flags, right click, and shoving
@@ -274,6 +280,18 @@
 	if(!can_move_mob(them, FALSE))
 		return FALSE
 	return TRUE
+
+/**
+ * can try to crawl under; mostly for subtypes
+ */
+/mob/living/proc/should_crawl_under(mob/living/other)
+	return FALSE
+
+/**
+ * try to crawl under
+ */
+/mob/living/proc/try_crawl_under(mob/living/other)
+	return FALSE
 
 /**
  * handles obj bumping/fire spread/pushing/etc
@@ -296,7 +314,7 @@
 
 /mob/living/proc/push_movable(atom/movable/AM, force = move_force)
 	// no crushing during diagonal moves
-	if(moving_diagonally)
+	if(IS_MOVABLE_IN_DIAG_MOVE(src))
 		return
 
 	var/dir_to_target = get_dir(src, AM)
@@ -362,3 +380,21 @@
 	// restore dir if needed
 	if(their_dir)
 		pushing.setDir(their_dir)
+
+//? Depth
+
+/mob/living/proc/change_depth(new_depth)
+	// depth is propagated up/down our buckled objects, and overridden by what we're buckled to
+	if(isliving(buckled) && (buckled.buckle_flags & BUCKLING_PROJECTS_DEPTH))
+		var/mob/living/L = buckled
+		new_depth = L.depth_current
+	else if(isobj(buckled) && (buckled.buckle_flags & BUCKLING_PROJECTS_DEPTH))
+		var/obj/O = buckled
+		new_depth = O.depth_level
+	if(new_depth == depth_current)
+		return
+	. = new_depth - depth_current
+	depth_current = new_depth
+	pixel_y += .
+	for(var/mob/living/L in buckled_mobs)
+		L.change_depth(new_depth)

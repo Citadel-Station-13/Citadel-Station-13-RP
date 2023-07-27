@@ -77,7 +77,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/smokable
 	name = "smokable item"
 	desc = "You're not sure what this is. You should probably ahelp it."
-	body_parts_covered = 0
+	body_cover_flags = 0
 	var/lit = 0
 	var/icon_on
 	var/type_butt = null
@@ -139,7 +139,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		M.update_inv_r_hand(1)
 	..()
 
-/obj/item/clothing/mask/smokable/examine(mob/user)
+/obj/item/clothing/mask/smokable/examine(mob/user, dist)
 	. = ..()
 	if(is_pipe)
 		return
@@ -296,10 +296,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	return
 
-/obj/item/clothing/mask/smokable/cigarette/afterattack(obj/item/reagent_containers/glass/glass, mob/user as mob, proximity)
+/obj/item/clothing/mask/smokable/cigarette/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
+	var/obj/item/reagent_containers/glass/glass = target
 	if(istype(glass)) //you can dip cigarettes into beakers
 		var/transfered = glass.reagents.trans_to_obj(src, chem_volume)
 		if(transfered)	//if reagents were transfered, show the message
@@ -310,7 +311,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			else
 				to_chat(user, "<span class='notice'>[src] is full.</span>")
 
-/obj/item/clothing/mask/smokable/cigarette/attack_self(mob/user as mob)
+/obj/item/clothing/mask/smokable/cigarette/attack_self(mob/user)
 	if(lit == 1)
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message("<span class='notice'>[user] drops and treads on the lit [src], putting it out instantly.</span>")
@@ -318,7 +319,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		else
 			user.visible_message("<span class='notice'>[user] puts out \the [src].</span>")
 			quench()
-	return ..()
 
 /obj/item/clothing/mask/smokable/cigarette/import
 	name = "cigarette"
@@ -444,7 +444,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	. = ..()
 	name = "empty [initial(name)]"
 
-/obj/item/clothing/mask/smokable/pipe/attack_self(mob/user as mob)
+/obj/item/clothing/mask/smokable/pipe/attack_self(mob/user)
 	if(lit == 1)
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message("<span class='notice'>[user] empties the lit [src] on the floor!.</span>")
@@ -497,6 +497,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cobpipe"
 	item_state = "cobpipe"
 	chem_volume = 35
+
+/obj/item/clothing/mask/smokable/pipe/bonepipe
+	name = "bone pipe"
+	desc = "A fragile pipe, masterfully carved by hand from the bone of an unknown creature."
+	icon_state = "bonepipe"
+	item_state = "bonepipe"
+	chem_volume = 25
 
 ///////////////
 //CUSTOM CIGS//
@@ -594,7 +601,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = icon_state
 	base_state = icon_state
 
-/obj/item/flame/lighter/attack_self(mob/living/user)
+/obj/item/flame/lighter/attack_self(mob/user)
 	if(!base_state)
 		base_state = icon_state
 	if(!lit)
@@ -609,10 +616,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src].</span>")
 			else
 				to_chat(user, "<span class='warning'>You burn yourself while lighting the lighter.</span>")
+				var/mob/living/carbon/human/H = ishuman(user)? user : null
 				if (user.get_held_item_of_index(1) == src)
-					user.apply_damage(2,BURN,"l_hand")
+					H?.apply_damage(2,BURN,"l_hand")
 				else
-					user.apply_damage(2,BURN,"r_hand")
+					H?.apply_damage(2,BURN,"r_hand")
 				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src], they however burn their finger in the process.</span>")
 
 		set_light(2)
@@ -722,7 +730,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A lighter fashioned out of an old bullet casing."
 	icon_state = "bulletlighter"
 
+//Tajaran Lighters
 /obj/item/flame/lighter/zippo/taj
-	name = "\improper Adhomai lighter"
+	name = "\improper Adhomian lighter"
 	desc = "A brass mechanical lighter made on Adhomai. Its robust design made it a staple tool for Tajara on all sides of the civil war."
 	icon_state = "tajzippo"
+
+//Ashlander Lighters
+/obj/item/flame/lighter/ashlander
+	name = "spark striker"
+	desc = "A fragment of elder stone and a chunk of charcoal, bound together by sinew and bone to easily create sparks."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "striker"
+	item_state = "lighter-r"

@@ -75,7 +75,6 @@
 	flesh_color = "#34AF10"
 	blood_color = "#f24b2e"
 	base_color  = "#066000"
-	organs_icon = 'icons/mob/species/unathi/organs.dmi'
 
 	reagent_tag = IS_UNATHI
 
@@ -132,6 +131,9 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 
 /datum/species/unathi/equip_survival_gear(mob/living/carbon/human/H)

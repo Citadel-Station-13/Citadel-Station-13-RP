@@ -18,11 +18,7 @@
 	var/base_power_draw = 20000
 	circuit = /obj/item/circuitboard/recharger
 
-/obj/machinery/recharger/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
-/obj/machinery/recharger/examine(mob/user)
+/obj/machinery/recharger/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>[charging ? "[charging]" : "Nothing"] is in [src].</span>"
 	if(charging)
@@ -104,7 +100,7 @@
 	else if(default_part_replacement(user, G))
 		return
 
-/obj/machinery/recharger/attack_hand(mob/user)
+/obj/machinery/recharger/attack_hand(mob/user, list/params)
 	if(istype(user,/mob/living/silicon))
 		return
 

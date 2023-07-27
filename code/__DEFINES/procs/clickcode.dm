@@ -6,10 +6,16 @@
  * ranged_attack_chain
  * attackby
  * pre_attack
+ * standard_melee_attack and related
+ * attack_mob and related
+ * attack_obj and related
  * afterattack
  * MouseDrop
  * OnMouseDrop
  * MouseDroppedOn
+ *
+ * These are *not* used for attack_hand, attack_robot, attack_xeno, and similar clicked-by-specific-mob attack procs.
+ * These are also not used for attack_self, as that isn't even a true clickcode proc.
  */
 
 /// stop the click chain from proceeding past this point; usually used if we're deleting or being inserted
@@ -23,6 +29,10 @@
 #define CLICKCHAIN_REDIRECTED				(1<<3)
 /// this is from tgui or the js statpanel - we should probably be paranoid
 #define CLICKCHAIN_FROM_HREF				(1<<4)
+/// did something in the proc, logically should stop using it (the user should anyways)
+#define CLICKCHAIN_DID_SOMETHING			(1<<5)
+/// completely block attacking (notably, attack_mob, attack_obj) from happening by halting standard_melee_attack.
+#define CLICKCHAIN_DO_NOT_ATTACK			(1<<6)
 
 //! Reachability Depths - checked from level of DirectAccess and turf adjacency.
 /// default reachability depth

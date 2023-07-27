@@ -1,7 +1,7 @@
 /obj/item/radio/intercom
 	name = "station intercom (General)"
 	desc = "Talk through this."
-	icon = 'icons/obj/radio.dmi'
+	icon = 'icons/obj/intercom.dmi'
 	icon_state = "intercom"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
@@ -13,6 +13,17 @@
 	var/number = 0
 	var/last_tick //used to delay the powercheck
 	var/wiresexposed = 0
+	var/overlay_color = PIPE_COLOR_GREEN
+
+/obj/item/radio/intercom/update_icon(updates)
+	cut_overlays()
+	if(!on)
+		icon_state = "intercom-p"
+	else
+		icon_state = "intercom_[broadcasting][listening]"
+		var/image/I = image(icon, "intercom_overlay")
+		I.color = overlay_color
+		add_overlay(I)
 
 /obj/item/radio/intercom/custom
 	name = "station intercom (Custom)"
@@ -40,13 +51,13 @@
 
 /obj/item/radio/intercom/department/medbay
 	name = "station intercom (Medbay)"
-	icon_state = "medintercom"
 	frequency = MED_I_FREQ
+	overlay_color = COLOR_TEAL
 
 /obj/item/radio/intercom/department/security
 	name = "station intercom (Security)"
-	icon_state = "secintercom"
 	frequency = SEC_I_FREQ
+	overlay_color = COLOR_MAROON
 
 /obj/item/radio/intercom/entertainment
 	name = "entertainment intercom"
@@ -72,7 +83,7 @@
 	. = ..()
 	internal_channels = list(
 		num2text(PUB_FREQ) = list(),
-		num2text(SEC_I_FREQ) = list(access_security)
+		num2text(SEC_I_FREQ) = list(ACCESS_SECURITY_EQUIPMENT)
 	)
 
 /obj/item/radio/intercom/entertainment/Initialize(mapload)
@@ -91,7 +102,7 @@
 
 /obj/item/radio/intercom/syndicate/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(SYND_FREQ)] = list(access_syndicate)
+	internal_channels[num2text(SYND_FREQ)] = list(ACCESS_FACTION_SYNDICATE)
 
 /obj/item/radio/intercom/raider
 	name = "illicit intercom"
@@ -102,7 +113,7 @@
 
 /obj/item/radio/intercom/raider/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(RAID_FREQ)] = list(access_pirate)
+	internal_channels[num2text(RAID_FREQ)] = list(ACCESS_FACTION_PIRATE)
 
 /obj/item/radio/intercom/trader
 	name = "commercial intercom"
@@ -113,7 +124,7 @@
 
 /obj/item/radio/intercom/trader/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(TRADE_FREQ)] = list(access_trader)
+	internal_channels[num2text(TRADE_FREQ)] = list(ACCESS_FACTION_TRADER)
 
 /obj/item/radio/intercom/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -124,7 +135,7 @@
 	spawn (0)
 		attack_self(user)
 
-/obj/item/radio/intercom/attack_hand(mob/user as mob)
+/obj/item/radio/intercom/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 	spawn (0)
 		attack_self(user)
@@ -191,16 +202,7 @@
 			else
 				on = A.powered(EQUIP) // set "on" to the power status
 
-		if(!on)
-			if(wiresexposed)
-				icon_state = "intercom-p_open"
-			else
-				icon_state = "intercom-p"
-		else
-			if(wiresexposed)
-				icon_state = "intercom_open"
-			else
-				icon_state = initial(icon_state)
+		update_icon()
 
 /obj/item/radio/intercom/locked
     var/locked_frequency

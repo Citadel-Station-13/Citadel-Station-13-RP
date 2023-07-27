@@ -6,7 +6,7 @@
 	icon_state = "ca"
 	anchored = FALSE
 	density = TRUE
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 //	use_power = 0
 	var/obj/item/tank/phoron/P = null
 	/// stored power in kilojoules
@@ -42,9 +42,10 @@
 
 /obj/machinery/power/rad_collector/Initialize(mapload)
 	. = ..()
+	AddComponent(/datum/component/radiation_listener)
 	rad_insulation = active? rad_insulation_active : rad_insulation_inactive
 
-/obj/machinery/power/rad_collector/attack_hand(mob/user as mob)
+/obj/machinery/power/rad_collector/attack_hand(mob/user, list/params)
 	if(anchored)
 		if(!src.locked)
 			toggle_power()
@@ -98,7 +99,7 @@
 		return 1
 	return ..()
 
-/obj/machinery/power/rad_collector/examine(mob/user)
+/obj/machinery/power/rad_collector/examine(mob/user, dist)
 	. = ..()
 	if(active)
 		. += "<span class='notice'>[src]'s display states that it has stored <b>[render_power(stored_power, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_JOULE)]</b>, and is currently outputting [render_power(last_output, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)].</span>"

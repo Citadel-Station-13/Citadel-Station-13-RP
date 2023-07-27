@@ -1,5 +1,3 @@
-var/list/spells = typesof(/spell) //needed for the badmin verb for now
-
 /spell
 	var/name = "Spell"
 	var/desc = "A spell"
@@ -90,7 +88,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 		take_charge(user, skipcharge)
 
 		before_cast(targets) //applies any overlays and effects
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>[user.real_name] ([user.ckey]) cast the spell [name].</font>")
+		user.attack_log += "\[[time_stamp()]\] <font color='red'>[user.real_name] ([user.ckey]) cast the spell [name].</font>"
 		if(prob(critfailchance))
 			critfail(targets, user)
 		else
@@ -115,11 +113,11 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 		if("oxyloss")
 			target.adjustOxyLoss(amount)
 		if("stunned")
-			target.AdjustStunned(amount)
+			target.adjust_stunned(20 * amount)
 		if("weakened")
-			target.AdjustWeakened(amount)
+			target.adjust_paralyzed(20 * amount)
 		if("paralysis")
-			target.AdjustUnconscious(amount)
+			target.adjust_unconscious(20 * amount)
 		else
 			target.vars[type] += amount //I bear no responsibility for the runtimes that'll happen if you try to adjust non-numeric or even non-existant vars
 	return
@@ -190,7 +188,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	if(!user_turf)
 		to_chat(user, "<span class='warning'>You cannot cast spells in null space!</span>")
 
-	if(spell_flags & Z2NOCAST && (user_turf.z in GLOB.using_map.admin_levels)) //Certain spells are not allowed on the CentCom zlevel
+	if(spell_flags & Z2NOCAST && (user_turf.z in (LEGACY_MAP_DATUM).admin_levels)) //Certain spells are not allowed on the CentCom zlevel
 		return 0
 
 	if(spell_flags & CONSTRUCT_CHECK)

@@ -4,7 +4,7 @@
 /obj/item/clothing/under/oricon/utility/sysguard
 	name = "explorer's uniform"
 	desc = "The utility uniform of the Society of Universal Cartographers, made from biohazard resistant material. This one has silver trim."
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 10)
+	armor_type = /datum/armor/uniform/utility
 	icon_state = "black_crew"
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
@@ -117,7 +117,7 @@
 	name = "fleet coveralls"
 	desc = "The utility uniform of the JSDF Fleet, made from an insulated material."
 	icon_state = "navy"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 10, bomb = 0, bio = 0, rad = 0)
+	worn_rolldown_state = "navy_down"
 	siemens_coefficient = 0.7
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
@@ -126,6 +126,7 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command/fleet)
 	name = "fleet command coveralls"
 	icon_state = "navy_command"
+	worn_rolldown_state = null
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
@@ -133,6 +134,7 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/specialty/pilot)
 	name = "fleet pilot coveralls"
 	icon_state = "navy_officer"
+	worn_rolldown_state = null
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
@@ -140,34 +142,27 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/engineering/fleet)
 	name = "fleet engineer coveralls"
 	icon_state = "navy_engi"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/oricon/utility/fleet/security
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/security/fleet)
 	name = "fleet security coveralls"
 	icon_state = "navy_sec"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/oricon/utility/fleet/medical
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/medical/fleet)
 	name = "fleet medical coveralls"
 	icon_state = "navy_med"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/oricon/utility/fleet/supply
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/supply/fleet)
 	name = "fleet logistics coveralls"
 	icon_state = "navy_sup"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/oricon/utility/fleet/exploration
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/exploration/fleet)
 	name = "fleet explorer coveralls"
 	icon_state = "navy_combat"
+	worn_rolldown_state = null
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
@@ -175,7 +170,6 @@
 	name = "marine fatigues"
 	desc = "The utility uniform of the JSDF Marine Corps, made from durable material."
 	icon_state = "grey"
-	armor = list(melee = 10, bullet = 0, laser = 10,energy = 0, bomb = 0, bio = 0, rad = 0)
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 

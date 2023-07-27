@@ -9,38 +9,46 @@
 	supervisors = "the Research Director"
 	selection_color = "#633D63"
 	pto_type = PTO_SCIENCE
-	access = list(access_robotics, access_tox, access_tox_storage, access_tech_storage, access_morgue, access_research, access_tox) //As a job that handles so many corpses, it makes sense for them to have morgue access.
-	minimal_access = list(access_robotics, access_tech_storage, access_morgue, access_research, access_tox) //As a job that handles so many corpses, it makes sense for them to have morgue access.
+	additional_access = list(
+		ACCESS_SCIENCE_FABRICATION,
+		ACCESS_SCIENCE_TOXINS,
+		ACCESS_MEDICAL_MORGUE,
+	)
+	minimal_access = list(
+		ACCESS_ENGINEERING_TECHSTORAGE,
+		ACCESS_SCIENCE_ROBOTICS,
+		ACCESS_SCIENCE_MAIN,
+	)
 	minimal_player_age = 7
 
 	outfit_type = /datum/outfit/job/station/roboticist
 	desc = "A Roboticist maintains and repairs the station's synthetics, including crew with prosthetic limbs. \
 						They can also assist the station by producing simple robots and even pilotable exosuits."
 	alt_titles = list(
-		"Biomechanical Engineer" = /datum/prototype/alt_title/biomech,
-		"Mechatronic Engineer" = /datum/prototype/alt_title/mech_tech,
-		"Prosthetists" = /datum/prototype/alt_title/prosthetists,
-		"Artificer-Specialist" = /datum/prototype/alt_title/artificer_specialist
+		"Biomechanical Engineer" = /datum/prototype/struct/alt_title/biomech,
+		"Mechatronic Engineer" = /datum/prototype/struct/alt_title/mech_tech,
+		"Prosthetists" = /datum/prototype/struct/alt_title/prosthetists,
+		"Artificer-Specialist" = /datum/prototype/struct/alt_title/artificer_specialist
 		)
 
-/datum/prototype/alt_title/artificer_specialist
+/datum/prototype/struct/alt_title/artificer_specialist
 	title = "Artificer-Specialist"
 	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
 	background_enforce = TRUE
 
-/datum/prototype/alt_title/biomech
+/datum/prototype/struct/alt_title/biomech
 	title = "Biomechanical Engineer"
 	title_blurb = "A Biomechanical Engineer primarily works on prosthetics, and the organic parts attached to them. They may have some \
 					knowledge of the relatively simple surgical procedures used in making cyborgs and attaching prosthesis."
 
-/datum/prototype/alt_title/mech_tech
+/datum/prototype/struct/alt_title/mech_tech
 	title = "Mechatronic Engineer"
 	title_blurb = "A Mechatronic Engineer focuses on the construction and maintenance of Exosuits, and should be well versed in their use. \
 					They may also be called upon to work on synthetics and prosthetics, if needed."
 
-/datum/prototype/alt_title/prosthetists
+/datum/prototype/struct/alt_title/prosthetists
 	title = "Prosthetists"
 	title_blurb = "Prosthetists design and fabricate medical supportive devices and measure and fit patients for them. These devices \
 					include artificial limbs (arms, hands, legs, and feet), braces, and other medical or surgical devices."
