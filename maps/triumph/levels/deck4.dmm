@@ -993,7 +993,6 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "aME" = (
-/obj/structure/closet/crate/mimic/cointoss,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "aMF" = (
@@ -12389,7 +12388,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
 "iUB" = (
-/obj/structure/closet/crate/mimic/cointoss,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "iVA" = (
@@ -13224,7 +13222,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "jBs" = (
-/obj/structure/closet/crate/mimic/cointoss,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "jBB" = (
@@ -14418,7 +14415,6 @@
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "krE" = (
-/obj/structure/closet/crate/mimic/closet/cointoss,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "krQ" = (
