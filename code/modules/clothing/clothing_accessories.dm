@@ -210,8 +210,8 @@
 	LAZYADD(accessories,A)
 	A.on_attached(src, user)
 	add_obj_verb(src, /obj/item/clothing/proc/removetie_verb)
-	update_accessory_slowdown()
 	update_worn_icon()
+	update_carry_weight()
 
 /obj/item/clothing/proc/remove_accessory(mob/user, obj/item/clothing/accessory/A)
 	if(!LAZYLEN(accessories) || !(A in accessories))
@@ -219,13 +219,8 @@
 
 	A.on_removed(user)
 	accessories -= A
-	update_accessory_slowdown()
 	update_worn_icon()
-
-/obj/item/clothing/proc/update_accessory_slowdown()
-	slowdown = initial(slowdown)
-	for(var/obj/item/clothing/accessory/A in accessories)
-		slowdown += A.slowdown
+	update_carry_weight()
 
 /obj/item/clothing/proc/removetie_verb()
 	set name = "Remove Accessory"

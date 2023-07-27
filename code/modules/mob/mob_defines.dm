@@ -1,3 +1,6 @@
+/**
+ * base BYOND type for an actor, if the game world is a scene.
+ */
 /mob
 	datum_flags = DF_USE_TAG
 	density = 1

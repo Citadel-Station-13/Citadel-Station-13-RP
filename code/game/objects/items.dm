@@ -36,6 +36,12 @@
 	/// economic category for items
 	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
 
+	//* Carry Weight
+	/// carry weight in kgs. this might be generalized later so KEEP IT REALISTIC.
+	var/carry_weight = 0
+	/// registered carry weight - null if not in inventory.
+	var/carry_weight_cached
+
 	//? Combat
 	/// Amount of damage we do on melee.
 	var/damage_force = 0
@@ -100,7 +106,7 @@
 	/// For electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
 	/// How much clothing is slowing you down. Negative values speeds you up
-	var/slowdown = 0
+	var/slowdown_legacy = 0
 	/// Suit storage stuff.
 	var/list/allowed = null
 	/// All items can have an uplink hidden inside, just remember to add the triggers.
@@ -239,6 +245,23 @@
 /obj/item/examine(mob/user, dist)
 	. = ..()
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weightclass2text(w_class)] item."
+	switch(get_carry_weight())
+		if(-INFINITY to 0.1)
+			. += "It looks like it weighs practically nothing."
+		if(0.1 to 0.75)
+			. += "It looks like it weighs very little."
+		if(0.75 to 2)
+			. += "It looks like it's decently lightweight."
+		if(2 to 5)
+			. += "It looks like it weighs a bit."
+		if(5 to 10)
+			. += "It looks like it weighs a good amount."
+		if(10 to 20)
+			. += "It looks like it is heavy. It would take a good effort to run around with it."
+		if(20 to 40)
+			. += "It looks like it weighs a lot. You probably will have a hard time running with it."
+		if(40 to INFINITY)
+			. ++ "It looks like it weighs a ton. You really won't be doing much running with it."
 
 	// if(resistance_flags & INDESTRUCTIBLE)
 	// 	. += "[src] seems extremely robust! It'll probably withstand anything that could happen to it!"
@@ -739,6 +762,22 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // /obj/item/update_filters()
 // 	. = ..()
 // 	update_action_buttons()
+
+//* Carry Weight
+
+/obj/item/proc/get_carry_weight()
+	return carry_weight
+
+/obj/item/proc/update_carry_weight()
+	if(isnull(carry_weight_cached))
+		return null
+	. = get_carry_weight()
+	if(. == carry_weight_cached)
+		return 0
+	. -= carry_weight_cached
+	var/mob/living/wearer = worn_mob()
+	if(istype(wearer))
+		wearer.adjust_current_carry_weight(.)
 
 /**
  * grabs an attack verb to use

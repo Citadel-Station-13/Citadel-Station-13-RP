@@ -61,6 +61,12 @@
 	/// full list of accessories, everything inside must be an /obj/item. *not* /obj/item/clothing.
 	var/list/accessories
 
+	//* Carry Weight
+	/// carry weight compensation for accessories - flat. can't be negative, that makes no sense.
+	var/weight_compensation_flat = 0
+	/// carry weight compensation for accessories - multiplier. applied before flat. 0 to 1.
+	var/weight_compensation_mult = 0
+
 /obj/item/clothing/Initialize(mapload)
 	. = ..()
 	if(islist(active_slots))

@@ -255,3 +255,35 @@
 
 /mob/living/has_free_hand()
 	return !l_hand || !r_hand
+
+//* carry weight
+
+/mob/living/proc/recalculate_carry_weight()
+	var/tally = 0
+	for(var/obj/item/I as anything in get_equipped_items())
+		tally += I.get_carry_weight()
+	if(cached_carry_weight == tally)
+		return
+	cached_carry_weight = tally
+	update_carry_weight_slowdown()
+
+/mob/living/proc/add_current_carry_weight(amount)
+	if(!amount)
+		return
+	cached_carry_weight += amount
+	update_carry_weight_slowdown()
+
+/mob/living/proc/remove_current_carry_weight(amount)
+	if(!amount)
+		return
+	cached_carry_weight -= amount
+	update_carry_weight_slowdown()
+
+/mob/living/proc/adjust_current_carry_weight(amount)
+	if(!amount)
+		return
+	cached_carry_weight += tally
+	update_carry_weight_slowdown()
+
+/mob/living/proc/update_carry_weight_slowdown()
+	#warn impl

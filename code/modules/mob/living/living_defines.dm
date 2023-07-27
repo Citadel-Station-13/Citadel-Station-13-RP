@@ -1,9 +1,8 @@
 /**
- * # /mob/living
+ * living mobs
  *
- * mob/living is the base type of mobs that have health
- * there's probably a better explanation we can type someday but for that, uh
- * yeah.
+ * living mobs are the subtype of mobs that are semantically what you'd think of as a true mob
+ * health, inventory carry weight simulations, etc.
  */
 /mob/living
 	see_invisible = SEE_INVISIBLE_LIVING
@@ -123,6 +122,11 @@
 	// TODO: /tg/ arbitrary hand numbers
 	/// Set to TRUE to enable the use of hands and the hands hud
 	var/has_hands = FALSE
+
+	//* Carry Weight
+	//  todo: put all this on /datum/inventory after hand refactor
+	/// cached carry weight of all items
+	var/cached_carry_weight = 0
 
 	//? movement
 	/// are we currently pushing (or trying to push) (or otherwise inside Bump() handling that deals with this crap) another atom?

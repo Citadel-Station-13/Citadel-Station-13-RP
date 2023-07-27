@@ -92,7 +92,7 @@
 	#warn impl
 
 /datum/tgui_dynamic_input/proc/finish(list/choices)
-	callback?.InvokeAsync(cohices)
+	callback?.InvokeAsync(choices)
 
 /datum/tgui_dynamic_input/proc/sanitize(list/choices)
 	#warn impl
