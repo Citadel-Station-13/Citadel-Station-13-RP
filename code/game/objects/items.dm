@@ -38,7 +38,7 @@
 
 	//* Carry Weight
 	/// carry weight in kgs. this might be generalized later so KEEP IT REALISTIC.
-	var/carry_weight = 0
+	var/carry_weight = CARRY_WEIGHT_BASELINE
 	/// registered carry weight - null if not in inventory.
 	var/carry_weight_cached
 
@@ -261,7 +261,7 @@
 		if(20 to 40)
 			. += "It looks like it weighs a lot. You probably will have a hard time running with it."
 		if(40 to INFINITY)
-			. ++ "It looks like it weighs a ton. You really won't be doing much running with it."
+			. += "It looks like it weighs a ton. You really won't be doing much running with it."
 
 	// if(resistance_flags & INDESTRUCTIBLE)
 	// 	. += "[src] seems extremely robust! It'll probably withstand anything that could happen to it!"

@@ -594,10 +594,6 @@
 		return FALSE
 	var/mob/living/carbon/human/H
 	if(istype(H) && istype(H.tail_style, taurtype))
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	else
 		to_chat(H, "<span class='warning'>[no_message]</span>")
@@ -631,59 +627,27 @@
 	var/datum/sprite_accessory/tail/taur/TT = H.tail_style
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/horse))
 		item_state = "[icon_base]_horse"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/wolf))
 		item_state = "[icon_base]_wolf"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/cow))
 		item_state = "[icon_base]_cow"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/lizard))
 		item_state = "[icon_base]_lizard"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/feline))
 		item_state = "[icon_base]_feline"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/drake))
 		item_state = "[icon_base]_drake"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/otie))
 		item_state = "[icon_base]_otie"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/deer))
 		item_state = "[icon_base]_deer"
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
 		return 1
 	else
 		to_chat(H, "<span class='warning'>[no_message]</span>")

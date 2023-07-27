@@ -387,7 +387,7 @@
 	edge = 1
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
 	armor_penetration = 50
-	slowdown = 0
+	carry_weight = CARRY_WEIGHT_BASELINE
 
 //This currently just kills the user. lol
 /*

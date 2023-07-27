@@ -113,14 +113,12 @@
 	icon_state = "hybscrewdriver"
 	item_state = "screwdriver_black"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
-	slowdown = 0.1
+	carry_weight = CARRY_WEIGHT_HYBRID_TOOLS
 	w_class = ITEMSIZE_NORMAL
 	tool_sound = 'sound/effects/uncloak.ogg'
 	tool_speed = 0.4
 	random_color = FALSE
 	reach = 2
-
-
 
 /obj/item/tool/screwdriver/cyborg
 	name = "powered screwdriver"

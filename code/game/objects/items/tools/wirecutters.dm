@@ -107,7 +107,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_wirecutters)
 	icon_state = "hybcutters"
 	w_class = ITEMSIZE_NORMAL
-	slowdown = 0.1
+	carry_weight = CARRY_WEIGHT_HYBRID_TOOLS
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_PHORON = 2)
 	attack_verb = list("pinched", "nipped", "warped", "blasted")
 	tool_sound = 'sound/effects/stealthoff.ogg'

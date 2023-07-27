@@ -16,7 +16,7 @@
 	require a very potent supply of an energy of some kind in order to function."
 	icon_state = "shield_armor_0"
 	blood_overlay_type = "armor"
-	slowdown = 0
+	carry_weight = 0
 	armor_type = /datum/armor/none
 	action_button_name = "Toggle Shield Projector"
 	var/active = 0
