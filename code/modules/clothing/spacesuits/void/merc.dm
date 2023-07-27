@@ -6,6 +6,8 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_helm", SLOT_ID_LEFT_HAND = "syndie_helm")
 	armor_type = /datum/armor/merc/space
 	siemens_coefficient = 0.6
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_HELMET
+	weight = ITEM_WEIGHT_VOIDSUIT_HELMET
 	camera_networks = list(NETWORK_MERCENARY)
 	light_overlay = "helmet_light_green" //todo: species-specific light overlays
 
@@ -14,7 +16,8 @@
 	name = "blood-red voidsuit"
 	desc = "An advanced suit that protects against injuries during special operations. Property of Gorlex Marauders."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
-	slowdown = 1
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT
+	weight = ITEM_WEIGHT_VOIDSUIT
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/merc/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)

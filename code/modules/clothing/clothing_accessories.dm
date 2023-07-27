@@ -15,7 +15,7 @@
 		return accessory_host.update_worn_icon()
 	return ..()
 
-/obj/item/clothing/get_carry_weight()
+/obj/item/clothing/get_weight()
 	. = ..()
 	var/tally = 0
 	for(var/obj/item/I as anything in accessories)

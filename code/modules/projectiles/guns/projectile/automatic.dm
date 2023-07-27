@@ -546,7 +546,6 @@
 	slot_flags = SLOT_BACK
 	load_method = SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/a762
-	slowdown = 0.5
 	max_shells =  15
 	burst = 3
 	fire_delay = 7.2

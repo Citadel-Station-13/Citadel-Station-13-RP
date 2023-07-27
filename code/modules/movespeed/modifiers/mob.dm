@@ -4,7 +4,7 @@
 /datum/movespeed_modifier/mob_staggered
 	variable = TRUE
 
-/datum/movespeed_modifier/mob_carry_weight
+/datum/movespeed_modifier/mob_inventory_carry
 	variable = TRUE
 
 /datum/movespeed_modifier/mob_item_slowdown

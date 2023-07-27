@@ -256,7 +256,7 @@
 /obj/item/examine(mob/user, dist)
 	. = ..()
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weightclass2text(w_class)] item."
-	switch(get_carry_weight())
+	switch(max(get_encumbrance(), get_weight()))
 		if(-INFINITY to 0.1)
 			. += "It looks like it weighs practically nothing."
 		if(0.1 to 0.75)
@@ -774,7 +774,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // 	. = ..()
 // 	update_action_buttons()
 
-//* Carry Weight
+//? Carry Weight
 
 #warn rework encumbrance
 
@@ -809,12 +809,20 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		return
 	update_carry_weight()
 
-/obj/item/proc/set_encumberence(amount)
+/obj/item/proc/set_encumbrance(amount)
 	#warn impl
 	if(amount == carry_encumberence)
 		return
 	carry_encumberence = amount
 	update_carry_weight()
+
+/obj/item/proc/set_slowdown(amount)
+	if(amount == hard_slowdown)
+		return
+	hard_slowdown = amount
+	worn_mob()?.update_item_slowdown()
+
+//? Attack Verbs
 
 /**
  * grabs an attack verb to use

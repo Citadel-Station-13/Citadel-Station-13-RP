@@ -49,3 +49,6 @@
 
 /mob/living/carbon/carry_weight_to_slowdown(amount)
 	#warn impl
+
+/mob/living/carbon/carry_encumbrance_to_slowdown(amount)
+	#warn impl

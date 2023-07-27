@@ -261,44 +261,47 @@
 #warn rework encumbrance
 
 // don't call this you shouldn't need to
-/mob/living/proc/update_carry()
+/mob/living/proc/update_carry_slowdown()
 	recalculate_carry()
-	update_carry_slowdown()
+	update_carry()
 
 /mob/living/proc/recalculate_carry()
-	var/tally = 0
+	var/tally_weight = 0
+	var/tally_encumbrance = 0
 	for(var/obj/item/I as anything in get_equipped_items())
-		tally += I.get_carry_weight()
-	if(cached_carry_weight == tally)
-		return
-	cached_carry_weight = tally
-	update_carry_weight_slowdown()
+		tally_weight += I.get_weight()
+		tally_encumbrance += I.get_encumbrance()
+	cached_carry_weight = tally_weight
+	cached_carry_encumbrance = tally_encumbrance
 
 /mob/living/proc/adjust_current_carry_weight(amount)
 	if(!amount)
 		return
 	cached_carry_weight += amount
-	update_carry_weight_slowdown()
+	update_carry()
 
 /mob/living/proc/adjust_current_carry_encumbrance(amount)
-	#warn impl
+	if(!amount)
+		return
+	cached_carry_encumbrance += amount
+	update_carry()
 
 /mob/living/proc/carry_weight_to_slowdown(amount)
-	return 0
+	return 0 
 
 /mob/living/proc/carry_encumbrance_to_slowdown(amount)
 	return 0
 
-/mob/living/proc/update_carry_slowdown()
-	var/slowdown = carry_weight_to_slowdown(cached_carry_weight)
+/mob/living/proc/update_carry()
+	var/slowdown = max(carry_weight_to_slowdown(cached_carry_weight), carry_encumbrance_to_slowdown(cached_carry_encumbrance))
 	if(slowdown)
-		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_carry_weight, multiplicative_slowdown = slowdown)
+		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_inventory_carry, multiplicative_slowdown = slowdown)
 	else
-		remove_movespeed_modifier(/datum/movespeed_modifier/mob_carry_weight)
+		remove_movespeed_modifier(/datum/movespeed_modifier/mob_inventory_carry)
 
 //* hard movespeed slowdown
 
-/mob/living/proc/update_item_movespeed()
+/mob/living/proc/update_item_slowdown()
 	var/tally = 0
 	for(var/obj/item/I as anything in get_equipped_items())
 		tally += I.hard_slowdown

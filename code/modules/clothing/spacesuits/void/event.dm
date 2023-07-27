@@ -11,13 +11,16 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black", SLOT_ID_LEFT_HAND = "syndicate-helm-black")
 	armor_type = /datum/armor/vintage/space
 	light_overlay = "helmet_light"
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_HELMET_LIGHT
+	weight = ITEM_WEIGHT_VOIDSUIT_HELMET_LIGHT
 
 /obj/item/clothing/suit/space/void/refurb
 	name = "vintage crewman's voidsuit"
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer spacers swear by these old things, even if new powered hardsuits have more features and better armor. This one is devoid of any identifying markings or rank indicators."
 	icon_state = "rig-vintagecrew"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
-	slowdown = 0.5
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_LIGHT
+	weight = ITEM_WEIGHT_VOIDSUIT_LIGHT
 	armor_type = /datum/armor/vintage/space
 	allowed = list(/obj/item/flashlight,
 			/obj/item/tank,
@@ -47,7 +50,6 @@
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. This one in particular seems to be an ode to the Ship of Theseus, but the insulation and radiation proofing are top-notch. The chestplate bears the logo of an old shipyard - though you don't recognize the name."
 	icon_state = "rig-vintageengi"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
-	slowdown = 1
 	armor_type = /datum/armor/vintage/space/engi
 	min_pressure_protection = 0  * ONE_ATMOSPHERE
 	max_pressure_protection = 15 * ONE_ATMOSPHERE
@@ -93,7 +95,6 @@
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer spacers swear by these old things, even if new powered hardsuits have more features and better armor. The green and white markings indicate this as a medic's suit."
 	icon_state = "rig-vintagemedic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
-	slowdown = 0.5
 	armor_type = /datum/armor/vintage/space/med
 	allowed = list(/obj/item/flashlight,
 			/obj/item/tank,
@@ -124,7 +125,6 @@
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer marines swear by these old things, even if new powered hardsuits have more features and better armor. The blue markings indicate this as the marine/guard variant, likely from a merchant ship."
 	icon_state = "rig-vintagemarine"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
-	slowdown = 1
 	armor_type = /datum/armor/vintage/space/marine
 	siemens_coefficient = 0.8
 	allowed = list(/obj/item/gun,
@@ -160,7 +160,6 @@
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer spacers swear by these old things, even if new powered hardsuits have more features and better armor. This variant appears to be an officer's, and has the best protection of all the old models."
 	icon_state = "rig-vintageofficer"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
-	slowdown = 1
 	armor_type = /datum/armor/vintage/space/officer
 	siemens_coefficient = 0.7
 	allowed = list(/obj/item/gun,
@@ -201,7 +200,6 @@
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer spacers swear by these old things, even if new powered hardsuits have more features and better armor. The royal blue markings indicate this is the pilot's variant; low protection but ultra-lightweight."
 	icon_state = "rig-vintagepilot"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
-	slowdown = 0.25
 	armor_type = /datum/armor/vintage/space/pilot
 	siemens_coefficient = 0.9
 	allowed = list(/obj/item/flashlight,
@@ -232,7 +230,6 @@
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer spacers swear by these old things, even if new powered hardsuits have more features and better armor. The purple markings indicate this as a scientist's suit. Keep your eyes open for ropes."
 	icon_state = "rig-vintagescientist"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
-	slowdown = 0.5
 	armor_type = /datum/armor/vintage/space/science
 	siemens_coefficient = 0.8
 	allowed = list(/obj/item/flashlight,
@@ -267,13 +264,16 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black", SLOT_ID_LEFT_HAND = "syndicate-helm-black")
 	armor_type = /datum/armor/vintage/space/merc
 	siemens_coefficient = 0.6
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_HELMET_HEAVY
+	weight = ITEM_WEIGHT_VOIDSUIT_HELMET_HEAVY
 
 /obj/item/clothing/suit/space/void/refurb/mercenary
 	name = "vintage mercenary voidsuit"
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer mercs swear by these old things, even if new powered hardsuits have more features and better armor. The red markings indicate this as the mercenary variant. The company ID has been scratched off."
 	icon_state = "rig-vintagemerc"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
-	slowdown = 1.5 //the tradeoff for being hot shit almost on par with a crimson suit is that it slows you down even more
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_HEAVY
+	weight = ITEM_WEIGHT_VOIDSUIT_HEAVY
 	armor_type = /datum/armor/vintage/space/merc
 	siemens_coefficient = 0.6
 	allowed = list(/obj/item/gun,

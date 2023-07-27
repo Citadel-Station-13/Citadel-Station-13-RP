@@ -98,8 +98,7 @@
 		return
 	chained = cuffs
 	// todo: refactor
-	carry_encumberence = ITEM_WEIGHT_SHOES_CUFFED
-	update_carry_weight()
+	set_encumbrance(ITEM_ENCUMBRANCE_SHOES_CUFFED)
 	icon_state = "orange1"
 
 /obj/item/clothing/shoes/orange/proc/remove_cuffs(mob/user as mob)
@@ -110,8 +109,7 @@
 	chained.add_fingerprint(user)
 
 	// todo: refactor
-	carry_encumberence = initial(carry_encumberence)
-	update_carry_weight()
+	set_encumbrance(initial(carry_encumberence))
 	icon_state = "orange"
 	chained = null
 

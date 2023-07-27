@@ -16,7 +16,7 @@
 	/// Weight in grams
 	var/fish_weight = 1000
 	/// Average fish_weight for this fish type in grams
-	var/average_fish_weight = 1000
+	var/average_weight = 1000
 
 	//? icon
 
@@ -114,7 +114,7 @@
 		START_PROCESSING(SSobj, src)
 
 	size = average_size
-	fish_weight = average_fish_weight
+	fish_weight = average_weight
 
 /obj/item/fish/examine(mob/user, dist)
 	. = ..()
@@ -127,9 +127,9 @@
 	var/size_mod = modifier * average_size
 	size = max(1,gaussian(average_size + size_mod, size_deviation))
 
-	var/weight_deviation = 0.2 * average_fish_weight
-	var/weight_mod = modifier * average_fish_weight
-	fish_weight = max(1,gaussian(average_fish_weight + weight_mod, weight_deviation))
+	var/weight_deviation = 0.2 * average_weight
+	var/weight_mod = modifier * average_weight
+	fish_weight = max(1,gaussian(average_weight + weight_mod, weight_deviation))
 
 /obj/item/fish/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
