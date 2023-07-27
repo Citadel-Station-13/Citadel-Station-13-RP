@@ -219,7 +219,7 @@
 	fragile = 1	//It's a haphazard thing of glass, wire, and steel
 	reach = 2 // Spears are long.
 	attackspeed = 20
-	slowdown = 1.05
+	carry_weight = CARRY_WEIGHT_MELEE_SPEAR
 	var/obj/item/grenade/explosive = null
 	var/war_cry = "AAAAARGH!!!"
 

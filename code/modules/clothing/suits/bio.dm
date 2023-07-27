@@ -10,6 +10,7 @@
 	siemens_coefficient = 0.9
 	atom_flags = PHORONGUARD
 	clothing_flags = CLOTHING_THICK_MATERIAL | ALLOW_SURVIVALFOOD
+	encumbrance
 
 /obj/item/clothing/suit/bio_suit
 	name = "bio suit"

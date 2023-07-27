@@ -50,7 +50,8 @@
 	armor_type = /datum/armor/general/medieval
 	icon = 'icons/clothing/suit/armor/medieval/knight.dmi'
 	icon_state = "knight"
-	carry_weight = CARRY_WEIGHT_ARMOR_PLATE_ARMOR
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIEVAL_PLATE
+	carry_weight = CARRY_WEIGHT_ARMOR_MEDIEVIAL_PLATE
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -79,7 +80,8 @@
 	armor_type = /datum/armor/general/medieval/light
 	icon = 'icons/clothing/suit/armor/medieval/bastard.dmi'
 	icon_state = "bastard"
-	carry_weight = CARRY_WEIGHT_ARMOR_CHAINMAIL_ARMOR
+	carry_weight = CARRY_WEIGHT_ARMOR_MEDIEVAL_CHAIN
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIEVAL_CHAIN
 
 /obj/item/clothing/suit/armor/medieval/paladin
 	name = "elite paladin plate"
@@ -87,7 +89,8 @@
 	armor_type = /datum/armor/general/medieval/mesh
 	icon = 'icons/clothing/suit/armor/medieval/paladin.dmi'
 	icon_state = "paladin"
-	carry_weight = CARRY_WEIGHT_ARMOR_CHAINMAIL_ARMOR
+	carry_weight = CARRY_WEIGHT_ARMOR_MEDIEVAL_CHAIN
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIEVAL_CHAIN
 
 //Crusader stuff
 //Helmets

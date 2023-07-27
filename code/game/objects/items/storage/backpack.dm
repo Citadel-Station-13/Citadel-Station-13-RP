@@ -10,6 +10,8 @@
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
 	max_w_class = ITEMSIZE_LARGE
+	carry_weight = CARRY_WEIGHT_STORAGE_BACKPACK
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 	max_storage_space = INVENTORY_STANDARD_SPACE
 	var/flippable = 0
 	var/side = 0 //0 = right, 1 = left
@@ -164,6 +166,7 @@
 	icon_state = "duffle"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle", SLOT_ID_LEFT_HAND = "duffle")
 	carry_weight = CARRY_WEIGHT_STORAGE_DUFFLEBAG
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE
 
 /obj/item/storage/backpack/dufflebag/syndie
@@ -584,7 +587,8 @@
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
-	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
+	carry_weight = CARRY_WEIGHT_STORAGE_DUFFLEBAG
 	var/taurtype = /datum/sprite_accessory/tail/taur/horse //Acceptable taur type to be wearing this
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 

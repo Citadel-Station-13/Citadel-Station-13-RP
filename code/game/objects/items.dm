@@ -36,15 +36,23 @@
 	/// economic category for items
 	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
 
-	//* Carry Weight
-	/// alternative carry weight, only used while equipped. this is for stuff that's light but should be encumbering. overrides carry_weight
-	var/carry_encumberence = CARRY_WEIGHT_BASELINE
+	//? Carry Weight
+	//  todo: rename carry_weight to weight by getting rid of other var/weight variables.
+
+	/// encumberance.
+	/// calculated as max() of all encumbrance
+	/// result is calculated into slowdown value
+	/// and then max()'d with carry weight for the final slowdown used.
+	var/encumbrance = ITEM_ENCUMBRANCE_BASELINE
+	/// registered encumbrance - null if not in inventory
+	var/encumbrance_cached
 	/// carry weight in kgs. this might be generalized later so KEEP IT REALISTIC.
 	var/carry_weight = CARRY_WEIGHT_BASELINE
 	/// registered carry weight - null if not in inventory.
 	var/carry_weight_cached
 	/// Hard slowdown. Applied before carry weight.
 	/// This affects multiplicative movespeed.
+	#warn regex to slowdown again
 	var/hard_slowdown = 0
 
 	//? Combat
@@ -781,6 +789,21 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	var/mob/living/wearer = worn_mob()
 	if(istype(wearer))
 		wearer.adjust_current_carry_weight(.)
+
+/obj/item/proc/set_carry_weight(amount)
+	if(amount == carry_weight)
+		return
+	carry_weight = amount
+	if(!isnull(carry_encumberence))
+		// we're being overridden, don't bother
+		return
+	update_carry_weight()
+
+/obj/item/proc/set_carry_encumberence(amount)
+	if(amount == carry_encumberence)
+		return
+	carry_encumberence = amount
+	update_carry_weight()
 
 /**
  * grabs an attack verb to use

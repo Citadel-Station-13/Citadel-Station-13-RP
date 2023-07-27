@@ -69,6 +69,7 @@
 	icon_state = "bulletproof"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_SPECIALIZED_VEST
 	carry_weight = CARRY_WEIGHT_ARMOR_SPECIALIZED_VEST
 	armor_type = /datum/armor/station/ballistic
 	siemens_coefficient = 0.7
