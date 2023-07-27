@@ -44,3 +44,8 @@
 		SLOT_ID_HANDCUFFED,
 		SLOT_ID_LEGCUFFED
 	)
+
+//* carry weight
+
+/mob/living/carbon/carry_weight_to_slowdown(amount)
+	#warn impl

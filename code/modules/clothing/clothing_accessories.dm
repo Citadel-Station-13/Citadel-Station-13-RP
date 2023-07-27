@@ -15,6 +15,15 @@
 		return accessory_host.update_worn_icon()
 	return ..()
 
+/obj/item/clothing/get_carry_weight()
+	. = ..()
+	var/tally = 0
+	for(var/obj/item/I as anything in accessories)
+		tally += I.get_carry_weight()
+	tally *= (1 - weight_compensation_mult)
+	tally = max(0, tally - weight_compensation_flat)
+	. += tally
+
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
 	// propagate through accessories

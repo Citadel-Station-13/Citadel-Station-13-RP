@@ -286,4 +286,11 @@
 	update_carry_weight_slowdown()
 
 /mob/living/proc/update_carry_weight_slowdown()
-	#warn impl
+	var/slowdown = carry_weight_to_slowdown(cached_carry_weight)
+	if(slowdown)
+		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_carry_weight, multiplicative_slowdown = slowdown)
+	else
+		remove_movespeed_modifier(/datum/movespeed_modifier/mob_carry_weight)
+
+/mob/living/proc/carry_weight_to_slowdown(amount)
+	return 0

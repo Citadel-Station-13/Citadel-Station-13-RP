@@ -3,3 +3,6 @@
 
 /datum/movespeed_modifier/mob_staggered
 	variable = TRUE
+
+/datum/movespeed_modifier/mob_carry_weight
+	variable = TRUE
