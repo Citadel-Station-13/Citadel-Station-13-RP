@@ -731,9 +731,6 @@
 
 	. += attempt_vr(src,"examine_bellies",args)
 
-	if(showvoreprefs && ckey) //ckey so non-controlled mobs don't display it.
-		. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")
-
 /mob/living/Topic(href, href_list)	//Can't find any instances of Topic() being overridden by /mob/living in polaris' base code, even though /mob/living/carbon/human's Topic() has a ..() call
 	if(href_list["vore_prefs"])
 		display_voreprefs(usr)

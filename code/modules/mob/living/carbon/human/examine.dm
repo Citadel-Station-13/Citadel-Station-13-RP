@@ -480,8 +480,6 @@
 	if(print_flavor_text())
 		. += "[print_flavor_text()]"
 
-	. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")
-
 	. += applying_pressure
 
 	var/show_descs = show_descriptors_to(user)

@@ -40,6 +40,13 @@ interface CharacterProfileContext {
   flavortext_hands: string;
   flavortext_legs: string;
   flavortext_feet: string;
+	vore_digestable: string;
+	vore_devourable: string;
+	vore_feedable: string;
+	vore_leaves_remains: string;
+	vore_healbelly: string;
+	vore_spontaneous_prey: string;
+	vore_spontaneous_pred: string;
 }
 
 export const CharacterProfile = (props, context) => {
@@ -57,10 +64,10 @@ export const CharacterProfile = (props, context) => {
       <Window.Content scrollable>
         <Tabs>
           <Tabs.Tab onClick={() => setSelectedTab(1)}>
-            Visual Overview/Description
+            Visual Overview / Description
           </Tabs.Tab>
           <Tabs.Tab onClick={() => setSelectedTab(2)}>
-            Character Directory
+            Character Directory / Vore Preferences
           </Tabs.Tab>
         </Tabs>
         {selectedTab === 1 && (
@@ -69,17 +76,17 @@ export const CharacterProfile = (props, context) => {
               <CharacterProfileImageElement />
             </Flex.Item>
             <Flex.Item Flex-direction="column" pl="10px" width="100%">
-              <Collapsible title={combinedspeciesname}>
+              <Collapsible title={combinedspeciesname} open>
                 <Section style={{ "white-space": "pre-line" }}>
                   {data.species_text}
                 </Section>
               </Collapsible>
-              <Collapsible title="Flavor Text">
+              <Collapsible title="Flavor Text" open>
                 <Section>
                   <CharacterProfileDescElement />
                 </Section>
               </Collapsible>
-              <Collapsible title="OOC Notes">
+              <Collapsible title="OOC Notes" open>
                 <Section style={{ "white-space": "pre-line" }}>
                   {data.oocnotes}
                 </Section>
@@ -109,7 +116,19 @@ export const CharacterProfile = (props, context) => {
               )}
             </Flex.Item>
             <Divider vertical />
+            <Section title="Mechanical Vore Preferences">
+              <Flex.Item direction="column">
+                <Flex.Item>Digestable: {data.vore_digestable}</Flex.Item>
+                <Flex.Item>Devourable: {data.vore_devourable}</Flex.Item>
+                <Flex.Item>Feedable: {data.vore_feedable}</Flex.Item>
+                <Flex.Item>Leaves Remains: {data.vore_leaves_remains}</Flex.Item>
+                <Flex.Item>Belly Healing: {data.vore_healbelly}</Flex.Item>
+                <Flex.Item>Drop Vore Prey: {data.vore_spontaneous_prey}</Flex.Item>
+                <Flex.Item>Drop Vore Pred: {data.vore_spontaneous_pred}</Flex.Item>
+              </Flex.Item>
+            </Section>
           </Flex>
+
         )}
       </Window.Content>
     </Window>

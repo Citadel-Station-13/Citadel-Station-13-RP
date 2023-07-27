@@ -38,6 +38,13 @@ GLOBAL_LIST_EMPTY(cached_previews)
 	data["flavortext_hands"] = html_decode(H?.flavor_texts["hands"] || "")
 	data["flavortext_legs"] = html_decode(H?.flavor_texts["legs"] || "")
 	data["flavortext_feet"] = html_decode(H?.flavor_texts["feet"] || "")
+	data["vore_digestable"] = "[H?.digestable ? "Enabled" : "Disabled"]"
+	data["vore_devourable"] = "[H?.devourable ? "Enabled" : "Disabled"]"
+	data["vore_feedable"] = "[H?.feeding ? "Enabled" : "Disabled"]"
+	data["vore_leaves_remains"] = "[H?.digest_leave_remains ? "Enabled" : "Disabled"]"
+	data["vore_healbelly"] = "[H?.permit_healbelly ? "Allowed" : "Disallowed"]"
+	data["vore_spontaneous_prey"] = "[H?.can_be_drop_prey ? "Enabled" : "Disabled"]"
+	data["vore_spontaneous_pred"] = "[H?.can_be_drop_pred ? "Enabled" : "Disabled"]"
 
 	return data
 
