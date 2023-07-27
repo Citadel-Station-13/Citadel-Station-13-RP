@@ -29,7 +29,7 @@
 	melee_damage_lower = 1
 	melee_damage_upper = 2
 
-	speak_emote = list("hisses")
+	sayverb_say = "hisses"
 
 	say_list_type = /datum/say_list/lizard
 

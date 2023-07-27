@@ -75,7 +75,7 @@
 	exotic_amount = 10
 
 	faction = "lavaland"
-	speak_emote = list("bellows")
+	sayverb_say = "bellows"
 	say_list_type = /datum/say_list/goliath
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath
 

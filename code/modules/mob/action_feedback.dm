@@ -1,13 +1,4 @@
-/**
- * gives feedback for doing an action, e.g. using a tool on something
- *
- * use this instead of direct to_chats so mob remote control can be done better.
- *
- * @params
- * * msg - what we see/know
- * * target - what we're messing with
- */
-/mob/proc/action_feedback(msg, atom/target)
+/mob/action_feedback(msg, atom/target)
 	to_chat(src, msg)
 
 /**

@@ -82,6 +82,7 @@
 
 
 //? Cannot talk
+#warn deal wit hthis shit
 /mob/living/simple_mob/living_statue/say(whispering = FALSE)
 	return FALSE
 

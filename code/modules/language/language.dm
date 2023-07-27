@@ -269,7 +269,7 @@
 	if(speaking.can_speak_special(src))
 		if(universal_speak)
 			return 1
-		if(speaking && (speaking.language_flags & LANGUAGE_INNATE))
+		if(speaking && (speaking.language_flags & LANGUAGE_EVERYONE))
 			return 1
 		if(speaking in src.languages)
 			return 1

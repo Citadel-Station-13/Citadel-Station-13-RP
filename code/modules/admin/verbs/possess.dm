@@ -39,7 +39,7 @@
 		usr.name = usr.real_name
 		if(ishuman(usr))
 			var/mob/living/carbon/human/H = usr
-			H.name = H.get_visible_name()
+			H.name = H.get_visible_name_legacy()
 
 	usr.forceMove(O.loc)
 	usr.update_perspective()

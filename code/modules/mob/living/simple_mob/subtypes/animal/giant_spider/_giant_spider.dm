@@ -95,7 +95,7 @@
 	cold_damage_per_tick = 20
 	minbodytemp = 175 // So they can all survive Sif without having to be classed under /sif subtype.
 
-	speak_emote = list("chitters")
+	sayverb_say = "chitters"
 
 	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat/spidermeat

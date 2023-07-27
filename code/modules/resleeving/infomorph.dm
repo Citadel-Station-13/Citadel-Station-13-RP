@@ -408,6 +408,7 @@ var/list/infomorph_emotions = list(
 	else
 		to_chat(src,"<span class='warning'>You don't have a radio!</span>")
 
+#warn deal wit hthis shit
 /mob/living/silicon/infomorph/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	if(silence_time)
 		to_chat(src, "<font color=green>Communication circuits remain uninitialized.</font>")

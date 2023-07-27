@@ -495,11 +495,13 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define CASSETTE_TAPE_DATA_LANGUAGE 3
 #define CASSETTE_TAPE_DATA_DELAY 4
 #define CASSETTE_TAPE_DATA_OPCODE 5
+#define CASSETTE_TAPE_DATA_VOICE 6
 /// list length for data reads
-#define CASSETTE_TAPE_DATA_LEN 5
+#define CASSETTE_TAPE_DATA_LEN 6
 //* metadata
 #define CASSETTE_METADATA_LANGUAGE "%"
 #define CASSETTE_METADATA_NAME "^"
+#define CASSETTE_METADATA_VOICE "&"
 
 
 #define Z_ALL_TURFS(Z) block(locate(1, 1, Z), locate(world.maxx, world.maxy, Z))

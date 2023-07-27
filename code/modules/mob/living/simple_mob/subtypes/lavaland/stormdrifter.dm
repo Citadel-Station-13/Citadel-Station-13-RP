@@ -68,7 +68,7 @@
 	exotic_amount = 1
 
 	faction = "lavaland"
-	speak_emote = list("rumbles")
+	sayverb_say = "rumbles"
 	say_list_type = /datum/say_list/stormdrifter
 	ai_holder_type = /datum/ai_holder/simple_mob/stormdrifter
 

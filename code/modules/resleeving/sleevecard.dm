@@ -100,15 +100,3 @@
 		LEGACY_EX_ACT(infomorph, severity, null)
 	else
 		qdel(src)
-
-/obj/item/sleevecard/see_emote(mob/living/M, text)
-	if(infomorph && infomorph.client)
-		var/rendered = "<span class='message'>[text]</span>"
-		infomorph.show_message(rendered, 2)
-	..()
-
-/obj/item/sleevecard/show_message(msg, type, alt, alt_type)
-	if(infomorph && infomorph.client)
-		var/rendered = "<span class='message'>[msg]</span>"
-		infomorph.show_message(rendered, type)
-	..()

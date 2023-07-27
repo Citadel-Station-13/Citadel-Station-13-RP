@@ -56,7 +56,7 @@
 	base_attack_cooldown = 10 // One attack a second.
 	attack_sound = 'sound/weapons/bite.ogg'
 	attacktext = list("glomped")
-	speak_emote = list("chirps")
+	sayverb_say = "chirps"
 	friendly = list("pokes")
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee

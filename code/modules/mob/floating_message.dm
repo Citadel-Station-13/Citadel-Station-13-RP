@@ -6,7 +6,7 @@ var/list/floating_chat_colors = list()
 /atom/movable/proc/animate_chat(message, var/datum/language/speaking = null, small, list/show_to, duration = 30)
 	set waitfor = FALSE
 	if(!speaking)
-		var/datum/language/noise/noise
+		var/datum/language/audible_action/noise
 		speaking = noise
 	// Get rid of any URL schemes that might cause BYOND to automatically wrap something in an anchor tag
 	var/static/regex/url_scheme = new(@"[A-Za-z][A-Za-z0-9+-\.]*:\/\/", "g")

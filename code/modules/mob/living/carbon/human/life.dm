@@ -61,7 +61,7 @@
 
 	//TODO: seperate this out
 	//Update our name based on whether our face is obscured/disfigured
-	name = get_visible_name()
+	name = get_visible_name_legacy()
 	// This is not an ideal place for this but it will do for now.
 	if(wearing_rig && !wearing_rig.is_activated())
 		wearing_rig = null

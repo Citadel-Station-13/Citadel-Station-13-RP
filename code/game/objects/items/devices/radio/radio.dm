@@ -28,6 +28,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	suffix = "\[3\]"
 	icon_state = "walkietalkie"
 	item_state = "radio"
+	atom_flags = ATOM_HEAR
 
 	///FALSE for off
 	var/on = TRUE
@@ -608,7 +609,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 
 	var/range = receive_range(freq, level)
 	if(range > -1)
-		return get_mobs_or_objects_in_view(canhear_range, src)
+		return get_hearers_in_view(canhear_range, src)
 
 
 /obj/item/radio/examine(mob/user, dist)

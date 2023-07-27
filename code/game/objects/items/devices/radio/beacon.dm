@@ -24,7 +24,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	else
 		add_overlay("[base_icon_state]_on")
 
-/obj/item/radio/beacon/hear_talk()
+/obj/item/radio/beacon/talk_into(mob/living/M, message, channel, verb, datum/language/speaking)
 	return
 
 /obj/item/radio/beacon/send_hear()

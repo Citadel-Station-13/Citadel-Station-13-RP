@@ -1,3 +1,41 @@
+//* /atom/movable/proc/see() args
+
+#define MOVABLE_SEE_ARG_RAW_MESSAGE 1
+#define MOVABLE_SEE_ARG_MESSAGE 2
+#define MOVABLE_SEE_ARG_NAME 3
+#define MOVABLE_SEE_ARG_IDENTITY 4
+#define MOVABLE_SEE_ARG_ACTOR 5
+#define MOVABLE_SEE_ARG_REMOTE 6
+#define MOVABLE_SEE_ARG_PARAMS 7
+
+//* /atom/movable/proc/hear() args
+
+#define MOVABLE_HEAR_ARG_RAW_MESSAGE 1
+#define MOVABLE_HEAR_ARG_MESSAGE 2
+#define MOVABLE_HEAR_ARG_NAME 3
+#define MOVABLE_HEAR_ARG_IDENTITY 4
+#define MOVABLE_HEAR_ARG_ACTOR 5
+#define MOVABLE_HEAR_ARG_REMOTE 6
+#define MOVABLE_HEAR_ARG_PARAMS 7
+#define MOVABLE_HEAR_ARG_LANG 8
+#define MOVABLE_HEAR_ARG_SPANS 9
+#define MOVABLE_HEAR_ARG_VERB 10
+
+//* Parameters for:
+//* - /atom/movable procs hear_say() and see_action()
+//* - /atom/movable procs say() and emote()
+
+/// set to any truthy value to block observers from receiving
+#define SAYCODE_PARAM_NO_OBSERVERS "no_observers"
+/// stuff to append before the message when sending to players, and specifically players
+#define SAYCODE_PARAM_PREPEND_FOR_PLAYERS "cliented_prepend"
+/// we're whispering or subtling
+#define SAYCODE_PARAM_SUBTLEWHISPER "subtlewhisper"
+
+//* /atom/movable/proc/narrate() args
+
+#define MOVABLE_NARRATE_ARG_RAW_MESSAGE 1
+
 /// works as long as can see
 #define SAYCODE_TYPE_VISIBLE 1
 /// works as long as can hear

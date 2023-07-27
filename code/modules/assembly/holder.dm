@@ -155,11 +155,6 @@
 		master.receive_signal()
 	return TRUE
 
-/obj/item/assembly_holder/hear_talk(mob/living/M as mob, msg, verb, datum/language/speaking)
-	if(a_right)
-		a_right.hear_talk(M,msg,verb,speaking)
-	if(a_left)
-		a_left.hear_talk(M,msg,verb,speaking)
 /obj/item/assembly_holder/timer_igniter
 	name = "timer-igniter assembly"
 

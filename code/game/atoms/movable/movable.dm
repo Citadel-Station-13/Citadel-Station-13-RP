@@ -65,6 +65,18 @@
 	/// our default perspective - if none, a temporary one will be generated when a mob requires it
 	var/datum/perspective/self_perspective
 
+	//? Saycode
+	/// saying
+	var/sayverb_say = "says"
+	/// exclaiming
+	var/sayverb_exclaim = "exclaims"
+	/// yelling
+	var/sayverb_yell = "yells"
+	/// whispering
+	var/sayverb_whisper = "whispers"
+	/// questioning
+	var/sayverb_question = "asks"
+
 	//? Buckling
 	/// do we support the buckling system - if not, none of the default interactions will work, but comsigs will still fire!
 	var/buckle_allowed = FALSE
@@ -549,6 +561,16 @@
 	vis_contents -= em_render
 	qdel(em_render)
 	em_render = null
+
+//? Rendering
+
+/atom/movable/proc/assert_self_render_target()
+	if(render_target == REF(src))
+		return render_target
+	else if(render_target)
+		CRASH("already had render target")
+	render_target = REF(src)
+	return render_target
 
 //? atom colors
 

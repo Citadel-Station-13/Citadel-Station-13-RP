@@ -114,7 +114,7 @@
 	desc = "The pinnacle of occult technology, Behemoths are nothing shy of both an Immovable Object, and Unstoppable Force."
 	maxHealth = 600
 	health = 600
-	speak_emote = list("rumbles")
+	sayverb_say = "rumbles"
 	melee_damage_lower = 50
 	melee_damage_upper = 50
 	attacktext = list("brutally crushed")

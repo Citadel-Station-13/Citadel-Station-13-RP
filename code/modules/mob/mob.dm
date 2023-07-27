@@ -85,6 +85,9 @@
 			mind = null
 	// abilities
 	dispose_abilities()
+	// recognition system
+	QDEL_NULL(identity)
+	QDEL_NULL(recognition)
 	// this kicks out client
 	ghostize()
 	// rendering
@@ -176,6 +179,7 @@
 
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 // todo: refactor
+#warn uhhhh
 /mob/show_message(msg, type, alt, alt_type)
 	if(!client && !teleop)
 		return
@@ -760,15 +764,9 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/get_visible_gender()
 	return gender
 
-/mob/proc/see(message)
-	if(!is_active())
-		return 0
-	to_chat(src, message)
-	return 1
-
 /mob/proc/show_viewers(message)
 	for(var/mob/M in viewers())
-		M.see(message)
+		M.show_message(message, SAYCODE_TYPE_CONSCIOUS)
 
 /// This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()

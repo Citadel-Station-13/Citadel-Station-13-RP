@@ -195,6 +195,7 @@
 /mob/living/bot/attack_ai(var/mob/user)
 	return attack_hand(user)
 
+#warn deal wit hthis shit
 /mob/living/bot/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	verb = "beeps"
 

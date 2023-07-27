@@ -1,43 +1,68 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
+//! Say Module
+//! Contains all relevant core procs for displaying (transmitting) messages, visible or audible.
+
+#warn impl all
+
+/atom/proc/visible_action_dual(list/params, hard_range, soft_range, visible_hard, visible_soft, self, ident, ghosts)
+	var/list/atom/movable/targets = saycode_query(max(hard_range, soft_range))
+	#warn impl
+
+/atom/proc/audible_action_dual(list/params, hard_range, soft_range, audible_hard, audible_soft, self, ident, ghosts)
+	var/list/atom/movable/targets = saycode_query(max(hard_range, soft_range))
+	#warn impl
+
+/atom/proc/full_action_dual(list/params, hard_range, soft_range, visible_hard, audible_hard, visible_soft, audible_soft, visible_self, audible_self, face_ident, voice_identv)
+	var/list/atom/movable/targets = saycode_query(max(hard_range, soft_range))
+	#warn impl
+
+/atom/proc/visible_action(message, range, list/params, list/exclude_cache, self, ident, ghosts)
+	var/list/atom/movable/targets = saycode_query(range)
+	for(var/atom/movable/AM as anything in targets)
+		AM.see_action(message, message, name, ident, src, FALSE, list())
+
+/atom/proc/audible_action(message, range, list/params, list/exclude_cache, self, ident, ghosts)
+	var/list/atom/movable/targets = saycode_query(range)
+	for(var/atom/movable/AM as anything in targets)
+		AM.hear_say(message, message, name, ident, src, FALSE, list(), GLOB.audible_action_language, list())
+
+/atom/proc/full_action(visible, audible, range, list/params, list/exclude_cache, visible_self, audible_self, face_ident, voice_ident, ghosts)
+	var/list/atom/movable/targets = saycode_query(range)
+	for(var/atom/movable/AM as anything in targets)
+		if(!AM.see_action(visible, visible, name, face_ident, src, FALSE, list()))
+			AM.hear_say(audible, audible, name, voice_ident, src, FALSE, list(), GLOB.audible_action_language, list())
+
 /**
- * shim until saycode rewrite
+ * gets stuff that might be able to hear us
  */
-// todo: refactor this shit to be unified saycode, christ
-/atom/proc/atom_say(message, datum/language/L)
-	if(!message)
+/atom/proc/saycode_query(range, ghosts)
+	if(isbelly(loc))
+		var/obj/belly/B = loc
+		return B.effective_emote_hearers()
+	. = get_hearers_in_view(range, src)
+	if(ghosts)
+		. |= GLOB.observer_list
+
+/**
+ * standard proc for "extending" a hear across a portal or similar
+ */
+/atom/proc/saycode_relay_hear(range, list/heard_args)
+	// cheap loop guard
+	if(heard_args[MOVABLE_HEAR_ARG_REMOTE])
 		return
-	var/list/speech_bubble_hearers = list()
-	var/no_runechat = FALSE
-	for(var/mob/M in get_hearers_in_view(MESSAGE_RANGE_COMBAT_LOUD, src))
-		var/processed = message
-		if(L && !(L.name in M.languages))
-			processed = L.scramble(message)
-			no_runechat = TRUE
-		M.show_message("<span class='game say'><span class='name'>[src]</span> [L?.speech_verb || atom_say_verb], \"[processed]\"</span>", 2, null, 1)
-		if(M.client)
-			speech_bubble_hearers += M.client
+	var/list/atom/movable/targets = saycode_query(range)
+	for(var/atom/movable/AM as anything in targets)
+		AM.hear_say(arglist(heard_args))
 
-	if(length(speech_bubble_hearers) && !no_runechat)
-		var/image/I = generate_speech_bubble(src, "[bubble_icon][say_test(message)]", FLY_LAYER)
-		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
-		ASYNC
-			flick_overlay_global(I, speech_bubble_hearers, 3 SECONDS)
-		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), message, null, FALSE, speech_bubble_hearers, 3 SECONDS)
-
-/atom/proc/say_overhead(var/message, whispering, message_range = 7, var/datum/language/speaking = null, var/list/passed_hearing_list)
-	var/list/speech_bubble_hearers = list()
-	var/italics
-	if(whispering)
-		italics = TRUE
-	for(var/mob/M in get_mobs_in_view(message_range, src))
-		if(M.client)
-			speech_bubble_hearers += M.client
-	if(length(speech_bubble_hearers))
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
-
-/proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
-	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)
-	I.appearance_flags |= (RESET_COLOR|PIXEL_SCALE)
-	return I
-
-/atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
-	return
+/**
+ * standard proc for "extending" a see across a portal" or similar
+ */
+/atom/proc/saycode_relay_see(range, list/saw_args)
+	// cheap loop guard
+	if(saw_args[MOVABLE_SEE_ARG_REMOTE])
+		return
+	var/list/atom/movable/targets = saycode_query(range)
+	for(var/atom/movable/AM as anything in targets)
+		AM.see_action(arglist(saw_args))

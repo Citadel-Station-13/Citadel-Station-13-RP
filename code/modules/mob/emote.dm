@@ -23,7 +23,7 @@
 
 
 	if (message)
-		message = say_emphasis(message)
+		message = saycode_emphasis(message)
 		var/overhead_message = ("** [message] **")
 		say_overhead(overhead_message, FALSE, range)
 		SEND_SIGNAL(src, COMSIG_MOB_CUSTOM_EMOTE, src, message)
@@ -83,7 +83,7 @@
 	else
 		input = message
 
-	input = emoji_parse(say_emphasis(input))
+	input = emoji_parse(saycode_emphasis(input))
 
 	if(input)
 		log_ghostemote(input, src)

@@ -39,7 +39,7 @@
 	maxbodytemp = 500
 
 	speak_chance = 1
-	speak_emote = list("beeps","clicks","chirps")
+	sayverb_say = "clicks"
 
 	var/obj/item/radio/borg/radio = null
 	var/mob/living/silicon/ai/connected_ai = null

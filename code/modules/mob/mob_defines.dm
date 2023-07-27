@@ -19,6 +19,12 @@
 	/// Fullscreen objects
 	var/list/fullscreens = list()
 
+	//? Recognition
+	/// our recognition holder - if we have this, we recognize mobs based on recognition system
+	var/datum/recognition_holder/recognition
+	/// our identity holder - if we have this, we are recognized based on recognition system
+	var/datum/identity_holder/identity
+
 	//? Intents
 	/// How are we intending to move? Walk / run / etc.
 	var/m_intent = MOVE_INTENT_RUN
@@ -218,8 +224,6 @@
 	var/species_language = null
 	/// For species who can only speak their default and no other languages. Does not affect understanding.
 	var/only_species_language  = 0
-	/// Verbs used when speaking. Defaults to 'say' if speak_emote is null.
-	var/list/speak_emote = list("says")
 	/// Define emote default type, 1 for seen emotes, 2 for heard emotes.
 	var/emote_type = 1
 	/// Used for the ancient art of moonwalking.

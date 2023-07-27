@@ -37,7 +37,7 @@
 	has_langs = list("Mouse")
 	speak_chance = 1
 	speak = list("Squeek!","SQUEEK!","Squeek?")
-	speak_emote = list("squeeks","squeeks","squiks")
+	sayverb_say = "squeaks"
 	emote_hear = list("squeeks","squeaks","squiks")
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
 

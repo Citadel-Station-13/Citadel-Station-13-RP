@@ -1,3 +1,4 @@
+#warn deal wit hthis shit
 /mob/living/carbon/alien/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	verb = "says"
 	var/message_range = world.view
@@ -19,7 +20,7 @@
 
 	if(speaking == -1)
 		return
-		
+
 	message = trim(message)
 
 	if(!message || stat)
