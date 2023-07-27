@@ -200,7 +200,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
-/obj/effect/paint_stripe/purple,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "aht" = (
@@ -1856,7 +1856,7 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "pathfinder_office"
 	},
-/obj/effect/paint_stripe/purple,
+/obj/effect/paint_stripe/purplegray,
 /obj/structure/wall_frame/prepainted,
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
@@ -3320,7 +3320,7 @@
 "cBG" = (
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/purple,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/exploration/meeting)
 "cBH" = (
@@ -3525,7 +3525,7 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "pathfinder_office"
 	},
-/obj/effect/paint_stripe/purple,
+/obj/effect/paint_stripe/purplegray,
 /obj/structure/wall_frame/prepainted,
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
@@ -5403,7 +5403,7 @@
 	icon_state = "fwindow";
 	id = "chapel"
 	},
-/obj/effect/paint_stripe/purple,
+/obj/effect/paint_stripe/purplegray,
 /obj/structure/wall_frame/prepainted,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
@@ -10324,7 +10324,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/purple,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/exploration/pilot_prep)
 "hzN" = (
@@ -14709,7 +14709,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
-/obj/effect/paint_stripe/purple,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/cockpit)
 "kJr" = (
@@ -18215,7 +18215,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
-/obj/effect/paint_stripe/purple,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/crew_quarters/lounge)
 "mZM" = (
@@ -19523,7 +19523,7 @@
 "obo" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /obj/spawner/window/low_wall/borosillicate/full,
-/obj/effect/paint_stripe/purple,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "obs" = (
@@ -29446,7 +29446,7 @@
 	icon_state = "1-2"
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
-/obj/effect/paint_stripe/purple,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "uEc" = (
