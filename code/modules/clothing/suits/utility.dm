@@ -78,6 +78,7 @@
 	clothing_flags = CLOTHING_THICK_MATERIAL
 	body_cover_flags = HEAD|FACE|EYES
 	armor_type = /datum/armor/general/radsuit
+	carry_weight = CARRY_WEIGHT_ARMOR_BIORADSUIT_HELMET
 
 /obj/item/clothing/suit/radiation
 	name = "Radiation suit"
