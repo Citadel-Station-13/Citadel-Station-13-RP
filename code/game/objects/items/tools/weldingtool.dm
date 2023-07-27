@@ -453,7 +453,7 @@
 	icon_state = "hybwelder"
 	max_fuel = 80
 	eye_safety_modifier = -2	// Brighter than the sun. Literally, you can look at the sun with a welding mask of proper grade, this will burn through that.
-	carry_weight = CARRY_WEIGHT_HYBRID_TOOLS
+	carry_weight = ITEM_WEIGHT_HYBRID_TOOLS
 	tool_speed = 0.25
 	w_class = ITEMSIZE_LARGE
 	flame_intensity = 5

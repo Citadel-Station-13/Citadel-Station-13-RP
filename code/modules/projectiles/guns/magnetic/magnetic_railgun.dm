@@ -12,7 +12,7 @@
 	heavy = TRUE
 	slot_flags = SLOT_BELT
 	loaded = /obj/item/rcd_ammo/large
-	slowdown = CARRY_WEIGHT_GUN_BULKY	// Slowdown equals slowdown_worn, until we decide to import the system to differentiate between held and worn items
+	slowdown = ITEM_WEIGHT_GUN_BULKY	// Slowdown equals slowdown_worn, until we decide to import the system to differentiate between held and worn items
 	fire_delay = 1
 
 	var/initial_cell_type = /obj/item/cell/hyper
@@ -62,7 +62,7 @@
 	initial_capacitor_type = /obj/item/stock_parts/capacitor/super
 	fire_delay = 0
 
-	slowdown = CARRY_WEIGHT_GUN_RIDICULOUS
+	slowdown = ITEM_WEIGHT_GUN_RIDICULOUS
 
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_NO_CONTAINER
@@ -91,7 +91,7 @@
 
 	slot_flags = SLOT_BACK
 
-	slowdown = CARRY_WEIGHT_GUN_LIGHT
+	slowdown = ITEM_WEIGHT_GUN_LIGHT
 
 	power_cost = 100
 	load_type = /obj/item/magnetic_ammo
@@ -121,7 +121,7 @@
 
 	slot_flags = SLOT_BACK
 
-	slowdown = CARRY_WEIGHT_GUN_LIGHT
+	slowdown = ITEM_WEIGHT_GUN_LIGHT
 
 	power_cost = 400
 	projectile_type = /obj/projectile/bullet/magnetic/heated
@@ -177,7 +177,7 @@
 
 	slot_flags = SLOT_BACK
 
-	slowdown = CARRY_WEIGHT_GUN_NORMAL
+	slowdown = ITEM_WEIGHT_GUN_NORMAL
 
 	power_cost = 200
 	projectile_type = /obj/projectile/bullet/magnetic/flechette/hunting

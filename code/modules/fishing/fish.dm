@@ -14,9 +14,9 @@
 	/// Average size for this fish type in centimeters. Will be used as gaussian distribution with 20% deviation for fishing, bought fish are always standard size
 	var/average_size = 50
 	/// Weight in grams
-	var/weight = 1000
-	/// Average weight for this fish type in grams
-	var/average_weight = 1000
+	var/fish_weight = 1000
+	/// Average fish_weight for this fish type in grams
+	var/average_fish_weight = 1000
 
 	//? icon
 
@@ -114,22 +114,22 @@
 		START_PROCESSING(SSobj, src)
 
 	size = average_size
-	weight = average_weight
+	fish_weight = average_fish_weight
 
 /obj/item/fish/examine(mob/user, dist)
 	. = ..()
-	// All spacemen have magic eyes of fish weight perception until fish scale (get it?) is implemented.
+	// All spacemen have magic eyes of fish fish_weight perception until fish scale (get it?) is implemented.
 	. += SPAN_NOTICE("It's [size] cm long.")
-	. += SPAN_NOTICE("It weighs [weight] g.")
+	. += SPAN_NOTICE("It weighs [fish_weight] g.")
 
 /obj/item/fish/proc/randomize_weight_and_size(modifier = 0)
 	var/size_deviation = 0.2 * average_size
 	var/size_mod = modifier * average_size
 	size = max(1,gaussian(average_size + size_mod, size_deviation))
 
-	var/weight_deviation = 0.2 * average_weight
-	var/weight_mod = modifier * average_weight
-	weight = max(1,gaussian(average_weight + weight_mod, weight_deviation))
+	var/weight_deviation = 0.2 * average_fish_weight
+	var/weight_mod = modifier * average_fish_weight
+	fish_weight = max(1,gaussian(average_fish_weight + weight_mod, weight_deviation))
 
 /obj/item/fish/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()

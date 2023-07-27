@@ -10,7 +10,7 @@
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
 	max_w_class = ITEMSIZE_LARGE
-	carry_weight = CARRY_WEIGHT_STORAGE_BACKPACK
+	carry_weight = ITEM_WEIGHT_STORAGE_BACKPACK
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 	max_storage_space = INVENTORY_STANDARD_SPACE
 	var/flippable = 0
@@ -165,7 +165,7 @@
 	desc = "A large dufflebag for holding extra things."
 	icon_state = "duffle"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle", SLOT_ID_LEFT_HAND = "duffle")
-	carry_weight = CARRY_WEIGHT_STORAGE_DUFFLEBAG
+	carry_weight = ITEM_WEIGHT_STORAGE_DUFFLEBAG
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE
 
@@ -174,7 +174,7 @@
 	desc = "A large dufflebag for holding extra tactical supplies. This one appears to be made out of lighter material than usual."
 	icon_state = "duffle-syndie"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_syndie", SLOT_ID_LEFT_HAND = "duffle_syndie")
-	carry_weight = CARRY_WEIGHT_BASELINE
+	carry_weight = ITEM_WEIGHT_BASELINE
 
 /obj/item/storage/backpack/dufflebag/syndie/med
 	name = "medical dufflebag"
@@ -588,7 +588,7 @@
 	icon_state = "saddlebag"
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
-	carry_weight = CARRY_WEIGHT_STORAGE_DUFFLEBAG
+	carry_weight = ITEM_WEIGHT_STORAGE_DUFFLEBAG
 	var/taurtype = /datum/sprite_accessory/tail/taur/horse //Acceptable taur type to be wearing this
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 

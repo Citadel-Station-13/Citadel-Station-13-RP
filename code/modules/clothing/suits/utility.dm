@@ -19,7 +19,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/extinguisher)
 	carry_encumberence = ITEM_ENCUMBRANCE_ARMOR_FIRE_SUIT
-	carry_weight = CARRY_WEIGHT_ARMOR_FIRE_SUIT
+	carry_weight = ITEM_WEIGHT_ARMOR_FIRE_SUIT
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	clothing_flags = 0
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -78,7 +78,7 @@
 	clothing_flags = CLOTHING_THICK_MATERIAL
 	body_cover_flags = HEAD|FACE|EYES
 	armor_type = /datum/armor/general/radsuit
-	carry_weight = CARRY_WEIGHT_ARMOR_BIORADSUIT_HELMET
+	carry_weight = ITEM_WEIGHT_ARMOR_BIORADSUIT_HELMET
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_BIORAD_HELMET
 
 /obj/item/clothing/suit/radiation
@@ -90,7 +90,7 @@
 	permeability_coefficient = 0.50
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/radiation,/obj/item/clothing/mask/gas)
-	carry_weight = CARRY_WEIGHT_ARMOR_BIORADSUIT
+	carry_weight = ITEM_WEIGHT_ARMOR_BIORADSUIT
 	armor_type = /datum/armor/general/radsuit
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	clothing_flags = CLOTHING_THICK_MATERIAL

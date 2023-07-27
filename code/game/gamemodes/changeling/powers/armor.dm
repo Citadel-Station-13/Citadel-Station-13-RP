@@ -97,7 +97,7 @@
 	armor_type = /datum/armor/changeling/chitin
 	siemens_coefficient = 0.3
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
-	carry_weight = CARRY_WEIGHT_CHANGELING_ARMOR
+	carry_weight = ITEM_WEIGHT_CHANGELING_ARMOR
 
 /obj/item/clothing/suit/space/changeling/armored/Initialize(mapload)
 	. = ..()

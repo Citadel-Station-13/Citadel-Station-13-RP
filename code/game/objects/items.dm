@@ -47,7 +47,7 @@
 	/// registered encumbrance - null if not in inventory
 	var/encumbrance_cached
 	/// carry weight in kgs. this might be generalized later so KEEP IT REALISTIC.
-	var/carry_weight = CARRY_WEIGHT_BASELINE
+	var/carry_weight = ITEM_WEIGHT_BASELINE
 	/// registered carry weight - null if not in inventory.
 	var/carry_weight_cached
 	/// Hard slowdown. Applied before carry weight.

@@ -52,4 +52,4 @@
 	icon_state = "webvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	armor_type = /datum/armor/station/tactical
-	carry_weight = CARRY_WEIGHT_ARMOR_LIGHT
+	carry_weight = ITEM_WEIGHT_ARMOR_LIGHT

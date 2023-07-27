@@ -98,7 +98,7 @@
 		return
 	chained = cuffs
 	// todo: refactor
-	carry_encumberence = CARRY_WEIGHT_SHOES_CUFFED
+	carry_encumberence = ITEM_WEIGHT_SHOES_CUFFED
 	update_carry_weight()
 	icon_state = "orange1"
 
