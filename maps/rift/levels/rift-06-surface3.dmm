@@ -20036,6 +20036,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/item/radio/beacon/anchored,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/docking_hallway)
 "eNg" = (

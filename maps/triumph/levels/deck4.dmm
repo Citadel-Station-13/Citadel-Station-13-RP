@@ -4036,6 +4036,13 @@
 /obj/machinery/microwave,
 /turf/simulated/floor/tiled,
 /area/exploration/excursion_dock)
+"dlA" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/item/radio/beacon/anchored,
+/turf/simulated/floor/tiled,
+/area/shuttle/excursion/general)
 "dlI" = (
 /obj/structure/table/glass,
 /obj/item/surgical/scalpel,
@@ -13957,7 +13964,9 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "keg" = (
-/obj/machinery/tele_projector,
+/obj/machinery/tele_projector{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/teleporter)
 "kfJ" = (
@@ -23082,6 +23091,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/structure/catwalk,
+/obj/item/radio/beacon/anchored,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "qAn" = (
@@ -24040,12 +24050,12 @@
 	pixel_y = 6
 	},
 /obj/item/clothing/accessory/armor/tag/ntc{
-	pixel_y = 3;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 3
 	},
 /obj/item/clothing/accessory/armor/tag/ntc{
-	pixel_y = 3;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 3
 	},
 /obj/item/clothing/head/helmet{
 	pixel_x = -6;
@@ -29480,18 +29490,18 @@
 	pixel_y = 4
 	},
 /obj/item/clothing/accessory/armor/legguards/navy{
-	pixel_y = -1;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = -1
 	},
 /obj/item/clothing/accessory/armor/legguards/navy{
-	pixel_y = -1;
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = -1
 	},
 /obj/item/clothing/accessory/armor/armguards/navy,
 /obj/item/clothing/accessory/armor/armguards/navy,
 /obj/item/clothing/accessory/armor/legguards/navy{
-	pixel_y = -1;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = -1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
@@ -29842,6 +29852,7 @@
 /area/maintenance/central)
 "vbT" = (
 /obj/landmark/spawnpoint/overflow/station,
+/obj/item/radio/beacon/anchored,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "vbU" = (
@@ -37656,7 +37667,7 @@ ahf
 nmi
 ieD
 ieD
-qsk
+dlA
 ieD
 nmi
 hBX
