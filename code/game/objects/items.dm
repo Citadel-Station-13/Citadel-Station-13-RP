@@ -776,10 +776,16 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 //* Carry Weight
 
-/obj/item/proc/get_carry_weight()
+#warn rework encumbrance
+
+/obj/item/proc/get_weight()
 	return isnull(carry_encumberence)? carry_weight : carry_encumberence
 
-/obj/item/proc/update_carry_weight()
+/obj/item/proc/get_encumbrance()
+	#warn impl
+
+/obj/item/proc/update_weight()
+	#warn impl
 	if(isnull(carry_weight_cached))
 		return null
 	. = get_carry_weight()
@@ -790,7 +796,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(istype(wearer))
 		wearer.adjust_current_carry_weight(.)
 
-/obj/item/proc/set_carry_weight(amount)
+/obj/item/proc/update_encumbrance()
+	#warn impl
+
+/obj/item/proc/set_weight(amount)
+	#warn impl
 	if(amount == carry_weight)
 		return
 	carry_weight = amount
@@ -799,7 +809,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		return
 	update_carry_weight()
 
-/obj/item/proc/set_carry_encumberence(amount)
+/obj/item/proc/set_encumberence(amount)
+	#warn impl
 	if(amount == carry_encumberence)
 		return
 	carry_encumberence = amount

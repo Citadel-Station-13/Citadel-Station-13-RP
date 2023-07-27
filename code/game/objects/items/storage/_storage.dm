@@ -38,6 +38,12 @@
 
 	var/last_message = 0
 
+	#warn hook
+	/// carry weight mitigation, static. applied after multiplicative
+	var/weight_mitigation = 0
+	/// carry weight mitigation, multiplicative.
+	var/weight_multiply = 1
+
 /obj/item/storage/Destroy()
 	close_all()
 	QDEL_NULL(boxes)

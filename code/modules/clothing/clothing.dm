@@ -62,10 +62,11 @@
 	var/list/accessories
 
 	//* Carry Weight
-	/// carry weight compensation for accessories - flat. can't be negative, that makes no sense.
-	var/weight_compensation_flat = 0
-	/// carry weight compensation for accessories - multiplier. applied before flat. 0 to 1.
-	var/weight_compensation_mult = 0
+	#warn hook
+	/// encumbrance compensation for accessories - flat.
+	var/encumbrance_mitigation = 0
+	/// encumbrance multiplier for accessories.
+	var/encumbrance_multiply = 1
 
 /obj/item/clothing/Initialize(mapload)
 	. = ..()
