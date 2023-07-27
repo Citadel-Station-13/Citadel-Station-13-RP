@@ -26283,15 +26283,10 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/sauna)
 "sAq" = (
-/obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/suit/armor/vest/wolftaur{
 	pixel_x = -16;
 	pixel_y = 4
 	},
-/obj/item/clothing/suit/armor/vest/wolftaur{
-	pixel_x = -12;
-	pixel_y = 9
-	},
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
@@ -26300,37 +26295,6 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/rack/shelf/steel,
-/obj/effect/floor_decal/corner/red{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/red{
-	dir = 9
-	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/clothing/accessory/armor/armorplate{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate{
-	pixel_x = 5;
-	pixel_y = 8
-	},
 /obj/item/clothing/accessory/armor/armorplate{
 	pixel_x = 5;
 	pixel_y = 8
@@ -26378,34 +26342,6 @@
 /obj/item/clothing/accessory/armor/armorplate/stab{
 	pixel_x = 5;
 	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/stab{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/stab{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/stab{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/stab{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/stab{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/stab{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/tag/nts{
-	pixel_x = -5;
-	pixel_y = 9
 	},
 /obj/item/clothing/accessory/armor/tag/nts{
 	pixel_x = -5;
@@ -26421,31 +26357,7 @@
 	},
 /obj/item/clothing/accessory/armor/tag/nts{
 	pixel_x = -5;
-	pixel_y = 9
-	},
-/obj/item/clothing/accessory/armor/tag/nts{
-	pixel_x = -5;
 	pixel_y = 6
-	},
-/obj/item/clothing/accessory/armor/tag/nts{
-	pixel_x = -5;
-	pixel_y = 9
-	},
-/obj/item/clothing/accessory/armor/tag/nts{
-	pixel_x = -5;
-	pixel_y = 6
-	},
-/obj/item/clothing/accessory/armor/tag/nts{
-	pixel_x = -5;
-	pixel_y = 9
-	},
-/obj/item/clothing/accessory/armor/tag/nts{
-	pixel_x = -5;
-	pixel_y = 6
-	},
-/obj/item/clothing/accessory/armor/tag/nts{
-	pixel_x = -5;
-	pixel_y = 9
 	},
 /obj/item/clothing/accessory/armor/tag/nts{
 	pixel_x = -5;
@@ -26454,26 +26366,6 @@
 /obj/item/clothing/accessory/armor/tag/ntc{
 	pixel_x = -5;
 	pixel_y = 3
-	},
-/obj/item/clothing/accessory/armor/tag/ntc{
-	pixel_x = -5;
-	pixel_y = 3
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
 	},
 /obj/item/clothing/head/helmet{
 	pixel_x = -6;
