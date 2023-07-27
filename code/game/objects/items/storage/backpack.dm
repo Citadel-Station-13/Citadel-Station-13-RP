@@ -163,7 +163,7 @@
 	desc = "A large dufflebag for holding extra things."
 	icon_state = "duffle"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle", SLOT_ID_LEFT_HAND = "duffle")
-	slowdown = 1
+	carry_weight = CARRY_WEIGHT_STORAGE_DUFFLEBAG
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE
 
 /obj/item/storage/backpack/dufflebag/syndie
@@ -171,7 +171,7 @@
 	desc = "A large dufflebag for holding extra tactical supplies. This one appears to be made out of lighter material than usual."
 	icon_state = "duffle-syndie"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle_syndie", SLOT_ID_LEFT_HAND = "duffle_syndie")
-	slowdown = 0
+	carry_weight = CARRY_WEIGHT_BASELINE
 
 /obj/item/storage/backpack/dufflebag/syndie/med
 	name = "medical dufflebag"

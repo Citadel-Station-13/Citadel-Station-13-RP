@@ -107,6 +107,7 @@
 	icon_state = "cult_helmet"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
 	armor_type = /datum/armor/cult/space
+	carry_weight = CARRY_WEIGHT_CULT_VOIDSUIT_HELMET
 	siemens_coefficient = 0
 
 /obj/item/clothing/head/helmet/space/cult/cultify()
@@ -119,7 +120,7 @@
 	desc = "A bulky suit of armour, bristling with spikes. It looks space-worthy."
 	w_class = ITEMSIZE_NORMAL
 	allowed = list(/obj/item/book/tome,/obj/item/melee/cultblade,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
-	slowdown = 1
+	carry_weight = CARRY_WEIGHT_CULT_VOIDSUIT
 	armor_type = /datum/armor/cult/space
 	siemens_coefficient = 0
 	inv_hide_flags = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER

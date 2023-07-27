@@ -37,10 +37,15 @@
 	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
 
 	//* Carry Weight
+	/// alternative carry weight, only used while equipped. this is for stuff that's light but should be encumbering. overrides carry_weight
+	var/carry_encumberence = CARRY_WEIGHT_BASELINE
 	/// carry weight in kgs. this might be generalized later so KEEP IT REALISTIC.
 	var/carry_weight = CARRY_WEIGHT_BASELINE
 	/// registered carry weight - null if not in inventory.
 	var/carry_weight_cached
+	/// Hard slowdown. Applied before carry weight.
+	/// This affects multiplicative movespeed.
+	var/hard_slowdown = 0
 
 	//? Combat
 	/// Amount of damage we do on melee.
@@ -105,8 +110,6 @@
 	var/permeability_coefficient = 1
 	/// For electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
-	/// How much clothing is slowing you down. Negative values speeds you up
-	var/slowdown_legacy = 0
 	/// Suit storage stuff.
 	var/list/allowed = null
 	/// All items can have an uplink hidden inside, just remember to add the triggers.
@@ -766,7 +769,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 //* Carry Weight
 
 /obj/item/proc/get_carry_weight()
-	return carry_weight
+	return isnull(carry_encumberence)? carry_weight : carry_encumberence
 
 /obj/item/proc/update_carry_weight()
 	if(isnull(carry_weight_cached))

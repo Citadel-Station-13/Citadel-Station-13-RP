@@ -18,7 +18,8 @@
 	permeability_coefficient = 0.50
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/extinguisher)
-	slowdown = 1.0
+	carry_encumberence = CARRY_WEIGHT_ARMOR_FIRESUIT
+	carry_weight = CARRY_WEIGHT_ARMOR_LIGHT
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	clothing_flags = 0
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -30,14 +31,6 @@
 
 /obj/item/clothing/suit/fire/firefighter
 	icon_state = "firesuit"
-
-/obj/item/clothing/suit/fire/heavy //Is this even used?? -S2-
-	name = "firesuit"
-	desc = "A suit that protects against extreme fire and heat."
-	//icon_state = "thermal"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black_suit", SLOT_ID_LEFT_HAND = "black_suit")
-	w_class = ITEMSIZE_LARGE//bulky item
-	slowdown = 1.5
 
 /*
  * Bomb protection
@@ -95,7 +88,7 @@
 	permeability_coefficient = 0.50
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/radiation,/obj/item/clothing/mask/gas)
-	slowdown = 1.5
+	carry_weight = CARRY_WEIGHT_ARMOR_BIORADSUIT
 	armor_type = /datum/armor/general/radsuit
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	clothing_flags = CLOTHING_THICK_MATERIAL

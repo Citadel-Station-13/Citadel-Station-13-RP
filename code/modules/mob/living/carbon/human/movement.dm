@@ -84,6 +84,9 @@
 	var/turf/T = get_turf(src)
 	tally += calculate_turf_slowdown(T, direct)
 
+	if(CE_SPEEDBOOST in chem_effects)
+		tally -= 0.5
+
 	// Item related slowdown.
 	var/item_tally = calculate_item_encumbrance()
 	if(item_tally > 0) // is it greater than 0? run the wacky shit

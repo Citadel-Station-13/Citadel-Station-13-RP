@@ -19,7 +19,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
-	slowdown = 1.0
+	carry_weight = CARRY_WEIGHT_ARMOR_BIORADSUIT
 	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/pen,/obj/item/flashlight/pen)
 	armor_type = /datum/armor/general/biosuit
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER

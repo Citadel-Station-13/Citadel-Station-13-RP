@@ -34,7 +34,8 @@ Key procs
 
 	/// Determines order. Lower priorities are applied first.
 	var/priority = 0
-	var/flags = NONE
+	/// flags
+	var/movespeed_modifier_flags = NONE
 
 	/// Multiplicative slowdown
 	var/multiplicative_slowdown = 0
@@ -51,7 +52,8 @@ Key procs
 	/// Movetypes this never applies to
 	var/blacklisted_movetypes = NONE
 
-	/// Other modification datums this conflicts with.
+	/// Other modification datums this conflicts with. Enum string.
+	/// If there is, it prioritizes the highest slow *or* the highest speedup, with abs().
 	var/conflicts_with
 
 /datum/movespeed_modifier/New()

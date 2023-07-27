@@ -258,6 +258,11 @@
 
 //* carry weight
 
+// don't call this you shouldn't need to
+/mob/living/proc/update_carry_weight()
+	recalculate_carry_weight()
+	update_carry_weight_slowdown()
+
 /mob/living/proc/recalculate_carry_weight()
 	var/tally = 0
 	for(var/obj/item/I as anything in get_equipped_items())
@@ -294,3 +299,14 @@
 
 /mob/living/proc/carry_weight_to_slowdown(amount)
 	return 0
+
+//* hard movespeed slowdown
+
+/mob/living/proc/update_item_movespeed()
+	var/tally = 0
+	for(var/obj/item/I as anything in get_equipped_items())
+		tally += I.hard_slowdown
+	if(tally)
+		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_item_slowdown)
+	else
+		remove_movespeed_modifier(/datum/movespeed_modifier/mob_item_slowdown)
