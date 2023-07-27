@@ -528,7 +528,7 @@
 		activate_pin(3)
 		return FALSE
 	var/obj/item/I = get_pin_data_as_type(IC_INPUT, 1, /obj/item)
-	if(istype(I) && (I.reagents.total_volume) && check_target(I))
+	if(istype(I) && (I.reagents?.total_volume) && check_target(I))
 		var/list/reagent_names_list = list()
 		for(var/datum/reagent/R in reagents?.reagent_list)
 			reagent_names_list.Add(R.name)
