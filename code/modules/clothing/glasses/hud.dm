@@ -111,7 +111,7 @@
 		name = "[initial(name)]"
 		user.visible_message("[user] deletes the prescription data on the [src.name].")
 
-/obj/item/clothing/glasses/omnihud/attack_self(mob/user)
+/obj/item/clothing/glasses/omnihud/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -209,7 +209,7 @@
 	vision_flags = SEE_TURFS //but they can spot breaches. Due to the way HUDs work, they don't provide darkvision up-close the way mesons do.
 
 
-/obj/item/clothing/glasses/omnihud/eng/meson/attack_self(mob/user)
+/obj/item/clothing/glasses/omnihud/eng/meson/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -296,7 +296,7 @@
 	toggleable = 1
 	vision_flags = SEE_TURFS //but they can spot breaches. Due to the way HUDs work, they don't provide darkvision up-close the way mesons do.
 
-/obj/item/clothing/glasses/omnihud/eng/meson/attack_self(mob/user)
+/obj/item/clothing/glasses/omnihud/eng/meson/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

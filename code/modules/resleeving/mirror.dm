@@ -169,7 +169,7 @@
 		to_chat(usr, "You must target the torso.")
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/item/mirrortool/attack_self(mob/user)
+/obj/item/mirrortool/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -204,5 +204,5 @@
 		imp = I
 		user.visible_message("[user] inserts the [I] into the [src].", "You insert the [I] into the [src].")
 	update_icon()
-	update_held_icon()
+	update_worn_icon()
 	return

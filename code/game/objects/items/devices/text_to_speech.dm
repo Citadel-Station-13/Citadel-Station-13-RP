@@ -6,7 +6,7 @@
 	w_class = ITEMSIZE_SMALL
 	var/named
 
-/obj/item/text_to_speech/attack_self(mob/user)
+/obj/item/text_to_speech/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

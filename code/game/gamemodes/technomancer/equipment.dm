@@ -193,7 +193,7 @@
 	slot_flags = SLOT_BELT
 	attack_verb = list("beaten", "smashed", "struck", "whacked")
 
-/obj/item/scepter/attack_self(mob/user)
+/obj/item/scepter/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

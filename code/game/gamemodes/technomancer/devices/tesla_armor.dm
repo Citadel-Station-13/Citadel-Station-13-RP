@@ -52,7 +52,7 @@
 			return 1
 	return 0
 
-/obj/item/clothing/suit/armor/tesla/attack_self(mob/user)
+/obj/item/clothing/suit/armor/tesla/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -41,7 +41,7 @@
 	if(!is_open_container())
 		. += "The cap is sealed."
 
-/obj/item/reagent_containers/cartridge/dispenser/attack_self(mob/user)
+/obj/item/reagent_containers/cartridge/dispenser/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

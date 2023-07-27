@@ -67,7 +67,7 @@
 	else
 		to_chat(user,"<span class='warning'> A warning pops up on the LED display on the side of the device, informing you that the target is not able to have their mind swapped with!</span>")
 
-/obj/item/bodysnatcher/attack_self(mob/user)
+/obj/item/bodysnatcher/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

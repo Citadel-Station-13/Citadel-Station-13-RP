@@ -224,7 +224,7 @@
 	hidden_uplink = new(src, target_mind, telecrystals)
 	icon_state = "radio"
 
-/obj/item/radio/uplink/attack_self(mob/user)
+/obj/item/radio/uplink/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -235,7 +235,7 @@
 	. = ..()
 	hidden_uplink = new(src)
 
-/obj/item/multitool/uplink/attack_self(mob/user)
+/obj/item/multitool/uplink/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

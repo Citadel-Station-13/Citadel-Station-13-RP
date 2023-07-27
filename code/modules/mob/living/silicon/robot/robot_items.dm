@@ -16,7 +16,7 @@
 	. = ..()
 	files = new /datum/research/techonly(src) //Setup the research data holder.
 
-/obj/item/portable_destructive_analyzer/attack_self(mob/user)
+/obj/item/portable_destructive_analyzer/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -274,7 +274,7 @@
 	name = "Printing Pen"
 	var/mode = 1
 
-/obj/item/pen/robopen/attack_self(mob/user)
+/obj/item/pen/robopen/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -335,7 +335,7 @@
 	if(istype(target,/obj/structure/table))
 		deploy_paper(get_turf(target))
 
-/obj/item/form_printer/attack_self(mob/user)
+/obj/item/form_printer/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -368,7 +368,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/borg/combat/shield/attack_self(mob/user)
+/obj/item/borg/combat/shield/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -443,7 +443,7 @@
 	. += "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored."
 	. += "It is set to deploy [mode ? "doors" : "walls"]"
 
-/obj/item/inflatable_dispenser/attack_self(mob/user)
+/obj/item/inflatable_dispenser/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -161,7 +161,7 @@
 	update_icon()
 	visible_message(SPAN_WARNING("[src] clicks, resetting itself from the electromagnetic interference."))
 
-/obj/item/gps/attack_self(mob/user)
+/obj/item/gps/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

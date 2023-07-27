@@ -13,7 +13,7 @@ after the sprite has been set you can use it again to remove overlays that may h
 	var/path
 	var/state
 
-/obj/item/spritechanger/attack_self(mob/user)
+/obj/item/spritechanger/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

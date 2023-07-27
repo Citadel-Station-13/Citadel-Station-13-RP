@@ -1,4 +1,4 @@
-/obj/item/clothing/_inv_return_attached()
+/obj/item/clothing/inv_slot_attached()
 	if(!accessories)
 		return ..()
 	. = ..()
@@ -160,7 +160,7 @@
 
 	..()
 
-/obj/item/clothing/attack_hand(mob/user, list/params)
+/obj/item/clothing/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)
 	if(LAZYLEN(accessories) && src.loc == user)
 		for(var/obj/item/clothing/accessory/A in accessories)

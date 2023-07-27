@@ -21,10 +21,8 @@
 	//glow_intensity = 0
 
 	var/mob/living/carbon/human/humanform
-	var/datum/modifier/healing
+	var/list/obj/item/previously_held
 
-	var/obj/prev_left_hand
-	var/obj/prev_right_hand
 	var/human_brute = 0
 	var/human_burn = 0
 	var/is_wide = FALSE
@@ -339,6 +337,12 @@
 	//Drop all our things
 	var/list/things_to_drop = contents.Copy()
 	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear) //And whatever else we decide for balancing.
+	var/list/prev_held = list()
+	for(var/obj/item/I as anything in get_held_items())
+		if(I.w_class >= WEIGHT_CLASS_SMALL)
+			continue
+		things_to_not_drop += I
+		prev_held += I
 	var/obj/item/clothing/head/new_hat
 	var/has_hat = FALSE
 	things_to_drop -= things_to_not_drop //Crunch the lists
@@ -366,9 +370,7 @@
 	//Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
-
-	if(l_hand) blob.prev_left_hand = l_hand //Won't save them if dropped above, but necessary if handdrop is disabled.
-	if(r_hand) blob.prev_right_hand = r_hand
+	blob.previously_held = prev_held
 
 	//Put our owner in it (don't transfer var/mind)
 	blob.afflict_paralyze(20 * 2)
@@ -472,8 +474,8 @@
 		B.owner = src
 
 	//vore_organs.Cut()
-	if(blob.prev_left_hand) put_in_left_hand(blob.prev_left_hand) //The restore for when reforming.
-	if(blob.prev_right_hand) put_in_right_hand(blob.prev_right_hand)
+	for(var/obj/item/I as anything in blob.previously_held)
+		put_in_hands_or_drop(I)
 
 	Life(1, SSmobs.times_fired)
 

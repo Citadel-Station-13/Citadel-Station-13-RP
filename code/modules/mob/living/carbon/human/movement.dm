@@ -114,7 +114,7 @@
 
 	// Hands are also included, to make the 'take off your armor instantly and carry it with you to go faster' trick no longer viable.
 	// This is done seperately to disallow negative numbers (so you can't hold shoes in your hands to go faster).
-	for(var/obj/item/I in list(r_hand, l_hand))
+	for(var/obj/item/I in get_held_items())
 		. += max(I.slowdown, 0)
 
 // Similar to above, but for turf slowdown.
@@ -195,10 +195,11 @@
 		prob_slip = 0
 
 	//Check hands and mod slip
-	if(!l_hand)	prob_slip -= 2
-	else if(l_hand.w_class <= 2)	prob_slip -= 1
-	if (!r_hand)	prob_slip -= 2
-	else if(r_hand.w_class <= 2)	prob_slip -= 1
+	for(var/i in 1 to get_nominal_hand_count())
+		if(isnull(held_items[i]))
+			prob_slip -= 2
+		else if(held_items[i].w_class <= 2)
+			prob_slip -= 1
 
 	prob_slip = round(prob_slip)
 	return(prob_slip)

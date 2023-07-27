@@ -121,10 +121,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), SLOT_ID_MASK, INV_OP_SILENT | INV_OP_FLUFFLESS)
 	if(H.backbag == 1)
 		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_BACK, INV_OP_SILENT | INV_OP_FLUFFLESS)
-		H.internal = H.back
 	else
 		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), /datum/inventory_slot_meta/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
-		H.internal = H.r_hand
 	H.internal = locate(/obj/item/tank) in H.contents
 	if(istype(H.internal,/obj/item/tank) && H.internals)
 		H.internals.icon_state = "internal1"

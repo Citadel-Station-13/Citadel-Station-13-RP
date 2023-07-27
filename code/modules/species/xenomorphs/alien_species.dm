@@ -330,7 +330,6 @@
 	has_a_intent =  1
 	has_m_intent =  1
 	has_warnings =  1
-	has_hands =     1
 	has_drop =      1
 	has_throw =     1
 	has_resist =    1

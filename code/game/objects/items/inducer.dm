@@ -161,7 +161,7 @@
 	inducing = FALSE
 	user.visible_message(SPAN_NOTICE("[user] recharged [A]."), SPAN_NOTICE("Rechraged [A] with [used] units of power."))
 
-/obj/item/inducer/attack_self(mob/user)
+/obj/item/inducer/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

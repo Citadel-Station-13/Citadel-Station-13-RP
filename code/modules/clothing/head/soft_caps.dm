@@ -12,7 +12,7 @@
 	flipped=0
 	..()
 
-/obj/item/clothing/head/soft/attack_self(mob/user)
+/obj/item/clothing/head/soft/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

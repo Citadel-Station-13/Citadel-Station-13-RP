@@ -293,7 +293,7 @@
 	//Something with pulling things
 	if(locate(/obj/item/grab, mob))
 		add_delay_grab = 7
-		var/list/grabbed = mob.ret_grab()
+		var/list/grabbed = mob.grabbing_recursive_flat()
 		if(grabbed)
 			if(grabbed.len == 2)
 				grabbed -= mob

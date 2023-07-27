@@ -35,7 +35,7 @@
 	. += "This capsule has the [template.name] stored."
 	. += template.description
 
-/obj/item/survivalcapsule/attack_self(mob/user)
+/obj/item/survivalcapsule/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -210,7 +210,7 @@
 
 	return FALSE
 
-/obj/item/gps/computer/attack_hand(mob/user, list/params)
+/obj/item/gps/computer/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	attack_self(user)
 
 //Bed

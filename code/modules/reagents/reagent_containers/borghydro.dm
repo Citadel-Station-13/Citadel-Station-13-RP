@@ -94,7 +94,7 @@
 			add_attack_logs(user, L, "Borg injected with [reagent_ids[mode]]")
 			to_chat(user, "<span class='notice'>[t] units injected. [reagent_volumes[reagent_ids[mode]]] units remaining.</span>")
 
-/obj/item/reagent_containers/borghypo/attack_self(mob/user)
+/obj/item/reagent_containers/borghypo/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return //Change the mode

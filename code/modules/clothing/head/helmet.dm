@@ -64,7 +64,7 @@
 	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 	action_button_name = "Toggle Visor"
 
-/obj/item/clothing/head/helmet/riot/attack_self(mob/user)
+/obj/item/clothing/head/helmet/riot/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -272,7 +272,7 @@
 
 	var/blessed = TRUE
 
-/obj/item/clothing/head/helmet/para/attack_self(mob/user)
+/obj/item/clothing/head/helmet/para/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -301,7 +301,7 @@
 	armor_type = /datum/armor/centcom/ert/paracausal
 	action_button_name = "Enable Wards"
 
-/obj/item/clothing/head/helmet/para/inquisitor/attack_self(mob/user)
+/obj/item/clothing/head/helmet/para/inquisitor/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

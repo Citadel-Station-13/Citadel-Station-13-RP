@@ -225,7 +225,7 @@
 			to_chat(user, "You pull the veil over to cover your face.")
 		update_worn_icon()
 
-/obj/item/clothing/mask/donator/dancer/attack_self(mob/user)
+/obj/item/clothing/mask/donator/dancer/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

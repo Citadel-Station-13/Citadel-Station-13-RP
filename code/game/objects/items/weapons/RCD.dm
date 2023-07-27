@@ -103,7 +103,7 @@
 	return TRUE
 
 // Changes which mode it is on.
-/obj/item/rcd/attack_self(mob/user)
+/obj/item/rcd/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -363,7 +363,7 @@
 /obj/item/rcd/electric/mounted/hardsuit
 
 // Old method for swapping modes as there is no way to bring up the radial.
-/obj/item/rcd/electric/mounted/hardsuit/attack_self(mob/user)
+/obj/item/rcd/electric/mounted/hardsuit/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

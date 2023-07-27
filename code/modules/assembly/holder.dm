@@ -86,7 +86,7 @@
 		a_right.holder_movement()
 
 
-/obj/item/assembly_holder/attack_hand(mob/user, list/params)//Perhapse this should be a holder_pickup proc instead, can add if needbe I guess
+/obj/item/assembly_holder/attack_hand(mob/user, datum/event_args/clickchain/e_args)//Perhapse this should be a holder_pickup proc instead, can add if needbe I guess
 	if(a_left && a_right)
 		a_left.holder_movement()
 		a_right.holder_movement()
@@ -109,7 +109,7 @@
 	else
 		..()
 
-/obj/item/assembly_holder/attack_self(mob/user)
+/obj/item/assembly_holder/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

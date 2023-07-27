@@ -77,7 +77,7 @@
 	if(M) M.update_strings()
 	return transfer
 
-/obj/item/stack/material/attack_self(mob/user)
+/obj/item/stack/material/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	if(!allow_window_autobuild || !material.build_windows(user, src))
 		return ..()
 
@@ -284,7 +284,7 @@
 	update_mass()
 	return
 
-/obj/item/stack/material/supermatter/attack_hand(mob/user, list/params)
+/obj/item/stack/material/supermatter/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 
 	update_mass()

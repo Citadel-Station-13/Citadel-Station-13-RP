@@ -104,7 +104,7 @@
 			module_string += "\a [module.name], "
 	return module_string
 
-/obj/item/switchtool/attack_self(mob/user)
+/obj/item/switchtool/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

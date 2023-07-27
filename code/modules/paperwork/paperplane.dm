@@ -49,7 +49,7 @@
 
 	add_overlay(overlays_to_add)
 
-/obj/item/paperplane/attack_self(mob/user)
+/obj/item/paperplane/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

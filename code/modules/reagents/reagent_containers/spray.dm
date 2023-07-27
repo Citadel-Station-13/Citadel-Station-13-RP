@@ -69,7 +69,7 @@
 			D.set_up(my_target, spray_size, 10)
 	return
 
-/obj/item/reagent_containers/spray/attack_self(mob/user)
+/obj/item/reagent_containers/spray/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	if(!possible_transfer_amounts)
 		return
 	amount_per_transfer_from_this = next_list_item(amount_per_transfer_from_this, possible_transfer_amounts)
@@ -133,7 +133,7 @@
 	. = ..()
 	. += "The safety is [safety ? "on" : "off"]."
 
-/obj/item/reagent_containers/spray/pepper/attack_self(mob/user)
+/obj/item/reagent_containers/spray/pepper/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	safety = !safety
 	to_chat(usr, "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>")
 
@@ -234,7 +234,7 @@
 	. = ..()
 	. += "The tank is [pumped ? "depressurized" : "pressurized"]."
 
-/obj/item/reagent_containers/spray/squirt/attack_self(mob/user)
+/obj/item/reagent_containers/spray/squirt/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	pumped = !pumped
 	to_chat(usr, "<span class = 'notice'>You pump the handle [pumped ? "to depressurize" : "to pressurize"] the tank.</span>")
 

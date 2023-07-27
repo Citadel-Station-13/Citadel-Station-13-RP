@@ -70,7 +70,7 @@
 		SStgui.update_uis(src) //Update all UIs attached to src
 	return ..()
 
-/obj/item/transfer_valve/attack_self(mob/user)
+/obj/item/transfer_valve/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

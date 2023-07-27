@@ -22,7 +22,7 @@
 
 	P.change_color(pipe_colors[mode])
 
-/obj/item/pipe_painter/attack_self(mob/user)
+/obj/item/pipe_painter/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

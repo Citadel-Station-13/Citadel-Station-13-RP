@@ -21,7 +21,7 @@
 			robot.hud_used.toggle_show_robot_modules()
 	return ..(user, TRUE)
 
-/obj/item/storage/single_use/attack_self(mob/user)
+/obj/item/storage/single_use/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

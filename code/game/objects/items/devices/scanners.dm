@@ -377,7 +377,7 @@ HALOGEN COUNTER	- Radcount on mobs
 
 	return atmosanalyzer_scan(src, air, user)
 
-/obj/item/analyzer/attack_self(mob/user)
+/obj/item/analyzer/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -433,7 +433,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/mass_spectrometer/attack_self(mob/user)
+/obj/item/mass_spectrometer/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

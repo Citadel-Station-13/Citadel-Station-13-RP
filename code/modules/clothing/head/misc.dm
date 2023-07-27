@@ -552,7 +552,7 @@
 	icon_state = "reindeer0"
 	action_button_name = "Toggle Nose"
 
-/obj/item/clothing/head/reindeer/attack_self(mob/user)
+/obj/item/clothing/head/reindeer/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -694,7 +694,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	action_button_name = "Toggle Hood"
 
-/obj/item/clothing/head/cowl/attack_self(mob/user)
+/obj/item/clothing/head/cowl/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

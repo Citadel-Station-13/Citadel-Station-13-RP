@@ -28,7 +28,7 @@
 
 /obj/item/clothing/accessory/badge/proc/set_desc(var/mob/living/carbon/human/H)
 
-/obj/item/clothing/accessory/badge/attack_self(mob/user)
+/obj/item/clothing/accessory/badge/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -56,7 +56,7 @@
 	icon_state = "sheriff"
 	item_state = "goldbadge"
 
-/obj/item/clothing/accessory/badge/sheriff/attack_self(mob/user)
+/obj/item/clothing/accessory/badge/sheriff/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -79,7 +79,7 @@
 	icon_state = "holobadge-cord"
 	slot_flags = SLOT_MASK | SLOT_TIE | SLOT_BELT
 
-/obj/item/clothing/accessory/badge/holo/attack_self(mob/user)
+/obj/item/clothing/accessory/badge/holo/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -88,7 +88,7 @@
 	var/datum/translation_context/variable/ours = context
 	ours.copy_knowledge(theirs)
 
-/obj/item/universal_translator/attack_self(mob/user)
+/obj/item/universal_translator/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -448,7 +448,7 @@
 	W.add_fingerprint(user)
 	return handle_item_insertion(W, user)
 
-/obj/item/storage/attack_hand(mob/user, list/params)
+/obj/item/storage/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.l_store == src && !H.get_active_held_item())	//Prevents opening if it's in a pocket.
@@ -598,7 +598,7 @@
 			O.emp_act(severity)
 	..()
 
-/obj/item/storage/attack_self(mob/user)
+/obj/item/storage/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -723,7 +723,7 @@
 		closed_state = "[initial(icon_state)]"
 	. = ..()
 
-/obj/item/storage/trinketbox/attack_self(mob/user)
+/obj/item/storage/trinketbox/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -334,7 +334,7 @@
 	else
 		return attack_hand(user)
 
-/obj/machinery/attack_hand(mob/user, list/params)
+/obj/machinery/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(IsAdminGhost(user))
 		return FALSE
 	if(inoperable(MAINT))

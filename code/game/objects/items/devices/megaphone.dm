@@ -41,7 +41,7 @@
 			spamcheck = 0
 		return
 
-/obj/item/megaphone/attack_self(mob/user)
+/obj/item/megaphone/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

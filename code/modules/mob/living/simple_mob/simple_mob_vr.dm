@@ -170,7 +170,7 @@
 /mob/living/simple_mob/UnarmedAttack(var/atom/A, var/proximity)
 	. = ..()
 
-	if(a_intent == INTENT_GRAB && isliving(A) && !has_hands)
+	if(a_intent == INTENT_GRAB && isliving(A) && !hand_count)
 		animal_nom(A)
 
 /mob/living/simple_mob/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)

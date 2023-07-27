@@ -29,7 +29,7 @@
 	projectile_type=/obj/projectile/beam/pulse
 	charge_cost = 120
 
-/obj/item/gun/energy/pulse_rifle/destroyer/attack_self(mob/user)
+/obj/item/gun/energy/pulse_rifle/destroyer/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

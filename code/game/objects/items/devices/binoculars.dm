@@ -12,7 +12,7 @@
 	//materials = list("metal" = 50, MAT_GLASS = 50)
 
 
-/obj/item/binoculars/attack_self(mob/user)
+/obj/item/binoculars/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

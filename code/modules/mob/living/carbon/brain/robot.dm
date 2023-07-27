@@ -29,7 +29,7 @@
 	to_chat(brainmob, "<span class='notify'>You feel slightly disoriented. That's normal when you're little more than a complex circuit.</span>")
 	return
 
-/obj/item/mmi/digital/robot/attack_self(mob/user)
+/obj/item/mmi/digital/robot/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

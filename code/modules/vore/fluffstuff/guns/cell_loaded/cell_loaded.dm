@@ -68,7 +68,7 @@
 	update_charge()
 	update_icon()
 
-/obj/item/gun/ballistic/cell_loaded/attack_self(mob/user)
+/obj/item/gun/ballistic/cell_loaded/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	if(!chambered)
 		return
 

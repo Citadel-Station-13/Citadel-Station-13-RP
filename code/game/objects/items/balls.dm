@@ -27,7 +27,7 @@
 		'sound/items/toysqueak3.ogg'
 		)
 
-/obj/item/toy/tennis/rainbow/attack_self(mob/user)
+/obj/item/toy/tennis/rainbow/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -62,7 +62,7 @@
 	icon_state = "[initial(icon_state)][imps.len]"
 	germ_level = 0
 
-/obj/item/backup_implanter/attack_self(mob/user)
+/obj/item/backup_implanter/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

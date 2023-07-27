@@ -23,7 +23,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 		scan_mob(target, user)
 	to_chat(user,"<span class='warning'>Not a compatible subject to work with!</span>")
 
-/obj/item/sleevemate/attack_self(mob/user)
+/obj/item/sleevemate/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

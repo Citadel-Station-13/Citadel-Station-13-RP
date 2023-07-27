@@ -168,7 +168,7 @@
 	light_color = "#3728ff"
 	var/active
 
-/obj/item/spaceflare/attack_self(mob/user)
+/obj/item/spaceflare/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -68,7 +68,7 @@
 	. = ..()
 	trigger_group = src
 
-/obj/item/sniper_rifle_part/attack_self(mob/user)
+/obj/item/sniper_rifle_part/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

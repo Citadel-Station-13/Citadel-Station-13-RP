@@ -69,7 +69,7 @@
 /*
  * Bike Horns
  */
-/obj/item/bikehorn/attack_self(mob/user)
+/obj/item/bikehorn/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

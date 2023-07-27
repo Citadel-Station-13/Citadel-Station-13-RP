@@ -20,7 +20,7 @@
 	. = ..()
 	camera = new camtype(src)
 
-/obj/item/camerabug/attack_self(mob/user)
+/obj/item/camerabug/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -137,7 +137,7 @@
 	var/obj/machinery/camera/bug/selected_camera
 	var/list/obj/machinery/camera/bug/cameras = new()
 
-/obj/item/bug_monitor/attack_self(mob/user)
+/obj/item/bug_monitor/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

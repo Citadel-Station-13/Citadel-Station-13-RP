@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 // todo: rendering handling/init/destruction should be on mob and client
 //       mob side should handle mob state
 //       client side should handle apply/remove/switch.

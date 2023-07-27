@@ -101,7 +101,7 @@
 /obj/item/gun/ballistic/automatic/sts35/update_icon(ignore_inhands)
 	. = ..()
 
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/wt550
 	name = "machine pistol"
@@ -170,7 +170,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/automatic/z8/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/automatic/z8/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && use_launcher)
 		launcher.unload(user)
 	else
@@ -193,7 +193,7 @@
 
 /obj/item/gun/ballistic/automatic/z8/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/z8/examine(mob/user, dist)
 	. = ..()
@@ -251,15 +251,15 @@
 	cover_open = !cover_open
 	to_chat(user, "<span class='notice'>You [cover_open ? "open" : "close"] [src]'s cover.</span>")
 	update_icon()
-	update_held_icon()
+	update_worn_icon()
 
-/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user)
+/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	if(cover_open)
 		toggle_cover(user) //close the cover
 	else
 		return ..() //once closed, behave like normal
 
-/obj/item/gun/ballistic/automatic/lmg/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/automatic/lmg/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(!cover_open && user.get_inactive_held_item() == src)
 		toggle_cover(user) //open the cover
 	else
@@ -267,7 +267,7 @@
 
 /obj/item/gun/ballistic/automatic/lmg/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/lmg/update_icon_state()
 	. = ..()
@@ -467,7 +467,7 @@
 /obj/item/gun/ballistic/automatic/tommygun/update_icon_state()
 	. = ..()
 	icon_state = (ammo_magazine)? "tommygun" : "tommygun-empty"
-//	update_held_icon()
+//	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/bullpup // Admin abuse assault rifle. ToDo: Make this less shit. Maybe remove its autofire, and make it spawn with only 10 rounds at start.
 	name = "bullpup rifle"
@@ -502,7 +502,7 @@
 
 /obj/item/gun/ballistic/automatic/bullpup/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/fal
 	name = "FN-FAL"
@@ -753,7 +753,7 @@
 
 /obj/item/gun/ballistic/automatic/lmg/foam/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/lmg/foam/handle_suicide(mob/living/user)
 	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")

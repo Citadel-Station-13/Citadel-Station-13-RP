@@ -9,7 +9,7 @@
 	slot = ACCESSORY_SLOT_MEDAL
 	var/owner = 0	//To prevent people from just renaming the thing if they steal it
 
-/obj/item/clothing/accessory/permit/attack_self(mob/user)
+/obj/item/clothing/accessory/permit/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

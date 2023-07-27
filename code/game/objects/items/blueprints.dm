@@ -46,7 +46,7 @@
 	var/can_expand_areas_into = AREA_SPACE	// Can expand station areas only into space.
 	var/can_rename_areas_in = AREA_STATION	// Only station areas can be reanamed
 
-/obj/item/blueprints/attack_self(mob/user)
+/obj/item/blueprints/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

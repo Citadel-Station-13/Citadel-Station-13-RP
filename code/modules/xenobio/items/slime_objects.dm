@@ -7,7 +7,7 @@
 	description_info = "Use in your hand to attempt to create a Promethean.  It functions similarly to a positronic brain, in that a ghost is needed to become the Promethean."
 	var/searching = 0
 
-/obj/item/slime_cube/attack_self(mob/user)
+/obj/item/slime_cube/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -93,7 +93,7 @@
 	qdel(src)
 	return . | CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/item/slime_crystal/attack_self(mob/user)
+/obj/item/slime_crystal/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
