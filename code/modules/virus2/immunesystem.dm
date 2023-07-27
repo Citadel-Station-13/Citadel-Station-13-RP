@@ -114,7 +114,7 @@
 					var/obj/structure/bed/B = locate() in body.loc
 					if (B && body.buckled != null)//fucking chairs n stuff
 						tally += 1
-					if (body.sleeping)
+					if (body.resting_intentionally)
 						if (tally < 2)
 							tally += 1
 						else
