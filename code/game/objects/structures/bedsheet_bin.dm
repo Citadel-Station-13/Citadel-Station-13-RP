@@ -99,6 +99,44 @@ LINEN BINS
 	desc = "Made from the dreams of those who wonder at the stars."
 	icon_state = "sheetcosmos"
 
+/obj/item/bedsheet/janitor
+	name = "janitor bedsheet"
+	desc = "This bedsheet also functions as a wet sign!"
+
+/obj/item/bedsheet/cook
+	name = "cook bedsheet"
+	desc = "A bedsheet designed to look incredibly tasty."
+
+/obj/item/bedsheet/clown2
+	name = "clown bedsheet"
+	desc = "Honk."
+
+/obj/item/bedsheet/command
+	name = "command bedsheet"
+	desc = "A bedsheet fit for a command officer."
+
+/obj/item/bedsheet/hydro
+	name = "hydroponics bedsheet"
+	desc = "It is incredibly unlikely that you can plant this."
+
+/obj/item/bedsheet/science
+	name = "science bedsheet"
+	desc = "Sadly, deconstructing this will not give you anything useful."
+
+/obj/item/bedsheet/engineering
+	name = "engineering bedsheet"
+	desc = "An incredibly dangerous bedsheet."
+
+/obj/item/bedsheet/medical2
+	name = "medical bedsheet"
+	desc = "Sleep is the best medicine, right?"
+
+/obj/item/bedsheet/sec
+	name = "security bedsheet"
+	desc = "For sleeping on the job."
+
+// double sheets
+
 /obj/item/bedsheet/double
 	icon_state = "doublesheet"
 	item_state = "sheet"
