@@ -45,11 +45,11 @@
 	/// and then max()'d with carry weight for the final slowdown used.
 	var/encumbrance = ITEM_ENCUMBRANCE_BASELINE
 	/// registered encumbrance - null if not in inventory
-	var/encumbrance_cached
+	var/encumbrance_registered
 	/// carry weight in kgs. this might be generalized later so KEEP IT REALISTIC.
-	var/carry_weight = ITEM_WEIGHT_BASELINE
+	var/weight = ITEM_WEIGHT_BASELINE
 	/// registered carry weight - null if not in inventory.
-	var/carry_weight_cached
+	var/weight_registered
 	/// Hard slowdown. Applied before carry weight.
 	/// This affects multiplicative movespeed.
 	#warn regex to slowdown again

@@ -258,12 +258,14 @@
 
 //* carry weight
 
-// don't call this you shouldn't need to
-/mob/living/proc/update_carry_weight()
-	recalculate_carry_weight()
-	update_carry_weight_slowdown()
+#warn rework encumbrance
 
-/mob/living/proc/recalculate_carry_weight()
+// don't call this you shouldn't need to
+/mob/living/proc/update_carry()
+	recalculate_carry()
+	update_carry_slowdown()
+
+/mob/living/proc/recalculate_carry()
 	var/tally = 0
 	for(var/obj/item/I as anything in get_equipped_items())
 		tally += I.get_carry_weight()
@@ -272,33 +274,27 @@
 	cached_carry_weight = tally
 	update_carry_weight_slowdown()
 
-/mob/living/proc/add_current_carry_weight(amount)
+/mob/living/proc/adjust_current_carry_weight(amount)
 	if(!amount)
 		return
 	cached_carry_weight += amount
 	update_carry_weight_slowdown()
 
-/mob/living/proc/remove_current_carry_weight(amount)
-	if(!amount)
-		return
-	cached_carry_weight -= amount
-	update_carry_weight_slowdown()
+/mob/living/proc/adjust_current_carry_encumbrance(amount)
+	#warn impl
 
-/mob/living/proc/adjust_current_carry_weight(amount)
-	if(!amount)
-		return
-	cached_carry_weight += tally
-	update_carry_weight_slowdown()
+/mob/living/proc/carry_weight_to_slowdown(amount)
+	return 0
 
-/mob/living/proc/update_carry_weight_slowdown()
+/mob/living/proc/carry_encumbrance_to_slowdown(amount)
+	return 0
+
+/mob/living/proc/update_carry_slowdown()
 	var/slowdown = carry_weight_to_slowdown(cached_carry_weight)
 	if(slowdown)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_carry_weight, multiplicative_slowdown = slowdown)
 	else
 		remove_movespeed_modifier(/datum/movespeed_modifier/mob_carry_weight)
-
-/mob/living/proc/carry_weight_to_slowdown(amount)
-	return 0
 
 //* hard movespeed slowdown
 

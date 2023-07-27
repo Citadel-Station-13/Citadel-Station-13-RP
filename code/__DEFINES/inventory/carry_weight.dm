@@ -1,4 +1,4 @@
-//? Despite this being weight.dm, this contains defines for:
+//? Despite this being carry_weight.dm, this contains defines for:
 //? carry strength - how much someone can carry
 //? weight - how much stuff weighs
 //? encumberence - how hard it is to move with an item

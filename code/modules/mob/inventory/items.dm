@@ -108,6 +108,7 @@
 		var/mob/living/L = user
 		L.remove_current_carry_weight(carry_weight_cached)
 	carry_weight_cached = null
+	#warn *scream
 
 	return ((. & COMPONENT_ITEM_DROPPED_RELOCATE)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
@@ -135,6 +136,7 @@
 	if(isliving(user))
 		var/mob/living/L = user
 		L.add_current_carry_weight(carry_weight_cached)
+	#warn *scream
 
 /**
  * get the slowdown we incur when we're worn
