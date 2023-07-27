@@ -387,7 +387,7 @@
 	edge = 1
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
 	armor_penetration = 50
-	carry_weight = ITEM_WEIGHT_BASELINE
+	weight = ITEM_WEIGHT_BASELINE
 
 //This currently just kills the user. lol
 /*

@@ -113,7 +113,7 @@
 	icon_state = "hybscrewdriver"
 	item_state = "screwdriver_black"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
-	carry_weight = ITEM_WEIGHT_HYBRID_TOOLS
+	weight = ITEM_WEIGHT_HYBRID_TOOLS
 	w_class = ITEMSIZE_NORMAL
 	tool_sound = 'sound/effects/uncloak.ogg'
 	tool_speed = 0.4

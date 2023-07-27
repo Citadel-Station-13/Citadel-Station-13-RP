@@ -779,42 +779,45 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 #warn rework encumbrance
 
 /obj/item/proc/get_weight()
-	return isnull(carry_encumberence)? carry_weight : carry_encumberence
+	return weight
 
 /obj/item/proc/get_encumbrance()
-	#warn impl
+	return encumbrance
 
 /obj/item/proc/update_weight()
-	#warn impl
-	if(isnull(carry_weight_cached))
+	if(isnull(weight_registered))
 		return null
-	. = get_carry_weight()
-	if(. == carry_weight_cached)
+	. = get_weight()
+	if(. == weight_registered)
 		return 0
-	. -= carry_weight_cached
+	. -= weight_registered
 	var/mob/living/wearer = worn_mob()
 	if(istype(wearer))
 		wearer.adjust_current_carry_weight(.)
 
 /obj/item/proc/update_encumbrance()
-	#warn impl
+	if(isnull(encumbrance_registered))
+		return null
+	. = get_encumbrance()
+	if(. == encumbrance_registered)
+		return 0
+	. -= encumbrance_registered
+	var/mob/living/wearer = worn_mob()
+	if(istype(wearer))
+		wearer.adjust_current_carry_encumbrance(.)
+
 
 /obj/item/proc/set_weight(amount)
-	#warn impl
-	if(amount == carry_weight)
+	if(amount == weight)
 		return
-	carry_weight = amount
-	if(!isnull(carry_encumberence))
-		// we're being overridden, don't bother
-		return
-	update_carry_weight()
+	weight = amount
+	update_weight()
 
 /obj/item/proc/set_encumbrance(amount)
-	#warn impl
-	if(amount == carry_encumberence)
+	if(amount == encumbrance)
 		return
-	carry_encumberence = amount
-	update_carry_weight()
+	encumberence = amount
+	update_encumbrance()
 
 /obj/item/proc/set_slowdown(amount)
 	if(amount == hard_slowdown)

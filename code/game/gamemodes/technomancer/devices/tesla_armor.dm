@@ -12,7 +12,7 @@
 	desc = "This rather dangerous looking armor will hopefully shock your enemies, and not you in the process."
 	icon_state = "tesla_armor_1" //wip
 	blood_overlay_type = "armor"
-	carry_weight = 0
+	weight = ITEM_WEIGHT_BASELINE
 	armor_type = /datum/armor/none
 	action_button_name = "Toggle Tesla Armor"
 	var/active = 1	//Determines if the armor will zap or block

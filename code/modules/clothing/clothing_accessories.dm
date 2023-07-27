@@ -15,7 +15,9 @@
 		return accessory_host.update_worn_icon()
 	return ..()
 
-/obj/item/clothing/get_weight()
+/obj/item/clothing/get_encumbrance()
+	. = ..()
+	#warn aaa
 	. = ..()
 	var/tally = 0
 	for(var/obj/item/I as anything in accessories)

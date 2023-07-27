@@ -81,7 +81,7 @@
 	damage_force = 8
 	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
-	carry_weight = ITEM_WEIGHT_HYBRID_TOOLS
+	weight = ITEM_WEIGHT_HYBRID_TOOLS
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_PHORON = 2)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked", "warped", "blasted")
 	tool_sound = 'sound/effects/stealthoff.ogg'

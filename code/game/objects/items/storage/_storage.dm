@@ -39,6 +39,8 @@
 	var/last_message = 0
 
 	#warn hook
+	/// carry weight in us
+	var/weight_cached = 0
 	/// carry weight mitigation, static. applied after multiplicative
 	var/weight_mitigation = 0
 	/// carry weight mitigation, multiplicative.
@@ -56,7 +58,9 @@
 	QDEL_NULL(closer)
 	return ..()
 
-
+/obj/item/storage/get_weight()
+	. = ..()
+	. += weight_cached
 
 /obj/item/storage/AltClick(mob/user)
 	if(user in is_seeing)
