@@ -1,6 +1,4 @@
 
-/// How much shoes slow you down by default. Negative values speed you up.
-#define SHOES_SLOWDOWN          0
 /// For how bright candles are.
 #define CANDLE_LUM 3
 

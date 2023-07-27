@@ -6,7 +6,7 @@
 	icon_state = "plasmaman_suit"
 	icon_override = 'icons/mob/plasmeme/suits.dmi'
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. Seems like it doesn't protect from much else."
-	slowdown = 1
+	carry_weight = CARRY_WEIGHT_PHORONOID_SUIT
 	clothing_flags = ALLOWINTERNALS
 	armor_type = /datum/armor/phoronoid
 	allowed = list(/obj/item/tank)
@@ -35,6 +35,7 @@
 	clothing_flags = ALLOWINTERNALS | FLEXIBLEMATERIAL
 	armor_type = /datum/armor/phoronoid
 	light_overlay = "plasmaman_overlay"
+	carry_weight = CARRY_WEIGHT_PHORONOID_HELMET
 
 //
 // SEC
