@@ -115,4 +115,4 @@
 
 	if(istype(vr_holder.loc, /obj/machinery/vr_sleeper))
 		var/obj/machinery/vr_sleeper/V = vr_holder.loc
-		INVOKE_ASYNC(V, /obj/machinery/vr_sleeper/proc/go_out, TRUE)
+		INVOKE_ASYNC(V, TYPE_PROC_REF(/obj/machinery/vr_sleeper, go_out), TRUE)

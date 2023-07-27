@@ -103,7 +103,7 @@
 		return
 	use_power(10)
 	var/list/affecting = loc.contents - src		// moved items will be all in loc
-	addtimer(CALLBACK(src, .proc/convey, affecting), 1)
+	addtimer(CALLBACK(src, PROC_REF(convey), affecting), 1)
 
 /obj/machinery/conveyor/proc/convey(list/affecting)
 	var/turf/T = get_step(src, movedir)

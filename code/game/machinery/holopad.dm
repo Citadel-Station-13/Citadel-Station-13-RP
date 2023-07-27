@@ -960,8 +960,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		user.action_feedback(SPAN_WARNING("You're already focusing somewhere else!"), source)
 		return FALSE
 	remoting = user
-	RegisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE, .proc/cleanup_remote_presence)
-	RegisterSignal(remoting, COMSIG_MOB_ITEM_EQUIPPED, .proc/on_item_equipped)
+	RegisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE, PROC_REF(cleanup_remote_presence))
+	RegisterSignal(remoting, COMSIG_MOB_ITEM_EQUIPPED, PROC_REF(on_item_equipped))
 	action_hang_up.grant(remoting)
 	action_swap_view.grant(remoting)
 	if(isAI(user))
@@ -1260,9 +1260,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/effect/overlay/hologram/holopad/ai/examine(mob/user, dist)
 	. = ..()
 	//If you need an ooc_notes copy paste, this is NOT the one to use.
-	var/ooc_notes = owner.ooc_notes
-	if(ooc_notes)
-		. += SPAN_BOLDNOTICE("OOC Notes: <a href='?src=\ref[owner];ooc_notes=1'>\[View\]</a>\n")
+	. += SPAN_BOLDNOTICE("Character Profile: <a href='?owner=\ref[src];character_profile=1'>\[View\]</a>")
 	if(vored)
 		. += SPAN_WARNING("It seems to have [vored] inside of it!")
 
