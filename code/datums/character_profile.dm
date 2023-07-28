@@ -19,28 +19,32 @@ GLOBAL_LIST_EMPTY(cached_previews)
 	. = ..()
 	var/data[0]
 	var/mob/living/carbon/human/H = host.resolve()
-	var/image/ingame_preview
-	var/preview_name = "preview_[rand(1,9999)]_[H.name].png" //nobody should ever be named the same in a round, but just in case, a little randomness to prevent collisions.
 
-	if (!(H.name in GLOB.cached_previews))
-		ingame_preview = get_flat_icon(H)
-		if(!ingame_preview) //flat icon fails for whatever reason, this should probably throw an error.
-			ingame_preview = image('icons/404_profile_not_found.dmi')
-		GLOB.cached_previews[H.name] = ingame_preview
-	else
-		ingame_preview = GLOB.cached_previews[H.name]
-
-	user << browse_rsc(ingame_preview, preview_name)
-
-	data["flavortext"] = H?.flavor_text || ""
 	data["oocnotes"] = H?.ooc_notes || ""
-	data["headshot_url"] = H?.client?.prefs?.headshot_url || ""
-	data["preview_name"] = preview_name
+	data["headshot_url"] = H?.client?.prefs?.headshot_url
+	data["fullref_url"] = H?.client?.prefs?.full_ref_url
+	data["fullref_toggle"] = H?.client?.prefs?.full_ref_toggle
 	data["directory_visible"] = H?.client?.prefs?.show_in_directory
 	data["vore_tag"] = H?.client?.prefs?.directory_tag || "Unset"
 	data["erp_tag"] = H?.client?.prefs?.directory_erptag || "Unset"
 	data["species_name"] = H?.species?.name
-	data["species_text"] = replacetext(H?.species?.blurb, "<br/>", "\n")
+	data["species_text"] = html_decode(replacetext(H?.species?.blurb, "<br/>", "\n"))
+	data["flavortext_general"] = html_decode(H?.flavor_texts["general"] || "")
+	data["flavortext_head"] = html_decode(H?.flavor_texts["head"] || "")
+	data["flavortext_face"] = html_decode(H?.flavor_texts["face"] || "")
+	data["flavortext_eyes"] = html_decode(H?.flavor_texts["eyes"] || "")
+	data["flavortext_torso"] = html_decode(H?.flavor_texts["torso"] || "")
+	data["flavortext_arms"] = html_decode(H?.flavor_texts["arms"] || "")
+	data["flavortext_hands"] = html_decode(H?.flavor_texts["hands"] || "")
+	data["flavortext_legs"] = html_decode(H?.flavor_texts["legs"] || "")
+	data["flavortext_feet"] = html_decode(H?.flavor_texts["feet"] || "")
+	data["vore_digestable"] = "[H?.digestable ? "Enabled" : "Disabled"]"
+	data["vore_devourable"] = "[H?.devourable ? "Enabled" : "Disabled"]"
+	data["vore_feedable"] = "[H?.feeding ? "Enabled" : "Disabled"]"
+	data["vore_leaves_remains"] = "[H?.digest_leave_remains ? "Enabled" : "Disabled"]"
+	data["vore_healbelly"] = "[H?.permit_healbelly ? "Allowed" : "Disallowed"]"
+	data["vore_spontaneous_prey"] = "[H?.can_be_drop_prey ? "Enabled" : "Disabled"]"
+	data["vore_spontaneous_pred"] = "[H?.can_be_drop_pred ? "Enabled" : "Disabled"]"
 
 	return data
 

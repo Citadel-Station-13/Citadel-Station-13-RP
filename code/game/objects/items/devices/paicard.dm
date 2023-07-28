@@ -14,6 +14,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	var/obj/item/radio/radio
 	var/looking_for_personality = 0
 	var/mob/living/silicon/pai/pai
+	var/image/cached_holo_image
 
 /obj/item/paicard/relaymove(var/mob/user, var/direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
@@ -283,53 +284,39 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 /obj/item/paicard/proc/setPersonality(mob/living/silicon/pai/personality)
 	pai = personality
 	cut_overlays()
-	add_overlay("pai-happy")
+	add_overlay("pai-underlay")
+	add_overlay("pai-null")
 
 /obj/item/paicard/proc/removePersonality()
 	pai = null
+	cached_holo_image = null
 	cut_overlays()
-	add_overlay("pai-off")
+	setEmotion("null")
 
 /obj/item/paicard
-	var/current_emotion = 1
+	var/current_emotion = "off"
 
-//! WHAT THE FUCK
 /obj/item/paicard/proc/setEmotion(emotion)
 	if(pai)
 		cut_overlays()
-		switch(emotion)
-			if(1)
-				add_overlay("pai-happy")
-			if(2)
-				add_overlay("pai-cat")
-			if(3)
-				add_overlay("pai-extremely-happy")
-			if(4)
-				add_overlay("pai-face")
-			if(5)
-				add_overlay("pai-laugh")
-			if(6)
-				add_overlay("pai-off")
-			if(7)
-				add_overlay("pai-sad")
-			if(8)
-				add_overlay("pai-angry")
-			if(9)
-				add_overlay("pai-what")
-			if(10)
-				add_overlay("pai-neutral")
-			if(11)
-				add_overlay("pai-silly")
-			if(12)
-				add_overlay("pai-nose")
-			if(13)
-				add_overlay("pai-smirk")
-			if(14)
-				add_overlay("pai-exclamation")
-			if(15)
-				add_overlay("pai-question")
-
 		current_emotion = emotion
+		if(emotion != "off" && emotion != "character")
+			add_overlay("pai-underlay")
+			add_overlay("pai-[emotion]")
+		else if(emotion == "character" && pai.last_rendered_hologram_icon)
+			var/image = get_holo_image()
+			add_overlay(image)
+
+/obj/item/paicard/proc/get_holo_image()
+	if(cached_holo_image)
+		return cached_holo_image
+	if(!pai.last_rendered_hologram_icon)
+		pai.last_rendered_hologram_icon = render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+	var/icon/new_icon = icon(pai.last_rendered_hologram_icon)
+	new_icon.Crop(12, 21, 21, 30)
+	var/image/image = image(new_icon, pixel_x = 11, pixel_y = 9)
+	cached_holo_image = image
+	return image
 
 /obj/item/paicard/proc/alertUpdate()
 	var/turf/T = get_turf_or_move(src.loc)
@@ -345,12 +332,6 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 		LEGACY_EX_ACT(pai, severity, null)
 	else
 		qdel(src)
-
-/obj/item/paicard/see_emote(mob/living/M, text)
-	if(pai && pai.client && (pai in contents))
-		var/rendered = "<span class='message'>[text]</span>"
-		pai.show_message(rendered, 2)
-	..()
 
 /obj/item/paicard/show_message(msg, type, alt, alt_type)
 	if(pai && pai.client)

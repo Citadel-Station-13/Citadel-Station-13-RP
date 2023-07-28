@@ -185,6 +185,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //! ## OOC Metadata
 	var/metadata = ""
 	var/headshot_url = ""
+	var/full_ref_url = ""
+	var/full_ref_toggle = FALSE
 	var/list/ignored_players = list()
 
 	var/client/client = null
@@ -231,8 +233,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/proc/Initialize()
 	// todo: refactor
 	player_setup = new(src)
-	tim_sort(preference_by_key, /proc/cmp_preference_load_order, TRUE)
-	tim_sort(preference_by_type, /proc/cmp_preference_load_order, TRUE)
+	tim_sort(preference_by_key, GLOBAL_PROC_REF(cmp_preference_load_order), TRUE)
+	tim_sort(preference_by_type, GLOBAL_PROC_REF(cmp_preference_load_order), TRUE)
 	// set defaults before load
 	reset_everything_to_default()
 

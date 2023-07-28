@@ -12,6 +12,10 @@
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
+	if(istype(shell.loc, /obj/item/holder))
+		to_chat(src, "You can't unfold while being like this.")
+		return
+
 	if(!can_action())
 		return
 

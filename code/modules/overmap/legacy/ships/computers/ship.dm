@@ -73,8 +73,8 @@
 	var/WR = WEAKREF(user)
 	if(WR in viewers)
 		return
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
-	// TODO GLOB.stat_set_event.register(user, src, /obj/machinery/computer/ship/proc/unlook)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/obj/machinery/computer/ship, unlook))
+	// TODO GLOB.stat_set_event.register(user, src, TYPE_PROC_REF(/obj/machinery/computer/ship, unlook))
 	LAZYDISTINCTADD(viewers, WR)
 	if(linked)
 		user.reset_perspective(linked)
@@ -89,13 +89,13 @@
 /obj/machinery/computer/ship/proc/unlook(mob/user, vis_update)
 	user.reset_perspective()
 	user.client?.reset_temporary_view()
-	UnregisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
+	UnregisterSignal(user, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/obj/machinery/computer/ship, unlook))
 	if(isliving(user))
 		var/mob/living/L = user
 		L.looking_elsewhere = 0
 		if(!vis_update)
 			L.handle_vision()
-	// TODO GLOB.stat_set_event.unregister(user, src, /obj/machinery/computer/ship/proc/unlook)
+	// TODO GLOB.stat_set_event.unregister(user, src, TYPE_PROC_REF(/obj/machinery/computer/ship, unlook))
 	LAZYREMOVE(viewers, WEAKREF(user))
 
 /obj/machinery/computer/ship/proc/viewing_overmap(mob/user)

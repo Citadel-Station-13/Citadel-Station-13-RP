@@ -108,6 +108,8 @@
 	// todo: anchored / unanchored should be replaced by movement force someday, how to handle that?
 
 	//* Construction / Deconstruction
+	/// allow default part replacement. null for disallowed, number for time.
+	var/default_part_replacement = 0
 	/// Can be constructed / deconstructed by players by default. null for off, number for time needed. Panel must be open.
 	//  todo: proc for allow / disallow, refactor
 	var/default_deconstruct
@@ -320,6 +322,15 @@
 	if(clicksound && istype(user, /mob/living/carbon))
 		playsound(src, clicksound, clickvol)
 
+	return ..()
+
+/obj/machinery/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/storage/part_replacer))
+		if(isnull(default_part_replacement))
+			user.action_feedback(SPAN_WARNING("[src] doesn't support part replacement."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		default_part_replacement(user, I)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 /obj/machinery/can_interact(mob/user)
