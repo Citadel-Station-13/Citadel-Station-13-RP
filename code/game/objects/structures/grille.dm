@@ -141,21 +141,17 @@
 				var/obj/structure/window/WD = new wtype(loc, 1)
 				to_chat(user, "<span class='notice'>You place the [WD] on [src].</span>")
 				WD.update_appearance()
-		return
-//window placing end
+	return ..()
 
-	else if((W.atom_flags & NOCONDUCT) || !shock(user, 70))
-		user.setClickCooldown(user.get_attack_speed(W))
-		user.do_attack_animation(src)
-		playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
-		switch(W.damtype)
-			if("fire")
-				health -= W.damage_force
-			if("brute")
-				health -= W.damage_force * 0.1
-	healthcheck()
-	..()
-	return
+/obj/structure/grille/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult)
+	if(shock(attacker, 70))
+		return FALSE
+	return ..()
+
+/obj/structure/grille/melee_act(mob/user, obj/item/weapon, target_zone, mult)
+	if(shock(attacker, 70, weapon))
+		return FALSE
+	return ..()
 
 /obj/structure/grille/drop_products(method, atom/where)
 	. = ..()
@@ -168,7 +164,9 @@
 // shock user with probability prb (if all connections & power are working)
 // returns 1 if shocked, 0 otherwise
 
-/obj/structure/grille/proc/shock(mob/user as mob, prb)
+/obj/structure/grille/proc/shock(mob/user as mob, prb, obj/item/tool)
+	if(tool?.atom_flags & NOCONDUCT)
+		return 0
 	if(!anchored || (atom_flags & ATOM_BROKEN))		// anchored/destroyed grilles are never connected
 		return 0
 	if(!prob(prb))
