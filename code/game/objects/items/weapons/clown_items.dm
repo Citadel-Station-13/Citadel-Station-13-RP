@@ -69,14 +69,23 @@
 /*
  * Bike Horns
  */
+/obj/item/bikehorn
+	var/honk_sound = 'sound/items/bikehorn.ogg'
+
 /obj/item/bikehorn/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
-	if (spam_flag == 0)
+	if(spam_flag == 0)
 		spam_flag = 1
-		playsound(src.loc, 'sound/items/bikehorn.ogg', 50, 1)
+		playsound(src, honk_sound, 50, 1)
 		src.add_fingerprint(user)
 		spawn(20)
 			spam_flag = 0
 	return
+
+/obj/item/bikehorn/Crossed(atom/movable/AM as mob|obj)
+	if(AM.is_incorporeal())
+		return
+	if(istype(AM, /mob/living))
+		playsound(src, honk_sound, 50, 1)
