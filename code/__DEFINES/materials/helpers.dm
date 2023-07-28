@@ -8,6 +8,6 @@
 //* object checks
 
 /// We are ticking materials.
-#define IS_TICKING_MATERIALS(A) (A.atom_flags & ATOM_MATERIAL_TICKING)
+#define IS_TICKING_MATERIALS(A) (A.atom_flags & ATOM_MATERIALS_TICKING)
 #define START_TICKING_MATERIALS(A) SSmaterials.add_ticked_object(src)
 #define STOP_TICKING_MATERIALS(A) SSmaterials.remove_ticked_object(src)

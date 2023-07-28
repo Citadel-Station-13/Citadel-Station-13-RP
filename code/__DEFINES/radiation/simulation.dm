@@ -30,6 +30,8 @@
 #define RAD_FALLOFF_ENGINE_SUPERMATTER 0.5
 /// singulo
 #define RAD_FALLOFF_ENGINE_SINGULARITY 0.5
+/// materials
+#define RAD_FALLOFF_MATERIALS 0.5
 
 //! Pulse - Z Falloff
 //* Keep in mind that these are low because things are usually really far away and the point of Z rad is to hit most things.

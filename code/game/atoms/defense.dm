@@ -250,6 +250,15 @@
 		atom_destruction()
 
 /**
+ * Set integrity to a multiple of initial.
+ * 
+ * And fully restore it if specified.
+ * Otherwise, will retain the last percentage.
+ */
+/atom/proc/set_multiplied_integrity(factor, restore)
+	#warn impl
+
+/**
  * adjusts integrity - routes directly to [damage_integrity] and [heal_integrity]
  *
  * will call [damage_integrity]

@@ -41,6 +41,7 @@
 	var/active
 	var/can_open = FALSE
 
+	#warn oh no
 	var/datum/material/material
 	var/datum/material/reinf_material
 	var/datum/material/girder_material
@@ -56,15 +57,12 @@
 	var/shiny_wall
 	var/shiny_stripe
 
-// Walls always hide the stuff below them.
-/turf/simulated/wall/levelupdate()
-	for(var/obj/O in src)
-		O.hide(1)
-
 /turf/simulated/wall/Initialize(mapload)
 	. = ..()
 	//? Remove the color that was set for mapping clarity.
 	color = null
+
+	#warn init materials
 
 	set_materials(material, reinf_material, girder_material)
 	set_rad_insulation()
@@ -96,6 +94,11 @@
 	// Calling parent will kill processing
 	if(!radiate())
 		return PROCESS_KILL
+
+// Walls always hide the stuff below them.
+/turf/simulated/wall/levelupdate()
+	for(var/obj/O in src)
+		O.hide(1)
 
 /turf/simulated/wall/proc/get_material()
 	return material

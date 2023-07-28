@@ -224,3 +224,8 @@ SUBSYSTEM_DEF(materials)
 		"materials" = data,
 		"sheetAmount" = SHEET_MATERIAL_AMOUNT,
 	)
+
+/**
+ * Ticks materials
+ */
+/datum/proc/process_materials(dt)

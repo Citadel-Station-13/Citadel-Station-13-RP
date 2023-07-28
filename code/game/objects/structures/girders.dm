@@ -12,7 +12,6 @@
 	depth_projected = TRUE
 
 	var/state = 0
-	var/displaced_health = 50
 	var/current_damage = 0
 	var/cover = 50 //how much cover the girder provides against projectiles.
 	var/reinforcing = 0
@@ -37,44 +36,41 @@
 	return ..()
 
 /obj/structure/girder/update_material_parts(list/parts)
+	if(isnull(material_reinforcing))
+		if(isnull(material_structure))
+			name = "girder"
+			set_full_integrity(initial(integrity), initial(integrity_max))
+		else
+			name = "[material_structure.display_name] girder"
+			
+	else if(isnull(material_structure))
+	else
 	#warn impl
 
+	var/needs_processing = MATERIAL_NEEDS_PROCESSING(material_structure) || MATERIAL_NEEDS_PROCESSING(material_reinforcing)
+	var/is_processing = IS_TICKING_MATERIALS(src)
+	if(needs_processing && !is_processing)
+		START_TICKING_MATERIALS(src)
+	else if(!needs_processing && is_processing)
+		STOP_TICKING_MATERIALS(src)
+	
+	// todo: refactor
+	if(applies_material_colour)
+		color = material_structure.icon_colour
+
 /obj/structure/girder/material_init_parts()
-	#warn impl
+	material_structure = SSmaterials.resolve_material(material_structure)
+	material_reinforcing = SSmaterials.resolve_material(material_reinforcing)
 	
 #warn impl all
 
-/obj/structure/girder/process(delta_time)
-	if(!radiate())
-		STOP_PROCESSING(SSobj, src)
-		return
+/obj/structure/girder/process_materials(dt)
+	radiate(dt)
 
-/obj/structure/girder/proc/radiate()
-	var/total_radiation = girder_material.radioactivity + (reinf_material ? reinf_material.radioactivity / 2 : 0)
-	if(!total_radiation)
-		return
-
-	radiation_pulse(src, total_radiation)
-	return total_radiation
-
-
-/obj/structure/girder/proc/set_material(var/new_material)
-	girder_material = get_material_by_name(new_material)
-	if(!girder_material)
-		qdel(src)
-	name = "[girder_material.display_name] [initial(name)]"
-	max_health = round(girder_material.integrity) //Should be 150 with default integrity (steel). Weaker than ye-olden Girders now.
-	health = max_health
-	displaced_health = round(max_health/4)
-	if(applies_material_colour)
-		color = girder_material.icon_colour
-	if(girder_material.products_need_process()) //Am I radioactive or some other? Process me!
-		START_PROCESSING(SSobj, src)
-	else if(datum_flags & DF_ISPROCESSING) //If I happened to be radioactive or s.o. previously, and am not now, stop processing.
-		STOP_PROCESSING(SSobj, src)
-
-#warn impl all
-
+/obj/structure/girder/proc/radiate(dt)
+	var/total = material_structure?.radioactivity + material_reinforcing?.radioactivity * 0.5
+	radiation_pulse(src, total, RAD_FALLOFF_MATERIALS)
+	
 /obj/structure/girder/material_get_part(part)
 	switch(part)
 		if(MATERIAL_PART_GIRDER_REINFORCEMENT)
@@ -144,7 +140,7 @@
 
 /obj/structure/girder/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() && state == 0)
-		if(anchored && !reinf_material)
+		if(anchored && !material_reinforcing)
 			playsound(src, W.tool_sound, 100, 1)
 			to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
 			if(do_after(user,(2 SECONDS * round(integrity/100)) * W.tool_speed))
@@ -201,7 +197,7 @@
 			displace()
 
 	else if(istype(W, /obj/item/stack/material))
-		if(reinforcing && !reinf_material)
+		if(reinforcing && !material_reinforcing)
 			if(!reinforce_with_material(W, user))
 				return ..()
 		else
@@ -212,7 +208,7 @@
 		return ..()
 
 /obj/structure/girder/proc/construct_wall(obj/item/stack/material/S, mob/user)
-	var/amount_to_use = reinf_material ? 1 : 2
+	var/amount_to_use = material_reinforcing ? 1 : 2
 	if(S.get_amount() < amount_to_use)
 		to_chat(user, "<span class='notice'>There isn't enough material here to construct a wall.</span>")
 		return 0
@@ -223,10 +219,6 @@
 
 	var/wall_fake
 	add_hiddenprint(usr)
-
-	if(M.integrity < 50)
-		to_chat(user, "<span class='notice'>This material is too soft for use in wall construction.</span>")
-		return 0
 
 	to_chat(user, "<span class='notice'>You begin adding the plating...</span>")
 
@@ -242,7 +234,7 @@
 	var/turf/Tsrc = get_turf(src)
 	Tsrc.PlaceOnTop(/turf/simulated/wall)
 	var/turf/simulated/wall/T = get_turf(src)
-	T.set_materials(M, reinf_material, girder_material)
+	T.set_materials(M, material_reinforcing, material_structure)
 	T.set_rad_insulation()
 	if(wall_fake)
 		T.can_open = 1
