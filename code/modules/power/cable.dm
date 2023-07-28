@@ -997,7 +997,8 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/item/stack/cable_coil/alien/update_wclass()
 	return 0
 
-
+/obj/item/stack/cable_coil/alien/split(tamount)
+	return null // no split
 
 /obj/item/stack/cable_coil/alien/attack_hand(mob/user, list/params)
 	if (user.get_inactive_held_item() == src)

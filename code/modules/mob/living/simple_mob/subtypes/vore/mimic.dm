@@ -14,7 +14,7 @@
 	icon_state = "mimic"
 	icon_opened = "open"
 	icon_closed = "mimic"
-	closet_appearance = null
+	closet_appearance = /singleton/closet_appearance/crate
 	var/mimic_chance = 30
 	var/mimic_active = TRUE
 
@@ -35,7 +35,7 @@
 			new_mimic.real_crate = src
 			new_mimic.name = name
 			new_mimic.desc = desc
-			new_mimic.icon = icon
+			new_mimic.icon = 'icons/mob/mimic.dmi'
 			new_mimic.icon_state = "mimicopen"
 			new_mimic.icon_living = "mimicopen"
 		else
@@ -136,6 +136,7 @@
 	anchored = 1 //You will not be able to push back the airlock mimic
 	density = 1
 	opacity = 1
+	closet_appearance = null
 
 /obj/structure/closet/crate/mimic/airlock/open()
 	if(src.opened)
@@ -212,9 +213,7 @@
 	name = "old closet"
 	desc = "It's a basic storage unit. It seems awfully rickety."
 	icon_state = "cmimic"
-	icon = 'icons/mob/animal.dmi'
-	icon_opened = "copen"
-	icon_closed = "cmimic"
+	closet_appearance = /singleton/closet_appearance
 	mimic_chance = 30
 	mimic_active = TRUE
 
@@ -233,7 +232,7 @@
 			new_mimic.real_crate = src
 			new_mimic.name = name
 			new_mimic.desc = desc
-			new_mimic.icon = icon
+			new_mimic.icon = 'icons/mob/animal.dmi'
 			new_mimic.icon_state = "cmimicopen"
 			new_mimic.icon_living = "cmimicopen"
 		else

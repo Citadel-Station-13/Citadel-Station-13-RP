@@ -260,7 +260,7 @@ proc/check_panel(mob/M)
 	. = ..()
 	QDEL_IN(src, 30 SECONDS)
 	step_away(src,my_target,2)
-	INVOKE_ASYNC(src, .proc/attack_loop)
+	INVOKE_ASYNC(src, PROC_REF(attack_loop))
 
 /obj/effect/fake_attacker/Destroy()
 	if(my_target)

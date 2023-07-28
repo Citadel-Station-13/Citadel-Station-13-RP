@@ -242,7 +242,7 @@ steam.start() -- spawns the effect
 		if(!(B in projectiles))
 			B.damage = (B.damage/2)
 			projectiles += B
-			destroyed_event.register(B, src, /obj/effect/particle_effect/smoke/bad/proc/on_projectile_delete)
+			destroyed_event.register(B, src, TYPE_PROC_REF(/obj/effect/particle_effect/smoke/bad, on_projectile_delete))
 		to_chat(world, "Damage is: [B.damage]")
 	return 1
 

@@ -94,7 +94,7 @@
 /obj/item/pipe_dispenser/equipped(mob/user, slot, flags)
 	. = ..()
 	if(slot == SLOT_ID_HANDS)
-		RegisterSignal(user, COMSIG_MOUSE_SCROLL_ON, .proc/mouse_wheeled)
+		RegisterSignal(user, COMSIG_MOUSE_SCROLL_ON, PROC_REF(mouse_wheeled))
 	else
 		UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
 

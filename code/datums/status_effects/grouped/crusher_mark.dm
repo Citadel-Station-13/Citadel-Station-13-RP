@@ -4,8 +4,8 @@
 	var/mutable_appearance/marked_underlay
 	var/obj/item/kinetic_crusher/hammer_synced
 
-/datum/status_effect/grouped/crusher_mark/on_apply(obj/item/kinetic_crusher/new_hammer_synced, ...)
-	hammer_synced = new_hammer_synced
+/datum/status_effect/grouped/crusher_mark/on_apply(obj/item/kinetic_crusher/crusher, ...)
+	hammer_synced = crusher
 	marked_underlay = mutable_appearance('icons/effects/effects.dmi', "shield2")
 	marked_underlay.pixel_x = -owner.pixel_x
 	marked_underlay.pixel_y = -owner.pixel_y

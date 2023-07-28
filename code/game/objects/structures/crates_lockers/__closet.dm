@@ -53,7 +53,7 @@
 /obj/structure/closet/Initialize(mapload)
 	. = ..()
 	if(mapload && !opened)
-		addtimer(CALLBACK(src, .proc/take_contents), 0)
+		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
 	PopulateContents()
 	/*
 	if(secure)
