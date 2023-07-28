@@ -17,20 +17,16 @@
 	var/minrate = 0
 	var/maxrate = 10 * ONE_ATMOSPHERE
 
-	var/list/scrubbing_gas = list(GAS_ID_CARBON_DIOXIDE, GAS_ID_VOLATILE_FUEL, GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE,
-		GAS_ID_HELIUM, GAS_ID_CARBON_MONOXIDE, GAS_ID_METHYL_BROMIDE, GAS_ID_NITROGEN_DIOXIDE, GAS_ID_NITRIC_OXIDE,
-		GAS_ID_METHANE, GAS_ID_ARGON, GAS_ID_KRYPTON, GAS_ID_NEON, GAS_ID_AMMONIA, GAS_ID_XENON, GAS_ID_CHLORINE,
-		GAS_ID_SULFUR_DIOXIDE, GAS_ID_HYDROGEN)
+	/// scrubbing ids
+	var/list/scrubbing_ids
+	/// scrubbing groups
+	var/scrubbing_groups
 
 #warn groups
 
 /obj/machinery/portable_atmospherics/powered/scrubber/Initialize(mapload)
 	. = ..()
-	for(var/id in scrubbing_gas)
-		if(!global.gas_data.gases[id])
-			scrubbing_gas -= id
-			stack_trace("Invalid gas id [id]")
-	cell = new/obj/item/cell/apc(src)
+	cell = new /obj/item/cell/apc(src)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
 	if(machine_stat & (BROKEN|NOPOWER))

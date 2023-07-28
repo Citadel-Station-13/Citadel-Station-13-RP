@@ -1,13 +1,14 @@
 import { useBackend } from "../../backend";
 import { SectionProps } from "../../components/Section";
+import { GasContext } from "../common/Atmos";
 
 interface AtmosScrubberControlProps extends SectionProps {
-
+  context: GasContext;
 }
 
 export const AtmosScrubberControl = (props: AtmosScrubberControlProps) => {
 
-}
+};
 
 export interface AtmosScrubberState {
   // are we on siphon mode
@@ -21,6 +22,6 @@ interface AtmosScrubberData {
 }
 
 export const AtmosScrubber = (props, context) => {
-  let {act, data} = useBackend<AtmosScrubberData>(context);
+  let { act, data } = useBackend<AtmosScrubberData>(context);
 
-}
+};

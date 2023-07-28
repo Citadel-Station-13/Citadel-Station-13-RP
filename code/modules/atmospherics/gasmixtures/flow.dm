@@ -79,7 +79,7 @@
 
 	// do the actual scrubbing
 	for(var/id in filtered_ids)
-		var/transfer = source.gsa[id] * ratio
+		var/transfer = source.gas[id] * ratio
 		source.adjust_gas(id, -transfer, FALSE)
 		sink.adjust_gas_temp(id, transfer, source.temperature, FALSE)
 

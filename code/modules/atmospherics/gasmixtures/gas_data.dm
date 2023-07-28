@@ -134,6 +134,7 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 			I.plane = FLOAT_PLANE
 			I.alpha = i * (255 / GAS_VISUAL_STEP_MAX)
 			I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+			I.color = G.visual_color
 			I.appearance_flags = RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA | KEEP_APART
 			visual_images[G.id][i] = I
 	//? reactions
@@ -204,3 +205,13 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
  */
 /datum/gas_data/proc/gas_id_filterable(gas_id)
 	return flags[gas_id] & (GAS_FLAG_FILTERABLE | GAS_FLAG_CORE)
+
+/**
+ * check if a procedural gas is not conflicting with any other gas
+ */
+/datum/gas_data/proc/procedural_gas_conflicts(datum/procedural_gas/instance)
+	. = FALSE
+	for(var/id in gases)
+		var/datum/gas/gas = gases[id]
+		if(abs(gas.molar_mass - instance.molar_mass) <= GAS_COLLISION_THRESHOLD_MOLAR_MASS)
+			return TRUE

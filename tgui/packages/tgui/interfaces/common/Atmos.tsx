@@ -1,9 +1,11 @@
-import { BooleanLike } from "../../../common/react";
-
 /**
  * @file
  * @license MIT
- */
+*/
+
+
+//* Context
+
 export type AtmosGasID = string;
 export type AtmosGasGroups = AtmosGroupFlags;
 
@@ -60,29 +62,14 @@ export interface FullAtmosGas extends AtmosGas {
 
 }
 
-export enum AtmosComponentUIFlags {
-  None = 0,
-  TogglePower = (1<<0),
-  SetPowerLimit = (1<<1),
-}
+//* Tanks
 
-export interface AtmosComponentData {
-  // component UI flags
-  controlFlags: AtmosComponentUIFlags;
-  // on?
-  on: BooleanLike;
-  // power limit in W
-  powerSetting: number;
-  // max power limit in W
-  powerRating: number;
-}
-
-export interface AtmosComponentProps {
-  // forbid injecting default acts for non-specified acts
-  forbidDefaultActs?: boolean;
-  // power toggle
-  togglePowerAct?: () => void;
-  // set target maximum power draw
-  setPowerLimitAct?: (watts: number) => void;
-
+export interface AtmosTank {
+  name: string;
+  // kpa
+  pressure: number;
+  // gauge limit, not actual cap/limit
+  pressureLimit: number;
+  // liters
+  volume: number;
 }

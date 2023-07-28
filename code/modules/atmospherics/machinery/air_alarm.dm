@@ -94,37 +94,6 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 #warn groups
 
-/obj/machinery/alarm/nobreach
-	breach_detection = 0
-
-/obj/machinery/alarm/monitor
-	report_danger_level = 0
-	breach_detection = 0
-
-/obj/machinery/alarm/alarms_hidden
-	alarms_hidden = TRUE
-
-/obj/machinery/alarm/angled
-//	icon = 'icons/obj/wall_machines_angled.dmi'
-
-/obj/machinery/alarm/angled/hidden
-	alarms_hidden = TRUE
-
-/obj/machinery/alarm/angled/offset_airalarm()
-	pixel_x = (dir & 3) ? 0 : (dir == 4 ? -21 : 21)
-	pixel_y = (dir & 3) ? (dir == 1 ? -18 : 20) : 0
-
-/obj/machinery/alarm/server/Initialize(mapload)
-	. = ..()
-	req_access = list(ACCESS_SCIENCE_RD, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
-	TLV[GAS_ID_OXYGEN] =			list(16,   19,   135, 140) // Partial pressure, kpa
-	TLV[GAS_ID_CARBON_DIOXIDE] =	list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
-	TLV[GAS_ID_PHORON] =			list(-1.0, -1.0,   0, 0.5) // Partial pressure, kpa
-	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
-	TLV["pressure"] =		list(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE * 0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20) /* kpa */
-	TLV["temperature"] =	list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
-	setDir(dir)
-
 /obj/machinery/alarm/Initialize(mapload)
 	. = ..()
 	GLOB.air_alarms += src
@@ -815,9 +784,6 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			if(selected[3] > selected[4])
 				selected[3] = selected[4]
 
-
-
-
 /obj/machinery/alarm/proc/atmos_reset()
 	if(alarm_area.atmosalert(0, src))
 		apply_danger_level(0)
@@ -854,14 +820,45 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	..()
 	spawn(rand(0,15))
 		update_icon()
+
+#undef LOAD_TLV_VALUES
+#undef TEST_TLV_VALUES
+#undef DECLARE_TLV_VALUES
+
+/obj/machinery/alarm/alarms_hidden
+	alarms_hidden = TRUE
+
+/obj/machinery/alarm/angled
+//	icon = 'icons/obj/wall_machines_angled.dmi'
+
+/obj/machinery/alarm/angled/hidden
+	alarms_hidden = TRUE
+
+/obj/machinery/alarm/angled/offset_airalarm()
+	pixel_x = (dir & 3) ? 0 : (dir == 4 ? -21 : 21)
+	pixel_y = (dir & 3) ? (dir == 1 ? -18 : 20) : 0
+
 /obj/machinery/alarm/freezer
 	target_temperature = T0C - 13.15 // Chilly freezer room
 
 /obj/machinery/alarm/freezer/first_run()
 	. = ..()
-
 	TLV["temperature"] =	list(T0C - 40, T0C - 20, T0C + 40, T0C + 66) // K, Lower Temperature for Freezer Air Alarms (This is because TLV is hardcoded to be generated on first_run, and therefore the only way to modify this without changing TLV generation)
 
-#undef LOAD_TLV_VALUES
-#undef TEST_TLV_VALUES
-#undef DECLARE_TLV_VALUES
+/obj/machinery/alarm/monitor
+	report_danger_level = 0
+	breach_detection = 0
+
+/obj/machinery/alarm/nobreach
+	breach_detection = 0
+
+/obj/machinery/alarm/server/Initialize(mapload)
+	. = ..()
+	req_access = list(ACCESS_SCIENCE_RD, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
+	TLV[GAS_ID_OXYGEN] =			list(16,   19,   135, 140) // Partial pressure, kpa
+	TLV[GAS_ID_CARBON_DIOXIDE] =	list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
+	TLV[GAS_ID_PHORON] =			list(-1.0, -1.0,   0, 0.5) // Partial pressure, kpa
+	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
+	TLV["pressure"] =		list(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE * 0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20) /* kpa */
+	TLV["temperature"] =	list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
+	setDir(dir)

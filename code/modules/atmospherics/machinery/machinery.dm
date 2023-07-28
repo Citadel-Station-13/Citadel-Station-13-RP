@@ -25,8 +25,6 @@ Pipelines + Other Objects -> Pipe network
 
 	///The color of the pipe
 	var/pipe_color
-	///The maximum amount of power the machine can use to do work, affects how powerful the machine is, in Watts
-	var/power_rating
 	///The flags of the pipe/component (PIPING_ALL_LAYER | PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY | PIPING_CARDINAL_AUTONORMALIZE)
 	var/pipe_flags = PIPING_DEFAULT_LAYER_ONLY
 	///What pipe layer can this connect to.

@@ -15,9 +15,9 @@
 	//! physics
 	/// Specific heat in J/(mol*K).
 	/// For chemicals that exist in real life this is the specific heat value under constant volume.
-	var/specific_heat = 0
+	var/specific_heat = 1
 	/// Molar mass in kg/mol
-	var/molar_mass = 0
+	var/molar_mass = 1
 
 	//! reagents
 	/// reagent id to apply
@@ -35,6 +35,8 @@
 
 	//! visuals
 	// todo: visual cache gen should be a proc on /datum/gas so we can do custom colors
+	/// visual overlay color if any
+	var/visual_color
 	/// icon_state in icons/modules/atmospherics/gas.dmi; invisible if null
 	var/visual_overlay
 	/// minimum moles to see gas
