@@ -28,3 +28,5 @@
 	#warn impl
 
 #warn attack sounds for materials
+
+#warn deal with hulk somehow

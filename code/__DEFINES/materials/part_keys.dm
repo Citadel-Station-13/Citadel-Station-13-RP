@@ -1,0 +1,4 @@
+//* Girders
+
+#define MATERIAL_PART_GIRDER_STRUCTURE "struct"
+#define MATERIAL_PART_GIRDER_REINFORCEMENT "reinf"
