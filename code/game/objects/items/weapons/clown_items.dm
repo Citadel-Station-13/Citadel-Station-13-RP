@@ -84,7 +84,7 @@
 			spam_flag = 0
 	return
 
-/obj/item/bikehorn/Crossed(atom/movable/AM as mob|obj)
+/obj/item/bikehorn/Crossed(atom/movable/AM)
 	if(AM.is_incorporeal())
 		return
 	if(istype(AM, /mob/living))
