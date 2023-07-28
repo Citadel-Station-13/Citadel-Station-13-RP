@@ -116,6 +116,8 @@
 	/// Can be anchored / unanchored by players without deconstructing by default with a wrench. null for off, number for time needed.
 	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
 	var/default_unanchor
+	/// allow default part replacement. null for disallowed, number for time.
+	var/default_part_replacement = 0
 	/// default icon state overlay for panel open
 	var/panel_icon_state
 	/// is the maintenance panel open?
@@ -354,6 +356,15 @@
 	if(clicksound && istype(user, /mob/living/carbon))
 		playsound(src, clicksound, clickvol)
 
+	return ..()
+
+/obj/machinery/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/storage/part_replacer))
+		if(isnull(default_part_replacement))
+			user.action_feedback(SPAN_WARNING("[src] doesn't support part replacement."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		default_part_replacement(user, I)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 /obj/machinery/can_interact(mob/user)

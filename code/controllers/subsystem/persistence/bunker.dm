@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 // Persistent panic bunker passthrough
 /datum/controller/subsystem/persistence/LoadPersistence()
 	LoadPanicBunker()

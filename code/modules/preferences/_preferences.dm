@@ -120,12 +120,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/g_eyes = 0
 	/// Eye color.
 	var/b_eyes = 0
-	/// Left in for Legacy reasons, will no longer save.
-	var/list/gear
-	/// Custom/fluff item loadouts.
-	var/list/gear_list = list()
-	/// The current gear save slot.
-	var/gear_slot = 1
 	/// Traits which modifier characters for better or worse (mostly worse).
 	var/list/traits
 	/// Lets normally uncolorable synth parts be colorable.
@@ -191,6 +185,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //! ## OOC Metadata
 	var/metadata = ""
 	var/headshot_url = ""
+	var/full_ref_url = ""
+	var/full_ref_toggle = FALSE
 	var/list/ignored_players = list()
 
 	var/client/client = null
@@ -237,18 +233,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/proc/Initialize()
 	// todo: refactor
 	player_setup = new(src)
-	tim_sort(preference_by_key, /proc/cmp_preference_load_order, TRUE)
-	tim_sort(preference_by_type, /proc/cmp_preference_load_order, TRUE)
+	tim_sort(preference_by_key, GLOBAL_PROC_REF(cmp_preference_load_order), TRUE)
+	tim_sort(preference_by_type, GLOBAL_PROC_REF(cmp_preference_load_order), TRUE)
 	// set defaults before load
 	reset_everything_to_default()
 
 	set_biological_gender(pick(MALE, FEMALE))
 	real_name = random_name(identifying_gender, real_species_name())
 	b_type = RANDOM_BLOOD_TYPE
-
-	gear = list()
-	gear_list = list()
-	gear_slot = 1
 
 	if(client)
 		if(!IsGuestKey(client.key))
@@ -328,45 +320,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if(24 to 1000)
 			return "God"
 
-/datum/preferences/proc/update_character_previews(mutable_appearance/MA)
-	if(!client)
-		return
-
-	var/atom/movable/screen/setup_preview/bg/BG= LAZYACCESS(char_render_holders, "BG")
-	if(!BG)
-		BG = new
-		BG.plane = TURF_PLANE
-		BG.icon = 'icons/effects/setup_backgrounds_vr.dmi'
-		BG.pref = src
-		LAZYSET(char_render_holders, "BG", BG)
-		client.screen |= BG
-	BG.icon_state = bgstate
-	BG.screen_loc = preview_screen_locs["BG"]
-
-	for(var/D in GLOB.cardinal)
-		var/atom/movable/screen/setup_preview/O = LAZYACCESS(char_render_holders, "[D]")
-		if(!O)
-			O = new
-			O.pref = src
-			LAZYSET(char_render_holders, "[D]", O)
-			client.screen |= O
-		O.appearance = MA
-		O.dir = D
-		O.screen_loc = preview_screen_locs["[D]"]
-
-/datum/preferences/proc/show_character_previews()
-	if(!client || !char_render_holders)
-		return
-	for(var/render_holder in char_render_holders)
-		client.screen |= char_render_holders[render_holder]
-
-/datum/preferences/proc/clear_character_previews()
-	for(var/index in char_render_holders)
-		var/atom/movable/screen/S = char_render_holders[index]
-		client?.screen -= S
-		qdel(S)
-	char_render_holders = null
-
 /datum/preferences/proc/process_link(mob/user, list/href_list)
 	if(!user)	return
 
@@ -417,7 +370,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		close_load_dialog(usr)
 	else if(href_list["close"])
 		// User closed preferences window, cleanup anything we need to.
-		clear_character_previews()
+		clear_character_renders()
 		return 1
 	else
 		return 0

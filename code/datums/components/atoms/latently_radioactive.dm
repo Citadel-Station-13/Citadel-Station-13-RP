@@ -24,7 +24,7 @@
 
 /datum/component/latently_radioactive/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_ATOM_RAD_ACT, .proc/on_radiated)
+	RegisterSignal(parent, COMSIG_ATOM_RAD_ACT, PROC_REF(on_radiated))
 
 /datum/component/latently_radioactive/UnregisterFromParent()
 	. = ..()

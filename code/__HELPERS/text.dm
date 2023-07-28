@@ -28,7 +28,8 @@
 //  todo: extra is a bad param, we should instead just have linebreaks = n for n linebreaks, and a way to disable it.
 /proc/sanitize(input, max_length = MAX_MESSAGE_LEN, encode = TRUE, trim = TRUE, extra = TRUE)
 	if(!input)
-		return
+		// don't toss out blank input by nulling it
+		return input
 
 	if(max_length)
 		input = copytext(input,1,max_length)
