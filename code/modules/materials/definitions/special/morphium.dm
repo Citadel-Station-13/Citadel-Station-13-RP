@@ -6,18 +6,24 @@
 	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
 	door_icon_base = "metal"
 	icon_colour = "#37115A"
-	protectiveness = 60
-	integrity = 900
 	conductive = 0
 	conductivity = 1.5
-	hardness = 80
 	shard_type = SHARD_SHARD
-	weight = 30
 	negation = 25
 	explosion_resistance = 85
-	reflectivity = 0.2
-	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_MAGNET = 8, TECH_PHORON = 6, TECH_BLUESPACE = 6, TECH_ARCANE = 3)
+
+	relative_integrity = 3
+	relative_weight = 0.75
+	relative_density = 2.5
+	relative_conductivity = 2
+	relative_permeability = 0
+	relative_reactivity = 0.2
+	regex_this_hardness = MATERIAL_RESISTANCE_VERY_VULNERABLE
+	toughness = MATERIAL_RESISTANCE_EXTREME
+	refraction = MATERIAL_RESISTANCE_VULNERABLE
+	absorption = MATERIAL_RESISTANCE_MODERATE
+	nullification = MATERIAL_RESISTANCE_MODERATE
 
 /datum/material/morphium/hull
 	name = MAT_MORPHIUMHULL

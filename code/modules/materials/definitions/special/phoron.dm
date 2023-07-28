@@ -8,11 +8,22 @@
 	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#FC2BC5"
 	shard_type = SHARD_SHARD
-	hardness = 30
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_PHORON = 2)
 	door_icon_base = "stone"
 	sheet_singular_name = "crystal"
 	sheet_plural_name = "crystals"
+
+	relative_integrity = 0.5
+	relative_weight = 0.7
+	relative_density = 3
+	relative_conductivity = 0.1
+	relative_permeability = 0
+	relative_reactivity = 4.25
+	regex_this_hardness = MATERIAL_RESISTANCE_NONE
+	toughness = MATERIAL_RESISTANCE_LOW
+	refraction = MATERIAL_RESISTANCE_HIGH
+	absorption = MATERIAL_RESISTANCE_LOW
+	nullification = MATERIAL_RESISTANCE_MODERATE
 
 // Commenting this out while fires are so spectacularly lethal, as I can't seem to get this balanced appropriately.
 /*

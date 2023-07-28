@@ -3,15 +3,21 @@
 //* Attributes - Resistance
 
 /// the level at which vulnerability is comedically high
-#define MATERIAL_RESISTANCE_SUPER_VULNERABLE -200
+#define MATERIAL_RESISTANCE_CATASTROPHICALLY_VULNERABLE -800
+/// the level at which vulnerability is very high
+#define MATERIAL_RESISTANCE_SUPER_VULNERABLE -400
 /// the level at which vulnerability is high
-#define MATERIAL_RESISTANCE_VERY_VULNERABLE -100
-/// the level at which vulnerability is moderate
-#define MATERIAL_RESISTANCE_VULNERABLE -50
-/// the level at which vulnerability is minor
-#define MATERIAL_RESISTANCE_SOMEWHAT_VULNERABLE -20
+#define MATERIAL_RESISTANCE_VERY_VULNERABLE -200
+/// the level at which vulnerability is high
+#define MATERIAL_RESISTANCE_VULNERABLE -100
+/// the level at which vulnerability is present
+#define MATERIAL_RESISTANCE_SOMEWHAT_VULNERABLE -50
+/// the level at which vulnerability is slightly there
+#define MATERIAL_RESISTANCE_NEGLIGIBLY_VULNERABLE -25
 /// baseline MATERIAL_RESISTANCE for nothing
 #define MATERIAL_RESISTANCE_NONE 0
+/// the level at which resistance is barely there
+#define MATERIAL_RESISTANCE_NEGLIGIBLE 25
 /// the level at which resistance is workable
 #define MATERIAL_RESISTANCE_LOW 50
 /// the level at which resistance is good

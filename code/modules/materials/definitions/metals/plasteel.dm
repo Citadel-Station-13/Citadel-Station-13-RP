@@ -10,7 +10,6 @@
 	conductivity = 13 // For the purposes of balance.
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT, MAT_PLATINUM = SHEET_MATERIAL_AMOUNT) //todo
-	radiation_resistance = 14
 	table_icon_base = "metal"
 	tgui_icon_key = "plasteel"
 

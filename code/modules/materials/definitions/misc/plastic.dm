@@ -6,9 +6,6 @@
 	icon_base = 'icons/turf/walls/solid_wall.dmi'
 	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#CCCCCC"
-	hardness = 10
-	weight = 12
-	protectiveness = 5 // 20%
 	conductive = 0
 	conductivity = 2 // For the sake of material armor diversity, we're gonna pretend this plastic is a good insulator.
 	melting_point = T0C+371 //assuming heat resistant plastic
