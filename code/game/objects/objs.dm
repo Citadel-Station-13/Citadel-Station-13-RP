@@ -83,6 +83,8 @@
 	/// * This should still be set even if you are implementing material_parts yourself!
 	//  todo: abstraction API for this when we need it.
 	var/list/material_costs
+	/// material part considered primary
+	var/material_primary
 	/// make the actual materials multiplied by this amount. used by lathes to prevent duping with efficiency upgrades.
 	var/material_multiplier = 1
 
@@ -127,7 +129,7 @@
 			materials_base = SSmaterials.preprocess_kv_keys_to_ids(materials_base)
 			materials_base = typelist(NAMEOF(src, materials_base), materials_base)
 	// cache material costs if it's not modified
-	if(!islist(material_costs) && !(obj_flags & OBJ_MATERIAL_COSTS_MODIFIED))
+	if(!islist(material_costs))
 		if(has_typelist(material_costs))
 			material_costs = get_typelist(material_costs)
 		else

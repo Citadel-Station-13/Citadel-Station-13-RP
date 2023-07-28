@@ -152,6 +152,65 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	return material_parts != MATERIAL_DEFAULT_DISABLED
 
+/**
+ * Get primary material, or first material. Can return null.
+ * Determined by [material_primary]
+ * 
+ * This should be the most 'useful' or plentiful material and is used in and only used in general heuristic checks.
+ */
+/obj/proc/get_primary_material()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return isnull(material_primary)? null : get_material_part(material_primary)
+
+/**
+ * Get primary material ID, or first material ID. Can return null.
+ * Determined by [material_primary]
+ * 
+ * This should be the most 'useful' or plentiful material and is used in and only used in general heuristic checks.
+ */
+/obj/proc/get_primary_material_id()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return isnull(material_primary)? null : get_material_part_id(material_primary)
+
+/**
+ * sets our primary material to something
+ *
+ * if we have more than one material part (as determined by material_parts),
+ * this sets the first one.
+ * if we don't, this sets our only material.
+ *
+ * ids and typepaths are not allowed in part_instances for performance reasons.
+ */
+/obj/proc/set_primary_material(datum/material/material)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	obj_flags |= OBJ_MATERIAL_PARTS_MODIFIED
+	return isnull(material_primary)? null : set_material_part(material_primary, material)
+
+/**
+ * get material amounts of parts
+ */
+/obj/proc/get_material_part_amounts(respect_multiplier)
+	if(material_parts == MATERIAL_DEFAULT_DISABLED)
+		return list()
+	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
+		. = list()
+		var/list/parts = material_get_part_ids()
+		if(!isnull(material_costs))
+			for(var/key in parts)
+				.[key] = material_costs[key] || 0
+	else if(islist(material_parts))
+		. = list()
+		if(!islist(material_costs))
+			return
+		for(var/i in 1 to length(material_parts))
+			var/key = material_parts[i]
+			.[key] = material_costs[i]
+	else
+		. = list(MATERIAL_PART_DEFAULT = material_costs)
+	if(respect_multiplier && material_multiplier != 1)
+		for(var/key in .)
+			.[key] *= material_multiplier
+
 //* Abstraction API
 //! Override these procs to implement more efficient material systems.
 //! If your subtype has more than a few hundred instances on the map,
@@ -250,70 +309,6 @@
 /obj/proc/update_material_single(datum/material/material)
 	return
 
-#warn parse below
-
-//* Get
-
-/**
- * get the only material we're made out of, or first material part
- *
- * @return material instance
- */
-/obj/proc/get_primary_material()
-	if(material_parts == MATERIAL_DEFAULT_DISABLED)
-		. = null
-	else
-		. = islist(material_parts)? material_parts[1] : material_parts
-	if(isnull(.))
-		return
-	return SSmaterials.resolve_material(.)
-
-/**
- * get the only material we're made out of, or first material part
- */
-/obj/proc/get_primary_material_id()
-	if(material_parts == MATERIAL_DEFAULT_DISABLED)
-		. = null
-	else
-		. = islist(material_parts)? material_parts[1] : material_parts
-
-/**
- * get material amounts of parts
- */
-/obj/proc/get_material_part_amounts(respect_multiplier)
-	if(material_parts == MATERIAL_DEFAULT_DISABLED)
-		return list()
-	else if(islist(material_parts))
-		. = list()
-		if(!islist(material_costs))
-			return
-		for(var/i in 1 to length(material_parts))
-			var/key = material_parts[i]
-			.[key] = material_costs[i]
-	else
-		. = list(MATERIAL_PART_DEFAULT = material_costs)
-	if(respect_multiplier && material_multiplier != 1)
-		for(var/key in .)
-			.[key] *= material_multiplier
-
-//* Set
-
-/**
- * sets our primary material to something
- *
- * if we have more than one material part (as determined by material_parts),
- * this sets the first one.
- * if we don't, this sets our only material.
- *
- * ids and typepaths are not allowed in part_instances for performance reasons.
- */
-/obj/proc/set_primary_material(datum/material/material)
-	obj_flags |= OBJ_MATERIAL_PARTS_MODIFIED
-	#warn impl
-	return length(material_parts)? set_material_part(material_parts[1], material) : set_material_part(MATERIAL_PART_DEFAULT, material)
-
-#warn parse above
-
 //* Lathe Autodetect
 //! Do not override these. These are automatic based on the APIs.
 
@@ -327,19 +322,7 @@
  * @return key-value associative list of part name to cost
  */
 /obj/proc/detect_material_part_costs()
-	#warn impl
-	if(material_parts == MATERIAL_DEFAULT_DISABLED)
-		return list()
-	else if(islist(material_parts))
-		. = list()
-		if(!islist(material_costs))
-			return
-		for(var/i in 1 to length(material_parts))
-			var/key = material_parts[i]
-			.[key] = material_costs[i]
-		return
-	else
-		return list(MATERIAL_PART_DEFAULT = material_costs)
+	return get_material_part_amounts()
 
 /**
  * autodetect proc used by lathes
