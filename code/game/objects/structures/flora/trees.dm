@@ -92,17 +92,6 @@
 	cut_overlays() // For the Sif tree and other future glowy trees.
 	set_light(0)
 
-/obj/structure/flora/tree/legacy_ex_act(var/severity)
-	adjust_health(-(max_health / severity), TRUE)
-
-/obj/structure/flora/tree/bullet_act(var/obj/projectile/Proj)
-	if(Proj.get_structure_damage())
-		adjust_health(-Proj.get_structure_damage(), TRUE)
-
-/obj/structure/flora/tree/tesla_act(power, explosive)
-	adjust_health(-power / 100, TRUE) // Kills most trees in one lightning strike.
-	..()
-
 /obj/structure/flora/tree/get_description_interaction(mob/user)
 	var/list/results = list()
 
@@ -166,9 +155,9 @@
 	icon_state = "palm1"
 	base_icon_state = "palm"
 	product = /obj/item/stack/material/log
-	product_amount = 10
-	health = 200
-	max_health = 200
+	product_amount = 5
+	integrity = 200
+	integrity_max = 200
 	pixel_x = 0
 
 /obj/structure/flora/tree/palm/choose_icon_state()

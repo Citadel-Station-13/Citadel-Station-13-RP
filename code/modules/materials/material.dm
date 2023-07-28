@@ -140,6 +140,8 @@
 	//? Traits
 	/// Material traits - set to list of paths to instance on New / register.
 	var/list/material_traits
+	/// Material trait sensitivity hooks - total
+	var/material_trait_flags
 	#warn hook traits
 
 	#warn pain
@@ -251,6 +253,8 @@
 		use_name = display_name
 	if(!shard_icon)
 		shard_icon = shard_type
+
+	#warn traits, handle hooks
 
 	return TRUE
 

@@ -39,6 +39,8 @@
 /// should not get harmed if this gets caught by an explosion?
 #define PREVENT_CONTENTS_EXPLOSION	(1<<22)
 */
+/// We are ticking in materials
+#define ATOM_MATERIALS_TICKING		(1<<23)
 /// Can be set on fire by dynamic atom fire
 #define ATOM_FLAMMABLE				(1<<24)
 /// Use initial icon/icon state for HTML renders in things like VV

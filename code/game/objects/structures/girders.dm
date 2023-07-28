@@ -19,7 +19,7 @@
 	var/applies_material_colour = 1
 
 	/// what we're made out of
-	var/datum/material/material_girder = /datum/material/steel
+	var/datum/material/material_structure = /datum/material/steel
 	/// what our reinforcement is made out of
 	var/datum/material/material_reinforcing
 
@@ -32,9 +32,17 @@
 	update_appearance()
 
 /obj/structure/girder/Destroy()
-	if(girder_material.products_need_process())
-		STOP_PROCESSING(SSobj, src)
-	. = ..()
+	if(IS_TICKING_MATERIALS(src) && (MATERIAL_NEEDS_PROCESSING(material_structure) || MATERIAL_NEEDS_PROCESSING(material_reinforcing)))
+		STOP_TICKING_MATERIALS(src)
+	return ..()
+
+/obj/structure/girder/update_material_parts(list/parts)
+	#warn impl
+
+/obj/structure/girder/material_init_parts()
+	#warn impl
+	
+#warn impl all
 
 /obj/structure/girder/process(delta_time)
 	if(!radiate())
@@ -65,15 +73,51 @@
 	else if(datum_flags & DF_ISPROCESSING) //If I happened to be radioactive or s.o. previously, and am not now, stop processing.
 		STOP_PROCESSING(SSobj, src)
 
-/obj/structure/girder/get_material()
-	return girder_material
+#warn impl all
+
+/obj/structure/girder/material_get_part(part)
+	switch(part)
+		if(MATERIAL_PART_GIRDER_REINFORCEMENT)
+			return material_reinforcing
+		if(MATERIAL_PART_GIRDER_STRUCTURE)
+			return material_structure
+
+/obj/structure/girder/material_get_part_id(part)
+	switch(part)
+		if(MATERIAL_PART_GIRDER_REINFORCEMENT)
+			return material_reinforcing?.id
+		if(MATERIAL_PART_GIRDER_STRUCTURE)
+			return material_structure?.id
+
+/obj/structure/girder/material_get_parts()
+	return list(
+		MATERIAL_PART_GIRDER_STRUCTURE = material_structure,
+		MATERIAL_PART_GIRDER_REINFORCEMENT = material_reinforcing,
+	)
+
+/obj/structure/girder/material_get_part_ids()
+	return list(
+		MATERIAL_PART_GIRDER_STRUCTURE = material_structure?.id,
+		MATERIAL_PART_GIRDER_REINFORCEMENT = material_reinforcing?.id,
+	)
+
+/obj/structure/girder/material_set_part(part, datum/material/material)
+	switch(part)
+		if(MATERIAL_PART_GIRDER_STRUCTURE)
+			material_structure = material
+		if(MATERIAL_PART_GIRDER_REINFORCEMENT)
+			material_reinforcing = material
+
+/obj/structure/girder/material_set_parts(list/part_instances)
+	material_structure = part_instances[MATERIAL_PART_GIRDER_STRUCTURE]
+	material_reinforcing = part_instances[MATERIAL_PART_GIRDER_REINFORCEMENT]
 
 /obj/structure/girder/update_icon_state()
-	. = ..()
 	if(anchored)
 		icon_state = initial(icon_state)
 	else
 		icon_state = "displaced"
+	return ..()
 
 /obj/structure/girder/displaced
 	icon_state = "displaced"
@@ -85,13 +129,13 @@
 	displace()
 
 /obj/structure/girder/proc/displace()
-	name = "displaced [material_girder.display_name] [initial(name)]"
+	name = "displaced [material_structure.display_name] [initial(name)]"
 	icon_state = "displaced"
 	anchored = 0
 	cover = 25
 
 /obj/structure/girder/proc/reset_girder()
-	name = "[material_girder.display_name] [initial(name)]"
+	name = "[material_structure.display_name] [initial(name)]"
 	anchored = 1
 	cover = initial(cover)
 	state = 0
@@ -287,7 +331,7 @@
 	icon_state= "cultgirder"
 	cover = 70
 	applies_material_colour = 0
-	material_girder = /datum/material/cult
+	material_structure = /datum/material/cult
 
 /obj/structure/girder/cult/update_icon_state()
 	. = ..()
@@ -323,4 +367,4 @@
 	name = "soft girder"
 	icon_state = "girder_resin"
 	cover = 60
-	material_girder = /datum/material/resin
+	material_structure = /datum/material/resin

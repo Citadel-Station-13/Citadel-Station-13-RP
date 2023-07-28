@@ -30,7 +30,7 @@
 //? - Override the procs in the abstraction API to point to and use those variables.
 //? - See [code/game/objects/structures/girder.dm] for an example.
 //? - The system will still call update_material_parts for you as long as you call the
-//?   parts API instead of the abstraction API directly.
+//?   parts API instead of the abstraction API directly. It will, however, not call it with list/parts.
 //? - **Do not ever call the abstraction API directly.**
 
 //* Base API
@@ -92,7 +92,8 @@
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
 	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
 		material_init_parts()
-		update_material_parts(material_get_parts())
+		// skip specifying parts because abstracted
+		update_material_parts()
 	else
 		update_material_single(SSmaterials.resolve_material(material_parts))
 

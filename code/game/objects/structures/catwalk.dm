@@ -90,10 +90,10 @@
 				new /obj/structure/lattice(src.loc)
 				qdel(src)
 	if(C.is_screwdriver())
-		if(health < maxhealth)
+		if(integrity < integrity_max)
 			to_chat(user, "<span class='notice'>You begin repairing \the [src.name] with \the [C.name].</span>")
 			if(do_after(user, 20, src))
-				health = maxhealth
+				set_integrity(integrity_max)
 	return ..()
 
 /obj/structure/catwalk/Crossed()

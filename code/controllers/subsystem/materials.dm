@@ -1,7 +1,8 @@
 SUBSYSTEM_DEF(materials)
 	name = "Materials"
-	subsystem_flags = SS_NO_FIRE
+	subsystem_flags = NONE
 	init_order = INIT_ORDER_MATERIALS
+	wait = 2 SECONDS
 
 	/// material by id
 	var/list/material_lookup
@@ -12,6 +13,12 @@ SUBSYSTEM_DEF(materials)
 	// however, i can't be assed to write Recover() until we do procedural materials
 	// thus, dealing with it later :^)
 
+	#warn fire logic
+	/// ticked atoms
+	var/list/ticking
+	/// currentrun
+	var/list/currentrun
+
 /datum/controller/subsystem/materials/Initialize()
 	initialize_materials()
 	return ..()
@@ -19,6 +26,21 @@ SUBSYSTEM_DEF(materials)
 /datum/controller/subsystem/materials/Recover()
 	initialize_materials()
 	return ..()
+
+/datum/controller/subsystem/materials/proc/add_ticked_object(atom/A)
+	if(A.atom_flags & ATOM_MATERIALS_TICKING)
+		return
+	A.atom_flags |= ATOM_MATERIALS_TICKING
+	#warn impl
+
+/datum/controller/subsystem/materials/proc/remove_ticked_object(atom/A)
+	if(!(A.atom_flags & ATOM_MATERIALS_TICKING))
+		return
+	A.atom_flags &= ~ATOM_MATERIALS_TICKING
+	#warn impl
+
+/datum/controller/subsystem/materials/fire(resumed)
+	#warn impl
 
 /datum/controller/subsystem/materials/proc/initialize_materials()
 	material_lookup = list()
