@@ -4646,7 +4646,7 @@
 	icon_state = "1-2"
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
-/obj/effect/paint_stripe/purplegray,
+/obj/effect/paint_stripe/violet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "dFf" = (
@@ -5517,7 +5517,7 @@
 "egw" = (
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/purplegray,
+/obj/effect/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/exploration/meeting)
 "egB" = (
@@ -12218,7 +12218,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
-/obj/effect/paint_stripe/purplegray,
+/obj/effect/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/crew_quarters/lounge)
 "iRu" = (
@@ -14131,7 +14131,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
-/obj/effect/paint_stripe/purplegray,
+/obj/effect/paint_stripe/violet,
 /turf/simulated/floor/plating,
 /area/exploration/pilot_prep)
 "kln" = (
@@ -15082,7 +15082,7 @@
 	icon_state = "fwindow";
 	id = "chapel"
 	},
-/obj/effect/paint_stripe/purplegray,
+/obj/effect/paint_stripe/violet,
 /obj/structure/wall_frame/prepainted,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
@@ -19892,7 +19892,7 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "pathfinder_office"
 	},
-/obj/effect/paint_stripe/purplegray,
+/obj/effect/paint_stripe/violet,
 /obj/structure/wall_frame/prepainted,
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
@@ -21493,7 +21493,7 @@
 "pkh" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /obj/spawner/window/low_wall/borosillicate/full,
-/obj/effect/paint_stripe/purplegray,
+/obj/effect/paint_stripe/violet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "pki" = (
@@ -21704,7 +21704,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
-/obj/effect/paint_stripe/purplegray,
+/obj/effect/paint_stripe/violet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "ptW" = (
@@ -32657,7 +32657,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
-/obj/effect/paint_stripe/purplegray,
+/obj/effect/paint_stripe/violet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/cockpit)
 "wFA" = (
@@ -33369,7 +33369,7 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "pathfinder_office"
 	},
-/obj/effect/paint_stripe/purplegray,
+/obj/effect/paint_stripe/violet,
 /obj/structure/wall_frame/prepainted,
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
