@@ -20,7 +20,7 @@
 /obj/item/stack/material/hybrid_resin
 	name = "resin compound"
 	icon_state = "sheet-resin"
-	default_type = "resin compound"
+	material = /datum/material/hybrid_resin
 	no_variants = TRUE
 	apply_colour = TRUE
 	pass_color = TRUE
