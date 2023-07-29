@@ -12549,9 +12549,9 @@
 /turf/simulated/floor,
 /area/constructionsite)
 "aDY" = (
-/obj/machinery/light/small,
-/turf/simulated/floor,
-/area/constructionsite)
+/obj/structure/table/bench/padded,
+/turf/simulated/floor/wood,
+/area/crew_quarters/heads/blueshield)
 "aDZ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
@@ -16807,6 +16807,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
+"cmV" = (
+/obj/machinery/camera/network/tether{
+	dir = 1
+	},
+/turf/simulated/mineral/floor,
+/area/mine/explored/upper_level)
 "cnB" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -17120,6 +17126,10 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/airless,
 /area/shuttle/securiship/cockpit)
+"cQK" = (
+/obj/machinery/camera/network/tether,
+/turf/space,
+/area/space)
 "cRa" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -17333,7 +17343,6 @@
 /area/maintenance/substation/exploration)
 "dfU" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/command,
 /obj/machinery/door/blast/regular{
 	closed_layer = 10;
 	density = 0;
@@ -17343,6 +17352,9 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0;
 	open_layer = 1
+	},
+/obj/machinery/door/airlock/command{
+	name = "Blueshield Office Airlock"
 	},
 /turf/simulated/floor,
 /area/bridge/meeting_room)
@@ -17854,6 +17866,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
+"epC" = (
+/obj/machinery/camera/network/tether{
+	dir = 4
+	},
+/turf/simulated/mineral/floor,
+/area/mine/explored/upper_level)
 "eqV" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -18359,6 +18377,9 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/ai_upload_foyer)
+"fzV" = (
+/turf/simulated/wall/r_wall,
+/area/crew_quarters/heads/blueshield)
 "fAr" = (
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled,
@@ -20922,6 +20943,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
+"mAa" = (
+/obj/machinery/camera/network/tether{
+	dir = 9
+	},
+/turf/space,
+/area/space)
 "mAd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -21330,6 +21357,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/customs)
+"nHG" = (
+/obj/machinery/camera/network/tether{
+	dir = 1
+	},
+/turf/space,
+/area/space)
 "nIn" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -22024,6 +22057,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
+"pop" = (
+/obj/machinery/camera/network/tether{
+	dir = 4
+	},
+/turf/space,
+/area/space)
 "prZ" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -23934,6 +23973,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/exploration/showers)
+"tYS" = (
+/obj/machinery/door/airlock/maintenance/command,
+/turf/simulated/floor,
+/area/crew_quarters/heads/blueshield)
 "ubB" = (
 /turf/simulated/wall/r_wall,
 /area/tether/exploration/equipment)
@@ -24053,6 +24096,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
+"utZ" = (
+/obj/machinery/light/small,
+/obj/structure/closet/secure_closet/blueshield,
+/turf/simulated/floor/wood,
+/area/crew_quarters/heads/blueshield)
 "uum" = (
 /obj/machinery/optable,
 /obj/machinery/oxygen_pump/anesthetic{
@@ -24210,6 +24258,10 @@
 "uJP" = (
 /turf/simulated/wall/rshull,
 /area/shuttle/securiship/general)
+"uKF" = (
+/obj/machinery/camera/network/tether,
+/turf/simulated/mineral/floor/vacuum,
+/area/mine/explored/upper_level)
 "uLD" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -24254,6 +24306,12 @@
 	},
 /turf/simulated/floor,
 /area/constructionsite)
+"uPL" = (
+/obj/machinery/camera/network/tether{
+	dir = 4
+	},
+/turf/simulated/wall,
+/area/hallway/station/docks)
 "uRo" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -24598,6 +24656,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/staircase)
+"vuZ" = (
+/obj/landmark/spawnpoint/job/blueshield,
+/turf/simulated/floor/wood,
+/area/crew_quarters/heads/blueshield)
 "vyI" = (
 /mob/living/simple_mob/animal/passive/bird/parrot/polly,
 /turf/simulated/floor/outdoors/grass/forest,
@@ -25020,6 +25082,21 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
+"wEh" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 8;
+	icon_state = "pdoor0";
+	id = "secondary_bridge_blast";
+	name = "Secondary Command Office Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor/plating,
+/area/crew_quarters/heads/blueshield)
 "wEo" = (
 /obj/machinery/light{
 	dir = 8
@@ -25108,6 +25185,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
+"wNk" = (
+/turf/simulated/floor/wood,
+/area/crew_quarters/heads/blueshield)
 "wPc" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
@@ -30097,7 +30177,7 @@ bbz
 gak
 nmf
 mlJ
-aaa
+cQK
 aaa
 aaa
 aaa
@@ -30224,7 +30304,7 @@ aaa
 aaa
 aaa
 ahW
-aaa
+mAa
 aaa
 aaa
 mlJ
@@ -30953,7 +31033,7 @@ aac
 aaa
 aaa
 aaa
-aaa
+mAa
 aaa
 aaa
 aaa
@@ -30967,7 +31047,7 @@ aaa
 aGZ
 aFT
 aCJ
-aaa
+mAa
 aaa
 aaa
 aaa
@@ -31095,7 +31175,7 @@ awu
 bzq
 bzq
 bzq
-awu
+uPL
 aJi
 aJi
 aJi
@@ -31805,6 +31885,7 @@ aaa
 aaa
 aaa
 aaa
+pop
 aaa
 aaa
 aaa
@@ -31818,8 +31899,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+pop
 aaa
 aaa
 aaa
@@ -32511,7 +32591,7 @@ aAZ
 rCQ
 ohW
 awu
-aaa
+cQK
 aaa
 aaa
 aaa
@@ -33440,7 +33520,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+nHG
 rEb
 rEb
 rEb
@@ -33797,7 +33877,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+mAa
 aaa
 aaa
 aaa
@@ -33809,7 +33889,7 @@ aaa
 aab
 aaa
 aaa
-aaa
+mAa
 aaa
 aaa
 aaa
@@ -34860,7 +34940,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+nHG
 plz
 abO
 aWA
@@ -35226,7 +35306,7 @@ aDX
 aAl
 aCk
 aun
-aaa
+cQK
 aaa
 aaa
 aaa
@@ -36356,9 +36436,9 @@ awC
 awC
 awC
 awC
-aDX
-aDX
-aun
+tYS
+fzV
+fzV
 aat
 aat
 aat
@@ -36498,10 +36578,10 @@ ayR
 aAu
 ayR
 awC
-aDX
-aDX
-aun
-aat
+wNk
+utZ
+fzV
+uKF
 aat
 aat
 aaa
@@ -36640,9 +36720,9 @@ aza
 ayR
 ayR
 aBT
-aDX
+wNk
 aDY
-aun
+wEh
 aat
 aat
 aat
@@ -36782,9 +36862,9 @@ azg
 aAv
 aAv
 awC
-azW
-aDX
-aun
+wNk
+wNk
+wEh
 aat
 aat
 aat
@@ -36924,9 +37004,9 @@ azw
 aAv
 aAv
 awC
-aDX
-aDX
-aun
+wNk
+vuZ
+fzV
 aat
 aat
 aat
@@ -38568,7 +38648,7 @@ ajO
 ajO
 ajO
 ajO
-ajO
+cmV
 abC
 abC
 egU
@@ -40571,7 +40651,7 @@ ajO
 ajO
 ajO
 ajO
-ajO
+epC
 aac
 aac
 aac
@@ -41446,7 +41526,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+pop
 aaa
 aaa
 aaa
