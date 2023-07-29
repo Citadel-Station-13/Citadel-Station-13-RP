@@ -7,6 +7,11 @@
 	// todo: /datum/global_physiology should hold global body physiology, limbs should hold modifiers/whatever themselves.
 	//       this way biologies can be supported as efficiently as possible.
 
+	/// carry weight baseline modify +-
+	var/carry_weight_baseline = 0
+	/// carry weight penalty divisor +-
+	var/carry_weight_penalty
+
 /datum/global_physiology/proc/apply(datum/physiology_modifier/modifier)
 	// todo: modifier/apply_global, modifier/apply_bodypart
 
