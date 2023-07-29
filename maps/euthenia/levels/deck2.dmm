@@ -4346,7 +4346,7 @@
 /area/hallway/primary/central_two)
 "dqQ" = (
 /obj/machinery/atmospherics/component/trinary/atmos_filter{
-	filter_type = 3
+	filtering = "co2"
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -8707,7 +8707,7 @@
 /area/rnd/robotics)
 "gOt" = (
 /obj/machinery/atmospherics/component/trinary/atmos_filter{
-	filter_type = 4
+	filtering = "n2o"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
@@ -11032,7 +11032,7 @@
 "iRH" = (
 /obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
 	dir = 1;
-	filter_type = 1
+	filtering = "o2"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
@@ -21846,7 +21846,7 @@
 "rfk" = (
 /obj/machinery/atmospherics/component/trinary/atmos_filter{
 	dir = 8;
-	filter_type = 0
+	filtering = "phoron"
 	},
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -29763,7 +29763,7 @@
 "wVg" = (
 /obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
 	dir = 1;
-	filter_type = 2
+	filtering = "n2"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)

@@ -1,5 +1,5 @@
 /datum/atmosphere/planet/lythios43c
-	base_gases = list(
+	base = list(
 		/datum/gas/nitrogen = 0.66,
 		/datum/gas/oxygen = 0.34,
 	)

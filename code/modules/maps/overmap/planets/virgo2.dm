@@ -3,7 +3,7 @@
 	base = list(
 		GAS_ID_NITROGEN = 0.10,
 		GAS_ID_OXYGEN = 0.03,
-		GAS_ID_CARBON_DIOXIDE = 0.87m
+		GAS_ID_CARBON_DIOXIDE = 0.87,
 	)
 	pressure_low = 312.1
 	pressure_high = 312.1

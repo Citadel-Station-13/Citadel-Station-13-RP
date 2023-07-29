@@ -97,7 +97,7 @@
 				success = FALSE
 				break
 		if(success)
-			molar_msas = potential
+			molar_mass = potential
 			break
 
 	specific_heat = rand(3 * 10, 300 * 10) / 10

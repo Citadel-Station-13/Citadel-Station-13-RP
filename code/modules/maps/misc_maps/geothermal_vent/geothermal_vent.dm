@@ -2,7 +2,7 @@
 #define GEOTHERMAL_TEMP 2473.15
 
 /datum/atmosphere/geothermal_vent
-		base = list(
+	base = list(
 		/datum/gas/carbon_dioxide = 0.5,
 		/datum/gas/sulfur_dioxide = 0.34,
 		/datum/gas/carbon_monoxide = 0.16,

@@ -16,18 +16,8 @@
 
 	var/set_flow_rate = ATMOS_DEFAULT_VOLUME_FILTER
 
-	/*
-	Filter types:
-	-1: Nothing
-	 0: Phoron: Phoron, Oxygen Agent B
-	 1: Oxygen: Oxygen ONLY
-	 2: Nitrogen: Nitrogen ONLY
-	 3: Carbon Dioxide: Carbon Dioxide ONLY
-	 4: Sleeping Agent (N2O)
-	*/
-	var/filter_type = -1
-	var/list/filtered_out = list()
-
+	/// target gas id, or groups
+	var/filtering
 
 	var/frequency = 0
 	var/datum/radio_frequency/radio_connection
@@ -42,18 +32,6 @@
 
 /obj/machinery/atmospherics/component/trinary/atmos_filter/Initialize(mapload)
 	. = ..()
-	switch(filter_type)
-		if(0) //removing hydrocarbons
-			filtered_out += GAS_ID_PHORON
-			filtered_out += GAS_ID_VOLATILE_FUEL
-		if(1) //removing O2
-			filtered_out += GAS_ID_OXYGEN
-		if(2) //removing N2
-			filtered_out += GAS_ID_NITROGEN
-		if(3) //removing CO2
-			filtered_out += GAS_ID_CARBON_DIOXIDE
-		if(4)//removing N2O
-			filtered_out += GAS_ID_NITROUS_OXIDE
 
 	air1.volume = ATMOS_DEFAULT_VOLUME_FILTER
 	air2.volume = ATMOS_DEFAULT_VOLUME_FILTER

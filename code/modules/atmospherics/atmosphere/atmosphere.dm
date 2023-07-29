@@ -82,7 +82,7 @@
 	var/moles_base = (base_pressure * volume) / (R_IDEAL_GAS_EQUATION * target_temperature)
 	var/ratio_base = moles_base / total_base
 	if(ratio_base)
-		for(var/what in bsae)
+		for(var/what in base)
 			var/amount = ratio_base * base[what]
 			total_moles += amount
 			target_gases[what] = amount
@@ -110,7 +110,7 @@
 				generated.register()
 				random_procedural[key] = generated
 			key = random_procedural[key]
-		total_gases[key] += moles_this_step
+		target_gases[key] += moles_this_step
 		total_moles += moles_this_step
 
 	gas_string = get_gas_string(target_gases, target_temperature)

@@ -39,6 +39,8 @@ export const AtmosGroupFlagNames = [
 interface BaseGasContext {
   coreGases: AtmosGasID[];
   groupNames: string[];
+  filterableGases: AtmosGasID[];
+  filterableGroups: AtmosGasGroups;
 }
 
 export interface GasContext extends BaseGasContext {

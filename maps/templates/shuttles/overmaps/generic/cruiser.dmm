@@ -7904,24 +7904,21 @@
 "rP" = (
 /obj/machinery/atmospherics/component/trinary/atmos_filter{
 	dir = 4;
-	filter_type = 0;
-	filtered_out = list("phoron")
+	filtering = "phoron"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rQ" = (
 /obj/machinery/atmospherics/component/trinary/atmos_filter{
 	dir = 4;
-	filter_type = 3;
-	filtered_out = list("carbon_dioxide")
+	filtering = "co2"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rR" = (
 /obj/machinery/atmospherics/component/trinary/atmos_filter{
 	dir = 4;
-	filter_type = 4;
-	filtered_out = list("sleeping_agent")
+	filtering = "n2o"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)

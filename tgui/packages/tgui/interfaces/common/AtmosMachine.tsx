@@ -25,3 +25,7 @@ export interface AtmosComponentProps {
   // set target maximum power draw
   setPowerLimitAct?: (watts: number) => void;
 }
+
+export const AtmosComponentControl = (props, context) => {
+
+};

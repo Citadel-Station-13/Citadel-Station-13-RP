@@ -11,6 +11,9 @@
 /// chemicals
 #define GAS_GROUP_REAGENT (1<<3)
 
+/// Total gas groups
+#define GAS_GROUP_COUNT 4
+
 GLOBAL_REAL_LIST(gas_group_names) = list(
 	"Core",
 	"Other",

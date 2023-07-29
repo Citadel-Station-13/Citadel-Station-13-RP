@@ -6699,8 +6699,7 @@
 /area/rnd/outpost/mixing)
 "Fe" = (
 /obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
-	filter_type = 4;
-	filtered_out = list("nitrous_oxide")
+	filtering = "n2o"
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
@@ -8971,8 +8970,7 @@
 /area/rnd/outpost/anomaly_lab)
 "PB" = (
 /obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
-	filter_type = 0;
-	filtered_out = list("phoron")
+	filtering = "phoron"
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
@@ -10463,8 +10461,7 @@
 /area/rnd/outpost/heating)
 "WP" = (
 /obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
-	filter_type = 3;
-	filtered_out = list("carbon_dioxide")
+	filtering = "co2"
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
