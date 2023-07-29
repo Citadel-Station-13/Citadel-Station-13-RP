@@ -24906,9 +24906,9 @@
 /area/tether/surfacebase/surface_three_hall)
 "aUh" = (
 /obj/structure/kitchenspike,
-/obj/machinery/alarm{
+/obj/machinery/alarm/freezer{
 	dir = 1;
-	pixel_y = -25
+	pixel_y = -21
 	},
 /turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/freezer)
