@@ -136,4 +136,4 @@
 	update_desc()
 	update_connections(1)
 	update_icon()
-	update_material()
+	

@@ -217,7 +217,7 @@
  * * amount - how much to set to
  */
 /atom/proc/set_max_integrity(amount)
-	integrity_max = max(amonut, 0)
+	integrity_max = max(amount, 0)
 	if(integrity < integrity_max)
 		return
 	var/was_broken = integrity <= integrity_failure
@@ -256,7 +256,22 @@
  * Otherwise, will retain the last percentage.
  */
 /atom/proc/set_multiplied_integrity(factor, restore)
-	#warn impl
+	var/was_broken = src.integrity <= integrity_failure
+	if(restore)
+		integrity = integrity_max = initial(integrity_max) * factor
+		if(was_broken && integrity > integrity_failure)
+			atom_fix()
+		return
+	var/ratio = integrity / integrity_max
+	integrity_max = initial(integrity_max) * factor
+	integrity = integrity_max * ratio
+	var/now_broken = integrity <= integrity_failure
+	if(!was_broken && now_broken)
+		atom_break()
+	else if(was_broken && !now_broken)
+		atom_fix()
+	if(integrity <= 0)
+		atom_destruction()
 
 /**
  * adjusts integrity - routes directly to [damage_integrity] and [heal_integrity]
