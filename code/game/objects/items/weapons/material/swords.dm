@@ -13,10 +13,10 @@
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 
 /obj/item/material/sword/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/sword/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/sword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(unique_parry_check(user, attacker, damage_source) && prob(50))
@@ -42,7 +42,7 @@
 	return(BRUTELOSS)
 
 /obj/item/material/sword/katana/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/sword/katana/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel

@@ -156,7 +156,7 @@
 
 /obj/item/material/twohanded/fireaxe/bone
 	desc = "A primitive version of a hefty fire axe, made from bone. Whoever made this didn't make it to save lives."
-	default_material = "bone"
+	material_parts = /datum/material/bone
 	icon_state = "bone_axe0"
 	base_icon = "bone_axe"
 	material_color = 0
@@ -165,16 +165,16 @@
 	return ..(mapload,"bone")
 
 /obj/item/material/twohanded/fireaxe/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/twohanded/fireaxe/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/twohanded/fireaxe/scythe/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/twohanded/fireaxe/scythe/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/twohanded/fireaxe/scythe
 	icon_state = "scythe0"
@@ -208,7 +208,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	mob_throw_hit_sound =  'sound/weapons/pierce.ogg'
 	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
-	default_material = "glass"
+	material_parts = /datum/material/glass
 	material_color = 0
 	fragile = 1	//It's a haphazard thing of glass, wire, and steel
 	reach = 2 // Spears are long.
@@ -270,7 +270,7 @@
 /obj/item/material/twohanded/spear/bone
 	name = "spear"
 	desc = "A simple, yet effective, weapon, built from bone."
-	default_material = "bone"
+	material_parts = /datum/material/bone
 	icon_state = "bone_spear0"
 	base_icon = "bone_spear"
 	material_color = 0
@@ -279,10 +279,10 @@
 	..(mapload,"bone")
 
 /obj/item/material/twohanded/spear/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/twohanded/spear/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 //Sledgehammers. Slightly less force than fire axes, but breaks bones easier.
 

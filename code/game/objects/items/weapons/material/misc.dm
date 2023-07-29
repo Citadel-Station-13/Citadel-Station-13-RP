@@ -9,10 +9,10 @@
 	attack_verb = list("jabbed","stabbed","ripped")
 
 /obj/item/material/harpoon/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/harpoon/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/knife/machete/hatchet
 	name = "hatchet"
@@ -34,7 +34,7 @@
 	name = "primitive hatchet"
 	desc = "A broad, flat piece of bone knapped to a sharp edge. A truly primitive weapon."
 	icon_state = "hatchet_bone"
-	default_material = "bone"
+	material_parts = /datum/material/bone
 
 /obj/item/material/knife/machete/hatchet/unathiknife
 	name = "duelling knife"
@@ -46,10 +46,10 @@
 	var/hits = 0
 
 /obj/item/material/knife/machete/hatchet/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/knife/machete/hatchet/unathiknife/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/knife/machete/hatchet/unathiknife/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(hits > 0)
@@ -76,23 +76,23 @@
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
 
 /obj/item/material/minihoe/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/minihoe/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/material/minihoe/bone
 	name = "primitive mini hoe"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "cultivator_bone"
-	default_material = "bone"
+	material_parts = /datum/material/bone
 
 /obj/item/material/snow/snowball
 	name = "loose packed snowball"
 	desc = "A fun snowball. Throw it at your friends!"
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "snowball"
-	default_material = MAT_SNOW
+	material_parts = /datum/material/snow
 	health = 1
 	fragile = 1
 	force_divisor = 0.01

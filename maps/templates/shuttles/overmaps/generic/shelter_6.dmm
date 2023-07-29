@@ -1149,7 +1149,7 @@
 /obj/item/gun/energy/medigun,
 /obj/item/gun/energy/captain,
 /obj/item/material/knife/machete/deluxe{
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 	},
 /obj/item/clothing/accessory/holster/machete,
 /obj/item/storage/firstaid/combat,

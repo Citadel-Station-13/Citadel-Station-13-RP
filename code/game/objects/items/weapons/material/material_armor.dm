@@ -131,7 +131,7 @@
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"
-	default_material = MAT_STEEL
+	material_parts = /datum/material/steel
 
 /obj/item/clothing/suit/armor/material/makeshift
 	name = "sheet armor"
@@ -139,10 +139,10 @@
 	icon_state = "material_armor_makeshift"
 
 /obj/item/clothing/suit/armor/material/makeshift/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 
 /obj/item/clothing/suit/armor/material/makeshift/glass
-	default_material = "glass"
+	material_parts = /datum/material/glass
 
 // Used to craft sheet armor, and possibly other things in the Future(tm).
 /obj/item/material/armor_plating
@@ -221,7 +221,7 @@
 /obj/item/clothing/head/helmet/material
 	name = "helmet"
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHAIR
-	default_material = MAT_STEEL
+	material_parts = /datum/material/steel
 
 /obj/item/clothing/head/helmet/material/makeshift
 	name = "bucket"
@@ -230,4 +230,4 @@
 	icon_state = "material_armor_makeshift"
 
 /obj/item/clothing/head/helmet/material/makeshift/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel

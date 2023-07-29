@@ -21,10 +21,10 @@
 		M.adjustToxLoss(rand(20,40))
 
 /obj/item/material/star/ninja
-	default_material = "uranium"
+	material_parts = /datum/material/uranium
 
 /obj/item/material/star/plasteel
-	default_material = "plasteel"
+	material_parts = /datum/material/plasteel
 
 /obj/item/material/star/durasteel
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel

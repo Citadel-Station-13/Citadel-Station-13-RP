@@ -31,7 +31,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	climb_delay = 2.0 SECONDS
 	plane = OBJ_PLANE
 
-	var/default_material = MAT_STEEL
+	var/default_material = /datum/material/steel
 	var/datum/material/const_material
 	var/paint_color
 	var/stripe_color

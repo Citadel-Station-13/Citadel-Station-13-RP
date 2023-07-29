@@ -12,9 +12,11 @@
 	thrown_force_divisor = 0.5
 	item_state = "shard-glass"
 	attack_verb = list("stabbed", "slashed", "sliced", "cut")
-	default_material = "glass"
+	material_parts = /datum/material/glass
 	unbreakable = 1 //It's already broken.
 	drops_debris = 0
+
+#warn stuff
 
 /obj/item/material/shard/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
@@ -150,11 +152,11 @@
 			return
 
 // Preset types - left here for the code that uses them
-/obj/item/material/shard/shrapnel/Initialize(mapload, material_key)
-	. = ..(mapload, "steel")
+/obj/item/material/shard/shrapnel
+	material_parts = /datum/material/steel
 
-/obj/item/material/shard/phoron/Initialize(mapload, material_key)
-	. = ..(mapload, "phglass")
+/obj/item/material/shard/phoron
+	material_parts = /datum/material/glass/phoron
 
-/obj/item/material/shard/wood/Initialize(mapload, material_key)
-	. = ..(mapload, "wood")
+/obj/item/material/shard/wood
+	material_parts = /datum/material/wood
