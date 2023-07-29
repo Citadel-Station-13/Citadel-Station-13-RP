@@ -11968,6 +11968,9 @@
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "auZ" = (
+/obj/machinery/light{
+	dir = 1
+	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -12221,11 +12224,12 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "avC" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/catwalk,
+/obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
-/area/hallway/lower/third_south)
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside3)
 "avD" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/disposal,
@@ -31914,6 +31918,7 @@
 	pixel_x = 5;
 	pixel_y = 28
 	},
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/topairlock)
 "bie" = (
@@ -34662,20 +34667,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/breakroom)
-"cnP" = (
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 24
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/lower/third_south)
 "cnZ" = (
 /obj/structure/bed/chair/bay/chair{
 	dir = 4
@@ -35193,14 +35184,20 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "dxb" = (
-/obj/machinery/light{
-	dir = 1
+/obj/machinery/station_map{
+	pixel_y = 32
 	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
+/obj/effect/floor_decal/corner/lightgrey/bordercorner{
+	dir = 4
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -37602,7 +37599,11 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/southhall)
 "lbe" = (
-/obj/machinery/camera/network/tether,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 24
+	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -37988,6 +37989,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
+"mfL" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "mjs" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -39196,6 +39206,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
+/obj/machinery/camera/network/tether,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "pwF" = (
@@ -41084,20 +41095,8 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/breakroom)
 "usd" = (
-/obj/machinery/station_map{
-	pixel_y = 32
-	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner{
+/obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 4
-	},
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/machinery/door/firedoor{
-	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -41525,6 +41524,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
+"vvK" = (
+/obj/machinery/camera/network/tether,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "vzs" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -52563,7 +52572,7 @@ alP
 aac
 ats
 ats
-usd
+dxb
 avZ
 avZ
 avZ
@@ -52705,7 +52714,7 @@ agw
 aac
 aac
 ats
-cnP
+lbe
 ava
 awa
 cRi
@@ -52847,8 +52856,8 @@ alP
 aac
 aac
 aue
-auZ
-avC
+mfL
+usd
 rMS
 hoQ
 aEr
@@ -52989,8 +52998,8 @@ alP
 aac
 aac
 aue
-lbe
-avC
+vvK
+usd
 sSW
 lpB
 awH
@@ -53131,8 +53140,8 @@ agw
 aac
 aac
 ats
-dxb
-avC
+auZ
+usd
 bSe
 aff
 azP
@@ -60212,7 +60221,7 @@ acV
 acV
 ave
 arL
-adG
+avC
 azY
 axQ
 aAQ
@@ -61210,7 +61219,7 @@ adG
 adG
 adG
 adG
-adG
+avC
 aAC
 aAR
 aAR

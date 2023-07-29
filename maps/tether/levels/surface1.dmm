@@ -1336,6 +1336,7 @@
 	dir = 1
 	},
 /obj/machinery/vending/loadout/clothing,
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
 "acx" = (
@@ -4737,6 +4738,9 @@
 /obj/item/assembly/timer,
 /obj/item/assembly/voice,
 /obj/item/radio/electropack,
+/obj/machinery/camera/network/research{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/testingroom)
 "aim" = (
@@ -10445,6 +10449,7 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 4
 	},
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/locker)
 "asz" = (
@@ -26205,6 +26210,9 @@
 	},
 /obj/effect/floor_decal/corner/white/bordercorner2{
 	dir = 5
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_lodging)
