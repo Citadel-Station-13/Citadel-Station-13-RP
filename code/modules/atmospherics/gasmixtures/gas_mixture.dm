@@ -492,6 +492,18 @@
 	qdel(temp)
 	return TRUE
 
+/**
+ * Get our gas string
+ */
+/datum/gas_mixture/proc/get_gas_string()
+	return "[list2params(gas)][length(gas)? ";TEMP=[temperature]" : ""]"
+
+/**
+ * Get gas string of given list of gas at a given temperature
+ */
+/proc/get_gas_string(list/gas, temperature)
+	return "[list2params(gas)][length(gas)? ";TEMP=[temperature]" : ""]"
+
 //! Tile Operations
 /**
  * get the equivalent of a single tile of this gas mixture

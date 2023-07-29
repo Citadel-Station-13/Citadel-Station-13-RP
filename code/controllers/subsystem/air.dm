@@ -322,7 +322,10 @@ SUBSYSTEM_DEF(air)
 		if(initial(A.abstract_type) == T)
 			continue
 		A = new T
+		// register normal id
 		generated_atmospheres[A.id] = A
+		// register type too - for faster lookup
+		generated_atmospheres[A.type] = A
 
 /**
  * parses a gas string

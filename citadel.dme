@@ -2151,7 +2151,7 @@
 #include "code\modules\asset_cache\assets\debug\fucky_wucky.dm"
 #include "code\modules\asset_cache\transports\asset_transport.dm"
 #include "code\modules\asset_cache\transports\webroot_transport.dm"
-#include "code\modules\atmospherics\atmosphere\_atmosphere.dm"
+#include "code\modules\atmospherics\atmosphere\atmosphere.dm"
 #include "code\modules\atmospherics\atmosphere\planet.dm"
 #include "code\modules\atmospherics\environmental\atom.dm"
 #include "code\modules\atmospherics\environmental\public.dm"

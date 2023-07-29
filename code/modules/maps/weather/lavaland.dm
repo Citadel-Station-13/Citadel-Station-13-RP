@@ -1,16 +1,13 @@
 /datum/atmosphere/planet/lavaland
 	base_gases = list(
-	/datum/gas/oxygen = 0.14,
-	/datum/gas/nitrogen = 0.20,
-	/datum/gas/carbon_dioxide = 0.66
+		/datum/gas/oxygen = 0.14,
+		/datum/gas/nitrogen = 0.20,
+		/datum/gas/carbon_dioxide = 0.66,
 	)
-	base_target_pressure = 35.1
-	minimum_pressure = 32.1
-	maximum_pressure = 37.1
-	minimum_temp = 310.3
-	maximum_temp = 350.1
-
-
+	pressure_low = 32.1
+	pressure_high = 37.1
+	temperature_low = 310.3
+	temperature_high = 350.1
 
 /datum/time/lavaland
 	seconds_in_day = 2 HOURS

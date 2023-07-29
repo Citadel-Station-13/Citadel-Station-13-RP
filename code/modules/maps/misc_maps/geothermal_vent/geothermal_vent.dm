@@ -2,16 +2,15 @@
 #define GEOTHERMAL_TEMP 2473.15
 
 /datum/atmosphere/geothermal_vent
-	base_gases = list(
-	/datum/gas/carbon_dioxide = 0.5,
-	/datum/gas/sulfur_dioxide = 0.34,
-    /datum/gas/carbon_monoxide = 0.16,
+		base = list(
+		/datum/gas/carbon_dioxide = 0.5,
+		/datum/gas/sulfur_dioxide = 0.34,
+		/datum/gas/carbon_monoxide = 0.16,
 	)
-	base_target_pressure = 376.9
-	minimum_pressure = 376.9
-	maximum_pressure = 376.9
-	minimum_temp = GEOTHERMAL_TEMP - 10
-	maximum_temp = GEOTHERMAL_TEMP + 10
+	pressure_high = 376.9
+	pressure_low = 376.9
+	temperature_low = GEOTHERMAL_TEMP - 10
+	temperature_high = GEOTHERMAL_TEMP + 10
 
 //Turfmakers
 #define GEOTHERMAL_SET_ATMOS	initial_gas_mix = ATMOSPHERE_ID_GEOTHERMAL
