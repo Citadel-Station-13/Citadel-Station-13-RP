@@ -2,7 +2,6 @@
 	id = "copper"
 	name = "copper"
 	icon_colour = "#b45c13"
-	conductivity = 35
 	stack_type = /obj/item/stack/material/copper
 	tgui_icon_key = "copper"
 

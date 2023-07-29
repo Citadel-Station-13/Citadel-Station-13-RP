@@ -7,8 +7,6 @@
 	icon_reinf_directionals = TRUE
 	icon_colour = "#D9C179"
 	shard_type = SHARD_STONE_PIECE
-	conductive = 0
-	conductivity = 5
 	door_icon_base = "stone"
 	sheet_singular_name = "brick"
 	sheet_plural_name = "bricks"

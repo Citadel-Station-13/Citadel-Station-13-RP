@@ -3,7 +3,6 @@
 	name = "silver"
 	stack_type = /obj/item/stack/material/silver
 	icon_colour = "#D1E6E3"
-	conductivity = 63
 	stack_origin_tech = list(TECH_MATERIAL = 3)
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"

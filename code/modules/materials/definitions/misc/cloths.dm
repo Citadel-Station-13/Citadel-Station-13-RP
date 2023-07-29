@@ -7,7 +7,6 @@
 	flags = MATERIAL_PADDING
 	ignition_point = T0C+232
 	melting_point = T0C+300
-	conductive = 0
 	pass_stack_colors = TRUE
 
 	relative_integrity = 0.25

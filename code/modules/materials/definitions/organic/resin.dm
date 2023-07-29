@@ -9,7 +9,6 @@
 	melting_point = T0C+300
 	sheet_singular_name = "blob"
 	sheet_plural_name = "blobs"
-	conductive = 0
 	explosion_resistance = 60
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
 	stack_type = /obj/item/stack/material/resin

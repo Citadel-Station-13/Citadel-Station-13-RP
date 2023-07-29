@@ -3,7 +3,6 @@
 	id = "lead"
 	stack_type = /obj/item/stack/material/lead
 	icon_colour = "#273956"
-	conductivity = 10
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	tgui_icon_key = "ingots"

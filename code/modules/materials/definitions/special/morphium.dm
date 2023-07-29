@@ -6,7 +6,6 @@
 	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
 	door_icon_base = "metal"
 	icon_colour = "#37115A"
-	conductive = 0
 	conductivity = 1.5
 	shard_type = SHARD_SHARD
 	negation = 25

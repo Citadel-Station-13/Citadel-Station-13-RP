@@ -7,7 +7,6 @@
 	ignition_point = T0C+232
 	melting_point = T0C+300
 	icon_colour = "#ff9900"
-	conductive = 0
 
 	relative_integrity = 0.2
 	relative_density = 0.05

@@ -8,7 +8,6 @@
 	icon_colour = "#4FE95A"
 	shard_type = SHARD_SHARD
 	negation = 15
-	conductivity = 60
 	stack_origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 5, TECH_BIO = 4)
 	sheet_singular_name = "sheet"
 	sheet_plural_name = "sheets"

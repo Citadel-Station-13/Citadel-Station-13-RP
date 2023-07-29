@@ -6,7 +6,6 @@
 	icon_base = 'icons/turf/walls/solid_wall.dmi'
 	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#CCCCCC"
-	conductive = 0
 	conductivity = 2 // For the sake of material armor diversity, we're gonna pretend this plastic is a good insulator.
 	melting_point = T0C+371 //assuming heat resistant plastic
 	stack_origin_tech = list(TECH_MATERIAL = 3)

@@ -6,7 +6,6 @@
 	cut_delay = 60
 	icon_colour = "#00FFE1"
 	opacity = 0.4
-	conductivity = 1
 	shard_type = SHARD_SHARD
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
 	stack_origin_tech = list(TECH_MATERIAL = 6)

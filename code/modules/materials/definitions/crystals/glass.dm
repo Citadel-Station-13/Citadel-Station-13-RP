@@ -8,7 +8,6 @@
 	relative_integrity = 0.25
 	shard_type = SHARD_SHARD
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
-	conductive = 0
 	conductivity = 1 // Glass shards don't conduct.
 	door_icon_base = "stone"
 	destruction_desc = "shatters"

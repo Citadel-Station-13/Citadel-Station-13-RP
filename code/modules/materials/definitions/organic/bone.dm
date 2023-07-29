@@ -8,7 +8,6 @@
 	melting_point = T0C+300
 	sheet_singular_name = "fragment"
 	sheet_plural_name = "fragments"
-	conductive = 0
 	explosion_resistance = 60
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
 	door_icon_base = "stone"

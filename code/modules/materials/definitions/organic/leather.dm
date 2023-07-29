@@ -9,7 +9,6 @@
 	flags = MATERIAL_PADDING
 	ignition_point = T0C+300
 	melting_point = T0C+300
-	conductive = 0
 
 	relative_integrity = 1
 	relative_density = 0.5

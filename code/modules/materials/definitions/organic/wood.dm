@@ -9,8 +9,6 @@
 	explosion_resistance = 2
 	shard_type = SHARD_SPLINTER
 	shard_can_repair = 0 // you can't weld splinters back into planks
-	conductive = 0
-	conductivity = 1
 	melting_point = T0C+300 //okay, not melting in this case, but hot enough to destroy wood
 	ignition_point = T0C+288
 	stack_origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)

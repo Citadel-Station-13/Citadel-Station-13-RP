@@ -18,7 +18,6 @@
 	stack_type = /obj/item/stack/material/mhydrogen
 	icon_colour = "#E6C5DE"
 	stack_origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 6, TECH_MAGNET = 5)
-	conductivity = 100
 	is_fusion_fuel = 1
 	tgui_icon_key = "mhydrogen"
 
@@ -31,7 +30,6 @@
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	is_fusion_fuel = 1
-	conductive = 0
 	tgui_icon_key = "ingots"
 
 /datum/material/hydrogen/deuterium
@@ -43,5 +41,4 @@
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	is_fusion_fuel = 1
-	conductive = 0
 	tgui_icon_key = "ingots"
