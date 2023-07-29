@@ -198,7 +198,7 @@
 // Description: Checks the power or integrity of the blast door, if either have failed, chekcs the damage to determine if the creature would be able to open the door by force. Otherwise, super.
 /obj/machinery/door/blast/attack_generic(mob/living/user, damage)
 	if(machine_stat & (BROKEN|NOPOWER))
-		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
+		if(damage >= 10)
 			user.set_AI_busy(TRUE) // If the mob doesn't have an AI attached, this won't do anything.
 			if(src.density)
 				visible_message("<span class='danger'>\The [user] starts forcing \the [src] open!</span>")

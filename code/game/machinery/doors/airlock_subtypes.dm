@@ -137,10 +137,9 @@
 
 /obj/machinery/door/airlock/glass
 	name = "Glass Airlock"
-	hitsound = 'sound/effects/Glasshit.ogg'
 	open_sound_powered = 'sound/machines/door/hall1o.ogg'
 	close_sound_powered = 'sound/machines/door/hall1c.ogg'
-	maxhealth = 300
+	hit_sound_brute = 'sound/effects/Glasshit.ogg'
 	explosion_resistance = 5
 	opacity = FALSE
 	glass = TRUE
@@ -235,8 +234,6 @@
 	name = "Command Airlock"
 	opacity = FALSE
 	glass = TRUE
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
@@ -251,8 +248,6 @@
 
 /obj/machinery/door/airlock/glass/engineering
 	name = "Engineering Airlock"
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eng
@@ -266,8 +261,6 @@
 
 /obj/machinery/door/airlock/glass/engineeringatmos
 	name = "Atmospherics Airlock"
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eat
@@ -281,8 +274,6 @@
 
 /obj/machinery/door/airlock/glass/security
 	name = "Security Airlock"
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_sec
@@ -295,8 +286,6 @@
 
 /obj/machinery/door/airlock/glass/medical
 	name = "Medical Airlock"
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_med
@@ -351,8 +340,6 @@
 
 /obj/machinery/door/airlock/glass/mining
 	name = "Mining Airlock"
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_min
@@ -366,8 +353,6 @@
 
 /obj/machinery/door/airlock/glass/atmos
 	name = "Atmospherics Airlock"
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
