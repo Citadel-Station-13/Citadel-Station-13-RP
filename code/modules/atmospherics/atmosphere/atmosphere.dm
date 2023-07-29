@@ -40,6 +40,7 @@
 	/// target pressure to fill base to
 	var/base_pressure
 
+	// todo: random_markov and have key = list(other key = probability)
 	/// key: gasid, typepath, or random_procedural key to probability.
 	var/list/random = list()
 	/// nominal random steps: the target moles per step is determined by this. actual steps may vary.
@@ -92,10 +93,25 @@
 		return
 
 	// generate rest
-
-
-
-	#warn impl
+	var/moles_per_step = (target_moles - total_moles) / random_nominal_steps
+	// safety
+	for(var/i in 1 to 200)
+		if(total_moles >= target_moles)
+			break
+		var/left = target_moles - total_moles
+		var/moles_this_step = min(rand(75, 125) * 0.01 * moles_per_step, left)
+		// todo: markov chain support by just having pickweight on key = list
+		var/key = pickweight(random)
+		if(random_procedural[key])
+			if(ispath(random_procedural[key]))
+				var/datum/procedural_gas/generated = new random_procedural[key]
+				generated.instance()
+				generated.generate()
+				generated.register()
+				random_procedural[key] = generated
+			key = random_procedural[key]
+		total_gases[key] += moles_this_step
+		total_moles += moles_this_step
 
 	gas_string = get_gas_string(target_gases, target_temperature)
 
