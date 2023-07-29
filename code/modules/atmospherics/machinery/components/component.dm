@@ -51,6 +51,12 @@
 		return
 	if(!tgui_interface)
 		return
+	switch(action)
+		if("togglePower")
+			#warn impl
+		if("setPowerDraw")
+			var/watts = text2num(params["target"])
+			#warn impl
 
 /obj/machinery/atmospherics/component/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	if(!tgui_interface)

@@ -99,11 +99,31 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_interact(mob/user, datum/tgui/ui)
+#warn above
+
+/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AtmosFilter", name)
 		ui.open()
+
+/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_data(mob/user)
+	. = ..()
+	.["filtering"] = filtering
+
+/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	.["atmosContext"] = global.gas_data.tgui_gas_context()
+
+/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_act(action, params)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("filter")
+			#warn impl
+
+#warn below
 
 /obj/machinery/atmospherics/component/trinary/atmos_filter/ui_data(mob/user)
 	var/list/data = list()
