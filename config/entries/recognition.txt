@@ -1,0 +1,30 @@
+## Enables recognition
+# RECOGNITION_ENABLED
+
+## You recognize anyone in your faction
+# RECOGNITION_AUTO_FACTION
+
+## You recognize anyone in your faction if you're part of these factions
+# RECOGNITION_AUTO_FACTIONS station
+# RECOGNITION_AUTO_FACTIONS trader
+
+## You recognize anyone in these role IDs
+# RECOGNITION_AUTO_ROLES_GLOBAL captain
+# RECOGNITION_AUTO_ROLES_GLOBAL hop
+
+## You recognize anyone in these role IDs if same faction
+# RECOGNITION_AUTO_ROLES_FACTION captain
+# RECOGNITION_AUTO_ROLES_FACTION hop
+
+## You recognize anyone in your department
+# RECOGNITION_AUTO_DEPARTMENT
+
+## You recognize your department head
+# RECOGNITION_AUTO_DEPARTMENT_HEAD
+
+## Recognition is persistent for that character
+# RECOGNITION_PERSISTENCE
+
+## Automatic recognition cannot be overridden or interrupted
+## Under this, if automatic criteria meets, the recognition system is effectively disabled.
+# RECOGNITION_AUTO_ABSOLUTE

@@ -10,6 +10,7 @@ $include entries/health.txt
 $include entries/lobby.txt
 $include entries/logging.txt
 $include entries/photography.txt
+$include entries/recognition.txt
 $include entries/resources.txt
 $include entries/security.txt
 $include entries/skills.txt
