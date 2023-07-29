@@ -17,13 +17,11 @@
 
 /obj/item/clothing/get_encumbrance()
 	. = ..()
-	#warn aaa
-	. = ..()
 	var/tally = 0
 	for(var/obj/item/I as anything in accessories)
-		tally += I.get_carry_weight()
-	tally *= (1 - weight_compensation_mult)
-	tally = max(0, tally - weight_compensation_flat)
+		tally += I.get_encumbrance()
+	tally *= (1 - encumbrance_multiply)
+	tally = max(0, tally - encumbrance_mitigation)
 	. += tally
 
 /obj/item/clothing/equipped(mob/user, slot, flags)
@@ -222,16 +220,15 @@
 	A.on_attached(src, user)
 	add_obj_verb(src, /obj/item/clothing/proc/removetie_verb)
 	update_worn_icon()
-	update_carry_weight()
+	update_encumbrance()
 
 /obj/item/clothing/proc/remove_accessory(mob/user, obj/item/clothing/accessory/A)
 	if(!LAZYLEN(accessories) || !(A in accessories))
 		return
-
 	A.on_removed(user)
 	accessories -= A
 	update_worn_icon()
-	update_carry_weight()
+	update_encumbrance()
 
 /obj/item/clothing/proc/removetie_verb()
 	set name = "Remove Accessory"

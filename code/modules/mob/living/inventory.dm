@@ -302,10 +302,13 @@
 //* hard movespeed slowdown
 
 /mob/living/proc/update_item_slowdown()
-	var/tally = 0
-	for(var/obj/item/I as anything in get_equipped_items())
-		tally += I.hard_slowdown
+	var/tally = get_item_slowdown()
 	if(tally)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_item_slowdown)
 	else
 		remove_movespeed_modifier(/datum/movespeed_modifier/mob_item_slowdown)
+
+/mob/living/proc/get_item_slowdown()
+	. = 0
+	for(var/obj/item/I as anything in get_equipped_items())
+		. += I.hard_slowdown

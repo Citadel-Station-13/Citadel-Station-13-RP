@@ -191,7 +191,7 @@
 	item_state = "metal"
 	icon_state = "metal"
 	damage_force = 16
-	slowdown = 2
+	encumbrance = ITEM_ENCUMBRANCE_SHIELD_TOWER
 	throw_force = 15 //Massive piece of metal
 	w_class = ITEMSIZE_HUGE
 

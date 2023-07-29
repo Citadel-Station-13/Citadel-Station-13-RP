@@ -776,8 +776,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 //? Carry Weight
 
-#warn rework encumbrance
-
 /obj/item/proc/get_weight()
 	return weight
 
@@ -816,7 +814,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/set_encumbrance(amount)
 	if(amount == encumbrance)
 		return
-	encumberence = amount
+	encumbrance = amount
 	update_encumbrance()
 
 /obj/item/proc/set_slowdown(amount)

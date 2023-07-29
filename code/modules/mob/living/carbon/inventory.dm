@@ -52,3 +52,8 @@
 
 /mob/living/carbon/carry_encumbrance_to_slowdown(amount)
 	#warn impl
+
+/mob/living/carbon/get_item_slowdown()
+	. = ..()
+	if(!isnull(species))
+		. *= species.item_slowdown_mod

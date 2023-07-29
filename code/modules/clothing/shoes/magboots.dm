@@ -9,18 +9,18 @@
 	overshoes = 1
 	shoes_under_pants = -1	//These things are huge
 	preserve_item = 1
+	encumbrance = ITEM_ENCUMBRANCE_SHOES_MAGBOOTS
 	var/magpulse = 0
-	var/slowdown_on = 3
 	var/icon_base = "magboots"
 	action_button_name = "Toggle Magboots"
 	step_volume_mod = 1.3
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
 
+	var/encumbrance_on = ITEM_ENCUMBRANCE_SHOES_MAGBOOT_PULSE
+
 /obj/item/clothing/shoes/magboots/proc/set_slowdown()
-	slowdown = worn_over? max(SHOES_SLOWDOWN, worn_over.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.
-	if (magpulse)
-		slowdown += slowdown_on
+	set_encumbrance(initial(encumbrance) + (magpulse? encumbrance_on : 0))
 
 /obj/item/clothing/shoes/magboots/attack_self(mob/user)
 	. = ..()

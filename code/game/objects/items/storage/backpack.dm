@@ -619,8 +619,8 @@
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
 	var/icon_base = "saddlebag"
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
-	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 
 /obj/item/storage/backpack/saddlebag_common/can_equip(mob/M, slot, mob/user, flags)
@@ -675,7 +675,7 @@
 	icon_state = "taurvest"
 	icon_base = "taurvest"
 	max_storage_space = INVENTORY_STANDARD_SPACE
-	slowdown = 0
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 
 /obj/item/storage/backpack/dufflebag/fluff //Black dufflebag without syndie buffs.
 	name = "plain black dufflebag"

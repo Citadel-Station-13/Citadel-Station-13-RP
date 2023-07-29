@@ -11,7 +11,7 @@
 	icon_state = "swat"
 	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6
-	slowdown = -1
+	hard_slowdown = -1
 
 	cold_protection = FEET
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROTECTION_TEMPERATURE

@@ -64,11 +64,8 @@
 	action_button_name = "Toggle Grippers"
 	clothing_flags = NONE
 	item_flags = ITEM_DROPDEL
-
-/obj/item/clothing/shoes/magboots/changeling/set_slowdown()
-	slowdown = worn_over? max(SHOES_SLOWDOWN, worn_over.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.
-	if (magpulse)
-		slowdown += 1		//It's already tied to a slowdown suit, 6 slowdown is huge.
+	encumbrance = ITEM_ENCUMBRANCE_CHANGELING_MAGBOOTS
+	encumbrance_on = ITEM_ENCUMBRANCE_CHANGELING_MAGBOOTS_PULSE
 
 /obj/item/clothing/shoes/magboots/changeling/attack_self(mob/user)
 	. = ..()

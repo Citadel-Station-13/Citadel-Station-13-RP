@@ -109,7 +109,7 @@
 	chained.add_fingerprint(user)
 
 	// todo: refactor
-	set_encumbrance(initial(carry_encumberence))
+	set_encumbrance(initial(encumbrance))
 	icon_state = "orange"
 	chained = null
 
