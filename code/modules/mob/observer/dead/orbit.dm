@@ -71,6 +71,14 @@
 		else if(istype(M, /mob/living/silicon/pai))
 			players += list(serialized)
 
+	for(var/obj/overmap/entity/visitable/ship/shuttle in SSshuttle.ships)
+		var/list/serialized = list()
+		serialized["name"] = shuttle.name
+
+		serialized["ref"] = REF(shuttle)
+		items_of_interest += serialized
+
+
 	data["players"] = players
 	data["simplemobs"] = simplemobs
 	data["items_of_interest"] = items_of_interest
