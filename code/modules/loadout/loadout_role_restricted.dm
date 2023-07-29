@@ -1272,9 +1272,9 @@
 	path = /obj/item/clothing/shoes/boots/winter/science
 
 /datum/loadout_entry/restricted/science/bedsheet
- 	name = "Science Bedsheet"
- 	path = /obj/item/bedsheet/hydro
- 	slot = SLOT_ID_BACK
+	name = "Science Bedsheet"
+	path = /obj/item/bedsheet/hydro
+	slot = SLOT_ID_BACK
 
 //*Command
 //Eyes
@@ -1513,9 +1513,9 @@
 	allowed_roles = list("Chef")
 
 /datum/loadout_entry/restricted/misc/bedsheet/cook
- 	name = "Cook Bedsheet"
- 	path = /obj/item/bedsheet/cook
- 	allowed_roles = list("Chef")
+	name = "Cook Bedsheet"
+	path = /obj/item/bedsheet/cook
+	allowed_roles = list("Chef")
 
 //*Internal Affairs Agent
 /datum/loadout_entry/restricted/misc/uniform/iaskirt
@@ -1556,9 +1556,9 @@
 	cost = 2
 
 /datum/loadout_entry/restricted/misc/bedsheet/janitor
- 	name = "Janitor Bedsheet"
- 	path = /obj/item/bedsheet/janitor
- 	allowed_roles = list("Janitor")
+	name = "Janitor Bedsheet"
+	path = /obj/item/bedsheet/janitor
+	allowed_roles = list("Janitor")
 
 //*Exploration
 /datum/loadout_entry/restricted/misc/uniform/bodysuit_explo/command
@@ -1604,9 +1604,9 @@
 	allowed_roles = list("Botanist")
 
 /datum/loadout_entry/restricted/misc/bedsheet/hydroponics
- 	name = "Hydroponics Bedsheet"
- 	path = /obj/item/bedsheet/hydro
- 	allowed_roles = list("Botanist")
+	name = "Hydroponics Bedsheet"
+	path = /obj/item/bedsheet/hydro
+	allowed_roles = list("Botanist")
 
  //*Clown
 
