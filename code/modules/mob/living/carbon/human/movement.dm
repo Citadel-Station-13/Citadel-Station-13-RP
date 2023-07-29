@@ -87,15 +87,6 @@
 	if(CE_SPEEDBOOST in chem_effects)
 		tally -= 0.5
 
-	// Item related slowdown.
-	var/item_tally = calculate_item_encumbrance()
-	if(item_tally > 0) // is it greater than 0? run the wacky shit
-		item_tally *= species.item_slowdown_mod // your item slowdown kicks in, but
-		if(!(CE_SPEEDBOOST in chem_effects)) // hyperzine users ignore item slow
-			tally += item_tally // no hyperzine? slowed down by things
-	else
-		tally += item_tally // if it's less than 0 that means it speeds you up, theoretically, so, hit it
-
 	if(CE_SLOWDOWN in chem_effects)
 		if (tally >= 0 )
 			tally = (tally + tally/4) //Add a quarter of penalties on top.

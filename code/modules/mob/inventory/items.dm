@@ -101,14 +101,12 @@
 	if(zoom)
 		zoom() //binoculars, scope, etc
 
-	// todo: remove assertion for performance
-	if(isnull(carry_weight_cached))
-		STACK_TRACE("carry weight cached was not null on pickup")
 	if(isliving(user))
 		var/mob/living/L = user
-		L.remove_current_carry_weight(carry_weight_cached)
-	carry_weight_cached = null
-	#warn *scream
+		L.adjust_current_carry_weight(-weight_registered)
+		L.adjust_current_carry_encumbrance(-encumbrance_registered)
+	weight_registered = null
+	encumbrance_registered = null
 
 	return ((. & COMPONENT_ITEM_DROPPED_RELOCATE)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
@@ -129,14 +127,12 @@
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
 		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
 
-	// todo: remove assertion for performance
-	if(!isnull(carry_weight_cached))
-		STACK_TRACE("carry weight cached was not null on pickup")
-	carry_weight_cached = get_carry_weight()
+	weight_registered = get_weight()
+	encumbrance_registered = get_encumbrance()
 	if(isliving(user))
 		var/mob/living/L = user
-		L.add_current_carry_weight(carry_weight_cached)
-	#warn *scream
+		L.adjust_current_carry_weight(weight_registered)
+		L.adjust_current_carry_encumbrance(encumbrance_registered)
 
 /**
  * get the slowdown we incur when we're worn

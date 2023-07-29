@@ -17,7 +17,7 @@
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
 
-	var/encumbrance_on = ITEM_ENCUMBRANCE_SHOES_MAGBOOT_PULSE
+	var/encumbrance_on = ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE
 
 /obj/item/clothing/shoes/magboots/proc/set_slowdown()
 	set_encumbrance(initial(encumbrance) + (magpulse? encumbrance_on : 0))

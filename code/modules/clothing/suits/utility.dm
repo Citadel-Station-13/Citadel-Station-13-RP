@@ -78,7 +78,7 @@
 	clothing_flags = CLOTHING_THICK_MATERIAL
 	body_cover_flags = HEAD|FACE|EYES
 	armor_type = /datum/armor/general/radsuit
-	weight = ITEM_WEIGHT_ARMOR_BIORADSUIT_HELMET
+	weight = ITEM_WEIGHT_ARMOR_BIORAD_SUIT_HELMET
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_BIORAD_HELMET
 
 /obj/item/clothing/suit/radiation
@@ -90,7 +90,7 @@
 	permeability_coefficient = 0.50
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/radiation,/obj/item/clothing/mask/gas)
-	weight = ITEM_WEIGHT_ARMOR_BIORADSUIT
+	weight = ITEM_WEIGHT_ARMOR_BIORAD_SUIT
 	armor_type = /datum/armor/general/radsuit
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	clothing_flags = CLOTHING_THICK_MATERIAL
