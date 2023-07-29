@@ -13980,6 +13980,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar)
+"cPw" = (
+/obj/machinery/camera/network/tether{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/burial)
 "cQA" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -14096,6 +14102,10 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/cargo)
+"cVW" = (
+/obj/machinery/camera/network/cargo,
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/foyer)
 "cZR" = (
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/cargo)
@@ -18616,6 +18626,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/camera/network/cargo,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "kBy" = (
@@ -21648,6 +21659,19 @@
 /obj/machinery/atmospherics/pipe/manifold4w/visible/fuel,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
+"qjv" = (
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 10
+	},
+/obj/structure/table/wooden_reinforced,
+/obj/machinery/camera/network/tether{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/station/port)
 "qjS" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -33916,7 +33940,7 @@ avE
 aWA
 avE
 ayV
-aTI
+cPw
 aJb
 azS
 aAd
@@ -35043,7 +35067,7 @@ bxa
 aSm
 hyt
 uJH
-mVX
+qjv
 cRn
 bxa
 cdk
@@ -43118,7 +43142,7 @@ aJe
 uUq
 efh
 aHC
-qDz
+cVW
 pPB
 qDz
 xfq
