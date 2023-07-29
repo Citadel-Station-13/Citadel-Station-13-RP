@@ -113,6 +113,7 @@ export const Orbit = (props: any, context: any) => {
     for (const source of [
       players,
       simplemobs,
+      items_of_interest,
     ]) {
       const member = source
         .filter(searchFor(searchText))
@@ -181,6 +182,8 @@ export const Orbit = (props: any, context: any) => {
         </Collapsible>
         <Collapsible title={`Items of Interest - (${items_of_interest.length})`}>
           {items_of_interest
+            .filter(searchFor(searchText))
+            .sort(compareNumberedText)
             .map(thing => (
               <OrbitedButton
                 key={thing.name}

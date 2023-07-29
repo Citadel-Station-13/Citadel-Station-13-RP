@@ -72,11 +72,12 @@
 			players += list(serialized)
 
 	for(var/obj/overmap/entity/visitable/ship/shuttle in SSshuttle.ships)
-		var/list/serialized = list()
-		serialized["name"] = shuttle.name
+		if(istype(shuttle))
+			var/list/serialized = list()
+			serialized["name"] = shuttle.name
 
-		serialized["ref"] = REF(shuttle)
-		items_of_interest += serialized
+			serialized["ref"] = REF(shuttle)
+			items_of_interest += serialized
 
 
 	data["players"] = players
