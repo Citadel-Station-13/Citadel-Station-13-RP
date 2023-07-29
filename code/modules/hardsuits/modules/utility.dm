@@ -651,7 +651,7 @@
 
 	to_chat(H, "<font color=#4F49AF><b>You activate the suit's sprint mode.</b></font>")
 
-	holder.slowdown -= sprint_speed
+	holder.hard_slowdown -= sprint_speed
 
 /obj/item/hardsuit_module/sprinter/deactivate()
 
@@ -662,7 +662,7 @@
 
 	to_chat(H, "<span class='danger'>Your hardsuit returns to normal speed.</span>")
 
-	holder.slowdown += sprint_speed
+	holder.hard_slowdown += sprint_speed
 
 /obj/item/hardsuit_module/device/hand_defib
 	name = "\improper Hand-mounted Defibrillator"

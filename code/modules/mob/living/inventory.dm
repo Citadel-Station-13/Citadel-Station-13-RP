@@ -271,7 +271,7 @@
 	for(var/obj/item/I as anything in get_equipped_items())
 		tally_weight += I.get_weight()
 		tally_encumbrance += I.get_encumbrance()
-	cached_weight = tally_weight
+	cached_carry_weight = tally_weight
 	cached_carry_encumbrance = tally_encumbrance
 
 /mob/living/proc/adjust_current_carry_weight(amount)

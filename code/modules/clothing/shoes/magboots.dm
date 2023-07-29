@@ -118,7 +118,7 @@
 /obj/item/clothing/shoes/magboots/advanced
 	name = "advanced magboots"
 	icon_state = "advmag0"
-	slowdown_on = 0
+	encumbrance_on = 0
 	icon_base = "advmag"
 
 /obj/item/clothing/shoes/magboots/syndicate
@@ -126,4 +126,4 @@
 	desc = "Prior to its dissolution, many Syndicate agents were tasked with stealing NanoTrasen's prototype advanced magboots. Reverse engineering these rare tactical boots was achieved shortly before the end of the conflict."
 	icon_state = "syndiemag0"
 	icon_base = "syndiemag"
-	slowdown_on = 0
+	encumbrance_on = 0
