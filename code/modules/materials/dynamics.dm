@@ -29,3 +29,20 @@
  */
 /datum/controller/subsystem/materials/proc/reinforcing_materials_armor(list/datum/material/materials)
 	#warn impl
+
+/**
+ * imprint damage onto an item directly
+ */
+/datum/controller/subsystem/materials/proc/imprint_material_melee_stats(datum/material/material, obj/item/item_or_items)
+	#warn impl
+
+/**
+ * get melee stats
+ * autodetect with initial damage modes of item
+ * alternatively forced modes can be specified via the param
+ * 
+ * @return list(damage, armorflag, tier, mode, throwforce, throwspeed)
+ */
+/datum/material/proc/melee_stats(initial_modes, is_stab, is_slice, is_blunt)
+	#warn impl
+

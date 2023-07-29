@@ -104,7 +104,7 @@
 	slot_flags = SLOT_BACK
 	force_wielded = 30
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
-	applies_material_colour = 0
+	material_color = 0
 	can_cleave = TRUE
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
@@ -138,7 +138,7 @@
 	force_wielded = 0
 	force_divisor = 0
 	damage_force = 0
-	applies_material_colour = 1
+	material_color = 1
 	icon_state = "fireaxe_mask0"
 	base_icon = "fireaxe_mask"
 	unbreakable = 1
@@ -159,7 +159,7 @@
 	default_material = "bone"
 	icon_state = "bone_axe0"
 	base_icon = "bone_axe"
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/item/material/twohanded/fireaxe/bone/Initialize(mapload, material_key)
 	return ..(mapload,"bone")
@@ -209,7 +209,7 @@
 	mob_throw_hit_sound =  'sound/weapons/pierce.ogg'
 	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
 	default_material = "glass"
-	applies_material_colour = 0
+	material_color = 0
 	fragile = 1	//It's a haphazard thing of glass, wire, and steel
 	reach = 2 // Spears are long.
 	attackspeed = 20
@@ -273,7 +273,7 @@
 	default_material = "bone"
 	icon_state = "bone_spear0"
 	base_icon = "bone_spear"
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/item/material/twohanded/spear/bone/Initialize(mapload, material_key)
 	..(mapload,"bone")

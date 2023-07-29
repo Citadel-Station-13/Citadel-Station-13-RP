@@ -1,67 +1,40 @@
-#define MATERIAL_ARMOR_COEFFICENT 0.05
-/*
-SEE code/modules/materials/materials.dm FOR DETAILS ON INHERITED DATUM.
-This class of armor takes armor and appearance data from a material "datum".
-They are also fragile based on material data and many can break/smash apart when hit.
-
-Materials has a var called protectiveness which plays a major factor in how good it is for armor.
-With the coefficent being 0.05, this is how strong different levels of protectiveness are (for melee)
-For bullets and lasers, material hardness and reflectivity also play a major role, respectively.
-
-
-Protectiveness | Armor %
-			0  = 0%
-			5  = 20%
-			10 = 33%
-			15 = 42%
-			20 = 50%
-			25 = 55%
-			30 = 60%
-			40 = 66%
-			50 = 71%
-			60 = 75%
-			70 = 77%
-			80 = 80%
-*/
-
-
+// todo: this is awful and need to all be refactored
 // Putting these at /clothing/ level saves a lot of code duplication in armor/helmets/gauntlets/etc
 /obj/item/clothing
-	var/datum/material/material = null // Why isn't this a datum?
-	var/applies_material_color = TRUE
-	var/unbreakable = FALSE
-	var/default_material = null // Set this to something else if you want material attributes on init.
-	var/material_armor_modifer = 1 // Adjust if you want seperate types of armor made from the same material to have different protectiveness (e.g. makeshift vs real armor)
-	/// multiplier for mat slowdown from weight
-	var/material_weight_factor
+	material_parts = MATERIAL_DEFAULT_NONE
+	material_costs = 4000
+	material_primary = MATERIAL_PART_DEFAULT
+	var/material_significance = MATERIAL_SIGNIFICANCE_BASELINE
+	var/material_color = TRUE
 
-/obj/item/clothing/Initialize(mapload, material_key)
+/obj/item/clothing/Initialize(mapload, material_armor)
+	if(!isnull(material_armor))
+		set_material_part(MATERIAL_PART_DEFAULT, SSmaterials.resolve_material(material_armor))
 	. = ..()
-	if(!material_key)
-		material_key = default_material
-	if(material_key) // May still be null if a material was not specified as a default.
-		set_material(material_key)
 
 /obj/item/clothing/Destroy()
-	STOP_PROCESSING(SSobj, src)
+	if(atom_flags & ATOM_MATERIALS_TICKING)
+		STOP_TICKING_MATERIALS(src)
 	return ..()
 
-/obj/item/clothing/get_material()
-	return material
-
-// Debating if this should be made an /obj/item/ proc.
-/obj/item/clothing/proc/set_material(var/new_material)
-	material = get_material_by_name(new_material)
-	if(!material)
-		qdel(src)
+/obj/item/clothing/update_material_single(datum/material/material)
+	. = ..()
+	name = "[material.display_name] [initial(name)]"
+	var/needs_ticking = MATERIAL_NEEDS_PROCESSING(material)
+	var/is_ticking = atom_flags & ATOM_MATERIALS_TICKING
+	if(needs_ticking && !is_ticking)
+		START_TICKING_MATERIALS(src)
+	else if(!needs_ticking && is_ticking)
+		STOP_TICKING_MATERIALS(src)
+	set_armor(material.create_armor(material_significance))
+	if(material_color)
+		color = material.icon_colour
 	else
-		name = "[material.display_name] [initial(name)]"
-		health = round(material.integrity/10)
-		if(applies_material_color)
-			color = material.icon_colour
-		if(material.products_need_process())
-			START_PROCESSING(SSobj, src)
-		update_armor()
+		color = null
+	#warn carry weight and weight/density
+	siemens_coefficient = material.relative_conductivity
+	atom_flags = (atom_flags & ~(NOCONDUCT)) | (material.relative_conductivity == 0? NOCONDUCT : NONE)
+	#warn impl
 
 // This is called when someone wearing the object gets hit in some form (melee, bullet_act(), etc).
 // Note that this cannot change if someone gets hurt, as it merely reacts to being hit.
@@ -155,44 +128,6 @@ Protectiveness | Armor %
 				P.reflected = 1
 
 				return PROJECTILE_CONTINUE // complete projectile permutation
-
-/proc/calculate_material_armor(amount)
-	var/result = 1 - MATERIAL_ARMOR_COEFFICENT * amount / (1 + MATERIAL_ARMOR_COEFFICENT * abs(amount))
-	result = result * 100
-	result = abs(result - 100)
-	return round(result) * 0.01
-
-/obj/item/clothing/proc/update_armor()
-	if(material)
-		var/melee_armor = 0, bullet_armor = 0, laser_armor = 0, energy_armor = 0, bomb_armor = 0
-
-		melee_armor = calculate_material_armor(material.protectiveness * material_armor_modifer)
-
-		bullet_armor = calculate_material_armor((material.protectiveness * (material.hardness / 100) * material_armor_modifer) * 0.7)
-
-		laser_armor = calculate_material_armor((material.protectiveness * (material.reflectivity + 1) * material_armor_modifer) * 0.7)
-		if(material.opacity != 1)
-			laser_armor *= max(material.opacity - 0.3, 0) // Glass and such has an opacity of 0.3, but lasers should go through glass armor entirely.
-
-		energy_armor = calculate_material_armor((material.protectiveness * material_armor_modifer) * 0.4)
-
-		bomb_armor = calculate_material_armor((material.protectiveness * material_armor_modifer) * 0.5)
-
-		// Makes sure the numbers stay capped.
-		for(var/number in list(melee_armor, bullet_armor, laser_armor, energy_armor, bomb_armor))
-			number = clamp( number, 0,  100)
-
-		set_armor(list(
-			ARMOR_MELEE = melee_armor,
-			ARMOR_BULLET = bullet_armor,
-			ARMOR_LASER = laser_armor,
-			ARMOR_ENERGY = energy_armor,
-			ARMOR_BOMB = bomb_armor,
-		))
-
-		if(!isnull(material.conductivity))
-			siemens_coefficient = clamp( material.conductivity / 10, 0,  10)
-		slowdown = clamp(0, round(material.weight / 10, 0.1) * material_weight_factor, 6)
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"

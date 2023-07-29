@@ -22,7 +22,7 @@
 	var/datum/material/material
 	var/datum/material/padding_material
 	var/base_icon = "bed"
-	var/applies_material_colour = 1
+	var/material_color = 1
 	var/can_buckle = TRUE
 
 /obj/structure/bed/Initialize(mapload, new_material, new_padding_material)
@@ -51,7 +51,7 @@
 	var/cache_key = "[base_icon]-[material.name]"
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, base_icon)
-		if(applies_material_colour)
+		if(material_color)
 			I.color = material.icon_colour
 		stool_cache[cache_key] = I
 	overlays_to_add += stool_cache[cache_key]

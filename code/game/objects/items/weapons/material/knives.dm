@@ -40,13 +40,13 @@
 	name = "gold-plated balisong"
 	desc = "An exquisite, gold-plated butterfly knife. The centerpiece of any aspiring knife collector's showcase."
 	icon_state = "butterflyknife_gold"
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/item/material/butterfly/butterfly_wooden
 	name = "wood-handled butterfly knife"
 	desc = "A concealable butterlfly knife with an ornate, wooden handle. Requires far too much care to use more than once."
 	icon_state = "butterflyknife_wooden"
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/item/material/butterfly/boxcutter
 	name = "box cutter"
@@ -99,7 +99,7 @@
 	item_state = "knife"
 	force_divisor = 0.20 //12 when hardness 60 (steel)
 	attack_verb = list("stabbed", "chopped", "cut")
-	applies_material_colour = 1
+	material_color = 1
 
 /obj/item/material/knife/tacknife/combatknife
 	name = "combat knife"
@@ -110,7 +110,7 @@
 	force_divisor = 0.25 // 15 with hardness 60 (steel)
 	thrown_force_divisor = 1.75 // 20 with weight 20 (steel)
 	attack_verb = list("sliced", "stabbed", "chopped", "cut")
-	applies_material_colour = 1
+	material_color = 1
 
 /obj/item/material/knife/stiletto
 	name = "stiletto knife"
@@ -121,7 +121,7 @@
 	edge = 0 //Shouldn't be able to remove limbs
 	force_divisor = 0.1 //6 when hardness 60 (steel)
 	attack_verb = list("stabbed", "shanked", "punctured", "impaled", "skewered")
-	applies_material_colour = 1
+	material_color = 1
 
 /obj/item/material/knife/tacknife/combatknife/bone
 	icon_state = "boneknife"
@@ -136,7 +136,7 @@
 	icon_state = "tacknife"
 	item_state = "knife"
 	force_divisor = 0.15
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/item/material/knife/hook
 	name = "meat hook"
@@ -148,7 +148,7 @@
 	desc = "The unearthly energies that once powered this blade are now dormant."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "render"
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/item/material/knife/butch
 	name = "butcher's cleaver"
@@ -208,14 +208,14 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "survivalknife"
 	item_state = "knife"
-	applies_material_colour = FALSE
+	material_color = FALSE
 	default_material = "plasteel"
 	tool_speed = 2 // Use a real axe if you want to chop logs.
 
 /obj/item/material/knife/tacknife/survival/bone
 	name = "primitive survival knife"
 	desc = "A hunting grade survival knife with a sleek leather grip."
-	applies_material_colour =TRUE
+	material_color =TRUE
 	default_material = "bone"
 /obj/item/material/knife/machete/deluxe
 	name = "deluxe machete"
@@ -231,7 +231,7 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "dataknife"
 	item_state = "knife"
-	applies_material_colour = FALSE
+	material_color = FALSE
 	default_material = "plasteel"
 	tool_speed = 2 // Use a real axe if you want to chop logs.
 

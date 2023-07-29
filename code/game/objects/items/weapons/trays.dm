@@ -196,7 +196,7 @@
 			Img.layer = layer + I.layer*0.01
 			if(istype(I, /obj/item/material))
 				var/obj/item/material/O = I
-				if(O.applies_material_colour)
+				if(O.material_color)
 					Img.color = O.color
 			add_overlay(Img)
 

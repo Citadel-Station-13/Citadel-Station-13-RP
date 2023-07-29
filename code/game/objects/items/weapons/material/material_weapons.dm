@@ -15,8 +15,11 @@
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 			)
+	material_parts = /datum/material/steel
+	material_costs = 4000
+	/// applies material color
+	var/material_color = TRUE
 
-	var/applies_material_colour = 1
 	var/unbreakable = 0		//Doesn't lose health
 	var/fragile = 0			//Shatters when it dies
 	var/dulled = 0			//Has gone dull
@@ -24,38 +27,37 @@
 	var/force_divisor = 0.3
 	var/thrown_force_divisor = 0.3
 	var/dulled_divisor = 0.1	//Just drops the damage to a tenth
-	var/default_material = MAT_STEEL
-	var/datum/material/material
 	var/drops_debris = 1
 	// todo: proper material opt-out system on /atom level or something, this is trash
 	var/no_force_calculations = FALSE
 
-/obj/item/material/Initialize(mapload, material_key)
+/obj/item/material/Initialize(mapload, material)
+	if(!isnull(material))
+		set_material_part(MATERIAL_PART_DEFAULT, SSmaterials.resolve_material(material))
 	. = ..()
-	if(!material_key)
-		material_key = default_material
-	set_material(material_key)
-	if(!material)
-		qdel(src)
-		return
 
-	materials = material.get_matter()
-	if(materials.len)
-		for(var/material_type in materials)
-			if(!isnull(materials[material_type]))
-				materials[material_type] *= force_divisor // May require a new var instead.
+/obj/item/material/Destroy()
+	if(atom_flags & ATOM_MATERIALS_TICKING)
+		STOP_TICKING_MATERIALS(src)
+	return ..()
 
-	if(!(material.conductive))
-		src.atom_flags |= NOCONDUCT
-
-/obj/item/material/get_material()
-	return material
-
-/obj/item/material/set_material_parts(list/parts)
+/obj/item/material/update_material_single(datum/material/material)
 	. = ..()
-	// todo: this is shit but whatever, we'll redo this later.
-	if(length(parts) >= 1)
-		set_material(parts[parts[1]])
+	var/needs_ticking = MATERIAL_NEEDS_PROCESSING(material)
+	var/is_ticking = atom_flags & ATOM_MATERIALS_TICKING
+	if(needs_ticking && !is_ticking)
+		START_TICKING_MATERIALS(src)
+	else if(!needs_ticking && is_ticking)
+		STOP_TICKING_MATERIALS(src)
+	
+	if(material_color)
+		color = material.icon_colour
+	else
+		color = null
+	siemens_coefficient = material.relative_conductivity
+	atom_flags = (atom_flags & ~(NOCONDUCT)) | (material.relative_conductivity == 0? NOCONDUCT : NONE)
+
+	#warn impl
 
 /obj/item/material/proc/update_force()
 	if(no_force_calculations)
@@ -68,35 +70,11 @@
 	if(dulled)
 		damage_force = round(damage_force*dulled_divisor)
 	throw_force = round(material.get_blunt_damage()*thrown_force_divisor)
-	// todo: remove, shitcode
-	if(material.name == "supermatter")
-		damtype = BURN //its hot
-		damage_force = 150 //double the force of a durasteel claymore.
-		armor_penetration = 100 //regardless of armor
-		throw_force = 150
-
-	//spawn(1)
-	//	to_chat(world, "[src] has damage_force [damage_force] and throw_force [throw_force] when made from default material [material.name]")
-
+	
 /obj/item/material/proc/set_material(datum/material/new_material)
-	if(istype(new_material))
-		material = new_material
-	else
-		material = get_material_by_name(new_material) || SSmaterials.resolve_material(new_material)
-	if(!material)
-		qdel(src)
-	else
-		name = "[material.display_name] [initial(name)]"
-		health = round(material.integrity/10)
-		if(applies_material_colour)
-			color = material.icon_colour
-		if(material.products_need_process())
-			START_PROCESSING(SSobj, src)
-		update_force()
-
-/obj/item/material/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	. = ..()
+	name = "[material.display_name] [initial(name)]"
+	health = round(material.integrity/10)
+	update_force()
 
 /obj/item/material/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()

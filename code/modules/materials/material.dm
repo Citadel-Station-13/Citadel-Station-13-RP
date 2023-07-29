@@ -1,23 +1,6 @@
 
 // todo: put everything into their own files
 
-//Returns the material the object is made of, if applicable.
-//Will we ever need to return more than one value here? Or should we just return the "dominant" material.
-/obj/proc/get_material()
-	return null
-
-//mostly for convenience
-/obj/proc/get_material_name()
-	var/datum/material/material = get_material()
-	if(material)
-		return material.name
-
-/proc/material_display_name(name)
-	var/datum/material/material = get_material_by_name(name)
-	if(material)
-		return material.display_name
-	return null
-
 // Material definition and procs follow.
 /datum/material
 	abstract_type = /datum/material
@@ -163,10 +146,6 @@
 	var/negation = 0
 	/// Objects that have trouble staying in the same physical space by sheer laws of nature have this. Percent for respecting items to cause teleportation.
 	var/spatial_instability = 0
-	/// Objects without this var add NOCONDUCT to flags on spawn.
-	var/conductive = 1
-	/// How conductive the material is. Iron acts as the baseline, at 10.
-	var/conductivity = null
 	/// If set, object matter var will be a list containing these values.
 	var/list/composite_material
 	var/luminescence

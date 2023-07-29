@@ -15,7 +15,7 @@
 	var/current_damage = 0
 	var/cover = 50 //how much cover the girder provides against projectiles.
 	var/reinforcing = 0
-	var/applies_material_colour = 1
+	var/material_color = 1
 
 	/// what we're made out of
 	var/datum/material/material_structure = /datum/material/steel
@@ -55,7 +55,7 @@
 		STOP_TICKING_MATERIALS(src)
 	
 	// todo: refactor
-	if(applies_material_colour)
+	if(material_color)
 		color = material_structure.icon_colour
 
 /obj/structure/girder/material_init_parts()
@@ -322,7 +322,7 @@
 	icon= 'icons/obj/cult.dmi'
 	icon_state= "cultgirder"
 	cover = 70
-	applies_material_colour = 0
+	material_color = 0
 	material_structure = /datum/material/cult
 
 /obj/structure/girder/cult/update_icon_state()

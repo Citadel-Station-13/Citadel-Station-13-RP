@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	var/shiny_stripe
 	var/health
 	var/max_health
-	var/applies_material_colour = TRUE
+	var/material_color = TRUE
 
 /obj/structure/wall_frame/prepainted
 	paint_color = COLOR_WALL_GUNMETAL
@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	name = "[const_material.display_name] [initial(name)]"
 	max_health = round(const_material.integrity) //Should be 150 with default integrity (steel). Weaker than ye-olden Girders now.
 	health = max_health
-	if(applies_material_colour)
+	if(material_color)
 		color = const_material.icon_colour
 	if(const_material.products_need_process()) //Am I radioactive or some other? Process me!
 		START_PROCESSING(SSobj, src)
