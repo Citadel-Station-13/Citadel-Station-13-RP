@@ -85,7 +85,9 @@
 
 /client/proc/is_preference_enabled(var/preference)
 	var/datum/client_preference/cp = get_client_preference(preference)
-	return cp && (cp.key in prefs.preferences_enabled)
+	if(isnull(cp))
+		return FALSE
+	return prefs?.initialized? (cp.key in prefs.preferences_enabled) : cp.enabled_by_default
 
 /client/proc/set_preference(var/preference, var/set_preference)
 	var/datum/client_preference/cp = get_client_preference(preference)

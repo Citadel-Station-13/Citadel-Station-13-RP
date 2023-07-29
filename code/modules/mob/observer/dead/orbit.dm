@@ -68,6 +68,8 @@
 			players += list(serialized)
 		else if(isAI(M))
 			players += list(serialized)
+		else if(istype(M, /mob/living/silicon/pai))
+			players += list(serialized)
 
 	data["players"] = players
 	data["simplemobs"] = simplemobs

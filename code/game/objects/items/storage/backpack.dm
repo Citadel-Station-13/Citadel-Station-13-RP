@@ -579,39 +579,7 @@
 	desc = "A special trophy rack bearing the device of an all-seeing eye; the symbol of the PMD."
 	icon_state = "para_ert_pack"
 
-/obj/item/storage/backpack/saddlebag
-	name = "Horse Saddlebags"
-	desc = "A saddle that holds items. Seems slightly bulky."
-	icon = 'icons/obj/clothing/backpack.dmi'
-	icon_override = 'icons/mob/clothing/back.dmi'
-	item_state = "saddlebag"
-	icon_state = "saddlebag"
-	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
-	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
-	weight = ITEM_WEIGHT_STORAGE_DUFFLEBAG
-	var/taurtype = /datum/sprite_accessory/tail/taur/horse //Acceptable taur type to be wearing this
-	var/no_message = "You aren't the appropriate taur type to wear this!"
-
-/obj/item/storage/backpack/saddlebag/can_equip(mob/M, slot, mob/user, flags)
-	. = ..()
-	if(!.)
-		return FALSE
-	var/mob/living/carbon/human/H
-	if(istype(H) && istype(H.tail_style, taurtype))
-		return 1
-	else
-		to_chat(H, "<span class='warning'>[no_message]</span>")
-		return 0
-
-/* If anyone wants to make some... this is how you would.
-/obj/item/storage/backpack/saddlebag/spider
-	name = "Drider Saddlebags"
-	item_state = "saddlebag_drider"
-	icon_state = "saddlebag_drider"
-	var/taurtype = /datum/sprite_accessory/tail/taur/spider
-*/
-
-/obj/item/storage/backpack/saddlebag_common //Shared bag for other taurs with sturdy backs
+/obj/item/storage/backpack/saddlebag_common //Shared bag for taurs
 	name = "Taur Saddlebags"
 	desc = "A saddle that holds items. Seems slightly bulky."
 	icon = 'icons/obj/clothing/backpack.dmi'
@@ -627,7 +595,7 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	var/mob/living/carbon/human/H
+	var/mob/living/carbon/human/H = M
 	var/datum/sprite_accessory/tail/taur/TT = H.tail_style
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/horse))
 		item_state = "[icon_base]_horse"

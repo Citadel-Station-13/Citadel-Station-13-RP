@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(wall_overlays_cache)
 
 /turf/simulated/wall/update_overlays()
 	if (material == initial(material))
-		addtimer(CALLBACK(src, /turf/simulated/wall/proc/update_overlays_delayed), 1 SECOND) //our material datum has not been instanced, so we'll runtime about 2 lines down.
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/turf/simulated/wall, update_overlays_delayed)), 1 SECOND) //our material datum has not been instanced, so we'll runtime about 2 lines down.
 		return
 	icon = material.icon_base
 	if(reinf_material)

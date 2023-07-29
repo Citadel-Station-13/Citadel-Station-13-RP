@@ -155,7 +155,7 @@
 
 /obj/effect/gateway/active/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/spawn_things), rand(30, 60) SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(spawn_things)), rand(30, 60) SECONDS)
 
 /obj/effect/gateway/active/proc/spawn_things()
 	var/t = pick(spawnable)
