@@ -24,6 +24,8 @@
 			var/ref = params["ref"]
 			var/atom/movable/poi = locate(ref) in GLOB.mob_list
 			if (poi == null)
+				poi = locate(ref) in SSshuttle.ships
+			if (poi == null)
 				. = TRUE
 				return
 			owner.ManualFollow(poi)
@@ -77,7 +79,7 @@
 			serialized["name"] = shuttle.name
 
 			serialized["ref"] = REF(shuttle)
-			items_of_interest += serialized
+			items_of_interest += list(serialized)
 
 
 	data["players"] = players
