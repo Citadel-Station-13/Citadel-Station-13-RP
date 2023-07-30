@@ -43,9 +43,9 @@
  * get melee stats
  * autodetect with initial damage modes of item
  * alternatively forced modes can be specified via the param
- * 
+ *
  * @return list(damage, armorflag, tier, mode, throwforce, throwspeed)
  */
-/datum/material/proc/melee_stats(initial_modes, is_stab, is_slice, is_blunt)
+/datum/material/proc/melee_stats(initial_modes)
 	#warn impl
 

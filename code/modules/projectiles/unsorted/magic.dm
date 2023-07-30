@@ -316,7 +316,7 @@
 	nodamage = 0
 	armor_penetration = 0
 	magic = TRUE
-	hit_sound = 'sound/weapons/barragespellhit.ogg'
+	impact_sounds = 'sound/weapons/barragespellhit.ogg'
 
 /obj/projectile/magic/arcane_barrage/on_hit(target, var/mob/living/L)
 	if(ismob(target))

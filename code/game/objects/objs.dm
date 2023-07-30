@@ -59,17 +59,16 @@
 	/// * This does not include material parts.
 	var/list/materials_base
 	/// material parts - lets us track what we're made of
-	/// this is either a lazy key-value list of material keys to IDs,
-	/// or a single material id
+	/// this is either a lazy key-value list of material keys to instances,
+	/// or a single material instance
 	/// or null for defaults.
-	/// todo: this should store instances instead of ids for speed.
 	/// ! This must be set for anything using the materials system.
 	/// ! This is what determines how many, and if something uses the material parts system.
 	/// * This may be a typelist, use is_typelist to check.
 	/// * Use [MATERIAL_DEFAULT_DISABLED] if something doesn't use material parts system.
 	/// * Use [MATERIAL_DEFAULT_ABSTRACTED] if something uses the abstraction API to implement material parts themselves.
 	/// * Use [MATERIAL_DEFAULT_NONE] if something uses material parts system, but has only one material with default of null.
-	/// * This may use typepath keys at compile time, but is immediately converted to material instances on boot.
+	/// * This may use typepath keys or material IDs at compile time / on map, but is immediately converted to material instances on boot.
 	/// * Always use [get_material_parts] to get this list unless you know what you're doing.
 	/// * This var should never be changed from a list to a normal value or vice versa at runtime,
 	///   as we use this to detect which material update proc to call!
@@ -83,7 +82,7 @@
 	/// * This should still be set even if you are implementing material_parts yourself!
 	//  todo: abstraction API for this when we need it.
 	var/list/material_costs
-	/// material part considered primary
+	/// material part considered primary. This is the only material that traits apply to, by default.
 	var/material_primary
 	/// make the actual materials multiplied by this amount. used by lathes to prevent duping with efficiency upgrades.
 	var/material_multiplier = 1
@@ -161,7 +160,9 @@
 				obj_flags |= string_to_objflag[flag]
 
 /obj/Destroy()
-	STOP_PROCESSING(SSobj, src)
+	#warn ugh handle materials ticking
+	if(IS_TICKING_MATERIALS(src))
+		STOP_TICKING_MATERIALS(src)
 	if(register_as_dangerous_object)
 		unregister_dangerous_to_step()
 	SStgui.close_uis(src)

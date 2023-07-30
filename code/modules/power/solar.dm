@@ -218,7 +218,8 @@ GLOBAL_LIST_EMPTY(solars_list)
 			playsound(src, W.tool_sound, 75, 1)
 			return 1
 
-		if(istype(W, /obj/item/stack/material) && (W.get_material_name() == "glass" || W.get_material_name() == "rglass"))
+		// todo: phoronglass solars
+		if(istype(W, /obj/item/stack/material) && istype(W.get_primary_material(), /datum/material/glass))
 			var/obj/item/stack/material/S = W
 			if(S.use(2))
 				glass_type = W.type

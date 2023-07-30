@@ -31,6 +31,7 @@
 	update_appearance()
 
 /obj/structure/girder/Destroy()
+	#warn handle ticking
 	if(IS_TICKING_MATERIALS(src) && (MATERIAL_NEEDS_PROCESSING(material_structure) || MATERIAL_NEEDS_PROCESSING(material_reinforcing)))
 		STOP_TICKING_MATERIALS(src)
 	return ..()
@@ -42,10 +43,10 @@
 			set_full_integrity(initial(integrity), initial(integrity_max))
 		else
 			name = "[material_structure.display_name] girder"
-			
+
 	else if(isnull(material_structure))
 	else
-	#warn impl
+	#warn impl + handle ticking
 
 	var/needs_processing = MATERIAL_NEEDS_PROCESSING(material_structure) || MATERIAL_NEEDS_PROCESSING(material_reinforcing)
 	var/is_processing = IS_TICKING_MATERIALS(src)
@@ -53,7 +54,7 @@
 		START_TICKING_MATERIALS(src)
 	else if(!needs_processing && is_processing)
 		STOP_TICKING_MATERIALS(src)
-	
+
 	// todo: refactor
 	if(material_color)
 		color = material_structure.icon_colour
@@ -61,7 +62,7 @@
 /obj/structure/girder/material_init_parts()
 	material_structure = SSmaterials.resolve_material(material_structure)
 	material_reinforcing = SSmaterials.resolve_material(material_reinforcing)
-	
+
 #warn impl all
 
 /obj/structure/girder/process_materials(dt)
@@ -70,7 +71,7 @@
 /obj/structure/girder/proc/radiate(dt)
 	var/total = material_structure?.radioactivity + material_reinforcing?.radioactivity * 0.5
 	radiation_pulse(src, total, RAD_FALLOFF_MATERIALS)
-	
+
 /obj/structure/girder/material_get_part(part)
 	switch(part)
 		if(MATERIAL_PART_GIRDER_REINFORCEMENT)

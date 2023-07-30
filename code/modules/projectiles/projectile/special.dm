@@ -328,17 +328,10 @@
 				explosion(blastloc, -1, -1, 2, 3)
 	..()
 
-/obj/projectile/beam/tungsten/Bump(atom/A, forced=0)
-	if(istype(A, /obj/structure/window)) //It does not pass through windows. It pulverizes them.
-		var/obj/structure/window/W = A
-		W.shatter()
-		return 0
-	..()
-
 /obj/projectile/bullet/honker
 	damage = 0
 	nodamage = TRUE
-	attack_sound = 'sound/items/bikehorn.ogg'
+	impact_sound = 'sound/items/bikehorn.ogg'
 	icon = 'icons/obj/items.dmi'
 	icon_state = "banana"
 	range = 200
@@ -367,7 +360,7 @@
 	damage = 10
 	damage_type = BRUTE
 	damage_flag = ARMOR_BULLET
-	attack_sound = 'sound/effects/splat.ogg'
+	impact_sound = 'sound/effects/splat.ogg'
 	icon_state = "organic"
 
 /obj/projectile/bullet/organic/wax
@@ -378,7 +371,7 @@
 /obj/projectile/bullet/organic/stinger
 	damage = 15
 	damage_type = TOX
-	attack_sound = 'sound/weapons/bladeslice.ogg'
+	impact_sound = 'sound/weapons/bladeslice.ogg'
 	icon_state = "SpearFlight"
 
 //Plasma Burst
@@ -403,13 +396,6 @@
 		var/blastloc = get_step(A, blast_dir)
 		if(blastloc)
 			explosion(blastloc, -1, 0, 1, 2)
-	..()
-
-/obj/projectile/plasma/Bump(atom/A, forced=0)
-	if(istype(A, /obj/structure/window)) //It does not pass through windows. It pulverizes them.
-		var/obj/structure/window/W = A
-		W.shatter()
-		return 0
 	..()
 
 /obj/projectile/plasma/hot

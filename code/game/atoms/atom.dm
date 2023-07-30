@@ -41,6 +41,8 @@
 	var/armor_type = /datum/armor/none
 
 	//? Economy
+	// todo: move all this to obj level, you aren't going to sell a fucking turf.
+	//       the procs can however stay.
 	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.
 	var/worth_intrinsic = 0
 	/// static worth of contents - only read if getting a static worth from typepath.
@@ -131,6 +133,19 @@
 	var/blood_color
 	/// Shows up under a UV light.
 	var/fluorescent
+
+	//? Materials
+	#warn hook + lazy tick support
+	/// scratch list for material traits to operate on.
+	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
+	var/list/material_traits_data
+	/// list of material trait refs that are ticking
+	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
+	var/list/material_traits_ticking
+	/// material trait relative strength
+	/// applies to all traits globally as opposed to just one material parts,
+	/// because this is at /atom level.
+	var/material_traits_multiplier = 1
 
 	//? Radiation
 	/// radiation flags

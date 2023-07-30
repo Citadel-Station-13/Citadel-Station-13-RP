@@ -11,6 +11,8 @@
  *
  * @params
  * * respect_multiplier - respect material_multiplier which is often used to modify atom materials when efficiency is higher in lathes.
+ *
+ * @return list of id to amount
  */
 /atom/proc/get_materials(respect_multiplier)
 	return list()

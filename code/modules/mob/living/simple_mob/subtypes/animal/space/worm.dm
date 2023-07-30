@@ -289,7 +289,7 @@
 			var/atom/movable/objectOrMob = target
 			if(istype(objectOrMob, /obj/machinery/door))	// Doors and airlocks take time based on their durability and our damageo.
 				var/obj/machinery/door/D = objectOrMob
-				var/total_hits = max(2, round(D.maxhealth / (2 * legacy_melee_damage_upper)))
+				var/total_hits = max(2, round(D.integrity_max / (5 * legacy_melee_damage_upper)))
 
 				for(var/I = 1 to total_hits)
 
@@ -297,7 +297,7 @@
 						objectOrMob = null
 						break
 
-					if(do_after(src, 5))
+					if(do_after(src, 5, D))
 						D.visible_message("<span class='danger'>Something crashes against \the [D]!</span>")
 						D.inflict_atom_damage(5 * legacy_melee_damage_upper)
 					else

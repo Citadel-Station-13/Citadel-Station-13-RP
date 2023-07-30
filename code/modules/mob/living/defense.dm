@@ -141,6 +141,8 @@
 	var/list/impact_sounds = LAZYACCESS(P.impact_sounds, get_bullet_impact_effect_type(def_zone))
 	if(length(impact_sounds))
 		playsound(src, pick(impact_sounds), 75)
+	else if(!isnull(impact_sounds))
+		playsound(src, impact_sounds, 75)
 
 	//Stun Beams
 	if(P.taser_effect)

@@ -41,14 +41,16 @@
 	. = isnull(materials_base)? list() : materials_base.Copy()
 	if(islist(material_parts))
 		for(var/i in 1 to length(material_parts))
-			.[material_parts[i]] = material_costs[i]
+			var/datum/material/mat = material_parts[material_parts[i]]
+			.[mat.id] += material_costs[i]
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
 	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
 		var/list/got = material_get_part_ids()
 		for(var/i in 1 to length(got))
 			.[got[got[i]]] += material_costs[i]
 	else
-		.[material_parts] = material_costs
+		var/datum/material/mat = material_parts
+		.[mat.id] += material_costs
 	if(respect_multiplier && material_multiplier != 1)
 		for(var/key in .)
 			.[key] *= material_multiplier
@@ -144,7 +146,7 @@
 /obj/proc/set_material_parts(list/part_instances)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	obj_flags |= OBJ_MATERIAL_PARTS_MODIFIED
-	return material_set_parts(part_intsances)
+	return material_set_parts(part_instances)
 
 /**
  * do we use material parts system?
@@ -156,22 +158,22 @@
 /**
  * Get primary material, or first material. Can return null.
  * Determined by [material_primary]
- * 
+ *
  * This should be the most 'useful' or plentiful material and is used in and only used in general heuristic checks.
  */
 /obj/proc/get_primary_material()
 	SHOULD_NOT_OVERRIDE(TRUE)
-	return isnull(material_primary)? null : get_material_part(material_primary)
+	return isnull(material_primary)? null : material_get_part(material_primary)
 
 /**
  * Get primary material ID, or first material ID. Can return null.
  * Determined by [material_primary]
- * 
+ *
  * This should be the most 'useful' or plentiful material and is used in and only used in general heuristic checks.
  */
 /obj/proc/get_primary_material_id()
 	SHOULD_NOT_OVERRIDE(TRUE)
-	return isnull(material_primary)? null : get_material_part_id(material_primary)
+	return isnull(material_primary)? null : material_get_part_id(material_primary)
 
 /**
  * sets our primary material to something
@@ -185,7 +187,7 @@
 /obj/proc/set_primary_material(datum/material/material)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	obj_flags |= OBJ_MATERIAL_PARTS_MODIFIED
-	return isnull(material_primary)? null : set_material_part(material_primary, material)
+	return isnull(material_primary)? null : material_set_part(material_primary, material)
 
 /**
  * get material amounts of parts
@@ -196,18 +198,19 @@
 	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
 		. = list()
 		var/list/parts = material_get_part_ids()
-		if(!isnull(material_costs))
-			for(var/key in parts)
-				.[key] = material_costs[key] || 0
+		if(isnull(material_costs))
+			return
+		for(var/i in parts)
+			.[parts[i]] = material_costs[i]
 	else if(islist(material_parts))
 		. = list()
-		if(!islist(material_costs))
+		if(isnull(material_costs))
 			return
 		for(var/i in 1 to length(material_parts))
 			var/key = material_parts[i]
 			.[key] = material_costs[i]
 	else
-		. = list(MATERIAL_PART_DEFAULT = material_costs)
+		. = list(MATERIAL_PART_DEFAULT = material_costs || 0)
 	if(respect_multiplier && material_multiplier != 1)
 		for(var/key in .)
 			.[key] *= material_multiplier
@@ -225,11 +228,16 @@
 /obj/proc/material_get_part_ids()
 	PROTECTED_PROC(TRUE) // Do not ever call directly.
 	if(islist(material_parts))
-		return material_parts.Copy()
+		. = list()
+		for(var/key in material_parts)
+			var/datum/material/mat = material_parts[key]
+			.[key] = mat.id
+		return
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
 		return list()
 	else
-		return list(MATERIAL_PART_DEFAULT = material_parts)
+		var/datum/material/mat = material_parts
+		return list(MATERIAL_PART_DEFAULT = mat.id)
 
 
 /**
@@ -237,29 +245,35 @@
  */
 /obj/proc/material_get_part_id(part)
 	PROTECTED_PROC(TRUE) // Do not ever call directly.
-	if(material_parts == MATERIAL_DEFAULT_DISABLED)
-		. = null
 	if(islist(material_parts))
-		. = material_parts[part]
-	else
-		. = (part == MATERIAL_PART_DEFAULT)? material_parts : null
+		var/datum/material/mat = material_parts[part]
+		return mat?.id
+	else if(part == MATERIAL_PART_DEFAULT)
+		var/datum/material/mat = material_parts
+		return mat?.id
 
 /**
  * @return key-value list of material part keys to instances
  */
 /obj/proc/material_get_parts()
 	PROTECTED_PROC(TRUE) // Do not ever call directly.
-	return SSmaterials.preprocess_kv_values_to_instances(get_material_part_ids())
+	if(islist(material_parts))
+		return material_parts.Copy()
+	return material_parts
 
 /**
  * @return material instance
  */
 /obj/proc/material_get_part(part)
 	PROTECTED_PROC(TRUE) // Do not ever call directly.
-	return SSmaterials.resolve_material(get_material_part_id(part))
+	if(islist(material_parts))
+		return material_parts[part]
+	return part == MATERIAL_PART_DEFAULT? material_parts : null
 
 /**
  * sets a single material part
+ *
+ * undefined behavior if part does not exist in material parts when material parts is a list..
  *
  * @params
  * * part - part key
@@ -267,11 +281,11 @@
  */
 /obj/proc/material_set_part(part, datum/material/material)
 	PROTECTED_PROC(TRUE) // Do not ever call directly.
-	// todo: remove the assert later but right now the system needs it because heehoo, byond has no static analysis.
-	ASSERT(part in material_parts)
-	if(is_typelist(NAMEOF(src, material_parts), material_parts))
-		material_parts = material_parts.Copy()
-	material_parts[part] = material.id
+	#warn handle traits if primary
+	if(islist(material_parts))
+		material_parts[part] = material
+	else if(part == MATERIAL_PART_DEFAULT)
+		material_parts = material
 
 /**
  * sets our material parts to a list by key / value. values should be material datums.
@@ -279,7 +293,8 @@
  */
 /obj/proc/material_set_parts(list/part_instances)
 	PROTECTED_PROC(TRUE) // Do not ever call directly.
-	material_parts = SSmaterials.preprocess_kv_values_to_ids(part_instances)
+	#warn handle traits if primary
+	material_parts = part_instances.Copy()
 
 /**
  * Called to initialize material parts.

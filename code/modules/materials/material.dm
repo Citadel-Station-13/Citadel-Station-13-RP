@@ -132,8 +132,6 @@
 	//! Attributes - legacy
 	/// Delay in ticks when cutting through this wall.
 	var/cut_delay = 0
-	/// Radiation var. Used in wall and object processing to irradiate surroundings.
-	var/radioactivity
 	/// K, point at which the material catches on fire.
 	var/ignition_point
 	/// K, walls will take damage if they're next to a fire hotter than this
@@ -233,10 +231,30 @@
 	if(!shard_icon)
 		shard_icon = shard_type
 
+	init_traits()
+
 	#warn traits, handle hooks
 
 	return TRUE
 
+/datum/material/serialize()
+	. = ..()
+	var/list/serialized_traits = list()
+	// use type directly - we don't care about update stability.
+	for(var/datum/material_trait/trait in material_traits)
+		serialized_traits[trait.type] = trait.serialize()
+	.["traits"] = serialized_traits
+
+/datum/material/deserialize(list/data)
+	. = ..()
+	var/list/deserializing_traits = .["traits"]
+	for(var/path in deserializing_traits)
+		var/resolved = text2path(path)
+		if(!ispath(resolved, /datum/material_trait))
+			continue
+		var/datum/material_trait/trait = new resolved
+		trait.deserialize(deserializing_traits[path])
+		material_traits += trait
 
 /// This is a placeholder for proper integration of windows/windoors into the system.
 /datum/material/proc/build_windows(mob/living/user, obj/item/stack/used_stack)
@@ -315,3 +333,27 @@
 
 /datum/material/proc/wall_touch_special(turf/simulated/wall/W, mob/living/L)
 	return
+
+//* traits & trait hooks
+
+/datum/material/proc/init_traits()
+	for(var/i in 1 to length(material_Traits))
+		if(ispath(material_traits[i]))
+			material_traits[i] = new material_traits[i]
+
+/datum/material/proc/register_object(atom/what)
+	for(var/datum/material_trait/trait as anything in material_traits)
+		if(trait.material_trait_flags & MATERIAL_TRAIT_REGISTRATION)
+			trait.on_add(what)
+
+/datum/material/proc/unregister_object(atom/what)
+	for(var/datum/material_trait/trait as anything in material_traits)
+		if(trait.material_trait_flags & MATERIAL_TRAIT_REGISTRATION)
+			trait.on_remove(what)
+
+/datum/material/proc/on_examine(atom/what, list/examine_list, atom/examiner, distance)
+	for(var/datum/material_trait/trait as anything in material_traits)
+		if(trait.material_trait_flags & MATERIAL_TRAIT_EXAMINE)
+			trait.on_examine(what, examine_list, examiner, distance)
+
+#warn processing

@@ -34,7 +34,7 @@
 /obj/item/material/Initialize(mapload, material)
 	if(!isnull(material))
 		set_material_part(MATERIAL_PART_DEFAULT, SSmaterials.resolve_material(material))
-	. = ..()
+	return ..()
 
 /obj/item/material/Destroy()
 	if(atom_flags & ATOM_MATERIALS_TICKING)
@@ -43,19 +43,22 @@
 
 /obj/item/material/update_material_single(datum/material/material)
 	. = ..()
+	#warn ticking stuff
 	var/needs_ticking = MATERIAL_NEEDS_PROCESSING(material)
 	var/is_ticking = atom_flags & ATOM_MATERIALS_TICKING
 	if(needs_ticking && !is_ticking)
 		START_TICKING_MATERIALS(src)
 	else if(!needs_ticking && is_ticking)
 		STOP_TICKING_MATERIALS(src)
-	
+
 	if(material_color)
 		color = material.icon_colour
 	else
 		color = null
 	siemens_coefficient = material.relative_conductivity
 	atom_flags = (atom_flags & ~(NOCONDUCT)) | (material.relative_conductivity == 0? NOCONDUCT : NONE)
+	name = "[material.display_name] [initial(name)]"
+	var/list/returned = material.melee_stats(initial(damage_mode))
 
 	#warn impl
 
@@ -70,20 +73,17 @@
 	if(dulled)
 		damage_force = round(damage_force*dulled_divisor)
 	throw_force = round(material.get_blunt_damage()*thrown_force_divisor)
-	
+
 /obj/item/material/proc/set_material(datum/material/new_material)
-	name = "[material.display_name] [initial(name)]"
 	health = round(material.integrity/10)
 	update_force()
 
 /obj/item/material/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	if(!unbreakable)
-		if(material.is_brittle())
-			health = 0
-		else if(!prob(material.hardness))
-			health--
-		check_health()
+	var/datum/material/mat = get_primary_material()
+	if(!MATERIAL_NEEDS_ATTACK_SEMANTICS(mat))
+		return
+	mat.on_mob_attack(target, target_zone, user, ATTACK_TYPE_MELEE, src)
 
 /obj/item/material/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/whetstone))
@@ -102,14 +102,6 @@
 			dull()
 
 #warn shatter on impact?
-/obj/item/material/proc/shatter(var/consumed)
-	var/turf/T = get_turf(src)
-	visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
-	playsound(src, "shatter", 70, 1)
-	if(!consumed && drops_debris)
-		material.place_shard(T)
-	qdel(src)
-
 /obj/item/material/proc/dull()
 	var/turf/T = get_turf(src)
 	T.visible_message("<span class='danger'>\The [src] goes dull!</span>")

@@ -734,6 +734,29 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // 	. = ..()
 // 	update_action_buttons()
 
+//* Armor
+
+/**
+ * called to be checked for mob armor
+ *
+ * @returns copy of args with modified values
+ */
+/obj/item/proc/checking_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
+	damage = fetch_armor().resultant_damage(damage, tier, flag)
+	return args.Copy()
+
+/**
+ * called to be used as mob armor
+ * side effects are allowed
+ *
+ * @returns copy of args with modified values
+ */
+/obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
+	damage = fetch_armor().resultant_damage(damage, tier, flag)
+	return args.Copy()
+
+//* Attack
+
 /**
  * grabs an attack verb to use
  *
@@ -746,7 +769,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/get_attack_verb(atom/target, mob/user)
 	return length(attack_verb)? pick(attack_verb) : attack_verb
 
-//? Interaction
+//* Interaction
 
 /**
  * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
@@ -774,23 +797,18 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/on_attack_self(mob/user)
 	return
 
-//? Mob Armor
+//* Materials
 
-/**
- * called to be checked for mob armor
- *
- * @returns copy of args with modified values
- */
-/obj/item/proc/checking_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	damage = fetch_armor().resultant_damage(damage, tier, flag)
-	return args.Copy()
+/obj/item/material_trait_brittle_shatter()
+	var/datum/material/material = get_primary_material()
+	var/turf/T = get_turf(src)
+	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
+	if(istype(loc, /mob/living))
+		var/mob/living/M = loc
+		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
+			var/obj/item/material/shard/S = material.place_shard(T)
+			M.embed(S)
 
-/**
- * called to be used as mob armor
- * side effects are allowed
- *
- * @returns copy of args with modified values
- */
-/obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	damage = fetch_armor().resultant_damage(damage, tier, flag)
-	return args.Copy()
+	playsound(src, "shatter", 70, 1)
+	qdel(src)
+

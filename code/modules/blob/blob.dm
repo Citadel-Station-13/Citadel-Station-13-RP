@@ -14,6 +14,8 @@
 	integrity = 30
 	integrity_max = 30
 
+	hit_sound_brute = 'sound/effects/attackblob.ogg'
+
 	var/brute_resist = 4
 	var/fire_resist = 1
 	var/expandType = /obj/effect/blob
@@ -115,33 +117,6 @@
 			expand(T)
 		return
 	B.pulse(forceLeft - 1, dirs)
-
-/obj/effect/blob/bullet_act(var/obj/projectile/Proj)
-	if(!Proj)
-		return
-
-	switch(Proj.damage_type)
-		if(BRUTE)
-			take_damage(Proj.get_final_damage(src))
-		if(BURN)
-			take_damage(Proj.get_final_damage(src))
-	return 0
-
-/obj/effect/blob/attackby(var/obj/item/W, var/mob/user)
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)
-	visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
-	var/damage = 0
-	switch(W.damtype)
-		if("fire")
-			damage = (W.damage_force / fire_resist)
-			if(istype(W, /obj/item/weldingtool))
-				playsound(src, W.tool_sound, 100, 1)
-		if("brute")
-			damage = (W.damage_force / brute_resist)
-
-	take_damage(damage)
-	return
 
 /obj/effect/blob/core
 	name = "blob core"

@@ -36,98 +36,29 @@
 	atom_flags = (atom_flags & ~(NOCONDUCT)) | (material.relative_conductivity == 0? NOCONDUCT : NONE)
 	#warn impl
 
-// This is called when someone wearing the object gets hit in some form (melee, bullet_act(), etc).
-// Note that this cannot change if someone gets hurt, as it merely reacts to being hit.
-/obj/item/clothing/proc/clothing_impact(var/obj/source, var/damage)
-	if(material && damage)
-		material_impact(source, damage)
-
-/obj/item/clothing/proc/material_impact(var/obj/source, var/damage)
-	if(!material || unbreakable)
-		return
-
-	if(istype(source, /obj/projectile))
-		var/obj/projectile/P = source
-		if(P.check_pass_flags(ATOM_PASS_GLASS))
-			if(material.opacity - 0.3 <= 0)
-				return // Lasers ignore 'fully' transparent material.
-
-	if(material.is_brittle())
-		health = 0
-	else if(!prob(material.hardness))
-		health--
-
-	if(health <= 0)
-		shatter()
-
-/obj/item/clothing/proc/shatter()
-	if(!material)
-		return
-	var/turf/T = get_turf(src)
-	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
-	if(istype(loc, /mob/living))
-		var/mob/living/M = loc
-		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
-			var/obj/item/material/shard/S = material.place_shard(T)
-			M.embed(S)
-
-	playsound(src, "shatter", 70, 1)
-	qdel(src)
-
 // Might be best to make ablative vests a material armor using a new material to cut down on this copypaste.
-/obj/item/clothing/suit/armor/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(!material) // No point checking for reflection.
+/obj/item/clothing/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+	var/datum/material/mat = get_primary_material()
+	if(isnull(mat))
 		return ..()
-
-	if(material.negation && prob(material.negation)) // Strange and Alien materials, or just really strong materials.
-		user.visible_message("<span class='danger'>\The [src] completely absorbs [attack_text]!</span>")
-		return TRUE
-
-	if(material.spatial_instability && prob(material.spatial_instability))
-		user.visible_message("<span class='danger'>\The [src] flashes [user] clear of [attack_text]!</span>")
-		var/list/turfs = new/list()
-		for(var/turf/T in orange(round(material.spatial_instability / 10) + 1, user))
-			if(istype(T,/turf/space)) continue
-			if(T.density) continue
-			if(T.x>world.maxx-6 || T.x<6)	continue
-			if(T.y>world.maxy-6 || T.y<6)	continue
-			turfs += T
-		if(!turfs.len) turfs += pick(/turf in orange(6))
-		var/turf/picked = pick(turfs)
-		if(!isturf(picked)) return
-
-		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
-		spark_system.set_up(5, 0, user.loc)
-		spark_system.start()
-		playsound(user.loc, 'sound/effects/teleport.ogg', 50, 1)
-
-		user.loc = picked
-		return PROJECTILE_FORCE_MISS
-
-	if(material.reflectivity)
-		if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
-			var/obj/projectile/P = damage_source
-
-			if(P.reflected) // Can't reflect twice
-				return ..()
-
-			var/reflectchance = (40 * material.reflectivity) - round(damage/3)
-			reflectchance *= material_armor_modifer
-			if(!(def_zone in list(BP_TORSO, BP_GROIN)))
-				reflectchance /= 2
-			if(P.starting && prob(reflectchance))
-				visible_message("<span class='danger'>\The [user]'s [src.name] reflects [attack_text]!</span>")
-
-				// Find a turf near or on the original location to bounce to
-				var/new_x = P.starting.x + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
-				var/new_y = P.starting.y + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
-				var/turf/curloc = get_turf(user)
-
-				// redirect the projectile
-				P.redirect(new_x, new_y, curloc, user)
-				P.reflected = 1
-
-				return PROJECTILE_CONTINUE // complete projectile permutation
+	if(MATERIAL_NEEDS_DEFEND_SEMANTICS(mat))
+		var/calculated_type = NONE
+		if(istype(damage_source, /obj/projectile))
+			calculated_type = ATTACK_TYPE_PROJECTILE
+		else if(isitem(damage_source))
+			var/obj/item/I = damage_source
+			if(I.throwing)
+				calculated_type = ATTACK_TYPE_THROWN
+			else
+				calculated_type = ATTACK_TYPE_MELEE
+		var/result = mat.on_mob_defense(user, def_zone, damage_source, calculated_type, src)
+		if(result & MATERIAL_DEFEND_FORCE_MISS)
+			return PROJECTILE_FORCE_MISS
+		if(result & MATERIAL_DEFEND_FULL_BLOCK)
+			return TRUE
+		if(result & MATERIAL_DEFEND_REFLECT)
+			return PROJECTILE_CONTINUE
+	return ..()
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"
@@ -174,7 +105,7 @@
 		if(!wired && !second_plate.wired)
 			to_chat(user, "<span class='warning'>You need something to hold the two pieces of plating together.</span>")
 			return
-		if(second_plate.material != src.material)
+		if(second_plate.get_primary_material() != get_primary_material())
 			to_chat(user, "<span class='warning'>Both plates need to be the same type of material.</span>")
 			return
 		if(!user.attempt_void_item_for_installation(src))
@@ -189,7 +120,6 @@
 		qdel(src)
 	else
 		..()
-
 
 // Used to craft the makeshift helmet
 /obj/item/clothing/head/helmet/bucket

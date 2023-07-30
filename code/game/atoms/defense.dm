@@ -251,7 +251,7 @@
 
 /**
  * Set integrity to a multiple of initial.
- * 
+ *
  * And fully restore it if specified.
  * Otherwise, will retain the last percentage.
  */
