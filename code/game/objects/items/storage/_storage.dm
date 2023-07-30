@@ -38,13 +38,72 @@
 
 	var/last_message = 0
 
-	#warn hook
 	/// carry weight in us
 	var/weight_cached = 0
 	/// carry weight mitigation, static. applied after multiplicative
 	var/weight_mitigation = 0
 	/// carry weight mitigation, multiplicative.
 	var/weight_multiply = 1
+
+/obj/item/storage/Initialize(mapload)
+	. = ..()
+
+	if(allow_quick_empty)
+		add_obj_verb(src, /obj/item/storage/verb/quick_empty)
+	else
+		remove_obj_verb(src, /obj/item/storage/verb/quick_empty)
+
+	if(allow_quick_gather)
+		add_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
+	else
+		remove_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
+
+	src.boxes = new /atom/movable/screen/storage(  )
+	src.boxes.name = "storage"
+	src.boxes.master = src
+	src.boxes.icon_state = "block"
+	src.boxes.screen_loc = storage_ui_default
+
+	src.storage_start = new /atom/movable/screen/storage(  )
+	src.storage_start.name = "storage"
+	src.storage_start.master = src
+	src.storage_start.icon_state = "storage_start"
+	src.storage_start.screen_loc = storage_ui_default
+
+	src.storage_continue = new /atom/movable/screen/storage(  )
+	src.storage_continue.name = "storage"
+	src.storage_continue.master = src
+	src.storage_continue.icon_state = "storage_continue"
+	src.storage_continue.screen_loc = storage_ui_default
+
+	src.storage_end = new /atom/movable/screen/storage(  )
+	src.storage_end.name = "storage"
+	src.storage_end.master = src
+	src.storage_end.icon_state = "storage_end"
+	src.storage_end.screen_loc = storage_ui_default
+
+	src.stored_start = new /atom/movable //we just need these to hold the icon
+	src.stored_start.icon_state = "stored_start"
+
+	src.stored_continue = new /atom/movable
+	src.stored_continue.icon_state = "stored_continue"
+
+	src.stored_end = new /atom/movable
+	src.stored_end.icon_state = "stored_end"
+
+	src.closer = new /atom/movable/screen/close(  )
+	src.closer.master = src
+	src.closer.icon_state = "storage_close"
+	src.closer.hud_layerise()
+	orient2hud()
+
+	populate_contents_legacy()
+
+	PopulateContents()
+
+	//calibrate_size()			//Let's not!
+
+	reset_weight()
 
 /obj/item/storage/Destroy()
 	close_all()
@@ -60,7 +119,32 @@
 
 /obj/item/storage/get_weight()
 	. = ..()
-	. += weight_cached
+	. += max(0, (weight_cached * weight_multiply) - weight_mitigation)
+
+/obj/item/storage/proc/reset_weight()
+	var/old_weight_cached = weight_cached
+	weight_cached = 0
+	for(var/obj/item/I in contents)
+		weight_cached += I.get_weight()
+	propagate_weight(old_weight_cached, weight_cached)
+	update_weight()
+
+/obj/item/storage/proc/stored_weight_changed(obj/item/I, old_weight, new_weight)
+	var/diff = new_weight - old_weight
+	var/old = weight_cached
+	weight_cached += diff
+	propagate_weight(old, weight_cached)
+	update_weight()
+
+/obj/item/storage/proc/reset_weight_recursive()
+	do_reset_weight_recursive(200)
+
+/obj/item/storage/proc/do_reset_weight_recursive(safety)
+	if(!(safety - 1))
+		CRASH("out of safety")
+	for(var/obj/item/storage/S in contents)
+		S.do_reset_weight_recursive(safety - 1)
+	reset_weight()
 
 /obj/item/storage/AltClick(mob/user)
 	if(user in is_seeing)
@@ -369,6 +453,9 @@
 	W.forceMove(src)
 	W.on_enter_storage(src)
 	W.item_flags |= ITEM_IN_STORAGE
+	var/old_weight = weight_cached
+	weight_cached += W.get_weight()
+	propagate_weight(old_weight, weight_cached)
 	if(user)
 		if(!prevent_warning)
 			for(var/mob/M in viewers(user))
@@ -417,6 +504,9 @@
 		W.maptext = ""
 	W.on_exit_storage(src)
 	W.item_flags &= ~ITEM_IN_STORAGE
+	var/old_weight = weight_cached
+	weight_cached -= W.get_weight()
+	propagate_weight(old_weight, weight_cached)
 	update_icon()
 	return 1
 
@@ -527,64 +617,6 @@
 	var/turf/T = get_turf(src)
 	for(var/obj/item/I in contents)
 		remove_from_storage(I, T)
-
-/obj/item/storage/Initialize(mapload)
-	. = ..()
-
-	if(allow_quick_empty)
-		add_obj_verb(src, /obj/item/storage/verb/quick_empty)
-	else
-		remove_obj_verb(src, /obj/item/storage/verb/quick_empty)
-
-	if(allow_quick_gather)
-		add_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
-	else
-		remove_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
-
-	src.boxes = new /atom/movable/screen/storage(  )
-	src.boxes.name = "storage"
-	src.boxes.master = src
-	src.boxes.icon_state = "block"
-	src.boxes.screen_loc = storage_ui_default
-
-	src.storage_start = new /atom/movable/screen/storage(  )
-	src.storage_start.name = "storage"
-	src.storage_start.master = src
-	src.storage_start.icon_state = "storage_start"
-	src.storage_start.screen_loc = storage_ui_default
-
-	src.storage_continue = new /atom/movable/screen/storage(  )
-	src.storage_continue.name = "storage"
-	src.storage_continue.master = src
-	src.storage_continue.icon_state = "storage_continue"
-	src.storage_continue.screen_loc = storage_ui_default
-
-	src.storage_end = new /atom/movable/screen/storage(  )
-	src.storage_end.name = "storage"
-	src.storage_end.master = src
-	src.storage_end.icon_state = "storage_end"
-	src.storage_end.screen_loc = storage_ui_default
-
-	src.stored_start = new /atom/movable //we just need these to hold the icon
-	src.stored_start.icon_state = "stored_start"
-
-	src.stored_continue = new /atom/movable
-	src.stored_continue.icon_state = "stored_continue"
-
-	src.stored_end = new /atom/movable
-	src.stored_end.icon_state = "stored_end"
-
-	src.closer = new /atom/movable/screen/close(  )
-	src.closer.master = src
-	src.closer.icon_state = "storage_close"
-	src.closer.hud_layerise()
-	orient2hud()
-
-	populate_contents_legacy()
-
-	PopulateContents()
-
-	//calibrate_size()			//Let's not!
 
 /obj/item/storage/proc/populate_contents_legacy()
 	if(LAZYLEN(starts_with) && !empty)

@@ -258,8 +258,6 @@
 
 //* carry weight
 
-#warn rework encumbrance
-
 // don't call this you shouldn't need to
 /mob/living/proc/update_carry_slowdown()
 	recalculate_carry()

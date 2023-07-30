@@ -62,7 +62,6 @@
 	var/list/accessories
 
 	//* Carry Weight
-	#warn hook
 	/// encumbrance compensation for accessories - flat.
 	var/encumbrance_mitigation = 0
 	/// encumbrance multiplier for accessories.

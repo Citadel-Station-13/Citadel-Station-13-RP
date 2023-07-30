@@ -804,12 +804,13 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(istype(wearer))
 		wearer.adjust_current_carry_encumbrance(.)
 
-
 /obj/item/proc/set_weight(amount)
 	if(amount == weight)
 		return
+	var/old = weight
 	weight = amount
 	update_weight()
+	propagate_weight(old, weight)
 
 /obj/item/proc/set_encumbrance(amount)
 	if(amount == encumbrance)
@@ -822,6 +823,14 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		return
 	hard_slowdown = amount
 	worn_mob()?.update_item_slowdown()
+
+/obj/item/proc/propagate_weight(old_weight, new_weight)
+	if(!(item_flags & ITEM_IN_STORAGE))
+		return
+	var/obj/item/storage/S = loc
+	if(!istype(S))
+		return
+	S.stored_weight_changed(src, old_weight, new_weight)
 
 //? Attack Verbs
 

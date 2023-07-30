@@ -17,12 +17,22 @@
 
 /obj/item/clothing/get_encumbrance()
 	. = ..()
-	var/tally = 0
+	if(!isnull(accessory_host))
+		. = max(0, . * accessory_host.encumbrance_multiply - accessory_host.encumbrance_mitigation)
+
+/obj/item/clothing/proc/set_encumbrance_mitigation(val, update)
+	encumbrance_mitigation = val
+	if(update)
+		update_accessory_encumbrance()
+
+/obj/item/clothing/proc/set_encumbrance_multiply(val, update)
+	encumbrance_multiply = val
+	if(update)
+		update_accessory_encumbrance()
+
+/obj/item/clothing/proc/update_accessory_encumbrance()
 	for(var/obj/item/I as anything in accessories)
-		tally += I.get_encumbrance()
-	tally *= (1 - encumbrance_multiply)
-	tally = max(0, tally - encumbrance_mitigation)
-	. += tally
+		I.update_encumbrance()
 
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
