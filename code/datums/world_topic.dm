@@ -177,7 +177,7 @@
 	// add pAIs	to the returned manifest, we do this first to just avoid a ghost overwriting a robot or AI name in the list
 	for(var/mob/living/silicon/pai/pai in GLOB.mob_list)
 		silicons[pai.name] = "pAI"
-	.
+
 	for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
 		silicons[ai.name] = "Artificial Intelligence"
 
