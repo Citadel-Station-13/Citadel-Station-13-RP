@@ -21,7 +21,9 @@
 	preserve_item = 1
 	flash_protection = FLASH_PROTECTION_MAJOR
 	valid_accessory_slots = null
-
+	weight = ITEM_WEIGHT_SOFTSUIT_HELMET
+	encumbrance = ITEM_ENCUMBRANCE_SOFTSUIT_HELMET
+	
 	var/obj/machinery/camera/camera
 	var/list/camera_networks
 
@@ -73,7 +75,6 @@
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
-	slowdown = 1
 	armor_type = /datum/armor/general/space
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
@@ -84,6 +85,8 @@
 	species_restricted = list("exclude",SPECIES_DIONA)
 	preserve_item = 1
 	valid_accessory_slots = (ACCESSORY_SLOT_OVER | ACCESSORY_SLOT_ARMBAND | ACCESSORY_SLOT_DECOR)
+	weight = ITEM_WEIGHT_SOFTSUIT
+	encumbrance = ITEM_ENCUMBRANCE_SOFTSUIT
 	var/list/supporting_limbs //If not-null, automatically splints breaks. Checked when removing the suit.
 
 /obj/item/clothing/suit/space/equipped(mob/M, slot, accessory, silent, creation)

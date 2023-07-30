@@ -63,7 +63,8 @@
 	desc = "A collection of black pouches that can be attached to a plate carrier. Carries up to four items."
 	icon_state = "lpouches"
 	slots = 4
-	slowdown = 0.25
+	weight = ITEM_WEIGHT_STORAGE_POUCH_LARGE
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_POUCH_LARGE
 
 /obj/item/clothing/accessory/storage/pouches/large/blue
 	desc = "A collection of blue pouches that can be attached to a plate carrier. Carries up to four items."

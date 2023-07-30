@@ -238,7 +238,7 @@
 	icon_state = "alien_speed"
 	blood_overlay_type = "armor"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
-	slowdown = -1
+	hard_slowdown = -1
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	armor_type = /datum/armor/alien/medium
 	siemens_coefficient = 0.4
@@ -250,7 +250,7 @@
 	desc = "It's really resilient yet lightweight, so it's probably meant to be armor. Strangely enough it seems to have been designed for a humanoid shape."
 	description_info = "It has a 40% chance to completely nullify an incoming attack."
 	icon_state = "alien_tank"
-	slowdown = 0
+	hard_slowdown = 0
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	armor_type = /datum/armor/alien/heavy
 	block_chance = 40

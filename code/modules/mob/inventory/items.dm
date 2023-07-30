@@ -135,12 +135,6 @@
 		L.adjust_current_carry_encumbrance(encumbrance_registered)
 
 /**
- * get the slowdown we incur when we're worn
- */
-/obj/item/proc/get_equipment_speed_mod()
-	return slowdown
-
-/**
  * update our worn icon if we can
  */
 /obj/item/proc/update_worn_icon()

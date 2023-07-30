@@ -18,7 +18,7 @@
 	permeability_coefficient = 0.50
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/extinguisher)
-	carry_encumberence = ITEM_ENCUMBRANCE_ARMOR_FIRE_SUIT
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_FIRE_SUIT
 	weight = ITEM_WEIGHT_ARMOR_FIRE_SUIT
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	clothing_flags = 0
@@ -43,6 +43,8 @@
 	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
 	body_cover_flags = HEAD|FACE|EYES
 	siemens_coefficient = 0
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_BOMB_HELMET
+	weight = ITEM_WEIGHT_ARMOR_BOMB_HELMET
 
 /obj/item/clothing/suit/bomb_suit
 	name = "bomb suit"
@@ -51,7 +53,8 @@
 	w_class = ITEMSIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
-	slowdown = 2
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_BOMB_SUIT
+	weight = ITEM_WEIGHT_ARMOR_BOMB_SUIT
 	armor_type = /datum/armor/station/bomb
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	heat_protection = UPPER_TORSO|LOWER_TORSO
