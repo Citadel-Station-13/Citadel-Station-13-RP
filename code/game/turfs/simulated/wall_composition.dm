@@ -15,26 +15,26 @@
 	else if(!istype(material))
 		material = SSmaterials.resolve_material(get_default_material())
 
-	reinf_material = rmaterialtype
-	if(ispath(reinf_material, /datum/material))
-		reinf_material = SSmaterials.resolve_material(reinf_material)
-	else if(!istype(reinf_material))
-		reinf_material = null
+	material_reinf = rmaterialtype
+	if(ispath(material_reinf, /datum/material))
+		material_reinf = SSmaterials.resolve_material(material_reinf)
+	else if(!istype(material_reinf))
+		material_reinf = null
 
-	girder_material = girdertype
-	if(ispath(girder_material, /datum/material))
-		girder_material = SSmaterials.resolve_material(girder_material)
-	else if(!istype(girder_material))
-		girder_material = SSmaterials.resolve_material(/datum/material/steel)
+	material_girder = girdertype
+	if(ispath(material_girder, /datum/material))
+		material_girder = SSmaterials.resolve_material(material_girder)
+	else if(!istype(material_girder))
+		material_girder = SSmaterials.resolve_material(/datum/material/steel)
 
-	if(reinf_material)
+	if(material_reinf)
 		construction_stage = 6
 	else
 		construction_stage = null
 
-	if(reinf_material)
+	if(material_reinf)
 		name = "reinforced [material.display_name || material.name] wall"
-		desc = "It seems to be a section of hull reinforced with [reinf_material.display_name || reinf_material.name] and plated with [material.display_name || material.name]."
+		desc = "It seems to be a section of hull reinforced with [material_reinf.display_name || material_reinf.name] and plated with [material.display_name || material.name]."
 	else
 		name = "[material.display_name || material.name] wall"
 		desc = "It seems to be a section of hull plated with [material.display_name || material.name]."

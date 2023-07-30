@@ -126,7 +126,7 @@
 		if(T == chassis.loc && src == chassis.selected)
 			if(istype(target, /turf/simulated/wall))
 				var/turf/simulated/wall/W = target
-				if(W.reinf_material)
+				if(W.material_reinf)
 					occupant_message("<span class='warning'>[target] is too durable to drill through.</span>")
 				else
 					log_message("Drilled through [target]")

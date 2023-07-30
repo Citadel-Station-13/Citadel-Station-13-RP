@@ -21,11 +21,11 @@
 		if(T == chassis.loc && src == chassis.selected)
 			if(istype(target, /turf/simulated/wall))
 				var/turf/simulated/wall/W = target
-				if(W.reinf_material && !advanced)//R wall but no good drill
+				if(W.material_reinf && !advanced)//R wall but no good drill
 					occupant_message("<span class='warning'>[target] is too durable to drill through.</span>")
 					return
 
-				else if((W.reinf_material && advanced) || do_after_cooldown(target))//R wall with good drill
+				else if((W.material_reinf && advanced) || do_after_cooldown(target))//R wall with good drill
 					log_message("Drilled through [target]")
 					LEGACY_EX_ACT(target, 3, null)
 				else
@@ -106,7 +106,7 @@
 		if(T == chassis.loc && src == chassis.selected)
 			if(istype(target, /turf/simulated/wall))
 				var/turf/simulated/wall/W = target
-				if(W.reinf_material)
+				if(W.material_reinf)
 					occupant_message("<span class='warning'>[target] is too durable to bore through.</span>")
 				else
 					log_message("Bored through [target]")

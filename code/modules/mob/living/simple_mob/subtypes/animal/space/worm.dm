@@ -280,7 +280,7 @@
 /mob/living/simple_mob/animal/space/space_worm/proc/AttemptToEat(var/atom/target)
 	if(istype(target,/turf/simulated/wall))
 		var/turf/simulated/wall/W = target
-		if((!W.reinf_material && do_after(src, 5 SECONDS)) || do_after(src, 10 SECONDS)) // 10 seconds for an R-wall, 5 seconds for a normal one.
+		if((!W.material_reinf && do_after(src, 5 SECONDS)) || do_after(src, 10 SECONDS)) // 10 seconds for an R-wall, 5 seconds for a normal one.
 			if(target)
 				W.dismantle_wall()
 				return 1

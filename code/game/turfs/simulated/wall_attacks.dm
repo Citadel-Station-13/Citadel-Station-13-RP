@@ -89,8 +89,8 @@
 /turf/simulated/wall/proc/try_touch(var/mob/user, var/rotting)
 
 	if(rotting)
-		if(reinf_material)
-			to_chat(user, "<span class='danger'>\The [reinf_material.display_name] feels porous and crumbly.</span>")
+		if(material_reinf)
+			to_chat(user, "<span class='danger'>\The [material_reinf.display_name] feels porous and crumbly.</span>")
 		else
 			to_chat(user, "<span class='danger'>\The [material.display_name] crumbles under your touch!</span>")
 			dismantle_wall()
@@ -134,7 +134,7 @@
 					if (!(E.is_usable()))
 						to_chat(user, SPAN_WARNING("You can't use that hand."))
 						return
-				if(rotting && !reinf_material)
+				if(rotting && !material_reinf)
 					M.visible_message(SPAN_DANGER("[M.name] punches \the [src] and it crumbles!"), SPAN_DANGER("You punch \the [src] and it crumbles!"))
 					dismantle_wall()
 					playsound(src, get_sfx("punch"), 20)
@@ -158,8 +158,8 @@
 	if(rotting)
 		return success_smash(user)
 
-	if(reinf_material)
-		if(damage >= max(material.hardness, reinf_material.hardness) )
+	if(material_reinf)
+		if(damage >= max(material.hardness, material_reinf.hardness) )
 			return success_smash(user)
 	else if(damage >= material.hardness)
 		return success_smash(user)
@@ -278,7 +278,7 @@
 		return
 
 	// Basic dismantling.
-	if(isnull(construction_stage) || !reinf_material)
+	if(isnull(construction_stage) || !material_reinf)
 
 		var/cut_delay = 60 - material.cut_delay
 		var/dismantle_verb

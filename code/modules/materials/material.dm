@@ -294,15 +294,15 @@
 
 
 /// Places a girder object when a wall is dismantled, also applies reinforced material.
-/datum/material/proc/place_dismantled_girder(turf/target, datum/material/reinf_material, datum/material/girder_material)
+/datum/material/proc/place_dismantled_girder(turf/target, datum/material/material_reinf, datum/material/material_girder)
 	var/obj/structure/girder/G = new(target)
-	if(reinf_material)
-		G.reinf_material = reinf_material
+	if(material_reinf)
+		G.material_reinf = material_reinf
 		G.reinforce_girder()
-	if(girder_material)
-		if(istype(girder_material, /datum/material))
-			girder_material = girder_material.name
-		G.set_material(girder_material)
+	if(material_girder)
+		if(istype(material_girder, /datum/material))
+			material_girder = material_girder.name
+		G.set_material(material_girder)
 
 
 /// General wall debris product placement.

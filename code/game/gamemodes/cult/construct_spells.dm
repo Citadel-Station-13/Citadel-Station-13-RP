@@ -665,7 +665,7 @@
 		var/turf/simulated/wall/W = hit_atom
 		user.visible_message("<span class='warning'>\The [user] rears its fist, preparing to hit \the [W]!</span>")
 		var/windup = cooldown
-		if(W.reinf_material)
+		if(W.material_reinf)
 			windup = cooldown * 2
 		if(do_after(user, windup))
 			W.visible_message("<span class='danger'>\The [user] [attack_message] \the [W], obliterating it!</span>")

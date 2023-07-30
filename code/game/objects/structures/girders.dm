@@ -244,7 +244,7 @@
 	return 1
 
 /obj/structure/girder/proc/reinforce_with_material(obj/item/stack/material/S, mob/user) //if the verb is removed this can be renamed.
-	if(reinf_material)
+	if(material_reinf)
 		to_chat(user, "<span class='notice'>\The [src] is already reinforced.</span>")
 		return 0
 
@@ -267,7 +267,7 @@
 
 /obj/structure/girder/drop_products(method, atom/where)
 	. = ..()
-	girder_material.place_dismantled_product(where, 2)
+	material_girder.place_dismantled_product(where, 2)
 
 /obj/structure/girder/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	var/turf/simulated/T = get_turf(src)
@@ -308,7 +308,7 @@
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
 			var/datum/material/M = get_material_by_name(the_rcd.material_to_use)
-			new_T.set_materials(M, the_rcd.make_rwalls ? M : null, girder_material)
+			new_T.set_materials(M, the_rcd.make_rwalls ? M : null, material_girder)
 			new_T.add_hiddenprint(user)
 			qdel(src)
 			return TRUE

@@ -57,7 +57,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 // Reinforced hull steel
 /turf/simulated/wall/fancy_shuttle
 	material       = /datum/material/steel/hull
-	reinf_material = /datum/material/steel/hull
+	material_reinf = /datum/material/steel/hull
 
 /turf/simulated/wall/fancy_shuttle/window
 	opacity = FALSE
@@ -87,13 +87,13 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product && !devastated)
 		material.place_dismantled_product(src)
-		if (!reinf_material)
+		if (!material_reinf)
 			material.place_dismantled_product(src)
 
 	clear_plants()
 	material = SSmaterials.resolve_material(/datum/material/placeholder)
-	reinf_material = null
-	girder_material = null
+	material_reinf = null
+	material_girder = null
 
 	ChangeTurf(/turf/simulated/floor/plating/eris/under)
 
@@ -141,8 +141,8 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 
 	if(damage != 0)
 		var/integrity = material.integrity
-		if(reinf_material)
-			integrity += reinf_material.integrity
+		if(material_reinf)
+			integrity += material_reinf.integrity
 
 		var/overlay = round(damage / integrity * damage_overlays.len) + 1
 		if(overlay > damage_overlays.len)

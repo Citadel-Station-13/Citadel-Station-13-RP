@@ -34,7 +34,7 @@ GLOBAL_LIST_EMPTY(wall_overlays_cache)
 
 
 /turf/simulated/wall/proc/apply_reinf_overlay()
-	. = istype(reinf_material)
+	. = istype(material_reinf)
 
 
 /turf/simulated/wall/update_appearance(updates)
@@ -69,7 +69,7 @@ GLOBAL_LIST_EMPTY(wall_overlays_cache)
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/turf/simulated/wall, update_overlays_delayed)), 1 SECOND) //our material datum has not been instanced, so we'll runtime about 2 lines down.
 		return
 	icon = material.icon_base
-	if(reinf_material)
+	if(material_reinf)
 		icon = material.icon_reinf
 	var/plating_color = paint_color || material?.icon_colour || COLOR_WALL_GUNMETAL //fallback in case things are really fucked.
 	stripe_color = stripe_color || paint_color || material.icon_colour

@@ -43,8 +43,8 @@
 
 	#warn oh no
 	var/datum/material/material
-	var/datum/material/reinf_material
-	var/datum/material/girder_material
+	var/datum/material/material_reinf
+	var/datum/material/material_girder
 
 	var/last_state
 	var/construction_stage
@@ -64,7 +64,7 @@
 
 	#warn init materials
 
-	set_materials(material, reinf_material, girder_material)
+	set_materials(material, material_reinf, material_girder)
 	set_rad_insulation()
 
 	if(smoothing_flags & SMOOTH_DIAGONAL_CORNERS && fixed_underlay) //Set underlays for the diagonal walls.
@@ -79,7 +79,7 @@
 		fixed_underlay = string_assoc_list(fixed_underlay)
 		underlays += underlay_appearance
 
-	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
+	if(material?.radioactivity || material_reinf?.radioactivity || material_girder?.radioactivity)
 		START_PROCESSING(SSturfs, src)
 
 	stripe_icon = material.wall_stripe_icon
@@ -212,8 +212,8 @@
 
 /turf/simulated/wall/proc/update_damage()
 	var/cap = material.integrity
-	if(reinf_material)
-		cap += reinf_material.integrity
+	if(material_reinf)
+		cap += material_reinf.integrity
 
 	if(locate(/obj/effect/overlay/wallrot) in src)
 		cap = cap / 10
@@ -236,13 +236,13 @@
 /turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product)
 	playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product)
-		if(reinf_material)
-			reinf_material.place_dismantled_girder(src, reinf_material, girder_material)
+		if(material_reinf)
+			material_reinf.place_dismantled_girder(src, material_reinf, material_girder)
 		else
-			material.place_dismantled_girder(src, null, girder_material)
+			material.place_dismantled_girder(src, null, material_girder)
 		if(!devastated)
 			material.place_dismantled_product(src)
-			if (!reinf_material)
+			if (!material_reinf)
 				material.place_dismantled_product(src)
 
 	for(var/obj/O in src.contents) //Eject contents!
@@ -256,8 +256,8 @@
 /turf/simulated/wall/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
-			if(girder_material.explosion_resistance >= 25 && prob(girder_material.explosion_resistance))
-				new /obj/structure/girder/displaced(src, girder_material.name)
+			if(material_girder.explosion_resistance >= 25 && prob(material_girder.explosion_resistance))
+				new /obj/structure/girder/displaced(src, material_girder.name)
 			ScrapeAway()
 		if(2.0)
 			if(prob(75))
@@ -292,7 +292,7 @@
 	O.density = 1
 	O.plane = ABOVE_PLANE
 
-	if(girder_material.integrity >= 150 && !girder_material.is_brittle()) //Strong girders will remain in place when a wall is melted.
+	if(material_girder.integrity >= 150 && !material_girder.is_brittle()) //Strong girders will remain in place when a wall is melted.
 		dismantle_wall(1,1)
 	else
 		src.ChangeTurf(/turf/simulated/floor/plating)
@@ -309,7 +309,7 @@
 	return
 
 /turf/simulated/wall/proc/radiate()
-	var/total_radiation = material.radioactivity + (reinf_material ? reinf_material.radioactivity / 2 : 0) + (girder_material ? girder_material.radioactivity / 2 : 0)
+	var/total_radiation = material.radioactivity + (material_reinf ? material_reinf.radioactivity / 2 : 0) + (material_girder ? material_girder.radioactivity / 2 : 0)
 	if(!total_radiation)
 		return
 
@@ -317,13 +317,13 @@
 	return total_radiation
 
 /turf/simulated/wall/proc/set_rad_insulation()
-	var/total_rad_insulation = material.weight + material.radiation_resistance + (reinf_material ? (reinf_material.weight + reinf_material.radiation_resistance) / 4 : 0) + (girder_material ? (girder_material.weight + girder_material.radiation_resistance) / 16 : 0)
+	var/total_rad_insulation = material.weight + material.radiation_resistance + (material_reinf ? (material_reinf.weight + material_reinf.radiation_resistance) / 4 : 0) + (material_girder ? (material_girder.weight + material_girder.radiation_resistance) / 16 : 0)
 	rad_insulation = round(1/(total_rad_insulation**1.35*1/21.25**1.35+1),0.01) // 21.25 would be the total_rad_insulation of basic steel walls and return 0.5 rad_insulation. 1.35 exponential function helps us to also hit the plasteel wall goal of 0.25.
 
 /turf/simulated/wall/proc/burn(temperature)
 	if(material.combustion_effect(src, temperature, 0.7))
 		spawn(2)
-			new /obj/structure/girder(src, girder_material.name)
+			new /obj/structure/girder(src, material_girder.name)
 			src.ChangeTurf(/turf/simulated/floor)
 			for(var/turf/simulated/wall/W in range(3,src))
 				W.burn((temperature/4))
@@ -333,13 +333,13 @@
 /turf/simulated/wall/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(material.integrity > 1000) // Don't decon things like elevatorium.
 		return FALSE
-	if(reinf_material && !the_rcd.can_remove_rwalls) // Gotta do it the old fashioned way if your RCD can't.
+	if(material_reinf && !the_rcd.can_remove_rwalls) // Gotta do it the old fashioned way if your RCD can't.
 		return FALSE
 
 	if(passed_mode == RCD_DECONSTRUCT)
 		var/delay_to_use = material.integrity / 3 // Steel has 150 integrity, so it'll take five seconds to down a regular wall.
-		if(reinf_material)
-			delay_to_use += reinf_material.integrity / 3
+		if(material_reinf)
+			delay_to_use += material_reinf.integrity / 3
 		return list(
 			RCD_VALUE_MODE = RCD_DECONSTRUCT,
 			RCD_VALUE_DELAY = delay_to_use,
