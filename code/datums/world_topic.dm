@@ -172,7 +172,12 @@
 		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_OFFDUTY))
 			offduty[name] = rank
 
-	// Synthetics don't have actual records, so we will pull them from here.
+	// Synthetics don't have actual records, so we will pull them from here
+
+	// add pAIs	to the returned manifest, we do this first to just avoid a ghost overwriting a robot or AI name in the list
+	for(var/mob/living/silicon/pai/pai in GLOB.mob_list)
+		silicons[pai.name] = "pAI"
+	.
 	for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
 		silicons[ai.name] = "Artificial Intelligence"
 
@@ -180,11 +185,6 @@
 		// No combat/syndicate cyborgs, no drones, and no AI shells.
 		if(!robot.scrambledcodes && !robot.shell && !(robot.module && robot.module.hide_on_manifest))
 			silicons[robot.name] = "[robot.modtype] [robot.braintype]"
-
-
-	// add pAIs	to the returned manifest
-	for(var/mob/living/silicon/pai/pai in GLOB.mob_list)
-		silicons[pai.name] = "pAI"
 
 	. = list()
 	if(command.len)
