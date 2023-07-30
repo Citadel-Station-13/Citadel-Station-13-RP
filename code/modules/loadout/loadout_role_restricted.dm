@@ -1610,7 +1610,7 @@
 
  //*Clown
 
- /datum/loadout_entry/restricted/misc/bedsheet/clown
+/datum/loadout_entry/restricted/misc/bedsheet/clown
 	name = "Clown Bedsheet"
 	path = /obj/item/bedsheet/clown2
 	allowed_roles = list("Clown")
