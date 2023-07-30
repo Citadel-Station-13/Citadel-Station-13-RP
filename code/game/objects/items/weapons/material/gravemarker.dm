@@ -13,23 +13,27 @@
 
 /obj/item/material/gravemarker/attackby(obj/item/W, mob/user as mob)
 	if(W.is_screwdriver())
+		var/datum/material/material = get_primary_material()
+		var/time_mult = (material.regex_this_hardness > 0)? material.regex_this_hardness / 100 : 1 / (material.regex_this_hardness / 100)
 		var/carving_1 = sanitizeSafe(input(user, "Who is \the [src.name] for?", "Gravestone Naming", null)  as text, MAX_NAME_LEN)
 		if(carving_1)
 			user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
-			if(do_after(user, material.hardness * W.tool_speed))
+			if(do_after(user, time_mult * 1 SECONDS * W.tool_speed))
 				user.visible_message("[user] carves something into \the [src.name].", "You carve your message into \the [src.name].")
 				grave_name += carving_1
 				update_icon()
 		var/carving_2 = sanitizeSafe(input(user, "What message should \the [src.name] have?", "Epitaph Carving", null)  as text, MAX_NAME_LEN)
 		if(carving_2)
 			user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
-			if(do_after(user, material.hardness * W.tool_speed))
+			if(do_after(user, time_mult * 1 SECONDS * W.tool_speed))
 				user.visible_message("[user] carves something into \the [src.name].", "You carve your message into \the [src.name].")
 				epitaph += carving_2
 				update_icon()
 	if(W.is_wrench())
+		var/datum/material/material = get_primary_material()
+		var/time_mult = (material.regex_this_hardness > 0)? material.regex_this_hardness / 100 : 1 / (material.regex_this_hardness / 100)
 		user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
-		if(do_after(user, material.hardness * W.tool_speed))
+		if(do_after(user, time_mult * 1 SECONDS * W.tool_speed))
 			material.place_dismantled_product(get_turf(src))
 			user.visible_message("[user] dismantles down \the [src.name].", "You dismantle \the [src.name].")
 			qdel(src)
@@ -73,7 +77,7 @@
 		to_chat(user, "<span class='notice'>You begin to place \the [src.name].</span>")
 		if(!do_after(usr, 10))
 			return 0
-		var/obj/structure/gravemarker/G = new /obj/structure/gravemarker/(user.loc, src.get_material())
+		var/obj/structure/gravemarker/G = new /obj/structure/gravemarker(user.loc, get_primary_material())
 		to_chat(user, "<span class='notice'>You place \the [src.name].</span>")
 		G.grave_name = grave_name
 		G.epitaph = epitaph

@@ -44,17 +44,6 @@
 	// turf animation
 	var/atom/movable/overlay/c_animation = null
 
-/obj/machinery/door/attack_generic(var/mob/user, var/damage)
-	if(isanimal(user))
-		var/mob/living/simple_mob/S = user
-		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
-			visible_message("<span class='danger'>\The [user] smashes into the [src]!</span>")
-			playsound(src, S.attack_sound, 75, 1)
-			take_damage(damage)
-		else
-			visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
-	user.do_attack_animation(src)
-
 /obj/machinery/door/Initialize(mapload, newdir)
 	. = ..()
 	if(density)

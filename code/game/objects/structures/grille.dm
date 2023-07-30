@@ -149,7 +149,7 @@
 	return ..()
 
 /obj/structure/grille/melee_act(mob/user, obj/item/weapon, target_zone, mult)
-	if(shock(attacker, 70, weapon))
+	if(shock(user, 70, weapon))
 		return FALSE
 	return ..()
 

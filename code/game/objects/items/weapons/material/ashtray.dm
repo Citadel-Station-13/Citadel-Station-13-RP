@@ -11,19 +11,17 @@ var/global/list/ashtray_cache = list()
 	var/image/base_image
 	var/max_butts = 10
 
-/obj/item/material/ashtray/Initialize(mapload, material_name)
-	. = ..(mapload, material_name)
-	if(!material)
-		qdel(src)
-		return
-	src.pixel_y = rand(-5, 5)
-	src.pixel_x = rand(-6, 6)
+/obj/item/material/ashtray/Initialize(mapload, material)
+	. = ..()
+	pixel_y = rand(-5, 5)
+	pixel_x = rand(-6, 6)
 	update_icon()
 
 /obj/item/material/ashtray/update_icon()
 	color = null
 
 	cut_overlays()
+	var/datum/material/material = get_primary_material()
 	var/list/overlays_to_add = list()
 
 	var/cache_key = "base-[material.name]"
