@@ -135,44 +135,17 @@
 		to_chat(user, "<span class='warning'>You can't repair \the [src].</span>")
 		return
 
-/obj/item/material/proc/sharpen(var/material, var/sharpen_time, var/kit, mob/living/M)
-	if(!fragile)
-		if(health < initial(health))
+/obj/item/material/proc/sharpen(datum/material/material_like, var/sharpen_time, var/kit, mob/living/M)
+	material_like = SSmaterials.resolve_material(material_like)
+	if(!fragile && material_primary)
+		if(integrity < integrity_max)
 			to_chat(M, "You should repair [src] first. Try using [kit] on it.")
 			return FALSE
 		M.visible_message("[M] begins to replace parts of [src] with [kit].", "You begin to replace parts of [src] with [kit].")
 		if(do_after(usr, sharpen_time))
 			M.visible_message("[M] has finished replacing parts of [src].", "You finish replacing parts of [src].")
-			src.set_material(material)
+			set_primary_material(material_like)
 			return TRUE
 	else
 		to_chat(M, "<span class = 'warning'>You can't sharpen and re-edge [src].</span>")
 		return FALSE
-
-/*
-Commenting this out pending rebalancing of radiation based on small objects.
-/obj/item/material/process(delta_time)
-	if(!material.radioactivity)
-		return
-	for(var/mob/living/L in range(1,src))
-		L.apply_effect(round(material.radioactivity/30),IRRADIATE,0)
-*/
-
-/*
-// Commenting this out while fires are so spectacularly lethal, as I can't seem to get this balanced appropriately.
-/obj/item/material/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
-	TemperatureAct(exposed_temperature)
-
-// This might need adjustment. Will work that out later.
-/obj/item/material/proc/TemperatureAct(temperature)
-	health -= material.combustion_effect(get_turf(src), temperature, 0.1)
-	check_health(1)
-
-/obj/item/material/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/weldingtool))
-		var/obj/item/weldingtool/WT = W
-		if(material.ignition_point && WT.remove_fuel(0, user))
-			TemperatureAct(150)
-	else
-		return ..()
-*/

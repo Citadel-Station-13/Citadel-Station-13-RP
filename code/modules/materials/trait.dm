@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /datum/material_trait
 	/// trait flags: what we care about
 	var/material_trait_flags = NONE

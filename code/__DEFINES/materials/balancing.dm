@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //? master file for balancing / efficiency tuning
 
 //* Attributes - Resistance
@@ -44,3 +47,17 @@
 
 /// scale a lathe's efficiency to upgrade level
 #define MATERIAL_EFFICIENCY_LATHE_SCALE(tier) max(0, 1.1 - tier * 0.1)
+
+//* Opacity
+
+/// opacity to alpha; uses quadratic falloff and a constant because we don't want stuff to just be invisible
+#define MATERIAL_OPACITY_TO_ALPHA(opacity) max((255 * (1 - (1 - opacity)**2)), 25)
+
+//* Radioactivity
+
+#define MATERIAL_RADIOACTIVITY_MULTIPLIER_WALL 1.5
+#define MATERIAL_RADIOACTIVITY_MULTIPLIER_GIRDER 1
+#define MATERIAL_RADIOACTIVITY_MULTIPLIER_NORMAL 1
+#define MATERIAL_RADIOACTIVITY_MULTIPLIER_GRILLE 0.33
+#define MATERIAL_RADIOACTIVITY_MULTIPLIER_ITEM 0.25
+#define MATERIAL_RADIOACTIVITY_MULTIPLIER_SHARD 0.25

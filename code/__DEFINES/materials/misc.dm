@@ -56,16 +56,3 @@
 #define MATERIAL_PADDING	0x4
 
 #define SHEET_MATERIAL_AMOUNT 2000
-
-//* Material - Misc IDs/Keys/Identifiers
-
-/// material part key that a single-material-part object is treated as having
-#define MATERIAL_PART_DEFAULT "structure"
-/// material_parts value for object does not use material parts system
-#define MATERIAL_DEFAULT_DISABLED "DISABLED"
-/// material_parts value for object uses hardcoded vars / overrides the abstraction API
-#define MATERIAL_DEFAULT_ABSTRACTED "ABSTRACTED"
-/// material_parts value for object has a single material but it's absent
-#define MATERIAL_DEFAULT_NONE null
-/// material ID to pass to Initialize() procs for "erase the default material of this slot"
-#define MATERIAL_ID_ERASE "___ERASE___"

@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //* /datum/material material_flags
 
 /// vulnerability applies to mob armor (uh oh)

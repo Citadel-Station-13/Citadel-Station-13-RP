@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //* Page has all balancing parameters + algorithms for dynamic attribute computations for things like armor
 
 /**

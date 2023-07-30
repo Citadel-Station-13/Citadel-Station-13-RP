@@ -63,13 +63,10 @@
 
 /obj/item/material/sharpeningkit/examine(mob/user, distance)
 	. = ..()
-	to_chat(user, "There [uses == 1 ? "is" : "are"] [uses] [material] [uses == 1 ? src.material.sheet_singular_name : src.material.sheet_plural_name] left for use.")
+	. += "There's [uses] pieces of material left for usage."
 
-/obj/item/material/sharpeningkit/Initialize(mapload)
+/obj/item/material/sharpeningkit/update_material_single(datum/material/material)
 	. = ..()
-	setrepair()
-
-/obj/item/material/sharpeningkit/proc/setrepair()
 	repair_amount = material.hardness * 0.1
 	repair_time = material.weight * 0.5
 	sharpen_time = material.weight * 3
@@ -77,7 +74,7 @@
 /obj/item/material/sharpeningkit/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/material))
 		var/obj/item/stack/material/S = W
-		if(S.material == material)
+		if(S.material.id == get_primary_material_id())
 			S.use(1)
 			uses += 1
 			to_chat(user, "You add a [S.material.name] [S.material.sheet_singular_name] to [src].")
@@ -89,7 +86,7 @@
 			return
 		var/obj/item/material/M = W
 		if(uses >= M.w_class*2)
-			if(M.sharpen(src.material.name, sharpen_time, src, user))
+			if(M.sharpen(get_primary_material_id(), sharpen_time, src, user))
 				uses -= M.w_class*2
 				return
 		else

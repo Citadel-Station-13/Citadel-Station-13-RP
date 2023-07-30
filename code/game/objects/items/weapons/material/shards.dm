@@ -1,5 +1,3 @@
-// Glass shards
-
 /obj/item/material/shard
 	name = "shard"
 	icon = 'icons/obj/shards.dmi'
@@ -16,6 +14,34 @@
 	unbreakable = 1 //It's already broken.
 	drops_debris = 0
 
+/obj/item/material/shard/Initialize(mapload, material)
+	. = ..()
+	pixel_x = rand(-8, 8)
+	pixel_y = rand(-8, 8)
+
+/obj/item/material/shard/update_material_single(datum/material/material)
+	. = ..()
+	icon_state = "[material.shard_icon][pick("large", "medium", "small")]"
+	if(material_color)
+		color = material.icon_colour
+		alpha = MATERIAL_OPACITY_TO_ALPHA(material.opacity)
+	else
+		color = "#ffffff"
+		alpha = 255
+	// we don't check for material shard type; we trust the caller knows what they're doing
+	if(material.shard_type)
+		name = "[material.display_name] [material.shard_type]"
+		desc = "A small piece of [material.display_name]. It looks sharp."
+		switch(material.shard_type)
+			if(SHARD_SPLINTER, SHARD_SHRAPNEL)
+				gender = PLURAL
+			else
+				gender = NEUTER
+	else
+		name = "what???"
+		desc = "material [material.id] shard - which shouldn't exist. contact a coder."
+		gender = NEUTER
+
 #warn stuff
 
 /obj/item/material/shard/suicide_act(mob/user)
@@ -23,37 +49,7 @@
 	viewers(user) << pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>",
 	                      "<span class='danger'>\The [user] is slitting [TU.his] throat with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>")
 	return (BRUTELOSS)
-
-/obj/item/material/shard/set_material(var/new_material)
-	..(new_material)
-	if(!istype(material))
-		return
-
-	icon_state = "[material.shard_icon][pick("large", "medium", "small")]"
-	pixel_x = rand(-8, 8)
-	pixel_y = rand(-8, 8)
-	update_icon()
-
-	if(material.shard_type)
-		name = "[material.display_name] [material.shard_type]"
-		desc = "A small piece of [material.display_name]. It looks sharp, you wouldn't want to step on it barefoot. Could probably be used as ... a throwing weapon?"
-		switch(material.shard_type)
-			if(SHARD_SPLINTER, SHARD_SHRAPNEL)
-				gender = PLURAL
-			else
-				gender = NEUTER
-	else
-		qdel(src)
-
-/obj/item/material/shard/update_icon()
-	if(material)
-		color = material.icon_colour
-		// 1-(1-x)^2, so that glass shards with 0.3 opacity end up somewhat visible at 0.51 opacity
-		alpha = 255 * (1 - (1 - material.opacity)*(1 - material.opacity))
-	else
-		color = "#ffffff"
-		alpha = 255
-
+		
 /obj/item/material/shard/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weldingtool) && material.shard_can_repair)
 		var/obj/item/weldingtool/WT = W
