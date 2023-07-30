@@ -24294,7 +24294,6 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/closet/crate/mimic/cointoss,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "tUL" = (
