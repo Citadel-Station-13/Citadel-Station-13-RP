@@ -1,10 +1,36 @@
 #define COMPONENT_GAS_EFF 0.125
 
 
+/obj/structure/reactor_frame
+	name = "reactor frame
+	desc = "A heavy steel frame with electrical and pneumatic conduits for support and control of reactor equipment."
+	allow_unanchor = TRUE
+	var/datum/ic2_core/our_reactor
+
+/obj/structure/reactor_frame/dynamic_tool_functions(obj/item/I, mob/user)
+	. = ..()
+	if(allow_unanchor)
+		.[TOOL_WRENCH] = anchored? "anchor" : "unanchor"
+
+/obj/structure/reactor_frame/dynamic_tool_image(function, hint)
+	switch(function)
+		if(TOOL_WRENCH)
+			return anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH)
+	return ..()
+
+/obj/structure/reactor_frame/wrench_act(obj/item/I, mob/user, flags, hint)
+	if(!allow_unanchor)
+		to_chat(user, SPAN_NOTICE("You can't unsecure the [name] in its current state! Try turning off the reactor first."))
+		return ..()
+	if(use_wrench(I, user, delay = 4 SECONDS))
+		user.visible_message(SPAN_NOTICE("[user] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."), range = MESSAGE_RANGE_CONSTRUCTION)
+		return TRUE
+	return ..()
 
 /obj/structure/reactor_component
 	name = "reactor part"
 	desc = "Basetype of /reactor_component/, should not exist"
+	allow_unanchor = TRUE
 
 	var/heat = 0 //heat is measured in ahu
 	var/max_temp = 1000 //stuff melts at different temperatures based on what it is, default is 1000
@@ -20,6 +46,26 @@
 	var/list/adjacent_components //updated on reactor reconfigure
 	var/datum/ic2_core/our_reactor
 
+/obj/structure/reactor_component/dynamic_tool_functions(obj/item/I, mob/user)
+	. = ..()
+	if(allow_unanchor)
+		.[TOOL_WRENCH] = anchored? "anchor" : "unanchor"
+
+/obj/structure/reactor_component/dynamic_tool_image(function, hint)
+	switch(function)
+		if(TOOL_WRENCH)
+			return anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH)
+	return ..()
+
+/obj/structure/reactor_component/wrench_act(obj/item/I, mob/user, flags, hint)
+	if(!allow_unanchor)
+		to_chat(user, SPAN_NOTICE("You can't unsecure the [name] in its current state! Try turning off the reactor first."))
+		return ..()
+	if(use_wrench(I, user, delay = 4 SECONDS))
+		user.visible_message(SPAN_NOTICE("[user] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."), range = MESSAGE_RANGE_CONSTRUCTION)
+		return TRUE
+	return ..()
+
 /obj/structure/reactor_component/proc/update_neighbors()
 	adjacent_components = list()
 	for(var/dir2check in list(NORTH,SOUTH,EAST,WEST))
@@ -34,22 +80,26 @@
 		neighbor.recieve_pulse(pulse_count)
 
 /obj/structure/reactor_component/proc/recieve_pulse(var/pulse_amt)
+	pulses_in_last_tick += pulse_amt
 	return
 
-/obj/structure/reactor_component/proc/do_heat_tick(var/mult = 1)
-	if(reactor_heat_pull) //todo: make this good
-		var/delta_heat = our_reactor.heat
-		our_reactor.heat = MAX(0, our_reactor.heat - reactor_heat_pull)
-		delta_heat -= our_reactor.heat
-		heat += delta_heat
+/obj/structure/reactor_component/proc/do_heat_tick()
+	if(reactor_heat_pull != 0) //todo: make this good
+		var/heat_pull_amt
+		if(reactor_heat_pull) //if positive pull (i.e we PULL heat)
+			if(reactor.heat < reactor_heat_pull)
+				heat_pull_amt = reactor.heat
+		else //if NEGATIVE pull (i.e we PUSH heat)
+			if(heat < (reactor_heat_pull * -1))
+				heat_pull_amt = -heat
+		reactor.heat -= heat_pull_amt
+		heat += heat_pull_amt
 	if(transfer_heat_to_environment)
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
 		var/datum/gas_mixture/removed = env.remove(COMPONENT_GAS_EFF * env.total_moles)
 		var/datum/gas_mixture/env = T.return_air()
-		removed.adjust_thermal_energy(heat_dissipation * mult)
+		removed.adjust_thermal_energy(heat_dissipation)
 		env.merge(removed)
-	heat -= heat_dissipation * mult
-
-adjust_thermal_energy
+	heat -= heat_dissipation
