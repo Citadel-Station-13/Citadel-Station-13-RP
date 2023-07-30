@@ -3322,7 +3322,6 @@
 /area/maintenance/engineering)
 "ln" = (
 /obj/structure/railing,
-/obj/structure/closet/crate/mimic/closet/cointoss,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "lp" = (
@@ -13297,7 +13296,6 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "Su" = (
-/obj/structure/closet/crate/mimic/cointoss,
 /turf/simulated/floor/carpet,
 /area/maintenance/dormitory)
 "Sw" = (
