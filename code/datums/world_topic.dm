@@ -180,6 +180,12 @@
 		// No combat/syndicate cyborgs, no drones, and no AI shells.
 		if(!robot.scrambledcodes && !robot.shell && !(robot.module && robot.module.hide_on_manifest))
 			silicons[robot.name] = "[robot.modtype] [robot.braintype]"
+
+
+	// add pAIs	to the returned manifest
+	for(var/mob/living/silicon/pai/pai in GLOB.mob_list)
+		silicons[pai.name] = "pAI"
+
 	. = list()
 	if(command.len)
 		.["Command"] = command
