@@ -104,4 +104,6 @@
 	if(!active && shield_health < shield_regen_amount)
 		my_mech.use_power(OMNI_SHIELD_DRAIN * 4)
 
+BLOCK_BYOND_BUG_2072419
+
 #undef OMNI_SHIELD_DRAIN

@@ -330,6 +330,7 @@
 #define FLOP_SINGLE_MOVE_TIME 1.5
 #define JUMP_X_DISTANCE 5
 #define JUMP_Y_DISTANCE 6
+
 /// This animation should be applied to actual parent atom instead of vc_object.
 /proc/flop_animation(atom/movable/animation_target)
 	var/pause_between = PAUSE_BETWEEN_PHASES + rand(1, 5) //randomized a bit so fish are not in sync
@@ -354,6 +355,9 @@
 		animate(time = up_time, pixel_y = JUMP_Y_DISTANCE , pixel_x=x_step, loop = -1, flags= ANIMATION_RELATIVE, easing = BOUNCE_EASING | EASE_IN)
 		animate(time = up_time, pixel_y = -JUMP_Y_DISTANCE, pixel_x=x_step, loop = -1, flags= ANIMATION_RELATIVE, easing = BOUNCE_EASING | EASE_OUT)
 		animate(time = PAUSE_BETWEEN_FLOPS, loop = -1)
+
+BLOCK_BYOND_BUG_2072419
+
 #undef PAUSE_BETWEEN_PHASES
 #undef PAUSE_BETWEEN_FLOPS
 #undef FLOP_COUNT

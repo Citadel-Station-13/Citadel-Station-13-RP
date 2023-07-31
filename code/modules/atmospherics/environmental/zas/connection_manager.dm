@@ -103,4 +103,6 @@ Macros:
 	if(check(D)) D.erase()
 	#endif
 
+BLOCK_BYOND_BUG_2072419
+
 #undef check

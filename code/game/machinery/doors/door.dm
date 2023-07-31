@@ -198,7 +198,7 @@
 			var/amount_given = amount_needed - repairing
 			var/mats_given = stack.get_amount()
 			if(repairing && amount_given <= 0)
-				to_chat(user, "<span class='warning'>You must weld or remove \the [mineral? mineral : "plating] from \the [src] before you can add anything else.</span>")
+				to_chat(user, "<span class='warning'>You must weld or remove \the [mineral? mineral : "plating"] from \the [src] before you can add anything else.</span>")
 			else
 				if(mats_given >= amount_given)
 					if(stack.use(amount_given))

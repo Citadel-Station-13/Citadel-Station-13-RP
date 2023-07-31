@@ -113,6 +113,8 @@
 	if (AO_TURF_CHECK(src) && !(mz_flags & MZ_MIMIC_NO_AO))
 		PROCESS_AO(src, ao_overlays, ao_junction, WALL_AO_ALPHA)
 
+BLOCK_BYOND_BUG_2072419
+
 #undef AO_TURF_CHECK
 #undef AO_SELF_CHECK
 #undef PROCESS_AO

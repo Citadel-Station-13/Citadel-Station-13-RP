@@ -36,5 +36,7 @@
 		pixel_x = (CELLSIZE * (0.5 + cell_x)) - center_of_mass["x"]
 		pixel_y = (CELLSIZE * (0.5 + cell_y)) - center_of_mass["y"]
 
+BLOCK_BYOND_BUG_2072419
+
 #undef CELLS
 #undef CELLSIZE

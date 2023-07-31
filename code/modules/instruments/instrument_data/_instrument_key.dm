@@ -17,4 +17,5 @@
 		CRASH("Invalid calculate call: No deviation or sample in instrument_key")
 	#define KEY_TWELTH (1/12)
 	frequency = 2 ** (KEY_TWELTH * deviation)
+	BLOCK_BYOND_BUG_2072419
 	#undef KEY_TWELTH

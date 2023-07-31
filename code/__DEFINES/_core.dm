@@ -11,3 +11,6 @@
 /// * call a new proc so the originating trace isn't from the original file anymore
 /// * put the stack trace in stack trace storage
 #define stack_trace(message) _stack_trace(message, __FILE__, __LINE__)
+
+/// byond bug https://secure.byond.com/forum/?post=2072419
+#define BLOCK_BYOND_BUG_2072419
