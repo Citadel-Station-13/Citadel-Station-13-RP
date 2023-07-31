@@ -114,9 +114,9 @@
 	var/effective_dose = dose * strength_mod * (1 + volume/60) //drinking a LOT will make you go down faster
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
-		if(prob(effective_dose/2))
+		if(prob(effective_dose/10))
 			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
-		M.adjustToxLoss(effective_dose/2)
+		M.adjustToxLoss(effective_dose/10)
 		return 0
 	if(effective_dose >= strength) // Early warning
 		M.make_dizzy(18) // It is decreased at the speed of 3 per tick
@@ -167,9 +167,9 @@
 
 	var/effective_dose = strength_mod * dose // this was being recalculated a bunch before--why?
 	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
-		if(prob(effective_dose/2))
+		if(prob(effective_dose/10))
 			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
-		M.adjustToxLoss(effective_dose/2)
+		M.adjustToxLoss(effective_dose/10)
 		return 0
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 	if(effective_dose >= strength) // Early warning
