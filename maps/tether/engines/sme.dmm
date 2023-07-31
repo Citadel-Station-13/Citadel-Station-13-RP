@@ -634,7 +634,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bw" = (
-/obj/machinery/atmospherics/component/trinary/filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	dir = 1;
 	use_power = 0
 	},

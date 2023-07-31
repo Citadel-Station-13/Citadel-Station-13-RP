@@ -11030,7 +11030,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two)
 "iRH" = (
-/obj/machinery/atmospherics/component/trinary/filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	dir = 1;
 	filtering = "o2"
 	},
@@ -29761,7 +29761,7 @@
 /turf/simulated/floor/plating,
 /area/space)
 "wVg" = (
-/obj/machinery/atmospherics/component/trinary/filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	dir = 1;
 	filtering = "n2"
 	},

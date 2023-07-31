@@ -71,7 +71,8 @@
 
 #warn above
 
-/obj/machinery/atmospherics/component/trinary/filter/proc/
+/obj/machinery/atmospherics/component/trinary/filter/proc/set_rate(liters)
+	flow_setting = clamp(liters, 0, air1.volume)
 
 /obj/machinery/atmospherics/component/trinary/filter/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -95,36 +96,17 @@
 		return
 	switch(action)
 		if("filter")
-			var/target =
+			var/target = params["target"]
 			#warn impl
-
-#warn below
-
-
-/obj/machinery/atmospherics/component/trinary/filter/ui_act(action, params)
-	if(..())
-		return TRUE
-
-	switch(action)
-		if("power")
-			update_use_power(!use_power)
 		if("rate")
-			var/rate = params["rate"]
-			if(rate == "max")
-				rate = air1.volume
-				. = TRUE
-			else if(text2num(rate) != null)
-				rate = text2num(rate)
-				. = TRUE
-			if(.)
-				set_flow_rate = clamp(rate, 0, air1.volume)
+			var/liters = params["rate"]
+			if(isnull(liters))
+				return FALSE
+			set_rate(liters)
+			return TRUE
 
-	update_icon()
 
-//
-// Mirrored Orientation - Flips the output dir to opposite side from normal.
-//
-/obj/machinery/atmospherics/component/trinary/filter/m_filter
+/obj/machinery/atmospherics/component/trinary/filter/mirrored
 	icon_state = "mmap"
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH|EAST

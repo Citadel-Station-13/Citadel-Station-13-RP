@@ -6698,7 +6698,7 @@
 /turf/simulated/wall,
 /area/rnd/outpost/mixing)
 "Fe" = (
-/obj/machinery/atmospherics/component/trinary/filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	filtering = "n2o"
 	},
 /turf/simulated/floor,
@@ -8969,7 +8969,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "PB" = (
-/obj/machinery/atmospherics/component/trinary/filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	filtering = "phoron"
 	},
 /turf/simulated/floor,
@@ -10460,7 +10460,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "WP" = (
-/obj/machinery/atmospherics/component/trinary/filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	filtering = "co2"
 	},
 /turf/simulated/floor,

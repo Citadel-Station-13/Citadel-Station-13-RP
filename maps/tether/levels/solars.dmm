@@ -3831,7 +3831,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "hC" = (
-/obj/machinery/atmospherics/component/trinary/filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	filtering = "phoron"
 	},
 /turf/simulated/floor,
@@ -4010,7 +4010,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "hT" = (
-/obj/machinery/atmospherics/component/trinary/filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	filtering = "co2"
 	},
 /turf/simulated/floor,
@@ -4171,7 +4171,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "in" = (
-/obj/machinery/atmospherics/component/trinary/filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	filtering = "n2o"
 	},
 /turf/simulated/floor,
