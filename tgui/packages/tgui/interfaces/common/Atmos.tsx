@@ -71,10 +71,11 @@ export interface FullAtmosGas extends AtmosGas {
 //* Filtering
 
 interface AtmosFilterListProps extends SectionProps {
+  gasContext: GasContext;
   selectedGroups: AtmosGasGroups;
   selectedIds: AtmosGasIDs;
-  selectGroup: (group: AtmosGasGroupFlags, filter: boolean) => void;
-  selectId: (id: AtmosGasID, filter: boolean) => void;
+  selectGroup?: (group: AtmosGasGroupFlags, filter: boolean) => void;
+  selectId?: (id: AtmosGasID, filter: boolean) => void;
 }
 
 export const AtmosFilterList = (props: AtmosFilterListProps) => {

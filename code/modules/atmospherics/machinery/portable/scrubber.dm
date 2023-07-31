@@ -54,14 +54,6 @@
 	if(connected_port)
 		. += "scrubber-connector"
 
-/obj/machinery/portable_atmospherics/powered/scrubber/attack_ai(var/mob/user)
-	src.add_hiddenprint(user)
-	return src.attack_hand(user)
-
-/obj/machinery/portable_atmospherics/powered/scrubber/attack_ghost(var/mob/user)
-	. = ..()
-	return src.attack_hand(user)
-
 #warn above
 
 /obj/machinery/portable_atmospherics/powered/scrubber/process(delta_time)
@@ -82,27 +74,35 @@
 			power_change()
 			update_icon()
 
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	.["atmosContext"] = global.gas_data.tgui_gas_context()
+	.["scrubbingIds"] = scrubbing_ids
+	.["scrubbingGroups"] = scrubbing_groups
+
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_data(mob/user)
+	. = ..()
+
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_act(action, params)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("scrubID")
+			var/target = parmas["target"]
+			#warn impl
+		if("scrubGroup")
+			var/target = parmas["target"]
+			#warn impl
+
 #warn below
 
 /obj/machinery/portable_atmospherics/powered/scrubber/process(delta_time)
-	..()
-
-	var/power_draw = -1
-
 	if(on && cell && cell.charge)
 
 		var/transfer_moles = min(1, volume_rate/environment.volume)*environment.total_moles
-
 		power_draw = scrub_gas(src, scrubbing_gas, environment, air_contents, transfer_moles, power_rating)
-
-	if (power_draw < 0)
-		last_flow_rate_legacy = 0
-		last_power_draw_legacy = 0
-	else
-		//ran out of charge
-		if (!cell.charge)
-			power_change()
-			update_icon()
 
 /obj/machinery/portable_atmospherics/powered/scrubber/attack_hand(mob/user, list/params)
 	ui_interact(user)
@@ -153,8 +153,6 @@
 			. = TRUE
 
 	update_icon()
-
-#warn below
 
 //Huge scrubber
 /obj/machinery/portable_atmospherics/powered/scrubber/huge

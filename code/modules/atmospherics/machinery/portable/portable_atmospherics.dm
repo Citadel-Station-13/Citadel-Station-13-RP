@@ -2,6 +2,7 @@
 	name = "atmoalter"
 	use_power = USE_POWER_OFF
 	layer = OBJ_LAYER // These are mobile, best not be under everything.
+	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_OPEN
 
 	/// tgui interface
 	var/tgui_interface
@@ -55,6 +56,14 @@
 		air_contents.react()
 	else
 		update_icon()
+
+/obj/machinery/portable_atmospherics/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	if(!tgui_interface)
+		return ..()
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(isnull(ui))
+		ui = new(user, src, tgui_interface)
 
 /obj/machinery/portable_atmospherics/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

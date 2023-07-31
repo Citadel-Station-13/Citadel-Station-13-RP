@@ -17,6 +17,7 @@ export const AtmosTrinaryFilterControl = (props: AtmosTrinaryFilterControlProps,
   return (
     <Section title="Filter" {...props}>
       <AtmosFilterList
+        gasContext={props.atmosContext}
         selectedGroups={((typeof props.filtering) === 'number')? (props.filtering as number) : AtmosGasGroupFlags.None}
         selectedIds={((typeof props.filtering) === 'string')? ([props.filtering as string]) : []}
         selectGroup={(g) => props.setFiltering?.(g)}

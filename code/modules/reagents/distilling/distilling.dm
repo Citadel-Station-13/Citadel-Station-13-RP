@@ -15,8 +15,6 @@
 	power_rating = 3000
 	power_losses = 240
 
-	var/on = FALSE
-
 	var/target_temp = T20C
 
 	var/max_temp = T20C + 300

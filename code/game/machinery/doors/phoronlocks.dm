@@ -94,6 +94,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock		//Special scrubber with bonus inbuilt heater
 	volume_rate = 40000
 	active_power_usage = 2000
+	efficiency_multiplier = 4
 	var/target_temp = T20C
 	var/heating_power = 150000
 
@@ -112,11 +113,6 @@
 				var/heat_transfer = removed.get_thermal_energy_change(target_temp)
 				removed.adjust_thermal_energy(clamp(heat_transfer,-heating_power,heating_power))
 				env.merge(removed)
-
-		var/transfer_moles = min(1, volume_rate/env.volume)*env.total_moles
-		for(var/i=1 to 3)	//Scrubs 4 times as fast
-			scrub_gas(src, scrubbing_gas, env, air_contents, transfer_moles, active_power_usage)
-
 
 //
 // PHORON LOCK CONTROLLER
