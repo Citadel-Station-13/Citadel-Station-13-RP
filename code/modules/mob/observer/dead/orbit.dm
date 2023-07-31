@@ -23,8 +23,7 @@
 		if("orbit")
 			var/ref = params["ref"]
 			var/atom/movable/poi = locate(ref) in GLOB.mob_list
-			if (poi == null)
-				poi = locate(ref) in SSshuttle.ships
+			poi = locate(ref) in SSshuttle.ships
 			if (poi == null)
 				. = TRUE
 				return
