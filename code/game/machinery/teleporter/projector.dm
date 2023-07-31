@@ -1,5 +1,5 @@
-#define BASE_ITEM_KJ_COST 300
-#define BASE_MOB_KJ_COST 1800
+#define BASE_ITEM_KJ_COST 3000
+#define BASE_MOB_KJ_COST 18000
 #define KJ_USAGE_SEVERITY_MINOR 36000 //sparks, lights flicker
 #define KJ_USAGE_SEVERITY_MAJOR 100000 //emp, surge across the powernet
 #define KJ_USAGE_SEVERITY_SEVERE 150000 //station power grid shuts down.
