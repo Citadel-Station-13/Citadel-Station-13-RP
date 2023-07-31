@@ -6333,9 +6333,13 @@
 /area/security/armoury)
 "eGK" = (
 /obj/structure/table/woodentable,
-/obj/item/radio/off,
-/obj/item/megaphone,
-/obj/item/storage/box/glasses/rocks,
+/obj/item/radio/off{
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/obj/item/megaphone{
+	pixel_x = 5
+	},
 /obj/item/radio/intercom/department/security{
 	pixel_y = -24
 	},
@@ -8649,8 +8653,8 @@
 "guM" = (
 /obj/structure/table/steel,
 /obj/item/storage/box/flashbangs{
-	pixel_x = -2;
-	pixel_y = -2
+	pixel_x = -4;
+	pixel_y = 8
 	},
 /obj/machinery/firealarm{
 	dir = 8;
@@ -9062,6 +9066,39 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
+"gMk" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = -28
+	},
+/obj/effect/floor_decal/corner/red{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/red{
+	dir = 9
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/storage/box/survival_knife{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/storage/box/survival_knife{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/item/storage/box/survival_knife{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/storage/box/survival_knife{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/item/storage/box/survival_knife,
+/obj/item/storage/box/survival_knife,
+/turf/simulated/floor/tiled/dark,
+/area/security/security_equiptment_storage)
 "gMx" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/skills,
@@ -10639,6 +10676,12 @@
 	},
 /obj/machinery/camera/network/security{
 	dir = 1
+	},
+/obj/item/clothing/accessory/permit/gun{
+	desc = "An example of a card indicating that the owner is allowed to carry a firearm. There's a note saying to fax CentCom if you want to order more blank permits.";
+	name = "sample weapon permit";
+	owner = 1;
+	pixel_y = 10
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
@@ -12897,6 +12940,10 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/item/clothing/under/oricon/utility/fleet/security,
+/obj/item/clothing/under/oricon/utility/fleet/security,
+/obj/item/clothing/under/oricon/utility/marine/security,
+/obj/item/clothing/under/oricon/utility/marine/security,
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "jrs" = (
@@ -14021,12 +14068,7 @@
 "khk" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/mask/gas{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/mask/gas{
-	pixel_x = -3;
+	pixel_x = 7;
 	pixel_y = -3
 	},
 /obj/effect/floor_decal/corner/red{
@@ -14036,13 +14078,46 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/clothing/mask/gas/half,
-/obj/item/clothing/mask/gas/half,
-/obj/item/clothing/mask/gas/half,
-/obj/item/clothing/mask/gas/half,
-/obj/item/clothing/mask/gas/half,
-/obj/item/clothing/mask/gas/half,
-/obj/item/clothing/mask/gas/half,
+/obj/item/clothing/mask/gas{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_x = -6;
+	pixel_y = -10
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_x = -6;
+	pixel_y = -9
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_x = -6;
+	pixel_y = -7
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_x = -6;
+	pixel_y = -5
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/item/clothing/mask/gas/half{
+	pixel_x = -6;
+	pixel_y = -3
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "khB" = (
@@ -14216,10 +14291,13 @@
 "kor" = (
 /obj/structure/table/woodentable,
 /obj/item/stamp/hos,
-/obj/item/hand_labeler,
+/obj/item/hand_labeler{
+	pixel_x = 11;
+	pixel_y = 7
+	},
 /obj/item/flashlight/lamp/green{
-	pixel_x = -5;
-	pixel_y = 2
+	pixel_x = -14;
+	pixel_y = 1
 	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
@@ -14387,18 +14465,11 @@
 /area/crew_quarters/mimeoffice)
 "kra" = (
 /obj/structure/table/woodentable,
-/obj/item/paper{
-	desc = "";
-	info = "The Chief of Security at CentCom is debating a new policy. It's not official yet, and probably won't be since it's hard to enforce, but I suggest following it anyway. That policy is, if a security officer claims they need more than two extra magazines (or batteries) to go on routine patrols, fire them. If they cannot subdue a single suspect using all that ammo, they are not competent as Security.\[br]-Jeremiah Acacius";
-	name = "note to the Head of Security"
-	},
-/obj/item/clothing/accessory/permit/gun{
-	desc = "An example of a card indicating that the owner is allowed to carry a firearm. There's a note saying to fax CentCom if you want to order more blank permits.";
-	name = "sample weapon permit";
-	owner = 1
-	},
 /obj/machinery/computer/skills{
 	dir = 1
+	},
+/obj/item/folder/red_hos{
+	pixel_x = 4
 	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
@@ -14486,13 +14557,15 @@
 /area/bridge)
 "kuS" = (
 /obj/structure/table/woodentable,
-/obj/item/tape_recorder,
+/obj/item/tape_recorder{
+	pixel_x = 10;
+	pixel_y = 3
+	},
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
 	},
 /obj/item/pen/multi,
-/obj/item/folder/red_hos,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "kuW" = (
@@ -16203,8 +16276,6 @@
 "lAD" = (
 /obj/structure/closet/secure_closet/hos2,
 /obj/item/storage/box/firingpins,
-/obj/item/storage/belt/security,
-/obj/item/megaphone,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -18403,13 +18474,51 @@
 	pixel_x = -24
 	},
 /obj/structure/table/steel,
-/obj/item/storage/box/nifsofts_security,
-/obj/item/hand_labeler,
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 6
+	},
+/obj/item/clothing/accessory/armor/tag/nts{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/armor/tag/nts{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/clothing/accessory/armor/tag/nts{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/armor/tag/nts{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/obj/item/clothing/accessory/armor/tag/nts{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/armor/tag/nts{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/item/clothing/accessory/armor/tag/ntc{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/accessory/armor/tag/ntc{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/clothing/accessory/armor/tag/ntbs{
+	pixel_x = 5;
+	pixel_y = 1
+	},
+/obj/item/clothing/accessory/armor/tag/ntbs{
+	pixel_x = 5;
+	pixel_y = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
@@ -18496,22 +18605,6 @@
 /area/hallway/secondary/docking_hallway)
 "nfp" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/suit/armor/vest/alt{
-	pixel_x = -4;
-	pixel_y = -6
-	},
-/obj/item/clothing/suit/armor/vest/alt{
-	pixel_x = 6;
-	pixel_y = -6
-	},
-/obj/item/clothing/suit/armor/vest/alt{
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/clothing/suit/armor/vest/alt{
-	pixel_x = 6;
-	pixel_y = 6
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -18522,6 +18615,122 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/clothing/accessory/armor/helmetcamera/security{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate/stab{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/clothing/accessory/armor/armorplate{
+	pixel_x = 6;
+	pixel_y = -3
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "nft" = (
@@ -20140,8 +20349,13 @@
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/item/storage/box/evidence,
-/obj/item/pen/red,
+/obj/item/storage/box/evidence{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/pen/red{
+	pixel_x = -7
+	},
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "ooL" = (
@@ -20913,7 +21127,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "oUS" = (
-/obj/structure/table/steel,
 /obj/machinery/light_switch{
 	dir = 8;
 	pixel_x = 24
@@ -20924,8 +21137,36 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
-/obj/item/storage/lockbox,
-/obj/item/storage/box/nifsofts_security,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/glasses/sunglasses/sechud{
+	pixel_y = -5;
+	pixel_x = -1
+	},
+/obj/item/clothing/glasses/sunglasses/sechud{
+	pixel_y = -5;
+	pixel_x = -1
+	},
+/obj/item/clothing/glasses/sunglasses/sechud{
+	pixel_y = -5;
+	pixel_x = -1
+	},
+/obj/item/clothing/glasses/sunglasses/sechud{
+	pixel_y = -5;
+	pixel_x = -1
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "oVi" = (
@@ -21617,14 +21858,6 @@
 /area/security/brig)
 "pqd" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/accessory/armor/helmcover/nt,
-/obj/item/clothing/accessory/armor/helmcover/nt,
-/obj/item/clothing/accessory/armor/helmcover/nt,
-/obj/item/clothing/accessory/armor/helmcover/nt,
-/obj/item/clothing/accessory/armor/helmcover/nt,
-/obj/item/clothing/accessory/armor/helmcover/nt,
-/obj/item/clothing/accessory/armor/helmcover/nt,
-/obj/item/clothing/accessory/armor/helmcover/nt,
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
@@ -21632,6 +21865,33 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/clothing/accessory/armor/helmcover/nt{
+	pixel_y = -8
+	},
+/obj/item/clothing/accessory/armor/helmcover/nt{
+	pixel_y = -8
+	},
+/obj/item/clothing/accessory/armor/helmcover/nt{
+	pixel_y = -8
+	},
+/obj/item/clothing/accessory/armor/helmcover/nt{
+	pixel_y = -8
+	},
+/obj/item/clothing/accessory/armor/helmcover/nt{
+	pixel_y = -8
+	},
+/obj/item/clothing/accessory/armor/helmcover/nt{
+	pixel_y = -8
+	},
+/obj/item/clothing/accessory/armor/helmcover/nt{
+	pixel_y = -8
+	},
+/obj/item/clothing/accessory/armor/helmcover/navy,
+/obj/item/clothing/accessory/armor/helmcover/navy,
+/obj/item/clothing/accessory/armor/helmcover/navy,
+/obj/item/clothing/accessory/armor/helmcover/navy,
+/obj/item/clothing/accessory/armor/helmcover/navy,
+/obj/item/clothing/accessory/armor/helmcover/navy,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "pqO" = (
@@ -22993,6 +23253,10 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/item/clothing/under/oricon/utility/fleet/security,
+/obj/item/clothing/under/oricon/utility/fleet/security,
+/obj/item/clothing/under/oricon/utility/marine/security,
+/obj/item/clothing/under/oricon/utility/marine/security,
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "qkp" = (
@@ -25424,24 +25688,39 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "rUN" = (
 /obj/structure/table/steel,
-/obj/item/tool/crowbar,
-/obj/item/tool/crowbar,
-/obj/item/tool/crowbar,
-/obj/item/tool/crowbar,
-/obj/item/tool/crowbar,
-/obj/item/tool/crowbar,
-/obj/item/flashlight,
-/obj/item/flashlight,
-/obj/item/flashlight,
-/obj/item/flashlight,
-/obj/item/flashlight,
-/obj/item/flashlight,
-/obj/item/retail_scanner/security,
+/obj/item/tool/crowbar{
+	pixel_y = 4;
+	pixel_x = -3
+	},
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 6
+	},
+/obj/item/tool/crowbar{
+	pixel_y = 4;
+	pixel_x = -1
+	},
+/obj/item/tool/crowbar{
+	pixel_y = 4;
+	pixel_x = 1
+	},
+/obj/item/tool/crowbar{
+	pixel_y = 4;
+	pixel_x = 3
+	},
+/obj/item/tool/crowbar{
+	pixel_y = 4;
+	pixel_x = 5
+	},
+/obj/item/tool/crowbar{
+	pixel_y = 4;
+	pixel_x = 7
+	},
+/obj/item/retail_scanner/security{
+	pixel_x = 5;
+	pixel_y = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
@@ -26239,16 +26518,23 @@
 /area/security/riot_control)
 "szY" = (
 /obj/structure/table/steel,
-/obj/item/storage/box/evidence,
 /obj/item/storage/box/handcuffs{
-	pixel_x = 6;
-	pixel_y = -2
+	pixel_x = 7;
+	pixel_y = 4
 	},
 /obj/machinery/camera/network/security{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 9
+	},
+/obj/item/storage/box/nifsofts_security{
+	pixel_y = 4;
+	pixel_x = -8
+	},
+/obj/item/storage/box/evidence{
+	pixel_x = -2;
+	pixel_y = 16
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 6
@@ -26279,10 +26565,6 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/sauna)
 "sAq" = (
-/obj/item/clothing/suit/armor/vest/wolftaur{
-	pixel_x = -16;
-	pixel_y = 4
-	},
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
@@ -26291,101 +26573,101 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/accessory/armor/armorplate{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/armorplate/stab{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/stab{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/stab{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/stab{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/stab{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/armorplate/stab{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/armor/tag/nts{
+/obj/item/clothing/suit/armor/pcarrier/navy{
 	pixel_x = -5;
 	pixel_y = 6
 	},
-/obj/item/clothing/accessory/armor/tag/nts{
-	pixel_x = -5;
-	pixel_y = 9
+/obj/item/clothing/suit/armor/pcarrier{
+	pixel_x = 6;
+	pixel_y = 6
 	},
-/obj/item/clothing/accessory/armor/tag/nts{
+/obj/item/clothing/suit/armor/pcarrier/navy{
 	pixel_x = -5;
 	pixel_y = 6
 	},
-/obj/item/clothing/accessory/armor/tag/nts{
+/obj/item/clothing/suit/armor/pcarrier/navy{
 	pixel_x = -5;
 	pixel_y = 6
 	},
-/obj/item/clothing/accessory/armor/tag/nts{
+/obj/item/clothing/suit/armor/pcarrier/navy{
 	pixel_x = -5;
 	pixel_y = 6
 	},
-/obj/item/clothing/accessory/armor/tag/ntc{
+/obj/item/clothing/suit/armor/pcarrier/navy{
 	pixel_x = -5;
-	pixel_y = 3
+	pixel_y = 6
 	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
+/obj/item/clothing/suit/armor/pcarrier/navy{
+	pixel_x = -5;
+	pixel_y = 6
 	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
+/obj/item/clothing/suit/armor/pcarrier{
+	pixel_x = 6;
+	pixel_y = 6
 	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
+/obj/item/clothing/suit/armor/pcarrier{
+	pixel_x = 6;
+	pixel_y = 6
 	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
+/obj/item/clothing/suit/armor/pcarrier{
+	pixel_x = 6;
+	pixel_y = 6
 	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
+/obj/item/clothing/suit/armor/pcarrier{
+	pixel_x = 6;
+	pixel_y = 6
 	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -6
+/obj/item/clothing/suit/armor/pcarrier{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/clothing/accessory/storage/pouches/navy{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/navy{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/navy{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/navy{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/navy{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches/navy{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/storage/pouches{
+	pixel_x = 6;
+	pixel_y = -2
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
@@ -27914,20 +28196,6 @@
 /area/maintenance/security/starboard)
 "tBA" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/accessory/holster/waist,
-/obj/item/clothing/accessory/holster/waist,
-/obj/item/clothing/accessory/holster/leg,
-/obj/item/clothing/accessory/holster/leg,
-/obj/item/clothing/accessory/holster/hip,
-/obj/item/clothing/accessory/holster/hip,
-/obj/item/clothing/accessory/holster/armpit,
-/obj/item/clothing/accessory/holster/armpit,
-/obj/item/clothing/accessory/holster/armpit,
-/obj/item/clothing/accessory/holster/armpit,
-/obj/item/clothing/accessory/holster,
-/obj/item/clothing/accessory/holster,
-/obj/item/clothing/accessory/holster,
-/obj/item/clothing/accessory/holster,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
 	pixel_y = -28
@@ -27939,6 +28207,54 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/clothing/accessory/storage/black_drop_pouches{
+	pixel_x = -5
+	},
+/obj/item/clothing/accessory/storage/black_drop_pouches{
+	pixel_x = -3
+	},
+/obj/item/clothing/accessory/storage/black_drop_pouches{
+	pixel_x = -1
+	},
+/obj/item/clothing/accessory/storage/black_drop_pouches{
+	pixel_x = 1
+	},
+/obj/item/clothing/accessory/storage/black_drop_pouches{
+	pixel_x = 3
+	},
+/obj/item/clothing/accessory/storage/black_drop_pouches{
+	pixel_x = 5
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_x = -2;
+	pixel_y = 9
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_y = 9
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_y = 9;
+	pixel_x = 2
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_y = 9;
+	pixel_x = 4
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_y = 9;
+	pixel_x = 6
+	},
+/obj/item/clothing/accessory/holster/leg{
+	pixel_y = 9;
+	pixel_x = 8
+	},
+/obj/item/clothing/accessory/storage/black_drop_pouches{
+	pixel_x = 7
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "tCo" = (
@@ -28227,16 +28543,61 @@
 "tNM" = (
 /obj/structure/table/steel,
 /obj/item/cell/device/weapon{
-	pixel_x = -3
-	},
-/obj/item/cell/device/weapon{
-	pixel_x = 3
+	pixel_x = -9;
+	pixel_y = 4
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 6
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/obj/item/cell/device/weapon{
+	pixel_y = 4
+	},
+/obj/item/cell/device/weapon{
+	pixel_y = 4;
+	pixel_x = 1
+	},
+/obj/item/cell/device/weapon{
+	pixel_y = 4;
+	pixel_x = 2
+	},
+/obj/item/hand_labeler{
+	pixel_x = 2;
+	pixel_y = -9
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
@@ -29613,9 +29974,6 @@
 /area/exploration/showers)
 "uNX" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/glasses/hud/security,
-/obj/item/clothing/glasses/hud/security,
-/obj/item/clothing/glasses/hud/security,
 /obj/machinery/light,
 /obj/effect/floor_decal/corner/red{
 	dir = 6
@@ -29624,6 +29982,38 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/clothing/accessory/holster/hip{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/clothing/accessory/holster/hip{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/holster/hip{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/obj/item/clothing/accessory/holster/hip{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/clothing/accessory/holster/hip{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/clothing/accessory/holster/hip{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/obj/item/clothing/accessory/holster/waist{
+	pixel_y = -7;
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/holster/waist{
+	pixel_y = -7;
+	pixel_x = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "uOz" = (
@@ -30784,6 +31174,9 @@
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 6
+	},
+/obj/item/storage/lockbox{
+	pixel_y = 16
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
@@ -32601,7 +32994,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "wEc" = (
-/obj/mecha/working/hoverpod/shuttlecraft,
 /obj/effect/floor_decal/industrial/danger{
 	dir = 10
 	},
@@ -32609,6 +33001,7 @@
 	dir = 8
 	},
 /obj/machinery/mech_recharger,
+/obj/mecha/combat/fighter/baron/sec/loaded,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hanger)
 "wEy" = (
@@ -33268,7 +33661,6 @@
 /area/security/warden)
 "xdv" = (
 /obj/structure/closet/cabinet,
-/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "xdx" = (
@@ -34981,11 +35373,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "ylF" = (
-/obj/mecha/working/hoverpod/shuttlecraft,
 /obj/effect/floor_decal/industrial/danger{
 	dir = 10
 	},
 /obj/machinery/mech_recharger,
+/obj/mecha/combat/fighter/baron/sec/loaded,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hanger)
 "yma" = (
@@ -40645,7 +41037,7 @@ vIl
 sfo
 sfo
 sfo
-sfo
+gMk
 olz
 olz
 nIK
