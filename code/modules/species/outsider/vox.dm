@@ -109,6 +109,9 @@
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/eat_trash,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 		)
 
 /datum/species/vox/get_random_name(gender)

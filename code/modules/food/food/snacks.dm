@@ -5900,6 +5900,7 @@ END CITADEL CHANGE */
 /obj/item/storage/box/wings //This is kinda like the donut box.
 	name = "wing basket"
 	desc = "A basket of chicken wings! Get some before they're all gone! Or maybe you're too late..."
+	icon = 'icons/obj/food.dmi'
 	icon_state = "wings5"
 	var/startswith = 5
 	max_storage_space = ITEMSIZE_COST_SMALL * 5

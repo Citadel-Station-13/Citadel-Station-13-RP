@@ -66,10 +66,10 @@
 			S.update_icon()
 			. = TRUE
 		if("allon")
-			INVOKE_ASYNC(src, .proc/toggle_all, TRUE)
+			INVOKE_ASYNC(src, PROC_REF(toggle_all), TRUE)
 			. = TRUE
 		if("alloff")
-			INVOKE_ASYNC(src, .proc/toggle_all, FALSE)
+			INVOKE_ASYNC(src, PROC_REF(toggle_all), FALSE)
 			. = TRUE
 		if("scan")
 			scanscrubbers()

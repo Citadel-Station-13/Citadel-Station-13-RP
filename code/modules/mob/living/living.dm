@@ -793,11 +793,6 @@ default behaviour is:
 		throw_alert("weightless", /obj/screen/alert/weightless)
 */
 
-/mob/living/get_centering_pixel_y_offset(dir, atom/aligning)
-	. = ..()
-	// since we're shifted up by transforms..
-	. += ((size_multiplier * icon_scale_y) - 1) * 16
-
 /mob/living/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(incapacitated())
 		to_chat(src, SPAN_WARNING("You can't do that right now!"))
@@ -809,3 +804,14 @@ default behaviour is:
 		to_chat(src, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return FALSE
 	return TRUE
+
+//* Pixel Offsets
+
+/mob/living/get_centering_pixel_y_offset(dir, atom/aligning)
+	. = ..()
+	// since we're shifted up by transforms..
+	. += ((size_multiplier * icon_scale_y) - 1) * 16
+
+/mob/living/get_managed_pixel_y()
+	. = ..()
+	. += depth_current

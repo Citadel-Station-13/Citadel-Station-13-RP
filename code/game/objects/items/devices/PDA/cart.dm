@@ -532,10 +532,6 @@ var/list/civilian_cartridges = list(
 
 	return values
 
-
-
-
-
 /obj/item/cartridge/Topic(href, href_list)
 	..()
 
