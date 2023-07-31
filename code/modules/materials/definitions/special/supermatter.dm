@@ -29,7 +29,7 @@
 	// you didn't think you were getting the stats for free now did you
 	material_traits = list(
 		/datum/material_trait/radioactive{
-			strength = RAD_INTENSITY_MAT_SUPERMATTER,
+			strength = RAD_INTENSITY_MAT_SUPERMATTER;
 		},
 		/datum/material_trait/supermatter,
 	)

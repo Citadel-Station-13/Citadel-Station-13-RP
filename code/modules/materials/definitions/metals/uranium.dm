@@ -24,6 +24,6 @@
 
 	material_traits = list(
 		/datum/material_trait/radioactive{
-			strength = RAD_INTENSITY_MAT_URANIUM,
+			strength = 10;
 		},
 	)
