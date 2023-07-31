@@ -168,7 +168,7 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	.["coreGases"] = core_ids
 	var/list/filterable_ids = list()
 	.["filterableGases"] = filterable_ids
-	var/filterableGroups = NONE
+	var/filterableGroups = GAS_GROUPS_FILTERABLE
 	.["groupNames"] = global.gas_group_names
 	for(var/id in (ids || gases))
 		var/datum/gas/instance = gases[id]
@@ -187,10 +187,6 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 		if(instance.gas_flags & GAS_FLAG_FILTERABLE)
 			filterable_ids += instance.id
 		gases[instance.id] = assembled
-	for(var/i in 0 to GAS_GROUP_COUNT - 1)
-		var/group = 1 << i
-		if(gas_group_filterable(group))
-			filterableGroups |= group
 	.["filterableGroups"] = filterableGroups
 
 /**
@@ -205,10 +201,10 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	return tgui_gas_context(., full)
 
 /**
- * checks if a gas group is filterable
+ * checks if a gas group or set of gas groups is filterable
  */
-/datum/gas_data/proc/gas_group_filterable(group_flag)
-	return group_flag & GAS_GROUPS_FILTERABLE
+/datum/gas_data/proc/gas_groups_filterable(group_flag)
+	return (group_flag & GAS_GROUPS_FILTERABLE) == group_flag
 
 /**
  * checks if a gas id is specifically filterable

@@ -19,8 +19,6 @@
 	/// current flow rate in L
 	var/flow_current = 0
 
-#warn groups
-
 /obj/machinery/atmospherics/component/trinary/filter/Initialize(mapload)
 	. = ..()
 	air1.volume = ATMOS_DEFAULT_VOLUME_FILTER
@@ -50,7 +48,7 @@
 	var/transfer_mols = (flow_setting / air1.volume) * old_mols
 
 	if(transfer_mols > MINIMUM_MOLES_TO_FILTER)
-		power_usage = xgm_filter_gas(air1, air3, air2, filtering, transfer_mols, power_setting)
+		power_current = xgm_filter_gas(air1, air3, air2, filtering, transfer_mols, power_setting)
 		flow_current = (1 - air1.total_moles / old_mols) * air1.volume
 
 		// todo: better API for this
@@ -58,8 +56,10 @@
 		network2?.update = TRUE
 		network3?.update = TRUE
 
-	if(power_usage)
-		use_power(power_usage)
+	if(power_current)
+		use_power(power_current)
+
+#warn below
 
 /obj/machinery/atmospherics/component/trinary/filter/attack_hand(mob/user, list/params)
 	if(..())
@@ -97,14 +97,16 @@
 	switch(action)
 		if("filter")
 			var/target = params["target"]
-			#warn impl
+			if(!(isnum(target)? global.gas_data.gas_groups_filterable(target) : global.gas_data.gas_id_filterable(target)))
+				return FALSE
+			filtering = target
+			return TRUE
 		if("rate")
 			var/liters = params["rate"]
 			if(isnull(liters))
 				return FALSE
 			set_rate(liters)
 			return TRUE
-
 
 /obj/machinery/atmospherics/component/trinary/filter/mirrored
 	icon_state = "mmap"
