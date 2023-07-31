@@ -3,7 +3,8 @@
  * @license MIT
 */
 
-import { Section } from "../../components";
+import { bitfieldToPositions } from "common/math";
+import { Button, LabeledList, Section } from "../../components";
 import { SectionProps } from "../../components/Section";
 
 
@@ -21,6 +22,15 @@ export enum AtmosGasGroupFlags {
 }
 export type AtmosGasGroups = AtmosGasGroupFlags;
 
+export const AtmosGroupFlagNames = [
+  "Core",
+  "Other",
+  "Unknown",
+  "Reagents",
+];
+
+export const ATMOS_GROUP_COUNT = 4;
+
 export enum AtmosGasFlags {
   None = (0),
   Fuel = (1<<0),
@@ -32,13 +42,6 @@ export enum AtmosGasFlags {
   Filterable = (1<<6),
   Dangerous = (1<<7),
 }
-
-export const AtmosGroupFlagNames = [
-  "Core",
-  "Other",
-  "Unknown",
-  "Reagents",
-];
 
 interface BaseGasContext {
   coreGases: AtmosGasID[];
@@ -81,7 +84,24 @@ interface AtmosFilterListProps extends SectionProps {
 export const AtmosFilterList = (props: AtmosFilterListProps) => {
   return (
     <Section {...props}>
-      Test
+      <LabeledList>
+        <LabeledList.Item label="Gases">
+          {props.gasContext.filterableGases.map((id) => (
+            <Button.Checkbox
+              key={id}
+              selected={props.selectedIds.includes(id)}
+              onClick={() => props.selectId?.(id, !props.selectedIds.includes(id))} />
+          ))}
+        </LabeledList.Item>
+        <LabeledList.Item label="Groups">
+          {bitfieldToPositions(props.gasContext.filterableGroups, ATMOS_GROUP_COUNT).map((pos) => (
+            <Button.Checkbox
+              key={pos}
+              selected={props.selectedGroups & (1 << pos)}
+              onClick={() => props.selectGroup?.(1 << pos, !(props.selectedGroups & (1 << pos)))} />
+          ))}
+        </LabeledList.Item>
+      </LabeledList>
     </Section>
   );
 };
