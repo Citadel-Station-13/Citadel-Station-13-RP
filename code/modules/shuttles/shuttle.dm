@@ -51,13 +51,13 @@
 			if(ceiling_type)
 				var/turf/above = GetAbove(T)
 				if(above && !(above.loc in shuttle_area))
-					above.PlaceBelowLogicalBottom(ceiling_type)
+					above.PlaceBelowLogicalBottom(ceiling_type, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 			// inject floor
 			// but only if we are.. floor
 			if(GLOB.multiz_hole_baseturfs[T.type])
 				// don't bother
 				continue
-			T.PlaceBelowLogicalTop(/turf/simulated/floor/plating, CHANGETURF_INHERIT_AIR)
+			T.PlaceBelowLogicalTop(/turf/simulated/floor/plating, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 
 	shuttle_area = areas
 

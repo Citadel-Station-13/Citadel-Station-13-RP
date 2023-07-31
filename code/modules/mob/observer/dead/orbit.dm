@@ -33,7 +33,7 @@
 			update_static_data()
 			. = TRUE
 
-/datum/orbit_menu/ui_data(mob/user)
+/datum/orbit_menu/ui_static_data(mob/user)
 	var/list/data = list()
 
 	var/list/players = list()
@@ -67,6 +67,8 @@
 		else if(isrobot(M))
 			players += list(serialized)
 		else if(isAI(M))
+			players += list(serialized)
+		else if(istype(M, /mob/living/silicon/pai))
 			players += list(serialized)
 
 	data["players"] = players
