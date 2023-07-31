@@ -86,9 +86,9 @@ export const AtmosComponent = (props: AtmosComponentProps, context) => {
                 setPowerLimitAct={(watts) => act('setPowerDraw', { target: watts })}
                 additionalListItems={props.additionalListItems} />
             </Stack.Item>
-            {props.chlidren && (
+            {props.children && (
               <Stack.Item grow>
-                {props.chlidren}
+                {props.children}
               </Stack.Item>
             )}
           </Stack>

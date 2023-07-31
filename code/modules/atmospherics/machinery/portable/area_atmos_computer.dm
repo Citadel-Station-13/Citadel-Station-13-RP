@@ -1,3 +1,5 @@
+// todo: wrong folder?
+
 /obj/machinery/computer/area_atmos
 	name = "Area Air Control"
 	desc = "A computer used to control the stationary scrubbers and pumps in the area."

@@ -15,3 +15,21 @@
 #define ATMOS_COMPONENT_UI_SET_POWER (1<<1)
 /// render power usage
 #define ATMOS_COMPONENT_UI_SEE_POWER (1<<2)
+
+DEFINE_BITFIELD(atmos_component_ui_flags, list(
+	BITFIELD(ATMOS_COMPONENT_UI_TOGGLE_POWER),
+	BITFIELD(ATMOS_COMPONENT_UI_SET_POWER),
+	BITFIELD(ATMOS_COMPONENT_UI_SEE_POWER),
+))
+
+//* /obj/machinery/portable_atmospherics atmos_portable_ui_flags
+
+/// view flow
+#define ATMOS_PORTABLE_UI_SEE_FLOW (1<<0)
+/// toggle on/off
+#define ATMOS_PORTABLE_UI_TOGGLE_POWER (1<<1)
+
+DEFINE_BITFIELD(atmos_portable_ui_flags, list(
+	BITFIELD(ATMOS_PORTABLE_UI_SEE_FLOW),
+	BITFIELD(ATMOS_PORTABLE_UI_TOGGLE_POWER),
+))

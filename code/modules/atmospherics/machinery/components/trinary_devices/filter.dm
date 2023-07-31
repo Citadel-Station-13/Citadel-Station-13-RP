@@ -11,6 +11,8 @@
 	idle_power_usage = 150
 	power_rating = 7500
 
+	tgui_interface = "AtmosFilterTrinary"
+
 	/// target gas id, or groups
 	var/filtering
 	// todo: put flow rate at component level
@@ -48,7 +50,7 @@
 	var/transfer_mols = (flow_setting / air1.volume) * old_mols
 
 	if(transfer_mols > MINIMUM_MOLES_TO_FILTER)
-		power_current = xgm_filter_gas(air1, air3, air2, filtering, transfer_mols, power_setting)
+		power_current = xgm_filter_gas(air1, air3, air2, filtering, transfer_mols, power_setting * efficiency_multiplier) / efficiency_multiplier
 		flow_current = (1 - air1.total_moles / old_mols) * air1.volume
 
 		// todo: better API for this
@@ -58,18 +60,6 @@
 
 	if(power_current)
 		use_power(power_current)
-
-#warn below
-
-/obj/machinery/atmospherics/component/trinary/filter/attack_hand(mob/user, list/params)
-	if(..())
-		return
-	if(!src.allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
-		return
-	ui_interact(user)
-
-#warn above
 
 /obj/machinery/atmospherics/component/trinary/filter/proc/set_rate(liters)
 	flow_setting = clamp(liters, 0, air1.volume)

@@ -5,26 +5,26 @@ import { useBackend } from "../../backend";
 import { SectionProps } from "../../components/Section";
 import { GasContext } from "../common/Atmos";
 
-interface AtmosScrubberControlProps extends SectionProps {
+interface AtmosVentScrubberControlProps extends SectionProps {
   context: GasContext;
 }
 
-export const AtmosScrubberControl = (props: AtmosScrubberControlProps) => {
+export const AtmosVentScrubberControl = (props: AtmosVentScrubberControlProps) => {
 
 };
 
-export interface AtmosScrubberState {
+export interface AtmosVentScrubberState {
   // are we on siphon mode
   siphon: boolean;
   // are we on high power mode
   overclock: boolean;
 }
 
-interface AtmosScrubberData {
+interface AtmosVentScrubberData {
 
 }
 
-export const AtmosScrubber = (props, context) => {
-  let { act, data } = useBackend<AtmosScrubberData>(context);
+export const AtmosVentScrubber = (props, context) => {
+  let { act, data } = useBackend<AtmosVentScrubberData>(context);
 
 };

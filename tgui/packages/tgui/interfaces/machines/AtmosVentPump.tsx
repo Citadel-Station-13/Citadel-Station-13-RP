@@ -4,7 +4,7 @@
 import { useBackend } from "../../backend";
 import { Section, SectionProps } from "../../components/Section";
 
-interface AtmosVentControlProps extends SectionProps {
+interface AtmosVentPumpControlProps extends SectionProps {
   // act() for toggling vent; if this isn't provided, the button is disabled.
   powerAct: (boolean) => void;
   // act() for toggling pumping out; if this isn't provided, the button is disabled.
@@ -14,17 +14,17 @@ interface AtmosVentControlProps extends SectionProps {
   // set external pressure check
   externalAct: (number) => void;
   // vent data
-  vent: AtmosVentState;
+  vent: AtmosVentPumpState;
 }
 
-export enum AtmosVentPressureChecks {
+export enum AtmosVentPumpPressureChecks {
   None = 0,
   Internal = (1<<0),
   External = (1<<1),
 }
 
-export interface AtmosVentState {
-  pressureChecks: AtmosVentPressureChecks;
+export interface AtmosVentPumpState {
+  pressureChecks: AtmosVentPumpPressureChecks;
   internalPressure: number;
   externalPressure: number;
   // on / off
@@ -36,7 +36,7 @@ export interface AtmosVentState {
 /**
  * Embeddable atmos vent control.
  */
-export const AtmosVentControl = (props: AtmosVentControlProps) => {
+export const AtmosVentPumpControl = (props: AtmosVentPumpControlProps) => {
   return (
     <Section {...props}>
       Unimplemented
@@ -44,12 +44,12 @@ export const AtmosVentControl = (props: AtmosVentControlProps) => {
   );
 };
 
-interface AtmosVentData {
+interface AtmosVentPumpData {
   // vent state
-  state: AtmosVentState;
+  state: AtmosVentPumpState;
 }
 
-export const AtmosVent = (props, context) => {
-  let { data, act } = useBackend<AtmosVentData>(context);
+export const AtmosVentPump = (props, context) => {
+  let { data, act } = useBackend<AtmosVentPumpData>(context);
 
 };

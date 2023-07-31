@@ -1,10 +1,28 @@
 /obj/machinery/portable_atmospherics/powered
-	var/power_rating
+	/// power rating
+	var/power_rating = 7500
+	/// power setting
+	var/power_setting
+	/// power usage current
+	var/power_current = 0
+
+	/// efficiency multiplier
+	var/efficiency_multiplier = 1
+
 	var/power_losses
 	var/last_power_draw_legacy = 0
 	var/obj/item/cell/cell
 	var/use_cell = TRUE
 	var/removeable_cell = TRUE
+
+/obj/machinery/portable_atmospherics/powered/Initialize(mapload)
+	. = ..()
+	if(isnull(power_setting))
+		power_setting = power_rating
+
+/obj/machinery/portable_atmospherics/powered/process(delta_time)
+	..()
+	power_current = 0
 
 /obj/machinery/portable_atmospherics/powered/powered()
 	if(use_power) //using area power
@@ -22,7 +40,7 @@
 	. = ..()
 	.["charge"] = isnull(cell)? cell.charge : 0
 
-/obj/machinery/portable_atmospherics/powered/attackby(obj/item/I, mob/user)
+/obj/machinery/portable_atmospherics/powered/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(use_cell && istype(I, /obj/item/cell))
 		if(cell)
 			to_chat(user, "There is already a power cell installed.")

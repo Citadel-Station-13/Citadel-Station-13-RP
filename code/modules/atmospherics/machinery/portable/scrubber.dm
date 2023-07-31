@@ -1,18 +1,16 @@
 /obj/machinery/portable_atmospherics/powered/scrubber
-	name = "Portable Air Scrubber"
-
+	name = "portable air scrubber"
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "pscrubber:0"
-	density = 1
+	density = TRUE
 	w_class = ITEMSIZE_NORMAL
 
-	var/on = 0
+	atmos_portable_ui_flags = ATMOS_PORTABLE_UI_SEE_FLOW
+	power_rating = 7500
+
 	var/volume_rate = 800
 
 	volume = 750
-
-	power_rating = 7500 //7500 W ~ 10 HP
-	power_losses = 150
 
 	var/minrate = 0
 	var/maxrate = 10 * ONE_ATMOSPHERE
@@ -27,6 +25,8 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/Initialize(mapload)
 	. = ..()
 	cell = new /obj/item/cell/apc(src)
+
+#warn below
 
 /obj/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
@@ -54,17 +54,42 @@
 	if(connected_port)
 		. += "scrubber-connector"
 
+/obj/machinery/portable_atmospherics/powered/scrubber/attack_ai(var/mob/user)
+	src.add_hiddenprint(user)
+	return src.attack_hand(user)
+
+/obj/machinery/portable_atmospherics/powered/scrubber/attack_ghost(var/mob/user)
+	. = ..()
+	return src.attack_hand(user)
+
+#warn above
+
+/obj/machinery/portable_atmospherics/powered/scrubber/process(delta_time)
+	..()
+
+	if(on && cell?.charge)
+		#warn ugh hh oghoahohwohohoh group multiplier?
+		var/datum/gas_mixture/scrubbing = isnull(holding)? loc.return_air() : holding.air_contents
+		var/old_mols = scrubbing.total_moles
+		var/mols = (volume_rate / scrubbing.volume) * old_mols
+		power_current = xgm_scrub_gas(scrubbing, air_contents, scrubbing_ids, scrubbing_groups, mols, power_setting * efficiency_multiplier) / efficiency_multiplier
+		flow_current = (1 - (scrubbing.total_moles / old_mols)) * volume_rate
+		update_connected_network()
+
+	if(power_current)
+		cell.use_scaled(DYNAMIC_W_TO_CELL_UNITS(power_current, delta_time))
+		if(!cell.charge)
+			power_change()
+			update_icon()
+
+#warn below
+
 /obj/machinery/portable_atmospherics/powered/scrubber/process(delta_time)
 	..()
 
 	var/power_draw = -1
 
 	if(on && cell && cell.charge)
-		var/datum/gas_mixture/environment
-		if(holding)
-			environment = holding.air_contents
-		else
-			environment = loc.return_air()
 
 		var/transfer_moles = min(1, volume_rate/environment.volume)*environment.total_moles
 
@@ -74,30 +99,10 @@
 		last_flow_rate_legacy = 0
 		last_power_draw_legacy = 0
 	else
-		power_draw = max(power_draw, power_losses)
-		cell.use_scaled(DYNAMIC_W_TO_CELL_UNITS(power_draw, 1))
-		last_power_draw_legacy = power_draw
-
-		update_connected_network()
-
 		//ran out of charge
 		if (!cell.charge)
 			power_change()
 			update_icon()
-
-	//src.update_icon()
-	src.updateDialog()
-
-/obj/machinery/portable_atmospherics/powered/scrubber/return_air()
-	return air_contents
-
-/obj/machinery/portable_atmospherics/powered/scrubber/attack_ai(var/mob/user)
-	src.add_hiddenprint(user)
-	return src.attack_hand(user)
-
-/obj/machinery/portable_atmospherics/powered/scrubber/attack_ghost(var/mob/user)
-	. = ..()
-	return src.attack_hand(user)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/attack_hand(mob/user, list/params)
 	ui_interact(user)
@@ -148,6 +153,8 @@
 			. = TRUE
 
 	update_icon()
+
+#warn below
 
 //Huge scrubber
 /obj/machinery/portable_atmospherics/powered/scrubber/huge

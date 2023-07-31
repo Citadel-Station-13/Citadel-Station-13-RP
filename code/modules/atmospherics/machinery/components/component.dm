@@ -23,6 +23,10 @@
 	var/tgui_interface
 	/// allowed default ui controls
 	var/atmos_component_ui_flags = NONE
+
+	/// efficiency multiplier
+	var/efficiency_multiplier = 1
+
 	/// are we on?
 	var/on = FALSE
 	/// maximum power limit in watts
@@ -70,9 +74,7 @@
 	.["on"] = on
 	.["powerSetting"] = power_setting
 	if(atmos_component_ui_flags & ATMOS_COMPONENT_UI_SEE_POWER)
-		.["powerUsage"] = power_usage
-	else
-		.["powerUsage"] = 0
+		.["powerUsage"] = power_current
 
 /obj/machinery/atmospherics/component/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -92,6 +94,13 @@
 			var/watts = text2num(params["target"])
 			set_power(watts)
 			return TRUE
+
+/obj/machinery/atmospherics/component/interact(mob/user)
+	// todo: interact needs a refactor; doing it like this stops fingerprints from applying.
+	if(!allowed(user))
+		user.action_feedback(SPAN_WARNING("Access denied."), src)
+		return FALSE
+	return ..()
 
 /obj/machinery/atmospherics/component/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	if(!tgui_interface)

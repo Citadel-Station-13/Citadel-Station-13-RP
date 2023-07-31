@@ -2,6 +2,18 @@
 	name = "atmoalter"
 	use_power = USE_POWER_OFF
 	layer = OBJ_LAYER // These are mobile, best not be under everything.
+
+	/// tgui interface
+	var/tgui_interface
+	/// ui flags
+	var/atmos_portable_ui_flags = NONE
+
+	/// on right now
+	var/on = FALSE
+	/// current flow
+	var/flow_current = 0
+
+
 	var/datum/gas_mixture/air_contents = new
 
 	var/obj/machinery/atmospherics/portables_connector/connected_port
@@ -26,13 +38,18 @@
 
 /obj/machinery/portable_atmospherics/Initialize(mapload)
 	. = ..()
-	spawn()
-		var/obj/machinery/atmospherics/portables_connector/port = locate() in loc
-		if(port)
-			connect(port)
-			update_icon()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/portable_atmospherics/LateInitialize()
+	var/obj/machinery/atmospherics/portables_connector/port = locate() in loc
+	if(port)
+		connect(port)
+		update_icon()
+	return ..()
 
 /obj/machinery/portable_atmospherics/process(delta_time)
+	flow_current = 0
+
 	if(!connected_port) //only react when pipe_network will ont it do it for you
 		//Allow for reactions
 		air_contents.react()
@@ -42,8 +59,15 @@
 /obj/machinery/portable_atmospherics/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["useCharge"] = FALSE
-	.["charge"] = 1000
-	.["maxCharge"] = 1000
+
+/obj/machinery/portable_atmospherics/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(atmos_portable_ui_flags & ATMOS_PORTABLE_UI_SEE_FLOW)
+		.["flow"] = flow_current
+	.["on"] = on
+
+/obj/machinery/portable_atmospherics/return_air()
+	return air_contents
 
 /obj/machinery/portable_atmospherics/blob_act()
 	qdel(src)
@@ -103,13 +127,13 @@
 	if (network)
 		network.update = 1
 
-/obj/machinery/portable_atmospherics/attackby(var/obj/item/W as obj, var/mob/user as mob)
-	if ((istype(W, /obj/item/tank) && !( src.destroyed )))
+/obj/machinery/portable_atmospherics/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if ((istype(I, /obj/item/tank) && !( src.destroyed )))
 		if (holding && (user.a_intent != INTENT_GRAB))
 			return
-		if(!user.attempt_insert_item_for_installation(W, src))
+		if(!user.attempt_insert_item_for_installation(I, src))
 			return
-		var/obj/item/tank/T = W
+		var/obj/item/tank/T = I
 		if(holding)
 			user.grab_item_from_interacted_with(holding, src)
 			to_chat(user, SPAN_NOTICE("You quickly swap the tanks with the quick release valve."))
@@ -117,12 +141,12 @@
 		update_icon()
 		return
 
-	else if (W.is_wrench())
+	else if (I.is_wrench())
 		if(connected_port)
 			disconnect()
 			to_chat(user, "<span class='notice'>You disconnect \the [src] from the port.</span>")
 			update_icon()
-			playsound(src, W.tool_sound, 50, 1)
+			playsound(src, I.tool_sound, 50, 1)
 			return
 		else
 			var/obj/machinery/atmospherics/portables_connector/possible_port = locate(/obj/machinery/atmospherics/portables_connector/) in loc
@@ -130,7 +154,7 @@
 				if(connect(possible_port))
 					to_chat(user, "<span class='notice'>You connect \the [src] to the port.</span>")
 					update_icon()
-					playsound(src, W.tool_sound, 50, 1)
+					playsound(src, I.tool_sound, 50, 1)
 					return
 				else
 					to_chat(user, "<span class='notice'>\The [src] failed to connect to the port.</span>")
@@ -139,8 +163,8 @@
 				to_chat(user, "<span class='notice'>Nothing happens.</span>")
 				return
 
-	else if ((istype(W, /obj/item/analyzer)) && Adjacent(user))
-		var/obj/item/analyzer/A = W
+	else if ((istype(I, /obj/item/analyzer)) && Adjacent(user))
+		var/obj/item/analyzer/A = I
 		A.analyze_gases(src, user)
 
 /obj/machinery/portable_atmospherics/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user as mob)
