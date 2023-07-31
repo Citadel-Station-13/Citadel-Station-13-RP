@@ -117,3 +117,17 @@ export interface AtmosTank {
   // liters
   volume: number;
 }
+
+interface AtmosTankSlotProps extends SectionProps {
+  ejectAct?: () => void;
+  canEject?: boolean;
+  tank: AtmosTank | null;
+}
+
+export const AtmosTankSlot = (props: AtmosTankSlotProps, context) => {
+  return (
+    <Section title="Tank" {...props}>
+      test
+    </Section>
+  );
+};

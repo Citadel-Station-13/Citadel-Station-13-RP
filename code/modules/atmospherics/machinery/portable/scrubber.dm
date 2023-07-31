@@ -5,28 +5,24 @@
 	density = TRUE
 	w_class = ITEMSIZE_NORMAL
 
-	atmos_portable_ui_flags = ATMOS_PORTABLE_UI_SEE_FLOW
-	power_rating = 7500
-
-	var/volume_rate = 800
+	atmos_portable_ui_flags = ATMOS_PORTABLE_UI_TOGGLE_POWER | ATMOS_PORTABLE_UI_SEE_POWER | ATMOS_PORTABLE_UI_SEE_FLOW
+	power_maximum = 7500
+	flow_maximum = 1000
 
 	volume = 750
-
-	var/minrate = 0
-	var/maxrate = 10 * ONE_ATMOSPHERE
 
 	/// scrubbing ids
 	var/list/scrubbing_ids
 	/// scrubbing groups
 	var/scrubbing_groups
-
-#warn groups
+	/// molar rate current
+	var/transfer_current = 0
 
 /obj/machinery/portable_atmospherics/powered/scrubber/Initialize(mapload)
 	. = ..()
 	cell = new /obj/item/cell/apc(src)
 
-#warn below
+//! LEGACY BELOW
 
 /obj/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
@@ -54,25 +50,7 @@
 	if(connected_port)
 		. += "scrubber-connector"
 
-#warn above
-
-/obj/machinery/portable_atmospherics/powered/scrubber/process(delta_time)
-	..()
-
-	if(on && cell?.charge)
-		#warn ugh hh oghoahohwohohoh group multiplier?
-		var/datum/gas_mixture/scrubbing = isnull(holding)? loc.return_air() : holding.air_contents
-		var/old_mols = scrubbing.total_moles
-		var/mols = (volume_rate / scrubbing.volume) * old_mols
-		power_current = xgm_scrub_gas(scrubbing, air_contents, scrubbing_ids, scrubbing_groups, mols, power_setting * efficiency_multiplier) / efficiency_multiplier
-		flow_current = (1 - (scrubbing.total_moles / old_mols)) * volume_rate
-		update_connected_network()
-
-	if(power_current)
-		cell.use_scaled(DYNAMIC_W_TO_CELL_UNITS(power_current, delta_time))
-		if(!cell.charge)
-			power_change()
-			update_icon()
+//! LEGACY ABOVE
 
 /obj/machinery/portable_atmospherics/powered/scrubber/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -82,6 +60,7 @@
 
 /obj/machinery/portable_atmospherics/powered/scrubber/ui_data(mob/user)
 	. = ..()
+	.["moleRate"] = transfer_current
 
 /obj/machinery/portable_atmospherics/powered/scrubber/ui_act(action, params)
 	. = ..()
@@ -90,11 +69,43 @@
 
 	switch(action)
 		if("scrubID")
-			var/target = parmas["target"]
-			#warn impl
+			var/target = params["target"]
+			if(!istext(target))
+				return FALSE
+			if(!global.gas_data.gas_id_filterable(target))
+				return FALSE
+			if(target in scrubbing_ids)
+				scrubbing_ids -= target
+			else
+				scrubbing_ids += target
+			push_ui_data(data = list("scrubbingIds" = scrubbing_ids))
+			return TRUE
 		if("scrubGroup")
-			var/target = parmas["target"]
-			#warn impl
+			var/target = params["target"]
+			if(!isnum(target))
+				return FALSE
+			if(!global.gas_data.gas_groups_filterable(target))
+				return FALSE
+			scrubbing_groups ^= target
+			push_ui_data(data = list("scrubbingGroups" = scrubbing_groups))
+			return TRUE
+
+/obj/machinery/portable_atmospherics/powered/scrubber/process(delta_time)
+	..()
+
+	if(on && cell?.charge)
+		var/datum/gas_mixture/scrubbing = isnull(holding)? loc.return_air() : holding.air_contents
+		var/old_mols = scrubbing.total_moles
+		var/mols = (volume_rate / scrubbing.volume) * old_mols
+		power_current = xgm_scrub_gas(scrubbing, air_contents, scrubbing_ids, scrubbing_groups, mols, power_setting * efficiency_multiplier) / efficiency_multiplier
+		transfer_current = old_mols - scrubbing.total_moles
+		update_connected_network()
+
+	if(power_current)
+		cell.use_scaled(DYNAMIC_W_TO_CELL_UNITS(power_current, delta_time))
+		if(!cell.charge)
+			power_change()
+			update_icon()
 
 #warn below
 
@@ -102,38 +113,7 @@
 	if(on && cell && cell.charge)
 
 		var/transfer_moles = min(1, volume_rate/environment.volume)*environment.total_moles
-		power_draw = scrub_gas(src, scrubbing_gas, environment, air_contents, transfer_moles, power_rating)
-
-/obj/machinery/portable_atmospherics/powered/scrubber/attack_hand(mob/user, list/params)
-	ui_interact(user)
-
-/obj/machinery/portable_atmospherics/powered/scrubber/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "PortableScrubber", name)
-		ui.open()
-
-/obj/machinery/portable_atmospherics/powered/scrubber/ui_data(mob/user)
-	var/list/data = list()
-
-	data["on"] = on ? 1 : 0
-	data["connected"] = connected_port ? 1 : 0
-	data["pressure"] = round(air_contents.return_pressure() > 0 ? air_contents.return_pressure() : 0)
-	data["rate"] = round(volume_rate)
-	data["minrate"] = round(minrate)
-	data["maxrate"] = round(maxrate)
-	data["powerDraw"] = round(last_power_draw_legacy)
-	data["cellCharge"] = cell ? cell.charge : 0
-	data["cellMaxCharge"] = cell ? cell.maxcharge : 1
-
-	if(holding)
-		data["holding"] = list()
-		data["holding"]["name"] = holding.name
-		data["holding"]["pressure"] = round(holding.air_contents.return_pressure() > 0 ? holding.air_contents.return_pressure() : 0)
-	else
-		data["holding"] = null
-
-	return data
+		power_draw = scrub_gas(src, scrubbing_gas, environment, air_contents, transfer_moles, power_maximum)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/ui_act(action, params)
 	if(..())
@@ -166,7 +146,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50		//internal circuitry, friction losses and stuff
 	active_power_usage = 1000	// Blowers running
-	power_rating = 100000	//100 kW ~ 135 HP
+	power_maximum = 100000	//100 kW ~ 135 HP
 
 	var/global/gid = 1
 	var/id = 0
@@ -181,7 +161,7 @@
 	name = "[name] (ID [id])"
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/attack_hand(mob/user, list/params)
-		to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the scrubber control console.</span>")
+	to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the scrubber control console.</span>")
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/update_icon()
 	cut_overlays()

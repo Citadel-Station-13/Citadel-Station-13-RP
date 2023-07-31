@@ -2,8 +2,13 @@
 	name = "atmoalter"
 	use_power = USE_POWER_OFF
 	layer = OBJ_LAYER // These are mobile, best not be under everything.
-	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_OPEN
+	interaction_flags_machine = INTERACT_MACHINE_OPEN | INTERACT_MACHINE_OFFLINE
 
+	/// allow multitool "hijacking" even if this is controlled by something else
+	/// set to non-null for delay.
+	var/default_multitool_hijack = null
+	/// allow access normally
+	var/default_access_interface = FALSE
 	/// tgui interface
 	var/tgui_interface
 	/// ui flags
@@ -11,13 +16,19 @@
 
 	/// on right now
 	var/on = FALSE
-	/// current flow
+	/// current flow, liters
 	var/flow_current = 0
+	#warn hook
+	/// flow maximum
+	var/flow_maximum = 1000
+	/// flow setting
+	var/flow_setting
 
 
 	var/datum/gas_mixture/air_contents = new
 
 	var/obj/machinery/atmospherics/portables_connector/connected_port
+	// todo: tweak this; not all portables can / should necessarily be able to hold tanks.
 	var/obj/item/tank/holding
 
 	var/volume = 0
@@ -29,6 +40,8 @@
 
 /obj/machinery/portable_atmospherics/Initialize(mapload)
 	. = ..()
+	if(isnull(flow_setting))
+		flow_setting = flow_maximum
 	air_contents.volume = volume
 	air_contents.temperature = T20C
 
@@ -57,6 +70,13 @@
 	else
 		update_icon()
 
+/obj/machinery/portable_atmospherics/interact(mob/user)
+	if(!default_access_interface)
+		user.action_feedback(SPAN_WARNING("You can't directly interact with [src]. Use an area atmospherics control computer, if there is one."), src)
+		return FALSE
+	ui_interact(user)
+	return TRUE
+
 /obj/machinery/portable_atmospherics/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	if(!tgui_interface)
 		return ..()
@@ -67,13 +87,42 @@
 
 /obj/machinery/portable_atmospherics/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	.["controlFlags"] = atmos_portable_ui_flags
 	.["useCharge"] = FALSE
+	.["flowMax"] = flow_maximum
 
 /obj/machinery/portable_atmospherics/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	if(atmos_portable_ui_flags & ATMOS_PORTABLE_UI_SEE_FLOW)
+	if(atmos_portable_ui_flags & (ATMOS_PORTABLE_UI_SEE_FLOW | ATMOS_PORTABLE_UI_SET_FLOW))
 		.["flow"] = flow_current
 	.["on"] = on
+	.["tank"] = holding?.tgui_tank_data()
+
+/obj/machinery/portable_atmospherics/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("togglePower")
+			if(!(atmos_portable_ui_flags & ATMOS_PORTABLE_UI_TOGGLE_POWER))
+				return TRUE
+			set_on(!on)
+			return TRUE
+		if("setFlow")
+			var/amt = params["value"]
+			if(!isnum(amt))
+				return TRUE
+			if(!(atmos_portable_ui_flags & ATMOS_PORTABLE_UI_SET_FLOW))
+				return TRUE
+			set_flow(amt)
+			return TRUE
+
+/obj/machinery/portable_atmospherics/proc/set_on(enabled)
+	on = enabled
+	update_icon()
+
+/obj/machinery/portable_atmospherics/proc/set_flow(liters)
+	flow_setting = clamp(liters, 0, flow_maximum)
 
 /obj/machinery/portable_atmospherics/return_air()
 	return air_contents

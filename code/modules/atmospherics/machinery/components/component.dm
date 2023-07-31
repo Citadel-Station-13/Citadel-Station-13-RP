@@ -30,16 +30,20 @@
 	/// are we on?
 	var/on = FALSE
 	/// maximum power limit in watts
-	var/power_rating = 0
+	var/power_maximum = 0
 	/// power setting configured in watts
 	var/power_setting
 	/// current power usage
 	var/power_current = 0
 
+	//! legacy below
+	/// legacy power limit in watts
+	var/power_rating = 7500
+
 /obj/machinery/atmospherics/component/Initialize(mapload, newdir)
 	. = ..()
 	if(isnull(power_setting))
-		power_setting = power_rating
+		power_setting = power_maximum
 	set_on(on)
 
 /obj/machinery/atmospherics/component/proc/set_power(watts)
@@ -64,7 +68,7 @@
 
 /obj/machinery/atmospherics/component/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	.["powerRating"] = power_rating
+	.["powerRating"] = power_maximum
 	.["controlFlags"] = atmos_component_ui_flags
 
 /obj/machinery/atmospherics/component/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
@@ -73,7 +77,7 @@
 		return
 	.["on"] = on
 	.["powerSetting"] = power_setting
-	if(atmos_component_ui_flags & ATMOS_COMPONENT_UI_SEE_POWER)
+	if(atmos_component_ui_flags & (ATMOS_COMPONENT_UI_SEE_POWER | ATMOS_COMPONENT_UI_SET_POWER))
 		.["powerUsage"] = power_current
 
 /obj/machinery/atmospherics/component/ui_act(action, list/params, datum/tgui/ui)
@@ -85,12 +89,12 @@
 	switch(action)
 		if("togglePower")
 			if(!(atmos_component_ui_flags & ATMOS_COMPONENT_UI_TOGGLE_POWER))
-				return FALSE
+				return TRUE
 			set_on(!on)
 			return TRUE
 		if("setPowerDraw")
 			if(!(atmos_component_ui_flags & ATMOS_COMPONENT_UI_SET_POWER))
-				return FALSE
+				return TRUE
 			var/watts = text2num(params["target"])
 			set_power(watts)
 			return TRUE

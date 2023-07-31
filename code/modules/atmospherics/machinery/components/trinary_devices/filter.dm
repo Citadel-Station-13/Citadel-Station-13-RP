@@ -88,7 +88,7 @@
 		if("filter")
 			var/target = params["target"]
 			if(!(isnum(target)? global.gas_data.gas_groups_filterable(target) : global.gas_data.gas_id_filterable(target)))
-				return FALSE
+				return TRUE
 			filtering = target
 			return TRUE
 		if("rate")

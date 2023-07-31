@@ -3,18 +3,22 @@ import { useBackend } from "../../backend";
 import { Section, Stack } from "../../components";
 import { ComponentProps } from "../../components/Component";
 import { Window } from "../../layouts";
+import { AtmosTank, AtmosTankSlot } from "./Atmos";
 
 enum AtmosPortableUIFlags {
   None = (0),
   ViewFlow = (1<<0),
   TogglePower = (1<<1),
+  SetFlow = (1<<2),
 }
 
 interface AtmosPortableControlProps {
   // portable data
   data: AtmosPortableData;
-  // toggle on/off act ; also determines if it's allowed to toggle
+  // toggle on/off act
   toggleAct?: () => void;
+  // set flow act
+  setFlowAct?: (amt: number) => void;
 }
 
 export const AtmosPortableControl = (props: AtmosPortableControlProps, context) => {
@@ -38,8 +42,20 @@ export interface AtmosPortableData {
   maxCharge: number;
   // cell charge
   charge: number;
+  // cell inserted
+  hasCell: BooleanLike;
+  // uses cells at all
+  useCell: BooleanLike;
   // flow rate
   flow: number;
+  // flow max
+  flowMax: number;
+  // power max
+  powerRating: number;
+  // power setting
+  powerSetting: number;
+  // held tank
+  tank: AtmosTank | null;
 }
 
 interface AtmosPortableProps extends ComponentProps{
@@ -48,14 +64,30 @@ interface AtmosPortableProps extends ComponentProps{
 
 export const AtmosPortable = (props: AtmosPortableProps, context) => {
   const { data, act } = useBackend<AtmosPortableData>(context);
+  let extraHeight = 0;
+  if (data.useCell) {
+    extraHeight += 300;
+  }
   return (
-    <Window width={500} height={300 + (props.extraHeight || 0)}>
+    <Window width={500} height={300 + extraHeight + (props.extraHeight || 0)}>
       <Window.Content>
         <Section fill>
           <Stack vertical fill>
             <Stack.Item>
               <AtmosPortableControl
-                data={data} />
+                data={data}
+                toggleAct={() => act('togglePower')}
+                setFlowAct={(amt) => act('setFlow', { value: amt })} />
+            </Stack.Item>
+            {data.useCell && (
+              <Stack.Item>
+                <Section title="Cell">
+                  Test
+                </Section>
+              </Stack.Item>
+            )}
+            <Stack.Item>
+              <AtmosTankSlot tank={data.tank} />
             </Stack.Item>
             {props.children && (
               <Stack.Item grow>

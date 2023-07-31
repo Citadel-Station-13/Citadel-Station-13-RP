@@ -31,6 +31,7 @@ export interface AtmosPortableScubberData {
   atmosContext: GasContext;
   scrubbingIds: AtmosGasIDs;
   scrubbingGroups: AtmosGasGroupFlags;
+  moleRate: number;
 }
 
 export const AtmosPortableScubber = (props, context) => {

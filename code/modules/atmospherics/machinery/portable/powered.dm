@@ -1,7 +1,7 @@
 /obj/machinery/portable_atmospherics/powered
-	/// power rating
-	var/power_rating = 7500
-	/// power setting
+	/// power rating in watts
+	var/power_maximum = 7500
+	/// power setting in watts
 	var/power_setting
 	/// power usage current
 	var/power_current = 0
@@ -18,7 +18,7 @@
 /obj/machinery/portable_atmospherics/powered/Initialize(mapload)
 	. = ..()
 	if(isnull(power_setting))
-		power_setting = power_rating
+		power_setting = power_maximum
 
 /obj/machinery/portable_atmospherics/powered/process(delta_time)
 	..()
@@ -35,10 +35,15 @@
 	. = ..()
 	.["useCharge"] = TRUE
 	.["maxCharge"] = isnull(cell)? cell.maxcharge : 0
+	.["powerRating"] = power_maximum
+	.["useCell"] = use_cell
 
 /obj/machinery/portable_atmospherics/powered/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["charge"] = isnull(cell)? cell.charge : 0
+	if(atmos_portable_ui_flags & (ATMOS_PORTABLE_UI_SEE_POWER | ATMOS_PORTABLE_UI_SET_POWER))
+		.["powerCurrent"] = power_current
+	.["hasCell"] = !isnull(cell)
 
 /obj/machinery/portable_atmospherics/powered/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(use_cell && istype(I, /obj/item/cell))

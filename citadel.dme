@@ -2199,6 +2199,7 @@
 #include "code\modules\atmospherics\machinery\components\omni_devices\mixer.dm"
 #include "code\modules\atmospherics\machinery\components\omni_devices\omni_base.dm"
 #include "code\modules\atmospherics\machinery\components\trinary_devices\filter.dm"
+#include "code\modules\atmospherics\machinery\components\trinary_devices\filter_molar.dm"
 #include "code\modules\atmospherics\machinery\components\trinary_devices\mixer.dm"
 #include "code\modules\atmospherics\machinery\components\trinary_devices\trinary_base.dm"
 #include "code\modules\atmospherics\machinery\components\trinary_devices\tvalve.dm"
