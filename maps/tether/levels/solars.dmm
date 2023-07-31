@@ -1805,7 +1805,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "eo" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 4;
 	name = "High Power Gas filter";
 	power_rating = 15000;
@@ -3831,7 +3831,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "hC" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/m_filter{
 	filtering = "phoron"
 	},
 /turf/simulated/floor,
@@ -4010,7 +4010,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "hT" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/m_filter{
 	filtering = "co2"
 	},
 /turf/simulated/floor,
@@ -4171,7 +4171,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "in" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/m_filter{
 	filtering = "n2o"
 	},
 /turf/simulated/floor,

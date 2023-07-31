@@ -634,7 +634,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bw" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/m_filter{
 	dir = 1;
 	use_power = 0
 	},
@@ -916,7 +916,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cd" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 1;
 	use_power = 0
 	},

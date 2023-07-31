@@ -7902,21 +7902,21 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rP" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 4;
 	filtering = "phoron"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rQ" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 4;
 	filtering = "co2"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rR" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 4;
 	filtering = "n2o"
 	},

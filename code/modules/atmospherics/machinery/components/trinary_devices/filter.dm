@@ -1,4 +1,4 @@
-/obj/machinery/atmospherics/component/trinary/atmos_filter
+/obj/machinery/atmospherics/component/trinary/filter
 	name = "gas filter"
 	icon = 'icons/atmos/filter.dmi'
 	icon_state = "map"
@@ -21,13 +21,13 @@
 
 #warn groups
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/Initialize(mapload)
+/obj/machinery/atmospherics/component/trinary/filter/Initialize(mapload)
 	. = ..()
 	air1.volume = ATMOS_DEFAULT_VOLUME_FILTER
 	air2.volume = ATMOS_DEFAULT_VOLUME_FILTER
 	air3.volume = ATMOS_DEFAULT_VOLUME_FILTER
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/update_icon_state()
+/obj/machinery/atmospherics/component/trinary/filter/update_icon_state()
 	if(mirrored)
 		icon_state = "m"
 	else
@@ -40,7 +40,7 @@
 		icon_state += "off"
 	return ..()
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/process(delta_time)
+/obj/machinery/atmospherics/component/trinary/filter/process(delta_time)
 	..()
 
 	if(!on || inoperable())
@@ -61,7 +61,7 @@
 	if(power_usage)
 		use_power(power_usage)
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/component/trinary/filter/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(!src.allowed(user))
@@ -71,23 +71,25 @@
 
 #warn above
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+/obj/machinery/atmospherics/component/trinary/filter/proc/
+
+/obj/machinery/atmospherics/component/trinary/filter/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AtmosFilter", name)
 		ui.open()
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_data(mob/user)
+/obj/machinery/atmospherics/component/trinary/filter/ui_data(mob/user)
 	. = ..()
 	.["filtering"] = filtering
 	.["maxRate"] = air1.volume
-	.["rate"] = flow_rate
+	.["rate"] = flow_setting
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/atmospherics/component/trinary/filter/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["atmosContext"] = global.gas_data.tgui_gas_context()
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_act(action, params)
+/obj/machinery/atmospherics/component/trinary/filter/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
@@ -99,7 +101,7 @@
 #warn below
 
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_act(action, params)
+/obj/machinery/atmospherics/component/trinary/filter/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -116,29 +118,13 @@
 				. = TRUE
 			if(.)
 				set_flow_rate = clamp(rate, 0, air1.volume)
-		if("filter")
-			. = TRUE
-			filter_type = text2num(params["filterset"])
-			filtered_out.len = 0 //no need to create new lists unnecessarily
-			switch(filter_type)
-				if(0) //removing hydrocarbons
-					filtered_out += GAS_ID_PHORON
-					filtered_out += GAS_ID_VOLATILE_FUEL
-				if(1) //removing O2
-					filtered_out += GAS_ID_OXYGEN
-				if(2) //removing N2
-					filtered_out += GAS_ID_NITROGEN
-				if(3) //removing CO2
-					filtered_out += GAS_ID_CARBON_DIOXIDE
-				if(4)//removing N2O
-					filtered_out += GAS_ID_NITROUS_OXIDE
 
 	update_icon()
 
 //
 // Mirrored Orientation - Flips the output dir to opposite side from normal.
 //
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter
+/obj/machinery/atmospherics/component/trinary/filter/m_filter
 	icon_state = "mmap"
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH|EAST

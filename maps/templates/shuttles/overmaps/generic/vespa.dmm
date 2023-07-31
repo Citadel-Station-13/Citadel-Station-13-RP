@@ -8218,7 +8218,7 @@
 /turf/simulated/floor,
 /area/ship/expe/sm)
 "rQ" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/m_filter{
 	dir = 4
 	},
 /obj/structure/cable{

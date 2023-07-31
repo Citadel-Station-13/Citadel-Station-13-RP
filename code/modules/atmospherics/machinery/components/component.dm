@@ -47,6 +47,7 @@
 		update_use_power(USE_POWER_IDLE)
 	else
 		update_use_power(USE_POWER_OFF)
+	update_icon()
 
 /obj/machinery/atmospherics/component/process(delta_time)
 	power_current = 0
