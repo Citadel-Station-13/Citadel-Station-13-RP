@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.set_module_sprites(sprites)
 
 	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
-	INVOKE_ASYNC(R, /mob/living/silicon/robot/proc/choose_icon, R.module_sprites.len + 1, R.module_sprites)
+	INVOKE_ASYNC(R, TYPE_PROC_REF(/mob/living/silicon/robot, choose_icon), R.module_sprites.len + 1, R.module_sprites)
 
 	// Setup synths, modules, and modules with custom init code.
 	synths_by_kind = get_synths(R)

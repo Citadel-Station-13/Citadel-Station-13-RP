@@ -750,11 +750,13 @@
 // todo: refactor
 /atom/proc/visible_message(message, self_message, blind_message, range = world.view)
 	var/list/see
+	//! LEGACY
 	if(isbelly(loc))
 		var/obj/belly/B = loc
 		see = B.effective_emote_hearers()
 	else
 		see = get_hearers_in_view(range, src)
+	//! end
 	for(var/atom/movable/AM as anything in see)
 		if(ismob(AM))
 			var/mob/M = AM
@@ -797,7 +799,7 @@
 		M.show_message(msg, 2, deaf_message, 1)
 		heard_to_floating_message += M
 	if(!no_runechat)
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
 
 /atom/movable/proc/dropInto(var/atom/destination)
 	while(istype(destination))
@@ -948,7 +950,7 @@
 
 /atom/proc/update_filters()
 	filters = null
-	filter_data = tim_sort(filter_data, /proc/cmp_filter_data_priority, TRUE)
+	filter_data = tim_sort(filter_data, GLOBAL_PROC_REF(cmp_filter_data_priority), TRUE)
 	for(var/f in filter_data)
 		var/list/data = filter_data[f]
 		var/list/arguments = data.Copy()

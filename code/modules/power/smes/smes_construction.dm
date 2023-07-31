@@ -60,7 +60,7 @@
 
 /obj/machinery/power/smes/buildable/Destroy()
 	QDEL_NULL(wires)
-	for(var/datum/nano_module/rcon/R in GLOB.rcon_nano_modules)
+	for(var/datum/tgui_module_old/rcon/R in GLOB.tgui_old_rcon_modules)
 		R.FindDevices()
 	return ..()
 

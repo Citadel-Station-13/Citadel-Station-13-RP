@@ -12,8 +12,10 @@
 	selection_color = "#515151"
 	minimal_player_age = 3
 	pto_type = PTO_EXPLORATION
-	additional_access = list(ACCESS_GENERAL_PILOT, ACCESS_ENGINEERING_AIRLOCK)
-	minimal_access = list(ACCESS_GENERAL_PILOT, ACCESS_ENGINEERING_AIRLOCK)
+	minimal_access = list(
+		ACCESS_GENERAL_PILOT,
+		ACCESS_ENGINEERING_AIRLOCK,
+	)
 	outfit_type = /datum/outfit/job/station/pilot
 	desc = "A Pilot flies the various shuttles in the Virgo-Erigone System."
 	alt_titles = list(

@@ -1071,6 +1071,12 @@
 			to_chat(src, "Module isn't activated")
 		installed_modules()
 		return 1
+		
+	if(href_list["character_profile"])
+		if(!profile)
+			profile = new(src)
+		profile.ui_interact(usr)
+
 	return
 
 /mob/living/silicon/robot/proc/radio_menu()

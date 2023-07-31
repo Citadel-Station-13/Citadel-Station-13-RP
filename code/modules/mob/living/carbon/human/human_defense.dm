@@ -66,10 +66,10 @@ meteor_act
 				msg_admin_attack("[key_name(src)] was disarmed by a stun effect")
 				drop_active_held_item()
 				if (affected.robotic >= ORGAN_ROBOT)
-					INVOKE_ASYNC(src, /mob/proc/custom_emote, 1, "drops what they were holding, their [affected.name] malfunctioning!")
+					INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), 1, "drops what they were holding, their [affected.name] malfunctioning!")
 				else
 					var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
-					INVOKE_ASYNC(src, /mob/proc/custom_emote, 1, "[affected.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [affected.name]!")
+					INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), 1, "[affected.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [affected.name]!")
 
 	..(stun_amount, agony_amount, def_zone)
 

@@ -14,7 +14,7 @@
  *
  * So an example use might be:
  *
- * src.path_list = AStar(src.loc, target.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance)
+ * src.path_list = AStar(src.loc, target.loc, TYPE_PROC_REF(/turf, AdjacentTurfs), TYPE_PROC_REF(/turf, Distance))
  *
  * Note: The path is returned starting at the END node, so i wrote reverselist to reverse it for ease of use.
  *

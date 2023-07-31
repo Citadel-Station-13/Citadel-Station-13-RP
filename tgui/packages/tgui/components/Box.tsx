@@ -57,6 +57,7 @@ export type BoxProps = ComponentProps & {
   textColor?: string | BooleanLike;
   backgroundColor?: string | BooleanLike;
   fillPositionedParent?: BooleanLike;
+  style?: CSSProperties;
 }
 
 /**
