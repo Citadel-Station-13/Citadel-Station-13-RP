@@ -63,10 +63,6 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	opacity = FALSE
 	icon_state = "hull_transparent"
 
-/turf/simulated/wall/fancy_shuttle/window/attack_generic(mob/user, damage, attack_message)
-	take_damage(damage)
-	return damage
-
 /turf/simulated/wall/fancy_shuttle/nondense
 	density = FALSE
 	blocks_air = FALSE
@@ -139,16 +135,9 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 
 	apply_underlay()
 
-	if(damage != 0)
-		var/integrity = material.integrity
-		if(material_reinf)
-			integrity += material_reinf.integrity
-
-		var/overlay = round(damage / integrity * damage_overlays.len) + 1
-		if(overlay > damage_overlays.len)
-			overlay = damage_overlays.len
-
-		add_overlay(damage_overlays[overlay])
+	var/percent = percent_integrity()
+	if(percent < 1)
+		add_overlay(damage_overlays[round((1 - percent) * length(damage_overlays)) || 1])
 
 /obj/effect/floor_decal/fancy_shuttle
 	icon = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'

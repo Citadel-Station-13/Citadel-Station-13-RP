@@ -7,6 +7,7 @@
 	icon = 'icons/obj/doors/material_doors.dmi'
 	icon_state = "metal"
 
+	#warn parts system
 	var/datum/material/material
 	var/state = 0 //closed, 1 == open
 	var/isSwitchingStates = 0
@@ -158,18 +159,6 @@
 	hardness -= damage/10
 	CheckHardness()
 
-/obj/structure/simple_door/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
-	if(material == get_material_by_name("resin"))
-		playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-	else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
-		playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
-	else
-		playsound(src, 'sound/weapons/smash.ogg', 50, 1)
-	user.do_attack_animation(src)
-	hardness -= damage/10
-	CheckHardness()
-
 /obj/structure/simple_door/proc/CheckHardness()
 	if(hardness <= 0)
 		Dismantle(1)
@@ -194,46 +183,41 @@
 			CheckHardness()
 	return
 
-/obj/structure/simple_door/process(delta_time)
-	if(!material.radioactivity)
-		return
-	radiation_pulse(src, round(material.radioactivity / RAD_INTENSITY_DIVISOR_SIMPLE_DOOR))
+/obj/structure/simple_door/iron
+	material_parts = /datum/material/iron
 
-/obj/structure/simple_door/iron/Initialize(mapload, material_name)
-	return ..(mapload, "iron")
+/obj/structure/simple_door/silver
+	material_parts = /datum/material/silver
 
-/obj/structure/simple_door/silver/Initialize(mapload, material_name)
-	return ..(mapload, "silver")
+/obj/structure/simple_door/gold
+	material_parts = /datum/material/gold
 
-/obj/structure/simple_door/gold/Initialize(mapload, material_name)
-	return ..(mapload, "gold")
+/obj/structure/simple_door/uranium
+	material_parts = /datum/material/uranium
 
-/obj/structure/simple_door/uranium/Initialize(mapload, material_name)
-	return ..(mapload, "uranium")
+/obj/structure/simple_door/sandstone
+	material_parts = /datum/material/sandstone
 
-/obj/structure/simple_door/sandstone/Initialize(mapload, material_name)
-	return ..(mapload, "sandstone")
+/obj/structure/simple_door/phoron
+	material_parts = /datum/material/phoron
 
-/obj/structure/simple_door/phoron/Initialize(mapload, material_name)
-	return ..(mapload, "phoron")
+/obj/structure/simple_door/diamond
+	material_parts = /datum/material/diamond
 
-/obj/structure/simple_door/diamond/Initialize(mapload, material_name)
-	return ..(mapload, "diamond")
+/obj/structure/simple_door/wood
+	material_parts = /datum/material/wood
 
-/obj/structure/simple_door/wood/Initialize(mapload, material_name)
-	return ..(mapload, MAT_WOOD)
+/obj/structure/simple_door/sifwood
+	material_parts = /datum/material/wood/sif
 
-/obj/structure/simple_door/sifwood/Initialize(mapload, material_name)
-	return ..(mapload, MAT_SIFWOOD)
+/obj/structure/simple_door/hardwood
+	material_parts = /datum/material/wood/hardwood
 
-/obj/structure/simple_door/hardwood/Initialize(mapload, material_name)
-	return ..(mapload, MAT_HARDWOOD)
+/obj/structure/simple_door/resin
+	material_parts = /datum/material/resin
 
-/obj/structure/simple_door/resin/Initialize(mapload, material_name)
-	return ..(mapload, "resin")
-
-/obj/structure/simple_door/cult/Initialize(mapload, material_name)
-	return ..(mapload, "cult")
+/obj/structure/simple_door/cult
+	material_parts = /datum/material/cult
 
 /obj/structure/simple_door/cult/TryToSwitchState(atom/user)
 	if(isliving(user))

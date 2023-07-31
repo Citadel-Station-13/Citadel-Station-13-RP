@@ -93,6 +93,7 @@
 //? Hitsound API
 
 #warn parse all of below for hit_sound_brute and hit_sound_burn support
+#warn read sound_melee_brute/burn on material on obj level for primary material!
 
 /**
  * gets hitsound override. return a value to be fed into playsound, or null for default.

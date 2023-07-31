@@ -4,7 +4,6 @@
 	icon_colour = "#FFFF00"
 	stack_type = /obj/item/stack/material/supermatter
 	shard_type = SHARD_SHARD
-	radioactivity = RAD_INTENSITY_MAT_SUPERMATTER
 	luminescence = 3
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
 	icon_base = 'icons/turf/walls/stone_wall.dmi'
@@ -29,5 +28,8 @@
 
 	// you didn't think you were getting the stats for free now did you
 	material_traits = list(
-		/datum/material_trait/supermatter
+		/datum/material_trait/radioactive{
+			strength = RAD_INTENSITY_MAT_SUPERMATTER,
+		},
+		/datum/material_trait/supermatter,
 	)

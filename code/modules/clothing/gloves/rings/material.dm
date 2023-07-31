@@ -3,54 +3,54 @@
 /obj/item/clothing/gloves/ring/material
 	icon = 'icons/obj/clothing/rings.dmi'
 	icon_state = "material"
+	material_parts = /datum/material/steel
+	material_costs = SHEET_MATERIAL_AMOUNT * 1
+	material_primary = MATERIAL_PART_DEFAULT
 
-/obj/item/clothing/gloves/ring/material/Initialize(mapload, new_material)
+/obj/item/clothing/gloves/ring/material/Initialize(mapload, material)
+	if(!isnull(material))
+		set_primary_material(SSmaterials.resolve_material(material))
+	return ..()
+
+/obj/item/clothing/gloves/ring/material/update_material_single(datum/material/material)
 	. = ..()
-	if(!new_material)
-		new_material = MAT_STEEL
-	material = get_material_by_name(new_material)
-	if(!istype(material))
-		qdel(src)
-		return
 	name = "[material.display_name] ring"
 	desc = "A ring made from [material.display_name]."
 	color = material.icon_colour
 
-/obj/item/clothing/gloves/ring/material/get_material()
-	return material
+/obj/item/clothing/gloves/ring/material/wood
+	material_parts = /datum/material/wood
 
-/obj/item/clothing/gloves/ring/material/wood/Initialize(mapload, material_key)
-	return ..(mapload, "wood")
+/obj/item/clothing/gloves/ring/material/plastic
+	material_parts = /datum/material/plastic
 
-/obj/item/clothing/gloves/ring/material/plastic/Initialize(mapload, material_key)
-	return ..(mapload, "plastic")
+/obj/item/clothing/gloves/ring/material/iron
+	material_parts = /datum/material/iron
 
-/obj/item/clothing/gloves/ring/material/iron/Initialize(mapload, material_key)
-	return ..(mapload, "iron")
+/obj/item/clothing/gloves/ring/material/steel
+	material_parts = /datum/material/steel
 
-/obj/item/clothing/gloves/ring/material/steel/Initialize(mapload, material_key)
-	return ..(mapload, "steel")
+/obj/item/clothing/gloves/ring/material/silver
+	material_parts = /datum/material/silver
 
-/obj/item/clothing/gloves/ring/material/silver/Initialize(mapload, material_key)
-	return ..(mapload, "silver")
+/obj/item/clothing/gloves/ring/material/gold
+	material_parts = /datum/material/gold
 
-/obj/item/clothing/gloves/ring/material/gold/Initialize(mapload, material_key)
-	return ..(mapload, "gold")
+/obj/item/clothing/gloves/ring/material/platinum
+	material_parts = /datum/material/platinum
 
-/obj/item/clothing/gloves/ring/material/platinum/Initialize(mapload, material_key)
-	return ..(mapload, "platinum")
+/obj/item/clothing/gloves/ring/material/phoron
+	material_parts = /datum/material/phoron
 
-/obj/item/clothing/gloves/ring/material/phoron/Initialize(mapload, material_key)
-	return ..(mapload, "phoron")
+/obj/item/clothing/gloves/ring/material/glass
+	material_parts = /datum/material/glass
 
-/obj/item/clothing/gloves/ring/material/glass/Initialize(mapload, material_key)
-	return ..(mapload, "glass")
+/obj/item/clothing/gloves/ring/material/uranium
+	material_parts = /datum/material/uranium
 
-/obj/item/clothing/gloves/ring/material/uranium/Initialize(mapload, material_key)
-	return ..(mapload, "uranium")
+/obj/item/clothing/gloves/ring/material/osmium
+	material_parts = /datum/material/osmium
 
-/obj/item/clothing/gloves/ring/material/osmium/Initialize(mapload, material_key)
-	return ..(mapload, "osmium")
+/obj/item/clothing/gloves/ring/material/mhydrogen
+	material_parts = /datum/material/hydrogen/mhydrogen
 
-/obj/item/clothing/gloves/ring/material/mhydrogen/Initialize(mapload, material_key)
-	return ..(mapload, "mhydrogen")

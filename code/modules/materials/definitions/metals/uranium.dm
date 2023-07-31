@@ -2,7 +2,6 @@
 	id = "uranium"
 	name = "uranium"
 	stack_type = /obj/item/stack/material/uranium
-	radioactivity = RAD_INTENSITY_MAT_URANIUM
 	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_stone.dmi'
 	icon_reinf_directionals = TRUE
@@ -22,3 +21,9 @@
 	refraction = MATERIAL_RESISTANCE_HIGH
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
+
+	material_traits = list(
+		/datum/material_trait/radioactive{
+			strength = RAD_INTENSITY_MAT_URANIUM,
+		},
+	)
