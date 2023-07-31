@@ -16,7 +16,6 @@
     "strict": false,
     "strictNullChecks": true,
     "target": "ES3",
-    "ignoreDeprecations": "5.0",
   },
   "include": [
     "./*.d.ts",

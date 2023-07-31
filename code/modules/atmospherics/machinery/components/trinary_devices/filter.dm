@@ -1,95 +1,65 @@
 /obj/machinery/atmospherics/component/trinary/atmos_filter
+	name = "gas filter"
 	icon = 'icons/atmos/filter.dmi'
 	icon_state = "map"
+	density = FALSE
 	construction_type = /obj/item/pipe/trinary/flippable
 	pipe_state = "filter"
-	density = 0
 	level = 1
 
-	name = "Gas filter"
-
 	use_power = USE_POWER_IDLE
-	idle_power_usage = 150		//internal circuitry, friction losses and stuff
-	power_rating = 7500	//This also doubles as a measure of how powerful the filter is, in Watts. 7500 W ~ 10 HP
-
-	var/temp = null // -- TLE
-
-	var/set_flow_rate = ATMOS_DEFAULT_VOLUME_FILTER
+	idle_power_usage = 150
+	power_rating = 7500
 
 	/// target gas id, or groups
 	var/filtering
-
-	var/frequency = 0
-	var/datum/radio_frequency/radio_connection
+	// todo: put flow rate at component level
+	/// flow rate in L
+	var/flow_setting = ATMOS_DEFAULT_VOLUME_FILTER
+	/// current flow rate in L
+	var/flow_current = 0
 
 #warn groups
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/proc/set_frequency(new_frequency)
-	radio_controller.remove_object(src, frequency)
-	frequency = new_frequency
-	if(frequency)
-		radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
-
 /obj/machinery/atmospherics/component/trinary/atmos_filter/Initialize(mapload)
 	. = ..()
-
 	air1.volume = ATMOS_DEFAULT_VOLUME_FILTER
 	air2.volume = ATMOS_DEFAULT_VOLUME_FILTER
 	air3.volume = ATMOS_DEFAULT_VOLUME_FILTER
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/Destroy()
-	unregister_radio(src, frequency)
-	. = ..()
-
-/obj/machinery/atmospherics/component/trinary/atmos_filter/update_icon()
+/obj/machinery/atmospherics/component/trinary/atmos_filter/update_icon_state()
 	if(mirrored)
 		icon_state = "m"
 	else
 		icon_state = ""
-
 	if(!powered())
 		icon_state += "off"
 	else if(node2 && node3 && node1)
-		icon_state += use_power ? "on" : "off"
+		icon_state += on ? "on" : "off"
 	else
 		icon_state += "off"
-		update_use_power(USE_POWER_OFF)
+	return ..()
 
 /obj/machinery/atmospherics/component/trinary/atmos_filter/process(delta_time)
 	..()
 
-	last_power_draw = 0
-	last_flow_rate = 0
-
-	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
+	if(!on || inoperable())
 		return
 
-	//Figure out the amount of moles to transfer
-	var/transfer_moles = (set_flow_rate/air1.volume)*air1.total_moles
+	var/old_mols = air1.total_moles
+	var/transfer_mols = (flow_setting / air1.volume) * old_mols
 
-	var/power_draw = -1
-	if (transfer_moles > MINIMUM_MOLES_TO_FILTER)
-		power_draw = filter_gas(src, filtered_out, air1, air2, air3, transfer_moles, power_rating)
+	if(transfer_mols > MINIMUM_MOLES_TO_FILTER)
+		power_usage = xgm_filter_gas(air1, air3, air2, filtering, transfer_mols, power_setting)
+		flow_current = (1 - air1.total_moles / old_mols) * air1.volume
 
-		if(network2)
-			network2.update = 1
+		// todo: better API for this
+		network1?.update = TRUE
+		network2?.update = TRUE
+		network3?.update = TRUE
 
-		if(network3)
-			network3.update = 1
-
-		if(network1)
-			network1.update = 1
-
-	if (power_draw >= 0)
-		last_power_draw = power_draw
-		use_power(power_draw)
-
-	return 1
-
-/obj/machinery/atmospherics/component/trinary/atmos_filter/Initialize(mapload)
-	. = ..()
-	if(frequency)
-		set_frequency(frequency)
+	if(power_usage)
+		use_power(power_usage)
 
 /obj/machinery/atmospherics/component/trinary/atmos_filter/attack_hand(mob/user, list/params)
 	if(..())
@@ -110,6 +80,8 @@
 /obj/machinery/atmospherics/component/trinary/atmos_filter/ui_data(mob/user)
 	. = ..()
 	.["filtering"] = filtering
+	.["maxRate"] = air1.volume
+	.["rate"] = flow_rate
 
 /obj/machinery/atmospherics/component/trinary/atmos_filter/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -121,27 +93,11 @@
 		return
 	switch(action)
 		if("filter")
+			var/target =
 			#warn impl
 
 #warn below
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_data(mob/user)
-	var/list/data = list()
-
-	data["on"] = use_power
-	data["rate"] = set_flow_rate
-	data["max_rate"] = air1.volume
-	data["last_flow_rate"] = round(last_flow_rate, 0.1)
-
-	data["filter_types"] = list()
-	data["filter_types"] += list(list("name" = "Nothing",        "f_type" = -1, "selected" = filter_type == -1))
-	data["filter_types"] += list(list("name" = "Phoron",         "f_type" =  0, "selected" = filter_type ==  0))
-	data["filter_types"] += list(list("name" = "Oxygen",         "f_type" =  1, "selected" = filter_type ==  1))
-	data["filter_types"] += list(list("name" = "Nitrogen",       "f_type" =  2, "selected" = filter_type ==  2))
-	data["filter_types"] += list(list("name" = "Carbon Dioxide", "f_type" =  3, "selected" = filter_type ==  3))
-	data["filter_types"] += list(list("name" = "Nitrous Oxide",  "f_type" =  4, "selected" = filter_type ==  4))
-
-	return data
 
 /obj/machinery/atmospherics/component/trinary/atmos_filter/ui_act(action, params)
 	if(..())

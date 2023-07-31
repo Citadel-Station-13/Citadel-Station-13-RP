@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 import { useBackend } from "../../backend";
 import { Section, SectionProps } from "../../components/Section";
 
@@ -38,8 +41,8 @@ export const AtmosVentControl = (props: AtmosVentControlProps) => {
     <Section {...props}>
       Unimplemented
     </Section>
-  )
-}
+  );
+};
 
 interface AtmosVentData {
   // vent state
@@ -47,6 +50,6 @@ interface AtmosVentData {
 }
 
 export const AtmosVent = (props, context) => {
-  let {data, act} = useBackend<AtmosVentData>(context);
+  let { data, act } = useBackend<AtmosVentData>(context);
 
-}
+};

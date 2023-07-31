@@ -85,12 +85,12 @@
 				power_draw = pump_gas(src, environment, air_contents, transfer_moles, power_rating)
 
 	if (power_draw < 0)
-		last_flow_rate = 0
-		last_power_draw = 0
+		last_flow_rate_legacy = 0
+		last_power_draw_legacy = 0
 	else
 		power_draw = max(power_draw, power_losses)
 		cell.use_scaled(DYNAMIC_W_TO_CELL_UNITS(power_draw, 1))
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 
 		update_connected_network()
 
@@ -136,7 +136,7 @@
 	data["max_pressure"] = round(pressuremax)
 
 
-	data["powerDraw"] = round(last_power_draw)
+	data["powerDraw"] = round(last_power_draw_legacy)
 	data["cellCharge"] = cell ? cell.charge : 0
 	data["cellMaxCharge"] = cell ? cell.maxcharge : 1
 
@@ -228,8 +228,8 @@
 /obj/machinery/portable_atmospherics/powered/pump/huge/process(delta_time)
 	if(!anchored || (machine_stat & (NOPOWER|BROKEN)))
 		on = 0
-		last_flow_rate = 0
-		last_power_draw = 0
+		last_flow_rate_legacy = 0
+		last_power_draw_legacy = 0
 		update_icon()
 	var/new_use_power = 1 + on
 	if(new_use_power != use_power)
@@ -262,8 +262,8 @@
 			power_draw = pump_gas(src, environment, air_contents, transfer_moles, power_rating)
 
 	if (power_draw < 0)
-		last_flow_rate = 0
-		last_power_draw = 0
+		last_flow_rate_legacy = 0
+		last_power_draw_legacy = 0
 	else
 		use_power(power_draw)
 		update_connected_network()

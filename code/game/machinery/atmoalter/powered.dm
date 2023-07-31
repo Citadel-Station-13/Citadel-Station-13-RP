@@ -1,7 +1,7 @@
 /obj/machinery/portable_atmospherics/powered
 	var/power_rating
 	var/power_losses
-	var/last_power_draw = 0
+	var/last_power_draw_legacy = 0
 	var/obj/item/cell/cell
 	var/use_cell = TRUE
 	var/removeable_cell = TRUE

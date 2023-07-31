@@ -172,7 +172,7 @@
 
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 
 	if(network)
@@ -298,7 +298,7 @@
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/examine(mob/user, dist)
 	. = ..()
-	. += "A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W"
+	. += "A small gauge in the corner reads [round(last_flow_rate_legacy, 0.1)] L/s; [round(last_power_draw_legacy)] W"
 	if(welded)
 		. += "It seems welded shut."
 

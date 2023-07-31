@@ -44,8 +44,8 @@
 			"name" = scrubber.name,
 			"on" = scrubber.on,
 			"pressure" = scrubber.air_contents.return_pressure(),
-			"flow_rate" = scrubber.last_flow_rate,
-			"load" = scrubber.last_power_draw,
+			"flow_rate" = scrubber.last_flow_rate_legacy,
+			"load" = scrubber.last_power_draw_legacy,
 			"area" = get_area(scrubber),
 		)))
 

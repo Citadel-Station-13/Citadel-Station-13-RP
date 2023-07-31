@@ -13,3 +13,5 @@
 #define ATMOS_COMPONENT_UI_TOGGLE_POWER (1<<0)
 /// allow setting power
 #define ATMOS_COMPONENT_UI_SET_POWER (1<<1)
+/// render power usage
+#define ATMOS_COMPONENT_UI_SEE_POWER (1<<2)

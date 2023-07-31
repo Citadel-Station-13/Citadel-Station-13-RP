@@ -157,7 +157,7 @@
 
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 		if(network)
 			network.update = 1
@@ -200,8 +200,8 @@
 		"external" = external_pressure_bound,
 		"timestamp" = world.time,
 		"sigtype" = "status",
-		"power_draw" = last_power_draw,
-		"flow_rate" = last_flow_rate,
+		"power_draw" = last_power_draw_legacy,
+		"flow_rate" = last_flow_rate_legacy,
 	)
 
 	if(!initial_loc.air_vent_names[id_tag])
@@ -343,7 +343,7 @@
 
 /obj/machinery/atmospherics/component/unary/vent_pump/examine(mob/user, dist)
 	. = ..()
-	. += "A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W"
+	. += "A small gauge in the corner reads [round(last_flow_rate_legacy, 0.1)] L/s; [round(last_power_draw_legacy)] W"
 	if(welded)
 		. += "It seems welded shut."
 

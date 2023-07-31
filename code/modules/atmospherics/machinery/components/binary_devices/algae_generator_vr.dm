@@ -63,12 +63,12 @@
 		ui_error = null
 		update_icon()
 		if(use_power == USE_POWER_IDLE)
-			last_power_draw = idle_power_usage
+			last_power_draw_legacy = idle_power_usage
 		else
-			last_power_draw = 0
+			last_power_draw_legacy = 0
 		return 0
 
-	last_power_draw = active_power_usage
+	last_power_draw_legacy = active_power_usage
 
 	// STEP 1 - Check material resources
 	if(stored_material[MATERIAL_ALGAE] < algae_per_mole)
@@ -89,7 +89,7 @@
 		network1.update = 1
 	if (power_draw > 0)
 		use_power(power_draw)
-		last_power_draw += power_draw
+		last_power_draw_legacy += power_draw
 
 	// STEP 3 - Convert CO2 to O2  (Note: We know our internal group multipier is 1, so just be cool)
 	var/co2_moles = internal.gas[input_gas]
@@ -101,7 +101,7 @@
 	// STEP 4 - Consume the resources
 	var/converted_moles = min(co2_moles, moles_per_tick)
 	use_power(converted_moles * power_per_mole)
-	last_power_draw += converted_moles * power_per_mole
+	last_power_draw_legacy += converted_moles * power_per_mole
 	stored_material[MATERIAL_ALGAE] -= converted_moles * algae_per_mole
 	stored_material[MATERIAL_CARBON] += converted_moles * carbon_per_mole
 
@@ -187,8 +187,8 @@
 				"max" = storage_capacity[M],
 				"percent" = (stored_material[M] / storage_capacity[M] * 100))
 	data["materials"] = materials_ui
-	data["last_flow_rate"] = last_flow_rate
-	data["last_power_draw"] = last_power_draw
+	data["last_flow_rate_legacy"] = last_flow_rate_legacy
+	data["last_power_draw_legacy"] = last_power_draw_legacy
 	data["inputDir"] = dir2text(global.reverse_dir[dir])
 	data["outputDir"] = dir2text(dir)
 	data["usePower"] = use_power

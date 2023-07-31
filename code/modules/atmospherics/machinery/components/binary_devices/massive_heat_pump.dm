@@ -93,7 +93,7 @@
 	air2.adjust_thermal_energy(-air1.adjust_thermal_energy(-energy_transfered*efficiency))//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 
 		power_machine.draw_power(power_draw * 0.001)
 		if(network1)
@@ -145,7 +145,7 @@
 	if(inoperable() || !anchored || !power_machine.powernet)
 		icon_state = "pump"
 	else if(use_power)
-		switch(last_power_draw)
+		switch(last_power_draw_legacy)
 			if(1 to (1 MEGAWATTS))
 				icon_state = "heat_1"
 			if((1 MEGAWATTS) to (10 MEGAWATTS))
@@ -176,7 +176,7 @@
 		"power_level" = power_level,
 		"current_temp" = air2.temperature,
 		"sink_temp" = air1.temperature,
-		"last_power_draw" = round(last_power_draw),
+		"last_power_draw_legacy" = round(last_power_draw_legacy),
 		"max_power_draw" = MAX_POWER_FOR_MASSIVE,
 		"efficiency" = efficiency,
 	)

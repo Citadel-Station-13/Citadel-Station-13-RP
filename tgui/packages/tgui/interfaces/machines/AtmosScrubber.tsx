@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 import { useBackend } from "../../backend";
 import { SectionProps } from "../../components/Section";
 import { GasContext } from "../common/Atmos";

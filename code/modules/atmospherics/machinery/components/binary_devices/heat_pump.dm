@@ -149,7 +149,7 @@
 	var/power_draw = abs(energy_transfered/performance_factor)
 	air2.adjust_thermal_energy(-air1.adjust_thermal_energy(-energy_transfered*efficiency))//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 		if(network1)
 			network1.update = 1

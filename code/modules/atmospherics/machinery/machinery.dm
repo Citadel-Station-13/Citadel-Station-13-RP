@@ -46,6 +46,9 @@ Pipelines + Other Objects -> Pipe network
 	var/obj/machinery/atmospherics/node1
 	var/obj/machinery/atmospherics/node2
 
+	var/last_flow_rate_legacy = 0
+	var/last_power_draw_legacy = 0
+
 /obj/machinery/atmospherics/Initialize(mapload, newdir)
 	. = ..()
 	if(!icon_manager)
@@ -129,8 +132,8 @@ Pipelines + Other Objects -> Pipe network
 	return node.pipe_color
 
 /obj/machinery/atmospherics/process(delta_time)
-	last_flow_rate = 0
-	last_power_draw = 0
+	last_flow_rate_legacy = 0
+	last_power_draw_legacy = 0
 
 	build_network()
 

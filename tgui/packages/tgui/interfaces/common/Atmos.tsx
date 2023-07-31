@@ -3,11 +3,23 @@
  * @license MIT
 */
 
+import { Section } from "../../components";
+import { SectionProps } from "../../components/Section";
+
 
 //* Context
 
 export type AtmosGasID = string;
-export type AtmosGasGroups = AtmosGroupFlags;
+export type AtmosGasIDs = AtmosGasID[];
+
+export enum AtmosGasGroupFlags {
+  None = (0),
+  Core = (1<<0),
+  Other = (1<<1),
+  Unknown = (1<<2),
+  Reagents = (1<<3),
+}
+export type AtmosGasGroups = AtmosGasGroupFlags;
 
 export enum AtmosGasFlags {
   None = (0),
@@ -19,14 +31,6 @@ export enum AtmosGasFlags {
   Core = (1<<5),
   Filterable = (1<<6),
   Dangerous = (1<<7),
-}
-
-export enum AtmosGroupFlags {
-  None = (0),
-  Core = (1<<0),
-  Other = (1<<1),
-  Unknown = (1<<2),
-  Reagents = (1<<3),
 }
 
 export const AtmosGroupFlagNames = [
@@ -63,6 +67,23 @@ export interface AtmosGas {
 export interface FullAtmosGas extends AtmosGas {
 
 }
+
+//* Filtering
+
+interface AtmosFilterListProps extends SectionProps {
+  selectedGroups: AtmosGasGroups;
+  selectedIds: AtmosGasIDs;
+  selectGroup: (group: AtmosGasGroupFlags, filter: boolean) => void;
+  selectId: (id: AtmosGasID, filter: boolean) => void;
+}
+
+export const AtmosFilterList = (props: AtmosFilterListProps) => {
+  return (
+    <Section {...props}>
+      Test
+    </Section>
+  );
+};
 
 //* Tanks
 
