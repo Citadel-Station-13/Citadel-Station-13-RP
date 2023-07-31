@@ -22,6 +22,7 @@
 
 	hit_sound_brute = 'sound/weapons/smash.ogg'
 
+	var/mineral
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 
@@ -161,6 +162,8 @@
 	return src.attack_hand(user)
 
 /obj/machinery/door/attack_hand(mob/user, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	return src.attackby(user, user)
 
 /obj/machinery/door/attack_tk(mob/user as mob)
@@ -176,7 +179,7 @@
 	if(istype(I))
 		if(attackby_vr(I, user))
 			return
-		if(istype(I, /obj/item/stack/material) && I.get_material_name() == src.get_material_name())
+		if(mineral && I.is_material_stack_of(mineral))
 			if(machine_stat & BROKEN)
 				to_chat(user, "<span class='notice'>It looks like \the [src] is pretty busted. It's going to need more than just patching up now.</span>")
 				return
@@ -195,7 +198,7 @@
 			var/amount_given = amount_needed - repairing
 			var/mats_given = stack.get_amount()
 			if(repairing && amount_given <= 0)
-				to_chat(user, "<span class='warning'>You must weld or remove \the [get_material_name()] from \the [src] before you can add anything else.</span>")
+				to_chat(user, "<span class='warning'>You must weld or remove \the [mineral? mineral : "plating] from \the [src] before you can add anything else.</span>")
 			else
 				if(mats_given >= amount_given)
 					if(stack.use(amount_given))
@@ -216,7 +219,7 @@
 
 			var/obj/item/weldingtool/welder = I
 			if(welder.remove_fuel(0,user))
-				to_chat(user, "<span class='notice'>You start to fix dents and weld \the [get_material_name()] into place.</span>")
+				to_chat(user, "<span class='notice'>You start to fix dents and weld \the [mineral? mineral : "plating"] into place.</span>")
 				playsound(src, welder.tool_sound, 50, 1)
 				if(do_after(user, (5 * repairing) * welder.tool_speed) && welder && welder.isOn())
 					to_chat(user, "<span class='notice'>You finish repairing the damage to \the [src].</span>")
@@ -226,7 +229,7 @@
 			return
 
 		if(repairing && I.is_crowbar())
-			var/datum/material/M = get_material()
+			var/datum/material/M = SSmaterials.resolve_material(mineral)
 			var/obj/item/stack/material/repairing_sheet = M.place_sheet(loc)
 			repairing_sheet.amount += repairing-1
 			repairing = 0

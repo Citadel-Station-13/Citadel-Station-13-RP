@@ -280,11 +280,6 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 			return
 	..()
 
-/obj/machinery/door/airlock/get_material()
-	if(mineral)
-		return get_material_by_name(mineral)
-	return get_material_by_name(MAT_STEEL)
-
 /obj/machinery/door/airlock/process(delta_time)
 	// Deliberate no call to parent.
 	if(main_power_lost_until > 0 && world.time >= main_power_lost_until)

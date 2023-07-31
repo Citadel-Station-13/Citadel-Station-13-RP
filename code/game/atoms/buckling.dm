@@ -7,6 +7,8 @@
 	return ..()
 
 /atom/movable/attack_hand(mob/user, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	. = ..()
 	if(.)
 		return

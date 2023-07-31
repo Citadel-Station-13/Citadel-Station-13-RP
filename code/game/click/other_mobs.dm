@@ -29,6 +29,8 @@
 
 /// Return TRUE to cancel other attack hand effects that respect it.
 /atom/proc/attack_hand(mob/user, list/params)
+	if(user.a_intent == INTENT_HARM)
+		#warn melee
 	. = _try_interact(user)
 
 //Return a non FALSE value to cancel whatever called this from propagating, if it respects it.

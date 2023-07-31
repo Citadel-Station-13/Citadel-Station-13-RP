@@ -360,10 +360,12 @@
 	return get_turf(src)
 
 /obj/attack_hand(mob/user, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	. = ..()
 	if(.)
 		return
-	if(length(climbing) && user.a_intent == INTENT_HARM)
+	if(length(climbing) && user.a_intent == INTENT_DISARM)
 		user.visible_message(SPAN_WARNING("[user] slams against \the [src]!"))
 		user.do_attack_animation(src)
 		shake_climbers()

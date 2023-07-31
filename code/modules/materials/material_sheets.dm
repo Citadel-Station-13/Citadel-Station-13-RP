@@ -13,8 +13,8 @@
 		)
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
-	material_parts = MATERIAL_DEFAULT_DISABLED
 
+	material_parts = MATERIAL_DEFAULT_DISABLED
 	/// material - direct ref because stack
 	var/datum/material/material
 
@@ -25,21 +25,21 @@
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE, material)
 	if(!isnull(material))
 		src.material = material
-	material = SSmaterials.resolve_material(material)
+	src.material = SSmaterials.resolve_material(material)
 	. = ..()
 
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
 
-	recipes = material.get_recipes()
-	stacktype = material.stack_type
-	if(islist(material.stack_origin_tech))
-		origin_tech = material.stack_origin_tech
+	recipes = src.material.get_recipes()
+	stacktype = src.material.stack_type
+	if(islist(src.material.stack_origin_tech))
+		origin_tech = src.material.stack_origin_tech
 
 	if(apply_colour)
-		color = material.icon_colour
+		color = src.material.icon_colour
 
-	if(!material.conductive)
+	if(!src.material.conductive)
 		atom_flags |= NOCONDUCT
 
 	update_strings()

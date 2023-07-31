@@ -206,30 +206,7 @@
 		return !density
 	return TRUE
 
-/obj/structure/window/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	. = ..()
-
-	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
-
-	var/tforce = 0
-	if (ismob(AM))
-		tforce = 40
-	else if (isobj(AM))
-		var/obj/item/I = AM
-		tforce = I.throw_force * TT.get_damage_multiplier()
-
-	if (considered_reinforced)
-		tforce *= 0.25
-
-	if (health - tforce <= 7 && !considered_reinforced)
-		set_anchored(FALSE)
-		update_verbs()
-		step(src, get_dir(AM, src))
-		if(fulltile)
-			QUEUE_SMOOTH(src)
-			QUEUE_SMOOTH_NEIGHBORS(src)
-
-	take_damage(tforce)
+// todo: add knockback from throw-impact again
 
 /obj/structure/window/attack_tk(mob/user)
 	user.visible_message(SPAN_NOTICE("Something knocks on [src]."))
@@ -291,51 +268,23 @@
 	return TRUE
 
 /obj/structure/window/attackby(obj/item/object, mob/user)
-	if (!istype(object))
-		return // I really wish I did not need this.
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 
 	// Fixing.
 	if (istype(object, /obj/item/weldingtool) && user.a_intent == INTENT_HELP)
 		var/obj/item/weldingtool/WT = object
-		if (health < maxhealth)
+		if (integrity < integrity_max)
 			if (WT.remove_fuel(1, user))
 				to_chat(user, SPAN_NOTICE("You begin repairing [src]..."))
 				playsound(src, WT.tool_sound, 50, TRUE)
 				if (do_after(user, 40 * WT.tool_speed, target = src))
-					health = maxhealth
+					set_integrity(integrity_max)
 					// playsound(src, 'sound/items/Welder.ogg', 50, 1)
 					update_appearance()
 					to_chat(user, SPAN_NOTICE("You repair [src]."))
 		else
 			to_chat(user, SPAN_WARNING("[src] is already in good condition!"))
-		return
-
-	// Slamming.
-	if (istype(object, /obj/item/grab) && get_dist(src, user) < 2)
-		var/obj/item/grab/G = object
-		if (istype(G.affecting,/mob/living))
-			var/mob/living/M = G.affecting
-			var/state = G.state
-			qdel(object) //? Gotta delete it here because if window breaks, it won't get deleted.
-			switch (state)
-				if (1)
-					M.visible_message(SPAN_WARNING("[user] slams [M] against \the [src]!"))
-					M.apply_damage(7)
-					hit(10)
-				if (2)
-					M.visible_message(SPAN_DANGER("[user] bashes [M] against \the [src]!"))
-					if (prob(50))
-						M.afflict_paralyze(20 * 1)
-					M.apply_damage(10)
-					hit(25)
-				if(3)
-					M.visible_message(SPAN_BOLDDANGER("[user] crushes [M] against \the [src]!"))
-					M.afflict_paralyze(20 * 5)
-					M.apply_damage(20)
-					hit(50)
-			return
-
-	if (object.item_flags & ITEM_NOBLUDGEON)
 		return
 
 	else if (istype(object, /obj/item/stack/cable_coil) && considered_reinforced && construction_state == WINDOW_STATE_UNSECURED && !istype(src, /obj/structure/window/reinforced/polarized))
@@ -360,24 +309,12 @@
 				P.construction_state = construction_state
 				P.set_anchored(anchored)
 				qdel(src)
+		return
 
 	else if (istype(object, /obj/item/frame) && anchored)
 		var/obj/item/frame/F = object
 		F.try_build(src, user)
-	else
-		user.setClickCooldown(user.get_attack_speed(object))
-		if (object.damtype == BRUTE || object.damtype == BURN)
-			user.do_attack_animation(src)
-			hit(object.damage_force)
-			if (health <= 7)
-				set_anchored(FALSE)
-				update_nearby_icons()
-				step(src, get_dir(user, src))
-				if(fulltile)
-					QUEUE_SMOOTH(src)
-					QUEUE_SMOOTH_NEIGHBORS(src)
-		else
-			playsound(loc, 'sound/effects/Glasshit.ogg', 75, TRUE)
+		return
 
 	return ..()
 

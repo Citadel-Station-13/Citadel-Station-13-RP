@@ -325,8 +325,6 @@
 
 /obj/machinery/door/airlock/glass/research
 	name = "Research Airlock"
-	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_research

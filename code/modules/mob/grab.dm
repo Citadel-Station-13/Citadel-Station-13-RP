@@ -242,6 +242,35 @@
 /obj/item/grab/throw_resolve_override(atom/movable/resolved, mob/user)
 	return TRUE
 
+#warn code this into melee object hit...
+
+/*
+	// Slamming.
+	if (istype(object, /obj/item/grab) && get_dist(src, user) < 2)
+		var/obj/item/grab/G = object
+		if (istype(G.affecting,/mob/living))
+			var/mob/living/M = G.affecting
+			var/state = G.state
+			qdel(object) //? Gotta delete it here because if window breaks, it won't get deleted.
+			switch (state)
+				if (1)
+					M.visible_message(SPAN_WARNING("[user] slams [M] against \the [src]!"))
+					M.apply_damage(7)
+					hit(10)
+				if (2)
+					M.visible_message(SPAN_DANGER("[user] bashes [M] against \the [src]!"))
+					if (prob(50))
+						M.afflict_paralyze(20 * 1)
+					M.apply_damage(10)
+					hit(25)
+				if(3)
+					M.visible_message(SPAN_BOLDDANGER("[user] crushes [M] against \the [src]!"))
+					M.afflict_paralyze(20 * 5)
+					M.apply_damage(20)
+					hit(50)
+			return
+*/
+
 //Updating pixelshift, position and direction
 //Gets called on process, when the grab gets upgraded or the assailant moves
 /obj/item/grab/proc/adjust_position()

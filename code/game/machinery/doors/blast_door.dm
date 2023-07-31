@@ -151,7 +151,7 @@
 			else
 				to_chat(user, "<span class='notice'>[src]'s motors resist your effort.</span>")
 			return
-	else if(istype(I, /obj/item/stack/material) && I.get_material_name() == "plasteel") // Repairing.
+	else if(I.is_material_stack_of(/datum/material/plasteel)) // Repairing.
 		var/amt = CEILING((integrity_max - integrity)/150, 1)
 		if(!amt)
 			to_chat(user, "<span class='notice'>\The [src] is already fully repaired.</span>")
@@ -246,7 +246,7 @@
 // Parameters: None
 // Description: Fully repairs the blast door.
 /obj/machinery/door/blast/proc/repair()
-	health = maxhealth
+	set_integrity(integrity_max)
 	if(machine_stat & BROKEN)
 		machine_stat &= ~BROKEN
 

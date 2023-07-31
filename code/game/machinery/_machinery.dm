@@ -335,6 +335,8 @@
 		return attack_hand(user)
 
 /obj/machinery/attack_hand(mob/user, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(IsAdminGhost(user))
 		return FALSE
 	if(inoperable(MAINT))

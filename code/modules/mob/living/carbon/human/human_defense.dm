@@ -253,12 +253,6 @@ meteor_act
 	if(!affecting)
 		return 0
 
-	// Allow clothing to respond to being hit.
-	// This is done up here so that clothing damage occurs even if fully blocked.
-	var/list/clothing = get_clothing_list_organ(affecting)
-	for(var/obj/item/clothing/C in clothing)
-		C.clothing_impact(I, effective_force)
-
 	if(soaked >= round(effective_force*0.8))
 		effective_force -= round(effective_force*0.8)
 	// Handle striking to cripple.

@@ -3,6 +3,7 @@
 	icon = 'icons/obj/machines/power/fusion.dmi'
 	icon_state = "fuel_assembly"
 
+	#warn material system
 	var/material_name
 
 	var/percent_depleted = 1

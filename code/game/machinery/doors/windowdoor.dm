@@ -142,17 +142,9 @@
 	return src.attack_hand(user)
 
 /obj/machinery/door/window/attack_hand(mob/user, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	src.add_fingerprint(user)
-
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		if(H.species.can_shred(H))
-			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
-			visible_message("<span class='danger'>[user] smashes against the [src.name].</span>", 1)
-			user.do_attack_animation(src)
-			user.setClickCooldown(user.get_attack_speed())
-			take_damage(25)
-			return
 
 	if (src.allowed(user))
 		if (src.density)
