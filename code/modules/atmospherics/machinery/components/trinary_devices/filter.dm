@@ -60,6 +60,8 @@
 
 	if(power_current)
 		use_power(power_current)
+		// switch to watts instead of joules by dividing out tick time
+		power_current /= delta_time
 
 /obj/machinery/atmospherics/component/trinary/filter/proc/set_rate(liters)
 	flow_setting = clamp(liters, 0, air1.volume)

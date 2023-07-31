@@ -9,7 +9,6 @@
 	/// efficiency multiplier
 	var/efficiency_multiplier = 1
 
-	var/power_losses
 	var/last_power_draw_legacy = 0
 	var/obj/item/cell/cell
 	var/use_cell = TRUE

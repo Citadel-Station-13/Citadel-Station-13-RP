@@ -2,7 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 import { useBackend } from "../../backend";
-import { Section } from "../../components";
+import { LabeledList, Section } from "../../components";
 import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasIDs, GasContext } from "../common/Atmos";
 import { AtmosPortable } from "../common/AtmosPortable";
 
@@ -37,7 +37,12 @@ export interface AtmosPortableScubberData {
 export const AtmosPortableScubber = (props, context) => {
   const { data, act } = useBackend<AtmosPortableScubberData>(context);
   return (
-    <AtmosPortable>
+    <AtmosPortable
+      additionalListItems={(
+        <LabeledList.Item label="Current Flow">
+          {data.moleRate} mol/s
+        </LabeledList.Item>
+      )}>
       <AtmosPortableScrubberControl
         atmosContext={data.atmosContext}
         scrubbingIds={data.scrubbingIds}

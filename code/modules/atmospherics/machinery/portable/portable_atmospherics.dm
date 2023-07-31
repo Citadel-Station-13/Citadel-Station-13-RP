@@ -116,6 +116,8 @@
 				return TRUE
 			set_flow(amt)
 			return TRUE
+		if("eject")
+			#warn impl
 
 /obj/machinery/portable_atmospherics/proc/set_on(enabled)
 	on = enabled

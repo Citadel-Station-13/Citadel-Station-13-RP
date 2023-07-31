@@ -13,8 +13,7 @@
 
 	volume = 1000
 
-	power_rating = 7500 //7500 W ~ 10 HP
-	power_losses = 150
+	var/power_rating = 7500 //7500 W ~ 10 HP
 
 /obj/machinery/portable_atmospherics/powered/pump/filled
 	start_pressure = 90 * ONE_ATMOSPHERE
@@ -83,7 +82,6 @@
 		last_flow_rate_legacy = 0
 		last_power_draw_legacy = 0
 	else
-		power_draw = max(power_draw, power_losses)
 		cell.use_scaled(DYNAMIC_W_TO_CELL_UNITS(power_draw, 1))
 		last_power_draw_legacy = power_draw
 

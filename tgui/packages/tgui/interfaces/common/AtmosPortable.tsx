@@ -1,7 +1,9 @@
+import { InfernoNode } from "inferno";
 import { BooleanLike } from "../../../common/react";
 import { useBackend } from "../../backend";
 import { Section, Stack } from "../../components";
 import { ComponentProps } from "../../components/Component";
+import { SectionProps } from "../../components/Section";
 import { Window } from "../../layouts";
 import { AtmosTank, AtmosTankSlot } from "./Atmos";
 
@@ -12,18 +14,20 @@ enum AtmosPortableUIFlags {
   SetFlow = (1<<2),
 }
 
-interface AtmosPortableControlProps {
+interface AtmosPortableControlProps extends SectionProps {
   // portable data
   data: AtmosPortableData;
   // toggle on/off act
   toggleAct?: () => void;
   // set flow act
   setFlowAct?: (amt: number) => void;
+  // any additional list items
+  additionalListItems?: InfernoNode;
 }
 
 export const AtmosPortableControl = (props: AtmosPortableControlProps, context) => {
   return (
-    <Section>
+    <Section title="Flow" {...props}>
       test
     </Section>
   );
@@ -60,6 +64,7 @@ export interface AtmosPortableData {
 
 interface AtmosPortableProps extends ComponentProps{
   extraHeight?: number;
+  additionalListItems?: InfernoNode;
 }
 
 export const AtmosPortable = (props: AtmosPortableProps, context) => {
@@ -75,6 +80,7 @@ export const AtmosPortable = (props: AtmosPortableProps, context) => {
           <Stack vertical fill>
             <Stack.Item>
               <AtmosPortableControl
+                additionalListItems={props.additionalListItems}
                 data={data}
                 toggleAct={() => act('togglePower')}
                 setFlowAct={(amt) => act('setFlow', { value: amt })} />
@@ -87,7 +93,7 @@ export const AtmosPortable = (props: AtmosPortableProps, context) => {
               </Stack.Item>
             )}
             <Stack.Item>
-              <AtmosTankSlot tank={data.tank} />
+              <AtmosTankSlot tank={data.tank} ejectAct={() => act('eject')} />
             </Stack.Item>
             {props.children && (
               <Stack.Item grow>

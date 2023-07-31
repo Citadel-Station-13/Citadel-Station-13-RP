@@ -33,7 +33,7 @@
 	var/power_maximum = 0
 	/// power setting configured in watts
 	var/power_setting
-	/// current power usage
+	/// current power usage in watts
 	var/power_current = 0
 
 	//! legacy below

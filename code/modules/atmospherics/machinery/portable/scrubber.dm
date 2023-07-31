@@ -96,9 +96,9 @@
 	if(on && cell?.charge)
 		var/datum/gas_mixture/scrubbing = isnull(holding)? loc.return_air() : holding.air_contents
 		var/old_mols = scrubbing.total_moles
-		var/mols = (volume_rate / scrubbing.volume) * old_mols
+		var/mols = (flow_setting / scrubbing.volume) * old_mols
 		power_current = xgm_scrub_gas(scrubbing, air_contents, scrubbing_ids, scrubbing_groups, mols, power_setting * efficiency_multiplier) / efficiency_multiplier
-		transfer_current = old_mols - scrubbing.total_moles
+		transfer_current = (old_mols - scrubbing.total_moles) / delta_time
 		update_connected_network()
 
 	if(power_current)
@@ -108,31 +108,6 @@
 			update_icon()
 
 #warn below
-
-/obj/machinery/portable_atmospherics/powered/scrubber/process(delta_time)
-	if(on && cell && cell.charge)
-
-		var/transfer_moles = min(1, volume_rate/environment.volume)*environment.total_moles
-		power_draw = scrub_gas(src, scrubbing_gas, environment, air_contents, transfer_moles, power_maximum)
-
-/obj/machinery/portable_atmospherics/powered/scrubber/ui_act(action, params)
-	if(..())
-		return TRUE
-
-	switch(action)
-		if("power")
-			on = !on
-			. = TRUE
-		if("eject")
-			if(holding)
-				holding.loc = loc
-				holding = null
-			. = TRUE
-		if("volume_adj")
-			volume_rate = clamp(text2num(params["vol"]), minrate, maxrate)
-			. = TRUE
-
-	update_icon()
 
 //Huge scrubber
 /obj/machinery/portable_atmospherics/powered/scrubber/huge
