@@ -11968,19 +11968,8 @@
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "auZ" = (
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
-/area/hallway/lower/third_south)
-"ava" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 24
+/obj/machinery/light{
+	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -11988,8 +11977,12 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 4
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
+"ava" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -12231,21 +12224,12 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "avC" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/catwalk,
+/obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/lower/third_south)
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside3)
 "avD" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/disposal,
@@ -12483,7 +12467,7 @@
 /area/tether/elevator)
 "avZ" = (
 /obj/machinery/door/firedoor{
-	dir = 1
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -24906,9 +24890,9 @@
 /area/tether/surfacebase/surface_three_hall)
 "aUh" = (
 /obj/structure/kitchenspike,
-/obj/machinery/alarm{
+/obj/machinery/alarm/freezer{
 	dir = 1;
-	pixel_y = -25
+	pixel_y = -21
 	},
 /turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/freezer)
@@ -31934,6 +31918,7 @@
 	pixel_x = 5;
 	pixel_y = 28
 	},
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/topairlock)
 "bie" = (
@@ -34892,6 +34877,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled,
 /area/teleporter/departing)
 "cVg" = (
@@ -35055,6 +35041,7 @@
 /obj/structure/cable/orange{
 	icon_state = "2-4"
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled,
 /area/teleporter/departing)
 "ddn" = (
@@ -35200,14 +35187,18 @@
 /obj/machinery/station_map{
 	pixel_y = 32
 	},
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 4
-	},
 /obj/effect/floor_decal/corner/lightgrey/bordercorner{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/machinery/door/firedoor,
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "dyV" = (
@@ -35282,19 +35273,13 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 4
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
 /obj/machinery/firealarm{
 	layer = 3.3;
 	pixel_y = 26
+	},
+/obj/effect/floor_decal/industrial/danger/corner{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -35871,6 +35856,7 @@
 /area/crew_quarters/bar)
 "fKo" = (
 /obj/effect/floor_decal/techfloor/orange,
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "fLx" = (
@@ -35962,6 +35948,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "giR" = (
@@ -37612,20 +37599,17 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/southhall)
 "lbe" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 24
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/camera/network/tether,
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "lcS" = (
@@ -38005,6 +37989,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
+"mfL" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "mjs" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -39213,6 +39206,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
+/obj/machinery/camera/network/tether,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "pwF" = (
@@ -41104,19 +41098,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "usm" = (
@@ -41543,6 +41524,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
+"vvK" = (
+/obj/machinery/camera/network/tether,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "vzs" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -41662,6 +41653,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "vJA" = (
@@ -52580,9 +52572,9 @@ alP
 aac
 ats
 ats
-ats
 dxb
-auZ
+avZ
+avZ
 avZ
 awF
 atU
@@ -52721,8 +52713,8 @@ keX
 agw
 aac
 aac
-aac
 ats
+lbe
 ava
 awa
 cRi
@@ -52863,9 +52855,9 @@ apX
 alP
 aac
 aac
-aac
 aue
-avC
+mfL
+usd
 rMS
 hoQ
 aEr
@@ -53005,9 +52997,9 @@ apX
 alP
 aac
 aac
-aac
 aue
-lbe
+vvK
+usd
 sSW
 lpB
 awH
@@ -53147,8 +53139,8 @@ apX
 agw
 aac
 aac
-aac
 ats
+auZ
 usd
 bSe
 aff
@@ -60229,7 +60221,7 @@ acV
 acV
 ave
 arL
-adG
+avC
 azY
 axQ
 aAQ
@@ -61227,7 +61219,7 @@ adG
 adG
 adG
 adG
-adG
+avC
 aAC
 aAR
 aAR
