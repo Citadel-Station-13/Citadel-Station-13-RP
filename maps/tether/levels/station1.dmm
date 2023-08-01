@@ -304,15 +304,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "aaG" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Power - Main";
-	input_attempt = 1;
-	input_level = 500;
-	output_level = 1000
-	},
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/smes/buildable/main,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
 "aaH" = (
@@ -12549,9 +12544,9 @@
 /turf/simulated/floor,
 /area/constructionsite)
 "aDY" = (
-/obj/machinery/light/small,
-/turf/simulated/floor,
-/area/constructionsite)
+/obj/structure/table/bench/padded,
+/turf/simulated/floor/wood,
+/area/crew_quarters/heads/blueshield)
 "aDZ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
@@ -14390,6 +14385,21 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/workshop)
+"aRC" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 8;
+	icon_state = "pdoor0";
+	id = "secondary_bridge_blast";
+	name = "Secondary Command Office Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor/plating,
+/area/crew_quarters/heads/blueshield)
 "aRV" = (
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
@@ -16244,6 +16254,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
+"bFd" = (
+/obj/machinery/camera/network/tether{
+	dir = 1
+	},
+/turf/space,
+/area/space)
 "bFf" = (
 /obj/structure/flora/pottedplant,
 /obj/machinery/computer/guestpass{
@@ -17333,7 +17349,6 @@
 /area/maintenance/substation/exploration)
 "dfU" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/command,
 /obj/machinery/door/blast/regular{
 	closed_layer = 10;
 	density = 0;
@@ -17343,6 +17358,9 @@
 	name = "Secondary Command Office Blast Doors";
 	opacity = 0;
 	open_layer = 1
+	},
+/obj/machinery/door/airlock/command{
+	name = "Blueshield Office Airlock"
 	},
 /turf/simulated/floor,
 /area/bridge/meeting_room)
@@ -17765,6 +17783,10 @@
 /obj/random/maintenance/medical,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
+"eiR" = (
+/obj/machinery/door/airlock/maintenance/command,
+/turf/simulated/floor,
+/area/crew_quarters/heads/blueshield)
 "ejF" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -18410,6 +18432,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
+"fIU" = (
+/obj/machinery/camera/network/tether{
+	dir = 1
+	},
+/turf/simulated/mineral/floor,
+/area/mine/explored/upper_level)
 "fJH" = (
 /obj/structure/cable/green{
 	dir = 1;
@@ -18974,6 +19002,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/general)
+"hiO" = (
+/obj/machinery/camera/network/tether,
+/turf/simulated/mineral/floor/vacuum,
+/area/mine/explored/upper_level)
 "hjC" = (
 /obj/structure/railing{
 	dir = 4
@@ -19067,6 +19099,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
+"hwU" = (
+/turf/simulated/floor/wood,
+/area/crew_quarters/heads/blueshield)
 "hxy" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
@@ -20083,6 +20118,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
+"jQR" = (
+/obj/machinery/camera/network/tether{
+	dir = 4
+	},
+/turf/simulated/mineral/floor,
+/area/mine/explored/upper_level)
 "jWT" = (
 /obj/machinery/holoposter{
 	dir = 4;
@@ -21445,6 +21486,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
+"nXp" = (
+/obj/machinery/camera/network/tether{
+	dir = 4
+	},
+/turf/simulated/wall,
+/area/hallway/station/docks)
 "nYF" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
 	dir = 4
@@ -21529,6 +21576,9 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
+"oho" = (
+/turf/simulated/wall/r_wall,
+/area/crew_quarters/heads/blueshield)
 "ohx" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Exploration Security Station";
@@ -22598,6 +22648,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
+"rbv" = (
+/obj/machinery/camera/network/tether,
+/turf/space,
+/area/space)
 "rbZ" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -23240,6 +23294,10 @@
 /obj/item/stack/marker_beacon/thirty,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
+"sob" = (
+/obj/landmark/spawnpoint/job/blueshield,
+/turf/simulated/floor/wood,
+/area/crew_quarters/heads/blueshield)
 "spr" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -24089,6 +24147,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/gravity_lobby)
+"uyC" = (
+/obj/machinery/camera/network/tether{
+	dir = 4
+	},
+/turf/space,
+/area/space)
 "uzB" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -24440,6 +24504,11 @@
 /obj/machinery/gravity_generator/main/station,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/gravity_gen)
+"vaQ" = (
+/obj/machinery/light/small,
+/obj/structure/closet/secure_closet/blueshield,
+/turf/simulated/floor/wood,
+/area/crew_quarters/heads/blueshield)
 "vdb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -25716,6 +25785,12 @@
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/exploration/staircase)
+"ycc" = (
+/obj/machinery/camera/network/tether{
+	dir = 9
+	},
+/turf/space,
+/area/space)
 "ycu" = (
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/borderfloor{
@@ -30097,7 +30172,7 @@ bbz
 gak
 nmf
 mlJ
-aaa
+rbv
 aaa
 aaa
 aaa
@@ -30224,7 +30299,7 @@ aaa
 aaa
 aaa
 ahW
-aaa
+ycc
 aaa
 aaa
 mlJ
@@ -30953,7 +31028,7 @@ aac
 aaa
 aaa
 aaa
-aaa
+ycc
 aaa
 aaa
 aaa
@@ -30967,7 +31042,7 @@ aaa
 aGZ
 aFT
 aCJ
-aaa
+ycc
 aaa
 aaa
 aaa
@@ -31095,7 +31170,7 @@ awu
 bzq
 bzq
 bzq
-awu
+nXp
 aJi
 aJi
 aJi
@@ -31805,6 +31880,7 @@ aaa
 aaa
 aaa
 aaa
+uyC
 aaa
 aaa
 aaa
@@ -31818,8 +31894,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+uyC
 aaa
 aaa
 aaa
@@ -32511,7 +32586,7 @@ aAZ
 rCQ
 ohW
 awu
-aaa
+rbv
 aaa
 aaa
 aaa
@@ -33440,7 +33515,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bFd
 rEb
 rEb
 rEb
@@ -33797,7 +33872,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ycc
 aaa
 aaa
 aaa
@@ -33809,7 +33884,7 @@ aaa
 aab
 aaa
 aaa
-aaa
+ycc
 aaa
 aaa
 aaa
@@ -34860,7 +34935,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bFd
 plz
 abO
 aWA
@@ -35226,7 +35301,7 @@ aDX
 aAl
 aCk
 aun
-aaa
+rbv
 aaa
 aaa
 aaa
@@ -36356,9 +36431,9 @@ awC
 awC
 awC
 awC
-aDX
-aDX
-aun
+eiR
+oho
+oho
 aat
 aat
 aat
@@ -36498,10 +36573,10 @@ ayR
 aAu
 ayR
 awC
-aDX
-aDX
-aun
-aat
+hwU
+vaQ
+oho
+hiO
 aat
 aat
 aaa
@@ -36640,9 +36715,9 @@ aza
 ayR
 ayR
 aBT
-aDX
+hwU
 aDY
-aun
+aRC
 aat
 aat
 aat
@@ -36782,9 +36857,9 @@ azg
 aAv
 aAv
 awC
-azW
-aDX
-aun
+hwU
+hwU
+aRC
 aat
 aat
 aat
@@ -36924,9 +36999,9 @@ azw
 aAv
 aAv
 awC
-aDX
-aDX
-aun
+hwU
+sob
+oho
 aat
 aat
 aat
@@ -38568,7 +38643,7 @@ ajO
 ajO
 ajO
 ajO
-ajO
+fIU
 abC
 abC
 egU
@@ -40571,7 +40646,7 @@ ajO
 ajO
 ajO
 ajO
-ajO
+jQR
 aac
 aac
 aac
@@ -41446,7 +41521,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+uyC
 aaa
 aaa
 aaa
