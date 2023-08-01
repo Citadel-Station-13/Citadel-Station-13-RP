@@ -33170,7 +33170,7 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "pWo" = (
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
 /turf/simulated/mineral/floor/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "qpA" = (

@@ -227,8 +227,8 @@
 				to_chat(user, "<span class='notice'>Nothing happens.</span>")
 				return
 
-	else if ((istype(I, /obj/item/analyzer)) && Adjacent(user))
-		var/obj/item/analyzer/A = I
+	else if ((istype(I, /obj/item/atmos_analyzer)) && Adjacent(user))
+		var/obj/item/atmos_analyzer/A = I
 		A.analyze_gases(src, user)
 
 /obj/machinery/portable_atmospherics/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user as mob)

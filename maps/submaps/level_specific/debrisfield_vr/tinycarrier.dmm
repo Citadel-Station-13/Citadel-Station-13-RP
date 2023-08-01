@@ -846,7 +846,7 @@
 "bB" = (
 /obj/structure/table/rack/steel,
 /obj/item/storage/toolbox/mechanical{
-	starts_with = list(/obj/item/tool/screwdriver,/obj/item/tool/wrench,/obj/item/tool/crowbar,/obj/item/analyzer,/obj/item/tool/wirecutters)
+	starts_with = list(/obj/item/tool/screwdriver,/obj/item/tool/wrench,/obj/item/tool/crowbar,/obj/item/atmos_analyzer,/obj/item/tool/wirecutters)
 	},
 /obj/item/t_scanner,
 /obj/effect/floor_decal/corner/orange{

@@ -456,14 +456,14 @@
 
 // todo: sort above
 
+//* Getters
 
-
-//! Getters
 //Returns the pressure of the gas mix.  Only accurate if there have been no gas modifications since update_values() has been called.
 /datum/gas_mixture/proc/return_pressure()
 	return (total_moles * R_IDEAL_GAS_EQUATION * temperature) / volume
 
-//! Gas Strings
+//* Gas Strings
+
 /**
   * Copies from a specially formatted gas string, taking on its gas values as our own as well as their temperature.
   * if the gas string does not specify temperature, it'll remain unchanged.
@@ -503,11 +503,10 @@
 /proc/get_gas_string(list/gas, temperature)
 	return "[list2params(gas)][length(gas)? ";TEMP=[temperature]" : ""]"
 
-//! Tile Operations
+//* Tile Operations
+
 /**
  * get the equivalent of a single tile of this gas mixture
- *
- * TODO: remove group_multiplier, change to tiles_represented
  */
 /datum/gas_mixture/proc/copy_single_tile()
 	RETURN_TYPE(/datum/gas_mixture)
@@ -516,7 +515,12 @@
 	GM.group_multiplier = 1
 	return GM
 
-//! Sharing; usually used for environmental systems.
+//* Scanning
+
+/datum/gas_mixture/proc/analyzer_scan(obj/item/atmos_analyzer/scanner)
+
+//* Sharing; usually used for environmental systems.
+
 /**
  * Default share gas implementation - shares with another gas_mixture non-canonically
  * based on connecting tiles. Is just a wrapper to use a lookup table.

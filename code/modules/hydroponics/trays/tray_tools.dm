@@ -17,7 +17,7 @@
 	item_state = "hedget"
 	damage_force = 7 //One point extra than standard wire cutters.
 
-/obj/item/analyzer/plant_analyzer
+/obj/item/plant_analyzer
 	name = "plant analyzer"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "hydro"
@@ -25,22 +25,22 @@
 	var/datum/seed/last_seed
 	var/list/last_reagents
 
-/obj/item/analyzer/plant_analyzer/attack_self(mob/user)
+/obj/item/plant_analyzer/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
 	ui_interact(user)
 
-/obj/item/analyzer/plant_analyzer/ui_interact(mob/user, datum/tgui/ui)
+/obj/item/plant_analyzer/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "PlantAnalyzer", name)
 		ui.open()
 
-/obj/item/analyzer/plant_analyzer/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/plant_analyzer/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
-/obj/item/analyzer/plant_analyzer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/plant_analyzer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	var/datum/seed/grown_seed = locate(last_seed)
@@ -53,7 +53,7 @@
 
 	return data
 
-/obj/item/analyzer/plant_analyzer/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/plant_analyzer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -66,7 +66,7 @@
 			last_reagents = null
 			return TRUE
 
-/obj/item/analyzer/plant_analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/plant_analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
@@ -118,7 +118,7 @@
 
 	ui_interact(user)
 
-/obj/item/analyzer/plant_analyzer/proc/print_report_verb()
+/obj/item/plant_analyzer/proc/print_report_verb()
 	set name = "Print Plant Report"
 	set category = "Object"
 	set src = usr
@@ -127,7 +127,7 @@
 		return
 	print_report(usr)
 
-/obj/item/analyzer/plant_analyzer/proc/print_report(var/mob/living/user)
+/obj/item/plant_analyzer/proc/print_report(var/mob/living/user)
 	var/datum/seed/grown_seed = locate(last_seed)
 	if(!istype(grown_seed))
 		to_chat(user, SPAN_WARNING("There is no scan data to print."))

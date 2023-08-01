@@ -292,7 +292,7 @@ update_flag
 	..()
 
 /obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/W as obj, var/mob/user as mob)
-	if(!W.is_wrench() && !istype(W, /obj/item/tank) && !istype(W, /obj/item/analyzer) && !istype(W, /obj/item/pda))
+	if(!W.is_wrench() && !istype(W, /obj/item/tank) && !istype(W, /obj/item/atmos_analyzer) && !istype(W, /obj/item/pda))
 		visible_message(SPAN_WARNING("\The [user] hits \the [src] with \a [W]!"))
 		src.health -= W.damage_force
 		healthcheck()

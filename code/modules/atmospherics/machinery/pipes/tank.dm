@@ -71,8 +71,8 @@
 	if(istype(W, /obj/item/pipe_painter))
 		return
 
-	if(istype(W, /obj/item/analyzer) && in_range(user, src))
-		var/obj/item/analyzer/A = W
+	if(istype(W, /obj/item/atmos_analyzer) && in_range(user, src))
+		var/obj/item/atmos_analyzer/A = W
 		A.analyze_gases(src, user)
 
 /obj/machinery/atmospherics/pipe/tank/air

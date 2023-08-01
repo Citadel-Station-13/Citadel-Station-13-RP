@@ -976,7 +976,7 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
-/obj/item/analyzer,
+/obj/item/atmos_analyzer,
 /obj/machinery/camera/network/research_outpost{
 	dir = 1
 	},
@@ -5587,7 +5587,7 @@
 /obj/machinery/camera/network/research_outpost{
 	dir = 8
 	},
-/obj/item/analyzer,
+/obj/item/atmos_analyzer,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "zc" = (

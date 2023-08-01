@@ -105,8 +105,8 @@
 /obj/item/material/knife/machete/hatchet,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/reagent_containers/glass/bucket,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
+/obj/item/plant_analyzer,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "Y" = (

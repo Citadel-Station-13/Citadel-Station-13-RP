@@ -16537,8 +16537,8 @@
 /obj/structure/table/woodentable,
 /obj/item/material/minihoe,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 8
 	},
@@ -17568,8 +17568,8 @@
 /obj/effect/floor_decal/corner/lime/full{
 	dir = 1
 	},
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/item/material/minihoe,
 /obj/item/material/minihoe,
 /turf/simulated/floor/tiled,

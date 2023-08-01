@@ -3430,8 +3430,8 @@
 /obj/item/reagent_scanner,
 /obj/item/healthanalyzer,
 /obj/item/geiger_counter,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer,
+/obj/item/plant_analyzer,
+/obj/item/atmos_analyzer,
 /obj/item/t_scanner,
 /turf/simulated/floor/plating,
 /area/storage/tech)

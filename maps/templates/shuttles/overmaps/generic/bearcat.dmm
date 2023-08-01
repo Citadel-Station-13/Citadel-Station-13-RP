@@ -1999,7 +1999,7 @@
 	},
 /obj/item/storage/toolbox/mechanical,
 /obj/item/clothing/head/welding,
-/obj/item/analyzer,
+/obj/item/atmos_analyzer,
 /obj/machinery/light_switch{
 	pixel_x = -25
 	},

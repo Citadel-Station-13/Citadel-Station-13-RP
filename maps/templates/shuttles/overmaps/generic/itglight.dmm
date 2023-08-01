@@ -1810,8 +1810,8 @@
 /obj/structure/closet,
 /obj/item/robot_parts/l_arm,
 /obj/item/reagent_containers/glass/bucket,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/item/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
 	},
