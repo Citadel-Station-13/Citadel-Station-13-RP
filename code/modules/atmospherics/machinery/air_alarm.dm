@@ -21,8 +21,6 @@ GLOBAL_LIST_EMPTY(air_alarms)
 #define AALARM_SCREEN_MODE		4
 #define AALARM_SCREEN_SENSORS	5
 
-#define AALARM_REPORT_TIMEOUT 100
-
 #define MAX_TEMPERATURE 90
 #define MIN_TEMPERATURE -40
 
@@ -368,39 +366,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	if(signal.data["sigtype"] != "status")
 		return
 
-	var/dev_type = signal.data["device"]
-	if(!(id_tag in alarm_area.air_scrub_names) && !(id_tag in alarm_area.air_vent_names))
-		register_env_machine(id_tag, dev_type)
-	if(dev_type == "AScr")
-		alarm_area.air_scrub_info[id_tag] = signal.data
-	else if(dev_type == "AVP")
-		alarm_area.air_vent_info[id_tag] = signal.data
 	SStgui.update_uis(src)
-
-/obj/machinery/alarm/proc/register_env_machine(var/m_id, var/device_type)
-	var/new_name
-	if(device_type == "AVP")
-		new_name = "[alarm_area.name] Vent Pump #[alarm_area.air_vent_names.len+1]"
-		alarm_area.air_vent_names[m_id] = new_name
-	else if(device_type == "AScr")
-		new_name = "[alarm_area.name] Air Scrubber #[alarm_area.air_scrub_names.len+1]"
-		alarm_area.air_scrub_names[m_id] = new_name
-	else
-		return
-	spawn(10)
-		send_signal(m_id, list("init" = new_name))
-
-/obj/machinery/alarm/proc/refresh_all()
-	for(var/id_tag in alarm_area.air_vent_names)
-		var/list/I = alarm_area.air_vent_info[id_tag]
-		if(I && I["timestamp"] + AALARM_REPORT_TIMEOUT / 2 > world.time)
-			continue
-		send_signal(id_tag, list("status"))
-	for(var/id_tag in alarm_area.air_scrub_names)
-		var/list/I = alarm_area.air_scrub_info[id_tag]
-		if(I && I["timestamp"] + AALARM_REPORT_TIMEOUT / 2 > world.time)
-			continue
-		send_signal(id_tag, list("status"))
 
 /obj/machinery/alarm/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)

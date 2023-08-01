@@ -254,10 +254,6 @@
 
 	scrubbing_gas ^= toggle
 
-	if(signal.data["init"] != null)
-		name = signal.data["init"]
-		return
-
 	if(signal.data["status"] != null)
 		spawn(2)
 			broadcast_status()

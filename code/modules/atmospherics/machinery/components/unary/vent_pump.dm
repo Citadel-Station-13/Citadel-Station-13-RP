@@ -302,10 +302,6 @@
 	if("reset_internal_pressure" in signal.data)
 		internal_pressure_bound = 0
 
-	if(signal.data["init"] != null)
-		name = signal.data["init"]
-		return
-
 	if(signal.data["status"] != null)
 		spawn(2)
 			broadcast_status()
