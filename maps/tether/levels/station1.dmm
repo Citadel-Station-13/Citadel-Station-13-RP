@@ -304,15 +304,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "aaG" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Power - Main";
-	input_attempt = 1;
-	input_level = 500;
-	output_level = 1000
-	},
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/smes/buildable/main,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
 "aaH" = (
