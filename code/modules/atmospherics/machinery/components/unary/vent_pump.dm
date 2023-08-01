@@ -23,6 +23,8 @@
 	var/area/registered_area
 	/// auto name by area
 	var/name_from_area = TRUE
+	/// show on area
+	var/controllable_from_alarm = TRUE
 
 	var/area_uid
 	var/id_tag = null
