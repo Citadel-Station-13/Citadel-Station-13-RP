@@ -194,10 +194,6 @@
 		A.name = "[newname] [initial(A.name)]"
 		if(A.apc)
 			A.apc.name = "[A.name] APC"
-		A.air_vent_names = list()
-		A.air_scrub_names = list()
-		A.air_vent_info = list()
-		A.air_scrub_info = list()
 		for(var/obj/machinery/alarm/AA in A)
 			AA.name = "[A.name] Air Alarm"
 

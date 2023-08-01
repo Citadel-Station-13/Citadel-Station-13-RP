@@ -15,6 +15,8 @@
 
 	/// registered area
 	var/area/registered_area
+	/// auto name by area
+	var/name_from_area = TRUE
 
 	var/area_uid
 	var/id_tag = null
@@ -118,10 +120,7 @@
 		"filter_fuel" = (GAS_ID_VOLATILE_FUEL in scrubbing_gas),
 		"sigtype" = "status"
 	)
-	if(!initial_loc.air_scrub_names[id_tag])
-		var/new_name = "[initial_loc.name] Air Scrubber #[initial_loc.air_scrub_names.len+1]"
-		initial_loc.air_scrub_names[id_tag] = new_name
-		src.name = new_name
+
 	initial_loc.air_scrub_info[id_tag] = signal.data
 	radio_connection.post_signal(src, signal, radio_filter_out)
 

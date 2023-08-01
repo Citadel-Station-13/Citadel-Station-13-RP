@@ -35,8 +35,12 @@
 	var/list/obj/machinery/holopad/holopads
 	/// vents
 	var/list/obj/machinery/atmospherics/component/unary/vent_pump/vent_pumps
+	/// next vent id
+	var/vent_pump_next = 1
 	/// scrubbers
 	var/list/obj/machinery/atmospherics/component/unary/vent_scrubber/vent_scrubbers
+	/// next scrubber id
+	var/vent_scrubber_next = 1
 
 	//? unsorted
 	var/fire = null
@@ -681,12 +685,34 @@ var/list/ghostteleportlocs = list()
 
 /area/proc/register_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
 	LAZYADD(vent_scrubbers, instance)
+	instance.name = "\improper [name] Vent Scrubber #[vent_scrubber_next++]"
 
 /area/proc/unregister_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
 	LAZYREMOVE(vent_scrubbers, instance)
+	instance.name = "\improper Vent Scrubber"
 
 /area/proc/register_vent(obj/machinery/atmospherics/component/unary/vent_pump/instance)
 	LAZYADD(vent_pumps, instance)
+	instance.name = "\improper [name] Vent Pump #[vent_pump_next++]"
 
 /area/proc/unregister_vent(obj/machinery/atmospherics/component/unary/vent_pump/instance)
 	LAZYREMOVE(vent_pumps, instance)
+	instance.name = "\improper Vent Pump"
+
+// todo: this should unregister first, probably, incase anyone makes registration non-repeatable
+
+/area/proc/reregister_atmos_machinery()
+	reregister_atmos_vents()
+	reregister_atmos_scrubbers()
+
+/area/proc/reregister_atmos_vents()
+	vent_pump_next = 0
+	var/list/old = vent_pumps.Copy()
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/instance in old)
+		register_vent(instance)
+
+/area/proc/reregister_atmos_scrubbers()
+	vent_scrubber_next = 0
+	var/list/old = vent_scrubbers.Copy()
+	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/instance in old)
+		register_scrubber(instance)
