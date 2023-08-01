@@ -18,9 +18,15 @@
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SUPPLY //connects to regular and supply pipes
 
 	level = 1
-	var/area/initial_loc
+
+	/// registered area
+	var/area/registered_area
+
 	var/area_uid
 	var/id_tag = null
+
+	var/frequency = 1439
+	var/datum/radio_frequency/radio_connection
 
 	var/hibernate = 0 //Do we even process?
 	var/pump_direction = 1 //0 = siphoning, 1 = releasing
@@ -38,9 +44,6 @@
 	var/internal_pressure_bound_default = INTERNAL_PRESSURE_BOUND
 	var/pressure_checks_default = PRESSURE_CHECKS
 
-	var/frequency = 1439
-	var/datum/radio_frequency/radio_connection
-
 	var/radio_filter_out
 	var/radio_filter_in
 
@@ -56,17 +59,16 @@
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP
 
 	icon = null
-	initial_loc = get_area(loc)
+	registered_area = get_area(loc)
 	area_uid = initial_loc.uid
+	registered_area?.register_vent(src)
 	if (!id_tag)
 		assign_uid()
 		id_tag = num2text(uid)
 
 /obj/machinery/atmospherics/component/unary/vent_pump/Destroy()
 	unregister_radio(src, frequency)
-	if(initial_loc)
-		initial_loc.air_vent_info -= id_tag
-		initial_loc.air_vent_names -= id_tag
+	registered_area?.unregister_vent(src)
 	//QDEL_NULL(soundloop)
 	return ..()
 

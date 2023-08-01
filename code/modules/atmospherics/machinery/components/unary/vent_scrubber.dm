@@ -13,8 +13,12 @@
 
 	level = 1
 
-	var/area/initial_loc
+	/// registered area
+	var/area/registered_area
+
+	var/area_uid
 	var/id_tag = null
+
 	var/frequency = 1439
 	var/datum/radio_frequency/radio_connection
 
@@ -24,7 +28,6 @@
 
 	var/panic = 0 //is this scrubber panicked?
 
-	var/area_uid
 	var/radio_filter_out
 	var/radio_filter_in
 
@@ -40,17 +43,16 @@
 			stack_trace("Invalid gas id [id]")
 
 	icon = null
-	initial_loc = get_area(loc)
+	registered_area = get_area(loc)
 	area_uid = initial_loc.uid
+	registered_area?.register_scrubber(src)
 	if (!id_tag)
 		assign_uid()
 		id_tag = num2text(uid)
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/Destroy()
 	unregister_radio(src, frequency)
-	if(initial_loc)
-		initial_loc.air_scrub_info -= id_tag
-		initial_loc.air_scrub_names -= id_tag
+	registered_area?.unregister_scrubber(src)
 	return ..()
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/update_icon(safety = 0)

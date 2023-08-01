@@ -29,10 +29,6 @@ GLOBAL_LIST_EMPTY(air_alarms)
 //all air alarms in area are connected via magic
 /area
 	var/obj/machinery/alarm/master_air_alarm
-	var/list/air_vent_names = list()
-	var/list/air_scrub_names = list()
-	var/list/air_vent_info = list()
-	var/list/air_scrub_info = list()
 
 /obj/machinery/alarm
 	name = "alarm"

@@ -18,7 +18,6 @@
 	var/on = FALSE
 	/// current flow, liters
 	var/flow_current = 0
-	#warn hook
 	/// flow maximum
 	var/flow_maximum = 1000
 	/// flow setting
@@ -117,7 +116,12 @@
 			set_flow(amt)
 			return TRUE
 		if("eject")
-			#warn impl
+			if(isnull(holding))
+				return TRUE
+			usr.action_feedback(SPAN_NOTICE("You remove [holding] from [src]."), src)
+			usr.grab_item_from_interacted_with(holding, src)
+			holding = null
+			return TRUE
 
 /obj/machinery/portable_atmospherics/proc/set_on(enabled)
 	on = enabled

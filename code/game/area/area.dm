@@ -33,6 +33,10 @@
 	//? tracking lists for machinery
 	/// holopads - lazyinit'd
 	var/list/obj/machinery/holopad/holopads
+	/// vents
+	var/list/obj/machinery/atmospherics/component/unary/vent_pump/vent_pumps
+	/// scrubbers
+	var/list/obj/machinery/atmospherics/component/unary/vent_scrubber/vent_scrubbers
 
 	//? unsorted
 	var/fire = null
@@ -672,3 +676,17 @@ var/list/ghostteleportlocs = list()
 	ghostteleportlocs = tim_sort(ghostteleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 
 	return 1
+
+//* Atmospherics
+
+/area/proc/register_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
+	LAZYADD(vent_scrubbers, instance)
+
+/area/proc/unregister_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
+	LAZYREMOVE(vent_scrubbers, instance)
+
+/area/proc/register_vent(obj/machinery/atmospherics/component/unary/vent_pump/instance)
+	LAZYADD(vent_pumps, instance)
+
+/area/proc/unregister_vent(obj/machinery/atmospherics/component/unary/vent_pump/instance)
+	LAZYREMOVE(vent_pumps, instance)
