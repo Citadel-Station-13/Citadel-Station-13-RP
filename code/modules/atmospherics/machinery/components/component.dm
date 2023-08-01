@@ -2,6 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /obj/machinery/atmospherics/component
+	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_OFFLINE_SILICON
 	default_deconstruct = 4 SECONDS
 	tool_deconstruct = TOOL_WRENCH
 	default_unanchor = null
@@ -62,9 +63,10 @@
 	// todo: don't need this after pipenet rework
 	build_network()
 
-/obj/machinery/atmospherics/component/ui_state(mob/user, datum/tgui_module/module)
-	#warn hijack
-	return GLOB.default_state
+// todo: use a special state to handle multitool hijacking
+
+// /obj/machinery/atmospherics/component/ui_state(mob/user, datum/tgui_module/module)
+// 	return GLOB.default_state
 
 /obj/machinery/atmospherics/component/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -104,6 +106,11 @@
 	if(!allowed(user))
 		user.action_feedback(SPAN_WARNING("Access denied."), src)
 		return FALSE
+	if(!default_access_interface)
+		return FALSE
+	// todo: refactor silicon interaction
+	if(interface_require_exposed && is_hidden_underfloor() && !issilicon(user))
+		return FALSE
 	return ..()
 
 /obj/machinery/atmospherics/component/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -115,7 +122,21 @@
 		ui = new(user, src, tgui_interface)
 		ui.open()
 
-/obj/machinery/atmospherics/component/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+/obj/machinery/atmospherics/component/multitool_act(obj/item/I, mob/user, flags, hint)
 	. = ..()
-	#warn impl hijack probably with states
-
+	if(.)
+		return
+	if(isnull(default_multitool_hijack))
+		return FALSE
+	if(hijack_require_exposed && is_hidden_underfloor())
+		user.action_feedback(SPAN_WARNING("You can't reach the controls of [src] while it's covered by flooring."), src)
+		return TRUE
+	user.visible_action_feedback(
+		target = src,
+		hard_range = MESSAGE_RANGE_CONFIGURATION,
+		visible_hard = SPAN_WARNING("[user] starts tinkering with [src] using their [I]!"),
+	)
+	if(!do_after(user, default_multitool_hijack, src, mobility_flags = MOBILITY_CAN_USE))
+		return TRUE
+	ui_interact(user)
+	return TRUE

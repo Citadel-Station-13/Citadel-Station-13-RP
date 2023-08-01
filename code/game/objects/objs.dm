@@ -383,6 +383,14 @@
 			H.update_health()
 	*/
 
+//* Hiding / Underfloor
+
+/obj/proc/is_hidden_underfloor()
+	return FALSE
+
+/obj/proc/should_hide_underfloor()
+	return FALSE
+
 //? Materials
 
 /obj/get_materials()
