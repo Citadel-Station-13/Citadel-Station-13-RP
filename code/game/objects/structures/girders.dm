@@ -17,6 +17,7 @@
 	var/reinforcing = 0
 	var/material_color = 1
 
+	material_parts = MATERIAL_DEFAULT_ABSTRACTED
 	/// what we're made out of
 	var/datum/material/material_structure = /datum/material/steel
 	/// what our reinforcement is made out of
@@ -30,12 +31,6 @@
 	. = ..()
 	update_appearance()
 
-/obj/structure/girder/Destroy()
-	#warn handle ticking
-	if(IS_TICKING_MATERIALS(src) && (MATERIAL_NEEDS_PROCESSING(material_structure) || MATERIAL_NEEDS_PROCESSING(material_reinforcing)))
-		STOP_TICKING_MATERIALS(src)
-	return ..()
-
 /obj/structure/girder/update_material_parts(list/parts)
 	if(isnull(material_reinforcing))
 		if(isnull(material_structure))
@@ -46,14 +41,7 @@
 
 	else if(isnull(material_structure))
 	else
-	#warn impl + handle ticking
-
-	var/needs_processing = MATERIAL_NEEDS_PROCESSING(material_structure) || MATERIAL_NEEDS_PROCESSING(material_reinforcing)
-	var/is_processing = IS_TICKING_MATERIALS(src)
-	if(needs_processing && !is_processing)
-		START_TICKING_MATERIALS(src)
-	else if(!needs_processing && is_processing)
-		STOP_TICKING_MATERIALS(src)
+	#warn impl
 
 	// todo: refactor
 	if(material_color)
@@ -62,15 +50,22 @@
 /obj/structure/girder/material_init_parts()
 	material_structure = SSmaterials.resolve_material(material_structure)
 	material_reinforcing = SSmaterials.resolve_material(material_reinforcing)
+	MATERIAL_REGISTER(material_structure, src, FALSE)
+	MATERIAL_REGISTER(material_reinforcing, src, FALSE)
 
-#warn impl all
+/obj/structure/girder/material_set_part(part, datum/material/material)
+	var/datum/material/old
+	switch(part)
+		if(MATERIAL_PART_GIRDER_STRUCTURE)
+			old = material_structure
+			material_structure = material
+		if(MATERIAL_PART_GIRDER_REINFORCEMENT)
+			old = material_reinforcing
+			material_reinforcing = material
 
-/obj/structure/girder/process_materials(dt)
-	radiate(dt)
-
-/obj/structure/girder/proc/radiate(dt)
-	var/total = material_structure?.radioactivity + material_reinforcing?.radioactivity * 0.5
-	radiation_pulse(src, total, RAD_FALLOFF_MATERIALS)
+	if(material != old)
+		MATERIAL_UNREGISTER(old, src, FALSE)
+		MATERIAL_REGISTER(material, src, FALSE)
 
 /obj/structure/girder/material_get_part(part)
 	switch(part)
@@ -79,31 +74,11 @@
 		if(MATERIAL_PART_GIRDER_STRUCTURE)
 			return material_structure
 
-/obj/structure/girder/material_get_part_id(part)
-	switch(part)
-		if(MATERIAL_PART_GIRDER_REINFORCEMENT)
-			return material_reinforcing?.id
-		if(MATERIAL_PART_GIRDER_STRUCTURE)
-			return material_structure?.id
-
 /obj/structure/girder/material_get_parts()
 	return list(
 		MATERIAL_PART_GIRDER_STRUCTURE = material_structure,
 		MATERIAL_PART_GIRDER_REINFORCEMENT = material_reinforcing,
 	)
-
-/obj/structure/girder/material_get_part_ids()
-	return list(
-		MATERIAL_PART_GIRDER_STRUCTURE = material_structure?.id,
-		MATERIAL_PART_GIRDER_REINFORCEMENT = material_reinforcing?.id,
-	)
-
-/obj/structure/girder/material_set_part(part, datum/material/material)
-	switch(part)
-		if(MATERIAL_PART_GIRDER_STRUCTURE)
-			material_structure = material
-		if(MATERIAL_PART_GIRDER_REINFORCEMENT)
-			material_reinforcing = material
 
 /obj/structure/girder/material_set_parts(list/part_instances)
 	material_structure = part_instances[MATERIAL_PART_GIRDER_STRUCTURE]

@@ -38,6 +38,81 @@
 
 	var/last_message = 0
 
+/obj/item/storage/Initialize(mapload)
+	. = ..()
+
+	if(allow_quick_empty)
+		add_obj_verb(src, /obj/item/storage/verb/quick_empty)
+	else
+		remove_obj_verb(src, /obj/item/storage/verb/quick_empty)
+
+	if(allow_quick_gather)
+		add_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
+	else
+		remove_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
+
+	src.boxes = new /atom/movable/screen/storage(  )
+	src.boxes.name = "storage"
+	src.boxes.master = src
+	src.boxes.icon_state = "block"
+	src.boxes.screen_loc = storage_ui_default
+
+	src.storage_start = new /atom/movable/screen/storage(  )
+	src.storage_start.name = "storage"
+	src.storage_start.master = src
+	src.storage_start.icon_state = "storage_start"
+	src.storage_start.screen_loc = storage_ui_default
+
+	src.storage_continue = new /atom/movable/screen/storage(  )
+	src.storage_continue.name = "storage"
+	src.storage_continue.master = src
+	src.storage_continue.icon_state = "storage_continue"
+	src.storage_continue.screen_loc = storage_ui_default
+
+	src.storage_end = new /atom/movable/screen/storage(  )
+	src.storage_end.name = "storage"
+	src.storage_end.master = src
+	src.storage_end.icon_state = "storage_end"
+	src.storage_end.screen_loc = storage_ui_default
+
+	src.stored_start = new /atom/movable //we just need these to hold the icon
+	src.stored_start.icon_state = "stored_start"
+
+	src.stored_continue = new /atom/movable
+	src.stored_continue.icon_state = "stored_continue"
+
+	src.stored_end = new /atom/movable
+	src.stored_end.icon_state = "stored_end"
+
+	src.closer = new /atom/movable/screen/close(  )
+	src.closer.master = src
+	src.closer.icon_state = "storage_close"
+	src.closer.hud_layerise()
+	orient2hud()
+
+	populate_contents_legacy()
+
+	PopulateContents()
+
+	//calibrate_size()			//Let's not!
+
+/obj/item/storage/proc/populate_contents_legacy()
+	if(LAZYLEN(starts_with) && !empty)
+		for(var/newtype in starts_with)
+			var/count = starts_with[newtype] || 1 //Could have left it blank.
+			while(count)
+				count--
+				new newtype(src)
+		starts_with = null //Reduce list count.
+
+/obj/item/storage/proc/PopulateContents()
+
+/obj/item/storage/proc/drop_contents()
+	hide_from(usr)
+	var/turf/T = get_turf(src)
+	for(var/obj/item/I in contents)
+		remove_from_storage(I, T)
+
 /obj/item/storage/Destroy()
 	close_all()
 	QDEL_NULL(boxes)
@@ -49,8 +124,6 @@
 	QDEL_NULL(src.stored_end)
 	QDEL_NULL(closer)
 	return ..()
-
-
 
 /obj/item/storage/AltClick(mob/user)
 	if(user in is_seeing)
@@ -511,82 +584,6 @@
 	if(((!(ishuman(usr) || isrobot(usr))) && (src.loc != usr)) || usr.stat || usr.restrained())
 		return
 	drop_contents()
-
-/obj/item/storage/proc/drop_contents()
-	hide_from(usr)
-	var/turf/T = get_turf(src)
-	for(var/obj/item/I in contents)
-		remove_from_storage(I, T)
-
-/obj/item/storage/Initialize(mapload)
-	. = ..()
-
-	if(allow_quick_empty)
-		add_obj_verb(src, /obj/item/storage/verb/quick_empty)
-	else
-		remove_obj_verb(src, /obj/item/storage/verb/quick_empty)
-
-	if(allow_quick_gather)
-		add_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
-	else
-		remove_obj_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
-
-	src.boxes = new /atom/movable/screen/storage(  )
-	src.boxes.name = "storage"
-	src.boxes.master = src
-	src.boxes.icon_state = "block"
-	src.boxes.screen_loc = storage_ui_default
-
-	src.storage_start = new /atom/movable/screen/storage(  )
-	src.storage_start.name = "storage"
-	src.storage_start.master = src
-	src.storage_start.icon_state = "storage_start"
-	src.storage_start.screen_loc = storage_ui_default
-
-	src.storage_continue = new /atom/movable/screen/storage(  )
-	src.storage_continue.name = "storage"
-	src.storage_continue.master = src
-	src.storage_continue.icon_state = "storage_continue"
-	src.storage_continue.screen_loc = storage_ui_default
-
-	src.storage_end = new /atom/movable/screen/storage(  )
-	src.storage_end.name = "storage"
-	src.storage_end.master = src
-	src.storage_end.icon_state = "storage_end"
-	src.storage_end.screen_loc = storage_ui_default
-
-	src.stored_start = new /atom/movable //we just need these to hold the icon
-	src.stored_start.icon_state = "stored_start"
-
-	src.stored_continue = new /atom/movable
-	src.stored_continue.icon_state = "stored_continue"
-
-	src.stored_end = new /atom/movable
-	src.stored_end.icon_state = "stored_end"
-
-	src.closer = new /atom/movable/screen/close(  )
-	src.closer.master = src
-	src.closer.icon_state = "storage_close"
-	src.closer.hud_layerise()
-	orient2hud()
-
-	populate_contents_legacy()
-
-	PopulateContents()
-
-	//calibrate_size()			//Let's not!
-
-/obj/item/storage/proc/populate_contents_legacy()
-	if(LAZYLEN(starts_with) && !empty)
-		for(var/newtype in starts_with)
-			var/count = starts_with[newtype] || 1 //Could have left it blank.
-			while(count)
-				count--
-				new newtype(src)
-		starts_with = null //Reduce list count.
-
-/obj/item/storage/proc/PopulateContents()
-
 
 ///Prevents spawned containers from being too small for their contents.
 /obj/item/storage/proc/calibrate_size()

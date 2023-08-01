@@ -337,23 +337,9 @@
 //* traits & trait hooks
 
 /datum/material/proc/init_traits()
-	for(var/i in 1 to length(material_Traits))
-		if(ispath(material_traits[i]))
-			material_traits[i] = new material_traits[i]
-
-/datum/material/proc/register_object(atom/what)
-	for(var/datum/material_trait/trait as anything in material_traits)
-		if(trait.material_trait_flags & MATERIAL_TRAIT_REGISTRATION)
-			trait.on_add(what)
-
-/datum/material/proc/unregister_object(atom/what)
-	for(var/datum/material_trait/trait as anything in material_traits)
-		if(trait.material_trait_flags & MATERIAL_TRAIT_REGISTRATION)
-			trait.on_remove(what)
-
-/datum/material/proc/on_examine(atom/what, list/examine_list, atom/examiner, distance)
-	for(var/datum/material_trait/trait as anything in material_traits)
-		if(trait.material_trait_flags & MATERIAL_TRAIT_EXAMINE)
-			trait.on_examine(what, examine_list, examiner, distance)
-
-#warn processing
+	for(var/i in 1 to length(material_traits))
+		var/key = material_traits[i]
+		var/val = material_traits[key]
+		if(ispath(key))
+			material_traits[i] = SSmaterials.material_traits[key]
+			material_traits[key] = val

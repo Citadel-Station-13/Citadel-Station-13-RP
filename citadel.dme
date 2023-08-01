@@ -1481,6 +1481,7 @@
 #include "code\game\objects\items\gunbox.dm"
 #include "code\game\objects\items\holosign_creator.dm"
 #include "code\game\objects\items\inducer.dm"
+#include "code\game\objects\items\inflatables.dm"
 #include "code\game\objects\items\latexballoon.dm"
 #include "code\game\objects\items\offhand.dm"
 #include "code\game\objects\items\paintkit.dm"

@@ -46,14 +46,7 @@
 
 /obj/item/material/twohanded/update_force()
 	base_name = name
-	if(material.name == "supermatter")
-		damtype = BURN //its hot
-		force_wielded = 150 //double the force of a durasteel claymore.
-		force_unwielded = 150 //double the force of a durasteel claymore.
-		armor_penetration = 100 //regardless of armor
-		throw_force = 150
-		damage_force = force_unwielded
-		return
+	#warn impl
 	if(sharp || edge)
 		force_wielded = material.get_edge_damage()
 	else

@@ -51,65 +51,37 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/gravemarker/attackby(obj/item/W, mob/user as mob)
-	if(W.is_screwdriver())
+/obj/structure/gravemarker/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(I.is_screwdriver())
+		var/datum/material/material = get_primary_material()
+		var/time_mult = (material.regex_this_hardness > 0)? material.regex_this_hardness / 100 : 1 / (material.regex_this_hardness / 100)
 		var/carving_1 = sanitizeSafe(input(user, "Who is \the [src.name] for?", "Gravestone Naming", null)  as text, MAX_NAME_LEN)
 		if(carving_1)
 			user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
-			if(do_after(user, material.hardness * W.tool_speed))
+			if(do_after(user, time_mult * 2 SECONDS * I.tool_speed))
 				user.visible_message("[user] carves something into \the [src.name].", "You carve your message into \the [src.name].")
 				grave_name += carving_1
 				update_icon()
 		var/carving_2 = sanitizeSafe(input(user, "What message should \the [src.name] have?", "Epitaph Carving", null)  as text, MAX_NAME_LEN)
 		if(carving_2)
 			user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
-			if(do_after(user, material.hardness * W.tool_speed))
+			if(do_after(user, time_mult * 2 SECONDS * I.tool_speed))
 				user.visible_message("[user] carves something into \the [src.name].", "You carve your message into \the [src.name].")
 				epitaph += carving_2
 				update_icon()
 		return
-	if(W.is_wrench())
+	if(I.is_wrench())
+		var/datum/material/material = get_primary_material()
+		var/time_mult = (material.regex_this_hardness > 0)? material.regex_this_hardness / 100 : 1 / (material.regex_this_hardness / 100)
 		user.visible_message("[user] starts taking down \the [src.name].", "You start taking down \the [src.name].")
-		if(do_after(user, material.hardness * W.tool_speed))
+		if(do_after(user, time_mult * 2 SECONDS * I.tool_speed))
 			user.visible_message("[user] takes down \the [src.name].", "You take down \the [src.name].")
 			dismantle()
 	..()
 
-/obj/structure/gravemarker/bullet_act(var/obj/projectile/Proj)
-	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage)
-		return
-
-	..()
-	damage(proj_damage)
-
-	return
-
-/obj/structure/gravemarker/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			visible_message("<span class='danger'>\The [src] is blown apart!</span>")
-			qdel(src)
-			return
-		if(2.0)
-			visible_message("<span class='danger'>\The [src] is blown apart!</span>")
-			if(prob(50))
-				dismantle()
-			else
-				qdel(src)
-			return
-
-/obj/structure/gravemarker/proc/damage(var/damage)
-	health -= damage
-	if(health <= 0)
-		visible_message("<span class='danger'>\The [src] falls apart!</span>")
-		dismantle()
-
-/obj/structure/gravemarker/proc/dismantle()
-	material.place_dismantled_product(get_turf(src))
-	qdel(src)
-	return
-
+/obj/structure/gravemarker/drop_products(method, atom/where)
+	. = ..()
+	material.place_dismantled_product(where, method == ATOM_DECONSTRUCT_DISASSEMBLED? 5 : 3)
 
 /obj/structure/gravemarker/verb/rotate_clockwise()
 	set name = "Rotate Grave Marker Clockwise"

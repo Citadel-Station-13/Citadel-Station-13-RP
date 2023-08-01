@@ -9,6 +9,8 @@
  * @params
  * * significance - relative amount of this material used should be a multiplier of MATERIAL_SIGNIFICANCE_BASELINE
  * * mob_armor - is this going to be used as mob armor? mob armor generally won't have vulnerability.
+ *
+ * @return /datum/armor instance
  */
 /datum/material/proc/create_armor(significance = MATERIAL_SIGNIFICANCE_BASELINE, mob_armor)
 	#warn params
@@ -19,6 +21,8 @@
  *
  * @params
  * * materials - material instances associated to significance.
+ *
+ * @return /datum/armor instance
  */
 /datum/controller/subsystem/materials/proc/combined_materials_armor(list/datum/material/materials)
 	#warn impl
@@ -29,14 +33,10 @@
  *
  * @params
  * * materials - material instances associated to significance. first is lowest; put exterior armors on last!
+ *
+ * @return /datum/armor instance
  */
 /datum/controller/subsystem/materials/proc/reinforcing_materials_armor(list/datum/material/materials)
-	#warn impl
-
-/**
- * imprint damage onto an item directly
- */
-/datum/controller/subsystem/materials/proc/imprint_material_melee_stats(datum/material/material, obj/item/item_or_items)
 	#warn impl
 
 /**
@@ -46,6 +46,6 @@
  *
  * @return list(damage, armorflag, tier, mode, throwforce, throwspeed)
  */
-/datum/material/proc/melee_stats(initial_modes)
+/datum/material/proc/melee_stats(initial_modes, multiplier = 1)
 	#warn impl
 

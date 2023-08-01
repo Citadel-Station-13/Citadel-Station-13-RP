@@ -135,13 +135,14 @@
 	var/fluorescent
 
 	//? Materials
-	#warn hook + lazy tick support
-	/// scratch list for material traits to operate on.
+	/// combined material trait flags
 	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
-	var/list/material_traits_data
-	/// list of material trait refs that are ticking
+	var/material_trait_flags = NONE
+	/// material traits on us, associated to metadata
 	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
-	var/list/material_traits_ticking
+	var/list/datum/material_trait/material_traits
+	/// material trait metadata when [material_traits] is a single trait. null otherwise.
+	var/material_traits_data
 	/// material trait relative strength
 	/// applies to all traits globally as opposed to just one material parts,
 	/// because this is at /atom level.
@@ -462,6 +463,8 @@
 				. += SPAN_NOTICE("It has [reagents.total_volume] unit\s left.")
 			else
 				. += SPAN_DANGER("It's empty.")
+
+	MATERIAL_TRAIT_INVOCATION(src, MATERIAL_TRAIT_EXAMINE, on_examine, ., user, dist)
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 

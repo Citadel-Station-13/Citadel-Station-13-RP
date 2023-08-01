@@ -82,7 +82,7 @@
 	/// * This should still be set even if you are implementing material_parts yourself!
 	//  todo: abstraction API for this when we need it.
 	var/list/material_costs
-	/// material part considered primary. This is the only material that traits apply to, by default.
+	/// material part considered primary.
 	var/material_primary
 	/// make the actual materials multiplied by this amount. used by lathes to prevent duping with efficiency upgrades.
 	var/material_multiplier = 1

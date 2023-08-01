@@ -1,30 +1,3 @@
-/obj/item/inflatable
-	name = "inflatable wall"
-	desc = "A folded membrane which rapidly expands into a large cubical shape on activation."
-	icon = 'icons/obj/inflatable.dmi'
-	icon_state = "folded_wall"
-	w_class = ITEMSIZE_NORMAL
-	var/deploy_path = /obj/structure/inflatable
-
-/obj/item/inflatable/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	inflate(user,user.loc)
-
-/obj/item/inflatable/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	..(target, user)
-	if(!user)
-		return
-	if(!user.Adjacent(target))
-		to_chat(user,"You can't reach!")
-		return
-	if(istype(target, /turf))
-		inflate(user,target)
-
-/obj/item/inflatable/CtrlClick(mob/user)
-	inflate(user,src.loc)
-
 /obj/structure/inflatable
 	name = "inflatable wall"
 	desc = "An inflated membrane. Do not puncture."
@@ -39,6 +12,8 @@
 	integrity = 30
 	integrity_max = 30
 
+	hit_sound_brute = 'sound/effects/Glasshit.ogg'
+
 /obj/structure/inflatable/Initialize(mapload)
 	. = ..()
 	update_nearby_tiles()
@@ -47,64 +22,11 @@
 	update_nearby_tiles()
 	return ..()
 
-/obj/structure/inflatable/bullet_act(var/obj/projectile/Proj)
-	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage) return
-
-	health -= proj_damage
-	..()
-	if(health <= 0)
-		puncture()
-	return
-
-/obj/structure/inflatable/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			puncture()
-			return
-		if(3.0)
-			if(prob(50))
-				puncture()
-				return
-
 /obj/structure/inflatable/blob_act()
 	puncture()
 
-/obj/structure/inflatable/attack_hand(mob/user, list/params)
-		add_fingerprint(user)
-		return
-
-/obj/structure/inflatable/attackby(obj/item/W as obj, mob/user as mob)
-	if(!istype(W)) return
-
-	if (can_puncture(W))
-		visible_message("<span class='danger'>[user] pierces [src] with [W]!</span>")
-		puncture()
-	if(W.damtype == BRUTE || W.damtype == BURN)
-		hit(W.damage_force)
-		..()
-	return
-
-/obj/structure/inflatable/proc/hit(var/damage, var/sound_effect = 1)
-	health = max(0, health - damage)
-	if(sound_effect)
-		playsound(loc, 'sound/effects/Glasshit.ogg', 75, 1)
-	if(health <= 0)
-		puncture()
-
 /obj/structure/inflatable/CtrlClick()
 	hand_deflate()
-
-/obj/item/inflatable/proc/inflate(var/mob/user,var/location)
-	playsound(location, 'sound/items/zip.ogg', 75, 1)
-	to_chat(user,"<span class='notice'>You inflate [src].</span>")
-	var/obj/structure/inflatable/R = new deploy_path(location)
-	src.transfer_fingerprints_to(R)
-	R.add_fingerprint(user)
-	qdel(src)
 
 /obj/structure/inflatable/proc/deflate()
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
@@ -149,13 +71,6 @@
 		visible_message("<span class='danger'>The [src] deflates!</span>")
 		spawn(1) puncture()
 	return 1
-
-/obj/item/inflatable/door/
-	name = "inflatable door"
-	desc = "A folded membrane which rapidly expands into a simple door on activation."
-	icon = 'icons/obj/inflatable.dmi'
-	icon_state = "folded_door"
-	deploy_path = /obj/structure/inflatable/door
 
 /obj/structure/inflatable/door //Based on mineral door code
 	name = "inflatable door"
@@ -246,47 +161,3 @@
 	var/obj/item/inflatable/door/torn/R = new /obj/item/inflatable/door/torn(loc)
 	src.transfer_fingerprints_to(R)
 	qdel(src)
-
-/obj/item/inflatable/torn
-	name = "torn inflatable wall"
-	desc = "A folded membrane which rapidly expands into a large cubical shape on activation. It is too torn to be usable."
-	icon = 'icons/obj/inflatable.dmi'
-	icon_state = "folded_wall_torn"
-
-/obj/item/inflatable/torn/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	to_chat(user, "<span class='notice'>The inflatable wall is too torn to be inflated!</span>")
-	add_fingerprint(user)
-
-/obj/item/inflatable/door/torn
-	name = "torn inflatable door"
-	desc = "A folded membrane which rapidly expands into a simple door on activation. It is too torn to be usable."
-	icon = 'icons/obj/inflatable.dmi'
-	icon_state = "folded_door_torn"
-
-/obj/item/inflatable/door/torn/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	to_chat(user, "<span class='notice'>The inflatable door is too torn to be inflated!</span>")
-	add_fingerprint(user)
-
-/obj/item/storage/briefcase/inflatable
-	name = "inflatable barrier box"
-	desc = "Contains inflatable walls and doors."
-	icon_state = "inf_box"
-	w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_NORMAL * 7
-	can_hold = list(/obj/item/inflatable)
-
-/obj/item/storage/briefcase/inflatable/New()
-	..()
-	new /obj/item/inflatable/door(src)
-	new /obj/item/inflatable/door(src)
-	new /obj/item/inflatable/door(src)
-	new /obj/item/inflatable(src)
-	new /obj/item/inflatable(src)
-	new /obj/item/inflatable(src)
-	new /obj/item/inflatable(src)

@@ -63,8 +63,8 @@
 	..()
 	var/obj/item/finished
 	if(istype(I, /obj/item/material/shard) || istype(I, /obj/item/material/butterflyblade))
-		var/obj/item/material/tmp_shard = I
-		finished = new /obj/item/material/twohanded/spear(get_turf(user), tmp_shard.material.name)
+		var/obj/item/material/shard/tmp_shard = I
+		finished = new /obj/item/material/twohanded/spear(get_turf(user), tmp_shard.get_primary_material())
 		to_chat(user, "<span class='notice'>You fasten \the [I] to the top of the rod with the cable.</span>")
 	else if(I.is_wirecutter())
 		finished = new /obj/item/melee/baton/cattleprod(get_turf(user))

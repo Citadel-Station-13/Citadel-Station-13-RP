@@ -6,6 +6,8 @@ SUBSYSTEM_DEF(materials)
 
 	/// material by id
 	var/list/material_lookup
+	/// material trait by path
+	var/list/material_traits
 	/// legacy material lookup *vomit
 	var/list/legacy_material_lookup
 
@@ -15,31 +17,58 @@ SUBSYSTEM_DEF(materials)
 
 	#warn fire logic
 	/// ticked atoms
-	var/list/ticking
+	var/list/ticking = list()
 	/// currentrun
 	var/list/currentrun
 
 /datum/controller/subsystem/materials/Initialize()
+	initialize_material_traits()
 	initialize_materials()
 	return ..()
 
 /datum/controller/subsystem/materials/Recover()
+	initialize_material_traits()
 	initialize_materials()
+	if(islist(SSmaterials.ticking))
+		// todo: better sanitization
+		src.ticking = SSmaterials.ticking
+	else
+		src.ticking = list()
 	return ..()
 
 /datum/controller/subsystem/materials/proc/add_ticked_object(atom/A)
 	if(A.atom_flags & ATOM_MATERIALS_TICKING)
 		return
 	A.atom_flags |= ATOM_MATERIALS_TICKING
-	#warn impl
+	ticking += A
 
 /datum/controller/subsystem/materials/proc/remove_ticked_object(atom/A)
 	if(!(A.atom_flags & ATOM_MATERIALS_TICKING))
 		return
 	A.atom_flags &= ~ATOM_MATERIALS_TICKING
-	#warn impl
+	ticking -= A
 
 /datum/controller/subsystem/materials/fire(resumed)
+	if(!resumed)
+		src.currentrun = ticking.Copy()
+	var/list/currentrun = src.currentrun
+	var/atom/A
+	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : max(world.tick_lag, wait * 0.1)
+	var/i
+	var/datum/material_trait/trait
+	for(i in length(currentrun) to 1 step -1)
+		A = currentrun[A]
+		if(length(A.material_traits))
+			for(trait as anything in A.material_traits)
+				if(!(trait.material_trait_flags & MATERIAL_TRAIT_TICKING))
+					continue
+				trait.on_tick(A, A.material_traits[trait], dt)
+		else
+			trait = A.material_traits
+			trait.on_tick(A, A.material_traits_data, dt)
+		if(MC_TICK_CHECK)
+			break
+	currentrun.len -= (length(currentrun) - i + 1)
 	#warn impl
 
 /datum/controller/subsystem/materials/proc/initialize_materials()
@@ -59,6 +88,15 @@ SUBSYSTEM_DEF(materials)
 		// why are we doing initial() here? because the unit test checks for initial.
 		material_lookup[initial(mat_ref.id)] = mat_ref
 		legacy_material_lookup[lowertext(mat_ref.name)] = mat_ref
+
+/datum/controller/subsystem/materials/proc/initialize_material_traits()
+	material_traits = list()
+	for(var/path in subtypesof(/datum/material_trait))
+		var/datum/material/mat_trait = path
+		if(initial(mat_trait.abstract_type) == path)
+			continue
+		mat_trait = new path
+		material_traits[path] = mat_trait
 
 /**
  * fetches material instance
