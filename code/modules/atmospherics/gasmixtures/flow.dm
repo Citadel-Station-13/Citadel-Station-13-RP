@@ -132,7 +132,7 @@
 	total_specific_power /= ATMOS_ABSTRACT_SCRUB_EFFICIENCY
 
 	// limit by both moles and power
-	limit_moles = isnull(limit_flow)? total_filterable_moles : min(max(mole_boost, total_filterable_moles * (limit_flow / source.volume)), total_filterable_moles)
+	var/limit_moles = isnull(limit_flow)? total_filterable_moles : min(max(mole_boost, total_filterable_moles * (limit_flow / source.volume)), total_filterable_moles)
 	if(!isnull(limit_power))
 		limit_moles = min(limit_moles, limit_power / total_specific_power)
 

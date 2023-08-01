@@ -45,7 +45,7 @@
 	var/image/overlay_input_beaker
 	var/image/overlay_off
 	var/image/overlay_ready
-	var/image/overlay_cooling
+	var/image/overlay_coolingT
 	var/image/overlay_heating
 	var/image/overlay_dumping
 	var/image/overlay_connected
