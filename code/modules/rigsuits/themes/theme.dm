@@ -37,6 +37,8 @@
 	var/piece_state_append
 	/// sealed state append
 	var/sealed_state_append = "-sealed"
+	/// slot this goes in - SLOT_ID_HANDS for an inhand item. specific-hand binding not supported yet.
+	var/equip_slot
 
 /**
  * returns rig_piece component
