@@ -10,6 +10,7 @@
 /area/crew_quarters/sleep/Dorm_1)
 "ab" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "ac" = (
@@ -1482,6 +1483,7 @@
 /area/maintenance/dormitory)
 "eJ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "eK" = (
@@ -6259,6 +6261,7 @@
 	name = "EXTERNAL AIRLOCK"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "sB" = (
@@ -9592,6 +9595,7 @@
 "CJ" = (
 /obj/spawner/window/low_wall/full/firelocks/nogrille,
 /obj/structure/curtain/black,
+/obj/effect/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
 "CK" = (
@@ -13233,6 +13237,7 @@
 "Or" = (
 /obj/spawner/window/low_wall/full/firelocks/nogrille,
 /obj/structure/curtain/black,
+/obj/effect/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/coffee_shop)
 "Ou" = (
@@ -14239,6 +14244,7 @@
 /area/crew_quarters/sleep/Dorm_1)
 "RB" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/refinery)
 "RD" = (
@@ -14639,6 +14645,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"SJ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/gear_painter,
+/turf/simulated/floor/tiled/dark,
+/area/vacant/vacant_shop)
 "SK" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -15906,6 +15919,7 @@
 /area/crew_quarters/showers)
 "Wg" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "Wh" = (
@@ -16159,6 +16173,7 @@
 /area/hallway/primary/port)
 "WP" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/qm)
 "WQ" = (
@@ -16465,6 +16480,7 @@
 /area/station/stairs_two)
 "XH" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/beastybrown,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/storage)
 "XI" = (
@@ -17146,6 +17162,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
+"ZE" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/structure/curtain/open/bed{
+	anchored = 1;
+	name = "curtain"
+	},
+/obj/effect/paint_stripe/palebottlegreen,
+/turf/simulated/floor/plating,
+/area/crew_quarters/bar)
 "ZF" = (
 /obj/structure/kitchenspike,
 /turf/simulated/floor/tiled/freezer,
@@ -19903,18 +19928,18 @@ ii
 ii
 ii
 Uv
-Yj
-Yj
+ZE
+ZE
 Uv
-Yj
-Yj
+ZE
+ZE
 Uv
-Yj
+ZE
 Uv
 Uv
-Yj
-Yj
-Yj
+ZE
+ZE
+ZE
 Uv
 ii
 ii
@@ -27288,7 +27313,7 @@ Rr
 mQ
 Zj
 gf
-gf
+SJ
 Pe
 mw
 IQ
