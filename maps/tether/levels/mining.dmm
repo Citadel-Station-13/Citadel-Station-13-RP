@@ -20,7 +20,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "ag" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/outpost/mining_main/hangar)
 "ah" = (
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -50,7 +50,7 @@
 /area/mine/explored)
 "am" = (
 /obj/machinery/door/blast/regular,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/outpost/mining_main/hangar)
 "an" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -137,10 +137,10 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "ay" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/outpost/mining_main/maintenance)
 "az" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/outpost/mining_main/break_room)
 "aA" = (
 /obj/structure/cable/heavyduty{
@@ -562,6 +562,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "bp" = (
@@ -704,20 +705,18 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "bG" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/prepainted/cargo,
 /area/outpost/mining_main/secondary_gear_storage)
 "bH" = (
 /obj/machinery/telecomms/relay/preset/mining,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "bI" = (
-/obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
+/obj/spawner/window/low_wall/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "bJ" = (
@@ -834,27 +833,16 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "bS" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
+/obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
+/obj/spawner/window/low_wall/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/secondary_gear_storage)
 "bT" = (
-/obj/structure/closet/secure_closet/miner,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
+/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/low_wall/borosillicate/full,
+/turf/simulated/floor/plating,
 /area/outpost/mining_main/secondary_gear_storage)
 "bU" = (
 /turf/simulated/floor/tiled,
@@ -921,17 +909,10 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "cd" = (
-/obj/structure/closet/secure_closet/miner,
-/obj/machinery/camera/network/mining{
-	dir = 4
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/secondary_gear_storage)
 "ce" = (
 /obj/structure/table/woodentable,
@@ -969,15 +950,8 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "cj" = (
-/obj/structure/closet/secure_closet/miner,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/outpost/mining_main/secondary_gear_storage)
+/turf/simulated/wall/prepainted/cargo,
+/area/outpost/mining_main/dorms)
 "ck" = (
 /obj/effect/floor_decal/rust/steel_decals_rusted1,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -1073,12 +1047,11 @@
 /area/mine/explored)
 "cv" = (
 /obj/structure/reagent_dispensers/fueltank,
-/obj/effect/floor_decal/borderfloor{
-	dir = 10
+/obj/machinery/camera/network/mining{
+	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 10
-	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "cw" = (
@@ -1151,6 +1124,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/hangar)
 "cC" = (
@@ -1294,15 +1268,13 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "cM" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
+/obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/spawner/window/low_wall/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/break_room)
 "cN" = (
@@ -1461,6 +1433,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/secondary_gear_storage)
 "dc" = (
@@ -1520,6 +1493,9 @@
 	id_tag = "mining_outpost_airlock_inner";
 	locked = 1
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/airlock)
 "hw" = (
@@ -1531,21 +1507,60 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "hK" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/outpost/mining_main/dorms)
+"iD" = (
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/secondary_gear_storage)
+"je" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/outpost/mining_main/secondary_gear_storage)
+"jG" = (
+/obj/machinery/door/airlock/glass/mining,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/secondary_gear_storage)
+"mi" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/outpost/mining_main/secondary_gear_storage)
 "rH" = (
 /obj/effect/floor_decal/rust/steel_decals_rusted1{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/airlock)
+"rW" = (
+/turf/simulated/wall/prepainted/cargo,
+/area/outpost/mining_main/maintenance)
+"sW" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/outpost/mining_main/secondary_gear_storage)
 "tk" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
+/obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
+/obj/spawner/window/low_wall/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/break_room)
 "tt" = (
@@ -1605,12 +1620,10 @@
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/dorms)
 "vo" = (
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/machinery/door/firedoor/glass{
+	dir = 4
 	},
-/obj/structure/grille,
+/obj/spawner/window/low_wall/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "vx" = (
@@ -1636,9 +1649,25 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/outpost/mining_main/airlock)
+"yH" = (
+/obj/structure/closet/secure_closet/miner,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/secondary_gear_storage)
 "zI" = (
 /turf/unsimulated/mineral/virgo3b,
 /area/mine/explored)
+"Br" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/outpost/mining_main/secondary_gear_storage)
 "BD" = (
 /obj/machinery/embedded_controller/radio/airlock/phoron{
 	id_tag = "mining_outpost_airlock";
@@ -1683,12 +1712,20 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
 /obj/machinery/door/airlock/mining{
 	name = "Utility Room"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/maintenance)
+"Dj" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/outpost/mining_main/secondary_gear_storage)
 "Dr" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -1748,6 +1785,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/dorms)
+"Fk" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/secondary_gear_storage)
 "Fn" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -1764,11 +1810,7 @@
 "FI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/airlock)
 "Gs" = (
@@ -1784,8 +1826,14 @@
 /area/outpost/mining_main/airlock)
 "GU" = (
 /obj/machinery/status_display,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/outpost/mining_main/airlock)
+"Hj" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/outpost/mining_main/secondary_gear_storage)
 "HP" = (
 /obj/effect/floor_decal/rust/steel_decals_rusted1{
 	dir = 8
@@ -1803,6 +1851,10 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/outpost/mining_main/airlock)
+"IX" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/monotile,
+/area/outpost/mining_main/secondary_gear_storage)
 "IY" = (
 /obj/effect/step_trigger/teleporter/to_underdark{
 	dir = 4;
@@ -1810,6 +1862,12 @@
 	},
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/mine/explored)
+"Jo" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/structure/table/woodentable,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/secondary_gear_storage)
 "JA" = (
 /obj/item/bedsheet/orange,
 /obj/structure/bed/padded,
@@ -1832,15 +1890,31 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/dorms)
+"MH" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/maintenance)
 "Nh" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/mine/explored)
+"Oe" = (
+/obj/machinery/hyperpad/centre{
+	map_pad_id = "lavaland_station";
+	map_pad_link_id = "lavaland_away";
+	newcolor = "#fcba03"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/outpost/mining_main/secondary_gear_storage)
 "Pv" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/atmospherics/portables_connector,
@@ -1848,7 +1922,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "Px" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/outpost/mining_main/airlock)
 "QI" = (
 /obj/structure/sign/mining,
@@ -1872,22 +1946,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/airlock)
 "Sq" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/turf/simulated/floor/plating,
-/area/outpost/mining_main/break_room)
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/outpost/mining_main/secondary_gear_storage)
 "SF" = (
-/obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
+/obj/spawner/window/low_wall/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "SW" = (
@@ -1897,6 +1960,18 @@
 "Uk" = (
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/break_room)
+"Up" = (
+/obj/machinery/camera/network/mining{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/secondary_gear_storage)
 "Uy" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -1925,12 +2000,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/airlock)
 "VK" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
+/obj/spawner/window/low_wall/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/break_room)
 "Wy" = (
@@ -1952,21 +2023,29 @@
 	},
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/dorms)
+"Xw" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 10
+	},
+/obj/structure/table/woodentable,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/secondary_gear_storage)
 "XD" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "ZC" = (
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/grille,
+/obj/spawner/window/low_wall/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "ZV" = (
@@ -2540,7 +2619,7 @@ ab
 ab
 ab
 ab
-ab
+cu
 ab
 ab
 ab
@@ -2821,10 +2900,10 @@ am
 ag
 ag
 ag
-ab
-ab
-ab
-ab
+bS
+bS
+bS
+Sq
 ab
 ab
 ab
@@ -2963,10 +3042,10 @@ aw
 aC
 aD
 ag
-ab
-ab
-ab
-ab
+mi
+je
+Hj
+bT
 ab
 ab
 ab
@@ -3105,10 +3184,10 @@ aq
 aK
 aE
 ag
-ab
-ab
-ab
-ab
+cd
+Oe
+IX
+bT
 ab
 ay
 vo
@@ -3247,10 +3326,10 @@ aq
 aK
 bQ
 ag
-ab
-ab
-ab
-ab
+Br
+Dj
+sW
+bT
 ab
 ay
 aP
@@ -3389,11 +3468,11 @@ aq
 aK
 bR
 ag
-ab
-ab
-ab
-ab
-ab
+bG
+jG
+bG
+Sq
+Sq
 ay
 aQ
 ba
@@ -3531,12 +3610,12 @@ aq
 bg
 bV
 ag
-ab
-cu
-ab
-ab
-ab
-ay
+bO
+bU
+Up
+Fk
+Xw
+rW
 aI
 bb
 bj
@@ -3673,16 +3752,16 @@ aq
 aK
 aX
 ag
-ab
-ab
-ab
-ab
-ab
-ay
+yH
+bU
+bU
+bU
+Jo
+rW
 aS
 bc
 bk
-bp
+MH
 bx
 bF
 SF
@@ -3815,12 +3894,12 @@ aq
 aK
 aY
 ag
-ab
-ab
-ab
-ab
-ab
-ay
+yH
+bU
+bU
+bU
+Jo
+rW
 aT
 bd
 bl
@@ -3957,11 +4036,11 @@ aq
 aK
 aY
 ag
-bG
-bG
-bG
-bG
-bG
+yH
+bU
+bU
+bU
+Jo
 bG
 aU
 be
@@ -4099,18 +4178,18 @@ aq
 aK
 cw
 ag
-bO
-bT
-cd
-cj
+iD
+bU
+bU
+bU
 cv
 bG
-ay
+rW
 Cy
-ay
-ay
-ay
-ay
+rW
+rW
+rW
+rW
 ay
 ab
 aF
@@ -4250,7 +4329,7 @@ bG
 aR
 cA
 cR
-hK
+cj
 WK
 JA
 hK
@@ -4392,7 +4471,7 @@ bG
 cD
 aW
 bi
-hK
+cj
 Fa
 uE
 hK
@@ -4534,9 +4613,9 @@ db
 dc
 dd
 Dr
-hK
+cj
 Ma
-hK
+cj
 hK
 ab
 aF
@@ -4672,7 +4751,7 @@ bS
 bS
 bS
 bS
-bG
+Sq
 cn
 cF
 ZV
@@ -5098,7 +5177,7 @@ ab
 ab
 ab
 ab
-Sq
+VK
 tk
 cM
 Px
