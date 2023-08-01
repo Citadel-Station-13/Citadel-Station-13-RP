@@ -7,9 +7,9 @@
 
 	atmos_portable_ui_flags = ATMOS_PORTABLE_UI_TOGGLE_POWER | ATMOS_PORTABLE_UI_SEE_POWER | ATMOS_PORTABLE_UI_SEE_FLOW
 	power_maximum = 7500
-	flow_maximum = 1000
+	flow_maximum = 5000
 
-	volume = 750
+	volume = 1000
 
 	/// scrubbing ids
 	var/list/scrubbing_ids
@@ -17,6 +17,8 @@
 	var/scrubbing_groups
 	/// molar rate current
 	var/transfer_current = 0
+	/// minimum moles to scrub per tick (if enough power) even if flow is not enough
+	var/scrub_mole_boost = 50
 
 /obj/machinery/portable_atmospherics/powered/scrubber/Initialize(mapload)
 	. = ..()
@@ -96,18 +98,13 @@
 	if(on && cell?.charge)
 		var/datum/gas_mixture/scrubbing = isnull(holding)? loc.return_air() : holding.air_contents
 		var/old_mols = scrubbing.total_moles
-		var/mols = (flow_setting / scrubbing.volume) * old_mols
-		power_current = xgm_scrub_gas(scrubbing, air_contents, scrubbing_ids, scrubbing_groups, mols, power_setting * efficiency_multiplier) / efficiency_multiplier
+		// todo: compensate for delta_time, right now this is not stable and will go faster/slower based on SSair tick rate.
+		power_current = xgm_scrub_gas_volume(scrubbing, air_contents, scrubbing_ids, scrubbing_groups, flow_setting / scrubbing.group_multiplier, power_setting * efficiency_multiplier, scrub_mole_boost) / efficiency_multiplier
 		transfer_current = (old_mols - scrubbing.total_moles) / delta_time
 		update_connected_network()
 
 	if(power_current)
-		cell.use_scaled(DYNAMIC_W_TO_CELL_UNITS(power_current, delta_time))
-		if(!cell.charge)
-			power_change()
-			update_icon()
-
-#warn below
+		use_power(power_current, dt = delta_time)
 
 //Huge scrubber
 /obj/machinery/portable_atmospherics/powered/scrubber/huge
@@ -115,8 +112,10 @@
 	icon = 'icons/obj/atmos_vr.dmi'
 	icon_state = "scrubber:0"
 	anchored = TRUE
-	volume = 500000
-	volume_rate = 7000
+	// just 1 million because no way to offload. yet.
+	volume = 1000000
+	flow_maximum = 50000
+	use_cell = FALSE
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50		//internal circuitry, friction losses and stuff
@@ -152,32 +151,6 @@
 	if (old_stat != machine_stat)
 		update_icon()
 
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/process(delta_time)
-	if(!anchored || (machine_stat & (NOPOWER|BROKEN)))
-		on = 0
-		last_flow_rate_legacy = 0
-		last_power_draw_legacy = 0
-		update_icon()
-	var/new_use_power = 1 + on
-	if(new_use_power != use_power)
-		update_use_power(new_use_power)
-	if(!on)
-		return
-
-	var/power_draw = -1
-
-	var/datum/gas_mixture/environment = loc.return_air()
-
-	var/transfer_moles = min(1, volume_rate/environment.volume)*environment.total_moles
-
-	power_draw = scrub_gas(src, scrubbing_gas, environment, air_contents, transfer_moles, active_power_usage)
-
-	if (power_draw < 0)
-		last_flow_rate_legacy = 0
-		last_power_draw_legacy = 0
-	else
-		use_power(power_draw)
-		update_connected_network()
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/attackby(var/obj/item/I as obj, var/mob/user as mob)
 	if(I.is_wrench())
@@ -202,7 +175,6 @@
 		return
 
 	..()
-
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary
 	name = "Stationary Air Scrubber"

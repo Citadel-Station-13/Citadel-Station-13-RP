@@ -92,6 +92,72 @@
 
 /**
  * @params
+ * * source - mixture to scrub
+ * * sink - mixture to scrub into
+ * * gas_ids - list of gas ids to scrub
+ * * gas_groups - list of gas groups to scrub
+ * * limit_flow - if set, only scrubs this many liters of gas at most from source. this does *NOT* respect group multiplier.
+ * * limit_power - power limit in joules
+ * * mole_boost - ignore limit_flow to filter atleast this many moles. This is so it doesn't take too long to scrub.
+ *
+ * @return power draw
+ */
+/proc/xgm_scrub_gas_volume(datum/gas_mixture/source, datum/gas_mixture/sink, list/gas_ids, gas_groups, limit_flow, limit_power, mole_boost)
+	// not enough to scrub
+	if(source.total_moles < MINIMUM_MOLES_TO_SCRUB)
+		return 0
+
+	// get actually existing gas
+	var/list/filtered_ids
+	if(gas_groups)
+		filtered_ids = list()
+		// sigh; iterate through source
+		for(var/id in source.gas)
+			if(global.gas_data.groups[id] & gas_groups)
+				filtered_ids += id
+		// then get the explicitly filtered ones if needed
+		if(length(gas_ids))
+			filtered_ids |= (source.gas | gas_ids)
+	else if(length(gas_ids))
+		filtered_ids = gas_ids & source.gas
+
+	// gather
+	var/total_filterable_moles = 0
+	var/total_specific_power = 0
+	for(var/id in filtered_ids)
+		if(source.gas[id] < MINIMUM_MOLES_TO_SCRUB)
+			continue
+		total_filterable_moles += source.gas[id]
+		total_specific_power += calculate_specific_power_gas(id, source, sink)
+	total_specific_power /= ATMOS_ABSTRACT_SCRUB_EFFICIENCY
+
+	// limit by both moles and power
+	limit_moles = isnull(limit_flow)? total_filterable_moles : min(max(mole_boost, total_filterable_moles * (limit_flow / source.volume)), total_filterable_moles)
+	if(!isnull(limit_power))
+		limit_moles = min(limit_moles, limit_power / total_specific_power)
+
+	// unlike in the other procs, ratio here is the amount we can filter vs the amount there is to filter
+	var/ratio = limit_moles / total_filterable_moles
+
+	// can't transfer enough
+	if(limit_moles < MINIMUM_MOLES_TO_SCRUB)
+		return 0
+
+	// do the actual scrubbing
+	for(var/id in filtered_ids)
+		var/transfer = source.gas[id] * ratio
+		source.adjust_gas(id, -transfer, FALSE)
+		sink.adjust_gas_temp(id, transfer, source.temperature, FALSE)
+
+	// update values
+	source.update_values()
+	sink.update_values()
+
+	// return power used in J
+	return limit_moles * total_specific_power
+
+/**
+ * @params
  * * source - mixture to filter
  * * sink - mixture to send unfiltered gas into
  * * divert - mixture to send filtered gas into

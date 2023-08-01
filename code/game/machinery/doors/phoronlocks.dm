@@ -92,7 +92,6 @@
 	return 1
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock		//Special scrubber with bonus inbuilt heater
-	volume_rate = 40000
 	active_power_usage = 2000
 	efficiency_multiplier = 4
 	var/target_temp = T20C
