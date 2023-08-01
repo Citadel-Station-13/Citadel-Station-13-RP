@@ -73,3 +73,11 @@
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "harpywings_batmarkings"
 	extra_overlay2 = "neckfur"
+
+/datum/sprite_accessory/wing/angel
+	name = "angel wings"
+	id = "angelwings"
+	icon_state = "angelwings"
+	do_colouration = TRUE
+	color_blend_mode = ICON_MULTIPLY
+	front_behind_system = TRUE

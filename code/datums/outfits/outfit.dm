@@ -5,7 +5,7 @@
 		if(initial(O.abstract_type) == path)
 			continue
 		. += new path
-	tim_sort(., /proc/cmp_name_asc)
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc))
 
 /datum/outfit
 	/// Abstract type - set to self type for abstract outfits.
@@ -171,7 +171,7 @@
 	pda.name = "PDA-[H.real_name] ([assignment])"
 	if(H.client.prefs.ringtone) // if null we use the job default
 		pda.ringtone = H.client.prefs.ringtone
-	tim_sort(GLOB.PDAs, /proc/cmp_name_asc)
+	tim_sort(GLOB.PDAs, GLOBAL_PROC_REF(cmp_name_asc))
 	if(H.equip_to_slot_if_possible(pda, pda_slot))
 		return pda
 	if(H.force_equip_to_slot(pda, /datum/inventory_slot_meta/abstract/put_in_backpack))

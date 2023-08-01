@@ -96,7 +96,7 @@
 		if(listening)
 			UnregisterSignal(listening, COMSIG_MOVABLE_MOVED)
 		listening = loc
-		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/Queue)
+		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, PROC_REF(Queue))
 	if(!isturf(loc) && !isturf(loc.loc))	// only allow nesting 1 deep
 		return
 	// spread
@@ -145,7 +145,7 @@
 	if(listening)
 		UnregisterSignal(listening, COMSIG_MOVABLE_MOVED)
 	if(on && ismovable(loc))
-		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/Queue)
+		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, PROC_REF(Queue))
 		listening = loc
 
 /obj/item/assembly/infra/proc/trigger_beam()
@@ -157,7 +157,7 @@
 		for(var/mob/hearing_mob in get_hearers_in_view(hearing_range, src))
 			hearing_mob.playsound_local(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	cooldown = 2
-	addtimer(CALLBACK(src, /obj/item/assembly/proc/process_cooldown), 10)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/assembly, process_cooldown)), 10)
 
 /obj/item/assembly/infra/ui_interact(mob/user, datum/tgui/ui)
 	if(!secured)

@@ -70,7 +70,7 @@ This actually tests if they have the same entries and values.
 	return tim_sort(L, order >= 0 ? /proc/cmp_records_asc : /proc/cmp_records_dsc)
 
 //any value in a list
-/proc/sortList(list/L, cmp=/proc/cmp_text_asc)
+/proc/sortList(list/L, cmp= GLOBAL_PROC_REF(cmp_text_asc))
 	return tim_sort(L.Copy(), cmp)
 
 //uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead

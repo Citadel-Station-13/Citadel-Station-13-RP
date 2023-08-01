@@ -15,8 +15,8 @@
 		return ELEMENT_INCOMPATIBLE
 	src.modifier = modifier
 	src.slots = islist(slots)? slots : list(slots)
-	RegisterSignal(target, COMSIG_ITEM_EQUIPPED, .proc/on_equip)
-	RegisterSignal(target, COMSIG_ITEM_UNEQUIPPED, .proc/on_unequip)
+	RegisterSignal(target, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equip))
+	RegisterSignal(target, COMSIG_ITEM_UNEQUIPPED, PROC_REF(on_unequip))
 
 /datum/element/vision_granter/Detach(datum/source)
 	. = ..()
