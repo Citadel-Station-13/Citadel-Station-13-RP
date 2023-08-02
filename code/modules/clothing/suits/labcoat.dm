@@ -116,3 +116,8 @@
 	name = "blue-edged labcoat"
 	desc = "A suit that protects against minor chemical spills. This one has blue trim."
 	icon_state = "blue_edge_labcoat"
+
+/obj/item/clothing/suit/storage/toggle/labcoat/ossnecro
+	name = "OSS&NECRO Labcoat"
+	desc = "A flash labcoat with cyan markings. This one is often provided to OSS&NECRO employees as standard equipement. Isn't it similar to the one that the Research Director has?"
+	icon_state = "labcoat_ossnecro"
