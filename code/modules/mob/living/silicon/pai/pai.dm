@@ -264,6 +264,8 @@
 		var/obj/item/clothing/under/U = new_object
 		var/obj/item/clothing/under/under_path = object_path
 		U.snowflake_worn_state = initial(under_path.snowflake_worn_state)
+		if(!length(U.snowflake_worn_state))
+			U.snowflake_worn_state = U.icon_state
 	new_object.forceMove(src.loc)
 	switch_shell(new_object)
 	return TRUE
