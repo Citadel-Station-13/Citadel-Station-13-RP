@@ -180,7 +180,7 @@
 /obj/item/clothing/head/helmet/ashlander/xeno
 	name = "wyrm chitin helmet"
 	desc = "A helmet forged from the head of an invading monster from the stars. These relic suits are now prized symbols of Scorian victory over the invaders."
-	icon_state = "xenoh"
+	icon_state = "surtxenoh"
 	armor_type = /datum/armor/lavaland/xeno
 
 /obj/item/clothing/head/helmet/tactical
