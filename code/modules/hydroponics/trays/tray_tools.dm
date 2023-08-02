@@ -66,8 +66,8 @@
 			last_reagents = null
 			return TRUE
 
-/obj/item/analyzer/plant_analyzer/afterattack(obj/target, mob/user, flag)
-	if(!flag)
+/obj/item/analyzer/plant_analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	var/datum/seed/grown_seed
@@ -152,9 +152,9 @@
 
 	dat += "<h2>Other Data</h2>"
 
-	var/list/tgui_data = grown_seed.get_tgui_analyzer_data()
+	var/list/ui_data = grown_seed.get_tgui_analyzer_data()
 
-	dat += jointext(tgui_data["trait_info"], "<br>\n")
+	dat += jointext(ui_data["trait_info"], "<br>\n")
 
 	var/obj/item/paper/P = new /obj/item/paper(get_turf(src))
 	P.name = "paper - [form_title]"

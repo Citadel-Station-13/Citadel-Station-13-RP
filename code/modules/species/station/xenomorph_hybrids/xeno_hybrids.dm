@@ -48,19 +48,23 @@
 		)
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
-		/mob/living/proc/toggle_pass_table,
 		/mob/living/carbon/human/proc/tie_hair,
-		/mob/living/carbon/human/proc/sonar_ping,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/hybrid_resin,
-		/mob/living/carbon/human/proc/hybrid_plant//replaced from the normal weed node to place a singular weed
 		)
 
-	total_health = 110	//Exoskeleton makes you tougher than baseline
+	abilities = list(
+		/datum/ability/species/sonar,
+		/datum/ability/species/toggle_agility,
+		/datum/ability/species/xenomorph_hybrid/regenerate,
+	)
+	total_health = 150	//Exoskeleton makes you tougher than baseline
 	brute_mod = 0.95 // Chitin is somewhat hard to crack
 	burn_mod = 1.5	// Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.
 	blood_volume = 560	//Baseline
-	darksight = 6 //Better hunters in the dark.
+	vision_innate = /datum/vision/baseline/species_tier_2
 	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 
 	slowdown = -0.2//Speedboost Tesh have -0.5
@@ -93,46 +97,51 @@
 		O_PLASMA =		/obj/item/organ/internal/xenos/plasmavessel/hunter,//Important for the xenomorph abilities, hunter to have a pretty small plasma capacity
 		O_STOMACH =		/obj/item/organ/internal/stomach,
 		O_INTESTINE =	/obj/item/organ/internal/intestine,
-		O_RESIN =		/obj/item/organ/internal/xenos/resinspinner,
+		O_RESIN =		/obj/item/organ/internal/xenos/resinspinner/hybrid,
 		)
 	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
 
 	reagent_tag = IS_XENOHYBRID
 
+	var/heal_rate = 0.5 //Lets just create a set number
+
 /datum/species/xenohybrid/can_breathe_water()
 	return TRUE	//they dont quite breathe
 
-/datum/species/xenohybrid/handle_environment_special(var/mob/living/carbon/human/H)
-	var/heal_amount = min(H.nutrition, 200) / 50 //Not to much else we might as well give them a diona like healing
-	H.nutrition = max(H.nutrition-heal_amount,0)
+/datum/species/xenohybrid/proc/handle_healing_conditions(var/mob/living/carbon/human/H)
+	var/healing_factor = 1
+	if(H.lying)
+		healing_factor *= 1.2
+	if(H.active_regen)
+		if(!H.lying)
+			to_chat(H, SPAN_BOLDWARNING("You need to lie down to benefit from your enhanced regeneration"))
+			H.active_regen = FALSE
+		else if(H.nutrition < 50)
+			to_chat(H, SPAN_BOLDWARNING("You are too hungry to benefit from your enhanced regeneration"))
+			H.active_regen = FALSE
+		healing_factor *= 4
+	var/turf/T = get_turf(H)
+	if(/obj/effect/alien/weeds in T.contents)
+		healing_factor *= 1.1
+	if(/obj/structure/bed/hybrid_nest in T.contents)
+		healing_factor *= 1.2
 
-	if(H.resting)
-		heal_amount *= 1.05//resting allows you to heal a little faster
-	var/fire_damage = H.getFireLoss()
-	if(fire_damage >= heal_amount)
-		H.adjustFireLoss(-heal_amount)
-		heal_amount = 0;
+	return healing_factor // highest value is 6,336
+
+/datum/species/xenohybrid/handle_environment_special(mob/living/carbon/human/H)
+	var/heal_amount = heal_rate * handle_healing_conditions(H)
+
+	var/nutrition_debt = (H.getFireLoss() ? heal_rate : 0)//Heal rate and not heal_amount, since we want to reward taking the modifiers
+	H.adjustFireLoss(-heal_amount)
+	nutrition_debt += (H.getBruteLoss() ? heal_rate : 0)
+	H.adjustBruteLoss(-heal_amount)
+	nutrition_debt += (H.getToxLoss() ? heal_rate : 0)
+	H.adjustToxLoss(-heal_amount)
+
+	H.nutrition -= nutrition_debt
+	if(H.nutrition < 100 || heal_amount <= 0.6)
 		return
-	if(fire_damage < heal_amount)
-		H.adjustFireLoss(-heal_amount)
-		heal_amount -= fire_damage
 
-	var/trauma_damage = H.getBruteLoss()
-	if(trauma_damage >= heal_amount)
-		H.adjustBruteLoss(-heal_amount)
-		heal_amount = 0;
-		return
-	if(trauma_damage < heal_amount)
-		H.adjustBruteLoss(-heal_amount)
-		heal_amount -= trauma_damage
+	if(H.vessel.get_reagent_amount("blood") <= blood_level_safe && H.try_take_nutrition(heal_amount * 4))
+		H.vessel.add_reagent("blood", heal_amount)//instead of IB healing, they regenerate blood a lot faster
 
-	var/posion_damage = H.getToxLoss()
-	if(posion_damage >= heal_amount)
-		H.adjustToxLoss(-heal_amount)
-		heal_amount = 0;
-		return
-	if(posion_damage < heal_amount)
-		H.adjustToxLoss(-heal_amount)
-		heal_amount -= posion_damage
-
-	H.nutrition += heal_amount

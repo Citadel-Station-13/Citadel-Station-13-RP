@@ -5,6 +5,21 @@ GLOBAL_VAR(restart_counter)
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
+/world
+	mob = /mob/new_player
+	turf = /turf/space/basic
+	area = /area/space
+	view = "15x15"
+	hub = "Exadv1.spacestation13"
+	hub_password = "kMZy3U5jJHSiBQjr"
+	name = "Citadel Station 13 - Roleplay"
+	status = "ERROR: Default status"
+	visibility = TRUE
+	fps = 20
+#ifdef FIND_REF_NO_CHECK_TICK
+	loop_checks = FALSE
+#endif
+
 /**
  * World creation
  *
@@ -116,7 +131,7 @@ GLOBAL_LIST(topic_status_cache)
 	#endif
 
 	if(config_legacy.ToRban)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/ToRban_autoupdate), 5 MINUTES)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ToRban_autoupdate)), 5 MINUTES)
 
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
@@ -141,21 +156,13 @@ GLOBAL_LIST(topic_status_cache)
 		var/realtime = world.realtime
 		var/texttime = time2text(realtime, "YYYY/MM/DD")
 		GLOB.log_directory = "data/logs/[texttime]/round-"
-		GLOB.picture_logging_prefix = "L_[time2text(realtime, "YYYYMMDD")]_"
-		GLOB.picture_log_directory = "data/picture_logs/[texttime]/round-"
 		if(GLOB.round_id)
 			GLOB.log_directory += "[GLOB.round_id]"
-			GLOB.picture_logging_prefix += "R_[GLOB.round_id]_"
-			GLOB.picture_log_directory += "[GLOB.round_id]"
 		else
 			var/timestamp = replacetext(TIME_STAMP("hh:mm:ss", FALSE), ":", ".")
 			GLOB.log_directory += "[timestamp]"
-			GLOB.picture_log_directory += "[timestamp]"
-			GLOB.picture_logging_prefix += "T_[timestamp]_"
 	else
 		GLOB.log_directory = "data/logs/[override_dir]"
-		GLOB.picture_logging_prefix = "O_[override_dir]_"
-		GLOB.picture_log_directory = "data/picture_logs/[override_dir]"
 
 	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
 	GLOB.world_asset_log = "[GLOB.log_directory]/asset.log"
@@ -166,6 +173,7 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
+	GLOB.world_reagent_log = "[GLOB.log_directory]/reagents.log"
 	GLOB.subsystem_log = "[GLOB.log_directory]/subsystem.log"
 
 #ifdef UNIT_TESTS
@@ -383,7 +391,7 @@ GLOBAL_LIST(topic_status_cache)
 	// ---Hub title---
 	var/servername = config_legacy?.server_name
 	var/stationname = station_name()
-	var/defaultstation = GLOB.using_map ? GLOB.using_map.station_name : stationname
+	var/defaultstation = (LEGACY_MAP_DATUM) ? (LEGACY_MAP_DATUM).station_name : stationname
 	if(servername || stationname != defaultstation)
 		. += (servername ? "<b>[servername]" : "<b>")
 		. += (stationname != defaultstation ? "[servername ? " - " : ""][stationname]</b>\] " : "</b>\] ")
@@ -402,8 +410,8 @@ GLOBAL_LIST(topic_status_cache)
 
 	// ---Hub footer---
 	. += "\["
-	if(GLOB.using_map)
-		. += "[GLOB.using_map.station_short], "
+	if((LEGACY_MAP_DATUM))
+		. += "[(LEGACY_MAP_DATUM).station_short], "
 
 	. += "[get_security_level()] alert, "
 

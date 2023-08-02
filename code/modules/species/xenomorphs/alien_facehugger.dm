@@ -49,7 +49,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		return INITIALIZE_HINT_QDEL
 */
 
-/obj/item/clothing/mask/facehugger/examine(mob/user)
+/obj/item/clothing/mask/facehugger/examine(mob/user, dist)
 	..(user)
 	switch(stat)
 		if(DEAD,UNCONSCIOUS)
@@ -171,7 +171,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		target.equip_to_slot_if_possible(src, SLOT_ID_MASK, INV_OP_FLUFFLESS)
 
 	if(!sterile)
-		L.Unconscious(MAX_IMPREGNATION_TIME/6) //something like 25 ticks = 20 seconds with the default settings
+		L.afflict_unconscious(20 * MAX_IMPREGNATION_TIME/6) //something like 25 ticks = 20 seconds with the default settings
 
 	GoIdle() //so it doesn't jump the people that tear it off
 
@@ -331,7 +331,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	else
 		return INITIALIZE_HINT_QDEL
 
-/mob/living/simple_mob/animal/space/alien/facehugger/examine(mob/user)
+/mob/living/simple_mob/animal/space/alien/facehugger/examine(mob/user, dist)
 	..(user)
 	switch(stat)
 		if(DEAD,UNCONSCIOUS)
@@ -430,7 +430,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		target.equip_to_slot(src, SLOT_ID_MASK)
 		target.contents += src // Monkey sanity check - Snapshot
 
-		if(!sterile) L.Unconscious(MAX_IMPREGNATION_TIME/6) //something like 25 ticks = 20 seconds with the default settings
+		if(!sterile) L.afflict_unconscious(20 * MAX_IMPREGNATION_TIME/6) //something like 25 ticks = 20 seconds with the default settings
 
 	GoIdle() //so it doesn't jump the people that tear it off
 

@@ -1,10 +1,5 @@
-// todo: either tgui window
-// or make it an inhouse lightweight datum
-// probably the latter for minimal points of failure
-// we need to send all init & reload/reset-on-mob-login data in one
-// go, because byond does not ensure function call order
-// race conditions can cause problems where verbs get removed
-// after they get added by a remove-add turning into an add-remove.
+// todo: if byond ever gets threaded browsers, we're standardizing tgui.html and tgui_window.dm
+//       because manually reimplementing this shit is driving me nuts.
 
 /**
  * citadel RP stat system
@@ -30,12 +25,19 @@
  * boots statpanel up during connect
  */
 /client/proc/statpanel_boot()
+	set waitfor = FALSE
+	statpanel_boot_impl()
+
+/client/proc/statpanel_boot_impl()
+	PRIVATE_PROC(TRUE)
+	// give client a second to load
+	sleep(2 SECONDS)
 	// loads statbrowser if it isn't there
 	src << browse(file('html/statbrowser.html'), "window=statbrowser")
 	// if it is there and we can't tell because byond is byond, send it a signal to reload
 	src << output(null, "statbrowser:byond_reconnect")
 	// check for it incase it breaks
-	addtimer(CALLBACK(src, /client/proc/statpanel_check), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/client, statpanel_check)), 30 SECONDS)
 
 /**
  * cleans up statpanel stuff during disconnect
@@ -177,7 +179,7 @@
 	if(HAS_TRAIT(src, "VERB_UPDATE_QUEUED"))
 		return
 	ADD_TRAIT(src, "VERB_UPDATE_QUEUED", "FUCK")
-	addtimer(CALLBACK(src, .proc/legacy_verb_update), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(legacy_verb_update)), 1 SECONDS)
 
 /// -_-
 /client/proc/legacy_verb_update()

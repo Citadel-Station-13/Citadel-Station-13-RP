@@ -242,7 +242,7 @@ steam.start() -- spawns the effect
 		if(!(B in projectiles))
 			B.damage = (B.damage/2)
 			projectiles += B
-			destroyed_event.register(B, src, /obj/effect/particle_effect/smoke/bad/proc/on_projectile_delete)
+			destroyed_event.register(B, src, TYPE_PROC_REF(/obj/effect/particle_effect/smoke/bad, on_projectile_delete))
 		to_chat(world, "Damage is: [B.damage]")
 	return 1
 
@@ -501,7 +501,7 @@ steam.start() -- spawns the effect
 		for(var/mob/M in viewers(1, location))
 			if (prob (50 * amount))
 				to_chat(M, "<span class='warning'>The explosion knocks you down.</span>")
-				M.Weaken(rand(1,5))
+				M.afflict_paralyze(20 * rand(1,5))
 		return
 	else
 		var/devst = -1

@@ -103,14 +103,14 @@
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Carp Migration",		/datum/event/carp_migration,	20,		list(ASSIGNMENT_SECURITY = 5), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Containment Breach",	/datum/event/prison_break/station,0,	list(ASSIGNMENT_ANY = 5), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Meteor Wave",			/datum/event/meteor_wave,		20,		list(ASSIGNMENT_ENGINEER = 15),	1, 0),
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Cultist Invasion",	/datum/event/cult,				5,		list(ASSIGNMENT_SECURITY = 15),	1),
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Pirate Boarders",		/datum/event/pirate, 			0,		list(ASSIGNMENT_SECURITY = 5), 1),
 	)
 	add_disabled_events(list(
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Blob",				/datum/event/blob, 				10,		list(ASSIGNMENT_ENGINEER = 60), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Supply Demand",		/datum/event/supply_demand,		0,		list(ASSIGNMENT_ANY = 5, ASSIGNMENT_SCIENCE = 15, ASSIGNMENT_GARDENER = 10, ASSIGNMENT_ENGINEER = 10, ASSIGNMENT_MEDICAL = 15), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Xenomorph Infestation", /datum/event/xeno_infestation, 0, 	list(ASSIGNMENT_SECURITY = 2), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Xenomorph Infestation (Extreme)", /datum/event/xeno_infestation/extreme, 0, 	list(ASSIGNMENT_SECURITY = 2), 1),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Cultist Invasion",	/datum/event/cult,				0		,list(ASSIGNMENT_SECURITY = 15),	1),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Pirate Boarders",		/datum/event/pirate, 			0,		list(ASSIGNMENT_SECURITY = 5), 1),
 	))
 
 #undef ASSIGNMENT_ANY

@@ -9,7 +9,7 @@ var/global/list/cached_icons = list()
 	icon = 'icons/obj/items.dmi'
 	icon_state = "paint_neutral"
 	item_state = "paintcan"
-	matter = list(MAT_STEEL = 200)
+	materials = list(MAT_STEEL = 200)
 	w_class = ITEMSIZE_NORMAL
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(10,20,30,60)
@@ -18,8 +18,8 @@ var/global/list/cached_icons = list()
 	atom_flags = OPENCONTAINER
 	var/paint_type = "red"
 
-/obj/item/reagent_containers/glass/paint/afterattack(turf/simulated/target, mob/user, proximity)
-	if(!proximity) return
+/obj/item/reagent_containers/glass/paint/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(istype(target) && reagents.total_volume > 5)
 		user.visible_message("<span class='warning'>\The [target] has been splashed with something by [user]!</span>")
 		reagents.trans_to_turf(target, 5)

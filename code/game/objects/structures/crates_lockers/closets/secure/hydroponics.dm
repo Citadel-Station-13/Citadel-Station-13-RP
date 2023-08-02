@@ -1,12 +1,7 @@
 /obj/structure/closet/secure_closet/hydroponics
 	name = "botanist's locker"
 	req_access = list(ACCESS_GENERAL_BOTANY)
-	icon_state = "hydrosecure1"
-	icon_closed = "hydrosecure"
-	icon_locked = "hydrosecure1"
-	icon_opened = "hydrosecureopen"
-	icon_broken = "hydrosecurebroken"
-	icon_off = "hydrosecureoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/hydroponics
 
 	starts_with = list(
 		/obj/item/storage/bag/plants,

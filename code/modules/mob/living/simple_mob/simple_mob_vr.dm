@@ -81,57 +81,6 @@
 /mob/living/simple_mob/proc/will_eat(var/mob/living/M)
 	return FALSE // no more mobvore
 
-/mob/living/simple_mob/apply_attack(atom/A, damage_to_do)
-	if(isliving(A)) // Converts target to living
-		var/mob/living/L = A
-
-		//ai_log("vr/do_attack() [L]", 3)
-		// If we're not hungry, call the sideways "parent" to do normal punching
-		if(!vore_active)
-			return ..()
-
-		// If target is standing we might pounce and knock them down instead of attacking
-		var/pouncechance = CanPounceTarget(L)
-		if(pouncechance)
-			return PounceTarget(L, pouncechance)
-
-		// We're not attempting a pounce, if they're down or we can eat standing, do it as long as they're edible. Otherwise, hit normally.
-		if(will_eat(L) && (!L.canmove || vore_standing_too))
-			return EatTarget(L)
-		else
-			return ..()
-	else
-		return ..()
-
-
-/mob/living/simple_mob/proc/CanPounceTarget(var/mob/living/M) //returns either FALSE or a %chance of success
-	if(!M.canmove || issilicon(M) || world.time < vore_pounce_cooldown) //eliminate situations where pouncing CANNOT happen
-		return FALSE
-	if(!prob(vore_pounce_chance) || !will_eat(M)) //mob doesn't want to pounce
-		return FALSE
-	if(vore_standing_too) //100% chance of hitting people we can eat on the spot
-		return 100
-	var/TargetHealthPercent = (M.health/M.getMaxHealth())*100 //now we start looking at the target itself
-	if (TargetHealthPercent > vore_pounce_maxhealth) //target is too healthy to pounce
-		return FALSE
-	else
-		return max(0,(vore_pounce_successrate - (vore_pounce_falloff * TargetHealthPercent)))
-
-
-/mob/living/simple_mob/proc/PounceTarget(var/mob/living/M, var/successrate = 100)
-	vore_pounce_cooldown = world.time + 20 SECONDS // don't attempt another pounce for a while
-	if(prob(successrate)) // pounce success!
-		M.Weaken(5)
-		M.visible_message("<span class='danger'>\the [src] pounces on \the [M]!</span>!")
-	else // pounce misses!
-		M.visible_message("<span class='danger'>\the [src] attempts to pounce \the [M] but misses!</span>!")
-		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-
-	if(will_eat(M) && (!M.canmove || vore_standing_too)) //if they're edible then eat them too
-		return EatTarget(M)
-	else
-		return //just leave them
-
 // Attempt to eat target
 // TODO - Review this.  Could be some issues here
 /mob/living/simple_mob/proc/EatTarget(var/mob/living/M)
@@ -211,19 +160,6 @@
 		"The churning walls slowly pulverize you into meaty nutrients.",
 		"The stomach glorps and gurgles as it tries to work you into slop.")
 
-/mob/living/simple_mob/Bumped(var/atom/movable/AM, yes)
-	if(ismob(AM))
-		var/mob/tmob = AM
-		if(will_eat(tmob) && !istype(tmob, type) && prob(vore_bump_chance) && !ckey) //check if they decide to eat. Includes sanity check to prevent cannibalism.
-			if(tmob.canmove && prob(vore_pounce_chance)) //if they'd pounce for other noms, pounce for these too, otherwise still try and eat them if they hold still
-				tmob.Weaken(5)
-			tmob.visible_message("<span class='danger'>\the [src] [vore_bump_emote] \the [tmob]!</span>!")
-			set_AI_busy(TRUE)
-			animal_nom(tmob)
-			update_icon()
-			set_AI_busy(FALSE)
-	..()
-
 // Checks to see if mob doesn't like this kind of turf
 /mob/living/simple_mob/IMove(turf/newloc, safety = TRUE)
 	if(istype(newloc,/turf/simulated/floor/sky))
@@ -288,7 +224,7 @@
 		return
 
 	last_special = world.time + 10
-	status_flags |= LEAPING
+	status_flags |= STATUS_LEAPING
 	pixel_y = pixel_y + 10
 
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
@@ -298,7 +234,7 @@
 
 	sleep(5)
 
-	if(status_flags & LEAPING) status_flags &= ~LEAPING
+	if(status_flags & STATUS_LEAPING) status_flags &= ~STATUS_LEAPING
 
 	if(!src.Adjacent(T))
 		to_chat(src, "<span class='warning'>You miss!</span>")
@@ -307,7 +243,7 @@
 	if(ishuman(T))
 		var/mob/living/carbon/human/H = T
 		if(H.species.lightweight == 1)
-			H.Weaken(3)
+			H.afflict_paralyze(20 * 3)
 			return
 	var/armor_block = run_armor_check(T, "melee")
 	var/armor_soak = get_armor_soak(T, "melee")

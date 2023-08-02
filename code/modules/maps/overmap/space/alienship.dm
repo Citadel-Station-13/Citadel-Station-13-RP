@@ -1,6 +1,6 @@
 // -- Datums -- //
 
-/obj/effect/overmap/visitable/sector/alienship
+/obj/overmap/entity/visitable/sector/alienship
 	name = "Unknown Vessel"
 	desc = "An unknown vessel detected by sensors."
 	start_x = 12
@@ -168,7 +168,7 @@
 			for(var/obj/item/holder/H in L.get_all_contents())
 				H.forceMove(get_turf(L))
 				abduct(H)
-		L.Unconscious(10)
+		L.afflict_unconscious(20 * 10)
 		L.forceMove(get_turf(pick(teleport_to)))
 		L << 'sound/effects/bamf.ogg'
 		to_chat(L,"<span class='warning'>You're starting to come to. You feel like you've been out for a few minutes, at least...</span>")

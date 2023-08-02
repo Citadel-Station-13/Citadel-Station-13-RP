@@ -4,7 +4,7 @@
 	icon_state = "door_electronics"
 	w_class = ITEMSIZE_SMALL //It should be tiny! -Agouri
 
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 	var/list/conf_req_access
 	var/list/conf_req_one_access
@@ -39,12 +39,12 @@
 				if(access in conf_req_one_access)
 					LAZYREMOVE(conf_req_one_access, access)
 				else
-					LAZYOR(conf_req_one_access, access)
+					LAZYDISTINCTADD(conf_req_one_access, access)
 			else
 				if(access in conf_req_access)
 					LAZYREMOVE(conf_req_access, access)
 				else
-					LAZYOR(conf_req_access, access)
+					LAZYDISTINCTADD(conf_req_access, access)
 			return TRUE
 		if("wipe")
 			var/category = params["category"]

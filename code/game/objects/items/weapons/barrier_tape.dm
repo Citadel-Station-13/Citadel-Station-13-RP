@@ -163,10 +163,10 @@ var/list/tape_roll_applications = list()
 					possible_dirs |= dir
 				else
 					for(var/obj/structure/window/W in T)
-						if(W.is_fulltile() || W.dir == GLOB.reverse_dir[dir])
+						if(W.fulltile || W.dir == global.reverse_dir[dir])
 							possible_dirs |= dir
 			for(var/obj/structure/window/window in start)
-				if(istype(window) && !window.is_fulltile())
+				if(istype(window) && !window.fulltile)
 					possible_dirs |= window.dir
 			if(!possible_dirs)
 				start = null
@@ -207,7 +207,7 @@ var/list/tape_roll_applications = list()
 				for(var/obj/O in cur)
 					if(istype(O, /obj/structure/window))
 						var/obj/structure/window/window = O
-						if(window.is_fulltile())
+						if(window.fulltile)
 							can_place = 0
 							break
 						if(cur == start)
@@ -217,12 +217,12 @@ var/list/tape_roll_applications = list()
 							else
 								continue
 						else if(cur == end)
-							if(window.dir == GLOB.reverse_dir[orientation])
+							if(window.dir == global.reverse_dir[orientation])
 								can_place = 0
 								break
 							else
 								continue
-						else if (window.dir == GLOB.reverse_dir[orientation] || window.dir == orientation)
+						else if (window.dir == global.reverse_dir[orientation] || window.dir == orientation)
 							can_place = 0
 							break
 						else
@@ -246,24 +246,24 @@ var/list/tape_roll_applications = list()
 			tapetest = 0
 			tape_dir = dir
 			if(cur == start)
-				var/turf/T = get_step(start, GLOB.reverse_dir[orientation])
+				var/turf/T = get_step(start, global.reverse_dir[orientation])
 				if(T && !T.density)
 					tape_dir = orientation
 					for(var/obj/structure/window/W in T)
-						if(W.is_fulltile() || W.dir == orientation)
+						if(W.fulltile || W.dir == orientation)
 							tape_dir = dir
 				for(var/obj/structure/window/window in cur)
-					if(istype(window) && !window.is_fulltile() && window.dir == GLOB.reverse_dir[orientation])
+					if(istype(window) && !window.fulltile && window.dir == global.reverse_dir[orientation])
 						tape_dir = dir
 			else if(cur == end)
 				var/turf/T = get_step(end, orientation)
 				if(T && !T.density)
-					tape_dir = GLOB.reverse_dir[orientation]
+					tape_dir = global.reverse_dir[orientation]
 					for(var/obj/structure/window/W in T)
-						if(W.is_fulltile() || W.dir == GLOB.reverse_dir[orientation])
+						if(W.fulltile || W.dir == global.reverse_dir[orientation])
 							tape_dir = dir
 				for(var/obj/structure/window/window in cur)
-					if(istype(window) && !window.is_fulltile() && window.dir == orientation)
+					if(istype(window) && !window.fulltile && window.dir == orientation)
 						tape_dir = dir
 			for(var/obj/item/barrier_tape_segment/T in cur)
 				if((T.tape_dir == tape_dir) && (T.icon_base == icon_base))
@@ -283,13 +283,13 @@ var/list/tape_roll_applications = list()
 		to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
 		return
 
-/obj/item/barrier_tape_roll/afterattack(var/atom/A, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/barrier_tape_roll/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
-	if (istype(A, /obj/machinery/door))
-		var/turf/T = get_turf(A)
-		if(locate(/obj/item/barrier_tape_segment, A.loc))
+	if (istype(target, /obj/machinery/door))
+		var/turf/T = get_turf(target)
+		if(locate(/obj/item/barrier_tape_segment, target.loc))
 			to_chat(user, "There's already tape over that door!")
 		else
 			var/obj/item/barrier_tape_segment/P = new tape_type(T)
@@ -297,8 +297,8 @@ var/list/tape_roll_applications = list()
 			P.layer = WINDOW_LAYER
 			to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
 
-	if (istype(A, /turf/simulated/floor) ||istype(A, /turf/unsimulated/floor))
-		var/turf/F = A
+	if (istype(target, /turf/simulated/floor) ||istype(target, /turf/unsimulated/floor))
+		var/turf/F = target
 		var/direction = user.loc == F ? user.dir : turn(user.dir, 180)
 		var/icon/hazard_overlay = hazard_overlays["[direction]"]
 		if(tape_roll_applications[F] == null)

@@ -11,7 +11,7 @@
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_HUGE
 
-	matter = list(MAT_STEEL = 10000, MAT_GLASS = 2500)
+	materials = list(MAT_STEEL = 10000, MAT_GLASS = 2500)
 
 	var/code = 2
 
@@ -98,7 +98,7 @@
 		s.set_up(3, 1, M)
 		s.start()
 
-		M.Weaken(10)
+		M.afflict_paralyze(20 * 10)
 
 	if(master && wires & 1)
 		master.receive_signal()

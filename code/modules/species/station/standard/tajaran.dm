@@ -19,10 +19,11 @@
 	whitelist_languages = list(
 		/datum/language/tajaran,
 		/datum/language/tajaranakhani,
-		/datum/language/tajsign,
+		/datum/language/tajsign
 	)
 
-	darksight = 8
+	vision_innate = /datum/vision/baseline/species_tier_2
+
 	slowdown  = -0.5
 	snow_movement = -1 //Ignores half of light snow
 
@@ -30,8 +31,10 @@
 	burn_mod  = 1.15
 	flash_mod = 1.1
 
+	//Cattos be hungy
 	metabolic_rate = 1.1
 	gluttonous = 0
+	hunger_factor = 0.1
 
 	color_mult = 1
 	health_hud_intensity = 2.5
@@ -111,6 +114,9 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 
 /datum/species/tajaran/equip_survival_gear(mob/living/carbon/human/H)

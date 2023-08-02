@@ -153,7 +153,7 @@
 			continue
 		// Note: Range is a non-exact aproximation of the spread effect. If it doesn't look good
 		// we'll need to switch to actually walking along the shields to get exact number of steps away.
-		addtimer(CALLBACK(S, .proc/impact_flash), get_dist(src, S) * 2)
+		addtimer(CALLBACK(S, PROC_REF(impact_flash)), get_dist(src, S) * 2)
 	impact_flash()
 
 // Small visual effect, makes the shield tiles brighten up by becoming more opaque for a moment
@@ -280,7 +280,7 @@
 
 /obj/effect/shield/proc/overcharge_shock(var/mob/living/M)
 	M.adjustFireLoss(rand(20, 40))
-	M.Weaken(5)
+	M.afflict_paralyze(20 * 5)
 	to_chat(M, "<span class='danger'>As you come into contact with \the [src] a surge of energy paralyses you!</span>")
 	take_damage(10, SHIELD_DAMTYPE_EM)
 

@@ -10,7 +10,7 @@
 	throw_force = 0
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)
-	matter = list(MAT_STEEL = 18750)
+	materials = list(MAT_STEEL = 18750)
 	buckle_restrained_resist_time = 15 SECONDS
 	var/deployed = 0
 	var/camo_net = FALSE
@@ -136,7 +136,7 @@
 	// allow it so they can do buckle interactions at all
 	buckle_allowed = TRUE
 	buckle_mob(L, BUCKLE_OP_FORCE)
-	L.Stun(stun_length)
+	L.afflict_stun(20 * stun_length)
 	to_chat(L, "<span class='danger'>The steel jaws of \the [src] bite into you, trapping you in place!</span>")
 	deployed = FALSE
 

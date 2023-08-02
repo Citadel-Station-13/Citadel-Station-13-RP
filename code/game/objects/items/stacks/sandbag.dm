@@ -11,7 +11,7 @@
 	throw_range = 20
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
-	matter = list("cloth" = 2)
+	materials = list("cloth" = 2)
 	max_amount = 50
 	attack_verb = list("tapped", "smacked", "flapped")
 
@@ -49,7 +49,7 @@
 /obj/item/stack/sandbags
 	name = "sandbag"
 	desc = "This is a synthetic bag tightly packed with sand. It is designed to provide structural support and serve as a portable barrier."
-	singular name = "sandbag"
+	singular_name = "sandbag"
 	icon_state = "sandbags"
 	w_class = ITEMSIZE_NORMAL
 	damage_force = 10
@@ -58,7 +58,7 @@
 	throw_range = 10
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
-	matter = list("cloth" = 2)
+	materials = list("cloth" = 2)
 	max_amount = 50
 	attack_verb = list("hit", "bludgeoned", "whacked")
 
@@ -136,7 +136,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	//update_connections(TRUE)
 	. = ..()
 
-/obj/structure/sandbag/examine(mob/user)
+/obj/structure/sandbag/examine(mob/user, dist)
 	. = ..()
 	if(health < maxhealth)
 		switch(health / maxhealth)

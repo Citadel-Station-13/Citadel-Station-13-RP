@@ -5,7 +5,7 @@
 
 /obj/effect/wingrille_spawn
 	name = "window grille spawner"
-	icon = 'icons/obj/structures.dmi'
+	icon = 'icons/obj/structures/window_spawners.dmi'
 	icon_state = "wingrille"
 	density = TRUE
 	anchored = 1.0
@@ -98,3 +98,4 @@
 /obj/effect/wingrille_spawn/reinforced/polarized/handle_window_spawn(var/obj/structure/window/reinforced/polarized/P)
 	if(id)
 		P.id = id
+

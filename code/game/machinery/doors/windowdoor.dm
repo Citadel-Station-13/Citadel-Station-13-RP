@@ -66,13 +66,13 @@
 		if(istype(bot))
 			if(density && src.check_access(bot.botcard))
 				open()
-				addtimer(CALLBACK(src, .proc/close), 50)
+				addtimer(CALLBACK(src, PROC_REF(close)), 50)
 		else if(istype(AM, /obj/mecha))
 			var/obj/mecha/mecha = AM
 			if(density)
 				if(mecha.occupant && src.allowed(mecha.occupant))
 					open()
-					addtimer(CALLBACK(src, .proc/close), 50)
+					addtimer(CALLBACK(src, PROC_REF(close)), 50)
 		return
 	if (!( SSticker ))
 		return
@@ -80,7 +80,7 @@
 		return
 	if (density && allowed(AM))
 		open()
-		addtimer(CALLBACK(src, .proc/close), check_access(null)? 50 : 20)
+		addtimer(CALLBACK(src, PROC_REF(close)), check_access(null)? 50 : 20)
 
 /obj/machinery/door/window/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!(get_dir(mover, loc) & turn(dir, 180)))
@@ -109,8 +109,8 @@
 		return 0
 	if (!operating) //in case of emag
 		operating = 1
-	flick(text("[src.base_state]opening"), src)
-	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, 1)
+	flick("[base_state]opening", src)
+	playsound(loc, 'sound/machines/windowdoor.ogg', 100, 1)
 	sleep(10)
 
 	explosion_resistance = 0
@@ -126,8 +126,8 @@
 	if(operating || density)
 		return FALSE
 	operating = TRUE
-	flick(text("[]closing", src.base_state), src)
-	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, 1)
+	flick("[base_state]closing", src)
+	playsound(loc, 'sound/machines/windowdoor.ogg', 100, 1)
 
 	density = TRUE
 	update_icon()
@@ -167,7 +167,7 @@
 			close()
 
 	else if (src.density)
-		flick(text("[]deny", src.base_state), src)
+		flick("[base_state]deny", src)
 
 	return
 
@@ -267,7 +267,7 @@
 			close()
 
 	else if (src.density)
-		flick(text("[]deny", src.base_state), src)
+		flick("[base_state]deny", src)
 
 	return
 

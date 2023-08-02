@@ -144,8 +144,8 @@
 	projectiletype = /obj/projectile/energy/neurotoxin/toxic
 
 	base_pixel_x = -16
-	icon_dimension_y = 64
-	icon_dimension_x = 64
+	icon_y_dimension = 64
+	icon_x_dimension = 64
 
 	meat_amount = 5
 
@@ -209,8 +209,8 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress)
 
 	base_pixel_x = -16
-	icon_dimension_x = 64
-	icon_dimension_y = 64
+	icon_x_dimension = 64
+	icon_y_dimension = 64
 
 /datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother
 	name = "Feral Xenomorph - Mother"
@@ -240,8 +240,8 @@
 
 	base_pixel_x = -32
 	base_pixel_y = -32
-	icon_dimension_x = 96
-	icon_dimension_y = 96
+	icon_x_dimension = 96
+	icon_y_dimension = 96
 
 	mod_min = 100
 	mod_max = 150

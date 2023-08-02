@@ -10,7 +10,7 @@
 	w_class = ITEMSIZE_LARGE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
-	matter = list(MAT_STEEL = 2000)
+	materials = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/midlaser
 	heavy = TRUE
 	one_handed_penalty = 30
@@ -242,7 +242,7 @@
 	item_state = "laser"
 	desc = "Based off an ancient model of laser gun, the NT-Tagger will make you the terror of the next workplace lasertag tournament."
 	origin_tech = list(TECH_COMBAT = 1, TECH_MAGNET = 2)
-	matter = list(MAT_STEEL = 2000)
+	materials = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/lasertag/blue
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
@@ -316,7 +316,7 @@
 	w_class = ITEMSIZE_LARGE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 2)
-	matter = list(MAT_STEEL = 2000, "plastic" = 1000)
+	materials = list(MAT_STEEL = 2000, "plastic" = 1000)
 	projectile_type = /obj/projectile/beam/midlaser
 	heavy = FALSE
 	one_handed_penalty = 25

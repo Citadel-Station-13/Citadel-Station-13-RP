@@ -108,7 +108,7 @@
  * makes replacing easier later
  */
 /proc/add_obj_verb(atom/A, verb_or_list_to_add)
-	A.verbs += verb_or_list_to_add
+	A.verbs |= verb_or_list_to_add
 
 /**
  * handles removing an obj verb

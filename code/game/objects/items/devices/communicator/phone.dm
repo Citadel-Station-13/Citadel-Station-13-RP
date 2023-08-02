@@ -163,7 +163,7 @@
 	if(ringer)
 		playsound(src, 'sound/machines/twobeep.ogg', 50, 1)
 		for (var/mob/O in hearers(2, loc))
-			O.show_message(text("[icon2html(src, world)] *beep*"))
+			O.show_message("[icon2html(src, world)] *beep*")
 
 	alert_called = 1
 	update_icon()
@@ -316,7 +316,7 @@
 		to_chat(src , "<span class='danger'>There are no available communicators, sorry.</span>")
 		return
 
-	var/choice = input(src,"Send a voice request to whom?") as null|anything in choices
+	var/choice = tgui_input_list(src,"Send a voice request to whom?","Communicator selection", choices)
 	if(choice)
 		var/obj/item/communicator/chosen_communicator = choice
 		var/mob/observer/dead/O = src
@@ -350,7 +350,7 @@
 	video_source = comm.camera
 	comm.visible_message("<span class='danger'>[icon2html(src, world)] New video connection from [comm].</span>")
 	update_active_camera_screen()
-	RegisterSignal(video_source, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
+	RegisterSignal(video_source, COMSIG_MOVABLE_MOVED, PROC_REF(update_active_camera_screen))
 	update_icon()
 
 // Proc: end_video()

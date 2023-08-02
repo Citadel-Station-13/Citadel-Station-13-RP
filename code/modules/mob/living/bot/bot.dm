@@ -100,7 +100,7 @@
 	access_scanner.req_access = req_access.Copy()
 	access_scanner.req_one_access = req_one_access.Copy()
 
-	if(!GLOB.using_map.bot_patrolling)
+	if(!(LEGACY_MAP_DATUM).bot_patrolling)
 		will_patrol = FALSE
 
 // Make sure mapped in units start turned on.
@@ -116,9 +116,9 @@
 		death()
 		return TRUE
 
-	SetWeakened(0)
-	SetStunned(0)
-	SetUnconscious(0)
+	set_paralyzed(0)
+	set_stunned(0)
+	set_unconscious(0)
 
 	if(on && !client && !busy)
 		spawn(0)
@@ -127,8 +127,8 @@
 		spawn(0)
 			handleAI()
 
-/mob/living/bot/updatehealth()
-	if(status_flags & GODMODE)
+/mob/living/bot/update_health()
+	if(status_flags & STATUS_GODMODE)
 		health = getMaxHealth()
 		set_stat(CONSCIOUS)
 	else
@@ -174,7 +174,7 @@
 					fireloss = 0
 				else
 					fireloss = fireloss - 10
-				updatehealth()
+				update_health()
 				user.visible_message("<span class='notice'>[user] repairs [src].</span>","<span class='notice'>You repair [src].</span>")
 				playsound(src, O.tool_sound, 50, 1)
 			else
@@ -327,7 +327,7 @@
 /mob/living/bot/proc/startPatrol()
 	var/turf/T = getPatrolTurf()
 	if(T)
-		patrol_path = AStar(get_turf(loc), T, /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, max_patrol_dist, id = botcard, exclude = obstacle)
+		patrol_path = AStar(get_turf(loc), T, TYPE_PROC_REF(/turf, CardinalTurfsWithAccess), TYPE_PROC_REF(/turf, Distance), 0, max_patrol_dist, id = botcard, exclude = obstacle)
 		if(!patrol_path)
 			patrol_path = list()
 		obstacle = null
@@ -359,7 +359,7 @@
 	return
 
 /mob/living/bot/proc/calcTargetPath()
-	target_path = AStar(get_turf(loc), get_turf(target), /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, max_target_dist, id = botcard, exclude = obstacle)
+	target_path = AStar(get_turf(loc), get_turf(target), TYPE_PROC_REF(/turf, CardinalTurfsWithAccess), TYPE_PROC_REF(/turf, Distance), 0, max_target_dist, id = botcard, exclude = obstacle)
 	if(!target_path)
 		if(target && target.loc)
 			ignore_list |= target

@@ -31,7 +31,7 @@
 
 /datum/component/nif_menu/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN, .proc/create_mob_button)
+	RegisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(create_mob_button))
 	var/mob/owner = parent
 	if(owner.client)
 		create_mob_button(parent)
@@ -53,7 +53,7 @@
 	var/datum/hud/HUD = user.hud_used
 	if(!screen_icon)
 		screen_icon = new()
-		RegisterSignal(screen_icon, COMSIG_CLICK, .proc/nif_menu_click)
+		RegisterSignal(screen_icon, COMSIG_CLICK, PROC_REF(nif_menu_click))
 	screen_icon.icon = HUD.ui_style
 	screen_icon.color = HUD.ui_color
 	screen_icon.alpha = HUD.ui_alpha
@@ -62,10 +62,10 @@
 
 	add_verb(user, /mob/living/carbon/human/proc/nif_menu)
 
-/datum/component/nif_menu/proc/nif_menu_click(source, location, control, params, user)
+/datum/component/nif_menu/proc/nif_menu_click(mob/user)
 	var/mob/living/carbon/human/H = user
 	if(istype(H) && H.nif)
-		INVOKE_ASYNC(H.nif, .proc/ui_interact, user)
+		INVOKE_ASYNC(H.nif, PROC_REF(ui_interact), user)
 
 /**
  * Screen atom for NIF menu access
@@ -76,10 +76,10 @@
 	icon_state = "nif"
 	screen_loc = ui_smallquad
 
-/atom/movable/screen/nif_menu/Click(location, control, params)
-	..()
-	var/datum/component/nif_menu/N = usr.GetComponent(/datum/component/nif_menu)
-	N?.nif_menu_click(usr)
+/atom/movable/screen/nif/Click(location, control, params)
+	if(ishuman(usr))
+		var/mob/living/carbon/human/H = usr
+		H.nif?.ui_interact(usr)
 
 /**
  * Verb to open the interface
@@ -109,7 +109,7 @@
 		ui.open()
 
 /**
- * tgui_data gives the UI any relevant data it needs.
+ * ui_data gives the UI any relevant data it needs.
  * In our case, that's basically everything from our statpanel.
  */
 /obj/item/nif/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
@@ -150,7 +150,7 @@
 	return data
 
 /**
- * tgui_act handles all user input in the UI.
+ * ui_act handles all user input in the UI.
  */
 /obj/item/nif/ui_act(action, list/params, datum/tgui/ui)
 	if(..())

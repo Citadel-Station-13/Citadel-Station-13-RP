@@ -477,10 +477,10 @@
 			return 1
 	return 0
 
-/obj/item/spell/construct/afterattack(atom/target, mob/user, proximity_flag, click_parameters) //Not overriding it caused runtimes, because cooldown checked for core.
+/obj/item/spell/construct/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!run_checks())
 		return
-	if(!proximity_flag)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		if(cast_methods & CAST_RANGED)
 			on_ranged_cast(target, user)
 	else
@@ -529,7 +529,7 @@
 			if(pre_shot_delay)
 				var/image/target_image = image(icon = 'icons/obj/spells.dmi', loc = get_turf(hit_atom), icon_state = "target")
 				SEND_IMAGE(user, target_image)
-				user.Stun(pre_shot_delay / 10)
+				user.afflict_stun(20 * pre_shot_delay / 10)
 				sleep(pre_shot_delay)
 				qdel(target_image)
 				if(owner)
@@ -657,7 +657,7 @@
 		var/mob/living/L = hit_atom
 		L.visible_message("<span class='danger'>\The [user] [attack_message] \the [L], sending them flying!</span>")
 		playsound(src, "punch", 50, 1)
-		L.Weaken(2)
+		L.afflict_paralyze(20 * 2)
 		L.adjustBruteLoss(rand(30, 50))
 		var/throwdir = get_dir(src, L)
 		L.throw_at_old(get_edge_target_turf(L, throwdir), 3, 1, src)

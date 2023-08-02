@@ -7,7 +7,8 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	icon_state = "cart"
 	anchored = 0
 	density = 1
-	climbable = 1
+	climb_allowed = TRUE
+	depth_level = 20
 	atom_flags = OPENCONTAINER
 	//copypaste sorry
 	var/amount_per_transfer_from_this = 5 //shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
@@ -21,7 +22,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	. = ..()
 	create_reagents(300)
 
-/obj/structure/janitorialcart/examine(mob/user)
+/obj/structure/janitorialcart/examine(mob/user, dist)
 	. = ..()
 	. += "[src] [icon2html(thing = src, target = user)] contains [reagents.total_volume] unit\s of liquid!"
 	//everything else is visible, so doesn't need to be mentioned
@@ -185,7 +186,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	create_reagents(300)
 	update_layer()
 
-/obj/structure/bed/chair/janicart/examine(mob/user)
+/obj/structure/bed/chair/janicart/examine(mob/user, dist)
 	. = ..()
 	. += "[icon2html(thing = src, target = user)] This [callme] contains [reagents.total_volume] unit\s of water!"
 	if(mybag)
@@ -216,7 +217,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		..()
 
 /obj/structure/bed/chair/janicart/relaymove(mob/living/user, direction)
-	if(user.stat || user.stunned || user.weakened || user.paralysis)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		unbuckle_mob()
 	if(user.get_held_item_of_type(/obj/item/key))
 		step(src, direction)

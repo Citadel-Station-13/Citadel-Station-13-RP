@@ -69,7 +69,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/cataloguer/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/cataloguer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	// Things that invalidate the scan immediately.
 	if(busy)
 		to_chat(user, SPAN_WARNING( "\The [src] is already scanning something."))
@@ -114,7 +114,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 
 	// The delay, and test for if the scan succeeds or not.
 	var/scan_start_time = world.time
-	if(do_after(user, scan_delay, target, ignore_movement = TRUE, max_distance = scan_range))
+	if(do_after(user, scan_delay, target, DO_AFTER_IGNORE_MOVEMENT, max_distance = scan_range))
 		if(target.can_catalogue(user))
 			to_chat(user, SPAN_NOTICE("You successfully scan \the [target] with \the [src]."))
 			playsound(src.loc, 'sound/machines/ping.ogg', 50)

@@ -37,7 +37,7 @@
 		AM.forceMove(drop_location())
 	return ..()
 
-/obj/machinery/particle_smasher/examine(mob/user)
+/obj/machinery/particle_smasher/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='notice'>\The [src] contains:</span>"
 	for(var/obj/item/I in contents)
@@ -332,7 +332,7 @@
 	required_atmos_temp_min = 1000
 	required_atmos_temp_max = 8000
 	probability = 50
-	
+
 /datum/particle_smasher_recipe/steel_plasteel
 	reagents = list(MAT_PHORON = 60) //three sheet of phoron and one sheet of steel
 
@@ -343,7 +343,7 @@
 	required_energy_max = 250
 
 	probability = 50
-	
+
 /datum/particle_smasher_recipe/plasteel_durasteel
 	reagents = list(MAT_PHORON = 40, "pacid" = 20)
 
@@ -363,7 +363,7 @@
 	result = /obj/item/stack/material/diamond
 	required_material = /obj/item/stack/material/plastic //eh close enough to graphite
 
-	required_energy_min = 550                      
+	required_energy_min = 550
 	required_energy_max = 600 //As we have no way to set ambient pressure we use the emitter to provide pressure for industrial diamonds think of compressing a Hohlraum to start fusion
 
 	required_atmos_temp_min = 7800 //extreme temperature assuming the focus can be set to inert conditions and ambient atmosphere cannot react with what is basically hot carbon
@@ -371,15 +371,15 @@
 	probability = 10
 
 /datum/particle_smasher_recipe/copper_silver
-	reagents = list("chlorine" = 25, "fluorine" = 25) 
+	reagents = list("chlorine" = 25, "fluorine" = 25)
 
 	result = /obj/item/stack/material/silver
 	required_material = /obj/item/stack/material/copper
 
-	required_energy_min = 100                      
-	required_energy_max = 150 
+	required_energy_min = 100
+	required_energy_max = 150
 
-	required_atmos_temp_min = 130 
+	required_atmos_temp_min = 130
 	required_atmos_temp_max = 140
 	probability = 20
 
@@ -395,7 +395,7 @@
 	required_atmos_temp_min = 20
 	required_atmos_temp_max = 25
 	probability = 90
-	
+
 /datum/particle_smasher_recipe/steel_uranium
 	reagents = list("uranium" = 10, "fluorine")
 
@@ -415,8 +415,8 @@
 	result = /obj/item/stack/material/titanium
 	required_material = /obj/item/stack/material/plasteel
 
-	required_energy_min = 300                      
-	required_energy_max = 325 
+	required_energy_min = 300
+	required_energy_max = 325
 
 	required_atmos_temp_min = 555
 	required_atmos_temp_max = 566
@@ -441,7 +441,7 @@
 	result = /obj/item/stack/material/platinum
 	required_material = /obj/item/stack/material/osmium
 
-	required_energy_min = 200     
+	required_energy_min = 200
 	required_energy_max = 300
 
 	required_atmos_temp_min = 30
@@ -454,12 +454,12 @@
 	result = /obj/item/stack/material/gold
 	required_material = /obj/item/stack/material/steel
 
-	required_energy_min = 550          
+	required_energy_min = 550
 	required_energy_max = 600
 
 	required_atmos_temp_min = 5200
 	required_atmos_temp_max = 5250
-	probability = 5	
+	probability = 5
 
 /datum/particle_smasher_recipe/gold_platinum
 	reagents = list("hydrogen" = 20)
@@ -467,7 +467,7 @@
 	result = /obj/item/stack/material/platinum
 	required_material = /obj/item/stack/material/gold
 
-	required_energy_min = 570                      
+	required_energy_min = 570
 	required_energy_max = 600
 
 	required_atmos_temp_min = 555
@@ -480,7 +480,7 @@
 	result = /obj/item/stack/material/copper
 	required_material = /obj/item/stack/material/gold
 
-	required_energy_min = 300                  
+	required_energy_min = 300
 	required_energy_max = 400
 
 	required_atmos_temp_min = 293

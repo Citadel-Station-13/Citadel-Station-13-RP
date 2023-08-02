@@ -9,8 +9,9 @@
 
 /turf/simulated/mineral //wall piece
 	name = "rock"
-	icon = 'icons/turf/walls.dmi'
-	icon_state = "rock"
+	icon = 'icons/turf/walls/natural.dmi'
+	icon_state = "preview"
+	base_icon_state = "wall"
 	smoothing_flags = SMOOTH_CUSTOM
 	initial_gas_mix = GAS_STRING_VACUUM
 	opacity = 1
@@ -18,10 +19,11 @@
 	blocks_air = 1
 	can_dirty = FALSE
 	has_resources = 1
+	color = COLOR_ASTEROID_ROCK
 
-	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	smoothing_groups = (SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
-	canSmoothWith = (SMOOTH_GROUP_MINERAL_WALLS)
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_MINERAL_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS+SMOOTH_GROUP_MINERAL_WALLS)
 
 	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
 	var/rock_side_icon_state = "rock_side"
@@ -91,10 +93,7 @@
 
 /turf/simulated/mineral/icerock
 	name = "icerock"
-	icon_state = "icerock"
-	rock_side_icon_state = "icerock_side"
-	sand_icon_state = "ice"
-	rock_icon_state = "icerock"
+	color = "#78a3b8"
 	random_icon = 1
 
 /turf/simulated/mineral/icerock/airmix
@@ -102,8 +101,12 @@
 /turf/unsimulated/mineral/icerock
 	name = "impassable icerock"
 	icon = 'icons/turf/walls.dmi'
-	icon_state = "icerock-dark"
+	base_icon_state = "wall"
 	density = 1
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WALLS+ SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS )
+	canSmoothWith = (SMOOTH_GROUP_WALLS+ SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS )
+	color = COLOR_OFF_WHITE
 
 /turf/simulated/mineral/ignore_mapgen
 	ignore_mapgen = 1
@@ -188,8 +191,6 @@
 	. = ..()
 	if(prob(20))
 		overlay_detail = "asteroid[rand(0,9)]"
-	if(random_icon)
-		dir = pick(GLOB.alldirs)
 	if(mineral)
 		if(density)
 			MineralSpread()
@@ -218,8 +219,8 @@
 		else
 			name = "rock"
 
-		icon = 'icons/turf/walls.dmi'
-		icon_state = rock_icon_state
+		icon = 'icons/turf/walls/natural.dmi'
+//		icon_state = rock_icon_state
 
 	//We are a sand floor
 	else
@@ -232,8 +233,9 @@
 
 	//We are a wall (why does this system work like this??)
 	// todo: refactor this shitheap because this is pants on fucking head awful
-	if(density)
 
+	if(density)
+		/*
 		// TODO: Replace these layers with defines. (I have some being added in another PR) @Zandario
 		var/mutable_appearance/appearance
 		if(!(smoothing_junction & NORTH_JUNCTION))
@@ -252,7 +254,7 @@
 			appearance = mutable_appearance(icon, "[rock_side_icon_state]_w", layer = EDGE_LAYER)
 			appearance.pixel_x = 32
 			. += appearance
-
+		*/
 		if(archaeo_overlay)
 			. += mutable_appearance(icon, archaeo_overlay)
 		if(excav_overlay)
@@ -281,9 +283,10 @@
 		spawn(1) // Otherwise most of the ore is lost to the explosion, which makes this rather moot.
 			for(var/ore in resources)
 				var/amount_to_give = rand(CEILING(resources[ore]/2, 1), resources[ore])  // Should result in at least one piece of ore.
-				for(var/i=1, i <= amount_to_give, i++)
-					var/oretype = GLOB.ore_types[ore]
-					new oretype(src)
+				if(GLOB.ore_types[ore])
+					for(var/i=1, i <= amount_to_give, i++)
+						var/oretype = GLOB.ore_types[ore]
+						new oretype(src)
 				resources[ore] = 0
 
 /turf/simulated/mineral/bullet_act(var/obj/projectile/Proj) // only emitters for now
@@ -355,6 +358,7 @@
 	if(!density)
 
 		var/valid_tool = 0
+		var/grave_digger = 0
 		var/digspeed = 40
 /*
 		var/list/usable_tools = list(
@@ -367,6 +371,7 @@
 		if(istype(W, /obj/item/shovel))
 			var/obj/item/shovel/S = W
 			valid_tool = 1
+			grave_digger = 1
 			digspeed = S.digspeed
 
 		if(istype(W, /obj/item/pickaxe))
@@ -377,8 +382,15 @@
 
 		if(valid_tool)
 			if(sand_dug)
-				to_chat(user, "<span class='warning'>This area has already been dug.</span>")
-				return
+				if(grave_digger)
+					var/grave_type = /obj/structure/closet/grave
+					do_after(user, 60)
+					to_chat(user, "<span class='warning'>You deepen the hole.</span>")
+					new grave_type(get_turf(src))
+					return
+				else
+					to_chat(user, "<span class='warning'>This area has already been dug.</span>")
+					return
 
 			var/turf/T = user.loc
 			if(!(istype(T)))
@@ -434,7 +446,6 @@
 
 	else
 		if (istype(W, /obj/item/core_sampler))
-			geologic_data.UpdateNearbyArtifactInfo(src)
 			var/obj/item/core_sampler/C = W
 			C.sample_item(src, user)
 			return
@@ -509,9 +520,7 @@
 					next_rock += P.excavation_amount
 					while(next_rock > 50)
 						next_rock -= 50
-						var/obj/item/ore/O = new(src)
-						geologic_data.UpdateNearbyArtifactInfo(src)
-						O.geologic_data = geologic_data
+						new /obj/item/ore(src)
 				return
 			else
 				return
@@ -565,7 +574,6 @@
 					while(next_rock > 50)
 						next_rock -= 50
 						var/obj/item/ore/O = new(src)
-						geologic_data.UpdateNearbyArtifactInfo(src)
 						O.geologic_data = geologic_data
 				return
 			else
@@ -630,9 +638,6 @@
 		return
 	clear_ore_effects()
 	var/obj/item/ore/O = new mineral.ore (src)
-	if(geologic_data && istype(O))
-		geologic_data.UpdateNearbyArtifactInfo(src)
-		O.geologic_data = geologic_data
 	return O
 
 /turf/simulated/mineral/proc/excavate_turf()
@@ -686,7 +691,7 @@
 			else
 				M.flash_eyes()
 				if(prob(50))
-					M.Stun(5)
+					M.afflict_stun(20 * 5)
 		new /obj/item/artifact_shards(src, 1000, rand(0.5 MINUTES, 3 MINUTES), RAD_FALLOFF_ANOMALY_SHARDS)
 		if(prob(25))
 			excavate_find(prob(5), finds[1])
@@ -714,7 +719,6 @@
 		X = new /obj/item/archaeological_find(src, F.find_type)
 	else
 		X = new /obj/item/strangerock(src, F.find_type)
-		geologic_data.UpdateNearbyArtifactInfo(src)
 		var/obj/item/strangerock/SR = X
 		SR.geologic_data = geologic_data
 
@@ -764,77 +768,9 @@
 	if(mineral || ignore_mapgen || ignore_oregen)
 		return
 
-	var/mineral_name
-	if(rare_ore)
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 5,
-			MAT_URANIUM = 10,
-			MAT_PLATINUM = 10,
-			MAT_HEMATITE = 20,
-			MAT_CARBON = 20,
-			MAT_DIAMOND = 2,
-			MAT_GOLD = 10,
-			MAT_SILVER = 10,
-			MAT_COPPER = 15,
-			MAT_PHORON = 20,
-			MAT_LEAD = 5,
-			MAT_VERDANTIUM = 1))
-
-	else
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 3,
-			MAT_URANIUM = 10,
-			MAT_PLATINUM = 10,
-			MAT_HEMATITE = 70,
-			MAT_CARBON = 70,
-			MAT_DIAMOND = 2,
-			MAT_GOLD = 10,
-			MAT_SILVER = 10,
-			MAT_COPPER = 15,
-			MAT_PHORON = 20,
-			MAT_LEAD = 2,
-			MAT_VERDANTIUM = 1))
+	var/mineral_name = standard_mineral_roll(rare_ore)
 
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		UpdateMineral()
-
-
-/turf/simulated/mineral/rich/make_ore(var/rare_ore)
-	if(mineral || ignore_mapgen)
-		return
-	var/mineral_name
-	if(rare_ore)
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 7,
-			MAT_URANIUM = 10,
-			MAT_PLATINUM = 10,
-			MAT_HEMATITE = 10,
-			MAT_CARBON = 10,
-			MAT_DIAMOND = 4,
-			MAT_GOLD = 15,
-			MAT_SILVER = 15,
-			MAT_COPPER = 10,
-			MAT_PHORON = 10,
-			MAT_LEAD = 5,
-			MAT_VERDANTIUM = 2))
-
-
-
-	else
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 5,
-			MAT_URANIUM = 7,
-			MAT_PLATINUM = 7,
-			MAT_HEMATITE = 28,
-			MAT_CARBON = 28,
-			MAT_DIAMOND = 2,
-			MAT_GOLD = 7,
-			MAT_SILVER = 7,
-			MAT_COPPER = 7,
-			MAT_PHORON = 7,
-			MAT_LEAD = 4,
-			MAT_VERDANTIUM = 1))
-	if(mineral_name && (mineral_name in GLOB.ore_data))
-		mineral = GLOB.ore_data[mineral_name]
-		UpdateMineral()
+		if(atom_flags & ATOM_INITIALIZED)
+			UpdateMineral()

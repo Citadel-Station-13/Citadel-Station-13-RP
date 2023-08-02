@@ -104,7 +104,7 @@ Buildable meters
 	set name = "Flip Pipe"
 	set src in view(1)
 
-	if ( usr.stat || usr.restrained() || !usr.canmove )
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 
 	do_a_flip()
@@ -126,7 +126,7 @@ Buildable meters
 	set name = "Rotate Pipe Clockwise"
 	set src in view(1)
 
-	if ( usr.stat || usr.restrained() || !usr.canmove )
+	if (!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 
 	setDir(turn(src.dir, -90)) // Rotate clockwise
@@ -167,8 +167,8 @@ Buildable meters
 	fixdir()
 
 //called when a turf is attacked with a pipe item
-/obj/item/pipe/afterattack(turf/simulated/floor/target, mob/user, proximity)
-	if(!proximity)
+/obj/item/pipe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(istype(target))
 		user.transfer_item_to_loc(src, target)

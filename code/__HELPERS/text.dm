@@ -25,16 +25,18 @@
 // todo probably split this file into other files
 
 /// Used for preprocessing entered text.
+//  todo: extra is a bad param, we should instead just have linebreaks = n for n linebreaks, and a way to disable it.
 /proc/sanitize(input, max_length = MAX_MESSAGE_LEN, encode = TRUE, trim = TRUE, extra = TRUE)
 	if(!input)
-		return
+		// don't toss out blank input by nulling it
+		return input
 
 	if(max_length)
 		input = copytext(input,1,max_length)
 
 	if(extra)
 		var/temp_input = replace_characters(input, list("\n"="  ","\t"=" "))//one character is replaced by two
-		if(length_char(input) < (length_char(temp_input) - 12)) //12 is the number of linebreaks allowed per message
+		if(length_char(input) < (length_char(temp_input) - (6 * 2))) //12 is the number of linebreaks allowed per message
 			input = replace_characters(temp_input,list("  "=" "))//replace again, this time the double spaces with single ones
 
 	if(encode)
@@ -563,34 +565,34 @@ GLOBAL_VAR_INIT(text_tag_icons, new /icon('./icons/chattags.dmi'))
 	switch(macro)
 		//prefixes/agnostic
 		if("the")
-			rest = text("\the []", rest)
+			rest = "\the [rest]"
 		if("a")
-			rest = text("\a []", rest)
+			rest = "\a [rest]"
 		if("an")
-			rest = text("\an []", rest)
+			rest = "\an [rest]"
 		if("proper")
-			rest = text("\proper []", rest)
+			rest = "\proper [rest]"
 		if("improper")
-			rest = text("\improper []", rest)
+			rest = "\improper [rest]"
 		if("roman")
-			rest = text("\roman []", rest)
+			rest = "\roman [rest]"
 		//postfixes
 		if("th")
-			base = text("[]\th", rest)
+			base = "[rest]\th"
 		if("s")
-			base = text("[]\s", rest)
+			base = "[rest]\s"
 		if("he")
-			base = text("[]\he", rest)
+			base = "[rest]\he"
 		if("she")
-			base = text("[]\she", rest)
+			base = "[rest]\she"
 		if("his")
-			base = text("[]\his", rest)
+			base = "[rest]\his"
 		if("himself")
-			base = text("[]\himself", rest)
+			base = "[rest]\himself"
 		if("herself")
-			base = text("[]\herself", rest)
+			base = "[rest]\herself"
 		if("hers")
-			base = text("[]\hers", rest)
+			base = "[rest]\hers"
 
 	. = base
 	if(rest)

@@ -21,7 +21,7 @@
 	return ..()
 
 /obj/item/clothing/suit/storage/hooded/proc/MakeHood()
-	if(!hood)
+	if(!hood && hoodtype)
 		var/obj/item/clothing/head/hood/H = new hoodtype(src)
 		hood = H
 
@@ -63,8 +63,7 @@
 				else
 					hood.atom_flags &= ~PHORONGUARD
 				hood.set_armor(armor)
-				hood.atom_colours = atom_colours?.Copy()
-				hood.update_atom_colour()
+				hood.copy_atom_colour(src)
 				// equip after armor / color changes
 				H.equip_to_slot_if_possible(hood, SLOT_ID_HEAD)
 				hood_up = TRUE
@@ -156,7 +155,7 @@
 	desc = "A heavy jacket made from the most expensive animal furs on the market, hand skinned by the finest of hunters, sewed with the finest of jewels, truly a coat befitting the Director."
 	icon_state = "coatcaptain"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatcaptain", SLOT_ID_LEFT_HAND = "coatcaptain")
-	armor_type = /datum/armor/security/low
+	armor_type = /datum/armor/security/light_formalwear
 	hoodtype = /obj/item/clothing/head/hood/winter/captain
 	allowed =  list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
@@ -167,7 +166,7 @@
 	name = "head of personnel's winter coat"
 	desc = "A cozy winter coat, covered in thick fur. The breast features a proud yellow chevron, reminding everyone that you're the second banana."
 	icon_state = "coathop"
-	armor_type = /datum/armor/security/low
+	armor_type = /datum/armor/security/light_formalwear
 	hoodtype = /obj/item/clothing/head/hood/winter/hop
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/security
@@ -175,7 +174,7 @@
 	desc = "A heavy jacket made from greyshirt hide, there seems to be a sewed in holster, as well as a thin weave of protection against most damage.'"
 	icon_state = "coatsecurity"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatsecurity", SLOT_ID_LEFT_HAND = "coatsecurity")
-	armor_type = /datum/armor/security/low
+	armor_type = /datum/armor/security/light_formalwear
 	hoodtype = /obj/item/clothing/head/hood/winter/security
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
@@ -431,7 +430,7 @@
 	icon_state = "explorer"
 	item_state = "explorer"
 	atom_flags = PHORONGUARD
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -457,7 +456,7 @@
 	icon_state = "miner"
 	atom_flags = PHORONGUARD
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -478,46 +477,12 @@
 		/obj/item/gun/magnetic/matfed
 		)
 
-//The Chippin' In Set -Cap
-/obj/item/clothing/suit/storage/hooded/ronincoat
-	name = "ronin coat"
-	desc = "Outfitted with integrated heating coils, this fashionable coat is a favorite of gangsters and mercenaries alike."
-	icon_state = "ronin_coat"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
-	inv_hide_flags = HIDEHOLSTER
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	hoodtype = /obj/item/clothing/head/hood/ronin
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
-
-/obj/item/clothing/suit/storage/hooded/runner
-	name = "Runner Jacket"
-	desc = "A sturdy high-vis jacket patterned after a lost society's first responders. It has been marked with unfamiliar graffiti on the back."
-	icon_state = "runner_jacket"
-	inv_hide_flags = HIDEHOLSTER
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	hoodtype = /obj/item/clothing/head/hood/runner
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
-
-/obj/item/clothing/suit/storage/hooded/runner/half_pint
-	name = "Half-Pint Jacket"
-	desc = "This reinforced jacket bears many curious modifications. Marketed towards mercenaries who'd like a touch of flair, the commercial variant comes with built-in decorative lighting and multiple internal pockets meant to accept armor panels."
-	icon_state = "half_pint"
-	hoodtype = /obj/item/clothing/head/hood/runner/half_pint
-
 // Eldritch suit
 /obj/item/clothing/suit/storage/hooded/eldritch
 	name = "eldritch garment"
 	desc = "A billowing garment that seeps a thick, waxy substance. Upon closer inspection this outfit is crafted out of tanned skin, the ritual icons and spells drawn onto it having been tattooed before removal."
 	icon_state = "eldritch_armor"
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	inv_hide_flags = HIDEHOLSTER
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
 	action_button_name = "Toggle Eldritch Hood"
@@ -598,13 +563,80 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	hoodtype = /obj/item/clothing/head/hood/mercy
 
-//Donator jacket.
-/obj/item/clothing/suit/storage/hooded/pariah
-	name = "Springtime Pariah Moto Jacket"
-	desc = "A leather jacket commonly associated with hoverbike riders. Stitched over pockets in the shoulder and chest panels suggest it could take armor inserts at some point in its past. The custom embroidery and cut implies this was made for someone special. There are no manufacturers marks, beyond a small tag bearing a stylized letter 'K'."
-	icon_state = "pariah"
-	inv_hide_flags = HIDEHOLSTER
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	hoodtype = /obj/item/clothing/head/hood/pariah
+//The Covert/Overt Spec Ops Carrier - This is technically armor, but due to how it works I'm putting it here.
+/obj/item/clothing/suit/storage/hooded/covertcarrier
+	name = "advanced plate carrier"
+	desc = "The NT-COV/OV-4 plate carrier is an experimental system first utilized by covert field operatives employed by NanoTrasen. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection."
+	icon = 'icons/obj/clothing/modular_armor.dmi'
+	item_icons = list(SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
+	icon_state = "pcarrier"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
+	hoodtype = /obj/item/clothing/head/hood/covertcarrier
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_OVER \
+		|ACCESSORY_SLOT_INSIGNIA \
+		|ACCESSORY_SLOT_ARMOR_C \
+		|ACCESSORY_SLOT_ARMOR_A \
+		|ACCESSORY_SLOT_ARMOR_L \
+		|ACCESSORY_SLOT_ARMOR_S \
+		|ACCESSORY_SLOT_ARMOR_M
+		)
+	restricted_accessory_slots = (\
+		ACCESSORY_SLOT_OVER \
+		|ACCESSORY_SLOT_INSIGNIA \
+		|ACCESSORY_SLOT_ARMOR_C \
+		|ACCESSORY_SLOT_ARMOR_A \
+		|ACCESSORY_SLOT_ARMOR_L \
+		|ACCESSORY_SLOT_ARMOR_S \
+		|ACCESSORY_SLOT_ARMOR_M
+		)
+	blood_overlay_type = "armor"
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/heavy, /obj/item/clothing/accessory/storage/pouches)
+
+/obj/item/clothing/suit/storage/hooded/covertcarrier/can_equip(mob/M, slot, mob/user, flags)
+	. = ..()
+	if(!.)
+		return
+
+	if(!ishuman(M))
+		return
+
+	var/mob/living/carbon/human/H = M
+
+	if(H.gloves)
+		if(H.gloves.body_cover_flags & ARMS)
+			for(var/obj/item/clothing/accessory/A in src)
+				if(A.body_cover_flags & ARMS)
+					to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.gloves], they're in the way.</span>")
+					return FALSE
+	if(H.shoes)
+		if(H.shoes.body_cover_flags & LEGS)
+			for(var/obj/item/clothing/accessory/A in src)
+				if(A.body_cover_flags & LEGS)
+					to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.shoes], they're in the way.</span>")
+					return FALSE
+	return TRUE
+
+/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield
+	name = "experimental plate carrier"
+	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection. Contains a removable light armor plate for potential upgrading."
+	icon_state = "pcarrier"
+	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield
+	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs, /obj/item/clothing/accessory/armor/armorplate)
+
+/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/alt
+	name = "experimental plate carrier"
+	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection. Contains a removable light armor plate for potential upgrading."
+	icon_state = "pcarrier_alt"
+	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield
+	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs, /obj/item/clothing/accessory/armor/armorplate)
+
+/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/navy
+	name = "experimental plate carrier"
+	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection. Contains a removable light armor plate for potential upgrading."
+	icon_state = "pcarrier_navy"
+	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield/navy
+	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs, /obj/item/clothing/accessory/armor/armorplate)

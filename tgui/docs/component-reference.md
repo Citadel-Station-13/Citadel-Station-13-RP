@@ -47,6 +47,7 @@ Make sure to add new items to this list if you document new components.
     - [`RoundGauge`](#roundgauge)
     - [`Section`](#section)
     - [`Slider`](#slider)
+    - [`Sprite`](#sprite)
     - [`Stack`](#stack)
     - [`Stack.Item`](#stackitem)
     - [`Table`](#table)
@@ -218,6 +219,7 @@ Buttons allow users to take actions, and make choices, with a single click.
 - See inherited props: [Box](#box)
 - `fluid: boolean` - Fill all available horizontal space.
 - `icon: string` - Adds an icon to the button.
+- `content: any` - What renders in the button.
 - `color: string` - Button color, as defined in `variables.scss`.
   - There is also a special color `transparent` - makes the button
   transparent and slightly dim when inactive.
@@ -320,6 +322,7 @@ toggle, closed by default.
 **Props:**
 
 - See inherited props: [Box](#box)
+- `captureKeys: boolean` - Should we capture keys to open/close?
 - `children: any` - What is collapsed when closed
 - `title: string` - Text to display on the button for collapsing
 - `color: string` - Color of the button; see [Button](#button)
@@ -726,6 +729,8 @@ systems for rendering. Modules are automatically centered within themselves.
 **Props:**
 
 - See inherited props: [Box](#box)
+- `id` - the ID of the module, as per from within BYOND
+- `section` - override props for the <Section> that the module renders in.
 
 ### `NoticeBox`
 
@@ -930,6 +935,18 @@ Default is about 250ms, increase it if you still see flickering.
 the input, or successfully enter a number.
 - `onDrag: (e, value) => void` - An event, which fires about every 500ms
 when you drag the input up and down, on release and on manual editing.
+
+### `Sprite`
+
+A way to render a spritesheet icon.
+
+**Props:**
+
+- See inherited props: [Box](#box)
+- `sheet: string` - name of spritesheet (the asset entry, e.g. "sheetmaterials")
+- `sizeKey: string` - the size key to use, e.g. "32x32" usually
+- `prefix?: string` - the prefix of the sprite, e.g. "stack". sometimes, there's no prefix.
+- `sprite: string` - the name of the sprite in the spritesheet, e.g. "metal"
 
 ### `Stack`
 
@@ -1209,6 +1226,7 @@ Known bugs:
 
 **Props:**
 
-- See inherited props: [Window](#window)
 - `direct: InfernoNode` - Child elements that are rendered directly inside the window
 when in standalone mode, and at the same level as other child elements when in embedded mode.
+- `window: WindowProps` - Props from [Window][#window] to use in standalone mode.
+- `section: SectionProps` - Props from [Section][#section] to use when in embedded mode. Overridden by the <Module>'s `section` entry.

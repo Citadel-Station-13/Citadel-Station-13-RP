@@ -35,7 +35,7 @@
 
 	set_typing_indicator(FALSE)
 	if(use_me)
-		usr.emote("me",usr.emote_type,message)
+		usr.emote("me",SAYCODE_TYPE_ALWAYS,message)
 	else
 		usr.emote(message)
 
@@ -57,6 +57,11 @@
 		return
 
 	message = emoji_parse(say_emphasis(message))
+
+	if(client.persistent.ligma)
+		to_chat(src, "<span class='deadsay'><b>DEAD:</b> [src]([ghost_follow_link(src, src)]) [pick("complains","moans","whines","laments","blubbers")], [message]</span>")
+		log_shadowban("[key_name(src)] DSAY: [message]")
+		return
 
 	say_dead_direct("[pick("complains","moans","whines","laments","blubbers")], <span class='message'>\"<span class='linkify'>[message]</span>\"</span>", src)
 

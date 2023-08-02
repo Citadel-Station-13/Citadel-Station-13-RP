@@ -186,7 +186,7 @@
 	update_appearance()
 	if(do_mob(src, victim, 30))
 		if(t == 1)
-			reagent_glass.reagents.trans_to_mob(victim, injection_amount, CHEM_BLOOD)
+			reagent_glass.reagents.trans_to_mob(victim, injection_amount, CHEM_INJECT)
 		else
 			victim.reagents.add_reagent(t, injection_amount)
 		visible_message(SPAN_WARNING("[src] injects [victim] with the syringe!"))
@@ -491,7 +491,7 @@
 	else if(prob(tipped_status * 0.2))
 		playsound(src, 'sound/machines/warning-buzzer.ogg', 30, extrarange=-2)
 
-/mob/living/bot/medibot/examine(mob/user)
+/mob/living/bot/medibot/examine(mob/user, dist)
 	. = ..()
 	if(tipped_status == MEDIBOT_PANIC_NONE)
 		return

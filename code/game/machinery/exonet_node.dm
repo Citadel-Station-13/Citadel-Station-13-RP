@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(exonet_nodes)
+
 /obj/machinery/exonet_node
 	name = "exonet node"
 	desc = null // Gets written in New()
@@ -21,11 +23,19 @@
 // Proc: Initialize()
 // Parameters: None
 // Description: Adds components to the machine for deconstruction. Also refreshes the descrition.
+/obj/machinery/exonet_node/Initialize(mapload)
+	. = ..()
+	GLOB.exonet_nodes += src
+
 /obj/machinery/exonet_node/map/Initialize(mapload, newdir)
 	. = ..()
-	desc = "This machine is one of many, many nodes inside [GLOB.using_map.starsys_name]'s section of the Exonet, connecting the \
-	[GLOB.using_map.station_short] to the rest of the system, at least electronically."
+	desc = "This machine is one of many, many nodes inside [(LEGACY_MAP_DATUM).starsys_name]'s section of the Exonet, connecting the \
+	[(LEGACY_MAP_DATUM).station_short] to the rest of the system, at least electronically."
 	update_desc()
+
+/obj/machinery/exonet_node/Destroy()
+	. = ..()
+	GLOB.exonet_nodes -= src
 
 // Proc: update_icon()
 // Parameters: None
@@ -164,7 +174,7 @@
 // Parameters: None
 // Description: Helper proc to get a reference to an Exonet node.
 /proc/get_exonet_node(atom/host)
-	for(var/obj/machinery/exonet_node/E in GLOB.machines)
+	for(var/obj/machinery/exonet_node/E in GLOB.exonet_nodes)
 		if(E.on && (!host || can_telecomm(host, E)))
 			return E
 

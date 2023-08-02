@@ -1,7 +1,7 @@
 /obj/machinery/camera
 	name = "security camera"
 	desc = "It's used to monitor rooms."
-	icon = 'icons/obj/monitors_vr.dmi'
+	icon = 'icons/obj/monitors.dmi'
 	icon_state = "camera"
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
@@ -65,6 +65,7 @@
 	if(!c_tag)
 		var/area/A = get_area(src)
 		c_tag = "[A ? A.name : "Unknown"] #[rand(111,999)]"
+	update_icon()
 	return ..()
 
 /obj/machinery/camera/Destroy()
@@ -208,7 +209,7 @@
 			if(!O.client) continue
 			if(U.name == "Unknown") to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
 			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U];trackname=[U.name]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
-			O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
+			O << browse("<HTML><HEAD><TITLE>[itemname]</TITLE></HEAD><BODY><TT>[info]</TT></BODY></HTML>", "window=[itemname]")
 
 	else if(W.damtype == BRUTE || W.damtype == BURN) //bashing cameras
 		user.setClickCooldown(user.get_attack_speed(W))
@@ -293,6 +294,23 @@
 		icon_state = "[initial(icon_state)]emp"
 	else
 		icon_state = initial(icon_state)
+
+/obj/machinery/camera/setDir(ndir)
+	. = ..()
+	base_pixel_x = 0
+	base_pixel_y = 0
+	var/turf/T = get_step(get_turf(src), turn(src.dir, 180))
+	for(var/obj/O in T.contents)
+		if(O.density)
+			switch(dir)
+				if(SOUTH)
+					base_pixel_y = 21
+				if(WEST)
+					base_pixel_x = 10
+				if(EAST)
+					base_pixel_x = -10
+			break
+	reset_pixel_offsets()
 
 /obj/machinery/camera/proc/triggerCameraAlarm(duration = 0)
 	alarm_on = 1

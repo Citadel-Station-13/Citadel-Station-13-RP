@@ -25,7 +25,7 @@ var/global/list/total_extraction_beacons = list()
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "phoroncrate"
 
-/obj/item/extraction_pack/examine(mob/user)
+/obj/item/extraction_pack/examine(mob/user, dist)
 	. = ..()
 	. +="It has [uses_left] use\s remaining."
 
@@ -53,30 +53,30 @@ var/global/list/total_extraction_beacons = list()
 		beacon = A
 		to_chat(user, "You link the extraction pack to the beacon system.")
 
-/obj/item/extraction_pack/afterattack(atom/movable/A, mob/living/carbon/user, flag, params)
+/obj/item/extraction_pack/afterattack(atom/movable/target, mob/user, clickchain_flags, list/params)
 	if(!beacon)
 		to_chat(user, "[src] is not linked to a beacon, and cannot be used.")
 		return
 	if(!can_use_indoors)
-		var/turf/T = get_turf(A)
+		var/turf/T = get_turf(target)
 		if(T && !T.outdoors)
 			to_chat(user, "[src] can only be used on things that are outdoors!")
 			return
-	if(!flag)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(!istype(A))
+	if(!istype(target))
 		return
 	else
-		if(!safe_for_living_creatures && check_for_living_mobs(A))
+		if(!safe_for_living_creatures && check_for_living_mobs(target))
 			to_chat(user, "[src] is not safe for use with living creatures, they wouldn't survive the trip back!")
 			return
-		if(!isturf(A.loc)) // no extracting stuff inside other stuff
+		if(!isturf(target.loc)) // no extracting stuff inside other stuff
 			return
-		if(A.anchored)
+		if(target.anchored)
 			return
-		to_chat(user, "<span class='notice'>You start attaching the pack to [A]...</span>")
-		if(do_after(user,50,target=A))
-			to_chat(user, "<span class='notice'>You attach the pack to [A] and activate it.</span>")
+		to_chat(user, "<span class='notice'>You start attaching the pack to [target]...</span>")
+		if(do_after(user,50,target=target))
+			to_chat(user, "<span class='notice'>You attach the pack to [target] and activate it.</span>")
 			/* No components, sorry. No convienence for you!
 			if(loc == user && istype(user.back, /obj/item/storage/backpack))
 				var/obj/item/storage/backpack/B = user.back
@@ -88,17 +88,17 @@ var/global/list/total_extraction_beacons = list()
 			var/mutable_appearance/balloon
 			var/mutable_appearance/balloon2
 			var/mutable_appearance/balloon3
-			if(isliving(A))
-				var/mob/living/M = A
-				M.AdjustStunned(10) // Keep them from moving during the duration of the extraction
+			if(isliving(target))
+				var/mob/living/M = target
+				M.adjust_stunned(20 * 10) // Keep them from moving during the duration of the extraction
 				if(M.buckled)
 					M.buckled.unbuckle_mob(M)
 			else
-				A.anchored = TRUE
-				A.density = FALSE
-			var/obj/effect/extraction_holder/holder_obj = new(A.loc)
+				target.anchored = TRUE
+				target.density = FALSE
+			var/obj/effect/extraction_holder/holder_obj = new(target.loc)
 			holder_obj.appearance = /obj/item/extraction_holdercrate
-			A.forceMove(holder_obj)
+			target.forceMove(holder_obj)
 			balloon2 = mutable_appearance('icons/obj/fulton_balloon.dmi', "fulton_expand")
 			balloon2.pixel_y = 18
 			balloon2.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
@@ -122,9 +122,9 @@ var/global/list/total_extraction_beacons = list()
 			sleep(10)
 			playsound(holder_obj.loc, 'sound/items/fultext_launch.wav', 50, 1, -3)
 			animate(holder_obj, pixel_z = 1000, time = 30)
-			if(ishuman(A))
-				var/mob/living/carbon/L = A
-				L.AdjustStunned(stuntime)
+			if(ishuman(target))
+				var/mob/living/carbon/L = target
+				L.adjust_stunned(20 * stuntime)
 				L.drowsyness = 0
 			sleep(30)
 			var/list/flooring_near_beacon = list()
@@ -149,11 +149,11 @@ var/global/list/total_extraction_beacons = list()
 			holder_obj.add_overlay(balloon3)
 			sleep(4)
 			holder_obj.cut_overlay(balloon3)
-			A.anchored = FALSE // An item has to be unanchored to be extracted in the first place.
-			A.density = initial(A.density)
+			target.anchored = FALSE // An item has to be unanchored to be extracted in the first place.
+			target.density = initial(target.density)
 			animate(holder_obj, pixel_z = 0, time = 5)
 			sleep(5)
-			A.forceMove(holder_obj.loc)
+			target.forceMove(holder_obj.loc)
 			qdel(holder_obj)
 			if(uses_left <= 0)
 				qdel(src)

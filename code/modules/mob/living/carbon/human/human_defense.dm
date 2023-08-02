@@ -4,7 +4,6 @@ Contains most of the procs that are called when a mob is attacked by something
 bullet_act
 legacy_ex_act
 meteor_act
-emp_act
 
 */
 
@@ -67,10 +66,10 @@ emp_act
 				msg_admin_attack("[key_name(src)] was disarmed by a stun effect")
 				drop_active_held_item()
 				if (affected.robotic >= ORGAN_ROBOT)
-					INVOKE_ASYNC(src, /mob/proc/custom_emote, 1, "drops what they were holding, their [affected.name] malfunctioning!")
+					INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), 1, "drops what they were holding, their [affected.name] malfunctioning!")
 				else
 					var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
-					INVOKE_ASYNC(src, /mob/proc/custom_emote, 1, "[affected.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [affected.name]!")
+					INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), 1, "[affected.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [affected.name]!")
 
 	..(stun_amount, agony_amount, def_zone)
 
@@ -360,7 +359,7 @@ emp_act
 		var/obj/O = AM
 
 		if(in_throw_mode && TT.speed <= THROW_SPEED_CATCHABLE)	//empty active hand and we're in throw mode
-			if(canmove && !restrained())
+			if(CHECK_ALL_MOBILITY(src, MOBILITY_CAN_USE | MOBILITY_CAN_PICKUP))
 				if(isturf(O.loc))
 					if(can_catch(O))
 						put_in_active_hand(O)
@@ -516,10 +515,10 @@ emp_act
 	// Tox and oxy don't matter to suits.
 	if(damtype != BURN && damtype != BRUTE) return
 
-	// The rig might soak this hit, if we're wearing one.
-	if(back && istype(back,/obj/item/rig))
-		var/obj/item/rig/rig = back
-		rig.take_hit(damage)
+	// The hardsuit might soak this hit, if we're wearing one.
+	if(back && istype(back,/obj/item/hardsuit))
+		var/obj/item/hardsuit/hardsuit = back
+		hardsuit.take_hit(damage)
 
 	// We may also be taking a suit breach.
 	if(!wear_suit) return

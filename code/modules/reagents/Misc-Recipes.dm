@@ -364,7 +364,7 @@
 						continue
 
 				M.flash_eyes()
-				M.Weaken(15)
+				M.afflict_paralyze(20 * 15)
 
 			if(4 to 5)
 				if(hasvar(M, "glasses"))
@@ -372,7 +372,7 @@
 						continue
 
 				M.flash_eyes()
-				M.Stun(5)
+				M.afflict_stun(20 * 5)
 
 /datum/chemical_reaction/emp_pulse
 	name = "EMP Pulse"
@@ -817,6 +817,35 @@
 	new /obj/item/stack/medical/poultice_burn(get_turf(holder.my_atom), created_volume)
 	return
 
+/datum/chemical_reaction/phlogiston
+	name = "Phlogiston"
+	id = "phlogiston"
+	result = "phlogiston"
+	required_reagents = list("gunpowder" = 2, "alchemybase" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/condensedphlogiston
+	name = "Condensed Phlogiston"
+	id = "condensedphlogiston"
+	result = null
+	required_reagents = list("phlogiston" = 1, "ash" = 1, "alchemybase" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/condensedphlogiston/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/condensedphlogiston(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/bitterash
+	name = "Bitter Ash"
+	id = "bitterash"
+	result = null
+	required_reagents = list("nicotine" = 1, "ash" = 1, "alchemybase" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/bitterash/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/bitterash(get_turf(holder.my_atom), created_volume)
+	return
+
 ///////////////////////////////
 //SLIME CORES BELOW HERE///////
 ///////////////////////////////
@@ -861,11 +890,11 @@
 	var/fail_chance = rand(1,1000)
 	if(fail_chance == 1) // 0.1% chance of exploding, so scientists don't exclusively abuse this to obtain materials.
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The solution begins to vibrate violently!</span>"), 1) // It was at this moment, the Xenobiologist knew... he fucked up.
+			O.show_message(SPAN_WARNING("The solution begins to vibrate violently!"), SAYCODE_TYPE_VISIBLE) // It was at this moment, the Xenobiologist knew... he fucked up.
 		sleep(30)
 		playsound(get_turf(holder.my_atom), 'sound/items/Welder2.ogg', 100, 1)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The reaction begins to rapidly sizzle and swell outwards!</span>"), 1)
+			O.show_message(SPAN_WARNING("The reaction begins to rapidly sizzle and swell outwards!"), SAYCODE_TYPE_VISIBLE)
 		sleep(20)
 		explosion(get_turf(holder.my_atom), 0 ,4, 8) //Enough to cause severe damage in the area, but not so much that it'll instantly gib the person.
 		empulse(get_turf(holder.my_atom), 3, 7) //Uh oh, it produced some uranium, too! EMP blast!
@@ -874,7 +903,7 @@
 	if(fail_chance < 101) // 10% chance of it not working at all.
 		playsound(get_turf(holder.my_atom), 'sound/items/Welder.ogg', 100, 1)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The slime core fizzles disappointingly.</span>"), 1)
+			O.show_message(SPAN_WARNING("The slime core fizzles disappointingly."), SAYCODE_TYPE_VISIBLE)
 		return
 
 	var/blocked = list(/obj/item/stack/material, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/plastic, /obj/item/stack/material/cyborg/plasteel, /obj/item/stack/material/cyborg/glass/reinforced, /obj/item/stack/material/cyborg/wood, /obj/item/stack/animalhide/human, /obj/item/stack/animalhide/corgi, /obj/item/stack/animalhide/cat, /obj/item/stack/animalhide/monkey, /obj/item/stack/animalhide/lizard , /obj/item/stack/animalhide/xeno, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/glass/reinforced)
@@ -953,7 +982,7 @@
 
 /datum/chemical_reaction/slimefire/on_reaction(datum/reagents/holder)
 	for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-		O.show_message(text("<span class='warning'>The slime extract begins to vibrate violently!</span>"), 1)
+		O.show_message(SPAN_WARNING("The slime extract begins to vibrate violently!"), SAYCODE_TYPE_VISIBLE)
 	sleep(50)
 	var/turf/location = get_turf(holder.my_atom.loc)
 	for(var/turf/simulated/floor/target_tile in range(0,location))
@@ -984,7 +1013,7 @@
 		C.adjustOxyLoss(-25)
 		C.adjustBrainLoss(-25)
 		C.adjustCloneLoss(-25)
-		C.updatehealth()
+		C.update_health()
 
 /datum/chemical_reaction/slimejelly
 	name = "Slime Jam"
@@ -1017,29 +1046,6 @@
 					H.visible_message("<span class='info'>[H] stirs faintly, but doesn't appear to be ready to wake up yet.</span>")
 			else
 				H.visible_message("<span class='info'>[H] twitches for a moment, but remains still.</span>") // no nutriment
-
-
-/datum/chemical_reaction/sizeoxadone
-	name = "sizeoxadone"
-	id = "sizeoxadone"
-	result = "sizeoxadone"
-	required_reagents = list("clonexadone" = 1, "tramadol" = 3, MAT_PHORON = 1)
-	catalysts = list(MAT_PHORON = 5)
-	result_amount = 5
-
-/datum/chemical_reaction/macrocillin
-	name = "Macrocillin"
-	id = "macrocillin"
-	result = "macrocillin"
-	required_reagents = list("sizeoxadone" = 20, "diethylamine" = 20)
-	result_amount = 1
-
-/datum/chemical_reaction/microcillin
-	name = "Microcillin"
-	id = "microcillin"
-	result = "microcillin"
-	required_reagents = list("sizeoxadone" = 20, "sodiumchloride" = 20)
-	result_amount = 1
 
 /datum/chemical_reaction/gunpowder
 	name = "Gunpowder"

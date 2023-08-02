@@ -7,7 +7,8 @@
 
 /datum/progressbar/New(mob/user, goal_number, atom/target)
 	. = ..()
-	if(!target) target = user
+	if(!target)
+		target = user
 	if (!istype(target))
 		EXCEPTION("Invalid target given")
 	if (goal_number)
@@ -15,7 +16,7 @@
 	bar = image('icons/effects/progessbar.dmi', target, "prog_bar_0")
 	bar.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 	bar.pixel_y = 32
-	bar.plane = PLANE_PLAYER_HUD
+	bar.plane = HUD_PLANE
 	src.user = user
 	if(user)
 		client = user.client

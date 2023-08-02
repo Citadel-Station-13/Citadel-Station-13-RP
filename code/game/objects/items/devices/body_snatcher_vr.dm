@@ -8,7 +8,7 @@
 	item_flags = ITEM_NOBLUDGEON
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 200)
+	materials = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2, TECH_ILLEGAL = 1)
 
 /obj/item/bodysnatcher/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -51,16 +51,16 @@
 					user_mind.current = null
 					prey_mind.current = null
 					user_mind.active = TRUE //If they are 'active', their client is automatically pushed to the mob
-					user_mind.transfer_to(M) //This works. Transfers mind & Ckey.
+					user_mind.transfer(M) //This works. Transfers mind & Ckey.
 					prey_mind.active = TRUE
-					prey_mind.transfer_to(user)
+					prey_mind.transfer(user)
 					M.ooc_notes = user_ooc_notes //Let's keep their OOC notes over to their new body.
 					user.ooc_notes = target_ooc_notes
-					user.sleeping = 10 //Device knocks out both the user and the target.
+					user.afflict_sleeping(10 SECONDS)
 					user.eye_blurry = 30 //Blurry vision while they both get used to their new body's vision
 					user.slurring = 50 //And let's also have them slurring while they attempt to get used to using their new body.
 					if(ishuman(M)) //Let's not have the AI slurring, even though its downright hilarious.
-						M.sleeping = 10
+						M.afflict_sleeping(10 SECONDS)
 						M.eye_blurry = 30
 						M.slurring = 50
 

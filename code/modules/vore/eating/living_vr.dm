@@ -182,21 +182,6 @@
 	return FALSE
 
 //
-// Our custom resist catches for /mob/living
-//
-/mob/living/proc/vore_process_resist()
-
-	//Are we resisting from inside a belly?
-	if(isbelly(loc))
-		var/obj/belly/B = loc
-		B.relay_resist(src)
-		return TRUE //resist() on living does this TRUE thing.
-
-	//Other overridden resists go here
-
-	return FALSE
-
-//
 //	Verb for saving vore preferences to save file
 //
 /mob/living/proc/save_vore_prefs()
@@ -396,7 +381,6 @@
 
 	return smell_message
 
-
 //
 // OOC Escape code for pref-breaking or AFK preds
 //
@@ -434,10 +418,10 @@
 		belly.go_out(src) //Just force-ejects from the borg as if they'd clicked the eject button.
 
 	//You're in an AI hologram!
-	else if(istype(loc, /obj/effect/overlay/aiholo))
-		var/obj/effect/overlay/aiholo/holo = loc
-		holo.drop_prey() //Easiest way
-		log_and_message_admins("[key_name(src)] used the OOC escape button to get out of [key_name(holo.master)] (AI HOLO) ([holo ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[holo.x];Y=[holo.y];Z=[holo.z]'>JMP</a>" : "null"])")
+	else if(istype(loc, /obj/effect/overlay/hologram/holopad/ai))
+		var/obj/effect/overlay/hologram/holopad/ai/holo = loc
+		holo.drop_vored()
+		log_and_message_admins("[key_name(src)] used the OOC escape button to get out of [key_name(holo.owner)] (AI HOLO) ([holo ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[holo.x];Y=[holo.y];Z=[holo.z]'>JMP</a>" : "null"])")
 
 	//Don't appear to be in a vore situation
 	else
@@ -488,11 +472,11 @@
 
 	// Prepare messages
 	if(user == pred) //Feeding someone to yourself
-		attempt_msg = text("<span class='warning'>[] is attempting to [] [] into their []!</span>",pred,lowertext(belly.vore_verb),prey,lowertext(belly.name))
-		success_msg = text("<span class='warning'>[] manages to [] [] into their []!</span>",pred,lowertext(belly.vore_verb),prey,lowertext(belly.name))
+		attempt_msg = SPAN_WARNING("[pred] is attempting to [lowertext(belly.vore_verb)] [prey] into their [lowertext(belly.name)]!")
+		success_msg = SPAN_WARNING("[pred] manages to [lowertext(belly.vore_verb)] [prey] into their [lowertext(belly.name)]!")
 	else //Feeding someone to another person
-		attempt_msg = text("<span class='warning'>[] is attempting to make [] [] [] into their []!</span>",user,pred,lowertext(belly.vore_verb),prey,lowertext(belly.name))
-		success_msg = text("<span class='warning'>[] manages to make [] [] [] into their []!</span>",user,pred,lowertext(belly.vore_verb),prey,lowertext(belly.name))
+		attempt_msg = SPAN_WARNING("[user] is attempting to make [pred] [lowertext(belly.vore_verb)] [prey] into their [lowertext(belly.name)]!")
+		success_msg = SPAN_WARNING("[user] manages to make [pred] [lowertext(belly.vore_verb)] [prey] into their [lowertext(belly.name)]!")
 
 	// Announce that we start the attempt!
 	user.visible_message(attempt_msg)
@@ -739,19 +723,13 @@
 	set desc = "Switch sharp/fuzzy scaling for current mob."
 	appearance_flags ^= PIXEL_SCALE
 
-/mob/living/examine(mob/user)
+/mob/living/examine(mob/user, dist)
 	. = ..()
-
-	if(ooc_notes)
-		. += SPAN_BOLDNOTICE("OOC Notes: <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>")
 
 	if(print_flavor_text())
 		. += "\n[print_flavor_text()]"
 
 	. += attempt_vr(src,"examine_bellies",args)
-
-	if(showvoreprefs && ckey) //ckey so non-controlled mobs don't display it.
-		. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")
 
 /mob/living/Topic(href, href_list)	//Can't find any instances of Topic() being overridden by /mob/living in polaris' base code, even though /mob/living/carbon/human's Topic() has a ..() call
 	if(href_list["vore_prefs"])

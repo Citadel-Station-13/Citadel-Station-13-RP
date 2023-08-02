@@ -1,17 +1,30 @@
+/proc/cmp_chemical_reaction_priority(datum/chemical_reaction/A, datum/chemical_reaction/B)
+	return B.priority - A.priority
+
 /datum/chemical_reaction
-	//? core
+	abstract_type = /datum/chemical_reaction
+	//* core *//
 	/// id - must be unique and in CamelCase.
 	var/id
 	/// reagent reaction flags - see [code/__DEFINES/reagents/flags.dm]
 	var/chemical_reaction_flags = NONE
 
+	//* reaction *//
+	/// required reagents as ratios. path or id is supported, prefer paths for compile time checking.
+	var/list/required_reagents = list()
+	/// result reagent path or id. prefer path for compile time checking.
+	var/result
+	/// how much of the result is made per 1 ratio of required_reagents consumed.
+	var/result_amount = 0
+	/// priority - higher is checked first when reacting.
+	var/priority = 0
+	/// required container typepath of holder my_atom
+	var/required_container
+
 	//? legacy / unsorted
 	var/name = null
-	var/result = null
-	var/list/required_reagents = list()
 	var/list/catalysts = list()
 	var/list/inhibitors = list()
-	var/result_amount = 0
 
 	//how far the reaction proceeds each time it is processed. Used with either REACTION_RATE or HALF_LIFE macros.
 	var/reaction_rate = HALF_LIFE(0)
@@ -29,7 +42,40 @@
 
 	var/log_is_important = 0 // If this reaction should be considered important for logging. Important recipes message admins when mixed, non-important ones just log to file.
 
+/datum/chemical_reaction/New()
+	for(var/i in 1 to length(required_reagents))
+		var/datum/reagent/path = required_reagents[i]
+		if(!ispath(path))
+			continue
+		var/amt = required_reagents[path]
+		var/id = initial(path.id)
+		required_reagents[i] = id
+		required_reagents[id] = amt
+	for(var/i in 1 to length(catalysts))
+		var/datum/reagent/path = catalysts[i]
+		if(!ispath(path))
+			continue
+		var/amt = catalysts[path]
+		var/id = initial(path.id)
+		catalysts[i] = id
+		catalysts[id] = amt
+	for(var/i in 1 to length(inhibitors))
+		var/datum/reagent/path = inhibitors[i]
+		if(!ispath(path))
+			continue
+		var/amt = inhibitors[path]
+		var/id = initial(path.id)
+		inhibitors[i] = id
+		inhibitors[id] = amt
+	if(ispath(result, /datum/reagent))
+		var/datum/reagent/result_initial = result
+		result = initial(result_initial.id)
+
 /datum/chemical_reaction/proc/can_happen(datum/reagents/holder)
+	// check container
+	if(!isnull(required_container) && !istype(holder.my_atom, required_container))
+		return FALSE
+
 	//check that all the required reagents are present
 	if(!holder.has_all_reagents(required_reagents))
 		return 0
@@ -124,30 +170,6 @@
 
 //Standard First Aid Medication
 
-/datum/chemical_reaction/inaprovaline
-	//Helps the patient breath in shock, very weak painkiller, and reduces bleeding
-	name = "Inaprovaline"
-	id = "inaprovaline"
-	result = "inaprovaline"
-	required_reagents = list("oxygen" = 1, MAT_CARBON = 1, "sugar" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/tricordrazine
-	//Heals the four standards slowly
-	name = "Tricordrazine"
-	id = "tricordrazine"
-	result = "tricordrazine"
-	required_reagents = list("inaprovaline" = 1, "anti_toxin" = 1)
-	result_amount = 2
-
-/datum/chemical_reaction/dylovene
-	//Heals toxin
-	name = "Dylovene"
-	id = "anti_toxin"
-	result = "anti_toxin"
-	required_reagents = list("silicon" = 1, "potassium" = 1, "nitrogen" = 1)
-	result_amount = 3
-
 /datum/chemical_reaction/carthatoline
 	//heals toxin
 	name = "Carthatoline"
@@ -210,8 +232,6 @@
 	required_reagents = list("dexalin" = 1, MAT_CARBON = 1, MAT_IRON = 1)
 	result_amount = 3
 
-
-
 //Painkiller
 
 /datum/chemical_reaction/paracetamol
@@ -256,20 +276,12 @@
 
 //The Daxon Family
 
-/datum/chemical_reaction/peridaxon
-	//Heals all organs
-	name = "Peridaxon"
-	id = "peridaxon"
-	result = "peridaxon"
-	required_reagents = list("bicaridine" = 2, "clonexadone" = 2)
-	catalysts = list(MAT_PHORON = 5)
-	result_amount = 2
-
 /datum/chemical_reaction/nanoperidaxon
 	//Heals ALL organs
 	name = "Nano-Peridaxon"
 	id = "nanoperidaxon"
 	result = "nanoperidaxon"
+	priority = 100
 	required_reagents = list("peridaxon" = 2, "nifrepairnanites" = 2)
 	result_amount = 2
 
@@ -278,6 +290,7 @@
 	name = "Osteodaxon"
 	id = "osteodaxon"
 	result = "osteodaxon"
+	priority = 100
 	required_reagents = list("bicaridine" = 2, MAT_PHORON = 0.1, "carpotoxin" = 1)
 	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("clonexadone" = 1) // Messes with cryox
@@ -288,6 +301,7 @@
 	name = "Respirodaxon"
 	id = "respirodaxon"
 	result = "respirodaxon"
+	priority = 100
 	required_reagents = list("dexalinp" = 2, "biomass" = 2, MAT_PHORON = 1)
 	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("dexalin" = 1)
@@ -298,6 +312,7 @@
 	name = "Gastirodaxon"
 	id = "gastirodaxon"
 	result = "gastirodaxon"
+	priority = 100
 	required_reagents = list("carthatoline" = 1, "biomass" = 2, "tungsten" = 2)
 	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("lithium" = 1)
@@ -308,6 +323,7 @@
 	name = "Hepanephrodaxon"
 	id = "hepanephrodaxon"
 	result = "hepanephrodaxon"
+	priority = 100
 	required_reagents = list("carthatoline" = 2, "biomass" = 2, "lithium" = 1)
 	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("tungsten" = 1)
@@ -318,12 +334,20 @@
 	name = "Cordradaxon"
 	id = "cordradaxon"
 	result = "cordradaxon"
+	priority = 100
 	required_reagents = list("potassium_chlorophoride" = 1, "biomass" = 2, "bicaridine" = 2)
 	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("clonexadone" = 1)
 	result_amount = 2
 
 //Psych Drugs and hallucination Treatment
+
+/datum/chemical_reaction/nicotine
+	name = "Nicotine"
+	id = "nicotine"
+	result = "nicotine"
+	required_reagents = list("carbon" = 1, "oxygen" = 1, "sulfur" = 1)
+	result_amount = 3
 
 /datum/chemical_reaction/synaptizine
 	name = "Synaptizine"

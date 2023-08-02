@@ -23,7 +23,7 @@
 		return 0
 
 	//block as long as they are not directly behind us
-	var/bad_arc = REVERSE_DIR(user.dir) //arc of directions from which we cannot block
+	var/bad_arc = global.reverse_dir[user.dir] //arc of directions from which we cannot block
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
 		return 0
 
@@ -46,7 +46,7 @@
 		return 0
 
 	//block as long as they are not directly behind us
-	var/bad_arc = REVERSE_DIR(user.dir) //arc of directions from which we cannot block
+	var/bad_arc = global.reverse_dir[user.dir] //arc of directions from which we cannot block
 	if(check_shield_arc(user, bad_arc, damage_source, attacker))
 		if(prob(get_block_chance(user, damage, damage_source, attacker)))
 			user.visible_message("<span class='danger'>\The [user] blocks [attack_text] with \the [src]!</span>")
@@ -68,7 +68,7 @@
 	throw_range = 4
 	w_class = ITEMSIZE_LARGE
 	origin_tech = list(TECH_MATERIAL = 2)
-	matter = list(MAT_GLASS = 7500, MAT_STEEL = 1000)
+	materials = list(MAT_GLASS = 7500, MAT_STEEL = 1000)
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
@@ -77,7 +77,7 @@
 		return 0
 
 	//block as long as they are not directly behind us
-	var/bad_arc = REVERSE_DIR(user.dir) //arc of directions from which we cannot block
+	var/bad_arc = global.reverse_dir[user.dir] //arc of directions from which we cannot block
 	if(check_shield_arc(user, bad_arc, damage_source, attacker))
 		if(prob(get_block_chance(user, damage, damage_source, attacker)))
 			//At this point, we succeeded in our roll for a block attempt, however these kinds of shields struggle to stand up
@@ -170,7 +170,7 @@
 		icon_state = "flashshield"
 		item_state = "flashshield"
 
-/obj/item/shield/riot/flash/examine(mob/user)
+/obj/item/shield/riot/flash/examine(mob/user, dist)
 	. = ..()
 	if (embedded_flash?.broken)
 		. += "<span class='info'>The mounted bulb has burnt out. You can try replacing it with a new one.</span>"
@@ -229,7 +229,7 @@
 /obj/item/shield/riot/implant/Moved()
 	. = ..()
 	if(istype(loc, /obj/item/organ/cyberimp/arm/shield))
-		recharge_timerid = addtimer(CALLBACK(src, .proc/recharge), recharge_delay, flags = TIMER_STOPPABLE)
+		recharge_timerid = addtimer(CALLBACK(src, PROC_REF(recharge)), recharge_delay, flags = TIMER_STOPPABLE)
 	else		//extending
 		if(recharge_timerid)
 			deltimer(recharge_timerid)
@@ -260,7 +260,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "roman_shield"
 	slot_flags = SLOT_BACK
-	matter = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
+	materials = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
@@ -272,7 +272,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "buckler"
 	slot_flags = SLOT_BACK | SLOT_BELT
-	matter = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
+	materials = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
@@ -382,7 +382,7 @@
 			lcolor = sanitize_hexcolor(energy_color_input, desired_format=6, include_crunch=1)
 		update_icon()
 
-/obj/item/shield/energy/examine(mob/user)
+/obj/item/shield/energy/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='notice'>Alt-click to recolor it.</span>"
 
@@ -485,7 +485,7 @@
 	throw_force = 0
 	throw_speed = 2
 	throw_range = 6
-	matter = list(MAT_PLASTIC = 7500, "foam" = 1000)
+	materials = list(MAT_PLASTIC = 7500, "foam" = 1000)
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',

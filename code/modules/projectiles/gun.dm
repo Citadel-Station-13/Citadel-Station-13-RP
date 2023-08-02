@@ -39,7 +39,7 @@
 	icon_state = "detective"
 	item_state = "gun"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	matter = list(MAT_STEEL = 2000)
+	materials = list(MAT_STEEL = 2000)
 	rad_flags = RAD_BLOCK_CONTENTS
 	w_class = ITEMSIZE_NORMAL
 	throw_force = 5
@@ -164,6 +164,7 @@
 	if(wielded_item_state)
 		var/mob/living/M = loc
 		if(istype(M))
+			LAZYINITLIST(item_state_slots)
 			if(M.can_wield_item(src) && src.is_held_twohanded(M))
 				item_state_slots[SLOT_ID_LEFT_HAND] = wielded_item_state
 				item_state_slots[SLOT_ID_RIGHT_HAND] = wielded_item_state
@@ -236,17 +237,21 @@
 	. = ..()
 	update_appearance()
 
-/obj/item/gun/afterattack(atom/A, mob/living/user, adjacent, params)
-	if(adjacent) return //A is adjacent, is the user, or is on the user's person
+/obj/item/gun/afterattack(atom/target, mob/living/user, clickchain_flags, list/params)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
+		return
+	if(!istype(user))
+		return
 
+	var/shitty_legacy_params = list2params(params)
 	if(!user.aiming)
 		user.aiming = new(user)
 
-	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A)
-		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
+	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != target)
+		PreFire(target,user,shitty_legacy_params) //They're using the new gun system, locate what they're aiming at.
 		return
 	else
-		Fire(A, user, params) //Otherwise, fire normally.
+		Fire(target, user, shitty_legacy_params) //Otherwise, fire normally.
 		return
 
 /obj/item/gun/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -664,6 +669,8 @@
 			forcespread = rand(50, 50)
 		else if(mob.shock_stage > 70)
 			forcespread = rand(-25, 25)
+		else if(IS_PRONE(mob))
+			forcespread = rand(-15, 15)
 	var/launched = !P.launch_from_gun(target, target_zone, user, params, null, forcespread, src)
 
 	if(launched)
@@ -743,7 +750,7 @@
 		accuracy = initial(accuracy)
 		recoil = initial(recoil)
 
-/obj/item/gun/examine(mob/user)
+/obj/item/gun/examine(mob/user, dist)
 	. = ..()
 	if(!no_pin_required)
 		if(pin)

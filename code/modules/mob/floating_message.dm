@@ -71,8 +71,8 @@ var/list/floating_chat_colors = list()
 	var/mob/living/X
 	if(isliving(holder))
 		X = holder
-	I.plane = PLANE_PLAYER_HUD
-	I.layer = PLANE_PLAYER_HUD_ITEMS
+	I.plane = HUD_PLANE
+	I.layer = INVENTORY_PLANE
 	I.alpha = 15
 	I.maptext_width = 160
 	I.maptext_height = 64
@@ -95,8 +95,8 @@ var/list/floating_chat_colors = list()
 		animate(old, 2, pixel_y = old.pixel_y + 8)
 	LAZYADD(holder.stored_chat_text, I)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_floating_text, holder, I), duration + 24)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_images_from_clients, I, show_to), duration + 28)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_floating_text), holder, I), duration + 24)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_image_from_clients), I, show_to), duration + 28)
 
 	return I
 

@@ -8,7 +8,7 @@
 	icon = 'icons/obj/medical/syringe.dmi'
 	item_state = "syringe_0"
 	icon_state = "0"
-	matter = list(MAT_GLASS = 150)
+	materials = list(MAT_GLASS = 150)
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = null
 	volume = 15
@@ -54,8 +54,8 @@
 /obj/item/reagent_containers/syringe/attackby(obj/item/I as obj, mob/user as mob)
 	return
 
-/obj/item/reagent_containers/syringe/afterattack(obj/target, mob/user, proximity)
-	if(!proximity || !target.reagents)
+/obj/item/reagent_containers/syringe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) || !target.reagents)
 		return
 
 	if(mode == SYRINGE_BROKEN)
@@ -208,7 +208,7 @@
 			var/contained = reagentlist()
 			if(ismob(target))
 				while(reagents.total_volume)
-					trans += reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_BLOOD)
+					trans += reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_INJECT)
 					update_icon()
 					if(!reagents.total_volume || !do_after(user,cycle_time,target))
 						break
@@ -251,7 +251,7 @@
 
 		if (target != user && H.legacy_mob_armor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message(text("<font color='red'><B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B></font>"), 1)
+				O.show_message(SPAN_BOLDDANGER("[user] tries to stab [target] in \the [hit_area] with [name], but the attack is deflected by armor!"), SAYCODE_TYPE_VISIBLE)
 			qdel(src)
 			add_attack_logs(user,target,"Syringe harmclick")
 			return
@@ -267,7 +267,7 @@
 
 	var/syringestab_amount_transferred = rand(0, (reagents.total_volume - 5)) //nerfed by popular demand
 	var/contained = reagents.get_reagents()
-	var/trans = reagents.trans_to_mob(target, syringestab_amount_transferred, CHEM_BLOOD)
+	var/trans = reagents.trans_to_mob(target, syringestab_amount_transferred, CHEM_INJECT)
 	if(isnull(trans)) trans = 0
 	add_attack_logs(user,target,"Stabbed with [src.name] containing [contained], trasferred [trans] units")
 	break_syringe(target, user)
@@ -289,7 +289,7 @@
 	visible_name = "a giant syringe"
 	time = 300
 
-/obj/item/reagent_containers/syringe/ld50_syringe/afterattack(obj/target, mob/user, flag)
+/obj/item/reagent_containers/syringe/ld50_syringe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(mode == SYRINGE_DRAW && ismob(target)) // No drawing 50 units of blood at once
 		to_chat(user, "<span class='notice'>This needle isn't designed for drawing blood.</span>")
 		return

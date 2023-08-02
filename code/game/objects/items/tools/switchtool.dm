@@ -87,7 +87,7 @@
 		var/enum = adding[path]
 		add_module(new path(src), enum)
 
-/obj/item/switchtool/examine(mob/user)
+/obj/item/switchtool/examine(mob/user, dist)
 	. = ..()
 	. += "This holds [get_formatted_modules()]."
 

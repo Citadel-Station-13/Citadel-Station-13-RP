@@ -34,6 +34,7 @@
 		/obj/item/tool/screwdriver/cyborg,
 		/obj/item/storage/bag/ore,
 		/obj/item/pickaxe/borgdrill,
+		/obj/item/gun/energy/kinetic_accelerator/cyborg,
 		/obj/item/storage/bag/sheetsnatcher/borg,
 		/obj/item/gripper/miner,
 		/obj/item/mining_scanner
@@ -68,6 +69,7 @@
 		/obj/item/tool/screwdriver/cyborg,
 		/obj/item/storage/bag/ore,
 		/obj/item/pickaxe/borgdrill,
+		/obj/item/gun/energy/kinetic_accelerator/cyborg,
 		/obj/item/storage/bag/sheetsnatcher/borg,
 		/obj/item/gripper/miner,
 		/obj/item/mining_scanner,

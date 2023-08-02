@@ -11,12 +11,13 @@
 
 
 /datum/time/classm
-	seconds_in_day = 3 HOURS
+	seconds_in_day = 10 HOURS
 
 /datum/planet/classm
 	name = "Class-M Gaia Planet"
 	desc = "A beautiful, lush planet that is owned by the Happy Days and Sunshine Corporation."
 	current_time = new /datum/time/classm()
+	weather_holder = /datum/weather_holder/classm
 
 /datum/planet/classm/update_sun()
 	..()
@@ -36,7 +37,7 @@
 
 	switch(sun_position)
 		if(0 to 0.40) // Night
-			low_brightness = 0.2
+			low_brightness = 0.35
 			low_color = "#110077"
 
 			high_brightness = 0.5
@@ -111,7 +112,7 @@
 		WEATHER_OVERCAST	= 15,
 		WEATHER_RAIN		= 5,
 		WEATHER_STORM		= 4,
-		WEATHER_BLOODMOON	= 1
+		WEATHER_BLOODMOON	= 0
 		)
 
 /datum/weather/classm
@@ -127,8 +128,8 @@
 		)
 	transition_messages = list(
 		"The sky clears up.",
-		"The sky is visible.",
-		"The weather is calm."
+		"The sky becomes visible.",
+		"The weather grows calm."
 		)
 	sky_visible = TRUE
 	observed_message = "The sky is clear."
@@ -146,7 +147,7 @@
 	transition_messages = list(
 		"All you can see above are clouds.",
 		"Clouds cut off your view of the sky.",
-		"It's very cloudy."
+		"It becomes very cloudy."
 		)
 
 
@@ -157,15 +158,17 @@
 	wind_low = 1
 	light_modifier = 0.5
 	effect_message = "<span class='warning'>Rain falls on you.</span>"
+	outdoor_sounds_type = /datum/looping_sound/weather/wind
+	indoor_sounds_type = /datum/looping_sound/weather/wind/indoors
 
 	transition_chances = list(
 		WEATHER_OVERCAST = 40,
 		WEATHER_RAIN = 55,
 		WEATHER_STORM = 5
 		)
-	observed_message = "It is raining."
+	observed_message = "The sky is dark, and rain falls down upon you."
 	transition_messages = list(
-		"The sky is dark, and rain falls down upon you."
+		"The sky grows dark, and rain falls down upon you."
 	)
 
 /datum/weather/classm/rain/process_effects()
@@ -202,13 +205,15 @@
 	light_modifier = 0.3
 	flight_failure_modifier = 10
 	effect_message = "<span class='warning'>Rain falls on you, drenching you in water.</span>"
+	outdoor_sounds_type = /datum/looping_sound/weather/outside_snow
+	indoor_sounds_type = /datum/looping_sound/weather/inside_snow
 
 	var/next_lightning_strike = 0 // world.time when lightning will strike.
 	var/min_lightning_cooldown = 5 SECONDS
 	var/max_lightning_cooldown = 1 MINUTE
 	observed_message = "An intense storm pours down over the region."
 	transition_messages = list(
-		"You feel intense winds hit you as the weather takes a turn for the worst.",
+		"You feel intense winds hit you as the weather takes a turn for the worse.",
 		"Loud thunder is heard in the distance.",
 		"A bright flash heralds the approach of a storm."
 	)

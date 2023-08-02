@@ -1,4 +1,4 @@
-/mob/living/carbon/human/examine(mob/user)
+/mob/living/carbon/human/examine(mob/user, dist)
 	var/skip_gear = 0
 	var/skip_body = 0
 
@@ -317,11 +317,11 @@
 			if(275 to 325)
 				message = SPAN_INFO("[T.He] [T.has] an especially plump body with a round potbelly and large hips.")
 			if(325 to 374)
-				message = SPAN_INFO("[T.He] [T.has] a very fat frame with a bulging potbelly, squishy rolls of pudge, very wide hips, and plump set of jiggling thighs.")
+				message = SPAN_INFO("[T.He] [T.has] a very fat frame with a bulging potbelly, and very wide hips.")
 			if(375 to 474)
-				message = SPAN_WARNING("[T.He] [T.is] incredibly obese. [T.His] massive potbelly sags over [T.his] waistline while [T.his] fat ass would probably require two chairs to sit down comfortably!")
+				message = SPAN_WARNING("[T.He] [T.is] incredibly obese. [T.His] massive potbelly sags over [T.his] waistline while [T.he] would likely require two chairs to sit down comfortably!")
 			else
-				message = SPAN_DANGER("[T.He] [T.is] so morbidly obese, you wonder how [T.he] can even stand, let alone waddle around the station.  [T.He] can't get any fatter without being immobilized.")
+				message = SPAN_DANGER("[T.He] [T.is] so morbidly obese, you wonder how [T.he] can even stand, let alone waddle around the station.")
 		. += message
 //! End of the bs
 
@@ -480,11 +480,6 @@
 	if(print_flavor_text())
 		. += "[print_flavor_text()]"
 
-	if(ooc_notes)
-		. += SPAN_BOLDNOTICE("OOC Notes: <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>")
-
-	. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")
-
 	. += applying_pressure
 
 	var/show_descs = show_descriptors_to(user)
@@ -496,11 +491,15 @@
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
 		. += SPAN_INFO("[T.He] [pose]")
 
-	// if(LAZYLEN(.) > 1) //Want this to appear after species text, aka the second line
-	// 	.[2] = "<hr>[.[2]]"
+	// handle status effects
+	// todo: this should probably be a signal but it's not urgent, this isn't a hot path
+	for(var/id in status_effects)
+		var/datum/status_effect/effect = status_effects[id]
+		effect.on_examine(.)
 
+	// send signal last so everything else prioritizes above
+	. += SPAN_BOLDNOTICE("Character Profile: <a href='?src=\ref[src];character_profile=1'>\[View\]</a>")
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .) //This also handles flavor texts now
-
 
 //Helper procedure. Called by /mob/living/carbon/human/examine() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
 /proc/hasHUD(mob/M as mob, hudtype)
@@ -676,20 +675,3 @@
 	if(dat.len)
 		return dat.Join()
 */
-/**
- * Shows any and all examine text related to any status effects the user has.
- */
-/mob/living/proc/get_status_effect_examinations()
-	var/list/examine_list = list()
-
-	for(var/datum/status_effect/effect as anything in status_effects)
-		var/effect_text = effect.get_examine_text()
-		if(!effect_text)
-			continue
-
-		examine_list += effect_text
-
-	if(!length(examine_list))
-		return
-
-	return examine_list.Join("\n")

@@ -8,7 +8,7 @@
 	luminosity = 1
 	level = 1
 
-	//! Flags
+	//? Flags
 	/// turf flags
 	var/turf_flags = NONE
 	/// multiz flags
@@ -16,7 +16,7 @@
 
 	var/holy = 0
 
-	//! atmospherics
+	//? atmospherics
 	/**
 	 * the gas we start out as
 	 * can be:
@@ -24,7 +24,8 @@
 	 * - an atmosphere id (use defines please)
 	 */
 	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
-	//! outdoors
+
+	//? outdoors
 	/**
 	 * are we considered outdoors for things like weather effects?
 	 * todo: single var doing this is inefficient & bad, flags maybe?
@@ -36,6 +37,10 @@
 	 * null - use area default
 	 */
 	var/outdoors = FALSE
+
+	//? Radiation
+	/// cached rad insulation of contents
+	var/rad_insulation_contents = 1
 
 	// Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
@@ -117,7 +122,11 @@
 	var/tmp/is_outside = OUTSIDE_AREA
 
 /turf/vv_edit_var(var_name, new_value)
-	var/static/list/banned_edits = list(NAMEOF(src, x), NAMEOF(src, y), NAMEOF(src, z))
+	var/static/list/banned_edits = list(
+		NAMEOF_STATIC(src, x),
+		NAMEOF_STATIC(src, y),
+		NAMEOF_STATIC(src, z),
+	)
 	if(var_name in banned_edits)
 		return FALSE
 	. = ..()
@@ -172,9 +181,11 @@
 	return INITIALIZE_HINT_NORMAL
 
 /turf/Destroy(force)
+	if(!(atom_flags & ATOM_INITIALIZED))
+		STACK_TRACE("Turf destroyed without initializing.")
 	. = QDEL_HINT_IWILLGC
 	if(!changing_turf)
-		stack_trace("Incorrect turf deletion")
+		STACK_TRACE("Incorrect turf deletion")
 	changing_turf = FALSE
 /*
 	var/turf/T = SSmapping.get_turf_above(src)
@@ -209,9 +220,17 @@
 		QDEL_NULL(mimic_proxy)
 
 	// clear vis contents here instead of in Init
-	vis_contents.len = 0
+	if(length(vis_contents))
+		vis_contents.len = 0
 
 	..()
+
+/// WARNING WARNING
+/// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
+/// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
+/// We do it because moving signals over was needlessly expensive, and bloated a very commonly used bit of code
+/turf/clear_signal_refs()
+	return
 
 /turf/legacy_ex_act(severity)
 	return FALSE
@@ -242,7 +261,7 @@
 			FD.attack_hand(user)
 			return TRUE
 
-	if(!(user.canmove) || user.restrained() || !(user.pulling))
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE) || user.restrained() || !(user.pulling))
 		return 0
 	if(user.pulling.anchored || !isturf(user.pulling.loc))
 		return 0
@@ -253,7 +272,7 @@
 		var/atom/movable/t = M.pulling
 		M.stop_pulling()
 		step(user.pulling, get_dir(user.pulling.loc, src))
-		M.start_pulling(t)
+		M.start_pulling(t, suppress_message = TRUE)
 	else
 		step(user.pulling, get_dir(user.pulling.loc, src))
 	return 1
@@ -296,11 +315,12 @@
 /turf/MouseDroppedOnLegacy(atom/movable/O as mob|obj, mob/user as mob)
 	var/turf/T = get_turf(user)
 	var/area/A = T.loc
+	if(!ismob(O))
+		return
+	var/mob/M = O
+	if(user == M && IS_STANDING(user))
+		return
 	if((istype(A) && !(A.has_gravity)) || (istype(T,/turf/space)))
-		return
-	if(istype(O, /atom/movable/screen))
-		return
-	if(user.restrained() || user.stat || user.stunned || user.paralysis || (!user.lying && !istype(user, /mob/living/silicon/robot)))
 		return
 	if((!(istype(O, /atom/movable)) || O.anchored || !Adjacent(user) || !Adjacent(O) || !user.Adjacent(O)))
 		return
@@ -308,16 +328,21 @@
 		return
 	if(isanimal(user) && O != user)
 		return
-	if (do_after(user, 25 + (5 * user.weakened)) && !(user.stat))
-		step_towards(O, src)
-		if(ismob(O))
-			animate(O, transform = turn(O.transform, 20), time = 2)
-			sleep(2)
-			animate(O, transform = turn(O.transform, -40), time = 4)
-			sleep(4)
-			animate(O, transform = turn(O.transform, 20), time = 2)
-			sleep(2)
-			O.update_transform()
+	if(M.pulledby || M.is_grabbed())
+		return
+	if(!CHECK_MOBILITY(user, user == M? MOBILITY_IS_CONSCIOUS : MOBILITY_CAN_USE))
+		return
+	if (do_after(user, 2.5 SECONDS, mobility_flags = user == M? MOBILITY_IS_CONSCIOUS : MOBILITY_CAN_USE))
+		if(M.pulledby || M.is_grabbed())
+			return
+		step_towards(M, src)
+		animate(M, transform = turn(O.transform, 20), time = 2)
+		sleep(2)
+		animate(M, transform = turn(O.transform, -40), time = 4)
+		sleep(4)
+		animate(M, transform = turn(O.transform, 20), time = 2)
+		sleep(2)
+		M.update_transform()
 
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)
@@ -540,3 +565,39 @@
 		SSambient_lighting.queued += src
 		return TRUE
 	return FALSE
+
+//? Atom Color - we don't use the expensive system.
+
+/turf/get_atom_colour()
+	return color
+
+/turf/add_atom_colour(coloration, colour_priority)
+	color = coloration
+
+/turf/remove_atom_colour(colour_priority, coloration)
+	color = null
+
+/turf/update_atom_colour()
+	return
+
+/turf/copy_atom_colour(atom/other, colour_priority)
+	if(isnull(other.color))
+		return
+	color = other.color
+
+//? Depth
+
+/**
+ * gets overall depth level for stuff standing on us
+ */
+/turf/proc/depth_level()
+	. = 0
+	for(var/obj/O in src)
+		if(!O.depth_projected)
+			continue
+		. = max(., O.depth_level)
+
+//? Radiation
+
+/turf/proc/update_rad_insulation()
+	rad_insulation_contents = 1

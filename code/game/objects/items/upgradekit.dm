@@ -4,8 +4,8 @@
 	icon = 'icons/obj/clothing/modular_armor.dmi'	// NO LONGER A PLACEHOLDER
 	icon_state = "kevlar_upgrade"	// RIP PLACEHOLDERS WOOO
 
-/obj/item/kevlarupgrade/afterattack(atom/target, mob/user, proximity_flag)
-	if(!proximity_flag)
+/obj/item/kevlarupgrade/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return ..()
 
 	if(istype(target, /obj/item/clothing/under))

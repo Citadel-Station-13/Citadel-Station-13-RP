@@ -67,7 +67,6 @@
 /obj/item/implant/proc/implant_loadout(var/mob/living/carbon/human/H)
 	if(H)
 		if(handle_implant(H, initialize_loc))
-			invisibility = initial(invisibility)
 			post_implant(H)
 
 /obj/item/implant/Destroy()
@@ -376,7 +375,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 /obj/item/implant/chem/activate(var/cause)
 	if((!cause) || (!src.imp_in))	return 0
 	var/mob/living/carbon/R = src.imp_in
-	src.reagents.trans_to_mob(R, cause, CHEM_BLOOD)
+	src.reagents.trans_to_mob(R, cause, CHEM_INJECT)
 	to_chat(R, "You hear a faint *beep*.")
 	if(!src.reagents.total_volume)
 		to_chat(R, "You hear a faint click from your chest.")
@@ -417,7 +416,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 /obj/item/implant/loyalty/get_data()
 	var/dat = {"
 <b>Implant Specifications:</b><BR>
-<b>Name:</b> [GLOB.using_map.company_name] Employee Management Implant<BR>
+<b>Name:</b> [(LEGACY_MAP_DATUM).company_name] Employee Management Implant<BR>
 <b>Life:</b> Ten years.<BR>
 <b>Important Notes:</b> Personnel injected with this device tend to be much more loyal to the company.<BR>
 <HR>
@@ -434,13 +433,13 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	var/mob/living/carbon/human/H = M
 	var/datum/antagonist/antag_data = get_antag_data(H.mind.special_role)
 	if(antag_data && (antag_data.flags & ANTAG_IMPLANT_IMMUNE))
-		H.visible_message("[H] seems to resist the implant!", "You feel the corporate tendrils of [GLOB.using_map.company_name] try to invade your mind!")
+		H.visible_message("[H] seems to resist the implant!", "You feel the corporate tendrils of [(LEGACY_MAP_DATUM).company_name] try to invade your mind!")
 		. = FALSE
 
 /obj/item/implant/loyalty/post_implant(mob/M)
 	var/mob/living/carbon/human/H = M
 	clear_antag_roles(H.mind, 1)
-	to_chat(H, "<span class='notice'>You feel a surge of loyalty towards [GLOB.using_map.company_name].</span>")
+	to_chat(H, "<span class='notice'>You feel a surge of loyalty towards [(LEGACY_MAP_DATUM).company_name].</span>")
 
 //////////////////////////////
 //	Adrenaline Implant
@@ -469,9 +468,9 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	if (emote == "pale")
 		src.uses--
 		to_chat(source, "<span class='notice'>You feel a sudden surge of energy!</span>")
-		source.SetStunned(0)
-		source.SetWeakened(0)
-		source.SetUnconscious(0)
+		source.set_stunned(0)
+		source.set_paralyzed(0)
+		source.set_unconscious(0)
 
 	return
 
@@ -491,7 +490,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 /obj/item/implant/death_alarm/get_data()
 	var/dat = {"
 <b>Implant Specifications:</b><BR>
-<b>Name:</b> [GLOB.using_map.company_name] \"Profit Margin\" Class Employee Lifesign Sensor<BR>
+<b>Name:</b> [(LEGACY_MAP_DATUM).company_name] \"Profit Margin\" Class Employee Lifesign Sensor<BR>
 <b>Life:</b> Activates upon death.<BR>
 <b>Important Notes:</b> Alerts crew to crewmember death.<BR>
 <HR>
@@ -576,7 +575,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 /obj/item/implant/compressed/get_data()
 	var/dat = {"
 <b>Implant Specifications:</b><BR>
-<b>Name:</b> [GLOB.using_map.company_name] \"Profit Margin\" Class Employee Lifesign Sensor<BR>
+<b>Name:</b> [(LEGACY_MAP_DATUM).company_name] \"Profit Margin\" Class Employee Lifesign Sensor<BR>
 <b>Life:</b> Activates upon death.<BR>
 <b>Important Notes:</b> Alerts crew to crewmember death.<BR>
 <HR>

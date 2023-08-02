@@ -81,3 +81,16 @@
 					for(var/T in typesof(P))
 						L[T] = TRUE
 		return L
+
+/**
+ * cached typecache of a given path list
+ *
+ * do not mutate the lists returned by this!
+ */
+/proc/cached_typecacheof(path = list(), ignore_root_path = FALSE, only_root_path = FALSE)
+	var/key = json_encode(args)
+	if(GLOB.typecaches[key])
+		return GLOB.typecaches[key]
+	return (GLOB.typecaches[key] = typecacheof(path, ignore_root_path, only_root_path))
+
+GLOBAL_LIST_EMPTY(typecaches)

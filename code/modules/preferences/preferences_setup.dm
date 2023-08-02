@@ -191,61 +191,6 @@
 	g_skin = green
 	b_skin = blue
 
-/datum/preferences/proc/dress_preview_mob(var/mob/living/carbon/human/mannequin)
-	copy_to(mannequin)
-
-	if(!equip_preview_mob)
-		return
-
-	var/datum/role/job/previewJob = SSjob.job_by_id(preview_job_id())
-
-	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/role/job/station/ai || previewJob.type == /datum/role/job/station/cyborg)))
-		var/list/equipped_slots = list()
-		for(var/thing in gear)
-			var/datum/gear/G = gear_datums[thing]
-			if(G)
-				var/permitted = 0
-				if(!G.allowed_roles)
-					permitted = 1
-				else if(!previewJob)
-					permitted = 0
-				else
-					for(var/job_name in G.allowed_roles)
-						if(previewJob.title == job_name)
-							permitted = 1
-
-				if(G.legacy_species_lock && (G.legacy_species_lock != mannequin.species.name))
-					permitted = 0
-
-				if(!permitted)
-					continue
-
-				if(G.slot && !(G.slot in equipped_slots))
-					var/metadata = gear[G.display_name]
-					if(G.slot == "implant")
-						// todo: remove fucking snowflake
-						continue
-					if(mannequin.force_equip_to_slot_or_del(G.spawn_item(mannequin, metadata), G.slot, INV_OP_SILENT))
-						if(G.slot != /datum/inventory_slot_meta/abstract/attach_as_accessory)
-							equipped_slots += G.slot
-
-	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)
-		mannequin.job = previewJob.title
-		previewJob.equip_preview(mannequin, get_job_alt_title_name(previewJob))
-
-/datum/preferences/proc/update_preview_icon()
-	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
-	mannequin.delete_inventory(TRUE)
-	if(regen_limbs)
-		var/datum/species/current_species = real_species_datum()
-		current_species.create_organs(mannequin)
-		regen_limbs = 0
-	dress_preview_mob(mannequin)
-	mannequin.update_transform()
-	mannequin.compile_overlays()
-
-	update_character_previews(new /mutable_appearance(mannequin))
-
 //TFF 5/8/19 - add randomised sensor setting for random button clicking
 /datum/preferences/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
 	sensorpref = rand(1,5)
@@ -277,19 +222,3 @@
 		valid_facialhairstyles[facialhairstyle] = GLOB.legacy_facial_hair_lookup[facialhairstyle]
 
 	return valid_facialhairstyles
-
-/datum/preferences/update_preview_icon() // Lines up and un-overlaps character edit previews. Also un-splits taurs.
-	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
-	if(!mannequin.dna) // Special handling for preview icons before SSAtoms has initailized.
-		mannequin.dna = new /datum/dna(null)
-	mannequin.delete_inventory(TRUE)
-	if(regen_limbs)
-		var/datum/species/current_species = real_species_datum()
-		current_species.create_organs(mannequin)
-		regen_limbs = 0
-	dress_preview_mob(mannequin)
-	mannequin.update_transform()
-	mannequin.toggle_tail_vr(setting = TRUE)
-	mannequin.toggle_wing_vr(setting = TRUE)
-	mannequin.compile_overlays()
-	update_character_previews(new /mutable_appearance(mannequin))

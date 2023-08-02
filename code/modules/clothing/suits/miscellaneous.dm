@@ -296,7 +296,7 @@
 	if(M != user)
 		return TRUE
 	. = FALSE
-	INVOKE_ASYNC(user, /mob/living/carbon/human/proc/escape_straight_jacket)
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/carbon/human, escape_straight_jacket))
 
 /obj/item/clothing/suit/straight_jacket/equipped(var/mob/living/user,var/slot)
 	. = ..()
@@ -988,10 +988,12 @@
 /obj/item/clothing/suit/varsity
 	name = "black varsity jacket"
 	desc = "A favorite of jocks everywhere from Sol to Nyx."
+	icon = 'icons/clothing/suit/jackets/varsity.dmi'
 	icon_state = "varsity"
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_black", SLOT_ID_LEFT_HAND = "suit_black")
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/varsity/red
 	name = "red varsity jacket"
@@ -1454,10 +1456,19 @@
 	icon_state = "centcomformal_f"
 
 //Someone's on the line.
-/obj/item/clothing/suit/storage/toggle/letterman
+/obj/item/clothing/suit/storage/toggle/varsity
 	name = "worn letterman jacket"
 	desc = "A worn varsity letterman jacket. Some of the faded stains around the cuffs are rather suspicious."
+	icon = 'icons/clothing/suit/jackets/varsity.dmi'
 	icon_state = "varsity_letterman"
+	inv_hide_flags = HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/toggle/varsity/worn
+	name = "well-worn varsity jacket"
+	desc = "A worn varsity jacket. The NanoTrasen corporate logo on the back is outdated, suggesting the age of this coat."
+	icon_state = "varsity_worn"
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 
 /obj/item/clothing/suit/storage/pullover
 	name = "pullover hoodie"
@@ -1478,6 +1489,28 @@
 	name = "Mekkyaku hoodie"
 	desc = "This crisp white hoodie bears a strange manufacturer's mark. The colorful red accents stand out against the snowy white cloth with evocative flair."
 	icon_state = "mekkyaku"
+
+/obj/item/clothing/suit/cropped_hoodie
+	name = "cropped hoodie"
+	desc = "This style of hoodie is sometimes worn by those who cannot fit, or choose not to hide their delectable bellies under the full, soft confines of a hoodie. The hood is cosmetic, and non-functional."
+	icon = 'icons/clothing/suit//misc/cropped.dmi'
+	icon_state = "cropped_hoodie"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/cropped_hoodie/croppier
+	name = "high cropped hoodie"
+	desc = "This style of hoodie is worn by those that wish to display ample amounts of midriff, or never threw out their childhood apparel. The hood is cosmetic, and non-functional."
+	icon_state = "croppier_hoodie"
+
+/obj/item/clothing/suit/cropped_hoodie/croppierer
+	name = "very high cropped hoodie"
+	desc = "This style of hoodie is worn by those that wish to display ample amounts of underboob, and love the breeze. Comes with a free 'functionally_nude' sticker. The hood is cosmetic, and non-functional."
+	icon_state = "highcrop_hoodie"
+
+/obj/item/clothing/suit/cropped_hoodie/croppiest
+	name = "super cropped hoodie"
+	desc = "This style of hoodie is worn by those that have little respect for the concept of a hoodie. Often seen in Skrellian nightclubs and your daughter's wardrdobe. The hood is cosmetic, and non-functional."
+	icon_state = "cropped_hoodie_super"
 
 /obj/item/clothing/suit/storage/utility_fur_coat
 	name = "Utility Fur Coat"
@@ -1514,3 +1547,62 @@
 	icon = 'icons/clothing/uniform/costume/spiral.dmi'
 	icon_state = "kaminacape"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+//The Chippin' In Set -Cap
+/obj/item/clothing/suit/storage/toggle/heated
+	name = "Runner Jacket"
+	desc = "A sturdy high-vis jacket patterned after a lost society's first responders. It has been marked with unfamiliar graffiti on the back."
+	icon_state = "runner_jacket"
+	inv_hide_flags = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
+	open = 1
+
+/obj/item/clothing/suit/storage/toggle/heated/ToggleButtons()
+	if(open == 1) //Will check whether icon state is currently set to the "open" or "closed" state and switch it around with a message to the user
+		open = 0
+		icon_state = "[icon_state]_closed"
+		inv_hide_flags = HIDETIE|HIDEHOLSTER
+		cold_protection = HEAD|UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+		to_chat(usr, "You close the coat and activate the coils.")
+	else if(open == 0)
+		open = 1
+		icon_state = initial(icon_state)
+		inv_hide_flags = HIDEHOLSTER
+		cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+		to_chat(usr, "You open the coat and deactivate the coils.")
+	else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
+		to_chat(usr, "You attempt to zip-up the zipper on your [src], before promptly realising how silly you are.")
+		return
+	update_worn_icon()	//so our overlays update
+
+/obj/item/clothing/suit/storage/toggle/heated/ronincoat
+	name = "ronin coat"
+	desc = "Outfitted with integrated heating coils, this fashionable coat is a favorite of gangsters and mercenaries alike."
+	icon_state = "ronin_coat"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
+
+/obj/item/clothing/suit/storage/toggle/heated/half_pint
+	name = "Half-Pint Jacket"
+	desc = "This reinforced jacket bears many curious modifications. Marketed towards mercenaries who'd like a touch of flair, the commercial variant comes with built-in decorative lighting and multiple internal pockets meant to accept armor panels."
+	icon_state = "half_pint"
+
+//Donator jacket.
+/obj/item/clothing/suit/storage/toggle/heated/pariah
+	name = "Springtime Pariah Moto Jacket"
+	desc = "A leather jacket commonly associated with hoverbike riders. Stitched over pockets in the shoulder and chest panels suggest it could take armor inserts at some point in its past. The custom embroidery and cut implies this was made for someone special. There are no manufacturers marks, beyond a small tag bearing a stylized letter 'K'."
+	icon_state = "pariah"
+
+/obj/item/clothing/suit/storage/leather_cropped
+	name = "Cropped Leather Jacket"
+	desc = "The first and last choice in any modern-day film."
+	icon_state = "leather_cropped"
+
+/obj/item/clothing/suit/storage/leather_supercropped
+	name = "Supercropped Leather Jacket"
+	desc = "For when the crop just isn't cropped enough."
+	icon_state = "leather_supercropped"

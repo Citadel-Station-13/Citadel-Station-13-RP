@@ -147,7 +147,7 @@
 
 			current.volume += amount
 			if(!isnull(data)) // For all we know, it could be zero or empty string and meaningful
-				current.mix_data(data, amount)
+				current.mix_data(src, current.data, current.volume, data, amount)
 			update_total()
 			if(!safety)
 				handle_reactions()
@@ -220,14 +220,30 @@
 				return 0
 	return 0
 
-/datum/reagents/proc/has_all_reagents(list/check_reagents)
+/datum/reagents/proc/has_all_reagents(list/check_reagents, multiplier = 1)
 	//this only works if check_reagents has no duplicate entries... hopefully okay since it expects an associative list
 	var/missing = check_reagents.len
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id in check_reagents)
-			if(current.volume >= check_reagents[current.id])
+			if(current.volume >= check_reagents[current.id] * multiplier)
 				missing--
 	return !missing
+
+/**
+ * returns lowest multiple of what we have compared to reagents list.
+ *
+ * both typepaths and ids are acceptable.
+ */
+/datum/reagents/proc/has_multiple(list/reagents, multiplier = 1)
+	. = INFINITY
+	// *sigh*
+	var/list/legacy_translating = list()
+	for(var/datum/reagent/R in reagent_list)
+		legacy_translating[R.id] = R.volume
+	for(var/datum/reagent/reagent as anything in reagents)
+		. = min(., legacy_translating[ispath(reagent)? initial(reagent.id) : reagent] / reagents[reagent])
+		if(!.)
+			return
 
 /datum/reagents/proc/clear_reagents()
 	for(var/datum/reagent/current in reagent_list)
@@ -235,9 +251,9 @@
 	return
 
 /datum/reagents/proc/get_reagent(id)
-	for(var/datum/reagent/R in reagent_list)
-		if(R.id == id)
-			return R
+	for(var/datum/reagent/current in reagent_list)
+		if(current.id == id)
+			return current
 
 /datum/reagents/proc/get_reagent_amount(id)
 	for(var/datum/reagent/current in reagent_list)
@@ -397,12 +413,12 @@
 		perm = L.reagent_permeability()
 	return trans_to_mob(target, amount, CHEM_TOUCH, perm, copy)
 
-/datum/reagents/proc/trans_to_mob(mob/target, amount = 1, type = CHEM_BLOOD, multiplier = 1, copy = 0) // Transfer after checking into which holder...
+/datum/reagents/proc/trans_to_mob(mob/target, amount = 1, type = CHEM_INJECT, multiplier = 1, copy = 0) // Transfer after checking into which holder...
 	if(!target || !istype(target))
 		return
 	if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		if(type == CHEM_BLOOD)
+		if(type == CHEM_INJECT)
 			var/datum/reagents/R = C.reagents
 			return trans_to_holder(R, amount, multiplier, copy)
 		if(type == CHEM_INGEST)

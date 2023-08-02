@@ -7,7 +7,8 @@
 		return
 
 	var/muzzled = is_muzzled()
-	if(m_type == 2 && muzzled) return
+	if(m_type == 2 && muzzled)
+		return
 
 	var/input
 	if(!message)

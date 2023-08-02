@@ -7,6 +7,7 @@
 	base_icon_state = "beacon"
 	var/code = "electronic"
 	var/functioning = TRUE
+	var/identifier
 	origin_tech = list(TECH_BLUESPACE = 1)
 
 GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
@@ -14,6 +15,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 /obj/item/radio/beacon/Initialize(mapload)
 	. = ..()
 	update_icon()
+	identifier = rand(0,99999)
 
 /obj/item/radio/beacon/update_icon()
 	cut_overlays()
@@ -33,12 +35,11 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	set category = "Object"
 	set src in usr
 
-	if ((usr.canmove && !( usr.restrained() )))
+	if(CHECK_MOBILITY(usr, MOBILITY_CAN_MOVE))
 		src.code = t
-	if (!( src.code ))
+	if(!( src.code ))
 		src.code = "beacon"
 	src.add_fingerprint(usr)
-	return
 
 /obj/item/radio/beacon/anchored
 	desc = "A beacon used by a teleporter. This one appears to be bolted to the ground."

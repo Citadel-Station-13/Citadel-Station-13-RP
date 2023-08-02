@@ -18,8 +18,12 @@
 	var/dna_hash = "\[UNSET\]"
 	var/fingerprint_hash = "\[UNSET\]"
 	var/sex = "\[UNSET\]"
+	var/species = "\[UNSET\]"
 	var/icon/front
 	var/icon/side
+
+	var/last_job_switch
+	var/lost_access = list()
 
 	var/primary_color = rgb(0,0,0) // Obtained by eyedroppering the stripe in the middle of the card
 	var/secondary_color = rgb(0,0,0) // Likewise for the oval in the top-left corner
@@ -29,7 +33,6 @@
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
 	var/assignment = null	//can be alt title or the actual job
 	var/rank = null			//actual job
-	var/dorm = 0			// determines if this ID has claimed a dorm already
 
 	var/mining_points = 0	// For redeeming at mining equipment vendors
 	var/survey_points = 0	// For redeeming at explorer equipment vendors.
@@ -40,10 +43,13 @@
 	var/datum/role/job/J = SSjob.get_job(rank)
 	if(J)
 		access = J.get_access()
+		job_access_type = J
 
-/obj/item/card/id/examine(mob/user)
-	. = ..()
-	show(user)
+/obj/item/card/id/examine(mob/user, dist)
+	var/list/result = dat()
+	result.Insert(1, ..())
+	return result
+	//show(user)
 
 /obj/item/card/id/examine_more(mob/user)
 	. = ..()
@@ -109,19 +115,27 @@
 /mob/living/carbon/human/set_id_info(var/obj/item/card/id/id_card)
 	..()
 	id_card.age = age
+	id_card.species = src.species.name
+
+	if(istype(id_card,/obj/item/card/id/contractor))
+		var/obj/item/card/id/contractor/c_id = id_card
+
+		var/faction = src.mind?.original_background_faction()
+		c_id.employing_coperation = faction
 
 /obj/item/card/id/proc/dat()
-	var/dat = ("<table><tr><td>")
-	dat += text("Name: []</A><BR>", registered_name)
-	dat += text("Sex: []</A><BR>\n", sex)
-	dat += text("Age: []</A><BR>\n", age)
-	dat += text("Rank: []</A><BR>\n", assignment)
-	dat += text("Fingerprint: []</A><BR>\n", fingerprint_hash)
-	dat += text("Blood Type: []<BR>\n", blood_type)
-	dat += text("DNA Hash: []<BR><BR>\n", dna_hash)
-	if(front && side)
-		dat +="<td align = center valign = top>Photo:<br><img src=front.png height=80 width=80 border=4><img src=side.png height=80 width=80 border=4></td>"
-	dat += "</tr></table>"
+	var/dat = list()
+	dat += "Name: [registered_name]"
+	dat += "Sex: [sex]"
+	dat += "Age: [age]"
+	dat += "Rank: [assignment]"
+	dat += "Species: [species]"
+	// dat += "Fingerprint: [fingerprint_hash]</A><BR>\n"
+	dat += "Blood Type: [blood_type]"
+	// dat += "DNA Hash: [dna_hash]<BR><BR>\n"
+	/*if(front && side)
+		dat +="<td align = center valign = top>Photo</td>"*/
+	//dat += "</tr></table>"
 	return dat
 
 /obj/item/card/id/attack_self(mob/user)
@@ -336,6 +350,56 @@
 	assignment = "Head of Security"
 	rank = "Head of Security"
 	job_access_type = /datum/role/job/station/head_of_security
+
+
+/obj/item/card/id/prisoner
+	name = "Prisoner ID card"
+	desc = "A card repressenting incareration. Do not lose."
+	icon_state = "civilian-id"
+	assignment = "Prisoner"
+	primary_color = rgb(243, 97, 0)
+	secondary_color = rgb(5, 7, 3)
+	var/goal = 0 //How far from freedom?
+	var/points = 0
+
+	var/served = 0 //Time served in seconds
+	var/sentence = 0 //Sentance in minutes
+	var/crime = "\[redacted\]"
+
+	access = list(ACCESS_SECURITY_GENPOP_ENTER)
+
+/obj/item/card/id/prisoner/New()
+	. = ..()
+	START_PROCESSING(SSprocessing, src)
+	registered_name = "Prisoner #13-[rand(100,999)]"
+
+/obj/item/card/id/prisoner/process()
+	if (sentence > 0 && served > (sentence * 60)) //FREEDOM!
+		assignment = "Ex-Convict"
+		access = list(ACCESS_SECURITY_GENPOP_EXIT)
+		update_name(registered_name, assignment)
+		playsound(loc, 'sound/machines/ping.ogg', 50, 1)
+		if(isliving(loc))
+			to_chat(loc, "<span class='boldnotice'>\the [src] buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
+		STOP_PROCESSING(SSprocessing, src)
+	else
+		served += 1
+
+/obj/item/card/id/prisoner/examine(mob/user)
+	. = ..()
+
+	var/minutesServed = round(served / 60)
+	var/secondsServed = served - (minutesServed * 60)
+	if(sentence <= 0)
+		to_chat(usr, "<span class='notice'>You are serving a permanent sentence for [crime].</span>")
+	else if(served >= (sentence * 60))
+		to_chat(usr, "<span class='notice'>You have served your sentence for [crime].</span>")
+	else
+		to_chat(usr, "<span class='notice'>You have served [minutesServed] minutes [secondsServed] seconds of your [sentence] minute sentance for [crime].</span>")
+	if(goal > 0)
+		to_chat(usr, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
+
+
 
 /obj/item/card/id/engineering
 	name = "engineering identification card"

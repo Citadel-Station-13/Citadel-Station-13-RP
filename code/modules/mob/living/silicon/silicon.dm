@@ -75,7 +75,7 @@
 	idcard = new idcard_type(src)
 	set_id_info(idcard)
 
-/mob/living/silicon/proc/SetName(pickedName as text)
+/mob/living/silicon/proc/SetName(pickedName = "Alice")
 	real_name = pickedName
 	name = real_name
 
@@ -92,7 +92,6 @@
 
 /mob/living/silicon/handle_regular_hud_updates()
 	. = ..()
-	SetSeeInDarkSelf(8)
 	SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
 	SetSightSelf(SIGHT_FLAGS_DEFAULT)
 	if(bodytemp)
@@ -142,7 +141,7 @@
 			"<span class='danger'>Energy pulse detected, system damaged!</span>", \
 			"<span class='warning'>You hear an electrical crack.</span>")
 		if(prob(20))
-			Stun(2)
+			afflict_stun(20 * 2)
 		return
 
 /mob/living/silicon/proc/damage_mob(var/brute = 0, var/fire = 0, var/tox = 0)
@@ -161,7 +160,7 @@
 				adjustFireLoss(Proj.get_final_damage(src))
 
 	Proj.on_hit(src,2)
-	updatehealth()
+	update_health()
 	return 2
 
 /mob/living/silicon/apply_effect(var/effect = 0,var/effecttype = STUN, var/blocked = 0, var/check_protection = 1)
@@ -287,6 +286,8 @@
 
 	pose =  sanitize(input(usr, "This is [src]. It is...", "Pose", null)  as text)
 
+	visible_emote("Adjusts its posture.")
+
 /mob/living/silicon/verb/set_flavor()
 	set name = "Set Flavour Text"
 	set desc = "Sets an extended description of your character's features."
@@ -316,7 +317,7 @@
 			if (stat != 2)
 				adjustBruteLoss(30)
 
-	updatehealth()
+	update_health()
 
 /mob/living/silicon/proc/receive_alarm(var/datum/alarm_handler/alarm_handler, var/datum/alarm/alarm, was_raised)
 	if(!next_alarm_notice)
@@ -393,10 +394,6 @@
 
 /mob/living/silicon/setEarDamage()
 	return
-
-/mob/living/silicon/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
-	. = ..()
-	cameraFollow = null
 
 /mob/living/silicon/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	if(affect_silicon)

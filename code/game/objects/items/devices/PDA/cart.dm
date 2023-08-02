@@ -532,20 +532,13 @@ var/list/civilian_cartridges = list(
 
 	return values
 
-
-
-
-
 /obj/item/cartridge/Topic(href, href_list)
 	..()
 
-	if (!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
+	if (!CHECK_MOBILITY(usr, MOBILITY_CAN_UI) || !in_range(loc, usr))
 		usr.unset_machine()
 		usr << browse(null, "window=pda")
 		return
-
-
-
 
 	switch(href_list["choice"])
 		if("Medical Records")

@@ -21,6 +21,14 @@
 	disallow_jobhop = TRUE
 	pto_type = PTO_SECURITY
 	req_admin_notify = 1
+	additional_access = list(
+		ACCESS_ENGINEERING_CONSTRUCTION,
+		ACCESS_ENGINEERING_MAIN,
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_SUPPLY_MINE,
+	)
 	minimal_access = list(
 		ACCESS_COMMAND_ANNOUNCE,
 		ACCESS_COMMAND_BRIDGE,
@@ -28,13 +36,9 @@
 		ACCESS_COMMAND_KEYAUTH,
 		ACCESS_COMMAND_LOCKERS,
 		ACCESS_ENGINEERING_AIRLOCK,
-		ACCESS_ENGINEERING_CONSTRUCTION,
-		ACCESS_ENGINEERING_MAIN,
 		ACCESS_ENGINEERING_MAINT,
-		ACCESS_MEDICAL_MAIN,
 		ACCESS_MEDICAL_MORGUE,
 		ACCESS_GENERAL_GATEWAY,
-		ACCESS_SCIENCE_MAIN,
 		ACCESS_SECURITY_ARMORY,
 		ACCESS_SECURITY_BRIG,
 		ACCESS_SECURITY_EDIT,
@@ -42,8 +46,8 @@
 		ACCESS_SECURITY_FORENSICS,
 		ACCESS_SECURITY_HOS,
 		ACCESS_SECURITY_MAIN,
-		ACCESS_SUPPLY_MAIN,
-		ACCESS_SUPPLY_MINE,
+		ACCESS_SECURITY_GENPOP_ENTER,
+		ACCESS_SECURITY_GENPOP_EXIT,
 	)
 	minimum_character_age = 25
 	minimal_player_age = 14
@@ -53,18 +57,18 @@
 						keep the other Department Heads, and the rest of the crew, aware of developing situations that may be a threat. If necessary, the HoS may \
 						perform the duties of absent Security roles, such as distributing gear from the Armory."
 	alt_titles = list(
-		"Security Commander" = /datum/prototype/alt_title/hos/commander,
-		"Chief of Security" = /datum/prototype/alt_title/hos/chief,
-		"Defense Director" = /datum/prototype/alt_title/hos/director
+		"Security Commander" = /datum/prototype/struct/alt_title/hos/commander,
+		"Chief of Security" = /datum/prototype/struct/alt_title/hos/chief,
+		"Defense Director" = /datum/prototype/struct/alt_title/hos/director
 		)
 
-/datum/prototype/alt_title/hos/commander
+/datum/prototype/struct/alt_title/hos/commander
 	title = "Security Commander"
 
-/datum/prototype/alt_title/hos/chief
+/datum/prototype/struct/alt_title/hos/chief
 	title = "Chief of Security"
 
-/datum/prototype/alt_title/hos/director
+/datum/prototype/struct/alt_title/hos/director
 	title = "Defense Director"
 
 /datum/outfit/job/station/head_of_security

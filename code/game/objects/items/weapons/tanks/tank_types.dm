@@ -23,7 +23,7 @@
 	. = ..()
 	air_contents.adjust_gas(/datum/gas/oxygen, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
-/obj/item/tank/oxygen/examine(mob/user)
+/obj/item/tank/oxygen/examine(mob/user, dist)
 	. = ..()
 	if(air_contents.gas[/datum/gas/oxygen] < 10)
 		. += "<span class='warning'>The meter on the [src] indicates you are almost out of oxygen!</span>"
@@ -63,7 +63,7 @@
 	icon = 'icons/obj/tank_vr.dmi'
 	icon_state = "oxygen"
 
-/obj/item/tank/air/examine(mob/user)
+/obj/item/tank/air/examine(mob/user, dist)
 	. = ..()
 	if(air_contents.gas[/datum/gas/oxygen] < 1 && loc==user)
 		. += "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
@@ -155,7 +155,7 @@
 	. = ..()
 	src.air_contents.adjust_gas(/datum/gas/oxygen, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
-/obj/item/tank/emergency/oxygen/examine(mob/user)
+/obj/item/tank/emergency/oxygen/examine(mob/user, dist)
 	. = ..()
 	if(air_contents.gas[/datum/gas/oxygen] < 0.2 && loc==user)
 		. += "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
@@ -190,9 +190,9 @@
 
 /obj/item/tank/emergency/nitrogen
 	name = "emergency nitrogen tank"
-	desc = "An emergency air tank hastily painted red."
+	desc = "An emergency air tank, it's coloured red with 'Nitrogen' being spelled in bold letters on it's side ."
 	icon = 'icons/obj/tank_vr.dmi'
-	icon_state = "emergency_nitro"
+	icon_state = "emergency_nitrogen"
 	gauge_icon = "indicator_emergency"
 	gauge_cap = 3
 
@@ -212,7 +212,7 @@
 	name = "emergency phoron tank"
 	desc = "An emergency air tank hastily painted red."
 	icon = 'icons/obj/tank_vr.dmi'
-	icon_state = "emergency_nitro"
+	icon_state = "emergency_phoron_vox"
 	gauge_icon = "indicator_emergency"
 	volume = 6
 	gauge_cap = 3
@@ -223,7 +223,7 @@
 
 /obj/item/tank/emergency/phoron/double
 	name = "double emergency phoron tank"
-	icon_state = "emergency_double_nitro"
+	icon_state = "emergency_double_vox"
 	gauge_icon = "indicator_emergency_double"
 	volume = 10
 
@@ -243,7 +243,7 @@
 
 	src.air_contents.adjust_gas(/datum/gas/nitrogen, (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C))
 
-/obj/item/tank/nitrogen/examine(mob/user)
+/obj/item/tank/nitrogen/examine(mob/user, dist)
 	if(air_contents.gas[/datum/gas/nitrogen] < 10)
 		. += "<span class='danger'>The meter on \the [src] indicates you are almost out of nitrogen!</span>"
 
@@ -285,7 +285,7 @@
 	. = ..()
 	src.air_contents.adjust_gas(/datum/gas/carbon_dioxide, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
-/obj/item/tank/emergency/carbon_dioxide/examine(mob/user)
+/obj/item/tank/emergency/carbon_dioxide/examine(mob/user, dist)
 	if(air_contents.gas[/datum/gas/carbon_dioxide] < 0.2 && loc==user)
 		. += "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
 	//	user.playsound('sound/effects/alert.ogg')

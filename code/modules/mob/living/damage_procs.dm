@@ -45,7 +45,7 @@
 			else
 				adjustToxLoss(damage * blocked)
 	flash_weak_pain()
-	updatehealth()
+	update_health()
 	return 1
 
 
@@ -71,23 +71,23 @@
 
 	switch(effecttype)
 		if(STUN)
-			Stun(effect * blocked)
+			afflict_stun(20 * effect * blocked)
 		if(WEAKEN)
-			Weaken(effect * blocked)
+			afflict_paralyze(20 * effect * blocked)
 		if(PARALYZE)
-			Unconscious(effect * blocked)
+			afflict_unconscious(20 * effect * blocked)
 		if(AGONY)
 			halloss += max((effect * blocked), 0) // Useful for objects that cause "subdual" damage. PAIN!
 		if(IRRADIATE)
 			afflict_radiation(effect, TRUE)
 		if(STUTTER)
-			if(status_flags & CANSTUN) // stun is usually associated with stutter
+			if(status_flags & STATUS_CAN_STUN) // stun is usually associated with stutter
 				stuttering = max(stuttering,(effect * blocked))
 		if(EYE_BLUR)
 			eye_blurry = max(eye_blurry,(effect * blocked))
 		if(DROWSY)
 			drowsyness = max(drowsyness,(effect * blocked))
-	updatehealth()
+	update_health()
 	return 1
 
 /mob/living/proc/apply_effects(var/stun = 0, var/weaken = 0, var/paralyze = 0, var/irradiate = 0, var/stutter = 0, var/eyeblur = 0, var/drowsy = 0, var/agony = 0, var/blocked = 0, var/ignite = 0, var/flammable = 0)
@@ -106,12 +106,12 @@
 	return 1
 
 // todo: refactor above
-//! Raw "damage"
+//? Raw "damage"
 
 // todo: better name
 // /mob/living/proc/damage_brute()
 
-//! Afflictions
+//? Afflictions
 /**
  * inflicts radiation.
  * will not heal it.

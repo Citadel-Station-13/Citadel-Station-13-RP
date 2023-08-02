@@ -245,7 +245,7 @@
 
 /obj/mecha/Initialize(mapload)
 	. = ..()
-	INVOKE_ASYNC(src, .proc/create_components)
+	INVOKE_ASYNC(src, PROC_REF(create_components))
 	update_transform()
 
 //! shitcode
@@ -288,7 +288,7 @@
 
 	add_cell()
 	// TODO: BURN ITERATORS WITH FUCKING FIRE
-	INVOKE_ASYNC(src, /obj/mecha/proc/add_iterators)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/mecha, add_iterators))
 	removeVerb(/obj/mecha/verb/disconnect_from_port)
 	log_message("[src.name] created.")
 	loc.Entered(src)
@@ -424,12 +424,6 @@
 	pr_give_air = new /datum/global_iterator/mecha_tank_give_air(list(src))
 	pr_internal_damage = new /datum/global_iterator/mecha_internal_damage(list(src),0)
 
-/obj/mecha/proc/do_after(delay as num)
-	sleep(delay)
-	if(src)
-		return 1
-	return 0
-
 /obj/mecha/proc/enter_after(delay as num, var/mob/user as mob, var/numticks = 5)
 	var/delayfraction = delay/numticks
 
@@ -437,7 +431,7 @@
 
 	for(var/i = 0, i<numticks, i++)
 		sleep(delayfraction)
-		if(!src || !user || !user.canmove || !(user.loc == T))
+		if(!src || !user || !CHECK_MOBILITY(user, MOBILITY_CAN_MOVE) || !(user.loc == T))
 			return 0
 
 	return 1
@@ -452,7 +446,7 @@
 	else
 		return 0
 
-/obj/mecha/examine(mob/user)
+/obj/mecha/examine(mob/user, dist)
 	. = ..()
 
 	var/obj/item/mecha_parts/component/armor/AC = internal_components[MECH_ARMOR]
@@ -518,7 +512,7 @@
 		"View Stats" = radial_image_statpanel
 	)
 
-	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, .proc/check_occupant_radial, user), require_near = TRUE, tooltips = TRUE)
+	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, PROC_REF(check_occupant_radial), user), require_near = TRUE, tooltips = TRUE)
 	if(!check_occupant_radial(user))
 		return
 	if(!choice)
@@ -817,8 +811,8 @@
 			if(!src.check_for_support())
 				src.pr_inertial_movement.start(list(src,direction))
 				src.log_message("<span class='warning'>Movement control lost. Inertial movement started.</span>")
-		if(do_after(get_step_delay()))
-			can_move = 1
+		sleep(get_step_delay())
+		can_move = 1
 		return 1
 	return 0
 
@@ -1542,7 +1536,7 @@
 		else
 			src.occupant_message("<font color='red'><b>[user] hits [src] with [W].</b></font>")
 			user.visible_message("<font color='red'><b>[user] hits [src] with [W].</b></font>", "<font color='red'><b>You hit [src] with [W].</b></font>")
-			src.take_damage(W.damage_force,W.damtype)
+			src.take_damage(W.force,W.damtype)
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 */
 	return
@@ -1609,11 +1603,11 @@
 		occupant = brainmob
 		brainmob.forceMove(src)
 		brainmob.reset_perspective(src)
-		brainmob.canmove = 1
+		brainmob.mobility_flags = MOBILITY_FLAGS_DEFAULT
 		mmi_as_oc.mecha = src
 		add_obj_verb(src, /obj/mecha/verb/eject)
 		src.Entered(mmi_as_oc)
-		src.Move(src.loc)
+		src.forceMove(src.loc)
 		update_icon()
 		setDir(dir_in)
 		src.log_message("[mmi_as_oc] moved in as pilot.")
@@ -1992,7 +1986,7 @@
 			if(mmi.brainmob)
 				occupant.forceMove(mmi)
 			mmi.mecha = null
-			occupant.canmove = 0
+			occupant.mobility_flags = NONE
 		occupant.clear_alert("charge")
 		occupant.clear_alert("mech damage")
 		occupant.in_enclosed_vehicle = 0
@@ -2196,7 +2190,6 @@
 						<div class='links'>
 						<a href='?src=\ref[src];toggle_id_upload=1'><span id='t_id_upload'>[add_req_access?"L":"Unl"]ock ID upload panel</span></a><br>
 						<a href='?src=\ref[src];toggle_maint_access=1'><span id='t_maint_access'>[maint_access?"Forbid":"Permit"] maintenance protocols</span></a><br>
-						<a href='?src=\ref[src];dna_lock=1'>DNA-lock</a><br>
 						<a href='?src=\ref[src];view_log=1'>View internal log</a><br>
 						<a href='?src=\ref[src];change_name=1'>Change exosuit name</a><br>
 						</div>
@@ -2513,31 +2506,19 @@
 		var/mob/user = top_filter.getMob("user")
 		user << browse(null,"window=exosuit_add_access")
 		return
-	if(href_list["dna_lock"])
-		if(usr != src.occupant)	return
-		if(istype(occupant, /mob/living/carbon/brain))
-			occupant_message("You are a brain. No.")
-			return
-		if(src.occupant)
-			src.dna = src.occupant.dna.unique_enzymes
-			src.occupant_message("You feel a prick as the needle takes your DNA sample.")
-		return
-	if(href_list["reset_dna"])
-		if(usr != src.occupant)	return
-		src.dna = null
 	if(href_list["repair_int_control_lost"])
 		if(usr != src.occupant)	return
 		src.occupant_message("Recalibrating coordination system.")
 		src.log_message("Recalibration of coordination system started.")
 		var/T = src.loc
-		if(do_after(100))
-			if(T == src.loc)
-				src.clearInternalDamage(MECHA_INT_CONTROL_LOST)
-				src.occupant_message("<font color='blue'>Recalibration successful.</font>")
-				src.log_message("Recalibration of coordination system finished with 0 errors.")
-			else
-				src.occupant_message("<font color='red'>Recalibration failed.</font>")
-				src.log_message("Recalibration of coordination system failed with 1 error.",1)
+		sleep(100)
+		if(T == src.loc)
+			src.clearInternalDamage(MECHA_INT_CONTROL_LOST)
+			src.occupant_message("<font color='blue'>Recalibration successful.</font>")
+			src.log_message("Recalibration of coordination system finished with 0 errors.")
+		else
+			src.occupant_message("<font color='red'>Recalibration failed.</font>")
+			src.log_message("Recalibration of coordination system failed with 1 error.",1)
 	if(href_list["drop_from_cargo"])
 		var/obj/O = locate(href_list["drop_from_cargo"])
 		if(O && (O in src.cargo))
@@ -2582,10 +2563,10 @@
 		O.fireloss = AI.getFireLoss()
 		O.bruteloss = AI.getBruteLoss()
 		O.toxloss = AI.toxloss
-		O.updatehealth()
+		O.update_health()
 		src.occupant = O
 		if(AI.mind)
-			AI.mind.transfer_to(O)
+			AI.mind.transfer(O)
 		AI.name = "Inactive AI"
 		AI.real_name = "Inactive AI"
 		AI.icon_state = "ai-empty"
@@ -2593,14 +2574,14 @@
 			AI.name = O.name
 			AI.real_name = O.real_name
 			if(O.mind)
-				O.mind.transfer_to(AI)
+				O.mind.transfer(AI)
 			AI.control_disabled = 0
 			AI.laws = O.laws
 			AI.oxyloss = O.getOxyLoss()
 			AI.fireloss = O.getFireLoss()
 			AI.bruteloss = O.getBruteLoss()
 			AI.toxloss = O.toxloss
-			AI.updatehealth()
+			AI.update_health()
 			qdel(O)
 			if (!AI.stat)
 				AI.icon_state = "ai"
@@ -2681,7 +2662,7 @@
 		src.log_append_to_last("Armor saved.")
 		src.occupant_message("<span class='notice'>\The [user]'s attack is stopped by the armor.</span>")
 		visible_message("<span class='notice'>\The [user] rebounds off [src.name]'s armor!</span>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
+		user.attack_log += "\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>"
 		playsound(src, 'sound/weapons/slash.ogg', 50, 1, -1)
 
 	else if(damage < temp_damage_minimum)//Pathetic damage levels just don't harm MECH.
@@ -2696,7 +2677,7 @@
 		if(damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		visible_message("<span class='danger'>[user] [attack_message] [src]!</span>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
+		user.attack_log += "\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>"
 
 	return 1
 

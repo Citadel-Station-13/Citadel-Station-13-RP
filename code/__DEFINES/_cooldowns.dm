@@ -25,7 +25,7 @@
 #define COMSIG_CD_STOP(cd_index) "cooldown_[cd_index]"
 #define COMSIG_CD_RESET(cd_index) "cd_reset_[cd_index]"
 
-#define TIMER_COOLDOWN_START(cd_source, cd_index, cd_time) LAZYSET(cd_source.cooldowns, cd_index, addtimer(CALLBACK(GLOBAL_PROC, /proc/end_cooldown, cd_source, cd_index), cd_time))
+#define TIMER_COOLDOWN_START(cd_source, cd_index, cd_time) LAZYSET(cd_source.cooldowns, cd_index, addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(end_cooldown), cd_source, cd_index), cd_time))
 
 #define TIMER_COOLDOWN_CHECK(cd_source, cd_index) LAZYACCESS(cd_source.cooldowns, cd_index)
 
@@ -38,7 +38,7 @@
  * A bit more expensive than the regular timers, but can be reset before they end and the time left can be checked.
 */
 
-#define S_TIMER_COOLDOWN_START(cd_source, cd_index, cd_time) LAZYSET(cd_source.cooldowns, cd_index, addtimer(CALLBACK(GLOBAL_PROC, /proc/end_cooldown, cd_source, cd_index), cd_time, TIMER_STOPPABLE))
+#define S_TIMER_COOLDOWN_START(cd_source, cd_index, cd_time) LAZYSET(cd_source.cooldowns, cd_index, addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(end_cooldown), cd_source, cd_index), cd_time, TIMER_STOPPABLE))
 
 #define S_TIMER_COOLDOWN_RESET(cd_source, cd_index) reset_cooldown(cd_source, cd_index)
 
@@ -68,13 +68,16 @@
 //? General
 
 #define CD_INDEX_SONAR_PULSE				"sonar_pulse"
-#define CD_INDEX_SONAR_NOISE			"sonar_noise"
+#define CD_INDEX_SONAR_NOISE				"sonar_noise"
 #define CD_INDEX_POWER_DRAIN_WARNING		"power_drain_warning"
 
 //? Items
 //* /obj/item/tape_recorder
 #define CD_INDEX_TAPE_TRANSLATION			"tape_translation"
 #define CD_INDEX_TAPE_PRINT					"tape_print"
+
+//* /obj/item/fishing_rod
+#define CD_INDEX_FISHING_ROD_MOB_HOOK		"fishing_rod_mob_hook"
 
 //? Machinery
 //* /obj/machinery/computer/card

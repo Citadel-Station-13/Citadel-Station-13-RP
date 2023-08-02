@@ -25,6 +25,7 @@
 	edge = TRUE
 	// sharpness = SHARP_EDGED
 	action_button_name = "Toggle Light"
+	light_wedge = LIGHT_WIDE
 	// actions_types = list(/datum/action/item_action/toggle_light)
 	// var/list/trophies = list()
 	var/charged = TRUE
@@ -61,8 +62,8 @@
 /obj/item/kinetic_crusher/Initialize(mapload)
 	. = ..()
 	if(requires_Wield)
-		RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
-		RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
+		RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_wield))
+		RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, PROC_REF(on_unwield))
 /obj/item/kinetic_crusher/ComponentInitialize()
 	. = ..()
 	if(requires_wield)
@@ -120,7 +121,7 @@
 	if(!wielded && requires_wield)
 		to_chat(user, "<span class='warning'>[src] is too heavy to use with one hand.")
 		return
-	var/datum/status_effect/crusher_damage/C = L.has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
+	var/datum/status_effect/crusher_damage/C = L.has_status_effect(/datum/status_effect/crusher_damage)
 	var/target_health = L.health
 	. = ..()
 /*
@@ -132,7 +133,7 @@
 	if(!QDELETED(C) && !QDELETED(L))
 		C.total_damage += target_health - L.health //we did some damage, but let's not assume how much we did
 
-/obj/item/kinetic_crusher/afterattack(atom/target, mob/living/user, proximity_flag, clickparams)
+/obj/item/kinetic_crusher/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 /*
 	if(istype(target, /obj/item/crusher_trophy))
@@ -141,7 +142,7 @@
 */
 	if(requires_wield && !wielded)
 		return
-	if(!proximity_flag && charged)//Mark a target, or mine a tile.
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && charged)//Mark a target, or mine a tile.
 		var/turf/proj_turf = user.loc
 		if(!isturf(proj_turf))
 			return
@@ -151,23 +152,23 @@
 			var/obj/item/crusher_trophy/T = t
 			T.on_projectile_fire(D, user)
 */
-		D.preparePixelProjectile(target, user, clickparams)
+		D.preparePixelProjectile(target, user, list2params(params))
 		D.firer = user
 		D.hammer_synced = src
 		playsound(user, 'sound/weapons/plasma_cutter.ogg', 100, 1)
 		D.fire()
 		charged = FALSE
 		update_icon()
-		addtimer(CALLBACK(src, .proc/Recharge), charge_time * (user?.ConflictElementCount(CONFLICT_ELEMENT_CRUSHER) || 1))
+		addtimer(CALLBACK(src, PROC_REF(Recharge)), charge_time * (user?.ConflictElementCount(CONFLICT_ELEMENT_CRUSHER) || 1))
 		return
-	if(proximity_flag && isliving(target))
+	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && isliving(target))
 		detonate(target, user)
 
 /obj/item/kinetic_crusher/proc/detonate(mob/living/L, mob/living/user, thrown = FALSE)
-	var/datum/status_effect/crusher_mark/CM = L.has_status_effect(STATUS_EFFECT_CRUSHERMARK)
-	if(!CM || CM.hammer_synced != src || !L.remove_status_effect(STATUS_EFFECT_CRUSHERMARK))
+	var/datum/status_effect/grouped/crusher_mark/CM = L.has_status_effect(/datum/status_effect/grouped/crusher_mark)
+	if(!CM || CM.hammer_synced != src || !L.remove_status_effect(/datum/status_effect/grouped/crusher_mark))
 		return
-	var/datum/status_effect/crusher_damage/C = L.has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
+	var/datum/status_effect/crusher_damage/C = L.has_status_effect(/datum/status_effect/crusher_damage)
 	var/target_health = L.health
 /*
 	for(var/t in trophies)
@@ -198,7 +199,7 @@
 	if(!isliving(A))
 		return
 	var/mob/living/L = A
-	if(!L.has_status_effect(STATUS_EFFECT_CRUSHERMARK))
+	if(!L.has_status_effect(/datum/status_effect/grouped/crusher_mark))
 		detonate(L, TT.thrower, TRUE)
 
 /obj/item/kinetic_crusher/proc/Recharge()
@@ -321,9 +322,15 @@
 /obj/projectile/destabilizer/on_hit(atom/target, blocked = FALSE)
 	if(isliving(target))
 		var/mob/living/L = target
-		L.apply_status_effect(STATUS_EFFECT_CRUSHERMARK, hammer_synced)
-		// var/had_effect = (L.has_status_effect(STATUS_EFFECT_CRUSHERMARK)) //used as a boolean
-		// var/datum/status_effect/crusher_mark/CM = L.apply_status_effect(STATUS_EFFECT_CRUSHERMARK, hammer_synced)
+		if(hammer_synced.can_mark(L))
+			L.apply_status_effect(
+				/datum/status_effect/grouped/crusher_mark,
+				additional = list(
+					crusher = src,
+				)
+			)
+		// var/had_effect = (L.has_status_effect(/datum/status_effect/grouped/crusher_mark)) //used as a boolean
+		// var/datum/status_effect/grouped/crusher_mark/CM = L.apply_status_effect(/datum/status_effect/grouped/crusher_mark, hammer_synced)
 /*
 		if(hammer_synced)
 			for(var/t in hammer_synced.trophies)
@@ -476,7 +483,7 @@
 			continue
 		playsound(L, 'sound/magic/fireball.ogg', 20, 1)
 		new /obj/effect/temp_visual/fire(L.loc)
-		addtimer(CALLBACK(src, .proc/pushback, L, user), 1) //no free backstabs, we push AFTER module stuff is done
+		addtimer(CALLBACK(src, PROC_REF(pushback), L, user), 1) //no free backstabs, we push AFTER module stuff is done
 		L.adjustFireLoss(bonus_value, forced = TRUE)
 /obj/item/crusher_trophy/tail_spike/proc/pushback(mob/living/target, mob/living/user)
 	if(!QDELETED(target) && !QDELETED(user) && (!target.anchored || ismegafauna(target))) //megafauna will always be pushed
@@ -534,7 +541,7 @@
 		deadly_shot = FALSE
 /obj/item/crusher_trophy/blaster_tubes/on_mark_detonation(mob/living/target, mob/living/user)
 	deadly_shot = TRUE
-	addtimer(CALLBACK(src, .proc/reset_deadly_shot), 300, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(reset_deadly_shot)), 300, TIMER_UNIQUE|TIMER_OVERRIDE)
 /obj/item/crusher_trophy/blaster_tubes/proc/reset_deadly_shot()
 	deadly_shot = FALSE
 //hierophant

@@ -76,7 +76,7 @@
 			W.assignment = corpseidjob
 		M.set_id_info(W)
 		M.equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
-	INVOKE_ASYNC(M, /mob/proc/death)
+	INVOKE_ASYNC(M, TYPE_PROC_REF(/mob, death))
 
 /obj/spawner/corpse/syndicatesoldier
 	name = "Mercenary"
@@ -459,7 +459,7 @@
 	name = "Pirate Buckler"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/green
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
-	corpsehelmet = /obj/item/clothing/head/tajaran/scarf
+	corpsehelmet = /obj/item/clothing/head/tajaranold/scarf
 	corpseback = /obj/item/storage/backpack/dufflebag/syndie
 
 /obj/spawner/corpse/pirate/melee_shield_machete_armor
@@ -514,7 +514,7 @@
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/tan
 	corpsesuit = /obj/item/clothing/suit/storage/vest/tactical
 	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
-	corpsehelmet = /obj/item/clothing/head/tajaran/scarf
+	corpsehelmet = /obj/item/clothing/head/tajaranold/scarf
 	corpsebelt = /obj/item/storage/belt/security/tactical/bandolier
 	corpseback = /obj/item/storage/backpack/rebel
 

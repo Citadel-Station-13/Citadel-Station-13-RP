@@ -17,7 +17,7 @@
 	desc = "A head-mounted face cover designed to protect the wearer completely from space-arc eye."
 	icon_state = "welding"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "welding", SLOT_ID_LEFT_HAND = "welding")
-	matter = list(MAT_STEEL = 3000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 3000, MAT_GLASS = 1000)
 	var/up = 0
 	armor_type = /datum/armor/head/hardhat
 	inv_hide_flags = (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
@@ -46,7 +46,7 @@
 	if(!base_state)
 		base_state = icon_state
 
-	if(usr.canmove && !usr.stat && !usr.restrained())
+	if(CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		if(src.up)
 			src.up = !src.up
 			body_cover_flags |= (EYES|FACE)
@@ -156,6 +156,7 @@
 	icon_state = "ushankadown"
 	inv_hide_flags = HIDEEARS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	cold_protection = HEAD
 
 /obj/item/clothing/head/ushanka/attack_self(mob/user)
 	. = ..()

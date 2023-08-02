@@ -79,7 +79,7 @@
 	sharp = 1
 	edge = 1
 	force_divisor = 0.15 // 9 when wielded with hardness 60 (steel)
-	matter = list(MAT_STEEL = 12000)
+	materials = list(MAT_STEEL = 12000)
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -184,11 +184,11 @@
 		return TRUE
 	return FALSE
 
-/obj/item/material/knife/machete/armblade/rig
+/obj/item/material/knife/machete/armblade/hardsuit
 	default_material = MAT_STEEL
-	var/obj/item/rig_module/armblade/storing_module
+	var/obj/item/hardsuit_module/armblade/storing_module
 
-/obj/item/material/knife/machete/armblade/rig/dropped(mob/user, flags, atom/newLoc)
+/obj/item/material/knife/machete/armblade/hardsuit/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(storing_module)
 		src.forceMove(storing_module)

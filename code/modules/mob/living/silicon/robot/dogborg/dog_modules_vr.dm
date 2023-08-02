@@ -87,8 +87,8 @@
 			to_chat(user, "<span class='notice'>[GLOB.meta_gas_names[g]]: [round((environment.gas[g] / total_moles) * 100)]%</span>")
 		to_chat(user, "<span class='notice'>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</span>")
 
-/obj/item/dogborg/boop_module/afterattack(atom/target, mob/user, proximity)
-	if(!proximity)
+/obj/item/dogborg/boop_module/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if (user.stat)
 		return
@@ -211,8 +211,8 @@
 			icon_state = "synthtongue"
 		update_icon()
 
-/obj/item/dogborg/tongue/afterattack(atom/target, mob/user, proximity)
-	if(!proximity)
+/obj/item/dogborg/tongue/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
@@ -268,8 +268,8 @@
 			var/mob/living/L = target
 			if(R.cell.charge <= 666)
 				return
-			L.Stun(1)
-			L.Weaken(1)
+			L.afflict_stun(20 * 1)
+			L.afflict_paralyze(20 * 1)
 			L.apply_effect(STUTTER, 1)
 			L.visible_message("<span class='danger'>[user] has shocked [L] with its tongue!</span>", \
 								"<span class='userdanger'>[user] has shocked you with its tongue! You can feel the betrayal.</span>")
@@ -281,7 +281,7 @@
 			water.use_charge(5)
 			var/mob/living/carbon/human/H = target
 			if(H.species.lightweight == 1)
-				H.Weaken(3)
+				H.afflict_paralyze(20 * 3)
 	else
 		user.visible_message("[user] begins to lick [target] clean...", "<span class='notice'>You begin to lick [target] clean...</span>")
 		if(do_after(user, 50, target = target))
@@ -422,7 +422,7 @@
 		return
 
 	last_special = world.time + 10
-	status_flags |= LEAPING
+	status_flags |= STATUS_LEAPING
 	pixel_y = pixel_y + 10
 
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
@@ -433,7 +433,7 @@
 
 	sleep(5)
 
-	if(status_flags & LEAPING) status_flags &= ~LEAPING
+	if(status_flags & STATUS_LEAPING) status_flags &= ~STATUS_LEAPING
 
 	if(!src.Adjacent(T))
 		to_chat(src, "<span class='warning'>You miss!</span>")
@@ -442,7 +442,7 @@
 	if(ishuman(T))
 		var/mob/living/carbon/human/H = T
 		if(H.species.lightweight == 1)
-			H.Weaken(3)
+			H.afflict_paralyze(20 * 3)
 			return
 	var/armor_block = run_armor_check(T, "melee")
 	var/armor_soak = get_armor_soak(T, "melee")
@@ -493,6 +493,8 @@
 	else
 		to_chat(usr, "You must target the torso.")
 
-/obj/item/dogborg/mirrortool/afterattack(var/obj/machinery/computer/transhuman/resleeving/target, mob/user)
-	target.active_mr = imp.stored_mind
-	. = ..()
+/obj/item/dogborg/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	var/obj/machinery/computer/transhuman/resleeving/comp = target
+	if(!istype(comp))
+		return
+	comp.active_mr = imp.stored_mind

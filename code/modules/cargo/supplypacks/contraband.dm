@@ -33,17 +33,6 @@
 	container_name = "Special Ops crate"
 	contraband = 1
 
-/datum/supply_pack/supply/moghes
-	name = "Moghes imports"
-	contains = list(
-			/obj/item/reagent_containers/food/drinks/bottle/redeemersbrew = 2,
-			/obj/item/reagent_containers/food/snacks/unajerky = 4
-			)
-	cost = 25
-	container_type = /obj/structure/closet/crate/unathi
-	container_name = "Moghes imports crate"
-	contraband = 1
-
 /datum/supply_pack/munitions/bolt_rifles_militia
     name = "Weapon - Misplaced militia rifles"
     contains = list(
@@ -112,7 +101,6 @@
 
 /obj/item/storage/box/cargo_null_entry_kit/spy/PopulateContents()
 	new /obj/item/gun/ballistic/silenced(src)
-	new /obj/item/chameleon(src)
 	new /obj/item/storage/box/syndie_kit/chameleon(src)
 	new /obj/item/encryptionkey/syndicate(src)
 	new /obj/item/card/id/syndicate(src)

@@ -1,6 +1,6 @@
 /mob/living/proc/reveal(var/silent, var/message = "<span class='warning'>You have been revealed! You are no longer hidden.</span>")
-	if(status_flags & HIDING)
-		status_flags &= ~HIDING
+	if(status_flags & STATUS_HIDING)
+		status_flags &= ~STATUS_HIDING
 		reset_plane_and_layer()
 		if(!silent && message)
 			to_chat(src, message)
@@ -11,13 +11,13 @@
 	set category = "Abilities"
 
 	// Check for has_buckled_mobs() (taur riding)
-	if(stat == DEAD || paralysis || weakened || stunned || restrained() || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs())
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_USE) || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs())
 		return
 
-	if(status_flags & HIDING)
+	if(status_flags & STATUS_HIDING)
 		reveal("<span class='notice'>You have stopped hiding.</span>")
 	else
-		status_flags |= HIDING
+		status_flags |= STATUS_HIDING
 		set_base_layer(HIDING_LAYER)
 		plane = OBJ_PLANE
 		to_chat(src,"<span class='notice'>You are now hiding.</span>")

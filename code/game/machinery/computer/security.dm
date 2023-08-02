@@ -334,7 +334,7 @@
 					printing = TRUE
 					// playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, TRUE)
 					SStgui.update_uis(src)
-					addtimer(CALLBACK(src, .proc/print_finish), 5 SECONDS)
+					addtimer(CALLBACK(src, PROC_REF(print_finish)), 5 SECONDS)
 			if("photo_front")
 				var/icon/photo = get_photo(usr)
 				if(photo && active1)
@@ -471,12 +471,12 @@
 /obj/machinery/computer/secure_data/proc/get_photo(var/mob/user)
 	if(istype(user.get_active_held_item(), /obj/item/photo))
 		var/obj/item/photo/photo = user.get_active_held_item()
-		return photo.img
+		return photo.full_image()
 	if(istype(user, /mob/living/silicon))
 		var/mob/living/silicon/tempAI = usr
 		var/obj/item/photo/selection = tempAI.GetPicture()
 		if (selection)
-			return selection.img
+			return selection.full_image()
 
 /obj/machinery/computer/secure_data/emp_act(severity)
 	if(machine_stat & (BROKEN|NOPOWER))

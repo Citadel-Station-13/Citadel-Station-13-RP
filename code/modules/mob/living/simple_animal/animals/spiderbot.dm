@@ -195,7 +195,7 @@
 		var/turf/T = get_turf(loc)
 		if(T)
 			mmi.forceMove(T)
-		if(mind)	mind.transfer_to(mmi.brainmob)
+		if(mind)	mind.transfer(mmi.brainmob)
 		mmi = null
 		real_name = initial(real_name)
 		name = real_name
@@ -296,7 +296,7 @@
 	to_chat(src, "<span class='warning'>There is nothing of interest to take.</span>")
 	return 0
 
-/mob/living/simple_mob/spiderbot/examine(mob/user)
+/mob/living/simple_mob/spiderbot/examine(mob/user, dist)
 	. = ..()
 	if(src.held_item)
 		. += "It is carrying [icon2html(thing = src, target = world)] \a [src.held_item]."

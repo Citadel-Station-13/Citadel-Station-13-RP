@@ -1306,6 +1306,25 @@
 	set_trait(TRAIT_PLANT_ICON,"tree2")
 	set_trait(TRAIT_PLANT_COLOUR,"#2F7D2D")
 
+/datum/seed/tobacco
+	name = "tobacco"
+	seed_name = "tobacco"
+	display_name = "tobacco"
+	kitchen_tag = "tobacco"
+	chems = list("nicotine" = list(5,10))
+
+/datum/seed/tobacco/New()
+	..()
+	set_trait(TRAIT_HARVEST_REPEAT,2)
+	set_trait(TRAIT_MATURATION,5)
+	set_trait(TRAIT_PRODUCTION,5)
+	set_trait(TRAIT_YIELD,5)
+	set_trait(TRAIT_POTENCY,10)
+	set_trait(TRAIT_PRODUCT_ICON,"nettles")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#3b2008")
+	set_trait(TRAIT_PLANT_COLOUR,"#124b04")
+	set_trait(TRAIT_PLANT_ICON,"bush2")
+
 /datum/seed/kudzu
 	name = "kudzu"
 	seed_name = "kudzu"
@@ -1522,45 +1541,6 @@
 	set_trait(TRAIT_SPREAD,2)
 	set_trait(TRAIT_POTENCY,50)
 
-/datum/seed/size
-	name = "microm"
-	seed_name = "Shrinking Mushroom"
-	display_name = "Shrinking mushroom trees"
-	mutants = list("megam")
-	kitchen_tag = "microm"
-	chems = list("microcillin" = list(1,20))
-
-/datum/seed/size/New()
-	..()
-	set_trait(TRAIT_HARVEST_REPEAT,1)
-	set_trait(TRAIT_MATURATION,6)
-	set_trait(TRAIT_PRODUCTION,6)
-	set_trait(TRAIT_YIELD,3)
-	set_trait(TRAIT_POTENCY,15)
-	set_trait(TRAIT_PRODUCT_ICON,"mushroom3")
-	set_trait(TRAIT_PRODUCT_COLOUR,"#DA00DA")
-	set_trait(TRAIT_PLANT_ICON,"tree")
-
-
-/datum/seed/size/megam
-	name = "megam"
-	seed_name = "Mega Mushroom"
-	display_name = "Mega mushroom trees"
-	mutants = list("microm")
-	kitchen_tag = "megam"
-	chems = list("macrocillin" = list(1,20))
-
-/datum/seed/size/megam/New()
-	..()
-	set_trait(TRAIT_HARVEST_REPEAT,1)
-	set_trait(TRAIT_MATURATION,6)
-	set_trait(TRAIT_PRODUCTION,6)
-	set_trait(TRAIT_YIELD,3)
-	set_trait(TRAIT_POTENCY,15)
-	set_trait(TRAIT_PRODUCT_ICON,"mushroom6")
-	set_trait(TRAIT_PLANT_ICON,"tree")
-	set_trait(TRAIT_PRODUCT_COLOUR,"#DADA00")
-
 // Disho.
 /datum/seed/disho
 	name = "disho"
@@ -1659,7 +1639,7 @@
 	set_trait(TRAIT_PRODUCT_COLOUR,"#f0d74c")
 	set_trait(TRAIT_PLANT_COLOUR,"#75581a")
 	set_trait(TRAIT_PLANT_ICON,"bush6")
-	set_trait(TRAIT_IDEAL_LIGHT, 2)
+	set_trait(TRAIT_IDEAL_LIGHT, 1)
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
 	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)
 
@@ -1681,7 +1661,7 @@
 	set_trait(TRAIT_PRODUCT_COLOUR,"#9d23aa")
 	set_trait(TRAIT_PLANT_COLOUR,"#53391b")
 	set_trait(TRAIT_PLANT_ICON,"bush5")
-	set_trait(TRAIT_IDEAL_LIGHT, 2)
+	set_trait(TRAIT_IDEAL_LIGHT, 1)
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
 	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)
 
@@ -1703,7 +1683,7 @@
 	set_trait(TRAIT_PRODUCT_COLOUR,"#7c260c")
 	set_trait(TRAIT_PLANT_COLOUR,"#684f32")
 	set_trait(TRAIT_PLANT_ICON,"bush7")
-	set_trait(TRAIT_IDEAL_LIGHT, 2)
+	set_trait(TRAIT_IDEAL_LIGHT, 1)
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
 	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)
 
@@ -1725,6 +1705,50 @@
 	set_trait(TRAIT_PRODUCT_COLOUR,"#e0f569")
 	set_trait(TRAIT_PLANT_COLOUR,"#42222a")
 	set_trait(TRAIT_PLANT_ICON,"vine2")
-	set_trait(TRAIT_IDEAL_LIGHT, 2)
+	set_trait(TRAIT_IDEAL_LIGHT, 1)
+	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
+	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)
+
+/datum/seed/shimash
+	name = "shimash"
+	seed_name = "shimash"
+	display_name = "shimash"
+	kitchen_tag = "shimash"
+	chems = list("tramadol" = list(5,10))
+
+/datum/seed/shimash/New()
+	..()
+	set_trait(TRAIT_HARVEST_REPEAT,4)
+	set_trait(TRAIT_MATURATION,6)
+	set_trait(TRAIT_PRODUCTION,5)
+	set_trait(TRAIT_YIELD,6)
+	set_trait(TRAIT_POTENCY,10)
+	set_trait(TRAIT_PRODUCT_ICON,"spinefruit")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#304730")
+	set_trait(TRAIT_PLANT_COLOUR,"#580505")
+	set_trait(TRAIT_PLANT_ICON,"bush2")
+	set_trait(TRAIT_IDEAL_LIGHT, 1)
+	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
+	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)
+
+/datum/seed/pokalea
+	name = "pokalea"
+	seed_name = "pokalea"
+	display_name = "pokalea"
+	kitchen_tag = "pokalea"
+	chems = list("nicotine" = list(5,10), "leporazine" = list(5,10))
+
+/datum/seed/pokalea/New()
+	..()
+	set_trait(TRAIT_HARVEST_REPEAT,4)
+	set_trait(TRAIT_MATURATION,6)
+	set_trait(TRAIT_PRODUCTION,5)
+	set_trait(TRAIT_YIELD,6)
+	set_trait(TRAIT_POTENCY,10)
+	set_trait(TRAIT_PRODUCT_ICON,"pod")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#684c34")
+	set_trait(TRAIT_PLANT_COLOUR,"#9aa07c")
+	set_trait(TRAIT_PLANT_ICON,"tree")
+	set_trait(TRAIT_IDEAL_LIGHT, 1)
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
 	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)

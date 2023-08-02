@@ -143,7 +143,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	I.appearance_flags |= RESET_TRANSFORM
 	underlays += I
 
-/obj/machinery/power/pointdefense/examine(mob/user)
+/obj/machinery/power/pointdefense/examine(mob/user, dist)
 	. = ..()
 	if(powernet)
 		. += "It is connected to a power cable below."
@@ -239,10 +239,10 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		engaging = null
 		return
 	engaging = target
-	var/Angle = round(Get_Angle(src,M))
+	var/Angle = round(get_visual_angle(src,M))
 	var/matrix/rot_matrix = matrix()
 	rot_matrix.Turn(Angle)
-	addtimer(CALLBACK(src, .proc/finish_shot, target), rotation_speed)
+	addtimer(CALLBACK(src, PROC_REF(finish_shot), target), rotation_speed)
 	animate(src, transform = rot_matrix, rotation_speed, easing = SINE_EASING)
 
 	setDir(arctan(transform.b, transform.a) > 0 ? NORTH : SOUTH)

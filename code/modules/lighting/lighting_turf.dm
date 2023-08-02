@@ -58,7 +58,7 @@
 		add_ambient_light(new_color, new_multiplier)
 		return
 
-	ASSERT(old_multiplier)	// omitting new_multiplier is allowed for removing light nondestructively
+	ASSERT(!isnull(old_multiplier))	// omitting new_multiplier is allowed for removing light nondestructively
 
 	old_color ||= COLOR_WHITE
 	new_color ||= COLOR_WHITE

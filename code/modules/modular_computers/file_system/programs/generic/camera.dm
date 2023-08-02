@@ -2,7 +2,7 @@
 /proc/get_camera_access(var/network)
 	if(!network)
 		return 0
-	. = GLOB.using_map.get_network_access(network)
+	. = (LEGACY_MAP_DATUM).get_network_access(network)
 	if(.)
 		return
 
@@ -16,8 +16,8 @@
 		if(NETWORK_ERT)
 			return ACCESS_CENTCOM_ERT
 
-	if(network in GLOB.using_map.station_networks)
-		return ACCESS_SECURITY_EQUIPMENT // Default for all other station networks
+	if(network in (LEGACY_MAP_DATUM).station_networks)
+		return ACCESS_SECURITY_MAIN // Default for all other station networks
 	else
 		return 999	//Inaccessible if not a station network and not mentioned above
 
@@ -41,3 +41,42 @@
 	size = 14
 	tguimodule_path = /datum/tgui_module_old/camera/ntos/ert
 	available_on_ntnet = 0
+
+//Helmet Cameras
+/datum/computer_file/program/camera_monitor/helmet
+	filename = "helmetcammon"
+	filedesc = "Helmet Camera Monitoring"
+	tguimodule_path = /datum/tgui_module_old/camera/ntos/helmet
+	program_icon_state = "cameras"
+	program_key_state = "generic_key"
+	program_menu_icon = "search"
+	extended_desc = "This program allows remote access to all civilian helmet cameras."
+	size = 8
+	available_on_ntnet = 1
+	requires_ntnet = 1
+
+/datum/computer_file/program/camera_monitor/sechelmet
+	filename = "sechelmetcammon"
+	filedesc = "Security Helmet Camera Monitoring"
+	tguimodule_path = /datum/tgui_module_old/camera/ntos/security_helmet
+	program_icon_state = "cameras"
+	program_key_state = "generic_key"
+	program_menu_icon = "search"
+	extended_desc = "This program allows remote access to all civilian helmet cameras. This camera network requires Security clearance."
+	size = 8
+	available_on_ntnet = 1
+	requires_ntnet = 1
+	required_access = ACCESS_SECURITY_EQUIPMENT
+
+/datum/computer_file/program/camera_monitor/explohelmet
+	filename = "explohelmetcammon"
+	filedesc = "Exploration Helmet Camera Monitoring"
+	tguimodule_path = /datum/tgui_module_old/camera/ntos/exploration_helmet
+	program_icon_state = "cameras"
+	program_key_state = "generic_key"
+	program_menu_icon = "search"
+	extended_desc = "This program allows remote access to all civilian helmet cameras. This camera network requires Exploration clearance."
+	size = 8
+	available_on_ntnet = 1
+	requires_ntnet = 1
+	required_access = ACCESS_GENERAL_EXPLORER

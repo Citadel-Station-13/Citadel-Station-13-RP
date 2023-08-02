@@ -9,6 +9,7 @@
 	generic_canpass = FALSE
 	sight = SIGHT_FLAGS_DEFAULT
 	rad_flags = NONE
+	atom_colouration_system = TRUE
 
 	//? Core
 	/// mobs use ids as ref tags instead of actual refs.
@@ -31,6 +32,14 @@
 	//? Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
+	/// current darksight modifiers.
+	var/list/datum/vision/vision_modifiers
+	/// override darksight datum - adminbus only
+	var/datum/vision/vision_override
+
+	//? Movement
+	/// current datum that's entirely intercepting our movements. only can have one - this is usually used with perspective.
+	var/datum/movement_intercept
 
 	//? Buckling
 	/// Atom we're buckled to
@@ -73,6 +82,12 @@
 	var/shift_pixel_x = 0
 	/// shifted pixel y
 	var/shift_pixel_y = 0
+	/// pixel-shifted by user enough to let people through. this is a direction flag
+	var/wallflowering = NONE
+
+	//? Abilities
+	/// our abilities - set to list of paths to init to intrinsic abilities.
+	var/list/datum/ability/abilities
 
 	//? Inventory
 	/// our inventory datum, if any.
@@ -87,13 +102,35 @@
 	/// What we're interacting with right now, associated to list of reasons and the number of concurrent interactions for that reason.
 	var/list/interacting_with
 
+	//? Mobility / Stat
+	/// mobility flags from [code/__DEFINES/mobs/mobility.dm], updated by update_mobility(). use traits to remove these.
+	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
+	/// force-enabled mobility flags, usually updated by traits
+	var/mobility_flags_forced = NONE
+	/// force-blocked mobility flags, usually updated by traits
+	var/mobility_flags_blocked = NONE
+	/// Super basic information about a mob's stats - flags are in [code/__DEFINES/mobs/stat.dm], this is updated by update_stat().
+	var/stat = CONSCIOUS
+	//  todo: move to /living level, things should be checking mobility flags anyways.
+	/// which way are we lying down right now? in degrees. 0 default since we're not laying down.
+	var/lying = 0
+
+	//? Status Effects
+	/// A list of all status effects the mob has
+	var/list/status_effects
+
+	//? SSD
+	/// current ssd overlay
+	var/image/ssd_overlay
+	/// do we use ssd overlays?
+	var/ssd_visible = FALSE
+
 	//? unsorted / legacy
 	var/datum/mind/mind
-	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
-	var/stat = CONSCIOUS
 
 	var/next_move = null // For click delay, despite the misleading name.
 
+	var/list/datum/action/actions = list()
 	var/atom/movable/screen/hands = null
 	var/atom/movable/screen/pullin = null
 	var/atom/movable/screen/purged = null
@@ -121,12 +158,6 @@
 	var/atom/movable/screen/wizard/energy/wiz_energy_display = null
 	var/atom/movable/screen/wizard/instability/wiz_instability_display = null
 
-	var/datum/plane_holder/plane_holder = null
-	/// List of vision planes that should be graphically visible (list of their VIS_ indexes).
-	var/list/vis_enabled = null
-	/// List of atom planes that are logically visible/interactable (list of actual plane numbers).
-	var/list/planes_visible = null
-
 	/// Spells hud icons - this interacts with add_spell and remove_spell.
 	var/list/atom/movable/screen/movable/spell_master/spell_masters = null
 	/// Ability hud icons.
@@ -146,15 +177,12 @@
 	var/use_me = 1
 	var/damageoverlaytemp = 0
 	var/computer_id = null
-	var/already_placed = 0.0
 	var/obj/machinery/machine = null
 	var/other_mobs = null
 	var/memory = ""
-	var/poll_answer = 0.0
 	var/sdisabilities = 0	//?Carbon
 	var/disabilities = 0	//?Carbon
 	var/transforming = null	//?Carbon
-	var/other = 0.0
 	var/eye_blind = null	//?Carbon
 	var/eye_blurry = null	//?Carbon
 	var/ear_deaf = null		//?Carbon
@@ -176,12 +204,7 @@
 	var/confused = 0		//?Carbon
 	var/antitoxs = null
 	var/phoron = null
-	var/sleeping = 0		//?Carbon
-	var/resting = 0			//?Carbon
-	var/lying = 0
-	var/lying_prev = 0
 
-	var/canmove = 1
 	/// Allows mobs to move through dense areas without restriction. For instance, in space or out of holder objects.
 	var/incorporeal_move = 0 //0 is off, 1 is normal, 2 is for ninjas.
 	var/unacidable = 0
@@ -209,16 +232,12 @@
 
 	var/bodytemperature = 310.055 //98.7 F
 	var/drowsyness = 0 //?Carbon
-	var/charges = 0
 
 	var/nutrition = 400 //?Carbon
 	var/hydration = 400 //?Carbon
 
 	/// How long this guy is overeating. //?Carbon
 	var/overeatduration = 0
-	var/paralysis = 0
-	var/stunned = 0
-	var/weakened = 0
 	var/losebreath = 0 //?Carbon
 	var/shakecamera = 0
 	var/m_int = null //?Living
@@ -229,14 +248,6 @@
 	var/datum/hud/hud_used = null
 
 	var/list/grabbed_by = list(  )
-
-	var/list/mapobjs = list()
-
-	/// whether or not we're prepared to throw stuff.
-	var/in_throw_mode = THROW_MODE_OFF
-
-	// todo: nuke from orbit
-	var/music_lastplayed = "null"
 
 	// todo: nuke from orbit
 	var/job = null //?Living
@@ -275,11 +286,8 @@
 
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
-	/// Set to TRUE to trigger update_icons() at the next life() call.
-	var/update_icon = TRUE
-
 	/// Bitflags defining which status effects can be inflicted. (replaces canweaken, canstun, etc)
-	var/status_flags = CANSTUN|CANWEAKEN|CANPARALYSE|CANPUSH
+	var/status_flags = STATUS_FLAGS_DEFAULT
 
 	var/area/lastarea = null
 
@@ -310,10 +318,7 @@
 	// Used for lings to not see deadchat, and to have ghosting behave as if they were not really dead.
 	var/forbid_seeing_deadchat = FALSE
 
-	///Determines mob's ability to see shadows. 1 = Normal vision, 0 = darkvision.
-	var/seedarkness = 1
-
-	var/get_rig_stats = 0
+	var/get_hardsuit_stats = 0
 
 	/// Skip processing life() if there's just no players on this Z-level.
 	var/low_priority = TRUE
@@ -330,12 +335,8 @@
 
 	var/last_radio_sound = -INFINITY
 
-	/// A mock client, provided by tests and friends
-	var/datum/client_interface/mock_client
 
-	//! ## Virgo Defines
-	/// Do I have the HUD enabled?
-	var/vantag_hud = FALSE
+	//? vorestation legacy
 	/// Allows flight.
 	var/flying = FALSE
 	/// For holding onto a temporary form.
@@ -346,6 +347,20 @@
 	var/atom/movable/screen/shadekin/shadekin_display = null
 	var/atom/movable/screen/xenochimera/danger_level/xenochimera_danger_display = null
 
-	//! Typing Indicator
+	var/muffled = 0 					// Used by muffling belly
+
+	//? Unit Tests
+	/// A mock client, provided by tests and friends
+	var/datum/client_interface/mock_client
+
+	//? Throwing
+	/// whether or not we're prepared to throw stuff.
+	var/in_throw_mode = THROW_MODE_OFF
+
+	//? Typing Indicator
 	var/typing = FALSE
 	var/mutable_appearance/typing_indicator
+
+	//? Movement
+	/// Is self-moving.
+	var/in_selfmove

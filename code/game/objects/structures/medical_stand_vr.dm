@@ -400,7 +400,7 @@
 	if(beaker)
 		if(mode) // Give blood
 			if(beaker.volume > 0)
-				beaker.reagents.trans_to_mob(attached, transfer_amount, CHEM_BLOOD)
+				beaker.reagents.trans_to_mob(attached, transfer_amount, CHEM_INJECT)
 				update_icon()
 		else // Take blood
 			var/amount = beaker.reagents.maximum_volume - beaker.reagents.total_volume

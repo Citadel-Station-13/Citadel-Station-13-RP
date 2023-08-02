@@ -45,18 +45,6 @@
 	cost = 3 //Let us not forget this effects tasers!
 	var_changes = list("siemens_coefficient" = 0.5)
 
-/datum/trait/positive/darksight
-	name = "Darksight"
-	desc = "Allows you to see a short distance in the dark, also makes you more vulnerable to flashes."
-	cost = 1
-	var_changes = list("darksight" = 3, "flash_mod" = 2.0)
-
-/datum/trait/positive/darksight_plus
-	name = "Major Darksight"
-	desc = "Allows you to see great distances in the dark, also makes you extremely vulnerable to flashes."
-	cost = 2
-	var_changes = list("darksight" = 7, "flash_mod" = 3.0)
-
 /datum/trait/positive/melee_attack
 	name = "Sharp Melee"
 	desc = "Provides sharp melee attacks that do slightly more damage."
@@ -159,7 +147,6 @@
 /datum/trait/positive/winged_flight/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	add_verb(H, /mob/living/proc/flying_toggle)
-	add_verb(H, /mob/living/proc/start_wings_hovering)
 
 /datum/trait/positive/hardfeet
 	name = "Hard Feet"
@@ -189,7 +176,7 @@
 	name = "Weaver"
 	desc = "You can produce silk and create various articles of clothing and objects."
 	cost = 2
-	var_changes = list("is_weaver" = 1)
+	//var_changes = list("is_weaver" = 1)
 
 /datum/trait/positive/positive/weaver/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..()
@@ -198,3 +185,6 @@
 	add_verb(H, /mob/living/carbon/human/proc/weave_structure)
 	add_verb(H, /mob/living/carbon/human/proc/weave_item)
 	add_verb(H, /mob/living/carbon/human/proc/set_silk_color)
+	var/obj/item/organ/internal/weaver/weak/silk = new(H)
+	H.internal_organs += silk
+	H.internal_organs_by_name[O_WEAVER] = silk

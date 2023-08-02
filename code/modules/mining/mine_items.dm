@@ -20,7 +20,7 @@
 	icon_state = "pickaxe"
 	item_state = "jackhammer"
 	w_class = ITEMSIZE_LARGE
-	matter = list(MAT_STEEL = 3750)
+	materials = list(MAT_STEEL = 3750)
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
 	var/sand_dig = FALSE
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
@@ -128,7 +128,7 @@
 	icon_state = "icepick"
 	item_state = "spickaxe" //im lazy fuck u
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 2750, MAT_TITANIUM = 2000)
+	materials = list(MAT_STEEL = 2750, MAT_TITANIUM = 2000)
 	digspeed = 25 //More expensive than a diamond pick, a lot smaller but decently slower.
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("mined", "pierced", "stabbed", "attacked")
@@ -203,31 +203,31 @@
 	else
 		turnOff(user)
 
-/obj/item/pickaxe/tyrmalin/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/pickaxe/tyrmalin/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
 	if(active)
 		playsound(src, 'sound/weapons/chainsaw_attack.ogg',40,1)
-	if(A && active)
+	if(target && active)
 		if(get_fuel() > 0)
 			reagents.remove_reagent("fuel", 1)
-		if(istype(A,/obj/structure/window))
-			var/obj/structure/window/W = A
+		if(istype(target,/obj/structure/window))
+			var/obj/structure/window/W = target
 			W.shatter()
-		else if(istype(A,/obj/structure/grille))
-			new /obj/structure/grille/broken(A.loc)
-			new /obj/item/stack/rods(A.loc)
-			qdel(A)
+		else if(istype(target,/obj/structure/grille))
+			new /obj/structure/grille/broken(target.loc)
+			new /obj/item/stack/rods(target.loc)
+			qdel(target)
 	if(jam_chance && active)
 		switch(rand(1,100))
 			if(1 to 30)
 				turnOff()
 			if(31 to 100)
 				return
-	if (istype(A, /obj/structure/reagent_dispensers/fueltank) || istype(A, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,A) <= 1)
+	if (istype(target, /obj/structure/reagent_dispensers/fueltank) || istype(target, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,target) <= 1)
 		to_chat(usr, "<span class='notice'>You begin filling the tank on the [src].</span>")
 		if(do_after(usr, 15))
-			A.reagents.trans_to_obj(src, max_fuel)
+			target.reagents.trans_to_obj(src, max_fuel)
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			to_chat(usr, "<span class='notice'>[src] succesfully refueled.</span>")
 		else
@@ -247,7 +247,7 @@
 /obj/item/pickaxe/tyrmalin/proc/get_fuel()
 	return reagents.get_reagent_amount("fuel")
 
-/obj/item/pickaxe/tyrmalin/examine(mob/user)
+/obj/item/pickaxe/tyrmalin/examine(mob/user, dist)
 	. = ..()
 	if(max_fuel)
 		. += "<span class = 'notice'>The [src] feels like it contains roughtly [get_fuel()] units of fuel left.</span>"
@@ -274,7 +274,7 @@
 	item_state = "shovel"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	matter = list(MAT_STEEL = 50)
+	materials = list(MAT_STEEL = 50)
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	sharp = 0
 	edge = 1
@@ -311,11 +311,14 @@
 /obj/structure/closet/crate/miningcar
 	desc = "A mining car. This one doesn't work on rails, but has to be dragged."
 	name = "Mining car (not for rails)"
+	closet_appearance = null
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "miningcar"
 	density = 1
 	icon_opened = "miningcaropen"
 	icon_closed = "miningcar"
+
+/obj/structure/closet/crate/miningcar/update_icon()
 
 // Flags.
 

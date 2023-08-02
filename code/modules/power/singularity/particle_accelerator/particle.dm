@@ -42,9 +42,16 @@
 	. = ..()
 	src.loc = loc
 	src.setDir(dir)
-	INVOKE_ASYNC(src, .proc/move, 1)
+	INVOKE_ASYNC(src, PROC_REF(move), 1)
 
-/obj/effect/accelerated_particle/Bump(atom/A)
+/obj/effect/accelerated_particle/Moved()
+	. = ..()
+	if(!isturf(loc))
+		return
+	for(var/atom/movable/AM as anything in loc.contents)
+		do_the_funny(AM)
+
+/obj/effect/accelerated_particle/proc/do_the_funny(atom/A)
 	if (A)
 		if(ismob(A))
 			toxmob(A)
@@ -67,11 +74,6 @@
 					loc = null
 
 
-/obj/effect/accelerated_particle/Bumped(atom/A)
-	if(ismob(A))
-		Bump(A)
-
-
 /obj/effect/accelerated_particle/legacy_ex_act(severity)
 	qdel(src)
 
@@ -83,18 +85,21 @@
 	M.afflict_radiation(radiation, TRUE)
 
 /obj/effect/accelerated_particle/proc/move(var/lag)
+	var/turf/new_target
 	if(target)
 		if(movetotarget)
-			if(!step_towards(src,target))
-				src.loc = get_step(src, get_dir(src,target))
-			if(get_dist(src,target) < 1)
+			new_target = get_step_towards(src, target)
+			if(get_dist(src,new_target) < 1)
 				movetotarget = 0
 		else
-			if(!step(src, get_step_away(src,source)))
-				src.loc = get_step(src, get_step_away(src,source))
+			new_target = get_step_away(src, source)
 	else
-		if(!step(src,dir))
-			src.loc = get_step(src,dir)
+		new_target = get_step(src, dir)
+	if(new_target)
+		forceMove(new_target)
+	else
+		qdel(src)
+		return
 	movement_range--
 	if(movement_range <= 0)
 		qdel(src)

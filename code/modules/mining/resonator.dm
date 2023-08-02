@@ -44,8 +44,8 @@
 		burst_time = 50
 		to_chat(user, "<span class='info'>You set the resonator's fields to detonate after 5 seconds.</span>")
 
-/obj/item/resonator/afterattack(atom/target, mob/user, proximity_flag)
-	if(proximity_flag)
+/obj/item/resonator/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		if(!check_allowed_items(target, 1))
 			return
 		CreateResonance(target, user)

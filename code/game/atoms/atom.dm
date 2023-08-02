@@ -63,14 +63,6 @@
 	 */
 	var/worth_dynamic = FALSE
 
-	//? Colors
-	/**
-	 * used to store the different colors on an atom
-	 *
-	 * its inherent color, the colored paint applied on it, special color effect etc...
-	 */
-	var/list/atom_colours
-
 	//? Health
 	// todo: every usage of these vars need to be parsed because shitcode still exists that
 	// todo: was just monkey patched over by making it not compile error for redefining this..
@@ -144,7 +136,7 @@
 	var/rad_flags = RAD_NO_CONTAMINATE	// overridden to NONe in /obj and /mob base
 	/// radiation insulation - does *not* affect rad_act!
 	var/rad_insulation = RAD_INSULATION_NONE
-	/// contamination insulation; null defaults to rad_insulation
+	/// contamination insulation; null defaults to rad_insulation, this is a multiplier. *never* set higher than 1!!
 	var/rad_stickiness
 
 	//? Overlays
@@ -165,9 +157,9 @@
 	/// Default pixel y shifting for the atom's icon.
 	var/base_pixel_y = 0
 	/// expected icon width; centering offsets will be calculated from this and our base pixel x.
-	var/icon_dimension_x = 32
+	var/icon_x_dimension = 32
 	/// expected icon height; centering offsets will be calculated from this and our base pixel y.
-	var/icon_dimension_y = 32
+	var/icon_y_dimension = 32
 
 	//? Filters
 	/// For handling persistent filters
@@ -256,10 +248,6 @@
 	if(loc)
 		SEND_SIGNAL(loc, COMSIG_ATOM_INITIALIZED_ON, src) /// Sends a signal that the new atom `src`, has been created at `loc`
 
-	//atom color stuff
-	if(color)
-		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
-
 	if(light_power && light_range)
 		update_light()
 
@@ -326,10 +314,6 @@
 	if (istype(user, /mob/living/silicon/ai)) // WHYYYY
 		return 0
 	return -1
-
-/atom/proc/Bumped(atom/movable/bumped_atom)
-	set waitfor = FALSE
-	SEND_SIGNAL(src, COMSIG_ATOM_BUMPED, bumped_atom)
 
 /// Convenience proc to see if a container is open for chemistry handling.
 /atom/proc/is_open_container()
@@ -427,8 +411,12 @@
  * the [TRANSPARENT] flag is set on the reagents holder
  *
  * Produces a signal [COMSIG_PARENT_EXAMINE]
+ *
+ * @params
+ * * user - who's examining. can be null
+ * * dist - effective distance of examine, usually from user to src.
  */
-/atom/proc/examine(mob/user)
+/atom/proc/examine(mob/user, dist = 1)
 	var/examine_string = get_examine_string(user, thats = TRUE)
 	if(examine_string)
 		. = list("[examine_string].")
@@ -555,27 +543,29 @@
 /atom/proc/melt()
 	return
 
-/atom/proc/add_hiddenprint(mob/living/M as mob)
-	if(isnull(M)) return
-	if(isnull(M.key)) return
+/atom/proc/add_hiddenprint(mob/living/M)
+	if (isnull(M))
+		return
+	if (isnull(M.key))
+		return
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if (!istype(H.dna, /datum/dna))
-			return 0
+			return FALSE
 		if (H.gloves)
-			if(src.fingerprintslast != H.key)
-				src.fingerprintshidden += text("\[[time_stamp()]\] (Wearing gloves). Real name: [], Key: []",H.real_name, H.key)
-				src.fingerprintslast = H.key
-			return 0
-		if (!( src.fingerprints ))
-			if(src.fingerprintslast != H.key)
-				src.fingerprintshidden += text("\[[time_stamp()]\] Real name: [], Key: []",H.real_name, H.key)
-				src.fingerprintslast = H.key
-			return 1
+			if (fingerprintslast != H.key)
+				fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], Key: [H.key]"
+				fingerprintslast = H.key
+			return FALSE
+		if (!(fingerprints))
+			if (fingerprintslast != H.key)
+				fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], Key: [H.key]"
+				fingerprintslast = H.key
+			return TRUE
 	else
-		if(src.fingerprintslast != M.key)
-			src.fingerprintshidden += text("\[[time_stamp()]\] Real name: [], Key: []",M.real_name, M.key)
-			src.fingerprintslast = M.key
+		if (fingerprintslast != M.key)
+			fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], Key: [M.key]"
+			fingerprintslast = M.key
 	return
 
 /atom/proc/add_fingerprint(mob/M, ignoregloves, obj/item/tool)
@@ -760,17 +750,19 @@
 // todo: refactor
 /atom/proc/visible_message(message, self_message, blind_message, range = world.view)
 	var/list/see
+	//! LEGACY
 	if(isbelly(loc))
 		var/obj/belly/B = loc
 		see = B.effective_emote_hearers()
 	else
 		see = get_hearers_in_view(range, src)
+	//! end
 	for(var/atom/movable/AM as anything in see)
 		if(ismob(AM))
 			var/mob/M = AM
 			if(self_message && (M == src))
 				M.show_message(self_message, 1, blind_message, 2)
-			else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
+			else if((M.see_invisible >= invisibility) && M.can_see_plane(plane))
 				M.show_message(message, 1, blind_message, 2)
 			else if(blind_message)
 				M.show_message(blind_message, 2)
@@ -807,7 +799,7 @@
 		M.show_message(msg, 2, deaf_message, 1)
 		heard_to_floating_message += M
 	if(!no_runechat)
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message = (message ? message : deaf_message), speaking = null, small = FALSE, show_to = heard_to_floating_message, duration = 3 SECONDS)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), message = (message ? message : deaf_message), speaking = null, small = FALSE, show_to = heard_to_floating_message, duration = 3 SECONDS)
 
 /atom/movable/proc/dropInto(var/atom/destination)
 	while(istype(destination))
@@ -844,82 +836,6 @@
 
 /atom/proc/GenerateTag()
 	return
-
-//? Radiation
-
-/**
- * called when we're hit by a radiation wave
- */
-/atom/proc/rad_act(strength, datum/radiation_wave/wave)
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, strength)
-
-/**
- * called when we're hit by z radiation
- */
-/atom/proc/z_rad_act(strength)
-	SHOULD_CALL_PARENT(TRUE)
-	rad_act(strength)
-
-/atom/proc/add_rad_block_contents(source)
-	ADD_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
-	rad_flags |= RAD_BLOCK_CONTENTS
-
-/atom/proc/remove_rad_block_contents(source)
-	REMOVE_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
-	if(!HAS_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS))
-		rad_flags &= ~RAD_BLOCK_CONTENTS
-
-/atom/proc/clean_radiation(str, mul, cheap)
-	var/datum/component/radioactive/RA = GetComponent(/datum/component/radioactive)
-	RA?.clean(str, mul)
-
-//? Atom Colour Priority System
-/**
- * A System that gives finer control over which atom colour to colour the atom with.
- * The "highest priority" one is always displayed as opposed to the default of
- * "whichever was set last is displayed"
- */
-
-/// Adds an instance of colour_type to the atom's atom_colours list
-/atom/proc/add_atom_colour(coloration, colour_priority)
-	if(!atom_colours || !atom_colours.len)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
-	if(!coloration)
-		return
-	if(colour_priority > atom_colours.len)
-		return
-	atom_colours[colour_priority] = coloration
-	update_atom_colour()
-
-/// Removes an instance of colour_type from the atom's atom_colours list
-/atom/proc/remove_atom_colour(colour_priority, coloration)
-	if(!atom_colours)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
-	if(colour_priority > atom_colours.len)
-		return
-	if(coloration && atom_colours[colour_priority] != coloration)
-		return //if we don't have the expected color (for a specific priority) to remove, do nothing
-	atom_colours[colour_priority] = null
-	update_atom_colour()
-
-/// Resets the atom's color to null, and then sets it to the highest priority colour available
-/atom/proc/update_atom_colour()
-	if(!atom_colours)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
-	color = null
-	for(var/C in atom_colours)
-		if(islist(C))
-			var/list/L = C
-			if(L.len)
-				color = L
-				return
-		else if(C)
-			color = C
-			return
 
 /**
  * Returns true if this atom has gravity for the passed in turf
@@ -959,6 +875,69 @@
 /atom/proc/get_cell()
 	return
 
+//? Radiation
+
+/**
+ * called when we're hit by a radiation wave
+ *
+ * this is only called on the top level atoms directly on a turf
+ * for nested atoms, you need /datum/component/radiation_listener
+ */
+/atom/proc/rad_act(strength, datum/radiation_wave/wave)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, strength)
+
+/**
+ * called when we're hit by z radiation
+ */
+/atom/proc/z_rad_act(strength)
+	SHOULD_CALL_PARENT(TRUE)
+	rad_act(strength)
+
+/atom/proc/add_rad_block_contents(source)
+	ADD_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
+	rad_flags |= RAD_BLOCK_CONTENTS
+
+/atom/proc/remove_rad_block_contents(source)
+	REMOVE_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
+	if(!HAS_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS))
+		rad_flags &= ~RAD_BLOCK_CONTENTS
+
+/atom/proc/clean_radiation(str, mul, cheap)
+	var/datum/component/radioactive/RA = GetComponent(/datum/component/radioactive)
+	RA?.clean(str, mul)
+
+//? Atom Colour Priority System
+/**
+ * A System that gives finer control over which atom colour to colour the atom with.
+ * The "highest priority" one is always displayed as opposed to the default of
+ * "whichever was set last is displayed"
+ */
+
+/**
+ * getter for current color
+ */
+/atom/proc/get_atom_colour()
+	CRASH("base proc hit")
+
+/**
+ * copies from other
+ */
+/atom/proc/copy_atom_colour(atom/other, colour_priority)
+	CRASH("base proc hit")
+
+/// Adds an instance of colour_type to the atom's atom_colours list
+/atom/proc/add_atom_colour(coloration, colour_priority)
+	CRASH("base proc hit")
+
+/// Removes an instance of colour_type from the atom's atom_colours list
+/atom/proc/remove_atom_colour(colour_priority, coloration)
+	CRASH("base proc hit")
+
+/// Resets the atom's color to null, and then sets it to the highest priority colour available
+/atom/proc/update_atom_colour()
+	CRASH("base proc hit")
+
 //? Filters
 
 /atom/proc/add_filter(name, priority, list/params, update = TRUE)
@@ -971,7 +950,7 @@
 
 /atom/proc/update_filters()
 	filters = null
-	filter_data = tim_sort(filter_data, /proc/cmp_filter_data_priority, TRUE)
+	filter_data = tim_sort(filter_data, GLOBAL_PROC_REF(cmp_filter_data_priority), TRUE)
 	for(var/f in filter_data)
 		var/list/data = filter_data[f]
 		var/list/arguments = data.Copy()
@@ -1017,11 +996,19 @@
 	if(update)
 		update_filters()
 
+/atom/proc/has_filter(name)
+	return !isnull(filter_data?[name])
+
 /atom/proc/clear_filters()
 	filter_data = null
 	filters = null
 
 //? Layers
+
+/// Sets our plane
+/atom/proc/set_plane(new_plane)
+	ASSERT(isnum(new_plane))
+	plane = new_plane
 
 /// Sets the new base layer we should be on.
 /atom/proc/set_base_layer(new_layer)
@@ -1040,8 +1027,8 @@
 	layer = base_layer + 0.001 * relative_layer
 
 /atom/proc/hud_layerise()
-	plane = PLANE_PLAYER_HUD_ITEMS
-	set_base_layer(LAYER_HUD_ITEM)
+	plane = INVENTORY_PLANE
+	set_base_layer(HUD_LAYER_ITEM)
 	// appearance_flags |= NO_CLIENT_COLOR
 
 /atom/proc/hud_unlayerise()
@@ -1057,13 +1044,16 @@
 
 /atom/proc/set_pixel_x(val)
 	pixel_x = val + get_managed_pixel_x()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/set_pixel_y(val)
 	pixel_y = val + get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/reset_pixel_offsets()
 	pixel_x = get_managed_pixel_x()
 	pixel_y = get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /**
  * get our pixel_x to reset to
@@ -1096,7 +1086,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_x_offset(dir, atom/aligning)
-	return base_pixel_x + (icon_dimension_x - WORLD_ICON_SIZE) / 2
+	return base_pixel_x + (icon_x_dimension - WORLD_ICON_SIZE) / 2
 
 /**
  * get the pixel_y needed to adjust an atom on our turf **to the position of our visual center**
@@ -1105,7 +1095,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_y_offset(dir, atom/aligning)
-	return base_pixel_y + (icon_dimension_y - WORLD_ICON_SIZE) / 2
+	return base_pixel_y + (icon_y_dimension - WORLD_ICON_SIZE) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_x(new_value)
@@ -1129,3 +1119,12 @@
 /atom/proc/auto_pixel_offset_to_center()
 	set_base_pixel_y(get_centering_pixel_y_offset())
 	set_base_pixel_x(get_centering_pixel_x_offset())
+
+//? materials
+
+/**
+ * get raw materials remaining in us as list (not reagents)
+ * used from everything from economy to lathe recycling
+ */
+/atom/proc/get_materials()
+	return list()

@@ -31,7 +31,7 @@
 		return
 	return ..()
 
-/obj/structure/reagent_dispensers/fueltank/examine(mob/user)
+/obj/structure/reagent_dispensers/fueltank/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(user, src) <= 2)
 		if(modded)

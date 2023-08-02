@@ -40,6 +40,7 @@
 	var/obj/temp_chem_holder   // Something to hold reagents during process_reagents()
 	var/labelled
 	var/frozen = 0				//Is the plant frozen? -1 is used to define trays that can't be frozen. 0 is unfrozen and 1 is frozen.
+	var/hostile_soil = 0		//Does the soil make-up allow for weed invasion?
 
 	// Seed details/line data.
 	var/datum/seed/seed = null // The currently planted seed
@@ -154,7 +155,7 @@
 	if(istype(user,/mob/living/carbon/alien/diona))
 		var/mob/living/carbon/alien/diona/nymph = user
 
-		if(nymph.stat == DEAD || nymph.paralysis || nymph.weakened || nymph.stunned || nymph.restrained())
+		if(!CHECK_MOBILITY(nymph, MOBILITY_CAN_USE))
 			return
 
 		if(weedlevel > 0)
@@ -591,7 +592,7 @@
 	else if(dead)
 		remove_dead(user)
 
-/obj/machinery/portable_atmospherics/hydroponics/examine(mob/user)
+/obj/machinery/portable_atmospherics/hydroponics/examine(mob/user, dist)
 	. = ..()
 	if(seed)
 		. += "<span class='notice'>[seed.display_name] are growing here.</span>"

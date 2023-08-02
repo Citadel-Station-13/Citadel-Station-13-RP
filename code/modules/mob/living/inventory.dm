@@ -252,3 +252,6 @@
 
 /mob/living/has_hands()
 	return has_hands
+
+/mob/living/has_free_hand()
+	return !l_hand || !r_hand

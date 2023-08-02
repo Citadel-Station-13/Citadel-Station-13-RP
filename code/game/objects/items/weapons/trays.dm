@@ -11,7 +11,7 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
-	matter = list(MAT_STEEL = 3000)
+	materials = list(MAT_STEEL = 3000)
 	var/list/carrying = list() // List of things on the tray. - Doohl
 	var/max_carry = 10
 
@@ -37,7 +37,7 @@
 
 	if((MUTATION_CLUMSY in L.mutations) && prob(50))              //What if he's a clown?
 		to_chat(victim, "<span class='warning'>You accidentally slam yourself with the [src]!</span>")
-		L.Weaken(1)
+		L.afflict_paralyze(20 * 1)
 		L.take_organ_damage(2)
 		if(prob(50))
 			playsound(victim, 'sound/items/trayhit1.ogg', 50, 1)
@@ -59,19 +59,19 @@
 		add_attack_logs(L,victim,"Hit with [src]")
 
 		if(prob(15))
-			victim.Weaken(3)
+			victim.afflict_paralyze(20 * 3)
 			victim.take_organ_damage(3)
 		else
 			victim.take_organ_damage(5)
 		if(prob(50))
 			playsound(victim, 'sound/items/trayhit1.ogg', 50, 1)
 			for(var/mob/O in viewers(victim, null))
-				O.show_message(text("<span class='danger'>[] slams [] with the tray!</span>", L, victim), 1)
+				O.show_message(SPAN_DANGER("[L] slams [victim] with the tray!"), SAYCODE_TYPE_VISIBLE)
 			return
 		else
 			playsound(victim, 'sound/items/trayhit2.ogg', 50, 1)  //we applied the damage, we played the sound, we showed the appropriate messages. Time to return and stop the proc
 			for(var/mob/O in viewers(victim, null))
-				O.show_message(text("<span class='danger'>[] slams [] with the tray!</span>", L, victim), 1)
+				O.show_message(SPAN_DANGER("[L] slams [victim] with the tray!"), SAYCODE_TYPE_VISIBLE)
 			return
 
 
@@ -99,13 +99,13 @@
 		if(prob(50))
 			playsound(victim, 'sound/items/trayhit1.ogg', 50, 1)
 			for(var/mob/O in viewers(victim, null))
-				O.show_message(text("<span class='danger'>[] slams [] with the tray!</span>", L, victim), 1)
+				O.show_message(SPAN_DANGER("[L] slams [victim] with the tray!"), SAYCODE_TYPE_VISIBLE)
 		else
 			playsound(victim, 'sound/items/trayhit2.ogg', 50, 1)  //sound playin'
 			for(var/mob/O in viewers(victim, null))
-				O.show_message(text("<span class='danger'>[] slams [] with the tray!</span>", L, victim), 1)
+				O.show_message(SPAN_DANGER("[L] slams [victim] with the tray!"), SAYCODE_TYPE_VISIBLE)
 		if(prob(10))
-			victim.Stun(rand(1,3))
+			victim.afflict_stun(20 * rand(1,3))
 			victim.take_organ_damage(3)
 			return
 		else
@@ -123,19 +123,19 @@
 		if(prob(50))
 			playsound(victim, 'sound/items/trayhit1.ogg', 50, 1)
 			for(var/mob/O in viewers(victim, null))
-				O.show_message(text("<span class='danger'>[] slams [] in the face with the tray!</span>", L, victim), 1)
+				O.show_message(SPAN_DANGER("[L] slams [victim] in the face with the tray!"), SAYCODE_TYPE_VISIBLE)
 		else
 			playsound(victim, 'sound/items/trayhit2.ogg', 50, 1)  //sound playin' again
 			for(var/mob/O in viewers(victim, null))
-				O.show_message(text("<span class='danger'>[] slams [] in the face with the tray!</span>", L, victim), 1)
+				O.show_message(SPAN_DANGER("[L] slams [victim] in the face with the tray!"), SAYCODE_TYPE_VISIBLE)
 		if(prob(30))
-			victim.Stun(rand(2,4))
+			victim.afflict_stun(20 * rand(2,4))
 			victim.take_organ_damage(4)
 			return
 		else
 			victim.take_organ_damage(8)
 			if(prob(30))
-				victim.Weaken(2)
+				victim.afflict_paralyze(20 * 2)
 				return
 			return
 

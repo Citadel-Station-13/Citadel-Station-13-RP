@@ -50,13 +50,14 @@
 /obj/item/dogborg/sleeper/Exit(atom/movable/O)
 	return 0
 
-/obj/item/dogborg/sleeper/afterattack(var/atom/movable/target, mob/living/silicon/user, proximity)
+/obj/item/dogborg/sleeper/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	hound = loc
-	if(!istype(target))
+	var/atom/movable/AM = target
+	if(!istype(AM))
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(target.anchored)
+	if(AM.anchored)
 		return
 	if(target in hound.module.modules)
 		return
@@ -75,7 +76,7 @@
 				return
 			user.visible_message("<span class='warning'>[hound.name] is ingesting [target.name] into their [src.name].</span>", "<span class='notice'>You start ingesting [target] into your [src.name]...</span>")
 			if(do_after(user, 30, target) && length(contents) < max_item_count)
-				target.forceMove(src)
+				AM.forceMove(src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] groans lightly as [target.name] slips inside.</span>", "<span class='notice'>Your [src.name] groans lightly as [target] slips inside.</span>")
 				playsound(hound, gulpsound, vol = 60, vary = 1, falloff = 0.1, preference = /datum/client_preference/eating_noises)
 				if(analyzer && istype(target,/obj/item))
@@ -137,7 +138,7 @@
 			return
 		user.visible_message("<span class='warning'>[hound.name] is ingesting [H.name] into their [src.name].</span>", "<span class='notice'>You start ingesting [H] into your [src]...</span>")
 		if(!patient && !H.buckled && do_after (user, 50, H))
-			if(!proximity)
+			if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 				return //If they moved away, you can't eat them.
 			if(patient)
 				return //If you try to eat two people at once, you can only eat one.
@@ -219,21 +220,21 @@
 
 	if(!delivery && compactor && length(contents))//garbage counter for trashpup
 		dat += "<font color='red'><B>Current load:</B> [length(contents)] / [max_item_count] objects.</font><BR>"
-		dat += "<font color='gray'>([list2text(contents,", ")])</font><BR><BR>"
+		dat += "<font color='gray'>([jointext(contents,", ")])</font><BR><BR>"
 
 	if(delivery && length(contents))
 		dat += "<font color='red'><B>Current load:</B> [length(contents)] / [max_item_count] objects.</font><BR>"
 		dat += "<font color='gray'>Cargo compartment slot: Cargo 1.</font><BR>"
 		if(length(deliveryslot_1))
-			dat += "<font color='gray'>([list2text(deliveryslot_1,", ")])</font><BR>"
+			dat += "<font color='gray'>([jointext(deliveryslot_1,", ")])</font><BR>"
 		dat += "<font color='gray'>Cargo compartment slot: Cargo 2.</font><BR>"
 		if(length(deliveryslot_2))
-			dat += "<font color='gray'>([list2text(deliveryslot_2,", ")])</font><BR>"
+			dat += "<font color='gray'>([jointext(deliveryslot_2,", ")])</font><BR>"
 		dat += "<font color='gray'>Cargo compartment slot: Cargo 3.</font><BR>"
 		if(length(deliveryslot_3))
-			dat += "<font color='gray'>([list2text(deliveryslot_3,", ")])</font><BR>"
+			dat += "<font color='gray'>([jointext(deliveryslot_3,", ")])</font><BR>"
 		dat += "<font color='red'>Cargo compartment slot: Fuel.</font><BR>"
-		dat += "<font color='red'>([list2text(contents - (deliveryslot_1 + deliveryslot_2 + deliveryslot_3),", ")])</font><BR><BR>"
+		dat += "<font color='red'>([jointext(contents - (deliveryslot_1 + deliveryslot_2 + deliveryslot_3),", ")])</font><BR><BR>"
 
 	if(analyzer && !synced)
 		dat += "<A href='?src=\ref[src];sync=1'>Sync Files</A><BR>"
@@ -277,8 +278,6 @@
 		dat += "<span style='[toxcolor]'>\t-Toxin Content %: [patient.getToxLoss()]</span><BR>"
 		dat += "<span style='[burncolor]'>\t-Burn Severity %: [patient.getFireLoss()]</span><BR>"
 
-		if(round(patient.paralysis / 4) >= 1)
-			dat += text("<HR>Patient paralyzed for: []<BR>", round(patient.paralysis / 4) >= 1 ? "[round(patient.paralysis / 4)] seconds" : "None")
 		if(patient.getBrainLoss())
 			dat += "<div class='line'><span class='average'>Significant brain damage detected.</span></div><br>"
 		if(patient.getCloneLoss())
@@ -521,7 +520,7 @@
 		var/volume = 0
 		for(var/mob/living/T in (touchable_items))
 			touchable_items -= T //Exclude mobs from loose item picking.
-			if((T.status_flags & GODMODE) || !T.digestable)
+			if((T.status_flags & STATUS_GODMODE) || !T.digestable)
 				items_preserved |= T
 			else
 				var/old_brute = T.getBruteLoss()
@@ -599,9 +598,9 @@
 						drain(-50 * digested)
 					if(volume)
 						water.add_charge(volume)
-					if(recycles && T.matter)
-						for(var/material in T.matter)
-							var/total_material = T.matter[material]
+					if(recycles && T.materials)
+						for(var/material in T.materials)
+							var/total_material = T.materials[material]
 							if(istype(T,/obj/item/stack))
 								var/obj/item/stack/stack = T
 								total_material *= stack.get_amount()
@@ -636,10 +635,10 @@
 		update_patient()
 		if(patient.health < 0)
 			patient.adjustOxyLoss(-1) //Heal some oxygen damage if they're in critical condition
-			patient.updatehealth()
+			patient.update_health()
 			drain()
-		patient.AdjustStunned(-4)
-		patient.AdjustWeakened(-4)
+		patient.adjust_stunned(20 * -4)
+		patient.adjust_paralyzed(20 * -4)
 		drain(1)
 		return
 
@@ -673,7 +672,7 @@
 
 /obj/item/dogborg/sleeper/compactor/decompiler
 	name = "Matter Decompiler"
-	desc = "A mounted matter decompiling unit with fuel processor."
+	desc = "A mounted materials decompiling unit with fuel processor."
 	icon_state = "decompiler"
 	max_item_count = 10
 	decompiler = TRUE

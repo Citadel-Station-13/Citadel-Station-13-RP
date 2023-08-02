@@ -90,9 +90,9 @@
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
-				H.updatehealth()
+				H.update_health()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
-			H.Weaken(12)
+			H.afflict_paralyze(20 * 12)
 		else if (rough_terrain)
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
@@ -101,12 +101,12 @@
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
-				H.updatehealth()
+				H.update_health()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
-			H.Weaken(12)
+			H.afflict_paralyze(20 * 12)
 		else
 			var/backdir = turn(dir, 180)
-			Move(backdir)
+			Move(get_step(src, backdir))
 			H.spin(4, 1)
 	next_crash = world.time + 10
 
@@ -122,7 +122,7 @@
 
 ///Moves the vehicle forward and if it lands on a table, repeats
 /obj/vehicle_old/skateboard/proc/grind()
-	Move(dir)
+	Move(get_step(src, dir))
 	if(has_buckled_mobs() && locate(/obj/structure/table) in loc.contents)
 		var/mob/living/L = buckled_mobs[1]
 		if (prob (15))
@@ -131,7 +131,7 @@
 			var/atom/throw_target = get_edge_target_turf(src)
 			L.throw_at_old(throw_target, 2, 2)
 			visible_message("<span class='danger'>[L] loses their footing and slams on the ground!</span>")
-			L.Weaken(40)
+			L.afflict_paralyze(20 * 40)
 			grinding = FALSE
 			icon_state = board_icon
 			return
@@ -139,7 +139,7 @@
 			playsound(src, 'sound/weapons/skateboard_ollie.ogg', 50, TRUE)
 			if(prob (50))
 				sparks.start() //the most radical way to start plasma fires
-			addtimer(CALLBACK(src, .proc/grind), 2)
+			addtimer(CALLBACK(src, PROC_REF(grind)), 2)
 			return
 	else
 		grinding = FALSE
@@ -194,7 +194,7 @@
 		if(locate(/obj/structure/table) in V.loc.contents)
 			V.grinding = TRUE
 			V.icon_state = "[V.board_icon]-grind"
-			addtimer(CALLBACK(V, /obj/vehicle_old/skateboard/.proc/grind), 2)
+			addtimer(CALLBACK(V, TYPE_PROC_REF(/obj/vehicle_old/skateboard, grind)), 2)
 		next_ollie = world.time + 5
 */
 
@@ -235,9 +235,9 @@
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
-				H.updatehealth()
+				H.update_health()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
-			H.Weaken(12)
+			H.afflict_paralyze(20 * 12)
 		else if (rough_terrain || prob(70))
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
@@ -246,9 +246,9 @@
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
-				H.updatehealth()
+				H.update_health()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
-			H.Weaken(12)
+			H.afflict_paralyze(20 * 12)
 		else
 			var/backdir = turn(dir, 180)
 			Move(backdir)
@@ -296,12 +296,12 @@
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
-				H.updatehealth()
+				H.update_health()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
-			H.Weaken(12)
+			H.afflict_paralyze(20 * 12)
 		else
 			var/backdir = turn(dir, 180)
-			Move(backdir)
+			Move(get_step(src, backdir))
 			H.spin(4, 1)
 	next_crash = world.time + 10
 
@@ -325,12 +325,12 @@
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
-				H.updatehealth()
+				H.update_health()
 			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
-			H.Weaken(12)
+			H.afflict_paralyze(20 * 12)
 		else
 			var/backdir = turn(dir, 180)
-			Move(backdir)
+			Move(get_step(src, backdir))
 			H.spin(4, 1)
 	next_crash = world.time + 10
 
@@ -616,12 +616,12 @@
 		var/atom/throw_target = get_edge_target_turf(H, pick(GLOB.cardinals))
 		unbuckle_mob(H)
 		H.throw_at_old(throw_target, 4, 3)
-		H.DefaultCombatKnockdown(30)
+		H.default_combat_knockdown(30)
 		H.adjustStaminaLoss(30)
 		var/head_slot = H.get_item_by_slot(SLOT_HEAD)
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 			H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1)
-			H.updatehealth()
+			H.update_health()
 		visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 */

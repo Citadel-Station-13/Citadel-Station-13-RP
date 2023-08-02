@@ -13,7 +13,7 @@
 	assisted_langs = list()
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno, /datum/unarmed_attack/bite/strong/xeno)
 	hud_type = /datum/hud_data/alien
-	rarity_value = 3
+	//rarity_value = 3
 
 	has_fine_manipulation = 0
 	siemens_coefficient = 0
@@ -178,7 +178,7 @@
 	weeds_plasma_rate = 15
 	slowdown = 1
 	tail = "xenos_drone_tail"
-	rarity_value = 5
+	//rarity_value = 5
 
 	icobase = 'icons/mob/species/xenomorph/drone.dmi'
 	deform =  'icons/mob/species/xenomorph/drone.dmi'
@@ -198,10 +198,8 @@
 	inherent_verbs = list(
 		/mob/living/proc/ventcrawl,
 		/mob/living/carbon/human/proc/regurgitate,
-		/mob/living/carbon/human/proc/plant,
 		/mob/living/carbon/human/proc/transfer_plasma,
 		/mob/living/carbon/human/proc/evolve,
-		/mob/living/carbon/human/proc/resin,
 		/mob/living/carbon/human/proc/corrosive_acid
 		)
 
@@ -285,7 +283,7 @@
 	caste_name = "queen"
 	slowdown = 4
 	tail = "xenos_queen_tail"
-	rarity_value = 10
+	//rarity_value = 10
 
 	icobase = 'icons/mob/species/xenomorph/queen.dmi'
 	deform =  'icons/mob/species/xenomorph/queen.dmi'
@@ -310,12 +308,10 @@
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/regurgitate,
 		/mob/living/carbon/human/proc/lay_egg,
-		/mob/living/carbon/human/proc/plant,
 		/mob/living/carbon/human/proc/transfer_plasma,
 		/mob/living/carbon/human/proc/corrosive_acid,
 		/mob/living/carbon/human/proc/neurotoxin,
 		/mob/living/carbon/human/proc/acidspit,
-		/mob/living/carbon/human/proc/resin
 		)
 
 /datum/species/xenos/queen/handle_login_special(var/mob/living/carbon/human/H)

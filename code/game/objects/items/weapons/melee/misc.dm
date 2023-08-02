@@ -264,9 +264,9 @@
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
-/obj/item/melee/ashlander/elder/afterattack(atom/A, mob/user)
-	if(isliving(A))
-		var/mob/living/tm = A // targeted mob
+/obj/item/melee/ashlander/elder/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(isliving(target))
+		var/mob/living/tm = target // targeted mob
 		if(SA_vulnerability & tm.mob_class)
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
@@ -391,7 +391,7 @@
 
 //This currently just kills the user. lol
 /*
-/obj/item/melee/twohanded/mjollnir/afterattack(atom/target, mob/living/G, mob/user)
+/obj/item/melee/twohanded/mjollnir/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 
 	if(wielded || isliving(target))
@@ -404,7 +404,7 @@
 		else
 			G.stun_effect_act(10 , 50, BP_TORSO, src)
 			G.take_organ_damage(10)
-			G.Unconscious(20)
+			G.afflict_unconscious(20 * 20)
 			playsound(src.loc, "sparks", 50, 1)
 			return
 */
@@ -441,7 +441,7 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/melee/thermalcutter/examine(mob/user)
+/obj/item/melee/thermalcutter/examine(mob/user, dist)
 	. = ..()
 	if(max_fuel)
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
@@ -462,12 +462,12 @@
 			if (istype(location, /turf))
 				location.hotspot_expose(700, 5)
 
-/obj/item/melee/thermalcutter/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/melee/thermalcutter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+	if(istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,target) <= 1)
 		if(!active && max_fuel)
-			O.reagents.trans_to_obj(src, max_fuel)
+			target.reagents.trans_to_obj(src, max_fuel)
 			to_chat(user, "<span class='notice'>You refill [src].</span>")
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			return
@@ -478,14 +478,14 @@
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a thermal cutter.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a thermal cutter.")
 			to_chat(user, "<span class='danger'>You begin slicing into the fueltank and with a moment of lucidity you realize, this might not have been the smartest thing you've ever done.</span>")
-			var/obj/structure/reagent_dispensers/fueltank/tank = O
+			var/obj/structure/reagent_dispensers/fueltank/tank = target
 			tank.explode()
 			return
 	if (src.active)
 		remove_fuel(1)
 		var/turf/location = get_turf(user)
-		if(isliving(O))
-			var/mob/living/L = O
+		if(isliving(target))
+			var/mob/living/L = target
 			L.IgniteMob()
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)

@@ -19,8 +19,9 @@
 	if(length(speech_bubble_hearers) && !no_runechat)
 		var/image/I = generate_speech_bubble(src, "[bubble_icon][say_test(message)]", FLY_LAYER)
 		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
-		INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_hearers, 30)
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message = message, speaking = L, small = FALSE, show_to = speech_bubble_hearers, duration = 3 SECONDS)
+		ASYNC
+			flick_overlay_global(I, speech_bubble_hearers, 3 SECONDS)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), message = message, speaking = L, small = FALSE, show_to = speech_bubble_hearers, duration = 3 SECONDS)
 
 /atom/proc/say_overhead(var/message, whispering, message_range = 7, var/datum/language/speaking = null)
 	var/list/speech_bubble_hearers = list()
@@ -28,7 +29,7 @@
 		if(M.client)
 			speech_bubble_hearers += M.client
 	if(length(speech_bubble_hearers))
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message = message, speaking = speaking, small = whispering, show_to = speech_bubble_hearers, duration = 3 SECONDS)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), message = message, speaking = speaking, small = whispering, show_to = speech_bubble_hearers, duration = 3 SECONDS)
 
 /proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
 	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)

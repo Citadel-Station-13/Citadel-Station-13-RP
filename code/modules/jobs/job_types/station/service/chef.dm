@@ -10,30 +10,35 @@
 	selection_color = "#515151"
 	pto_type = PTO_CIVILIAN
 	idtype = /obj/item/card/id/civilian/chef
-	additional_access = list(ACCESS_GENERAL_BOTANY, ACCESS_GENERAL_BAR, ACCESS_GENERAL_KITCHEN)
-	minimal_access = list(ACCESS_GENERAL_KITCHEN)
+	additional_access = list(
+		ACCESS_GENERAL_BOTANY,
+		ACCESS_GENERAL_BAR,
+	)
+	minimal_access = list(
+		ACCESS_GENERAL_KITCHEN,
+	)
 
 	outfit_type = /datum/outfit/job/station/chef
 	desc = "A Chef cooks food for the crew. They generally have permission to charge for food or deny service to unruly diners."
 	alt_titles = list(
-		"Cook" = /datum/prototype/alt_title/chef/cook,
-		"Sous-chef" = /datum/prototype/alt_title/chef/souschef,
-		"Kitchen Worker" = /datum/prototype/alt_title/chef/kitchen_worker,
-		"Line Cook" = /datum/prototype/alt_title/chef/line
+		"Cook" = /datum/prototype/struct/alt_title/chef/cook,
+		"Sous-chef" = /datum/prototype/struct/alt_title/chef/souschef,
+		"Kitchen Worker" = /datum/prototype/struct/alt_title/chef/kitchen_worker,
+		"Line Cook" = /datum/prototype/struct/alt_title/chef/line
 	)
 
-/datum/prototype/alt_title/chef/souschef
+/datum/prototype/struct/alt_title/chef/souschef
 	title = "Sous-chef"
 
-/datum/prototype/alt_title/chef/kitchen_worker
+/datum/prototype/struct/alt_title/chef/kitchen_worker
 	title = "Kitchen Worker"
 	title_blurb = "A Kitchen Worker has the same duties, though they may be less experienced."
 
-/datum/prototype/alt_title/chef/line
+/datum/prototype/struct/alt_title/chef/line
 	title = "Line Cook"
 
 // Chef Alt Titles
-/datum/prototype/alt_title/chef/cook
+/datum/prototype/struct/alt_title/chef/cook
 	title = "Cook"
 	title_blurb = "A Cook has the same duties, though they may be less experienced."
 

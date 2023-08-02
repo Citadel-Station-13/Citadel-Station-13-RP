@@ -54,7 +54,7 @@ var/global/list/image/splatter_cache=list()
 					if (B.blood_DNA)
 						blood_DNA |= B.blood_DNA.Copy()
 					qdel(B)
-	addtimer(CALLBACK(src, .proc/dry), DRYING_TIME * (amount + 1))
+	addtimer(CALLBACK(src, PROC_REF(dry)), DRYING_TIME * (amount + 1))
 
 /obj/effect/debris/cleanable/blood/update_icon()
 	if(basecolor == "rainbow")
@@ -177,7 +177,7 @@ var/global/list/image/splatter_cache=list()
 	else
 		icon_state = "writing1"
 
-/obj/effect/debris/cleanable/blood/writing/examine(mob/user)
+/obj/effect/debris/cleanable/blood/writing/examine(mob/user, dist)
 	. = ..()
 	. += "It reads: <font color='[basecolor]'>\"[message]\"</font>"
 

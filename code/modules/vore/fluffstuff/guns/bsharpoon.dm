@@ -22,30 +22,32 @@
 	var/failchance = 5
 	var/failrange = 24
 
-/obj/item/bluespace_harpoon/afterattack(atom/A, mob/user as mob)
+/obj/item/bluespace_harpoon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/current_fire = world.time
-	if(!user || !A)
+	if(!user || !target)
 		return
 	if(transforming)
 		to_chat(user,"<span class = 'warning'>You can't fire while \the [src] transforming!</span>")
 		return
-	if(!((wallhack && (get_dist(A, get_turf(user)) <= range)) || (A in view(get_turf(user), range))))
+	if(!((wallhack && (get_dist(target, get_turf(user)) <= range)) || (target in view(get_turf(user), range))))
 		to_chat(user, "<span class='warning'>The target is either out of range, or you couldn't see it clearly enough to lock on!</span>")
 		return
 	if((current_fire - last_fire) <= cooldown)
 		to_chat(user,"<span class = 'warning'>\The [src] is recharging...</span>")
 		return
-	if(is_jammed(A) || is_jammed(user))
+	if(is_jammed(target) || is_jammed(user))
 		to_chat(user,"<span class = 'warning'>\The [src] shot fizzles due to interference!</span>")
 		last_fire = current_fire
 		playsound(user, 'sound/weapons/wave.ogg', 60, 1)
 		return
-	var/turf/T = get_turf(A)
+	var/turf/T = get_turf(target)
 	if(!T || T.check_density(ignore_border = TRUE))
 		to_chat(user,"<span class = 'warning'>That's a little too solid to harpoon into!</span>")
 		return
-	if(get_area(A).area_flags & AREA_FLAG_BLUE_SHIELDED)
+	if(get_area(target).area_flags & AREA_FLAG_BLUE_SHIELDED)
 		to_chat(user, "<span class='warning'>The target area protected by bluespace shielding!</span>")
+		return
+	if(!do_after(user, 5 SECONDS, src))
 		return
 
 	last_fire = current_fire
@@ -54,14 +56,14 @@
 	user.visible_message("<span class='warning'>[user] fires \the [src]!</span>","<span class='warning'>You fire \the [src]!</span>")
 
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(4, 1, A)
+	s.set_up(4, 1, target)
 	s.start()
 	s = new /datum/effect_system/spark_spread
 	s.set_up(4, 1, user)
 	s.start()
 
-	var/turf/FromTurf = mode ? get_turf(user) : get_turf(A)
-	var/turf/ToTurf = mode ? get_turf(A) : get_turf(user)
+	var/turf/FromTurf = mode ? get_turf(user) : get_turf(target)
+	var/turf/ToTurf = mode ? get_turf(target) : get_turf(user)
 
 	for(var/atom/movable/AM in FromTurf)
 		if(!isobj(AM) && !isliving(AM))

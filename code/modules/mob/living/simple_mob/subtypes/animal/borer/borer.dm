@@ -30,7 +30,7 @@
 	attacktext = list("nipped")
 	friendly = list("prods")
 
-	status_flags = CANPUSH
+	status_flags = STATUS_CAN_PUSH
 	pass_flags = ATOM_PASS_TABLE
 	movement_cooldown = 5
 
@@ -69,7 +69,7 @@
 	true_name = "[pick("Primary","Secondary","Tertiary","Quaternary")] [rand(1000,9999)]"
 
 	if(!roundstart)
-		INVOKE_ASYNC(src, .proc/request_player)
+		INVOKE_ASYNC(src, PROC_REF(request_player))
 
 	return ..()
 

@@ -103,7 +103,7 @@
 		return
 	use_power(10)
 	var/list/affecting = loc.contents - src		// moved items will be all in loc
-	addtimer(CALLBACK(src, .proc/convey, affecting), 1)
+	addtimer(CALLBACK(src, PROC_REF(convey), affecting), 1)
 
 /obj/machinery/conveyor/proc/convey(list/affecting)
 	var/turf/T = get_step(src, movedir)
@@ -151,9 +151,9 @@
 
 // attack with hand, move pulled object onto conveyor
 /obj/machinery/conveyor/attack_hand(mob/user, list/params)
-	if ((!( user.canmove ) || user.restrained() || !( user.pulling )))
+	if(!CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 		return
-	if (user.pulling.anchored)
+	if(isnull(user.pulling) || user.pulling.anchored)
 		return
 	if ((user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1))
 		return
@@ -165,7 +165,6 @@
 	else
 		step(user.pulling, get_dir(user.pulling.loc, src))
 		user.stop_pulling()
-	return
 
 // make the conveyor broken
 // also propagate inoperability to any connected conveyor with the same ID

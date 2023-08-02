@@ -71,7 +71,7 @@
 	else
 		energy = 0 // ensure we dont have miniballs of miniballs
 
-/obj/singularity/energy_ball/examine(mob/user)
+/obj/singularity/energy_ball/examine(mob/user, dist)
 	. = ..()
 	if(orbiting_balls.len)
 		. += "The amount of orbiting mini-balls is [orbiting_balls.len]."
@@ -102,7 +102,7 @@
 		energy_to_raise = energy_to_raise * 1.25
 
 		playsound(src.loc, 'sound/effects/lightning_chargeup.ogg', 100, 1, extrarange = 30)
-		addtimer(CALLBACK(src, .proc/new_mini_ball), 100)
+		addtimer(CALLBACK(src, PROC_REF(new_mini_ball)), 100)
 
 	else if(energy < energy_to_lower && orbiting_balls.len)
 		energy_to_raise = energy_to_raise / 1.25
@@ -230,7 +230,7 @@
 		else if(isliving(A))
 			var/dist = get_dist(source, A)
 			var/mob/living/L = A
-			if(dist <= zap_range && (dist < closest_dist || !closest_mob) && L.stat != DEAD && !(L.status_flags & GODMODE))
+			if(dist <= zap_range && (dist < closest_dist || !closest_mob) && L.stat != DEAD && !(L.status_flags & STATUS_GODMODE))
 				closest_mob = L
 				closest_atom = A
 				closest_dist = dist

@@ -8,8 +8,8 @@
 	var/list/entries
 	var/list/entries_by_type
 
-	var/list/maplist
-	var/datum/map_config/defaultmap
+	// var/list/maplist
+	// var/datum/map_config/defaultmap
 
 	/*
 	var/list/modes			// allowed modes
@@ -52,7 +52,7 @@
 				for(var/J in legacy_configs)
 					LoadEntries(J)
 				break
-	loadmaplist(CONFIG_MAPS_FILE)
+	// loadmaplist(CONFIG_MAPS_FILE)
 	LoadWhitelists()
 	LoadMOTD()
 
@@ -67,9 +67,9 @@
 	entries_by_type.Cut()
 	QDEL_LIST_ASSOC_VAL(entries)
 	entries = null
-	QDEL_LIST_ASSOC_VAL(maplist)
-	maplist = null
-	QDEL_NULL(defaultmap)
+	// QDEL_LIST_ASSOC_VAL(maplist)
+	// maplist = null
+	// QDEL_NULL(defaultmap)
 
 /datum/controller/configuration/Destroy()
 	full_wipe()
@@ -175,7 +175,7 @@
 			var/good_update = istext(new_value)
 			log_config("LINE [linenumber]: Entry [entry] is deprecated and will be removed soon. Migrate to [new_ver.name]![good_update ? " Suggested new value is: [new_value]" : ""]")
 			if(!warned_deprecated_configs)
-				addtimer(CALLBACK(GLOBAL_PROC, /proc/message_admins, "This server is using deprecated configuration settings. Please check the logs and update accordingly."), 0)
+				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(message_admins), "This server is using deprecated configuration settings. Please check the logs and update accordingly."), 0)
 				warned_deprecated_configs = TRUE
 			if(good_update)
 				value = new_value
@@ -279,6 +279,9 @@
 	if(motd || tm_info)
 		motd = motd ? "[motd]<br>[tm_info]" : tm_info
 
+// todo: actual map config.
+
+/*
 /datum/controller/configuration/proc/loadmaplist(filename)
 	log_config("Loading config file [filename]...")
 	filename = "[directory]/[filename]"
@@ -313,7 +316,7 @@
 
 		switch (command)
 			if ("map")
-				currentmap = load_map_config("_maps/[data].json")
+				currentmap = load_map_config("_mapload/[data].json")
 				if(currentmap.defaulted)
 					log_config("Failed to load map config for [data]!")
 					currentmap = null
@@ -333,6 +336,7 @@
 				currentmap = null
 			else
 				log_config("Unknown command in map vote config: '[command]'")
+*/
 
 /*
 /datum/controller/configuration/proc/pick_mode(mode_name)

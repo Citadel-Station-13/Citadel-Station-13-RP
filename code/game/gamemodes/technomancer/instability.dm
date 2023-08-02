@@ -242,7 +242,7 @@
 					if(1)
 						visible_message("<span class='warning'>\The [src] suddenly collapses!</span>",
 						"<span class='danger'>You suddenly feel very light-headed, and faint!</span>")
-						Unconscious(instability * 0.1)
+						afflict_unconscious(20 * instability * 0.1)
 					if(2)
 						if(can_feel_pain())
 							apply_effect(instability, AGONY)

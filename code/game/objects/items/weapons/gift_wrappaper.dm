@@ -237,7 +237,7 @@
 				var/obj/item/gift/G = new /obj/item/gift( src.loc )
 				G.size = W.w_class
 				G.w_class = G.size + 1
-				G.icon_state = text("gift[]", G.size)
+				G.icon_state = "gift[G.size]"
 				G.gift = W
 				W.forceMove(G)
 				G.add_fingerprint(user)
@@ -252,7 +252,7 @@
 		to_chat(user, "<span class='warning'>The object is FAR too large!</span>")
 
 
-/obj/item/wrapping_paper/examine(mob/user)
+/obj/item/wrapping_paper/examine(mob/user, dist)
 	. = ..()
 	. += "There is about [src.amount] square units of paper left!"
 

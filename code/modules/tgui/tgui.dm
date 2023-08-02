@@ -35,6 +35,8 @@
 	var/datum/ui_state/state = null
 	/// Rate limit client refreshes to prevent DoS.
 	COOLDOWN_DECLARE(refresh_cooldown)
+	/// Are byond mouse events beyond the window passed in to the ui
+	var/mouse_hooked = FALSE
 	/// The Parent UI
 	var/datum/tgui/parent_ui
 	/// Children of this UI
@@ -114,6 +116,8 @@
 		with_data = TRUE,
 		with_static_data = TRUE,
 	))
+	if(mouse_hooked)
+		window.set_mouse_macro()
 	SStgui.on_open(src)
 	return TRUE
 
@@ -157,6 +161,17 @@
 /**
  * public
  *
+ * Enable/disable passing through byond mouse events to the window
+ *
+ * required value bool Enable/disable hooking.
+ */
+/datum/tgui/proc/set_mouse_hook(value)
+	src.mouse_hooked = value
+	// TODO: handle unhooking/hooking on already open windows ?
+
+/**
+ * public
+ *
  * Replace current ui.state with a new one.
  *
  * required state datum/ui_state/state Next state
@@ -191,7 +206,7 @@
 		return
 	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
 		refreshing = max(refreshing, hard_refresh? UI_HARD_REFRESHING : UI_SOFT_REFRESHING)
-		addtimer(CALLBACK(src, .proc/send_full_update), TGUI_REFRESH_FULL_UPDATE_COOLDOWN, TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(send_full_update)), TGUI_REFRESH_FULL_UPDATE_COOLDOWN, TIMER_UNIQUE)
 		return
 	refreshing = UI_NOT_REFRESHING
 	var/should_update_data = force || status >= UI_UPDATE

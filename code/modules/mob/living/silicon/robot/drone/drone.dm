@@ -121,7 +121,7 @@
 	if(!laws) laws = new law_type
 	if(!module) module = new module_type(src)
 
-	flavor_text = "It's a tiny little repair drone. The casing is stamped with an corporate logo and the subscript: '[GLOB.using_map.company_name] Recursive Repair Systems: Fixing Tomorrow's Problem, Today!'"
+	flavor_text = "It's a tiny little repair drone. The casing is stamped with an corporate logo and the subscript: '[(LEGACY_MAP_DATUM).company_name] Recursive Repair Systems: Fixing Tomorrow's Problem, Today!'"
 	playsound(src.loc, 'sound/machines/twobeep.ogg', 50, 0)
 
 //Redefining some robot procs...
@@ -269,8 +269,8 @@
 //DRONE LIFE/DEATH
 
 //For some goddamn reason robots have this hardcoded. Redefining it for our fragile friends here.
-/mob/living/silicon/robot/drone/updatehealth()
-	if(status_flags & GODMODE)
+/mob/living/silicon/robot/drone/update_health()
+	if(status_flags & STATUS_GODMODE)
 		health = maxHealth
 		set_stat(CONSCIOUS)
 		return
@@ -345,7 +345,7 @@
 	src.ckey = player.ckey
 
 	if(player.mob && player.mob.mind)
-		player.mob.mind.transfer_to(src)
+		player.mob.mind.transfer(src)
 
 	lawupdate = 0
 	to_chat(src, "<b>Systems rebooted</b>. Loading base pattern maintenance protocol... <b>loaded</b>.")
@@ -381,7 +381,7 @@
 /mob/living/silicon/robot/drone/construction/matriarch/init()
 	..()
 	add_verb(src, /mob/living/silicon/robot/verb/Namepick)
-	flavor_text = "It's a small matriarch drone. The casing is stamped with an corporate logo and the subscript: '[GLOB.using_map.company_name] Recursive Repair Systems: Heart Of The Swarm!'"
+	flavor_text = "It's a small matriarch drone. The casing is stamped with an corporate logo and the subscript: '[(LEGACY_MAP_DATUM).company_name] Recursive Repair Systems: Heart Of The Swarm!'"
 
 /mob/living/silicon/robot/drone/construction/matriarch/welcome_drone()
 	to_chat(src, "<b>You are a matriarch maintenance drone, a tiny-brained robotic repair machine</b>.")
@@ -391,7 +391,7 @@
 
 /mob/living/silicon/robot/drone/construction/matriarch/Initialize()
 	. = ..()
-	matrix_tag = "[GLOB.using_map.company_name]"
+	matrix_tag = "[(LEGACY_MAP_DATUM).company_name]"
 
 /mob/living/silicon/robot/drone/construction/matriarch/shut_down()
 	return

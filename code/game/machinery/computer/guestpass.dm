@@ -1,248 +1,237 @@
-/////////////////////////////////////////////
-//Guest pass ////////////////////////////////
-/////////////////////////////////////////////
-/obj/item/card/id/guest
-	name = "guest pass"
-	desc = "Allows temporary access to station areas."
-	icon_state = "guest"
-	light_color = "#0099ff"
-
-	var/temp_access = list() //to prevent agent cards stealing access as permanent
-	var/expiration_time = 0
-	var/expired = 0
-	var/reason = "NOT SPECIFIED"
-
-/obj/item/card/id/guest/GetAccess()
-	if (world.time > expiration_time)
-		return access
-	else
-		return temp_access
-
-/obj/item/card/id/guest/examine(mob/user)
-	. = ..()
-	if (world.time < expiration_time)
-		. += "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>"
-	else
-		. += "<span class='warning'>It expired at [worldtime2stationtime(expiration_time)].</span>"
-
-/obj/item/card/id/guest/read()
-	if(!Adjacent(usr))
-		return //Too far to read
-	if (world.time > expiration_time)
-		to_chat(usr, "<span class='notice'>This pass expired at [worldtime2stationtime(expiration_time)].</span>")
-	else
-		to_chat(usr, "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>")
-
-	to_chat(usr, "<span class='notice'>It grants access to following areas:</span>")
-	for (var/A in temp_access)
-		to_chat(usr, "<span class='notice'>[get_access_desc(A)].</span>")
-	to_chat(usr, "<span class='notice'>Issuing reason: [reason].</span>")
-	return
-
-/obj/item/card/id/guest/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	if(user.a_intent == INTENT_HARM)
-		if(icon_state == "guest_invalid")
-			to_chat(user, "<span class='warning'>This guest pass is already deactivated!</span>")
-			return
-
-		var/confirm = alert("Do you really want to deactivate this guest pass? (you can't reactivate it)", "Confirm Deactivation", "Yes", "No")
-		if(confirm == "Yes")
-			//rip guest pass </3
-			user.visible_message("<span class='notice'>\The [user] deactivates \the [src].</span>")
-			icon_state = "guest_invalid"
-			expiration_time = world.time
-			expired = 1
-
-/obj/item/card/id/guest/Initialize(mapload)
-	. = ..()
-	START_PROCESSING(SSobj, src)
-	update_icon()
-
-/obj/item/card/id/guest/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	return ..()
-
-/obj/item/card/id/guest/process(delta_time)
-	if(expired == 0 && world.time >= expiration_time)
-		visible_message("<span class='warning'>\The [src] flashes a few times before turning red.</span>")
-		icon_state = "guest_invalid"
-		expired = 1
-		world.time = expiration_time
-		return
-
-/////////////////////////////////////////////
-//Guest pass terminal////////////////////////
-/////////////////////////////////////////////
-
 /obj/machinery/computer/guestpass
 	name = "guest pass terminal"
+	desc = "A terminal allowing one to issue guest passes for other crewmembers with their access."
 	icon_state = "guest"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	icon_keyboard = null
 	icon_screen = "pass"
-	density = 0
+	depth_projected = FALSE
+	climb_allowed = FALSE
+	density = FALSE
 	circuit = /obj/item/circuitboard/guestpass
 
+	/// authing card
 	var/obj/item/card/id/giver
-	var/list/accesses = list()
-	var/giv_name = "NOT SPECIFIED"
-	var/reason = "NOT SPECIFIED"
+	/// selected access ids
+	var/list/selected = list()
+	/// giving name
+	var/guest_name
+	/// giving reason
+	var/guest_reason
+	/// duration in minutes
 	var/duration = 5
+	/// max duration in minutes
+	var/max_duration = 120
+	/// min duration in minutes
+	var/min_duration = 5
 
-	var/list/internal_log = list()
-	var/mode = 0  // 0 - making pass, 1 - viewing logs
+	/// prints left
+	var/prints_left = 5
+	/// print recharge time
+	var/print_recharge = 20 SECONDS
+	/// print recharge timerid
+	var/print_timer
+
+/obj/machinery/computer/guestpass/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NOTICE("Alt-click to eject the ID inside, if there is any.")
 
 /obj/machinery/computer/guestpass/Initialize(mapload)
 	. = ..()
+	// todo: this is not a real uid
 	uid = "[rand(100,999)]-G[rand(10,99)]"
 
-/obj/machinery/computer/guestpass/attackby(obj/I, mob/user)
+/obj/machinery/computer/guestpass/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/card/id))
-		if(!giver)
+		if(istype(I, /obj/item/card/id/guest))
+			user.action_feedback(SPAN_WARNING("\the [src] will not accept other guest passes."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(isnull(giver))
 			if(!user.attempt_insert_item_for_installation(I, src))
 				return
-			giver = I
-			SSnanoui.update_uis(src)
-		else if(giver)
-			to_chat(user, "<span class='warning'>There is already ID card inside.</span>")
+			insert_id(I)
+			user.action_feedback(SPAN_NOTICE("You insert [I] into \the [src]."), src)
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+		else
+			user.action_feedback(SPAN_WARNING("There is already an ID card inside."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
+
+// todo: altclick radials?? refactor??
+/obj/machinery/computer/guestpass/AltClick(mob/user)
+	if(user.Adjacent(src))
+		if(!isnull(giver))
+			user.grab_item_from_interacted_with(giver, src)
+			user.visible_message(SPAN_NOTICE("[user] grabs a card out of [src]."), SPAN_NOTICE("You grab [giver] out of [src]."))
+			eject_id(drop_location())
+			return TRUE
+		else
+			user.action_feedback(SPAN_WARNING("[src] has no ID in it!"), src)
+			return TRUE
+	return ..()
+
+/obj/machinery/computer/guestpass/proc/eject_id(atom/where_to)
+	if(giver.loc == src)
+		giver.forceMove(where_to)
+	giver = null
+	selected.len = 0
+	push_selected_accesses()
+	push_allowed_accesses()
+	push_inserted_card()
+
+/obj/machinery/computer/guestpass/proc/insert_id(obj/item/card/id/inserting)
+	if(inserting.loc != src)
+		inserting.forceMove(src)
+	giver = inserting
+	push_allowed_accesses()
+	push_inserted_card()
+
+/obj/machinery/computer/guestpass/proc/print(mob/user)
+	var/obj/item/card/id/guest/issued = new(drop_location())
+	issued.prime_for(duration MINUTES, TRUE)
+	issued.given_reason = guest_reason || "NOT SPECIFIED"
+	issued.registered_name = guest_name || "NOT SPECIFIED"
+	issued.rank = "Guest"
+	// todo: way to bypass this, maybe with hacking or emag?
+	if(!isnull(giver))
+		issued.giver_name = giver.registered_name
+		issued.giver_rank = giver.assignment || giver.rank
+	issued.access = selected.Copy()
+	if(user.Adjacent(src))
+		user.put_in_hands(issued)
+
+	if(!prints_left)
 		return
-	..()
+	--prints_left
+	if(!print_timer)
+		print_timer = addtimer(CALLBACK(src, PROC_REF(print_cycle)), print_recharge, TIMER_STOPPABLE | TIMER_LOOP)
 
-/obj/machinery/computer/guestpass/attack_ai(var/mob/user as mob)
-	return attack_hand(user)
+/obj/machinery/computer/guestpass/proc/print_cycle()
+	++prints_left
+	if(prints_left >= initial(prints_left))
+		prints_left = initial(prints_left)
+		if(print_timer)
+			deltimer(print_timer)
+			print_timer = null
 
-/obj/machinery/computer/guestpass/attack_hand(mob/user, list/params)
-	if(..())
-		return
+/obj/machinery/computer/guestpass/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	.["access"] = SSjob.tgui_access_data()
+	.["allowed"] = allowed_accesses()
+	.["selected"] = selected
+	.["durationMax"] = max_duration
+	.["durationMin"] = min_duration
+	.["auth"] = tgui_inserted_card()
 
-	user.set_machine(src)
+/obj/machinery/computer/guestpass/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	.["guestName"] = guest_name
+	.["guestReason"] = guest_reason
+	.["duration"] = duration
+	.["printsLeft"] = prints_left
 
-	nano_ui_interact(user)
+/obj/machinery/computer/guestpass/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "GuestPassTerminal")
+		ui.open()
+
+/obj/machinery/computer/guestpass/proc/push_selected_accesses()
+	push_ui_data(data = list("selected" = selected))
+
+/obj/machinery/computer/guestpass/proc/push_allowed_accesses()
+	push_ui_data(data = list("allowed" = allowed_accesses()))
+
+/obj/machinery/computer/guestpass/proc/push_inserted_card()
+	push_ui_data(data = list("auth" = tgui_inserted_card()))
+
+/obj/machinery/computer/guestpass/proc/tgui_inserted_card()
+	return isnull(giver)? giver : list(
+		"name" = giver.name || "-----",
+		"owner" = giver.registered_name || "-----",
+		"rank" = giver.rank || "Unassigned",
+	)
 
 /**
- *  Display the NanoUI window for the guest pass console.
+ * allowed access ids
  *
- *  See NanoUI documentation for details.
+ * this list is assumed to be constant/not-for-edit
  */
-/obj/machinery/computer/guestpass/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	user.set_machine(src)
+/obj/machinery/computer/guestpass/proc/allowed_accesses()
+	RETURN_TYPE(/list)
+	return isnull(giver)? list() : giver.access
 
-	var/list/data = list()
-
-	var/area_list[0]
-
-	if (giver && giver.access)
-		data["access"] = giver.access
-		for (var/A in giver.access)
-			if(A in accesses)
-				area_list[++area_list.len] = list("area" = A, "area_name" = get_access_desc(A), "on" = 1)
+/obj/machinery/computer/guestpass/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+	if(.)
+		return TRUE
+	switch(action)
+		if("toggle")
+			var/id = params["value"]
+			if(!(id in allowed_accesses()))
+				return TRUE
+			if(id in selected)
+				selected -= id
 			else
-				area_list[++area_list.len] = list("area" = A, "area_name" = get_access_desc(A), "on" = null)
-
-	data["giver"] = giver
-	data["giveName"] = giv_name
-	data["reason"] = reason
-	data["duration"] = duration
-	data["area"] = area_list
-	data["mode"] = mode
-	data["log"] = internal_log
-	data["uid"] = uid
-
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "guest_pass.tmpl", src.name, 400, 520)
-		ui.set_initial_data(data)
-		ui.open()
-		//ui.set_auto_update(5)
-
-/obj/machinery/computer/guestpass/Topic(href, href_list)
-	if(..())
-		return 1
-	usr.set_machine(src)
-	if (href_list["mode"])
-		mode = href_list["mode"]
-
-	if (href_list["choice"])
-		switch(href_list["choice"])
-			if ("giv_name")
-				var/nam = sanitizeName(input("Person pass is issued to", "Name", giv_name) as text|null)
-				if (nam)
-					giv_name = nam
-			if ("reason")
-				var/reas = sanitize(input("Reason why pass is issued", "Reason", reason) as text|null)
-				if(reas)
-					reason = reas
-			if ("duration")
-				var/dur = input("Duration (in minutes) during which pass is valid (up to 120 minutes).", "Duration") as num|null
-				if (dur)
-					if (dur > 0 && dur <= 120)
-						duration = dur
-					else
-						to_chat(usr, "<span class='warning'>Invalid duration.</span>")
-			if ("access")
-				var/A = text2num(href_list["access"])
-				if (A in accesses)
-					accesses.Remove(A)
-				else
-					if(A in giver.access)	//Let's make sure the ID card actually has the access.
-						accesses.Add(A)
-					else
-						to_chat(usr, "<span class='warning'>Invalid selection, please consult technical support if there are any issues.</span>")
-						log_debug(SPAN_DEBUG("[key_name_admin(usr)] tried selecting an invalid guest pass terminal option."))
-	if (href_list["action"])
-		switch(href_list["action"])
-			if ("id")
-				if (giver)
-					if(ishuman(usr))
-						giver.loc = usr.loc
-						if(!usr.get_active_held_item())
-							usr.put_in_hands(giver)
-						giver = null
-					else
-						giver.loc = src.loc
-						giver = null
-					accesses.Cut()
-				else
-					var/obj/item/I = usr.get_active_held_item()
-					if (istype(I, /obj/item/card/id))
-						if(!usr.attempt_insert_item_for_installation(I, src))
-							return
-						giver = I
-
-			if ("print")
-				var/dat = "<h3>Activity log of guest pass terminal #[uid]</h3><br>"
-				for (var/entry in internal_log)
-					dat += "[entry]<br><hr>"
-				//to_chat(usr, "Printing the log, standby...")
-				//sleep(50)
-				var/obj/item/paper/P = new/obj/item/paper( loc )
-				P.name = "activity log"
-				P.info = dat
-
-			if ("issue")
-				if (giver)
-					var/number = add_zero("[rand(0,9999)]", 4)
-					var/entry = "\[[stationtime2text()]\] Pass #[number] issued by [giver.registered_name] ([giver.assignment]) to [giv_name]. Reason: [reason]. Grants access to following areas: "
-					for (var/i=1 to accesses.len)
-						var/A = accesses[i]
-						if (A)
-							var/area = get_access_desc(A)
-							entry += "[i > 1 ? ", [area]" : "[area]"]"
-					entry += ". Expires at [worldtime2stationtime(world.time + duration*10*60)]."
-					internal_log.Add(entry)
-
-					var/obj/item/card/id/guest/pass = new(src.loc)
-					pass.temp_access = accesses.Copy()
-					pass.registered_name = giv_name
-					pass.expiration_time = world.time + duration*10*60
-					pass.reason = reason
-					pass.name = "guest pass #[number]"
-				else
-					to_chat(usr, "<span class='warning'>Cannot issue pass without issuing ID.</span>")
-
-	src.add_fingerprint(usr)
-	SSnanoui.update_uis(src)
+				selected += id
+			push_selected_accesses()
+			return TRUE
+		if("grant")
+			var/category = params["category"]
+			var/list/ids
+			var/list/ids_allowed = allowed_accesses()
+			if(category)
+				ids = SSjob.access_ids_of_category(category) & ids_allowed
+			else
+				ids = ids_allowed
+			selected |= ids
+			push_selected_accesses()
+			return TRUE
+		if("deny")
+			var/category = params["category"]
+			var/list/ids
+			var/list/ids_allowed = allowed_accesses()
+			if(category)
+				ids = SSjob.access_ids_of_category(category) & ids_allowed
+			else
+				ids = ids_allowed
+			selected -= ids
+			push_selected_accesses()
+			return TRUE
+		if("eject")
+			if(isnull(giver))
+				var/obj/item/card/id/the_card = usr.get_active_held_item()
+				if(!istype(the_card))
+					return TRUE
+				if(!usr.attempt_insert_item_for_installation(the_card, src))
+					return FALSE
+				insert_id(the_card)
+				usr.action_feedback(SPAN_NOTICE("You insert [the_card] into [src]."), src)
+				return TRUE
+			var/obj/item/card/id/the_card = usr.get_active_held_item()
+			if(istype(the_card) && !usr.attempt_void_item_for_installation(the_card))
+				return FALSE
+			usr.grab_item_from_interacted_with(giver, src)
+			eject_id()
+			if(istype(the_card))
+				insert_id(the_card)
+				usr.action_feedback(SPAN_NOTICE("You quickly swap [the_card] into \the [src]."), src)
+			else
+				usr.action_feedback(SPAN_NOTICE("You remove [giver] from [src]."), src)
+			return TRUE
+		if("issue")
+			if(prints_left <= 0)
+				usr.action_feedback(SPAN_WARNING("[src] cannot print another pass yet!"), src)
+				return TRUE
+			print(usr)
+			return TRUE
+		if("name")
+			guest_name = params["value"] || "NOT SPECIFIED"
+			return TRUE
+		if("reason")
+			guest_reason = params["value"] || "NOT SPECIFIED"
+			return TRUE
+		if("duration")
+			duration = clamp(text2num(params["value"]), min_duration, max_duration)
+			return TRUE

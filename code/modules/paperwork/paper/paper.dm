@@ -73,7 +73,7 @@
 	if(info != initial(info))
 		info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
-		INVOKE_ASYNC(src, .proc/init_parsepencode, info)
+		INVOKE_ASYNC(src, PROC_REF(init_parsepencode), info)
 	else
 		// TODO: REFACTOR PAPER
 		spawn(0)
@@ -95,7 +95,7 @@
 
 	free_space -= length(strip_html_properly(new_text))
 
-/obj/item/paper/examine(mob/user)
+/obj/item/paper/examine(mob/user, dist)
 	. = ..()
 	if(in_range(user, src) || istype(user, /mob/observer/dead))
 		show_content(usr)
@@ -182,7 +182,7 @@
 			else
 				user.visible_message("<span class='warning'>[user] begins to wipe [H]'s lipstick off with \the [src].</span>", \
 								 	 "<span class='notice'>You begin to wipe off [H]'s lipstick.</span>")
-				if(do_after(user, 10) && do_after(H, 10, 5, 0))	//user needs to keep their active hand, H does not.
+				if(do_after(user, 10, H, mobility_flags = MOBILITY_CAN_USE | (IS_STANDING(target)? MOBILITY_IS_STANDING : NONE)))	//user needs to keep their active hand, H does not.
 					user.visible_message("<span class='notice'>[user] wipes [H]'s lipstick off with \the [src].</span>", \
 										 "<span class='notice'>You wipe off [H]'s lipstick.</span>")
 					H.lip_style = null
@@ -375,9 +375,9 @@
 		var/iscrayon = 0
 		if(!istype(i, /obj/item/pen))
 			var/mob/living/M = usr
-			if(istype(M) && M.back && istype(M.back,/obj/item/rig))
-				var/obj/item/rig/r = M.back
-				var/obj/item/rig_module/device/pen/m = locate(/obj/item/rig_module/device/pen) in r.installed_modules
+			if(istype(M) && M.back && istype(M.back,/obj/item/hardsuit))
+				var/obj/item/hardsuit/r = M.back
+				var/obj/item/hardsuit_module/device/pen/m = locate(/obj/item/hardsuit_module/device/pen) in r.installed_modules
 				if(r.is_online() && m)
 					i = m.device
 				else
@@ -586,6 +586,10 @@
 /obj/item/paper/particle_info
 	name = "Particle Control Panel - A Troubleshooter's Guide"
 	info = "If the Particle Control panel is not responding to inputs, simply toggle power to equipment and/or flip the breaker on your local Area Power Controller (APC). Turn the power off, and then back on again. This will resolve the issue."
+
+/obj/item/paper/armory_info
+	name = "IMPORTANT: Armory SOP Update"
+	info = "Please review armory policies on your terminal at: https://citadel-station.net/wikiRP/index.php?title=SoP:_Security#Armory -Note that security officers now require a permit form as well as an equipment request form for longarm (two handed) weapons, stated here: https://citadel-station.net/wikiRP/index.php?title=SoP:_Security#Security Armory paperwork forms 4705 through 4708 can be found here: https://citadel-station.net/wikiRP/index.php?title=Guide:_Paperwork#Armory_Inventory"
 
 //Lava Land Colony Notes
 /obj/item/paper/lavaland

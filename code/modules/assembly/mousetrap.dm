@@ -3,7 +3,7 @@
 	desc = "A handy little spring-loaded trap for catching pesty rodents."
 	icon_state = "mousetrap"
 	origin_tech = list(TECH_COMBAT = 1)
-	matter = list(MAT_STEEL = 100)
+	materials = list(MAT_STEEL = 100)
 	var/armed = 0
 
 
@@ -30,15 +30,15 @@
 			if("feet")
 				if(!H.shoes)
 					affecting = H.get_organ(pick("l_leg", "r_leg"))
-					H.Weaken(3)
+					H.afflict_paralyze(20 * 3)
 			if("l_hand", "r_hand")
 				if(!H.gloves)
 					affecting = H.get_organ(type)
-					H.Stun(3)
+					H.afflict_stun(20 * 3)
 		if(affecting)
 			if(affecting.take_damage(1, 0))
 				H.UpdateDamageIcon()
-			H.updatehealth()
+			H.update_health()
 	else if(ismouse(target))
 		var/mob/living/simple_mob/animal/passive/mouse/M = target
 		visible_message("<font color='red'><b>SPLAT!</b></font>")

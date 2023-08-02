@@ -47,15 +47,14 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	var/list/allocated
 	var/list/fail_reasons
 
-	var/static/datum/space_level/reservation
+	var/static/datum/map_level/reservation
 
 /proc/cmp_unit_test_priority(datum/unit_test/a, datum/unit_test/b)
 	return initial(a.priority) - initial(b.priority)
 
 /datum/unit_test/New()
 	if (isnull(reservation))
-		var/datum/map_template/unit_tests/template = new
-		reservation = template.load_new_z()
+		reservation = SSmapping.load_level(new /datum/map_level/unit_tests)
 
 	allocated = new
 	run_loc_floor_bottom_left = get_turf(locate(/obj/landmark/unit_test_bottom_left) in GLOB.landmarks_list)
@@ -129,7 +128,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 /// Logs a test message. Will use GitHub action syntax found at https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions
 /datum/unit_test/proc/log_for_test(text, priority, file, line)
-	var/map_name = SSmapping.config.map_name
+	var/map_name = (LEGACY_MAP_DATUM).name
 
 	// Need to escape the text to properly support newlines.
 	var/annotation_text = replacetext(text, "%", "%25")
@@ -211,6 +210,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	//We have to call this manually because del_text can preceed us, and SSticker doesn't fire in the post game
 	SSticker.standard_reboot()
 
-/datum/map_template/unit_tests
+/datum/map_level/unit_tests
+	id = "__UnitTestLevel"
 	name = "Unit Tests Zone"
-	mappath = "_maps/templates/unit_tests.dmm"
+	absolute_path = "maps/templates/unit_tests.dmm"

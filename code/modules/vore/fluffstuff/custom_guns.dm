@@ -109,7 +109,7 @@
 	w_class = ITEMSIZE_NORMAL
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2)
-	matter = list(MAT_STEEL = 2000)
+	materials = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/imperial
 /* CITADEL CHANGE - Removes Virgo Fluff
 // jertheace : Jeremiah 'Ace' Acacius
@@ -584,7 +584,7 @@ END OF CITADEL CHANGES */
 	icon_state = "smg"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
-	matter = list(MAT_STEEL = 1800)
+	materials = list(MAT_STEEL = 1800)
 	caliber = "9mm"
 	ammo_type = /obj/item/ammo_casing/a9mm
 	max_ammo = 30
@@ -670,7 +670,7 @@ END OF CITADEL CHANGES */
 	icon_state = "9x19p"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
-	matter = list(MAT_STEEL = 480)
+	materials = list(MAT_STEEL = 480)
 	caliber = ".380"
 	ammo_type = /obj/item/ammo_casing/a380
 	max_ammo = 8
@@ -693,7 +693,7 @@ END OF CITADEL CHANGES */
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "s357"
 	caliber = ".44"
-	matter = list(MAT_STEEL = 1260)
+	materials = list(MAT_STEEL = 1260)
 	ammo_type = /obj/item/ammo_casing/a44
 	max_ammo = 6
 	multiple_sprites = 1
@@ -706,7 +706,7 @@ END OF CITADEL CHANGES */
 
 //Expedition pistol
 /obj/item/gun/energy/frontier
-	name = "frontier phaser"
+	name = "Expedition Crank Phaser"
 	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization."
 	icon_state = "phaser"
 	item_state = "phaser"
@@ -763,7 +763,7 @@ END OF CITADEL CHANGES */
 
 //Phaser Carbine - Reskinned phaser
 /obj/item/gun/energy/frontier/locked/carbine
-	name = "frontier carbine"
+	name = "Expedition Phaser Carbine"
 	desc = "An ergonomically improved version of the venerable frontier phaser, the carbine is a fairly new weapon, and has only been produced in limited numbers so far. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
 	icon_state = "carbinekill"
 	item_state = "retro"
@@ -773,6 +773,7 @@ END OF CITADEL CHANGES */
 	firemodes = list(
 		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/projectile/beam, modifystate="carbinekill", charge_cost = 300),
 		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, modifystate="carbinestun", charge_cost = 60),
+
 	)
 
 /obj/item/gun/energy/frontier/locked/carbine/update_icon_state()
@@ -783,7 +784,7 @@ END OF CITADEL CHANGES */
 
 //Expeditionary Holdout Phaser Pistol
 /obj/item/gun/energy/frontier/locked/holdout
-	name = "holdout frontier phaser"
+	name = "Holdout Phaser Pistol"
 	desc = "An minaturized weapon designed for the purpose of expeditionary support to defend themselves on the field. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "holdoutkill"

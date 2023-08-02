@@ -181,12 +181,12 @@
 				if(2)
 					M.visible_message("<span class='danger'>[user] bashes [M] against \the [src]!</span>")
 					if (prob(50))
-						M.Weaken(1)
+						M.afflict_paralyze(20 * 1)
 					M.apply_damage(10)
 					hit(25)
 				if(3)
 					M.visible_message("<span class='danger'><big>[user] crushes [M] against \the [src]!</big></span>")
-					M.Weaken(5)
+					M.afflict_paralyze(20 * 5)
 					M.apply_damage(20)
 					hit(50)
 			return
@@ -243,7 +243,7 @@
 			close()
 
 	else if (src.density)
-		flick(text("[]deny", src.base_state), src)
+		flick("[base_state]deny", src)
 
 	return
 
@@ -374,12 +374,13 @@
 			to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
 			return
 		G.affecting.loc = src.loc
-		G.affecting.Weaken(5)
+		G.affecting.afflict_paralyze(20 * 5)
 		visible_message("<span class='warning'>[G.assailant] dunks [G.affecting] into the [src]!</span>", 3)
 		qdel(W)
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
-		if(!user.attempt_insert_item_for_installation(W, src))
+		if(!user.attempt_insert_item_for_installation(W, loc))
+			to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
 			return
 		visible_message("<span class='notice'>[user] dunks [W] into the [src]!</span>", 3)
 		return

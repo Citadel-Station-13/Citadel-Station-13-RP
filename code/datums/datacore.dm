@@ -439,7 +439,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		side = icon('html/images/no_image32.png')
 
 	if(!id)
-		id = text("[]", add_zero(num2hex(rand(1, 65536)), 4))
+		id = "[add_zero(num2hex(rand(1, 65536)), 4)]"
 	var/datum/data/record/G = new /datum/data/record()
 	G.name = "Employee Record #[id]"
 	G.fields["name"] = "New Record"
@@ -535,11 +535,11 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 			return R
 
 /proc/GetAssignment(var/mob/living/carbon/human/H)
-	if(H.mind.role_alt_title)
-		return H.mind.role_alt_title
-	else if(H.mind.assigned_role)
-		return H.mind.assigned_role
+	. = "Unassigned"
+	var/faction = H.mind?.original_background_faction()?.id
+	if((faction && !(faction == "nanotrasen")) || !H.mind.role_alt_title)
+		. = H.mind.assigned_role
+	else if(H.mind.role_alt_title)
+		. = H.mind.role_alt_title
 	else if(H.job)
-		return H.job
-	else
-		return "Unassigned"
+		. =  H.job

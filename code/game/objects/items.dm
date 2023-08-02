@@ -4,6 +4,9 @@
 	w_class = ITEMSIZE_NORMAL
 	// todo: better way, for now, block all rad contamination to interior
 	rad_flags = RAD_BLOCK_CONTENTS
+	obj_flags = OBJ_IGNORE_MOB_DEPTH
+	depth_level = 0
+	climb_allowed = FALSE
 
 	//? Flags
 	/// Item flags.
@@ -25,7 +28,7 @@
 	/// This is used to determine how we persist, in addition to potentially atom_persist_flags and obj_persist_flags (not yet made)
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/item_persist_flags = NONE
-  /// This is used to determine how default item-level interaction hooks are handled.
+	/// This is used to determine how default item-level interaction hooks are handled.
 	/// These flags are listed in [code/__DEFINES/_flags/interaction_flags.dm]
 	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
@@ -43,7 +46,6 @@
 	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
 	var/damage_mode = NONE
 	// todo: port over damtype
-
 
 	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
@@ -234,7 +236,7 @@
 	src.loc = T
 
 /// See inventory_sizes.dm for the defines.
-/obj/item/examine(mob/user)
+/obj/item/examine(mob/user, dist)
 	. = ..()
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weightclass2text(w_class)] item."
 
@@ -279,7 +281,11 @@
 		return
 
 	if(anchored)
-		to_chat(user, SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"))
+		user.action_feedback(SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"), src)
+		return
+
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
+		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
 		return
 
 	if (hasorgans(user))
@@ -451,7 +457,7 @@
 
 	if(!(usr)) //BS12 EDIT
 		return
-	if(!usr.canmove || usr.stat || usr.restrained() || !Adjacent(usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_PICKUP) || !Adjacent(usr))
 		return
 	if((!istype(usr, /mob/living/carbon)) || (istype(usr, /mob/living/carbon/brain)))//Is humanoid, and is not a brain
 		to_chat(usr, "<span class='warning'>You can't pick things up!</span>")
@@ -476,7 +482,7 @@
  *This proc is executed when someone clicks the on-screen UI button.
  *The default action is attack_self().
  */
-/obj/item/proc/ui_action_click()
+/obj/item/ui_action_click(datum/action/action, mob/user)
 	attack_self(usr)
 
 //RETURN VALUES
@@ -558,8 +564,8 @@
 					to_chat(M, "<span class='warning'>You drop what you're holding and clutch at your eyes!</span>")
 					M.drop_active_held_item()
 				M.eye_blurry += 10
-				M.Unconscious(1)
-				M.Weaken(4)
+				M.afflict_unconscious(20 * 1)
+				M.afflict_paralyze(20 * 4)
 			if (eyes.damage >= eyes.min_broken_damage)
 				if(M.stat != 2)
 					to_chat(M, "<span class='warning'>You go blind!</span>")
@@ -764,12 +770,21 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
 		interact(user)
+	on_attack_self(user)
+
+/**
+ * Called after we attack self
+ * Used to allow for attack_self to be interrupted by signals in nearly all cases.
+ * You should usually override this instead of attack_self.
+ */
+/obj/item/proc/on_attack_self(mob/user)
+	return
 
 //? Mob Armor
 
 /**
  * called to be checked for mob armor
- * 
+ *
  * @returns copy of args with modified values
  */
 /obj/item/proc/checking_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
@@ -779,7 +794,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /**
  * called to be used as mob armor
  * side effects are allowed
- * 
+ *
  * @returns copy of args with modified values
  */
 /obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)

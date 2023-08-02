@@ -138,7 +138,7 @@
 	if(istype(owner))
 		replaced(owner)
 		sync_colour_to_human(owner)
-	addtimer(CALLBACK(src, .proc/get_icon), 1)
+	addtimer(CALLBACK(src, PROC_REF(get_icon)), 1)
 
 /obj/item/organ/external/Destroy()
 
@@ -384,7 +384,7 @@
 	// sync the organ's damage with its wounds
 	src.update_damages()
 	if(owner)
-		owner.updatehealth() //droplimb will call updatehealth() again if it does end up being called
+		owner.update_health() //droplimb will call update_health() again if it does end up being called
 
 	//If limb took enough damage, try to cut or tear it off
 	if(owner && loc == owner && !is_stump())
@@ -452,7 +452,7 @@
 	//Sync the organ's damage with its wounds
 	src.update_damages()
 	src.process_wounds() // todo: this should not be here - this has side effects of processing.
-	owner.updatehealth()
+	owner.update_health()
 
 	var/result = update_icon()
 	return result
@@ -551,7 +551,7 @@
 					robotize(robodata, null, null, TRUE)
 				else
 					robotize()
-		owner.updatehealth()
+		owner.update_health()
 
 /obj/item/organ/external/remove_rejuv()
 	if(owner)
@@ -897,19 +897,19 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(parent_organ)
 		var/datum/wound/lost_limb/W = new (src, disintegrate, clean)
 		if(clean)
-			LAZYOR(parent_organ.wounds, W)
+			LAZYDISTINCTADD(parent_organ.wounds, W)
 			parent_organ.update_damages()
 		else
 			var/obj/item/organ/external/stump/stump = new (victim, 0, src)
 			if(robotic >= ORGAN_ROBOT)
 				stump.robotize()
-			LAZYOR(stump.wounds, W)
+			LAZYDISTINCTADD(stump.wounds, W)
 			victim.organs |= stump
 			stump.update_damages()
 
 	spawn(1)
 		if(istype(victim))
-			victim.updatehealth()
+			victim.update_health()
 			victim.UpdateDamageIcon()
 			victim.update_icons_body()
 		else
@@ -1064,7 +1064,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			"<span class='danger'>You hear a sickening crack.</span>")
 		jostle_bone()
 		if(organ_can_feel_pain() && IS_CONSCIOUS(owner) && !isbelly(owner.loc))
-			INVOKE_ASYNC(owner, /mob/proc/emote, "scream")
+			INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), "scream")
 
 	playsound(src.loc, "fracture", 10, 1, -2)
 	status |= ORGAN_BROKEN
@@ -1417,7 +1417,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/queue_syringe_infection()
 	if(!syringe_infection_queued)
 		syringe_infection_queued = 100
-		addtimer(CALLBACK(src, .proc/do_syringe_infection), rand(5, 10) MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(do_syringe_infection)), rand(5, 10) MINUTES)
 	else
 		syringe_infection_queued = clamp(syringe_infection_queued + 10, 0, 300)
 

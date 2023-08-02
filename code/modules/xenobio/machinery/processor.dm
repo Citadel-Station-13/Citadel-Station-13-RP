@@ -20,7 +20,7 @@
 	build_path = /obj/machinery/processor
 	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
 
-/obj/machinery/processor/examine(mob/user)
+/obj/machinery/processor/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='boldnotice'>The automatic intake switch is in the [auto_mode? "On" : "Off"] position.</span>"
 
@@ -39,6 +39,20 @@
 /obj/machinery/processor/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(default_unfasten_wrench(user, I, 40))
 		return
+	if(istype(I, /obj/item/holder))
+		var/obj/item/holder/mob_holder = I
+		if(!ishuman(mob_holder.held_mob))
+			return
+		var/mob/living/carbon/human/H = mob_holder.held_mob
+		if(!istype(H.species, /datum/species/monkey))
+			return
+		if(!IS_DEAD(H))
+			user.action_feedback(SPAN_WARNING("[H] is still alive."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!insert(H, user))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		qdel(mob_holder)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 // Verb to remove everything.
@@ -47,7 +61,7 @@
 	set name = "Eject Processor"
 	set src in oview(1)
 
-	if(usr.stat || !usr.canmove || usr.restrained())
+	if(CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 	empty()
 	add_fingerprint(usr)
@@ -73,14 +87,15 @@
 // Ejects all the things out of the machine.
 /obj/machinery/processor/proc/insert(var/atom/movable/AM, var/mob/living/user)
 	if((!Adjacent(user) && !Adjacent(AM)) || !user.Adjacent(AM))
-		return
+		return FALSE
 	if(!can_insert(AM))
 		to_chat(user, "<span class='warning'>\The [src] cannot process \the [AM] at this time.</span>")
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
-		return
+		return FALSE
 	to_be_processed.Add(AM)
 	AM.forceMove(src)
 	visible_message("<span class='notice'>\the [user] places [AM] inside \the [src].</span>")
+	return TRUE
 
 /obj/machinery/processor/proc/auto_insert(atom/movable/AM)
 	if(!can_insert(AM) || !isturf(AM.loc))

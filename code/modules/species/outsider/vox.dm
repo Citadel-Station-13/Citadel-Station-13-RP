@@ -26,7 +26,7 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_The_Vox"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/vox)
-	rarity_value = 4
+	//rarity_value = 4
 
 //	taste_sensitivity = TASTE_DULL
 
@@ -109,6 +109,9 @@
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/eat_trash,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 		)
 
 /datum/species/vox/get_random_name(gender)

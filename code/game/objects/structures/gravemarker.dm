@@ -5,7 +5,8 @@
 
 	density = TRUE
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
-	climbable = TRUE
+	climb_allowed = TRUE
+	depth_level = 8
 	anchored = TRUE
 
 	layer = ABOVE_JUNK_LAYER
@@ -29,7 +30,7 @@
 		return
 	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
 
-/obj/structure/gravemarker/examine(mob/user)
+/obj/structure/gravemarker/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) < 4)
 		if(grave_name)

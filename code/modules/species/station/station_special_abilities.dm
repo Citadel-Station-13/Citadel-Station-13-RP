@@ -121,8 +121,6 @@
 
 	//Unfreeze some things
 	does_not_breathe = FALSE
-	update_canmove()
-	weakened = 2
 
 	//Visual effects
 	var/T = get_turf(src)
@@ -344,7 +342,7 @@
 	/*if(last_special > world.time)
 		return*/
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot bite anyone in your current state!")
 		return
 
@@ -362,7 +360,7 @@
 
 	//if(last_special > world.time) return
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot bite in your current state.")
 		return
 
@@ -689,7 +687,7 @@
 		to_chat(src,"<span class='warning'>You can't shred that type of creature.</span>")
 		return FALSE
 	//Needs to be capable (replace with incapacitated call?)
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src,"<span class='warning'>You cannot do that in your current state!</span>")
 		return FALSE
 	//Needs to be adjacent, at the very least.
@@ -863,184 +861,9 @@
 	update_floating()
 	to_chat(C, "<span class='notice'>You have [C.flying?"started":"stopped"] flying.</span>")
 
-//Proc to stop inertial_drift. Exchange nutrition in order to stop gliding around.
-/mob/living/proc/start_wings_hovering()
-	set name = "Hover"
-	set desc = "Allows you to stop gliding and hover. This will take a fair amount of nutrition to perform."
-	set category = "Abilities"
-
-	var/mob/living/carbon/human/C = src
-	if(!C.flying)
-		to_chat(src, "You must be flying to hover!")
-		return
-	if(C.incapacitated(INCAPACITATION_ALL))
-		to_chat(src, "You cannot hover in your current state!")
-		return
-	if(C.nutrition < 50 && !C.flying) //Don't have any food in you?" You can't hover, since it takes up 25 nutrition. And it's not 25 since we don't want them to immediately fall.
-		to_chat(C, "<span class='notice'>You lack the nutrition to fly.</span>")
-		return
-	if(C.anchored)
-		to_chat(C, "<span class='notice'>You are already hovering and/or anchored in place!</span>")
-		return
-
-	if(!C.anchored && !C.pulledby) //Not currently anchored, and not pulled by anyone.
-		C.anchored = 1 //This is the only way to stop the inertial_drift.
-		C.nutrition -= 25
-		update_floating()
-		to_chat(C, "<span class='notice'>You hover in place.</span>")
-		spawn(6) //.6 seconds.
-			C.anchored = 0
-	else
-		return
-
 /mob/living/proc/toggle_pass_table()
 	set name = "Toggle Agility" //Dunno a better name for this. You have to be pretty agile to hop over stuff!!!
 	set desc = "Allows you to start/stop hopping over things such as hydroponics trays, tables, and railings."
 	set category = "Abilities"
 	pass_flags ^= ATOM_PASS_TABLE //I dunno what this fancy ^= is but Aronai gave it to me.
 	to_chat(src, "You [pass_flags&ATOM_PASS_TABLE ? "will" : "will NOT"] move over tables/railings/trays!")
-
-/mob/living/carbon/human/proc/check_silk_amount()
-	set name = "Check Silk Amount"
-	set category = "Abilities"
-
-	if(species.is_weaver)
-		to_chat(src, "Your silk reserves are at [species.silk_reserve]/[species.silk_max_reserve].")
-	else
-		to_chat(src, "<span class='warning'>You are not a weaver! How are you doing this? Tell a developer!</span>")
-
-/mob/living/carbon/human/proc/toggle_silk_production()
-	set name = "Toggle Silk Production"
-	set category = "Abilities"
-
-	if(species.is_weaver)
-		species.silk_production = !(species.silk_production)
-		to_chat(src, "You are [species.silk_production ? "now" : "no longer"] producing silk.")
-	else
-		to_chat(src, "<span class='warning'>You are not a weaver! How are you doing this? Tell a developer!</span>")
-
-/mob/living/carbon/human/proc/weave_structure()
-	set name = "Weave Structure"
-	set category = "Abilities"
-
-	if(!(species.is_weaver))
-		to_chat(src, "<span class='warning'>You are not a weaver! How are you doing this? Tell a developer!</span>")
-		return
-
-	var/choice
-	var/datum/weaver_recipe/structure/desired_result
-	var/finalized = "No"
-
-	while(finalized == "No" && src.client)
-		choice = tgui_input_list(src,"What would you like to weave?", "Weave Choice", weavable_structures)
-		desired_result  = weavable_structures[choice]
-		if(!desired_result || !istype(desired_result))
-			return
-
-		if(choice)
-			finalized = tgui_alert(src, "Are you sure you want to weave [desired_result.title]? It will cost you [desired_result.cost] silk.","Confirmation",list("Yes","No"))
-
-	if(!desired_result || !istype(desired_result))
-		return
-
-	if(desired_result.cost > species.silk_reserve)
-		to_chat(src, "<span class='warning'>You don't have enough silk to weave that!</span>")
-		return
-
-	if(stat)
-		to_chat(src, "<span class='warning'>You can't do that in your current state!</span>")
-		return
-
-	if(locate(desired_result.result_type) in src.loc)
-		to_chat(src, "<span class='warning'>You can't create another weaversilk [desired_result.title] here!</span>")
-		return
-
-	if(!isturf(src.loc))
-		to_chat(src, "<span class='warning'>You can't weave here!</span>")
-		return
-
-	if(do_after(src, desired_result.time))
-		if(desired_result.cost > species.silk_reserve)
-			to_chat(src, "<span class='warning'>You don't have enough silk to weave that!</span>")
-			return
-
-		if(locate(desired_result.result_type) in src.loc)
-			to_chat(src, "<span class='warning'>You can't create another weaversilk [desired_result.title] here!</span>")
-			return
-
-		if(!isturf(src.loc))
-			to_chat(src, "<span class='warning'>You can't weave here!</span>")
-			return
-
-		species.silk_reserve = max(species.silk_reserve - desired_result.cost, 0)
-
-		//new desired_result.result_type(src.loc)
-		var/atom/O = new desired_result.result_type(src.loc)
-		O.color = species.silk_color
-
-
-/mob/living/carbon/human/proc/weave_item()
-	set name = "Weave Item"
-	set category = "Abilities"
-
-	if(!(species.is_weaver))
-		return
-
-	var/choice
-	var/datum/weaver_recipe/item/desired_result
-	var/finalized = "No"
-
-	while(finalized == "No" && src.client)
-		choice = tgui_input_list(src,"What would you like to weave?", "Weave Choice", weavable_items)
-		desired_result  = weavable_items[choice]
-		if(!desired_result || !istype(desired_result))
-			return
-
-		if(choice)
-			finalized = tgui_alert(src, "Are you sure you want to weave [desired_result.title]? It will cost you [desired_result.cost] silk.","Confirmation",list("Yes","No"))
-
-	if(!desired_result || !istype(desired_result))
-		return
-
-	if(!(species.is_weaver))
-		to_chat(src, "<span class='warning'>You are not a weaver! How are you doing this? Tell a developer!</span>")
-		return
-
-	if(desired_result.cost > species.silk_reserve)
-		to_chat(src, "<span class='warning'>You don't have enough silk to weave that!</span>")
-		return
-
-	if(stat)
-		to_chat(src, "<span class='warning'>You can't do that in your current state!</span>")
-		return
-
-	if(!isturf(src.loc))
-		to_chat(src, "<span class='warning'>You can't weave here!</span>")
-		return
-
-	if(do_after(src, desired_result.time))
-		if(desired_result.cost > species.silk_reserve)
-			to_chat(src, "<span class='warning'>You don't have enough silk to weave that!</span>")
-			return
-
-		if(!isturf(src.loc))
-			to_chat(src, "<span class='warning'>You can't weave here!</span>")
-			return
-
-		species.silk_reserve = max(species.silk_reserve - desired_result.cost, 0)
-
-		//new desired_result.result_type(src.loc)
-		var/atom/O = new desired_result.result_type(src.loc)
-		O.color = species.silk_color
-
-/mob/living/carbon/human/proc/set_silk_color()
-	set name = "Set Silk Color"
-	set category = "Abilities"
-
-	if(!(species.is_weaver))
-		to_chat(src, "<span class='warning'>You are not a weaver! How are you doing this? Tell a developer!</span>")
-		return
-
-	var/new_silk_color = input(usr, "Pick a color for your woven products:","Silk Color", species.silk_color) as null|color
-	if(new_silk_color)
-		species.silk_color = new_silk_color

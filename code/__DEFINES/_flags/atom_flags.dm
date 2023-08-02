@@ -40,7 +40,7 @@
 /// should not get harmed if this gets caught by an explosion?
 #define PREVENT_CONTENTS_EXPLOSION	(1<<22)
 */
-#define HTML_USE_INITAL_ICON		(1<<23)
+#define HTML_USE_INITIAL_ICON		(1<<23)
 
 DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(ATOM_INITIALIZED),
@@ -56,6 +56,7 @@ DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(OPENCONTAINER),
 	BITFIELD(PHORONGUARD),
 	BITFIELD(NOPRINT),
+	BITFIELD(HTML_USE_INITIAL_ICON),
 ))
 
 //! /atom/movable/var/movable_flags
@@ -86,6 +87,11 @@ DEFINE_BITFIELD(movable_flags, list(
 #define ATOM_PASS_OVERHEAD_THROW	(1<<7)
 /// let buckled mobs pass always
 #define ATOM_PASS_BUCKLED			(1<<8)
+
+/// all actual pass flags / maximum pass
+#define ATOM_PASS_ALL (ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE | \
+ ATOM_PASS_BLOB | ATOM_PASS_MOB | ATOM_PASS_THROWN | ATOM_PASS_CLICK | \
+ ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_BUCKLED)
 
 DEFINE_BITFIELD(pass_flags, list(
 	BITFIELD(ATOM_PASS_TABLE),
@@ -150,7 +156,9 @@ DEFINE_BITFIELD(movement_type, list(
 /// Don't let us buckle people to ourselves.
 #define BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF (1<<6)
 /// Lets the user avoid step checks.
-#define BUCKLING_GROUND_HOIST				  (1<<7)
+#define BUCKLING_GROUND_HOIST                 (1<<7)
+/// projects our depth to the buckled object. you usually don't want this.
+#define BUCKLING_PROJECTS_DEPTH               (1<<8)
 
 DEFINE_BITFIELD(buckle_flags, list(
 	BITFIELD(BUCKLING_REQUIRES_RESTRAINTS),
@@ -161,4 +169,5 @@ DEFINE_BITFIELD(buckle_flags, list(
 	BITFIELD(BUCKLING_NO_DEFAULT_RESIST),
 	BITFIELD(BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF),
 	BITFIELD(BUCKLING_GROUND_HOIST),
+	BITFIELD(BUCKLING_PROJECTS_DEPTH),
 ))

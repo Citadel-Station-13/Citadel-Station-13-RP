@@ -110,7 +110,7 @@
 
 /obj/item/grenade/explosive/ied/tyrmalin/on_explosion(var/turf/O)
 	if(explosion_size)
-		explosion(O, 2, 4, explosion_size, round(explosion_size/2), 0)
+		explosion(O, 0, 2, 4, 0)
 
 /obj/item/grenade/explosive/ied/tyrmalin/large
 	name = "\improper Tyrmalin heavy-duty mining charge"
@@ -126,3 +126,29 @@
 /obj/item/grenade/explosive/ied/tyrmalin/large/on_explosion(var/turf/O)
 	if(explosion_size)
 		explosion(O, 3, 5, explosion_size, round(explosion_size/2), 0)
+
+//Ashlander Frag Grenade
+/obj/item/grenade/explosive/ashlander
+	name = "\improper heaven shaker"
+	desc = "A clay ball packed with alchemical solution. A small fleck of elderstone protrudes from the sphere - it looks like it can be depressed."
+	icon_state = "ashlandercharge"
+	fragment_types = list(/obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/strong)
+	num_fragments = 5
+	spread_range = 3
+	explosion_size = 1
+	det_time = 40
+
+/obj/item/grenade/explosive/ashlander/on_explosion(var/turf/O)
+	if(explosion_size)
+		explosion(O, 1, 3, explosion_size, round(explosion_size/2), 0)
+
+/obj/item/grenade/explosive/ashlander/fragmentation
+	name = "\improper heaven shaker (fragmentation)"
+	desc = "A scored clay ball packed with alchemical solution. A small fleck of elderstone protrudes from the sphere - it looks like it can be depressed."
+	fragment_types = list(/obj/projectile/bullet/pellet/fragment, /obj/projectile/bullet/pellet/fragment/strong, /obj/projectile/bullet/pellet/fragment/strong)
+	num_fragments = 150
+	spread_range = 3
+
+/obj/item/grenade/explosive/ashlander/fragmentation/on_explosion(var/turf/O)
+	if(explosion_size)
+		explosion(O, 0, 1, explosion_size, round(explosion_size/2), 0)

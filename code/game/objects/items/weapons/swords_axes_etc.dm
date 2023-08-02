@@ -23,7 +23,7 @@
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50) && isliving(user))
 		var/mob/living/L = user
 		to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
-		user.Weaken(3 * damage_force)
+		user.afflict_paralyze(20 * 3 * damage_force)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
@@ -99,7 +99,7 @@
 	if(on)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
-			user.Weaken(3 * damage_force)
+			user.afflict_paralyze(20 * 3 * damage_force)
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
@@ -150,7 +150,7 @@
 	var/SA_bonus_damage = 35 // 50 total against animals and aberrations.
 	var/SA_vulnerability = MOB_CLASS_ANIMAL | MOB_CLASS_ABERRATION
 
-/obj/item/melee/disruptor/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/melee/disruptor/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	if(isliving(target))
 		var/mob/living/tm = target // targeted mob
@@ -166,7 +166,7 @@
 	embed_chance = 100 // these should probably come in a bandolier or have some sort of fabricator, tbf
 	damage_force = 5 // HAVING A STICK JAMMED INTO YOU IS LIKELY BAD FOR YOUR HEALTH // well to be fair most of the damage comes from the embed not the stab
 	w_class = WEIGHT_CLASS_SMALL
-	matter = list(MAT_STEEL = 2500)
+	materials = list(MAT_STEEL = 2500)
 	sharp = TRUE
 	edge = TRUE
 	icon_state = "embed_spike"
@@ -247,7 +247,7 @@
 		else
 			to_chat(user, "<span class='notice'>[src] already has a weight slid into the hilt.")
 
-/obj/item/melee/bokken/examine(mob/user)
+/obj/item/melee/bokken/examine(mob/user, dist)
 	. = ..()
 	if(reinforced)
 		. += "There's a metal rod shoved into the base."
@@ -336,7 +336,7 @@
 							"<span class='userdanger'>[pick(fluffmessages)]</span>")
 	playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
 	if(prob(25))
-		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
 
 //Kanabo
 /obj/item/melee/kanabo // parrying stick

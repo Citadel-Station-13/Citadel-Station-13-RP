@@ -12,19 +12,30 @@
 	idtype = /obj/item/card/id/medical/sar
 	minimal_player_age = 3
 	pto_type = PTO_EXPLORATION
-	additional_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_CHEMISTRY, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK, ACCESS_GENERAL_PILOT)
-	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_GENERAL_PILOT)
+	additional_access = list(
+		ACCESS_MEDICAL_SURGERY,
+		ACCESS_MEDICAL_CHEMISTRY,
+		ACCESS_COMMAND_EVA,
+		ACCESS_ENGINEERING_MAINT,
+		ACCESS_ENGINEERING_AIRLOCK,
+	)
+	minimal_access = list(
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_MEDICAL_EQUIPMENT,
+		ACCESS_MEDICAL_MORGUE,
+		ACCESS_GENERAL_PILOT,
+	)
 	outfit_type = /datum/outfit/job/station/sar
 	desc = "A Field medic works as the field doctor of expedition teams."
 	alt_titles = list(
-		"Expedition Medic" = /datum/prototype/alt_title/expedition_medic,
-		"Search and Rescue" = /datum/prototype/alt_title/field_medic/sar
+		"Expedition Medic" = /datum/prototype/struct/alt_title/expedition_medic,
+		"Search and Rescue" = /datum/prototype/struct/alt_title/field_medic/sar
 		)
 
-/datum/prototype/alt_title/expedition_medic
+/datum/prototype/struct/alt_title/expedition_medic
 	title = "Expedition Medic"
 
-/datum/prototype/alt_title/field_medic/sar
+/datum/prototype/struct/alt_title/field_medic/sar
 	title = "Search and Rescue"
 
 /datum/outfit/job/station/sar

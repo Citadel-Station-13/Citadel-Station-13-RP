@@ -52,7 +52,10 @@
 /// When round completes but before reboot.
 #define RUNLEVEL_POSTGAME 8
 
+/// default runlevels for most subsystems
 #define RUNLEVELS_DEFAULT (RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
+/// all valid runlevels - subsystems with this will run all the time after their MC init stage.
+#define RUNLEVELS_ALL (RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
 
 var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_GAME, RUNLEVEL_POSTGAME)
 /// Convert from the runlevel bitfield constants to index in runlevel_flags list.
@@ -75,8 +78,10 @@ DEFINE_BITFIELD(runlevels, list(
 // todo: tg init brackets
 
 #define INIT_ORDER_FAIL2TOPIC      200
+#define INIT_ORDER_IPINTEL         197
 #define INIT_ORDER_TIMER           195
 #define INIT_ORDER_DBCORE          190
+#define INIT_ORDER_EARLY_INIT      185
 #define INIT_ORDER_REPOSITORY      180
 #define INIT_ORDER_STATPANELS      170
 #define INIT_ORDER_INPUT           160
@@ -88,13 +93,16 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_SERVER_MAINT    65
 #define INIT_ORDER_INSTRUMENTS     50
 #define INIT_ORDER_EARLY_ASSETS    48
-#define INIT_ORDER_SQLITE          40
 #define INIT_ORDER_CHEMISTRY       35
-#define INIT_ORDER_MATERIALS       30
+#define INIT_ORDER_MATERIALS       34
+#define INIT_ORDER_PHOTOGRAPHY     27
 #define INIT_ORDER_MAPPING         25
-#define INIT_ORDER_DECALS          20
+#define INIT_ORDER_LEGACY_ATC      24
+#define INIT_ORDER_LEGACY_LORE     23
+#define INIT_ORDER_LOBBY           22
 #define INIT_ORDER_PLANTS          19
 #define INIT_ORDER_ALARMS          18
+#define INIT_ORDER_RESEARCH        17
 #define INIT_ORDER_ATOMS           15
 #define INIT_ORDER_MACHINES        10
 #define INIT_ORDER_SHUTTLES        3
@@ -118,7 +126,6 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_CIRCUIT        -60
 #define INIT_ORDER_AI             -70
 #define INIT_ORDER_PATH           -98
-#define INIT_ORDER_OPENSPACE      -99
 #define INIT_ORDER_CHAT           -100  //! Should be last to ensure chat remains smooth during init.
 
 
@@ -160,9 +167,16 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_INSTRUMENTS      90
 #define FIRE_PRIORITY_ASSET_LOADING    100
 #define FIRE_PRIORITY_MACHINES         100
-#define FIRE_PRIORITY_TGUI             110
+#define FIRE_PRIORITY_NANO             150
+#define FIRE_PRIORITY_AI               200
+#define FIRE_PRIORITY_TGUI             200
+#define FIRE_PRIORITY_PROJECTILES      200
+#define FIRE_PRIORITY_THROWING         200
 #define FIRE_PRIORITY_STATPANELS       400
 #define FIRE_PRIORITY_OVERLAYS         500
+#define FIRE_PRIORITY_SMOOTHING        500
+#define FIRE_PRIORITY_CHAT             500
+#define FIRE_PRIORITY_INPUT            1000
 
 //? Ticker Subsystems - Highest priority
 // Any subsystem flagged with SS_TICKER is here!
@@ -170,14 +184,9 @@ DEFINE_BITFIELD(runlevels, list(
 // Is your feature as important as movement, chat, or timers?
 // Probably not! Go to normal bracket instead!
 
-#define FIRE_PRIORITY_AI           10	 //! WHY IS THIS SSTICKER???
 // DEFAULT PRIORITY IS HERE
-#define FIRE_PRIORITY_PROJECTILES  150   //! this probably shouldn't be ssticker
-#define FIRE_PRIORITY_THROWING     150   //! this probably shouldn't be ssticker
-#define FIRE_PRIORITY_CHAT         400
-#define FIRE_PRIORITY_SMOOTHING    500   //! this probably shouldn't be ssticker
+#define FIRE_PRIORITY_DPC          700
 #define FIRE_PRIORITY_TIMER        700
-#define FIRE_PRIORITY_INPUT        1000  //! Never drop input.
 
 //? Special
 

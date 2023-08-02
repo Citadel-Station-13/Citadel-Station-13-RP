@@ -54,8 +54,6 @@ Key procs
 	/// Other modification datums this conflicts with.
 	var/conflicts_with
 
-
-
 /datum/movespeed_modifier/New()
 	. = ..()
 	if(!id)
@@ -208,8 +206,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 /mob/proc/update_movespeed()
 	. = 0
 	var/list/conflict_tracker = list()
-	for(var/key in get_movespeed_modifiers())
-		var/datum/movespeed_modifier/M = movespeed_modification[key]
+	for(var/datum/movespeed_modifier/M in get_movespeed_modifiers())
 		if(!(M.movement_type & movement_type)) // We don't affect any of these move types, skip
 			continue
 		if(M.blacklisted_movetypes & movement_type) // There's a movetype here that disables this modifier, skip

@@ -80,12 +80,8 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 
 	var/lesser_form = !ishuman(src)
 
-	if(!powerinstances.len)
-		for(var/P in powers)
-			powerinstances += new P()
-
 	// Code to auto-purchase free powers.
-	for(var/datum/power/changeling/P in powerinstances)
+	for(var/datum/power/changeling/P in GLOB.changeling_powers)
 		if(!P.genomecost) // Is it free?
 			if(!(P in mind.changeling.purchased_powers)) // Do we not have it already?
 				mind.changeling.purchasePower(mind, P.name, 0)// Purchase it. Don't remake our verbs, we're doing it after this.
@@ -221,7 +217,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 		to_chat(src, SPAN_WARNING("We cannot reach \the [M] with a sting!"))
 		return 0 //One is inside, the other is outside something.
 	// Maximum queued turfs set to 25; I don't *think* anything raises sting_range above 2, but if it does the 25 may need raising
-	if(!AStar(src.loc, M.loc, /turf/proc/AdjacentTurfsRangedSting, /turf/proc/Distance, max_nodes=25, max_node_depth=sting_range)) //If we can't find a path, fail
+	if(!AStar(src.loc, M.loc, TYPE_PROC_REF(/turf, AdjacentTurfsRangedSting), TYPE_PROC_REF(/turf, Distance), max_nodes=25, max_node_depth=sting_range)) //If we can't find a path, fail
 		to_chat(src, SPAN_WARNING("We cannot find a path to sting \the [M] by!"))
 		return 0
 	return 1

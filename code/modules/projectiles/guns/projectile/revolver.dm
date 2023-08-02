@@ -269,7 +269,7 @@
 		if(rand(1,max_shells) > loaded.len)
 			chamber_offset = rand(0,max_shells - loaded.len)
 
-/obj/item/gun/ballistic/revolver/lemat/examine(mob/user)
+/obj/item/gun/ballistic/revolver/lemat/examine(mob/user, dist)
 	. = ..()
 	if(secondary_loaded)
 		var/to_print
@@ -326,8 +326,8 @@
 
 //NT SpecOps Revolver
 /obj/item/gun/ballistic/revolver/combat
-	name = "NT-SO combat revolver"
-	desc = "A semiautomatic revolver tooled for NanoTrasen special operations. Chambered in .44 Magnum, it serves as the perfect sidearm for any off the books endeavor."
+	name = "\improper Ogre combat revolver"
+	desc = "The NT-R-7 'Ogre' combat revolver is tooled for NanoTrasen special operations. Chambered in .44 Magnum with an advanced high-speed firing mechanism, it serves as the perfect sidearm for any off the books endeavor."
 	icon_state = "combatrevolver"
 	caliber = ".44"
 	fire_delay = 5.7

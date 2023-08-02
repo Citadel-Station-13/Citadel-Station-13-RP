@@ -30,17 +30,17 @@
 	/// first of all if we are already on the right perspective we really don't care!
 	if(!client)		// this is way easier if no client, and microoptimization
 		if(using_perspective)
-			using_perspective.RemoveMob(src, TRUE)
+			using_perspective.remove_mobs(src, TRUE)
 			if(using_perspective)
 				stack_trace("using perspective didn't clear us")
 				using_perspective = null
 		P = P || get_perspective()
-		P.AddMob(src)
+		P.add_mob(src)
 		return
 	var/old = using_perspective
 	// get old perspective first
 	if(using_perspective)
-		using_perspective.RemoveMob(src, TRUE)
+		using_perspective.remove_mobs(src, TRUE)
 		if(using_perspective)
 			stack_trace("using perspective didn't clear us")
 			using_perspective = null
@@ -53,7 +53,7 @@
 			P = get_perspective()
 	// great, P exists
 	// tell it to add us
-	P.AddMob(src)
+	P.add_mob(src)
 	// signal
 	SEND_SIGNAL(src, COMSIG_MOB_RESET_PERSPECTIVE, P)
 	// if client exists and we want to apply
@@ -101,7 +101,9 @@
 		reset_perspective(using_perspective)
 		return
 	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_PERSPECTIVE)
-	using_perspective?.Update(client)
+	if(isnull(using_perspective))
+		return
+	using_perspective.update(client)
 
 /**
  * we're considered to be viewing from some/something else's perspective
@@ -114,9 +116,45 @@
  */
 /mob/make_perspective()
 	. = ..()
-	self_perspective.see_in_dark = see_in_dark
 	self_perspective.see_invisible = see_invisible
 	self_perspective.sight = sight
+	update_vision()
+
+//? Perspective - Shunting / Remote Viewing
+
+/**
+ * wrapper for things like holocalls and overmaps that shunt our view
+ * returns TRUE or FALSE based on if we moved their perspective
+ * will refuse to if the mob was already shunted
+ * *USE THE RETURN VALUE*
+ *
+ * @params
+ * - perspective - this must be a /datum/perspective or an /atom.
+ */
+/mob/proc/shunt_perspective(datum/perspective/perspective)
+	if(perspective_shunted())
+		return FALSE
+	if(ismovable(perspective))
+		var/atom/movable/AM = perspective
+		perspective = AM.temporary_perspective()
+	reset_perspective(perspective)
+	return TRUE
+
+/**
+ * wrapper for when we want to un-shunt our perspective
+ * from a shunt_perspective call.
+ */
+/mob/proc/unshunt_perspective()
+	if(!perspective_shunted())
+		return FALSE
+	reset_perspective()
+	return TRUE
+
+/**
+ * returns if our perspective is shunted elsewhere
+ */
+/mob/proc/perspective_shunted()
+	return self_perspective != using_perspective
 
 //? Perspective - Self
 
@@ -153,15 +191,62 @@
 	ensure_self_perspective()
 	self_perspective.SetSeeInvis(see_invisible)
 
-/**
- * ditto
- */
-/mob/proc/SetSeeInDarkSelf(see_invisible)
-	ensure_self_perspective()
-	self_perspective.SetDarksight(see_invisible)
+//? Darksight
 
 /**
- * ditto
+ * get our innate darksight
  */
-/mob/proc/GetSeeInDarkSelf()
-	return self_perspective? self_perspective.see_in_dark : see_in_dark
+/mob/proc/innate_vision()
+	RETURN_TYPE(/datum/vision/baseline)
+	return vision_override || GLOB.default_darksight
+
+/**
+ * get all darksight datums, ordered. 1 (front of list) is applied first.
+ */
+/mob/proc/query_vision()
+	RETURN_TYPE(/list)
+	var/list/built = vision_modifiers?.Copy() || list()
+	built.Insert(1, innate_vision())
+	return built
+
+/**
+ * updates our vision data and pushes it to perspective
+ */
+/mob/proc/update_vision()
+	ensure_self_perspective()
+	self_perspective.push_vision_stack(query_vision())
+
+/mob/proc/sort_vision_modifiers()
+	if(isnull(vision_modifiers))
+		return
+	tim_sort(vision_modifiers)
+
+/mob/proc/add_vision_modifier(datum/vision/modifier)
+	ASSERT(!isnull(modifier))
+	if(ispath(modifier))
+		modifier = cached_vision_holder(modifier)
+	ASSERT(!(modifier in vision_modifiers))
+	LAZYINITLIST(vision_modifiers)
+	BINARY_INSERT(modifier, vision_modifiers, /datum/vision, modifier, priority, COMPARE_KEY)
+	update_vision()
+
+/mob/proc/remove_vision_modifier(datum/vision/modifier)
+	ASSERT(!isnull(modifier))
+	if(ispath(modifier))
+		modifier = cached_vision_holder(modifier)
+	LAZYREMOVE(vision_modifiers, modifier)
+	update_vision()
+
+/**
+ * returns if we have this exact modifier
+ * usually you use this with paths / cached ones.
+ */
+/mob/proc/has_vision_modifier(datum/vision/modifier)
+	if(ispath(modifier))
+		modifier = cached_vision_holder(modifier)
+	return modifier in vision_modifiers
+
+//? Helpers
+
+/mob/proc/can_see_plane(val)
+	return val <= BYOND_PLANE || val >= HUD_PLANE || self_perspective.is_plane_visible(val)

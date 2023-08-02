@@ -409,8 +409,8 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	var/my_z = get_z(src)
 
 	//Actually doing it special this time instead of letting using_map decide
-	if(GLOB.using_map.use_overmap)
-		var/obj/effect/overmap/visitable/S = get_overmap_sector(my_z)
+	if((LEGACY_MAP_DATUM).use_overmap)
+		var/obj/overmap/entity/visitable/S = get_overmap_sector(my_z)
 		if(S)
 			levels = S.get_space_zlevels() //Just the spacey ones
 		else

@@ -98,11 +98,11 @@ SUBSYSTEM_DEF(job)
 		if(LAZYLEN(job.departments))
 			add_to_departments(job)
 
-	tim_sort(occupations, /proc/cmp_job_datums)
+	tim_sort(occupations, GLOBAL_PROC_REF(cmp_job_datums))
 	for(var/D in department_datums)
 		var/datum/department/dept = department_datums[D]
-		tim_sort(dept.jobs, /proc/cmp_job_datums, TRUE)
-		tim_sort(dept.primary_jobs, /proc/cmp_job_datums, TRUE)
+		tim_sort(dept.jobs, GLOBAL_PROC_REF(cmp_job_datums), TRUE)
+		tim_sort(dept.primary_jobs, GLOBAL_PROC_REF(cmp_job_datums), TRUE)
 
 	return TRUE
 
@@ -130,7 +130,7 @@ SUBSYSTEM_DEF(job)
 		var/datum/department/D = new t()
 		department_datums[D.name] = D
 
-	tim_sort(department_datums, /proc/cmp_department_datums, TRUE)
+	tim_sort(department_datums, GLOBAL_PROC_REF(cmp_department_datums), TRUE)
 
 /datum/controller/subsystem/job/proc/get_all_department_datums()
 	var/list/dept_datums = list()

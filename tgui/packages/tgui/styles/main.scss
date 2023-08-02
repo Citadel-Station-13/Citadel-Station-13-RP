@@ -22,6 +22,7 @@
 // Components
 @include meta.load-css('./components/BlockQuote.scss');
 @include meta.load-css('./components/Button.scss');
+@include meta.load-css('./components/Collapsible.scss');
 @include meta.load-css('./components/ColorBox.scss');
 @include meta.load-css('./components/Dimmer.scss');
 @include meta.load-css('./components/Divider.scss');
@@ -38,6 +39,7 @@
 @include meta.load-css('./components/RoundGauge.scss');
 @include meta.load-css('./components/Section.scss');
 @include meta.load-css('./components/Slider.scss');
+@include meta.load-css('./components/Sprite.scss');
 @include meta.load-css('./components/Stack.scss');
 @include meta.load-css('./components/Table.scss');
 @include meta.load-css('./components/Tabs.scss');
@@ -53,6 +55,7 @@
 @include meta.load-css('./interfaces/Changelog.scss');
 @include meta.load-css('./interfaces/CrewManifest.scss');
 @include meta.load-css('./interfaces/ExperimentConfigure.scss');
+@include meta.load-css('./interfaces/Fishing.scss');
 @include meta.load-css('./interfaces/HellishRunes.scss');
 @include meta.load-css('./interfaces/HotKeysHelp.scss');
 @include meta.load-css('./interfaces/Hypertorus.scss');

@@ -5,7 +5,7 @@
 /turf/simulated/open
 	name = "open space"
 	icon = 'icons/turf/space.dmi'
-	icon_state = ""
+	icon_state = "opendebug"
 	density = FALSE
 	pathweight = INFINITY //Seriously, don't try and path over this one numbnuts
 	can_build_into_floor = TRUE
@@ -14,6 +14,7 @@
 
 /turf/simulated/open/Initialize(mapload)
 	. = ..()
+	icon_state = ""
 	ASSERT(HasBelow(z))
 	queue()
 
@@ -70,7 +71,6 @@
 			return FALSE
 	return ..()
 
-
 // Straight copy from space.
 /turf/simulated/open/attackby(obj/item/C as obj, mob/user as mob)
 	if (istype(C, /obj/item/stack/rods))
@@ -102,10 +102,3 @@
 	if(istype(C, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/coil = C
 		coil.turf_place(src, user)
-
-
-/obj/effect/abstract/over_openspace_darkness
-	icon = 'icons/turf/open_space.dmi'
-	icon_state = "black_open"
-	plane = OVER_OPENSPACE_PLANE
-	layer = TURF_LAYER

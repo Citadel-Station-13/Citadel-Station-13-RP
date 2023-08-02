@@ -162,7 +162,7 @@
 
 /obj/vehicle_old/train/trolley/RunOver(var/mob/living/M)
 	..()
-	attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>")
+	attack_log += "\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>"
 
 /obj/vehicle_old/train/engine/RunOver(var/mob/living/M)
 	..()
@@ -172,9 +172,9 @@
 		to_chat(D, "<font color='red'><B>You ran over [M]!</B></font>")
 		visible_message("<B><font color='red'>\The [src] ran over [M]!</B></font>")
 		add_attack_logs(D,M,"Ran over with [src.name]")
-		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey]), driven by [D.name] ([D.ckey])</font>")
+		attack_log += "\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey]), driven by [D.name] ([D.ckey])</font>"
 	else
-		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>")
+		attack_log += "\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>"
 
 
 //-------------------------------------------
@@ -185,7 +185,7 @@
 		return 0
 
 	if(is_train_head())
-		if(direction == REVERSE_DIR(dir) && tow)
+		if(direction == global.reverse_dir[dir] && tow)
 			return 0
 		if(Move(get_step(src, direction), direction))
 			return 1
@@ -193,7 +193,7 @@
 	else
 		return ..()
 
-/obj/vehicle_old/train/engine/examine(mob/user)
+/obj/vehicle_old/train/engine/examine(mob/user, dist)
 	. = ..()
 	. += "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition."
 	. += "The charge meter reads [cell? round(cell.percent(), 0.01) : 0]%"
@@ -352,7 +352,7 @@
 
 		if(dir == T_dir) 	//if car is ahead
 			src.attach_to(T, user)
-		else if(REVERSE_DIR(dir) == T_dir)	//else if car is behind
+		else if(global.reverse_dir[dir] == T_dir)	//else if car is behind
 			T.attach_to(src, user)
 
 //-------------------------------------------------------

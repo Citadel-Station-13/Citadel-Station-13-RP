@@ -49,12 +49,6 @@
 
 /obj/structure/closet/secure_closet/xenoarchaeologist
 	name = "Xenoarchaeologist Locker"
-	icon_state = "secureres1"
-	icon_closed = "secureres"
-	icon_locked = "secureres1"
-	icon_opened = "secureresopen"
-	icon_broken = "secureresbroken"
-	icon_off = "secureresoff"
 	req_access = list(ACCESS_SCIENCE_TOXINS)
 
 	starts_with = list(
@@ -81,8 +75,6 @@
 		/obj/item/depth_scanner,
 		/obj/item/core_sampler,
 		/obj/item/gps,
-		/obj/item/beacon_locator,
-		/obj/item/radio/beacon,
 		/obj/item/clothing/glasses/meson,
 		/obj/item/pickaxe,
 		/obj/item/measuring_tape,

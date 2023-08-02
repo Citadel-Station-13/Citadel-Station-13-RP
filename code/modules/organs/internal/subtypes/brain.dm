@@ -1,5 +1,3 @@
-GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
-
 /obj/item/organ/internal/brain
 	name = "brain"
 	health = 400 //They need to live awhile longer than other organs. Is this even used by organ code anymore?
@@ -23,7 +21,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 /obj/item/organ/internal/brain/Initialize(mapload, ...)
 	. = ..()
 	health = config_legacy.default_brain_health
-	addtimer(CALLBACK(src, .proc/clear_brainmob_hud), 15)
+	addtimer(CALLBACK(src, PROC_REF(clear_brainmob_hud)), 15)
 
 /obj/item/organ/internal/brain/Destroy()
 	QDEL_NULL(brainmob)
@@ -93,14 +91,14 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 				brainmob.add_modifier(M.type)
 
 	if(H.mind)
-		H.mind.transfer_to(brainmob)
+		H.mind.transfer(brainmob)
 
 	brainmob.languages = H.languages
 
 	to_chat(brainmob, SPAN_NOTICE("You feel slightly disoriented. That's normal when you're just \a [initial(src.name)]."))
 	callHook("debrain", list(brainmob))
 
-/obj/item/organ/internal/brain/examine(mob/user) // -- TLE
+/obj/item/organ/internal/brain/examine(mob/user, dist) // -- TLE
 	. = ..()
 	if(brainmob && brainmob.client)//if thar be a brain inside... the brain.
 		. += "You can feel the small spark of life still left in this one."
@@ -131,7 +129,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 	if(brainmob)
 		if(brainmob.mind)
-			brainmob.mind.transfer_to(target)
+			brainmob.mind.transfer(target)
 		else
 			target.ckey = brainmob.ckey
 	..()
@@ -177,7 +175,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	. = ..()
 	create_reagents(50)
 	set_owner_vars()
-	addtimer(CALLBACK(src, .proc/sync_color), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(sync_color)), 10 SECONDS)
 
 /obj/item/organ/internal/brain/slime/proc/set_owner_vars()
 	if(!ishuman(owner))
@@ -257,15 +255,15 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	H.nutrition = 260 //Enough to try to regenerate ONCE.
 	H.adjustBruteLoss(40)
 	H.adjustFireLoss(40)
-	H.Unconscious(4)
-	H.updatehealth()
+	H.afflict_unconscious(20 * 4)
+	H.update_health()
 	for(var/obj/item/organ/external/E in H.organs) //They've still gotta congeal, but it's faster than the clone sickness they'd normally get.
 		if(E && E.organ_tag == BP_L_ARM || E.organ_tag == BP_R_ARM || E.organ_tag == BP_L_LEG || E.organ_tag == BP_R_LEG)
 			E.removed()
 			qdel(E)
 			E = null
 	H.regenerate_icons()
-	clonemind.transfer_to(H)
+	clonemind.transfer(H)
 	for(var/modifier_type in R.genetic_modifiers)
 		H.add_modifier(modifier_type)
 
@@ -279,13 +277,11 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	name = "Promethean Revival"
 	id = "prom_revival"
 	result = null
-	required_reagents = list(MAT_PHORON = 40)
+	required_reagents = list(
+		/datum/reagent/toxin/phoron = 40,
+	)
 	result_amount = 1
-
-/datum/chemical_reaction/promethean_brain_revival/can_happen(datum/reagents/holder)
-	if(holder.my_atom && istype(holder.my_atom, /obj/item/organ/internal/brain/slime))
-		return ..()
-	return FALSE
+	required_container = /obj/item/organ/internal/brain/slime
 
 /datum/chemical_reaction/promethean_brain_revival/on_reaction(datum/reagents/holder)
 	var/obj/item/organ/internal/brain/slime/brain = holder.my_atom
@@ -307,7 +303,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 /obj/item/organ/internal/brain/grey/colormatch/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/sync_color), 15)
+	addtimer(CALLBACK(src, PROC_REF(sync_color)), 15)
 
 /obj/item/organ/internal/brain/grey/colormatch/proc/sync_color()
 	if(ishuman(owner))

@@ -10,7 +10,8 @@
 	anchored = TRUE
 	unacidable = TRUE
 	pass_flags = ATOM_PASS_TABLE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	depth_level = INFINITY // nothing should be passing over us from depth
 
 	////TG PROJECTILE SYTSEM
 	//Projectile stuff
@@ -27,7 +28,7 @@
 	var/trajectory_ignore_forcemove = FALSE	//instructs forceMove to NOT reset our trajectory to the new location!
 	var/ignore_source_check = FALSE
 
-	var/speed = 0.8			//Amount of deciseconds it takes for projectile to travel
+	var/speed = 0.55			//Amount of deciseconds it takes for projectile to travel
 	var/Angle = 0
 	var/original_angle = 0		//Angle at firing
 	var/nondirectional_sprite = FALSE //Set TRUE to prevent projectiles from having their sprites rotated based on firing angle
@@ -347,7 +348,7 @@
 			qdel(src)
 			return
 		var/turf/target = locate(clamp(starting + xo, 1, world.maxx), clamp(starting + yo, 1, world.maxy), starting.z)
-		setAngle(Get_Angle(src, target))
+		setAngle(get_visual_angle(src, target))
 	if(dispersion)
 		setAngle(Angle + rand(-dispersion, dispersion))
 	original_angle = Angle
@@ -410,7 +411,7 @@
 	if(targloc || !params)
 		yo = targloc.y - curloc.y
 		xo = targloc.x - curloc.x
-		setAngle(Get_Angle(src, targloc) + spread)
+		setAngle(get_visual_angle(src, targloc) + spread)
 
 	if(isliving(source) && params)
 		var/list/calculated = calculate_projectile_angle_and_pixel_offsets(source, params)
@@ -421,7 +422,7 @@
 	else if(targloc)
 		yo = targloc.y - curloc.y
 		xo = targloc.x - curloc.x
-		setAngle(Get_Angle(src, targloc) + spread)
+		setAngle(get_visual_angle(src, targloc) + spread)
 	else
 		stack_trace("WARNING: Projectile [type] fired without either mouse parameters, or a target atom to aim at!")
 		qdel(src)
@@ -464,7 +465,7 @@
 		source = get_turf(src)
 	starting = get_turf(source)
 	original = target
-	setAngle(Get_Angle(source, target))
+	setAngle(get_visual_angle(source, target))
 
 /obj/projectile/Destroy()
 	if(hitscan)

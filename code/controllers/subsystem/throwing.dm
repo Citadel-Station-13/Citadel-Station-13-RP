@@ -1,8 +1,8 @@
 SUBSYSTEM_DEF(throwing)
 	name = "Throwing"
 	priority = FIRE_PRIORITY_THROWING
-	wait = 1
-	subsystem_flags = SS_NO_INIT | SS_KEEP_TIMING | SS_TICKER
+	wait = 0.25 // scale up to 40 fps
+	subsystem_flags = SS_NO_INIT
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/list/currentrun
@@ -365,8 +365,8 @@ SUBSYSTEM_DEF(throwing)
 	thrownthing.throwing = null
 	if(!QDELETED(thrownthing))
 		// move
-		addtimer(CALLBACK(thrownthing, /atom/movable/proc/newtonian_move, init_dir), 1)
-		addtimer(CALLBACK(thrownthing, /atom/movable/proc/fall), 1)
+		addtimer(CALLBACK(thrownthing, TYPE_PROC_REF(/atom/movable, newtonian_move), init_dir), 1)
+		addtimer(CALLBACK(thrownthing, TYPE_PROC_REF(/atom/movable, fall)), 1)
 	if(in_qdel)
 		return
 	qdel(src)

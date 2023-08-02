@@ -16,6 +16,8 @@
 	density = FALSE
 	circuit = /obj/item/circuitboard/timeclock
 	clicksound = null
+	climb_allowed = FALSE
+	depth_projected = FALSE
 	var/channel = "Common" //Radio channel to announce on
 
 	var/obj/item/card/id/card // Inserted Id card
@@ -134,6 +136,9 @@
 					makeOnDuty(params["switch-to-onduty-rank"], params["switch-to-onduty-assignment"])
 					usr.put_in_hands_or_drop(card)
 					card = null
+					flick(icon, "timeclock_approved")
+				else
+					flick(icon, "timeclock_denied")
 			update_icon()
 			return TRUE
 		if("switch-to-offduty")
@@ -142,6 +147,9 @@
 					makeOffDuty()
 					usr.put_in_hands_or_drop(card)
 					card = null
+					flick(icon, "timeclock_approved")
+				else
+					flick(icon, "timeclock_denied")
 			update_icon()
 			return TRUE
 
@@ -183,7 +191,7 @@
 		card.access = newjob.get_access()
 		card.rank = newjob.title
 		card.assignment = newassignment
-		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
+		card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 		data_core.manifest_modify(card.registered_name, card.assignment, card.rank)
 		card.last_job_switch = world.time
 		callHook("reassign_employee", list(card))
@@ -191,7 +199,7 @@
 		var/mob/living/carbon/human/H = usr
 		H.mind.assigned_role = card.rank
 		H.mind.role_alt_title = card.assignment
-		announce.autosay("[card.registered_name] has moved On-Duty as [card.assignment].", "Employee Oversight", channel, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
+		announce.autosay("[card.registered_name] has moved On-Duty as [card.assignment].", "Employee Oversight", channel, zlevels = (LEGACY_MAP_DATUM).get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/makeOffDuty()
@@ -209,7 +217,7 @@
 		card.access = ptojob.get_access()
 		card.rank = ptojob.title
 		card.assignment = ptojob.title
-		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
+		card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 		data_core.manifest_modify(card.registered_name, card.assignment, card.rank)
 		card.last_job_switch = world.time
 		callHook("reassign_employee", list(card))
@@ -217,13 +225,13 @@
 		H.mind.assigned_role = ptojob.title
 		H.mind.role_alt_title = ptojob.title
 		foundjob.current_positions--
-		announce.autosay("[card.registered_name], [oldtitle], has moved Off-Duty.", "Employee Oversight", channel, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
+		announce.autosay("[card.registered_name], [oldtitle], has moved Off-Duty.", "Employee Oversight", channel, zlevels = (LEGACY_MAP_DATUM).get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/checkCardCooldown()
 	if(!card)
 		return FALSE
-	var/time_left = 10 MINUTES - (world.time - card.last_job_switch)
+	var/time_left = 3 MINUTES - (world.time - card.last_job_switch)
 	if(time_left > 0)
 		to_chat(usr, "You need to wait another [round((time_left/10)/60, 1)] minute\s before you can switch.")
 		return FALSE
@@ -232,26 +240,23 @@
 /obj/machinery/computer/timeclock/proc/checkFace()
 	if(!card)
 		to_chat(usr, "<span class='notice'>No ID is inserted.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	var/mob/living/carbon/human/H = usr
 	if(!(istype(H)))
 		to_chat(usr, "<span class='warning'>Invalid user detected. Access denied.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	else if((H.wear_mask && (H.wear_mask.inv_hide_flags & HIDEFACE)) || (H.head && (H.head.inv_hide_flags & HIDEFACE)))	//Face hiding bad
 		to_chat(usr, "<span class='warning'>Facial recognition scan failed due to physical obstructions. Access denied.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	else if(H.get_face_name() == "Unknown" || !(H.real_name == card.registered_name))
 		to_chat(usr, "<span class='warning'>Facial recognition scan failed. Access denied.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	else
 		return TRUE
-
-/obj/item/card/id
-	var/last_job_switch
-
-/obj/item/card/id/Initialize(mapload)
-	. = ..()
-	last_job_switch = world.time
 
 //
 // Frame type for construction

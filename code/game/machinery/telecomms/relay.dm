@@ -22,7 +22,7 @@
 	var/broadcasting = 1
 	var/receiving = 1
 
-/obj/machinery/telecomms/relay/onTransitZ(old_z, new_z)
+/obj/machinery/telecomms/relay/on_changed_z_level(old_z, new_z)
 	. = ..()
 	listening_level = z
 
@@ -30,7 +30,7 @@
 
 	// Add our level and send it back
 	if(can_send(signal))
-		signal.data["level"] |= GLOB.using_map.get_map_levels(listening_level)
+		signal.data["level"] |= (LEGACY_MAP_DATUM).get_map_levels(listening_level)
 
 // Checks to see if it can send/receive.
 

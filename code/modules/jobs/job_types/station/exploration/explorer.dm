@@ -11,31 +11,36 @@
 	selection_color = "#999440"
 	pto_type = PTO_EXPLORATION
 	idtype = /obj/item/card/id/explorer/explorer
-	additional_access = list(ACCESS_GENERAL_EXPLORER, ACCESS_ENGINEERING_AIRLOCK, ACCESS_SCIENCE_MAIN, ACCESS_GENERAL_PILOT, ACCESS_GENERAL_GATEWAY)
-	minimal_access = list(ACCESS_GENERAL_EXPLORER, ACCESS_ENGINEERING_AIRLOCK, ACCESS_SCIENCE_MAIN, ACCESS_GENERAL_PILOT, ACCESS_GENERAL_GATEWAY)
+	minimal_access = list(
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_ENGINEERING_AIRLOCK,
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_GENERAL_PILOT,
+		ACCESS_GENERAL_GATEWAY,
+	)
 	outfit_type = /datum/outfit/job/station/explorer
 	desc = "An Explorer searches for interesting things, and returns them to the station."
 	alt_titles = list(
-		"Surveyor" = /datum/prototype/alt_title/surveyor,
-		"Offsite Scout" = /datum/prototype/alt_title/offsite_scout,
-		"Field Scout" = /datum/prototype/alt_title/explorer/field_scout,
-		"Pioneer" = /datum/prototype/alt_title/explorer/pioneer,
-		"Jr. Explorer" = /datum/prototype/alt_title/explorer/junior
+		"Surveyor" = /datum/prototype/struct/alt_title/surveyor,
+		"Offsite Scout" = /datum/prototype/struct/alt_title/offsite_scout,
+		"Field Scout" = /datum/prototype/struct/alt_title/explorer/field_scout,
+		"Pioneer" = /datum/prototype/struct/alt_title/explorer/pioneer,
+		"Jr. Explorer" = /datum/prototype/struct/alt_title/explorer/junior
 		)
 
-/datum/prototype/alt_title/surveyor
+/datum/prototype/struct/alt_title/surveyor
 	title = "Surveyor"
 
-/datum/prototype/alt_title/offsite_scout
+/datum/prototype/struct/alt_title/offsite_scout
 	title = "Offsite Scout"
 
-/datum/prototype/alt_title/explorer/field_scout
+/datum/prototype/struct/alt_title/explorer/field_scout
 	title = "Field Scout"
 
-/datum/prototype/alt_title/explorer/pioneer
+/datum/prototype/struct/alt_title/explorer/pioneer
 	title = "Pioneer"
 
-/datum/prototype/alt_title/explorer/junior
+/datum/prototype/struct/alt_title/explorer/junior
 	title = "Jr. Explorer"
 
 /datum/outfit/job/station/explorer
