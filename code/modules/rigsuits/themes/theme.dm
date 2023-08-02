@@ -85,7 +85,7 @@
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-helmet"
 
-/datum/rig_piece/chesplate
+/datum/rig_piece/chestplate
 	display_name = "chassis"
 	visible_name = "Chassis"
 	path = /obj/item/clothing/suit/rig
