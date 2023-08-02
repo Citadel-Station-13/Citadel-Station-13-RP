@@ -45,9 +45,9 @@
 	var/active
 	var/can_open = FALSE
 
-	var/datum/material/material_outer
+	var/datum/material/material_outer = /datum/material/steel
 	var/datum/material/material_reinf
-	var/datum/material/material_girder
+	var/datum/material/material_girder = /datum/material/steel
 
 	var/last_state
 	var/construction_stage
@@ -90,12 +90,6 @@
 /turf/simulated/wall/levelupdate()
 	for(var/obj/O in src)
 		O.hide(1)
-
-/turf/simulated/wall/proc/get_material()
-	return material
-
-/turf/simulated/wall/proc/get_default_material()
-	. = /datum/material/steel
 
 /turf/simulated/wall/bullet_act(var/obj/projectile/Proj)
 	if(istype(Proj,/obj/projectile/beam))

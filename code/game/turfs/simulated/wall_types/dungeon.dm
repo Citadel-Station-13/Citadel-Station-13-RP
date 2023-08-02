@@ -4,7 +4,7 @@
 	block_tele = TRUE // Anti-cheese.
 
 /turf/simulated/wall/dungeon
-	material = /datum/material/alienalloy/dungeonium
+	material_outer = /datum/material/alienalloy/dungeonium
 
 /turf/simulated/wall/dungeon/attackby()
 	return
