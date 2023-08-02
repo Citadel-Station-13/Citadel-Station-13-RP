@@ -162,7 +162,9 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "bh" = (
-/obj/machinery/door/window/holowindoor,
+/obj/machinery/door/window/holowindoor{
+	dir = 4
+	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
 "bi" = (
@@ -265,7 +267,8 @@
 /area/holodeck/source_courtroom)
 "bx" = (
 /obj/machinery/door/window/holowindoor{
-	name = "Red Team"
+	name = "Red Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
@@ -706,7 +709,8 @@
 "dc" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
-	icon_state = "right"
+	icon_state = "right";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
@@ -726,7 +730,8 @@
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
 	icon_state = "right";
-	name = "Green Team"
+	name = "Green Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
@@ -1106,7 +1111,8 @@
 /area/holodeck/source_meetinghall)
 "er" = (
 /obj/machinery/door/window/holowindoor{
-	name = "Red Team"
+	name = "Red Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_basketball)
@@ -1121,7 +1127,8 @@
 /area/holodeck/source_beach)
 "eu" = (
 /obj/machinery/door/window/holowindoor{
-	name = "Red Team"
+	name = "Red Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_thunderdomecourt)
@@ -1427,7 +1434,8 @@
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
 	icon_state = "right";
-	name = "Green Team"
+	name = "Green Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_basketball)
@@ -1446,7 +1454,8 @@
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
 	icon_state = "right";
-	name = "Green Team"
+	name = "Green Team";
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_thunderdomecourt)
