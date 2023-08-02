@@ -159,16 +159,16 @@
 	desc = "A long blue forensics technician jacket."
 	icon_state = "forensics_blue_long"
 
-/obj/item/clothing/suit/storage/toggle/necroagent //no armor on this one chief.
+/obj/item/clothing/suit/storage/toggle/necroagent
 	name = "OSS&NECRO Field Jacket"
-	desc = "A leather jacket branded with the OSS&NECRO logo on the back. Standard equipement for any OSS&NERCRO Field Operatives."
+	desc = "A slightly armored leather jacket branded with the OSS&NECRO logo on the back. Standard equipement for any OSS&NERCRO Field Operatives."
 	icon_state = "agent_jacket"
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight, /obj/item/gun/energy, /obj/item/gun/ballistic, /obj/item/ammo_magazine,
 	/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/handcuffs, /obj/item/storage/fancy/cigarettes, /obj/item/flame/lighter,
-	/obj/item/tape_recorder, /obj/item/uv_light, /obj/item/stack/medical, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/hypospray, /obj/item/reagent_containers/syringe,
-	/obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/radio, /obj/item/tank/emergency/oxygen) //Given to both EMTs and Forensics, can carry equipement for both.
+	/obj/item/tape_recorder, /obj/item/uv_light)
+	armor_type = /datum/armor/station/light
 
 //Engineering
 /obj/item/clothing/suit/storage/hazardvest
@@ -222,6 +222,12 @@
 	name = "\improper EMS jacket"
 	desc = "A dark blue, martian-pattern, EMS jacket. It sports high-visibility reflective stripes and a star of life on the back."
 	icon_state = "ems_jacket"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ems_jacket", SLOT_ID_LEFT_HAND = "ems_jacket")
+
+/obj/item/clothing/suit/storage/toggle/fr_jacket/ossnecro
+	name = "OSS&NECRO Field Medic Jacket"
+	desc = "A standard leather jacket branded with the OSS&NECRO logo on the back. This one lacks any armor, but has additional pockets."
+	icon_state = "agent_jacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ems_jacket", SLOT_ID_LEFT_HAND = "ems_jacket")
 
 /obj/item/clothing/suit/surgicalapron

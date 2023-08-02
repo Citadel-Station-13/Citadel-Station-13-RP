@@ -499,6 +499,11 @@
 	path = /obj/item/clothing/suit/storage/forensics/blue/long
 	allowed_roles = list("Detective")
 
+/datum/loadout_entry/restricted/security/suit/forensics/ossnecro
+	name = "OSS&NECRO Field Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/necroagent
+	allowed_roles = list("Detective")
+
 /datum/loadout_entry/restricted/security/suit/wintercoat
 	name = "Security Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/security
@@ -742,6 +747,10 @@
 /datum/loadout_entry/restricted/medical/suit/paramedic_jacket
 	name = "Medical Paramedic Jacket"
 	path = /obj/item/clothing/suit/toggle/paramed
+
+/datum/loadout_entry/restricted/medical/suit/para_ossnecro
+	name = "OSS&NECRO Field Medic jacket"
+	path = /obj/item/clothing/suit/storage/toggle/fr_jacket/ossnecro
 
 /datum/loadout_entry/restricted/medical/suit/emt_vest
 	name = "Medical EMT Vest"
@@ -1444,6 +1453,10 @@
 /datum/loadout_entry/restricted/med_sci/suit/operations_jacket
 	name = "(Medical/Science) MedSci Operations Jacket"
 	path = /obj/item/clothing/suit/storage/toggle/operations_coat/medsci
+
+/datum/loadout_entry/restricted/med_sci/suit/labcoat/ossnecro
+	name = "OSS&NECRO Labcoat"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/ossnecro
 /***********************************************************************************************/
 //**Misc. Roles
 //*Pilot
