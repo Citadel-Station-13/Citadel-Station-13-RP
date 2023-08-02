@@ -61,6 +61,10 @@
 	var/worn_bodytypes_fallback = BODYTYPES_ALL
 	/// slot this goes in - SLOT_ID_HANDS for an inhand item. specific-hand binding not supported yet.
 	var/equip_slot
+	/// inv hide flags while unsealed
+	var/inv_hide_flags_inactive = NONE
+	/// inv hide flags while sealed
+	var/inv_hide_flags_active = NONE
 
 /datum/rig_piece/New()
 	CONSTRUCT_BODYTYPES(worn_bodytypes)

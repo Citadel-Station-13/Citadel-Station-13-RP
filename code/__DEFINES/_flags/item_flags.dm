@@ -105,7 +105,11 @@ DEFINE_BITFIELD(clothing_flags, list(
 /// Hides the user's hair, facial and otherwise.
 #define BLOCKHAIR			(1<<12)
 
-DEFINE_BITFIELD(inv_hide_flags, list(
+DEFINE_SHARED_BITFIELD(inv_hide_flags, list(
+	"inv_hide_flags",
+	"inv_hide_flags_active",
+	"inv_hide_flags_inactive",
+), list(
 	BITFIELD(HIDEGLOVES),
 	BITFIELD(HIDESUITSTORAGE),
 	BITFIELD(HIDEJUMPSUIT),
