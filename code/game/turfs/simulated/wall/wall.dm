@@ -11,6 +11,10 @@
 	base_icon_state = "wall"
 	color = "#666666"
 
+	integrity_enabled = TRUE
+	integrity = 200
+	integrity_max = 200
+
 	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
 	layer = PLATING_LAYER
 	#endif
@@ -160,13 +164,13 @@
 /turf/simulated/wall/examine(mob/user, dist)
 	. = ..()
 
-	if(!damage)
+	var/percent = percent_integrity()
+	if(percent == 1)
 		. += "<span class='notice'>It looks fully intact.</span>"
 	else
-		var/dam = damage / material.integrity
-		if(dam <= 0.3)
+		if(percent > 0.8)
 			. += "<span class='warning'>It looks slightly damaged.</span>"
-		else if(dam <= 0.6)
+		else if(percent > 0.5)
 			. += "<span class='warning'>It looks moderately damaged.</span>"
 		else
 			. += "<span class='danger'>It looks heavily damaged.</span>"
