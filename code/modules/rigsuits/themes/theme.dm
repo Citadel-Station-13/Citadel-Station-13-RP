@@ -12,6 +12,8 @@
 	var/display_name
 	/// visible name - overrides display name, which overrides name. renders as [visible_name][piece.visible_name]
 	var/visible_name
+	/// what this is called; usually just 'RIG'
+	var/suit_name = "RIG"
 	/// pieces - paths. init'd on, well, new/init.
 	var/list/pieces = list(
 		/datum/rig_piece/helmet,
@@ -86,8 +88,8 @@
 	piece_state_append = "-helmet"
 
 /datum/rig_piece/chestplate
-	display_name = "chassis"
-	visible_name = "Chassis"
+	display_name = "chestplate"
+	visible_name = "Chestplate"
 	path = /obj/item/clothing/suit/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-chestplate"
@@ -104,4 +106,4 @@
 	visible_name = "Boots"
 	path = /obj/item/clothing/shoes/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
-	piece_state_append = "-shoes"
+	piece_state_append = "-boots"
