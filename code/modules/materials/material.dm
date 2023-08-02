@@ -260,56 +260,18 @@
 /datum/material/proc/build_windows(mob/living/user, obj/item/stack/used_stack)
 	return FALSE
 
-
-/// Weapons handle applying a divisor for this value locally.
-/datum/material/proc/get_blunt_damage()
-	return weight //todo
-
-
-/// Return the matter comprising this material.
-/datum/material/proc/get_matter()
-	var/list/temp_matter = list()
-	if(islist(composite_material))
-		for(var/material_string in composite_material)
-			temp_matter[material_string] = composite_material[material_string]
-	else
-		temp_matter[name] = SHEET_MATERIAL_AMOUNT
-	return temp_matter
-
-
-// As above.
-/datum/material/proc/get_edge_damage()
-	return hardness //todo
-
-
 /// Snowflakey, only checked for alien doors at the moment.
 /datum/material/proc/can_open_material_door(mob/living/user)
 	return 1
 
-
-/// Currently used for weapons and objects made of uranium to irradiate things.
-/datum/material/proc/products_need_process()
-	return (radioactivity>0) //todo
-
-
-
 /// Places a girder object when a wall is dismantled, also applies reinforced material.
 /datum/material/proc/place_dismantled_girder(turf/target, datum/material/material_reinf, datum/material/material_girder)
-	var/obj/structure/girder/G = new(target)
-	if(material_reinf)
-		G.material_reinf = material_reinf
-		G.reinforce_girder()
-	if(material_girder)
-		if(istype(material_girder, /datum/material))
-			material_girder = material_girder.name
-		G.set_material(material_girder)
-
+	var/obj/structure/girder/G = new(target, material_girder, material_reinf)
 
 /// General wall debris product placement.
 /// Not particularly necessary aside from snowflakey cult girders.
 /datum/material/proc/place_dismantled_product(turf/target, amount)
 	place_sheet(target, amount)
-
 
 /// Debris product. Used ALL THE TIME.
 /datum/material/proc/place_sheet(turf/target, amount)

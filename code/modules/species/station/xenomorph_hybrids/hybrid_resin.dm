@@ -12,9 +12,20 @@
 	sheet_singular_name = "bar"
 	sheet_plural_name = "bars"
 	explosion_resistance = 20//normal resin has 60, we are much softer
-	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	stack_type = /obj/item/stack/material/hybrid_resin
+
+	relative_integrity = 1
+	relative_weight = 0.5
+	relative_density = 1
+	relative_conductivity = 0.1
+	relative_permeability = 0.2
+	relative_reactivity = 0.45
+	regex_this_hardness = MATERIAL_RESISTANCE_LOW
+	toughness = MATERIAL_RESISTANCE_HIGH
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_VULNERABLE
+	nullification = MATERIAL_RESISTANCE_VERY_VULNERABLE
 
 /obj/item/stack/material/hybrid_resin
 	name = "resin compound"

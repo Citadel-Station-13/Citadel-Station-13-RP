@@ -6,36 +6,36 @@
 	set_materials(outer, reinforcing, girder)
 
 /turf/simulated/wall/proc/set_materials(datum/material/outer, datum/material/reinforcing, datum/material/girder)
-	MATERIAL_UNREGISTER(src, material_outer, TRUE)
+	MATERIAL_UNREGISTER(material_outer, src, TRUE)
 	material_outer = outer
-	MATERIAL_REGISTER(src, material_outer, TRUE)
-	MATERIAL_UNREGISTER(src, material_reinf, FALSE)
+	MATERIAL_REGISTER(material_outer, src, TRUE)
+	MATERIAL_UNREGISTER(material_reinf, src, FALSE)
 	material_reinf = reinforcing
-	MATERIAL_REGISTER(src, material_reinf, FALSE)
-	MATERIAL_UNREGISTER(src, material_girder, FALSE)
+	MATERIAL_REGISTER(material_reinf, src, FALSE)
+	MATERIAL_UNREGISTER(material_girder, src, FALSE)
 	material_girder = girder
-	MATERIAL_REGISTER(src, material_girder, FALSE)
+	MATERIAL_REGISTER(material_girder, src, FALSE)
 
 	update_materials()
 
 /turf/simulated/wall/proc/set_outer_material(datum/material/material)
-	MATERIAL_UNREGISTER(src, material_outer, TRUE)
+	MATERIAL_UNREGISTER(material_outer, src, TRUE)
 	material_outer = outer
-	MATERIAL_REGISTER(src, material_outer, TRUE)
+	MATERIAL_REGISTER(material_outer, src, TRUE)
 
 	update_materials()
 
 /turf/simulated/wall/proc/set_reinforcing_material(datum/material/material)
-	MATERIAL_UNREGISTER(src, material_reinf, FALSE)
+	MATERIAL_UNREGISTER(material_reinf, src, FALSE)
 	material_reinf = reinforcing
-	MATERIAL_REGISTER(src, material_reinf, FALSE)
+	MATERIAL_REGISTER(material_reinf, src, FALSE)
 
 	update_materials()
 
 /turf/simulated/wall/proc/set_girder_material(datum/material/material)
-	MATERIAL_UNREGISTER(src, material_girder, FALSE)
+	MATERIAL_UNREGISTER(material_girder, src, FALSE)
 	material_girder = girder
-	MATERIAL_REGISTER(src, material_girder, FALSE)
+	MATERIAL_REGISTER(material_girder, src, FALSE)
 
 	update_materials()
 
