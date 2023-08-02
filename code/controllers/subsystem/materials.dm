@@ -62,14 +62,13 @@ SUBSYSTEM_DEF(materials)
 			for(trait as anything in A.material_traits)
 				if(!(trait.material_trait_flags & MATERIAL_TRAIT_TICKING))
 					continue
-				trait.on_tick(A, A.material_traits[trait], dt)
+				trait.tick(A, A.material_traits[trait], dt)
 		else
 			trait = A.material_traits
-			trait.on_tick(A, A.material_traits_data, dt)
+			trait.tick(A, A.material_traits_data, dt)
 		if(MC_TICK_CHECK)
 			break
 	currentrun.len -= (length(currentrun) - i + 1)
-	#warn impl
 
 /datum/controller/subsystem/materials/proc/initialize_materials()
 	material_lookup = list()

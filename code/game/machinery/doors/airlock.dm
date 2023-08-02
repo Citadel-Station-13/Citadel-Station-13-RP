@@ -71,7 +71,6 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	var/closeOtherId = null
 	var/lockdownbyai = 0
 	var/assembly_type = /obj/structure/door_assembly
-	var/mineral = null
 	var/justzap = 0
 	var/safe = 1
 	var/obj/item/airlock_electronics/electronics = null
