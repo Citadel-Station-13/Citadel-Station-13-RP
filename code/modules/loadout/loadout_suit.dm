@@ -87,7 +87,7 @@
 	for(var/military_style in typesof(/obj/item/clothing/suit/storage/miljacket))
 		var/obj/item/clothing/suit/storage/miljacket/miljacket = military_style
 		mil_jackets[initial(miljacket.name)] = miljacket
-	tweaks += new/datum/loadout_tweak/path(tim_sort(mil_jackets, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(mil_jackets, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/suit/greyjacket
 	name = "Jacket - Grey"
@@ -115,7 +115,7 @@
 	for(var/hazard_style in typesof(/obj/item/clothing/suit/storage/hazardvest))
 		var/obj/item/clothing/suit/storage/hazardvest/hazardvest = hazard_style
 		hazards[initial(hazardvest.name)] = hazardvest
-	tweaks += new/datum/loadout_tweak/path(tim_sort(hazards, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(hazards, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/suit/hoodie
 	name = "Hoodie - Selection"
@@ -127,7 +127,7 @@
 	for(var/hoodie_style in typesof(/obj/item/clothing/suit/storage/toggle/hoodie))
 		var/obj/item/clothing/suit/storage/toggle/hoodie/hoodie = hoodie_style
 		hoodies[initial(hoodie.name)] = hoodie
-	tweaks += new/datum/loadout_tweak/path(tim_sort(hoodies, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(hoodies, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/suit/labcoat
 	name = "Labcoat"
@@ -151,7 +151,7 @@
 	for(var/poncho_style in (typesof(/obj/item/clothing/accessory/poncho) - typesof(/obj/item/clothing/accessory/poncho/roles)))
 		var/obj/item/clothing/accessory/poncho/poncho = poncho_style
 		ponchos[initial(poncho.name)] = poncho
-	tweaks += new/datum/loadout_tweak/path(tim_sort(ponchos, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(ponchos, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/suit/dust_cloak_selection
 	name = "Dust cloak Selection"
@@ -163,7 +163,7 @@
 	for(var/dustcloak in typesof(/obj/item/clothing/accessory/poncho/dust_cloak))
 		var/obj/item/clothing/accessory/poncho/dustcloak_type = dustcloak
 		dustcloak_selection[initial(dustcloak_type.name)] = dustcloak_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(dustcloak_selection, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(dustcloak_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/suit/cyberpunk_coat_selection
 	name = "Cyberpunk Coat Selection"
@@ -175,7 +175,7 @@
 	for(var/cybercoat in typesof(/obj/item/clothing/suit/storage/cyberpunk))
 		var/obj/item/clothing/accessory/poncho/cybercoat_type = cybercoat
 		cybercoat_selection[initial(cybercoat_type.name)] = cybercoat_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(cybercoat_selection, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(cybercoat_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
 
 // A colorable cloak
@@ -254,7 +254,7 @@
 	for(var/varsity_style in typesof(/obj/item/clothing/suit/varsity))
 		var/obj/item/clothing/suit/varsity/varsity = varsity_style
 		varsities[initial(varsity.name)] = varsity
-	tweaks += new/datum/loadout_tweak/path(tim_sort(varsities, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(varsities, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/suit/varsity_worn
 	name = "Varsity Jacket - Worn"
@@ -270,7 +270,7 @@
 	for(var/track_style in typesof(/obj/item/clothing/suit/storage/toggle/track))
 		var/obj/item/clothing/suit/storage/toggle/track/track = track_style
 		tracks[initial(track.name)] = track
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tracks, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tracks, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/suit/flannel
 	name = "Flannel - Grey"
@@ -374,7 +374,7 @@
 	for(var/the_jacket in typesof(/obj/item/clothing/suit/storage/fluff/jacket))
 		var/obj/item/clothing/suit/jacket_type = the_jacket
 		the_jackets[initial(jacket_type.name)] = jacket_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(the_jackets, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(the_jackets, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/suit/gntop
 	name = "GN Crop Jacket"
@@ -434,7 +434,7 @@
 	for(var/pullover_style in typesof(/obj/item/clothing/suit/storage/pullover))
 		var/obj/item/clothing/suit/storage/pullover/pullover = pullover_style
 		pullovers[initial(pullover.name)] = pullover
-	tweaks += new/datum/loadout_tweak/path(tim_sort(pullovers, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(pullovers, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/suit/antediluvian
 	name = "Antediluvian Cloak"
@@ -595,7 +595,7 @@
 	for(var/tajarancloak in (typesof(/obj/item/clothing/accessory/tponcho/tajarancloak)))
 		var/obj/item/clothing/accessory/tponcho/tajarancloak/tajarancloak_type = tajarancloak
 		tajarancloaks[initial(tajarancloak_type.name)] = tajarancloak_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tajarancloaks, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tajarancloaks, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/suit/tajarancloakhood
 	name = "Adhomian hooded cloak selection"
@@ -608,7 +608,7 @@
 	for(var/tajarancloakhood in (typesof(/obj/item/clothing/suit/storage/hooded/tajaran/cloak)))
 		var/obj/item/clothing/suit/storage/hooded/tajaran/cloak/tajarancloakhood_type = tajarancloakhood
 		tajarancloakhoods[initial(tajarancloakhood_type.name)] = tajarancloakhood_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tajarancloakhoods, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tajarancloakhoods, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/suit/tajara_coat
 	name = "Adhomian coat selection"
@@ -621,7 +621,7 @@
 	for(var/tajara_coat in (typesof(/obj/item/clothing/suit/storage/toggle/tajaran/coat)))
 		var/obj/item/clothing/suit/storage/toggle/tajaran/coat/tajara_coat_type = tajara_coat
 		tajara_coats[initial(tajara_coat_type.name)] = tajara_coat_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tajara_coats, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tajara_coats, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/suit/tajara_coat_alt //No toggle
 	name = "Adhomian coat alt selection"
@@ -634,7 +634,7 @@
 	for(var/tajara_coat_alt in (typesof(/obj/item/clothing/suit/storage/tajaran/coat)))
 		var/obj/item/clothing/suit/storage/tajaran/coat/tajara_coat_alt_type = tajara_coat_alt
 		tajara_coat_alts[initial(tajara_coat_alt_type.name)] = tajara_coat_alt_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tajara_coat_alts, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tajara_coat_alts, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/suit/tajara_jacket
 	name = "Adhomian jacket selection"
@@ -647,4 +647,4 @@
 	for(var/tajara_jacket in (typesof(/obj/item/clothing/suit/storage/tajaran/jacket)))
 		var/obj/item/clothing/suit/storage/tajaran/jacket/tajara_jacket_type = tajara_jacket
 		tajara_jackets[initial(tajara_jacket_type.name)] = tajara_jacket_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tajara_jackets, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tajara_jackets, GLOBAL_PROC_REF(cmp_text_asc)))

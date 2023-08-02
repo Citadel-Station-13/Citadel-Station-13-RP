@@ -2379,22 +2379,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/control)
-"ec" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/control)
 "ed" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -2517,18 +2501,7 @@
 	},
 /area/tdome/tdomeadmin)
 "eu" = (
-/obj/effect/forcefield{
-	desc = "You can't get in. Heh.";
-	layer = 1;
-	name = "Blocker"
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -3071,19 +3044,6 @@
 	icon_state = "carpet"
 	},
 /area/centcom/control)
-"fA" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/control)
 "fB" = (
 /obj/machinery/door/airlock/glass/research{
 	name = "Research and Development";
@@ -3270,14 +3230,7 @@
 	},
 /area/tdome/tdome1)
 "fO" = (
-/obj/effect/blocker,
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -3512,22 +3465,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
-/area/centcom/control)
-"gr" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
 /area/centcom/control)
 "gs" = (
 /obj/structure/sign/department/armory,
@@ -5495,16 +5432,7 @@
 	},
 /area/centcom/medical)
 "kx" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -5563,20 +5491,6 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
-"kC" = (
-/obj/structure/sign/department/telecoms,
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/control)
 "kD" = (
 /obj/structure/sign/securearea,
 /turf/unsimulated/wall,
@@ -6306,23 +6220,6 @@
 /obj/machinery/tele_pad,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
-"lY" = (
-/obj/structure/sign/warning/lethal_turrets,
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/control)
 "lZ" = (
 /obj/machinery/door/blast/regular{
 	id = "CentComPort";
@@ -6762,27 +6659,7 @@
 	},
 /area/centcom/security)
 "mK" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/command)
-"mL" = (
-/obj/structure/sign/department/commander,
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -6798,39 +6675,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/command)
-"mN" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/security)
 "mO" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Security";
 	req_access = list()
 	},
 /turf/unsimulated/floor/steel,
-/area/centcom/security)
-"mP" = (
-/obj/structure/sign/department/armory,
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
 /area/centcom/security)
 "mQ" = (
 /turf/unsimulated/wall,
@@ -8116,16 +7966,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/holding)
 "ph" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -8403,14 +8244,11 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/holding)
 "pK" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/spawner/window/low_wall/reinforced/full,
+/turf/unsimulated/floor{
+	icon_state = "plating";
+	name = "plating"
 	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor/steel,
 /area/centcom/holding)
 "pL" = (
 /obj/machinery/door/window/brigdoor/southleft{
@@ -9365,19 +9203,6 @@
 /obj/machinery/door/blast/regular,
 /turf/unsimulated/floor/techfloor_grid,
 /area/centcom/terminal)
-"rF" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "sec_processing"
-	},
-/obj/structure/fans/tiny,
-/turf/simulated/floor,
-/area/shuttle/escape)
 "rG" = (
 /obj/effect/floor_decal/corner_steel_grid/diagonal,
 /obj/effect/floor_decal/corner_steel_grid/diagonal{
@@ -9398,16 +9223,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/terminal)
 "rJ" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -10527,47 +10343,12 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
-"uc" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/main_hall)
-"ud" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/main_hall)
 "ue" = (
-/obj/structure/sign/department/medbay,
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
 	},
-/area/centcom/medical)
+/area/centcom/main_hall)
 "uf" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass,
@@ -10585,16 +10366,6 @@
 /obj/structure/sign/greencross,
 /turf/unsimulated/wall,
 /area/centcom/medical)
-"ui" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/command)
 "uj" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass,
@@ -11090,12 +10861,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "vt" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -11117,29 +10883,6 @@
 	opacity = 0
 	},
 /turf/unsimulated/floor/steel,
-/area/centcom/security)
-"vw" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "FrontlockC2";
-	name = "Security Door";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
 /area/centcom/security)
 "vx" = (
 /obj/structure/table/reinforced,
@@ -12157,11 +11900,11 @@
 /area/centcom/main_hall)
 "xg" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/grass/heavy/interior/classp,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/centcom/main_hall)
 "xh" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior/classp,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/centcom/main_hall)
 "xi" = (
 /obj/structure/bed/chair{
@@ -12313,25 +12056,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"xx" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/security)
 "xy" = (
 /obj/machinery/computer/secure_data{
 	dir = 1
@@ -12480,7 +12204,7 @@
 /area/centcom/security)
 "xI" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior/classp,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/centcom/main_hall)
 "xJ" = (
 /obj/structure/table/woodentable,
@@ -12921,17 +12645,7 @@
 	},
 /area/centcom/security)
 "yw" = (
-/obj/structure/sign/department/interrogation,
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -13353,7 +13067,7 @@
 /area/centcom/security)
 "ze" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior/classp,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/centcom/main_hall)
 "zf" = (
 /obj/structure/table/woodentable,
@@ -13658,16 +13372,6 @@
 	},
 /area/centcom/security)
 "zG" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -13721,13 +13425,7 @@
 	},
 /area/centcom/security)
 "zK" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -15048,27 +14746,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"CB" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "TelelockdownC";
-	name = "Security Door";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/command)
 "CC" = (
 /obj/machinery/telecomms/receiver/preset_cent,
 /turf/unsimulated/floor{
@@ -15637,38 +15314,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
-"Fq" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/security)
-"Fs" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/security)
 "FF" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
@@ -15691,14 +15336,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/security)
 "Gp" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "sec_processing"
-	},
 /obj/structure/fans/tiny,
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/simulated/floor,
 /area/shuttle/escape)
 "GA" = (
@@ -15721,31 +15360,6 @@
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
-"GY" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/restaurant)
-"He" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "sec_processing"
-	},
-/obj/structure/grille,
-/obj/structure/fans/tiny,
-/turf/simulated/floor,
-/area/shuttle/escape)
 "Hh" = (
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -15767,22 +15381,6 @@
 	icon_state = "carpet"
 	},
 /area/centcom/control)
-"If" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/security)
 "Ig" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/danger,
@@ -15794,29 +15392,6 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
-"ID" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "FrontlockC2";
-	name = "Security Door";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/security)
 "Jv" = (
 /obj/machinery/light{
 	dir = 4;
@@ -15842,16 +15417,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
-"Kr" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/medical)
 "Kt" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1380;
@@ -15898,19 +15463,6 @@
 "Mt" = (
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
-"MG" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "sec_processing"
-	},
-/obj/structure/fans/tiny,
-/turf/simulated/floor,
-/area/shuttle/escape)
 "MJ" = (
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
@@ -15933,17 +15485,7 @@
 	},
 /area/centcom/specops)
 "Nx" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -15963,12 +15505,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
 "NE" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -16010,14 +15547,12 @@
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
 "QL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "sec_processing"
-	},
+/obj/spawner/window/low_wall/reinforced/full,
 /obj/structure/fans/tiny,
-/turf/simulated/floor,
+/turf/unsimulated/floor{
+	icon_state = "plating";
+	name = "plating"
+	},
 /area/shuttle/escape)
 "Rc" = (
 /obj/structure/table/glass,
@@ -16134,35 +15669,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/security)
 "VT" = (
-/turf/simulated/floor/outdoors/grass/heavy/interior/classp,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/centcom/main_hall)
 "VU" = (
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
-"VZ" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/main_hall)
-"Wd" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/restaurant)
 "Wt" = (
 /turf/simulated/floor/tiled/steel,
 /area/centcom/security)
@@ -16172,23 +15684,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
-"Xf" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/control)
 "Xk" = (
 /obj/machinery/light{
 	dir = 8;
@@ -16207,18 +15702,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
-"YJ" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced/full,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/security)
 "ZB" = (
 /obj/effect/floor_decal/corner_techfloor_grid,
 /turf/unsimulated/floor{
@@ -18180,11 +17663,11 @@ rD
 rD
 rD
 wC
-He
-He
-MG
-He
-He
+Gp
+Gp
+Gp
+Gp
+Gp
 wC
 rD
 rD
@@ -19171,7 +18654,7 @@ rD
 rD
 rD
 rD
-rF
+Gp
 sW
 MJ
 Hr
@@ -19313,7 +18796,7 @@ rD
 rD
 rD
 rD
-rF
+Gp
 sC
 MJ
 Hr
@@ -19455,7 +18938,7 @@ rD
 rD
 rD
 rD
-rF
+Gp
 sW
 MJ
 Hr
@@ -19883,14 +19366,14 @@ rD
 rD
 wC
 wC
-QL
-QL
+Gp
+Gp
 GA
 vc
 vc
 GA
-QL
-QL
+Gp
+Gp
 wC
 rD
 rD
@@ -20172,7 +19655,7 @@ um
 QL
 vc
 vc
-QL
+Gp
 EH
 wf
 wC
@@ -20314,7 +19797,7 @@ sX
 QL
 vc
 vc
-QL
+Gp
 EH
 wf
 wC
@@ -22013,12 +21496,12 @@ rH
 rH
 rH
 rH
-uc
+NE
 cP
 dk
 uZ
 cP
-uc
+NE
 rH
 rH
 rH
@@ -22155,12 +21638,12 @@ sF
 sF
 sF
 rI
-ud
+NE
 uo
 uQ
 uQ
 uo
-ud
+NE
 rI
 sF
 sF
@@ -22297,7 +21780,7 @@ rJ
 rJ
 rJ
 rJ
-VZ
+NE
 dk
 dk
 dk
@@ -22439,12 +21922,12 @@ hP
 hP
 hP
 hP
-ud
+NE
 dk
 dk
 dk
 dk
-ud
+NE
 hP
 hP
 hP
@@ -22581,12 +22064,12 @@ hP
 hP
 hP
 hP
-ud
+NE
 dk
 dk
 dk
 dk
-ud
+NE
 hP
 hP
 hP
@@ -22723,12 +22206,12 @@ hP
 hP
 hP
 hP
-ud
+NE
 dk
 dk
 dk
 dk
-ud
+NE
 hP
 hP
 hP
@@ -22865,12 +22348,12 @@ hP
 hP
 hP
 hP
-ud
+NE
 dk
 dk
+ue
 dk
-dk
-ud
+NE
 hP
 hP
 hP
@@ -23007,12 +22490,12 @@ hP
 hP
 hP
 hP
-ud
+NE
 dk
 dk
 dk
 dk
-ud
+NE
 hP
 hP
 hP
@@ -23149,12 +22632,12 @@ hP
 hP
 hP
 hP
-ud
+NE
 dk
 dk
 dk
 dk
-ud
+NE
 hP
 hP
 hP
@@ -23291,12 +22774,12 @@ hP
 hP
 hP
 hP
-ud
+NE
 dk
 dk
 dk
 dk
-ud
+NE
 hP
 hP
 hP
@@ -23433,12 +22916,12 @@ hP
 hP
 hP
 hP
-ud
+NE
 do
 dk
 dk
 dk
-ud
+NE
 hP
 hP
 hP
@@ -23575,12 +23058,12 @@ hP
 hP
 hP
 hP
-ud
+NE
 dk
 dk
 dk
 uS
-ud
+NE
 hP
 hP
 hP
@@ -23717,12 +23200,12 @@ hP
 hP
 hP
 hP
-ud
+NE
 uq
 dk
 dk
 uS
-ud
+NE
 hP
 hP
 hP
@@ -23859,12 +23342,12 @@ hP
 hP
 hP
 hP
-ud
+NE
 ur
 dk
 dk
 uS
-ud
+NE
 hP
 hP
 hP
@@ -24149,7 +23632,7 @@ dk
 dk
 uS
 te
-vw
+yw
 wh
 wE
 xb
@@ -24575,7 +24058,7 @@ dk
 dk
 dk
 te
-ID
+yw
 wk
 wG
 xe
@@ -25130,14 +24613,14 @@ kv
 kv
 kv
 qO
-Kr
+kx
 rL
 oR
 sI
 kv
 kv
 tE
-Kr
+kx
 dk
 dk
 dk
@@ -25272,14 +24755,14 @@ kv
 pj
 pP
 qP
-Kr
+kx
 rN
 sm
 po
 kv
 kv
 nt
-ue
+kx
 dk
 dk
 dk
@@ -26273,7 +25756,7 @@ so
 so
 so
 tH
-ui
+mK
 dk
 dk
 dk
@@ -26415,7 +25898,7 @@ oX
 oX
 oX
 tI
-ui
+mK
 dk
 dk
 dk
@@ -26557,7 +26040,7 @@ oX
 oX
 oX
 oX
-ui
+mK
 dk
 dk
 dk
@@ -26850,15 +26333,15 @@ vq
 vq
 vq
 vq
-Wd
-Wd
-Wd
-Wd
+vt
+vt
+vt
+vt
 vq
 vq
-Wd
-Wd
-Wd
+vt
+vt
+vt
 zK
 zU
 zU
@@ -26983,7 +26466,7 @@ sK
 oX
 oX
 oX
-ui
+mK
 dk
 dk
 dk
@@ -27267,7 +26750,7 @@ sL
 oX
 oX
 oX
-ui
+mK
 do
 dk
 dk
@@ -27551,7 +27034,7 @@ sM
 oX
 oX
 oX
-ui
+mK
 dk
 dk
 dk
@@ -27977,7 +27460,7 @@ oX
 oX
 oX
 oX
-ui
+mK
 dk
 dk
 dk
@@ -28084,17 +27567,17 @@ dm
 dm
 dm
 dm
-ec
-ec
+Nx
+Nx
 dm
 hQ
 hQ
 dm
-ec
-ec
+Nx
+Nx
 dm
-ec
-ec
+Nx
+Nx
 dm
 dm
 dm
@@ -28119,7 +27602,7 @@ oX
 oX
 oX
 tJ
-ui
+mK
 dk
 dk
 dk
@@ -28239,7 +27722,7 @@ em
 em
 em
 fE
-fA
+Nx
 kU
 gq
 lQ
@@ -28261,7 +27744,7 @@ sN
 sr
 sr
 tK
-ui
+mK
 dk
 dk
 dk
@@ -28381,7 +27864,7 @@ em
 em
 em
 em
-kC
+Nx
 kV
 em
 lR
@@ -28554,16 +28037,16 @@ vq
 vq
 vq
 vq
-GY
-GY
-GY
+vt
+vt
+vt
 vq
 vq
 yJ
 zh
 zr
-GY
-GY
+vt
+vt
 vq
 vq
 vq
@@ -28655,17 +28138,17 @@ em
 em
 dm
 dm
-ec
-ec
+Nx
+Nx
 hQ
-ec
-ec
+Nx
+Nx
 dm
 dm
 em
 em
 em
-kC
+Nx
 kW
 em
 lT
@@ -28795,7 +28278,7 @@ dm
 em
 em
 em
-fA
+Nx
 gF
 em
 em
@@ -28807,7 +28290,7 @@ dm
 em
 em
 em
-fA
+Nx
 kX
 em
 lU
@@ -28937,7 +28420,7 @@ dm
 em
 em
 em
-fA
+Nx
 gG
 gG
 em
@@ -29079,7 +28562,7 @@ fz
 em
 em
 em
-fA
+Nx
 gH
 hf
 em
@@ -29091,7 +28574,7 @@ dm
 em
 em
 em
-fA
+Nx
 em
 gq
 lV
@@ -29130,8 +28613,8 @@ ry
 vq
 zh
 zr
-Wd
-Wd
+vt
+vt
 vq
 vq
 ho
@@ -29221,7 +28704,7 @@ dm
 em
 em
 em
-fA
+Nx
 gI
 hg
 em
@@ -29363,7 +28846,7 @@ dm
 fF
 em
 em
-fA
+Nx
 gJ
 gJ
 em
@@ -29375,7 +28858,7 @@ dm
 em
 em
 em
-fA
+Nx
 em
 em
 lX
@@ -29419,10 +28902,10 @@ zM
 zM
 xY
 ho
-If
+yw
 Bj
 Bt
-If
+yw
 ho
 uJ
 uJ
@@ -29505,7 +28988,7 @@ fz
 em
 em
 em
-fA
+Nx
 gK
 em
 em
@@ -29655,14 +29138,14 @@ hT
 ic
 em
 em
-fA
+Nx
 em
 em
 em
 kD
 em
 fE
-lY
+Nx
 fE
 dk
 dk
@@ -29939,7 +29422,7 @@ em
 em
 em
 fE
-fA
+Nx
 em
 em
 em
@@ -30074,20 +29557,20 @@ em
 em
 em
 dm
-ec
-ec
-ec
-ec
-ec
-ec
-ec
+Nx
+Nx
+Nx
+Nx
+Nx
+Nx
+Nx
 dm
 em
 em
 em
 dm
 hQ
-ec
+Nx
 dm
 hk
 dk
@@ -30231,7 +29714,7 @@ dm
 em
 iX
 ma
-fA
+Nx
 dk
 dk
 dk
@@ -30373,7 +29856,7 @@ hQ
 em
 lt
 mb
-fA
+Nx
 dk
 dk
 dk
@@ -30681,21 +30164,21 @@ mH
 mH
 mH
 vq
-GY
-GY
-GY
+vt
+vt
+vt
 vq
 vq
 vq
-GY
-GY
-GY
+vt
+vt
+vt
 vq
 zs
 vq
-GY
-GY
-GY
+vt
+vt
+vt
 ho
 xH
 ho
@@ -30848,7 +30331,7 @@ dk
 uS
 uS
 uS
-Fq
+yw
 wh
 CU
 ig
@@ -31132,7 +30615,7 @@ dk
 dk
 dk
 By
-Fs
+yw
 CJ
 CV
 ig
@@ -31205,7 +30688,7 @@ dV
 dV
 dV
 dV
-fA
+Nx
 em
 em
 em
@@ -31240,9 +30723,9 @@ rz
 sh
 sh
 rz
-zG
-zG
-zG
+yw
+yw
+yw
 ho
 uB
 mH
@@ -31347,7 +30830,7 @@ dV
 dA
 dA
 dV
-fA
+Nx
 em
 em
 em
@@ -31385,7 +30868,7 @@ ho
 ta
 tq
 tR
-mN
+yw
 dk
 dk
 dk
@@ -31489,7 +30972,7 @@ dV
 dW
 dW
 dV
-gr
+Nx
 em
 em
 em
@@ -31527,7 +31010,7 @@ ho
 tb
 qK
 tS
-mN
+yw
 dk
 dk
 dk
@@ -31558,7 +31041,7 @@ uF
 uF
 uF
 Cw
-CB
+mK
 CL
 oX
 Dd
@@ -31669,7 +31152,7 @@ sh
 kp
 kp
 tT
-mN
+yw
 do
 dk
 dk
@@ -31700,7 +31183,7 @@ uF
 Cd
 uF
 Cw
-CB
+mK
 CM
 CX
 De
@@ -31811,7 +31294,7 @@ ho
 tc
 kp
 tU
-mN
+yw
 dk
 dk
 dk
@@ -31842,7 +31325,7 @@ uF
 Cd
 uF
 Cw
-CB
+mK
 CN
 CY
 De
@@ -31953,7 +31436,7 @@ ho
 td
 tr
 tV
-mN
+yw
 dk
 dk
 dk
@@ -31984,7 +31467,7 @@ uF
 Cd
 uF
 Cw
-CB
+mK
 CO
 CX
 De
@@ -32057,7 +31540,7 @@ dV
 dV
 dV
 dV
-Xf
+Nx
 em
 em
 em
@@ -32092,9 +31575,9 @@ rA
 nh
 nG
 ho
-zG
+yw
 ts
-zG
+yw
 rz
 uC
 uR
@@ -32115,7 +31598,7 @@ zk
 zC
 ho
 Ae
-mN
+yw
 AF
 kp
 ho
@@ -32126,7 +31609,7 @@ uF
 uF
 uF
 Cw
-CB
+mK
 CP
 oX
 De
@@ -32199,7 +31682,7 @@ dV
 ey
 dV
 dV
-fA
+Nx
 em
 em
 em
@@ -32257,7 +31740,7 @@ zv
 ig
 xH
 ig
-mN
+yw
 AG
 kp
 ho
@@ -32268,7 +31751,7 @@ BR
 BR
 BR
 By
-CB
+mK
 CQ
 oX
 Df
@@ -32341,7 +31824,7 @@ dV
 dA
 dV
 fj
-fA
+Nx
 fG
 em
 em
@@ -32388,7 +31871,7 @@ vv
 vV
 rA
 wT
-xx
+yw
 ho
 yf
 yv
@@ -32399,9 +31882,9 @@ ho
 ho
 ho
 Af
-YJ
-zG
-zG
+yw
+yw
+yw
 ho
 BC
 BS
@@ -32410,7 +31893,7 @@ Ce
 Ce
 BS
 Cx
-CB
+mK
 CR
 oX
 Dg
@@ -32541,7 +32024,7 @@ ig
 zD
 ho
 Ag
-mN
+yw
 Aj
 ig
 ho
@@ -32552,7 +32035,7 @@ BT
 BT
 BT
 Cy
-CB
+mK
 CS
 oX
 Dg
@@ -32646,7 +32129,7 @@ lc
 lz
 mg
 mt
-mL
+mK
 nh
 nF
 hU
@@ -32683,7 +32166,7 @@ ig
 zD
 ho
 ig
-mN
+yw
 AH
 ig
 ho
@@ -32814,15 +32297,15 @@ vv
 vV
 rA
 wU
-xx
+yw
 ho
 yg
 yt
 ho
-zG
+yw
 yD
 yD
-zG
+yw
 ho
 ho
 ho
@@ -32930,7 +32413,7 @@ le
 lB
 mi
 mu
-mL
+mK
 ng
 nE
 nL
@@ -32946,7 +32429,7 @@ sv
 ho
 th
 tw
-mN
+yw
 tt
 uD
 dk
@@ -32960,7 +32443,7 @@ xy
 ho
 yd
 xc
-mN
+yw
 yT
 ig
 ig
@@ -33102,7 +32585,7 @@ xz
 ho
 yh
 xc
-mN
+yw
 yU
 ig
 vo
@@ -33193,7 +32676,7 @@ en
 eB
 eW
 fo
-fA
+Nx
 fK
 fp
 gb
@@ -33241,10 +32724,10 @@ vW
 wz
 ig
 xA
-mN
+yw
 ye
 xc
-mN
+yw
 yV
 ig
 vo
@@ -33383,10 +32866,10 @@ vX
 ig
 ig
 xB
-mN
+yw
 yb
 xc
-mN
+yw
 yW
 ig
 vo
@@ -33477,7 +32960,7 @@ ep
 eC
 eC
 fq
-fA
+Nx
 fL
 fp
 gd
@@ -33498,7 +32981,7 @@ kp
 lD
 mk
 mk
-mN
+yw
 ni
 nG
 ho
@@ -33528,7 +33011,7 @@ ig
 xT
 ig
 xc
-mN
+yw
 yX
 ig
 vo
@@ -33614,15 +33097,15 @@ aG
 aG
 dm
 dm
-ec
-ec
-ec
-ec
+Nx
+Nx
+Nx
+Nx
 dm
 dm
-ec
+Nx
 fS
-ec
+Nx
 dm
 dm
 ho
@@ -33640,7 +33123,7 @@ kp
 lD
 mk
 mk
-mN
+yw
 nh
 nG
 ho
@@ -33667,10 +33150,10 @@ vZ
 ig
 ig
 xC
-mN
+yw
 ig
 xc
-mN
+yw
 yY
 ig
 vo
@@ -33809,10 +33292,10 @@ wa
 ig
 wX
 xD
-mN
+yw
 ig
 xu
-mN
+yw
 yZ
 zm
 zx
@@ -33958,13 +33441,13 @@ ho
 ho
 ho
 ho
-zG
+yw
 zQ
-zG
+yw
 ho
-zG
+yw
 zQ
-zG
+yw
 ho
 BY
 Ch
@@ -34066,7 +33549,7 @@ kp
 kp
 kp
 kp
-mP
+yw
 ng
 nG
 ho
@@ -34208,7 +33691,7 @@ kp
 kp
 kp
 kp
-mN
+yw
 ni
 nG
 ho
@@ -34350,7 +33833,7 @@ lg
 kp
 ml
 kp
-mN
+yw
 ni
 nG
 ho
@@ -34492,7 +33975,7 @@ lh
 Eb
 ml
 mw
-mN
+yw
 nj
 nJ
 ho

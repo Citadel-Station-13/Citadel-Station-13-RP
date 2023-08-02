@@ -19,7 +19,7 @@
 	for(var/cheongsam in typesof(/obj/item/clothing/under/cheongsam))
 		var/obj/item/clothing/under/cheongsam/cheongsam_type = cheongsam
 		cheongsams[initial(cheongsam_type.name)] = cheongsam_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(cheongsams, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(cheongsams, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/cheongsam_male
 	name = "Cheongsam (Male) - Black"
@@ -55,7 +55,7 @@
 	for(var/croptop in typesof(/obj/item/clothing/under/croptop))
 		var/obj/item/clothing/under/croptop/croptop_type = croptop
 		croptops[initial(croptop_type.name)] = croptop_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(croptops, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(croptops, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/kilt
 	name = "Kilt"
@@ -79,7 +79,7 @@
 	for(var/jump in typesof(/obj/item/clothing/under/color))
 		var/obj/item/clothing/under/color/jumps = jump
 		jumpclothes[initial(jumps.name)] = jumps
-	tweaks += new/datum/loadout_tweak/path(tim_sort(jumpclothes, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(jumpclothes, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/blueshortskirt
 	name = "Short Skirt"
@@ -95,7 +95,7 @@
 	for(var/skirt in (typesof(/obj/item/clothing/under/skirt)))
 		var/obj/item/clothing/under/skirt/skirt_type = skirt
 		skirts[initial(skirt_type.name)] = skirt_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(skirts, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(skirts, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/pants
 	name = "Pants Selection"
@@ -107,7 +107,7 @@
 	for(var/pant in typesof(/obj/item/clothing/under/pants))
 		var/obj/item/clothing/under/pants/pant_type = pant
 		pants[initial(pant_type.name)] = pant_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(pants, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(pants, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/shorts
 	name = "Shorts Selection"
@@ -119,7 +119,7 @@
 	for(var/short in typesof(/obj/item/clothing/under/shorts))
 		var/obj/item/clothing/under/pants/short_type = short
 		shorts[initial(short_type.name)] = short_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(shorts, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(shorts, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/suit/lawyer
 	name = "Suit One-Piece Selection"
@@ -131,7 +131,7 @@
 	for(var/lsuit in typesof(/obj/item/clothing/under/lawyer))
 		var/obj/item/clothing/suit/lsuit_type = lsuit
 		lsuits[initial(lsuit_type.name)] = lsuit_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(lsuits, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(lsuits, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/suit/suit_jacket
 	name = "Suit Modular Selection"
@@ -143,7 +143,7 @@
 	for(var/msuit in typesof(/obj/item/clothing/under/suit_jacket))
 		var/obj/item/clothing/suit/msuit_type = msuit
 		msuits[initial(msuit_type.name)] = msuit_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(msuits, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(msuits, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/suit/amish
 	name = "Suit - Amish"
@@ -175,7 +175,7 @@
 	for(var/scrub in typesof(/obj/item/clothing/under/rank/medical/scrubs))
 		var/obj/item/clothing/under/rank/medical/scrubs/scrub_type = scrub
 		scrubs[initial(scrub_type.name)] = scrub_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(scrubs, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(scrubs, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/scrub_fem
 	name = "Scrubs Selection - Female"
@@ -187,7 +187,7 @@
 	for(var/scrub_fem in typesof(/obj/item/clothing/under/rank/medical/scrubs_fem))
 		var/obj/item/clothing/under/rank/medical/scrubs_fem/scrub_type = scrub_fem
 		scrubs_fem[initial(scrub_type.name)] = scrub_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(scrubs_fem, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(scrubs_fem, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/oldwoman
 	name = "Old Woman Attire"
@@ -211,7 +211,7 @@
 	for(var/turtlebaggy in typesof(/obj/item/clothing/under/turtlebaggy))
 		var/obj/item/clothing/under/turtlebaggy_type = turtlebaggy
 		turtlebaggy_selection[initial(turtlebaggy_type.name)] = turtlebaggy_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(turtlebaggy_selection, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(turtlebaggy_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/pentagramdress
 	name = "Pentagram Dress"
@@ -251,7 +251,7 @@
 	for(var/wedding in typesof(/obj/item/clothing/under/wedding))
 		var/obj/item/clothing/under/wedding/wedding_type = wedding
 		weddings[initial(wedding_type.name)] = wedding_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(weddings, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(weddings, GLOBAL_PROC_REF(cmp_text_asc)))
 
 
 /datum/loadout_entry/uniform/suit/reallyblack
@@ -280,7 +280,7 @@
 	for(var/maid in typesof(/obj/item/clothing/under/dress/maid))
 		var/obj/item/clothing/under/dress/maid/maid_type = maid
 		maids[initial(maid_type.name)] = maid_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(maids, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(maids, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/utility
 	name = "Utility - Black"
@@ -308,7 +308,7 @@
 	for(var/brandjumpsuit in typesof(/obj/item/clothing/under/brandjumpsuit))
 		var/obj/item/clothing/under/brandjumpsuit_type = brandjumpsuit
 		brandjumpsuit_selection[initial(brandjumpsuit_type.name)] = brandjumpsuit_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(brandjumpsuit_selection, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(brandjumpsuit_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/yogapants
 	name = "Yoga Pants"
@@ -408,7 +408,7 @@
 	for(var/kimono in typesof(/obj/item/clothing/under/kimono))
 		var/obj/item/clothing/under/kimono/kimono_type = kimono
 		kimonos[initial(kimono_type.name)] = kimono_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(kimonos, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(kimonos, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/pyjamas_red
 	name = "Pyjamas - Red"
@@ -556,7 +556,7 @@
 	for(var/future_fashion in typesof(/obj/item/clothing/under/future_fashion))
 		var/obj/item/clothing/under/future_fashion/future_fashion_type = future_fashion
 		future_fashion_selection[initial(future_fashion_type.name)] = future_fashion_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(future_fashion_selection, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(future_fashion_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/suit/permit
 	name = "Nudity Permit"
@@ -577,7 +577,7 @@ Swimsuits
 	for(var/swimsuit in typesof(/obj/item/clothing/under/swimsuit))
 		var/obj/item/clothing/under/swimsuit/swimsuit_type = swimsuit
 		swimsuits[initial(swimsuit_type.name)] = swimsuit_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(swimsuits, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(swimsuits, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/suit/gnshorts
 	name = "GN Shorts"
@@ -807,7 +807,7 @@ Swimsuits
 	for(var/summerdress in typesof(/obj/item/clothing/under/dress/summer))
 		var/obj/item/clothing/under/summerdress_type = summerdress
 		summerdress_selection[initial(summerdress_type.name)] = summerdress_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(summerdress_selection, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(summerdress_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/skinsuit_selection
 	name = "Skinsuit Selection - Male"
@@ -819,7 +819,7 @@ Swimsuits
 	for(var/skinsuit in typesof(/obj/item/clothing/under/skinsuit))
 		var/obj/item/clothing/under/skinsuit_type = skinsuit
 		skinsuit_selection[initial(skinsuit_type.name)] = skinsuit_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(skinsuit_selection, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(skinsuit_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/skinsuitfem_selection
 	name = "Skinsuit Selection - Female"
@@ -831,7 +831,7 @@ Swimsuits
 	for(var/skinsuitfem in typesof(/obj/item/clothing/under/skinsuit_fem))
 		var/obj/item/clothing/under/skinsuitfem_type = skinsuitfem
 		skinsuitfem_selection[initial(skinsuitfem_type.name)] = skinsuitfem_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(skinsuitfem_selection, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(skinsuitfem_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/altbodysuit_selection
 	name = "Alternate Bodysuit Selection - Male"
@@ -843,7 +843,7 @@ Swimsuits
 	for(var/altbodysuit in typesof(/obj/item/clothing/under/bodysuit/alt))
 		var/obj/item/clothing/under/altbodysuit_type = altbodysuit
 		altbodysuit_selection[initial(altbodysuit_type.name)] = altbodysuit_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(altbodysuit_selection, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(altbodysuit_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/altbodysuitfem_selection
 	name = "Alternate Bodysuit Selection - Female"
@@ -855,7 +855,7 @@ Swimsuits
 	for(var/altbodysuitfem in typesof(/obj/item/clothing/under/bodysuit/alt_fem))
 		var/obj/item/clothing/under/altbodysuitfem_type = altbodysuitfem
 		altbodysuitfem_selection[initial(altbodysuitfem_type.name)] = altbodysuitfem_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(altbodysuitfem_selection, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(altbodysuitfem_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/ballet
 	name = "Antheia Tutu"
@@ -873,7 +873,7 @@ Swimsuits
 	for(var/summercloths in (typesof(/obj/item/clothing/under/tajaran/summer)))
 		var/obj/item/clothing/under/summercloths_type = summercloths
 		summercloths_selection[initial(summercloths_type.name)] = summercloths_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(summercloths_selection, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(summercloths_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/tajaran/tajara_dress_selection
 	name = "Adhomian dresses selection"
@@ -886,7 +886,7 @@ Swimsuits
 	for(var/tajara_dress in (typesof(/obj/item/clothing/under/dress/tajaran)))
 		var/obj/item/clothing/under/dress/tajaran/tajara_dress_type = tajara_dress
 		tajara_dress_selection[initial(tajara_dress_type.name)] = tajara_dress_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tajara_dress_selection, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tajara_dress_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/uniform/tajaran/laborer
 	name = "Generic Adhomian laborer clothes"
