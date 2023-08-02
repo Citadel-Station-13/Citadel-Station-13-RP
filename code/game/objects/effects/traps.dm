@@ -456,7 +456,6 @@ Add those other swinging traps you mentioned above!
 				to_chat(user, SPAN_NOTICE("You begin repairing \the [src.name] with \the [WT].>"))
 			if(do_after(user, 20, src))
 				set_integrity(integrity_max)
-				broken = FALSE
 		return
 	return ..()
 

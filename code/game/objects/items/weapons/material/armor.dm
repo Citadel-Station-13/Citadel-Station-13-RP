@@ -38,26 +38,16 @@
 
 // Might be best to make ablative vests a material armor using a new material to cut down on this copypaste.
 /obj/item/clothing/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	var/datum/material/mat = get_primary_material()
-	if(isnull(mat))
+	if(!(material_trait_flags & MATERIAL_TRAIT_DEFEND))
 		return ..()
-	if(MATERIAL_NEEDS_DEFEND_SEMANTICS(mat))
-		var/calculated_type = NONE
-		if(istype(damage_source, /obj/projectile))
-			calculated_type = ATTACK_TYPE_PROJECTILE
-		else if(isitem(damage_source))
-			var/obj/item/I = damage_source
-			if(I.throwing)
-				calculated_type = ATTACK_TYPE_THROWN
-			else
-				calculated_type = ATTACK_TYPE_MELEE
-		var/result = mat.on_mob_defense(user, def_zone, damage_source, calculated_type, src)
-		if(result & MATERIAL_DEFEND_FORCE_MISS)
-			return PROJECTILE_FORCE_MISS
-		if(result & MATERIAL_DEFEND_FULL_BLOCK)
-			return TRUE
-		if(result & MATERIAL_DEFEND_REFLECT)
-			return PROJECTILE_CONTINUE
+	var/result
+	MATERIAL_INVOKE_OUT(result, src, MATERIAL_TRAIT_DEFEND, on_mob_defense, user, def_zone, damage_source, calculated_type)
+	if(result & MATERIAL_DEFEND_FORCE_MISS)
+		return PROJECTILE_FORCE_MISS
+	if(result & MATERIAL_DEFEND_FULL_BLOCK)
+		return TRUE
+	if(result & MATERIAL_DEFEND_REFLECT)
+		return PROJECTILE_CONTINUE
 	return ..()
 
 /obj/item/clothing/suit/armor/material

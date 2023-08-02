@@ -213,6 +213,9 @@
 	playsound(loc, 'sound/effects/Glasshit.ogg', 50, TRUE)
 
 /obj/structure/window/attack_hand(mob/user, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+
 	user.setClickCooldown(user.get_attack_speed())
 
 	if (MUTATION_HULK in user.mutations) // Do we really still need these?
@@ -248,24 +251,6 @@
 			SPAN_NOTICE("You knock on the [name]."),
 			SPAN_HEAR("You hear a knocking sound."),
 		)
-	return
-
-/obj/structure/window/attack_generic(mob/user, damage)
-	user.setClickCooldown(user.get_attack_speed())
-	if (!damage)
-		return
-
-	if (damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
-		visible_message(SPAN_DANGER("[user] smashes into [src]!"))
-		if (considered_reinforced)
-			damage /= 2
-		take_damage(damage)
-	else
-		visible_message(SPAN_NOTICE("\The [user] bonks \the [src] harmlessly."))
-
-	user.do_attack_animation(src)
-
-	return TRUE
 
 /obj/structure/window/attackby(obj/item/object, mob/user)
 	if(user.a_intent == INTENT_HARM)

@@ -39,7 +39,21 @@
 		} \
 	}
 
-#warn impl - this doesn't call on_add and on_remove...
+#define MATERIAL_INVOKE_OUT(OUT, A, CHECK, INVOKE, ARGS...) \
+	if(A.material_trait_flags & CHECK) { \
+		if(islist(A.material_traits)) { \
+			for(var/datum/material_trait/__trait as anything in A.material_traits){ \
+				if(!(__trait.material_trait_flags & CHECK)) { \
+					continue; \
+				} \
+				OUT |= __trait.INVOKE(A, A.material_traits[__trait], ##args); \
+			} \
+		} \
+		else { \
+			var/datum/material_trait/__trait = A.material_traits; \
+			OUT |= __trait.INVOKE(A, A.material_traits_data, ##args); \
+		} \
+	}
 
 /// ensure this is called once and only once when a material is added to an atom
 /// alternatively, don't call this at all if you don't want to register traits.

@@ -20,21 +20,21 @@
 
 /turf/simulated/wall/proc/set_outer_material(datum/material/material)
 	MATERIAL_UNREGISTER(material_outer, src, TRUE)
-	material_outer = outer
+	material_outer = material
 	MATERIAL_REGISTER(material_outer, src, TRUE)
 
 	update_materials()
 
 /turf/simulated/wall/proc/set_reinforcing_material(datum/material/material)
 	MATERIAL_UNREGISTER(material_reinf, src, FALSE)
-	material_reinf = reinforcing
+	material_reinf = material
 	MATERIAL_REGISTER(material_reinf, src, FALSE)
 
 	update_materials()
 
 /turf/simulated/wall/proc/set_girder_material(datum/material/material)
 	MATERIAL_UNREGISTER(material_girder, src, FALSE)
-	material_girder = girder
+	material_girder = material
 	MATERIAL_REGISTER(material_girder, src, FALSE)
 
 	update_materials()

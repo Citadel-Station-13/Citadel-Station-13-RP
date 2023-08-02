@@ -10,7 +10,7 @@
 	if(W.is_screwdriver())
 		to_chat(user, "You finish the concealed blade weapon.")
 		playsound(src, W.tool_sound, 50, 1)
-		new /obj/item/material/butterfly(user.loc, material.name)
+		new /obj/item/material/butterfly(user.loc, get_primary_material())
 		qdel(src)
 		return
 
@@ -41,7 +41,7 @@
 	if(istype(W,/obj/item/material/butterflyblade))
 		var/obj/item/material/butterflyblade/B = W
 		to_chat(user, "You attach the two concealed blade parts.")
-		new /obj/item/material/butterflyconstruction(user.loc, B.material.name)
+		new /obj/item/material/butterflyconstruction(user.loc, B.get_primary_material())
 		qdel(W)
 		qdel(src)
 		return
@@ -145,7 +145,7 @@
 
 	if(istype(thing, /obj/item/stack/material) && construction_stage == 5)
 		var/obj/item/stack/material/reinforcing = thing
-		var/datum/material/reinforcing_with = reinforcing.get_material()
+		var/datum/material/reinforcing_with = reinforcing.material
 		if(reinforcing_with.name == MAT_STEEL) // Steel
 			if(reinforcing.get_amount() < 3)
 				to_chat(user, "<span class='warning'>You need at least 3 [reinforcing.singular_name]\s for this task.</span>")
@@ -173,7 +173,7 @@
 		user.visible_message("<span class='notice'>\The [user] whacks at \the [src] like a caveman, shaping the metal with \the [thing] into a rough handle, finishing it off.</span>")
 		increment_construction_stage()
 		playsound(src, 'sound/weapons/smash5.ogg', 100, 1)
-		var/obj/item/material/twohanded/sledgehammer/sledge = new(loc, material.name)
+		var/obj/item/material/twohanded/sledgehammer/sledge = new(loc, get_primary_material())
 		var/put_in_hands
 		var/mob/M = loc
 		if(istype(M))
