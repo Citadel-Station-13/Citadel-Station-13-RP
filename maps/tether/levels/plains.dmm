@@ -119,10 +119,16 @@
 "bF" = (
 /turf/simulated/mineral/virgo3b,
 /area/mine/unexplored)
+"eK" = (
+/turf/simulated/mineral/virgo3b/rich,
+/area/mine/unexplored)
 "eX" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/unexplored)
+"sC" = (
+/turf/simulated/mineral/virgo3b/rich,
+/area/tether/outpost/exploration_plains)
 "vZ" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/loot_pile/maint/trash,
@@ -15198,8 +15204,8 @@ ab
 ab
 bF
 bF
-bF
-bF
+eK
+eK
 ae
 as
 "}
@@ -15340,8 +15346,8 @@ ab
 ab
 ab
 ab
-ad
-ad
+sC
+sC
 ae
 as
 "}
@@ -15482,9 +15488,9 @@ ab
 ab
 ab
 ab
-ad
-ad
-ad
+sC
+sC
+sC
 as
 "}
 (109,1,1) = {"
@@ -15625,8 +15631,8 @@ ab
 ab
 ab
 ad
-ad
-ad
+sC
+sC
 as
 "}
 (110,1,1) = {"
@@ -15767,8 +15773,8 @@ ab
 ab
 ab
 ad
-ad
-ad
+sC
+sC
 as
 "}
 (111,1,1) = {"
@@ -15909,8 +15915,8 @@ ab
 ab
 ab
 ad
-ad
-ad
+sC
+sC
 as
 "}
 (112,1,1) = {"
@@ -16052,7 +16058,7 @@ ab
 ab
 ab
 ab
-ad
+sC
 as
 "}
 (113,1,1) = {"
@@ -16193,8 +16199,8 @@ ad
 ad
 ab
 ab
-ad
-ad
+sC
+sC
 as
 "}
 (114,1,1) = {"
@@ -16334,8 +16340,8 @@ ab
 ad
 ad
 ad
-ad
-ad
+sC
+sC
 ae
 as
 "}
@@ -16476,8 +16482,8 @@ ab
 ad
 ad
 bF
-bF
-bF
+eK
+eK
 ae
 as
 "}
@@ -19630,14 +19636,14 @@ bF
 bF
 bF
 bF
+eK
 ad
 ad
 ad
 ad
 ad
 ad
-ad
-ad
+eK
 bF
 bF
 bF
@@ -19772,14 +19778,14 @@ ae
 ae
 ae
 ae
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 ae
 ae
 ae
