@@ -189,7 +189,7 @@
 		to_chat(user, "<span class='notice'>There isn't enough material here to construct a wall.</span>")
 		return 0
 
-	var/datum/material/M = get_material_by_name(S.default_type)
+	var/datum/material/M = S.material
 	if(!istype(M))
 		return 0
 
@@ -227,7 +227,7 @@
 		to_chat(user, "<span class='notice'>There isn't enough material here to reinforce the girder.</span>")
 		return 0
 
-	var/datum/material/M = get_material_by_name(S.default_type)
+	var/datum/material/M = S.material
 	if(!istype(M) || M.integrity < 50)
 		to_chat(user, "You cannot reinforce \the [src] with that; it is too soft.")
 		return 0

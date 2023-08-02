@@ -464,7 +464,7 @@
 			else
 				. += SPAN_DANGER("It's empty.")
 
-	MATERIAL_TRAIT_INVOCATION(src, MATERIAL_TRAIT_EXAMINE, on_examine, ., user, dist)
+	MATERIAL_INVOKE(src, MATERIAL_TRAIT_EXAMINE, on_examine, ., user, dist)
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 

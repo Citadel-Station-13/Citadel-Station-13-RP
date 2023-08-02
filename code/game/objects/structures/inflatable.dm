@@ -14,6 +14,9 @@
 
 	hit_sound_brute = 'sound/effects/Glasshit.ogg'
 
+	var/item_type = /obj/item/inflatable
+	var/torn_type = /obj/item/inflatable/torn
+
 /obj/structure/inflatable/Initialize(mapload)
 	. = ..()
 	update_nearby_tiles()
@@ -33,14 +36,14 @@
 	//to_chat(user, "<span class='notice'>You slowly deflate the inflatable wall.</span>")
 	visible_message("[src] slowly deflates.")
 	spawn(50)
-		var/obj/item/inflatable/R = new /obj/item/inflatable(loc)
+		var/obj/item/inflatable/R = new item_type(loc)
 		src.transfer_fingerprints_to(R)
 		qdel(src)
 
 /obj/structure/inflatable/proc/puncture()
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
 	visible_message("[src] rapidly deflates!")
-	var/obj/item/inflatable/torn/R = new /obj/item/inflatable/torn(loc)
+	var/obj/item/inflatable/torn/R = new torn_type(loc)
 	src.transfer_fingerprints_to(R)
 	qdel(src)
 
@@ -55,22 +58,16 @@
 	remove_obj_verb(src, /obj/structure/inflatable/verb/hand_deflate)
 	deflate()
 
-/obj/structure/inflatable/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	health -= damage
-	user.do_attack_animation(src)
-	if(health <= 0)
-		user.visible_message("<span class='danger'>[user] [attack_verb] open the [src]!</span>")
-		spawn(1) puncture()
-	else
-		user.visible_message("<span class='danger'>[user] [attack_verb] at [src]!</span>")
-	return 1
+/obj/structure/inflatable/deconstruct(method)
+	visible_message(SPAN_WARNING("\the [src] deflates!"))
+	return ..()
 
-/obj/structure/inflatable/take_damage_legacy(var/damage)
-	health -= damage
-	if(health <= 0)
-		visible_message("<span class='danger'>The [src] deflates!</span>")
-		spawn(1) puncture()
-	return 1
+/obj/structure/inflatable/drop_products(method, atom/where)
+	. = ..()
+	if(method != ATOM_DECONSTRUCT_DESTROYED)
+		new item_type(where)
+	else
+		new torn_tye(where)
 
 /obj/structure/inflatable/door //Based on mineral door code
 	name = "inflatable door"
@@ -80,6 +77,9 @@
 
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "door_closed"
+
+	item_type = /obj/item/inflatable/door
+	torn_type = /obj/item/inflatable/door/torn
 
 	var/state = 0 //closed, 1 == open
 	var/isSwitchingStates = 0
@@ -146,18 +146,3 @@
 		icon_state = "door_open"
 	else
 		icon_state = "door_closed"
-
-/obj/structure/inflatable/door/deflate()
-	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
-	visible_message("[src] slowly deflates.")
-	spawn(50)
-		var/obj/item/inflatable/door/R = new /obj/item/inflatable/door(loc)
-		src.transfer_fingerprints_to(R)
-		qdel(src)
-
-/obj/structure/inflatable/door/puncture()
-	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
-	visible_message("[src] rapidly deflates!")
-	var/obj/item/inflatable/door/torn/R = new /obj/item/inflatable/door/torn(loc)
-	src.transfer_fingerprints_to(R)
-	qdel(src)

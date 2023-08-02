@@ -23,7 +23,7 @@
 
 //* /atom level invocation of traits
 
-#define MATERIAL_TRAIT_INVOCATION(A, CHECK, INVOKE, ARGS...) \
+#define MATERIAL_INVOKE(A, CHECK, INVOKE, ARGS...) \
 	if(A.material_trait_flags & CHECK) { \
 		if(islist(A.material_traits)) { \
 			for(var/datum/material_trait/__trait as anything in A.material_traits){ \

@@ -41,8 +41,7 @@
 	var/active
 	var/can_open = FALSE
 
-	#warn oh no
-	var/datum/material/material
+	var/datum/material/material_outer
 	var/datum/material/material_reinf
 	var/datum/material/material_girder
 
@@ -59,13 +58,10 @@
 
 /turf/simulated/wall/Initialize(mapload)
 	. = ..()
-	//? Remove the color that was set for mapping clarity.
+	// Remove the color that was set for mapping clarity.
 	color = null
-
-	#warn init materials
-
-	set_materials(material, material_reinf, material_girder)
-	set_rad_insulation()
+	// init materials
+	init_materials()
 
 	if(smoothing_flags & SMOOTH_DIAGONAL_CORNERS && fixed_underlay) //Set underlays for the diagonal walls.
 		var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = TURF_PLANE)
@@ -79,21 +75,12 @@
 		fixed_underlay = string_assoc_list(fixed_underlay)
 		underlays += underlay_appearance
 
-	if(material?.radioactivity || material_reinf?.radioactivity || material_girder?.radioactivity)
-		START_PROCESSING(SSturfs, src)
-
 	stripe_icon = material.wall_stripe_icon
 	update_overlays()
 
 /turf/simulated/wall/Destroy()
-	STOP_PROCESSING(SSturfs, src)
 	clear_plants()
 	return ..()
-
-/turf/simulated/wall/process(delta_time)
-	// Calling parent will kill processing
-	if(!radiate())
-		return PROCESS_KILL
 
 // Walls always hide the stuff below them.
 /turf/simulated/wall/levelupdate()
@@ -315,10 +302,6 @@
 
 	radiation_pulse(src, total_radiation)
 	return total_radiation
-
-/turf/simulated/wall/proc/set_rad_insulation()
-	var/total_rad_insulation = material.weight + material.radiation_resistance + (material_reinf ? (material_reinf.weight + material_reinf.radiation_resistance) / 4 : 0) + (material_girder ? (material_girder.weight + material_girder.radiation_resistance) / 16 : 0)
-	rad_insulation = round(1/(total_rad_insulation**1.35*1/21.25**1.35+1),0.01) // 21.25 would be the total_rad_insulation of basic steel walls and return 0.5 rad_insulation. 1.35 exponential function helps us to also hit the plasteel wall goal of 0.25.
 
 /turf/simulated/wall/proc/burn(temperature)
 	if(material.combustion_effect(src, temperature, 0.7))
