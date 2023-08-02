@@ -60,6 +60,8 @@
 #define BODYTYPE_XENOHYBRID			"xenohybrid"
 /// digitigrade unathi
 #define BODYTYPE_UNATHI_DIGI        "unathi-digi"
+/// ipc - from aurora, currently unused other than in sprites
+#define BODYTYPE_IPC                "ipc"
 
 //! keep this number (count) up to date
 #define BODYTYPES_TOTAL 19
