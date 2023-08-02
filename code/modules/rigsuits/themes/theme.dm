@@ -12,6 +12,13 @@
 	var/display_name
 	/// visible name - overrides display name, which overrides name. renders as [visible_name][piece.visible_name]
 	var/visible_name
+	/// pieces - paths. init'd on, well, new/init.
+	var/list/pieces = list(
+		/datum/rig_piece/helmet,
+		/datum/rig_piece/chestplate,
+		/datum/rig_piece/gloves,
+		/datum/rig_piece/boots,
+	)
 	/// base icon
 	var/base_icon
 	/// base icon state
@@ -24,8 +31,11 @@
 
 	#warn coloration system start
 
-/datum/rig_theme_piece
-	abstract_type = /datum/rig_theme_piece
+/datum/rig_theme/New()
+	#warn init pieces
+
+/datum/rig_piece
+	abstract_type = /datum/rig_piece
 	/// path
 	var/path
 	/// display name - overrides name on UIs
@@ -52,40 +62,40 @@
 	/// slot this goes in - SLOT_ID_HANDS for an inhand item. specific-hand binding not supported yet.
 	var/equip_slot
 
-/datum/rig_theme_piece/New()
+/datum/rig_piece/New()
 	CONSTRUCT_BODYTYPES(worn_bodytypes)
 	CONSTRUCT_BODYTYPES(worn_bodytypes_fallback)
 
 /**
  * returns rig_piece component
  */
-/datum/rig_theme_piece/proc/instantiate()
+/datum/rig_piece/proc/instantiate()
 	ASSERT(ispath(path, /obj/item))
 	var/obj/item/created_item = new path
 	var/datum/component/rig_piece/created_piece = created_item.AddComponent(/datum/component/rig_piece)
 
-/datum/rig_theme_piece/helmet
+/datum/rig_piece/helmet
 	display_name = "helmet"
 	visible_name = "Helmet"
 	path = /obj/item/clothing/head/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-helmet"
 
-/datum/rig_theme_piece/suit
+/datum/rig_piece/chesplate
 	display_name = "chassis"
 	visible_name = "Chassis"
-	path = /obj/item/clothing/head/rig
+	path = /obj/item/clothing/suit/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-chestplate"
 
-/datum/rig_theme_piece/gloves
+/datum/rig_piece/gloves
 	display_name = "gauntlets"
 	visible_name = "Gauntlets"
 	path = /obj/item/clothing/gloves/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-gloves"
 
-/datum/rig_theme_piece/shoes
+/datum/rig_piece/boots
 	display_name = "boots"
 	visible_name = "Boots"
 	path = /obj/item/clothing/shoes/rig
