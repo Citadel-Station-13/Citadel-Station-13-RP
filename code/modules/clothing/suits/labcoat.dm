@@ -119,5 +119,5 @@
 
 /obj/item/clothing/suit/storage/toggle/labcoat/ossnecro
 	name = "OSS&NECRO Labcoat"
-	desc = "A flash labcoat with cyan markings. This one is often provided to OSS&NECRO employees as standard equipement. Isn't it similar to the one that the Research Director has?"
+	desc = "A flashy labcoat with cyan markings. This one is often provided to OSS&NECRO employees as standard equipement. Isn't it similar to the one that the Research Director has?"
 	icon_state = "labcoat_ossnecro"
