@@ -8,12 +8,12 @@
 	var/desc = "A powered exochassis of unknown design."
 	/// visible fluff description
 	var/fluff_desc
-	/// display name - overrides name on UIs
+	/// display name - overrides name on internal UIs.
 	var/display_name
 	/// visible name - overrides display name, which overrides name. renders as [visible_name][piece.visible_name]
 	var/visible_name
 	/// base icon
-	var/icon
+	var/base_icon
 	/// base icon state
 	/// combined as "[base_state][piece_state_append][sealed_state_append]" to get final state
 	var/base_state
@@ -21,6 +21,8 @@
 	var/control_state_append = "-control"
 	/// control module sealed append
 	var/control_sealed_append = "-sealed"
+
+	#warn coloration system start
 
 /datum/rig_theme_piece
 	abstract_type = /datum/rig_theme_piece
@@ -63,29 +65,29 @@
 	var/datum/component/rig_piece/created_piece = created_item.AddComponent(/datum/component/rig_piece)
 
 /datum/rig_theme_piece/helmet
-	display_name = " helmet"
-	visible_name = " helmet"
+	display_name = "helmet"
+	visible_name = "Helmet"
 	path = /obj/item/clothing/head/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-helmet"
 
 /datum/rig_theme_piece/suit
-	display_name = " chassis"
-	visible_name = " chassis"
+	display_name = "chassis"
+	visible_name = "Chassis"
 	path = /obj/item/clothing/head/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-chestplate"
 
 /datum/rig_theme_piece/gloves
-	display_name = " gauntlets"
-	visible_name = " gauntlets"
+	display_name = "gauntlets"
+	visible_name = "Gauntlets"
 	path = /obj/item/clothing/gloves/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
-	piece_state_append = "-gauntlets"
+	piece_state_append = "-gloves"
 
 /datum/rig_theme_piece/shoes
-	display_name = " boots"
-	visible_name = " boots"
+	display_name = "boots"
+	visible_name = "Boots"
 	path = /obj/item/clothing/shoes/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
-	piece_state_append = "-boots"
+	piece_state_append = "-shoes"
