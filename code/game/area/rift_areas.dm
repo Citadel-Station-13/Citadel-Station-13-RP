@@ -11,7 +11,7 @@
 	requires_power = 0
 	is_outside = OUTSIDE_YES
 
-// Elevator areas.
+//Elevator areas.
 /area/turbolift/runder/level2
 	name = "under (level 2)"
 	lift_floor_label = "Underground 2"
