@@ -51,7 +51,10 @@
  * * offset_x - offset generation by this much ; otherwise lower left is 0, 0 on layer maps
  * * offset_y - offset generation by this much ; otherwise lower left is 0, 0 on layer maps
  */
-/datum/map_generation/proc/generate(x, y, z, width, height, offset_x = 0, offset_y = 0)
+/datum/map_generation/proc/friendly_generate(x, y, z, width, height, offset_x = 0, offset_y = 0)
+	#warn impl
+
+/datum/map_generation/proc/generate(list/bounds, offset_x, offset_y)
 	#warn impl
 
 /datum/map_generation/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
