@@ -132,6 +132,9 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	var/list/old_baseturfs = baseturfs
 	var/old_type = type
 
+	// store sticky flags
+	var/old_flags = turf_flags & TURF_FLAGS_STICKY
+
 	var/list/post_change_callbacks = list()
 	SEND_SIGNAL(src, COMSIG_TURF_CHANGE, path, new_baseturfs, flags, post_change_callbacks)
 
@@ -160,6 +163,9 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		new_turf.baseturfs = baseturfs_string_list(new_baseturfs, new_turf)
 	else
 		new_turf.baseturfs = baseturfs_string_list(old_baseturfs, new_turf) //Just to be safe
+
+	// carry through flags
+	turf_flags |= old_flags
 
 	if(!(flags & CHANGETURF_DEFER_CHANGE))
 		new_turf.AfterChange(flags, old_type)
