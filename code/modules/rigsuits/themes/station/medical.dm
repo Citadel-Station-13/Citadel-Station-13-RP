@@ -26,5 +26,4 @@
 			worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TAJARAN, BODYTYPE_IPC);
 		},
 	)
-
-#warn impl
+	#warn impl

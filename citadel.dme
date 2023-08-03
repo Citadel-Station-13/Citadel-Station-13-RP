@@ -4330,6 +4330,7 @@
 #include "code\modules\rigsuits\themes\station\civilian.dm"
 #include "code\modules\rigsuits\themes\station\command.dm"
 #include "code\modules\rigsuits\themes\station\engineering.dm"
+#include "code\modules\rigsuits\themes\station\exploration.dm"
 #include "code\modules\rigsuits\themes\station\medical.dm"
 #include "code\modules\rigsuits\themes\station\science.dm"
 #include "code\modules\rigsuits\themes\station\security.dm"

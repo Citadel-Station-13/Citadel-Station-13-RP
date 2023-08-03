@@ -12,6 +12,7 @@
 	fluff_desc = "TBD"
 	display_name = "engineering"
 	visible_name = "Engineering"
+	#warn impl
 
 /datum/rig_theme/station/engineering/atmospherics
 	name = "atmospherics rig"
@@ -20,6 +21,7 @@
 	fluff_desc = "TBD"
 	display_name = "atmospherics"
 	visible_name = "Atmospherics"
+	#warn impl
 
 /datum/rig_theme/station/engineering/advanced
 	name = "advanced rig"
@@ -28,5 +30,4 @@
 	fluff_desc = "TBD"
 	display_name = "advanced"
 	visible_name = "Advanced"
-
-#warn impl
+	#warn impl

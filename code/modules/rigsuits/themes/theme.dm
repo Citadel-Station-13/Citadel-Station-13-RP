@@ -25,17 +25,39 @@
 	var/base_icon
 	/// base icon state
 	/// combined as "[base_state][piece_state_append][sealed_state_append]" to get final state
+	/// the x_base_when_un/sealed vars can modify this.
 	var/base_state
 	/// control module state
 	var/control_state_append = "-control"
 	/// control module sealed append
 	var/control_sealed_append = "-sealed"
+	/// control module uses base state when unsealed; defaults to base_state
+	var/control_base_state_unsealed
+	/// control module uses base state when sealed; defaults to base_state
+	var/control_base_state_sealed
+	/// control module worn icon uses base state; defaults to base_state
+	var/control_base_state_worn
 
 	#warn coloration system start
 
 /datum/rig_theme/New()
-	#warn init pieces
+	var/list/old_pieces = pieces
+	pieces = list()
+	for(var/path in old_pieces)
+		add_piece(path)
 
+/datum/rig_theme/proc/imprint_appearance(obj/item/rig/control_module)
+	#warn impl
+
+/datum/rig_theme/proc/add_piece(datum/rig_piece/piece_path)
+	if(ispath(piece_path))
+		piece_path = new piece_path
+	#warn imprint piece with base states
+
+/**
+ * RIG piece definition datums
+ * Should only ever be belonging to one /datum/rig_theme at a time.
+ */
 /datum/rig_piece
 	abstract_type = /datum/rig_piece
 	/// path
@@ -55,6 +77,12 @@
 	var/piece_state_append
 	/// sealed state append
 	var/sealed_state_append = "-sealed"
+	/// base state used while unsealed - defaults to rig theme
+	var/base_state_unsealed
+	/// base state used while sealed - defaults to rig theme
+	var/base_state_sealed
+	/// base state used when worn - defaults to rig theme
+	var/base_state_worn
 	/// worn rendering flags
 	var/worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	/// bodytypes implemented
@@ -78,7 +106,16 @@
 /datum/rig_piece/proc/instantiate()
 	ASSERT(ispath(path, /obj/item))
 	var/obj/item/created_item = new path
-	var/datum/component/rig_piece/created_piece = created_item.AddComponent(/datum/component/rig_piece)
+	var/datum/component/rig_piece/created_piece = created_item.AddComponent(/datum/component/rig_piece, src)
+	imprint_appearance(created_piece)
+	imprint_behavior(piece_component)
+	#warn impl
+
+/datum/rig_piece/proc/imprint_appearance(datum/component/rig_piece/piece_component)
+	#warn impl
+
+/datum/rig_piece/proc/imprint_behavior(datum/component/rig_piece/piece_component)
+	#warn impl
 
 /datum/rig_piece/helmet
 	display_name = "helmet"

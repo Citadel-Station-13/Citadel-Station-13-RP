@@ -12,5 +12,4 @@
 	fluff_desc = "TBD"
 	display_name = "salvage"
 	visible_name = "Salvage"
-
-#warn impl
+	#warn impl
