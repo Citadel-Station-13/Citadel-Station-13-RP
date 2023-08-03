@@ -50,7 +50,7 @@
 /obj/item/clothing/suit/storage/toggle/labcoat/genetics/classic
 	name = "Geneticist labcoat (Classic)"
 	desc = "A suit that protects against minor chemical spills. Has a blue stripe on the shoulder. It looks old-fashioned."
-	icon_state = "labcoat_genclassic"
+	icon_state = "labcoatclassic_gen"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "genetics_labcoat", SLOT_ID_LEFT_HAND = "genetics_labcoat")
 
 /obj/item/clothing/suit/storage/toggle/labcoat/chemist
