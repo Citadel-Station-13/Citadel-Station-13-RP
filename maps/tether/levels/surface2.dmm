@@ -3860,7 +3860,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "agb" = (
 /obj/machinery/door/airlock/command{
 	id_tag = "cmodoor";
@@ -5423,7 +5423,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aiF" = (
 /obj/machinery/door/airlock{
 	id_tag = "bathroomlock12";
@@ -6255,7 +6255,7 @@
 /area/tether/surfacebase/medical/recoveryward)
 "ajV" = (
 /turf/simulated/wall,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "ajW" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
@@ -6872,11 +6872,11 @@
 /obj/structure/lattice,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/open,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "ala" = (
 /obj/structure/closet/firecloset/full/double,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "alb" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -7632,13 +7632,13 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "amf" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "amg" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -8076,7 +8076,7 @@
 	pixel_x = -28
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "amR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -8241,13 +8241,13 @@
 /area/tether/surfacebase/public_garden_two)
 "ani" = (
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "anj" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "ank" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -8772,7 +8772,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/down/supply,
 /obj/structure/disposalpipe/down,
 /turf/simulated/open,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aok" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -9574,7 +9574,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "apw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -9589,7 +9589,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "apx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -10252,7 +10252,7 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aqE" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -10264,7 +10264,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aqF" = (
 /turf/simulated/wall,
 /area/tether/surfacebase/security/brig/bathroom)
@@ -10683,7 +10683,7 @@
 "arq" = (
 /obj/structure/stairs/spawner/north,
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "arr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/borderfloor{
@@ -11334,7 +11334,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "asz" = (
 /obj/machinery/door/airlock/security{
 	name = "Security Restroom";
@@ -12024,7 +12024,7 @@
 	},
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "atK" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -12355,7 +12355,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aul" = (
 /obj/machinery/washing_machine,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -13273,7 +13273,7 @@
 /obj/random/tech_supply,
 /obj/random/maintenance/research,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "avR" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -13285,7 +13285,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "avS" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/floor_decal/rust,
@@ -13302,7 +13302,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "avT" = (
 /turf/simulated/wall,
 /area/tether/surfacebase/security/interrogation)
@@ -14702,7 +14702,7 @@
 /area/maintenance/lower/north)
 "ayW" = (
 /turf/simulated/wall,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "ayX" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 5
@@ -14915,11 +14915,11 @@
 /area/maintenance/asmaint2)
 "azz" = (
 /turf/simulated/open,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "azA" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "azB" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -15364,7 +15364,7 @@
 	pixel_x = 30
 	},
 /turf/simulated/open,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aAE" = (
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/tiled,
@@ -15584,7 +15584,7 @@
 	dir = 1
 	},
 /turf/simulated/wall,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aBj" = (
 /obj/structure/sign/directions/medical{
 	dir = 1;
@@ -15603,16 +15603,16 @@
 	pixel_y = -10
 	},
 /turf/simulated/wall,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aBk" = (
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aBl" = (
 /obj/machinery/camera/network/tether{
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aBm" = (
 /obj/structure/sign/warning/caution,
 /turf/simulated/wall,
@@ -15870,7 +15870,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aBM" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -15880,7 +15880,7 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aBN" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -15890,7 +15890,7 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aBO" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -15905,21 +15905,21 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aBP" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aBQ" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aBR" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -16197,7 +16197,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aCz" = (
 /obj/machinery/alarm{
 	dir = 1;
@@ -16210,7 +16210,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aCA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -16226,7 +16226,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aCB" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -16250,7 +16250,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aCC" = (
 /obj/machinery/alarm{
 	dir = 1;
@@ -16266,7 +16266,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aCD" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -16284,7 +16284,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aCE" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -16660,7 +16660,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/north_stairs_two)
 "aDv" = (
 /obj/structure/sign/warning/caution{
 	name = "\improper CAUTION - DANGEROUS EQUIPMENT AND DROPS"
@@ -19450,7 +19450,7 @@
 /obj/structure/railing,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aKk" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -22104,7 +22104,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aPw" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 9
@@ -22118,7 +22118,7 @@
 "aPx" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aPy" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance/clean,
@@ -22152,7 +22152,7 @@
 "aPA" = (
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aPB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -22165,7 +22165,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aPC" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 10
@@ -22180,7 +22180,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aPE" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -22316,7 +22316,7 @@
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aPV" = (
 /obj/structure/railing{
 	dir = 8
@@ -22326,7 +22326,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aPW" = (
 /obj/machinery/light{
 	dir = 8
@@ -22512,7 +22512,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aQr" = (
 /obj/structure/frame{
 	anchored = 1
@@ -22863,24 +22863,24 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aRg" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aRh" = (
 /obj/structure/table/rack/holorack,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aRi" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aRj" = (
 /obj/random/tool,
 /turf/simulated/floor/plating,
@@ -22891,7 +22891,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aRl" = (
 /obj/machinery/requests_console{
 	department = "Science";
@@ -23089,7 +23089,7 @@
 /obj/item/storage/single_use/mre/random,
 /obj/item/storage/single_use/mre/random,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence/upper)
+/area/maintenance/lower/public_garden_maintenance/upper)
 "aRC" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
