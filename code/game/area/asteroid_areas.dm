@@ -1,4 +1,4 @@
-// GENERIC MINING AREAS
+//GENERIC MINING AREAS
 
 /area/mine
 	icon_state = "mining"
