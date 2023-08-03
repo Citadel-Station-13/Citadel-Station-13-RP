@@ -13,12 +13,3 @@
 	display_name = "standard"
 	visible_name = "Standard"
 	#warn impl
-
-/datum/rig_theme/station/civilian/settler
-	name = "settler rig"
-	base_state = "prototype"
-	desc = "TBD"
-	fluff_desc = "TBD"
-	display_name = "settler"
-	visible_name = "Settler"
-	#warn impl

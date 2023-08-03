@@ -37,8 +37,14 @@
 	var/control_base_state_sealed
 	/// control module worn icon uses base state; defaults to base_state
 	var/control_base_state_worn
-
-	#warn coloration system start
+	/// default coloration colors
+	var/list/coloration_colors
+	/// default coloration matrix
+	var/list/coloration_matrix
+	/// default coloration mode
+	var/coloration_mode = COLORATION_MODE_NONE
+	/// default coloration amount
+	var/coloration_amount = 0
 
 /datum/rig_theme/New()
 	var/list/old_pieces = pieces
@@ -46,7 +52,7 @@
 	for(var/path in old_pieces)
 		add_piece(path)
 
-/datum/rig_theme/proc/imprint_appearance(obj/item/rig/control_module)
+/datum/rig_theme/proc/imprint_control_appearance(obj/item/rig/control_module)
 	#warn impl
 
 /datum/rig_theme/proc/add_piece(datum/rig_piece/piece_path)
@@ -56,7 +62,7 @@
 
 /**
  * RIG piece definition datums
- * Should only ever be belonging to one /datum/rig_theme at a time.
+ * Should only ever be belonging to one /datum/rig_theme at a time
  */
 /datum/rig_piece
 	abstract_type = /datum/rig_piece
@@ -95,6 +101,14 @@
 	var/inv_hide_flags_inactive = NONE
 	/// inv hide flags while sealed
 	var/inv_hide_flags_active = NONE
+	/// default coloration colors - defaults to rig theme
+	var/list/coloration_colors
+	/// default coloration matrix - defaults to rig theme
+	var/list/coloration_matrix
+	/// default coloration mode - defaults to rig theme
+	var/coloration_mode
+	/// default coloration amount - defaults to rig theme
+	var/coloration_amount
 
 /datum/rig_piece/New()
 	CONSTRUCT_BODYTYPES(worn_bodytypes)

@@ -29,6 +29,16 @@
 	/// nominal climb delay before modifiers
 	var/climb_delay = 3.5 SECONDS
 
+	//* Coloration
+	/// coloration mode
+	var/coloration_mode = COLORATION_MODE_NONE
+	/// coloration:
+	/// in MULTIPLY / MATRIX, this is unused as we just use color var
+	/// in RG, RB, GB, RGB, OVERLAYS, GAGS modes, this is a concat'd string of #aabbcc#112233... for the n colors in this.
+	var/coloration
+	/// coloration amount - only used in COMPLEX modes that aren't MULTIPLY/MATRIX, null otherwise.
+	var/coloration_amount
+
 	//? Depth
 	/// logical depth in pixels. people can freely run from high to low objects without being blocked.
 	///
@@ -382,6 +392,55 @@
 			H.UpdateDamageIcon()
 			H.update_health()
 	*/
+
+//* Coloration
+
+/obj/proc/amount_coloration()
+	switch(coloration_mode)
+		if(COLORATION_MODE_NONE)
+			return 0
+		if(COLORATION_MODE_MATRIX, COLORATION_MODE_MULTIPLY)
+			return 1
+		return coloration_amount
+
+/obj/proc/set_coloration_matrix(list/matrix)
+	if(coloration_mode != COLORATION_MODE_MATRIX)
+		return
+	color = matrix
+
+/obj/proc/set_coloration_parts(list/colors)
+	#warn impl
+
+/obj/proc/update_coloration(list/colors)
+	// todo: complex modes that aren't multiply/matrix go here
+	return
+
+/obj/proc/set_coloration_packed(packed_colors)
+	#warn impl
+
+/obj/proc/get_coloration_parts()
+	if(!(coloration_mode & COLORATION_MODES_COMPLEX))
+		switch(coloration_mode)
+			if(COLORATION_MODE_MULTIPLY)
+				// matrices are unsupported
+				return list(islist(color)? "#ffffff" : color)
+			if(COLORATION_MODE_MATRIX)
+				// unsupported
+				return list("#ffffff")
+		return list()
+	return unpack_coloration_string(coloration)
+
+/obj/proc/get_coloration_packed()
+		switch(coloration_mode)
+			if(COLORATION_MODE_MULTIPLY)
+				// matrices are unsupported
+				return islist(color)? "#ffffff" : color
+			if(COLORATION_MODE_MATRIX)
+				// unsupported
+				return "#ffffff"
+		return ""
+	return coloration
+
 
 //? Materials
 

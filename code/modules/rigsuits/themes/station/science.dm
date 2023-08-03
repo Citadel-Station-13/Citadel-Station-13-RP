@@ -7,9 +7,10 @@
 
 /datum/rig_theme/station/science/standard
 	name = "science rig"
-	base_state = "science"
+	base_state = "prototype"
 	desc = "TBD"
 	fluff_desc = "TBD"
-	display_name = "science"
-	visible_name = "science"
+	display_name = "prototype"
+	visible_name = "Prototype"
 	#warn impl
+
