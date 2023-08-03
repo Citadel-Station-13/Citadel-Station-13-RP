@@ -103,3 +103,12 @@
 		removed.adjust_thermal_energy(heat_dissipation)
 		env.merge(removed)
 	heat -= heat_dissipation
+
+
+
+
+
+
+
+
+#undef COMPONENT_GAS_EFF
