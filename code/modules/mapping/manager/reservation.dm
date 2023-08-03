@@ -7,7 +7,7 @@
  *
  * maybe someday we'll have a non-3d-prism game engine and we can have something actually reasonable instead of this pile of shit.
  */
-/datum/turf_reservation
+/datum/map_reservation
 	/// are we allocated?
 	var/tmp/allocated = FALSE
 	/// reserved turfs - set when allocated
@@ -27,23 +27,23 @@
 	/// type of our area - null for default
 	var/area_type
 
-/datum/turf_reservation/New()
+/datum/map_reservation/New()
 	if(isnull(turf_type))
 		turf_type = RESERVED_TURF_TYPE
 	if(isnull(area_type))
 		area_type = RESERVED_AREA_TYPE
 
-/datum/turf_reservation/Destroy()
+/datum/map_reservation/Destroy()
 	release()
 	return ..()
 
-/datum/turf_reservation/proc/release()
+/datum/map_reservation/proc/release()
 	SSmapping.reserve_turfs(reserved_turfs)
 	reserved_turfs = null
 	allocated = FALSE
 	SSmapping.reservations -= src
 
-/datum/turf_reservation/proc/reserve(width, height, z_override)
+/datum/map_reservation/proc/reserve(width, height, z_override)
 	if(width > world.maxx || height > world.maxy || width < 1 || height < 1)
 		CRASH("invalid request")
 	if(!length(SSmapping.reserve_levels))

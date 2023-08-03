@@ -10,7 +10,7 @@
 	/// reserved turfs allowed - we can over-allocate this if we're only going to be slightly over and can always allocate atleast one level.
 	var/static/reserved_turfs_max = 192 * 192 * 3
 	/// allocated space reservations
-	var/static/list/datum/turf_reservation/reservations = list()
+	var/static/list/datum/map_reservation/reservations = list()
 	/// list of reserved z-indices for fast access
 	var/static/list/reserve_levels = list()
 	/// doing some blocking op on reservation system
@@ -44,8 +44,8 @@
  *
  * failures are considered a runtime due to how sensitive turf management systems are.
  */
-/datum/controller/subsystem/mapping/proc/request_block_reservation(width, height, type = /datum/turf_reservation, turf_override, border_override, area_override)
-	var/datum/turf_reservation/reserve = new type
+/datum/controller/subsystem/mapping/proc/request_block_reservation(width, height, type = /datum/map_reservation, turf_override, border_override, area_override)
+	var/datum/map_reservation/reserve = new type
 	if(!isnull(turf_override))
 		reserve.turf_type = turf_override
 	if(!isnull(border_override))

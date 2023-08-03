@@ -1,8 +1,8 @@
 // basically debug / adminbus / advanced wrappers. never use in code.
 
 // For your ever biggening badminnery kevinz000
-// ❤ - Cyberboss
-// <3 cyberboss you are epic
+// ❤ - Dominion
+// <3 dominion you are epic
 /proc/__load_raw_level(path, orientation = SOUTH, center = TRUE)
 	var/datum/dmm_parsed/parsed = parse_map(isfile(path)? path : file(path))
 	if(!parsed.bounds)

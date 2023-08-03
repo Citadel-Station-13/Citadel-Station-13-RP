@@ -1,3 +1,5 @@
+// todo: convert to map_helper
+
 #define CREATE_PAINT(x, c)	/obj/effect/paint/x/color=c
 #define CREATE_PAINT_STRIPE(x, c)	/obj/effect/paint_stripe/x/color=c
 
