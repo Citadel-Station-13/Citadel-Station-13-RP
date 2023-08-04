@@ -91,9 +91,9 @@
 	/// sealed state append
 	var/sealed_state_append = "-sealed"
 	/// base state - defaults to rig theme
-	var/base_state
+	var/piece_base_state
 	/// base state used when worn - defaults to rig theme
-	var/base_state_worn
+	var/piece_base_state_worn
 	/// worn rendering flags
 	var/worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	/// bodytypes implemented

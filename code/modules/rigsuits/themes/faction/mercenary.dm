@@ -59,15 +59,15 @@
 		},
 		/datum/rig_piece/chestplate,
 		/datum/rig_piece/gloves{
-			base_state = "pmc";
+			piece_base_state = "pmc";
 		},
 		/datum/rig_piece/boots{
-			base_state = "pmc";
+			piece_base_state = "pmc";
 		},
 	)
 
 /datum/rig_theme/mercenary/pmc/commander
-	name = "loader rig"
+	name = "pmc commander rig"
 	base_state = "commander"
 	desc = "TBD"
 	fluff_desc = "TBD"
@@ -76,7 +76,7 @@
 	#warn impl
 
 /datum/rig_theme/mercenary/pmc/medic
-	name = "loader rig"
+	name = "pmc medic rig"
 	base_state = "medic"
 	desc = "TBD"
 	fluff_desc = "TBD"

@@ -9,7 +9,7 @@
 		/datum/rig_piece/chestplate,
 		/datum/rig_piece/gloves,
 		/datum/rig_piece/boots{
-			base_state = "";
+			piece_base_state = "";
 		},
 	)
 	control_base_state_worn = ""
