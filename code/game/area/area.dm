@@ -269,14 +269,14 @@
 	if (danger_level == 0)
 		atmosphere_alarm.clearAlarm(src, alarm_source)
 	else
-		var/obj/machinery/alarm/atmosalarm = alarm_source //maybe other things can trigger these, who knows
+		var/obj/machinery/air_alarm/atmosalarm = alarm_source //maybe other things can trigger these, who knows
 		if(istype(atmosalarm))
 			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level, hidden = atmosalarm.alarms_hidden)
 		else
 			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level)
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
-	for (var/obj/machinery/alarm/AA as anything in GLOB.air_alarms)
+	for (var/obj/machinery/air_alarm/AA as anything in GLOB.air_alarms)
 		if(AA.loc?.loc != src)
 			continue
 		if (!(AA.machine_stat & (NOPOWER|BROKEN)) && !AA.shorted && AA.report_danger_level)
@@ -288,7 +288,7 @@
 		if (danger_level < 1 || danger_level >= 2)
 			firedoors_update()
 
-		for (var/obj/machinery/alarm/AA in src)
+		for (var/obj/machinery/air_alarm/AA in src)
 			AA.update_icon()
 
 		return 1

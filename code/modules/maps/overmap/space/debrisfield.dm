@@ -194,7 +194,7 @@
 		A.name = "[newname] [initial(A.name)]"
 		if(A.apc)
 			A.apc.name = "[A.name] APC"
-		for(var/obj/machinery/alarm/AA in A)
+		for(var/obj/machinery/air_alarm/AA in A)
 			AA.name = "[A.name] Air Alarm"
 
 /obj/machinery/computer/shuttle_control/explore/tinycarrier

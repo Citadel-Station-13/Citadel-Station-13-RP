@@ -517,7 +517,47 @@
 
 //* Scanning
 
-/datum/gas_mixture/proc/analyzer_scan(obj/item/atmos_analyzer/scanner)
+#warn impl all
+
+/datum/gas_mixture/proc/chat_analyzer_scan(group_together, molar_masses)
+	. = list()
+	var/pressure = return_pressure()
+	if(pressure)
+		. += SPAN_NOTICE("Pressure: [QUANTIZE(pressure)] kPa")
+		if(admin)
+		else if(detailed)
+		else if(molar)
+		else
+		. += SPAN_NOTICE("Temperature: [QUANTIZE(temperature)]&deg;K ([QUANTIZE(temperature - T0C)]&deg;C)")
+	else
+		. += SPAN_RED("")
+
+/datum/gas_mixture/proc/tgui_analyzer_scan(group_together, molar_masses)
+	. = list()
+	var/pressure = return_pressure()
+	.["moles"] = total_moles
+	.["pressure"] = pressure
+	.["temperature"] = temperature
+	var/list/gases = list()
+	.["gases"] = gases
+	var/list/masses = list()
+	.["masses"] = masses
+	var/list/names = list()
+	.["names"] = names
+	.["showMoles"] = molar_masses
+	for(var/id in gases)
+		var/groups = global.gas_data.groups[id]
+		names[id] = global.gas_data.names[id]
+		if((groups & GAS_GROUP_REAGENT) && (group_together & GAS_GROUP_REAGENT))
+			gases["Reagents"] += gases[id]
+		else if((groups & GAS_GROUP_OTHER) && (group_together & GAS_GROUP_OTHER))
+			gases["Other"] += gases[id]
+		else if((groups & GAS_GROUP_UNKNOWN) && (group_together & GAS_GROUP_UNKNOWN))
+			gases["Unknown"] += gases[id]
+		else
+			gases[id] += gases[id]
+			if(molar_masses)
+				masses[id] = global.gas_data.molar_masses[id]
 
 //* Sharing; usually used for environmental systems.
 

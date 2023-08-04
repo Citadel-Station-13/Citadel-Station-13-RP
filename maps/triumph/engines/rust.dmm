@@ -350,7 +350,7 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "eD" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -629,7 +629,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "oV" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -1102,7 +1102,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "OF" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},

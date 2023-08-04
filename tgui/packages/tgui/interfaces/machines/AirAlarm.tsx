@@ -1,11 +1,13 @@
 import { toFixed } from 'common/math';
 import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from '../backend';
-import { Box, Button, LabeledList, Section } from '../components';
-import { getGasLabel, getGasColor } from '../constants';
-import { Window } from '../layouts';
-import { Scrubber, Vent } from './common/AtmosControls';
-import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
+import { useBackend, useLocalState } from '../../backend';
+import { Box, Button, LabeledList, Section } from '../../components';
+import { getGasLabel, getGasColor } from '../../constants';
+import { Window } from '../../layouts';
+import { Scrubber, Vent } from '../common/AtmosControls';
+import { InterfaceLockNoticeBox } from '../common/InterfaceLockNoticeBox';
+
+
 
 export const AirAlarm = (props, context) => {
   const { act, data } = useBackend(context);

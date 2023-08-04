@@ -7,7 +7,6 @@ import { bitfieldToPositions } from "common/math";
 import { Button, LabeledList, Section } from "../../components";
 import { SectionProps } from "../../components/Section";
 
-
 //* Context
 
 export type AtmosGasID = string;
@@ -70,6 +69,29 @@ export interface AtmosGas {
 export interface FullAtmosGas extends AtmosGas {
 
 }
+
+//* Analyzer
+
+export interface AtmosAnalyzerResults {
+  pressure: number;
+  temperature: number;
+  gases: Record<string, number>;
+  masses: Record<string, number>;
+  names: Record<string, number>;
+  moles: number;
+}
+
+interface AtmosAnalysisProps extends SectionProps {
+  results: AtmosAnalyzerResults;
+}
+
+export const AtmosAnalysis = (props: AtmosAnalysisProps) => {
+  return (
+    <Section {...props}>
+      Unimplemented
+    </Section>
+  );
+};
 
 //* Filtering
 

@@ -40,7 +40,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "ag" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -611,7 +611,7 @@
 	},
 /area/tcommsat/chamber)
 "bq" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -25;
 	pixel_y = 0
@@ -950,7 +950,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	icon_state = "alarm0";
 	pixel_x = 24
@@ -1215,7 +1215,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
 "cQ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -1486,7 +1486,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay2)
 "dB" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -1594,7 +1594,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/civilian_hallway_aft)
 "dM" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1864,7 +1864,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
 "ev" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -2024,7 +2024,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
 "eR" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -2146,7 +2146,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/civilian_hallway_fore)
 "ff" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -25;
 	pixel_y = 0
@@ -2156,7 +2156,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/fore)
 "fg" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	icon_state = "alarm0";
 	pixel_x = 24
@@ -2456,7 +2456,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/cafeteria)
 "fO" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -2588,7 +2588,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gg" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,

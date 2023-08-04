@@ -377,7 +377,7 @@
 		if(A && !(A.type in areas_with_APC))
 			areas_with_APC.Add(A.type)
 
-	for(var/obj/machinery/alarm/alarm in GLOB.machines)
+	for(var/obj/machinery/air_alarm/alarm in GLOB.machines)
 		var/area/A = get_area(alarm)
 		if(A && !(A.type in areas_with_air_alarm))
 			areas_with_air_alarm.Add(A.type)

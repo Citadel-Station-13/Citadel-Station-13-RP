@@ -46,7 +46,7 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "ah" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -519,7 +519,7 @@
 /area/tradeport)
 "bZ" = (
 /obj/machinery/light,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -738,7 +738,7 @@
 /area/tradeport)
 "cM" = (
 /obj/structure/table/woodentable,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -1119,7 +1119,7 @@
 /area/tradeport/safarizoo)
 "ea" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -1743,7 +1743,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -1801,7 +1801,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -2145,7 +2145,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "io" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -2154,7 +2154,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "iu" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -2366,7 +2366,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndishow)
 "jd" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -2447,7 +2447,7 @@
 /obj/item/soap/deluxe,
 /obj/item/soap/deluxe,
 /obj/item/soap/deluxe,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -2627,7 +2627,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport)
 "jV" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -23;
 	req_one_access = list(160)
@@ -2675,7 +2675,7 @@
 /obj/item/towel{
 	color = "#0000FF"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -2797,7 +2797,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "kK" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 23;
 	req_one_access = list(160)
@@ -2975,7 +2975,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "ls" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -3052,7 +3052,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -3367,7 +3367,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "mT" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -3375,7 +3375,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "mU" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -3839,7 +3839,7 @@
 	pixel_y = 8
 	},
 /obj/machinery/light,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -3943,7 +3943,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "oN" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -4726,7 +4726,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "rI" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -4740,7 +4740,7 @@
 /obj/structure/mirror{
 	pixel_x = -29
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -5058,7 +5058,7 @@
 	req_access = list(160)
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -22;
 	req_one_access = list(160)
@@ -5109,7 +5109,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "ta" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -5355,7 +5355,7 @@
 "tV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -22;
 	req_one_access = list(160)
@@ -5460,7 +5460,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tradeport)
 "uu" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -5708,7 +5708,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -6255,7 +6255,7 @@
 	dir = 8;
 	pixel_x = -25
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -6697,7 +6697,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
 "yx" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -7193,7 +7193,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "Au" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -22;
 	req_one_access = list(160)
@@ -7411,7 +7411,7 @@
 /area/tradeport/cyndishow)
 "BF" = (
 /obj/machinery/light,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 23;
 	req_one_access = list(160)
@@ -7732,7 +7732,7 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "CQ" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -7749,7 +7749,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -8130,7 +8130,7 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "Ez" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -8367,7 +8367,7 @@
 	dir = 1
 	},
 /obj/structure/table/bench/wooden,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -8512,7 +8512,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -22;
 	req_one_access = list(160)
@@ -8547,7 +8547,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Gs" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -8726,7 +8726,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "Hq" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 23;
 	req_one_access = list(160)
@@ -8925,7 +8925,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "It" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -9203,7 +9203,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -9449,7 +9449,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -9651,7 +9651,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -10040,7 +10040,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -10320,7 +10320,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -10671,7 +10671,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/expansion)
 "OP" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -11535,7 +11535,7 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "Sk" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -11711,7 +11711,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -12007,7 +12007,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "TX" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -22;
 	req_one_access = list(160)
@@ -12635,7 +12635,7 @@
 /turf/simulated/floor/airless,
 /area/tradeport/expansion)
 "WA" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 23;
 	req_one_access = list(160)
@@ -12666,7 +12666,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -13300,7 +13300,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
 "YW" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 23;
 	req_one_access = list(160)
@@ -13377,7 +13377,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport)
 "Zl" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -13440,7 +13440,7 @@
 /area/tradeport/cafeteria)
 "Zx" = (
 /obj/structure/bed/chair,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},

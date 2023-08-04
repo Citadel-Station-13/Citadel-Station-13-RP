@@ -212,7 +212,7 @@
 	},
 /area/submap/debrisfield_vr/tinyshuttle/bridge)
 "ay" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 24;
 	req_one_access = list()
@@ -658,7 +658,7 @@
 /obj/effect/floor_decal/corner/brown{
 	dir = 10
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -984,7 +984,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bO" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 24;
 	req_one_access = list()
@@ -1126,7 +1126,7 @@
 /obj/machinery/atmospherics/component/binary/pump/fuel{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -24
 	},
