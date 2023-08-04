@@ -963,7 +963,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "aNI" = (
@@ -1366,7 +1366,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "bhx" = (
@@ -2525,7 +2525,7 @@
 /area/security/riot_control)
 "bWp" = (
 /obj/effect/floor_decal/techfloor,
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
@@ -6670,7 +6670,7 @@
 /turf/simulated/floor,
 /area/security/brig)
 "ePg" = (
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "ePz" = (
@@ -7302,7 +7302,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "fkU" = (
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /obj/machinery/computer/cryopod{
 	name = "asset retention console";
 	pixel_y = -30
@@ -8244,7 +8244,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "fYj" = (
@@ -12136,7 +12136,7 @@
 /area/library)
 "iKO" = (
 /obj/machinery/computer/timeclock/premade/south,
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
@@ -15714,7 +15714,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 4
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "ltW" = (
@@ -22130,7 +22130,7 @@
 /area/security/lobby)
 "pXl" = (
 /obj/effect/floor_decal/techfloor,
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /obj/effect/floor_decal/corner/red/border,
 /obj/structure/sign/warning/evac{
 	pixel_x = -32
@@ -26923,7 +26923,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 27
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /obj/structure/sign/warning/evac{
 	pixel_x = -32
 	},
@@ -27062,7 +27062,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "sXA" = (
