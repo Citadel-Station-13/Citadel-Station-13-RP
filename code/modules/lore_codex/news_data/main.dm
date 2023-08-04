@@ -619,7 +619,7 @@
 	It seems that the Prince's efforts are being reicjly rewardsas today the agining King Arzthram Azunja officially annouced that the Prince the son of his youngest brother \
 	is to be the new Crown Prince, following the death fo the King's only son Prince Thram in March. An official ceremony is scheduled to take place sometime in August. \
 	In a short release to the press the Prince thanked S'rendarr, his uncle the King, and the marines and spacers who fought with him agianst Tartic. He vowed that his reign \
-	will not abandon the sacred traditionsof the New Kingdom but 'banish the darkness of Mesa that has clouded this kingdom for too long' and 'bring the Kingdom of Adhomai \
+	will not abandon the sacred traditions of the New Kingdom but 'banish the darkness of Mesa that has clouded this kingdom for too long' and 'bring the Kingdom of Adhomai \
 	into a new bright golden age within the light of the S'rendarr' and finally to 'spread that light to the far corners of the galaxy so all Tajara can bask in its glow!'. \
 	<br><br>\
 	The annoucement of Volink's appointment through only muted diplomatic reactions form galactic powers, however is rumors are to be believed the young prince is already making \
