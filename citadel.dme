@@ -4322,7 +4322,6 @@
 #include "code\modules\rigsuits\components\component.dm"
 #include "code\modules\rigsuits\modules\module.dm"
 #include "code\modules\rigsuits\themes\theme.dm"
-#include "code\modules\rigsuits\themes\faction\frontier.dm"
 #include "code\modules\rigsuits\themes\faction\mercenary.dm"
 #include "code\modules\rigsuits\themes\faction\nanotrasen.dm"
 #include "code\modules\rigsuits\themes\species\_species.dm"

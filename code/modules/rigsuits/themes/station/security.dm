@@ -13,3 +13,12 @@
 	display_name = "security"
 	visible_name = "Security"
 	#warn impl
+
+/datum/rig_theme/station/security/
+	name = "security rig"
+	base_state = "safeguard"
+	desc = "TBD"
+	fluff_desc = "TBD"
+	display_name = "security"
+	visible_name = "Security"
+	#warn impl

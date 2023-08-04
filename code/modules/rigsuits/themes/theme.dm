@@ -46,6 +46,15 @@
 	/// default coloration amount
 	var/coloration_amount = 0
 
+	//* vars to be replaced by components/modules at some point
+	var/datum/armor/armor
+	var/min_pressure_protect = 0 * ONE_ATMOSPHERE
+	var/max_pressure_protect = 2 * ONE_ATMOSPHERE
+	var/min_temperature_protect = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	var/max_temperature_protect = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
+
+	#warn values lmao
+
 /datum/rig_theme/New()
 	var/list/old_pieces = pieces
 	pieces = list()
@@ -137,6 +146,7 @@
 	path = /obj/item/clothing/head/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-helmet"
+	inv_hide_flags_active = HIDEFACE | HIDEEARS | HIDEEARS | HIDEEYES | HIDEMASK | BLOCKHEADHAIR
 
 /datum/rig_piece/chestplate
 	display_name = "chestplate"
@@ -144,6 +154,7 @@
 	path = /obj/item/clothing/suit/rig
 	rig_piece_flags = RIG_PIECE_APPLY_ARMOR | RIG_PIECE_APPLY_ENVIRONMENTALS
 	piece_state_append = "-chestplate"
+	inv_hide_flags_active = HIDETAIL | HIDEJUMPSUIT | HIDETIE
 
 /datum/rig_piece/gloves
 	display_name = "gauntlets"
