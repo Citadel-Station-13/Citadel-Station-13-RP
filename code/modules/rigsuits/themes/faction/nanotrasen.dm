@@ -38,3 +38,50 @@
 	#warn impl
 
 
+/datum/rig_theme/nanotrasen/response
+	abstract_type = /datum/rig_theme/nanotrasen/response
+	control_sealed_append = ""
+
+/datum/rig_theme/nanotrasen/response/commander
+	name = "ert commander rig"
+	base_state = "commander"
+	base_icon = 'icons/modules/rigsuits/suits/factions/nanotrasen_response.dmi'
+	display_name = "command"
+	visible_name = "Command"
+	control_sealed_append = ""
+	desc = "TBD"
+	fluff_desc = "TBD"
+	#warn impl
+
+/datum/rig_theme/nanotrasen/response/medic
+	name = "ert medic rig"
+	base_state = "medic"
+	base_icon = 'icons/modules/rigsuits/suits/factions/nanotrasen_response.dmi'
+	display_name = "rescue"
+	visible_name = "Rescue"
+	control_sealed_append = ""
+	desc = "TBD"
+	fluff_desc = "TBD"
+	#warn impl
+
+/datum/rig_theme/nanotrasen/response/engineer
+	name = "ert engineer rig"
+	base_state = "engineer"
+	base_icon = 'icons/modules/rigsuits/suits/factions/nanotrasen_response.dmi'
+	display_name = "engineering"
+	visible_name = "Engineering"
+	control_sealed_append = ""
+	desc = "TBD"
+	fluff_desc = "TBD"
+	#warn impl
+
+/datum/rig_theme/nanotrasen/response/security
+	name = "ert security rig"
+	base_state = "security"
+	base_icon = 'icons/modules/rigsuits/suits/factions/nanotrasen_response.dmi'
+	display_name = "officer"
+	visible_name = "Officer"
+	control_sealed_append = ""
+	desc = "TBD"
+	fluff_desc = "TBD"
+	#warn impl
