@@ -27,3 +27,12 @@
 		},
 	)
 	#warn impl
+
+/datum/rig_theme/station/medical/advanced
+	name = "chief medical rig"
+	base_state = "corpsman"
+	desc = "TBD"
+	fluff_desc = "TBD"
+	display_name = "rescue"
+	visible_name = "Rescue"
+	#warn impl
