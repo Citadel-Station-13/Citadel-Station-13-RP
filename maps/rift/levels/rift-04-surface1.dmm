@@ -1752,6 +1752,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
+"blN" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "bme" = (
 /obj/structure/table/woodentable,
 /obj/machinery/light/small{
@@ -2083,6 +2089,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
+"btX" = (
+/obj/machinery/shower{
+	pixel_y = 18
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "buC" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 1
@@ -7459,6 +7471,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
+"eMd" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/turf/simulated/floor/concrete/tile/indoors,
+/area/space)
 "eMm" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/space_heater,
@@ -7594,12 +7610,27 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
+"eSU" = (
+/obj/structure/cryofeed{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/space)
 "eSY" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
+"eTw" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "eTH" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -7716,6 +7747,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/medical_restroom)
+"eXS" = (
+/obj/machinery/computer/cryopod{
+	pixel_x = 32
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/space)
 "eYJ" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -13927,6 +13964,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_first_aid)
+"iMg" = (
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/space)
 "iMl" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/fiftyspawner/steel,
@@ -18979,6 +19022,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
+"lWl" = (
+/obj/machinery/vending/hydronutrients,
+/turf/simulated/floor/concrete/tile/indoors,
+/area/space)
 "lWv" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -19277,6 +19324,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
+"mfO" = (
+/obj/structure/cryofeed{
+	dir = 2
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/space)
 "mfX" = (
 /obj/structure/railing{
 	dir = 8
@@ -19471,6 +19527,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/cargodock)
+"mlK" = (
+/obj/machinery/shower{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "mmb" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -21175,6 +21237,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
+"niq" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "niI" = (
 /obj/structure/sign/warning{
 	desc = "Hazardous cryogenic temperatures beyond this point!";
@@ -25449,6 +25517,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
+"pBY" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "pCh" = (
 /obj/item/instrument/violin,
 /turf/simulated/floor/lino,
@@ -25500,6 +25574,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/storage/tools)
+"pEN" = (
+/obj/machinery/cryopod{
+	dir = 2
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/space)
 "pEV" = (
 /obj/structure/table/rack/shelf,
 /obj/item/suit_cooling_unit,
@@ -36950,6 +37030,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
+"wyn" = (
+/obj/machinery/vending/hydroseeds,
+/turf/simulated/floor/concrete/tile/indoors,
+/area/space)
 "wyt" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -56097,12 +56181,12 @@ gRM
 gRM
 gRM
 gRM
+wyn
 ikS
 ikS
 ikS
 ikS
-ikS
-ikS
+lWl
 gRM
 gRM
 pOR
@@ -56283,8 +56367,8 @@ uSG
 gRM
 hWU
 hWU
-hWU
-hWU
+pBY
+pBY
 hWU
 hWU
 gRM
@@ -56477,20 +56561,20 @@ uSG
 gRM
 hWU
 hWU
-hWU
-hWU
+blN
+blN
 hWU
 hWU
 gRM
 gRM
 ikS
 ikS
+eMd
 ikS
+eMd
+eMd
 ikS
-ikS
-ikS
-ikS
-ikS
+eMd
 ikS
 ikS
 gRM
@@ -56670,21 +56754,21 @@ ouV
 uSG
 gRM
 hWU
-hWU
-hWU
-hWU
-hWU
+mlK
+gRM
+gRM
+btX
 hWU
 gRM
 ikS
 ikS
 ikS
+eMd
 ikS
+eMd
+eMd
 ikS
-ikS
-ikS
-ikS
-ikS
+eMd
 ikS
 ikS
 ikS
@@ -56864,21 +56948,21 @@ ovB
 uSG
 gRM
 hWU
-hWU
-hWU
-hWU
-hWU
+mlK
+gRM
+gRM
+btX
 hWU
 gRM
 ikS
 ikS
 ikS
+eMd
 ikS
+eMd
+eMd
 ikS
-ikS
-ikS
-ikS
-ikS
+eMd
 ikS
 ikS
 ikS
@@ -57059,20 +57143,20 @@ uSG
 gRM
 hWU
 hWU
-hWU
-hWU
+niq
+niq
 hWU
 hWU
 gRM
 ikS
 ikS
 ikS
+eMd
 ikS
+eMd
+eMd
 ikS
-ikS
-ikS
-ikS
-ikS
+eMd
 ikS
 ikS
 ikS
@@ -57253,8 +57337,8 @@ uSG
 gRM
 hWU
 hWU
-hWU
-hWU
+eTw
+eTw
 hWU
 hWU
 gRM
@@ -57446,10 +57530,10 @@ ouV
 uSG
 gRM
 gRM
-sNp
+hWU
 gRM
 gRM
-sNp
+hWU
 gRM
 gRM
 sNp
@@ -58029,7 +58113,7 @@ uSG
 gRM
 sNp
 sNp
-sNp
+eXS
 sNp
 sNp
 sNp
@@ -58221,11 +58305,11 @@ sDY
 ouV
 nau
 gRM
-sNp
-sNp
-sNp
-sNp
-sNp
+iMg
+mfO
+gRM
+eSU
+pEN
 gRM
 gRM
 sNp
