@@ -616,7 +616,7 @@
 	need of all Tajara powers to work together to face their mutual enemies among the stars. Still within the New Kingdom Volink's victory has seen as a symbol of the growing power of the \
 	New Kingdom's fledgling fleet and the continued modernization of their society. \
 	<br><br>\
-	It seems that the Prince's efforts are being reicjly rewardsas today the agining King Arzthram Azunja officially annouced that the Prince the son of his youngest brother \
+	It seems that the Prince's efforts are being richly rewardsas today with the aging King Arzthram Azunja officially annouced that the Prince, the son of his youngest brother, \
 	is to be the new Crown Prince, following the death fo the King's only son Prince Thram in March. An official ceremony is scheduled to take place sometime in August. \
 	In a short release to the press the Prince thanked S'rendarr, his uncle the King, and the marines and spacers who fought with him agianst Tartic. He vowed that his reign \
 	will not abandon the sacred traditions of the New Kingdom but 'banish the darkness of Mesa that has clouded this kingdom for too long' and 'bring the Kingdom of Adhomai \
