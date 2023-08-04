@@ -646,7 +646,7 @@
 	This time however there was no where the xenos could escape to. Today Nanotrasen annouced that they had successfully cleared the planet of Xenomorphs. A Nanotrasen representative \
 	had this to say: 'It is not simply oue assets we have protected on Surt but, an entire sapient species. Science cannot being to predict the countless primtive civilization that \
 	have been destroyed by the xenomorphs and thankfully the Scori will not joiningg that list. Despite our reputation as a profit first company, we recognize its part of our duty \
-	as sapient life to protect the well being of other sapient life, even if it can be a bit pricy at times.' The Orion Confederation Institute of Anthropology formally thanks \
+	as sapient life to protect the well being of other sapient life, even if it can be a bit pricey at times.' The Orion Confederation Institute of Anthropology formally thanks \
 	Nanotrasen for helping perserve the Scorian culture and expressed interest in further exploration fo Surt and its people. Though they, hestitated to use the word uplift they \
 	acknowledge that the Scori's integration with the galaxy is at this point inevitable even if they hoped it would be no time soon. At least the Scori then can rest easy perhaps \
 	never knowing how close they came to extinction yet again. "
