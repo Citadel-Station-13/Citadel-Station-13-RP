@@ -603,7 +603,7 @@
 	investments in securing new resources on the Frontier however many investors fear the drops in profit will only get worse before they get better. 'What do I need that they haven't already \
 	sold me?' says Doctor Pierre Passeau PhD of Ecomonics, University of Selene, Luna. 'Nanotrasen the model for the modern megacorp was only able to make sure good returns because it was able \
 	to discover things that we didn't know we needed yet, phoron and synthetic bluespace crystals. However the galaxy isn't so big anymore and more of it we explore the more we realize that there \
-	is not going to be another phoron out there to come and solve our economic problems. Corporations and ivnestors need to learn to lower their expectations we won't be seeing new markets opening \
+	is not going to be another phoron out there to come and solve our economic problems. Corporations and investors need to learn to lower their expectations we won't be seeing new markets opening \
 	for a long time, not unless Nanotrasen or someone else finds something really new to sell us'. Perhaps that is what Nanotrasen hopes by sending their plans to send explorers out into deep frontier \
 	space. Either way it seems no matter how to spin it, the post phoron war boom is finally as an end, whether there will be a bust too remains to be seen."
 
