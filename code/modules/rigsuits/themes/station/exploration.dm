@@ -9,8 +9,7 @@
 		/datum/rig_piece/chestplate,
 		/datum/rig_piece/gloves,
 		/datum/rig_piece/boots{
-			base_state_when_unsealed = "";
-			base_state_when_sealed = "";
+			base_state = "";
 		},
 	)
 	control_base_state_worn = ""

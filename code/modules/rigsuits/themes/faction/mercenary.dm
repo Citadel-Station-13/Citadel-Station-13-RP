@@ -12,92 +12,105 @@
 	base_icon = 'icons/modules/rigsuits/suits/factions/military_gorlex.dmi'
 
 /datum/rig_theme/mercenary/gorlex_raider
-	name = "salvage rig"
-	base_state = "salvage"
+	name = "nukeops rig"
+	base_state = "syndicate"
 	desc = "TBD"
 	fluff_desc = "TBD"
-	display_name = "salvage"
-	visible_name = "Salvage"
+	display_name = "operator"
+	visible_name = "Operator"
 	#warn impl
 
 /datum/rig_theme/mercenary/gorlex_infiltrator
-	name = "mining rig"
-	base_state = "mining"
+	name = "contractor rig"
+	base_state = "infiltrator"
 	desc = "TBD"
 	fluff_desc = "TBD"
-	display_name = "mining"
-	visible_name = "Mining"
+	display_name = "streamlined"
+	visible_name = "Streamlined"
 	#warn impl
 
 /datum/rig_theme/mercenary/gorlex_assault
-	name = "loader rig"
-	base_state = "loader"
+	name = "elite nukeops rig"
+	base_state = "elite"
 	desc = "TBD"
 	fluff_desc = "TBD"
-	display_name = "loader"
-	visible_name = "Loader"
+	display_name = "battle"
+	visible_name = "Battle"
 	#warn impl
 
 /datum/rig_theme/mercenary/marine
 	base_icon = 'icons/modules/rigsuits/suits/factions/military_marine.dmi'
-	name = "loader rig"
-	base_state = "loader"
+	name = "marine rig"
+	base_state = "marine"
 	desc = "TBD"
 	fluff_desc = "TBD"
-	display_name = "loader"
-	visible_name = "Loader"
-	#warn impl
-
-/datum/rig_theme/mercenary/sleek
-	base_icon = 'icons/modules/rigsuits/suits/factions/military_sleek.dmi'
-	name = "loader rig"
-	base_state = "loader"
-	desc = "TBD"
-	fluff_desc = "TBD"
-	display_name = "loader"
-	visible_name = "Loader"
+	display_name = "marine"
+	visible_name = "Marine"
+	control_sealed_append = ""
 	#warn impl
 
 /datum/rig_theme/mercenary/pmc
 	abstract_type = /datum/rig_theme/mercenary/pmc
 	base_icon = 'icons/modules/rigsuits/suits/factions/military_pmc.dmi'
+	control_sealed_append = ""
+	pieces = list(
+		/datum/rig_piece/helmet{
+			worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_SKRELL);
+		},
+		/datum/rig_piece/chestplate,
+		/datum/rig_piece/gloves{
+			base_state = "pmc";
+		},
+		/datum/rig_piece/boots{
+			base_state = "pmc";
+		},
+	)
 
 /datum/rig_theme/mercenary/pmc/commander
 	name = "loader rig"
-	base_state = "loader"
+	base_state = "commander"
 	desc = "TBD"
 	fluff_desc = "TBD"
-	display_name = "loader"
-	visible_name = "Loader"
+	display_name = "leader"
+	visible_name = "Leader"
 	#warn impl
 
 /datum/rig_theme/mercenary/pmc/medic
 	name = "loader rig"
-	base_state = "loader"
+	base_state = "medic"
 	desc = "TBD"
 	fluff_desc = "TBD"
-	display_name = "loader"
-	visible_name = "Loader"
+	display_name = "corpsman"
+	visible_name = "Corpsman"
 	#warn impl
 
 
 /datum/rig_theme/mercenary/pmc/engineer
-	name = "loader rig"
-	base_state = "loader"
+	name = "pmc engineer rig"
+	base_state = "engineer"
 	desc = "TBD"
 	fluff_desc = "TBD"
-	display_name = "loader"
-	visible_name = "Loader"
+	display_name = "sapper"
+	visible_name = "Sapper"
 	#warn impl
 
 
 /datum/rig_theme/mercenary/pmc/security
-	name = "loader rig"
-	base_state = "loader"
+	name = "pmc security rig"
+	base_state = "security"
 	desc = "TBD"
 	fluff_desc = "TBD"
-	display_name = "loader"
-	visible_name = "Loader"
+	display_name = "officer"
+	visible_name = "Officer"
 	#warn impl
 
-
+/datum/rig_theme/mercenary/sleek
+	base_icon = 'icons/modules/rigsuits/suits/factions/military_sleek.dmi'
+	name = "sleek combat rig"
+	base_state = "sleek"
+	desc = "TBD"
+	fluff_desc = "TBD"
+	display_name = "combat"
+	visible_name = "Combat"
+	control_sealed_append = ""
+	#warn impl

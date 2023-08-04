@@ -31,10 +31,8 @@
 	var/control_state_append = "-control"
 	/// control module sealed append
 	var/control_sealed_append = "-sealed"
-	/// control module uses base state when unsealed; defaults to base_state
-	var/control_base_state_unsealed
-	/// control module uses base state when sealed; defaults to base_state
-	var/control_base_state_sealed
+	/// control module base state
+	var/control_base_state
 	/// control module worn icon uses base state; defaults to base_state
 	var/control_base_state_worn
 	/// default coloration colors
@@ -92,10 +90,8 @@
 	var/piece_state_append
 	/// sealed state append
 	var/sealed_state_append = "-sealed"
-	/// base state used while unsealed - defaults to rig theme
-	var/base_state_unsealed
-	/// base state used while sealed - defaults to rig theme
-	var/base_state_sealed
+	/// base state - defaults to rig theme
+	var/base_state
 	/// base state used when worn - defaults to rig theme
 	var/base_state_worn
 	/// worn rendering flags
