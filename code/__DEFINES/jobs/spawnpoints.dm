@@ -11,3 +11,5 @@
 #define LATEJOIN_METHOD_ROBOT_STORAGE		"Robotic storage"
 /// Tram
 #define LATEJOIN_METHOD_TRAM				"Tram"
+
+/// DO NOT ADD MORE SPAWNPOINT METHODS
