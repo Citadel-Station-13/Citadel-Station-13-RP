@@ -667,6 +667,13 @@
 				else
 					to_chat(src, "<span class='warning'>You probably shouldn't eat this.</span>")
 					return
+		if(istype(I,/obj/item/material))
+			var/obj/item/material/M = I
+			if(M.material.id == "supermatter") //while it would be funny, it'd also be suicidal and we probably shouldn't allow it.
+				to_chat(src, "<span class='warning'>Your self preservation instincts kick in right as you had seriously considered eating something this dangerous.</span>")
+				return
+			if(M.material.radioactivity) //hope that uranium tastes good, you batshit insane monster.
+				src.afflict_radiation(M.material.radioactivity * 5,0) //they straight up put it inside them - armor can't save this maniac.
 
 
 		if(!attempt_insert_item_for_installation(I, vore_selected))
