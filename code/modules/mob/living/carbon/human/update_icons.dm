@@ -446,7 +446,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return
 
 	face_standing += rgb(,,,head_organ.hair_opacity)
-//e
+
 	overlays_standing[HAIR_LAYER] = image(face_standing, layer = BODY_LAYER+HAIR_LAYER)
 	apply_layer(HAIR_LAYER)
 
