@@ -6,11 +6,20 @@
 	base_icon = 'icons/modules/rigsuits/suits/station/science.dmi'
 
 /datum/rig_theme/station/science/standard
-	name = "science rig"
+	name = "prototype rig"
 	base_state = "prototype"
 	desc = "TBD"
 	fluff_desc = "TBD"
 	display_name = "prototype"
 	visible_name = "Prototype"
+	#warn impl
+
+/datum/rig_theme/station/science/anomaly
+	name = "anomaly rig"
+	base_state = "apocryphal"
+	desc = "TBD"
+	fluff_desc = "TBD"
+	display_name = "AMI"
+	visible_name = "AMI"
 	#warn impl
 
