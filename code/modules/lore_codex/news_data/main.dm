@@ -616,7 +616,7 @@
 	need of all Tajara powers to work together to face their mutual enemies among the stars. Still within the New Kingdom Volink's victory has seen as a symbol of the growing power of the \
 	New Kingdom's fledgling fleet and the continued modernization of their society. \
 	<br><br>\
-	It seems that the Prince's efforts are being richly rewardsas today with the aging King Arzthram Azunja officially annouced that the Prince, the son of his youngest brother, \
+	It seems that the Prince's efforts are being richly rewards as today with the aging King Arzthram Azunja officially annouced that the Prince, the son of his youngest brother, \
 	is to be the new Crown Prince, following the death fo the King's only son Prince Thram in March. An official ceremony is scheduled to take place sometime in August. \
 	In a short release to the press the Prince thanked S'rendarr, his uncle the King, and the marines and spacers who fought with him agianst Tartic. He vowed that his reign \
 	will not abandon the sacred traditions of the New Kingdom but 'banish the darkness of Mesa that has clouded this kingdom for too long' and 'bring the Kingdom of Adhomai \
@@ -649,4 +649,4 @@
 	as sapient life to protect the well being of other sapient life, even if it can be a bit pricey at times.' The Orion Confederation Institute of Anthropology formally thanks \
 	Nanotrasen for helping perserve the Scorian culture and expressed interest in further exploration fo Surt and its people. Though they, hestitated to use the word uplift they \
 	acknowledge that the Scori's integration with the galaxy is at this point inevitable even if they hoped it would be no time soon. At least the Scori then can rest easy perhaps \
-	never knowing how close they came to extinction yet again. "
+	never knowing how close they came to extinction yet again."
