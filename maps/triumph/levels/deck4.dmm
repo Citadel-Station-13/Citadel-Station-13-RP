@@ -992,9 +992,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
-"aME" = (
-/turf/simulated/floor/plating,
-/area/maintenance/security/starboard)
 "aMF" = (
 /obj/structure/closet,
 /obj/random/maintenance/clean,
@@ -12430,9 +12427,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
-"iUB" = (
-/turf/simulated/floor/plating,
-/area/maintenance/central)
 "iVA" = (
 /obj/structure/table/woodentable,
 /obj/machinery/recharger{
@@ -14485,9 +14479,6 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
-"krE" = (
-/turf/simulated/floor/plating,
-/area/maintenance/central)
 "krQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -14909,9 +14900,6 @@
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/dark,
 /area/security/prison)
-"kKQ" = (
-/turf/simulated/floor/plating,
-/area/maintenance/chapel)
 "kLf" = (
 /obj/structure/table/standard,
 /obj/item/aiModule/freeform,
@@ -29559,7 +29547,7 @@
 /area/maintenance/security/starboard)
 "uxa" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Exploration Public Lobby"
 	},
 /obj/structure/cable/green{
@@ -32861,7 +32849,7 @@
 /area/hydroponics/garden)
 "wzC" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Shuttle Bay";
 	req_one_access = list(19,43,67)
 	},
@@ -34835,7 +34823,7 @@
 /area/security/breakroom)
 "xSr" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Library"
 	},
 /obj/structure/cable/green{
@@ -35156,7 +35144,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Shuttle Triage and Restroom";
 	req_one_access = list(19,43,67)
 	},
@@ -35358,7 +35346,7 @@
 /area/hydroponics/garden)
 "ykE" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Exploration Prep";
 	req_access = list();
 	req_one_access = list(19,43,67)
@@ -42698,7 +42686,7 @@ nEP
 amB
 cmG
 fwU
-kKQ
+jBs
 xkZ
 xJm
 sYe
@@ -42839,7 +42827,7 @@ djJ
 nrX
 owd
 beX
-kKQ
+jBs
 rGQ
 dri
 oCE
@@ -42978,13 +42966,13 @@ wcm
 wcm
 wcm
 qos
-kKQ
+jBs
 amB
 cmG
-kKQ
+jBs
 xJm
 kOi
-kKQ
+jBs
 sYe
 noW
 sYe
@@ -43123,7 +43111,7 @@ djJ
 loE
 amB
 cmG
-kKQ
+jBs
 fZF
 uvs
 gfo
@@ -43408,7 +43396,7 @@ jBs
 amB
 cmG
 fgy
-kKQ
+jBs
 xIn
 fgy
 gEf
@@ -43549,10 +43537,10 @@ djJ
 fwU
 amB
 tzK
-kKQ
+jBs
 akM
 eXX
-kKQ
+jBs
 dUu
 eDN
 cmG
@@ -45098,16 +45086,16 @@ bem
 bRA
 fwU
 ibv
-kKQ
+jBs
 cuJ
 cNg
-kKQ
+jBs
 nLj
 cuJ
-kKQ
-kKQ
+jBs
+jBs
 lkb
-kKQ
+jBs
 qgO
 amB
 xWZ
@@ -45702,7 +45690,7 @@ lJa
 lJa
 kqL
 gMN
-aME
+gMN
 kpY
 mkI
 tWu
@@ -46529,7 +46517,7 @@ pAA
 vIh
 qIW
 bRn
-kKQ
+jBs
 xWZ
 fbm
 cCw
@@ -48947,7 +48935,7 @@ ruS
 lXy
 iRR
 bKz
-krE
+rSb
 tvx
 skw
 vrq
@@ -49220,7 +49208,7 @@ ini
 oxJ
 rnG
 scn
-iUB
+rSb
 rSb
 rrW
 iRR

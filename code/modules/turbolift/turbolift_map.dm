@@ -15,6 +15,13 @@
 
 	var/list/areas_to_use = list()
 
+	// rotated
+	var/got_rotated_by_maploader
+
+/obj/turbolift_map_holder/preloading_dir(datum/map_preloader/preloader)
+	. = ..()
+	got_rotated_by_maploader = preloader.loading_orientation
+
 /obj/turbolift_map_holder/Initialize(mapload)
 	. = ..()
 	// Create our system controller.
@@ -24,6 +31,18 @@
 	var/ux = x
 	var/uy = y
 	var/uz = z
+
+	// handle orientations
+	switch(got_rotated_by_maploader)
+		if(SOUTH)
+		if(NORTH)
+			ux -= lift_size_x
+			uy -= lift_size_y
+		if(EAST)
+			ux -= lift_size_x
+		if(WEST)
+			uy -= lift_size_y
+
 	var/udir = dir
 	moveToNullspace()
 

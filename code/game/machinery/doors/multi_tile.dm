@@ -2,6 +2,7 @@
 /obj/machinery/door/airlock/multi_tile
 	airlock_type = "Wide"
 	width = 2
+	autoset_dir = FALSE
 	SET_APPEARANCE_FLAGS(TILE_BOUND)
 	var/obj/structure/filler_object/filler1
 	var/obj/structure/filler_object/filler2
@@ -19,9 +20,9 @@
 	stripe_file = 'icons/obj/doors/double/stripe.dmi'
 	stripe_fill_file = 'icons/obj/doors/double/fill_stripe.dmi'
 
-/obj/machinery/door/airlock/multi_tile/New()
-	SetBounds() // preloader needs this
-	return ..()
+/obj/machinery/door/airlock/multi_tile/preloading_dir(datum/map_preloader/preloader)
+	. = ..()
+	SetBounds()
 
 /obj/machinery/door/airlock/multi_tile/Initialize(mapload)
 	. = ..()
