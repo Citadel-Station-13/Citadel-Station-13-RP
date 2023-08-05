@@ -519,18 +519,30 @@
 
 #warn impl all
 
-/datum/gas_mixture/proc/chat_analyzer_scan(group_together, molar_masses)
+/datum/gas_mixture/proc/chat_analyzer_scan(group_together, molar_masses, exact)
 	. = list()
 	var/pressure = return_pressure()
-	if(pressure)
-		. += SPAN_NOTICE("Pressure: [QUANTIZE(pressure)] kPa")
-		if(admin)
-		else if(detailed)
-		else if(molar)
+	. += SPAN_NOTICE("Pressure: [QUANTIZE(pressure)]")
+	. += SPAN_NOTICE("Temperature: [QUANTIZE(temperature)]&deg;K ([QUANTIZE(temperature - T0C)]&deg;C)")
+	var/reagents = 0
+	var/other = 0
+	var/unknown = 0
+	for(var/id in gases)
+		var/groups = global.gas_data.groups[id]
+		if((groups & GAS_GROUP_REAGENT) && (group_together & GAS_GROUP_REAGENT))
+			reagents += gases[id]
+		else if((groups & GAS_GROUP_OTHER) && (group_together & GAS_GROUP_OTHER))
+			other += gases[id]
+		else if((groups & GAS_GROUP_UNKNOWN) && (group_together & GAS_GROUP_UNKNOWN))
+			unknown += gases[id]
 		else
-		. += SPAN_NOTICE("Temperature: [QUANTIZE(temperature)]&deg;K ([QUANTIZE(temperature - T0C)]&deg;C)")
-	else
-		. += SPAN_RED("")
+			. += SPAN_NOTICE("[global.gas_data.names[id]]: [exact? "[QUANTIZE(gas[id])] mol @ " : ""][QUANTIZE(gas[id] / total_moles)]%")
+	if(reagents)
+		. += SPAN_NOTICE("Reagents: [exact? "[QUANTIZE(reagents)] mol @ " : ""][QUANTIZE(reagents / total_moles)]%")
+	if(other)
+		. += SPAN_NOTICE("Other: [exact? "[QUANTIZE(other)] mol @ " : ""][QUANTIZE(other / total_moles)]%")
+	if(unknown)
+		. += SPAN_NOTICE("Unknown: [exact? "[QUANTIZE(unknown)] mol @ " : ""][QUANTIZE(unknown / total_moles)]%")
 
 /datum/gas_mixture/proc/tgui_analyzer_scan(group_together, molar_masses)
 	. = list()
