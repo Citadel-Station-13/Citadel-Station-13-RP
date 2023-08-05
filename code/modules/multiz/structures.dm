@@ -403,13 +403,17 @@
 	switch(preloader.loading_orientation)
 		if(SOUTH)
 		if(NORTH)
-			x--
-			y--
+			switch(dir)
+				if(NORTH, SOUTH)
+				if(EAST, WEST)
 		if(EAST)
-			x--
+			switch(dir)
+				if(NORTH, SOUTH)
+				if(EAST, WEST)
 		if(WEST)
-			y--
-
+			switch(dir)
+				if(NORTH, SOUTH)
+				if(EAST, WEST)
 	return FALSE
 
 // For ease of spawning. While you *can* spawn the base type and set its dir, this is useful for adminbus and a little bit quicker to map in
