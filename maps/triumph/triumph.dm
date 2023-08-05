@@ -12,6 +12,7 @@
 	)
 	width = 140
 	height = 140
+	orientation = WEST
 	world_width = 192
 	world_height = 192
 	lateload = list(
