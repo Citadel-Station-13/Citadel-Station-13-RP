@@ -218,9 +218,6 @@
 
 	return ..()
 
-/datum/species/protean/get_additional_examine_text(var/mob/living/carbon/human/H)
-	return ..() //Hmm, what could be done here?
-
 /datum/species/protean/statpanel_status(client/C, mob/living/carbon/human/H)
 	. = ..()
 	var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
@@ -302,7 +299,6 @@
 	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
 	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
 	holder.radiation = max(RAD_MOB_CURE_PROTEAN_REGEN)
-
 
 /proc/protean_requires_healing(mob/living/carbon/human/H)
 	if(!istype(H))
