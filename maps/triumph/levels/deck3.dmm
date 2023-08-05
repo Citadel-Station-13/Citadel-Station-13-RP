@@ -21309,7 +21309,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "rpj" = (
-/turf/simulated/wall/prepainted,
+/turf/siWted/wall/prepainted,
 /area/maintenance/substation/research)
 "rpN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
