@@ -33,25 +33,26 @@
 		user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [T.himself] in the [affecting.name]!</span>")
 		return 0
 
-	switch(zone)
-		if(BP_HEAD, O_MOUTH, O_EYES)
-			// ----- HEAD ----- //
-			switch(attack_damage)
-				if(1 to 2)
-					user.visible_message("<span class='danger'>[user] scratched [target] across [TT.his] cheek!</span>")
-				if(3 to 4)
-					user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [target]'s [pick("head", "neck")]!</span>") //'with spread claws' sounds a little bit odd, just enough that conciseness is better here I think
-				if(5)
-					user.visible_message(pick(
-						"<span class='danger'>[user] rakes [T.his] [pick(attack_noun)] across [target]'s face!</span>",
-						"<span class='danger'>[user] tears [T.his] [pick(attack_noun)] into [target]'s face!</span>",
-						))
-		else
-			// ----- BODY ----- //
-			switch(attack_damage)
-				if(1 to 2)	user.visible_message("<span class='danger'>[user] scratched [target]'s [affecting.name]!</span>")
-				if(3 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [pick("", "", "the side of")] [target]'s [affecting.name]!</span>")
-				if(5)		user.visible_message("<span class='danger'>[user] tears [T.his] [pick(attack_noun)] [pick("deep into", "into", "across")] [target]'s [affecting.name]!</span>")
+	var/is_neck_zone = zone in list(BP_HEAD, O_MOUTH, O_EYES)
+	switch(attack_damage)
+		if(1 to 2)
+			if(is_neck_zone)
+				user.visible_message("<span class='danger'>[user] scratched [target] across [TT.his] cheek!</span>")
+			else
+				user.visible_message("<span class='danger'>[user] scratched [target]'s [affecting.name]!</span>")
+		if(3 to 4)
+			if(is_neck_zone)
+				user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [target]'s [pick("head", "neck")]!</span>") //'with spread claws' sounds a little bit odd, just enough that conciseness is better here I think
+			else
+				user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [pick("", "", "the side of")] [target]'s [affecting.name]!</span>")
+		if(5)
+			if(is_neck_zone)
+				user.visible_message(pick(
+					"<span class='danger'>[user] rakes [T.his] [pick(attack_noun)] across [target]'s face!</span>",
+					"<span class='danger'>[user] tears [T.his] [pick(attack_noun)] into [target]'s face!</span>",
+					))
+				else
+					user.visible_message("<span class='danger'>[user] tears [T.his] [pick(attack_noun)] [pick("deep into", "into", "across")] [target]'s [affecting.name]!</span>")
 
 /datum/unarmed_attack/claws/strong
 	attack_verb = list("slashed")
@@ -110,23 +111,25 @@
 		user.visible_message("<span class='danger'>[user] [pick(attack_verb)] \himself in the [affecting.name]!</span>")
 		return 0 //No venom for you.
 	target.bloodstr.add_reagent("numbenzyme",attack_damage)
+
+	var/is_neck_zone = zone in list(BP_HEAD, O_MOUTH, O_EYES)
 	switch(attack_damage)
 		if(1 to 2)
-			if(zone in list(BP_HEAD, O_MOUTH, O_EYES)
+			if(is_neck_zone)
 				user.visible_message("<span class='danger'>[user]'s fangs scrape across [target]'s cheek!</span>")
 				to_chat(target, "<font color='red'><b>Your face feels tingly!</b></font>")
 			else
 				user.visible_message("<span class='danger'>[user]'s fangs scrape across [target]'s [affecting.name]!</span>")
 				to_chat(target, "<font color='red'><b>Your [affecting.name] feels tingly!</b></font>")
 		if(3 to 4)
-			if(zone in list(BP_HEAD, O_MOUTH, O_EYES)
+			if(is_neck_zone)
 				user.visible_message("<span class='danger'>[user]'s fangs pierce into [target]'s neck at an odd, awkward angle!</span>")
 				to_chat(target, "<font color='red'><b>Your neck feels like it's on fire before going numb!</b></font>")
 			else
 				user.visible_message("<span class='danger'>[user]'s fangs pierce [pick("", "", "the side of")] [target]'s [affecting.name]!</span>")
 				to_chat(target, "<font color='red'><b>Your [affecting.name] feels like it's on fire before going numb!</b></font>")
 		if(5)
-			if(zone in list(BP_HEAD, O_MOUTH, O_EYES)
+			if(is_neck_zone)
 				user.visible_message("<span class='danger'>[user] sinks \his [pick(attack_noun)] <b><i>deep</i></b> into [target]'s neck, causing the vein to bulge outwards at some type of chemical is pumped into it!</span>")
 				to_chat(target, "<font color='red'><b>Your neck feels like it's going to burst! Moments later, you simply can't feel your neck any longer, the numbness beginning to spread throughout your body!</b></font>")
 			else
