@@ -1,8 +1,8 @@
-import { toFixed } from 'common/math';
+import { round, toFixed } from 'common/math';
 import { BooleanLike } from 'common/react';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../../backend';
-import { Box, Button, LabeledList, Section } from '../../components';
+import { Box, Button, LabeledList, Section, Stack } from '../../components';
 import { getGasLabel, getGasColor } from '../../constants';
 import { Window } from '../../layouts';
 import { AtmosAnalyzerResults } from '../common/Atmos';
@@ -22,18 +22,46 @@ enum AirAlarmMode {
   Fill = 7,
 }
 
+const AirAlarmModes: [AirAlarmMode, string, string | undefined][] = [
+  [AirAlarmMode.Scrub, "Filtering - Maintain area atmospheric integrity", undefined],
+  [AirAlarmMode.Contaminated, "Contaminated - Rapidly scrub out contaminants while maintaining atmosphere", undefined],
+  [AirAlarmMode.Replace, "Replace - Siphons air while replacement", undefined],
+  [AirAlarmMode.Cycle, "Cycle - Siphon air out of the room before replacing.", "danger"],
+  [AirAlarmMode.Fill, "Fill - Fill room with air without scrubbing.", undefined],
+  [AirAlarmMode.Siphon, "Siphon - Turn off vents and siphon air out of the room", "danger"],
+  [AirAlarmMode.Panic, "Panic Siphon - Turns off vents, siphon all air out of the room quickly", "danger"],
+];
+
 enum AirAlarmRaise {
   Okay = 0,
   Warning = 1,
   Danger = 2,
 }
 
+const AirAlarmRaiseLookup: {
+  color: string;
+  status: string;
+}[] = [
+  {
+    color: 'good',
+    status: 'Okay',
+  },
+  {
+    color: 'average',
+    status: 'Warning',
+  },
+  {
+    color: 'bad',
+    status: 'Danger',
+  },
+];
+
 type AirAlarmTLV = [number, number, number, number];
 
-const TLVCheck = (val: number, tlv: AirAlarmTLV) => val < tlv[0] || val > tlv[3]
+const TLVCheck = (val: number, tlv: AirAlarmTLV | null | undefined) => tlv? (val < tlv[0] || val > tlv[3]
   ? AirAlarmRaise.Danger : val < tlv[1] || val > tlv[2]
     ? AirAlarmRaise.Warning
-    : AirAlarmRaise.Okay;
+    : AirAlarmRaise.Okay) : AirAlarmRaise.Okay;
 
 interface ExtendedVentPumpState extends AtmosVentPumpState {
   name: string;
@@ -58,92 +86,69 @@ interface AirAlarmData {
   rcon: number;
   atmos_alarm: BooleanLike;
   fire_alarm: BooleanLike;
-
+  emagged: BooleanLike;
 }
 
 export const AirAlarm = (props, context) => {
   const { act, data } = useBackend<AirAlarmData>(context);
   const locked = data.locked && !data.siliconUser && !data.remoteUser;
+  const localRaised = AirAlarmRaiseLookup[data.danger_level];
+  const pressureRaised = AirAlarmRaiseLookup[TLVCheck(data.environment.pressure, data.TLV['pressure'])];
+  const temperatureRaised = AirAlarmRaiseLookup[TLVCheck(data.environment.temperature, data.TLV['temperature'])];
+  const temperatureRounded = round(data.environment.temperature, 2);
   return (
     <Window
       width={440}
       height={650}>
       <Window.Content>
-        <InterfaceLockNoticeBox />
-        <AirAlarmStatus />
+        <Stack vertical fill>
+          <Stack.Item>
+            <InterfaceLockNoticeBox />
+          </Stack.Item>
+          <Stack.Item>
+            <Section title="Environment">
+              <LabeledList>
+                <LabeledList.Item label="Pressure" color={pressureRaised.color}>
+                  {round(data.environment.pressure, 2)} kPa
+                </LabeledList.Item>
+                <LabeledList.Item label="Temperature" color={temperatureRaised.color}>
+                  {temperatureRounded}°K ({temperatureRounded - 273.15}°C)
+                </LabeledList.Item>
+                {
+                  Object.entries(data.environment.gases).map(([k, v]) => {
+                    const percent = v / data.environment.moles;
+                    const gasRaised = AirAlarmRaiseLookup[TLVCheck(v, data.TLV[k])];
+                    return (
+                      <LabeledList.Item key={k}
+                        label={data.environment.names[k] || k} color={gasRaised.color}>
+                        {round(percent, 2)}%
+                      </LabeledList.Item>
+                    );
+                  })
+                }
+                <LabeledList.Item label="Local Status" color={localRaised.color}>
+                  {localRaised.status}
+                </LabeledList.Item>
+                <LabeledList.Item label="Area Status" color={data.atmos_alarm || data.fire_alarm? 'bad' : 'good'}>
+                  {data.atmos_alarm? "Atmosphere Alarm" : data.fire_alarm? "Fire Alarm" : "Nominal"}
+                </LabeledList.Item>
+                {!!data.emagged && (
+                  <LabeledList.Item
+                    label="Warning"
+                    color="bad">
+                    Safety measures offline. Device may exhibit abnormal behavior.
+                  </LabeledList.Item>
+                )}
+              </LabeledList>
+            </Section>
+          </Stack.Item>
+        </Stack>
         <AirAlarmUnlockedControl />
         {!locked && (
           <AirAlarmControl />
         )}
       </Window.Content>
     </Window>
-  );
-};
-
-const AirAlarmStatus = (props, context) => {
-  const { data } = useBackend<AirAlarmData>(context);
-  const entries = (data.environment_data || [])
-    .filter(entry => entry.value >= 0.01);
-  const dangerMap = {
-    0: {
-      color: 'good',
-      localStatusText: 'Optimal',
-    },
-    1: {
-      color: 'average',
-      localStatusText: 'Caution',
-    },
-    2: {
-      color: 'bad',
-      localStatusText: 'Danger (Internals Required)',
-    },
-  };
-  const localStatus = dangerMap[data.danger_level] || dangerMap[0];
-  return (
-    <Section title="Air Status">
-      <LabeledList>
-        {entries.length > 0 && (
-          <>
-            {entries.map(entry => {
-              const status = dangerMap[entry.danger_level] || dangerMap[0];
-              return (
-                <LabeledList.Item
-                  key={entry.name}
-                  label={getGasLabel(entry.name)}
-                  color={status.color}>
-                  {toFixed(entry.value, 2)}{entry.unit}
-                </LabeledList.Item>
-              );
-            })}
-            <LabeledList.Item
-              label="Local status"
-              color={localStatus.color}>
-              {localStatus.localStatusText}
-            </LabeledList.Item>
-            <LabeledList.Item
-              label="Area status"
-              color={data.atmos_alarm || data.fire_alarm ? 'bad' : 'good'}>
-              {data.atmos_alarm && 'Atmosphere Alarm'
-                || data.fire_alarm && 'Fire Alarm'
-                || 'Nominal'}
-            </LabeledList.Item>
-          </>
-        ) || (
-          <LabeledList.Item
-            label="Warning"
-            color="bad">
-            Cannot obtain air sample for analysis.
-          </LabeledList.Item>
-        )}
-        {!!data.emagged && (
-          <LabeledList.Item
-            label="Warning"
-            color="bad">
-            Safety measures offline. Device may exhibit abnormal behavior.
-          </LabeledList.Item>
-        )}
-      </LabeledList>
-    </Section>
   );
 };
 
@@ -309,26 +314,44 @@ const AirAlarmControlScrubbers = (props, context) => {
   ));
 };
 
-//  Modes
-// --------------------------------------------------------
+//* Modes *//
 
-const AirAlarmControlModes = (props, context) => {
-  const { act, data } = useBackend<AirAlarmData>(context);
-  const { modes } = data;
-  if (!modes || modes.length === 0) {
-    return 'Nothing to show';
-  }
-  return modes.map(mode => (
-    <Fragment key={mode.mode}>
-      <Button
-        icon={mode.selected ? 'check-square-o' : 'square-o'}
-        selected={mode.selected}
-        color={mode.selected && mode.danger && 'danger'}
-        content={mode.name}
-        onClick={() => act('mode', { mode: mode.mode })} />
-      <Box mt={1} />
-    </Fragment>
-  ));
+interface AirAlarmModeScreenProps {
+  selected: AirAlarmMode;
+  setAct: (AirAlarmMode) => void;
+}
+
+const AirAlarmModeScreen = (props: AirAlarmModeScreenProps) => {
+  return (
+    <Stack vertical>
+      {AirAlarmModes.map(([mode, desc, color]) => (
+        <AirAlarmModeButton
+          key={mode}
+          desc={desc}
+          color={color}
+          selected={props.selected === mode}
+          setAct={() => props.setAct(mode)} />
+      ))}
+    </Stack>
+  );
+};
+
+interface AirAlarmModeButtonProps {
+  desc: string;
+  selected: boolean;
+  setAct?: () => void;
+  color?: string;
+}
+
+const AirAlarmModeButton = (props: AirAlarmModeButtonProps) => {
+  return (
+    <Button
+      icon={props.selected? 'check-square-o' : 'square-o'}
+      content={props.desc}
+      onClick={() => props.setAct?.()}
+      selected={props.selected}
+      color={props.selected && props.color} />
+  );
 };
 
 

@@ -531,6 +531,10 @@ GLOBAL_LIST_EMPTY(air_alarms)
 				if("power")
 			#warn impl
 			return TRUE
+		if("mode")
+			var/mode = params["mode"]
+			#warn impl
+			return TRUE
 
 #warn below
 
@@ -556,47 +560,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 	DECLARE_TLV_VALUES
 
-	var/pressure = environment.return_pressure()
-	LOAD_TLV_VALUES(TLV["pressure"], pressure)
-	environment_data.Add(list(list(
-		"name" = "Pressure",
-		"value" = pressure,
-		"unit" = "kPa",
-		"danger_level" = TEST_TLV_VALUES
-	)))
-
-	var/temperature = environment.temperature
-	LOAD_TLV_VALUES(TLV["temperature"], temperature)
-	environment_data.Add(list(list(
-		"name" = "Temperature",
-		"value" = temperature,
-		"unit" = "K ([round(temperature - T0C, 0.1)]C)",
-		"danger_level" = TEST_TLV_VALUES
-	)))
-
-	var/total_moles = environment.total_moles
-	var/partial_pressure = R_IDEAL_GAS_EQUATION * environment.temperature / environment.volume
-	for(var/gas_id in environment.gas)
-		if(!(gas_id in TLV))
-			continue
-		LOAD_TLV_VALUES(TLV[gas_id], environment.gas[gas_id] * partial_pressure)
-		environment_data.Add(list(list(
-			"name" = gas_id,
-			"value" = environment.gas[gas_id] / total_moles * 100,
-			"unit" = "%",
-			"danger_level" = TEST_TLV_VALUES
-		)))
-
 	if(!locked || issilicon(user) || data["remoteUser"])
-
-		var/list/list/modes = list()
-		data["modes"] = modes
-		modes[++modes.len] = list("name" = "Filtering - Scrubs out contaminants", 			"mode" = AIR_ALARM_MODE_SCRUB,		"selected" = mode == AIR_ALARM_MODE_SCRUB, 	"danger" = 0)
-		modes[++modes.len] = list("name" = "Replace Air - Siphons out air while replacing", "mode" = AIR_ALARM_MODE_REPLACE,	"selected" = mode == AIR_ALARM_MODE_REPLACE,	"danger" = 0)
-		modes[++modes.len] = list("name" = "Panic - Siphons air out of the room", 			"mode" = AIR_ALARM_MODE_SIPHON,			"selected" = mode == AIR_ALARM_MODE_SIPHON, 		"danger" = 1)
-		modes[++modes.len] = list("name" = "Cycle - Siphons air before replacing", 			"mode" = AIR_ALARM_MODE_CYCLE,			"selected" = mode == AIR_ALARM_MODE_CYCLE, 		"danger" = 1)
-		modes[++modes.len] = list("name" = "Fill - Shuts off scrubbers and opens vents", 	"mode" = AIR_ALARM_MODE_FILL,			"selected" = mode == AIR_ALARM_MODE_FILL, 			"danger" = 0)
-		modes[++modes.len] = list("name" = "Off - Shuts off vents and scrubbers", 			"mode" = AIR_ALARM_MODE_OFF,			"selected" = mode == AIR_ALARM_MODE_OFF, 			"danger" = 0)
 
 		var/list/selected
 		var/list/thresholds = list()

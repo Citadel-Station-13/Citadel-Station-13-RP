@@ -3,7 +3,7 @@
  * @license MIT
 */
 
-import { bitfieldToPositions } from "common/math";
+import { bitfieldToPositions, round } from "common/math";
 import { Button, LabeledList, Section } from "../../components";
 import { SectionProps } from "../../components/Section";
 
@@ -86,9 +86,28 @@ interface AtmosAnalysisProps extends SectionProps {
 }
 
 export const AtmosAnalysis = (props: AtmosAnalysisProps) => {
+  const temperatureRounded = round(props.results.temperature, 2);
   return (
     <Section {...props}>
-      Unimplemented
+      <LabeledList>
+        <LabeledList.Item label="Pressure">
+          {round(props.results.pressure, 2)} kPa
+        </LabeledList.Item>
+        <LabeledList.Item label="Temperature">
+          {temperatureRounded}°K ({temperatureRounded - 273.15}°C)
+        </LabeledList.Item>
+        {
+          Object.entries(props.results.gases).map(([k, v]) => {
+            const percent = v / props.results.moles;
+            return (
+              <LabeledList.Item key={k}
+                label={props.results.names[k] || k}>
+                {round(percent, 2)}%
+              </LabeledList.Item>
+            );
+          })
+        }
+      </LabeledList>
     </Section>
   );
 };
