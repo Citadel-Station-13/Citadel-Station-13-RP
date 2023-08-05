@@ -31,9 +31,6 @@
 
 	minimum_breath_pressure = 20 //have fun with underpressures. any higher than this and they'll be even less suitible for life on the station
 
-
-	max_age = 90
-
 	blurb = {"
 	The Zaddat are an Unathi client race only recently introduced to OriCon space. Having evolved on
 	the high-pressure and post-apocalyptic world of Xohok, Zaddat require an environmental suit called a Shroud
@@ -55,7 +52,6 @@
 	genders = list(FEMALE, PLURAL) //females are polyp-producing, infertile females and males are nigh-identical
 
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
-	species_appearance_flags = null
 
 	flesh_color = "#AFA59E"
 	base_color  = "#e2e4a6"
