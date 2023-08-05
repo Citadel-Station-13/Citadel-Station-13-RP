@@ -15,6 +15,6 @@
 	if(air_master.current_cycle == 0)
 		if(!isturf(loc))
 			return
-		SSticker.OnRoundstart(CALLBACK(loc, /turf/proc/queue_zone_update))
+		SSticker.OnRoundstart(CALLBACK(loc, TYPE_PROC_REF(/turf, queue_zone_update)))
 		return ATMOS_PASS_AIR_BLOCKED
 	return ATMOS_PASS_ZONE_BLOCKED

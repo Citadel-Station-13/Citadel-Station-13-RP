@@ -12,6 +12,10 @@
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
+	if(istype(shell.loc, /obj/item/holder))
+		to_chat(src, "You can't unfold while being like this.")
+		return
+
 	if(!can_action())
 		return
 
@@ -62,7 +66,7 @@
 		var/obj/item/pda/holder = shell.loc
 		holder.pai = null
 
-	// handle the actual object stuffing via the component
+	// handle the actual object stuffing via the component, essentially swapping their loc's around
 	transform_component.put_in_mob()
 
 	update_perspective()
@@ -71,8 +75,10 @@
 	if(istype(card))
 		card.screen_loc = null
 
+	// we might not actually be on a turf after the object stuffing, so make sure we are
 	var/turf/T = get_turf(src)
 	if(istype(T))
+		src.forceMove(T)
 		T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
 
 	add_verb(src, /mob/living/silicon/pai/proc/pai_nom)

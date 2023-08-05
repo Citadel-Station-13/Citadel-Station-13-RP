@@ -120,7 +120,7 @@
 	game.food = rand(10,80) / rand(1,2)
 	game.fuel = rand(10,60) / rand(1,2)
 	if(game.electronics)
-		addtimer(CALLBACK(game, .proc/revert_random, game, oldfood, oldfuel), 1 SECONDS)
+		addtimer(CALLBACK(game, PROC_REF(revert_random), game, oldfood, oldfuel), 1 SECONDS)
 
 /datum/orion_event/electronic_part/proc/revert_random(obj/machinery/computer/arcade/orion_trail/game, oldfood, oldfuel)
 	if(oldfuel > game.fuel && oldfood > game.food)
@@ -166,7 +166,7 @@
 		smashed.ScrapeAway()
 	game.say("Something slams into the floor around [src], exposing it to space!")
 	if(game.hull)
-		addtimer(CALLBACK(game, .proc/fix_floor, game), 1 SECONDS)
+		addtimer(CALLBACK(game, PROC_REF(fix_floor), game), 1 SECONDS)
 
 /datum/orion_event/hull_part/proc/fix_floor(obj/machinery/computer/arcade/orion_trail/game)
 	game.say("A new floor suddenly appears around [src]. What the hell?")
@@ -440,7 +440,7 @@
 		game.say("A miniature black hole suddenly appears in front of [game], devouring [gamer] alive!")
 		gamer.afflict_stun(20 * 200, ignore_canstun = TRUE) //you can't run :^)
 		var/black_hole = new /obj/singularity/academy(gamer.loc)
-		addtimer(CALLBACK(game, /atom/movable/proc/say, "[black_hole] winks out, just as suddenly as it appeared."), 50)
+		addtimer(CALLBACK(game, TYPE_PROC_REF(/atom/movable, say), "[black_hole] winks out, just as suddenly as it appeared."), 50)
 		QDEL_IN(black_hole, 5 SECONDS)
 */
 #define BUTTON_DOCK "Dock"

@@ -24,6 +24,8 @@
 			var/ref = params["ref"]
 			var/atom/movable/poi = locate(ref) in GLOB.mob_list
 			if (poi == null)
+				poi = locate(ref) in SSshuttle.ships
+			if (poi == null)
 				. = TRUE
 				return
 			owner.ManualFollow(poi)
@@ -68,6 +70,17 @@
 			players += list(serialized)
 		else if(isAI(M))
 			players += list(serialized)
+		else if(istype(M, /mob/living/silicon/pai))
+			players += list(serialized)
+
+	for(var/obj/overmap/entity/visitable/ship/shuttle in SSshuttle.ships)
+		if(istype(shuttle))
+			var/list/serialized = list()
+			serialized["name"] = shuttle.name
+
+			serialized["ref"] = REF(shuttle)
+			items_of_interest += list(serialized)
+
 
 	data["players"] = players
 	data["simplemobs"] = simplemobs

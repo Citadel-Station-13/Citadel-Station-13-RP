@@ -1336,6 +1336,7 @@
 	dir = 1
 	},
 /obj/machinery/vending/loadout/clothing,
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
 "acx" = (
@@ -4737,6 +4738,9 @@
 /obj/item/assembly/timer,
 /obj/item/assembly/voice,
 /obj/item/radio/electropack,
+/obj/machinery/camera/network/research{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/testingroom)
 "aim" = (
@@ -10445,6 +10449,7 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 4
 	},
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/locker)
 "asz" = (
@@ -14201,6 +14206,9 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 8
 	},
+/obj/machinery/camera/network/medbay{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "ayF" = (
@@ -14605,6 +14613,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "azm" = (
@@ -26206,6 +26215,9 @@
 /obj/effect/floor_decal/corner/white/bordercorner2{
 	dir = 5
 	},
+/obj/machinery/camera/network/civilian{
+	dir = 9
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_lodging)
 "aUP" = (
@@ -30051,7 +30063,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
-/obj/landmark/spawnpoint/latejoin/station/tram,
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "bTt" = (
@@ -31522,6 +31534,30 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
+"gyi" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/overflow/station,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/surface_one_hall)
 "gzO" = (
 /obj/structure/cable/orange{
 	icon_state = "1-4"
@@ -31601,6 +31637,12 @@
 	ignore_mapgen = 1
 	},
 /area/tether/surfacebase/cave)
+"gVc" = (
+/obj/machinery/camera/network/medbay{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "gVe" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -32150,6 +32192,8 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
+/obj/landmark/spawnpoint/overflow/station,
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "iwE" = (
@@ -32667,6 +32711,12 @@
 	outdoors = 0
 	},
 /area/tether/surfacebase/old_tram)
+"jWy" = (
+/obj/machinery/camera/network/medbay{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "jXR" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -33824,6 +33874,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
+"mJC" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/landmark/spawnpoint/overflow/station,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/tram)
 "mNB" = (
 /turf/simulated/mineral,
 /area/holodeck_control)
@@ -34920,6 +34977,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"pMK" = (
+/obj/machinery/camera/network/security{
+	dir = 10
+	},
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "pNR" = (
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/tunnel)
@@ -35467,13 +35530,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/landmark/spawnpoint/latejoin/station/tram,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "rey" = (
@@ -46779,7 +46842,7 @@ aad
 aad
 aad
 aad
-aad
+pMK
 pCj
 oTK
 oTK
@@ -47205,7 +47268,7 @@ aad
 aad
 aad
 aad
-aad
+pMK
 pCj
 wjq
 wjq
@@ -53359,7 +53422,7 @@ poq
 agM
 azl
 iti
-vDb
+gyi
 aBZ
 agM
 aCO
@@ -53641,7 +53704,7 @@ eiT
 atx
 axy
 ayo
-azn
+mJC
 bSx
 raS
 aCa
@@ -54020,7 +54083,7 @@ bLW
 aad
 aad
 aad
-aad
+gVc
 aah
 aeE
 agq
@@ -54304,7 +54367,7 @@ bLW
 aad
 aad
 aad
-aad
+jWy
 aah
 aeE
 aqi

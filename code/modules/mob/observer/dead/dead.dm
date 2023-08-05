@@ -198,6 +198,7 @@ GLOBAL_LIST_EMPTY(observer_list)
 
 /mob/proc/ghostize(var/can_reenter_corpse = 1)
 	if(key)
+		SSplaytime.queue_playtimes(client)
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
 			if(H.vr_holder && !can_reenter_corpse)
@@ -792,10 +793,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			var/obj/item/paicard/PP = p
 			if(PP.pai == null)
 				count++
-				PP.icon = 'icons/obj/pda_vr.dmi'
-				PP.add_overlay("pai-ghostalert")
-				spawn(54)
-					PP.cut_overlays()
 		to_chat(usr,"<span class='notice'>Flashing the displays of [count] unoccupied PAIs.</span>")
 	else
 		to_chat(usr,"<span class='warning'>You have 'Be pAI' disabled in your character prefs, so we can't help you.</span>")

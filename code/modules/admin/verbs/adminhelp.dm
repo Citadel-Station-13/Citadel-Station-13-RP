@@ -507,7 +507,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 
 	//remove out adminhelp verb temporarily to prevent spamming of admins.
 	remove_verb(src, /client/verb/adminhelp)
-	adminhelptimerid = addtimer(CALLBACK(src, .proc/giveadminhelpverb), 2 MINUTES, flags = TIMER_STOPPABLE)
+	adminhelptimerid = addtimer(CALLBACK(src, PROC_REF(giveadminhelpverb)), 2 MINUTES, flags = TIMER_STOPPABLE)
 
 	if(persistent.ligma)
 		to_chat(usr, "<span class='adminnotice'>PM to-<b>Admins</b>: [msg]</span>")

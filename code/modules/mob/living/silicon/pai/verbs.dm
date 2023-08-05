@@ -6,7 +6,7 @@
 	// we don't check mobility here because while folded up, you can't move
 	if(!can_action())
 		return
-	// to fold out we need to be in the card
+	// to fold out we need to be in the shell
 	if(src.loc != shell)
 		return
 
@@ -40,9 +40,12 @@
 			return
 
 		if(choice == "-- LOAD CHARACTER SLOT --")
-			icon = render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+			last_rendered_hologram_icon = render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+			card.cached_holo_image = null
+			card.get_holo_image()
+			icon = last_rendered_hologram_icon
 		else
-			icon = 'icons/mob/pai.dmi'
+			icon = 'icons/mob/pai_vr.dmi'
 			icon_state = possible_chassis[choice]
 		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
 
@@ -72,12 +75,14 @@
 		if(istype(hardsuit))
 			hardsuit.force_rest(src)
 	else
-		toggle_resting()
-		icon_state = resting ? "[chassis]_rest" : "[chassis]"
-		update_icon()
+		toggle_intentionally_resting(TRUE)
 		to_chat(src, SPAN_NOTICE("You are now [resting ? "resting" : "getting up"]"))
 
 	update_mobility()
+
+/mob/living/silicon/pai/update_lying()
+	. = ..()
+	icon_state = resting ? "[chassis]_rest" : "[chassis]"
 
 /mob/living/silicon/pai/verb/allowmodification()
 	set name = "Change Access Modifcation Permission"
@@ -124,11 +129,31 @@
 	if(!can_change_shell())
 		return
 
-	var/clothing_entry = input(usr, "What clothing would you like to change your shell to?") as null|anything in possible_clothing_options
+	var/clothing_entry = tgui_input_list(usr, "What clothing would you like to change your shell to?", "Options", list("Chameleon Clothing List","Last Uploaded Clothing"))
 	if(clothing_entry)
-		if(clothing_entry != "Last Uploaded Clothing")
-			change_shell_by_path(possible_clothing_options[clothing_entry])
-		else
+		if(clothing_entry == "Chameleon Clothing List")
+			var/clothing_type_entry = tgui_input_list(usr, "What type of clothing would you like to change your shell to?", "Clothing Type", list("Undershirt", "Suit", "Hat", "Shoes", "Gloves", "Mask", "Glasses"))
+			var/list/clothing_for_type
+			if(clothing_type_entry)
+				switch(clothing_type_entry)
+					if("Undershirt")
+						clothing_for_type = GLOB.clothing_under
+					if("Suit")
+						clothing_for_type = GLOB.clothing_suit
+					if("Hat")
+						clothing_for_type = GLOB.clothing_head
+					if("Shoes")
+						clothing_for_type = GLOB.clothing_shoes
+					if("Gloves")
+						clothing_for_type = GLOB.clothing_gloves
+					if("Mask")
+						clothing_for_type = GLOB.clothing_mask
+					if("Glasses")
+						clothing_for_type = GLOB.clothing_glasses
+				var/clothing_item_entry = tgui_input_list(usr, "Choose clothing item", "Clothing", clothing_for_type)
+				if(clothing_item_entry)
+					change_shell_by_path(clothing_for_type[clothing_item_entry])
+		else if(clothing_entry == "Last Uploaded Clothing")
 			if(last_uploaded_path && can_change_shell())
 				last_special = world.time + 20
 				var/state = initial(last_uploaded_path.icon_state)

@@ -764,6 +764,10 @@
 	dir = 6
 	},
 /area/class_m/outside/beachmiddle)
+"ey" = (
+/obj/machinery/tele_pad,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/class_m/inside)
 "eH" = (
 /turf/simulated/floor/concrete/tile/classm/outdoors{
 	icon_state = "concrete16"
@@ -5067,6 +5071,16 @@
 	outdoors = 1
 	},
 /area/class_m/outside)
+"BD" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/obj/machinery/computer/teleporter,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/class_m/inside)
 "BE" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/leafybush,
@@ -5425,6 +5439,12 @@
 /obj/machinery/gear_painter,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
+"DI" = (
+/obj/machinery/tele_projector{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/class_m/inside)
 "DL" = (
 /obj/structure/bed/chair/bay/comfy/black,
 /obj/machinery/light/small{
@@ -5630,6 +5650,10 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/water/deep/indoors,
 /area/class_m/inside/main)
+"ES" = (
+/obj/item/radio/beacon/anchored,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/class_m/inside)
 "ET" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 8
@@ -44363,7 +44387,7 @@ uw
 hk
 ou
 DM
-DM
+ES
 DM
 ou
 Wb
@@ -44556,9 +44580,9 @@ WN
 uw
 hk
 aT
-ll
+BD
 DM
-Eo
+RS
 aT
 Wb
 Wb
@@ -44750,7 +44774,7 @@ WN
 uw
 hk
 aR
-ur
+DI
 DM
 Yp
 aR
@@ -44944,7 +44968,7 @@ WN
 uw
 hk
 aR
-ur
+ey
 DM
 Yp
 aR
