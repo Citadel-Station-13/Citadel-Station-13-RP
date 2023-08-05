@@ -92,7 +92,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "dj" = (
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -136,7 +136,7 @@
 "hl" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "hQ" = (
 /obj/effect/map_effect/radiation_emitter/chernobyl,
 /turf/simulated/floor/lythios43c/indoors,
@@ -222,14 +222,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "kH" = (
 /obj/structure/girder/reinforced,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "kL" = (
 /turf/unsimulated/mineral,
 /area/rift/surfacebase/outside/west_base/submap_seedzone)
@@ -318,7 +318,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "nQ" = (
 /obj/random/junk,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -329,19 +329,19 @@
 	},
 /obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "oo" = (
 /obj/structure/girder/reinforced,
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "py" = (
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "pJ" = (
 /obj/effect/floor_decal/techfloor/orange/corner,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "pS" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
@@ -360,7 +360,7 @@
 	},
 /obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "qK" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -376,17 +376,17 @@
 	},
 /obj/effect/map_effect/radiation_emitter/chernobyl,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "rn" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "rp" = (
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "rq" = (
 /obj/structure/fence{
 	dir = 4
@@ -395,7 +395,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "rt" = (
 /obj/effect/map_effect/interval/effect_emitter/steam,
 /turf/simulated/floor/water/deep/indoors,
@@ -403,7 +403,7 @@
 "rB" = (
 /obj/effect/map_effect/radiation_emitter/chernobyl,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "rM" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -415,7 +415,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "sk" = (
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/lythios43c/indoors,
@@ -423,7 +423,7 @@
 "sR" = (
 /obj/structure/stairs/spawner/west,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "sY" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 6
@@ -496,7 +496,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "yE" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -530,7 +530,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "zF" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -555,7 +555,7 @@
 /area/turbolift/rwest_mining/base)
 "AH" = (
 /turf/simulated/wall/r_wall,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "AV" = (
 /obj/machinery/fusion_fuel_injector/mapped{
 	dir = 1
@@ -570,7 +570,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "Cc" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
@@ -649,7 +649,7 @@
 "FI" = (
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "Gb" = (
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
@@ -667,7 +667,7 @@
 	},
 /obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "Il" = (
 /turf/simulated/floor/outdoors/lava/indoors,
 /area/rift/surfacebase/outside/west_base/submap_seedzone)
@@ -687,7 +687,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "Jt" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
@@ -717,7 +717,7 @@
 /area/turbolift/rwest_mining/base)
 "KC" = (
 /turf/simulated/floor/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "Lh" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/rift/facility/interior/elevator)
@@ -736,7 +736,7 @@
 "LE" = (
 /obj/structure/fence,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "LZ" = (
 /obj/structure/girder,
 /turf/simulated/floor/lythios43c/indoors,
@@ -760,7 +760,7 @@
 /area/rift/facility/interior/barracks)
 "Mo" = (
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "MP" = (
 /obj/random/junk,
 /turf/simulated/floor/lythios43c/indoors,
@@ -857,7 +857,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "QU" = (
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/reinforced/full,
@@ -866,7 +866,7 @@
 "Rw" = (
 /obj/effect/map_effect/radiation_emitter/chernobyl,
 /turf/simulated/floor/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "RD" = (
 /obj/item/bone/leg,
 /obj/item/bone/leg,
@@ -899,10 +899,10 @@
 /obj/structure/fence,
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "Su" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "Sx" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -929,7 +929,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "TM" = (
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 8
@@ -950,7 +950,7 @@
 "UC" = (
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "Vv" = (
 /turf/simulated/mineral/icerock/airmix,
 /area/rift/surfacebase/outside/west_base)
@@ -985,7 +985,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "XU" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -1012,7 +1012,7 @@
 "Zb" = (
 /obj/random/obstruction,
 /turf/simulated/floor/lythios43c/indoors,
-/area/rift/facility/interior/undergound3)
+/area/rift/facility/interior/underground3)
 "ZF" = (
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/outdoors/snow/lythios43c,
