@@ -389,7 +389,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                             }));
                             this.props.setColor(val);
                           }
-                          finally {}
+                          catch {}
                         }} width="90px" />
                       </Stack.Item>
                       <Stack.Item>
