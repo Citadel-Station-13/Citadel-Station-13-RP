@@ -125,7 +125,7 @@
 	especially useful if short on time or in a hostile environment."
 	icon = 'icons/obj/medical/cryobag.dmi'
 	icon_state = "bodybag_folded"
-	item_state = "bodybag_folded"
+	item_state = "bodybag_cryo_folded"
 	origin_tech = list(TECH_BIO = 4)
 	var/obj/item/reagent_containers/syringe/syringe
 
