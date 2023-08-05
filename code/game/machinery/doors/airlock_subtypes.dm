@@ -568,3 +568,6 @@
 /obj/machinery/door/airlock/exploration
 	door_color = COLOR_GRAY20
 	stripe_color = COLOR_EXPLO_VIOLET
+
+/obj/machinery/door/airlock/multi_tile/glass/security
+	door_color = COLOR_SECURITY_RED
