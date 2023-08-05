@@ -4365,7 +4365,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "dMk" = (
-/turf/simulated/wall,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
+/turf/simulated/wall/prepainted,
 /area/hallway/primary/port)
 "dNk" = (
 /obj/effect/floor_decal/spline/plain,
@@ -39523,7 +39524,7 @@ oSV
 xXR
 bTp
 jgN
-dMk
+ejI
 pBH
 lKI
 oXk
