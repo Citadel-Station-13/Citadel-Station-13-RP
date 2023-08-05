@@ -124,7 +124,7 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "agD" = (
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "agV" = (
@@ -362,7 +362,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "apg" = (
@@ -1440,7 +1440,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "aVf" = (
@@ -3883,11 +3883,11 @@
 /area/bridge)
 "cMJ" = (
 /obj/effect/floor_decal/techfloor,
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/effect/floor_decal/corner/red/border,
 /obj/structure/sign/warning/evac{
 	pixel_x = -32
 	},
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "cNO" = (
@@ -6069,12 +6069,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "security_lockdown";
-	name = "Security Blast Doors";
-	opacity = 0
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /obj/structure/window/reinforced/polarized/full{
 	id = "det_office"
@@ -14451,13 +14447,13 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 27
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/structure/sign/warning/evac{
 	pixel_x = -32
 	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "jKE" = (
@@ -19003,7 +18999,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "mRX" = (
