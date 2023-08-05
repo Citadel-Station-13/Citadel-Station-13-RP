@@ -1,22 +1,74 @@
 import { toFixed } from 'common/math';
+import { BooleanLike } from 'common/react';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../../backend';
 import { Box, Button, LabeledList, Section } from '../../components';
 import { getGasLabel, getGasColor } from '../../constants';
 import { Window } from '../../layouts';
+import { AtmosAnalyzerResults } from '../common/Atmos';
 import { Scrubber, Vent } from '../common/AtmosControls';
 import { InterfaceLockNoticeBox } from '../common/InterfaceLockNoticeBox';
+import { AtmosVentPumpState } from './AtmosVentPump';
+import { AtmosVentScrubberState } from './AtmosVentScrubber';
 
+enum AirAlarmMode {
+  Off = 0,
+  Scrub = 1,
+  Replace = 2,
+  Siphon = 3,
+  Cycle = 4,
+  Panic = 5,
+  Contaminated = 6,
+  Fill = 7,
+}
 
+enum AirAlarmRaise {
+  Okay = 0,
+  Warning = 1,
+  Danger = 2,
+}
+
+type AirAlarmTLV = [number, number, number, number];
+
+const TLVCheck = (val: number, tlv: AirAlarmTLV) => val < tlv[0] || val > tlv[3]
+  ? AirAlarmRaise.Danger : val < tlv[1] || val > tlv[2]
+    ? AirAlarmRaise.Warning
+    : AirAlarmRaise.Okay;
+
+interface ExtendedVentPumpState extends AtmosVentPumpState {
+  name: string;
+}
+
+interface ExtendedVentScrubberState extends AtmosVentScrubberState {
+  name: string;
+}
+
+interface AirAlarmData {
+  TLV: Record<string, AirAlarmTLV>;
+  environment: AtmosAnalyzerResults;
+  vents: Record<string, AtmosVentPumpState>;
+  scrubbers: Record<string, AtmosVentScrubberState>;
+  mode: AirAlarmMode;
+  // legacy below
+  locked: BooleanLike;
+  siliconUser: BooleanLike;
+  remoteUser: BooleanLike;
+  danger_level: number;
+  target_temperature: number;
+  rcon: number;
+  atmos_alarm: BooleanLike;
+  fire_alarm: BooleanLike;
+
+}
 
 export const AirAlarm = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<AirAlarmData>(context);
   const locked = data.locked && !data.siliconUser && !data.remoteUser;
   return (
     <Window
       width={440}
       height={650}>
-      <Window.Content scrollable>
+      <Window.Content>
         <InterfaceLockNoticeBox />
         <AirAlarmStatus />
         <AirAlarmUnlockedControl />
@@ -29,7 +81,7 @@ export const AirAlarm = (props, context) => {
 };
 
 const AirAlarmStatus = (props, context) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<AirAlarmData>(context);
   const entries = (data.environment_data || [])
     .filter(entry => entry.value >= 0.01);
   const dangerMap = {
@@ -96,7 +148,7 @@ const AirAlarmStatus = (props, context) => {
 };
 
 const AirAlarmUnlockedControl = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<AirAlarmData>(context);
   const {
     target_temperature,
     rcon,
@@ -153,7 +205,7 @@ const AIR_ALARM_ROUTES = {
 };
 
 const AirAlarmControl = (props, context) => {
-  const [screen, setScreen] = useLocalState(context, 'screen');
+  const [screen, setScreen] = useLocalState<string>(context, 'screen', '');
   const route = AIR_ALARM_ROUTES[screen] || AIR_ALARM_ROUTES.home;
   const Component = route.component();
   return (
@@ -175,8 +227,8 @@ const AirAlarmControl = (props, context) => {
 // --------------------------------------------------------
 
 const AirAlarmControlHome = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [screen, setScreen] = useLocalState(context, 'screen');
+  const { act, data } = useBackend<AirAlarmData>(context);
+  const [screen, setScreen] = useLocalState<string>(context, 'screen', '');
   const {
     mode,
     atmos_alarm,
@@ -229,7 +281,7 @@ const AirAlarmControlHome = (props, context) => {
 // --------------------------------------------------------
 
 const AirAlarmControlVents = (props, context) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<AirAlarmData>(context);
   const { vents } = data;
   if (!vents || vents.length === 0) {
     return 'Nothing to show';
@@ -245,7 +297,7 @@ const AirAlarmControlVents = (props, context) => {
 // --------------------------------------------------------
 
 const AirAlarmControlScrubbers = (props, context) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<AirAlarmData>(context);
   const { scrubbers } = data;
   if (!scrubbers || scrubbers.length === 0) {
     return 'Nothing to show';
@@ -261,7 +313,7 @@ const AirAlarmControlScrubbers = (props, context) => {
 // --------------------------------------------------------
 
 const AirAlarmControlModes = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<AirAlarmData>(context);
   const { modes } = data;
   if (!modes || modes.length === 0) {
     return 'Nothing to show';
@@ -284,7 +336,7 @@ const AirAlarmControlModes = (props, context) => {
 // --------------------------------------------------------
 
 const AirAlarmControlThresholds = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<AirAlarmData>(context);
   const { thresholds } = data;
   return (
     <table

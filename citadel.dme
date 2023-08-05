@@ -129,6 +129,7 @@
 #include "code\__DEFINES\atmospherics\gases\ids.dm"
 #include "code\__DEFINES\atmospherics\gases\reagents.dm"
 #include "code\__DEFINES\atmospherics\gases\visuals.dm"
+#include "code\__DEFINES\atmospherics\machinery\alarm.dm"
 #include "code\__DEFINES\atmospherics\machinery\vent.dm"
 #include "code\__DEFINES\cargo\supply.dm"
 #include "code\__DEFINES\client\player_flags.dm"

@@ -2,24 +2,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 #define DECLARE_TLV_VALUES var/red_min; var/yel_min; var/yel_max; var/red_max; var/tlv_comparitor;
 #define LOAD_TLV_VALUES(x, y) red_min = x[1]; yel_min = x[2]; yel_max = x[3]; red_max = x[4]; tlv_comparitor = y;
-#define TEST_TLV_VALUES (((tlv_comparitor >= red_max && red_max > 0) || tlv_comparitor <= red_min) ? 2 : ((tlv_comparitor >= yel_max && yel_max > 0) || tlv_comparitor <= yel_min) ? 1 : 0)
-
-#define AALARM_MODE_SCRUBBING	1
-///like scrubbing, but faster.
-#define AALARM_MODE_REPLACEMENT	2
-///constantly sucks all air
-#define AALARM_MODE_PANIC		3
-///sucks off all air, then refill and switches to scrubbing
-#define AALARM_MODE_CYCLE		4
-///emergency fill
-#define AALARM_MODE_FILL		5
-///Shuts it all down.
-#define AALARM_MODE_OFF			6
-#define AALARM_SCREEN_MAIN		1
-#define AALARM_SCREEN_VENT		2
-#define AALARM_SCREEN_SCRUB		3
-#define AALARM_SCREEN_MODE		4
-#define AALARM_SCREEN_SENSORS	5
+#define TEST_TLV_VALUES (((tlv_comparitor >= red_max && red_max > 0) || tlv_comparitor <= red_min) ? AIR_ALARM_RAISE_DANGER : ((tlv_comparitor >= yel_max && yel_max > 0) || tlv_comparitor <= yel_min) ? AIR_ALARM_RAISE_WARNING : AIR_ALARM_RAISE_OKAY)
 
 #define MAX_TEMPERATURE 90
 #define MIN_TEMPERATURE -40
@@ -45,6 +28,16 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	clickvol = 30
 	//blocks_emissive = NONE
 	light_power = 0.25
+
+	/// The area we're registered to
+	var/area/registered_area
+	/// Keys are things like temperature and certain gasses. Values are lists, which contain, in order:
+	/// red warning minimum value, yellow warning minimum value, yellow warning maximum value, red warning maximum value
+	/// Keys can be 'pressure', 'temperature', or a gas ID.
+	var/list/TLV = list()
+	/// mode
+	var/mode = AIR_ALARM_MODE_SCRUB
+
 	var/alarm_id = null
 	///Whether to use automatic breach detection or not
 	var/breach_detection = TRUE
@@ -64,8 +57,6 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 	var/datum/wires/alarm/wires
 
-	var/mode = AALARM_MODE_SCRUBBING
-	var/screen = AALARM_SCREEN_MAIN
 	var/area_uid
 	var/area/alarm_area
 
@@ -74,9 +65,6 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 	var/datum/radio_frequency/radio_connection
 
-	/// Keys are things like temperature and certain gasses. Values are lists, which contain, in order:
-	/// red warning minimum value, yellow warning minimum value, yellow warning maximum value, red warning maximum value
-	var/list/TLV = list()
 	var/list/trace_gas = list(GAS_ID_NITROUS_OXIDE, GAS_ID_VOLATILE_FUEL) //list of other gases that this air alarm is able to detect
 
 	var/danger_level = 0
@@ -111,6 +99,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 /obj/machinery/air_alarm/proc/first_run()
 	alarm_area = get_area(src)
+	registered_area = alarm_area
 	area_uid = "\ref[alarm_area]"
 	if(name == "alarm")
 		name = "[alarm_area.name] Air Alarm"
@@ -156,11 +145,11 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 	if(old_pressurelevel != pressure_dangerlevel)
 		if(breach_detected())
-			mode = AALARM_MODE_OFF
+			mode = AIR_ALARM_MODE_OFF
 			apply_mode()
 
-	if(mode == AALARM_MODE_CYCLE && environment.return_pressure() < ONE_ATMOSPHERE * 0.05)
-		mode = AALARM_MODE_FILL
+	if(mode == AIR_ALARM_MODE_CYCLE && environment.return_pressure() < ONE_ATMOSPHERE * 0.05)
+		mode = AIR_ALARM_MODE_FILL
 		apply_mode()
 
 	//atmos computer remote control stuff
@@ -275,7 +264,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	var/pressure_levels = TLV["pressure"]
 
 	if(environment_pressure <= pressure_levels[1]) // Low pressures
-		if(!(mode == AALARM_MODE_PANIC || mode == AALARM_MODE_CYCLE))
+		if(!(mode == AIR_ALARM_MODE_SIPHON || mode == AIR_ALARM_MODE_CYCLE))
 			return TRUE
 	return FALSE
 
@@ -397,31 +386,31 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		AA.mode = mode
 
 	switch(mode)
-		if(AALARM_MODE_SCRUBBING)
+		if(AIR_ALARM_MODE_SCRUB)
 			for(var/device_id in alarm_area.air_scrub_names)
 				send_signal(device_id, list("power"= 1, "co2_scrub"= 1, "scrubbing"= 1, "panic_siphon"= 0))
 			for(var/device_id in alarm_area.air_vent_names)
 				send_signal(device_id, list("power"= 1, "checks"= "default", "set_external_pressure"= "default"))
 
-		if(AALARM_MODE_PANIC, AALARM_MODE_CYCLE)
+		if(AIR_ALARM_MODE_SIPHON, AIR_ALARM_MODE_CYCLE)
 			for(var/device_id in alarm_area.air_scrub_names)
 				send_signal(device_id, list("power"= 1, "panic_siphon"= 1))
 			for(var/device_id in alarm_area.air_vent_names)
 				send_signal(device_id, list("power"= 0))
 
-		if(AALARM_MODE_REPLACEMENT)
+		if(AIR_ALARM_MODE_REPLACE)
 			for(var/device_id in alarm_area.air_scrub_names)
 				send_signal(device_id, list("power"= 1, "panic_siphon"= 1))
 			for(var/device_id in alarm_area.air_vent_names)
 				send_signal(device_id, list("power"= 1, "checks"= "default", "set_external_pressure"= "default"))
 
-		if(AALARM_MODE_FILL)
+		if(AIR_ALARM_MODE_FILL)
 			for(var/device_id in alarm_area.air_scrub_names)
 				send_signal(device_id, list("power"= 0))
 			for(var/device_id in alarm_area.air_vent_names)
 				send_signal(device_id, list("power"= 1, "checks"= "default", "set_external_pressure"= "default"))
 
-		if(AALARM_MODE_OFF)
+		if(AIR_ALARM_MODE_OFF)
 			for(var/device_id in alarm_area.air_scrub_names)
 				send_signal(device_id, list("power"= 0))
 			for(var/device_id in alarm_area.air_vent_names)
@@ -485,10 +474,63 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 /obj/machinery/air_alarm/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	var/datum/gas_mixture/environment = loc.return_air()
+	.["environment"] = environment.tgui_analyzer_scan(GAS_GROUP_REAGENT | GAS_GROUP_UNKNOWN)
+	// todo: static data with event hooks for updates for these two
+	var/list/vents = list()
+	var/list/scrubbers = list()
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in area_registered.vent_pumps)
+		var/list/returned = pump.ui_vent_data()
+		returned["name"] = pump.name
+		pump[pump.id_tag] = returned
+	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in area_registered.vent_pumps)
+		var/list/returned = scrubber.ui_scrubber_data()
+		returned["name"] = scrubber.name
+		scrubbers[scrubber.id_tag] = returned
+	.["vents"] = vents
+	.["scrubbers"] = scrubbers
+	.["mode"] = mode
+
+	#warn AAAAAAAAAAA
 
 /obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	.["TLV"] = TLV
 
+/obj/machinery/air_alarm/proc/push_ui_tlv()
+	push_ui_data(data = list("TLV" = TLV))
+
+/obj/machinery/air_alarm/ui_act(action, params, datum/tgui/ui)
+	. = ..()
+	if(.)
+		return
+	#warn all the other checks..
+	switch(action)
+		if("vent")
+			var/id = params["id"]
+			var/command = params["command"]
+			var/target = params["target"]
+			switch(command)
+				if("direction")
+				if("internalPressure")
+				if("externalPressure")
+				if("internalChecks")
+				if("externalChecks")
+				if("power")
+			#warn impl
+			return TRUE
+		if("scrubber")
+			var/id = params["scrubber"]
+			var/command = params["command"]
+			var/target = params["target"]
+			switch(command)
+				if("siphon")
+				if("gasID")
+				if("gasGroup")
+				if("highPower")
+				if("power")
+			#warn impl
+			return TRUE
 
 #warn below
 
@@ -546,62 +588,15 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		)))
 
 	if(!locked || issilicon(user) || data["remoteUser"])
-		var/list/list/vents = list()
-		data["vents"] = vents
-		for(var/id_tag in A.air_vent_names)
-			var/long_name = A.air_vent_names[id_tag]
-			var/list/info = A.air_vent_info[id_tag]
-			if(!info)
-				continue
-			vents.Add(list(list(
-				"id_tag"	= id_tag,
-				"long_name" = sanitize(long_name),
-				"power"		= info["power"],
-				"checks"	= info["checks"],
-				"excheck"	= info["checks"]&1,
-				"incheck"	= info["checks"]&2,
-				"direction"	= info["direction"],
-				"external"	= info["external"],
-				"internal"	= info["internal"],
-				"extdefault"= (info["external"] == ONE_ATMOSPHERE),
-				"intdefault"= (info["internal"] == 0),
-			)))
-
-
-		var/list/list/scrubbers = list()
-		data["scrubbers"] = scrubbers
-		for(var/id_tag in alarm_area.air_scrub_names)
-			var/long_name = alarm_area.air_scrub_names[id_tag]
-			var/list/info = alarm_area.air_scrub_info[id_tag]
-			if(!info)
-				continue
-			scrubbers += list(list(
-				"id_tag"	= id_tag,
-				"long_name" = sanitize(long_name),
-				"power"		= info["power"],
-				"scrubbing"	= info["scrubbing"],
-				"panic"		= info["panic"],
-				"filters"   = list(
-					list("name" = "Oxygen",			"command" = "o2_scrub",	"val" = info["filter_o2"]),
-					list("name" = "Nitrogen",		"command" = "n2_scrub",	"val" = info["filter_n2"]),
-					list("name" = "Carbon Dioxide", "command" = "co2_scrub","val" = info["filter_co2"]),
-					list("name" = "Toxin"	, 		"command" = "tox_scrub","val" = info["filter_phoron"]),
-					list("name" = "Nitrous Oxide",	"command" = "n2o_scrub","val" = info["filter_n2o"]),
-					list("name" = "Fuel",			"command" = "fuel_scrub","val" = info["filter_fuel"])
-				)
-			))
-		data["scrubbers"] = scrubbers
-
-		data["mode"] = mode
 
 		var/list/list/modes = list()
 		data["modes"] = modes
-		modes[++modes.len] = list("name" = "Filtering - Scrubs out contaminants", 			"mode" = AALARM_MODE_SCRUBBING,		"selected" = mode == AALARM_MODE_SCRUBBING, 	"danger" = 0)
-		modes[++modes.len] = list("name" = "Replace Air - Siphons out air while replacing", "mode" = AALARM_MODE_REPLACEMENT,	"selected" = mode == AALARM_MODE_REPLACEMENT,	"danger" = 0)
-		modes[++modes.len] = list("name" = "Panic - Siphons air out of the room", 			"mode" = AALARM_MODE_PANIC,			"selected" = mode == AALARM_MODE_PANIC, 		"danger" = 1)
-		modes[++modes.len] = list("name" = "Cycle - Siphons air before replacing", 			"mode" = AALARM_MODE_CYCLE,			"selected" = mode == AALARM_MODE_CYCLE, 		"danger" = 1)
-		modes[++modes.len] = list("name" = "Fill - Shuts off scrubbers and opens vents", 	"mode" = AALARM_MODE_FILL,			"selected" = mode == AALARM_MODE_FILL, 			"danger" = 0)
-		modes[++modes.len] = list("name" = "Off - Shuts off vents and scrubbers", 			"mode" = AALARM_MODE_OFF,			"selected" = mode == AALARM_MODE_OFF, 			"danger" = 0)
+		modes[++modes.len] = list("name" = "Filtering - Scrubs out contaminants", 			"mode" = AIR_ALARM_MODE_SCRUB,		"selected" = mode == AIR_ALARM_MODE_SCRUB, 	"danger" = 0)
+		modes[++modes.len] = list("name" = "Replace Air - Siphons out air while replacing", "mode" = AIR_ALARM_MODE_REPLACE,	"selected" = mode == AIR_ALARM_MODE_REPLACE,	"danger" = 0)
+		modes[++modes.len] = list("name" = "Panic - Siphons air out of the room", 			"mode" = AIR_ALARM_MODE_SIPHON,			"selected" = mode == AIR_ALARM_MODE_SIPHON, 		"danger" = 1)
+		modes[++modes.len] = list("name" = "Cycle - Siphons air before replacing", 			"mode" = AIR_ALARM_MODE_CYCLE,			"selected" = mode == AIR_ALARM_MODE_CYCLE, 		"danger" = 1)
+		modes[++modes.len] = list("name" = "Fill - Shuts off scrubbers and opens vents", 	"mode" = AIR_ALARM_MODE_FILL,			"selected" = mode == AIR_ALARM_MODE_FILL, 			"danger" = 0)
+		modes[++modes.len] = list("name" = "Off - Shuts off vents and scrubbers", 			"mode" = AIR_ALARM_MODE_OFF,			"selected" = mode == AIR_ALARM_MODE_OFF, 			"danger" = 0)
 
 		var/list/selected
 		var/list/thresholds = list()
