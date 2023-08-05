@@ -10,8 +10,8 @@
 		/datum/map_level/triumph/transit,
 		/datum/map_level/triumph/flagship,
 	)
-	width = 140
-	height = 140
+	width = 192
+	height = 192
 	world_width = 192
 	world_height = 192
 	lateload = list(
