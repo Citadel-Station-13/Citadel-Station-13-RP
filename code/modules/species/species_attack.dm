@@ -51,8 +51,8 @@
 					"<span class='danger'>[user] rakes [T.his] [pick(attack_noun)] across [target]'s face!</span>",
 					"<span class='danger'>[user] tears [T.his] [pick(attack_noun)] into [target]'s face!</span>",
 					))
-				else
-					user.visible_message("<span class='danger'>[user] tears [T.his] [pick(attack_noun)] [pick("deep into", "into", "across")] [target]'s [affecting.name]!</span>")
+			else
+				user.visible_message("<span class='danger'>[user] tears [T.his] [pick(attack_noun)] [pick("deep into", "into", "across")] [target]'s [affecting.name]!</span>")
 
 /datum/unarmed_attack/claws/strong
 	attack_verb = list("slashed")
