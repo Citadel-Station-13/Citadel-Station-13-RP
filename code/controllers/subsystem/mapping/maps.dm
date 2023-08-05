@@ -86,7 +86,7 @@
 	var/raw = file2text(reading)
 	subsystem_log("read raw next map [raw]")
 	var/list/json = safe_json_decode(raw)
-	var/path = json["type"]
+	var/path = text2path(json["type"])
 	var/id = json["id"]
 	var/modified = json["modified"]
 	var/list/data = json["data"]

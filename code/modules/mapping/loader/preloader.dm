@@ -54,8 +54,24 @@ GLOBAL_DATUM_INIT(_preloader, /datum/map_preloader, new)
 		what.pixel_x = px
 		what.pixel_y = py
 		if(ismovable(what) && ((what:bound_width > WORLD_ICON_SIZE) || (what:bound_height > WORLD_ICON_SIZE)) && (what.appearance_flags & TILE_MOVER))
-			// not a pixel mover, we can assume it's multiples of world icon size
 			var/atom/movable/casted = what
+			// deal with their bounds too
+			var/bx = casted.bound_x
+			var/by = casted.bound_y
+			if(preloader_local.swap_y)			//same order of operations as the load rotation, mirror and then x/y swapping.
+				by = -by
+			if(preloader_local.swap_x)
+				bx = -bx
+			if(preloader_local.swap_xy)
+				var/obx = bx
+				bx = by
+				by = obx
+				var/obw = casted.bound_width
+				casted.bound_width = casted.bound_height
+				casted.bound_height = obw
+			casted.bound_x = bx
+			casted.bound_y = by
+			// not a pixel mover, we can assume it's multiples of world icon size
 			var/dx = round((casted.bound_width / WORLD_ICON_SIZE) - (casted.bound_x / (WORLD_ICON_SIZE / 2)) - 1)
 			var/dy = round((casted.bound_height / WORLD_ICON_SIZE) - (casted.bound_y / (WORLD_ICON_SIZE / 2)) - 1)
 			casted.x -= dx * ((preloader_local.swap_x ^ preloader_local.swap_xy)? 1 : 0)
