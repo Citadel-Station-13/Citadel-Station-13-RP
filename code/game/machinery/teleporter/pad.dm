@@ -36,7 +36,14 @@
 			I.layer = ABOVE_LIGHTING_LAYER_MAIN
 			add_overlay(I)
 
-/obj/machinery/tele_pad/Bumped(M as mob|obj)
+/obj/machinery/tele_pad/Bumped(atom/movable/M)
+	. = ..()
+	if(M.atom_flags & ATOM_ABSTRACT)
+		return
+	if(M.anchored)
+		return
+	if(istype(M, /obj/effect))
+		return
 	if(com?.projector?.engaged)
 		teleport(M)
 		use_power_oneoff(5000)

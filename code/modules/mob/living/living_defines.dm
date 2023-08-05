@@ -151,3 +151,8 @@
 	var/depth_current = 0
 	/// set during move: staged depth; on successful move, we update depth_current if it's different.
 	var/tmp/depth_staged = 0
+
+//virology stuffs
+	var/list/datum/disease2/disease/virus2 = list()
+	var/image/pathogen
+	var/datum/immune_system/immune_system
