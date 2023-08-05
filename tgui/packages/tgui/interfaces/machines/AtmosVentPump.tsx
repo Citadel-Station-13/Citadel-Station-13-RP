@@ -4,19 +4,6 @@
 import { useBackend } from "../../backend";
 import { Section, SectionProps } from "../../components/Section";
 
-interface AtmosVentPumpControlProps extends SectionProps {
-  // act() for toggling vent; if this isn't provided, the button is disabled.
-  powerAct: (boolean) => void;
-  // act() for toggling pumping out; if this isn't provided, the button is disabled.
-  siphonAct: (boolean) => void;
-  // set internal pressure check
-  internalAct: (number) => void;
-  // set external pressure check
-  externalAct: (number) => void;
-  // vent data
-  vent: AtmosVentPumpState;
-}
-
 export enum AtmosVentPumpPressureChecks {
   None = 0,
   Internal = (1<<0),
@@ -31,6 +18,19 @@ export interface AtmosVentPumpState {
   power: boolean;
   // true for in
   siphon: boolean;
+}
+
+interface AtmosVentPumpControlProps extends SectionProps {
+  // act() for toggling vent; if this isn't provided, the button is disabled.
+  powerAct: (boolean) => void;
+  // act() for toggling pumping out; if this isn't provided, the button is disabled.
+  siphonAct: (boolean) => void;
+  // set internal pressure check
+  internalAct: (number) => void;
+  // set external pressure check
+  externalAct: (number) => void;
+  // vent data
+  state: AtmosVentPumpState;
 }
 
 /**
