@@ -1583,7 +1583,6 @@
 #include "code\game\objects\items\robot\robot_parts.dm"
 #include "code\game\objects\items\robot\robot_upgrades.dm"
 #include "code\game\objects\items\scanners\atmos.dm"
-#include "code\game\objects\items\scanners\biology.dm"
 #include "code\game\objects\items\scanners\health.dm"
 #include "code\game\objects\items\scanners\plant.dm"
 #include "code\game\objects\items\scanners\reagent.dm"
