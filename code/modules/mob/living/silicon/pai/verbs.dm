@@ -56,7 +56,7 @@
 		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
 
 	add_verb(src, /mob/living/proc/hide)
-	update_icon()
+	update_icon(FALSE)
 
 /mob/living/silicon/pai/proc/choose_verbs()
 	set category = "pAI Commands"

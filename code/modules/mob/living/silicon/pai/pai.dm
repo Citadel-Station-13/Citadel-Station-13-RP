@@ -167,7 +167,7 @@
 	// Resting is just an aesthetic feature for them.
 	return ..(movable, be_close, no_dexterity, no_tk)
 
-/mob/living/silicon/pai/update_icon()
+/mob/living/silicon/pai/update_icon(animate = TRUE)
 	..()
 	update_fullness_pai()
 	if(!people_eaten && !resting)
@@ -179,7 +179,7 @@
 	else if(people_eaten && resting)
 		icon_state = "[chassis]_rest_full"
 	if(resting)
-		update_transform() // because when our chassis changes we dont want to stay rotated because only holograms rotate!!
+		update_transform(animate) // because when our chassis changes we dont want to stay rotated because only holograms rotate!!
 
 /// camera handling
 /mob/living/silicon/pai/check_eye(var/mob/user as mob)
