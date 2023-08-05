@@ -133,7 +133,7 @@
 		return FALSE
 	return TRUE
 
-/mob/living/silicon/pai/update_transform()
+/mob/living/silicon/pai/update_transform(animate = TRUE)
 	. = ..()
 	var/matrix/M = matrix()
 	// no chassis means we're using a hologram
@@ -146,5 +146,7 @@
 	if(turning_value_to_use < -45 || turning_value_to_use > 45)
 		M.Translate(1,-6)
 
-	var/anim_time = CHECK_MOBILITY(src, MOBILITY_CAN_STAND)? 3 : 1
-	animate(src, transform = M, time = anim_time, flags = ANIMATION_PARALLEL)
+	if(animate)
+		animate(src, transform = M, time = 1, flags = ANIMATION_PARALLEL)
+	else
+		transform = M
