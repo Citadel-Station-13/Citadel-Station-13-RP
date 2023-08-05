@@ -13,7 +13,7 @@
 		return
 
 	if(istype(shell.loc, /obj/item/holder))
-		to_chat(src, "You can't unfold while being like this.")
+		to_chat(src, "You can't unfold while being held like this.")
 		return
 
 	if(!can_action())
@@ -37,7 +37,7 @@
 	update_perspective()
 	set_resting(FALSE)
 	update_mobility()
-	icon_state = "[chassis]"
+	update_icon()
 	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
 /mob/living/silicon/pai/proc/open_up()
@@ -132,3 +132,19 @@
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return FALSE
 	return TRUE
+
+/mob/living/silicon/pai/update_transform()
+	. = ..()
+	var/matrix/M = matrix()
+	// no chassis means we're using a hologram
+	var/turning_value_to_use = 0
+	if(!chassis)
+		turning_value_to_use = lying
+	// handle turning
+	M.Turn(turning_value_to_use)
+	// extremely lazy heuristic to see if we should shift down to appear to be, well, down.
+	if(turning_value_to_use < -45 || turning_value_to_use > 45)
+		M.Translate(1,-6)
+
+	var/anim_time = CHECK_MOBILITY(src, MOBILITY_CAN_STAND)? 3 : 1
+	animate(src, transform = M, time = anim_time, flags = ANIMATION_PARALLEL)

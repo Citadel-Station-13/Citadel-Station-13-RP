@@ -304,7 +304,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 		if(emotion != "off" && emotion != "character")
 			add_overlay("pai-underlay")
 			add_overlay("pai-[emotion]")
-		else if(emotion == "character" && pai.last_rendered_hologram_icon)
+		else if(emotion == "character")
 			var/image = get_holo_image()
 			add_overlay(image)
 

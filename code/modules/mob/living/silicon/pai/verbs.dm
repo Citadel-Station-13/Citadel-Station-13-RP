@@ -51,6 +51,7 @@
 
 	chassis = possible_chassis[choice]
 	add_verb(src, /mob/living/proc/hide)
+	update_icon()
 
 /mob/living/silicon/pai/proc/choose_verbs()
 	set category = "pAI Commands"

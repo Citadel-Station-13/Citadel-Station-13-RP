@@ -178,6 +178,8 @@
 		icon_state = "[chassis]_full"
 	else if(people_eaten && resting)
 		icon_state = "[chassis]_rest_full"
+	if(resting)
+		update_transform() // because when our chassis changes we dont want to stay rotated because only holograms rotate!!
 
 /// camera handling
 /mob/living/silicon/pai/check_eye(var/mob/user as mob)
