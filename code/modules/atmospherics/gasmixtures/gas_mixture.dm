@@ -527,14 +527,14 @@
 	var/reagents = 0
 	var/other = 0
 	var/unknown = 0
-	for(var/id in gases)
+	for(var/id in gas)
 		var/groups = global.gas_data.groups[id]
 		if((groups & GAS_GROUP_REAGENT) && (group_together & GAS_GROUP_REAGENT))
-			reagents += gases[id]
+			reagents += gas[id]
 		else if((groups & GAS_GROUP_OTHER) && (group_together & GAS_GROUP_OTHER))
-			other += gases[id]
+			other += gas[id]
 		else if((groups & GAS_GROUP_UNKNOWN) && (group_together & GAS_GROUP_UNKNOWN))
-			unknown += gases[id]
+			unknown += gas[id]
 		else
 			. += SPAN_NOTICE("[global.gas_data.names[id]]: [exact? "[QUANTIZE(gas[id])] mol @ " : ""][QUANTIZE(gas[id] / total_moles)]%")
 	if(reagents)
@@ -557,7 +557,7 @@
 	var/list/names = list()
 	.["names"] = names
 	.["showMoles"] = molar_masses
-	for(var/id in gases)
+	for(var/id in gas)
 		var/groups = global.gas_data.groups[id]
 		names[id] = global.gas_data.names[id]
 		if((groups & GAS_GROUP_REAGENT) && (group_together & GAS_GROUP_REAGENT))
