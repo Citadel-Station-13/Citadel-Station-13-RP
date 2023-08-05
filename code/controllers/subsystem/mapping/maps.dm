@@ -132,7 +132,7 @@
 	for(var/obj/map_helper/D in map_initialization_hooked)
 		if(QDELETED(D))
 			continue
-		D.map_initializations(loaded_bounds)
+		D.map_initializations(arglist(map_initialization_hooked[D]))
 	map_initialization_hooked = null
 	// invoke generation
 	for(var/datum/callback/cb as anything in generation_callbacks)

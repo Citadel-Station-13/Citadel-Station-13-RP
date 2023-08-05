@@ -5,6 +5,7 @@
  * as much as possible to the components/elements system
  */
 /atom
+	SET_APPEARANCE_FLAGS(TILE_MOVER)
 	layer = TURF_LAYER
 
 	//? Core

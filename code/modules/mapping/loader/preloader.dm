@@ -53,6 +53,13 @@ GLOBAL_DATUM_INIT(_preloader, /datum/map_preloader, new)
 			py = opx
 		what.pixel_x = px
 		what.pixel_y = py
+		if(ismovable(what) && ((what:bound_width > WORLD_ICON_SIZE) || (what:bound_height > WORLD_ICON_SIZE)) && (what.appearance_flags & TILE_MOVER))
+			// not a pixel mover, we can assume it's multiples of world icon size
+			var/atom/movable/casted = what
+			var/dx = round((casted.bound_width / WORLD_ICON_SIZE) - (casted.bound_x / (WORLD_ICON_SIZE / 2)) - 1)
+			var/dy = round((casted.bound_height / WORLD_ICON_SIZE) - (casted.bound_y / (WORLD_ICON_SIZE / 2)) - 1)
+			casted.x -= dx * ((preloader_local.swap_x ^ preloader_local.swap_xy)? 1 : 0)
+			casted.y -= dy * ((preloader_local.swap_y ^ preloader_local.swap_xy)? 1 : 0)
 
 /area/template_noop
 	name = "Area Passthrough"
