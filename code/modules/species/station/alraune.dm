@@ -296,34 +296,26 @@
 
 		var/bodypart = pick(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD)
 		if(breath.temperature >= breath_heat_level_1)
+			H.fire_alert = max(H.fire_alert, 2)
 			if(breath.temperature < breath_heat_level_2)
 				H.apply_damage(HEAT_GAS_DAMAGE_LEVEL_1, BURN, bodypart, used_weapon = "Excessive Heat")
-				H.fire_alert = max(H.fire_alert, 2)
 			else if(breath.temperature < breath_heat_level_3)
 				H.apply_damage(HEAT_GAS_DAMAGE_LEVEL_2, BURN, bodypart, used_weapon = "Excessive Heat")
-				H.fire_alert = max(H.fire_alert, 2)
 			else
 				H.apply_damage(HEAT_GAS_DAMAGE_LEVEL_3, BURN, bodypart, used_weapon = "Excessive Heat")
-				H.fire_alert = max(H.fire_alert, 2)
 
 		else if(breath.temperature <= breath_cold_level_1)
+			H.fire_alert = max(H.fire_alert, 1)
 			if(breath.temperature > breath_cold_level_2)
 				H.apply_damage(COLD_GAS_DAMAGE_LEVEL_1, BURN, bodypart, used_weapon = "Excessive Cold")
-				H.fire_alert = max(H.fire_alert, 1)
 			else if(breath.temperature > breath_cold_level_3)
 				H.apply_damage(COLD_GAS_DAMAGE_LEVEL_2, BURN, bodypart, used_weapon = "Excessive Cold")
-				H.fire_alert = max(H.fire_alert, 1)
 			else
 				H.apply_damage(COLD_GAS_DAMAGE_LEVEL_3, BURN, bodypart, used_weapon = "Excessive Cold")
-				H.fire_alert = max(H.fire_alert, 1)
-
 
 		//breathing in hot/cold air also heats/cools you a bit
 		var/temp_adj = breath.temperature - H.bodytemperature
-		if (temp_adj < 0)
-			temp_adj /= (BODYTEMP_COLD_DIVISOR * 5)	//don't raise temperature as much as if we were directly exposed
-		else
-			temp_adj /= (BODYTEMP_HEAT_DIVISOR * 5)	//don't raise temperature as much as if we were directly exposed
+		temp_adj /= temp_adj < 0 ? (BODYTEMP_COLD_DIVISOR * 5) : (BODYTEMP_HEAT_DIVISOR * 5) //don't raise temperature as much as if we were directly exposed
 
 		var/relative_density = breath.total_moles / (MOLES_CELLSTANDARD * BREATH_PERCENTAGE)
 		temp_adj *= relative_density
