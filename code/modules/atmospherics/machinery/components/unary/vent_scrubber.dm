@@ -194,7 +194,7 @@
 		power_current = xgm_pump_gas(environment, air_contents, limit_power = using_power)
 	else
 		var/using_volume = expanded? expanded_scrub + scrub_volume : scrub_volume
-		power_current = xgm_scrub_gas_volume(environment, air_contents, scrub_ids, scrub_groups, using_volume, using_power, using_boost)
+		power_current = xgm_scrub_gas_volume(environment, air_contents, scrub_ids, scrub_groups, using_volume, using_power, scrub_boost)
 
 	if (power_current >= 0)
 		last_power_draw_legacy = power_current
