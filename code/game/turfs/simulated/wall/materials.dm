@@ -53,10 +53,10 @@
 		name = "wall"
 		desc = "It seems to be a section of hull."
 
-	var/integrity_factor = \
-	(isnull(material_outer)? 1 : material_outer.relative_integrity) * 0.75 + \
-	(isnull(material_girder)? 1 : material_girder.relative_integrity) * 0.25 + \
-	(isnull(material_reinf)? 0 : material_reinf.relative_integrity) * 0.5
+	var/integrity_factor = (isnull(material_outer)? 1 : material_outer.relative_integrity) * 0.75
+	integrity_factor += (isnull(material_girder)? 1 : material_girder.relative_integrity) * 0.25
+	integrity_factor += (isnull(material_reinf)? 0 : material_reinf.relative_integrity) * 0.5
+
 	set_multiplied_integrity(integrity_factor, FALSE)
 
 	set_armor(SSmaterials.reinforcing_materials_armor(list(material_girder = 0.25, material_reinf = 0.75, material_outer = 2)))
