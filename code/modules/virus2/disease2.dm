@@ -12,6 +12,7 @@
 	var/max_stage = 4
 	var/list/affected_species = list(SPECIES_HUMAN,SPECIES_UNATHI,SPECIES_SKRELL,SPECIES_TAJ)
 	var/resistance = 10 // % chance a disease will resist cure, up to 100
+	var/strength = 15 // threshold for antibodies to overcome to cure disease
 
 /datum/disease2/disease/New()
 	uniqueID = rand(0,10000)
@@ -41,6 +42,9 @@
 
 	if(severity >= 2 && prob(33))
 		resistance += 10
+		strength += 10
+	else if(severity >= 3)
+		strength += 20
 
 	affected_species = get_infectable_species()
 
