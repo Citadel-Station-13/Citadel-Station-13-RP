@@ -2,7 +2,7 @@
 	abstract_type = /datum/design/science/mining
 
 /datum/design/science/mining/generate_name(template)
-	return "Mining eqiupment design ([..()])"
+	return "Mining equipment design ([..()])"
 
 // Mining digging devices
 

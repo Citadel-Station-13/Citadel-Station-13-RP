@@ -17,8 +17,9 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	/obj/structure/window/basic/full,
 	/obj/structure/window/reinforced/polarized/full,
 	/obj/structure/wall_frame,
-	/obj/spawner/window
-	)) //the spawner is there specifically because doors are initializing weird.
+	/obj/spawner/window, //the spawner is there specifically because doors are initializing weird.
+	/obj/machinery/door //specific maps sometimes have airlocks adjacent to other airlocks in rows and columns of 3.
+	))
 
 #define AIRLOCK_PAINTABLE 1
 #define AIRLOCK_STRIPABLE 2

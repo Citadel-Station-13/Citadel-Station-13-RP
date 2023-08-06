@@ -166,7 +166,7 @@
 
 /obj/item/kinetic_crusher/proc/detonate(mob/living/L, mob/living/user, thrown = FALSE)
 	var/datum/status_effect/grouped/crusher_mark/CM = L.has_status_effect(/datum/status_effect/grouped/crusher_mark)
-	if(!CM || CM.hammer_synced != src || !L.remove_status_effect(/datum/status_effect/grouped/crusher_mark))
+	if(!CM || (CM.has_source(WEAKREF(src))) || !L.remove_status_effect(/datum/status_effect/grouped/crusher_mark))
 		return
 	var/datum/status_effect/crusher_damage/C = L.has_status_effect(/datum/status_effect/crusher_damage)
 	var/target_health = L.health
@@ -323,11 +323,10 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if(hammer_synced.can_mark(L))
-			L.apply_status_effect(
+			L.apply_grouped_effect(
 				/datum/status_effect/grouped/crusher_mark,
-				additional = list(
-					crusher = src,
-				)
+				WEAKREF(src),
+				TRUE,
 			)
 		// var/had_effect = (L.has_status_effect(/datum/status_effect/grouped/crusher_mark)) //used as a boolean
 		// var/datum/status_effect/grouped/crusher_mark/CM = L.apply_status_effect(/datum/status_effect/grouped/crusher_mark, hammer_synced)
