@@ -40,8 +40,6 @@
 /// should not get harmed if this gets caught by an explosion?
 #define PREVENT_CONTENTS_EXPLOSION	(1<<22)
 */
-/// do not autospin bounds when rotating with map
-#define ATOM_NO_BOUNDS_ROTATE (1<<22)
 #define HTML_USE_INITIAL_ICON		(1<<23)
 
 DEFINE_BITFIELD(atom_flags, list(
@@ -58,7 +56,6 @@ DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(OPENCONTAINER),
 	BITFIELD(PHORONGUARD),
 	BITFIELD(NOPRINT),
-	BITFIELD(ATOM_NO_BOUNDS_ROTATE),
 	BITFIELD(HTML_USE_INITIAL_ICON),
 ))
 
