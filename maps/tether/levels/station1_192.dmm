@@ -5087,7 +5087,8 @@
 /area/hallway/station/docks)
 "jX" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "Cryogenic Storage"
+	name = "Cryogenic Storage";
+	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{

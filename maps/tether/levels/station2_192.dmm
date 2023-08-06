@@ -1279,7 +1279,8 @@
 "cF" = (
 /obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Chapel Services"
+	name = "Chapel Services";
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/tether/station/burial)
@@ -9289,7 +9290,8 @@
 /area/hallway/station/port)
 "sL" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Stairwell"
+	name = "Stairwell";
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/machinery/door/firedoor/glass,

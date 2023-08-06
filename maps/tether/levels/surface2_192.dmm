@@ -2908,7 +2908,7 @@
 "cex" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Fish Farm"
 	},
 /obj/structure/cable{
@@ -4653,6 +4653,16 @@
 "diA" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/grass,
+/area/maintenance/lower/south)
+"dja" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled/dark,
 /area/maintenance/lower/south)
 "djj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -11643,7 +11653,7 @@
 /area/tether/surfacebase/surface_two_hall)
 "ihg" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
@@ -26644,6 +26654,10 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
+"sXA" = (
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled/dark,
+/area/maintenance/lower/south)
 "sYq" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
@@ -28190,7 +28204,7 @@
 /area/tether/surfacebase/surface_two_hall)
 "uvM" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait{
-	dir = 1;
+	dir = 8;
 	name = "Maintenance Access"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -30512,7 +30526,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Atrium Second Floor"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
@@ -63183,14 +63197,14 @@ snw
 sRE
 sRE
 snw
-phQ
-tOr
-rrk
+dja
+snw
+sXA
 snw
 snw
 sRE
 snw
-neH
+sRE
 snw
 snw
 snw

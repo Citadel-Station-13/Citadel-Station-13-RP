@@ -4013,7 +4013,7 @@
 /area/tether/surfacebase/public_garden_three)
 "bZH" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Surface EVA"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -7526,7 +7526,7 @@
 "egR" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Surface EVA"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
@@ -8695,7 +8695,7 @@
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/paleblue/bordercorner2,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Medbay Airlock";
 	req_access = list(5);
 	req_one_access = list(5)
@@ -12051,12 +12051,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_three)
-"gNy" = (
-/obj/structure/sign/double/barsign{
-	dir = 8
-	},
-/turf/simulated/wall,
-/area/crew_quarters/bar)
 "gNC" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -17792,7 +17786,7 @@
 /area/tether/surfacebase/cafeteria)
 "kiG" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Bar"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -30254,6 +30248,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
+/obj/structure/sign/double/barsign,
 /turf/simulated/wall,
 /area/crew_quarters/bar)
 "rqi" = (
@@ -72238,7 +72233,7 @@ lqw
 xiL
 lqw
 jAO
-gNy
+jAO
 jAO
 cgW
 ibh

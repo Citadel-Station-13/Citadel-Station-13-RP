@@ -2297,7 +2297,8 @@
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Construction Site"
+	name = "Construction Site";
+	dir = 8
 	},
 /turf/simulated/floor/tiled/monofloor,
 /area/tether/surfacebase/surface_one_hall)
@@ -2346,7 +2347,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 8
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -2596,7 +2599,7 @@
 /area/security/checkpoint)
 "bsx" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
@@ -7005,7 +7008,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "West Hallway"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
@@ -8348,10 +8351,6 @@
 /obj/effect/floor_decal/corner/lightgrey/border,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/lowernorthhall)
-"euy" = (
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled,
-/area/engineering/atmos/processing)
 "euD" = (
 /obj/structure/railing,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -17593,7 +17592,7 @@
 /area/maintenance/lower/xenoflora)
 "jge" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Public Gardens"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -22854,7 +22853,7 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "West Hallway"
 	},
 /obj/structure/disposalpipe/segment{
@@ -22943,7 +22942,7 @@
 "mdC" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Surface EVA"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
@@ -26443,7 +26442,8 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Laundry"
+	name = "Laundry";
+	dir = 8
 	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -27930,7 +27930,7 @@
 "oSZ" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/processing)
@@ -29524,7 +29524,8 @@
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Cafe"
+	name = "Cafe";
+	dir = 8
 	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -31216,7 +31217,7 @@
 "qCL" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/multi_tile/metal/mait{
-	dir = 1;
+	dir = 8;
 	name = "Maintenance Access"
 	},
 /turf/simulated/floor/wood,
@@ -31381,7 +31382,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Surface EVA"
 	},
 /turf/simulated/floor/tiled/monofloor,
@@ -39971,7 +39972,8 @@
 /area/tether/surfacebase/outside/outside1)
 "vpR" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Laundry"
+	name = "Laundry";
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/structure/cable/orange{
@@ -68159,7 +68161,7 @@ rmA
 rmA
 oSm
 hDg
-euy
+oSZ
 bBd
 amh
 hmK
