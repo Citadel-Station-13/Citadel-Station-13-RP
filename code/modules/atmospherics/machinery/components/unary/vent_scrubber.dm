@@ -107,7 +107,7 @@
 	else if(!powered())
 		scrubber_icon += "off"
 	else
-		scrubber_icon += "[use_power ? "[scrubbing ? "on" : "in"]" : "off"]"
+		scrubber_icon += "[use_power ? "[siphoning ? "in" : "on"]" : "off"]"
 
 	add_overlay(icon_manager.get_atmos_icon("device", , , scrubber_icon))
 
@@ -191,7 +191,7 @@
 	var/using_power = expanded? expanded_power + power_rating : power_rating
 
 	if(siphoning)
-		power_current = xgm_pump_gas(environment, air_contents, power_limit = using_power)
+		power_current = xgm_pump_gas(environment, air_contents, limit_power = using_power)
 	else
 		var/using_volume = expanded? expanded_scrub + scrub_volume : scrub_volume
 		power_current = xgm_scrub_gas_volume(environment, air_contents, scrub_ids, scrub_groups, using_volume, using_power, using_boost)
@@ -393,6 +393,6 @@
 	else if(!powered())
 		scrubber_icon += "retro_off"
 	else
-		scrubber_icon += "[use_power ? "[scrubbing ? "retro_on" : "retro_in"]" : "retro_off"]"
+		scrubber_icon += "[use_power ? "[siphoning ? "retro_in" : "retro_on"]" : "retro_off"]"
 
 	add_overlay(icon_manager.get_atmos_icon("device", , , scrubber_icon))
