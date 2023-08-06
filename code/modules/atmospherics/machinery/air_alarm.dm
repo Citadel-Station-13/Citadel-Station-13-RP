@@ -393,59 +393,64 @@ GLOBAL_LIST_EMPTY(air_alarms)
 				if(!pump.controllable_from_alarm || !pump.environmental)
 					continue
 				send_signal(pump.id_tag, list("hard_reset" = TRUE, "power" = FALSE))
+			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
+				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
+					continue
+				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = FALSE))
 		if(AIR_ALARM_MODE_SCRUB)
 			for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 				if(!pump.controllable_from_alarm || !pump.environmental)
 					continue
-				send_signal(pump.id_tag, list("hard_reset" = TRUE))
+				send_signal(pump.id_tag, list("hard_reset" = TRUE, "power" = TRUE))
+			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
+				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
+					continue
+				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = TRUE))
 		if(AIR_ALARM_MODE_REPLACE)
 			for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 				if(!pump.controllable_from_alarm || !pump.environmental)
 					continue
-				send_signal(pump.id_tag, list("hard_reset" = TRUE))
+				send_signal(pump.id_tag, list("hard_reset" = TRUE, "power" = TRUE))
+			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
+				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
+					continue
+				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = TRUE, "siphon" = TRUE))
 		if(AIR_ALARM_MODE_SIPHON, AIR_ALARM_MODE_CYCLE)
 			for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 				if(!pump.controllable_from_alarm || !pump.environmental)
 					continue
 				send_signal(pump.id_tag, list("hard_reset" = TRUE, "power" = FALSE))
+			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
+				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
+					continue
+				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = TRUE, "siphon" = TRUE))
 		if(AIR_ALARM_MODE_PANIC)
 			for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 				if(!pump.controllable_from_alarm || !pump.environmental)
 					continue
 				send_signal(pump.id_tag, list("hard_reset" = TRUE, "power" = FALSE))
+			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
+				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
+					continue
+				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = TRUE, "siphon" = TRUE, "expand" = TRUE))
 		if(AIR_ALARM_MODE_CONTAMINATED)
 			for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 				if(!pump.controllable_from_alarm || !pump.environmental)
 					continue
 				send_signal(pump.id_tag, list("hard_reset" = TRUE))
+			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
+				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
+					continue
+				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = TRUE, "expand" = TRUE))
 		if(AIR_ALARM_MODE_FILL)
 			for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 				if(!pump.controllable_from_alarm || !pump.environmental)
 					continue
 				send_signal(pump.id_tag, list("hard_reset" = TRUE))
-
-	#warn impl
-
-	switch(mode)
-		if(AIR_ALARM_MODE_SCRUB)
-			for(var/device_id in alarm_area.air_scrub_names)
-				send_signal(device_id, list("power"= 1, "co2_scrub"= 1, "scrubbing"= 1, "panic_siphon"= 0))
-
-		if(AIR_ALARM_MODE_SIPHON, AIR_ALARM_MODE_CYCLE)
-			for(var/device_id in alarm_area.air_scrub_names)
-				send_signal(device_id, list("power"= 1, "panic_siphon"= 1))
-
-		if(AIR_ALARM_MODE_REPLACE)
-			for(var/device_id in alarm_area.air_scrub_names)
-				send_signal(device_id, list("power"= 1, "panic_siphon"= 1))
-
-		if(AIR_ALARM_MODE_FILL)
-			for(var/device_id in alarm_area.air_scrub_names)
-				send_signal(device_id, list("power"= 0))
-
-		if(AIR_ALARM_MODE_OFF)
-			for(var/device_id in alarm_area.air_scrub_names)
-				send_signal(device_id, list("power"= 0))
+			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
+				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
+					continue
+				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = FALSE))
 
 /obj/machinery/air_alarm/proc/apply_danger_level(var/new_danger_level)
 	if(report_danger_level && alarm_area.atmosalert(new_danger_level, src))

@@ -27,7 +27,15 @@
 	/// filter groups
 	var/list/scrub_groups
 	/// filter defaults - either an enum for SCRUBBER_DEFAULT_* or a list of ids and groups.
-	var/scrub_default
+	var/scrub_default = SCRUBBER_DEFAULT_STATION
+	/// siphoning?
+	var/siphoning
+	/// siphoning default
+	var/siphoning_default = FALSE
+	/// high power?
+	var/expanded
+	/// high power default
+	var/expanded_default = FALSE
 
 	var/area_uid
 	var/id_tag = null
@@ -37,17 +45,18 @@
 
 	var/hibernate = 0 //Do we even process?
 	var/scrubbing = 1 //0 = siphoning, 1 = scrubbing
-	var/list/scrubbing_gas = list(GAS_ID_CARBON_DIOXIDE, GAS_ID_PHORON)
-
 	var/panic = 0 //is this scrubber panicked?
 
 	var/radio_filter_out
 	var/radio_filter_in
 
-#warn groups
-
 /obj/machinery/atmospherics/component/unary/vent_scrubber/Initialize(mapload)
 	. = ..()
+	if(isnull(siphoning))
+		siphoning = siphoning_default
+	if(isnull(expanded))
+		expanded = expanded_default
+	reset_scrubbing_to_default()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_FILTER
 
 	for(var/id in scrubbing_gas)
@@ -67,6 +76,16 @@
 	unregister_radio(src, frequency)
 	registered_area?.unregister_scrubber(src)
 	return ..()
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/proc/reset_scrubbing_to_default()
+	scrub_ids = list()
+	scrub_groups = NONE
+	var/list/default = SSair.scrubber_defaults
+	for(var/key in default)
+		if(istext(key))
+			scrub_ids += key
+		else if(isnum(key))
+			scrub_groups |= key
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/update_icon(safety = 0)
 	if(!check_icon_cache())
@@ -121,15 +140,13 @@
 		"device" = "AScr",
 		"timestamp" = world.time,
 		"power" = use_power,
-		"scrubbing" = scrubbing,
-		"panic" = panic,
-		"filter_o2" = (GAS_ID_OXYGEN in scrubbing_gas),
-		"filter_n2" = (GAS_ID_NITROGEN in scrubbing_gas),
-		"filter_co2" = (GAS_ID_CARBON_DIOXIDE in scrubbing_gas),
-		"filter_phoron" = (GAS_ID_PHORON in scrubbing_gas),
-		"filter_n2o" = (GAS_ID_NITROUS_OXIDE in scrubbing_gas),
-		"filter_fuel" = (GAS_ID_VOLATILE_FUEL in scrubbing_gas),
-		"sigtype" = "status"
+		"scrubbing" = !siphoning, // legacy
+		"siphoning" = siphoning,
+		"expanded" = expanded,
+		"panic" = siphoning, // legacy
+		"scrub_ids" = scrub_ids,
+		"scrub_groups" = scrub_groups,
+		"sigtype" = "status",
 	)
 
 	radio_connection.post_signal(src, signal, radio_filter_out)
@@ -194,86 +211,6 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/hide(var/i) //to make the little pipe section invisible, the icon changes.
 	update_icon()
 	update_underlays()
-
-/obj/machinery/atmospherics/component/unary/vent_scrubber/receive_signal(datum/signal/signal)
-	if(machine_stat & (NOPOWER|BROKEN))
-		return
-	if(!signal.data["tag"] || (signal.data["tag"] != id_tag) || (signal.data["sigtype"]!="command"))
-		return 0
-
-	if(signal.data["power"] != null)
-		update_use_power(text2num(signal.data["power"]))
-	if(signal.data["power_toggle"] != null)
-		update_use_power(!use_power)
-
-	if(signal.data["panic_siphon"]) //must be before if("scrubbing" thing
-		panic = text2num(signal.data["panic_siphon"])
-		if(panic)
-			update_use_power(USE_POWER_IDLE)
-			scrubbing = 0
-		else
-			scrubbing = 1
-	if(signal.data["toggle_panic_siphon"] != null)
-		panic = !panic
-		if(panic)
-			update_use_power(USE_POWER_IDLE)
-			scrubbing = 0
-		else
-			scrubbing = 1
-
-	if(signal.data["scrubbing"] != null)
-		scrubbing = text2num(signal.data["scrubbing"])
-		if(scrubbing)
-			panic = 0
-	if(signal.data["toggle_scrubbing"])
-		scrubbing = !scrubbing
-		if(scrubbing)
-			panic = 0
-
-	var/list/toggle = list()
-
-	if(!isnull(signal.data["o2_scrub"]) && text2num(signal.data["o2_scrub"]) != (GAS_ID_OXYGEN in scrubbing_gas))
-		toggle += GAS_ID_OXYGEN
-	else if(signal.data["toggle_o2_scrub"])
-		toggle += GAS_ID_OXYGEN
-
-	if(!isnull(signal.data["n2_scrub"]) && text2num(signal.data["n2_scrub"]) != (GAS_ID_NITROGEN in scrubbing_gas))
-		toggle += GAS_ID_NITROGEN
-	else if(signal.data["toggle_n2_scrub"])
-		toggle += GAS_ID_NITROGEN
-
-	if(!isnull(signal.data["co2_scrub"]) && text2num(signal.data["co2_scrub"]) != (GAS_ID_CARBON_DIOXIDE in scrubbing_gas))
-		toggle += GAS_ID_CARBON_DIOXIDE
-	else if(signal.data["toggle_co2_scrub"])
-		toggle += GAS_ID_CARBON_DIOXIDE
-
-	if(!isnull(signal.data["tox_scrub"]) && text2num(signal.data["tox_scrub"]) != (GAS_ID_PHORON in scrubbing_gas))
-		toggle += GAS_ID_PHORON
-	else if(signal.data["toggle_tox_scrub"])
-		toggle += GAS_ID_PHORON
-
-	if(!isnull(signal.data["n2o_scrub"]) && text2num(signal.data["n2o_scrub"]) != (GAS_ID_NITROUS_OXIDE in scrubbing_gas))
-		toggle += GAS_ID_NITROUS_OXIDE
-	else if(signal.data["toggle_n2o_scrub"])
-		toggle += GAS_ID_NITROUS_OXIDE
-
-	if(!isnull(signal.data["fuel_scrub"]) && text2num(signal.data["fuel_scrub"]) != (GAS_ID_VOLATILE_FUEL in scrubbing_gas))
-		toggle += GAS_ID_VOLATILE_FUEL
-	else if(signal.data["toggle_fuel_scrub"])
-		toggle += GAS_ID_VOLATILE_FUEL
-
-	scrubbing_gas ^= toggle
-
-	if(signal.data["status"] != null)
-		spawn(2)
-			broadcast_status()
-		return //do not update_icon
-
-//			log_admin("DEBUG \[[world.timeofday]\]: vent_scrubber/receive_signal: unknown command \"[signal.data["command"]]\"\n[signal.debug_print()]")
-	spawn(2)
-		broadcast_status()
-	update_icon()
-	return
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/power_change()
 	var/old_stat = machine_stat
@@ -343,6 +280,87 @@
 
 	)
 	#warn impl
+
+//* Signal Handling - Order of application is same as these comments.
+/// environmental: void. set to ignore the signal if we're not an environmental vent.
+/// hard_reset: resets everything to default.
+/// power: 0 | 1. sets us to be on/off. overrides power_toggle.
+/// power_toggle: void. toggles us on/off.
+/// siphon: 0 | 1 | "default". sets if we're siphoning. overrides siphon_toggle.
+/// siphon_toggle: void. toggles siphoning on/off.
+/// expand: 0 | 1 | "default". sets if we're expanded / high powered mode. overrides expand_toggle.
+/// expand_toggle: void. sets if we're in high powered mode.
+/// scrub_reset: resets scrubbing to default.
+/// scrub_ids: list[string]. sets scrub ids. overrides scrub_ids_toggle.
+/// scrub_ids_toggle: list[string]. toggles scrubbing gas ids.
+/// scrub_groups: bitfield. sets groups to scrub. overrides scrub_groups_toggle.
+/// scrub_groups_toggle: bitfield. toggles scrubbing these groups.
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/receive_signal(datum/signal/signal)
+	if(machine_stat & (NOPOWER|BROKEN))
+		return
+	if(!signal.data["tag"] || (signal.data["tag"] != id_tag) || (signal.data["sigtype"]!="command"))
+		return 0
+
+	if(!isnull(signal.data["environmental"]) && environmental)
+		return FALSE
+
+	if(!isnull(signal.data["hard_reset"]))
+		expanded = expanded_default
+		siphoning = siphoning_default
+		reset_scrubbing_to_default()
+	if(!isnull(signal.data["power"]))
+		update_use_power(!!text2num(signal.data["power"]))
+	else if(!isnull(signal.data["power_toggle"]))
+		update_use_power(!use_power)
+	if(!isnull(signal.data["siphon"]))
+		siphoning = signal.data["siphon"] == "default"? siphoning_default : !!text2num(signal.data["siphon"])
+	else if(!isnull(signal.data["siphon_toggle"]))
+		siphoning = !siphoning
+	if(!isnull(signal.data["expand"]))
+		expanded = signal.data["expand"] == "default"? expanded_default : !!text2num(signal.data["expand"])
+	else if(!isnull(signal.data["expand_toggle"]))
+		expanded = !expanded
+	if(!isnull(signal.data["scrub_reset"]))
+		reset_scrubbing_to_default()
+	if(!isnull(signal.data["scrub_ids"]))
+		var/list/target_ids = signal.data["scrub_ids"]
+		if(islist(target_ids))
+			if(target_ids.len > SCRUBBER_MAX_GAS_IDS)
+				target_ids.len = SCRUBBER_MAX_GAS_IDS
+			for(var/key in target_ids)
+				if(!global.gas_data.gas_id_filterable(key))
+					target_ids -= key
+			scrub_ids = target_ids
+	else if(!isnull(signal.data["scrub_ids_toggle"]))
+		var/list/target_ids = signal.data["scrub_ids_toggle"]
+		if(islist(target_ids))
+			if(target_ids.len > SCRUBBER_MAX_GAS_IDS * 2)
+				target_ids.len = SCRUBBER_MAX_GAS_IDS * 2
+			for(var/key in target_ids)
+				if(!global.gas_data.gas_id_filterable(key))
+					target_ids -= key
+			scrub_ids ^= target_ids
+			if(scrub_ids.len > SCRUBBER_MAX_GAS_IDS)
+				scrub_ids.len = SCRUBBER_MAX_GAS_IDS
+	if(!isnull(signal.data["scrub_groups"]))
+		scrub_groups = (GAS_GROUPS_FILTERABLE & (text2num(signal.data["scrub_groups"])))
+	else if(!isnull(signal.data["scrub_groups_toggle"]))
+		scrub_groups ^= (GAS_GROUPS_FILTERABLE & (text2num(signal.data["scrub_groups_toggle"])))
+
+	//! legacy below
+
+	if(signal.data["status"] != null)
+		spawn(2)
+			broadcast_status()
+		return //do not update_icon
+
+//			log_admin("DEBUG \[[world.timeofday]\]: vent_scrubber/receive_signal: unknown command \"[signal.data["command"]]\"\n[signal.debug_print()]")
+	spawn(2)
+		broadcast_status()
+	update_icon()
+
+//* Subtypes
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on
 	use_power = USE_POWER_IDLE

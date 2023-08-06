@@ -62,8 +62,19 @@ SUBSYSTEM_DEF(air)
 
 /datum/controller/subsystem/air/PreInit(recovering)
 	// resolve scrubber defaults
-	//! legacy
-	SSair = src
+	for(var/key in scrubber_defaults)
+		var/list/values = scrubber_defaults[key]
+		if(isnull(values))
+			scrubber_defaults -= key
+			stack_trace("invalid default [key] in scrubber_defaults")
+			continue
+		for(var/i in 1 to length(values))
+			if(ispath(values[i]))
+				var/datum/gas/casted = values[i]
+				if(!ispath(casted, /datum/gas))
+					stack_trace("invalid path [casted] in scrubber_defaults")
+					casted = /datum/gas/oxygen
+				values[i] = initial(casted.id)
 
 /datum/controller/subsystem/air/Preload(recovering)
 	cached_strings = list()

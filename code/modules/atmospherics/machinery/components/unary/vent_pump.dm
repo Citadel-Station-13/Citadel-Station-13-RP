@@ -334,7 +334,7 @@
 //* Signal Handling - Check / Application order is in order of these comments.
 /// environmental: void. set to ignore the signal if we're not an environmental vent.
 /// hard_reset: resets everything to default.
-/// power: truthy. sets us to be on/off. overrides power_toggle.
+/// power: 0 | 1. sets us to be on/off. overrides power_toggle.
 /// power_toggle: void. toggles us on/off.
 /// checks: bitfield | "default". sets our checks to that. overrides checks_toggle.
 /// checks_toggle: bitfield. toggles those checks.

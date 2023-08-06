@@ -202,9 +202,19 @@ GLOBAL_REAL(gas_data, /datum/gas_data) = new
 
 /**
  * checks if a gas group or set of gas groups is filterable
+ *
+ * returns all or none
+ */
+/datum/gas_data/proc/gas_groups_all_filterable(group_flag)
+	return ((group_flag & GAS_GROUPS_FILTERABLE) == group_flag)? group_flag : NONE
+
+/**
+ * checks if a gas group or set of gas groups is filterable
+ *
+ * returns filterable groups
  */
 /datum/gas_data/proc/gas_groups_filterable(group_flag)
-	return (group_flag & GAS_GROUPS_FILTERABLE) == group_flag
+	return (group_flag & GAS_GROUPS_FILTERABLE)
 
 /**
  * checks if a gas id is specifically filterable
