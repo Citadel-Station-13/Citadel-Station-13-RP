@@ -294,7 +294,7 @@
 /**
  * Encodes UI data for AtmosVentState in tgui/interfaces/machines/AtmosVent.tsx
  */
-/obj/machinery/atmospherics/component/unary/vent_pump/proc/ui_pump_data()
+/obj/machinery/atmospherics/component/unary/vent_pump/proc/ui_vent_data()
 	return list(
 		"pressureChecks" = pressure_checks,
 		"internalPressure" = internal_pressure_bound,
@@ -315,7 +315,7 @@
 
 /obj/machinery/atmospherics/component/unary/vent_pump/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	.["state"] = ui_pump_data()
+	.["state"] = ui_vent_data()
 
 /obj/machinery/atmospherics/component/unary/vent_pump/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()

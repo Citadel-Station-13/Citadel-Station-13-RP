@@ -515,11 +515,11 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	// todo: static data with event hooks for updates for these two
 	var/list/vents = list()
 	var/list/scrubbers = list()
-	for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in area_registered.vent_pumps)
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 		var/list/returned = pump.ui_vent_data()
 		returned["name"] = pump.name
 		pump[pump.id_tag] = returned
-	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in area_registered.vent_pumps)
+	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_pumps)
 		var/list/returned = scrubber.ui_scrubber_data()
 		returned["name"] = scrubber.name
 		scrubbers[scrubber.id_tag] = returned

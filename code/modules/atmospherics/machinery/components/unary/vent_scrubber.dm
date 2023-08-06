@@ -22,9 +22,9 @@
 	/// cares about siphoning/filling/alarm modes
 	var/environmental = TRUE
 
-	/// filter ids
+	/// filter ids. both scrub_ids and scrub_groups must be set to not automatically use default.
 	var/list/scrub_ids
-	/// filter groups
+	/// filter groups. both scrub_ids and scrub_groups must be set to not automatically use default.
 	var/list/scrub_groups
 	/// filter defaults - either an enum for SCRUBBER_DEFAULT_* or a list of ids and groups.
 	var/scrub_default = SCRUBBER_DEFAULT_STATION
@@ -37,6 +37,13 @@
 	/// high power default
 	var/expanded_default = FALSE
 
+	/// default scrub volume
+	var/scrub_volume = 5000
+	/// additional power when expanded
+	var/expanded_power = 7500
+	/// additional volume when expanded
+	var/expanded_scrub_volume = 2500
+
 	var/area_uid
 	var/id_tag = null
 
@@ -44,8 +51,6 @@
 	var/datum/radio_frequency/radio_connection
 
 	var/hibernate = 0 //Do we even process?
-	var/scrubbing = 1 //0 = siphoning, 1 = scrubbing
-	var/panic = 0 //is this scrubber panicked?
 
 	var/radio_filter_out
 	var/radio_filter_in
@@ -56,13 +61,9 @@
 		siphoning = siphoning_default
 	if(isnull(expanded))
 		expanded = expanded_default
-	reset_scrubbing_to_default()
+	if(isnull(scrub_ids) || isnull(scrub_groups))
+		reset_scrubbing_to_default()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_FILTER
-
-	for(var/id in scrubbing_gas)
-		if(!global.gas_data.gases[id])
-			scrubbing_gas -= id
-			stack_trace("Invalid gas id [id]")
 
 	icon = null
 	registered_area = get_area(loc)
@@ -180,7 +181,7 @@
 
 	if (!node)
 		update_use_power(USE_POWER_OFF)
-	//broadcast_status()
+
 	if(!can_scrub())
 		return 0
 
