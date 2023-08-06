@@ -517,8 +517,6 @@
 
 //* Scanning
 
-#warn impl all
-
 /datum/gas_mixture/proc/chat_analyzer_scan(group_together, molar_masses, exact)
 	. = list()
 	var/pressure = return_pressure()

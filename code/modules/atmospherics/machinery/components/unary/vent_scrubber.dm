@@ -48,7 +48,7 @@
 
 	icon = null
 	registered_area = get_area(loc)
-	area_uid = initial_loc.uid
+	area_uid = registered_area.uid
 	registered_area?.register_scrubber(src)
 	if (!id_tag)
 		assign_uid()
@@ -123,7 +123,6 @@
 		"sigtype" = "status"
 	)
 
-	initial_loc.air_scrub_info[id_tag] = signal.data
 	radio_connection.post_signal(src, signal, radio_filter_out)
 
 	return 1

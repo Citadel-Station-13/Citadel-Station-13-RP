@@ -64,7 +64,7 @@
 
 	icon = null
 	registered_area = get_area(loc)
-	area_uid = initial_loc.uid
+	area_uid = registered_area.uid
 	registered_area?.register_vent(src)
 	if (!id_tag)
 		assign_uid()
@@ -209,8 +209,6 @@
 		"power_draw" = last_power_draw_legacy,
 		"flow_rate" = last_flow_rate_legacy,
 	)
-
-	initial_loc.air_vent_info[id_tag] = signal.data
 
 	radio_connection.post_signal(src, signal, radio_filter_out)
 
