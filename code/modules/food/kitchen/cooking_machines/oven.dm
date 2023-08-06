@@ -22,7 +22,7 @@
 
 	machine_stat = POWEROFF	//Starts turned off
 
-	var/open = 1
+	var/open = TRUE
 
 	output_options = list(
 		"Pizza" = /obj/item/reagent_containers/food/snacks/variable/pizza,
@@ -85,10 +85,10 @@
 		return
 
 	if (open)
-		open = 0
+		open = FALSE
 		loss = (active_power_usage / resistance)*0.5
 	else
-		open = 1
+		open = TRUE
 		loss = (active_power_usage / resistance)*4
 		//When the oven door is opened, heat is lost MUCH faster
 
@@ -98,7 +98,7 @@
 /obj/machinery/appliance/cooker/oven/can_insert(var/obj/item/I, var/mob/user)
 	if (!open)
 		to_chat(user, "<span class='warning'>You can't put anything in while the door is closed!</span>")
-		return 0
+		return FALSE
 
 	else
 		return ..()
@@ -116,7 +116,7 @@
 /obj/machinery/appliance/cooker/oven/can_remove_items(var/mob/user)
 	if (!open)
 		to_chat(user, "<span class='warning'>You can't take anything out while the door is closed!</span>")
-		return 0
+		return FALSE
 
 	else
 		return ..()

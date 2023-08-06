@@ -141,12 +141,12 @@
 
 	if (machine_stat & POWEROFF)//Its turned off
 		machine_stat &= ~POWEROFF
-		use_power = 1
+		use_power = TRUE
 		user.visible_message("[user] turns [src] on.", "You turn on [src].")
 
 	else //Its on, turn it off
 		machine_stat |= POWEROFF
-		use_power = 0
+		use_power = FALSE
 		user.visible_message("[user] turns [src] off.", "You turn off [src].")
 
 	playsound(src, 'sound/machines/click.ogg', 40, 1)
@@ -188,9 +188,9 @@
 //Handles all validity checking and error messages for inserting things
 /obj/machinery/appliance/proc/can_insert(var/obj/item/I, var/mob/user)
 	if (istype(I.loc, /mob/living/silicon))
-		return 0
+		return FALSE
 	else if (istype(I.loc, /obj/item/hardsuit_module))
-		return 0
+		return FALSE
 
 	// We are trying to cook a grabbed mob.
 	var/obj/item/grab/G = I
@@ -198,18 +198,18 @@
 
 		if(!can_cook_mobs)
 			to_chat(user, "<span class='warning'>That's not going to fit.</span>")
-			return 0
+			return FALSE
 
 		if(!isliving(G.affecting))
 			to_chat(user, "<span class='warning'>You can't cook that.</span>")
-			return 0
+			return FALSE
 
 		return 2
 
 
 	if (!has_space(I))
 		to_chat(user, "<span class='warning'>There's no room in [src] for that!</span>")
-		return 0
+		return FALSE
 
 
 	if (container_type && istype(I, container_type))
@@ -219,26 +219,26 @@
 	var/obj/item/reagent_containers/food/snacks/check = I
 	if(istype(check) && LAZYLEN(check.cooked) && (cook_type in check.cooked))
 		to_chat(user, "<span class='warning'>\The [check] has already been [cook_type].</span>")
-		return 0
+		return FALSE
 	else if(istype(check, /obj/item/reagent_containers/glass))
 		to_chat(user, "<span class='warning'>That would probably break [src].</span>")
-		return 0
+		return FALSE
 	else if(istype(check, /obj/item/disk/nuclear))
 		to_chat(user, "<span class='warning'>You can't cook that.</span>")
-		return 0
+		return FALSE
 	else if(!istype(check) && !istype(check, /obj/item/holder))
 		to_chat(user, "<span class='warning'>That's not edible.</span>")
-		return 0
+		return FALSE
 
-	return 1
+	return TRUE
 
 
 //This function is overridden by cookers that do stuff with containers
 /obj/machinery/appliance/proc/has_space(var/obj/item/I)
 	if (cooking_objs.len >= max_contents)
-		return 0
+		return FALSE
 
-	else return 1
+	return TRUE
 
 /obj/machinery/appliance/attackby(obj/item/I, mob/user)
 	if(!cook_type || (machine_stat & (BROKEN)))
@@ -352,11 +352,11 @@
 //Called every tick while we're cooking something
 /obj/machinery/appliance/proc/do_cooking_tick(var/datum/cooking_item/CI)
 	if (!istype(CI) || !CI.max_cookwork)
-		return 0
+		return FALSE
 
-	var/was_done = 0
+	var/was_done = FALSE
 	if (CI.cookwork >= CI.max_cookwork)
-		was_done = 1
+		was_done = TRUE
 
 	CI.cookwork += cooking_power
 
@@ -373,7 +373,7 @@
 		if (M)
 			M.apply_damage(rand(1,3), mobdamagetype, "chest")
 
-	return 1
+	return TRUE
 
 /obj/machinery/appliance/process(delta_time)
 	if (cooking_power > 0 && cooking)
@@ -563,25 +563,25 @@
 			var/datum/cooking_item/CI = menuoptions[selection]
 			eject(CI, user)
 			update_icon()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/machinery/appliance/proc/can_remove_items(var/mob/user)
 	if (!Adjacent(user))
-		return 0
+		return FALSE
 
 	if (isanimal(user))
-		return 0
+		return FALSE
 
-	return 1
+	return TRUE
 
 /obj/machinery/appliance/proc/eject(var/datum/cooking_item/CI, var/mob/user = null)
 	var/obj/item/thing
-	var/delete = 1
+	var/delete = TRUE
 	var/status = CI.container.check_contents()
 	if (status == 1)//If theres only one object in a container then we extract that
 		thing = locate(/obj/item) in CI.container
-		delete = 0
+		delete = FALSE
 	else//If the container is empty OR contains more than one thing, then we must extract the container
 		thing = CI.container
 	if (!user || !user.put_in_hands(thing))
