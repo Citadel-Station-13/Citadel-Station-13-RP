@@ -29571,6 +29571,7 @@
 	pixel_x = -24;
 	pixel_y = -8
 	},
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "qEU" = (
@@ -38339,6 +38340,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
+"vkq" = (
+/obj/machinery/holopad,
+/turf/simulated/floor/tiled/dark,
+/area/security/tactical)
 "vky" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
@@ -38374,6 +38379,10 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/tool_storage)
+"vml" = (
+/obj/machinery/holopad,
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/red)
 "vmF" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/beige/border,
@@ -69618,7 +69627,7 @@ hgE
 mFS
 aTw
 tbj
-tbj
+vkq
 lXF
 xdp
 ryA
@@ -69626,7 +69635,7 @@ ryA
 xlp
 bjM
 bjM
-bjM
+vml
 bjM
 jcj
 vis

@@ -18471,6 +18471,11 @@
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"lEy" = (
+/obj/structure/catwalk,
+/obj/machinery/holopad,
+/turf/simulated/open,
+/area/security/armory/blue)
 "lEN" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/spray/cleaner{
@@ -20734,6 +20739,20 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
+"mVj" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	icon_state = "shutter0";
+	id = "warden_desk";
+	layer = 3.1;
+	name = "Warden's Office Shutters";
+	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
+/turf/simulated/floor/plating,
+/area/space)
 "mVC" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/research/testingrange)
@@ -23540,9 +23559,6 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
-"oMX" = (
-/turf/simulated/mineral/icerock/lythios43c,
-/area/maintenance/security/upper)
 "oNk" = (
 /obj/structure/railing{
 	dir = 4
@@ -31525,14 +31541,6 @@
 /area/crew_quarters/pool)
 "tFh" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	icon_state = "shutter0";
-	id = "warden_desk";
-	layer = 3.1;
-	name = "Warden's Office Shutters";
-	opacity = 0
-	},
 /obj/machinery/door/window/brigdoor/southleft{
 	name = "Warden's Desk"
 	},
@@ -31547,6 +31555,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	icon_state = "shutter0";
+	id = "warden_desk";
+	layer = 3.1;
+	name = "Warden's Office Shutters";
+	opacity = 0
 	},
 /turf/simulated/floor/tiled/dark,
 /area/space)
@@ -32519,12 +32535,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"uqb" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "uqC" = (
 /obj/structure/table/glass,
 /turf/simulated/floor/carpet/blue,
@@ -33030,6 +33040,9 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
+"uKO" = (
+/turf/simulated/floor/tiled/dark,
+/area/rift/surfacebase/outside/outside2)
 "uLD" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -56140,7 +56153,7 @@ bbZ
 rZj
 eDX
 cMy
-nMf
+mVj
 lvM
 lvM
 bbZ
@@ -56334,7 +56347,7 @@ bbZ
 qYk
 nCd
 fii
-nMf
+mVj
 bbZ
 bbZ
 bbZ
@@ -56528,7 +56541,7 @@ wyd
 ekk
 bbZ
 jAk
-nMf
+mVj
 bbZ
 wyd
 bbZ
@@ -56916,7 +56929,7 @@ vLA
 lGg
 cQw
 ebP
-nMf
+mVj
 bbZ
 vLA
 bbZ
@@ -57110,7 +57123,7 @@ bbZ
 bbZ
 trh
 qYk
-nMf
+mVj
 bbZ
 bbZ
 bbZ
@@ -57304,7 +57317,7 @@ iQk
 qga
 dtH
 cjj
-nMf
+mVj
 ncQ
 bbZ
 bbZ
@@ -59615,7 +59628,7 @@ pBj
 pBj
 pBj
 pBj
-oMX
+pBj
 kcn
 kcn
 kcn
@@ -59799,17 +59812,17 @@ pBj
 pBj
 pBj
 pBj
+niX
+niX
+nnG
+niX
+lGo
+niX
+fTh
+nnG
+niX
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-oMX
 kcn
 vjN
 vjN
@@ -59993,17 +60006,17 @@ pBj
 pBj
 pBj
 pBj
+niX
+bml
+bvO
+txP
+vGu
+peJ
+fYx
+neW
+lLK
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-oMX
 kcn
 aOv
 aOv
@@ -60187,21 +60200,21 @@ pBj
 pBj
 pBj
 pBj
+niX
+ngj
+biO
+uKh
+wmo
+kxa
+fEx
+iIZ
+lLK
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-aKq
-uqb
-uqb
-uJq
+kcn
+fzS
+fzS
+vBG
 kcn
 vBG
 bVr
@@ -60381,21 +60394,21 @@ pBj
 pBj
 pBj
 pBj
+vpI
+knZ
+gdK
+hWb
+svk
+utX
+qEM
+vPu
+niX
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-aKq
-aKq
-aKq
-aKq
+kcn
+kcn
+kcn
+kcn
 kcn
 vBG
 bVr
@@ -60575,15 +60588,15 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
+ldP
+uuC
+aWV
+jnS
+qIW
+mrc
+tVQ
+mBX
+lLK
 pBj
 pBj
 pBj
@@ -60769,15 +60782,15 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
+oJD
+oJD
+bQc
+oJD
+oJD
+niX
+niX
+niX
+niX
 pBj
 pBj
 pBj
@@ -60963,15 +60976,15 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
+fTh
+fTh
+fTh
+fTh
+xun
+fTh
+fTh
+rkN
+fTh
 pBj
 pBj
 pBj
@@ -61157,22 +61170,22 @@ pBj
 pBj
 pBj
 pBj
+fTh
+fTh
+fTh
+fTh
+lnl
+fTh
+fTh
+fTh
+fTh
 pBj
 pBj
 pBj
 pBj
 pBj
 pBj
-fTh
-fTh
-fTh
-fTh
-fTh
-fTh
-fTh
-fTh
-fTh
-fTh
+pBj
 pBj
 pBj
 pBj
@@ -61351,22 +61364,22 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
+lLK
+lLK
+lLK
+lLK
+niX
+rkn
+uKO
 fTh
-niX
-niX
-nnG
-niX
-lGo
-niX
 fTh
-nnG
-niX
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
 pBj
 pBj
 pBj
@@ -61551,16 +61564,16 @@ dep
 vLE
 dep
 dep
-fTh
-niX
-bml
-bvO
-txP
-vGu
-peJ
-fYx
-neW
-lLK
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
 pBj
 pBj
 pBj
@@ -61745,16 +61758,16 @@ jQY
 mEM
 uNo
 dep
-fTh
-niX
-ngj
-biO
-uKh
-wmo
-kxa
-fEx
-iIZ
-lLK
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
 pBj
 pBj
 pBj
@@ -61939,16 +61952,16 @@ fyx
 dOP
 mpk
 dep
-fTh
-vpI
-knZ
-gdK
-hWb
-svk
-utX
-qEM
-vPu
-niX
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
 pBj
 pBj
 pBj
@@ -61959,7 +61972,7 @@ bem
 bem
 bNE
 mZT
-mZT
+lEy
 xfH
 bem
 bem
@@ -62133,16 +62146,16 @@ fyx
 jxw
 bYv
 dep
-fTh
-ldP
-uuC
-aWV
-jnS
-qIW
-mrc
-tVQ
-mBX
-lLK
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
 pBj
 pBj
 pBj
@@ -62327,16 +62340,16 @@ fyx
 xdO
 kre
 dep
-fTh
-oJD
-oJD
-bQc
-oJD
-oJD
-niX
-niX
-niX
-niX
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
 pBj
 pBj
 pBj
@@ -62521,16 +62534,16 @@ fyx
 tut
 fNI
 dep
-fTh
-fTh
-fTh
-fTh
-fTh
-xun
-fTh
-fTh
-rkN
-fTh
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
 pBj
 pBj
 pBj
@@ -62715,16 +62728,16 @@ fyx
 tut
 lvP
 dep
-fTh
-fTh
-fTh
-fTh
-fTh
-lnl
-fTh
-fTh
-fTh
-fTh
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
 pBj
 pBj
 pBj
@@ -62909,16 +62922,16 @@ vfq
 kGy
 dpV
 dep
-fTh
-lLK
-lLK
-lLK
-lLK
-niX
-rkn
-rkn
-niX
-niX
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
 pBj
 pBj
 pBj
