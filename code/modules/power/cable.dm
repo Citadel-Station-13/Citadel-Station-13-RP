@@ -83,8 +83,15 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	else
 		// ensure d1 & d2 reflect the icon_state for entering and exiting cable
 		var/dash = findtext(icon_state, "-")
-		d1 = text2num( copytext( icon_state, 1, dash ) )
-		d2 = text2num( copytext( icon_state, dash+1 ) )
+		// handle maploader turning
+		if(dir != SOUTH)
+			if(d1 & (NORTH|SOUTH|EAST|WEST))
+				d1 = turn(text2num( copytext( icon_state, 1, dash ) ), global.dmm_orientation_turn[dir])
+			if(d2 & (NORTH|SOUTH|EAST|WEST))
+				d2 = turn(text2num( copytext( icon_state, dash+1 ) ), global.dmm_orientation_turn[dir])
+		else
+			d1 = text2num( copytext( icon_state, 1, dash ) )
+			d2 = text2num( copytext( icon_state, dash+1 ) )
 
 	var/turf/T = src.loc // hide if turf is not intact
 	if(level==1 && T)

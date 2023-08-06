@@ -40,9 +40,9 @@ FIRE ALARM
 	base_pixel_y = 0
 	switch(dir)
 		if(NORTH)
-			base_pixel_y = -21
-		if(SOUTH)
 			base_pixel_y = 21
+		if(SOUTH)
+			base_pixel_y = -21
 		if(WEST)
 			base_pixel_x = -21
 		if(EAST)
