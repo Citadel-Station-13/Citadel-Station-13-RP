@@ -269,7 +269,6 @@
 	)
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
-	link_below = /datum/map_level/tether/underdark
 
 /datum/map_level/tether/mine/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -297,7 +296,6 @@
 	)
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/mineral/floor/virgo3b
-	link_above = /datum/map_level/tether/mine
 
 /datum/map_level/tether/underdark/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
