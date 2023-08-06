@@ -3320,7 +3320,7 @@
 /area/hallway/secondary/docking_hallway)
 "cmk" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Exploration Prep";
 	req_access = list();
 	req_one_access = list(19,43,67)
@@ -9032,7 +9032,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Shuttle Triage and Restroom";
 	req_one_access = list(19,43,67)
 	},
@@ -32878,7 +32878,6 @@
 "wKW" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
 	name = "Pilot Prep";
 	req_one_access = list(19,43,67)
 	},
@@ -34063,7 +34062,7 @@
 /area/bridge/office)
 "xwr" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Exploration Prep";
 	req_access = list();
 	req_one_access = list(19,43,67)
@@ -34233,7 +34232,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 8;
 	icon_state = "door_locked";
 	id_tag = "exp_gateway";
 	locked = 1
