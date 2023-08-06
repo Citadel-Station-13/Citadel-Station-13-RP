@@ -4364,10 +4364,6 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
-"dMk" = (
-/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
-/turf/simulated/wall/prepainted,
-/area/hallway/primary/port)
 "dNk" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/item/toy/plushie/red_fox,
@@ -21313,7 +21309,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "rpj" = (
-/turf/simulated/wall/prepainted/engineering,
+/turf/simulated/wall/prepainted,
 /area/maintenance/substation/research)
 "rpN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -39734,8 +39730,8 @@ aDx
 joq
 lZR
 tqA
-dMk
-dMk
+ejI
+ejI
 bDT
 bDT
 ttB
