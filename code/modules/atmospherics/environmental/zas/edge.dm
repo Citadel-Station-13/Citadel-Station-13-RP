@@ -2,7 +2,7 @@
 
 Overview:
 	These are what handle gas transfers between zones and into space.
-	They are found in a zone's edges list and in air_master.edges.
+	They are found in a zone's edges list and in SSair.edges.
 	Each edge updates every air tick due to their role in gas transfer.
 	They come in two flavors, /datum/zas_edge/zone and /datum/zas_edge/unsimulated.
 	As the type names might suggest, they handle inter-zone and spacelike connections respectively.
@@ -83,7 +83,7 @@ Class Procs:
 /datum/zas_edge/proc/contains_zone(datum/zas_zone/Z)
 
 /datum/zas_edge/proc/erase()
-	air_master.remove_edge(src)
+	SSair.remove_edge(src)
 	//to_chat(world, "[type] Erased.")
 
 /datum/zas_edge/proc/tick()
@@ -178,19 +178,19 @@ Class Procs:
 	if(equiv)
 		if(direct)
 			erase()
-			air_master.merge(A, B)
+			SSair.merge(A, B)
 			return
 		else
 			A.air.equalize(B.air)
-			air_master.mark_edge_sleeping(src)
+			SSair.mark_edge_sleeping(src)
 
-	air_master.mark_zone_update(A)
-	air_master.mark_zone_update(B)
+	SSair.mark_zone_update(A)
+	SSair.mark_zone_update(B)
 
 /datum/zas_edge/zone/recheck()
 	// Edges with only one side being vacuum need processing no matter how close.
 	if(!A.air.compare(B.air, vacuum_exception = 1))
-		air_master.mark_edge_active(src)
+		SSair.mark_edge_active(src)
 
 //Helper proc to get connections for a zone.
 /datum/zas_edge/zone/proc/get_connected_zone(datum/zas_zone/from)
@@ -242,16 +242,16 @@ Class Procs:
 
 	if(equiv)
 		A.air.copy_from(air)
-		air_master.mark_edge_sleeping(src)
+		SSair.mark_edge_sleeping(src)
 
-	air_master.mark_zone_update(A)
+	SSair.mark_zone_update(A)
 
 /datum/zas_edge/unsimulated/recheck()
 	// Edges with only one side being vacuum need processing no matter how close.
 	// Note: This handles the glaring flaw of a room holding pressure while exposed to space, but
 	// does not specially handle the less common case of a simulated room exposed to an unsimulated pressurized turf.
 	if(!A.air.compare(air, vacuum_exception = 1))
-		air_master.mark_edge_active(src)
+		SSair.mark_edge_active(src)
 
 /proc/ShareHeat(datum/gas_mixture/A, datum/gas_mixture/B, connecting_tiles)
 	//This implements a simplistic version of the Stefan-Boltzmann law.

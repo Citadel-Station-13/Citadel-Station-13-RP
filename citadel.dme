@@ -14,6 +14,7 @@
 
 // BEGIN_INCLUDE
 #include "_mapload\_basemap.dm"
+#include "_mapload\tether.dm"
 #include "code\___compile_options.dm"
 #include "code\__byond_version_compat.dm"
 #include "code\__global_init.dm"
@@ -130,6 +131,7 @@
 #include "code\__DEFINES\atmospherics\gases\reagents.dm"
 #include "code\__DEFINES\atmospherics\gases\visuals.dm"
 #include "code\__DEFINES\atmospherics\machinery\alarm.dm"
+#include "code\__DEFINES\atmospherics\machinery\scrubber.dm"
 #include "code\__DEFINES\atmospherics\machinery\vent.dm"
 #include "code\__DEFINES\cargo\supply.dm"
 #include "code\__DEFINES\client\player_flags.dm"

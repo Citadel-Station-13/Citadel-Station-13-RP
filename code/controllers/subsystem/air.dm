@@ -19,6 +19,10 @@ SUBSYSTEM_DEF(air)
 	var/list/generated_atmospheres
 	/// cached lists of unpacked gas-strings
 	var/list/cached_strings
+	/// scrubber defaults
+	var/list/scrubber_defaults = list(
+		SCRUBBER_DEFAULT_STATION = list(/datum/gas/carbon_dioxide, /datum/gas/phoron),
+	)
 
 	var/cost_turfs = 0
 	var/cost_edges = 0
@@ -57,9 +61,9 @@ SUBSYSTEM_DEF(air)
 	return ..() + " [msg.Join()]"
 
 /datum/controller/subsystem/air/PreInit(recovering)
-	if(!gas_data)
-		gas_data = new
-	air_master = src
+	// resolve scrubber defaults
+	//! legacy
+	SSair = src
 
 /datum/controller/subsystem/air/Preload(recovering)
 	cached_strings = list()
@@ -134,7 +138,7 @@ SUBSYSTEM_DEF(air)
 	INTERNAL_PROCESS_STEP(SSAIR_HOTSPOTS, FALSE, process_active_hotspots, cost_hotspots, SSAIR_ZONES)
 	INTERNAL_PROCESS_STEP(SSAIR_ZONES, FALSE, process_zones_to_update, cost_zones, SSAIR_DONE)
 
-	// Okay, we're done! Woo! Got thru a whole air_master cycle!
+	// Okay, we're done! Woo! Got thru a whole SSair cycle!
 	if(LAZYLEN(currentrun) != 0)
 		stack_trace("Currentrun not empty after processing cycle when it should be. [english_list(currentrun.Copy(1, min(currentrun.len, 5)))]")
 	currentrun = null

@@ -97,7 +97,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 			options[strtype] = S
 
 	//Goon PS stuff, and other yet-to-be-subsystem things.
-	options["LEGACY: air_master"] = air_master
 	options["LEGACY: radio_controller"] = radio_controller
 	options["LEGACY: paiController"] = paiController
 	options["LEGACY: GLOB.cameranet"] = GLOB.cameranet

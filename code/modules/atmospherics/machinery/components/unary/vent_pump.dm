@@ -1,9 +1,5 @@
 #define DEFAULT_PRESSURE_DELTA 10000
 
-#define EXTERNAL_PRESSURE_BOUND ONE_ATMOSPHERE
-#define INTERNAL_PRESSURE_BOUND 0
-#define PRESSURE_CHECKS 1
-
 /obj/machinery/atmospherics/component/unary/vent_pump
 	icon = 'icons/atmos/vent_pump.dmi'
 	icon_state = "map_vent"
@@ -25,6 +21,25 @@
 	var/name_from_area = TRUE
 	/// show on area
 	var/controllable_from_alarm = TRUE
+	/// cares about siphoning/filling/alarm modes
+	var/environmental = TRUE
+
+	/// pump direction
+	var/pump_direction
+	/// default pump direction
+	var/pump_direction_default = ATMOS_VENT_DIRECTION_RELEASE
+	/// external pressure limit
+	var/external_pressure_bound = ONE_ATMOSPHERE
+	/// external pressure limit default
+	var/external_pressure_bound_default = ONE_ATMOSPHERE
+	/// internal pressure limit
+	var/internal_pressure_bound = 0
+	/// internal pressure limit default
+	var/internal_pressure_bound_default = 0
+	/// pressure checks flag
+	var/pressure_checks
+	/// default pressure checks
+	var/pressure_checks_default = ATMOS_VENT_CHECK_EXTERNAL
 
 	var/area_uid
 	var/id_tag = null
@@ -33,20 +48,6 @@
 	var/datum/radio_frequency/radio_connection
 
 	var/hibernate = 0 //Do we even process?
-	var/pump_direction = 1 //0 = siphoning, 1 = releasing
-
-	var/external_pressure_bound = EXTERNAL_PRESSURE_BOUND
-	var/internal_pressure_bound = INTERNAL_PRESSURE_BOUND
-
-	var/pressure_checks = PRESSURE_CHECKS
-	//1: Do not pass external_pressure_bound
-	//2: Do not pass internal_pressure_bound
-	//3: Do not pass either
-
-	// Used when handling incoming radio signals requesting default settings
-	var/external_pressure_bound_default = EXTERNAL_PRESSURE_BOUND
-	var/internal_pressure_bound_default = INTERNAL_PRESSURE_BOUND
-	var/pressure_checks_default = PRESSURE_CHECKS
 
 	var/radio_filter_out
 	var/radio_filter_in
@@ -57,6 +58,14 @@
 
 /obj/machinery/atmospherics/component/unary/vent_pump/Initialize(mapload)
 	. = ..()
+	if(isnull(external_pressure_bound))
+		external_pressure_bound = external_pressure_bound_default
+	if(isnull(internal_pressure_bound))
+		internal_pressure_bound = internal_pressure_bound_default
+	if(isnull(pressure_checks))
+		pressure_checks = pressure_checks_default
+	if(isnull(pump_direction))
+		pump_direction = pump_direction_default
 	/*
 	soundloop = new(list(src), FALSE)
 	*/
@@ -224,95 +233,6 @@
 		radio_connection = register_radio(src, frequency, frequency, radio_filter_in)
 		src.broadcast_status()
 
-/obj/machinery/atmospherics/component/unary/vent_pump/receive_signal(datum/signal/signal)
-	if(machine_stat & (NOPOWER|BROKEN))
-		return
-
-	hibernate = 0
-
-	//log_admin("DEBUG \[[world.timeofday]\]: /obj/machinery/atmospherics/component/unary/vent_pump/receive_signal([signal.debug_print()])")
-	if(!signal.data["tag"] || (signal.data["tag"] != id_tag) || (signal.data["sigtype"]!="command"))
-		return 0
-
-	if(signal.data["purge"] != null)
-		pressure_checks &= ~1
-		pump_direction = 0
-
-	if(signal.data["stabalize"] != null)
-		pressure_checks |= 1
-		pump_direction = 1
-
-	if(signal.data["power"] != null)
-		update_use_power(text2num(signal.data["power"]))
-
-	if(signal.data["power_toggle"] != null)
-		update_use_power(!use_power)
-
-	if(signal.data["checks"] != null)
-		if (signal.data["checks"] == "default")
-			pressure_checks = pressure_checks_default
-		else
-			pressure_checks = text2num(signal.data["checks"])
-
-	if(signal.data["checks_toggle"] != null)
-		pressure_checks = (pressure_checks?0:3)
-
-	if(signal.data["direction"] != null)
-		pump_direction = text2num(signal.data["direction"])
-
-	if(signal.data["set_internal_pressure"] != null)
-		if (signal.data["set_internal_pressure"] == "default")
-			internal_pressure_bound = internal_pressure_bound_default
-		else
-			internal_pressure_bound = between(
-				0,
-				text2num(signal.data["set_internal_pressure"]),
-				ONE_ATMOSPHERE*50
-			)
-
-	if(signal.data["set_external_pressure"] != null)
-		if (signal.data["set_external_pressure"] == "default")
-			external_pressure_bound = external_pressure_bound_default
-		else
-			external_pressure_bound = between(
-				0,
-				text2num(signal.data["set_external_pressure"]),
-				ONE_ATMOSPHERE*50
-			)
-
-	if(signal.data["adjust_internal_pressure"] != null)
-		internal_pressure_bound = between(
-			0,
-			internal_pressure_bound + text2num(signal.data["adjust_internal_pressure"]),
-			ONE_ATMOSPHERE*50
-		)
-
-	if(signal.data["adjust_external_pressure"] != null)
-
-
-		external_pressure_bound = between(
-			0,
-			external_pressure_bound + text2num(signal.data["adjust_external_pressure"]),
-			ONE_ATMOSPHERE*50
-		)
-
-	if("reset_external_pressure" in signal.data)
-		external_pressure_bound = ONE_ATMOSPHERE
-
-	if("reset_internal_pressure" in signal.data)
-		internal_pressure_bound = 0
-
-	if(signal.data["status"] != null)
-		spawn(2)
-			broadcast_status()
-		return //do not update_icon
-
-		//log_admin("DEBUG \[[world.timeofday]\]: vent_pump/receive_signal: unknown command \"[signal.data["command"]]\"\n[signal.debug_print()]")
-	spawn(2)
-		broadcast_status()
-	update_icon()
-	return
-
 /obj/machinery/atmospherics/component/unary/vent_pump/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
@@ -410,6 +330,71 @@
 		if("siphon")
 
 #warn ui stuff
+
+//* Signal Handling - Check / Application order is in order of these comments.
+/// environmental: void. set to ignore the signal if we're not an environmental vent.
+/// hard_reset: resets everything to default.
+/// power: truthy. sets us to be on/off. overrides power_toggle.
+/// power_toggle: void. toggles us on/off.
+/// checks: bitfield | "default". sets our checks to that. overrides checks_toggle.
+/// checks_toggle: bitfield. toggles those checks.
+/// direction: enum | "default". sets direction to that
+/// direction_toggle: void. toggles direction.
+/// set_internal_pressure: number | "default". sets internal pressure. overrides adjust_internal_pressure.
+/// adjust_internal_pressure: number. adjusts internal pressure.
+/// set_external_pressure: number | "default". sets external pressure. overrides adjust_external_pressure.
+/// adjust_external_pressure: number. adjusts external pressure.
+
+/obj/machinery/atmospherics/component/unary/vent_pump/receive_signal(datum/signal/signal)
+	if(machine_stat & (NOPOWER|BROKEN))
+		return
+
+	hibernate = 0
+
+	if(!signal.data["tag"] || (signal.data["tag"] != id_tag) || (signal.data["sigtype"]!="command"))
+		return 0
+
+	if(!isnull(signal.data["environmental"]) && environmental)
+		return FALSE
+
+	if(!isnull(signal.data["hard_reset"]))
+		pressure_checks = pressure_checks_default
+		pump_direction = pump_direction_default
+		internal_pressure_bound = internal_pressure_bound_default
+		external_pressure_bound = external_pressure_bound_default
+	if(!isnull(signal.data["power"]))
+		update_use_power(!!text2num(signal.data["power"]))
+	else if(!isnull(signal.data["power_toggle"]))
+		update_use_power(!use_power)
+	if(!isnull(signal.data["checks"]))
+		pressure_checks = (signal.data["checks"] == "default")? pressure_checks_default : (text2num(signal.data) & ATMOS_VENT_CHECKS)
+	else if(!isnull(signal.data["checks_toggle"]))
+		pressure_checks ^= (text2num(signal.data["checks_toggle"]) & ATMOS_VENT_CHECKS)
+	if(!isnull(signal.data["direction"]))
+		pump_direction = signal.data["direction"] == "default"? pump_direction_default : clamp(text2num(signal.data["direction"]), 0, 1)
+	else if(!isnull(signal.data["direction_toggle"]))
+		pump_direction = !pump_direction
+	if(!isnull(signal.data["set_internal_pressure"]))
+		internal_pressure_bound = signal.data["set_internal_presure"] == "default"? internal_pressure_bound_default : clamp(text2num(signal.data["set_internal_pressure"]), 0, ATMOS_VENT_MAX_PRESSURE_LIMIT)
+	else if(!isnull(signal.data["adjust_internal_pressure"]))
+		internal_pressure_bound = clamp(internal_pressure_bound + text2num(signal.data["set_internal_pressure"]), 0, ATMOS_VENT_MAX_PRESSURE_LIMIT)
+	if(!isnull(signal.data["set_external_pressure"]))
+		external_pressure_bound = signal.data["set_external_presure"] == "default"? external_pressure_bound_default : clamp(text2num(signal.data["set_external_pressure"]), 0, ATMOS_VENT_MAX_PRESSURE_LIMIT)
+	else if(!isnull(signal.data["adjust_external_pressure"]))
+		external_pressure_bound = clamp(external_pressure_bound + text2num(signal.data["set_external_pressure"]), 0, ATMOS_VENT_MAX_PRESSURE_LIMIT)
+
+	//! legacy below
+	if(signal.data["status"] != null)
+		spawn(2)
+			broadcast_status()
+		return //do not update_icon
+
+		//log_admin("DEBUG \[[world.timeofday]\]: vent_pump/receive_signal: unknown command \"[signal.data["command"]]\"\n[signal.debug_print()]")
+	spawn(2)
+		broadcast_status()
+	update_icon()
+
+//* Subtypes
 
 /obj/machinery/atmospherics/component/unary/vent_pump/on
 	use_power = USE_POWER_IDLE
@@ -514,7 +499,3 @@
 	add_overlay(icon_manager.get_atmos_icon("device", , , vent_icon))
 
 #undef DEFAULT_PRESSURE_DELTA
-
-#undef EXTERNAL_PRESSURE_BOUND
-#undef INTERNAL_PRESSURE_BOUND
-#undef PRESSURE_CHECKS

@@ -1,4 +1,4 @@
-var/datum/controller/subsystem/air/air_master
+var/datum/controller/subsystem/air/SSair
 
 var/tick_multiplier = 2
 

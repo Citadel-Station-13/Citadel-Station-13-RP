@@ -19,6 +19,15 @@
 	var/name_from_area = TRUE
 	/// show on area
 	var/controllable_from_alarm = TRUE
+	/// cares about siphoning/filling/alarm modes
+	var/environmental = TRUE
+
+	/// filter ids
+	var/list/scrub_ids
+	/// filter groups
+	var/list/scrub_groups
+	/// filter defaults - either an enum for SCRUBBER_DEFAULT_* or a list of ids and groups.
+	var/scrub_default
 
 	var/area_uid
 	var/id_tag = null
