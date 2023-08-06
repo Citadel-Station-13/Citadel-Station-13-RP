@@ -9,20 +9,23 @@
 		/datum/map_level/tether/station/space_low,
 		/datum/map_level/tether/station/space_high,
 		/datum/map_level/tether/mine,
-		/datum/map_level/tether/solars,
 		/datum/map_level/tether/misc,
 		/datum/map_level/tether/underdark,
 		/datum/map_level/tether/plains,
 	)
-	width = 140
-	height = 140
+	width = 192
+	height = 192
 	lateload = list(
-		/datum/map/sector/roguemining_140,
-		/datum/map/sector/desert_140,
-		/datum/map/sector/virgo2_140,
-		/datum/map/sector/virgo4_140,
-		/datum/map/sector/tradeport_140,
-		/datum/map/sector/wasteland_140,
+		/datum/map/sector/debrisfield_192,
+		/datum/map/sector/piratebase_192,
+		/datum/map/sector/mining_192,
+		/datum/map/sector/gaia_192,
+		/datum/map/sector/frozen_192,
+		/datum/map/sector/wasteland_192,
+		/datum/map/sector/tradeport_192,
+		/datum/map/sector/lavaland_192,
+		/datum/map/sector/miaphus_192,
+		/datum/map/sector/roguemining_192/one,
 	)
 
 	//* LEGACY BELOW *//
@@ -149,7 +152,7 @@
 	name = "Tether - Surface 1"
 	display_id = "adephagia-surface-1"
 	display_name = "NSB Adephagia Surface 1 (Lobby & External)"
-	absolute_path = "maps/tether/levels/surface1.dmm"
+	absolute_path = "maps/tether/levels/surface1_192.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -168,7 +171,7 @@
 	name = "Tether - Surface 2"
 	display_id = "adephagia-surface-2"
 	display_name = "NSB Adephagia Surface 2 (Research & Life Suppot)"
-	absolute_path = "maps/tether/levels/surface2.dmm"
+	absolute_path = "maps/tether/levels/surface2_192.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -188,7 +191,7 @@
 	name = "Tether - Surface 3"
 	display_id = "adephagia-surface-3"
 	display_name = "NSB Adephagia Surface 3 (Services & Command)"
-	absolute_path = "maps/tether/levels/surface3.dmm"
+	absolute_path = "maps/tether/levels/surface3_192.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -208,7 +211,7 @@
 	name = "Tether - Midpoint"
 	display_id = "adephagia-tether"
 	display_name = "NSB Adephagia Tether Midpoint"
-	absolute_path = "maps/tether/levels/midpoint.dmm"
+	absolute_path = "maps/tether/levels/midpoint_192.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -225,7 +228,7 @@
 	name = "Tether - Space 1"
 	display_id = "adephagia-station-1"
 	display_name = "NSB Adephagia Station 1 (Engineering Deck)"
-	absolute_path = "maps/tether/levels/station1.dmm"
+	absolute_path = "maps/tether/levels/station1_192.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -242,7 +245,7 @@
 	name = "Tether - Space 2"
 	display_id = "adephagia-station-2"
 	display_name = "NSB Adephagia Station 2 (Logistics Deck)"
-	absolute_path = "maps/tether/levels/station2.dmm"
+	absolute_path = "maps/tether/levels/station2_192.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -259,33 +262,16 @@
 	name = "Tether - Mining Outpost"
 	display_id = "adephagia-mining"
 	display_name = "NSB Adephagia Mining Outpost"
-	absolute_path = "maps/tether/levels/mining.dmm"
+	absolute_path = "maps/tether/levels/mining_192.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
 	)
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
+	link_below = /datum/map_level/tether/underdark
 
 /datum/map_level/tether/mine/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
-	. = ..()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
-
-/datum/map_level/tether/solars
-	id = "TetherScienceOutpost"
-	name = "Tether - Science Outpost"
-	display_id = "adephagia-solars"
-	display_name = "NSB Adephagia Solars & Research Outpost"
-	absolute_path = "maps/tether/levels/solars.dmm"
-	traits = list(
-		ZTRAIT_STATION,
-		ZTRAIT_GRAVITY,
-	)
-	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
-	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
-
-/datum/map_level/tether/solars/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
@@ -293,7 +279,7 @@
 /datum/map_level/tether/misc
 	id = "TetherMisc"
 	name = "Tether - Misc"
-	absolute_path = "maps/tether/levels/misc.dmm"
+	absolute_path = "maps/tether/levels/misc_192.dmm"
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_TRANSIT,
 	)
@@ -304,13 +290,14 @@
 	name = "Tether - Underdark"
 	display_id = "adephagia-underdark"
 	display_name = "NSB Adephagia Underdark"
-	absolute_path = "maps/tether/levels/underdark.dmm"
+	absolute_path = "maps/tether/levels/underdark_192.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
 	)
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/mineral/floor/virgo3b
+	link_above = /datum/map_level/tether/mine
 
 /datum/map_level/tether/underdark/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -332,7 +319,7 @@
 	name = "Tether - South Plains"
 	display_id = "adephagia-south-plains"
 	display_name = "NSB Adephagia Southern Plains"
-	absolute_path = "maps/tether/levels/plains.dmm"
+	absolute_path = "maps/tether/levels/plains_192.dmm"
 	traits = list(
 		ZTRAIT_GRAVITY,
 	)
