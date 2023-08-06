@@ -98,6 +98,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_1)
+"agn" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/space)
 "agp" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
@@ -118,6 +124,13 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
+"agw" = (
+/obj/structure/catwalk,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/space)
 "ahf" = (
 /obj/machinery/space_heater,
 /obj/machinery/light/small{
@@ -138,30 +151,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/security/upper)
-"aid" = (
-/obj/structure/table/steel_reinforced,
-/obj/machinery/door/window/brigdoor/westleft{
-	dir = 4;
-	name = "Warden's Desk";
-	req_access = list(3)
-	},
-/obj/machinery/door/window/brigdoor/eastleft{
-	dir = 8;
-	name = "Warden's Desk"
-	},
-/obj/item/deskbell,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "warden_desk";
-	layer = 3.1;
-	name = "Warden's Office Shutters";
-	opacity = 0
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rift/surfacebase/outside/outside2)
 "ajc" = (
 /obj/structure/closet,
 /obj/random/maintenance/medical,
@@ -419,6 +408,12 @@
 "aqp" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/tether/surfacebase/reading_room)
+"aqE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "aqF" = (
 /turf/simulated/wall/prepainted,
 /area/tether/surfacebase/reading_room)
@@ -594,7 +589,7 @@
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
 /obj/machinery/alarm{
-	desc = null;
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/structure/extinguisher_cabinet{
@@ -614,7 +609,7 @@
 	dir = 9
 	},
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -669,7 +664,7 @@
 "axQ" = (
 /obj/structure/table/woodentable,
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/machinery/light{
@@ -1342,7 +1337,7 @@
 /area/maintenance/asmaint2)
 "aVr" = (
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
@@ -1791,6 +1786,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
+"bem" = (
+/turf/simulated/open,
+/area/security/armory/blue)
 "beo" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -1887,7 +1885,7 @@
 	},
 /obj/structure/closet/secure_closet/medical2,
 /obj/machinery/alarm{
-	desc = null;
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/white,
@@ -2285,6 +2283,20 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/workshop)
+"bpF" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/security/hallway)
 "bqF" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/rift/station/public_garden/gantry)
@@ -2313,6 +2325,14 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
+"brB" = (
+/obj/machinery/photocopier,
+/obj/structure/table/steel_reinforced,
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "brY" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -2688,6 +2708,16 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/public_garden/stairwell)
+"bDa" = (
+/obj/structure/bed/chair/office/dark,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "bDx" = (
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/plating,
@@ -2833,6 +2863,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
+"bLU" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "bMg" = (
 /obj/structure/mirror{
 	dir = 4;
@@ -2864,7 +2903,7 @@
 	dir = 1
 	},
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "bOa" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/cable{
@@ -2968,12 +3007,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "bQG" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/security/upper)
+/area/security/armory/blue)
 "bRx" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
@@ -3378,7 +3413,7 @@
 	dir = 10
 	},
 /obj/machinery/alarm{
-	desc = null;
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/white,
@@ -3505,6 +3540,14 @@
 /obj/effect/floor_decal/corner/lightgrey/border,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/pool)
+"cjj" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/pen/multi{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "cjp" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/rust,
@@ -3671,6 +3714,14 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
+"coU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "cpk" = (
 /obj/structure/table/steel,
 /obj/structure/window/reinforced{
@@ -3689,7 +3740,7 @@
 	},
 /obj/machinery/lathe/autolathe,
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "cqn" = (
 /obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/techfloor,
@@ -3975,7 +4026,7 @@
 	dir = 1
 	},
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "cAt" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -4038,7 +4089,7 @@
 	},
 /obj/structure/closet/bombclosetsecurity,
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "cDI" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4326,6 +4377,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/surgery_hallway)
+"cMy" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/paper/armory_info,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "cMV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -4392,6 +4448,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"cQw" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/paper_bin{
+	pixel_y = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "cQJ" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -4566,7 +4629,7 @@
 	},
 /obj/structure/closet/l3closet/security,
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "cWU" = (
 /obj/structure/sink{
 	pixel_y = 18
@@ -4711,12 +4774,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
 "ddo" = (
-/obj/machinery/door/blast/regular{
+/obj/machinery/button/remote/blast_door{
 	id = "armorylight";
-	name = "Light Armory Acccess"
+	name = "Light Armory Access";
+	pixel_x = -26;
+	pixel_y = 29;
+	req_access = list(3)
 	},
+/obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled/monotile,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "ddZ" = (
 /turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
@@ -5164,6 +5231,28 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/research)
+"dtH" = (
+/obj/machinery/computer/prisoner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
+"dtL" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "dtU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -5382,7 +5471,7 @@
 "dzC" = (
 /obj/structure/catwalk,
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /turf/simulated/open,
@@ -6204,15 +6293,16 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "eaE" = (
-/obj/machinery/button/remote/blast_door{
+/obj/machinery/door/blast/regular{
+	dir = 4;
 	id = "armorylight";
-	name = "Light Armory Access";
-	pixel_x = 7;
-	pixel_y = 29;
-	req_access = list(3)
+	name = "Light Armory Acccess"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "eaK" = (
 /obj/item/deskbell,
 /obj/structure/table/steel,
@@ -6228,6 +6318,20 @@
 "ebM" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
+"ebP" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/phone{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/stamp/ward{
+	pixel_x = -2
+	},
+/obj/item/stamp/denied{
+	pixel_x = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "ebY" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -6362,6 +6466,12 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/surgery)
+"eht" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/security/armory/blue)
 "ehO" = (
 /obj/machinery/camera/network/research{
 	dir = 8
@@ -6435,6 +6545,10 @@
 /obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
+"ekk" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "eko" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -6526,7 +6640,7 @@
 "emu" = (
 /obj/structure/table/woodentable,
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/machinery/light{
@@ -6661,6 +6775,13 @@
 /obj/effect/floor_decal/borderfloorblack/full,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hos)
+"evj" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "evp" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/reading_room)
@@ -6928,7 +7049,7 @@
 	dir = 8
 	},
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "eCj" = (
 /obj/structure/cable/green,
 /obj/structure/cable/green{
@@ -7001,6 +7122,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
+"eDX" = (
+/obj/machinery/computer/secure_data{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "eEI" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -7238,6 +7365,13 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"ePT" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "eQx" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
@@ -7253,7 +7387,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/security/upper)
+/area/security/armory/blue)
 "eRg" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -7901,6 +8035,13 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/sleeper)
+"fii" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/paper_bin{
+	pixel_y = 10
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "fik" = (
 /obj/machinery/door/window/brigdoor/westright{
 	name = "Slime Pen 8";
@@ -8075,6 +8216,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
+"foV" = (
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/space)
 "fqf" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/sleep/Dorm_3)
@@ -8157,6 +8304,23 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"frH" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/space)
 "frQ" = (
 /obj/structure/cable/orange{
 	icon_state = "1-8"
@@ -8267,6 +8431,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
+"fyn" = (
+/obj/machinery/light,
+/turf/simulated/open,
+/area/space)
 "fyx" = (
 /turf/simulated/floor/tiled/steel,
 /area/security/range)
@@ -8302,12 +8470,6 @@
 /obj/item/stool,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"fBu" = (
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/space)
 "fBD" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
@@ -8655,8 +8817,9 @@
 	dir = 4
 	},
 /obj/structure/closet/l3closet/security,
+/obj/machinery/camera/network/security,
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "fNI" = (
 /obj/structure/table/steel,
 /obj/machinery/light,
@@ -8920,6 +9083,13 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside2)
+"fWL" = (
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/open,
+/area/security/armory/blue)
 "fWX" = (
 /turf/simulated/wall/prepainted,
 /area/hallway/primary/surfacetwo)
@@ -9247,6 +9417,12 @@
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
+"gii" = (
+/obj/structure/table/steel,
+/obj/item/storage/box/handcuffs,
+/obj/item/megaphone,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "gil" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -9453,6 +9629,19 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
+"gox" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/security/hallway)
 "goH" = (
 /obj/structure/barricade,
 /obj/effect/floor_decal/rust,
@@ -9533,7 +9722,7 @@
 	dir = 5
 	},
 /obj/machinery/alarm{
-	desc = null;
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/item/storage/hypokit{
@@ -10249,6 +10438,16 @@
 /obj/structure/girder,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
+"gIL" = (
+/obj/machinery/door/airlock/multi_tile/glass/security{
+	dir = 4;
+	name = "Armory"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/space)
 "gJd" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -10393,7 +10592,7 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
 /obj/machinery/alarm{
-	desc = null;
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/structure/cable{
@@ -10622,6 +10821,13 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"hcc" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/machinery/disposal,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "hcy" = (
 /obj/structure/table/steel,
 /obj/machinery/light{
@@ -10691,6 +10897,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"heF" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/space)
 "heZ" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/morgue)
@@ -11006,8 +11218,12 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/asmaint2)
 "hrq" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/security/upper)
+/area/security/armory/blue)
 "hrI" = (
 /obj/machinery/door/airlock/glass/security{
 	layer = 2.8;
@@ -11346,7 +11562,7 @@
 	pixel_y = 5
 	},
 /obj/machinery/alarm{
-	desc = null;
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/structure/sign/greencross{
@@ -11863,7 +12079,7 @@
 	dir = 9
 	},
 /obj/machinery/alarm{
-	desc = null;
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/item/cell/high,
@@ -12030,6 +12246,21 @@
 	},
 /turf/simulated/open,
 /area/maintenance/lower/medsec_maintenance)
+"hTt" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "hTW" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -12293,6 +12524,16 @@
 /obj/structure/flora/pottedplant/fern,
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
+"icU" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/upper)
 "idk" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -12306,6 +12547,25 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"idV" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/hand_labeler{
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/obj/item/hand_labeler{
+	pixel_x = -3
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "ieh" = (
 /obj/structure/cable/orange{
 	icon_state = "1-2"
@@ -13065,6 +13325,16 @@
 /obj/item/extinguisher,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/lower/medsec_maintenance)
+"iBN" = (
+/obj/structure/catwalk,
+/obj/structure/railing/grey,
+/obj/structure/table/steel,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/simulated/open,
+/area/security/armory/blue)
 "iCs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -13114,6 +13384,26 @@
 	pixel_x = 30
 	},
 /turf/simulated/open,
+/area/space)
+"iEp" = (
+/obj/structure/disposalpipe/sortjunction{
+	dir = 8;
+	name = "Warden";
+	sortType = "Warden"
+	},
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/dark,
 /area/space)
 "iEO" = (
 /obj/structure/bed/padded,
@@ -13213,7 +13503,7 @@
 /obj/structure/catwalk,
 /obj/structure/railing/grey,
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "iHH" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -13403,7 +13693,7 @@
 	dir = 1
 	},
 /obj/machinery/alarm{
-	desc = null;
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/white,
@@ -13529,6 +13819,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker)
+"iQk" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/photocopier/faxmachine{
+	department = "Warden's Office"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "iQl" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -13566,7 +13863,7 @@
 	},
 /obj/structure/railing/grey,
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "iRk" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Briefing Room";
@@ -13631,6 +13928,16 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
+"iSn" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "iTw" = (
 /turf/simulated/open,
 /area/rnd/telescience_lab/foyer)
@@ -14468,8 +14775,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
 "jxr" = (
+/obj/machinery/light,
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "jxw" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -14539,6 +14847,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
+"jAk" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/folder/red,
+/obj/item/pen/multi{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "jBb" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/melee/baton/loaded{
@@ -14678,6 +14995,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
+"jKa" = (
+/obj/machinery/camera/network/security{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/space)
 "jLI" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -14756,6 +15079,10 @@
 "jMy" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
 /area/space)
@@ -15160,6 +15487,13 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/crew_quarters/pool/changing_room)
+"jWY" = (
+/obj/structure/catwalk,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/space)
 "jXj" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -15563,7 +15897,7 @@
 	dir = 10
 	},
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/structure/cable{
@@ -16217,6 +16551,27 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
+"kAg" = (
+/obj/machinery/door/airlock/glass/security/polarized{
+	id_tag = "warden_office";
+	id_tint = "warden_office";
+	name = "Warden";
+	req_one_access = list(3)
+	},
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 8;
+	icon_state = "shutter0";
+	id = "warden";
+	layer = 3.1;
+	name = "Warden's Office Shutters";
+	opacity = 0
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "kAt" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -16520,6 +16875,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"kLE" = (
+/obj/structure/sign/department/armory,
+/turf/simulated/wall/r_wall/prepainted/security,
+/area/security/armory/blue)
 "kMg" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
 /turf/simulated/floor/plating,
@@ -16936,10 +17295,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/door/blast/regular{
-	id = "armorylight";
-	name = "Light Armory Acccess"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "kXg" = (
@@ -17512,16 +17867,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
-"llz" = (
-/obj/machinery/button/remote/blast_door{
-	id = "armorylight";
-	name = "Light Armory Access";
-	pixel_x = -8;
-	pixel_y = 29;
-	req_access = list(3)
-	},
-/turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
 "llD" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -17780,6 +18125,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hos)
+"lvM" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "lvP" = (
 /obj/structure/table/steel,
 /obj/machinery/recharger,
@@ -17796,7 +18147,7 @@
 	dir = 1
 	},
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
@@ -17942,6 +18293,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/holodeck_control)
+"lBm" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/clipboard{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/item/clipboard{
+	pixel_x = -1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "lBx" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/lightorange/bordercorner,
@@ -18184,6 +18546,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/research/researchdivision)
+"lGg" = (
+/obj/machinery/papershredder,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "lGh" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small{
@@ -18243,6 +18609,12 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"lIV" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/space)
 "lIZ" = (
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
@@ -18839,7 +19211,7 @@
 "maU" = (
 /obj/structure/table/woodentable,
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/machinery/light{
@@ -19088,6 +19460,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/pool)
+"mjB" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/space)
 "mjL" = (
 /obj/structure/table/bench/steel,
 /obj/landmark/spawnpoint/job/security_officer,
@@ -20091,6 +20469,10 @@
 "mJn" = (
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacetwo)
+"mJp" = (
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "mJq" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
@@ -20189,6 +20571,15 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"mPr" = (
+/obj/structure/catwalk,
+/obj/structure/railing/grey,
+/obj/item/radio/intercom/department/security{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/simulated/open,
+/area/space)
 "mPu" = (
 /obj/structure/closet/secure_closet/guncabinet/robotics,
 /turf/simulated/floor/tiled/steel_ridged,
@@ -20210,6 +20601,23 @@
 	dir = 10
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
+/turf/simulated/floor/tiled/steel,
+/area/security/hallway)
+"mPN" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/machinery/holoposter{
+	pixel_x = -32
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "mPW" = (
@@ -20488,7 +20896,7 @@
 "mZT" = (
 /obj/structure/catwalk,
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "nac" = (
 /obj/machinery/computer/secure_data,
 /turf/simulated/floor/tiled/red,
@@ -20591,6 +20999,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
+"ncQ" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "ncT" = (
 /obj/structure/bookcase/manuals/research_and_development,
 /turf/simulated/floor/wood,
@@ -20762,7 +21176,7 @@
 	dir = 8
 	},
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "niV" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/computer/skills,
@@ -20804,7 +21218,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -21125,6 +21539,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
+"nwf" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/space)
 "nwr" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
@@ -21335,6 +21755,21 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"nBO" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "nCa" = (
 /obj/machinery/suit_storage_unit/cryosuit/security,
 /obj/structure/window/reinforced{
@@ -21342,6 +21777,12 @@
 	},
 /turf/simulated/floor/tiled/red,
 /area/security/evastorage)
+"nCd" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "nCi" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/catwalk,
@@ -21383,6 +21824,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
+"nDe" = (
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/space)
 "nDj" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -21629,6 +22077,21 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/workshop)
+"nMf" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 8;
+	icon_state = "shutter0";
+	id = "warden";
+	layer = 3.1;
+	name = "Warden's Office Shutters";
+	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/darkred,
+/turf/simulated/floor/plating,
+/area/space)
 "nMi" = (
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
@@ -22103,8 +22566,11 @@
 	dir = 4
 	},
 /obj/structure/closet/bombclosetsecurity,
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "odu" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -22212,6 +22678,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"ogj" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "ogw" = (
 /obj/machinery/light/no_nightshift{
 	dir = 8
@@ -22333,6 +22808,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "olp" = (
@@ -22430,7 +22908,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/area/security/armory/blue)
 "oqQ" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -22764,12 +23242,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "oCB" = (
-/obj/machinery/alarm{
-	desc = " ";
-	pixel_y = 24
+/obj/machinery/button/remote/blast_door{
+	id = "armorylight";
+	name = "Light Armory Access";
+	pixel_x = 25;
+	pixel_y = 29;
+	req_access = list(3)
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/security/upper)
+/area/security/armory/blue)
 "oCC" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -23500,7 +23981,7 @@
 "oWE" = (
 /obj/structure/table/woodentable,
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/machinery/light{
@@ -23577,6 +24058,12 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
+"oYK" = (
+/obj/structure/filingcabinet/security{
+	name = "Security Records"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "oZd" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -23645,7 +24132,7 @@
 	dir = 4
 	},
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "pbK" = (
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/engi{
@@ -23866,7 +24353,7 @@
 "pfD" = (
 /obj/structure/table/woodentable,
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/machinery/light{
@@ -24038,6 +24525,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
+"ply" = (
+/turf/simulated/mineral/icerock/lythios43c,
+/area/security/hallway)
 "plW" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -24522,6 +25012,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
+"pAC" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/monotile,
+/area/space)
 "pAN" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -24563,6 +25057,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"pCc" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "pCD" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255
@@ -24669,6 +25169,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"pGq" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled/monotile,
+/area/space)
 "pGM" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -25183,7 +25687,7 @@
 /area/maintenance/asmaint2)
 "pZT" = (
 /obj/machinery/alarm{
-	desc = null;
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/structure/railing{
@@ -25395,6 +25899,12 @@
 "qfQ" = (
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
+"qga" = (
+/obj/machinery/computer/security{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "qgp" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -25524,12 +26034,19 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/breakroom)
 "qjI" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/glass/security{
 	layer = 2.8;
 	name = "Genpop";
 	req_one_access = list(1,38)
 	},
-/turf/space/basic,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/steel,
 /area/space)
 "qkS" = (
 /obj/structure/cable/orange{
@@ -26158,6 +26675,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
+"qDi" = (
+/obj/structure/catwalk,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/table/steel,
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/simulated/open,
+/area/security/armory/blue)
 "qDl" = (
 /obj/structure/table/steel,
 /obj/item/radio/electropack,
@@ -26237,7 +26766,7 @@
 	dir = 1
 	},
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -26289,7 +26818,7 @@
 	dir = 1
 	},
 /obj/machinery/alarm{
-	desc = null;
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/machinery/camera/network/civilian,
@@ -26611,7 +27140,7 @@
 /area/security/lobby)
 "qSY" = (
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
@@ -26855,6 +27384,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"qYk" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "qZE" = (
 /obj/machinery/light{
 	dir = 1
@@ -27221,7 +27754,7 @@
 /obj/item/hand_labeler,
 /obj/item/pen,
 /obj/machinery/alarm{
-	desc = null;
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/red,
@@ -27693,6 +28226,15 @@
 "ryQ" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/security_equiptment_storage)
+"ryW" = (
+/obj/structure/catwalk,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 24
+	},
+/turf/simulated/open,
+/area/space)
 "rza" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -27871,6 +28413,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
+"rGx" = (
+/obj/item/radio/intercom/department/security{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/space)
 "rGz" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/plating,
@@ -27995,12 +28544,20 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
+"rJo" = (
+/obj/structure/sign/department/armory,
+/turf/simulated/wall/r_wall/prepainted/security,
+/area/space)
 "rJp" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/machinery/alarm{
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
+	pixel_y = 24
+	},
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/security/upper)
+/area/security/armory/blue)
 "rJG" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -28093,6 +28650,20 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
+/area/security/hallway)
+"rMD" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "rMS" = (
 /obj/machinery/light/no_nightshift{
@@ -28518,6 +29089,18 @@
 /obj/effect/blocker,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside2)
+"rZj" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/folder/red,
+/obj/item/pen/multi{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/machinery/camera/network/security{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "rZD" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -28546,6 +29129,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
+"sax" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/security/armory/blue)
 "saL" = (
 /obj/structure/railing{
 	dir = 8
@@ -29153,7 +29742,7 @@
 	dir = 1
 	},
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "sxd" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/overlay/snow/floor,
@@ -29921,7 +30510,7 @@
 	},
 /obj/structure/bed/chair/wood,
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -30022,26 +30611,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
-"taL" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/red/border{
-	dir = 4
-	},
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/red/bordercorner2{
-	dir = 6
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/steel,
-/area/security/hallway)
 "taM" = (
 /obj/machinery/door/blast/regular{
 	id = "xenobiodiv5";
@@ -30402,6 +30971,12 @@
 /obj/machinery/door/airlock/security{
 	name = "Private Quarters"
 	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "tnu" = (
@@ -30496,6 +31071,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
+"trh" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "trq" = (
 /obj/effect/floor_decal/corner_techfloor_gray/full{
 	dir = 1
@@ -30725,6 +31306,12 @@
 /area/security/warden)
 "tzD" = (
 /obj/machinery/door/airlock/maintenance/sec,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "tAd" = (
@@ -30874,7 +31461,7 @@
 "tCA" = (
 /obj/structure/table/woodentable,
 /obj/machinery/alarm{
-	desc = " ";
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/machinery/light{
@@ -30936,6 +31523,33 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
+"tFh" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	icon_state = "shutter0";
+	id = "warden_desk";
+	layer = 3.1;
+	name = "Warden's Office Shutters";
+	opacity = 0
+	},
+/obj/machinery/door/window/brigdoor/southleft{
+	name = "Warden's Desk"
+	},
+/obj/machinery/door/window/brigdoor/northright{
+	name = "Warden's Desk";
+	req_access = list(3)
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/item/deskbell,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "tFm" = (
 /obj/machinery/iv_drip,
 /obj/effect/floor_decal/corner/paleblue{
@@ -30973,6 +31587,19 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
+"tFy" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "tFF" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -31115,6 +31742,15 @@
 	},
 /turf/simulated/floor/carpet,
 /area/security/warden)
+"tIx" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "tIA" = (
 /obj/machinery/space_heater,
 /turf/simulated/floor/tiled/techmaint,
@@ -31243,7 +31879,7 @@
 "tRg" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/security/upper)
+/area/security/armory/blue)
 "tRo" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
@@ -32378,6 +33014,13 @@
 	},
 /turf/simulated/open,
 /area/rift/station/public_garden/gantry)
+"uKx" = (
+/obj/structure/catwalk,
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/space)
 "uKA" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -32593,7 +33236,7 @@
 /area/security/hammerhead_bay)
 "uRh" = (
 /obj/machinery/alarm{
-	desc = null;
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -33233,7 +33876,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/maintenance/security/upper)
+/area/security/armory/blue)
 "vhK" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -33373,6 +34016,9 @@
 /area/security/hallway)
 "vlE" = (
 /obj/machinery/door/airlock/maintenance/sec,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/space)
 "vmd" = (
@@ -33568,6 +34214,12 @@
 "vso" = (
 /obj/machinery/holoposter{
 	pixel_y = 32
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/space)
@@ -34080,6 +34732,12 @@
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"vLA" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "vLE" = (
 /obj/machinery/door/airlock/maintenance/sec,
 /obj/machinery/door/firedoor/glass,
@@ -34216,6 +34874,12 @@
 /obj/machinery/vending/snack,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
+"vRn" = (
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/space)
 "vSc" = (
 /obj/machinery/camera/network/security{
 	dir = 8
@@ -34507,7 +35171,7 @@
 	dir = 4
 	},
 /obj/machinery/alarm{
-	desc = null;
+	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area.";
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -34653,6 +35317,19 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacetwo)
+"wjo" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "wjQ" = (
 /obj/structure/bed/chair/comfy/beige,
 /obj/machinery/firealarm{
@@ -35082,6 +35759,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
+"wyd" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "wyV" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
@@ -35988,7 +36671,7 @@
 	},
 /obj/structure/railing/grey,
 /turf/simulated/open,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "xfT" = (
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research/xenobiology_lab)
@@ -36086,6 +36769,24 @@
 "xjt" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/lobby)
+"xjy" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/space)
 "xjH" = (
 /obj/machinery/computer/ship/sensors{
 	dir = 4
@@ -36706,6 +37407,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
+"xHn" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/space)
 "xHT" = (
 /obj/machinery/photocopier/faxmachine{
 	department = "Reading Room"
@@ -37497,9 +38204,20 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
 "yaX" = (
-/obj/machinery/light/small,
+/obj/machinery/door/airlock/multi_tile/glass/security{
+	dir = 4;
+	name = "Armory"
+	},
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "armorylight";
+	name = "Light Armory Acccess"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monotile,
-/area/rift/surfacebase/outside/outside2)
+/area/security/armory/blue)
 "ybi" = (
 /obj/machinery/light/small,
 /obj/machinery/recharge_station,
@@ -54454,11 +55172,11 @@ eGx
 eGx
 eGx
 eGx
-eGx
+mjB
 yfc
 yfc
 sZU
-sZU
+flV
 bRZ
 iiw
 eCj
@@ -55029,18 +55747,18 @@ rne
 xqo
 nlb
 nlb
-gsT
-gsT
-gsT
 nlb
 nlb
-gsT
-gsT
-gsT
+uKx
+nlb
+nlb
+nlb
+nlb
+nlb
 bbZ
-bbZ
+dtL
 tnq
-jMy
+nBO
 jMy
 mWN
 vcn
@@ -55221,18 +55939,18 @@ iNA
 aEk
 uNR
 yfc
-nlb
-cou
-eGx
-eGx
-eGx
-mpj
-cou
-eGx
-eGx
-eGx
-tau
+yfc
+yfc
+yfc
+kAg
+yfc
+nMf
+nMf
+yfc
+yfc
+yfc
 bbZ
+hTt
 yfc
 wWS
 wWS
@@ -55415,18 +56133,18 @@ rCb
 rZD
 yfc
 yfc
-nlb
-cou
-eGx
-eGx
-eGx
-mpj
-cou
-eGx
-eGx
-eGx
-tau
+yfc
+yfc
+oYK
 bbZ
+rZj
+eDX
+cMy
+nMf
+lvM
+lvM
+bbZ
+hTt
 yfc
 uWL
 gEL
@@ -55608,19 +56326,19 @@ uAn
 jux
 bVr
 yfc
+yfc
+yfc
+gii
+bbZ
+bbZ
+qYk
+nCd
+fii
+nMf
 bbZ
 bbZ
 bbZ
-fBu
-fBu
-fBu
-bbZ
-bbZ
-fBu
-fBu
-fBu
-bbZ
-bbZ
+hTt
 yfc
 yfc
 yfc
@@ -55802,31 +56520,31 @@ uAn
 vBG
 bVr
 yfc
+idV
+jAk
 bbZ
 bbZ
+wyd
+ekk
 bbZ
+jAk
+nMf
 bbZ
+wyd
 bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
+xjy
+coU
 xhU
-xhU
+frH
 xhU
 dyd
 mAG
-llR
+bpF
 fUV
 hSr
 elc
 aWT
-fUV
+mPN
 llR
 llR
 jLI
@@ -55994,23 +56712,23 @@ rZI
 qly
 uAn
 pCP
-bVr
+icU
 vlE
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
+ogj
+pCc
+iSn
+ePT
+tFy
+bLU
+tIx
+bDa
+tFh
+tIx
+wjo
+tIx
+iEp
 yfc
-ruT
+pGq
 ruT
 ruT
 eEI
@@ -56191,32 +56909,32 @@ pCP
 rPy
 yfc
 bbZ
+lBm
+aqE
 bbZ
+vLA
+lGg
+cQw
+ebP
+nMf
 bbZ
+vLA
 bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
+evj
+mJp
 tDj
 tDj
 prC
 sxN
 fJQ
-taL
+aBR
 lim
-vCw
+rMD
 cgt
 oWI
 aBR
 vCw
-vCw
+gox
 wwN
 nJT
 scJ
@@ -56384,28 +57102,28 @@ uAn
 pCP
 bVr
 yfc
+kAg
+rJo
+hcc
+bbZ
+bbZ
+bbZ
+trh
+qYk
+nMf
 bbZ
 bbZ
 bbZ
 bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-bbZ
-yfc
-bbZ
-bbZ
-yfc
+kIE
 vrq
 vrq
 yfc
 kGI
 pzM
-yfc
-yfc
 kIE
+yfc
+yfc
 vrq
 vrq
 vrq
@@ -56578,28 +57296,28 @@ uAn
 vBG
 bVr
 yfc
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-mpj
+nlb
+yfc
+yfc
+brB
+iQk
+qga
+dtH
+cjj
+nMf
+ncQ
+bbZ
+bbZ
 cou
+xHn
 eGx
 eGx
-eGx
-eGx
+jKa
 oqQ
 ssN
 lQG
 lgK
-ruT
+nwf
 ruT
 ruT
 ruT
@@ -56772,18 +57490,18 @@ uAn
 pCP
 bVr
 yfc
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-mpj
+nlb
+nlb
+yfc
+yfc
+nMf
+nMf
+nMf
+yfc
+yfc
+yfc
+rJo
+nlb
 cou
 eGx
 eGx
@@ -56966,17 +57684,17 @@ uAn
 ubD
 bVr
 yfc
+nlb
+cou
+jKa
+xHn
 eGx
 eGx
 eGx
 eGx
 eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
+xHn
+jKa
 mpj
 cou
 eGx
@@ -56991,9 +57709,9 @@ eGx
 eGx
 eGx
 eGx
-eGx
+mjB
 kIE
-tiu
+oqK
 bhS
 gjq
 uaX
@@ -57160,8 +57878,8 @@ qRD
 uAn
 bVr
 yfc
-eGx
-eGx
+nlb
+cou
 eGx
 eGx
 eGx
@@ -57354,8 +58072,8 @@ hPc
 uAn
 bVr
 yfc
-eGx
-eGx
+jWY
+cou
 eGx
 eGx
 eGx
@@ -57548,8 +58266,8 @@ eWf
 uAn
 bVr
 yfc
-eGx
-eGx
+nlb
+cou
 eGx
 eGx
 eGx
@@ -57742,16 +58460,16 @@ uAn
 uAn
 bVr
 yfc
-eGx
-eGx
-eGx
-eGx
-eGx
+ryW
 nlb
-nlb
-nlb
-nlb
-nlb
+unk
+unk
+unk
+unk
+unk
+unk
+unk
+unk
 unk
 nlb
 nlb
@@ -57936,12 +58654,12 @@ uAn
 vBG
 bVr
 yfc
-eGx
-eGx
-eGx
-eGx
-eGx
 nlb
+nlb
+gsT
+gsT
+gsT
+gsT
 nlb
 nlb
 gsT
@@ -57961,9 +58679,9 @@ eGx
 eGx
 eGx
 eGx
-eGx
+fyn
 yfc
-ofz
+oqK
 oBU
 cUn
 nVd
@@ -58130,8 +58848,8 @@ uAn
 vBG
 bVr
 yfc
-eGx
-eGx
+nlb
+cou
 eGx
 eGx
 eGx
@@ -58157,7 +58875,7 @@ eGx
 eGx
 eGx
 yfc
-oqK
+ofz
 bhS
 quY
 nyQ
@@ -58324,8 +59042,8 @@ uAn
 vBG
 bVr
 yfc
-eGx
-eGx
+jWY
+cou
 eGx
 eGx
 eGx
@@ -58518,18 +59236,7 @@ uAn
 dwd
 bVr
 yfc
-eGx
-eGx
-eGx
-eGx
-eGx
-eGx
-mpj
-cou
-eGx
-eGx
-eGx
-mpj
+nlb
 cou
 eGx
 eGx
@@ -58540,10 +59247,21 @@ cou
 eGx
 eGx
 eGx
+mpj
+cou
 eGx
 eGx
 eGx
 eGx
+mpj
+cou
+eGx
+eGx
+eGx
+eGx
+eGx
+eGx
+mjB
 yfc
 ivn
 bhS
@@ -58712,8 +59430,8 @@ uAn
 vBG
 bVr
 yfc
-eGx
-eGx
+nlb
+cou
 eGx
 eGx
 eGx
@@ -58906,8 +59624,8 @@ kcn
 vBG
 bVr
 yfc
-eGx
-eGx
+nlb
+cou
 eGx
 eGx
 eGx
@@ -59100,8 +59818,8 @@ kcn
 vBG
 bVr
 yfc
-eGx
-eGx
+nlb
+cou
 eGx
 eGx
 eGx
@@ -59125,7 +59843,7 @@ obK
 obK
 ruT
 ruT
-ruT
+pAC
 yfc
 wXp
 gQY
@@ -59294,31 +60012,31 @@ nCi
 lMt
 bVr
 yfc
+agw
+mPr
+vRn
 eGx
-eGx
-eGx
-eGx
-eGx
+lIV
 eGx
 mpj
 cou
 eGx
-eGx
-eGx
+lIV
+vRn
 dpY
 iEc
 eGx
-eGx
+lIV
 eGx
 eGx
 oqQ
 ruT
+foV
+heF
+nDe
 ruT
 ruT
-ruT
-ruT
-ruT
-ruT
+rGx
 ruT
 yfc
 jqg
@@ -59493,10 +60211,10 @@ yfc
 yfc
 yfc
 yfc
-yfc
-ruT
-ruT
-yfc
+rJo
+agn
+gIL
+rJo
 yfc
 yfc
 yfc
@@ -59687,10 +60405,10 @@ lMt
 pCP
 pCP
 fCk
-rCb
+gUS
 eRd
 tRg
-rCb
+gUS
 dwd
 vBG
 kBE
@@ -60075,10 +60793,10 @@ dwd
 vBG
 vBG
 vBG
-rCb
+gUS
 rJp
 hrq
-rCb
+gUS
 ydW
 aKt
 kKd
@@ -60269,10 +60987,10 @@ kcn
 kcn
 kcn
 kcn
-rCb
+gUS
 oCB
 bQG
-rCb
+gUS
 jnP
 kcn
 kcn
@@ -60463,12 +61181,12 @@ pBj
 pBj
 pBj
 pBj
-niX
+gUS
 eaE
 yaX
-niX
-aKq
-aKq
+gUS
+kcn
+kcn
 pBj
 pBj
 pBj
@@ -60646,7 +61364,7 @@ nnG
 niX
 lGo
 niX
-aid
+fTh
 nnG
 niX
 pBj
@@ -60656,12 +61374,12 @@ pBj
 pBj
 pBj
 pBj
-niX
-niX
+gUS
+gUS
 ddo
-ddo
-niX
-niX
+bQG
+kLE
+gUS
 pBj
 pBj
 pBj
@@ -60849,14 +61567,14 @@ pBj
 pBj
 pBj
 pBj
-niX
-niX
-llz
+gUS
+gUS
+fWL
 cAg
 iHA
-jxr
-niX
-niX
+fWL
+gUS
+gUS
 pBj
 pBj
 pBj
@@ -61042,16 +61760,16 @@ pBj
 pBj
 pBj
 pBj
-niX
-niX
-jxr
-jxr
+gUS
+gUS
+bem
+bem
 cAg
 iHA
-jxr
-jxr
-niX
-niX
+bem
+bem
+gUS
+gUS
 pBj
 pBj
 pBj
@@ -61235,18 +61953,18 @@ pBj
 pBj
 pBj
 pBj
-niX
-niX
-jxr
-jxr
+gUS
+gUS
+bem
+bem
 bNE
 mZT
 mZT
 xfH
-jxr
-jxr
-niX
-niX
+bem
+bem
+gUS
+gUS
 pBj
 pBj
 pBj
@@ -61429,18 +62147,18 @@ pBj
 pBj
 pBj
 pBj
-niX
-jxr
-jxr
+gUS
+eht
+bem
 bNE
 mZT
 mZT
 mZT
 mZT
 xfH
+bem
 jxr
-jxr
-niX
+gUS
 pBj
 pBj
 pBj
@@ -61623,18 +62341,18 @@ pBj
 pBj
 pBj
 pBj
-niX
+gUS
 cWI
 niM
 mZT
 iHA
-jxr
-jxr
+bem
+bem
 cAg
 mZT
 niM
 cCx
-niX
+gUS
 pBj
 pBj
 pBj
@@ -61817,18 +62535,18 @@ pBj
 pBj
 pBj
 pBj
-niX
+gUS
 fNH
 pbJ
 mZT
 iHA
-jxr
-jxr
+bem
+bem
 cAg
 mZT
 pbJ
 ocR
-niX
+gUS
 pBj
 pBj
 pBj
@@ -62011,18 +62729,18 @@ pBj
 pBj
 pBj
 pBj
-niX
-jxr
-jxr
+gUS
+eht
+bem
 swQ
 mZT
 eBM
 cpq
 mZT
 iRf
+bem
 jxr
-jxr
-niX
+gUS
 pBj
 pBj
 pBj
@@ -62205,18 +62923,18 @@ pBj
 pBj
 pBj
 pBj
-niX
-niX
-jxr
-jxr
+gUS
+gUS
+bem
+bem
 swQ
 mZT
 mZT
 iRf
-jxr
-jxr
-niX
-niX
+bem
+bem
+gUS
+gUS
 pBj
 pBj
 pBj
@@ -62400,16 +63118,16 @@ pBj
 pBj
 pBj
 pBj
-niX
-niX
-jxr
-jxr
+gUS
+gUS
+bem
+bem
 cAg
 iHA
-jxr
-jxr
-niX
-niX
+bem
+bem
+gUS
+gUS
 pBj
 pBj
 pBj
@@ -62595,14 +63313,14 @@ pBj
 pBj
 pBj
 pBj
-niX
-niX
-jxr
-cAg
-iHA
-jxr
-niX
-niX
+gUS
+gUS
+sax
+qDi
+iBN
+sax
+gUS
+gUS
 pBj
 pBj
 pBj
@@ -62790,12 +63508,12 @@ pBj
 pBj
 pBj
 pBj
-niX
-niX
-niX
-niX
-niX
-niX
+gUS
+gUS
+gUS
+gUS
+gUS
+gUS
 pBj
 pBj
 pBj
@@ -63369,20 +64087,20 @@ mTl
 mTl
 mTl
 mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
 pBj
 pBj
 pBj
@@ -63563,20 +64281,20 @@ mTl
 mTl
 mTl
 mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
-mTl
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
+ply
 pBj
 pBj
 pBj
