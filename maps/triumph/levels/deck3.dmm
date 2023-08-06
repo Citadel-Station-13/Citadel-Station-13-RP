@@ -44,6 +44,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "acD" = (
@@ -181,6 +182,7 @@
 /obj/structure/curtain/open/shower/medical{
 	name = "Privacy curtain"
 	},
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/patient_a)
 "ahH" = (
@@ -471,6 +473,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "avE" = (
@@ -647,6 +650,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "aDx" = (
@@ -727,6 +731,7 @@
 	icon_state = "2-8"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/cmo)
 "aFj" = (
@@ -779,6 +784,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologyisolation)
 "aFW" = (
@@ -1842,6 +1848,7 @@
 "bGt" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/resleeving)
 "bGx" = (
@@ -2348,6 +2355,7 @@
 	icon_state = "0-8"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/cmo)
 "cbw" = (
@@ -2421,6 +2429,7 @@
 "cfG" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/morgue)
 "cfI" = (
@@ -2430,6 +2439,7 @@
 	id = "ward_c"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/patient_c)
 "cgs" = (
@@ -2707,8 +2717,7 @@
 "csx" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = 1380;
-	id_tag = null
+	frequency = 1380
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -2978,7 +2987,6 @@
 	dir = 1;
 	frequency = 1445;
 	id = "burn_in";
-	req_access = null;
 	volume_rate = 700
 	},
 /turf/simulated/floor/reinforced,
@@ -3010,6 +3018,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "cEY" = (
@@ -3038,6 +3047,7 @@
 "cFb" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/medbay_primary_storage)
 "cFk" = (
@@ -3285,6 +3295,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "cOG" = (
@@ -3526,9 +3537,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
-"daL" = (
-/turf/simulated/wall,
-/area/medical/ward)
 "dbb" = (
 /obj/machinery/door/window/brigdoor/northright{
 	name = "Containment Pen";
@@ -3627,7 +3635,7 @@
 /area/medical/virologyisolation)
 "ddG" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	id_tag = "MedbayFoyer";
 	name = "Recovery Wing";
 	req_access = list(5)
@@ -3824,6 +3832,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "dni" = (
@@ -4438,6 +4447,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/psych_ward)
 "dOE" = (
@@ -4828,6 +4838,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/hallway)
 "ecT" = (
@@ -5007,6 +5018,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/surgeryprep)
 "egR" = (
@@ -5137,6 +5149,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "ekU" = (
@@ -5804,6 +5817,7 @@
 /obj/structure/curtain/open/shower/medical{
 	name = "Privacy curtain"
 	},
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/patient_c)
 "eWn" = (
@@ -5896,6 +5910,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
 "eYM" = (
@@ -6495,7 +6510,6 @@
 /obj/machinery/power/emitter{
 	anchored = 1;
 	dir = 1;
-	id = null;
 	pixel_y = 8;
 	state = 2
 	},
@@ -6541,6 +6555,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "fzF" = (
@@ -7381,6 +7396,7 @@
 	icon_state = "0-8"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/cmo)
 "gjw" = (
@@ -7519,6 +7535,7 @@
 "gpg" = (
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "gpS" = (
@@ -7629,6 +7646,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
 "guA" = (
@@ -7741,6 +7759,7 @@
 "gwT" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
 "gxm" = (
@@ -8097,6 +8116,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_one)
 "gQh" = (
@@ -8262,6 +8282,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/resleeving)
 "gYW" = (
@@ -8362,6 +8383,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "hdr" = (
@@ -8579,6 +8601,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "hlv" = (
@@ -8925,6 +8948,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/workshop)
 "hxs" = (
@@ -8934,6 +8958,7 @@
 	id = "exam_1"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/exam_room/exam_1)
 "hxK" = (
@@ -9032,6 +9057,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "hBp" = (
@@ -9093,7 +9119,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	id_tag = "PsycheFoyer";
 	name = "Psychiatric Wing";
 	req_access = list();
@@ -9344,11 +9370,11 @@
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "hLc" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
-/turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/obj/machinery/door/firedoor,
+/obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
+/turf/simulated/floor/plating,
+/area/medical/reception)
 "hMz" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Research"
@@ -9653,9 +9679,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/camera/network/research,
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 8
@@ -10110,6 +10134,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
 "iry" = (
@@ -10761,6 +10786,7 @@
 	id = "ward_a"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/patient_a)
 "iPb" = (
@@ -10812,11 +10838,12 @@
 "iRy" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/breakroom)
 "iRK" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	id_tag = "MedbayFoyer";
 	name = "Recovery Wing"
 	},
@@ -10884,6 +10911,7 @@
 "iVb" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/ward)
 "iVj" = (
@@ -10917,7 +10945,6 @@
 	dir = 8;
 	frequency = 1445;
 	id = "burn_in";
-	req_access = null;
 	volume_rate = 700
 	},
 /turf/simulated/floor/reinforced,
@@ -11064,6 +11091,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/cmo)
 "jbE" = (
@@ -11474,6 +11502,7 @@
 /obj/structure/curtain/open/shower/medical{
 	name = "Privacy curtain"
 	},
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/patient_b)
 "jtb" = (
@@ -12016,6 +12045,7 @@
 "jNm" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/research_foyer_auxiliary)
 "jNo" = (
@@ -12128,6 +12158,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/medbreak)
 "jRs" = (
@@ -13005,6 +13036,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "kIB" = (
@@ -13055,6 +13087,7 @@
 "kKY" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_one)
 "kMe" = (
@@ -13427,6 +13460,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "lbH" = (
@@ -13435,6 +13469,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
 "lcu" = (
@@ -13778,6 +13813,7 @@
 	},
 /obj/spawner/window/low_wall/reinforced/full,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/psych_ward)
 "lsM" = (
@@ -14156,6 +14192,7 @@
 "lGI" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/reception_desk)
 "lHn" = (
@@ -14638,6 +14675,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "meR" = (
@@ -14737,6 +14775,7 @@
 /obj/structure/curtain/open/shower/medical{
 	name = "Privacy curtain"
 	},
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/patient_d)
 "mlj" = (
@@ -14837,6 +14876,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "moH" = (
@@ -15488,6 +15528,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/shuttle/emt/general)
 "mTt" = (
@@ -15877,6 +15918,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/medbay_emt_bay)
 "nih" = (
@@ -17079,6 +17121,7 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "psyche"
 	},
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/psych/psych_1)
 "oku" = (
@@ -17421,6 +17464,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/reception_desk)
 "owE" = (
@@ -17696,6 +17740,7 @@
 "oJw" = (
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_two)
 "oJy" = (
@@ -18378,6 +18423,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "phf" = (
@@ -18471,9 +18517,7 @@
 "pky" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	id_tag = "MedbayFoyer";
-	name = "General Wing";
-	req_access = null;
-	req_one_access = null
+	name = "General Wing"
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/borderfloor{
@@ -18636,6 +18680,7 @@
 "pqK" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab)
 "pqY" = (
@@ -18704,8 +18749,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = 1380;
-	id_tag = null
+	frequency = 1380
 	},
 /obj/machinery/access_button{
 	dir = 1;
@@ -18773,7 +18817,6 @@
 /obj/machinery/power/emitter{
 	anchored = 1;
 	dir = 1;
-	id = null;
 	pixel_y = 8;
 	state = 2
 	},
@@ -19819,6 +19862,7 @@
 	id = "ward_b"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/patient_b)
 "qjz" = (
@@ -20410,6 +20454,7 @@
 /obj/structure/curtain/open/shower/medical{
 	name = "Privacy curtain"
 	},
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/psych_ward)
 "qIz" = (
@@ -20913,7 +20958,6 @@
 	dir = 1;
 	frequency = 1445;
 	id = "burn_in";
-	req_access = null;
 	volume_rate = 700
 	},
 /turf/simulated/floor/wood,
@@ -21208,6 +21252,7 @@
 "rjP" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologyisolation)
 "rkd" = (
@@ -21507,6 +21552,7 @@
 "rxi" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/shuttle/emt/general)
 "rxP" = (
@@ -21843,6 +21889,7 @@
 "rLU" = (
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/psych_ward)
 "rMs" = (
@@ -21918,6 +21965,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/virologyisolation)
 "rOl" = (
@@ -22030,6 +22078,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
 "rUk" = (
@@ -22070,8 +22119,7 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
-	frequency = 1380;
-	id_tag = null
+	frequency = 1380
 	},
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
@@ -22334,9 +22382,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "skW" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
+/obj/machinery/door/firedoor/multi_tile,
 /obj/structure/curtain/open/shower/medical,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/blue/border,
@@ -22555,6 +22601,7 @@
 /area/medical/psych_ward)
 "svd" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "svp" = (
@@ -22931,7 +22978,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Medbay Surgery";
 	req_access = list(5)
 	},
@@ -23100,6 +23147,7 @@
 /area/rnd/test_area)
 "sQe" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "sQh" = (
@@ -23537,6 +23585,7 @@
 /area/maintenance/medbay/fore)
 "tij" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora)
 "tir" = (
@@ -23761,6 +23810,7 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "psyche"
 	},
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/psych/psych_1)
 "ttS" = (
@@ -24019,6 +24069,7 @@
 	icon_state = "0-4"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/cmo)
 "tFQ" = (
@@ -24057,6 +24108,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "tHr" = (
@@ -24238,6 +24290,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "tNv" = (
@@ -25058,6 +25111,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
 "uuw" = (
@@ -25429,6 +25483,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "uLA" = (
@@ -25447,6 +25502,7 @@
 	id = "exam_2"
 	},
 /obj/structure/wall_frame/prepainted,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/exam_room/exam_2)
 "uML" = (
@@ -26629,10 +26685,9 @@
 /area/hallway/primary/port)
 "vNt" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Chem & Offices";
-	req_access = list(5);
-	req_one_access = null
+	req_access = list(5)
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -27010,7 +27065,6 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
 	name = "Psychiatric Ward";
 	req_access = list(5)
 	},
@@ -27144,6 +27198,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "wfE" = (
@@ -27198,8 +27253,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = 1380;
-	id_tag = null
+	frequency = 1380
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -27251,8 +27305,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = 1380;
-	id_tag = null
+	frequency = 1380
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -27457,6 +27510,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/breakroom)
 "wuC" = (
@@ -27713,6 +27767,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "wGY" = (
@@ -27766,6 +27821,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/medbay_primary_storage)
 "wJN" = (
@@ -28137,6 +28193,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/anomaly_lab/containment_two)
 "wZf" = (
@@ -28534,6 +28591,7 @@
 	dir = 8
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
 "xtV" = (
@@ -29305,8 +29363,7 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
-	frequency = 1380;
-	id_tag = null
+	frequency = 1380
 	},
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
@@ -29378,6 +29435,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/assembly/robotics)
 "yde" = (
@@ -41891,7 +41949,7 @@ wlz
 wlz
 wlz
 wlz
-daL
+tQp
 rug
 ddG
 toD
@@ -46140,7 +46198,7 @@ jel
 eHm
 eHm
 hXs
-qAg
+hLc
 mUK
 pHO
 wWa
@@ -46528,7 +46586,7 @@ qSA
 qSA
 slL
 mdn
-qAg
+hLc
 tmX
 hFt
 dEl
@@ -47692,7 +47750,7 @@ lGI
 trm
 wbs
 hXs
-qAg
+hLc
 jUt
 bMn
 lNs
@@ -47886,7 +47944,7 @@ lGI
 trm
 mXY
 hXs
-qAg
+hLc
 jUt
 bMn
 eCw
@@ -57189,7 +57247,7 @@ xIl
 sIj
 fBJ
 hBs
-hLc
+njb
 hBs
 hBs
 jPR

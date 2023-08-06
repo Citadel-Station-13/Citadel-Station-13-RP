@@ -985,7 +985,6 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
 	name = "Airlock Gas Storage"
 	},
 /obj/machinery/door/firedoor{
@@ -1945,9 +1944,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
-	},
+/obj/machinery/suit_storage_unit/mining,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "fA" = (
@@ -3327,9 +3324,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "jT" = (
@@ -3723,9 +3718,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
 "ld" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "le" = (
@@ -4681,9 +4674,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
-	},
+/obj/machinery/suit_storage_unit/mining,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "ol" = (
@@ -5114,9 +5105,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
 "py" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "cafe";
@@ -5382,9 +5371,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
 "ql" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "cafe";
@@ -5418,9 +5405,7 @@
 	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/kitchen)
 "qt" = (
@@ -7942,9 +7927,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "cafe";
@@ -10260,9 +10243,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
-	},
+/obj/machinery/suit_storage_unit/mining,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "EA" = (
@@ -11116,9 +11097,7 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/cargo,
-/obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
-	},
+/obj/machinery/suit_storage_unit/mining,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "Hk" = (
@@ -13758,9 +13737,7 @@
 	req_access = list(25);
 	req_one_access = list(25)
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "Pm" = (
@@ -16919,9 +16896,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "YS" = (
-/obj/effect/shuttle_landmark/triumph/deck2/trade{
-	docking_controller = null
-	},
+/obj/effect/shuttle_landmark/triumph/deck2/trade,
 /turf/space,
 /area/space)
 "YT" = (
