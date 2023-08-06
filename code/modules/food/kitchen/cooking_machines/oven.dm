@@ -34,7 +34,7 @@
 		"Kebab" = /obj/item/reagent_containers/food/snacks/variable/kebab,
 		"Waffles" = /obj/item/reagent_containers/food/snacks/variable/waffles,
 		"Cookie" = /obj/item/reagent_containers/food/snacks/variable/cookie,
-		"Donut" = /obj/item/reagent_containers/food/snacks/variable/donut,
+		"Donut" = /obj/item/reagent_containers/food/snacks/variable/donut
 	)
 
 	var/static/list/radial_menu = list(
