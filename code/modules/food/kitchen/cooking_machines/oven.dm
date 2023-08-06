@@ -25,6 +25,7 @@
 	var/open = TRUE
 
 	output_options = list(
+		"Default" = null,
 		"Pizza" = /obj/item/reagent_containers/food/snacks/variable/pizza,
 		"Bread" = /obj/item/reagent_containers/food/snacks/variable/bread,,
 		"Pie" = /obj/item/reagent_containers/food/snacks/variable/pie,
@@ -34,10 +35,10 @@
 		"Waffles" = /obj/item/reagent_containers/food/snacks/variable/waffles,
 		"Cookie" = /obj/item/reagent_containers/food/snacks/variable/cookie,
 		"Donut" = /obj/item/reagent_containers/food/snacks/variable/donut,
-		"Default" = null
 	)
 
 	var/static/list/radial_menu = list(
+		"Default" = image(icon = 'icons/mob/radial.dmi', icon_state = "red_x"),
 		"Pizza"= image(icon = 'icons/obj/food.dmi', icon_state = "pizzamargherita"),
 		"Bread" = image(icon = 'icons/obj/food.dmi', icon_state = "bread"),
 		"Pie" = image(icon = 'icons/obj/food.dmi', icon_state = "pie"),
@@ -46,8 +47,7 @@
 		"Kebab" = image(icon = 'icons/obj/food.dmi', icon_state = "kabob"),
 		"Waffles" = image(icon = 'icons/obj/food.dmi', icon_state = "waffles"),
 		"Cookie" = 	image(icon = 'icons/obj/food.dmi', icon_state = "COOKIE!!!"),
-		"Donut" = image(icon = 'icons/obj/food.dmi', icon_state = "donut1"),
-		"Default" = image(icon = 'icons/mob/radial.dmi', icon_state = "red_x")
+		"Donut" = image(icon = 'icons/obj/food.dmi', icon_state = "donut1")
 	)
 
 /obj/machinery/appliance/cooker/oven/Initialize(mapload)
