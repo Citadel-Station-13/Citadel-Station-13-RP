@@ -832,7 +832,7 @@
 /obj/random/maintenance/research,
 /obj/random/maintenance/research,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "abt" = (
 /obj/structure/railing{
 	dir = 4
@@ -841,7 +841,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "abu" = (
 /obj/structure/railing{
 	dir = 1
@@ -850,7 +850,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "abv" = (
 /turf/simulated/floor/tiled,
 /area/rnd/hardstorage)
@@ -888,7 +888,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "abz" = (
 /obj/structure/table/woodentable,
 /obj/machinery/light_construct{
@@ -922,7 +922,7 @@
 /obj/random/maintenance/research,
 /obj/random/drinkbottle,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "abD" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -931,16 +931,16 @@
 /area/rnd/hardstorage)
 "abE" = (
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "abF" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "abG" = (
 /obj/effect/floor_decal/rust,
 /obj/random/cutout,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "abH" = (
 /obj/machinery/meter,
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -1198,7 +1198,7 @@
 "acj" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "ack" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	external_pressure_bound = 140;
@@ -5594,11 +5594,11 @@
 /area/tether/surfacebase/outside/outside1)
 "ajL" = (
 /turf/simulated/wall,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "ajM" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "ajN" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor,
@@ -5635,7 +5635,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "ajR" = (
 /obj/effect/floor_decal/rust,
 /obj/random/cigarettes,
@@ -5658,7 +5658,7 @@
 	},
 /obj/random/junk,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "ajV" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor,
@@ -5835,7 +5835,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "akj" = (
 /obj/machinery/light{
 	dir = 8
@@ -5865,14 +5865,14 @@
 "akl" = (
 /obj/random/junk,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "akm" = (
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/plating,
 /area/storage/surface_eva)
 "akn" = (
 /turf/simulated/mineral,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "ako" = (
 /obj/structure/railing{
 	dir = 1
@@ -5911,7 +5911,7 @@
 /area/tether/surfacebase/public_garden_one)
 "aks" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "akt" = (
 /obj/structure/railing{
 	dir = 1
@@ -5966,7 +5966,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "akA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6051,7 +6051,7 @@
 	},
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "akH" = (
 /obj/machinery/camera/network/outside{
 	dir = 9
@@ -6069,7 +6069,7 @@
 /obj/random/maintenance/research,
 /obj/random/maintenance/research,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "akK" = (
 /turf/simulated/wall,
 /area/tether/surfacebase/lowernortheva/external)
@@ -6173,7 +6173,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "akW" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -6201,7 +6201,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "ala" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -21318,7 +21318,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "aLn" = (
 /obj/structure/grille,
 /obj/structure/railing{
@@ -29423,7 +29423,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "bcZ" = (
 /obj/machinery/computer/HolodeckControl{
 	dir = 4
@@ -29463,7 +29463,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "bdd" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/cable/green{
@@ -29471,14 +29471,14 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "bde" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "bdg" = (
 /obj/machinery/door/airlock{
 	name = "Holodeck"
@@ -29519,7 +29519,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "bdk" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -29547,7 +29547,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "bdo" = (
 /obj/machinery/camera/network/civilian{
 	dir = 9
@@ -29601,7 +29601,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "bdt" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -29704,7 +29704,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "bdC" = (
 /obj/effect/floor_decal/corner/lightgrey{
 	dir = 9
@@ -32351,7 +32351,7 @@
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "jcT" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -32754,7 +32754,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "kfT" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -36703,7 +36703,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/public_garden_maintenence)
+/area/maintenance/lower/public_garden_maintenance)
 "uFs" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
