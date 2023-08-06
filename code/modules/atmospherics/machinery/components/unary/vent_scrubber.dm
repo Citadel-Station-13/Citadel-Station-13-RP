@@ -38,11 +38,13 @@
 	var/expanded_default = FALSE
 
 	/// default scrub volume
-	var/scrub_volume = 5000
+	var/scrub_volume = 2500
 	/// additional power when expanded
 	var/expanded_power = 7500
 	/// additional volume when expanded
-	var/expanded_scrub_volume = 2500
+	var/expanded_scrub = 1250
+	/// mole boost
+	var/scrub_boost = 50
 
 	var/area_uid
 	var/id_tag = null
@@ -186,23 +188,17 @@
 		return 0
 
 	var/datum/gas_mixture/environment = loc.return_air()
+	var/using_power = expanded? expanded_power + power_rating : power_rating
 
-	var/power_draw = -1
-	if(scrubbing)
-		//limit flow rate from turfs
-		var/transfer_moles = min(environment.total_moles, environment.total_moles*MAX_SCRUBBER_FLOWRATE/environment.volume)	//group_multiplier gets divided out here
+	if(siphoning)
+		power_current = xgm_pump_gas(environment, air_contents, power_limit = using_power)
+	else
+		var/using_volume = expanded? expanded_scrub + scrub_volume : scrub_volume
+		power_current = xgm_scrub_gas_volume(environment, air_contents, scrub_ids, scrub_groups, using_volume, using_power, using_boost)
 
-		power_draw = scrub_gas(src, scrubbing_gas, environment, air_contents, transfer_moles, power_rating)
-	else //Just siphon all air
-		//limit flow rate from turfs
-		var/transfer_moles = min(environment.total_moles, environment.total_moles*MAX_SIPHON_FLOWRATE/environment.volume)	//group_multiplier gets divided out here
-
-		power_draw = pump_gas(src, environment, air_contents, transfer_moles, power_rating)
-
-
-	if (power_draw >= 0)
-		last_power_draw_legacy = power_draw
-		use_power(power_draw)
+	if (power_current >= 0)
+		last_power_draw_legacy = power_current
+		use_power(power_current)
 
 	if(network)
 		network.update = 1
