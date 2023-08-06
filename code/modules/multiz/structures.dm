@@ -400,20 +400,6 @@
 
 /obj/structure/stairs/spawner/preloading_dir(datum/map_preloader/preloader)
 	dir = turn(dir, preloader.turn_angle)
-	switch(preloader.loading_orientation)
-		if(SOUTH)
-		if(NORTH)
-			switch(dir)
-				if(NORTH, SOUTH)
-				if(EAST, WEST)
-		if(EAST)
-			switch(dir)
-				if(NORTH, SOUTH)
-				if(EAST, WEST)
-		if(WEST)
-			switch(dir)
-				if(NORTH, SOUTH)
-				if(EAST, WEST)
 	return FALSE
 
 // For ease of spawning. While you *can* spawn the base type and set its dir, this is useful for adminbus and a little bit quicker to map in
