@@ -117,6 +117,23 @@
 	else
 		icon_state = off_icon
 
+/obj/machinery/appliance/proc/can_use_check(mob/user, mechanical = FALSE)
+	if (!isliving(user) || (mechanical && isAI(user)))
+		return FALSE
+
+	if (!user.IsAdvancedToolUser())
+		to_chat(user, "You lack the dexterity to do that!")
+		return FALSE
+
+	if (user.stat || user.restrained() || user.incapacitated())
+		return FALSE
+
+	if (!Adjacent(user) && (mechanical || !issilicon(user)))
+		to_chat(user, "You can't reach [src] from here.")
+		return FALSE
+
+	return TRUE
+
 /obj/machinery/appliance/verb/toggle_power()
 	set name = "Toggle Power"
 	set category  = "Object"
@@ -125,18 +142,7 @@
 	attempt_toggle_power(usr)
 
 /obj/machinery/appliance/proc/attempt_toggle_power(mob/user)
-	if (!isliving(user))
-		return
-
-	if (!user.IsAdvancedToolUser())
-		to_chat(user, "You lack the dexterity to do that!")
-		return
-
-	if (user.stat || user.restrained() || user.incapacitated())
-		return
-
-	if (!Adjacent(user) && !issilicon(user))
-		to_chat(user, "You can't reach [src] from here.")
+	if(!can_use_check(user))
 		return
 
 	if (machine_stat & POWEROFF)//Its turned off
@@ -160,18 +166,7 @@
 	set name = "Choose output"
 	set category = "Object"
 
-	if (!isliving(usr))
-		return
-
-	if (!usr.IsAdvancedToolUser())
-		to_chat(usr, "You lack the dexterity to do that!")
-		return
-
-	if (usr.stat || usr.restrained() || usr.incapacitated())
-		return
-
-	if (!Adjacent(usr) && !issilicon(usr))
-		to_chat(usr, "You can't adjust the [src] from this distance, get closer!")
+	if(!can_use_check(usr))
 		return
 
 	if(output_options.len)
