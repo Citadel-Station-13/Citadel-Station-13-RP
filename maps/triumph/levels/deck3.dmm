@@ -10816,7 +10816,7 @@
 /area/rnd/breakroom)
 "iRK" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	id_tag = "MedbayFoyer";
 	name = "Recovery Wing"
 	},
@@ -22931,7 +22931,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Medbay Surgery";
 	req_access = list(5)
 	},
@@ -26629,7 +26629,7 @@
 /area/hallway/primary/port)
 "vNt" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Chem & Offices";
 	req_access = list(5);
 	req_one_access = null
