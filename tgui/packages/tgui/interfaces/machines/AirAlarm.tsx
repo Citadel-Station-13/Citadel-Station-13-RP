@@ -5,8 +5,7 @@ import { useBackend, useLocalState } from '../../backend';
 import { Box, Button, LabeledList, Section, Stack } from '../../components';
 import { getGasLabel, getGasColor } from '../../constants';
 import { Window } from '../../layouts';
-import { AtmosAnalyzerResults } from '../common/Atmos';
-import { Scrubber, Vent } from '../common/AtmosControls';
+import { AtmosAnalyzerResults, AtmosGasGroupFlags, AtmosGasID } from '../common/Atmos';
 import { InterfaceLockNoticeBox } from '../common/InterfaceLockNoticeBox';
 import { AtmosVentPumpState } from './AtmosVentPump';
 import { AtmosVentScrubberState } from './AtmosVentScrubber';
@@ -74,8 +73,8 @@ interface ExtendedVentScrubberState extends AtmosVentScrubberState {
 interface AirAlarmData {
   TLV: Record<string, AirAlarmTLV>;
   environment: AtmosAnalyzerResults;
-  vents: Record<string, AtmosVentPumpState>;
-  scrubbers: Record<string, AtmosVentScrubberState>;
+  vents: Record<string, ExtendedVentPumpState>;
+  scrubbers: Record<string, ExtendedVentScrubberState>;
   mode: AirAlarmMode;
   // legacy below
   locked: BooleanLike;
@@ -112,7 +111,7 @@ export const AirAlarm = (props, context) => {
                   {round(data.environment.pressure, 2)} kPa
                 </LabeledList.Item>
                 <LabeledList.Item label="Temperature" color={temperatureRaised.color}>
-                  {temperatureRounded}°K ({temperatureRounded - 273.15}°C)
+                  {temperatureRounded}K ({temperatureRounded - 273.15}°C)
                 </LabeledList.Item>
                 {
                   Object.entries(data.environment.gases).map(([k, v]) => {
@@ -193,15 +192,15 @@ const AIR_ALARM_ROUTES = {
   },
   vents: {
     title: 'Vent Controls',
-    component: () => AirAlarmControlVents,
+    component: () => AirAlarmVentScreenWrapped,
   },
   scrubbers: {
     title: 'Scrubber Controls',
-    component: () => AirAlarmControlScrubbers,
+    component: () => AirAlarmScrubberScreenWrapped,
   },
   modes: {
     title: 'Operating Mode',
-    component: () => AirAlarmControlModes,
+    component: () => AirAlarmModeScreenWrapped,
   },
   thresholds: {
     title: 'Alarm Thresholds',
@@ -210,7 +209,7 @@ const AIR_ALARM_ROUTES = {
 };
 
 const AirAlarmControl = (props, context) => {
-  const [screen, setScreen] = useLocalState<string>(context, 'screen', '');
+  const [screen, setScreen] = useLocalState<string>(context, 'screen', 'home');
   const route = AIR_ALARM_ROUTES[screen] || AIR_ALARM_ROUTES.home;
   const Component = route.component();
   return (
@@ -220,7 +219,7 @@ const AirAlarmControl = (props, context) => {
         <Button
           icon="arrow-left"
           content="Back"
-          onClick={() => setScreen()} />
+          onClick={() => setScreen('home')} />
       )}>
       <Component />
     </Section>
@@ -281,40 +280,75 @@ const AirAlarmControlHome = (props, context) => {
   );
 };
 
+//* Vents *//
 
-//  Vents
-// --------------------------------------------------------
-
-const AirAlarmControlVents = (props, context) => {
-  const { data } = useBackend<AirAlarmData>(context);
-  const { vents } = data;
-  if (!vents || vents.length === 0) {
-    return 'Nothing to show';
-  }
-  return vents.map(vent => (
-    <Vent
-      key={vent.id_tag}
-      vent={vent} />
-  ));
+const AirAlarmVentScreenWrapped = (props, context) => {
+  const { data, act } = useBackend<AirAlarmData>(context);
+  return (
+    <AirAlarmVentScreen
+      vents={data.vents}
+      dirToggle={(id) => act('vent', { id: id, command: 'direction' })}
+      powerToggle={(id) => act('vent', { id: id, command: 'power' })}
+      internalToggle={(id) => act('vent', { id: id, command: 'internalToggle' })}
+      internalSet={(id, amt) => act('vent', { id: id, command: 'internalPressure', target: amt })}
+      externalToggle={(id) => act('vent', { id: id, command: 'externalToggle' })}
+      externalSet={(id, amt) => act('vent', { id: id, command: 'externalPressure', target: amt })} />
+  );
 };
 
-//  Scrubbers
-// --------------------------------------------------------
+interface AirAlarmVentScreenProps {
+  powerToggle: (id: string) => void;
+  internalToggle: (id: string) => void;
+  externalToggle: (id: string) => void;
+  internalSet: (id: string, kpa: number) => void;
+  externalSet: (id: string, kpa: number) => void;
+  dirToggle: (id: string) => void;
+  vents: Record<string, ExtendedVentPumpState>;
+}
 
-const AirAlarmControlScrubbers = (props, context) => {
-  const { data } = useBackend<AirAlarmData>(context);
-  const { scrubbers } = data;
-  if (!scrubbers || scrubbers.length === 0) {
-    return 'Nothing to show';
-  }
-  return scrubbers.map(scrubber => (
-    <Scrubber
-      key={scrubber.id_tag}
-      scrubber={scrubber} />
-  ));
+const AirAlarmVentScreen = (props: AirAlarmVentScreenProps) => {
+
+};
+
+//* Scrubbers *//
+
+const AirAlarmScrubberScreenWrapped = (props, context) => {
+  const { data, act } = useBackend<AirAlarmData>(context);
+  return (
+    <AirAlarmScrubberScreen
+      scrubbers={data.scrubbers}
+      powerToggle={(id) => act('scrubber', { id: id, command: 'power' })}
+      siphonToggle={(id) => act('scrubber', { id: id, command: 'siphon' })}
+      expandToggle={(id) => act('scrubber', { id: id, command: 'highPower' })}
+      gasToggle={(id, gas) => act('scrubber', { id: id, command: 'gasID', target: gas })}
+      groupToggle={(id, flags) => act('scrubber', { id: id, command: 'gasGroup', target: flags })} />
+  );
+};
+
+interface AirAlarmScrubberScreenProps {
+  powerToggle: (id: string) => void;
+  siphonToggle: (id: string) => void;
+  expandToggle: (id: string) => void;
+  gasToggle: (id: string, gas: AtmosGasID) => void;
+  groupToggle: (id: string, group: AtmosGasGroupFlags) => void;
+  scrubbers: Record<string, ExtendedVentScrubberState>;
+}
+
+const AirAlarmScrubberScreen = (props: AirAlarmScrubberScreenProps) => {
+
 };
 
 //* Modes *//
+
+// todo: legacy, remove
+const AirAlarmModeScreenWrapped = (props, context) => {
+  const { data, act } = useBackend<AirAlarmData>(context);
+  return (
+    <AirAlarmModeScreen
+      selected={data.mode}
+      setAct={(mode) => act('mode', { mode: mode })} />
+  );
+};
 
 interface AirAlarmModeScreenProps {
   selected: AirAlarmMode;

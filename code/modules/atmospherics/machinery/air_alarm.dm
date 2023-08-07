@@ -550,8 +550,8 @@ GLOBAL_LIST_EMPTY(air_alarms)
 				if("direction")
 				if("internalPressure")
 				if("externalPressure")
-				if("internalChecks")
-				if("externalChecks")
+				if("internalToggle")
+				if("externalToggle")
 				if("power")
 			#warn impl
 			return TRUE
