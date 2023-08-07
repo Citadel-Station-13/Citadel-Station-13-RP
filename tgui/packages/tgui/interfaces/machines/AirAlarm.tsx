@@ -7,7 +7,7 @@ import { getGasLabel, getGasColor } from '../../constants';
 import { Window } from '../../layouts';
 import { AtmosAnalyzerResults, AtmosGasGroupFlags, AtmosGasID } from '../common/Atmos';
 import { InterfaceLockNoticeBox } from '../common/InterfaceLockNoticeBox';
-import { AtmosVentPumpState } from './AtmosVentPump';
+import { AtmosVentPumpPressureChecks, AtmosVentPumpState } from './AtmosVentPump';
 import { AtmosVentScrubberState } from './AtmosVentScrubber';
 
 enum AirAlarmMode {
@@ -307,7 +307,44 @@ interface AirAlarmVentScreenProps {
 }
 
 const AirAlarmVentScreen = (props: AirAlarmVentScreenProps) => {
-
+  return (
+    <Stack vertical>
+      {Object.entries(props.vents).map(([idTag, vent]) => (
+        <Stack.Item key={idTag}>
+          <Section title={vent.name} buttons={(
+            <Button icon={vent.power? 'power-off' : 'times'}
+              selected={vent.power} content={vent.power? 'On' : 'Off'}
+              onClick={() => props.powerToggle(idTag)} />
+          )}>
+            <LabeledList>
+              <LabeledList.Item label="Mode">
+                <Button icon="sign-in-alt"
+                  content={vent.siphon? 'Siphoning' : 'Pressurizing'}
+                  color={vent.siphon? 'danger' : undefined}
+                  onClick={() => props.dirToggle(idTag)} />
+              </LabeledList.Item>
+              <LabeledList.Item label="Pressure Checks">
+                <Button icon="sign-in-alt"
+                  content="Internal"
+                  selected={vent.pressureChecks & AtmosVentPumpPressureChecks.Internal}
+                  onClick={() => props.internalToggle(idTag)} />
+                <Button icon="sign-in-alt"
+                  content="External"
+                  selected={vent.pressureChecks & AtmosVentPumpPressureChecks.External}
+                  onClick={() => props.externalToggle(idTag)} />
+              </LabeledList.Item>
+              <LabeledList.Item label="Internal Target">
+                Test
+              </LabeledList.Item>
+              <LabeledList.Item label="External Target">
+                Test
+              </LabeledList.Item>
+            </LabeledList>
+          </Section>
+        </Stack.Item>
+      ))}
+    </Stack>
+  );
 };
 
 //* Scrubbers *//
@@ -335,7 +372,17 @@ interface AirAlarmScrubberScreenProps {
 }
 
 const AirAlarmScrubberScreen = (props: AirAlarmScrubberScreenProps) => {
-
+  return (
+    <Stack vertical>
+      {Object.entries(props.scrubbers).map(([idTag, scrubber]) => (
+        <Stack.Item key={idTag}>
+          <Section>
+            Test
+          </Section>
+        </Stack.Item>
+      ))}
+    </Stack>
+  );
 };
 
 //* Modes *//

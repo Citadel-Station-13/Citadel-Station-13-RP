@@ -22,46 +22,8 @@ export const Vent = (props, context) => {
   return (
     <Section
       level={2}
-      title={decodeHtmlEntities(long_name)}
-      buttons={(
-        <Button
-          icon={power ? 'power-off' : 'times'}
-          selected={power}
-          content={power ? 'On' : 'Off'}
-          onClick={() => act('power', {
-            id_tag,
-            val: Number(!power),
-          })} />
-      )}>
+      title={decodeHtmlEntities(long_name)}>
       <LabeledList>
-        <LabeledList.Item label="Mode">
-          <Button
-            icon="sign-in-alt"
-            content={direction !== "siphon" ? 'Pressurizing' : 'Siphoning'}
-            color={direction === "siphon" && 'danger'}
-            onClick={() => act('direction', {
-              id_tag,
-              val: Number(direction === "siphon"),
-            })} />
-        </LabeledList.Item>
-        <LabeledList.Item label="Pressure Regulator">
-          <Button
-            icon="sign-in-alt"
-            content="Internal"
-            selected={incheck}
-            onClick={() => act('incheck', {
-              id_tag,
-              val: checks,
-            })} />
-          <Button
-            icon="sign-out-alt"
-            content="External"
-            selected={excheck}
-            onClick={() => act('excheck', {
-              id_tag,
-              val: checks,
-            })} />
-        </LabeledList.Item>
         {!!incheck && (
           <LabeledList.Item label="Internal Target">
             <NumberInput
