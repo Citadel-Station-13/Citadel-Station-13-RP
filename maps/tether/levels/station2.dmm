@@ -16825,11 +16825,6 @@
 /obj/item/material/ashtray/glass,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
-"hvV" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/simulated/mineral/floor/cave,
-/area/mine/explored/upper_level)
 "hwf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -18377,11 +18372,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
-"kiA" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/simulated/mineral/floor/cave,
-/area/space)
 "kiZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -30612,7 +30602,7 @@ aEy
 tGZ
 tGZ
 tGZ
-kiA
+tGZ
 tGZ
 tGZ
 aEy
@@ -31180,7 +31170,7 @@ aEy
 aEy
 dcD
 dcD
-hvV
+dcD
 aac
 aac
 aac
