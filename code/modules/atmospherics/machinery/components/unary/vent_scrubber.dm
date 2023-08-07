@@ -276,7 +276,24 @@
 	return list(
 
 	)
-	#warn impl
+	#warn impl, data, ui
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!isnull(ui))
+		return
+	ui = new(user, src, "AtmosVentScrubber")
+	ui.open()
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
 
 //* Signal Handling - Order of application is same as these comments.
 /// environmental: void. set to ignore the signal if we're not an environmental vent.

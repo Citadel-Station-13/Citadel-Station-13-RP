@@ -307,7 +307,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!isnull(ui))
 		return
-	ui = new(user, src, "AtmosVent")
+	ui = new(user, src, "AtmosVentPump")
 	ui.open()
 
 /obj/machinery/atmospherics/component/unary/vent_pump/ui_state(mob/user, datum/tgui_module/module)
