@@ -3526,9 +3526,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
-"daL" = (
-/turf/simulated/wall,
-/area/medical/ward)
 "dbb" = (
 /obj/machinery/door/window/brigdoor/northright{
 	name = "Containment Pen";
@@ -3627,7 +3624,7 @@
 /area/medical/virologyisolation)
 "ddG" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	id_tag = "MedbayFoyer";
 	name = "Recovery Wing";
 	req_access = list(5)
@@ -8507,7 +8504,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "hjJ" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "hjT" = (
@@ -8685,12 +8682,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
-"hnI" = (
-/obj/machinery/camera/network/outside{
-	dir = 10
-	},
-/turf/space,
-/area/space)
 "hoR" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9089,7 +9080,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	id_tag = "PsycheFoyer";
 	name = "Psychiatric Wing";
 	req_access = list();
@@ -10812,7 +10803,7 @@
 /area/rnd/breakroom)
 "iRK" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	id_tag = "MedbayFoyer";
 	name = "Recovery Wing"
 	},
@@ -18809,9 +18800,6 @@
 /obj/structure/sign/warning/nosmoking_2,
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/storage)
-"pAa" = (
-/turf/simulated/wall/r_wall,
-/area/medical/psych_ward)
 "pAX" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -23447,9 +23435,6 @@
 "tgD" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/patient_a)
-"tgK" = (
-/turf/simulated/wall,
-/area/maintenance/research)
 "tgM" = (
 /obj/structure/table/rack,
 /obj/item/clothing/mask/gas,
@@ -23857,7 +23842,7 @@
 /area/rnd/hallway)
 "tyV" = (
 /obj/machinery/camera/network/outside{
-	dir = 10
+	dir = 1
 	},
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
@@ -26625,7 +26610,7 @@
 /area/hallway/primary/port)
 "vNt" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Chem & Offices";
 	req_access = list(5);
 	req_one_access = null
@@ -27006,7 +26991,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	name = "Psychiatric Ward";
 	req_access = list(5)
 	},
@@ -37037,7 +37022,7 @@ ekU
 ktr
 fLa
 vUy
-pAa
+ekU
 cFy
 dSa
 dSa
@@ -37229,9 +37214,9 @@ mDp
 tKG
 ekU
 snu
-pAa
-pAa
-pAa
+ekU
+ekU
+ekU
 rLU
 dSa
 dSa
@@ -38336,7 +38321,7 @@ mDp
 mDp
 aDe
 mDp
-hnI
+ikZ
 rOo
 ezO
 caz
@@ -41440,7 +41425,7 @@ mDp
 mDp
 aDe
 mDp
-hnI
+ikZ
 qRu
 pBY
 eWW
@@ -41845,7 +41830,7 @@ qpQ
 pgB
 xXR
 gyl
-tgK
+xIf
 oZk
 dkj
 uJh
@@ -41887,7 +41872,7 @@ wlz
 wlz
 wlz
 wlz
-daL
+tQp
 rug
 ddG
 toD
@@ -42233,7 +42218,7 @@ qpQ
 bWC
 nZB
 eec
-tgK
+xIf
 bTp
 xXR
 uJh
@@ -42427,7 +42412,7 @@ qpQ
 aZk
 xXR
 fMM
-tgK
+xIf
 bTp
 iny
 uJh
@@ -42621,7 +42606,7 @@ qpQ
 mEV
 kpE
 lqf
-tgK
+xIf
 bTp
 mxb
 uJh
@@ -43962,7 +43947,7 @@ mDp
 mDp
 mDp
 aDe
-hnI
+ikZ
 sjz
 tfa
 aCZ
@@ -46678,7 +46663,7 @@ mDp
 mDp
 mDp
 mDp
-mDp
+ikZ
 kQU
 kQU
 kQU
@@ -49200,7 +49185,7 @@ mDp
 aDe
 mDp
 mDp
-hnI
+ikZ
 koS
 ppE
 kHG
@@ -50752,7 +50737,7 @@ mDp
 lIp
 mDp
 mDp
-hnI
+ikZ
 koS
 koS
 koS
@@ -53099,7 +53084,7 @@ mDp
 mDp
 lIp
 mDp
-hnI
+ikZ
 mNR
 gDW
 obW

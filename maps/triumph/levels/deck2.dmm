@@ -985,7 +985,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	name = "Airlock Gas Storage"
 	},
 /obj/machinery/door/firedoor{
@@ -1994,6 +1994,12 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
+/area/station/stairs_two)
+"fH" = (
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
+/turf/simulated/floor/crystal,
 /area/station/stairs_two)
 "fJ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
@@ -3180,6 +3186,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
+/obj/machinery/holopad,
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/fitness)
 "ju" = (
@@ -3814,6 +3821,9 @@
 	},
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/item/suit_cooling_unit,
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "lr" = (
@@ -7864,7 +7874,6 @@
 /obj/machinery/status_display/supply_display{
 	pixel_y = 32
 	},
-/obj/machinery/holopad,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
@@ -9130,6 +9139,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
+/obj/machinery/camera/network/engineering{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "AL" = (
@@ -9972,6 +9984,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
+"DF" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/holopad,
+/turf/simulated/floor/wood,
+/area/crew_quarters/recreation_area_hallway)
 "DH" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -11208,6 +11227,7 @@
 /area/vacant/vacant_shop)
 "Hx" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "Hy" = (
@@ -11758,6 +11778,9 @@
 	pixel_y = -37
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/camera/network/civilian{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -12691,6 +12714,9 @@
 /area/crew_quarters/coffee_shop)
 "Ma" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "Mc" = (
@@ -14051,8 +14077,11 @@
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/maintenance/cargo)
 "Qb" = (
-/turf/simulated/wall/prepainted,
-/area/crew_quarters/bar)
+/obj/machinery/camera/network/outside{
+	dir = 1
+	},
+/turf/space,
+/area/space)
 "Qd" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
@@ -28851,7 +28880,7 @@ vo
 wb
 wb
 wb
-Qb
+DY
 Mg
 Ye
 mc
@@ -31148,7 +31177,7 @@ VF
 TQ
 wj
 Ko
-gQ
+Qb
 HY
 HY
 HY
@@ -32726,7 +32755,7 @@ Jc
 qQ
 UV
 VU
-qQ
+UV
 ws
 zQ
 zQ
@@ -34237,7 +34266,7 @@ cW
 cW
 aG
 cW
-gQ
+Qb
 mZ
 FP
 FP
@@ -36371,7 +36400,7 @@ cW
 cW
 aG
 cW
-gQ
+Qb
 zc
 PY
 vK
@@ -36605,7 +36634,7 @@ HD
 sa
 sa
 Wx
-sa
+DF
 Jb
 bI
 Dj
@@ -38311,7 +38340,7 @@ cW
 cW
 aG
 cW
-gQ
+Qb
 Md
 id
 ew
@@ -41240,7 +41269,7 @@ cW
 cW
 aG
 cW
-gQ
+Qb
 Sw
 Sw
 Sw
@@ -44755,7 +44784,7 @@ bP
 xQ
 bP
 bW
-bW
+fH
 CR
 pP
 cW
@@ -44931,7 +44960,7 @@ cW
 cW
 oj
 cW
-gQ
+Qb
 Sw
 vx
 BM
