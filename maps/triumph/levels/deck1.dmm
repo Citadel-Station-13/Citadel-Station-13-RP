@@ -3225,6 +3225,11 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "eng_sec_lockdown";
+	dir = 4;
+	pixel_x = -26
+	},
 /turf/simulated/floor/tiled/dark,
 /area/storage/tech)
 "kH" = (
@@ -4659,7 +4664,7 @@
 /area/maintenance/engineering)
 "pX" = (
 /obj/machinery/camera/network/outside{
-	dir = 10
+	dir = 1
 	},
 /turf/space,
 /area/space)
@@ -7085,7 +7090,7 @@
 "xQ" = (
 /obj/structure/catwalk,
 /obj/machinery/camera/network/outside{
-	dir = 10
+	dir = 1
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/space)
@@ -8847,7 +8852,6 @@
 /area/tcommsat/computer)
 "DU" = (
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/portables_connector{

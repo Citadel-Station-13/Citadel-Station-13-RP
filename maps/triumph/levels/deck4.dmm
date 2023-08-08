@@ -2080,7 +2080,6 @@
 "buQ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
 	name = "Exploration Prep";
 	req_access = list();
 	req_one_access = list(19,43,67)
@@ -3505,7 +3504,7 @@
 /area/maintenance/substation/command)
 "ctX" = (
 /obj/machinery/camera/network/exploration{
-	dir = 10
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -3873,11 +3872,11 @@
 /turf/simulated/wall,
 /area/crew_quarters/sleep/CE_quarters)
 "cMg" = (
-/obj/machinery/computer/card{
-	dir = 8
-	},
 /obj/effect/floor_decal/corner/red/full{
 	dir = 1
+	},
+/obj/machinery/computer/security{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -5982,7 +5981,7 @@
 	id = "cd-blast";
 	name = "Facility Director Lockdown"
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/command,
 /area/crew_quarters/captain)
 "dUW" = (
 /obj/structure/table/steel,
@@ -7774,6 +7773,9 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
 "fhC" = (
@@ -8498,7 +8500,7 @@
 /area/gateway/prep_room)
 "fGY" = (
 /obj/machinery/camera/network/outside{
-	dir = 10
+	dir = 1
 	},
 /turf/space,
 /area/space)
@@ -9033,7 +9035,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Shuttle Triage and Restroom";
 	req_one_access = list(19,43,67)
 	},
@@ -9625,6 +9627,12 @@
 	},
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
+	},
+/obj/machinery/button/remote/airlock{
+	id = "vault";
+	name = "Vault Door Lockdown";
+	pixel_x = -26;
+	specialfunctions = 4
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
@@ -11985,9 +11993,6 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/machinery/light{
-	dir = 8
-	},
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
 "iaB" = (
@@ -12180,9 +12185,9 @@
 /area/bridge/office)
 "ihR" = (
 /obj/machinery/turretid/stun{
-	control_area = "\improper AI Chamber";
-	name = "AI Upload turret control";
-	pixel_y = -26
+	check_synth = 1;
+	name = "AI Chamber turret control";
+	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
@@ -12375,7 +12380,7 @@
 /area/exploration/courser_dock)
 "inV" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Shuttle Bay";
 	req_one_access = list(19,43,67)
 	},
@@ -12598,10 +12603,10 @@
 /area/crew_quarters/mimeoffice)
 "ivi" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/metal/mait{
-	dir = 2
-	},
 /obj/structure/catwalk,
+/obj/machinery/door/airlock/multi_tile/metal/mait{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "ivF" = (
@@ -13222,7 +13227,7 @@
 	},
 /obj/machinery/holopad,
 /obj/machinery/camera/network/command{
-	dir = 10
+	dir = 1
 	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -16516,7 +16521,7 @@
 /area/crew_quarters/lounge)
 "kXZ" = (
 /obj/machinery/camera/network/exploration{
-	dir = 10
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
@@ -17086,16 +17091,15 @@
 /obj/machinery/button/remote/blast_door{
 	id = "VaultAc";
 	name = "Vault Blast Door";
-	pixel_y = -32;
-	req_access = list(53);
-	req_one_access = list(53)
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "VaultAc";
-	name = "Vault Blast Door";
 	pixel_y = 32;
 	req_access = list(53);
 	req_one_access = list(53)
+	},
+/obj/machinery/button/remote/airlock{
+	id = "vault";
+	name = "Vault Door Lockdown";
+	pixel_y = -32;
+	specialfunctions = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
@@ -17742,8 +17746,17 @@
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "lYf" = (
-/turf/simulated/wall/r_wall,
-/area/crew_quarters/captain)
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "lYr" = (
 /obj/machinery/computer/secure_data,
 /turf/simulated/floor/tiled/monotile,
@@ -17853,8 +17866,7 @@
 /area/crew_quarters/sleep/CE_quarters)
 "mbw" = (
 /obj/structure/curtain/black{
-	anchored = 1;
-	icon_state = "open"
+	anchored = 1
 	},
 /turf/simulated/floor/wood,
 /area/library)
@@ -18095,6 +18107,11 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/structure/dogbed{
+	desc = "A bed made just for the Facility Director's fox.";
+	name = "Renault's Bed"
+	},
+/mob/living/simple_mob/animal/passive/fox/renault,
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge)
 "miD" = (
@@ -19773,7 +19790,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	dir = 8
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
@@ -20532,17 +20549,21 @@
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "nXq" = (
-/obj/structure/dogbed{
-	desc = "A bed made just for the Facility Director's fox.";
-	name = "Renault's Bed"
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
 	},
-/obj/machinery/light_switch{
-	name = "light switch ";
-	pixel_y = 26
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
 	},
-/mob/living/simple_mob/animal/passive/fox/renault,
-/turf/simulated/floor/wood,
-/area/crew_quarters/captain)
+/obj/machinery/button/remote/blast_door{
+	id = "VaultAc";
+	name = "Vault Blast Door";
+	req_access = list(53);
+	req_one_access = list(53);
+	pixel_x = -26
+	},
+/turf/simulated/floor/tiled,
+/area/bridge/hallway)
 "nXx" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -22258,7 +22279,7 @@
 /area/exploration/excursion_dock)
 "phV" = (
 /obj/machinery/camera/network/exploration{
-	dir = 10
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
@@ -25270,6 +25291,13 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
+"rkP" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/machinery/holopad/ship,
+/turf/simulated/floor/tiled,
+/area/shuttle/excursion/general)
 "rln" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -25998,7 +26026,7 @@
 	dir = 1
 	},
 /obj/machinery/media/jukebox,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/bluegrid,
 /area/ai)
 "rOW" = (
 /obj/machinery/door/airlock/maintenance,
@@ -27622,13 +27650,13 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "teN" = (
-/obj/machinery/holopad,
 /obj/machinery/turretid/lethal{
 	pixel_x = -35
 	},
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "teS" = (
@@ -30148,30 +30176,16 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/button/remote/blast_door{
-	id = "VaultAc";
-	name = "Vault Blast Door";
-	pixel_y = -32;
-	req_access = list(53);
-	req_one_access = list(53)
-	},
 /obj/machinery/door/airlock/vault/bolted{
 	id_tag = "vault";
 	req_access = list(53)
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /obj/machinery/door/blast/regular{
 	id = "VaultAc";
 	name = "\improper Vault"
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "VaultAc";
-	name = "Vault Blast Door";
-	pixel_y = 32;
-	req_access = list(53);
-	req_one_access = list(53)
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
@@ -32122,7 +32136,7 @@
 /area/crew_quarters/captain)
 "wgD" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Library"
 	},
 /obj/structure/cable/green{
@@ -32727,8 +32741,8 @@
 /area/maintenance/chapel)
 "wFv" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
-	name = "Exploration Public Lobby"
+	name = "Exploration Public Lobby";
+	dir = 4
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -32797,7 +32811,8 @@
 	},
 /obj/machinery/door/window{
 	name = "Mass Driver";
-	req_access = list(22)
+	req_access = list(22);
+	dir = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -32879,7 +32894,6 @@
 "wKW" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
 	name = "Pilot Prep";
 	req_one_access = list(19,43,67)
 	},
@@ -33981,7 +33995,6 @@
 "xtz" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
 	name = "Gateway Prep"
 	},
 /turf/simulated/floor/tiled,
@@ -34065,7 +34078,7 @@
 /area/bridge/office)
 "xwr" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Exploration Prep";
 	req_access = list();
 	req_one_access = list(19,43,67)
@@ -44003,7 +44016,7 @@ qWg
 fjB
 cGG
 cGG
-lqO
+rkP
 cGG
 fjB
 qWg
@@ -52369,7 +52382,7 @@ kTE
 oqF
 kTE
 nOk
-kTE
+lYf
 spk
 bgv
 kac
@@ -62026,7 +62039,7 @@ bwH
 bwH
 jFL
 wIv
-gtw
+nXq
 irV
 gtw
 ohi
@@ -62841,7 +62854,7 @@ kJv
 cYi
 kCA
 les
-lYf
+cYi
 fIz
 jlr
 cYi
@@ -63229,7 +63242,7 @@ jAg
 cYi
 iTu
 eus
-lYf
+cYi
 rEv
 dZF
 cYi
@@ -63421,8 +63434,8 @@ hai
 jwM
 vdY
 cYi
-lYf
-lYf
+cYi
+cYi
 dUF
 fxw
 fVM
@@ -63809,7 +63822,7 @@ fsr
 aRm
 dip
 cYi
-nXq
+uAZ
 uYY
 tLe
 aAh
