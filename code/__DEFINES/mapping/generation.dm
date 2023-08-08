@@ -16,9 +16,9 @@
 	var/real_x = bounds[MAP_MINX]; \
 	var/real_y = bounds[MAP_MINY]; \
 	var/real_z = bounds[MAP_MINZ]; \
-	var/virtual_x = offset[1]; \
-	var/virtual_y = offset[2]; \
-	var/virtual_z = offset[3];
+	var/offset_x = offset[1]; \
+	var/offset_y = offset[2]; \
+	var/offset_z = offset[3];
 
-#define MAPGEN_SET_BUFFER(x, y)
+#define MAPGEN_BUFFER_INDEX(x, y) (x + (y - 1) * width)
 
