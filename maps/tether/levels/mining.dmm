@@ -364,7 +364,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "aU" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -1063,7 +1063,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "cx" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = null;
 	breach_detection = 0;
 	dir = 1;
@@ -1140,7 +1140,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/washing_machine,
@@ -1387,7 +1387,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "cZ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = null;
 	breach_detection = 0;
 	dir = 1;
@@ -2025,7 +2025,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/wood,
