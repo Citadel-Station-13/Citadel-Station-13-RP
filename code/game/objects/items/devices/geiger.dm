@@ -16,7 +16,7 @@
 	item_state = "multitool"
 	w_class = ITEMSIZE_SMALL
 	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
-	matter = list(MAT_STEEL = 200, MAT_GLASS = 100)
+	materials = list(MAT_STEEL = 200, MAT_GLASS = 100)
 
 	var/grace = RAD_GRACE_PERIOD
 	var/datum/looping_sound/geiger/soundloop
@@ -66,7 +66,7 @@
 	update_appearance()
 	update_sound()
 
-/obj/item/geiger_counter/examine(mob/user)
+/obj/item/geiger_counter/examine(mob/user, dist)
 	. = ..()
 	if(!scanning)
 		return
@@ -148,7 +148,7 @@
 	if(user.a_intent == INTENT_HELP)
 		if(!(obj_flags & EMAGGED))
 			user.visible_message(SPAN_NOTICE("[user] scans [target] with [src]."), SPAN_NOTICE("You scan [target]'s radiation levels with [src]..."))
-			addtimer(CALLBACK(src, .proc/scan, target, user), 20, TIMER_UNIQUE) // Let's not have spamming GetAllContents
+			addtimer(CALLBACK(src, PROC_REF(scan), target, user), 20, TIMER_UNIQUE) // Let's not have spamming GetAllContents
 		else
 			user.visible_message(SPAN_NOTICE("[user] scans [target] with [src]."), SPAN_DANGER("You project [src]'s stored radiation into [target]!"))
 			target.rad_act(radiation_count / get_dist(user, target))	// yeah let's NOT have infinite range killbeams
@@ -230,7 +230,7 @@
 		return
 	if(listeningTo)
 		UnregisterSignal(listeningTo, COMSIG_ATOM_RAD_ACT)
-	RegisterSignal(user, COMSIG_ATOM_RAD_ACT, .proc/redirect_rad_act)
+	RegisterSignal(user, COMSIG_ATOM_RAD_ACT, PROC_REF(redirect_rad_act))
 	listeningTo = user
 
 /obj/item/geiger_counter/cyborg/proc/redirect_rad_act(datum/source, amount)

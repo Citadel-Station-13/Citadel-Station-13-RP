@@ -58,7 +58,7 @@
 /obj/item/electronic_assembly/GenerateTag()
 	tag = "assembly_[next_assembly_id++]"
 
-/obj/item/electronic_assembly/examine(mob/user)
+/obj/item/electronic_assembly/examine(mob/user, dist)
 	. = ..()
 	if(can_anchor)
 		. += "<span class='notice'>The anchoring bolts [anchored ? "are" : "can be"] <b>wrenched</b> in place and the maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>"

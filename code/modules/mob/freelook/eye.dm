@@ -51,7 +51,7 @@
 	set src = usr.contents
 	return 0
 
-/mob/observer/eye/examine(mob/user)
+/mob/observer/eye/examine(mob/user, dist)
 	return list(
 		"An eye object belonging to [owner || "no one in particular."]"
 	)

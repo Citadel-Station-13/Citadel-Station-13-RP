@@ -48,7 +48,7 @@
 	if(!anchored)
 		return
 
-/obj/machinery/power/port_gen/examine(mob/user)
+/obj/machinery/power/port_gen/examine(mob/user, dist)
 	. = ..()
 	if(active)
 		. += "<span class='notice'>The generator is on.</span>"
@@ -153,7 +153,7 @@
 
 	power_gen = round(initial(power_gen) * (max(2, temp_rating) / 2))
 
-/obj/machinery/power/port_gen/pacman/examine(mob/user)
+/obj/machinery/power/port_gen/pacman/examine(mob/user, dist)
 	. = ..()
 	. += "\The [src] appears to be producing [power_gen*power_output] W."
 	. += "There [sheets == 1 ? "is" : "are"] [sheets] sheet\s left in the hopper."
@@ -317,6 +317,7 @@
 		ui.open()
 
 /obj/machinery/power/port_gen/pacman/ui_data(mob/user)
+	// todo: rewrite the whole fuckin' UI.
 	var/list/data = list()
 
 	data["active"] = active
@@ -534,7 +535,7 @@
 	if(panel_open && irradiate)
 		radiation_pulse(src, RAD_INTENSITY_RADIOISOTOPE_GEN)
 
-/obj/machinery/power/rtg/examine(mob/user)
+/obj/machinery/power/rtg/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user, src) || isobserver(user))
 		. += "<span class='notice'>The status display reads: Power generation now at <b>[power_gen]</b>kW.</span>"
@@ -603,7 +604,7 @@
 		"<span class='italics'>You hear a loud electrical crack!</span>")
 	playsound(src, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
 	tesla_zap(src, 5, power_gen * 50)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, get_turf(src), 2, 3, 4, 8), 100) // Not a normal explosion.
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), get_turf(src), 2, 3, 4, 8), 100) // Not a normal explosion.
 
 /obj/machinery/power/rtg/abductor/bullet_act(obj/projectile/Proj)
 	. = ..()

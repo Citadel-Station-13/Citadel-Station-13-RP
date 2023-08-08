@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(garbage)
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 	init_order = INIT_ORDER_GARBAGE
 
-	var/list/collection_timeout = list(0, 2 MINUTES, 10 SECONDS) // deciseconds to wait before moving something up in the queue to the next level
+	var/list/collection_timeout = list(2 MINUTES, 10 SECONDS) // deciseconds to wait before moving something up in the queue to the next level
 
 	//Stat tracking
 	var/delslasttick = 0 // number of del()'s we've done this tick
@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(garbage)
 	var/list/dellog = list()
 
 	//sort by how long it's wasted hard deleting
-	tim_sort(items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
+	tim_sort(items, cmp= GLOBAL_PROC_REF(cmp_qdel_item_time), associative = TRUE)
 	for(var/path in items)
 		var/datum/qdel_item/I = items[path]
 		dellog += "Path: [path]"
@@ -338,7 +338,7 @@ SUBSYSTEM_DEF(garbage)
 		++c
 	var/list/built = list("counted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds")
 	start = world.timeofday
-	tim_sort(L, /proc/cmp_numeric_dsc, associative = TRUE)
+	tim_sort(L, GLOBAL_PROC_REF(cmp_numeric_dsc), associative = TRUE)
 	built += "sorted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds"
 	for(var/i in L)
 		built += "[i] - [L[i]]"
@@ -424,7 +424,7 @@ SUBSYSTEM_DEF(garbage)
 	var/list/built = list("counted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds")
 	start = world.timeofday
 	built += "sorted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds"
-	tim_sort(L, /proc/cmp_numeric_dsc, associative = TRUE)
+	tim_sort(L, GLOBAL_PROC_REF(cmp_numeric_dsc), associative = TRUE)
 	for(var/i in L)
 		built += "[i] - [L[i]]"
 	var/datum/browser/B = new(usr, "datum_outgoing_ref_count", "datum outgoing ref count")

@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(gps_transmitters)
 
 /datum/component/gps_signal/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_MOVABLE_Z_CHANGED, .proc/on_z_transit)
+	RegisterSignal(parent, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_z_transit))
 	register_transmitter()
 
 /datum/component/gps_signal/UnregisterFromParent()

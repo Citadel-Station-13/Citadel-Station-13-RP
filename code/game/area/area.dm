@@ -105,6 +105,9 @@
 	// This interacts with the map loader, so it needs to be set immediately
 	// rather than waiting for atoms to initialize.
 	if (unique)
+		// todo: something is double initing reserve area god damnit...
+		// if(GLOB.areas_by_type[type])
+		// 	STACK_TRACE("duplicated unique area, someone fucked up")
 		GLOB.areas_by_type[type] = src
 
 	uid = ++global_uid
@@ -203,7 +206,7 @@
 				A.power_light = FALSE
 				A.power_equip = FALSE
 				A.power_environ = FALSE
-			INVOKE_ASYNC(A, .proc/power_change)
+			INVOKE_ASYNC(A, PROC_REF(power_change))
 */
 	STOP_PROCESSING(SSobj, src)
 	return ..()
@@ -223,11 +226,12 @@
 	A.contents.Add(T)
 	if(old_area)
 		// Handle dynamic lighting update if
-		if(T.dynamic_lighting && old_area.dynamic_lighting != A.dynamic_lighting)
-			if(A.dynamic_lighting)
-				T.lighting_build_overlay()
-			else
-				T.lighting_clear_overlay()
+		if(SSlighting.initialized)
+			if(T.dynamic_lighting && old_area.dynamic_lighting != A.dynamic_lighting)
+				if(A.dynamic_lighting)
+					T.lighting_build_overlay()
+				else
+					T.lighting_clear_overlay()
 		for(var/atom/movable/AM in T)
 			old_area.Exited(AM, A)
 
@@ -640,7 +644,7 @@ var/list/teleportlocs = list()
 			continue
 		var/station = FALSE
 		for(var/turf/T in AR.contents)
-			if(T.z in GLOB.using_map.station_levels)
+			if(T.z in (LEGACY_MAP_DATUM).station_levels)
 				station = TRUE
 				break
 			else
@@ -648,7 +652,7 @@ var/list/teleportlocs = list()
 		if(station)
 			teleportlocs[AR.name] = AR
 
-	teleportlocs = tim_sort(teleportlocs, /proc/cmp_text_asc, TRUE)
+	teleportlocs = tim_sort(teleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 
 	return 1
 
@@ -661,10 +665,10 @@ var/list/ghostteleportlocs = list()
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 		var/turf/picked = pick(get_area_turfs(AR.type))
-		if (picked.z in GLOB.using_map.player_levels)
+		if (picked.z in (LEGACY_MAP_DATUM).player_levels)
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 
-	ghostteleportlocs = tim_sort(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
+	ghostteleportlocs = tim_sort(ghostteleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 
 	return 1

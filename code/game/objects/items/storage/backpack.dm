@@ -507,7 +507,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "backpack", SLOT_ID_LEFT_HAND = "backpack")
 	max_storage_space = ITEMSIZE_COST_NORMAL * 5
 
-/obj/item/storage/backpack/parachute/examine(mob/user)
+/obj/item/storage/backpack/parachute/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) <= 1)
 		if(parachute)
@@ -576,42 +576,7 @@
 	desc = "A special trophy rack bearing the device of an all-seeing eye; the symbol of the PMD."
 	icon_state = "para_ert_pack"
 
-/obj/item/storage/backpack/saddlebag
-	name = "Horse Saddlebags"
-	desc = "A saddle that holds items. Seems slightly bulky."
-	icon = 'icons/obj/clothing/backpack.dmi'
-	icon_override = 'icons/mob/clothing/back.dmi'
-	item_state = "saddlebag"
-	icon_state = "saddlebag"
-	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
-	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
-	var/taurtype = /datum/sprite_accessory/tail/taur/horse //Acceptable taur type to be wearing this
-	var/no_message = "You aren't the appropriate taur type to wear this!"
-
-/obj/item/storage/backpack/saddlebag/can_equip(mob/M, slot, mob/user, flags)
-	. = ..()
-	if(!.)
-		return FALSE
-	var/mob/living/carbon/human/H
-	if(istype(H) && istype(H.tail_style, taurtype))
-		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-			slowdown = 0
-		else
-			slowdown = initial(slowdown)
-		return 1
-	else
-		to_chat(H, "<span class='warning'>[no_message]</span>")
-		return 0
-
-/* If anyone wants to make some... this is how you would.
-/obj/item/storage/backpack/saddlebag/spider
-	name = "Drider Saddlebags"
-	item_state = "saddlebag_drider"
-	icon_state = "saddlebag_drider"
-	var/taurtype = /datum/sprite_accessory/tail/taur/spider
-*/
-
-/obj/item/storage/backpack/saddlebag_common //Shared bag for other taurs with sturdy backs
+/obj/item/storage/backpack/saddlebag_common //Shared bag for taurs
 	name = "Taur Saddlebags"
 	desc = "A saddle that holds items. Seems slightly bulky."
 	icon = 'icons/obj/clothing/backpack.dmi'
@@ -627,59 +592,59 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	var/mob/living/carbon/human/H
+	var/mob/living/carbon/human/H = M
 	var/datum/sprite_accessory/tail/taur/TT = H.tail_style
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/horse))
-		item_state = "[icon_base]_Horse"
+		item_state = "[icon_base]_horse"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/wolf))
-		item_state = "[icon_base]_Wolf"
+		item_state = "[icon_base]_wolf"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/cow))
-		item_state = "[icon_base]_Cow"
+		item_state = "[icon_base]_cow"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/lizard))
-		item_state = "[icon_base]_Lizard"
+		item_state = "[icon_base]_lizard"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/feline))
-		item_state = "[icon_base]_Feline"
+		item_state = "[icon_base]_feline"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/drake))
-		item_state = "[icon_base]_Drake"
+		item_state = "[icon_base]_drake"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/otie))
-		item_state = "[icon_base]_Otie"
+		item_state = "[icon_base]_otie"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/deer))
-		item_state = "[icon_base]_Deer"
+		item_state = "[icon_base]_deer"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else

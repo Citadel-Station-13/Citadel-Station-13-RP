@@ -69,7 +69,7 @@
 	projectile_type = /obj/projectile/kinetic/premium
 */
 
-/obj/item/gun/energy/kinetic_accelerator/examine(mob/user)
+/obj/item/gun/energy/kinetic_accelerator/examine(mob/user, dist)
 	. = ..()
 	if(max_mod_capacity)
 		. += "<b>[get_remaining_mod_capacity()]%</b> mod capacity remaining."
@@ -156,7 +156,7 @@
 	if(!QDELING(src) && !holds_charge)
 		// Put it on a delay because moving item from slot to hand
 		// calls dropped().
-		addtimer(CALLBACK(src, .proc/empty_if_not_held), 2)
+		addtimer(CALLBACK(src, PROC_REF(empty_if_not_held)), 2)
 
 /obj/item/gun/energy/kinetic_accelerator/proc/empty_if_not_held()
 	if(!ismob(loc) && !istype(loc, /obj/item/integrated_circuit))
@@ -180,7 +180,7 @@
 	var/carried = max(1, loc.ConflictElementCount(CONFLICT_ELEMENT_KA))
 
 	deltimer(recharge_timerid)
-	recharge_timerid = addtimer(CALLBACK(src, .proc/reload), recharge_time * carried, TIMER_STOPPABLE)
+	recharge_timerid = addtimer(CALLBACK(src, PROC_REF(reload)), recharge_time * carried, TIMER_STOPPABLE)
 
 /obj/item/gun/energy/kinetic_accelerator/emp_act(severity)
 	return
@@ -286,7 +286,7 @@
 	var/minebot_upgrade = TRUE
 	var/minebot_exclusive = FALSE
 
-/obj/item/borg/upgrade/modkit/examine(mob/user)
+/obj/item/borg/upgrade/modkit/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='notice'>Occupies <b>[cost]%</b> of mod capacity.</span>"
 

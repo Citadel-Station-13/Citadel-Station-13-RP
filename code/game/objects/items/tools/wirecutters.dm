@@ -14,7 +14,7 @@
 	throw_range = 9
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	matter = list(MAT_STEEL = 80)
+	materials = list(MAT_STEEL = 80)
 	attack_verb = list("pinched", "nipped")
 	hitsound = 'sound/items/wirecutter.ogg'
 	tool_sound = 'sound/items/wirecutter.ogg'
@@ -121,7 +121,7 @@
 	icon_state = "jaws_cutter"
 	item_state = "jawsoflife"
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
-	matter = list(MAT_METAL=150, MAT_SILVER=50)
+	materials = list(MAT_METAL=150, MAT_SILVER=50)
 	tool_sound = 'sound/items/jaws_cut.ogg'
 	damage_force = 15
 	tool_speed = 0.25
@@ -157,7 +157,7 @@
 	icon_state = "crystal_wirecutter"
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
-	matter = list(MATERIAL_CRYSTAL = 1250)
+	materials = list(MATERIAL_CRYSTAL = 1250)
 	tool_speed = 0.2
 
 /obj/item/tool/wirecutters/crystal/Initialize()

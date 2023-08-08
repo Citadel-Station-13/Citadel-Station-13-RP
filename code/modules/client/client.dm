@@ -44,6 +44,14 @@
 	/// Database data
 	var/datum/player_data/player
 
+	//? Connection
+	/// queued client security kick
+	var/queued_security_kick
+	/// currently age gate blocked
+	var/age_verification_open = FALSE
+	/// panic bunker is still resolving
+	var/panic_bunker_pending = FALSE
+
 	//? Rendering
 	/// Click catcher
 	var/atom/movable/screen/click_catcher/click_catcher
@@ -171,16 +179,6 @@
 		////////////////////////////////////
 		//things that require the database//
 		////////////////////////////////////
-	///So admins know why it isn't working - Used to determine how old the account is - in days.
-	var/player_age = "(Requires database)"
-	///So admins know why it isn't working - Used to determine what other accounts previously logged in from this ip
-	var/related_accounts_ip = "(Requires database)"
-	///So admins know why it isn't working - Used to determine what other accounts previously logged in from this computer id
-	var/related_accounts_cid = "(Requires database)"
- 	///Date that this account was first seen in the server
-	var/account_join_date = "(Requires database)"
-	///Age of byond account in days
-	var/account_age = "(Requires database)"
 	///Track hours of leave accured for each department.
 	var/list/department_hours = list()
 
@@ -213,3 +211,34 @@
 
 	/// If this client has been fully initialized or not
 	var/fully_created = FALSE
+
+/client/vv_edit_var(var_name, var_value)
+	switch (var_name)
+		if (NAMEOF(src, holder))
+			return FALSE
+		if (NAMEOF(src, ckey))
+			return FALSE
+		if (NAMEOF(src, key))
+			return FALSE
+		if(NAMEOF(src, view))
+			change_view(var_value, TRUE)
+			return TRUE
+	return ..()
+
+/**
+ * are we a guest account?
+ */
+/client/proc/is_guest()
+	return IsGuestKey(key)
+
+/**
+ * are we localhost?
+ */
+/client/proc/is_localhost()
+	return isnull(address) || (address in list("127.0.0.1", "::1"))
+
+/**
+ * are we any sort of staff rank?
+ */
+/client/proc/is_staff()
+	return !isnull(holder)

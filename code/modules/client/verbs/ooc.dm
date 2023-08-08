@@ -47,6 +47,11 @@
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
 
+	if(!reject_on_initialization_block())
+		return
+	if(!reject_age_unverified())
+		return
+
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
 		return
@@ -104,6 +109,11 @@
 
 	log_ooc(raw_msg, src)
 
+	if(persistent.ligma)
+		to_chat(src, "<span class='ooc'><span class='everyone'><span class='message'>OOC: <EM>[src.key]: </EM><span class='linkify'>[msg]</span></span></span></span>")
+		log_shadowban("[key_name(src)] OOC: [msg]")
+		return
+
 	var/ooc_style = "everyone"
 	if(holder && !holder.fakekey)
 		ooc_style = "elevated"
@@ -142,6 +152,11 @@
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC"
 
+	if(!reject_on_initialization_block())
+		return
+	if(!reject_age_unverified())
+		return
+
 	if(!mob)
 		return
 
@@ -176,8 +191,6 @@
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
-
-	log_looc(msg,src)
 
 	if(msg)
 		handle_spam_prevention(MUTE_OOC)
@@ -218,6 +231,13 @@
 			r_receivers |= admin
 
 	msg = emoji_parse(msg)
+
+	if(persistent.ligma)
+		to_chat(src, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name]: </EM><span class='message'><span class='linkify'>[msg]</span></span></span>")
+		log_shadowban("[key_name(src)] LOOC: [msg]")
+		return
+
+	log_looc(msg,src)
 
 	// Send a message
 	for(var/client/target in receivers)

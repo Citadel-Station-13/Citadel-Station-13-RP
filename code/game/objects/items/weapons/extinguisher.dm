@@ -9,8 +9,8 @@
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 2
 	throw_range = 10
+	materials = list(MAT_STEEL = 90)
 	damage_force = 10
-	matter = list(MAT_STEEL = 90)
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
 	drop_sound = 'sound/items/drop/gascan.ogg'
 	pickup_sound = 'sound/items/pickup/gascan.ogg'
@@ -45,7 +45,7 @@
 	create_reagents(max_water)
 	reagents.add_reagent("water", max_water)
 
-/obj/item/extinguisher/examine(mob/user)
+/obj/item/extinguisher/examine(mob/user, dist)
 	. = ..()
 	. += "[icon2html(thing = src, target = user)] [src.name] contains [src.reagents.total_volume] units of water left!"
 

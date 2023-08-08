@@ -21,7 +21,7 @@
 		reagents.add_reagent(/datum/reagent/water, 120)
 	update_icon()
 
-/obj/structure/reagent_dispensers/water_cooler/examine(mob/user)
+/obj/structure/reagent_dispensers/water_cooler/examine(mob/user, dist)
 	. = ..()
 	if(cupholder)
 		. += "<span class='notice'>There are [cups] cups in the cup dispenser.</span>"

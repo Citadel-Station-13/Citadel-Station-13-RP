@@ -9,7 +9,7 @@
 /datum/controller/subsystem/characters/proc/perform_global_migrations(savefile/S, current_version, list/errors, list/options, datum/preferences/prefs)
 	if(current_version < 13)
 		if(prefs)
-			addtimer(CALLBACK(prefs, /datum/preferences/proc/force_reset_keybindings), 5 SECONDS)
+			addtimer(CALLBACK(prefs, TYPE_PROC_REF(/datum/preferences, force_reset_keybindings)), 5 SECONDS)
 		else
 			var/list/new_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds
 			WRITE_FILE(S["key_bindings"], new_bindings)
@@ -19,6 +19,26 @@
 		if(!islist(language_prefixes))
 			language_prefixes = list()
 		options[GLOBAL_DATA_LANGUAGE_PREFIX] = language_prefixes.Copy()
+	if(current_version < 16)
+		if(prefs.client)
+			var/list/pref_datum_entries
+			S["preferences"] >> pref_datum_entries
+			var/was_age_verified = ("AGE_VERIFIED" in pref_datum_entries)
+			if(was_age_verified)
+				var/datum/player_data/data = prefs?.client?.player
+				// alright well, this is evil, but whatever
+				// yes, this is a blocking proc
+				// this can do horrible things but hey, fuck the old age gate system and whoever allowed it to stand.
+				if(!isnull(data) && (SSdbcore.Connect() && data.block_on_available()))
+					if(data.player_flags & PLAYER_FLAG_AGE_VERIFIED)
+					else
+						data.player_flags |= PLAYER_FLAG_AGE_VERIFIED
+						var/datum/tgui/open_verify = SStgui.get_open_ui(prefs.client.mob, GLOB.age_verify_menu)
+						if(!isnull(open_verify))
+							qdel(open_verify)
+						INVOKE_ASYNC(data, TYPE_PROC_REF(/datum/player_data, save))
+				else
+					log_and_message_admins("Failed to automatically authorize age gating for player with savefile [prefs.path]")
 
 /**
  * @params
@@ -204,8 +224,57 @@
 			character[CHARACTER_DATA_CHAR_SPECIES] = RS.uid
 		else
 			errors?.Add(SPAN_DANGER("Species migration failed - no species datum. Report this to a coder."))
-
-
+	if(current_version < 5)
+		var/gear_slot
+		READ_FILE(S["gear_slot"], gear_slot)
+		if(isnum(gear_slot))
+			character[CHARACTER_DATA_LOADOUT_SLOT] = sanitize_integer(gear_slot, 1, LOADOUT_MAX_SLOTS, 1)
+		var/list/gear_data
+		READ_FILE(S["gear_list"], gear_data)
+		var/list/translated_slots = LAZYGETLIST(character[CHARACTER_DATA_LOADOUT])
+		if(islist(gear_data))
+			for(var/i in 1 to LOADOUT_MAX_SLOTS)
+				var/list/data = gear_data["[i]"]
+				if(!islist(data))
+					continue
+				var/list/translated_slot = LAZYGETLIST(translated_slots["[i]"])
+				var/list/translated_entries = LAZYGETLIST(translated_slot[LOADOUT_SLOTDATA_ENTRIES])
+				for(var/name in data)
+					var/list/assembled = list()
+					var/datum/loadout_entry/entry = global.gear_datums[name]
+					if(isnull(entry))
+						errors?.Add("unable to translate loadout slot-entry [i]-[name]: name not found.")
+						continue
+					var/list/old_tweaks = data[name]
+					for(var/old_tweak in old_tweaks)
+						if(!old_tweaks[old_tweak])
+							continue
+						switch(old_tweak)
+							if("/datum/gear_tweak/custom_name")
+								assembled[LOADOUT_ENTRYDATA_RENAME] = old_tweaks[old_tweak]
+							if("/datum/gear_tweak/custom_desc")
+								assembled[LOADOUT_ENTRYDATA_REDESC] = old_tweaks[old_tweak]
+							if("/datum/gear_tweak/color", "/datum/gear_tweak/matrix_recolor")
+								assembled[LOADOUT_ENTRYDATA_RECOLOR] = old_tweaks[old_tweak]
+							else
+								var/replaced = old_tweak
+								if(findtext(replaced, "gear_tweak"))
+									replaced = replacetext(replaced, "gear_tweak", "loadout_tweak")
+								LAZYSET(assembled[LOADOUT_ENTRYDATA_TWEAKS], replaced, old_tweaks[old_tweak])
+					translated_entries[entry.legacy_get_id()] = assembled
+		var/all_underwear_metadata
+		READ_FILE(S["all_underwear_metadata"], all_underwear_metadata)
+		for(var/category in all_underwear_metadata)
+			var/list/catlist = all_underwear_metadata[category]
+			if(!islist(catlist))
+				continue
+			for(var/key in catlist)
+				if(key != "/datum/gear_tweak/color")
+					continue
+				var/val = catlist[key]
+				catlist -= key
+				catlist["/datum/loadout_tweak/color"] = val
+		WRITE_FILE(S["all_underwear_metadata"], all_underwear_metadata)
 
 /**
  * clientless migration of savefiles

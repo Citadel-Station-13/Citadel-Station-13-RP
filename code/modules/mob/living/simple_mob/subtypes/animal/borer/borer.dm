@@ -69,7 +69,7 @@
 	true_name = "[pick("Primary","Secondary","Tertiary","Quaternary")] [rand(1000,9999)]"
 
 	if(!roundstart)
-		INVOKE_ASYNC(src, .proc/request_player)
+		INVOKE_ASYNC(src, PROC_REF(request_player))
 
 	return ..()
 

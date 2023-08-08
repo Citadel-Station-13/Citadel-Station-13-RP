@@ -20,7 +20,7 @@
 	var/mob/living/silicon/infomorph/infomorph
 	var/current_emotion = 1
 
-	matter = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
+	materials = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
 
 /obj/item/sleevecard/relaymove(var/mob/user, var/direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))

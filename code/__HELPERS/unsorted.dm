@@ -456,7 +456,7 @@
 /// Orders mobs by type then by name.
 /proc/sortmobs()
 	var/list/moblist = list()
-	var/list/sortmob = sortList(GLOB.mob_list, cmp=/proc/cmp_name_asc)
+	var/list/sortmob = sortList(GLOB.mob_list, cmp= GLOBAL_PROC_REF(cmp_name_asc))
 	for(var/mob/observer/eye/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/observer/blob/M in sortmob)
@@ -836,7 +836,7 @@
 					var/old_underlays = T.underlays.Copy()
 
 					if(platingRequired)
-						if(istype(B, GLOB.using_map.base_turf_by_z[B.z]))
+						if(istype(B, SSmapping.level_baseturf(B.z)))
 							continue moving
 
 					var/turf/X = B

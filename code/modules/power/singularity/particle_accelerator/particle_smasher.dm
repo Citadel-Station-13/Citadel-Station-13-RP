@@ -37,7 +37,7 @@
 		AM.forceMove(drop_location())
 	return ..()
 
-/obj/machinery/particle_smasher/examine(mob/user)
+/obj/machinery/particle_smasher/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='notice'>\The [src] contains:</span>"
 	for(var/obj/item/I in contents)

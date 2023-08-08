@@ -187,6 +187,8 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	return 1
 
 /obj/structure/cable/update_icon()
+	if(!(atom_flags & ATOM_INITIALIZED))
+		return // do NOT trample d1/d2 before they're set..
 	icon_state = "[d1]-[d2]"
 	alpha = invisibility ? 127 : 255
 
@@ -533,7 +535,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
@@ -545,7 +547,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	name = "cable coil synthesizer"
 	desc = "A device that makes cable."
 	gender = NEUTER
-	matter = null
+	materials = null
 	uses_charge = 1
 	charge_costs = list(1)
 
@@ -617,7 +619,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	else
 		w_class = ITEMSIZE_SMALL
 
-/obj/item/stack/cable_coil/examine(mob/user)
+/obj/item/stack/cable_coil/examine(mob/user, dist)
 	. = ..()
 
 	if(get_amount() == 1)
@@ -964,7 +966,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stacktype = null
@@ -995,7 +997,8 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/item/stack/cable_coil/alien/update_wclass()
 	return 0
 
-
+/obj/item/stack/cable_coil/alien/split(tamount)
+	return null // no split
 
 /obj/item/stack/cable_coil/alien/attack_hand(mob/user, list/params)
 	if (user.get_inactive_held_item() == src)

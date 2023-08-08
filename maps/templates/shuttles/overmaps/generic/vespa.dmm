@@ -836,8 +836,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
 "cx" = (
-/obj/machinery/door/airlock/glass_medical{
-	req_one_access = newlist()
+/obj/machinery/door/airlock/glass/medical{
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
@@ -849,8 +849,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
 "cz" = (
-/obj/machinery/door/airlock/glass_security{
-	req_one_access = newlist()
+/obj/machinery/door/airlock/glass/security{
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
@@ -1765,7 +1765,7 @@
 /area/ship/expe/engines2)
 "fc" = (
 /obj/machinery/door/airlock/glass_science{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
@@ -2717,7 +2717,7 @@
 /area/ship/expe/hangarcontrol)
 "gP" = (
 /obj/machinery/door/airlock/engineering{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
@@ -3211,7 +3211,7 @@
 /obj/effect/floor_decal/corner/yellow/borderfull,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/engineering{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringstorage)
@@ -3335,7 +3335,7 @@
 /obj/effect/floor_decal/corner/yellow/borderfull,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/engineering{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineering)
@@ -3385,7 +3385,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/corner/yellow/borderfull,
 /obj/machinery/door/airlock/engineering{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/sm)
@@ -3419,7 +3419,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/engineering{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor,
 /area/ship/expe/sm)
@@ -4570,8 +4570,8 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalchem)
 "kq" = (
-/obj/machinery/door/airlock/glass_medical{
-	req_one_access = newlist()
+/obj/machinery/door/airlock/glass/medical{
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5012,8 +5012,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_command{
-	req_one_access = newlist()
+/obj/machinery/door/airlock/glass/command{
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
@@ -5552,8 +5552,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seceq)
 "ms" = (
-/obj/machinery/door/airlock/glass_security{
-	req_one_access = newlist()
+/obj/machinery/door/airlock/glass/security{
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -5710,7 +5710,7 @@
 /area/ship/expe/medicalmain)
 "mF" = (
 /obj/machinery/door/airlock/medical{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5830,7 +5830,7 @@
 "mQ" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/engineering{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -5851,7 +5851,7 @@
 /obj/effect/floor_decal/corner/yellow/borderfull,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/engineering{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringequipment)
@@ -6036,7 +6036,7 @@
 /obj/effect/floor_decal/corner/blue/borderfull,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/command{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
@@ -6281,7 +6281,7 @@
 /area/ship/expe/seceq)
 "nJ" = (
 /obj/machinery/door/airlock/security{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/floor_decal/borderfloorblack/full,
@@ -6290,7 +6290,7 @@
 /area/ship/expe/sechall)
 "nK" = (
 /obj/machinery/door/airlock/security{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -6308,8 +6308,8 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/seclobby2)
 "nN" = (
-/obj/machinery/door/airlock/glass_security{
-	req_one_access = newlist()
+/obj/machinery/door/airlock/glass/security{
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -6546,7 +6546,7 @@
 /obj/effect/floor_decal/corner/yellow/borderfull,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/engineering{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
@@ -6867,8 +6867,8 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/seccells)
 "oT" = (
-/obj/machinery/door/airlock/glass_security{
-	req_one_access = newlist()
+/obj/machinery/door/airlock/glass/security{
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -7349,8 +7349,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 5
 	},
-/obj/machinery/autolathe{
-	hacked = 1;
+/obj/machinery/lathe/autolathe{
 	name = "unlocked autolathe"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7939,8 +7938,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seccells)
 "rg" = (
-/obj/machinery/door/airlock/glass_security{
-	req_one_access = newlist()
+/obj/machinery/door/airlock/glass/security{
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seccells)
@@ -7998,8 +7997,8 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/medicalmain)
 "rq" = (
-/obj/machinery/door/airlock/glass_medical{
-	req_one_access = newlist()
+/obj/machinery/door/airlock/glass/medical{
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
@@ -8016,7 +8015,7 @@
 /area/ship/expe/medicalsur)
 "rt" = (
 /obj/machinery/door/airlock/medical{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -8036,7 +8035,7 @@
 /area/ship/expe/medicalsur)
 "rw" = (
 /obj/machinery/door/airlock/medical{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8067,7 +8066,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringequipment)
 "rz" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/yellow/border,
 /turf/simulated/floor/tiled/techfloor,
@@ -8193,7 +8192,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/engineering{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor,
 /area/ship/expe/smstorage)
@@ -8265,7 +8264,7 @@
 /obj/effect/floor_decal/corner/blue/borderfull,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/command{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/captqua)
@@ -8440,7 +8439,7 @@
 /obj/effect/floor_decal/corner/purple/borderfull,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_science{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
@@ -9425,7 +9424,7 @@
 /area/ship/expe/sechall)
 "uI" = (
 /obj/machinery/door/airlock/security{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -9827,15 +9826,15 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/corridor2)
 "vG" = (
-/obj/machinery/door/airlock/glass_security{
-	req_one_access = newlist()
+/obj/machinery/door/airlock/glass/security{
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
 "vH" = (
-/obj/machinery/door/airlock/glass_security{
-	req_one_access = newlist()
+/obj/machinery/door/airlock/glass/security{
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -10567,7 +10566,7 @@
 /turf/simulated/floor,
 /area/ship/expe/engines)
 "yu" = (
-/obj/effect/overmap/visitable/ship/vespa,
+/obj/overmap/entity/visitable/ship/vespa,
 /turf/space,
 /area/space)
 "yv" = (

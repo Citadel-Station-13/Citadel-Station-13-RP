@@ -1,3 +1,6 @@
+/// all player ghosts
+GLOBAL_LIST_EMPTY(observer_list)
+
 /mob/observer/dead
 	name = "ghost"
 	desc = "It's a g-g-g-g-ghooooost!" //jinkies!
@@ -93,6 +96,7 @@
 	var/datum/orbit_menu/orbit_menu
 
 /mob/observer/dead/Initialize(mapload)
+	GLOB.observer_list += src
 	var/mob/body = loc
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = world.view //I mean. I don't even know if byond has occlusion culling... but...
@@ -134,6 +138,8 @@
 
 	if(!T)
 		T = SSjob.get_latejoin_spawnpoint()
+	if(!T)
+		T = locate(1,1,1)
 	forceMove(T)
 
 	for(var/v in GLOB.active_alternate_appearances)
@@ -145,6 +151,10 @@
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 	real_name = name
+	return ..()
+
+/mob/observer/dead/Destroy()
+	GLOB.observer_list -= src
 	return ..()
 
 /mob/observer/dead/Topic(href, href_list)
@@ -188,6 +198,7 @@
 
 /mob/proc/ghostize(var/can_reenter_corpse = 1)
 	if(key)
+		SSplaytime.queue_playtimes(client)
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
 			if(H.vr_holder && !can_reenter_corpse)
@@ -454,6 +465,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Become mouse"
 	set category = "Ghost"
 
+	if(client.persistent.ligma)
+		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
+		log_shadowban("[key_name(src)] mouse join blocked")
+		return
+
 	if(config_legacy.disable_player_mice)
 		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
 		return
@@ -462,7 +478,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/turf/T = get_turf(src)
-	if(!T || (T.z in GLOB.using_map.admin_levels))
+	if(!T || (T.z in (LEGACY_MAP_DATUM).admin_levels))
 		to_chat(src, "<span class='warning'>You may not spawn as a mouse on this Z-level.</span>")
 		return
 
@@ -777,10 +793,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			var/obj/item/paicard/PP = p
 			if(PP.pai == null)
 				count++
-				PP.icon = 'icons/obj/pda_vr.dmi'
-				PP.add_overlay("pai-ghostalert")
-				spawn(54)
-					PP.cut_overlays()
 		to_chat(usr,"<span class='notice'>Flashing the displays of [count] unoccupied PAIs.</span>")
 	else
 		to_chat(usr,"<span class='warning'>You have 'Be pAI' disabled in your character prefs, so we can't help you.</span>")
@@ -850,6 +862,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	//Fine fine, we can ask.
 	var/obj/item/nif/nif = H.nif
 	to_chat(src,"<span class='notice'>Request sent to [H].</span>")
+
+	if(client.persistent.ligma)
+		sleep(rand(40,120))
+		to_chat(src, SPAN_WARNING("[H] denied your request."))
+		log_shadowban("[key_name(src)] SC join blocked.")
+		return
 
 	var/req_time = world.time
 	nif.notify("Transient mindstate detected, analyzing...")

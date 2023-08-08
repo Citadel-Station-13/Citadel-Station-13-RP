@@ -1,4 +1,4 @@
-/obj/effect/overmap/visitable/sector/lythios43c
+/obj/overmap/entity/visitable/sector/lythios43c
 	name = "Lythios 43c"	// Name of the location on the overmap.
 	desc = "A cold, desolate iceball world. Home to the NSB Atlas, a far-frontier research base set up by NanoTrasen shortly after establishing in this sector."
 	scanner_desc = @{"[b][i]Registration[/i][/b]: NSB Atlas
@@ -32,7 +32,7 @@
 //Despite not being in the multi-z complex, these levels are part of the overmap sector
 /* This should be placed in the map's define files.
 
-/obj/effect/overmap/visitable/sector/lythios43c
+/obj/overmap/entity/visitable/sector/lythios43c
 	extra_z_levels = list(
 		Z_LEVEL_WEST_PLAIN,
 		Z_LEVEL_WEST_CAVERN,
@@ -50,23 +50,23 @@
 */
 
 
-/obj/effect/overmap/visitable/sector/lythios43c/Crossed(var/atom/movable/AM)
+/obj/overmap/entity/visitable/sector/lythios43c/Crossed(var/atom/movable/AM)
 	. = ..()
 	announce_atc(AM,going = FALSE)
 
-/obj/effect/overmap/visitable/sector/lythios43c/Uncrossed(var/atom/movable/AM)
+/obj/overmap/entity/visitable/sector/lythios43c/Uncrossed(var/atom/movable/AM)
 	. = ..()
 	announce_atc(AM,going = TRUE)
 
-/obj/effect/overmap/visitable/sector/lythios43c/proc/announce_atc(var/atom/movable/AM, var/going = FALSE)
+/obj/overmap/entity/visitable/sector/lythios43c/proc/announce_atc(var/atom/movable/AM, var/going = FALSE)
 	var/message = "Sensor contact for vessel '[AM.name]' has [going ? "left" : "entered"] ATC control area."
 	//For landables, we need to see if their shuttle is cloaked
-	if(istype(AM, /obj/effect/overmap/visitable/ship/landable))
-		var/obj/effect/overmap/visitable/ship/landable/SL = AM //Phew
+	if(istype(AM, /obj/overmap/entity/visitable/ship/landable))
+		var/obj/overmap/entity/visitable/ship/landable/SL = AM //Phew
 		var/datum/shuttle/autodock/multi/shuttle = SSshuttle.shuttles[SL.shuttle]
 		if(!istype(shuttle) || !shuttle.cloaked) //Not a multishuttle (the only kind that can cloak) or not cloaked
-			GLOB.lore_atc.msg(message)
+			SSlegacy_atc.msg(message)
 
 	//For ships, it's safe to assume they're big enough to not be sneaky
-	else if(istype(AM, /obj/effect/overmap/visitable/ship))
-		GLOB.lore_atc.msg(message)
+	else if(istype(AM, /obj/overmap/entity/visitable/ship))
+		SSlegacy_atc.msg(message)

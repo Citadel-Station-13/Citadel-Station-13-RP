@@ -19,7 +19,7 @@
 	..()
 	stuff_to_display = null
 
-/obj/item/integrated_circuit/output/screen/any_examine(mob/user)
+/obj/item/integrated_circuit/output/screen/any_examine(mob/user, dist)
 	to_chat(user, "There is a little screen labeled '[name]', which displays [!isnull(stuff_to_display) ? "'[stuff_to_display]'" : "nothing"].")
 
 /obj/item/integrated_circuit/output/screen/do_work()
@@ -323,7 +323,7 @@
 /obj/item/integrated_circuit/output/led/power_fail()
 	set_pin_data(IC_INPUT, 1, FALSE)
 
-/obj/item/integrated_circuit/output/led/any_examine(mob/user)
+/obj/item/integrated_circuit/output/led/any_examine(mob/user, dist)
 	var/text_output = list()
 	var/initial_name = initial(name)
 

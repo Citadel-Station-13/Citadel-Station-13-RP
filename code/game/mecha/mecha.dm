@@ -245,7 +245,7 @@
 
 /obj/mecha/Initialize(mapload)
 	. = ..()
-	INVOKE_ASYNC(src, .proc/create_components)
+	INVOKE_ASYNC(src, PROC_REF(create_components))
 	update_transform()
 
 //! shitcode
@@ -288,7 +288,7 @@
 
 	add_cell()
 	// TODO: BURN ITERATORS WITH FUCKING FIRE
-	INVOKE_ASYNC(src, /obj/mecha/proc/add_iterators)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/mecha, add_iterators))
 	removeVerb(/obj/mecha/verb/disconnect_from_port)
 	log_message("[src.name] created.")
 	loc.Entered(src)
@@ -446,7 +446,7 @@
 	else
 		return 0
 
-/obj/mecha/examine(mob/user)
+/obj/mecha/examine(mob/user, dist)
 	. = ..()
 
 	var/obj/item/mecha_parts/component/armor/AC = internal_components[MECH_ARMOR]
@@ -512,7 +512,7 @@
 		"View Stats" = radial_image_statpanel
 	)
 
-	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, .proc/check_occupant_radial, user), require_near = TRUE, tooltips = TRUE)
+	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, PROC_REF(check_occupant_radial), user), require_near = TRUE, tooltips = TRUE)
 	if(!check_occupant_radial(user))
 		return
 	if(!choice)

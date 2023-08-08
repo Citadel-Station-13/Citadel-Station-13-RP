@@ -1,6 +1,6 @@
-#define BASE_ITEM_KJ_COST 6000
-#define BASE_MOB_KJ_COST 72000
-#define KJ_USAGE_SEVERITY_MINOR 72000 //sparks, lights flicker
+#define BASE_ITEM_KJ_COST 3000
+#define BASE_MOB_KJ_COST 18000
+#define KJ_USAGE_SEVERITY_MINOR 36000 //sparks, lights flicker
 #define KJ_USAGE_SEVERITY_MAJOR 100000 //emp, surge across the powernet
 #define KJ_USAGE_SEVERITY_SEVERE 150000 //station power grid shuts down.
 
@@ -295,6 +295,6 @@
 			var/obj/machinery/power/apc/P = get_area(src).get_apc()
 			P.overload_lighting(100)
 			for(var/obj/machinery/power/grid_checker/G in GLOB.machines)
-				if(G.z in GLOB.using_map.station_levels)
+				if(G.z in (LEGACY_MAP_DATUM))
 					G.power_failure(FALSE)
 

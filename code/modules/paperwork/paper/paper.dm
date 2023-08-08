@@ -73,7 +73,7 @@
 	if(info != initial(info))
 		info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
-		INVOKE_ASYNC(src, .proc/init_parsepencode, info)
+		INVOKE_ASYNC(src, PROC_REF(init_parsepencode), info)
 	else
 		// TODO: REFACTOR PAPER
 		spawn(0)
@@ -95,7 +95,7 @@
 
 	free_space -= length(strip_html_properly(new_text))
 
-/obj/item/paper/examine(mob/user)
+/obj/item/paper/examine(mob/user, dist)
 	. = ..()
 	if(in_range(user, src) || istype(user, /mob/observer/dead))
 		show_content(usr)

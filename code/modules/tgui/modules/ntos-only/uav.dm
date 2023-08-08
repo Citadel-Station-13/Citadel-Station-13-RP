@@ -95,7 +95,7 @@
 
 	signal_strength = 0
 	current_uav = U
-	RegisterSignal(U, COMSIG_MOVABLE_Z_CHANGED, .proc/current_uav_changed_z)
+	RegisterSignal(U, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(current_uav_changed_z))
 
 	if(LAZYLEN(viewers))
 		for(var/datum/weakref/W in viewers)
@@ -144,8 +144,8 @@
 		else
 			return 0
 
-	var/list/zlevels_in_range = GLOB.using_map.get_map_levels(their_z, FALSE)
-	var/list/zlevels_in_long_range = GLOB.using_map.get_map_levels(their_z, TRUE, om_range = DEFAULT_OVERMAP_RANGE) - zlevels_in_range
+	var/list/zlevels_in_range = (LEGACY_MAP_DATUM).get_map_levels(their_z, FALSE)
+	var/list/zlevels_in_long_range = (LEGACY_MAP_DATUM).get_map_levels(their_z, TRUE, om_range = DEFAULT_OVERMAP_RANGE) - zlevels_in_range
 	var/their_signal = 0
 	// Measure z-distance between the AM passed in and the nearest relay
 	for(var/relay in ntnet_global.relays)

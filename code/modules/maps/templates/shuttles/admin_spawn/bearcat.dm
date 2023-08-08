@@ -49,7 +49,7 @@
 	landmark_tag = "omship_spawn_bearcat"
 	shuttle_type = /datum/shuttle/autodock/overmap/bearcat
 
-/obj/effect/overmap/visitable/ship/landable/bearcat
+/obj/overmap/entity/visitable/ship/landable/bearcat
 	scanner_name = "Binturong-class Salvage Vessel"
 	scanner_desc = @{"[i]Registration[/i]: IRV Bearcat
 [i]Class:[/i] Corvette

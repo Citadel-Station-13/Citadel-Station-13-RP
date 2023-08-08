@@ -26,9 +26,6 @@
 	return ..()
 
 /obj/item/grenade/chem_grenade/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(!stage || stage==1)
 		if(detonator)
 //				detonator.loc=src.loc
@@ -120,7 +117,7 @@
 			else
 				to_chat(user, "<span class='warning'>\The [W] is empty.</span>")
 
-/obj/item/grenade/chem_grenade/examine(mob/user)
+/obj/item/grenade/chem_grenade/examine(mob/user, dist)
 	. = ..()
 	if(detonator)
 		. += "With attached [detonator.name]"

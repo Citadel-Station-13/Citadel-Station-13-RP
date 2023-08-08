@@ -58,6 +58,11 @@
 
 	message = emoji_parse(say_emphasis(message))
 
+	if(client.persistent.ligma)
+		to_chat(src, "<span class='deadsay'><b>DEAD:</b> [src]([ghost_follow_link(src, src)]) [pick("complains","moans","whines","laments","blubbers")], [message]</span>")
+		log_shadowban("[key_name(src)] DSAY: [message]")
+		return
+
 	say_dead_direct("[pick("complains","moans","whines","laments","blubbers")], <span class='message'>\"<span class='linkify'>[message]</span>\"</span>", src)
 
 /mob/proc/say_understands(var/mob/other,var/datum/language/speaking = null)

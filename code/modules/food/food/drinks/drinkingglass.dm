@@ -8,7 +8,7 @@
 	center_of_mass = list("x"=16, "y"=10)
 	drop_sound = 'sound/items/drop/drinkglass.ogg'
 	pickup_sound =  'sound/items/pickup/drinkglass.ogg'
-	matter = list(MAT_GLASS = 500)
+	materials = list(MAT_GLASS = 500)
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/on_reagent_change()
 	/*if(reagents.reagent_list.len > 1 )
@@ -113,7 +113,7 @@
 	icon_state = "shotglass"
 	amount_per_transfer_from_this = 10
 	volume = 10
-	matter = list(MAT_GLASS = 175)
+	materials = list(MAT_GLASS = 175)
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass/on_reagent_change()
 	cut_overlays()
@@ -140,7 +140,7 @@
 	desc = "Big enough to contain enough protein to get perfectly swole. Don't mind the bits."
 	icon_state = "fitness-cup_black"
 	volume = 100
-	matter = list(MAT_PLASTIC = 2000)
+	materials = list(MAT_PLASTIC = 2000)
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/fitnessflask/Initialize(mapload)
 	. = ..()
