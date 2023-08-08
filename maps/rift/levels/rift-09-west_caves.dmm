@@ -76,7 +76,7 @@
 "aV" = (
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "bc" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small,
@@ -126,7 +126,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "bP" = (
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/reinforced/full,
@@ -519,7 +519,7 @@
 /obj/effect/floor_decal/techfloor/orange/corner,
 /obj/effect/map_effect/radiation_emitter/strong,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "fT" = (
 /obj/structure/table/reinforced,
 /obj/random/tech_supply/component/nofail,
@@ -838,7 +838,7 @@
 "ju" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "jw" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -1039,7 +1039,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "mi" = (
 /obj/structure/railing{
 	dir = 1
@@ -1080,7 +1080,7 @@
 "mS" = (
 /obj/random/trash,
 /turf/simulated/floor/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "mW" = (
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/tiled,
@@ -1418,7 +1418,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "qK" = (
 /obj/structure/catwalk,
 /obj/structure/railing/grey{
@@ -1533,7 +1533,7 @@
 "rA" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "rC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -1792,7 +1792,7 @@
 "vh" = (
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "vn" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -2255,7 +2255,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "AG" = (
 /obj/machinery/atmospherics/pipe/zpipe/up{
 	dir = 4
@@ -2320,7 +2320,7 @@
 /area/rift/facility/interior/workroom)
 "Bb" = (
 /turf/simulated/open,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "Bd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -2402,7 +2402,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "Cc" = (
 /turf/simulated/floor/outdoors/rocks/caves/geothermal,
 /area/rift/geothermal)
@@ -2418,7 +2418,7 @@
 /area/outpost/mining_main/outpost/substation)
 "Cm" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "Cq" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -2441,7 +2441,7 @@
 /obj/random/obstruction,
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "CH" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -3338,7 +3338,7 @@
 /area/rift/surfacebase/outside/west_caves)
 "MC" = (
 /turf/simulated/wall,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "MD" = (
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/geothermal)
@@ -3568,7 +3568,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/lythios43c/indoors,
-/area/rift/facility/interior/undergound1)
+/area/rift/facility/interior/underground1)
 "PB" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1

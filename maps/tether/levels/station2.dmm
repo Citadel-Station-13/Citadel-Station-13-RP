@@ -131,7 +131,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/station/visitorhallway/lounge)
 "abj" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -188,7 +188,7 @@
 /area/mine/explored/upper_level)
 "acL" = (
 /obj/random/trash,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor,
@@ -271,7 +271,7 @@
 /area/engineering/shaft)
 "adr" = (
 /obj/structure/table/steel,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor,
@@ -341,7 +341,7 @@
 	dir = 10
 	},
 /obj/structure/disposalpipe/junction/yjunction,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /obj/structure/catwalk,
@@ -380,7 +380,7 @@
 /turf/simulated/wall/r_wall,
 /area/hallway/station/starboard)
 "aec" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -409,7 +409,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -442,7 +442,7 @@
 /area/hallway/station/port)
 "aej" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -458,7 +458,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -474,7 +474,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -618,7 +618,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
 "aeO" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/dark,
@@ -627,7 +627,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -684,7 +684,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "afi" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -829,7 +829,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "afV" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/dark,
@@ -866,7 +866,7 @@
 	dir = 10
 	},
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -1346,7 +1346,7 @@
 /area/gateway/prep_room)
 "aiE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -1733,7 +1733,7 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner2{
 	dir = 8
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -2074,7 +2074,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_upper)
 "akV" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /obj/machinery/portable_atmospherics/powered/scrubber,
@@ -3430,8 +3430,8 @@
 /obj/item/reagent_scanner,
 /obj/item/healthanalyzer,
 /obj/item/geiger_counter,
-/obj/item/plant_analyzer,
-/obj/item/atmos_analyzer,
+/obj/item/analyzer/plant_analyzer,
+/obj/item/analyzer,
 /obj/item/t_scanner,
 /turf/simulated/floor/plating,
 /area/storage/tech)
@@ -3502,7 +3502,7 @@
 /obj/item/flash,
 /obj/item/flash,
 /obj/structure/table/steel,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -3783,7 +3783,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -4151,7 +4151,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -4316,7 +4316,7 @@
 /turf/simulated/floor/airless,
 /area/quartermaster/belterdock)
 "aqu" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -4408,7 +4408,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -4516,7 +4516,7 @@
 /obj/structure/table/rack,
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -5028,7 +5028,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -5534,7 +5534,7 @@
 /area/ai_monitored/storage/eva)
 "atE" = (
 /obj/machinery/suit_storage_unit/standard_unit,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -5557,7 +5557,7 @@
 /turf/simulated/open,
 /area/vacant/vacant_restaurant_upper)
 "atI" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -5744,7 +5744,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -6444,7 +6444,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "axD" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -6702,7 +6702,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /obj/machinery/camera/network/tether,
@@ -7622,7 +7622,7 @@
 /turf/simulated/wall/r_wall,
 /area/quartermaster/belterdock)
 "aEy" = (
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/mineral/vacuum,
 /area/space)
 "aEA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -7853,7 +7853,7 @@
 	dir = 1
 	},
 /obj/machinery/mineral/equipment_vendor,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -8066,7 +8066,7 @@
 	},
 /area/quartermaster/belterdock)
 "aGx" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8148,7 +8148,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -8812,7 +8812,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/office)
 "aJp" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -8877,7 +8877,7 @@
 /area/shuttle/excursion/cargo)
 "aJx" = (
 /obj/structure/catwalk,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/rust,
@@ -9147,7 +9147,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/starboard)
 "aKD" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -9785,7 +9785,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/bluegrid,
@@ -9936,9 +9936,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
 "aNS" = (
-/obj/structure/lattice,
-/obj/structure/grille,
-/turf/space,
+/turf/simulated/mineral/floor/cave,
 /area/space)
 "aNT" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -10005,7 +10003,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
 "aOj" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -11265,7 +11263,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/station/public_meeting_room)
 "aSW" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -11867,7 +11865,7 @@
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "aUZ" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -11921,7 +11919,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -12243,7 +12241,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "aWi" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor,
@@ -12355,7 +12353,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/stairs_two)
 "aWS" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -12688,7 +12686,7 @@
 "aYh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -13194,7 +13192,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -13438,7 +13436,7 @@
 /area/hallway/station/starboard)
 "bEX" = (
 /obj/structure/closet/crate,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -13982,6 +13980,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar)
+"cPw" = (
+/obj/machinery/camera/network/tether{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/burial)
 "cQA" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -14083,13 +14087,13 @@
 	pixel_x = 13;
 	pixel_y = 4
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/wood,
 /area/tether/exploration/pilot_office)
 "cVb" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -14098,6 +14102,10 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/cargo)
+"cVW" = (
+/obj/machinery/camera/network/cargo,
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/foyer)
 "cZR" = (
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/cargo)
@@ -14126,6 +14134,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
+"dcD" = (
+/obj/structure/lattice,
+/turf/simulated/mineral/floor/cave,
+/area/mine/explored/upper_level)
 "ddt" = (
 /obj/machinery/camera/network/tether,
 /turf/simulated/mineral/floor/vacuum,
@@ -14576,7 +14588,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -14688,7 +14700,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -15574,7 +15586,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -16104,7 +16116,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -16526,7 +16538,7 @@
 /area/quartermaster/warehouse)
 "hcw" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -16679,7 +16691,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -17140,7 +17152,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/dock_one)
 "ibH" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -17232,6 +17244,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
+"ilX" = (
+/turf/simulated/mineral/floor/cave,
+/area/mine/explored/upper_level)
 "imB" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -17350,7 +17365,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -17380,7 +17395,7 @@
 /turf/space,
 /area/maintenance/station/cargo)
 "izH" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -17493,7 +17508,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/visitorhallway/lounge)
 "iIu" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/corner/brown/border{
@@ -17561,7 +17576,7 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/head/helmet/space/void/mining,
 /obj/item/mining_scanner,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -17705,7 +17720,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -18069,7 +18084,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -18245,7 +18260,7 @@
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
 "jZN" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -18601,6 +18616,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/camera/network/cargo,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "kBy" = (
@@ -18663,7 +18679,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
 "kIj" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -19071,7 +19087,7 @@
 /obj/vehicle_old/train/trolley{
 	dir = 8
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -20162,7 +20178,7 @@
 /turf/simulated/floor/plating,
 /area/tether/station/dock_one)
 "nMM" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -20348,7 +20364,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "odb" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -20455,7 +20471,7 @@
 /area/quartermaster/office)
 "ojf" = (
 /obj/machinery/computer/security/mining,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 25
 	},
 /turf/simulated/floor/wood,
@@ -20558,7 +20574,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -20795,7 +20811,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
 "oRn" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -21135,7 +21151,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "pkL" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -21470,7 +21486,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/foyer)
 "pPZ" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -21633,6 +21649,19 @@
 /obj/machinery/atmospherics/pipe/manifold4w/visible/fuel,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
+"qjv" = (
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 10
+	},
+/obj/structure/table/wooden_reinforced,
+/obj/machinery/camera/network/tether{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/station/port)
 "qjS" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -22060,7 +22089,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/visitorhallway/lounge)
 "qSU" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -22615,7 +22644,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "rYs" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -23069,7 +23098,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -23114,6 +23143,9 @@
 /obj/item/folder/blue,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/office)
+"tdZ" = (
+/turf/space/basic,
+/area/space)
 "tfR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -23491,6 +23523,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/starboard)
+"tGZ" = (
+/obj/structure/lattice,
+/turf/simulated/mineral/floor/cave,
+/area/space)
 "tIP" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/effect/floor_decal/industrial/warning,
@@ -24192,7 +24228,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
 "uYn" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /obj/structure/bed/chair/comfy/beige,
@@ -24304,7 +24340,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -24320,7 +24356,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
 "vkT" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -24778,7 +24814,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "vYT" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor,
@@ -25652,7 +25688,7 @@
 /area/quartermaster/storage)
 "xBA" = (
 /obj/structure/closet/coffin,
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -25988,7 +26024,7 @@
 /turf/simulated/floor/airless,
 /area/quartermaster/belterdock)
 "ylp" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/wood,
@@ -28482,20 +28518,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -28624,20 +28660,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -28766,20 +28802,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -28908,20 +28944,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -29050,21 +29086,21 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+tdZ
 aaa
 aaa
 aaa
@@ -29192,21 +29228,21 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+tdZ
 aaa
 aaa
 aaa
@@ -29334,20 +29370,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -29476,20 +29512,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -29571,16 +29607,16 @@ aaa
 aaa
 aaa
 aaa
-aNS
-aNS
-aNS
-aNS
-aNS
-aNS
-aNS
-aeM
-aNS
-aNS
+aEy
+aEy
+aEy
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -29631,7 +29667,7 @@ aab
 aab
 aab
 aab
-aaa
+aab
 aaa
 aaa
 aaa
@@ -29712,17 +29748,17 @@ aaa
 aaa
 aaa
 aaa
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
 aaa
-aNS
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aNS
 aaa
 aaa
 aaa
@@ -29852,18 +29888,18 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aNS
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
 aac
 aac
 aac
@@ -29993,18 +30029,18 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aNS
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
 aac
 aac
 aac
@@ -30044,7 +30080,7 @@ aaa
 aeM
 aaa
 aaa
-aaa
+tdZ
 aab
 aab
 aab
@@ -30134,18 +30170,18 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aEy
+aEy
+aEy
+aEy
 aNS
-aaa
-aaa
-aaa
-aab
-aab
-aab
+aNS
+tGZ
+aNS
+aEy
+aEy
+aEy
+aEy
 aac
 aac
 aac
@@ -30186,7 +30222,7 @@ aaa
 aeM
 aaa
 aaa
-aaa
+tdZ
 aab
 aab
 aab
@@ -30276,16 +30312,16 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aEy
+aEy
+aEy
+aEy
 aNS
-aaa
-aaa
-aaa
-aab
+aNS
+tGZ
+aNS
+aEy
+aEy
 aEy
 aEy
 aEy
@@ -30417,17 +30453,17 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aEy
+aEy
+aEy
+aEy
+aEy
 aNS
-aaa
-aaa
-aaa
-aab
+aNS
+tGZ
+aNS
+aNS
+aEy
 aEy
 aEy
 aEy
@@ -30559,20 +30595,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aeM
-aaa
-aaa
-aaa
-aac
 aEy
 aEy
-akj
+aEy
+aEy
+tGZ
+tGZ
+tGZ
+tGZ
+tGZ
+tGZ
+aEy
+aEy
+aEy
+aQs
 aQs
 aUg
 ahr
@@ -30701,16 +30737,16 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aEy
+aEy
+aEy
+aEy
 aNS
-aaa
-aab
-aab
+aNS
+aNS
+tGZ
+aNS
+aNS
 aac
 aac
 ahr
@@ -30843,15 +30879,15 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aEy
+aEy
+aEy
+aEy
 aNS
 aNS
-aac
+aNS
+dcD
+ilX
 aac
 aac
 aac
@@ -30985,15 +31021,15 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aac
+aEy
+aEy
+aEy
+aEy
+aNS
+aNS
+ilX
+dcD
+ilX
 aac
 aac
 aac
@@ -31127,14 +31163,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aac
+aEy
+aEy
+aEy
+aEy
+aEy
+dcD
+dcD
+dcD
 aac
 aac
 aac
@@ -31269,14 +31305,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aac
-aac
+aEy
+aEy
+aEy
+aEy
+aEy
+ilX
+ilX
+dcD
 aac
 oTt
 aac
@@ -31412,13 +31448,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aac
-aac
+aEy
+aEy
+aEy
+aEy
+ilX
+ilX
+dcD
 aac
 aac
 aac
@@ -31554,13 +31590,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aac
-aac
+aEy
+aEy
+aEy
+aEy
+ilX
+ilX
+dcD
 aac
 aac
 aac
@@ -31696,12 +31732,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aEy
+aEy
+aEy
+aEy
+aac
+aac
 aac
 aac
 aac
@@ -31838,12 +31874,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aEy
+aEy
+aEy
+aEy
+aEy
+aac
 aac
 aac
 aac
@@ -31980,13 +32016,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aEy
+aEy
+aEy
+aEy
+aEy
+aEy
+aac
 aac
 aac
 aac
@@ -32123,12 +32159,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aEy
+aEy
+aEy
+aEy
+aEy
+aac
 aac
 aac
 aac
@@ -32266,11 +32302,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aEy
+aEy
+aEy
+aEy
+aac
 aac
 aac
 aac
@@ -32409,10 +32445,10 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
+aEy
+aEy
+aEy
+aac
 aac
 aac
 aac
@@ -33894,7 +33930,7 @@ avE
 aWA
 avE
 ayV
-aTI
+cPw
 aJb
 azS
 aAd
@@ -35021,7 +35057,7 @@ bxa
 aSm
 hyt
 uJH
-mVX
+qjv
 cRn
 bxa
 cdk
@@ -40422,11 +40458,11 @@ pVp
 vGs
 eqW
 aHC
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -40564,11 +40600,11 @@ pVp
 aHC
 gJo
 aHC
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -40706,11 +40742,11 @@ pVp
 jhY
 xIx
 aHC
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -40848,11 +40884,11 @@ pVp
 kUJ
 jNP
 aHC
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -40990,11 +41026,11 @@ pVp
 roM
 jNP
 aHC
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -41132,11 +41168,11 @@ pVp
 sjc
 cwS
 aHC
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -41274,11 +41310,11 @@ pVp
 roM
 jNP
 aHC
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -41416,11 +41452,11 @@ rGN
 rgP
 cwS
 aHC
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -41558,11 +41594,11 @@ rGN
 rgP
 cwS
 aHC
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -41700,11 +41736,11 @@ rGN
 rgP
 cwS
 aHC
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -41842,11 +41878,11 @@ vmK
 mye
 cOX
 aHC
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -41984,11 +42020,11 @@ wFR
 wFR
 uph
 jXk
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -42126,11 +42162,11 @@ mRT
 lPM
 kqt
 dik
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 pPt
@@ -42268,11 +42304,11 @@ tyO
 tyO
 lDV
 dik
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -42410,10 +42446,10 @@ dSb
 dSb
 awx
 dik
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
 aaa
 aaa
 kfA
@@ -42552,9 +42588,9 @@ jBO
 kPF
 pau
 dik
-aaa
-aaa
-aaa
+aab
+aab
+aab
 aaa
 aaa
 aaa
@@ -43096,7 +43132,7 @@ aJe
 uUq
 efh
 aHC
-qDz
+cVW
 pPB
 qDz
 xfq

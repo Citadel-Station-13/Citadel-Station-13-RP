@@ -288,6 +288,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	add_overlay("pai-null")
 
 /obj/item/paicard/proc/removePersonality()
+	QDEL_NULL(pai)
 	pai = null
 	cached_holo_image = null
 	cut_overlays()

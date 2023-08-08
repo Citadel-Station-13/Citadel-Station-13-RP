@@ -438,7 +438,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 26
 	},
 /turf/simulated/floor/plating,
@@ -540,7 +540,7 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "Rl" = (
-/obj/machinery/air_alarm{
+/obj/machinery/alarm{
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
