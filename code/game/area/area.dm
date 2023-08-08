@@ -24,6 +24,14 @@
 	 */
 	var/unique = TRUE
 
+	//* Generation
+	/// arbitrary categorical enum set by mapgen
+	var/generated_categorical
+	/// arbitrary variation number set by mapgen
+	var/generated_variation
+	/// arbitrary flags set by mapgen
+	var/generated_bitfield
+
 	//? defaults
 	/// outdoors by default?
 	var/initial_outdoors = FALSE

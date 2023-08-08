@@ -11,16 +11,18 @@
 	var/seed
 	/// automatic seed provided by map_generation
 	var/auto_seed
+	/// auto seed prefix
+	var/auto_seed_prefix
 	/// dirty? regenerate state variables if so
 	var/dirty = TRUE
 
-/datum/map_layer/New()
+#warn impl all
 
 /datum/map_layer/proc/preprocess_seed(seed)
 	return seed
 
 /datum/map_layer/proc/get_seed()
-	return preprocess_seed(seed || auto_seed)
+	return preprocess_seed(seed || "[auto_seed_prefix][auto_seed]")
 
 /datum/map_layer/proc/tgui_data()
 	return list(
@@ -79,38 +81,3 @@
  */
 /datum/map_layer/proc/setup_state()
 	return
-
-/**
- * terrain phase - setup base turfs and areas of the area into buffer
- *
- * @params
- * * generation - generation instance; avoid using this as much as possible.
- * * bounds - bounds in map bounds list format
- * * offsets - list(x, y, z)
- * * lookup - TBD
- * * buffer - TBD
- */
-/datum/map_layer/proc/terrain_phase(datum/map_generation/generation, list/bounds, list/offsets, list/lookup, list/buffer)
-
-/**
- * structural sweep - setup structures of the area
- *
- * @params
- * * generation - generation instance; avoid using this as much as possible.
- * * bounds - bounds in map bounds list format
- * * offsets - list(x, y, z)
- */
-/datum/map_layer/proc/structural_sweep(datum/map_generation/generation, list/bounds, list/offsets)
-
-/**
- * entity sweep - placing stuff like trees and mobs
- *4
- * @params
- * * generation - generation instance; avoid using this as much as possible.
- * * bounds - bounds in map bounds list format
- * * offsets - list(x, y, z)
- */
-/datum/map_layer/proc/entity_sweep(datum/map_generation/generation, list/bounds, list/offsets)
-
-#warn impl all
-

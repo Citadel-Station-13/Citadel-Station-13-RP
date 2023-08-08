@@ -7,8 +7,10 @@
 /datum/map_generation
 	/// master seed
 	var/seed
-	/// layers - list of paths to init at new
-	var/list/datum/map_layer/layers = list()
+	/// terrain layers - list of paths to init at new
+	var/list/datum/map_layer/terrain_layers = list()
+	/// entity layers - list of paths to init at new
+	var/list/datum/map_layer/entity_layers = list()
 
 	/// user-defined var on presets: danger +- of normal; 100 = 100% more, -100 = 50% less
 	var/danger = 0
@@ -33,9 +35,12 @@
  * Default behavior: set up all paths in layers list.
  */
 /datum/map_generation/proc/setup()
-	for(var/i in 1 to length(layers))
-		if(ispath(layers[i]))
-			layers[i] = new layers[i]
+	for(var/i in 1 to length(terrain_layers))
+		if(ispath(terrain_layers[i]))
+			terrain_layers[i] = new terrain_layers[i]
+	for(var/i in 1 to length(entity_layers))
+		if(ispath(entity_layers[i]))
+			entity_layers[i] = new entity_layers[i]
 
 /**
  * operates on the given world coords
@@ -52,9 +57,22 @@
  * * offset_y - offset generation by this much ; otherwise lower left is 0, 0 on layer maps
  */
 /datum/map_generation/proc/friendly_generate(x, y, z, width, height, offset_x = 0, offset_y = 0)
+	var/list/bounds = new /list(MAP_BOUNDS)
+	bounds[MAP_MINX] = x
+	bounds[MAP_MAXX] = x + width - 1
+	bounds[MAP_MINY] = y
+	bounds[MAP_MAXY] = y + width - 1
+	bounds[MAP_MINZ] = z
+	bounds[MAP_MAXZ] = z
+	return generate(
+		bounds,
+		offset_x,
+		offset_y,
+		z,
+	)
 	#warn impl
 
-/datum/map_generation/proc/generate(list/bounds, offset_x, offset_y)
+/datum/map_generation/proc/generate(list/bounds, offset_x, offset_y, offset_z)
 	#warn impl
 
 /datum/map_generation/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
