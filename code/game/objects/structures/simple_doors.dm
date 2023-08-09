@@ -125,9 +125,9 @@
 	if(istype(W,/obj/item/pickaxe))
 		var/obj/item/pickaxe/digTool = W
 		visible_message("<span class='danger'>[user] starts digging [src]!</span>")
-		if(do_after(user,digTool.digspeed*hardness) && src)
+		if(do_after(user,digTool.digspeed) && src)
 			visible_message("<span class='danger'>[user] finished digging [src]!</span>")
-			Dismantle()
+			deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
 /obj/structure/simple_door/drop_products(method, atom/where)
 	. = ..()

@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 /obj/structure/wall_frame/update_overlays()
 	cut_overlays()
 
-	var/datum/materia/const_material = get_primary_material()
+	var/datum/material/const_material = get_primary_material()
 	color = const_material.icon_colour
 
 	var/image/smoothed_stripe = image(const_material.wall_stripe_icon, icon_state, layer = ABOVE_WINDOW_LAYER)

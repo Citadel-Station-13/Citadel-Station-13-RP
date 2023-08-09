@@ -1,7 +1,7 @@
 /turf/simulated/wall/proc/can_rot()
 	return integrity_flags & INTEGRITY_INDESTRUCTIBLE
 
-/turf/simualted/wall/proc/is_rotting()
+/turf/simulated/wall/proc/is_rotting()
 	return locate(/obj/effect/overlay/wallrot) in src
 
 /turf/simulated/wall/proc/rot()
