@@ -1,6 +1,6 @@
 /obj/item/bedsheet/donator_teak
 	icon = 'donator/timothytea/donator_bedsheet.dmi'
-	icon_state = "teak"
+	icon_state = "teaksheet"
 
 /datum/loadout_entry/donator/teak_bedsheet
 	name = "Teak Bedsheet"
