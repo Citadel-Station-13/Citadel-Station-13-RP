@@ -106,7 +106,7 @@
 	id = "marking_synth_antennae"
 	icon_state = "normal_antenna"
 	color_blend_mode = ICON_MULTIPLY
-	bodyparts = list(BP_HEAD)
+	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/synth/antennae/curled
 	name = "Synthlizard Curled Antennae"
