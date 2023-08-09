@@ -22915,7 +22915,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Medbay Surgery";
 	req_access = list(5)
 	},
