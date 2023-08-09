@@ -281,7 +281,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/doublebarrel/sawn = 100, /obj/item/material/knife/tacknife = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
 
 	corpse = /obj/spawner/corpse/pirate/ranged_blunderbuss
 
@@ -420,6 +420,8 @@
 	projectiletype = /obj/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	base_attack_cooldown = 5
+
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/doublebarrel/quad = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
