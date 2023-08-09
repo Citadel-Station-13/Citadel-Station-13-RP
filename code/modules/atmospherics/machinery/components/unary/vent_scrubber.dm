@@ -286,7 +286,6 @@
 		"scrubGroups" = scrub_groups,
 		"power" = use_power != USE_POWER_OFF,
 	)
-	#warn impl, data, ui
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()

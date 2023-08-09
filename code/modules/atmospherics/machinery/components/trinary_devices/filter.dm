@@ -11,7 +11,7 @@
 	idle_power_usage = 150
 	power_rating = 7500
 
-	tgui_interface = "AtmosFilterTrinary"
+	tgui_interface = "AtmosTrinaryFilter"
 
 	/// target gas id, or groups
 	var/filtering
@@ -65,12 +65,6 @@
 
 /obj/machinery/atmospherics/component/trinary/filter/proc/set_rate(liters)
 	flow_setting = clamp(liters, 0, air1.volume)
-
-/obj/machinery/atmospherics/component/trinary/filter/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "AtmosFilter", name)
-		ui.open()
 
 /obj/machinery/atmospherics/component/trinary/filter/ui_data(mob/user)
 	. = ..()
