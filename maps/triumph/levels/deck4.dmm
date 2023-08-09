@@ -2080,7 +2080,6 @@
 "buQ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
 	name = "Exploration Prep";
 	req_access = list();
 	req_one_access = list(19,43,67)
@@ -3321,7 +3320,7 @@
 /area/hallway/secondary/docking_hallway)
 "cmk" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Exploration Prep";
 	req_access = list();
 	req_one_access = list(19,43,67)
@@ -9033,7 +9032,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Shuttle Triage and Restroom";
 	req_one_access = list(19,43,67)
 	},
@@ -12375,7 +12374,7 @@
 /area/exploration/courser_dock)
 "inV" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Shuttle Bay";
 	req_one_access = list(19,43,67)
 	},
@@ -32122,7 +32121,7 @@
 /area/crew_quarters/captain)
 "wgD" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Library"
 	},
 /obj/structure/cable/green{
@@ -32727,7 +32726,7 @@
 /area/maintenance/chapel)
 "wFv" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Exploration Public Lobby"
 	},
 /obj/structure/cable/green{
@@ -32879,7 +32878,6 @@
 "wKW" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
 	name = "Pilot Prep";
 	req_one_access = list(19,43,67)
 	},
@@ -33981,7 +33979,6 @@
 "xtz" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
 	name = "Gateway Prep"
 	},
 /turf/simulated/floor/tiled,
@@ -34065,7 +34062,7 @@
 /area/bridge/office)
 "xwr" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Exploration Prep";
 	req_access = list();
 	req_one_access = list(19,43,67)
@@ -34235,7 +34232,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 8;
 	icon_state = "door_locked";
 	id_tag = "exp_gateway";
 	locked = 1
