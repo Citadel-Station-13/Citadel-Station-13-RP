@@ -218,19 +218,7 @@
 
 	user.setClickCooldown(user.get_attack_speed())
 
-	if (MUTATION_HULK in user.mutations) // Do we really still need these?
-		user.say(pick(
-			";RAAAAAAAARGH!",
-			";HNNNNNNNNNGGGGGGH!",
-			";GWAAAAAAAARRRHHH!",
-			"NNNNNNNNGGGGGGGGHH!",
-			";AAAAAAARRRGH!",
-		))
-		user.visible_message(SPAN_DANGER("[user] smashes through [src]!"))
-		user.do_attack_animation(src)
-		shatter()
-
-	else if (user.a_intent == INTENT_HARM)
+	if (user.a_intent == INTENT_HARM)
 		if (ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if (H.species.can_shred(H))

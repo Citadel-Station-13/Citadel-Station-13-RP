@@ -76,7 +76,7 @@
 		user.visible_message("[user] starts taking down \the [src.name].", "You start taking down \the [src.name].")
 		if(do_after(user, time_mult * 2 SECONDS * I.tool_speed))
 			user.visible_message("[user] takes down \the [src.name].", "You take down \the [src.name].")
-			dismantle()
+			deconstruct()
 	..()
 
 /obj/structure/gravemarker/drop_products(method, atom/where)

@@ -30,9 +30,10 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	climb_allowed = TRUE
 	climb_delay = 2.0 SECONDS
 	plane = OBJ_PLANE
+	material_parts = /datum/material/steel
+	material_primary = MATERIAL_PART_DEFAULT
+	material_costs = SHEET_MATERIAL_AMOUNT * 2
 
-	var/default_material = /datum/material/steel
-	var/datum/material/const_material
 	var/paint_color
 	var/stripe_color
 	var/str
@@ -46,49 +47,21 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	paint_color = COLOR_WALL_GUNMETAL
 	stripe_color = COLOR_WALL_GUNMETAL
 
-/obj/structure/wall_frame/Initialize(mapload, material_key)
+/obj/structure/wall_frame/Initialize(mapload, material)
+	if(!isnull(material))
+		set_primary_material(SSmaterials.resolve_material(material))
 	. = ..()
-	if(!material_key)
-		material_key = default_material
-	set_material(material_key)
 	update_overlays()
 
-/obj/structure/wall_frame/Destroy()
-	if(const_material.products_need_process())
-		STOP_PROCESSING(SSobj, src)
+/obj/structure/wall_frame/update_material_single(datum/material/material)
 	. = ..()
-
-/obj/structure/wall_frame/process(delta_time)
-	if(!radiate())
-		STOP_PROCESSING(SSobj, src)
-		return
-
-/obj/structure/wall_frame/proc/radiate()
-	var/total_radiation = const_material.radioactivity
-	if(!total_radiation)
-		return
-
-	radiation_pulse(src, total_radiation)
-	return total_radiation
-
-/obj/structure/wall_frame/proc/set_material(var/new_material)
-	const_material = get_material_by_name(new_material)
-	if(!const_material)
-		qdel(src)
-		return
-	name = "[const_material.display_name] [initial(name)]"
-	max_health = round(const_material.integrity) //Should be 150 with default integrity (steel). Weaker than ye-olden Girders now.
-	health = max_health
-	if(material_color)
-		color = const_material.icon_colour
-	if(const_material.products_need_process()) //Am I radioactive or some other? Process me!
-		START_PROCESSING(SSobj, src)
-	else if(datum_flags & DF_ISPROCESSING) //If I happened to be radioactive or s.o. previously, and am not now, stop processing.
-		STOP_PROCESSING(SSobj, src)
+	name = "[material.display_name] [initial(name)]"
+	set_multiplied_integrity(material.relative_integrity)
 
 /obj/structure/wall_frame/update_overlays()
 	cut_overlays()
 
+	var/datum/materia/const_material = get_primary_material()
 	color = const_material.icon_colour
 
 	var/image/smoothed_stripe = image(const_material.wall_stripe_icon, icon_state, layer = ABOVE_WINDOW_LAYER)
@@ -154,6 +127,9 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 		if(I.is_wrench())
 			if(do_after(user,40 * I.tool_speed))
 				playsound(src, I.tool_sound, 100, 1)
-				new const_material.stack_type(get_turf(src), 2)
-				qdel(src)
+				deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
+/obj/structure/wall_frame/drop_products(method, atom/where)
+	. = ..()
+	var/datum/material/made_of = get_primary_material()
+	made_of?.place_sheet(where, 2)
