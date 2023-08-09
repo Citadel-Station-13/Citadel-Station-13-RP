@@ -5819,10 +5819,6 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techmaint,
 /area/medical/surgery)
-"gVz" = (
-/obj/machinery/door/airlock/glass_science,
-/turf/simulated/floor/tiled,
-/area/rnd/research_foyer)
 "gXn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -5866,9 +5862,6 @@
 /obj/structure/filingcabinet,
 /turf/simulated/floor/tiled,
 /area/space)
-"gZA" = (
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rnd/research/researchdivision)
 "gZM" = (
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
@@ -10293,6 +10286,7 @@
 "mKY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/glass_science,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/research/researchdivision)
 "mLa" = (
@@ -10761,6 +10755,7 @@
 /obj/map_helper/network_builder/power_cable/auto{
 	cable_color = "Green"
 	},
+/obj/machinery/door/airlock/glass_science,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/lab)
 "nlb" = (
@@ -11015,12 +11010,7 @@
 /turf/simulated/floor/airless,
 /area/space)
 "nyT" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
-	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/research/researchdivision)
 "nzi" = (
@@ -11993,8 +11983,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "oOK" = (
-/obj/machinery/door/airlock/multi_tile/glass,
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/airlock/glass_science,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/research/researchdivision)
 "oPo" = (
@@ -12514,22 +12503,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/heads/hos)
-"pwG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
-/obj/machinery/door/airlock/multi_tile/glass{
-	name = "Research Entrance";
-	req_one_access = list(47)
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rnd/lab)
 "pwN" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/bar_backroom)
@@ -17054,23 +17027,6 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/sleep/Dorm_2)
-"vwr" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
-	name = "Research Entrance";
-	req_one_access = list(47)
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rnd/lab)
 "vwI" = (
 /obj/landmark/spawnpoint/job/head_nurse,
 /turf/simulated/floor/tiled/dark,
@@ -18466,15 +18422,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/machinery/door/airlock/glass_science,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/research/researchdivision)
 "xaj" = (
@@ -19090,6 +19041,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/research/researchdivision)
 "xLH" = (
@@ -19197,15 +19149,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/machinery/door/airlock/glass_science,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/lab)
 "xQn" = (
@@ -30181,7 +30128,7 @@ hKx
 iiw
 hKx
 rMJ
-gZA
+oOK
 wZO
 dHu
 pxD
@@ -32898,7 +32845,7 @@ qtT
 qtT
 qtT
 nkB
-vwr
+xPb
 hFP
 wNP
 jpq
@@ -33483,7 +33430,7 @@ gYp
 dSN
 hFP
 dct
-gVz
+dct
 asB
 sxb
 fPY
@@ -33674,7 +33621,7 @@ hUW
 tWr
 qtT
 nkB
-pwG
+xPb
 hFP
 dct
 dct

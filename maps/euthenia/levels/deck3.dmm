@@ -890,7 +890,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "bjk" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/chapel/main)
 "bjB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -2026,7 +2026,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "cPf" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/chapel/main)
 "cPA" = (
 /obj/machinery/door/airlock/maintenance/cargo,
@@ -2261,7 +2261,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "daS" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/vacant/vacant_shop)
 "dbk" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -2446,6 +2446,9 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "dsr" = (
+/obj/machinery/door/airlock/glass{
+	name = "Vacant Shop"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/vacant/vacant_shop)
 "dsR" = (
@@ -3959,7 +3962,7 @@
 	dir = 8;
 	pixel_y = 10
 	},
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/theatre)
 "fot" = (
 /obj/structure/closet/firecloset,
@@ -5215,6 +5218,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
+/obj/machinery/light/no_nightshift,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "gEA" = (
@@ -5439,18 +5443,14 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/prison)
 "gQQ" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
-	name = "Vacant Shop"
-	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
 /obj/map_helper/network_builder/power_cable/auto{
 	cable_color = "Green"
+	},
+/obj/machinery/door/airlock/glass{
+	name = "Vacant Shop"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/vacant/vacant_shop)
@@ -6079,6 +6079,9 @@
 /area/security/brig)
 "hyf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/glass{
+	name = "Vacant Shop"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/vacant/vacant_shop)
 "hyw" = (
@@ -6227,6 +6230,10 @@
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
+"hGW" = (
+/obj/machinery/light/no_nightshift,
+/turf/simulated/floor/tiled/techfloor,
+/area/crew_quarters/sleep/cryo)
 "hHE" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -7316,12 +7323,6 @@
 "iZp" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/space)
-"iZw" = (
-/obj/structure/barricade,
-/obj/machinery/door/airlock/multi_tile/glass,
-/obj/machinery/door/firedoor/multi_tile,
-/turf/simulated/floor/plating,
-/area/space)
 "iZx" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -7665,7 +7666,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
 "jyN" = (
-/turf/simulated/wall{
+/turf/simulated/wall/prepainted/civilian{
 	can_open = 1
 	},
 /area/hydroponics/garden)
@@ -7832,6 +7833,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology)
+"jIv" = (
+/obj/structure/sign/deck/third,
+/turf/simulated/wall/prepainted/civilian,
+/area/hallway/primary/central_three)
 "jJp" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
@@ -9250,7 +9255,7 @@
 /turf/simulated/floor/plating,
 /area/ai_upload)
 "lzL" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/hydroponics)
 "lzY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9336,12 +9341,7 @@
 /area/security/brig)
 "lEK" = (
 /obj/structure/barricade,
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
-	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/plating,
 /area/space)
 "lEZ" = (
@@ -10945,6 +10945,9 @@
 "nIe" = (
 /turf/simulated/floor/plating,
 /area/maintenance/library)
+"nIE" = (
+/turf/simulated/wall/prepainted/civilian,
+/area/hallway/primary/central_three)
 "nJh" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Kitchen Maintenance Access";
@@ -11606,7 +11609,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_eva)
 "ovf" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/pool)
 "ovA" = (
 /obj/structure/railing{
@@ -11630,7 +11633,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/space)
 "oyC" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/library)
 "oyE" = (
 /obj/structure/cable/green{
@@ -13152,13 +13155,6 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/water/deep/indoors,
 /area/hydroponics/garden)
-"qmL" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	name = "Vacant lobby"
-	},
-/obj/machinery/door/firedoor/multi_tile,
-/turf/simulated/floor/tiled/techfloor,
-/area/vacant/vacant_shop)
 "qoc" = (
 /obj/structure/table/standard,
 /obj/item/gun/energy/taser/xeno,
@@ -14251,10 +14247,6 @@
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/engineering/engine_eva)
-"rSV" = (
-/obj/structure/barricade,
-/turf/simulated/floor/plating,
-/area/space)
 "rTc" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
@@ -14830,7 +14822,7 @@
 	},
 /area/tcommsat/chamber)
 "sJa" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/hydroponics/garden)
 "sJl" = (
 /turf/simulated/wall/prepainted/medical,
@@ -15535,7 +15527,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
 "ttj" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/triumph/surfacebase/sauna)
 "ttm" = (
 /obj/effect/floor_decal/grass_edge{
@@ -17079,7 +17071,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/deck_three/aft/port)
 "vkR" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/maintenance/library)
 "vlg" = (
 /obj{
@@ -17139,6 +17131,9 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
+"voX" = (
+/turf/simulated/wall/prepainted/civilian,
+/area/space)
 "vpb" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor,
@@ -17802,7 +17797,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/deck_three/starboard)
 "wfx" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/crew_quarters/theatre)
 "wfI" = (
 /obj/structure/cable/green{
@@ -18326,6 +18321,9 @@
 "wJl" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_three/forward/starboard)
+"wKU" = (
+/turf/simulated/wall/r_wall/prepainted/civilian,
+/area/space)
 "wNi" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -18498,6 +18496,9 @@
 "wWQ" = (
 /turf/simulated/wall,
 /area/hallway/primary/central_three)
+"wWS" = (
+/turf/simulated/wall/prepainted/civilian,
+/area/hydroponics/garden)
 "wWY" = (
 /obj/machinery/turnstile/exit{
 	dir = 1
@@ -18988,7 +18989,7 @@
 /obj/map_helper/network_builder/power_cable/auto{
 	cable_color = "Green"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/wall/prepainted/civilian,
 /area/space)
 "xBA" = (
 /obj/structure/lattice,
@@ -19329,7 +19330,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "xTX" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/theatre)
 "xUh" = (
 /obj/structure/railing/grey{
@@ -33546,7 +33547,7 @@ fMH
 dTd
 luo
 rFz
-rFz
+hGW
 fMH
 eHK
 eHK
@@ -37576,11 +37577,11 @@ cUO
 cUO
 cUO
 cUO
-lyN
-lyN
+voX
+voX
 xBz
-lyN
-lyN
+voX
+voX
 ttj
 ttj
 gLW
@@ -37790,7 +37791,7 @@ sKT
 syV
 syV
 dVg
-qmL
+dsr
 bYW
 kWk
 bYW
@@ -38366,7 +38367,7 @@ ttj
 ttj
 ttj
 htm
-lyN
+voX
 daS
 daS
 bBI
@@ -39144,11 +39145,11 @@ wWQ
 wWQ
 wWQ
 wWQ
-wWQ
+nIE
 qFS
 qFS
 qFS
-wWQ
+nIE
 kWe
 lDb
 uoz
@@ -39163,7 +39164,7 @@ kWe
 oyC
 dHC
 dHC
-hbh
+jIv
 aCT
 aCT
 hbh
@@ -39338,11 +39339,11 @@ pCv
 pVf
 pVf
 pVf
-lyN
+voX
 vWE
 vWE
 vWE
-lyN
+voX
 bYW
 dvn
 wWQ
@@ -39357,7 +39358,7 @@ bYW
 oyC
 hAx
 mKU
-wWQ
+nIE
 ant
 ant
 wWQ
@@ -39532,11 +39533,11 @@ wWQ
 pVf
 vWE
 ukF
-lyN
+voX
 vWE
 vWE
 vWE
-iZw
+lEK
 bYW
 xEu
 dfs
@@ -39551,7 +39552,7 @@ bYW
 jgY
 tPC
 tPC
-wWQ
+nIE
 lWV
 lWV
 wWQ
@@ -39726,11 +39727,11 @@ nuv
 pVf
 vWE
 pVf
-lyN
+voX
 vWE
 vWE
 vWE
-rSV
+lEK
 bYW
 bYW
 bYW
@@ -39745,7 +39746,7 @@ bYW
 gSI
 tPC
 tPC
-wWQ
+nIE
 fia
 fia
 wWQ
@@ -39920,15 +39921,15 @@ nuv
 pVf
 vWE
 pVf
-lyN
+voX
 vWE
 vWE
 vWE
-lyN
-rSV
+voX
 lEK
-lyN
-lyN
+lEK
+voX
+voX
 aCT
 qFS
 ubP
@@ -39939,7 +39940,7 @@ dHC
 oyC
 tPC
 bbF
-wWQ
+nIE
 wWQ
 wWQ
 nQz
@@ -40308,7 +40309,7 @@ nuv
 kdM
 vWE
 pVf
-lyN
+voX
 vWE
 vWE
 vWE
@@ -40502,8 +40503,8 @@ nuv
 nuv
 vWE
 pVf
-lyN
-lyN
+voX
+voX
 lzL
 lzL
 lzL
@@ -41470,9 +41471,9 @@ cmE
 pTp
 hcj
 aKn
-lyN
-lyN
-lyN
+voX
+voX
+voX
 htm
 lzL
 lzL
@@ -41481,15 +41482,15 @@ rhu
 tWL
 lzL
 lzL
-wWQ
+nIE
 kWe
 joE
-pIY
-pIY
-pIY
-pIY
-pIY
-pIY
+wWS
+wWS
+wWS
+wWS
+wWS
+wWS
 vkR
 vkR
 rJz
@@ -41683,7 +41684,7 @@ iZx
 fdz
 quW
 ulN
-pIY
+wWS
 nIe
 nIe
 ism
@@ -41877,7 +41878,7 @@ txP
 gDo
 rQH
 jqn
-pIY
+wWS
 nIe
 nIe
 pfP
@@ -42071,11 +42072,11 @@ qSQ
 mhQ
 qSQ
 nPQ
-pIY
-pIY
-pIY
+wWS
+wWS
+wWS
 tQs
-pIY
+wWS
 wmQ
 cvg
 rvq
@@ -42269,7 +42270,7 @@ tcZ
 riy
 riy
 snW
-pIY
+wWS
 ohL
 cvg
 rvq
@@ -42463,7 +42464,7 @@ tNa
 wAb
 wAb
 bTe
-pIY
+wWS
 hVt
 cvg
 rvq
@@ -42653,11 +42654,11 @@ ccM
 iYU
 iZx
 puQ
-pIY
+wWS
 eVd
 beU
 hob
-pIY
+wWS
 tpO
 cux
 rvq
@@ -42847,11 +42848,11 @@ kZe
 rQH
 mjr
 nVX
-pIY
+wWS
 mPe
 mcT
 kbw
-pIY
+wWS
 ous
 iNW
 rvq
@@ -43041,7 +43042,7 @@ lbf
 alV
 crx
 vTB
-pIY
+wWS
 wAb
 wAb
 mqR
@@ -43817,7 +43818,7 @@ pIY
 qeA
 crx
 qAV
-pIY
+wWS
 qKl
 qKl
 qKl
@@ -44011,7 +44012,7 @@ txP
 kZe
 txP
 nVX
-pIY
+wWS
 dDq
 wAb
 wAb
@@ -44205,7 +44206,7 @@ kZe
 rQH
 txP
 jec
-pIY
+wWS
 tRO
 sNb
 wAb
@@ -44399,7 +44400,7 @@ qIQ
 txP
 jQj
 qAV
-pIY
+wWS
 kMO
 gRL
 wAb
@@ -44575,11 +44576,11 @@ soB
 qDw
 dff
 dff
-sVT
+wKU
 vWE
 vWE
 vWE
-pIY
+wWS
 djq
 djq
 nEv
@@ -44593,10 +44594,10 @@ ike
 vSu
 crx
 nVX
-pIY
-pIY
-pIY
-pIY
+wWS
+wWS
+wWS
+wWS
 sJa
 dff
 dff
@@ -44769,11 +44770,11 @@ xTC
 qDw
 dff
 dff
-sVT
+wKU
 vWE
 vWE
 vWE
-pIY
+wWS
 iGc
 vwB
 djq
@@ -44963,11 +44964,11 @@ lqF
 qDw
 dff
 dff
-sVT
+wKU
 vWE
 vWE
 vWE
-pIY
+wWS
 kBB
 bet
 djq
@@ -45157,11 +45158,11 @@ woh
 qDw
 dff
 dff
-sVT
+wKU
 vWE
 vWE
 vWE
-pIY
+wWS
 juN
 gKP
 bet
@@ -45351,7 +45352,7 @@ qDw
 qDw
 dff
 dff
-sVT
+wKU
 vWE
 vWE
 vWE
@@ -45545,10 +45546,10 @@ qDw
 dff
 dff
 vva
-sVT
-sVT
-sVT
-sVT
+wKU
+wKU
+wKU
+wKU
 sJa
 sJa
 sJa

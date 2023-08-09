@@ -1742,6 +1742,9 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_four)
+"lH" = (
+/turf/simulated/wall/prepainted/civilian,
+/area/maintenance/deck_four)
 "lL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -2003,6 +2006,9 @@
 /obj/structure/sign/warning/secure_area,
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/gateway)
+"np" = (
+/turf/simulated/wall/r_wall/prepainted/civilian,
+/area/maintenance/deck_four)
 "nr" = (
 /obj/structure/dispenser/oxygen,
 /obj/machinery/light/no_nightshift{
@@ -2039,6 +2045,9 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/gateway)
+"nA" = (
+/turf/simulated/wall/r_wall/prepainted/civilian,
+/area/maintenance/deck_four/forward)
 "nE" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -2806,6 +2815,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
+"sU" = (
+/obj/structure/transit_tube/high_velocity{
+	icon_state = "auto"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/starboard)
 "sV" = (
 /obj/machinery/light{
 	dir = 4
@@ -2819,6 +2834,9 @@
 "sZ" = (
 /turf/simulated/floor/plating,
 /area/space)
+"tb" = (
+/turf/simulated/wall/prepainted/civilian,
+/area/library)
 "tf" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/folder{
@@ -3006,7 +3024,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/deck_four/aft/port)
 "ul" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/library/study)
 "uq" = (
 /obj/structure/transit_tube/high_velocity{
@@ -3598,6 +3616,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/gateway)
+"zz" = (
+/obj/structure/transit_tube/high_velocity{
+	icon_state = "auto"
+	},
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/starboard)
 "zB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -4717,6 +4742,13 @@
 "HA" = (
 /turf/simulated/wall/r_wall,
 /area/quartermaster/miningdock)
+"HF" = (
+/obj/structure/transit_tube/station,
+/obj/structure/transit_tube_pod{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/starboard)
 "HN" = (
 /obj/machinery/mineral/unloading_machine,
 /obj/machinery/conveyor{
@@ -5717,6 +5749,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/library)
+"OZ" = (
+/turf/simulated/wall/r_wall/prepainted/civilian,
+/area/library)
 "Pn" = (
 /obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled,
@@ -6452,6 +6487,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/trash_pit)
+"UC" = (
+/turf/simulated/wall/r_wall/prepainted/civilian,
+/area/library/study)
 "UE" = (
 /obj/machinery/camera/network/research_outpost{
 	dir = 4;
@@ -6489,6 +6527,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
+"UV" = (
+/turf/simulated/wall/prepainted/civilian,
+/area/maintenance/deck_four/forward)
 "UZ" = (
 /obj/item/storage/secure/safe{
 	pixel_x = 36
@@ -6770,6 +6811,12 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_four/forward)
+"WC" = (
+/obj/structure/transit_tube/station{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four)
 "WG" = (
 /obj/machinery/atmospherics/pipe/zpipe/up/scrubbers{
 	dir = 8
@@ -22922,7 +22969,7 @@ MI
 MI
 MI
 po
-po
+WC
 lD
 lD
 kL
@@ -22932,7 +22979,7 @@ Za
 kL
 zo
 zo
-Od
+HF
 Od
 Od
 Od
@@ -23116,7 +23163,7 @@ lG
 bv
 MI
 po
-po
+IO
 lD
 lD
 kL
@@ -23126,7 +23173,7 @@ Za
 kL
 zo
 zo
-Od
+sU
 Od
 Od
 Od
@@ -23310,7 +23357,7 @@ MI
 MI
 MI
 po
-po
+IO
 lD
 lD
 kL
@@ -23320,7 +23367,7 @@ Za
 kL
 zo
 zo
-Od
+sU
 Od
 Od
 Od
@@ -23505,15 +23552,15 @@ po
 po
 po
 po
-po
-lD
-Ji
-Za
-Za
-Za
-Ji
-zo
-Od
+IO
+yf
+Wv
+ai
+ai
+ai
+Wv
+zz
+sU
 Od
 Od
 Od
@@ -24852,16 +24899,16 @@ lD
 lD
 lD
 lD
-lD
-lD
-MI
-MI
-MI
-MI
-MI
-MI
+np
+np
+lH
+lH
+lH
+lH
+lH
+lH
 eZ
-MI
+lH
 uD
 lD
 lD
@@ -25046,8 +25093,8 @@ lD
 lD
 Ji
 lD
-lD
-lD
+np
+np
 po
 po
 po
@@ -25055,7 +25102,7 @@ po
 po
 po
 po
-MI
+lH
 uD
 po
 lD
@@ -25240,7 +25287,7 @@ Za
 Za
 Za
 Dz
-lD
+np
 po
 po
 fz
@@ -25249,7 +25296,7 @@ fz
 po
 po
 po
-MI
+lH
 uD
 lD
 lD
@@ -25434,16 +25481,16 @@ Za
 Za
 Za
 Dz
-lD
-lD
-lD
+np
+np
+np
 zP
 zP
 zP
 vs
 po
 po
-MI
+lH
 uD
 lD
 lD
@@ -25628,16 +25675,16 @@ Za
 Za
 Za
 Dz
-lD
-lD
-lD
+np
+np
+np
 po
 Fq
 zP
 vs
 po
 po
-MI
+lH
 uD
 lD
 lD
@@ -25823,15 +25870,15 @@ Za
 Za
 Dz
 lD
-lD
-lD
+np
+np
 zP
 zP
 zP
 vs
 po
 po
-MI
+lH
 uD
 po
 lD
@@ -26017,7 +26064,7 @@ Za
 Za
 Dz
 Ji
-lD
+np
 po
 YU
 YU
@@ -26025,7 +26072,7 @@ YU
 po
 po
 po
-MI
+lH
 uD
 lD
 lD
@@ -26211,7 +26258,7 @@ Za
 Za
 Za
 lD
-lD
+np
 po
 po
 po
@@ -26219,7 +26266,7 @@ po
 po
 po
 Nb
-MI
+lH
 uD
 lD
 lD
@@ -26405,7 +26452,7 @@ Za
 Za
 Za
 lD
-lD
+np
 po
 po
 po
@@ -26413,7 +26460,7 @@ po
 po
 Nb
 Nb
-MI
+lH
 uD
 lD
 lD
@@ -26599,7 +26646,7 @@ Za
 Za
 Za
 lD
-lD
+np
 po
 po
 po
@@ -26607,7 +26654,7 @@ II
 po
 Nb
 Nb
-MI
+lH
 uD
 po
 lD
@@ -26793,15 +26840,15 @@ Za
 Za
 Za
 lD
-lD
-lD
+np
+np
 qm
 pW
-lD
-lD
+np
+np
 Nb
 Nb
-lD
+np
 uD
 lD
 lD
@@ -26966,13 +27013,13 @@ Ji
 Ji
 Ji
 kL
-If
-If
-If
-If
-If
-If
-If
+nA
+nA
+nA
+nA
+nA
+nA
+nA
 If
 If
 Cz
@@ -26987,15 +27034,15 @@ Za
 Za
 Za
 nd
-nd
-nd
-nd
-nd
-nd
-nd
-nd
+OZ
+OZ
+OZ
+OZ
+OZ
+OZ
+OZ
 aD
-nd
+OZ
 QK
 If
 If
@@ -27160,13 +27207,13 @@ py
 py
 py
 kL
-If
-If
+nA
+nA
 ky
 zs
 LB
-If
-If
+nA
+nA
 Es
 Es
 xK
@@ -27181,15 +27228,15 @@ py
 py
 py
 nd
-nd
-nd
+OZ
+OZ
 OL
 FJ
-nd
-nd
+OZ
+OZ
 aD
 aD
-nd
+OZ
 xK
 If
 If
@@ -27360,7 +27407,7 @@ pQ
 pQ
 pQ
 pQ
-aH
+UV
 Es
 Es
 xK
@@ -27383,7 +27430,7 @@ yG
 tx
 aD
 ft
-qr
+tb
 xK
 Es
 Gp
@@ -27548,8 +27595,8 @@ Za
 Za
 Za
 kL
-If
-If
+nA
+nA
 pQ
 pQ
 pQ
@@ -27569,15 +27616,15 @@ py
 py
 py
 nd
-nd
-nd
+OZ
+OZ
 aD
 aD
 Vr
 rm
 aD
 aD
-qr
+tb
 xK
 If
 If
@@ -27742,13 +27789,13 @@ Za
 Za
 Za
 kL
-If
-If
+nA
+nA
 Xw
 pQ
 Xw
 Xw
-aH
+UV
 Es
 Es
 xK
@@ -27763,15 +27810,15 @@ Za
 Za
 Za
 nd
-nd
-nd
+OZ
+OZ
 AB
 aD
 Xp
 Xp
 aD
 Vf
-qr
+tb
 xK
 If
 If
@@ -27936,13 +27983,13 @@ Za
 Za
 Za
 kL
-If
-If
+nA
+nA
 Xw
 pQ
 Xw
 Xw
-aH
+UV
 Es
 Es
 xK
@@ -27957,15 +28004,15 @@ Za
 Za
 Za
 nd
-nd
-nd
+OZ
+OZ
 CQ
 aD
 pg
 fy
 aD
 aD
-qr
+tb
 xK
 If
 If
@@ -28136,7 +28183,7 @@ Xw
 pQ
 Xw
 Xw
-aH
+UV
 Es
 Es
 xK
@@ -28159,7 +28206,7 @@ uC
 Ci
 aD
 ft
-qr
+tb
 xK
 Es
 Gp
@@ -28324,13 +28371,13 @@ Za
 Za
 Za
 kL
-If
-If
+nA
+nA
 pQ
 pQ
 pQ
 pQ
-aH
+UV
 Es
 Es
 xK
@@ -28345,15 +28392,15 @@ Za
 Za
 Za
 nd
-nd
-nd
+OZ
+OZ
 fI
 Kr
 qr
 mV
 aD
 aD
-qr
+tb
 xK
 If
 If
@@ -28518,13 +28565,13 @@ Za
 Za
 Za
 kL
-If
-If
+nA
+nA
 Rl
 Rl
 DD
 DD
-aH
+UV
 Es
 Es
 xK
@@ -28539,15 +28586,15 @@ Dz
 Dz
 Dz
 nd
-nd
-nd
+OZ
+OZ
 qr
 qr
 qr
 Jc
 aD
 TY
-qr
+tb
 xK
 If
 If
@@ -28712,13 +28759,13 @@ Za
 Za
 Za
 kL
-If
-If
+nA
+nA
 ha
 ha
 ha
 nb
-aH
+UV
 Es
 Es
 xK
@@ -28733,15 +28780,15 @@ py
 py
 py
 nd
-nd
-nd
+OZ
+OZ
 QX
 NA
 qr
 iU
 aD
 aD
-qr
+tb
 xK
 If
 If
@@ -28912,7 +28959,7 @@ ha
 ha
 ha
 nb
-aH
+UV
 Es
 Es
 xK
@@ -28935,7 +28982,7 @@ qr
 QW
 aD
 aD
-qr
+tb
 xK
 iC
 Gp
@@ -29100,13 +29147,13 @@ Za
 Za
 Za
 kL
-If
-If
+nA
+nA
 ha
 ha
 qe
-aH
-aH
+UV
+UV
 Es
 Es
 xK
@@ -29121,15 +29168,15 @@ py
 py
 py
 nd
-nd
-nd
+OZ
+OZ
 aD
 aD
 TO
 QW
 aD
 ft
-qr
+tb
 xK
 If
 If
@@ -29294,13 +29341,13 @@ Za
 Za
 Za
 kL
-If
-If
+nA
+nA
 ha
 ha
 ha
 Uk
-aH
+UV
 Es
 Es
 xK
@@ -29315,15 +29362,15 @@ Za
 Za
 Za
 nd
-nd
-nd
+OZ
+OZ
 AB
 aD
 aD
 aD
 aD
 ya
-qr
+tb
 xK
 If
 If
@@ -29488,13 +29535,13 @@ Za
 Za
 Za
 kL
-If
-If
+nA
+nA
 ha
 ha
 ha
 Uk
-aH
+UV
 Es
 Es
 xK
@@ -29509,8 +29556,8 @@ Za
 Za
 Za
 nd
-nd
-nd
+OZ
+OZ
 aD
 aD
 aD
@@ -29687,9 +29734,9 @@ Pp
 ha
 ha
 qe
-aH
-aH
-aH
+UV
+UV
+UV
 Es
 xK
 Es
@@ -29711,7 +29758,7 @@ NK
 GO
 Xp
 OX
-qr
+tb
 Qk
 yS
 Gp
@@ -29876,14 +29923,14 @@ Za
 Za
 Za
 kL
-If
-If
+nA
+nA
 ha
 ha
 ha
 VR
 PC
-aH
+UV
 Es
 xK
 If
@@ -29897,15 +29944,15 @@ Za
 Za
 Za
 nd
-nd
-nd
+OZ
+OZ
 Xp
 Xp
 mL
 sh
 Xp
 GQ
-qr
+tb
 Qk
 If
 If
@@ -30070,14 +30117,14 @@ Za
 Za
 Za
 kL
-If
-If
+nA
+nA
 ha
 ha
 ha
-aH
+UV
 DW
-aH
+UV
 Es
 xK
 If
@@ -30091,15 +30138,15 @@ Za
 Za
 Za
 nd
-nd
-nd
+OZ
+OZ
 ez
 Xp
 Xp
 QW
 Xp
 QH
-qr
+tb
 Qk
 If
 If
@@ -30264,14 +30311,14 @@ Za
 Za
 Za
 kL
-If
-If
+nA
+nA
 qw
 ha
 ha
 Gv
 QN
-aH
+UV
 Es
 xK
 If
@@ -30285,15 +30332,15 @@ py
 py
 py
 nd
-nd
-nd
+OZ
+OZ
 Xp
 qZ
 bs
-qr
-qr
-qr
-qr
+tb
+tb
+tb
+tb
 WB
 If
 If
@@ -30463,9 +30510,9 @@ Pp
 qw
 ha
 ha
-aH
-aH
-aH
+UV
+UV
+UV
 Es
 xK
 Es
@@ -30479,7 +30526,7 @@ Ji
 Ji
 Ji
 Ji
-mY
+UC
 ul
 ON
 ul
@@ -30652,13 +30699,13 @@ py
 py
 py
 kL
-If
-If
+nA
+nA
 qw
 ha
 ha
-If
-If
+nA
+nA
 Es
 Es
 xK
@@ -30673,12 +30720,12 @@ py
 py
 py
 mY
-mY
-mY
+UC
+UC
 zE
 bP
 YV
-mY
+UC
 If
 Es
 Es
@@ -30846,13 +30893,13 @@ Ji
 Ji
 Ji
 kL
-If
-If
+nA
+nA
 cd
-aH
-If
-If
-If
+UV
+nA
+nA
+nA
 If
 aH
 xK
@@ -30867,12 +30914,12 @@ Za
 Za
 Za
 mY
-mY
-mY
+UC
+UC
 cs
 YJ
 mY
-mY
+UC
 If
 If
 Es
@@ -31061,12 +31108,12 @@ Za
 Za
 Za
 mY
-mY
-mY
+UC
+UC
 PS
 Mp
 hA
-mY
+UC
 If
 Es
 Es
@@ -31643,8 +31690,8 @@ If
 Ji
 If
 mY
-mY
-mY
+UC
+UC
 ul
 ul
 ul

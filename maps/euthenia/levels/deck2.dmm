@@ -2051,6 +2051,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
+"bYA" = (
+/obj/structure/stairs/spawner/east,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_two/aft/starboard)
 "bYF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -8361,7 +8365,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/pool/changing_room)
 "iny" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/showers)
 "inF" = (
 /obj/machinery/seed_extractor,
@@ -8676,7 +8680,7 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/maintenance/deck_two/forward/starboard)
 "iIu" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/pool/changing_room)
 "iIR" = (
 /obj/structure/sign/warning/radioactive,
@@ -12987,7 +12991,7 @@
 /turf/simulated/wall/r_wall,
 /area/maintenance/panic_bunker)
 "mGl" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/fitness)
 "mGY" = (
 /obj/structure/closet/secure_closet/atmos_personal,
@@ -18438,7 +18442,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/atmospheric_substation/civilian)
 "seF" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted/civilian,
 /area/crew_quarters/fitness)
 "seS" = (
 /obj/structure/cable{
@@ -20289,7 +20293,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/warehouse)
 "tYj" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/recreation_area_hallway)
 "tZt" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
@@ -32966,10 +32970,10 @@ qHi
 qHi
 qHi
 qHi
+lft
 qHi
 qHi
-qHi
-qHi
+lft
 qHi
 qHi
 qHi
@@ -33160,10 +33164,10 @@ qHi
 qHi
 qHi
 qHi
-qHi
-qHi
-qHi
-qHi
+lft
+bYA
+bYA
+lft
 qHi
 qHi
 qHi
@@ -33354,10 +33358,10 @@ qHi
 qHi
 qHi
 qHi
-qHi
-qHi
-qHi
-qHi
+lft
+lft
+lft
+lft
 qHi
 qHi
 qHi
