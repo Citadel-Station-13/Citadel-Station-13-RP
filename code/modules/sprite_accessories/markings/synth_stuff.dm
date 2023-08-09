@@ -132,3 +132,27 @@
 	name = "Synthlizard Horn Antennae"
 	id = "marking_synth_horn_antennae"
 	icon_state = "horns_antenna"
+
+/datum/sprite_accessory/marking/synth/snout
+	name = "Synthlizard Snout 1"
+	id = "marking_synth_snout_1"
+	icon_state = "synthliz_snout1"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_HEAD)
+
+/datum/sprite_accessory/marking/synth/snout/alt
+	name = "Synthlizard Snout 2"
+	id = "marking_synth_snout_2"
+	icon_state = "synthliz_snout2"
+
+/datum/sprite_accessory/marking/synth/snout/alt2
+	name = "Synthlizard Snout 3"
+	id = "marking_synth_snout_3"
+	icon_state = "synthliz_snout3"
+
+/datum/sprite_accessory/marking/synth/synthliz_eyes
+	name = "Synthlizard Eyes"
+	id = "marking_synthliz_eyes"
+	icon_state = "synthliz_eyes"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_HEAD)
