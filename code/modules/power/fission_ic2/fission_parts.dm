@@ -40,6 +40,7 @@
 
 	var/heat_dissipation = 0 //how much heat we obliterate from the universe each tick, handled in reactor_component/handle_heat
 	var/transfer_heat_to_environment = FALSE //if we transfer heat to the ambient gas mix instead of obliterating it (assuming heat_dissipation is greater than 1)
+	var/reactor_mode_based_enviroheat = FALSE
 	var/reactor_heat_pull = 0 //how much heat we pull from the reactor into ourselves per tick
 
 	var/durability = -1 //durablity. ticks down for certain components
@@ -105,8 +106,28 @@
 	heat -= heat_dissipation
 
 
+/obj/structure/reactor_component/fuelrod
+	name = "reactor fuel rod"
+	desc = "A reactor fuel rod."
 
+/obj/structure/reactor_component/heatvent
+	name = "reactor heat vent"
+	desc = "A reactor heat vent. Vents heat to the atmosphere."
+	heat_dissipation = 6
 
+/obj/structure/reactor_component/heat_exchanger
+	name = "heat exchanger"
+	desc = "A reactor heat exchanger. Attempts to equalize heat in adjacent reactor components and the reactor itself."
+	var/component_heat_exchange = 12
+	var/core_heat_exchange = 4
+
+/obj/structure/reactor_component/heat_exchanger/do_heat_tick()
+	var/list/components_to_hex
+	if(component_heat_exchange)
+		for(var/obj/structure/reactor_component/RC in adjacent_components)
+			components_to_hex[RC] = RC.heat / RC.max_temp
+		components_to_hex = insertion_sort(components_to_hex, associative = TRUE)
+		for(var/obj/structure/reactor_component/RC in components_to_hex)
 
 
 
