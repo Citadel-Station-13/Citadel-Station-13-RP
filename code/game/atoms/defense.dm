@@ -367,6 +367,12 @@
 	// drop things after so things that rely on having objects don't break
 	drop_products(method, drop_location())
 	// goodbye, cruel world
+	break_apart(method)
+
+/**
+ * called to actually destroy ourselves
+ */
+/atom/proc/break_apart(method)
 	qdel(src)
 
 /**

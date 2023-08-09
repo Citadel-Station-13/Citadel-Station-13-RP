@@ -211,7 +211,6 @@
 	Tsrc.PlaceOnTop(/turf/simulated/wall)
 	var/turf/simulated/wall/T = get_turf(src)
 	T.set_materials(M, material_reinforcing, material_structure)
-	T.set_rad_insulation()
 	if(wall_fake)
 		T.can_open = 1
 	T.add_hiddenprint(usr)
@@ -219,7 +218,7 @@
 	return 1
 
 /obj/structure/girder/proc/reinforce_with_material(obj/item/stack/material/S, mob/user) //if the verb is removed this can be renamed.
-	if(material_reinf)
+	if(!isnull(material_reinforcing))
 		to_chat(user, "<span class='notice'>\The [src] is already reinforced.</span>")
 		return 0
 
@@ -228,9 +227,6 @@
 		return 0
 
 	var/datum/material/M = S.material
-	if(!istype(M) || M.integrity < 50)
-		to_chat(user, "You cannot reinforce \the [src] with that; it is too soft.")
-		return 0
 
 	to_chat(user, "<span class='notice'>Now reinforcing...</span>")
 	if (!do_after(user,40) || !S.use(1))

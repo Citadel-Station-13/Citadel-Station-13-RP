@@ -36,6 +36,8 @@
 
 /// baseline significance of material calculations done on material-side / default computations
 #define MATERIAL_SIGNIFICANCE_BASELINE 10
+/// used for most doors
+#define MATERIAL_SIGNIFICANCE_DOOR 15
 /// significance used for normal wall layer
 #define MATERIAL_SIGNIFICANCE_WALL 20
 /// significance used for reinforcing wall layer
@@ -50,6 +52,8 @@
 
 //* Opacity
 
+/// threshold for block
+#define MATERIAL_OPACITY_THRESHOLD 0.6
 /// opacity to alpha; uses quadratic falloff and a constant because we don't want stuff to just be invisible
 #define MATERIAL_OPACITY_TO_ALPHA(opacity) max((255 * (1 - (1 - opacity)**2)), 25)
 
