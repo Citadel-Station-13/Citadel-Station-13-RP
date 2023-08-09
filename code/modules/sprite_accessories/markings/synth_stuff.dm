@@ -99,3 +99,36 @@
 	icon_state = "eboop"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO,BP_HEAD)
+
+// synth antennae
+/datum/sprite_accessory/marking/synth/antennae
+	name = "Synthlizard Antennae"
+	id = "marking_synth_antennae"
+	icon_state = "normal_antenna"
+	color_blend_mode = ICON_MULTIPLY
+	bodyparts = list(BP_HEAD)
+
+/datum/sprite_accessory/marking/synth/antennae/curled
+	name = "Synthlizard Curled Antennae"
+	id = "marking_synth_curled_antennae"
+	icon_state = "curled_antenna"
+
+/datum/sprite_accessory/marking/synth/antennae/thick
+	name = "Synthlizard Thick Antennae"
+	id = "marking_synth_thick_antennae"
+	icon_state = "thick_antenna"
+
+/datum/sprite_accessory/marking/synth/antennae/short
+	name = "Synthlizard Short Antennae"
+	id = "marking_synth_short_antennae"
+	icon_state = "short_antenna"
+
+/datum/sprite_accessory/marking/synth/antennae/sharp
+	name = "Synthlizard Sharp Antennae"
+	id = "marking_synth_sharp_antennae"
+	icon_state = "sharp_antenna"
+
+/datum/sprite_accessory/marking/synth/antennae/horn
+	name = "Synthlizard Horn Antennae"
+	id = "marking_synth_horn_antennae"
+	icon_state = "horns_antenna"
