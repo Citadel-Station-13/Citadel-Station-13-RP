@@ -5,10 +5,10 @@ import { useBackend, useLocalState } from '../../backend';
 import { Box, Button, LabeledList, Section, Stack } from '../../components';
 import { getGasLabel, getGasColor } from '../../constants';
 import { Window } from '../../layouts';
-import { AtmosAnalyzerResults, AtmosGasGroupFlags, AtmosGasID } from '../common/Atmos';
+import { AtmosAnalyzerResults, AtmosGasGroupFlags, AtmosGasID, GasContext } from '../common/Atmos';
 import { InterfaceLockNoticeBox } from '../common/InterfaceLockNoticeBox';
 import { AtmosVentPumpControl, AtmosVentPumpState } from './AtmosVentPump';
-import { AtmosVentScrubberState } from './AtmosVentScrubber';
+import { AtmosVentScrubberControl, AtmosVentScrubberState } from './AtmosVentScrubber';
 
 enum AirAlarmMode {
   Off = 0,
@@ -76,6 +76,7 @@ interface AirAlarmData {
   vents: Record<string, ExtendedVentPumpState>;
   scrubbers: Record<string, ExtendedVentScrubberState>;
   mode: AirAlarmMode;
+  gasContext: GasContext;
   // legacy below
   locked: BooleanLike;
   siliconUser: BooleanLike;
@@ -297,12 +298,12 @@ const AirAlarmVentScreenWrapped = (props, context) => {
 };
 
 interface AirAlarmVentScreenProps {
-  powerToggle: (id: string) => void;
-  internalToggle: (id: string) => void;
-  externalToggle: (id: string) => void;
+  powerToggle: (id: string, on?: boolean) => void;
+  internalToggle: (id: string, on?: boolean) => void;
+  externalToggle: (id: string, on?: boolean) => void;
   internalSet: (id: string, kpa: number | 'default') => void;
   externalSet: (id: string, kpa: number | 'default') => void;
-  dirToggle: (id: string) => void;
+  dirToggle: (id: string, siphon?: boolean) => void;
   vents: Record<string, ExtendedVentPumpState>;
 }
 
@@ -314,12 +315,12 @@ const AirAlarmVentScreen = (props: AirAlarmVentScreenProps) => {
           <AtmosVentPumpControl
             state={vent}
             title={vent.name}
-            powerToggle={() => props.powerToggle(idTag)}
-            dirToggle={() => props.dirToggle(idTag)}
+            powerToggle={(on) => props.powerToggle(idTag, on)}
+            dirToggle={(siphon) => props.dirToggle(idTag, siphon)}
             internalSet={(val) => props.internalSet(idTag, val)}
             externalSet={(val) => props.externalSet(idTag, val)}
-            internalToggle={() => props.internalToggle(idTag)}
-            externalToggle={() => props.externalToggle(idTag)} />
+            internalToggle={(on) => props.internalToggle(idTag, on)}
+            externalToggle={(on) => props.externalToggle(idTag, on)} />
         </Stack.Item>
       ))}
     </Stack>
@@ -332,6 +333,7 @@ const AirAlarmScrubberScreenWrapped = (props, context) => {
   const { data, act } = useBackend<AirAlarmData>(context);
   return (
     <AirAlarmScrubberScreen
+      gasContext={data.gasContext}
       scrubbers={data.scrubbers}
       powerToggle={(id) => act('scrubber', { id: id, command: 'power' })}
       siphonToggle={(id) => act('scrubber', { id: id, command: 'siphon' })}
@@ -342,12 +344,13 @@ const AirAlarmScrubberScreenWrapped = (props, context) => {
 };
 
 interface AirAlarmScrubberScreenProps {
-  powerToggle: (id: string) => void;
-  siphonToggle: (id: string) => void;
-  expandToggle: (id: string) => void;
-  gasToggle: (id: string, gas: AtmosGasID) => void;
-  groupToggle: (id: string, group: AtmosGasGroupFlags) => void;
+  powerToggle: (id: string, on?: boolean) => void;
+  siphonToggle: (id: string, on?: boolean) => void;
+  expandToggle: (id: string, on?: boolean) => void;
+  gasToggle: (id: string, gas: AtmosGasID, on?: boolean) => void;
+  groupToggle: (id: string, group: AtmosGasGroupFlags, on?: boolean) => void;
   scrubbers: Record<string, ExtendedVentScrubberState>;
+  gasContext: GasContext;
 }
 
 const AirAlarmScrubberScreen = (props: AirAlarmScrubberScreenProps) => {
@@ -355,9 +358,15 @@ const AirAlarmScrubberScreen = (props: AirAlarmScrubberScreenProps) => {
     <Stack vertical>
       {Object.entries(props.scrubbers).map(([idTag, scrubber]) => (
         <Stack.Item key={idTag}>
-          <Section>
-            Test
-          </Section>
+          <AtmosVentScrubberControl
+            state={scrubber}
+            context={props.gasContext}
+            title={scrubber.name}
+            powerToggle={(on) => props.powerToggle(idTag, on)}
+            siphonToggle={(on) => props.siphonToggle(idTag, on)}
+            expandToggle={(on) => props.expandToggle(idTag, on)}
+            idToggle={(id, on) => props.gasToggle(idTag, id, on)}
+            groupToggle={(group, on) => props.groupToggle(idTag, group, on)} />
         </Stack.Item>
       ))}
     </Stack>

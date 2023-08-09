@@ -532,6 +532,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 /obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["TLV"] = TLV
+	.["gasContext"] = global.gas_data.tgui_gas_context()
 
 /obj/machinery/air_alarm/proc/push_ui_tlv()
 	push_ui_data(data = list("TLV" = TLV))

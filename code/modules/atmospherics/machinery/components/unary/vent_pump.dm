@@ -1,5 +1,6 @@
 #define DEFAULT_PRESSURE_DELTA 10000
 
+// todo: better interface logging
 /obj/machinery/atmospherics/component/unary/vent_pump
 	icon = 'icons/atmos/vent_pump.dmi'
 	icon_state = "map_vent"
@@ -12,6 +13,11 @@
 	power_rating = 30000
 
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SUPPLY //connects to regular and supply pipes
+
+	hijack_require_exposed = TRUE
+	default_multitool_hijack = TRUE
+	tgui_interface = "AtmosVentPump"
+	atmos_component_ui_flags = NONE
 
 	level = 1
 
@@ -310,26 +316,39 @@
 	ui = new(user, src, "AtmosVentPump")
 	ui.open()
 
-/obj/machinery/atmospherics/component/unary/vent_pump/ui_state(mob/user, datum/tgui_module/module)
-	. = ..()
-
 /obj/machinery/atmospherics/component/unary/vent_pump/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["state"] = ui_vent_data()
+	.["name"] = name
 
 /obj/machinery/atmospherics/component/unary/vent_pump/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
+	var/target = params["target"]
 	switch(action)
 		if("toggle")
+			//! warning: legacy
+			update_use_power(!use_power)
+			update_icon()
+			return TRUE
 		if("intPressure")
+			internal_pressure_bound = target == "default"? internal_pressure_bound_default : clamp(text2num(target), 0, ATMOS_VENT_MAX_PRESSURE_LIMIT)
+			return TRUE
 		if("extPressure")
+			external_pressure_bound = target == "default"? external_pressure_bound_default : clamp(text2num(target), 0, ATMOS_VENT_MAX_PRESSURE_LIMIT)
+			return TRUE
 		if("intCheck")
+			pressure_checks ^= ATMOS_VENT_CHECK_INTERNAL
+			return TRUE
 		if("extCheck")
+			pressure_checks ^= ATMOS_VENT_CHECK_INTERNAL
+			return TRUE
 		if("siphon")
-
-#warn ui stuff
+			//! warning: legacy
+			pump_direction = !pump_direction
+			update_icon()
+			return TRUE
 
 //* Signal Handling - Check / Application order is in order of these comments.
 /// environmental: void. set to ignore the signal if we're not an environmental vent.

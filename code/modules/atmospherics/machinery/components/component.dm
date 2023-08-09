@@ -79,8 +79,7 @@
 		return
 	.["on"] = on
 	.["powerSetting"] = power_setting
-	if(atmos_component_ui_flags & (ATMOS_COMPONENT_UI_SEE_POWER | ATMOS_COMPONENT_UI_SET_POWER))
-		.["powerUsage"] = power_current
+	.["powerUsage"] = power_current
 
 /obj/machinery/atmospherics/component/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()

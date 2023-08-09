@@ -92,8 +92,7 @@
 
 /obj/machinery/portable_atmospherics/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	if(atmos_portable_ui_flags & (ATMOS_PORTABLE_UI_SEE_FLOW | ATMOS_PORTABLE_UI_SET_FLOW))
-		.["flow"] = flow_current
+	.["flow"] = flow_current
 	.["on"] = on
 	.["tank"] = holding?.tgui_tank_data()
 

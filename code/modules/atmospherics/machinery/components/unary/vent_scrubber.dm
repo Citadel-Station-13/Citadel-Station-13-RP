@@ -1,3 +1,4 @@
+// todo: better interface logging
 /obj/machinery/atmospherics/component/unary/vent_scrubber
 	icon = 'icons/atmos/vent_scrubber.dmi'
 	icon_state = "map_scrubber_off"
@@ -12,6 +13,11 @@
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SCRUBBER //connects to regular and scrubber pipes
 
 	level = 1
+
+	hijack_require_exposed = TRUE
+	default_multitool_hijack = TRUE
+	tgui_interface = "AtmosVentScrubber"
+	atmos_component_ui_flags = NONE
 
 	/// registered area
 	var/area/registered_area
@@ -274,26 +280,56 @@
  */
 /obj/machinery/atmospherics/component/unary/vent_scrubber/proc/ui_scrubber_data()
 	return list(
-
+		"siphon" = siphoning,
+		"expand" = expanded,
+		"scrubIDs" = scrub_ids,
+		"scrubGroups" = scrub_groups,
+		"power" = use_power != USE_POWER_OFF,
 	)
 	#warn impl, data, ui
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
-
-/obj/machinery/atmospherics/component/unary/vent_scrubber/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!isnull(ui))
+	if(.)
 		return
-	ui = new(user, src, "AtmosVentScrubber")
-	ui.open()
+	var/target = params["target"]
+	switch(action)
+		if("power")
+			//! warning: legacy
+			update_use_power(!use_power)
+			update_icon()
+			return TRUE
+		if("expand")
+			//! warning: legacy
+			expanded = !expanded
+			update_icon()
+			return TRUE
+		if("siphon")
+			//! warning: legacy
+			siphoning = !siphoning
+			update_icon()
+			return TRUE
+		if("id")
+			if(!global.gas_data.gas_id_filterable(target))
+				return TRUE
+			scrub_ids ^= target
+			return TRUE
+		if("group")
+			// the << 0 gets rid of any floating points incase someone somehow puts in a non bitfield
+			target = (text2num(target) << 0)
+			if(!global.gas_data.gas_groups_all_filterable(target))
+				return TRUE
+			scrub_groups ^= target
+			return TRUE
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	.["state"] = ui_scrubber_data()
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-
+	.["gasContext"] = global.gas_data.tgui_gas_context()
+	.["name"] = name
 
 //* Signal Handling - Order of application is same as these comments.
 /// environmental: void. set to ignore the signal if we're not an environmental vent.
