@@ -10,6 +10,8 @@
 	gas_flags = GAS_FLAG_OXIDIZER | GAS_FLAG_FILTERABLE | GAS_FLAG_CORE
 	gas_groups = GAS_GROUP_CORE
 
+	default_tlv = list(16, 19, 70, 100)
+
 /datum/gas/nitrogen
 	id = GAS_ID_NITROGEN
 	name = "N2"
@@ -18,6 +20,8 @@
 	molar_mass = 0.028
 	gas_flags = GAS_FLAG_FILTERABLE | GAS_FLAG_CORE
 	gas_groups = GAS_GROUP_CORE
+
+	default_tlv = list(0, 0, 135, 140)
 
 /datum/gas/carbon_dioxide
 	id = GAS_ID_CARBON_DIOXIDE

@@ -9,8 +9,7 @@ GLOBAL_REAL(gas_data, /datum/gas_data) = new
  * all lists are keyed by id
  */
 /datum/gas_data
-	//! gas data
-	//? intrinsics
+	//* gas data - intrinsics
 	/// ids; associative list to the instantiated datum
 	var/list/gases = list()
 	/// names
@@ -19,37 +18,54 @@ GLOBAL_REAL(gas_data, /datum/gas_data) = new
 	var/list/flags = list()
 	/// groups
 	var/list/groups = list()
-	//? physics
+
+	//* gas data - physics
 	/// specific heat
 	var/list/specific_heats = list()
 	/// molar masses
 	var/list/molar_masses = list()
-	//? reagents
+
+	//* gas data - reagents
 	/// reagents: id = (reagentid, base amount, minimum moles, mole factor, max amount)
 	/// this is a sparse lookup, not all gases are in here.
 	var/list/reagents = list()
-	//? visuals
+
+	//* gas data - visuals
 	/// visuals: id = (state, threshold, factor)
 	var/list/visuals = list()
 	/// visuals cache
 	var/list/visual_images = list()
-	//? reactions
+
+	//* gas data - reactions
 	var/list/rarities = list()
 
-	//! gas cache lists
+	//* gas data - "fluff"
+	var/list/default_tlvs = list()
+
+	//* cache lists
 	/// list of lists of gas ids by flag
 	var/list/gas_by_flag = list()
 	/// list of lists of gas ids by group
 	var/list/gas_by_group = list()
+	/// list of gas ids in core
+	var/list/gas_ids_core = list()
 
-	//! global data
+	//* static caches
+	/// list of non core group names that are filterable
+	var/list/gas_group_names_filterable = list()
+	/// gas group name to group
+	var/list/gas_group_by_name = list()
+
+	//* global data
 	/// next random gas id
 	var/static/next_procedural_gas_id = 0
 
 /datum/gas_data/New()
+	rebuild_static_caches()
 	build_hardcoded()
 
 /datum/gas_data/proc/rebuild_caches()
+	rebuild_static_caches()
 	names = list()
 	flags = list()
 	groups = list()
@@ -59,8 +75,10 @@ GLOBAL_REAL(gas_data, /datum/gas_data) = new
 	visuals = list()
 	visual_images = list()
 	rarities = list()
+	default_tlvs = list()
 	gas_by_flag = list()
 	gas_by_group = list()
+	gas_ids_core = list()
 	if(!islist(gases))
 		gases = list()
 	for(var/i in 1 to length(gases))
@@ -73,6 +91,19 @@ GLOBAL_REAL(gas_data, /datum/gas_data) = new
 			gases[i] = G.id
 			gases[G.id] = G
 		_register_gas(G)
+
+/datum/gas_data/proc/rebuild_static_caches()
+	gas_group_names_filterable = list()
+	gas_group_by_name = list()
+	for(var/i in 1 to length(gas_group_names))
+		var/group = 1 << i
+		if(group == GAS_GROUP_CORE)
+			continue
+		if(!(group & GAS_GROUPS_FILTERABLE))
+			continue
+		var/name = gas_group_names[i]
+		gas_group_names_filterable += name
+		gas_group_by_name[name] = group
 
 /datum/gas_data/proc/build_hardcoded()
 	for(var/path in subtypesof(/datum/gas))
@@ -93,6 +124,7 @@ GLOBAL_REAL(gas_data, /datum/gas_data) = new
 		LAZYREMOVE(gas_by_group[old_group], G.id)
 	groups[G.id] = G.gas_groups
 	if(G.gas_groups & GAS_GROUP_CORE)
+		gas_ids_core += G.id
 		if(!((G.gas_flags & (GAS_FLAG_CORE | GAS_FLAG_FILTERABLE)) == (GAS_FLAG_CORE | GAS_FLAG_FILTERABLE)))
 			stack_trace("[G.id] didn't have core/filterable flags even though it was marked as core group. Adding the flags...")
 			G.gas_flags |= (GAS_FLAG_CORE | GAS_FLAG_FILTERABLE)
@@ -139,6 +171,8 @@ GLOBAL_REAL(gas_data, /datum/gas_data) = new
 			visual_images[G.id][i] = I
 	//? reactions
 	rarities[G.id] = G.rarity
+	//? fluff
+	default_tlvs[G.id] = G.default_tlv
 	//? rebuild cheap cache lists
 	//* gas groups
 	for(var/group in bitfield2list(G.gas_groups))

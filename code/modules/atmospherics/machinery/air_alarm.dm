@@ -31,10 +31,16 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 	/// The area we're registered to
 	var/area/registered_area
-	/// Keys are things like temperature and certain gasses. Values are lists, which contain, in order:
-	/// red warning minimum value, yellow warning minimum value, yellow warning maximum value, red warning maximum value
-	/// Keys can be 'pressure', 'temperature', or a gas ID.
-	var/list/TLV = list()
+	/// keys are gas group names
+	/// values are TLV lists
+	var/list/tlv_groups = list()
+	/// keys are gas ids
+	/// values are TLV lists
+	var/list/tlv_ids = list()
+	/// pressure tlv list
+	var/list/tlv_pressure
+	/// temperature tlv list
+	var/list/tlv_temperature
 	/// mode
 	var/mode = AIR_ALARM_MODE_SCRUB
 
@@ -82,6 +88,9 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	if(!pixel_x && !pixel_y)
 		offset_airalarm()
 	first_run()
+	set_frequency(frequency)
+	if(!master_is_operating())
+		elect_master()
 
 /obj/machinery/air_alarm/Destroy()
 	GLOB.air_alarms -= src
@@ -107,22 +116,26 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	if(!wires)
 		wires = new(src)
 
+	update_icon()
+
+/obj/machinery/air_alarm/proc/create_tlv()
+	if(isnull(tlv_pressure))
+		tlv_pressure = AIR_ALARM_MAKE_TLV(0.7 * ONE_ATMOSPHERE, 0.9 * ONE_ATMOSPHERE, 1.1 * ONE_ATMOSPHERE, 1.3 * ONE_ATMOSPHERE)
+	if(isnull(tlv_temperature))
+		tlv_temperature = AIR_ALARM_MAKE_TLV(T0C - 26, T0C, T0C + 35, T0C + 60)
+	for(var/id in global.gas_data.gas_ids_core)
+		var/list/default = global.gas_data.default_tlvs[id]
+		if(isnull(default))
+			continue
+		tlv_ids[id] = default
+	for(var/group in global.gas_data.gas_group_names_filterable)
+		tlv_groups[group] = AIR_ALARM_MAKE_TLV(0, 0, 0.5, 1)
+
 	// breathable air according to human/Life()
 	TLV["oxygen"] =			list(16, 19, 135, 140) // Partial pressure, kpa
 	TLV["nitrogen"] =		list(0, 0, 135, 140) // Partial pressure, kpa
 	TLV["carbon dioxide"] = list(-1.0, -1.0, 5, 10) // Partial pressure, kpa
 	TLV["phoron"] =			list(-1.0, -1.0, 0, 0.5) // Partial pressure, kpa
-	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
-	TLV["pressure"] =		list(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE * 0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20) /* kpa */
-	TLV["temperature"] =	list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
-
-	update_icon()
-
-/obj/machinery/air_alarm/Initialize(mapload)
-	. = ..()
-	set_frequency(frequency)
-	if(!master_is_operating())
-		elect_master()
 
 /obj/machinery/air_alarm/process(delta_time)
 	if((machine_stat & (NOPOWER|BROKEN)) || shorted)
@@ -810,9 +823,10 @@ GLOBAL_LIST_EMPTY(air_alarms)
 /obj/machinery/air_alarm/freezer
 	target_temperature = T0C - 13.15 // Chilly freezer room
 
-/obj/machinery/air_alarm/freezer/first_run()
-	. = ..()
-	TLV["temperature"] =	list(T0C - 40, T0C - 20, T0C + 40, T0C + 66) // K, Lower Temperature for Freezer Air Alarms (This is because TLV is hardcoded to be generated on first_run, and therefore the only way to modify this without changing TLV generation)
+/obj/machinery/air_alarm/freezer/create_tlv()
+	if(isnull(tlv_temperature))
+		tlv_temperature = list(T0C - 40, T0C - 20, T0C + 40, T0C + 60)
+	return ..()
 
 /obj/machinery/air_alarm/monitor
 	report_danger_level = 0
@@ -824,10 +838,4 @@ GLOBAL_LIST_EMPTY(air_alarms)
 /obj/machinery/air_alarm/server/Initialize(mapload)
 	. = ..()
 	req_access = list(ACCESS_SCIENCE_RD, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
-	TLV[GAS_ID_OXYGEN] =			list(16,   19,   135, 140) // Partial pressure, kpa
-	TLV[GAS_ID_CARBON_DIOXIDE] =	list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
-	TLV[GAS_ID_PHORON] =			list(-1.0, -1.0,   0, 0.5) // Partial pressure, kpa
-	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
-	TLV["pressure"] =		list(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE * 0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20) /* kpa */
-	TLV["temperature"] =	list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
 	setDir(dir)

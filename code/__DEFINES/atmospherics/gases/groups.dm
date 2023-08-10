@@ -2,6 +2,7 @@
 /// Should always and only include gasses that are directly selectable on interfaces.
 /// Anything not in here should be in one or more of the other groups.
 /// Anything in this group should have the CORE and FILTERABLE flag
+/// This should not be a lot of gases! Air alarms, amongst other things, genreate lists for these gases.
 #define GAS_GROUP_CORE (1<<0)
 /// Should include all non-core gasses.
 /// Shows up on misc lists.

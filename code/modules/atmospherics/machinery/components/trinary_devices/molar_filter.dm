@@ -84,11 +84,13 @@
 			var/target = params["target"]
 			target = clamp(text2num(target), 0, INFINITY)
 			mass_lower = target
+			mass_upper = max(mass_upper, mass_lower)
 			return TRUE
 		if("upper")
 			var/target = params["target"]
 			target = clamp(text2num(target), 0, INFINITY)
 			mass_upper = target
+			mass_lower = min(mass_lower, mass_upper)
 			return TRUE
 		if("invert")
 			invert = !invert

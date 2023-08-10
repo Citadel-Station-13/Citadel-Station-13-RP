@@ -2,7 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /datum/gas
-	//! Intrinsics
+	//* Intrinsics
 	/// Text ID for things like gas strings. THIS SHOULD NEVER, EVER, BE CHANGED! Pick one and stick with it. Change this and EVERYTHING breaks. The typepath, infact, is more mutable than this!
 	var/id = ""
 	/// Textual name
@@ -12,14 +12,14 @@
 	/// gas group - flag
 	var/gas_groups = GAS_GROUP_UNKNOWN
 
-	//! physics
+	//* physics
 	/// Specific heat in J/(mol*K).
 	/// For chemicals that exist in real life this is the specific heat value under constant volume.
 	var/specific_heat = 1
 	/// Molar mass in kg/mol
 	var/molar_mass = 1
 
-	//! reagents
+	//* reagents
 	/// reagent id to apply
 	var/gas_reagent_id
 	/// reagent amount to add to someone breathing it at minimum moles
@@ -33,7 +33,7 @@
 	/// reserved for chemgas - how many moles of this gas corrospond to 1 unit; should always be inverse of reagent's side of this lookup
 	var/gas_reagent_moles = 0.1
 
-	//! visuals
+	//* visuals
 	// todo: visual cache gen should be a proc on /datum/gas so we can do custom colors
 	/// visual overlay color if any
 	var/visual_color
@@ -44,11 +44,16 @@
 	/// index addition per mole for cache list
 	var/visual_factor = 1
 
-	//! reactions
+	//* reactions
 	/// Fusion is not yet implemented : How much the gas accelerates a fusion reaction
 	var/fusion_power = 0
 	/// Relative rarity compared to other gases, used when setting up the reactions list.
 	var/rarity = 0
+
+	//* fluff
+	/// default TLV values for air alarms in format of list(danger low, warning low, warning high, danger high)
+	/// null to have air alarms ignore this gas entirely
+	var/list/default_tlv
 
 	// todo: combustion enthalpies / oxidizer powers
 	// todo: combustion product gases
