@@ -344,7 +344,7 @@ SUBSYSTEM_DEF(air)
 
 /**
  * parses a gas string
- * returns list(gas list, temp)
+ * returns list(gas list, temp); gas list is cached, make sure to copy it!!!
  *
  * @params
  * - gas_string - gas string
@@ -373,10 +373,11 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/proc/unpack_gas_string(gas_string)
 	var/list/built = new /list(2)
 	var/list/unpacked = params2list(gas_string)
-	var/list/gases = list()
 	built[2] = text2num(unpacked["TEMP"])	// null allowed
 	unpacked -= "TEMP"
-	built[1] = gases
+	for(var/id in unpacked)
+		unpacked[id] = text2num(unpacked[id])
+	built[1] = unpacked
 	return built
 
 #undef SSAIR_TURFS

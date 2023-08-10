@@ -530,7 +530,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 		var/list/returned = pump.ui_vent_data()
 		returned["name"] = pump.name
-		pump[pump.id_tag] = returned
+		vents[pump.id_tag] = returned
 	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_pumps)
 		var/list/returned = scrubber.ui_scrubber_data()
 		returned["name"] = scrubber.name

@@ -37,7 +37,7 @@
 
 	/// base gases. gas id or typepath to ratio.
 	var/list/base = list()
-	/// target pressure to fill base to
+	/// target pressure to fill base to; if null, and base isn't empty, we fill the whole thing!
 	var/base_pressure
 
 	// todo: random_markov and have key = list(other key = probability)
@@ -79,7 +79,7 @@
 			base[what] = ratio
 		total_base += ratio
 
-	var/moles_base = (base_pressure * volume) / (R_IDEAL_GAS_EQUATION * target_temperature)
+	var/moles_base = ((isnull(base_pressure)? (length(base)? target_pressure : 0) : base_pressure) * volume) / (R_IDEAL_GAS_EQUATION * target_temperature)
 	var/ratio_base = moles_base / total_base
 	if(ratio_base)
 		for(var/what in base)

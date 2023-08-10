@@ -7193,7 +7193,7 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -11750,7 +11750,7 @@
 	use_power = 1
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -14314,7 +14314,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -23536,7 +23536,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -23600,7 +23600,7 @@
 	use_power = 1
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -25654,7 +25654,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)

@@ -79,9 +79,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	if(!holder)
 		return
 	var/list/options = list()
-	options["MC"] = Master
-	options["Failsafe"] = Failsafe
-	options["Configuration"] = config
+	options["MC"] = global.Master
+	options["Failsafe"] = global.Failsafe
+	options["Global Variables"] = global.GLOB
+	options["Configuration"] = global.config
+	options["Gas Data"] = global.gas_data
 	options["Legacy Configuration"] = config_legacy
 	for(var/i in Master.subsystems)
 		var/datum/controller/subsystem/S = i

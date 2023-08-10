@@ -3,6 +3,11 @@
 
 GLOBAL_REAL(gas_data, /datum/gas_data) = new
 
+/proc/__recreate_gas_data()
+	if(!isnull(global.gas_data))
+		qdel(global.gas_data)
+	global.gas_data = new
+
 /**
  * master datum holding all atmospherics gas data
  * all lists should be accessed directly for speed

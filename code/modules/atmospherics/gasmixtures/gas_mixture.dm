@@ -512,7 +512,9 @@
  * Get gas string of given list of gas at a given temperature
  */
 /proc/get_gas_string(list/gas, temperature)
-	return "[list2params(gas)][length(gas)? ";TEMP=[temperature]" : ""]"
+	if(!length(gas))
+		return "TEMP=[TCMB]"
+	return "[list2params(gas)];TEMP=[temperature]"
 
 //* Tile Operations
 
