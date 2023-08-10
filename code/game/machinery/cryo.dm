@@ -24,8 +24,6 @@
 	var/image/fluid
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/Initialize(mapload)
-	. = ..()
-
 	icon = 'icons/obj/medical/cryogenics_split.dmi'
 	icon_state = "base"
 	initialize_directions = dir
@@ -42,6 +40,10 @@
 	fluid.layer = MOB_LAYER+0.1 //Below glass, above mob
 
 	add_overlay(tank)
+
+	. = ..()
+
+	// todo: duped, components update icon on init right?
 	update_icon()
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/Destroy()
@@ -203,8 +205,6 @@
 		var/mob/M = grab.affecting
 		qdel(grab)
 		put_mob(M)
-
-	return
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/MouseDroppedOnLegacy(mob/target, mob/user) //Allows borgs to put people into cryo without external assistance
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !ishuman(target))

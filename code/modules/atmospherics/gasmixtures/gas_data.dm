@@ -176,11 +176,9 @@ GLOBAL_REAL(gas_data, /datum/gas_data) = new
 	//? rebuild cheap cache lists
 	//* gas groups
 	for(var/group in bitfield2list(G.gas_groups))
-		LAZYINITLIST(gas_by_group[group])
-		LAZYDISTINCTADD(gas_by_group[group], G.id)
+		LAZYDISTINCTADD(gas_by_group["[group]"], G.id)
 	//* gas flags
 	for(var/bit in bitfield2list(G.gas_flags))
-		LAZYINITLIST(gas_by_flag["[bit]"])
 		LAZYDISTINCTADD(gas_by_flag["[bit]"], G.id)
 
 /**

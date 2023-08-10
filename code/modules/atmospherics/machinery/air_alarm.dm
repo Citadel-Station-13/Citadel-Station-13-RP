@@ -113,6 +113,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		wires = new(src)
 
 	update_icon()
+	create_tlv()
 
 /obj/machinery/air_alarm/proc/create_tlv()
 	if(isnull(tlv_pressure))
@@ -123,8 +124,12 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		var/list/default = global.gas_data.default_tlvs[id]
 		if(isnull(default))
 			continue
+		if(!isnull(tlv_ids[id]))
+			continue
 		tlv_ids[id] = default
 	for(var/group in global.gas_data.gas_group_names_filterable)
+		if(!isnull(tlv_groups[group]))
+			continue
 		tlv_groups[group] = AIR_ALARM_MAKE_TLV(0, 0, 0.5, 1)
 
 /obj/machinery/air_alarm/process(delta_time)
