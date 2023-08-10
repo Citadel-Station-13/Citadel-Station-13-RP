@@ -11,14 +11,14 @@ import { AtmosVentPumpControl, AtmosVentPumpState } from './AtmosVentPump';
 import { AtmosVentScrubberControl, AtmosVentScrubberState } from './AtmosVentScrubber';
 
 enum AirAlarmMode {
-  Off = 0,
-  Scrub = 1,
-  Replace = 2,
-  Siphon = 3,
-  Cycle = 4,
-  Panic = 5,
-  Contaminated = 6,
-  Fill = 7,
+  Off = "off",
+  Scrub = "scrub",
+  Replace = "replace",
+  Siphon = "siphon",
+  Cycle = "cycle",
+  Panic = "panic",
+  Contaminated = "contaminated",
+  Fill = "fill",
 }
 
 const AirAlarmModes: [AirAlarmMode, string, string | undefined][] = [
@@ -71,7 +71,10 @@ interface ExtendedVentScrubberState extends AtmosVentScrubberState {
 }
 
 interface AirAlarmData {
-  TLV: Record<string, AirAlarmTLV>;
+  gasTLV: Record<string, AirAlarmTLV>;
+  groupTLV: Record<string, AirAlarmTLV>;
+  pressureTLV: AirAlarmTLV;
+  temperatureTLV: AirAlarmTLV;
   environment: AtmosAnalyzerResults;
   vents: Record<string, ExtendedVentPumpState>;
   scrubbers: Record<string, ExtendedVentScrubberState>;
@@ -249,13 +252,13 @@ const AirAlarmControlHome = (props, context) => {
         onClick={() => act(atmos_alarm ? 'reset' : 'alarm')} />
       <Box mt={1} />
       <Button
-        icon={mode === 3
+        icon={mode === AirAlarmMode.Panic
           ? 'exclamation-triangle'
           : 'exclamation'}
-        color={mode === 3 && 'danger'}
+        color={mode === AirAlarmMode.Panic && 'danger'}
         content="Panic Siphon"
         onClick={() => act('mode', {
-          mode: mode === 3 ? 1 : 3,
+          mode: mode === AirAlarmMode.Panic ? AirAlarmMode.Scrub : AirAlarmMode.Panic,
         })} />
       <Box mt={2} />
       <Button

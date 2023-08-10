@@ -32,6 +32,8 @@
 	gas_flags = GAS_FLAG_FILTERABLE | GAS_FLAG_CORE
 	gas_groups = GAS_GROUP_CORE
 
+	default_tlv = list(0, 0, 5, 10)
+
 /datum/gas/nitrous_oxide
 	id = GAS_ID_NITROUS_OXIDE
 	name = "N2O"
@@ -44,6 +46,8 @@
 	gas_flags = GAS_FLAG_OXIDIZER | GAS_FLAG_FILTERABLE | GAS_FLAG_CORE
 	gas_groups = GAS_GROUP_CORE
 
+	default_tlv = list(0, 0, 3, 7)
+
 /datum/gas/hydrogen
 	id = GAS_ID_HYDROGEN
 	name = "H2"
@@ -52,6 +56,8 @@
 	molar_mass = 0.002
 	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL | GAS_FLAG_FILTERABLE | GAS_FLAG_CORE
 	gas_groups = GAS_GROUP_CORE
+
+	default_tlv = list(0, 0, 0.25, 1)
 
 /datum/gas/phoron
 	id = GAS_ID_PHORON
@@ -72,3 +78,5 @@
 	specific_heat = 207.52
 	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL | GAS_FLAG_CONTAMINANT | GAS_FLAG_FILTERABLE | GAS_FLAG_CORE
 	gas_groups = GAS_GROUP_CORE
+
+	default_tlv = list(0, 0, 0, 0.5)

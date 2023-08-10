@@ -131,12 +131,6 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	for(var/group in global.gas_data.gas_group_names_filterable)
 		tlv_groups[group] = AIR_ALARM_MAKE_TLV(0, 0, 0.5, 1)
 
-	// breathable air according to human/Life()
-	TLV["oxygen"] =			list(16, 19, 135, 140) // Partial pressure, kpa
-	TLV["nitrogen"] =		list(0, 0, 135, 140) // Partial pressure, kpa
-	TLV["carbon dioxide"] = list(-1.0, -1.0, 5, 10) // Partial pressure, kpa
-	TLV["phoron"] =			list(-1.0, -1.0, 0, 0.5) // Partial pressure, kpa
-
 /obj/machinery/air_alarm/process(delta_time)
 	if((machine_stat & (NOPOWER|BROKEN)) || shorted)
 		return
@@ -544,11 +538,18 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 /obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	.["TLV"] = TLV
-	.["gasContext"] = global.gas_data.tgui_gas_context()
+	.["gasTLV"] = tlv_ids
+	.["groupTLV"] = tlv_groups
+	.["pressureTLV"] = tlv_pressure
+	.["temperatureTLV"] = tlv_temperature
 
 /obj/machinery/air_alarm/proc/push_ui_tlv()
-	push_ui_data(data = list("TLV" = TLV))
+	var/list/data = list()
+	data["gasTLV"] = tlv_ids
+	data["groupTLV"] = tlv_groups
+	data["pressureTLV"] = tlv_pressure
+	data["temperatureTLV"] = tlv_temperature
+	push_ui_data(data = data)
 
 /obj/machinery/air_alarm/ui_act(action, params, datum/tgui/ui)
 	. = ..()
@@ -558,32 +559,47 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	switch(action)
 		if("vent")
 			var/id = params["id"]
+			var/obj/machinery/atmospherics/component/unary/vent_pump/machine = registered_area.vent_pumps[id]
+			if(isnull(machine) || !machine.controllable_from_alarm)
+				return TRUE
 			var/command = params["command"]
 			var/target = params["target"]
 			switch(command)
 				if("direction")
+					send_signal(id, list("direction" = !machine.pump_direction))
 				if("internalPressure")
+					send_signal(id, list("set_internal_pressure" = text2num(target)))
 				if("externalPressure")
+					send_signal(id, list("set_external_pressure" = text2num(target)))
 				if("internalToggle")
+					send_signal(id, list("checks_toggle" = ATMOS_VENT_CHECK_INTERNAL))
 				if("externalToggle")
+					send_signal(id, list("checks_toggle" = ATMOS_VENT_CHECK_EXTERNAL))
 				if("power")
-			#warn impl
+					send_signal(id, list("power" = !machine.use_power))
 			return TRUE
 		if("scrubber")
 			var/id = params["scrubber"]
+			var/obj/machinery/atmospherics/component/unary/vent_scrubber/machine = registered_area.vent_scrubbers[id]
+			if(isnull(machine) || !machine.controllable_from_alarm)
+				return TRUE
 			var/command = params["command"]
 			var/target = params["target"]
 			switch(command)
 				if("siphon")
+					send_signal(id, list("siphon" = !machine.siphoning))
 				if("gasID")
+					send_signal(id, list("scrub_ids_toggle" = list(target)))
 				if("gasGroup")
+					send_signal(id, list("scrub_groups_toggle" = list(text2num(target))))
 				if("highPower")
+					send_signal(id, list("expand" = !machine.expanded))
 				if("power")
-			#warn impl
+					send_signal(id, list("power" = !machine.use_power))
 			return TRUE
 		if("mode")
 			var/mode = params["mode"]
-			#warn impl
+			apply_mode(mode)
 			return TRUE
 
 #warn below
@@ -601,12 +617,6 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	var/area/A = get_area(src)
 	data["atmos_alarm"] = A?.atmosalm
 	data["fire_alarm"] = A?.fire
-
-	var/turf/T = get_turf(src)
-	var/datum/gas_mixture/environment = T.return_air()
-
-	var/list/list/environment_data = list()
-	data["environment_data"] = environment_data
 
 	DECLARE_TLV_VALUES
 
@@ -676,35 +686,6 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			if(issilicon(usr) && !wires.is_cut(WIRE_IDSCAN))
 				locked = !locked
 				. = TRUE
-		if( "power",
-			"o2_scrub",
-			"n2_scrub",
-			"co2_scrub",
-			"tox_scrub",
-			"n2o_scrub",
-			"fuel_scrub",
-			"panic_siphon",
-			"scrubbing",
-			"direction")
-			send_signal(device_id, list("[action]" = text2num(params["val"])), usr)
-			. = TRUE
-		if("excheck")
-			send_signal(device_id, list("checks" = text2num(params["val"])^1), usr)
-			. = TRUE
-		if("incheck")
-			send_signal(device_id, list("checks" = text2num(params["val"])^2), usr)
-			. = TRUE
-		if("set_external_pressure", "set_internal_pressure")
-			var/target = params["value"]
-			if(!isnull(target))
-				send_signal(device_id, list("[action]" = target), usr)
-				. = TRUE
-		if("reset_external_pressure")
-			send_signal(device_id, list("reset_external_pressure"), usr)
-			. = TRUE
-		if("reset_internal_pressure")
-			send_signal(device_id, list("reset_internal_pressure"), usr)
-			. = TRUE
 		if("threshold")
 			var/env = params["env"]
 
