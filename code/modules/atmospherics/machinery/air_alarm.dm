@@ -170,11 +170,11 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	return
 
 /obj/machinery/air_alarm/proc/handle_heating_cooling(var/datum/gas_mixture/environment)
-	DECLARE_TLV_VALUES
-	LOAD_TLV_VALUES(TLV["temperature"], target_temperature)
+	var/list/tlv = tlv_temperature
+	var/vibing = AIR_ALARM_TEST_TLV(environment.temperature, tlv)
 	if(!regulating_temperature)
 		//check for when we should start adjusting temperature
-		if(!TEST_TLV_VALUES && abs(environment.temperature - target_temperature) > 2.0 && environment.return_pressure() >= 1)
+		if(!vibing && abs(environment.temperature - target_temperature) > 2.0 && environment.return_pressure() >= 1)
 			update_use_power(USE_POWER_ACTIVE)
 			regulating_temperature = 1
 			audible_message("\The [src] clicks as it starts [environment.temperature > target_temperature ? "cooling" : "heating"] the room.",\
@@ -182,7 +182,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			playsound(src, 'sound/machines/click.ogg', 50, 1)
 	else
 		//check for when we should stop adjusting temperature
-		if(TEST_TLV_VALUES || abs(environment.temperature - target_temperature) <= 0.5 || environment.return_pressure() < 1)
+		if(vibing || abs(environment.temperature - target_temperature) <= 0.5 || environment.return_pressure() < 1)
 			update_use_power(USE_POWER_IDLE)
 			regulating_temperature = 0
 			audible_message("\The [src] clicks quietly as it stops [environment.temperature > target_temperature ? "cooling" : "heating"] the room.",\
@@ -652,15 +652,27 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		if("tlv")
 			var/entry = params["entry"]
 			var/index = text2num(params["index"]) + 1
-			var/val = text2num(params["val"])
+			if((index < AIR_ALARM_TLV_INDEX_MIN) || (index > AIR_ALARM_TLV_INDEX_MAX))
+				return TRUE
+			var/val = clamp(0, text2num(params["val"]), 1000000)
+			var/list/target
 			switch(entry)
 				if("pressure")
+					target = tlv_pressure
 				if("temperature")
+					target = tlv_temperature
 				else
 					var/group = global.gas_data.gas_group_by_name[entry]
 					if(group)
+						target = tlv_groups[entry]
 					else
-			#warn impl
+						target = tlv_ids[entry]
+			if(isnull(target))
+				return TRUE
+			target[index] = val
+			clamp_tlv_list(target, index)
+			push_ui_tlv()
+			return TRUE
 		if("alarm")
 			//! warning: legacy
 			if(alarm_area.atmosalert(2, src))
@@ -676,58 +688,18 @@ GLOBAL_LIST_EMPTY(air_alarms)
 				locked = !locked
 			return TRUE
 
-#warn below
-
-/obj/machinery/air_alarm/ui_act(action, params, datum/tgui/ui)
-
-	switch(action)
-		if("threshold")
-			var/env = params["env"]
-
-			var/name = params["var"]
-			var/value = input(usr, "New [name] for [env]:", name, TLV[env][name]) as num|null
-			if(!isnull(value) && !..())
-				if(value < 0)
-					TLV[env][name] = -1
-				else
-					TLV[env][name] = round(value, 0.01)
-				clamp_tlv_values(env, name)
-				// investigate_log(" treshold value for [env]:[name] was set to [value] by [key_name(usr)]",INVESTIGATE_ATMOS)
-				. = TRUE
-
-// This big ol' mess just ensures that TLV always makes sense. If you set the max value below the min value,
-// it'll automatically update all the other values to keep it sane.
-/obj/machinery/air_alarm/proc/clamp_tlv_values(env, changed_threshold)
-	var/list/selected = TLV[env]
-	switch(changed_threshold)
-		if(1)
-			if(selected[1] > selected[2])
-				selected[2] = selected[1]
-			if(selected[1] > selected[3])
-				selected[3] = selected[1]
-			if(selected[1] > selected[4])
-				selected[4] = selected[1]
-		if(2)
-			if(selected[1] > selected[2])
-				selected[1] = selected[2]
-			if(selected[2] > selected[3])
-				selected[3] = selected[2]
-			if(selected[2] > selected[4])
-				selected[4] = selected[2]
-		if(3)
-			if(selected[1] > selected[3])
-				selected[1] = selected[3]
-			if(selected[2] > selected[3])
-				selected[2] = selected[3]
-			if(selected[3] > selected[4])
-				selected[4] = selected[3]
-		if(4)
-			if(selected[1] > selected[4])
-				selected[1] = selected[4]
-			if(selected[2] > selected[4])
-				selected[2] = selected[4]
-			if(selected[3] > selected[4])
-				selected[3] = selected[4]
+/**
+ * clamps tlv to be sensical
+ *
+ * source_indx is the one the user / or something else is changing; rest will be updated to make sense with it.
+ */
+/obj/machinery/air_alarm/proc/clamp_tlv_list(list/tlv, source_index)
+	for(var/i in AIR_ALARM_TLV_INDEX_MIN to (source_index - 1))
+		if(tlv[i] > tlv[source_index])
+			tlv[i] = tlv[source_index]
+	for(var/i in (source_index + 1) to AIR_ALARM_TLV_INDEX_MAX)
+		if(tlv[i] < tlv[source_index])
+			tlv[i] = tlv[source_index]
 
 /obj/machinery/air_alarm/proc/atmos_reset()
 	if(alarm_area.atmosalert(0, src))

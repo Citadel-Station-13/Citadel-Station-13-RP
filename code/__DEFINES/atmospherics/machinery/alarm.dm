@@ -26,6 +26,10 @@
 #define AIR_ALARM_TLV_WARNING_LOW 2
 #define AIR_ALARM_TLV_WARNING_HIGH 3
 #define AIR_ALARM_TLV_DANGER_HIGH 4
+
+#define AIR_ALARM_TLV_INDEX_MIN 1
+#define AIR_ALARM_TLV_INDEX_MAX 4
+
 #define AIR_ALARM_MAKE_TLV(mindanger, minwarning, maxwarning, maxdanger) list(mindanger, minwarning, maxwarning, maxdanger)
 #define AIR_ALARM_TEST_TLV(val, list) ( \
 	((val < list[AIR_ALARM_TLV_DANGER_LOW]) || (val > list[AIR_ALARM_TLV_DANGER_HIGH]))? \
