@@ -280,13 +280,6 @@
 
 	return removed
 
-//Returns the amount of gas that has the given flag, in moles
-/datum/gas_mixture/proc/get_by_flag(flag)
-	. = 0
-	for(var/g in gas)
-		if(global.gas_data.flags[g] & flag)
-			. += gas[g]
-
 //Copies gas and temperature from another gas_mixture.
 /datum/gas_mixture/proc/copy_from(const/datum/gas_mixture/sample)
 	gas = sample.gas.Copy()
@@ -461,6 +454,24 @@
 //Returns the pressure of the gas mix.  Only accurate if there have been no gas modifications since update_values() has been called.
 /datum/gas_mixture/proc/return_pressure()
 	return (total_moles * R_IDEAL_GAS_EQUATION * temperature) / volume
+
+/**
+ * amount of gas of given group
+ */
+/datum/gas_mixture/proc/moles_by_group(group)
+	. = 0
+	for(var/id in gas)
+		if(global.gas_data.groups[id] & group)
+			. += gas[id]
+
+/**
+ * amount of gas of given flag
+ */
+/datum/gas_mixture/proc/moles_by_flag(flag)
+	. = 0
+	for(var/id in gas)
+		if(global.gas_data.flags[id] & flag)
+			. += gas[id]
 
 //* Gas Strings
 

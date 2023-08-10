@@ -71,16 +71,12 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 	var/datum/radio_frequency/radio_connection
 
-	var/list/trace_gas = list(GAS_ID_NITROUS_OXIDE, GAS_ID_VOLATILE_FUEL) //list of other gases that this air alarm is able to detect
-
 	var/danger_level = 0
 	var/pressure_dangerlevel = 0
 
 	var/report_danger_level = 1
 	///If the alarms from this machine are visible on consoles
 	var/alarms_hidden = FALSE
-
-#warn groups
 
 /obj/machinery/air_alarm/Initialize(mapload)
 	. = ..()
@@ -225,36 +221,34 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 			environment.merge(gas)
 
-/obj/machinery/air_alarm/proc/overall_danger_level(var/datum/gas_mixture/environment)
-	var/partial_pressure = R_IDEAL_GAS_EQUATION * environment.temperature/environment.volume
+/obj/machinery/air_alarm/proc/overall_danger_level(datum/gas_mixture/environment)
 	var/environment_pressure = environment.return_pressure()
+	var/partial_pressure_factor = (R_IDEAL_GAS_EQUATION * environment.temperature) / environment.volume
 
-	var/other_moles = 0
-	for(var/g in trace_gas)
-		other_moles += environment.gas[g] //this is only going to be used in a partial pressure calc, so we don't need to worry about group_multiplier here.
+	var/dangerlevel = AIR_ALARM_TEST_TLV(environment_pressure, tlv_pressure)
+	if(dangerlevel >= AIR_ALARM_RAISE_DANGER)
+		return dangerlevel
+	dangerlevel = max(dangerlevel, AIR_ALARM_TEST_TLV(environment.temperature, tlv_temperature))
+	if(dangerlevel >= AIR_ALARM_RAISE_DANGER)
+		return dangerlevel
 
-	DECLARE_TLV_VALUES
-	LOAD_TLV_VALUES(TLV["pressure"], environment_pressure)
-	pressure_dangerlevel = TEST_TLV_VALUES // not local because it's used in process()
-	LOAD_TLV_VALUES(TLV["oxygen"], environment.gas[GAS_ID_OXYGEN]*partial_pressure)
-	var/oxygen_dangerlevel = TEST_TLV_VALUES
-	LOAD_TLV_VALUES(TLV["carbon dioxide"], environment.gas[GAS_ID_CARBON_DIOXIDE]*partial_pressure)
-	var/co2_dangerlevel = TEST_TLV_VALUES
-	LOAD_TLV_VALUES(TLV["phoron"], environment.gas[GAS_ID_PHORON]*partial_pressure)
-	var/phoron_dangerlevel = TEST_TLV_VALUES
-	LOAD_TLV_VALUES(TLV["temperature"], environment.temperature)
-	var/temperature_dangerlevel = TEST_TLV_VALUES
-	LOAD_TLV_VALUES(TLV["other"], other_moles*partial_pressure)
-	var/other_dangerlevel = TEST_TLV_VALUES
+	// todo: would be faster to iterate once and store the groups we care about...
 
-	return max(
-		pressure_dangerlevel,
-		oxygen_dangerlevel,
-		co2_dangerlevel,
-		phoron_dangerlevel,
-		other_dangerlevel,
-		temperature_dangerlevel
-		)
+	for(var/id in tlv_ids)
+		var/list/tlv = tlv_ids[id]
+		var/partial = environment.gas[id] * partial_pressure_factor
+		dangerlevel = max(dangerlevel, AIR_ALARM_TEST_TLV(partial, tlv))
+		if(dangerlevel >= AIR_ALARM_RAISE_DANGER)
+			return dangerlevel
+
+	for(var/name in tlv_groups)
+		var/list/tlv = tlv_groups[name]
+		var/partial = environment.moles_by_flag() * partial_pressure_factor
+		dangerlevel = max(dangerlevel, AIR_ALARM_TEST_TLV(partial, tlv))
+		if(dangerlevel >= AIR_ALARM_RAISE_DANGER)
+			return dangerlevel
+
+	return dangerlevel
 
 /// Returns whether this air alarm thinks there is a breach, given the sensors that are available to it.
 /obj/machinery/air_alarm/proc/breach_detected()
@@ -268,11 +262,19 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 	var/datum/gas_mixture/environment = location.return_air()
 	var/environment_pressure = environment.return_pressure()
-	var/pressure_levels = TLV["pressure"]
+	var/list/pressure_levels = tlv_pressure
 
 	if(environment_pressure <= pressure_levels[1]) // Low pressures
-		if(!(mode == AIR_ALARM_MODE_SIPHON || mode == AIR_ALARM_MODE_CYCLE))
-			return TRUE
+		switch(mode)
+			if(AIR_ALARM_MODE_CYCLE)
+				return FALSE
+			if(AIR_ALARM_MODE_PANIC)
+				return FALSE
+			if(AIR_ALARM_MODE_SIPHON)
+				return FALSE
+			if(AIR_ALARM_MODE_REPLACE)
+				return FALSE
+		return TRUE
 	return FALSE
 
 /obj/machinery/air_alarm/proc/master_is_operating()
@@ -513,8 +515,6 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			ui.set_state(state)
 		ui.open()
 
-#warn above
-
 /obj/machinery/air_alarm/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	var/datum/gas_mixture/environment = loc.return_air()
@@ -534,7 +534,20 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	.["scrubbers"] = scrubbers
 	.["mode"] = mode
 
-	#warn AAAAAAAAAAA
+	//! legacy below
+	var/list/data = list(
+		"locked" = locked,
+		"siliconUser" = issilicon(user),
+		"remoteUser" = !!ui.parent_ui,
+		"danger_level" = danger_level,
+		"target_temperature" = "[target_temperature - T0C]C",
+		"rcon" = rcon_setting,
+	)
+	var/area/A = get_area(src)
+	data["atmos_alarm"] = A?.atmosalm
+	data["fire_alarm"] = A?.fire
+	. += data
+	//! end
 
 /obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -555,7 +568,42 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	. = ..()
 	if(.)
 		return
-	#warn all the other checks..
+
+	// unlocked actions
+	switch(action)
+		if("rcon")
+			//! warning: legacy
+			var/attempted_rcon_setting = text2num(params["rcon"])
+			switch(attempted_rcon_setting)
+				if(RCON_NO)
+					rcon_setting = RCON_NO
+				if(RCON_AUTO)
+					rcon_setting = RCON_AUTO
+				if(RCON_YES)
+					rcon_setting = RCON_YES
+			return TRUE
+		if("temperature")
+			//! warning: legacy
+			var/list/selected = tlv_temperature
+			var/max_temperature = min(selected[3] - T0C, MAX_TEMPERATURE)
+			var/min_temperature = max(selected[2] - T0C, MIN_TEMPERATURE)
+			var/input_temperature = tgui_input_number(usr, "What temperature would you like the system to mantain? (Capped between [min_temperature] and [max_temperature]C)", "Thermostat Controls", (target_temperature - T0C), max_temperature, min_temperature)
+			if(isnum(input_temperature))
+				if(input_temperature > max_temperature || input_temperature < min_temperature)
+					to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C")
+				else
+					target_temperature = input_temperature + T0C
+			return TRUE
+
+	// Account for remote users here.
+	// Yes, this is kinda snowflaky; however, I would argue it would be far more snowflakey
+	// to include "custom hrefs" and all the other bullshit that nano states have just for the
+	// like, two UIs, that want remote access to other UIs.
+	//! warning: legacy
+	if((locked && !issilicon(usr) && !istype(ui.state, /datum/ui_state/air_alarm_remote)) || (issilicon(usr) && aidisabled))
+		return
+
+	// locked actions
 	switch(action)
 		if("vent")
 			var/id = params["id"]
@@ -601,91 +649,38 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			var/mode = params["mode"]
 			apply_mode(mode)
 			return TRUE
+		if("tlv")
+			var/entry = params["entry"]
+			var/index = text2num(params["index"]) + 1
+			var/val = text2num(params["val"])
+			switch(entry)
+				if("pressure")
+				if("temperature")
+				else
+					var/group = global.gas_data.gas_group_by_name[entry]
+					if(group)
+					else
+			#warn impl
+		if("alarm")
+			//! warning: legacy
+			if(alarm_area.atmosalert(2, src))
+				apply_danger_level(2)
+			return TRUE
+		if("reset")
+			//! warning: legacy
+			atmos_reset()
+			return TRUE
+		if("lock")
+			//! warning: legacy
+			if(issilicon(usr) && !wires.is_cut(WIRE_IDSCAN))
+				locked = !locked
+			return TRUE
 
 #warn below
 
-/obj/machinery/air_alarm/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	var/list/data = list(
-		"locked" = locked,
-		"siliconUser" = issilicon(user),
-		"remoteUser" = !!ui.parent_ui,
-		"danger_level" = danger_level,
-		"target_temperature" = "[target_temperature - T0C]C",
-		"rcon" = rcon_setting,
-	)
-
-	var/area/A = get_area(src)
-	data["atmos_alarm"] = A?.atmosalm
-	data["fire_alarm"] = A?.fire
-
-	DECLARE_TLV_VALUES
-
-	if(!locked || issilicon(user) || data["remoteUser"])
-
-		var/list/selected
-		var/list/thresholds = list()
-
-		var/list/gas_names = list("oxygen", "carbon dioxide", "phoron", "other")
-		for(var/g in gas_names)
-			thresholds[++thresholds.len] = list("name" = g, "settings" = list())
-			selected = TLV[g]
-			for(var/i = 1, i <= 4, i++)
-				thresholds[thresholds.len]["settings"] += list(list("env" = g, "val" = i, "selected" = selected[i]))
-
-		selected = TLV["pressure"]
-		thresholds[++thresholds.len] = list("name" = "Pressure", "settings" = list())
-		for(var/i = 1, i <= 4, i++)
-			thresholds[thresholds.len]["settings"] += list(list("env" = "pressure", "val" = i, "selected" = selected[i]))
-
-		selected = TLV["temperature"]
-		thresholds[++thresholds.len] = list("name" = "Temperature", "settings" = list())
-		for(var/i = 1, i <= 4, i++)
-			thresholds[thresholds.len]["settings"] += list(list("env" = "temperature", "val" = i, "selected" = selected[i]))
-
-		data["thresholds"] = thresholds
-	return data
-
 /obj/machinery/air_alarm/ui_act(action, params, datum/tgui/ui)
-	if(..())
-		return TRUE
 
-	if(action == "rcon")
-		var/attempted_rcon_setting = text2num(params["rcon"])
-
-		switch(attempted_rcon_setting)
-			if(RCON_NO)
-				rcon_setting = RCON_NO
-			if(RCON_AUTO)
-				rcon_setting = RCON_AUTO
-			if(RCON_YES)
-				rcon_setting = RCON_YES
-		return TRUE
-
-	if(action == "temperature")
-		var/list/selected = TLV["temperature"]
-		var/max_temperature = min(selected[3] - T0C, MAX_TEMPERATURE)
-		var/min_temperature = max(selected[2] - T0C, MIN_TEMPERATURE)
-		var/input_temperature = tgui_input_number(usr, "What temperature would you like the system to mantain? (Capped between [min_temperature] and [max_temperature]C)", "Thermostat Controls", (target_temperature - T0C), max_temperature, min_temperature)
-		if(isnum(input_temperature))
-			if(input_temperature > max_temperature || input_temperature < min_temperature)
-				to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C")
-			else
-				target_temperature = input_temperature + T0C
-		return TRUE
-
-	// Account for remote users here.
-	// Yes, this is kinda snowflaky; however, I would argue it would be far more snowflakey
-	// to include "custom hrefs" and all the other bullshit that nano states have just for the
-	// like, two UIs, that want remote access to other UIs.
-	if((locked && !issilicon(usr) && !istype(ui.state, /datum/ui_state/air_alarm_remote)) || (issilicon(usr) && aidisabled))
-		return
-
-	var/device_id = params["id_tag"]
 	switch(action)
-		if("lock")
-			if(issilicon(usr) && !wires.is_cut(WIRE_IDSCAN))
-				locked = !locked
-				. = TRUE
 		if("threshold")
 			var/env = params["env"]
 
@@ -699,19 +694,6 @@ GLOBAL_LIST_EMPTY(air_alarms)
 				clamp_tlv_values(env, name)
 				// investigate_log(" treshold value for [env]:[name] was set to [value] by [key_name(usr)]",INVESTIGATE_ATMOS)
 				. = TRUE
-		if("mode")
-			mode = text2num(params["mode"])
-			// investigate_log("was turned to [get_mode_name(mode)] mode by [key_name(usr)]",INVESTIGATE_ATMOS)
-			apply_mode(usr)
-			. = TRUE
-		if("alarm")
-			if(alarm_area.atmosalert(2, src))
-				apply_danger_level(2)
-			. = TRUE
-		if("reset")
-			atmos_reset()
-			. = TRUE
-	update_icon()
 
 // This big ol' mess just ensures that TLV always makes sense. If you set the max value below the min value,
 // it'll automatically update all the other values to keep it sane.

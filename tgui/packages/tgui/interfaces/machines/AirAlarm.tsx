@@ -1,9 +1,8 @@
-import { round, toFixed } from 'common/math';
+import { round } from 'common/math';
 import { BooleanLike } from 'common/react';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../../backend';
-import { Box, Button, LabeledList, Section, Stack } from '../../components';
-import { getGasLabel, getGasColor } from '../../constants';
+import { Box, Button, LabeledList, NumberInput, Section, Stack } from '../../components';
 import { Window } from '../../layouts';
 import { AtmosAnalyzerResults, AtmosGasGroupFlags, AtmosGasID, GasContext } from '../common/Atmos';
 import { InterfaceLockNoticeBox } from '../common/InterfaceLockNoticeBox';
@@ -96,8 +95,8 @@ export const AirAlarm = (props, context) => {
   const { act, data } = useBackend<AirAlarmData>(context);
   const locked = data.locked && !data.siliconUser && !data.remoteUser;
   const localRaised = AirAlarmRaiseLookup[data.danger_level];
-  const pressureRaised = AirAlarmRaiseLookup[TLVCheck(data.environment.pressure, data.TLV['pressure'])];
-  const temperatureRaised = AirAlarmRaiseLookup[TLVCheck(data.environment.temperature, data.TLV['temperature'])];
+  const pressureRaised = AirAlarmRaiseLookup[TLVCheck(data.environment.pressure, data.pressureTLV)];
+  const temperatureRaised = AirAlarmRaiseLookup[TLVCheck(data.environment.temperature, data.temperatureTLV)];
   const temperatureRounded = round(data.environment.temperature, 2);
   return (
     <Window
@@ -120,7 +119,7 @@ export const AirAlarm = (props, context) => {
                 {
                   Object.entries(data.environment.gases).map(([k, v]) => {
                     const percent = v / data.environment.moles;
-                    const gasRaised = AirAlarmRaiseLookup[TLVCheck(v, data.TLV[k])];
+                    const gasRaised = AirAlarmRaiseLookup[TLVCheck(v, data.gasTLV[k])];
                     return (
                       <LabeledList.Item key={k}
                         label={data.environment.names[k] || k} color={gasRaised.color}>
@@ -208,7 +207,7 @@ const AIR_ALARM_ROUTES = {
   },
   thresholds: {
     title: 'Alarm Thresholds',
-    component: () => AirAlarmControlThresholds,
+    component: () => AirAlarmThresholdScreenWrapped,
   },
 };
 
@@ -426,13 +425,10 @@ const AirAlarmModeButton = (props: AirAlarmModeButtonProps) => {
   );
 };
 
+//* Thresholds / TLVs *//
 
-//  Thresholds
-// --------------------------------------------------------
-
-const AirAlarmControlThresholds = (props, context) => {
-  const { act, data } = useBackend<AirAlarmData>(context);
-  const { thresholds } = data;
+const AirAlarmThresholdScreenWrapped = (props, context) => {
+  const { data, act } = useBackend<AirAlarmData>(context);
   return (
     <table
       className="LabeledList"
@@ -447,26 +443,51 @@ const AirAlarmControlThresholds = (props, context) => {
         </tr>
       </thead>
       <tbody>
-        {thresholds.map(threshold => (
-          <tr key={threshold.name}>
-            <td className="LabeledList__label">
-              <span className={"color-" + getGasColor(threshold.name)}>
-                {getGasLabel(threshold.name)}
-              </span>
-            </td>
-            {threshold.settings.map(setting => (
-              <td key={setting.val}>
-                <Button
-                  content={toFixed(setting.selected, 2)}
-                  onClick={() => act('threshold', {
-                    env: setting.env,
-                    var: setting.val,
-                  })} />
-              </td>
-            ))}
-          </tr>
+        {(
+          <>
+            <AirAlarmTLVEntry name="Pressure" entry={data.pressureTLV}
+              setEntry={(val, index) => act('tlv', { entry: 'pressure', index: index, val: val })} />
+            <AirAlarmTLVEntry name="Temperature" entry={data.temperatureTLV}
+              setEntry={(val, index) => act('tlv', { entry: 'temperature', index: index, val: val })} />
+          </>
+        )}
+        {Object.entries(data.gasTLV).map(([id, tlv]) => (
+          <AirAlarmTLVEntry name={id} entry={tlv} key={id}
+            setEntry={(v, i) => act('tlv', { entry: id, index: i, val: v })} />
+        ))}
+        {Object.entries(data.groupTLV).map(([name, tlv]) => (
+          <AirAlarmTLVEntry name={name} entry={tlv} key={name}
+            setEntry={(v, i) => act('tlv', { entry: name, index: i, val: v })} />
         ))}
       </tbody>
     </table>
+  );
+};
+
+
+interface AirAlarmTLVEntryProps {
+  name: string;
+  entry: AirAlarmTLV;
+  setEntry: (val: number, index: number) => void;
+}
+
+const AirAlarmTLVEntry = (props: AirAlarmTLVEntryProps) => {
+  return (
+    <tr>
+      <td className="LabeledList__label">
+        <span>
+          {props.name}
+        </span>
+      </td>
+      {props.entry.map((val, i) => (
+        <td key={`${i}`}>
+          <NumberInput
+            value={val}
+            minValue={0}
+            maxValue={1000000}
+            onChange={(e, v) => props.setEntry(v, i)} />
+        </td>
+      ))}
+    </tr>
   );
 };
