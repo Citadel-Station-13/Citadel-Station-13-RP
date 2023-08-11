@@ -15,6 +15,7 @@
 
 	var/list/area/included = list(
 		/area/maintenance
+		/area/main_map/maintenance
 		)
 
 /datum/gm_action/swarm_boarder/set_up()
