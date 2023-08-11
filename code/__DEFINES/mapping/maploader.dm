@@ -1,5 +1,4 @@
-
-// Maploader bounds indices
+//* Maploader bounds indices
 #define MAP_MINX	1
 #define MAP_MINY	2
 #define MAP_MINZ	3
