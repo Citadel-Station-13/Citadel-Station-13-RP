@@ -621,6 +621,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"aSY" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_three)
 "aTj" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
@@ -905,13 +911,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/theatre)
-"bkG" = (
-/obj/machinery/light/no_nightshift{
-	dir = 4
-	},
-/obj/machinery/holoplant,
-/turf/simulated/floor/tiled/techfloor,
-/area/crew_quarters/sleep/cryo)
 "blr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -1463,9 +1462,8 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "bVq" = (
-/obj/machinery/door/airlock/maintenance,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/techmaint,
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
 /area/crew_quarters/sleep/cryo)
 "bVE" = (
 /obj/machinery/light/small,
@@ -1932,6 +1930,10 @@
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"cDY" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/techfloor,
+/area/main_map/maintenance/deck_three/starboard)
 "cEl" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor,
@@ -2113,6 +2115,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/aft/starboard)
+"cTY" = (
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three)
 "cUh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/carpet/bcarpet,
@@ -2210,6 +2215,12 @@
 "cYf" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/psych_ward)
+"cYw" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_three)
 "cYJ" = (
 /turf/simulated/floor/bluegrid,
 /area/ai)
@@ -2325,19 +2336,6 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_eva)
-"dhV" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/manifold/visible/red{
-	dir = 4
-	},
-/obj/machinery/meter,
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/space/basic,
-/area/space)
 "did" = (
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
@@ -2497,7 +2495,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/central_three)
 "duB" = (
-/obj/structure/ladder,
 /obj/structure/largecrate,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/aft/port)
@@ -2684,12 +2681,11 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/primary/central_three)
 "dFM" = (
-/obj/machinery/door/airlock/maintenance,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/techmaint,
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
 /area/medical/psych)
 "dGk" = (
 /obj/machinery/door/firedoor/glass,
@@ -2744,6 +2740,12 @@
 /obj/item/toy/plushie/squid/pink,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
+"dKK" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three/starboard)
 "dKO" = (
 /obj/machinery/computer/telecomms/server,
 /turf/simulated/floor/tiled/techmaint,
@@ -2946,9 +2948,6 @@
 /area/medical/morgue)
 "dZX" = (
 /obj/landmark/spawnpoint/latejoin/station/cryogenics,
-/obj/machinery/computer/cryopod{
-	pixel_y = 32
-	},
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
@@ -3203,18 +3202,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/aft/port)
-"ewJ" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 6
-	},
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/space/basic,
-/area/space)
 "ewM" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -3525,18 +3512,6 @@
 "eLi" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/psych_ward)
-"eLp" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 9
-	},
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/space/basic,
-/area/space)
 "eLB" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
@@ -3742,6 +3717,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/space)
+"faI" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three/forward/starboard)
 "fbj" = (
 /obj/machinery/shower{
 	dir = 4
@@ -4251,27 +4232,6 @@
 "fEk" = (
 /turf/simulated/wall,
 /area/rnd/research)
-"fEo" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass/security{
-	id_tag = "detdoor";
-	name = "Detective";
-	req_access = list(4)
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/space/basic,
-/area/space)
 "fEt" = (
 /obj/machinery/smartfridge/drying_rack,
 /turf/simulated/floor/tiled,
@@ -4763,30 +4723,6 @@
 "gaS" = (
 /turf/simulated/floor/tiled,
 /area/medical/psych)
-"gbb" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass/medical{
-	name = "Patient Psychiatric Ward A"
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "psyche-b-outer";
-	name = "Ward A";
-	opacity = 0
-	},
-/turf/space/basic,
-/area/space)
 "gbf" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -5741,6 +5677,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology)
+"his" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_three/forward/starboard)
 "hiZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -5870,11 +5816,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "hpe" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	id_tag = "psychewaiting";
+/obj/machinery/door/airlock/glass{
 	name = "Psyche Lobby Room"
 	},
-/obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled,
 /area/medical/psych)
 "hpl" = (
@@ -6552,6 +6496,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/test_area)
+"ihn" = (
+/obj/structure/ladder,
+/obj/structure/largecrate,
+/turf/simulated/floor/plating,
+/area/space)
 "ihq" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -7809,9 +7758,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/security/brig)
-"jGq" = (
-/turf/simulated/floor/tiled/steel_ridged,
-/area/crew_quarters/sleep/cryo)
 "jGU" = (
 /obj/machinery/telecomms/server/presets/service,
 /turf/simulated/floor/tiled/dark{
@@ -8279,6 +8225,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_three/aft/port)
+"kjI" = (
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/plating,
+/area/space)
 "kkD" = (
 /obj/machinery/vending/medical,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -8956,30 +8906,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/virologyaccess)
-"lfX" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass/medical{
-	name = "Patient Psychiatric Ward B"
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "psyche-a-outer";
-	name = "Ward A";
-	opacity = 0
-	},
-/turf/space/basic,
-/area/space)
 "lgI" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 6
@@ -9230,6 +9156,12 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/rdoffice)
+"lyL" = (
+/obj/machinery/door/airlock/glass{
+	name = "Cryogenic Storage"
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/crew_quarters/sleep/cryo)
 "lyN" = (
 /turf/simulated/wall,
 /area/space)
@@ -9292,6 +9224,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/primary/central_three)
+"lCq" = (
+/obj/machinery/door/airlock/glass{
+	name = "Psyche Lobby Room"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych)
 "lDb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -9473,13 +9411,6 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
-"lOT" = (
-/obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
-/turf/simulated/floor/tiled,
-/area/engineering/engine_monitoring)
 "lPO" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/test_area)
@@ -9884,6 +9815,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/starboard)
+"mre" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three/forward/starboard)
 "mrh" = (
 /obj/structure/sign/department/telecoms,
 /turf/simulated/wall/r_wall/prepainted/command,
@@ -10235,15 +10172,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
-"mKD" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/space/basic,
-/area/space)
 "mKU" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
@@ -10538,6 +10466,12 @@
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/airless,
 /area/space)
+"ngb" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/main_map/maintenance/deck_three/forward/starboard)
 "ngi" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10673,6 +10607,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
+"nni" = (
+/turf/simulated/floor/tiled,
+/area/main_map/maintenance/deck_three/forward/starboard)
 "nnl" = (
 /turf/simulated/floor/wood,
 /area/tether/exploration/pilot_office)
@@ -11267,6 +11204,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/port)
+"ofJ" = (
+/obj/structure/largecrate,
+/turf/simulated/floor/plating,
+/area/space)
 "ofT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11623,6 +11564,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"owK" = (
+/obj/random/obstruction,
+/turf/simulated/floor/plating,
+/area/space)
 "oxC" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "0-8"
@@ -13034,6 +12979,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai/foyer)
+"qer" = (
+/obj/structure/catwalk,
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three)
 "qeA" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/ywflowers,
@@ -13287,6 +13236,9 @@
 /obj/item/binoculars,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
+"qts" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/main_map/maintenance/deck_three/starboard)
 "qtu" = (
 /obj/structure/railing/grey,
 /turf/simulated/open,
@@ -13475,6 +13427,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/rnd/xenobiology)
+"qGI" = (
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/plating,
+/area/space)
 "qHf" = (
 /obj/map_helper/network_builder/power_cable/auto{
 	cable_color = "Green"
@@ -13546,8 +13502,7 @@
 /turf/simulated/floor/water/pool,
 /area/crew_quarters/pool)
 "qMa" = (
-/obj/machinery/door/airlock/multi_tile/metal/mait,
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_three/aft/starboard)
 "qMu" = (
@@ -13747,6 +13702,10 @@
 /obj/structure/morgue/crematorium,
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
+"req" = (
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_three)
 "rfu" = (
 /obj/structure/bookcase,
 /obj/item/book/bundle/custom_library/nonfiction,
@@ -14145,6 +14104,10 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_three)
+"rLf" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/space)
 "rMb" = (
 /obj/structure/closet/secure_closet/brig{
 	id = "Cell 3";
@@ -14766,6 +14729,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/central_three)
+"sHS" = (
+/obj/structure/catwalk,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three)
 "sHT" = (
 /obj/machinery/shower{
 	dir = 4
@@ -15098,18 +15068,6 @@
 "sUg" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/rdoffice)
-"sVe" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/portables_connector{
-	dir = 4
-	},
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/space/basic,
-/area/space)
 "sVg" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -15353,8 +15311,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/gravity_gen)
 "tme" = (
-/obj/machinery/door/airlock/maintenance/engi,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "tmg" = (
@@ -15442,6 +15400,12 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/aft/port)
+"tpA" = (
+/obj/machinery/computer/cryopod{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/crew_quarters/sleep/cryo)
 "tpO" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -15796,6 +15760,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
+"tPq" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/space)
 "tPt" = (
 /obj/machinery/door/firedoor{
 	dir = 1
@@ -15875,18 +15845,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/hydroponics/garden)
-"tRV" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/space/basic,
-/area/space)
 "tSs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -16033,8 +15991,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology)
 "uax" = (
+/obj/structure/catwalk,
+/obj/structure/railing{
+	dir = 1
+	},
 /obj/structure/ladder/updown,
-/turf/simulated/floor/plating,
+/turf/simulated/open,
 /area/main_map/maintenance/deck_three)
 "uaN" = (
 /obj/structure/flora/ausbushes/reedbush,
@@ -17073,20 +17035,6 @@
 "vkR" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/maintenance/library)
-"vlg" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/portables_connector{
-	dir = 1;
-	name = "Toxins Input Connector"
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/turf/space/basic,
-/area/space)
 "vll" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -17277,6 +17225,10 @@
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rnd/research)
+"vyn" = (
+/obj/structure/railing,
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three/starboard)
 "vzf" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 10
@@ -17409,7 +17361,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/techmaint,
+/turf/simulated/floor/tiled,
 /area/main_map/maintenance/deck_three/forward/starboard)
 "vIq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -17662,16 +17614,6 @@
 "vWE" = (
 /turf/simulated/floor/plating,
 /area/space)
-"vXw" = (
-/obj/machinery/door/airlock/multi_tile/metal{
-	name = "Cryogenic Storage"
-	},
-/obj/machinery/door/firedoor/multi_tile,
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/crew_quarters/sleep/cryo)
 "vXK" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -18603,25 +18545,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/forward/starboard)
-"xgP" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass/medical{
-	name = "Psychiatric Play-Area Access"
-	},
-/obj/machinery/door/blast/regular{
-	id = "psyche-doc-access";
-	name = "Play Area Access"
-	},
-/obj/effect/floor_decal/corner/beige{
-	dir = 9
-	},
-/turf/space/basic,
-/area/space)
 "xgU" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -18745,6 +18668,12 @@
 "xmB" = (
 /turf/simulated/wall,
 /area/main_map/maintenance/deck_three/port)
+"xmF" = (
+/obj/machinery/light/no_nightshift{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/main_map/maintenance/deck_three)
 "xnd" = (
 /obj/machinery/door/airlock/medical{
 	name = "Morgue";
@@ -19250,22 +19179,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/morgue)
-"xQv" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass/medical{
-	name = "Psychiatric Play-Area Access"
-	},
-/turf/space/basic,
-/area/space)
 "xRd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -19589,25 +19502,6 @@
 	},
 /obj/machinery/power/apc/direction_bump/south,
 /turf/simulated/floor/reinforced,
-/area/space)
-"ylj" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
-/obj/machinery/camera/network/research,
-/obj/effect/floor_decal/industrial/danger/corner{
-	dir = 8
-	},
-/turf/space/basic,
 /area/space)
 "ylv" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -24087,8 +23981,8 @@ dAV
 dAV
 dAV
 dAV
-ylj
-tRV
+dAV
+dAV
 dAV
 dAV
 dAV
@@ -29523,7 +29417,7 @@ dAV
 dAV
 dAV
 dAV
-sVe
+dAV
 dAV
 dAV
 dAV
@@ -29717,7 +29611,7 @@ dAV
 dAV
 dAV
 dAV
-dhV
+dAV
 dAV
 dAV
 dAV
@@ -29911,7 +29805,7 @@ dAV
 dAV
 dAV
 dAV
-mKD
+dAV
 dAV
 dAV
 dAV
@@ -30105,7 +29999,7 @@ dAV
 dAV
 dAV
 dAV
-vlg
+dAV
 dAV
 dAV
 dAV
@@ -30299,7 +30193,7 @@ dAV
 dAV
 dAV
 dAV
-ewJ
+dAV
 dAV
 dAV
 dAV
@@ -30439,8 +30333,8 @@ lsy
 lsy
 lsy
 lsy
-lsy
 iDP
+lsy
 lsy
 lsy
 lsy
@@ -30493,7 +30387,7 @@ dAV
 dAV
 dAV
 dAV
-eLp
+dAV
 dAV
 dAV
 dAV
@@ -30607,9 +30501,9 @@ fxX
 fxX
 fxX
 bsG
-jMZ
-sVT
 vWE
+ofJ
+ihn
 qbh
 kZq
 cSu
@@ -30629,13 +30523,13 @@ edJ
 qbh
 xWr
 xWr
-xWr
-xWr
-xWr
-xWr
 cmP
-jdi
-jdi
+cTY
+cTY
+cTY
+sHS
+qer
+xWr
 xWr
 lsy
 tux
@@ -30801,7 +30695,7 @@ cYJ
 lhH
 fxX
 bsG
-jMZ
+owK
 qbh
 qbh
 qbh
@@ -30823,13 +30717,13 @@ gTc
 qbh
 xWr
 xWr
+req
+cTY
+cTY
+cTY
+sHS
+qer
 xWr
-xWr
-xWr
-xWr
-cmP
-jdi
-jdi
 xWr
 lsy
 dax
@@ -30877,13 +30771,13 @@ vva
 vva
 vva
 vva
-vva
-vva
-vva
-vva
-vva
-vva
-vva
+dAV
+dAV
+dAV
+dAV
+dAV
+dAV
+dAV
 vva
 vva
 vva
@@ -30995,7 +30889,7 @@ fxX
 cYJ
 fxX
 bsG
-jMZ
+vWE
 qbh
 cgd
 ian
@@ -31017,13 +30911,13 @@ gTc
 qbh
 xWr
 xWr
-cmP
-cmP
-vUL
-cmP
-cmP
-jdi
-jdi
+req
+cTY
+cTY
+cTY
+sHS
+qer
+xWr
 xWr
 lsy
 lsy
@@ -31189,7 +31083,7 @@ fxX
 bHo
 fxX
 bsG
-dff
+owK
 qbh
 qbh
 qbh
@@ -31212,10 +31106,10 @@ qbh
 xWr
 xWr
 cmP
-jdi
-jdi
-jdi
-jdi
+cTY
+cTY
+cTY
+sHS
 jdi
 jdi
 jdi
@@ -31383,8 +31277,8 @@ gwi
 xDS
 fxX
 bsG
-dff
-sVT
+ofJ
+vWE
 vWE
 vWE
 lyN
@@ -31393,7 +31287,7 @@ tbw
 eZP
 vBD
 sdT
-lOT
+jiS
 wSL
 wSL
 wSL
@@ -31406,14 +31300,14 @@ cmP
 xWr
 xWr
 cmP
+cTY
+cTY
+cTY
+sHS
 jdi
 jdi
 jdi
-jdi
-jdi
-jdi
-jdi
-upO
+qMa
 upO
 uLZ
 upO
@@ -31577,11 +31471,11 @@ bHo
 bHo
 aeP
 bsG
-dff
-sVT
+qGI
 vWE
 vWE
-lyN
+vWE
+rLf
 btL
 nlf
 cHo
@@ -31600,12 +31494,12 @@ cmP
 cmP
 cmP
 cmP
-jdi
-jdi
-xWr
+cTY
+cTY
+cTY
 uax
-pxL
-xWr
+aSY
+jdi
 xWr
 elw
 udW
@@ -31771,8 +31665,8 @@ bHo
 wBm
 wBQ
 bsG
-dff
-sVT
+kjI
+vWE
 vWE
 vWE
 lyN
@@ -31794,12 +31688,12 @@ wSL
 wSL
 wSL
 cmP
-jdi
-iYq
+cYw
+cYw
 cmP
 cmP
-cmP
-cmP
+hfb
+hfb
 elw
 elw
 elw
@@ -31990,10 +31884,10 @@ wSL
 xWr
 jdi
 jdi
-cmP
-xWr
-xWr
-xWr
+jdi
+jdi
+jdi
+jdi
 elw
 udW
 udW
@@ -32184,10 +32078,10 @@ wSL
 xWr
 jdi
 jdi
-cmP
-xWr
-xWr
-xWr
+jdi
+jdi
+jdi
+jdi
 elw
 udW
 udW
@@ -33361,9 +33255,9 @@ pVn
 pVn
 pVn
 fMH
-lZs
-lZs
-lZs
+qts
+dKK
+vyn
 hfE
 lZs
 lZs
@@ -33555,9 +33449,9 @@ ygf
 ygf
 kIE
 fMH
-lZs
-lZs
-lZs
+qts
+dKK
+vyn
 hfE
 lZs
 lWN
@@ -33742,16 +33636,16 @@ dTd
 luo
 rFz
 rFz
-vXw
+lyL
 fYf
 fAD
 oZS
 oZS
 sba
-fMH
-lZs
-lZs
-lZs
+lyL
+qts
+qts
+cDY
 hfE
 lZs
 lWN
@@ -33934,18 +33828,18 @@ cmP
 fMH
 fMH
 fMH
-bkG
+qBi
 rFz
-jGq
+bVq
 hBm
 rFz
 rFz
 rFz
 jtW
 bVq
-lWN
-lWN
-lZs
+qts
+qts
+qts
 hfE
 hfE
 lxn
@@ -34128,18 +34022,18 @@ jdi
 xWr
 xWr
 fMH
-fMH
-fMH
-fMH
+tpA
+rFz
+lyL
 dZX
 gev
 gev
 gev
 gEz
-fMH
-lZs
-lWN
-lZs
+lyL
+qts
+qts
+qts
 hfE
 lZs
 lWN
@@ -34321,9 +34215,9 @@ jdi
 jdi
 xWr
 xWr
-xWr
-xWr
-fMH
+wnl
+xmF
+rFz
 fMH
 bOG
 bOG
@@ -34331,9 +34225,9 @@ bOG
 bOG
 lrm
 fMH
-lZs
-lWN
-lZs
+qts
+qts
+qts
 hfE
 lZs
 lWN
@@ -34514,10 +34408,10 @@ cmP
 xWr
 jdi
 xWr
-xWr
-xWr
-xWr
 xav
+wnl
+wnl
+wnl
 fMH
 ksn
 ksn
@@ -34525,9 +34419,9 @@ ksn
 ksn
 ksn
 fMH
-lZs
-lWN
-irk
+qts
+qts
+cDY
 hfE
 lZs
 lWN
@@ -39954,7 +39848,7 @@ kew
 puq
 tkv
 fyk
-dff
+tPq
 dff
 fyk
 fyk
@@ -40347,7 +40241,7 @@ llX
 fyk
 fyk
 fyk
-wRI
+his
 dLT
 ana
 vWB
@@ -40539,11 +40433,11 @@ fyk
 dff
 bLS
 fyk
-hzm
-ikB
-wRI
+nni
+nni
+ngb
 dLT
-ana
+cFp
 xrC
 wbz
 wbz
@@ -40733,8 +40627,8 @@ fyk
 dff
 sVT
 fyk
-hzm
-hzm
+nni
+nni
 vIc
 dFM
 crZ
@@ -40925,12 +40819,12 @@ izT
 hzm
 fyk
 dff
-dff
-fyk
-hzm
-hzm
-hzm
-dLT
+sVT
+mre
+mre
+nni
+nni
+lCq
 ana
 gJI
 hpe
@@ -41119,15 +41013,15 @@ hzm
 hzm
 fyk
 dff
-dff
-fyk
-fyk
-fyk
-hzm
-dLT
-cFp
+sVT
+faI
+faI
+nni
+nni
+lCq
+ana
 gJI
-gaS
+hpe
 gaS
 gaS
 uCd
@@ -41313,11 +41207,11 @@ rJq
 kew
 fyk
 dff
-dff
+sVT
 fyk
-fyk
-fyk
-rJq
+nni
+nni
+nni
 dLT
 ana
 gJI
@@ -41509,9 +41403,9 @@ fyk
 dff
 dff
 fyk
-fyk
-fyk
-hzm
+nni
+nni
+nni
 dLT
 nBf
 jyp
@@ -41703,9 +41597,9 @@ fyk
 dff
 dff
 fyk
-hzm
-hzm
-hzm
+nni
+nni
+nni
 dLT
 gAo
 fZf
@@ -41736,7 +41630,7 @@ dAV
 dAV
 dAV
 dAV
-xgP
+dAV
 dAV
 dAV
 dAV
@@ -41898,8 +41792,8 @@ dff
 dff
 fyk
 hzm
-hzm
-hzm
+wJl
+wJl
 hzm
 gAo
 smq
@@ -42092,8 +41986,8 @@ dff
 dff
 fyk
 hzm
-hzm
-hzm
+wJl
+wJl
 hzm
 gAo
 uOQ
@@ -42121,7 +42015,7 @@ vva
 vva
 dAV
 dAV
-xQv
+dAV
 dAV
 dAV
 dAV
@@ -44650,9 +44544,9 @@ dAV
 dAV
 dAV
 dAV
-gbb
 dAV
-lfX
+dAV
+dAV
 dAV
 dAV
 vva
@@ -45195,8 +45089,8 @@ vva
 vva
 vva
 vva
-vva
-vva
+dAV
+dAV
 vva
 vva
 vva
@@ -45390,7 +45284,7 @@ dAV
 dAV
 dAV
 dAV
-fEo
+dAV
 dAV
 dAV
 vva

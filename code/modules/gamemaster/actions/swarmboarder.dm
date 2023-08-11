@@ -14,7 +14,7 @@
 	)
 
 	var/list/area/included = list(
-		/area/maintenance
+		/area/maintenance,
 		/area/main_map/maintenance
 		)
 
