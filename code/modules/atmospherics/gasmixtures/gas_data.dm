@@ -207,8 +207,8 @@ GLOBAL_REAL(gas_data, /datum/gas_data) = new
 	.["filterableGases"] = filterable_ids
 	var/filterableGroups = GAS_GROUPS_FILTERABLE
 	.["groupNames"] = global.gas_group_names
-	for(var/id in (ids || gases))
-		var/datum/gas/instance = gases[id]
+	for(var/id in (ids || src.gases))
+		var/datum/gas/instance = src.gases[id]
 		if(isnull(instance))
 			continue
 		var/list/assembled = list(

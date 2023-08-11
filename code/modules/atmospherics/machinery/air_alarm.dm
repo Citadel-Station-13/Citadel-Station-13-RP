@@ -633,7 +633,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 					send_signal(id, list("power" = !machine.use_power))
 			return TRUE
 		if("scrubber")
-			var/id = params["scrubber"]
+			var/id = params["id"]
 			var/obj/machinery/atmospherics/component/unary/vent_scrubber/machine = registered_area.vent_scrubber_by_id(id)
 			if(isnull(machine) || !machine.controllable_from_alarm)
 				return TRUE

@@ -127,6 +127,7 @@ export const AtmosFilterList = (props: AtmosFilterListProps) => {
     <Section {...props}>
       <LabeledList>
         <LabeledList.Item label="Gases">
+          {JSON.stringify(props.gasContext)}
           {props.gasContext.filterableGases.map((id) => (
             <Button.Checkbox
               key={id}

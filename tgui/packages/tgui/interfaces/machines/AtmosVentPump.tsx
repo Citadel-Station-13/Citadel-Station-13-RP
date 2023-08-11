@@ -10,8 +10,8 @@ import { Window } from "../../layouts";
 
 export enum AtmosVentPumpPressureChecks {
   None = 0,
-  Internal = (1<<0),
-  External = (1<<1),
+  External = (1<<0),
+  Internal = (1<<1),
 }
 
 export interface AtmosVentPumpState {

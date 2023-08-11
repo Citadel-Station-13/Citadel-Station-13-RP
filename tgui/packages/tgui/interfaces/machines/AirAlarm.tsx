@@ -22,12 +22,12 @@ enum AirAlarmMode {
 
 const AirAlarmModes: [AirAlarmMode, string, string | undefined][] = [
   [AirAlarmMode.Scrub, "Filtering - Maintain area atmospheric integrity", undefined],
-  [AirAlarmMode.Contaminated, "Contaminated - Rapidly scrub out contaminants while maintaining atmosphere", undefined],
-  [AirAlarmMode.Replace, "Replace - Siphons air while replacement", undefined],
-  [AirAlarmMode.Cycle, "Cycle - Siphon air out of the room before replacing.", "danger"],
-  [AirAlarmMode.Fill, "Fill - Fill room with air without scrubbing.", undefined],
-  [AirAlarmMode.Siphon, "Siphon - Turn off vents and siphon air out of the room", "danger"],
-  [AirAlarmMode.Panic, "Panic Siphon - Turns off vents, siphon all air out of the room quickly", "danger"],
+  [AirAlarmMode.Contaminated, "Contaminated - Rapidly scrub out contaminants", undefined],
+  [AirAlarmMode.Replace, "Replace - Siphons air while replacing", undefined],
+  [AirAlarmMode.Cycle, "Cycle - Fully siphon before replacing", "danger"],
+  [AirAlarmMode.Fill, "Fill - Fill without scrubbing.", undefined],
+  [AirAlarmMode.Siphon, "Siphon - Drain air from room", "danger"],
+  [AirAlarmMode.Panic, "Panic Siphon - Quickly drain air from room", "danger"],
 ];
 
 enum AirAlarmRaise {
@@ -222,6 +222,7 @@ const AirAlarmControl = (props, context) => {
   const Component = route.component();
   return (
     <Section
+      fill
       title={route.title}
       buttons={screen && (
         <Button
@@ -437,7 +438,7 @@ const AirAlarmThresholdScreenWrapped = (props, context) => {
   return (
     <table
       className="LabeledList"
-      style={{ width: '100%' }}>
+      style={{ width: '100%', "margin-left": "2.5px", "margin-right": "2.5px" }}>
       <thead>
         <tr>
           <td />
@@ -487,7 +488,8 @@ const AirAlarmTLVEntry = (props: AirAlarmTLVEntryProps) => {
       {props.entry.map((val, i) => (
         <td key={`${i}`}>
           <NumberInput
-            value={val}
+            value={round(val, 2)}
+            width="60px"
             minValue={0}
             maxValue={1000000}
             onChange={(e, v) => props.setEntry(v, i)} />
