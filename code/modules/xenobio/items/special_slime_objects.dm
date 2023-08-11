@@ -11,7 +11,7 @@
 	desc = "A complex, organic knot of jelly and crystalline particles. This one looks like it's in a dormant state"
 	icon_state = "core"
 	description_info = "Use in your hand to attempt to revive Promethean. It may take a few tries (It puts a request for ghost to become the prometheon)"
-	var/searching = 0
+	searching = 0
 
 /obj/item/slime_cube/attack_self(mob/user)
 	. = ..()
