@@ -12086,8 +12086,8 @@
 /obj/item/reagent_scanner,
 /obj/item/healthanalyzer,
 /obj/item/geiger_counter,
-/obj/item/plant_analyzer,
-/obj/item/atmos_analyzer,
+/obj/item/analyzer/plant_analyzer,
+/obj/item/analyzer,
 /obj/item/t_scanner,
 /obj/machinery/camera/network/engineering{
 	dir = 8
