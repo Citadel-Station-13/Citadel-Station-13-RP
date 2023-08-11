@@ -14928,8 +14928,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8;
-	scrubbing_gas = list(/datum/gas/carbon_dioxide)
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tcommsat/entrance)
