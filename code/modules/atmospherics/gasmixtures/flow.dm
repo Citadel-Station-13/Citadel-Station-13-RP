@@ -15,8 +15,8 @@
 
 	var/specific_power = calculate_specific_power(source, sink) / ATMOS_ABSTRACT_PUMP_EFFICIENCY
 	limit_moles = isnull(limit_moles)? source.total_moles : min(limit_moles, source.total_moles)
-	if(!isnull(limit_power))
-		limit_moles = min(limit_moles, specific_power / limit_power)
+	if(!isnull(limit_power) && (specific_power > 0))
+		limit_moles = min(limit_moles, limit_power / specific_power)
 
 	if(limit_moles < MINIMUM_MOLES_TO_PUMP)
 		return
@@ -67,7 +67,7 @@
 
 	// limit by both moles and power
 	limit_moles = isnull(limit_moles)? total_filterable_moles : min(limit_moles, total_filterable_moles)
-	if(!isnull(limit_power))
+	if(!isnull(limit_power) && (total_specific_power > 0))
 		limit_moles = min(limit_moles, limit_power / total_specific_power)
 
 	// unlike in the other procs, ratio here is the amount we can filter vs the amount there is to filter
@@ -133,7 +133,7 @@
 
 	// limit by both moles and power
 	var/limit_moles = isnull(limit_flow)? total_filterable_moles : min(max(mole_boost, total_filterable_moles * (limit_flow / source.volume)), total_filterable_moles)
-	if(!isnull(limit_power))
+	if(!isnull(limit_power) && (total_specific_power > 0))
 		limit_moles = min(limit_moles, limit_power / total_specific_power)
 
 	// unlike in the other procs, ratio here is the amount we can filter vs the amount there is to filter
@@ -204,7 +204,7 @@
 
 	// limit
 	limit_moles = isnull(limit_moles)? source.total_moles : min(limit_moles, source.total_moles)
-	if(!isnull(limit_power))
+	if(!isnull(limit_power) && (total_specific_power > 0))
 		limit_moles = min(limit_moles, limit_power / total_specific_power)
 
 	var/ratio = limit_moles / source.total_moles
@@ -263,7 +263,7 @@
 
 	// limit
 	limit_moles = isnull(limit_moles)? source.total_moles : min(limit_moles, source.total_moles)
-	if(!isnull(limit_power))
+	if(!isnull(limit_power) && (total_specific_power > 0))
 		limit_moles = min(limit_moles, limit_power / total_specific_power)
 
 	var/ratio = limit_moles / source.total_moles
@@ -329,7 +329,7 @@
 
 	// limit
 	limit_moles = isnull(limit_moles)? source.total_moles : min(limit_moles, source.total_moles)
-	if(!isnull(limit_power))
+	if(!isnull(limit_power) && (total_specific_power > 0))
 		limit_moles = min(limit_moles, limit_power / total_specific_power)
 
 	var/ratio = limit_moles / source.total_moles

@@ -716,3 +716,13 @@ var/list/ghostteleportlocs = list()
 	var/list/old = vent_scrubbers.Copy()
 	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/instance in old)
 		register_scrubber(instance)
+
+/area/proc/vent_pump_by_id(id)
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in vent_pumps)
+		if(pump.id_tag == id)
+			return pump
+
+/area/proc/vent_scrubber_by_id(id)
+	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in vent_scrubbers)
+		if(scrubber.id_tag == id)
+			return scrubber

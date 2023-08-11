@@ -352,7 +352,7 @@
 		var/moles = gases[id]
 		if(moles < v[GAS_VISUAL_INDEX_THRESHOLD])
 			continue
-		. += overlay_cache[min(round(moles * v[GAS_VISUAL_INDEX_FACTOR]) + 1, GAS_VISUAL_STEP_MAX)]
+		. += overlay_cache[id][min(round(moles * v[GAS_VISUAL_INDEX_FACTOR]) + 1, GAS_VISUAL_STEP_MAX)]
 	return length(.)? . : null
 
 //Equalizes a list of gas mixtures.  Used for pipe networks.

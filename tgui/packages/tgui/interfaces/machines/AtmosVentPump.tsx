@@ -48,11 +48,10 @@ interface AtmosVentPumpControlProps extends SectionProps {
  */
 export const AtmosVentPumpControl = (props: AtmosVentPumpControlProps) => {
   return (
-    <Section buttons={(
+    <Section {...props} buttons={(
       <Button icon={props.state.power? 'power-off' : 'times'}
         selected={props.state.power} content={props.state.power? 'On' : 'Off'}
-        onClick={() => props.powerToggle?.(!props.state.power)}
-        {...props} />
+        onClick={() => props.powerToggle?.(!props.state.power)} />
     )}>
       <LabeledList>
         <LabeledList.Item label="Mode">

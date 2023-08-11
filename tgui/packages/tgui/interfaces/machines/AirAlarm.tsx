@@ -101,7 +101,8 @@ export const AirAlarm = (props, context) => {
   return (
     <Window
       width={440}
-      height={650}>
+      height={650}
+      scrollable>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
@@ -144,11 +145,15 @@ export const AirAlarm = (props, context) => {
               </LabeledList>
             </Section>
           </Stack.Item>
+          <Stack.Item>
+            <AirAlarmUnlockedControl />
+          </Stack.Item>
+          <Stack.Item grow>
+            {!locked && (
+              <AirAlarmControl />
+            )}
+          </Stack.Item>
         </Stack>
-        <AirAlarmUnlockedControl />
-        {!locked && (
-          <AirAlarmControl />
-        )}
       </Window.Content>
     </Window>
   );

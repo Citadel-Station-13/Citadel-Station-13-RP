@@ -10,7 +10,7 @@
 	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
 	var/gas_flags = GAS_FLAG_FILTERABLE
 	/// gas group - flag
-	var/gas_groups = GAS_GROUP_UNKNOWN
+	var/gas_groups = GAS_GROUP_OTHER
 
 	//* physics
 	/// Specific heat in J/(mol*K).

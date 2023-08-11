@@ -531,7 +531,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		var/list/returned = pump.ui_vent_data()
 		returned["name"] = pump.name
 		vents[pump.id_tag] = returned
-	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_pumps)
+	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
 		var/list/returned = scrubber.ui_scrubber_data()
 		returned["name"] = scrubber.name
 		scrubbers[scrubber.id_tag] = returned
@@ -556,6 +556,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 /obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	.["gasContext"] = global.gas_data.tgui_gas_context()
 	.["gasTLV"] = tlv_ids
 	.["groupTLV"] = tlv_groups
 	.["pressureTLV"] = tlv_pressure
@@ -612,7 +613,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	switch(action)
 		if("vent")
 			var/id = params["id"]
-			var/obj/machinery/atmospherics/component/unary/vent_pump/machine = registered_area.vent_pumps[id]
+			var/obj/machinery/atmospherics/component/unary/vent_pump/machine = registered_area.vent_pump_by_id(id)
 			if(isnull(machine) || !machine.controllable_from_alarm)
 				return TRUE
 			var/command = params["command"]
@@ -633,7 +634,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			return TRUE
 		if("scrubber")
 			var/id = params["scrubber"]
-			var/obj/machinery/atmospherics/component/unary/vent_scrubber/machine = registered_area.vent_scrubbers[id]
+			var/obj/machinery/atmospherics/component/unary/vent_scrubber/machine = registered_area.vent_scrubber_by_id(id)
 			if(isnull(machine) || !machine.controllable_from_alarm)
 				return TRUE
 			var/command = params["command"]
