@@ -1805,7 +1805,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "eo" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 4;
 	name = "High Power Gas filter";
 	power_rating = 15000;
@@ -2634,7 +2634,7 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
-/obj/item/analyzer,
+/obj/item/atmos_analyzer,
 /obj/machinery/camera/network/research_outpost{
 	dir = 1
 	},
@@ -3182,7 +3182,7 @@
 /obj/machinery/camera/network/research_outpost{
 	dir = 8
 	},
-/obj/item/analyzer,
+/obj/item/atmos_analyzer,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "gA" = (
@@ -3831,9 +3831,8 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "hC" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
-	filter_type = 0;
-	filtered_out = list("phoron")
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
+	filtering = /datum/gas/phoron
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
@@ -4011,9 +4010,8 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "hT" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
-	filter_type = 3;
-	filtered_out = list("carbon_dioxide")
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
+	filtering = /datum/gas/carbon_dioxide
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
@@ -4173,9 +4171,8 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "in" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
-	filter_type = 4;
-	filtered_out = list("nitrous_oxide")
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
+	filtering = /datum/gas/nitrous_oxide
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)

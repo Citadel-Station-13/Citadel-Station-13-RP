@@ -13,7 +13,7 @@
 
 	tgui_interface = "AtmosTrinaryFilter"
 
-	/// target gas id, or groups
+	/// target gas id, or groups; can be type on init.
 	var/filtering
 	// todo: put flow rate at component level
 	/// flow rate in L
@@ -26,6 +26,9 @@
 	air1.volume = ATMOS_DEFAULT_VOLUME_FILTER
 	air2.volume = ATMOS_DEFAULT_VOLUME_FILTER
 	air3.volume = ATMOS_DEFAULT_VOLUME_FILTER
+	if(ispath(filtering))
+		var/datum/gas/casted = filtering
+		filtering = initial(casted.id)
 
 /obj/machinery/atmospherics/component/trinary/filter/update_icon_state()
 	if(mirrored)

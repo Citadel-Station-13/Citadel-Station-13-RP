@@ -10372,7 +10372,7 @@
 "Is" = (
 /obj/structure/table/reinforced,
 /obj/item/material/minihoe,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
