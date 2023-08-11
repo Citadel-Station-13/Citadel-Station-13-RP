@@ -102,7 +102,7 @@
 
 /datum/gas/ammonia
 	id = GAS_ID_AMMONIA
-	name = "ammonia"
+	name = "Ammonia"
 	specific_heat = 20
 	molar_mass = 0.017
 	//gas_symbol_html = "NH<sub>3</sub>"
@@ -117,7 +117,7 @@
 
 /datum/gas/xenon
 	id = GAS_ID_XENON
-	name = "xenon"
+	name = "Xenon"
 	specific_heat = 3
 	molar_mass = 0.054
 	//gas_symbol_html = "Xe"

@@ -15,6 +15,7 @@ interface CollapsibleProps extends BoxProps {
   title?: string | InfernoNode;
   open?: BooleanLike;
   captureKeys?: BooleanLike;
+  more?: InfernoNode;
 }
 
 interface CollapsibleState {
@@ -44,8 +45,40 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
       buttons,
       ...rest
     } = props;
-    return (
-      <Box>
+    return props.more? (
+      <Box {...props}>
+        <div className="Collapsible__alt">
+          <div className="Collapsible__alt-more">
+            {props.more}
+          </div>
+          <div className="Collapsible__alt-head">
+            <div className="Collapsible__toggle">
+              <Button
+                captureKeys={props.captureKeys === undefined? false : props.captureKeys}
+                color={color}
+                selected={!!props.more && open}
+                icon={open ? 'chevron-down' : 'chevron-right'}
+                onClick={() => this.setState({ open: !open })}
+                height="100%"
+                {...rest}>
+                {title}
+              </Button>
+            </div>
+            {buttons && (
+              <div className="Collapsible__buttons">
+                {buttons}
+              </div>
+            )}
+          </div>
+        </div>
+        {open && (
+          <div className="Collapsible__content">
+            {children}
+          </div>
+        )}
+      </Box>
+    ): (
+      <Box {...props}>
         <div className="Collapsible">
           <div className="Collapsible__head">
             <div className="Collapsible__toggle">

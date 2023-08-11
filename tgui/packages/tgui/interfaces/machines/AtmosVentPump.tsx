@@ -41,6 +41,8 @@ interface AtmosVentPumpControlProps extends SectionProps {
   externalToggle?: (enabled?: boolean) => void;
   // vent data
   state: AtmosVentPumpState;
+  // standalone window? will make button a list item instead of section item.
+  standalone?: boolean;
 }
 
 /**
@@ -48,12 +50,20 @@ interface AtmosVentPumpControlProps extends SectionProps {
  */
 export const AtmosVentPumpControl = (props: AtmosVentPumpControlProps) => {
   return (
-    <Section {...props} buttons={(
+    <Section {...props} buttons={!props.standalone && (
       <Button icon={props.state.power? 'power-off' : 'times'}
         selected={props.state.power} content={props.state.power? 'On' : 'Off'}
         onClick={() => props.powerToggle?.(!props.state.power)} />
     )}>
       <LabeledList>
+        {props.standalone && (
+          <LabeledList.Item label="Power">
+            <Button
+              icon={props.state.power? 'power-off' : 'times'}
+              selected={props.state.power} content={props.state.power? 'On' : 'Off'}
+              onClick={() => props.powerToggle?.(!props.state.power)} />
+          </LabeledList.Item>
+        )}
         <LabeledList.Item label="Mode">
           <Button icon="sign-in-alt"
             content={props.state.siphon? 'Siphoning' : 'Pressurizing'}
@@ -74,33 +84,37 @@ export const AtmosVentPumpControl = (props: AtmosVentPumpControlProps) => {
               !(props.state.pressureChecks & AtmosVentPumpPressureChecks.External)
             )} />
         </LabeledList.Item>
-        <LabeledList.Item label="Internal Target">
+        <LabeledList.Item label="Internal Target"
+          buttons={(
+            <Button.Confirm
+              content="Reset"
+              icon="undo"
+              onClick={() => props.internalSet?.('default')} />
+          )}>
           <NumberInput
             value={round(props.state.internalPressure, 2)}
             unit="kPa"
-            width="75px"
+            width="120px"
             minValue={0}
             step={10}
             maxValue={101.325 * 500}
             onChange={(e, val) => props.internalSet?.(val)} />
-          <Button.Confirm
-            content="Reset"
-            icon="undo"
-            onClick={() => props.internalSet?.('default')} />
         </LabeledList.Item>
-        <LabeledList.Item label="External Target">
+        <LabeledList.Item label="External Target"
+          buttons={(
+            <Button.Confirm
+              content="Reset"
+              icon="undo"
+              onClick={() => props.externalSet?.('default')} />
+          )}>
           <NumberInput
             value={round(props.state.externalPressure, 2)}
             unit="kPa"
-            width="75px"
+            width="120px"
             minValue={0}
             step={10}
             maxValue={101.325 * 500}
             onChange={(e, val) => props.externalSet?.(val)} />
-          <Button.Confirm
-            content="Reset"
-            icon="undo"
-            onClick={() => props.externalSet?.('default')} />
         </LabeledList.Item>
       </LabeledList>
     </Section>
@@ -118,16 +132,19 @@ export const AtmosVentPump = (props, context) => {
   let { data, act } = useBackend<AtmosVentPumpData>(context);
 
   return (
-    <Window width={300} height={500} title={data.name}>
+    <Window width={350} height={185} title={data.name}>
       <Window.Content>
         <AtmosVentPumpControl
+          scrollable
+          fill
           state={data.state}
           powerToggle={(on) => act('toggle')}
           dirToggle={(siphon) => act('siphon')}
           internalToggle={(on) => act('intCheck')}
           externalToggle={(on) => act('extCheck')}
           internalSet={(kpa) => act('intPressure', { target: kpa })}
-          externalSet={(kpa) => act('extPressure', { target: kpa })} />
+          externalSet={(kpa) => act('extPressure', { target: kpa })}
+          standalone />
       </Window.Content>
     </Window>
   );

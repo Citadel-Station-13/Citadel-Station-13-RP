@@ -101,8 +101,7 @@ export const AirAlarm = (props, context) => {
   return (
     <Window
       width={440}
-      height={650}
-      scrollable>
+      height={800}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
@@ -222,6 +221,7 @@ const AirAlarmControl = (props, context) => {
   const Component = route.component();
   return (
     <Section
+      scrollable
       fill
       title={route.title}
       buttons={screen && (

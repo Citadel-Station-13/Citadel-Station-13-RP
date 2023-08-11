@@ -2,6 +2,8 @@
  * SPDX-License-Identifier: MIT
  */
 
+// normal mode
+
 .Collapsible {
   display: inline-block;
   width: 100%;
@@ -35,6 +37,31 @@
     padding-right: 0;
   }
 }
+
+// alt mode
+
+.Collapsible__alt {
+  display: inline-flex;
+  width: 100%;
+  flex-direction: row;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+}
+
+.Collapsible__alt-more {
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 0.25em;
+}
+
+.Collapsible__alt-head {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+// content
 
 .Collapsible__content {
   margin-bottom: 0.5rem;

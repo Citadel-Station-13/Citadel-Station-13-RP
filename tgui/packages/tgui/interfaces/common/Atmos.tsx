@@ -4,7 +4,7 @@
 */
 
 import { bitfieldToPositions, round } from "common/math";
-import { Button, LabeledList, Section } from "../../components";
+import { Button, Collapsible, LabeledList, Section } from "../../components";
 import { SectionProps } from "../../components/Section";
 
 //* Context
@@ -125,20 +125,37 @@ interface AtmosFilterListProps extends SectionProps {
 export const AtmosFilterList = (props: AtmosFilterListProps) => {
   return (
     <Section {...props}>
+      <Collapsible captureKeys={false}
+        more={(
+          <>
+            <div style={{ display: "inline", color: "#7e90a7", "margin-left": "-0.235em", "padding-right": "1.225em" }}>Gases: </div>
+            {props.gasContext.coreGases.map((id) => (
+              <Button.Checkbox
+                key={id}
+                content={props.gasContext.gases[id].name}
+                selected={props.selectedIds.includes(id)}
+                onClick={() => props.selectId?.(id, !props.selectedIds.includes(id))} />
+            ))}
+          </>
+        )} color="transparent">
+        {props.gasContext.filterableGases.filter((id) => !props.gasContext.coreGases.includes(id)).map(
+          (id) => props.gasContext.gases[id]
+        ).sort(
+          (a, b) => a.name.localeCompare(b.name)
+        ).map((gas) => (
+          <Button.Checkbox
+            key={gas.id}
+            content={gas.name}
+            selected={props.selectedIds.includes(gas.id)}
+            onClick={() => props.selectId?.(gas.id, !props.selectedIds.includes(gas.id))} />
+        ))}
+      </Collapsible>
       <LabeledList>
-        <LabeledList.Item label="Gases">
-          {JSON.stringify(props.gasContext)}
-          {props.gasContext.filterableGases.map((id) => (
-            <Button.Checkbox
-              key={id}
-              selected={props.selectedIds.includes(id)}
-              onClick={() => props.selectId?.(id, !props.selectedIds.includes(id))} />
-          ))}
-        </LabeledList.Item>
         <LabeledList.Item label="Groups">
           {bitfieldToPositions(props.gasContext.filterableGroups, ATMOS_GROUP_COUNT).map((pos) => (
             <Button.Checkbox
               key={pos}
+              content={AtmosGroupFlagNames[pos]}
               selected={props.selectedGroups & (1 << pos)}
               onClick={() => props.selectGroup?.(1 << pos, !(props.selectedGroups & (1 << pos)))} />
           ))}
