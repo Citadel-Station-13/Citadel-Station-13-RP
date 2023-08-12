@@ -4364,10 +4364,6 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
-"dMk" = (
-/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
-/turf/simulated/wall/prepainted,
-/area/hallway/primary/port)
 "dNk" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/item/toy/plushie/red_fox,
@@ -10816,7 +10812,7 @@
 /area/rnd/breakroom)
 "iRK" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	id_tag = "MedbayFoyer";
 	name = "Recovery Wing"
 	},
@@ -21313,7 +21309,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "rpj" = (
-/turf/simulated/wall/prepainted/engineering,
+/turf/simulated/wall/prepainted,
 /area/maintenance/substation/research)
 "rpN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -22931,7 +22927,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Medbay Surgery";
 	req_access = list(5)
 	},
@@ -26629,7 +26625,7 @@
 /area/hallway/primary/port)
 "vNt" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Chem & Offices";
 	req_access = list(5);
 	req_one_access = null
@@ -39734,8 +39730,8 @@ aDx
 joq
 lZR
 tqA
-dMk
-dMk
+ejI
+ejI
 bDT
 bDT
 ttB
