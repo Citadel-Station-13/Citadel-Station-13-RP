@@ -152,7 +152,7 @@
 	name = "Tether - Surface 1"
 	display_id = "adephagia-surface-1"
 	display_name = "NSB Adephagia Surface 1 (Lobby & External)"
-	absolute_path = "maps/tether/levels/surface1_192.dmm"
+	absolute_path = "maps/tether/levels/surface1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -171,7 +171,7 @@
 	name = "Tether - Surface 2"
 	display_id = "adephagia-surface-2"
 	display_name = "NSB Adephagia Surface 2 (Research & Life Suppot)"
-	absolute_path = "maps/tether/levels/surface2_192.dmm"
+	absolute_path = "maps/tether/levels/surface2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -191,7 +191,7 @@
 	name = "Tether - Surface 3"
 	display_id = "adephagia-surface-3"
 	display_name = "NSB Adephagia Surface 3 (Services & Command)"
-	absolute_path = "maps/tether/levels/surface3_192.dmm"
+	absolute_path = "maps/tether/levels/surface3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -211,7 +211,7 @@
 	name = "Tether - Midpoint"
 	display_id = "adephagia-tether"
 	display_name = "NSB Adephagia Tether Midpoint"
-	absolute_path = "maps/tether/levels/midpoint_192.dmm"
+	absolute_path = "maps/tether/levels/midpoint.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -228,7 +228,7 @@
 	name = "Tether - Space 1"
 	display_id = "adephagia-station-1"
 	display_name = "NSB Adephagia Station 1 (Engineering Deck)"
-	absolute_path = "maps/tether/levels/station1_192.dmm"
+	absolute_path = "maps/tether/levels/station1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -245,7 +245,7 @@
 	name = "Tether - Space 2"
 	display_id = "adephagia-station-2"
 	display_name = "NSB Adephagia Station 2 (Logistics Deck)"
-	absolute_path = "maps/tether/levels/station2_192.dmm"
+	absolute_path = "maps/tether/levels/station2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -262,7 +262,7 @@
 	name = "Tether - Mining Outpost"
 	display_id = "adephagia-mining"
 	display_name = "NSB Adephagia Mining Outpost"
-	absolute_path = "maps/tether/levels/mining_192.dmm"
+	absolute_path = "maps/tether/levels/mining.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
@@ -278,7 +278,7 @@
 /datum/map_level/tether/misc
 	id = "TetherMisc"
 	name = "Tether - Misc"
-	absolute_path = "maps/tether/levels/misc_192.dmm"
+	absolute_path = "maps/tether/levels/misc.dmm"
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_TRANSIT,
 	)
@@ -289,7 +289,7 @@
 	name = "Tether - Underdark"
 	display_id = "adephagia-underdark"
 	display_name = "NSB Adephagia Underdark"
-	absolute_path = "maps/tether/levels/underdark_192.dmm"
+	absolute_path = "maps/tether/levels/underdark.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
@@ -317,7 +317,7 @@
 	name = "Tether - South Plains"
 	display_id = "adephagia-south-plains"
 	display_name = "NSB Adephagia Southern Plains"
-	absolute_path = "maps/tether/levels/plains_192.dmm"
+	absolute_path = "maps/tether/levels/plains.dmm"
 	traits = list(
 		ZTRAIT_GRAVITY,
 	)
