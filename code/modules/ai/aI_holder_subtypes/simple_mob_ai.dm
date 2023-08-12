@@ -52,13 +52,13 @@
 
 //Attacks from twice normal range. Caution is far more resource intensive then standard.
 /datum/ai_holder/simple_mob/ranged/sniper
-	vision_range = 15
-	max_range = 15
+	vision_range = 22
+	max_range = 22
 
 //Tries to stay well out of vision range. Caution is far more resource intensive then standard.
 /datum/ai_holder/simple_mob/ranged/kiting/sniper
-	vision_range = 15
-	max_range = 15
+	vision_range = 22
+	max_range = 22
 	run_if_this_close = 10
 
 // Tries to not waste ammo.
