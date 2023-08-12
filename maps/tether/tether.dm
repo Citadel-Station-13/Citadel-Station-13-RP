@@ -9,20 +9,23 @@
 		/datum/map_level/tether/station/space_low,
 		/datum/map_level/tether/station/space_high,
 		/datum/map_level/tether/mine,
-		/datum/map_level/tether/solars,
 		/datum/map_level/tether/misc,
 		/datum/map_level/tether/underdark,
 		/datum/map_level/tether/plains,
 	)
-	width = 140
-	height = 140
+	width = 192
+	height = 192
 	lateload = list(
-		/datum/map/sector/roguemining_140,
-		/datum/map/sector/desert_140,
-		/datum/map/sector/virgo2_140,
-		/datum/map/sector/virgo4_140,
-		/datum/map/sector/tradeport_140,
-		/datum/map/sector/wasteland_140,
+		/datum/map/sector/debrisfield_192,
+		/datum/map/sector/piratebase_192,
+		/datum/map/sector/mining_192,
+		/datum/map/sector/gaia_192,
+		/datum/map/sector/frozen_192,
+		/datum/map/sector/wasteland_192,
+		/datum/map/sector/tradeport_192,
+		/datum/map/sector/lavaland_192,
+		/datum/map/sector/miaphus_192,
+		/datum/map/sector/roguemining_192/one,
 	)
 
 	//* LEGACY BELOW *//
@@ -268,24 +271,6 @@
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
 
 /datum/map_level/tether/mine/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
-	. = ..()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
-
-/datum/map_level/tether/solars
-	id = "TetherScienceOutpost"
-	name = "Tether - Science Outpost"
-	display_id = "adephagia-solars"
-	display_name = "NSB Adephagia Solars & Research Outpost"
-	absolute_path = "maps/tether/levels/solars.dmm"
-	traits = list(
-		ZTRAIT_STATION,
-		ZTRAIT_GRAVITY,
-	)
-	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
-	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
-
-/datum/map_level/tether/solars/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
