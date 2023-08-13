@@ -43,7 +43,7 @@
 #define GAS_ID_XENON "xe"
 #define GAS_ID_CHLORINE "cl2"
 #define GAS_ID_SULFUR_DIOXIDE "so2"
-#define GAS_ID_HYDROGEN "hydrogen"		// we care about isotopes so no chem name
-#define GAS_ID_TRITIUM "tritium"
-#define GAS_ID_DEUTERIUM "deuterium"
+#define GAS_ID_HYDROGEN "h2"
+#define GAS_ID_TRITIUM "³h2"
+#define GAS_ID_DEUTERIUM "²h2"
 #define GAS_ID_VIMUR "vimur"
