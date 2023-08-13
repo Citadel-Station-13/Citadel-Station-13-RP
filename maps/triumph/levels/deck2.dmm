@@ -5697,32 +5697,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/machinery/door/airlock/multi_tile/metal{
-	dir = 4;
-	name = "Airlock Gas Storage"
-	},
 /obj/machinery/door/firedoor{
 	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/machinery/door/airlock/multi_tile/metal{
-	dir = 8;
-	name = "Airlock Gas Storage"
-	},
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4;
 	name = "Airlock Gas Storage"
-	},
-/obj/machinery/door/firedoor{
-	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)

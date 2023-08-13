@@ -6741,12 +6741,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "fIZ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "fJj" = (
@@ -12253,9 +12249,6 @@
 "jYP" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -26599,15 +26592,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
-"vMQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/port)
 "vNt" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
@@ -39125,7 +39109,7 @@ meR
 meR
 meR
 qak
-vMQ
+meR
 joS
 goh
 ktt
@@ -41872,7 +41856,7 @@ wlz
 wlz
 wlz
 wlz
-tQp
+bCG
 rug
 ddG
 toD
