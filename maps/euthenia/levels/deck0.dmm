@@ -762,6 +762,12 @@
 	},
 /turf/simulated/open,
 /area/space)
+"Pl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/space)
 "Qd" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -870,6 +876,12 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/airless/ceiling,
 /area/space)
+"UH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/main_map/hallway/deck0)
 "Vz" = (
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -13899,7 +13911,7 @@ VJ
 Fp
 oD
 oE
-oE
+Pl
 oD
 Fp
 wJ
@@ -14093,7 +14105,7 @@ rk
 rk
 eE
 Wv
-Wv
+UH
 eE
 rk
 rk
