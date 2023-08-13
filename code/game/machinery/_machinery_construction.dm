@@ -51,13 +51,13 @@
 		)
 	if(!use_tool(tool_panel, tool, user, flags, needed_time))
 		return FALSE
-	set_panel_open(!panel_open)
 	user.visible_action_feedback(
 		target = src,
 		soft_range = MESSAGE_RANGE_CONSTRUCTION,
 			visible_soft = SPAN_WARNING("[user] [panel_open? "closes" : "opens"] [src]'s maintenance panel."),
 		audible_soft = SPAN_WARNING("You hear something being (un)fastened."),
 	)
+	set_panel_open(!panel_open)
 	return TRUE
 
 // todo: better verb/message support
@@ -72,13 +72,13 @@
 		)
 	if(!use_tool(tool_deconstruct, tool, user, flags, needed_time))
 		return FALSE
-	dismantle()
 	user.visible_action_feedback(
 		target = src,
 		soft_range = MESSAGE_RANGE_CONSTRUCTION,
-		visible_soft = SPAN_WARNING("[user] [anchored? "bolts" : "unbolts"] [src] [anchored? "to" : "from"] from the floor."),
+		visible_soft = SPAN_WARNING("[user] dismantles [src]."),
 		audible_soft = SPAN_WARNING("You hear something getting dismantled."),
 	)
+	dismantle()
 	return TRUE
 
 // todo: better verb/message support
@@ -93,11 +93,11 @@
 		)
 	if(!use_tool(tool_unanchor, tool, user, flags, needed_time))
 		return FALSE
-	set_anchored(!anchored)
 	user.visible_action_feedback(
 		target = src,
 		soft_range = MESSAGE_RANGE_CONSTRUCTION,
 		visible_soft = SPAN_WARNING("[user] [anchored? "bolts" : "unbolts"] [src] [anchored? "to" : "from"] from the floor."),
 		audible_soft = SPAN_WARNING("You hear something heavy being (un)fastened."),
 	)
+	set_anchored(!anchored)
 	return TRUE

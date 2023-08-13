@@ -248,7 +248,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 	for(var/name in tlv_groups)
 		var/list/tlv = tlv_groups[name]
-		var/partial = environment.moles_by_flag() * partial_pressure_factor
+		var/partial = environment.moles_by_group(global.gas_data.gas_group_by_name[name]) * partial_pressure_factor
 		dangerlevel = max(dangerlevel, AIR_ALARM_TEST_TLV(partial, tlv))
 		if(dangerlevel >= AIR_ALARM_RAISE_DANGER)
 			return dangerlevel
@@ -543,7 +543,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	var/list/data = list(
 		"locked" = locked,
 		"siliconUser" = issilicon(user),
-		"remoteUser" = !!ui.parent_ui,
+		"remoteUser" = !!ui?.parent_ui,
 		"danger_level" = danger_level,
 		"target_temperature" = "[target_temperature - T0C]C",
 		"rcon" = rcon_setting,

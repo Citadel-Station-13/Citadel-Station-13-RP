@@ -12,6 +12,7 @@
 	power_rating = 7500
 
 	tgui_interface = "AtmosTrinaryFilter"
+	default_access_interface = TRUE
 
 	/// target gas id, or groups; can be type on init.
 	var/filtering

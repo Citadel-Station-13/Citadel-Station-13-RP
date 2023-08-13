@@ -519,8 +519,9 @@
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
 	drop_products(ATOM_DECONSTRUCT_DISASSEMBLED)
 	on_deconstruction()
-	// If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
+	// If it doesn't have a circuit board, don't create a frame, instead just break.
 	if(!circuit)
+		qdel(src)
 		return 0
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
 	var/obj/item/circuitboard/M = circuit

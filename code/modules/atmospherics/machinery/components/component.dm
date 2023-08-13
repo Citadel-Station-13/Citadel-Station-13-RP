@@ -11,7 +11,7 @@
 	tool_panel = null
 
 	/// allow multitool "hijacking" even if this is controlled by something else
-	/// set to non-null for delay.
+	/// set to non-null for delay, 0 for instant.
 	var/default_multitool_hijack = null
 	/// allow access normally
 	var/default_access_interface = FALSE

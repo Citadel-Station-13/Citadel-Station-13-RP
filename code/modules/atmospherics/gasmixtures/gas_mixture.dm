@@ -572,13 +572,13 @@
 		var/groups = global.gas_data.groups[id]
 		names[id] = global.gas_data.names[id]
 		if((groups & GAS_GROUP_REAGENT) && (group_together & GAS_GROUP_REAGENT))
-			gases["Reagents"] += gases[id]
+			gases["Reagents"] += gas[id]
 		else if((groups & GAS_GROUP_OTHER) && (group_together & GAS_GROUP_OTHER))
-			gases["Other"] += gases[id]
+			gases["Other"] += gas[id]
 		else if((groups & GAS_GROUP_UNKNOWN) && (group_together & GAS_GROUP_UNKNOWN))
-			gases["Unknown"] += gases[id]
+			gases["Unknown"] += gas[id]
 		else
-			gases[id] += gases[id]
+			gases[id] += gas[id]
 			if(molar_masses)
 				masses[id] = global.gas_data.molar_masses[id]
 

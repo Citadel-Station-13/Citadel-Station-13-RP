@@ -165,9 +165,6 @@ Pipelines + Other Objects -> Pipe network
 
 /obj/machinery/atmospherics/proc/disconnect(obj/machinery/atmospherics/reference)
 
-/obj/machinery/atmospherics/update_icon()
-	return null
-
 /obj/machinery/atmospherics/proc/unsafe_pressure()
 	var/datum/gas_mixture/int_air = return_air()
 	var/datum/gas_mixture/env_air = loc.return_air()
@@ -247,7 +244,7 @@ Pipelines + Other Objects -> Pipe network
 
 /obj/machinery/atmospherics/is_hidden_underfloor()
 	var/turf/T = loc
-	return istype(T) && (layer == PIPE_LAYER) && !T.is_plating()
+	return istype(T) && (level == 1) && !T.is_plating()
 
 /obj/machinery/atmospherics/should_hide_underfloor()
 	return level == 1

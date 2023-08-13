@@ -14,6 +14,7 @@
 	power_rating = 7500
 
 	tgui_interface = "AtmosTrinaryMolarFilter"
+	default_access_interface = TRUE
 
 	/// inverted mode
 	var/invert = FALSE
