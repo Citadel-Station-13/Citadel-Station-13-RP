@@ -27,7 +27,7 @@
 	output_options = list(
 		"Default" = null,
 		"Pizza" = /obj/item/reagent_containers/food/snacks/variable/pizza,
-		"Bread" = /obj/item/reagent_containers/food/snacks/variable/bread,,
+		"Bread" = /obj/item/reagent_containers/food/snacks/variable/bread,
 		"Pie" = /obj/item/reagent_containers/food/snacks/variable/pie,
 		"Cake" = /obj/item/reagent_containers/food/snacks/variable/cake,
 		"Hot Pocket" = /obj/item/reagent_containers/food/snacks/variable/pocket,
