@@ -286,6 +286,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	cut_overlays()
 	add_overlay("pai-underlay")
 	add_overlay("pai-null")
+	pai.open_up()
 
 /obj/item/paicard/proc/removePersonality()
 	QDEL_NULL(pai)
