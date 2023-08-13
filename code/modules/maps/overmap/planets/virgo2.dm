@@ -1,9 +1,9 @@
 // V2 doesnt actually have its own weather so this is gonna be here for now
 /datum/atmosphere/planet/virgo2
 	base = list(
-		GAS_ID_NITROGEN = 0.10,
-		GAS_ID_OXYGEN = 0.03,
-		GAS_ID_CARBON_DIOXIDE = 0.87,
+		/datum/gas/nitrogen = 0.10,
+		/datum/gas/oxygen = 0.03,
+		/datum/gas/carbon_dioxide = 0.87,
 	)
 	pressure_low = 312.1
 	pressure_high = 312.1
