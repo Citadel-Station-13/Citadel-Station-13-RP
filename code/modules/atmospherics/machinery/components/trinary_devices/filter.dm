@@ -13,6 +13,7 @@
 
 	tgui_interface = "AtmosTrinaryFilter"
 	default_access_interface = TRUE
+	atmos_component_ui_flags = ATMOS_COMPONENT_UI_TOGGLE_POWER
 
 	/// target gas id, or groups; can be type on init.
 	var/filtering
@@ -36,7 +37,7 @@
 		icon_state = "m"
 	else
 		icon_state = ""
-	if(!powered())
+	if(!powered() || !on)
 		icon_state += "off"
 	else if(node2 && node3 && node1)
 		icon_state += on ? "on" : "off"

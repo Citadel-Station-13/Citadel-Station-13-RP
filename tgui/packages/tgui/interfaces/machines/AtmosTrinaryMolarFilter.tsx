@@ -7,7 +7,7 @@ import { Button, LabeledList, NumberInput } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
 import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
 
-interface AtmosTrinaryFilterControlProps extends SectionProps {
+interface AtmosTrinaryMolarFilterControlProps extends SectionProps {
   invert: BooleanLike;
   lower: number;
   upper: number;
@@ -16,7 +16,7 @@ interface AtmosTrinaryFilterControlProps extends SectionProps {
   toggleInvert: (on: boolean) => void;
 }
 
-export const AtmosTrinaryFilterControl = (props: AtmosTrinaryFilterControlProps, context) => {
+export const AtmosTrinaryMolarFilterControl = (props: AtmosTrinaryMolarFilterControlProps, context) => {
   return (
     <Section title="Filter" {...props}>
       <LabeledList>
@@ -38,7 +38,7 @@ export const AtmosTrinaryFilterControl = (props: AtmosTrinaryFilterControlProps,
   );
 };
 
-interface AtmosTrinaryFilterData extends AtmosComponentData {
+interface AtmosTrinaryMolarFilterData extends AtmosComponentData {
   lower: number;
   upper: number;
   invert: BooleanLike;
@@ -46,18 +46,19 @@ interface AtmosTrinaryFilterData extends AtmosComponentData {
   maxRate: number;
 }
 
-export const AtmosTrinaryFilter = (props, context) => {
-  const { act, data } = useBackend<AtmosTrinaryFilterData>(context);
+export const AtmosTrinaryMolarFilter = (props, context) => {
+  const { act, data } = useBackend<AtmosTrinaryMolarFilterData>(context);
 
   return (
     <AtmosComponent
+      title="Mass Filter"
       additionalListItems={(
         <LabeledList.Item label="Flow">
           <NumberInput minValue={0} maxValue={data.maxRate}
-            value={data.rate} onChange={(e, val) => act('rate', { rate: val })} />
+            value={data.rate} onChange={(e, val) => act('rate', { rate: val })} /> L/s
         </LabeledList.Item>
       )}>
-      <AtmosTrinaryFilterControl
+      <AtmosTrinaryMolarFilterControl
         setLower={(amt) => act('lower', { target: amt })}
         setUpper={(amt) => act('upper', { target: amt })}
         toggleInvert={() => act('invert')}

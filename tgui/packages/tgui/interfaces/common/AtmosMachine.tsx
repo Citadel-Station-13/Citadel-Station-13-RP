@@ -28,7 +28,7 @@ export const AtmosComponentControl = (props: AtmosComponentControlProps, context
   return (
     <Section title="Flow" {...props}>
       <LabeledList>
-        {(props.data.controlFlags & AtmosComponentUIFlags.TogglePower) && (
+        {!!(props.data.controlFlags & AtmosComponentUIFlags.TogglePower) && (
           <LabeledList.Item label="Enabled">
             <Button
               content={props.data.on? "On" : "Off"}
@@ -36,19 +36,19 @@ export const AtmosComponentControl = (props: AtmosComponentControlProps, context
               onClick={() => props.togglePowerAct?.(!props.data.on)} />
           </LabeledList.Item>
         )}
-        {(props.data.controlFlags & AtmosComponentUIFlags.SetPowerLimit) && (
+        {!!(props.data.controlFlags & AtmosComponentUIFlags.SetPowerLimit) && (
           <LabeledList.Item label="Power">
             <NumberInput minValue={0} maxValue={props.data.powerRating}
               value={props.data.powerSetting} onChange={(e, val) => props.setPowerLimitAct?.(val)} />
           </LabeledList.Item>
         )}
-        {(props.data.controlFlags & AtmosComponentUIFlags.SeePowerUsage) && (
+        {!!(props.data.controlFlags & AtmosComponentUIFlags.SeePowerUsage) && (
           <LabeledList.Item label="Draw">
             <ProgressBar minValue={0} maxValue={props.data.powerRating}
               value={props.data.powerUsage} color="default" />
           </LabeledList.Item>
         )}
-        {props.additional}
+        {props.additionalListItems}
       </LabeledList>
     </Section>
   );
@@ -68,14 +68,20 @@ export interface AtmosComponentData {
 }
 
 export interface AtmosComponentProps extends ComponentProps {
-  extraHeight?: number;
+  minumumHeight?: number;
+  minumumWidth?: number;
   additionalListItems?: InfernoNode;
+  // title
+  title: string;
 }
 
 export const AtmosComponent = (props: AtmosComponentProps, context) => {
   const { data, act } = useBackend<AtmosComponentData>(context);
   return (
-    <Window width={500} height={300 + (props.extraHeight || 0)}>
+    <Window
+      width={Math.max(300, props.minumumWidth || 0)}
+      height={Math.max(300, props.minumumHeight || 0)}
+      title={props.title}>
       <Window.Content>
         <Section fill>
           <Stack vertical fill>

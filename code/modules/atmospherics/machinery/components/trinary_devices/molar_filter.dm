@@ -15,6 +15,7 @@
 
 	tgui_interface = "AtmosTrinaryMolarFilter"
 	default_access_interface = TRUE
+	atmos_component_ui_flags = ATMOS_COMPONENT_UI_TOGGLE_POWER
 
 	/// inverted mode
 	var/invert = FALSE
@@ -35,7 +36,7 @@
 	air3.volume = ATMOS_DEFAULT_VOLUME_FILTER
 
 /obj/machinery/atmospherics/component/trinary/molar_filter/update_icon_state()
-	var/is_on = powered() && (node1 && node2 && node3)
+	var/is_on = on && powered() && (node1 && node2 && node3)
 	icon_state = "[base_icon_state][mirrored? "-f" : ""][(is_on? "-on" : "")]"
 	return ..()
 
