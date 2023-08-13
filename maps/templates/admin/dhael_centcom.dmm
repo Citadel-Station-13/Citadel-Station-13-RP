@@ -3138,7 +3138,7 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
-"if" = (
+"iy" = (
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/centcom/main_hall)
 "iz" = (
@@ -11482,6 +11482,11 @@
 	icon_state = "dark"
 	},
 /area/centcom/medical)
+"JJ" = (
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/main_hall)
 "JN" = (
 /obj/structure/bed/chair/wood/wings,
 /turf/unsimulated/floor/wood,
@@ -12682,6 +12687,12 @@
 /obj/machinery/smartfridge/drinks,
 /turf/unsimulated/floor/wood,
 /area/centcom/bar)
+"OY" = (
+/obj/structure/memorial,
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/main_hall)
 "Pb" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
@@ -13577,6 +13588,14 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"Sq" = (
+/obj/structure/statue/marble/venus{
+	pixel_y = -5
+	},
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/main_hall)
 "Su" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/drinks/cup{
@@ -14588,6 +14607,15 @@
 "XB" = (
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
+"XQ" = (
+/obj/structure/statue/marble/venus{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/main_hall)
 "XT" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -21650,13 +21678,13 @@ dk
 wm
 wI
 xh
-if
-if
-if
-if
-if
-if
-if
+iy
+iy
+iy
+iy
+iy
+iy
+iy
 xh
 wI
 zS
@@ -21792,13 +21820,13 @@ dk
 wm
 wJ
 xh
-if
-if
+iy
+iy
 xI
-if
-if
+XQ
+JJ
 ze
-if
+iy
 xh
 wJ
 zS
@@ -21934,13 +21962,13 @@ vA
 wm
 wI
 xh
-if
-if
-if
-if
-if
-if
-if
+iy
+iy
+iy
+OY
+JJ
+iy
+iy
 xh
 wI
 zS
@@ -22076,12 +22104,12 @@ vB
 wm
 wI
 xh
-if
-if
-if
-xh
-if
-if
+iy
+iy
+iy
+JJ
+JJ
+iy
 ze
 xh
 wI
@@ -22218,13 +22246,13 @@ dk
 wm
 wJ
 xh
-if
+iy
 xI
-if
-if
-if
-if
-if
+iy
+Sq
+JJ
+iy
+iy
 xh
 wJ
 zS
@@ -22360,13 +22388,13 @@ dk
 wm
 wI
 xh
-if
-if
-if
-if
-if
-if
-if
+iy
+iy
+xh
+iy
+iy
+iy
+iy
 xh
 wI
 zS
