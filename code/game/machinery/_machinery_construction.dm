@@ -23,15 +23,15 @@
 	if(INTERACTING_WITH_FOR(user, src, INTERACTING_FOR_CONSTRUCTION))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	START_INTERACTING_WITH(user, src, INTERACTING_FOR_CONSTRUCTION)
-	if(function == tool_deconstruct)
+	if(function == tool_deconstruct && !isnull(default_deconstruct))
 		if(default_deconstruction_dismantle(I, user, flags = flags))
 			. = CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
-	else if(function == tool_unanchor)
+	else if(function == tool_unanchor && !isnull(default_unanchor))
 		if(default_deconstruction_anchor(I, user, flags = flags))
 			. = CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
-	else if(function == tool_panel)
+	else if(function == tool_panel && !isnull(default_panel))
 		if(default_deconstruction_panel(I, user, flags = flags))
 			. = CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		. = CLICKCHAIN_DO_NOT_PROPAGATE

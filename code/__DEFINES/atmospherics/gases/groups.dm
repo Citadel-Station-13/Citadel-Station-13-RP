@@ -15,6 +15,13 @@
 /// Total gas groups
 #define GAS_GROUP_COUNT 4
 
+DEFINE_BITFIELD(gas_groups, list(
+	BITFIELD(GAS_GROUP_CORE),
+	BITFIELD(GAS_GROUP_OTHER),
+	BITFIELD(GAS_GROUP_UNKNOWN),
+	BITFIELD(GAS_GROUP_REAGENT),
+))
+
 GLOBAL_REAL_LIST(gas_group_names) = list(
 	"Core",
 	"Other",

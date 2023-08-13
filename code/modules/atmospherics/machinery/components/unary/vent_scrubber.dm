@@ -88,7 +88,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/proc/reset_scrubbing_to_default()
 	scrub_ids = list()
 	scrub_groups = NONE
-	var/list/default = SSair.scrubber_defaults
+	var/list/default = SSair.scrubber_defaults[scrub_default]
+	if(isnull(default))
+		return
 	for(var/key in default)
 		if(istext(key))
 			scrub_ids += key
