@@ -2,13 +2,11 @@
 
 // todo: better interface logging
 /obj/machinery/atmospherics/component/unary/vent_pump
+	name = "Air Vent"
+	desc = "Has a valve and pump attached to it"
 	icon = 'icons/atmos/vent_pump.dmi'
 	icon_state = "map_vent"
 	pipe_state = "uvent"
-
-	name = "Air Vent"
-	desc = "Has a valve and pump attached to it"
-	use_power = USE_POWER_OFF
 	idle_power_usage = 150 //internal circuitry, friction losses and stuff
 	power_rating = 30000
 
@@ -108,7 +106,7 @@
 
 	if(welded)
 		vent_icon += "weld"
-	else if(!use_power || !node || (machine_stat & (NOPOWER|BROKEN)))
+	else if(!on || !node || (machine_stat & (NOPOWER|BROKEN)))
 		vent_icon += "off"
 	else
 		vent_icon += "[pump_direction ? "out" : "in"]"
@@ -137,7 +135,7 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		//soundloop.stop()
 		return 0
-	if(!use_power)
+	if(!on)
 		//soundloop.stop()
 		return 0
 	if(welded)
@@ -148,12 +146,10 @@
 
 /obj/machinery/atmospherics/component/unary/vent_pump/process(delta_time)
 	..()
-
 	if (hibernate)
 		return 1
-
-	if (!node)
-		update_use_power(USE_POWER_OFF)
+	if(!node)
+		set_on(FALSE)
 	if(!can_pump())
 		return 0
 
@@ -214,7 +210,7 @@
 		"area" = src.area_uid,
 		"tag" = src.id_tag,
 		"device" = "AVP",
-		"power" = use_power,
+		"power" = on,
 		"direction" = pump_direction?("release"):("siphon"),
 		"checks" = pressure_checks,
 		"internal" = internal_pressure_bound,
@@ -278,7 +274,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/attackby(obj/item/W, mob/user)
 	if (!W.is_wrench())
 		return ..()
-	if (!(machine_stat & NOPOWER) && use_power)
+	if (!(machine_stat & NOPOWER) && on)
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
 		return 1
 	var/turf/T = src.loc
@@ -305,7 +301,7 @@
 		"pressureChecks" = pressure_checks,
 		"internalPressure" = internal_pressure_bound,
 		"externalPressure" = external_pressure_bound,
-		"power" = use_power != USE_POWER_OFF,
+		"power" = on,
 		"siphon" = !pump_direction,
 	)
 
@@ -328,9 +324,7 @@
 	var/target = params["target"]
 	switch(action)
 		if("toggle")
-			//! warning: legacy
-			update_use_power(!use_power)
-			update_icon()
+			set_on(!on)
 			return TRUE
 		if("intPressure")
 			internal_pressure_bound = target == "default"? internal_pressure_bound_default : clamp(text2num(target), 0, ATMOS_VENT_MAX_PRESSURE_LIMIT)
@@ -382,9 +376,9 @@
 		internal_pressure_bound = internal_pressure_bound_default
 		external_pressure_bound = external_pressure_bound_default
 	if(!isnull(signal.data["power"]))
-		update_use_power(!!text2num(signal.data["power"]))
+		set_on(!!text2num(signal.data["power"]))
 	else if(!isnull(signal.data["power_toggle"]))
-		update_use_power(!use_power)
+		set_on(!on)
 	if(!isnull(signal.data["checks"]))
 		pressure_checks = (signal.data["checks"] == "default")? pressure_checks_default : (text2num(signal.data) & ATMOS_VENT_CHECKS)
 	else if(!isnull(signal.data["checks_toggle"]))
@@ -416,7 +410,7 @@
 //* Subtypes
 
 /obj/machinery/atmospherics/component/unary/vent_pump/on
-	use_power = USE_POWER_IDLE
+	on = TRUE
 	icon_state = "map_vent_out"
 
 /obj/machinery/atmospherics/component/unary/vent_pump/on/welded
@@ -431,16 +425,16 @@
 	pump_direction = 0
 
 /obj/machinery/atmospherics/component/unary/vent_pump/siphon/on
-	use_power = USE_POWER_IDLE
+	on = TRUE
 	icon_state = "map_vent_in"
 
 /obj/machinery/atmospherics/component/unary/vent_pump/positive // For some reason was buried in tether_things.dm -Bloop
-	use_power = USE_POWER_IDLE
+	on = TRUE
 	icon_state = "map_vent_out"
 	external_pressure_bound = ONE_ATMOSPHERE * 1.1
 
 /obj/machinery/atmospherics/component/unary/vent_pump/siphon/on/atmos
-	use_power = USE_POWER_IDLE
+	on = TRUE
 	icon_state = "map_vent_in"
 	external_pressure_bound = 0
 	external_pressure_bound_default = 0
@@ -487,7 +481,7 @@
 	icon_state = "map_vent"
 
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on
-	use_power = USE_POWER_IDLE
+	on = TRUE
 	icon_state = "map_vent_out"
 
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on/welded

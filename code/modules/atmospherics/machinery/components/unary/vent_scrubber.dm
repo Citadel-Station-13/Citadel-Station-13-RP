@@ -1,12 +1,11 @@
 // todo: better interface logging
 /obj/machinery/atmospherics/component/unary/vent_scrubber
+	name = "Air Scrubber"
+	desc = "Has a valve and pump attached to it"
 	icon = 'icons/atmos/vent_scrubber.dmi'
 	icon_state = "map_scrubber_off"
 	pipe_state = "scrubber"
 
-	name = "Air Scrubber"
-	desc = "Has a valve and pump attached to it"
-	use_power = USE_POWER_OFF
 	idle_power_usage = 150		//internal circuitry, friction losses and stuff
 	power_rating = 7500			//7500 W ~ 10 HP
 
@@ -113,7 +112,7 @@
 	else if(!powered())
 		scrubber_icon += "off"
 	else
-		scrubber_icon += "[use_power ? "[siphoning ? "in" : "on"]" : "off"]"
+		scrubber_icon += "[on ? "[siphoning ? "in" : "on"]" : "off"]"
 
 	add_overlay(icon_manager.get_atmos_icon("device", , , scrubber_icon))
 
@@ -148,7 +147,7 @@
 		"tag" = id_tag,
 		"device" = "AScr",
 		"timestamp" = world.time,
-		"power" = use_power,
+		"power" = on,
 		"scrubbing" = !siphoning, // legacy
 		"siphoning" = siphoning,
 		"expanded" = expanded,
@@ -174,7 +173,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/proc/can_scrub()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return 0
-	if(!use_power)
+	if(!on)
 		return 0
 	if(welded)
 		return 0
@@ -186,10 +185,8 @@
 
 	if (hibernate)
 		return 1
-
 	if (!node)
-		update_use_power(USE_POWER_OFF)
-
+		set_on(FALSE)
 	if(!can_scrub())
 		return 0
 
@@ -224,7 +221,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if (!W.is_wrench())
 		return ..()
-	if (!(machine_stat & NOPOWER) && use_power)
+	if (!(machine_stat & NOPOWER) && on)
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
 		return 1
 	var/turf/T = src.loc
@@ -284,7 +281,7 @@
 		"expand" = expanded,
 		"scrubIDs" = scrub_ids,
 		"scrubGroups" = scrub_groups,
-		"power" = use_power != USE_POWER_OFF,
+		"power" = on,
 	)
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/ui_act(action, list/params, datum/tgui/ui)
@@ -294,9 +291,7 @@
 	var/target = params["target"]
 	switch(action)
 		if("power")
-			//! warning: legacy
-			update_use_power(!use_power)
-			update_icon()
+			set_on(!on)
 			return TRUE
 		if("expand")
 			//! warning: legacy
@@ -359,9 +354,9 @@
 		siphoning = siphoning_default
 		reset_scrubbing_to_default()
 	if(!isnull(signal.data["power"]))
-		update_use_power(!!text2num(signal.data["power"]))
+		set_on(!!text2num(signal.data["power"]))
 	else if(!isnull(signal.data["power_toggle"]))
-		update_use_power(!use_power)
+		set_on(!on)
 	if(!isnull(signal.data["siphon"]))
 		siphoning = signal.data["siphon"] == "default"? siphoning_default : !!text2num(signal.data["siphon"])
 	else if(!isnull(signal.data["siphon_toggle"]))
@@ -412,7 +407,7 @@
 //* Subtypes
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on
-	use_power = USE_POWER_IDLE
+	on = TRUE
 	icon_state = "map_scrubber_on"
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on/welded
@@ -422,7 +417,7 @@
 	icon_state = "map_scrubber_off"	/// Will get replaced on mapload
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on
-	use_power = USE_POWER_IDLE
+	on = TRUE
 	icon_state = "map_scrubber_on"
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on/welded

@@ -45,7 +45,11 @@
 	. = ..()
 	if(isnull(power_setting))
 		power_setting = power_maximum
-	set_on(on)
+	//! LEGACY IF STATEMENT
+	//  tgui_interface being set usually means we got refactored, and therefore we can be relied on to have
+	//  proper on/off behavior, as opposed to the old "use power idle vs off" behavior."
+	if(tgui_interface)
+		set_on(on)
 
 /obj/machinery/atmospherics/component/proc/set_power(watts)
 	power_setting = watts
