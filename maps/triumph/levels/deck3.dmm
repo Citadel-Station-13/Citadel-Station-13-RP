@@ -3627,7 +3627,7 @@
 /area/medical/virologyisolation)
 "ddG" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	id_tag = "MedbayFoyer";
 	name = "Recovery Wing";
 	req_access = list(5)
@@ -9089,7 +9089,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	id_tag = "PsycheFoyer";
 	name = "Psychiatric Wing";
 	req_access = list();
@@ -27006,7 +27006,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	name = "Psychiatric Ward";
 	req_access = list(5)
 	},

@@ -13672,7 +13672,7 @@
 	},
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -18456,7 +18456,7 @@
 	},
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"

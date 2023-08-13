@@ -783,7 +783,7 @@
 /area/mothership/hydroponics)
 "bU" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2
+	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -820,7 +820,7 @@
 /area/mothership/hydroponics)
 "bY" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2
+	dir = 4
 	},
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -3091,7 +3091,7 @@
 /area/mothership/treatment)
 "ha" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	req_one_access = list(5)
 	},
 /obj/machinery/door/firedoor/glass,
@@ -3175,7 +3175,7 @@
 /area/mothership/hallway)
 "hg" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	req_one_access = list(1)
 	},
 /obj/structure/cable/cyan{
@@ -5336,7 +5336,7 @@
 /area/mothership/medical)
 "lP" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2
+	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,

@@ -26215,7 +26215,7 @@
 /area/security/checkpoint2)
 "viW" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Laundry"
 	},
 /obj/effect/floor_decal/borderfloor,

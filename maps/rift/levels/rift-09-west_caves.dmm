@@ -353,7 +353,7 @@
 /area/outpost/mining_main/outpost/maintenance)
 "ej" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Research Outpost";
 	req_access = list();
 	req_one_access = list(19,43,67)
@@ -1225,7 +1225,7 @@
 /area/rift/surfacebase/outside/west_caves)
 "ot" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost/washrooms)

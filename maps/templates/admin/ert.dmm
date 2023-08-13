@@ -1470,7 +1470,7 @@
 	req_one_access = list(103)
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(103)
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1544,7 +1544,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(103)
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -2029,7 +2029,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(103)
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -3743,7 +3743,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(103)
 	},
 /turf/simulated/floor/tiled/white,

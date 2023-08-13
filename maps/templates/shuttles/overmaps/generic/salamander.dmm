@@ -648,7 +648,7 @@
 /area/shuttle/salamander)
 "jV" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	req_one_access = list(160)
 	},
 /obj/machinery/door/firedoor/multi_tile{
@@ -1767,7 +1767,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	name = "Salamander Engineering Bay";
 	req_one_access = list(160)
 	},
