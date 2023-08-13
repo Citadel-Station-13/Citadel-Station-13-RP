@@ -775,12 +775,6 @@
 /obj/item/book/custom_library/religious,
 /turf/simulated/floor/wood,
 /area/library)
-"fz" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/main_map/maintenance/deck_four)
 "fB" = (
 /turf/simulated/wall/prepainted/engineering,
 /area/maintenance/trash_pit)
@@ -3357,7 +3351,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/wood,
 /area/main_map/maintenance/deck_four)
 "vv" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
@@ -3438,6 +3432,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/aft/starboard)
+"vT" = (
+/obj/structure/bed/chair/comfy/black,
+/turf/simulated/floor/wood,
+/area/main_map/maintenance/deck_four)
 "vU" = (
 /obj/structure/stairs/spawner/west,
 /turf/simulated/floor/tiled,
@@ -3863,8 +3861,10 @@
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "zP" = (
-/obj/structure/table/fancyblack,
-/turf/simulated/floor/plating,
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
 /area/main_map/maintenance/deck_four)
 "zQ" = (
 /turf/simulated/floor/tiled/techmaint,
@@ -4697,10 +4697,6 @@
 /obj/structure/railing/grey,
 /turf/simulated/floor/plating,
 /area/ai_upload)
-"Fq" = (
-/obj/structure/bed/chair/comfy/black,
-/turf/simulated/floor/plating,
-/area/main_map/maintenance/deck_four)
 "Fr" = (
 /obj/structure/railing,
 /turf/simulated/floor/carpet/bcarpet,
@@ -4970,6 +4966,9 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/aft/port)
+"Hb" = (
+/turf/simulated/floor/wood,
+/area/main_map/maintenance/deck_four)
 "Hc" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
@@ -5104,6 +5103,10 @@
 "If" = (
 /turf/simulated/wall/r_wall,
 /area/main_map/maintenance/deck_four/forward)
+"Ih" = (
+/obj/structure/table/fancyblack,
+/turf/simulated/floor/wood,
+/area/main_map/maintenance/deck_four)
 "Ii" = (
 /obj/map_helper/airlock/atmos/pump_out_internal,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -5208,7 +5211,7 @@
 /area/main_map/maintenance/deck_four/aft/port)
 "II" = (
 /obj/structure/bed/chair/comfy/brown,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/carpet/bcarpet,
 /area/main_map/maintenance/deck_four)
 "IJ" = (
 /turf/simulated/floor/tiled/techfloor,
@@ -6409,6 +6412,12 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/main_map/maintenance/deck_four/forward)
+"Rm" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/main_map/maintenance/deck_four)
 "Ro" = (
 /obj/machinery/camera/network/research{
 	dir = 8
@@ -7636,12 +7645,6 @@
 /obj/machinery/door/airlock/maintenance/cargo,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/miningdock)
-"YU" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/main_map/maintenance/deck_four)
 "YV" = (
 /obj/item/tvcamera,
 /obj/item/tvcamera,
@@ -22729,7 +22732,7 @@ HD
 HD
 HD
 HD
-uP
+hr
 Od
 Od
 Od
@@ -22926,9 +22929,9 @@ HD
 uP
 Od
 Od
-Od
-Od
-Od
+hn
+hn
+hn
 hn
 Od
 Od
@@ -23120,7 +23123,7 @@ HD
 uP
 Od
 Od
-Od
+hn
 Od
 Od
 hn
@@ -23312,14 +23315,14 @@ uP
 uP
 uP
 uP
-Od
-Od
-Od
-Od
-Od
+hn
+hn
 hn
 Od
 Od
+EE
+Ev
+Ev
 hn
 Od
 Od
@@ -23513,7 +23516,7 @@ Od
 Od
 hn
 Od
-Od
+Ev
 hn
 Od
 Od
@@ -23707,7 +23710,7 @@ Od
 Od
 hn
 hn
-hn
+EE
 hn
 Od
 Od
@@ -23901,7 +23904,7 @@ Od
 Od
 hn
 Od
-Od
+Ev
 hn
 Od
 Od
@@ -24080,7 +24083,7 @@ Za
 Ji
 zo
 Od
-Od
+Ev
 Od
 Od
 Od
@@ -24095,11 +24098,11 @@ hn
 hn
 hn
 Od
-Od
-hn
-Od
-Od
-Od
+Ev
+EE
+Ev
+Ev
+Ev
 Od
 zo
 zo
@@ -24261,7 +24264,7 @@ uD
 uD
 uD
 uD
-MI
+eZ
 uD
 po
 po
@@ -24274,7 +24277,7 @@ Za
 kL
 zo
 zo
-Od
+Ev
 Od
 Od
 Od
@@ -24293,7 +24296,7 @@ Od
 hn
 Od
 Od
-Od
+Ev
 Od
 Od
 zo
@@ -24468,7 +24471,7 @@ Za
 kL
 zo
 zo
-hn
+EE
 hn
 hn
 hn
@@ -24487,7 +24490,7 @@ Od
 hn
 Od
 Od
-Od
+Ev
 Od
 zo
 zo
@@ -24650,7 +24653,7 @@ MI
 MI
 MI
 MI
-MI
+eZ
 MI
 MI
 lD
@@ -24662,12 +24665,12 @@ Za
 kL
 zo
 zo
-Od
-Od
-Od
-Od
-hn
-Od
+Ev
+Ev
+Ev
+Ev
+EE
+Ev
 Od
 hn
 Od
@@ -24681,7 +24684,7 @@ Od
 hn
 hn
 hn
-hn
+EE
 hn
 zo
 zo
@@ -24861,7 +24864,7 @@ Od
 Od
 Od
 hn
-Od
+Ev
 Od
 hn
 Od
@@ -24875,7 +24878,7 @@ Od
 hn
 Od
 Od
-Od
+Ev
 Od
 zo
 zo
@@ -25055,21 +25058,21 @@ Od
 Od
 Od
 hn
-hn
-hn
-hn
-Od
-Od
-Od
-Od
-Od
-hn
-hn
+EE
 hn
 hn
 Od
 Od
 Od
+Ev
+Od
+hn
+hn
+hn
+hn
+Od
+Od
+Ev
 Od
 Od
 zo
@@ -25249,21 +25252,21 @@ Od
 Od
 Od
 hn
-Od
-Od
-hn
-Od
-Od
-Od
-Od
-Od
-hn
-Od
+Ev
 Od
 hn
 Od
 Od
 Od
+Ev
+Od
+hn
+Ev
+Ev
+EE
+Ev
+Ev
+Ev
 Od
 zo
 zo
@@ -25418,7 +25421,7 @@ lD
 lD
 lD
 lD
-np
+lD
 np
 lH
 lH
@@ -25443,21 +25446,21 @@ Od
 Od
 Od
 hn
-Od
-Od
-hn
-Od
-Od
-Od
-Od
-Od
-hn
-Od
+Ev
 Od
 hn
 Od
 Od
 Od
+Ev
+Od
+hn
+Ev
+Od
+hn
+Od
+Od
+Ev
 Od
 zo
 zo
@@ -25612,15 +25615,15 @@ lD
 lD
 Ji
 lD
+lD
 np
-np
-po
-po
-po
-po
-po
-po
-po
+Nb
+Nb
+Nb
+Nb
+Nb
+Nb
+Nb
 lH
 uD
 po
@@ -25637,21 +25640,21 @@ Od
 Od
 Od
 hn
-Od
-Od
-hn
-hn
-hn
-hn
-hn
-hn
-hn
-Od
+Ev
 Od
 hn
+hn
+hn
+hn
+EE
+hn
+hn
+Ev
+Od
+hn
 Od
 Od
-Od
+Ev
 Od
 zo
 zo
@@ -25806,15 +25809,15 @@ Za
 Za
 Za
 Dz
+lD
 np
-po
-po
-fz
-fz
-fz
-po
-po
-po
+Nb
+Nb
+Nb
+Nb
+Nb
+Nb
+Nb
 lH
 uD
 lD
@@ -25831,21 +25834,21 @@ Od
 Od
 Od
 hn
-Od
-Od
-Od
-Od
-Od
-hn
-Od
+Ev
 Od
 Od
 Od
 Od
 hn
+Ev
+Ev
+Ev
+Ev
+Od
+hn
 Od
 Od
-Od
+Ev
 Od
 Od
 zo
@@ -26000,15 +26003,15 @@ Za
 Za
 Za
 Dz
+lD
 np
-np
-np
+Nb
 zP
 zP
 zP
-vs
-po
-po
+Hb
+Hb
+Nb
 lH
 uD
 lD
@@ -26025,13 +26028,7 @@ Od
 Od
 Od
 hn
-Od
-Od
-Od
-Od
-Od
-hn
-Od
+Ev
 Od
 Od
 Od
@@ -26040,6 +26037,12 @@ hn
 Od
 Od
 Od
+Od
+Od
+hn
+Od
+Od
+Ev
 Od
 zo
 zo
@@ -26194,15 +26197,15 @@ Za
 Za
 Za
 Dz
+lD
 np
-np
-np
-po
-Fq
-zP
+Nb
+Ih
+Ih
+Ih
 vs
-po
-po
+Hb
+Nb
 lH
 uD
 lD
@@ -26219,6 +26222,7 @@ hn
 hn
 hn
 hn
+Ev
 hn
 hn
 hn
@@ -26232,8 +26236,7 @@ hn
 hn
 hn
 hn
-hn
-hn
+EE
 hn
 zo
 zo
@@ -26390,13 +26393,13 @@ Za
 Dz
 lD
 np
-np
-zP
-zP
-zP
+Nb
+Hb
+vT
+Ih
 vs
-po
-po
+Hb
+Nb
 lH
 uD
 po
@@ -26413,7 +26416,7 @@ Oz
 iM
 hn
 Od
-Od
+Ev
 hn
 Od
 Od
@@ -26427,7 +26430,7 @@ Od
 Od
 Od
 Od
-Od
+Ev
 Od
 zo
 zo
@@ -26584,13 +26587,13 @@ Za
 Dz
 Ji
 np
-po
-YU
-YU
-YU
-po
-po
-po
+Nb
+Ih
+Ih
+Ih
+vs
+Hb
+Nb
 lH
 uD
 lD
@@ -26608,20 +26611,20 @@ ee
 EE
 Ev
 Ev
+EE
+Ev
+Ev
+Ev
+Ev
+Od
+Od
+Od
 hn
 Od
 Od
 Od
 Od
-Od
-Od
-Od
-hn
-Od
-Od
-Od
-Od
-Od
+Ev
 Od
 Od
 zo
@@ -26778,12 +26781,12 @@ Za
 Za
 lD
 np
-po
-po
-po
-po
-po
-po
+Nb
+Rm
+Rm
+Rm
+Hb
+Hb
 Nb
 lH
 uD
@@ -26806,16 +26809,16 @@ hn
 Od
 Od
 Od
-Od
-Od
-Od
-Od
-hn
-Od
-Od
-Od
-Od
-Od
+Ev
+Ev
+Ev
+Ev
+EE
+Ev
+Ev
+Ev
+Ev
+Ev
 Od
 zo
 zo
@@ -26972,11 +26975,11 @@ Za
 Za
 lD
 np
-po
-po
-po
-po
-po
+Nb
+Nb
+Nb
+Nb
+Nb
 Nb
 Nb
 lH
@@ -27166,11 +27169,11 @@ Za
 Za
 lD
 np
-po
-po
-po
+Nb
+Nb
+Nb
 II
-po
+Nb
 Nb
 Nb
 lH
