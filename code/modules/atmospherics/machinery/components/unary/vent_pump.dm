@@ -413,6 +413,11 @@
 		broadcast_status()
 	update_icon()
 
+//override for vent pumps (and scrubbers) to make the multitool checks successful
+/obj/machinery/atmospherics/component/unary/vent_pump/is_hidden_underfloor()
+	var/turf/T = loc
+	return istype(T) && !T.is_plating()
+
 //* Subtypes
 
 /obj/machinery/atmospherics/component/unary/vent_pump/on
