@@ -3239,11 +3239,9 @@
 			icon_state = "pizzabox_open"
 
 		if( pizza )
-			var/image/pizzaimg = image(icon = pizza.icon, icon_state = pizza.icon_state)
+			var/mutable_appearance/pizzaimg = mutable_appearance(icon = pizza.icon, icon_state = pizza.icon_state)
 			pizzaimg.pixel_y = -3
 			overlays_to_add += pizzaimg
-
-		return
 	else
 		// Stupid code because byondcode sucks
 		var/doimgtag = 0
@@ -3256,11 +3254,11 @@
 				doimgtag = 1
 
 		if( doimgtag )
-			var/image/tagimg = image("food.dmi", icon_state = "pizzabox_tag")
+			var/mutable_appearance/tagimg = mutable_appearance("food.dmi", icon_state = "pizzabox_tag")
 			tagimg.pixel_y = boxes.len * 3
 			overlays_to_add += tagimg
+		icon_state = "pizzabox[boxes.len+1]"
 
-	icon_state = "pizzabox[boxes.len+1]"
 	add_overlay(overlays_to_add)
 
 /obj/item/pizzabox/attack_hand(mob/user, list/params)
