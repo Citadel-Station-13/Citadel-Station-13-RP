@@ -3258,7 +3258,7 @@
 			tagimg.pixel_y = boxes.len * 3
 			overlays_to_add += tagimg
 		icon_state = "pizzabox[boxes.len+1]"
-
+//e
 	add_overlay(overlays_to_add)
 
 /obj/item/pizzabox/attack_hand(mob/user, list/params)
