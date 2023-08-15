@@ -553,15 +553,15 @@
 		var/groups = global.gas_data.groups[id]
 		if((groups & GAS_GROUP_REAGENT) && (group_together & GAS_GROUP_REAGENT))
 			reagents += gas[id]
-			trace_masses_reagent += id
+			trace_reagent_masses += id
 		else if((groups & GAS_GROUP_OTHER) && (group_together & GAS_GROUP_OTHER))
 			other += gas[id]
-			trace_masses_other += id
+			trace_other_masses += id
 		else if((groups & GAS_GROUP_UNKNOWN) && (group_together & GAS_GROUP_UNKNOWN))
 			unknown += gas[id]
-			trace_masses_unknown += id
+			trace_unknown_masses += id
 		else
-			. += SPAN_NOTICE("[global.gas_data.names[id]]: [exact? "[round(gas[id], 0.001)] mol @ " : ""][round(gas[id] / total_moles, 0.001)]%[molar_masses? " ([global.molar_masses[id]]g/mol)" : ""]")
+			. += SPAN_NOTICE("[global.gas_data.names[id]]: [exact? "[round(gas[id], 0.001)] mol @ " : ""][round(gas[id] / total_moles, 0.001)]%[molar_masses? " ([global.gas_data.molar_masses[id]]g/mol)" : ""]")
 	if(reagents)
 		. += SPAN_NOTICE("Reagents: [exact? "[round(reagents, 0.001)] mol @ " : ""][round(reagents / total_moles, 0.001)]%")
 		if(molar_masses)
