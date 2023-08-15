@@ -65,7 +65,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	if(size_multiplier == new_size)
 		return 1
 	if(last_special > world.time)
-		to_chat(src, SPAN_WARNING("You are trying to resize to fast!"))
+		to_chat(src, SPAN_WARNING("You are trying to resize too fast!"))
 		return 0
 	var/change = new_size - size_multiplier
 	size_multiplier = new_size //Change size_multiplier so that other items can interact with them
