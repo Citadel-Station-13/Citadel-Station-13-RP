@@ -21,12 +21,14 @@ export const AtmosTrinaryMolarFilterControl = (props: AtmosTrinaryMolarFilterCon
     <Section title="Filter" {...props}>
       <LabeledList>
         <LabeledList.Item label="Upper Bound">
-          <NumberInput width="150px" value={props.upper} step={0.5} minValue={0} maxValue={100000000}
-            onChange={(e, val) => props.setUpper(val)} />
+          <NumberInput width="50px" value={props.upper} step={0.5} minValue={0} maxValue={100000000}
+            onChange={(e, val) => props.setUpper(val)}
+            unit="g/mol" />
         </LabeledList.Item>
         <LabeledList.Item label="Lower Bound">
-          <NumberInput width="150px" value={props.lower} step={0.5} minValue={0} maxValue={100000000}
-            onChange={(e, val) => props.setLower(val)} />
+          <NumberInput width="50px" value={props.lower} step={0.5} minValue={0} maxValue={100000000}
+            onChange={(e, val) => props.setLower(val)}
+            unit="g/mol" />
         </LabeledList.Item>
         <LabeledList.Item label="Inversion">
           <Button.Checkbox content={props.invert? "Inverted" : "Normal"}
@@ -55,7 +57,8 @@ export const AtmosTrinaryMolarFilter = (props, context) => {
       additionalListItems={(
         <LabeledList.Item label="Flow">
           <NumberInput minValue={0} maxValue={data.maxRate}
-            value={data.rate} onChange={(e, val) => act('rate', { rate: val })} /> L/s
+            value={data.rate} onChange={(e, val) => act('rate', { rate: val })}
+            unit="L/s" />
         </LabeledList.Item>
       )}>
       <AtmosTrinaryMolarFilterControl

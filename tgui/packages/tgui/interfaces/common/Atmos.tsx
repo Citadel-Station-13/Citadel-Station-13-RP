@@ -73,11 +73,17 @@ export interface FullAtmosGas extends AtmosGas {
 //* Analyzer
 
 export interface AtmosAnalyzerResults {
+  // kpa
   pressure: number;
+  // in Kelvin
   temperature: number;
+  // id to mols
   gases: Record<string, number>;
+  // id to g/mol
   masses: Record<string, number>;
+  // id to name
   names: Record<string, number>;
+  // total moles
   moles: number;
 }
 

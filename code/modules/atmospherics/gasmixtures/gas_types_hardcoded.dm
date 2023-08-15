@@ -3,7 +3,7 @@
 	id = GAS_ID_VOLATILE_FUEL
 	name = "Volatile Fuel"
 	specific_heat = 253	// J/(mol*K)	C8H18 gasoline. Isobaric, but good enough.
-	molar_mass = 0.114	// kg/mol. 		same.
+	molar_mass = 1000 * 0.114	// kg/mol. 		same.
 
 	gas_flags = GAS_FLAG_FUEL
 
@@ -13,7 +13,7 @@
 	id = GAS_ID_HELIUM
 	name = "Helium"
 	specific_heat = 80
-	molar_mass = 0.004
+	molar_mass = 1000 * 0.004
 
 	gas_flags = GAS_FLAG_FUSION_FUEL
 
@@ -22,7 +22,7 @@
 	name = "Carbon Monoxide"
 	//lore_text = "A highly poisonous gas."
 	specific_heat = 30
-	molar_mass = 0.028
+	molar_mass = 1000 * 0.028
 
 	//gas_symbol_html = "CO"
 	//gas_symbol = "CO"
@@ -34,7 +34,7 @@
 	name = "Methyl Bromide"
 	//lore_text = "A once-popular fumigant and weedkiller."
 	specific_heat = 42.59
-	molar_mass = 0.095
+	molar_mass = 1000 * 0.095
 	//gas_symbol_html = "CH<sub>3</sub>Br"
 	//gas_symbol = "CH3Br"
 	//taste_description = "pestkiller"
@@ -48,7 +48,7 @@
 	name = "Nitrogen Dioxide"
 	//color = "#ca6409"
 	specific_heat = 37
-	molar_mass = 0.054
+	molar_mass = 1000 * 0.054
 	gas_flags = GAS_FLAG_OXIDIZER
 	//gas_symbol_html = "NO<sub>2</sub>"
 	//gas_symbol = "NO2"
@@ -57,7 +57,7 @@
 	id = GAS_ID_NITRIC_OXIDE
 	name = "Nitric Oxide"
 	specific_heat = 10
-	molar_mass = 0.030
+	molar_mass = 1000 * 0.030
 	gas_flags = GAS_FLAG_OXIDIZER
 	//gas_symbol_html = "NO"
 	//gas_symbol = "NO"
@@ -66,7 +66,7 @@
 	id = GAS_ID_METHANE
 	name = "Methane"
 	specific_heat = 30
-	molar_mass = 0.016
+	molar_mass = 1000 * 0.016
 	gas_flags = GAS_FLAG_FUEL
 	//gas_symbol_html = "CH<sub>4</sub>"
 	//gas_symbol = "CH4"
@@ -76,7 +76,7 @@
 	name = "Argon"
 	//lore_text = "Just when you need it, all of your supplies argon."
 	specific_heat = 10
-	molar_mass = 0.018
+	molar_mass = 1000 * 0.018
 	//gas_symbol_html = "Ar"
 	//gas_symbol = "Ar"
 	//value = 0.25
@@ -86,7 +86,7 @@
 	id = GAS_ID_KRYPTON
 	name = "Krypton"
 	specific_heat = 5
-	molar_mass = 0.036
+	molar_mass = 1000 * 0.036
 	//gas_symbol_html = "Kr"
 	//gas_symbol = "Kr"
 	//value = 0.25
@@ -95,7 +95,7 @@
 	id = GAS_ID_NEON
 	name = "Neon"
 	specific_heat = 20
-	molar_mass = 0.01
+	molar_mass = 1000 * 0.01
 	//gas_symbol_html = "Ne"
 	//gas_symbol = "Ne"
 	//value = 0.25
@@ -104,7 +104,7 @@
 	id = GAS_ID_AMMONIA
 	name = "Ammonia"
 	specific_heat = 20
-	molar_mass = 0.017
+	molar_mass = 1000 * 0.017
 	//gas_symbol_html = "NH<sub>3</sub>"
 	//gas_symbol = "NH3"
 	//metabolism = 0.05 // So that low dosages have a chance to build up in the body.
@@ -119,7 +119,7 @@
 	id = GAS_ID_XENON
 	name = "Xenon"
 	specific_heat = 3
-	molar_mass = 0.054
+	molar_mass = 1000 * 0.054
 	//gas_symbol_html = "Xe"
 	//gas_symbol = "Xe"
 	//value = 0.25
@@ -130,7 +130,7 @@
 	//color = "#c5f72d"
 	//visual_overlay_limit = 0.5
 	specific_heat = 5
-	molar_mass = 0.017
+	molar_mass = 1000 * 0.017
 	gas_flags = GAS_FLAG_CONTAMINANT
 	/*gas_symbol_html = "Cl"
 	gas_symbol = "Cl"
@@ -150,7 +150,7 @@
 	id = GAS_ID_SULFUR_DIOXIDE
 	name = "Sulfur Dioxide"
 	specific_heat = 30
-	molar_mass = 0.044
+	molar_mass = 1000 * 0.044
 	/*gas_symbol_html = "SO<sub>2</sub>"
 	gas_symbol = "SO2"
 	dissolves_into = list(
@@ -195,7 +195,7 @@
 	id = GAS_ID_VIMUR
 	name = "Vimur"
 	specific_heat = 500	// J/(mol*K) //250% the heat capacity of phoron
-	molar_mass = 0.054 // Standard Mass of xenon
+	molar_mass = 1000 * 0.054 // Standard Mass of xenon
 
 	visual_overlay = "vimur"
 	visual_threshold = 0.1

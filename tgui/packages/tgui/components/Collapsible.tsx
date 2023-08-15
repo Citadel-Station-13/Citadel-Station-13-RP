@@ -8,14 +8,16 @@ import { BooleanLike } from 'common/react';
 import { Component, InfernoNode } from 'inferno';
 import { Box, BoxProps } from './Box';
 import { Button } from './Button';
+import { ComponentProps } from './Component';
 
-interface CollapsibleProps extends BoxProps {
+interface CollapsibleProps extends ComponentProps{
   buttons?: InfernoNode;
   color?: string;
   title?: string | InfernoNode;
   open?: BooleanLike;
   captureKeys?: BooleanLike;
   more?: InfernoNode;
+  boxProps?: BoxProps;
 }
 
 interface CollapsibleState {
@@ -46,7 +48,7 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
       ...rest
     } = props;
     return props.more? (
-      <Box {...props}>
+      <Box {...props.boxProps}>
         <div className="Collapsible__alt">
           <div className="Collapsible__alt-more">
             {props.more}
@@ -78,7 +80,7 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
         )}
       </Box>
     ): (
-      <Box {...props}>
+      <Box {...props.boxProps}>
         <div className="Collapsible">
           <div className="Collapsible__head">
             <div className="Collapsible__toggle">

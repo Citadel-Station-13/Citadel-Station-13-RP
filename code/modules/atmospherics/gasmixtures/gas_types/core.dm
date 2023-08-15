@@ -6,7 +6,7 @@
 	name = "O2"
 
 	specific_heat = 21
-	molar_mass = 0.032
+	molar_mass = 32
 	gas_flags = GAS_FLAG_OXIDIZER | GAS_FLAG_FILTERABLE | GAS_FLAG_CORE
 	gas_groups = GAS_GROUP_CORE
 
@@ -17,7 +17,7 @@
 	name = "N2"
 
 	specific_heat = 20.8
-	molar_mass = 0.028
+	molar_mass = 28
 	gas_flags = GAS_FLAG_FILTERABLE | GAS_FLAG_CORE
 	gas_groups = GAS_GROUP_CORE
 
@@ -28,7 +28,7 @@
 	name = "CO2"
 
 	specific_heat = 28.82
-	molar_mass = 0.044
+	molar_mass = 44
 	gas_flags = GAS_FLAG_FILTERABLE | GAS_FLAG_CORE
 	gas_groups = GAS_GROUP_CORE
 
@@ -42,7 +42,7 @@
 	visual_threshold = 1
 
 	specific_heat = 30.36
-	molar_mass = 0.044
+	molar_mass = 44
 	gas_flags = GAS_FLAG_OXIDIZER | GAS_FLAG_FILTERABLE | GAS_FLAG_CORE
 	gas_groups = GAS_GROUP_CORE
 
@@ -53,7 +53,7 @@
 	name = "H2"
 
 	specific_heat = 20.32
-	molar_mass = 0.002
+	molar_mass = 2
 	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL | GAS_FLAG_FILTERABLE | GAS_FLAG_CORE
 	gas_groups = GAS_GROUP_CORE
 
@@ -69,7 +69,7 @@
 	// Hypothetical group 14, period 8 element
 	// Atomic number 162
 	// Neutron/Proton ratio 1.5
-	molar_mass = 0.405
+	molar_mass = 405
 	// wonder scifi carbon-group element
 	// we're going to assume it's a polyatomic gas
 	// infact while we're at it why not just assume it's some

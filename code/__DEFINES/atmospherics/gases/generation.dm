@@ -1,7 +1,7 @@
 //* Collisions
 
 /// collision threshold for molar mass on generated gasses
-#define GAS_COLLISION_THRESHOLD_MOLAR_MASS 0.1
+#define GAS_COLLISION_THRESHOLD_MOLAR_MASS 0.09
 /// factor used because rand() doesn't do decimals.
 #define GAS_COLLISION_FACTOR_MOLAR_MASS (1 / GAS_COLLISION_THRESHOLD_MOLAR_MASS)
 

@@ -89,7 +89,7 @@
 
 	// todo: optimize this shit
 	for(var/i in 1 to 1000)
-		var/potential = rand(3 * GAS_COLLISION_FACTOR_MOLAR_MASS, 150 * GAS_COLLISION_FACTOR_MOLAR_MASS) / GAS_COLLISION_FACTOR_MOLAR_MASS
+		var/potential = rand(1.5 * GAS_COLLISION_FACTOR_MOLAR_MASS, 550 * GAS_COLLISION_FACTOR_MOLAR_MASS) / GAS_COLLISION_FACTOR_MOLAR_MASS
 		var/success = TRUE
 		for(var/id in global.gas_data.molar_masses)
 			var/mass = global.gas_data.molar_masses[id]

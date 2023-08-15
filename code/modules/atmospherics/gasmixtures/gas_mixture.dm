@@ -194,7 +194,7 @@
 		return SPECIFIC_ENTROPY_VACUUM	//that gas isn't here
 
 	//group_multiplier gets divided out in volume/gas[gasid] - also, V/(m*T) = R/(partial pressure)
-	var/molar_mass = global.gas_data.molar_masses[gasid]
+	var/molar_mass = global.gas_data.molar_masses[gasid] * 0.001
 	var/specific_heat = global.gas_data.specific_heats[gasid]
 	return R_IDEAL_GAS_EQUATION * ( log( (IDEAL_GAS_ENTROPY_CONSTANT*volume/(gas[gasid] * temperature)) * (molar_mass*specific_heat*temperature)**(2/3) + 1 ) +  15 )
 
@@ -443,9 +443,13 @@
 	update_values()
 	return 1
 
+/**
+ * get mass in kilograms
+ */
 /datum/gas_mixture/proc/get_mass()
 	for(var/g in gas)
 		. += gas[g] * global.gas_data.molar_masses[g] * group_multiplier
+	. *= 0.001
 
 // todo: sort above
 
@@ -537,27 +541,43 @@
 		. += SPAN_WARNING("Pressure: 0 kPa")
 		return
 	var/pressure = return_pressure()
-	. += SPAN_NOTICE("Pressure: [QUANTIZE(pressure)] kPa")
-	. += SPAN_NOTICE("Temperature: [QUANTIZE(temperature)]&deg;K ([QUANTIZE(temperature - T0C)]&deg;C)")
+	. += SPAN_NOTICE("Pressure: [round(pressure, 0.001)] kPa")
+	. += SPAN_NOTICE("Temperature: [round(temperature, 0.001)]&deg;K ([round(temperature - T0C, 0.001)]&deg;C)")
 	var/reagents = 0
 	var/other = 0
 	var/unknown = 0
+	var/list/trace_reagent_masses = list()
+	var/list/trace_other_masses = list()
+	var/list/trace_unknown_masses = list()
 	for(var/id in gas)
 		var/groups = global.gas_data.groups[id]
 		if((groups & GAS_GROUP_REAGENT) && (group_together & GAS_GROUP_REAGENT))
 			reagents += gas[id]
+			trace_masses_reagent += id
 		else if((groups & GAS_GROUP_OTHER) && (group_together & GAS_GROUP_OTHER))
 			other += gas[id]
+			trace_masses_other += id
 		else if((groups & GAS_GROUP_UNKNOWN) && (group_together & GAS_GROUP_UNKNOWN))
 			unknown += gas[id]
+			trace_masses_unknown += id
 		else
-			. += SPAN_NOTICE("[global.gas_data.names[id]]: [exact? "[QUANTIZE(gas[id])] mol @ " : ""][QUANTIZE(gas[id] / total_moles)]%")
+			. += SPAN_NOTICE("[global.gas_data.names[id]]: [exact? "[round(gas[id], 0.001)] mol @ " : ""][round(gas[id] / total_moles, 0.001)]%[molar_masses? " ([global.molar_masses[id]]g/mol)" : ""]")
 	if(reagents)
-		. += SPAN_NOTICE("Reagents: [exact? "[QUANTIZE(reagents)] mol @ " : ""][QUANTIZE(reagents / total_moles)]%")
+		. += SPAN_NOTICE("Reagents: [exact? "[round(reagents, 0.001)] mol @ " : ""][round(reagents / total_moles, 0.001)]%")
+		if(molar_masses)
+			for(var/id in trace_reagent_masses)
+				. += SPAN_NOTICE("[FOURSPACES] - [global.gas_data.names[id]] ([global.gas_data.molar_masses[id]] g/mol)")
 	if(other)
-		. += SPAN_NOTICE("Other: [exact? "[QUANTIZE(other)] mol @ " : ""][QUANTIZE(other / total_moles)]%")
+		. += SPAN_NOTICE("Other: [exact? "[round(other, 0.001)] mol @ " : ""][round(other / total_moles, 0.001)]%")
+		if(molar_masses)
+			for(var/id in trace_other_masses)
+				. += SPAN_NOTICE("[FOURSPACES] - [global.gas_data.names[id]] ([global.gas_data.molar_masses[id]] g/mol)")
 	if(unknown)
-		. += SPAN_NOTICE("Unknown: [exact? "[QUANTIZE(unknown)] mol @ " : ""][QUANTIZE(unknown / total_moles)]%")
+		. += SPAN_NOTICE("Unknown: [exact? "[round(unknown, 0.001)] mol @ " : ""][round(unknown / total_moles, 0.001)]%")
+		if(molar_masses)
+			for(var/id in trace_unknown_masses)
+				. += SPAN_NOTICE("[FOURSPACES] - [global.gas_data.names[id]] ([global.gas_data.molar_masses[id]] g/mol)")
+
 
 /datum/gas_mixture/proc/tgui_analyzer_scan(group_together, molar_masses)
 	. = list()
@@ -583,8 +603,8 @@
 			gases["Unknown"] += gas[id]
 		else
 			gases[id] += gas[id]
-			if(molar_masses)
-				masses[id] = global.gas_data.molar_masses[id]
+		if(molar_masses)
+			masses[id] = global.gas_data.molar_masses[id]
 
 //* Sharing; usually used for environmental systems.
 
