@@ -121,9 +121,9 @@
 	if(istype(T) && !T.Adjacent(get_turf(src)))
 		return 0
 
-	var/resolved = target.attackby(device,holder.wearer)
-	if(!resolved && device && target)
-		device.afterattack(target,holder.wearer,1)
+	var/obj/item/rcd/electric/mounted/hardsuit/R = device
+	R.use_rcd(target, holder.wearer)
+
 	return 1
 
 
@@ -652,6 +652,7 @@
 	to_chat(H, "<font color=#4F49AF><b>You activate the suit's sprint mode.</b></font>")
 
 	holder.slowdown -= sprint_speed
+	holder.sprint_slowdown_modifier = -sprint_speed
 
 /obj/item/hardsuit_module/sprinter/deactivate()
 
@@ -663,6 +664,7 @@
 	to_chat(H, "<span class='danger'>Your hardsuit returns to normal speed.</span>")
 
 	holder.slowdown += sprint_speed
+	holder.sprint_slowdown_modifier = 0
 
 /obj/item/hardsuit_module/device/hand_defib
 	name = "\improper Hand-mounted Defibrillator"
