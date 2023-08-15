@@ -32,7 +32,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 /obj/item/paicard/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_ITEM_EQUIPPED, PROC_REF(stop_displaying_hologram))
-	update_icons()
+	update_screen_icons()
 
 /obj/item/paicard/Destroy()
 	//Will stop people throwing friend pAIs into the singularity so they can respawn
@@ -338,9 +338,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 		pai.show_message(rendered, type)
 	..()
 
-/obj/item/paicard/proc/update_icons()
-	cut_overlays()
-
+/obj/item/paicard/proc/update_screen_icons()
 	// handle our screen overlays
 	if(current_emotion != "off" && current_emotion != "character")
 		add_overlay("pai-underlay")
@@ -351,6 +349,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	else
 		add_overlay("pai-off")
 
+/obj/item/paicard/proc/update_hologram_icons()
 	// if we are displaying a hologram currently, display it
 	if(displaying_hologram)
 		var/image/holoray_image = image(holoray_icon, holoray_icon_state)
@@ -367,6 +366,11 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 		// not displaying a hologram? reset our transforms because it might be wrong
 		var/matrix/M = matrix()
 		transform = M
+
+/obj/item/paicard/proc/update_icons()
+	cut_overlays()
+	update_screen_icons()
+	update_hologram_icons()
 
 /obj/item/paicard/proc/display_hologram_from_image(image)
 	displaying_hologram = TRUE
