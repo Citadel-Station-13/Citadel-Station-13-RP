@@ -31,8 +31,11 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 
 /obj/item/paicard/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_ITEM_EQUIPPED, PROC_REF(stop_displaying_hologram))
 	update_icons()
+
+/obj/item/paicard/equipped(mob/user, slot, flags)
+	. = ..()
+	stop_displaying_hologram()
 
 /obj/item/paicard/Destroy()
 	//Will stop people throwing friend pAIs into the singularity so they can respawn
