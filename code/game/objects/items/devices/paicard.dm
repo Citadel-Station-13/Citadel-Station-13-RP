@@ -338,12 +338,6 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 		pai.show_message(rendered, type)
 	..()
 
-/obj/item/paicard/proc/update_screen_icons()
-
-
-/obj/item/paicard/proc/update_hologram_icons()
-
-
 /obj/item/paicard/proc/update_icons()
 	cut_overlays()
 
