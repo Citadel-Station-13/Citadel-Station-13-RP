@@ -458,4 +458,5 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 /mob/living/get_standard_pixel_y_offset(lying)
 	. = ..()
-	. += (size_multiplier - 1) * 16
+	if(is_buckled())
+		. += (size_multiplier - 1) * 16

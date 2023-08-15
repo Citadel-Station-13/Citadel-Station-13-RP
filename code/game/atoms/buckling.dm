@@ -226,8 +226,8 @@
 		L.update_lying()
 		L.update_water()
 	// end
-	M.reset_pixel_offsets()
 	mob_unbuckled(M, flags, user, semantic)
+	M.reset_pixel_offsets()
 	return TRUE
 
 /**
