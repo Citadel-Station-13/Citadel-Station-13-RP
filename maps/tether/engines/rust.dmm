@@ -100,9 +100,6 @@
 /obj/structure/grille,
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"ap" = (
-/turf/space,
-/area/engineering/engine_smes)
 "aq" = (
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -996,7 +993,6 @@
 	id = "EngineEmitterPortWest";
 	name = "Engine Room Blast Doors";
 	pixel_y = -25;
-	req_access = null;
 	req_one_access = list(11,24)
 	},
 /obj/machinery/camera/network/engine{
@@ -1101,7 +1097,6 @@
 	id = "EngineEmitterPortWest";
 	name = "Engine Room Blast Doors";
 	pixel_y = 25;
-	req_access = null;
 	req_one_access = list(11,24)
 	},
 /turf/simulated/floor,
@@ -1285,7 +1280,6 @@
 	id = "EngineEmitterPortWest2";
 	name = "Engine Room Blast Doors";
 	pixel_x = 25;
-	req_access = null;
 	req_one_access = list(11,24)
 	},
 /turf/simulated/floor,
@@ -1599,7 +1593,7 @@ aa
 ab
 ab
 ai
-ap
+ab
 aw
 ax
 aw
@@ -1692,8 +1686,8 @@ aa
 "}
 (11,1,1) = {"
 aa
-ab
-ab
+ai
+aj
 ak
 ak
 ak
@@ -1724,7 +1718,7 @@ aa
 "}
 (12,1,1) = {"
 aa
-ab
+ai
 ab
 ak
 an
@@ -1756,7 +1750,7 @@ aa
 "}
 (13,1,1) = {"
 aa
-ab
+ai
 ab
 ak
 an
@@ -1788,8 +1782,8 @@ aa
 "}
 (14,1,1) = {"
 aa
-ab
-ab
+aj
+aj
 ak
 an
 an
@@ -1852,8 +1846,8 @@ aa
 "}
 (16,1,1) = {"
 aa
-ab
-ab
+aj
+aj
 ak
 an
 aA
@@ -1884,7 +1878,7 @@ aa
 "}
 (17,1,1) = {"
 aa
-ab
+ai
 ab
 ak
 an
@@ -1916,7 +1910,7 @@ aa
 "}
 (18,1,1) = {"
 aa
-ab
+ai
 ab
 ak
 an
@@ -1948,8 +1942,8 @@ aa
 "}
 (19,1,1) = {"
 aa
-ab
-ab
+ai
+aj
 ak
 ao
 ag
@@ -1980,7 +1974,7 @@ aa
 "}
 (20,1,1) = {"
 aa
-ab
+aj
 ab
 ak
 aU
@@ -2012,7 +2006,7 @@ aa
 "}
 (21,1,1) = {"
 aa
-ab
+ai
 ab
 ak
 af
@@ -2044,8 +2038,8 @@ aa
 "}
 (22,1,1) = {"
 aa
-ab
-ab
+ai
+aj
 ak
 ar
 aE
@@ -2076,7 +2070,7 @@ aa
 "}
 (23,1,1) = {"
 aa
-ab
+ai
 ab
 ak
 as
@@ -2108,7 +2102,7 @@ aa
 "}
 (24,1,1) = {"
 aa
-ab
+aj
 ab
 ak
 at
@@ -2140,7 +2134,7 @@ aa
 "}
 (25,1,1) = {"
 aa
-ab
+ai
 ab
 ak
 au
@@ -2172,8 +2166,8 @@ aa
 "}
 (26,1,1) = {"
 aa
-ab
-ab
+ai
+aj
 am
 ak
 ak

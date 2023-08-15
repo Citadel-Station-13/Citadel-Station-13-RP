@@ -162,6 +162,11 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/nanotrasen/nanotrasen_main.dmi'
 	species_alternates = list(SPECIES_TAJ = "NanoTrasen - Tajaran", SPECIES_UNATHI = "NanoTrasen - Unathi")
 
+/datum/robolimb/mpc
+	company = "Moghes Prosthetics Company"
+	desc = "A simple robotic limb with a lizard-like design."
+	icon = 'icons/mob/cyberlimbs/mpc/mpc.dmi'
+
 /datum/robolimb/nanotrasen_tajaran
 	company = "NanoTrasen - Tajaran"
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_SKRELL, SPECIES_ZADDAT)
@@ -457,7 +462,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
-
 /datum/robolimb/xion_monitor
 	company = "Xion Monitor"
 	desc = "Xion Mfg.'s unique spin on a popular prosthetic head model. It looks and minimalist and utilitarian."
@@ -466,8 +470,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
 
-
-
 /datum/robolimb/zenghu
 	company = "Zeng-Hu"
 	desc = "This limb has a rubbery fleshtone covering with visible seams."
@@ -475,8 +477,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	species_alternates = list(SPECIES_TAJ = "Zeng-Hu - Tajaran")
 	unavailable_to_build = TRUE
 	skin_tone = TRUE
-
-
 
 /datum/robolimb/cyber_beast
 	company = "Cyber Tech"

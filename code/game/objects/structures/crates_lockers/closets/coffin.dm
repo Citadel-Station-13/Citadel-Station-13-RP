@@ -2,21 +2,19 @@
 	name = "coffin"
 	desc = "It's a burial receptacle for the dearly departed."
 	icon_state = "coffin"
-	icon_closed = "coffin"
-	icon_opened = "coffin_open"
+	icon_closed = ""
+	icon_opened = "open"
 	seal_tool = /obj/item/tool/screwdriver
 	breakout_sound = 'sound/weapons/tablehit1.ogg'
+	icon = 'icons/obj/closets/coffin_wood.dmi'
+	use_old_icon_update = TRUE
 
 /obj/structure/closet/coffin/comfy
 	name = "extra comfortable coffin"
 	desc = "It's a burial receptacle for the dearly departed. This one has been modified with new upholstery to make it more comfortable to lay in."
 	icon = 'icons/obj/closets/coffin.dmi'
-
-/obj/structure/closet/coffin/update_icon()
-	if(!opened)
-		icon_state = icon_closed
-	else
-		icon_state = icon_opened
+	icon_closed = "coffin"
+	icon_opened = "coffin_open"
 
 /* Graves */
 /obj/structure/closet/grave
@@ -24,21 +22,16 @@
 	desc = "Dirt."
 	icon = 'icons/obj/closets/grave.dmi'
 	closet_appearance = null
-	icon_state = "grave"
-	icon_closed = "grave"
-	icon_opened = "grave_open"
+	icon_state = "closed"
+	icon_closed = "closed"
+	icon_opened = "open"
 	seal_tool = null
 	breakout_sound = 'sound/weapons/thudswoosh.ogg'
 	anchored = 1
 	max_closets = 1
 	opened = 1
 	color = "#c2b29f"
-
-/obj/structure/closet/grave/update_icon()
-	if(opened)
-		icon_state = "open"
-	else
-		icon_state = "closed"
+	use_old_icon_update = TRUE
 
 /obj/structure/closet/grave/attack_hand(mob/user, list/params)
 	if(opened)

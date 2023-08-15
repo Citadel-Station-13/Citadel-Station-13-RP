@@ -85,9 +85,10 @@
 	icon_closed = "alien_locker"
 	icon_opened = "alien_locker_open"
 	anchored = TRUE
-	
+	use_old_icon_update = TRUE
+
 /obj/structure/closet/largecardboard
-	name = "Large Cardboard Box"
+	name = "large cardboard box"
 	desc = "It was my destiny to be here."
 	icon_state = "box"
 	icon_closed = "box"
@@ -98,3 +99,6 @@
 	breakout_sound = 'sound/misc/boxtear.ogg'
 	open_sound = 'sound/misc/boxopen.ogg'
 	close_sound = 'sound/misc/boxclose.ogg'
+	icon = 'icons/obj/closets/box.dmi'
+	use_old_icon_update = TRUE
+

@@ -46,3 +46,11 @@
 	laser = 0.25
 	energy = 0.1
 	bomb = 0.25
+
+/datum/armor/lavaland/xeno
+	melee = 0.5
+	bullet = 0.35
+	laser = 0.4
+	energy = 0.4
+	bio = 0.3
+	rad = 0.3

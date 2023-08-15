@@ -1061,7 +1061,7 @@
 
 	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)
 
-	visible_emote("Adjusts [T.his] posture.")
+	visible_emote("adjusts [T.his] posture.")
 
 /mob/living/carbon/human/verb/set_flavor()
 	set name = "Set Flavour Text"

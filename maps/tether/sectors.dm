@@ -1,7 +1,6 @@
 /obj/overmap/entity/visitable/sector/virgo3b
 	extra_z_levels = list(
 		/datum/map_level/tether/mine,
-		/datum/map_level/tether/solars,
 		/datum/map_level/tether/plains,
 		/datum/map_level/tether/underdark,
 	)

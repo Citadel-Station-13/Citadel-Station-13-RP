@@ -53,7 +53,7 @@
 /area/triumph/surfacebase/north_stairs_one
 	name = "\improper North Stairwell First Floor"
 	icon_state = "dk_yellow"
-/area/triumph/surfacebase/north_staires_two
+/area/triumph/surfacebase/north_stairs_two
 	name = "\improper North Stairwell Second Floor"
 	icon_state = "dk_yellow"
 /area/triumph/surfacebase/north_stairs_three

@@ -44,3 +44,15 @@ GLOBAL_LIST_INIT(dmm_orientations, list(
 	xi = -1
 	yi = -1
 	turn_angle = 270
+
+// for looking up dir from south to turn angle
+GLOBAL_REAL_LIST(dmm_orientation_turn) = list(
+	180, // north
+	0, // south
+	0,
+	90, // east
+	0,
+	0,
+	0,
+	270, // west
+)

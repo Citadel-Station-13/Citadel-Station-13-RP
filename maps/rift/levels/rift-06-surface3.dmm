@@ -21296,7 +21296,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/secondary/docking_hallway)
 "iap" = (
@@ -22899,7 +22899,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/secondary/docking_hallway)
 "mkq" = (

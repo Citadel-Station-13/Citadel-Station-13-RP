@@ -67,3 +67,4 @@
 	encased = 0
 	spread_dam = 1
 	transparent = 1
+	hair_opacity = 160

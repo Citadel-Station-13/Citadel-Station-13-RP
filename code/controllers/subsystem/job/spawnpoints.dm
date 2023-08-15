@@ -36,7 +36,7 @@
 	for(var/obj/landmark/spawnpoint/overflow/S in GLOB.landmarks_list)
 		if(!S.faction)
 			continue
-		LAZYDISTINCTADD(latejoin_spawnpoints[S.faction], S)
+		LAZYDISTINCTADD(overflow_spawnpoints[S.faction], S)
 	for(var/obj/landmark/spawnpoint/custom/S in GLOB.landmarks_list)
 		if(!S.key)
 			continue

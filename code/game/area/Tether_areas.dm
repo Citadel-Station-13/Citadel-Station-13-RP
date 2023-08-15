@@ -191,7 +191,7 @@
 /area/tether/surfacebase/north_stairs_one
 	name = "\improper North Stairwell First Floor"
 	icon_state = "dk_yellow"
-/area/tether/surfacebase/north_staires_two
+/area/tether/surfacebase/north_stairs_two
 	name = "\improper North Stairwell Second Floor"
 	icon_state = "dk_yellow"
 /area/tether/surfacebase/north_stairs_three
@@ -700,10 +700,10 @@
 	name = "\improper Solars Maintenance"
 /area/maintenance/lower/mining_eva
 	name = "\improper Mining EVA Maintenance"
-/area/maintenance/lower/public_garden_maintenence
-	name = "\improper Public Garden Maintenence"
-/area/maintenance/lower/public_garden_maintenence/upper
-	name = "\improper Upper Public Garden Maintenence"
+/area/maintenance/lower/public_garden_maintenance
+	name = "\improper Public Garden Maintenance"
+/area/maintenance/lower/public_garden_maintenance/upper
+	name = "\improper Upper Public Garden Maintenance"
 /area/maintenance/lower/medsec_maintenance
 	name = "\improper Surface MedSec Maintenance"
 

@@ -90,7 +90,7 @@
 			levels += is_it_a_path
 			continue
 		// json
-		if(serialized_level[1] == "{}")
+		if(serialized_level[1] == "{")
 			var/datum/map_level/level = new
 			level.deserialize(json_decode(serialized_level))
 			levels += level

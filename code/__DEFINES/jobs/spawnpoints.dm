@@ -11,5 +11,5 @@
 #define LATEJOIN_METHOD_ROBOT_STORAGE		"Robotic storage"
 /// Tram
 #define LATEJOIN_METHOD_TRAM				"Tram"
-/// Shuttle dock
-#define LATEJOIN_METHOD_SHUTTLE_DOCK		"Shuttle Dock"
+
+/// DO NOT ADD MORE SPAWNPOINT METHODS

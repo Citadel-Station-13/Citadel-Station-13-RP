@@ -905,6 +905,12 @@
 	allowed = list(/obj/item/clothing/head/helmet/ashlander, /obj/item/melee, /obj/item/gun/ballistic)
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
+/obj/item/clothing/suit/armor/ashlander/xeno
+	name = "wyrm chitin armor"
+	desc = "Armor crafted from the chitin of now vanquished invading monsters from the stars. These relic suits are now prized symbols of Scorian victory over the invaders."
+	icon_state = "surtxeno"
+	armor_type = /datum/armor/lavaland/xeno
+
 //More Warhammer Fun
 /obj/item/clothing/suit/armor/utilitarian
 	name = "utilitarian military armor"

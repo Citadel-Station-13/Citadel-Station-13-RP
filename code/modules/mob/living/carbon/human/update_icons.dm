@@ -445,8 +445,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		apply_layer(HAIR_LAYER)
 		return
 
-	if(head_organ.transparent)
-		face_standing += rgb(,,,120)
+	face_standing += rgb(,,,head_organ.hair_opacity)
 
 	overlays_standing[HAIR_LAYER] = image(face_standing, layer = BODY_LAYER+HAIR_LAYER)
 	apply_layer(HAIR_LAYER)

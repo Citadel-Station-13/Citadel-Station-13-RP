@@ -86,6 +86,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		d1 = text2num( copytext( icon_state, 1, dash ) )
 		d2 = text2num( copytext( icon_state, dash+1 ) )
 
+	if(dir != SOUTH)
+		// handle maploader turning
+		setDir(dir)
+
 	var/turf/T = src.loc // hide if turf is not intact
 	if(level==1 && T)
 		hide(!T.is_plating())
@@ -154,8 +158,8 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	if(d1)
 		// Using turn will maintain the cable's shape
 		// Taking the difference between current orientation and new one
-		d1 = turn(d1, dir2angle(new_dir) - dir2angle(dir))
-	d2 = turn(d2, dir2angle(new_dir) - dir2angle(dir))
+		d1 = turn(d1, global.dmm_orientation_turn[new_dir])
+	d2 = turn(d2, global.dmm_orientation_turn[new_dir])
 
 	// Maintain d1 < d2
 	if(d1 > d2)
@@ -165,6 +169,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 	//	..()	Cable sprite generation is dependent upon only d1 and d2.
 	// 			Actually changing dir will rotate the generated sprite to look wrong, but function correctly.
+	dir = SOUTH
 	update_icon()
 	// Add this cable back to the powernet, if it's connected to any
 	if(d1)

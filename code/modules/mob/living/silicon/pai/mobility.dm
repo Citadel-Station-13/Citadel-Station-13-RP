@@ -13,7 +13,7 @@
 		return
 
 	if(istype(shell.loc, /obj/item/holder))
-		to_chat(src, "You can't unfold while being like this.")
+		to_chat(src, "You can't unfold while being held like this.")
 		return
 
 	if(!can_action())
@@ -37,7 +37,7 @@
 	update_perspective()
 	set_resting(FALSE)
 	update_mobility()
-	icon_state = "[chassis]"
+	update_icon()
 	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
 /mob/living/silicon/pai/proc/open_up()
@@ -66,7 +66,7 @@
 		var/obj/item/pda/holder = shell.loc
 		holder.pai = null
 
-	// handle the actual object stuffing via the component
+	// handle the actual object stuffing via the component, essentially swapping their loc's around
 	transform_component.put_in_mob()
 
 	update_perspective()
@@ -75,13 +75,13 @@
 	if(istype(card))
 		card.screen_loc = null
 
+	// we might not actually be on a turf after the object stuffing, so make sure we are
 	var/turf/T = get_turf(src)
 	if(istype(T))
+		src.forceMove(T)
 		T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
 
 	add_verb(src, /mob/living/silicon/pai/proc/pai_nom)
-	add_verb(src, /mob/living/proc/set_size)
-	add_verb(src, /mob/living/proc/shred_limb)
 
 // Handle being picked up.
 /mob/living/silicon/pai/get_scooped(var/mob/living/carbon/grabber, var/self_drop)
@@ -130,3 +130,21 @@
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return FALSE
 	return TRUE
+
+/mob/living/silicon/pai/update_transform(animate = TRUE)
+	. = ..()
+	var/matrix/M = matrix()
+	// no chassis means we're using a hologram
+	var/turning_value_to_use = 0
+	if(!chassis)
+		turning_value_to_use = lying
+	// handle turning
+	M.Turn(turning_value_to_use)
+	// extremely lazy heuristic to see if we should shift down to appear to be, well, down.
+	if(turning_value_to_use < -45 || turning_value_to_use > 45)
+		M.Translate(1,-6)
+
+	if(animate)
+		animate(src, transform = M, time = 1, flags = ANIMATION_PARALLEL)
+	else
+		transform = M

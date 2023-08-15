@@ -14,22 +14,6 @@
 	teleport_x = src.x
 	teleport_y = world.maxy - 1
 
-/obj/effect/step_trigger/teleporter/to_solars
-	map_level_target = /datum/map_level/tether/solars
-
-/obj/effect/step_trigger/teleporter/to_solars/Initialize(mapload)
-	. = ..()
-	teleport_x = world.maxx - 1
-	teleport_y = src.y
-
-/obj/effect/step_trigger/teleporter/from_solars
-	map_level_target = /datum/map_level/tether/station/surface_low
-
-/obj/effect/step_trigger/teleporter/from_solars/Initialize(mapload)
-	. = ..()
-	teleport_x = 2
-	teleport_y = src.y
-
 /obj/effect/step_trigger/teleporter/wild/Initialize(mapload)
 	. = ..()
 

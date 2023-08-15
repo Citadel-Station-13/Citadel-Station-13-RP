@@ -157,6 +157,12 @@
 /obj/structure/table/bone,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
+"tz" = (
+/obj/item/elderstone,
+/obj/structure/table/bone,
+/obj/item/clothing/head/helmet/ashlander/xeno,
+/turf/simulated/floor/bone/lavaland,
+/area/lavaland/east/ashlander_village)
 "tF" = (
 /obj/structure/table/bone,
 /obj/item/reagent_containers/dropper/ashlander,
@@ -312,6 +318,7 @@
 "Qg" = (
 /obj/item/elderstone,
 /obj/structure/table/bone,
+/obj/item/clothing/suit/armor/ashlander/xeno,
 /turf/simulated/floor/bone/lavaland,
 /area/lavaland/east/ashlander_village)
 "Qh" = (
@@ -22842,7 +22849,7 @@ DP
 DP
 DP
 EA
-Qg
+tz
 Vj
 fV
 Vj

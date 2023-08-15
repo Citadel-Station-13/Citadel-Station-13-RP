@@ -37,6 +37,7 @@
 	var/last_act = 0
 	var/overlay_detail
 
+	var/arch_icon = 'icons/turf/walls.dmi'
 	var/datum/geosample/geologic_data
 	var/excavation_level = 0
 	var/list/finds
@@ -256,9 +257,9 @@
 			. += appearance
 		*/
 		if(archaeo_overlay)
-			. += mutable_appearance(icon, archaeo_overlay)
+			. += mutable_appearance(arch_icon, archaeo_overlay)
 		if(excav_overlay)
-			. += mutable_appearance(icon, excav_overlay)
+			. += mutable_appearance(arch_icon, excav_overlay)
 
 	//We are a sand floor
 	else

@@ -64,6 +64,31 @@
 	set waitfor = FALSE
 	SEND_SIGNAL(src, COMSIG_ATOM_BUMPED, bumped_atom)
 
+//? Direction
+
+/**
+ * Hook for running code when a dir change occurs
+ */
+/atom/proc/setDir(newdir)
+	SHOULD_CALL_PARENT(TRUE)
+	if(dir == newdir)
+		return FALSE
+	if (SEND_SIGNAL(src, COMSIG_ATOM_PRE_DIR_CHANGE, dir, newdir) & COMPONENT_ATOM_BLOCK_DIR_CHANGE)
+		newdir = dir
+		return FALSE
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
+	dir = newdir
+
+	return TRUE
+
+/**
+ * hook for abstract direction sets from the maploader
+ *
+ * return FALSE to override maploader automatic rotation
+ */
+/atom/proc/preloading_dir(datum/map_preloader/preloader)
+	return TRUE
+
 //? pass flags
 
 /**

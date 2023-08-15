@@ -20,7 +20,7 @@
 
 	var/hibernate = 0 //Do we even process?
 	var/scrubbing = 1 //0 = siphoning, 1 = scrubbing
-	var/list/scrubbing_gas = list(/datum/gas/carbon_dioxide)
+	var/list/scrubbing_gas = list(/datum/gas/carbon_dioxide, /datum/gas/phoron)
 
 	var/panic = 0 //is this scrubber panicked?
 

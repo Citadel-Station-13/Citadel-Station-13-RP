@@ -66,7 +66,7 @@
 	on_store_visible_message_1 = "'s speakers chime, anouncing a shuttle has arrived to take"
 	on_store_visible_message_2 = "to the commanding ship"
 	time_till_despawn = 10 SECONDS
-	spawnpoint_type = /datum/spawnpoint/shuttle
+	spawnpoint_type = /datum/spawnpoint/arrivals
 
 /obj/machinery/cryopod/robot/door/shuttle/process(delta_time)
 	if(SSemergencyshuttle.online() || SSemergencyshuttle.returned())
@@ -90,13 +90,9 @@
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
-/datum/spawnpoint/shuttle
-	display_name = "Shuttle Bay"
-	method = LATEJOIN_METHOD_SHUTTLE_DOCK
-
 // Used at centcomm for the elevator
 /obj/machinery/cryopod/robot/door/dorms
-	spawnpoint_type = /datum/spawnpoint/shuttle
+	spawnpoint_type = /datum/spawnpoint/arrivals
 
 ///////////////////////////////////////////////////////////////////////////
 

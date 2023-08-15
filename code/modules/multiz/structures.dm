@@ -398,6 +398,10 @@
 
 	return INITIALIZE_HINT_QDEL
 
+/obj/structure/stairs/spawner/preloading_dir(datum/map_preloader/preloader)
+	dir = turn(dir, preloader.turn_angle)
+	return FALSE
+
 // For ease of spawning. While you *can* spawn the base type and set its dir, this is useful for adminbus and a little bit quicker to map in
 /obj/structure/stairs/spawner/north
 	dir = NORTH

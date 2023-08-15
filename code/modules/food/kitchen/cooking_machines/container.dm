@@ -123,7 +123,7 @@
 		total += J.w_class
 
 	if((max_space - total) >= I.w_class)
-		return 1
+		return TRUE
 
 
 //Takes a reagent holder as input and distributes its contents among the items in the container

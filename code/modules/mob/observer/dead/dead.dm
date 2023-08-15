@@ -198,6 +198,7 @@ GLOBAL_LIST_EMPTY(observer_list)
 
 /mob/proc/ghostize(var/can_reenter_corpse = 1)
 	if(key)
+		SSplaytime.queue_playtimes(client)
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
 			if(H.vr_holder && !can_reenter_corpse)

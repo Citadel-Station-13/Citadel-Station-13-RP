@@ -27987,7 +27987,7 @@
 /turf/simulated/floor/water/pool,
 /area/space)
 "vda" = (
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "vde" = (

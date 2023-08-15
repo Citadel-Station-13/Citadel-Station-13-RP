@@ -32,7 +32,7 @@ GLOBAL_VAR_INIT(default_glide_size, 0)
 
 /// Set appearance flags in vars
 #ifdef SMOOTH_MOVEMENT
-	#define SET_APPEARANCE_FLAGS(_flags) appearance_flags = (_flags | LONG_GLIDE)
+	#define SET_APPEARANCE_FLAGS(_flags) appearance_flags = (_flags | LONG_GLIDE | TILE_MOVER)
 #else
 	#define SET_APPEARANCE_FLAGS(_flags) appearance_flags = _flags
 #endif

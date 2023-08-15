@@ -40,11 +40,7 @@ fundamental differences
 	set name = "Choose output"
 	set category = "Object"
 
-	if (!isliving(usr))
-		return
-
-	if (!usr.IsAdvancedToolUser())
-		to_chat(usr, "<span class='notice'>You can't operate [src].</span>")
+	if(!can_use_check())
 		return
 
 	if(output_options.len)
@@ -61,12 +57,12 @@ fundamental differences
 /obj/machinery/appliance/mixer/has_space(var/obj/item/I)
 	var/datum/cooking_item/CI = cooking_objs[1]
 	if (!CI || !CI.container)
-		return 0
+		return FALSE
 
 	if (CI.container.can_fit(I))
 		return CI
 
-	return 0
+	return FALSE
 
 
 /obj/machinery/appliance/mixer/can_remove_items(mob/user)
@@ -95,8 +91,8 @@ fundamental differences
 			if (!user || !user.put_in_hands(I))
 				I.forceMove(get_turf(src))
 			update_icon()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 
 /obj/machinery/appliance/mixer/toggle_power()
