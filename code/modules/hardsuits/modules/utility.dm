@@ -292,7 +292,7 @@
 
 /obj/item/hardsuit_module/voice
 
-	name = "hardsuit voice synthesiser"
+	name = "hardsuit voice synthesizer"
 	desc = "A speaker box and sound processor."
 	icon_state = "megaphone"
 	usable = 1
@@ -300,9 +300,9 @@
 	toggleable = 0
 	disruptive = 0
 
-	engage_string = "Configure Synthesiser"
+	engage_string = "Configure Synthesizer"
 
-	interface_name = "voice synthesiser"
+	interface_name = "voice synthesizer"
 	interface_desc = "A flexible and powerful voice modulator system."
 
 	var/obj/item/voice_changer/voice_holder
@@ -321,7 +321,7 @@
 	if(!..())
 		return 0
 
-	var/choice= input("Would you like to toggle the synthesiser or set the name?") as null|anything in list("Enable","Disable","Set Name")
+	var/choice= input("Would you like to toggle the synthesizer or set the name?") as null|anything in list("Enable","Disable","Set Name")
 
 	if(!choice)
 		return 0
@@ -330,11 +330,11 @@
 		if("Enable")
 			active = 1
 			voice_holder.active = 1
-			to_chat(usr, "<font color=#4F49AF>You enable the speech synthesiser.</font>")
+			to_chat(usr, "<font color=#4F49AF>You enable the speech synthesizer.</font>")
 		if("Disable")
 			active = 0
 			voice_holder.active = 0
-			to_chat(usr, "<font color=#4F49AF>You disable the speech synthesiser.</font>")
+			to_chat(usr, "<font color=#4F49AF>You disable the speech synthesizer.</font>")
 		if("Set Name")
 			var/raw_choice = sanitize(input(usr, "Please enter a new name.")  as text|null, MAX_NAME_LEN)
 			if(!raw_choice)
