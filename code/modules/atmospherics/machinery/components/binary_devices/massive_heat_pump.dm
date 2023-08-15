@@ -3,8 +3,8 @@
  *  do the job of normal heat pumps
  */
 
-#define EFFICENCY_MULT 1
-#define EFFICENCY_LIMIT_MULT 1
+#define EFFICIENCY_MULT 1
+#define EFFICIENCY_LIMIT_MULT 1
 
 
 /obj/machinery/atmospherics/component/binary/massive_heat_pump
@@ -84,7 +84,7 @@
 
 	var/power_draw = -1
 	//Now we are at the point where we need to actively pump
-	efficiency = get_thermal_efficency()
+	efficiency = get_thermal_efficiency()
 	var/energy_transfered = 0
 	CACHE_VSC_PROP(atmos_vsc, /atmos/heatpump/performance_factor, performance_factor)
 
@@ -105,11 +105,11 @@
 
 	return 1
 
-/obj/machinery/atmospherics/component/binary/massive_heat_pump/proc/get_thermal_efficency()
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/proc/get_thermal_efficiency()
 	if((target_temp < air2.temperature))
-		return clamp((air2.temperature / air1.temperature) * EFFICENCY_MULT, 0, 1 * EFFICENCY_LIMIT_MULT)
+		return clamp((air2.temperature / air1.temperature) * EFFICIENCY_MULT, 0, 1 * EFFICIENCY_LIMIT_MULT)
 	else if((target_temp > air2.temperature))
-		return clamp((air1.temperature / air2.temperature) * EFFICENCY_MULT, 0, 1 * EFFICENCY_LIMIT_MULT)
+		return clamp((air1.temperature / air2.temperature) * EFFICIENCY_MULT, 0, 1 * EFFICIENCY_LIMIT_MULT)
 
 /obj/machinery/atmospherics/component/binary/massive_heat_pump/proc/handle_passive_flow()
 	var/air_heat_capacity = air1.heat_capacity()
@@ -227,5 +227,5 @@
 	update_icon()
 
 
-#undef EFFICENCY_MULT
-#undef EFFICENCY_LIMIT_MULT
+#undef EFFICIENCY_MULT
+#undef EFFICIENCY_LIMIT_MULT

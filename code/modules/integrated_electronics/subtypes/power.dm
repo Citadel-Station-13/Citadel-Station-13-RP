@@ -20,7 +20,7 @@
 	activators = list("transmit" = IC_PINTYPE_PULSE_IN, "on transmit" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_DATA = 4, TECH_POWER = 4, TECH_MAGNET = 3)
-	power_draw_per_use = 500 // Inefficency has to come from somewhere.
+	power_draw_per_use = 500 // Inefficiency has to come from somewhere.
 	var/amount_to_move = 5000
 
 /obj/item/integrated_circuit/power/transmitter/large

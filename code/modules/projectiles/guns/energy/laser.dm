@@ -1,7 +1,7 @@
 /obj/item/gun/energy/laser
 	name = "laser rifle"
 	desc = "A Hephaestus Industries G40E rifle, designed to kill with concentrated energy blasts.  This variant has the ability to \
-	switch between standard fire and a more efficent but weaker 'suppressive' fire."
+	switch between standard fire and a more efficient but weaker 'suppressive' fire."
 	icon_state = "laser"
 	item_state = "laser"
 	wielded_item_state = "laser-wielded"
