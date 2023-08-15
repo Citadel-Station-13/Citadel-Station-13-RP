@@ -535,6 +535,7 @@
 //* Scanning
 
 /datum/gas_mixture/proc/chat_analyzer_scan(group_together, molar_masses, exact)
+	RETURN_TYPE(/list)
 	. = list()
 	update_values()
 	if(!total_moles)
@@ -561,7 +562,7 @@
 			unknown += gas[id]
 			trace_unknown_masses += id
 		else
-			. += SPAN_NOTICE("[global.gas_data.names[id]]: [exact? "[round(gas[id], 0.001)] mol @ " : ""][round(gas[id] / total_moles, 0.001)]%[molar_masses? " ([global.gas_data.molar_masses[id]]g/mol)" : ""]")
+			. += SPAN_NOTICE("[global.gas_data.names[id]]: [exact? "[round(gas[id], 0.001)] mol @ " : ""][round(gas[id] / total_moles, 0.001)]%[molar_masses? " ([global.gas_data.molar_masses[id]] g/mol)" : ""]")
 	if(reagents)
 		. += SPAN_NOTICE("Reagents: [exact? "[round(reagents, 0.001)] mol @ " : ""][round(reagents / total_moles, 0.001)]%")
 		if(molar_masses)

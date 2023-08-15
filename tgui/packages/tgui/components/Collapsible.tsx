@@ -18,6 +18,7 @@ interface CollapsibleProps extends ComponentProps{
   captureKeys?: BooleanLike;
   more?: InfernoNode;
   boxProps?: BoxProps;
+  headerProps?: BoxProps;
 }
 
 interface CollapsibleState {
@@ -62,7 +63,7 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
                 icon={open ? 'chevron-down' : 'chevron-right'}
                 onClick={() => this.setState({ open: !open })}
                 height="100%"
-                {...rest}>
+                {...props.headerProps}>
                 {title}
               </Button>
             </div>
@@ -90,7 +91,7 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
                 color={color}
                 icon={open ? 'chevron-down' : 'chevron-right'}
                 onClick={() => this.setState({ open: !open })}
-                {...rest}>
+                {...props.headerProps}>
                 {title}
               </Button>
             </div>

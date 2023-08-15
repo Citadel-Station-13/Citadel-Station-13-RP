@@ -451,15 +451,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/total_moles = environment.total_moles
 
 	to_chat(src, "<font color=#4F49AF><B>Results:</B></font>")
-	if(abs(pressure - ONE_ATMOSPHERE) < 10)
-		to_chat(src, "<font color=#4F49AF>Pressure: [round(pressure,0.1)] kPa</font>")
-	else
-		to_chat(src, "<font color='red'>Pressure: [round(pressure,0.1)] kPa</font>")
-	if(total_moles)
-		for(var/g in environment.gas)
-			to_chat(src, "<font color=#4F49AF>[global.gas_data.names[g]]: [round((environment.gas[g] / total_moles) * 100)]% ([round(environment.gas[g], 0.01)] moles)</font>")
-		to_chat(src, "<font color=#4F49AF>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</font>")
-		to_chat(src, "<font color=#4F49AF>Heat Capacity: [round(environment.heat_capacity(),0.1)]</font>")
+	to_chat(src, jointext(environment.chat_analyzer_scan(NONE, TRUE, TRUE), "<br>"))
 
 /mob/observer/dead/verb/become_mouse()
 	set name = "Become mouse"
