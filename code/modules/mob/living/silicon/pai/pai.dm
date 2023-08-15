@@ -300,8 +300,9 @@
 		return /obj/item/clothing/suit
 
 /mob/living/silicon/pai/AltClickOn(var/atom/A)
-	if(in_range_of(src, A))
+	if((isobj(A) || ismob(A)) && in_range_of(src, A))
 		if(world.time > last_scanned_time + 600)
+			last_scanned_time = world.time
 			scan_object(A)
 			to_chat(src, "You scan the [A.name]")
 		else

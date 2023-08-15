@@ -363,6 +363,10 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 		M.Turn(90)
 		M.Translate(1, -8)
 		transform = M
+	else
+		// not displaying a hologram? reset our transforms because it might be wrong
+		var/matrix/M = matrix()
+		transform = M
 
 /obj/item/paicard/proc/display_hologram_from_image(image)
 	displaying_hologram = TRUE

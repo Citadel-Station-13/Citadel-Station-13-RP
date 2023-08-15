@@ -195,9 +195,12 @@
 	set desc = "Allows you to pick a scanned object to display from your holoprojector."
 
 	if(src.loc == card)
-		var/scanned_item_to_show = tgui_input_list(usr, "Select Scanned Object", "Scanned Objects", scanned_objects)
+		var/scanned_item_to_show = tgui_input_list(usr, "Select Scanned Object", "Scanned Objects", list("Cancel") + scanned_objects)
 		if(scanned_item_to_show)
-			var/image/I = scanned_objects[scanned_item_to_show]
-			card.display_hologram_from_image(I)
+			if(scanned_item_to_show == "Cancel")
+				card.stop_displaying_hologram()
+			else
+				var/image/I = scanned_objects[scanned_item_to_show]
+				card.display_hologram_from_image(I)
 	else
 		to_chat(src, "You must be in card form to do this!")
