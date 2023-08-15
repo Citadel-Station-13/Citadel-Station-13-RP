@@ -31,7 +31,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 
 /obj/item/paicard/Initialize(mapload)
 	. = ..()
-	update_icons()
+	//update_icons()
 
 /obj/item/paicard/equipped(mob/user, slot, flags)
 	. = ..()
