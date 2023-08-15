@@ -83,7 +83,8 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 /mob/living/carbon/human/resize(var/new_size, var/animate = TRUE)
 	. = ..()
 	if(LAZYLEN(hud_list))
-		var/new_y_offset = 32 * (size_multiplier - 1)
+		var/new_y_offset = (size_multiplier < 1 ? 27 : 32) * (size_multiplier - 1)
+		//it lowers lesser than it raises when it comes to micros v. macros else the medHUD would bury the micro
 		for(var/key in hud_list)
 			var/image/HI = hud_list[key]
 			HI.pixel_y = new_y_offset
