@@ -176,10 +176,10 @@
 	var/filterable_moles = 0
 	var/list/filter_ids
 	if(isnum(to_filter))
-		// flags
+		// groups
 		filter_ids = list()
 		for(var/id in source.gas)
-			if(global.gas_data.flags[id] & to_filter)
+			if(global.gas_data.groups[id] & to_filter)
 				filterable_moles += source.gas[id]
 				filter_ids += id
 		if(!length(filter_ids))
@@ -187,11 +187,11 @@
 			return xgm_pump_gas(source, sink, limit_moles, limit_power)
 	else
 		// ids
-		if(!(source.gas[filter_ids]))
+		if(!(source.gas[to_filter]))
 			// not there
 			return xgm_pump_gas(source, sink, limit_moles, limit_power)
-		filter_ids = list(filter_ids)
-		filterable_moles = source.gas[filter_ids]
+		filter_ids = list(to_filter)
+		filterable_moles = source.gas[to_filter]
 
 	// calculate work per mole moved through filter, diverting as necessary
 	var/total_specific_power = 0

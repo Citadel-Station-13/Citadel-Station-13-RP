@@ -31,7 +31,7 @@
 	/// are we on?
 	var/on = FALSE
 	/// maximum power limit in watts
-	var/power_maximum = 0
+	var/power_maximum = 7500
 	/// power setting configured in watts
 	var/power_setting
 	/// current power usage in watts

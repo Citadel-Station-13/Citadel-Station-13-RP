@@ -11,7 +11,7 @@
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 150
-	power_rating = 7500
+	power_maximum = 7500
 
 	tgui_interface = "AtmosTrinaryMolarFilter"
 	default_access_interface = TRUE

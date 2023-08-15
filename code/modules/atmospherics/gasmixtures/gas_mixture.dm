@@ -532,8 +532,12 @@
 
 /datum/gas_mixture/proc/chat_analyzer_scan(group_together, molar_masses, exact)
 	. = list()
+	update_values()
+	if(!total_moles)
+		. += SPAN_WARNING("Pressure: 0 kPa")
+		return
 	var/pressure = return_pressure()
-	. += SPAN_NOTICE("Pressure: [QUANTIZE(pressure)]")
+	. += SPAN_NOTICE("Pressure: [QUANTIZE(pressure)] kPa")
 	. += SPAN_NOTICE("Temperature: [QUANTIZE(temperature)]&deg;K ([QUANTIZE(temperature - T0C)]&deg;C)")
 	var/reagents = 0
 	var/other = 0

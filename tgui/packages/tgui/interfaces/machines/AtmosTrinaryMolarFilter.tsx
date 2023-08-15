@@ -21,11 +21,11 @@ export const AtmosTrinaryMolarFilterControl = (props: AtmosTrinaryMolarFilterCon
     <Section title="Filter" {...props}>
       <LabeledList>
         <LabeledList.Item label="Upper Bound">
-          <NumberInput value={props.upper} step={0.5} minValue={0} maxValue={100000000}
+          <NumberInput width="150px" value={props.upper} step={0.5} minValue={0} maxValue={100000000}
             onChange={(e, val) => props.setUpper(val)} />
         </LabeledList.Item>
         <LabeledList.Item label="Lower Bound">
-          <NumberInput value={props.lower} step={0.5} minValue={0} maxValue={100000000}
+          <NumberInput width="150px" value={props.lower} step={0.5} minValue={0} maxValue={100000000}
             onChange={(e, val) => props.setLower(val)} />
         </LabeledList.Item>
         <LabeledList.Item label="Inversion">

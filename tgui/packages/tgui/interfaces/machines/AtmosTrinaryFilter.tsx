@@ -39,6 +39,7 @@ export const AtmosTrinaryFilter = (props, context) => {
   return (
     <AtmosComponent
       title="Gas Filter"
+      minumumWidth={500}
       additionalListItems={(
         <LabeledList.Item label="Flow">
           <NumberInput minValue={0} maxValue={data.maxRate}
