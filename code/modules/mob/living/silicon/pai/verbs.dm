@@ -31,12 +31,14 @@
 	set category = "pAI Commands"
 	set name = "Choose Chassis"
 
+	var/original_chassis = chassis
 	var/choice
 	var/finalized = "No"
 	while(finalized == "No" && src.client)
 
 		choice = input(usr,"What would you like to use for your mobile chassis icon?") as null|anything in (list("-- LOAD CHARACTER SLOT --") + possible_chassis)
 		if(!choice)
+			chassis = original_chassis
 			return
 
 		if(choice == "-- LOAD CHARACTER SLOT --")
@@ -44,13 +46,17 @@
 			card.cached_holo_image = null
 			card.get_holo_image()
 			icon = last_rendered_hologram_icon
+			chassis = possible_chassis[choice]
+			update_icon(FALSE)
 		else
 			icon = 'icons/mob/pai_vr.dmi'
-			icon_state = possible_chassis[choice]
+			chassis = possible_chassis[choice]
+			update_icon(FALSE)
+
 		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
 
-	chassis = possible_chassis[choice]
 	add_verb(src, /mob/living/proc/hide)
+	update_icon(FALSE)
 
 /mob/living/silicon/pai/proc/choose_verbs()
 	set category = "pAI Commands"
