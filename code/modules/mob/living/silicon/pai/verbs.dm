@@ -188,3 +188,16 @@
 	if(!card || card.loc != src || card == shell)
 		return
 	switch_shell(card)
+
+/mob/living/silicon/pai/verb/hologram_display()
+	set name = "Hologram Display"
+	set category = "pAI Commands"
+	set desc = "Allows you to pick a scanned object to display from your holoprojector."
+
+	if(src.loc == card)
+		var/scanned_item_to_show = tgui_input_list(usr, "Select Scanned Object", "Scanned Objects", scanned_objects)
+		if(scanned_item_to_show)
+			var/image/I = scanned_objects[scanned_item_to_show]
+			card.display_hologram_from_image(I)
+	else
+		to_chat(src, "You must be in card form to do this!")

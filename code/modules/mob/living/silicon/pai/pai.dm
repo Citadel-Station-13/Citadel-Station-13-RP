@@ -116,6 +116,9 @@
 
 	var/icon/last_rendered_hologram_icon
 
+	var/list/scanned_objects = list()
+	var/last_scanned_time = 0
+
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()
 	shell = loc
@@ -246,6 +249,9 @@
 	update_mobility()
 	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
+	// also we can interrupt our hologram display
+	card.stop_displaying_hologram()
+
 	// pass attack self on to the card regardless of our shell
 	if(!istype(new_shell, /obj/item/paicard))
 		RegisterSignal(shell, COMSIG_ITEM_ATTACK_SELF, PROC_REF(pass_attack_self_to_card))
@@ -292,3 +298,23 @@
 		return /obj/item/clothing/shoes
 	if(initial(path.slot_flags) & SLOT_OCLOTHING)
 		return /obj/item/clothing/suit
+
+/mob/living/silicon/pai/AltClickOn(var/atom/A)
+	if(in_range_of(src, A))
+		if(world.time > last_scanned_time + 600)
+			scan_object(A)
+			to_chat(src, "You scan the [A.name]")
+		else
+			to_chat(src, "You need to wait [((last_scanned_time+600) - world.time)/10] seconds to scan another object.")
+
+/mob/living/silicon/pai/proc/scan_object(var/atom/A)
+	var/image/I = image(render_hologram_icon(A, 210, TRUE, TRUE, "_pai"))
+	I.color = rgb(204,255,204)
+	I.pixel_y = 30
+	I.appearance_flags = RESET_TRANSFORM | KEEP_APART
+	scanned_objects[A.name] = I
+
+	// more than 10 items? remove the oldest object (index 0) in the list
+	if(length(scanned_objects) > 10)
+		scanned_objects.Cut(0, 1)
+
