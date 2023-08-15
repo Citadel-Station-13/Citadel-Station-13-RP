@@ -447,9 +447,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/datum/gas_mixture/environment = usr.loc.return_air()
 
-	var/pressure = environment.return_pressure()
-	var/total_moles = environment.total_moles
-
 	to_chat(src, "<font color=#4F49AF><B>Results:</B></font>")
 	to_chat(src, jointext(environment.chat_analyzer_scan(NONE, TRUE, TRUE), "<br>"))
 
