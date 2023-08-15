@@ -131,6 +131,7 @@
 
 	add_verb(src, /mob/living/silicon/pai/proc/choose_chassis)
 	add_verb(src, /mob/living/silicon/pai/proc/choose_verbs)
+	add_verb(src, /mob/living/proc/set_size)
 
 	//PDA
 	pda = new(src)
@@ -167,7 +168,7 @@
 	// Resting is just an aesthetic feature for them.
 	return ..(movable, be_close, no_dexterity, no_tk)
 
-/mob/living/silicon/pai/update_icon()
+/mob/living/silicon/pai/update_icon(animate = TRUE)
 	..()
 	update_fullness_pai()
 	if(!people_eaten && !resting)
@@ -178,6 +179,8 @@
 		icon_state = "[chassis]_full"
 	else if(people_eaten && resting)
 		icon_state = "[chassis]_rest_full"
+	if(resting)
+		update_transform(animate) // because when our chassis changes we dont want to stay rotated because only holograms rotate!!
 
 /// camera handling
 /mob/living/silicon/pai/check_eye(var/mob/user as mob)

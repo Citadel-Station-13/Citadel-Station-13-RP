@@ -4816,6 +4816,8 @@
 #include "code\modules\xenobio\items\weapons.dm"
 #include "code\modules\xenobio\machinery\processor.dm"
 #include "donator\legacy.dm"
+#include "donator\djkouta\donator_cloak.dm"
+#include "donator\timothytea\donator_bedsheet.dm"
 #include "donator\unclebourbon\pmc_mask.dm"
 #include "interface\interface.dm"
 #include "interface\stylesheet.dm"
