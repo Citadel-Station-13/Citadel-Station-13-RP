@@ -311,12 +311,11 @@
 /mob/living/silicon/pai/proc/scan_object(var/atom/A)
 	var/icon/hologram_icon = render_hologram_icon(A, 210, TRUE, TRUE, "_pai")
 	var/hologram_width = hologram_icon.Width()
-	var/hologram_height = hologram_icon.Height()
 	var/width_adjustment = (hologram_width - 32) / -2
 
 	var/image/I = image(hologram_icon)
 	I.color = rgb(204,255,204)
-	I.pixel_y = 30 + height_adjustment
+	I.pixel_y = 30
 	I.pixel_x = width_adjustment
 	I.appearance_flags = RESET_TRANSFORM | KEEP_APART
 	scanned_objects[A.name] = I
