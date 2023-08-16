@@ -70,12 +70,12 @@
 	if(!isnull(limit_power) && (total_specific_power > 0))
 		limit_moles = min(limit_moles, limit_power / total_specific_power)
 
-	// unlike in the other procs, ratio here is the amount we can filter vs the amount there is to filter
-	var/ratio = limit_moles / total_filterable_moles
-
 	// can't transfer enough
 	if(limit_moles < MINIMUM_MOLES_TO_SCRUB)
 		return 0
+
+	// unlike in the other procs, ratio here is the amount we can filter vs the amount there is to filter
+	var/ratio = limit_moles / total_filterable_moles
 
 	// do the actual scrubbing
 	for(var/id in filtered_ids)
@@ -136,12 +136,12 @@
 	if(!isnull(limit_power) && (total_specific_power > 0))
 		limit_moles = min(limit_moles, limit_power / total_specific_power)
 
-	// unlike in the other procs, ratio here is the amount we can filter vs the amount there is to filter
-	var/ratio = limit_moles / total_filterable_moles
-
 	// can't transfer enough
 	if(limit_moles < MINIMUM_MOLES_TO_SCRUB)
 		return 0
+
+	// unlike in the other procs, ratio here is the amount we can filter vs the amount there is to filter
+	var/ratio = limit_moles / total_filterable_moles
 
 	// do the actual scrubbing
 	for(var/id in filtered_ids)
