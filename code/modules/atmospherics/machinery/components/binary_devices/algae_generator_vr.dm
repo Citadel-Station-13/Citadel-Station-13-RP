@@ -187,8 +187,8 @@
 				"max" = storage_capacity[M],
 				"percent" = (stored_material[M] / storage_capacity[M] * 100))
 	data["materials"] = materials_ui
-	data["last_flow_rate_legacy"] = last_flow_rate_legacy
-	data["last_power_draw_legacy"] = last_power_draw_legacy
+	data["last_flow_rate"] = last_flow_rate_legacy
+	data["last_power_draw"] = last_power_draw_legacy
 	data["inputDir"] = dir2text(global.reverse_dir[dir])
 	data["outputDir"] = dir2text(dir)
 	data["usePower"] = use_power

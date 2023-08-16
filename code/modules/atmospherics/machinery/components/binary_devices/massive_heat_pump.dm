@@ -176,7 +176,7 @@
 		"power_level" = power_level,
 		"current_temp" = air2.temperature,
 		"sink_temp" = air1.temperature,
-		"last_power_draw_legacy" = round(last_power_draw_legacy),
+		"last_power_draw" = round(last_power_draw_legacy),
 		"max_power_draw" = MAX_POWER_FOR_MASSIVE,
 		"efficiency" = efficiency,
 	)

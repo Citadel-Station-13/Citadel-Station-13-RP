@@ -20322,7 +20322,7 @@
 	external_pressure_bound = 140;
 	external_pressure_bound_default = 140;
 	icon_state = "map_vent_out";
-	use_power = 1
+	on = 1
 	},
 /obj/structure/sign/signnew/biohazard{
 	pixel_y = -32

@@ -1429,7 +1429,7 @@
 	name = "Large Waste Vent";
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/virgo3b,
 /area/outpost/mining_main/maintenance)

@@ -275,7 +275,7 @@
 "aT" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
@@ -318,7 +318,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
@@ -330,7 +330,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)

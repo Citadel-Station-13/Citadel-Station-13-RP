@@ -140,8 +140,8 @@
 		"pressure_set" = round(target_pressure*100),
 		"max_pressure" = max_pressure_setting,
 		"power_level" = power_level,
-		"last_flow_rate_legacy" = round(last_flow_rate_legacy*10),
-		"last_power_draw_legacy" = round(last_power_draw_legacy),
+		"last_flow_rate" = round(last_flow_rate_legacy*10),
+		"last_power_draw" = round(last_power_draw_legacy),
 		"max_power_draw" = MAX_POWER_FOR_MASSIVE,
 	)
 

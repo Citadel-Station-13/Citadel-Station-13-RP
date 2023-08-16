@@ -484,7 +484,7 @@
 	frequency = 1379;
 	icon_state = "map_vent_out";
 	id_tag = "toxins_pump";
-	use_power = 1
+	on = 1
 	},
 /obj/structure/lattice,
 /turf/space,
@@ -1030,7 +1030,7 @@
 	external_pressure_bound = 140;
 	external_pressure_bound_default = 140;
 	icon_state = "map_vent_out";
-	use_power = 1;
+	on = 1;
 	pressure_checks = 0;
 	pressure_checks_default = 0
 	},
@@ -1059,7 +1059,7 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
-	use_power = 1;
+	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0

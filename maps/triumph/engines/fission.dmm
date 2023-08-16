@@ -739,7 +739,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /obj/machinery/light/small{
 	dir = 8

@@ -3129,7 +3129,7 @@
 	id_tag = "cooling_out";
 	initialize_directions = 4;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/nitrogen{
 	initial_gas_mix = "n2=82.1472;TEMP=293.15"

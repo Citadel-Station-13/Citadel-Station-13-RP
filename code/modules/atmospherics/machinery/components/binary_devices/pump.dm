@@ -190,8 +190,8 @@ Thus, the two variables affect pump operation are set in New():
 		"on" = use_power,
 		"pressure_set" = round(target_pressure*100),
 		"max_pressure" = max_pressure_setting,
-		"last_flow_rate_legacy" = round(last_flow_rate_legacy*10),
-		"last_power_draw_legacy" = round(last_power_draw_legacy),
+		"last_flow_rate" = round(last_flow_rate_legacy*10),
+		"last_power_draw" = round(last_power_draw_legacy),
 		"max_power_draw" = power_rating,
 	)
 

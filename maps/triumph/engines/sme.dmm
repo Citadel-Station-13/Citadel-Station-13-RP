@@ -492,7 +492,7 @@
 	id_tag = "cooling_out";
 	initialize_directions = 4;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /obj/effect/floor_decal/industrial/warning/cee{
 	dir = 8
