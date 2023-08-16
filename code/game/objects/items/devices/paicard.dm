@@ -300,7 +300,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	cached_holo_image = null
 	displaying_hologram = FALSE
 	displayed_hologram = null
-	setEmotion("null")
+	setEmotion("off")
 
 /obj/item/paicard/proc/setEmotion(emotion)
 	current_emotion = emotion
@@ -362,6 +362,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 		var/matrix/M = matrix()
 		M.Turn(90)
 		M.Translate(1, -8)
+
 		transform = M
 	else
 		// not displaying a hologram? reset our transforms because it might be wrong
