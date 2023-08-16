@@ -351,7 +351,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 			image.pixel_x = 9
 			image.pixel_y = 10
 		else
-			image.pixel_x = 11
+			image.pixel_x = 10
 			image.pixel_y = 9
 		add_overlay(image)
 	else
