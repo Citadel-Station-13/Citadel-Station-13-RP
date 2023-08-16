@@ -385,7 +385,7 @@
 
 // Infinite use RCD for debugging/adminbuse.
 /obj/item/rcd/debug
-	name = "self-repleshing rapid construction device"
+	name = "self-replenishing rapid construction device"
 	desc = "An RCD that appears to be plated with gold. For some reason it also seems to just \
 	be vastly superior to all other RCDs ever created, possibly due to it being colored gold."
 	icon_state = "debug_rcd"
