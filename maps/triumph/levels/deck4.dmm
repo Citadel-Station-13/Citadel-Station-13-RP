@@ -3407,8 +3407,13 @@
 /turf/simulated/floor/wood,
 /area/maintenance/security/starboard)
 "cpb" = (
-/turf/simulated/wall/r_wall,
-/area/security/armoury)
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled,
+/area/exploration/showers)
 "cqc" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -3984,6 +3989,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "cRT" = (
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/research{
 	name = "Exploration Showers"
 	},
@@ -6577,10 +6583,6 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "evm" = (
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
 /obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 25
@@ -7738,7 +7740,8 @@
 	},
 /obj/machinery/door/blast/regular{
 	id = "courser_magazine_1";
-	name = "Cannon Magazine One"
+	name = "Cannon Magazine One";
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -9931,7 +9934,7 @@
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/security_lockerroom)
 "gGb" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "gGi" = (
@@ -10970,7 +10973,7 @@
 /area/exploration/explorer_prep)
 "how" = (
 /obj/machinery/door/blast/regular{
-	dir = 2;
+	dir = 4;
 	id = "armoryriot";
 	name = "Emergency Armory Access"
 	},
@@ -13605,7 +13608,8 @@
 	},
 /obj/machinery/door/blast/regular{
 	id = "VaultAc";
-	name = "\improper Vault"
+	name = "\improper Vault";
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
@@ -22883,7 +22887,7 @@
 /area/maintenance/security/starboard)
 "pDm" = (
 /obj/machinery/door/blast/regular{
-	dir = 2;
+	dir = 4;
 	id = "armoryriot";
 	name = "Emergency Armory Access"
 	},
@@ -24487,9 +24491,6 @@
 "qKF" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
-	},
-/obj/machinery/camera/network/exploration{
-	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/showers)
@@ -26132,7 +26133,7 @@
 /area/exploration/courser_dock)
 "rTS" = (
 /obj/machinery/door/blast/regular{
-	dir = 2;
+	dir = 4;
 	id = "armorytactical";
 	name = "Tactical Armory Access"
 	},
@@ -27427,6 +27428,10 @@
 /obj/effect/floor_decal/corner/red,
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -30071,7 +30076,8 @@
 	icon_state = "pdoor0";
 	id = "bridge_lockdown";
 	name = "Bridge Lockdown";
-	opacity = 0
+	opacity = 0;
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/bridge)
@@ -30229,7 +30235,8 @@
 	},
 /obj/machinery/door/blast/regular{
 	id = "courser_magazine_2";
-	name = "Cannon Magazine Two"
+	name = "Cannon Magazine Two";
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -30826,7 +30833,8 @@
 "vid" = (
 /obj/machinery/door/blast/regular{
 	id = "courser_cannon_shroud";
-	name = "Cannon Barrel Shutter"
+	name = "Cannon Barrel Shutter";
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -32439,7 +32447,8 @@
 	icon_state = "pdoor0";
 	id = "bridge_lockdown";
 	name = "Bridge Lockdown";
-	opacity = 0
+	opacity = 0;
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge)
@@ -33140,7 +33149,7 @@
 "wVy" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
-	dir = 2;
+	dir = 4;
 	id = "armoryriot";
 	name = "Emergency Armory Access"
 	},
@@ -35078,7 +35087,8 @@
 	},
 /obj/machinery/door/blast/regular{
 	id = "courser_cannon_chamber";
-	name = "Cannon Chamber Shroud"
+	name = "Cannon Chamber Shroud";
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -43026,10 +43036,10 @@ wQh
 xaF
 xaF
 wZL
-eyp
+hzU
 uvm
 nTo
-jAG
+cpb
 lFl
 uvm
 wPV
@@ -43414,7 +43424,7 @@ wQh
 xaF
 wFU
 wZL
-hzU
+eyp
 cRT
 vjS
 rzs
@@ -52390,7 +52400,7 @@ vCG
 szs
 aLm
 fOb
-cpb
+jmX
 dDU
 bCU
 eNT
@@ -64007,7 +64017,7 @@ vYC
 uGd
 rqv
 uGd
-myo
+vYC
 vYC
 aEU
 cbh

@@ -8187,7 +8187,6 @@
 "gVf" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
-	dir = 4;
 	id = "mechbay";
 	name = "Mech Bay"
 	},
@@ -11220,7 +11219,6 @@
 	dir = 8
 	},
 /obj/machinery/door/blast/regular{
-	dir = 4;
 	id = "mechbay";
 	name = "Mech Bay"
 	},
@@ -12500,7 +12498,6 @@
 	dir = 1
 	},
 /obj/machinery/door/blast/regular{
-	dir = 4;
 	id = "mechbay";
 	name = "Mech Bay"
 	},
@@ -12897,7 +12894,8 @@
 	},
 /obj/machinery/door/blast/regular{
 	id = "mechbay-inner";
-	name = "Mech Bay"
+	name = "Mech Bay";
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
@@ -23201,7 +23199,8 @@
 	},
 /obj/machinery/door/blast/regular{
 	id = "mechbay-inner";
-	name = "Mech Bay"
+	name = "Mech Bay";
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)

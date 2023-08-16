@@ -7379,12 +7379,13 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "vX" = (
-/obj/machinery/door/airlock{
-	name = "Restroom"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plating,
+/obj/machinery/door/airlock{
+	name = "Restroom";
+	id_tag = "restroom ad"
+	},
+/turf/simulated/floor/tiled/white,
 /area/station/stairs_two)
 "vY" = (
 /obj/machinery/media/jukebox,
@@ -7949,6 +7950,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
+	},
+/obj/machinery/button/remote/airlock{
+	id = "mine_black";
+	name = "Door Lock";
+	specialfunctions = 4;
+	dir = 8;
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/white,
 /area/station/stairs_two)
