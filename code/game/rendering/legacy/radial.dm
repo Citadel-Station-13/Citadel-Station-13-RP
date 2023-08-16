@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	icon = 'icons/mob/radial.dmi'
 	layer = HUD_LAYER_ABOVE
 	plane = ABOVE_HUD_PLANE
-	appearance_flags = KEEP_APART|RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
+	appearance_flags = PIXEL_SCALE | NO_CLIENT_COLOR | KEEP_APART |RESET_TRANSFORM | RESET_ALPHA | RESET_COLOR
 	var/datum/radial_menu/parent
 
 /atom/movable/screen/radial/slice
