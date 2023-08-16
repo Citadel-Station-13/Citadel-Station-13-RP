@@ -349,7 +349,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 		var/image/image = get_holo_image()
 		if(displaying_hologram)
 			image.pixel_x = 9
-			image.pixel_y = 10
+			image.pixel_y = 11
 		else
 			image.pixel_x = 10
 			image.pixel_y = 9
