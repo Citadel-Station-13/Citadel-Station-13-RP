@@ -599,7 +599,7 @@
 	return TRUE
 
 ///////////////////
-// Verbs for humans
+//Verbs for humans
 /mob/living/carbon/human/proc/nsay(message as text)
 	set name = "NSay"
 	set desc = "Speak into your NIF's Soulcatcher."
