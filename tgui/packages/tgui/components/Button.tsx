@@ -15,7 +15,7 @@ import { Tooltip } from './Tooltip';
 
 const logger = createLogger('Button');
 
-type ButtonProps = BoxProps & {
+export type ButtonProps = BoxProps & {
   fluid?: BooleanLike;
   icon?: string | BooleanLike;
   iconRotation?: number;

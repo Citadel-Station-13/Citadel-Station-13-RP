@@ -7,7 +7,7 @@
 import { BooleanLike } from 'common/react';
 import { Component, InfernoNode } from 'inferno';
 import { Box, BoxProps } from './Box';
-import { Button } from './Button';
+import { Button, ButtonProps } from './Button';
 import { ComponentProps } from './Component';
 
 interface CollapsibleProps extends ComponentProps{
@@ -18,7 +18,7 @@ interface CollapsibleProps extends ComponentProps{
   captureKeys?: BooleanLike;
   more?: InfernoNode;
   boxProps?: BoxProps;
-  headerProps?: BoxProps;
+  headerProps?: ButtonProps;
 }
 
 interface CollapsibleState {

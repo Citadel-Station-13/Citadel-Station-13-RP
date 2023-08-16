@@ -1,12 +1,12 @@
 // todo: this here is a reminder that we need a popup atmos guide that you can pull up.
 
-import { Modal, Section } from "../components"
-import { FullGasContext } from "./common/Atmos"
+import { Modal, Section } from "../components";
+import { FullGasContext } from "./common/Atmos";
 
 interface AtmosGuideProps {
-  /// gas context to pull from - must be full
+  // gas context to pull from - must be full
   gasContext: FullGasContext
-  /// should we render as a section or modal? true for section.
+  // should we render as a section or modal? true for section.
   embedded?: boolean;
 }
 
@@ -19,14 +19,20 @@ export const AtmosGuide = (props: AtmosGuideProps) => {
     <Modal>
       <AtmosGuideInternal {...props} />
     </Modal>
-  )
-}
+  );
+};
 
 const AtmosGuideInternal = (props: AtmosGuideProps) => {
+  // make the linter shut up
+  const { gasContext, embedded } = props;
+  // ---
+
   return (
-    "Unimplemented"
-  )
-}
+    <>
+      Unimplemented
+    </>
+  );
+};
 
 /*
 import { InfernoNode } from 'inferno';
