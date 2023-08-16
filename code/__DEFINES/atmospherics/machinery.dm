@@ -42,3 +42,28 @@ DEFINE_BITFIELD(atmos_portable_ui_flags, list(
 	BITFIELD(ATMOS_PORTABLE_UI_SET_POWER),
 	BITFIELD(ATMOS_PORTABLE_UI_SEE_POWER),
 ))
+
+//! legacy
+
+/// L/s. This can be used to balance how fast a room is siphoned. Anything higher than CELL_VOLUME has no effect.
+#define MAX_SIPHON_FLOWRATE   2500
+/// L/s. Max flow rate when scrubbing from a turf.
+#define MAX_SCRUBBER_FLOWRATE 200
+
+// Will not bother pumping or filtering if the gas source as fewer than this amount of moles, to help with performance.
+#define MINIMUM_MOLES_TO_PUMP		0.001
+#define MINIMUM_MOLES_TO_FILTER		0.001
+#define MINIMUM_MOLES_TO_SCRUB		0.001
+// fire sparking
+#define MINIMUM_MOLES_TO_SPARK		0.015
+
+// The flow rate/effectiveness of various atmos devices is limited by their internal volume,
+// so for many atmos devices these will control maximum flow rates in L/s.
+/// Liters.
+#define ATMOS_DEFAULT_VOLUME_PUMP   200
+/// L.
+#define ATMOS_DEFAULT_VOLUME_FILTER 200
+/// L.
+#define ATMOS_DEFAULT_VOLUME_MIXER  200
+/// L.
+#define ATMOS_DEFAULT_VOLUME_PIPE   70
