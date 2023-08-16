@@ -83,6 +83,7 @@
 
 	add_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 	card.stop_displaying_hologram()
+	update_icon()
 
 // Handle being picked up.
 /mob/living/silicon/pai/get_scooped(var/mob/living/carbon/grabber, var/self_drop)
