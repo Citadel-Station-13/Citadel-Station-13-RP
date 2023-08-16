@@ -138,7 +138,7 @@
 	var/clothing_entry = tgui_input_list(usr, "What clothing would you like to change your shell to?", "Options", list("Chameleon Clothing List","Last Uploaded Clothing"))
 	if(clothing_entry)
 		if(clothing_entry == "Chameleon Clothing List")
-			var/clothing_type_entry = tgui_input_list(usr, "What type of clothing would you like to change your shell to?", "Clothing Type", list("Undershirt", "Suit", "Hat", "Shoes", "Gloves", "Mask", "Glasses"))
+			var/clothing_type_entry = tgui_input_list(usr, "What type of clothing would you like to change your shell to?", "Clothing Type", list("Undershirt", "Suit", "Hat", "Shoes", "Gloves", "Mask", "Glasses", "Accessory"))
 			var/list/clothing_for_type
 			if(clothing_type_entry)
 				switch(clothing_type_entry)
@@ -156,6 +156,8 @@
 						clothing_for_type = GLOB.clothing_mask
 					if("Glasses")
 						clothing_for_type = GLOB.clothing_glasses
+					if("Accessory")
+						clothing_for_type = GLOB.clothing_accessory
 				var/clothing_item_entry = tgui_input_list(usr, "Choose clothing item", "Clothing", clothing_for_type)
 				if(clothing_item_entry)
 					change_shell_by_path(clothing_for_type[clothing_item_entry])

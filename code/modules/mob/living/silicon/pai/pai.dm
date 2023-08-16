@@ -264,11 +264,16 @@
 	last_special = world.time + 20
 
 	var/obj/item/clothing/base_clothing_path = get_base_clothing_path(object_path)
-	var/obj/item/new_object = new base_clothing_path
+	var/obj/item/clothing/new_object = new base_clothing_path
 	new_object.name = "[src.name] (pAI)"
 	new_object.desc = src.desc
 	new_object.icon = initial(object_path.icon)
 	new_object.icon_state = initial(object_path.icon_state)
+	new_object.slot_flags = initial(object_path.slot_flags)
+	new_object.icon_mob_y_align = initial(object_path.icon_mob_y_align)
+	new_object.worn_render_flags = initial(object_path.worn_render_flags)
+	new_object.accessory_render_legacy = initial(object_path.accessory_render_legacy)
+
 	if(istype(new_object, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = new_object
 		var/obj/item/clothing/under/under_path = object_path
@@ -284,6 +289,8 @@
 		card.attack_self(shell.loc)
 
 /mob/living/silicon/pai/proc/get_base_clothing_path(obj/item/clothing/path)
+	if(ispath(path, /obj/item/clothing/accessory))
+		return /obj/item/clothing/accessory
 	if(initial(path.slot_flags) & SLOT_HEAD)
 		return /obj/item/clothing/head
 	if(initial(path.slot_flags) & SLOT_ICLOTHING)
