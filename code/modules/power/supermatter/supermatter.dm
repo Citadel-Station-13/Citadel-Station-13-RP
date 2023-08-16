@@ -54,7 +54,7 @@
 	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	light_range = 4
 
-	var/gasefficency = 0.25
+	var/gasefficiency = 0.25
 
 	base_icon_state = "darkmatter"
 
@@ -306,7 +306,7 @@
 
 	if(!istype(L, /turf/space))
 		env = L.return_air()
-		removed = env.remove(gasefficency * env.total_moles)	//Remove gas from surrounding area
+		removed = env.remove(gasefficiency * env.total_moles)	//Remove gas from surrounding area
 
 	if(!env || !removed || !removed.total_moles)
 		damage += max((power - 15*POWER_FACTOR)/10, 0)
@@ -556,7 +556,7 @@
 	emergency_point = 400
 	explosion_point = 600
 
-	gasefficency = 0.125
+	gasefficiency = 0.125
 
 	pull_radius = 5
 	pull_time = 45
