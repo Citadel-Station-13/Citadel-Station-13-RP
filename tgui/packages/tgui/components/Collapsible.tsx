@@ -12,8 +12,9 @@ import { Button } from './Button';
 interface CollapsibleProps extends BoxProps {
   buttons?: InfernoNode;
   color?: string;
-  title?: string;
+  title?: string | InfernoNode;
   open?: BooleanLike;
+  captureKeys?: BooleanLike;
 }
 
 interface CollapsibleState {
@@ -44,28 +45,31 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
       ...rest
     } = props;
     return (
-      <Box mb={1}>
-        <div className="Table">
-          <div className="Table__cell">
-            <Button
-              fluid
-              color={color}
-              icon={open ? 'chevron-down' : 'chevron-right'}
-              onClick={() => this.setState({ open: !open })}
-              {...rest}>
-              {title}
-            </Button>
-          </div>
-          {buttons && (
-            <div className="Table__cell Table__cell--collapsing">
-              {buttons}
+      <Box>
+        <div className="Collapsible">
+          <div className="Collapsible__head">
+            <div className="Collapsible__toggle">
+              <Button
+                fluid
+                captureKeys={props.captureKeys === undefined? false : props.captureKeys}
+                color={color}
+                icon={open ? 'chevron-down' : 'chevron-right'}
+                onClick={() => this.setState({ open: !open })}
+                {...rest}>
+                {title}
+              </Button>
             </div>
-          )}
+            {buttons && (
+              <div className="Collapsible__buttons">
+                {buttons}
+              </div>
+            )}
+          </div>
         </div>
         {open && (
-          <Box mt={1}>
+          <div className="Collapsible__content">
             {children}
-          </Box>
+          </div>
         )}
       </Box>
     );

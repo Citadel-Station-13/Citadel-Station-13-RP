@@ -48,7 +48,7 @@
 		SSzmimic.queued_overlays += bound_overlay
 		bound_overlay.queued += 1
 	else if (bound_overlay && !bound_overlay.destruction_timer)
-		bound_overlay.destruction_timer = addtimer(CALLBACK(bound_overlay, /datum/.proc/qdel_self), 10 SECONDS, TIMER_STOPPABLE)
+		bound_overlay.destruction_timer = addtimer(CALLBACK(bound_overlay, TYPE_PROC_REF(/datum, qdel_self)), 10 SECONDS, TIMER_STOPPABLE)
 
 // Grabs a list of every openspace object that's directly or indirectly mimicking this object. Returns an empty list if none found.
 /atom/movable/proc/get_above_oo()
@@ -104,7 +104,7 @@
 	name = "openspace multiplier"
 	desc = "You shouldn't see this."
 	icon = LIGHTING_ICON
-	icon_state = LIGHTING_DARKNESS_ICON_STATE
+	icon_state = "blank"
 	plane = OPENTURF_MAX_PLANE
 	layer = MIMICED_LIGHTING_LAYER_MAIN
 	blend_mode = BLEND_MULTIPLY
@@ -200,12 +200,12 @@
 			deltimer(destruction_timer)
 			destruction_timer = null
 	else if (!destruction_timer)
-		destruction_timer = addtimer(CALLBACK(src, /datum/.proc/qdel_self), 10 SECONDS, TIMER_STOPPABLE)
+		destruction_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, qdel_self)), 10 SECONDS, TIMER_STOPPABLE)
 
 // Called when the turf we're on is deleted/changed.
 /atom/movable/openspace/mimic/proc/owning_turf_changed()
 	if (!destruction_timer)
-		destruction_timer = addtimer(CALLBACK(src, /datum/.proc/qdel_self), 10 SECONDS, TIMER_STOPPABLE)
+		destruction_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, qdel_self)), 10 SECONDS, TIMER_STOPPABLE)
 
 // -- TURF PROXY --
 

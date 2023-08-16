@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { Color } from 'common/color';
+import { Color } from 'common/colorLegacy';
 import { toFixed } from 'common/math';
 import { useSelector } from 'common/redux';
 import { Box } from 'tgui/components';

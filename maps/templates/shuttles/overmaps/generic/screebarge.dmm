@@ -222,7 +222,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/screebarge/fore)
 "aE" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/reinforced,
 /area/shuttle/screebarge/fore)
 "aF" = (

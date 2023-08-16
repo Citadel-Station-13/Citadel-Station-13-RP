@@ -73,7 +73,7 @@
 	if(isnull(planes))
 		planes = new(map_name)
 	if(isnull(parallax))
-		parallax = new(secondary_map = map_name, forced_eye = src)
+		parallax = new(secondary_map = map_name, forced_eye = host)
 
 /datum/tgui_module_old/camera/ui_interact(mob/user, datum/tgui/ui = null)
 	// Update UI
@@ -142,7 +142,7 @@
 			UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 		active_camera = C
 		START_PROCESSING(SSmoving_cameras, src)
-		RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
+		RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, PROC_REF(update_active_camera_screen))
 		playsound(ui_host(), get_sfx(SFX_ALIAS_TERMINAL), 25, FALSE)
 		update_active_camera_screen()
 		return TRUE
@@ -169,7 +169,7 @@
 				if(active_camera)
 					UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 				active_camera = target
-				RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
+				RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, PROC_REF(update_active_camera_screen))
 				playsound(ui_host(), get_sfx(SFX_ALIAS_TERMINAL), 25, FALSE)
 				update_active_camera_screen()
 				. = TRUE
@@ -303,6 +303,7 @@
 
 /datum/tgui_module_old/camera/ntos/helmet/New(host)
 	. = ..(host, list(NETWORK_CIV_HELMETS))
+
 /datum/tgui_module_old/camera/ntos/security_helmet
 	name = "Security Helmet Camera Monitor"
 

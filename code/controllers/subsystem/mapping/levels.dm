@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * Z-Level Management System
  *
@@ -13,6 +16,8 @@
 	/// stuff that puts themselves in this get map_initializations() hook called on them
 	/// at end of level or map load cycle before general atom init.
 	var/tmp/list/obj/map_helper/map_initialization_hooked
+	/// this initializations hooked - this cycle
+	var/tmp/list/obj/map_helper/map_initialization_hooking
 
 /datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()
@@ -132,6 +137,7 @@
 	var/real_x = 1
 	var/real_y = 1
 	var/real_z = instance.z_index
+	var/real_orientation = orientation || instance.orientation
 
 	// todo: check my math
 
@@ -144,8 +150,9 @@
 
 	if(isnull(deferred_callbacks))
 		map_initialization_hooked = list()
+	map_initialization_hooking = list()
 
-	var/list/loaded_bounds = parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = orientation || instance.orientation, area_cache = area_cache)
+	var/list/loaded_bounds = parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = real_orientation, area_cache = area_cache)
 
 	var/list/datum/callback/generation_callbacks = list()
 	instance.on_loaded_immediate(instance.z_index, generation_callbacks)
@@ -155,8 +162,9 @@
 		for(var/obj/map_helper/D in map_initialization_hooked)
 			if(QDELETED(D))
 				continue
-			D.map_initializations(loaded_bounds)
+			D.map_initializations(loaded_bounds, real_x, real_y, real_z, real_orientation)
 		map_initialization_hooked = null
+		map_initialization_hooking = null
 
 		for(var/datum/callback/cb as anything in generation_callbacks)
 			cb.Invoke()
@@ -165,6 +173,11 @@
 			SSatoms.init_map_bounds(loaded_bounds)
 
 		instance.on_loaded_finalize(instance.z_index)
+	else
+		deferred_callbacks += generation_callbacks
+		for(var/obj/map_helper/D as anything in map_initialization_hooking)
+			map_initialization_hooked[D] = list(loaded_bounds, real_x, real_y, real_z, real_orientation)
+		map_initialization_hooking = null
 
 	. = loaded_bounds
 

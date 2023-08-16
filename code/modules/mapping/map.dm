@@ -90,7 +90,7 @@
 			levels += is_it_a_path
 			continue
 		// json
-		if(serialized_level[1] == "{}")
+		if(serialized_level[1] == "{")
 			var/datum/map_level/level = new
 			level.deserialize(json_decode(serialized_level))
 			levels += level
@@ -141,6 +141,13 @@
 /datum/map/station
 	abstract_type = /datum/map/station
 	category = "Stations"
+
+	/// force world to be bigger width
+	var/world_width
+	/// force world to be bigger height
+	var/world_height
+
+	//! legacy below
 
 	var/full_name = "Unnamed Map"
 
@@ -349,9 +356,9 @@
 	// Traditional behavior
 	else
 		if (long_range && (srcz in map_levels))
-			return map_levels
+			return map_levels.Copy()
 		else if (srcz in station_levels)
-			return list(srcz)
+			return station_levels.Copy()
 		else
 			return list(srcz)
 

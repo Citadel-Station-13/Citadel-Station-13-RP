@@ -522,7 +522,7 @@
 	real_name = brainmob.real_name	//And the OTHER name
 
 	forceMove(get_turf(parent_human))
-	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, .proc/human_moved)
+	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, PROC_REF(human_moved))
 
 	//Time to play dressup
 	if(brainmob.client.prefs)

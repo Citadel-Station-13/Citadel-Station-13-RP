@@ -30,8 +30,8 @@
 
 /datum/component/slaved_atom_to_loc/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_PARENT_QDELETING, .proc/on_parent_qdel)
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/on_parent_move)
+	RegisterSignal(parent, COMSIG_PARENT_QDELETING, PROC_REF(on_parent_qdel))
+	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(on_parent_move))
 
 /datum/component/slaved_atom_to_loc/UnregisterFromParent()
 	. = ..()
@@ -44,7 +44,7 @@
 	if(slaved)
 		return
 	slaved = new path
-	RegisterSignal(slaved, COMSIG_PARENT_QDELETING, .proc/on_created_qdel)
+	RegisterSignal(slaved, COMSIG_PARENT_QDELETING, PROC_REF(on_created_qdel))
 
 /datum/component/slaved_atom_to_loc/proc/Delete()
 	if(!slaved)

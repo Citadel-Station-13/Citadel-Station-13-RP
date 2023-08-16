@@ -82,13 +82,17 @@
 	// todo: remove this lol
 	if(isnull(snowflake_worn_state))
 		snowflake_worn_state = item_state_slots?[SLOT_ID_UNIFORM] || item_state || icon_state
-	var/mob/living/carbon/human/H = loc
-	init_sensors(istype(H)? H : null)
+	addtimer(CALLBACK(src, PROC_REF(init_sensors)), 0)
 
-/obj/item/clothing/under/proc/init_sensors(mob/living/carbon/human/H)
+
+
+/obj/item/clothing/under/proc/init_sensors()
+	var/mob/living/carbon/human/H = loc
+	if(!istype(H))
+		return
 	if(has_sensors == UNIFORM_HAS_LOCKED_SENSORS)
 		return
-	if(H)
+	if(istype(H))
 		switch(H.sensorpref)
 			if(1) sensor_mode = SUIT_SENSOR_OFF				//Sensors off
 			if(2) sensor_mode = SUIT_SENSOR_BINARY				//Sensors on binary

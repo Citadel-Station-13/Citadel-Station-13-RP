@@ -81,6 +81,14 @@
 
 	return TRUE
 
+/**
+ * hook for abstract direction sets from the maploader
+ *
+ * return FALSE to override maploader automatic rotation
+ */
+/atom/proc/preloading_dir(datum/map_preloader/preloader)
+	return TRUE
+
 //? pass flags
 
 /**

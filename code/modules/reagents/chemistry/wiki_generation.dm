@@ -12,7 +12,7 @@
 		LAZYADD(reagents_by_category[initial(path.wiki_category)], new path)
 	// todo: styling for tables
 	for(var/category in reagents_by_category)
-		tim_sort(reagents_by_category[category], /proc/cmp_reagents_wiki)
+		tim_sort(reagents_by_category[category], GLOBAL_PROC_REF(cmp_reagents_wiki))
 		var/list/sub_built = list()
 		sub_built += {"
 			{| class="wikitable" style="margin: auto"

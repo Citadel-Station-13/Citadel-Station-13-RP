@@ -542,7 +542,7 @@
 	damage_force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 50)
+	materials = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
 /obj/item/cane/fluff/tasald
@@ -561,7 +561,7 @@
     damage_force = 1.0
     throw_force = 2.0
     w_class = ITEMSIZE_SMALL
-    matter = list(MAT_STEEL = 50)
+    materials = list(MAT_STEEL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
     hitsound = 'sound/weapons/sparkle.ogg'
     var/last_use = 0
@@ -1000,7 +1000,7 @@
 		if(!teleport_checks(target, user))	// no using this to bypass range checks
 			to_chat(user, "<span class='warning'>[src] malfunctions and fizzles out uselessly!</span>")
 			// penalty: 10 second recharge, but no using charge.
-			addtimer(CALLBACK(src, .proc/recharge), 10 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(recharge)), 10 SECONDS)
 			return
 		else
 			to_chat(user,"<span class='warning'>\The [src] malfunctions and sends you to the wrong beacon!</span>")
@@ -1057,7 +1057,7 @@
 			//Phase-in effect for grabbed person
 			phase_in(G.affecting,get_turf(G.affecting))
 
-	addtimer(CALLBACK(src, .proc/recharge), 30 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(recharge)), 30 SECONDS)
 
 	logged_events["[world.time]"] = "[user] teleported [target] to [real_dest] [televored ? "(Belly: [lowertext(real_dest.name)])" : null]"
 

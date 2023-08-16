@@ -584,11 +584,11 @@
 							var/list/laughsounds = list('sound/voice/laughs/masclaugh1.ogg', 'sound/voice/laughs/masclaugh2.ogg')
 							playsound(loc, pick(laughsounds), 50, 1, -1)
 							spam_flag = TRUE
-							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+							addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 						else
 							playsound(loc, 'sound/voice/laughs/femlaugh.ogg', 50, 1, -1)
 							spam_flag = TRUE
-							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+							addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 					m_type = 2
 				else
 					message = "makes a noise."
@@ -908,13 +908,13 @@
 						if(!spam_flag)
 							playsound(loc, "[pick(species.female_scream_sound)]", 80, 1)
 							spam_flag = TRUE
-							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+							addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 
 					else
 						if(!spam_flag)
 							playsound(loc, "[pick(species.male_scream_sound)]", 80, 1) //default to male screams if no gender is present.
 							spam_flag = TRUE
-							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+							addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 				else
 					message = "makes a very loud noise."
 					m_type = 2
@@ -1061,6 +1061,8 @@
 
 	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)
 
+	visible_emote("adjusts [T.his] posture.")
+
 /mob/living/carbon/human/verb/set_flavor()
 	set name = "Set Flavour Text"
 	set desc = "Sets an extended description of your character's features."
@@ -1143,7 +1145,7 @@
 				var/list/catlaugh = list('sound/voice/catpeople/nyaha.ogg', 'sound/voice/catpeople/nyahaha1.ogg', 'sound/voice/catpeople/nyahaha2.ogg', 'sound/voice/catpeople/nyahehe.ogg')
 				playsound(loc, pick(catlaugh), 50, 1, -1)
 				spam_flag = TRUE
-				addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+				addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 			var/list/laughs = list("laughs deviously.", "lets out a catty laugh.", "nya ha ha's.")
 			message = "[pick(laughs)]"
 			m_type = 2
@@ -1159,6 +1161,10 @@
 			message = "prbts."
 			playsound(src.loc, 'sound/misc/prbt.ogg', 50, 1, -1)
 			m_type = 2
+		if ("mrrp")
+			message = "mrrps"
+			m_type = 2
+			playsound(src.loc, "sound/voice/mrrp.ogg", 50, 1, -1)
 		if ("weh")
 			message = "lets out a weh."
 			m_type = 2
@@ -1213,7 +1219,7 @@
 					src.SpinAnimation(7,1)
 					message = "does a flip!"
 					spam_flag = TRUE
-					addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+					addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 				else
 					if(prob(30)) // Little known fact: HRP is /tg/ + 10
 						src.afflict_paralyze(20 * 2)
@@ -1226,7 +1232,7 @@
 						src.SpinAnimation(7,1)
 						message = "lands another flip. Smooth!"
 						spam_flag = TRUE
-						addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+						addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 
 // New emotes below this line
 		if ("purr")
@@ -1239,7 +1245,7 @@
 				message = "[pick(msg)]"
 				playsound(loc, 'sound/spooky/boneclak.ogg', 50, 1, 1)
 				spam_flag = TRUE
-				addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+				addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 			m_type = 2
 	if (message)
 		custom_emote(m_type,message)

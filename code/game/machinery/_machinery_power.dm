@@ -1,5 +1,5 @@
 
-#warn parse 
+#warn parse
 // todo: oh boy audit all of this
 
 // returns true if the area has power on given channel (or doesn't require power).
@@ -29,4 +29,3 @@
 		machine_stat |= NOPOWER
 	return (machine_stat != oldstat)
 	#warn parse that
-

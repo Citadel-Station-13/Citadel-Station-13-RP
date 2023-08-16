@@ -273,7 +273,9 @@
 	UNTIL(!loading)
 	loading = TRUE
 	Master.StartLoadingMap()
+	global.preloader.loading_orientation = orientation
 	. = _load_impl(arglist(args))
+	global.preloader.loading_orientation = null
 	Master.StopLoadingMap()
 	loading = FALSE
 
@@ -500,7 +502,7 @@
 				// warranty void if a map has varedited areas; you should know better, linter already checks against it.
 				world.preloader_setup(members_attributes[index], atype, turn_angle, invert_x, invert_y, swap_xy)
 				instance = new atype(null)
-				if(GLOB.use_preloader)
+				if(global.use_preloader)
 					world.preloader_load(instance)
 			areaCache[atype] = instance
 		instance.contents.Add(crds)
@@ -553,7 +555,7 @@
 	else
 		. = create_atom(path, crds)//first preloader pass
 
-	if(GLOB.use_preloader)//second preloader pass, for those atoms that don't ..() in New()
+	if(global.use_preloader)//second preloader pass, for those atoms that don't ..() in New()
 		world.preloader_load(.)
 
 	//custom CHECK_TICK here because we don't want things created while we're sleeping to not initialize

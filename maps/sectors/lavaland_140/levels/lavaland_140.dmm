@@ -1634,7 +1634,7 @@
 	req_one_access = list(48)
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Dorms";
 	req_access = list(48)
 	},
@@ -1736,7 +1736,7 @@
 	req_one_access = list(48)
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Lounge";
 	req_access = list(48)
 	},
@@ -2611,7 +2611,7 @@
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "Yb" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Triage";
 	req_one_access = list(48)
 	},

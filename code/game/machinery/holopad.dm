@@ -13,11 +13,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 
-/obj/item/circuitboard/holopad
+/obj/item/circuitboard/machine/holopad
 	name = T_BOARD("holopad")
 	build_path = /obj/machinery/holopad
 	board_type = new /datum/frame/frame_types/holopad
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/machinery/holopad
 	name = "holopad"
@@ -28,7 +27,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	anchored = TRUE
 	atom_flags = ATOM_HEAR
 	show_messages = TRUE
-	circuit = /obj/item/circuitboard/holopad
+	circuit = /obj/item/circuitboard/machine/holopad
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	use_power = USE_POWER_IDLE
@@ -36,6 +35,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	active_power_usage = 100
 	light_range = 1.5
 	light_power = 0
+	depth_projected = FALSE
+	climb_allowed = FALSE
 
 	//? balancing
 	/// base power used to project at all
@@ -863,7 +864,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/machinery/holopad/proc/unregister_hologram(obj/effect/overlay/hologram/holopad/holo)
 	LAZYREMOVE(holograms, holo)
 
-/obj/item/circuitboard/holopad/ship
+/obj/item/circuitboard/machine/holopad/ship
 	name = T_BOARD("sector holopad")
 	build_path = /obj/machinery/holopad/ship
 
@@ -872,9 +873,9 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	desc = "An expensive and immobile holopad used for long range ship-to-ship communications."
 	icon_state = "shippad"
 	base_icon_state = "shippad"
-	circuit = /obj/item/circuitboard/holopad/ship
-	allow_unanchor = FALSE
-	allow_deconstruct = FALSE
+	circuit = /obj/item/circuitboard/machine/holopad/ship
+	default_unanchor = 5 SECONDS
+	default_deconstruct = 5 SECONDS
 	long_range = TRUE
 
 /obj/machinery/holopad/ship/starts_inactive
@@ -959,8 +960,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		user.action_feedback(SPAN_WARNING("You're already focusing somewhere else!"), source)
 		return FALSE
 	remoting = user
-	RegisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE, .proc/cleanup_remote_presence)
-	RegisterSignal(remoting, COMSIG_MOB_ITEM_EQUIPPED, .proc/on_item_equipped)
+	RegisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE, PROC_REF(cleanup_remote_presence))
+	RegisterSignal(remoting, COMSIG_MOB_ITEM_EQUIPPED, PROC_REF(on_item_equipped))
 	action_hang_up.grant(remoting)
 	action_swap_view.grant(remoting)
 	if(isAI(user))
@@ -1259,9 +1260,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/effect/overlay/hologram/holopad/ai/examine(mob/user, dist)
 	. = ..()
 	//If you need an ooc_notes copy paste, this is NOT the one to use.
-	var/ooc_notes = owner.ooc_notes
-	if(ooc_notes)
-		. += SPAN_BOLDNOTICE("OOC Notes: <a href='?src=\ref[owner];ooc_notes=1'>\[View\]</a>\n")
+	. += SPAN_BOLDNOTICE("Character Profile: <a href='?owner=\ref[src];character_profile=1'>\[View\]</a>")
 	if(vored)
 		. += SPAN_WARNING("It seems to have [vored] inside of it!")
 

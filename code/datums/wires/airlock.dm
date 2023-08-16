@@ -112,7 +112,7 @@
 		if(WIRE_IDSCAN)
 			//Sending a pulse through flashes the red light on the door (if the door has power).
 			if(A.arePowerSystemsOn() && A.density)
-				A.do_animate("deny")
+				A.do_animate(DOOR_ANIMATION_DENY)
 
 		if(WIRE_MAIN_POWER1, WIRE_MAIN_POWER2)
 			//Sending a pulse through either one causes a breaker to trip, disabling the door for 10 seconds if backup power is connected, or 1 minute if not (or until backup power comes back on, whichever is shorter).

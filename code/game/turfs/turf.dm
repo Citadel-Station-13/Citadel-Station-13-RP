@@ -566,8 +566,6 @@
 		return TRUE
 	return FALSE
 
-//? area changes
-
 /**
  * changes area
  *
@@ -585,12 +583,7 @@
 /turf/proc/on_change_area(area/old_area, area/new_area)
 	return
 
-//? Radiation
-
-/turf/proc/update_rad_insulation()
-	rad_insulation_contents = 1
-
-//? atom color - we don't use the expensive system.
+//? Atom Color - we don't use the expensive system.
 
 /turf/get_atom_colour()
 	return color
@@ -608,3 +601,20 @@
 	if(isnull(other.color))
 		return
 	color = other.color
+
+//? Depth
+
+/**
+ * gets overall depth level for stuff standing on us
+ */
+/turf/proc/depth_level()
+	. = 0
+	for(var/obj/O in src)
+		if(!O.depth_projected)
+			continue
+		. = max(., O.depth_level)
+
+//? Radiation
+
+/turf/proc/update_rad_insulation()
+	rad_insulation_contents = 1

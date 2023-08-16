@@ -6,12 +6,14 @@
 	desc = "A virtual map of the surrounding station."
 	icon = 'icons/obj/machines/stationmap.dmi'
 	icon_state = "station_map"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
 	circuit = /obj/item/circuitboard/station_map
+	depth_projected = FALSE
+	climb_allowed = FALSE
 
 	// TODO - Port use_auto_lights from /vg - for now declare here
 	var/use_auto_lights = 1
@@ -118,10 +120,10 @@
 			user.client.images |= holomap_datum.station_map
 
 			watching_mob = user
-			RegisterSignal(watching_mob, COMSIG_ATOM_DIR_CHANGE, .proc/checkPosition)
-			RegisterSignal(watching_mob, COMSIG_MOVABLE_MOVED, .proc/checkPosition)
-			RegisterSignal(watching_mob, COMSIG_PARENT_QDELETING, .proc/stopWatching)
 			set_use_power(USE_POWER_ACTIVE)
+			RegisterSignal(watching_mob, COMSIG_ATOM_DIR_CHANGE, PROC_REF(checkPosition))
+			RegisterSignal(watching_mob, COMSIG_MOVABLE_MOVED, PROC_REF(checkPosition))
+			RegisterSignal(watching_mob, COMSIG_PARENT_QDELETING, PROC_REF(stopWatching))
 
 			if(bogus)
 				to_chat(user, "<span class='warning'>The holomap failed to initialize. This area of space cannot be mapped.</span>")

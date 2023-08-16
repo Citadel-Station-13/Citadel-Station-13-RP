@@ -24,7 +24,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	slot_flags = SLOT_BELT
-	matter = list(MAT_STEEL = 50000, MAT_GLASS = 25000)
+	materials = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
 	///Sparks system used when changing device in the UI
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	///Direction of the device we are going to spawn, set up in the UI
@@ -94,7 +94,7 @@
 /obj/item/pipe_dispenser/equipped(mob/user, slot, flags)
 	. = ..()
 	if(slot == SLOT_ID_HANDS)
-		RegisterSignal(user, COMSIG_MOUSE_SCROLL_ON, .proc/mouse_wheeled)
+		RegisterSignal(user, COMSIG_MOUSE_SCROLL_ON, PROC_REF(mouse_wheeled))
 	else
 		UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
 

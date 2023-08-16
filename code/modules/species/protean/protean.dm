@@ -104,8 +104,10 @@
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
 		/mob/living/carbon/human/proc/bloodsuck,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 		/mob/living/proc/shred_limb,
-		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
 		/mob/living/carbon/human/proc/lick_wounds,
@@ -225,7 +227,7 @@
 	if(refactory && !(refactory.status & ORGAN_DEAD))
 		STATPANEL_DATA_LINE("- -- --- Refactory Metal Storage --- -- -")
 		var/max = refactory.max_storage
-		for(var/material in refactory.materials)
+		for(var/material in refactory.stored_materials)
 			var/amount = refactory.get_stored_material(material)
 			STATPANEL_DATA_ENTRY("[capitalize(material)]", "[amount]/[max]")
 	else

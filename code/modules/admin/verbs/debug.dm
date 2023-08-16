@@ -226,7 +226,7 @@
 
 	if(!check_rights(R_DEBUG))	return
 	var/list/dellog = list("<B>List of things that have gone through qdel this round</B><BR><BR><ol>")
-	tim_sort(SSgarbage.items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
+	tim_sort(SSgarbage.items, cmp=GLOBAL_PROC_REF(cmp_qdel_item_time), associative = TRUE)
 	for(var/path in SSgarbage.items)
 		var/datum/qdel_item/I = SSgarbage.items[path]
 		dellog += "<li><u>[path]</u><ul>"
@@ -272,7 +272,7 @@
 	render_stats(SSoverlays.stats, src)
 
 // Render stats list for round-end statistics.
-/proc/render_stats(list/stats, user, sort = /proc/cmp_generic_stat_item_time)
+/proc/render_stats(list/stats, user, sort = GLOBAL_PROC_REF(cmp_generic_stat_item_time))
 	tim_sort(stats, sort, TRUE)
 
 	var/list/lines = list()
