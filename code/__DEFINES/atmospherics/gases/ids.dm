@@ -44,6 +44,6 @@
 #define GAS_ID_CHLORINE "cl2"
 #define GAS_ID_SULFUR_DIOXIDE "so2"
 #define GAS_ID_HYDROGEN "h2"
-#define GAS_ID_TRITIUM "³h2"
-#define GAS_ID_DEUTERIUM "²h2"
+#define GAS_ID_DEUTERIUM "2h2"
+#define GAS_ID_TRITIUM "3h2"
 #define GAS_ID_VIMUR "vimur"
