@@ -73,7 +73,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	name = "Nebula Gas - Dormitories";
 	req_access = list(160)
 	},
@@ -158,6 +158,10 @@
 	id = "trade";
 	name = "Shop Shutters";
 	opacity = 0
+	},
+/obj/machinery/door/firedoor{
+	req_one_access = list(160);
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -258,7 +262,7 @@
 /area/tradeport/dock)
 "aZ" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 8;
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
@@ -316,7 +320,7 @@
 /area/tradeport/commhall)
 "bi" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Nebula Gas - Warehouse";
 	req_access = list(160)
 	},
@@ -396,8 +400,8 @@
 "bB" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/captain,
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = -24
+/obj/machinery/computer/security/telescreen{
+	pixel_y = -35
 	},
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
@@ -1287,8 +1291,8 @@
 /area/shuttle/trade_ship/general)
 "eS" = (
 /obj/structure/table/glass,
-/obj/machinery/computer/security/telescreen{
-	pixel_y = -35
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_y = -24
 	},
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
@@ -1524,6 +1528,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 1
 	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/bmarble,
 /area/tradeport/cafeteria)
 "fQ" = (
@@ -2763,6 +2768,10 @@
 /area/tradeport/commons)
 "kp" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/item/radio/intercom/trader{
+	pixel_y = 25;
+	dir = 1
+	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "kq" = (
@@ -3280,7 +3289,7 @@
 /area/shuttle/trade_ship/cockpit)
 "md" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Nebula Commercial District";
 	req_access = null
 	},
@@ -3630,6 +3639,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
+/obj/item/reagent_containers/food/condiment/enzyme,
 /turf/simulated/floor/wmarble,
 /area/tradeport/cafeteria)
 "nw" = (
@@ -3785,22 +3795,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
-"ol" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "trade-ship-secure";
-	name = "Blast Shutters";
-	opacity = 0
-	},
-/turf/simulated/shuttle/plating,
-/area/shuttle/trade_ship/general)
 "on" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/reinforced/airmix,
@@ -4279,6 +4273,12 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /turf/simulated/floor/bmarble,
 /area/tradeport/cafeteria)
 "qs" = (
@@ -4395,6 +4395,9 @@
 /area/tradeport/facility)
 "qK" = (
 /obj/effect/floor_decal/spline/fancy,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/bmarble,
 /area/tradeport/cafeteria)
 "qN" = (
@@ -4529,10 +4532,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/phoron{
+/obj/structure/barricade,
+/obj/machinery/door/airlock/silver{
 	name = "Cyndi & Kate's Novelty Wares"
 	},
-/obj/structure/barricade,
 /turf/simulated/floor/plating,
 /area/tradeport/cyndi)
 "rm" = (
@@ -5355,6 +5358,7 @@
 	dir = 1
 	},
 /obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/condiment/enzyme,
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "uR" = (
@@ -5441,18 +5445,8 @@
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "vb" = (
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 8
-	},
-/obj/item/pen{
-	pixel_y = 4
-	},
 /obj/machinery/light,
-/obj/structure/table/glass,
-/obj/structure/sign/poster{
-	pixel_y = -32
-	},
+/obj/structure/closet/wardrobe/pjs,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
 "vc" = (
@@ -5478,11 +5472,11 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/safari)
 "vh" = (
-/obj/item/radio/intercom/trader{
-	pixel_y = -25
+/obj/machinery/computer/security/telescreen{
+	pixel_y = -35
 	},
-/turf/simulated/wall,
-/area/tradeport/cafeteria)
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tradeport/dock)
 "vi" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -5645,7 +5639,7 @@
 /area/tradeport/cafeteria)
 "vE" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Nebula Commercial District";
 	req_access = null
 	},
@@ -6522,6 +6516,12 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = -5
+	},
 /turf/simulated/floor/wmarble,
 /area/tradeport/cafeteria)
 "yK" = (
@@ -7128,7 +7128,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 8;
 	name = "Nebula Gas - Engineering";
 	req_access = list(160)
 	},
@@ -7837,8 +7837,8 @@
 "DG" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/hos,
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = -24
+/obj/structure/sign/poster{
+	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
@@ -8255,8 +8255,8 @@
 "Fd" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/rd,
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = 24
+/obj/machinery/newscaster{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
@@ -8620,6 +8620,12 @@
 	req_one_access = list(160)
 	},
 /obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/wmarble,
@@ -9694,7 +9700,17 @@
 /turf/simulated/floor/water/indoors,
 /area/tradeport/safarizoo)
 "KQ" = (
-/obj/structure/closet/wardrobe/pjs,
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_y = -24
+	},
+/obj/structure/table/glass,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/obj/item/pen{
+	pixel_y = 4
+	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
 "KR" = (
@@ -12196,6 +12212,12 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
 "Ue" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
 /turf/simulated/floor/bmarble,
 /area/tradeport/cafeteria)
 "Uf" = (
@@ -12614,6 +12636,14 @@
 "VN" = (
 /obj/structure/window/reinforced,
 /obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_y = 4;
+	pixel_x = 1
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = -6;
+	pixel_y = 4
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "VO" = (
@@ -12623,8 +12653,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
 "VQ" = (
-/obj/machinery/newscaster{
-	pixel_y = 32
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
@@ -36659,7 +36689,7 @@ LK
 ah
 bB
 PJ
-Jv
+vh
 NQ
 dA
 Jc
@@ -39190,7 +39220,7 @@ sI
 tp
 Zv
 Lm
-vh
+tW
 kp
 qA
 yg
@@ -39370,7 +39400,7 @@ NC
 BG
 Su
 aA
-ol
+aA
 aA
 PJ
 PJ
