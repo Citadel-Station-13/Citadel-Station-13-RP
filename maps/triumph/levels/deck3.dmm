@@ -3526,9 +3526,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
-"daL" = (
-/turf/simulated/wall,
-/area/medical/ward)
 "dbb" = (
 /obj/machinery/door/window/brigdoor/northright{
 	name = "Containment Pen";
@@ -3627,7 +3624,7 @@
 /area/medical/virologyisolation)
 "ddG" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	id_tag = "MedbayFoyer";
 	name = "Recovery Wing";
 	req_access = list(5)
@@ -6744,12 +6741,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "fIZ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "fJj" = (
@@ -8194,7 +8187,6 @@
 "gVf" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
-	dir = 4;
 	id = "mechbay";
 	name = "Mech Bay"
 	},
@@ -8507,7 +8499,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "hjJ" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "hjT" = (
@@ -8685,12 +8677,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
-"hnI" = (
-/obj/machinery/camera/network/outside{
-	dir = 10
-	},
-/turf/space,
-/area/space)
 "hoR" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9089,7 +9075,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	id_tag = "PsycheFoyer";
 	name = "Psychiatric Wing";
 	req_access = list();
@@ -11233,7 +11219,6 @@
 	dir = 8
 	},
 /obj/machinery/door/blast/regular{
-	dir = 4;
 	id = "mechbay";
 	name = "Mech Bay"
 	},
@@ -12264,9 +12249,6 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/hallway/primary/port)
 "jYT" = (
@@ -12516,7 +12498,6 @@
 	dir = 1
 	},
 /obj/machinery/door/blast/regular{
-	dir = 4;
 	id = "mechbay";
 	name = "Mech Bay"
 	},
@@ -12913,7 +12894,8 @@
 	},
 /obj/machinery/door/blast/regular{
 	id = "mechbay-inner";
-	name = "Mech Bay"
+	name = "Mech Bay";
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
@@ -18809,9 +18791,6 @@
 /obj/structure/sign/warning/nosmoking_2,
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/storage)
-"pAa" = (
-/turf/simulated/wall/r_wall,
-/area/medical/psych_ward)
 "pAX" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -23220,7 +23199,8 @@
 	},
 /obj/machinery/door/blast/regular{
 	id = "mechbay-inner";
-	name = "Mech Bay"
+	name = "Mech Bay";
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
@@ -23447,9 +23427,6 @@
 "tgD" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/patient_a)
-"tgK" = (
-/turf/simulated/wall,
-/area/maintenance/research)
 "tgM" = (
 /obj/structure/table/rack,
 /obj/item/clothing/mask/gas,
@@ -23857,7 +23834,7 @@
 /area/rnd/hallway)
 "tyV" = (
 /obj/machinery/camera/network/outside{
-	dir = 10
+	dir = 1
 	},
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
@@ -26614,15 +26591,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
-"vMQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/port)
 "vNt" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
@@ -27006,7 +26974,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	name = "Psychiatric Ward";
 	req_access = list(5)
 	},
@@ -37037,7 +37005,7 @@ ekU
 ktr
 fLa
 vUy
-pAa
+ekU
 cFy
 dSa
 dSa
@@ -37229,9 +37197,9 @@ mDp
 tKG
 ekU
 snu
-pAa
-pAa
-pAa
+ekU
+ekU
+ekU
 rLU
 dSa
 dSa
@@ -38336,7 +38304,7 @@ mDp
 mDp
 aDe
 mDp
-hnI
+ikZ
 rOo
 ezO
 caz
@@ -39140,7 +39108,7 @@ meR
 meR
 meR
 qak
-vMQ
+meR
 joS
 goh
 ktt
@@ -41440,7 +41408,7 @@ mDp
 mDp
 aDe
 mDp
-hnI
+ikZ
 qRu
 pBY
 eWW
@@ -41845,7 +41813,7 @@ qpQ
 pgB
 xXR
 gyl
-tgK
+xIf
 oZk
 dkj
 uJh
@@ -41887,7 +41855,7 @@ wlz
 wlz
 wlz
 wlz
-daL
+bCG
 rug
 ddG
 toD
@@ -42233,7 +42201,7 @@ qpQ
 bWC
 nZB
 eec
-tgK
+xIf
 bTp
 xXR
 uJh
@@ -42427,7 +42395,7 @@ qpQ
 aZk
 xXR
 fMM
-tgK
+xIf
 bTp
 iny
 uJh
@@ -42621,7 +42589,7 @@ qpQ
 mEV
 kpE
 lqf
-tgK
+xIf
 bTp
 mxb
 uJh
@@ -43962,7 +43930,7 @@ mDp
 mDp
 mDp
 aDe
-hnI
+ikZ
 sjz
 tfa
 aCZ
@@ -46678,7 +46646,7 @@ mDp
 mDp
 mDp
 mDp
-mDp
+ikZ
 kQU
 kQU
 kQU
@@ -49200,7 +49168,7 @@ mDp
 aDe
 mDp
 mDp
-hnI
+ikZ
 koS
 ppE
 kHG
@@ -50752,7 +50720,7 @@ mDp
 lIp
 mDp
 mDp
-hnI
+ikZ
 koS
 koS
 koS
@@ -53099,7 +53067,7 @@ mDp
 mDp
 lIp
 mDp
-hnI
+ikZ
 mNR
 gDW
 obW
