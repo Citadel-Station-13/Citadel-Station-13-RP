@@ -45,15 +45,10 @@ DEFINE_BITFIELD(atmos_portable_ui_flags, list(
 
 //! legacy
 
-/// L/s. This can be used to balance how fast a room is siphoned. Anything higher than CELL_VOLUME has no effect.
-#define MAX_SIPHON_FLOWRATE   2500
-/// L/s. Max flow rate when scrubbing from a turf.
-#define MAX_SCRUBBER_FLOWRATE 200
-
 // Will not bother pumping or filtering if the gas source as fewer than this amount of moles, to help with performance.
-#define MINIMUM_MOLES_TO_PUMP		0.001
-#define MINIMUM_MOLES_TO_FILTER		0.001
-#define MINIMUM_MOLES_TO_SCRUB		0.001
+#define MINIMUM_MOLES_TO_PUMP		0.00001
+#define MINIMUM_MOLES_TO_FILTER		0.00001
+#define MINIMUM_MOLES_TO_SCRUB		0.00001
 // fire sparking
 #define MINIMUM_MOLES_TO_SPARK		0.015
 
