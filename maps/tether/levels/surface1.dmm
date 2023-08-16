@@ -1153,7 +1153,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "aDk" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	filter_type = 0;
 	filtered_out = list("phoron")
 	},
@@ -6755,7 +6755,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "dAQ" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	filter_type = 3;
 	filtered_out = list("carbon_dioxide")
 	},
@@ -11686,7 +11686,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/gas_storage)
 "gfu" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	filter_type = 4;
 	filtered_out = list("nitrous_oxide")
 	},
