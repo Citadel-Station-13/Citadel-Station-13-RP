@@ -104,6 +104,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_ALARMS          18
 #define INIT_ORDER_RESEARCH        17
 #define INIT_ORDER_ATOMS           15
+#define INIT_ORDER_WIRENETS        12
 #define INIT_ORDER_MACHINES        10
 #define INIT_ORDER_SHUTTLES        3
 #define INIT_ORDER_DEFAULT         0

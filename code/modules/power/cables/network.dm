@@ -70,6 +70,9 @@ GLOBAL_LIST_EMPTY(powernets)
 
 	#warn impl
 
+/**
+ * called every SSmachines cycle to do powernet processing
+ */
 /datum/wirenet/power/proc/reset()
 	spillover = available
 	spillover_ratio = available / supply

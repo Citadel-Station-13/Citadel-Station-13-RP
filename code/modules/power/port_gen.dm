@@ -331,12 +331,12 @@
 	data["fuel_usage"] = active ? round((power_output / time_per_sheet) * 1000) : 0
 
 	data["anchored"] = anchored
-	data["connected"] = (powernet == null ? 0 : 1)
+	data["connected"] = (is_connected() ? 0 : 1)
 	data["ready_to_boot"] = anchored && HasFuel()
 	data["power_generated"] = render_power(power_gen, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
 	data["power_output"] = render_power(power_gen * power_output, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
 	data["unsafe_output"] = power_output > max_safe_output
-	data["power_available"] = (powernet == null ? 0 : render_power(avail(), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE))
+	data["power_available"] = (is_connected() ? 0 : render_power(power_available(), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE))
 	data["temperature_current"] = temperature
 	data["temperature_max"] = max_temperature
 	data["temperature_overheat"] = overheating

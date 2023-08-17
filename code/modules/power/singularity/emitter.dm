@@ -50,7 +50,7 @@
 	..()
 
 /obj/machinery/power/emitter/update_icon()
-	if (active && powernet && avail(active_power_usage * 0.001))
+	if (active && is_connected() && power_available(active_power_usage * 0.001))
 		icon_state = "emitter_+a"
 	else
 		icon_state = "emitter"
@@ -61,7 +61,7 @@
 
 /obj/machinery/power/emitter/proc/activate(mob/user as mob)
 	if(state == 2)
-		if(!powernet)
+		if(!is_connected())
 			to_chat(user, "\The [src] isn't connected to a wire.")
 			return 1
 		if(!src.locked)
@@ -98,7 +98,7 @@
 /obj/machinery/power/emitter/process(delta_time)
 	if(machine_stat & (BROKEN))
 		return
-	if(src.state != 2 || (!powernet && active_power_usage))
+	if(src.state != 2 || (!is_connected() && active_power_usage))
 		src.active = 0
 		update_icon()
 		return
@@ -163,7 +163,6 @@
 					"You undo the external reinforcing bolts.", \
 					"You hear a ratchet.")
 				set_anchored(FALSE)
-				disconnect_from_network()
 			if(2)
 				to_chat(user, "<span class='warning'>\The [src] needs to be unwelded from the floor.</span>")
 		return
@@ -255,7 +254,7 @@
 /obj/machinery/power/emitter/proc/adjust_integrity(amount)
 	integrity = clamp( integrity + amount, 0,  initial(integrity))
 	if(integrity == 0)
-		if(powernet && avail(active_power_usage * 0.001)) // If it's powered, it goes boom if killed.
+		if(is_connected() && power_available(active_power_usage * 0.001)) // If it's powered, it goes boom if killed.
 			visible_message(src, "<span class='danger'>\The [src] explodes violently!</span>", "<span class='danger'>You hear an explosion!</span>")
 			explosion(get_turf(src), 1, 2, 4)
 		else

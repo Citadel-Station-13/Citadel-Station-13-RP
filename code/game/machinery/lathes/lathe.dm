@@ -156,7 +156,7 @@
 	power_multiplier = 1
 	storage_multiplier = storage_factor
 	efficiency_multiplier = efficiency_factor
-	update_active_power_usage(POWER_USAGE_LATHE_ACTIVE_SCALE(speed_factor))
+	set_active_power_usage(POWER_USAGE_LATHE_ACTIVE_SCALE(speed_factor))
 	stored_materials.set_multiplied_capacity(materials_max, storage_factor)
 	ui_controller?.update_static_data()
 
@@ -442,7 +442,7 @@
 		return
 	ui_controller?.update_ui_data()
 	queue_active = TRUE
-	update_use_power(USE_POWER_ACTIVE)
+	set_use_power(USE_POWER_ACTIVE)
 	update_icon()
 
 /obj/machinery/lathe/proc/stop_printing()
@@ -450,7 +450,7 @@
 		return
 	queue_active = FALSE
 	ui_controller?.update_ui_data()
-	update_use_power(USE_POWER_IDLE)
+	set_use_power(USE_POWER_IDLE)
 	update_icon()
 
 /**

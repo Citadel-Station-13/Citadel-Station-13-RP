@@ -52,18 +52,89 @@
 /obj/machinery/power/proc/supply(amount)
 	connection.network?.supply(amount)
 
+/**
+ * high priority non load balanced draw
+ *
+ * @params
+ * * amount - amount in kw
+ *
+ * @return kw's successfully drawn
+ */
 /obj/machinery/power/proc/flat_draw(amount)
 	if(isnull(connection.network))
 		return 0
 	return connection.network.flat_draw(amount)
 
+/**
+ * dynamic priority load balanced draw
+ *
+ * @params
+ * * amount - amount in kw
+ * * tier - load balancing tier
+ *
+ * @return kw's successfully drawn
+ */
 /obj/machinery/power/proc/dynamic_draw(amount, tier)
 	if(isnull(connection.network))
 		return 0
 	return connection.network.dynamic_draw(amount, tier)
 
+/**
+ * returns everything on the same powernet
+ */
 /obj/machinery/power/proc/directly_connected_hosts()
 	return isnull(connection.network)? lists() : connection.network.get_hosts()
+
+/**
+ * get available power on network
+ *
+ * this is including already used power! e.g. 1MW available with 900KW used is still 1MW. You need power_surplus() for the 100kw.
+ *
+ * @params
+ * * kw - kilowatts needed; if specified, this returns 0 unless we have atleast that.
+ */
+/obj/machinery/power/proc/power_available(kw)
+	#warn impl
+
+/**
+ * get surplus power on network
+ *
+ * this is not including already used power.
+ *
+ * @params
+ * * kw - kilowatts needed; if specified, this returns 0 unless we have atleast that.
+ */
+/obj/machinery/power/proc/power_surplus(kw)
+	#warn impl
+
+/**
+ * get total draw on network
+ *
+ * @params
+ * * kw - kilowatts needed; if specified, this returns 0 unless the network is under atleast that amount of load.
+ */
+/obj/machinery/power/proc/power_load_overall(kw)
+	#warn impl
+
+/**
+ * get tier draw on network
+ *
+ * @params
+ * * tier - the tier we're checking
+ * * kw - kilowatts needed; if specified, this returns 0 unless the network is under atleast that amount of load.
+ */
+/obj/machinery/power/proc/power_load_tier(tier, kw)
+	#warn impl
+
+/**
+ * get flat draw on network
+ *
+ * @params
+ * * kw - kilowatts needed; if specified, this returns 0 unless the network is under atleast that amount of load.
+ */
+/obj/machinery/power/proc/power_load_flat(kw)
+	#warn impl
+
 
 ///////////////////////////////
 // General procedures
@@ -134,33 +205,6 @@
 				. += C
 	return .
 
-//returns all the cables in neighbors turfs,
-//pointing towards the turf the machine is located at
-/obj/machinery/power/proc/get_marked_connections()
-
-	. = list()
-
-	var/cdir
-	var/turf/T
-
-	for(var/card in GLOB.cardinal)
-		T = get_step(loc,card)
-		cdir = get_dir(T,loc)
-
-		for(var/obj/structure/cable/C in T)
-			if(C.d1 == cdir || C.d2 == cdir)
-				. += C
-	return .
-
-//returns all the NODES (O-X) cables WITHOUT a powernet in the turf the machine is located at
-/obj/machinery/power/proc/get_indirect_connections()
-	. = list()
-	for(var/obj/structure/cable/C in loc)
-		if(C.powernet)	continue
-		if(C.d1 == 0) // the cable is a node cable
-			. += C
-	return .
-
 ///////////////////////////////////////////
 // GLOBAL PROCS for powernets handling
 //////////////////////////////////////////
@@ -223,33 +267,6 @@
 	for(var/obj/machinery/power/PM in found_machines)
 		if(!PM.connect_to_network()) //couldn't find a node on its turf...
 			PM.disconnect_from_network() //... so disconnect if already on a powernet
-
-
-//Merge two powernets, the bigger (in cable length term) absorbing the other
-/proc/merge_powernets(var/datum/powernet/net1, var/datum/powernet/net2)
-	if(!net1 || !net2) //if one of the powernet doesn't exist, return
-		return
-
-	if(net1 == net2) //don't merge same powernets
-		return
-
-	//We assume net1 is larger. If net2 is in fact larger we are just going to make them switch places to reduce on code.
-	if(net1.cables.len < net2.cables.len)	//net2 is larger than net1. Let's switch them around
-		var/temp = net1
-		net1 = net2
-		net2 = temp
-
-	//merge net2 into net1
-	for(var/obj/structure/cable/Cable in net2.cables) //merge cables
-		net1.add_cable(Cable)
-
-	if(!net2) return net1
-
-	for(var/obj/machinery/power/Node in net2.nodes) //merge power machines
-		if(!Node.connect_to_network())
-			Node.disconnect_from_network() //if somehow we can't connect the machine to the new powernet, disconnect it from the old nonetheless
-
-	return net1
 
 //Determines how strong could be shock, deals damage to mob, uses power.
 //M is a mob who touched wire/whatever

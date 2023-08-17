@@ -190,12 +190,28 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		user.action_feedback(SPAN_WARNING("You must cut this cable from above."), src)
 		return TRUE
 	if(cut_time)
-		user.visible_action_feedback(SPAN_WARNING("[user] starts to cut [src]..."), range = MESSAGE_RANGE_CONSTRUCTION)
+		user.visible_action_feedback(
+			target = src,
+			visible_hard = SPAN_WARNING("[user] starts to cut [src]..."),
+			hard_range = MESSAGE_RANGE_CONSTRUCTION,
+		)
 		if(!do_after(user, cut_time, src, mobility_flags = MOBILITY_CAN_USE))
 			return FALSE
-	user.visible_action_feedback(SPAN_WARNING("[user] cuts [src]."), range = MESSAGE_RANGE_CONSTRUCTION)
+	user.visible_action_feedback(
+		target = src,
+		visible_hard = SPAN_WARNING("[user] cuts [src]."),
+		hard_range = MESSAGE_RANGE_CONSTRUCTION,
+	)
 	investigate_log("[d1]-[d2] cut by [key_name(user)]", INVESTIGATE_WIRES)
 	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+
+/obj/structure/wire/cable/proc/reset_dirs(d1, d2)
+	src.d1 = d1
+	src.d2 = d2
+	update_icon()
+	#warn update
+
+#warn below
 
 /obj/structure/cable/drain_energy(datum/actor, amount, flags)
 	if(!powernet)

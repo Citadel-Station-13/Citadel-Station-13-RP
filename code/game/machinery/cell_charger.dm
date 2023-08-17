@@ -55,9 +55,6 @@
 			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
 			if(!isarea(a))
 				return
-			if(a.power_equip == 0) // There's no APC in this area, don't try to cheat power!
-				to_chat(user, SPAN_WARNING("\The [src] blinks red as you try to insert [W]!"))
-				return
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
 

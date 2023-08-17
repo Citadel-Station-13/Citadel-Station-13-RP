@@ -27,14 +27,16 @@
 	return FALSE //! No.
 
 /obj/structure/wire/proc/join()
+	#warn impl
 
 /obj/structure/wire/proc/leave()
+	#warn impl
 
 /obj/structure/wire/proc/adjacent_wires()
 	return list()
 
 /obj/structure/wire/proc/auto_rebuild()
-	if(!isnull(network))
+	if(!isnull(network) || !joined)
 		return
 	rebuild()
 

@@ -100,24 +100,10 @@
 			return reset()
 	if(!use_cable(1))
 		return reset()
-	var/obj/structure/cable/NC = new(new_turf)
-	NC.cableColor(COLOR_RED)
-	NC.d1 = 0
-	NC.d2 = fdirn
-	NC.update_icon()
 
-	var/datum/powernet/PN
+	var/obj/structure/cable/NC = new(new_turf, COLOR_RED, 0, fdirn)
 	if(last_piece && last_piece.d2 != M_Dir)
-		last_piece.d1 = min(last_piece.d2, M_Dir)
-		last_piece.d2 = max(last_piece.d2, M_Dir)
-		last_piece.update_icon()
-		PN = last_piece.powernet
+		last_piece.reset_dirs(min(last_piece.d2, M_Dir), max(last_piece.d2, M_Dir))
 
-	if(!PN)
-		PN = new()
-	PN.add_cable(NC)
-	NC.mergeConnectedNetworks(NC.d2)
-
-	//NC.mergeConnectedNetworksOnTurf()
 	last_piece = NC
 	return TRUE

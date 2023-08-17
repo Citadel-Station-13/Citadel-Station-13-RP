@@ -175,37 +175,12 @@
 #define DYNAMIC_CELL_UNITS_TO_KWM(U)		(((U) * GLOB.cellrate) / (60))
 #define DYNAMIC_CELL_UNITS_TO_WM(U)			(((U) * GLOB.cellrate) / (60 / 1000))
 
-/// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss.
-GLOBAL_VAR_INIT(cellrate, 0.5)
-/**
- * current calculations
- * cellrate 0.5 = 0.5 kj/unit
- * for 10k cell, 5000kj
- * 1 Wh = 60J-S*60s/m = 3600J = 3.6kJ
- * 10k cell --> 1388.89 Wh
- * damn, future cells be pogging
- */
-/// the closest thing we'll get to a cvar - affects cell use_scaled - higher = things use less energy. handheld devices usually use this.
-GLOBAL_VAR_INIT(cellefficiency, 1)
-
 /**
  * OLD CALCS FOR ABOVE
  * Multiplier for watts per tick <> cell storage (e.g., 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
  * = 50Ws/u
  * #define CELLRATE 0.002 // It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
  */
-
-/**
- * misc
- */
-
-//#define THERMOMACHINE_CHEAT_FACTOR						1
-#define RECHARGER_CHEAT_FACTOR							5
-#define SYNTHETIC_NUTRITION_KJ_PER_UNIT					10
-#define SYNTHETIC_NUTRITION_INDUCER_CHEAT_FACTOR		2
-#define CYBORG_POWER_USAGE_MULTIPLIER					2
-#define SPACE_HEATER_CHEAT_FACTOR						1.5
-#define THERMOREGULATOR_CHEAT_FACTOR					5
 
 /**
  * LEGACY ENUMS
