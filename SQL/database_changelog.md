@@ -27,3 +27,7 @@ Database migrated to DBCore. Schema will start at MAJOR 1, MINOR 1.
 ### 2/4/23 - 1.3 - silicons
 
 `character` table added.
+
+### 17/08/23 1.? - timothytea
+
+`characterlookup` table added.

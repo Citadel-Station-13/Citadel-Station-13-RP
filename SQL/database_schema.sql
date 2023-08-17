@@ -362,5 +362,5 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%population` (
   `charactername` TEXT NOT NULL ,
   `characterid` TEXT NOT NULL ,
   `playerid` TEXT NOT NULL ,
-  PRIMARY KEY (`charactername`)
+  PRIMARY KEY (`playerid`, `charactername`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
