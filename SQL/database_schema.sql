@@ -356,3 +356,11 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%population` (
   `time` DATETIME NOT NULL ,
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  
+  -- Persistence - Character Serialization --
+  CREATE TABLE IF NOT EXISTS `%_PREFIX_%character_lookup` (
+  `charactername` TEXT NOT NULL ,
+  `characterid` TEXT NOT NULL ,
+  `playerid` TEXT NOT NULL ,
+  PRIMARY KEY (`charactername`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
