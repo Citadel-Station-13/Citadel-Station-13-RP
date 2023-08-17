@@ -562,19 +562,19 @@
 			unknown += gas[id]
 			trace_unknown_masses += id
 		else
-			. += SPAN_NOTICE("[global.gas_data.names[id]]: [exact? "[round(gas[id], 0.001)] mol @ " : ""][round(gas[id] / total_moles, 0.001)]%[molar_masses? " ([global.gas_data.molar_masses[id]] g/mol)" : ""]")
+			. += SPAN_NOTICE("[global.gas_data.names[id]]: [exact? "[QUANTIZE(gas[id])] mol @ " : ""][round(gas[id] / total_moles * 100, 0.01)]%[molar_masses? " ([global.gas_data.molar_masses[id]] g/mol)" : ""]")
 	if(reagents)
-		. += SPAN_NOTICE("Reagents: [exact? "[round(reagents, 0.001)] mol @ " : ""][round(reagents / total_moles, 0.001)]%")
+		. += SPAN_NOTICE("Reagents: [exact? "[QUANTIZE(reagents)] mol @ " : ""][round(reagents / total_moles * 100, 0.01)]%")
 		if(molar_masses)
 			for(var/id in trace_reagent_masses)
 				. += SPAN_NOTICE("[FOURSPACES] - [global.gas_data.names[id]] ([global.gas_data.molar_masses[id]] g/mol)")
 	if(other)
-		. += SPAN_NOTICE("Other: [exact? "[round(other, 0.001)] mol @ " : ""][round(other / total_moles, 0.001)]%")
+		. += SPAN_NOTICE("Other: [exact? "[QUANTIZE(other)] mol @ " : ""][round(other / total_moles * 100, 0.01)]%")
 		if(molar_masses)
 			for(var/id in trace_other_masses)
 				. += SPAN_NOTICE("[FOURSPACES] - [global.gas_data.names[id]] ([global.gas_data.molar_masses[id]] g/mol)")
 	if(unknown)
-		. += SPAN_NOTICE("Unknown: [exact? "[round(unknown, 0.001)] mol @ " : ""][round(unknown / total_moles, 0.001)]%")
+		. += SPAN_NOTICE("Unknown: [exact? "[QUANTIZE(unknown)] mol @ " : ""][round(unknown / total_moles * 100, 0.01)]%")
 		if(molar_masses)
 			for(var/id in trace_unknown_masses)
 				. += SPAN_NOTICE("[FOURSPACES] - [global.gas_data.names[id]] ([global.gas_data.molar_masses[id]] g/mol)")

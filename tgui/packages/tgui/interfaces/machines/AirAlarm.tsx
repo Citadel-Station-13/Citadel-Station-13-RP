@@ -114,11 +114,11 @@ export const AirAlarm = (props, context) => {
                   {round(data.environment.pressure, 2)} kPa
                 </LabeledList.Item>
                 <LabeledList.Item label="Temperature" color={temperatureRaised.color}>
-                  {temperatureRounded}K ({temperatureRounded - 273.15}°C)
+                  {temperatureRounded}K ({round(temperatureRounded - 273.15, 2)}°C)
                 </LabeledList.Item>
                 {
                   Object.entries(data.environment.gases).map(([k, v]) => {
-                    const percent = v / data.environment.moles;
+                    const percent = v / data.environment.moles * 100;
                     const gasRaised = AirAlarmRaiseLookup[TLVCheck(v, data.gasTLV[k])];
                     return (
                       <LabeledList.Item key={k}

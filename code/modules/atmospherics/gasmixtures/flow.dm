@@ -117,7 +117,7 @@
 				filtered_ids += id
 		// then get the explicitly filtered ones if needed
 		if(length(gas_ids))
-			filtered_ids |= (source.gas | gas_ids)
+			filtered_ids |= (source.gas & gas_ids)
 	else if(length(gas_ids))
 		filtered_ids = gas_ids & source.gas
 
