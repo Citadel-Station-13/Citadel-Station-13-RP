@@ -86,53 +86,53 @@
 	return isnull(connection.network)? lists() : connection.network.get_hosts()
 
 /**
- * get available power on network
+ * get available power on network at start of last cycle
  *
- * this is including already used power! e.g. 1MW available with 900KW used is still 1MW. You need power_surplus() for the 100kw.
+ * this is including already used power! e.g. 1MW available with 900KW used is still 1MW. You need get_powernet_surplus() for the 100kw.
  *
  * @params
  * * kw - kilowatts needed; if specified, this returns 0 unless we have atleast that.
  */
-/obj/machinery/power/proc/power_available(kw)
+/obj/machinery/power/proc/get_powernet_supply(kw)
 	#warn impl
 
 /**
- * get surplus power on network
+ * get surplus power on network at end of last cycle
  *
  * this is not including already used power.
  *
  * @params
  * * kw - kilowatts needed; if specified, this returns 0 unless we have atleast that.
  */
-/obj/machinery/power/proc/power_surplus(kw)
+/obj/machinery/power/proc/get_powernet_surplus(kw)
 	#warn impl
 
 /**
- * get total draw on network
+ * get total draw on network at end of last cycle
  *
  * @params
  * * kw - kilowatts needed; if specified, this returns 0 unless the network is under atleast that amount of load.
  */
-/obj/machinery/power/proc/power_load_overall(kw)
+/obj/machinery/power/proc/get_powernet_load_overall(kw)
 	#warn impl
 
 /**
- * get tier draw on network
+ * get tier draw on network at end of last cycle
  *
  * @params
  * * tier - the tier we're checking
  * * kw - kilowatts needed; if specified, this returns 0 unless the network is under atleast that amount of load.
  */
-/obj/machinery/power/proc/power_load_tier(tier, kw)
+/obj/machinery/power/proc/get_powernet_load_tier(tier, kw)
 	#warn impl
 
 /**
- * get flat draw on network
+ * get flat draw on network at end of last cycle
  *
  * @params
  * * kw - kilowatts needed; if specified, this returns 0 unless the network is under atleast that amount of load.
  */
-/obj/machinery/power/proc/power_load_flat(kw)
+/obj/machinery/power/proc/get_powernet_load_flat(kw)
 	#warn impl
 
 

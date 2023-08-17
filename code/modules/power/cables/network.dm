@@ -27,6 +27,7 @@ GLOBAL_LIST_EMPTY(powernets)
 	/// extra power spilled over in last tick - used by machinery wanting to restore some power supplied
 	var/spillover = 0
 	/// spillover percent - used by machinery wanting to restore some power applied but only need to track last input on their end
+	/// e.g. 0.3 = 30% of power last tick was not consumed, and so a SMES outputting a balanced 1MW can take back 300KW of it.
 	var/spillover_ratio = 0
 
 	/// current power load - regardless of if usage was actually successful. this lets us perform network readings/whatever.
@@ -42,6 +43,8 @@ GLOBAL_LIST_EMPTY(powernets)
 	var/last_load = 0
 	/// last flat load - used for viewing
 	var/last_flat_load = 0
+	/// last supply - used for viewing
+	var/last_supply = 0
 
 	#warn finish
 
@@ -52,6 +55,12 @@ GLOBAL_LIST_EMPTY(powernets)
 /datum/wirenet/power/Destroy()
 	GLOB.powernets -= src
 	return ..()
+
+/datum/wirenet/power/proc/observer_examine()
+	. = list()
+	. += SPAN_NOTICE("Powernet Status - Last Cycle:")
+	. += "Total: [render_power(last_load, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)] / [render_power(last_supply, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_KILO)]"
+	. += "Flat Load: [render_power(last_flat_load, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)]"
 
 #warn handle power stuff on merge
 

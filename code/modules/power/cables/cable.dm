@@ -209,7 +209,43 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	src.d1 = d1
 	src.d2 = d2
 	update_icon()
-	#warn update
+	set_junction(d1 == 0)
+	rebuild()
+
+/**
+ * turns our knot cable (0-X) into a (dir-X) cable
+ *
+ * this does not sanity check for if it semantically makes sense! e.g. this won't stop you from doing X-X cables, where
+ * X is in the same direction - you need to check yourself!
+ */
+/obj/structure/wire/cable/proc/denode(dir)
+	// optimizations later, for now we just are fluffed reset_dirs().
+	reset_dirs(dir, d2)
+
+/obj/structure/wire/cable/examine(mob/user, dist)
+	. = ..()
+	if(isobserver(user) && !isnull(network))
+		var/datum/wirenet/power/powernet = network
+		. += powernet.observer_examine()
+
+//! legacy: explosion handling
+
+/obj/structure/wire/cable/legacy_ex_act(severity)
+	// no breaking if we're underfloor
+	if(invisibility)
+		return
+	switch(severity)
+		if(1.0)
+			qdel(src)
+		if(2.0)
+			if (prob(50))
+				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
+				qdel(src)
+
+		if(3.0)
+			if (prob(25))
+				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
+				qdel(src)
 
 #warn below
 
@@ -220,28 +256,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 /obj/structure/cable/can_drain_energy(datum/actor, flags)
 	return TRUE
-
-/obj/structure/cable/Initialize(mapload, _color, _d1, _d2, auto_merge)
-
-	cable_list += src //add it to the global cable list
-	#warn cable list???
-
-
-/obj/structure/cable/Destroy()					// called when a cable is deleted
-	if(powernet)
-		cut_cable_from_powernet()				// update the powernets
-	cable_list -= src							//remove it from global cable list
-	return ..()									// then go ahead and delete the cable
-
-// Ghost examining the cable -> tells him the power
-/obj/structure/cable/attack_ghost(mob/user)
-	. = ..()
-	if(user.client?.inquisitive_ghost)
-		// following code taken from attackby (multitool)
-		if(powernet && (powernet.avail > 0))
-			to_chat(user, "<span class='warning'>[render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)] in power network.</span>")
-		else
-			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
 
 ///////////////////////////////////
 // General procedures
@@ -291,74 +305,3 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 			return 1
 	return 0
-
-//explosion handling
-/obj/structure/wire/cable/legacy_ex_act(severity)
-	// no breaking if we're underfloor
-	if(invisibility)
-		return
-	switch(severity)
-		if(1.0)
-			qdel(src)
-		if(2.0)
-			if (prob(50))
-				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
-				qdel(src)
-
-		if(3.0)
-			if (prob(25))
-				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
-				qdel(src)
-
-//////////////////////////////////////////////
-// Powernets handling helpers
-//////////////////////////////////////////////
-
-//should be called after placing a cable which extends another cable, creating a "smooth" cable that no longer terminates in the centre of a turf.
-//needed as this can, unlike other placements, disconnect cables
-/obj/structure/cable/proc/denode()
-	var/turf/T1 = loc
-	if(!T1) return
-
-	var/list/powerlist = power_list(T1,src,0,0) //find the other cables that ended in the centre of the turf, with or without a powernet
-	if(powerlist.len>0)
-		var/datum/powernet/PN = new()
-		propagate_network(powerlist[1],PN) //propagates the new powernet beginning at the source cable
-
-		if(PN.is_empty()) //can happen with machines made nodeless when smoothing cables
-			qdel(PN)
-
-// cut the cable's powernet at this cable and updates the powergrid
-/obj/structure/cable/proc/cut_cable_from_powernet()
-	var/turf/T1 = loc
-	var/list/P_list
-	if(!T1)	return
-	if(d1)
-		T1 = get_step(T1, d1)
-		P_list = power_list(T1, src, turn(d1,180),0,cable_only = 1)	// what adjacently joins on to cut cable...
-
-	P_list += power_list(loc, src, d1, 0, cable_only = 1)//... and on turf
-
-
-	if(P_list.len == 0)//if nothing in both list, then the cable was a lone cable, just delete it and its powernet
-		powernet.remove_cable(src)
-
-		for(var/obj/machinery/power/P in T1)//check if it was powering a machine
-			if(!P.connect_to_network()) //can't find a node cable on a the turf to connect to
-				P.disconnect_from_network() //remove from current network (and delete powernet)
-		return
-
-	// remove the cut cable from its turf and powernet, so that it doesn't get count in propagate_network worklist
-	loc = null
-	powernet.remove_cable(src) //remove the cut cable from its powernet
-
-	var/datum/powernet/newPN = new()// creates a new powernet...
-	propagate_network(P_list[1], newPN)//... and propagates it to the other side of the cable
-
-	// Disconnect machines connected to nodes
-	if(d1 == 0) // if we cut a node (O-X) cable
-		for(var/obj/machinery/power/P in T1)
-			if(!P.connect_to_network()) //can't find a node cable on a the turf to connect to
-				P.disconnect_from_network() //remove from current network
-
-

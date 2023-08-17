@@ -28,7 +28,7 @@
  *
  * override on subtypes of /datum/wirenet with the correct typecasting for "into".
  */
-/datum/wirenet/proc/merge(datum/wirenet/into)
+/datum/wirenet/proc/merge_into(datum/wirenet/into)
 	for(var/datum/wirenet_connection/connection as anything in connections)
 		//* CURSED COLON OPERATOR - /wirenet_connection must always have a var named network, so we assume it's there. *//
 		connection:network = into
