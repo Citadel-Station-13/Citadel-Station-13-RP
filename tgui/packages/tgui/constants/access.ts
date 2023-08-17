@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @license MIT
+ */
+
 export enum AccessRegions {
   None = 0,
   All = ~0,

@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * these machines intrinsically have auto-linking powernet connections
  *
@@ -135,6 +138,8 @@
 /obj/machinery/power/proc/get_powernet_load_flat(kw)
 	#warn impl
 
+
+#warn below
 
 ///////////////////////////////
 // General procedures

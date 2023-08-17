@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		"White" = COLOR_WHITE,
 		"Silver" = COLOR_SILVER,
@@ -235,14 +238,14 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	if(invisibility)
 		return
 	switch(severity)
-		if(1.0)
+		if(1)
 			qdel(src)
-		if(2.0)
+		if(2)
 			if (prob(50))
 				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
 				qdel(src)
 
-		if(3.0)
+		if(3)
 			if (prob(25))
 				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
 				qdel(src)

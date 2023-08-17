@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /obj/item/circuitboard/machine/lathe
 	abstract_type = /obj/item/circuitboard/machine/lathe
 	name = T_BOARD("lathe")

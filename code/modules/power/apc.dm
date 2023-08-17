@@ -806,139 +806,6 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	return ui_interact(user)
 
-/obj/machinery/power/apc/ui_interact(mob/user, datum/tgui/ui = null)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "APC", name) // 510, 460
-		ui.open()
-
-/obj/machinery/power/apc/ui_data(mob/user)
-	var/list/data = list(
-		"locked" = locked,
-		"normallyLocked" = locked,
-		"emagged" = emagged,
-		"isOperating" = operating,
-		"externalPower" = main_status,
-		"powerCellStatus" = cell ? cell.percent() : null,
-		"chargeMode" = chargemode,
-		"chargingStatus" = charging,
-		"totalLoad" = round(lastused_total),
-		"totalCharging" = round(lastused_charging),
-		"failTime" = failure_timer * 2,
-		"gridCheck" = grid_check,
-		"coverLocked" = coverlocked,
-		"siliconUser" = issilicon(user) || (isobserver(user) && is_admin(user)), //I add observer here so admins can have more control, even if it makes 'siliconUser' seem inaccurate.
-		"emergencyLights" = !emergency_lights,
-		"nightshiftLights" = nightshift_lights,
-		"nightshiftSetting" = nightshift_setting,
-
-		"powerChannels" = list(
-			list(
-				"title" = "Equipment",
-				"powerLoad" = lastused_equip,
-				"status" = equipment,
-				"topicParams" = list(
-					"auto" = list("eqp" = 3),
-					"on"   = list("eqp" = 2),
-					"off"  = list("eqp" = 1)
-				)
-			),
-			list(
-				"title" = "Lighting",
-				"powerLoad" = round(lastused_light),
-				"status" = lighting,
-				"topicParams" = list(
-					"auto" = list("lgt" = 3),
-					"on"   = list("lgt" = 2),
-					"off"  = list("lgt" = 1)
-				)
-			),
-			list(
-				"title" = "Environment",
-				"powerLoad" = round(lastused_environ),
-				"status" = environ,
-				"topicParams" = list(
-					"auto" = list("env" = 3),
-					"on"   = list("env" = 2),
-					"off"  = list("env" = 1)
-				)
-			)
-		)
-	)
-
-	return data
-
-/obj/machinery/power/apc/ui_act(action, params)
-	if(..() || !can_use(usr, TRUE))
-		return TRUE
-
-	// There's a handful of cases where we want to allow users to bypass the `locked` variable.
-	// If can_admin_interact() wasn't only defined on observers, this could just be part of a single-line
-	// conditional.
-	var/locked_exception = FALSE
-	if(issilicon(usr) || action == "nightshift")
-		locked_exception = TRUE
-	if(isobserver(usr))
-		var/mob/observer/dead/D = usr
-		if(D.can_admin_interact())
-			locked_exception = TRUE
-
-	if(locked && !locked_exception)
-		return
-
-	. = TRUE
-	switch(action)
-		if("lock")
-			if(locked_exception) // Yay code reuse
-				if(emagged || (machine_stat & (BROKEN|MAINT)))
-					to_chat(usr, "The APC does not respond to the command.")
-					return
-				locked = !locked
-				update_icon()
-		if("cover")
-			coverlocked = !coverlocked
-		if("breaker")
-			toggle_breaker()
-		if("nightshift")
-			if(last_nightshift_switch > world.time - 10 SECONDS) // don't spam...
-				to_chat(usr, "<span class='warning'>[src]'s night lighting circuit breaker is still cycling!</span>")
-				return 0
-			last_nightshift_switch = world.time
-			nightshift_setting = params["nightshift"]
-			update_nightshift()
-		if("charge")
-			chargemode = !chargemode
-			if(!chargemode)
-				charging = 0
-				update_icon()
-		if("channel")
-			if(params["eqp"])
-				equipment = setsubsystem(text2num(params["eqp"]))
-				update_icon()
-				update()
-			else if(params["lgt"])
-				lighting = setsubsystem(text2num(params["lgt"]))
-				update_icon()
-				update()
-			else if(params["env"])
-				environ = setsubsystem(text2num(params["env"]))
-				update_icon()
-				update()
-		if("reboot")
-			failure_timer = 0
-			update_icon()
-			update()
-		if("emergency_lighting")
-			emergency_lights = !emergency_lights
-			for(var/obj/machinery/light/L in area)
-				if(!initial(L.no_emergency)) //If there was an override set on creation, keep that override
-					L.no_emergency = emergency_lights
-					INVOKE_ASYNC(L, TYPE_PROC_REF(/obj/machinery/light, update), FALSE)
-				CHECK_TICK
-		if("overload")
-			if(locked_exception) // Reusing for simplicity!
-				overload_lighting()
-
 /obj/machinery/power/apc/proc/report()
 	return "[area.name] : [equipment]/[lighting]/[environ] ([lastused_equip+lastused_light+lastused_environ]) : [cell? cell.percent() : "N/C"] ([charging])"
 
@@ -957,47 +824,6 @@ GLOBAL_LIST_EMPTY(apcs)
 //		if (area.name == "AI Chamber")
 //			to_chat(world, "[area.power_equip]")
 	area.power_change()
-
-/obj/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
-	if(!user.client)
-		return 0
-	if(IsAdminGhost(user)) //This is to allow nanoUI interaction by ghost admins.
-		return TRUE
-	if(user.stat)
-		return 0
-	if(inoperable())
-		return 0
-	if(!user.IsAdvancedToolUser())
-		return 0
-	if(user.restrained())
-		to_chat(user,"<span class='warning'>Your hands must be free to use [src].</span>")
-		return 0
-	if(user.lying)
-		to_chat(user,"<span class='warning'>You must stand to use [src]!</span>")
-		return 0
-	autoflag = 5
-	if(istype(user, /mob/living/silicon))
-		var/permit = 0 // Malfunction variable. If AI hacks APC it can control it even without AI control wire.
-		var/mob/living/silicon/ai/AI = user
-		var/mob/living/silicon/robot/robot = user
-		if(hacker)
-			if(hacker == AI)
-				permit = 1
-			else if(istype(robot) && robot.connected_ai && robot.connected_ai == hacker) // Cyborgs can use APCs hacked by their AI
-				permit = 1
-
-		if(aidisabled && !permit)
-			if(!loud)
-				to_chat(user, "<span class='danger'>\The AI control for [src] has been disabled!</span>")
-			return 0
-	else
-		if(!in_range(src, user) || !istype(loc, /turf))
-			return 0
-	var/mob/living/carbon/human/H = user
-	if(istype(H) && prob(H.getBrainLoss()))
-		to_chat(user, "<span class='danger'>You momentarily forget how to use [src].</span>")
-		return 0
-	return 1
 
 /obj/machinery/power/apc/proc/toggle_breaker()
 	operating = !operating
@@ -1483,6 +1309,183 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc/terminal_destroyed(obj/machinery/power/terminal/terminal)
 	if(terminal == src.terminal)
 		src.terminal = null
+
+//? UI
+
+/obj/machinery/power/apc/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "AreaPowerController", name) // 510, 460
+		ui.open()
+
+/obj/machinery/power/apc/ui_data(mob/user)
+	. = list()
+	.["nightshiftSetting"] = nightshift_setting
+	.["nightshiftActive"] = registered_area?.nightshift
+	var/list/data = list(
+		"locked" = locked,
+		"normallyLocked" = locked,
+		"emagged" = emagged,
+		"isOperating" = operating,
+		"externalPower" = main_status,
+		"powerCellStatus" = cell ? cell.percent() : null,
+		"chargeMode" = chargemode,
+		"chargingStatus" = charging,
+		"totalLoad" = round(lastused_total),
+		"totalCharging" = round(lastused_charging),
+		"failTime" = failure_timer * 2,
+		"gridCheck" = grid_check,
+		"coverLocked" = coverlocked,
+		"siliconUser" = issilicon(user) || (isobserver(user) && is_admin(user)), //I add observer here so admins can have more control, even if it makes 'siliconUser' seem inaccurate.
+		"emergencyLights" = !emergency_lights,
+
+		"powerChannels" = list(
+			list(
+				"title" = "Equipment",
+				"powerLoad" = lastused_equip,
+				"status" = equipment,
+				"topicParams" = list(
+					"auto" = list("eqp" = 3),
+					"on"   = list("eqp" = 2),
+					"off"  = list("eqp" = 1)
+				)
+			),
+			list(
+				"title" = "Lighting",
+				"powerLoad" = round(lastused_light),
+				"status" = lighting,
+				"topicParams" = list(
+					"auto" = list("lgt" = 3),
+					"on"   = list("lgt" = 2),
+					"off"  = list("lgt" = 1)
+				)
+			),
+			list(
+				"title" = "Environment",
+				"powerLoad" = round(lastused_environ),
+				"status" = environ,
+				"topicParams" = list(
+					"auto" = list("env" = 3),
+					"on"   = list("env" = 2),
+					"off"  = list("env" = 1)
+				)
+			)
+		)
+	)
+
+	return data + .
+
+/obj/machinery/power/apc/ui_act(action, params)
+	if(..() || !can_use(usr, TRUE))
+		return TRUE
+
+	// There's a handful of cases where we want to allow users to bypass the `locked` variable.
+	// If can_admin_interact() wasn't only defined on observers, this could just be part of a single-line
+	// conditional.
+	var/locked_exception = FALSE
+	if(issilicon(usr) || action == "nightshift")
+		locked_exception = TRUE
+	if(isobserver(usr))
+		var/mob/observer/dead/D = usr
+		if(D.can_admin_interact())
+			locked_exception = TRUE
+
+	if(locked && !locked_exception)
+		return
+
+	. = TRUE
+	switch(action)
+		if("lock")
+			if(locked_exception) // Yay code reuse
+				if(emagged || (machine_stat & (BROKEN|MAINT)))
+					to_chat(usr, "The APC does not respond to the command.")
+					return
+				locked = !locked
+				update_icon()
+		if("cover")
+			coverlocked = !coverlocked
+		if("breaker")
+			toggle_breaker()
+		if("nightshift")
+			if(last_nightshift_switch > world.time - 10 SECONDS) // don't spam...
+				to_chat(usr, "<span class='warning'>[src]'s night lighting circuit breaker is still cycling!</span>")
+				return 0
+			last_nightshift_switch = world.time
+			nightshift_setting = params["nightshift"]
+			update_nightshift()
+		if("charge")
+			chargemode = !chargemode
+			if(!chargemode)
+				charging = 0
+				update_icon()
+		if("channel")
+			if(params["eqp"])
+				equipment = setsubsystem(text2num(params["eqp"]))
+				update_icon()
+				update()
+			else if(params["lgt"])
+				lighting = setsubsystem(text2num(params["lgt"]))
+				update_icon()
+				update()
+			else if(params["env"])
+				environ = setsubsystem(text2num(params["env"]))
+				update_icon()
+				update()
+		if("reboot")
+			failure_timer = 0
+			update_icon()
+			update()
+		if("emergency_lighting")
+			emergency_lights = !emergency_lights
+			for(var/obj/machinery/light/L in area)
+				if(!initial(L.no_emergency)) //If there was an override set on creation, keep that override
+					L.no_emergency = emergency_lights
+					INVOKE_ASYNC(L, TYPE_PROC_REF(/obj/machinery/light, update), FALSE)
+				CHECK_TICK
+		if("overload")
+			if(locked_exception) // Reusing for simplicity!
+				overload_lighting()
+
+/obj/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
+	if(!user.client)
+		return 0
+	if(IsAdminGhost(user)) //This is to allow nanoUI interaction by ghost admins.
+		return TRUE
+	if(user.stat)
+		return 0
+	if(inoperable())
+		return 0
+	if(!user.IsAdvancedToolUser())
+		return 0
+	if(user.restrained())
+		to_chat(user,"<span class='warning'>Your hands must be free to use [src].</span>")
+		return 0
+	if(user.lying)
+		to_chat(user,"<span class='warning'>You must stand to use [src]!</span>")
+		return 0
+	autoflag = 5
+	if(istype(user, /mob/living/silicon))
+		var/permit = 0 // Malfunction variable. If AI hacks APC it can control it even without AI control wire.
+		var/mob/living/silicon/ai/AI = user
+		var/mob/living/silicon/robot/robot = user
+		if(hacker)
+			if(hacker == AI)
+				permit = 1
+			else if(istype(robot) && robot.connected_ai && robot.connected_ai == hacker) // Cyborgs can use APCs hacked by their AI
+				permit = 1
+
+		if(aidisabled && !permit)
+			if(!loud)
+				to_chat(user, "<span class='danger'>\The AI control for [src] has been disabled!</span>")
+			return 0
+	else
+		if(!in_range(src, user) || !istype(loc, /turf))
+			return 0
+	var/mob/living/carbon/human/H = user
+	if(istype(H) && prob(H.getBrainLoss()))
+		to_chat(user, "<span class='danger'>You momentarily forget how to use [src].</span>")
+		return 0
+	return 1
 
 //* Subtypes
 

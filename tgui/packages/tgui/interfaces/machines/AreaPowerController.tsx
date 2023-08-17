@@ -1,11 +1,20 @@
-import { useBackend } from '../backend';
-import { Box, Button, Dimmer, Icon, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
-import { Window } from '../layouts';
-import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
-import { FullscreenNotice } from './common/FullscreenNotice';
+/**
+ * @file
+ * @license MIT
+ */
+
+import { BooleanLike } from "../../../common/react";
+import { useBackend } from "../../backend";
+import { Window } from "../../layouts"
+
+enum ApcNightshiftSetting {
+  Auto = 1,
+  Never = 2,
+  Always = 3,
+}
 
 interface ApcControlProps {
-
+  state: AreaPowerControllerData;
 }
 
 export const ApcControls = (props: ApcControlProps) => {
@@ -14,11 +23,21 @@ export const ApcControls = (props: ApcControlProps) => {
 
 
 interface AreaPowerControllerData {
-
+  nightshiftSetting: ApcNightshiftSetting;
+  nightshiftActive: BooleanLike;
 }
 
 export const AreaPowerController = (props, context) => {
-
+  const {data, act} = useBackend<AreaPowerControllerData>(context);
+  return (
+    <Window
+      width={500}
+      height={500}>
+      <Window.Content>
+        <ApcControls state={data}></ApcControls>
+      </Window.Content>
+    </Window>
+  )
 }
 
 /*
