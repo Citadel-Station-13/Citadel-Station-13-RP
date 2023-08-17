@@ -32,7 +32,7 @@
 
 /area/submap/virgo2/Blackshuttledown
 	name = "POI - BSD"
-	requires_power = FALSE
+	area_power_override = TRUE
 
 /area/submap/virgo2/Lab1
 	name = "POI - Lab1"

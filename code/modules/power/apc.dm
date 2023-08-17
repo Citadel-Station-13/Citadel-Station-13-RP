@@ -45,9 +45,6 @@ GLOBAL_LIST_EMPTY(apcs)
 #define POWERCHAN_ON       2
 /// Power channel is on until power drops below a threshold
 #define POWERCHAN_ON_AUTO  3
-#define NIGHTSHIFT_AUTO 1
-#define NIGHTSHIFT_NEVER 2
-#define NIGHTSHIFT_ALWAYS 3
 
 #define AUTO_THRESHOLD_EQUIP 30
 #define AUTO_THRESHOLD_LIGHT 10
@@ -86,6 +83,17 @@ GLOBAL_LIST_EMPTY(apcs)
 	use_power = USE_POWER_OFF
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
 
+	//? Area Handling
+	#warn hook registered_area
+	/// the area we're registered to
+	var/area/registered_area
+
+	//? Nightshift Handling
+	/// nightshift setting
+	var/nightshift_setting = APC_NIGHTSHIFT_AUTO
+	/// last nightshift switch by user
+	var/nightshift_last_user_switch
+
 	//? Power Handling
 	/// internal capacitor capacity in joules
 	var/buffer_capacity = 5000
@@ -102,9 +110,9 @@ GLOBAL_LIST_EMPTY(apcs)
 	/// power channels auto
 	var/channels_auto = POWER_BITS_ALL
 	/// last static power usage of area
-	var/list/static_power_used = EMPTY_POWER_CHANNEL_LIST
+	var/list/static_power_last = EMPTY_POWER_CHANNEL_LIST
 	/// burst usage for channels since last process()
-	var/list/burst_power_used = EMPTY_POWER_CHANNEL_LIST
+	var/list/burst_power_using = EMPTY_POWER_CHANNEL_LIST
 
 	#warn rest
 
@@ -143,10 +151,6 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/global/list/status_overlays_lighting
 	var/global/list/status_overlays_environ
 	var/alarms_hidden = FALSE //If power alarms from this APC are visible on consoles
-
-	var/nightshift_lights = FALSE
-	var/nightshift_setting = NIGHTSHIFT_AUTO
-	var/last_nightshift_switch = 0
 
 /obj/machinery/power/apc/Initialize(mapload, set_dir, constructing)
 	. = ..()
@@ -255,7 +259,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	create_terminal()
 	update_icon()=
-	
+
 	addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 /obj/machinery/power/apc/examine(mob/user, dist)
@@ -1419,9 +1423,9 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/new_state = nightshift_lights
 
 	switch(nightshift_setting)
-		if(NIGHTSHIFT_NEVER)
+		if(APC_NIGHTSHIFT_NEVER)
 			new_state = FALSE
-		if(NIGHTSHIFT_ALWAYS)
+		if(APC_NIGHTSHIFT_ALWAYS)
 			new_state = TRUE
 
 	for(var/obj/machinery/light/L in area)
@@ -1430,21 +1434,12 @@ GLOBAL_LIST_EMPTY(apcs)
 
 #undef APC_UPDATE_ICON_COOLDOWN
 
-//? Terminal
 
-/obj/machinery/power/apc/proc/destroy_terminal()
-	QDEL_NULL(terminal)
+//? Nightshift
 
-/obj/machinery/power/apc/proc/create_terminal()
-	if(!isnull(terminal))
-		return
-	terminal = new /obj/machinery/power/terminal(loc, dir, src)
+#warn impl
 
-/obj/machinery/power/apc/terminal_destroyed(obj/machinery/power/terminal/terminal)
-	if(terminal == src.terminal)
-		src.terminal = null
-
-//? Power usage - General
+//? Power Usage - General
 
 /**
  * draws power from grid to ourselves
@@ -1458,7 +1453,7 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc/proc/use_grid_power(amount, balance)
 	#warn impl
 
-//? Power usage - Burst
+//? Power Usage - Burst
 
 /**
  * something is trying to use a dynamic amount of burst power
@@ -1475,7 +1470,23 @@ GLOBAL_LIST_EMPTY(apcs)
 
 #warn impl all
 
-//? Subtypes
+//? Terminal
+
+/obj/machinery/power/apc/proc/destroy_terminal()
+	QDEL_NULL(terminal)
+
+/obj/machinery/power/apc/proc/create_terminal()
+	if(!isnull(terminal))
+		return
+	terminal = new /obj/machinery/power/terminal(loc, dir, src)
+
+/obj/machinery/power/apc/terminal_destroyed(obj/machinery/power/terminal/terminal)
+	if(terminal == src.terminal)
+		src.terminal = null
+
+//* Subtypes
+
+// todo: codegen the directional paths with a macro
 
 /obj/machinery/power/apc/direction_bump  //For the love of god there's so many fucking var edits of the APC, use these instead pleaaaaase -Bloop
 

@@ -4,6 +4,24 @@ import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 import { FullscreenNotice } from './common/FullscreenNotice';
 
+interface ApcControlProps {
+
+}
+
+export const ApcControls = (props: ApcControlProps) => {
+
+}
+
+
+interface AreaPowerControllerData {
+
+}
+
+export const AreaPowerController = (props, context) => {
+
+}
+
+/*
 export const APC = (props, context) => {
   return (
     <Window
@@ -290,3 +308,4 @@ const ApcFailure = (props, context) => {
     </Dimmer>
   );
 };
+*/

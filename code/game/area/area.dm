@@ -40,8 +40,22 @@
 	/// holopads - lazyinit'd
 	var/list/obj/machinery/holopad/holopads
 
-	//? Area wide power
+
+	//? Nightshift
+	/// is nightshift on?
+	var/nightshift = FALSE
+
+	//? Parallax
+	/// Parallax moving?
+	var/parallax_moving = FALSE
+	/// Parallax move speed - 0 to disable
+	var/parallax_move_speed = 0
+	/// Parallax move dir - degrees clockwise from north
+	var/parallax_move_angle = 0
+
+	//? Power
 	/// force all machinery using area power to be able to receive unlimited power, or no power; null for use area power system.
+	/// implies the same setting of area_power_infinite if set.
 	var/area_power_override = null
 	/// if set to on, apcs don't ever drain and all power usage is just done without hitting APC at all.
 	var/area_power_infinite = FALSE
@@ -49,13 +63,6 @@
 	var/list/power_usage_static = EMPTY_POWER_CHANNEL_LIST
 	/// power channels turned on
 	var/power_channels = POWER_BITS_ALL
-
-	/// Parallax moving?
-	var/parallax_moving = FALSE
-	/// Parallax move speed - 0 to disable
-	var/parallax_move_speed = 0
-	/// Parallax move dir - degrees clockwise from north
-	var/parallax_move_angle = 0
 
 	//? Smoothing
 	/// Typepath to limit the areas (subtypes included) that atoms in this area can smooth with. Used for shuttles.
@@ -425,23 +432,6 @@
 	if (fire || eject || party)
 		update_appearance()
 
-/area/proc/usage(var/chan, var/include_static = TRUE)
-	var/used = 0
-	switch(chan)
-		if(LIGHT)
-			used += oneoff_light + (include_static * static_light)
-		if(EQUIP)
-			used += oneoff_equip + (include_static * static_equip)
-		if(ENVIRON)
-			used += oneoff_environ + (include_static * static_environ)
-		if(TOTAL)
-			used += oneoff_light + (include_static * static_light)
-			used += oneoff_equip + (include_static * static_equip)
-			used += oneoff_environ + (include_static * static_environ)
-	return used
-
-//////////////////////////////////////////////////////////////////
-
 /area/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("check_static_power", "Check Static Power")
@@ -449,25 +439,19 @@
 /area/vv_do_topic(list/href_list)
 	. = ..()
 	if(href_list["check_static_power"])
-		if(!check_rights(R_DEBUG))
-			return
-		src.check_static_power(usr)
-		href_list["datumrefresh"] = "\ref[src]"
+		debug_static_power(usr)
 
 /// Debugging proc to report if static power is correct or not.
-/area/proc/check_static_power(var/user)
-	set name = "Check Static Power"
-	var/actual_static_equip = static_equip
-	var/actual_static_light = static_light
-	var/actual_static_environ = static_environ
+/area/proc/debug_static_power(mob/user)
+	var/list/was = power_usage_static.Copy()
 	retally_power()
 	if(user)
-		var/list/report = list("[src] ([type]) static power tally:")
-		report += "EQUIP:   Actual: [actual_static_equip] Correct: [static_equip] Difference: [actual_static_equip - static_equip]"
-		report += "LIGHT:   Actual: [actual_static_light] Correct: [static_light] Difference: [actual_static_light - static_light]"
-		report += "ENVIRON: Actual: [actual_static_environ] Correct: [static_environ] Difference: [actual_static_environ - static_environ]"
-		to_chat(user, report.Join("\n"))
-	return (actual_static_equip == static_equip && actual_static_light == static_light && actual_static_environ == static_environ)
+		var/list/report = list()
+		report += "[src] ([type]) static power trace: was --> actual:"
+		for(var/i in 1 to POWER_CHANNEL_COUNT)
+			report += "[global.power_channel_names[i]] - [power_usage_static[i] == old[i]? "<span class='good'>" : "<span class='bad'>"][old[i]] --> [power_usage_static[i]]</span>"
+		to_chat(user, jointext(report, "<br>"))
+	return was ~= power_usage_static
 
 //////////////////////////////////////////////////////////////////
 
@@ -597,7 +581,28 @@ var/list/ghostteleportlocs = list()
 
 	return 1
 
-//? Area power
+//? Dropping
+
+/area/AllowDrop()
+	CRASH("Bad op: area/AllowDrop() called")
+
+/area/drop_location()
+	CRASH("Bad op: area/drop_location() called")
+
+//? Nightshift
+
+/**
+ * This is tick checked.
+ */
+/area/proc/set_nightshift(on, automatic)
+	if(on == nightshift)
+		return
+	nightshift = on
+	for(var/obj/machinery/light/L in src)
+		L.nightshift_mode(on)
+		CHECK_TICK
+
+//? Power
 
 /**
  * returns if the channel is being powered
@@ -653,14 +658,6 @@ var/list/ghostteleportlocs = list()
 				if(isnull(M.registered_power_usage))
 					continue
 				power_usage_static[M.power_channel] += M.registered_power_usage
-
-//? Dropping
-
-/area/AllowDrop()
-	CRASH("Bad op: area/AllowDrop() called")
-
-/area/drop_location()
-	CRASH("Bad op: area/drop_location() called")
 
 //? Turf operations - add / remove
 
