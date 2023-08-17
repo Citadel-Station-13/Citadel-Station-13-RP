@@ -53,10 +53,12 @@
 /obj/machinery/atmospherics/component/unary/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air_contents, user)
 
+// todo: components should allow each end to be analyzed separately.
+
 /obj/machinery/atmospherics/component/binary/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air1, user)
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/atmosanalyze(var/mob/user)
+/obj/machinery/atmospherics/component/trinary/filter/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air1, user)
 
 /obj/machinery/atmospherics/component/trinary/mixer/atmosanalyze(var/mob/user)

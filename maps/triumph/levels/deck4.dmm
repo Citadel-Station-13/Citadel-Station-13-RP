@@ -7745,16 +7745,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
-<<<<<<< HEAD
-"fhz" = (
-/obj/machinery/air_alarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/turf/simulated/floor/carpet/blue,
-/area/crew_quarters/heads/blueshield)
-=======
->>>>>>> citrp/master
 "fhC" = (
 /obj/machinery/chemical_dispenser/catering/bar_alc,
 /obj/structure/table/woodentable,
@@ -25030,7 +25020,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "rdn" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -27439,7 +27429,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
