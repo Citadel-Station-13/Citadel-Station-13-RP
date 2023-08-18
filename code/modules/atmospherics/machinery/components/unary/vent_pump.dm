@@ -336,7 +336,7 @@
 			pressure_checks ^= ATMOS_VENT_CHECK_INTERNAL
 			return TRUE
 		if("extCheck")
-			pressure_checks ^= ATMOS_VENT_CHECK_INTERNAL
+			pressure_checks ^= ATMOS_VENT_CHECK_EXTERNAL
 			return TRUE
 		if("siphon")
 			//! warning: legacy
