@@ -1609,7 +1609,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	desc = null;
 	pixel_y = 24
 	},
@@ -1947,7 +1947,7 @@
 	dir = 10
 	},
 /obj/structure/closet/secure_closet/medical2,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	desc = null;
 	pixel_y = 24
 	},

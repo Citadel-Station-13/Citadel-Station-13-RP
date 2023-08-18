@@ -72,7 +72,7 @@
 	id = "atmosanalyzer"
 	req_tech = list(TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 200, MAT_GLASS = 100)
-	build_path = /obj/item/analyzer
+	build_path = /obj/item/atmos_analyzer
 
 /datum/design/science/engineering/atmosanalyzerlongrange
 	design_name = "Long Range Atmospheric Analyzer"
@@ -80,4 +80,4 @@
 	id = "atmosanalyzerlr"
 	req_tech = list(TECH_ENGINEERING = 4)
 	materials = list(MAT_STEEL = 300, MAT_GLASS = 300)
-	build_path = /obj/item/analyzer/longrange
+	build_path = /obj/item/atmos_analyzer/longrange
