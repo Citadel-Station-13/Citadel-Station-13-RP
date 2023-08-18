@@ -179,7 +179,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	var/vibing = AIR_ALARM_TEST_TLV(environment.temperature, tlv)
 	if(!regulating_temperature)
 		//check for when we should start adjusting temperature
-		if(!vibing && abs(environment.temperature - target_temperature) > 2.0 && environment.return_pressure() >= 1)
+		if((vibing != AIR_ALARM_RAISE_OKAY) && abs(environment.temperature - target_temperature) > 2.0 && environment.return_pressure() >= 1)
 			update_use_power(USE_POWER_ACTIVE)
 			regulating_temperature = 1
 			audible_message("\The [src] clicks as it starts [environment.temperature > target_temperature ? "cooling" : "heating"] the room.",\
@@ -187,7 +187,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			playsound(src, 'sound/machines/click.ogg', 50, 1)
 	else
 		//check for when we should stop adjusting temperature
-		if(vibing || abs(environment.temperature - target_temperature) <= 0.5 || environment.return_pressure() < 1)
+		if((vibing == AIR_ALARM_RAISE_OKAY) || abs(environment.temperature - target_temperature) <= 0.5 || environment.return_pressure() < 1)
 			update_use_power(USE_POWER_IDLE)
 			regulating_temperature = 0
 			audible_message("\The [src] clicks quietly as it stops [environment.temperature > target_temperature ? "cooling" : "heating"] the room.",\
