@@ -2,37 +2,6 @@ GLOBAL_LIST_EMPTY(apcs)
 
 /// EMP effect duration is divided by this number if the APC has "critical" flag
 #define CRITICAL_APC_EMP_PROTECTION 10
-//update_state
-#define UPDATE_CELL_IN 1
-#define UPDATE_OPENED1 2
-#define UPDATE_OPENED2 4
-#define UPDATE_MAINT 8
-#define UPDATE_BROKE 16
-#define UPDATE_BLUESCREEN 32
-#define UPDATE_WIREEXP 64
-#define UPDATE_ALLGOOD 128
-
-//update_overlay
-#define APC_UPOVERLAY_CHARGEING0 1
-#define APC_UPOVERLAY_CHARGEING1 2
-#define APC_UPOVERLAY_CHARGEING2 4
-#define APC_UPOVERLAY_EQUIPMENT0 8
-#define APC_UPOVERLAY_EQUIPMENT1 16
-#define APC_UPOVERLAY_EQUIPMENT2 32
-#define APC_UPOVERLAY_LIGHTING0 64
-#define APC_UPOVERLAY_LIGHTING1 128
-#define APC_UPOVERLAY_LIGHTING2 256
-#define APC_UPOVERLAY_ENVIRON0 512
-#define APC_UPOVERLAY_ENVIRON1 1024
-#define APC_UPOVERLAY_ENVIRON2 2048
-#define APC_UPOVERLAY_LOCKED 4096
-#define APC_UPOVERLAY_OPERATING 8192
-
-
-/// 10 seconds
-#define APC_UPDATE_ICON_COOLDOWN 100
-// the Area Power Controller (APC), formerly Power Distribution Unit (PDU)
-// one per area, needs wire conection to power network through a terminal
 
 // controls power to devices in that area
 // may be opened to change power cell
@@ -46,12 +15,6 @@ GLOBAL_LIST_EMPTY(apcs)
 /// Power channel is on until power drops below a threshold
 #define POWERCHAN_ON_AUTO  3
 
-#define AUTO_THRESHOLD_EQUIP 30
-#define AUTO_THRESHOLD_LIGHT 10
-#define AUTO_THRESHOLD_ENVIR 1
-
-
-
 /**
  * APCs
  *
@@ -59,15 +22,12 @@ GLOBAL_LIST_EMPTY(apcs)
  * Power is up-converted to kilowatts for grid.
  *
  * dev notes for the next time i'm insane enough to refactor power for no reason:
- * - dynamic power channels? probably not due to list overhead but maybe
- * - apc with 2-5kJ capacitor, letting us have actual accumulation + cell-less apc support
- * - config option for cell-less apc because i'm honestly evil
- * - unfuck icon update syste
- * - more wires, morre remote controls
+ * - more wires, more remote controls
  * - wiremod?
- * - WHY DOES IT HAVE SO MANY UNNECESSARY FLAGS JUST HAVE A SINGLE var/channels_enabled and var/channels_auto GOD
- * - configurable shutoff intervals??
- * - brownout support *drooling* (probably far in the future or impossible due to performance)
+ * - brownout support (probably far in the future or impossible due to performance)
+ *
+ * todo: get rid of usage of machine flag 'MAINT' ? unify 'BROKEN' flag with atom flags? maybe? machines have really weird flags.
+ * todo: get rid of wiresexposed and move to panel_open
  *
  * ~silicons
  */
@@ -75,13 +35,17 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
-	icon = 'icons/obj/apc.dmi'
+	icon = 'icons/machinery/apc.dmi'
 	icon_state = "apc0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_OFF
-	req_access = list(ACCESS_ENGINEERING_ENGINE)
+	active_power_usage = 0
+	idle_power_usage = 0
+	req_access = list(ACCESS_ENGINEERING_APC)
+
+	//? Appearance
 
 	//? Area Handling
 	#warn hook registered_area
@@ -95,6 +59,8 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/nightshift_last_user_switch
 
 	//? Power Handling
+	/// breaker: on/off
+	var/breaker = TRUE
 	/// internal capacitor capacity in joules
 	var/buffer_capacity = 5000
 	/// internal capacitor joules; this is auto-set at init based on if we have a cell / power if null.
@@ -109,10 +75,15 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/channels_enabled = POWER_BITS_ALL
 	/// power channels auto
 	var/channels_auto = POWER_BITS_ALL
+	/// power channels currently on
+	var/channels_active = POWER_BITS_ALL
 	/// last static power usage of area
 	var/list/static_power_last = EMPTY_POWER_CHANNEL_LIST
 	/// burst usage for channels since last process()
 	var/list/burst_power_using = EMPTY_POWER_CHANNEL_LIST
+	/// percentage (as 0.0 to 1.0) of cell remaining to turn a channel off at
+	/// if no cell, it turns off immediately upon insufficient power from mains.
+	var/list/channel_thresholds = APC_CHANNEL_THRESHOLDS_DEFAULT
 
 	#warn rest
 
@@ -144,9 +115,6 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/global/status_overlays = 0
 	var/failure_timer = 0
 	var/force_update = 0
-	var/updating_icon = 0
-	var/global/list/status_overlays_lock
-	var/global/list/status_overlays_charging
 	var/global/list/status_overlays_equipment
 	var/global/list/status_overlays_lighting
 	var/global/list/status_overlays_environ
@@ -258,7 +226,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	//! legacy code end
 
 	create_terminal()
-	update_icon()=
+	update_icon()
 
 	addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
@@ -293,24 +261,13 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc/update_icon()
 	if (!status_overlays)
 		status_overlays = 1
-		status_overlays_lock = new
-		status_overlays_charging = new
 		status_overlays_equipment = new
 		status_overlays_lighting = new
 		status_overlays_environ = new
 
-		status_overlays_lock.len = 2
-		status_overlays_charging.len = 3
 		status_overlays_equipment.len = 5
 		status_overlays_lighting.len = 5
 		status_overlays_environ.len = 5
-
-		status_overlays_lock[1] = image(icon, "apcox-0")    // 0=blue 1=red
-		status_overlays_lock[2] = image(icon, "apcox-1")
-
-		status_overlays_charging[1] = image(icon, "apco3-0")
-		status_overlays_charging[2] = image(icon, "apco3-1")
-		status_overlays_charging[3] = image(icon, "apco3-2")
 
 		var/list/channel_overlays = list(status_overlays_equipment, status_overlays_lighting, status_overlays_environ)
 		var/channel = 0
@@ -321,35 +278,6 @@ GLOBAL_LIST_EMPTY(apcs)
 			channel_leds[POWERCHAN_ON_AUTO + 1] = overlay_image(icon,"apco[channel]",COLOR_BLUE)
 			channel++
 
-	var/update = check_updates() 		//returns 0 if no need to update icons.
-						// 1 if we need to update the icon_state
-						// 2 if we need to update the overlays
-
-	if(!update)
-		return
-
-	if(update & 1) // Updating the icon state
-		if(update_state & UPDATE_ALLGOOD)
-			icon_state = "apc0"
-		else if(update_state & (UPDATE_OPENED1|UPDATE_OPENED2))
-			var/basestate = "apc[ get_cell(FALSE) ? "2" : "1" ]"
-			if(update_state & UPDATE_OPENED1)
-				if(update_state & (UPDATE_MAINT|UPDATE_BROKE))
-					icon_state = "apcmaint" //disabled APC cannot hold cell
-				else
-					icon_state = basestate
-			else if(update_state & UPDATE_OPENED2)
-				icon_state = "[basestate]-nocover"
-		else if(update_state & UPDATE_BROKE)
-			icon_state = "apc-b"
-		else if(update_state & UPDATE_BLUESCREEN)
-			icon_state = "apcemag"
-		else if(update_state & UPDATE_WIREEXP)
-			icon_state = "apcewires"
-
-	if(!(update_state & UPDATE_ALLGOOD))
-		cut_overlays()
-
 	if(update & 2)
 		cut_overlays()
 		if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
@@ -359,122 +287,6 @@ GLOBAL_LIST_EMPTY(apcs)
 				add_overlay(status_overlays_equipment[equipment+1])
 				add_overlay(status_overlays_lighting[lighting+1])
 				add_overlay(status_overlays_environ[environ+1])
-
-	if(update & 3)
-		if((update_state & (UPDATE_OPENED1|UPDATE_OPENED2|UPDATE_BROKE)))
-			set_light(0)
-		else if(update_state & UPDATE_BLUESCREEN)
-			set_light(l_range = 2, l_power = 0.5, l_color = "#00ecff")
-		else if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
-			var/color
-			switch(charging)
-				if(0)
-					color = "#f86060"
-				if(1)
-					color = "#a8b0f8"
-				if(2)
-					color = "#82ff4c"
-			set_light(l_range = 2, l_power = 0.5, l_color = color)
-		else
-			set_light(0)
-
-/obj/machinery/power/apc/setDir(new_dir)
-	. = ..()
-	base_pixel_x = 0
-	base_pixel_y = 0
-	var/turf/T = get_step(get_turf(src), dir)
-	if(istype(T) && T.density)
-		switch(dir)
-			if(SOUTH)
-				base_pixel_y = -22
-			if(NORTH)
-				base_pixel_y = 22
-			if(EAST)
-				base_pixel_x = 22
-			if(WEST)
-				base_pixel_x = -22
-	reset_pixel_offsets()
-
-
-/obj/machinery/power/apc/proc/check_updates()
-
-	var/last_update_state = update_state
-	var/last_update_overlay = update_overlay
-	update_state = 0
-	update_overlay = 0
-
-	if(cell)
-		update_state |= UPDATE_CELL_IN
-	if(machine_stat & BROKEN)
-		update_state |= UPDATE_BROKE
-	if(machine_stat & MAINT)
-		update_state |= UPDATE_MAINT
-	if(opened)
-		if(opened==1)
-			update_state |= UPDATE_OPENED1
-		if(opened==2)
-			update_state |= UPDATE_OPENED2
-	else if(wiresexposed)
-		update_state |= UPDATE_WIREEXP
-	else if(emagged || hacker || failure_timer)
-		update_state |= UPDATE_BLUESCREEN
-	if(update_state <= 1)
-		update_state |= UPDATE_ALLGOOD
-
-	if(operating)
-		update_overlay |= APC_UPOVERLAY_OPERATING
-
-	if(update_state & UPDATE_ALLGOOD)
-		if(locked)
-			update_overlay |= APC_UPOVERLAY_LOCKED
-
-		if(!charging)
-			update_overlay |= APC_UPOVERLAY_CHARGEING0
-		else if(charging == 1)
-			update_overlay |= APC_UPOVERLAY_CHARGEING1
-		else if(charging == 2)
-			update_overlay |= APC_UPOVERLAY_CHARGEING2
-
-		if (!equipment)
-			update_overlay |= APC_UPOVERLAY_EQUIPMENT0
-		else if(equipment == 1)
-			update_overlay |= APC_UPOVERLAY_EQUIPMENT1
-		else if(equipment == 2)
-			update_overlay |= APC_UPOVERLAY_EQUIPMENT2
-
-		if(!lighting)
-			update_overlay |= APC_UPOVERLAY_LIGHTING0
-		else if(lighting == 1)
-			update_overlay |= APC_UPOVERLAY_LIGHTING1
-		else if(lighting == 2)
-			update_overlay |= APC_UPOVERLAY_LIGHTING2
-
-		if(!environ)
-			update_overlay |= APC_UPOVERLAY_ENVIRON0
-		else if(environ==1)
-			update_overlay |= APC_UPOVERLAY_ENVIRON1
-		else if(environ==2)
-			update_overlay |= APC_UPOVERLAY_ENVIRON2
-
-
-	var/results = 0
-	if(last_update_state == update_state && last_update_overlay == update_overlay)
-		return 0
-	if(last_update_state != update_state)
-		results += 1
-	if(last_update_overlay != update_overlay)
-		results += 2
-	return results
-
-// Used in process so it doesn't update the icon too much
-/obj/machinery/power/apc/proc/queue_icon_update()
-
-	if(!updating_icon)
-		updating_icon = 1
-		// Start the update
-		spawn(APC_UPDATE_ICON_COOLDOWN)
-			update_icon()
-			updating_icon = 0
 
 //attack with an item - open/close cover, insert cell, or (un)lock interface
 
@@ -805,9 +617,6 @@ GLOBAL_LIST_EMPTY(apcs)
 		return	//The panel is visibly dark when the wires are exposed, so we shouldn't be able to interact with it.
 
 	return ui_interact(user)
-
-/obj/machinery/power/apc/proc/report()
-	return "[area.name] : [equipment]/[lighting]/[environ] ([lastused_equip+lastused_light+lastused_environ]) : [cell? cell.percent() : "N/C"] ([charging])"
 
 /obj/machinery/power/apc/proc/update()
 	if(operating && !shorted && !grid_check && !failure_timer)
@@ -1238,6 +1047,124 @@ GLOBAL_LIST_EMPTY(apcs)
 		name = "[area.name] APC"
 	update()
 
+#undef APC_UPDATE_ICON_COOLDOWN
+
+//? Appearance
+
+/obj/machinery/power/apc/update_icon()
+	. = ..()
+	update_lighting()
+
+/obj/machinery/power/apc/proc/update_lighting()
+	if((machine_stat & (BROKEN|MAINT)) || opened || panel_open)
+		set_light(0)
+	else if(emagged || !isnull(hacker) || failure_timer)
+		set_light(2, 0.5, "#00eccff")
+	else
+		var/color
+		switch(charging)
+			if(0)
+				color = "#f86060"
+			if(1)
+				color = "#a8b0f8"
+			if(2)
+				color = "#82ff4c"
+		set_light(2, 0.5, color)
+
+/obj/machinery/power/apc/update_icon_state()
+	#warn sigh
+	if(opened)
+		var/base_state = "apc[isnull(cell)? 2 : 1]"
+		if(opened == 1)
+			if(machine_stat & (BROKEN|MAINT))
+				icon_state = "apcmaint"
+			else
+				icon_state = base_state
+		else if(opened == 2)
+			icon_state = "[base_state]-nocover"
+	else if(machine_stat & BROKEN)
+		icon_state = "apc-b"
+	else if(wiresexposed)
+		icon_state = "apcewires"
+	else if(emagged || !isnull(hacker) || failure_timer)
+		icon_state = "apcemag"
+	else
+		icon_state = "apc0"
+
+	return ..()
+
+/obj/machinery/power/apc/update_overlays()
+	. = ..()
+	if((machine_stat & (BROKEN | MAINT)) || opened || panel_open)
+		// open, don't bother
+		return
+	//! warning: legacy below
+	. += "apcox-[locked? 1 : 0]"
+	. += "apco3-[charging + 1]"
+	if(breaker)
+		. += "[(channels_auto & POWER_BIT_ENVIR)? ((channels_active & POWER_BIT_ENVIR)? "" : "") : ((channels_enabled & POWER_BIT_ENVIR)? "" : "")]"
+		#warn two others, fill it out
+
+//? Channels
+
+/obj/machinery/power/apc/proc/set_channel_setting(channel, new_setting, defer_icon_update)
+	var/bit = power_channel_bits[channel]
+	switch(new_setting)
+		if(APC_CHANNEL_AUTO)
+			channels_auto |= bit
+		if(APC_CHANNEL_ON)
+			channels_enabled |= bit
+			channels_auto &= ~bit
+		if(APC_CHANNEL_OFF)
+			channels_enabled &= ~bit
+			channels_auto &= ~bit
+	update_channel_setting(channel, defer_icon_update)
+
+/obj/machinery/power/apc/proc/set_channel_threshold(channel, new_threshold, defer_icon_update)
+	channel_thresholds[channel] = clamp(new_threshold, 0, 1)
+	update_channel_setting(channel, defer_icon_update)
+
+/**
+ * @return true/false based on if the channel was changed
+ */
+/obj/machinery/power/apc/proc/update_channel_setting(channel, defer_icon_udpate)
+	#warn impl
+
+/obj/machinery/power/apc/proc/should_enable_channel(channel)
+	#warn impl
+
+//? Movement
+
+/obj/machinery/power/apc/setDir(new_dir)
+	. = ..()
+	update_pixel_offsets()
+
+/obj/machinery/power/apc/update_pixel_offsets()
+	base_pixel_x = 0
+	base_pixel_y = 0
+	var/turf/T = get_step(get_turf(src), dir)
+	if(istype(T) && T.density)
+		switch(dir)
+			if(SOUTH)
+				base_pixel_y = -22
+			if(NORTH)
+				base_pixel_y = 22
+			if(EAST)
+				base_pixel_x = 22
+			if(WEST)
+				base_pixel_x = -22
+	reset_pixel_offsets()
+
+//? Nightshift
+
+/obj/machinery/power/apc/proc/currently_considered_night()
+	#warn impl
+
+/obj/machinery/power/apc/proc/set_nightshift_setting(new_setting, force)
+	#warn impl
+
+/*
+
 /obj/machinery/power/apc/proc/set_nightshift(on, var/automated)
 	set waitfor = FALSE
 	if(automated && istype(area, /area/shuttle))
@@ -1257,13 +1184,13 @@ GLOBAL_LIST_EMPTY(apcs)
 	for(var/obj/machinery/light/L in area)
 		L.nightshift_mode(new_state)
 		CHECK_TICK
+*/
 
-#undef APC_UPDATE_ICON_COOLDOWN
+/obj/machinery/power/apc/proc/reset_nightshift_setting(forced_setting = initial(nightshift_setting))
+	set_nightshift_setting(forced_setting, TRUE)
 
-
-//? Nightshift
-
-#warn impl
+/obj/machinery/power/apc/proc/set_nightshift_active(active)
+	registered_area.set_nightshift(active)
 
 //? Power Usage - General
 
@@ -1318,10 +1245,16 @@ GLOBAL_LIST_EMPTY(apcs)
 		ui = new(user, src, "AreaPowerController", name) // 510, 460
 		ui.open()
 
+#warn finish rest of UI
+
 /obj/machinery/power/apc/ui_data(mob/user)
 	. = list()
 	.["nightshiftSetting"] = nightshift_setting
 	.["nightshiftActive"] = registered_area?.nightshift
+	.["channelsEnabled"] = channels_enabled
+	.["channelsAuto"] = channels_auto
+	.["channelsActive"] = channels_active
+	.["channelThresholds"] = channel_thresholds
 	var/list/data = list(
 		"locked" = locked,
 		"normallyLocked" = locked,
@@ -1393,6 +1326,45 @@ GLOBAL_LIST_EMPTY(apcs)
 	if(locked && !locked_exception)
 		return
 
+	// pre-auth actions
+	switch(action)
+		if("nightshift")
+			var/set_to = text2num(params["state"])
+			// no spammies!!
+			if(nightshift_last_user_switch > world.time - 5 SECONDS)
+				usr.action_feedback(SPAN_WARNING("[src]'s night lighting circuits are still cycling!"))
+				return TRUE
+			nightshift_last_user_switch = TRUE
+			switch(set_to)
+				if(APC_NIGHTSHIFT_AUTO)
+				if(APC_NIGHTSHIFT_ON)
+				if(APC_NIGHTSHIFT_OFF)
+				else
+					return TRUE
+			set_nightshift_setting(set_to)
+			return TRUE
+
+	#warn auth
+
+	// post-auth actions
+	switch(action)
+		if("channel")
+			var/chan = params["channel"]
+			var/set_to = params["state"]
+			switch(set_to)
+				if(APC_CHANNEL_AUTO)
+				if(APC_CHANNEL_ON)
+				if(APC_CHANNEL_OFF)
+				else
+					return TRUE
+			set_channel_setting(chan, set_to)
+			return TRUE
+		if("threshold")
+			var/chan = params["channel"]
+			var/set_to = text2num(params["threshold"])
+			set_channel_threshold(chan, set_to)
+			return TRUE
+
 	. = TRUE
 	switch(action)
 		if("lock")
@@ -1406,31 +1378,11 @@ GLOBAL_LIST_EMPTY(apcs)
 			coverlocked = !coverlocked
 		if("breaker")
 			toggle_breaker()
-		if("nightshift")
-			if(last_nightshift_switch > world.time - 10 SECONDS) // don't spam...
-				to_chat(usr, "<span class='warning'>[src]'s night lighting circuit breaker is still cycling!</span>")
-				return 0
-			last_nightshift_switch = world.time
-			nightshift_setting = params["nightshift"]
-			update_nightshift()
 		if("charge")
 			chargemode = !chargemode
 			if(!chargemode)
 				charging = 0
 				update_icon()
-		if("channel")
-			if(params["eqp"])
-				equipment = setsubsystem(text2num(params["eqp"]))
-				update_icon()
-				update()
-			else if(params["lgt"])
-				lighting = setsubsystem(text2num(params["lgt"]))
-				update_icon()
-				update()
-			else if(params["env"])
-				environ = setsubsystem(text2num(params["env"]))
-				update_icon()
-				update()
 		if("reboot")
 			failure_timer = 0
 			update_icon()

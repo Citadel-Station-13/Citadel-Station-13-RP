@@ -1058,6 +1058,13 @@
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /**
+ * just a hook to tell stuff to update so we don't have to have a million different /proc/name's
+ * not automatically called generally on /atom.
+ */
+/atom/proc/update_pixel_offsets()
+	return
+
+/**
  * get our pixel_x to reset to
  */
 /atom/proc/get_managed_pixel_x()

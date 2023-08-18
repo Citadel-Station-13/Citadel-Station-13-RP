@@ -5,6 +5,7 @@
 
 import { BooleanLike } from "../../../common/react";
 import { useBackend } from "../../backend";
+import { PowerChannelBits, PowerChannelList, PowerChannels } from "../../constants/power";
 import { Window } from "../../layouts"
 
 enum ApcNightshiftSetting {
@@ -13,8 +14,17 @@ enum ApcNightshiftSetting {
   Always = 3,
 }
 
+enum ApcChannelSetting {
+  Auto = 1,
+  On = 2,
+  OFf = 3,
+}
+
 interface ApcControlProps {
   state: AreaPowerControllerData;
+  nightshiftAct?: (setting: ApcNightshiftSetting) => void;
+  channelAct?: (channel: PowerChannels, state: ApcChannelSetting) => void;
+  thresholdAct?: (channel: PowerChannels, threshold: number) => void;
 }
 
 export const ApcControls = (props: ApcControlProps) => {
@@ -23,8 +33,18 @@ export const ApcControls = (props: ApcControlProps) => {
 
 
 interface AreaPowerControllerData {
+  // apc nightshift setting
   nightshiftSetting: ApcNightshiftSetting;
+  // area nightshift active
   nightshiftActive: BooleanLike;
+  // on/off setting; used if auto is not present
+  channelsEnabled: PowerChannelBits;
+  // set to auto
+  channelsAuto: PowerChannelBits;
+  // currently on
+  channelsActive: PowerChannelBits;
+  // channel thresholds
+  channelThresholds: PowerChannelList<number>;
 }
 
 export const AreaPowerController = (props, context) => {
@@ -34,7 +54,10 @@ export const AreaPowerController = (props, context) => {
       width={500}
       height={500}>
       <Window.Content>
-        <ApcControls state={data}></ApcControls>
+        <ApcControls state={data}
+          channelAct={(channel, state) => act('channel', {channel: channel, state: state})}
+          nightshiftAct={(setting) => act('nightshift', {state: setting})}
+          thresholdAct={(channel, threshold) => act('threshold', {channel: channel, threshold: threshold})} />
       </Window.Content>
     </Window>
   )

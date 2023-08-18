@@ -1,4 +1,8 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //? Power channels for areas - Make sure these are in sync.
+//* Any updates to this should be reflected in [tgui/packages/tgui/constants/power.ts] *//
 
 #define POWER_CHANNEL_EQUIP 1
 #define POWER_CHANNEL_LIGHT 2
@@ -30,6 +34,7 @@ GLOBAL_REAL_LIST(power_channel_bits) = list(
 #define EMPTY_POWER_CHANNEL_LIST list(0, 0, 0)
 
 //? Powernet - Load Balancing - lower number is higher priority, lower priorities only get power if higher priority is satisfied.
+//* Any updates to this should be reflected in [tgui/packages/tgui/constants/power.ts] *//
 
 #define POWER_BALANCING_TIER_LOW 3
 #define POWER_BALANCING_TIER_MEDIUM 2
@@ -47,3 +52,8 @@ GLOBAL_REAL_LIST(power_balancing_tier_names) = list(
 
 /// length must equal POWER_BALANCING_TIER_TOTAL
 #define EMPTY_POWER_BALANCING_LIST list(0, 0, 0)
+
+//? APCs - this is in here because it depends on power channel amount
+
+/// length must equal POWER_BALANCING_TIER_TOTAL
+#define APC_CHANNEL_THRESHOLDS_DEFAULT list(0, 0.1, 0.3)
