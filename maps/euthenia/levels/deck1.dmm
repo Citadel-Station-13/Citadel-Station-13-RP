@@ -141,9 +141,7 @@
 /area/main_map/hallway/deck1/fore)
 "agw" = (
 /obj/machinery/door/airlock/maintenance/common,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/aft/port)
 "agy" = (
@@ -410,9 +408,7 @@
 	dir = 4;
 	name = "Port to Isolation"
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "asB" = (
@@ -434,9 +430,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "auU" = (
@@ -588,9 +582,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/lab)
 "aDO" = (
@@ -605,10 +597,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
-"aDY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled,
-/area/main_map/hallway/deck1)
 "aEl" = (
 /obj/machinery/atmospherics/component/unary/engine/biggest{
 	dir = 8
@@ -661,11 +649,9 @@
 /turf/simulated/floor/tiled,
 /area/medical/reception)
 "aIT" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/direction_bump/north,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1)
 "aJt" = (
 /obj/machinery/light/no_nightshift{
@@ -836,9 +822,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/security/port)
 "aVt" = (
@@ -874,6 +858,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1)
+"aXE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_one)
 "aXK" = (
 /obj/machinery/computer/med_data/laptop,
 /obj/structure/table/reinforced,
@@ -904,9 +894,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aZm" = (
@@ -975,11 +963,19 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"ber" = (
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "cargo_mailroom";
+	name = "Cargo Mail belt"
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/port)
 "bfr" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -1102,6 +1098,12 @@
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/reinforced/airless,
 /area/space)
+"blq" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/retro/on{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one)
 "blA" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -1207,16 +1209,6 @@
 /obj/machinery/light/no_nightshift,
 /turf/simulated/floor/tiled,
 /area/medical/reception)
-"bqH" = (
-/obj/machinery/button/remote/airlock{
-	id = "BrigFoyer";
-	name = "Lobby Door Control";
-	pixel_x = 24;
-	pixel_y = 5;
-	req_access = list(1)
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/security/lobby)
 "bqZ" = (
 /obj/structure/table/steel,
 /obj/structure/window/reinforced{
@@ -1276,9 +1268,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "buO" = (
@@ -1428,9 +1418,7 @@
 "bFq" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "bFt" = (
@@ -1531,9 +1519,7 @@
 	dir = 5
 	},
 /obj/machinery/holoplant,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/high/north_bump,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/lab)
@@ -1576,9 +1562,7 @@
 "bOs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1/fore)
 "bOP" = (
@@ -1679,15 +1663,11 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/forward/starboard)
 "bUi" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/maintenance/deck_one/aft/port)
 "bUk" = (
@@ -1760,6 +1740,12 @@
 /obj/machinery/power/apc/direction_bump/east,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
+"cbG" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one)
 "ceP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1785,9 +1771,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "chI" = (
@@ -1818,9 +1802,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research/researchdivision)
 "cjA" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/forward/starboard)
 "cjB" = (
@@ -2205,15 +2187,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1/fore)
 "cHe" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "cHm" = (
@@ -2296,6 +2274,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/bridge/hallway)
+"cMA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_one)
 "cNl" = (
 /obj/structure/railing{
 	dir = 1
@@ -2480,9 +2467,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "cYR" = (
@@ -2519,9 +2504,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1/fore)
 "dbY" = (
@@ -2564,11 +2547,17 @@
 /obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled/monotile,
 /area/space)
+"deA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/main_map/hallway/deck1)
 "deG" = (
 /turf/simulated/wall{
 	can_open = 1
 	},
-/area/space)
+/area/main_map/maintenance/deck_one)
 "dfm" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor{
@@ -2674,9 +2663,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1/fore)
 "dod" = (
@@ -2684,9 +2671,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay)
 "doJ" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/crystal,
 /area/space)
 "dpB" = (
@@ -2747,9 +2732,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "dtx" = (
@@ -2893,9 +2876,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/reinforced,
 /area/security/riot_control)
 "dBY" = (
@@ -2955,9 +2936,7 @@
 	layer = 3.3;
 	pixel_x = 26
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "dIr" = (
@@ -3180,10 +3159,12 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
 /area/space)
+"dZP" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/retro/on,
+/turf/simulated/floor/plating,
+/area/space)
 "eaw" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/monotile,
 /area/tether/surfacebase/security/lobby)
 "eby" = (
@@ -3210,6 +3191,13 @@
 "edA" = (
 /turf/simulated/floor/glass/reinforced,
 /area/hydroponics)
+"edP" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_one)
 "eel" = (
 /turf/simulated/open,
 /area/rnd/robotics/mechbay)
@@ -3273,9 +3261,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/hallway/deck1)
 "egZ" = (
@@ -3407,9 +3393,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora)
 "eof" = (
@@ -3543,9 +3527,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lobby)
 "evt" = (
@@ -3650,6 +3632,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
+"ezT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/tether/surfacebase/security/lobby)
 "eAb" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -3771,10 +3762,15 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/open,
 /area/maintenance/solars)
-"eGX" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
+"eGK" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/port)
+"eGX" = (
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "eHd" = (
@@ -3883,6 +3879,22 @@
 /obj/structure/flora/pottedplant/small,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
+"eTo" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/disposaloutlet{
+	dir = 4
+	},
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/obj/map_helper/conveyor/belt{
+	id_tag = "cargo_mailroom";
+	name = "Cargo Mail belt"
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/port)
 "eTp" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
@@ -3940,9 +3952,7 @@
 /area/rnd/xenobiology/xenoflora)
 "eWb" = (
 /obj/machinery/door/airlock/glass,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/main_map/maintenance/deck_one/aft/port)
 "eWw" = (
@@ -4076,9 +4086,7 @@
 	name = "Internal Affairs";
 	req_access = list(38)
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officea)
 "fde" = (
@@ -4089,9 +4097,7 @@
 	dir = 4
 	},
 /obj/structure/closet/l3closet/scientist/double,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/direction_bump/east,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
@@ -4204,14 +4210,21 @@
 "fjW" = (
 /turf/simulated/floor/carpet/oracarpet,
 /area/tether/surfacebase/security/iaa/officea)
+"fkb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/space)
 "fki" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/main_map/hallway/deck1/fore)
 "fln" = (
@@ -4468,9 +4481,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "fEr" = (
@@ -4560,9 +4571,7 @@
 "fKG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1)
 "fKV" = (
@@ -4760,9 +4769,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/research/researchdivision)
 "fUC" = (
@@ -4837,9 +4844,7 @@
 	name = "Detective's Office";
 	req_access = list(4)
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "fXM" = (
@@ -4983,9 +4988,7 @@
 /obj/effect/floor_decal/corner/green/full,
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "gfx" = (
@@ -5128,9 +5131,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1/fore)
 "gke" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/direction_bump/north,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/bar)
@@ -5447,9 +5448,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "gFB" = (
@@ -5582,6 +5581,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/surgery_hallway)
+"gNc" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/port)
 "gNG" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
@@ -5659,8 +5662,12 @@
 /area/space)
 "gRX" = (
 /obj/machinery/door/firedoor,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
+/obj/map_helper/network_builder/power_cable/green/auto,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/tether/surfacebase/security/lobby)
@@ -5676,9 +5683,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/solars)
 "gSL" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officecommon)
 "gTv" = (
@@ -5722,9 +5727,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/lab)
 "gYD" = (
@@ -5789,8 +5792,9 @@
 /turf/simulated/floor/reinforced,
 /area/security/tactical)
 "hei" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
@@ -5819,9 +5823,7 @@
 /area/main_map/maintenance/atmospheric_substation/medical)
 "hhh" = (
 /obj/machinery/holopad,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/monotile,
 /area/tether/surfacebase/security/lobby)
 "hhK" = (
@@ -6191,6 +6193,10 @@
 /obj/random/bedsheet/double,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
+"hJG" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on,
+/turf/simulated/floor/plating,
+/area/space)
 "hJQ" = (
 /turf/simulated/wall/prepainted/command,
 /area/crew_quarters/heads/chief)
@@ -6247,9 +6253,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora)
 "hOW" = (
@@ -6290,6 +6294,10 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/main_map/hallway/deck1)
+"hQR" = (
+/obj/structure/disposalpipe/sortjunction/untagged/flipped,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/port)
 "hRq" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal{
 	dir = 4
@@ -6410,9 +6418,7 @@
 /turf/simulated/floor/tiled,
 /area/security/security_equiptment_storage)
 "hVF" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officea)
 "hWa" = (
@@ -6464,6 +6470,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
+"hYA" = (
+/obj/structure/disposalpipe/sortjunction/untagged/flipped{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/port)
 "hYD" = (
 /obj/structure/railing{
 	dir = 1
@@ -6498,9 +6510,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "iaR" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "iaT" = (
@@ -6567,9 +6577,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/lab)
 "ieg" = (
@@ -6608,9 +6616,7 @@
 	name = "Warden's Office";
 	req_access = list(3)
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "ihh" = (
@@ -6773,9 +6779,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora)
 "ioo" = (
@@ -6920,9 +6924,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "izN" = (
@@ -6944,6 +6946,26 @@
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/solars)
+"iBg" = (
+/obj/map_helper/network_builder/power_cable/green/auto,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/tether/surfacebase/security/lobby)
+"iBi" = (
+/obj/map_helper/network_builder/power_cable/green/auto,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/security/lobby)
 "iBo" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/forward/port)
@@ -7103,9 +7125,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "iIM" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/security/hallway)
 "iJo" = (
@@ -7357,9 +7377,7 @@
 /area/space)
 "jdU" = (
 /obj/machinery/door/airlock/glass,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
@@ -7409,9 +7427,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "jjL" = (
@@ -7473,9 +7489,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "jpc" = (
@@ -7517,13 +7531,21 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/white,
 /area/space)
+"jrH" = (
+/obj/machinery/conveyor_switch/oneway{
+	pixel_y = 14
+	},
+/obj/map_helper/conveyor/lever{
+	id_tag = "_mobile_mining_interior";
+	name = "Ore Processing"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_one/port)
 "jrX" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/direction_bump/west,
 /turf/simulated/floor/reinforced,
 /area/security/tactical)
@@ -7555,6 +7577,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/chemistry)
+"juP" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/retro/on{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one)
 "jva" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -7609,9 +7637,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lobby)
 "jAs" = (
@@ -7747,9 +7773,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/port)
 "jMA" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/security/port)
 "jMQ" = (
@@ -7783,9 +7807,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "jPd" = (
@@ -7822,6 +7844,12 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
+"jQi" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/main_map/maintenance/deck_one/port)
 "jQE" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -7876,6 +7904,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research/researchdivision)
+"jRv" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_one)
 "jRG" = (
 /obj/structure/table/reinforced,
 /obj/item/megaphone,
@@ -7917,9 +7954,7 @@
 	req_one_access = list(30,47,77)
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "jWc" = (
@@ -7941,9 +7976,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research/researchdivision)
 "jWO" = (
@@ -8048,6 +8081,13 @@
 /obj/landmark/spawnpoint/job/lawyer,
 /turf/simulated/floor/carpet/purcarpet,
 /area/tether/surfacebase/security/iaa/officeb)
+"kgr" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel_ridged,
+/area/main_map/hallway/deck1)
 "kgz" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -8101,9 +8141,7 @@
 /area/medical/reception)
 "kjk" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
@@ -8204,6 +8242,15 @@
 "knY" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/main_map/Hangar_bay/deck1/a)
+"koy" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/main_map/hallway/deck1)
 "koP" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -8211,9 +8258,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1/fore)
 "koY" = (
@@ -8228,9 +8273,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "kpX" = (
@@ -8435,9 +8478,7 @@
 "kAB" = (
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/main_map/hallway/deck1)
 "kAC" = (
@@ -8827,6 +8868,13 @@
 /obj/structure/sign/securearea,
 /turf/simulated/wall/r_wall,
 /area/security/tactical)
+"kWw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/tiled/techmaint,
+/area/space)
 "kWX" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/table/reinforced,
@@ -8888,6 +8936,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "laC" = (
@@ -8931,9 +8982,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "ldC" = (
@@ -8970,9 +9019,7 @@
 	name = "Internal Affairs";
 	req_access = list(38)
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officeb)
 "lgp" = (
@@ -9150,6 +9197,15 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
+"lzb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/main_map/hallway/deck1)
 "lzL" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
@@ -9172,9 +9228,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/lab)
 "lBf" = (
@@ -9238,9 +9292,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -22
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/direction_bump/north,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -9283,9 +9335,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "lKs" = (
@@ -9328,9 +9378,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "lKN" = (
@@ -9405,9 +9453,7 @@
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/direction_bump/north,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
@@ -9449,9 +9495,7 @@
 "lTB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/forward/starboard)
 "lTD" = (
@@ -9589,9 +9633,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1)
 "mjb" = (
@@ -9834,9 +9876,7 @@
 "mzl" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1/fore)
 "mzA" = (
@@ -9860,11 +9900,16 @@
 "mDm" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
+"mDz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_one)
 "mDT" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
@@ -9944,6 +9989,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monotile,
 /area/tether/surfacebase/security/lobby)
 "mHM" = (
@@ -10083,9 +10129,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lobby)
 "mNw" = (
@@ -10179,9 +10223,7 @@
 "mRM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "mTt" = (
@@ -10265,9 +10307,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/security/port)
 "mXq" = (
@@ -10476,9 +10516,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/surgery_hallway)
 "nkB" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/door/airlock/glass_science,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/lab)
@@ -10650,9 +10688,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/heads/hos)
 "ntv" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/aft/port)
 "ntO" = (
@@ -10666,9 +10702,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1)
 "nuS" = (
@@ -10696,6 +10730,12 @@
 "nwB" = (
 /turf/simulated/wall,
 /area/rnd/research/researchdivision)
+"nwZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/main_map/hallway/deck1)
 "nxk" = (
 /turf/simulated/wall,
 /area/space)
@@ -10769,9 +10809,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/forward/starboard)
 "nBb" = (
@@ -10784,9 +10822,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "nBE" = (
@@ -10809,9 +10845,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "nDa" = (
@@ -10915,9 +10949,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/forward/starboard)
 "nJl" = (
@@ -11172,9 +11204,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "odE" = (
@@ -11492,9 +11522,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/space)
 "oAc" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1/fore)
 "oAf" = (
@@ -11728,18 +11756,14 @@
 "oRd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1/fore)
 "oRp" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/crew_quarters/heads/cmo)
 "oRD" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officeb)
 "oRH" = (
@@ -11830,9 +11854,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/security/lobby)
 "oVC" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
 "oVR" = (
@@ -12083,10 +12105,17 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/security/lobby)
-"pog" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
+"plq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/main_map/hallway/deck1)
+"pog" = (
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/door/airlock/glass/security,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
@@ -12128,9 +12157,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1)
 "prS" = (
@@ -12173,9 +12200,7 @@
 "ptO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1)
 "pvd" = (
@@ -12220,9 +12245,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1/fore)
 "pxq" = (
@@ -12305,15 +12328,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1/fore)
 "pAG" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "pAI" = (
@@ -12494,9 +12513,7 @@
 /area/bridge/bunker)
 "pQD" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/aft/port)
 "pSM" = (
@@ -12574,9 +12591,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/lab)
 "pXp" = (
@@ -12624,9 +12639,7 @@
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/lino,
 /area/main_map/maintenance/deck_one/aft/port)
 "pZE" = (
@@ -12664,6 +12677,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"qbv" = (
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_access = list(30,47,77)
+	},
+/turf/simulated/floor/plating,
+/area/rnd/xenobiology/xenoflora_storage)
 "qcx" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -12675,9 +12694,7 @@
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/lab)
 "qdl" = (
@@ -12743,8 +12760,12 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/forward/port)
 "qiW" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
+/obj/map_helper/network_builder/power_cable/green/auto,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1)
@@ -12885,6 +12906,11 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/security/port)
+"qrx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techmaint,
+/area/space)
 "qsH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -13392,9 +13418,7 @@
 	opacity = 0
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/security/port)
 "rqp" = (
@@ -13614,9 +13638,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "rGL" = (
@@ -13784,9 +13806,7 @@
 "rRx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/reinforced,
 /area/security/riot_control)
 "rRW" = (
@@ -13815,9 +13835,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/recreation_area)
 "rSU" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1)
 "rTZ" = (
@@ -13837,9 +13855,7 @@
 	pixel_x = -24;
 	pixel_y = 24
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "rUU" = (
@@ -13978,7 +13994,7 @@
 /obj/structure/ladder,
 /obj/structure/bookcase,
 /turf/simulated/floor/plating,
-/area/space)
+/area/main_map/maintenance/deck_one)
 "shB" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -13992,9 +14008,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "sim" = (
@@ -14081,9 +14095,7 @@
 /obj/machinery/door/airlock/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/main_map/hallway/deck1)
 "spY" = (
@@ -14098,9 +14110,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
 "sqi" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/lino,
 /area/main_map/maintenance/deck_one/aft/port)
 "sqo" = (
@@ -14147,14 +14157,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "ssD" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/red/border,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/direction_bump/south,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
@@ -14169,9 +14180,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/forward/starboard)
 "svY" = (
@@ -14278,9 +14287,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "sBy" = (
@@ -14299,6 +14306,7 @@
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monotile,
 /area/tether/surfacebase/security/lobby)
 "sEi" = (
@@ -14315,9 +14323,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
 "sFR" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lobby)
 "sGi" = (
@@ -14342,9 +14348,7 @@
 /area/crew_quarters/captain)
 "sGk" = (
 /obj/machinery/door/airlock/glass/security,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/security/hallway)
 "sGI" = (
@@ -14387,7 +14391,7 @@
 	name = "Medical Maintenance Access";
 	req_access = list(5)
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/medical/medbay)
 "sJv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -14430,9 +14434,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/lab)
 "sMT" = (
@@ -14491,9 +14493,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research/researchdivision)
 "sSp" = (
@@ -14519,9 +14519,7 @@
 /area/space)
 "sSW" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/hallway/deck1)
 "sTr" = (
@@ -14560,9 +14558,7 @@
 /turf/simulated/wall/prepainted/engineering,
 /area/main_map/maintenance/deck_one/aft/port)
 "sYQ" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/reinforced,
 /area/security/riot_control)
 "sZd" = (
@@ -14598,9 +14594,7 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/sleep/Dorm_4)
 "taZ" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "tcC" = (
@@ -14667,9 +14661,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "tek" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "teU" = (
@@ -14680,9 +14672,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "tgB" = (
@@ -14707,6 +14697,15 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/recreation_area)
+"thp" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/main_map/hallway/deck1)
 "thD" = (
 /obj/structure/table/woodentable,
 /obj/item/book/manual/standard_operating_procedure,
@@ -14770,9 +14769,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/reinforced,
 /area/security/tactical)
 "tlH" = (
@@ -14933,9 +14930,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
 "tvR" = (
@@ -14988,9 +14983,7 @@
 /turf/simulated/floor/plating,
 /area/medical/medbay_emt_bay)
 "tyq" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "tyt" = (
@@ -15051,9 +15044,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/main_map/hallway/deck1)
 "tCK" = (
@@ -15123,9 +15114,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "tGW" = (
@@ -15679,9 +15668,7 @@
 /area/tether/surfacebase/security/hallway)
 "upl" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "upV" = (
@@ -15738,9 +15725,7 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/reinforced,
 /area/security/riot_control)
 "usE" = (
@@ -15818,9 +15803,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora)
 "uwW" = (
@@ -16089,9 +16072,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "uNq" = (
@@ -16104,9 +16085,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "uNR" = (
@@ -16258,6 +16237,16 @@
 	},
 /turf/simulated/open,
 /area/crew_quarters/bar)
+"var" = (
+/obj/map_helper/network_builder/power_cable/green/auto,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/main_map/hallway/deck1)
 "vbh" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
@@ -16400,9 +16389,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "vhx" = (
@@ -16473,11 +16460,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/lab)
 "vkN" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/surfacebase/security/lobby)
@@ -16488,9 +16475,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "vlC" = (
@@ -16578,9 +16563,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1)
 "vqB" = (
@@ -16713,9 +16696,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/reinforced,
 /area/security/tactical)
 "vyz" = (
@@ -16844,9 +16825,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/port)
 "vHG" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/direction_bump/south,
 /turf/simulated/floor/crystal,
 /area/space)
@@ -16906,9 +16885,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/lab)
 "vMp" = (
@@ -16990,6 +16967,10 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/space)
+"vOX" = (
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/tiled/monotile,
+/area/main_map/maintenance/deck_one/port)
 "vPm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -17174,9 +17155,7 @@
 /area/rnd/xenobiology/xenoflora_storage)
 "vXx" = (
 /obj/landmark/spawnpoint/job/xenobotanist,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "vYd" = (
@@ -17296,9 +17275,7 @@
 	dir = 1;
 	pixel_y = -25
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "whe" = (
@@ -17502,9 +17479,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/aft/starboard)
 "wrf" = (
@@ -17529,9 +17504,7 @@
 	desc = "A room dedicated for the repairs and recharging of adherent.";
 	name = "Adherent Maintenance"
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/crystal,
 /area/main_map/hallway/deck1)
 "wtT" = (
@@ -17706,6 +17679,7 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/hallway/deck1)
 "wEl" = (
@@ -17721,6 +17695,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/security/lobby)
+"wEV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/main_map/hallway/deck1)
 "wFy" = (
 /obj/structure/closet{
 	name = "Evidence Closet"
@@ -17782,6 +17760,10 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
+"wKX" = (
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/port)
 "wKY" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -17892,9 +17874,7 @@
 "wRA" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rnd/research_foyer)
 "wRC" = (
@@ -18008,9 +17988,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "wYi" = (
@@ -18050,9 +18028,7 @@
 /turf/simulated/open,
 /area/space)
 "xaq" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/direction_bump/south,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -18062,9 +18038,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/yellow,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "xbJ" = (
@@ -18116,6 +18090,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1)
 "xcX" = (
@@ -18138,9 +18113,7 @@
 /area/medical/medbay)
 "xfe" = (
 /obj/machinery/holopad,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "xfr" = (
@@ -18217,6 +18190,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
+"xjx" = (
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_access = list(30,47,77)
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/starboard)
 "xjA" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 6
@@ -18246,9 +18225,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/forward/starboard)
 "xmP" = (
@@ -18359,9 +18336,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/reinforced,
 /area/security/armoury)
 "xrI" = (
@@ -18499,6 +18474,10 @@
 	},
 /turf/simulated/open,
 /area/main_map/maintenance/deck_one/port)
+"xAK" = (
+/obj/map_helper/network_builder/power_cable/green/auto,
+/turf/simulated/floor/tiled/monotile,
+/area/main_map/hallway/deck1)
 "xBY" = (
 /obj/structure/flora/pottedplant/shoot,
 /turf/simulated/floor/wood,
@@ -18561,9 +18540,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/reception)
 "xGJ" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/landmark{
 	name = "lightsout"
 	},
@@ -18582,9 +18559,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/aft/starboard)
 "xJc" = (
@@ -18600,9 +18575,7 @@
 /area/bridge/bunker)
 "xKd" = (
 /obj/machinery/door/airlock/glass,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officecommon)
 "xKi" = (
@@ -18931,9 +18904,7 @@
 /turf/simulated/floor/tiled/white,
 /area/space)
 "ydJ" = (
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/direction_bump/east,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
@@ -19013,9 +18984,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "yhE" = (
@@ -19027,9 +18996,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/map_helper/network_builder/power_cable/auto{
-	cable_color = "Green"
-	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "yhU" = (
@@ -31413,9 +31380,9 @@ mgF
 rSU
 rSU
 rSU
-qiW
-qiW
-qiW
+xAK
+xAK
+xAK
 rSU
 rSU
 rSU
@@ -32183,7 +32150,7 @@ izy
 svY
 izy
 aWR
-izy
+blq
 izy
 izy
 izy
@@ -32372,15 +32339,15 @@ hEo
 kHo
 svY
 svY
-svY
-svY
-svY
-svY
-xNO
-svY
-svY
-svY
-svY
+aXE
+mDz
+cWi
+cWi
+edP
+jRv
+cWi
+cWi
+baH
 izy
 jpc
 rKw
@@ -32566,22 +32533,22 @@ hEo
 jaB
 izy
 svY
-izy
-izy
+cbG
+juP
 izy
 izy
 aWR
+cbG
 izy
 izy
-izy
-svY
-ide
+cMA
+cWi
 wDi
-aDY
-aDY
-rKw
-mpI
-xKi
+rAz
+rAz
+koy
+wDi
+qrx
 kZM
 jpc
 djY
@@ -32728,7 +32695,7 @@ cJw
 cJw
 cJw
 cJw
-cJw
+jJN
 cJw
 cJw
 cJw
@@ -32769,13 +32736,13 @@ gij
 kuH
 gij
 gij
-jAA
+okT
 jpc
 bcx
 bcx
 bcx
 jpc
-vYy
+dZP
 hei
 jpc
 tQd
@@ -32787,9 +32754,9 @@ urI
 ari
 fWj
 ayS
-bqH
+iUa
 uGn
-mHg
+ezT
 mHg
 sCF
 vkN
@@ -32922,7 +32889,7 @@ cJw
 cJw
 cJw
 cJw
-cJw
+iNe
 cJw
 cJw
 cJw
@@ -32969,8 +32936,8 @@ bcx
 bcx
 bcx
 jpc
-vYy
-hei
+hJG
+kWw
 jpc
 tQd
 tQd
@@ -32983,7 +32950,7 @@ fWj
 waV
 iUa
 nrw
-eaw
+iBg
 hhh
 eaw
 mMT
@@ -33164,7 +33131,7 @@ bcx
 bcx
 jpc
 vYy
-hei
+fkb
 jpc
 tQd
 tQd
@@ -33177,7 +33144,7 @@ fWj
 ayS
 iUa
 nlb
-sFR
+iBi
 myO
 iUa
 nlb
@@ -33318,8 +33285,8 @@ cJw
 kPq
 xcX
 xcX
-xcX
-xcX
+gNc
+gNc
 fpL
 xcX
 xcX
@@ -33351,14 +33318,14 @@ pTU
 oir
 fKV
 gij
-nxk
+aWR
 jpc
 jpc
 jpc
 jpc
 jpc
 vYy
-hei
+fkb
 jpc
 lVO
 tQd
@@ -33552,7 +33519,7 @@ tQX
 tQX
 nxk
 vYy
-hei
+fkb
 jpc
 psI
 rKw
@@ -33749,8 +33716,8 @@ vYy
 srW
 wDi
 xcK
-rKw
-rKw
+wEV
+deA
 tQd
 tQd
 tQd
@@ -33758,18 +33725,18 @@ tQd
 tQd
 pXp
 djY
-djY
-qiW
-djY
-djY
-djY
-djY
-djY
-pXp
-rKw
-rKw
-rKw
-rKw
+plq
+var
+vjs
+vjs
+thp
+vjs
+vjs
+kgr
+rAz
+rAz
+rAz
+lzb
 rKw
 rSU
 rSU
@@ -33944,7 +33911,7 @@ xKi
 jpc
 djY
 rKw
-djY
+nwZ
 seK
 tQd
 tQd
@@ -33953,7 +33920,7 @@ djY
 pXp
 djY
 bkg
-qiW
+xAK
 djY
 gsd
 bkg
@@ -34145,9 +34112,9 @@ jpc
 jpc
 jpc
 jpc
-rKw
-rKw
-rSU
+djY
+djY
+xAK
 hsd
 jpc
 jpc
@@ -34277,8 +34244,8 @@ fsO
 fsO
 fsO
 fsO
-fsO
-fsO
+cJw
+cJw
 cJw
 cJw
 cJw
@@ -34340,8 +34307,8 @@ xaj
 xaj
 jpc
 aIT
-rSU
-rSU
+xAK
+xAK
 jpc
 mEM
 mEM
@@ -34370,7 +34337,7 @@ hYz
 kYU
 cgr
 vIr
-cYR
+qbv
 cYR
 cYR
 cYR
@@ -34470,9 +34437,9 @@ lLO
 lLO
 lLO
 lLO
-lLO
-lLO
 fsO
+cJw
+cJw
 cJw
 cJw
 cJw
@@ -34533,9 +34500,9 @@ apA
 apA
 apA
 mpI
-rKw
-rKw
-rKw
+djY
+djY
+djY
 mpI
 lrB
 lrB
@@ -34564,8 +34531,8 @@ lDd
 fEr
 lKJ
 vIr
-lLO
-lLO
+mEM
+vNK
 lLO
 lLO
 lLO
@@ -34664,8 +34631,6 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
 fsO
 cJw
 cJw
@@ -34674,6 +34639,8 @@ cJw
 cJw
 cJw
 cJw
+cJw
+wKX
 cJw
 xcX
 kak
@@ -34727,9 +34694,9 @@ lVl
 lVl
 lVl
 jpc
-rKw
-rKw
-rKw
+djY
+djY
+djY
 jpc
 mEM
 mEM
@@ -34758,8 +34725,8 @@ gfp
 yhL
 dsY
 oSa
-lLO
-lLO
+mEM
+qVC
 lLO
 lLO
 bmU
@@ -34858,9 +34825,9 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
 fsO
+cJw
+cJw
 cJw
 cJw
 cJw
@@ -34921,9 +34888,9 @@ bcx
 jpc
 jpc
 xJc
-rKw
-rKw
-rKw
+djY
+djY
+djY
 jpc
 cKU
 mEM
@@ -34952,8 +34919,8 @@ cXH
 oeT
 qws
 oSa
-lLO
-lLO
+mEM
+qVC
 lLO
 lLO
 bmU
@@ -35052,8 +35019,6 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
 fsO
 cJw
 cJw
@@ -35063,6 +35028,8 @@ cJw
 cJw
 cJw
 cJw
+cJw
+hYA
 xcX
 xcX
 xcX
@@ -35146,8 +35113,8 @@ cXH
 tPq
 qws
 oSa
-lLO
-lLO
+mEM
+qVC
 lLO
 lLO
 bmU
@@ -35246,8 +35213,6 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
 fsO
 cJw
 cJw
@@ -35258,6 +35223,8 @@ cJw
 cJw
 cJw
 cJw
+cJw
+hQR
 cJw
 cJw
 cJw
@@ -35340,8 +35307,8 @@ cXH
 tPq
 bpW
 vIr
-lLO
-lLO
+mEM
+vNK
 lLO
 lLO
 bmU
@@ -35440,8 +35407,6 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
 fsO
 cJw
 cJw
@@ -35449,12 +35414,14 @@ cJw
 cJw
 cJw
 cJw
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
+xcX
+xcX
+xcX
+xcX
+eGK
+xcX
+xcX
+xcX
 cJw
 mei
 viM
@@ -35534,8 +35501,8 @@ cXH
 tPq
 mbb
 oSa
-lLO
-lLO
+mEM
+qVC
 lLO
 lLO
 bmU
@@ -35634,8 +35601,6 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
 fsO
 cJw
 cJw
@@ -35643,12 +35608,14 @@ cJw
 cJw
 cJw
 cJw
-cJw
-jJN
-cJw
-cJw
-cJw
-cJw
+xcX
+xcX
+xcX
+gNc
+eTo
+gNc
+xcX
+xcX
 cJw
 mei
 mei
@@ -35728,8 +35695,8 @@ cXH
 qPq
 itg
 oSa
-lLO
-lLO
+mEM
+qVC
 lLO
 lLO
 bmU
@@ -35828,21 +35795,21 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
+fsO
+cJw
 nZG
 hWU
 hWU
 hWU
 nZG
-cJw
-cJw
-cJw
-iNe
-cJw
-cJw
-cJw
-cJw
+fQA
+fQA
+vOX
+ngs
+ber
+ngs
+jQi
+xcX
 cJw
 nJv
 faD
@@ -35922,8 +35889,8 @@ rHa
 fEr
 swy
 oSa
-lLO
-lLO
+mEM
+qVC
 lLO
 lLO
 bmU
@@ -36022,21 +35989,21 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
+fsO
+cJw
 hWU
 uUj
 uUj
 uUj
 hWU
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
+fQA
+fQA
+vOX
+ngs
+ber
+ngs
+jQi
+xcX
 cJw
 nJv
 eXA
@@ -36116,8 +36083,8 @@ dmf
 idX
 fUW
 vIr
-lLO
-lLO
+mEM
+vNK
 lLO
 lLO
 bmU
@@ -36216,21 +36183,21 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
+fsO
+cJw
 hWU
 uUj
 uUj
 uUj
 fQA
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
+fQA
+fQA
+vOX
+ngs
+ber
+ngs
+jQi
+xcX
 cJw
 nJv
 aGN
@@ -36310,8 +36277,8 @@ kIF
 vIr
 vIr
 vIr
-lLO
-lLO
+xjx
+vNK
 lLO
 lLO
 bmU
@@ -36410,21 +36377,21 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
+fsO
+cJw
 hWU
 uUj
 uUj
 uUj
 fQA
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
+fQA
+fQA
+vOX
+ngs
+ber
+ngs
+jQi
+xcX
 cJw
 nJv
 bKp
@@ -36503,9 +36470,9 @@ mEM
 lrB
 mEM
 mEM
+mEM
+mEM
 vNK
-lLO
-lLO
 lLO
 lLO
 bmU
@@ -36604,21 +36571,21 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
+fsO
+cJw
 hWU
 uUj
 uUj
 uUj
 hWU
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
+fQA
+fQA
+vOX
+jrH
+ber
+ngs
+jQi
+xcX
 cJw
 nJv
 nJv
@@ -36697,9 +36664,9 @@ mEM
 lrB
 mEM
 mEM
+mEM
+mEM
 vNK
-lLO
-lLO
 lLO
 lLO
 bmU
@@ -36798,21 +36765,21 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
+fsO
+cJw
 nZG
 hWU
 hWU
 hWU
 nZG
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
-cJw
+fQA
+fQA
+vOX
+ngs
+ber
+ngs
+jQi
+xcX
 cJw
 xbS
 mTA
@@ -36891,9 +36858,9 @@ mEM
 lrB
 mEM
 mEM
+mEM
+mEM
 vNK
-lLO
-lLO
 lLO
 lLO
 bmU
@@ -36992,8 +36959,6 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
 fsO
 cJw
 cJw
@@ -37007,6 +36972,8 @@ cJw
 cJw
 cJw
 cJw
+fQA
+fQA
 cJw
 xbS
 vzP
@@ -37085,9 +37052,9 @@ mEM
 lrB
 mEM
 mEM
+mEM
+mEM
 vNK
-lLO
-lLO
 lLO
 lLO
 bmU
@@ -37186,9 +37153,9 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
 fsO
+cJw
+cJw
 cJw
 cJw
 cJw
@@ -37279,9 +37246,9 @@ xYG
 lrB
 xYG
 xYG
+mEM
+mEM
 vNK
-lLO
-lLO
 lLO
 lLO
 bmU
@@ -37380,9 +37347,9 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
 fsO
+cJw
+cJw
 cJw
 cJw
 cJw
@@ -37473,9 +37440,9 @@ mEM
 lrB
 mEM
 mEM
+mEM
+mEM
 vNK
-lLO
-lLO
 lLO
 lLO
 bmU
@@ -37574,9 +37541,9 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
 fsO
+cJw
+cJw
 cJw
 cJw
 cJw
@@ -37667,9 +37634,9 @@ mEM
 lrB
 mEM
 mEM
+mEM
+mEM
 vNK
-lLO
-lLO
 lLO
 bmU
 bmU
@@ -37768,9 +37735,9 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
 fsO
+cJw
+cJw
 cJw
 cJw
 cJw
@@ -37861,9 +37828,9 @@ mEM
 lrB
 mEM
 mEM
+mEM
+mEM
 vNK
-lLO
-lLO
 lLO
 bmU
 bmU
@@ -37962,9 +37929,9 @@ bmU
 bmU
 bmU
 lLO
-lLO
-lLO
 fsO
+cJw
+cJw
 cJw
 cJw
 cJw
@@ -38055,9 +38022,9 @@ lrB
 lrB
 mEM
 mEM
+mEM
+mEM
 vNK
-lLO
-lLO
 lLO
 bmU
 bmU
@@ -38156,8 +38123,8 @@ bmU
 bmU
 bmU
 bmU
-lLO
-lLO
+fsO
+fsO
 fsO
 fsO
 fsO
@@ -38250,8 +38217,8 @@ mEM
 vNK
 vNK
 vNK
-lLO
-lLO
+vNK
+vNK
 bmU
 bmU
 bmU
@@ -40951,7 +40918,7 @@ oAf
 oAf
 oAf
 hin
-mEM
+cKU
 mEM
 mEM
 mEM
@@ -41145,7 +41112,7 @@ oAf
 oAf
 oAf
 hin
-mEM
+uxg
 mEM
 mEM
 mEM

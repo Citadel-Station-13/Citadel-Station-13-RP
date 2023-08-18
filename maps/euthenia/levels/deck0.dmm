@@ -165,6 +165,10 @@
 /obj/machinery/door/airlock/lift,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/space)
+"jg" = (
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/plating,
+/area/space)
 "jp" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
@@ -172,6 +176,10 @@
 "kd" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/space)
+"kD" = (
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/hallway/deck0)
 "lD" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -232,6 +240,10 @@
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"ov" = (
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/tiled/techmaint,
 /area/space)
 "oD" = (
 /obj/machinery/holoplant,
@@ -338,6 +350,10 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/space)
+"tj" = (
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/plating,
+/area/main_map/hallway/deck0)
 "to" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -768,6 +784,9 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
+"PL" = (
+/turf/simulated/wall,
+/area/space)
 "Qd" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -875,6 +894,10 @@
 "Us" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/airless/ceiling,
+/area/space)
+"UB" = (
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/plating,
 /area/space)
 "UH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -12975,7 +12998,7 @@ rk
 rk
 rk
 rk
-rk
+kD
 rk
 rk
 rk
@@ -13159,17 +13182,17 @@ wJ
 wJ
 wJ
 wJ
+Ao
+ov
+Ao
+Ao
+Ao
+Ao
+Ao
+PL
 wJ
 wJ
-wJ
-wJ
-wJ
-wJ
-wJ
-wJ
-wJ
-wJ
-wJ
+Ao
 wJ
 wJ
 wJ
@@ -13348,22 +13371,22 @@ eE
 Wv
 Wv
 eE
-rk
+tj
+Ao
+Ao
+Ao
+Ao
+Ao
+PL
 wJ
 wJ
 wJ
 wJ
-wJ
-wJ
-wJ
-wJ
-wJ
-wJ
-wJ
-wJ
-wJ
-wJ
-wJ
+Ao
+ov
+Ao
+Ao
+Ao
 wJ
 wJ
 wJ
@@ -13543,21 +13566,21 @@ Wv
 Wv
 eE
 rk
+jg
+UB
+wJ
+wJ
+wJ
+PL
 wJ
 wJ
 wJ
 wJ
 wJ
+PL
 wJ
 wJ
-wJ
-wJ
-wJ
-wJ
-wJ
-wJ
-wJ
-wJ
+Ao
 wJ
 wJ
 wJ
@@ -13731,7 +13754,7 @@ wJ
 wJ
 wJ
 wJ
-rk
+tj
 eE
 Wv
 Wv
@@ -13750,10 +13773,10 @@ Fp
 Fp
 Fp
 Fp
-wJ
-wJ
-wJ
-Fp
+PL
+ov
+PL
+PL
 Fp
 Fp
 Fp
@@ -13945,7 +13968,7 @@ VJ
 VJ
 Fp
 wJ
-wJ
+Ao
 wJ
 wJ
 Fp
@@ -14139,7 +14162,7 @@ VJ
 VJ
 Fp
 wJ
-wJ
+Ao
 wJ
 wJ
 Fp
@@ -14333,7 +14356,7 @@ VJ
 VJ
 Fp
 wJ
-wJ
+Ao
 wJ
 wJ
 Fp
@@ -16390,8 +16413,8 @@ Ox
 Ox
 Ox
 Ox
-Ox
-Ox
+VJ
+VJ
 Fp
 zp
 oE
@@ -16484,8 +16507,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 Ox
@@ -16584,8 +16607,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 Xi
 zp
 oE
@@ -16678,8 +16701,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -16778,8 +16801,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 Xi
 zp
 oE
@@ -16872,8 +16895,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -16972,8 +16995,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 Xi
 zp
 oE
@@ -17066,8 +17089,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -17166,8 +17189,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 Xi
 zp
 oE
@@ -17260,8 +17283,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -17360,8 +17383,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 Xi
 zp
 oE
@@ -17454,8 +17477,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -17554,8 +17577,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 Fp
 zp
 zp
@@ -17648,8 +17671,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -17748,8 +17771,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 kd
 JQ
 JQ
@@ -17793,8 +17816,8 @@ wJ
 wJ
 wJ
 wJ
-wJ
-wJ
+UB
+jg
 Fp
 eE
 Wv
@@ -17842,8 +17865,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -17942,8 +17965,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 JQ
 Ox
 Ox
@@ -18036,8 +18059,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -18136,8 +18159,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 JQ
 Ox
 Ox
@@ -18230,8 +18253,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -18330,8 +18353,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 JQ
 Ox
 Ox
@@ -18424,8 +18447,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -18524,8 +18547,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 JQ
 Ox
 Ox
@@ -18618,8 +18641,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -18718,8 +18741,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 kd
 JQ
 JQ
@@ -18812,8 +18835,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -18912,8 +18935,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 Fp
 zp
 zp
@@ -19006,8 +19029,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -19106,8 +19129,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 Xi
 zp
 oE
@@ -19200,8 +19223,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -19300,8 +19323,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 Xi
 zp
 oE
@@ -19394,8 +19417,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Ox
 NT
@@ -19494,8 +19517,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 Xi
 zp
 oE
@@ -19588,8 +19611,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 NT
 NT
@@ -19688,8 +19711,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 Xi
 zp
 oE
@@ -19782,8 +19805,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 NT
 NT
@@ -19882,8 +19905,8 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
+VJ
+VJ
 Xi
 zp
 zp
@@ -19976,8 +19999,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 Ox
 Hj
 Hj
@@ -20076,8 +20099,8 @@ NT
 NT
 NT
 NT
-Ox
-Ox
+VJ
+VJ
 Fp
 Xi
 Xi
@@ -20170,8 +20193,8 @@ VJ
 VJ
 VJ
 VJ
-Ox
-Ox
+VJ
+VJ
 NT
 Hj
 Hj
