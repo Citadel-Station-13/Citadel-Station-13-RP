@@ -180,7 +180,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 /obj/machinery/power/apc/talon/hyper
 	cell_type = /obj/item/cell/hyper
 
-/obj/machinery/alarm/talon
+/obj/machinery/air_alarm/talon
 	req_access = list()
 	req_one_access = list(ACCESS_FACTION_TALON)
 	alarms_hidden = 1

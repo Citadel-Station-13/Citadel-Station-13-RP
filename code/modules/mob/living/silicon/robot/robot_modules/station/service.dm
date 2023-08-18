@@ -109,7 +109,7 @@
 	src.modules += new /obj/item/reagent_containers/glass/bucket(src)
 	src.modules += new /obj/item/material/minihoe(src)
 	src.modules += new /obj/item/material/knife/machete/hatchet(src)
-	src.modules += new /obj/item/analyzer/plant_analyzer(src)
+	src.modules += new /obj/item/plant_analyzer(src)
 	src.modules += new /obj/item/storage/bag/plants(src)
 	src.modules += new /obj/item/robot_harvester(src)
 	src.modules += new /obj/item/material/knife(src)
@@ -305,7 +305,7 @@
 		/obj/item/reagent_containers/glass/bucket,
 		/obj/item/material/minihoe,
 		/obj/item/material/knife/machete/hatchet,
-		/obj/item/analyzer/plant_analyzer,
+		/obj/item/plant_analyzer,
 		/obj/item/storage/bag/dogborg,
 		/obj/item/robot_harvester,
 		/obj/item/material/knife,

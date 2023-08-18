@@ -92,7 +92,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "aq" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -1006,7 +1006,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/pa_room)
 "bY" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -1208,7 +1208,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},

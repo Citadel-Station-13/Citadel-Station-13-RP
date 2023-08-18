@@ -180,7 +180,7 @@
 /mob/living/simple_mob/slime/xenobio/dark_purple/proc/ignite()
 	visible_message(SPAN_CRITICAL("\The [src] erupts in an inferno!"))
 	for(var/turf/simulated/target_turf in get_ignition_turfs(25, 2))
-		target_turf.assume_gas(/datum/gas/phoron, 30, 1500+T0C)
+		target_turf.assume_gas(GAS_ID_PHORON, 30, 1500+T0C)
 		spawn(0)
 			target_turf.hotspot_expose(1500+T0C, 400)
 	qdel(src)

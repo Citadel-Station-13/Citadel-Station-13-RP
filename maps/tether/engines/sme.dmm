@@ -239,7 +239,7 @@
 	id_tag = "cooling_out";
 	initialize_directions = 4;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/nitrogen{
 	initial_gas_mix = "n2=82.1472;TEMP=293.15"
@@ -634,7 +634,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bw" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	dir = 1;
 	use_power = 0
 	},
@@ -916,7 +916,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cd" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 1;
 	use_power = 0
 	},
@@ -1361,7 +1361,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -1398,7 +1398,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
