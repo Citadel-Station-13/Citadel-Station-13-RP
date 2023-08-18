@@ -164,7 +164,7 @@
 				qdel(A)
 	return ..()
 
-/obj/machinery/Moved(atom/old_loc, direction, forced)
+/obj/machinery/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	if(old_loc != loc)
 		if(power_recursive_registered)

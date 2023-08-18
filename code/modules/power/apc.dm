@@ -159,9 +159,15 @@ GLOBAL_LIST_EMPTY(apcs)
 
 /obj/machinery/power/apc/Destroy()
 	GLOB.apcs -= src
+
+	#warn below
+
 	src.update()
 	area.apc = null
 	area.set_power_channels(NONE)
+
+	#warn above
+
 	QDEL_NULL(wires)
 	QDEL_NULL(terminal)
 	QDEL_NULL(cell)
@@ -988,10 +994,10 @@ GLOBAL_LIST_EMPTY(apcs)
 		name = "[area.name] APC"
 	update()
 
-#undef APC_UPDATE_ICON_COOLDOWN
+#warn above
 
 /obj/machinery/power/apc/proc/reset()
-	var/requires_update = FALSE1
+	var/requires_update = FALSE
 
 	//! legacy
 	if(hacker)
@@ -1155,6 +1161,11 @@ GLOBAL_LIST_EMPTY(apcs)
 
 //? Movement
 
+/obj/machinery/power/apc/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+	if(!isnull(terminal) && (terminal.loc != loc))
+		terminal.forceMove(loc)
+
 /obj/machinery/power/apc/setDir(new_dir)
 	. = ..()
 	update_pixel_offsets()
@@ -1173,6 +1184,8 @@ GLOBAL_LIST_EMPTY(apcs)
 				base_pixel_x = 22
 			if(WEST)
 				base_pixel_x = -22
+	if(!isnull(terminal) && terminal.dir != dir)
+		terminal.setDir(dir)
 	reset_pixel_offsets()
 
 //? Nightshift

@@ -45,7 +45,7 @@
 /obj/machinery/power/proc/connect()
 	#warn impl
 
-/obj/machinery/power/Moved(atom/old_loc, direction, forced)
+/obj/machinery/power/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	auto_connect()
 
