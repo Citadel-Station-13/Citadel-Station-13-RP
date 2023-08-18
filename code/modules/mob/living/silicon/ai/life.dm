@@ -155,10 +155,9 @@
 
 /mob/living/silicon/ai/proc/lacks_power()
 	if(APU_power)
-		return 0
-	var/turf/T = get_turf(src)
+		return 0\
 	var/area/A = get_area(src)
-	return ((!A.power_equip) && A.requires_power == 1 || istype(T, /turf/space)) && !istype(src.loc,/obj/item)
+	return !istype(loc, /obj/item) && !A?.powered(POWER_CHANNEL_EQUIP)
 
 /mob/living/silicon/ai/update_health()
 	if(status_flags & STATUS_GODMODE)

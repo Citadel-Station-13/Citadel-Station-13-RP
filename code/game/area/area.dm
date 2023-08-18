@@ -44,6 +44,8 @@
 	//? Nightshift
 	/// is nightshift on?
 	var/nightshift = FALSE
+	/// is nightshift currently cycling?
+	var/nightshift_mutex = FALSE
 
 	//? Parallax
 	/// Parallax moving?
@@ -594,13 +596,23 @@ var/list/ghostteleportlocs = list()
 /**
  * This is tick checked.
  */
-/area/proc/set_nightshift(on, automatic)
-	if(on == nightshift)
+/area/proc/set_nightshift(on, automatic, force)
+	if(on == nightshift && !force)
 		return
 	nightshift = on
+	if(nightshift_mutex)
+		return
+	nightshift_mutex = TRUE
 	for(var/obj/machinery/light/L in src)
+		if(!istype(L))
+			// no runtimes allowed, we have a mutex to clear!
+			continue
 		L.nightshift_mode(on)
 		CHECK_TICK
+	nightshift_mutex = FALSE
+	// mutex stopped another update, redo the cycle
+	if(nightshift != on)
+		set_nightshift(nightshift, force = TRUE)
 
 //? Power
 

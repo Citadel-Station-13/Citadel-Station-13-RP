@@ -46,6 +46,14 @@ GLOBAL_LIST_EMPTY(apcs)
 	req_access = list(ACCESS_ENGINEERING_APC)
 
 	//? Appearance
+	/// overlay caches generated
+	var/static/overlay_cache_generated = FALSE
+	/// cached images, because we have to change color so we can't use just text unless we hardcode the colors
+	var/static/list/overlay_cache_equip
+	/// cached images, because we have to change color so we can't use just text unless we hardcode the colors
+	var/static/list/overlay_cache_light
+	/// cached images, because we have to change color so we can't use just text unless we hardcode the colors
+	var/static/list/overlay_cache_envir
 
 	//? Area Handling
 	#warn hook registered_area
@@ -121,6 +129,8 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/alarms_hidden = FALSE //If power alarms from this APC are visible on consoles
 
 /obj/machinery/power/apc/Initialize(mapload, set_dir, constructing)
+	if(!overlay_cache_generated)
+		generate_overlay_caches()
 	. = ..()
 	GLOB.apcs += src
 
@@ -256,38 +266,6 @@ GLOBAL_LIST_EMPTY(apcs)
 			else
 				. += "The cover is closed."
 
-// update the APC icon to show the three base states
-// also add overlays for indicator lights
-/obj/machinery/power/apc/update_icon()
-	if (!status_overlays)
-		status_overlays = 1
-		status_overlays_equipment = new
-		status_overlays_lighting = new
-		status_overlays_environ = new
-
-		status_overlays_equipment.len = 5
-		status_overlays_lighting.len = 5
-		status_overlays_environ.len = 5
-
-		var/list/channel_overlays = list(status_overlays_equipment, status_overlays_lighting, status_overlays_environ)
-		var/channel = 0
-		for(var/list/channel_leds in channel_overlays)
-			channel_leds[POWERCHAN_OFF + 1] = overlay_image(icon,"apco[channel]",COLOR_RED)
-			channel_leds[POWERCHAN_OFF_AUTO + 1] = overlay_image(icon,"apco[channel]",COLOR_ORANGE)
-			channel_leds[POWERCHAN_ON + 1] = overlay_image(icon,"apco[channel]",COLOR_LIME)
-			channel_leds[POWERCHAN_ON_AUTO + 1] = overlay_image(icon,"apco[channel]",COLOR_BLUE)
-			channel++
-
-	if(update & 2)
-		cut_overlays()
-		if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
-			add_overlay(status_overlays_lock[locked+1])
-			add_overlay(status_overlays_charging[charging+1])
-			if(operating)
-				add_overlay(status_overlays_equipment[equipment+1])
-				add_overlay(status_overlays_lighting[lighting+1])
-				add_overlay(status_overlays_environ[environ+1])
-
 //attack with an item - open/close cover, insert cell, or (un)lock interface
 
 /obj/machinery/power/apc/attackby(obj/item/W, mob/user)
@@ -310,7 +288,6 @@ GLOBAL_LIST_EMPTY(apcs)
 							"<span class='warning'>[user.name] has broken the charred power control board inside [src.name]!</span>",\
 							"<span class='notice'>You broke the charred power control board and remove the remains.</span>",
 							"You hear a crack!")
-						//SSticker.mode:apcs-- //XSI said no and I agreed. -rastaf0
 					else
 						user.visible_message(\
 							"<span class='warning'>[user.name] has removed the power control board from [src.name]!</span>",\
@@ -617,22 +594,6 @@ GLOBAL_LIST_EMPTY(apcs)
 		return	//The panel is visibly dark when the wires are exposed, so we shouldn't be able to interact with it.
 
 	return ui_interact(user)
-
-/obj/machinery/power/apc/proc/update()
-	if(operating && !shorted && !grid_check && !failure_timer)
-		area.power_light = (lighting >= POWERCHAN_ON)
-		area.power_equip = (equipment >= POWERCHAN_ON)
-		area.power_environ = (environ >= POWERCHAN_ON)
-//		if (area.name == "AI Chamber")
-//			spawn(10)
-//				to_chat(world, " [area.name] [area.power_equip]")
-	else
-		area.power_light = 0
-		area.power_equip = 0
-		area.power_environ = 0
-//		if (area.name == "AI Chamber")
-//			to_chat(world, "[area.power_equip]")
-	area.power_change()
 
 /obj/machinery/power/apc/proc/toggle_breaker()
 	operating = !operating
@@ -1102,12 +1063,42 @@ GLOBAL_LIST_EMPTY(apcs)
 	. += "apcox-[locked? 1 : 0]"
 	. += "apco3-[charging + 1]"
 	if(breaker)
-		. += "[(channels_auto & POWER_BIT_ENVIR)? ((channels_active & POWER_BIT_ENVIR)? "" : "") : ((channels_enabled & POWER_BIT_ENVIR)? "" : "")]"
-		#warn two others, fill it out
+		. += (channels_auto & POWER_BIT_ENVIR)? \
+			((channels_active & POWER_BIT_ENVIR)? overlay_cache_envir[APC_CHANNEL_STATE_ON_AUTO] : overlay_cache_envir[APC_CHANNEL_STATE_OFF_AUTO]) : \
+			((channels_active & POWER_BIT_ENVIR)? overlay_cache_envir[APC_CHANNEL_STATE_ON] : overlay_cache_envir[APC_CHANNEL_STATE_OFF])
+		. += (channels_auto & POWER_BIT_LIGHT)? \
+			((channels_active & POWER_BIT_LIGHT)? overlay_cache_light[APC_CHANNEL_STATE_ON_AUTO] : overlay_cache_light[APC_CHANNEL_STATE_OFF_AUTO]) : \
+			((channels_active & POWER_BIT_LIGHT)? overlay_cache_light[APC_CHANNEL_STATE_ON] : overlay_cache_light[APC_CHANNEL_STATE_OFF])
+		. += (channels_auto & POWER_BIT_EQUIP)? \
+			((channels_active & POWER_BIT_EQUIP)? overlay_cache_equip[APC_CHANNEL_STATE_ON_AUTO] : overlay_cache_equip[APC_CHANNEL_STATE_OFF_AUTO]) : \
+			((channels_active & POWER_BIT_EQUIP)? overlay_cache_equip[APC_CHANNEL_STATE_ON] : overlay_cache_equip[APC_CHANNEL_STATE_OFF])
+
+/obj/machinery/power/apc/proc/generate_overlay_caches()
+	overlay_cache_equip = list()
+	overlay_cache_light = list()
+	overlay_cache_envir = list()
+	var/list/list_of_lists = list(overlay_cache_equip, overlay_cache_light, overlay_cache_envir)
+	var/channel = 1
+	for(var/list/cache_list as anything in list_of_lists)
+		cache_list.len = 4
+		var/mutable_appearance/generating = new /mutable_appearance
+		generating.icon_state = "apco[channel]"
+		generating.color = COLOR_LIME
+		cache_list[APC_CHANNEL_STATE_ON] = generating
+		generating.icon_state = "apco[channel]"
+		generating.color = COLOR_BLUE
+		cache_list[APC_CHANNEL_STATE_ON_AUTO] = generating
+		generating.icon_state = "apco[channel]"
+		generating.color = COLOR_RED
+		cache_list[APC_CHANNEL_STATE_OFF] = generating
+		generating.icon_state = "apco[channel]"
+		generating.color = COLOR_ORANGE
+		cache_list[APC_CHANNEL_STATE_OFF_AUTO] = generating
+		++channel
 
 //? Channels
 
-/obj/machinery/power/apc/proc/set_channel_setting(channel, new_setting, defer_icon_update)
+/obj/machinery/power/apc/proc/set_channel_setting(channel, new_setting, defer_updates)
 	var/bit = power_channel_bits[channel]
 	switch(new_setting)
 		if(APC_CHANNEL_AUTO)
@@ -1118,16 +1109,28 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(APC_CHANNEL_OFF)
 			channels_enabled &= ~bit
 			channels_auto &= ~bit
-	update_channel_setting(channel, defer_icon_update)
+	update_channel_setting(channel, defer_updates)
 
-/obj/machinery/power/apc/proc/set_channel_threshold(channel, new_threshold, defer_icon_update)
+/obj/machinery/power/apc/proc/set_channel_threshold(channel, new_threshold, defer_updates)
 	channel_thresholds[channel] = clamp(new_threshold, 0, 1)
-	update_channel_setting(channel, defer_icon_update)
+	update_channel_setting(channel, defer_updates)
+
+/**
+ * @return true/false based on if any channel was changed
+ */
+/obj/machinery/power/apc/proc/full_update_channels(defer_updates)
+	. = FALSE
+	for(var/i in 1 to POWER_CHANNEL_COUNT)
+		. = update_channel_setting(i, TRUE) || .
+	if(. && !defer_updates)
+		update_icon()
+		// todo: optimize
+		registered_area?.power_change()
 
 /**
  * @return true/false based on if the channel was changed
  */
-/obj/machinery/power/apc/proc/update_channel_setting(channel, defer_icon_udpate)
+/obj/machinery/power/apc/proc/update_channel_setting(channel, defer_updates)
 	#warn impl
 
 /obj/machinery/power/apc/proc/should_enable_channel(channel)
@@ -1158,33 +1161,24 @@ GLOBAL_LIST_EMPTY(apcs)
 //? Nightshift
 
 /obj/machinery/power/apc/proc/currently_considered_night()
-	#warn impl
+	return SSnightshift.nightshift_active
 
-/obj/machinery/power/apc/proc/set_nightshift_setting(new_setting, force)
-	#warn impl
-
-/*
-
-/obj/machinery/power/apc/proc/set_nightshift(on, var/automated)
-	set waitfor = FALSE
-	if(automated && istype(area, /area/shuttle))
-		return
-	nightshift_lights = on
-	update_nightshift()
-
-/obj/machinery/power/apc/proc/update_nightshift()
-	var/new_state = nightshift_lights
-
+/obj/machinery/power/apc/proc/should_be_nightshift()
 	switch(nightshift_setting)
-		if(APC_NIGHTSHIFT_NEVER)
-			new_state = FALSE
 		if(APC_NIGHTSHIFT_ALWAYS)
-			new_state = TRUE
+			return TRUE
+		if(APC_NIGHTSHIFT_NEVER)
+			return FALSE
+		if(APC_NIGHTSHIFT_AUTO)
+			return currently_considered_night()
 
-	for(var/obj/machinery/light/L in area)
-		L.nightshift_mode(new_state)
-		CHECK_TICK
-*/
+/obj/machinery/power/apc/proc/set_nightshift_setting(new_setting, automatic, force)
+	//! legacy code
+	if(automatic && istype(registered_area, /area/shuttle))
+		return
+	//! end
+	nightshift_setting = new_setting
+	set_nightshift_active(should_be_nightshift())
 
 /obj/machinery/power/apc/proc/reset_nightshift_setting(forced_setting = initial(nightshift_setting))
 	set_nightshift_setting(forced_setting, TRUE)
@@ -1341,7 +1335,7 @@ GLOBAL_LIST_EMPTY(apcs)
 				if(APC_NIGHTSHIFT_OFF)
 				else
 					return TRUE
-			set_nightshift_setting(set_to)
+			INVOKE_ASYNC(src, PROC_REF(set_nightshift_setting), set_to)
 			return TRUE
 
 	#warn auth
