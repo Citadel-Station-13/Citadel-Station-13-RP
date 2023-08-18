@@ -106,7 +106,7 @@
 	if(!use_cable(1))
 		return reset()
 
-	var/obj/structure/cable/NC = new(new_turf, COLOR_RED, 0, fdirn)
+	var/obj/structure/wire/cable/NC = new(new_turf, COLOR_RED, 0, fdirn)
 	if(last_piece && last_piece.d2 != M_Dir)
 		last_piece.reset_dirs(min(last_piece.d2, M_Dir), max(last_piece.d2, M_Dir))
 

@@ -45,6 +45,10 @@ interface AreaPowerControllerData {
   channelsActive: PowerChannelBits;
   // channel thresholds
   channelThresholds: PowerChannelList<number>;
+  // charging?
+  chargeActive: BooleanLike;
+  // charging enabled?
+  chargeEnabled: BooleanLike;
 }
 
 export const AreaPowerController = (props, context) => {

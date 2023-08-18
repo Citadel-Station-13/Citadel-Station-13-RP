@@ -79,6 +79,10 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/cell_type = /obj/item/cell/apc
 	/// starting power cell charge in %
 	var/start_charge = 100
+	/// charging enabled
+	var/charging_enabled = FALSE
+	/// currently charging
+	var/charging = FALSE
 	/// power channels enabled
 	var/channels_enabled = POWER_BITS_ALL
 	/// power channels auto
@@ -162,9 +166,12 @@ GLOBAL_LIST_EMPTY(apcs)
 	QDEL_NULL(terminal)
 	QDEL_NULL(cell)
 
+	//! legacy
 	// Malf AI, removes the APC from AI's hacked APCs list.
 	if((hacker) && (hacker.hacked_apcs) && (src in hacker.hacked_apcs))
 		hacker.hacked_apcs -= src
+	power_alarm.clearAlarm(loc, src)
+	//! end
 
 	return ..()
 
@@ -418,7 +425,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(do_after(user, 10))
 			if(has_electronics==0)
 				has_electronics = 1
-				reboot()
+				reset()
 				to_chat(user,"<span class='notice'>You place the power control board inside the frame.</span>")
 				qdel(W)
 	else if (istype(W, /obj/item/module/power_control) && opened && has_electronics==0 && ((machine_stat & BROKEN)))
@@ -461,7 +468,7 @@ GLOBAL_LIST_EMPTY(apcs)
 					"You replace the damaged APC cover with a new one.")
 				qdel(W)
 				machine_stat &= ~BROKEN
-				reboot()
+				reset()
 				if (opened==2)
 					opened = 1
 				update_icon()
@@ -475,7 +482,7 @@ GLOBAL_LIST_EMPTY(apcs)
 				user.visible_message("<span class='notice'>[user.name] resets the APC with a beep from their [W.name].</span>",\
 									"You finish resetting the APC.")
 				playsound(src.loc, 'sound/machines/chime.ogg', 25, 1)
-				reboot()
+				reset()
 	else
 		if ((machine_stat & BROKEN) \
 				&& !opened \
@@ -933,33 +940,6 @@ GLOBAL_LIST_EMPTY(apcs)
 	update_icon()
 	return 1
 
-/obj/machinery/power/apc/proc/reboot()
-	//reset various counters so that process() will start fresh
-	charging = initial(charging)
-	chargecount = initial(chargecount)
-	autoflag = initial(autoflag)
-	longtermpower = initial(longtermpower)
-	failure_timer = initial(failure_timer)
-
-	//start with main breaker off, chargemode in the default state and all channels on auto upon reboot
-	operating = 0
-	chargemode = initial(chargemode)
-	power_alarm.clearAlarm(loc, src)
-
-	lighting = POWERCHAN_ON_AUTO
-	equipment = POWERCHAN_ON_AUTO
-	environ = POWERCHAN_ON_AUTO
-
-	//If malf AI had this APC before, they don't now.
-	if(hacker && hacker.hacked_apcs && (src in hacker.hacked_apcs))
-		hacker.hacked_apcs -= src
-		hacker = null
-
-	emagged = initial(emagged) //Resets emagging, too.
-
-	update_icon()
-	update()
-
 /obj/machinery/power/apc/overload(var/obj/machinery/power/source)
 	if(is_critical)
 		return
@@ -1009,6 +989,43 @@ GLOBAL_LIST_EMPTY(apcs)
 	update()
 
 #undef APC_UPDATE_ICON_COOLDOWN
+
+/obj/machinery/power/apc/proc/reset()
+	var/requires_update = FALSE1
+
+	//! legacy
+	if(hacker)
+		if(istype(hacker))
+			if(islist(hacker.hacked_apcs))
+				hacker.hacked_apcs -= src
+		hacker = null
+		requires_update = TRUE
+
+	if(emagged)
+		emagged = FALSE
+		requires_update = TRUE
+
+	power_alarm.clearAlarm(loc, src)
+	//! end
+
+	channels_enabled = POWER_BITS_ALL
+	channels_auto = POWER_BITS_ALL
+	charging_enabled = TRUE
+	charging = FALSE
+	breaker = FALSE
+
+	requires_update = full_update_channels() || requires_update
+
+	if(requires_update)
+		update_icon()
+		registered_area?.power_change()
+
+	#warn impl
+	//reset various counters so that process() will start fresh
+	chargecount = initial(chargecount)
+	autoflag = initial(autoflag)
+	longtermpower = initial(longtermpower)
+	failure_timer = initial(failure_timer)
 
 //? Appearance
 
@@ -1249,6 +1266,8 @@ GLOBAL_LIST_EMPTY(apcs)
 	.["channelsAuto"] = channels_auto
 	.["channelsActive"] = channels_active
 	.["channelThresholds"] = channel_thresholds
+	.["chargeEnabled"] = charging_enabled
+	.["chargeActive"] = charging
 	var/list/data = list(
 		"locked" = locked,
 		"normallyLocked" = locked,
@@ -1331,8 +1350,8 @@ GLOBAL_LIST_EMPTY(apcs)
 			nightshift_last_user_switch = TRUE
 			switch(set_to)
 				if(APC_NIGHTSHIFT_AUTO)
-				if(APC_NIGHTSHIFT_ON)
-				if(APC_NIGHTSHIFT_OFF)
+				if(APC_NIGHTSHIFT_ALWAYS)
+				if(APC_NIGHTSHIFT_NEVER)
 				else
 					return TRUE
 			INVOKE_ASYNC(src, PROC_REF(set_nightshift_setting), set_to)
