@@ -121,12 +121,8 @@
 	if(istype(T) && !T.Adjacent(get_turf(src)))
 		return 0
 
-	var/obj/item/rcd/electric/mounted/hardsuit/R = device
-	R.use_rcd(target, holder.wearer)
-
+	device.melee_attack_chain(target, holder.wearer)
 	return 1
-
-
 
 /obj/item/hardsuit_module/chem_dispenser
 	name = "mounted chemical dispenser"
