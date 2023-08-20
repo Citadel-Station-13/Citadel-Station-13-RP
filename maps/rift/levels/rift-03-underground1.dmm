@@ -8954,7 +8954,7 @@
 	dir = 2
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	name = "Fighter Hangar";
 	req_one_access = list(1,19,29,38,43,47,63,67)
 	},
@@ -9273,7 +9273,7 @@
 /area/rift/station/fighter_bay/transport_tunnel)
 "EG" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait{
-	dir = 1;
+	dir = 4;
 	name = "Drone Fabrication";
 	req_one_access = list(10)
 	},
@@ -12746,7 +12746,7 @@
 /area/rift/surfacebase/underground/under1)
 "Qo" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait{
-	dir = 2
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
