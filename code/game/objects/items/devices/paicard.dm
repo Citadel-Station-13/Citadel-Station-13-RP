@@ -309,9 +309,10 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	if(cached_holo_image)
 		return cached_holo_image
 	if(!pai.last_rendered_hologram_icon)
-		pai.last_rendered_hologram_icon = render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+		pai.last_rendered_hologram_icon = pai.get_holo_image()
 	var/icon/new_icon = icon(pai.last_rendered_hologram_icon)
-	new_icon.Crop(12, 21, 21, 30)
+	var/crop_adjustment = (new_icon.Width() - 32) / 2
+	new_icon.Crop(12 + crop_adjustment, 21, 21 + crop_adjustment, 30)
 	var/image/image = image(new_icon, pixel_x = 11, pixel_y = 9)
 	cached_holo_image = image
 	return image
@@ -348,7 +349,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 		var/image/image = get_holo_image()
 		if(displaying_hologram)
 			image.pixel_x = 9
-			image.pixel_y = 10
+			image.pixel_y = 11
 		else
 			image.pixel_x = 11
 			image.pixel_y = 9

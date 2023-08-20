@@ -185,6 +185,15 @@
 	if(resting)
 		update_transform(animate) // because when our chassis changes we dont want to stay rotated because only holograms rotate!!
 
+	// if in hologram form, chassis is null, and we need to make sure we are offset correctly
+	var/initial_base_pixel_x = initial(src.base_pixel_x)
+	if(!chassis)
+		var/icon_width = last_rendered_hologram_icon.Width()
+		set_base_pixel_x(initial_base_pixel_x + ((32 - icon_width) / 2))
+	else
+		set_base_pixel_x(initial_base_pixel_x)
+
+
 /// camera handling
 /mob/living/silicon/pai/check_eye(var/mob/user as mob)
 	if (!src.current)
@@ -318,7 +327,7 @@
 /mob/living/silicon/pai/proc/scan_object(var/atom/A)
 	var/icon/hologram_icon = render_hologram_icon(A, 210, TRUE, TRUE, "_pai")
 	var/hologram_width = hologram_icon.Width()
-	var/width_adjustment = (hologram_width - 32) / -2
+	var/width_adjustment = (32 - hologram_width) / 2
 
 	var/image/I = image(hologram_icon)
 	I.color = rgb(204,255,204)
@@ -331,3 +340,5 @@
 	if(length(scanned_objects) > 10)
 		scanned_objects.Cut(0, 1)
 
+/mob/living/silicon/pai/proc/get_holo_image()
+	return render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
