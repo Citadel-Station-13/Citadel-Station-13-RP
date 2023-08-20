@@ -236,14 +236,14 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
               <Stack vertical fill>
                 <Stack.Item>
                   <Section>
-                    <Input placeholder="Search (3+ characters)" width="100%" value={searchText} onInput={(e, val) => setSearchText(val)} />
+                    <Input placeholder="Search (3+ characters)" width="100%" value={searchText} onInput={(e, val) => setSearchText(val.toLowerCase())} />
                   </Section>
                 </Stack.Item>
                 <Stack.Item grow>
                   <Section fill title="Designs" scrollable>
                     {
                       Object.values(data.designs.instances).filter(
-                        (d) => searchText.length > 2? d.name.includes(searchText) : (d.category === category)
+                        (d) => searchText.length > 2? d.name.toLowerCase().includes(searchText) : (d.category === category)
                       ).sort((d1, d2) =>
                         d1.name.localeCompare(d2.name)
                       ).map((d) => (
