@@ -183,7 +183,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/rust,
@@ -515,7 +515,7 @@
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "rZ" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
@@ -950,7 +950,7 @@
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "EF" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 28
 	},
 /obj/structure/bed{
@@ -1353,7 +1353,7 @@
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bathroom)
 "Ot" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 28
 	},

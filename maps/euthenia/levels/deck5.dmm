@@ -807,7 +807,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},

@@ -315,7 +315,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/washing_machine,
@@ -451,7 +451,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/wood,
@@ -483,7 +483,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "lC" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -493,7 +493,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "lT" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	breach_detection = 0;
 	dir = 1;
 	pixel_y = -22
@@ -540,7 +540,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "nn" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	breach_detection = 0;
 	dir = 1;
 	pixel_y = -22
@@ -1429,7 +1429,7 @@
 	name = "Large Waste Vent";
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/virgo3b,
 /area/outpost/mining_main/maintenance)

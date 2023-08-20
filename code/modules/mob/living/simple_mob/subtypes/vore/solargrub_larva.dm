@@ -95,7 +95,7 @@ var/global/list/grub_machine_overlays = list()
 
 	if(istype(loc, /obj/machinery))
 		// to anyone who sees me on git blame, i'm not responsible for this shit code ~silicons
-		if(machine_effect && (air_master.current_cycle % 30))
+		if(machine_effect && (SSair.current_cycle % 30))
 			for(var/mob/M in GLOB.player_list)
 				SEND_IMAGE(M, machine_effect)
 		if(prob(10))

@@ -91,13 +91,13 @@
 		return 0 //can't launch if you have no fuel TANKS in the ports
 	var/total_flammable_gas_moles = 0
 	for(var/obj/item/tank/FT in fuel_tanks)
-		total_flammable_gas_moles += FT.air_contents.get_by_flag(GAS_FLAG_FUEL)
+		total_flammable_gas_moles += FT.air_contents.moles_by_flag(GAS_FLAG_FUEL)
 	if(total_flammable_gas_moles < fuel_consumption) //not enough fuel
 		return 0
 	// We are going to succeed if we got to here, so start consuming that fuel
 	var/fuel_to_consume = fuel_consumption
 	for(var/obj/item/tank/FT in fuel_tanks) //loop through tanks, consume their fuel one by one
-		var/fuel_available = FT.air_contents.get_by_flag(GAS_FLAG_FUEL)
+		var/fuel_available = FT.air_contents.moles_by_flag(GAS_FLAG_FUEL)
 		if(!fuel_available) // Didn't even have fuel.
 			continue
 		if(fuel_available >= fuel_to_consume)

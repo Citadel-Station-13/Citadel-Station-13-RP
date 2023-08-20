@@ -83,7 +83,7 @@
 /turf/simulated/floor,
 /area/ship/expe/engines)
 "ap" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -371,7 +371,7 @@
 /turf/simulated/floor,
 /area/ship/expe/maintenancerim)
 "bl" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -631,7 +631,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/northairlock)
 "bO" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -767,7 +767,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/northairlock)
 "co" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -842,7 +842,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
 "cy" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -873,7 +873,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/maintenancerim)
 "cC" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -894,7 +894,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin1)
 "cF" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -915,7 +915,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin2)
 "cI" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -935,7 +935,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin3)
 "cL" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -955,7 +955,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin4)
 "cO" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -976,7 +976,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin5)
 "cR" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -997,7 +997,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin6)
 "cU" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -1017,7 +1017,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin7)
 "cX" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -1037,7 +1037,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin8)
 "da" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -1117,7 +1117,7 @@
 /turf/simulated/floor,
 /area/ship/expe/maintenance1)
 "dk" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -2002,7 +2002,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor4)
 "fB" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -2057,7 +2057,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor4)
 "fH" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -2079,7 +2079,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
 "fK" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -3125,7 +3125,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -3222,7 +3222,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -3761,7 +3761,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seceq)
 "iI" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -3776,7 +3776,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seceq)
 "iJ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -3878,7 +3878,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalchem)
 "iR" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -4039,7 +4039,7 @@
 /area/ship/expe/medicaleq)
 "jg" = (
 /obj/structure/table/reinforced,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -4766,7 +4766,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "kJ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -5236,7 +5236,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringequipment)
 "lL" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -5636,7 +5636,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -25
 	},
@@ -5934,7 +5934,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "mY" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -25
 	},
@@ -6930,7 +6930,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby2)
 "oZ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -7330,7 +7330,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "pQ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -7376,7 +7376,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangar)
 "pU" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -7774,7 +7774,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/captqua)
 "qK" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -8218,7 +8218,7 @@
 /turf/simulated/floor,
 /area/ship/expe/sm)
 "rQ" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	dir = 4
 	},
 /obj/structure/cable{
@@ -8499,7 +8499,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby)
 "sw" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -8576,7 +8576,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical)
 "sC" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -8654,7 +8654,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalsur)
 "sH" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -8698,7 +8698,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical1)
 "sK" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -8921,7 +8921,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/seccells)
 "tz" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -25
 	},
@@ -9126,7 +9126,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -10040,7 +10040,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -10494,7 +10494,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/southairlock)
 "xI" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -10544,7 +10544,7 @@
 /turf/simulated/floor,
 /area/ship/expe/engines)
 "xZ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
