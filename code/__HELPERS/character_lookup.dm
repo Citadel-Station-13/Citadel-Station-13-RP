@@ -11,6 +11,7 @@ If a player wants two characters with different names to share persistence, we c
 The helper methods below will serve to make these changes to the rp_character_lookup table
 */
 
+/// DB Methods
 /proc/get_character_lookup(player_id, character_name)
 	var/formatted_player_id = ckey(player_id)
 	var/formatted_character_name = ckey(character_name)
@@ -48,5 +49,10 @@ The helper methods below will serve to make these changes to the rp_character_lo
 
 	/// Only update the character lookup table entry if no other entry exists with that player id AND new character id
 	/// If such an entry exists, delete the current one instead, because the pairing of these values is the primary key, and should be unique
+
+
+/// Misc Helpers
+/proc/generate_character_id(formatted_player_id, formatted_character_name)
+
 
 #undefine LOOKUP_TABLE
