@@ -35,6 +35,7 @@
 	transform_component.put_in_object()
 
 	update_perspective()
+	set_resting(FALSE)
 	set_intentionally_resting(FALSE, TRUE)
 	update_mobility()
 	update_icon()
