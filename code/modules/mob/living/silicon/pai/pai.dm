@@ -254,7 +254,7 @@
 	release_vore_contents()
 	stop_pulling()
 	update_perspective()
-	set_resting(FALSE)
+	set_intentionally_resting(FALSE)
 	update_mobility()
 	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
