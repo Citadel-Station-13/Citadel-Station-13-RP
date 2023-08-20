@@ -359,8 +359,8 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%population` (
   
   -- Persistence - Character Serialization --
   CREATE TABLE IF NOT EXISTS `%_PREFIX_%character_lookup` (
-  `charactername` TEXT NOT NULL ,
-  `characterid` TEXT NOT NULL ,
-  `playerid` TEXT NOT NULL ,
+  `charactername` VARCHAR(128) NOT NULL ,
+  `characterid` VARCHAR(128) NOT NULL ,
+  `playerid` VARCHAR(128) NOT NULL ,
   PRIMARY KEY (`playerid`, `charactername`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
