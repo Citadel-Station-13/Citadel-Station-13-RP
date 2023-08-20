@@ -150,7 +150,6 @@
 	if (old_stat != machine_stat)
 		update_icon()
 
-
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/attackby(var/obj/item/I as obj, var/mob/user as mob)
 	if(I.is_wrench())
 		if(on)
