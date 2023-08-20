@@ -116,6 +116,8 @@
 	volume = 1000000
 	flow_maximum = 50000
 	use_cell = FALSE
+	default_access_interface = FALSE
+	default_multitool_hijack = TRUE
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50		//internal circuitry, friction losses and stuff
@@ -133,9 +135,6 @@
 	gid++
 
 	name = "[name] (ID [id])"
-
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/attack_hand(mob/user, list/params)
-	to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the scrubber control console.</span>")
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/update_icon()
 	cut_overlays()
