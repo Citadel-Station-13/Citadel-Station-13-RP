@@ -1,3 +1,4 @@
+#define LOOKUP_TABLE character_lookup
 /*
 A character lookup is essentially connecting three things:
 1. A character name, formatted using ckey() referred to as 'charactername'
@@ -15,6 +16,24 @@ The helper methods below will serve to make these changes to the rp_character_lo
 	var/formatted_character_name = ckey(character_name)
 
 	/// In the unlikely scenario no such entry exists for the player, create one, and log that this happened
+	var/sql = "SELECT characterid FROM [format_table_name(LOOKUP_TABLE)] WHERE playerid = :playerid AND charactername = :charactername"
+
+	if(!SSdbcore.Connect())
+		return
+
+	var/datum/db_query/query = SSdbcore.RunQuery(
+		sql,
+		list(
+			"playerid" = formatted_player_id,
+			"charactername" = formatted_character_name
+		)
+	)
+
+	if(query.NextRow())
+		return query.item[1]
+	else
+		message_admins("No character lookup could be found for [formatted_player_id]")
+		return
 
 /proc/add_character_lookup(player_id, character_name)
 	var/formatted_player_id = ckey(player_id)
@@ -29,3 +48,5 @@ The helper methods below will serve to make these changes to the rp_character_lo
 
 	/// Only update the character lookup table entry if no other entry exists with that player id AND new character id
 	/// If such an entry exists, delete the current one instead, because the pairing of these values is the primary key, and should be unique
+
+#undefine LOOKUP_TABLE
