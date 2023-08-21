@@ -342,3 +342,6 @@
 
 /mob/living/silicon/pai/proc/get_holo_image()
 	return render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+
+/mob/living/silicon/pai/get_centering_pixel_x_offset(dir, atom/aligning)
+	return base_pixel_x + (WORLD_ICON_SIZE - icon_x_dimension) / 2
