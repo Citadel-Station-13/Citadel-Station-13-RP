@@ -186,12 +186,12 @@
 		update_transform(animate) // because when our chassis changes we dont want to stay rotated because only holograms rotate!!
 
 	// if in hologram form, chassis is null, and we need to make sure we are offset correctly
-	var/initial_base_pixel_x = initial(src.base_pixel_x)
 	if(!chassis)
 		var/icon_width = last_rendered_hologram_icon.Width()
-		set_base_pixel_x(initial_base_pixel_x + ((32 - icon_width) / 2))
+		icon_x_dimension = icon_width
 	else
-		set_base_pixel_x(initial_base_pixel_x)
+		icon_x_dimension = 32
+	reset_pixel_offsets()
 
 
 /// camera handling
