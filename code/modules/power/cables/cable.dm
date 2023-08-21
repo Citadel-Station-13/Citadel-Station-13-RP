@@ -23,6 +23,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		"Brown" = COLOR_BROWN
 	))
 
+/proc/random_cable_coil_color()
+	. = pick(GLOB.possible_cable_coil_colours)
+	. = GLOB.possible_cable_coil_colours[.]
+
 /**
  * cables
  *
@@ -250,61 +254,59 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
 				qdel(src)
 
-#warn below
+/obj/structure/wire/cable/drop_products(method, atom/where)
+	. = ..()
+	new /obj/item/stack/cable_coil(where, d1? 2 : 1, TRUE, color)
 
-/obj/structure/cable/drain_energy(datum/actor, amount, flags)
-	if(!powernet)
-		return 0
-	return powernet.drain_energy_handler(actor, amount, flags)
+/**
+ * @return the user was incapacitated by the action and whatever it is should be cancelled
+ */
+/obj/structure/wire/cable/proc/shock(mob/victim, relative_exposure = 1)
+	var/datum/wirenet/power/network = src.network
+	network?.electrocute(victim, src, relative_exposure)
+	return !CHECK_MOBILITY(victim, MOBILITY_USE)
 
-/obj/structure/cable/can_drain_energy(datum/actor, flags)
+/obj/structure/wire/cable/drain_energy(datum/actor, amount, flags)
+	var/datum/wirenet/power/network = src.network
+	return isnull(network)? 0 : network.drain_energy_handler(actor, amount, flags)
+
+/obj/structure/wire/cable/can_drain_energy(datum/actor, flags)
 	return TRUE
 
-///////////////////////////////////
-// General procedures
-///////////////////////////////////
+/obj/structure/wire/cable/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(istype(I, /obj/item/stack/cable_coil))
+		var/obj/item/stack/cable_coil/coil = I
+		var/success = C.cable_join(src, user)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | (success? CLICKCHAIN_DID_SOMETHING : NONE)
+	else if(istype(I, /obj/item/multitool))
+		if(isnull(network))
+			user.action_feedback(SPAN_WARNING("[src] is still rebuilding its network."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		if(prob(2.5) && shock(user, 0.1))
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		user.action_feedback(jointext(network.observer_examine(), "<br>"), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
 
+/obj/structure/wire/cable/yellow
+	color = COLOR_YELLOW
 
-// Items usable on a cable :
-//   - Wirecutters : cut it duh !
-//   - Cable coil : merge cables
-//   - Multitool : get the power currently passing through the cable
-//
+/obj/structure/wire/cable/green
+	color = COLOR_LIME
 
-/obj/structure/cable/attackby(obj/item/W, mob/user)
+/obj/structure/wire/cable/blue
+	color = COLOR_BLUE
 
+/obj/structure/wire/cable/pink
+	color = COLOR_PINK
 
-	else if(istype(W, /obj/item/stack/cable_coil))
-		var/obj/item/stack/cable_coil/coil = W
-		if (coil.get_amount() < 1)
-			to_chat(user, "Not enough cable")
-			return
-		coil.cable_join(src, user)
+/obj/structure/wire/cable/orange
+	color = COLOR_ORANGE
 
-	else if(istype(W, /obj/item/multitool))
+/obj/structure/wire/cable/cyan
+	color = COLOR_CYAN
 
-		if(powernet && (powernet.avail > 0))		// is it powered?
-			to_chat(user, "<span class='warning'>[render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)] in power network.</span>")
-
-		else
-			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
-
-		shock(user, 5, 0.2)
-
-	else
-		if(!(W.atom_flags & NOCONDUCT))
-			shock(user, 50, 0.7)
-
-	src.add_fingerprint(user)
-
-// shock the user with probability prb
-/obj/structure/cable/proc/shock(mob/user, prb, var/siemens_coeff = 1.0)
-	if(!prob(prb))
-		return 0
-	if (electrocute_mob(user, powernet, src, siemens_coeff))
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(5, 1, src)
-		s.start()
-		if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
-			return 1
-	return 0
+/obj/structure/wire/cable/white
+	color = COLOR_WHITE

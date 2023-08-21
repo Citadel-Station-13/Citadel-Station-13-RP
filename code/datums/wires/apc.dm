@@ -1,5 +1,5 @@
 /datum/wires/apc
-	holder_type = /obj/machinery/power/apc
+	holder_type = /obj/machinery/apc
 	wire_count = 4
 	proper_name = "APC"
 
@@ -9,19 +9,19 @@
 
 /datum/wires/apc/get_status()
 	. = ..()
-	var/obj/machinery/power/apc/A = holder
+	var/obj/machinery/apc/A = holder
 	. += "The APC is [A.locked ? "" : "un"]locked."
 	. += A.shorted ? "The APCs power has been shorted." : "The APC is working properly!"
 	. += "The 'AI control allowed' light is [A.aidisabled ? "off" : "on"]."
 
 /datum/wires/apc/interactable(mob/user)
-	var/obj/machinery/power/apc/A = holder
+	var/obj/machinery/apc/A = holder
 	if(A.wiresexposed)
 		return TRUE
 	return FALSE
 
 /datum/wires/apc/on_pulse(wire)
-	var/obj/machinery/power/apc/A = holder
+	var/obj/machinery/apc/A = holder
 
 	switch(wire)
 		if(WIRE_IDSCAN)
@@ -48,7 +48,7 @@
 						A.aidisabled = FALSE
 
 /datum/wires/apc/on_cut(wire, mend)
-	var/obj/machinery/power/apc/A = holder
+	var/obj/machinery/apc/A = holder
 
 	switch(wire)
 		if(WIRE_MAIN_POWER1, WIRE_MAIN_POWER2)

@@ -248,8 +248,8 @@
 // Description: Damages output powernet by power surge. Destroys few APCs and lights, depending on parameters.
 /obj/machinery/power/smes/buildable/proc/apcs_overload(var/failure_chance, var/overload_chance)
 	for(var/obj/machinery/power/terminal/T in directly_connected_hosts())
-		if(istype(T.master, /obj/machinery/power/apc))
-			var/obj/machinery/power/apc/A = T.master
+		if(istype(T.master, /obj/machinery/apc))
+			var/obj/machinery/apc/A = T.master
 			if (prob(overload_chance))
 				A.overload_lighting()
 			if (prob(failure_chance))

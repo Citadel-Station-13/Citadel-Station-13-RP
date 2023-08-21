@@ -363,7 +363,7 @@
 		if(!(A.type in areas_all))
 			areas_all.Add(A.type)
 
-	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
+	for(var/obj/machinery/apc/apc in GLOB.apcs)
 		var/area/A = get_area(apc)
 		if(A && !(A.type in areas_with_APC))
 			areas_with_APC.Add(A.type)

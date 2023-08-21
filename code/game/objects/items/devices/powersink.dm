@@ -113,8 +113,8 @@
 			// Enough power drained this tick, no need to torture more APCs
 			if(drained >= drain_rate)
 				break
-			if(istype(T.master, /obj/machinery/power/apc))
-				var/obj/machinery/power/apc/A = T.master
+			if(istype(T.master, /obj/machinery/apc))
+				var/obj/machinery/apc/A = T.master
 				if(A.operating && A.cell)
 					var/cur_charge = DYNAMIC_CELL_UNITS_TO_KW(A.cell.charge, 1)
 					var/drain_val = min(apc_drain_rate, cur_charge)

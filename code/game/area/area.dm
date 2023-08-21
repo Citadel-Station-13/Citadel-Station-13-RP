@@ -85,7 +85,7 @@
 	var/music = null
 
 	var/has_gravity = TRUE
-	var/obj/machinery/power/apc/apc = null
+	var/obj/machinery/apc/apc = null
 //	var/list/lights				// list of all lights on this area
 	var/list/all_doors = null		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/list/all_arfgs = null		//Similar, but a list of all arfgs adjacent to this area
@@ -514,9 +514,9 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 		playsound(get_turf(src), "bodyfall", 50, 1)
 
 /area/proc/prison_break()
-	var/obj/machinery/power/apc/theAPC = get_apc()
+	var/obj/machinery/apc/theAPC = get_apc()
 	if(theAPC.operating)
-		for(var/obj/machinery/power/apc/temp_apc in src)
+		for(var/obj/machinery/apc/temp_apc in src)
 			temp_apc.overload_lighting(70)
 		for(var/obj/machinery/door/airlock/temp_airlock in src)
 			temp_airlock.prison_open()
@@ -524,7 +524,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 			temp_windoor.open()
 
 /area/proc/shuttle_arrived()
-	for(var/obj/machinery/power/apc/A in contents)
+	for(var/obj/machinery/apc/A in contents)
 		A.update_area()
 	return TRUE
 

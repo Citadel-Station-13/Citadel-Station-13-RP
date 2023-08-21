@@ -28,7 +28,7 @@
 /datum/event/electrical_storm/start()
 	..()
 	valid_apcs = list()
-	for(var/obj/machinery/power/apc/A in GLOB.machines)
+	for(var/obj/machinery/apc/A in GLOB.machines)
 		if(A.z in affecting_z)
 			valid_apcs.Add(A)
 	endWhen = (severity * 60) + startWhen
@@ -51,10 +51,10 @@
 	var/list/picked_apcs = list()
 	for(var/i=0, i< severity * 2, i++)	// Up to 2/4/6 APCs per tick depending on severity
 		picked_apcs |= pick(valid_apcs)
-	for(var/obj/machinery/power/apc/T in picked_apcs)
+	for(var/obj/machinery/apc/T in picked_apcs)
 		affect_apc(T)
 
-/datum/event/electrical_storm/proc/affect_apc(var/obj/machinery/power/apc/T)
+/datum/event/electrical_storm/proc/affect_apc(var/obj/machinery/apc/T)
 	// Main breaker is turned off.  Consider this APC protected.
 	if(!T.operating)
 		return

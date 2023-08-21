@@ -1,11 +1,10 @@
-#define MAXCOIL 30
 
 /obj/item/stack/cable_coil
 	name = "cable coil"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "coil"
-	amount = MAXCOIL
-	max_amount = MAXCOIL
+	max_amount = 30
+	amount = 30
 	color = COLOR_RED
 	desc = "A coil of power cable."
 	throw_force = 10
@@ -20,14 +19,6 @@
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
-/obj/item/stack/cable_coil/cyborg
-	name = "cable coil synthesizer"
-	desc = "A device that makes cable."
-	gender = NEUTER
-	materials = null
-	uses_charge = 1
-	charge_costs = list(1)
-
 /obj/item/stack/cable_coil/suicide_act(mob/user)
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if(locate(/obj/item/stool) in user.loc)
@@ -36,7 +27,7 @@
 		user.visible_message("<span class='suicide'>[user] is strangling [TU.himself] with the [src.name]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return(OXYLOSS)
 
-/obj/item/stack/cable_coil/Initialize(mapload, new_amount = MAXCOIL, merge, param_color)
+/obj/item/stack/cable_coil/Initialize(mapload, new_amount, merge, param_color)
 	. = ..()
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
 		add_atom_colour(param_color, FIXED_COLOUR_PRIORITY)
@@ -44,10 +35,6 @@
 	pixel_y = rand(-2,2)
 	update_icon()
 	update_wclass()
-
-///////////////////////////////////
-// General procedures
-///////////////////////////////////
 
 //you can use wires to heal robotics
 /obj/item/stack/cable_coil/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -68,16 +55,17 @@
 
 /obj/item/stack/cable_coil/update_icon()
 	if (!color)
-		color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_ORANGE, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
-	if(amount == 1)
-		icon_state = "coil1"
-		name = "cable piece"
-	else if(amount == 2)
-		icon_state = "coil2"
-		name = "cable piece"
-	else
-		icon_state = "coil"
-		name = "cable coil"
+		color = random_cable_coil_color()
+	switch(amount)
+		if(1)
+			icon_state = "coil1"
+			name = "cable piece"
+		if(2)
+			icon_state = "coil2"
+			name = "cable piece"
+		else
+			icon_state = "coil"
+			name = "cable coil"
 
 /obj/item/stack/cable_coil/proc/set_cable_color(var/selected_color, var/user)
 	if(!selected_color)
@@ -96,15 +84,15 @@
 	else
 		w_class = ITEMSIZE_SMALL
 
-/obj/item/stack/cable_coil/examine(mob/user)
-	. = ..()
-
-	if(get_amount() == 1)
-		. += "A short piece of power cable."
-	else if(get_amount() == 2)
-		. += "A piece of power cable."
-	else
-		. += "A coil of power cable. There are [get_amount()] lengths of cable in the coil."
+/obj/item/stack/cable_coil/examine_stack(mob/user, dist)
+	. = list()
+	switch(get_amount())
+		if(1)
+			. += "A short piece of power cable."
+		if(2)
+			. += "A piece of power cable."
+		else
+			. += "A coil of power cable. There are [get_amount()] lengths of cable in the coil."
 
 /obj/item/stack/cable_coil/verb/make_restraint()
 	set name = "Make Cable Restraints"
@@ -183,50 +171,33 @@
 			return
 		end_dir = DOWN
 
-	for(var/obj/structure/cable/LC in F)
-		if((LC.d1 == dirn && LC.d2 == end_dir ) || ( LC.d2 == dirn && LC.d1 == end_dir))
-			to_chat(user, "<span class='warning'>There's already a cable at that position.</span>")
-			return
+	for(var/obj/structure/wire/cable/other in F)
+		// todo: cables can only have a particular dir-dir pair be one dir, e.g. 4-8 instead of 8-4, so this can be optimized
+		if((other.d1 == dirn && other.d2 == end_dir) || (other.d2 == dirn && other.d1 == end_dir))
+			user.action_feedback(SPAN_WARNING("There's already a cable at that position."), src)
+			return FALSE
 
 	put_cable(F, user, end_dir, dirn)
 	if(end_dir == DOWN)
-		put_cable(GetBelow(F), user, UP, 0)
+		put_cable(GetBelow(F), user, 0, UP)
 		to_chat(user, "You slide some cable downward.")
+
+	return TRUE
 
 /obj/item/stack/cable_coil/proc/put_cable(turf/simulated/F, mob/user, d1, d2)
 	if(!istype(F))
 		return
-
-	var/obj/structure/cable/C = new(F)
-	C.cableColor(color)
-	C.d1 = d1
-	C.d2 = d2
-	C.add_fingerprint(user)
-	C.update_icon()
-
-	//create a new powernet with the cable, if needed it will be merged later
-	var/datum/powernet/PN = new()
-	PN.add_cable(C)
-
-	C.mergeConnectedNetworks(C.d1) //merge the powernets...
-	C.mergeConnectedNetworks(C.d2) //...in the two new cable directions
-	C.mergeConnectedNetworksOnTurf()
-
-	if(C.d1 & (C.d1 - 1))// if the cable is layed diagonally, check the others 2 possible directions
-		C.mergeDiagonalsNetworks(C.d1)
-
-	if(C.d2 & (C.d2 - 1))// if the cable is layed diagonally, check the others 2 possible directions
-		C.mergeDiagonalsNetworks(C.d2)
-
+	var/obj/structure/wire/cable/segment = new(F, color, d1, d2)
+	//! todo: legacy below
+	segment.add_fingerprint(user)
 	use(1)
-	if (C.shock(user, 50))
-		if (prob(50)) //fail
-			new/obj/item/stack/cable_coil(C.loc, 1, C.color)
-			qdel(C)
+	if(prob(50) && segment.shock(user))
+		if(prob(50)) // fail
+			segment.deconstruct()
 
 // called when cable_coil is click on an installed obj/cable
 // or click on a turf that already contains a "node" cable
-/obj/item/stack/cable_coil/proc/cable_join(obj/structure/cable/C, mob/user)
+/obj/item/stack/cable_coil/proc/cable_join(obj/structure/wire/cable/C, mob/user)
 	var/turf/U = user.loc
 	if(!isturf(U))
 		return
@@ -257,7 +228,7 @@
 
 			var/fdirn = turn(dirn, 180)		// the opposite direction
 
-			for(var/obj/structure/cable/LC in U)		// check to make sure there's not a cable there already
+			for(var/obj/structure/wire/cable/LC in U)		// check to make sure there's not a cable there already
 				if(LC.d1 == fdirn || LC.d2 == fdirn)
 					to_chat(user, "There's already a cable at that position.")
 					return
@@ -276,68 +247,31 @@
 			nd2 = C.d2
 
 
-		for(var/obj/structure/cable/LC in T)		// check to make sure there's no matching cable
+		for(var/obj/structure/wire/cable/LC in T)		// check to make sure there's no matching cable
 			if(LC == C)			// skip the cable we're interacting with
 				continue
 			if((LC.d1 == nd1 && LC.d2 == nd2) || (LC.d1 == nd2 && LC.d2 == nd1) )	// make sure no cable matches either direction
 				to_chat(user, "There's already a cable at that position.")
 				return
 
-
-		C.cableColor(color)
-
-		C.d1 = nd1
-		C.d2 = nd2
-
-		C.add_fingerprint()
-		C.update_icon()
-
-
-		C.mergeConnectedNetworks(C.d1) //merge the powernets...
-		C.mergeConnectedNetworks(C.d2) //...in the two new cable directions
-		C.mergeConnectedNetworksOnTurf()
-
-		if(C.d1 & (C.d1 - 1))// if the cable is layed diagonally, check the others 2 possible directions
-			C.mergeDiagonalsNetworks(C.d1)
-
-		if(C.d2 & (C.d2 - 1))// if the cable is layed diagonally, check the others 2 possible directions
-			C.mergeDiagonalsNetworks(C.d2)
+		C.color = color
+		C.reset_dirs(nd1, nd2)
+		C.add_fingerprint(user)
 
 		use(1)
 
-		if (C.shock(user, 50))
+		if(prob(50) && C.shock(user))
 			if (prob(50)) //fail
-				new/obj/item/stack/cable_coil(C.loc, 2, C.color)
-				qdel(C)
+				C.deconstruct()
 				return
 
-		C.denode()// this call may have disconnected some cables that terminated on the centre of the turf, if so split the powernets.
-		return
-
-/obj/structure/cable/yellow
-	color = COLOR_YELLOW
-
-/obj/structure/cable/green
-	color = COLOR_LIME
-
-/obj/structure/cable/blue
-	color = COLOR_BLUE
-
-/obj/structure/cable/pink
-	color = COLOR_PINK
-
-/obj/structure/cable/orange
-	color = COLOR_ORANGE
-
-/obj/structure/cable/cyan
-	color = COLOR_CYAN
-
-/obj/structure/cable/white
-	color = COLOR_WHITE
-
-//////////////////////////////
-// Misc.
-/////////////////////////////
+/obj/item/stack/cable_coil/cyborg
+	name = "cable coil synthesizer"
+	desc = "A device that makes cable."
+	gender = NEUTER
+	materials = null
+	uses_charge = 1
+	charge_costs = list(1)
 
 /obj/item/stack/cable_coil/cut
 	item_state = "coil2"
@@ -457,14 +391,12 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_wire)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "coil"
-	amount = MAXCOIL
-	max_amount = MAXCOIL
 	color = COLOR_SILVER
 	throw_force = 10
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stacktype = null

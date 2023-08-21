@@ -69,10 +69,12 @@
 
 /obj/item/stack/examine(mob/user, dist)
 	. = ..()
-	if(!uses_charge)
-		. += "There are [amount] [singular_name]\s in the stack."
-	else
-		. += "There is enough charge for [get_amount()]."
+	. += examine_stack(user, dist)
+
+/obj/item/stack/proc/examine_stack(mob/user, dist)
+	return list(
+		uses_charge? "There is enough charge for [get_amount()]." : "There are [amount] [singular_name]\s in the stack."
+	)
 
 /obj/item/stack/attack_self(mob/user)
 	. = ..()

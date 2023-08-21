@@ -6,7 +6,7 @@
  * @params
  * - actor - thing draining, can be null
  * - amount - amount to drain in kilojoules
- * - flags
+ * - flags - ENERGY_DRAIN_X defines to determine behavior
  *
  * @return Amount drained
  */
@@ -18,7 +18,7 @@
  *
  * @params
  * - actor - thing draining, can be null
- * - flags
+ * - flags - ENERGY_DRAIN_X defines to determine behavior
  *
  * @return TRUE/FALSE
  */

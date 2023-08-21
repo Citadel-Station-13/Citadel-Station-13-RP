@@ -105,11 +105,11 @@
 							return
 						to_chat(src, "Connection verified. Searching for APC in power network.")
 						sleep(50)
-						var/obj/machinery/power/apc/theAPC = null
+						var/obj/machinery/apc/theAPC = null
 
 						var/PRP
 						for (PRP=1, PRP<=4, PRP++)
-							for (var/obj/machinery/power/apc/APC in current_area)
+							for (var/obj/machinery/apc/APC in current_area)
 								if (!(APC.machine_stat & BROKEN))
 									theAPC = APC
 									break

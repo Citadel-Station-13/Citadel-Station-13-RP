@@ -40,5 +40,5 @@
 			C.amount = 10
 			to_chat(user, "You cut the cables and disassemble the unused power terminal.")
 			qdel(T)
-	new /obj/machinery/power/apc(loc, ndir, 1)
+	new /obj/machinery/apc(loc, ndir, 1)
 	qdel(src)

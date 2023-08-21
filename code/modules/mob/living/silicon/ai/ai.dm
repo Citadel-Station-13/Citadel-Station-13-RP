@@ -93,7 +93,7 @@ var/list/ai_verbs_default = list(
 	/// Malfunction research datum.
 	var/datum/malf_research/research = null
 	/// APC that is currently being hacked.
-	var/obj/machinery/power/apc/hack = null
+	var/obj/machinery/apc/hack = null
 	/// List of all hacked APCs
 	var/list/hacked_apcs = null
 	/// If set, the AI runs on APU power

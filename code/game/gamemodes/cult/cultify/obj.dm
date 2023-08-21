@@ -79,7 +79,7 @@
 /obj/machinery/mech_sensor/cultify()
 	qdel(src)
 
-/obj/machinery/power/apc/cultify()
+/obj/machinery/apc/cultify()
 	if(src.invisibility != INVISIBILITY_MAXIMUM)
 		src.invisibility = INVISIBILITY_MAXIMUM
 

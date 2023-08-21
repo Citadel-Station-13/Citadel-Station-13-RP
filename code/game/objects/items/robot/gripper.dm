@@ -135,8 +135,8 @@
 		else
 			to_chat(user, "<span class='danger'>Your gripper cannot hold \the [target].</span>")
 
-	else if(istype(target,/obj/machinery/power/apc))
-		var/obj/machinery/power/apc/A = target
+	else if(istype(target,/obj/machinery/apc))
+		var/obj/machinery/apc/A = target
 		if(A.opened)
 			if(A.cell)
 

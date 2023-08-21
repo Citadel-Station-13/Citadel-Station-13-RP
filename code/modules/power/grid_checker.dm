@@ -77,8 +77,8 @@
 	var/list/datum/hosts = connection?.network?.get_hosts()
 
 	for(var/obj/machinery/power/terminal/T in hosts) // APCs that are "downstream" of the powernet.
-		if(istype(T.master, /obj/machinery/power/apc))
-			var/obj/machinery/power/apc/A = T.master
+		if(istype(T.master, /obj/machinery/apc))
+			var/obj/machinery/apc/A = T.master
 			if(A.is_critical)
 				continue
 			A.do_grid_check()
@@ -103,8 +103,8 @@
 	var/list/datum/hosts = connection?.network?.get_hosts()
 
 	for(var/obj/machinery/power/terminal/T in hosts)
-		if(istype(T.master, /obj/machinery/power/apc))
-			var/obj/machinery/power/apc/A = T.master
+		if(istype(T.master, /obj/machinery/apc))
+			var/obj/machinery/apc/A = T.master
 			if(A.is_critical)
 				continue
 			A.grid_check = FALSE

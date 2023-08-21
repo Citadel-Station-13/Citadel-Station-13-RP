@@ -104,8 +104,8 @@
 	data["areas"] = list()
 	if(powernet)
 		for(var/obj/machinery/power/terminal/term in powernet.nodes)
-			if(istype(term.master, /obj/machinery/power/apc))
-				var/obj/machinery/power/apc/A = term.master
+			if(istype(term.master, /obj/machinery/apc))
+				var/obj/machinery/apc/A = term.master
 				if(istype(A))
 					var/cell_charge
 					if(!A.cell)
@@ -134,8 +134,8 @@
 
 	var/list/L = list()
 	for(var/obj/machinery/power/terminal/term in powernet.nodes)
-		if(istype(term.master, /obj/machinery/power/apc))
-			var/obj/machinery/power/apc/A = term.master
+		if(istype(term.master, /obj/machinery/apc))
+			var/obj/machinery/apc/A = term.master
 			L += A
 
 	return L
@@ -167,7 +167,7 @@
 		var/list/chg = list("N","C","F")
 
 		// Split to multiple lines to make it more readable
-		for(var/obj/machinery/power/apc/A in L)
+		for(var/obj/machinery/apc/A in L)
 			out += "<tr><td>\The [A.area]" 															// Add area name
 			out += "<td>[S[A.equipment+1]]<td>[S[A.lighting+1]]<td>[S[A.environ+1]]" 				// Show status of channels
 			if(A.cell)
@@ -211,7 +211,7 @@
 		var/list/S = list("M-OFF","A-OFF","M-ON", "A-ON")
 		var/list/chg = list("N","C","F")
 
-		for(var/obj/machinery/power/apc/A in L)
+		for(var/obj/machinery/apc/A in L)
 			var/list/APC_entry = list()
 			// Channel Statuses
 			APC_entry["s_equipment"] = S[A.equipment+1]

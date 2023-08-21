@@ -81,7 +81,7 @@ var/hadevent    = 0
 		sleep(100)
 
 		for(var/area/A in areas)
-			for (var/obj/machinery/power/apc/temp_apc in A)
+			for (var/obj/machinery/apc/temp_apc in A)
 				temp_apc.overload_lighting()
 
 			for (var/obj/structure/closet/secure_closet/brig/temp_closet in A)
@@ -131,11 +131,11 @@ var/hadevent    = 0
 			return
 
 		for(var/obj/landmark/epicentre in epicentreList)
-			for(var/obj/machinery/power/apc/apc in range(epicentre,lightsoutRange))
+			for(var/obj/machinery/apc/apc in range(epicentre,lightsoutRange))
 				apc.overload_lighting()
 
 	else
-		for(var/obj/machinery/power/apc/apc in GLOB.apcs)
+		for(var/obj/machinery/apc/apc in GLOB.apcs)
 			apc.overload_lighting()
 
 	return

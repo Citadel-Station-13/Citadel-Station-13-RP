@@ -80,7 +80,7 @@
 			while(active)
 				sleep(1)
 				if(world.time >= releaseWhen + start_time)
-					var/obj/machinery/power/apc/theAPC = null
+					var/obj/machinery/apc/theAPC = null
 					for(var/area/A in areas)
 						theAPC = A.get_apc()
 						if(theAPC.operating)	//If the apc's off, it's a little hard to overload the lights.

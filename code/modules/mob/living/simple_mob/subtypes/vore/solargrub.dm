@@ -104,8 +104,8 @@ GLOBAL_LIST_EMPTY(solargrubs)
 			network.flat_draw(power_drain)
 			charge += power_drain
 			for(var/obj/machinery/power/terminal/T in network.get_hosts())
-				if(istype(T.master, /obj/machinery/power/apc))
-					var/obj/machinery/power/apc/A = T.master
+				if(istype(T.master, /obj/machinery/apc))
+					var/obj/machinery/apc/A = T.master
 					if(A.operating && A.cell)
 						// they're now a threat
 						// but also fuck off with your *pawstamp* comments ~silicons

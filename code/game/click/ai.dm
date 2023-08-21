@@ -132,7 +132,7 @@
 	toggle_bolt(user)//apparently this is better than the topic function
 	return TRUE
 
-/obj/machinery/power/apc/AICtrlClick(mob/user) // turns off/on APCs.
+/obj/machinery/apc/AICtrlClick(mob/user) // turns off/on APCs.
 	add_hiddenprint(user)
 	toggle_breaker(user)
 	return TRUE

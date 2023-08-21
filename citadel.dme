@@ -233,6 +233,7 @@
 #include "code\__DEFINES\overmaps\misc.dm"
 #include "code\__DEFINES\overmaps\overmap.dm"
 #include "code\__DEFINES\power\balancing.dm"
+#include "code\__DEFINES\power\network.dm"
 #include "code\__DEFINES\power\power.dm"
 #include "code\__DEFINES\power\units.dm"
 #include "code\__DEFINES\preferences\data_keys_character.dm"
