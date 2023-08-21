@@ -190,11 +190,7 @@
 		A.name = "[newname] [initial(A.name)]"
 		if(A.apc)
 			A.apc.name = "[A.name] APC"
-		A.air_vent_names = list()
-		A.air_scrub_names = list()
-		A.air_vent_info = list()
-		A.air_scrub_info = list()
-		for(var/obj/machinery/alarm/AA in A)
+		for(var/obj/machinery/air_alarm/AA in A)
 			AA.name = "[A.name] Air Alarm"
 
 /obj/machinery/computer/shuttle_control/explore/tinycarrier

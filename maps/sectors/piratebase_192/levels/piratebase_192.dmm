@@ -258,7 +258,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/piratebase/bunks)
 "cs" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -27;
 	req_one_access = list(168)
@@ -612,7 +612,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 28;
 	req_one_access = list(168)
@@ -759,7 +759,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -30;
 	req_one_access = list(168)
@@ -864,7 +864,7 @@
 /area/piratebase/mining)
 "ii" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(168)
 	},
@@ -1096,7 +1096,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -30;
 	req_one_access = list(168)
@@ -1121,7 +1121,7 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/bunks)
 "kq" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(168)
 	},
@@ -1239,7 +1239,7 @@
 /area/space)
 "ly" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(168)
 	},
@@ -1387,7 +1387,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/rust,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(168)
 	},
@@ -1744,7 +1744,7 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/atmospherics)
 "pG" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -30;
 	req_one_access = list(168)
@@ -2199,7 +2199,7 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/halls)
 "tS" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -30;
 	req_one_access = list(168)
@@ -2228,7 +2228,7 @@
 /turf/simulated/floor/wood,
 /area/piratebase/captain)
 "uC" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(168)
 	},
@@ -2339,7 +2339,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(168)
 	},
@@ -2580,7 +2580,7 @@
 /area/piratebase/power)
 "yh" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -27;
 	req_one_access = list(168)
@@ -3038,7 +3038,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(168)
 	},
@@ -3581,7 +3581,7 @@
 /turf/simulated/floor,
 /area/shuttle/pirate/deck)
 "GF" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -30;
 	req_one_access = list(168)
@@ -3727,7 +3727,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 28;
 	req_one_access = list(168)
@@ -3893,7 +3893,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/piratebase/bunks)
 "Ix" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(168)
 	},
@@ -4109,7 +4109,7 @@
 /turf/simulated/floor/plating,
 /area/piratebase/halls)
 "Lo" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(168)
 	},
@@ -4410,7 +4410,7 @@
 /area/piratebase/bunks)
 "NX" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(168)
 	},
@@ -4816,7 +4816,7 @@
 /area/piratebase/mining)
 "Rg" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -30;
 	req_one_access = list(168)
@@ -5134,7 +5134,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -30;
 	req_one_access = list(168)
@@ -5214,7 +5214,7 @@
 /area/piratebase/bunks)
 "Vn" = (
 /obj/structure/bed/roller,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(168)
 	},
@@ -5538,7 +5538,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/piratebase/atmospherics)
@@ -5623,7 +5623,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -30;
 	req_one_access = list(168)

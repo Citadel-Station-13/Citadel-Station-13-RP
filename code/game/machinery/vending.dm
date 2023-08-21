@@ -1287,7 +1287,7 @@
 		/obj/item/weldingtool = 3,
 		/obj/item/tool/wirecutters = 5,
 		/obj/item/tool/wrench = 5,
-		/obj/item/analyzer = 5,
+		/obj/item/atmos_analyzer = 5,
 		/obj/item/t_scanner = 5,
 		/obj/item/tool/screwdriver = 5,
 		/obj/item/flashlight/glowstick = 3,

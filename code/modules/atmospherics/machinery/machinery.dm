@@ -25,8 +25,6 @@ Pipelines + Other Objects -> Pipe network
 
 	///The color of the pipe
 	var/pipe_color
-	///The maximum amount of power the machine can use to do work, affects how powerful the machine is, in Watts
-	var/power_rating
 	///The flags of the pipe/component (PIPING_ALL_LAYER | PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY | PIPING_CARDINAL_AUTONORMALIZE)
 	var/pipe_flags = PIPING_DEFAULT_LAYER_ONLY
 	///What pipe layer can this connect to.
@@ -47,6 +45,9 @@ Pipelines + Other Objects -> Pipe network
 	var/global/datum/pipe_icon_manager/icon_manager
 	var/obj/machinery/atmospherics/node1
 	var/obj/machinery/atmospherics/node2
+
+	var/last_flow_rate_legacy = 0
+	var/last_power_draw_legacy = 0
 
 /obj/machinery/atmospherics/Initialize(mapload, newdir)
 	. = ..()
@@ -91,8 +92,8 @@ Pipelines + Other Objects -> Pipe network
 /obj/machinery/atmospherics/proc/check_connectable(obj/machinery/atmospherics/target)
 	return (src.connect_types & target.connect_types)
 
-/obj/machinery/atmospherics/attackby(atom/A, mob/user as mob)
-	if(istype(A, /obj/item/pipe_painter))
+/obj/machinery/atmospherics/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/pipe_painter))
 		return
 	..()
 
@@ -131,8 +132,8 @@ Pipelines + Other Objects -> Pipe network
 	return node.pipe_color
 
 /obj/machinery/atmospherics/process(delta_time)
-	last_flow_rate = 0
-	last_power_draw = 0
+	last_flow_rate_legacy = 0
+	last_power_draw_legacy = 0
 
 	build_network()
 
@@ -163,9 +164,6 @@ Pipelines + Other Objects -> Pipe network
 	// Is permitted to return null
 
 /obj/machinery/atmospherics/proc/disconnect(obj/machinery/atmospherics/reference)
-
-/obj/machinery/atmospherics/update_icon()
-	return null
 
 /obj/machinery/atmospherics/proc/unsafe_pressure()
 	var/datum/gas_mixture/int_air = return_air()
@@ -241,3 +239,19 @@ Pipelines + Other Objects -> Pipe network
 		layer = PIPE_LAYER
 	else
 		reset_plane_and_layer()
+
+// todo: refactor
+
+/obj/machinery/atmospherics/is_hidden_underfloor()
+	var/turf/T = loc
+	return istype(T) && (level == 1) && !T.is_plating()
+
+/obj/machinery/atmospherics/should_hide_underfloor()
+	return level == 1
+
+/**
+ * currently unimplemented
+ * call when our internal settings change to push changes to relevant uis.
+ */
+/obj/machinery/atmospherics/proc/ui_settings_updated()
+	// todo: implement

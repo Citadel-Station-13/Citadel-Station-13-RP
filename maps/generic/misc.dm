@@ -147,7 +147,7 @@
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/airlock_sensor
 	layer = ABOVE_WINDOW_LAYER
-/obj/machinery/alarm
+/obj/machinery/air_alarm
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/button
 	layer = ABOVE_WINDOW_LAYER
@@ -202,7 +202,7 @@
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/airlock_sensor
 	layer = ABOVE_WINDOW_LAYER
-/obj/machinery/alarm
+/obj/machinery/air_alarm
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/button
 	layer = ABOVE_WINDOW_LAYER

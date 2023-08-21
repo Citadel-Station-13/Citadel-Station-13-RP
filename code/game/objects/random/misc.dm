@@ -66,7 +66,7 @@
 /obj/random/technology_scanner/item_to_spawn()
 	return pick(prob(5);/obj/item/t_scanner,
 				prob(2);/obj/item/radio,
-				prob(5);/obj/item/analyzer)
+				prob(5);/obj/item/atmos_analyzer)
 
 /obj/random/powercell
 	name = "random powercell"

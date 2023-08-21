@@ -185,6 +185,8 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		retval += named_args
 	return retval
 
+// todo: rework all of vv and proccall yet again because this is shit formatting
+
 /client/proc/get_callproc_returnval(returnval,procname)
 	. = ""
 	if(islist(returnval))
@@ -195,7 +197,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 			if(istext(assoc_check) && (returnedlist[assoc_check] != null))
 				. += "[procname] returned an associative list:"
 				for(var/key in returnedlist)
-					. += "\n[key] = [returnedlist[key]]"
+					. += "\n[key] = [islist(returnedlist[key])? json_encode(returnedlist[key]) : returnedlist[key]]"
 
 			else
 				. += "[procname] returned a list:"

@@ -49,8 +49,8 @@
 /obj/machinery/atmospherics/component/trinary/mixer/process(delta_time)
 	..()
 
-	last_power_draw = 0
-	last_flow_rate = 0
+	last_power_draw_legacy = 0
+	last_flow_rate_legacy = 0
 
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
@@ -72,8 +72,8 @@
 			network3.update = 1
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
 		use_burst_power(power_draw)
+		last_power_draw_legacy = power_draw
 
 	return 1
 

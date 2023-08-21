@@ -52,21 +52,21 @@
 		build_network()//built networks if we are missing them
 		network1?.update = 1
 		network2?.update = 1
-		last_flow_rate = last_power_draw = 0
+		last_flow_rate_legacy = last_power_draw_legacy = 0
 		return
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
-		last_flow_rate = last_power_draw = 0
+		last_flow_rate_legacy = last_power_draw_legacy = 0
 		return
 
 	if(!powernet_connection?.network)
-		last_flow_rate = last_power_draw = 0
+		last_flow_rate_legacy = last_power_draw_legacy = 0
 		return//make sure we are connected to a powernet
 
 	power_rating = power_machine.surplus() * 1000 //update power rateing to what ever is avaiable
 	power_rating = clamp(power_rating, 0, power_level)
 
 	if(power_rating <= 0)
-		last_flow_rate = last_power_draw = 0
+		last_flow_rate_legacy = last_power_draw_legacy = 0
 		return//no point in continuing if we dont have any power
 
 	var/power_draw = -1
@@ -78,7 +78,7 @@
 		power_draw = pump_gas(src, air1, air2, transfer_moles, power_rating)
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 
 		powernet_connection.flat_draw(power_draw * 0.001)
 		if(network1)
@@ -105,7 +105,7 @@
 	if(inoperable() || !anchored || !powernet_connection.network)
 		icon_state = "pump"
 	else if(use_power)
-		switch(last_power_draw)
+		switch(last_power_draw_legacy)
 			if(1 to (1 MEGAWATTS))
 				icon_state = "pump_1"
 			if((1 MEGAWATTS) to (10 MEGAWATTS))
@@ -133,8 +133,8 @@
 		"pressure_set" = round(target_pressure*100),
 		"max_pressure" = max_pressure_setting,
 		"power_level" = power_level,
-		"last_flow_rate" = round(last_flow_rate*10),
-		"last_power_draw" = round(last_power_draw),
+		"last_flow_rate" = round(last_flow_rate_legacy*10),
+		"last_power_draw" = round(last_power_draw_legacy),
 		"max_power_draw" = MAX_POWER_FOR_MASSIVE,
 	)
 

@@ -511,7 +511,7 @@
 	icon_state = "map_vent_out";
 	pressure_checks = 1;
 	pressure_checks_default = 1;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
@@ -553,7 +553,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
@@ -2596,7 +2596,7 @@
 	icon_state = "map_vent_out";
 	pressure_checks = 1;
 	pressure_checks_default = 1;
-	use_power = 1
+	on = 1
 	},
 /obj/item/stack/material/phoron,
 /obj/machinery/light/flicker{

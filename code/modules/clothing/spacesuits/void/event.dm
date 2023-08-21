@@ -248,7 +248,7 @@
 			/obj/item/measuring_tape,
 			/obj/item/reagent_scanner,
 			/obj/item/robotanalyzer,
-			/obj/item/analyzer,
+			/obj/item/atmos_analyzer,
 			/obj/item/cataloguer,
 			/obj/item/universal_translator,
 			/obj/item/tool/crowbar,
