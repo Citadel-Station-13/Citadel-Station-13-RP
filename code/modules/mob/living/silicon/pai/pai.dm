@@ -189,8 +189,10 @@
 	if(!chassis)
 		var/icon_width = last_rendered_hologram_icon.Width()
 		icon_x_dimension = icon_width
+		buckle_pixel_x = (icon_x_dimension - WORLD_ICON_SIZE) / 2
 	else
 		icon_x_dimension = 32
+		buckle_pixel_x = 0
 	reset_pixel_offsets()
 
 
