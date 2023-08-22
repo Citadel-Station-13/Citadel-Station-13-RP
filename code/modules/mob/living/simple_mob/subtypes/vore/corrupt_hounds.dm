@@ -110,9 +110,9 @@
 	icon_rest = "gunnerboi_rest"
 
 	needs_reload = TRUE
-	base_attack_cooldown = 1.5 //Stay out the way
+	base_attack_cooldown = 2.5
 	reload_max = 6
-	reload_time = 6
+	reload_time = 15
 
 	projectiletype = /obj/projectile/bullet/rifle/a545
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
