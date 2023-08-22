@@ -4405,7 +4405,7 @@
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(150)
 	},
 /obj/structure/cable/orange{
@@ -4595,7 +4595,7 @@
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(150)
 	},
 /obj/structure/cable/orange{
@@ -4781,7 +4781,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(150)
 	},
 /obj/effect/floor_decal/techfloor,
@@ -5793,7 +5793,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	name = "Mech Bay";
 	req_one_access = list(999)
 	},
@@ -9803,7 +9803,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	name = "Brig";
 	req_one_access = list(150)
 	},
@@ -9850,7 +9850,7 @@
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(150)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9889,7 +9889,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(150)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{

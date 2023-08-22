@@ -152,7 +152,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Bunks";
 	req_access = list(168)
 	},
@@ -974,7 +974,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(168)
 	},
-/obj/machinery/door/airlock/multi_tile{
+/obj/machinery/door/airlock{
 	name = "Stall"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -1216,7 +1216,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
@@ -1825,7 +1824,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Sickbay";
 	req_access = list(168)
 	},
@@ -3886,7 +3885,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Head";
 	req_access = list(168)
 	},
@@ -3999,7 +3998,7 @@
 	req_one_access = list(168)
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Mining Operations";
 	req_access = list(168)
 	},
@@ -4675,7 +4674,7 @@
 	req_one_access = list(168)
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
@@ -4794,7 +4793,6 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
 	req_access = list(168)
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
@@ -5312,7 +5310,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Mess Hall";
 	req_access = list(168)
 	},
@@ -5484,7 +5482,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	name = "DECOMMISSIONED"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,

@@ -42,7 +42,7 @@
 			return
 
 		if(choice == "-- LOAD CHARACTER SLOT --")
-			last_rendered_hologram_icon = render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+			last_rendered_hologram_icon = get_holo_image()
 			card.cached_holo_image = null
 			card.get_holo_image()
 			icon = last_rendered_hologram_icon
@@ -138,7 +138,7 @@
 	var/clothing_entry = tgui_input_list(usr, "What clothing would you like to change your shell to?", "Options", list("Chameleon Clothing List","Last Uploaded Clothing"))
 	if(clothing_entry)
 		if(clothing_entry == "Chameleon Clothing List")
-			var/clothing_type_entry = tgui_input_list(usr, "What type of clothing would you like to change your shell to?", "Clothing Type", list("Undershirt", "Suit", "Hat", "Shoes", "Gloves", "Mask", "Glasses"))
+			var/clothing_type_entry = tgui_input_list(usr, "What type of clothing would you like to change your shell to?", "Clothing Type", list("Undershirt", "Suit", "Hat", "Shoes", "Gloves", "Mask", "Glasses", "Accessory"))
 			var/list/clothing_for_type
 			if(clothing_type_entry)
 				switch(clothing_type_entry)
@@ -156,6 +156,8 @@
 						clothing_for_type = GLOB.clothing_mask
 					if("Glasses")
 						clothing_for_type = GLOB.clothing_glasses
+					if("Accessory")
+						clothing_for_type = GLOB.clothing_accessory
 				var/clothing_item_entry = tgui_input_list(usr, "Choose clothing item", "Clothing", clothing_for_type)
 				if(clothing_item_entry)
 					change_shell_by_path(clothing_for_type[clothing_item_entry])
@@ -188,3 +190,19 @@
 	if(!card || card.loc != src || card == shell)
 		return
 	switch_shell(card)
+
+/mob/living/silicon/pai/verb/hologram_display()
+	set name = "Hologram Display"
+	set category = "pAI Commands"
+	set desc = "Allows you to pick a scanned object to display from your holoprojector."
+
+	if(src.loc == card)
+		var/scanned_item_to_show = tgui_input_list(usr, "Select Scanned Object", "Scanned Objects", list("Cancel") + scanned_objects)
+		if(scanned_item_to_show)
+			if(scanned_item_to_show == "Cancel")
+				card.stop_displaying_hologram()
+			else
+				var/image/I = scanned_objects[scanned_item_to_show]
+				card.display_hologram_from_image(I)
+	else
+		to_chat(src, "You must be in card form to do this!")
