@@ -34,6 +34,20 @@
 	result_type_name = "drink"
 
 /obj/machinery/recipe_lookup/drinks/display_recipe_instructions(var/result_name, var/datum/chemical_reaction/recipe)
-	return
+	var/instructions = "Reagents required:\n"
+	for(var/item in recipe.required_reagents)
+		instructions += "[recipe.required_reagents[item]] parts <b>[item]</b>\n"
+	instructions += "\n"
+	var/catalyst_count = length(recipe.catalysts)
+	if(catalyst_count == 1)
+		var/catalyst = recipe.catalysts[1]
+		instructions += "Catalyst: [recipe.catalysts[catalyst]] units of <b>[catalyst]</b>\n"
+	else
+		instructions += "Catalysts;"
+		for(var/item in recipe.catalysts)
+			instructions += "[recipe.catalysts[item]] units of <b>[item]</b>"
+	instructions += "\n"
+	instructions += "Result: [result_amount] parts <b>[result]</b>"
+	to_chat(usr, instructions)
 
 // cook version TBD due to food rework
