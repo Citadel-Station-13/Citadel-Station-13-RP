@@ -57,7 +57,7 @@
 /turf/simulated/floor/plating,
 /area/space)
 "au" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -581,7 +581,7 @@
 /obj/structure/table/steel,
 /obj/item/storage/box/lights/mixed,
 /obj/item/storage/box/lights/mixed,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -619,30 +619,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/library)
-"eA" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/air_alarm{
-	pixel_y = 24
-	},
-/turf/space/basic,
-/area/space)
 "eB" = (
 /obj/structure/table/standard,
 /obj/item/flashlight/lamp,
@@ -1915,20 +1891,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/aft/starboard)
-"mj" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/filingcabinet{
-	desc = "A large cabinet with drawers. They seem to be ominously empty.";
-	name = "Classified Science Records"
-	},
-/obj/machinery/air_alarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/turf/space/basic,
-/area/space)
 "mn" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/cable/green{
@@ -2019,16 +1981,6 @@
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/plating,
-/area/space)
-"mQ" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/air_alarm{
-	dir = 8;
-	pixel_x = 22
-	},
-/turf/space/basic,
 /area/space)
 "mR" = (
 /turf/simulated/floor/bluegrid,
@@ -2352,7 +2304,7 @@
 /turf/simulated/floor/wood,
 /area/library)
 "pe" = (
-/obj/machinery/alarm/monitor/isolation{
+/obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "isolation_two";
 	dir = 8;
 	pixel_x = 22
@@ -2896,7 +2848,7 @@
 /turf/simulated/wall,
 /area/main_map/maintenance/deck_four/starboard)
 "sy" = (
-/obj/machinery/alarm/monitor/isolation{
+/obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "isolation_one";
 	dir = 8;
 	pixel_x = 22
@@ -3459,15 +3411,6 @@
 /obj/structure/railing,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_four/port)
-"vb" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/air_alarm{
-	pixel_y = 22
-	},
-/turf/space/basic,
-/area/space)
 "vd" = (
 /obj/structure/table/reinforced,
 /obj/item/roller,
@@ -3932,16 +3875,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
-"yd" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/air_alarm{
-	dir = 1;
-	pixel_y = -22
-	},
-/turf/space/basic,
-/area/space)
 "yg" = (
 /obj/machinery/mineral/output,
 /obj/machinery/conveyor{
@@ -4852,26 +4785,6 @@
 	},
 /turf/simulated/shuttle/floor/voidcraft,
 /area/main_map/maintenance/deck_four/aft/port)
-"DE" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/air_alarm{
-	dir = 4;
-	pixel_x = -24
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/space/basic,
-/area/space)
 "DH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -5363,16 +5276,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/aft/port)
-"GK" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/filingcabinet,
-/obj/machinery/air_alarm{
-	pixel_y = 24
-	},
-/turf/space/basic,
-/area/space)
 "GL" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -6958,19 +6861,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab/containment_one)
-"QG" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/air_alarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/turf/space/basic,
-/area/space)
 "QH" = (
 /obj/machinery/libraryscanner,
 /turf/simulated/floor/wood,
@@ -7107,16 +6997,6 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/main_map/maintenance/deck_four/aft/port)
-"RE" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/table/rack/shelf,
-/obj/machinery/air_alarm{
-	pixel_y = 24
-	},
-/turf/space/basic,
-/area/space)
 "RH" = (
 /obj/item/storage/secure/safe{
 	pixel_x = 36
@@ -9103,17 +8983,17 @@ Dz
 Dz
 Dz
 Dz
-RE
 Dz
 Dz
 Dz
 Dz
-RE
 Dz
 Dz
 Dz
 Dz
-GK
+Dz
+Dz
+Dz
 Dz
 Dz
 Dz
@@ -9292,7 +9172,7 @@ Dz
 Dz
 Dz
 Dz
-eA
+Dz
 Dz
 Dz
 Dz
@@ -9905,7 +9785,7 @@ Dz
 Dz
 Dz
 Dz
-DE
+Dz
 Dz
 Dz
 Dz
@@ -10054,7 +9934,6 @@ Dz
 Dz
 Dz
 Dz
-yd
 Dz
 Dz
 Dz
@@ -10079,7 +9958,8 @@ Dz
 Dz
 Dz
 Dz
-mQ
+Dz
+Dz
 Dz
 Dz
 Dz
@@ -10254,7 +10134,7 @@ Dz
 Dz
 Dz
 Dz
-vb
+Dz
 Dz
 Dz
 Dz
@@ -11265,11 +11145,11 @@ Dz
 Dz
 Dz
 Dz
-QG
 Dz
 Dz
 Dz
-QG
+Dz
+Dz
 Dz
 Dz
 Dz
@@ -11456,7 +11336,7 @@ Dz
 Dz
 Dz
 Dz
-mj
+Dz
 Dz
 Dz
 Dz
@@ -29958,8 +29838,8 @@ Za
 Za
 Za
 Za
-Za
-Za
+Dz
+Dz
 Dz
 Dz
 Dz
@@ -30152,8 +30032,8 @@ Za
 Za
 Za
 Za
-Za
-Za
+Dz
+Dz
 Dz
 Dz
 Dz
@@ -30346,8 +30226,8 @@ Za
 Za
 Za
 Za
-Za
-Za
+Dz
+Dz
 Dz
 Dz
 Dz
@@ -30540,8 +30420,8 @@ Za
 Za
 Za
 Za
-Za
-Za
+Dz
+Dz
 Dz
 Dz
 Dz
@@ -30734,8 +30614,8 @@ Za
 Za
 Za
 Za
-Za
-Za
+Dz
+Dz
 Dz
 Dz
 Dz
@@ -30928,11 +30808,11 @@ Za
 Za
 Za
 Za
-Za
-Za
 Dz
 Dz
-vb
+Dz
+Dz
+Dz
 Dz
 Dz
 Za
@@ -31122,8 +31002,8 @@ Za
 Za
 Za
 Za
-Za
-Za
+Dz
+Dz
 Dz
 Dz
 Dz
@@ -31316,8 +31196,8 @@ Za
 Za
 Za
 Za
-Za
-Za
+Dz
+Dz
 Dz
 Dz
 Dz
@@ -31510,8 +31390,8 @@ Za
 Za
 Za
 Za
-Za
-Za
+Dz
+Dz
 Dz
 Dz
 Dz
