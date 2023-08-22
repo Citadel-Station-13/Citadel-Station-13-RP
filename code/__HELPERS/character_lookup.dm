@@ -12,12 +12,12 @@ The helper methods below will serve to make these changes to the rp_character_lo
 */
 
 /// DB Methods
-/proc/get_character_lookup(player_id, character_name)
+/proc/get_character_lookup(player_id, character_name, character_type)
 	var/formatted_player_id = ckey(player_id)
 	var/formatted_character_name = ckey(character_name)
 
 	/// In the unlikely scenario no such entry exists for the player, create one, and log that this happened
-	var/sql = "SELECT characterid FROM [format_table_name(LOOKUP_TABLE)] WHERE playerid = :playerid AND charactername = :charactername"
+	var/sql = "SELECT characterid FROM [format_table_name(LOOKUP_TABLE)] WHERE player_id = :playerid AND character_name = :charactername AND character_type = :charactertype"
 
 	if(!SSdbcore.Connect())
 		return
@@ -26,7 +26,8 @@ The helper methods below will serve to make these changes to the rp_character_lo
 		sql,
 		list(
 			"playerid" = formatted_player_id,
-			"charactername" = formatted_character_name
+			"charactername" = formatted_character_name,
+			"charactertype" = character_type
 		)
 	)
 
@@ -36,23 +37,19 @@ The helper methods below will serve to make these changes to the rp_character_lo
 		message_admins("No character lookup could be found for [formatted_player_id]")
 		return
 
-/proc/add_character_lookup(player_id, character_name)
+/proc/add_character_lookup(player_id, character_name, character_type)
 	var/formatted_player_id = ckey(player_id)
 	var/formatted_character_name = ckey(character_name)
 
 	/// If an entry already exists, log that it happened and don't try to create one
 
-/proc/update_character_lookup(player_id, old_character_name, new_character_name)
+/proc/update_character_lookup(player_id, old_character_name, new_character_name, character_type)
 	var/formatted_player_id = ckey(player_id)
 	var/formatted_old_character_name = ckey(old_character_name)
 	var/formatted_new_character_name = ckey(new_character_name)
 
 	/// Only update the character lookup table entry if no other entry exists with that player id AND new character id
 	/// If such an entry exists, delete the current one instead, because the pairing of these values is the primary key, and should be unique
-
-
-/// Misc Helpers
-/proc/generate_character_id(formatted_player_id, formatted_character_name)
 
 
 #undefine LOOKUP_TABLE
