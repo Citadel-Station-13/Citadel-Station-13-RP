@@ -35,7 +35,7 @@ The helper methods below will serve to make these changes to the rp_character_lo
 	if(query.NextRow())
 		return query.item[1]
 	else
-		message_admins("No character lookup could be found for [formatted_player_id]")
+		message_admins("No character lookup could be found for [formatted_player_id] (Character name: [character_name], Type: [character_type])")
 		return
 
 /proc/add_character_lookup(player_id, character_name, character_type)
@@ -43,6 +43,9 @@ The helper methods below will serve to make these changes to the rp_character_lo
 	var/formatted_character_name = ckey(character_name)
 
 	/// If an entry already exists, log that it happened and don't try to create one
+	var/lookup = get_character_lookup(player_id, character_name, character_type)
+	if(lookup)
+		message_admins("Attempted to create lookup for [player_id] but it already existed! (Character name: [character_name], Type: [character_type])")
 
 /proc/update_character_lookup(player_id, old_character_name, new_character_name, character_type)
 	var/formatted_player_id = ckey(player_id)
