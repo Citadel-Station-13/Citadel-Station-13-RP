@@ -288,7 +288,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "jD" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -422,7 +422,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "pF" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -1099,7 +1099,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Qm" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/window/reinforced{
@@ -1273,7 +1273,7 @@
 /area/engineering/engine_room)
 "UK" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green{

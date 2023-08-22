@@ -338,7 +338,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	permeability_coefficient = 0.50
 	allowed = list(
-		/obj/item/flashlight, /obj/item/analyzer,
+		/obj/item/flashlight, /obj/item/atmos_analyzer,
 		/obj/item/radio, /obj/item/tank/emergency/oxygen,
 		/obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer,
 		/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,

@@ -345,7 +345,7 @@
 /turf/simulated/floor/outdoors/snow/classp/no_tree,
 /area/class_p/unexplored)
 "oa" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 24
 	},
 /obj/structure/blob/normal,
@@ -359,7 +359,7 @@
 /turf/simulated/floor/outdoors/shelfice/classp,
 /area/class_p/unexplored)
 "oe" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 24
 	},
 /turf/simulated/floor/old_tile/blue/classp{
@@ -433,7 +433,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/facility)
 "ss" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 24
 	},
 /obj/structure/barricade,
@@ -753,7 +753,7 @@
 	},
 /area/class_p/facility)
 "IK" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 24
 	},
 /obj/structure/blob/normal,
@@ -1031,7 +1031,7 @@
 	},
 /area/class_p/facility)
 "XK" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 24
 	},
 /turf/simulated/floor/classp,

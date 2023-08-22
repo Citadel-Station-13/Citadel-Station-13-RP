@@ -673,7 +673,7 @@
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/explored)
 "tW" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 28
 	},
@@ -1451,7 +1451,7 @@
 /turf/simulated/mineral/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "Pg" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 28
 	},
 /obj/structure/bed{
@@ -1560,7 +1560,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/rust,
@@ -1655,7 +1655,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "Wz" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,

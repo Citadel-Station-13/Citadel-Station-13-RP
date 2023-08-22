@@ -58,7 +58,7 @@
 /area/shuttle/bearcat/command)
 "ak" = (
 /obj/machinery/light,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -201,7 +201,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -224,7 +224,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -289,7 +289,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -677,7 +677,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/dock_port)
 "bN" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -712,7 +712,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/dock_central)
 "bV" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -848,7 +848,7 @@
 /obj/structure/sink{
 	pixel_y = 18
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -867,7 +867,7 @@
 /area/shuttle/bearcat/crew_corridors)
 "cp" = (
 /obj/machinery/vending/snack,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -924,7 +924,7 @@
 /area/shuttle/bearcat/crew_dorms)
 "cw" = (
 /obj/structure/closet,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -1368,7 +1368,7 @@
 /area/shuttle/bearcat/crew_corridors)
 "dD" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -1477,7 +1477,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -1685,7 +1685,7 @@
 "eq" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -1835,7 +1835,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -1999,7 +1999,7 @@
 	},
 /obj/item/storage/toolbox/mechanical,
 /obj/item/clothing/head/welding,
-/obj/item/analyzer,
+/obj/item/atmos_analyzer,
 /obj/machinery/light_switch{
 	pixel_x = -25
 	},
@@ -2037,7 +2037,7 @@
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/refurb/engineering,
 /obj/item/clothing/head/helmet/space/void/refurb/engineering,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -2132,7 +2132,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_wash)
 "fx" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/light/small{
@@ -2166,7 +2166,7 @@
 /obj/item/storage/box/lights/bulbs,
 /obj/item/storage/box/lights/mixed,
 /obj/structure/cable,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -2419,7 +2419,7 @@
 /obj/structure/handrail{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -2443,7 +2443,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/closet/secure_closet/engineering_electrical,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/light/small{
@@ -2467,7 +2467,7 @@
 /area/shuttle/bearcat/maintenance_atmos)
 "gm" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -2751,7 +2751,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -2823,7 +2823,7 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/power/apc/alarms_hidden/south_bump,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -3171,7 +3171,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/bearcat/dock_port)
 "Ea" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -3225,7 +3225,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_engine_pod_port)
 "Ik" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},

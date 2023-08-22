@@ -52,7 +52,7 @@
 
 /obj/item/circuitboard/airalarm
 	name = T_BOARD("air alarm")
-	build_path = /obj/machinery/alarm
+	build_path = /obj/machinery/air_alarm
 	board_type = new /datum/frame/frame_types/air_alarm
 	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 

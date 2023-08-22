@@ -10,7 +10,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "overalls", SLOT_ID_LEFT_HAND = "overalls")
 	blood_overlay_type = "armor"
 	body_cover_flags = 0
-	allowed = list (/obj/item/reagent_containers/spray/plantbgone, /obj/item/analyzer/plant_analyzer, /obj/item/seeds,
+	allowed = list (/obj/item/reagent_containers/spray/plantbgone, /obj/item/plant_analyzer, /obj/item/seeds,
 	/obj/item/reagent_containers/glass/bottle, /obj/item/material/minihoe)
 
 /obj/item/clothing/suit/storage/apron/white
@@ -176,7 +176,7 @@
 	desc = "A high-visibility vest used in work zones."
 	icon_state = "hazard"
 	blood_overlay_type = "armor"
-	allowed = list (/obj/item/analyzer, /obj/item/flashlight, /obj/item/multitool, /obj/item/pipe_painter, /obj/item/radio, /obj/item/t_scanner,
+	allowed = list (/obj/item/atmos_analyzer, /obj/item/flashlight, /obj/item/multitool, /obj/item/pipe_painter, /obj/item/radio, /obj/item/t_scanner,
 	/obj/item/tool/crowbar, /obj/item/tool/screwdriver, /obj/item/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/tank/emergency/oxygen,
 	/obj/item/clothing/mask/gas, /obj/item/barrier_tape_roll/engineering)
 	body_cover_flags = UPPER_TORSO
@@ -285,7 +285,7 @@
 	armor_type = /datum/armor/medical/coat/field_medic
 	valid_accessory_slots = (ACCESSORY_SLOT_INSIGNIA)
 	allowed = list (/obj/item/gun,/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/analyzer,/obj/item/stack/medical,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/atmos_analyzer,/obj/item/stack/medical,
 	/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,
 	/obj/item/healthanalyzer,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
 	/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle)

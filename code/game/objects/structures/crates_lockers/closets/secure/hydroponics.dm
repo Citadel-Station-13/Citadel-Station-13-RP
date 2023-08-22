@@ -7,7 +7,7 @@
 		/obj/item/storage/bag/plants,
 		/obj/item/clothing/under/rank/hydroponics,
 		/obj/item/clothing/under/rank/hydroponics/skirt_pleated,
-		/obj/item/analyzer/plant_analyzer,
+		/obj/item/plant_analyzer,
 		/obj/item/radio/headset/headset_service,
 		/obj/item/clothing/head/greenbandana,
 		/obj/item/material/minihoe,

@@ -532,8 +532,8 @@
 /datum/gas_mixture/belly_air/New()
     . = ..()
     gas = list(
-        /datum/gas/oxygen = 21,
-        /datum/gas/nitrogen = 79)
+        GAS_ID_OXYGEN = 21,
+        GAS_ID_NITROGEN = 79)
 
 // Procs for micros stuffed into boots and the like to escape from them
 /mob/living/proc/escape_clothes(obj/item/clothing/C)
