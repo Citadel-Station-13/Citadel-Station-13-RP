@@ -10628,7 +10628,7 @@
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Medbay Breakroom";
 	req_access = list(5);
 	req_one_access = list(5)
@@ -17914,7 +17914,7 @@
 /area/maintenance/research/lower)
 "lkx" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	id_tag = "PsycheFoyer";
 	name = "Psychiatric Wing";
 	req_access = list();
@@ -23701,7 +23701,7 @@
 /area/rift/surfaceeva/aa/surface_north)
 "oFn" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
@@ -27365,7 +27365,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -32611,7 +32611,7 @@
 "tVO" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -35037,7 +35037,7 @@
 /area/rift/station/public_garden)
 "vuD" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
@@ -39512,7 +39512,9 @@
 "yhd" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)

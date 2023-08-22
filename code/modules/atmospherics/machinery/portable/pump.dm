@@ -68,9 +68,9 @@
 
 		var/transfer_moles
 		if(direction_out)
-			transfer_moles = xgm_cheap_transfer_moles(air_contents, environment, target_pressure, speedy = TRUE)
+			transfer_moles = air_contents.total_moles? xgm_cheap_transfer_moles(air_contents, environment, target_pressure, speedy = TRUE) : 0
 		else
-			transfer_moles = -xgm_cheap_transfer_moles_single(environment, target_pressure)
+			transfer_moles = environment.total_moles? -xgm_cheap_transfer_moles_single(environment, target_pressure) : 0
 
 		if (transfer_moles > 0.01)
 			if (direction_out)

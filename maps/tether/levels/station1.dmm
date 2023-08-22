@@ -3522,7 +3522,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Equipment Prep";
 	req_one_access = list(19,43,67)
 	},
@@ -5616,8 +5616,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/metal/mait{
-	dir = 1;
-	name = "Maintenance Access"
+	name = "Maintenance Access";
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
@@ -14409,7 +14409,8 @@
 /area/maintenance/abandonedlibrary)
 "CK" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait{
-	req_one_access = list(5,67)
+	req_one_access = list(5,67);
+	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
