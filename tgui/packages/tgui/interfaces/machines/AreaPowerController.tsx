@@ -55,6 +55,8 @@ interface AreaPowerControllerData {
   loadBalancePriority: PowerBalancingTiers;
   // is the entire apc on/off
   loadActive: BooleanLike;
+  // is the entire apc toggled on/off?
+  loadToggled: BooleanLike;
   // breaker tripped?
   breakerTripped: BooleanLike;
 }

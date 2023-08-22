@@ -118,6 +118,8 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/load_heuristic = 0
 	/// buffer-any: randomized process() ticks before we try to reinstate power
 	var/load_resume = 0
+	/// our cell charge rate in kilowatts
+	var/charge_rate = 5
 
 	//? Security
 	/// cover locked
@@ -129,13 +131,9 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	var/area/area
 	var/areastring = null
-	var/chargelevel = 0.0005  // Cap for how fast APC cells charge, as a percentage-per-tick (0.01 means cellcharge is capped to 1% per second)
 	var/opened = 0 //0=closed, 1=opened, 2=cover removed
 	var/shorted = 0
 	var/grid_check = FALSE
-	var/charging = 0
-	var/chargemode = 1
-	var/chargecount = 0
 	var/aidisabled = 0
 	var/obj/machinery/power/terminal/terminal = null
 	var/main_status = 0
@@ -143,11 +141,8 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/wiresexposed = 0
 	var/has_electronics = 0 // 0 - none, 1 - plugged in, 2 - secured by screwdriver
 	var/beenhit = 0 // used for counting how many times it has been hit, used for Aliens at the moment
-	var/longtermpower = 10
 	var/datum/wires/apc/wires = null
 	var/emergency_lights = FALSE
-	var/update_state = -1
-	var/update_overlay = -1
 	var/is_critical = 0
 	var/failure_timer = 0
 	var/force_update = 0
@@ -669,7 +664,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(area.power_channels & power_channel_bits[channel])
 			used_joules += channel_total
 		wanting_joules += channel_total
-	last_load = using_joules + used_burst_joules
+	last_load = wanting_joules + used_burst_joules
 	load_heuristic = SIMPLE_VALUE_SMOOTHING(0.5, load_heuristic, last_load)
 
 	// reduce load resume
@@ -696,11 +691,6 @@ GLOBAL_LIST_EMPTY(apcs)
 	#warn below
 
 	//store states to update icon if any change
-	var/last_lt = lighting
-	var/last_eq = equipment
-	var/last_en = environ
-	var/last_ch = charging
-
 	var/excess = surplus()
 
 	if(!src.avail())
@@ -716,28 +706,6 @@ GLOBAL_LIST_EMPTY(apcs)
 		cell.use(cellused)
 		// TODO: the rest of this code is war crime territory
 		// TODO: rewrite APCs. entirely.
-		// if we're empty just kill it all
-		if(cell.percent() < 1)
-			// This turns everything off in the case that there is still a charge left on the battery, just not enough to run the room.
-			equipment = autoset(equipment, 0)
-			lighting = autoset(lighting, 0)
-			environ = autoset(environ, 0)
-			autoflag = 0
-
-		// we're lazy and i'm not writing a real accumulator, and we need to recharge in units of 1 due to floating point bullshit
-		// hence..
-		// we recharge at most lastused kw rounded down
-		var/kw = round(lastused_total * 0.001)
-		lazy_draw_accumulator += lastused_total - kw * 1000
-		if(lazy_draw_accumulator > 1000)
-			kw += round(lazy_draw_accumulator * 0.001)
-			lazy_draw_accumulator = lazy_draw_accumulator % 1000
-		if(excess > kw)
-			var/draw = draw_power(kw)
-			cell.give(DYNAMIC_KW_TO_CELL_UNITS(draw, 1))
-
-		// Set channels depending on how much charge we have left
-		update_channels()
 
 		// now trickle-charge the cell
 		lastused_charging = 0 // Clear the variable for new use.
@@ -968,14 +936,17 @@ GLOBAL_LIST_EMPTY(apcs)
 	//! end
 
 	// bit cheaty, but reset power usage lists
-	last_power_using = EMPTY_POWER_USAGE_LIST
-	burst_power_using = EMPTY_POWER_USAGE_LIST
+	last_load = 0
+	load_heuristic = 0
+	last_channel_load = EMPTY_POWER_USAGE_LIST
+	current_burst_load = EMPTY_POWER_USAGE_LIST
 
 	channels_enabled = POWER_BITS_ALL
 	channels_auto = POWER_BITS_ALL
 	charging_enabled = TRUE
 	charging = FALSE
 	load_toggled = FALSE
+	breaker_tripped = FALSE
 
 	requires_update = full_update_channels() || requires_update
 
@@ -1086,6 +1057,30 @@ GLOBAL_LIST_EMPTY(apcs)
 		generating.color = COLOR_ORANGE
 		cache_list[APC_CHANNEL_STATE_OFF_AUTO] = generating
 		++channel
+
+//? Breaker / Switching
+
+/obj/machinery/apc/proc/set_toggled(toggled, defer_update)
+	src.load_toggled = toggled
+	if(!defer_update)
+		full_update_channels()
+	push_ui_data(data = list("loadToggled" = load_toggled))
+
+/obj/machinery/apc/proc/untrip_breaker(defer_update)
+	if(!breaker_tripped)
+		return
+	breaker_tripped = FALSE
+	if(!defer_update)
+		full_update_channels()
+	push_ui_data(data = list("breakerTripped" = FALSE))
+
+/obj/machinery/apc/proc/trip_breaker(defer_update)
+	if(breaker_tripped)
+		return
+	breaker_tripped = TRUE
+	if(!defer_update)
+		full_update_channels()
+	push_ui_data(data = list("breakerTripped" = TRUE))
 
 //? Channels
 
@@ -1253,6 +1248,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	.["loadBalanceAllowed"] = load_balancing_modify
 	.["breakerTripped"] = breaker_tripped
 	.["loadActive"] = load_active
+	.["loadToggled"] = load_toggled
 
 	#warn impl below
 
