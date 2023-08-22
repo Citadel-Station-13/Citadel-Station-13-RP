@@ -236,7 +236,8 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
               <Stack vertical fill>
                 <Stack.Item>
                   <Section>
-                    <Input placeholder="Search (3+ characters)" width="100%" value={searchText} onInput={(e, val) => setSearchText(val.toLowerCase())} />
+                    <Input placeholder="Search (3+ characters)"
+                      width="100%" value={searchText} onInput={(e, val) => setSearchText(val.toLowerCase())} />
                   </Section>
                 </Stack.Item>
                 <Stack.Item grow>
