@@ -74,6 +74,7 @@
 /// A trait source when adding traits through unit tests
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
+#include "atmospherics/_atmospherics.dm"
 #include "core/_core.dm"
 #include "datum/_datum.dm"
 #include "elements/_elements.dm"

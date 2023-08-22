@@ -48,8 +48,8 @@
 	siemens_coefficient = 1.5
 
 	//Adapted to Surt's hot, thin atmosphere.
-	breath_type = /datum/gas/carbon_dioxide
-	exhale_type = /datum/gas/oxygen
+	breath_type = GAS_ID_CARBON_DIOXIDE
+	exhale_type = GAS_ID_OXYGEN
 
 	heat_discomfort_level = T0C+20
 

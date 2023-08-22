@@ -117,8 +117,8 @@ var/list/global/tank_gauge_cache = list()
 	if (istype(loc, /obj/item/assembly))
 		icon = loc
 
-	if ((istype(W, /obj/item/analyzer)) && get_dist(user, src) <= 1)
-		var/obj/item/analyzer/A = W
+	if ((istype(W, /obj/item/atmos_analyzer)) && get_dist(user, src) <= 1)
+		var/obj/item/atmos_analyzer/A = W
 		A.analyze_gases(src, user)
 	else if (istype(W,/obj/item/latexballon))
 		var/obj/item/latexballon/LB = W
@@ -362,6 +362,16 @@ var/list/global/tank_gauge_cache = list()
 		update_gauge()
 	check_status()
 
+/**
+ * Encodes data for AtmosTank in tgui/interfaces/common/Atmos.tsx
+ */
+/obj/item/tank/proc/tgui_tank_data()
+	return list(
+		"name" = name,
+		"pressure" = air_contents?.return_pressure(),
+		"volume" = air_contents.volume,
+		"pressureLimit" = TANK_IDEAL_PRESSURE,
+	)
 
 /obj/item/tank/proc/add_bomb_overlay()
 	cut_overlays()
@@ -374,7 +384,6 @@ var/list/global/tank_gauge_cache = list()
 			test.Shift(WEST,3)
 			overlays_to_add += test
 	add_overlay(overlays_to_add)
-
 
 /obj/item/tank/proc/update_gauge()
 	var/gauge_pressure = 0
@@ -395,7 +404,6 @@ var/list/global/tank_gauge_cache = list()
 		tank_gauge_cache[indicator] = image(icon, indicator)
 	add_overlay(tank_gauge_cache[indicator])
 
-
 /obj/item/tank/proc/check_status()
 	//Handle exploding, leaking, and rupturing of the tank
 
@@ -403,8 +411,6 @@ var/list/global/tank_gauge_cache = list()
 		return 0
 
 	var/pressure = air_contents.return_pressure()
-
-
 	if(pressure > TANK_FRAGMENT_PRESSURE)
 		if(integrity <= 7)
 			if(!istype(src.loc,/obj/item/transfer_valve))
@@ -446,14 +452,10 @@ var/list/global/tank_gauge_cache = list()
 				var/obj/item/transfer_valve/TTV = loc
 				TTV.remove_tank(src)
 				qdel(TTV)
-
-
 			if(src)
 				qdel(src)
-
 		else
 			integrity -=7
-
 
 	else if(pressure > TANK_RUPTURE_PRESSURE)
 		#ifdef FIREDBG
@@ -482,8 +484,6 @@ var/list/global/tank_gauge_cache = list()
 			if(istype(loc, /obj/item/transfer_valve))
 				var/obj/item/transfer_valve/TTV = loc
 				TTV.remove_tank(src)
-
-
 			qdel(src)
 
 		else
@@ -492,7 +492,6 @@ var/list/global/tank_gauge_cache = list()
 				src.leaking = 1
 			else
 				integrity-= 5
-
 
 	else if(pressure > TANK_LEAK_PRESSURE || air_contents.temperature - T0C > failure_temp)
 
@@ -529,20 +528,6 @@ var/list/global/tank_gauge_cache = list()
 			if(integrity == max_integrity)
 				leaking = 0
 
-/////////////////////////////////
-///Prewelded tanks
-/////////////////////////////////
-
-/obj/item/tank/phoron/welded
-	valve_welded = 1
-/obj/item/tank/oxygen/welded
-	valve_welded = 1
-
-
-/////////////////////////////////
-///Onetankbombs (added as actual items)
-/////////////////////////////////
-
 /obj/item/tank/proc/onetankbomb(fill = 1)
 	var/phoron_amt = 4 + rand(4)
 	var/oxygen_amt = 6 + rand(8)
@@ -555,8 +540,8 @@ var/list/global/tank_gauge_cache = list()
 		oxygen_amt = 4.5
 
 
-	air_contents.gas[/datum/gas/phoron] = phoron_amt
-	air_contents.gas[/datum/gas/oxygen] = oxygen_amt
+	air_contents.gas[GAS_ID_PHORON] = phoron_amt
+	air_contents.gas[GAS_ID_OXYGEN] = oxygen_amt
 	air_contents.update_values()
 	valve_welded = 1
 	air_contents.temperature = PHORON_MINIMUM_BURN_TEMPERATURE-1
@@ -571,31 +556,35 @@ var/list/global/tank_gauge_cache = list()
 
 	add_overlay("bomb_assembly")
 
+/obj/item/tank/oxygen/welded
+	valve_welded = TRUE
+
+/obj/item/tank/phoron/welded
+	valve_welded = TRUE
 
 /obj/item/tank/phoron/onetankbomb/Initialize(mapload)
 	. = ..()
-	src.onetankbomb()
+	onetankbomb()
 
 /obj/item/tank/oxygen/onetankbomb/Initialize(mapload)
 	. = ..()
-	src.onetankbomb()
-
+	onetankbomb()
 
 /obj/item/tank/phoron/onetankbomb/full/Initialize(mapload)
 	. = ..()
-	src.onetankbomb(2)
+	onetankbomb(2)
 
 /obj/item/tank/oxygen/onetankbomb/full/Initialize(mapload)
 	. = ..()
-	src.onetankbomb(2)
+	onetankbomb(2)
 
 /obj/item/tank/phoron/onetankbomb/small/Initialize(mapload)
 	. = ..()
-	src.onetankbomb(0)
+	onetankbomb(0)
 
 /obj/item/tank/oxygen/onetankbomb/small/Initialize(mapload)
 	. = ..()
-	src.onetankbomb(0)
+	onetankbomb(0)
 
 /////////////////////////////////
 ///Pulled from rewritten bomb.dm

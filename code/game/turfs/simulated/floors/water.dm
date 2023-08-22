@@ -52,18 +52,18 @@
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
 			var/amount = 300
-			water_breath.adjust_gas(/datum/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
+			water_breath.adjust_gas(GAS_ID_OXYGEN, amount) // Assuming water breathes just extract the oxygen directly from the water.
 			water_breath.temperature = above_air.temperature
 			return return_air()
 		else
-			var/gasid = /datum/gas/carbon_dioxide
+			var/gasid = GAS_ID_CARBON_DIOXIDE
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				if(H.species && H.species.exhale_type)
 					gasid = H.species.exhale_type
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
-			water_breath.adjust_gas(gasid, BREATH_MOLES) // They have no oxygen, but non-zero moles and temp
+			water_breath.adjust_gas(gasid, (above_air.return_pressure() * above_air.volume) / (above-air.temperature * R_IDEAL_GAS_EQUATION)) // They have no oxygen, but non-zero moles and temp
 			water_breath.temperature = above_air.temperature
 			return water_breath
 	return return_air() // Otherwise their head is above the water, so get the air from the atmosphere instead.
@@ -241,11 +241,11 @@ var/list/shoreline_icon_cache = list()
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
 			var/amount = 300
-			water_breath.adjust_gas(/datum/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
+			water_breath.adjust_gas(GAS_ID_OXYGEN, amount) // Assuming water breathes just extract the oxygen directly from the water.
 			water_breath.temperature = above_air.temperature
 			return water_breath
 		else
-			var/gasid = /datum/gas/carbon_dioxide
+			var/gasid = GAS_ID_CARBON_DIOXIDE
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				if(H.species && H.species.exhale_type)
@@ -351,11 +351,11 @@ var/list/shoreline_icon_cache = list()
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
 			var/amount = 300
-			water_breath.adjust_gas(/datum/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
+			water_breath.adjust_gas(GAS_ID_OXYGEN, amount) // Assuming water breathes just extract the oxygen directly from the water.
 			water_breath.temperature = above_air.temperature
 			return water_breath
 		else
-			var/gasid = /datum/gas/carbon_dioxide
+			var/gasid = GAS_ID_CARBON_DIOXIDE
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				if(H.species && H.species.exhale_type)

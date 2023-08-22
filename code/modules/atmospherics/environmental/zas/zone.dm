@@ -53,7 +53,7 @@ Class Procs:
 	var/atom/movable/zas_graphics/renderer_one_for_all
 
 /datum/zas_zone/New()
-	air_master.add_zone(src)
+	SSair.add_zone(src)
 	air.temperature = TCMB
 	air.group_multiplier = 1
 	air.volume = CELL_VOLUME
@@ -72,7 +72,7 @@ Class Procs:
 	if(T.fire)
 		var/obj/effect/debris/cleanable/liquid_fuel/fuel = locate() in T
 		fire_tiles += T
-		air_master.active_fire_zones |= src
+		SSair.active_fire_zones |= src
 		if(fuel)
 			fuel_objs += fuel
 	if(renderer_one_for_all && T.allow_gas_overlays && !T.outdoors)
@@ -128,7 +128,7 @@ Class Procs:
 
 /datum/zas_zone/proc/c_invalidate()
 	invalid = 1
-	air_master.remove_zone(src)
+	SSair.remove_zone(src)
 	#ifdef ZAS_DEBUG_GRAPHICS
 	for(var/turf/simulated/T in contents)
 		T.dbg(invalid_zone)
@@ -154,7 +154,7 @@ Class Procs:
 
 /datum/zas_zone/proc/tick()
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
-	if(air.temperature >= PHORON_FLASHPOINT && !(src in air_master.active_fire_zones) && air.check_combustability() && contents.len)
+	if(air.temperature >= PHORON_FLASHPOINT && !(src in SSair.active_fire_zones) && air.check_combustability() && contents.len)
 		var/turf/T = pick(contents)
 		if(istype(T))
 			T.create_fire(firelevel_multiplier)
@@ -184,9 +184,9 @@ Class Procs:
 /datum/zas_zone/proc/dbg_data(mob/M)
 	to_chat(M, name)
 	for(var/g in air.gas)
-		to_chat(M, "[GLOB.meta_gas_names[g]]: [air.gas[g]]")
+		to_chat(M, "[global.gas_data.names[g]]: [air.gas[g]]")
 	to_chat(M, "P: [air.return_pressure()] kPa V: [air.volume]L T: [air.temperature]�K ([air.temperature - T0C]�C)")
-	to_chat(M, "O2 per N2: [(air.gas[/datum/gas/nitrogen] ? air.gas[/datum/gas/oxygen]/air.gas[/datum/gas/nitrogen] : "N/A")] Moles: [air.total_moles]")
+	to_chat(M, "O2 per N2: [(air.gas[GAS_ID_NITROGEN] ? air.gas[GAS_ID_OXYGEN]/air.gas[GAS_ID_NITROGEN] : "N/A")] Moles: [air.total_moles]")
 	to_chat(M, "Simulated: [contents.len] ([air.group_multiplier])")
 	//to_chat(M, "Unsimulated: [unsimulated_contents.len]")
 	//to_chat(M, "Edges: [edges.len]")

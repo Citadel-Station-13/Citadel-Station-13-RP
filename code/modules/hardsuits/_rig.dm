@@ -118,6 +118,8 @@
 	var/trapDelay = 300 //in deciseconds
 	var/warn = 1 //If the suit will warn you if it can't deploy a part. Will always end back at 1.
 
+	var/sprint_slowdown_modifier = 0					      // Sprinter module modifier.
+
 /obj/item/hardsuit/get_cell()
 	return cell
 
@@ -582,7 +584,7 @@
 			last_online = TRUE
 		if(istype(wearer) && !wearer.wearing_rig)
 			wearer.wearing_rig = src
-		slowdown = initial(slowdown)
+		slowdown = initial(slowdown) + sprint_slowdown_modifier
 
 	if(cell && cell.charge > 0 && electrified > 0)
 		electrified--
