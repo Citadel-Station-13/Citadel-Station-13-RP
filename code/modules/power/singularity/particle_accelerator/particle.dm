@@ -81,6 +81,8 @@
 	return
 
 /obj/effect/accelerated_particle/proc/toxmob(var/mob/living/M)
+	if(!istype(M))
+		return
 	var/radiation = (energy * 5)
 	M.afflict_radiation(radiation, TRUE)
 
