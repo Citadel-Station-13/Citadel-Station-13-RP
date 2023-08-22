@@ -214,11 +214,6 @@
 	violent_breakthrough = TRUE
 	can_breakthrough = TRUE
 
-/datum/ai_holder/simple_mob/ranged/kiting/sniper
-	max_range = 15
-	vision_range = 15
-	run_if_this_close = 10 //No I am not letting you see me...
-
 //Lavaland Hound
 /mob/living/simple_mob/vore/aggressive/corrupthound/surt
 	name = "warped corrupt hound"
