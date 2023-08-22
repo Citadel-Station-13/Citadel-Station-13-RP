@@ -1,4 +1,4 @@
-#define LOOKUP_TABLE character_lookup
+#define LOOKUP_TABLE "character_lookup"
 /*
 A character lookup is essentially connecting four things:
 1. A character name, formatted using ckey() referred to as 'charactername'
