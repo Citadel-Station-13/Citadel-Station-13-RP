@@ -17100,6 +17100,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"tTr" = (
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/airless,
+/area/space)
 "tTC" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -23644,7 +23648,7 @@ vva
 vva
 vva
 vva
-dff
+tTr
 vva
 vva
 vva
@@ -23734,7 +23738,7 @@ vva
 vva
 vva
 vva
-dff
+tTr
 vva
 vva
 vva
@@ -27896,7 +27900,7 @@ vva
 vva
 vva
 vva
-dff
+tTr
 dff
 dff
 sVT
@@ -28018,7 +28022,7 @@ sVT
 sVT
 cUp
 dff
-dff
+tTr
 vva
 vva
 vva
@@ -46550,7 +46554,7 @@ vva
 vva
 vva
 dff
-dff
+tTr
 vva
 vva
 vva
@@ -46612,7 +46616,7 @@ dAV
 vva
 vva
 vva
-dff
+tTr
 dff
 vva
 vva
@@ -48311,7 +48315,7 @@ vva
 vva
 dff
 dff
-dff
+tTr
 vva
 vva
 vva
@@ -48343,7 +48347,7 @@ vva
 vva
 vva
 vva
-dff
+tTr
 dff
 dff
 vva

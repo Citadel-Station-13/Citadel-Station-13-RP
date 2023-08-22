@@ -78,11 +78,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "eT" = (
-/obj/machinery/door/airlock/glass/research{
-	name = "Research Entrance";
-	req_access = list(47)
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/hallway/deck0)
 "eU" = (
@@ -207,6 +204,12 @@
 	dir = 1
 	},
 /turf/simulated/open,
+/area/space)
+"mM" = (
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/space)
 "mZ" = (
 /turf/simulated/wall/r_wall/prepainted/command,
@@ -12426,7 +12429,7 @@ Wv
 Wv
 eT
 pq
-Hu
+mM
 HA
 Xi
 Ox

@@ -12,6 +12,11 @@
 
 /area/main_map/species_maintanence/adheraet
 	name = "\improper Adherent Maintenance"
+
+
+/area/main_map/hanger_cafe
+	name = "Fuel Cafe"
+
 /**
  * Hallways
  */
