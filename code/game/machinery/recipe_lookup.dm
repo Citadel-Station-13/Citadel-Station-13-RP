@@ -32,6 +32,7 @@
 /obj/machinery/recipe_lookup/drinks
 	recipe_list = GLOB.drink_recipes
 	result_type_name = "drink"
+	icon_state = "barpad_dark"
 
 /obj/machinery/recipe_lookup/drinks/display_recipe_instructions(var/result_name, var/datum/chemical_reaction/recipe)
 	var/instructions = "Reagents required:\n"
@@ -49,5 +50,13 @@
 	instructions += "\n"
 	instructions += "Result: [result_amount] parts <b>[result]</b>"
 	to_chat(usr, instructions)
+
+/obj/machinery/recipe_lookup/drinks/AltClick(mob/living/carbon/user)
+	if(icon_state == "barpad_dark")
+		icon_state = "barpad_light"
+		to_chat(user, "You set the display to light theme.")
+	else
+		icon_state = "barpad_dark"
+		to_chat(user, "You set the display to dark theme.")
 
 // cook version TBD due to food rework
