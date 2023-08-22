@@ -136,7 +136,7 @@
 	component_coeff = max(1 - (T - 1) / 4, 0.2) // 1 -> 0.2
 	for(var/obj/item/stock_parts/micro_laser/M in component_parts) //Not resetting T is intended; time_coeff is affected by both
 		T += M.rating
-	time_coeff = T / 2 // 1 -> 3
+	time_coeff = 2 / T // 1 -> 3
 	update_static_data(usr)
 
 
