@@ -25702,7 +25702,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Atrium Third Floor"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,

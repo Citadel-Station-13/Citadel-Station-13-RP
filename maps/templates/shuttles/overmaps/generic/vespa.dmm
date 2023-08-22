@@ -9847,9 +9847,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/corridor2)
 "vJ" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8
-	},
+/obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
 	icon_state = "1-2"

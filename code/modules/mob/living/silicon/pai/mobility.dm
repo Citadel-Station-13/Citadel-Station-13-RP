@@ -36,6 +36,7 @@
 
 	update_perspective()
 	set_resting(FALSE)
+	set_intentionally_resting(FALSE, TRUE)
 	update_mobility()
 	update_icon()
 	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
@@ -82,6 +83,8 @@
 		T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
 
 	add_verb(src, /mob/living/silicon/pai/proc/pai_nom)
+	card.stop_displaying_hologram()
+	update_icon()
 
 // Handle being picked up.
 /mob/living/silicon/pai/get_scooped(var/mob/living/carbon/grabber, var/self_drop)
@@ -134,6 +137,10 @@
 /mob/living/silicon/pai/update_transform(animate = TRUE)
 	. = ..()
 	var/matrix/M = matrix()
+	var/desired_scale_x = size_multiplier * icon_scale_x
+	var/desired_scale_y = size_multiplier * icon_scale_y
+	M.Scale(desired_scale_x, desired_scale_y)
+	M.Translate(0, 16*(desired_scale_y-1))
 	// no chassis means we're using a hologram
 	var/turning_value_to_use = 0
 	if(!chassis)
