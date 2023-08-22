@@ -300,7 +300,7 @@
 //can move this to a different .dm if needed
 /mob/living/carbon/human/AltClick(mob/user)
 	. = ..()
-	if(!Adjacent(user) && !user.canClick())
+	if(!Adjacent(user) || !user.canClick())
 		return
 	var/mob/living/carbon/human/H = user
 	if (istype(H) && attempt_to_scoop(H))
