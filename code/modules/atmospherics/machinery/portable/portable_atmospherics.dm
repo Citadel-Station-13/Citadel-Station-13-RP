@@ -84,6 +84,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(isnull(ui))
 		ui = new(user, src, tgui_interface)
+		ui.open()
 
 /obj/machinery/portable_atmospherics/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

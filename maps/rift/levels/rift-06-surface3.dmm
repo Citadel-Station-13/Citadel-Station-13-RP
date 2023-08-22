@@ -19205,7 +19205,7 @@
 /area/crew_quarters/bar)
 "cYb" = (
 /obj/machinery/door/airlock/multi_tile/glass/civilian{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -20874,7 +20874,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass/exploration{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/wood,
@@ -20986,7 +20986,7 @@
 /area/bridge/bridge_hallway)
 "hnU" = (
 /obj/machinery/door/airlock/multi_tile/glass/civilian{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -21394,7 +21394,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/metal/mait{
-	dir = 1;
+	dir = 4;
 	name = "Maintenance Access"
 	},
 /turf/simulated/floor/plating,
@@ -26215,7 +26215,7 @@
 /area/security/checkpoint2)
 "viW" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Laundry"
 	},
 /obj/effect/floor_decal/borderfloor,
