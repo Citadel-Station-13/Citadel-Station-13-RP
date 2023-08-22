@@ -8,6 +8,7 @@
 	atmos_portable_ui_flags = ATMOS_PORTABLE_UI_TOGGLE_POWER | ATMOS_PORTABLE_UI_SEE_POWER | ATMOS_PORTABLE_UI_SEE_FLOW
 	power_maximum = 7500
 	flow_maximum = 5000
+	tgui_interface = "AtmosPortableScrubber"
 
 	volume = 1000
 
