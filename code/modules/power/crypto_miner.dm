@@ -30,7 +30,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 
 /obj/machinery/power/crypto_miner/examine(mob/user, dist)
     . = ..()
-    . += "An indicator on [src]'s controll panel indicates that [src] is in a [(check_right_atmos() ? "sufficent" : "insufficent")] amount of helium to function."
+    . += "An indicator on [src]'s controll panel indicates that [src] is in a [(check_right_atmos() ? "sufficent" : "insufficent")] amount of helium, vimur or phoron to function."
     if(GLOB.points_mined)//Only show this if someone actually mined
         . += "[src] is [power_level? "on":"off"]. Current Power Level reads [power_level]."
         . += "Progress to next Point: [(power_drawn/GLOB.power_per_point) *100] %"
@@ -136,16 +136,6 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 
 /obj/machinery/power/crypto_miner/proc/check_right_atmos()
 	var/datum/gas_mixture/env = loc.return_air()
-	var/non_helium = 0
-	var/helium = 0
-	for(var/diff_gasses in env.gas)
-		if(ispath(diff_gasses, /datum/gas/helium))
-			helium = env.gas[diff_gasses]
-		else if(ispath(diff_gasses, /datum/gas/vimur))
-			helium = env.gas[diff_gasses]
-		else
-			non_helium += env.gas[diff_gasses]
+	var/helium = env.gas[GAS_ID_HELIUM] + env.gas[GAS_ID_VIMUR] + env.gas[GAS_ID_PHORON]
+	var/non_helium = env.total_moles - helium
 	return helium > non_helium
-
-
-
