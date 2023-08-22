@@ -37,8 +37,8 @@
 		/datum/lore/codex/page/catskinner2,
 		/datum/lore/codex/page/recession,
 		/datum/lore/codex/page/volink2,
-		/datum/lore/codex/page/xeno_surt
-
+		/datum/lore/codex/page/xeno_surt,
+		/datum/lore/codex/page/hack
 		)
 
 /datum/lore/codex/page/about_news
@@ -650,3 +650,25 @@
 	Nanotrasen for helping perserve the Scorian culture and expressed interest in further exploration fo Surt and its people. Though they, hestitated to use the word uplift they \
 	acknowledge that the Scori's integration with the galaxy is at this point inevitable even if they hoped it would be no time soon. At least the Scori then can rest easy perhaps \
 	never knowing how close they came to extinction yet again."
+
+/datum/lore/codex/page/hack
+	name = "Sector Spanning Cyber Attack Turns Synths Rogue! Hephaestus Combat Drones Designs Stolen! - 8/20/2567"
+	data = "Yesterday in the Frontier a massive cyber attack occured effecting an entire sector. Positronic intelligences, drones, ship AIs and all even MMI units were all said to \
+	be infected by  a malignant virus that was spread across the sector through subspace relays. Subverted silicons from the simplest drone to ship AIs were driven to stockpile materials \
+	to fuel corrupted drone fabricators which then began producing armies of corrupted drones. Infected units were also compelled to construct communication systems which transmitted \
+	data back towards what can almost be assumed to be the source of the virus. Casulties are thankfully limited however for Hephaestus Industries, who relies heavily on its drone \
+	employees,the loss of life and destruction of assests is thought to be immense. \
+	<br><br>\
+	A Hephaestus Industry vessel, HIV Tungsten Heart, has been reportedly been completely siezed by its subverted silicon crew, its organic crew thought to already be \
+	slaughtered. The now rogue vessel, was home to several drone fabrication facilities and to make matters worse, the databases of the fabricators allegedly contain blueprints \
+	for an as of yet unreleashed line of Hephaestus combat drones! These 'Warhound' series combat drones are armed with a variety od powerful mounted weapons meant to make short work \
+	of pirate threats. It can only be assumed that Tungsten Heart has become the center of an omincidal synthetic intelligence. Though the ship lacks weapons of its own, its fabricators \
+	are no doubt working tirelessly to create a silicon army. The entire sector and surrounding regions have been placed on high alert with SDF, mercenary, and corporate security \
+	working together to locate and eliminate the Tungsten Heart before it can threaten colonies in the region. \
+	<br><br>\
+	Back in Sol, the Orion Confederation has placed its own subspace relays under increased security with many neighboring regions following suit. Already synth units that have survived \
+	infection from the malignant code are being studied to figure out how to better counter this mysterious virus in the future. For now all civilian vessels are instructed to block \
+	all subspace packet transmissions over a certain size and to report any sightings of the Tungsten Heart to the SDF immediately. Synthetics are also advised to check with their \
+	software engineers for signs of system tampering and to update their system security software at the earliest opporutunity. Despite the damage caused by the cyber attacks, software \
+	engineers are confident that such an attacks will be rarer and rarer in the future as robotics technology improves and positronics become more independent. However, with the \
+	increasing scale of cyber attacks, other experts worry that a worst case scenario mass synthetic subversion simply has yet to occur."
