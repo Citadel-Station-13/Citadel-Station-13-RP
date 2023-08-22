@@ -51,7 +51,7 @@
 /obj/item/plastique/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if (!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if (ismob(target) || istype(target, /turf/unsimulated) || istype(target, /turf/simulated/shuttle) || istype(target, /obj/item/storage/) || istype(target, /obj/item/clothing/accessory/storage/) || istype(target, /obj/item/clothing/under))
+	if (ismob(target) || istype(target, /turf/unsimulated) || istype(target, /turf/simulated/shuttle) || istype(target, /obj/item/storage/) || istype(target, /obj/item/clothing/accessory/storage/) || istype(target, /obj/item/clothing/under) || istype(target, /obj/item/clothing/suit/storage))
 		return
 	to_chat(user, "Planting explosives...")
 	user.do_attack_animation(target)

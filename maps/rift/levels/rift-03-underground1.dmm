@@ -16,7 +16,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/phoron,
 /area/engineering/atmos)
@@ -285,7 +285,7 @@
 /area/maintenance/engineering/upper)
 "aO" = (
 /obj/structure/catwalk,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -456,7 +456,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	desc = " ";
 	pixel_y = 24
 	},
@@ -631,7 +631,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	desc = " ";
 	pixel_y = 24
 	},
@@ -787,7 +787,7 @@
 	sensors = list("n2_sensor"="Tank")
 	},
 /obj/structure/window/reinforced,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -939,9 +939,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8
-	},
+/obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1268,7 +1266,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "cR" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -1391,7 +1389,7 @@
 /turf/simulated/floor/concrete/rng/lythios43c,
 /area/rift/station/fighter_bay/transport_tunnel)
 "dd" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -2463,7 +2461,7 @@
 "gb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue,
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -2896,7 +2894,7 @@
 /area/maintenance/engineering)
 "hx" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -2937,7 +2935,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/station/protean_nanite_room)
 "hJ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -3080,7 +3078,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/supply{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -24
 	},
@@ -3609,7 +3607,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "ka" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -4199,7 +4197,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -4431,7 +4429,7 @@
 /area/crew_quarters/pool)
 "nj" = (
 /obj/effect/alien/weeds,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -4654,7 +4652,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/oxygen,
 /area/engineering/atmos)
@@ -4777,7 +4775,7 @@
 /obj/machinery/door/window/southleft{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -5402,7 +5400,7 @@
 /area/engineering/atmos/hallway)
 "qY" = (
 /obj/structure/railing,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -5508,7 +5506,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/atmos)
@@ -5618,7 +5616,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
 "rG" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -5660,7 +5658,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_two)
 "rO" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -6057,7 +6055,7 @@
 	dir = 8
 	},
 /obj/random/trash_pile,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -6520,7 +6518,7 @@
 /turf/simulated/floor/tiled/kafel_full/blue,
 /area/crew_quarters/pool)
 "va" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -6652,7 +6650,7 @@
 /obj/item/clothing/suit/storage/snowsuit/science,
 /obj/item/clothing/suit/storage/snowsuit/science,
 /obj/item/clothing/suit/storage/snowsuit/science,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/white,
@@ -6807,7 +6805,7 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
 "vU" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -6877,7 +6875,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -7000,7 +6998,7 @@
 	internal_pressure_bound_default = 4000;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/bluegrid{
 	initial_gas_mix = "n2=100;TEMP=80";
@@ -7064,7 +7062,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
@@ -8892,7 +8890,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "De" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -8956,7 +8954,7 @@
 	dir = 2
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	name = "Fighter Hangar";
 	req_one_access = list(1,19,29,38,43,47,63,67)
 	},
@@ -9175,7 +9173,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/atmos)
@@ -9261,7 +9259,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "ED" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -9275,7 +9273,7 @@
 /area/rift/station/fighter_bay/transport_tunnel)
 "EG" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait{
-	dir = 1;
+	dir = 4;
 	name = "Drone Fabrication";
 	req_one_access = list(10)
 	},
@@ -9310,7 +9308,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -24
 	},
@@ -9492,7 +9490,7 @@
 	icon_state = "map_vent_out";
 	pressure_checks = 0;
 	pressure_checks_default = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/bluegrid{
 	initial_gas_mix = "n2=100;TEMP=80";
@@ -9698,7 +9696,7 @@
 /area/rnd/secure_storage/upper)
 "FY" = (
 /obj/effect/floor_decal/borderfloor,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -9912,7 +9910,7 @@
 /area/maintenance/engineering)
 "GE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -9957,7 +9955,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "GN" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -10337,7 +10335,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -10668,7 +10666,7 @@
 /obj/structure/bed/chair/sofa/purp/left{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -10713,7 +10711,7 @@
 /area/rift/trade_shop)
 "Jm" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
@@ -11284,7 +11282,7 @@
 	dir = 4
 	},
 /obj/item/flashlight/lantern,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -11642,7 +11640,7 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "MJ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -12086,8 +12084,8 @@
 /obj/item/reagent_scanner,
 /obj/item/healthanalyzer,
 /obj/item/geiger_counter,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer,
+/obj/item/plant_analyzer,
+/obj/item/atmos_analyzer,
 /obj/item/t_scanner,
 /obj/machinery/camera/network/engineering{
 	dir = 8
@@ -12544,7 +12542,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "PC" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -12666,7 +12664,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "PZ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/kafel_full/blue,
@@ -12748,7 +12746,7 @@
 /area/rift/surfacebase/underground/under1)
 "Qo" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait{
-	dir = 2
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -12980,7 +12978,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "Rl" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -14360,7 +14358,7 @@
 /obj/item/flash,
 /obj/item/flash,
 /obj/structure/table/steel,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -14830,7 +14828,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/nitrogen,
 /area/engineering/atmos)
@@ -14842,7 +14840,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -14864,7 +14862,7 @@
 	dir = 8
 	},
 /obj/machinery/disposal,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -14906,7 +14904,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
 "YN" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -15023,7 +15021,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "Zc" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -15119,7 +15117,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos)

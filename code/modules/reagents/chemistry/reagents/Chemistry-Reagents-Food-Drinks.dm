@@ -13,17 +13,21 @@
 	var/injectable = 0
 	color = "#664330"
 
-/datum/reagent/nutriment/mix_data(list/newdata, newamount)
+// todo: review data procs
 
-	if(!islist(newdata) || !newdata.len)
+/datum/reagent/nutriment/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+
+	if(!islist(new_data) || !length(new_data))
 		return
 
+	LAZYINITLIST(data)
+
 	//add the new taste data
-	for(var/taste in newdata)
+	for(var/taste in new_data)
 		if(taste in data)
-			data[taste] += newdata[taste]
+			data[taste] += new_data[taste]
 		else
-			data[taste] = newdata[taste]
+			data[taste] = new_data[taste]
 
 	//cull all tastes below 10% of total
 	var/totalFlavor = 0
@@ -4446,11 +4450,10 @@
 
 
 //Handles setting the temperature when oils are mixed
-/datum/reagent/nutriment/coating/mix_data(newdata, newamount)
-	if (!data)
-		data = list()
-
-	data["cooked"] = newdata["cooked"]
+// todo: review data procs
+/datum/reagent/nutriment/coating/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+	LAZYINITLIST(data)
+	data["cooked"] = new_data["cooked"]
 
 /datum/reagent/nutriment/coating/batter
 	name = "batter mix"
@@ -4506,29 +4509,23 @@
 	if(volume >= 3)
 		T.wet_floor(2)
 
+// todo: review data procs
 /datum/reagent/nutriment/triglyceride/oil/initialize_data(newdata) // Called when the reagent is created.
 	..()
 	if (!data)
 		data = list("temperature" = T20C)
 
 //Handles setting the temperature when oils are mixed
-/datum/reagent/nutriment/triglyceride/oil/mix_data(newdata, newamount)
-
-	if (!data)
-		data = list()
-
-	var/ouramount = volume - newamount
-	if (ouramount <= 0 || !data["temperature"] || !volume)
+/datum/reagent/nutriment/triglyceride/oil/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+	LAZYINITLIST(data)
+	if (current_amount <= 0 || !data["temperature"] || !volume)
 		//If we get here, then this reagent has just been created, just copy the temperature exactly
-		data["temperature"] = newdata["temperature"]
-
+		data["temperature"] = new_data["temperature"]
 	else
 		//Our temperature is set to the mean of the two mixtures, taking volume into account
-		var/total = (data["temperature"] * ouramount) + (newdata["temperature"] * newamount)
+		var/total = (data["temperature"] * current_amount) + (new_data["temperature"] * new_amount)
 		data["temperature"] = total / volume
-
 	return ..()
-
 
 //Calculates a scaling factor for scalding damage, based on the temperature of the oil and creature's heat resistance
 /datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(mob/living/carbon/M)

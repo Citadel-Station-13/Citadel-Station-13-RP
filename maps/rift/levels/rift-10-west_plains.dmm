@@ -976,7 +976,7 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
-/obj/item/analyzer,
+/obj/item/atmos_analyzer,
 /obj/machinery/camera/network/research_outpost{
 	dir = 1
 	},
@@ -1085,7 +1085,7 @@
 	dir = 8
 	},
 /obj/machinery/meter,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -1166,7 +1166,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "fw" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -1374,7 +1374,7 @@
 /area/rift/facility/interior/surface)
 "gq" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -2078,7 +2078,7 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 25
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -3345,7 +3345,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "pv" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -3502,7 +3502,7 @@
 /obj/item/storage/excavation,
 /obj/item/stack/flag/yellow,
 /obj/item/pickaxe,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -3927,7 +3927,7 @@
 	pixel_x = 6;
 	pixel_y = 26
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -4050,7 +4050,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west)
 "sH" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4192,7 +4192,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -4293,7 +4293,7 @@
 /turf/simulated/wall/r_wall,
 /area/rift/facility/exterior)
 "tB" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -4425,7 +4425,7 @@
 /area/rnd/outpost/anomaly_lab)
 "ug" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled,
@@ -4650,7 +4650,7 @@
 	name = "Powernet Sensor - Science Outpost Subgrid";
 	name_tag = "Science Outpost Subgrid"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -4740,7 +4740,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -5557,7 +5557,7 @@
 /area/rnd/outpost/anomaly_lab/analysis)
 "yY" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -5587,7 +5587,7 @@
 /obj/machinery/camera/network/research_outpost{
 	dir = 8
 	},
-/obj/item/analyzer,
+/obj/item/atmos_analyzer,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "zc" = (
@@ -5950,7 +5950,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -6456,7 +6456,7 @@
 /turf/simulated/floor,
 /area/construction/solarscontrol)
 "DH" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -6698,9 +6698,8 @@
 /turf/simulated/wall,
 /area/rnd/outpost/mixing)
 "Fe" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
-	filter_type = 4;
-	filtered_out = list("nitrous_oxide")
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
+	filtering = /datum/gas/nitrous_oxide
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
@@ -6708,7 +6707,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -6944,7 +6943,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/exterior)
 "Gi" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -7314,7 +7313,7 @@
 /turf/simulated/open,
 /area/outpost/mining_main/outpost/airlock/one)
 "HM" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -8042,7 +8041,7 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/outpost/chamber)
 "KY" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/corner/purple{
@@ -8607,7 +8606,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "NV" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -8724,7 +8723,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -8970,9 +8969,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "PB" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
-	filter_type = 0;
-	filtered_out = list("phoron")
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
+	filtering = /datum/gas/phoron
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
@@ -9794,7 +9792,7 @@
 "Tu" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -10462,9 +10460,8 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "WP" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
-	filter_type = 3;
-	filtered_out = list("carbon_dioxide")
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
+	filtering = /datum/gas/carbon_dioxide
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
@@ -10814,7 +10811,7 @@
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/elevator)
 "Ys" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 4;
 	name = "High Power Gas filter";
 	power_rating = 15000;
@@ -11138,7 +11135,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},

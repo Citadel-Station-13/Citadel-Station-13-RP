@@ -147,9 +147,9 @@
 
 	bot_patrolling = TRUE
 
-	allowed_spawns = list("Shuttle Bay","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
-	spawnpoint_died = /datum/spawnpoint/shuttle
-	spawnpoint_left = /datum/spawnpoint/shuttle
+	allowed_spawns = list(LATEJOIN_METHOD_ARRIVALS_SHUTTLE,LATEJOIN_METHOD_GATEWAY,LATEJOIN_METHOD_CRYOGENIC_STORAGE,LATEJOIN_METHOD_ROBOT_STORAGE,"Beruang Trading Corp Cryo")
+	spawnpoint_died = /datum/spawnpoint/arrivals
+	spawnpoint_left = /datum/spawnpoint/arrivals
 	spawnpoint_stayed = /datum/spawnpoint/cryo
 
 	meteor_strike_areas = null

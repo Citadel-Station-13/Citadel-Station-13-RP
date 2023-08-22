@@ -6,7 +6,7 @@
 	var/obj/item/coat = allocate(/obj/item/clothing/suit/hooded/wintercoat/medical)
 	TEST_ASSERT(human.equip_to_slot_if_possible(coat, ITEM_SLOT_OCLOTHING), "Couldn't equip winter coat")
 
-	var/obj/item/analyzer = allocate(/obj/item/healthanalyzer)
+	var/obj/item/atmos_analyzer = allocate(/obj/item/healthanalyzer)
 	TEST_ASSERT(human.equip_to_slot_if_possible(analyzer, ITEM_SLOT_SUITSTORE), "Couldn't equip health analyzer")
 
 	// Then, have them quick swap between the coat and a space suit
