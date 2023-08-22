@@ -34,7 +34,7 @@ export interface AtmosPortableScubberData {
   moleRate: number;
 }
 
-export const AtmosPortableScubber = (props, context) => {
+export const AtmosPortableScrubber = (props, context) => {
   const { data, act } = useBackend<AtmosPortableScubberData>(context);
   return (
     <AtmosPortable
