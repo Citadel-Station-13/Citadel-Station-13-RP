@@ -9849,7 +9849,7 @@
 /area/maintenance/atmos)
 "FF" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	name = "Radiation Prep - Cleanup"
 	},
 /obj/machinery/door/firedoor/multi_tile{
@@ -9895,7 +9895,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2
+	dir = 4
 	},
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 2
@@ -10783,7 +10783,7 @@
 /area/maintenance/chapel)
 "Jy" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	name = "General Storage";
 	req_one_access = list(47)
 	},

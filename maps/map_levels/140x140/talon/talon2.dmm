@@ -14,7 +14,7 @@
 	req_one_access = list(301)
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Mess Hall"
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
@@ -2650,7 +2650,7 @@
 	req_one_access = list(301)
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Bar"
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,

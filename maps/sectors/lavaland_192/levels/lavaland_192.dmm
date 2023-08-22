@@ -1465,7 +1465,7 @@
 	req_one_access = list(48)
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
+	dir = 4;
 	name = "Lounge";
 	req_access = list(48)
 	},

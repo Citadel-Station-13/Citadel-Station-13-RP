@@ -1363,8 +1363,8 @@
 /area/medical/medbay)
 "dk" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
-	req_access = list()
+	req_access = list();
+	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1404,8 +1404,8 @@
 /area/medical/medbay2)
 "do" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
-	req_access = list()
+	req_access = list();
+	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1669,8 +1669,8 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
-	req_access = list()
+	req_access = list();
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay2)
@@ -1707,8 +1707,8 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
-	req_access = list()
+	req_access = list();
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
@@ -1857,8 +1857,8 @@
 /area/crew_quarters/bar)
 "eu" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
-	req_access = list()
+	req_access = list();
+	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
@@ -1872,8 +1872,8 @@
 /area/medical/medbay2)
 "ew" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
-	req_access = list()
+	req_access = list();
+	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
