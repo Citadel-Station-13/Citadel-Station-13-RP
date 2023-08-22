@@ -33,6 +33,7 @@
 	recipe_list = GLOB.drink_recipes
 	result_type_name = "drink"
 	icon_state = "barpad_dark"
+	desc = "A display used for displaying information on drink recipes. \n <center>It can be Alt-Clicked to toggle the theme.</center>"
 
 /obj/machinery/recipe_lookup/drinks/display_recipe_instructions(var/result_name, var/datum/chemical_reaction/recipe)
 	var/instructions = "Reagents required:\n"
