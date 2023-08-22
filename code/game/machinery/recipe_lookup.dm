@@ -3,7 +3,7 @@
 	var/list/recipe_list
 	var/result_type_name
 
-/obj/machinery/recipe_lookup/proc/display_recipe_instructions(var/result_name, var/recipe)
+/obj/machinery/recipe_lookup/proc/display_recipe_instructions(var/recipe)
 	return
 
 /obj/machinery/recipe_lookup/proc/display_options()
@@ -26,16 +26,19 @@
 	if(!result_name)
 		return
 	var/recipe = recipe_list[result_name]
-	display_recipe_instructions(result_name, recipe)
+	display_recipe_instructions(recipe)
 
 // bartending version
 /obj/machinery/recipe_lookup/drinks
-	recipe_list = GLOB.drink_recipes
 	result_type_name = "drink"
 	icon_state = "barpad_dark"
 	desc = "A display used for displaying information on drink recipes. \n <center>It can be Alt-Clicked to toggle the theme.</center>"
 
-/obj/machinery/recipe_lookup/drinks/display_recipe_instructions(var/result_name, var/datum/chemical_reaction/recipe)
+/obj/machinery/recipe_lookup/drinks/Initialize()
+	. = ..()
+	recipe_list = GLOB.drink_recipes
+
+/obj/machinery/recipe_lookup/drinks/display_recipe_instructions(var/datum/chemical_reaction/recipe)
 	var/instructions = "Reagents required:\n"
 	for(var/item in recipe.required_reagents)
 		instructions += "[recipe.required_reagents[item]] parts <b>[item]</b>\n"
@@ -49,7 +52,7 @@
 		for(var/item in recipe.catalysts)
 			instructions += "[recipe.catalysts[item]] units of <b>[item]</b>"
 	instructions += "\n"
-	instructions += "Result: [result_amount] parts <b>[result]</b>"
+	instructions += "Result: [recipe.result_amount] parts <b>[recipe.result]</b>"
 	to_chat(usr, instructions)
 
 /obj/machinery/recipe_lookup/drinks/AltClick(mob/living/carbon/user)
