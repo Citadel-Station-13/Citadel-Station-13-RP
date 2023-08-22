@@ -278,7 +278,7 @@
 
 	if(current_version < 6)
 		var/name
-		READ_FILE(S["real_name"],  name)
+		READ_FILE(S["real_name"], name)
 		add_character_lookup(prefs.client_ckey, name, 0)
 
 /**
