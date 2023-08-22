@@ -68,7 +68,11 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	//? Power Handling
 	/// breaker: on/off
-	var/breaker = TRUE
+	var/load_toggled = TRUE
+	/// are we *actually* operating?
+	/// this way the apc can automatically shut off when there's
+	/// insufficient power instead of oscillating every tick
+	var/load_active = TRUE
 	/// internal capacitor capacity in joules
 	var/buffer_capacity = 25000
 	/// internal capacitor joules; this is auto-set at init based on if we have a cell / power if null.
@@ -109,6 +113,11 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/load_balancing_priority = POWER_BALANCING_TIER_MEDIUM
 	/// power tier - changeable
 	var/load_balancing_modify = TRUE
+	/// buffer-less: used to estimate how much power we'll need on average
+	/// if powered off, most burst usages won't work, but, we'll still guesstimate static load.
+	var/load_heuristic = 0
+	/// buffer-any: randomized process() ticks before we try to reinstate power
+	var/load_resume = 0
 
 	//? Security
 	/// cover locked
@@ -645,7 +654,11 @@ GLOBAL_LIST_EMPTY(apcs)
 	#warn above
 
 	// tally up area static power + the burst power used
-	var/using_joules = 0
+	// used = already used
+	// wanting = used + powered off machines
+	// this is used for heuristic estimation reasons.
+	var/used_joules = 0
+	var/wanting_joules = 0
 	var/used_burst_joules = 0
 	for(var/channel in 1 to POWER_CHANNEL_COUNT)
 		var/channel_total = area.power_usage_static[channel]
@@ -653,8 +666,17 @@ GLOBAL_LIST_EMPTY(apcs)
 		used_burst_joules += current_burst_load[channel]
 		current_burst_load[channel] = 0
 		// burst is intentionally ignored as it was already drained.
-		using_joules += channel_total
+		if(area.power_channels & power_channel_bits[channel])
+			used_joules += channel_total
+		wanting_joules += channel_total
 	last_load = using_joules + used_burst_joules
+	load_heuristic = SIMPLE_VALUE_SMOOTHING(0.5, load_heuristic, last_load)
+
+	// reduce load resume
+	// this should never go too high, because we want fast restore times
+	// generally, we increase this more if there's multiple failed resumes.
+	if(load_resume > 0)
+		--load_resume
 
 	// we handle celled and cell-less operation differently
 	if(isnull(cell))
@@ -953,7 +975,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	channels_auto = POWER_BITS_ALL
 	charging_enabled = TRUE
 	charging = FALSE
-	breaker = FALSE
+	load_toggled = FALSE
 
 	requires_update = full_update_channels() || requires_update
 
@@ -1100,7 +1122,7 @@ GLOBAL_LIST_EMPTY(apcs)
  * @return true/false based on if the channel was changed
  */
 /obj/machinery/apc/proc/update_channel_setting(channel, defer_updates)
-	#warn impl
+	#warn impl + deal with [load_active] var, which has to modify area as opposed to us because enabled != working
 
 /obj/machinery/apc/proc/should_enable_channel(channel)
 	#warn impl
@@ -1229,6 +1251,11 @@ GLOBAL_LIST_EMPTY(apcs)
 	.["chargeActive"] = charging
 	.["loadBalancePriority"] = load_balancing_priority
 	.["loadBalanceAllowed"] = load_balancing_modify
+	.["breakerTripped"] = breaker_tripped
+	.["loadActive"] = load_active
+
+	#warn impl below
+
 	var/list/data = list(
 		"locked" = locked,
 		"normallyLocked" = locked,

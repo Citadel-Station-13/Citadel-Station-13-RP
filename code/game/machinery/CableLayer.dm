@@ -3,7 +3,7 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "pipe_d"
 	density = TRUE
-	var/obj/structure/cable/last_piece
+	var/obj/structure/wire/cable/last_piece
 	var/obj/item/stack/cable_coil/cable
 	var/max_cable = 100
 	var/on = FALSE
@@ -95,13 +95,13 @@
 	if(!istype(new_turf) || !dismantleFloor(new_turf))
 		return reset()
 	var/fdirn = turn(M_Dir,180)
-	for(var/obj/structure/cable/LC in new_turf) // Check to make sure there's not a cable there already.
+	for(var/obj/structure/wire/cable/LC in new_turf) // Check to make sure there's not a cable there already.
 		if(LC.d1 == fdirn || LC.d2 == fdirn)
 			return reset()
 	if(!use_cable(1))
 		return reset()
 
-	var/obj/structure/wire/cable/NC = new(new_turf, COLOR_RED, 0, fdirn)
+	var/obj/structure/wire/wire/cable/NC = new(new_turf, COLOR_RED, 0, fdirn)
 	if(last_piece && last_piece.d2 != M_Dir)
 		last_piece.reset_dirs(min(last_piece.d2, M_Dir), max(last_piece.d2, M_Dir))
 

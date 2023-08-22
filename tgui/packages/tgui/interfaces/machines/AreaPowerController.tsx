@@ -53,6 +53,10 @@ interface AreaPowerControllerData {
   loadBalanceAllowed: BooleanLike;
   // load balancing level
   loadBalancePriority: PowerBalancingTiers;
+  // is the entire apc on/off
+  loadActive: BooleanLike;
+  // breaker tripped?
+  breakerTripped: BooleanLike;
 }
 
 export const AreaPowerController = (props, context) => {
