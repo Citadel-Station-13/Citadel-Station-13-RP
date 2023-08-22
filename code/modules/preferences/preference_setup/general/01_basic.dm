@@ -24,6 +24,12 @@
 	S["Ref_Toggle"]				>> pref.full_ref_toggle
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
+	// character lookup update if name has changed
+	var/old_name = S["real_name"]
+	var/new_name = pref.real_name
+	if(old_name != new_name)
+		update_character_lookup(pref.client_ckey, old_name, new_name, OBJECT_PERSISTENCE_CHARACTER_TYPE_HUMAN)
+
 	S["real_name"]				<< pref.real_name
 	S["nickname"]				<< pref.nickname
 	S["name_is_always_random"]	<< pref.be_random_name
