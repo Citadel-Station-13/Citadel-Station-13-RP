@@ -5,7 +5,7 @@
 
 import { BooleanLike } from "../../../common/react";
 import { useBackend } from "../../backend";
-import { PowerChannelBits, PowerChannelList, PowerChannels } from "../../constants/power";
+import { PowerBalancingTiers, PowerChannelBits, PowerChannelList, PowerChannels } from "../../constants/power";
 import { Window } from "../../layouts"
 
 enum ApcNightshiftSetting {
@@ -49,6 +49,10 @@ interface AreaPowerControllerData {
   chargeActive: BooleanLike;
   // charging enabled?
   chargeEnabled: BooleanLike;
+  // load balancing editable?
+  loadBalanceAllowed: BooleanLike;
+  // load balancing level
+  loadBalancePriority: PowerBalancingTiers;
 }
 
 export const AreaPowerController = (props, context) => {

@@ -64,7 +64,7 @@
 		network3?.update = TRUE
 
 	if(power_current)
-		use_power(power_current)
+		use_burst_power(power_current)
 		// switch to watts instead of joules by dividing out tick time
 		power_current /= delta_time
 

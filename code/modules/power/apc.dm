@@ -89,16 +89,32 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/channels_auto = POWER_BITS_ALL
 	/// power channels currently on
 	var/channels_active = POWER_BITS_ALL
-	/// last power used
-	var/list/last_power_using = EMPTY_POWER_CHANNEL_LIST
+	/// last total power used, static and burst
+	var/last_load = 0
+	/// last channel power used, static and burst
+	var/list/last_channel_load = EMPTY_POWER_CHANNEL_LIST
 	/// burst usage for channels since last process()
-	var/list/burst_power_using = EMPTY_POWER_CHANNEL_LIST
+	/// this is directly deducted and will not be drained again during process().
+	var/list/current_burst_load = EMPTY_POWER_CHANNEL_LIST
 	/// percentage (as 0.0 to 1.0) of cell remaining to turn a channel off at
 	/// if no cell, it turns off immediately upon insufficient power from mains.
 	var/list/channel_thresholds = APC_CHANNEL_THRESHOLDS_DEFAULT
 	/// alarm threshold as ratio
 	/// if no cell, this doesn't alarm as long as it has enough power.
 	var/alarm_threshold = 0.3
+	/// if power alarms from this apc are visible on consoles
+	//! warning: legacy
+	var/alarms_hidden = FALSE
+	/// power tier - for load balancing
+	var/load_balancing_priority = POWER_BALANCING_TIER_MEDIUM
+	/// power tier - changeable
+	var/load_balancing_modify = TRUE
+
+	//? Security
+	/// cover locked
+	var/cover_locked = TRUE
+	/// interface locked
+	var/interface_locked = TRUE
 
 	#warn rest
 
@@ -108,12 +124,9 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/opened = 0 //0=closed, 1=opened, 2=cover removed
 	var/shorted = 0
 	var/grid_check = FALSE
-	var/operating = 1
 	var/charging = 0
 	var/chargemode = 1
 	var/chargecount = 0
-	var/locked = 1
-	var/coverlocked = 1
 	var/aidisabled = 0
 	var/obj/machinery/power/terminal/terminal = null
 	var/main_status = 0
@@ -127,13 +140,8 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/update_state = -1
 	var/update_overlay = -1
 	var/is_critical = 0
-	var/global/status_overlays = 0
 	var/failure_timer = 0
 	var/force_update = 0
-	var/global/list/status_overlays_equipment
-	var/global/list/status_overlays_lighting
-	var/global/list/status_overlays_environ
-	var/alarms_hidden = FALSE //If power alarms from this APC are visible on consoles
 
 /obj/machinery/apc/Initialize(mapload, set_dir, constructing)
 	if(!overlay_cache_generated)
@@ -636,12 +644,32 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	#warn above
 
+	// tally up area static power + the burst power used
 	var/using_joules = 0
+	var/used_burst_joules = 0
 	for(var/channel in 1 to POWER_CHANNEL_COUNT)
-		var/channel_total = area.power_usage_static[channel] + burst_power_using[channel]
-		burst_power_using[channel] = 0
-		using_power_last[channel] = channel_total
+		var/channel_total = area.power_usage_static[channel]
+		last_channel_load[channel] = channel_total + current_burst_load[channel]
+		used_burst_joules += current_burst_load[channel]
+		current_burst_load[channel] = 0
+		// burst is intentionally ignored as it was already drained.
 		using_joules += channel_total
+	last_load = using_joules + used_burst_joules
+
+	// we handle celled and cell-less operation differently
+	if(isnull(cell))
+		// cell-less; use buffer.
+		// the job of the apc is not to keep the buffer as full as possible for emergencies
+		// the job of the apc is to smooth fluctuations out so that grid power doesn't spike every 2 seconds from
+		// apcs fluctuating between "can't charge any more" and "suddenly need to charge all that's missing".
+		// furthurmore, our job is to shut off / turn on based on if there's enough power to have us, well, operate with all our
+		// machinery.
+
+	else
+
+	// todo: optimize
+	var/requires_icon_update = full_update_channels(TRUE)
+	full_update_alarm()
 
 	#warn below
 
@@ -659,29 +687,6 @@ GLOBAL_LIST_EMPTY(apcs)
 		main_status = 1
 	else
 		main_status = 2
-
-
-	#warn placeholder
-	// start handling draw
-	var/needed = 0
-	// fetch & accumulate
-	for(var/i in 1 to POWER_CHANNEL_COUNT)
-		needed += static_power_used[i] = area.power_usage_static[i]
-	// draw power from grid
-	var/wanted_kw = round((needed + (buffer < buffer_capacity? buffer_capacity - buffer : 0)) * 0.001)
-	var/grid_drawn = draw_grid_power(wanted_kw, TRUE)
-	// subtract
-	needed -= grid_drawn * 1000
-	// difference?
-	if(needed < 0)
-		// recharge buffer
-		buffer = min(buffer_capacity, buffer - needed)
-	else
-		// drain buffer
-		buffer = max(0, buffer - needed)
-
-
-	#warn guh
 
 	if(cell && !shorted && !grid_check)
 		// draw power from cell as before to power the area
@@ -759,50 +764,6 @@ GLOBAL_LIST_EMPTY(apcs)
 		power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
 		autoflag = 0
 
-	// update icon & area power if anything changed
-	if(last_lt != lighting || last_eq != equipment || last_en != environ || force_update)
-		force_update = 0
-		queue_icon_update()
-		update()
-	else if (last_ch != charging)
-		queue_icon_update()
-
-/obj/machinery/apc/proc/update_channels()
-	// Allow the APC to operate as normal if the cell can charge
-	if(charging && longtermpower < 10)
-		longtermpower += 1
-	else if(longtermpower > -10)
-		longtermpower -= 2
-
-	if((cell.percent() > 30) || longtermpower > 0)              // Put most likely at the top so we don't check it last, effeciency 101
-		if(autoflag != 3)
-			equipment = autoset(equipment, 1)
-			lighting = autoset(lighting, 1)
-			environ = autoset(environ, 1)
-			autoflag = 3
-			power_alarm.clearAlarm(loc, src)
-	else if((cell.percent() <= 30) && (cell.percent() > 15) && longtermpower < 0)                       // <30%, turn off equipment
-		if(autoflag != 2)
-			equipment = autoset(equipment, 2)
-			lighting = autoset(lighting, 1)
-			environ = autoset(environ, 1)
-			power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
-			autoflag = 2
-	else if(cell.percent() <= 15)        // <15%, turn off lighting & equipment
-		if((autoflag > 1 && longtermpower < 0) || (autoflag > 1 && longtermpower >= 0))
-			equipment = autoset(equipment, 2)
-			lighting = autoset(lighting, 2)
-			environ = autoset(environ, 1)
-			power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
-			autoflag = 1
-	else                                   // zero charge, turn all off
-		if(autoflag != 0)
-			equipment = autoset(equipment, 0)
-			lighting = autoset(lighting, 0)
-			environ = autoset(environ, 0)
-			power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
-			autoflag = 0
-
 // val 0=off, 1=off(auto) 2=on 3=on(auto)
 // on 0=off, 1=on, 2=autooff
 // defines a state machine, returns the new state
@@ -819,7 +780,6 @@ GLOBAL_LIST_EMPTY(apcs)
 				return POWERCHAN_OFF_AUTO
 
 	return cur_state //leave unchanged
-
 
 // damage and destruction acts
 /obj/machinery/apc/emp_act(severity)
@@ -1007,6 +967,17 @@ GLOBAL_LIST_EMPTY(apcs)
 	autoflag = initial(autoflag)
 	longtermpower = initial(longtermpower)
 	failure_timer = initial(failure_timer)
+
+//? Alarms
+
+/obj/machinery/apc/proc/full_update_alarm()
+	if(isnull(cell))
+		#warn so we want to alarm / clear alarm based on if there's enough power to fuel the machinery
+	else
+		if(cell.percent() > alarm_threshold * 100)
+			power_alarm.clearAlarm(loc, src)
+		else
+			power_alarm.triggerAlarm(loc, src, hidden = alarms_hidden)
 
 //? Appearance
 
@@ -1256,6 +1227,8 @@ GLOBAL_LIST_EMPTY(apcs)
 	.["channelThresholds"] = channel_thresholds
 	.["chargeEnabled"] = charging_enabled
 	.["chargeActive"] = charging
+	.["loadBalancePriority"] = load_balancing_priority
+	.["loadBalanceAllowed"] = load_balancing_modify
 	var/list/data = list(
 		"locked" = locked,
 		"normallyLocked" = locked,

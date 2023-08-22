@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 80
 	active_power_usage = 1000 //For heating/cooling rooms. 1000 joules equates to about 1 degree every 2 seconds for a single tile of air.
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	req_one_access = list(ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 	clicksound = "button"
 	clickvol = 30
@@ -180,7 +180,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	if(!regulating_temperature)
 		//check for when we should start adjusting temperature
 		if((this_is_fine == AIR_ALARM_RAISE_OKAY) && abs(environment.temperature - target_temperature) > 2.0 && environment.return_pressure() >= 1)
-			update_use_power(USE_POWER_ACTIVE)
+			set_use_power(USE_POWER_ACTIVE)
 			regulating_temperature = 1
 			audible_message("\The [src] clicks as it starts [environment.temperature > target_temperature ? "cooling" : "heating"] the room.",\
 			"You hear a click and a faint electronic hum.")
@@ -188,7 +188,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	else
 		//check for when we should stop adjusting temperature
 		if((this_is_fine != AIR_ALARM_RAISE_OKAY) || abs(environment.temperature - target_temperature) <= 0.5 || environment.return_pressure() < 1)
-			update_use_power(USE_POWER_IDLE)
+			set_use_power(USE_POWER_IDLE)
 			regulating_temperature = 0
 			audible_message("\The [src] clicks quietly as it stops [environment.temperature > target_temperature ? "cooling" : "heating"] the room.",\
 			"You hear a click as a faint electronic humming stops.")

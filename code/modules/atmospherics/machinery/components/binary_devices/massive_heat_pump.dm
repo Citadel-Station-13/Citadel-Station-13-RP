@@ -61,10 +61,10 @@
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
 
-	if(!powernet_connection.network)
+	if(!powernet_connection.is_connected())
 		return//make sure we are connected to a powernet
 
-	power_rating = power_machine.surplus() * 1000 //update power rateing to what ever is avaiable
+	power_rating = powernet_connection.last_excess() * 1000 //update power rateing to what ever is avaiable
 	power_rating = clamp(power_rating, 0, power_level)
 
 	if(power_rating <= 0)
@@ -91,7 +91,7 @@
 	if (power_draw >= 0)
 		last_power_draw_legacy = power_draw
 
-		power_machine.draw_power(power_draw * 0.001)
+		powernet_connection.flat_draw(power_draw * 0.001)
 		if(network1)
 			network1.update = 1
 

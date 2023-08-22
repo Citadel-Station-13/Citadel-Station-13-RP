@@ -27,6 +27,6 @@ export const PowerBalancingTierNames = [
 
 export const PowerBalancingTiersTotal = 3;
 
-export type<T> PowerChannelList<T> = [
+export type PowerChannelList<T> = [
   T, T, T,
 ];

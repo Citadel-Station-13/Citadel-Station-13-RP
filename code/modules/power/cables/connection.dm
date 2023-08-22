@@ -26,5 +26,23 @@
 /datum/wirenet_connection/power/proc/supply(kw)
 	return network.supply(kw)
 
+/datum/wirenet_connection/power/proc/last_excess()
+	return network.last_excess
+
+/datum/wirenet_connection/power/proc/last_supply()
+	return network.last_supply
+
+/datum/wirenet_connection/power/proc/last_load()
+	return network.last_load
+
+/datum/wirenet_connection/power/proc/last_flat_load()
+	return network.last_flat_load
+
+/datum/wirenet_connection/power/proc/last_dynamic_load()
+	return network.load - network.last_flat_load
+
+/datum/wirenet_connection/power/proc/last_powernet_status()
+	return network.last_powernet_status
+
 /datum/wirenet_connection/power/lazy
 	automatic = TRUE

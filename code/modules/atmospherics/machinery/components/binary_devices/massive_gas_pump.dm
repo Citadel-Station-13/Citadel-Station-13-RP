@@ -62,7 +62,7 @@
 		last_flow_rate_legacy = last_power_draw_legacy = 0
 		return//make sure we are connected to a powernet
 
-	power_rating = power_machine.surplus() * 1000 //update power rateing to what ever is avaiable
+	power_rating = powernet_connection.last_excess() * 1000 //update power rateing to what ever is avaiable
 	power_rating = clamp(power_rating, 0, power_level)
 
 	if(power_rating <= 0)
