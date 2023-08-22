@@ -4,7 +4,7 @@ A character lookup is essentially connecting four things:
 1. A character name, formatted using ckey() referred to as 'charactername'
 2. The player's ckey, formatted using ckey() referred to as 'playerid'
 3. The character 'type', i.e. if it is for storing pAI data, AI data, human data, etc
-4. A unique ID combining the above values, called 'characterid'
+4. A unique ID representing the connection between the above values, called 'characterid'
 
 The reason being that multiple characters with the same name, will have the same characterid, and in turn can share persistence.
 If a player wants two characters with different names to share persistence, we can then alter the characterid for one of the entries.
