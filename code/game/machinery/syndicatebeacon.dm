@@ -86,7 +86,7 @@
 	if(isnull(connection.network))
 		user.action_feedback(SPAN_WARNING("[src] needs to be connected to a power network."), src)
 		return
-	if(surplus() < 1.5)
+	if(get_powernet_supply() < 1.5)
 		if(user)
 			to_chat(user, "<span class='notice'>The connected wire doesn't have enough current.</span>")
 		return

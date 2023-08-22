@@ -78,7 +78,7 @@
 	if(expended)
 		return
 	// 0.5 kw
-	if(surplus() < 0.5)
+	if(get_powernet_supply() < 0.5)
 		if(user) to_chat(user, "<span class='notice'>The connected wire doesn't have enough current.</span>")
 		return
 	set_light(3, 3, "#00CCAA")

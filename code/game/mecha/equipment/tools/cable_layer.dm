@@ -107,8 +107,8 @@
 		return reset()
 
 	var/obj/structure/wire/cable/NC = new(new_turf, COLOR_RED, 0, fdirn)
-	if(last_piece && last_piece.d2 != M_Dir)
-		last_piece.reset_dirs(min(last_piece.d2, M_Dir), max(last_piece.d2, M_Dir))
+	if(last_piece && last_piece.d2 != chassis.dir)
+		last_piece.reset_dirs(min(last_piece.d2, chassis.dir), max(last_piece.d2, chassis.dir))
 
 	last_piece = NC
 	return 1

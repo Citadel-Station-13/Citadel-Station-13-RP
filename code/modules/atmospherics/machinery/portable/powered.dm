@@ -76,7 +76,7 @@
 		return
 	..()
 
-/obj/machinery/portable_atmospherics/powered/use_power(amount, chan, dt)
+/obj/machinery/portable_atmospherics/powered/use_burst_power(amount, channel, allow_partial, over_time)
 	if(!use_cell)
 		return ..()
 	. = cell.use(DYNAMIC_W_TO_CELL_UNITS(amount, dt))
