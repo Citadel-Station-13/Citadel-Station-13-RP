@@ -11,6 +11,8 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 10 * ONE_ATMOSPHERE
+	weight = ITEM_WEIGHT_VOIDSUIT_HELMET
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_HELMET
 
 //Captain's space suit This is not the proper path but I don't currently know enough about how this all works to mess with it.
 /obj/item/clothing/suit/armor/captain
@@ -23,7 +25,8 @@
 	clothing_flags = 0
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy, /obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/ammo_casing, /obj/item/melee/baton,/obj/item/handcuffs)
-	slowdown = 1.5
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT
+	weight = ITEM_WEIGHT_VOIDSUIT
 	armor_type = /datum/armor/station/tactical
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
@@ -66,8 +69,9 @@
 	name = "Santa's suit"
 	desc = "Festive!"
 	icon_state = "santa"
-	slowdown = 0
-	clothing_flags = 0
+	weight = ITEM_WEIGHT_BASELINE
+	encumbrance = ITEM_ENCUMBRANCE_BASELINE
+	clothing_flags = NONE
 	allowed = list(/obj/item) //for stuffing exta special presents
 
 //Space pirate outfit
@@ -76,9 +80,11 @@
 	desc = "Yarr."
 	icon_state = "pirate"
 	armor_type = /datum/armor/pirate/medium
-	clothing_flags = 0
+	weight = ITEM_WEIGHT_BASELINE
+	encumbrance = ITEM_ENCUMBRANCE_BASELINE
+	clothing_flags = NONE
 	inv_hide_flags = BLOCKHAIR
-	body_cover_flags = 0
+	body_cover_flags = NONE
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/suit/space/pirate //Whhhhyyyyyyy???
@@ -87,7 +93,8 @@
 	icon_state = "pirate"
 	w_class = ITEMSIZE_NORMAL
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen)
-	slowdown = 0
+	weight = ITEM_WEIGHT_BASELINE
+	encumbrance = ITEM_ENCUMBRANCE_BASELINE
 	armor_type = /datum/armor/pirate/medium
 	siemens_coefficient = 0.9
 	inv_hide_flags = HIDETAIL|HIDEHOLSTER
@@ -99,12 +106,15 @@
 	icon_state = "syndicate-helm-orange"
 	desc = "A simple helmet with a built in light, smells like mothballs."
 	flash_protection = FLASH_PROTECTION_NONE
+	encumbrance = ITEM_ENCUMBRANCE_EMERGENCY_SOFTSUIT_HELMET
+	weight = ITEM_WEIGHT_EMERGENCY_SOFTSUIT_HELMET
 
 /obj/item/clothing/suit/space/emergency
 	name = "Emergency Softsuit"
 	icon_state = "syndicate-orange"
 	desc = "A thin, ungainly softsuit colored in blaze orange for rescuers to easily locate, looks pretty fragile."
-	slowdown = 4
+	encumbrance = ITEM_ENCUMBRANCE_EMERGENCY_SOFTSUIT
+	weight = ITEM_WEIGHT_EMERGENCY_SOFTSUIT
 
 //Russian Emergency Suit
 /obj/item/clothing/head/helmet/space/emergency/russian

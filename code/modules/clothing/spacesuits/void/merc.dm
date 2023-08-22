@@ -89,7 +89,6 @@
 	name = "clown commando voidsuit"
 	desc = "An advanced suit that protects against injuries during special operations. An intricate bananium wafer in the shape of a banana bears the crest of Columbina."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
-	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/merc/space/clown
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)

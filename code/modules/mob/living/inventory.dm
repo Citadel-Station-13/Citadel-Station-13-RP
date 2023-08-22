@@ -285,13 +285,14 @@
 	update_carry()
 
 /mob/living/proc/carry_weight_to_slowdown(amount)
-	return 0 
+	return 0
 
 /mob/living/proc/carry_encumbrance_to_slowdown(amount)
 	return 0
 
 /mob/living/proc/update_carry()
 	var/slowdown = max(carry_weight_to_slowdown(cached_carry_weight), carry_encumbrance_to_slowdown(cached_carry_encumbrance))
+	#warn throw alert
 	if(slowdown)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_inventory_carry, multiplicative_slowdown = slowdown)
 	else

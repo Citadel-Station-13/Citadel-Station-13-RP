@@ -32,6 +32,11 @@
 	unacidable = 1
 	preserve_item = 1
 
+	weight = ITEM_WEIGHT_BASELINE
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG
+	var/offline_weight = ITEM_WEIGHT_LEGACY_RIG
+	var/offline_encumbrance = ITEM_WEIGHT_LEGACY_ENCUMBRANCE * 2
+
 	// Activation
 	/// activation state
 	var/activation_state = RIG_ACTIVATION_OFF
@@ -92,7 +97,6 @@
 	var/locked_down = 0
 
 	var/seal_delay = SEAL_DELAY
-	var/offline_slowdown = 3                                  // If the suit is deployed and unpowered, it sets slowdown to this.
 	var/vision_restriction
 	var/offline_vision_restriction = 1                        // 0 - none, 1 - welder vision, 2 - blind. Maybe move this to helmets.
 	var/airtight = 1 //If set, will adjust ALLOWINTERNALS flag and pressure protections on components. Otherwise it should leave them untouched.
