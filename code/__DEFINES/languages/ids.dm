@@ -27,7 +27,7 @@
 /// aurils
 #define LANGUAGE_ID_DAEDAL_AURIL "auril"
 /// dremachirs
-#define LANGUAGE_ID_DAEDAL_DREMACHIR "dremic"
+#define LANGUAGE_ID_DAEDAL_DREMACHIR "dremachir"
 /// diona
 #define LANGUAGE_ID_DIONA "diona"
 /// diona global
