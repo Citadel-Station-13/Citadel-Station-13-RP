@@ -28,6 +28,10 @@
 	var/recipe = recipe_list[result_name]
 	display_recipe_instructions(recipe)
 
+/obj/item/frame/recipe_lookup
+	icon = 'icons/obj/stationobjs.dmi'
+	refund_amt = 1
+
 // bartending version
 /obj/machinery/recipe_lookup/drinks
 	result_type_name = "drink"
@@ -62,5 +66,9 @@
 	else
 		icon_state = "barpad_dark"
 		to_chat(user, "You set the display to dark theme.")
+
+/obj/item/frame/recipe_lookup/drinks
+	icon_state = "barpad_dark"
+	build_machine_type = /obj/machinery/recipe_lookup/drinks
 
 // cook version TBD due to food rework
