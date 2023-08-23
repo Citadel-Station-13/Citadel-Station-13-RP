@@ -107,7 +107,14 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/zaddat/(H), SLOT_ID_MASK) // mask has to come first or Shroud helmet will get in the way
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/void/zaddat/(H), SLOT_ID_SUIT)
 
-	var/obj/item/storage/toolbox/lunchbox/survival/zaddat/L = new(H)
+	var/obj/item/storage/toolbox/lunchbox/survival/L = new(H)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/tool/prybar/red(L)
 
 	if(H.backbag == 1)
 		H.put_in_hands_or_del(L)
