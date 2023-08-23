@@ -862,7 +862,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/engineering/engine_room)
 "ct" = (
-/obj/machinery/suit_storage_unit/cryosuit,
+/obj/machinery/suit_storage_unit/atmos,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "cu" = (
@@ -1613,7 +1613,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/suit_storage_unit/cryosuit/engineering,
+/obj/machinery/suit_storage_unit/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "eD" = (
@@ -6754,7 +6754,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/suit_storage_unit/cryosuit/engineering,
+/obj/machinery/suit_storage_unit/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "ti" = (
@@ -11227,7 +11227,7 @@
 /area/quartermaster/miningdock)
 "Lt" = (
 /obj/structure/window/reinforced,
-/obj/machinery/suit_storage_unit/cryosuit,
+/obj/machinery/suit_storage_unit/atmos,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "Lu" = (
@@ -11239,7 +11239,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Lw" = (
-/obj/machinery/suit_storage_unit/cryosuit/engineering,
+/obj/machinery/suit_storage_unit/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "Lx" = (
@@ -11266,7 +11266,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/suit_storage_unit/cryosuit/engineering,
+/obj/machinery/suit_storage_unit/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "LC" = (

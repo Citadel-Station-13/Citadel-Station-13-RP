@@ -21930,10 +21930,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "nCa" = (
-/obj/machinery/suit_storage_unit/cryosuit/security,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/machinery/suit_storage_unit/security,
 /turf/simulated/floor/tiled/red,
 /area/security/evastorage)
 "nCi" = (
@@ -22031,11 +22031,11 @@
 /turf/simulated/floor/carpet,
 /area/security/warden)
 "nEx" = (
-/obj/machinery/suit_storage_unit/cryosuit/security,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/machinery/camera/network/security,
+/obj/machinery/suit_storage_unit/security,
 /turf/simulated/floor/tiled/red,
 /area/security/evastorage)
 "nEB" = (
@@ -29294,10 +29294,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "ske" = (
-/obj/machinery/suit_storage_unit/cryosuit/security,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/machinery/suit_storage_unit/security,
 /turf/simulated/floor/tiled/red,
 /area/security/evastorage)
 "skv" = (
