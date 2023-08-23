@@ -73,7 +73,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Nebula Gas - Dormitories";
 	req_access = list(160)
 	},
@@ -258,7 +258,7 @@
 /area/tradeport/dock)
 "aZ" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
@@ -316,7 +316,7 @@
 /area/tradeport/commhall)
 "bi" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Nebula Gas - Warehouse";
 	req_access = list(160)
 	},
@@ -3280,7 +3280,7 @@
 /area/shuttle/trade_ship/cockpit)
 "md" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Nebula Commercial District";
 	req_access = null
 	},
@@ -5645,7 +5645,7 @@
 /area/tradeport/cafeteria)
 "vE" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Nebula Commercial District";
 	req_access = null
 	},
@@ -7128,7 +7128,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Nebula Gas - Engineering";
 	req_access = list(160)
 	},

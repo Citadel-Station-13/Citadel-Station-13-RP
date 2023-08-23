@@ -13672,7 +13672,7 @@
 	},
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -13831,7 +13831,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile/metal/mait{
-	dir = 1;
+	dir = 4;
 	name = "Maintenance Access"
 	},
 /obj/structure/cable/green{
@@ -17262,7 +17262,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/multi_tile/glass/medical{
-	dir = 1;
+	dir = 4;
 	name = "Medbay Storage";
 	req_access = list(5);
 	req_one_access = list(5)
@@ -18456,7 +18456,7 @@
 	},
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -23856,7 +23856,7 @@
 /area/medical/morgue)
 "oRZ" = (
 /obj/machinery/door/airlock/multi_tile/glass/medical{
-	dir = 1;
+	dir = 4;
 	name = "Medbay Storage";
 	req_access = list(5);
 	req_one_access = list(5)
