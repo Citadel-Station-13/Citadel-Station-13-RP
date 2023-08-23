@@ -49,7 +49,7 @@
 		extra.len = clamp(extra.len, 0, extra_max)
 		errors?.Add(SPAN_WARNING("truncated [english_list(truncated)] languages - too many!"))
 	for(var/id in extra)
-		if(isnull(SScharacters.resolve_language_id(id))
+		if(isnull(SScharacters.resolve_language_id(id)))
 			extra -= id
 			errors?.Add(SPAN_WARNING("removed id [id] - can't locate it."))
 			continue
