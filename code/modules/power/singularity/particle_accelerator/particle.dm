@@ -83,8 +83,7 @@
 /obj/effect/accelerated_particle/proc/toxmob(var/mob/living/M)
 	if(!istype(M))
 		return
-	var/radiation = (energy * 5)
-	M.afflict_radiation(radiation, TRUE)
+	M.afflict_radiation(energy * 5, TRUE)
 
 /obj/effect/accelerated_particle/proc/move(var/lag)
 	var/turf/new_target
