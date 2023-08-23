@@ -575,7 +575,6 @@
 #include "code\controllers\subsystem\processing\instruments.dm"
 #include "code\controllers\subsystem\processing\moving_cameras.dm"
 #include "code\controllers\subsystem\processing\obj.dm"
-#include "code\controllers\subsystem\processing\pathfinder.dm"
 #include "code\controllers\subsystem\processing\processing.dm"
 #include "code\controllers\subsystem\processing\projectiles.dm"
 #include "code\controllers\subsystem\processing\turfs.dm"
