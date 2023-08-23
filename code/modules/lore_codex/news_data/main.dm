@@ -661,7 +661,7 @@
 	<br><br>\
 	A Hephaestus Industry vessel, HIV Tungsten Heart, has been reportedly been completely siezed by its subverted silicon crew, its organic crew thought to already be \
 	slaughtered. The now rogue vessel, was home to several drone fabrication facilities and to make matters worse, the databases of the fabricators allegedly contain blueprints \
-	for an as of yet unreleashed line of Hephaestus combat drones! These 'Warhound' series combat drones are armed with a variety od powerful mounted weapons meant to make short work \
+	for an as of yet unreleased line of Hephaestus combat drones! These 'Warhound' series combat drones are armed with a variety of powerful mounted weapons meant to make short work \
 	of pirate threats. It can only be assumed that Tungsten Heart has become the center of an omincidal synthetic intelligence. Though the ship lacks weapons of its own, its fabricators \
 	are no doubt working tirelessly to create a silicon army. The entire sector and surrounding regions have been placed on high alert with SDF, mercenary, and corporate security \
 	working together to locate and eliminate the Tungsten Heart before it can threaten colonies in the region. \
