@@ -4549,16 +4549,16 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/cargo)
 "nZ" = (
-/mob/living/simple_mob/animal/passive/penguin/emperor{
-	desc = "There's a tag on this pengiun that says Skipper. You're not even sure where the chef found them.";
-	name = "Skipper"
-	},
 /obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
+	},
+/mob/living/simple_mob/animal/passive/penguin/emperor{
+	desc = "There's a tag on this pengiun that says Skipper. You're not even sure where the chef found them.";
+	name = "Skipper"
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
@@ -14793,6 +14793,11 @@
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
+	},
+/obj/machinery/recipe_lookup/drinks{
+	pixel_x = -32;
+	step_x = 0;
+	step_y = 0
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)

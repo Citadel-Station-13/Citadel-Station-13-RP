@@ -21284,6 +21284,9 @@
 /obj/machinery/camera/network/civilian,
 /obj/effect/floor_decal/corner/red/diagonal,
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/recipe_lookup/drinks{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "hXj" = (
