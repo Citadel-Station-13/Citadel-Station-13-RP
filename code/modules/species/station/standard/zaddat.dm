@@ -114,7 +114,6 @@
 	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
 	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
 	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
-	new /obj/item/tool/prybar/red(L)
 
 	if(H.backbag == 1)
 		H.put_in_hands_or_del(L)
