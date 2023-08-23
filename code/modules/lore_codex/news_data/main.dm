@@ -654,7 +654,7 @@
 /datum/lore/codex/page/hack
 	name = "Sector Spanning Cyber Attack Turns Synths Rogue! Hephaestus Combat Drones Designs Stolen! - 8/20/2567"
 	data = "Yesterday in the Frontier a massive cyber attack occured effecting an entire sector. Positronic intelligences, drones, ship AIs and all even MMI units were all said to \
-	be infected by  a malignant virus that was spread across the sector through subspace relays. Subverted silicons from the simplest drone to ship AIs were driven to stockpile materials \
+	be infected by a malignant virus that was spread across the sector through subspace relays. Subverted silicons from the simplest drone to ship AIs were driven to stockpile materials \
 	to fuel corrupted drone fabricators which then began producing armies of corrupted drones. Infected units were also compelled to construct communication systems which transmitted \
 	data back towards what can almost be assumed to be the source of the virus. Casulties are thankfully limited however for Hephaestus Industries, who relies heavily on its drone \
 	employees,the loss of life and destruction of assests is thought to be immense. \
