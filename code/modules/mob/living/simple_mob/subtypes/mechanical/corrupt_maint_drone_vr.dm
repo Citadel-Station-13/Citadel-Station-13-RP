@@ -8,7 +8,7 @@
 	name = "Drone - Corrupted Maintenance Drone"
 	desc = "This drone appears to be a station maintenance drone, produced by some sort of corrupt fab. \
 	Now this drone seems to target any organic life it comes across, working with others of its kind to overwhealm \
-	Larger foes, if one is found, a swarm of others are not too far away.\
+	larger foes. If one is found, a swarm of others are not too far away.\
 	<br><br>\
 	The drone struggles to harm large targets, due to it's small size, yet it possesses a welder, which allows \
 	it to **ERROR** inject it's targets, in addition to the small slashes from it's skittering claws. \
