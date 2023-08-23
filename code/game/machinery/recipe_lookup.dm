@@ -22,10 +22,10 @@
 		to_chat(user, "You can't reach [src] from here.")
 		return FALSE
 
-	var/result_name = display_options()
-	if(!result_name)
+	var/recipe = display_options()
+	if(!recipe)
 		return
-	var/recipe = recipe_list[result_name]
+
 	display_recipe_instructions(recipe)
 
 /obj/item/frame/recipe_lookup
@@ -34,6 +34,7 @@
 
 // bartending version
 /obj/machinery/recipe_lookup/drinks
+	name = "drink recipe display"
 	result_type_name = "drink"
 	icon_state = "barpad_dark"
 	desc = "A display used for displaying information on drink recipes. \n <center>It can be Alt-Clicked to toggle the theme.</center>"
@@ -43,20 +44,19 @@
 	recipe_list = GLOB.drink_recipes
 
 /obj/machinery/recipe_lookup/drinks/display_recipe_instructions(var/datum/chemical_reaction/recipe)
-	var/instructions = "Reagents required:\n"
+	var/instructions = "Reagents required to create [recipe.result_amount] parts <b>[recipe.result]</b>\n"
 	for(var/item in recipe.required_reagents)
 		instructions += "[recipe.required_reagents[item]] parts <b>[item]</b>\n"
 	instructions += "\n"
 	var/catalyst_count = length(recipe.catalysts)
-	if(catalyst_count == 1)
-		var/catalyst = recipe.catalysts[1]
-		instructions += "Catalyst: [recipe.catalysts[catalyst]] units of <b>[catalyst]</b>\n"
-	else
-		instructions += "Catalysts;"
-		for(var/item in recipe.catalysts)
-			instructions += "[recipe.catalysts[item]] units of <b>[item]</b>"
-	instructions += "\n"
-	instructions += "Result: [recipe.result_amount] parts <b>[recipe.result]</b>"
+	if(catalyst_count)
+		if(catalyst_count == 1)
+			var/catalyst = recipe.catalysts[1]
+			instructions += "Catalyst: [recipe.catalysts[catalyst]] units of <b>[catalyst]</b>\n"
+		else
+			instructions += "Catalysts;"
+			for(var/item in recipe.catalysts)
+				instructions += "[recipe.catalysts[item]] units of <b>[item]</b>"
 	to_chat(usr, instructions)
 
 /obj/machinery/recipe_lookup/drinks/AltClick(mob/living/carbon/user)
