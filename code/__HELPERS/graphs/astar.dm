@@ -1,6 +1,9 @@
 /**
  * A Star pathfinding algorithm
  *
+ * This file's AStar should not be used generally; it's the generic graph search algorithm, as opposed
+ * to the optimized turf-grid-only search algorithm.
+ *
  * Returns a list of tiles forming a path from A to B, taking dense objects as well as walls, and the orientation of
  * windows along the route into account.
  *
@@ -38,68 +41,6 @@
 
 // Also added 'exclude' turf to avoid travelling over; defaults to null
 
-/PriorityQueue
-	var/list/queue
-	var/comparison_function
-
-/PriorityQueue/New(compare)
-	queue = list()
-	comparison_function = compare
-
-/PriorityQueue/proc/IsEmpty()
-	return !queue.len
-
-/PriorityQueue/proc/Enqueue(data)
-	queue.Add(data)
-	var/index = queue.len
-
-	//From what I can tell, this automagically sorts the added data into the correct location.
-	while(index > 2 && call(comparison_function)(queue[index / 2], queue[index]) > 0)
-		queue.Swap(index, index / 2)
-		index /= 2
-
-/PriorityQueue/proc/Dequeue()
-	if(!queue.len)
-		return 0
-	return Remove(1)
-
-/PriorityQueue/proc/Remove(index)
-	if(index > queue.len)
-		return 0
-
-	var/thing = queue[index]
-	queue.Swap(index, queue.len)
-	queue.Cut(queue.len)
-	if(index < queue.len)
-		FixQueue(index)
-	return thing
-
-/PriorityQueue/proc/FixQueue(index)
-	var/child = 2 * index
-	var/item = queue[index]
-
-	while(child <= queue.len)
-		if(child < queue.len && call(comparison_function)(queue[child], queue[child + 1]) > 0)
-			child++
-		if(call(comparison_function)(item, queue[child]) > 0)
-			queue[index] = queue[child]
-			index = child
-		else
-			break
-		child = 2 * index
-	queue[index] = item
-
-/PriorityQueue/proc/List()
-	return queue.Copy()
-
-/PriorityQueue/proc/Length()
-	return queue.len
-
-/PriorityQueue/proc/RemoveItem(data)
-	var/index = queue.Find(data)
-	if(index)
-		return Remove(index)
-
 /PathNode
 	var/datum/position
 	var/PathNode/previous_node
@@ -125,7 +66,7 @@
 	return a.estimated_cost - b.estimated_cost
 
 /proc/AStar(start, end, adjacent, dist, max_nodes, max_node_depth = 30, min_target_dist = 0, min_node_dist, id, datum/exclude)
-	var/PriorityQueue/open = new /PriorityQueue(/proc/PathWeightCompare)
+	var/datum/priority_queue/open = new(/proc/PathWeightCompare)
 	var/list/closed = list()
 	var/list/path
 	var/list/path_node_by_position = list()
@@ -133,10 +74,10 @@
 	if(!start)
 		return 0
 
-	open.Enqueue(new /PathNode(start, null, 0, call(start, dist)(end), 0))
+	open.enqueue(new /PathNode(start, null, 0, call(start, dist)(end), 0))
 
-	while(!open.IsEmpty() && !path)
-		var/PathNode/current = open.Dequeue()
+	while(!open.is_empty() && !path)
+		var/PathNode/current = open.dequeue()
 		closed.Add(current.position)
 
 		if(current.position == end || call(current.position, dist)(end) <= min_target_dist)
@@ -168,15 +109,15 @@
 				var/PathNode/target = path_node_by_position[datum]
 				if(target.best_estimated_cost)
 					if(best_estimated_cost + call(datum, dist)(end) < target.best_estimated_cost)
-						open.RemoveItem(target)
+						open.remove_item(target)
 					else
 						continue
 
 			var/PathNode/next_node = new (datum, current, best_estimated_cost, call(datum, dist)(end), current.nodes_traversed + 1)
 			path_node_by_position[datum] = next_node
-			open.Enqueue(next_node)
+			open.enqueue(next_node)
 
-			if(max_nodes && open.Length() > max_nodes)
-				open.Remove(open.Length())
+			if(max_nodes && open.length() > max_nodes)
+				open.remove_index(open.length())
 
 	return path

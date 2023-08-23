@@ -1,4 +1,4 @@
-/// /turf_flags var on /turf
+//* /turf_flags var on /turf
 /// This is used in literally one place, turf.dm, to block ethwereal jaunt.
 #define NO_JAUNT					(1<<0)
 /// Unused reservation turf
@@ -28,4 +28,21 @@ DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(TURF_PLANET_QUEUED),
 	BITFIELD(TURF_PLANET_REGISTERED),
 	BITFIELD(TURF_ZONE_REBUILD_QUEUED),
+))
+
+//* /turf_path_danger var on /turf
+/// lava, fire, etc
+#define TURF_PATH_DANGER_BURN (1<<0)
+/// openspace, chasms, etc
+#define TURF_PATH_DANGER_FALL (1<<1)
+/// will just fucking obliterate you
+#define TURF_PATH_DANGER_ANNIHILATION (1<<2)
+
+DEFINE_SHARED_BITFIELD(turf_path_danger, list(
+	"turf_path_danger",
+	"turf_path_danger_ignore",
+), list(
+	BITFIELD(TURF_PATH_DANGER_BURN),
+	BITFIELD(TURF_PATH_DANGER_FALL),
+	BITFIELD(TURF_PATH_DANGER_ANNIHILATION),
 ))
