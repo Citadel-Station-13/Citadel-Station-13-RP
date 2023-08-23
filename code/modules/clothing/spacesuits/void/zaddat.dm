@@ -5,7 +5,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate", SLOT_ID_LEFT_HAND = "syndicate")
 	heat_protection = HEAD
 	body_cover_flags = HEAD|FACE|EYES
-	slowdown = 0.5
 	armor_type = /datum/armor/zaddat
 	siemens_coefficient = 1
 
@@ -14,7 +13,6 @@
 /obj/item/clothing/suit/space/void/zaddat
 	name = "\improper Hegemony Shroud"
 	desc = "A Hegemony environment suit, still favored by the Spacer Zaddat because of its durability and ease of manufacture."
-	slowdown = 1
 	armor_type = /datum/armor/zaddat
 	siemens_coefficient = 1
 	allowed = list(/obj/item/flashlight,/obj/item/tank)

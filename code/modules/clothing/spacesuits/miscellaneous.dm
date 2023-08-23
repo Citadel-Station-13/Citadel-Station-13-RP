@@ -127,4 +127,3 @@
 	name = "Sovjet Emergency Softsuit"
 	icon_state = "russian"
 	desc = "A chunky antique softsuit distributed to members of the Indo-Russian Diaspora. After all this time, it looks pretty fragile."
-	slowdown = 4

@@ -3,7 +3,7 @@
 //? weight - how much stuff weighs
 //? encumberence - how hard it is to move with an item
 
-//? Carry strength - flat strength
+//? Carry strength - flat strength. you can carry up to this with no penalty.
 
 #define CARRY_STRENGTH_BASELINE 15
 #define CARRY_STRENGTH_UNATHI 17.5
@@ -14,9 +14,13 @@
 #define CARRY_STRENGTH_XENOCHIMERA 20
 #define CARRY_STRENGTH_XENOHYBRID 20
 
-//? Carry strength - multiplier for over-limit penalty
+//? Carry factor - divisor for over-limit weight to apply to penalty after exponent
 
-#define CARRY_STRENGTH_FACTOR_BASELINE 10
+#define CARRY_FACTOR_BASELINE 7.5
+
+//? Carry exponent - what's used in the formula for slowdown after extra weight is divided by divisor
+
+#define CARRY_EXPONENT_BASELINE (2 / 3)
 
 #warn AOIGHAOIGJOIWAJOIJ
 

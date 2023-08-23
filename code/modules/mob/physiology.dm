@@ -7,16 +7,37 @@
 	// todo: /datum/global_physiology should hold global body physiology, limbs should hold modifiers/whatever themselves.
 	//       this way biologies can be supported as efficiently as possible.
 
-	/// carry weight baseline modify +-
-	var/carry_weight_baseline = 0
-	/// carry weight penalty divisor +-
-	var/carry_weight_penalty
+	/// carry weight baseline modify
+	var/carry_strength = CARRY_STRENGTH_BASELINE
+	/// carry weight penalty divisor
+	var/carry_factor = CARRY_FACTOR_BASELINE
+	/// carry weight exponent
+	var/carry_exponent = CARRY_EXPONENT_BASELINE
+
+/datum/global_physiology/proc/reset()
+	carry_strength = initial(carry_strength)
+	carry_factor = initial(carry_factor)
+	carry_exponent = initial(carry_exponent)
 
 /datum/global_physiology/proc/apply(datum/physiology_modifier/modifier)
-	// todo: modifier/apply_global, modifier/apply_bodypart
+	if(!isnull(modifier.carry_strength_add))
+		carry_strength += modifier.carry_strength_add
+	if(!isnull(modifier.carry_factor_mult))
+		carry_factor *= modifier.carry_factor_mult
+	if(!isnull(modifier.carry_exponent_mult))
+		carry_exponent = carry_exponent ** modifier.carry_exponent_pow
 
+/**
+ * return FALSE if we need to reset due to non-canonical operations
+ */
 /datum/global_physiology/proc/revert(datum/physiology_modifier/modifier)
-	// todo: modifier/apply_global, modifier/apply_bodypart
+	. = TRUE
+	if(!isnull(modifier.carry_strength_add))
+		carry_strength -= modifier.carry_strength_add
+	if(!isnull(modifier.carry_factor_mult))
+		carry_factor /= modifier.carry_factor_mult
+	if(!isnull(modifier.carry_exponent_mult))
+		carry_exponent = carry_exponent ** (1 / modifier.carry_exponent_pow)
 
 /**
  * physiology modifier
@@ -28,6 +49,11 @@
 	var/is_globally_cached = FALSE
 
 	// todo: on biologies update, we need to specify what biologies this applies to
+
+	//? global modifiers
+	var/carry_strength_add
+	var/carry_factor_mult
+	var/carry_exponent_pow
 
 /**
  * subtype for hardcoded physiology modifiers
@@ -80,7 +106,9 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 		modifier = cached_physiology_modifier(modifier)
 	ASSERT(modifier in physiology_modifiers)
 	physiology_modifiers -= modifier
-	physiology.revert(modifier)
+	if(!physiology.revert(modifier))
+		// todo: optimize with reset().
+		rebuild_physiology()
 
 /**
  * completely rebuilds physiology from our modifiers
