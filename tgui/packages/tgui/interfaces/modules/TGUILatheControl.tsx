@@ -244,7 +244,8 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                   <Section fill title="Designs" scrollable>
                     {
                       Object.values(data.designs.instances).filter(
-                        (d) => searchText.length > 2? d.name.toLowerCase().includes(searchText) : (d.category === category)
+                        (d) => searchText.length > 2?
+                          d.name.toLowerCase().includes(searchText) : (d.category === category)
                       ).sort((d1, d2) =>
                         d1.name.localeCompare(d2.name)
                       ).map((d) => (
