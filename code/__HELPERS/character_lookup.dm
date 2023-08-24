@@ -54,7 +54,7 @@ The helper methods below will serve to make these changes to the rp_character_lo
 	if(!SSdbcore.Connect())
 		return
 
-	var/datum/db_query/query = SSdbcore.RunQuery(
+	SSdbcore.RunQuery(
 		sql,
 		list(
 			"playerid" = formatted_player_id,
@@ -79,7 +79,7 @@ The helper methods below will serve to make these changes to the rp_character_lo
 	if(!SSdbcore.Connect())
 		return
 
-	var/datum/db_query/query = SSdbcore.RunQuery(
+	SSdbcore.RunQuery(
 		sql,
 		list(
 			"playerid" = formatted_player_id,
@@ -111,7 +111,7 @@ The helper methods below will serve to make these changes to the rp_character_lo
 	/// This means the old entry exists, the new entry does not exist, so we can go ahead and update it
 	var/sql = "UPDATE [format_table_name(LOOKUP_TABLE)] WHERE player_id = :playerid AND character_name = :oldcharactername AND character_type = :charactertype SET character_name = :newcharactername"
 
-	var/datum/db_query/query = SSdbcore.RunQuery(
+	SSdbcore.RunQuery(
 		sql,
 		list(
 			"playerid" = formatted_player_id,
@@ -121,4 +121,4 @@ The helper methods below will serve to make these changes to the rp_character_lo
 		)
 	)
 
-#undefine LOOKUP_TABLE
+#undef LOOKUP_TABLE
