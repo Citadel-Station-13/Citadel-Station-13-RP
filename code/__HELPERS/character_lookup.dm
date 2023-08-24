@@ -18,7 +18,7 @@ The helper methods below will serve to make these changes to the rp_character_lo
 	var/formatted_character_name = ckey(character_name)
 
 	/// Return character id for the combination of player id, character name, character type
-	var/sql = "SELECT characterid FROM [format_table_name(LOOKUP_TABLE)] WHERE player_id = :playerid AND character_name = :charactername AND character_type = :charactertype"
+	var/sql = "SELECT character_id FROM [format_table_name(LOOKUP_TABLE)] WHERE player_id = :playerid AND character_name = :charactername AND character_type = :charactertype"
 
 	if(!SSdbcore.Connect())
 		return
@@ -35,7 +35,6 @@ The helper methods below will serve to make these changes to the rp_character_lo
 	if(query.NextRow())
 		return query.item[1]
 	else
-		message_admins("No character lookup could be found for [formatted_player_id] (Character name: [character_name], Type: [character_type])")
 		return
 
 /proc/add_character_lookup(player_id, character_name, character_type)
