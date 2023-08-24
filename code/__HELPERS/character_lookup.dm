@@ -105,7 +105,7 @@ The helper methods below will serve to make these changes to the rp_character_lo
 	/// If the new entry exists, delete the old one and stop there
 	var/lookup_new = get_character_lookup(player_id, new_character_name, character_type)
 	if(lookup_new)
-		remove_character_lookup(player_id, old_character_name, new_character_name)
+		remove_character_lookup(player_id, old_character_name, character_type)
 		return
 
 	/// This means the old entry exists, the new entry does not exist, so we can go ahead and update it
