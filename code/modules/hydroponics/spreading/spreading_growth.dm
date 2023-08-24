@@ -163,6 +163,16 @@
 
 		child.finish_spreading()
 
+/obj/effect/plant/Cross(atom/movable/AM)
+	// we check here to prevent plants from stacking up from zlevel falling
+	// since zfall obstructions check Cross()ing
+	if(istype(AM, /obj/effect/plant)) // no stackies!!
+		var/obj/effect/plant/enemy = AM
+		if(enemy.seed != seed)
+			return TRUE // yes vines, battle to the death!!
+		return FALSE
+	return ..()
+
 /obj/effect/plant/proc/die_off()
 	// Kill off our plant.
 	if(plant) plant.die()
