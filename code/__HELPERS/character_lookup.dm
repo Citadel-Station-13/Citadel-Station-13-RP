@@ -17,7 +17,7 @@ The helper methods below will serve to make these changes to the rp_character_lo
 	var/formatted_player_id = ckey(player_id)
 	var/formatted_character_name = ckey(character_name)
 
-	/// In the unlikely scenario no such entry exists for the player, create one, and log that this happened
+	/// Return character id for the combination of player id, character name, character type
 	var/sql = "SELECT characterid FROM [format_table_name(LOOKUP_TABLE)] WHERE player_id = :playerid AND character_name = :charactername AND character_type = :charactertype"
 
 	if(!SSdbcore.Connect())
@@ -42,14 +42,14 @@ The helper methods below will serve to make these changes to the rp_character_lo
 	var/formatted_player_id = ckey(player_id)
 	var/formatted_character_name = ckey(character_name)
 
-	/// If an entry already exists, log that it happened and don't try to create one
+	/// If an entry already exists, don't try to create one
 	var/lookup = get_character_lookup(player_id, character_name, character_type)
 	if(lookup)
-		message_admins("Attempted to create lookup for [formatted_player_id] but it already existed! (Character name: [formatted_character_name], Type: [character_type])")
 		return
 
 	/// Entry does not exist, add it
-	var/sql = "INSERT INTO [format_table_name(LOOKUP_TABLE)] (player_id, character_name, character_type) VALUES (:playerid, :charactername, :charactertype)"
+	var/character_id = generate_character_id(character_type, character_name)
+	var/sql = "INSERT INTO [format_table_name(LOOKUP_TABLE)] (player_id, character_id, character_name, character_type) VALUES (:playerid, :characterid, :charactername, :charactertype)"
 
 	if(!SSdbcore.Connect())
 		return
@@ -58,6 +58,7 @@ The helper methods below will serve to make these changes to the rp_character_lo
 		sql,
 		list(
 			"playerid" = formatted_player_id,
+			"characterid" = character_id,
 			"charactername" = formatted_character_name,
 			"charactertype" = character_type
 		)
@@ -120,5 +121,9 @@ The helper methods below will serve to make these changes to the rp_character_lo
 			"charactertype" = character_type
 		)
 	)
+
+// Misc Methods
+/proc/generate_character_id(character_type, character_name)
+	return ckey(character_type) + "-" + ckey(character_name)
 
 #undef LOOKUP_TABLE
