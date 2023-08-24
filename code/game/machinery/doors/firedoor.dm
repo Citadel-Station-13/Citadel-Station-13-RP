@@ -562,9 +562,11 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 		return 1
 */
 
-// For prosperity, in case border doors get reimplemented.
-/obj/machinery/door/firedoor/border_only/can_pathfinding_pass(atom/movable/actor, dir, datum/pathfinding/search)
-	return ..() || (src.dir != dir)
+/obj/machinery/door/firedoor/border_only/can_pathfinding_exit(atom/movable/actor, dir, datum/pathfinding/search)
+	return (src.dir != dir) || ..()
+
+/obj/machinery/door/firedoor/border_only/can_pathfinding_enter(atom/movable/actor, dir, datum/pathfinding/search)
+	return (src.dir != dir) || ..()
 
 /obj/machinery/door/firedoor/multi_tile
 	icon = 'icons/obj/doors/DoorHazard2x1.dmi'

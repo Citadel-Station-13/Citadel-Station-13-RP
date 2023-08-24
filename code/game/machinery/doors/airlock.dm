@@ -1059,7 +1059,7 @@ About the new airlock wires panel:
 		return 0
 	return ..(M)
 
-/obj/machinery/door/airlock/can_pathfinding_pass(atom/movable/actor, dir, datum/pathfinding/search)
+/obj/machinery/door/airlock/can_pathfinding_enter(atom/movable/actor, dir, datum/pathfinding/search)
 	return ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !locked && !inoperable())
 
 /obj/machinery/door/airlock/Initialize(mapload, obj/structure/door_assembly/assembly)
