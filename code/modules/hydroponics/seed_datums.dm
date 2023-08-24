@@ -317,13 +317,35 @@
 	seed_name = "ambrosia deus"
 	display_name = "ambrosia deus"
 	kitchen_tag = "ambrosiadeus"
-	mutants = null
+	mutants = list("ambrosiagaia")
 	chems = list("nutriment" = list(1), "bicaridine" = list(1,8), "synaptizine" = list(1,8,1), "hyperzine" = list(1,10,1), "space_drugs" = list(1,10))
 
 /datum/seed/ambrosia/deus/New()
 	..()
 	set_trait(TRAIT_PRODUCT_COLOUR,"#A3F0AD")
 	set_trait(TRAIT_PLANT_COLOUR,"#2A9C61")
+
+/datum/seed/ambrosia/gaia
+	name = "ambrosiagaia"
+	seed_name = "ambrosia gaia"
+	display_name = "ambrosia gaia"
+	kitchen_tag = "ambrosiagaia"
+	mutants = null
+	chems = list ("earthsblood" = list(3,5), "nutriment" = list(1,3))
+
+/datum/seed/ambrosia/gaia/New()
+	..()
+	set_trait(TRAIT_HARVEST_REPEAT,0)
+	set_trait(TRAIT_MATURATION,10)
+	set_trait(TRAIT_WATER_CONSUMPTION,6)
+	set_trait(TRAIT_NUTRIENT_CONSUMPTION,6)
+	set_trait(TRAIT_WEED_TOLERANCE,1)
+	set_trait(TRAIT_TOXINS_TOLERANCE,1)
+	set_trait(TRAIT_PEST_TOLERANCE,1)
+	set_trait(TRAIT_BIOLUM,1)
+	set_trait(TRAIT_BIOLUM_COLOUR,"#ffb500")
+	set_trait(TRAIT_PRODUCT_COLOUR, "#ffee00")
+	set_trait(TRAIT_PLANT_COLOUR,"#f3ba2b")
 
 //Mushrooms/varieties.
 /datum/seed/mushroom
@@ -1264,6 +1286,22 @@
 	set_trait(TRAIT_PLANT_ICON,"grass")
 	set_trait(TRAIT_WATER_CONSUMPTION, 0.5)
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.15)
+
+/datum/seed/grass/carpet
+	name = "carpet"
+	seed_name = "carpet"
+	display_name = "carpet"
+	kitchen_tag = "carpet"
+	mutants = null
+	chems = list("liquidcarpet" = list(5,10))
+
+/datum/seed/grass/carpet/New()
+	..()
+	set_trait(TRAIT_YIELD,7)
+	set_trait(TRAIT_PRODUCT_ICON,"grass")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#9e2500")
+	set_trait(TRAIT_PLANT_COLOUR,"#ee4401")
+	set_trait(TRAIT_PLANT_ICON,"grass")
 
 /datum/seed/cocoa
 	name = "cocoa"
