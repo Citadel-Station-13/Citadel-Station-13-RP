@@ -68,9 +68,9 @@
 
 		var/transfer_moles
 		if(direction_out)
-			transfer_moles = xgm_cheap_transfer_moles(air_contents, environment, target_pressure, speedy = TRUE)
+			transfer_moles = air_contents.total_moles? xgm_cheap_transfer_moles(air_contents, environment, target_pressure, speedy = TRUE) : 0
 		else
-			transfer_moles = -xgm_cheap_transfer_moles_single(environment, target_pressure)
+			transfer_moles = environment.total_moles? -xgm_cheap_transfer_moles_single(environment, target_pressure) : 0
 
 		if (transfer_moles > 0.01)
 			if (direction_out)
@@ -183,6 +183,8 @@
 	icon_state = "siphon:0"
 	anchored = 1
 	volume = 500000
+	default_access_interface = FALSE
+	default_multitool_hijack = TRUE
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50		//internal circuitry, friction losses and stuff
@@ -200,9 +202,6 @@
 	gid++
 
 	name = "[name] (ID [id])"
-
-/obj/machinery/portable_atmospherics/powered/pump/huge/attack_hand(mob/user, list/params)
-	to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the pump control console.</span>")
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/update_icon()
 	cut_overlays()

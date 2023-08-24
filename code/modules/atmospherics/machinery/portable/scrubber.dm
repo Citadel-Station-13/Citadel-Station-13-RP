@@ -8,6 +8,7 @@
 	atmos_portable_ui_flags = ATMOS_PORTABLE_UI_TOGGLE_POWER | ATMOS_PORTABLE_UI_SEE_POWER | ATMOS_PORTABLE_UI_SEE_FLOW
 	power_maximum = 7500
 	flow_maximum = 5000
+	tgui_interface = "AtmosPortableScrubber"
 
 	volume = 1000
 
@@ -116,6 +117,8 @@
 	volume = 1000000
 	flow_maximum = 50000
 	use_cell = FALSE
+	default_access_interface = FALSE
+	default_multitool_hijack = TRUE
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50		//internal circuitry, friction losses and stuff
@@ -134,9 +137,6 @@
 
 	name = "[name] (ID [id])"
 
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/attack_hand(mob/user, list/params)
-	to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the scrubber control console.</span>")
-
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/update_icon()
 	cut_overlays()
 
@@ -150,7 +150,6 @@
 	..()
 	if (old_stat != machine_stat)
 		update_icon()
-
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/attackby(var/obj/item/I as obj, var/mob/user as mob)
 	if(I.is_wrench())
