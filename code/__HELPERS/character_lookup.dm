@@ -96,10 +96,10 @@ The helper methods below will serve to make these changes to the rp_character_lo
 	/// Only update the character lookup table entry if no other entry exists with that player id AND new character id
 	/// If such an entry exists, delete the current one instead, because the pairing of these values is the primary key, and should be unique
 
-	/// If the old entry does not exist, log that it happened, don't try to update it
+	/// If the old entry does not exist, simply add the new one
 	var/lookup = get_character_lookup(player_id, old_character_name, character_type)
 	if(!lookup)
-		message_admins("Attempted to update lookup for [formatted_player_id] but it did not exist! (Character name: [formatted_old_character_name], Type: [character_type])")
+		add_character_lookup(player_id, new_character_name, character_type)
 		return
 
 	/// If the new entry exists, delete the old one and stop there
