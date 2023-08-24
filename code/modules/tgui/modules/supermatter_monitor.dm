@@ -59,11 +59,11 @@
 		data["SM_History"] = active.history
 		//data["SM_EPR"] = active.get_epr()
 		if(air.total_moles)
-			data["SM_gas_O2"] = round(100*air.gas[/datum/gas/oxygen]/air.total_moles,0.01)
-			data["SM_gas_CO2"] = round(100*air.gas[/datum/gas/carbon_dioxide]/air.total_moles,0.01)
-			data["SM_gas_N2"] = round(100*air.gas[/datum/gas/nitrogen]/air.total_moles,0.01)
-			data["SM_gas_PH"] = round(100*air.gas[/datum/gas/phoron]/air.total_moles,0.01)
-			data["SM_gas_N2O"] = round(100*air.gas["/datum/gas/nitrous_oxide"]/air.total_moles,0.01)
+			data["SM_gas_O2"] = round(100*air.gas[GAS_ID_OXYGEN]/air.total_moles,0.01)
+			data["SM_gas_CO2"] = round(100*air.gas[GAS_ID_CARBON_DIOXIDE]/air.total_moles,0.01)
+			data["SM_gas_N2"] = round(100*air.gas[GAS_ID_NITROGEN]/air.total_moles,0.01)
+			data["SM_gas_PH"] = round(100*air.gas[GAS_ID_PHORON]/air.total_moles,0.01)
+			data["SM_gas_N2O"] = round(100*air.gas["GAS_ID_NITROUS_OXIDE"]/air.total_moles,0.01)
 		else
 			data["SM_gas_O2"] = 0
 			data["SM_gas_CO2"] = 0

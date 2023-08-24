@@ -128,7 +128,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "gC" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter,
+/obj/machinery/atmospherics/component/trinary/filter,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "hh" = (
@@ -492,7 +492,7 @@
 	id_tag = "cooling_out";
 	initialize_directions = 4;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /obj/effect/floor_decal/industrial/warning/cee{
 	dir = 8
@@ -1086,7 +1086,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -1420,7 +1420,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "YK" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},

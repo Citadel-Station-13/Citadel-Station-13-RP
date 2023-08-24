@@ -41,7 +41,7 @@
 		/obj/item/tool/wrench,
 		/obj/item/weldingtool,
 		/obj/item/tool/crowbar,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/tool/wirecutters
 	)
 
@@ -89,7 +89,7 @@
 		/obj/item/tool/crowbar/power,
 		/obj/item/multitool,
 		/obj/item/stack/cable_coil/random_belt,
-		/obj/item/analyzer
+		/obj/item/atmos_analyzer
 	)
 
 /obj/item/storage/toolbox/gold_fake // used in crafting

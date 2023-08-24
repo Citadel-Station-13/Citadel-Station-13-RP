@@ -223,7 +223,7 @@
 	if (!oldtitle) // or replacetext goes to infinite loop
 		return
 
-	for(var/obj/machinery/alarm/M in A)
+	for(var/obj/machinery/air_alarm/M in A)
 		M.name = replacetext(M.name,oldtitle,title)
 	for(var/obj/machinery/power/apc/M in A)
 		M.name = replacetext(M.name,oldtitle,title)

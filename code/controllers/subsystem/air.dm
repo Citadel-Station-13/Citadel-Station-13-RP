@@ -19,6 +19,10 @@ SUBSYSTEM_DEF(air)
 	var/list/generated_atmospheres
 	/// cached lists of unpacked gas-strings
 	var/list/cached_strings
+	/// scrubber defaults
+	var/list/scrubber_defaults = list(
+		SCRUBBER_DEFAULT_STATION = list(/datum/gas/carbon_dioxide, /datum/gas/phoron),
+	)
 
 	var/cost_turfs = 0
 	var/cost_edges = 0
@@ -57,7 +61,20 @@ SUBSYSTEM_DEF(air)
 	return ..() + " [msg.Join()]"
 
 /datum/controller/subsystem/air/PreInit(recovering)
-	air_master = src
+	// resolve scrubber defaults
+	for(var/key in scrubber_defaults)
+		var/list/values = scrubber_defaults[key]
+		if(isnull(values))
+			scrubber_defaults -= key
+			stack_trace("invalid default [key] in scrubber_defaults")
+			continue
+		for(var/i in 1 to length(values))
+			if(ispath(values[i]))
+				var/datum/gas/casted = values[i]
+				if(!ispath(casted, /datum/gas))
+					stack_trace("invalid path [casted] in scrubber_defaults")
+					casted = /datum/gas/oxygen
+				values[i] = initial(casted.id)
 
 /datum/controller/subsystem/air/Preload(recovering)
 	cached_strings = list()
@@ -132,7 +149,7 @@ SUBSYSTEM_DEF(air)
 	INTERNAL_PROCESS_STEP(SSAIR_HOTSPOTS, FALSE, process_active_hotspots, cost_hotspots, SSAIR_ZONES)
 	INTERNAL_PROCESS_STEP(SSAIR_ZONES, FALSE, process_zones_to_update, cost_zones, SSAIR_DONE)
 
-	// Okay, we're done! Woo! Got thru a whole air_master cycle!
+	// Okay, we're done! Woo! Got thru a whole SSair cycle!
 	if(LAZYLEN(currentrun) != 0)
 		stack_trace("Currentrun not empty after processing cycle when it should be. [english_list(currentrun.Copy(1, min(currentrun.len, 5)))]")
 	currentrun = null
@@ -320,11 +337,14 @@ SUBSYSTEM_DEF(air)
 		if(initial(A.abstract_type) == T)
 			continue
 		A = new T
+		// register normal id
 		generated_atmospheres[A.id] = A
+		// register type too - for faster lookup
+		generated_atmospheres[A.type] = A
 
 /**
  * parses a gas string
- * returns list(gas list, temp)
+ * returns list(gas list, temp); gas list is cached, make sure to copy it!!!
  *
  * @params
  * - gas_string - gas string
@@ -353,17 +373,11 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/proc/unpack_gas_string(gas_string)
 	var/list/built = new /list(2)
 	var/list/unpacked = params2list(gas_string)
-	var/list/gases = list()
 	built[2] = text2num(unpacked["TEMP"])	// null allowed
 	unpacked -= "TEMP"
-	// convert id to path
-	// todo: remove when we convert gas to ids and not paths why did we ever make it paths aough
-	for(var/i in 1 to length(unpacked))
-		var/id = unpacked[i]
-		var/amount = text2num(unpacked[id])
-		var/path = GLOB.meta_gas_id_lookup[id]
-		gases[path] = amount
-	built[1] = gases
+	for(var/id in unpacked)
+		unpacked[id] = text2num(unpacked[id])
+	built[1] = unpacked
 	return built
 
 #undef SSAIR_TURFS

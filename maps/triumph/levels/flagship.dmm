@@ -6285,7 +6285,7 @@
 "un" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+	dir = 4
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/restaurant)
@@ -10372,7 +10372,7 @@
 "Is" = (
 /obj/structure/table/reinforced,
 /obj/item/material/minihoe,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -11564,7 +11564,7 @@
 /area/centcom/specops)
 "Ma" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+	dir = 4
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -15095,7 +15095,7 @@
 /area/centcom/bathroom)
 "Yp" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 4
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)

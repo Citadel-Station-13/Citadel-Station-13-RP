@@ -722,7 +722,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/recharge_station,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
@@ -916,7 +916,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/east_stairs_two)
 "aGG" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -1016,7 +1016,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -1525,7 +1525,7 @@
 /area/maintenance/lower/south)
 "beP" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -1918,7 +1918,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "brO" = (
-/obj/machinery/alarm/monitor/isolation{
+/obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "slime_pens";
 	dir = 8;
 	pixel_x = 22
@@ -1995,7 +1995,7 @@
 /turf/simulated/floor/wood,
 /area/maintenance/lower/atmos)
 "btW" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -2616,7 +2616,7 @@
 /area/maintenance/lower/north)
 "bTU" = (
 /obj/structure/table/glass,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -3644,7 +3644,7 @@
 /obj/item/stock_parts/subspace/ansible,
 /obj/item/stock_parts/subspace/ansible,
 /obj/item/stock_parts/subspace/ansible,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -3843,7 +3843,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -4596,7 +4596,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
@@ -4705,7 +4705,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -5316,7 +5316,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -5564,7 +5564,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/evidence)
 "dZg" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -5646,7 +5646,7 @@
 /turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fish_farm)
 "edL" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -6030,7 +6030,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -6301,7 +6301,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -6818,7 +6818,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_two_hall)
 "eRG" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -6931,7 +6931,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "eWF" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -7635,7 +7635,7 @@
 /area/maintenance/lower/south)
 "fyD" = (
 /obj/structure/lattice,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/open,
@@ -7665,10 +7665,10 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -8843,7 +8843,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "glB" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -8920,7 +8920,7 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/atmos_personal,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -9436,7 +9436,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/atmos)
 "gBv" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -9560,7 +9560,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	scrub_id = "xeno_phoron_pen_scrubbers"
 	},
-/obj/machinery/alarm/monitor/isolation{
+/obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "slime_pens";
 	dir = 1;
 	pixel_y = -22
@@ -9980,7 +9980,7 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -10028,7 +10028,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/cable/green{
@@ -10269,7 +10269,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -11009,7 +11009,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/evastorage)
 "hLa" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -11373,7 +11373,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "hVr" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/railing,
@@ -11756,7 +11756,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "imW" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -12251,7 +12251,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -35
 	},
@@ -12332,7 +12332,7 @@
 	pixel_y = -8;
 	req_access = list(55)
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -35
 	},
@@ -12372,7 +12372,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -12594,7 +12594,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -12608,7 +12608,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/old_tram)
 "iKR" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -12939,7 +12939,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_x = 3;
 	pixel_y = -28
@@ -12971,7 +12971,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13001,7 +13001,7 @@
 /obj/structure/sign/nosmoking_1{
 	pixel_x = -32
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 28
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -13154,7 +13154,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -13391,7 +13391,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "joP" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -13460,7 +13460,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -13658,7 +13658,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -13728,7 +13728,7 @@
 /area/maintenance/lower/atmos)
 "jAo" = (
 /obj/structure/table/glass,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -13763,7 +13763,7 @@
 "jAL" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/hole/right,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -14694,7 +14694,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -14867,7 +14867,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/rnd)
 "kvB" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -14925,7 +14925,7 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/light{
@@ -15452,14 +15452,14 @@
 /area/maintenance/lower/atmos)
 "kTQ" = (
 /obj/structure/catwalk,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
 /turf/simulated/open,
 /area/engineering/atmos)
 "kUc" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -15656,7 +15656,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -15694,7 +15694,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "lbj" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -15716,7 +15716,7 @@
 /area/tether/surfacebase/medical/centralhall)
 "lbl" = (
 /obj/structure/catwalk,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
@@ -15805,7 +15805,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor,
@@ -15886,7 +15886,7 @@
 /obj/item/stack/cable_coil/pink,
 /obj/item/stack/cable_coil/pink,
 /obj/item/stack/cable_coil/pink,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -16011,7 +16011,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -16093,7 +16093,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -16138,7 +16138,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -16166,7 +16166,7 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/reading_room)
 "lxt" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -16405,7 +16405,7 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/emergency_storage/atmos)
 "lGe" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -16434,7 +16434,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/bluegrid{
 	initial_gas_mix = "n2=100;TEMP=80";
@@ -16459,7 +16459,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "lHZ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/catwalk,
@@ -16594,7 +16594,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/lower/south)
 "lOh" = (
-/obj/machinery/alarm/monitor/isolation{
+/obj/machinery/air_alarm/monitor/isolation{
 	alarm_id = "slime_pens";
 	dir = 4;
 	pixel_x = -22
@@ -17027,7 +17027,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos)
 "meI" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -17393,7 +17393,7 @@
 	dir = 8;
 	layer = 2.6
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -17442,7 +17442,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	breach_detection = 0;
 	dir = 1;
 	pixel_y = -22
@@ -17474,7 +17474,7 @@
 	pixel_x = -25;
 	req_access = list(55)
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -35
 	},
@@ -17603,7 +17603,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -17623,7 +17623,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 30
 	},
 /obj/machinery/computer/security/xenobio,
@@ -17996,7 +17996,7 @@
 /obj/structure/closet{
 	name = "Evidence Closet"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -18136,7 +18136,7 @@
 /obj/machinery/vending/wallmed1{
 	pixel_x = 30
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/table/standard,
@@ -18369,7 +18369,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -18495,7 +18495,7 @@
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/medical/cmo)
 "nfc" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/disposalpipe/segment{
@@ -18590,7 +18590,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 10
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -18799,7 +18799,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/table/standard,
 /obj/random/soap,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -18861,7 +18861,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -19039,7 +19039,7 @@
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "nvq" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -19155,7 +19155,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 5
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -19701,7 +19701,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/middlehall)
 "nWU" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -19968,7 +19968,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/lower/atmos_lockers)
 "ofl" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -20330,7 +20330,7 @@
 	icon_state = "map_vent_out";
 	pressure_checks = 0;
 	pressure_checks_default = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/bluegrid{
 	initial_gas_mix = "n2=100;TEMP=80";
@@ -20909,7 +20909,7 @@
 "oRe" = (
 /obj/effect/floor_decal/industrial/outline,
 /obj/structure/closet/wardrobe/robotics_black,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -21050,7 +21050,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -21276,7 +21276,7 @@
 "pel" = (
 /obj/machinery/washing_machine,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -21484,7 +21484,7 @@
 	},
 /area/tcommsat/chamber)
 "poo" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 28
 	},
@@ -21661,7 +21661,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -21785,7 +21785,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/bathroom)
 "pzC" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/dark,
@@ -22413,7 +22413,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/main)
 "pXi" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -22805,7 +22805,7 @@
 /area/janitor)
 "qmG" = (
 /obj/structure/catwalk,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -22978,7 +22978,7 @@
 /area/maintenance/asmaint2)
 "qsf" = (
 /obj/structure/railing,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -23010,7 +23010,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "qtq" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -23050,7 +23050,7 @@
 /area/tether/surfacebase/medical/centralstairwell)
 "qut" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -23268,7 +23268,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
 "qDL" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -23342,7 +23342,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "qFQ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -23428,7 +23428,7 @@
 /area/maintenance/lower/atmos)
 "qLl" = (
 /obj/structure/filingcabinet/chestdrawer,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -23439,7 +23439,7 @@
 	dir = 4
 	},
 /obj/machinery/portable_atmospherics/powered/pump/filled,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -23551,7 +23551,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/security/detective)
 "qNZ" = (
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
 /turf/simulated/mineral/floor/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "qOo" = (
@@ -23562,7 +23562,7 @@
 /turf/simulated/open,
 /area/tether/surfacebase/surface_two_hall)
 "qOy" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -23616,7 +23616,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/middlehall)
 "qQc" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -23643,7 +23643,7 @@
 	pixel_x = -1;
 	pixel_y = -2
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -24113,7 +24113,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "rkP" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -24958,10 +24958,10 @@
 "rUA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	icon_state = "map_vent_out";
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -25220,7 +25220,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/middlehall)
 "seT" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -25368,7 +25368,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust/steel_decals_rusted2,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/railing,
@@ -25727,7 +25727,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/old_tram)
 "sss" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -25806,7 +25806,7 @@
 /area/maintenance/lower/north)
 "sve" = (
 /obj/structure/catwalk,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -26067,7 +26067,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/north)
 "sCG" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/techfloor{
@@ -26076,7 +26076,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "sCV" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -26894,7 +26894,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
@@ -27377,7 +27377,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid/full{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -27416,7 +27416,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "tJL" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/carpet,
@@ -27896,7 +27896,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "uhO" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -28
 	},
@@ -28178,7 +28178,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "uva" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/item/bananapeel,
@@ -28403,7 +28403,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -28667,7 +28667,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "uGH" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/techfloor{
@@ -28805,7 +28805,7 @@
 "uOu" = (
 /obj/structure/catwalk,
 /obj/structure/table/steel,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -29282,7 +29282,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -29426,7 +29426,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -29596,7 +29596,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "vpQ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -29754,7 +29754,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "vuJ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -29933,7 +29933,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "vCg" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -30077,7 +30077,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -30165,7 +30165,7 @@
 /obj/structure/table/standard,
 /obj/item/hand_tele,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/dark,
@@ -30600,7 +30600,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/table/standard,
 /obj/random/soap,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -30716,7 +30716,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/public_garden_maintenance/upper)
 "whe" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -30989,7 +30989,7 @@
 /turf/simulated/floor/tiled,
 /area/janitor)
 "wtE" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -31080,7 +31080,7 @@
 "wvN" = (
 /obj/structure/table/steel,
 /obj/random/medical/lite,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -32115,7 +32115,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -32324,7 +32324,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining)
 "xpn" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -32775,7 +32775,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/security/detective)
 "xHt" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -32952,7 +32952,7 @@
 	},
 /area/tcommsat/chamber)
 "xMO" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -33387,7 +33387,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "yaX" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/wood,
@@ -33470,7 +33470,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/open,
@@ -33592,7 +33592,7 @@
 /area/tether/surfacebase/north_stairs_two)
 "yjH" = (
 /obj/structure/table/glass,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
