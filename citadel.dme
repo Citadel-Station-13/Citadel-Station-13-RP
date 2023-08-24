@@ -4814,7 +4814,6 @@
 #include "code\modules\xenobio\items\extracts.dm"
 #include "code\modules\xenobio\items\slime_objects.dm"
 #include "code\modules\xenobio\items\slimepotions.dm"
-#include "code\modules\xenobio\items\special_slime_objects.dm"
 #include "code\modules\xenobio\items\weapons.dm"
 #include "code\modules\xenobio\machinery\processor.dm"
 #include "donator\legacy.dm"

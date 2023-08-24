@@ -384,10 +384,6 @@
 "cM" = (
 /turf/simulated/wall/r_wall,
 /area/main_map/maintenance/deck_four/starboard)
-"cO" = (
-/obj/item/slime_cube/special,
-/turf/simulated/floor/plating,
-/area/main_map/maintenance/deck_four/forward)
 "cR" = (
 /turf/simulated/floor/plating,
 /area/rnd/secure_storage/critical)
@@ -32253,7 +32249,7 @@ kL
 Za
 kL
 Ji
-kL
+IF
 IF
 IF
 HE
@@ -33196,7 +33192,7 @@ wM
 nw
 nw
 nw
-cO
+wM
 nw
 nw
 nw
