@@ -321,8 +321,7 @@
 	M.adjustOxyLoss(-10 * removed * chem_effective)
 	M.adjustToxLoss(-4 * removed * chem_effective)
 	M.adjustCloneLoss(-2 * removed * chem_effective)
-	M.druggy = max(M.druggy, 20)
-	M.hallucination = max(M.hallucination, 3)
+	M.druggy = max(M.druggy, 40)
 	M.adjustBrainLoss(1 * removed) //your life for your mind. The Earthmother's Tithe.
 	M.ceiling_chemical_effect(CE_PAINKILLER, 120 * chem_effective) //It's just a burning memory. The pain, I mean.
 /*
