@@ -28,12 +28,8 @@ SUBSYSTEM_DEF(dpc)
 		var/datum/callback/CB = qc[q_idex]
 		q_idex += 1
 
-		// CITADEL EDIT - refrain from calling procs on deleted objects, please and thank you!!
-		if(CB.object?.gc_destroyed != 0)
-			continue
-		// END
-
-		CB.InvokeAsync()
+		if (!isdatum(CB.object) || !CB.object.gc_destroyed)
+			CB.InvokeAsync()
 
 		if (MC_TICK_CHECK)
 			break
