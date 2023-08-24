@@ -44,6 +44,7 @@
 	/// Intrinsic datum traits to apply to the mob
 	var/list/mob_traits
 	//  todo: list of physiologies to add. list, incase we want to have separate ones for separate biology flags.
+	#warn *scream
 
 	//? Additional info
 	/// what you see on tooltip/examine

@@ -22,7 +22,7 @@
 
 #define CARRY_EXPONENT_BASELINE (2 / 3)
 
-#warn AOIGHAOIGJOIWAJOIJ
+#warn species physiology mods for above
 
 //? Item Encumbrance defines
 
