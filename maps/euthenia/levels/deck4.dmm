@@ -98,7 +98,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -231,7 +231,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/deck_four/aft/port)
 "bR" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -621,7 +621,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -915,7 +915,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
 "gP" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -1273,7 +1273,7 @@
 /turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "jp" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -1766,7 +1766,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1929,7 +1929,7 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/maintenance/deck_four/aft/port)
 "od" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/bluegrid,
@@ -2089,7 +2089,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "pn" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -2455,7 +2455,7 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/space)
 "rd" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -2522,7 +2522,7 @@
 /turf/simulated/floor/plating,
 /area/library)
 "rE" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -2843,7 +2843,7 @@
 /turf/simulated/wall/r_wall,
 /area/maintenance/deck_four/aft/port)
 "ua" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -3194,7 +3194,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/underground)
 "wU" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -3233,7 +3233,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "xq" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -4141,7 +4141,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
 "Ee" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4299,7 +4299,7 @@
 /turf/simulated/floor/plating,
 /area/ai_upload)
 "Fp" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -5139,7 +5139,7 @@
 /area/space)
 "Ld" = (
 /obj/structure/table/rack/shelf,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 24
 	},
 /turf/simulated/floor/reinforced,
@@ -5218,7 +5218,7 @@
 /area/gateway/prep_room)
 "Ma" = (
 /obj/structure/table/rack/shelf,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 24
 	},
 /turf/simulated/floor/reinforced,
@@ -5337,7 +5337,7 @@
 /area/space)
 "Nh" = (
 /obj/structure/filingcabinet,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 24
 	},
 /turf/simulated/floor/reinforced,
@@ -6109,7 +6109,7 @@
 	desc = "A large cabinet with drawers. They seem to be ominously empty.";
 	name = "Classified Science Records"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -6143,7 +6143,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/maintenance/deck_four/aft/port)
 "SF" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -6230,7 +6230,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
 "Tg" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -6343,7 +6343,7 @@
 /turf/simulated/open,
 /area/space)
 "TY" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -6770,7 +6770,7 @@
 /turf/simulated/floor/plating,
 /area/space)
 "WP" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/closet/hydrant{
@@ -7241,7 +7241,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -24
 	},

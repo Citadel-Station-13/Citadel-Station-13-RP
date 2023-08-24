@@ -78,7 +78,7 @@
 /turf/simulated/floor/gold,
 /area/shuttle/cruise_ship)
 "kv" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -27
 	},

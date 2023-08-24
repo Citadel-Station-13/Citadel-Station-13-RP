@@ -19,7 +19,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh_cockpit)
 "aK" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -74,7 +74,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -94,7 +94,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -170,7 +170,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1344,7 +1344,7 @@
 /area/shuttle/gecko_sh_engineering)
 "BN" = (
 /obj/machinery/light/small,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -2133,7 +2133,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_sh_engineering)
 "Qu" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -2529,7 +2529,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},

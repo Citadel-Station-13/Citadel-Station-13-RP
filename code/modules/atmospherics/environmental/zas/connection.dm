@@ -5,7 +5,7 @@
 /*
 
 Overview:
-	Connections are made between turfs by air_master.connect(). They represent a single point where two zones converge.
+	Connections are made between turfs by SSair.connect(). They represent a single point where two zones converge.
 
 Class Vars:
 	A - Always a simulated turf.
@@ -60,18 +60,18 @@ Class Procs:
 /datum/zas_connection/New(turf/simulated/A, turf/simulated/B)
 	#ifdef ZAS_ASSERTIONS
 	ASSERT(A.has_valid_zone())
-	//ASSERT(air_master.has_valid_zone(B))
+	//ASSERT(SSair.has_valid_zone(B))
 	#endif
 	src.A = A
 	src.B = B
 	zoneA = A.zone
 	if(!istype(B))
 		mark_space()
-		edge = air_master.get_edge(A.zone,B)
+		edge = SSair.get_edge(A.zone,B)
 		edge.add_connection(src)
 	else
 		zoneB = B.zone
-		edge = air_master.get_edge(A.zone,B.zone)
+		edge = SSair.get_edge(A.zone,B.zone)
 		edge.add_connection(src)
 
 /datum/zas_connection/proc/mark_direct()
@@ -132,7 +132,7 @@ Class Procs:
 				return
 			else
 				edge.remove_connection(src)
-				edge = air_master.get_edge(A.zone, B)
+				edge = SSair.get_edge(A.zone, B)
 				edge.add_connection(src)
 				zoneA = A.zone
 
@@ -154,7 +154,7 @@ Class Procs:
 		//to_chat(world, "Zones changed, \...")
 		if(A.zone && B.zone)
 			edge.remove_connection(src)
-			edge = air_master.get_edge(A.zone, B.zone)
+			edge = SSair.get_edge(A.zone, B.zone)
 			edge.add_connection(src)
 			zoneA = A.zone
 			zoneB = B.zone

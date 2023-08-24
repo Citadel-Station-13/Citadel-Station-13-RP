@@ -281,7 +281,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "yF" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -370,7 +370,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 26
 	},
 /turf/simulated/floor/plating,
