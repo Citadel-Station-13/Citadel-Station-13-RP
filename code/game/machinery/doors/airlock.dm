@@ -1059,9 +1059,8 @@ About the new airlock wires panel:
 		return 0
 	return ..(M)
 
-// Airlock is passable if it is open (!density), bot has access, and is not bolted shut or powered off)
-/obj/machinery/door/airlock/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
-	return ..() || (check_access(ID) && !locked && inoperable())
+/obj/machinery/door/airlock/can_pathfinding_pass(atom/movable/actor, dir, datum/pathfinding/search)
+	return ..() || ((!isnull(searching.ss13_with_access) && check_access_list(searching.ss13_with_access)) && !locked && !inoperable)
 
 /obj/machinery/door/airlock/Initialize(mapload, obj/structure/door_assembly/assembly)
 	//if assembly is given, create the new door from the assembly

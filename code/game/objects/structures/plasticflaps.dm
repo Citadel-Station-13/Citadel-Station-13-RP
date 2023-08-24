@@ -42,18 +42,17 @@
 	else
 		return
 
-/obj/structure/plasticflaps/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
-	if(isliving(caller))
-		if(isbot(caller))
+/obj/structure/plasticflaps/can_pathfinding_pass(atom/movable/actor, dir, datum/pathfinding/search)
+	if(isliving(actor))
+		var/mob/living/L = actor
+		if(isbot(L))
 			return TRUE
-
-		var/mob/living/living_caller = caller
-		if(!living_caller.can_ventcrawl() && living_caller.mob_size > MOB_TINY)
-			return FALSE
-
-	if(caller?.pulling)
-		return CanAStarPass(ID, to_dir, caller.pulling)
-	return TRUE //diseases, stings, etc can pass
+		if(L.can_ventcrawl())
+			return TRUE
+		if(L.mob_size <= MOB_TINY)
+			return TRUE
+		return FALSE
+	return isnull(actor.pulling)? TRUE : can_pathfinding_pass(actor.pulling, dir, search)
 
 /obj/structure/plasticflaps/CanAllowThrough(atom/movable/mover, turf/target)
 	if(mover.check_pass_flags(ATOM_PASS_GLASS) && prob(60))

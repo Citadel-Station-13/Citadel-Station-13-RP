@@ -218,23 +218,13 @@
 
 	return TRUE
 
-
 /obj/structure/window/CanAtmosPass(turf/T, d)
 	if (fulltile || (d == dir))
 		return anchored? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_NOT_BLOCKED
 	return ATMOS_PASS_NOT_BLOCKED
 
-
-//? Does this work? idk. Let's call it TBI.
-/obj/structure/window/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
-	if (!density)
-		return TRUE
-
-	if ((fulltile) || (dir == to_dir))
-		return FALSE
-
-	return TRUE
-
+/obj/structure/window/can_pathfinding_pass(atom/movable/actor, dir, datum/pathfinding/search)
+	return ..() || (!fulltile && (src.dir != dir))
 
 /obj/structure/window/CheckExit(atom/movable/mover, turf/target)
 	if(istype(mover) && (check_standard_flag_pass(mover)))
@@ -242,7 +232,6 @@
 	if(!fulltile && get_dir(src, target) & dir)
 		return !density
 	return TRUE
-
 
 /obj/structure/window/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
