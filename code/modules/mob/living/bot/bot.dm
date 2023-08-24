@@ -123,9 +123,6 @@
 	if(on && !client && !busy)
 		spawn(0)
 			handleAI()
-	if(on && !client && !busy)
-		spawn(0)
-			handleAI()
 
 /mob/living/bot/update_health()
 	if(status_flags & STATUS_GODMODE)
