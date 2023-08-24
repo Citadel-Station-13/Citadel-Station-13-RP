@@ -714,7 +714,7 @@
 /obj/machinery/ai_status_display{
 	pixel_x = 32
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -748,7 +748,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/crew_quarters/sleep/cryo)
 "aBM" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -1270,7 +1270,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/rdoffice)
 "aRR" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -1980,7 +1980,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -2282,7 +2282,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/service)
 "bAd" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -2389,7 +2389,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/atmos/processing)
@@ -2860,7 +2860,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "cgh" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -3138,7 +3138,7 @@
 /turf/simulated/floor/reinforced,
 /area/space)
 "cqV" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
@@ -3319,7 +3319,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_10)
 "czZ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -3947,7 +3947,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -4345,8 +4345,8 @@
 /turf/simulated/floor/wood,
 /area/hallway/primary/central_two)
 "dqQ" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
-	filter_type = 3
+/obj/machinery/atmospherics/component/trinary/filter{
+	filtering = "co2"
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -4884,7 +4884,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -5004,7 +5004,7 @@
 /area/hydroponics)
 "dQl" = (
 /obj/structure/closet/secure_closet/personal/patient,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -5353,7 +5353,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/warehouse)
 "edS" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -5750,7 +5750,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "epo" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -6300,7 +6300,7 @@
 /turf/simulated/open,
 /area/quartermaster/hallway)
 "ePu" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -6667,7 +6667,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "fiq" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -7139,7 +7139,7 @@
 /turf/simulated/open,
 /area/maintenance/deck_two/forward/starboard)
 "fzk" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -7193,7 +7193,7 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -7357,7 +7357,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos/gas_storage)
@@ -7562,7 +7562,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology/xenoflora_storage)
 "fPo" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -7625,7 +7625,7 @@
 /turf/simulated/wall,
 /area/maintenance/atmospheric_substation/civilian)
 "fTc" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -7857,7 +7857,7 @@
 "gdF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -8178,7 +8178,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/atmos)
 "gpR" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -8706,8 +8706,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "gOt" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
-	filter_type = 4
+/obj/machinery/atmospherics/component/trinary/filter{
+	filtering = "n2o"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
@@ -9000,7 +9000,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "heX" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -9040,7 +9040,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "hfM" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -9057,7 +9057,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_gas)
 "hgT" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -9609,7 +9609,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/storage)
 "hGb" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -10298,7 +10298,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
 "ill" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -10377,7 +10377,7 @@
 /area/maintenance/deck_two/forward/port)
 "ioh" = (
 /obj/structure/closet/secure_closet/personal/patient,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -11030,9 +11030,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two)
 "iRH" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	dir = 1;
-	filter_type = 1
+	filtering = "o2"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
@@ -11747,10 +11747,10 @@
 "jvf" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	icon_state = "map_vent_out";
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -12142,7 +12142,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "jJI" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -13356,7 +13356,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "kBZ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -13692,7 +13692,7 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -13711,7 +13711,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/atmos/gas_storage)
@@ -14115,7 +14115,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/nitrogen,
 /area/engineering/atmos/gas_storage)
@@ -14314,7 +14314,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -14485,7 +14485,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "lsF" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -14555,7 +14555,7 @@
 /area/medical/patient_d)
 "lvT" = (
 /obj/structure/closet/secure_closet/personal/patient,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -15808,7 +15808,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research/researchdivision)
 "mpS" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -15930,7 +15930,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
 "mtm" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -15938,7 +15938,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "mty" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -16867,7 +16867,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/service)
 "nng" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -17047,7 +17047,7 @@
 /turf/simulated/floor/reinforced/nitrogen,
 /area/engineering/atmos/gas_storage)
 "nur" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -17180,7 +17180,7 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/fitness)
 "nBb" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -18349,7 +18349,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
 "ozt" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -18901,7 +18901,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -19634,7 +19634,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
 "puW" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -20176,7 +20176,7 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rnd/research/researchdivision)
 "pPG" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -21190,7 +21190,7 @@
 /area/crew_quarters/sleep/Dorm_8)
 "qIW" = (
 /obj/structure/closet/secure_closet/personal/patient,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -21333,7 +21333,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -21844,9 +21844,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "rfk" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 8;
-	filter_type = 0
+	filtering = "phoron"
 	},
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -22284,7 +22284,7 @@
 /turf/simulated/floor/wood,
 /area/medical/patient_wing)
 "ruJ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -23157,7 +23157,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
 "siB" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -23204,7 +23204,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_1)
 "skc" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -23536,7 +23536,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -23597,10 +23597,10 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -23962,7 +23962,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "sOU" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/camera/network/civilian,
@@ -24134,7 +24134,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -24730,7 +24730,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/phoron,
 /area/engineering/atmos/gas_storage)
@@ -24759,7 +24759,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/oxygen,
 /area/engineering/atmos/gas_storage)
@@ -25654,7 +25654,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -26667,7 +26667,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "uQP" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -28001,7 +28001,7 @@
 	pressure_checks = 2;
 	pressure_checks_default = 2;
 	pump_direction = 0;
-	use_power = 1
+	on = 1
 	},
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos/gas_storage)
@@ -29761,9 +29761,9 @@
 /turf/simulated/floor/plating,
 /area/space)
 "wVg" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	dir = 1;
-	filter_type = 2
+	filtering = "n2"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
@@ -29774,7 +29774,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_gas)
 "wVm" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -30399,7 +30399,7 @@
 /turf/simulated/open,
 /area/maintenance/deck_two/aft/port)
 "xrj" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/cable/green{
@@ -30702,7 +30702,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/aft/starboard)
 "xCn" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 25
 	},
@@ -30780,7 +30780,7 @@
 /area/crew_quarters/sleep/Dorm_11)
 "xEx" = (
 /obj/machinery/disposal,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -31274,7 +31274,7 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "xXe" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -31642,7 +31642,7 @@
 "ylF" = (
 /obj/item/coin/silver,
 /obj/item/coin/silver,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},

@@ -2,7 +2,7 @@
  * Crypto miner, or cryptominer turns power into points for engineering
  * Basicly a glorified power sink
  * Heats either atmos in the connector below or atmos in the environment
- * Reduced efficency the warmer it gets
+ * Reduced efficiency the warmer it gets
  * Breaks down when to warm
  * Conversion rate tbd, starting value 100kJ => 1 Point
  *
@@ -23,7 +23,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
     var/safe_storage_temp = 350//Kelvin // just being exposed to temperatures above this should case damage to the circuits.
     var/optimal_temperature = 200//Kelvin
     var/unsafe_lower_temp = 0//Kelvin, semiconductors dont like being frozen and operated at the same time removed for now, its hard enough to juggle anyway
-    var/efficency = 0//the cooler the environment is the more efficent the calculations work, and the more points are generated per Megawatt(shouldnt go over 1)
+    var/efficiency = 0//the cooler the environment is the more efficient the calculations work, and the more points are generated per Megawatt(shouldnt go over 1)
     //also factors damage to the machine in.
     var/temperature_damage = 0//If not sufficently cooled the circuits take damage and calculations get weaker, at 100 we condsider the circuit fried and it needs repairs/replacement
 
@@ -36,7 +36,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
         . += "Progress to next Point: [(power_drawn/GLOB.power_per_point) *100] %"
         . += "There are [points_stored] points up for claims."
         . += "The circuit looks [temperature_damage ? "damaged" : "intact"]. <i>Damage: [temperature_damage]%</i>"
-        . += "The miner is running at [efficency*100]% Efficency."
+        . += "The miner is running at [efficiency*100]% Efficiency."
         . += "[name] currently needs [GLOB.power_per_point] Joules per point."
         . += "A total of [GLOB.points_mined] points has been mined."
 
@@ -56,13 +56,13 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
     var/new_power_drawn = draw_power(power_level * 0.001) * 1000
     power_drawn += new_power_drawn
     heat_environ(new_power_drawn)//Converts the used power into heat, will probably overheat the room fairly quick.
-    process_thermal_properties()//calculates damage and efficency
+    process_thermal_properties()//calculates damage and efficiency
 
     if(!power_drawn)
         return
 
     if (power_drawn > GLOB.power_per_point)
-        var/newpoints = round((power_drawn / GLOB.power_per_point) * efficency)
+        var/newpoints = round((power_drawn / GLOB.power_per_point) * efficiency)
         power_drawn -= newpoints*(GLOB.power_per_point)
         points_stored += newpoints
         GLOB.points_mined += newpoints
@@ -104,23 +104,23 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 /obj/machinery/power/crypto_miner/proc/process_thermal_properties()
     var/datum/gas_mixture/env = loc.return_air()
     if(!env)
-        efficency = 0
+        efficiency = 0
     if(env.temperature <= optimal_temperature)
-        efficency = 1
+        efficiency = 1
     if(env.temperature > optimal_temperature)
         var/times_optimal_temp = env.temperature / optimal_temperature
-        efficency = 1 / (times_optimal_temp ** 4)//massive performance drop the further you get away from optimal temperature.
+        efficiency = 1 / (times_optimal_temp ** 4)//massive performance drop the further you get away from optimal temperature.
 
     if((env.temperature < unsafe_lower_temp) && (temperature_damage < 80))//Lower temperature doesnt completely fry the circuit tho it can causes severe damage
         temperature_damage++
-        efficency = min(efficency, 0.1)//Bottles the efficency at 10%
+        efficiency = min(efficiency, 0.1)//Bottles the efficiency at 10%
 
     if((env.temperature > safe_storage_temp) && (temperature_damage < 100))//no need to fry it further.
         temperature_damage++
 
     if(temperature_damage)
-        efficency = efficency - (temperature_damage/100)//One thermal damage means a reduction of 1% on the total efficency
-    efficency = clamp(efficency, 0,1)
+        efficiency = efficiency - (temperature_damage/100)//One thermal damage means a reduction of 1% on the total efficiency
+    efficiency = clamp(efficiency, 0,1)
 
 /obj/machinery/power/crypto_miner/proc/repair(var/mob/user,var/delay,var/damage_repaired)
     if(temperature_damage)

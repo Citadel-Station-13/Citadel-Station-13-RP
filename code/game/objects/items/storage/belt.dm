@@ -60,7 +60,7 @@
 		/obj/item/cell/device,
 		/obj/item/stack/cable_coil,
 		/obj/item/t_scanner,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/clothing/glasses,
 		/obj/item/clothing/gloves,
 		/obj/item/pda,
@@ -70,7 +70,7 @@
 		/obj/item/robotanalyzer,
 		/obj/item/material/minihoe,
 		/obj/item/material/knife/machete/hatchet,
-		/obj/item/analyzer/plant_analyzer,
+		/obj/item/plant_analyzer,
 		/obj/item/extinguisher/mini,
 		/obj/item/duct_tape_roll,
 		/obj/item/switchtool,
@@ -111,7 +111,7 @@
 		/obj/item/multitool,
 		/obj/item/stack/cable_coil/random_belt,
 		/obj/item/extinguisher/mini,
-		/obj/item/analyzer/longrange
+		/obj/item/atmos_analyzer/longrange
 	)
 
 /obj/item/storage/belt/medical
@@ -254,7 +254,7 @@
 		/obj/item/multitool,
 		/obj/item/stack/cable_coil,
 		/obj/item/t_scanner,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/flashlight,
 		/obj/item/cell/device,
 		/obj/item/cell/device/weapon,

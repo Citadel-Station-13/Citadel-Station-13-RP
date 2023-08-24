@@ -49,7 +49,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -78,7 +78,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -607,7 +607,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_cr_cockpit_wreck)
 "lY" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/airless,
@@ -1025,7 +1025,7 @@
 	},
 /obj/structure/bed/pod,
 /obj/item/bedsheet/blue,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1347,7 +1347,7 @@
 /area/shuttle/gecko_cr_cockpit_wreck)
 "BN" = (
 /obj/machinery/light/small,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -1789,7 +1789,7 @@
 /area/shuttle/gecko_cr_cockpit_wreck)
 "JV" = (
 /obj/effect/floor_decal/industrial/warning/corner,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -2259,7 +2259,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_cr_cockpit_wreck)
 "Qu" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -2518,7 +2518,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -2737,7 +2737,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -2823,7 +2823,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/button/remote/blast_door{
