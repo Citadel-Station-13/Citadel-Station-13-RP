@@ -30,7 +30,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 
 /obj/machinery/power/crypto_miner/examine(mob/user, dist)
     . = ..()
-    . += "An indicator on [src]'s controll panel indicates that [src] is in a [(check_right_atmos() ? "sufficent" : "insufficent")] amount of helium, vimur or phoron to function."
+    . += "An indicator on [src]'s control panel indicates that [src] is in a [(check_right_atmos() ? "sufficent" : "insufficent")] amount of helium, vimur or phoron to function."
     if(GLOB.points_mined)//Only show this if someone actually mined
         . += "[src] is [power_level? "on":"off"]. Current Power Level reads [power_level]."
         . += "Progress to next Point: [(power_drawn/GLOB.power_per_point) *100] %"
