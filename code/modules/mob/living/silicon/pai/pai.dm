@@ -186,12 +186,14 @@
 		update_transform(animate) // because when our chassis changes we dont want to stay rotated because only holograms rotate!!
 
 	// if in hologram form, chassis is null, and we need to make sure we are offset correctly
-	var/initial_base_pixel_x = initial(src.base_pixel_x)
 	if(!chassis)
 		var/icon_width = last_rendered_hologram_icon.Width()
-		set_base_pixel_x(initial_base_pixel_x + ((32 - icon_width) / 2))
+		icon_x_dimension = icon_width
+		buckle_pixel_x = (icon_x_dimension - WORLD_ICON_SIZE) / 2
 	else
-		set_base_pixel_x(initial_base_pixel_x)
+		icon_x_dimension = 32
+		buckle_pixel_x = 0
+	reset_pixel_offsets()
 
 
 /// camera handling
@@ -342,3 +344,6 @@
 
 /mob/living/silicon/pai/proc/get_holo_image()
 	return render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+
+/mob/living/silicon/pai/get_centering_pixel_x_offset(dir, atom/aligning)
+	return base_pixel_x + (WORLD_ICON_SIZE - icon_x_dimension) / 2
