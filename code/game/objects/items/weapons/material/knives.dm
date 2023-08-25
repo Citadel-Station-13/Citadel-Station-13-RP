@@ -227,7 +227,7 @@
 //The Return of the Data Knife
 /obj/item/material/knife/tacknife/dataknife
 	name = "data knife"
-	desc = "Oddly enough, a Ward-Takahashi product. This sleek combat knife's blade is inlaid with complex circuitry, capable of hacking electronics. It also sports a GPS system in the pommel, ensuring you'll never be lost."
+	desc = "This sleek combat knife's blade is inlaid with complex circuitry, capable of hacking electronics. Formerly produced under contract by Ward Takahashi in 2512 - allegedly for SysDef counter-piracy units - this deadly blade boasts an electronics warfare package that remains viable to this day."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "dataknife"
 	item_state = "knife"
