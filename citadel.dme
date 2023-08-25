@@ -320,6 +320,7 @@
 #include "code\__HELPERS\heap.dm"
 #include "code\__HELPERS\icon_smoothing.dm"
 #include "code\__HELPERS\icons.dm"
+#include "code\__HELPERS\legacy_tg_path.dm"
 #include "code\__HELPERS\mobs.dm"
 #include "code\__HELPERS\nameof.dm"
 #include "code\__HELPERS\names.dm"
