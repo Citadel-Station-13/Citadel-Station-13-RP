@@ -11,3 +11,11 @@
 	A = get_turf(A)
 	B = get_turf(B)
 	return A.z == B.z? get_dist(A, B) : INFINITY
+
+/**
+ * real dist because byond dist doesn't go above 127 :/
+ *
+ * accepts **TURFS**
+ */
+/proc/get_long_dist(turf/A, turf/B)
+	return max(abs(A.x - B.x), abs(A.y - B.y))
