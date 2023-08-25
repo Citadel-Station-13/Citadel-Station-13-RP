@@ -3876,7 +3876,7 @@
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/sleep/Dorm_7)
 "lH" = (
-/obj/machinery/gear_painter,
+/obj/machinery/vending/weeb,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
 "lI" = (
