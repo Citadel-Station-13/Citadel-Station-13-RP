@@ -24,8 +24,8 @@
 
 	if(held_item == null)
 		if(src.mind.changeling.recursive_enhancement)
-			if(changeling_generic_weapon(/obj/item/electric_hand/efficent,0))
-				to_chat(src, "<span class='notice'>We will shock others more efficently.</span>")
+			if(changeling_generic_weapon(/obj/item/electric_hand/efficient,0))
+				to_chat(src, "<span class='notice'>We will shock others more efficiently.</span>")
 				return 1
 		else
 			if(changeling_generic_weapon(/obj/item/electric_hand,0))  //Chemical cost is handled in the equip proc.
@@ -108,7 +108,7 @@
 	var/agony_amount = 60
 	var/electrocute_amount = 10
 
-/obj/item/electric_hand/efficent
+/obj/item/electric_hand/efficient
 	shock_cost = 5
 	agony_amount = 80
 	electrocute_amount = 20
@@ -126,14 +126,14 @@
 	. = ..()
 	qdel(src)
 
-/obj/item/electric_hand/afterattack(var/atom/target, var/mob/living/carbon/human/user, proximity)
+/obj/item/electric_hand/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	// Handle glove conductivity.
-	var/obj/item/clothing/gloves/gloves = user.gloves
+	var/obj/item/clothing/gloves/gloves = user.item_by_slot(SLOT_ID_GLOVES)
 	var/siemens = 1
 	if(gloves)
 		siemens = gloves.siemens_coefficient

@@ -161,7 +161,7 @@
 "mf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/light,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -454,7 +454,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -653,7 +653,7 @@
 /obj/structure/fuel_port{
 	pixel_y = 26
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -709,7 +709,7 @@
 	dir = 8
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/mackerel_lc,
-/obj/effect/overmap/visitable/ship/landable/mackerel_lc,
+/obj/overmap/entity/visitable/ship/landable/mackerel_lc,
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
 	id_tag = "mackerel_lc_docking_star";
 	name = "Starboard Airlock Control";

@@ -18,7 +18,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
-	matter = list(MAT_STEEL = 24000)
+	materials = list(MAT_STEEL = 24000)
 	preserve_item = TRUE // RCDs are pretty important.
 	var/datum/effect_system/spark_spread/spark_system
 	var/stored_matter = 0
@@ -72,7 +72,7 @@
 	add_overlay("[initial(icon_state)]_charge[nearest_ten]")
 
 
-/obj/item/rcd/examine(mob/user)
+/obj/item/rcd/examine(mob/user, dist)
 	. = ..()
 	. += "It currently holds [stored_matter]/[max_stored_matter] matter-units."
 
@@ -134,7 +134,7 @@
 			"Change Window Type" = image(icon = 'icons/mob/radial.dmi', icon_state = "windowtype")
 		)
 	*/
-	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, .proc/check_menu, user), require_near = TRUE, tooltips = TRUE)
+	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, PROC_REF(check_menu), user), require_near = TRUE, tooltips = TRUE)
 	if(!check_menu(user))
 		return
 	switch(choice)
@@ -183,10 +183,10 @@
 /obj/item/rcd/proc/can_afford(amount)
 	return stored_matter >= amount
 
-/obj/item/rcd/afterattack(atom/A, mob/living/user, proximity)
-	if(!ranged && !proximity)
+/obj/item/rcd/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!ranged && !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return FALSE
-	use_rcd(A, user)
+	use_rcd(target, user)
 
 // Used to call rcd_act() on the atom hit.
 /obj/item/rcd/proc/use_rcd(atom/A, mob/living/user)
@@ -279,7 +279,7 @@
 	icon_state = "electric_rcd"
 	var/obj/item/cell/cell = null
 	var/make_cell = TRUE // If false, initialize() won't spawn a cell for this.
-	var/electric_cost_coefficent = 83.33 // Higher numbers make it less efficent. 86.3... means it should matche the standard RCD capacity on a 10k cell.
+	var/electric_cost_coefficient = 83.33 // Higher numbers make it less efficient. 86.3... means it should match the standard RCD capacity on a 10k cell.
 
 /obj/item/rcd/electric/Initialize(mapload)
 	if(make_cell)
@@ -297,14 +297,14 @@
 /obj/item/rcd/electric/can_afford(amount) // This makes it so borgs won't drain their last sliver of charge by mistake, as a bonus.
 	var/obj/item/cell/cell = get_cell()
 	if(cell)
-		return cell.check_charge(amount * electric_cost_coefficent)
+		return cell.check_charge(amount * electric_cost_coefficient)
 	return FALSE
 
 /obj/item/rcd/electric/consume_resources(amount)
 	if(!can_afford(amount))
 		return FALSE
 	var/obj/item/cell/cell = get_cell()
-	return cell.checked_use(amount * electric_cost_coefficent)
+	return cell.checked_use(amount * electric_cost_coefficient)
 
 /obj/item/rcd/electric/update_icon()
 	return
@@ -345,7 +345,7 @@
 /obj/item/rcd/electric/mounted/borg
 	can_remove_rwalls = TRUE
 	desc = "A device used to rapidly build and deconstruct. It runs directly off of electricity, drawing directly from your cell."
-	electric_cost_coefficent = 41.66 // Twice as efficent, out of pity.
+	electric_cost_coefficient = 41.66 // Twice as efficient, out of pity.
 	tool_speed = 0.5 // Twice as fast, since borg versions typically have this.
 
 /obj/item/rcd/electric/mounted/borg/swarm
@@ -385,7 +385,7 @@
 
 // Infinite use RCD for debugging/adminbuse.
 /obj/item/rcd/debug
-	name = "self-repleshing rapid construction device"
+	name = "self-replenishing rapid construction device"
 	desc = "An RCD that appears to be plated with gold. For some reason it also seems to just \
 	be vastly superior to all other RCDs ever created, possibly due to it being colored gold."
 	icon_state = "debug_rcd"
@@ -423,17 +423,17 @@
 
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2)
-	matter = list(MAT_STEEL = 20000, MAT_GLASS = 4000)
+	materials = list(MAT_STEEL = 20000, MAT_GLASS = 4000)
 	var/remaining = RCD_MAX_CAPACITY / 3
 
 /obj/item/rcd_ammo/large
 	name = "high-capacity matter cartridge"
 	desc = "Do not ingest."
-	matter = list(MAT_STEEL = 60000, MAT_GLASS = 12000)
+	materials = list(MAT_STEEL = 60000, MAT_GLASS = 12000)
 	origin_tech = list(TECH_MATERIAL = 4)
 	remaining = RCD_MAX_CAPACITY
 
-/obj/item/rcd_ammo/examine(mob/user)
+/obj/item/rcd_ammo/examine(mob/user, dist)
 	. = ..()
 	. += "It currently holds [remaining]/[initial(remaining)] matter-units."
 
@@ -466,7 +466,7 @@
 	status = rcd_status
 	delay = rcd_delay
 	if (status == RCD_DECONSTRUCT)
-		addtimer(CALLBACK(src, /atom/.proc/update_icon), 11)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon)), 11)
 		delay -= 11
 		icon_state = "rcd_end_reverse"
 	else
@@ -488,7 +488,7 @@
 		qdel(src)
 	else
 		icon_state = "rcd_end"
-		addtimer(CALLBACK(src, .proc/end), 15)
+		addtimer(CALLBACK(src, PROC_REF(end)), 15)
 
 /obj/effect/constructing_effect/proc/end()
 	qdel(src)

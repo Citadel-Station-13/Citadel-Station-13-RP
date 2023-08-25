@@ -105,16 +105,29 @@
 	// todo: don't block rad contents and just have component parts be unable to be contaminated while inside
 	// todo: wow rad contents is a weird system
 	rad_flags = RAD_BLOCK_CONTENTS
+	// todo: anchored / unanchored should be replaced by movement force someday, how to handle that?
 
 	//* Construction / Deconstruction
-	/// Can be constructed / deconstructed by players by default
+	/// allow default part replacement. null for disallowed, number for time.
+	var/default_part_replacement = 0
+	/// Can be constructed / deconstructed by players by default. null for off, number for time needed. Panel must be open.
 	//  todo: proc for allow / disallow, refactor
-	var/allow_deconstruct = FALSE
-	/// Can be anchored / unanchored by players without deconstructing by default
+	var/default_deconstruct
+	/// Can have panel open / closed by players by default. null for off, number for time needed. You usually want 0 for instant.
+	var/default_panel
+	/// Can be anchored / unanchored by players without deconstructing by default with a wrench. null for off, number for time needed.
 	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
-	var/allow_unanchor = FALSE
-	/// overlay state added when panel is open
+	var/default_unanchor
+	/// tool used for deconstruction
+	var/tool_deconstruct = TOOL_CROWBAR
+	/// tool used for panel open
+	var/tool_panel = TOOL_SCREWDRIVER
+	/// tool used for unanchor
+	var/tool_unanchor = TOOL_WRENCH
+	/// default icon state overlay for panel open
 	var/panel_icon_state
+	/// is the maintenance panel open?
+	var/panel_open = FALSE
 
 	//* unsorted
 	var/machine_stat = 0
@@ -135,7 +148,6 @@
 	///List of all the parts used to build it, if made from certain kinds of frames.
 	var/list/component_parts = null
 	var/uid
-	var/panel_open = FALSE
 	var/global/gl_uid = 1
 	///Sound played on succesful interface. Just put it in the list of vars at the start.
 	var/clicksound
@@ -189,13 +201,13 @@
 				qdel(A)
 	return ..()
 
+/obj/machinery/process(delta_time)//If you dont use process or power why are you here
+	return PROCESS_KILL
+
 /obj/machinery/update_overlays()
 	. = ..()
 	if(panel_open && panel_icon_state)
 		. += panel_icon_state
-
-/obj/machinery/process()//If you dont use process or power why are you here
-	return PROCESS_KILL
 
 /obj/machinery/emp_act(severity)
 	if(use_power && machine_stat == NONE)
@@ -211,6 +223,15 @@
 		spawn(10)
 			qdel(pulse2)
 	..()
+
+/obj/machinery/update_overlays()
+	. = ..()
+	if(panel_open && panel_icon_state)
+		. += panel_icon_state
+
+/obj/machinery/proc/set_panel_open(panel_opened)
+	panel_open = panel_opened
+	update_appearance()
 
 /obj/machinery/legacy_ex_act(severity)
 	switch(severity)
@@ -301,6 +322,15 @@
 	if(clicksound && istype(user, /mob/living/carbon))
 		playsound(src, clicksound, clickvol)
 
+	return ..()
+
+/obj/machinery/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/storage/part_replacer))
+		if(isnull(default_part_replacement))
+			user.action_feedback(SPAN_WARNING("[src] doesn't support part replacement."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		default_part_replacement(user, I)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 /obj/machinery/can_interact(mob/user)
@@ -408,6 +438,12 @@
 			RefreshParts()
 	return 1
 
+// todo: refactor
+/obj/machinery/set_anchored(anchorvalue)
+	. = ..()
+	power_change()
+	update_appearance()
+
 // Default behavior for wrenching down machines.  Supports both delay and instant modes.
 /obj/machinery/proc/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time = 0)
 	if(!W.is_wrench())
@@ -430,8 +466,6 @@
 	return TRUE
 
 /obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, var/obj/item/C)
-
-
 	if(!C.is_crowbar())
 		return 0
 	if(!panel_open)
@@ -485,8 +519,9 @@
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
 	drop_products(ATOM_DECONSTRUCT_DISASSEMBLED)
 	on_deconstruction()
-	// If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
+	// If it doesn't have a circuit board, don't create a frame, instead just break.
 	if(!circuit)
+		qdel(src)
 		return 0
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
 	var/obj/item/circuitboard/M = circuit

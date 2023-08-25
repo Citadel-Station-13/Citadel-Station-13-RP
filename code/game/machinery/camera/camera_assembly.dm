@@ -6,7 +6,7 @@
 	w_class = ITEMSIZE_SMALL
 	anchored = 0
 
-	matter = list(MAT_STEEL = 700, MAT_GLASS = 300)
+	materials = list(MAT_STEEL = 700, MAT_GLASS = 300)
 
 	//	Motion, EMP-Proof, X-Ray
 	var/list/obj/item/possible_upgrades = list(/obj/item/assembly/prox_sensor, /obj/item/stack/material/osmium, /obj/item/stock_parts/scanning_module)
@@ -80,7 +80,7 @@
 			if(W.is_screwdriver())
 				playsound(src.loc, W.tool_sound, 50, 1)
 
-				var/input = sanitize(input(usr, "Which networks would you like to connect this camera to? Separate networks with a comma. No Spaces!\nFor example: "+GLOB.using_map.station_short+",Security,Secret ", "Set Network", camera_network ? camera_network : NETWORK_DEFAULT))
+				var/input = sanitize(input(usr, "Which networks would you like to connect this camera to? Separate networks with a comma. No Spaces!\nFor example: "+(LEGACY_MAP_DATUM).station_short+",Security,Secret ", "Set Network", camera_network ? camera_network : NETWORK_DEFAULT))
 				if(!input)
 					to_chat(usr, "No input found please hang up and try your call again.")
 					return

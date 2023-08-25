@@ -42,13 +42,13 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 /turf/proc/baseturf_core()
 	// todo: this is shitcode, pull it out on maploader refactor.
 	// this is very obviously a copypaste from ChangeTurf.
-	. = SSmapping.level_trait(z, ZTRAIT_BASETURF) || GLOB.using_map.base_turf_by_z["[z]"] || /turf/space
+	. = SSmapping.level_baseturf(z) || world.turf
 	if(!ispath(.))
 		. = text2path(.)
 		if (!ispath(.))
-			warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
-			. = /turf/space
-	if(. == /turf/space)		// no space/basic check, if you use space/basic in a map honestly get bent
+			warning("Z-level [z] has invalid baseturf '[SSmapping.level_baseturf(z)]'")
+			. = world.turf
+	if(. == world.turf)		// no space/basic check, if you use space/basic in a map honestly get bent
 		if(istype(GetBelow(src), /turf/simulated))
 			. = /turf/simulated/open
 /**
@@ -72,19 +72,24 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
+	// todo: hopefully someday we can get simulated/open to just be turf/open or something once
+	//       we refactor ZAS
+	//       then we can skip all this bullshit and have proper space zmimic
+	//       as long as zm overhead isn't too high.
 	switch(path)
 		if(null)
 			return
 		if(/turf/baseturf_bottom)
-			path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || GLOB.using_map.base_turf_by_z["[z]"] || /turf/space
+			path = SSmapping.level_baseturf(z) || /turf/space
 			if(!ispath(path))
-				path = text2path(path)
-				if (!ispath(path))
-					warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
-					path = /turf/space
+				stack_trace("Z-level [z] has invalid baseturf '[SSmapping.level_baseturf(z)]'")
+				path = /turf/space
 			if(path == /turf/space)		// no space/basic check, if you use space/basic in a map honestly get bent
 				if(istype(GetBelow(src), /turf/simulated))
 					path = /turf/simulated/open
+			else if(path == /turf/simulated/open)
+				if(istype(GetBelow(src), /turf/space))
+					path = /turf/space
 		if(/turf/space/basic)
 			// basic doesn't initialize and this will cause issues
 			// no warning though because this can happen naturaly as a result of it being built on top of
@@ -99,9 +104,9 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			if(istype(GetBelow(src), /turf/space))
 				path = /turf/space
 
-	if(!GLOB.use_preloader && path == type && !(flags & CHANGETURF_FORCEOP) && (baseturfs == new_baseturfs)) // Don't no-op if the map loader requires it to be reconstructed, or if this is a new set of baseturfs
+	if(!global.use_preloader && path == type && !(flags & CHANGETURF_FORCEOP) && (baseturfs == new_baseturfs)) // Don't no-op if the map loader requires it to be reconstructed, or if this is a new set of baseturfs
 		return src
-	if(flags & CHANGETURF_SKIP)
+	if(!(atom_flags & ATOM_INITIALIZED) || (flags & CHANGETURF_SKIP))
 		return new path(src)
 
 	// store lighting
@@ -433,6 +438,6 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		qdel(L)
 
 /turf/proc/ReplaceWithLattice()
-	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+	. = ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 	if(!(locate(/obj/structure/lattice) in .))
 		new /obj/structure/lattice(.)

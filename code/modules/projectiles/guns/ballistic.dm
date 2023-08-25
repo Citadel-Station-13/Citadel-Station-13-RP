@@ -5,7 +5,7 @@
 	icon_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	w_class = ITEMSIZE_NORMAL
-	matter = list(MAT_STEEL = 1000)
+	materials = list(MAT_STEEL = 1000)
 	recoil = 0
 	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
@@ -126,7 +126,7 @@
 								if(!user.attempt_insert_item_for_installation(AM, src))
 									return
 								ammo_magazine.update_icon()
-								user.put_in_hands(ammo_magazine)
+								user.put_in_hands_or_drop(ammo_magazine)
 								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
 													 SPAN_WARNING("You tactically reload \the [src] with \the [AM]!"))
 						else //Speed reloading
@@ -205,7 +205,7 @@
 //attempts to unload src. If allow_dump is set to 0, the speedloader unloading method will be disabled
 /obj/item/gun/ballistic/proc/unload_ammo(mob/user, var/allow_dump=1)
 	if(ammo_magazine)
-		user.put_in_hands(ammo_magazine)
+		user.put_in_hands_or_drop(ammo_magazine)
 		user.visible_message("[user] removes [ammo_magazine] from [src].", "<span class='notice'>You remove [ammo_magazine] from [src].</span>")
 		playsound(src.loc, mag_remove_sound, 50, 1)
 		ammo_magazine.update_icon()
@@ -225,7 +225,7 @@
 		else if(load_method & SINGLE_CASING)
 			var/obj/item/ammo_casing/C = loaded[loaded.len]
 			loaded.len--
-			user.put_in_hands(C)
+			user.put_in_hands_or_drop(C)
 			user.visible_message("[user] removes \a [C] from [src].", "<span class='notice'>You remove \a [C] from [src].</span>")
 		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 	else
@@ -255,7 +255,7 @@
 	else
 		return ..()
 
-/obj/item/gun/ballistic/afterattack(atom/A, mob/living/user)
+/obj/item/gun/ballistic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.stored_ammo.len)
 		ammo_magazine.loc = get_turf(src.loc)
@@ -269,7 +269,7 @@
 		ammo_magazine = null
 		update_icon() //make sure to do this after unsetting ammo_magazine
 
-/obj/item/gun/ballistic/examine(mob/user)
+/obj/item/gun/ballistic/examine(mob/user, dist)
 	. = ..()
 	if(ammo_magazine)
 		. += "It has \a [ammo_magazine] loaded."

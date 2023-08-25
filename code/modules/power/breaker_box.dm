@@ -26,7 +26,7 @@
 	for(var/obj/structure/cable/C in loc)
 		qdel(C)
 	. = ..()
-	for(var/datum/nano_module/rcon/R in world)
+	for(var/datum/tgui_module_old/rcon/R in world)
 		R.FindDevices()
 
 /obj/machinery/power/breakerbox/Initialize(mapload)
@@ -45,7 +45,7 @@
 	set_state(1)
 	return ..()
 
-/obj/machinery/power/breakerbox/examine(mob/user)
+/obj/machinery/power/breakerbox/examine(mob/user, dist)
 	. = ..()
 	if(on)
 		. += "<font color='green'>It seems to be online.</font>"

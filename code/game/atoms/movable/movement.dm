@@ -717,23 +717,6 @@
 	if(!silent && .)
 		visible_message("<span class='danger'>[src] crushes past [AM]!</span>", "<span class='danger'>You crush [AM]!</span>")
 
-//? Direction
-
-/**
- * Hook for running code when a dir change occurs
- */
-/atom/proc/setDir(newdir)
-	SHOULD_CALL_PARENT(TRUE)
-	if(dir == newdir)
-		return FALSE
-	if (SEND_SIGNAL(src, COMSIG_ATOM_PRE_DIR_CHANGE, dir, newdir) & COMPONENT_ATOM_BLOCK_DIR_CHANGE)
-		newdir = dir
-		return FALSE
-	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
-	dir = newdir
-
-	return TRUE
-
 //? Z Transit
 
 /**

@@ -25,7 +25,7 @@
 	var/list/program
 	var/dirty_items = FALSE
 
-/obj/item/integrated_circuit_printer/examine(mob/user)
+/obj/item/integrated_circuit_printer/examine(mob/user, dist)
 	. = ..()
 	ui_interact(user)
 
@@ -340,7 +340,7 @@
 				to_chat(usr, SPAN_NOTICE("You begin printing a custom assembly.  This will take approximately [DisplayTimeText(cloning_time)].  You can still print \
 				off normal parts during this time."))
 				playsound(src, 'sound/items/poster_being_created.ogg', 50, TRUE)
-				addtimer(CALLBACK(src, .proc/print_program, usr), cloning_time)
+				addtimer(CALLBACK(src, PROC_REF(print_program), usr), cloning_time)
 				return TRUE
 
 		if("cancel")

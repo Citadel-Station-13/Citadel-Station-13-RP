@@ -78,7 +78,7 @@
 /turf/simulated/floor/gold,
 /area/shuttle/cruise_ship)
 "kv" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -27
 	},
@@ -245,7 +245,7 @@
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship/bedroom)
 "De" = (
-/obj/effect/overmap/visitable/ship/landable/cruise_ship,
+/obj/overmap/entity/visitable/ship/landable/cruise_ship,
 /obj/effect/shuttle_landmark/shuttle_initializer/cruise_ship,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;

@@ -1,8 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
+"aa" = (
 /turf/simulated/wall,
 /area/class_h/POIs/landing_pad)
-"b" = (
+"ab" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
 /obj/machinery/light/small{
@@ -10,18 +10,28 @@
 	},
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"c" = (
+"ac" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/class_h/POIs/landing_pad)
-"d" = (
+"ad" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/glass_external/public,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"g" = (
+"ae" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/class_h/POIs/landing_pad)
+"af" = (
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/outdoors,
+/area/class_h/POIs/landing_pad)
+"ag" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -31,7 +41,7 @@
 	},
 /turf/simulated/floor/plating,
 /area/class_h/POIs/landing_pad)
-"h" = (
+"ah" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/table/standard{
 	name = "plastic table frame"
@@ -41,7 +51,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"i" = (
+"ai" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/loot_pile/surface/medicine_cabinet/fresh{
 	pixel_y = -35
@@ -51,50 +61,56 @@
 	},
 /turf/simulated/floor/tiled/kafel_full,
 /area/class_h/POIs/landing_pad)
-"j" = (
+"aj" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/class_h/POIs/landing_pad)
-"k" = (
+"ak" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet/toolcloset,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/landing_pad)
-"l" = (
+"al" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/class_h/POIs/landing_pad)
-"m" = (
+"am" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"n" = (
+"an" = (
 /turf/template_noop,
 /area/template_noop)
-"o" = (
+"ao" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/bed/chair/comfy/black,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"q" = (
+"ap" = (
 /obj/effect/floor_decal/techfloor/orange{
-	dir = 8
+	dir = 10
 	},
 /turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
-"r" = (
-/turf/simulated/floor/tiled/outdoors,
+"aq" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/external,
 /area/class_h/POIs/landing_pad)
-"s" = (
+"ar" = (
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
+"as" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/door/airlock/multi_tile,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/landing_pad)
-"t" = (
+"at" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/table/rack,
 /obj/item/clothing/mask/breath,
@@ -103,7 +119,7 @@
 /obj/item/tank/oxygen,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"u" = (
+"au" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/color/grey,
@@ -118,33 +134,36 @@
 /obj/item/ammo_magazine/clip/c762,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/landing_pad)
-"v" = (
+"av" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/door/airlock/multi_tile,
 /turf/simulated/floor/tiled/kafel_full,
 /area/class_h/POIs/landing_pad)
-"w" = (
+"aw" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/landing_pad)
-"x" = (
+"ax" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
 /turf/simulated/floor/plating,
 /area/class_h/POIs/landing_pad)
-"z" = (
+"ay" = (
+/turf/simulated/floor/tiled/outdoors,
+/area/class_h/POIs/landing_pad)
+"az" = (
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/landing_pad)
-"A" = (
+"aA" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"B" = (
+"aB" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
@@ -153,29 +172,34 @@
 	},
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"C" = (
+"aC" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/landing_pad)
-"D" = (
+"aD" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"E" = (
+"aE" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/class_h/POIs/landing_pad)
-"F" = (
+"aF" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/wall,
 /area/class_h/POIs/landing_pad)
-"H" = (
+"aG" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/kafel_full,
+/area/class_h/POIs/landing_pad)
+"aH" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/closet/crate/freezer/rations,
 /obj/item/storage/box/donkpockets,
@@ -192,19 +216,19 @@
 /obj/item/reagent_containers/food/snacks/liquidfood,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"I" = (
+"aI" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/suit_cycler/vintage,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"J" = (
+"aJ" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"K" = (
+"aK" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/curtain/open/shower,
 /obj/machinery/shower{
@@ -215,59 +239,65 @@
 	},
 /turf/simulated/floor/tiled/kafel_full,
 /area/class_h/POIs/landing_pad)
-"L" = (
+"aL" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"M" = (
+"aM" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/class_h/POIs/landing_pad)
-"N" = (
+"aN" = (
 /obj/machinery/door/airlock/glass_external/public,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"P" = (
+"aO" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/class_h/POIs/landing_pad)
+"aP" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/landing_pad)
-"Q" = (
+"aQ" = (
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"R" = (
+"aR" = (
 /obj/effect/floor_decal/techfloor/orange,
-/turf/simulated/floor/tiled/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/class_h/POIs/landing_pad)
-"S" = (
+"aS" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/landing_pad)
-"T" = (
+"aT" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"U" = (
+"aU" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/class_h/POIs/landing_pad)
-"V" = (
+"aV" = (
 /obj/machinery/light/spot{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/landing_pad)
-"W" = (
+"aW" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -275,7 +305,7 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/landing_pad)
-"X" = (
+"aX" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/table/standard{
 	name = "plastic table frame"
@@ -286,7 +316,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"Y" = (
+"aY" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/table/rack,
 /obj/item/clothing/suit/space,
@@ -295,7 +325,7 @@
 /obj/item/clothing/suit/space,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
-"Z" = (
+"aZ" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/bed/double,
 /obj/item/bedsheet/bluedouble,
@@ -304,259 +334,288 @@
 	},
 /turf/simulated/floor/wood,
 /area/class_h/POIs/landing_pad)
+"Cp" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/class_h/POIs/landing_pad)
+"FP" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/class_h/POIs/landing_pad)
+"PP" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/class_h/POIs/landing_pad)
+"SW" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/class_h/POIs/landing_pad)
+"Za" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/door/airlock,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/landing_pad)
 
 (1,1,1) = {"
-n
-n
-n
-n
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+an
+an
+an
+an
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (2,1,1) = {"
-n
-a
-a
-a
-a
-Y
-I
-t
-a
-k
-x
-W
-a
-K
-a
+an
+aa
+aa
+aa
+aa
+aY
+aI
+at
+aa
+ak
+ax
+aW
+aa
+aK
+aa
 "}
 (3,1,1) = {"
-n
-a
-b
-A
-d
-L
-L
-L
-S
-C
-g
-W
-a
-i
-a
+an
+aa
+ab
+aA
+ad
+aL
+aL
+aL
+aS
+aC
+ag
+aW
+aa
+ai
+aa
 "}
 (4,1,1) = {"
-n
-a
-Q
-B
-N
-T
-Q
-Q
-a
-a
-a
-a
-a
-v
-a
+an
+aa
+aQ
+aB
+aN
+aT
+aQ
+aQ
+aa
+aa
+aa
+aa
+aa
+aG
+aa
 "}
 (5,1,1) = {"
-n
-a
-N
-N
-a
-a
-Q
-Q
-Q
-D
-Q
-s
-z
-z
-a
+an
+aa
+aN
+aN
+aa
+aa
+aQ
+aQ
+aQ
+aD
+aQ
+Za
+az
+az
+aa
 "}
 (6,1,1) = {"
-n
-w
-r
-r
-w
-F
-h
-H
-o
-X
-J
-a
-u
-Z
-a
+an
+aw
+ay
+ay
+aw
+aF
+ah
+aH
+ao
+aX
+aJ
+aa
+au
+aZ
+aa
 "}
 (7,1,1) = {"
-n
-w
-r
-r
-w
-a
-m
-m
-m
-m
-a
-a
-a
-a
-a
+an
+aw
+ay
+ay
+aw
+aa
+am
+am
+am
+am
+aa
+aa
+aa
+aa
+aa
 "}
 (8,1,1) = {"
-n
-P
-r
-r
-w
-V
-w
-w
-w
-w
-V
-w
-w
-w
-n
+an
+aP
+ay
+ay
+aw
+aV
+aw
+aw
+aw
+aw
+aV
+aw
+aw
+aw
+an
 "}
 (9,1,1) = {"
-n
-l
-q
-q
-q
-q
-q
-q
-q
-q
-q
-q
-q
-M
-n
+an
+Cp
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+ap
+an
 "}
 (10,1,1) = {"
-n
-U
-r
-r
-r
-r
-r
-r
-r
-r
-r
-r
-r
-R
-n
+an
+SW
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+af
+an
 "}
 (11,1,1) = {"
-n
-U
-r
-r
-r
-r
-r
-r
-r
-r
-r
-r
-r
-R
-n
+an
+SW
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+af
+an
 "}
 (12,1,1) = {"
-n
-U
-r
-r
-r
-r
-r
-r
-r
-r
-r
-r
-r
-R
-n
+an
+SW
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+af
+an
 "}
 (13,1,1) = {"
-n
-U
-r
-r
-r
-r
-r
-r
-r
-r
-r
-r
-r
-R
-n
+an
+SW
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+af
+an
 "}
 (14,1,1) = {"
-n
-U
-r
-r
-r
-r
-r
-r
-r
-r
-r
-r
-r
-R
-n
+an
+SW
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+ay
+af
+an
 "}
 (15,1,1) = {"
-n
-c
-E
-E
-E
-E
-E
-E
-E
-E
-E
-E
-E
-j
-n
+an
+FP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+ae
+an
 "}

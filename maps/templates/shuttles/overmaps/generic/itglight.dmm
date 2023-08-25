@@ -20,7 +20,7 @@
 /obj/structure/bed/chair/bay/chair/padded/red/bignest{
 	name = "large dog bed"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -181,7 +181,7 @@
 /turf/simulated/floor/tiled/eris/dark/monofloor,
 /area/itglight/cockpit)
 "as" = (
-/obj/effect/overmap/visitable/ship/itglight,
+/obj/overmap/entity/visitable/ship/itglight,
 /turf/space,
 /area/space)
 "av" = (
@@ -708,7 +708,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Bridge";
 	req_one_access = list(777)
 	},
@@ -1077,7 +1077,7 @@
 "gX" = (
 /obj/structure/bed/chair/sofa/brown/left,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -1149,7 +1149,7 @@
 /obj/structure/bed/chair/bay/chair/padded/brown{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -1508,7 +1508,7 @@
 /area/itglight/starboardhighsec)
 "jE" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -1716,7 +1716,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Bridge";
 	req_one_access = list(777)
 	},
@@ -1810,8 +1810,8 @@
 /obj/structure/closet,
 /obj/item/robot_parts/l_arm,
 /obj/item/reagent_containers/glass/bucket,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/item/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
 	},
@@ -1907,7 +1907,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "mL" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -2520,7 +2520,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -3133,7 +3133,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "wS" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -3590,7 +3590,7 @@
 /turf/simulated/floor/airless,
 /area/itglight/portengi)
 "Aa" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -3645,7 +3645,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-4"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -3784,7 +3784,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-4"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -3901,7 +3901,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-4"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -4142,7 +4142,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	id_tag = "dauntlessportcargobolts";
 	name = "Port Cargo Access";
 	req_one_access = list(777)
@@ -4194,7 +4194,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	id_tag = "dauntlessstarboardcargobolts";
 	name = "Starboard Cargo Access";
 	req_one_access = list(777)
@@ -4208,7 +4208,7 @@
 /turf/simulated/floor/airless,
 /area/itglight/shuttlebay)
 "Eg" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -4244,7 +4244,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-4"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -4419,7 +4419,7 @@
 "Fc" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/effect/floor_decal/industrial/outline,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor,
@@ -5432,7 +5432,7 @@
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/common)
 "Mh" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/carpet,
@@ -5490,7 +5490,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
@@ -5931,7 +5931,7 @@
 /turf/simulated/floor,
 /area/itglight/kitchen)
 "OX" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor,
@@ -6015,7 +6015,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/eris/white/techfloor_grid,
@@ -6035,7 +6035,7 @@
 /obj/item/bedsheet/brown,
 /obj/structure/curtain/black,
 /obj/structure/bed/padded,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -6501,7 +6501,7 @@
 	dir = 1
 	},
 /obj/item/radio,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -6572,7 +6572,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/white,
@@ -6752,7 +6752,7 @@
 /obj/random/soap,
 /obj/random/soap,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/white,
@@ -7400,7 +7400,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/itglight/portengi)
 "Zm" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/eris/cafe,
@@ -7482,7 +7482,7 @@
 /turf/simulated/wall/shull,
 /area/itglight/portcargo)
 "ZO" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/structure/closet/crate/bin{
@@ -7519,7 +7519,7 @@
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,

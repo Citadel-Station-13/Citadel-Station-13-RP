@@ -644,7 +644,7 @@
 "bL" = (
 /obj/structure/table/glass,
 /obj/item/duct_tape_roll,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/base)
 "bM" = (
@@ -1628,7 +1628,7 @@
 	},
 /area/awaymission/snowfield/base)
 "Bw" = (
-/obj/effect/overmap/visitable/sector/gateway/snowfield,
+/obj/overmap/entity/visitable/sector/gateway/snowfield,
 /turf/simulated/floor/outdoors/snow{
 	temperature = 243.15
 	},

@@ -37,14 +37,14 @@
 		AM.forceMove(drop_location())
 	return ..()
 
-/obj/machinery/particle_smasher/examine(mob/user)
+/obj/machinery/particle_smasher/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='notice'>\The [src] contains:</span>"
 	for(var/obj/item/I in contents)
 		. += "<span class='notice'>\the [I]</span>"
 
 /obj/machinery/particle_smasher/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.type == /obj/item/analyzer)
+	if(W.type == /obj/item/atmos_analyzer)
 		to_chat(user, "<span class='notice'>\The [src] reads an energy level of [energy].</span>")
 	else if(istype(W, /obj/item/stack/material) && !target)
 		var/obj/item/stack/material/M = W

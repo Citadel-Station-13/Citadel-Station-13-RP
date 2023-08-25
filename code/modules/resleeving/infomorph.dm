@@ -536,7 +536,7 @@ var/global/list/default_infomorph_software = list()
 			card.setEmotion(img)
 		return 1
 
-/mob/living/silicon/infomorph/examine(mob/user)
+/mob/living/silicon/infomorph/examine(mob/user, dist)
 	. = ..()
 	switch(src.stat)
 		if(CONSCIOUS)
@@ -581,7 +581,7 @@ var/global/list/default_infomorph_software = list()
 			to_chat(src, "<font color=green>Communication circuit reinitialized. Speech and messaging functionality restored.</font>")
 
 	//Only every so often
-	if(air_master.current_cycle%30 == 1)
+	if(SSair.current_cycle%30 == 1)
 		SStranscore.m_backup(mind)
 
 	if(health <= 0)

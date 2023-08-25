@@ -67,7 +67,7 @@
 				return 0
 	return null
 
-/obj/item/melee/energy/examine(mob/user)
+/obj/item/melee/energy/examine(mob/user, dist)
 	. = ..()
 	if(use_cell)
 		if(bcell)
@@ -351,7 +351,7 @@
 
 /obj/item/melee/energy/sword/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	if(prob(50))
-		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
 	return ..()
 
 /obj/item/melee/energy/sword/dualsaber/proc/jedi_spin(mob/living/user)
@@ -385,10 +385,10 @@
 	lcolor = "#0000FF"
 	projectile_parry_chance = 30	// It's not specifically designed for cutting and slashing, but it can still, maybe, save your life.
 
-/obj/item/melee/energy/sword/ionic_rapier/afterattack(var/atom/movable/AM, var/mob/living/user, var/proximity)
-	if(istype(AM, /obj) && proximity && active)
+/obj/item/melee/energy/sword/ionic_rapier/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(istype(target, /obj) && (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && active)
 		// EMP stuff.
-		var/obj/O = AM
+		var/obj/O = target
 		O.emp_act(3) // A weaker severity is used because this has infinite uses.
 		playsound(get_turf(O), 'sound/effects/EMPulse.ogg', 100, 1)
 		user.setClickCooldown(user.get_attack_speed(src)) // A lot of objects don't set click delay.
@@ -469,7 +469,7 @@
 
 /obj/item/melee/energy/sword/charge/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	if(prob(50))
-		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
 	return ..()
 
 /obj/item/melee/energy/sword/charge/dualsaber/proc/jedi_spin(mob/living/user)
@@ -666,7 +666,7 @@
 		to_chat(user, "<span class='warning'> [src] starts vibrating.</span>")
 		playsound(user, 'sound/weapons/hf_machete/hfmachete1.ogg', 40, 0)
 		w_class = WEIGHT_CLASS_BULKY
-		// user.lazy_register_event(/lazy_event/on_moved, src, .proc/mob_moved)
+		// user.lazy_register_event(/lazy_event/on_moved, src, PROC_REF(mob_moved))
 	else
 		damage_force = initial(damage_force)
 		throw_force = initial(throw_force)
@@ -677,11 +677,11 @@
 		to_chat(user, "<span class='notice'> [src] stops vibrating.</span>")
 		playsound(user, 'sound/weapons/hf_machete/hfmachete0.ogg', 40, 0)
 		w_class = WEIGHT_CLASS_NORMAL
-		// user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
+		// user.lazy_unregister_event(/lazy_event/on_moved, src, PROC_REF(mob_moved))
 	update_icon()
 
-/obj/item/melee/energy/hfmachete/afterattack(atom/target, mob/user, proximity)
-	if(!proximity)
+/obj/item/melee/energy/hfmachete/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	..()
 	if(target)
@@ -691,7 +691,7 @@
 
 /*
 /obj/item/melee/energy/hfmachete/dropped(mob/user, atom_flags, atom/newLoc)
-	user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
+	user.lazy_unregister_event(/lazy_event/on_moved, src, PROC_REF(mob_moved))
 
 /obj/item/melee/energy/hfmachete/throw_at_old(atom/target, range, speed, thrower) // todo: get silicons to interpret this because >sleeps
 	if(!usr)

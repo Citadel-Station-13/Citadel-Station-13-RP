@@ -4,6 +4,9 @@
 	w_class = ITEMSIZE_NORMAL
 	// todo: better way, for now, block all rad contamination to interior
 	rad_flags = RAD_BLOCK_CONTENTS
+	obj_flags = OBJ_IGNORE_MOB_DEPTH
+	depth_level = 0
+	climb_allowed = FALSE
 
 	//? Flags
 	/// Item flags.
@@ -233,7 +236,7 @@
 	src.loc = T
 
 /// See inventory_sizes.dm for the defines.
-/obj/item/examine(mob/user)
+/obj/item/examine(mob/user, dist)
 	. = ..()
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weightclass2text(w_class)] item."
 

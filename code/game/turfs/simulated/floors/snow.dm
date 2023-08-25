@@ -68,7 +68,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/ice)
 		if(!M.is_stunned())
 			to_chat(M, "<span class='warning'>You slide across the ice!</span>")
 		M.set_stunned(20 * 1)
-		step(M,M.dir)
 
 // Ice that is used for, say, areas floating on water or similar.
 /turf/simulated/floor/outdoors/shelfice

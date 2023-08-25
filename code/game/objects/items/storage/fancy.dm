@@ -26,7 +26,7 @@
 	. = ..()
 	icon_state = "[icon_type]box[contents.len]"
 
-/obj/item/storage/fancy/examine(mob/user)
+/obj/item/storage/fancy/examine(mob/user, dist)
 	. = ..()
 	if(contents.len <= 0)
 		. += "There are no [icon_type]s left in the box."

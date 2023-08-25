@@ -37,9 +37,9 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
 	//rarity_value = 4
 
-	breath_type = /datum/gas/oxygen
-	poison_type = /datum/gas/phoron
-	exhale_type = /datum/gas/carbon_dioxide
+	breath_type = GAS_ID_OXYGEN
+	poison_type = GAS_ID_PHORON
+	exhale_type = GAS_ID_CARBON_DIOXIDE
 
 	hazard_high_pressure  = HAZARD_HIGH_PRESSURE
 	warning_high_pressure = WARNING_HIGH_PRESSURE
@@ -124,8 +124,10 @@
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
 		/mob/living/carbon/human/proc/bloodsuck,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 		/mob/living/proc/shred_limb,
-		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/eat_trash,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
@@ -419,10 +421,10 @@
 	set category = "Abilities"
 
 	var/list/gas_choices = list(
-		"oxygen" = /datum/gas/oxygen,
-		"phoron" = /datum/gas/phoron,
-		"nitrogen" = /datum/gas/nitrogen,
-		"carbon dioxide" = /datum/gas/carbon_dioxide
+		"oxygen" = GAS_ID_OXYGEN,
+		"phoron" = GAS_ID_PHORON,
+		"nitrogen" = GAS_ID_NITROGEN,
+		"carbon dioxide" = GAS_ID_CARBON_DIOXIDE
 	)
 	var/choice
 	if(target && target != src)
@@ -441,20 +443,20 @@
 		target.visible_message("<span class = 'danger'>[src] begins to burrow their digits into [target], slithering down their throat!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your throat and into your chest...</span>")
 	if(do_after(src,15 SECONDS))
 		switch(resp_biomorph)
-			if(/datum/gas/oxygen)
-				target.species.breath_type = /datum/gas/oxygen
-				target.species.poison_type = /datum/gas/phoron
-				target.species.exhale_type = /datum/gas/carbon_dioxide
-			if(/datum/gas/phoron)
-				target.species.breath_type = /datum/gas/phoron
+			if(GAS_ID_OXYGEN)
+				target.species.breath_type = GAS_ID_OXYGEN
+				target.species.poison_type = GAS_ID_PHORON
+				target.species.exhale_type = GAS_ID_CARBON_DIOXIDE
+			if(GAS_ID_PHORON)
+				target.species.breath_type = GAS_ID_PHORON
 				target.species.poison_type = null
-				target.species.exhale_type = /datum/gas/nitrogen
-			if(/datum/gas/nitrogen)
-				target.species.breath_type = /datum/gas/nitrogen
+				target.species.exhale_type = GAS_ID_NITROGEN
+			if(GAS_ID_NITROGEN)
+				target.species.breath_type = GAS_ID_NITROGEN
 				target.species.poison_type = null
-			if(/datum/gas/carbon_dioxide)
-				target.species.breath_type = /datum/gas/carbon_dioxide
-				target.species.exhale_type = /datum/gas/oxygen
+			if(GAS_ID_CARBON_DIOXIDE)
+				target.species.breath_type = GAS_ID_CARBON_DIOXIDE
+				target.species.exhale_type = GAS_ID_OXYGEN
 		if(target == src)
 			to_chat("<span class = 'Notice'>It is done.</span>")
 		else
@@ -691,7 +693,7 @@
 		return
 	var/mob/living/carbon/human/H = owner
 	H.restore_blood()
-	H.species.create_organs(H)
+	H.species.create_organs(H, TRUE)
 	H.restore_all_organs()
 	H.adjustBruteLoss(-healing_amount)
 	H.adjustFireLoss(-healing_amount)
@@ -732,7 +734,7 @@
 		return
 	var/mob/living/carbon/human/H = owner
 	toggle_sight(owner)
-	addtimer(CALLBACK(src, .proc/toggle_sight,H), duration, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(toggle_sight),H), duration, TIMER_UNIQUE)
 
 /datum/ability/species/xenochimera/thermal_sight/proc/toggle_sight(mob/living/carbon/human/H)
 	if(!active)
@@ -870,13 +872,13 @@
 
 		//These are only messages to give the player and everyone around them an idea of which stage they're at
 		//visible_message doesn't seem to relay selfmessages if you're paralysed, so we use to_chat
-		addtimer(CALLBACK(H, /atom/.proc/visible_message,"<span class = 'warning'> [H]'s skin begins to ripple and move, as if something was crawling underneath.</span>"), 4 MINUTES)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat,H,"<span class = 'notice'>We begin to recycle the dead tissue.</span>"), 2 MINUTES)
+		addtimer(CALLBACK(H, TYPE_PROC_REF(/atom, visible_message),"<span class = 'warning'> [H]'s skin begins to ripple and move, as if something was crawling underneath.</span>"), 4 MINUTES)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat),H,"<span class = 'notice'>We begin to recycle the dead tissue.</span>"), 2 MINUTES)
 
-		addtimer(CALLBACK(H, /atom/.proc/visible_message,"<span class = 'warning'> <i>[H]'s body begins to lose its shape, skin sloughing off and melting, losing form and composure.</i></span>","<span class = 'notice'>There is little left. We will soon be ready.</span>"), 8 SECONDS)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat,H,"<span class = 'notice'>There is little left. We will soon be ready.</span>"), 4 MINUTES)
+		addtimer(CALLBACK(H, TYPE_PROC_REF(/atom, visible_message),"<span class = 'warning'> <i>[H]'s body begins to lose its shape, skin sloughing off and melting, losing form and composure.</i></span>","<span class = 'notice'>There is little left. We will soon be ready.</span>"), 8 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat),H,"<span class = 'notice'>There is little left. We will soon be ready.</span>"), 4 MINUTES)
 
-		addtimer(CALLBACK(src, .proc/add_pop,H,), 5 MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(add_pop),H,), 5 MINUTES)
 
 /datum/ability/species/xenochimera/hatch/proc/add_pop()
 	if(ishuman(owner))

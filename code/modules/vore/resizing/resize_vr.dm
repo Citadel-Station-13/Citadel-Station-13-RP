@@ -83,7 +83,8 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 /mob/living/carbon/human/resize(var/new_size, var/animate = TRUE)
 	. = ..()
 	if(LAZYLEN(hud_list))
-		var/new_y_offset = 32 * (size_multiplier - 1)
+		var/new_y_offset = (size_multiplier < 1 ? 27 : 32) * (size_multiplier - 1)
+		//it lowers lesser than it raises when it comes to micros v. macros else the medHUD would bury the micro
 		for(var/key in hud_list)
 			var/image/HI = hud_list[key]
 			HI.pixel_y = new_y_offset
@@ -117,33 +118,34 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 */
 
 /**
- * Attempt to scoop up this mob up into H's hands, if the size difference is large enough.
- * @return false if normal code should continue, 1 to prevent normal code.
+ * Attempt to scoop up this mob up into M's hands, if the size difference is large enough.
+ * @return false if normal code should continue, true to prevent normal code.
  */
 /mob/living/proc/attempt_to_scoop(var/mob/living/M)
 	var/size_diff = M.get_effective_size() - get_effective_size()
 	if(!holder_default && holder_type)
 		holder_default = holder_type
 	if(!istype(M))
-		return 0
+		return FALSE
 	if(isanimal(M))
 		var/mob/living/simple_mob/SA = M
 		if(!SA.has_hands)
-			return 0
+			return FALSE
 	if(M.buckled)
 		to_chat(usr,"<span class='notice'>You have to unbuckle \the [M] before you pick them up.</span>")
-		return 0
+		return FALSE
 	if(size_diff >= 0.50)
-		if(M.get_effective_size() >= RESIZE_PREF_LIMIT && !M.permit_size_pickup)
+		// if the person being scooped up is past a set size limit then the pickup pref is applied
+		if(get_effective_size() >= RESIZE_PREF_LIMIT && !permit_size_pickup)
 			to_chat(src, "<span class='warning'>[M] is far too skittish to casually scoop up.</span>")
 			return TRUE
 		holder_type = /obj/item/holder/micro
 		var/obj/item/holder/m_holder = get_scooped(M)
 		holder_type = holder_default
 		if (m_holder)
-			return 1
+			return TRUE
 		else
-			return 0; // Unable to scoop, let other code run
+			return FALSE; // Unable to scoop, let other code run
 
 //! Fuck you.
 #define STEP_TEXT_OWNER_NON_SHITCODE(x, m) "[replacetext(x,"%prey",m)]"
@@ -425,8 +427,8 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 				//Human, not a taur, but not wearing shoes = yes grab
 				else if(H && (!isTaurTail(H.tail_style) && !H.shoes))
-					to_chat(src,"<span class='danger'>You pin [tmob] down onto the floor with your foot and curl your toes up around their body, trapping them inbetween them!</span>")
-					to_chat(tmob,"<span class='danger'>[src] pins you down to the floor with their foot and curls their toes up around your body, trapping you inbetween them!</span>")
+					to_chat(src,"<span class='danger'>You pin [tmob] down onto the floor with your foot and curl your toes up around their body, trapping them in between them!</span>")
+					to_chat(tmob,"<span class='danger'>[src] pins you down to the floor with their foot and curls their toes up around your body, trapping you in between them!</span>")
 					equip_to_slot_if_possible(tmob.get_scooped(H), SLOT_ID_SHOES, INV_OP_SILENT)
 					add_attack_logs(src,tmob,"Grabbed underfoot (nontaur, no shoes)")
 

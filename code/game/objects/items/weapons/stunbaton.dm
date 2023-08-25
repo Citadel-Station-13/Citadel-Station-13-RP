@@ -71,7 +71,7 @@
 	else
 		set_light(0)
 
-/obj/item/melee/baton/examine(mob/user)
+/obj/item/melee/baton/examine(mob/user, dist)
 	. = ..()
 	if(bcell)
 		. += "<span class='notice'>The [src] is [round(bcell.percent())]% charged.</span>"
@@ -264,13 +264,13 @@
 // Rare version of a baton that causes lesser lifeforms to really hate the user and attack them.
 /obj/item/melee/baton/shocker
 	name = "shocker"
-	desc = "A device that appears to arc electricity into a target to incapacitate or otherwise hurt them, similar to a stun baton.  It looks inefficent."
+	desc = "A device that appears to arc electricity into a target to incapacitate or otherwise hurt them, similar to a stun baton.  It looks inefficient."
 	description_info = "Hitting a lesser lifeform with this while it is on will compel them to attack you above other nearby targets.  Otherwise \
 	it works like a regular stun baton, just less effectively."
 	icon_state = "shocker"
 	damage_force = 10
 	throw_force = 5
-	agonyforce = 25 // Less efficent than a regular baton.
+	agonyforce = 25 // Less efficient than a regular baton.
 	attack_verb = list("poked")
 
 /obj/item/melee/baton/shocker/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)

@@ -4,8 +4,8 @@ FIRE ALARM
 /obj/machinery/firealarm
 	name = "fire alarm"
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
-	icon = 'icons/obj/monitors.dmi'
-	icon_state = "fire0"
+	icon = 'icons/obj/firealarm.dmi'
+	icon_state = "casing"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	var/detecting = TRUE
@@ -28,39 +28,107 @@ FIRE ALARM
 /obj/machinery/firealarm/alarms_hidden
 	alarms_hidden = TRUE
 
+/obj/machinery/firealarm/preloading_dir(datum/map_preloader/preloader)
+	dir = turn(dir, -preloader.turn_angle)
+	return FALSE
+
+/obj/machinery/firealarm/north
+	dir = NORTH
+	pixel_y = -21
+
+/obj/machinery/firealarm/south
+	dir = SOUTH
+	pixel_y = 21
+
+/obj/machinery/firealarm/east
+	dir = EAST
+	pixel_x = 21
+
+/obj/machinery/firealarm/west
+	dir = WEST
+	pixel_x = -21
+
 /obj/machinery/firealarm/Initialize(mapload)
 	. = ..()
-	if(z in GLOB.using_map.contact_levels)
+	if(z in (LEGACY_MAP_DATUM).contact_levels)
 		set_security_level(GLOB.security_level ? get_security_level() : "green")
+	setDir(dir)
+
+/obj/machinery/firealarm/setDir(ndir)
+	. = ..()
+	base_pixel_x = 0
+	base_pixel_y = 0
+	switch(dir)
+		if(NORTH)
+			base_pixel_y = -21
+		if(SOUTH)
+			base_pixel_y = 21
+		if(WEST)
+			base_pixel_x = -21
+		if(EAST)
+			base_pixel_x = 21
+	reset_pixel_offsets()
 
 /obj/machinery/firealarm/update_icon()
 	cut_overlays()
+	add_overlay("casing")
 
 	if(panel_open)
 		set_light(0)
 		return
 
 	if(machine_stat & BROKEN)
-		icon_state = "firex"
+		add_overlay("broken")
 		set_light(0)
 	else if(machine_stat & NOPOWER)
-		icon_state = "firep"
 		set_light(0)
+		return
 	else
 		if(!detecting)
-			icon_state = "fire1"
+			add_overlay("fire1")
 			set_light(l_range = 4, l_power = 0.9, l_color = "#ff0000")
 		else
-			icon_state = "fire0"
+			add_overlay("fire0")
+			var/image/alarm_img
 			switch(seclevel)
-				if("green")	set_light(l_range = 2, l_power = 0.25, l_color = "#00ff00")
-				if("yellow")	set_light(l_range = 2, l_power = 0.25, l_color = "#ffff00")
-				if("violet")	set_light(l_range = 2, l_power = 0.25, l_color = "#9933ff")
-				if("orange")	set_light(l_range = 2, l_power = 0.25, l_color = "#ff9900")
-				if("blue")	set_light(l_range = 2, l_power = 0.25, l_color = "#1024A9")
-				if("red")	set_light(l_range = 4, l_power = 0.9, l_color = "#ff0000")
-				if("delta")	set_light(l_range = 4, l_power = 0.9, l_color = "#FF6633")
-		add_overlay("overlay_[seclevel]")
+				if("green")
+					alarm_img = image(icon, "alarm_normal")
+					alarm_img.color = "#00ff00"
+					add_overlay(alarm_img)
+					set_light(l_range = 2, l_power = 0.25, l_color = "#00ff00")
+				if("yellow")
+					alarm_img = image(icon, "alarm_blinking")
+					alarm_img.color = "#ffff00"
+					add_overlay(alarm_img)
+					set_light(l_range = 2, l_power = 0.25, l_color = "#ffff00")
+				if("violet")
+					alarm_img = image(icon, "alarm_blinking")
+					alarm_img.color = "#9933ff"
+					add_overlay(alarm_img)
+					set_light(l_range = 2, l_power = 0.25, l_color = "#9933ff")
+				if("orange")
+					alarm_img = image(icon, "alarm_blinking")
+					alarm_img.color = "#ff9900"
+					add_overlay(alarm_img)
+					set_light(l_range = 2, l_power = 0.25, l_color = "#ff9900")
+				if("blue")
+					alarm_img = image(icon, "alarm_blinking")
+					alarm_img.color = "#1024A9"
+					add_overlay(alarm_img)
+					set_light(l_range = 2, l_power = 0.25, l_color = "#1024A9")
+				if("red")
+					alarm_img = image(icon, "alarm_blinking")
+					alarm_img.color = "#ff0000"
+					add_overlay(alarm_img)
+					set_light(l_range = 4, l_power = 0.9, l_color = "#ff0000")
+				if("delta")
+					alarm_img = image(icon, "alarm_blinking_twotone1")
+					alarm_img.color = COLOR_YELLOW
+					var/image/alarm_img2 = image(icon, "alarm_blinking_twotone2")
+					alarm_img2.color = COLOR_RED
+					add_overlay(alarm_img)
+					add_overlay(alarm_img2)
+					set_light(l_range = 4, l_power = 0.9, l_color = "#FF6633")
 
 /obj/machinery/firealarm/fire_act(datum/gas_mixture/air, temperature, volume)
 	if(detecting)
@@ -230,7 +298,7 @@ Just a object used in constructing fire alarms
 	icon_state = "door_electronics"
 	desc = "A circuit. It has a label on it, it says \"Can handle heat levels up to 40 degrees celsius!\""
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 */
 /obj/machinery/partyalarm
 	name = "\improper PARTY BUTTON"

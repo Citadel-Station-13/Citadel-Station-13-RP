@@ -11,7 +11,7 @@
 	requires_power = 0
 	is_outside = OUTSIDE_YES
 
-// Elevator areas.
+//Elevator areas.
 /area/turbolift/runder/level2
 	name = "under (level 2)"
 	lift_floor_label = "Underground 2"
@@ -51,19 +51,19 @@
 
 /area/turbolift/rmine/under1
 	name = "mining shaft (level -1)"
-	lift_floor_label = "Undergound Level 1"
-	lift_floor_name = "Maintnence"
-	lift_announce_str = "Arriving at Maintnence Point."
+	lift_floor_label = "Underground Level 1"
+	lift_floor_name = "Maintenance"
+	lift_announce_str = "Arriving at Maintenance Point."
 
 /area/turbolift/rmine/under2
 	name = "mining shaft (level -2)"
-	lift_floor_label = "Undergound Level 2"
+	lift_floor_label = "Underground Level 2"
 	lift_floor_name = "Mining Main"
 	lift_announce_str = "Arriving at Mining Department."
 
 /area/turbolift/rmine/under3
 	name = "mining shaft (level -3)"
-	lift_floor_label = "Undergound Level 3"
+	lift_floor_label = "Underground Level 3"
 	lift_floor_name = "Mining Bottom"
 	lift_announce_str = "Arriving at Lower Level."
 
@@ -90,6 +90,24 @@
 	lift_floor_label = "Level 3"
 	lift_floor_name = "Base"
 	lift_announce_str = "Arriving at Base Level."
+
+/area/turbolift/rhammerhead/underground
+	name = "transport tunnel (underground)"
+	lift_floor_label = "Underground Transport Tunnel"
+	lift_floor_name = "Security Garage, Transport Tunnel, Fighter bay."
+	lift_announce_str = "Arriving at the underground transport tunnel."
+
+/area/turbolift/rhammerhead/midpoint
+	name = "midpoint (level 1)"
+	lift_floor_label = "Elevator Midpoint"
+	lift_floor_name = "Nothing."
+	lift_announce_str = "Arriving at the elevator's midpoint."
+
+/area/turbolift/rhammerhead/hhbay
+	name = "hammerhead bay (level 2)"
+	lift_floor_label = "Hammerhead Bay 2"
+	lift_floor_name = "Hammerhead Docking Bay, Brig."
+	lift_announce_str = "Arriving at the Hammerhead Docking bay."
 
 
 /*
@@ -318,7 +336,7 @@
 /area/tether/surfacebase/north_stairs_one
 	name = "\improper North Stairwell First Floor"
 	icon_state = "dk_yellow"
-/area/tether/surfacebase/north_staires_two
+/area/tether/surfacebase/north_stairs_two
 	name = "\improper North Stairwell Second Floor"
 	icon_state = "dk_yellow"
 /area/tether/surfacebase/north_stairs_three
@@ -413,17 +431,17 @@
 	name = "\improper Mining Outpost Exterior Airlock"
 
 /area/outpost/mining_main/outpost/maintenance
-	name = "\improper Outpost Maintence"
+	name = "\improper Outpost Maintenance"
 	area_flags = AREA_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = new /datum/turf_initializer/maintenance()
 	ambience = AMBIENCE_MAINTENANCE
 
 /area/outpost/mining_main/outpost/maintenance/south
-	name = "\improper Outpost Maintence South"
+	name = "\improper Outpost Maintenance South"
 
 /area/outpost/mining_main/outpost/maintenance/north
-	name = "\improper Outpost Maintence North"
+	name = "\improper Outpost Maintenance North"
 
 // Solars map areas
 /area/tether/outpost/solars_outside
@@ -503,10 +521,10 @@
 	name = "\improper Atmospherics Main Hallway"
 
 /area/engineering/lower/lobby
-	name = "\improper Enginering Surface Lobby"
+	name = "\improper Engineering Surface Lobby"
 
 /area/engineering/lower/breakroom
-	name = "\improper Enginering Surface Break Room"
+	name = "\improper Engineering Surface Break Room"
 
 /area/engineering/lower/corridor
 	name = "\improper Tether Lower Service Corridor"
@@ -567,7 +585,7 @@
 /area/maintenance/lower/mining_eva
 	name = "\improper Mining EVA Maintenance"
 
-/area/maintenance/lower/public_garden_maintenence
+/area/maintenance/lower/public_garden_maintenance
 	name = "\improper Public Garden Maintenance"
 
 
@@ -959,6 +977,14 @@
 /area/rift/station/fighter_bay/maintenance
 	name = "\improper Fighter Bay Maintenance"
 
+/area/rift/station/fighter_bay/transport_tunnel
+	name = "\improper Transport Tunnel"
+
+/area/rift/station/fighter_bay/transport_tunnel_garage
+	name = "\improper Transport Tunnel Garage"
+
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint
+	name = "\improper Transport Tunnel Garage Maint"
 
 //Civilian Garden
 
@@ -1078,13 +1104,13 @@ Do this eventually. */
 /area/rift/facility/interior/surface
 	name = "\improper Lythios Facility -  Ground Level"
 
-/area/rift/facility/interior/undergound1
+/area/rift/facility/interior/underground1
 	name = "\improper Lythios Facility -  Sublevel 1"
 
-/area/rift/facility/interior/undergound2
+/area/rift/facility/interior/underground2
 	name = "\improper Lythios Facility -  Sublevel 2"
 
-/area/rift/facility/interior/undergound3
+/area/rift/facility/interior/underground3
 	name = "\improper Lythios Facility -  Sublevel 3"
 
 /area/rift/facility/interior/barracks

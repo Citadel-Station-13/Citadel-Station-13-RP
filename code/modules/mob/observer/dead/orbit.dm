@@ -24,6 +24,8 @@
 			var/ref = params["ref"]
 			var/atom/movable/poi = locate(ref) in GLOB.mob_list
 			if (poi == null)
+				poi = locate(ref) in SSshuttle.ships
+			if (poi == null)
 				. = TRUE
 				return
 			owner.ManualFollow(poi)
@@ -33,7 +35,7 @@
 			update_static_data()
 			. = TRUE
 
-/datum/orbit_menu/ui_data(mob/user)
+/datum/orbit_menu/ui_static_data(mob/user)
 	var/list/data = list()
 
 	var/list/players = list()
@@ -41,6 +43,7 @@
 	var/list/items_of_interest = list()
 	var/list/ghosts = list()
 	var/list/misc = list()
+	var/list/npcs = list()
 
 	for(var/name in sortmobs())
 		var/list/serialized = list()
@@ -57,14 +60,34 @@
 			ghosts += list(serialized)
 		else if(issimple(M))
 			simplemobs += list(serialized)
-		else if(ishuman(M) && M.ckey)
+		else if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(H.ai_holder || !H.mobility_flags)
+				npcs += list(serialized)
+			else
+				players += list(serialized)
+		else if(isrobot(M))
 			players += list(serialized)
+		else if(isAI(M))
+			players += list(serialized)
+		else if(istype(M, /mob/living/silicon/pai))
+			players += list(serialized)
+
+	for(var/obj/overmap/entity/visitable/ship/shuttle in SSshuttle.ships)
+		if(istype(shuttle))
+			var/list/serialized = list()
+			serialized["name"] = shuttle.name
+
+			serialized["ref"] = REF(shuttle)
+			items_of_interest += list(serialized)
+
 
 	data["players"] = players
 	data["simplemobs"] = simplemobs
 	data["items_of_interest"] = items_of_interest
 	data["ghosts"] = ghosts
 	data["misc"] = misc
+	data["npcs"] = npcs
 
 	return data
 

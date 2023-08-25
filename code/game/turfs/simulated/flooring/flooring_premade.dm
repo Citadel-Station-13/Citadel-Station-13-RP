@@ -59,6 +59,51 @@
 	icon_state = "arcade"
 	initial_flooring = /singleton/flooring/carpet/arcadecarpet
 
+/turf/simulated/floor/carpet/patterened/brown
+	name = "brown patterend carpet"
+	icon_state = "brown"
+	initial_flooring = /singleton/flooring/carpet/patterened/brown
+
+/turf/simulated/floor/carpet/patterened/blue
+	name = "blue patterend carpet"
+	icon_state = "blue1"
+	initial_flooring = /singleton/flooring/carpet/patterened/blue
+
+/turf/simulated/floor/carpet/patterened/blue/alt
+	name = "blue patterend carpet"
+	icon_state = "blue2"
+	initial_flooring = /singleton/flooring/carpet/patterened/blue/alt
+
+/turf/simulated/floor/carpet/patterened/blue/alt2
+	name = "blue patterend carpet"
+	icon_state = "blue3"
+	initial_flooring = /singleton/flooring/carpet/patterened/blue/alt2
+
+/turf/simulated/floor/carpet/patterened/red
+	name = "red patterend carpet"
+	icon_state = "red"
+	initial_flooring = /singleton/flooring/carpet/patterened/red
+
+/turf/simulated/floor/carpet/patterened/green
+	name = "green patterend carpet"
+	icon_state = "green"
+	initial_flooring = /singleton/flooring/carpet/patterened/green
+
+/turf/simulated/floor/carpet/patterened/magneta
+	name = "magenta patterend carpet"
+	icon_state = "magenta"
+	initial_flooring = /singleton/flooring/carpet/patterened/magenta
+
+/turf/simulated/floor/carpet/patterened/purple
+	name = "purple patterend carpet"
+	icon_state = "purple"
+	initial_flooring = /singleton/flooring/carpet/patterened/purple
+
+/turf/simulated/floor/carpet/patterened/orange
+	name = "orange patterend carpet"
+	icon_state = "orange"
+	initial_flooring = /singleton/flooring/carpet/patterened/orange
+
 /turf/simulated/floor/bluegrid
 	name = "mainframe floor"
 	icon = 'icons/turf/flooring/circuit.dmi'

@@ -45,13 +45,14 @@
 	AddComponent(/datum/component/radiation_listener)
 	rad_insulation = active? rad_insulation_active : rad_insulation_inactive
 
+
 /obj/machinery/power/rad_collector/attack_hand(mob/user, list/params)
 	if(anchored)
 		if(!src.locked)
 			toggle_power()
 			user.visible_message("[user.name] turns the [src.name] [active? "on":"off"].", \
 			"You turn the [src.name] [active? "on":"off"].")
-			investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [P?"Fuel: [round(P.air_contents.gas[/datum/gas/phoron]/0.29)]%":"<font color='red'>It is empty</font>"].","singulo")
+			investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [P?"Fuel: [round(P.air_contents.gas[GAS_ID_PHORON]/0.29)]%":"<font color='red'>It is empty</font>"].","singulo")
 		else
 			to_chat(user, "<font color='red'>The controls are locked!</font>")
 
@@ -99,7 +100,7 @@
 		return 1
 	return ..()
 
-/obj/machinery/power/rad_collector/examine(mob/user)
+/obj/machinery/power/rad_collector/examine(mob/user, dist)
 	. = ..()
 	if(active)
 		. += "<span class='notice'>[src]'s display states that it has stored <b>[render_power(stored_power, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_JOULE)]</b>, and is currently outputting [render_power(last_output, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)].</span>"
@@ -130,10 +131,10 @@
 	. = ..()
 	var/power_produced = max(0, (strength - flat_loss) * efficiency)
 	var/gas_needed = power_produced * gas_usage_factor
-	if(!power_produced || !P?.air_contents.gas[/datum/gas/phoron])
+	if(!power_produced || !P?.air_contents.gas[GAS_ID_PHORON])
 		return
-	P.air_contents.adjust_gas(/datum/gas/phoron, -gas_needed)
-	if(!P.air_contents.gas[/datum/gas/phoron])
+	P.air_contents.adjust_gas(GAS_ID_PHORON, -gas_needed)
+	if(!P.air_contents.gas[GAS_ID_PHORON])
 		investigate_log("ran out of gas", INVESTIGATE_SINGULO)
 		eject()
 	stored_power += power_produced
@@ -158,9 +159,6 @@
 		overlays_to_add += image('icons/obj/singularity.dmi', "on")
 
 	add_overlay(overlays_to_add)
-
-	return
-
 
 /obj/machinery/power/rad_collector/proc/toggle_power()
 	active = !active

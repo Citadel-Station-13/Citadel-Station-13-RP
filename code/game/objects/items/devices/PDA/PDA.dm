@@ -65,7 +65,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	var/obj/item/paicard/pai = null	// A slot for a personal AI device
 
-/obj/item/pda/examine(mob/user)
+/obj/item/pda/examine(mob/user, dist)
 	. = ..()
 	. += "The time [stationtime2text()] is displayed in the corner of the screen."
 
@@ -273,7 +273,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		to_chat(usr, "You can't send PDA messages because you are dead!")
 		return
 	var/list/plist = available_pdas()
-	tim_sort(plist, cmp = /proc/cmp_text_asc)
+	tim_sort(plist, cmp = GLOBAL_PROC_REF(cmp_text_asc))
 	if (plist)
 		var/c = input(usr, "Please select a PDA") as null|anything in plist
 		if (!c) // if the user hasn't selected a PDA file we can't send a message
@@ -436,7 +436,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/Initialize(mapload)
 	. = ..()
 	GLOB.PDAs += src
-	tim_sort(GLOB.PDAs, cmp = /proc/cmp_name_asc)
+	tim_sort(GLOB.PDAs, cmp = GLOBAL_PROC_REF(cmp_name_asc))
 	if(default_cartridge)
 		cartridge = new default_cartridge(src)
 	new /obj/item/pen(src)
@@ -1405,32 +1405,33 @@ GLOBAL_LIST_EMPTY(PDAs)
 				else
 					to_chat(user, "<span class='notice'>No radiation detected.</span>")
 
-/obj/item/pda/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/pda/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
+		return
 	switch(scanmode)
 
 		if(3)
-			if(!isobj(A))
+			if(!isobj(target))
 				return
-			if(!isnull(A.reagents))
-				if(A.reagents.reagent_list.len > 0)
-					var/reagents_length = A.reagents.reagent_list.len
+			if(!isnull(target.reagents))
+				if(target.reagents.reagent_list.len > 0)
+					var/reagents_length = target.reagents.reagent_list.len
 					to_chat(user, "<span class='notice'>[reagents_length] chemical agent[reagents_length > 1 ? "s" : ""] found.</span>")
-					for (var/re in A.reagents.reagent_list)
+					for (var/re in target.reagents.reagent_list)
 						to_chat(user,"<span class='notice'>    [re]</span>")
 				else
-					to_chat(user,"<span class='notice'>No active chemical agents found in [A].</span>")
+					to_chat(user,"<span class='notice'>No active chemical agents found in [target].</span>")
 			else
-				to_chat(user,"<span class='notice'>No significant chemical agents found in [A].</span>")
+				to_chat(user,"<span class='notice'>No significant chemical agents found in [target].</span>")
 
 		if(5)
-			analyze_gases(A, user)
+			analyze_gases(target, user)
 
-	if (!scanmode && istype(A, /obj/item/paper) && owner)
+	if (!scanmode && istype(target, /obj/item/paper) && owner)
 		// JMO 20140705: Makes scanned document show up properly in the notes. Not pretty for formatted documents,
 		// as this will clobber the HTML, but at least it lets you scan a document. You can restore the original
 		// notes by editing the note again. (Was going to allow you to edit, but scanned documents are too long.)
-		var/raw_scan = (A:info)
+		var/raw_scan = (target:info)
 		var/formatted_scan = ""
 		// Scrub out the tags (replacing a few formatting ones along the way)
 
@@ -1469,7 +1470,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
     	// Store the scanned document to the notes
 		note = "Scanned Document. Edit to restore previous notes/delete scan.<br>----------<br>" + formatted_scan + "<br>"
-		// notehtml ISN'T set to allow user to get their old notes back. A better implementation would add a "scanned documents"
+		// notehtml ISN'T set to allow user to get their old notes back. target better implementation would add a "scanned documents"
 		// feature to the PDA, which would better convey the availability of the feature, but this will work for now.
 
 		// Inform the user
@@ -1571,10 +1572,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 		var/pressure = environment.return_pressure()
 		var/total_moles = environment.total_moles
 		if (total_moles)
-			var/o2_level = environment.gas[/datum/gas/oxygen]/total_moles
-			var/n2_level = environment.gas[/datum/gas/nitrogen]/total_moles
-			var/co2_level = environment.gas[/datum/gas/carbon_dioxide]/total_moles
-			var/phoron_level = environment.gas[/datum/gas/phoron]/total_moles
+			var/o2_level = environment.gas[GAS_ID_OXYGEN]/total_moles
+			var/n2_level = environment.gas[GAS_ID_NITROGEN]/total_moles
+			var/co2_level = environment.gas[GAS_ID_CARBON_DIOXIDE]/total_moles
+			var/phoron_level = environment.gas[GAS_ID_PHORON]/total_moles
 			var/unknown_level =  1-(o2_level+n2_level+co2_level+phoron_level)
 
 			// entry is what the element is describing

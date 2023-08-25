@@ -31,7 +31,7 @@
 
 	set_label(new_label)
 
-/obj/item/reagent_containers/cartridge/dispenser/examine(mob/user)
+/obj/item/reagent_containers/cartridge/dispenser/examine(mob/user, dist)
 	. = ..()
 	. += "It has a capacity of [volume] units."
 	if(reagents.total_volume <= 0)

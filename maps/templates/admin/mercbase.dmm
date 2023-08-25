@@ -1218,7 +1218,6 @@
 /area/antag/antag_base)
 "bV" = (
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/flooring/circuit.dmi';
 	icon_state = "bcircuit"
 	},
 /area/antag/antag_base)
@@ -3592,7 +3591,7 @@
 /area/shuttle/mercenary)
 "gm" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(150)
 	},
 /turf/simulated/shuttle/floor{
@@ -3601,7 +3600,7 @@
 /area/shuttle/mercenary)
 "gn" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_dred"

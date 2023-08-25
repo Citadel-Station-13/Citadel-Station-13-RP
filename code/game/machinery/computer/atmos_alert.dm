@@ -13,7 +13,7 @@ var/global/list/minor_air_alarms = list()
 
 /obj/machinery/computer/atmos_alert/Initialize(mapload)
 	. = ..()
-	atmosphere_alarm.register_alarm(src, /atom/proc/update_icon)
+	atmosphere_alarm.register_alarm(src, PROC_REF(on_alarm_update))
 
 /obj/machinery/computer/atmos_alert/Destroy()
 	atmosphere_alarm.unregister_alarm(src)
@@ -55,6 +55,9 @@ var/global/list/minor_air_alarms = list()
 				icon_screen = initial(icon_screen)
 	..()
 
+/obj/machinery/computer/atmos_alert/proc/on_alarm_update()
+	update_icon()
+
 /obj/machinery/computer/atmos_alert/ui_act(action, params)
 	if(..())
 		return TRUE
@@ -64,7 +67,7 @@ var/global/list/minor_air_alarms = list()
 			var/datum/alarm/alarm = locate(params["ref"]) in atmosphere_alarm.alarms
 			if(alarm)
 				for(var/datum/alarm_source/alarm_source in alarm.sources)
-					var/obj/machinery/alarm/air_alarm = alarm_source.source
+					var/obj/machinery/air_alarm/air_alarm = alarm_source.source
 					if(istype(air_alarm))
 						// I have to leave a note here:
 						// Once upon a time, this called air_alarm.Topic() with a custom topic state

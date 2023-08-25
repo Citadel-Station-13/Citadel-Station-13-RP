@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/effect/overmap/visitable/ship/manta_ship,
+/obj/overmap/entity/visitable/ship/manta_ship,
 /turf/space,
 /area/space)
 "ab" = (
@@ -62,7 +62,7 @@
 	name = "Merc APC - West";
 	pixel_x = -24
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -141,7 +141,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/plating,
@@ -337,7 +337,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -689,7 +689,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -903,7 +903,7 @@
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -2019,7 +2019,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/effect/overmap/visitable/ship/landable/manta_ship_boat,
+/obj/overmap/entity/visitable/ship/landable/manta_ship_boat,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "jF" = (
@@ -2460,7 +2460,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -2873,7 +2873,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-10"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -3047,7 +3047,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -3319,7 +3319,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -3352,7 +3352,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/manta/radiator_star)
 "qH" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -3362,7 +3362,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "qJ" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -3770,7 +3770,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "th" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/techfloor{
@@ -3783,7 +3783,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4123,7 +4123,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -4187,7 +4187,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4405,7 +4405,7 @@
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(150)
 	},
 /obj/structure/cable/orange{
@@ -4595,7 +4595,7 @@
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(150)
 	},
 /obj/structure/cable/orange{
@@ -4781,7 +4781,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(150)
 	},
 /obj/effect/floor_decal/techfloor,
@@ -4833,7 +4833,7 @@
 /area/ship/manta/hallways_star)
 "xQ" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/airlock/glass_engineeringatmos{
+/obj/machinery/door/airlock/glass/engineeringatmos{
 	req_one_access = list(150)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5759,7 +5759,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -5793,7 +5793,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	name = "Mech Bay";
 	req_one_access = list(999)
 	},
@@ -5992,7 +5992,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/light{
@@ -6271,7 +6271,7 @@
 /obj/structure/fuel_port{
 	pixel_y = -29
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -6336,7 +6336,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -7071,7 +7071,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -7154,7 +7154,7 @@
 /area/ship/manta/bridge)
 "Kd" = (
 /obj/structure/dogbed,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/light{
@@ -7364,7 +7364,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -7791,7 +7791,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -8074,7 +8074,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -8376,10 +8376,6 @@
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
-"Qz" = (
-/obj/machinery/holopad/ship/starts_inactive,
-/turf/space,
-/area/space)
 "QD" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -8706,7 +8702,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/plating,
@@ -8985,7 +8981,7 @@
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -9144,7 +9140,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -9249,7 +9245,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_one_access = list(150)
 	},
@@ -9430,7 +9426,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/structure/cable/orange{
@@ -9807,7 +9803,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	name = "Brig";
 	req_one_access = list(150)
 	},
@@ -9854,7 +9850,7 @@
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(150)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9893,7 +9889,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(150)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -14281,7 +14277,7 @@ yz
 yz
 yz
 yz
-Qz
+yz
 yz
 yz
 yz

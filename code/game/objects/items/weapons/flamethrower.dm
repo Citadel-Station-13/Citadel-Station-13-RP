@@ -14,7 +14,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 1, TECH_PHORON = 1)
-	matter = list(MAT_STEEL = 500)
+	materials = list(MAT_STEEL = 500)
 	var/status = 0
 	var/throw_amount = 100
 	var/lit = 0	//on or off
@@ -61,8 +61,8 @@
 
 	return
 
-/obj/item/flamethrower/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
+/obj/item/flamethrower/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	// Make sure our user is still holding us
 	if(user && user.get_active_held_item() == src)
 		var/turf/target_turf = get_turf(target)
@@ -115,8 +115,8 @@
 		update_icon()
 		return
 
-	if(istype(W, /obj/item/analyzer))
-		var/obj/item/analyzer/A = W
+	if(istype(W, /obj/item/atmos_analyzer))
+		var/obj/item/atmos_analyzer/A = W
 		A.analyze_gases(src, user)
 		return
 	..()
@@ -147,7 +147,7 @@
 	usr.set_machine(src)
 	if(href_list["light"])
 		if(!ptank)	return
-		if(ptank.air_contents.gas[/datum/gas/phoron] < 1)	return
+		if(ptank.air_contents.gas[GAS_ID_PHORON] < 1)	return
 		if(!status)	return
 		lit = !lit
 		if(lit)
@@ -196,8 +196,8 @@
 	//Transfer 5% of current tank air contents to turf
 	var/datum/gas_mixture/air_transfer = ptank.air_contents.remove_ratio(0.02*(throw_amount/100))
 	//air_transfer.toxins = air_transfer.toxins * 5 // This is me not comprehending the air system. I realize this is stupid and I could probably make it work without fucking it up like this, but there you have it. -- TLE
-	new/obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel(target,air_transfer.gas[/datum/gas/phoron],get_dir(loc,target))
-	air_transfer.gas[/datum/gas/phoron] = 0
+	new/obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel(target,air_transfer.gas[GAS_ID_PHORON],get_dir(loc,target))
+	air_transfer.gas[GAS_ID_PHORON] = 0
 	target.assume_air(air_transfer)
 	//Burn it based on transfered gas
 	//target.hotspot_expose(part4.air_contents.temperature*2,300)

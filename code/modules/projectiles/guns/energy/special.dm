@@ -54,9 +54,9 @@
 		list(mode_name="induce specific mutations", projectile_type=/obj/projectile/energy/floramut/gene, modifystate="floramut"),
 		)
 
-/obj/item/gun/energy/floragun/afterattack(obj/target, mob/user, adjacent_flag)
+/obj/item/gun/energy/floragun/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	//allow shooting into adjacent hydrotrays regardless of intent
-	if(adjacent_flag && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
+	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
 		user.visible_message("<span class='danger'>\The [user] fires \the [src] into \the [target]!</span>")
 		Fire(target,user)
 		return
@@ -266,29 +266,28 @@
 	else
 		return ..()
 
-/obj/item/gun/energy/maghowitzer/afterattack(atom/A, mob/living/user, adjacent, params)
+/obj/item/gun/energy/maghowitzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(power_cycle)
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
 		return 0
 
-	var/turf/target_turf = get_turf(A)
+	var/turf/target_turf = get_turf(target)
 
 	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam)
 
 	if(beameffect)
-		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [A].</span>")
+		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [target].</span>")
 
 	if(!power_cycle)
 		power_cycle = TRUE
 		if(do_after(user, 30))
-			if(A.loc == target_turf)
-				..(A, user, adjacent, params)
+			if(target.loc == target_turf)
+				return ..()
 			else
 				var/rand_target = pick_random_target(target_turf)
-				if(rand_target)
-					..(rand_target, user, adjacent, params)
-				else
-					..(target_turf, user, adjacent, params)
+				// overwrite param in argument list, which is passed through ..() by default if not overridden.
+				target = rand_target || target
+				return ..()
 		else
 			if(beameffect)
 				qdel(beameffect)
@@ -436,7 +435,7 @@
 	heavy = TRUE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_ENGINEERING = 3, TECH_MAGNET = 2)
-	matter = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
 	one_handed_penalty = 50
 
 /obj/item/gun/energy/ionrifle/pistol/tyrmalin
@@ -477,7 +476,7 @@
 	heavy = TRUE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	matter = list(MAT_STEEL = 10000, MAT_GLASS = 2000)
+	materials = list(MAT_STEEL = 10000, MAT_GLASS = 2000)
 	one_handed_penalty = 50
 	var/overheating = 0
 
@@ -520,7 +519,7 @@
 	heavy = FALSE
 	damage_force = 5
 	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	matter = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
 	one_handed_penalty = 10
 
 /obj/item/gun/energy/plasma/pistol/update_icon()

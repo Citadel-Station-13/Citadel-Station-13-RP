@@ -14,7 +14,8 @@
 	)
 
 	var/list/area/included = list(
-		/area/maintenance
+		/area/maintenance,
+		/area/main_map/maintenance
 		)
 
 /datum/gm_action/stowaway/set_up()
@@ -76,5 +77,5 @@
 
 /datum/gm_action/stowaway/announce()
 	spawn(rand(15 MINUTES, 30 MINUTES))
-		if(prob(20) && severity >= EVENT_LEVEL_MODERATE && GLOB.lore_atc && !GLOB.lore_atc.squelched)
-			GLOB.lore_atc.msg("Attention civilian vessels in [GLOB.using_map.starsys_name] shipping lanes, caution is advised as [pick("an unidentified vessel", "a known criminal's vessel", "a derelict vessel")] has been detected passing multiple local stations.")
+		if(prob(20) && severity >= EVENT_LEVEL_MODERATE && SSlegacy_atc && !SSlegacy_atc.squelched)
+			SSlegacy_atc.msg("Attention civilian vessels in [(LEGACY_MAP_DATUM).starsys_name] shipping lanes, caution is advised as [pick("an unidentified vessel", "a known criminal's vessel", "a derelict vessel")] has been detected passing multiple local stations.")

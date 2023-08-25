@@ -12,9 +12,9 @@
 	// Special case to prevent us from being part of a zone during the first air master tick.
 	// We must merge ourselves into a zone on next tick.  This will cause a bit of lag on
 	// startup, but it can't really be helped you know?
-	if(air_master.current_cycle == 0)
+	if(SSair.current_cycle == 0)
 		if(!isturf(loc))
 			return
-		SSticker.OnRoundstart(CALLBACK(loc, /turf/proc/queue_zone_update))
+		SSticker.OnRoundstart(CALLBACK(loc, TYPE_PROC_REF(/turf, queue_zone_update)))
 		return ATMOS_PASS_AIR_BLOCKED
 	return ATMOS_PASS_ZONE_BLOCKED

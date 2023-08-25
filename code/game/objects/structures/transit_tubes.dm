@@ -14,6 +14,8 @@
 	var/exit_delay = 2
 	var/enter_delay = 1
 
+	level = 2
+
 	// alldirs in global.dm is the same list of directions, but since
 	//  the specific order matters to get a usable icon_state, it is
 	//  copied here so that, in the unlikely case that alldirs is changed,
@@ -25,6 +27,10 @@
 	inertia_move_delay = 0
 	exit_delay = 0.5
 	enter_delay = 0.5
+
+//A variant that will can be hidden underneath tiles similiar to pipes and such
+/obj/structure/transit_tube/hidden
+	level = 1
 
 // A place where tube pods stop, and people can get in or out.
 // Mappers: use "Generate Instances from Directions" for this
@@ -83,7 +89,7 @@
 /obj/structure/transit_tube_pod/Initialize(mapload)
 	. = ..()
 
-	air_contents.adjust_multi(/datum/gas/oxygen, MOLES_O2STANDARD * 2, /datum/gas/nitrogen, MOLES_N2STANDARD)
+	air_contents.adjust_multi(GAS_ID_OXYGEN, MOLES_O2STANDARD * 2, GAS_ID_NITROGEN, MOLES_N2STANDARD)
 	air_contents.temperature = T20C
 
 	// Give auto tubes time to align before trying to start moving
@@ -98,6 +104,10 @@
 
 	if(tube_dirs == null)
 		init_dirs()
+
+	var/turf/T = loc
+	if(level == 1 && !T.is_plating()) hide(1)
+	update_icon()
 
 /obj/structure/transit_tube/Bumped(mob/AM as mob|obj)
 	var/obj/structure/transit_tube/T = locate() in AM.loc

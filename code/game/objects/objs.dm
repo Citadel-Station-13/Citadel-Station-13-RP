@@ -12,9 +12,56 @@
 	/// ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
 	var/set_obj_flags
 
+	//? Access - see [modules/jobs/access.dm]
+	/// If set, all of these accesses are needed to access this object.
+	var/list/req_access
+	/// If set, at least one of these accesses are needed to access this object.
+	var/list/req_one_access
+
+	//? Climbing
+	/// people can climb onto us
+	var/climb_allowed = FALSE
+	/// people are allowed to knock climbers off of us
+	var/climb_knockable = TRUE
+	/// list of people currently climbing on us
+	/// currently, only /mob/living is allowed to climb
+	var/list/mob/living/climbing
+	/// nominal climb delay before modifiers
+	var/climb_delay = 3.5 SECONDS
+
+	//? Depth
+	/// logical depth in pixels. people can freely run from high to low objects without being blocked.
+	///
+	/// negative values are ignored as turfs are assumed to be depth 0
+	/// unless we change that in the future
+	var/depth_level = 28
+	/// contributes to depth when we're on a turf
+	var/depth_projected = FALSE
+
+	//? Economy
+	/// economic category for objects
+	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
+
+	//? Materials
+	/// static materials in us
+	/// material id = amount
+	var/list/materials
+	/// material parts - lazy list; lets us track what we're made of.
+	/// key = cost in cm3
+	var/list/material_parts
+	/// material parts on spawn
+	/// key = material id
+	var/list/material_defaults
+
+	//? Sounds
+	/// volume when breaking out using resist process
+	var/breakout_sound = 'sound/effects/grillehit.ogg'
+	/// volume when breaking out using resist process
+	var/breakout_volume = 100
+
 	//? misc / legacy
-	//Used to store information about the contents of the object.
-	var/list/matter
+	/// Set when a player renames a renamable object.
+	var/renamed_by_player = FALSE
 	var/w_class // Size of the object.
 	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
 	var/sharp = 0		// whether this object cuts
@@ -31,30 +78,17 @@
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
 	var/register_as_dangerous_object = FALSE // Should this tell its turf that it is dangerous automatically?
 
-	//? Access - see [modules/jobs/access.dm]
-	/// If set, all of these accesses are needed to access this object.
-	var/list/req_access
-	/// If set, at least one of these accesses are needed to access this object.
-	var/list/req_one_access
-
-	//? Economy
-	/// economic category for objects
-	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
-
-	//? Sounds
-	/// volume when breaking out using resist process
-	var/breakout_sound = 'sound/effects/grillehit.ogg'
-	/// volume when breaking out using resist process
-	var/breakout_volume = 100
-
-	//? misc / legacy
-	/// Set when a player renames a renamable object.
-	var/renamed_by_player = FALSE
-
 /obj/Initialize(mapload)
 	if(register_as_dangerous_object)
 		register_dangerous_to_step()
 	. = ..()
+	if(!isnull(materials))
+		materials = typelist(NAMEOF(src, materials), materials)
+	if(!isnull(material_parts))
+		material_parts = typelist(NAMEOF(src, material_parts), material_parts)
+	if(!isnull(material_defaults))
+		material_defaults = typelist(NAMEOF(src, material_defaults), material_defaults)
+		init_materials()
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
 		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]
@@ -149,7 +183,7 @@
 /obj/proc/hides_under_flooring()
 	return 0
 
-	/**
+/**
  * This proc is used for telling whether something can pass by this object in a given direction, for use by the pathfinding system.
  *
  * Trying to generate one long path across the station will call this proc on every single object on every single tile that we're seeing if we can move through, likely
@@ -199,18 +233,18 @@
 /obj/proc/is_safe_to_step(mob/living/L)
 	return TRUE
 
-/obj/examine(mob/user)
+/obj/examine(mob/user, dist)
 	. = ..()
-	if(matter)
-		if(!matter.len)
+	if(materials)
+		if(!materials.len)
 			return
 		var/materials_list
 		var/i = 1
-		while(i<matter.len)
-			materials_list += lowertext(matter[i])
+		while(i<materials.len)
+			materials_list += lowertext(materials[i])
 			materials_list += ", "
 			i++
-		materials_list += matter[i]
+		materials_list += materials[i]
 		. += "<u>It is made out of [materials_list]</u>."
 	return
 
@@ -221,6 +255,168 @@
 	if(Adjacent(user))
 		add_fingerprint(user)
 	..()
+
+//? Climbing
+
+/obj/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	if(drag_drop_climb_interaction(user, dropping))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
+
+/obj/proc/drag_drop_climb_interaction(mob/user, atom/dropping)
+	if(!climb_allowed)
+		return FALSE
+	if(user != dropping)
+		return FALSE
+	// todo: better hinting to user for this
+	if(buckle_allowed && user.a_intent != INTENT_GRAB)
+		return FALSE
+	if(!user.Adjacent(src))
+		return FALSE
+	. = TRUE
+	INVOKE_ASYNC(src, PROC_REF(attempt_climb_on), user)
+
+/obj/proc/attempt_climb_on(mob/living/climber, delay_mod = 1)
+	if(!istype(climber))
+		return FALSE
+	if(!allow_climb_on(climber))
+		climber.action_feedback(SPAN_WARNING("You can't climb onto [src]!"), src)
+		return FALSE
+	if(INTERACTING_WITH_FOR(climber, src, INTERACTING_FOR_CLIMB))
+		return FALSE
+	climber.visible_action_feedback(
+		target = src,
+		visible_hard = SPAN_WARNING("[climber] starts climbing onto \the [src]!"),
+		hard_range = MESSAGE_RANGE_COMBAT_LOUD)
+	START_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
+	LAZYDISTINCTADD(climbing, climber)
+	. = do_after(climber, climb_delay * delay_mod, src, mobility_flags = MOBILITY_CAN_MOVE | MOBILITY_CAN_STAND | MOBILITY_IS_STANDING)
+	if(!INTERACTING_WITH_FOR(climber, src, INTERACTING_FOR_CLIMB))
+		. = FALSE
+	LAZYREMOVE(climbing, climber)
+	STOP_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
+	if(!allow_climb_on(climber))
+		climber.action_feedback(SPAN_WARNING("You couldn't climb onto [src]!"), src)
+		return FALSE
+	do_climb_on(climber)
+
+/obj/proc/allow_climb_on(mob/living/climber)
+	if(!istype(climber))
+		return FALSE
+	if(!climb_allowed)
+		return FALSE
+	if(!climber.Adjacent(src))
+		return FALSE
+	return TRUE
+
+/obj/proc/do_climb_on(mob/living/climber)
+	climber.visible_message(SPAN_WARNING("[climber] climbs onto \the [src]!"))
+	// all this effort just to avoid a splurtstation railing spare ID speedrun incident
+	var/old_depth = climber.depth_current
+	if(climber.depth_current < depth_level)
+		// basically, we don't force move them, we just elevate them to our level
+		// if something else blocks them, L + ratio + get parried
+		climber.change_depth(depth_level)
+	if(!step_towards(climber, do_climb_target(climber)))
+		climber.change_depth(old_depth)
+
+/obj/proc/do_climb_target(mob/living/climber)
+	return get_turf(src)
+
+/obj/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
+	if(length(climbing) && user.a_intent == INTENT_HARM)
+		user.visible_message(SPAN_WARNING("[user] slams against \the [src]!"))
+		user.do_attack_animation(src)
+		shake_climbers()
+		return TRUE
+
+/obj/proc/shake_climbers()
+	for(var/mob/living/climber as anything in climbing)
+		climber.afflict_knockdown(1 SECONDS)
+		climber.visible_message(SPAN_WARNING("[climber] is toppled off of \the [src]!"))
+		STOP_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
+	climbing = null
+
+	// disabled old, but fun code that knocks people on their ass if something is shaken without climbers
+	// being ontop of it
+	// consider re-enabling this sometime.
+	/*
+	for(var/mob/living/M in get_turf(src))
+		if(M.lying) return //No spamming this on people.
+
+		M.afflict_paralyze(20 * 3)
+		to_chat(M, "<span class='danger'>You topple as \the [src] moves under you!</span>")
+
+		if(prob(25))
+
+			var/damage = rand(15,30)
+			var/mob/living/carbon/human/H = M
+			if(!istype(H))
+				to_chat(H, "<span class='danger'>You land heavily!</span>")
+				M.adjustBruteLoss(damage)
+				return
+
+			var/obj/item/organ/external/affecting
+
+			switch(pick(list("ankle","wrist","head","knee","elbow")))
+				if("ankle")
+					affecting = H.get_organ(pick(BP_L_FOOT, BP_R_FOOT))
+				if("knee")
+					affecting = H.get_organ(pick(BP_L_LEG, BP_R_LEG))
+				if("wrist")
+					affecting = H.get_organ(pick(BP_L_HAND, BP_R_HAND))
+				if("elbow")
+					affecting = H.get_organ(pick(BP_L_ARM, BP_R_ARM))
+				if("head")
+					affecting = H.get_organ(BP_HEAD)
+
+			if(affecting)
+				to_chat(M, "<span class='danger'>You land heavily on your [affecting.name]!</span>")
+				affecting.take_damage(damage, 0)
+				if(affecting.parent)
+					affecting.parent.add_autopsy_data("Misadventure", damage)
+			else
+				to_chat(H, "<span class='danger'>You land heavily!</span>")
+				H.adjustBruteLoss(damage)
+
+			H.UpdateDamageIcon()
+			H.update_health()
+	*/
+
+//* Hiding / Underfloor
+
+/obj/proc/is_hidden_underfloor()
+	return FALSE
+
+/obj/proc/should_hide_underfloor()
+	return FALSE
+
+//? Materials
+
+/obj/get_materials()
+	. = materials.Copy()
+
+/**
+ * initialize materials
+ */
+/obj/proc/init_materials()
+	if(!isnull(material_defaults))
+		set_material_parts(material_defaults)
+		for(var/key in material_defaults)
+			var/mat = material_defaults[key]
+			var/amt = material_parts[key]
+			materials[mat] += amt
+
+/**
+ * sets our material parts to a list by key / value
+ * this does not update [materials], you have to do that manually
+ * this is usually done in init using init_materials
+ */
+/obj/proc/set_material_parts(list/parts)
+	return
 
 //? Resists
 

@@ -1,12 +1,11 @@
 /datum/atmosphere/planet/classd
-	base_gases = list(
-	/datum/gas/nitrogen = 0.01
+	base = list(
+		/datum/gas/nitrogen = 0.01,
 	)
-	base_target_pressure = 0.1
-	minimum_pressure = 0.1
-	maximum_pressure = 0.5
-	minimum_temp = 203
-	maximum_temp = 203
+	pressure_low = 0.1
+	pressure_high = 0.5
+	temperature_low = 203
+	temperature_high = 203
 
 
 /datum/time/classd
@@ -17,6 +16,7 @@
 	desc = "A rocky moon which has recently had its quarantine lifted following a campaign of nuclear bombings and mercenary \
 	forces deploying to eradicate a large xenomorph infestation."
 	current_time = new /datum/time/classd()
+	weather_holder = /datum/weather_holder/classd
 
 /datum/planet/classd/update_sun()
 	..()

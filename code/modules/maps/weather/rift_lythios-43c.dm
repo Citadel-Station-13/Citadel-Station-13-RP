@@ -1,14 +1,12 @@
 /datum/atmosphere/planet/lythios43c
-	base_gases = list(
-	/datum/gas/nitrogen = 0.66,
-	/datum/gas/oxygen = 0.34
+	base = list(
+		/datum/gas/nitrogen = 0.66,
+		/datum/gas/oxygen = 0.34,
 	)
-	base_target_pressure = 76.9
-	minimum_pressure = 76.9
-	maximum_pressure = 76.9
-	minimum_temp = 220.14
-	maximum_temp = 241.72
-
+	pressure_low = 76.9
+	pressure_high = 76.9
+	temperature_low = 220.14
+	temperature_high = 241.72
 
 /datum/time/lythios43c
 	seconds_in_day = 10 HOURS
@@ -18,31 +16,7 @@
 	desc = "A freezing ball of ice,"
 	current_time = new /datum/time/lythios43c()
 	planetary_wall_type = /turf/unsimulated/wall/planetary/lythios43c
-
-
-/* // These need to be defined in your map's define folders
-var/datum/planet/lythios43c/planet_lythios43c = null
-
-/datum/planet/lythios43c
-	expected_z_levels = list(
-						Z_LEVEL_UNDERGROUND_FLOOR,
-						Z_LEVEL_UNDERGROUND_DEEP,
-						Z_LEVEL_UNDERGROUND,
-						Z_LEVEL_SURFACE_LOW,
-						Z_LEVEL_SURFACE_MID,
-						Z_LEVEL_SURFACE_HIGH,
-						Z_LEVEL_WEST_BASE,
-						Z_LEVEL_WEST_DEEP,
-						Z_LEVEL_WEST_CAVERN,
-						Z_LEVEL_WEST_PLAIN
-						)
-*/
-
-
-/datum/planet/lythios43c/New()
-	..()
-	planet_lythios43c = src
-	weather_holder = new /datum/weather_holder/lythios43c(src)
+	weather_holder = /datum/weather_holder/lythios43c
 
 /datum/planet/lythios43c/update_sun()
 	..()

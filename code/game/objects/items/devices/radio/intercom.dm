@@ -1,7 +1,7 @@
 /obj/item/radio/intercom
 	name = "station intercom (General)"
 	desc = "Talk through this."
-	icon = 'icons/obj/radio.dmi'
+	icon = 'icons/obj/intercom.dmi'
 	icon_state = "intercom"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
@@ -13,6 +13,17 @@
 	var/number = 0
 	var/last_tick //used to delay the powercheck
 	var/wiresexposed = 0
+	var/overlay_color = PIPE_COLOR_GREEN
+
+/obj/item/radio/intercom/update_icon(updates)
+	cut_overlays()
+	if(!on)
+		icon_state = "intercom-p"
+	else
+		icon_state = "intercom_[broadcasting][listening]"
+		var/image/I = image(icon, "intercom_overlay")
+		I.color = overlay_color
+		add_overlay(I)
 
 /obj/item/radio/intercom/custom
 	name = "station intercom (Custom)"
@@ -40,13 +51,13 @@
 
 /obj/item/radio/intercom/department/medbay
 	name = "station intercom (Medbay)"
-	icon_state = "medintercom"
 	frequency = MED_I_FREQ
+	overlay_color = COLOR_TEAL
 
 /obj/item/radio/intercom/department/security
 	name = "station intercom (Security)"
-	icon_state = "secintercom"
 	frequency = SEC_I_FREQ
+	overlay_color = COLOR_MAROON
 
 /obj/item/radio/intercom/entertainment
 	name = "entertainment intercom"
@@ -191,16 +202,7 @@
 			else
 				on = A.powered(EQUIP) // set "on" to the power status
 
-		if(!on)
-			if(wiresexposed)
-				icon_state = "intercom-p_open"
-			else
-				icon_state = "intercom-p"
-		else
-			if(wiresexposed)
-				icon_state = "intercom_open"
-			else
-				icon_state = initial(icon_state)
+		update_icon()
 
 /obj/item/radio/intercom/locked
     var/locked_frequency

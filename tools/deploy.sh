@@ -12,8 +12,8 @@ fi
 mkdir -p \
 	$1/_mapload \
     $1/maps \
-    $1/icons/runtime \
-    $1/sound/runtime \
+    $1/icons \
+    $1/sound \
     $1/strings \
     $1/tgui/public \
     $1/tgui/packages/tgfont/dist
@@ -24,18 +24,20 @@ if [ -d ".git" ]; then
 fi
 
 cp citadel.dmb citadel.rsc $1/
-# todo: remove _mapload after .jsons are removed.
+# mapload: has basemap.dmm, runtime loaded
 cp -r _mapload/* $1/_mapload/
-# todo: filter out .dm files
+# maps: map .dmms and potential assets, runtime loaded
 cp -r maps/* $1/maps/
-cp -r icons/runtime/* $1/icons/runtime/
-cp -r sound/runtime/* $1/sound/runtime/
+# icons: .dmi assets, runtime loaded
+cp -r icons/* $1/icons/
+# sounds: .ogg, etc assets, runtime loaded
+cp -r sound/* $1/sound/
+# strings: .txts, .jsons, runtime loaded
 cp -r strings/* $1/strings/
+# tgui artifacts: sent to clients, should be present at runtime
 cp -r tgui/public/* $1/tgui/public/
+# tgfont artifacts: sent to clients, should be present at runtime
 cp -r tgui/packages/tgfont/dist/* $1/tgui/packages/tgfont/dist/
-
-#this regrettably doesn't work with windows find
-#find $1/maps -name "*.dm" -type f -delete
 
 #dlls on windows
 if [ "$(uname -o)" = "Msys" ]; then

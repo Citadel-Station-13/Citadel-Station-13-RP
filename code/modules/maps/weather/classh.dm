@@ -1,14 +1,13 @@
 /datum/atmosphere/planet/classh
-	base_gases = list(
-	/datum/gas/oxygen = 0.24,
-	/datum/gas/nitrogen = 0.72,
-	/datum/gas/carbon_dioxide = 0.04
+	base = list(
+		/datum/gas/oxygen = 0.24,
+		/datum/gas/nitrogen = 0.72,
+		/datum/gas/carbon_dioxide = 0.04,
 	)
-	base_target_pressure = 110.1
-	minimum_pressure = 110.1
-	maximum_pressure = 110.1
-	minimum_temp = 317.3 //Barely enough to avoid baking Teshari
-	maximum_temp = 317.3
+	pressure_low = 110.1
+	pressure_high = 110.1
+	temperature_low = 317.3 //Barely enough to avoid baking Teshari
+	temperature_high = 317.3
 
 
 /datum/time/classh
@@ -18,6 +17,7 @@
 	name = "Class-H Desert Planet"
 	desc = "A nearly hostile, and almost barren, planet that orbits pretty close to its star. There is a high level of CO2 in the air."
 	current_time = new /datum/time/classh()
+	weather_holder = /datum/weather_holder/classh
 
 /datum/planet/classh/update_sun()
 	..()

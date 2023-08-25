@@ -635,3 +635,11 @@ var/list/global/organ_rel_size = list(
 	. = JOINTEXT(.)
 	if(re_encode)
 		. = html_encode(.)
+
+/// if sufficent nutrition is present, take it and return true, otherwise just return false
+/mob/proc/try_take_nutrition(var/amount)
+	if(nutrition >= amount)
+		nutrition = nutrition - amount
+		return TRUE
+	else
+		return FALSE

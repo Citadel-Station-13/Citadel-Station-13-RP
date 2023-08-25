@@ -13,17 +13,21 @@
 	var/injectable = 0
 	color = "#664330"
 
-/datum/reagent/nutriment/mix_data(list/newdata, newamount)
+// todo: review data procs
 
-	if(!islist(newdata) || !newdata.len)
+/datum/reagent/nutriment/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+
+	if(!islist(new_data) || !length(new_data))
 		return
 
+	LAZYINITLIST(data)
+
 	//add the new taste data
-	for(var/taste in newdata)
+	for(var/taste in new_data)
 		if(taste in data)
-			data[taste] += newdata[taste]
+			data[taste] += new_data[taste]
 		else
-			data[taste] = newdata[taste]
+			data[taste] = new_data[taste]
 
 	//cull all tastes below 10% of total
 	var/totalFlavor = 0
@@ -479,6 +483,8 @@
 		return
 	if(alien == IS_NARAMADI)
 		return
+	if(alien == IS_UNATHI)
+		return
 	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
 		M.bodytemperature += rand(10, 25)
 		return
@@ -491,6 +497,33 @@
 		to_chat(M, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
 	if(dose >= 5)
 		M.apply_effect(2, AGONY, 0)
+		if(prob(5))
+			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+	holder.remove_reagent("frostoil", 5)
+
+/datum/reagent/hexaisin
+	name = "Hexaisin"
+	id = "hexaisin"
+	description = "A common chemical found in various plant life in the Moghes regions."
+	taste_description = "pleasant fire"
+	taste_mult = 1.5
+	reagent_state = REAGENT_LIQUID
+	ingest_met = REM
+	color = "#B31008"
+
+/datum/reagent/hexaisin/affect_ingest(mob/living/carbon/M, alien, removed)
+	if(alien == IS_UNATHI)
+		return
+	if(alien == IS_NARAMADI)
+		return
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!H.can_feel_pain())
+			return
+	if(dose == metabolism)
+		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
+	else
+		M.apply_effect(3, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
 	holder.remove_reagent("frostoil", 5)
@@ -633,6 +666,10 @@
 			M.apply_effect(effective_strength / 2, AGONY, 0)
 
 /datum/reagent/condensedcapsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
+	if(alien == IS_NARAMADI) //Moghes species with exception of Zaddat (for obvious reasons) are immune to taste and ingested effects of Capsaisin and Condensed variants.
+		return
+	if(alien == IS_UNATHI) //If you want to know why, look at Hexaisin. They are still affected by pepperspray, but not drinking it.
+		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
@@ -886,6 +923,7 @@
 	description = "An opaque white liquid produced by the mammary glands of mammals."
 	taste_description = "milk"
 	color = "#DFDFDF"
+	var/contains_lactose = TRUE
 
 	glass_name = "Milk"
 	glass_desc = "White and nutritious goodness!"
@@ -920,6 +958,14 @@
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
+	if(contains_lactose == TRUE && alien == IS_NARAMADI) //Species-wide lactose intolerance, also funny that cheeses can't drink milk.
+		if(prob(5))
+			to_chat("You feel nauseous!")
+			return
+		if(prob(20))
+			var/mob/living/L = M
+			L.vomit()
+	return
 
 /datum/reagent/drink/milk/cream
 	name = "Cream"
@@ -941,6 +987,7 @@
 	description = "An opaque white liquid made from soybeans."
 	taste_description = "soy milk"
 	color = "#DFDFC7"
+	contains_lactose = FALSE
 
 	glass_name = "Soy Milk"
 	glass_desc = "White and nutritious soy goodness!"
@@ -955,6 +1002,7 @@
 	description = "An opaque white liquid made from the white inner flesh of a coconut."
 	taste_description = "creamy coconut"
 	color = "#cecece"
+	contains_lactose = FALSE
 
 	glass_name = "Coconut Milk"
 	glass_desc = "An opaque white liquid made from the white inner flesh of a coconut."
@@ -1453,6 +1501,7 @@
 	taste_description = "vanilla milkshake"
 	color = "#AEE5E4"
 	adj_temp = -9
+	var/contains_lactose = TRUE //in place in case someone makes adds milkshakes with soymilk or coconut milk
 
 	glass_name = "Milkshake"
 	glass_desc = "Glorious brainfreezing mixture."
@@ -1477,6 +1526,15 @@
 		else
 			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
+	if(contains_lactose == TRUE && alien == IS_NARAMADI)
+		if(prob(5))
+			to_chat("You feel nauseous!")
+			return
+		if(prob(20))
+			var/mob/living/L = M
+			L.vomit()
+	return
+
 
 /datum/reagent/drink/milkshake/chocoshake
 	name = "Chocolate Milkshake"
@@ -3315,7 +3373,10 @@
 	..()
 	if(alien == IS_DIONA)
 		return
-
+	if(alien == IS_UNATHI)
+		return
+	if(alien == IS_NARAMADI)
+		return
 	var/drug_strength = 10
 	if(alien == IS_SKRELL)
 		drug_strength = drug_strength * 0.8
@@ -3323,6 +3384,18 @@
 	M.druggy = max(M.druggy, drug_strength)
 	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && CHECK_MOBILITY(M, MOBILITY_CAN_MOVE))
 		step(M, pick(GLOB.cardinal))
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!H.can_feel_pain())
+			return
+	if(dose == metabolism)
+		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
+	else
+		M.apply_effect(4, AGONY, 0)
+		if(prob(5))
+			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+	holder.remove_reagent("frostoil", 5)
 
 /datum/reagent/ethanol/sakebomb
 	name = "Sake Bomb"
@@ -4377,11 +4450,10 @@
 
 
 //Handles setting the temperature when oils are mixed
-/datum/reagent/nutriment/coating/mix_data(newdata, newamount)
-	if (!data)
-		data = list()
-
-	data["cooked"] = newdata["cooked"]
+// todo: review data procs
+/datum/reagent/nutriment/coating/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+	LAZYINITLIST(data)
+	data["cooked"] = new_data["cooked"]
 
 /datum/reagent/nutriment/coating/batter
 	name = "batter mix"
@@ -4437,29 +4509,23 @@
 	if(volume >= 3)
 		T.wet_floor(2)
 
+// todo: review data procs
 /datum/reagent/nutriment/triglyceride/oil/initialize_data(newdata) // Called when the reagent is created.
 	..()
 	if (!data)
 		data = list("temperature" = T20C)
 
 //Handles setting the temperature when oils are mixed
-/datum/reagent/nutriment/triglyceride/oil/mix_data(newdata, newamount)
-
-	if (!data)
-		data = list()
-
-	var/ouramount = volume - newamount
-	if (ouramount <= 0 || !data["temperature"] || !volume)
+/datum/reagent/nutriment/triglyceride/oil/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+	LAZYINITLIST(data)
+	if (current_amount <= 0 || !data["temperature"] || !volume)
 		//If we get here, then this reagent has just been created, just copy the temperature exactly
-		data["temperature"] = newdata["temperature"]
-
+		data["temperature"] = new_data["temperature"]
 	else
 		//Our temperature is set to the mean of the two mixtures, taking volume into account
-		var/total = (data["temperature"] * ouramount) + (newdata["temperature"] * newamount)
+		var/total = (data["temperature"] * current_amount) + (new_data["temperature"] * new_amount)
 		data["temperature"] = total / volume
-
 	return ..()
-
 
 //Calculates a scaling factor for scalding damage, based on the temperature of the oil and creature's heat resistance
 /datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(mob/living/carbon/M)
@@ -4538,6 +4604,16 @@
 	id = "cheese"
 	color = "#EDB91F"
 	taste_description = "cheese"
+
+/datum/reagent/nutriment/protein/cheese/affect_ingest(mob/living/carbon/M, alien, removed) //Cheese is a kind of milk.
+	if(alien == IS_NARAMADI)
+		if(prob(5))
+			to_chat("You feel nauseous!")
+			return
+		if(prob(20))
+			var/mob/living/L = M
+			L.vomit()
+	return
 
 //SYNNONO MEME FOODS EXPANSION - Credit to Synnono
 

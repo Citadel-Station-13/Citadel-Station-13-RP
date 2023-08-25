@@ -1272,7 +1272,7 @@
 /area/awaymission/research)
 "fC" = (
 /obj/structure/table/standard,
-/obj/item/analyzer,
+/obj/item/atmos_analyzer,
 /obj/item/mass_spectrometer{
 	pixel_x = 5;
 	pixel_y = 5
@@ -2055,7 +2055,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "if" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Glass Airlock"
 	},
 /obj/structure/cable{
@@ -2433,7 +2433,7 @@
 /turf/simulated/floor,
 /area/awaymission/southblock)
 "jw" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	id_tag = null;
 	name = "Glass Airlock"
 	},

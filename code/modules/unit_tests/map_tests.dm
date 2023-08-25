@@ -35,11 +35,11 @@
 						)
 
 	// Some maps have areas specific to the map, so include those.
-	exempt_areas += GLOB.using_map.unit_test_exempt_areas.Copy()
-	exempt_from_atmos += GLOB.using_map.unit_test_exempt_from_atmos.Copy()
-	exempt_from_apc += GLOB.using_map.unit_test_exempt_from_apc.Copy()
+	exempt_areas += (LEGACY_MAP_DATUM).unit_test_exempt_areas.Copy()
+	exempt_from_atmos += (LEGACY_MAP_DATUM).unit_test_exempt_from_atmos.Copy()
+	exempt_from_apc += (LEGACY_MAP_DATUM).unit_test_exempt_from_apc.Copy()
 
-	var/list/zs_to_test = GLOB.using_map.unit_test_z_levels || list(1) //Either you set it, or you just get z1
+	var/list/zs_to_test = (LEGACY_MAP_DATUM).unit_test_z_levels || list(1) //Either you set it, or you just get z1
 
 	for(var/area/A in GLOB.sortedAreas)
 		if((A.z in zs_to_test) && !(A.type in exempt_areas))
@@ -90,10 +90,10 @@
 
 /datum/unit_test/active_edges/Run()
 
-	var/active_edges = air_master.active_edges.len
+	var/active_edges = SSair.active_edges.len
 	var/list/edge_log = list()
 	if(active_edges)
-		for(var/datum/zas_edge/E in air_master.active_edges)
+		for(var/datum/zas_edge/E in SSair.active_edges)
 			edge_log += "Active Edge [E] ([E.type])"
 			for(var/turf/T in E.connecting_turfs)
 				edge_log += "+--- Connecting Turf [T] @ [T.x], [T.y], [T.z]"

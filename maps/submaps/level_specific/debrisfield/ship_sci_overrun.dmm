@@ -69,8 +69,8 @@
 /obj/item/material/knife/machete/hatchet,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/reagent_containers/glass/bucket,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
+/obj/item/plant_analyzer,
 /turf/simulated/floor/tiled/white/airless,
 /area/space/debrisfield/scioverrun)
 "aq" = (
@@ -133,7 +133,6 @@
 /area/space/debrisfield/scioverrun)
 "aB" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/chem_disp_cartridge/plantbgone,
 /turf/simulated/floor/tiled/white/airless,
 /area/space/debrisfield/scioverrun)
 "aC" = (
@@ -246,7 +245,6 @@
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen/blue,
-/obj/item/reagent_containers/chem_disp_cartridge/rezadone,
 /turf/simulated/floor/tiled/white/airless,
 /area/space/debrisfield/scioverrun)
 "aS" = (
@@ -290,10 +288,6 @@
 /area/space/debrisfield/scioverrun)
 "aZ" = (
 /obj/machinery/door/unpowered/shuttle,
-/turf/simulated/floor/tiled/white/airless,
-/area/space/debrisfield/scioverrun)
-"ba" = (
-/obj/item/clothing/suit/storage/toggle/labcoat/purple,
 /turf/simulated/floor/tiled/white/airless,
 /area/space/debrisfield/scioverrun)
 "bb" = (
@@ -1178,7 +1172,7 @@ ad
 ad
 aN
 ad
-ba
+ad
 aU
 aE
 aa

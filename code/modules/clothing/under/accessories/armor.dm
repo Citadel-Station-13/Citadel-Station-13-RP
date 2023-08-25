@@ -82,6 +82,33 @@
 	icon_state = "lpouches_tan"
 
 ////////////////
+//Shotgun Shell Holder
+////////////////
+
+/obj/item/clothing/accessory/storage/shotgun_shell_holder
+	name = "shotgun shell pouch"
+	desc = "A set of eight pouches designed to hold shotgun shells for easy access."
+	icon_override = 'icons/mob/clothing/modular_armor.dmi'
+	icon = 'icons/obj/clothing/modular_armor.dmi'
+	icon_state = "shotholder"
+	slot = ACCESSORY_SLOT_ARMOR_S
+	slots = 4
+
+/obj/item/clothing/accessory/storage/shotgun_shell_holder/update_icon(updates)
+	. = ..()
+	var/amt = length(hold.contents)
+	icon_state = "shotholder-[amt]"
+
+/obj/item/clothing/accessory/storage/shotgun_shell_holder/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/ammo_casing/a12g))
+		. = hold.attackby(W, user)
+		update_icon()
+		accessory_host?.update_icon()
+		return
+	else
+		to_chat(user, SPAN_WARNING("The [src] can only hold 12-gauge shells!"))
+
+////////////////
 //Armor plates
 ////////////////
 /obj/item/clothing/accessory/armor/armorplate
@@ -477,7 +504,7 @@
 		to_chat(usr, "This object does not have a camera.") //Shouldnt ever be visible for helmet cams.
 		return
 
-/obj/item/clothing/accessory/armor/helmetcamera/examine(mob/user)
+/obj/item/clothing/accessory/armor/helmetcamera/examine(mob/user, dist)
 	. = ..()
 	if(camera_networks && get_dist(user,src) <= 1)
 		. += "The [camera ? "" : "in"]active."
@@ -492,17 +519,28 @@
 	camera_networks = list(NETWORK_CIV_HELMETS)
 
 /obj/item/clothing/accessory/armor/helmetcamera/security
-	name = "\improper Security helmet camera"
+	name = "security helmet camera"
 	desc = "A small camera that attaches to helmets. This one has its feed restricted to Security."
 	icon_state = "helmcam_sec"
 	camera_networks = list(NETWORK_SEC_HELMETS)
 
+/obj/item/clothing/accessory/armor/helmetcamera/security/body
+	name = "security body camera"
+	desc = "A small camera that attaches to most uniforms. This one has its feed restricted to Security."
+	icon_state = "helmcam_body_sec"
+	slot = ACCESSORY_SLOT_DECOR
+
 /obj/item/clothing/accessory/armor/helmetcamera/exploration
-	name = "\improper Exploration helmet camera"
+	name = "exploration helmet camera"
 	desc = "A small camera that attaches to helmets. This one has its feed restricted to Exploration."
 	icon_state = "helmcam_explo"
 	camera_networks = list(NETWORK_EXPLO_HELMETS)
 
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body
+	name = "exploration body camera"
+	desc = "A small camera that attaches to most uniforms. This one has its feed restricted to Exploration."
+	slot = ACCESSORY_SLOT_DECOR
+	icon_state = "helmcam_body_explo"
 
 //Lightweight Limb Plating - These are incompatible with plate carriers.
 

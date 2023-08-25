@@ -9,8 +9,9 @@
 
 /turf/simulated/mineral //wall piece
 	name = "rock"
-	icon = 'icons/turf/walls.dmi'
-	icon_state = "rock"
+	icon = 'icons/turf/walls/natural.dmi'
+	icon_state = "preview"
+	base_icon_state = "wall"
 	smoothing_flags = SMOOTH_CUSTOM
 	initial_gas_mix = GAS_STRING_VACUUM
 	opacity = 1
@@ -18,10 +19,11 @@
 	blocks_air = 1
 	can_dirty = FALSE
 	has_resources = 1
+	color = COLOR_ASTEROID_ROCK
 
-	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	smoothing_groups = (SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
-	canSmoothWith = (SMOOTH_GROUP_MINERAL_WALLS)
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_MINERAL_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS+SMOOTH_GROUP_MINERAL_WALLS)
 
 	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
 	var/rock_side_icon_state = "rock_side"
@@ -35,6 +37,7 @@
 	var/last_act = 0
 	var/overlay_detail
 
+	var/arch_icon = 'icons/turf/walls.dmi'
 	var/datum/geosample/geologic_data
 	var/excavation_level = 0
 	var/list/finds
@@ -96,10 +99,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 
 /turf/simulated/mineral/icerock
 	name = "icerock"
-	icon_state = "icerock"
-	rock_side_icon_state = "icerock_side"
-	sand_icon_state = "ice"
-	rock_icon_state = "icerock"
+	color = "#78a3b8"
 	random_icon = 1
 
 /turf/simulated/mineral/icerock/airmix
@@ -107,8 +107,12 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 /turf/unsimulated/mineral/icerock
 	name = "impassable icerock"
 	icon = 'icons/turf/walls.dmi'
-	icon_state = "icerock-dark"
+	base_icon_state = "wall"
 	density = 1
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WALLS+ SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS )
+	canSmoothWith = (SMOOTH_GROUP_WALLS+ SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS )
+	color = COLOR_OFF_WHITE
 
 /turf/simulated/mineral/ignore_mapgen
 	ignore_mapgen = 1
@@ -193,8 +197,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 	. = ..()
 	if(prob(20))
 		overlay_detail = "asteroid[rand(0,9)]"
-	if(random_icon)
-		dir = pick(GLOB.alldirs)
 	if(mineral)
 		if(density)
 			MineralSpread()
@@ -223,8 +225,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 		else
 			name = "rock"
 
-		icon = 'icons/turf/walls.dmi'
-		icon_state = rock_icon_state
+		icon = 'icons/turf/walls/natural.dmi'
+//		icon_state = rock_icon_state
 
 	//We are a sand floor
 	else
@@ -237,8 +239,9 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 
 	//We are a wall (why does this system work like this??)
 	// todo: refactor this shitheap because this is pants on fucking head awful
-	if(density)
 
+	if(density)
+		/*
 		// TODO: Replace these layers with defines. (I have some being added in another PR) @Zandario
 		var/mutable_appearance/appearance
 		if(!(smoothing_junction & NORTH_JUNCTION))
@@ -257,11 +260,11 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 			appearance = mutable_appearance(icon, "[rock_side_icon_state]_w", layer = EDGE_LAYER)
 			appearance.pixel_x = 32
 			. += appearance
-
+		*/
 		if(archaeo_overlay)
-			. += mutable_appearance(icon, archaeo_overlay)
+			. += mutable_appearance(arch_icon, archaeo_overlay)
 		if(excav_overlay)
-			. += mutable_appearance(icon, excav_overlay)
+			. += mutable_appearance(arch_icon, excav_overlay)
 
 	//We are a sand floor
 	else
@@ -286,9 +289,10 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 		spawn(1) // Otherwise most of the ore is lost to the explosion, which makes this rather moot.
 			for(var/ore in resources)
 				var/amount_to_give = rand(CEILING(resources[ore]/2, 1), resources[ore])  // Should result in at least one piece of ore.
-				for(var/i=1, i <= amount_to_give, i++)
-					var/oretype = GLOB.ore_types[ore]
-					new oretype(src)
+				if(GLOB.ore_types[ore])
+					for(var/i=1, i <= amount_to_give, i++)
+						var/oretype = GLOB.ore_types[ore]
+						new oretype(src)
 				resources[ore] = 0
 
 /turf/simulated/mineral/bullet_act(var/obj/projectile/Proj) // only emitters for now

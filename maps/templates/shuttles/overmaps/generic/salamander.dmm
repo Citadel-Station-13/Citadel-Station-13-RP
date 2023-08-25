@@ -18,7 +18,7 @@
 /area/shuttle/salamander)
 "aL" = (
 /obj/effect/shuttle_landmark/shuttle_initializer/salamander,
-/obj/effect/overmap/visitable/ship/landable/salamander,
+/obj/overmap/entity/visitable/ship/landable/salamander,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
@@ -97,7 +97,7 @@
 /area/shuttle/salamander)
 "bN" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/light{
@@ -242,7 +242,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/salamander_engineering)
 "eB" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -648,7 +648,7 @@
 /area/shuttle/salamander)
 "jV" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	req_one_access = list(160)
 	},
 /obj/machinery/door/firedoor/multi_tile{
@@ -738,7 +738,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -1189,7 +1189,7 @@
 "vi" = (
 /obj/structure/table/steel,
 /obj/machinery/microwave,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -1618,7 +1618,7 @@
 "RO" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet/blue,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -1767,7 +1767,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	name = "Salamander Engineering Bay";
 	req_one_access = list(160)
 	},
@@ -1843,7 +1843,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/light_switch{

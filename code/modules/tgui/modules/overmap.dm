@@ -1,5 +1,5 @@
 /datum/tgui_module_old/ship
-	var/obj/effect/overmap/visitable/ship/linked
+	var/obj/overmap/entity/visitable/ship/linked
 	var/list/viewers
 	var/extra_view = 0
 
@@ -31,19 +31,19 @@
 	unlook(user)
 
 /datum/tgui_module_old/ship/proc/sync_linked()
-	var/obj/effect/overmap/visitable/ship/sector = get_overmap_sector(get_z(ui_host()))
+	var/obj/overmap/entity/visitable/ship/sector = get_overmap_sector(get_z(ui_host()))
 	if(!sector)
 		return
 	return attempt_hook_up_recursive(sector)
 
-/datum/tgui_module_old/ship/proc/attempt_hook_up_recursive(obj/effect/overmap/visitable/ship/sector)
+/datum/tgui_module_old/ship/proc/attempt_hook_up_recursive(obj/overmap/entity/visitable/ship/sector)
 	if(attempt_hook_up(sector))
 		return sector
-	for(var/obj/effect/overmap/visitable/ship/candidate in sector)
+	for(var/obj/overmap/entity/visitable/ship/candidate in sector)
 		if((. = .(candidate)))
 			return
 
-/datum/tgui_module_old/ship/proc/attempt_hook_up(obj/effect/overmap/visitable/ship/sector)
+/datum/tgui_module_old/ship/proc/attempt_hook_up(obj/overmap/entity/visitable/ship/sector)
 	if(!istype(sector))
 		return
 	if(sector.check_ownership(ui_host()))
@@ -57,7 +57,7 @@
 	user.reset_perspective(linked)
 	var/list/view_size = decode_view_size(world.view)
 	user.client?.set_temporary_view(view_size[1] + extra_view, view_size[2] + extra_view)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unlook)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(unlook))
 	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
 /datum/tgui_module_old/ship/proc/unlook(var/mob/user)
@@ -106,7 +106,7 @@
 	var/list/data = ..()
 
 	var/turf/T = get_turf(linked)
-	var/obj/effect/overmap/visitable/sector/current_sector = locate() in T
+	var/obj/overmap/entity/visitable/sector/current_sector = locate() in T
 
 	data["sector"] = current_sector ? current_sector.name : "Deep Space"
 	data["sector_info"] = current_sector ? current_sector.desc : "Not Available"
@@ -114,7 +114,7 @@
 	data["s_y"] = linked.y
 	data["speed"] = round(linked.get_speed_legacy()*1000, 0.01)
 	data["accel"] = round(linked.get_acceleration_legacy()*1000, 0.01)
-	data["heading"] = linked.get_heading_degrees()
+	data["heading"] = linked.get_heading()
 	data["viewing"] = viewing_overmap(user)
 
 	if(linked.get_speed_legacy())
@@ -156,7 +156,7 @@
 /datum/tgui_module_old/ship/fullmonty/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.admin_state
 
-/datum/tgui_module_old/ship/fullmonty/New(host, obj/effect/overmap/visitable/ship/new_linked)
+/datum/tgui_module_old/ship/fullmonty/New(host, obj/overmap/entity/visitable/ship/new_linked)
 	. = ..()
 	if(!istype(new_linked))
 		CRASH("Warning, [new_linked] is not an overmap ship! Something went horribly wrong for [usr]!")
@@ -164,7 +164,7 @@
 	name = initial(name) + " ([linked.name])"
 	// HELM
 	var/area/overmap/map = locate() in world
-	for(var/obj/effect/overmap/visitable/sector/S in map)
+	for(var/obj/overmap/entity/visitable/sector/S in map)
 		if(S.known)
 			var/datum/computer_file/data/waypoint/R = new()
 			R.fields["name"] = S.name
@@ -183,7 +183,7 @@
 
 	// HELM
 	var/turf/T = get_turf(linked)
-	var/obj/effect/overmap/visitable/sector/current_sector = locate() in T
+	var/obj/overmap/entity/visitable/sector/current_sector = locate() in T
 
 	data["sector"] = current_sector ? current_sector.name : "Deep Space"
 	data["sector_info"] = current_sector ? current_sector.desc : "Not Available"
@@ -195,7 +195,7 @@
 	data["d_y"] = dy
 	data["speedlimit"] = speedlimit ? speedlimit*1000 : "Halted"
 	data["accel"] = min(round(linked.get_acceleration_legacy()*1000, 0.01),accellimit*1000)
-	data["heading"] = linked.get_heading_degrees()
+	data["heading"] = linked.get_heading()
 	data["autopilot_disabled"] = autopilot_disabled
 	data["autopilot"] = autopilot
 	data["manual_control"] = viewing_overmap(user)
@@ -279,7 +279,7 @@
 		else
 			data["status"] = "OK"
 		var/list/contacts = list()
-		for(var/obj/effect/overmap/O in view(7,linked))
+		for(var/obj/overmap/O in view(7,linked))
 			if(linked == O)
 				continue
 			if(!O.scannable)

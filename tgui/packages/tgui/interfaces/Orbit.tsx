@@ -45,6 +45,7 @@ type OrbitData = {
   ghosts: OrbitList[],
   misc: OrbitList[],
   items_of_interest: OrbitList[],
+  npcs: OrbitList[],
 }
 
 type BasicSectionProps = {
@@ -103,6 +104,7 @@ export const Orbit = (props: any, context: any) => {
     items_of_interest,
     ghosts,
     misc,
+    npcs,
   } = data;
 
   const [searchText, setSearchText] = useLocalState(context, "searchText", "");
@@ -148,6 +150,11 @@ export const Orbit = (props: any, context: any) => {
             <Flex.Item>
               <Divider vertical />
             </Flex.Item>
+            <Flex.Item>
+              <Button onClick={() => act("refresh")}>
+                Refresh
+              </Button>
+            </Flex.Item>
           </Flex>
         </Section>
 
@@ -181,6 +188,17 @@ export const Orbit = (props: any, context: any) => {
               <OrbitedButton
                 key={thing.name}
                 color="good"
+                thing={thing} />
+            ))}
+        </Collapsible>
+        <Collapsible title={`NPCs - (${npcs.length})`}>
+          {npcs
+            .filter(searchFor(searchText))
+            .sort(compareNumberedText)
+            .map(thing => (
+              <OrbitedButton
+                key={thing.name}
+                color="grey"
                 thing={thing} />
             ))}
         </Collapsible>

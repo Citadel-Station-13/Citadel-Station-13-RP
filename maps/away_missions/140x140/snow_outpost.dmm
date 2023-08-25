@@ -233,15 +233,6 @@
 	temperature = 80
 	},
 /area/awaymission/snow_outpost/powered)
-"aR" = (
-/obj/mecha/combat/marauder/mauler{
-	operation_req_access = newlist()
-	},
-/turf/simulated/floor/bluegrid{
-	name = "Mainframe Base";
-	temperature = 80
-	},
-/area/awaymission/snow_outpost/powered)
 "aS" = (
 /obj/machinery/porta_turret/stationary/syndie,
 /turf/simulated/floor/tiled/white,
@@ -322,10 +313,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
-"bh" = (
-/obj/structure/ghost_pod/manual/lost_drone/dogborg,
-/turf/simulated/floor/plating/outdoors,
-/area/awaymission/snow_outpost/dark)
 "bi" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -503,18 +490,6 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/cyan,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
-"bL" = (
-/obj/machinery/atmospherics/component/unary/vent_pump{
-	dir = 8;
-	external_pressure_bound = 140;
-	external_pressure_bound_default = 140;
-	icon_state = "map_vent_out";
-	pressure_checks = 1;
-	pressure_checks_default = 1;
-	use_power = 1
-	},
-/turf/simulated/floor/tiled/white,
-/area/awaymission/snow_outpost/powered)
 "bM" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -538,22 +513,6 @@
 "bO" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber{
 	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/awaymission/snow_outpost/powered)
-"bP" = (
-/obj/machinery/atmospherics/component/unary/vent_pump{
-	dir = 1;
-	external_pressure_bound = 0;
-	external_pressure_bound_default = 0;
-	icon_state = "map_vent_in";
-	initialize_directions = 1;
-	internal_pressure_bound = 4000;
-	internal_pressure_bound_default = 4000;
-	pressure_checks = 2;
-	pressure_checks_default = 2;
-	pump_direction = 0;
-	use_power = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
@@ -632,19 +591,8 @@
 /obj/item/ore/diamond,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
-"cg" = (
-/obj/structure/boulder,
-/turf/simulated/floor/plating/outdoors,
-/area/awaymission/snow_outpost/dark)
 "ch" = (
 /turf/simulated/floor/tiled/kafel_full/yellow,
-/area/awaymission/snow_outpost/dark)
-"ci" = (
-/turf/simulated/floor/plating/outdoors,
-/area/awaymission/snow_outpost/dark)
-"cj" = (
-/obj/item/ore,
-/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "ck" = (
 /obj/structure/bed/alien,
@@ -693,11 +641,6 @@
 "cv" = (
 /turf/simulated/wall,
 /area/awaymission/snow_outpost/dark)
-"cw" = (
-/obj/item/frame/apc,
-/obj/item/module/power_control,
-/turf/simulated/floor/plating/outdoors,
-/area/awaymission/snow_outpost/dark)
 "cx" = (
 /obj/structure/table/steel,
 /obj/machinery/cell_charger,
@@ -709,19 +652,6 @@
 /obj/item/storage/excavation,
 /obj/item/measuring_tape,
 /turf/simulated/floor/snow/snow2,
-/area/awaymission/snow_outpost/dark)
-"cz" = (
-/obj/machinery/power/port_gen/pacman/super,
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/awaymission/snow_outpost/dark)
-"cA" = (
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "cB" = (
 /obj/structure/bed/chair{
@@ -743,10 +673,6 @@
 /obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
-"cF" = (
-/obj/structure/loot_pile/maint/technical,
-/turf/simulated/floor/plating/outdoors,
-/area/awaymission/snow_outpost/dark)
 "cG" = (
 /obj/structure/table/steel,
 /obj/random/tech_supply,
@@ -765,10 +691,6 @@
 "cJ" = (
 /obj/structure/boulder,
 /turf/simulated/floor/snow/snow2,
-/area/awaymission/snow_outpost/dark)
-"cK" = (
-/obj/structure/loot_pile/maint/junk,
-/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "cL" = (
 /obj/structure/table/steel,
@@ -2588,23 +2510,6 @@
 "iN" = (
 /turf/simulated/floor/water/deep,
 /area/awaymission/snow_outpost/dark)
-"iR" = (
-/obj/machinery/atmospherics/component/unary/vent_pump{
-	dir = 8;
-	external_pressure_bound = 140;
-	external_pressure_bound_default = 140;
-	icon_state = "map_vent_out";
-	pressure_checks = 1;
-	pressure_checks_default = 1;
-	use_power = 1
-	},
-/obj/item/stack/material/phoron,
-/obj/machinery/light/flicker{
-	icon_state = "tube1";
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/awaymission/snow_outpost/powered)
 "iS" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled/steel,
@@ -2651,8 +2556,29 @@
 /obj/structure/flora/tree/sif,
 /turf/unsimulated/mineral,
 /area/awaymission/snow_outpost/outside)
+"ji" = (
+/obj/machinery/atmospherics/component/unary/vent_pump{
+	dir = 8;
+	external_pressure_bound = 140;
+	external_pressure_bound_default = 140;
+	icon_state = "map_vent_out";
+	pressure_checks = 1;
+	pressure_checks_default = 1;
+	on = 1
+	},
+/obj/item/stack/material/phoron,
+/obj/machinery/light/flicker{
+	icon_state = "tube1";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/awaymission/snow_outpost/powered)
 "jo" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
+/area/awaymission/snow_outpost/dark)
+"jr" = (
+/obj/structure/loot_pile/maint/junk,
+/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "jv" = (
 /obj/machinery/door/airlock,
@@ -2676,6 +2602,22 @@
 /obj/structure/flora/tree/sif,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
+"ot" = (
+/obj/machinery/atmospherics/component/unary/vent_pump{
+	dir = 1;
+	external_pressure_bound = 0;
+	external_pressure_bound_default = 0;
+	icon_state = "map_vent_in";
+	initialize_directions = 1;
+	internal_pressure_bound = 4000;
+	internal_pressure_bound_default = 4000;
+	pressure_checks = 2;
+	pressure_checks_default = 2;
+	pump_direction = 0;
+	on = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/awaymission/snow_outpost/powered)
 "oT" = (
 /obj/structure/flora/tree/pine,
 /turf/simulated/floor/snow/snow2,
@@ -2683,6 +2625,15 @@
 "pV" = (
 /turf/unsimulated/mineral,
 /area/awaymission/snow_outpost/outside/nospawn)
+"qu" = (
+/obj/mecha/combat/marauder/mauler{
+	operation_req_access = list()
+	},
+/turf/simulated/floor/bluegrid{
+	name = "Mainframe Base";
+	temperature = 80
+	},
+/area/awaymission/snow_outpost/powered)
 "qL" = (
 /obj/random/landmine,
 /turf/simulated/floor/outdoors/dirt{
@@ -2704,12 +2655,26 @@
 /obj/machinery/light/flicker,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
+"sy" = (
+/obj/machinery/power/port_gen/pacman/super,
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating/outdoors,
+/area/awaymission/snow_outpost/dark)
+"tR" = (
+/obj/structure/loot_pile/maint/technical,
+/turf/simulated/floor/plating/outdoors,
+/area/awaymission/snow_outpost/dark)
 "uq" = (
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/powered)
 "uy" = (
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside/nospawn)
+"wV" = (
+/turf/simulated/floor/plating/outdoors,
+/area/awaymission/snow_outpost/dark)
 "xN" = (
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/outdoors/dirt,
@@ -2741,6 +2706,26 @@
 	outdoors = 0
 	},
 /area/awaymission/snow_outpost/dark)
+"CY" = (
+/obj/item/ore,
+/turf/simulated/floor/plating/outdoors,
+/area/awaymission/snow_outpost/dark)
+"Dp" = (
+/obj/structure/ghost_pod/manual/lost_drone/dogborg,
+/turf/simulated/floor/plating/outdoors,
+/area/awaymission/snow_outpost/dark)
+"Dy" = (
+/obj/machinery/atmospherics/component/unary/vent_pump{
+	dir = 8;
+	external_pressure_bound = 140;
+	external_pressure_bound_default = 140;
+	icon_state = "map_vent_out";
+	pressure_checks = 1;
+	pressure_checks_default = 1;
+	on = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/awaymission/snow_outpost/powered)
 "DR" = (
 /turf/simulated/floor/tiled/steel,
 /turf/simulated/shuttle/wall/dark{
@@ -2772,6 +2757,10 @@
 "Iz" = (
 /turf/simulated/floor/outdoors/ice,
 /area/awaymission/snow_outpost/outside/nospawn)
+"IK" = (
+/obj/structure/boulder,
+/turf/simulated/floor/plating/outdoors,
+/area/awaymission/snow_outpost/dark)
 "Jn" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/awaymission/snow_outpost/outside;
@@ -2818,6 +2807,10 @@
 	},
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/powered)
+"OI" = (
+/obj/overmap/entity/visitable/sector/gateway/snowoutpost,
+/turf/simulated/mineral/ignore_mapgen,
+/area/awaymission/snow_outpost/dark)
 "PZ" = (
 /obj/machinery/crystal/ice,
 /turf/simulated/floor/snow/snow2,
@@ -2825,6 +2818,11 @@
 "QY" = (
 /mob/living/simple_mob/animal/giant_spider/frost,
 /turf/simulated/floor/snow/snow2,
+/area/awaymission/snow_outpost/dark)
+"Re" = (
+/obj/item/frame/apc,
+/obj/item/module/power_control,
+/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "Rs" = (
 /turf/unsimulated/mineral,
@@ -2847,10 +2845,6 @@
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
-"Uy" = (
-/obj/effect/overmap/visitable/sector/gateway/snowoutpost,
-/turf/simulated/mineral/ignore_mapgen,
-/area/awaymission/snow_outpost/dark)
 "Vk" = (
 /turf/simulated/mineral/ignore_mapgen,
 /area/awaymission/snow_outpost/powered)
@@ -2861,6 +2855,12 @@
 "VK" = (
 /obj/structure/flora/ausbushes/stalkybush,
 /turf/simulated/floor/snow/snow2,
+/area/awaymission/snow_outpost/dark)
+"VT" = (
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "Wj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
@@ -3157,7 +3157,7 @@ Lh
 Lh
 Lh
 Lh
-Uy
+OI
 Rs
 "}
 (3,1,1) = {"
@@ -4705,9 +4705,9 @@ Lh
 Lh
 Lh
 cv
-cz
-cF
-cK
+sy
+tR
+jr
 Lq
 Lq
 Lh
@@ -4846,10 +4846,10 @@ ce
 cq
 Lh
 Lh
-cw
-cA
-ci
-ci
+Re
+VT
+wV
+wV
 Lq
 Lq
 Lh
@@ -5265,7 +5265,7 @@ Lh
 ce
 ch
 cl
-ci
+wV
 ch
 ch
 ce
@@ -5405,9 +5405,9 @@ Lh
 Lh
 Lh
 ce
-ci
-ci
-bh
+wV
+wV
+Dp
 ch
 ch
 ce
@@ -5546,9 +5546,9 @@ Lh
 Lh
 Lh
 Lh
-cg
-cj
-ci
+IK
+CY
+wV
 ch
 ch
 ch
@@ -5689,12 +5689,12 @@ Lh
 Lh
 Lh
 ce
-ci
+wV
 ch
 ch
 ch
 ch
-cj
+CY
 Lq
 Lq
 Lq
@@ -5834,8 +5834,8 @@ ce
 ce
 ce
 ch
-ci
-ci
+wV
+wV
 ce
 cs
 Lq
@@ -6120,7 +6120,7 @@ ch
 ch
 ch
 ch
-ci
+wV
 Lq
 Lq
 cu
@@ -6262,7 +6262,7 @@ ch
 co
 ch
 ce
-ci
+wV
 Lq
 Lq
 Lq
@@ -8018,7 +8018,7 @@ bg
 ek
 ei
 aE
-bL
+Dy
 bT
 bH
 bT
@@ -8308,7 +8308,7 @@ bH
 ek
 ek
 bG
-bP
+ot
 as
 uy
 uy
@@ -9017,7 +9017,7 @@ yM
 rs
 yM
 aK
-aR
+qu
 aQ
 as
 uy
@@ -9437,7 +9437,7 @@ bd
 be
 bd
 yM
-bL
+Dy
 bM
 yM
 bi
@@ -10009,7 +10009,7 @@ uy
 uy
 as
 aJ
-iR
+ji
 am
 bc
 aN

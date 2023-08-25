@@ -1,7 +1,7 @@
 /obj/item/gun/energy/laser
 	name = "laser rifle"
 	desc = "A Hephaestus Industries G40E rifle, designed to kill with concentrated energy blasts.  This variant has the ability to \
-	switch between standard fire and a more efficent but weaker 'suppressive' fire."
+	switch between standard fire and a more efficient but weaker 'suppressive' fire."
 	icon_state = "laser"
 	item_state = "laser"
 	wielded_item_state = "laser-wielded"
@@ -10,7 +10,7 @@
 	w_class = ITEMSIZE_LARGE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
-	matter = list(MAT_STEEL = 2000)
+	materials = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/midlaser
 	heavy = TRUE
 	one_handed_penalty = 30
@@ -242,7 +242,7 @@
 	item_state = "laser"
 	desc = "Based off an ancient model of laser gun, the NT-Tagger will make you the terror of the next workplace lasertag tournament."
 	origin_tech = list(TECH_COMBAT = 1, TECH_MAGNET = 2)
-	matter = list(MAT_STEEL = 2000)
+	materials = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/lasertag/blue
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
@@ -316,7 +316,7 @@
 	w_class = ITEMSIZE_LARGE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 2)
-	matter = list(MAT_STEEL = 2000, "plastic" = 1000)
+	materials = list(MAT_STEEL = 2000, "plastic" = 1000)
 	projectile_type = /obj/projectile/beam/midlaser
 	heavy = FALSE
 	one_handed_penalty = 25
