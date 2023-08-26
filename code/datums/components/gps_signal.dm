@@ -34,6 +34,7 @@ GLOBAL_LIST_EMPTY(gps_transmitters)
  */
 /datum/component/gps_signal
 	dupe_mode = COMPONENT_DUPE_ALLOWED
+	registered_type = /datum/component/gps_signal
 	/// our gps tag
 	var/gps_tag
 	/// disabled
