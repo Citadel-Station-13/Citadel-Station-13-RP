@@ -4,7 +4,7 @@
 /// visualization; obviously slow as hell
 /// JPS visualization is currently not nearly as perfect as A*'s.
 /// notably is sometimes marks stuff closed that isn't because of the weird backtracking stuff I put in.
-// #define JPS_DEBUGGING
+#define JPS_DEBUGGING
 
 #ifdef JPS_DEBUGGING
 
@@ -206,6 +206,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 				else { \
 					creating_node = new /datum/jps_node(clast, top, cheuristic, top.depth + csteps, top.cost + csteps, DIR); \
 				} \
+				clast.maptext = "[csteps + cinitialsteps], [creating_node.score]"; \
 				clast.color = JPS_VISUAL_COLOR_OPEN; \
 				turfs_got_colored[clast] = TRUE; \
 				clast.overlays += get_jps_scan_overlay(DIR, TRUE); \
@@ -339,8 +340,10 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
  * * emits a bunch nodes to walk to instead of a clear path
  * * all tiles are treated as 1 distance - including diagonals.
  * * max_dist is *really* weird. It uses JPs path lengths, so, you probably need it a good bit higher than your target distance.
+ * * jps cannot handle turfs that allow in one dir only at all. for precision navigation in those cases, you'll need A*.
  */
 /datum/pathfinding/jps
+	adjacency_call = /proc/jps_pathfinding_adjacency
 	/// the priority queue is accessible at instance level because we're too complicated to fit into one macro
 	/// (yet).
 	var/datum/priority_queue/open
@@ -516,7 +519,6 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 						dpass = FALSE
 				next = get_step(considering, jdir)
 				if(isnull(next) || !JPS_ADJACENCY_CALL(considering, next))
-					considering = next
 					considering.pathfinding_cycle = cycle
 					break
 				if(!dpass)
@@ -530,6 +532,9 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 						if(isnull(dmadenode)) {
 							dmadenode = new /datum/jps_node(considering, top, JPS_HEURISTIC_CALL(considering), dsteps, top.cost + dsteps, jdir)
 						}
+						#ifdef JPS_DEBUGGING
+						considering.maptext = "[top.depth + dsteps], [dmadenode.score]"
+						#endif
 						creating_node = dmadenode
 						nodes_by_turf[considering] = creating_node
 						open.enqueue(creating_node)

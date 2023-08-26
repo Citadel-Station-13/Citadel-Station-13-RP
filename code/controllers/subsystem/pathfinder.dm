@@ -104,8 +104,8 @@ SUBSYSTEM_DEF(pathfinder)
 	return tg_instance.search()
 
 /proc/pathfinding_run_all(turf/start = get_turf(usr), turf/goal)
-	var/pass_silicons_astar = SSpathfinder.get_path_astar(goal = goal, start = start, target_distance = 1, max_path_length = 128)
-	var/pass_silicons_jps = SSpathfinder.get_path_jps(goal = goal, start = start, target_distance = 1, max_path_length = 128)
+	var/pass_silicons_astar = SSpathfinder.get_path_astar(goal = goal, start = start, target_distance = 1, max_path_length = 256)
+	var/pass_silicons_jps = SSpathfinder.get_path_jps(goal = goal, start = start, target_distance = 1, max_path_length = 256)
 	// old astar has been cut because it's such horrible code it's not worth benchmarking against the other 3.
 	// var/pass_old_astar = graph_astar(
 	// 	start,
@@ -117,7 +117,7 @@ SUBSYSTEM_DEF(pathfinder)
 	// 	1,
 	// )
 	var/atom/movable/delegate_for_tg = new(start)
-	var/datum/tg_jps_pathfind/tg_instance = new(delegate_for_tg, goal, null, 128, 1, FALSE, null)
+	var/datum/tg_jps_pathfind/tg_instance = new(delegate_for_tg, goal, null, 256, 1, FALSE, null)
 	var/pass_tg_jps = tg_instance.search()
 	pass_silicons_astar = !!length(pass_silicons_astar)
 	pass_silicons_jps = !!length(pass_silicons_jps)
