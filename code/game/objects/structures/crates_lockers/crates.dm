@@ -721,4 +721,4 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "biohazard"
 	climb_allowed = TRUE
-	var/points_per_crate = 5
+	points_per_crate = 5
