@@ -11,7 +11,7 @@
 	armor_type = /datum/armor/none
 	siemens_coefficient = 0.9
 	inv_hide_flags = HIDEHOLSTER
-	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/flashlight,/obj/item/pen,/obj/item/clothing/head/soft,/obj/item/clothing/head/beret,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/analyzer,/obj/item/radio,/obj/item/barrier_tape_roll)
+	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/flashlight,/obj/item/pen,/obj/item/clothing/head/soft,/obj/item/clothing/head/beret,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/atmos_analyzer,/obj/item/radio,/obj/item/barrier_tape_roll)
 
 /obj/item/clothing/suit/storage/service/sysguard
 	name = "\improper SysGuard jacket"

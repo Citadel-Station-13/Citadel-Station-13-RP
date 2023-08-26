@@ -23,7 +23,7 @@
 	if(on)
 		var/datum/gas_mixture/air_sample = return_air()
 		var/pressure = round(air_sample.return_pressure(), 0.1)
-		var/phoron = (/datum/gas/phoron in air_sample.gas) ? round(air_sample.gas[/datum/gas/phoron], 0.1) : 0
+		var/phoron = (GAS_ID_PHORON in air_sample.gas) ? round(air_sample.gas[GAS_ID_PHORON], 0.1) : 0
 
 		if(abs(pressure - previousPressure) > 0.1 || previousPressure == null || abs(phoron - previousPhoron) > 0.1 || previousPhoron == null)
 			var/datum/signal/signal = new
@@ -92,8 +92,8 @@
 	return 1
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock		//Special scrubber with bonus inbuilt heater
-	volume_rate = 40000
 	active_power_usage = 2000
+	efficiency_multiplier = 4
 	var/target_temp = T20C
 	var/heating_power = 150000
 
@@ -112,11 +112,6 @@
 				var/heat_transfer = removed.get_thermal_energy_change(target_temp)
 				removed.adjust_thermal_energy(clamp(heat_transfer,-heating_power,heating_power))
 				env.merge(removed)
-
-		var/transfer_moles = min(1, volume_rate/env.volume)*env.total_moles
-		for(var/i=1 to 3)	//Scrubs 4 times as fast
-			scrub_gas(src, scrubbing_gas, env, air_contents, transfer_moles, active_power_usage)
-
 
 //
 // PHORON LOCK CONTROLLER

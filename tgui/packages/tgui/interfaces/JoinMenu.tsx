@@ -94,7 +94,9 @@ export const JoinMenu = (props, context) => {
                             color="transparent"
                             onClick={() => act('join', { id: role.id, type: "ghostrole" })} />
                         </>
-                      } style={{ "padding-left": "5%" }}>
+                      } headerProps={{
+                        style: { "padding-left": "5%" },
+                      }}>
                         <Box>
                           {role.desc}
                         </Box>
@@ -138,11 +140,14 @@ const JoinFaction = (props: JoinFactionProps, context) => {
         ordered.map((depName) => {
           const jobs: JoinableJob[] = props.departments[depName];
           return (
-            <Collapsible color="transparent" key={depName} title={depName} style={{ "margin-left": "2.5%" }}>
+            <Collapsible color="transparent" key={depName} title={depName}
+              headerProps={{
+                style: { "margin-left": "2.5%" },
+              }}>
               {
                 jobs.map((job) => {
                   return (
-                    <Collapsible color="transparent" style={{ "margin-left": "7.5%" }}
+                    <Collapsible color="transparent" headerProps={{ style: { "margin-left": "7.5%" } }}
                       key={job.id} title={job.name} buttons={
                         <>{(job.slots === -1)? 'Unlimited' : `${job.slots} left`} <Icon name="user-friends" />
                           <Button.Confirm

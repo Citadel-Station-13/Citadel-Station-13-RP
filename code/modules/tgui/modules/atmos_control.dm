@@ -12,7 +12,7 @@
 	access.req_one_access = req_one_access
 
 	if(monitored_alarm_ids)
-		for(var/obj/machinery/alarm/alarm in GLOB.machines)
+		for(var/obj/machinery/air_alarm/alarm in GLOB.machines)
 			if(alarm.alarm_id && (alarm.alarm_id in monitored_alarm_ids))
 				monitored_alarms += alarm
 		// machines may not yet be ordered at this point
@@ -25,7 +25,7 @@
 	switch(action)
 		if("alarm")
 			if(ui_ref)
-				var/obj/machinery/alarm/alarm = locate(params["alarm"]) in (monitored_alarms.len ? monitored_alarms : GLOB.machines)
+				var/obj/machinery/air_alarm/alarm = locate(params["alarm"]) in (monitored_alarms.len ? monitored_alarms : GLOB.machines)
 				if(alarm)
 					var/datum/ui_state/TS = generate_state(alarm)
 					alarm.ui_interact(usr, parent_ui = ui_ref, state = TS)
@@ -53,7 +53,7 @@
 
 	// TODO: Move these to a cache, similar to cameras
 	var/alarms[0]
-	for(var/obj/machinery/alarm/alarm in (monitored_alarms.len ? monitored_alarms : GLOB.machines))
+	for(var/obj/machinery/air_alarm/alarm in (monitored_alarms.len ? monitored_alarms : GLOB.machines))
 		if(!monitored_alarms.len && alarm.alarms_hidden)
 			continue
 		if(!(alarm.z in map_levels))
@@ -88,7 +88,7 @@
 
 /datum/ui_state/air_alarm_remote
 	var/datum/tgui_module_old/atmos_control/atmos_control = null
-	var/obj/machinery/alarm/air_alarm = null
+	var/obj/machinery/air_alarm/air_alarm = null
 
 /datum/ui_state/air_alarm_remote/can_use_topic(src_object, mob/user)
 	if(!atmos_control.ui_ref)

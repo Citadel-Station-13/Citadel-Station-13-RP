@@ -35,9 +35,9 @@
 	selects_bodytype = TRUE
 
 	body_temperature = T20C
-	breath_type = /datum/gas/carbon_dioxide
-	poison_type = /datum/gas/phoron
-	exhale_type = /datum/gas/oxygen
+	breath_type = GAS_ID_CARBON_DIOXIDE
+	poison_type = GAS_ID_PHORON
+	exhale_type = GAS_ID_OXYGEN
 
 	// Heat and cold resistances are 20 degrees broader on the level 1 range, level 2 is default, level 3 is much weaker, halfway between L2 and normal L3.
 	// Essentially, they can tolerate a broader range of comfortable temperatures, but suffer more at extremes.
@@ -257,8 +257,8 @@
 		H.phoron_alert = 0
 
 	// If there's some other shit in the air lets deal with it here.
-	if(breath.gas[/datum/gas/nitrous_oxide])
-		var/SA_pp = (breath.gas[/datum/gas/nitrous_oxide] / breath.total_moles) * breath_pressure
+	if(breath.gas[GAS_ID_NITROUS_OXIDE])
+		var/SA_pp = (breath.gas[GAS_ID_NITROUS_OXIDE] / breath.total_moles) * breath_pressure
 
 		// Enough to make us paralysed for a bit
 		if(SA_pp > SA_para_min)
@@ -274,7 +274,7 @@
 		else if(SA_pp > 0.15)
 			if(prob(20))
 				spawn(0) H.emote(pick("giggle", "laugh"))
-		breath.adjust_gas(/datum/gas/nitrous_oxide, -breath.gas[/datum/gas/nitrous_oxide]/6, update = 0) //update after
+		breath.adjust_gas(GAS_ID_NITROUS_OXIDE, -breath.gas[GAS_ID_NITROUS_OXIDE]/6, update = 0) //update after
 
 	// Were we able to breathe?
 	if (failed_inhale || failed_exhale)

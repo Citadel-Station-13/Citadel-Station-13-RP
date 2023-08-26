@@ -41,7 +41,7 @@
 		/obj/item/tool/wrench,
 		/obj/item/weldingtool,
 		/obj/item/tool/crowbar,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/tool/wirecutters
 	)
 
@@ -89,7 +89,7 @@
 		/obj/item/tool/crowbar/power,
 		/obj/item/multitool,
 		/obj/item/stack/cable_coil/random_belt,
-		/obj/item/analyzer
+		/obj/item/atmos_analyzer
 	)
 
 /obj/item/storage/toolbox/gold_fake // used in crafting
@@ -100,7 +100,8 @@
 	throw_force = 0
 
 /obj/item/storage/toolbox/lunchbox
-	max_storage_space = ITEMSIZE_COST_SMALL * 4 //slightly smaller than a toolbox
+	damage_force = 7
+	throw_force = 8
 	name = "rainbow lunchbox"
 	icon_state = "lunchbox_rainbow"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_pink", SLOT_ID_LEFT_HAND = "toolbox_pink")
@@ -203,10 +204,6 @@
 	icon_state = "lunchbox_survival"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_syndi", SLOT_ID_LEFT_HAND = "toolbox_syndi")
 	desc = "A little lunchbox. This one seems to be much sturdier than normal, made of a durable steel!"
-	max_storage_space = ITEMSIZE_COST_SMALL * 6
-
-/obj/item/storage/toolbox/lunchbox/survival/zaddat
-	starts_with = list(/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 6)
 
 /obj/item/storage/toolbox/crystal
 	name = "crystalline toolbox"

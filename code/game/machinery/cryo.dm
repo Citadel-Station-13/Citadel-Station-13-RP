@@ -9,7 +9,6 @@
 	layer = UNDER_JUNK_LAYER
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 
-	var/on = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 200
@@ -25,8 +24,6 @@
 	var/image/fluid
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/Initialize(mapload)
-	. = ..()
-
 	icon = 'icons/obj/medical/cryogenics_split.dmi'
 	icon_state = "base"
 	initialize_directions = dir
@@ -43,6 +40,10 @@
 	fluid.layer = MOB_LAYER+0.1 //Below glass, above mob
 
 	add_overlay(tank)
+
+	. = ..()
+
+	// todo: duped, components update icon on init right?
 	update_icon()
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/Destroy()
@@ -205,8 +206,6 @@
 		qdel(grab)
 		put_mob(M)
 
-	return
-
 /obj/machinery/atmospherics/component/unary/cryo_cell/MouseDroppedOnLegacy(mob/target, mob/user) //Allows borgs to put people into cryo without external assistance
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !ishuman(target))
 		return
@@ -233,7 +232,7 @@
 		if(occupant.bodytemperature < T0C)
 			occupant.afflict_sleeping(20 * max(5, (1/occupant.bodytemperature)*2000))
 			occupant.afflict_unconscious(20 * max(5, (1/occupant.bodytemperature)*3000))
-			if(air_contents.gas[/datum/gas/oxygen] > 2)
+			if(air_contents.gas[GAS_ID_OXYGEN] > 2)
 				if(occupant.getOxyLoss()) occupant.adjustOxyLoss(-1)
 			else
 				occupant.adjustOxyLoss(-1)
