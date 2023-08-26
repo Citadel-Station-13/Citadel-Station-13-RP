@@ -6,9 +6,10 @@
 
 	/// allow multitool "hijacking" even if this is controlled by something else
 	/// set to non-null for delay.
+	//  todo: implement multitool access
 	var/default_multitool_hijack = null
 	/// allow access normally
-	var/default_access_interface = FALSE
+	var/default_access_interface = TRUE
 	/// tgui interface
 	var/tgui_interface
 	/// ui flags
