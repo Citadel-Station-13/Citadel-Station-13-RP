@@ -713,3 +713,12 @@
 /obj/structure/closet/crate/secure/zenghu
 	desc = "A secure sterile crate marked with the logo of Zeng-Hu Pharmaceuticals."
 	closet_appearance = /singleton/closet_appearance/crate/branded/zhenghu/secure
+
+//Brings back the old Biohazard Bin.
+/obj/structure/closet/crate/biohazard
+	name = "biohazard bin"
+	desc = "A large bin for medical and other personnel that deal with bio-grade waste."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "biohazard"
+	climb_allowed = TRUE
+	var/points_per_crate = 5
