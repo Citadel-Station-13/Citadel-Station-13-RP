@@ -1159,7 +1159,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/ladder,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "adJ" = (
@@ -21387,9 +21387,7 @@
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "iio" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
+/obj/machinery/door/firedoor/multi_tile,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -50101,7 +50099,7 @@ aqG
 aqG
 aOa
 asf
-afq
+bWN
 bWN
 aaA
 aaA
