@@ -5,6 +5,7 @@
 
 /datum/component/radioactive
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
+	registered_type = /datum/component/radioactive
 
 	/// half life in deciseconds
 	var/hl3_release_date
