@@ -5638,9 +5638,7 @@
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/backstage)
 "dHC" = (
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Public External Airlock"
-	},
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
 /obj/machinery/door/blast/regular/open{
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
@@ -6219,9 +6217,7 @@
 /turf/simulated/floor,
 /area/maintenance/substation/medical)
 "dWb" = (
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Public External Airlock"
-	},
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
 /obj/machinery/door/blast/regular/open{
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
@@ -21888,9 +21884,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "nDB" = (
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Public External Airlock"
-	},
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
@@ -29907,9 +29901,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
 "srD" = (
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Public External Airlock"
-	},
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
 /obj/machinery/door/blast/regular/open{
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
@@ -32247,9 +32239,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/garage)
 "tKP" = (
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Public External Airlock"
-	},
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
@@ -37746,9 +37736,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "xcd" = (
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Public External Airlock"
-	},
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
 /obj/machinery/door/blast/regular/open{
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
