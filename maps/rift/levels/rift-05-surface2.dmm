@@ -2237,16 +2237,10 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
-/obj/structure/closet/crate/bin{
-	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
-	icon_closed = "biohazard";
-	icon_opened = "biohazardopen";
-	icon_state = "biohazard";
-	name = "biohazard bin"
-	},
 /obj/machinery/camera/network/medbay{
 	dir = 1
 	},
+/obj/structure/closet/crate/biohazard,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
 "bor" = (
@@ -3474,13 +3468,6 @@
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/sleep/Dorm_4)
 "cfz" = (
-/obj/structure/closet/crate/bin{
-	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
-	icon_closed = "biohazard";
-	icon_opened = "biohazardopen";
-	icon_state = "biohazard";
-	name = "biohazard bin"
-	},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
@@ -3491,6 +3478,7 @@
 	desc = null;
 	pixel_y = 24
 	},
+/obj/structure/closet/crate/biohazard,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "cfM" = (
@@ -21447,14 +21435,8 @@
 	pixel_x = 24;
 	pixel_y = 8
 	},
-/obj/structure/closet/crate/bin{
-	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
-	icon_closed = "biohazard";
-	icon_opened = "biohazardopen";
-	icon_state = "biohazard";
-	name = "biohazard bin"
-	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate/biohazard,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "npm" = (
@@ -37322,18 +37304,18 @@
 	pixel_y = 4
 	},
 /obj/item/clothing/accessory/armor/legguards/navy{
-	pixel_y = -1;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = -1
 	},
 /obj/item/clothing/accessory/armor/legguards/navy{
-	pixel_y = -1;
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = -1
 	},
 /obj/item/clothing/accessory/armor/armguards/navy,
 /obj/item/clothing/accessory/armor/armguards/navy,
 /obj/item/clothing/accessory/armor/legguards/navy{
-	pixel_y = -1;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = -1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
