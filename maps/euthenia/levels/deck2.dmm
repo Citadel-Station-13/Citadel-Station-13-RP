@@ -87,6 +87,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck2)
 "aey" = (
@@ -310,6 +311,7 @@
 "aln" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck2)
 "alw" = (
@@ -2239,6 +2241,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck2)
 "bHV" = (
@@ -2514,6 +2517,7 @@
 /obj/landmark{
 	name = "lightsout"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/main_map/hallway/deck2)
 "bYA" = (
@@ -4048,6 +4052,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/main_map/hallway/deck2)
 "dmn" = (
@@ -6136,6 +6141,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/main_map/hallway/deck2)
 "eSE" = (
@@ -8622,6 +8628,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck2)
 "gWY" = (
@@ -10422,6 +10429,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck2)
 "iDj" = (
@@ -12268,6 +12276,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/glass,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/main_map/hallway/deck2)
 "kce" = (
@@ -14451,6 +14460,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/main_map/hallway/deck2)
 "lTl" = (
@@ -15916,6 +15926,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck2)
 "ndc" = (
@@ -16433,6 +16444,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/main_map/hallway/deck2)
 "nxD" = (
@@ -17275,6 +17287,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck2)
 "ogD" = (
@@ -18403,6 +18416,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/main_map/hallway/deck2)
 "paM" = (
@@ -19967,6 +19981,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_two/aft/starboard)
+"qvz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plating,
+/area/main_map/hallway/deck2)
 "qvC" = (
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/reinforced/carbon_dioxide,
@@ -20806,6 +20826,7 @@
 "rdJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck2)
 "rel" = (
@@ -21169,6 +21190,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/main_map/hallway/deck2)
 "rru" = (
@@ -21941,6 +21963,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/glass,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/main_map/hallway/deck2)
 "rXS" = (
@@ -24705,6 +24728,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/main_map/hallway/deck2)
 "uqZ" = (
@@ -25144,6 +25168,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/main_map/hallway/deck2)
 "uLA" = (
@@ -27507,6 +27532,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/main_map/hallway/deck2)
 "wwF" = (
@@ -28911,6 +28937,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/glass,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/main_map/hallway/deck2)
 "xyA" = (
@@ -29314,6 +29341,7 @@
 "xQB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck2)
 "xQE" = (
@@ -44476,38 +44504,38 @@ wwm
 lTg
 dmh
 rrq
-lRo
-lRo
+qvz
+qvz
 eSj
 xQB
 rXI
 xQB
 eSj
-lRo
-lRo
+qvz
+qvz
 bXU
-lRo
-lRo
+qvz
+qvz
 eSj
 xQB
 xyr
 xQB
 nxm
-lRo
-lRo
-lRo
-lRo
-lRo
+qvz
+qvz
+qvz
+qvz
+qvz
 eSj
 bHo
 rXI
 xQB
 eSj
 uKw
-lRo
-lRo
-lRo
-lRo
+qvz
+qvz
+qvz
+qvz
 eSj
 xQB
 rXI

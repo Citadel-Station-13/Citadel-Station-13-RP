@@ -5149,7 +5149,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/prison)
 "fYM" = (
-/obj/machinery/vending/hydronutrients,
+/obj/machinery/vending/hydronutrients{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "fZf" = (
@@ -7831,6 +7833,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_three)
+"jeB" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/chemical_dispenser/catering/bar_soft{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/space)
 "jeM" = (
 /obj/machinery/door/blast/regular{
 	dir = 4
@@ -10089,6 +10098,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
+"lTm" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/space)
 "lTn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -14384,7 +14400,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "qIk" = (
-/obj/machinery/seed_storage/garden,
+/obj/machinery/seed_storage/garden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "qIt" = (
@@ -35092,8 +35110,8 @@ jhf
 mOb
 sVT
 hmr
-hmr
-hmr
+lTm
+jeB
 hmr
 tGv
 psP

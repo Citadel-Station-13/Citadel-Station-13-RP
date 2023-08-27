@@ -420,7 +420,7 @@
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on
 	on = TRUE
-	icon_state = "map_scrubber_on"
+	icon_state = "map_scrubber_on_retro"
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on/welded
 	welded = 1

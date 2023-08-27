@@ -482,7 +482,7 @@
 
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on
 	on = TRUE
-	icon_state = "map_vent_out"
+	icon_state = "map_vent_out_retro"
 
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on/welded
 	welded = 1
