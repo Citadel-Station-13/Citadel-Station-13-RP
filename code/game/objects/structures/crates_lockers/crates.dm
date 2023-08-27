@@ -722,3 +722,5 @@
 	icon_state = "biohazard"
 	climb_allowed = TRUE
 	points_per_crate = 5
+
+/obj/structure/closet/crate/biohazard/LateInitialize()
