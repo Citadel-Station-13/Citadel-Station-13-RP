@@ -2,7 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /// visualization; obviously slow as hell
-#define ASTAR_DEBUGGING
+// #define ASTAR_DEBUGGING
 
 #ifdef ASTAR_DEBUGGING
 

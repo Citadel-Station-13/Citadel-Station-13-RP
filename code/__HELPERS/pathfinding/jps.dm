@@ -4,7 +4,7 @@
 /// visualization; obviously slow as hell
 /// JPS visualization is currently not nearly as perfect as A*'s.
 /// notably is sometimes marks stuff closed that isn't because of the weird backtracking stuff I put in.
-#define JPS_DEBUGGING
+// #define JPS_DEBUGGING
 
 #ifdef JPS_DEBUGGING
 
@@ -327,7 +327,86 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 	} \
 	while(TRUE);
 	#else
-
+	#define JPS_CARDINAL_SCAN(TURF, DIR) \
+	cscan_dir1 = turn(DIR, 90); \
+	cscan_dir2 = turn(DIR, -90); \
+	cscan_steps = 0; \
+	cscan_pass = TRUE; \
+	cscan_dir1_pass = TRUE; \
+	cscan_dir2_pass = TRUE; \
+	cscan_current = TURF; \
+	cscan_last = null; \
+	cscan_initial = JPS_CARDINAL_DURING_DIAGONAL? node_top.depth + dscan_steps : node_top.depth; \
+	do { \
+		if(cscan_steps + cscan_initial + get_dist(cscan_current, goal) > max_depth) { \
+			break; \
+		} \
+		if(JPS_COMPLETION_CHECK(cscan_current)) { \
+			if(JPS_CARDINAL_DURING_DIAGONAL && isnull(dscan_node)) { \
+				dscan_node = new /datum/jps_node(dscan_current, node_top, JPS_HEURISTIC_CALL(dscan_current), node_top.depth + dscan_steps, node_top_dir); \
+				node_creating = new /datum/jps_node(cscan_last, dscan_node, JPS_HEURISTIC_CALL(cscan_last), dscan_node.depth + cscan_steps - 1, DIR | cscan_dir1); \
+			} \
+			else { \
+				node_creating = new /datum/jps_node(cscan_last, node_top, JPS_HEURISTIC_CALL(cscan_last), node_top.depth + cscan_steps - 1, DIR | cscan_dir1); \
+			} \
+			open.enqueue(node_creating); \
+			return jps_unwind_path(node_creating); \
+		} \
+		cscan_turf1 = get_step(cscan_current, cscan_dir1); \
+		cscan_turf2 = get_step(cscan_current, cscan_dir2); \
+		if(!isnull(cscan_turf1)) { \
+			if(!JPS_ADJACENCY_CALL(cscan_current, cscan_turf1)) { \
+				cscan_dir1_pass = FALSE ; \
+			} \
+			else if(cscan_dir1_pass == FALSE) { \
+				if(JPS_CARDINAL_DURING_DIAGONAL && isnull(dscan_node)) { \
+					dscan_node = new /datum/jps_node(dscan_current, node_top, JPS_HEURISTIC_CALL(dscan_current), node_top.depth + dscan_steps, node_top_dir); \
+					node_creating = new /datum/jps_node(cscan_last, dscan_node, JPS_HEURISTIC_CALL(cscan_last), dscan_node.depth + cscan_steps - 1, DIR | cscan_dir1); \
+				} \
+				else { \
+					node_creating = new /datum/jps_node(cscan_last, node_top, JPS_HEURISTIC_CALL(cscan_last), node_top.depth + cscan_steps - 1, DIR | cscan_dir1); \
+				} \
+				open.enqueue(node_creating); \
+				cscan_pass = FALSE; \
+			} \
+		} \
+		if(!isnull(cscan_turf2)) { \
+			if(!JPS_ADJACENCY_CALL(cscan_current, cscan_turf2)) { \
+				cscan_dir2_pass = FALSE ; \
+			} \
+			else if(cscan_dir2_pass == FALSE) { \
+				if(JPS_CARDINAL_DURING_DIAGONAL && isnull(dscan_node)) { \
+					dscan_node = new /datum/jps_node(dscan_current, node_top, JPS_HEURISTIC_CALL(dscan_current), node_top.depth + dscan_steps, node_top_dir); \
+					node_creating = new /datum/jps_node(cscan_last, dscan_node, JPS_HEURISTIC_CALL(cscan_last), dscan_node.depth + cscan_steps - 1, DIR | cscan_dir2); \
+				} \
+				else { \
+					node_creating = new /datum/jps_node(cscan_last, node_top, JPS_HEURISTIC_CALL(cscan_last), node_top.depth + cscan_steps - 1, DIR | cscan_dir2); \
+				} \
+				open.enqueue(node_creating); \
+				cscan_pass = FALSE; \
+			} \
+		} \
+		if(!cscan_pass) { \
+			if(JPS_CARDINAL_DURING_DIAGONAL && isnull(dscan_node)) { \
+				dscan_node = new /datum/jps_node(dscan_current, node_top, JPS_HEURISTIC_CALL(dscan_current), node_top.depth + dscan_steps, node_top_dir); \
+				node_creating = new /datum/jps_node(cscan_last, dscan_node, JPS_HEURISTIC_CALL(cscan_last), dscan_node.depth + cscan_steps - 1, DIR); \
+			} \
+			else { \
+				node_creating = new /datum/jps_node(cscan_last, node_top, JPS_HEURISTIC_CALL(cscan_last), node_top.depth + cscan_steps - 1, DIR); \
+			} \
+			open.enqueue(node_creating); \
+			break; \
+		} \
+		cscan_next = get_step(cscan_current, DIR); \
+		if(isnull(cscan_next) || (cscan_next.pathfinding_cycle == cycle) || !JPS_ADJACENCY_CALL(cscan_current, cscan_next)) { \
+			break; \
+		} \
+		cscan_current.pathfinding_cycle = cycle; \
+		cscan_last = cscan_current; \
+		cscan_current = cscan_next; \
+		cscan_steps++; \
+	} \
+	while(TRUE);
 	#endif
 	//* loop
 	while(length(open.queue))
