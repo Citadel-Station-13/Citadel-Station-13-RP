@@ -252,10 +252,10 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 		if(JPS_COMPLETION_CHECK(cscan_current)) { \
 			if(JPS_CARDINAL_DURING_DIAGONAL && isnull(dscan_node)) { \
 				dscan_node = new /datum/jps_node(dscan_current, node_top, JPS_HEURISTIC_CALL(dscan_current), node_top.depth + dscan_steps, node_top_dir); \
-				node_creating = new /datum/jps_node(cscan_last, dscan_node, JPS_HEURISTIC_CALL(cscan_last), dscan_node.depth + cscan_steps - 1, DIR | cscan_dir1); \
+				node_creating = new /datum/jps_node(cscan_current, dscan_node, JPS_HEURISTIC_CALL(cscan_current), dscan_node.depth + cscan_steps - 1, DIR | cscan_dir1); \
 			} \
 			else { \
-				node_creating = new /datum/jps_node(cscan_last, node_top, JPS_HEURISTIC_CALL(cscan_last), node_top.depth + cscan_steps - 1, DIR | cscan_dir1); \
+				node_creating = new /datum/jps_node(cscan_current, node_top, JPS_HEURISTIC_CALL(cscan_current), node_top.depth + cscan_steps - 1, DIR | cscan_dir1); \
 			} \
 			open.enqueue(node_creating); \
 			return jps_unwind_path(node_creating, turfs_got_colored); \
@@ -341,10 +341,10 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 		if(JPS_COMPLETION_CHECK(cscan_current)) { \
 			if(JPS_CARDINAL_DURING_DIAGONAL && isnull(dscan_node)) { \
 				dscan_node = new /datum/jps_node(dscan_current, node_top, JPS_HEURISTIC_CALL(dscan_current), node_top.depth + dscan_steps, node_top_dir); \
-				node_creating = new /datum/jps_node(cscan_last, dscan_node, JPS_HEURISTIC_CALL(cscan_last), dscan_node.depth + cscan_steps - 1, DIR | cscan_dir1); \
+				node_creating = new /datum/jps_node(cscan_current, dscan_node, JPS_HEURISTIC_CALL(cscan_current), dscan_node.depth + cscan_steps - 1, DIR | cscan_dir1); \
 			} \
 			else { \
-				node_creating = new /datum/jps_node(cscan_last, node_top, JPS_HEURISTIC_CALL(cscan_last), node_top.depth + cscan_steps - 1, DIR | cscan_dir1); \
+				node_creating = new /datum/jps_node(cscan_current, node_top, JPS_HEURISTIC_CALL(cscan_current), node_top.depth + cscan_steps - 1, DIR | cscan_dir1); \
 			} \
 			open.enqueue(node_creating); \
 			return jps_unwind_path(node_creating); \
