@@ -258,7 +258,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 				node_creating = new /datum/jps_node(cscan_last, dscan_node, JPS_HEURISTIC_CALL(cscan_last), dscan_node.depth + cscan_steps - 1, DIR | cscan_dir1); \
 			} \
 			else { \
-				node_creating = new /datum/jps_node(cscan_last, top_node, JPS_HEURISTIC_CALL(cscan_last), top_node.depth + cscan_steps - 1, DIR | cscan_dir1); \
+				node_creating = new /datum/jps_node(cscan_last, node_top, JPS_HEURISTIC_CALL(cscan_last), node_top.depth + cscan_steps - 1, DIR | cscan_dir1); \
 			} \
 			open.enqueue(node_creating); \
 			return jps_unwind_path(node_creating, turfs_got_colored); \
@@ -277,7 +277,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 					node_creating = new /datum/jps_node(cscan_last, dscan_node, JPS_HEURISTIC_CALL(cscan_last), dscan_node.depth + cscan_steps - 1, DIR | cscan_dir1); \
 				} \
 				else { \
-					node_creating = new /datum/jps_node(cscan_last, top_node, JPS_HEURISTIC_CALL(cscan_last), top_node.depth + cscan_steps - 1, DIR | cscan_dir1); \
+					node_creating = new /datum/jps_node(cscan_last, node_top, JPS_HEURISTIC_CALL(cscan_last), node_top.depth + cscan_steps - 1, DIR | cscan_dir1); \
 				} \
 				turfs_got_colored[cscan_last] = turfs_got_colored[cscan_last] + 1; \
 				cscan_last.color = JPS_VISUAL_COLOR_OPEN; \
@@ -295,7 +295,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 					node_creating = new /datum/jps_node(cscan_last, dscan_node, JPS_HEURISTIC_CALL(cscan_last), dscan_node.depth + cscan_steps - 1, DIR | cscan_dir2); \
 				} \
 				else { \
-					node_creating = new /datum/jps_node(cscan_last, top_node, JPS_HEURISTIC_CALL(cscan_last), top_node.depth + cscan_steps - 1, DIR | cscan_dir2); \
+					node_creating = new /datum/jps_node(cscan_last, node_top, JPS_HEURISTIC_CALL(cscan_last), node_top.depth + cscan_steps - 1, DIR | cscan_dir2); \
 				} \
 				turfs_got_colored[cscan_last] = turfs_got_colored[cscan_last] + 1; \
 				cscan_last.color = JPS_VISUAL_COLOR_OPEN; \
@@ -309,7 +309,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 				node_creating = new /datum/jps_node(cscan_last, dscan_node, JPS_HEURISTIC_CALL(cscan_last), dscan_node.depth + cscan_steps - 1, DIR); \
 			} \
 			else { \
-				node_creating = new /datum/jps_node(cscan_last, top_node, JPS_HEURISTIC_CALL(cscan_last), top_node.depth + cscan_steps - 1, DIR); \
+				node_creating = new /datum/jps_node(cscan_last, node_top, JPS_HEURISTIC_CALL(cscan_last), node_top.depth + cscan_steps - 1, DIR); \
 			} \
 			turfs_got_colored[cscan_last] = turfs_got_colored[cscan_last] + 1; \
 			cscan_last.color = JPS_VISUAL_COLOR_OPEN; \
