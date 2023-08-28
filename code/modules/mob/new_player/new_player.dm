@@ -48,6 +48,10 @@
 
 	output += "<p><a href='byond://?src=\ref[src];observe=1'>Observe</A></p>"
 
+
+
+
+
 	if(!IsGuestKey(src.key))
 		if(SSdbcore.Connect())
 			var/isadmin = 0
@@ -75,7 +79,10 @@
 
 	output += "</div>"
 
-	panel = new(src, "Welcome","Welcome", 210, 280, src)
+	output += "It is the 26th century, and the galaxy is enjoying an era of relative peace. Whether you hail from the human-aligned worlds of the Orion Confederation, the Unathi-dominated Alliance of Three Hands, or the alien-centric Skrell controlled Vikaran Combine, you find yourself on the frontier, working for an NT crew on the edge of Orion Confederation space.  For more information, please see our Wiki via the button on the upper right of your screen! Simply press 'Okay' when prompted!" //Murphy Adding a primer blurb, 27AUG23
+
+
+	panel = new(src, "Welcome","Welcome", 500, 480, src)
 	panel.set_window_options("can_close=0")
 	panel.set_content(output)
 	panel.open()
