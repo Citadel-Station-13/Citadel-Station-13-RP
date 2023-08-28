@@ -84,7 +84,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 	src.score = depth + heuristic
 
 /proc/cmp_jps_node(datum/jps_node/A, datum/jps_node/B)
-	return A.heuristic - B.heuristic
+	return A.score - B.score
 
 /**
  * JPS (jump point search)
@@ -373,6 +373,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 			dscan_node = null
 			dscan_current = node_top_pos
 			dscan_pass = TRUE
+			dscan_steps = 0
 			dscan_initial = node_top.depth
 			do
 				// check if we're out of bounds
