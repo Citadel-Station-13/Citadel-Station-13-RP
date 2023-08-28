@@ -12206,6 +12206,10 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
+"Um" = (
+/obj/machinery/vending/weeb,
+/turf/simulated/floor/wood,
+/area/tradeport/cyndi)
 "Uo" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/warning,
@@ -21602,7 +21606,7 @@ Cn
 Fy
 Fy
 ll
-Fy
+Um
 Fy
 ox
 Fy
