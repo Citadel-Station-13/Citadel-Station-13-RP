@@ -23341,7 +23341,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass/exploration{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/steel,
