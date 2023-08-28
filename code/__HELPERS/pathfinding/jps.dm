@@ -32,10 +32,10 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 	return I
 
 #define JPS_VISUAL_DELAY 10 SECONDS
-#define JPS_VISUAL_COLOR_CLOSED "#ff0000"
+#define JPS_VISUAL_COLOR_CLOSED "#ff3333"
 #define JPS_VISUAL_COLOR_OUT_OF_BOUNDS "#555555"
-#define JPS_VISUAL_COLOR_OPEN "#0000ff"
-#define JPS_VISUAL_COLOR_FOUND "#00ff00"
+#define JPS_VISUAL_COLOR_OPEN "#7777ff"
+#define JPS_VISUAL_COLOR_FOUND "#33ff33"
 #define JPS_VISUAL_COLOR_CURRENT "#ffff00"
 #define JPS_VISUAL_COLOR_INTERMEDIATE "#ff00ff"
 
@@ -130,7 +130,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 	var/cycle = ++SSpathfinder.pathfinding_cycle
 	//* variables - run
 	// open priority queue
-	var/datum/priority_queue/open = new(/proc/cmp_jps_node)
+	var/datum/priority_queue/open = new /datum/priority_queue(/proc/cmp_jps_node)
 	// used when creating a node if we need to reference it
 	var/datum/jps_node/node_creating
 	// the top node that we fetch at start of cycle
@@ -230,8 +230,8 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 	//   scan, it outright should not be skipping the first tile.
 	// order of ops:
 	// - check out of bounds/depth
-	// - place debug overlays
 	// - check completion
+	// - place debug overlays
 	// - check sides and mark pass/fail; if it was already failing, mark the cpass fail and make diagonal nodes
 	// - if cpass failed, we also want to make our cardinal nodes
 	// - if any node is made, ensure that we are either not in diagonal mode, or if we are, the diagonal node was created
@@ -264,7 +264,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 			return jps_unwind_path(node_creating, turfs_got_colored); \
 		} \
 		turfs_got_colored[cscan_current] = turfs_got_colored[cscan_current] || 0; \
-		cscan_current.overlays += get_jps_scan_overlay(DIR, TRUE); \
+		cscan_current.overlays += get_jps_scan_overlay(DIR, JPS_CARDINAL_DURING_DIAGONAL); \
 		cscan_turf1 = get_step(cscan_current, cscan_dir1); \
 		cscan_turf2 = get_step(cscan_current, cscan_dir2); \
 		if(!isnull(cscan_turf1)) { \
@@ -314,6 +314,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 			turfs_got_colored[cscan_last] = turfs_got_colored[cscan_last] + 1; \
 			cscan_last.color = JPS_VISUAL_COLOR_OPEN; \
 			open.enqueue(node_creating); \
+			break; \
 		} \
 		cscan_next = get_step(cscan_current, DIR); \
 		if(isnull(cscan_next) || (cscan_next.pathfinding_cycle == cycle) || !JPS_ADJACENCY_CALL(cscan_current, cscan_next)) { \
@@ -360,6 +361,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 			node_top.pos.color = JPS_VISUAL_COLOR_CLOSED
 		else if(turfs_got_colored[node_top.pos] > 0)
 			node_top.pos.color = JPS_VISUAL_COLOR_OPEN
+		node_top_pos.maptext = MAPTEXT("d [node_top.depth]<br>s [node_top.score]<br>o [max(turfs_got_colored[node_top.pos], 0)]")
 		#endif
 
 		// get dir and run based on dir
@@ -419,6 +421,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 					turfs_got_colored[dscan_current] = turfs_got_colored[dscan_current] + 1
 					#endif
 					open.enqueue(dscan_node)
+					break
 				// set pathfinder cycle to prevent re-iteration of the same turfs
 				dscan_current.pathfinding_cycle = cycle
 			while(TRUE)
@@ -432,10 +435,10 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 			#endif
 			// check it's 1. there and 2. we haven't checked it yet and
 			// 3. we can reach it; if not this is just pointless
-			if(isnull(cscan_next) || (cscan_next.pathfinding_cycle == cycle) || !JPS_ADJACENCY_CALL(node_top_pos, cscan_current))
-				break
-			// perform iteration
-			JPS_CARDINAL_SCAN(cscan_next, node_top_dir)
+			if(isnull(cscan_current) || (cscan_current.pathfinding_cycle == cycle) || !JPS_ADJACENCY_CALL(node_top_pos, cscan_current))
+			else
+				// perform iteration
+				JPS_CARDINAL_SCAN(cscan_current, node_top_dir)
 
 	//* clean up debugging
 	#ifdef JPS_DEBUGGING
@@ -444,7 +447,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 
 	//* clean up defines
 	#undef JPS_START_DIR
-	#undef JPS_COMPLETION_CHEKC
+	#undef JPS_COMPLETION_CHECK
 	#undef JPS_CARDINAL_DURING_DIAGONAL
 	#undef JPS_CARDINAL_SCAN
 
