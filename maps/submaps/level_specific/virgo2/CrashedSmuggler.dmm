@@ -253,7 +253,7 @@
 /obj/effect/alien/weeds,
 /obj/structure/bed/nest,
 /obj/item/clothing/shoes/bhop,
-/obj/item/material/knife/tacknife/dataknife,
+/obj/item/gps/dataknife,
 /obj/item/clothing/under/utility,
 /obj/item/digestion_remains/skull,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
