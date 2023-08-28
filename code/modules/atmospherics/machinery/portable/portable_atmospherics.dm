@@ -98,6 +98,9 @@
 	.["flowSetting"] = flow_setting
 	.["on"] = on
 	.["tank"] = holding?.tgui_tank_data()
+	.["pressure"] = air_contents.return_pressure()
+	.["temperature"] = air_contents.temperature
+	.["portConnected"] = !!connected_port
 
 /obj/machinery/portable_atmospherics/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()

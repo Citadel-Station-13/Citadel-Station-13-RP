@@ -194,6 +194,7 @@ export const AtmosTankSlot = (props: AtmosTankSlotProps, context) => {
     <Section title="Tank" {...props}
       buttons={
         <Button content="Eject" disabled={!props.tank}
+          icon="eject"
           onClick={() => props.ejectAct?.()} />
       }>
       {props.tank? (
@@ -206,7 +207,7 @@ export const AtmosTankSlot = (props: AtmosTankSlotProps, context) => {
           </LabeledList.Item>
         </LabeledList>
       ) : (
-        <Box color="warning">
+        <Box textColor="average">
           No holding tank
         </Box>
       )}
