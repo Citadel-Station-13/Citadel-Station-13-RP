@@ -98,7 +98,7 @@
 	if(!istype(D))
 		return
 
-	if(D.loc != loc)
+	if(!Reachability(D))
 		return
 
 	busy = TRUE

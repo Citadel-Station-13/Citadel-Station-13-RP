@@ -152,6 +152,8 @@
 				return
 
 /mob/living/bot/farmbot/calcTargetPath() // We need to land NEXT to the tray, because the tray itself is impassable
+	if(isnull(target))
+		return
 	target_path = SSpathfinder.default_bot_pathfinding(src, get_turf(target), 1, 32)
 	if(!target_path)
 		ignore_list |= target
@@ -159,6 +161,8 @@
 		target_path = list()
 
 /mob/living/bot/farmbot/stepToTarget() // Same reason
+	if(isnull(target))
+		return
 	var/turf/T = get_turf(target)
 	if(!target_path.len || !T.Adjacent(target_path[target_path.len]))
 		calcTargetPath()
