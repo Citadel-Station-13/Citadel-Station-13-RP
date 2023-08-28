@@ -12997,9 +12997,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/medical/virologytransiteast)
 "ipB" = (
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Nebula Trade Shop"
-	},
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
@@ -31829,9 +31827,7 @@
 	dir = 4
 	},
 /obj/map_helper/airlock/door/ext_door,
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Nebula Trade Shop"
-	},
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "shop_airlock";
 	pixel_x = 28;
@@ -35360,6 +35356,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
+"vFS" = (
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "vGM" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/structure/sign/atmos/phoron{
@@ -50704,7 +50704,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+vFS
 iFN
 iFN
 vUA
