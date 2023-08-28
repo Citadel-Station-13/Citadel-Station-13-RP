@@ -38,6 +38,7 @@ export const AtmosPortableScrubber = (props, context) => {
   const { data, act } = useBackend<AtmosPortableScubberData>(context);
   return (
     <AtmosPortable
+      name="Portable Air Scrubber"
       additionalListItems={(
         <LabeledList.Item label="Current Flow">
           {data.moleRate} mol/s

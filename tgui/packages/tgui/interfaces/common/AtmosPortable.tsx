@@ -33,7 +33,9 @@ export const AtmosPortableControl = (props: AtmosPortableControlProps, context) 
         {props.data.controlFlags & AtmosPortableUIFlags.TogglePower && (
           <LabeledList.Item label="Power">
             <Button color="transparent" content={props.data.on? "On" : "Off"}
-              onClick={() => props.toggleAct?.()} />
+              onClick={() => props.toggleAct?.()}
+              selected={props.data.on}
+              icon={props.data.on? 'power-off' : 'times'} />
           </LabeledList.Item>
         )}
         {props.data.controlFlags & AtmosPortableUIFlags.SetFlow? (
@@ -84,6 +86,7 @@ export interface AtmosPortableData {
 
 interface AtmosPortableProps extends ComponentProps{
   extraHeight?: number;
+  name: string;
   additionalListItems?: InfernoNode;
 }
 
@@ -94,7 +97,7 @@ export const AtmosPortable = (props: AtmosPortableProps, context) => {
     extraHeight += 300;
   }
   return (
-    <Window width={500} height={300 + extraHeight + (props.extraHeight || 0)}>
+    <Window title={props.name} width={500} height={300 + extraHeight + (props.extraHeight || 0)}>
       <Window.Content>
         <Section fill>
           <Stack vertical fill>
@@ -108,8 +111,8 @@ export const AtmosPortable = (props: AtmosPortableProps, context) => {
             {data.useCell && (
               <Stack.Item>
                 <Section title="Cell">
-                  <ProgressBar value={data.charge / data.maxCharge}>
-                    {round(data.charge / data.maxCharge, 1) * 100}%
+                  <ProgressBar value={data.maxCharge? (data.charge / data.maxCharge) : 0}>
+                    {data.charge? (round(data.charge / data.maxCharge, 1) * 100) : 0}%
                   </ProgressBar>
                 </Section>
               </Stack.Item>
