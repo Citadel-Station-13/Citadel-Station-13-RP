@@ -1,3 +1,4 @@
+import { round } from "common/math";
 import { InfernoNode } from "inferno";
 import { BooleanLike } from "../../../common/react";
 import { useBackend } from "../../backend";
@@ -107,7 +108,9 @@ export const AtmosPortable = (props: AtmosPortableProps, context) => {
             {data.useCell && (
               <Stack.Item>
                 <Section title="Cell">
-                  <ProgressBar value={data.charge / data.maxCharge} />
+                  <ProgressBar value={data.charge / data.maxCharge}>
+                    {round(data.charge / data.maxCharge, 1) * 100}%
+                  </ProgressBar>
                 </Section>
               </Stack.Item>
             )}
