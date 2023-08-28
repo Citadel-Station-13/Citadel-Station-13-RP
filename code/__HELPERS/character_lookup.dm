@@ -88,39 +88,6 @@ The helper methods below will serve to make these changes to the rp_character_lo
 		)
 	)
 
-/proc/update_character_lookup(player_id, old_character_name, new_character_name, character_type)
-	var/formatted_player_id = ckey(player_id)
-	var/formatted_old_character_name = ckey(old_character_name)
-	var/formatted_new_character_name = ckey(new_character_name)
-
-	/// Only update the character lookup table entry if no other entry exists with that player id AND new character id
-	/// If such an entry exists, delete the current one instead, because the pairing of these values is the primary key, and should be unique
-
-	/// If the old entry does not exist, simply add the new one
-	var/lookup = get_character_lookup(player_id, old_character_name, character_type)
-	if(!lookup)
-		add_character_lookup(player_id, new_character_name, character_type)
-		return
-
-	/// If the new entry exists, delete the old one and stop there
-	var/lookup_new = get_character_lookup(player_id, new_character_name, character_type)
-	if(lookup_new)
-		remove_character_lookup(player_id, old_character_name, character_type)
-		return
-
-	/// This means the old entry exists, the new entry does not exist, so we can go ahead and update it
-	var/sql = "UPDATE [format_table_name(LOOKUP_TABLE)] WHERE player_id = :playerid AND character_name = :oldcharactername AND character_type = :charactertype SET character_name = :newcharactername"
-
-	SSdbcore.RunQuery(
-		sql,
-		list(
-			"playerid" = formatted_player_id,
-			"oldcharactername" = formatted_old_character_name,
-			"newcharactername" = formatted_new_character_name,
-			"charactertype" = character_type
-		)
-	)
-
 // Misc Methods
 /proc/generate_character_id(character_type, character_name)
 	return ckey(character_type) + "-" + ckey(character_name)
