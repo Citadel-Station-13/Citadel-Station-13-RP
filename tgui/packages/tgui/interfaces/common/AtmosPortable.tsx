@@ -1,7 +1,7 @@
 import { InfernoNode } from "inferno";
 import { BooleanLike } from "../../../common/react";
 import { useBackend } from "../../backend";
-import { Section, Stack } from "../../components";
+import { Button, LabeledList, NumberInput, ProgressBar, Section, Stack } from "../../components";
 import { ComponentProps } from "../../components/Component";
 import { SectionProps } from "../../components/Section";
 import { Window } from "../../layouts";
@@ -28,7 +28,24 @@ interface AtmosPortableControlProps extends SectionProps {
 export const AtmosPortableControl = (props: AtmosPortableControlProps, context) => {
   return (
     <Section title="Flow" {...props}>
-      test
+      <LabeledList>
+        {props.data.controlFlags & AtmosPortableUIFlags.TogglePower && (
+          <LabeledList.Item label="Power">
+            <Button color="transparent" content={props.data.on? "On" : "Off"}
+              onClick={() => props.toggleAct?.()} />
+          </LabeledList.Item>
+        )}
+        {props.data.controlFlags & AtmosPortableUIFlags.SetFlow? (
+          <LabeledList.Item label="Flow Limit">
+            <NumberInput value={props.data.flowSetting}
+              maxValue={props.data.flowMax} onChange={(e, val) => props.setFlowAct?.(val)} />
+          </LabeledList.Item>
+        ) : (!!(props.data.controlFlags & AtmosPortableUIFlags.ViewFlow) && (
+          <LabeledList.Item label="Flow Status">
+            {props.data.flow} L/s
+          </LabeledList.Item>
+        ))}
+      </LabeledList>
     </Section>
   );
 };
@@ -54,6 +71,8 @@ export interface AtmosPortableData {
   flow: number;
   // flow max
   flowMax: number;
+  // flow setting
+  flowSetting: number;
   // power max
   powerRating: number;
   // power setting
@@ -88,7 +107,7 @@ export const AtmosPortable = (props: AtmosPortableProps, context) => {
             {data.useCell && (
               <Stack.Item>
                 <Section title="Cell">
-                  Test
+                  <ProgressBar value={data.charge / data.maxCharge} />
                 </Section>
               </Stack.Item>
             )}

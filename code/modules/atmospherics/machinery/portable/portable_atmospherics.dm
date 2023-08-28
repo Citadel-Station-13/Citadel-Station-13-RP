@@ -95,6 +95,7 @@
 /obj/machinery/portable_atmospherics/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["flow"] = flow_current
+	.["flowSetting"] = flow_setting
 	.["on"] = on
 	.["tank"] = holding?.tgui_tank_data()
 
