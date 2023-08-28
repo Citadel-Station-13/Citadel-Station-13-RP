@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(pathfinder)
 	/// pathfinding cycle - this is usable because of the mutex
 	/// this is used in place of a closed list in algorithms like JPS
 	/// to maximize performance.
-	var/pathfinding_cycle = 0
+	var/tmp/pathfinding_cycle = 0
 
 /**
  * be aware that this emits a set of disjunct nodes
