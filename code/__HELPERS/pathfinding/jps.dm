@@ -53,9 +53,6 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 
 #endif
 
-/// this is almost a megabyte
-#define JPS_SANE_NODE_LIMIT 15000
-
 /datum/jps_node
 	/// our turf
 	var/turf/pos
@@ -595,8 +592,6 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 		++index
 
 	. += nodes[index]
-
-#undef JPS_SANE_NODE_LIMIT
 
 #ifdef JPS_DEBUGGING
 	#undef JPS_DEBUGGING
