@@ -9521,6 +9521,18 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/wall,
 /area/main_map/hallway/deck1/fore)
+"lMx" = (
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/machinery/disposal/deliveryChute{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/port)
 "lMH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -13963,7 +13975,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/port)
 "rHa" = (
 /obj/effect/floor_decal/corner/green/full{
@@ -13985,7 +13997,7 @@
 /area/crew_quarters/kitchen)
 "rIz" = (
 /obj/effect/floor_decal/industrial/danger,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/port)
 "rJq" = (
 /obj/structure/bed/chair/comfy/orange{
@@ -18613,6 +18625,12 @@
 /obj/structure/railing,
 /turf/simulated/floor/reinforced,
 /area/space)
+"xur" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_one/port)
 "xvf" = (
 /obj/structure/table/reinforced,
 /obj/item/forensics/sample_kit/powder,
@@ -35618,14 +35636,14 @@ oJX
 oJX
 oJX
 oJX
-lFl
-lFl
-lFl
+oJX
+oJX
+oJX
 lFl
 aKS
 lFl
-lFl
-lFl
+oJX
+oJX
 oJX
 oSK
 viM
@@ -36006,8 +36024,8 @@ dHn
 dHn
 dHn
 leG
-xpK
-xpK
+oJX
+oJX
 rIz
 ucz
 gSx
@@ -36200,14 +36218,14 @@ wPB
 wPB
 wPB
 dHn
-xpK
-xpK
+oJX
+oJX
 rIz
 ucz
 gSx
 ucz
 rGc
-lFl
+kvj
 oJX
 jvs
 eXA
@@ -36394,14 +36412,14 @@ wPB
 wPB
 wPB
 xpK
-xpK
-xpK
+oJX
+oJX
 rIz
 ucz
 gSx
 ucz
 rGc
-lFl
+kvj
 oJX
 jvs
 aGN
@@ -36588,14 +36606,14 @@ wPB
 wPB
 wPB
 xpK
-xpK
-xpK
+oJX
+oJX
 rIz
 ucz
 gSx
 ucz
 rGc
-lFl
+kvj
 oJX
 jvs
 bKp
@@ -36782,14 +36800,14 @@ wPB
 wPB
 wPB
 dHn
-xpK
-xpK
+oJX
+oJX
 rIz
 ieA
 gSx
 ucz
 rGc
-lFl
+kvj
 oJX
 jvs
 jvs
@@ -36976,14 +36994,14 @@ dHn
 dHn
 dHn
 leG
-xpK
-xpK
+oJX
+oJX
 rIz
 ucz
 gSx
 ucz
 rGc
-lFl
+kvj
 oJX
 hKl
 mTA
@@ -37169,15 +37187,15 @@ oJX
 oJX
 oJX
 oJX
+lFl
 oJX
 oJX
-oJX
-oJX
-oJX
-oJX
-oJX
-xpK
-xpK
+rIz
+ucz
+lMx
+ucz
+rGc
+lFl
 oJX
 hKl
 vzP
@@ -37363,15 +37381,15 @@ oJX
 oJX
 oJX
 oJX
-oJX
-oJX
-oJX
-oJX
-oJX
-oJX
-oJX
-oJX
-oJX
+lFl
+lFl
+lFl
+lFl
+lFl
+aKS
+lFl
+lFl
+lFl
 oJX
 hKl
 iIt
@@ -37562,7 +37580,7 @@ oJX
 oJX
 oJX
 oJX
-oJX
+xur
 oJX
 oJX
 oJX

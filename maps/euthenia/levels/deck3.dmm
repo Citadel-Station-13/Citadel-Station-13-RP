@@ -18107,13 +18107,6 @@
 "vei" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/direction_bump/east,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/air_alarm{
-	dir = 8;
-	pixel_x = 24
-	},
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck3)
 "vfI" = (
