@@ -16,7 +16,7 @@
 	var/active = 0
 	var/list/resource_field = list()
 	var/obj/item/radio/intercom/faultreporter = new /obj/item/radio/intercom{channels=list("Supply")}(null)
-
+	var/gps_tag = "DRILL0"
 	var/list/ore_types = list(
 		MAT_HEMATITE = /obj/item/ore/iron,
 		MAT_URANIUM = /obj/item/ore/uranium,
@@ -44,6 +44,7 @@
 	var/need_player_check = 0
 
 /obj/machinery/mining/drill/Initialize(mapload)
+	AddComponent(/datum/component/gps_signal, gps_tag)
 	. = ..()
 	component_parts = list(
 		new /obj/item/stock_parts/matter_bin(src),

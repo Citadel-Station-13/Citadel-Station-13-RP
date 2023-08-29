@@ -643,9 +643,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
 "awp" = (
-/obj/machinery/door/window{
-	dir = 2
-	},
+/obj/machinery/door/window,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -21490,7 +21488,6 @@
 /area/rnd/hallway)
 "nrZ" = (
 /obj/machinery/door/morgue{
-	dir = 2;
 	name = "Private Study";
 	req_access = list(37)
 	},
@@ -26412,9 +26409,9 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	on = 1
+	pump_direction = 0
 	},
 /obj/machinery/door/window/southleft{
 	dir = 1;
@@ -31440,7 +31437,7 @@
 "tna" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/table/woodentable,
-/obj/item/material/knife/tacknife/dataknife,
+/obj/item/gps/dataknife,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "tnt" = (
