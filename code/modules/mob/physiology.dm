@@ -12,6 +12,7 @@
 	/// carry weight penalty divisor
 	var/carry_factor = CARRY_FACTOR_BASELINE
 	/// carry weight exponent
+	//  todo: a modifier var for this
 	var/carry_exponent = CARRY_EXPONENT_BASELINE
 
 /datum/global_physiology/proc/reset()
@@ -24,8 +25,6 @@
 		carry_strength += modifier.carry_strength_add
 	if(!isnull(modifier.carry_factor_mult))
 		carry_factor *= modifier.carry_factor_mult
-	if(!isnull(modifier.carry_exponent_mult))
-		carry_exponent = carry_exponent ** modifier.carry_exponent_pow
 
 /**
  * return FALSE if we need to reset due to non-canonical operations
@@ -36,8 +35,6 @@
 		carry_strength -= modifier.carry_strength_add
 	if(!isnull(modifier.carry_factor_mult))
 		carry_factor /= modifier.carry_factor_mult
-	if(!isnull(modifier.carry_exponent_mult))
-		carry_exponent = carry_exponent ** (1 / modifier.carry_exponent_pow)
 
 /**
  * physiology modifier
@@ -45,6 +42,8 @@
 /datum/physiology_modifier
 	abstract_type = /datum/physiology_modifier
 
+	/// our name
+	var/name
 	/// is this a globally cached modifier?
 	var/is_globally_cached = FALSE
 
@@ -121,4 +120,16 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 			continue
 		physiology.apply(modifier)
 
-// todo: admin vv verb via tgui to input new modifier
+/mob/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(null, "-----")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_PHYSIOLOGY_MODIFIER, "Add PHysiology Modifier")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_PHYSIOLOGY_MODIFIER, "Remove PHysiology Modifier")
+
+/mob/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_HK_ADD_PHYSIOLOGY_MODIFIER])
+		#warn impl
+	if(href_list[VV_HK_REMOVE_PHYSIOLOGY_MODIFIER])
+		#warn impl
+
