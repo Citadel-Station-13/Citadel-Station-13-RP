@@ -88,7 +88,7 @@
 	return FALSE
 
 /mob/living/bot/cleanbot/handleAdjacentTarget()
-	if(get_turf(target) == src.loc)
+	if(Reachability(target))
 		UnarmedAttack(target)
 
 /mob/living/bot/cleanbot/UnarmedAttack(var/obj/effect/debris/cleanable/D, var/proximity)
