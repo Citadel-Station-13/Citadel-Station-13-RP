@@ -113,6 +113,9 @@ GLOBAL_LIST_EMPTY(mannequins)
 	//* Recipes
 	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
 
+	//* Drink Reactions
+	init_subtypes(/datum/chemical_reaction/drinks, GLOB.drink_recipes)
+
 	var/list/paths
 
 	//Posters

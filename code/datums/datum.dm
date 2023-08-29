@@ -24,8 +24,7 @@
 
 	/**
 	 * Components attached to this datum
-	 *
-	 * Lazy associated list in the structure of `type:component/list of components`
+	 * Lazy assoclist of type -> component reference or list of component references
 	 */
 	var/list/datum_components
 	/**
@@ -111,17 +110,16 @@
 	#endif
 
 	//BEGIN: ECS SHIT
-	var/list/dc = datum_components
-	if(dc)
-		var/all_components = dc[/datum/component]
-		if(length(all_components))
-			for(var/datum/component/component as anything in all_components)
-				qdel(component, FALSE, TRUE)
-		else
-			var/datum/component/C = all_components
-			qdel(C, FALSE, TRUE)
-		dc.Cut()
-
+	if(!isnull(datum_components))
+		var/list/dc = datum_components
+		for(var/path in dc)
+			var/list/what = dc[path]
+			if(length(what))
+				for(var/thing in what)
+					qdel(thing, FALSE, TRUE)
+			else
+				qdel(what)
+		datum_components = null
 	clear_signal_refs()
 	//END: ECS SHIT
 	return QDEL_HINT_QUEUE

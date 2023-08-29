@@ -74,6 +74,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	var/danger_level = 0
 	var/pressure_dangerlevel = 0
 
+	var/last_sound_played = 0
 	var/report_danger_level = 1
 	///If the alarms from this machine are visible on consoles
 	var/alarms_hidden = FALSE
@@ -147,6 +148,8 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	var/old_level = danger_level
 	var/old_pressurelevel = pressure_dangerlevel
 	danger_level = overall_danger_level(environment)
+	if (danger_level)
+		handle_sounds()
 
 	if(old_level != danger_level)
 		apply_danger_level(danger_level)
@@ -173,6 +176,15 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			remote_control = 1
 
 	return
+
+/obj/machinery/air_alarm/proc/handle_sounds()
+	if(world.time > last_sound_played + (60 SECONDS / (danger_level ? danger_level : 1)))
+		if (danger_level == AIR_ALARM_RAISE_WARNING)
+			playsound(src,'sound/machines/air_alarm/warning.ogg', 100, pressure_affected = TRUE)
+			last_sound_played = world.time
+		if (danger_level == AIR_ALARM_RAISE_DANGER)
+			playsound(src, 'sound/machines/air_alarm/danger.ogg', 100, pressure_affected = FALSE)
+			last_sound_played = world.time
 
 /obj/machinery/air_alarm/proc/handle_heating_cooling(var/datum/gas_mixture/environment)
 	var/list/tlv = tlv_temperature

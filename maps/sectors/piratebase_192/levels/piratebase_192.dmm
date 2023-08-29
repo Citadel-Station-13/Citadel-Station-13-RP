@@ -4465,7 +4465,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	name = "Atmospherics"
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,

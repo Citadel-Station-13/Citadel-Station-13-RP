@@ -230,6 +230,9 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 /obj/item/seeds/ambrosiadeusseed
 	seed_type = "ambrosiadeus"
 
+/obj/item/seeds/ambrosiagaiaseed
+	seed_type = "ambrosiagaia"
+
 /obj/item/seeds/whitebeetseed
 	seed_type = "whitebeet"
 

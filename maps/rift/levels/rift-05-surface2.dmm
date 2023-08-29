@@ -21930,10 +21930,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "nCa" = (
-/obj/machinery/suit_storage_unit/cryosuit/security,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/machinery/suit_storage_unit/security,
 /turf/simulated/floor/tiled/red,
 /area/security/evastorage)
 "nCi" = (
@@ -22031,11 +22031,11 @@
 /turf/simulated/floor/carpet,
 /area/security/warden)
 "nEx" = (
-/obj/machinery/suit_storage_unit/cryosuit/security,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/machinery/camera/network/security,
+/obj/machinery/suit_storage_unit/security,
 /turf/simulated/floor/tiled/red,
 /area/security/evastorage)
 "nEB" = (
@@ -29294,10 +29294,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "ske" = (
-/obj/machinery/suit_storage_unit/cryosuit/security,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/machinery/suit_storage_unit/security,
 /turf/simulated/floor/tiled/red,
 /area/security/evastorage)
 "skv" = (
@@ -31957,7 +31957,6 @@
 /turf/simulated/floor/water/pool,
 /area/crew_quarters/pool)
 "uaM" = (
-/obj/structure/table/woodentable,
 /obj/item/material/ashtray/glass,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -34793,7 +34792,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -30
 	},
-/obj/machinery/vending/fitness,
+/obj/machinery/vending/weeb,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "vTi" = (
@@ -35433,15 +35432,13 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/research/researchdivision)
 "wpX" = (
-/obj/structure/bed/chair/wood{
-	dir = 1
-	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "wpY" = (

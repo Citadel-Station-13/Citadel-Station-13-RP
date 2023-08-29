@@ -23345,7 +23345,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
@@ -25541,7 +25541,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -31142,10 +31142,10 @@
 /obj/effect/floor_decal/corner/grey/border{
 	dir = 9
 	},
-/obj/structure/closet/emcloset,
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/vending/weeb,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
 "qBp" = (
@@ -36533,7 +36533,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -41165,6 +41165,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
+/obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
 "vSd" = (
