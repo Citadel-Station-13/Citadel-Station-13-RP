@@ -1,6 +1,6 @@
 // Contains settings to make it easier to debug things.
 
-/datum/ai_holder
+/datum/ai_holder/polaris
 	var/path_display = FALSE						// Displays a visual path when A* is being used.
 	var/path_icon = 'icons/misc/debug_group.dmi'	// What icon to use for the overlay
 	var/path_icon_state = "red"						// What state to use for the overlay
@@ -14,18 +14,18 @@
 
 	var/debug_ai = AI_LOG_OFF						// The level of debugging information to display to people who can see log_debug().
 
-/datum/ai_holder/New()
+/datum/ai_holder/polaris/New()
 	..()
 	path_overlay = new(path_icon,path_icon_state)
 	last_turf_overlay = new(path_icon, last_turf_icon_state)
 
-/datum/ai_holder/Destroy()
+/datum/ai_holder/polaris/Destroy()
 	path_overlay = null
 	last_turf_overlay = null
 	return ..()
 
 //For debug purposes!
-/datum/ai_holder/proc/ai_log_output(var/msg = "missing message", var/ver = AI_LOG_INFO)
+/datum/ai_holder/polaris/proc/ai_log_output(var/msg = "missing message", var/ver = AI_LOG_INFO)
 	var/span_type
 	switch(ver)
 		if(AI_LOG_OFF)
@@ -45,7 +45,7 @@
 
 // Colors the mob based on stance, to visually tell what stance it is for debugging.
 // Probably not something you want for regular use.
-/datum/ai_holder/proc/stance_color()
+/datum/ai_holder/polaris/proc/stance_color()
 	var/new_color = null
 	switch(stance)
 		if(STANCE_SLEEP)
@@ -71,13 +71,13 @@
 	holder.color = new_color
 
 // Turns on all the debugging stuff.
-/datum/ai_holder/proc/debug()
+/datum/ai_holder/polaris/proc/debug()
 	stance_coloring = TRUE
 	path_display = TRUE
 	last_turf_display = TRUE
 	debug_ai = AI_LOG_INFO
 
-/datum/ai_holder/hostile/debug
+/datum/ai_holder/polaris/hostile/debug
 	wander = FALSE
 	conserve_ammo = FALSE
 	intelligence_level = AI_SMART

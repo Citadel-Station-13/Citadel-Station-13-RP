@@ -40,7 +40,7 @@
 
 	movement_cooldown = -100
 
-	ai_holder_type = /datum/ai_holder/simple_mob/statue
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/statue
 
 
 
@@ -57,7 +57,7 @@
 
 //# Mob AI Code.
 
-/datum/ai_holder/simple_mob/statue
+/datum/ai_holder/polaris/simple_mob/statue
 	hostile = TRUE
 	retaliate = FALSE
 	cooperative = FALSE

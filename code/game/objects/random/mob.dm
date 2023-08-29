@@ -44,7 +44,7 @@
 	if(!istype(M))
 		return
 	if(M.has_AI())
-		var/datum/ai_holder/AI = M.ai_holder
+		var/datum/ai_holder/polaris/AI = M.ai_holder
 		AI.go_sleep() //Don't fight eachother while we're still setting up!
 		AI.returns_home = mob_returns_home
 		AI.wander = mob_wander

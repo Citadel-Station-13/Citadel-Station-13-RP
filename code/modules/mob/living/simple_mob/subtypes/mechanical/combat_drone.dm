@@ -54,7 +54,7 @@
 	response_disarm = "gently pushes aside"
 	response_harm = "hits"
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening
 	say_list_type = /datum/say_list/malf_drone
 
 	var/datum/effect_system/ion_trail_follow/ion_trail = null
@@ -101,4 +101,4 @@
 // This one is the type spawned by the random event.
 // It won't wander away from its spawn point
 /mob/living/simple_mob/mechanical/combat_drone/event
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/event
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening/event

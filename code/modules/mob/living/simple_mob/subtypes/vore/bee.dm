@@ -31,7 +31,7 @@
 	attacktext = list("stung")
 
 	say_list_type = /datum/say_list/bee
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate
 
 	//Space bees aren't affected by atmos.
 	min_oxy = 0

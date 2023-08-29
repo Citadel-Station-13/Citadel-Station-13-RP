@@ -73,7 +73,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 3
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/humanoid/cultist/human/death()
 	new /obj/effect/decal/remains/human (src.loc)
@@ -83,7 +83,7 @@
 
 /mob/living/simple_mob/humanoid/cultist/human/bloodjaunt //Teleporting Cultists
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 	var/jaunt_warning = 0.5 SECONDS	// How long the jaunt telegraphing is.
 	var/jaunt_tile_speed = 20		// How long to wait between each tile. Higher numbers result in an easier to dodge tunnel attack.
@@ -241,7 +241,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 2
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/humanoid/cultist/tesh/death()
 	new /obj/effect/debris/cleanable/ash (src.loc)
@@ -292,7 +292,7 @@
 	movement_cooldown = 4
 	base_attack_cooldown = 7.5 //Two knives mean double stab.
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/humanoid/cultist/lizard/death()
 	new /obj/effect/decal/remains/unathi (src.loc)
@@ -344,7 +344,7 @@
 	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged
 
 /mob/living/simple_mob/humanoid/cultist/caster/death()
 	new /obj/effect/decal/remains/human (src.loc)
@@ -393,7 +393,7 @@
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	movement_cooldown = 4
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/humanoid/cultist/initiate/death()
 	new /obj/effect/decal/remains/human (src.loc)
@@ -444,7 +444,7 @@
 	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 /mob/living/simple_mob/humanoid/cultist/castertesh/death()
 	new /obj/effect/debris/cleanable/ash (src.loc)
@@ -491,7 +491,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 3
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/humanoid/cultist/elite/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(O.damage_force)
@@ -571,7 +571,7 @@
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 	var/obj/item/shield_projector/shields = null
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 /mob/living/simple_mob/humanoid/cultist/magus/death()
 	new /obj/effect/debris/cleanable/blood/gibs (src.loc)
@@ -649,7 +649,7 @@
 	reload_max = 2
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/blood_hunter
 
 /mob/living/simple_mob/humanoid/cultist/hunter/death()
 	new /obj/effect/debris/cleanable/blood/gibs (src.loc)
@@ -662,7 +662,7 @@
 //		Hunter AI
 ////////////////////////////
 
-/datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter //This directs the AI to charge while shooting at its victim then entering Glorious melee combat.
+/datum/ai_holder/polaris/simple_mob/ranged/aggressive/blood_hunter //This directs the AI to charge while shooting at its victim then entering Glorious melee combat.
 	pointblank = FALSE
 	closest_distance = 0
 

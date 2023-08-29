@@ -1,6 +1,6 @@
 // This file is for actual fighting. Targeting is in a seperate file.
 
-/datum/ai_holder
+/datum/ai_holder/polaris
 	var/firing_lanes = TRUE					// If ture, tries to refrain from shooting allies or the wall.
 	var/conserve_ammo = FALSE				// If true, the mob will avoid shooting anything that does not have a chance to hit a mob. Requires firing_lanes to be true.
 	var/pointblank = FALSE					// If ranged is true, and this is true, people adjacent to the mob will suffer the ranged instead of using a melee attack.
@@ -12,7 +12,7 @@
 
 
 // This does the actual attacking.
-/datum/ai_holder/proc/engage_target()
+/datum/ai_holder/polaris/proc/engage_target()
 	ai_log("engage_target() : Entering.", AI_LOG_DEBUG)
 
 	// Can we still see them?
@@ -91,21 +91,21 @@
 		set_stance(STANCE_APPROACH)
 
 // We're not entirely sure how holder will do melee attacks since any /mob/living could be holder, but we don't have to care because Interfaces.
-/datum/ai_holder/proc/melee_attack(atom/A)
+/datum/ai_holder/polaris/proc/melee_attack(atom/A)
 	pre_melee_attack(A)
 	. = holder.IAttack(A)
 	if(.)
 		post_melee_attack(A)
 
 // Ditto.
-/datum/ai_holder/proc/ranged_attack(atom/A)
+/datum/ai_holder/polaris/proc/ranged_attack(atom/A)
 	pre_ranged_attack(A)
 	. = holder.IRangedAttack(A)
 	if(.)
 		post_ranged_attack(A)
 
 // Most mobs probably won't have this defined but we don't care.
-/datum/ai_holder/proc/special_attack(atom/movable/AM)
+/datum/ai_holder/polaris/proc/special_attack(atom/movable/AM)
 	pre_special_attack(AM)
 	. = holder.ISpecialAttack(AM)
 	if(.)
@@ -114,29 +114,29 @@
 // Called when within striking/shooting distance, however cooldown is not considered.
 // Override to do things like move in a random step for evasiveness.
 // Note that this is called BEFORE the attack.
-/datum/ai_holder/proc/on_engagement(atom/A)
+/datum/ai_holder/polaris/proc/on_engagement(atom/A)
 
 // Called before a ranged attack is attempted.
-/datum/ai_holder/proc/pre_ranged_attack(atom/A)
+/datum/ai_holder/polaris/proc/pre_ranged_attack(atom/A)
 
 // Called before a melee attack is attempted.
-/datum/ai_holder/proc/pre_melee_attack(atom/A)
+/datum/ai_holder/polaris/proc/pre_melee_attack(atom/A)
 
 // Called before a 'special' attack is attempted.
-/datum/ai_holder/proc/pre_special_attack(atom/A)
+/datum/ai_holder/polaris/proc/pre_special_attack(atom/A)
 
 // Called after a successful (IE not on cooldown) ranged attack.
 // Note that this is not whether the projectile actually hit, just that one was launched.
-/datum/ai_holder/proc/post_ranged_attack(atom/A)
+/datum/ai_holder/polaris/proc/post_ranged_attack(atom/A)
 
 // Ditto but for melee.
-/datum/ai_holder/proc/post_melee_attack(atom/A)
+/datum/ai_holder/polaris/proc/post_melee_attack(atom/A)
 
 // And one more for special snowflake attacks.
-/datum/ai_holder/proc/post_special_attack(atom/A)
+/datum/ai_holder/polaris/proc/post_special_attack(atom/A)
 
 // Used to make sure projectiles will probably hit the target and not the wall or a friend.
-/datum/ai_holder/proc/test_projectile_safety(atom/movable/AM)
+/datum/ai_holder/polaris/proc/test_projectile_safety(atom/movable/AM)
 	ai_log("test_projectile_safety([AM]) : Entering.", AI_LOG_TRACE)
 
 	// If they're right next to us then lets just say yes. check_trajectory() tends to spaz out otherwise.
@@ -175,7 +175,7 @@
 	return TRUE
 
 // Test if we are within range to attempt an attack, melee or ranged.
-/datum/ai_holder/proc/within_range(atom/movable/AM)
+/datum/ai_holder/polaris/proc/within_range(atom/movable/AM)
 	var/distance = get_dist(holder, AM)
 	if(distance <= 1)
 		return TRUE // Can melee.
@@ -184,16 +184,16 @@
 	return FALSE
 
 // Determines how close the AI will move to its target.
-/datum/ai_holder/proc/closest_distance(atom/movable/AM)
+/datum/ai_holder/polaris/proc/closest_distance(atom/movable/AM)
 	return max(max_range(AM) - 1, 1) // Max range -1 just because we don't want to constantly get kited
 
 // Can be used to conditionally do a ranged or melee attack.
-/datum/ai_holder/proc/max_range(atom/movable/AM)
+/datum/ai_holder/polaris/proc/max_range(atom/movable/AM)
 	return holder.ICheckRangedAttack(AM) ? max_range : 1
 
 // Goes to the target, to attack them.
 // Called when in STANCE_APPROACH.
-/datum/ai_holder/proc/walk_to_target()
+/datum/ai_holder/polaris/proc/walk_to_target()
 	ai_log("walk_to_target() : Entering.", AI_LOG_DEBUG)
 	// Make sure we can still chase/attack them.
 	if(!target || !can_attack(target))
@@ -229,12 +229,12 @@
 
 // Resists out of things.
 // Sometimes there are times you want your mob to be buckled to something, so override this for when that is needed.
-/datum/ai_holder/proc/handle_resist()
+/datum/ai_holder/polaris/proc/handle_resist()
 	holder.resist()
 
 // Used to break through windows and barriers to a target on the other side.
 // This does two passes, so that if its just a public access door, the windows nearby don't need to be smashed.
-/datum/ai_holder/proc/breakthrough(atom/target_atom)
+/datum/ai_holder/polaris/proc/breakthrough(atom/target_atom)
 	ai_log("breakthrough() : Entering", AI_LOG_TRACE)
 
 	if(!can_breakthrough)
@@ -279,7 +279,7 @@
 	return result
 
 // Despite the name, this can also be used to help clear a path without any destruction.
-/datum/ai_holder/proc/destroy_surroundings(direction, violent = TRUE)
+/datum/ai_holder/polaris/proc/destroy_surroundings(direction, violent = TRUE)
 	ai_log("destroy_surroundings() : Entering.", AI_LOG_TRACE)
 	if(!direction)
 		direction = pick(GLOB.cardinal) // FLAIL WILDLY
@@ -336,5 +336,5 @@
 	return FALSE // Nothing to attack.
 
 // Override for special behaviour.
-/datum/ai_holder/proc/can_violently_breakthrough()
+/datum/ai_holder/polaris/proc/can_violently_breakthrough()
 	return violent_breakthrough

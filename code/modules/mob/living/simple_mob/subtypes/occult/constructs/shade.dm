@@ -36,7 +36,7 @@
 
 	loot_list = list(/obj/item/ectoplasm = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/construct/shade/Initialize(mapload)
 	. = ..()

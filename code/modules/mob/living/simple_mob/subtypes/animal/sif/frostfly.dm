@@ -66,7 +66,7 @@
 	var/datum/effect_system/smoke_spread/frost/smoke_special
 
 	say_list_type = /datum/say_list/frostfly
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/frostfly
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening/frostfly
 
 /mob/living/simple_mob/animal/sif/frostfly/get_cold_protection()
 	return 1	// It literally produces a cryogenic mist inside itself. Cold doesn't bother it.
@@ -126,25 +126,25 @@
 
 			return FALSE
 
-/datum/ai_holder/simple_mob/ranged/kiting/threatening/frostfly
+/datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening/frostfly
 	can_flee = TRUE
 	dying_threshold = 0.5
 	flee_when_outmatched = TRUE
 	run_if_this_close = 3
 
-/datum/ai_holder/simple_mob/ranged/kiting/threatening/frostfly/special_flee_check()
+/datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening/frostfly/special_flee_check()
 	var/mob/living/simple_mob/animal/sif/frostfly/F = holder
 	if(F.energy < F.max_energy * 0.2)
 		return TRUE
 	return FALSE
 
-/datum/ai_holder/simple_mob/ranged/kiting/threatening/frostfly/pre_special_attack(atom/A)
+/datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening/frostfly/pre_special_attack(atom/A)
 	if(isliving(A))
 		holder.a_intent = INTENT_DISARM
 	else
 		holder.a_intent = INTENT_HARM
 
-/datum/ai_holder/simple_mob/ranged/kiting/threatening/frostfly/post_ranged_attack(atom/A)
+/datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening/frostfly/post_ranged_attack(atom/A)
 	var/mob/living/simple_mob/animal/sif/frostfly/F = holder
 	if(istype(A,/mob/living))
 		var/new_dir = turn(F.dir, -90)

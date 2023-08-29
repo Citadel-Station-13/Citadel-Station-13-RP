@@ -10,6 +10,12 @@
 	movable_flags = MOVABLE_NO_THROW_SPIN | MOVABLE_NO_THROW_DAMAGE_SCALING | MOVABLE_NO_THROW_SPEED_SCALING
 	buckle_flags = BUCKLING_PROJECTS_DEPTH
 
+	//* AI handling
+	/// AI agent type
+	var/ai_holder_type
+	/// AI movement type
+	var/ai_movement_type = /datum/ai_movement/basic
+
 	//* Health and life related vars *//
 	/// Maximum health that should be possible.  Avoid adjusting this if you can, and instead use modifiers datums.
 	var/maxHealth = 100

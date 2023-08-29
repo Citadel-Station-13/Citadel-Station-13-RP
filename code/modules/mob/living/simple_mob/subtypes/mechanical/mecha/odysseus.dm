@@ -32,7 +32,7 @@
 	projectiletype = /obj/projectile/fake_syringe/poison
 	projectilesound = 'sound/weapons/empty.ogg' // Just like the syringe gun.
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/no_moonwalk
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/no_moonwalk
 
 /mob/living/simple_mob/mechanical/mecha/odysseus/manned
 	pilot_type = /mob/living/simple_mob/humanoid/merc/ranged // Carries a pistol.

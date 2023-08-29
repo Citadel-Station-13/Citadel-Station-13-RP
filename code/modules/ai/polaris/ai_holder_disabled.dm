@@ -1,10 +1,10 @@
 // Handles AI while stunned or otherwise disabled.
 
-/datum/ai_holder
+/datum/ai_holder/polaris
 	var/respect_confusion = TRUE // If false, the mob won't wander around recklessly.
 
 // If our holder is able to do anything.
-/datum/ai_holder/proc/can_act()
+/datum/ai_holder/polaris/proc/can_act()
 	if(holder.key)
 		return FALSE
 
@@ -28,18 +28,18 @@
 
 // Test if we should switch to STANCE_DISABLE.
 // Currently tests for death, stuns, and confusion.
-/datum/ai_holder/proc/is_disabled()
+/datum/ai_holder/polaris/proc/is_disabled()
 	if(!can_act())
 		return TRUE
 	if(is_confused())
 		return TRUE
 	return FALSE
 
-/datum/ai_holder/proc/is_confused()
+/datum/ai_holder/polaris/proc/is_confused()
 	return holder.confused > 0 && respect_confusion
 
 // Called by the main loop.
-/datum/ai_holder/proc/handle_disabled()
+/datum/ai_holder/polaris/proc/handle_disabled()
 	if(!can_act())
 		return // Just sit there and take it.
 	else if(is_confused())
@@ -47,7 +47,7 @@
 
 // Similar to normal wander, but will walk into tiles that are harmful, and attack anything they bump into, including allies.
 // Occurs when confused.
-/datum/ai_holder/proc/dangerous_wander()
+/datum/ai_holder/polaris/proc/dangerous_wander()
 	ai_log("dangerous_wander() : Entered.", AI_LOG_DEBUG)
 	if(isturf(holder.loc) && can_act())
 		// Test if we should refrain from falling/attacking allies, if we're smart enough to realize that.
@@ -90,7 +90,7 @@
 
 /*
 // Wanders randomly in cardinal directions.
-/datum/ai_holder/proc/handle_wander_movement()
+/datum/ai_holder/polaris/proc/handle_wander_movement()
 	ai_log("handle_wander_movement() : Entered.", AI_LOG_DEBUG)
 	if(isturf(holder.loc) && can_act())
 		wander_delay--

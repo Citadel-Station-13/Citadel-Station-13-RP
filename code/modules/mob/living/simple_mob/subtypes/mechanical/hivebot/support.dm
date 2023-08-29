@@ -52,7 +52,7 @@
 			continue
 		if(L.faction != src.faction)
 			continue
-		var/datum/ai_holder/AI = L.ai_holder
+		var/datum/ai_holder/polaris/AI = L.ai_holder
 		AI.set_follow(src)
 	return ..()
 

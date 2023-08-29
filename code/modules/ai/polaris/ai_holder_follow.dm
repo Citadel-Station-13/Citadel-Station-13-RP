@@ -1,12 +1,12 @@
 // This handles following a specific atom/movable, without violently murdering it.
 
-/datum/ai_holder
+/datum/ai_holder/polaris
 	// Following.
 	var/atom/movable/leader = null		// The movable atom that the mob wants to follow.
 	var/follow_distance = 2				// How far leader must be to start moving towards them.
 	var/follow_until_time = 0			// world.time when the mob will stop following leader. 0 means it won't time out.
 
-/datum/ai_holder/proc/walk_to_leader()
+/datum/ai_holder/polaris/proc/walk_to_leader()
 	ai_log("walk_to_leader() : Entering.",AI_LOG_TRACE)
 	if(!leader)
 		ai_log("walk_to_leader() : No leader.", AI_LOG_WARNING)
@@ -38,7 +38,7 @@
 	walk_path(leader, get_to)
 	ai_log("walk_to_leader() : Exiting.",AI_LOG_DEBUG)
 
-/datum/ai_holder/proc/set_follow(mob/living/L, follow_for = 0)
+/datum/ai_holder/polaris/proc/set_follow(mob/living/L, follow_for = 0)
 	ai_log("set_follow() : Entered.", AI_LOG_DEBUG)
 	if(!L)
 		ai_log("set_follow() : Was told to follow a nonexistant mob.", AI_LOG_ERROR)
@@ -49,14 +49,14 @@
 	ai_log("set_follow() : Exited.", AI_LOG_DEBUG)
 	return TRUE
 
-/datum/ai_holder/proc/lose_follow()
+/datum/ai_holder/polaris/proc/lose_follow()
 	ai_log("lose_follow() : Entered.", AI_LOG_DEBUG)
 	ai_log("lose_follow() : Going to lose leader [leader].", AI_LOG_INFO)
 	leader = null
 	give_up_movement()
 	ai_log("lose_follow() : Exited.", AI_LOG_DEBUG)
 
-/datum/ai_holder/proc/should_follow_leader()
+/datum/ai_holder/polaris/proc/should_follow_leader()
 	if(!leader)
 		return FALSE
 	if(follow_until_time && world.time > follow_until_time)

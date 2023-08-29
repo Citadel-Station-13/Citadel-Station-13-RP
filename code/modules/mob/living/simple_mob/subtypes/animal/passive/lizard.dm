@@ -54,4 +54,4 @@
 	maxHealth = 30
 	health = 30
 
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative

@@ -26,7 +26,7 @@
 
 	minbodytemp = 200
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 // Activate Noms!
 /mob/living/simple_mob/animal/wolf

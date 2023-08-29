@@ -91,7 +91,7 @@
 		to_chat(user, SPAN_WARNING( "\The [S] is too strongly willed for this to affect them.")) // Most likely player controlled.
 		return
 
-	var/datum/ai_holder/AI = S.ai_holder
+	var/datum/ai_holder/polaris/AI = S.ai_holder
 
 	// Slimes.
 	if(istype(S, /mob/living/simple_mob/slime/xenobio))
@@ -220,7 +220,7 @@
 		to_chat(user, SPAN_WARNING( "\The [S] is too strong-willed for this to affect them."))
 		return
 
-	var/datum/ai_holder/AI = S.ai_holder
+	var/datum/ai_holder/polaris/AI = S.ai_holder
 
 	to_chat(user, "<span class='notice'>You feed \the [S] the agent. It will now try to murder things that want to murder you instead.</span>")
 	to_chat(S, "<span class='notice'>\The [user] feeds you \the [src], and feel that the others will regard you as an outsider now.</span>")
@@ -259,7 +259,7 @@
 		to_chat(user, SPAN_WARNING( "\The [S] is too strong-willed for this to affect them."))
 		return
 
-	var/datum/ai_holder/AI = S.ai_holder
+	var/datum/ai_holder/polaris/AI = S.ai_holder
 
 	to_chat(user, "<span class='notice'>You feed \the [S] the agent. It will now be your best friend.</span>")
 	to_chat(S, "<span class='notice'>\The [user] feeds you \the [src], and feel that \the [user] wants to be best friends with you.</span>")

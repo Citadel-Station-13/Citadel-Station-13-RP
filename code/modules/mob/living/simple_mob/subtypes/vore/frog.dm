@@ -25,7 +25,7 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 12
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 // Pepe is love, not hate.
 /mob/living/simple_mob/vore/aggressive/frog/Initialize(mapload)
