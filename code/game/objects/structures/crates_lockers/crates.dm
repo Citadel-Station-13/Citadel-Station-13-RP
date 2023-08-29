@@ -722,5 +722,10 @@
 	icon_state = "biohazard"
 	climb_allowed = TRUE
 	points_per_crate = 5
+	use_old_icon_update = TRUE
 
-/obj/structure/closet/crate/biohazard/LateInitialize()
+/obj/structure/closet/crate/biohazard/update_icon_old()
+	if(!opened)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "biohazardopen"
