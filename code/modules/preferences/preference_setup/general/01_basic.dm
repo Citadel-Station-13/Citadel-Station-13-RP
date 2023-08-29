@@ -24,7 +24,7 @@
 	S["Ref_Toggle"]				>> pref.full_ref_toggle
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
-	if(!length(S["real_name"] && length(pref.real_name))
+	if(!length(S["real_name"]) && length(pref.real_name))
 		add_character_lookup(pref.client_ckey, pref.real_name, OBJECT_PERSISTENCE_CHARACTER_TYPE_HUMAN)
 	S["real_name"]				<< pref.real_name
 	S["nickname"]				<< pref.nickname
