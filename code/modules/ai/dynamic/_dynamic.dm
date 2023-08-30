@@ -16,7 +16,13 @@
  * Polaris mob AI, while good, failed to appropriately 'weave' their actions in a way that makes them
  * dangerous. This holder system, on the other hand, can move, think, and act at the same time.
  *
- * AI flags determine how smart / dangerous this is.
+ * This type of AI is, however, entirely unsuitable for very complex planning-tree like AIs
+ * employed by /tg/station and others.
+ *
+ * Tuning:
+ * * Intelligence & tuning vars determine how dangerous this is
+ * * Most vars are built off of the /mob/living it's built off of automatically.
+ * * Cheat flags can be specified - be extremely careful, as these flags tend to make AIs extremely, extremely difficult.
  */
 /datum/ai_holder/dynamic
 	agent_type = /mob/living
