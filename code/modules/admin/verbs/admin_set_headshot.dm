@@ -8,7 +8,7 @@
 	var/their_ckey = input(src, "Enter the player's ckey", "Reference Selection") as text|null
 	if(isnull(their_ckey))
 		return
-	var/datum/preferences/their_prefs = SScharacters.load_preferences_datum(their_ckey, TRUE)
+	var/datum/preferences/their_prefs = SScharacters.fetch_preferences_datum(their_ckey, TRUE)
 	if(isnull(their_prefs))
 		to_chat(src, SPAN_WARNING("[their_ckey] does not exist."))
 		return
@@ -40,12 +40,12 @@
 	var/chosen_original_name = loaded_characters[chosen_character][2]
 	var/input_headshot = input(src, "Enter the URL for the headshot image. (Cancel to skip, empty string to remove)", "Reference Selection") as text|null
 	if(!isnull(input_headshot))
-		S["Headshot_URL"] << input_headshot
+		their_savefile["Headshot_URL"] << input_headshot
 		if(their_prefs.default_slot == chosen_slot)
 			their_prefs.headshot_url = input_headshot
 	var/input_fullref = input(src, "Enter the URL for the full reference image. (Cancel to skip, empty string to remove)", "Reference Selection") as text|null
 	if(!isnull(input_headshot))
-		S["Full_Ref_URL"] << input_fullref
+		their_savefile["Full_Ref_URL"] << input_fullref
 		if(their_prefs.default_slot == chosen_slot)
 			their_prefs.full_ref_url = input_fullref
 	to_chat(src, SPAN_NOTICE("References set."))
