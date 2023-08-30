@@ -17,10 +17,10 @@
 
 /datum/ai_holder/dynamic/proc/can_see(atom/movable/entity, check_los)
 	var/their_dist = get_dist(agent, entity)
-	if(their_dist > vision_range && !(cheat_flags & AI_CHEAT_FARSIGHT))
+	if(their_dist > vision_range && !(ai_cheat_flags & AI_CHEAT_FARSIGHT))
 		return FALSE
 	var/turf/T = get_turf(entity)
-	if(!(cheat_flags & AI_CHEAT_NIGHTVISION) && T.get_lumcount() < darksight_lumcount && (their_dist > darksight_range || !check_darksight_fov(entity)))
+	if(!(ai_cheat_flags & AI_CHEAT_NIGHTVISION) && T.get_lumcount() < darksight_lumcount && (their_dist > darksight_range || !check_darksight_fov(entity)))
 		return FALSE
 	return (check_los == TRUE)? check_los(entity) : TRUE
 

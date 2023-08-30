@@ -13,6 +13,10 @@
 	var/atom/movable/agent
 	/// expected type of movable to bind to
 	var/agent_type = /atom/movable
+	/// cheat flags
+	var/ai_cheat_flags = NONE
+	/// intelligence
+	var/intelligence = AI_INTELLIGENCE_ADVANCED
 
 /datum/ai_holder/Destroy()
 	if(!isnull(agent))

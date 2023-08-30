@@ -25,10 +25,8 @@
 	/// this does not control if we're moving / anything
 	/// this is our 'mind' state
 	/// e.g. idle, fleeing, engaged in combat, investigating, etc
-	var/state
-	/// registered in subsystem?
-	var/ticking = FALSE
+	var/state = AI_DYNAMIC_STATE_DISABLED
 	/// mode - similar to state but much more general
-	var/mode
+	var/mode = AI_DYNAMIC_MODE_DISABLED
 
 #warn impl all

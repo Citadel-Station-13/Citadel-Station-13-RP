@@ -27,6 +27,7 @@ DEFINE_SHARED_BITFIELD(mobility_flags, list(
 	"mobility_flags",
 	"mobility_flags_blocked",
 	"mobility_flags_forced",
+	"mobility_check_flags",
 ), list(
 	"MOVE" = MOBILITY_CAN_MOVE,
 	"STAND" = MOBILITY_CAN_STAND,

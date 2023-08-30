@@ -51,6 +51,13 @@
 	var/ability_check_flags = NONE
 	/// mobility check flags
 	var/mobility_check_flags = NONE
+	/// ai type - this hints to AI actors what we should be used for
+	var/ability_ai_type
+	/// ai flags - see [code/__DEFINES/ability.dm].
+	/// This hints to AI actors what we can be used for.
+	var/ability_ai_flags = NONE
+	/// AoE range hint for AI
+	var/ability_ai_aoe_hint = 0
 
 	//? state
 	/// cooldown delay, if we have a cooldown
@@ -67,6 +74,8 @@
 	var/cooldown_visual_timerid
 	/// for toggle interacts: are we enabled?
 	var/enabled = FALSE
+
+#warn implement ABIlITY_INTERACT_SINGLE_TARGET
 
 /datum/ability/Destroy()
 	if(!isnull(owner))

@@ -2,7 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /datum/ai_holder/dynamic
-	/// current locked on target for combat
-	/// should be reset when exiting combat mode
-	var/atom/movable/adversary
-	
+
+#warn impl all
+
+#warn ABILITY_AI_TYPE_TOTAL - caching?
