@@ -274,7 +274,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				load_skin()
 				sanitize_everything()
 				player_setup.sanitize_setup()
-				client.update_movement_keys()
+				client?.update_movement_keys()
 				initialized = TRUE
 				return
 
