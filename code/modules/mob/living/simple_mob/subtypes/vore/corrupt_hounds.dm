@@ -114,7 +114,7 @@
 	reload_max = 6
 	reload_time = 15
 
-	projectiletype = /obj/projectile/bullet/rifle/a545
+	projectiletype = /obj/projectile/bullet/rifle/a556
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
 
 

@@ -130,7 +130,7 @@
 	path = /obj/item/gun/ballistic/automatic/c20r
 
 /datum/uplink_item/item/visible_weapons/assaultrifle
-	name = "Assault Rifle (5.45mm)"
+	name = "Assault Rifle (5.56mm)"
 	item_cost = 75
 	path = /obj/item/gun/ballistic/automatic/sts35
 

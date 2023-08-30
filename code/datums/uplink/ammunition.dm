@@ -66,19 +66,19 @@
 	path = /obj/item/storage/box/sniperammo
 
 /datum/uplink_item/item/ammo/c545
-	name = "Rifle Magazine (5.45mm)"
+	name = "Rifle Magazine (5.56mm)"
 	path = /obj/item/ammo_magazine/m545
 
 /datum/uplink_item/item/ammo/c545/ext
-	name = "Rifle Magazine (5.45mm Extended)"
+	name = "Rifle Magazine (5.56mm Extended)"
 	path = /obj/item/ammo_magazine/m545/ext
 
 /datum/uplink_item/item/ammo/c545/ap
-	name = "Rifle Magazine (5.45mm AP)"
+	name = "Rifle Magazine (5.56mm AP)"
 	path = /obj/item/ammo_magazine/m545/ap
 
 /datum/uplink_item/item/ammo/c545/ap/ext
-	name = "Rifle Magazine (5.45mm AP Extended)"
+	name = "Rifle Magazine (5.56mm AP Extended)"
 	path = /obj/item/ammo_magazine/m545/ap/ext
 
 /datum/uplink_item/item/ammo/c762
@@ -93,12 +93,12 @@
 	name = "SMG Magazine (10mm)"
 	path = /obj/item/ammo_magazine/m10mm
 
-/datum/uplink_item/item/ammo/a545
-	name = "Machinegun Magazine (5.45mm)"
+/datum/uplink_item/item/ammo/a556
+	name = "Machinegun Magazine (5.56mm)"
 	path = /obj/item/ammo_magazine/m545saw
 
-/datum/uplink_item/item/ammo/a545/ap
-	name = "Machinegun Magazine (5.45mm AP)"
+/datum/uplink_item/item/ammo/a556/ap
+	name = "Machinegun Magazine (5.56mm AP)"
 	path = /obj/item/ammo_magazine/m545saw/ap
 
 /datum/uplink_item/item/ammo/g12

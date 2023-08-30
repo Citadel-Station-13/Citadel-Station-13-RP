@@ -436,39 +436,39 @@
 	materials = list(MAT_STEEL = 1250)
 
 /*
- * 5.45mm
+ * 5.56mm
  */
 
-/obj/item/ammo_casing/a545
-	desc = "A 5.45mm bullet casing."
-	caliber = "5.45mm"
+/obj/item/ammo_casing/a556
+	desc = "A 5.56mm bullet casing."
+	caliber = "5.56mm"
 	icon_state = "rifle-casing"
-	projectile_type = /obj/projectile/bullet/rifle/a545
+	projectile_type = /obj/projectile/bullet/rifle/a556
 	materials = list(MAT_STEEL = 180)
 
-/obj/item/ammo_casing/a545/ap
-	desc = "A 5.45mm armor-piercing bullet casing."
-	projectile_type = /obj/projectile/bullet/rifle/a545/ap
+/obj/item/ammo_casing/a556/ap
+	desc = "A 5.56mm armor-piercing bullet casing."
+	projectile_type = /obj/projectile/bullet/rifle/a556/ap
 	materials = list(MAT_STEEL = 270)
 
-/obj/item/ammo_casing/a545/practice
-	desc = "A 5.45mm practice bullet casing."
+/obj/item/ammo_casing/a556/practice
+	desc = "A 5.56mm practice bullet casing."
 	icon_state = "rifle-casing" // Need to make an icon for these
 	projectile_type = /obj/projectile/bullet/practice
 	materials = list(MAT_STEEL = 90)
 
-/obj/item/ammo_casing/a545/blank
-	desc = "A blank 5.45mm bullet casing."
+/obj/item/ammo_casing/a556/blank
+	desc = "A blank 5.56mm bullet casing."
 	projectile_type = /obj/projectile/bullet/blank
 	materials = list(MAT_STEEL = 90)
 
-/obj/item/ammo_casing/a545/hp
-	desc = "A 5.45mm hollow-point bullet casing."
-	projectile_type = /obj/projectile/bullet/rifle/a545/hp
+/obj/item/ammo_casing/a556/hp
+	desc = "A 5.56mm hollow-point bullet casing."
+	projectile_type = /obj/projectile/bullet/rifle/a556/hp
 
-/obj/item/ammo_casing/a545/hunter
-	desc = "A 5.45mm hunting bullet casing."
-	projectile_type = /obj/projectile/bullet/rifle/a545/hunter
+/obj/item/ammo_casing/a556/hunter
+	desc = "A 5.56mm hunting bullet casing."
+	projectile_type = /obj/projectile/bullet/rifle/a556/hunter
 
 /*
  * 10x24mm Caseless

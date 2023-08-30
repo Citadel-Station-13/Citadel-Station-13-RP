@@ -278,7 +278,7 @@
 		/obj/item/ammo_casing/a12g/stunshell    = "12g",
 		/obj/item/ammo_casing/a12g/flare        = "12g",
 		/obj/item/ammo_casing/a762              = "7.62mm",
-		/obj/item/ammo_casing/a545              = "5.45mm"
+		/obj/item/ammo_casing/a556              = "5.56mm"
 		)
 
 /obj/item/gun/ballistic/pirate/Initialize(mapload)
