@@ -57,3 +57,8 @@
 
 	// todo: combustion enthalpies / oxidizer powers
 	// todo: combustion product gases
+
+/datum/gas/New()
+	if(ispath(gas_reagent_id))
+		var/datum/reagent/R = gas_reagent_id
+		gas_reagent_id = initial(R.id)
