@@ -10,6 +10,13 @@
 	#define AI_DEBUGGING_ENABLED FALSE
 #endif
 
+//* Ticking
+
+/// The slowest an AI holder can tick without just being shut off.
+/// This impacts SSai_holders' bucket list length.
+/// At 40 FPS and 20 seconds, we're looking at a length of around 800. Not great, not terrible.
+#define SLOWEST_AI_HOLDER_TICK (20 SECONDS)
+
 //* /datum/ai_holder ai_cheat_flag
 /// Ignore vision range. This + xray is very dangerous.
 #define AI_CHEAT_FARSIGHT (1<<0)
@@ -33,6 +40,8 @@
 #define AI_CHEAT_OMNISCIENT_INSIGHT (1<<9)
 /// For those that support it, maximize offensive 'health trading' (aka be the average murderhobo)
 #define AI_CHEAT_NO_ROLEPLAYING (1<<10)
+/// entirely ignores baymiss
+#define AI_CHEAT_DEADEYE (1<<11)
 
 DEFINE_BITFIELD(ai_cheat_flags, list(
 	BITFIELD(AI_CHEAT_FARSIGHT),
@@ -46,6 +55,7 @@ DEFINE_BITFIELD(ai_cheat_flags, list(
 	BITFIELD(AI_CHEAT_UNLIMITED_ITEMS),
 	BITFIELD(AI_CHEAT_OMNISCIENT_INSIGHT),
 	BITFIELD(AI_CHEAT_NO_ROLEPLAYING),
+	BITFIELD(AI_CHEAT_DEADEYE),
 ))
 
 //* /datum/ai_holder intelligence var

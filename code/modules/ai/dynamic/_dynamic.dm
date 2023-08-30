@@ -19,6 +19,16 @@
  * AI flags determine how smart / dangerous this is.
  */
 /datum/ai_holder/dynamic
-	actor_type = /mob/living
+	agent_type = /mob/living
+
+	/// AI state
+	/// this does not control if we're moving / anything
+	/// this is our 'mind' state
+	/// e.g. idle, fleeing, engaged in combat, investigating, etc
+	var/state
+	/// registered in subsystem?
+	var/ticking = FALSE
+	/// mode - similar to state but much more general
+	var/mode
 
 #warn impl all

@@ -91,7 +91,7 @@
 		if(. == MOVEMENT_SUCCESSFUL)
 			setDir(get_dir(old_T, newloc))
 			// Apply movement delay.
-			// Player movement has more factors but its all in the client and fixing that would be its own project.
+			// Player movement has more fagents but its all in the client and fixing that would be its own project.
 			applyMoveCooldown(movement_delay())
 		return
 

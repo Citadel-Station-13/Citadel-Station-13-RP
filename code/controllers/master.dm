@@ -274,8 +274,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		world.shelleo("start /min powershell -ExecutionPolicy Bypass -File tools/initToast/initToast.ps1 -name \"[world.name]\" -icon %CD%\\icons\\CS13_16.png -port [world.port]")
 
 	// Set world options.
-
-	world.fps = config_legacy.fps
+	world.set_fps(config_legacy.fps)
 
 	var/initialized_tod = REALTIMEOFDAY
 	if(sleep_offline_after_initializations)
