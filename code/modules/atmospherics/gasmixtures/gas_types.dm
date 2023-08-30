@@ -20,7 +20,7 @@
 	var/molar_mass = 1
 
 	//* reagents
-	/// reagent id to apply
+	/// reagent id to apply. set to typepath at compile time ; it will be automatically converted to ID if detected in New().
 	var/gas_reagent_id
 	/// reagent amount to add to someone breathing it at minimum moles
 	var/gas_reagent_amount = 0
