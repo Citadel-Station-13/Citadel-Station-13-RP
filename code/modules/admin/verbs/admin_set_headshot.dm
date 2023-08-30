@@ -10,7 +10,7 @@
 		return
 	var/datum/preferences/their_prefs = SScharacters.load_preferences_datum(their_ckey, TRUE)
 	if(isnull(their_prefs))
-		to_chat(src, SPAN_WARNING("[their_ckey] does not exist.")
+		to_chat(src, SPAN_WARNING("[their_ckey] does not exist."))
 		return
 	//! WARNING WARNING FUCKING WARNING DIRECT SAVEFILE MANIPULATIONS DO NOT TOUCH THIS UNLESS YOU KNOW WHAT YOU ARE DOING
 	//  todo: /datum/character so we don't do this atrocious shit WHEN
@@ -54,7 +54,7 @@
 		to_chat(theyre_here, SPAN_BOLDNOTICE("[chosen_character]'s image references have been edited by an admin."))
 		return
 	var/mob/their_mob = theyre_here?.mob
-	if(!isnull(their_mob) && their_mob.real_name = chosen_original_name && isliving(their_mob))
+	if(!isnull(their_mob) && (their_mob.real_name == chosen_original_name) && isliving(their_mob))
 		var/mob/living/casted = their_mob
 		if(!isnull(input_headshot))
 			casted.headshot_url = input_headshot
