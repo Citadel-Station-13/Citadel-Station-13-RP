@@ -72,6 +72,8 @@
 	character.gender = pref.biological_gender
 	character.identifying_gender = pref.identifying_gender
 	character.age = pref.age
+	character.headshot_url = headshot_url
+	character.fullref_url = full_ref_url
 	return TRUE
 
 /datum/category_item/player_setup_item/general/basic/content(datum/preferences/prefs, mob/user, data)
