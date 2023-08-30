@@ -2,13 +2,30 @@
 
 GLOBAL_LIST_EMPTY(preferences_datums)
 
-/datum/controller/subsystem/characters/proc/fetch_preferences_datum(ckey)
+/**
+ * Fetches a prefs datum by ckey
+ *
+ * @params
+ * * ckey - their canonical key
+ * * only_if_exists - only load / create if it already exists
+ *
+ * @return the preferences datum if found, or null
+ *
+ * todo: /datum/character
+ */
+/datum/controller/subsystem/characters/proc/fetch_preferences_datum(ckey, only_if_exists = FALSE)
+	RETURN_TYPE(/datum/preferences)
 	ckey = ckey(ckey)
 	if(!isnull(GLOB.preferences_datums[ckey]))
 		return GLOB.preferences_datums[ckey]
 	var/datum/preferences/creating = new
 	creating.client_ckey = ckey
+	if(only_if_exists && !creating.load_path())
+		qdel(creating)
+		return
 	GLOB.preferences_datums[ckey] = creating
+	if(initialized)
+		creating.Initialize()
 	return creating
 
 /datum/preferences
