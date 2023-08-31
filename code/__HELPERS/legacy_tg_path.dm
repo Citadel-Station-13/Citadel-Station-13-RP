@@ -3,57 +3,104 @@
  * over large numbers of uninteresting tiles resulting in much quicker pathfinding solutions. Mind that diagonals
  * cost the same as cardinal moves currently, so paths may look a bit strange, but should still be optimal.
  */
+//////////////////////
+//datum/tg_heap object
+//////////////////////
 
-/**
- * This is the proc you use whenever you want to have pathfinding more complex than "try stepping towards the thing".
- * If no path was found, returns an empty list, which is important for bots like medibots who expect an empty list rather than nothing.
- *
- * Arguments:
- * * caller: The movable atom that's trying to find the path
- * * end: What we're trying to path to. It doesn't matter if this is a turf or some other atom, we're gonna just path to the turf it's on anyway
- * * max_distance: The maximum number of steps we can take in a given path to search (default: 30, 0 = infinite)
- * * mintargetdistance: Minimum distance to the target before path returns, could be used to get near a target, but not right to it - for an AI mob with a gun, for example.
- * * id: An ID card representing what access we have and what doors we can open. Its location relative to the pathing atom is irrelevant
- * * simulated_only: Whether we consider turfs without atmos simulation (AKA do we want to ignore space)
- * * exclude: If we want to avoid a specific turf, like if we're a mulebot who already got blocked by some turf
- * * skip_first: Whether or not to delete the first item in the path. This would be done because the first item is the starting tile, which can break movement for some creatures.
- */
-/proc/get_path_to(caller, end, max_distance = 30, mintargetdist, id=null, simulated_only = TRUE, turf/exclude, skip_first=TRUE)
-	if(!caller || !get_turf(end))
-		return
+/datum/tg_heap
+	var/list/L
+	var/cmp
 
-	var/l = SSpathfinder.mobs.getfree(caller)
-	while(!l)
-		stoplag(3)
-		l = SSpathfinder.mobs.getfree(caller)
+/datum/tg_heap/New(compare)
+	L = new()
+	cmp = compare
 
-	var/list/path
-	var/datum/pathfind/pathfind_datum = new(caller, end, id, max_distance, mintargetdist, simulated_only, exclude)
-	path = pathfind_datum.search()
-	qdel(pathfind_datum)
+/datum/tg_heap/Destroy(force, ...)
+	for(var/i in L) // because this is before the list helpers are loaded
+		qdel(i)
+	L = null
+	return ..()
 
-	SSpathfinder.mobs.found(l)
-	if(!path)
-		path = list()
-	if(length(path) > 0 && skip_first)
-		path.Cut(1,2)
-	return path
+/datum/tg_heap/proc/is_empty()
+	return !length(L)
+
+//insert and place at its position a new node in the heap
+/datum/tg_heap/proc/insert(A)
+
+	L.Add(A)
+	swim(length(L))
+
+//removes and returns the first element of the heap
+//(i.e the max or the min dependant on the comparison function)
+/datum/tg_heap/proc/pop()
+	if(!length(L))
+		return 0
+	. = L[1]
+
+	L[1] = L[length(L)]
+	L.Cut(length(L))
+	if(length(L))
+		sink(1)
+
+//Get a node up to its right position in the heap
+/datum/tg_heap/proc/swim(index)
+	var/parent = round(index * 0.5)
+
+	while(parent > 0 && (call(cmp)(L[index],L[parent]) > 0))
+		L.Swap(index,parent)
+		index = parent
+		parent = round(index * 0.5)
+
+//Get a node down to its right position in the heap
+/datum/tg_heap/proc/sink(index)
+	var/g_child = get_greater_child(index)
+
+	while(g_child > 0 && (call(cmp)(L[index],L[g_child]) < 0))
+		L.Swap(index,g_child)
+		index = g_child
+		g_child = get_greater_child(index)
+
+//Returns the greater (relative to the comparison proc) of a node children
+//or 0 if there's no child
+/datum/tg_heap/proc/get_greater_child(index)
+	if(index * 2 > length(L))
+		return 0
+
+	if(index * 2 + 1 > length(L))
+		return index * 2
+
+	if(call(cmp)(L[index * 2],L[index * 2 + 1]) < 0)
+		return index * 2 + 1
+	else
+		return index * 2
+
+//Replaces a given node so it verify the heap condition
+/datum/tg_heap/proc/resort(A)
+	var/index = L.Find(A)
+
+	swim(index)
+	sink(index)
+
+/datum/tg_heap/proc/List()
+	. = L.Copy()
+
+GLOBAL_LIST_INIT(legacy_tg_space_type_cache, typecacheof(/turf/space))
 
 /**
  * A helper macro to see if it's possible to step from the first turf into the second one, minding things like door access and directional windows.
- * Note that this can only be used inside the [datum/pathfind][pathfind datum] since it uses variables from said datum.
+ * Note that this can only be used inside the [datum/tg_jps_pathfind][pathfind datum] since it uses variables from said datum.
  * If you really want to optimize things, optimize this, cuz this gets called a lot.
  */
-#define CAN_STEP(cur_turf, next) (next && !next.density && !(simulated_only && SSpathfinder.space_type_cache[next.type]) && !cur_turf.LinkBlockedWithAccess(next,caller, id) && (next != avoid))
+#define CAN_STEP(cur_turf, next) (next && !next.density && !(simulated_only && GLOB.legacy_tg_space_type_cache[next.type]) && !cur_turf.LinkBlockedWithAccess(next,caller, id) && (next != avoid))
 /// Another helper macro for JPS, for telling when a node has forced neighbors that need expanding
 #define STEP_NOT_HERE_BUT_THERE(cur_turf, dirA, dirB) ((!CAN_STEP(cur_turf, get_step(cur_turf, dirA)) && CAN_STEP(cur_turf, get_step(cur_turf, dirB))))
 
 /// The JPS Node datum represents a turf that we find interesting enough to add to the open list and possibly search for new tiles from
-/datum/jps_node
+/datum/tg_jps_node
 	/// The turf associated with this node
 	var/turf/tile
 	/// The node we just came from
-	var/datum/jps_node/previous_node
+	var/datum/tg_jps_node/previous_node
 	/// The A* node weight (f_value = number_of_tiles + heuristic)
 	var/f_value
 	/// The A* node heuristic (a rough estimate of how far we are from the goal)
@@ -65,7 +112,7 @@
 	/// Nodes store the endgoal so they can process their heuristic without a reference to the pathfind datum
 	var/turf/node_goal
 
-/datum/jps_node/New(turf/our_tile, datum/jps_node/incoming_previous_node, jumps_taken, turf/incoming_goal)
+/datum/tg_jps_node/New(turf/our_tile, datum/tg_jps_node/incoming_previous_node, jumps_taken, turf/incoming_goal)
 	tile = our_tile
 	jumps = jumps_taken
 	if(incoming_goal) // if we have the goal argument, this must be the first/starting node
@@ -78,11 +125,11 @@
 		f_value = number_tiles + heuristic
 	// otherwise, no parent node means this is from a subscan lateral scan, so we just need the tile for now until we call [datum/jps/proc/update_parent] on it
 
-/datum/jps_node/Destroy(force, ...)
+/datum/tg_jps_node/Destroy(force, ...)
 	previous_node = null
 	return ..()
 
-/datum/jps_node/proc/update_parent(datum/jps_node/new_parent)
+/datum/tg_jps_node/proc/update_parent(datum/tg_jps_node/new_parent)
 	previous_node = new_parent
 	node_goal = previous_node.node_goal
 	jumps = get_dist(tile, previous_node.tile)
@@ -91,13 +138,13 @@
 	f_value = number_tiles + heuristic
 
 /// TODO: Macro this to reduce proc overhead
-/proc/HeapPathWeightCompare(datum/jps_node/a, datum/jps_node/b)
+/proc/TGHeapPathWeightCompare(datum/tg_jps_node/a, datum/tg_jps_node/b)
 	return b.f_value - a.f_value
 
 /**
  * The datum used to handle the JPS pathfinding, completely self-contained.
  */
-/datum/pathfind
+/datum/tg_jps_pathfind
 	/// The thing that we're actually trying to path for
 	var/atom/movable/caller
 	/// The turf where we started at
@@ -105,7 +152,7 @@
 	/// The turf we're trying to path to (note that this won't track a moving target)
 	var/turf/end
 	/// The open list/stack we pop nodes out from (TODO: make this a normal list and macro-ize the heap operations to reduce proc overhead)
-	var/datum/heap/open
+	var/datum/tg_heap/open
 	///An assoc list that serves as the closed list & tracks what turfs came from where. Key is the turf, and the value is what turf it came from
 	var/list/sources
 	/// The list we compile at the end if successful to pass back
@@ -123,10 +170,10 @@
 	/// A specific turf we're avoiding, like if a mulebot is being blocked by someone t-posing in a doorway we're trying to get through
 	var/turf/avoid
 
-/datum/pathfind/New(atom/movable/caller, atom/goal, id, max_distance, mintargetdist, simulated_only, avoid)
+/datum/tg_jps_pathfind/New(atom/movable/caller, atom/goal, id, max_distance, mintargetdist, simulated_only, avoid)
 	src.caller = caller
 	end = get_turf(goal)
-	open = new /datum/heap(GLOBAL_PROC_REF(HeapPathWeightCompare))
+	open = new /datum/tg_heap(GLOBAL_PROC_REF(TGHeapPathWeightCompare))
 	sources = new()
 	src.id = id
 	src.max_distance = max_distance
@@ -140,7 +187,7 @@
  * If a valid path was found, it's returned as a list. If invalid or cross-z-level params are entered, or if there's no valid path found, we
  * return null, which [/proc/get_path_to] translates to an empty list (notable for simple bots, who need empty lists)
  */
-/datum/pathfind/proc/search()
+/datum/tg_jps_pathfind/proc/search()
 	start = get_turf(caller)
 	if(!start || !end)
 		stack_trace("Invalid A* start or destination")
@@ -151,7 +198,7 @@
 		return
 
 	//initialization
-	var/datum/jps_node/current_processed_node = new (start, -1, 0, end)
+	var/datum/tg_jps_node/current_processed_node = new (start, -1, 0, end)
 	open.insert(current_processed_node)
 	sources[start] = start // i'm sure this is fine
 
@@ -183,9 +230,9 @@
 
 /**
  * Called when we've hit the goal with the node that represents the last tile,
- * then sets the path var to that path so it can be returned by [datum/pathfind/proc/search]
+ * then sets the path var to that path so it can be returned by [datum/tg_jps_pathfind/proc/search]
  */
-/datum/pathfind/proc/unwind_path(datum/jps_node/unwind_node)
+/datum/tg_jps_pathfind/proc/unwind_path(datum/tg_jps_node/unwind_node)
 	path = new()
 	var/turf/iter_turf = unwind_node.tile
 	path.Add(iter_turf)
@@ -210,7 +257,7 @@
  * * heading: What direction are we going in? Obviously, should be cardinal
  * * parent_node: Only given for normal lateral scans, if we don't have one, we're a diagonal subscan.
 */
-/datum/pathfind/proc/lateral_scan_spec(turf/original_turf, heading, datum/jps_node/parent_node)
+/datum/tg_jps_pathfind/proc/lateral_scan_spec(turf/original_turf, heading, datum/tg_jps_node/parent_node)
 	var/steps_taken = 0
 
 	var/turf/current_turf = original_turf
@@ -226,7 +273,7 @@
 			return
 
 		if(current_turf == end || (mintargetdist && (get_dist(current_turf, end) <= mintargetdist)))
-			var/datum/jps_node/final_node = new(current_turf, parent_node, steps_taken)
+			var/datum/tg_jps_node/final_node = new(current_turf, parent_node, steps_taken)
 			sources[current_turf] = original_turf
 			if(parent_node) // if this is a direct lateral scan we can wrap up, if it's a subscan from a diag, we need to let the diag make their node first, then finish
 				unwind_path(final_node)
@@ -256,7 +303,7 @@
 					interesting = TRUE
 
 		if(interesting)
-			var/datum/jps_node/newnode = new(current_turf, parent_node, steps_taken)
+			var/datum/tg_jps_node/newnode = new(current_turf, parent_node, steps_taken)
 			if(parent_node) // if we're a diagonal subscan, we'll handle adding ourselves to the heap in the diag
 				open.insert(newnode)
 			return newnode
@@ -272,7 +319,7 @@
  * * heading: What direction are we going in? Obviously, should be diagonal
  * * parent_node: We should always have a parent node for diagonals
 */
-/datum/pathfind/proc/diag_scan_spec(turf/original_turf, heading, datum/jps_node/parent_node)
+/datum/tg_jps_pathfind/proc/diag_scan_spec(turf/original_turf, heading, datum/tg_jps_node/parent_node)
 	var/steps_taken = 0
 	var/turf/current_turf = original_turf
 	var/turf/lag_turf = original_turf
@@ -287,7 +334,7 @@
 			return
 
 		if(current_turf == end || (mintargetdist && (get_dist(current_turf, end) <= mintargetdist)))
-			var/datum/jps_node/final_node = new(current_turf, parent_node, steps_taken)
+			var/datum/tg_jps_node/final_node = new(current_turf, parent_node, steps_taken)
 			sources[current_turf] = original_turf
 			unwind_path(final_node)
 			return
@@ -300,7 +347,7 @@
 			return
 
 		var/interesting = FALSE // have we found a forced neighbor that would make us add this turf to the open list?
-		var/datum/jps_node/possible_child_node // otherwise, did one of our lateral subscans turn up something?
+		var/datum/tg_jps_node/possible_child_node // otherwise, did one of our lateral subscans turn up something?
 
 		switch(heading)
 			if(NORTHWEST)
@@ -325,7 +372,7 @@
 					possible_child_node = (lateral_scan_spec(current_turf, SOUTH) || lateral_scan_spec(current_turf, EAST))
 
 		if(interesting || possible_child_node)
-			var/datum/jps_node/newnode = new(current_turf, parent_node, steps_taken)
+			var/datum/tg_jps_node/newnode = new(current_turf, parent_node, steps_taken)
 			open.insert(newnode)
 			if(possible_child_node)
 				possible_child_node.update_parent(newnode)
@@ -343,44 +390,8 @@
  * * simulated_only: Do we only worry about turfs with simulated atmos, most notably things that aren't space?
 */
 /turf/proc/LinkBlockedWithAccess(turf/destination_turf, caller, ID)
-	if(destination_turf.x != x && destination_turf.y != y) //diagonal
-		var/in_dir = get_dir(destination_turf,src) // eg. northwest (1+8) = 9 (00001001)
-		var/first_step_direction_a = in_dir & 3 // eg. north   (1+8)&3 (0000 0011) = 1 (0000 0001)
-		var/first_step_direction_b = in_dir & 12 // eg. west   (1+8)&12 (0000 1100) = 8 (0000 1000)
-
-		for(var/first_step_direction in list(first_step_direction_a,first_step_direction_b))
-			var/turf/midstep_turf = get_step(destination_turf,first_step_direction)
-			var/way_blocked = midstep_turf.density || LinkBlockedWithAccess(midstep_turf,caller,ID) || midstep_turf.LinkBlockedWithAccess(destination_turf,caller,ID)
-			if(!way_blocked)
-				return FALSE
-		return TRUE
-
-	var/actual_dir = get_dir(src, destination_turf)
-
-	// Source border object checks
-	for(var/obj/structure/window/iter_window in src)
-		if(!iter_window.CanAStarPass(ID, actual_dir))
-			return TRUE
-
-	for(var/obj/machinery/door/window/iter_windoor in src)
-		if(!iter_windoor.CanAStarPass(ID, actual_dir))
-			return TRUE
-
-	for(var/obj/structure/railing/iter_rail in src)
-		if(!iter_rail.CanAStarPass(ID, actual_dir))
-			return TRUE
-
-	for(var/obj/machinery/door/firedoor/border_only/firedoor in src)
-		if(!firedoor.CanAStarPass(ID, actual_dir))
-			return TRUE
-
-	// Destination blockers check
-	var/reverse_dir = get_dir(destination_turf, src)
-	for(var/obj/iter_object in destination_turf)
-		if(!iter_object.CanAStarPass(ID, reverse_dir, caller))
-			return TRUE
-
-	return FALSE
+	var/static/datum/pathfinding/whatever = new
+	return !global.default_pathfinding_adjacency(src, destination_turf, GLOB.generic_pathfinding_actor, whatever)
 
 #undef CAN_STEP
 #undef STEP_NOT_HERE_BUT_THERE

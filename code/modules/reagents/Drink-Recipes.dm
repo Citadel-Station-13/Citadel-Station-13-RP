@@ -957,7 +957,7 @@
 	required_reagents = list("sake" = 1, "melonliquor" = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/bitters
+/datum/chemical_reaction/drinks/bitters
 	name = "Bitters"
 	id = "bitters"
 	result = "bitters"
@@ -1544,133 +1544,133 @@
 	required_reagents = list("honey" = 1, "sexonthebeach" = 5)
 	result_amount = 6
 
-/datum/chemical_reaction/drink/messa_mead
+/datum/chemical_reaction/drinks/messa_mead
 	name = "Messa's Mead"
 	id = "messa_mead"
 	result = "messa_mead"
 	required_reagents = list("ethanol" = 1, "eroot" = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/drink/winter_offensive
+/datum/chemical_reaction/drinks/winter_offensive
 	name = "Winter Offensive"
 	id = "winter_offensive"
 	result = "winter_offensive"
 	required_reagents = list("ice" = 1, "victory_gin" = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/drink/internationale
+/datum/chemical_reaction/drinks/internationale
 	name = "Internationale"
 	id = "internationale"
 	result = "internationale"
 	required_reagents = list("victory_gin" = 1, "vodka" = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/drink/peacetreaty
+/datum/chemical_reaction/drinks/peacetreaty
 	name = "Peace Treaty"
 	id = "peacetreaty"
 	result = "peacetreaty"
 	required_reagents = list("victory_gin" = 1, "messa_mead" = 1, "lemonjuice" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/drink/russianbastard
+/datum/chemical_reaction/drinks/russianbastard
 	name = "Russian Bastard"
 	id = "russianbastard"
 	result = "russianbastard"
 	required_reagents = list("milk" = 1, "vodka" = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/drink/willtolive
+/datum/chemical_reaction/drinks/willtolive
 	name = "A Will to Live"
 	id = "willtolive"
 	result = "willtolive"
 	required_reagents = list("cognac" = 1, "kahlua" = 3, "melonliquor" = 3, "ice" = 1, "cream" = 1)
 	result_amount = 9
 
-/datum/chemical_reaction/drink/desiretodie
+/datum/chemical_reaction/drinks/desiretodie
 	name = "A Desire to Die"
 	id = "desiretodie"
 	result = "desiretodie"
 	required_reagents = list("deathbell" = 1, "nuclearwaste" = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/drink/raspberrybeesknees
+/datum/chemical_reaction/drinks/raspberrybeesknees
 	name = "Raspberry Bee's Knees"
 	id = "raspberrybeesknees"
 	result = "raspberrybeesknees"
 	required_reagents = list("water" = 2, "lemonjuice" = 1, "honey" = 1, "berryjuice" = 2)
 	result_amount = 6
 
-/datum/chemical_reaction/drink/sidecar
+/datum/chemical_reaction/drinks/sidecar
 	name = "Sidecar"
 	id = "sidecar"
 	result = "sidecar"
 	required_reagents = list("cognac" = 5, "lemonjuice" = 2, "orangejuice" = 2)
 	result_amount = 9
 
-/datum/chemical_reaction/drink/french75
+/datum/chemical_reaction/drinks/french75
 	name = "French 75"
 	id = "french75"
 	result = "french75"
 	required_reagents = list("lemonjuice" = 1, "gin" = 2, "champagne" = 4, "sugar" = 1)
 	result_amount = 8
 
-/datum/chemical_reaction/drink/french76
+/datum/chemical_reaction/drinks/french76
 	name = "French 76"
 	id = "french76"
 	result = "french76"
 	required_reagents = list("lemonjuice" = 1, "vodka" = 2, "champagne" = 4, "sugar" = 1)
 	result_amount = 8
 
-/datum/chemical_reaction/drink/lastword
+/datum/chemical_reaction/drinks/lastword
 	name = "Last Word"
 	id = "lastword"
 	result = "lastword"
 	required_reagents = list("limejuice" = 1, "gin" = 1, "berryjuice" = 2)
 	result_amount = 4
 
-/datum/chemical_reaction/drink/watermelonsmoothie
+/datum/chemical_reaction/drinks/watermelonsmoothie
 	name = "Watermelon Smoothie"
 	id = "watermelonsmoothie"
 	result = "watermelonsmoothie"
 	required_reagents = list("watermelonjuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/drink/orangesmoothie
+/datum/chemical_reaction/drinks/orangesmoothie
 	name = "Orange Smoothie"
 	id = "orangesmoothie"
 	result = "orangesmoothie"
 	required_reagents = list("orangejuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/drink/limesmoothie
+/datum/chemical_reaction/drinks/limesmoothie
 	name = "Lime Smoothie"
 	id = "limesmoothie"
 	result = "limesmoothie"
 	required_reagents = list("limejuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/drink/lemonsmoothie
+/datum/chemical_reaction/drinks/lemonsmoothie
 	name = "Lemon Smoothie"
 	id = "lemonsmoothie"
 	result = "lemonsmoothie"
 	required_reagents = list("lemonjuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/drink/berrysmoothie
+/datum/chemical_reaction/drinks/berrysmoothie
 	name = "Berry Smoothie"
 	id = "berrysmoothie"
 	result = "berrysmoothie"
 	required_reagents = list("berryjuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/drink/applesmoothie
+/datum/chemical_reaction/drinks/applesmoothie
 	name = "Apple Smoothie"
 	id = "applesmoothie"
 	result = "applesmoothie"
 	required_reagents = list("applejuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/drink/grapesmoothie
+/datum/chemical_reaction/drinks/grapesmoothie
 	name = "Grape Smoothie"
 	id = "grapesmoothie"
 	result = "grapesmoothie"
@@ -1863,7 +1863,7 @@
 
 // Unathi drinks
 
-/datum/chemical_reaction/skrianhi
+/datum/chemical_reaction/drinks/skrianhi
 	name = "Skrianhi Tea"
 	id = "skrianhitea"
 	result = "skrianhitea"
@@ -1871,7 +1871,7 @@
 	result_amount = 3
 	mix_message = "The tea turns a bitter black."
 
-/datum/chemical_reaction/mumbaksting
+/datum/chemical_reaction/drinks/mumbaksting
 	name = "Mumbak Sting"
 	id = "mumbaksting"
 	result = "mumbaksting"
@@ -1879,7 +1879,7 @@
 	result_amount = 3
 	mix_message = "The toxins mix with the juice to create a dark red substance."
 
-/datum/chemical_reaction/wasgaelhi
+/datum/chemical_reaction/drinks/wasgaelhi
 	name = "Wasgaelhi"
 	id = "wasgaelhi"
 	result = "wasgaelhi"
@@ -1887,7 +1887,7 @@
 	result_amount = 3
 	mix_message = "The mixture turns a dull purple."
 
-/datum/chemical_reaction/kzkzaa
+/datum/chemical_reaction/drinks/kzkzaa
 	name = "Kzkzaa"
 	id = "kzkzaa"
 	result = "kzkzaa"

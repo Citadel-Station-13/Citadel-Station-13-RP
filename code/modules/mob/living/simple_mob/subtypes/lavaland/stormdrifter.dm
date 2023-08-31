@@ -160,7 +160,7 @@
 		to_chat(user, "<span class='danger'>You nip the straps of the [O]! It falls off of the [src].</span>")
 		rideable = 0
 		buckle_allowed = FALSE
-		DelComponent(/datum/component/riding_handler/stormdrifter_bull)
+		DelComponent(/datum/component/riding_handler, /datum/component/riding_handler/stormdrifter_bull)
 		var/turf/T = get_turf(src)
 		new /obj/item/saddle/stormdrifter(T)
 	if(istype(O, /obj/item/pen/charcoal) && rideable)
