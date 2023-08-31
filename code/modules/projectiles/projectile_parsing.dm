@@ -653,9 +653,6 @@
 	var/turf/ending = return_predicted_turf_after_moves(moves, forced_angle)
 	return getline(current, ending)
 
-/obj/item/projectile/Process_Spacemove(movement_dir = 0)
-	return TRUE	//Bullets don't drift in space
-
 /obj/item/projectile/process(wait)
 	set waitfor = FALSE
 	if(!loc || !fired || !trajectory)

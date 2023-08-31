@@ -27,6 +27,8 @@
 	for(var/propname in settings)
 		gun.vars[propname] = settings[propname]
 
+#warn w
+
 //Parent gun type. Guns are weapons that can be aimed at mobs and act over a distance
 /obj/item/gun
 	name = "gun"
