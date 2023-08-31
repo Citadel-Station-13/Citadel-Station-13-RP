@@ -43,7 +43,7 @@
 	player_msg = "You can spin webs on an adjacent tile, or cocoon an object by clicking on it.<br>\
 	You can also cocoon a dying or dead entity by clicking on them, and you will gain charges for egg-laying.<br>\
 	To lay eggs, click a nearby tile. Laying eggs will deplete a charge."
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/nurse_spider
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/nurse_spider
 
 	var/fed = 0 // Counter for how many egg laying 'charges' the spider has.
 	var/laying_eggs = FALSE	// Only allow one set of eggs to be laid at once.
@@ -51,7 +51,7 @@
 	var/egg_type = /obj/effect/spider/eggcluster/small
 	var/web_type = /obj/effect/spider/stickyweb/dark
 
-/datum/ai_holder/simple_mob/melee/nurse_spider
+/datum/ai_holder/polaris/simple_mob/melee/nurse_spider
 	mauling = TRUE		// The nurse puts mobs into webs by attacking, so it needs to attack in crit
 	handle_corpse = TRUE	// Lets the nurse wrap dead things
 
@@ -229,13 +229,13 @@
 
 
 // The AI for nurse spiders. Wraps things in webs by 'attacking' them.
-/datum/ai_holder/simple_mob/melee/nurse_spider
+/datum/ai_holder/polaris/simple_mob/melee/nurse_spider
 	wander = TRUE
 	base_wander_delay = 8
 	cooperative = FALSE // So we don't ask our spider friends to attack things we're webbing. This might also make them stay at the base if their friends find tasty explorers.
 
 // Get us unachored objects as an option as well.
-/datum/ai_holder/simple_mob/melee/nurse_spider/list_targets()
+/datum/ai_holder/polaris/simple_mob/melee/nurse_spider/list_targets()
 	. = ..()
 
 	var/static/alternative_targets = typecacheof(list(/obj/item, /obj/structure))
@@ -246,7 +246,7 @@
 			. += O
 
 // Select an obj if no mobs are around.
-/datum/ai_holder/simple_mob/melee/nurse_spider/pick_target(list/targets)
+/datum/ai_holder/polaris/simple_mob/melee/nurse_spider/pick_target(list/targets)
 	var/mobs_only = locate(/mob/living) in targets // If a mob is in the list of targets, then ignore objects.
 	if(mobs_only)
 		for(var/A in targets)
@@ -255,7 +255,7 @@
 
 	return ..(targets)
 
-/datum/ai_holder/simple_mob/melee/nurse_spider/can_attack(atom/movable/the_target)
+/datum/ai_holder/polaris/simple_mob/melee/nurse_spider/can_attack(atom/movable/the_target)
 	. = ..()
 	if(!.) // Parent returned FALSE.
 		if(istype(the_target, /obj))

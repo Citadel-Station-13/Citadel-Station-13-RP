@@ -56,7 +56,7 @@
 	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat
 	bone_amount = 3
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 /* //Commenting out for now
 	var/knockdown_chance = 15
 
@@ -71,7 +71,7 @@
 
 // Won't wander away.
 /mob/living/simple_mob/animal/space/carp/event
-	ai_holder_type = /datum/ai_holder/simple_mob/event
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/event
 
 
 /mob/living/simple_mob/animal/space/carp/large

@@ -1,0 +1,3 @@
+//* Emnity Strengths
+
+#warn impl

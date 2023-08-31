@@ -32,7 +32,7 @@
 	poison_per_bite = 2
 	poison_type = "psilocybin"
 	player_msg = "You can fire a ranged attack by clicking on an enemy or tile at a distance."
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged
 
 // Check if we should bola, or just shoot the pain ball
 /mob/living/simple_mob/animal/giant_spider/webslinger/should_special_attack(atom/A)

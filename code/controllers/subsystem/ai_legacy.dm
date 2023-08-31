@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(ai)
 
 	while(currentrun.len)
 	//	var/mob/living/L = currentrun[currentrun.len]
-		var/datum/ai_holder/A = currentrun[currentrun.len]
+		var/datum/ai_holder/polaris/A = currentrun[currentrun.len]
 		--currentrun.len
 		if(!A || QDELETED(A)) // Doesn't exist or won't exist soon.
 			continue

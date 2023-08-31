@@ -34,7 +34,7 @@
 
 
 	say_list_type = /datum/say_list/bradley
-	ai_holder_type = /datum/ai_holder/simple_mob/horror
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/horror
 
 	bone_amount = 4
 	hide_amount = 2

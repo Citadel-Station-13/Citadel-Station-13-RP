@@ -22,7 +22,7 @@
 	attacktext = list("Bites")
 
 	say_list_type = /datum/say_list/fennix
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative
 
 /datum/say_list/fennix
 	speak = list("SQUEL!","SQEL?","Skree.")

@@ -33,7 +33,7 @@
 
 	projectiletype = /obj/projectile/beam/midlaser
 
-	ai_holder_type = /datum/ai_holder/simple_mob/intentional/adv_dark_gygax
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/adv_dark_gygax
 
 /mob/living/simple_mob/mechanical/mecha/combat/gygax/manned
 	pilot_type = /mob/living/simple_mob/humanoid/merc/ranged // Carries a pistol.

@@ -53,7 +53,7 @@
 	maxbodytemp = 900
 
 	say_list_type = /datum/say_list/corrupthound
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/corrupthound
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive/corrupthound
 
 	buckle_max_mobs = 1 //Yeehaw
 	buckle_allowed = TRUE
@@ -99,7 +99,7 @@
 
 	vore_pounce_chance = 0 //It does ranged attacks anyway
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/sniper
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/sniper
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/gunner
 	name = "gunner hound"
@@ -120,7 +120,7 @@
 
 	vore_pounce_chance = 0 //It does ranged attacks anyway
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 
 
@@ -210,7 +210,7 @@
 	say_maybe_target = list("MEAT?", "NEW FRIEND?", "WHAT!", "Not again. NOT AGAIN!", "FRIEND?")
 	say_got_target = list("HERE COMES BIG MEAN HUG MACHINE!", "I'LL BE GENTLE!", "FUEL ME FRIEND!", "I*M SO SORRY!", "YUMMY TREAT DETECTED!", "LOVE ME!", "Not again. NOT AGAIN!")
 
-/datum/ai_holder/simple_mob/melee/evasive/corrupthound
+/datum/ai_holder/polaris/simple_mob/melee/evasive/corrupthound
 	violent_breakthrough = TRUE
 	can_breakthrough = TRUE
 

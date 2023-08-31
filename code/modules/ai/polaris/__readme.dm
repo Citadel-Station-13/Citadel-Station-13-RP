@@ -17,7 +17,7 @@ In previous iterations of AI systems, the AI is generally written into the mob's
 which has some advantages, but often makes the code rigid, and also tied the speed of the AI
 to the mob's own SSticker, meaning it could only decide every two seconds.
 
-Instead, this version has the code for the AI held inside an /datum/ai_holder object,
+Instead, this version has the code for the AI held inside an /datum/ai_holder/polaris object,
 which is carried by the mob it controls. This gives some advantages;
 	All /mob/living mobs can potentially have an AI applied to them, and utilize the
 	same base code while adding specialized code on top.
@@ -49,8 +49,8 @@ in the future.
 [Flow of Processing]
 
 Terrible visual representation here;
-AI Subsystem	-> Every 0.5s -> /datum/ai_holder/handle_tactics()	-> switch(stance)...
-				-> Every 2.0s -> /datum/ai_holder/handle_strategicals()	-> switch(stance)...
+AI Subsystem	-> Every 0.5s -> /datum/ai_holder/polaris/handle_tactics()	-> switch(stance)...
+				-> Every 2.0s -> /datum/ai_holder/polaris/handle_strategicals()	-> switch(stance)...
 
 The AI datum is not processed by the mob itself, but instead it is directly processed
 by a new AI subsystem. The AI subsystem contains a list of all active ai_holder

@@ -9,7 +9,7 @@
 	response_disarm = "shoos"
 	response_harm   = "hits"
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 	internal_organs = list(\
 		/obj/item/organ/internal/brain,\

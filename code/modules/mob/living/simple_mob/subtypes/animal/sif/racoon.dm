@@ -53,7 +53,7 @@
 		)
 
 	say_list_type = /datum/say_list/sakimm
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative/sakimm
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative/sakimm
 
 	bone_amount = 2
 	hide_amount = 2
@@ -167,7 +167,7 @@
 					break
 		return has_loot
 
-/datum/ai_holder/simple_mob/retaliate/cooperative/sakimm/handle_special_strategical()	// Just needs to take hats.
+/datum/ai_holder/polaris/simple_mob/retaliate/cooperative/sakimm/handle_special_strategical()	// Just needs to take hats.
 	var/mob/living/simple_mob/animal/sif/sakimm/S = holder
 
 	if(holder.get_active_held_item() && istype(holder.get_active_held_item(), /obj/item/clothing/head) && !S.hat)
@@ -177,10 +177,10 @@
 
 /mob/living/simple_mob/animal/sif/sakimm/intelligent
 	desc = "What appears to be an oversized rodent with hands. This one has a curious look in its eyes."
-	ai_holder_type = /datum/ai_holder/simple_mob/intentional/sakimm
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/sakimm
 	randomize_size = FALSE	// Most likely to have a hat.
 
-/datum/ai_holder/simple_mob/intentional/sakimm
+/datum/ai_holder/polaris/simple_mob/intentional/sakimm
 	hostile = FALSE
 	retaliate = TRUE
 	vision_range = 10
@@ -195,11 +195,11 @@
 	var/search_delay = 2 SECONDS	// How often can we look for item targets?
 	var/last_search = 0
 
-/datum/ai_holder/simple_mob/intentional/sakimm/New()
+/datum/ai_holder/polaris/simple_mob/intentional/sakimm/New()
 	..()
 	original_home_distance = max_home_distance
 
-/datum/ai_holder/simple_mob/intentional/sakimm/post_melee_attack(atom/A)
+/datum/ai_holder/polaris/simple_mob/intentional/sakimm/post_melee_attack(atom/A)
 	if(istype(A, /obj/item) && !holder.get_active_held_item() && holder.Adjacent(A))
 		var/obj/item/I = A
 		I.attack_hand(holder)
@@ -209,7 +209,7 @@
 		holder.face_atom(A)
 		request_help()	// And we're going to call friends, too.
 
-/datum/ai_holder/simple_mob/intentional/sakimm/list_targets()
+/datum/ai_holder/polaris/simple_mob/intentional/sakimm/list_targets()
 	. = hearers(vision_range, holder) - holder
 
 	var/static/hostile_machines = typecacheof(list(/obj/machinery/porta_turret, /obj/mecha))
@@ -236,7 +236,7 @@
 
 	. -= holder.contents
 
-/datum/ai_holder/simple_mob/intentional/sakimm/find_target(var/list/possible_targets, var/has_targets_list = FALSE)
+/datum/ai_holder/polaris/simple_mob/intentional/sakimm/find_target(var/list/possible_targets, var/has_targets_list = FALSE)
 	var/can_pick_mobs = TRUE
 
 	if(!hostile)
@@ -266,7 +266,7 @@
 	give_target(new_target)
 	return new_target
 
-/datum/ai_holder/simple_mob/intentional/sakimm/pre_melee_attack(atom/A)
+/datum/ai_holder/polaris/simple_mob/intentional/sakimm/pre_melee_attack(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		// Are we holding something? If so, drop it, we have a new target to kill, and we shouldn't use their weapons.
@@ -297,7 +297,7 @@
 	else
 		holder.a_intent = INTENT_HARM
 
-/datum/ai_holder/simple_mob/intentional/sakimm/should_go_home()
+/datum/ai_holder/polaris/simple_mob/intentional/sakimm/should_go_home()
 	if((!returns_home && !holder.get_active_held_item()) || !home_turf)	// If we have an item, we want to go home.
 		return FALSE
 	if(get_dist(holder, home_turf) > max_home_distance)
@@ -307,14 +307,14 @@
 			return TRUE
 	return FALSE
 
-/datum/ai_holder/simple_mob/intentional/sakimm/handle_special_tactic()
+/datum/ai_holder/polaris/simple_mob/intentional/sakimm/handle_special_tactic()
 	var/mob/living/simple_mob/animal/sif/sakimm/S = holder
 	if(S.hat)
 		hoard_items = FALSE
 	else
 		hoard_items = TRUE
 
-/datum/ai_holder/simple_mob/intentional/sakimm/handle_special_strategical()
+/datum/ai_holder/polaris/simple_mob/intentional/sakimm/handle_special_strategical()
 	var/mob/living/simple_mob/animal/sif/sakimm/S = holder
 	var/carrying_item = FALSE
 
@@ -343,5 +343,5 @@
 	if(!holder.get_active_held_item())
 		max_home_distance = original_home_distance
 
-/datum/ai_holder/simple_mob/intentional/sakimm/special_flee_check()
+/datum/ai_holder/polaris/simple_mob/intentional/sakimm/special_flee_check()
 	return holder.get_active_held_item()

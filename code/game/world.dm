@@ -440,6 +440,17 @@ GLOBAL_LIST(topic_status_cache)
 	for(var/datum/controller/subsystem/S in Master.subsystems)
 		S.on_max_z_changed(old_z_count, new_z_count)
 
+/// Set FPS
+/world/proc/set_fps(fps)
+	set_ticklag(10 / fps)
+
+/// Set ticklag
+/world/proc/set_ticklag(ticklag)
+	var/old = tick_lag
+	tick_lag = ticklag
+	for(var/datum/controller/subsystem/subsystem in Master.subsystems)
+		subsystem.on_ticklag_changed(old, ticklag)
+
 /proc/assert_players_by_zlevel_list()
 	if(!islist(GLOB.players_by_zlevel))
 		GLOB.players_by_zlevel = list()

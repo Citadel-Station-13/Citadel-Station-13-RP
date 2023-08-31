@@ -1,6 +1,6 @@
 // Contains code for speaking and emoting.
 
-/datum/ai_holder
+/datum/ai_holder/polaris
 	var/threaten = FALSE				// If hostile and sees a valid target, gives a 'warning' to the target before beginning the attack.
 	var/threatening = FALSE				// If the mob actually gave the warning, checked so it doesn't constantly yell every tick.
 	var/threaten_delay = 3 SECONDS		// How long a 'threat' lasts, until actual fighting starts. If null, the mob never starts the fight but still does the threat.
@@ -12,7 +12,7 @@
 	var/speak_chance = 0				// Probability that the mob talks (this is 'X in 200' chance since even 1/100 is pretty noisy)
 
 
-/datum/ai_holder/proc/should_threaten()
+/datum/ai_holder/polaris/proc/should_threaten()
 	if(!threaten)
 		return FALSE // We don't negotiate.
 	if(target in attackers)
@@ -25,7 +25,7 @@
 		return FALSE // We threatened someone recently, so lets show them we mean business.
 	return TRUE // Lets give them a chance to choose wisely and walk away.
 
-/datum/ai_holder/proc/threaten_target()
+/datum/ai_holder/polaris/proc/threaten_target()
 	holder.face_atom(target) // Constantly face the target.
 
 	if(!threatening) // First tick.
@@ -61,7 +61,7 @@
 				playsound(target.loc, holder.say_list.stand_down_sound, 50, 1) // Actual aim-mode also does that so at least it's consistant.
 
 // Determines what is deserving of a warning when STANCE_ALERT is active.
-/datum/ai_holder/proc/will_threaten(mob/living/the_target)
+/datum/ai_holder/polaris/proc/will_threaten(mob/living/the_target)
 	if(!isliving(the_target))
 		return FALSE // Turrets don't give a fuck so neither will we.
 	/*
@@ -80,7 +80,7 @@
 #define COMM_AUDIBLE_EMOTE		"audible emote"
 #define COMM_VISUAL_EMOTE		"visual emote"
 
-/datum/ai_holder/proc/handle_idle_speaking()
+/datum/ai_holder/polaris/proc/handle_idle_speaking()
 	if(rand(0,200) < speak_chance)
 		// Check if anyone is around to 'appreciate' what we say.
 		var/alone = TRUE
@@ -120,11 +120,11 @@
 
 // Handles the holder hearing a mob's say()
 // Does nothing by default, override this proc for special behavior.
-/datum/ai_holder/proc/on_hear_say(mob/living/speaker, message)
+/datum/ai_holder/polaris/proc/on_hear_say(mob/living/speaker, message)
 	return
 
 // This is to make responses feel a bit more natural and not instant.
-/datum/ai_holder/proc/delayed_say(var/message, var/mob/speak_to)
+/datum/ai_holder/polaris/proc/delayed_say(var/message, var/mob/speak_to)
 	spawn(rand(1 SECOND, 2 SECONDS))
 		if(!src || !holder || !can_act())  // We might've died/got deleted/etc in the meantime.
 			return

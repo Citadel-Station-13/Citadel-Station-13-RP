@@ -22,6 +22,10 @@
 	///Used for the calculate_adjacencies proc for icon smoothing.
 	var/can_be_unanchored = FALSE
 
+	//* AI Holders
+	/// AI holder bound to us
+	var/datum/ai_holder/ai_holder
+
 	//? Intrinsics
 	/// movable flags - see [code/__DEFINES/_flags/atoms.dm]
 	var/movable_flags = NONE
