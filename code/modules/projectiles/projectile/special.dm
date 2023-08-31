@@ -217,7 +217,7 @@
 	embed_chance = 0 // nope
 	nodamage = 1
 	damage_type = HALLOSS
-	muzzle_type = /obj/effect/projectile/muzzle/bullet
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/bullet
 
 /obj/projectile/bola
 	name = "bola"
@@ -225,7 +225,7 @@
 	damage = 5
 	embed_chance = 0 //Nada.
 	damage_type = HALLOSS
-	muzzle_type = null
+	hitscan_muzzle_type = null
 
 	combustion = FALSE
 
@@ -244,7 +244,7 @@
 	damage = 10
 	embed_chance = 0 //Nada.
 	damage_type = BRUTE
-	muzzle_type = null
+	hitscan_muzzle_type = null
 
 	combustion = FALSE
 
@@ -268,9 +268,9 @@
 	light_power = 3
 	light_color = "#3300ff"
 
-	muzzle_type = /obj/effect/projectile/tungsten/muzzle
-	tracer_type = /obj/effect/projectile/tungsten/tracer
-	impact_type = /obj/effect/projectile/tungsten/impact
+	hitscan_muzzle_type = /obj/effect/projectile/tungsten/muzzle
+	hitscan_tracer_type = /obj/effect/projectile/tungsten/tracer
+	hitscan_impact_type = /obj/effect/projectile/tungsten/impact
 
 /obj/projectile/beam/tungsten/on_hit(var/atom/target, var/blocked = 0)
 	if(isliving(target))

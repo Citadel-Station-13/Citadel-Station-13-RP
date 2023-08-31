@@ -7,9 +7,9 @@
     damage_type = HALLOSS
     light_color = "#00CECE"
 
-    muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-    tracer_type = /obj/effect/projectile/tracer/laser_omni
-    impact_type = /obj/effect/projectile/impact/laser_omni
+    hitscan_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+    hitscan_tracer_type = /obj/effect/projectile/tracer/laser_omni
+    hitscan_impact_type = /obj/effect/projectile/impact/laser_omni
 
 /obj/projectile/beam/stun
 	agony = 35
@@ -22,9 +22,9 @@
 	damage_type = HALLOSS
 	light_color = "#00CC33"
 
-	muzzle_type = /obj/effect/projectile/muzzle/xray
-	tracer_type = /obj/effect/projectile/tracer/xray
-	impact_type = /obj/effect/projectile/impact/xray
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/xray
+	hitscan_tracer_type = /obj/effect/projectile/tracer/xray
+	hitscan_impact_type = /obj/effect/projectile/impact/xray
 
 /obj/projectile/beam/energy_net/on_hit(var/atom/netted)
 	do_net(netted)
@@ -38,9 +38,9 @@
 	icon_state = "bluelaser"
 	light_color = "#0066FF"
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_blue
-	tracer_type = /obj/effect/projectile/tracer/laser_blue
-	impact_type = /obj/effect/projectile/impact/laser_blue
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/laser_blue
+	hitscan_tracer_type = /obj/effect/projectile/tracer/laser_blue
+	hitscan_impact_type = /obj/effect/projectile/impact/laser_blue
 
 /obj/projectile/beam/medigun
 	name = "healing beam"
@@ -54,9 +54,9 @@
 
 	combustion = FALSE
 
-	muzzle_type = /obj/effect/projectile/muzzle/medigun
-	tracer_type = /obj/effect/projectile/tracer/medigun
-	impact_type = /obj/effect/projectile/impact/medigun
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/medigun
+	hitscan_tracer_type = /obj/effect/projectile/tracer/medigun
+	hitscan_impact_type = /obj/effect/projectile/impact/medigun
 
 /obj/projectile/beam/medigun/on_hit(var/atom/target, var/blocked = 0)
 	if(istype(target, /mob/living/carbon/human))

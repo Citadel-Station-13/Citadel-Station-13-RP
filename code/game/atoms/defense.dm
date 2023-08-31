@@ -1,6 +1,21 @@
 //! Welcome to the atom damage module.
 //! Enjoy the bitfield and #define vomit.
 
+#warn replace all calls
+/**
+ * Called on projectile hit
+ *
+ * @params
+ * * proj - the projectile
+ * * flags - BULLET_HIT_* flags
+ * * def_zone - hit zone
+ *
+ * @return BULLET_ACT_* enum
+ */
+/atom/proc/bullet_act(obj/projectile/proj, flags, def_zone)
+	P.on_hit(src, 0, def_zone)
+	. = 0
+
 //? Deconstruction
 
 /**

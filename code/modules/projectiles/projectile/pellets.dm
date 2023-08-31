@@ -66,7 +66,7 @@
 
 	silenced = 1 //embedding messages are still produced so it's kind of weird when enabled.
 	no_attack_log = 1
-	muzzle_type = null
+	hitscan_muzzle_type = null
 
 /obj/projectile/bullet/pellet/fragment/strong
 	damage = 15
@@ -101,7 +101,7 @@
 
 	silenced = 1
 	no_attack_log = 1
-	muzzle_type = null
+	hitscan_muzzle_type = null
 	pellets = 3
 
 /obj/projectile/bullet/pellet/fragment/tank/small

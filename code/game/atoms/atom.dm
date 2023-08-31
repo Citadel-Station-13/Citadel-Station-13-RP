@@ -328,11 +328,6 @@
 	// todo: SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
 
-
-/atom/proc/bullet_act(obj/projectile/P, def_zone)
-	P.on_hit(src, 0, def_zone)
-	. = 0
-
 // Called when a blob expands onto the tile the atom occupies.
 /atom/proc/blob_act()
 	return

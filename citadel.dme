@@ -259,6 +259,7 @@
 #include "code\__DEFINES\procs\update_icon.dm"
 #include "code\__DEFINES\projectiles\ammo_casing.dm"
 #include "code\__DEFINES\projectiles\guns.dm"
+#include "code\__DEFINES\projectiles\projectiles.dm"
 #include "code\__DEFINES\radiation\flags.dm"
 #include "code\__DEFINES\radiation\ignore.dm"
 #include "code\__DEFINES\radiation\insulation.dm"

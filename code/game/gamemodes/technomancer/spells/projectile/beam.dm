@@ -22,6 +22,6 @@
 /obj/projectile/beam/blue
 	damage = 30
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_blue
-	tracer_type = /obj/effect/projectile/tracer/laser_blue
-	impact_type = /obj/effect/projectile/impact/laser_blue
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/laser_blue
+	hitscan_tracer_type = /obj/effect/projectile/tracer/laser_blue
+	hitscan_impact_type = /obj/effect/projectile/impact/laser_blue

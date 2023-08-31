@@ -5,7 +5,7 @@
 	var/reagent_amount = 15
 	range = 15 //shorter range
 
-	muzzle_type = null
+	hitscan_muzzle_type = null
 
 /obj/projectile/bullet/chemdart/Initialize(mapload)
 	. = ..()

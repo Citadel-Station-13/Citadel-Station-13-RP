@@ -90,9 +90,9 @@
 	damage_type = HALLOSS
 	light_color = "#00CC33"
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-	tracer_type = /obj/effect/projectile/tracer/laser_omni
-	impact_type = /obj/effect/projectile/impact/laser_omni
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	hitscan_tracer_type = /obj/effect/projectile/tracer/laser_omni
+	hitscan_impact_type = /obj/effect/projectile/impact/laser_omni
 
 /obj/projectile/beam/final_option/on_hit(var/atom/impacted)
 	if(isliving(impacted))

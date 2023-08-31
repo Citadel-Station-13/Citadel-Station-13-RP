@@ -26,9 +26,9 @@
 	nodamage = 1
 	damage_type = HALLOSS
 
-	muzzle_type = /obj/effect/projectile/muzzle/lightning
-	tracer_type = /obj/effect/projectile/tracer/lightning
-	impact_type = /obj/effect/projectile/impact/lightning
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/lightning
+	hitscan_tracer_type = /obj/effect/projectile/tracer/lightning
+	hitscan_impact_type = /obj/effect/projectile/impact/lightning
 
 	var/bounces = 3				//How many times it 'chains'.  Note that the first hit is not counted as it counts /bounces/.
 	var/list/hit_mobs = list() 	//Mobs which were already hit.

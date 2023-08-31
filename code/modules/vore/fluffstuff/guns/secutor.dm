@@ -53,9 +53,9 @@
 	light_range = 2
 	light_power = 0.6
 	light_color = "#BF2F4B"
-	muzzle_type = /obj/effect/projectile/muzzle/secutorkill
-	tracer_type = /obj/effect/projectile/tracer/secutorkill
-	impact_type = /obj/effect/projectile/impact/secutorkill
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/secutorkill
+	hitscan_tracer_type = /obj/effect/projectile/tracer/secutorkill
+	hitscan_impact_type = /obj/effect/projectile/impact/secutorkill
 	damage = 20
 
 //--------------- Projectiles ----------------

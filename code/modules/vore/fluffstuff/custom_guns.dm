@@ -514,26 +514,26 @@ END OF CITADEL CHANGES */
 	name = "laser beam"
 	icon_state = "xray"
 	light_color = "#00FF00"
-	muzzle_type = /obj/effect/projectile/muzzle/xray
-	tracer_type = /obj/effect/projectile/tracer/xray
-	impact_type = /obj/effect/projectile/impact/xray
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/xray
+	hitscan_tracer_type = /obj/effect/projectile/tracer/xray
+	hitscan_impact_type = /obj/effect/projectile/impact/xray
 
 /obj/projectile/beam/imperial
 	name = "laser beam"
 	fire_sound = 'sound/weapons/mandalorian.ogg'
 	icon_state = "darkb"
 	light_color = "#8837A3"
-	muzzle_type = /obj/effect/projectile/muzzle/darkmatter
-	tracer_type = /obj/effect/projectile/tracer/darkmatter
-	impact_type = /obj/effect/projectile/impact/darkmatter
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/darkmatter
+	hitscan_tracer_type = /obj/effect/projectile/tracer/darkmatter
+	hitscan_impact_type = /obj/effect/projectile/impact/darkmatter
 
 /obj/projectile/beam/stun/kin21
 	name = "kinh21 stun beam"
 	icon_state = "omnilaser"
 	light_color = "#0000FF"
-	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-	tracer_type = /obj/effect/projectile/tracer/laser_omni
-	impact_type = /obj/effect/projectile/impact/laser_omni
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	hitscan_tracer_type = /obj/effect/projectile/tracer/laser_omni
+	hitscan_impact_type = /obj/effect/projectile/impact/laser_omni
 
 //--------------- StG-60 ----------------
 /obj/item/ammo_magazine/m792

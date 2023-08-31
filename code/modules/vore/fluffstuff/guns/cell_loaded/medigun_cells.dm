@@ -16,9 +16,9 @@
 
 	combustion = FALSE
 
-	muzzle_type = /obj/effect/projectile/muzzle/medigun
-	tracer_type = /obj/effect/projectile/tracer/medigun
-	impact_type = /obj/effect/projectile/impact/medigun
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/medigun
+	hitscan_tracer_type = /obj/effect/projectile/tracer/medigun
+	hitscan_impact_type = /obj/effect/projectile/impact/medigun
 
 /obj/projectile/beam/medical_cell/on_hit(var/mob/living/carbon/human/target) //what does it do when it hits someone?
 	return

@@ -1,3 +1,5 @@
+#warn kill this lmao
+
 /datum/beam_components_cache
 	var/list/beam_components = list()
 

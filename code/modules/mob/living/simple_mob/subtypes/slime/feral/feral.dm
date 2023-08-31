@@ -68,7 +68,7 @@
 	damage_type = BRUTE
 	damage_flag = ARMOR_MELEE
 	armor_penetration = 30
-	speed = 2
+	speed = TILES_PER_SECOND(7.5)
 	icon_scale_x = 2 // It hits like a truck.
 	icon_scale_y = 2
 	sharp = TRUE

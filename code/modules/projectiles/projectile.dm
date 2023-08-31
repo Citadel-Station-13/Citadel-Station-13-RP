@@ -12,43 +12,121 @@
 	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	depth_level = INFINITY // nothing should be passing over us from depth
+	generic_canpass = FALSE
 
-	////TG PROJECTILE SYTSEM
+	/** PROJECTILE PIERCING
+	  * WARNING:
+	  * Projectile piercing MUST be done using these variables.
+	  * Ordinary passflags will result in can_hit_target being false unless directly clicked on - similar to projectile_phasing but without even going to process_hit.
+	  * The two flag variables below both use pass flags.
+	  * In the context of LETPASStHROW, it means the projectile will ignore things that are currently "in the air" from a throw.
+	  *
+	  * Also, projectiles sense hits using Bump(), and then pierce them if necessary.
+	  * They simply do not follow conventional movement rules.
+	  * NEVER flag a projectile as PHASING movement type.
+	  * If you so badly need to make one go through *everything*, override check_pierce() for your projectile to always return PROJECTILE_PIERCE_PHASE/HIT.
+	  */
+	/// The "usual" flags of pass_flags is used in that can_hit_target ignores these unless they're specifically targeted/clicked on. This behavior entirely bypasses process_hit if triggered, rather than phasing which uses prehit_pierce() to check.
+	pass_flags = PASSTABLE
+	/// If FALSE, allow us to hit something directly targeted/clicked/whatnot even if we're able to phase through it
+	var/phases_through_direct_target = FALSE
+	/// Bitflag for things the projectile should just phase through entirely - No hitting unless direct target and [phasing_ignore_direct_target] is FALSE. Uses pass_flags flags.
+	var/pass_flags_phase = NONE
+	/// Bitflag for things the projectile should hit, but pierce through without deleting itself. Defers to projectile_phasing. Uses pass_flags flags.
+	var/pass_flags_pierce = NONE
+	/// number of times we've pierced something. Incremented BEFORE bullet_act and on_hit proc!
+	var/pierces = 0
+
+	/// current angle
+	var/angle = 0
+	/// original target
+	var/atom/target
+	/// firer if it exists
+	var/atom/firer
+	/// already passed / hit
+	var/list/hit = list()
+	/// original starting turf
+	var/turf/starting_turf
+
+	/// cached dx over dy; x movement is pixels * dx_ratio
+	var/dx_ratio = 0
+	/// cached dy over dx; y movement is pixels * dy_ratio
+	var/dy_ratio = 1
+	/// current pixel x in turf; used because pixel_x is rounded to nearest 1
+	var/px_current
+	/// current pixel y in turf; used because pixel_y is rounded to nearest 1
+	var/py_current
+	/// do not reset px/py current on forced movement
+	var/trajectory_ignore_forcemove = FALSE
+
+	/// are we fired
+	var/fired = FALSE
+	/// are we paused right now?
+	var/paused = FALSE
+
+	/// pixels per decisecond;
+	var/speed = TILES_PER_SECOND(17.5)
+	/// whether or not this is hitscan.
+	var/hitscan = FALSE
+
+	/// set to TRUE if the projectile should not face the angle
+	/// projectiles should face north by default with 1 sprite per state (so no directionals)
+	var/nondirectional_sprite = FALSE
+
+	/// damage amount
+	var/damage = 10
+	/// damage tier - goes hand in hand with [damage_armor]
+	var/damage_tier = BULLET_TIER_DEFAULT
+	/// todo: legacy - BRUTE, BURN, TOX, OXY, CLONE, HALLOSS, ELECTROCUTE, BIOACID are the only things that should be in here
+	var/damage_type = BRUTE
+	/// armor flag for damage - goes hand in hand with [damage_tier]
+	var/damage_flag = ARMOR_BULLET
+	/// damage mode - see [code/__DEFINES/combat/damage.dm]
+	var/damage_mode = NONE
+
+	/// assoc list of paths to amount for submunitions; set to use submunitions
+	var/list/submunitions
+	/// delete self after firing submunitions
+	var/submunitions_only = FALSE
+	/// spread to each side maximum
+	var/submunition_spread = 0
+	/// spread mode
+	var/submunition_spread_mode = SUBMUNITION_SPREAD_EVENLY
+	/// spread submunition damage to one individual type
+	/// usually you set it to the type of the only submunition path
+	var/submunition_disperse_damage
+	/// submunitions usually inherit our accuracy but this gives a mod to every submunition
+	var/submunition_accuracy = 0
+
+	/// beam segments stored; assoc list datum/point --> datum/point start/end.
+	/// used for hitscan tracer drawing.
+	var/list/hitscan_segments
+	/// the last point recorded
+	var/datum/point/hitscan_index
+	/// /obj/effect/projectile/tracer path
+	var/hitscan_tracer_type
+	/// /obj/effect/projectile/muzzle path
+	var/hitscan_muzzle_type
+	/// /obj/effect/projectile/impact path
+	var/hitscan_impact_type
+
+	/// point blanking ignores accuracy checks
+	/// this applies to submunitions too
+	var/point_blanking_doesnt_miss = FALSE
+
+	#warn below
+
 	//Projectile stuff
 	var/range = 50
 	var/originalRange
 
-	//Fired processing vars
-	var/fired = FALSE	//Have we been fired yet
-	var/paused = FALSE	//for suspending the projectile midair
-	var/last_projectile_move = 0
-	var/last_process = 0
-	var/time_offset = 0
-	var/datum/point/vector/trajectory
-	var/trajectory_ignore_forcemove = FALSE	//instructs forceMove to NOT reset our trajectory to the new location!
 	var/ignore_source_check = FALSE
 
-	var/speed = 0.55			//Amount of deciseconds it takes for projectile to travel
-	var/Angle = 0
-	var/original_angle = 0		//Angle at firing
-	var/nondirectional_sprite = FALSE //Set TRUE to prevent projectiles from having their sprites rotated based on firing angle
 	var/spread = 0			//amount (in degrees) of projectile spread
 	animate_movement = 0	//Use SLIDE_STEPS in conjunction with legacy
 	var/ricochets = 0
 	var/ricochets_max = 2
 	var/ricochet_chance = 30
-
-	//Hitscan
-	var/hitscan = FALSE		//Whether this is hitscan. If it is, speed is basically ignored.
-	var/list/beam_segments	//assoc list of datum/point or datum/point/vector, start = end. Used for hitscan effect generation.
-	var/datum/point/beam_index
-	var/turf/hitscan_last	//last turf touched during hitscanning.
-	/// do we have a tracer? if not we completely ignore hitscan logic
-	var/has_tracer = TRUE
-	var/tracer_type
-	var/muzzle_type
-	var/impact_type
-	var/datum/beam_components_cache/beam_components
 
 	var/miss_sounds
 	var/ricochet_sounds
@@ -77,48 +155,20 @@
 	//Targetting
 	var/yo = null
 	var/xo = null
-	var/atom/original = null // the original target clicked
-	var/turf/starting = null // the projectile's starting turf
-	var/list/permutated = list() // we've passed through these atoms, don't try to hit them again
 	var/p_x = 16
 	var/p_y = 16			// the pixel location of the tile that the player clicked. Default is the center
 
 	var/def_zone = ""	//Aiming at
-	var/mob/firer = null//Who shot it
 	var/silenced = 0	//Attack message
 	var/shot_from = "" // name of the object which shot us
 
 	var/accuracy = 0
 	var/dispersion = 0.0
 
-	// Sub-munitions. Basically, multi-projectile shotgun, rather than pellets.
-	var/use_submunitions = FALSE
-	var/only_submunitions = FALSE // Will the projectile delete itself after firing the submunitions?
-	var/list/submunitions = list() // Assoc list of the paths of any submunitions, and how many they are. [projectilepath] = [projectilecount].
-	var/submunition_spread_max = 30 // Divided by 10 to get the percentile dispersion.
-	var/submunition_spread_min = 5 // Above.
-	/// randomize spread? if so, evenly space between 0 and max on each side.
-	var/submunition_constant_spread = FALSE
-	var/force_max_submunition_spread = FALSE // Do we just force the maximum?
-	var/spread_submunition_damage = FALSE // Do we assign damage to our sub projectiles based on our main projectile damage?
-
-	//? Damage - default handling
-	/// damage amount
-	var/damage = 10
-	/// damage tier - goes hand in hand with [damage_armor]
-	var/damage_tier = BULLET_TIER_DEFAULT
-	/// todo: legacy - BRUTE, BURN, TOX, OXY, CLONE, HALLOSS, ELECTROCUTE, BIOACID are the only things that should be in here
-	var/damage_type = BRUTE
-	/// armor flag for damage - goes hand in hand with [damage_tier]
-	var/damage_flag = ARMOR_BULLET
-	/// damage mode - see [code/__DEFINES/combat/damage.dm]
-	var/damage_mode = NONE
-
 	var/SA_bonus_damage = 0 // Some bullets inflict extra damage on simple animals.
 	var/SA_vulnerability = null // What kind of simple animal the above bonus damage should be applied to. Set to null to apply to all SAs.
 	var/nodamage = 0 //Determines if the projectile will skip any damage inflictions
 	var/taser_effect = 0 //If set then the projectile will apply it's agony damage using stun_effect_act() to mobs it hits, and other damage will be ignored
-	var/projectile_type = /obj/projectile
 	var/penetrating = 0 //If greater than zero, the projectile will pass through dense objects as specified by on_penetrate()
 		//Effects
 	var/incendiary = 0 //1 for ignite on hit, 2 for trail of fire. 3 maybe later for burst of fire around the impact point. - Mech
@@ -156,6 +206,15 @@
 	var/temporary_unstoppable_movement = FALSE
 	var/no_attack_log = FALSE
 	var/hitsound
+
+#warn above
+
+/obj/projectile/Destroy()
+	if(fired)
+		STOP_PROCESSING(SSprojectiles, src)
+	return ..()
+
+#warn below
 
 /obj/projectile/proc/Range()
 	range--
@@ -302,16 +361,6 @@
 
 	for(var/i in 1 to required_moves)
 		pixel_move(1, FALSE)
-
-/obj/projectile/proc/setAngle(new_angle)	//wrapper for overrides.
-	Angle = new_angle
-	if(!nondirectional_sprite)
-		var/matrix/M = new
-		M.Turn(Angle)
-		transform = M
-	if(trajectory)
-		trajectory.set_angle(new_angle)
-	return TRUE
 
 /obj/projectile/forceMove(atom/target)
 	if(!isloc(target) || !isloc(loc) || !z)
@@ -470,8 +519,6 @@
 /obj/projectile/Destroy()
 	if(hitscan)
 		finalize_hitscan_and_generate_tracers()
-	STOP_PROCESSING(SSprojectiles, src)
-	qdel(trajectory)
 	return ..()
 
 /obj/projectile/proc/cleanup_beam_segments()
@@ -499,13 +546,13 @@
 	if(!length(beam_segments))
 		return
 	beam_components = new
-	if(tracer_type)
+	if(hitscan_tracer_type)
 		var/tempref = "\ref[src]"
 		for(var/datum/point/p in beam_segments)
-			generate_tracer_between_points(p, beam_segments[p], beam_components, tracer_type, color, duration, hitscan_light_range, hitscan_light_color_override, hitscan_light_intensity, tempref)
-	if(muzzle_type && duration > 0)
+			generate_tracer_between_points(p, beam_segments[p], beam_components, hitscan_tracer_type, color, duration, hitscan_light_range, hitscan_light_color_override, hitscan_light_intensity, tempref)
+	if(hitscan_muzzle_type && duration > 0)
 		var/datum/point/p = beam_segments[1]
-		var/atom/movable/thing = new muzzle_type
+		var/atom/movable/thing = new hitscan_muzzle_type
 		p.move_atom_to_src(thing)
 		var/matrix/M = new
 		M.Turn(original_angle)
@@ -513,9 +560,9 @@
 		thing.color = color
 		thing.set_light(muzzle_flash_range, muzzle_flash_intensity, muzzle_flash_color_override? muzzle_flash_color_override : color)
 		beam_components.beam_components += thing
-	if(impacting && impact_type && duration > 0)
+	if(impacting && hitscan_impact_type && duration > 0)
 		var/datum/point/p = beam_segments[beam_segments[beam_segments.len]]
-		var/atom/movable/thing = new impact_type
+		var/atom/movable/thing = new hitscan_impact_type
 		p.move_atom_to_src(thing)
 		var/matrix/M = new
 		M.Turn(Angle)
@@ -801,3 +848,146 @@
  */
 /obj/projectile/proc/get_final_damage(atom/target)
 	return run_damage_vulnerability(target)
+
+#warn above
+
+//* Setters
+
+/obj/projectile/proc/set_angle(angle)
+	src.angle = angle
+	src.dx_ratio = sin(angle)
+	src.dy_ratio = cos(angle)
+	if(!nondirectional_sprite)
+		var/matrix/turning = new
+		turning.Turn(angle)
+		transform = turning
+
+/obj/projectile/proc/set_speed(speed)
+	src.speed = speed
+
+//* Firing
+
+/**
+ * Fires us.
+ *
+ * @params
+ * * angle_override - override angle; useful for 'userless' projectile fires because we don't have to set any other vars
+ * * point_blank - hit something point blank (duh)
+ */
+/obj/projectile/proc/fire(angle_override, atom/point_blank)
+
+#warn impl
+
+//* Processing / Flight
+
+/obj/projectile/process(delta_time)
+	if(paused)
+		return
+	#warn impl
+
+/**
+ * Propagates our simulation by an amount of pixels
+ */
+/obj/projectile/proc/increment(pixels)
+	#warn impl
+
+/**
+ * Process hitscan
+ */
+/obj/projectile/proc/hitscan()
+	#warn impl
+
+#warn impl
+
+//* Movement Hooks
+
+// todo: this is one of the last Crossed() calls we have to deal with, probably.
+/obj/projectile/Crossed(atom/movable/AM)
+	..()
+	//! legacy
+	if(AM.is_incorporeal())
+		return
+	//! end
+	scan_crossed(AM)
+
+/obj/projectile/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	if(!isnull(hit[blocker]))
+		return TRUE
+	return ..()
+
+//* Impact - Scan
+
+/**
+ * Try to hit a Crossed() target
+ */
+/obj/projectile/proc/scan_crossed_target(atom/movable/AM)
+	#warn impl
+
+/**
+ * Try to hit something on a turf
+ */
+/obj/projectile/proc/scan_moved_turf()
+	#warn impl
+
+//* Impact - Internal
+
+#warn impl
+
+//* Impact - Checks
+
+/**
+ * Returns if we can / should hit a target at all.
+ * This is before prehit_pierce and accuracy_miss.
+ *
+ * @params
+ * * A - the thing we might want to hit
+ * * point_blank - are they a point blank target
+ * * cross_failed - are we scanning for a hit due to a failed Cross().
+ */
+/obj/projectile/proc/can_hit_target(atom/A, point_blank, cross_failed)
+	#warn impl
+
+/**
+ * performs accuracy checks to see if we should hit something
+ *
+ * @params
+ * * AM - thing being hit
+ *
+ * @return TRUE to miss
+ */
+/obj/projectile/proc/accuracy_miss(atom/movable/AM)
+	#warn impl - we're going to want a tracking var for range to do that
+
+/**
+ * Checks if we should pierce something.
+ *
+ * NOT meant to be a pure proc, since this replaces prehit() which was used to do things.
+ * Return PROJECTILE_DELETE_WITHOUT_HITTING to delete projectile without hitting at all!
+ *
+ * @return PROJECTILE_PIERCE_* enum
+ */
+/obj/projectile/proc/prehit_pierce(atom/A)
+	if((projectile_phasing & A.pass_flags_self) && (phases_through_direct_target || target != A))
+		return PROJECTILE_PIERCE_PHASE
+	if(projectile_piercing & A.pass_flags_self)
+		return PROJECTILE_PIERCE_HIT
+	if(ismovable(A))
+		var/atom/movable/AM = A
+		if(!isnull(AM.throwing))
+			var/check = (AM.throwing.throw_flags & THROW_AT_OVERHAND)? ATOM_PASS_OVERHEAD_THROW : ATOM_PASS_THROWN
+			return (projectile_phasing & check)? PROJECTILE_PIERCE_PHASE : ((projectile_piercing & check)? PROJECTILE_PIERCE_HIT : PROJECTILE_PIERCE_NONE)
+	return PROJECTILE_PIERCE_NONE
+
+//* Impact - Application
+
+#warn impl
+
+//* Varedit Hooks
+
+/obj/projectile/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	. = ..()
+	if(!. || raw_edit)
+		return
+	switch(var_name)
+		if(NAMEOF(src, angle))
+			set_angle(isnum(var_value)? var_value : 0)

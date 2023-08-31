@@ -10,7 +10,7 @@
 	sharp = 1
 	var/mob_passthrough_check = 0
 
-	muzzle_type = /obj/effect/projectile/muzzle/bullet
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/bullet
 	miss_sounds = list('sound/weapons/guns/miss1.ogg','sound/weapons/guns/miss2.ogg','sound/weapons/guns/miss3.ogg','sound/weapons/guns/miss4.ogg')
 	ricochet_sounds = list('sound/weapons/guns/ricochet1.ogg', 'sound/weapons/guns/ricochet2.ogg',
 							'sound/weapons/guns/ricochet3.ogg', 'sound/weapons/guns/ricochet4.ogg')
@@ -129,11 +129,11 @@
 	agony = 10 // brute easily heals, agony not so much
 	armor_penetration = 30 // reduces shield blockchance
 	accuracy = -20 // he do miss actually
-	speed = 0.4 // if the pathfinder gets a funny burst rifle, they deserve a rival
+	speed = TILES_PER_SECOND(25) // if the pathfinder gets a funny burst rifle, they deserve a rival
 	// that's 2x projectile speed btw
 
 /obj/projectile/bullet/pistol/medium/ap/suppressor/turbo // spicy boys
-	speed = 0.2 // this is 4x projectile speed
+	speed = TILES_PER_SECOND(50) // this is 4x projectile speed
 
 /obj/projectile/bullet/pistol/strong // .357 and .44 caliber stuff. High power pistols like the Mateba or Desert Eagle. Sacrifice capacity for power.
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
@@ -300,7 +300,7 @@
 	SA_bonus_damage = 45 // 70 total on animals.
 	SA_vulnerability = MOB_CLASS_ANIMAL
 	embed_chance = -1
-	speed = 0.4
+	speed = TILES_PER_SECOND(25)
 
 /obj/projectile/bullet/rifle/a762/silver // Hunting Demons with bolt action rifles.
 	damage = 20
@@ -387,7 +387,7 @@
 /obj/projectile/bullet/musket // Big Slow and bad against armor.
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
 	damage = 60
-	speed = 1.2
+	speed = TILES_PER_SECOND(10)
 	armor_penetration = -50
 
 /obj/projectile/bullet/musket/silver // What its a classic

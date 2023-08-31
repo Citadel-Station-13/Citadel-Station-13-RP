@@ -93,7 +93,12 @@ DEFINE_BITFIELD(movable_flags, list(
  ATOM_PASS_BLOB | ATOM_PASS_MOB | ATOM_PASS_THROWN | ATOM_PASS_CLICK | \
  ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_BUCKLED)
 
-DEFINE_BITFIELD(pass_flags, list(
+DEFINE_SHARED_BITFIELD(pass_flags, list(
+	"pass_flags",
+	"pass_flags_self",
+	"pass_flags_pierce",
+	"pass_flags_phase",
+), list(
 	BITFIELD(ATOM_PASS_TABLE),
 	BITFIELD(ATOM_PASS_GLASS),
 	BITFIELD(ATOM_PASS_GRILLE),
