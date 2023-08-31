@@ -315,6 +315,9 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 		return
 
 	var/mob/living/silicon/ai/announcer/A = GLOB.virtual_announcer_ai
+	// WHY THE FUCK IS THIS A GLOBAL OBJECT
+	if(isnull(A))
+		return
 	A.SetName(from)
 	Broadcast_Message(connection, A,
 						0, "*garbled automated announcement*", src,
