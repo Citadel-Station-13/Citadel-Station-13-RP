@@ -52,12 +52,11 @@
 	var/client/theyre_here = GLOB.directory[their_ckey]
 	if(!isnull(theyre_here))
 		to_chat(theyre_here, SPAN_BOLDNOTICE("[chosen_character]'s image references have been edited by an admin."))
-		return
-	var/mob/their_mob = theyre_here?.mob
-	if(!isnull(their_mob) && (their_mob.real_name == chosen_original_name) && isliving(their_mob))
-		var/mob/living/casted = their_mob
-		if(!isnull(input_headshot))
-			casted.headshot_url = input_headshot
-		if(!isnull(input_fullref))
-			casted.fullref_url = input_fullref
-		casted.profile?.update_static_data()
+		var/mob/their_mob = theyre_here?.mob
+		if(!isnull(their_mob) && (their_mob.real_name == chosen_original_name) && isliving(their_mob))
+			var/mob/living/casted = their_mob
+			if(!isnull(input_headshot))
+				casted.headshot_url = input_headshot
+			if(!isnull(input_fullref))
+				casted.fullref_url = input_fullref
+			casted.profile?.update_static_data()
