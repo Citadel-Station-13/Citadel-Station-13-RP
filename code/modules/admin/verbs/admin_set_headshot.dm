@@ -50,7 +50,8 @@
 		their_savefile["Full_Ref_URL"] << input_fullref
 		if(their_prefs.default_slot == chosen_slot)
 			their_prefs.full_ref_url = input_fullref
-	log_and_message_admins("[key_name(src)] set [their_ckey]'s references for [chosen_original_name] (slot [chosen_slot]) to [isnull(input_headshot)? "UNCHANGED" : (input_headshot || "EMPTY)] and [isnull(input_fullref)? "UNCHANGED" : (input_fullref || "EMPTY")]")
+	log_and_message_admins("[key_name(src)] set [their_ckey]'s references for [chosen_original_name] (slot [chosen_slot]) to \
+		[isnull(input_headshot)? "UNCHANGED" : (input_headshot || "EMPTY")] and [isnull(input_fullref)? "UNCHANGED" : (input_fullref || "EMPTY")]")
 	var/client/theyre_here = GLOB.directory[their_ckey]
 	if(!isnull(theyre_here))
 		to_chat(theyre_here, SPAN_BOLDNOTICE("[chosen_character]'s image references have been edited by an admin."))
