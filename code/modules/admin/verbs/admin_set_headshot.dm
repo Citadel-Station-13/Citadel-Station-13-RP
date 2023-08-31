@@ -31,6 +31,8 @@
 			do
 				iter_name = "[orig] (#[what_the_heck++])"
 			while(!isnull(loaded_characters[iter_name]))
+		if(i == their_prefs.default_slot)
+			iter_name += " (Current)"
 		loaded_characters[iter_name] = list(i, orig)
 	loaded_characters = tim_sort(loaded_characters, /proc/cmp_text_asc)
 	var/chosen_character = input(src, "Choose the character to edit", "Reference Selection") as null|anything in loaded_characters
@@ -39,16 +41,16 @@
 	var/chosen_slot = loaded_characters[chosen_character][1]
 	var/chosen_original_name = loaded_characters[chosen_character][2]
 	var/input_headshot = input(src, "Enter the URL for the headshot image. (Cancel to skip, empty string to remove)", "Reference Selection") as text|null
+	var/input_fullref = input(src, "Enter the URL for the full reference image. (Cancel to skip, empty string to remove)", "Reference Selection") as text|null
 	if(!isnull(input_headshot))
 		their_savefile["Headshot_URL"] << input_headshot
 		if(their_prefs.default_slot == chosen_slot)
 			their_prefs.headshot_url = input_headshot
-	var/input_fullref = input(src, "Enter the URL for the full reference image. (Cancel to skip, empty string to remove)", "Reference Selection") as text|null
-	if(!isnull(input_headshot))
+	if(!isnull(input_fullref))
 		their_savefile["Full_Ref_URL"] << input_fullref
 		if(their_prefs.default_slot == chosen_slot)
 			their_prefs.full_ref_url = input_fullref
-	to_chat(src, SPAN_NOTICE("References set."))
+	log_and_message_admins("[key_name(src)] set [their_ckey]'s references for [chosen_original_name] (slot [chosen_slot]) to [isnull(input_headshot)? "UNCHANGED" : (input_headshot || "EMPTY)] and [isnull(input_fullref)? "UNCHANGED" : (input_fullref || "EMPTY")]")
 	var/client/theyre_here = GLOB.directory[their_ckey]
 	if(!isnull(theyre_here))
 		to_chat(theyre_here, SPAN_BOLDNOTICE("[chosen_character]'s image references have been edited by an admin."))
