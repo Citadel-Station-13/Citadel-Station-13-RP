@@ -474,6 +474,17 @@
 	power = 2
 	meltdose = 30
 
+//Solid Chlorine is alkaline, but gaseous Chlorine is acidic.
+/datum/reagent/acid/chlorine_gas
+	name = "Chlorine gas"
+	id = "chlorinegas"
+	description = "A pungent yellow-green acidic gas."
+	taste_description = "bleach"
+	reagent_state = REAGENT_GAS
+	color = "#c5f72d"
+	power = 5
+	meltdose = 10
+
 /datum/reagent/thermite/venom
 	name = "Pyrotoxin"
 	id = "thermite_v"

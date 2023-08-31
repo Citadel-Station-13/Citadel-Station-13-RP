@@ -142,10 +142,9 @@
 	visual_overlay = "chlorine"
 	visual_threshold = 1
 
-	gas_reagent_id = /datum/reagent/chlorine
+	gas_reagent_id = "chlorinegas"
 	gas_reagent_amount = 10
-	gas_reagent_threshold = 0.5
-	gas_reagent_factor = 1
+	gas_reagent_moles = 1
 
 /datum/gas/sulfur_dioxide
 	id = GAS_ID_SULFUR_DIOXIDE

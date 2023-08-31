@@ -28018,10 +28018,6 @@
 	dir = 1
 	},
 /obj/structure/flora/pottedplant/minitree,
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1;
-	power_rating = 45000
-	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/green/border,
 /obj/effect/floor_decal/borderfloor/corner2{
@@ -28031,6 +28027,10 @@
 /obj/effect/floor_decal/corner/green/bordercorner2,
 /obj/effect/floor_decal/corner/green/bordercorner2{
 	dir = 9
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1;
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
