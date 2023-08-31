@@ -22,6 +22,7 @@ SUBSYSTEM_DEF(air)
 	/// scrubber defaults
 	var/list/scrubber_defaults = list(
 		SCRUBBER_DEFAULT_STATION = list(/datum/gas/carbon_dioxide, /datum/gas/phoron),
+		SCRUBBER_DEFAULT_ATLAS_VIROLOGY = list(/datum/gas/carbon_dioxide, /datum/gas/phoron, /datum/gas/chlorine),
 	)
 
 	var/cost_turfs = 0

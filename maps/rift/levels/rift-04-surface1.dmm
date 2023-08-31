@@ -242,7 +242,8 @@
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8;
-	power_rating = 45000
+	power_rating = 45000;
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
@@ -1456,7 +1457,7 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4;
-	power_rating = 45000
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
@@ -1708,7 +1709,9 @@
 /obj/machinery/light/small/emergency{
 	dir = 4
 	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	scrub_default = "atlasviro"
+	},
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
 "blq" = (
@@ -2560,7 +2563,9 @@
 /obj/machinery/light/small/emergency{
 	dir = 8
 	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	scrub_default = "atlasviro"
+	},
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
 "bNj" = (
@@ -3148,7 +3153,8 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 4
+	dir = 4;
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
@@ -4504,9 +4510,6 @@
 /area/maintenance/maint_bar)
 "cZF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
 /obj/structure/cable/green{
@@ -6403,7 +6406,8 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8;
-	power_rating = 45000
+	power_rating = 45000;
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologytransitwest)
@@ -6751,7 +6755,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
 "emD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -10161,7 +10164,7 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4;
-	power_rating = 45000
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virologytransiteast)
@@ -10432,7 +10435,8 @@
 /area/quartermaster/delivery)
 "gRO" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
+	dir = 1;
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
@@ -11043,6 +11047,14 @@
 "hgc" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/patient_a)
+"hgd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/white,
+/area/medical/virologyaccess)
 "hgp" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -11502,7 +11514,8 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8;
-	power_rating = 45000
+	power_rating = 45000;
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
@@ -12662,7 +12675,7 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4;
-	power_rating = 45000
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
@@ -14138,6 +14151,19 @@
 "iTF" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/prison)
+"iTZ" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/white,
+/area/medical/patient_wing)
 "iUb" = (
 /turf/simulated/wall/prepainted/science,
 /area/rnd/outpost/xenobiology/outpost_autopsy)
@@ -14293,14 +14319,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
-"jak" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/virologyaccess)
 "jaP" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -14800,7 +14818,6 @@
 /area/quartermaster/hallway)
 "jnU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -15287,6 +15304,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
 "jGd" = (
@@ -16578,9 +16596,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
@@ -17255,7 +17270,7 @@
 /obj/structure/bed/padded,
 /obj/item/bedsheet/medical,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	power_rating = 45000
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
@@ -17617,7 +17632,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
+	dir = 9
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/virologyaccess)
@@ -22937,6 +22952,19 @@
 /obj/item/storage/belt/utility,
 /turf/simulated/floor/tiled/steel,
 /area/storage/tools)
+"ofU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/patient_wing)
 "ogX" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
@@ -26109,8 +26137,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
@@ -29036,7 +29064,8 @@
 /obj/item/extinguisher,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8;
-	power_rating = 45000
+	power_rating = 45000;
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
@@ -30222,7 +30251,7 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1;
-	power_rating = 45000
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/medical/virologyisolation)
@@ -30252,7 +30281,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	power_rating = 45000
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
@@ -30760,7 +30789,7 @@
 /obj/machinery/light/small,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4;
-	power_rating = 45000
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
@@ -32203,14 +32232,14 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
@@ -33900,7 +33929,7 @@
 /obj/item/bedsheet/medical,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1;
-	power_rating = 45000
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
@@ -34461,7 +34490,7 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1;
-	power_rating = 45000
+	scrub_default = "atlasviro"
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
@@ -34571,6 +34600,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "vbg" = (
@@ -53445,9 +53475,9 @@ tCu
 qcT
 jFr
 vaW
-qjo
+hgd
 kZl
-jak
+qjo
 jnU
 cZF
 qkU
@@ -53644,9 +53674,9 @@ mvy
 hZx
 isB
 kwz
-hJK
-aOH
-aOH
+ofU
+iTZ
+iTZ
 emD
 tIX
 geV
