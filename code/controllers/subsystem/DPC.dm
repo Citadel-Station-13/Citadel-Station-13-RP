@@ -28,7 +28,8 @@ SUBSYSTEM_DEF(dpc)
 		var/datum/callback/CB = qc[q_idex]
 		q_idex += 1
 
-		CB.InvokeAsync()
+		if (!isdatum(CB.object) || !CB.object.gc_destroyed)
+			CB.InvokeAsync()
 
 		if (MC_TICK_CHECK)
 			break

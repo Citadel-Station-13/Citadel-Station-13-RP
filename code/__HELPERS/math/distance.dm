@@ -11,3 +11,27 @@
 	A = get_turf(A)
 	B = get_turf(B)
 	return A.z == B.z? get_dist(A, B) : INFINITY
+
+/**
+ * real dist because byond dist doesn't go above 127 :/
+ *
+ * accepts **TURFS**
+ */
+/proc/get_chebyshev_dist(turf/A, turf/B)
+	return max(abs(A.x - B.x), abs(A.y - B.y))
+
+/**
+ * real euclidean dist
+ *
+ * accepts **TURFS**
+ */
+/proc/get_euclidean_dist(turf/A, turf/B)
+	return sqrt((A.x - B.x) ** 2 + (A.y - B.y) ** 2)
+
+/**
+ * real taxicab dist
+ *
+ * accepts **TURFS**
+ */
+/proc/get_manhattan_dist(turf/A, turf/B)
+	return abs(A.x - B.x) + abs(A.y - B.y)
