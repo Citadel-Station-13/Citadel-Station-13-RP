@@ -65,7 +65,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/trash_pit)
 "aw" = (
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/main_map/maintenance/deck_four/port)
 "ay" = (
 /obj/machinery/button/remote/blast_door{
@@ -190,7 +190,7 @@
 /obj/machinery/power/pointdefense{
 	id_tag = "forward_pd"
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "bH" = (
 /turf/simulated/floor/tiled,
@@ -550,7 +550,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "ei" = (
 /obj/structure/railing{
@@ -649,7 +649,7 @@
 /area/main_map/maintenance/deck_four/aft/port)
 "eI" = (
 /obj/machinery/camera/network/command,
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "eJ" = (
 /obj/machinery/light/no_nightshift{
@@ -1167,6 +1167,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/gateway)
+"hL" = (
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "hM" = (
 /turf/simulated/wall,
 /area/space)
@@ -2489,7 +2492,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/quartermaster/miningdock)
 "qx" = (
 /obj/spawner/window/reinforced/full/firelocks,
@@ -2902,7 +2905,7 @@
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "auto"
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "sH" = (
 /obj/structure/table/reinforced,
@@ -3595,6 +3598,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/aft/starboard)
+"wo" = (
+/obj/structure/lattice,
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "wp" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -4434,7 +4441,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "BY" = (
 /obj/machinery/door/blast/regular{
@@ -4729,7 +4736,7 @@
 /obj/machinery/camera/network/command{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "Dw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -4932,7 +4939,7 @@
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "auto"
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/main_map/hallway/deck4/fore)
 "EL" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
@@ -4948,7 +4955,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "EP" = (
 /obj/effect/floor_decal/borderfloor{
@@ -5224,7 +5231,7 @@
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "E-W-Pass"
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "GB" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9,
@@ -5620,7 +5627,7 @@
 /turf/simulated/wall,
 /area/main_map/maintenance/deck_four/forward/port)
 "Ji" = (
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "Jl" = (
 /obj/machinery/artifact_scanpad,
@@ -6590,7 +6597,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "OU" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -7199,6 +7206,12 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
+"SF" = (
+/obj/structure/transit_tube/high_velocity{
+	icon_state = "N-S-Pass"
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "SH" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
@@ -7247,7 +7260,7 @@
 /obj/machinery/power/pointdefense{
 	id_tag = "forward_pd"
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "SP" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -7333,7 +7346,7 @@
 /turf/simulated/floor/wood,
 /area/main_map/maintenance/deck_four)
 "Ts" = (
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/main_map/hallway/deck4/fore)
 "Tt" = (
 /turf/simulated/wall,
@@ -7560,7 +7573,7 @@
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "N-S-Pass"
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "US" = (
 /obj/machinery/conveyor{
@@ -7831,7 +7844,7 @@
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "auto"
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "Ww" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -8058,7 +8071,7 @@
 /area/main_map/maintenance/deck_four/aft/port)
 "XF" = (
 /obj/structure/girder/reinforced,
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "XG" = (
 /obj/machinery/light,
@@ -8076,6 +8089,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/research/testingrange)
+"XJ" = (
+/obj/structure/transit_tube/high_velocity{
+	icon_state = "auto"
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "XK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -12041,13 +12060,13 @@ Ji
 kL
 kL
 kL
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
+hL
+hL
+hL
+hL
+hL
+hL
+hL
 kL
 kL
 kL
@@ -12234,15 +12253,15 @@ Ji
 kL
 kL
 kL
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
 kL
 kL
 kL
@@ -12427,8 +12446,8 @@ Ji
 kL
 kL
 kL
-Ji
-Ji
+hL
+hL
 py
 py
 py
@@ -12436,8 +12455,8 @@ py
 py
 py
 py
-Ji
-Ji
+hL
+hL
 kL
 kL
 kL
@@ -12621,7 +12640,7 @@ kL
 kL
 kL
 kL
-Ji
+hL
 Za
 Za
 Za
@@ -12631,7 +12650,7 @@ Za
 Za
 Za
 Za
-Ji
+hL
 kL
 kL
 kL
@@ -12815,7 +12834,7 @@ FQ
 kL
 kL
 kL
-Ji
+hL
 Za
 Za
 Za
@@ -12825,7 +12844,7 @@ Za
 Za
 Za
 Za
-Ji
+hL
 kL
 kL
 kL
@@ -13008,8 +13027,8 @@ FQ
 FQ
 FQ
 kL
-Ji
-Ji
+hL
+hL
 Za
 Za
 Za
@@ -13019,8 +13038,8 @@ Za
 Za
 Za
 Za
-Ji
-Ji
+hL
+hL
 kL
 sZ
 sZ
@@ -13203,7 +13222,7 @@ hM
 kL
 kL
 kL
-Ji
+hL
 Za
 Za
 Za
@@ -13213,7 +13232,7 @@ Za
 Za
 Za
 Za
-Ji
+hL
 kL
 kL
 kL
@@ -13377,9 +13396,9 @@ Ji
 kL
 kL
 kL
-Ji
-Ji
-Ji
+hL
+hL
+hL
 kL
 kL
 kL
@@ -13397,7 +13416,7 @@ hM
 kL
 kL
 kL
-Ji
+hL
 Za
 Za
 Za
@@ -13407,7 +13426,7 @@ Za
 Za
 Za
 Za
-Ji
+hL
 kL
 kL
 kL
@@ -13571,9 +13590,9 @@ Ji
 kL
 kL
 kL
-Ji
-Ji
-Ji
+hL
+hL
+hL
 kL
 kL
 kL
@@ -13591,7 +13610,7 @@ hM
 kL
 kL
 kL
-Ji
+hL
 Za
 Za
 Za
@@ -13601,7 +13620,7 @@ Za
 Za
 Za
 Za
-Ji
+hL
 kL
 kL
 kL
@@ -13784,8 +13803,8 @@ sZ
 hM
 rI
 kL
-Ji
-Ji
+hL
+hL
 Za
 Za
 Za
@@ -13795,8 +13814,8 @@ Za
 Za
 Za
 Za
-Ji
-Ji
+hL
+hL
 kL
 sZ
 sZ
@@ -13821,9 +13840,9 @@ kL
 kL
 kL
 kL
-Ji
-Ji
-Ji
+hL
+hL
+hL
 kL
 kL
 kL
@@ -13979,7 +13998,7 @@ hM
 kL
 kL
 kL
-Ji
+hL
 Za
 Za
 Za
@@ -13989,7 +14008,7 @@ Za
 Za
 Za
 Za
-Ji
+hL
 kL
 kL
 kL
@@ -14015,9 +14034,9 @@ sZ
 kL
 kL
 kL
-Ji
-Ji
-Ji
+hL
+hL
+hL
 kL
 lF
 lF
@@ -14173,7 +14192,7 @@ kL
 kL
 kL
 kL
-Ji
+hL
 Za
 Za
 Za
@@ -14183,7 +14202,7 @@ Za
 Za
 Za
 Za
-Ji
+hL
 kL
 kL
 kL
@@ -14208,8 +14227,8 @@ kL
 kL
 kL
 kL
-kL
-py
+hL
+wo
 py
 py
 kL
@@ -14367,7 +14386,7 @@ FQ
 kL
 kL
 kL
-Ji
+hL
 Za
 Za
 Za
@@ -14377,7 +14396,7 @@ Za
 Za
 Za
 Za
-Ji
+hL
 kL
 kL
 kL
@@ -14406,7 +14425,7 @@ Ji
 Za
 Za
 Za
-Ji
+hL
 lF
 ZH
 ZH
@@ -14560,8 +14579,8 @@ kL
 FQ
 FQ
 kL
-Ji
-Ji
+hL
+hL
 Za
 Za
 Za
@@ -14571,8 +14590,8 @@ Za
 Za
 Za
 Za
-Ji
-Ji
+hL
+hL
 kL
 sZ
 sZ
@@ -14755,8 +14774,8 @@ kL
 kL
 kL
 kL
-Ji
-Ji
+hL
+hL
 py
 py
 py
@@ -14764,8 +14783,8 @@ py
 py
 py
 py
-Ji
-Ji
+hL
+hL
 kL
 kL
 kL
@@ -14949,17 +14968,17 @@ kL
 kL
 kL
 kL
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
+hL
 kL
 kL
 kL
@@ -15143,8 +15162,8 @@ kL
 kL
 kL
 kL
-Ji
-Ji
+hL
+hL
 py
 py
 py
@@ -15152,8 +15171,8 @@ py
 py
 py
 py
-Ji
-Ji
+hL
+hL
 kL
 kL
 kL
@@ -15337,7 +15356,7 @@ sZ
 sZ
 jf
 Ji
-Ji
+hL
 Za
 Za
 Za
@@ -15347,8 +15366,8 @@ Za
 Za
 Za
 Za
-Ji
-Ji
+hL
+hL
 kL
 sZ
 sZ
@@ -15372,11 +15391,11 @@ sZ
 sZ
 sZ
 kL
-Ji
+hL
 Za
 Za
 Za
-Ji
+hL
 lF
 ZH
 ZH
@@ -15531,7 +15550,7 @@ sZ
 kL
 kL
 kL
-Ji
+hL
 Za
 Za
 Za
@@ -15541,7 +15560,7 @@ Za
 Za
 Za
 Za
-Ji
+hL
 kL
 kL
 kL
@@ -15725,7 +15744,7 @@ kL
 kL
 kL
 kL
-Ji
+hL
 Za
 Za
 Za
@@ -15735,7 +15754,7 @@ Za
 Za
 Za
 Za
-Ji
+hL
 kL
 kL
 kL
@@ -15761,9 +15780,9 @@ kL
 kL
 kL
 kL
-Ji
-Ji
-Ji
+hL
+hL
+hL
 kL
 aR
 aR
@@ -15899,27 +15918,27 @@ Dc
 ZI
 ZI
 ZI
-Ji
-Ji
-Ji
+hL
+hL
+hL
 kL
 kL
 kL
-Ji
+hL
 kL
 kL
-Ji
+hL
 kL
 kL
-Ji
-kL
-kL
-kL
-Ji
+hL
 kL
 kL
 kL
-Ji
+hL
+kL
+kL
+kL
+hL
 Za
 Za
 Za
@@ -15929,29 +15948,29 @@ Za
 Za
 Za
 Za
-Ji
+hL
 kL
 kL
 kL
-Ji
+hL
 kL
 kL
 kL
-Ji
+hL
 kL
 kL
 kL
-Ji
-Ji
-Ji
+hL
+hL
+hL
 kL
 kL
 kL
-Ji
+hL
 kL
 kL
 kL
-Ji
+hL
 kL
 kL
 kL
@@ -16096,8 +16115,8 @@ ZI
 py
 py
 py
-Ji
-Ji
+hL
+hL
 ho
 ho
 ho
@@ -16113,7 +16132,7 @@ Dz
 Dz
 Dz
 Dz
-Ji
+hL
 Za
 Za
 Za
@@ -16123,9 +16142,9 @@ Za
 Za
 Za
 Za
-Ji
-Ji
-Ji
+hL
+hL
+hL
 py
 Za
 Za
@@ -16147,12 +16166,12 @@ Za
 Za
 Za
 py
-Ji
+hL
 py
 Za
 Za
 Za
-Ji
+hL
 Po
 Ty
 gc
@@ -16290,8 +16309,8 @@ Ji
 Za
 Za
 Za
-Ji
-Ji
+hL
+hL
 py
 Hr
 TV
@@ -16305,9 +16324,9 @@ ai
 ai
 ai
 Cu
-Wv
-UQ
-UQ
+XJ
+SF
+SF
 Hr
 Hr
 Hr
@@ -16317,9 +16336,9 @@ uT
 Hr
 Hr
 Hr
-UQ
-UQ
-UQ
+SF
+SF
+SF
 Cu
 ai
 ai
@@ -16341,12 +16360,12 @@ Za
 Za
 Za
 py
-Ji
+hL
 py
 Za
 Za
 Za
-Ji
+hL
 rB
 yE
 Ke
@@ -16484,8 +16503,8 @@ ZI
 Za
 Za
 ai
-Wv
-Wv
+XJ
+XJ
 Mz
 py
 py
@@ -16499,9 +16518,9 @@ Za
 Za
 Za
 py
-Ji
-Ji
-Ji
+hL
+hL
+hL
 py
 py
 py
@@ -16511,9 +16530,9 @@ py
 py
 py
 py
-Ji
-Ji
-Ji
+hL
+hL
+hL
 py
 Za
 Za
@@ -16535,11 +16554,11 @@ Za
 Za
 Za
 py
-Ji
+hL
 py
-Za
-Za
-Za
+hL
+hL
+hL
 kL
 aR
 yE
@@ -16675,8 +16694,8 @@ Dc
 ZI
 ZI
 ZI
-Ji
-Wv
+hL
+XJ
 ZI
 ZI
 ZI
@@ -16686,15 +16705,15 @@ py
 kL
 kL
 kL
-Ji
+hL
 kL
 kL
 kL
-Ji
+hL
 kL
 kL
 kL
-Ji
+hL
 kL
 kL
 kL
@@ -16706,15 +16725,15 @@ kL
 kL
 kL
 kL
-Ji
+hL
 kL
 kL
 kL
-Ji
+hL
 kL
 kL
 kL
-Ji
+hL
 kL
 kL
 kL
@@ -16731,9 +16750,9 @@ Un
 kL
 kL
 kL
-Ji
-Ji
-Ji
+hL
+hL
+hL
 kL
 aR
 yE
@@ -16874,9 +16893,9 @@ hW
 ZI
 ZI
 ZI
-Ji
-Wv
-Ji
+hL
+XJ
+hL
 kL
 kL
 kL
@@ -16912,9 +16931,9 @@ kL
 kL
 kL
 kL
-Ji
-Wv
-Ji
+hL
+XJ
+hL
 pa
 pa
 pa
