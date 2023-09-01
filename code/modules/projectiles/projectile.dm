@@ -1008,6 +1008,54 @@
 	var/datum/point/visual_point = new /datum/point(src)
 	#warn impl
 
+/**
+ * Selects a target to hit from a turf
+ *
+ * @params
+ * T - The turf
+ * bumped - used to track if something is the reason we impacted in the first place.
+ * If set, this atom is always treated as dense by can_hit_target.
+
+ * Priority:
+ * 0. Anything that is already in impacted is ignored no matter what. Furthermore, in any bracket, if the target atom parameter is in it, that's hit first.
+ * 	Furthermore, can_hit_target is always checked. This (entire proc) is PERFORMANCE OVERHEAD!! But, it shouldn't be ""too"" bad and I frankly don't have a better *generic non snowflakey* way that I can think of right now at 3 AM.
+ *		FURTHERMORE, mobs/objs have a density check from can_hit_target - to hit non dense objects over a turf, you must click on them, same for mobs that usually wouldn't get hit.
+ * 1. The thing originally aimed at/clicked on
+ * 2. Mobs - picks lowest buckled mob to prevent scarp piggybacking memes
+ * 3. Objs
+ * 4. Turf
+ * 5. Nothing
+ */
+/obj/item/projectile/proc/select_target(turf/T, atom/bumped)
+	#warn this sucks, we should swap bumped auto-hit to something else maybe?
+	// 1. original
+	if(can_impact(original, FALSE, original == bumped))
+		return original
+	var/list/atom/possible = list()		// let's define these ONCE
+	var/list/atom/considering = list()
+	// 2. mobs
+	possible = typecache_filter_list(T, GLOB.typecache_living)	// living only
+	for(var/i in possible)
+		if(!can_impact(i, i == original, TRUE, i == bumped))
+			continue
+		considering += i
+	if(considering.len)
+		var/mob/living/M = pick(considering)
+		return M.lowest_buckled_mob()
+	considering.len = 0
+	// 3. objs and other dense things
+	for(var/i in T.contents)
+		if(!can_impact(i, i == original, TRUE, i == bumped))
+			continue
+		considering += i
+	if(considering.len)
+		return pick(considering)
+	// 4. turf
+	if(can_impact(T, T == original, TRUE, T == bumped))
+		return T
+	// 5. nothing
+		// (returns null)
+
 //* Impact - Checks
 
 /**
