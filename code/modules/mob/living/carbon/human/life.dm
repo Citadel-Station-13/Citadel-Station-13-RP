@@ -585,7 +585,7 @@
 		if(!reagent_gas_data)
 			continue
 		if(breath.gas[gasname] < reagent_gas_data[GAS_REAGENT_LIST_THRESHOLD])
-			return
+			continue
 		// Little bit of sanity so we aren't trying to add 0.0000000001 units of CO2, and so we don't end up with 99999 units of CO2.
 		var/reagent_id = reagent_gas_data[GAS_REAGENT_LIST_ID]
 		var/reagent_amount = (breath.gas[gasname] * reagent_gas_data[GAS_REAGENT_LIST_FACTOR] + reagent_gas_data[GAS_REAGENT_LIST_AMOUNT]) * gas_to_process_ratio
