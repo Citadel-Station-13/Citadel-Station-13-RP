@@ -16924,6 +16924,14 @@
 /obj/item/clothing/glasses/welding,
 /obj/item/weldingtool,
 /obj/item/weldingtool,
+/obj/item/storage/bag/xenobio{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/storage/bag/xenobio{
+	pixel_x = -7;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "oey" = (

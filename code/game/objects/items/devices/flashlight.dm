@@ -454,27 +454,3 @@
 	icon_state = "glowstick_yellow"
 	item_state = "glowstick_yellow"
 	light_color = LIGHT_COLOR_YELLOW
-
-/obj/item/flashlight/slime
-	gender = PLURAL
-	name = "glowing slime extract"
-	desc = "A slimy ball that appears to be glowing from bioluminesence."
-	icon = 'icons/obj/lighting.dmi'
-	icon_state = "floor1" //not a slime extract sprite but... something close enough!
-	item_state = "slime"
-	light_color = LIGHT_COLOR_YELLOW
-	light_wedge = LIGHT_OMNI
-	w_class = ITEMSIZE_TINY
-	brightness_on = 6
-	on = TRUE //Bio-luminesence has one setting, on.
-	power_use = 0
-
-/obj/item/flashlight/slime/Initialize(mapload)
-	. = ..()
-	set_light(brightness_on, flashlight_power, light_color)
-
-/obj/item/flashlight/slime/update_appearance(updates = ~UPDATE_ICON_STATE)
-	return ..()
-
-/obj/item/flashlight/slime/attack_self(mob/user)
-	return //Bio-luminescence does not toggle.

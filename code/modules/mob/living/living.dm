@@ -815,3 +815,17 @@ default behaviour is:
 /mob/living/get_managed_pixel_y()
 	. = ..()
 	. += depth_current
+
+/**
+ * Allows an observer to take control of the mob at any time. Must use the "existing" ghostrole subtype.
+ * roletype: the ghostrole datum to use
+ * provider: If the ghostrole was given by someone in-game, reference them here.
+ */
+/mob/living/proc/add_ghostrole(datum/role/ghostrole/existing/R, mob/provider)
+	return AddComponent(/datum/component/ghostrole_spawnpoint, R, 1, list2params(list("mob" = src, "provider" = provider)))
+
+/mob/living/proc/get_ghostrole()
+	return GetComponent(/datum/component/ghostrole_spawnpoint)
+
+/mob/living/proc/remove_ghostrole()
+	return DelComponent(/datum/component/ghostrole_spawnpoint)

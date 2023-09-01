@@ -176,7 +176,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 /datum/species/shapeshifter/promethean/hug(mob/living/carbon/human/H, mob/living/target)
 
-	if(H.zone_sel.selecting == "head" || H.zone_sel.selecting == "r_hand" || H.zone_sel.selecting == "l_hand")
+	if(H.zone_sel.selecting == "head" || H.zone_sel.selecting == "r_hand" || H.zone_sel.selecting == "l_hand" || H.zone_sel.selecting == "mouth")
 		return ..()
 	var/t_him = "them"
 	if(ishuman(target))

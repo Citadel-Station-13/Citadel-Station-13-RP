@@ -7,11 +7,20 @@
 	w_class = ITEMSIZE_TINY
 	origin_tech = list(TECH_BIO = 4)
 
+/obj/item/slimepotion/attackby(obj/item/O, mob/user)
+	if(istype(O, /obj/item/slimepotion/mimic))
+		to_chat(user, "<span class='notice'>You apply the mimic to the slime potion as it copies it's effects.</span>")
+		playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
+		var/newtype = src.type
+		new newtype(get_turf(src))
+		qdel(O)
+	..()
+
 // This is actually applied to an extract, so no attack() overriding needed.
 /obj/item/slimepotion/enhancer
 	name = "extract enhancer agent"
 	desc = "A potent chemical mix that will give a slime extract an additional two uses."
-	icon_state = "potpurple"
+	icon_state = "potcyan"
 	description_info = "This will even work on inert slime extracts, if it wasn't enhanced before.  Extracts enhanced cannot be enhanced again."
 
 // Makes slimes less likely to mutate.
@@ -71,7 +80,7 @@
 
 // Makes the slime friendly forever.
 /obj/item/slimepotion/docility
-	name = "docility agent"
+	name = "slime docility agent"
 	desc = "A potent chemical mix that nullifies a slime's hunger, causing it to become docile and tame.  It might also work on other creatures?"
 	icon_state = "potlightpink"
 	description_info = "The target needs to be alive, not already passive, and be an animal or slime type entity."
@@ -197,7 +206,7 @@
 	desc = "A potent chemical mix that makes an animal deeply loyal to the species of whoever applies this, and will attack threats to them."
 	description_info = "The slime or other animal needs to be alive for this to work.  The slime this is applied to will have their 'faction' change to \
 	the user's faction, which means the slime will attack things that are hostile to the user's faction, such as carp, spiders, and other slimes."
-	icon_state = "potred"
+	icon_state = "potlightpink"
 
 /obj/item/slimepotion/loyalty/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
@@ -272,9 +281,9 @@
 // Feeds the slime instantly.
 /obj/item/slimepotion/feeding
 	name = "slime feeding agent"
-	desc = "A potent chemical mix that will instantly sediate the slime."
+	desc = "A potent chemical mix that will instantly satiate the slime."
 	description_info = "The slime needs to be alive for this to work.  It will instantly grow the slime enough to reproduce."
-	icon_state = "potyellow"
+	icon_state = "potorange"
 
 /obj/item/slimepotion/feeding/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
@@ -293,5 +302,189 @@
 	S.make_adult()
 	S.amount_grown = 10
 	S.reproduce()
+	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
+	qdel(src)
+
+/obj/item/slimepotion/infertility
+	name = "slime infertility agent"
+	desc = "A potent chemical mix that will reduce the amount of offspring this slime will have."
+	icon_state = "potpurple"
+	description_info = "The slime needs to be alive for this to work. It will reduce the amount of slime babies by 2 (to minimum of 2)."
+
+/obj/item/slimepotion/infertility/attack_mob(mob/living/simple_mob/slime/xenobio/M, mob/user)
+	if(!istype(M))
+		to_chat(user, "<span class='warning'>The agent only works on slimes!</span>")
+		return ..()
+	if(M.stat == DEAD)
+		to_chat(user, "<span class='warning'>The slime is dead!</span>")
+		return ..()
+	if(M.split_amount <= 2)
+		to_chat(user, "<span class='warning'>The slime cannot get any less fertile!</span>")
+		return ..()
+
+	to_chat(user, "<span class='notice'>You feed the slime the infertility agent. It will now have less offspring.</span>")
+	M.split_amount = between(2, M.split_amount - 2, 6)
+	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
+	qdel(src)
+
+/obj/item/slimepotion/fertility
+	name = "slime fertility agent"
+	desc = "A potent chemical mix that will increase the amount of offspring this slime will have."
+	icon_state = "potpurple"
+	description_info = "The slime needs to be alive for this to work. It will increase the amount of slime babies by 2 (to maximum of 6)."
+
+/obj/item/slimepotion/fertility/attack_mob(mob/living/simple_mob/slime/xenobio/M, mob/user)
+	if(!istype(M))
+		to_chat(user, "<span class='warning'>The agent only works on slimes!</span>")
+		return ..()
+	if(M.stat == DEAD)
+		to_chat(user, "<span class='warning'>The slime is dead!</span>")
+		return ..()
+	if(M.split_amount >= 6)
+		to_chat(user, "<span class='warning'>The slime cannot get any more fertile!</span>")
+		return ..()
+
+	to_chat(user, "<span class='notice'>You feed the slime the infertility agent. It will now have less offspring.</span>")
+	M.split_amount = between(2, M.split_amount + 2, 6)
+	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
+	qdel(src)
+
+/obj/item/slimepotion/shrink
+	name = "slime shrinking agent"
+	desc = "A potent chemical mix that will turn adult slime into a baby one."
+	icon_state = "potpurple"
+	description_info = "The slime needs to be alive for this to work."
+
+/obj/item/slimepotion/shrink/attack_mob(mob/living/simple_mob/slime/xenobio/M, mob/user)
+	if(!istype(M))
+		to_chat(user, "<span class='warning'>The agent only works on slimes!</span>")
+		return ..()
+	if(M.stat == DEAD)
+		to_chat(user, "<span class='warning'>The slime is dead!</span>")
+		return ..()
+	if(!(M.is_adult))
+		to_chat(user, "<span class='warning'>The slime is already a baby!</span>")
+		return ..()
+
+	to_chat(user, "<span class='notice'>You feed the slime the shrinking agent. It is now back to being a baby.</span>")
+	M.make_baby()
+	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
+	qdel(src)
+
+/obj/item/slimepotion/death
+	name = "slime death agent"
+	desc = "A potent chemical mix that will instantly kill a slime."
+	icon_state = "potblue"
+	description_info = "The slime needs to be alive for this to work."
+
+/obj/item/slimepotion/death/attack_mob(mob/living/simple_mob/slime/xenobio/M, mob/user)
+	if(!istype(M))
+		to_chat(user, "<span class='warning'>The agent only works on slimes!</span>")
+		return ..()
+	if(M.stat == DEAD)
+		to_chat(user, "<span class='warning'>The slime is already dead!</span>")
+		return ..()
+
+	to_chat(user, "<span class='notice'>You feed the slime the death agent. Its face flashes pain of betrayal before it goes still.</span>")
+	M.adjustToxLoss(500)
+	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
+	qdel(src)
+
+/obj/item/slimepotion/ferality
+	name = "slime ferality agent"
+	desc = "A potent chemical mix that will make a slime untamable."
+	icon_state = "potred"
+	description_info = "The slime needs to be alive for this to work."
+
+/obj/item/slimepotion/ferality/attack_mob(mob/living/simple_mob/slime/xenobio/M, mob/user)
+	if(!istype(M))
+		to_chat(user, "<span class='warning'>The agent only works on slimes!</span>")
+		return ..()
+	if(M.stat == DEAD)
+		to_chat(user, "<span class='warning'>The slime is already dead!</span>")
+		return ..()
+	if(M.untamable && M.untamable_inherit)
+		to_chat(user, "<span class='warning'>The slime is already untamable!</span>")
+		return ..()
+
+	to_chat(user, "<span class='notice'>You feed the slime the death agent. It will now only get angrier at taming attempts.</span>")
+	M.untamable = TRUE
+	M.untamable_inherit = TRUE
+	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
+	qdel(src)
+
+/obj/item/slimepotion/reinvigoration
+	name = "extract reinvigoration agent"
+	desc = "A potent chemical mix that will create a slime of appropriate type out of an extract."
+	icon_state = "potcyan"
+	description_info = "This will even work on inert extracts. Extract is destroyed in process."
+
+/obj/item/slimepotion/mimic
+	name = "mimic agent"
+	desc = "A potent chemical mix that will mimic effects of other slime-produced agents."
+	icon_state = "potsilver"
+	description_info = "Warning: avoid combining multiple doses of mimic agent."
+
+/obj/item/slimepotion/mimic/attackby(obj/item/O, mob/user)
+	if(istype(O, /obj/item/slimepotion/mimic))
+		to_chat(user, "<span class='warning'>You apply the mimic to the mimic, resulting a mimic that copies a mimic that copies a mimic that copies a mimic that-</span>")
+		var/location = get_turf(src)
+		playsound(location, 'sound/weapons/gauss_shoot.ogg', 50, 1)
+		var/datum/effect_system/grav_pull/s = new /datum/effect_system/grav_pull
+		s.set_up(3, 3, location)
+		s.start()
+		qdel(O)
+		qdel(src)
+		return
+	..()
+
+/obj/item/slimepotion/sapience
+	name = "slime sapience agent"
+	desc = "A potent chemical mix that makes an animal capable of developing more advanced, sapient thought."
+	description_info = "The slime or other animal needs to be alive for this to work. The development is not always immediate and may take indeterminate time before effects show."
+	icon_state = "potblue"
+
+/obj/item/slimepotion/sapience/attack_mob(mob/living/simple_mob/M, mob/user)
+	if(!istype(M))
+		to_chat(user, SPAN_WARNING("The agent only works on creatures!"))
+		return ..()
+	if(M.stat == DEAD)
+		to_chat(user, SPAN_WARNING("The creature is dead!"))
+		return ..()
+	if(M.get_ghostrole())
+		to_chat(user, SPAN_WARNING("The creature is already developing sapience."))
+		return ..()
+	if(!(M.mob_class && MOB_CLASS_SLIME | MOB_CLASS_ANIMAL)) //cit addition: only animals and slimes.
+		to_chat(user, SPAN_WARNING("This agent doesn't seem like something this one would consume..."))
+		return ..()
+	//^ while we could make a justification for some other creatures like xenos - and while we could argue that sapphire extracts have
+	//a place in uplifting specific creatures like xenohybrids, it probably would be a lot more complicated of a process then just a
+	//single potion changing them up. Otherwise, trying to bring awareness to cult constructs or something would be a little absurd and pointless.
+	if(M.ckey)
+		to_chat(user, SPAN_WARNING("The creature is already sapient!"))
+		return ..()
+
+	to_chat(user, SPAN_NOTICE("You feed \the [M] the agent. It may now eventually develop proper sapience."))
+	M.add_ghostrole(/datum/role/ghostrole/existing/sapient_mob/xenobio,user)
+	log_and_message_admins("[key_name_admin(user)] used a sapience potion on a simple mob: [M]. [ADMIN_FLW(src)]")
+	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
+	qdel(src)
+
+/obj/item/slimepotion/obedience
+	name = "slime obedience agent"
+	desc = "A potent chemical mix that makes slime extremely obedient."
+	icon_state = "potlightpink"
+	description_info = "The target needs to be alive and currently misbehaving. Effect is equivalent to very strong discipline."
+
+/obj/item/slimepotion/obedience/attack_mob(mob/living/simple_mob/slime/xenobio/M, mob/user)
+	if(!istype(M))
+		to_chat(user, "<span class='warning'>The agent only works on slimes!</span>")
+		return ..()
+	if(M.stat == DEAD)
+		to_chat(user, "<span class='warning'>The slime is dead!</span>")
+		return ..()
+
+	to_chat(user, "<span class='notice'>You feed the slime the agent. It has been disciplined, for better or worse...</span>")
+	M.adjust_discipline(10)
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 	qdel(src)

@@ -24,6 +24,23 @@
 /datum/ghostrole_instantiator/proc/AfterSpawn(mob/created, mob/living/carbon/human/H, list/params)
 	SHOULD_CALL_PARENT(TRUE)
 
+/**
+ * For mobs already present in the world that players can take control of.
+ */
+/datum/ghostrole_instantiator/existing
+	var/existing_mob
+
+/datum/ghostrole_instantiator/existing/Create(client/C, atom/location, list/params)
+	var/mob/M = GetMob(location)
+	if(!istype(M, /mob/living))
+		CRASH("Invalid atom or does not exist: [M], [M.type]")
+	for(var/trait in mob_traits)
+		ADD_TRAIT(M, trait, GHOSTROLE_TRAIT)
+	return existing_mob
+
+/datum/ghostrole_instantiator/existing/proc/GetMob(client/C, atom/location, list/params)
+	return params["mob"] || existing_mob
+
 /datum/ghostrole_instantiator/simple
 	var/mob_type
 

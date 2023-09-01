@@ -64,6 +64,10 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 		instantiator = new instantiator
 	id = _id || type
 
+//to hold "existing" ghostroles, roles that allow ghosts to take control of mobs already existing
+/datum/role/ghostrole/existing
+	instantiator = /datum/ghostrole_instantiator/existing
+
 /datum/role/ghostrole/proc/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	if(show_standard_greeting)
 		to_chat(created, "<blockquote class='info'>You have spawned as a ghostrole. These roles should be taken seriously. Be sure to follow the directives in your spawntext (if any), as well as the server rules. Beyond that, roleplay your character however you see fit! Spawntext as follows;</blockquote>")
