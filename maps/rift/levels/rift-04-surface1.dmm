@@ -27375,9 +27375,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "qTT" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 4
-	},
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
@@ -27385,6 +27382,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/green{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
@@ -38050,8 +38050,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/pipe/manifold/visible/green{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
@@ -39423,7 +39423,6 @@
 	name = "Virology Purge Chamber";
 	req_one_access = list(39)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/medical/virologyisolation)
 "yco" = (
@@ -60441,7 +60440,7 @@ eXs
 pmT
 ybI
 xjW
-ouJ
+pYJ
 mkq
 mAk
 mAk
@@ -60829,7 +60828,7 @@ jYF
 jYF
 lCp
 qTT
-pYJ
+ouJ
 lCp
 lCp
 lCp
