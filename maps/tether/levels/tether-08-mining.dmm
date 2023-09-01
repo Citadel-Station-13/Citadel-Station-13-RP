@@ -83,7 +83,7 @@
 /area/outpost/mining_main/hangar)
 "ar" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -97,7 +97,7 @@
 /area/outpost/mining_main/hangar)
 "at" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -112,7 +112,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "av" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	icon_state = "map_vent_out";
 	name = "Large Waste Vent";
@@ -273,7 +273,7 @@
 	dir = 4
 	},
 /obj/structure/table/woodentable,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/item/storage/belt/utility,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
@@ -368,7 +368,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "aV" = (
@@ -393,7 +393,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/break_room)
 "aX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/vehicle/train/engine{
 	dir = 8
 	},
@@ -437,7 +437,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "bb" = (
-/obj/machinery/atmospherics/omni/atmos_filter{
+/obj/machinery/component/quaternary/atmos_filter{
 	tag_east = 1;
 	tag_north = 3;
 	tag_south = 2
@@ -445,7 +445,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "bc" = (
-/obj/machinery/atmospherics/omni/atmos_filter{
+/obj/machinery/component/quaternary/atmos_filter{
 	tag_east = 1;
 	tag_north = 4;
 	tag_west = 2
@@ -538,7 +538,7 @@
 /area/outpost/mining_main/maintenance)
 "bk" = (
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 4;
 	name = "Air to Supply"
 	},
@@ -589,7 +589,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "br" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -894,7 +894,7 @@
 "bV" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1155,7 +1155,7 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1444,7 +1444,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "cU" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -1468,7 +1468,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "cX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -1651,7 +1651,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "uE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -1699,7 +1699,7 @@
 	pixel_x = 12;
 	pixel_y = -26
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1379;
 	id_tag = "mining_outpost_airlock_pump";
@@ -1753,7 +1753,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 4;
 	name = "Airlock Refill";
 	target_pressure = 3800
@@ -1831,7 +1831,7 @@
 /area/outpost/mining_main/airlock)
 "IA" = (
 /obj/structure/closet/firecloset,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	id_tag = "mining_outpost_airlock_pump"
 	},
@@ -1937,7 +1937,7 @@
 	dir = 5
 	},
 /obj/structure/table/woodentable,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
@@ -1978,7 +1978,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/alarm{
