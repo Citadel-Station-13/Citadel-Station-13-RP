@@ -304,3 +304,11 @@
 /proc/serialize_datum(datum/D)
 	ASSERT(isdatum(D))
 	return json_encode(D.serialize())
+
+//* Cloning
+
+/**
+ * Create a clone of this datum; usually used for datastructures.
+ */
+/datum/proc/clone()
+	CRASH("unimplemented")

@@ -194,7 +194,6 @@
 
 /obj/item/projectile/Initialize(mapload)
 	. = ..()
-	decayedRange = range
 	if(embedding)
 		updateEmbedding()
 
@@ -354,12 +353,6 @@
 	beam_index = pcache
 	beam_segments[beam_index] = null
 
-/obj/item/projectile/Bump(atom/A)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, A)
-	if(!can_hit_target(A, A == original, TRUE, TRUE))
-		return
-	Impact(A)
-
 /**
  * Called when the projectile hits something
  * This can either be from it bumping something,
@@ -372,12 +365,6 @@
  * Also, we select_target to find what to process_hit first.
  */
 /obj/item/projectile/proc/Impact(atom/A)
-	if(!trajectory)
-		qdel(src)
-		return FALSE
-	if(impacted[A]) // NEVER doublehit - Silly-Cons
-		return FALSE
-	var/datum/point/pcache = trajectory.copy_to()
 	var/turf/T = get_turf(A)
 	if(check_ricochet_flag(A) && check_ricochet(A)) //if you can ricochet, attempt to ricochet off the object
 		ricochets++
@@ -541,19 +528,6 @@
 	return TRUE
 
 /**
- * Scan if we should hit something and hit it if we need to
- * The difference between this and handling in Impact is
- * In this we strictly check if we need to Impact() something in specific
- * If we do, we do
- * We don't even check if it got hit already - Impact() does that
- * In impact there's more code for selecting WHAT to hit
- * So this proc is more of checking if we should hit something at all BY having an atom cross us.
- */
-/obj/item/projectile/proc/scan_crossed_hit(atom/movable/A)
-	if(can_hit_target(A, direct_target = (A == original)))
-		Impact(A)
-
-/**
  * Scans if we should hit something on the turf we just moved to if we haven't already
  *
  * This proc is a little high in overhead but allows us to not snowflake CanPass in living and other things.
@@ -573,42 +547,6 @@
 			if(can_hit_target(M, M == original, TRUE))
 				Impact(M)
 				break
-
-/**
- * Projectile moved:
- *
- * If not fired yet, do not do anything. Else,
- *
- * If temporary unstoppable movement used for piercing through things we already hit (impacted list) is set, unset it.
- * Scan turf we're now in for anything we can/should hit. This is useful for hitting non dense objects the user
- * directly clicks on, as well as for PHASING projectiles to be able to hit things at all as they don't ever Bump().
- */
-/obj/item/projectile/Moved(atom/OldLoc, Dir)
-	. = ..()
-	if(!fired)
-		return
-	if(temporary_unstoppable_movement)
-		temporary_unstoppable_movement = FALSE
-		movement_type &= ~PHASING
-	scan_moved_turf()		//mostly used for making sure we can hit a non-dense object the user directly clicked on, and for penetrating projectiles that don't bump
-
-/**
- * Checks if we should pierce something.
- *
- * NOT meant to be a pure proc, since this replaces prehit() which was used to do things.
- * Return PROJECTILE_DELETE_WITHOUT_HITTING to delete projectile without hitting at all!
- */
-
-/obj/item/projectile/proc/prehit_pierce(atom/A)
-	if((projectile_phasing & A.pass_flags_self) && (phasing_ignore_direct_target || original != A))
-		return PROJECTILE_PIERCE_PHASE
-	if(projectile_piercing & A.pass_flags_self)
-		return PROJECTILE_PIERCE_HIT
-	if(ismovable(A))
-		var/atom/movable/AM = A
-		if(AM.throwing)
-			return (projectile_phasing & LETPASSTHROW)? PROJECTILE_PIERCE_PHASE : ((projectile_piercing & LETPASSTHROW)? PROJECTILE_PIERCE_HIT : PROJECTILE_PIERCE_NONE)
-	return PROJECTILE_PIERCE_NONE
 
 /obj/item/projectile/proc/check_ricochet(atom/A)
 	if(ricochets > ricochets_max)		//safety thing, we don't care about what the other thing says about this.
@@ -751,13 +689,6 @@
 
 /obj/item/projectile/proc/before_z_change(atom/oldloc, atom/newloc)
 
-/obj/item/projectile/proc/set_pixel_increment_amount(new_speed)
-	pixel_increment_amount = new_speed
-	if(trajectory)
-		trajectory.set_speed(new_speed)
-		return TRUE
-	return FALSE
-
 /obj/item/projectile/proc/record_hitscan_start(datum/point/pcache)
 	if(pcache)
 		beam_segments = list()
@@ -799,13 +730,6 @@
 	var/old_px = pixel_x
 	var/old_py = pixel_y
 	for(var/i in 1 to times)
-		// HOMING START - Too expensive to proccall at this point.
-		if(homing_target)
-			// No datum/points, too expensive.
-			var/angle = closer_angle_difference(Angle, get_projectile_angle(src, homing_target))
-			var/max_turn = homing_turn_speed * seconds_equivalent
-			setAngle(Angle + clamp(angle, -max_turn, max_turn))
-		// HOMING END
 		trajectory.increment(trajectory_multiplier)
 		var/turf/T = trajectory.return_turf()
 		if(!istype(T))

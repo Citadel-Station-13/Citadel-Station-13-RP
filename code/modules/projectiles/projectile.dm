@@ -17,7 +17,7 @@
 	/** PROJECTILE PIERCING
 	  * WARNING:
 	  * Projectile piercing MUST be done using these variables.
-	  * Ordinary passflags will result in can_hit_target being false unless directly clicked on - similar to projectile_phasing but without even going to process_hit.
+	  * Ordinary passflags will result in can_hit_target being false unless directly clicked on - similar to pass_flags_phase but without even going to process_hit.
 	  * The two flag variables below both use pass flags.
 	  * In the context of LETPASStHROW, it means the projectile will ignore things that are currently "in the air" from a throw.
 	  *
@@ -32,7 +32,7 @@
 	var/phases_through_direct_target = FALSE
 	/// Bitflag for things the projectile should just phase through entirely - No hitting unless direct target and [phasing_ignore_direct_target] is FALSE. Uses pass_flags flags.
 	var/pass_flags_phase = NONE
-	/// Bitflag for things the projectile should hit, but pierce through without deleting itself. Defers to projectile_phasing. Uses pass_flags flags.
+	/// Bitflag for things the projectile should hit, but pierce through without deleting itself. Defers to pass_flags_phase. Uses pass_flags flags.
 	var/pass_flags_pierce = NONE
 	/// number of times we've pierced something. Incremented BEFORE bullet_act and on_hit proc!
 	var/pierces = 0
@@ -44,7 +44,7 @@
 	/// firer if it exists
 	var/atom/firer
 	/// already passed / hit
-	var/list/hit = list()
+	var/list/impacted = list()
 	/// original starting turf
 	var/turf/starting_turf
 
@@ -58,6 +58,8 @@
 	var/py_current
 	/// do not reset px/py current on forced movement
 	var/trajectory_ignore_forcemove = FALSE
+	/// forcefully moving through stuff via MOVEMENT_PHASING
+	var/trajectory_currently_phasing = FALSE
 
 	/// are we fired
 	var/fired = FALSE
@@ -98,9 +100,6 @@
 	/// submunitions usually inherit our accuracy but this gives a mod to every submunition
 	var/submunition_accuracy = 0
 
-	/// beam segments stored; assoc list datum/point --> datum/point start/end.
-	/// used for hitscan tracer drawing.
-	var/list/hitscan_segments
 	/// the last point recorded
 	var/datum/point/hitscan_index
 	/// /obj/effect/projectile/tracer path
@@ -114,11 +113,23 @@
 	/// this applies to submunitions too
 	var/point_blanking_doesnt_miss = FALSE
 
-	#warn below
+	/// homing target, if any
+	var/atom/homing_target
+	/// homing turn rate in deg per decisecond.
+	var/homing_rate = 5
+	/// if non null, stop homing permanently if we're within this error margin of angle towards the target.
+	var/homing_shutoff = 3.5
 
-	//Projectile stuff
+	/// max ds we can persist for
+	var/lifetime = 10 SECONDS
+	/// fired time
+	var/fired_at
+	/// max range in tiles **touched**, not get_dist() range.
 	var/range = 50
-	var/originalRange
+	/// current range
+	var/travelled = 0
+
+	#warn below
 
 	var/ignore_source_check = FALSE
 
@@ -143,14 +154,7 @@
 	var/impact_light_range = 2
 	var/impact_light_color_override
 
-	//Homing
-	var/homing = FALSE
-	var/atom/homing_target
-	var/homing_turn_speed = 10		//Angle per tick.
-	var/homing_inaccuracy_min = 0		//in pixels for these. offsets are set once when setting target.
-	var/homing_inaccuracy_max = 0
-	var/homing_offset_x = 0
-	var/homing_offset_y = 0
+
 
 	//Targetting
 	var/yo = null
@@ -203,7 +207,6 @@
 
 	var/vacuum_traversal = TRUE //Determines if the projectile can exist in vacuum, if false, the projectile will be deleted if it enters vacuum.
 
-	var/temporary_unstoppable_movement = FALSE
 	var/no_attack_log = FALSE
 	var/hitsound
 
@@ -414,14 +417,6 @@
 	START_PROCESSING(SSprojectiles, src)
 	pixel_move(1, FALSE)	//move it now!
 
-/obj/projectile/Move(atom/newloc, dir = NONE)
-	. = ..()
-	if(.)
-		if(temporary_unstoppable_movement)
-			temporary_unstoppable_movement = FALSE
-			movement_type &= ~MOVEMENT_UNSTOPPABLE
-		if(fired && can_hit_target(original, permutated, TRUE))
-			Bump(original)
 
 /obj/projectile/proc/after_z_change(atom/olcloc, atom/newloc)
 
@@ -878,12 +873,27 @@
 
 #warn impl
 
+//* Hitscan Rendering
+
+/obj/projectile/proc/hitscan_tracer_start(datum/point/where)
+	#warn impl
+
+/obj/projectile/proc/hitscan_tracer_redirected(datum/point/where)
+	#warn impl
+
+/obj/projectile/proc/hitscan_tracer_end(datum/point/where)
+	#warn impl
+
 //* Processing / Flight
 
 /obj/projectile/process(delta_time)
 	if(paused)
 		return
-	#warn impl
+	increment(speed * delta_time * SSprojectiles.global_speed_multiplier)
+	if(QDELETED(src))
+		return
+	if(!isnull(homing_target))
+		home_in(delta_time)
 
 /**
  * Propagates our simulation by an amount of pixels
@@ -894,10 +904,41 @@
 /**
  * Process hitscan
  */
-/obj/projectile/proc/hitscan()
+/obj/projectile/proc/hitscan(render_muzzle = TRUE)
+	var/safety = range * 10
+	if(render_muzzle)
+		#warn render muzzle effect
+	#warn render tracer start with increment
+	var/turf/current = loc
+	ASSERT(istype(current))
+	if(isnull(px_current))
+		px_current = 0
+	if(isnull(py_current))
+		py_current = 0
+	while(!QDELETED(src))
+		ASSERT(!isnull(loc))
+		// todo: implement pausing
+		if(!--safety)
+			// too far, just kill without bumping
+			// this shouldn't be happening if proper diminishing returns are applied
+			stack_trace("hitscan projectile ran out of safety.")
+			qdel(src)
+			return
+
 	#warn impl
 
-#warn impl
+/**
+ * process homing
+ *
+ * note that higher fps for projectile simulation
+ * directly results in smoother homing.
+ *
+ * this is an issue but not worth fixing because 20+ fps is more than good enough.
+ */
+/obj/projectile/proc/home_in(ds)
+	var/wanted = closer_angle_difference(angle, get_projectile_angle(src, homing_target))
+	var/turn_rate = homing_rate * ds
+	set_angle(angle + clamp(wanted, -turn_rate, turn_rate))
 
 //* Movement Hooks
 
@@ -908,10 +949,27 @@
 	if(AM.is_incorporeal())
 		return
 	//! end
-	scan_crossed(AM)
+	scan_crossed_target(AM)
+
+/obj/projectile/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+	if(!fired)
+		return
+	if(trajectory_currently_phasing == TRUE)
+		trajectory_currently_phasing = FALSE
+		movement_type &= ~MOVEMENT_PHASING
+	scan_moved_turf()
+
+/obj/projectile/Bump(atom/A)
+	// we skip the rest of /atom/movable/Bump other than the signal.
+	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, A)
+	if(!can_impact(A, cross_failed = TRUE))
+		return
+	impact(A)
+
 
 /obj/projectile/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
-	if(!isnull(hit[blocker]))
+	if(!isnull(impacted[blocker]))
 		return TRUE
 	return ..()
 
@@ -921,6 +979,8 @@
  * Try to hit a Crossed() target
  */
 /obj/projectile/proc/scan_crossed_target(atom/movable/AM)
+	if(can_hit_target(AM))
+		impact_internal(AM)
 	#warn impl
 
 /**
@@ -931,7 +991,22 @@
 
 //* Impact - Internal
 
-#warn impl
+/**
+ * Called to process impacts.
+ * This is usually from the following sources:
+ * * We got Crossed() between moves by a moving object
+ * * We Bump()'d something that did block us
+ * * We Moved() and scanned for something to hit
+ *
+ * This proc should not check can_impact(); this is assumed already to have been checked.
+ */
+/obj/projectile/proc/impact(atom/movable/A)
+	// check impacted; this should be checked by can_impact but we want to be sure incase of snowflake calls
+	if(impacted[A])
+		return FALSE
+	// grab our point
+	var/datum/point/visual_point = new /datum/point(src)
+	#warn impl
 
 //* Impact - Checks
 
@@ -944,7 +1019,7 @@
  * * point_blank - are they a point blank target
  * * cross_failed - are we scanning for a hit due to a failed Cross().
  */
-/obj/projectile/proc/can_hit_target(atom/A, point_blank, cross_failed)
+/obj/projectile/proc/can_impact(atom/A, point_blank, cross_failed)
 	#warn impl
 
 /**
@@ -967,15 +1042,15 @@
  * @return PROJECTILE_PIERCE_* enum
  */
 /obj/projectile/proc/prehit_pierce(atom/A)
-	if((projectile_phasing & A.pass_flags_self) && (phases_through_direct_target || target != A))
+	if((pass_flags_phase & A.pass_flags_self) && (phases_through_direct_target || target != A))
 		return PROJECTILE_PIERCE_PHASE
-	if(projectile_piercing & A.pass_flags_self)
+	if(pass_flags_pierce & A.pass_flags_self)
 		return PROJECTILE_PIERCE_HIT
 	if(ismovable(A))
 		var/atom/movable/AM = A
 		if(!isnull(AM.throwing))
 			var/check = (AM.throwing.throw_flags & THROW_AT_OVERHAND)? ATOM_PASS_OVERHEAD_THROW : ATOM_PASS_THROWN
-			return (projectile_phasing & check)? PROJECTILE_PIERCE_PHASE : ((projectile_piercing & check)? PROJECTILE_PIERCE_HIT : PROJECTILE_PIERCE_NONE)
+			return (pass_flags_phase & check)? PROJECTILE_PIERCE_PHASE : ((pass_flags_pierce & check)? PROJECTILE_PIERCE_HIT : PROJECTILE_PIERCE_NONE)
 	return PROJECTILE_PIERCE_NONE
 
 //* Impact - Application

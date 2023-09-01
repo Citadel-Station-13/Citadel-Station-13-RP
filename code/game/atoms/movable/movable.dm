@@ -471,6 +471,14 @@
 	if(!self_perspective)
 		make_perspective()
 
+//* Cloning
+
+/**
+ * Make a best-effort clone of this atom.
+ */
+/atom/movable/clone(atom/where)
+	return new type(where)
+
 //? Layers
 /atom/movable/set_base_layer(new_layer)
 	. = ..()
