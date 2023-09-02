@@ -2,6 +2,32 @@
 
 GLOBAL_LIST_EMPTY(preferences_datums)
 
+/**
+ * Fetches a prefs datum by ckey
+ *
+ * @params
+ * * ckey - their canonical key
+ * * only_if_exists - only load / create if it already exists
+ *
+ * @return the preferences datum if found, or null
+ *
+ * todo: /datum/character
+ */
+/datum/controller/subsystem/characters/proc/fetch_preferences_datum(ckey, only_if_exists = FALSE)
+	RETURN_TYPE(/datum/preferences)
+	ckey = ckey(ckey)
+	if(!isnull(GLOB.preferences_datums[ckey]))
+		return GLOB.preferences_datums[ckey]
+	var/datum/preferences/creating = new
+	creating.client_ckey = ckey
+	if(only_if_exists && !creating.load_path())
+		qdel(creating)
+		return
+	GLOB.preferences_datums[ckey] = creating
+	if(initialized)
+		creating.Initialize()
+	return creating
+
 /datum/preferences
 	//! Intrinsics
 	/// did we load yet?
@@ -227,7 +253,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(istype(C))
 		client = C
 		client_ckey = C.ckey
-	if(SScharacters.initialized)
+	if(client_ckey && SScharacters.initialized)
 		Initialize()
 
 /datum/preferences/proc/Initialize()
@@ -242,17 +268,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	real_name = random_name(identifying_gender, real_species_name())
 	b_type = RANDOM_BLOOD_TYPE
 
-	if(client)
-		if(!IsGuestKey(client.key))
-			if(load_path(client.ckey))
-				if(load_preferences())
-					if(load_character())
-						load_skin()
-						sanitize_everything()
-						player_setup.sanitize_setup()
-						client.update_movement_keys()
-						initialized = TRUE
-						return
+	if(load_path(client_ckey))
+		if(load_preferences())
+			if(load_character())
+				load_skin()
+				sanitize_everything()
+				player_setup.sanitize_setup()
+				client?.update_movement_keys()
+				initialized = TRUE
+				return
 
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	client?.update_movement_keys(src)
