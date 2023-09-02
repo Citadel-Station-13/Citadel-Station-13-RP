@@ -238,7 +238,8 @@
 
 /obj/structure/girder/drop_products(method, atom/where)
 	. = ..()
-	material_girder.place_dismantled_product(where, 2)
+	material_structure.place_dismantled_product(where, 2)
+	material_reinforcing.place_dismantled_product(where, 1)
 
 /obj/structure/girder/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	var/turf/simulated/T = get_turf(src)
@@ -279,7 +280,7 @@
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
 			var/datum/material/M = get_material_by_name(the_rcd.material_to_use)
-			new_T.set_materials(M, the_rcd.make_rwalls ? M : null, material_girder)
+			new_T.set_materials(M, the_rcd.make_rwalls ? material_reinforcing || M : material_reinforcing, material_structure)
 			new_T.add_hiddenprint(user)
 			qdel(src)
 			return TRUE

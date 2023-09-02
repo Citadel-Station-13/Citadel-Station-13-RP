@@ -58,9 +58,9 @@
 	remove_obj_verb(src, /obj/structure/inflatable/verb/hand_deflate)
 	deflate()
 
-/obj/structure/inflatable/deconstruct(method)
+/obj/structure/inflatable/deconstructed(method)
+	. = ..()
 	visible_message(SPAN_WARNING("\the [src] deflates!"))
-	return ..()
 
 /obj/structure/inflatable/drop_products(method, atom/where)
 	. = ..()

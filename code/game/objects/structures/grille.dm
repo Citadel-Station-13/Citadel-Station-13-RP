@@ -191,16 +191,8 @@
 /obj/structure/grille/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(!destroyed)
 		if(exposed_temperature > T0C + 1500)
-			health -= 1
-			healthcheck()
+			inflict_atom_damage(1, flag = ARMOR_FIRE)
 	..()
-
-/obj/structure/grille/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
-	user.do_attack_animation(src)
-	health -= damage
-	spawn(1) healthcheck()
-	return 1
 
 /obj/structure/grille/proc/is_on_frame()
 	if(locate(/obj/structure/wall_frame) in loc)
