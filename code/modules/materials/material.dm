@@ -111,7 +111,7 @@
 	/// * impacts carry weight of things made out of this
 	/// * impacts radiation armor (major)
 	/// * impacts bomb armor
-	var/relative_density = 0
+	var/relative_density = 1
 	/// relative multiplier for how easily this material passes electricity
 	/// * impacts conductivity
 	/// * impacts usage as a conductor

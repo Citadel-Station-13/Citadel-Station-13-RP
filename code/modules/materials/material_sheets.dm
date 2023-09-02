@@ -39,7 +39,7 @@
 	if(apply_colour)
 		color = src.material.icon_colour
 
-	if(!src.material.conductive)
+	if(src.material.relative_conductivity < MATERIAL_CONDUCTIVITY_NOCONDUCT)
 		atom_flags |= NOCONDUCT
 
 	update_strings()

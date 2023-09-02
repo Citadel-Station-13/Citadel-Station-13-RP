@@ -3,6 +3,11 @@
 
 //? master file for balancing / efficiency tuning
 
+//* Efficiency
+
+/// scale a lathe's efficiency to upgrade level
+#define MATERIAL_EFFICIENCY_LATHE_SCALE(tier) max(0, 1.1 - tier * 0.1)
+
 //* Attributes - Resistance
 
 /// the level at which vulnerability is comedically high
@@ -52,10 +57,9 @@
 /// material gloves
 #define MATERIAL_FACTORING_GLOVES 2
 
-//* Efficiency
-
-/// scale a lathe's efficiency to upgrade level
-#define MATERIAL_EFFICIENCY_LATHE_SCALE(tier) max(0, 1.1 - tier * 0.1)
+//* Conductvitiy
+/// relative_conductivity threshold considered NOCONDUCT
+#define MATERIAL_CONDUCTIVITY_NOCONDUCT 0.05
 
 //* Opacity
 
