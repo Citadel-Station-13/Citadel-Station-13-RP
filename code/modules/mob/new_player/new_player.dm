@@ -78,13 +78,10 @@
 		output += "<p><a href='byond://?src=\ref[src];shownews=1'>Show News</A></p>"
 
 	output += "</div>"
-	output +="<hr>"
 
 
-	output += "<center>It is the 26th century, and the galaxy is enjoying an era of relative peace.<br><br>Whether you hail from the human-aligned worlds of the Orion Confederation, the Unathi-dominated Alliance of Three Hands, or the alien-centric Skrell controlled Vikaran Combine, you find yourself on the frontier, working for an NT crew on the edge of Orion Confederation space.<br><br>For more information, please see our Wiki via the button on the upper right of your screen! Simply press 'Okay' when prompted! </center>"
 
-
-	panel = new(src, "Welcome","Welcome", 400, 480, src)
+	panel = new(src, "Welcome","Welcome", 210, 280, src)
 	panel.set_window_options("can_close=0")
 	panel.set_content(output)
 	panel.open()
