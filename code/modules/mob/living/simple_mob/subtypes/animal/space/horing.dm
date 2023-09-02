@@ -27,6 +27,10 @@
 	meat_amount = 20
 	meat_type = /obj/item/reagent_containers/food/snacks/horsemeat
 	butchery_loot = list(/obj/item/stack/animalhide = 6)
+	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP
+	var/charge_damage_flag = ARMOR_MELEE
+	var/charge_damage_tier = MELEE_TIER_HEAVY
+	var/charge_damage = 60
 
 	ai_holder_type = /datum/ai_holder/simple_mob/horing
 
@@ -83,41 +87,23 @@
 
 /mob/living/simple_mob/animal/horing/Bump(atom/movable/AM)
 	if(charging)
+		visible_message("<span class='warning'>[src] rams [AM]!</span>")
 		if(istype(AM, /mob/living))
 			var/mob/living/M = AM
-			visible_message("<span class='warning'>[src] rams [AM]!</span>")
 			M.afflict_stun(20 * 5)
 			M.afflict_paralyze(20 * 3)
 			var/throwdir = pick(turn(dir, 45), turn(dir, -45))
 			M.throw_at_old(get_step(src.loc, throwdir), 1, 1, src)
 			runOver(M) // Actually should not use this, placeholder
-		if(istype(AM, /obj/structure))
-			if(istype(AM, /obj/structure/window))
-				var/obj/structure/window/window = AM
-				window.hit(80) //Shatters reinforced windows
-			else if(istype(AM, /obj/structure/table))
-				var/obj/structure/table/table = AM
-				var/tableflipdir = pick(turn(dir, 90), turn(dir, -90))
-				if(!table.flip(tableflipdir)) //If table don't gets flipped just generic attack it
-					AM.attack_generic(src, 20, "rams")
-			else if(istype(AM, /obj/structure/closet))
-				var/obj/structure/closet/closet = AM
-				closet.throw_at_random(0, 2, 2)
-				closet.break_open() //Lets not destroy closets that easily, instead just open it
-			else
-				AM.attack_generic(src, 20, "rams") // Otherwise just attack_generic that structure
-		if(istype(AM, /turf/simulated/wall))
-			var/turf/simulated/wall/wall = AM
-			wall.take_damage(20)
-		if(istype(AM, /obj/machinery))
-			var/obj/machinery/machinery = AM
-			machinery.attack_generic(src, 20)
+		else if(isobj(AM))
+			AM.inflict_atom_damage(charge_damage, charge_damage_tier, charge_damage_flag, charge_damage_mode, ATTACK_TYPE_UNARMED, src)
 	..()
 
 /mob/living/simple_mob/animal/horing/proc/runOver(var/mob/living/M)
 	if(istype(M))
 		visible_message("<span class='warning'>[src] rams [M] over!</span>")
 		playsound(src, 'sound/effects/splat.ogg', 50, 1)
+		// todo: this ignores charge_damage
 		var/damage = rand(3,4)
 		M.apply_damage(2 * damage, BRUTE, BP_HEAD)
 		M.apply_damage(2 * damage, BRUTE, BP_TORSO)

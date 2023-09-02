@@ -157,13 +157,14 @@
  * @params
  * * amount - how much
  * * gradual - burst or gradual? if you want to play a sound or something, you usually want to check this.
+ * * do_not_break - skip calling atom_break
  */
-/atom/proc/damage_integrity(amount, gradual)
+/atom/proc/damage_integrity(amount, gradual, do_not_break)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	var/was_working = integrity > integrity_failure
 	integrity = max(0, integrity - amount)
-	if(was_working && integrity <= integrity_failure)
+	if(was_working && integrity <= integrity_failure && !do_not_break)
 		atom_break()
 	if(integrity <= 0)
 		atom_destruction()
@@ -174,17 +175,18 @@
  * @params
  * * amount - how much
  * * gradual - burst or gradual? if you want to play a sound or something, you usually want to check this.
+ * * do_not_fix - skip calling atom_fix
  *
  * @return amount healed
  */
-/atom/proc/heal_integrity(amount, gradual)
+/atom/proc/heal_integrity(amount, gradual, do_not_fix)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	var/was_failing = integrity <= integrity_failure
 	. = integrity
 	integrity = min(integrity_max, integrity + amount)
 	. = integrity - .
-	if(was_failing && integrity > integrity_failure)
+	if(was_failing && integrity > integrity_failure && !do_not_fix)
 		atom_fix()
 
 /**
@@ -337,6 +339,8 @@
 /atom/proc/atom_break()
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+	if(integrity > integrity_failure)
+		damage_integrity(integrity - integrity_failure, do_not_break = TRUE)
 	atom_flags |= ATOM_BROKEN
 
 /**
@@ -347,6 +351,8 @@
 /atom/proc/atom_fix()
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+	if(integrity < integrity_failure)
+		heal_integrity(integrity_failure - integrity + 1, do_not_fix = TRUE)
 	atom_flags &= ~ATOM_BROKEN
 
 //? Deconstruction

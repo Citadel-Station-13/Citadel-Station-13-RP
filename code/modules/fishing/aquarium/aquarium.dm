@@ -163,7 +163,7 @@
 	return ..()
 
 /obj/structure/aquarium/interact(mob/user)
-	if(!broken && user.pulling && isliving(user.pulling))
+	if(!(atom_flags & ATOM_BROKEN) && user.pulling && isliving(user.pulling))
 		var/mob/living/living_pulled = user.pulling
 		var/datum/component/aquarium_content/content_component = living_pulled.GetComponent(/datum/component/aquarium_content)
 		if(content_component && content_component.is_ready_to_insert(src))

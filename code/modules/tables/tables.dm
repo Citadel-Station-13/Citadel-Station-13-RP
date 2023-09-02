@@ -94,10 +94,11 @@ var/list/table_icon_cache = list()
 	var/datum/material/reinforcing = parts[parts[2]]
 	var/amount = structure.relative_integrity * 100 + reinforcing.relative_integrity * 50
 	set_full_integrity(amount, amount)
-	set_armor(SSmaterials.reinforcing_materials_armor(
-		structure = 1,
-		reinforcing = 2,
-	))
+	// the () is to block the list() from making it a string
+	set_armor(SSmaterials.reinforcing_materials_armor(list(
+		(structure) = 1,
+		(reinforcing) = 2,
+	)))
 
 /obj/structure/table/take_damage_legacy(amount)
 	// If the table is made of a brittle material, and is *not* reinforced with a non-brittle material, damage is multiplied by TABLE_BRITTLE_MATERIAL_MULTIPLIER
