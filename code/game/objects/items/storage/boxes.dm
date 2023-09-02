@@ -232,9 +232,9 @@
 	starts_with = list(/obj/item/ammo_casing/a12g/techshell/emp = 16)
 
 /obj/item/storage/box/sniperammo
-	name = "box of 14.5mm shells"
+	name = "box of 12.7mm shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	starts_with = list(/obj/item/ammo_casing/a145 = 7)
+	starts_with = list(/obj/item/ammo_casing/a127 = 7)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 

@@ -62,7 +62,7 @@
 	item_cost = 5
 
 /datum/uplink_item/item/ammo/sniperammo
-	name = "Anti-Materiel Rifle ammo box (14.5mm)"
+	name = "Anti-Materiel Rifle ammo box (12.7mm)"
 	path = /obj/item/storage/box/sniperammo
 
 /datum/uplink_item/item/ammo/c545

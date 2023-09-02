@@ -425,14 +425,14 @@
 	materials = list(MAT_STEEL = 300, MAT_SILVER = 150)
 
 /*
- * 14.5mm (anti-materiel rifle round)
+ * 12.7mm (anti-materiel rifle round)
  */
 
-/obj/item/ammo_casing/a145
-	desc = "A 14.5mm shell."
+/obj/item/ammo_casing/a127
+	desc = "A 12.7mm shell."
 	icon_state = "lcasing"
-	caliber = "14.5mm"
-	projectile_type = /obj/projectile/bullet/rifle/a145
+	caliber = "12.7mm"
+	projectile_type = /obj/projectile/bullet/rifle/a127
 	materials = list(MAT_STEEL = 1250)
 
 /*
