@@ -94,13 +94,12 @@
 				unbuckle()
 		else
 			user.setClickCooldown(user.get_attack_speed())
-			damage_integrity(rand(1, 5))
 			var/text = pick("rip","tear","pull", "bite", "tug")
 			user.visible_message(\
 			"<span class='warning'>\The [user] [text]s at \the [src].</span>",\
 			"<span class='warning'>You [text] at \the [src].</span>",\
 			"<span class='warning'>You hear shredding and ripping.</span>")
-			check_health()
+			damage_integrity(rand(1, 5))
 			return
 
 /obj/effect/plant/proc/entangle(var/mob/living/victim)

@@ -117,7 +117,7 @@
 		else
 			. += "<span class='notice'>There is a thick layer of silicate covering it.</span>"
 
-/obj/structure/window/damage_integrity(amount, gradual)
+/obj/structure/window/damage_integrity(amount, gradual, do_not_break)
 	var/initial_integrity = integrity
 	. = ..()
 	if(gradual)

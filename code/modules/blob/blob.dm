@@ -36,13 +36,13 @@
 		if(3)
 			damage_integrity(rand(20, 60) / brute_resist)
 
-/obj/effect/blob/damage_integrity(amount, gradual)
+/obj/effect/blob/damage_integrity(amount, gradual, do_not_break)
 	. = ..()
 	if(!. || !gradual)
 		playsound(src, 'sound/effects/splat.ogg', 50, 1)
 	update_icon()
 
-/obj/effect/blob/heal_integrity(amount, gradual)
+/obj/effect/blob/heal_integrity(amount, gradual, do_not_fix)
 	. = ..()
 	if(!.)
 		return

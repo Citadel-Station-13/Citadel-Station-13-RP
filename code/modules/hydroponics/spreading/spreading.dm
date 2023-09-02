@@ -115,11 +115,11 @@
 	spread_distance = ((growth_type>0) ? round(spread_chance*0.77) : round(spread_chance*0.6))
 	update_icon()
 
-/obj/effect/plant/heal_integrity(amount, gradual)
+/obj/effect/plant/heal_integrity(amount, gradual, do_not_fix)
 	. = ..()
 	refresh_icon()
 
-/obj/effect/plant/damage_integrity(amount, gradual)
+/obj/effect/plant/damage_integrity(amount, gradual, do_not_break)
 	. = ..()
 	refresh_icon()
 	SSplants.add_plant(src)

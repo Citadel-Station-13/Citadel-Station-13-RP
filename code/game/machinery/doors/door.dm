@@ -261,7 +261,7 @@
 		operating = -1
 		return 1
 
-/obj/machinery/door/damage_integrity(amount, gradual)
+/obj/machinery/door/damage_integrity(amount, gradual, do_not_break)
 	var/initial_integrity = integrity
 	. = ..()
 	if(gradual)

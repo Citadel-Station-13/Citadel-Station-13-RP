@@ -285,14 +285,15 @@
  * @params
  * * amount - how much
  * * gradual - burst or gradual?
+ * * no_checks - do not call fix/break
  */
 /atom/proc/adjust_integrity(amount, gradual)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(amount > 0)
-		return heal_integrity(amount, gradual)
+		return heal_integrity(amount, gradual, no_checks)
 	else
-		return damage_integrity(amount, gradual)
+		return damage_integrity(amount, gradual, no_checks)
 
 /**
  * adjusts max integrity - will automatically reduce integrity if it's above max.

@@ -621,7 +621,7 @@
 		enabled = TRUE //turns it back on. The cover popUp() popDown() are automatically called in process(), no need to define it here
 		return 1
 
-/obj/machinery/porta_turret/damage_integrity(amount, gradual)
+/obj/machinery/porta_turret/damage_integrity(amount, gradual, do_not_break)
 	. = ..()
 	if(!gradual && prob(45) && amount > 5)
 		spark_system.start()
