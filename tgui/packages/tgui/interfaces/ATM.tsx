@@ -176,7 +176,7 @@ const ATMElement = (props, context) => {
       </Flex.Item>
       <Divider />
       <Flex.Item>
-        <Collapsible title="Security Controls" icon="shield-alt">
+        <Collapsible title="Security Controls" headerProps={{ icon: "shield-alt" }}>
           <LabeledList>
             <LabeledList.Item label="Security Setting">
               <Button.Checkbox
@@ -198,7 +198,7 @@ const ATMElement = (props, context) => {
           </LabeledList>
         </Collapsible>
         <Divider />
-        <Collapsible title="Transaction Log" icon="money-bill">
+        <Collapsible title="Transaction Log" headerProps={{ icon: "money-bill" }}>
           <LabeledList>
             {
               Object.entries(data.transaction_log).map(([numString, logEntry]) => {
@@ -234,7 +234,7 @@ const ATMElement = (props, context) => {
           <Button icon="clipboard-list" onClick={() => act('print_transaction')}>Print Transactions</Button>
         </Collapsible>
         <Divider />
-        <Collapsible title="Transfer Funds" icon="money-check">
+        <Collapsible title="Transfer Funds" headerProps={{ icon: "money-check" }}>
           <LabeledList>
             <LabeledList.Item label="Target">
               <Input placeholder="Target" onChange={(e, value) => setTransferTarget(value)} />
@@ -249,7 +249,7 @@ const ATMElement = (props, context) => {
           </LabeledList>
         </Collapsible>
         <Divider />
-        <Collapsible title="Withdraw Funds" icon="money-bill-alt">
+        <Collapsible title="Withdraw Funds" headerProps={{ icon: "money-bill-alt" }}>
           <LabeledList>
             <LabeledList.Item label="Amount">
               <Input placeholder="Amount" onChange={(e, value) => setWithdrawAmount(value)} />

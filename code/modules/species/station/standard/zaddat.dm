@@ -50,7 +50,7 @@
 	warning_low_pressure = 300 // Low pressure warning.
 	hazard_low_pressure  = 220 // Dangerously low pressure.
 	safe_pressure = 400
-	poison_type = /datum/gas/nitrogen // technically it's a partial pressure thing but IDK if we can emulate that
+	poison_type = GAS_ID_NITROGEN // technically it's a partial pressure thing but IDK if we can emulate that
 
 	genders = list(FEMALE, PLURAL) //females are polyp-producing, infertile females and males are nigh-identical
 
@@ -107,7 +107,13 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/zaddat/(H), SLOT_ID_MASK) // mask has to come first or Shroud helmet will get in the way
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/void/zaddat/(H), SLOT_ID_SUIT)
 
-	var/obj/item/storage/toolbox/lunchbox/survival/zaddat/L = new(H)
+	var/obj/item/storage/toolbox/lunchbox/survival/L = new(H)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
+	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose(L)
 
 	if(H.backbag == 1)
 		H.put_in_hands_or_del(L)

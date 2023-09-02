@@ -4272,8 +4272,8 @@
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/item/material/minihoe,
 /obj/item/material/minihoe,
 /obj/item/material/knife/machete/hatchet,

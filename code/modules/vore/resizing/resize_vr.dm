@@ -83,7 +83,8 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 /mob/living/carbon/human/resize(var/new_size, var/animate = TRUE)
 	. = ..()
 	if(LAZYLEN(hud_list))
-		var/new_y_offset = 32 * (size_multiplier - 1)
+		var/new_y_offset = (size_multiplier < 1 ? 27 : 32) * (size_multiplier - 1)
+		//it lowers lesser than it raises when it comes to micros v. macros else the medHUD would bury the micro
 		for(var/key in hud_list)
 			var/image/HI = hud_list[key]
 			HI.pixel_y = new_y_offset
@@ -130,15 +131,27 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		var/mob/living/simple_mob/SA = M
 		if(!SA.has_hands)
 			return FALSE
+	if(M.get_active_held_item() && !istype(M.get_active_held_item(), /obj/item/grab)) //scooper's hand is holding something that isn't a grab.
+		to_chat(M, SPAN_WARNING("You can't pick up someone with your occupied hand."))
+		return TRUE
 	if(M.buckled)
-		to_chat(usr,"<span class='notice'>You have to unbuckle \the [M] before you pick them up.</span>")
+		to_chat(usr, SPAN_NOTICE("You have to unbuckle \the [M] before you pick them up."))
 		return FALSE
 	if(size_diff >= 0.50)
 		// if the person being scooped up is past a set size limit then the pickup pref is applied
 		if(get_effective_size() >= RESIZE_PREF_LIMIT && !permit_size_pickup)
-			to_chat(src, "<span class='warning'>[M] is far too skittish to casually scoop up.</span>")
-			return TRUE
+			if(M.check_grab(src)) //requires a grab of any kind before they can commence a "fair gameplay" scoopup. about the same prereqs as a fireman carry
+				to_chat(M, SPAN_NOTICE("You attempt to scoop up \the [src]."))
+				to_chat(src, SPAN_USERDANGER("[M] is attempting to scoop you up!")) //big red text so they know they're about to get bad-touched
+				if(!do_after(M, 3 SECONDS, src))
+					return TRUE
+			else
+				var/datum/gender/G = GLOB.gender_datums[src.get_visible_gender()]
+				to_chat(M, SPAN_WARNING("[src] is far too skittish to casually scoop up. Try grabbing [G.him] first."))
+				return FALSE
 		holder_type = /obj/item/holder/micro
+		if(M.get_active_held_item()) //drop the grab before scooping - should be the only item that passes at this point
+			M.drop_active_held_item()
 		var/obj/item/holder/m_holder = get_scooped(M)
 		holder_type = holder_default
 		if (m_holder)
@@ -426,8 +439,8 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 				//Human, not a taur, but not wearing shoes = yes grab
 				else if(H && (!isTaurTail(H.tail_style) && !H.shoes))
-					to_chat(src,"<span class='danger'>You pin [tmob] down onto the floor with your foot and curl your toes up around their body, trapping them inbetween them!</span>")
-					to_chat(tmob,"<span class='danger'>[src] pins you down to the floor with their foot and curls their toes up around your body, trapping you inbetween them!</span>")
+					to_chat(src,"<span class='danger'>You pin [tmob] down onto the floor with your foot and curl your toes up around their body, trapping them in between them!</span>")
+					to_chat(tmob,"<span class='danger'>[src] pins you down to the floor with their foot and curls their toes up around your body, trapping you in between them!</span>")
 					equip_to_slot_if_possible(tmob.get_scooped(H), SLOT_ID_SHOES, INV_OP_SILENT)
 					add_attack_logs(src,tmob,"Grabbed underfoot (nontaur, no shoes)")
 

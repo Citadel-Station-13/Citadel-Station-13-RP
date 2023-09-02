@@ -1,7 +1,7 @@
 //! gasmixtures
 #define THERMAL_ENERGY(gas) (gas.temperature * gas.heat_capacity())
 /// Atmospherics quantization define.
-#define QUANTIZE(variable)		(round(variable,0.0000001))/*I feel the need to document what happens here. Basically this is used to catch most rounding errors, however it's previous value made it so that
+#define QUANTIZE(variable)		(round(variable,0.00001))/*I feel the need to document what happens here. Basically this is used to catch most rounding errors, however it's previous value made it so that
 															once gases got hot enough, most procedures wouldnt occur due to the fact that the mole counts would get rounded away. Thus, we lowered it a few orders of magnititude */
 
 /// Writes the total moles of cached gases gaslist to out_var. Use this to spare a proccall in performance critical areas.

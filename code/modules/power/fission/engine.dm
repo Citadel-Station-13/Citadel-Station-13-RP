@@ -546,14 +546,14 @@ I'm commenting this out until I have time to make this less stupid.
 				my_mob.maxbodytemp = env.temperature * 1.2
 
 				var/list/gaslist = env.gas
-				my_mob.min_oxy = gaslist[/datum/gas/oxygen] * 0.8
-				my_mob.min_tox = gaslist[/datum/gas/phoron] * 0.8
-				my_mob.min_n2 = gaslist[/datum/gas/nitrogen] * 0.8
-				my_mob.min_co2 = gaslist[/datum/gas/carbon_dioxide] * 0.8
-				my_mob.max_oxy = gaslist[/datum/gas/oxygen] * 1.2
-				my_mob.max_tox = gaslist[/datum/gas/phoron] * 1.2
-				my_mob.max_n2 = gaslist[/datum/gas/nitrogen] * 1.2
-				my_mob.max_co2 = gaslist[/datum/gas/carbon_dioxide] * 1.2
+				my_mob.min_oxy = gaslist[GAS_ID_OXYGEN] * 0.8
+				my_mob.min_tox = gaslist[GAS_ID_PHORON] * 0.8
+				my_mob.min_n2 = gaslist[GAS_ID_NITROGEN] * 0.8
+				my_mob.min_co2 = gaslist[GAS_ID_CARBON_DIOXIDE] * 0.8
+				my_mob.max_oxy = gaslist[GAS_ID_OXYGEN] * 1.2
+				my_mob.max_tox = gaslist[GAS_ID_PHORON] * 1.2
+				my_mob.max_n2 = gaslist[GAS_ID_NITROGEN] * 1.2
+				my_mob.max_co2 = gaslist[GAS_ID_CARBON_DIOXIDE] * 1.2
 		return
 	else
 		STOP_PROCESSING(SSobj, src)

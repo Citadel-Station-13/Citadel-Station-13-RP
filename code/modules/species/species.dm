@@ -347,11 +347,11 @@
 
 	//? Breath
 	/// Non-oxygen gas breathed, if any.
-	var/breath_type = /datum/gas/oxygen
+	var/breath_type = GAS_ID_OXYGEN
 	/// Poisonous air.
-	var/poison_type = /datum/gas/phoron
+	var/poison_type = GAS_ID_PHORON
 	/// Exhaled gas type.
-	var/exhale_type = /datum/gas/carbon_dioxide
+	var/exhale_type = GAS_ID_CARBON_DIOXIDE
 
 	/// Species will try to stabilize at this temperature. (also affects temperature processing)
 	var/body_temperature = 310.15
@@ -567,10 +567,10 @@
 	return sanitizeName(name, MAX_NAME_LEN)
 
 GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
-	/datum/gas/oxygen = /obj/item/tank/emergency/oxygen,
-	/datum/gas/nitrogen = /obj/item/tank/emergency/nitrogen,
-	/datum/gas/phoron = /obj/item/tank/emergency/phoron,
-	/datum/gas/carbon_dioxide = /obj/item/tank/emergency/carbon_dioxide
+	GAS_ID_OXYGEN = /obj/item/tank/emergency/oxygen,
+	GAS_ID_NITROGEN = /obj/item/tank/emergency/nitrogen,
+	GAS_ID_PHORON = /obj/item/tank/emergency/phoron,
+	GAS_ID_CARBON_DIOXIDE = /obj/item/tank/emergency/carbon_dioxide
 ))
 
 /datum/species/proc/equip_survival_gear(var/mob/living/carbon/human/H,var/extendedtank = 0,var/comprehensive = 0)

@@ -33,7 +33,7 @@
 		/obj/item/tool/wrench,
 		/obj/item/multitool,
 		/obj/item/radio,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/storage/briefcase/inflatable,
 		/obj/item/melee/baton,
 		/obj/item/gun,

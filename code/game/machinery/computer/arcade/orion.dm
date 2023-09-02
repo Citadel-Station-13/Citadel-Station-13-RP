@@ -420,7 +420,7 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 	var/sheriff = remove_crewmember(target) //I shot the sheriff
 	if(target)
 		killed_crew += 1 //if there was no suspected lings, this is just plain murder
-	playsound(loc ,'sound/weapons/Gunshot_deagle.ogg', 100, TRUE)
+	gamer.playsound_local(get_turf(src) ,'sound/weapons/Gunshot_deagle.ogg', 50, TRUE)
 	if(!settlers.len || !alive)
 		src.audible_message("<b>\The [src]</b> says, 'The last crewmember [sheriff], shot themselves, GAME OVER!'")
 		if(obj_flags & OBJ_EMAGGED)

@@ -5,7 +5,7 @@
 	if(!environment) return
 
 	var/turf/T = get_turf(src)
-	if(environment.gas[/datum/gas/phoron] > 0 || (T && locate(/obj/structure/alien/weeds) in T.contents))
+	if(environment.gas[GAS_ID_PHORON] > 0 || (T && locate(/obj/structure/alien/weeds) in T.contents))
 		update_progression()
 		adjustBruteLoss(-1)
 		adjustFireLoss(-1)

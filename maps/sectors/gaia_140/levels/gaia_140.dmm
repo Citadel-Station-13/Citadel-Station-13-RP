@@ -227,8 +227,8 @@
 /obj/item/material/minihoe,
 /obj/item/shovel/spade,
 /obj/item/shovel/spade,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/item/tool/wirecutters/clippers/trimmers,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
@@ -1468,8 +1468,8 @@
 /obj/item/material/minihoe,
 /obj/item/shovel/spade,
 /obj/item/shovel/spade,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/item/tool/wirecutters/clippers/trimmers,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)

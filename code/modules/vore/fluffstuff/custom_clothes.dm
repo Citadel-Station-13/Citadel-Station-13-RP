@@ -338,7 +338,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	permeability_coefficient = 0.50
 	allowed = list(
-		/obj/item/flashlight, /obj/item/analyzer,
+		/obj/item/flashlight, /obj/item/atmos_analyzer,
 		/obj/item/radio, /obj/item/tank/emergency/oxygen,
 		/obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer,
 		/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,
@@ -554,7 +554,7 @@
 	desc = "Squeak! A shiny outfit for cleaning, made by people with dirty minds."
 
 	icon = 'icons/clothing/uniform/costume/maid.dmi'
-	icon_state = "latex"
+	icon_state = "maid"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO

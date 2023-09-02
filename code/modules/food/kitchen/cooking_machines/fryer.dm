@@ -75,7 +75,6 @@
 			//We're above optimal, efficiency goes down as we pass too much over it
 			oil_efficiency = 1 - (oil_efficiency - 1)
 
-
 	cooking_power *= oil_efficiency
 
 

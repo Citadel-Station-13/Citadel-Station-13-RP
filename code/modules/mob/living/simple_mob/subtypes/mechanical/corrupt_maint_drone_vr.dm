@@ -6,9 +6,9 @@
 
 /datum/category_item/catalogue/technology/drone/corrupt_maint_drone
 	name = "Drone - Corrupted Maintenance Drone"
-	desc = "This drone appears to be a station maintenance drone, produced by some sort of corrupt fab, \
-	which has caused it to become corrupt and attack anything nearby, except spiders and such, oddy. \
-	If one is found, a swarm of others are not too far away.\
+	desc = "This drone appears to be a station maintenance drone, produced by some sort of corrupt fab. \
+	Now this drone seems to target any organic life it comes across, working with others of its kind to overwhelm \
+	larger foes. If one is found, a swarm of others are not too far away.\
 	<br><br>\
 	The drone struggles to harm large targets, due to it's small size, yet it possesses a welder, which allows \
 	it to **ERROR** inject it's targets, in addition to the small slashes from it's skittering claws. \
@@ -26,7 +26,7 @@
 	icon_living = "corrupt-repairbot"
 	hovering = FALSE // Can trigger landmines.
 
-	faction = "underdark"
+	faction = "hivebot"
 	maxHealth = 25
 	health = 25
 	movement_cooldown = 0
@@ -76,4 +76,20 @@
 	legacy_melee_damage_lower = 4	// Slightly less DPS for this version
 	poison_chance = 0	// No welding fuel poison
 //	pass_flags = Null // Lets see if this stops the bastards from going under barricades
+
+
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/matriarch
+	name = "Corrupt Matriarch Drone"
+	desc = "A not so small, normal-looking drone. It looks like one you'd find on station, except... IT'S COMING AT YOU!"
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/corrupt_maint_drone)
+
+	icon_state = "corrupt-matriarch"
+	icon_living = "corrupt-matriarch"
+
+	maxHealth = 50
+	health = 50
+
+	melee_damage_lower = 12 // Approx 12 DPS.
+	melee_damage_upper = 12
+	base_attack_cooldown =  5 // Two attacks per second.
 

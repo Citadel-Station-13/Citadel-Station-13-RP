@@ -550,21 +550,23 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 
 	update_nearby_tiles(need_rebuild)
-		if(!air_master) return 0
+		if(!SSair) return 0
 
 		var/turf/simulated/source = loc
 		var/turf/simulated/destination = get_step(source,dir)
 
 		update_heat_protection(loc)
 
-		if(istype(source)) air_master.tiles_to_update += source
-		if(istype(destination)) air_master.tiles_to_update += destination
+		if(istype(source)) SSair.tiles_to_update += source
+		if(istype(destination)) SSair.tiles_to_update += destination
 		return 1
 */
 
-// For prosperity, in case border doors get reimplemented.
-/obj/machinery/door/firedoor/border_only/CanAStarPass(obj/item/card/id/ID, to_dir)
-	return ..() || (dir != to_dir)
+/obj/machinery/door/firedoor/border_only/can_pathfinding_exit(atom/movable/actor, dir, datum/pathfinding/search)
+	return (src.dir != dir) || ..()
+
+/obj/machinery/door/firedoor/border_only/can_pathfinding_enter(atom/movable/actor, dir, datum/pathfinding/search)
+	return (src.dir != dir) || ..()
 
 /obj/machinery/door/firedoor/multi_tile
 	icon = 'icons/obj/doors/DoorHazard2x1.dmi'

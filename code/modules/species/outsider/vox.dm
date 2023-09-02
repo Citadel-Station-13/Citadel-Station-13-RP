@@ -52,8 +52,8 @@
 
 	gluttonous = 0
 
-	breath_type = /datum/gas/phoron
-	poison_type = /datum/gas/oxygen
+	breath_type = GAS_ID_PHORON
+	poison_type = GAS_ID_OXYGEN
 	siemens_coefficient = 0.2
 
 	species_flags = NO_SCAN | CONTAMINATION_IMMUNE

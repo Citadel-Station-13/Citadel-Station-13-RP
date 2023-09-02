@@ -16,8 +16,8 @@
 	req_access = list(160)
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "trade";
@@ -47,7 +47,7 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "ah" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -503,8 +503,8 @@
 	opacity = 0
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -521,7 +521,7 @@
 /area/tradeport)
 "bZ" = (
 /obj/machinery/light,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -538,9 +538,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "cb" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -625,9 +623,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
 "cq" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "cs" = (
@@ -638,8 +634,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
@@ -733,7 +729,7 @@
 /area/tradeport/commons)
 "cH" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Nebula Gas - Warehouse";
 	req_access = list(160)
 	},
@@ -756,7 +752,7 @@
 /area/tradeport)
 "cM" = (
 /obj/structure/table/woodentable,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -808,8 +804,8 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -979,8 +975,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	req_access = list(160);
@@ -1139,7 +1135,7 @@
 /area/tradeport/safarizoo)
 "ea" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -1497,8 +1493,8 @@
 /area/tradeport/commons)
 "fy" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -1540,8 +1536,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -1618,8 +1614,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/glass{
 	name = "Hydroponics"
@@ -1776,7 +1772,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -1834,7 +1830,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -1925,8 +1921,8 @@
 	},
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
@@ -2178,7 +2174,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "io" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -2187,7 +2183,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "iu" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -2231,8 +2227,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
@@ -2325,8 +2321,8 @@
 	},
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
@@ -2404,7 +2400,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndishow)
 "jd" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -2485,7 +2481,7 @@
 /obj/item/soap/deluxe,
 /obj/item/soap/deluxe,
 /obj/item/soap/deluxe,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -2610,13 +2606,13 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Nebula Gas - Engineering";
 	req_access = list(160)
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/engineering)
@@ -2665,7 +2661,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport)
 "jV" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -23;
 	req_one_access = list(160)
@@ -2713,7 +2709,7 @@
 /obj/item/towel{
 	color = "#0000FF"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -2835,7 +2831,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "kK" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 23;
 	req_one_access = list(160)
@@ -3013,7 +3009,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "ls" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -3096,7 +3092,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -3136,9 +3132,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "lL" = (
@@ -3411,7 +3405,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "mT" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -3419,7 +3413,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "mU" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -3796,8 +3790,8 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -3884,7 +3878,7 @@
 	pixel_y = 8
 	},
 /obj/machinery/light,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -3988,7 +3982,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "oN" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -4582,8 +4576,8 @@
 	req_access = list(160)
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/atmospherics)
@@ -4592,8 +4586,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -4773,7 +4767,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "rI" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -4787,7 +4781,7 @@
 /obj/structure/mirror{
 	pixel_x = -29
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -4886,8 +4880,8 @@
 	name = "Sleeping"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
@@ -5106,7 +5100,7 @@
 	req_access = list(160)
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -22;
 	req_one_access = list(160)
@@ -5157,7 +5151,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "ta" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -5202,8 +5196,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/silver{
 	id_tag = "tradedorm2";
@@ -5394,8 +5388,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/commhall)
@@ -5408,7 +5402,7 @@
 "tV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -22;
 	req_one_access = list(160)
@@ -5516,7 +5510,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tradeport)
 "uu" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -5740,8 +5734,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -5765,7 +5759,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -5939,8 +5933,8 @@
 	id = "storeshutter1"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/facility)
@@ -6025,7 +6019,7 @@
 "wb" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/material/knife/tacknife/dataknife,
+/obj/item/gps/dataknife,
 /obj/item/gun/energy/frontier/taj,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
@@ -6116,8 +6110,8 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
@@ -6280,8 +6274,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -6315,7 +6309,7 @@
 	dir = 8;
 	pixel_x = -25
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -6417,7 +6411,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Nebula Gas - Dormitories";
 	req_access = list(160)
 	},
@@ -6425,8 +6419,8 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
@@ -6757,7 +6751,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
 "yx" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -7081,8 +7075,8 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
@@ -7265,7 +7259,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "Au" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -22;
 	req_one_access = list(160)
@@ -7360,8 +7354,8 @@
 /area/tradeport/pads)
 "Bj" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -7484,7 +7478,7 @@
 /area/tradeport/cyndishow)
 "BF" = (
 /obj/machinery/light,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 23;
 	req_one_access = list(160)
@@ -7538,13 +7532,13 @@
 /area/tradeport/dock)
 "BL" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Nebula Commercial District";
 	req_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
@@ -7805,7 +7799,7 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "CQ" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -7822,7 +7816,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -8209,7 +8203,7 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "Ez" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -8453,7 +8447,7 @@
 	dir = 1
 	},
 /obj/structure/table/bench/wooden,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -8598,7 +8592,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -22;
 	req_one_access = list(160)
@@ -8633,7 +8627,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Gs" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -8812,7 +8806,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "Hq" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 23;
 	req_one_access = list(160)
@@ -8861,8 +8855,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/glass{
 	name = "Restrooms"
@@ -9015,7 +9009,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "It" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -9211,8 +9205,8 @@
 /area/tradeport/commons)
 "IT" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/command{
 	name = "Managers Office";
@@ -9242,8 +9236,8 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
@@ -9298,7 +9292,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -9497,15 +9491,15 @@
 /area/shuttle/trade_ship/general)
 "JZ" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
@@ -9544,7 +9538,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -9667,8 +9661,8 @@
 /area/tradeport/facility)
 "KF" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -9747,7 +9741,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -10000,8 +9994,8 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -10137,7 +10131,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -10176,8 +10170,8 @@
 	opacity = 0
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
@@ -10310,8 +10304,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/silver{
 	name = "Women"
@@ -10419,7 +10413,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -10452,8 +10446,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -10541,8 +10535,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/silver{
 	id_tag = "tradedorm1";
@@ -10627,8 +10621,8 @@
 /area/tradeport/cyndishow)
 "Og" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
@@ -10773,7 +10767,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/expansion)
 "OP" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -11055,8 +11049,8 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
@@ -11656,7 +11650,7 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "Sk" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -11750,8 +11744,8 @@
 /area/tradeport/commons)
 "Sy" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
@@ -11775,8 +11769,8 @@
 /area/tradeport/cafeteria)
 "SD" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -11820,8 +11814,8 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -11841,7 +11835,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -12048,13 +12042,13 @@
 /area/tradeport/safari)
 "TG" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1;
+	dir = 4;
 	name = "Nebula Commercial District";
 	req_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/commhall)
@@ -12137,7 +12131,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "TX" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -22;
 	req_one_access = list(160)
@@ -12206,6 +12200,10 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
+"Um" = (
+/obj/machinery/vending/weeb,
+/turf/simulated/floor/wood,
+/area/tradeport/cyndi)
 "Uo" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/warning,
@@ -12362,8 +12360,8 @@
 	},
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
@@ -12384,8 +12382,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/silver{
 	name = "Men"
@@ -12492,8 +12490,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -12515,8 +12513,8 @@
 	opacity = 0
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/cash_register/trader{
 	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Then have customer swipe their card. ";
@@ -12590,8 +12588,8 @@
 /area/tradeport/commons)
 "VS" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	req_access = list(160);
@@ -12603,8 +12601,8 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -12754,8 +12752,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -12783,7 +12781,7 @@
 /turf/simulated/floor/airless,
 /area/tradeport/expansion)
 "WA" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 23;
 	req_one_access = list(160)
@@ -12795,8 +12793,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/glass{
 	name = "Kitchen"
@@ -12815,7 +12813,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
@@ -12943,8 +12941,8 @@
 /area/tradeport/atmospherics)
 "Xd" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/engineering)
@@ -13330,8 +13328,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
@@ -13393,10 +13391,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	use_power = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/tradeport/atmospherics)
@@ -13415,8 +13413,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/item/deskbell{
 	pixel_x = -7;
@@ -13431,9 +13429,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -13454,7 +13450,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
 "YW" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 23;
 	req_one_access = list(160)
@@ -13531,7 +13527,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport)
 "Zl" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
 	req_one_access = list(160)
@@ -13594,7 +13590,7 @@
 /area/tradeport/cafeteria)
 "Zx" = (
 /obj/structure/bed/chair,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
@@ -21602,7 +21598,7 @@ Cn
 Fy
 Fy
 ll
-Fy
+Um
 Fy
 ox
 Fy

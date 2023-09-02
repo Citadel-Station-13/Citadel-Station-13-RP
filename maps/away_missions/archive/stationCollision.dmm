@@ -1271,7 +1271,7 @@
 /area/awaymission/research)
 "fC" = (
 /obj/structure/table/standard,
-/obj/item/analyzer,
+/obj/item/atmos_analyzer,
 /obj/item/mass_spectrometer{
 	pixel_x = 5;
 	pixel_y = 5

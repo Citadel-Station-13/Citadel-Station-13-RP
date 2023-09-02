@@ -92,10 +92,14 @@
 		return ATMOS_PASS_NOT_BLOCKED
 	return density? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_ZONE_BLOCKED
 
-//used in the AStar algorithm to determinate if the turf the door is on is passable
-// todo: astar sucks
-/obj/machinery/door/window/CanAStarPass(obj/item/card/id/ID, to_dir)
-	return ..() || (check_access(ID) && inoperable()) || (dir != to_dir)
+/obj/machinery/door/window/can_pathfinding_enter(atom/movable/actor, dir, datum/pathfinding/search)
+	return (src.dir != dir) || ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !inoperable())
+
+/obj/machinery/door/window/can_pathfinding_exit(atom/movable/actor, dir, datum/pathfinding/search)
+	return (src.dir != dir)  || ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !inoperable())
+
+/obj/machinery/door/window/can_pathfinding_pass(atom/movable/actor, datum/pathfinding/search)
+	return ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !inoperable())
 
 /obj/machinery/door/window/CheckExit(atom/movable/AM, atom/newLoc)
 	if(!(get_dir(src, newLoc) & dir))

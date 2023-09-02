@@ -28,8 +28,8 @@
 	// heal more when "dead" to avoid being down for an incredibly long duration
 	if(last_emitter_death != 0)
 		heal_overall_damage(2 * emitter_health_regen)
-		// after 6 seconds we can come back to life assuming our health is not negative
-		if(last_emitter_death + 60 <= world.time && emitter_health > 0)
+		// after 20 seconds we can come back to life assuming our health is not negative
+		if(last_emitter_death + 200 <= world.time && emitter_health > 0)
 			last_emitter_death = 0
 			visible_message("<span class='danger'>[src]'s holo-emitter flickers back to life!</span>")
 	else

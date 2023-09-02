@@ -29,8 +29,8 @@
 	var/ui_error = null // For error messages to show up in nano ui.
 
 	var/datum/gas_mixture/internal = new()
-	var/const/input_gas = /datum/gas/carbon_dioxide
-	var/const/output_gas = /datum/gas/oxygen
+	var/const/input_gas = GAS_ID_CARBON_DIOXIDE
+	var/const/output_gas = GAS_ID_OXYGEN
 
 /obj/machinery/atmospherics/component/binary/algae_farm/filled
 	stored_material = list(MAT_ALGAE = 10000, MAT_CARBON = 0)
@@ -61,12 +61,12 @@
 		ui_error = null
 		update_icon()
 		if(use_power == USE_POWER_IDLE)
-			last_power_draw = idle_power_usage
+			last_power_draw_legacy = idle_power_usage
 		else
-			last_power_draw = 0
+			last_power_draw_legacy = 0
 		return 0
 
-	last_power_draw = active_power_usage
+	last_power_draw_legacy = active_power_usage
 
 	// STEP 1 - Check material resources
 	if(stored_material[MAT_ALGAE] < algae_per_mole)
@@ -87,21 +87,21 @@
 		network1.update = 1
 	if (power_draw > 0)
 		use_power(power_draw)
-		last_power_draw += power_draw
+		last_power_draw_legacy += power_draw
 
 	// STEP 3 - Convert CO2 to O2  (Note: We know our internal group multipier is 1, so just be cool)
 	var/co2_moles = internal.gas[input_gas]
 	if(co2_moles < MINIMUM_MOLES_TO_FILTER)
-		ui_error = "Insufficient [GLOB.meta_gas_names[input_gas]] to process."
+		ui_error = "Insufficient [global.gas_data.names[input_gas]] to process."
 		update_icon()
 		return
 
 	// STEP 4 - Consume the resources
 	var/converted_moles = min(co2_moles, moles_per_tick)
 	use_power(converted_moles * power_per_mole)
-	last_power_draw += converted_moles * power_per_mole
-	stored_material[MAT_ALGAE] -= converted_moles * algae_per_mole
-	stored_material[MAT_CARBON] += converted_moles * carbon_per_mole
+	last_power_draw_legacy += converted_moles * power_per_mole
+	stored_material[MATERIAL_ALGAE] -= converted_moles * algae_per_mole
+	stored_material[MATERIAL_CARBON] += converted_moles * carbon_per_mole
 
 	// STEP 5 - Output the converted oxygen. Fow now we output for free!
 	internal.adjust_gas(input_gas, -converted_moles)
@@ -185,8 +185,8 @@
 				"max" = storage_capacity[M],
 				"percent" = (stored_material[M] / storage_capacity[M] * 100))
 	data["materials"] = materials_ui
-	data["last_flow_rate"] = last_flow_rate
-	data["last_power_draw"] = last_power_draw
+	data["last_flow_rate"] = last_flow_rate_legacy
+	data["last_power_draw"] = last_power_draw_legacy
 	data["inputDir"] = dir2text(global.reverse_dir[dir])
 	data["outputDir"] = dir2text(dir)
 	data["usePower"] = use_power
@@ -195,13 +195,13 @@
 	if(air1 && network1 && node1)
 		data["input"] = list(
 			"pressure" = air1.return_pressure(),
-			"name" = GLOB.meta_gas_names[input_gas],
+			"name" = global.gas_data.names[input_gas],
 			"percent" = air1.total_moles > 0 ? round((air1.gas[input_gas] / air1.total_moles) * 100) : 0,
 			"moles" = round(air1.gas[input_gas], 0.01))
 	if(air2 && network2 && node2)
 		data["output"] = list(
 			"pressure" = air2.return_pressure(),
-			"name" = GLOB.meta_gas_names[output_gas],
+			"name" = global.gas_data.names[output_gas],
 			"percent" = air2.total_moles ? round((air2.gas[output_gas] / air2.total_moles) * 100) : 0,
 			"moles" = round(air2.gas[output_gas], 0.01))
 

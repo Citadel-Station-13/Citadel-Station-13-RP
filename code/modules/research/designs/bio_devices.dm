@@ -51,7 +51,7 @@
 	id = "plant_analyzer"
 	req_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 500)
-	build_path = /obj/item/analyzer/plant_analyzer
+	build_path = /obj/item/plant_analyzer
 
 /datum/design/science/biotech/nif
 	design_name = "nanite implant framework"

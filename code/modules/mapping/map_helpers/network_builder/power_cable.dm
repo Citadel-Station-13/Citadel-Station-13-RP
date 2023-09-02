@@ -68,40 +68,40 @@
 	icon_state = "powerlinebuilderauto"
 	knot = KNOT_AUTO
 
-#define WORK_HARDER_NOT_SMARTER							\
-	WORK_SMARTER_NOT_HARDER("Red", COLOR_RED)			\
-	WORK_SMARTER_NOT_HARDER("White", COLOR_WHITE)		\
-	WORK_SMARTER_NOT_HARDER("Silver", COLOR_SILVER)		\
-	WORK_SMARTER_NOT_HARDER("Gray", COLOR_GRAY)			\
-	WORK_SMARTER_NOT_HARDER("Black", COLOR_BLACK)		\
-	WORK_SMARTER_NOT_HARDER("Maroon", COLOR_MAROON)		\
-	WORK_SMARTER_NOT_HARDER("Yellow", COLOR_YELLOW)		\
-	WORK_SMARTER_NOT_HARDER("Olive", COLOR_OLIVE)		\
-	WORK_SMARTER_NOT_HARDER("Lime", COLOR_LIME)			\
-	WORK_SMARTER_NOT_HARDER("Green", COLOR_GREEN)		\
-	WORK_SMARTER_NOT_HARDER("Cyan", COLOR_CYAN)			\
-	WORK_SMARTER_NOT_HARDER("Teal", COLOR_TEAL)			\
-	WORK_SMARTER_NOT_HARDER("Blue", COLOR_BLUE)			\
-	WORK_SMARTER_NOT_HARDER("Navy", COLOR_NAVY)			\
-	WORK_SMARTER_NOT_HARDER("Pink", COLOR_PINK)			\
-	WORK_SMARTER_NOT_HARDER("Purple", COLOR_PURPLE)		\
-	WORK_SMARTER_NOT_HARDER("Orange", COLOR_ORANGE)		\
-	WORK_SMARTER_NOT_HARDER("Beige", COLOR_BEIGE)		\
-	WORK_SMARTER_NOT_HARDER("Brown", COLOR_BROWN)
-
-#define WORK_SMARTER_NOT_HARDER(c, v)								\
-/obj/map_helper/network_builder/power_cable{				\
-	color = v;														\
-	cable_color = c;												\
-}																	\
-/obj/map_helper/network_builder/power_cable/auto{			\
-	color = v;														\
-	cable_color = c;												\
-}																	\
-/obj/map_helper/network_builder/power_cable/knot{			\
-	color = v;														\
-	cable_color = c;												\
+#define WORK_SMARTER_NOT_HARDER(c, v, p)						\
+/obj/map_helper/network_builder/power_cable/##p{				\
+	color = v;													\
+	cable_color = c;											\
+}																\
+/obj/map_helper/network_builder/power_cable/##p/auto{			\
+	color = v;													\
+	cable_color = c;											\
+}																\
+/obj/map_helper/network_builder/power_cable/##p/knot{			\
+	color = v;													\
+	cable_color = c;											\
 }
+
+#define WORK_HARDER_NOT_SMARTER									\
+	WORK_SMARTER_NOT_HARDER("Red", COLOR_RED, red)				\
+	WORK_SMARTER_NOT_HARDER("White", COLOR_WHITE, white)		\
+	WORK_SMARTER_NOT_HARDER("Silver", COLOR_SILVER, silver)		\
+	WORK_SMARTER_NOT_HARDER("Gray", COLOR_GRAY, gray)			\
+	WORK_SMARTER_NOT_HARDER("Black", COLOR_BLACK, black)		\
+	WORK_SMARTER_NOT_HARDER("Maroon", COLOR_MAROON, maroon)		\
+	WORK_SMARTER_NOT_HARDER("Yellow", COLOR_YELLOW, yellow)		\
+	WORK_SMARTER_NOT_HARDER("Olive", COLOR_OLIVE, olive)		\
+	WORK_SMARTER_NOT_HARDER("Lime", COLOR_LIME, lime)			\
+	WORK_SMARTER_NOT_HARDER("Green", COLOR_GREEN, green)		\
+	WORK_SMARTER_NOT_HARDER("Cyan", COLOR_CYAN, cyan)			\
+	WORK_SMARTER_NOT_HARDER("Teal", COLOR_TEAL, teal)			\
+	WORK_SMARTER_NOT_HARDER("Blue", COLOR_BLUE, blue)			\
+	WORK_SMARTER_NOT_HARDER("Navy", COLOR_NAVY, navy)			\
+	WORK_SMARTER_NOT_HARDER("Pink", COLOR_PINK, pink)			\
+	WORK_SMARTER_NOT_HARDER("Purple", COLOR_PURPLE, purple)		\
+	WORK_SMARTER_NOT_HARDER("Orange", COLOR_ORANGE, orange)		\
+	WORK_SMARTER_NOT_HARDER("Beige", COLOR_BEIGE, beige)		\
+	WORK_SMARTER_NOT_HARDER("Brown", COLOR_BROWN, brown)
 
 WORK_HARDER_NOT_SMARTER			// LMAO!
 
