@@ -16,7 +16,7 @@ Pipelines + Other Objects -> Pipe network
 	power_channel = ENVIRON
 	plane = TURF_PLANE
 	layer = EXPOSED_PIPE_LAYER
-	obj_flags = ON_BLUEPRINTS | OBJ_MELEE_TARGETABLE
+	obj_flags = OBJ_ON_BLUEPRINTS | OBJ_MELEE_TARGETABLE
 	// why block contents? so you ventcrawling little fucks don't pull a 2020 Citadel Main.
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 	atom_colouration_system = FALSE

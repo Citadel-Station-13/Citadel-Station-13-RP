@@ -32,7 +32,7 @@
 /// the level at which resistance is nearly impermeable
 #define MATERIAL_RESISTANCE_IMPERMEABLE 800
 
-//* Attributes - Significance
+//* Attributes - Significance; This is how much material is in something
 
 /// baseline significance of material calculations done on material-side / default computations
 #define MATERIAL_SIGNIFICANCE_BASELINE 10
@@ -44,6 +44,13 @@
 #define MATERIAL_SIGNIFICANCE_WALL_REINF 10
 /// significance used for girder wall layer
 #define MATERIAL_SIGNIFICANCE_WALL_GIRDER 5
+
+//* Attributes - Factoring; This is applied to stats like density/weight, as significance affects armor.
+
+/// baseline
+#define MATERIAL_FACTORING_BASELINE 10
+/// material gloves
+#define MATERIAL_FACTORING_GLOVES 2
 
 //* Efficiency
 

@@ -28,27 +28,15 @@ GLOBAL_LIST_EMPTY(wall_overlays_cache)
 		img.alpha = (i * alpha_inc) - 1
 		damage_overlays[i] = img
 
-
 /turf/simulated/wall/proc/get_wall_icon()
-	. = (istype(material) && material.icon_base) || 'icons/turf/walls/solid_wall.dmi'
-
+	if(!isnull(material_reinf))
+		return material_reinf.icon_reinf
+	if(!isnull(material_outer))
+		return material_outer.icon_base
+	return 'icons/turf/walls/solid_wall.dmi'
 
 /turf/simulated/wall/proc/apply_reinf_overlay()
 	. = istype(material_reinf)
-
-
-/turf/simulated/wall/update_appearance(updates)
-	. = ..()
-	if(!istype(material))
-		return
-
-	if(!color)
-		color = material.icon_colour
-
-
-/turf/simulated/wall/update_icon()
-	. = ..()
-	update_overlays()
 
 /turf/simulated/wall/update_icon_state()
 	. = ..()
@@ -61,18 +49,15 @@ GLOBAL_LIST_EMPTY(wall_overlays_cache)
 	else if(icon_state == "fwall_open")
 		icon_state = cached_wall_state
 
-/turf/simulated/wall/proc/update_overlays_delayed()
-	update_overlays()
-
 /turf/simulated/wall/update_overlays()
-	if (material == initial(material))
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/turf/simulated/wall, update_overlays_delayed)), 1 SECOND) //our material datum has not been instanced, so we'll runtime about 2 lines down.
+	icon = get_wall_icon()
+	color = isnull(material_outer)? null : material_outer.icon_colour
+	if(isnull(material_outer))
+		overlays.len = 0
 		return
-	icon = material.icon_base
-	if(material_reinf)
-		icon = material.icon_reinf
-	var/plating_color = paint_color || material?.icon_colour || COLOR_WALL_GUNMETAL //fallback in case things are really fucked.
-	stripe_color = stripe_color || paint_color || material.icon_colour
+	stripe_icon = material_outer.wall_stripe_icon
+	var/plating_color = paint_color || material_outer.icon_colour || COLOR_WALL_GUNMETAL //fallback in case things are really fucked.
+	stripe_color = stripe_color || paint_color || material_outer.icon_colour
 
 	var/neighbor_stripe = NONE
 	for (var/cardinal = NORTH; cardinal <= WEST; cardinal *= 2) //No list copy please good sir

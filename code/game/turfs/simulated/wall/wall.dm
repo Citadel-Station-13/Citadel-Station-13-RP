@@ -79,9 +79,6 @@
 		fixed_underlay = string_assoc_list(fixed_underlay)
 		underlays += underlay_appearance
 
-	stripe_icon = material.wall_stripe_icon
-	update_overlays()
-
 /turf/simulated/wall/Destroy()
 	clear_plants()
 	return ..()
@@ -91,57 +88,6 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
-/turf/simulated/wall/bullet_act(var/obj/projectile/Proj)
-	if(istype(Proj,/obj/projectile/beam))
-		burn(2500)
-	else if(istype(Proj,/obj/projectile/ion))
-		burn(500)
-
-	var/proj_damage = Proj.get_structure_damage()
-
-	//cap the amount of damage, so that things like emitters can't destroy walls in one hit.
-	var/damage = min(proj_damage, 100)
-
-	if(Proj.damage_type == BURN && damage > 0)
-		if(thermite)
-			thermitemelt()
-
-	if(istype(Proj,/obj/projectile/beam))
-		if(material && material.reflectivity >= 0.5) // Time to reflect lasers.
-			var/new_damage = damage * material.reflectivity
-			var/outgoing_damage = damage - new_damage
-			damage = new_damage
-			Proj.damage = outgoing_damage
-
-			visible_message("<span class='danger'>\The [src] reflects \the [Proj]!</span>")
-
-			// Find a turf near or on the original location to bounce to
-			var/new_x = Proj.starting.x + pick(0, 0, 0, -1, 1, -2, 2)
-			var/new_y = Proj.starting.y + pick(0, 0, 0, -1, 1, -2, 2)
-			//var/turf/curloc = get_turf(src)
-			var/turf/curloc = get_step(src, get_dir(src, Proj.starting))
-
-			Proj.penetrating += 1 // Needed for the beam to get out of the wall.
-
-			// redirect the projectile
-			Proj.redirect(new_x, new_y, curloc, null)
-
-	if(Proj.ricochet_sounds && prob(15))
-		playsound(src, pick(Proj.ricochet_sounds), 100, 1)
-
-	take_damage(damage)
-	return
-
-/turf/simulated/wall/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	. = ..()
-	if(TT.throw_flags & THROW_AT_IS_GENTLE)
-		return
-
-	var/tforce = AM.throw_force * TT.get_damage_multiplier()
-	if (tforce < 15)
-		return
-
-	take_damage(tforce)
 
 /turf/simulated/wall/proc/clear_plants()
 	for(var/obj/effect/overlay/wallrot/WR in src)
@@ -187,12 +133,6 @@
 	F.burn_tile()
 	F.icon_state = "wall_thermite"
 	visible_message("<span class='danger'>\The [src] spontaneously combusts!.</span>") //!!OH SHIT!!
-	return
-
-/turf/simulated/wall/take_damage_legacy(dam)
-	if(dam)
-		damage = max(0, damage + dam)
-		update_damage()
 	return
 
 /turf/simulated/wall/proc/update_damage()
@@ -253,9 +193,7 @@
 			take_damage(rand(0, 250))
 
 /turf/simulated/wall/proc/can_melt()
-	if(material.flags & MATERIAL_UNMELTABLE)
-		return 0
-	return 1
+	return material_outer?.flgas & MATERIAL_UNMELTABLE
 
 /turf/simulated/wall/proc/thermitemelt(mob/user as mob)
 	if(!can_melt())
@@ -284,14 +222,6 @@
 			qdel(O)
 //	F.sd_LumReset()		//TODO: ~Carn
 	return
-
-/turf/simulated/wall/proc/radiate()
-	var/total_radiation = material.radioactivity + (material_reinf ? material_reinf.radioactivity / 2 : 0) + (material_girder ? material_girder.radioactivity / 2 : 0)
-	if(!total_radiation)
-		return
-
-	radiation_pulse(src, total_radiation)
-	return total_radiation
 
 /turf/simulated/wall/proc/burn(temperature)
 	if(material.combustion_effect(src, temperature, 0.7))

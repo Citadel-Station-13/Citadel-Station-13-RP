@@ -1937,6 +1937,7 @@
 #include "code\game\turfs\simulated\flooring\flooring_traps.dm"
 #include "code\game\turfs\simulated\flooring\shuttle_vr.dm"
 #include "code\game\turfs\simulated\misc\fancy_shuttles.dm"
+#include "code\game\turfs\simulated\wall\defense.dm"
 #include "code\game\turfs\simulated\wall\materials.dm"
 #include "code\game\turfs\simulated\wall\rot.dm"
 #include "code\game\turfs\simulated\wall\wall.dm"

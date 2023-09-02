@@ -18,6 +18,10 @@
 	material_costs = 4000
 	/// applies material color
 	var/material_color = TRUE
+	/// material significance
+	var/material_significance = MATERIAL_SIGNIFICANCE_BASELINE
+	/// material *amount* significance
+	var/material_factoring = MATERIAL_FACTORING_BASELINE
 
 	var/unbreakable = 0		//Doesn't lose health
 	var/fragile = 0			//Shatters when it dies
