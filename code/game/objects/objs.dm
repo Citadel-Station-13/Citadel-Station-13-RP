@@ -277,7 +277,7 @@
 		. = FALSE
 	LAZYREMOVE(climbing, climber)
 	STOP_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
-	if(!allow_climb_on(climber))
+	if(!. || !allow_climb_on(climber))
 		climber.action_feedback(SPAN_WARNING("You couldn't climb onto [src]!"), src)
 		return FALSE
 	do_climb_on(climber)
