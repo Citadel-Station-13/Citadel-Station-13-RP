@@ -50,8 +50,8 @@
 /obj/structure/girder/material_init_parts()
 	material_structure = SSmaterials.resolve_material(material_structure)
 	material_reinforcing = SSmaterials.resolve_material(material_reinforcing)
-	MATERIAL_REGISTER(material_structure, src, FALSE)
-	MATERIAL_REGISTER(material_reinforcing, src, FALSE)
+	register_material(material_structure, FALSE)
+	register_material(material_reinforcing, FALSE)
 
 /obj/structure/girder/material_set_part(part, datum/material/material)
 	var/datum/material/old
@@ -64,8 +64,8 @@
 			material_reinforcing = material
 
 	if(material != old)
-		MATERIAL_UNREGISTER(old, src, FALSE)
-		MATERIAL_REGISTER(material, src, FALSE)
+		unregister_material(old, FALSE)
+		register_material(material, FALSE)
 
 /obj/structure/girder/material_get_part(part)
 	switch(part)

@@ -284,11 +284,11 @@
 		material_parts = material
 	if(material != old)
 		if(part == material_primary)
-			MATERIAL_UNREGISTER(old, src, TRUE)
-			MATERIAL_REGISTER(material, src, TRUE)
+			unregister_material(old, TRUE)
+			register_material(material, TRUE)
 		else
-			MATERIAL_UNREGISTER(old, src, FALSE)
-			MATERIAL_REGISTER(material, src, FALSE)
+			unregister_material(old, FALSE)
+			register_material(material, FALSE)
 
 /**
  * Called to initialize material parts.

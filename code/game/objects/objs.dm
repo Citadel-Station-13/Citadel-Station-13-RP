@@ -128,7 +128,7 @@
 			materials_base = SSmaterials.preprocess_kv_keys_to_ids(materials_base)
 			materials_base = typelist(NAMEOF(src, materials_base), materials_base)
 	// cache material costs if it's not modified
-	if(!islist(material_costs))
+	if(islist(material_costs))
 		if(has_typelist(material_costs))
 			material_costs = get_typelist(material_costs)
 		else

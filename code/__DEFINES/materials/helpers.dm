@@ -23,6 +23,11 @@
 
 //* /atom level invocation of traits
 
+/// Invocation of material traits
+/// A - the atom
+/// CHECK - material_trait_flags to check
+/// INVOKE - procname on /datum/material_trait to invoke
+/// ARGS... - directly appended to the material_trait proc invocation after the params 'host' being A, and 'data' being the data the trait has on A.
 #define MATERIAL_INVOKE(A, CHECK, INVOKE, ARGS...) \
 	if(A.material_trait_flags & CHECK) { \
 		if(islist(A.material_traits)) { \
@@ -39,6 +44,12 @@
 		} \
 	}
 
+/// Invocation of material traits with flag return
+/// OUT - flag returns from invocations are binary OR'd into this.
+/// A - the atom
+/// CHECK - material_trait_flags to check
+/// INVOKE - procname on /datum/material_trait to invoke
+/// ARGS... - directly appended to the material_trait proc invocation after the params 'host' being A, and 'data' being the data the trait has on A.
 #define MATERIAL_INVOKE_OUT(OUT, A, CHECK, INVOKE, ARGS...) \
 	if(A.material_trait_flags & CHECK) { \
 		if(islist(A.material_traits)) { \
@@ -52,79 +63,5 @@
 		else { \
 			var/datum/material_trait/__trait = A.material_traits; \
 			OUT |= __trait.INVOKE(A, A.material_traits_data, ##args); \
-		} \
-	}
-
-/// ensure this is called once and only once when a material is added to an atom
-/// alternatively, don't call this at all if you don't want to register traits.
-/// this define should null-check, as null is a valid material.
-#define MATERIAL_REGISTER(MAT, ATOM, PRIMARY) \
-	if(!isnull(MAT?.material_traits)) { \
-		for(var/datum/material_trait/__trait as anything in MAT.material_traits) { \
-			if(islist(ATOM.material_traits)) { \
-				var/__old = ATOM.material_traits[__trait]; \
-				ATOM.material_traits[__trait] = __trait.on_add(ATOM, __old, MAT.material_traits[__trait]); \
-				ATOM.material_trait_flags |= __trait.material_trait_flags; \
-			} \
-			else if(isnull(ATOM.material_traits)) { \
-				ATOM.material_traits = __trait; \
-				ATOM.material_traits_data = __trait.on_add(ATOM, null, MAT.material_traits[__trait]); \
-				ATOM.material_trait_flags = __trait.material_trait_flags; \
-			} \
-			else { \
-				var/datum/material_trait/__other = ATOM.material_traits; \
-				var/__old = ATOM.material_traits_data; \
-				if(__other == __trait) { \
-					ATOM.material_traits_data = __trait.on_add(ATOM, __old, MAT.material_traits[__trait]); \
-				} \
-				else { \
-					ATOM.material_traits = list(__other = __old, __trait = __trait.on_add(ATOM, __old, MAT.material_traits[__trait])); \
-					ATOM.material_traits_data = null; \
-					ATOM.material_trait_flags = __other.material_trait_flags | __trait.material_trait_flags; \
-				} \
-			} \
-		} \
-	}
-
-/// ensure this is called once and only once when a material is deleted from an atom
-/// this is only to be used if the material was registered. if it was never registered, DO NOT call this.
-/// this define should null-check, as null is a valid material.
-#define MATERIAL_UNREGISTER(MAT, ATOM, PRIMARY) \
-	if(!isnull(MAT?.material_traits)) { \
-		for(var/datum/material_trait/__trait as anything in MAT.material_traits) { \
-			if(islist(ATOM.material_traits)) { \
-				var/__old_data = ATOM.material_traits[__trait]; \
-				var/__new_data = __trait.on_remove(ATOM, __old_data, MAT.material_traits[__trait]); \
-				if(isnull(__new_data)) { \
-					ATOM.material_traits -= __trait; \
-					if(length(ATOM.material_traits) == 1){ \
-						var/datum/material_trait/__other = ATOM.material_traits[1]; \
-						ATOM.material_traits_data = ATOM.material_traits[__other]; \
-						ATOM.material_traits = __other; \
-						ATOM.material_trait_flags = __other.material_trait_flags; \
-					} \
-					else { \
-						ATOM.material_trait_flags = NONE; \
-						for(var/datum/material_trait/__other as anything in ATOM.material_traits){ \
-							ATOM.material_trait_flags |= __other.material_trait_flags; \
-						} \
-					} \
-				} \
-				else { \
-					ATOM.material_traits[__trait] = __new_data; \
-				} \
-			} \
-			else { \
-				ASSERT(ATOM.material_traits == __trait); \
-				var/__new_data = __trait.on_remove(ATOM, ATOM.material_traits_data, MAT.material_traits[__trait]); \
-				if(isnull(__new_data)){ \
-					ATOM.material_traits = null; \
-					ATOM.material_traits_data = null; \
-					ATOM.material_trait_flags = NONE; \
-				} \
-				else { \
-					ATOM.material_traits_data = __new_data; \
-				} \
-			} \
 		} \
 	}
