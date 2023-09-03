@@ -331,7 +331,7 @@
 /obj/projectile/bullet/honker
 	damage = 0
 	nodamage = TRUE
-	impact_sound = 'sound/items/bikehorn.ogg'
+	impact_sounds = 'sound/items/bikehorn.ogg'
 	icon = 'icons/obj/items.dmi'
 	icon_state = "banana"
 	range = 200
@@ -360,7 +360,7 @@
 	damage = 10
 	damage_type = BRUTE
 	damage_flag = ARMOR_BULLET
-	impact_sound = 'sound/effects/splat.ogg'
+	impact_sounds = 'sound/effects/splat.ogg'
 	icon_state = "organic"
 
 /obj/projectile/bullet/organic/wax
@@ -371,7 +371,7 @@
 /obj/projectile/bullet/organic/stinger
 	damage = 15
 	damage_type = TOX
-	impact_sound = 'sound/weapons/bladeslice.ogg'
+	impact_sounds = 'sound/weapons/bladeslice.ogg'
 	icon_state = "SpearFlight"
 
 //Plasma Burst

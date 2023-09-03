@@ -89,7 +89,7 @@
 	maxHealth = 50
 	health = 50
 
-	melee_damage_lower = 12 // Approx 12 DPS.
-	melee_damage_upper = 12
+	legacy_melee_damage_lower = 12 // Approx 12 DPS.
+	legacy_melee_damage_upper = 12
 	base_attack_cooldown =  5 // Two attacks per second.
 

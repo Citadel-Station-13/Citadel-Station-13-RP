@@ -185,8 +185,8 @@
 	desc = "Furry and brown, this spider is so goddamn fat you're surprised it even moves around.";
 	faction = "neutral";
 	health = 400;
-	melee_damage_lower = 1;
-	melee_damage_upper = 3;
+	legacy_melee_damage_lower = 1;
+	legacy_melee_damage_upper = 3;
 	melee_miss_chance = 30;
 	movement_cooldown = 8;
 	name = "Mr. Tuddly"

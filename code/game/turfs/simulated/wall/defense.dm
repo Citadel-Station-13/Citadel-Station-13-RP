@@ -1,14 +1,14 @@
-
 /turf/simulated/wall/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
 	if(TT.throw_flags & THROW_AT_IS_GENTLE)
 		return
 
-	var/tforce = AM.throw_force * TT.get_damage_multiplier()
-	if (tforce < 15)
-		return
-
-	take_damage(tforce)
+	// todo: /atom/movable/proc/throw_impact_attack(atom/target)
+	if(isitem(AM))
+		var/obj/item/I = AM
+		inflict_atom_damage(I.throw_force * TT.get_damage_multiplier(), I.damage_tier, I.damage_flag, I.damage_mode, ATTACK_TYPE_THROWN, AM)
+	else
+		inflict_atom_damage(AM.throw_force * TT.get_damage_multiplier(), MELEE_TIER_LIGHT, ARMOR_MELEE, null, ATTACK_TYPE_THROWN, AM)
 
 /turf/simulated/wall/bullet_act(var/obj/projectile/Proj)
 	if(istype(Proj,/obj/projectile/beam))
@@ -50,3 +50,16 @@
 
 	take_damage(damage)
 	return
+
+/turf/simulated/wall/break_apart(method)
+	dismantle_wall()
+
+/turf/simulated/wall/damage_integrity(amount, gradual, do_not_break)
+	. = ..()
+	// todo: optimize
+	update_appearance()
+
+/turf/simulated/wall/heal_integrity(amount, gradual, do_not_fix)
+	. = ..()
+	// todo: optimize
+	update_appearance()

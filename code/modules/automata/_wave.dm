@@ -1,5 +1,9 @@
 /**
  * wave effects
+ *
+ * This system should only be here for algorithm reference and for rapid prototyping.
+ * Please do not use this in production, as the code is relatively unreadable and convoluted,
+ * as well as not necessarily best-optimized for your use case.
  */
 /datum/automata/wave
 	/// type of spread

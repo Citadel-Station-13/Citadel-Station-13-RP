@@ -602,3 +602,13 @@
 	. = . % 9
 	dropped_atom.pixel_x = -8 + ((.%3)*8)
 	dropped_atom.pixel_y = -8 + (round( . / 3)*8)
+
+/obj/machinery/atom_break()
+	. = ..()
+	// todo: rework
+	machine_stat |= BROKEN
+
+/obj/machinery/atom_fix()
+	. = ..()
+	// todo: rework
+	machine_stat &= ~BROKEN

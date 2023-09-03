@@ -5,7 +5,7 @@
 /datum/material
 	abstract_type = /datum/material
 
-	//? Core
+	//* Core
 
 	/**
 	 * ID.
@@ -57,15 +57,15 @@
 	/// Will stacks made from this material pass their colors onto objects?
 	var/pass_stack_colors = FALSE
 
-	//? Flags
+	//* Armor
+	/// caching of armor. text2num(significance) = armor datum instance
+	var/tmp/list/armor_cache = list()
 
-	/// material flags
-	var/material_flags = NONE
-	/// material constraint flags - what we are considered
-	var/material_constraints = NONE
+	//* Attacks
+	/// melee stats cache. text2num(mode)_text2num(significance) = list(stats)
+	var/tmp/list/melee_cache = list()
 
-	//? Attributes
-
+	//* Attributes
 	/// relative HP multiplier for something made out of this
 	var/relative_integrity = 1
 	/// relative reactivity multiplier for something made out of this
@@ -120,7 +120,13 @@
 	/// * basically, low values = high density stats without the penalties from weight
 	var/relative_weight = 1
 
-	//? Traits
+	//* Flags
+	/// material flags
+	var/material_flags = NONE
+	/// material constraint flags - what we are considered
+	var/material_constraints = NONE
+
+	//* Traits
 	/// Material traits - set to list of paths to instance on New / register.
 	var/list/material_traits
 	/// Material trait sensitivity hooks - total
@@ -166,19 +172,19 @@
 	/// Wallrot crumble message.
 	var/rotting_touch_message = "crumbles under your touch"
 
-	//? Economy
+	//* Economy
 	/// Raw worth per cm3
 	var/worth = 0
 	/// economic category for this
 	var/economic_category_material = ECONOMIC_CATEGORY_MATERIAL_DEFAULT
 
-	//? Sounds
+	//* Sounds
 	/// melee sound on blunt force - getsfx compatible
 	var/sound_melee_brute = 'sound/weapons/smash.ogg'
 	/// melee sound on burn damage - getsfx compatible
 	var/sound_melee_burn = 'sound/items/Welder.ogg'
 
-	//? TGUI
+	//* TGUI
 	/// tgui icon key in icons/interface/materials.dm
 	var/tgui_icon_key = "unknown"
 

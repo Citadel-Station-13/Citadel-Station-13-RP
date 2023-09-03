@@ -36,7 +36,7 @@
  * * target_zone - zone targeted
  * * mult - damage multiplier
  *
- * @return did the hit process? a miss is still a process, return FALSE if we shouldn't be acted against at all.
+ * @return best estimate of damage taken, or null if no action was taken. for stun weapons and the like, this'll be weird or just 0.
  */
 /atom/proc/melee_act(mob/user, obj/item/weapon, target_zone, mult = 1)
 	return
@@ -50,7 +50,7 @@
  * * target_zone - zone targeted
  * * mult - damage multiplier
  *
- * @return did the hit process? a miss is still a process, return FALSE if we shouldn't be acted against at all.
+ * @return best estimate of damage taken, or null if no action was taken. for stun weapons and the like, this'll be weird or just 0.
  */
 /atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult = 1)
 	return
@@ -287,7 +287,7 @@
  * * gradual - burst or gradual?
  * * no_checks - do not call fix/break
  */
-/atom/proc/adjust_integrity(amount, gradual)
+/atom/proc/adjust_integrity(amount, gradual, no_checks)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(amount > 0)

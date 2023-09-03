@@ -14,7 +14,7 @@
  */
 /datum/material/proc/create_armor(significance = MATERIAL_SIGNIFICANCE_BASELINE, mob_armor)
 	#warn params
-	#warn impl
+	#warn impl - this requires caching
 
 /**
  * combines multiple material armors into one
@@ -25,7 +25,7 @@
  * @return /datum/armor instance
  */
 /datum/controller/subsystem/materials/proc/combined_materials_armor(list/datum/material/materials)
-	#warn impl
+	#warn impl - this requires caching
 
 /**
  * combines multiple material armors into one
@@ -37,7 +37,7 @@
  * @return /datum/armor instance
  */
 /datum/controller/subsystem/materials/proc/reinforcing_materials_armor(list/datum/material/materials)
-	#warn impl
+	#warn impl - this requires caching
 
 /**
  * get melee stats
@@ -47,5 +47,5 @@
  * @return list(damage, armorflag, tier, mode, throwforce, throwspeed)
  */
 /datum/material/proc/melee_stats(initial_modes, multiplier = 1)
-	#warn impl
+	#warn impl - this requires caching
 

@@ -132,8 +132,8 @@
 	icon_dead = "fencerboi-dead"
 	icon_rest = "fencerboi_rest"
 
-	melee_damage_lower = 30
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 50
 	attack_sharp = 1
 	attack_edge = 1

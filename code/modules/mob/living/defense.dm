@@ -138,7 +138,7 @@
 		proj_sharp = 0
 		proj_edge = 0
 
-	var/list/impact_sounds = LAZYACCESS(P.impact_sounds, get_bullet_impact_effect_type(def_zone))
+	var/list/impact_sounds = islist(P.impact_sounds)? LAZYACCESS(P.impact_sounds, get_bullet_impact_effect_type(def_zone)) : P.impact_sounds
 	if(length(impact_sounds))
 		playsound(src, pick(impact_sounds), 75)
 	else if(!isnull(impact_sounds))

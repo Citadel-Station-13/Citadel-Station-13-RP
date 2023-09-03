@@ -1,9 +1,9 @@
+// todo: material system
 /obj/item/fuel_assembly
 	name = "fuel rod assembly"
 	icon = 'icons/obj/machines/power/fusion.dmi'
 	icon_state = "fuel_assembly"
 
-	#warn material system
 	var/material_name
 
 	var/percent_depleted = 1
@@ -26,12 +26,6 @@
 		desc = "A fuel rod for a fusion reactor. This one is made from [material.use_name]."
 		fuel_colour = material.icon_colour
 		fuel_type = material.use_name
-		if(material.radioactivity)
-			radioactivity = material.radioactivity
-			desc += " It is warm to the touch."
-			START_PROCESSING(SSobj, src)
-		if(material.luminescence)
-			set_light(material.luminescence, material.luminescence, material.icon_colour)
 	else
 		name = "[fuel_type] fuel rod assembly"
 		desc = "A fuel rod for a fusion reactor. This one is made from [fuel_type]."
@@ -41,17 +35,6 @@
 	I.color = fuel_colour
 	add_overlay(list(I, image(icon, "fuel_assembly_bracket")))
 	rod_quantities[fuel_type] = initial_amount
-
-/obj/item/fuel_assembly/process(delta_time)
-	if(!radioactivity)
-		return PROCESS_KILL
-
-	if(istype(loc, /turf))
-		radiation_pulse(src, radioactivity)
-
-/obj/item/fuel_assembly/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	return ..()
 
 // Mapper shorthand.
 /obj/item/fuel_assembly/deuterium/Initialize(mapload, material_key)

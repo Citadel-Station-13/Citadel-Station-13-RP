@@ -14,6 +14,9 @@
 	integrity_enabled = TRUE
 	integrity = 200
 	integrity_max = 200
+	integrity_failure = 0
+
+	armor_type = /datum/armor/wall
 
 	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
 	layer = PLATING_LAYER
@@ -134,19 +137,6 @@
 	F.icon_state = "wall_thermite"
 	visible_message("<span class='danger'>\The [src] spontaneously combusts!.</span>") //!!OH SHIT!!
 	return
-
-/turf/simulated/wall/proc/update_damage()
-	var/cap = material.integrity
-	if(material_reinf)
-		cap += material_reinf.integrity
-
-	if(locate(/obj/effect/overlay/wallrot) in src)
-		cap = cap / 10
-
-	if(damage >= cap)
-		dismantle_wall()
-	else
-		update_appearance()
 
 /turf/simulated/wall/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)//Doesn't fucking work because walls don't interact with air :(
 	burn(exposed_temperature)

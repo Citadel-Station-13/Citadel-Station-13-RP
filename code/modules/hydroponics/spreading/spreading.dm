@@ -239,7 +239,7 @@
 /obj/effect/plant/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	if(W.is_wirecutter() || istype(W, /obj/item/surgical/scalpel))
+	if(I.is_wirecutter() || istype(I, /obj/item/surgical/scalpel))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(sampled)
 			to_chat(user, "<span class='warning'>\The [src] has already been sampled recently.</span>")

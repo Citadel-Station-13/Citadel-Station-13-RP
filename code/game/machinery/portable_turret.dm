@@ -596,16 +596,6 @@
 		else
 			to_chat(user, "<span class='notice'>Access denied.</span>")
 
-	else
-		//if the turret was attacked with the intention of harming it:
-		user.setClickCooldown(user.get_attack_speed(I))
-		take_damage(I.damage_force * 0.5)
-		if(I.damage_force * 0.5 > 1) //if the force of impact dealt at least 1 damage, the turret gets pissed off
-			if(!attacked && !emagged)
-				attacked = 1
-				spawn()
-					sleep(60)
-					attacked = 0
 		..()
 
 /obj/machinery/porta_turret/emag_act(remaining_charges, mob/user)
@@ -626,22 +616,14 @@
 	if(!gradual && prob(45) && amount > 5)
 		spark_system.start()
 
-/obj/machinery/porta_turret/bullet_act(obj/projectile/Proj)
-	var/damage = Proj.get_structure_damage()
+/obj/machinery/porta_turret/bullet_act(obj/projectile/P, def_zone)
+	aggro_for(6 SECONDS)
+	return ..()
 
-	if(!damage)
-		return
-
-	if(enabled)
-		if(!attacked && !emagged)
-			attacked = 1
-			spawn()
-				sleep(60)
-				attacked = FALSE
-
-	..()
-
-	take_damage(damage)
+/obj/machinery/porta_turret/melee_act(mob/user, obj/item/weapon, target_zone, mult)
+	. = ..()
+	if(. > 0)
+		aggro_for(6 SECONDS, user)
 
 /obj/machinery/porta_turret/emp_act(severity)
 	if(enabled)
@@ -675,9 +657,8 @@
 		if(!enabled)
 			enabled = TRUE
 
-/obj/machinery/porta_turret/proc/die()	//called when the turret dies, ie, health <= 0
-	health = 0
-	machine_stat |= BROKEN	//enables the BROKEN bit
+/obj/machinery/porta_turret/atom_break()
+	. = ..()
 	spark_system.start()	//creates some sparks because they look cool
 	update_icon()
 
@@ -899,6 +880,9 @@
 	// Reset the time needed to go back down, since we just tried to shoot at someone.
 	timeout = 10
 
+/obj/machinery/porta_turret/proc/aggro_for(seconds, mob/aggressor)
+	#warn impl
+
 /datum/turret_checks
 	var/enabled
 	var/lethal
@@ -969,7 +953,7 @@
 				return
 
 		if(1)
-			if(istype(I, /obj/item/stack/material) && I.get_material_name() == MAT_STEEL)
+			if(I.is_material_stack_of(/datum/material/steel))
 				var/obj/item/stack/M = I
 				if(M.use(2))
 					to_chat(user, "<span class='notice'>You add some metal armor to the interior frame.</span>")
@@ -1049,7 +1033,7 @@
 			//attack_hand() removes the prox sensor
 
 		if(6)
-			if(istype(I, /obj/item/stack/material) && I.get_material_name() == MAT_STEEL)
+			if(I.is_material_stack_of(/datum/material/steel))
 				var/obj/item/stack/M = I
 				if(M.use(2))
 					to_chat(user, "<span class='notice'>You add some metal armor to the exterior frame.</span>")

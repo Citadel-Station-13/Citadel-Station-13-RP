@@ -1,3 +1,5 @@
+// todo: /datum/automata/sonar this instead of /wave.
+
 /datum/automata/wave/sonar
 	wave_spread = WAVE_SPREAD_MINIMAL
 	/// global resolution
