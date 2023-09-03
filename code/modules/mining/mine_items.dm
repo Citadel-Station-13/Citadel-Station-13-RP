@@ -119,23 +119,46 @@
 	drill_verb = "hammering"
 	sand_dig = TRUE
 
-//Buffed Ice Picks/Axes slightly because come on, it's a friggen ICE AXE!!!
-/obj/item/pickaxe/icepick //Cannot actually lobotomize people. Yet.
-	name = "icepick"
+//Ice picksaxe. This is a tool used to hack at the ice on the airlocks and climb cliffs
+/obj/item/pickaxe/icepick
+	name = "a Icepick"
 	desc = "A sharp tool for climbers and hikers to break up ice and keep themselves from slipping on a steep slope."
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	slot_flags = SLOT_BELT
-	throw_force = 15 //Discount shuriken.
+	damage_force = 7
+	throw_force = 5
 	icon_state = "icepick"
-	item_state = "spickaxe" //im lazy fuck u
+	item_state = "spickaxe" //I'm also lazy
 	w_class = ITEMSIZE_SMALL
-	materials = list(MAT_STEEL = 2750, MAT_TITANIUM = 2000)
-	digspeed = 25 //More expensive than a diamond pick, a lot smaller but decently slower.
+	materials = list(MAT_STEEL = 2750)
+	digspeed = 45 //Usable but very slow
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("mined", "pierced", "stabbed", "attacked")
 	drill_verb = "hacking at"
 	sharp = TRUE
+	drop_sound = 'sound/items/drop/axe.ogg'
+	pickup_sound = 'sound/items/pickup/axe.ogg'
+
+//Better ice pickaxe
+/obj/item/pickaxe/icepick/plasteel //Can't be sharpened.
+	name = "a Plasteel ice pickaxe"
+	desc = "A sharp plasteel reinforced tool for climbers and hikers to break up ice and keep themselves from slipping on a steep slope."
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	slot_flags = SLOT_BELT
+	damage_force = 20 //it's a friggen ice axe
+	throw_force = 15 //Discount shuriken.
+	icon_state = "ticepick"
+	item_state = "spickaxe" //im lazy fuck u
+	w_class = ITEMSIZE_SMALL
+	materials = list(MAT_STEEL = 2750, MAT_PLASTEEL = 2000)
+	digspeed = 25 //Not too expensive or to fast, but way more compact
+	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 1)
+	attack_verb = list("mined", "pierced", "stabbed", "attacked")
+	drill_verb = "hacking at"
+	sharp = TRUE
 	edge = TRUE
+	drop_sound = 'sound/items/drop/axe.ogg'
+	pickup_sound = 'sound/items/pickup/axe.ogg'
 
 //Snowflake drill that works like a chainsaw! How fun. Honestly they should probably all work like this or something. I dunno. Might be a fun mining overhaul later.
 /obj/item/pickaxe/tyrmalin

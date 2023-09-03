@@ -43,7 +43,9 @@
 	//Associate objects with the number of seconds it would take to de-ice a door.
 	//Most items are either more or less effecient at it.
 	//For items with very specific cases (like welders using fuel, or needing to be on) see attackby().
-	deiceTools[/obj/item/pickaxe/icepick] = 3 //Ice Pick / Axe. Why not use what we have already and slightly buff it?
+	deiceTools[/obj/item/pickaxe/icepick] = 3 //Ice Pick / Axe.
+	deiceTools[/obj/item/pickaxe/icepick/plasteel] = 2 //Plasteel Ice pickaxe.
+	deiceTools[/obj/item/material/knife/machete] = 4 //Machete
 	deiceTools[/obj/item/tool/crowbar] = 5 //Crowbar
 	deiceTools[/obj/item/pen] = 30 //Pen
 	deiceTools[/obj/item/card] = 35 //Cards. (Mostly ID cards)
