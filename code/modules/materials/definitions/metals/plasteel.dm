@@ -7,7 +7,8 @@
 	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#777777"
 	explosion_resistance = 25
-	conductivity = 13 // For the purposes of balance.
+	// great reinforcing material, shite conductor
+	relative_conductivity = 0.5
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT, MAT_PLATINUM = SHEET_MATERIAL_AMOUNT) //todo
 	table_icon_base = "metal"

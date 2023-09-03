@@ -127,7 +127,7 @@
 	var/material_constraints = NONE
 
 	//* Traits
-	/// Material traits - set to list of paths to instance on New / register.
+	/// Material traits - set to list of paths to instance on New / register; associate them to their initial data.
 	var/list/material_traits
 	/// Material trait sensitivity hooks - total
 	var/material_trait_flags
@@ -152,7 +152,6 @@
 	var/spatial_instability = 0
 	/// If set, object matter var will be a list containing these values.
 	var/list/composite_material
-	var/luminescence
 
 	//! Placeholder vars for the time being, todo properly integrate windows/light tiles/rods.
 	var/created_window
@@ -248,7 +247,10 @@
 	var/list/serialized_traits = list()
 	// use type directly - we don't care about update stability.
 	for(var/datum/material_trait/trait in material_traits)
-		serialized_traits[trait.type] = trait.serialize()
+		serialized_traits[trait.type] = list(
+			"trait" = trait.serialize(),
+			"data" = material_traits[trait],
+		)
 	.["traits"] = serialized_traits
 
 /datum/material/deserialize(list/data)
@@ -258,9 +260,10 @@
 		var/resolved = text2path(path)
 		if(!ispath(resolved, /datum/material_trait))
 			continue
+		var/list/data_list = deserializing_traits[path]
 		var/datum/material_trait/trait = new resolved
-		trait.deserialize(deserializing_traits[path])
-		material_traits += trait
+		trait.deserialize(data_list["trait"])
+		material_traits[trait] = data_list["data"]
 
 /// This is a placeholder for proper integration of windows/windoors into the system.
 /datum/material/proc/build_windows(mob/living/user, obj/item/stack/used_stack)

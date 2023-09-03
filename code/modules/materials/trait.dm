@@ -89,6 +89,6 @@
  *
  * @return changed data, or null to fully remove.
  */
-/datum/material_trait/proc/on_remove(atom/what, existing_data, our_data)
+/datum/material_trait/proc/on_remove(atom/host, existing_data, our_data)
 	// by default, just track how many copies we're on something
 	return (existing_data - 1) || null

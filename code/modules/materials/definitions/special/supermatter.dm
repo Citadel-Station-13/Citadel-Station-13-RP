@@ -4,7 +4,6 @@
 	icon_colour = "#FFFF00"
 	stack_type = /obj/item/stack/material/supermatter
 	shard_type = SHARD_SHARD
-	luminescence = 3
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
 	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	shard_type = SHARD_SHARD
@@ -32,4 +31,7 @@
 			strength = RAD_INTENSITY_MAT_SUPERMATTER;
 		},
 		/datum/material_trait/supermatter,
+		/datum/material_trait/glow{
+
+		},
 	)

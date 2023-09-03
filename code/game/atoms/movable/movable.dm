@@ -203,21 +203,6 @@
 		if(mover.loc in locs)
 			. = TRUE
 
-//Overlays
-/atom/movable/overlay
-	var/atom/master = null
-	anchored = TRUE
-
-/atom/movable/overlay/attackby(a, b)
-	if (src.master)
-		return src.master.attackby(a, b)
-	return
-
-/atom/movable/overlay/attack_hand(a, b, c)
-	if (src.master)
-		return src.master.attack_hand(a, b, c)
-	return
-
 /atom/movable/proc/touch_map_edge()
 	if(z in (LEGACY_MAP_DATUM).sealed_levels)
 		return

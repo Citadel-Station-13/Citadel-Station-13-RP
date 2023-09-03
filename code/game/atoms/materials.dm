@@ -25,17 +25,17 @@
 		for(var/datum/material_trait/trait as anything in mat.material_traits)
 			if(islist(material_traits))
 				var/old_data = material_traits[trait]
-				material_traits[trait] = trait.on_add(old_data, mat.material_traits[trait])
+				material_traits[trait] = trait.on_add(src, old_data, mat.material_traits[trait])
 				material_trait_flags |= trait.material_trait_flags
 			else if(isnull(material_traits))
 				material_traits = trait
-				material_traits_data = trait.on_add(null, mat.material_traits[trait])
+				material_traits_data = trait.on_add(src, null, mat.material_traits[trait])
 				material_trait_flags = trait.material_trait_flags
 			else
 				var/datum/material_trait/other = material_traits
 				var/old_data = material_traits_data
 				if(other == trait)
-					material_traits_data = trait.on_add(old_data, mat.material_traits[trait])
+					material_traits_data = trait.on_add(src, old_data, mat.material_traits[trait])
 				else
 					material_traits = list(other = old_data, trait = trait.on_add(old_data, mat.material_traits[trait]))
 					material_traits_data = null
@@ -49,7 +49,7 @@
 		for(var/datum/material_trait/trait as anything in mat.material_traits)
 			if(islist(material_traits))
 				var/old_data = material_traits[trait]
-				var/new_data = trait.on_remove(old_data, mat.material_traits[trait])
+				var/new_data = trait.on_remove(src, old_data, mat.material_traits[trait])
 				if(isnull(new_data))
 					material_traits -= trait
 					if(length(material_traits) == 1)
@@ -65,7 +65,7 @@
 					material_traits[trait] = new_data
 			else
 				ASSERT(material_traits == trait)
-				var/new_data = trait.on_remove(material_traits_data, mat.material_traits[trait])
+				var/new_data = trait.on_remove(src, material_traits_data, mat.material_traits[trait])
 				if(isnull(new_data))
 					material_traits = null
 					material_traits_data = null

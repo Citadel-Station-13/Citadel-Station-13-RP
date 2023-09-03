@@ -118,7 +118,6 @@
 				spread_to(pick(neighbors))
 
 	// We shouldn't have spawned if the controller doesn't exist.
-	check_health()
 	if(has_buckled_mobs() || neighbors.len)
 		SSplants.add_plant(src)
 

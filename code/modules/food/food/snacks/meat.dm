@@ -2,7 +2,6 @@
 	name = "meat"
 	desc = "A slab of meat."
 	icon_state = "meat"
-	health = 180
 	filling_color = "#FF1C1C"
 	center_of_mass = list("x"=16, "y"=14)
 

@@ -174,16 +174,10 @@
 	visible_message("[src] fades away as it shatters!")
 
 /obj/machinery/door/window/holowindoor/attackby(obj/item/I as obj, mob/user as mob)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 
 	if (src.operating == 1)
-		return
-
-	if(src.density && istype(I, /obj/item) && !istype(I, /obj/item/card))
-		var/aforce = I.damage_force
-		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
-		visible_message("<font color='red'><B>[src] was hit by [I].</B></font>")
-		if(I.damtype == BRUTE || I.damtype == BURN)
-			take_damage(aforce)
 		return
 
 	src.add_fingerprint(user)
