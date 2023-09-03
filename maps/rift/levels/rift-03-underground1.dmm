@@ -6655,7 +6655,7 @@
 /obj/item/clothing/shoes/boots/winter/science,
 /obj/item/clothing/shoes/boots/winter/science,
 /obj/item/clothing/shoes/boots/winter/science,
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
 "vt" = (
@@ -8435,7 +8435,7 @@
 /obj/item/shovel,
 /obj/item/storage/bag/ore,
 /obj/item/flashlight/lantern,
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
 "Bs" = (
@@ -9124,7 +9124,7 @@
 "Ef" = (
 /obj/item/tank/emergency/oxygen/engi,
 /obj/structure/table/rack,
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Eg" = (
@@ -9700,7 +9700,7 @@
 /obj/item/clothing/shoes/boots/winter/science,
 /obj/item/clothing/shoes/boots/winter/science,
 /obj/item/clothing/shoes/boots/winter/science,
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
 "FY" = (
@@ -11295,7 +11295,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
 "Lm" = (

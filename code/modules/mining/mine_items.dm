@@ -119,11 +119,12 @@
 	drill_verb = "hammering"
 	sand_dig = TRUE
 
+//Buffed Ice Picks/Axes slightly because come on, it's a friggen ICE AXE!!!
 /obj/item/pickaxe/icepick //Cannot actually lobotomize people. Yet.
 	name = "icepick"
-	desc = "A simple icepick, for all your digging, climbing, and lobotomizing needs."
+	desc = "A sharp tool for climbers and hikers to break up ice and keep themselves from slipping on a steep slope."
+	hitsound = 'sound/weapons/bladeslice.ogg'
 	slot_flags = SLOT_BELT
-	damage_force = 12
 	throw_force = 15 //Discount shuriken.
 	icon_state = "icepick"
 	item_state = "spickaxe" //im lazy fuck u
@@ -132,8 +133,9 @@
 	digspeed = 25 //More expensive than a diamond pick, a lot smaller but decently slower.
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("mined", "pierced", "stabbed", "attacked")
-	drill_verb = "picking"
-	sharp = 1
+	drill_verb = "hacking at"
+	sharp = TRUE
+	edge = TRUE
 
 //Snowflake drill that works like a chainsaw! How fun. Honestly they should probably all work like this or something. I dunno. Might be a fun mining overhaul later.
 /obj/item/pickaxe/tyrmalin

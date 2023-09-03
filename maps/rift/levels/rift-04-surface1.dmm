@@ -10751,7 +10751,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /obj/item/hardsuit/medical/equipped,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
@@ -16831,7 +16831,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /obj/machinery/camera/network/medbay{
 	dir = 1
 	},
@@ -33571,7 +33571,7 @@
 	dir = 10
 	},
 /obj/machinery/light,
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /obj/machinery/newscaster{
 	pixel_y = -32
 	},

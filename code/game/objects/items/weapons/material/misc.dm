@@ -30,13 +30,6 @@
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 
-//Ice pick, mountain axe, or ice axe.YW Creation.
-/obj/item/material/knife/machete/hatchet/iceaxe
-	name = "ice axe"
-	desc = "A sharp tool for climbers and hikers to break up ice and keep themselves from slipping on a steep slope."
-	icon_state = "icepick"
-	attack_verb = list("slashed", "ripped", "cut")
-
 /obj/item/material/knife/machete/hatchet/bone
 	name = "primitive hatchet"
 	desc = "A broad, flat piece of bone knapped to a sharp edge. A truly primitive weapon."

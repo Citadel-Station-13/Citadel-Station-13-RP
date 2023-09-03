@@ -2144,7 +2144,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/yellow/border,
 /obj/structure/table/rack/shelf,
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /obj/item/shovel,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/airlock/one)
@@ -2398,7 +2398,7 @@
 /obj/structure/window/basic{
 	dir = 8
 	},
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/eva)
 "kJ" = (
@@ -4592,7 +4592,7 @@
 /obj/structure/window/basic{
 	dir = 8
 	},
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/eva)
 "uN" = (
@@ -6025,7 +6025,7 @@
 /obj/item/clothing/suit/storage/hooded/wintercoat/science,
 /obj/item/tank/emergency/oxygen/engi,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /turf/simulated/floor,
 /area/rnd/outpost/atmospherics)
 "Bp" = (

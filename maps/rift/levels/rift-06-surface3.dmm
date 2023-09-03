@@ -125,7 +125,7 @@
 /obj/item/clothing/shoes/magboots,
 /obj/item/tank/jetpack/oxygen,
 /obj/item/clothing/suit/space/void/exploration,
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /obj/item/clothing/head/helmet/space/void/exploration,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
@@ -17520,7 +17520,7 @@
 /obj/item/suit_cooling_unit,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/exploration/alt,
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /obj/item/clothing/head/helmet/space/void/exploration/alt,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
@@ -17721,7 +17721,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 4
 	},

@@ -8522,7 +8522,7 @@
 	},
 /obj/structure/table/rack/shelf,
 /obj/item/clothing/mask/gas,
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
@@ -11114,7 +11114,7 @@
 /obj/item/tank/oxygen,
 /obj/structure/table/rack/shelf,
 /obj/item/clothing/mask/gas,
-/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/pickaxe/icepick,
 /obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
