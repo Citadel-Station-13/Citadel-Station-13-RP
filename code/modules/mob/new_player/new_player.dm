@@ -48,10 +48,6 @@
 
 	output += "<p><a href='byond://?src=\ref[src];observe=1'>Observe</A></p>"
 
-
-
-
-
 	if(!IsGuestKey(src.key))
 		if(SSdbcore.Connect())
 			var/isadmin = 0
@@ -78,8 +74,6 @@
 		output += "<p><a href='byond://?src=\ref[src];shownews=1'>Show News</A></p>"
 
 	output += "</div>"
-
-
 
 	panel = new(src, "Welcome","Welcome", 210, 280, src)
 	panel.set_window_options("can_close=0")
