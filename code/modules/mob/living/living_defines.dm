@@ -102,8 +102,11 @@
 	// TODO: execute iamcrystalclear for making this var
 	var/last_blood_warn = -INFINITY
 
+	// todo: refactor this shit along with characters, aough
 	var/ooc_notes = null
 	var/datum/description_profile/profile
+	var/fullref_url
+	var/headshot_url
 	var/obj/structure/mob_spawner/source_spawner = null
 
 //custom say verbs
