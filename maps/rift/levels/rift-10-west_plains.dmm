@@ -2112,6 +2112,7 @@
 /obj/machinery/door/airlock/glass_external/lythios43c/freezable{
 	name = "Science Outpost Airlock"
 	},
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "jv" = (
@@ -3635,6 +3636,7 @@
 /obj/machinery/door/airlock/glass_external/lythios43c/freezable{
 	name = "Science Outpost Airlock"
 	},
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "qL" = (
@@ -5029,6 +5031,7 @@
 	req_one_access = list(10,47);
 	name = "Science Outpost Airlock"
 	},
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "wK" = (
@@ -6191,6 +6194,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/airlock)
 "Cj" = (
@@ -7415,6 +7419,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals_central5{
 	dir = 4
 	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "Il" = (
@@ -8080,6 +8085,7 @@
 	master_tag = "mining_outpost2_airlock";
 	pixel_x = -28
 	},
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/airlock/one)
 "Lv" = (
@@ -9156,6 +9162,7 @@
 	req_one_access = list(10,47);
 	name = "Science Outpost Airlock"
 	},
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "Qu" = (
@@ -9958,6 +9965,7 @@
 	frequency = 1379;
 	id_tag = "sci_outpost_pump"
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/airlock)
 "TZ" = (
