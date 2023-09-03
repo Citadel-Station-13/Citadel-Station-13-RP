@@ -8523,6 +8523,7 @@
 /obj/structure/table/rack/shelf,
 /obj/item/clothing/mask/gas,
 /obj/item/storage/bag/ore,
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "Aq" = (
@@ -11114,6 +11115,7 @@
 /obj/structure/table/rack/shelf,
 /obj/item/clothing/mask/gas,
 /obj/item/storage/bag/ore,
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "KJ" = (

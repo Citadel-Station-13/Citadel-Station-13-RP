@@ -2670,8 +2670,8 @@
 /area/engineering/atmos/hallway)
 "gM" = (
 /obj/map_helper/airlock/door/ext_door,
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = list(47)
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "External Airlock"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/secure_storage/upper)
@@ -3829,9 +3829,6 @@
 "kZ" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
-"la" = (
-/turf/simulated/wall/r_wall/prepainted/engineering/atmos,
-/area/space)
 "lb" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -6648,12 +6645,17 @@
 /area/engineering/atmos)
 "vr" = (
 /obj/structure/table/rack/shelf,
-/obj/item/clothing/suit/storage/snowsuit/science,
-/obj/item/clothing/suit/storage/snowsuit/science,
-/obj/item/clothing/suit/storage/snowsuit/science,
 /obj/machinery/air_alarm{
 	pixel_y = 24
 	},
+/obj/item/clothing/shoes/boots/winter/science,
+/obj/item/clothing/suit/storage/snowsuit/science,
+/obj/item/clothing/suit/storage/snowsuit/science,
+/obj/item/clothing/suit/storage/snowsuit/science,
+/obj/item/clothing/shoes/boots/winter/science,
+/obj/item/clothing/shoes/boots/winter/science,
+/obj/item/clothing/shoes/boots/winter/science,
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
 "vt" = (
@@ -8433,6 +8435,7 @@
 /obj/item/shovel,
 /obj/item/storage/bag/ore,
 /obj/item/flashlight/lantern,
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
 "Bs" = (
@@ -8992,8 +8995,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
 "DC" = (
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = list(47)
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "External Airlock"
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
@@ -9121,6 +9124,7 @@
 "Ef" = (
 /obj/item/tank/emergency/oxygen/engi,
 /obj/structure/table/rack,
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Eg" = (
@@ -9693,6 +9697,10 @@
 /obj/item/clothing/suit/storage/hooded/wintercoat/science,
 /obj/item/clothing/suit/storage/hooded/wintercoat/science,
 /obj/item/clothing/suit/storage/hooded/wintercoat/science,
+/obj/item/clothing/shoes/boots/winter/science,
+/obj/item/clothing/shoes/boots/winter/science,
+/obj/item/clothing/shoes/boots/winter/science,
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
 "FY" = (
@@ -11287,6 +11295,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
 "Lm" = (
@@ -25565,7 +25574,7 @@ WR
 aa
 aa
 Va
-oU
+Lv
 Va
 aa
 aa
@@ -29617,7 +29626,7 @@ eT
 eT
 eT
 eT
-la
+eT
 eE
 EY
 YA
@@ -34462,7 +34471,7 @@ sa
 sa
 YH
 sa
-db
+sa
 sa
 Yi
 sR

@@ -125,6 +125,7 @@
 /obj/item/clothing/shoes/magboots,
 /obj/item/tank/jetpack/oxygen,
 /obj/item/clothing/suit/space/void/exploration,
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /obj/item/clothing/head/helmet/space/void/exploration,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
@@ -4005,7 +4006,8 @@
 /area/crew_quarters/captain)
 "alo" = (
 /obj/machinery/door/airlock/glass_external/public{
-	name = "Public External Airlock"
+	name = "Public External Airlock";
+	desc = "It opens and closes. This one seems to have a heater to prevent it from freezing over."
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -4178,7 +4180,8 @@
 /area/maintenance/commandmaint)
 "alT" = (
 /obj/machinery/door/airlock/glass_external/public{
-	name = "Public External Airlock"
+	name = "Public External Airlock";
+	desc = "It opens and closes. This one seems to have a heater to prevent it from freezing over."
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10,
@@ -7217,8 +7220,8 @@
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "atZ" = (
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Public External Airlock"
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "Nebula Trade Shop"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
@@ -10627,8 +10630,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "aDw" = (
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Public External Airlock"
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "Nebula Trade Shop"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
@@ -17517,6 +17520,7 @@
 /obj/item/suit_cooling_unit,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/exploration/alt,
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /obj/item/clothing/head/helmet/space/void/exploration/alt,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
@@ -17717,6 +17721,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 4
 	},
@@ -19510,7 +19515,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "dUC" = (
-/obj/machinery/door/airlock/glass_external/public{
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
 	name = "Public External Airlock"
 	},
 /obj/map_helper/airlock/door/ext_door,
@@ -20016,7 +20021,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/docking_hallway)
 "eKS" = (
-/obj/machinery/door/airlock/glass_external/public{
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
 	name = "Public External Airlock"
 	},
 /obj/map_helper/airlock/door/ext_door,
@@ -25074,7 +25079,7 @@
 /turf/simulated/open,
 /area/rnd/telescience_lab)
 "scN" = (
-/obj/machinery/door/airlock/glass_external/public{
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
 	name = "Public External Airlock"
 	},
 /obj/map_helper/airlock/door/ext_door,
@@ -25561,7 +25566,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/bar)
 "tIJ" = (
-/obj/machinery/door/airlock/glass_external/public{
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
 	name = "Public External Airlock"
 	},
 /obj/map_helper/airlock/door/ext_door,

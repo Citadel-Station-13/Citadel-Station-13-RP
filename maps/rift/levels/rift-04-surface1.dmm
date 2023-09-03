@@ -5636,7 +5636,9 @@
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/backstage)
 "dHC" = (
-/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "Public External Airlock"
+	},
 /obj/machinery/door/blast/regular/open{
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
@@ -6215,7 +6217,9 @@
 /turf/simulated/floor,
 /area/maintenance/substation/medical)
 "dWb" = (
-/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "Public External Airlock"
+	},
 /obj/machinery/door/blast/regular/open{
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
@@ -11263,7 +11267,8 @@
 "hkz" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Cargo Airlock";
-	req_one_access = list(31)
+	req_one_access = list(31);
+	desc = "It opens and closes. This one seems to have a heater to prevent it from freezing over."
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "main_ext_blast";
@@ -12995,7 +13000,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/medical/virologytransiteast)
 "ipB" = (
-/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "Nebula Trade Shop"
+	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
@@ -16503,7 +16510,6 @@
 	},
 /obj/structure/metal_edge,
 /turf/simulated/floor/plating/lythios43c,
-/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "ktI" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -19529,9 +19535,8 @@
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
 	},
-/obj/machinery/door/airlock/glass_external{
-	name = "Medical Airlock";
-	req_one_access = list(5)
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "Medical Airlock"
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/steel_grid,
@@ -21879,7 +21884,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "nDB" = (
-/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "Public External Airlock"
+	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
@@ -29896,7 +29903,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
 "srD" = (
-/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "Public External Airlock"
+	},
 /obj/machinery/door/blast/regular/open{
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
@@ -31824,7 +31833,9 @@
 	dir = 4
 	},
 /obj/map_helper/airlock/door/ext_door,
-/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "Nebula Trade Shop"
+	},
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "shop_airlock";
 	pixel_x = 28;
@@ -32232,7 +32243,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/garage)
 "tKP" = (
-/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "Public External Airlock"
+	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
@@ -37733,7 +37746,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "xcd" = (
-/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "Public External Airlock"
+	},
 /obj/machinery/door/blast/regular/open{
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"

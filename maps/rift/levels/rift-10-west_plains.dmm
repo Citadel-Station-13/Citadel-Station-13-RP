@@ -474,7 +474,7 @@
 /turf/simulated/wall,
 /area/rift/exterior/checkpoint/south)
 "cp" = (
-/obj/machinery/door/airlock/glass_external/public{
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
 	name = "Mining Outpost Airlock"
 	},
 /obj/map_helper/airlock/door/ext_door,
@@ -2109,11 +2109,8 @@
 	pixel_x = 28;
 	pixel_y = 6
 	},
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "sci_outpost_outer";
-	locked = 1
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "Science Outpost Airlock"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
@@ -2142,6 +2139,14 @@
 "jz" = (
 /turf/simulated/wall/wood,
 /area/rift/exterior/mineshaft)
+"jB" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/yellow/border,
+/obj/structure/table/rack/shelf,
+/obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/shovel,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/outpost/airlock/one)
 "jC" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -2392,6 +2397,7 @@
 /obj/structure/window/basic{
 	dir = 8
 	},
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/eva)
 "kJ" = (
@@ -3571,6 +3577,12 @@
 "qo" = (
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/geothermal)
+"qp" = (
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "External Airlock"
+	},
+/turf/simulated/floor,
+/area/rnd/outpost/atmospherics)
 "qs" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 9
@@ -3620,11 +3632,8 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/surface)
 "qK" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "sci_outpost_outer";
-	locked = 1
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
+	name = "Science Outpost Airlock"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
@@ -4581,6 +4590,7 @@
 /obj/structure/window/basic{
 	dir = 8
 	},
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/eva)
 "uN" = (
@@ -5012,14 +5022,12 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "sci_outpost_inner";
-	locked = 1
-	},
 /obj/machinery/door/firedoor/glass{
 	req_one_access = list(18,47)
+	},
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = list(10,47);
+	name = "Science Outpost Airlock"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
@@ -6014,6 +6022,7 @@
 /obj/item/clothing/suit/storage/hooded/wintercoat/science,
 /obj/item/tank/emergency/oxygen/engi,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /turf/simulated/floor,
 /area/rnd/outpost/atmospherics)
 "Bp" = (
@@ -8062,7 +8071,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west)
 "Lq" = (
-/obj/machinery/door/airlock/glass_external/public{
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable{
 	name = "Mining Outpost Airlock"
 	},
 /obj/map_helper/airlock/door/ext_door,
@@ -9140,14 +9149,12 @@
 	pixel_x = 24;
 	pixel_y = -6
 	},
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "sci_outpost_inner";
-	locked = 1
-	},
 /obj/machinery/door/firedoor/glass{
 	req_one_access = list(18,47)
+	},
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = list(10,47);
+	name = "Science Outpost Airlock"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
@@ -42364,7 +42371,7 @@ PR
 PR
 CA
 dH
-nf
+qp
 dH
 dH
 sv
@@ -43644,7 +43651,7 @@ Yd
 ga
 Zg
 WG
-OQ
+jB
 mr
 Tz
 yI

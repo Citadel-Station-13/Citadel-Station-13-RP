@@ -65,6 +65,12 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/material/knife/machete/hatchet
 
+/datum/design/tool/iceaxe
+	id = "ToolIceaxe"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/material/knife/machete/hatchet/iceaxe
+
 /datum/design/tool/minihoe
 	id = "ToolMinihoe"
 	lathe_type = LATHE_TYPE_AUTOLATHE
