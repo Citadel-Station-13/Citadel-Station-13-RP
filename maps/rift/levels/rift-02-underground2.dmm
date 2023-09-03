@@ -8522,8 +8522,8 @@
 	},
 /obj/structure/table/rack/shelf,
 /obj/item/clothing/mask/gas,
-/obj/item/storage/bag/ore,
 /obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "Aq" = (
@@ -11114,8 +11114,8 @@
 /obj/item/tank/oxygen,
 /obj/structure/table/rack/shelf,
 /obj/item/clothing/mask/gas,
-/obj/item/storage/bag/ore,
 /obj/item/material/knife/machete/hatchet/iceaxe,
+/obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "KJ" = (

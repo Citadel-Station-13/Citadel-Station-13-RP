@@ -1771,6 +1771,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/security/prison)
+"bnf" = (
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
+/turf/simulated/floor/plating,
+/area/engineering/engine_eva)
 "bny" = (
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood,
@@ -10747,6 +10751,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /obj/item/hardsuit/medical/equipped,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
@@ -16821,11 +16826,12 @@
 /obj/item/clothing/suit/space/void/medical/emt,
 /obj/item/clothing/head/helmet/space/void/medical/emt,
 /obj/effect/floor_decal/corner/paleblue{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /obj/machinery/camera/network/medbay{
 	dir = 1
 	},
@@ -33565,6 +33571,7 @@
 	dir = 10
 	},
 /obj/machinery/light,
+/obj/item/material/knife/machete/hatchet/iceaxe,
 /obj/machinery/newscaster{
 	pixel_y = -32
 	},
@@ -39419,6 +39426,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/medical/virologyisolation)
+"ybQ" = (
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
+/obj/machinery/door/blast/regular/open{
+	id = "main_ext_blast";
+	name = "Surface External Blast Door"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/engine_eva)
 "yco" = (
 /obj/machinery/light{
 	dir = 8
@@ -51795,7 +51810,7 @@ apR
 tep
 euZ
 qvB
-oRd
+bnf
 qvB
 qvB
 qvB
@@ -51805,7 +51820,7 @@ qvB
 qvB
 qvB
 qvB
-ptB
+ybQ
 qvB
 qvB
 lCB
