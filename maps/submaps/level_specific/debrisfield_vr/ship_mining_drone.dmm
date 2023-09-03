@@ -443,7 +443,7 @@
 	name = "hivebot assembler";
 	simultaneous_spawns = 6;
 	spawn_delay = 300;
-	spawn_types = list(/mob/living/simple_mob/mechanical/hivebot/swarm=200,/mob/living/simple_mob/mechanical/hivebot/ranged_damage=50,/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser=25,/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion=10,/mob/living/simple_mob/mechanical/hivebot/tank=10)
+	spawn_types = list(/mob/living/simple_mob/mechanical/hivebot/swarm=200,/mob/living/simple_mob/mechanical/hivebot/ranged_damage=50,/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser=25,/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion=10,/mob/living/simple_mob/mechanical/hivebot/armored=10)
 	},
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/mining_drone_ship)
