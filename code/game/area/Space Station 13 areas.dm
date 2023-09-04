@@ -1935,6 +1935,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/engineering/atmos/eva
 	name = "\improper Engineering Atmos EVA"
 
+/area/engineering/atmos/workshop
+	name = "\improper Atmospherics Workshop"
+
 /area/engineering/drone_fabrication
 	name = "\improper Engineering Drone Fabrication"
 	icon_state = "drone_fab"

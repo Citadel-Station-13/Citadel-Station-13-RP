@@ -29,6 +29,9 @@
 /obj/machinery/conveyor/centcom_auto
 	id = "round_end_belt"
 
+
+/obj/machinery/conveyor/on
+
 	// create a conveyor
 /obj/machinery/conveyor/Initialize(mapload, newdir, on = 0)
 	. = ..()
@@ -218,6 +221,8 @@
 	var/list/conveyors		// the list of converyors that are controlled by this switch
 	anchored = 1
 
+/obj/machinery/conveyor_switch/two_way_on
+	position = 1
 
 
 /obj/machinery/conveyor_switch/Initialize(mapload)
