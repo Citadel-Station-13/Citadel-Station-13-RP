@@ -199,4 +199,4 @@
 
 	base_attack_cooldown = 60
 
-	projectiletype = /obj/projectile/arc/fragmentation
+	projectiletype = /obj/projectile/arc/fragmentation/mortar
