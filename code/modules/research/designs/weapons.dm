@@ -273,7 +273,7 @@
 	id = "rapidsyringe"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_BIO = 2)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 1000)
-	build_path = /obj/item/gun/projectile/launcher/syringe/rapid
+	build_path = /obj/item/gun/launcher/syringe/rapid
 
 /datum/design/science/weapon/dartgun
 	desc = "A gun that fires small hollow chemical-payload darts."

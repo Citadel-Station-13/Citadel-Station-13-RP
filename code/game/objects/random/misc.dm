@@ -830,7 +830,7 @@
 		prob(2);/obj/item/storage/box/frags,
 		prob(2);/obj/item/material/twohanded/fireaxe,
 		prob(2);/obj/item/gun/projectile/ballistic/luger/brown,
-		prob(2);/obj/item/gun/projectile/launcher/crossbow,
+		prob(2);/obj/item/gun/launcher/crossbow,
 		prob(1);/obj/item/gun/projectile/energy/plasma,
 		prob(1);/obj/item/gun/projectile/energy/plasma/pistol,
 		// prob(1);/obj/item/gun/projectile/ballistic/automatic/battlerifle, // Too OP
@@ -840,7 +840,7 @@
 		prob(1);/obj/item/gun/projectile/energy/imperial,
 		prob(1);/obj/item/gun/projectile/ballistic/automatic/as24,
 		prob(1);/obj/item/gun/projectile/ballistic/rocket,
-		prob(1);/obj/item/gun/projectile/launcher/grenade,
+		prob(1);/obj/item/gun/launcher/grenade,
 		prob(1);/obj/item/gun/projectile/ballistic/gyropistol,
 		prob(1);/obj/item/gun/projectile/ballistic/heavysniper,
 		prob(1);/obj/item/plastique,

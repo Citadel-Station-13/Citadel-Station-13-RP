@@ -316,7 +316,7 @@
 			item_type = "gun"
 		if(27)
 			//revolver
-			var/obj/item/gun/projectile/ballistic/new_gun = new /obj/item/gun/ballistic/revolver(src.loc)
+			var/obj/item/gun/projectile/ballistic/new_gun = new /obj/item/gun/projectile/ballistic/revolver(src.loc)
 			new_item = new_gun
 			new_item.icon_state = "gun[rand(1,4)]"
 			new_item.icon = 'icons/obj/xenoarchaeology.dmi'

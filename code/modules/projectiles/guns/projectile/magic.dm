@@ -1,4 +1,4 @@
-/obj/item/gun/magic
+/obj/item/gun/projectile/magic
 	name = "magic staff"
 	desc = "This staff is boring to watch because even though it came first you've seen everything it can do in other staves for years."
 	slot_flags = SLOT_BACK

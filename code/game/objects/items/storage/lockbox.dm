@@ -176,7 +176,7 @@
 		/obj/item/material/sword = 2,
 		/obj/item/shield/riot/buckler = 2,
 		/obj/item/material/twohanded/sledgehammer  = 1,
-		/obj/item/gun/projectile/launcher/crossbow = 1,
+		/obj/item/gun/launcher/crossbow = 1,
 	)
 
 /obj/item/storage/lockbox/maniple

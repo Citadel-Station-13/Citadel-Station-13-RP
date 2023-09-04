@@ -595,7 +595,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
         /obj/item/storage/belt/utility/alien/full,
         /obj/item/gun/projectile/ballistic/revolver,
         /obj/item/gun/projectile/ballistic/sec,
-        /obj/item/gun/projectile/launcher/crossbow
+        /obj/item/gun/launcher/crossbow
     )
 
 // Subtype for mecha and mecha accessories. These might not always be on the surface.

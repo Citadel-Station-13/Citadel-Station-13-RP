@@ -64,7 +64,7 @@
 	icon_state = initial(icon_state) //reset icon state
 	update_icon()
 
-/obj/item/gun/projectile/launcher/syringe
+/obj/item/gun/launcher/syringe
 	name = "syringe gun"
 	desc = "A spring loaded rifle designed to fit syringes, designed to incapacitate unruly patients from a distance."
 	icon_state = "syringegun"
@@ -84,18 +84,18 @@
 	var/max_darts = 1
 	var/obj/item/syringe_cartridge/next
 
-/obj/item/gun/projectile/launcher/syringe/consume_next_projectile()
+/obj/item/gun/launcher/syringe/consume_next_projectile()
 	if(next)
 		next.prime()
 		return next
 	return null
 
-/obj/item/gun/projectile/launcher/syringe/handle_post_fire()
+/obj/item/gun/launcher/syringe/handle_post_fire()
 	..()
 	darts -= next
 	next = null
 
-/obj/item/gun/projectile/launcher/syringe/attack_self(mob/user)
+/obj/item/gun/launcher/syringe/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
@@ -108,7 +108,7 @@
 		next = darts[1]
 	add_fingerprint(user)
 
-/obj/item/gun/projectile/launcher/syringe/attack_hand(mob/user, list/params)
+/obj/item/gun/launcher/syringe/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(!darts.len)
 			to_chat(user, "<span class='warning'>[src] is empty.</span>")
@@ -124,7 +124,7 @@
 	else
 		..()
 
-/obj/item/gun/projectile/launcher/syringe/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/launcher/syringe/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/syringe_cartridge))
 		var/obj/item/syringe_cartridge/C = A
 		if(darts.len >= max_darts)
@@ -137,7 +137,7 @@
 	else
 		..()
 
-/obj/item/gun/projectile/launcher/syringe/rapid
+/obj/item/gun/launcher/syringe/rapid
 	name = "syringe gun revolver"
 	desc = "A modification of the syringe gun design, using a rotating cylinder to store up to five syringes. The spring still needs to be drawn between shots."
 	icon_state = "rapidsyringegun"

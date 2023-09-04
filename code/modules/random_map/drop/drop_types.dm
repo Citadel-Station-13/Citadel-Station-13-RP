@@ -118,7 +118,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/gun/projectile/ballistic/shotgun/pump,
 		/obj/item/gun/projectile/energy/gun,
 		/obj/item/clothing/accessory/holster,
-		/obj/item/gun/projectile/launcher/grenade,
+		/obj/item/gun/launcher/grenade,
 		/obj/item/storage/backpack/dufflebag/sec)
 
 /datum/supply_drop_loot/seeds

@@ -108,7 +108,7 @@
 					prob(10);/obj/item/material/twohanded/spear,\
 					prob(10);/obj/item/gun/projectile/energy/stunrevolver,\
 					prob(10);/obj/item/gun/projectile/energy/taser,\
-					prob(10);/obj/item/gun/projectile/launcher/crossbow,\
+					prob(10);/obj/item/gun/launcher/crossbow,\
 					prob(10);/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/pellet,\
 					prob(10);/obj/item/material/knife,\
 					prob(10);/obj/item/material/knife/tacknife/combatknife,\
@@ -155,7 +155,7 @@
 					prob(7);/obj/item/gun/projectile/energy/gun/burst,\
 					prob(7);/obj/item/gun/projectile/ballistic/shotgun/pump/JSDF,\
 					prob(7);/obj/item/gun/projectile/ballistic/deagle,\
-					prob(7);/obj/item/gun/projectile/launcher/grenade,\
+					prob(7);/obj/item/gun/launcher/grenade,\
 				/*	prob(6);/obj/item/gun/projectile/ballistic/SVD,\*/
 					prob(6);/obj/item/gun/projectile/ballistic/automatic/lmg,\
 					prob(6);/obj/item/gun/projectile/energy/lasercannon,\
@@ -168,7 +168,7 @@
 					prob(2);/obj/item/gun/projectile/ballistic/automatic/lmg/mg42,\
 					prob(2);/obj/item/gun/projectile/ballistic/automatic/lmg/m60,\
 					prob(1);/obj/item/gun/projectile/ballistic/rocket,\
-					prob(1);/obj/item/gun/projectile/launcher/grenade,\
+					prob(1);/obj/item/gun/launcher/grenade,\
 					prob(1);/obj/item/gun/projectile/ballistic/gyropistol,\
 					prob(1);/obj/item/gun/projectile/ballistic/heavysniper,\
 					prob(1);/obj/item/plastique,\

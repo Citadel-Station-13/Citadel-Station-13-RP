@@ -24,9 +24,9 @@
 		var/lazors = 0
 		var/shottas = 0
 		for (var/obj/item/gun/G in contents)
-			if (istype(G, /obj/item/gun/energy))
+			if (istype(G, /obj/item/gun/projectile/energy))
 				lazors++
-			if (istype(G, /obj/item/gun/ballistic))
+			if (istype(G, /obj/item/gun/projectile/ballistic))
 				shottas++
 		for (var/i = 0 to 2)
 			if(lazors || shottas) // only make icons if we have one of the two types.

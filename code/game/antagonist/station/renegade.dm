@@ -57,10 +57,10 @@ var/datum/antagonist/renegade/renegades
 		/obj/item/gun/projectile/ballistic/shotgun/doublebarrel,
 		/obj/item/gun/projectile/ballistic/revolver/judge,
 		/obj/item/gun/projectile/ballistic/revolver/lemat,
-		list(/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/pellet, /obj/item/gun/ballistic/shotgun/doublebarrel/sawn),
-		list(/obj/item/gun/projectile/ballistic/deagle, /obj/item/gun/ballistic/deagle/gold, /obj/item/gun/ballistic/deagle/camo),
-		list(/obj/item/gun/projectile/ballistic/revolver/detective, /obj/item/gun/ballistic/revolver/deckard),
-		list(/obj/item/gun/projectile/ballistic/luger,/obj/item/gun/ballistic/luger/brown)
+		list(/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/pellet, /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn),
+		list(/obj/item/gun/projectile/ballistic/deagle, /obj/item/gun/projectile/ballistic/deagle/gold, /obj/item/gun/projectile/ballistic/deagle/camo),
+		list(/obj/item/gun/projectile/ballistic/revolver/detective, /obj/item/gun/projectile/ballistic/revolver/deckard),
+		list(/obj/item/gun/projectile/ballistic/luger,/obj/item/gun/projectile/ballistic/luger/brown)
 		)
 
 /datum/antagonist/renegade/New()

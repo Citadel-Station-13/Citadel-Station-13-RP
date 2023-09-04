@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic
+/obj/item/gun/projectile/ballistic
 	name = "gun"
 	desc = "A gun that fires bullets."
 	icon = 'icons/obj/gun/ballistic.dmi'

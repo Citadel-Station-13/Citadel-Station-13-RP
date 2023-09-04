@@ -363,7 +363,7 @@
 
 /datum/crafting_recipe/improvised_pneumatic_cannon
 	name = "Pneumatic Cannon"
-	result = /obj/item/gun/projectile/launcher/pneumatic
+	result = /obj/item/gun/launcher/pneumatic
 	tools = list(TOOL_WELDER, TOOL_WRENCH)
 	reqs = list(/obj/item/cannonframe = 1,
 				/obj/item/stack/material/steel = 4,

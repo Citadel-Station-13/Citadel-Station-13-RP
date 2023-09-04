@@ -1,4 +1,4 @@
-/obj/item/gun/magnetic
+/obj/item/gun/projectile/magnetic
 	name = "improvised coilgun"
 	desc = "A coilgun hastily thrown together out of a basic frame and advanced power storage components. Is it safe for it to be duct-taped together like that?"
 	icon_state = "coilgun"

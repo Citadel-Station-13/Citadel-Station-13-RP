@@ -73,9 +73,9 @@ var/datum/antagonist/raider/raiders
 		/obj/item/gun/projectile/energy/ionrifle,
 		/obj/item/gun/projectile/energy/taser,
 		/obj/item/gun/projectile/energy/crossbow/largecrossbow,
-		/obj/item/gun/projectile/launcher/crossbow,
-		/obj/item/gun/projectile/launcher/grenade,
-		/obj/item/gun/projectile/launcher/pneumatic,
+		/obj/item/gun/launcher/crossbow,
+		/obj/item/gun/launcher/grenade,
+		/obj/item/gun/launcher/pneumatic,
 		/obj/item/gun/projectile/ballistic/automatic/mini_uzi,
 		/obj/item/gun/projectile/ballistic/automatic/c20r,
 		/obj/item/gun/projectile/ballistic/automatic/wt550,
@@ -95,8 +95,8 @@ var/datum/antagonist/raider/raiders
 		/obj/item/gun/projectile/ballistic/revolver,
 		/obj/item/gun/projectile/ballistic/pirate,
 		/obj/item/gun/projectile/ballistic/revolver/judge,
-		list(/obj/item/gun/projectile/ballistic/luger,/obj/item/gun/ballistic/luger/brown),
-		list(/obj/item/gun/projectile/ballistic/deagle, /obj/item/gun/ballistic/deagle/gold, /obj/item/gun/ballistic/deagle/camo)
+		list(/obj/item/gun/projectile/ballistic/luger,/obj/item/gun/projectile/ballistic/luger/brown),
+		list(/obj/item/gun/projectile/ballistic/deagle, /obj/item/gun/projectile/ballistic/deagle/gold, /obj/item/gun/projectile/ballistic/deagle/camo)
 		)
 
 	var/list/raider_holster = list(
@@ -277,7 +277,7 @@ var/datum/antagonist/raider/raiders
 			player.put_in_hands(holster)
 
 /datum/antagonist/raider/proc/equip_ammo(var/mob/living/carbon/human/player, var/obj/item/gun/gun)
-	if(istype(gun, /obj/item/gun/ballistic))
+	if(istype(gun, /obj/item/gun/projectile/ballistic))
 		var/obj/item/gun/projectile/ballistic/bullet_thrower = gun
 		if(bullet_thrower.magazine_type)
 			player.equip_to_slot_or_del(new bullet_thrower.magazine_type(player), SLOT_ID_LEFT_POCKET)
@@ -289,7 +289,7 @@ var/datum/antagonist/raider/raiders
 				new bullet_thrower.ammo_type(ammobox)
 			player.put_in_hands(ammobox)
 		return
-	if(istype(gun, /obj/item/gun/projectile/launcher/grenade))
+	if(istype(gun, /obj/item/gun/launcher/grenade))
 		var/list/grenades = list(
 			/obj/item/grenade/empgrenade,
 			/obj/item/grenade/smokebomb,

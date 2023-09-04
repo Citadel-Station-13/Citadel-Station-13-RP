@@ -42,11 +42,11 @@
 			var/obj/item/gun/G = I
 			var/obj/projectile/P
 
-			if(istype(I, /obj/item/gun/energy))
+			if(istype(I, /obj/item/gun/projectile/energy))
 				var/obj/item/gun/projectile/energy/energy_gun = G
 				P = new energy_gun.projectile_type()
 
-			else if(istype(I, /obj/item/gun/ballistic))
+			else if(istype(I, /obj/item/gun/projectile/ballistic))
 				var/obj/item/gun/projectile/ballistic/projectile_gun = G
 				var/obj/item/ammo_casing/ammo = projectile_gun.chambered
 				P = ammo.get_projectile()

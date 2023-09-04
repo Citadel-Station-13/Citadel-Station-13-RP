@@ -51,7 +51,7 @@
 	else
 		..()
 
-/obj/item/gun/projectile/launcher/rocket/consume_next_projectile()
+/obj/item/gun/launcher/rocket/consume_next_projectile()
 	if(rockets.len)
 		var/obj/item/ammo_casing/rocket/I = rockets[1]
 		rockets -= I

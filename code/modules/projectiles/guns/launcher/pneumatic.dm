@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/launcher/pneumatic
+/obj/item/gun/launcher/pneumatic
 	name = "pneumatic cannon"
 	desc = "A large gas-powered cannon."
 	icon_state = "pneumatic"
@@ -22,7 +22,7 @@
 	var/force_divisor = 400                             // Force equates to speed. Speed/5 equates to a damage multiplier for whoever you hit.
 	                                                    // For reference, a fully pressurized oxy tank at 50% gas release firing a health
 	                                                    // analyzer with a force_divisor of 10 hit with a damage multiplier of 3000+.
-/obj/item/gun/projectile/launcher/pneumatic/Initialize(mapload)
+/obj/item/gun/launcher/pneumatic/Initialize(mapload)
 	. = ..()
 	item_storage = new(src)
 	item_storage.name = "hopper"
@@ -30,7 +30,7 @@
 	item_storage.max_storage_space = max_storage_space
 	item_storage.use_sound = null
 
-/obj/item/gun/projectile/launcher/pneumatic/verb/set_pressure() //set amount of tank pressure.
+/obj/item/gun/launcher/pneumatic/verb/set_pressure() //set amount of tank pressure.
 	set name = "Set Valve Pressure"
 	set category = "Object"
 	set src in range(0)
@@ -39,7 +39,7 @@
 		pressure_setting = N
 		to_chat(usr, "You dial the pressure valve to [pressure_setting]%.")
 
-/obj/item/gun/projectile/launcher/pneumatic/proc/eject_tank(mob/user) //Remove the tank.
+/obj/item/gun/launcher/pneumatic/proc/eject_tank(mob/user) //Remove the tank.
 	if(!tank)
 		to_chat(user, "There's no tank in [src].")
 		return
@@ -49,7 +49,7 @@
 	tank = null
 	update_icon()
 
-/obj/item/gun/projectile/launcher/pneumatic/proc/unload_hopper(mob/user)
+/obj/item/gun/launcher/pneumatic/proc/unload_hopper(mob/user)
 	if(item_storage.contents.len > 0)
 		var/obj/item/removing = item_storage.contents[item_storage.contents.len]
 		item_storage.remove_from_storage(removing, src.loc)
@@ -59,13 +59,13 @@
 	else
 		to_chat(user, "There is nothing to remove in \the [src].")
 
-/obj/item/gun/projectile/launcher/pneumatic/attack_hand(mob/user, list/params)
+/obj/item/gun/launcher/pneumatic/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload_hopper(user)
 	else
 		return ..()
 
-/obj/item/gun/projectile/launcher/pneumatic/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/gun/launcher/pneumatic/attackby(obj/item/W as obj, mob/user as mob)
 	if(!tank && istype(W,/obj/item/tank))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
@@ -75,13 +75,13 @@
 	else if(istype(W) && item_storage.can_be_inserted(W))
 		item_storage.handle_item_insertion(W, user)
 
-/obj/item/gun/projectile/launcher/pneumatic/attack_self(mob/user)
+/obj/item/gun/launcher/pneumatic/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
 	eject_tank(user)
 
-/obj/item/gun/projectile/launcher/pneumatic/consume_next_projectile(mob/user=null)
+/obj/item/gun/launcher/pneumatic/consume_next_projectile(mob/user=null)
 	if(!item_storage.contents.len)
 		return null
 	if (!tank)
@@ -104,7 +104,7 @@
 	item_storage.remove_from_storage(launched, src)
 	return launched
 
-/obj/item/gun/projectile/launcher/pneumatic/examine(mob/user, dist)
+/obj/item/gun/launcher/pneumatic/examine(mob/user, dist)
 	. = ..()
 	. += "The valve is dialed to [pressure_setting]%."
 	if(tank)
@@ -112,14 +112,14 @@
 	else
 		. += "Nothing is attached to the tank valve!"
 
-/obj/item/gun/projectile/launcher/pneumatic/update_release_force(obj/projectile)
+/obj/item/gun/launcher/pneumatic/update_release_force(obj/projectile)
 	if(tank)
 		release_force = ((fire_pressure*tank.volume)/projectile.w_class)/force_divisor //projectile speed.
 		if(release_force > 80) release_force = 80 //damage cap.
 	else
 		release_force = 0
 
-/obj/item/gun/projectile/launcher/pneumatic/handle_post_fire()
+/obj/item/gun/launcher/pneumatic/handle_post_fire()
 	if(tank)
 		var/lost_gas_amount = tank.air_contents.total_moles*(pressure_setting/100)
 		var/datum/gas_mixture/removed = tank.air_contents.remove(lost_gas_amount)
@@ -128,14 +128,14 @@
 		if(T) T.assume_air(removed)
 	..()
 
-/obj/item/gun/projectile/launcher/pneumatic/update_icon()
+/obj/item/gun/launcher/pneumatic/update_icon()
 	. = ..()
 	if (ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_r_hand()
 		M.update_inv_l_hand()
 
-/obj/item/gun/projectile/launcher/pneumatic/update_icon_state()
+/obj/item/gun/launcher/pneumatic/update_icon_state()
 	. = ..()
 	if(tank)
 		icon_state = "pneumatic-tank"
@@ -221,7 +221,7 @@
 				if(!src || !T.isOn()) return
 				playsound(src, W.tool_sound, 100, 1)
 				to_chat(user, "<span class='notice'>You weld the valve into place.</span>")
-				new /obj/item/gun/projectile/launcher/pneumatic(get_turf(src))
+				new /obj/item/gun/launcher/pneumatic(get_turf(src))
 				qdel(src)
 		return
 	else

@@ -158,7 +158,7 @@
 		)
 
 	var/use_launcher = 0
-	var/obj/item/gun/projectile/launcher/grenade/underslung/launcher
+	var/obj/item/gun/launcher/grenade/underslung/launcher
 
 /obj/item/gun/projectile/ballistic/automatic/z8/Initialize(mapload)
 	. = ..()

@@ -475,7 +475,7 @@
 
 	corpse = /obj/spawner/corpse/pirate/captain
 
-	loot_list = list(/obj/item/gun/projectile/energy/zip = 100, /obj/item/gun/energy/zip = 100, /obj/item/gun/energy/zip = 100, /obj/item/gun/energy/zip = 100) //Belt of pistols
+	loot_list = list(/obj/item/gun/projectile/energy/zip = 100, /obj/item/gun/projectile/energy/zip = 100, /obj/item/gun/projectile/energy/zip = 100, /obj/item/gun/projectile/energy/zip = 100) //Belt of pistols
 
 	var/obj/item/shield_projector/shields = null
 
@@ -765,7 +765,7 @@
 
 	//corpse = /obj/spawner/corpse/pirate/ranged
 
-	loot_list = list(/obj/item/gun/projectile/energy/zip = 100, /obj/item/gun/energy/zip = 100, /obj/item/gun/energy/zip = 100, /obj/item/gun/energy/zip = 100) //Belt of pistols
+	loot_list = list(/obj/item/gun/projectile/energy/zip = 100, /obj/item/gun/projectile/energy/zip = 100, /obj/item/gun/projectile/energy/zip = 100, /obj/item/gun/projectile/energy/zip = 100) //Belt of pistols
 
 	var/obj/item/shield_projector/shields = null
 

@@ -687,7 +687,7 @@ var/global/list/all_objectives = list()
 			target_amount = 6
 			loot = "six guns"
 		if(6)
-			target = /obj/item/gun/energy
+			target = /obj/item/gun/projectile/energy
 			target_amount = 4
 			loot = "four energy guns"
 		if(7)
