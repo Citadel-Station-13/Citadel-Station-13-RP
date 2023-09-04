@@ -121,7 +121,7 @@
 
 //Ice picksaxe. This is a tool used to hack at the ice on the airlocks and climb cliffs
 /obj/item/pickaxe/icepick
-	name = "icepick"
+	name = "ice axe"
 	desc = "A sharp tool for climbers and hikers to break up ice and keep themselves from slipping on a steep slope."
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	slot_flags = SLOT_BELT
@@ -133,7 +133,7 @@
 	materials = list(MAT_STEEL = 2750)
 	digspeed = 120 //very slow
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	attack_verb = list("mined", "pierced", "stabbed", "attacked")
+	attack_verb = list("pierced", "slashed", "attacked")
 	drill_verb = "hacking at"
 	sharp = TRUE
 	drop_sound = 'sound/items/drop/axe.ogg'
@@ -141,7 +141,7 @@
 
 //Better ice pickaxe
 /obj/item/pickaxe/icepick/plasteel //Can't be sharpened.
-	name = "plasteel ice pickaxe"
+	name = "ice pickaxe"
 	desc = "A sharp plasteel reinforced tool for climbers and hikers to break up ice and keep themselves from slipping on a steep slope."
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	slot_flags = SLOT_BELT
@@ -153,7 +153,7 @@
 	materials = list(MAT_STEEL = 2750, MAT_PLASTEEL = 2000)
 	digspeed = 25 //Not too expensive or to fast, but way more compact
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 1)
-	attack_verb = list("mined", "pierced", "stabbed", "attacked")
+	attack_verb = list("pierced", "slashed", "attacked")
 	drill_verb = "hacking at"
 	sharp = TRUE
 	edge = TRUE
