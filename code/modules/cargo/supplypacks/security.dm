@@ -441,7 +441,7 @@
 			/obj/item/clothing/accessory/storage/black_vest,
 			/obj/item/clothing/head/soft/sec/corp,
 			/obj/item/clothing/under/rank/security/corp,
-			/obj/item/gun/energy/taser,
+			/obj/item/gun/projectile/energy/taser,
 			/obj/item/flashlight/maglight
 			)
 	cost = 20
@@ -661,7 +661,7 @@
 /datum/supply_pack/security/battlerifle
 	name = "Battle Rifle Pack"
 	contains = list(
-			/obj/item/gun/ballistic/automatic/battlerifle = 2,
+			/obj/item/gun/projectile/ballistic/automatic/battlerifle = 2,
 			/obj/item/ammo_magazine/m95 = 4
 			)
 	cost = 60
@@ -671,7 +671,7 @@
 /datum/supply_pack/security/quadshot
 	name = "Quad Shotgun Pack"
 	contains = list(
-			/obj/item/gun/ballistic/shotgun/doublebarrel/quad = 2,
+			/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/quad = 2,
 			/obj/item/storage/box/shotgunshells = 2,
 			/obj/item/storage/belt/security/tactical/bandolier = 2,
 			)

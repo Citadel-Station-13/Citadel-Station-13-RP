@@ -86,13 +86,13 @@
 	var/no_pin_required = 0
 	var/scrambled = 0
 
-/obj/item/gun/CtrlClick(mob/user)
+/obj/item/gun/projectile/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
 		toggle_flashlight()
 	else
 		return ..()
 
-/obj/item/gun/proc/toggle_flashlight()
+/obj/item/gun/projectile/proc/toggle_flashlight()
 	if(gun_light)
 		set_light(0)
 		gun_light = FALSE
@@ -114,9 +114,9 @@
 	if(dna_lock)
 		attached_lock = new /obj/item/dnalockingchip(src)
 	if(!dna_lock)
-		remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
-		remove_obj_verb(src, /obj/item/gun/verb/give_dna)
-		remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
+		remove_obj_verb(src, /obj/item/gun/projectile/verb/remove_dna)
+		remove_obj_verb(src, /obj/item/gun/projectile/verb/give_dna)
+		remove_obj_verb(src, /obj/item/gun/projectile/verb/allow_dna)
 
 	if(pin)
 		pin = new pin(src)
@@ -151,7 +151,7 @@
 //Checks whether a given mob can use the gun
 //Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.
 //Otherwise, if you want handle_click_empty() to be called, check in consume_next_projectile() and return null there.
-/obj/item/gun/proc/special_check(var/mob/user)
+/obj/item/gun/projectile/proc/special_check(var/mob/user)
 
 	if(!istype(user, /mob/living))
 		return 0
@@ -203,15 +203,15 @@
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
-/obj/item/gun/dropped(mob/user, flags, atom/newLoc)
+/obj/item/gun/projectile/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	update_appearance()
 
-/obj/item/gun/equipped(mob/user, slot, flags)
+/obj/item/gun/projectile/equipped(mob/user, slot, flags)
 	. = ..()
 	update_appearance()
 
-/obj/item/gun/afterattack(atom/target, mob/living/user, clickchain_flags, list/params)
+/obj/item/gun/projectile/afterattack(atom/target, mob/living/user, clickchain_flags, list/params)
 	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		return
 	if(!istype(user))
@@ -228,7 +228,7 @@
 		Fire(target, user, shitty_legacy_params) //Otherwise, fire normally.
 		return
 
-/obj/item/gun/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/gun/projectile/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/A = target
 	if(!istype(A))
 		return ..()
@@ -245,7 +245,7 @@
 			return
 	return ..() //Pistolwhippin'
 
-/obj/item/gun/attackby(obj/item/A, mob/user)
+/obj/item/gun/projectile/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/dnalockingchip))
 		if(dna_lock)
 			to_chat(user, "<span class='notice'>\The [src] already has a [attached_lock].</span>")
@@ -255,9 +255,9 @@
 		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
 		attached_lock = A
 		dna_lock = 1
-		add_obj_verb(src, /obj/item/gun/verb/remove_dna)
-		add_obj_verb(src, /obj/item/gun/verb/give_dna)
-		add_obj_verb(src, /obj/item/gun/verb/allow_dna)
+		add_obj_verb(src, /obj/item/gun/projectile/verb/remove_dna)
+		add_obj_verb(src, /obj/item/gun/projectile/verb/give_dna)
+		add_obj_verb(src, /obj/item/gun/projectile/verb/allow_dna)
 		return
 
 	if(A.is_screwdriver())
@@ -269,9 +269,9 @@
 				user.put_in_hands(attached_lock)
 				dna_lock = 0
 				attached_lock = null
-				remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
-				remove_obj_verb(src, /obj/item/gun/verb/give_dna)
-				remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
+				remove_obj_verb(src, /obj/item/gun/projectile/verb/remove_dna)
+				remove_obj_verb(src, /obj/item/gun/projectile/verb/give_dna)
+				remove_obj_verb(src, /obj/item/gun/projectile/verb/allow_dna)
 		else
 			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
 
@@ -320,7 +320,7 @@
 
 	..()
 
-/obj/item/gun/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/gun/projectile/emag_act(var/remaining_charges, var/mob/user)
 	if(dna_lock && attached_lock.controller_lock)
 		to_chat(user, "<span class='notice'>You short circuit the internal locking mechanisms of \the [src]!</span>")
 		attached_lock.controller_dna = null
@@ -330,7 +330,7 @@
 	if(pin)
 		pin.emag_act(remaining_charges, user)
 
-/obj/item/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
+/obj/item/gun/projectile/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	if(!user || !target) return
 	if(target.z != user.z) return
 
@@ -425,7 +425,7 @@
 			set_light(0)
 
 // Similar to the above proc, but does not require a user, which is ideal for things like turrets.
-/obj/item/gun/proc/Fire_userless(atom/target)
+/obj/item/gun/projectile/proc/Fire_userless(atom/target)
 	if(!target)
 		return
 
@@ -499,11 +499,11 @@
 		set_light(0)
 
 //obtains the next projectile to fire
-/obj/item/gun/proc/consume_next_projectile()
+/obj/item/gun/projectile/proc/consume_next_projectile()
 	return null
 
 //used by aiming code
-/obj/item/gun/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
+/obj/item/gun/projectile/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
 	if(!special_check(user))
 		return 2
 	//just assume we can shoot through glass and stuff. No big deal, the player can just choose to not target someone
@@ -512,18 +512,18 @@
 		return 1 // Magic numbers are fun.
 
 //called if there was no projectile to shoot
-/obj/item/gun/proc/handle_click_empty(mob/user)
+/obj/item/gun/projectile/proc/handle_click_empty(mob/user)
 	if (user)
 		user.visible_message("*click click*", "<span class='danger'>*click*</span>")
 	else
 		visible_message("*click click*")
 	playsound(src, 'sound/weapons/empty.ogg', 100, 1)
 
-/obj/item/gun/proc/handle_click_safety(mob/user)
+/obj/item/gun/projectile/proc/handle_click_safety(mob/user)
 	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
 
 //called after successfully firing
-/obj/item/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
+/obj/item/gun/projectile/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
 	if(fire_anim)
 		flick(fire_anim, src)
 
@@ -575,7 +575,7 @@
 			shake_camera(user, recoil+1, recoil)
 	update_icon()
 
-/obj/item/gun/proc/process_point_blank(obj/projectile, mob/user, atom/target)
+/obj/item/gun/projectile/proc/process_point_blank(obj/projectile, mob/user, atom/target)
 	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
@@ -596,7 +596,7 @@
 				damage_mult = 1.5
 	P.damage *= damage_mult
 
-/obj/item/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
+/obj/item/gun/projectile/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
 	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
@@ -630,7 +630,7 @@
 			P.dispersion = max(P.dispersion + M.accuracy_dispersion, 0)
 
 //does the actual launching of the projectile
-/obj/item/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
+/obj/item/gun/projectile/proc/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
 	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return FALSE //default behaviour only applies to true projectiles
@@ -652,7 +652,7 @@
 
 	return launched
 
-/obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
+/obj/item/gun/projectile/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
 	var/shot_sound = fire_sound
 
 	if(!shot_sound && istype(P) && P.fire_sound) // If the gun didn't have a fire_sound, but the projectile exists, and has a sound...
@@ -666,9 +666,9 @@
 		playsound(user, shot_sound, 50, 1)
 
 //Suicide handling.
-/obj/item/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
+/obj/item/gun/projectile/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
 
-/obj/item/gun/proc/handle_suicide(mob/living/user)
+/obj/item/gun/projectile/proc/handle_suicide(mob/living/user)
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/M = user
@@ -704,7 +704,7 @@
 		mouthshoot = 0
 		return
 
-/obj/item/gun/proc/toggle_scope(var/zoom_amount=2.0)
+/obj/item/gun/projectile/proc/toggle_scope(var/zoom_amount=2.0)
 	//looking through a scope limits your periphereal vision
 	//still, increase the view size by a tiny amount so that sniping isn't too restricted to NSEW
 	var/zoom_offset = round(world.view * zoom_amount)
@@ -718,13 +718,13 @@
 			recoil = round(recoil*zoom_amount+1) //recoil is worse when looking through a scope
 
 //make sure accuracy and recoil are reset regardless of how the item is unzoomed.
-/obj/item/gun/zoom(tileoffset = 14, viewsize = 9, mob/user = usr)
+/obj/item/gun/projectile/zoom(tileoffset = 14, viewsize = 9, mob/user = usr)
 	..()
 	if(!zoom)
 		accuracy = initial(accuracy)
 		recoil = initial(recoil)
 
-/obj/item/gun/examine(mob/user, dist)
+/obj/item/gun/projectile/examine(mob/user, dist)
 	. = ..()
 	if(!no_pin_required)
 		if(pin)
@@ -737,7 +737,7 @@
 	if(safety_state != GUN_NO_SAFETY)
 		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
 
-/obj/item/gun/proc/switch_firemodes(mob/user)
+/obj/item/gun/projectile/proc/switch_firemodes(mob/user)
 	if(firemodes.len <= 1)
 		return null
 
@@ -750,13 +750,13 @@
 	playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
-/obj/item/gun/attack_self(mob/user)
+/obj/item/gun/projectile/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
 	switch_firemodes(user)
 
-/obj/item/gun/proc/handle_pins(mob/living/user)
+/obj/item/gun/projectile/proc/handle_pins(mob/living/user)
 	if(no_pin_required)
 		return TRUE
 	if(pin)
@@ -775,7 +775,7 @@
 		return
 	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()? "on" : "off"]")
 
-/obj/item/gun/proc/toggle_safety(mob/user)
+/obj/item/gun/projectile/proc/toggle_safety(mob/user)
 	if(user)
 		if(user.stat || user.restrained() || user.incapacitated(INCAPACITATION_DISABLED))
 			to_chat(user, SPAN_WARNING("You can't do that right now."))
@@ -799,7 +799,7 @@
 	update_appearance()
 	playsound(src, 'sound/weapons/flipblade.ogg', 10, 1)
 
-/obj/item/gun/verb/toggle_safety_verb()
+/obj/item/gun/projectile/verb/toggle_safety_verb()
 	set src in usr
 	set category = "Object"
 	set name = "Toggle Gun Safety"
@@ -807,7 +807,7 @@
 	if(usr == loc)
 		toggle_safety(usr)
 
-/obj/item/gun/AltClick(mob/user)
+/obj/item/gun/projectile/AltClick(mob/user)
 	if(loc == user)
 		toggle_safety(user)
 		return TRUE
@@ -816,5 +816,5 @@
 /**
  * returns TRUE/FALSE based on if we have safeties on
  */
-/obj/item/gun/proc/check_safety()
+/obj/item/gun/projectile/proc/check_safety()
 	return (safety_state == GUN_SAFETY_ON)

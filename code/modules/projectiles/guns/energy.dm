@@ -28,7 +28,7 @@
 
 	var/battery_lock = 0	//If set, weapon cannot switch batteries
 
-/obj/item/gun/energy/Initialize(mapload)
+/obj/item/gun/projectile/energy/Initialize(mapload)
 	. = ..()
 	if(self_recharge)
 		power_supply = new /obj/item/cell/device/weapon(src)
@@ -41,15 +41,15 @@
 
 	update_icon()
 
-/obj/item/gun/energy/Destroy()
+/obj/item/gun/projectile/energy/Destroy()
 	if(self_recharge)
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/gun/energy/get_cell()
+/obj/item/gun/projectile/energy/get_cell()
 	return power_supply
 
-/obj/item/gun/energy/process(delta_time)
+/obj/item/gun/projectile/energy/process(delta_time)
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
 		if(world.time > last_shot + charge_delay)	//Doesn't work if you've fired recently
 			if(!power_supply || power_supply.charge >= power_supply.maxcharge)
@@ -93,18 +93,18 @@
 			charge_tick = 0
 	return 1
 
-/obj/item/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/energy/attackby(var/obj/item/A as obj, mob/user as mob)
 	..()
 
-/obj/item/gun/energy/switch_firemodes(mob/user)
+/obj/item/gun/projectile/energy/switch_firemodes(mob/user)
 	if(..())
 		update_icon()
 
-/obj/item/gun/energy/emp_act(severity)
+/obj/item/gun/projectile/energy/emp_act(severity)
 	..()
 	update_icon()
 
-/obj/item/gun/energy/consume_next_projectile()
+/obj/item/gun/projectile/energy/consume_next_projectile()
 	if(!power_supply)
 		return null
 	if(!ispath(projectile_type))
@@ -113,7 +113,7 @@
 		return null
 	return new projectile_type(src)
 
-/obj/item/gun/energy/proc/load_ammo(var/obj/item/C, mob/user)
+/obj/item/gun/projectile/energy/proc/load_ammo(var/obj/item/C, mob/user)
 	if(istype(C, /obj/item/cell))
 		if(self_recharge || battery_lock)
 			to_chat(user, "<span class='notice'>[src] does not have a battery port.</span>")
@@ -136,7 +136,7 @@
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
 	return
 
-/obj/item/gun/energy/proc/unload_ammo(mob/user)
+/obj/item/gun/projectile/energy/proc/unload_ammo(mob/user)
 	if(self_recharge || battery_lock)
 		to_chat(user, "<span class='notice'>[src] does not have a battery port.</span>")
 		return
@@ -151,17 +151,17 @@
 	else
 		to_chat(user, "<span class='notice'>[src] does not have a power cell.</span>")
 
-/obj/item/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/energy/attackby(var/obj/item/A as obj, mob/user as mob)
 	..()
 	load_ammo(A, user)
 
-/obj/item/gun/energy/attack_hand(mob/user, list/params)
+/obj/item/gun/projectile/energy/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user)
 	else
 		return ..()
 
-/obj/item/gun/energy/proc/get_external_power_supply()
+/obj/item/gun/projectile/energy/proc/get_external_power_supply()
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
 		return R.cell
@@ -175,7 +175,7 @@
 					return suit.cell
 	return null
 
-/obj/item/gun/energy/examine(mob/user, dist)
+/obj/item/gun/projectile/energy/examine(mob/user, dist)
 	. = ..()
 	if(power_supply)
 		if(charge_cost)
@@ -187,7 +187,7 @@
 		. += "Does not have a power cell."
 	return
 
-/obj/item/gun/energy/update_icon(ignore_inhands)
+/obj/item/gun/projectile/energy/update_icon(ignore_inhands)
 	. = ..()
 	if(power_supply == null)
 		if(modifystate)
@@ -218,14 +218,14 @@
 	if(!ignore_inhands)
 		update_held_icon()
 
-/obj/item/gun/energy/proc/start_recharge()
+/obj/item/gun/projectile/energy/proc/start_recharge()
 	if(power_supply == null)
 		power_supply = new /obj/item/cell/device/weapon(src)
 	self_recharge = 1
 	START_PROCESSING(SSobj, src)
 	update_icon()
 
-/obj/item/gun/energy/get_description_interaction(mob/user)
+/obj/item/gun/projectile/energy/get_description_interaction(mob/user)
 	var/list/results = list()
 
 	if(!battery_lock && !self_recharge)
@@ -238,7 +238,7 @@
 
 	return results
 
-/obj/item/gun/energy/inducer_scan(obj/item/inducer/I, list/things_to_induce, inducer_flags)
+/obj/item/gun/projectile/energy/inducer_scan(obj/item/inducer/I, list/things_to_induce, inducer_flags)
 	if(inducer_flags & INDUCER_NO_GUNS)
 		return
 	return ..()

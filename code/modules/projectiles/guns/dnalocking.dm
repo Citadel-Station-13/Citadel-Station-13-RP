@@ -31,7 +31,7 @@
 		to_chat(M, "<span class='warning'>\The [src] buzzes and displays a locked symbol. It is not allowing DNA samples at this time.</span>")
 		return 0
 
-/obj/item/gun/verb/give_dna()
+/obj/item/gun/projectile/verb/give_dna()
 	set name = "Give DNA"
 	set category = "Object"
 	set src in usr
@@ -56,7 +56,7 @@
 		to_chat(M, "<span class='warning'>\The [src] buzzes and displays a locked symbol. It is not allowing DNA modifcation at this time.</span>")
 		return 0
 
-/obj/item/gun/verb/remove_dna()
+/obj/item/gun/projectile/verb/remove_dna()
 	set name = "Remove DNA"
 	set category = "Object"
 	set src in usr
@@ -74,7 +74,7 @@
 	else
 		to_chat(M, "<span class='warning'>\The [src] buzzes and displays an invalid user symbol.</span>")
 
-/obj/item/gun/verb/allow_dna()
+/obj/item/gun/projectile/verb/allow_dna()
 	set name = "Toggle DNA Samples Allowance"
 	set category = "Object"
 	set src in usr

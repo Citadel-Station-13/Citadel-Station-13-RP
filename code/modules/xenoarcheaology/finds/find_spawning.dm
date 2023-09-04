@@ -289,12 +289,12 @@
 		if(26)
 			//energy gun
 			var/spawn_type = pick(\
-			/obj/item/gun/energy/laser/practice/xenoarch,\
-			/obj/item/gun/energy/laser/xenoarch,\
-			/obj/item/gun/energy/xray/xenoarch,\
-			/obj/item/gun/energy/captain/xenoarch)
+			/obj/item/gun/projectile/energy/laser/practice/xenoarch,\
+			/obj/item/gun/projectile/energy/laser/xenoarch,\
+			/obj/item/gun/projectile/energy/xray/xenoarch,\
+			/obj/item/gun/projectile/energy/captain/xenoarch)
 			if(spawn_type)
-				var/obj/item/gun/energy/new_gun = new spawn_type(src.loc)
+				var/obj/item/gun/projectile/energy/new_gun = new spawn_type(src.loc)
 				new_item = new_gun
 				new_item.icon_state = "egun[rand(1,6)]"
 				new_gun.desc = "This is an antique energy weapon, you're not sure if it will fire or not."
@@ -316,7 +316,7 @@
 			item_type = "gun"
 		if(27)
 			//revolver
-			var/obj/item/gun/ballistic/new_gun = new /obj/item/gun/ballistic/revolver(src.loc)
+			var/obj/item/gun/projectile/ballistic/new_gun = new /obj/item/gun/ballistic/revolver(src.loc)
 			new_item = new_gun
 			new_item.icon_state = "gun[rand(1,4)]"
 			new_item.icon = 'icons/obj/xenoarchaeology.dmi'

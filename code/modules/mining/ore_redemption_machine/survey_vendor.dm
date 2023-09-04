@@ -51,7 +51,7 @@
 		new /datum/data/mining_equipment("Jump Boots",					/obj/item/clothing/shoes/bhop,								250),
 		new	/datum/data/mining_equipment("Conscript Pack",				/obj/item/storage/lockbox/russian,							250),
 		new /datum/data/mining_equipment("Extraction Equipment - Fulton Beacon",	/obj/item/fulton_core,							300),
-		new /datum/data/mining_equipment("Industrial Equipment - Phoron Bore",	/obj/item/gun/magnetic/matfed,						300),
+		new /datum/data/mining_equipment("Industrial Equipment - Phoron Bore",	/obj/item/gun/projectile/magnetic/matfed,						300),
 		new /datum/data/mining_equipment("Luxury Shelter Capsule",		/obj/item/survivalcapsule/luxury,							310),
 		new	/datum/data/mining_equipment("Colonial Recce Pack",			/obj/item/storage/lockbox/colonial,							350),
 		//uav code is cursed  new /datum/data/mining_equipment("UAV - Recon Skimmer",			/obj/item/uav,												400),

@@ -1,4 +1,4 @@
-/obj/item/gun/energy/laser
+/obj/item/gun/projectile/energy/laser
 	name = "laser rifle"
 	desc = "A Hephaestus Industries G40E rifle, designed to kill with concentrated energy blasts.  This variant has the ability to \
 	switch between standard fire and a more efficient but weaker 'suppressive' fire."
@@ -20,16 +20,16 @@
 		list(mode_name="suppressive", fire_delay=5, projectile_type=/obj/projectile/beam/weaklaser, charge_cost = 60),
 		)
 
-/obj/item/gun/energy/laser/mounted
+/obj/item/gun/projectile/energy/laser/mounted
 	self_recharge = 1
 	use_external_power = 1
 	one_handed_penalty = 0 // Not sure if two-handing gets checked for mounted weapons, but better safe than sorry.
 
-/obj/item/gun/energy/laser/mounted/augment
+/obj/item/gun/projectile/energy/laser/mounted/augment
 	use_external_power = FALSE
 	use_organic_power = TRUE
 
-/obj/item/gun/energy/laser/practice
+/obj/item/gun/projectile/energy/laser/practice
 	name = "practice laser carbine"
 	desc = "A modified version of the HI G40E, this one fires less concentrated energy bolts designed for target practice."
 	projectile_type = /obj/projectile/beam/practice
@@ -42,7 +42,7 @@
 		list(mode_name="suppressive", projectile_type=/obj/projectile/beam/practice, charge_cost = 12),
 		)
 
-/obj/item/gun/energy/retro
+/obj/item/gun/projectile/energy/retro
 	name = "retro laser"
 	icon_state = "retro"
 	item_state = "retro"
@@ -52,15 +52,15 @@
 	projectile_type = /obj/projectile/beam
 	fire_delay = 10 //old technology
 
-/obj/item/gun/energy/retro/mounted
+/obj/item/gun/projectile/energy/retro/mounted
 	self_recharge = 1
 	use_external_power = 1
 
-/obj/item/gun/energy/retro/empty
+/obj/item/gun/projectile/energy/retro/empty
 	icon_state = "retro"
 	cell_type = null
 
-/obj/item/gun/energy/retro/apidean
+/obj/item/gun/projectile/energy/retro/apidean
 	name = "apidean retro laser"
 	icon_state = "apilaser"
 	desc = "An older model of the basic lasergun. This version's casing has been painted yellow. Originating from, and carried by, Apidean combatants, it's unclear where they obtained them."
@@ -93,7 +93,7 @@
 	may have caused it to degrade, yet still remain functional at a reduced capability."
 	value = CATALOGUER_REWARD_MEDIUM
 
-/obj/item/gun/energy/alien
+/obj/item/gun/projectile/energy/alien
 	name = "alien pistol"
 	desc = "A weapon that works very similarly to a traditional energy weapon. How this came to be will likely be a mystery for the ages."
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_pistol)
@@ -108,7 +108,7 @@
 	modifystate = "alienpistol"
 
 
-/obj/item/gun/energy/captain
+/obj/item/gun/projectile/energy/captain
 	name = "antique laser gun"
 	icon_state = "caplaser"
 	item_state = "caplaser"
@@ -123,7 +123,7 @@
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
 	battery_lock = 1
 
-/obj/item/gun/energy/lasercannon
+/obj/item/gun/projectile/energy/lasercannon
 	name = "laser cannon"
 	desc = "The Hephaestus Industries G80E encloses the lasing medium within a tube lined with uranium-235 and subjected to high-neutron flux via a miniature nuclear reactor, necessitating brief periods between shots for the components to cool down. In layman's terms, big laser gets hot."
 	icon_state = "lasercannon"
@@ -139,7 +139,7 @@
 	accuracy = 75
 	charge_cost = 600
 
-/obj/item/gun/energy/lasercannon/mounted
+/obj/item/gun/projectile/energy/lasercannon/mounted
 	name = "mounted laser cannon"
 	self_recharge = 1
 	use_external_power = 1
@@ -150,7 +150,7 @@
 	charge_cost = 400
 	fire_delay = 20
 
-/obj/item/gun/energy/xray
+/obj/item/gun/projectile/energy/xray
 	name = "xray laser gun"
 	desc = "A high-power laser gun, the experimental NT-XRD fire concentrated x-ray blasts, capable of penetrating armor far better than standard photonic lasers. A potent 'anti-armor' weapon."
 	icon_state = "xray"
@@ -160,7 +160,7 @@
 	projectile_type = /obj/projectile/beam/xray
 	charge_cost = 200
 
-/obj/item/gun/energy/sniperrifle
+/obj/item/gun/projectile/energy/sniperrifle
 	name = "marksman energy rifle"
 	desc = "The HI DMR 9E is an older design of Hephaestus Industries. A designated marksman rifle capable of shooting powerful \
 	ionized beams, this is a weapon to kill from a distance."
@@ -180,7 +180,7 @@
 //	requires_two_hands = 1
 	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
 
-/obj/item/gun/energy/sniperrifle/verb/scope()
+/obj/item/gun/projectile/energy/sniperrifle/verb/scope()
 	set category = "Object"
 	set name = "Use Scope"
 	set popup_menu = 1
@@ -188,7 +188,7 @@
 
 	toggle_scope(2.0)
 
-/obj/item/gun/energy/sniperrifle/locked
+/obj/item/gun/projectile/energy/sniperrifle/locked
 	name = "expedition marksman energy rifle"
 	desc = "A modified version of the HI DMR 9E with a replacement firing pin and reduced shot capacity in exchange for a self recharging cell."
 	pin = /obj/item/firing_pin/explorer
@@ -198,7 +198,7 @@
 	scoped_accuracy = 100
 	charge_cost = 600
 
-/obj/item/gun/energy/monorifle
+/obj/item/gun/projectile/energy/monorifle
 	name = "antique mono-rifle"
 	desc = "An old laser rifle. This one can only fire once before requiring recharging."
 	description_fluff = "Modeled after ancient hunting rifles, this rifle was dubbed the 'Rainy Day Special' by some, due to its use as some barmens' fight-stopper of choice. One shot is all it takes, or so they say."
@@ -216,7 +216,7 @@
 	scoped_accuracy = 95
 	var/scope_multiplier = 1.5
 
-/obj/item/gun/energy/monorifle/verb/sights()
+/obj/item/gun/projectile/energy/monorifle/verb/sights()
 	set category = "Object"
 	set name = "Aim Down Sights"
 	set popup_menu = 1
@@ -224,7 +224,7 @@
 
 	toggle_scope(scope_multiplier)
 
-/obj/item/gun/energy/monorifle/combat
+/obj/item/gun/projectile/energy/monorifle/combat
 	name = "combat mono-rifle"
 	desc = "A modernized version of the mono-rifle. This one can fire twice before requiring recharging."
 	description_fluff = "A modern design produced by a company once working from Saint Columbia, based on the antique mono-rifle 'Rainy Day Special' design."
@@ -237,7 +237,7 @@
 
 ////////Laser Tag////////////////////
 
-/obj/item/gun/energy/lasertag
+/obj/item/gun/projectile/energy/lasertag
 	name = "laser tag gun"
 	item_state = "laser"
 	desc = "Based off an ancient model of laser gun, the NT-Tagger will make you the terror of the next workplace lasertag tournament."
@@ -247,24 +247,24 @@
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
 
-/obj/item/gun/energy/lasertag/blue
+/obj/item/gun/projectile/energy/lasertag/blue
 	icon_state = "bluetag"
 	item_state = "bluetag"
 	projectile_type = /obj/projectile/beam/lasertag/blue
 	pin = /obj/item/firing_pin/tag/blue
 
-/obj/item/gun/energy/lasertag/red
+/obj/item/gun/projectile/energy/lasertag/red
 	icon_state = "redtag"
 	item_state = "redtag"
 	projectile_type = /obj/projectile/beam/lasertag/red
 	pin = /obj/item/firing_pin/tag/red
 
-/obj/item/gun/energy/lasertag/omni
+/obj/item/gun/projectile/energy/lasertag/omni
 	projectile_type = /obj/projectile/beam/lasertag/omni
 
 // Laser scattergun, proof of concept.
 
-/obj/item/gun/energy/lasershotgun
+/obj/item/gun/projectile/energy/lasershotgun
 	name = "laser scattergun"
 	item_state = "laser"
 	icon_state = "scatter"
@@ -275,7 +275,7 @@
 
 // Other laser guns.
 
-/obj/item/gun/energy/tommylaser
+/obj/item/gun/projectile/energy/tommylaser
 	name = "M-2421 'Tommy-Laser'"
 	desc = "A automatic laser weapon resembling a Tommy-Gun. Designed by Cybersun Industries to be a man portable supressive fire laser weapon."
 	icon_state = "tommylas"
@@ -294,7 +294,7 @@
 		list(mode_name="short bursts",	burst=5, fire_delay=10 ,move_delay=6, burst_accuracy = list(65,65,65,65,65), dispersion = list(4,4,4,4,4)),
 		)
 
-/obj/item/gun/energy/zip
+/obj/item/gun/projectile/energy/zip
 	name = "Zip-Las"
 	desc = "A homemade (and somehow safe) laser gun designed around shooting single powerful laser beam draining the cell entirely. Better not miss and better have spare cells."
 	icon_state = "ziplas"
@@ -306,7 +306,7 @@
 	cell_type = /obj/item/cell/device/weapon
 
 //NT SpecOps Laser Rifle
-/obj/item/gun/energy/combat
+/obj/item/gun/projectile/energy/combat
 	name = "NT-LR-4 laser rifle"
 	desc = "A sturdy laser rifle fine tuned for NanoTrasen special operations. More reliable than mass production models, this weapon was designed to kill, and nothing else."
 	icon_state = "clrifle"

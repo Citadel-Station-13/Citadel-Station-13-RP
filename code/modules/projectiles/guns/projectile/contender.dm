@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/contender
+/obj/item/gun/projectile/ballistic/contender
 	name = "Thompson Contender"
 	desc = "A perfect, pristine replica of an ancient one-shot hand-cannon. For when you really want to make a hole. This one has been modified to work almost like a bolt-action."
 	icon_state = "pockrifle"
@@ -13,7 +13,7 @@
 	load_method = SINGLE_CASING
 	heavy = TRUE
 
-/obj/item/gun/ballistic/contender/attack_self(mob/user)
+/obj/item/gun/projectile/ballistic/contender/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
@@ -35,34 +35,34 @@
 	icon_state = initial(icon_state)
 	retracted_bolt = 0
 
-/obj/item/gun/ballistic/contender/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/projectile/ballistic/contender/load_ammo(var/obj/item/A, mob/user)
 	if(!retracted_bolt)
 		to_chat(user, "<span class='notice'>You can't load [src] without cycling the bolt.</span>")
 		return
 	..()
 
-/obj/item/gun/ballistic/contender/a44
+/obj/item/gun/projectile/ballistic/contender/a44
 	caliber = ".44"
 	ammo_type = /obj/item/ammo_casing/a44
 
-/obj/item/gun/ballistic/contender/a762
+/obj/item/gun/projectile/ballistic/contender/a762
 	caliber = "7.62mm"
 	ammo_type = /obj/item/ammo_casing/a762
 
-/obj/item/gun/ballistic/contender/tacticool
+/obj/item/gun/projectile/ballistic/contender/tacticool
 	desc = "A modified replica of an ancient one-shot hand-cannon, reinvented with a tactical look. For when you really want to make a hole. This one has been modified to work almost like a bolt-action."
 	icon_state = "pockrifle_b"
 	icon_retracted = "pockrifle_b-empty"
 
-/obj/item/gun/ballistic/contender/tacticool/a44
+/obj/item/gun/projectile/ballistic/contender/tacticool/a44
 	caliber = ".44"
 	ammo_type = /obj/item/ammo_casing/a44
 
-/obj/item/gun/ballistic/contender/tacticool/a762
+/obj/item/gun/projectile/ballistic/contender/tacticool/a762
 	caliber = "7.62mm"
 	ammo_type = /obj/item/ammo_casing/a762
 
-/obj/item/gun/ballistic/contender/holy
+/obj/item/gun/projectile/ballistic/contender/holy
 	name = "Divine Challenger"
 	desc = "A beautifully engraved pocket rifle with a silvered barrel made of incense wood.Sometimes one good hit is all you need to vanquish a great evil and these handcannons will deliver that one shot."
 	icon_state = "pockrifle_c"
@@ -71,29 +71,29 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_OCCULT = 1)
 	holy = TRUE
 
-/obj/item/gun/ballistic/contender/holy/a44
+/obj/item/gun/projectile/ballistic/contender/holy/a44
 	caliber = ".44"
 	ammo_type = /obj/item/ammo_casing/a44/silver
 
-/obj/item/gun/ballistic/contender/holy/a762
+/obj/item/gun/projectile/ballistic/contender/holy/a762
 	caliber = "7.62mm"
 	ammo_type = /obj/item/ammo_casing/a762/silver
 
-/obj/item/gun/ballistic/contender/taj
+/obj/item/gun/projectile/ballistic/contender/taj
 	name = "Adhomai pocket rifle"
 	desc = "A hand cannon produced by Akhan and Khan. Its simple design dates back to the civil war where hand cannons like it were rushed into service to counter the massive arms shortage the Kingdom of Adhomai faced at the start of the war. Since then A&K have refined the design into a mainstay backup weapon of solider and civilian alike."
 	icon_state = "pockrifle_d"
 	icon_retracted = "pockrifle_d-empty"
 
-/obj/item/gun/ballistic/contender/taj/a44
+/obj/item/gun/projectile/ballistic/contender/taj/a44
 	caliber = ".44"
 	ammo_type = /obj/item/ammo_casing/a44
 
-/obj/item/gun/ballistic/contender/taj/a762
+/obj/item/gun/projectile/ballistic/contender/taj/a762
 	caliber = "7.62mm"
 	ammo_type = /obj/item/ammo_casing/a762
 
-/obj/item/gun/ballistic/contender/pipegun
+/obj/item/gun/projectile/ballistic/contender/pipegun
 	name = "improvised pipe rifle"
 	desc = "A single shot, handmade pipe rifle. It almost functions like a bolt action. Accepts shotgun shells."
 	icon_state = "pipegun"
@@ -105,7 +105,7 @@
 	var/unstable = 1
 	var/jammed
 
-/obj/item/gun/ballistic/contender/pipegun/consume_next_projectile(mob/user as mob)
+/obj/item/gun/projectile/ballistic/contender/pipegun/consume_next_projectile(mob/user as mob)
 	. = ..()
 	if(.)
 		if(unstable)

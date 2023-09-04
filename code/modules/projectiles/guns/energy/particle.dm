@@ -1,4 +1,4 @@
-/obj/item/gun/energy/particle //base gun, similar stats to an egun
+/obj/item/gun/projectile/energy/particle //base gun, similar stats to an egun
 	name = "Anti-particle projector pistol"
 	icon_state = "ppistol"
 	item_state = "ppistol_item"
@@ -24,7 +24,7 @@
 	var/obj/item/pressurelock/attached_safety
 
 
-/obj/item/gun/energy/particle/advanced //particle equivalent of AEG
+/obj/item/gun/projectile/energy/particle/advanced //particle equivalent of AEG
 	name = "Advanced anti-particle rifle"
 	icon_state = "particle"
 	item_state = "particle_item"
@@ -42,7 +42,7 @@
 	charge_delay = 10 //Starts recharging faster after firing than an AEG though.
 	one_handed_penalty = 15
 
-/obj/item/gun/energy/particle/cannon //particle version of laser cannon
+/obj/item/gun/projectile/energy/particle/cannon //particle version of laser cannon
 	name = "Anti-particle cannon"
 	desc = "A Kawashima Material Technology Model 9 anti-particle projector. The heaviest weapon on-offer from KMT, and a miner's best friend in the void, this massive antimatter weapon is powered by an internal reactor for increased longevity in the field."
 	icon_state = "heavyparticle"
@@ -65,7 +65,7 @@
 
 //special behaviours for particle guns below
 
-/obj/item/gun/energy/particle/special_check(var/mob/user)
+/obj/item/gun/projectile/energy/particle/special_check(var/mob/user)
 	if (..())
 		var/turf/T = get_turf(src)
 		var/datum/gas_mixture/environment = T ? T.return_air() : null
@@ -87,7 +87,7 @@
 		return 1
 	return 0
 
-/obj/item/gun/energy/particle/proc/pressuremalfunction(severity, var/mob/user, var/turf/T)
+/obj/item/gun/projectile/energy/particle/proc/pressuremalfunction(severity, var/mob/user, var/turf/T)
 	if (severity <= 10) // just doesn't fire. 10% chance in 100 atmo.
 		user.visible_message("<span class='warning'>*click*</span>", "<span class='danger'>\The [src] jams.</span>")
 		playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
@@ -129,11 +129,11 @@
 		explosion(T, -1, 1, 2, 2)
 		qdel(src)
 
-/obj/item/gun/energy/particle/cannon/pressuremalfunction(severity, user, T)
+/obj/item/gun/projectile/energy/particle/cannon/pressuremalfunction(severity, user, T)
 	..(severity*2, user, T)
 
 
-/obj/item/gun/energy/particle/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/energy/particle/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/pressurelock))
 		if(safetycatch)
 			to_chat(user, "<span class='notice'>\The [src] already has a [attached_safety].</span>")

@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/bow
+/obj/item/gun/projectile/ballistic/bow
 	name = "wooden bow"
 	desc = "Some sort of primitive projectile weapon. Used to fire arrows."
 	icon_state = "bow"
@@ -15,7 +15,7 @@
 	safety_state = GUN_SAFETY_OFF
 	var/ready = 0
 
-/obj/item/gun/ballistic/bow/unload_ammo(mob/user, var/allow_dump =0)
+/obj/item/gun/projectile/ballistic/bow/unload_ammo(mob/user, var/allow_dump =0)
 	var/obj/item/ammo_casing/C = loaded[loaded.len]
 	loaded.len--
 	user.put_in_hands(C)
@@ -24,7 +24,7 @@
 	playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 	update_icon()
 
-/obj/item/gun/ballistic/bow/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/projectile/ballistic/bow/load_ammo(var/obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = A
 		if(!(load_method & SINGLE_CASING) || caliber != C.caliber)
@@ -41,7 +41,7 @@
 		return
 	update_icon()
 
-/obj/item/gun/ballistic/bow/attack_self(mob/user)
+/obj/item/gun/projectile/ballistic/bow/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
@@ -54,22 +54,22 @@
 	else
 		return
 
-/obj/item/gun/ballistic/bow/attack_hand(mob/user, list/params)
+/obj/item/gun/projectile/ballistic/bow/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)
 	else
 		return ..()
 
-/obj/item/gun/ballistic/bow/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/ballistic/bow/attackby(var/obj/item/A as obj, mob/user as mob)
 	if (istype(A, /obj/item/ammo_casing/arrow))
 		load_ammo(A, user)
 
-/obj/item/gun/ballistic/bow/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/gun/projectile/ballistic/bow/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 	src.ready = 0
 	update_icon()
 
-/obj/item/gun/ballistic/bow/update_icon_state()
+/obj/item/gun/projectile/ballistic/bow/update_icon_state()
 	. = ..()
 	if(ready)
 		icon_state = "[initial(icon_state)]_firing"
@@ -78,14 +78,14 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/gun/ballistic/bow/ashen
+/obj/item/gun/projectile/ballistic/bow/ashen
 	name = "bone bow"
 	desc = "Some sort of primitive projectile weapon made of bone and sinew. Used to fire arrows."
 	icon_state = "bow_ashen"
 	item_state = "bow_ashen"
 	damage_force = 8
 
-/obj/item/gun/ballistic/bow/pipe
+/obj/item/gun/projectile/ballistic/bow/pipe
 	name = "pipe bow"
 	desc = "Some sort of pipe-based projectile weapon made of string and lots of bending. Used to fire arrows."
 	icon_state = "bow_pipe"

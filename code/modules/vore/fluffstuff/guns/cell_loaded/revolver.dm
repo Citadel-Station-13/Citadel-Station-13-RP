@@ -1,5 +1,5 @@
 // The Gun //
-/obj/item/gun/ballistic/cell_loaded/combat
+/obj/item/gun/projectile/ballistic/cell_loaded/combat
 	name = "cell-loaded revolver"
 	desc = "Variety is the spice of life! The NT-102b 'Hydra' is an unholy hybrid of an ammo-driven  \
 	energy weapon that allows the user to mix and match their own fire modes. Up to four combinations of \
@@ -9,7 +9,7 @@
 	description_fluff = "The Nanotrasen 'Nanotech Selectable Fire Weapon' allows one to customize their loadout in the field, or before deploying, to achieve various results in a weapon they are already familiar with wielding."
 	allowed_magazines = list(/obj/item/ammo_magazine/cell_mag/combat)
 
-/obj/item/gun/ballistic/cell_loaded/combat/prototype
+/obj/item/gun/projectile/ballistic/cell_loaded/combat/prototype
 	name = "prototype cell-loaded revolver"
 	desc = "Variety is the spice of life! A prototype based on NT-102b 'Hydra' for short, is an unholy hybrid of an ammo-driven  \
 	energy weapon that allows the user to mix and match their own fire modes. Up to two combinations of \
@@ -50,7 +50,7 @@
 	max_w_class = ITEMSIZE_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack/PopulateContents()
-	new /obj/item/gun/ballistic/cell_loaded/combat(src)
+	new /obj/item/gun/projectile/ballistic/cell_loaded/combat(src)
 	new /obj/item/ammo_magazine/cell_mag/combat(src)
 	for(var/path in subtypesof(/obj/item/ammo_casing/microbattery/combat))
 		new path(src)
@@ -62,7 +62,7 @@
 	max_w_class = ITEMSIZE_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hos/PopulateContents()
-	new /obj/item/gun/ballistic/cell_loaded/combat(src)
+	new /obj/item/gun/projectile/ballistic/cell_loaded/combat(src)
 	new /obj/item/ammo_magazine/cell_mag/combat(src)
 	new /obj/item/ammo_casing/microbattery/combat/lethal(src)
 	new /obj/item/ammo_casing/microbattery/combat/lethal(src)

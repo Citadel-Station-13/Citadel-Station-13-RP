@@ -3,7 +3,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		/obj/item/toy/blink								= 2,
 		/obj/item/clothing/under/syndicate/tacticool	= 2,
 		/obj/item/toy/sword								= 2,
-		/obj/item/gun/ballistic/revolver/capgun		= 2,
+		/obj/item/gun/projectile/ballistic/revolver/capgun		= 2,
 		/obj/item/toy/crossbow							= 2,
 		/obj/item/clothing/suit/syndicatefake			= 2,
 		/obj/item/storage/fancy/crayons					= 2,
@@ -58,7 +58,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	for(var/i = 0, i < prizes, i++)
 		//SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "arcade", /datum/mood_event/arcade)
 		// if(prob(0.0001)) //1 in a million
-		// 	new /obj/item/gun/energy/pulse/prize(src)
+		// 	new /obj/item/gun/projectile/energy/pulse/prize(src)
 		// 	visible_message(
 		// 		SPAN_NOTICE("[src] dispenses.. woah, a gun! Way past cool."),
 		// 		SPAN_NOTICE("You hear a chime and a shot."))

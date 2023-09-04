@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/colt
+/obj/item/gun/projectile/ballistic/colt
 	var/unique_reskin
 	name = ".45 pistol"
 	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 rounds."
@@ -10,7 +10,7 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
 
-/obj/item/gun/ballistic/colt/update_icon_state()
+/obj/item/gun/projectile/ballistic/colt/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		if(unique_reskin)
@@ -23,11 +23,11 @@
 		else
 			icon_state = "[initial(icon_state)]-e"
 
-/obj/item/gun/ballistic/colt/detective
+/obj/item/gun/projectile/ballistic/colt/detective
 	desc = "A Martian recreation of an old pistol. Uses .45 rounds."
 	magazine_type = /obj/item/ammo_magazine/m45/rubber
 
-/obj/item/gun/ballistic/colt/detective/verb/rename_gun()
+/obj/item/gun/projectile/ballistic/colt/detective/verb/rename_gun()
 	set name = "Name Gun"
 	set category = "Object"
 	set desc = "Rename your gun. If you're Security."
@@ -46,7 +46,7 @@
 		to_chat(M, "You name the gun [input]. Say hello to your new friend.")
 		return 1
 
-/obj/item/gun/ballistic/colt/detective/verb/reskin_gun()
+/obj/item/gun/projectile/ballistic/colt/detective/verb/reskin_gun()
 	set name = "Resprite gun"
 	set category = "Object"
 	set desc = "Click to choose a sprite for your gun."
@@ -68,20 +68,20 @@
 		to_chat(M, "Your gun is now sprited as [choice]. Say hello to your new friend.")
 		return 1
 
-/obj/item/gun/ballistic/colt/taj
+/obj/item/gun/projectile/ballistic/colt/taj
 	name = "Adhomai Pistol"
 	desc = "The Adar'Mazy pistol, produced by the Hadii-Wrack group. This pistol is the primary sidearm for low ranking officers and officals in the People's Republic of Adhomai."
 	icon_state = "colt-taj"
 
 /*//apart of reskins that have two sprites, touching may result in frustration and breaks
-/obj/item/gun/ballistic/colt/detective/attack_hand(mob/user, list/params)
+/obj/item/gun/projectile/ballistic/colt/detective/attack_hand(mob/user, list/params)
 	if(!unique_reskin && loc == user)
 		reskin_gun(user)
 		return
 	..()
 */
 
-/obj/item/gun/ballistic/sec
+/obj/item/gun/projectile/ballistic/sec
 	name = ".45 pistol"
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
 	icon_state = "secguncomp"
@@ -92,30 +92,30 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
 
-/obj/item/gun/ballistic/sec/update_icon_state()
+/obj/item/gun/projectile/ballistic/sec/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "secguncomp"
 	else
 		icon_state = "secguncomp-e"
 
-/obj/item/gun/ballistic/sec/flash
+/obj/item/gun/projectile/ballistic/sec/flash
 	name = ".45 signal pistol"
 	magazine_type = /obj/item/ammo_magazine/m45/flash
 
-/obj/item/gun/ballistic/sec/wood
+/obj/item/gun/projectile/ballistic/sec/wood
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. This one has a sweet wooden grip and only accepts .45 rubber or flash magazines."
 	name = "custom .45 pistol"
 	icon_state = "secgundark"
 
-/obj/item/gun/ballistic/sec/wood/update_icon_state()
+/obj/item/gun/projectile/ballistic/sec/wood/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "secgundark"
 	else
 		icon_state = "secgundark-e"
 
-/obj/item/gun/ballistic/silenced
+/obj/item/gun/projectile/ballistic/silenced
 	name = "silenced pistol"
 	desc = "A small, quiet,  easily concealable gun. Uses .45 rounds."
 	icon_state = "silenced_pistol"
@@ -130,7 +130,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m45)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 
-/obj/item/gun/ballistic/deagle
+/obj/item/gun/projectile/ballistic/deagle
 	name = "desert eagle"
 	desc = "The perfect handgun for shooters with a need to hit targets through a wall and behind a fridge in your neighbor's house. Uses .44 rounds."
 	icon_state = "deagle"
@@ -142,29 +142,29 @@
 	magazine_type = /obj/item/ammo_magazine/m44
 	allowed_magazines = list(/obj/item/ammo_magazine/m44)
 
-/obj/item/gun/ballistic/deagle/update_icon_state()
+/obj/item/gun/projectile/ballistic/deagle/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
 		icon_state = "[initial(icon_state)]-e"
 
-/obj/item/gun/ballistic/deagle/gold
+/obj/item/gun/projectile/ballistic/deagle/gold
 	desc = "A gold plated gun folded over a million times by superior martian gunsmiths. Uses .44 rounds."
 	icon_state = "deagleg"
 	item_state = "deagleg"
 
-/obj/item/gun/ballistic/deagle/camo
+/obj/item/gun/projectile/ballistic/deagle/camo
 	desc = "A Deagle brand Deagle for operators operating operationally. Uses .44 rounds."
 	icon_state = "deaglecamo"
 	item_state = "deagleg"
 
-/obj/item/gun/ballistic/deagle/taj
+/obj/item/gun/projectile/ballistic/deagle/taj
 	name = "Adhomai Hand Cannon"
 	desc = "The Nal'dor heavy pistol, a powerful Hadii-Wrack group handcannon that has gained an infamous reputation through its use by Commissars of the People's Republic of Adhomai."
 	icon_state = "deagle-taj"
 
-/obj/item/gun/ballistic/gyropistol // Does this even appear anywhere outside of admin abuse?
+/obj/item/gun/projectile/ballistic/gyropistol // Does this even appear anywhere outside of admin abuse?
 	name = "gyrojet pistol"
 	desc = "Speak softly, and carry a big gun. Fires rare .75 caliber self-propelled exploding bolts--because fuck you and everything around you."
 	icon_state = "gyropistol"
@@ -179,14 +179,14 @@
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
-/obj/item/gun/ballistic/gyropistol/update_icon_state()
+/obj/item/gun/projectile/ballistic/gyropistol/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "gyropistolloaded"
 	else
 		icon_state = "gyropistol"
 
-/obj/item/gun/ballistic/pistol
+/obj/item/gun/projectile/ballistic/pistol
 	name = "compact pistol"
 	desc = "The Lumoco Arms P3 Whisper. A compact, easily concealable gun, though it's only compatible with compact magazines. Uses 9mm rounds."
 	icon_state = "pistol"
@@ -200,18 +200,18 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
 	projectile_type = /obj/projectile/bullet/pistol
 
-/obj/item/gun/ballistic/pistol/update_icon_state()
+/obj/item/gun/projectile/ballistic/pistol/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
 		icon_state = "[initial(icon_state)]-e"
 
-/obj/item/gun/ballistic/pistol/flash
+/obj/item/gun/projectile/ballistic/pistol/flash
 	name = "compact signal pistol"
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact/flash
 
-/obj/item/gun/ballistic/pistol/attack_hand(mob/user, list/params)
+/obj/item/gun/projectile/ballistic/pistol/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(silenced)
 			if(!user.is_holding(src))
@@ -225,7 +225,7 @@
 			return
 	..()
 
-/obj/item/gun/ballistic/pistol/attackby(obj/item/I as obj, mob/living/user as mob)
+/obj/item/gun/projectile/ballistic/pistol/attackby(obj/item/I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/silencer))
 		if(!user.is_holding(src))	//if we're not in his hands
 			to_chat(user, "<span class='notice'>You'll need [src] in your hands to do that.</span>")
@@ -239,7 +239,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/obj/item/gun/ballistic/pistol/update_icon_state()
+/obj/item/gun/projectile/ballistic/pistol/update_icon_state()
 	. = ..()
 	if(silenced)
 		icon_state = "pistol-silencer"
@@ -253,7 +253,7 @@
 	icon_state = "silencer"
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/gun/ballistic/pirate
+/obj/item/gun/projectile/ballistic/pirate
 	name = "zip gun"
 	desc = "Little more than a barrel, handle, and firing mechanism, cheap makeshift firearms like this one are not uncommon in frontier systems."
 	icon_state = "sawnshotgun"
@@ -281,7 +281,7 @@
 		/obj/item/ammo_casing/a545              = "5.45mm"
 		)
 
-/obj/item/gun/ballistic/pirate/Initialize(mapload)
+/obj/item/gun/projectile/ballistic/pirate/Initialize(mapload)
 	ammo_type = pick(ammo_types)
 	desc += " Uses [ammo_types[ammo_type]] rounds."
 
@@ -289,7 +289,7 @@
 	caliber = initial(ammo.caliber)
 	return ..()
 
-/obj/item/gun/ballistic/derringer
+/obj/item/gun/projectile/ballistic/derringer
 	name = "derringer"
 	desc = "It's not size of your gun that matters, just the size of your load. Uses .357 rounds." //OHHH MYYY~
 	icon_state = "derringer"
@@ -302,7 +302,7 @@
 	ammo_type = /obj/item/ammo_casing/a357
 	projectile_type = /obj/projectile/bullet/pistol/strong
 
-/obj/item/gun/ballistic/luger
+/obj/item/gun/projectile/ballistic/luger
 	name = "\improper P08 Luger"
 	desc = "Not some cheap scheisse Martian knockoff! This Luger is an authentic reproduction by RauMauser. Accuracy, easy handling, and its signature appearance make it popular among historic gun collectors. Uses 9mm rounds."
 	icon_state = "p08"
@@ -313,17 +313,17 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
 	projectile_type = /obj/projectile/bullet/pistol
 
-/obj/item/gun/ballistic/luger/update_icon_state()
+/obj/item/gun/projectile/ballistic/luger/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
 		icon_state = "[initial(icon_state)]-e"
 
-/obj/item/gun/ballistic/luger/brown
+/obj/item/gun/projectile/ballistic/luger/brown
 	icon_state = "p08b"
 
-/obj/item/gun/ballistic/p92x
+/obj/item/gun/projectile/ballistic/p92x
 	name = "9mm pistol"
 	desc = "A widespread sidearm called the P92X which is used by military, police, and security forces across the galaxy. Uses 9mm rounds."
 	icon_state = "p92x"
@@ -333,35 +333,35 @@
 	magazine_type = /obj/item/ammo_magazine/m9mm
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm) // Can accept illegal large capacity magazines, or compact magazines.
 
-/obj/item/gun/ballistic/p92x/update_icon_state()
+/obj/item/gun/projectile/ballistic/p92x/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
 		icon_state = "[initial(icon_state)]-e"
 
-/obj/item/gun/ballistic/p92x/sec
+/obj/item/gun/projectile/ballistic/p92x/sec
 	desc = "A widespread sidearm called the P92X which is used by military, police, and security forces across the galaxy. This one is a less-lethal variant that only accepts 9mm rubber or flash magazines."
 	magazine_type = /obj/item/ammo_magazine/m9mm/rubber
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/rubber, /obj/item/ammo_magazine/m9mm/flash)
 
 //Ported this over from the _vr before deletion. Commenting them out because I'm not sure we want these in.
 /*
-/obj/item/gun/ballistic/p92x/large/licensed
+/obj/item/gun/projectile/ballistic/p92x/large/licensed
 	icon_state = "p92x-brown"
 	magazine_type = /obj/item/ammo_magazine/m9mm/large/licensed // Spawns with big magazines that are legal.
 
-/obj/item/gun/ballistic/p92x/large/licensed/hp
+/obj/item/gun/projectile/ballistic/p92x/large/licensed/hp
 	magazine_type = /obj/item/ammo_magazine/m9mm/large/licensed/hp // Spawns with legal hollow-point mag
 */
 
-/obj/item/gun/ballistic/p92x/brown
+/obj/item/gun/projectile/ballistic/p92x/brown
 	icon_state = "p92x-brown"
 
-/obj/item/gun/ballistic/p92x/large
+/obj/item/gun/projectile/ballistic/p92x/large
 	magazine_type = /obj/item/ammo_magazine/m9mm/large // Spawns with illegal magazines.
 
-/obj/item/gun/ballistic/r9
+/obj/item/gun/projectile/ballistic/r9
 	name = "C96-Red 9"
 	desc = "A variation on the Mauser C-96, remade for a modern day. A Glithari Exports product, for gun collectors and private militaries alike. Uses 9mm stripper clips."
 	icon_state = "r9"
@@ -371,13 +371,13 @@
 	max_shells = 10
 	ammo_type = /obj/item/ammo_casing/a9mm
 
-/obj/item/gun/ballistic/r9/holy
+/obj/item/gun/projectile/ballistic/r9/holy
 	name = "Blessed Red 9"
 	desc = "Ah, the choice of an avid gun collector! It's a nice gun, stranger."
 	ammo_type = /obj/item/ammo_casing/a9mm/silver
 	holy = TRUE
 
-/obj/item/gun/ballistic/clown_pistol
+/obj/item/gun/projectile/ballistic/clown_pistol
 	name = "clown pistol"
 	desc = "This curious weapon feeds from a compressed biomatter cartridge, and seems to fabricate its ammunition from that supply."
 	icon_state = "clownpistol"
@@ -390,7 +390,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/compact)
 	projectile_type = /obj/projectile/bullet/organic
 
-/obj/item/gun/ballistic/clown_pistol/update_icon_state()
+/obj/item/gun/projectile/ballistic/clown_pistol/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
@@ -398,7 +398,7 @@
 		icon_state = "[initial(icon_state)]-e"
 
 //Hey did you ever see Kingsman? Well, you know this gun then.
-/obj/item/gun/ballistic/konigin
+/obj/item/gun/projectile/ballistic/konigin
 	name = "Konigin-63 compact"
 	desc = "Originally produced in 2463 by GMC, the Konigin is generally considered to be a direct ancestor to the P3 Whisper. By the time GMC ended production, the Konigin-63 had undergone significant design changes - including the installment of a single capacity shotgun on the underbarrel. This rare design is certainly inspired, and has become something of a collector's item post-war."
 	icon_state = "konigin"
@@ -412,32 +412,32 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
 	projectile_type = /obj/projectile/bullet/pistol
 
-/obj/item/gun/ballistic/konigin
+/obj/item/gun/projectile/ballistic/konigin
 	firemodes = list(
 		list(mode_name="pistol",       burst=1,    fire_delay=0,    move_delay=null, use_shotgun=null, burst_accuracy=null, dispersion=null),
 		list(mode_name="shotgun",  burst=null, fire_delay=null, move_delay=null, use_shotgun=1,    burst_accuracy=null, dispersion=null)
 		)
 
 	var/use_shotgun = 0
-	var/obj/item/gun/ballistic/shotgun/underslung/shotgun
+	var/obj/item/gun/projectile/ballistic/shotgun/underslung/shotgun
 
-/obj/item/gun/ballistic/konigin/Initialize(mapload)
+/obj/item/gun/projectile/ballistic/konigin/Initialize(mapload)
 	. = ..()
 	shotgun = new(src)
 
-/obj/item/gun/ballistic/konigin/attackby(obj/item/I, mob/user)
+/obj/item/gun/projectile/ballistic/konigin/attackby(obj/item/I, mob/user)
 	if((istype(I, /obj/item/ammo_casing/a12g)))
 		shotgun.load_ammo(I, user)
 	else
 		..()
 
-/obj/item/gun/ballistic/konigin/attack_hand(mob/user, list/params)
+/obj/item/gun/projectile/ballistic/konigin/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && use_shotgun)
 		shotgun.unload_ammo(user)
 	else
 		..()
 
-/obj/item/gun/ballistic/konigin/Fire(atom/target, mob/living/user, params, pointblank=0, reflex=0)
+/obj/item/gun/projectile/ballistic/konigin/Fire(atom/target, mob/living/user, params, pointblank=0, reflex=0)
 	if(use_shotgun)
 		shotgun.Fire(target, user, params, pointblank, reflex)
 		//if(!shotgun.chambered)
@@ -445,7 +445,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/konigin/update_icon_state()
+/obj/item/gun/projectile/ballistic/konigin/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
@@ -453,7 +453,7 @@
 		icon_state = "[initial(icon_state)]-e"
 
 /* Having issues with getting this to work atm.
-/obj/item/gun/ballistic/konigin/examine(mob/user, dist)
+/obj/item/gun/projectile/ballistic/konigin/examine(mob/user, dist)
 	. = ..()
 
 	if(shotgun.loaded)
@@ -463,7 +463,7 @@
 */
 
 //Exploration/Pathfinder Sidearms
-/obj/item/gun/ballistic/ntles
+/obj/item/gun/projectile/ballistic/ntles
 	name = "NT-57 'LES'"
 	desc = "The NT-57 'LES' (Light Expeditionary Sidearm) is a tried and tested pistol often issued to Pathfinders. Featuring a polymer frame, collapsible stock, and integrated optics, the LES is lightweight and reliably functions in nearly any hazardous environment, including vacuum."
 	icon_state = "ntles"
@@ -478,7 +478,7 @@
 	var/collapsible = 1
 	var/extended = 0
 
-/obj/item/gun/ballistic/ntles/update_icon_state()
+/obj/item/gun/projectile/ballistic/ntles/update_icon_state()
 	. = ..()
 	if(!extended && ammo_magazine)
 		icon_state = "ntles"
@@ -489,7 +489,7 @@
 	else
 		icon_state = "ntles-e"
 
-/obj/item/gun/ballistic/ntles/attack_self(mob/user, obj/item/gun/G)
+/obj/item/gun/projectile/ballistic/ntles/attack_self(mob/user, obj/item/gun/G)
 	if(collapsible && !extended)
 		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
 		w_class = ITEMSIZE_LARGE
@@ -506,10 +506,10 @@
 		extended = 0
 		update_icon()
 
-/obj/item/gun/ballistic/ntles/pathfinder
+/obj/item/gun/projectile/ballistic/ntles/pathfinder
 	pin = /obj/item/firing_pin/explorer
 
-/obj/item/gun/ballistic/fiveseven
+/obj/item/gun/projectile/ballistic/fiveseven
 	name = "\improper Five-seven sidearm"
 	desc = "This classic sidearm design utilizes an adaptable round considered by some to be superior to 9mm parabellum. Favored amongst sheild bearers in tactical units for its stability in one-handed use, and high capacity magazines."
 	icon_state = "fiveseven"
@@ -522,7 +522,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/fiveseven)
 	one_handed_penalty = 0
 
-/obj/item/gun/ballistic/fiveseven/update_icon_state()
+/obj/item/gun/projectile/ballistic/fiveseven/update_icon_state()
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m57x28mm/fiveseven/highcap))
 		icon_state = "fiveseven-extended"
@@ -533,7 +533,7 @@
 			icon_state = "fiveseven-e"
 
 //Apidean Weapons
-/obj/item/gun/ballistic/apinae_pistol
+/obj/item/gun/projectile/ballistic/apinae_pistol
 	name = "\improper Apinae Enforcer pistol"
 	desc = "Used by Hive-guards to detain deviants."
 	icon_state = "apipistol"
@@ -546,12 +546,12 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/biovial)
 	projectile_type = /obj/projectile/bullet/organic/wax
 
-/obj/item/gun/ballistic/apinae_pistol/update_icon_state()
+/obj/item/gun/projectile/ballistic/apinae_pistol/update_icon_state()
 	. = ..()
 	icon_state = "apipistol-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
 
 //Tyrmalin Weapons
-/obj/item/gun/ballistic/pirate/junker_pistol
+/obj/item/gun/projectile/ballistic/pirate/junker_pistol
 	name = "scrap pistol"
 	desc = "A strange handgun made from industrial parts. It appears to accept multiple rounds thanks to an internal magazine. Favored by Tyrmalin wannabe-gunslingers."
 	icon_state = "junker_pistol"
@@ -564,7 +564,7 @@
 	max_shells = 3
 
 //Donksoft Weapons
-/obj/item/gun/ballistic/pistol/foam
+/obj/item/gun/projectile/ballistic/pistol/foam
 	name = "toy pistol"
 	desc = "The Donk Co line of DONKsoft weapons is taking the galaxy by storm. Made of quality plastic, nothing launches darts better."
 	icon = 'icons/obj/toy.dmi'
@@ -577,22 +577,22 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/pistol)
 	fire_sound = 'sound/items/syringeproj.ogg'
 
-/obj/item/gun/ballistic/pistol/foam/update_icon_state()
+/obj/item/gun/projectile/ballistic/pistol/foam/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
 		icon_state = "[initial(icon_state)]-e"
 
-/obj/item/gun/ballistic/pistol/foam/handle_suicide(mob/living/user)
+/obj/item/gun/projectile/ballistic/pistol/foam/handle_suicide(mob/living/user)
 	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
 	mouthshoot = 0
 	return
 
-/obj/item/gun/ballistic/pistol/foam/blue
+/obj/item/gun/projectile/ballistic/pistol/foam/blue
 	icon_state = "toy_pistol_blue"
 
-/obj/item/gun/ballistic/pistol/foam/magnum
+/obj/item/gun/projectile/ballistic/pistol/foam/magnum
 	name = "toy automag"
 	icon_state = "toy_pistol_orange"
 	w_class = ITEMSIZE_NORMAL

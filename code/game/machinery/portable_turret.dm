@@ -66,7 +66,7 @@
 	var/controllock = FALSE
 
 	/// The type of weapon installed.
-	var/installation = /obj/item/gun/energy/gun
+	var/installation = /obj/item/gun/projectile/energy/gun
 	/// The charge of the gun inserted.
 	var/gun_charge = 0
 	/// Holder for bullettype.
@@ -154,7 +154,7 @@
 /obj/machinery/porta_turret/stationary
 	ailock = TRUE
 	lethal = TRUE
-	installation = /obj/item/gun/energy/laser
+	installation = /obj/item/gun/projectile/energy/laser
 
 /obj/machinery/porta_turret/stationary/syndie // Generic turrets for POIs that need to not shoot their buddies.
 	req_one_access = list(ACCESS_FACTION_SYNDICATE)
@@ -166,7 +166,7 @@
 	name = "defense turret"
 	desc = "This variant appears to be much more durable."
 	req_one_access = list(ACCESS_SPECIAL_SILICONS) // Just in case.
-	installation = /obj/item/gun/energy/xray // For the armor pen.
+	installation = /obj/item/gun/projectile/energy/xray // For the armor pen.
 	health = 250 // Since lasers do 40 each.
 	maxhealth = 250
 
@@ -188,7 +188,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_turret)
 	icon_state = "turret_cover_alien"
 	req_one_access = list(ACCESS_FACTION_ALIEN)
-	installation = /obj/item/gun/energy/alien
+	installation = /obj/item/gun/projectile/energy/alien
 	enabled = TRUE
 	lethal = TRUE
 	ailock = TRUE
@@ -209,7 +209,7 @@
 	desc = "This variant appears to be much more rugged."
 	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	icon_state = "turret_cover_industrial"
-	installation = /obj/item/gun/energy/phasegun
+	installation = /obj/item/gun/projectile/energy/phasegun
 	health = 200
 	maxhealth = 200
 	turret_type = "industrial"
@@ -236,7 +236,7 @@
 	name = "defense turret"
 	desc = "This variant appears to be much more durable, with a rugged outer coating."
 	req_one_access = list(ACCESS_COMMAND_BRIDGE)
-	installation = /obj/item/gun/energy/gun/burst
+	installation = /obj/item/gun/projectile/energy/gun/burst
 	health = 250
 	maxhealth = 250
 
@@ -251,7 +251,7 @@
 	name = "lasertag turret"
 	turret_type = "normal"
 	req_one_access = list()
-	installation = /obj/item/gun/energy/lasertag/omni
+	installation = /obj/item/gun/projectile/energy/lasertag/omni
 
 	locked = FALSE
 	enabled = FALSE
@@ -269,12 +269,12 @@
 
 /obj/machinery/porta_turret/lasertag/red
 	turret_type = "red"
-	installation = /obj/item/gun/energy/lasertag/red
+	installation = /obj/item/gun/projectile/energy/lasertag/red
 	check_weapons = TRUE // Used to target blue players
 
 /obj/machinery/porta_turret/lasertag/blue
 	turret_type = "blue"
-	installation = /obj/item/gun/energy/lasertag/blue
+	installation = /obj/item/gun/projectile/energy/lasertag/blue
 	check_synth = TRUE // Used to target red players
 
 /obj/machinery/porta_turret/lasertag/assess_living(mob/living/L)
@@ -377,7 +377,7 @@
 
 
 /obj/machinery/porta_turret/proc/setup()
-	var/obj/item/gun/energy/E = installation	//All energy-based weapons are applicable
+	var/obj/item/gun/projectile/energy/E = installation	//All energy-based weapons are applicable
 	var/obj/projectile/P = initial(E.projectile_type)
 	//var/obj/item/ammo_casing/shottype = E.projectile_type
 
@@ -407,29 +407,29 @@
 
 /obj/machinery/porta_turret/proc/weapon_setup(guntype)
 	switch(guntype)
-		if(/obj/item/gun/energy/gun/burst)
+		if(/obj/item/gun/projectile/energy/gun/burst)
 			lethal_icon_color = "red"
 			lethal_projectile = /obj/projectile/beam/burstlaser
 			lethal_shot_sound = 'sound/weapons/Laser.ogg'
 			shot_delay = 1 SECOND
 
-		if(/obj/item/gun/energy/phasegun)
+		if(/obj/item/gun/projectile/energy/phasegun)
 			icon_color = "orange"
 			lethal_icon_color = "orange"
 			lethal_projectile = /obj/projectile/energy/phase/heavy
 			shot_delay = 1 SECOND
 
-		if(/obj/item/gun/energy/gun)
+		if(/obj/item/gun/projectile/energy/gun)
 			lethal_icon_color = "red"
 			lethal_projectile = /obj/projectile/beam	//If it has, going to kill mode
 			lethal_shot_sound = 'sound/weapons/Laser.ogg'
 
-		if(/obj/item/gun/energy/gun/nuclear)
+		if(/obj/item/gun/projectile/energy/gun/nuclear)
 			lethal_icon_color = "red"
 			lethal_projectile = /obj/projectile/beam	//If it has, going to kill mode
 			lethal_shot_sound = 'sound/weapons/Laser.ogg'
 
-		if(/obj/item/gun/energy/xray)
+		if(/obj/item/gun/projectile/energy/xray)
 			lethal_icon_color = "green"
 			lethal_projectile = /obj/projectile/beam/xray
 			projectile = /obj/projectile/beam/stun // Otherwise we fire xrays on both modes.
@@ -552,7 +552,7 @@
 				if(can_salvage && prob(70))
 					to_chat(user, "<span class='notice'>You remove the turret and salvage some components.</span>")
 					if(installation)
-						var/obj/item/gun/energy/Gun = new installation(loc)
+						var/obj/item/gun/projectile/energy/Gun = new installation(loc)
 						Gun.power_supply.charge = gun_charge
 						Gun.update_icon()
 					if(prob(50))
@@ -1048,10 +1048,10 @@
 					return
 
 		if(3)
-			if(istype(I, /obj/item/gun/energy)) //the gun installation part
+			if(istype(I, /obj/item/gun/projectile/energy)) //the gun installation part
 				if(!user.attempt_insert_item_for_installation(I, src))
 					return
-				var/obj/item/gun/energy/E = I //typecasts the item to an energy gun
+				var/obj/item/gun/projectile/energy/E = I //typecasts the item to an energy gun
 				installation = I.type //installation becomes I.type
 				gun_charge = E.power_supply.charge //the gun's charge is stored in gun_charge
 				to_chat(user, "<span class='notice'>You add [I] to the turret.</span>")
@@ -1152,7 +1152,7 @@
 				return
 			build_step = 3
 
-			var/obj/item/gun/energy/Gun = new installation(loc)
+			var/obj/item/gun/projectile/energy/Gun = new installation(loc)
 			Gun.power_supply.charge = gun_charge
 			Gun.update_icon()
 			installation = null

@@ -14,7 +14,7 @@
 	id = "slimetaser"
 	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 3, TECH_POWER = 4, TECH_COMBAT = 4)
 	materials = list(MAT_STEEL = 5000)
-	build_path = /obj/item/gun/energy/taser/xeno
+	build_path = /obj/item/gun/projectile/energy/taser/xeno
 
 /datum/design/science/xenobio/slime_scanner
 	design_name = "slime scanner"

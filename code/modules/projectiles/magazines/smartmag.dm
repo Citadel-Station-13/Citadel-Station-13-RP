@@ -20,7 +20,7 @@
 	var/production_modifier = 2			// Multiplier on the ammo_casing's matter cost
 	var/production_delay = 75			// If we're in a gun, how long since it last shot do we need to wait before making bullets?
 
-	var/obj/item/gun/holding_gun = null	// What gun are we in, if any?
+	var/obj/item/gun/projectile/holding_gun = null	// What gun are we in, if any?
 
 	var/obj/item/cell/device/attached_cell = null	// What cell are we using, if any?
 

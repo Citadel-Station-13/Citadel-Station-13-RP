@@ -40,7 +40,7 @@
 	id = "adv_bore"
 	req_tech = list(TECH_MATERIAL = 5, TECH_PHORON = 5, TECH_ENGINEERING = 4, TECH_POWER = 4) //phoron 5 needs materials to get
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 2500, MAT_GOLD = 2500, MAT_PHORON = 2500)
-	build_path = /obj/item/gun/magnetic/matfed/advanced
+	build_path = /obj/item/gun/projectile/magnetic/matfed/advanced
 
 /datum/design/science/mining/vertibore
 	id = "vertibore"

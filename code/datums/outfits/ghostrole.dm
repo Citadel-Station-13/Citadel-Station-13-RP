@@ -30,13 +30,13 @@
 	suit = /obj/item/clothing/suit/armor/ashlander
 	shoes = /obj/item/clothing/shoes/ashwalker
 	belt = /obj/item/storage/belt/quiver/full/ash
-	back = /obj/item/gun/ballistic/bow/ashen
+	back = /obj/item/gun/projectile/ballistic/bow/ashen
 	r_hand = /obj/item/material/knife/tacknife/combatknife/bone
 
 /datum/outfit/ashlander/merchant
 	name = "Ashlander - Merchant"
 	shoes = /obj/item/clothing/shoes/ashwalker
-	belt = /obj/item/gun/ballistic/musket/pistol/tribal
+	belt = /obj/item/gun/projectile/ballistic/musket/pistol/tribal
 	l_hand = /obj/item/storage/box/munition_box
 	r_hand = /obj/item/reagent_containers/glass/powder_horn/tribal/filled
 
@@ -46,7 +46,7 @@
 	suit = /obj/item/clothing/suit/armor/ashlander
 	shoes = /obj/item/clothing/shoes/ashwalker
 	belt = /obj/item/reagent_containers/glass/powder_horn/tribal/filled
-	r_hand = /obj/item/gun/ballistic/musket/tribal
+	r_hand = /obj/item/gun/projectile/ballistic/musket/tribal
 	l_hand = /obj/item/storage/box/munition_box
 
 /datum/outfit/ashlander/priest
@@ -68,7 +68,7 @@
 
 /datum/outfit/pirate/immigrant
 	name = "Pirate - Immigrant"
-	belt = /obj/item/gun/ballistic/pirate
+	belt = /obj/item/gun/projectile/ballistic/pirate
 	r_pocket = /obj/item/melee/energy/sword/pirate
 
 /datum/outfit/pirate/dilettante
@@ -84,6 +84,6 @@
 	suit = /obj/item/clothing/suit/armor/tactical/pirate
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 	mask = /obj/item/clothing/mask/balaclava
-	belt = /obj/item/gun/energy/zip
+	belt = /obj/item/gun/projectile/energy/zip
 	r_pocket = /obj/item/melee/energy/sword/pirate
 	r_hand = /obj/item/shield/makeshift

@@ -1,4 +1,4 @@
-/obj/item/gun/energy/ionrifle
+/obj/item/gun/projectile/energy/ionrifle
 	name = "ion rifle"
 	desc = "The NT Mk60 EW Halicon is a man portable anti-armor weapon designed to disable mechanical threats, produced by NT. Not the best of its type."
 	icon_state = "ionrifle"
@@ -12,10 +12,10 @@
 	projectile_type = /obj/projectile/ion
 	one_handed_penalty = 15
 
-/obj/item/gun/energy/ionrifle/emp_act(severity)
+/obj/item/gun/projectile/energy/ionrifle/emp_act(severity)
 	..(max(severity, 4)) //so it doesn't EMP itself, I guess
 
-/obj/item/gun/energy/ionrifle/pistol
+/obj/item/gun/projectile/energy/ionrifle/pistol
 	name = "ion pistol"
 	desc = "The NT Mk63 EW Pan is a man portable anti-armor weapon designed to disable mechanical threats, produced by NT. This model sacrifices capacity for portability."
 	icon_state = "ionpistol"
@@ -27,7 +27,7 @@
 	charge_cost = 480
 	projectile_type = /obj/projectile/ion/pistol
 
-/obj/item/gun/energy/decloner
+/obj/item/gun/projectile/energy/decloner
 	name = "biological demolecularisor"
 	desc = "A gun that discharges high amounts of controlled radiation to slowly break a target into component elements."
 	icon_state = "decloner"
@@ -35,7 +35,7 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_POWER = 3)
 	projectile_type = /obj/projectile/energy/declone
 
-/obj/item/gun/energy/floragun
+/obj/item/gun/projectile/energy/floragun
 	name = "floral somatoray"
 	desc = "A tool that discharges controlled radiation which induces mutation in plant cells."
 	icon_state = "floramut100"
@@ -54,7 +54,7 @@
 		list(mode_name="induce specific mutations", projectile_type=/obj/projectile/energy/floramut/gene, modifystate="floramut"),
 		)
 
-/obj/item/gun/energy/floragun/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/gun/projectile/energy/floragun/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	//allow shooting into adjacent hydrotrays regardless of intent
 	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
 		user.visible_message("<span class='danger'>\The [user] fires \the [src] into \the [target]!</span>")
@@ -62,7 +62,7 @@
 		return
 	..()
 
-/obj/item/gun/energy/floragun/verb/select_gene()
+/obj/item/gun/projectile/energy/floragun/verb/select_gene()
 	set name = "Select Gene"
 	set category = "Object"
 	set src in view(1)
@@ -78,13 +78,13 @@
 
 	return
 
-/obj/item/gun/energy/floragun/consume_next_projectile()
+/obj/item/gun/projectile/energy/floragun/consume_next_projectile()
 	. = ..()
 	var/obj/projectile/energy/floramut/gene/G = .
 	if(istype(G))
 		G.gene = gene
 
-/obj/item/gun/energy/meteorgun
+/obj/item/gun/projectile/energy/meteorgun
 	name = "meteor gun"
 	desc = "For the love of god, make sure you're aiming this the right way!"
 	icon_state = "riotgun"
@@ -100,7 +100,7 @@
 	charge_meter = 0
 	one_handed_penalty = 20
 
-/obj/item/gun/energy/meteorgun/pen
+/obj/item/gun/projectile/energy/meteorgun/pen
 	name = "meteor pen"
 	desc = "The pen is mightier than the sword."
 	icon = 'icons/obj/bureaucracy.dmi'
@@ -112,14 +112,14 @@
 	one_handed_penalty = 0
 
 
-/obj/item/gun/energy/mindflayer
+/obj/item/gun/projectile/energy/mindflayer
 	name = "mind flayer"
 	desc = "A custom-built weapon of some kind."
 	icon_state = "xray"
 	projectile_type = /obj/projectile/beam/mindflayer
 	one_handed_penalty = 15
 
-/obj/item/gun/energy/toxgun
+/obj/item/gun/projectile/energy/toxgun
 	name = "phoron pistol"
 	desc = "A failed experiment in anti-personnel weaponry from the onset of the Syndicate Wars. The Mk.1 NT-P uses an internal resevoir of phoron gas, excited into a photonic state with a standard weapon cell, to fire lethal bolts of phoron-based plasma."
 	icon_state = "toxgun"
@@ -129,7 +129,7 @@
 
 /* Staves */
 
-/obj/item/gun/energy/staff
+/obj/item/gun/projectile/energy/staff
 	name = "staff of change"
 	desc = "An artifact that spits bolts of coruscating energy which cause the target's very form to reshape itself."
 	icon = 'icons/obj/wizard.dmi'
@@ -144,27 +144,27 @@
 	battery_lock = 1
 	charge_meter = 0
 
-/obj/item/gun/energy/staff/special_check(var/mob/user)
+/obj/item/gun/projectile/energy/staff/special_check(var/mob/user)
 	if((user.mind && !wizards.is_antagonist(user.mind)))
 		to_chat(usr, "<span class='warning'>You focus your mind on \the [src], but nothing happens!</span>")
 		return 0
 
 	return ..()
 
-/obj/item/gun/energy/staff/handle_click_empty(mob/user = null)
+/obj/item/gun/projectile/energy/staff/handle_click_empty(mob/user = null)
 	if (user)
 		user.visible_message("*fizzle*", "<span class='danger'>*fizzle*</span>")
 	else
 		src.visible_message("*fizzle*")
 	playsound(src.loc, 'sound/effects/sparks1.ogg', 100, 1)
 /*
-/obj/item/gun/energy/staff/animate
+/obj/item/gun/projectile/energy/staff/animate
 	name = "staff of animation"
 	desc = "An artifact that spits bolts of life force, which causes objects which are hit by it to animate and come to life! This magic doesn't affect machines."
 	projectile_type = /obj/projectile/animate
 	charge_cost = 240
 */
-/obj/item/gun/energy/staff/focus
+/obj/item/gun/projectile/energy/staff/focus
 	name = "mental focus"
 	desc = "An artifact that channels the will of the user into destructive bolts of force. If you aren't careful with it, you might poke someone's brain out."
 	icon = 'icons/obj/wizard.dmi'
@@ -183,7 +183,7 @@
 			projectile_type = "/obj/projectile/forcebolt"
 	*/
 
-/obj/item/gun/energy/dakkalaser
+/obj/item/gun/projectile/energy/dakkalaser
 	name = "suppression gun"
 	desc = "Coined 'Sparkers' by Tyrmalin dissidents on Larona upon it's inception, the HI-LLG is an energy-based suppression system, used to overwhelm the opposition in a hail of laser blasts."
 	icon_state = "dakkalaser"
@@ -206,7 +206,7 @@
 		list(mode_name="ten shot burst", burst = 10, burst_accuracy = list(75,75,75,75,75,75,75,75,75,75), dispersion = list(2,2,2,2,2,2,2,2,2,2)),
 		)
 
-/obj/item/gun/energy/maghowitzer
+/obj/item/gun/projectile/energy/maghowitzer
 	name = "portable MHD howitzer"
 	desc = "A massive weapon designed to destroy fortifications with a stream of molten tungsten."
 	description_fluff = "A weapon designed by joint cooperation of NanoTrasen, Hephaestus, and SCG scientists. Everything else is red tape and black highlighters."
@@ -228,7 +228,7 @@
 
 	var/power_cycle = FALSE
 
-/obj/item/gun/energy/maghowitzer/proc/pick_random_target(var/turf/T)
+/obj/item/gun/projectile/energy/maghowitzer/proc/pick_random_target(var/turf/T)
 	var/foundmob = FALSE
 	var/foundmobs = list()
 	for(var/mob/living/L in T.contents)
@@ -239,7 +239,7 @@
 		return return_target
 	return FALSE
 
-/obj/item/gun/energy/maghowitzer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/gun/projectile/energy/maghowitzer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/atom/A = target
 	if(power_cycle)
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
@@ -266,7 +266,7 @@
 	else
 		return ..()
 
-/obj/item/gun/energy/maghowitzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/gun/projectile/energy/maghowitzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(power_cycle)
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
 		return 0
@@ -298,10 +298,10 @@
 
 //_vr Items:
 
-/obj/item/gun/energy/ionrifle/weak
+/obj/item/gun/projectile/energy/ionrifle/weak
 	projectile_type = /obj/projectile/ion/small
 
-/obj/item/gun/energy/medigun //Adminspawn/ERT etc
+/obj/item/gun/projectile/energy/medigun //Adminspawn/ERT etc
 	name = "directed restoration system"
 	desc = "The BL-3 'Phoenix' is an adaptation on the ML-3 'Medbeam' design that channels the power of the beam into a single healing laser. It is highly energy-inefficient, but its medical power cannot be denied."
 	damage_force = 5
@@ -319,7 +319,7 @@
 	cell_type = /obj/item/cell/high
 	charge_cost = 2500
 
-/obj/item/gun/energy/service
+/obj/item/gun/projectile/energy/service
 	name = "service weapon"
 	icon_state = "service_grip"
 	item_state = "service_grip"
@@ -336,19 +336,19 @@
 	one_handed_penalty = 0
 	safety_state = GUN_SAFETY_OFF
 
-/obj/item/gun/energy/service/attack_self(mob/user)
+/obj/item/gun/projectile/energy/service/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
 	cycle_weapon(user)
 
-/obj/item/gun/energy/service/proc/cycle_weapon(mob/living/L)
+/obj/item/gun/projectile/energy/service/proc/cycle_weapon(mob/living/L)
 	var/obj/item/service_weapon
-	var/list/service_weapon_list = subtypesof(/obj/item/gun/energy/service)
+	var/list/service_weapon_list = subtypesof(/obj/item/gun/projectile/energy/service)
 	var/list/display_names = list()
 	var/list/service_icons = list()
 	for(var/V in service_weapon_list)
-		var/obj/item/gun/energy/service/weapontype = V
+		var/obj/item/gun/projectile/energy/service/weapontype = V
 		if (V)
 			display_names[initial(weapontype.name)] = weapontype
 			service_icons += list(initial(weapontype.name) = image(icon = initial(weapontype.icon), icon_state = initial(weapontype.icon_state)))
@@ -366,7 +366,7 @@
 		qdel(src)
 		L.put_in_active_hand(service_weapon)
 
-/obj/item/gun/energy/service/proc/check_menu(mob/user)
+/obj/item/gun/projectile/energy/service/proc/check_menu(mob/user)
 	if(!istype(user))
 		return FALSE
 	if(QDELETED(src))
@@ -375,37 +375,37 @@
 		return FALSE
 	return TRUE
 
-/obj/item/gun/energy/service/grip
+/obj/item/gun/projectile/energy/service/grip
 
-/obj/item/gun/energy/service/shatter
+/obj/item/gun/projectile/energy/service/shatter
 	name = "service weapon (shatter)"
 	icon_state = "service_shatter"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
 	fire_delay = 15		//Increased by 50% for strength.
 	charge_cost = 600	//Charge increased due to shotgun round.
 
-/obj/item/gun/energy/service/spin
+/obj/item/gun/projectile/energy/service/spin
 	name = "service weapon (spin)"
 	icon_state = "service_spin"
 	projectile_type = /obj/projectile/bullet/pistol/spin
 	fire_delay = 0	//High fire rate.
 	charge_cost = 80	//Lower cost per shot to encourage rapid fire.
 
-/obj/item/gun/energy/service/pierce
+/obj/item/gun/projectile/energy/service/pierce
 	name = "service weapon (pierce)"
 	icon_state = "service_pierce"
 	projectile_type = /obj/projectile/bullet/rifle/a762/ap/silver
 	fire_delay = 15		//Increased by 50% for strength.
 	charge_cost = 600	//Charge increased due to sniper round.
 
-/obj/item/gun/energy/service/charge
+/obj/item/gun/projectile/energy/service/charge
 	name = "service weapon (charge)"
 	icon_state = "service_charge"
 	projectile_type = /obj/projectile/bullet/burstbullet/service    //Formerly: obj/projectile/bullet/gyro. A little too robust.
 	fire_delay = 20
 	charge_cost = 800	//Three shots.
 
-/obj/item/gun/energy/puzzle_key
+/obj/item/gun/projectile/energy/puzzle_key
 	name = "Key of Anak-Hun-Tamuun"
 	desc = "An arcane stave that fires a powerful energy blast. Why was this just left laying around here?"
 	fire_sound = 'sound/magic/staff_change.ogg'
@@ -421,7 +421,7 @@
 	battery_lock = 1
 	one_handed_penalty = 0
 
-/obj/item/gun/energy/ermitter
+/obj/item/gun/projectile/energy/ermitter
 	name = "Ermitter rifle"
 	desc = "A industrial energy projector turned into a crude, portable weapon. The Tyrmalin answer to armored hardsuits used by pirates, what it lacks in precision, it makes up for in firepower."
 	icon_state = "ermitter_gun"
@@ -438,14 +438,14 @@
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
 	one_handed_penalty = 50
 
-/obj/item/gun/energy/ionrifle/pistol/tyrmalin
+/obj/item/gun/projectile/energy/ionrifle/pistol/tyrmalin
 	name = "botbuster pistol"
 	desc = "These jury-rigged pistols are sometimes fielded by Tyrmalin facing sythetic pirates or faulty machinery. Capable of discharging a single ionized bolt before needing to recharge, they're often treated as holdout or ambush weapons."
 	icon_state = "botbuster"
 	charge_cost = 1300
 	projectile_type = /obj/projectile/ion/pistol
 
-/obj/item/gun/energy/jezzail
+/obj/item/gun/projectile/energy/jezzail
 	name = "Microfission Jezzail"
 	desc = "Deceptively primitive in appearance, this finely tuned rifle uses an onboard reactor to stimulate the growth of an anomalous crystal. Fragments of this crystal are utilized as ammunition by the weapon."
 	icon_state = "warplockgun"
@@ -462,7 +462,7 @@
 	one_handed_penalty = 60
 
 //Plasma Guns Plasma Guns!
-/obj/item/gun/energy/plasma
+/obj/item/gun/projectile/energy/plasma
 	name = "\improper Balrog plasma rifle"
 	desc = "This bulky weapon, the experimental NT-PLR-EX 'Balrog', fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
 	icon_state = "prifle"
@@ -485,7 +485,7 @@
 		list(mode_name="high power", projectile_type=/obj/projectile/plasma/hot, charge_cost = 370),
 		)
 
-/obj/item/gun/energy/plasma/update_icon()
+/obj/item/gun/projectile/energy/plasma/update_icon()
 	. = ..()
 	if(overheating)
 		icon_state = "prifle_overheat"
@@ -493,7 +493,7 @@
 	else
 		return
 
-/obj/item/gun/energy/plasma/consume_next_projectile(mob/user as mob)
+/obj/item/gun/projectile/energy/plasma/consume_next_projectile(mob/user as mob)
 	. = ..()
 	if(src.projectile_type == /obj/projectile/plasma/hot)
 		switch(rand(1,6))
@@ -510,7 +510,7 @@
 			if(2 to 6)
 				return ..()
 
-/obj/item/gun/energy/plasma/pistol
+/obj/item/gun/projectile/energy/plasma/pistol
 	name = "\improper Wyrm plasma pistol"
 	desc = "This scaled down NT-PLP-EX 'Wyrm' plasma pistol fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
 	icon_state = "ppistol"
@@ -522,7 +522,7 @@
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
 	one_handed_penalty = 10
 
-/obj/item/gun/energy/plasma/pistol/update_icon()
+/obj/item/gun/projectile/energy/plasma/pistol/update_icon()
 	. = ..()
 	if(overheating)
 		icon_state = "ppistol_overheat"
@@ -530,7 +530,7 @@
 	else
 		return
 
-/obj/item/gun/energy/plasma/pistol/consume_next_projectile(mob/user as mob)
+/obj/item/gun/projectile/energy/plasma/pistol/consume_next_projectile(mob/user as mob)
 	. = ..()
 	if(.)
 		if(src.projectile_type == /obj/projectile/plasma/hot)

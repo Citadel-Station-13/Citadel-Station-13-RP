@@ -75,7 +75,7 @@
 	id = "sizegun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
 	materials = list(MAT_STEEL = 3000, MAT_GLASS = 2000, MAT_URANIUM = 2000)
-	build_path = /obj/item/gun/energy/sizegun
+	build_path = /obj/item/gun/projectile/energy/sizegun
 
 /datum/design/science/general/inducer_sci
 	design_name = "Inducer (Scientific)"

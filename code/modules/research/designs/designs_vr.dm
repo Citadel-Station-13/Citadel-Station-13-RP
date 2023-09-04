@@ -5,7 +5,7 @@
 	id = "sizegun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
 	materials = list(MAT_STEEL = 3000, MAT_GLASS = 2000, MAT_URANIUM = 2000)
-	build_path = /obj/item/gun/energy/sizegun
+	build_path = /obj/item/gun/projectile/energy/sizegun
 
 /datum/design/science/bluespace_jumpsuit
 	design_name = "Bluespace jumpsuit"
@@ -26,14 +26,14 @@
 	id = "advparticle"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 1000, MAT_GOLD = 1000, MAT_URANIUM = 750)
-	build_path = /obj/item/gun/energy/particle/advanced
+	build_path = /obj/item/gun/projectile/energy/particle/advanced
 
 /datum/design/science/weapon/particlecannon
 	design_name = "Anti-particle cannon"
 	id = "particlecannon"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 4, TECH_MAGNET = 4)
 	materials = list(MAT_STEEL = 10000, MAT_GLASS = 1500, MAT_GOLD = 2000, MAT_URANIUM = 1000, MAT_DIAMOND = 2000)
-	build_path = /obj/item/gun/energy/particle/cannon
+	build_path = /obj/item/gun/projectile/energy/particle/cannon
 
 /datum/design/science/hud/omni
 	design_name = "AR glasses"
@@ -102,7 +102,7 @@
 	id = "netgun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 3000)
-	build_path = /obj/item/gun/energy/netgun
+	build_path = /obj/item/gun/projectile/energy/netgun
 
 /datum/design/circuit/algae_farm
 	design_name = "Algae Oxygen Generator"

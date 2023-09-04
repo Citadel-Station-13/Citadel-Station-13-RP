@@ -26,9 +26,9 @@
 /datum/supply_pack/recreation/lasertag
 	name = "Lasertag equipment"
 	contains = list(
-			/obj/item/gun/energy/lasertag/red,
+			/obj/item/gun/projectile/energy/lasertag/red,
 			/obj/item/clothing/suit/redtag,
-			/obj/item/gun/energy/lasertag/blue,
+			/obj/item/gun/projectile/energy/lasertag/blue,
 			/obj/item/clothing/suit/bluetag
 			)
 	container_type = /obj/structure/closet
@@ -199,8 +199,8 @@
 /datum/supply_pack/recreation/donksoft_exotic
 	name = "DONKsoft Exotic Weaponry Bundle"
 	contains = list(
-			/obj/item/gun/ballistic/automatic/c20r/foam = 2,
-			/obj/item/gun/ballistic/automatic/lmg/foam = 1,
+			/obj/item/gun/projectile/ballistic/automatic/c20r/foam = 2,
+			/obj/item/gun/projectile/ballistic/automatic/lmg/foam = 1,
 			/obj/item/ammo_magazine/mfoam/c20 = 4,
 			/obj/item/ammo_magazine/mfoam/lmg = 2,
 			/obj/item/material/twohanded/spear/foam = 2,

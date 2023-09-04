@@ -2,7 +2,7 @@
 // Size Gun
 //
 
-/obj/item/gun/energy/sizegun
+/obj/item/gun/projectile/energy/sizegun
 	name = "size gun" //I have no idea why this was called shrink ray when this increased and decreased size.
 	desc = "A highly advanced ray gun with a knob on the side to adjust the size you desire. Warning: Do not insert into mouth."
 	icon = 'icons/obj/gun/energy.dmi'
@@ -23,24 +23,24 @@
 			fire_sound		= 'sound/weapons/pulse3.ogg'
 		))
 
-/obj/item/gun/energy/sizegun/Initialize(mapload)
+/obj/item/gun/projectile/energy/sizegun/Initialize(mapload)
 	. = ..()
-	add_obj_verb(src, /obj/item/gun/energy/sizegun/proc/select_size)
+	add_obj_verb(src, /obj/item/gun/projectile/energy/sizegun/proc/select_size)
 
-/obj/item/gun/energy/sizegun/attack_self(mob/user)
+/obj/item/gun/projectile/energy/sizegun/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
 	. = ..()
 	select_size()
 
-/obj/item/gun/energy/sizegun/consume_next_projectile()
+/obj/item/gun/projectile/energy/sizegun/consume_next_projectile()
 	. = ..()
 	var/obj/projectile/beam/sizelaser/G = .
 	if(istype(G))
 		G.set_size = size_set_to
 
-/obj/item/gun/energy/sizegun/proc/select_size()
+/obj/item/gun/projectile/energy/sizegun/proc/select_size()
 	set name = "Select Size"
 	set category = "Object"
 	set src in view(1)
@@ -52,7 +52,7 @@
 	size_set_to = (size_select/100)
 	to_chat(usr, "<span class='notice'>You set the size to [size_select]%</span>")
 
-/obj/item/gun/energy/sizegun/examine(mob/user, dist)
+/obj/item/gun/projectile/energy/sizegun/examine(mob/user, dist)
 	. = ..()
 	var/size_examine = (size_set_to*100)
 	. += "<span class='info'>It is currently set at [size_examine]%</span>"
@@ -99,7 +99,7 @@
 	set_size = 2.0 //200% of current size
 
 
-/obj/item/gun/energy/stripper//Because it can be fun
+/obj/item/gun/projectile/energy/stripper//Because it can be fun
 	name = "stripper gun"
 	desc = "A gun designed to remove unnessary layers from people. For external use only!"
 	icon = 'icons/obj/gun/energy.dmi'

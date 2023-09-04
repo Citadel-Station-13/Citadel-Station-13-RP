@@ -38,7 +38,7 @@
 		new /datum/data/mining_equipment("Survival Medipen",			/obj/item/reagent_containers/hypospray/autoinjector/miner,	500),
 		new /datum/data/mining_equipment("Mini-Translocator",			/obj/item/perfect_tele/one_beacon,							1200),
 		// new /datum/data/mining_equipment("Kinetic Crusher",			/obj/item/twohanded/required/kinetic_crusher,						750),
-		new /datum/data/mining_equipment("Kinetic Accelerator",			/obj/item/gun/energy/kinetic_accelerator,					900),
+		new /datum/data/mining_equipment("Kinetic Accelerator",			/obj/item/gun/projectile/energy/kinetic_accelerator,					900),
 		new /datum/data/mining_equipment("Resonator",					/obj/item/resonator,												900),
 		new /datum/data/mining_equipment("Fulton Pack",					/obj/item/extraction_pack,											1200),
 		new /datum/data/mining_equipment("Wormhole Fulton Pack",					/obj/item/extraction_pack/wormhole,											1750),
@@ -57,9 +57,9 @@
 		new /datum/data/mining_equipment("Hardsuit - Maneuvering Jets",	/obj/item/hardsuit_module/maneuvering_jets,								1250),
 		new /datum/data/mining_equipment("Hardsuit - Intelligence Storage",	/obj/item/hardsuit_module/ai_container,								2500),
 		new /datum/data/mining_equipment("Hardsuit - Smoke Bomb Deployer",	/obj/item/hardsuit_module/grenade_launcher/smoke,					2000),
-		new /datum/data/mining_equipment("Industrial Equipment - Phoron Bore",	/obj/item/gun/magnetic/matfed,						3000),
+		new /datum/data/mining_equipment("Industrial Equipment - Phoron Bore",	/obj/item/gun/projectile/magnetic/matfed,						3000),
 		new /datum/data/mining_equipment("Industrial Equipment - Sheet-Snatcher",/obj/item/storage/bag/sheetsnatcher,				500),
-		new /datum/data/mining_equipment("Repurposed Equipment - Mining Carbine",	/obj/item/gun/energy/gun/miningcarbine,						5000),
+		new /datum/data/mining_equipment("Repurposed Equipment - Mining Carbine",	/obj/item/gun/projectile/energy/gun/miningcarbine,						5000),
 		new /datum/data/mining_equipment("Digital Tablet - Standard",	/obj/item/modular_computer/tablet/preset/custom_loadout/standard,	500),
 		new /datum/data/mining_equipment("Digital Tablet - Advanced",	/obj/item/modular_computer/tablet/preset/custom_loadout/advanced,	1000),
 		new /datum/data/mining_equipment("Super Resonator",				/obj/item/resonator/upgraded,										2500),
@@ -226,7 +226,7 @@
 	var/drop_location = drop_location()
 	switch(selection)
 		if("Kinetic Accelerator")
-			new /obj/item/gun/energy/kinetic_accelerator(drop_location)
+			new /obj/item/gun/projectile/energy/kinetic_accelerator(drop_location)
 		if("Resonator")
 			new /obj/item/resonator(drop_location)
 	qdel(voucher)

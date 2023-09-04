@@ -33,7 +33,7 @@
 	//var/list/icon_keys = list()		//keys
 	//var/list/ammo_states = list()	//values
 
-/obj/item/gun/ballistic/Initialize(mapload, starts_loaded = TRUE)
+/obj/item/gun/projectile/ballistic/Initialize(mapload, starts_loaded = TRUE)
 	. = ..()
 	if(starts_loaded)
 		if(ispath(ammo_type) && (load_method & (SINGLE_CASING|SPEEDLOADER)))
@@ -44,7 +44,7 @@
 			allowed_magazines += /obj/item/ammo_magazine/smart
 	update_icon()
 
-/obj/item/gun/ballistic/consume_next_projectile()
+/obj/item/gun/projectile/ballistic/consume_next_projectile()
 	//get the next casing
 	if(loaded.len)
 		chambered = loaded[1] //load next casing.
@@ -59,17 +59,17 @@
 		return chambered.get_projectile()
 	return null
 
-/obj/item/gun/ballistic/handle_post_fire()
+/obj/item/gun/projectile/ballistic/handle_post_fire()
 	..()
 	if(chambered)
 		chambered.expend()
 		process_chambered()
 
-/obj/item/gun/ballistic/handle_click_empty()
+/obj/item/gun/projectile/ballistic/handle_click_empty()
 	..()
 	process_chambered()
 
-/obj/item/gun/ballistic/proc/process_chambered()
+/obj/item/gun/projectile/ballistic/proc/process_chambered()
 	if (!chambered) return
 
 	// Aurora forensics port, gunpowder residue.
@@ -105,7 +105,7 @@
 #define SPEED_RELOAD_SPEED    0.5 SECONDS
 //Attempts to load A into src, depending on the type of thing being loaded and the load_method
 //Maybe this should be broken up into separate procs for each load method?
-/obj/item/gun/ballistic/proc/load_ammo(obj/item/A, mob/user)
+/obj/item/gun/projectile/ballistic/proc/load_ammo(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
 		if(!(load_method & AM.mag_type) || caliber != AM.caliber || allowed_magazines && !is_type_in_list(A, allowed_magazines))
@@ -203,7 +203,7 @@
 #undef SPEED_RELOAD_SPEED
 
 //attempts to unload src. If allow_dump is set to 0, the speedloader unloading method will be disabled
-/obj/item/gun/ballistic/proc/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/projectile/ballistic/proc/unload_ammo(mob/user, var/allow_dump=1)
 	if(ammo_magazine)
 		user.put_in_hands_or_drop(ammo_magazine)
 		user.visible_message("[user] removes [ammo_magazine] from [src].", "<span class='notice'>You remove [ammo_magazine] from [src].</span>")
@@ -232,11 +232,11 @@
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 	update_icon()
 
-/obj/item/gun/ballistic/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/ballistic/attackby(var/obj/item/A as obj, mob/user as mob)
 	..()
 	load_ammo(A, user)
 
-/obj/item/gun/ballistic/attack_self(mob/user)
+/obj/item/gun/projectile/ballistic/attack_self(mob/user)
 	if(firemodes.len > 1)
 		switch_firemodes(user)
 	else if(ammo_magazine)
@@ -249,13 +249,13 @@
 		unload_ammo(user)
 	update_icon()
 
-/obj/item/gun/ballistic/attack_hand(mob/user, list/params)
+/obj/item/gun/projectile/ballistic/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)
 	else
 		return ..()
 
-/obj/item/gun/ballistic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/gun/projectile/ballistic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.stored_ammo.len)
 		ammo_magazine.loc = get_turf(src.loc)
@@ -269,14 +269,14 @@
 		ammo_magazine = null
 		update_icon() //make sure to do this after unsetting ammo_magazine
 
-/obj/item/gun/ballistic/examine(mob/user, dist)
+/obj/item/gun/projectile/ballistic/examine(mob/user, dist)
 	. = ..()
 	if(ammo_magazine)
 		. += "It has \a [ammo_magazine] loaded."
 	. += "Has [getAmmo()] round\s remaining."
 	return
 
-/obj/item/gun/ballistic/proc/getAmmo()
+/obj/item/gun/projectile/ballistic/proc/getAmmo()
 	var/bullets = 0
 	if(loaded)
 		bullets += loaded.len
@@ -288,7 +288,7 @@
 
 /* Unneeded -- so far.
 //in case the weapon has firemodes and can't unload using attack_hand()
-/obj/item/gun/ballistic/verb/unload_gun()
+/obj/item/gun/projectile/ballistic/verb/unload_gun()
 	set name = "Unload Ammo"
 	set category = "Object"
 	set src in usr

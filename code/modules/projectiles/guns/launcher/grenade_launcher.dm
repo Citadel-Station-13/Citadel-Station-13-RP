@@ -1,4 +1,4 @@
-/obj/item/gun/launcher/grenade
+/obj/item/gun/projectile/launcher/grenade
 	name = "grenade launcher"
 	desc = "A bulky pump-action grenade launcher. Holds up to 6 grenades in a revolving magazine."
 	icon_state = "riotgun"
@@ -19,7 +19,7 @@
 	materials = list(MAT_STEEL = 2000)
 
 //revolves the magazine, allowing players to choose between multiple grenade types
-/obj/item/gun/launcher/grenade/proc/pump(mob/M as mob)
+/obj/item/gun/projectile/launcher/grenade/proc/pump(mob/M as mob)
 	playsound(M, 'sound/weapons/shotgunpump.ogg', 60, 1)
 
 	var/obj/item/grenade/next
@@ -36,14 +36,14 @@
 		to_chat(M, "<span class='warning'>You pump [src], but the magazine is empty.</span>")
 	update_icon()
 
-/obj/item/gun/launcher/grenade/examine(mob/user, dist)
+/obj/item/gun/projectile/launcher/grenade/examine(mob/user, dist)
 	. = ..()
 	var/grenade_count = grenades.len + (chambered? 1 : 0)
 	. += "Has [grenade_count] grenade\s remaining."
 	if(chambered)
 		. += "\A [chambered] is chambered."
 
-/obj/item/gun/launcher/grenade/proc/load(obj/item/grenade/G, mob/user)
+/obj/item/gun/projectile/launcher/grenade/proc/load(obj/item/grenade/G, mob/user)
 	if(G.loadable)
 		if(grenades.len >= max_grenades)
 			to_chat(user, "<span class='warning'>[src] is full.</span>")
@@ -55,7 +55,7 @@
 		return
 	to_chat(user, "<span class='warning'>[G] doesn't seem to fit in the [src]!</span>")
 
-/obj/item/gun/launcher/grenade/proc/unload(mob/user)
+/obj/item/gun/projectile/launcher/grenade/proc/unload(mob/user)
 	if(grenades.len)
 		var/obj/item/grenade/G = grenades[grenades.len]
 		grenades.len--
@@ -65,53 +65,53 @@
 	else
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 
-/obj/item/gun/launcher/grenade/attack_self(mob/user)
+/obj/item/gun/projectile/launcher/grenade/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
 	pump(user)
 
-/obj/item/gun/launcher/grenade/attackby(obj/item/I, mob/user)
+/obj/item/gun/projectile/launcher/grenade/attackby(obj/item/I, mob/user)
 	if((istype(I, /obj/item/grenade)))
 		load(I, user)
 	else
 		..()
 
-/obj/item/gun/launcher/grenade/attack_hand(mob/user, list/params)
+/obj/item/gun/projectile/launcher/grenade/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload(user)
 	else
 		..()
 
 /*//This broke for no reason. Look into it.
-/obj/item/gun/launcher/grenade/consume_next_projectile()
+/obj/item/gun/projectile/launcher/grenade/consume_next_projectile()
 	if(chambered)
 		chambered.det_time = 10
 		chambered.activate(null)
 	return chambered
 */
 
-/obj/item/gun/launcher/grenade/handle_post_fire(mob/user)
+/obj/item/gun/projectile/launcher/grenade/handle_post_fire(mob/user)
 	message_admins("[key_name_admin(user)] fired a grenade ([chambered.name]) from a grenade launcher ([src.name]).")
 	log_game("[key_name_admin(user)] used a grenade ([chambered.name]).")
 	chambered = null
 
 //Underslung grenade launcher to be used with the Z8
-/obj/item/gun/launcher/grenade/underslung
+/obj/item/gun/projectile/launcher/grenade/underslung
 	name = "underslung grenade launcher"
 	desc = "Not much more than a tube and a firing mechanism, this grenade launcher is designed to be fitted to a rifle."
 	w_class = ITEMSIZE_NORMAL
 	damage_force = 5
 	max_grenades = 0
 
-/obj/item/gun/launcher/grenade/underslung/attack_self(mob/user)
+/obj/item/gun/projectile/launcher/grenade/underslung/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
 	return
 
 //load and unload directly into chambered
-/obj/item/gun/launcher/grenade/underslung/load(obj/item/grenade/G, mob/user)
+/obj/item/gun/projectile/launcher/grenade/underslung/load(obj/item/grenade/G, mob/user)
 	if(G.loadable)
 		if(chambered)
 			to_chat(user, "<span class='warning'>[src] is already loaded.</span>")
@@ -123,7 +123,7 @@
 		return
 	to_chat(user, "<span class='warning'>[G] doesn't seem to fit in the [src]!</span>")
 
-/obj/item/gun/launcher/grenade/underslung/unload(mob/user)
+/obj/item/gun/projectile/launcher/grenade/underslung/unload(mob/user)
 	if(chambered)
 		user.put_in_hands(chambered)
 		user.visible_message("[user] removes \a [chambered] from [src].", "<span class='notice'>You remove \a [chambered] from [src].</span>")

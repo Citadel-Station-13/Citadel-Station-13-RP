@@ -1,8 +1,8 @@
 ////////////// PTR-7 Anti-Materiel Rifle //////////////
 
-/obj/item/gun/ballistic/heavysniper/collapsible
+/obj/item/gun/projectile/ballistic/heavysniper/collapsible
 
-/obj/item/gun/ballistic/heavysniper/collapsible/verb/take_down()
+/obj/item/gun/projectile/ballistic/heavysniper/collapsible/verb/take_down()
 	set category = "Object"
 	set name = "Disassemble Rifle"
 
@@ -15,7 +15,7 @@
 	else
 		collapse_rifle(user)
 
-/obj/item/gun/ballistic/heavysniper/proc/collapse_rifle(mob/user)
+/obj/item/gun/projectile/ballistic/heavysniper/proc/collapse_rifle(mob/user)
 	to_chat(user, "<span class='warning'>You begin removing \the [src]'s barrel.</span>")
 	if(do_after(user, 40))
 		to_chat(user, "<span class='warning'>You remove \the [src]'s barrel.</span>")
@@ -164,14 +164,14 @@
 			w_class = ITEMSIZE_LARGE
 
 		if(3)
-			var/obj/item/gun/ballistic/heavysniper/collapsible/gun = new (get_turf(src), 0)
+			var/obj/item/gun/projectile/ballistic/heavysniper/collapsible/gun = new (get_turf(src), 0)
 			if(usr && istype(usr, /mob/living/carbon/human))
 				var/mob/living/carbon/human/user = usr
 				user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 				user.put_in_hands_or_drop(gun)
 			qdel(src)
 
-/obj/item/gun/ballistic/heavysniper/update_icon_state()
+/obj/item/gun/projectile/ballistic/heavysniper/update_icon_state()
 	. = ..()
 	if(bolt_open)
 		icon_state = "heavysniper-open"

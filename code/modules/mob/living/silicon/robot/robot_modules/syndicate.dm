@@ -66,7 +66,7 @@
 	. = ..()
 	. |= list(
 		/obj/item/shield_projector/rectangle/weak,
-		/obj/item/gun/energy/dakkalaser,
+		/obj/item/gun/projectile/energy/dakkalaser,
 		/obj/item/handcuffs/cyborg,
 		/obj/item/melee/baton/robot
 	)

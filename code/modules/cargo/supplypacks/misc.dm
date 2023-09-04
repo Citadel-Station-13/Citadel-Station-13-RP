@@ -185,7 +185,7 @@
 /datum/supply_pack/misc/beltminer
 	name = "Belt-miner gear crate"
 	contains = list(
-			/obj/item/gun/energy/particle = 2,
+			/obj/item/gun/projectile/energy/particle = 2,
 			/obj/item/cell/device/weapon = 2,
 			/obj/item/storage/firstaid/regular = 1,
 			/obj/item/gps = 2,

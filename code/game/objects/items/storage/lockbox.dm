@@ -110,10 +110,10 @@
 		/obj/item/clothing/under/customs/khaki = 4,
 		/obj/item/clothing/suit/colonial_redcoat = 4,
 		/obj/item/clothing/head/redcoat = 4,
-		/obj/item/gun/ballistic/musket/pistol = 1,
+		/obj/item/gun/projectile/ballistic/musket/pistol = 1,
 		/obj/item/ammo_casing/musket  = 12,
 		/obj/item/storage/belt/sheath = 1,
-		/obj/item/gun/ballistic/musket = 3,
+		/obj/item/gun/projectile/ballistic/musket = 3,
 		/obj/item/reagent_containers/glass/powder_horn = 4,
 		/obj/item/reagent_containers/food/drinks/tea = 8,
 	)
@@ -126,9 +126,9 @@
 		/obj/item/clothing/under/tactical = 4,
 		/obj/item/clothing/accessory/storage/black_vest = 4,
 		/obj/item/clothing/head/soft/black = 4,
-		/obj/item/gun/ballistic/automatic/p90 = 2,
+		/obj/item/gun/projectile/ballistic/automatic/p90 = 2,
 		/obj/item/ammo_magazine/m57x28mmp90 = 4,
-		/obj/item/gun/ballistic/p92x = 1,
+		/obj/item/gun/projectile/ballistic/p92x = 1,
 		/obj/item/ammo_magazine/m9mm = 2,
 	)
 
@@ -140,11 +140,11 @@
 		/obj/item/clothing/suit/storage/toggle/brown_jacket = 4,
 		/obj/item/clothing/shoes/boots/cowboy/classic = 4,
 		/obj/item/clothing/head/cowboy_hat = 4,
-		/obj/item/gun/ballistic/revolver/dirty_harry = 2,
+		/obj/item/gun/projectile/ballistic/revolver/dirty_harry = 2,
 		/obj/item/ammo_magazine/s44 = 4,
-		/obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895 = 1,
+		/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/win1895 = 1,
 		/obj/item/ammo_magazine/clip/c762 = 2,
-		/obj/item/gun/ballistic/shotgun/doublebarrel/pellet = 1,
+		/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/pellet = 1,
 		/obj/item/storage/box/shotgunshells = 1,
 		/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 3,
 		/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 3,
@@ -159,9 +159,9 @@
 		/obj/item/clothing/under/soviet = 4,
 		/obj/item/clothing/head/ushanka = 3,
 		/obj/item/clothing/head/bearpelt = 1,
-		/obj/item/gun/ballistic/shotgun/pump/rifle = 3,
+		/obj/item/gun/projectile/ballistic/shotgun/pump/rifle = 3,
 		/obj/item/ammo_magazine/clip/c762 = 3,
-		/obj/item/gun/ballistic/pistol = 1,
+		/obj/item/gun/projectile/ballistic/pistol = 1,
 		/obj/item/ammo_magazine/m9mm/compact = 1,
 		/obj/item/reagent_containers/food/drinks/bottle/vodka = 1,
 	)
@@ -176,7 +176,7 @@
 		/obj/item/material/sword = 2,
 		/obj/item/shield/riot/buckler = 2,
 		/obj/item/material/twohanded/sledgehammer  = 1,
-		/obj/item/gun/launcher/crossbow = 1,
+		/obj/item/gun/projectile/launcher/crossbow = 1,
 	)
 
 /obj/item/storage/lockbox/maniple
@@ -200,7 +200,7 @@
 		/obj/item/clothing/under/rank/trek/engsec/ds9 = 2,
 		/obj/item/clothing/under/rank/trek/medsci/ds9 = 1,
 		/obj/item/clothing/suit/storage/trek/ds9 = 1,
-		/obj/item/gun/energy/retro = 4,
+		/obj/item/gun/projectile/energy/retro = 4,
 		/obj/item/cell/device/weapon = 8,
 	)
 

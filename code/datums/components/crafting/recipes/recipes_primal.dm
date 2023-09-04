@@ -166,7 +166,7 @@
 
 /datum/crafting_recipe/bone_bow
 	name = "Bone Bow"
-	result = /obj/item/gun/ballistic/bow/ashen
+	result = /obj/item/gun/projectile/ballistic/bow/ashen
 	time = 120 // 80+120 = 200
 	reqs = list(/obj/item/stack/material/bone = 8,
 				 /obj/item/stack/sinew = 4)

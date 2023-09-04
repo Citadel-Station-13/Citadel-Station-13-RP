@@ -328,8 +328,8 @@ proc/check_panel(mob/M)
 		qdel(O)
 	return
 
-GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/gun/ballistic, /obj/item/ammo_magazine/s357,\
-	/obj/item/gun/energy/crossbow, /obj/item/melee/energy/sword,\
+GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/gun/projectile/ballistic, /obj/item/ammo_magazine/s357,\
+	/obj/item/gun/projectile/energy/crossbow, /obj/item/melee/energy/sword,\
 	/obj/item/storage/box/syndicate, /obj/item/storage/box/emps,\
 	/obj/item/cartridge/syndicate, /obj/item/clothing/under/chameleon,\
 	/obj/item/clothing/shoes/syndigaloshes, /obj/item/card/id/syndicate,\
@@ -338,7 +338,7 @@ GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/gun/ballistic, /obj/item
 	/obj/item/storage/toolbox/syndicate, /obj/item/aiModule,\
 	/obj/item/radio/headset/syndicate,	/obj/item/plastique,\
 	/obj/item/powersink, /obj/item/storage/box/syndie_kit,\
-	/obj/item/toy/syndicateballoon, /obj/item/gun/energy/captain,\
+	/obj/item/toy/syndicateballoon, /obj/item/gun/projectile/energy/captain,\
 	/obj/item/hand_tele, /obj/item/rcd, /obj/item/tank/jetpack,\
 	/obj/item/clothing/under/rank/captain, /obj/item/aicard,\
 	/obj/item/clothing/shoes/magboots, /obj/item/blueprints, /obj/item/disk/nuclear,\

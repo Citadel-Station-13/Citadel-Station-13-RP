@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/caseless/prototype
+/obj/item/gun/projectile/ballistic/caseless/prototype
 	name = "prototype caseless rifle"
 	desc = "This experimental rifle is the efforts of NanoTrasen's R&D division, made manifest. Uses 5mm solid-phoron caseless rounds, obviously."
 	icon_state = "caseless"
@@ -12,17 +12,17 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m5mmcaseless)
 	one_handed_penalty = 15
 
-/obj/item/gun/ballistic/caseless/prototype/update_icon_state()
+/obj/item/gun/projectile/ballistic/caseless/prototype/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]-empty"
 
-/obj/item/gun/ballistic/caseless/prototype/loaded
+/obj/item/gun/projectile/ballistic/caseless/prototype/loaded
 	magazine_type = /obj/item/ammo_magazine/m5mmcaseless
 
-/obj/item/gun/ballistic/caseless/usmc
+/obj/item/gun/projectile/ballistic/caseless/usmc
 	name = "M41A Pulse Rifle"
 	desc = "A relic dating back to the Xenomorph Wars and the former primary battle rifle of the  United Solar Marine Corps. Loads using 10x24mm caseless Magazines"
 	icon_state = "usmc"

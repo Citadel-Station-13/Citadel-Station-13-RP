@@ -9,7 +9,7 @@
 	active_power_usage = 40000	//10 kW
 	var/efficiency = 10000 //will provide the modified power rate when upgraded
 	var/obj/item/charging = null
-	var/list/allowed_devices = list(/obj/item/gun/energy, /obj/item/melee/baton, /obj/item/modular_computer, /obj/item/computer_hardware/battery_module, /obj/item/cell, /obj/item/flashlight, /obj/item/electronic_assembly, /obj/item/weldingtool/electric, /obj/item/ammo_magazine/smart, /obj/item/flash, /obj/item/ammo_casing/microbattery, /obj/item/shield_diffuser, /obj/item/ammo_magazine/cell_mag, /obj/item/gun/ballistic/cell_loaded)
+	var/list/allowed_devices = list(/obj/item/gun/projectile/energy, /obj/item/melee/baton, /obj/item/modular_computer, /obj/item/computer_hardware/battery_module, /obj/item/cell, /obj/item/flashlight, /obj/item/electronic_assembly, /obj/item/weldingtool/electric, /obj/item/ammo_magazine/smart, /obj/item/flash, /obj/item/ammo_casing/microbattery, /obj/item/shield_diffuser, /obj/item/ammo_magazine/cell_mag, /obj/item/gun/ballistic/cell_loaded)
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
@@ -40,7 +40,7 @@
 			to_chat(user, "<span class='warning'>\The [src] blinks red as you try to insert [G]!</span>")
 			return
 		if(istype(G, /obj/item/gun/energy))
-			var/obj/item/gun/energy/E = G
+			var/obj/item/gun/projectile/energy/E = G
 			if(E.self_recharge)
 				to_chat(user, "<span class='notice'>\The [E] has no recharge port.</span>")
 				return
@@ -69,8 +69,8 @@
 			if(maggy.stored_ammo.len < 1)
 				to_chat(user, "\The [G] does not have any cells installed.")
 				return
-		else if(istype(G, /obj/item/gun/ballistic/cell_loaded))
-			var/obj/item/gun/ballistic/cell_loaded/gunny = G
+		else if(istype(G, /obj/item/gun/projectile/ballistic/cell_loaded))
+			var/obj/item/gun/projectile/ballistic/cell_loaded/gunny = G
 			if(gunny.ammo_magazine)
 				var/obj/item/ammo_magazine/cell_mag/maggy = gunny.ammo_magazine
 				if(maggy.stored_ammo.len < 1)
@@ -179,8 +179,8 @@
 		else if(istype(charging, /obj/item/ammo_magazine/cell_mag))
 			charge_mag(charging)
 
-		else if(istype(charging, /obj/item/gun/ballistic/cell_loaded))
-			var/obj/item/gun/ballistic/cell_loaded/gunny = charging
+		else if(istype(charging, /obj/item/gun/projectile/ballistic/cell_loaded))
+			var/obj/item/gun/projectile/ballistic/cell_loaded/gunny = charging
 			charge_mag(gunny.ammo_magazine)
 
 /obj/machinery/recharger/proc/charge_mag(obj/item/ammo_magazine/cell_mag/maggy)
@@ -229,7 +229,7 @@
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	base_power_draw = 30000
-	allowed_devices = list(/obj/item/gun/energy, /obj/item/gun/magnetic, /obj/item/melee/baton, /obj/item/flashlight, /obj/item/cell/device, /obj/item/ammo_casing/microbattery, /obj/item/ammo_magazine/cell_mag, /obj/item/gun/ballistic/cell_loaded)
+	allowed_devices = list(/obj/item/gun/projectile/energy, /obj/item/gun/magnetic, /obj/item/melee/baton, /obj/item/flashlight, /obj/item/cell/device, /obj/item/ammo_casing/microbattery, /obj/item/ammo_magazine/cell_mag, /obj/item/gun/ballistic/cell_loaded)
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"
 	icon_state_idle = "wrecharger0"

@@ -1613,11 +1613,11 @@
 	var/chassis_desc = "A self recharging, ranged mining tool that does increased damage in low temperature. Capable of holding up to six slots worth of mod kits. It seems to have been painted an ugly green, and has a small image of a bird scratched crudely into the stock."
 	var/chassis_icon_file = 'icons/vore/custom_guns_vr.dmi'
 
-/obj/item/borg/upgrade/modkit/chassis_mod/kai/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
+/obj/item/borg/upgrade/modkit/chassis_mod/kai/install(obj/item/gun/projectile/energy/kinetic_accelerator/KA, mob/user)
 	KA.desc = chassis_desc
 	KA.icon = chassis_icon_file
 	..()
-/obj/item/borg/upgrade/modkit/chassis_mod/kai/uninstall(obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/borg/upgrade/modkit/chassis_mod/kai/uninstall(obj/item/gun/projectile/energy/kinetic_accelerator/KA)
 	KA.desc = initial(KA.desc)
 	KA.icon = initial(KA.icon)
 	..()

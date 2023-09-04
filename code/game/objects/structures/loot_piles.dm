@@ -516,7 +516,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	)
 	rare_loot = list(
 		/obj/item/clothing/suit/armor/alien/tank,
-		/obj/item/gun/energy/alien
+		/obj/item/gun/projectile/energy/alien
 	)
 
 // The pile found at the very end, and as such has the best loot.
@@ -543,7 +543,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/cell/device/weapon/recharge/alien,
 		/obj/item/clothing/suit/armor/alien,
 		/obj/item/clothing/head/helmet/alien,
-		/obj/item/gun/energy/alien
+		/obj/item/gun/projectile/energy/alien
 	)
 	uncommon_loot = list(
 		/obj/item/storage/belt/medical/alien,
@@ -593,9 +593,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
     )
     rare_loot = list(
         /obj/item/storage/belt/utility/alien/full,
-        /obj/item/gun/ballistic/revolver,
-        /obj/item/gun/ballistic/sec,
-        /obj/item/gun/launcher/crossbow
+        /obj/item/gun/projectile/ballistic/revolver,
+        /obj/item/gun/projectile/ballistic/sec,
+        /obj/item/gun/projectile/launcher/crossbow
     )
 
 // Subtype for mecha and mecha accessories. These might not always be on the surface.
@@ -1087,7 +1087,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	rare_loot = list(
-		/obj/item/gun/ballistic/gyropistol,
+		/obj/item/gun/projectile/ballistic/gyropistol,
 		/obj/item/mecha_parts/mecha_equipment/generator/nuclear
 		)
 

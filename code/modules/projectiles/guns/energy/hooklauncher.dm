@@ -2,7 +2,7 @@
  * Contains weapons primarily using the 'grappling hook' projectiles.
  */
 
-/obj/item/gun/energy/hooklauncher
+/obj/item/gun/projectile/energy/hooklauncher
 	name = "gravity whip"
 	desc = "A large, strange gauntlet."
 	icon_state = "gravwhip"
@@ -17,7 +17,7 @@
 
 // An easily concealable not-ripoff version. It would be silenced, if it didn't make it blatant you're the one using it.
 
-/obj/item/gun/energy/hooklauncher/ring
+/obj/item/gun/projectile/energy/hooklauncher/ring
 	name = "ominous ring"
 	desc = "A small ring with strange symbols engraved upon it."
 	icon = 'icons/obj/clothing/rings.dmi'

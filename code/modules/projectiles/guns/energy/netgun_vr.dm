@@ -1,4 +1,4 @@
-/obj/item/gun/energy/netgun
+/obj/item/gun/projectile/energy/netgun
 	name = "Hephaestus \'Retiarius\'"
 	desc = "The Hephaestus Industries 'Retiarius' stuns targets, immobilizing them in an energized net field."
 	catalogue_data = list()///datum/category_item/catalogue/information/organization/hephaestus)
@@ -17,7 +17,7 @@
 		list(mode_name="capture", projectile_type=/obj/projectile/beam/energy_net, fire_sound = 'sound/weapons/eluger.ogg', charge_cost=1200, fire_delay=50)
 	)
 
-/obj/item/gun/energy/netgun/update_icon()
+/obj/item/gun/projectile/energy/netgun/update_icon()
 	cut_overlays()
 	var/list/overlays_to_add = list()
 

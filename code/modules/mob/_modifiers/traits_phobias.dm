@@ -522,7 +522,7 @@
 		if(istype(thing, /obj/item/implanter))
 			fear_amount += 8 //Very big needle.
 
-		if(istype(thing, /obj/item/gun/launcher/syringe))
+		if(istype(thing, /obj/item/gun/projectile/launcher/syringe))
 			fear_amount += 6
 
 		if(istype(thing, /mob/living/carbon/human))

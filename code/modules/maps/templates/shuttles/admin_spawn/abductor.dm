@@ -66,7 +66,7 @@ You will find a dispenser within the room you started in which contains some bas
 
 /obj/machinery/porta_turret/alien/abductor
 	name = "anti-personnel turret"
-	installation = /obj/item/gun/energy/gun/taser
+	installation = /obj/item/gun/projectile/energy/gun/taser
 	lethal = FALSE
 	health = 500 // Sturdier turrets, non-lethal, for capturing people alive
 	maxhealth = 500
@@ -74,7 +74,7 @@ You will find a dispenser within the room you started in which contains some bas
 
 /obj/machinery/porta_turret/alien/abductor/ion
 	name = "anti-personnel turret"
-	installation = /obj/item/gun/energy/ionrifle/weak
+	installation = /obj/item/gun/projectile/energy/ionrifle/weak
 	lethal = TRUE
 
 /obj/machinery/power/port_gen/abductor/built/abductor

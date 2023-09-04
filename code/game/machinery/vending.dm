@@ -1137,7 +1137,7 @@
 		/obj/item/reagent_containers/spray/pepper = 6,
 		/obj/item/reagent_containers/food/snacks/donut/normal = 12,
 		/obj/item/storage/box/evidence = 6,
-		/obj/item/gun/ballistic/sec = 2,
+		/obj/item/gun/projectile/ballistic/sec = 2,
 		/obj/item/ammo_magazine/m45/rubber = 6,
 		/obj/item/clothing/mask/gas/half = 6,
 		/obj/item/clothing/glasses/omnihud/sec = 6,
@@ -1671,10 +1671,10 @@
 	product_ads = "Stunning!;Take justice in your own hands!;LEADearship!"
 	icon_state = "weapon"
 	products = list(/obj/item/flash = 6,
-/obj/item/reagent_containers/spray/pepper = 6, /obj/item/gun/ballistic/olivaw = 5, /obj/item/gun/ballistic/giskard = 5, /obj/item/ammo_magazine/mg/cl32/rubber = 20)
+/obj/item/reagent_containers/spray/pepper = 6, /obj/item/gun/projectile/ballistic/olivaw = 5, /obj/item/gun/ballistic/giskard = 5, /obj/item/ammo_magazine/mg/cl32/rubber = 20)
 	contraband = list(/obj/item/reagent_containers/food/snacks/syndicake = 6)
 	prices = list(/obj/item/flash = 600,
-/obj/item/reagent_containers/spray/pepper = 800,  /obj/item/gun/ballistic/olivaw = 1600, /obj/item/gun/ballistic/giskard = 1200, /obj/item/ammo_magazine/mg/cl32/rubber = 200)
+/obj/item/reagent_containers/spray/pepper = 800,  /obj/item/gun/projectile/ballistic/olivaw = 1600, /obj/item/gun/ballistic/giskard = 1200, /obj/item/ammo_magazine/mg/cl32/rubber = 200)
 */
 
 /obj/machinery/vending/blood

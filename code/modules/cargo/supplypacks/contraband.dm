@@ -36,7 +36,7 @@
 /datum/supply_pack/munitions/bolt_rifles_militia
     name = "Weapon - Misplaced militia rifles"
     contains = list(
-            /obj/item/gun/ballistic/shotgun/pump/rifle = 3,
+            /obj/item/gun/projectile/ballistic/shotgun/pump/rifle = 3,
             /obj/item/ammo_magazine/clip/c762 = 6
             )
     cost = 50
@@ -67,7 +67,7 @@
 	name = "operator's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/ops/PopulateContents()
-	new /obj/item/gun/ballistic/shotgun/pump/combat(src)
+	new /obj/item/gun/projectile/ballistic/shotgun/pump/combat(src)
 	new /obj/item/clothing/suit/storage/vest/heavy/merc(src)
 	new /obj/item/clothing/glasses/night(src)
 	new /obj/item/storage/box/anti_photons(src)
@@ -79,7 +79,7 @@
 
 /obj/item/storage/box/cargo_null_entry_kit/doctor/PopulateContents()
 	new /obj/item/storage/firstaid/combat(src)
-	new /obj/item/gun/ballistic/dartgun(src)
+	new /obj/item/gun/projectile/ballistic/dartgun(src)
 	new /obj/item/reagent_containers/hypospray(src)
 	new /obj/item/reagent_containers/glass/bottle/chloralhydrate(src)
 	new /obj/item/reagent_containers/glass/bottle/cyanide(src)
@@ -100,7 +100,7 @@
 	name = "spy's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/spy/PopulateContents()
-	new /obj/item/gun/ballistic/silenced(src)
+	new /obj/item/gun/projectile/ballistic/silenced(src)
 	new /obj/item/storage/box/syndie_kit/chameleon(src)
 	new /obj/item/encryptionkey/syndicate(src)
 	new /obj/item/card/id/syndicate(src)
@@ -111,8 +111,8 @@
 	name = "professional's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/pro/PopulateContents()
-	new /obj/item/gun/ballistic/silenced(src)
-	new /obj/item/gun/energy/ionrifle/pistol(src)
+	new /obj/item/gun/projectile/ballistic/silenced(src)
+	new /obj/item/gun/projectile/energy/ionrifle/pistol(src)
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 	new /obj/item/card/emag(src)
 	new /obj/item/ammo_magazine/m45/ap(src)

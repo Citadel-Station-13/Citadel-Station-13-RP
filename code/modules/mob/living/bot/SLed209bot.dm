@@ -24,7 +24,7 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = HEAVY
 
-	used_weapon = /obj/item/gun/energy/taser/xeno
+	used_weapon = /obj/item/gun/projectile/energy/taser/xeno
 
 	stun_strength = 10
 	xeno_harm_strength = 9
@@ -148,7 +148,7 @@
 				return
 
 		if(7)
-			if(istype(W, /obj/item/gun/energy/taser/xeno))
+			if(istype(W, /obj/item/gun/projectile/energy/taser/xeno))
 				if(!user.attempt_consume_item_for_construction(W))
 					return
 				name = "xenotaser SL-ED-209 assembly"

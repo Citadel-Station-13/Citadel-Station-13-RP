@@ -431,7 +431,7 @@ var/global/list/all_objectives = list()
 	var/target_name
 
 	var/global/possible_items[] = list(
-		"the Facility Director's antique laser gun" = /obj/item/gun/energy/captain,
+		"the Facility Director's antique laser gun" = /obj/item/gun/projectile/energy/captain,
 		"a hand teleporter" = /obj/item/hand_tele,
 		"an RCD" = /obj/item/rcd,
 		"a jetpack" = /obj/item/tank/jetpack,
@@ -455,7 +455,7 @@ var/global/list/all_objectives = list()
 
 	var/global/possible_items_special[] = list(
 		/*"nuclear authentication disk" = /obj/item/disk/nuclear,*///Broken with the change to nuke disk making it respawn on z level change.
-		"nuclear gun" = /obj/item/gun/energy/gun/nuclear,
+		"nuclear gun" = /obj/item/gun/projectile/energy/gun/nuclear,
 		"diamond drill" = /obj/item/pickaxe/diamonddrill,
 		"bag of holding" = /obj/item/storage/backpack/holding,
 		"hyper-capacity cell" = /obj/item/cell/hyper,
@@ -691,11 +691,11 @@ var/global/list/all_objectives = list()
 			target_amount = 4
 			loot = "four energy guns"
 		if(7)
-			target = /obj/item/gun/energy/laser
+			target = /obj/item/gun/projectile/energy/laser
 			target_amount = 2
 			loot = "two laser guns"
 		if(8)
-			target = /obj/item/gun/energy/ionrifle
+			target = /obj/item/gun/projectile/energy/ionrifle
 			target_amount = 1
 			loot = "an ion gun"
 

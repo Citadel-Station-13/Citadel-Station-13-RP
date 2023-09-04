@@ -40,7 +40,7 @@
 	max_ammo = 5
 	multiple_sprites = 1
 
-/obj/item/gun/ballistic/dartgun
+/obj/item/gun/projectile/ballistic/dartgun
 	name = "dart gun"
 	desc = "Zeng-Hu Pharmaceutical's entry into the arms market, the Z-H P Artemis is a gas-powered dart gun capable of delivering chemical cocktails swiftly across short distances."
 	description_info = "The dart gun is capable of storing three beakers. In order to use the dart gun, you must first use it in-hand to open its mixing UI. The dart-gun will only draw from beakers with mixing enabled. If multiple are enabled, the gun will draw from them in equal amounts."
@@ -69,7 +69,7 @@
 	var/container_type = /obj/item/reagent_containers/glass/beaker
 	var/list/starting_chems = null
 
-/obj/item/gun/ballistic/dartgun/Initialize(mapload)
+/obj/item/gun/projectile/ballistic/dartgun/Initialize(mapload)
 	. = ..()
 	if(starting_chems)
 		for(var/chem in starting_chems)
@@ -78,7 +78,7 @@
 			beakers += B
 	update_icon()
 
-/obj/item/gun/ballistic/dartgun/update_icon_state()
+/obj/item/gun/projectile/ballistic/dartgun/update_icon_state()
 	. = ..()
 	if(!ammo_magazine)
 		icon_state = "[base_state]-empty"
@@ -94,13 +94,13 @@
 	else
 		icon_state = "[base_state]"
 
-/obj/item/gun/ballistic/dartgun/consume_next_projectile()
+/obj/item/gun/projectile/ballistic/dartgun/consume_next_projectile()
 	. = ..()
 	var/obj/projectile/bullet/chemdart/dart = .
 	if(istype(dart))
 		fill_dart(dart)
 
-/obj/item/gun/ballistic/dartgun/examine(mob/user, dist)
+/obj/item/gun/projectile/ballistic/dartgun/examine(mob/user, dist)
 	//update_icon()
 	//if (!..(user, 2))
 	//	return
@@ -112,7 +112,7 @@
 				for(var/datum/reagent/R in B.reagents.reagent_list)
 					. += "<font color=#4F49AF>[R.volume] units of [R.name]</font>"
 
-/obj/item/gun/ballistic/dartgun/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/gun/projectile/ballistic/dartgun/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/reagent_containers/glass))
 		if(!istype(I, container_type))
 			to_chat(user, "<font color=#4F49AF>[I] doesn't seem to fit into [src].</font>")
@@ -130,13 +130,13 @@
 	return ..()
 
 //fills the given dart with reagents
-/obj/item/gun/ballistic/dartgun/proc/fill_dart(var/obj/projectile/bullet/chemdart/dart)
+/obj/item/gun/projectile/ballistic/dartgun/proc/fill_dart(var/obj/projectile/bullet/chemdart/dart)
 	if(mixing.len)
 		var/mix_amount = dart.reagent_amount/mixing.len
 		for(var/obj/item/reagent_containers/glass/beaker/B in mixing)
 			B.reagents.trans_to_obj(dart, mix_amount)
 
-/obj/item/gun/ballistic/dartgun/attack_self(mob/user)
+/obj/item/gun/projectile/ballistic/dartgun/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
@@ -171,7 +171,7 @@
 	user << browse(dat, "window=dartgun")
 	onclose(user, "dartgun", src)
 
-/obj/item/gun/ballistic/dartgun/proc/check_beaker_mixing(var/obj/item/B)
+/obj/item/gun/projectile/ballistic/dartgun/proc/check_beaker_mixing(var/obj/item/B)
 	if(!mixing || !beakers)
 		return 0
 	for(var/obj/item/M in mixing)
@@ -179,7 +179,7 @@
 			return 1
 	return 0
 
-/obj/item/gun/ballistic/dartgun/Topic(href, href_list)
+/obj/item/gun/projectile/ballistic/dartgun/Topic(href, href_list)
 	if(..()) return 1
 	src.add_fingerprint(usr)
 	if(href_list["stop_mix"])
@@ -209,7 +209,7 @@
 
 ///Variants of the Dartgun and Chemdarts.///
 
-/obj/item/gun/ballistic/dartgun/research
+/obj/item/gun/projectile/ballistic/dartgun/research
 	name = "prototype dart gun"
 	desc = "Zeng-Hu Pharmaceutical's entry into the arms market, the Z-H P Artemis is a gas-powered dart gun capable of delivering chemical cocktails swiftly across short distances. This one seems to be an early model with an NT stamp."
 	description_info = "The dart gun is capable of storing two beakers. In order to use the dart gun, you must first use it in-hand to open its mixing UI. The dart-gun will only draw from beakers with mixing enabled. If multiple are enabled, the gun will draw from them in equal amounts."

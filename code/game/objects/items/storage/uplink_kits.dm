@@ -7,7 +7,7 @@
 			new /obj/item/clothing/shoes/syndigaloshes(src)
 
 		if("stealth")
-			new /obj/item/gun/energy/crossbow(src)
+			new /obj/item/gun/projectile/energy/crossbow(src)
 			new /obj/item/pen/reagent/paralysis(src)
 			new /obj/item/chameleon(src)
 
@@ -21,7 +21,7 @@
 			new /obj/item/tank/emergency/oxygen/double(src)
 
 		if("guns")
-			new /obj/item/gun/ballistic/revolver(src)
+			new /obj/item/gun/projectile/ballistic/revolver(src)
 			new /obj/item/ammo_magazine/s357(src)
 			new /obj/item/card/emag(src)
 			new /obj/item/plastique(src)
@@ -151,7 +151,7 @@
 		/obj/item/clothing/mask/chameleon,
 		/obj/item/clothing/glasses/chameleon,
 		/obj/item/clothing/accessory/chameleon,
-		/obj/item/gun/energy/chameleon
+		/obj/item/gun/projectile/energy/chameleon
 	)
 
 /obj/item/storage/box/syndie_kit/clerical
@@ -177,7 +177,7 @@
 	name = "\improper Smooth operator"
 	desc = "Compact 9mm with silencer kit."
 	starts_with = list(
-		/obj/item/gun/ballistic/pistol,
+		/obj/item/gun/projectile/ballistic/pistol,
 		/obj/item/silencer
 	)
 
@@ -289,10 +289,10 @@
 	description_fluff = "The container, upon opening, looks to have a few oddly shaped indentations in its packing."
 	description_antag = "This case will likely contain a charged fuel rod gun, and a few fuel rods to go with it. It can only hold the fuel rod gun, fuel rods, batteries, a screwdriver, and stock machine parts."
 	damage_force = 12 //Anti-rad lined i.e. Lead, probably gonna hurt a bit if you get bashed with it.
-	can_hold = list(/obj/item/gun/magnetic/fuelrod, /obj/item/fuel_assembly, /obj/item/cell, /obj/item/stock_parts, /obj/item/tool/screwdriver)
+	can_hold = list(/obj/item/gun/projectile/magnetic/fuelrod, /obj/item/fuel_assembly, /obj/item/cell, /obj/item/stock_parts, /obj/item/tool/screwdriver)
 	cant_hold = list(/obj/item/tool/screwdriver/power)
 	starts_with = list(
-		/obj/item/gun/magnetic/fuelrod,
+		/obj/item/gun/projectile/magnetic/fuelrod,
 		/obj/item/fuel_assembly/deuterium,
 		/obj/item/fuel_assembly/deuterium,
 		/obj/item/fuel_assembly/tritium,

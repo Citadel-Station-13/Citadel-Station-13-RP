@@ -1,6 +1,6 @@
 //This will likely drive me insane, but fuck it. Let's give it a shot. -k22
 //This was heavily assisted by MoondancerPony
-/obj/item/gun/energy/modular
+/obj/item/gun/projectile/energy/modular
 	name = "modular weapon"
 	desc = "You shouldn't be seeing this. Contact your local time-police station."
 	icon_state = "mod_pistol"
@@ -28,7 +28,7 @@
 	//Excessively long because it won't accept subtypes for some reason!
 
 
-/obj/item/gun/energy/modular/Initialize(mapload)
+/obj/item/gun/projectile/energy/modular/Initialize(mapload)
 	. = ..()
 	guncomponents = list()
 	guncomponents += new /obj/item/stock_parts/capacitor
@@ -37,7 +37,7 @@
 	CheckParts()
 	FireModeModify()
 
-/obj/item/gun/energy/modular/proc/CheckParts() //What parts do we have inside us, and how good are they?
+/obj/item/gun/projectile/energy/modular/proc/CheckParts() //What parts do we have inside us, and how good are they?
 	capacitor_rating = 0
 	laser_rating = 0
 	manipulator_rating = 0
@@ -49,7 +49,7 @@
 		manipulator_rating += MA.rating
 	FireModeModify()
 
-/obj/item/gun/energy/modular/attackby(obj/item/O, mob/user)
+/obj/item/gun/projectile/energy/modular/attackby(obj/item/O, mob/user)
 	if(O.is_screwdriver())
 		to_chat(user, "<span class='notice'>You [assembled ? "disassemble" : "assemble"] the gun.</span>")
 		assembled = !assembled
@@ -86,7 +86,7 @@
 	CheckParts()
 
 
-/obj/item/gun/energy/modular/proc/FireModeModify() //Check our laser, manipulator, and capacitor ratings, adjust stun and lethal firemodes depending on laser / manipulator rating and burst size depending on capacitors.
+/obj/item/gun/projectile/energy/modular/proc/FireModeModify() //Check our laser, manipulator, and capacitor ratings, adjust stun and lethal firemodes depending on laser / manipulator rating and burst size depending on capacitors.
 	//check our lethal and stun ratings depending on laser and manipulator rating.
 	var/burstmode = capacitor_rating
 	var/beammode
@@ -127,7 +127,7 @@
 		new /datum/firemode(src, list(mode_name="[burstmode] shot lethal", projectile_type=beammode_lethal, charge_cost = chargecost_lethal, burst = burstmode)),
 		)
 
-/obj/item/gun/energy/modular/load_ammo(var/obj/item/C, mob/user)
+/obj/item/gun/projectile/energy/modular/load_ammo(var/obj/item/C, mob/user)
 	if(istype(C, cell_type))
 		if(self_recharge || battery_lock)
 			to_chat(user, "<span class='notice'>[src] does not have a battery port.</span>")
@@ -147,7 +147,7 @@
 				update_held_icon()
 		return
 
-/obj/item/gun/energy/modular/pistol
+/obj/item/gun/projectile/energy/modular/pistol
 	name = "modular pistol"
 	icon_state = "mod_pistol"
 	max_components = 6
@@ -155,7 +155,7 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 3)
 	burst_delay = 2
 
-/obj/item/gun/energy/modular/carbine
+/obj/item/gun/projectile/energy/modular/carbine
 	name = "modular carbine"
 	icon_state = "mod_carbine"
 	max_components = 8
@@ -163,7 +163,7 @@
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 3, TECH_MATERIAL = 3)
 	burst_delay = 2
 
-/obj/item/gun/energy/modular/cannon
+/obj/item/gun/projectile/energy/modular/cannon
 	name = "modular cannon"
 	icon_state = "mod_cannon"
 	max_components = 14

@@ -6,7 +6,7 @@
 	glasses = /obj/item/clothing/glasses/thermal/plain/eyepatch
 	mask = /obj/item/clothing/mask/smokable/cigarette/cigar/havana
 	head = /obj/item/clothing/head/beret	//deathsquad
-	belt = /obj/item/gun/energy/pulse_pistol
+	belt = /obj/item/gun/projectile/energy/pulse_pistol
 	back = /obj/item/storage/backpack/satchel
 	shoes = /obj/item/clothing/shoes/boots/combat
 	gloves = /obj/item/clothing/gloves/combat
@@ -30,7 +30,7 @@
 	shoes = /obj/item/clothing/shoes/boots/swat
 	gloves = /obj/item/clothing/gloves/swat
 	l_ear = /obj/item/radio/headset/ert
-	belt = /obj/item/gun/energy/gun/combat
+	belt = /obj/item/gun/projectile/energy/gun/combat
 	glasses = /obj/item/clothing/glasses/sunglasses
 	back = /obj/item/storage/backpack/satchel
 

@@ -1,5 +1,5 @@
 // -------------- Secutor -------------
-/obj/item/gun/energy/secutor
+/obj/item/gun/projectile/energy/secutor
 	name = "\improper Secutor sidearm"
 	desc = "The NT/HI-S-1 'Secutor' standard service sidearm was designed by NanoTrasen in conjunction with Hephaestus Industries. Following years of cooperative development, this weapon features NanoTrasen's superior neuro-disruptive electronic payload in a new frame heavily influenced by Hephaestus' more popular and ergonomic taser. Designed exclusively for NanoTrasen Security personnel, this weapon features three fire modes: a non-lethal stun bolt, a low power phaser medium, and an alert-locked lethal contingency. This state-of-the-art weapon serves as a symbolic representation of NanoTrasen and Hephaestus' lasting cooperative relationship - and it's an excellent sidearm to boot."
 
@@ -24,19 +24,19 @@
 	var/emagged = FALSE
 
 
-/obj/item/gun/energy/secutor/update_overlays()
+/obj/item/gun/projectile/energy/secutor/update_overlays()
 	. = ..()
 	. = get_security_level()
 	cut_overlays()
 
-/obj/item/gun/energy/secutor/special_check(mob/user)
+/obj/item/gun/projectile/energy/secutor/special_check(mob/user)
 	if(!emagged && mode_name == "low-power-lethal" && get_security_level() == "green")
 		to_chat(user,"<span class='warning'>The trigger refuses to depress while on the lethal setting and while under security level blue!</span>")
 		return FALSE
 
 	return ..()
 
-/obj/item/gun/energy/secutor/emag_act(var/remaining_charges,var/mob/user)
+/obj/item/gun/projectile/energy/secutor/emag_act(var/remaining_charges,var/mob/user)
 	..()
 	if(!emagged)
 		emagged = TRUE

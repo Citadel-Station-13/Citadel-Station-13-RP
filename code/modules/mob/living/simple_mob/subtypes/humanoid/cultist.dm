@@ -643,7 +643,7 @@
 
 	base_attack_cooldown = 7.5
 
-	loot_list = list(/obj/item/material/butterfly/saw = 100, /obj/item/gun/ballistic/shotgun/doublebarrel/sawn/alt = 100)
+	loot_list = list(/obj/item/material/butterfly/saw = 100, /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn/alt = 100)
 
 	needs_reload = TRUE
 	reload_max = 2

@@ -103,74 +103,74 @@
 			if(prob(50))
 				var/new_gun = pick( // Copied from Random.dm
 					prob(11);/obj/random/ammo_all,\
-					prob(11);/obj/item/gun/energy/laser,\
-					prob(11);/obj/item/gun/ballistic/pirate,\
+					prob(11);/obj/item/gun/projectile/energy/laser,\
+					prob(11);/obj/item/gun/projectile/ballistic/pirate,\
 					prob(10);/obj/item/material/twohanded/spear,\
-					prob(10);/obj/item/gun/energy/stunrevolver,\
-					prob(10);/obj/item/gun/energy/taser,\
-					prob(10);/obj/item/gun/launcher/crossbow,\
-					prob(10);/obj/item/gun/ballistic/shotgun/doublebarrel/pellet,\
+					prob(10);/obj/item/gun/projectile/energy/stunrevolver,\
+					prob(10);/obj/item/gun/projectile/energy/taser,\
+					prob(10);/obj/item/gun/projectile/launcher/crossbow,\
+					prob(10);/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/pellet,\
 					prob(10);/obj/item/material/knife,\
 					prob(10);/obj/item/material/knife/tacknife/combatknife,\
 					prob(10);/obj/item/material/butterfly/switchblade,\
-					prob(10);/obj/item/gun/ballistic/luger,\
-					prob(10);/obj/item/gun/ballistic/luger/brown,\
-				/*	prob(10);/obj/item/gun/ballistic/pipegun,\ */
-					prob(10);/obj/item/gun/ballistic/revolver,\
-					prob(10);/obj/item/gun/ballistic/revolver/detective,\
-					prob(10);/obj/item/gun/ballistic/revolver/mateba,\
-					prob(10);/obj/item/gun/ballistic/revolver/judge,\
-					prob(10);/obj/item/gun/ballistic/colt,\
-					prob(10);/obj/item/gun/ballistic/shotgun/pump,\
-					prob(10);/obj/item/gun/ballistic/shotgun/pump/rifle,\
-				/*	prob(10);/obj/item/gun/ballistic/shotgun/pump/rifle/mosin,\ */
+					prob(10);/obj/item/gun/projectile/ballistic/luger,\
+					prob(10);/obj/item/gun/projectile/ballistic/luger/brown,\
+				/*	prob(10);/obj/item/gun/projectile/ballistic/pipegun,\ */
+					prob(10);/obj/item/gun/projectile/ballistic/revolver,\
+					prob(10);/obj/item/gun/projectile/ballistic/revolver/detective,\
+					prob(10);/obj/item/gun/projectile/ballistic/revolver/mateba,\
+					prob(10);/obj/item/gun/projectile/ballistic/revolver/judge,\
+					prob(10);/obj/item/gun/projectile/ballistic/colt,\
+					prob(10);/obj/item/gun/projectile/ballistic/shotgun/pump,\
+					prob(10);/obj/item/gun/projectile/ballistic/shotgun/pump/rifle,\
+				/*	prob(10);/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/mosin,\ */
 					prob(10);/obj/item/melee/baton,\
 					prob(10);/obj/item/melee/telebaton,\
 					prob(10);/obj/item/melee/classic_baton,\
 					prob(10);/obj/item/melee/energy/sword,\
-					prob(9);/obj/item/gun/ballistic/automatic/wt550/lethal,\
-					prob(9);/obj/item/gun/ballistic/automatic/pdw,\
-					prob(9);/obj/item/gun/ballistic/derringer,\
-					prob(9);/obj/item/gun/energy/crossbow/largecrossbow,\
-					prob(9);/obj/item/gun/ballistic/automatic/mini_uzi,\
-					prob(9);/obj/item/gun/ballistic/pistol,\
-					prob(9);/obj/item/gun/ballistic/shotgun/pump/combat,\
+					prob(9);/obj/item/gun/projectile/ballistic/automatic/wt550/lethal,\
+					prob(9);/obj/item/gun/projectile/ballistic/automatic/pdw,\
+					prob(9);/obj/item/gun/projectile/ballistic/derringer,\
+					prob(9);/obj/item/gun/projectile/energy/crossbow/largecrossbow,\
+					prob(9);/obj/item/gun/projectile/ballistic/automatic/mini_uzi,\
+					prob(9);/obj/item/gun/projectile/ballistic/pistol,\
+					prob(9);/obj/item/gun/projectile/ballistic/shotgun/pump/combat,\
 					prob(9);/obj/item/material/twohanded/fireaxe,\
 					prob(9);/obj/item/cane/concealed,\
-					prob(9);/obj/item/gun/energy/gun,\
-					prob(8);/obj/item/gun/energy/ionrifle,\
-					prob(8);/obj/item/gun/energy/retro,\
-					prob(8);/obj/item/gun/energy/gun/eluger,\
-					prob(8);/obj/item/gun/energy/xray,\
-					prob(8);/obj/item/gun/ballistic/automatic/c20r,\
-					prob(8);/obj/item/gun/ballistic/automatic/stg,\
+					prob(9);/obj/item/gun/projectile/energy/gun,\
+					prob(8);/obj/item/gun/projectile/energy/ionrifle,\
+					prob(8);/obj/item/gun/projectile/energy/retro,\
+					prob(8);/obj/item/gun/projectile/energy/gun/eluger,\
+					prob(8);/obj/item/gun/projectile/energy/xray,\
+					prob(8);/obj/item/gun/projectile/ballistic/automatic/c20r,\
+					prob(8);/obj/item/gun/projectile/ballistic/automatic/stg,\
 					prob(8);/obj/item/melee/energy/sword,\
-				/*	prob(8);/obj/item/gun/ballistic/automatic/m41a,\ */
-					prob(7);/obj/item/gun/energy/captain,\
-					prob(7);/obj/item/gun/energy/sniperrifle,\
-					prob(7);/obj/item/gun/ballistic/automatic/p90,\
-					prob(7);/obj/item/gun/ballistic/automatic/as24,\
-					prob(7);/obj/item/gun/ballistic/automatic/sts35,\
-					prob(7);/obj/item/gun/ballistic/automatic/z8,\
-					prob(7);/obj/item/gun/energy/gun/burst,\
-					prob(7);/obj/item/gun/ballistic/shotgun/pump/JSDF,\
-					prob(7);/obj/item/gun/ballistic/deagle,\
-					prob(7);/obj/item/gun/launcher/grenade,\
-				/*	prob(6);/obj/item/gun/ballistic/SVD,\*/
-					prob(6);/obj/item/gun/ballistic/automatic/lmg,\
-					prob(6);/obj/item/gun/energy/lasercannon,\
-					prob(5);/obj/item/gun/ballistic/automatic/bullpup,\
-					prob(5);/obj/item/gun/energy/pulse_rifle,\
-				/*	prob(4);/obj/item/gun/ballistic/automatic/battlerifle,\ */
-					prob(3);/obj/item/gun/ballistic/deagle/camo,\
-					prob(3);/obj/item/gun/energy/gun/nuclear,\
-					prob(2);/obj/item/gun/ballistic/deagle/gold,\
-					prob(2);/obj/item/gun/ballistic/automatic/lmg/mg42,\
-					prob(2);/obj/item/gun/ballistic/automatic/lmg/m60,\
-					prob(1);/obj/item/gun/ballistic/rocket,\
-					prob(1);/obj/item/gun/launcher/grenade,\
-					prob(1);/obj/item/gun/ballistic/gyropistol,\
-					prob(1);/obj/item/gun/ballistic/heavysniper,\
+				/*	prob(8);/obj/item/gun/projectile/ballistic/automatic/m41a,\ */
+					prob(7);/obj/item/gun/projectile/energy/captain,\
+					prob(7);/obj/item/gun/projectile/energy/sniperrifle,\
+					prob(7);/obj/item/gun/projectile/ballistic/automatic/p90,\
+					prob(7);/obj/item/gun/projectile/ballistic/automatic/as24,\
+					prob(7);/obj/item/gun/projectile/ballistic/automatic/sts35,\
+					prob(7);/obj/item/gun/projectile/ballistic/automatic/z8,\
+					prob(7);/obj/item/gun/projectile/energy/gun/burst,\
+					prob(7);/obj/item/gun/projectile/ballistic/shotgun/pump/JSDF,\
+					prob(7);/obj/item/gun/projectile/ballistic/deagle,\
+					prob(7);/obj/item/gun/projectile/launcher/grenade,\
+				/*	prob(6);/obj/item/gun/projectile/ballistic/SVD,\*/
+					prob(6);/obj/item/gun/projectile/ballistic/automatic/lmg,\
+					prob(6);/obj/item/gun/projectile/energy/lasercannon,\
+					prob(5);/obj/item/gun/projectile/ballistic/automatic/bullpup,\
+					prob(5);/obj/item/gun/projectile/energy/pulse_rifle,\
+				/*	prob(4);/obj/item/gun/projectile/ballistic/automatic/battlerifle,\ */
+					prob(3);/obj/item/gun/projectile/ballistic/deagle/camo,\
+					prob(3);/obj/item/gun/projectile/energy/gun/nuclear,\
+					prob(2);/obj/item/gun/projectile/ballistic/deagle/gold,\
+					prob(2);/obj/item/gun/projectile/ballistic/automatic/lmg/mg42,\
+					prob(2);/obj/item/gun/projectile/ballistic/automatic/lmg/m60,\
+					prob(1);/obj/item/gun/projectile/ballistic/rocket,\
+					prob(1);/obj/item/gun/projectile/launcher/grenade,\
+					prob(1);/obj/item/gun/projectile/ballistic/gyropistol,\
+					prob(1);/obj/item/gun/projectile/ballistic/heavysniper,\
 					prob(1);/obj/item/plastique,\
 					prob(1);/obj/item/material/sword,\
 					prob(1);/obj/item/cane/concealed,\
