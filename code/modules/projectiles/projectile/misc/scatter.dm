@@ -3,6 +3,8 @@
  * Home of the purely submunition projectiles.
  */
 
+// todo: kill this file and split it up.
+
 /obj/projectile/scatter
 	name = "scatter projectile"
 	icon = 'icons/obj/projectiles.dmi'

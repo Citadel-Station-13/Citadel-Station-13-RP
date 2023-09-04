@@ -13,7 +13,7 @@
 	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
 	damage = 5
 	range = 15 //if the shell hasn't hit anything after travelling this far it just explodes.
-	var/flash_range = 0
+	var/flash_range = 1
 	var/brightness = 7
 	var/light_colour = "#ffffff"
 
@@ -50,7 +50,7 @@
 /obj/projectile/energy/flash/flare
 	fire_sound = 'sound/weapons/grenade_launcher.ogg'
 	damage = 20
-	flash_range = 1
+	flash_range = 2
 	brightness = 15
 	flash_strength = 10
 	incendiary = 1
@@ -64,6 +64,14 @@
 	//residual illumination
 	new /obj/effect/particle_effect/smoke/illumination(src.loc, rand(190,240) SECONDS, 8, 3, light_colour) //same lighting power as flare
 
+/obj/projectile/energy/flash/strong
+	name = "chemical shell"
+	icon_state = "bullet"
+	damage = 10
+	range = 15 //if the shell hasn't hit anything after travelling this far it just explodes.
+	flash_strength = 15
+	brightness = 15
+
 /obj/projectile/energy/electrode
 	name = "electrode"
 	icon_state = "spark"
@@ -76,12 +84,19 @@
 	//Damage will be handled on the MOB side, to prevent window shattering.
 
 /obj/projectile/energy/electrode/strong
-	agony = 55
+	agony = 70
 
 /obj/projectile/energy/electrode/stunshot
 	name = "stunshot"
 	damage = 5
 	agony = 80
+
+/obj/projectile/energy/electrode/stunshot/strong
+	name = "stunshot"
+	icon_state = "bullet"
+	damage = 10
+	taser_effect = 1
+	agony = 100
 
 /obj/projectile/energy/electrode/goldenbolt	// MIGHTY GOLDEN BOLT
 	name = "taser bolt"

@@ -1,35 +1,7 @@
-/*
-	Defines a firing mode for a gun.
-
-	A firemode is created from a list of fire mode settings. Each setting modifies the value of the gun var with the same name.
-	If the fire mode value for a setting is null, it will be replaced with the initial value of that gun's variable when the firemode is created.
-	Obviously not compatible with variables that take a null value. If a setting is not present, then the corresponding var will not be modified.
-*/
-/datum/firemode
-	var/name = "default"
-	var/list/settings = list()
-
-/datum/firemode/New(obj/item/gun/gun, list/properties = null)
-	..()
-	if(!properties) return
-
-	for(var/propname in properties)
-		var/propvalue = properties[propname]
-
-		if(propname == "mode_name")
-			name = propvalue
-		if(isnull(propvalue))
-			settings[propname] = gun.vars[propname] //better than initial() as it handles list vars like burst_accuracy
-		else
-			settings[propname] = propvalue
-
-/datum/firemode/proc/apply_to(obj/item/gun/gun)
-	for(var/propname in settings)
-		gun.vars[propname] = settings[propname]
-
-#warn w
-
-//Parent gun type. Guns are weapons that can be aimed at mobs and act over a distance
+/**
+ * Guns: common implementation of weapons that throw some kind of projectile,
+ * or are aimable with firemode/burst/scope/etc support.
+ */
 /obj/item/gun
 	name = "gun"
 	desc = "Its a gun. It's pretty terrible, though."
@@ -53,9 +25,9 @@
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
 
-	var/burst = 1
-	var/fire_delay = 6 	//delay after shooting before the gun can be used again
-	var/burst_delay = 2	//delay between shots, if firing in bursts
+
+#warn below
+
 	var/move_delay = 1
 	var/fire_sound = null // This is handled by projectile.dm's fire_sound var now, but you can override the projectile's fire_sound with this one if you want to.
 	var/fire_sound_text = "gunshot"

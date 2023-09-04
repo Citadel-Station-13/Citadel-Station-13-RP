@@ -28,7 +28,6 @@
 	QDEL_NULL(shadow)
 	return ..()
 
-
 /obj/projectile/arc/proc/calculate_initial_pixel_distance(atom/user, atom/target)
 	var/datum/point/A = new(user)
 	var/datum/point/B = new(target)
