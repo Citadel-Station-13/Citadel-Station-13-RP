@@ -7247,7 +7247,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "xr" = (
-/obj/item/pickaxe/icepick,
+/obj/item/pickaxe/icepick/plasteel,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "xs" = (
@@ -15220,7 +15220,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/pool)
 "ZN" = (
-/obj/item/pickaxe/icepick,
+/obj/item/pickaxe/icepick/plasteel,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "ZO" = (

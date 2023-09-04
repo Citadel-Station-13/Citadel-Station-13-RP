@@ -121,7 +121,7 @@
 
 //Ice picksaxe. This is a tool used to hack at the ice on the airlocks and climb cliffs
 /obj/item/pickaxe/icepick
-	name = "a Icepick"
+	name = "icepick"
 	desc = "A sharp tool for climbers and hikers to break up ice and keep themselves from slipping on a steep slope."
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	slot_flags = SLOT_BELT
@@ -141,7 +141,7 @@
 
 //Better ice pickaxe
 /obj/item/pickaxe/icepick/plasteel //Can't be sharpened.
-	name = "a Plasteel ice pickaxe"
+	name = "plasteel ice pickaxe"
 	desc = "A sharp plasteel reinforced tool for climbers and hikers to break up ice and keep themselves from slipping on a steep slope."
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	slot_flags = SLOT_BELT
