@@ -102,7 +102,7 @@
 			return
 		if(!user.attempt_void_item_for_installation(second_plate))
 			return
-		var/obj/item/clothing/suit/armor/material/makeshift/new_armor = new(loc, material.name)
+		var/obj/item/clothing/suit/armor/material/makeshift/new_armor = new(loc, get_primary_material())
 		user.temporarily_remove_from_inventory(second_plate, INV_OP_FORCE | INV_OP_DELETING | INV_OP_SILENT)
 		user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_DELETING | INV_OP_SILENT)
 		user.put_in_hands_or_drop(new_armor)

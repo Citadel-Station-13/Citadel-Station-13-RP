@@ -400,7 +400,7 @@
 
 /obj/machinery/door/proc/update_heat_protection(var/turf/simulated/source)
 	if(istype(source))
-		if(src.density && (src.opacity || src.heat_proof))
+		if(src.density && (src.opacity || (heat_resistance > initial(heat_resistance))))
 			source.thermal_conductivity = DOOR_HEAT_TRANSFER_COEFFICIENT
 		else
 			source.thermal_conductivity = initial(source.thermal_conductivity)

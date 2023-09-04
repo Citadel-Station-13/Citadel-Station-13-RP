@@ -177,7 +177,6 @@
 		return	//can't do this stuff whilst inside objects and such
 
 	if(W)
-		radiate()
 		if(is_hot(W))
 			burn(is_hot(W))
 
@@ -258,7 +257,7 @@
 
 	var/turf/T = user.loc	//get user's location for delay checks
 
-	if(damage && istype(W, /obj/item/weldingtool))
+	if(integrity < integrity_max && istype(W, /obj/item/weldingtool))
 
 		var/obj/item/weldingtool/WT = W
 
@@ -268,9 +267,12 @@
 		if(WT.remove_fuel(0,user))
 			to_chat(user, "<span class='notice'>You start repairing the damage to [src].</span>")
 			playsound(src.loc, WT.tool_sound, 100, 1)
-			if(do_after(user, max(5, damage / 5) * WT.tool_speed) && WT && WT.isOn())
+			if(do_after(user, max(5, (integrity_max - integrity) / 5) * WT.tool_speed) && WT && WT.isOn())
+				WT.remove_fuel(CEILING((integrity_max - integrity) / 100, 1))
+				if(integrity >= integrity_max)
+					return
 				to_chat(user, "<span class='notice'>You finish repairing the damage to [src].</span>")
-				take_damage(-damage)
+				heal_integrity(integrity_max - integrity)
 		else
 			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 			return

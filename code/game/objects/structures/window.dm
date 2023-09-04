@@ -300,7 +300,7 @@
 /obj/structure/window/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	. = ..()
 	if (exposed_temperature > maximal_heat)
-		take_damage(damage_per_fire_tick)
+		inflict_atom_damage(damage_per_fire_tick, flag = ARMOR_FIRE, gradual = TRUE)
 
 /obj/structure/window/drop_products(method, atom/where)
 	var/atom/where = drop_location()
@@ -436,8 +436,7 @@
 		QUEUE_SMOOTH(src)
 
 	// TODO: Atom Integrity
-	// var/ratio = atom_integrity / max_integrity
-	var/ratio = health / maxhealth
+	var/ratio = percent_integrity()
 	ratio = CEILING(ratio*4, 1) * 25
 	cut_overlay(crack_overlay)
 	if(ratio > 75)
@@ -644,7 +643,8 @@
 	name = "tinted window"
 	desc = "It looks rather strong and opaque. Might take a few good hits to shatter it."
 	icon_state = "rwindow-full"
-	maxhealth = 80
+	integrity = 80
+	integrity_max = 80
 	fulltile = TRUE
 
 	color = GLASS_COLOR_TINTED

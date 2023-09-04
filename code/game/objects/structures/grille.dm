@@ -94,8 +94,7 @@
 		. = PROJECTILE_CONTINUE
 		damage = between(0, (damage - Proj.damage)*(Proj.damage_type == BRUTE? 0.4 : 1), 10) //if the bullet passes through then the grille avoids most of the damage
 
-	src.health -= damage*0.2
-	spawn(0) healthcheck() //spawn to make sure we return properly if the grille is deleted
+	inflict_atom_damage(damage, Proj.damage_tier, Proj.damage_flag, Proj.damage_mode, ATTACK_TYPE_PROJECTILE, Proj)
 
 /obj/structure/grille/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W))
@@ -255,7 +254,8 @@
 	name = "cult grille"
 	desc = "A matrice built out of an unknown material, with some sort of force field blocking air around it."
 	icon_state = "grillecult"
-	health = 40 // Make it strong enough to avoid people breaking in too easily.
+	integrity = 40
+	integrity_max = 40
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED // Make sure air doesn't drain.
 
 /obj/structure/grille/broken/cult
