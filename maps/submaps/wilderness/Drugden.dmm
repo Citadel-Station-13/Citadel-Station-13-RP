@@ -207,7 +207,7 @@
 /turf/simulated/floor/carpet,
 /area/submap/Drugd)
 "Q" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong/guard,
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong,
 /turf/simulated/floor,
 /area/submap/Drugd)
 "R" = (
