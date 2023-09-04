@@ -579,16 +579,19 @@
 		breath.adjust_gas(GAS_ID_NITROUS_OXIDE, -breath.gas[GAS_ID_NITROUS_OXIDE]/6, update = 0) //update after
 
 	for(var/gasname in breath.gas)
+		// todo: all this needs rewritten.
 		if(gasname == breath_type)
 			continue
 		var/list/reagent_gas_data = global.gas_data.reagents[gasname]
 		if(!reagent_gas_data)
 			continue
-		if(breath.gas[gasname] < reagent_gas_data[GAS_REAGENT_LIST_THRESHOLD])
-			return
+		// up-convert since intuitively reagent gas uses mols in tile air, rather than in breath.
+		var/effective_moles = breath.gas[gasname] * (CELL_VOLUME / BREATH_VOLUME)
+		if(effective_moles < reagent_gas_data[GAS_REAGENT_LIST_THRESHOLD])
+			continue
 		// Little bit of sanity so we aren't trying to add 0.0000000001 units of CO2, and so we don't end up with 99999 units of CO2.
 		var/reagent_id = reagent_gas_data[GAS_REAGENT_LIST_ID]
-		var/reagent_amount = (breath.gas[gasname] * reagent_gas_data[GAS_REAGENT_LIST_FACTOR] + reagent_gas_data[GAS_REAGENT_LIST_AMOUNT]) * gas_to_process_ratio
+		var/reagent_amount = ((effective_moles - reagent_gas_data[GAS_REAGENT_LIST_THRESHOLD]) * reagent_gas_data[GAS_REAGENT_LIST_FACTOR] + reagent_gas_data[GAS_REAGENT_LIST_AMOUNT]) * gas_to_process_ratio
 		reagent_amount = min(reagent_amount, reagent_gas_data[GAS_REAGENT_LIST_MAX] - reagents.get_reagent_amount(reagent_id))
 		if(reagent_amount < 0.05)
 			continue
