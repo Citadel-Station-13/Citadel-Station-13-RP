@@ -131,7 +131,7 @@
 	item_state = "spickaxe" //I'm also lazy
 	w_class = ITEMSIZE_SMALL
 	materials = list(MAT_STEEL = 2750)
-	digspeed = 45 //Usable but very slow
+	digspeed = 120 //very slow
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("mined", "pierced", "stabbed", "attacked")
 	drill_verb = "hacking at"
