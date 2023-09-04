@@ -210,6 +210,7 @@
 
 // )
 
+/// random but float
 #define RAND_F(LOW, HIGH) (rand()*(HIGH-LOW) + LOW)
 
 #define SQUARE(x) (x*x)

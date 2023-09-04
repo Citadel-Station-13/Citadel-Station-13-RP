@@ -155,7 +155,13 @@
 	/// radiation insulation - does *not* affect rad_act!
 	var/rad_insulation = RAD_INSULATION_NONE
 	/// contamination insulation; null defaults to rad_insulation, this is a multiplier. *never* set higher than 1!!
-	var/rad_stickiness
+	var/rad_stickiness = 1
+
+	//? Shieldcalls
+	/// sorted priority list of datums for handling shieldcalls with
+	/// we use this instead of signals so we can enforce priorities
+	/// this is horrifying.
+	var/list/datum/shieldcall/shieldcalls
 
 	//? Overlays
 	/// vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.

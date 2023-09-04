@@ -66,9 +66,9 @@
  *
  * @params
  * * damage - raw damage
- * * tier - penetration / attack tier
- * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
- * * mode - damage_mode
+ * * tier - (optional) penetration / attack tier
+ * * flag - (optional) armor flag as seen in [code/__DEFINES/combat/armor.dm]; leave out to not run armor.
+ * * mode - (optional) damage_mode
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
  * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
  * * gradual - loud effects like glass clanging should not happen. use for stuff like acid and fire.
@@ -483,6 +483,7 @@
  *
  * @params
  * * damage - raw damage
+ * * damtype - damage type
  * * tier - penetration / attack tier
  * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  * * mode - damage_mode
@@ -493,9 +494,10 @@
  *
  * @return modified args as list
  */
-/atom/proc/atom_shieldcheck(damage, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
+/atom/proc/atom_shieldcheck(damage, damtype, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
 	retval |= SHIELDCALL_JUST_CHECKING
-	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL, args)
+	for(var/datum/shieldcall/calling as anything in shieldcalls)
+		calling.handle_shieldcall(src, args)
 	return args.Copy()
 
 /**
@@ -506,6 +508,7 @@
  *
  * @params
  * * damage - raw damage
+ * * damtype - damage type
  * * tier - penetration / attack tier
  * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  * * mode - damage_mode
@@ -516,6 +519,14 @@
  *
  * @return modified args as list
  */
-/atom/proc/atom_shieldcall(damage, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
-	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL, args)
+/atom/proc/atom_shieldcall(damage, damtype, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
+	for(var/datum/shieldcall/calling as anything in shieldcalls)
+		calling.handle_shieldcall(src, args)
 	return args.Copy()
+
+/atom/proc/register_shieldcall(datum/shieldcall/delegate)
+	LAZYINITLIST(shieldcalls)
+	BINARY_INSERT(delegate, shieldcalls, /datum/shieldcall, delegate, priority, COMPARE_KEY)
+
+/atom/proc/unregister_shieldcall(datum/shieldcall/delegate)
+	LAZYREMOVE(shieldcalls, delegate)

@@ -269,6 +269,7 @@
 	icon_state = "pdoor1"
 	integrity = 600
 	integrity_max = 600
+	heat_resistance = INFINITY
 
 /obj/machinery/door/blast/regular/open
 	icon_state = "pdoor0"

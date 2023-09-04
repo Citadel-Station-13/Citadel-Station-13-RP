@@ -54,10 +54,9 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	var/mutable_appearance/under_EM
 	var/fancy_shuttle_tag
 
-// Reinforced hull steel
-/turf/simulated/wall/fancy_shuttle
 	material_outer = /datum/material/steel/hull
 	material_reinf = /datum/material/steel/hull
+	baseturfs = /turf/simulated/floor/plating/eris/under
 
 /turf/simulated/wall/fancy_shuttle/window
 	opacity = FALSE
@@ -76,22 +75,6 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 /turf/simulated/wall/fancy_shuttle/post_translate_B(turf/A)
 	apply_underlay()
 	return ..()
-
-// No girders, and Eris plating
-/turf/simulated/wall/fancy_shuttle/dismantle_wall(var/devastated, var/explode, var/no_product)
-
-	playsound(src, 'sound/items/Welder.ogg', 100, 1)
-	if(!no_product && !devastated)
-		material.place_dismantled_product(src)
-		if (!material_reinf)
-			material.place_dismantled_product(src)
-
-	clear_plants()
-	material = SSmaterials.resolve_material(/datum/material/placeholder)
-	material_reinf = null
-	material_girder = null
-
-	ChangeTurf(/turf/simulated/floor/plating/eris/under)
 
 /turf/simulated/wall/fancy_shuttle/proc/remove_underlay()
 	if(under_MA)

@@ -174,6 +174,7 @@
 	close_sound_powered = 'sound/machines/door/vault1c.ogg'
 	icon = 'icons/obj/doors/vault/door.dmi'
 	fill_file = 'icons/obj/doors/vault/fill_steel.dmi'
+	heat_resistance = 6000
 
 /obj/machinery/door/airlock/vault/bolted
 	icon_state = "door_locked"
@@ -206,6 +207,7 @@
 	welded_file = 'icons/obj/doors/hatch/welded.dmi'
 	emag_file = 'icons/obj/doors/hatch/emag.dmi'
 	stripe_color = COLOR_AMBER
+	heat_resistance = 6000
 
 /obj/machinery/door/airlock/maintenance_hatch
 	name = "Maintenance Hatch"

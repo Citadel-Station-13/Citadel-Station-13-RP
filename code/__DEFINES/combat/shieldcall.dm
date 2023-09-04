@@ -6,20 +6,22 @@
 
 /// damage amount
 #define SHIELDCALL_ARG_DAMAGE 1
+/// damage type
+#define SHIELDCALL_ARG_DAMTYPE 2
 /// damage tier
-#define SHIELDCALL_ARG_TIER 2
+#define SHIELDCALL_ARG_TIER 3
 /// armor flag
-#define SHIELDCALL_ARG_FLAG 3
+#define SHIELDCALL_ARG_FLAG 4
 /// damage mode
-#define SHIELDCALL_ARG_MODE 4
+#define SHIELDCALL_ARG_MODE 5
 /// attack type
-#define SHIELDCALL_ARG_TYPE 5
+#define SHIELDCALL_ARG_TYPE 6
 /// attacking weapon datum - same as used in armor
-#define SHIELDCALL_ARG_WEAPON 6
+#define SHIELDCALL_ARG_WEAPON 7
 /// list for additional data
-#define SHIELDCALL_ARG_ADDITIONAL 7
+#define SHIELDCALL_ARG_ADDITIONAL 8
 /// flags returned
-#define SHIELDCALL_ARG_RETVAL 8
+#define SHIELDCALL_ARG_RETVAL 9
 
 //? shieldcall additional data keys
 

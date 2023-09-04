@@ -34,6 +34,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 	open_layer = DOOR_OPEN_LAYER - 0.01// Just below doors when open
 	closed_layer = MID_LANDMARK_LAYER // Need this to be above windows/grilles/low walls.
 	smoothing_groups = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
+	heat_resistance = 6000
 
 	//These are frequenly used with windows, so make sure zones can pass.
 	//Generally if a firedoor is at a place where there should be a zone boundery then there will be a regular door underneath it.
