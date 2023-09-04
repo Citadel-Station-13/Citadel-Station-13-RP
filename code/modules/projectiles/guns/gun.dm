@@ -25,11 +25,81 @@
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
 
+	//* Firemodes
+	#warn *SCREAM
+	/// current firemode
+	var/datum/firemode/firemode
+
+	//* Firing
+	/// mid firing
+	var/firing = FALSE
+	/// default fire delay between firings.
+	/// not shots, not bursts, though we will never alloy two simutaneous firings.
+	/// this is overridden by firemode, and will *lower the user's clickdelay*.
+	var/fire_delay = 4
+	/// last fire time
+	var/fire_last
+	/// current firing cycle. used to be 1000% unreasonably sure that we don't fire a burst shot in another cycle.
+	var/firing_cycle = 0
+	/// current firer ; used to know when to abort when necesary / do other checks.
+	var/atom/movable/firing_user
+
+	//* SFX
+	/// default firing sound
+	/// todo: priority is undefined right now :/
+	#warn do it
+	var/fire_sound = "gunshot"
+
+/obj/item/gun/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(firing && user == firing_user)
+		stop_firing()
+
+/**
+ * terminate the current firing cycle
+ */
+/obj/item/gun/proc/stop_firing()
+	if(!firing)
+		return
+	++firing_cycle
+
+/**
+ * Perform a full firing sequence
+ *
+ * @params
+ * * target - what to aim at / the 'original' var for projectile
+ * * user - what's firing us, usually a mob but coudl be an obj
+ * * angle - the angle to shoot in
+ * * reflex - is it an automatic fire from aiming/hostage taking?
+ * * burst_amount - how many shots to fire
+ * * burst_interval - delay between shots
+ * * point_blank - allow point blanking
+ */
+/obj/item/gun/proc/firing_sequence(atom/target, atom/movable/user, angle, reflex, burst_amount, burst_interval, point_blank)
+	var/current_cycle = firing_cycle
+	#warn impl
+
+/**
+ * Fire a single projectile
+ *
+ * @return TRUE/FALSE; false for failure, will always terminate burst.
+ */
+/obj/item/gun/proc/fire(atom/target, atom/movable/user, angle, reflex, point_blank)
+	#warn impl
+
+/**
+ * Should we keep firing? We stop anyways if fire() returns false.
+ */
+/obj/item/gun/proc/should_keep_firing(current_cycle)
+	if(current_cycle != firing_cycle)
+		return FALSE
+	return TRUE
+
 
 #warn below
 
+/obj/item/gun
 	var/move_delay = 1
-	var/fire_sound = null // This is handled by projectile.dm's fire_sound var now, but you can override the projectile's fire_sound with this one if you want to.
 	var/fire_sound_text = "gunshot"
 	var/fire_anim = null
 	var/recoil = 0		//screen shake
