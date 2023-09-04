@@ -144,6 +144,7 @@
 
 	gas_reagent_id = "sacid"
 	gas_reagent_amount = 10
+	gas_reagent_threshold = 5
 
 
 /datum/gas/sulfur_dioxide

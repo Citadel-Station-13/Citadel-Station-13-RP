@@ -2,13 +2,24 @@
 // As such, if laser damage is ever changed, you should change this define.
 #define LASERS_TO_KILL * 40
 
-/datum/category_item/catalogue/technology/drone/hivebot // Hivebot Scanner Data - This is for Generic Hivebots
-	name = "Drone - Hivebot"
-	desc = "A drone that walks on several legs, with yellow/gold armor plating. It appears to lack a specific weapon, \
-	but uses a regular bullet-type weapon, firing a single projectile with a delay. Once upon a time, these bots may \
-	have been used to be some sort of... security, or defensive machinery, at a guess, but their original/true purpose is \
-	unclear. Whatever the matter, they're hostile and will engage anything they see, shooting to kill."
-	value = CATALOGUER_REWARD_HARD
+/datum/category_item/catalogue/technology/drone/hivebot/hivebots
+	name = "Hivebots"
+	desc = "Hivebots originate from unexplored space beyond the Moghes Hegemony (officially the 'Alliance of Three Hands). \
+	Originally these were thought to be simple security drones, however the incursions of hivebots into Moghes space have shown that \
+	there is an advanced and malicious intelligence behind the hivebots, though the identity of this brain behind the bots \
+	remains unknown with most theorizing it a hostile machine intelligence. Hivebots are simple to produce, capable of mounting \
+	a wide variety of weapons and coordinating its tactics with its companions and command hivebots. Should they be seen they \
+	are to be destroyed on sight, less they find some hidden place to begin harvesting resources and creating an army, bent \
+	on the destruction of organic life."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/technology/drone/hivebot)
+
+/datum/category_item/catalogue/technology/drone/hivebot/basic
+	name = "Hivebot - Basic"
+	desc = "Hivebots are of modular design with only a handful of basic templates which are equipped as needed. However its common \
+	for hivebots to be encountered with no equipment at all. These 'basic' hivebots are persumably created in large numbers then \
+	equipped and upgraded as need arises for more specialized models. In a pinch however they are reliable fodder when used in combat."
+	value = CATALOGUER_REWARD_EASY
 
 /mob/living/simple_mob/mechanical/hivebot
 	name = "hivebot"
@@ -16,7 +27,7 @@
 	icon = 'icons/mob/hivebot.dmi'
 	icon_state = "basic"
 	icon_living = "basic"
-	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot)
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/basic)
 
 	faction = "hivebot"
 
@@ -50,7 +61,7 @@
 
 /mob/living/simple_mob/mechanical/hivebot/swarm
 	name = "swarm hivebot"
-	desc = "A robot. It looks fragile and weak."
+	desc = "A stripped down hivebot with many exposed mechanism.."
 	maxHealth = 1 LASERS_TO_KILL
 	health = 1 LASERS_TO_KILL
 	melee_damage_lower = 8
@@ -61,3 +72,40 @@
 	conserve_ammo = TRUE
 	firing_lanes = TRUE
 	can_flee = FALSE // Fearless dumb machines.
+
+/datum/category_item/catalogue/technology/drone/hivebot/miner
+	name = "Hivebot - Miner"
+	desc = "Miner hivebots were originally only observed closer to the Moghes Hegemony. Tasked with gathering ore to help fuel the creation \
+	of more hivebots, their emergence has shown the growth of the hivebot threat even beyond the borders of Moghes. Despite its role in \
+	gathering resources, the miners has been known to use combat AI similar to basic hivebots. Whether this is intentional feature of its \
+	programming or just recylced combat code from its basic models is yet to be determined."
+	value = CATALOGUER_REWARD_EASY
+
+/mob/living/simple_mob/mechanical/hivebot/miner
+	name = "hivebot miner"
+	desc = "A hivebot equipped with a mining drill, though not exactly a combat model, it still seeems determined to kill."
+	icon_state = "miner"
+	icon_living = "miner"
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/miner)
+	melee_damage_lower = 15
+	melee_damage_upper = 15
+
+/datum/category_item/catalogue/technology/drone/hivebot/sword
+	name = "Hivebot - Swordsman"
+	desc = "Whether hivebots were capable of learning used to be a topic of much debate however, the recent arrival of the swordsman in \
+	the frontier has proved they can. By integrating energy sword technology pioneered by the now defunct Cybersun Industries, the humble \
+	melee hivebot has become a killing machine. Many now worry that it is only a matter of time before the hivebots adapt to even more \
+	dangerous weapons and if this robot is any indication those fears are not at all misplaced."
+	value = CATALOGUER_REWARD_EASY
+
+/mob/living/simple_mob/mechanical/hivebot/sword
+	name = "hivebot swordsman"
+	desc = "A hivebot equipped with a laser sword, a melee bot built to kill."
+	icon_state = "sword"
+	icon_living = "sword"
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/sword)
+	melee_damage_lower = 30
+	melee_damage_upper = 30
+	attack_armor_pen = 50
+	attack_sharp = 1
+	attack_edge = 1
