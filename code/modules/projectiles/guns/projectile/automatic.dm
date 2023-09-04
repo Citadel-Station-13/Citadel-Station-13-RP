@@ -77,8 +77,8 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m545
-	allowed_magazines = list(/obj/item/ammo_magazine/m545)
+	magazine_type = /obj/item/ammo_magazine/m556
+	allowed_magazines = list(/obj/item/ammo_magazine/m556)
 	projectile_type = /obj/projectile/bullet/rifle/a556
 	mag_insert_sound = 'sound/weapons/guns/interaction/ltrifle_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/ltrifle_magout.ogg'
@@ -93,7 +93,7 @@
 
 /obj/item/gun/ballistic/automatic/sts35/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m545/small))
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/m556/small))
 		icon_state = "arifle-small" // If using the small magazines, use the small magazine sprite.
 	else
 		icon_state = (ammo_magazine)? "arifle" : "arifle-empty"
@@ -215,8 +215,8 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m545saw
-	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
+	magazine_type = /obj/item/ammo_magazine/m556saw
+	allowed_magazines = list(/obj/item/ammo_magazine/m556saw, /obj/item/ammo_magazine/m556)
 	projectile_type = /obj/projectile/bullet/rifle/a556
 	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
