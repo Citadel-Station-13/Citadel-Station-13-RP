@@ -1,50 +1,82 @@
-#warn audit
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
 
 /datum/stack_recipe
-	var/title = "ERROR"
-	var/result_type
-	/// Amount of material needed for this recipe.
-	var/req_amount = 1
-	/// Amount of stuff that is produced in one batch (e.g. 4 for floor tiles).
-	var/res_amount = 1
-	var/max_res_amount = 1
-	var/time = 0
-	var/one_per_turf = 0
-	var/on_floor = 0
-	var/use_material
-	var/pass_color
+	abstract_type = /datum/stack_recipe
+	/// sort order - lower is first
+	var/sort_order = 0
+	/// recipe name
+	var/name = "???"
+	/// category (so the dropdown we appear under). categories are always sorted to top, and then alphabetically.
+	/// null to have something on main panel
+	var/category
+	/// result type
+	var/result_type = /obj/item/clothing/mask/ninjascarf
+	/// result amount; stacks will be processed accordingly
+	var/result_amount = 1
+	/// the amount of time to craft result_amount of result_type
+	var/time = 3 SECONDS
+	/// bypass checks for preventing turf stacking/whatnot
+	var/no_automatic_sanity_checks = FALSE
+	// todo: material constraints
 
-/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null, pass_stack_color)
-	if(!isnull(title))
-		src.title = title
-	if(!isnull(result_type))
-		src.result_type = result_type
-	if(!isnull(req_amount))
-		src.req_amount = req_amount
-	if(!isnull(res_amount))
-		src.res_amount = res_amount
-	if(!isnull(max_res_amount))
-		src.max_res_amount = max_res_amount
-	if(!isnull(time))
-		src.time = time
-	if(!isnull(one_per_turf))
-		src.one_per_turf = one_per_turf
-	if(!isnull(on_floor))
-		src.on_floor = on_floor
-	if(!isnull(supplied_material))
-		src.use_material = supplied_material
-	if(!isnull(pass_stack_color))
-		src.pass_color = pass_stack_color
-
-/*
- * Recipe list datum
+/**
+ * attepmt to craft
+ *
+ * @params
+ * * where - where to spawn result
+ * * stack - stack used
+ * * user - (optional) person crafting
+ * * silent - (optional) suppress feedback to user
+ *
+ * @return TRUE/FALSE success
  */
-/datum/stack_recipe_list
-	var/title = "ERROR"
-	var/list/recipes = null
+/datum/stack_recipe/proc/craft(atom/where, obj/item/stack/stack, mob/user, silent)
+	if(!check(where, material, user, silent))
+		return FALSE
+	return make(where, material, user, silent)
 
-/datum/stack_recipe_list/New(title, list/recipes)
-	if(!isnull(title))
-		src.title = title
-	if(!isnull(recipes))
-		src.recipes = recipes
+/**
+ * see if it's valid to make the recipe
+ *
+ * @params
+ * * where - where to spawn result
+ * * stack - stack used
+ * * user - (optional) person crafting
+ * * silent - (optional) suppress feedback to user
+ *
+ * @return TRUE/FALSE success
+ */
+/datum/stack_recipe/proc/craft(atom/where, obj/item/stack/stack, mob/user, silent)
+	if(!no_automatic_sanity_checks)
+		#warn check turf, density, etc
+	return TRUE
+
+/**
+ * actually spawn the object in
+ * this is past point of no return
+ * shouldn't cancel under any circumstances
+ *
+ * @params
+ * * where - where to spawn result
+ * * stack - stack used
+ * * user - (optional) person crafting
+ * * silent - (optional) suppress feedback to user
+ */
+/datum/stack_recipe/proc/make(atom/where, obj/item/stack/stack, mob/user, silent)
+	#warn impl
+
+/**
+ * tgui stack recipe data
+ */
+/datum/stack_recipe/proc/tgui_recipe_data()
+	#warn .tsx file
+	return list(
+		"sortOrder" = sort_order,
+		"name" = name,
+		"category" = category,
+		"resultType" = result_type,
+		"resultAmt" = result_amount,
+		"time" = time,
+		"noAutoSanity" = no_automatic_sanity_checks,
+	)

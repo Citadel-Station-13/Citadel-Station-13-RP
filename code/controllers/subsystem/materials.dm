@@ -12,6 +12,8 @@ SUBSYSTEM_DEF(materials)
 	// however, i can't be assed to write Recover() until we do procedural materials
 	// thus, dealing with it later :^)
 
+	#warn material recipes
+
 /datum/controller/subsystem/materials/Initialize()
 	initialize_materials()
 	return ..()

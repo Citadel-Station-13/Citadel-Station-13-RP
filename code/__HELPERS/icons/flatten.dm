@@ -52,7 +52,7 @@
 /**
  * grabs flat icon as list(icon, centering-x, centering-y) offsets
  */
-/proc/get_flat_icon(appearance/appearancelike)
+/proc/get_flat_icon(appearance/appearancelike, dir, no_anim)
 	if(!dir && isloc(appearancelike))
 		dir = appearancelike.dir
 	return _get_flat_icon(appearancelike, dir, no_anim, null, TRUE)
