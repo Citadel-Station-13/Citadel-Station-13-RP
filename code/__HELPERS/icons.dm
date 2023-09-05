@@ -622,7 +622,7 @@ ColorTone(rgb, tone)
 /mob/proc/AddCamoOverlay(atom/A)//A is the atom which we are using as the overlay.
 	var/icon/opacity_icon = new(A.icon, A.icon_state)//Don't really care for overlays/underlays.
 	//Now we need to culculate overlays+underlays and add them together to form an image for a mask.
-	var/icon/alpha_mask = getIconMask(src)//get_flat_icon(src) is accurate but SLOW. Not designed for running each tick. This is also a little slow since it's blending a bunch of icons together but good enough.
+	var/icon/alpha_mask = getIconMask(src)//get_flat_icon_simple(src) is accurate but SLOW. Not designed for running each tick. This is also a little slow since it's blending a bunch of icons together but good enough.
 	opacity_icon.AddAlphaMask(alpha_mask)//Likely the main source of lag for this proc. Probably not designed to run each tick.
 	opacity_icon.ChangeOpacity(0.4)//Front end for MapColors so it's fast. 0.5 means half opacity and looks the best in my opinion.
 	for(var/i=0,i<5,i++)//And now we add it as overlays. It's faster than creating an icon and then merging it.
@@ -767,7 +767,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 		for(var/D in showDirs)
 			body.setDir(D)
 			body.compile_overlays()
-			var/icon/partial = get_flat_icon(body)
+			var/icon/partial = get_flat_icon_simple(body)
 			out_icon.Insert(partial,dir=D)
 
 		humanoid_icon_cache[icon_id] = out_icon
@@ -927,7 +927,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	return "<img class='icon icon-[A.icon_state]' src='data:image/png;base64,[bicon_cache[key]]'>"
 
-/// Costlier version of icon2html() that uses get_flat_icon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
+/// Costlier version of icon2html() that uses get_flat_icon_simple() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
 /proc/costly_icon2html(thing, target, sourceonly = FALSE)
 	if (!thing)
 		return
@@ -937,7 +937,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 	if (isicon(thing))
 		return icon2html(thing, target)
 
-	var/icon/I = get_flat_icon(thing)
+	var/icon/I = get_flat_icon_simple(thing)
 	return icon2html(I, target, sourceonly = sourceonly)
 
 

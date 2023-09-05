@@ -44,7 +44,7 @@
 		cap.Blend("#000", ICON_OVERLAY)
 		for(var/atom/A in atoms)
 			if(A)
-				var/icon/img = get_flat_icon(A)
+				var/icon/img = get_flat_icon_simple(A)
 				if(istype(img, /icon))
 					if(istype(A, /mob/living) && A:lying)
 						img.BecomeLying()

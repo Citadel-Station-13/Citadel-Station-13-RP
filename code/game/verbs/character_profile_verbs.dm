@@ -10,7 +10,7 @@
 	usr.setClickCooldown(10)
 
 	if (usr.name in GLOB.cached_previews)
-		GLOB.cached_previews[usr.name] = get_flat_icon(usr)
+		GLOB.cached_previews[usr.name] = get_flat_icon_simple(usr)
 		to_chat(usr, SPAN_NOTICE("Your cached appearance has been regenerated."))
 	else
 		to_chat(usr, SPAN_BOLDWARNING("Your current mob was not found in the appearance cache."))

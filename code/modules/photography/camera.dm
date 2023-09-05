@@ -78,7 +78,7 @@
 	for(var/i; i <= sorted.len; i++)
 		var/atom/A = sorted[i]
 		if(A)
-			var/icon/img = get_flat_icon(A)
+			var/icon/img = get_flat_icon_simple(A)
 
 			// If what we got back is actually a picture, draw it.
 			if(istype(img, /icon))
@@ -99,7 +99,7 @@
 		// Calculate where we are relative to the center of the photo
 		var/xoff = (the_turf.x - center.x) * 32 + center_offset
 		var/yoff = (the_turf.y - center.y) * 32 + center_offset
-		res.Blend(get_flat_icon(the_turf.loc), blendMode2iconMode(the_turf.blend_mode),xoff,yoff)
+		res.Blend(get_flat_icon_simple(the_turf.loc), blendMode2iconMode(the_turf.blend_mode),xoff,yoff)
 	// trample animations
 	return icon(res, dir = SOUTH, frame = 1)
 

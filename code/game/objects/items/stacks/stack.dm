@@ -1,16 +1,6 @@
 /**
- * Stack type objects!
- *
- * Contains:
- * * Stacks
- * * Recipe datum
- * * Recipe list datum
+ * Items that can stack, tracking the number of which is in it
  */
-
-/*
- * Stacks
- */
-
 /obj/item/stack
 	gender = PLURAL
 	origin_tech = list(TECH_MATERIAL = 1)
@@ -36,6 +26,8 @@
 	var/pass_color = FALSE
 	/// Will the stack merge with other stacks that are different colors? (Dyed cloth, wood, etc).
 	var/strict_color_stacking = FALSE
+
+#warn deal with recipes and refactor ui
 
 /obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
 	if(new_amount != null)
@@ -450,46 +442,6 @@
 		fingerprintshidden = from.fingerprintshidden.Copy()
 	if(from.fingerprintslast)
 		fingerprintslast = from.fingerprintslast
-
-/*
- * Recipe datum
- */
-/datum/stack_recipe
-	var/title = "ERROR"
-	var/result_type
-	/// Amount of material needed for this recipe.
-	var/req_amount = 1
-	/// Amount of stuff that is produced in one batch (e.g. 4 for floor tiles).
-	var/res_amount = 1
-	var/max_res_amount = 1
-	var/time = 0
-	var/one_per_turf = 0
-	var/on_floor = 0
-	var/use_material
-	var/pass_color
-
-/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null, pass_stack_color)
-	src.title = title
-	src.result_type = result_type
-	src.req_amount = req_amount
-	src.res_amount = res_amount
-	src.max_res_amount = max_res_amount
-	src.time = time
-	src.one_per_turf = one_per_turf
-	src.on_floor = on_floor
-	src.use_material = supplied_material
-	src.pass_color = pass_stack_color
-
-/*
- * Recipe list datum
- */
-/datum/stack_recipe_list
-	var/title = "ERROR"
-	var/list/recipes = null
-
-/datum/stack_recipe_list/New(title, recipes)
-	src.title = title
-	src.recipes = recipes
 
 /obj/item/stack/proc/set_amount(new_amount, no_limits = FALSE)
 	if(new_amount < 0 || new_amount % 1)

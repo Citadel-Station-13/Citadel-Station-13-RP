@@ -77,7 +77,7 @@
 
 			rig = W
 
-			var/icon/test = get_flat_icon(W)
+			var/icon/test = get_flat_icon_simple(W)
 			test.Shift(NORTH,1)
 			test.Shift(EAST,6)
 			add_overlay(test)

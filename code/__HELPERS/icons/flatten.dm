@@ -1,6 +1,6 @@
 //? File contains functions to generate flat /icon's from things.
 //? This is obviously expensive. Very, very expensive.
-//? new get_flat_icon is faster, but, really, don't use these unless you need to.
+//? new get_flat_icon_simple is faster, but, really, don't use these unless you need to.
 //? Chances are unless you are:
 //? - sending to html/browser (for non character preview purposes)
 //? - taking photos
@@ -10,6 +10,8 @@
 /**
  * Generates an icon with all 4 directions of something.
  *
+ * todo: this has no support for alignment / centering yet
+ *
  * @params
  * - A - appearancelike object.
  * - no_anim - flatten out animations
@@ -18,13 +20,13 @@
 	var/mutable_appearance/N = new
 	N.appearance = A
 	N.dir = NORTH
-	var/icon/north = get_flat_icon(N, NORTH, no_anim = no_anim)
+	var/icon/north = get_flat_icon_simple(N, NORTH, no_anim = no_anim)
 	N.dir = SOUTH
-	var/icon/south = get_flat_icon(N, SOUTH, no_anim = no_anim)
+	var/icon/south = get_flat_icon_simple(N, SOUTH, no_anim = no_anim)
 	N.dir = EAST
-	var/icon/east = get_flat_icon(N, EAST, no_anim = no_anim)
+	var/icon/east = get_flat_icon_simple(N, EAST, no_anim = no_anim)
 	N.dir = WEST
-	var/icon/west = get_flat_icon(N, WEST, no_anim = no_anim)
+	var/icon/west = get_flat_icon_simple(N, WEST, no_anim = no_anim)
 	qdel(N)
 	//Starts with a blank icon because of byond bugs.
 	var/icon/full = icon('icons/system/blank_32x32.dmi', "")
@@ -38,7 +40,19 @@
 	qdel(west)
 	return full
 
-/proc/get_flat_icon(appearance/appearancelike, dir, no_anim)
+/**
+ * grabs flat icon with no care for alignment / basically just grabs a png
+ */
+/proc/get_flat_icon_simple(appearance/appearancelike, dir, no_anim)
+	if(!dir && isloc(appearancelike))
+		dir = appearancelike.dir
+	. = _get_flat_icon(appearancelike, dir, no_anim, null, TRUE)
+	return .?[1]
+
+/**
+ * grabs flat icon as list(icon, centering-x, centering-y) offsets
+ */
+/proc/get_flat_icon(appearance/appearancelike)
 	if(!dir && isloc(appearancelike))
 		dir = appearancelike.dir
 	return _get_flat_icon(appearancelike, dir, no_anim, null, TRUE)
@@ -50,8 +64,12 @@
  * * no_anim - (optional) trample animations to first frame
  * * deficon - (optional) default icon to use instead of using the host appearance's
  * * start - is this the first call in the recurse? this is important
+ *
+ * @return list(icon, x, y) where x/y are centering pixel offsets
  */
 /proc/_get_flat_icon(image/A, defdir, no_anim, deficon, start)
+	#warn impl return
+	RETURN_TYPE(/list)
 	// start with blank image
 	var/static/icon/template = icon('icons/system/blank_32x32.dmi', "")
 
@@ -191,6 +209,8 @@
 
 	// adding icon we're mixing in
 	var/icon/adding
+	// full flat icon returned by a recursive GFI call during rendering
+	var/list/gfi_return
 	// current dimensions
 	var/list/flat_size = list(1, flat.Width(), 1, flat.Height())
 	// adding dimensions
@@ -217,10 +237,11 @@
 		else
 			// use full get_flat_icon
 			blend_mode = copying.blend_mode
-			adding = _get_flat_icon(copying, defdir, no_anim, icon)
+			gfi_return = _get_flat_icon(copying, defdir, no_anim, icon)
+			adding = gfi_return?[1]
 
 		// if we got nothing, skip
-		if(!adding)
+		if(isnull(adding))
 			continue
 
 		// detect adding size, taking into account copying overlay's pixel offsets

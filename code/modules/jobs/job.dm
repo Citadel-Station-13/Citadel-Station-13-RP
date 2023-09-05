@@ -418,7 +418,7 @@
 		dress_mannequin(mannequin)
 		mannequin.dir = SOUTH
 		mannequin.compile_overlays()
-		var/icon/preview_icon = get_flat_icon(mannequin)
+		var/icon/preview_icon = get_flat_icon_simple(mannequin)
 
 		preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2)	// Scaling here to prevent blurring in the browser.
 		SSjob.job_icons[title] = preview_icon

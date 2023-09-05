@@ -377,7 +377,7 @@ var/list/global/tank_gauge_cache = list()
 	if(wired)
 		overlays_to_add += "bomb_assembly"
 		if(proxyassembly.assembly)
-			var/icon/test = get_flat_icon(proxyassembly.assembly)
+			var/icon/test = get_flat_icon_simple(proxyassembly.assembly)
 			test.Shift(SOUTH,1)
 			test.Shift(WEST,3)
 			overlays_to_add += test
