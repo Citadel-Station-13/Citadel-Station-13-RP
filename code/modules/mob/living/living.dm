@@ -816,13 +816,15 @@ default behaviour is:
 	. = ..()
 	. += depth_current
 
+//TODO: maybe expand this system to be in the VV menu for event managers to mess with - provided they trust the observers enough...
 /**
  * Allows an observer to take control of the mob at any time. Must use the "existing" ghostrole subtype.
- * roletype: the ghostrole datum to use
- * provider: If the ghostrole was given by someone in-game, reference them here.
+ * R: the ghostrole datum to use
  */
-/mob/living/proc/add_ghostrole(datum/role/ghostrole/existing/R, mob/provider)
-	return AddComponent(/datum/component/ghostrole_spawnpoint, R, 1, list2params(list("mob" = src, "provider" = provider)))
+/mob/living/proc/add_ghostrole(datum/role/ghostrole/existing/R = /datum/role/ghostrole/existing/)
+	var/list/L = list()
+	L["mob"] += src
+	return AddComponent(/datum/component/ghostrole_spawnpoint, R, 1, L)
 
 /mob/living/proc/get_ghostrole()
 	return GetComponent(/datum/component/ghostrole_spawnpoint)

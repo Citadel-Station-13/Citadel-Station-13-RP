@@ -18,5 +18,5 @@
 	for(var/s in shared_soul_links)
 		var/datum/soul_link/S = s
 		S.sharer_died(gibbed)
-
+	remove_ghostrole() //gone too soon to realize their potential, if they had it.
 	. = ..()

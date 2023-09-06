@@ -208,6 +208,12 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	build_path = /obj/item/circuitboard/prosthetics
 
+/datum/design/circuit/processor
+	design_name = "slime processor"
+	id = "slime_processor"
+	req_tech = list(TECH_DATA = 2, TECH_BIO = 2)
+	build_path = /obj/item/circuitboard/processor
+
 /datum/design/circuit/mech_recharger
 	design_name = "mech recharger"
 	id = "mech_recharger"

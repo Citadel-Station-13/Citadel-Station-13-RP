@@ -13,30 +13,53 @@
 	var/processing = FALSE // So I heard you like processing.
 	var/list/to_be_processed = list()
 	var/monkeys_recycled = 0
+	var/monkeys_needed = 4 //How many monkeys needed to recycle to get a new cube - reduced through upgrading manipulator.
+	var/process_time = 10 //Time it takes to process each process within - reduced through upgrading laser.
+	var/let_slimes_pass = FALSE //Living slimes can pass through the processor if this is true. Made true through upgrading matter bin to T3 or above.
 	description_info = "Clickdrag dead slimes or monkeys to it to insert them.  It will make a new monkey cube for every four monkeys it processes. Alt click to enable auto-intake."
-
-/obj/item/circuitboard/processor
-	name = T_BOARD("slime processor")
-	build_path = /obj/machinery/processor
-	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
+	circuit = /obj/item/circuitboard/processor
 
 /obj/machinery/processor/examine(mob/user, dist)
 	. = ..()
-	. += "<span class='boldnotice'>The automatic intake switch is in the [auto_mode? "On" : "Off"] position.</span>"
+	. += SPAN_BOLDNOTICE("The automatic intake switch is in the [auto_mode? "On" : "Off"] position.")
+	if(let_slimes_pass)
+		. += SPAN_BOLDNOTICE("It looks slick enough to let slimes glide over it.")
 
 /obj/machinery/processor/attack_hand(mob/user, list/params)
 	if(processing)
-		to_chat(user, "<span class='warning'>The processor is in the process of processing!</span>")
+		to_chat(user, SPAN_WARNING("The processor is in the process of processing!"))
 		return
 	if(to_be_processed.len)
 		spawn(1)
 			begin_processing()
 	else
-		to_chat(user, "<span class='warning'>The processor is empty.</span>")
+		to_chat(user, SPAN_WARNING("The processor is empty."))
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
 
+/obj/machinery/processor/RefreshParts()
+	//defaults, in the event of someone fucking something up.
+	let_slimes_pass = FALSE
+	monkeys_needed = 4
+	process_time = 10
+	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
+		if(M.rating >= 3)
+			let_slimes_pass = TRUE
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
+		monkeys_needed = max(4 - M.rating, 1) //4 @ T1. 1 @ T4. no effect at higher tiers. (else it'd be grey goo: monke edition lol)
+	for(var/obj/item/stock_parts/micro_laser/M in component_parts)
+		process_time = max(12.5 - (M.rating * 2.5), 1) //1 sec @ T1. 0.25 sec @ T4. 0.1 sec @ T5.
+
 /obj/machinery/processor/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(processing)
+		to_chat(user, SPAN_WARNING("The processor is in the process of processing!"))
+		return
+	if(default_deconstruction_screwdriver(user, I))
+		return
+	if(default_deconstruction_crowbar(user, I))
+		return
+	if(default_part_replacement(user, I))
+		return
 	if(default_unfasten_wrench(user, I, 40))
 		return
 	if(istype(I, /obj/item/holder))
@@ -72,7 +95,7 @@
 	if(user.stat || user.incapacitated(INCAPACITATION_DISABLED) || !Adjacent(user))
 		return
 	auto_mode = !auto_mode
-	to_chat(user, "<span class='notice'>You turn the automatic intake [auto_mode? "On" : "Off"].</span>")
+	to_chat(user, SPAN_NOTICE("You turn the automatic intake [auto_mode? "On" : "Off"]."))
 	if(auto_mode)
 		START_PROCESSING(SSobj, src)
 	else
@@ -89,12 +112,12 @@
 	if((!Adjacent(user) && !Adjacent(AM)) || !user.Adjacent(AM))
 		return FALSE
 	if(!can_insert(AM))
-		to_chat(user, "<span class='warning'>\The [src] cannot process \the [AM] at this time.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] cannot process \the [AM] at this time."))
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return FALSE
 	to_be_processed.Add(AM)
 	AM.forceMove(src)
-	visible_message("<span class='notice'>\the [user] places [AM] inside \the [src].</span>")
+	visible_message(SPAN_NOTICE("\the [user] places [AM] inside \the [src]."))
 	return TRUE
 
 /obj/machinery/processor/proc/auto_insert(atom/movable/AM)
@@ -102,7 +125,7 @@
 		return
 	to_be_processed.Add(AM)
 	AM.forceMove(src)
-	visible_message("<span class='notice'>[src] sucks up [AM].</span>")
+	visible_message(SPAN_NOTICE("[src] sucks up [AM]."))
 
 /obj/machinery/processor/process(delta_time)
 	if(!auto_mode)
@@ -119,13 +142,13 @@
 	playsound(src.loc, 'sound/machines/juicer.ogg', 50, 1)
 	for(var/atom/movable/AM in to_be_processed)
 		extract(AM)
-		sleep(1 SECONDS)
+		sleep(process_time)
 
-	while(monkeys_recycled >= 4)
+	while(monkeys_recycled >= monkeys_needed)
 		new /obj/item/reagent_containers/food/snacks/monkeycube(get_turf(src))
 		playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
 		monkeys_recycled -= 4
-		sleep(1 SECOND)
+		sleep(process_time)
 
 	processing = FALSE
 	playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
@@ -137,7 +160,7 @@
 			new S.coretype(get_turf(src))
 			playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
 			S.cores--
-			sleep(1 SECOND)
+			sleep(process_time)
 		to_be_processed.Remove(S)
 		qdel(S)
 
@@ -147,7 +170,7 @@
 		to_be_processed.Remove(M)
 		qdel(M)
 		monkeys_recycled++
-		sleep(1 SECOND)
+		sleep(process_time)
 
 /obj/machinery/processor/proc/can_insert(var/atom/movable/AM)
 	if(AM.loc == src)
@@ -170,3 +193,13 @@
 	if(user.stat || user.incapacitated(INCAPACITATION_DISABLED) || !istype(user))
 		return
 	insert(AM, user)
+
+/obj/machinery/processor/CanAllowThrough(atom/movable/mover, turf/target)
+	if(isslime(mover) && let_slimes_pass)
+		return TRUE
+	return ..()
+
+/obj/machinery/processor/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	if(isslime(blocker) && let_slimes_pass)
+		return TRUE
+	return ..()

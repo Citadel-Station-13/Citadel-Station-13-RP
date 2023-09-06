@@ -31,12 +31,12 @@
 	var/existing_mob
 
 /datum/ghostrole_instantiator/existing/Create(client/C, atom/location, list/params)
-	var/mob/M = GetMob(location)
+	var/mob/M = existing_mob
 	if(!istype(M, /mob/living))
-		CRASH("Invalid atom or does not exist: [M], [M.type]")
+		CRASH("Invalid atom or does not exist: [M]")
 	for(var/trait in mob_traits)
 		ADD_TRAIT(M, trait, GHOSTROLE_TRAIT)
-	return existing_mob
+	return M
 
 /datum/ghostrole_instantiator/existing/proc/GetMob(client/C, atom/location, list/params)
 	return params["mob"] || existing_mob

@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 
 /datum/component/ghostrole_spawnpoint/proc/Turf()
 	RETURN_TYPE(/turf)
-	return Atom().loc
+	return get_turf(Atom()) //.loc may not be accurate if an object/mob is inside another object
 
 /datum/component/ghostrole_spawnpoint/proc/SpawnsLeft(client/C)
 	return max(0, max_spawns - spawns)
