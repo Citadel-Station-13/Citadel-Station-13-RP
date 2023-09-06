@@ -35373,10 +35373,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
-"vFS" = (
-/obj/machinery/door/airlock/glass_external/lythios43c/freezable,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "vGM" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/structure/sign/atmos/phoron{
@@ -50731,7 +50727,7 @@ iFN
 iFN
 iFN
 iFN
-vFS
+iFN
 iFN
 iFN
 vUA
