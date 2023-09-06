@@ -27,7 +27,7 @@
 ///It hit us but it should hit something on the same turf too. Usually used for turfs.
 #define BULLET_ACT_TURF				"TURF"
 
-//* submunition_spread_mode
+//* submunition_spread_mode; null to not spread
 /// spread evenly
 #define SUBMUNITION_SPREAD_EVENLY 1
 /// spread randomly

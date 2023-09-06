@@ -5,6 +5,8 @@
  * Guns that fire /obj/projectile's.
  */
 /obj/item/gun/projectile
+	/// projectile typepath hint for chameleon weapons, if autodetection otherwise fails.
+	var/nominal_projectile_type = /obj/projectile/bullet/pistol/strong
 	#warn impl
 
 /obj/item/gun/projectile/fire(atom/target, atom/movable/user, angle, reflex, point_blank)

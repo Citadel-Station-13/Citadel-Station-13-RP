@@ -6,13 +6,32 @@
 
 	/// chambered casing
 	var/obj/item/ammo_casing/chambered
+	/// casing mode after firing
+	#warn BALLISTIC_CASING_EJECT? but also CYCLE handling revolvers can be awkward.
+	var/casing_mode
+
+	/// do we use magazines? this **CANNOT** be changed at runtime without a proc
+	/// because behavior and initializations depend on this!
+	var/use_magazines = FALSE
+	/// magazine type to preload with
+	var/magazine_type
+	/// stored magazine
+	var/obj/item/ammo_magazine/magazine
+	/// magazine auto ejects on empty
+	//  todo: legacy
+	var/magazine_auto_eject = FALSE
+	/// sound to play on magazine auto eject
+	var/magazine_auto_eject_sound
+	/// magazine load sound
+	var/magazine_insert_sound = 'sound/weapons/guns/interaction/pistol_magin.ogg'
+	/// magazine unload sound
+	var/magazine_remove_sound = 'sound/weapons/guns/interaction/pistol_magout.ogg'
 
 /obj/item/gun/projectile/ballistic
 	name = "gun"
 	desc = "A gun that fires bullets."
 	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "revolver"
-	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	w_class = ITEMSIZE_NORMAL
 	materials = list(MAT_STEEL = 1000)
 	recoil = 0
@@ -27,20 +46,6 @@
 	var/ammo_type = null		//the type of ammo that the gun comes preloaded with
 	var/list/loaded = list()	//stored ammo
 	var/load_sound = 'sound/weapons/guns/interaction/bullet_insert.ogg'
-
-	//For MAGAZINE guns
-	var/magazine_type = null	//the type of magazine that the gun comes preloaded with
-	var/obj/item/ammo_magazine/ammo_magazine = null //stored magazine
-	var/allowed_magazines		//determines list of which magazines will fit in the gun
-	var/auto_eject = 0			//if the magazine should automatically eject itself when empty.
-	var/auto_eject_sound = null
-	var/mag_insert_sound = 'sound/weapons/guns/interaction/pistol_magin.ogg'
-	var/mag_remove_sound = 'sound/weapons/guns/interaction/pistol_magout.ogg'
-	var/can_special_reload = TRUE //Whether or not we can perform tactical/speed reloads on this gun
-	//TODO generalize ammo icon states for guns
-	//var/magazine_states = 0
-	//var/list/icon_keys = list()		//keys
-	//var/list/ammo_states = list()	//values
 
 /obj/item/gun/projectile/ballistic/Initialize(mapload, starts_loaded = TRUE)
 	. = ..()

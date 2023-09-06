@@ -11,6 +11,8 @@
 	unacidable = TRUE
 	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	animate_movement = NONE // we handle our own animations
+	appearance_flags = TILE_MOVER // we handle our own animations
 	depth_level = INFINITY // nothing should be passing over us from depth
 	generic_canpass = FALSE
 
@@ -42,7 +44,7 @@
 	/// original target
 	var/atom/target
 	/// firer if it exists
-	var/atom/firer
+	var/atom/movable/firer
 	/// already passed / hit
 	var/list/impacted = list()
 	/// original starting turf
@@ -96,6 +98,9 @@
 	var/submunition_spread_mode = SUBMUNITION_SPREAD_EVENLY
 	/// spread submunition damage to one individual type
 	/// usually you set it to the type of the only submunition path
+	/// this assumes submunitions_only is TRUE ; it will not count the parent projectile in calculations!
+	var/submunition_disperse_type
+	/// if you don't want submunitions only, set this to the amount to disperse
 	var/submunition_disperse_damage
 	/// submunitions usually inherit our accuracy but this gives a mod to every submunition
 	var/submunition_accuracy = 0
@@ -134,7 +139,6 @@
 	var/ignore_source_check = FALSE
 
 	var/spread = 0			//amount (in degrees) of projectile spread
-	animate_movement = 0	//Use SLIDE_STEPS in conjunction with legacy
 	var/ricochets = 0
 	var/ricochets_max = 2
 	var/ricochet_chance = 30
@@ -153,8 +157,6 @@
 	var/impact_light_intensity = 3
 	var/impact_light_range = 2
 	var/impact_light_color_override
-
-
 
 	//Targetting
 	var/yo = null
@@ -753,43 +755,6 @@
 	def_zone = check_zone(target_zone)
 	firer = user
 
-	if(use_submunitions && submunitions.len)
-		var/temp_min_spread = 0
-		if(force_max_submunition_spread)
-			temp_min_spread = submunition_spread_max
-		else
-			temp_min_spread = submunition_spread_min
-
-		var/damage_override = null
-
-		if(spread_submunition_damage)
-			damage_override = damage
-			if(nodamage)
-				damage_override = 0
-
-			var/projectile_count = 0
-
-			for(var/proj in submunitions)
-				projectile_count += submunitions[proj]
-
-			damage_override = round(damage_override / max(1, projectile_count))
-
-		for(var/path in submunitions)
-			var/amt = submunitions[path]
-			for(var/count in 1 to amt)
-				var/obj/projectile/SM = new path(get_turf(loc))
-				SM.shot_from = shot_from
-				SM.silenced = silenced
-				if(!isnull(damage_override))
-					SM.damage = damage_override
-				if(submunition_constant_spread)
-					SM.dispersion = 0
-					var/calculated = Angle + round((count / amt - 0.5) * submunition_spread_max, 1)
-					SM.launch_projectile(target, target_zone, user, params, calculated)
-				else
-					SM.dispersion = rand(temp_min_spread, submunition_spread_max) / 10
-					SM.launch_projectile(target, target_zone, user, params, angle_override)
-
 /obj/projectile/proc/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	var/direct_target
 	if(get_turf(target) == get_turf(src))
@@ -868,10 +833,59 @@
  * @params
  * * angle_override - override angle; useful for 'userless' projectile fires because we don't have to set any other vars
  * * point_blank - hit something point blank (duh)
+ * * firing_as_submunition - we are a submunition
  */
-/obj/projectile/proc/fire(angle_override, atom/point_blank)
+/obj/projectile/proc/fire(angle_override, atom/point_blank, firing_as_submunition)
+	starting_turf = get_turf(src)
 
-#warn impl
+	var/list/submunitions_created
+	if(!isnull(submunitions))
+		ASSERT(!firing_as_submunition)
+		submunitions_created = list()
+		for(var/path in submunitions)
+			if(submunition_disperse_type == path)
+				var/split_damage = (isnull(submunition_disperse_damage)? damage : submunition_disperse_damage) / submunitions[path]
+				for(var/i in 1 to submunitions[path])
+					var/obj/projectile/creating = new path
+					imprint_on_submunition(creating)
+					creating.damage = split_damage
+					submunitions_created += creating
+			else
+				for(var/i in 1 to submunitions[path])
+					var/obj/projectile/creating = new path
+					imprint_on_submunition(creating)
+					submunitions_created += creating
+
+	switch(submunition_spread_mode)
+		if(SUBMUNITION_SPREAD_EVENLY)
+			// todo: this isn't per path. this isn't good.
+			var/total = length(submunitions_created)
+			for(var/i in 1 to total)
+				var/obj/projectile/P = submunitions_created[i]
+				P.set_angle(angle + angle + round((i / total - 0.5) * submunition_spread, 0.5))
+		if(SUBMUNITION_SPREAD_RANDOM)
+			for(var/obj/projectile/P as anything in submunitions_created)
+				P.set_angle(angle + rand(-submunition_spread, submunition_spread))
+		else
+			for(var/obj/projectile/P as anything in submunitions_created)
+				P.set_angle(angle)
+
+	if(submunitions_only)
+		qdel(src)
+
+	for(var/obj/projectile/P as anything in submunitions_created)
+		P.fire(angle_override, point_blank, TRUE)
+
+	#warn impl
+
+/**
+ * imprint props onto a created submunition
+ */
+/obj/projectile/proc/imprint_on_submunition(obj/projectile/created)
+	created.point_blanking_doesnt_miss = point_blanking_doesnt_miss
+	created.target = target
+	created.firer = firer
+	created.starting_turf = starting_turf
 
 //* Hitscan Rendering
 

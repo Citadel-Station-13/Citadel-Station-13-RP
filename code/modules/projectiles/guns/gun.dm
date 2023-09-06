@@ -4,26 +4,14 @@
  */
 /obj/item/gun
 	name = "gun"
-	desc = "Its a gun. It's pretty terrible, though."
-	icon = 'icons/obj/gun/ballistic.dmi'
-	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
-		)
-	icon_state = "detective"
-	item_state = "gun"
-	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	materials = list(MAT_STEEL = 2000)
-	rad_flags = RAD_BLOCK_CONTENTS
-	w_class = ITEMSIZE_NORMAL
-	throw_force = 5
-	throw_speed = 4
-	throw_range = 5
-	damage_force = 5
-	preserve_item = 1
-	origin_tech = list(TECH_COMBAT = 1)
+	desc = "Devs fucked up."
+
+	#warn impl
+
 	attack_verb = list("struck", "hit", "bashed")
-	zoomdevicename = "scope"
+	rad_flags = RAD_BLOCK_CONTENTS
+	slot_flags = SLOT_BELT | SLOT_HOLSTER
+	w_class = WEIGHT_CLASS_NORMAL
 
 	//* Firemodes
 	#warn init firemodes on .. init
@@ -107,10 +95,30 @@
 		return FALSE
 	return TRUE
 
+/**
+ * restock the gun to full, whatever that means in the context of the gun
+ */
+/obj/item/gun/proc/restock_to_full()
+	return
+
 
 #warn below
 
 /obj/item/gun
+	icon = 'icons/obj/gun/ballistic.dmi'
+	item_icons = list(
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
+		)
+	icon_state = "detective"
+	item_state = "gun"
+	throw_force = 5
+	throw_speed = 4
+	throw_range = 5
+	damage_force = 5
+	preserve_item = 1
+	zoomdevicename = "scope"
+
 	var/fire_sound_text = "gunshot"
 	var/fire_anim = null
 	var/recoil = 0		//screen shake

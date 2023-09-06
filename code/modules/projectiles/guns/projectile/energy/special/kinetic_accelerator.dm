@@ -34,7 +34,7 @@
 	// flight_x_offset = 15
 	// flight_y_offset = 9
 	// automatic_charge_overlays = FALSE
-	firemodes = list(/datum/firemode/energy/kinetic_accelerator)
+	regex_this_firemodes = list(/datum/firemode/energy/kinetic_accelerator)
 	battery_lock = TRUE
 	fire_sound = 'sound/weapons/kenetic_accel.ogg'
 	var/overheat_time = 16
