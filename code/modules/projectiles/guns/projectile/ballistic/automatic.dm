@@ -556,7 +556,6 @@
 
 /obj/item/gun/projectile/ballistic/automatic/automat/holy
 	ammo_type = /obj/item/ammo_casing/a762/silver
-	holy = TRUE
 
 /obj/item/gun/projectile/ballistic/automatic/automat/taj
 	name = "Adhomai automat"

@@ -22,6 +22,12 @@
 	var/fire_sound
 	/// state mode append, if any
 	var/state_append
+	/// our mode radial icon
+	var/radial_icon
+	/// our mode radial state
+	var/radial_state
+	/// sound played when someone switches to this firemode
+	var/select_sound = 'sound/weapons/guns/selector.ogg'
 
 	//! legacy modifystate
 	var/legacy_modifystate

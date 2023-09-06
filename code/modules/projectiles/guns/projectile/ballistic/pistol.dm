@@ -375,7 +375,6 @@
 	name = "Blessed Red 9"
 	desc = "Ah, the choice of an avid gun collector! It's a nice gun, stranger."
 	ammo_type = /obj/item/ammo_casing/a9mm/silver
-	holy = TRUE
 
 /obj/item/gun/projectile/ballistic/clown_pistol
 	name = "clown pistol"

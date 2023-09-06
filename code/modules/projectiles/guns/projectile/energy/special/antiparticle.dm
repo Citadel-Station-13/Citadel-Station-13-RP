@@ -1,3 +1,8 @@
+/datum/firemode/energy/antiparticle
+	charge_cost = 200
+	fire_delay = 1 SECONDS
+	projectile_type = /obj/projectile/bullet/particle
+
 /obj/item/gun/projectile/energy/particle //base gun, similar stats to an egun
 	name = "Anti-particle projector pistol"
 	icon_state = "ppistol"
@@ -16,10 +21,8 @@
 	fire_sound = 'sound/weapons/blaster.ogg'
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_NORMAL
-	projectile_type = /obj/projectile/bullet/particle
+	regex_this_firemodes = list(/datum/firemode/energy/antiparticle)
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2, TECH_MATERIAL = 2)
-	fire_delay = 10
-	charge_cost = 200	//slightly more shots than lasers
 	var/safetycatch = 0 //if 1, won't let you fire in pressurised environment, rather than malfunctioning
 	var/obj/item/pressurelock/attached_safety
 
@@ -42,6 +45,11 @@
 	charge_delay = 10 //Starts recharging faster after firing than an AEG though.
 	one_handed_penalty = 15
 
+/datum/firemode/energy/antiparticle/cannon
+	charge_cost = 400
+	fire_delay = 1.5 SECONDS
+	projectile_type = /obj/projectile/bullet/particle/heavy
+
 /obj/item/gun/projectile/energy/particle/cannon //particle version of laser cannon
 	name = "Anti-particle cannon"
 	desc = "A Kawashima Material Technology Model 9 anti-particle projector. The heaviest weapon on-offer from KMT, and a miner's best friend in the void, this massive antimatter weapon is powered by an internal reactor for increased longevity in the field."
@@ -50,18 +58,16 @@
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 4, TECH_MAGNET = 4)
-	projectile_type = /obj/projectile/bullet/particle/heavy
 	battery_lock = 1
-	fire_delay = 15 // fires faster than a laser cannon. c'mon, it's an awesome-but-impractical endgame gun.
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	damage_force = 10
 	one_handed_penalty = 60 // The thing's heavy and huge.
 	accuracy = 70
-	charge_cost = 400 // 6 shots
 	self_recharge = 1
 	heavy = TRUE
 	charge_delay = 15 //won't start charging until it's ready to fire again
 	recharge_time = 8 //40 ticks after that to refill the whole thing.
+	regex_this_firemodes = list(/datum/firemode/energy/antiparticle/cannon)
 
 //special behaviours for particle guns below
 

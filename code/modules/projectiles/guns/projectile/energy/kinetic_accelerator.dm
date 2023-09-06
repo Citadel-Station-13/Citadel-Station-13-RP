@@ -14,6 +14,10 @@
 	if(environment.temperature < (T20C - 30))
 		. = TRUE
 
+/datum/firemode/energy/kinetic_accelerator
+	charge_cost = 1200
+	projectile_type = /obj/projectile/kinetic
+
 /obj/item/gun/projectile/energy/kinetic_accelerator
 	name = "proto-kinetic accelerator"
 	desc = "A self-recharging mining tool that fires unstable blasts of kinetic energy, because management wouldn't let you have the ripper saws or line cutters. Especially effective in low-pressure environments."
@@ -30,8 +34,7 @@
 	// flight_x_offset = 15
 	// flight_y_offset = 9
 	// automatic_charge_overlays = FALSE
-	projectile_type = /obj/projectile/kinetic
-	charge_cost = 1200
+	firemodes = list(/datum/firemode/energy/kinetic_accelerator)
 	battery_lock = TRUE
 	fire_sound = 'sound/weapons/kenetic_accel.ogg'
 	var/overheat_time = 16

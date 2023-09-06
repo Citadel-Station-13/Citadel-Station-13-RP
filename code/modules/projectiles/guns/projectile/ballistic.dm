@@ -1,3 +1,12 @@
+/**
+ * Projectile guns that use ammo casings / magazines.
+ */
+/obj/item/gun/projectile/ballistic
+	#warn impl
+
+	/// chambered casing
+	var/obj/item/ammo_casing/chambered
+
 /obj/item/gun/projectile/ballistic
 	name = "gun"
 	desc = "A gun that fires bullets."

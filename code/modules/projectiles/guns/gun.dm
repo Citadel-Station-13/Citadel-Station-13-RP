@@ -46,6 +46,16 @@
 	/// current firer ; used to know when to abort when necesary / do other checks.
 	var/atom/movable/firing_user
 
+	//* Pins
+	/// our firing pin ; set to path to init on creation
+	var/obj/item/firing_pin/pin = /obj/item/firing_pin
+	/// requires pin?
+	var/no_pin_required = FALSE
+
+	//* Safety
+	/// whether or not we have safeties and if safeties are on
+	var/safety_state = GUN_SAFETY_ON
+
 	//* SFX
 	/// default firing sound
 	/// todo: priority is undefined right now :/
@@ -101,7 +111,6 @@
 #warn below
 
 /obj/item/gun
-	var/move_delay = 1
 	var/fire_sound_text = "gunshot"
 	var/fire_anim = null
 	var/recoil = 0		//screen shake
@@ -111,20 +120,10 @@
 	var/scoped_accuracy = null
 	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
 	var/list/dispersion = list(0)
-	var/mode_name = null
-	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
-	var/holy = FALSE //For Divinely blessed guns
-	var/obj/item/ammo_casing/chambered = null
 
 	var/wielded_item_state
 	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.
 	var/atom/movable/screen/auto_target/auto_target
-	var/shooting = 0
-	var/next_fire_time = 0
-
-	var/sel_mode = 1 //index of the currently selected mode
-	var/list/firemodes = list()
-	var/selector_sound = 'sound/weapons/guns/selector.ogg'
 
 	//aiming system stuff
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
@@ -134,9 +133,6 @@
 	var/tmp/mob/living/last_moved_mob //Used to fire faster at more than one person.
 	var/tmp/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
 	var/tmp/lock_time = -100
-
-	/// whether or not we have safeties and if safeties are on
-	var/safety_state = GUN_SAFETY_ON
 
 	var/dna_lock = 0				//whether or not the gun is locked to dna
 	var/obj/item/dnalockingchip/attached_lock
@@ -154,8 +150,6 @@
 	var/flight_x_offset = 0
 	var/flight_y_offset = 0
 
-	var/obj/item/firing_pin/pin = /obj/item/firing_pin
-	var/no_pin_required = 0
 	var/scrambled = 0
 
 /obj/item/gun/projectile/CtrlClick(mob/user)
@@ -346,6 +340,8 @@
 				remove_obj_verb(src, /obj/item/gun/projectile/verb/allow_dna)
 		else
 			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
+
+	#warn get rid of this fucking shitcode
 
 	if(A.is_multitool())
 		if(!scrambled)
@@ -570,10 +566,6 @@
 	if(muzzle_flash)
 		set_light(0)
 
-//obtains the next projectile to fire
-/obj/item/gun/projectile/proc/consume_next_projectile()
-	return null
-
 //used by aiming code
 /obj/item/gun/projectile/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
 	if(!special_check(user))
@@ -646,27 +638,6 @@
 		spawn()
 			shake_camera(user, recoil+1, recoil)
 	update_icon()
-
-/obj/item/gun/projectile/proc/process_point_blank(obj/projectile, mob/user, atom/target)
-	var/obj/projectile/P = projectile
-	if(!istype(P))
-		return //default behaviour only applies to true projectiles
-
-	//default point blank multiplier
-	var/damage_mult = 1.3
-
-	//determine multiplier due to the target being grabbed
-	if(ismob(target))
-		var/mob/M = target
-		if(M.grabbed_by.len)
-			var/grabstate = 0
-			for(var/obj/item/grab/G in M.grabbed_by)
-				grabstate = max(grabstate, G.state)
-			if(grabstate >= GRAB_NECK)
-				damage_mult = 2.5
-			else if(grabstate >= GRAB_AGGRESSIVE)
-				damage_mult = 1.5
-	P.damage *= damage_mult
 
 /obj/item/gun/projectile/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
 	var/obj/projectile/P = projectile
@@ -840,6 +811,8 @@
 	else
 		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
 	return 0
+
+//* Safeties
 
 /obj/item/gun/update_overlays()
 	. = ..()

@@ -174,7 +174,6 @@
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/holy
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	desc = "Alright you primitive screw heads, listen up. See this? This... is my BOOMSTICK."
-	holy = TRUE
 
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/flare
 	name = "signal shotgun"
@@ -227,7 +226,6 @@
 
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn/alt/holy // A Special Skin for the sawn off,makes it look like the sawn off from Blood.
 	ammo_type = /obj/item/ammo_casing/a12g/silver
-	holy = TRUE
 
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/quad
 	name = "quad-barreled shotgun"
@@ -301,7 +299,6 @@
 	desc = "A Brass Flare Gun far more exspensuve and well made then the plastic ones mass produced for signalling. It fires using an odd clockwork mechanism. Loads using 12g"
 	icon_state = "flareg-holy"
 	accuracy = 50 //Strong Gun Better Accuracy
-	holy = TRUE
 
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/axe
 	name = "Shot Axe"
@@ -318,7 +315,6 @@
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_OCCULT = 1)
 	sharp = 1
 	edge = 1
-	holy = TRUE
 
 /obj/item/gun/projectile/ballistic/shotgun/underslung
 	name = "underslung shotgun"
