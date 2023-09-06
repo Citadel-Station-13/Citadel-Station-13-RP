@@ -140,7 +140,7 @@
 /obj/structure/closet/crate/secure
 	desc = "A secure crate."
 	name = "Secure crate"
-	icon_state = "crate"
+	icon_state = "securecrate"
 	var/redlight = "securecrater"
 	var/greenlight = "securecrateg"
 	var/sparks = "securecratesparks"
@@ -162,10 +162,16 @@
 	return !locked
 
 /obj/structure/closet/crate/secure/togglelock(mob/user as mob)
-	. = ..()
-	if(opened)
+	if(src.opened)
 		to_chat(user, "<span class='notice'>Close the crate first.</span>")
 		return
+	if(src.broken)
+		to_chat(user, "<span class='warning'>The crate appears to be broken.</span>")
+		return
+	if(src.allowed(user))
+		set_locked(!locked, user)
+	else
+		to_chat(user, "<span class='notice'>Access Denied</span>")
 
 /obj/structure/closet/crate/secure/proc/set_locked(var/newlocked, mob/user = null)
 	if(locked == newlocked)
