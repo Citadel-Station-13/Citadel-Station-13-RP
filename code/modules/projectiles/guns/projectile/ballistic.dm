@@ -155,14 +155,14 @@
 								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
 													 SPAN_WARNING("You speed reload \the [src] with \the [AM]!"))
 					ammo_magazine = AM
-					playsound(loc, mag_insert_sound, 75, 1)
+					playsound(loc, magazine_insert_sound, 75, 1)
 					update_icon()
 					AM.update_icon()
 				if(!user.attempt_insert_item_for_installation(AM, src))
 					return
 				ammo_magazine = AM
 				user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
-				playsound(src.loc, mag_insert_sound, 50, 1)
+				playsound(src.loc, magazine_insert_sound, 50, 1)
 			if(SPEEDLOADER)
 				if(loaded.len >= max_shells)
 					to_chat(user, "<span class='warning'>[src] is full!</span>")
@@ -221,7 +221,7 @@
 	if(ammo_magazine)
 		user.put_in_hands_or_drop(ammo_magazine)
 		user.visible_message("[user] removes [ammo_magazine] from [src].", "<span class='notice'>You remove [ammo_magazine] from [src].</span>")
-		playsound(src.loc, mag_remove_sound, 50, 1)
+		playsound(src.loc, magazine_remove_sound, 50, 1)
 		ammo_magazine.update_icon()
 		ammo_magazine = null
 	else if(loaded.len)
@@ -256,7 +256,7 @@
 	else if(ammo_magazine)
 		ammo_magazine.forceMove(user.drop_location())
 		user.visible_message("[user] dumps [ammo_magazine] from [src] onto the floor.", SPAN_NOTICE("You dump [ammo_magazine] from [src] onto the floor."))
-		playsound(src, mag_remove_sound, 50, 1)
+		playsound(src, magazine_remove_sound, 50, 1)
 		ammo_magazine.update_icon()
 		ammo_magazine = null
 	else
