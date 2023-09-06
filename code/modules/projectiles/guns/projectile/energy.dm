@@ -1,3 +1,9 @@
+/datum/firemode/energy
+	/// projectile type
+	var/projectile_type = /obj/projectile/beam
+	/// charge cost
+	var/charge_cost = 240
+
 /obj/item/gun/projectile/energy
 	name = "energy gun"
 	desc = "A basic energy-based gun. NanoTrasen, Hephaestus, Ward-Takahashi, and countless other smaller corporations have their own version of this reliable design."

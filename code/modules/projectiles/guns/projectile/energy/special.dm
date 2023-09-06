@@ -1,31 +1,8 @@
-/obj/item/gun/projectile/energy/ionrifle
-	name = "ion rifle"
-	desc = "The NT Mk60 EW Halicon is a man portable anti-armor weapon designed to disable mechanical threats, produced by NT. Not the best of its type."
-	icon_state = "ionrifle"
-	item_state = "ionrifle"
-	wielded_item_state = "ionrifle-wielded"
-	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 4)
-	w_class = ITEMSIZE_LARGE
-	damage_force = 10
-	slot_flags = SLOT_BACK
-	heavy = TRUE
-	projectile_type = /obj/projectile/ion
-	one_handed_penalty = 15
 
-/obj/item/gun/projectile/energy/ionrifle/emp_act(severity)
-	..(max(severity, 4)) //so it doesn't EMP itself, I guess
-
-/obj/item/gun/projectile/energy/ionrifle/pistol
-	name = "ion pistol"
-	desc = "The NT Mk63 EW Pan is a man portable anti-armor weapon designed to disable mechanical threats, produced by NT. This model sacrifices capacity for portability."
-	icon_state = "ionpistol"
-	item_state = null
-	w_class = ITEMSIZE_NORMAL
-	damage_force = 5
-	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	heavy = FALSE
-	charge_cost = 480
-	projectile_type = /obj/projectile/ion/pistol
+/datum/firemode/energy/decloner
+	name = "declone"
+	charge_cost = 240
+	projectile_type = /obj/projectile/energy/declone
 
 /obj/item/gun/projectile/energy/decloner
 	name = "biological demolecularisor"
@@ -33,56 +10,12 @@
 	icon_state = "decloner"
 	item_state = "decloner"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_POWER = 3)
-	projectile_type = /obj/projectile/energy/declone
+	regex_this_firemodes = list(/datum/firemode/energy/decloner)
 
-/obj/item/gun/projectile/energy/floragun
-	name = "floral somatoray"
-	desc = "A tool that discharges controlled radiation which induces mutation in plant cells."
-	icon_state = "floramut100"
-	item_state = "floramut"
-	projectile_type = /obj/projectile/energy/floramut
-	origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3, TECH_POWER = 3)
-	modifystate = "floramut"
-	cell_type = /obj/item/cell/device/weapon/recharge
-	no_pin_required = 1
-	battery_lock = 1
-	var/singleton/plantgene/gene = null
 
-	firemodes = list(
-		list(mode_name="induce mutations", projectile_type=/obj/projectile/energy/floramut, modifystate="floramut"),
-		list(mode_name="increase yield", projectile_type=/obj/projectile/energy/florayield, modifystate="florayield"),
-		list(mode_name="induce specific mutations", projectile_type=/obj/projectile/energy/floramut/gene, modifystate="floramut"),
-		)
-
-/obj/item/gun/projectile/energy/floragun/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	//allow shooting into adjacent hydrotrays regardless of intent
-	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
-		user.visible_message("<span class='danger'>\The [user] fires \the [src] into \the [target]!</span>")
-		Fire(target,user)
-		return
-	..()
-
-/obj/item/gun/projectile/energy/floragun/verb/select_gene()
-	set name = "Select Gene"
-	set category = "Object"
-	set src in view(1)
-
-	var/genemask = input("Choose a gene to modify.") as null|anything in SSplants.plant_gene_datums
-
-	if(!genemask)
-		return
-
-	gene = SSplants.plant_gene_datums[genemask]
-
-	to_chat(usr, "<span class='info'>You set the [src]'s targeted genetic area to [genemask].</span>")
-
-	return
-
-/obj/item/gun/projectile/energy/floragun/consume_next_projectile()
-	. = ..()
-	var/obj/projectile/energy/floramut/gene/G = .
-	if(istype(G))
-		G.gene = gene
+/datum/firemode/energy/meteor
+	charge_cost = 100
+	projectile_type = /obj/projectile/meteor
 
 /obj/item/gun/projectile/energy/meteorgun
 	name = "meteor gun"
@@ -92,9 +25,8 @@
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
-	projectile_type = /obj/projectile/meteor
+	regex_this_firemodes = list(/datum/firemode/energy/meteor)
 	cell_type = /obj/item/cell/potato
-	charge_cost = 100
 	self_recharge = 1
 	recharge_time = 5 //Time it takes for shots to recharge (in ticks)
 	charge_meter = 0
@@ -111,13 +43,20 @@
 	slot_flags = SLOT_BELT
 	one_handed_penalty = 0
 
+/datum/firemode/energy/mindflayer
+	charge_cost = 240
+	projectile_type = /obj/projectile/beam/midnflayer
 
 /obj/item/gun/projectile/energy/mindflayer
 	name = "mind flayer"
 	desc = "A custom-built weapon of some kind."
 	icon_state = "xray"
-	projectile_type = /obj/projectile/beam/mindflayer
+	regex_this_firemodes = list(/datum/firemode/energy/mindflayer)
 	one_handed_penalty = 15
+
+/datum/firemode/energy/phoron
+	charge_cost = 240
+	projectile_type = /obj/projectile/energy/phoron
 
 /obj/item/gun/projectile/energy/toxgun
 	name = "phoron pistol"
@@ -125,7 +64,7 @@
 	icon_state = "toxgun"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)
-	projectile_type = /obj/projectile/energy/phoron
+	regex_this_firemodes = list(/datum/firemode/energy/phoron)
 
 /* Staves */
 
@@ -405,6 +344,11 @@
 	fire_delay = 20
 	charge_cost = 800	//Three shots.
 
+/datum/firemode/energy/puzzle_key
+	projectile_type = /obj/projectile/beam/emitter
+	charge_cost = 800
+	fire_delay = 1 SECONDS
+
 /obj/item/gun/projectile/energy/puzzle_key
 	name = "Key of Anak-Hun-Tamuun"
 	desc = "An arcane stave that fires a powerful energy blast. Why was this just left laying around here?"
@@ -414,21 +358,22 @@
 	item_state = "staffofchaos"
 	damage_force = 5
 	charge_meter = 0
-	projectile_type = /obj/projectile/beam/emitter
-	fire_delay = 10
-	charge_cost = 800
+	firemodes = list(/datum/firemode/energy/puzzle_key)
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
 	battery_lock = 1
 	one_handed_penalty = 0
 
+/datum/firemode/energy/emitter_rifle
+	projectile_type = /obj/projectile/beam/emitter
+	charge_cost = 900
+	fire_delay = 1 SECONDS
+
 /obj/item/gun/projectile/energy/ermitter
-	name = "Ermitter rifle"
+	name = "Emitter Rifle"
 	desc = "A industrial energy projector turned into a crude, portable weapon. The Tyrmalin answer to armored hardsuits used by pirates, what it lacks in precision, it makes up for in firepower."
 	icon_state = "ermitter_gun"
 	item_state = "pulse"
-	projectile_type = /obj/projectile/beam/emitter
-	fire_delay = 10
-	charge_cost = 900
+	firemodes = list(/datum/firemode/energy/emitter_rifle)
 	cell_type = /obj/item/cell
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
@@ -437,13 +382,6 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_ENGINEERING = 3, TECH_MAGNET = 2)
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
 	one_handed_penalty = 50
-
-/obj/item/gun/projectile/energy/ionrifle/pistol/tyrmalin
-	name = "botbuster pistol"
-	desc = "These jury-rigged pistols are sometimes fielded by Tyrmalin facing sythetic pirates or faulty machinery. Capable of discharging a single ionized bolt before needing to recharge, they're often treated as holdout or ambush weapons."
-	icon_state = "botbuster"
-	charge_cost = 1300
-	projectile_type = /obj/projectile/ion/pistol
 
 /obj/item/gun/projectile/energy/jezzail
 	name = "Microfission Jezzail"
@@ -460,90 +398,3 @@
 	heavy = TRUE
 	damage_force = 10
 	one_handed_penalty = 60
-
-//Plasma Guns Plasma Guns!
-/obj/item/gun/projectile/energy/plasma
-	name = "\improper Balrog plasma rifle"
-	desc = "This bulky weapon, the experimental NT-PLR-EX 'Balrog', fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
-	icon_state = "prifle"
-	item_state = null
-	projectile_type = /obj/projectile/plasma
-	fire_delay = 20
-	charge_cost = 400
-	cell_type = /obj/item/cell/device/weapon
-	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
-	heavy = TRUE
-	damage_force = 10
-	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	materials = list(MAT_STEEL = 10000, MAT_GLASS = 2000)
-	one_handed_penalty = 50
-	var/overheating = 0
-
-	firemodes = list(
-		list(mode_name="standard", projectile_type=/obj/projectile/plasma, charge_cost = 350),
-		list(mode_name="high power", projectile_type=/obj/projectile/plasma/hot, charge_cost = 370),
-		)
-
-/obj/item/gun/projectile/energy/plasma/update_icon()
-	. = ..()
-	if(overheating)
-		icon_state = "prifle_overheat"
-		update_held_icon()
-	else
-		return
-
-/obj/item/gun/projectile/energy/plasma/consume_next_projectile(mob/user as mob)
-	. = ..()
-	if(src.projectile_type == /obj/projectile/plasma/hot)
-		switch(rand(1,6))
-			if(1)
-				to_chat(user, "<span class='danger'>The containment coil catastrophically overheats!</span>")
-				overheating = 1
-				spawn(rand(2 SECONDS,5 SECONDS))
-					if(src)
-						visible_message("<span class='critical'>\The [src] detonates!</span>")
-						explosion(get_turf(src), -1, 0, 2, 3)
-						qdel(chambered)
-						qdel(src)
-				return ..()
-			if(2 to 6)
-				return ..()
-
-/obj/item/gun/projectile/energy/plasma/pistol
-	name = "\improper Wyrm plasma pistol"
-	desc = "This scaled down NT-PLP-EX 'Wyrm' plasma pistol fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
-	icon_state = "ppistol"
-	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	w_class = ITEMSIZE_NORMAL
-	heavy = FALSE
-	damage_force = 5
-	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
-	one_handed_penalty = 10
-
-/obj/item/gun/projectile/energy/plasma/pistol/update_icon()
-	. = ..()
-	if(overheating)
-		icon_state = "ppistol_overheat"
-		update_held_icon()
-	else
-		return
-
-/obj/item/gun/projectile/energy/plasma/pistol/consume_next_projectile(mob/user as mob)
-	. = ..()
-	if(.)
-		if(src.projectile_type == /obj/projectile/plasma/hot)
-			switch(rand(1,6))
-				if(1)
-					to_chat(user, "<span class='danger'>The containment coil catastrophically overheats!</span>")
-					overheating = 1
-					spawn(rand(2 SECONDS,5 SECONDS))
-						if(src)
-							visible_message("<span class='critical'>\The [src] detonates!</span>")
-							explosion(get_turf(src), -1, 0, 2, 3)
-							qdel(chambered)
-							qdel(src)
-					return ..()
-				if(2 to 6)
-					return ..()

@@ -1,6 +1,7 @@
-//
-// Size Gun
-//
+/datum/firemode/energy/sizegun
+	name = "sizelaser"
+	projectile_type = /obj/projectile/beam/sizelaser
+	charge_cost = 240
 
 /obj/item/gun/projectile/energy/sizegun
 	name = "size gun" //I have no idea why this was called shrink ray when this increased and decreased size.
@@ -9,19 +10,14 @@
 	icon_state = "sizegun-shrink100" // Someone can probably do better. -Ace
 	item_state = null	//so the human update icon uses the icon_state instead
 	fire_sound = 'sound/weapons/wave.ogg'
-	charge_cost = 240
-	projectile_type = /obj/projectile/beam/sizelaser
 	origin_tech = list(TECH_BLUESPACE = 4)
 	modifystate = "sizegun-shrink"
 	no_pin_required = 1
 	battery_lock = 1
 	var/size_set_to = 1
-	firemodes = list(
-		list(mode_name		= "select size",
-			projectile_type	= /obj/projectile/beam/sizelaser,
-			modifystate		= "sizegun-grow",
-			fire_sound		= 'sound/weapons/pulse3.ogg'
-		))
+	regex_this_firemodes = list(
+		/datum/firemode/energy/sizegun,
+	)
 
 /obj/item/gun/projectile/energy/sizegun/Initialize(mapload)
 	. = ..()
@@ -112,4 +108,4 @@
 	modifystate = "sizegun-shrink"
 	no_pin_required = 1
 	battery_lock = 1
-	firemodes = list()
+	regex_this_firemodes = list()

@@ -26,9 +26,11 @@
 	zoomdevicename = "scope"
 
 	//* Firemodes
-	#warn *SCREAM
+	#warn init firemodes on .. init
 	/// current firemode
 	var/datum/firemode/firemode
+	/// available firemodes
+	var/datum/firemode/regex_this_firemodes
 
 	//* Firing
 	/// mid firing

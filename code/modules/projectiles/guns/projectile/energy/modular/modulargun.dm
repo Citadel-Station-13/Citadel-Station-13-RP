@@ -19,7 +19,6 @@
 	var/obj/item/modularlaser/capacitor/lasercap
 	var/obj/item/modularlaser/cooling/lasercooler
 	var/obj/item/modularlaser/controller/circuit
-	firemodes = list()
 	var/emp_vuln = TRUE
 
 /obj/item/gun/projectile/energy/modular/Initialize(mapload)
@@ -49,7 +48,7 @@
 	if(!length(firemodes))
 		return
 	var/datum/firemode/new_mode = firemodes[1]
-	new_mode.apply_to(src)
+	set_firemode(new_mode)
 
 /obj/item/gun/projectile/energy/modular/proc/do_generatefiremodes() //Accepts no args. Checks the gun's current components and generates projectile types, firemode costs and max burst. Should be called after changing parts or part values.
 	if(!circuit)

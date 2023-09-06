@@ -20,4 +20,9 @@
 	/// priority:
 	/// projectile fire sound --> firemode fire sound --> gun fire sound
 	var/fire_sound
+	/// state mode append, if any
+	var/state_append
+
+	//! legacy modifystate
+	var/legacy_modifystate
 

@@ -1,3 +1,15 @@
+/datum/firemode/energy/e_gun/stun
+	charge_cost = 280
+	projectile_type = /obj/projectile/beam/stun/med
+	legacy_modifystate = "energystun"
+	name = "stun"
+
+/datum/firemode/energy/e_gun/kill
+	name = "lethal"
+	charge_cost = 480
+	projectile_type = /obj/projectile/beam
+	legacy_modifystate = "energykill"
+
 /obj/item/gun/projectile/energy/gun
 	name = "energy gun"
 	desc = "Another bestseller of Lawson Arms and "+TSC_HEPH+", the LAEP90 Perun is a versatile energy based sidearm, capable of switching between low and high capacity projectile settings. In other words: Stun or Kill."
@@ -9,16 +21,35 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	modifystate = "energystun"
 
-	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun/med, modifystate="energystun", charge_cost = 240),
-		list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="energykill", charge_cost = 480),
-		)
+	regex_this_firemodes = list(
+		/datum/firemode/energy/e_gun/stun,
+		/datum/firemode/energy/e_gun/kill,
+	)
 
 /obj/item/gun/projectile/energy/gun/mounted
 	name = "mounted energy gun"
 	self_recharge = 1
 	use_external_power = 1
 
+/datum/firemode/energy/burstlaser
+
+/datum/firemode/energy/burstlaser/stun
+	name = "stun"
+	projectile_type = /obj/projectile/beam/stun/weak
+	legacy_modifystate = "fm-2tstun"
+	charge_cost = 100
+
+/datum/firemode/energy/burstlaser/stun/burst
+	#warn impl
+
+/datum/firemode/energy/burstlaser/kill
+	name = "lethal"
+	projectile_type = /obj/projectile/beam/burstlaser
+	legacy_modifystate = "fm-2tkill"
+	charge_cost = 200
+
+/datum/firemode/energy/burstlaser/kill/burst
+	#warn impl
 
 /obj/item/gun/projectile/energy/gun/burst
 	name = "burst laser"
