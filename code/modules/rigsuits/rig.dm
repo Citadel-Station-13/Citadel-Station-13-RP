@@ -9,6 +9,19 @@
 	/// activation state
 	var/activation_state = RIG_ACTIVATION_OFFLINE
 
+	//* Appearance (Self)
+	var/state_worn_sealed
+	var/state_worn_unsealed
+	var/state_sealed
+	var/statE_unsealed
+
+	//* Legacy - to be made into dynamic data once components/modules are done.
+	var/datum/armor/suit_armor
+	var/min_pressure_protect
+	var/max_pressure_protect
+	var/min_pressure_protect
+	var/max_pressure_protect
+
 	//* Pieces
 	/// list of /datum/component/rig_piece's
 	var/list/datum/component/rig_piece/piece_components
@@ -16,8 +29,8 @@
 	var/list/obj/item/piece_items
 
 	//* Theme
-	/// The theme we're using - set to path to load at init
-	var/datum/rig_theme/theme
+	/// default theme
+	var/theme_initial = /datum/rig_theme/station/civilian/standard
 	/// Is our theme initialized?
 	var/theme_initialized = FALSE
 
@@ -44,5 +57,22 @@
 #warn impl all
 
 
+/obj/item/rig/Initialize(mapload, datum/rig_theme/theme_like)
+	. = ..()
+	if(isnull(theme_like))
+		theme_like = theme_initial
+	if(ispath(theme_like))
+		theme_initial = theme_like
+	else
+		init_theme(theme_like)
+
+/obj/item/rig/Destroy()
+	hard_reset()
+	wipe_everything()
+	return ..()
+
 /obj/item/rig/proc/hard_reset()
 	#warn get everything back inside and set activation to deactivated
+
+/obj/item/rig/proc/wipe_everything()
+	#warn impl

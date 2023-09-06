@@ -1,6 +1,15 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+GLOBAL_LIST_EMPTY(rig_theme_cache)
+
+/proc/fetch_rig_theme(datum/rig_theme/path)
+	if(!isnull(GLOB.rig_theme_cache[path]))
+		return GLOB.rig_theme_cache[path]
+	var/datum/rig_theme/instance = new path
+	GLOB.rig_theme_path[path] = instance
+	return instance
+
 /datum/rig_theme
 	/// in code theme name
 	var/name = "unknown rig"
