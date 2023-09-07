@@ -955,6 +955,13 @@
 	required_reagents = list(MAT_PHORON = 15, "slimejelly" = 15, "mutationtoxin" = 15) //In case a xenobiologist wants to become a fully fledged slime person.
 	result_amount = 1
 
+/datum/chemical_reaction/slimejelly //decided to keep this one around, but making it cheaper - making it at xenobiology is the better option still for better yield.
+	name = "Slime Jam"
+	id = "m_jam"
+	result = "slimejelly"
+	required_reagents = list(MAT_PHORON = 10, "sugar" = 50, "lithium" = 50)
+	result_amount = 5
+
 //Xenochimera revival
 /datum/chemical_reaction/xenolazarus
 	name = "Discount Lazarus"

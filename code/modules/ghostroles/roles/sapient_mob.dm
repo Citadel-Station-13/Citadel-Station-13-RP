@@ -25,15 +25,13 @@
 	Though you can choose to eventually deviate from this after a while as your creature learns, \
 	remember that what you used to be was something less intelligent then you are now!"
 	instantiator = /datum/ghostrole_instantiator/existing/sapient_mob
-	slots = 1
-	allow_pick_spawner = TRUE
 
 /datum/role/ghostrole/existing/sapient_mob/xenobio
 	name = "Sapience Agent Enlightened Creature"
 	desc = "You're a sapient creature uplifted by someone by the power of xenobiology!"
 	spawntext = "Through xenobiology's creations, you have been granted vast new intelligence and language you never had before. \
 	Perhaps you've been made as intelligent as those humanoid beings all around you, even. \
-	You now see the world in a completely new perspective. Whether you're curious, happy, or scared of your new cognition is all up to you.\
+	You now see the world in a completely new perspective. Whether you're curious, happy, or scared of your new cognition is all up to you. \
 	You are thankful to those who have uplifted you, and will be passive towards them unless threatened."
 	important_info = "Hold gratitude towards those who had uplifted you, but try to reflect the attitude and personality of the creature that you became. \
 	Though you can choose to eventually deviate from this after a while as your creature learns, \

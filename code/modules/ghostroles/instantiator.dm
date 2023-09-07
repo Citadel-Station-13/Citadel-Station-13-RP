@@ -31,7 +31,7 @@
 	var/existing_mob
 
 /datum/ghostrole_instantiator/existing/Create(client/C, atom/location, list/params)
-	var/mob/M = existing_mob
+	var/mob/M = GetMob(C, location, params)
 	if(!istype(M, /mob/living))
 		CRASH("Invalid atom or does not exist: [M]")
 	for(var/trait in mob_traits)

@@ -5,7 +5,7 @@
 	name = "slime processor"
 	desc = "An industrial grinder used to automate the process of slime core extraction.  It can also recycle biomatter."
 	icon = 'icons/obj/kitchen.dmi'
-	icon_state = "processor1"
+	icon_state = "processor"
 	density = TRUE
 	anchored = TRUE
 	/// Autointaking
@@ -21,9 +21,15 @@
 
 /obj/machinery/processor/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_BOLDNOTICE("The automatic intake switch is in the [auto_mode? "On" : "Off"] position.")
 	if(let_slimes_pass)
-		. += SPAN_BOLDNOTICE("It looks slick enough to let slimes glide over it.")
+		. += SPAN_NOTICE("It looks slick enough to let slimes glide over it.")
+	. += SPAN_BOLDNOTICE("The automatic intake switch is in the [auto_mode? "On" : "Off"] position.")
+
+/obj/machinery/processor/update_overlays()
+	. = ..()
+	cut_overlays()
+	if(panel_open)
+		add_overlay("[base_icon_state]-panel")
 
 /obj/machinery/processor/attack_hand(mob/user, list/params)
 	if(processing)
@@ -147,7 +153,7 @@
 	while(monkeys_recycled >= monkeys_needed)
 		new /obj/item/reagent_containers/food/snacks/monkeycube(get_turf(src))
 		playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
-		monkeys_recycled -= 4
+		monkeys_recycled -= monkeys_needed
 		sleep(process_time)
 
 	processing = FALSE

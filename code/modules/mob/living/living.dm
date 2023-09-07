@@ -826,8 +826,9 @@ default behaviour is:
 	L["mob"] += src
 	return AddComponent(/datum/component/ghostrole_spawnpoint, R, 1, L)
 
-/mob/living/proc/get_ghostrole()
-	return GetComponent(/datum/component/ghostrole_spawnpoint)
+/mob/living/proc/get_ghostrole() //! currently not using GetComponent because that seems bugged right now. :^) @silicons
+	. = datum_components?[/datum/component/ghostrole_spawnpoint]
+	return . && (length(.) ? .[1] : .)
 
 /mob/living/proc/remove_ghostrole()
 	return DelComponent(/datum/component/ghostrole_spawnpoint)
