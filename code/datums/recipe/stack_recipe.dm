@@ -18,6 +18,8 @@
 	var/time = 3 SECONDS
 	/// bypass checks for preventing turf stacking/whatnot
 	var/no_automatic_sanity_checks = FALSE
+	/// how many of the stack we need
+	var/cost = 1
 	// todo: material constraints
 
 /**
@@ -25,29 +27,31 @@
  *
  * @params
  * * where - where to spawn result
+ * * amount - amount
  * * stack - stack used
  * * user - (optional) person crafting
  * * silent - (optional) suppress feedback to user
  *
  * @return TRUE/FALSE success
  */
-/datum/stack_recipe/proc/craft(atom/where, obj/item/stack/stack, mob/user, silent)
-	if(!check(where, material, user, silent))
+/datum/stack_recipe/proc/craft(atom/where, amount, obj/item/stack/stack, mob/user, silent)
+	if(!check(where, amount, stack, user, silent))
 		return FALSE
-	return make(where, material, user, silent)
+	return make(where, amount, stack, user, silent)
 
 /**
  * see if it's valid to make the recipe
  *
  * @params
  * * where - where to spawn result
+ * * amount - amount
  * * stack - stack used
  * * user - (optional) person crafting
  * * silent - (optional) suppress feedback to user
  *
  * @return TRUE/FALSE success
  */
-/datum/stack_recipe/proc/craft(atom/where, obj/item/stack/stack, mob/user, silent)
+/datum/stack_recipe/proc/check(atom/where, amount, obj/item/stack/stack, mob/user, silent)
 	if(!no_automatic_sanity_checks)
 		#warn check turf, density, etc
 	return TRUE
@@ -59,11 +63,12 @@
  *
  * @params
  * * where - where to spawn result
+ * * amount - amount
  * * stack - stack used
  * * user - (optional) person crafting
  * * silent - (optional) suppress feedback to user
  */
-/datum/stack_recipe/proc/make(atom/where, obj/item/stack/stack, mob/user, silent)
+/datum/stack_recipe/proc/make(atom/where, amount, obj/item/stack/stack, mob/user, silent)
 	#warn impl
 
 /**

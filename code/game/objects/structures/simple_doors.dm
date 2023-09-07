@@ -24,7 +24,7 @@
 	. = ..(mapload)
 	if(!material_name)
 		material_name = MAT_STEEL
-	material = get_material_by_name(material_name)
+	material = istype(material_name, /datum/material)? material_name : SSmaterials.get_material(material_name)
 	if(!material)
 		qdel(src)
 		return
