@@ -131,7 +131,9 @@
 
 // For making the 6-in-1 holomap, we calculate some offsets
 /// Width and height of compiled in tether z levels.
-#define TETHER_MAP_SIZE 140
+// todo: i disabled holomaps because 6 192x192 levels doesn't exactly fit into a 480x408 slate
+// maybe we can rework holomaps someday ~silicons
+#define TETHER_MAP_SIZE 192
 /// 40px central gutter between columns
 #define TETHER_HOLOMAP_CENTER_GUTTER 40
 /// 80
@@ -144,8 +146,8 @@
 
 /datum/map_level/tether/station
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
-	holomap_legend_x = 220
-	holomap_legend_y = 160
+	// holomap_legend_x = 220
+	// holomap_legend_y = 160
 
 /datum/map_level/tether/station/surface_low
 	id = "TetherSurface1"
@@ -157,14 +159,13 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	planet_path = /datum/planet/virgo3b
 	link_above = /datum/map_level/tether/station/surface_mid
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
+	// holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
+	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 
 /datum/map_level/tether/station/surface_mid
 	id = "TetherSurface2"
@@ -176,15 +177,14 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	planet_path = /datum/planet/virgo3b
 	link_above = /datum/map_level/tether/station/surface_high
 	link_below = /datum/map_level/tether/station/surface_low
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/open
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
+	// holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
+	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
 
 /datum/map_level/tether/station/surface_high
 	id = "TetherSurface3"
@@ -196,15 +196,14 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	planet_path = /datum/planet/virgo3b
 	link_above = /datum/map_level/tether/transit
 	link_below = /datum/map_level/tether/station/surface_mid
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/open
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
+	// holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
+	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
 
 /datum/map_level/tether/transit
 	id = "TetherMidpoint"
@@ -232,13 +231,12 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	link_above = /datum/map_level/tether/station/space_high
 	link_below = /datum/map_level/tether/transit
 	base_turf = /turf/space
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
+	// holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
+	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 
 /datum/map_level/tether/station/space_high
 	id = "TetherSpace2"
@@ -250,12 +248,11 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_LEGACY_BELTER_DOCK,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	link_below = /datum/map_level/tether/station/space_low
 	base_turf = /turf/simulated/open
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
+	// holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
+	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
 
 /datum/map_level/tether/mine
 	id = "TetherMiningOutpost"
