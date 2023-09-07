@@ -34,7 +34,11 @@
 		/datum/lore/codex/page/cannibal,
 		/datum/lore/codex/page/catskinner,
 		/datum/lore/codex/page/ntrevenue,
-		/datum/lore/codex/page/catskinner2
+		/datum/lore/codex/page/catskinner2,
+		/datum/lore/codex/page/recession,
+		/datum/lore/codex/page/volink2,
+		/datum/lore/codex/page/xeno_surt,
+		/datum/lore/codex/page/hack
 		)
 
 /datum/lore/codex/page/about_news
@@ -589,3 +593,82 @@
 	Though no body was recovered both the testimony of the captured pirates and eveidence recovered from their hideout was enough to evidence for both the New Kingdom and \
 	Nanotrasen to agree that the Catskinner, who has terrorized the Tajara people for fourty years, has finally met his demise. With the vast majority of his crew now either \
 	dead or imprisoned, and his surviving lieutenants now awaiting trial on Adhomai, the Tajaran people can rest easy knowing that this terror has finally met his end."
+
+/datum/lore/codex/page/recession
+	name = "Nanotrasen Sell-off Spread to Other Megacorps? Is Recession Around the Corner?- 7/13/2567"
+	data = "Following Nanotrasen's lessen then stellar performance at the earning meeting last month, investors were hoping for good news this month from their competitors. Unforunately, \
+	revenue misses were abound for the Galaxy's megacorporations. Markets across Orion began selling ranging from Zheng-Hu's (ZHP) modest 1.06% drop to Aether's (AAR) 4.32% wipeout. Still the \
+	worst news remains for Nanotrasen whose is down a whole 8.5% since today last month. Many are beginning to fear the dawn of an galaxy spawning recession. Economists are not so sure however \
+	citing the still positive growth across the sector they regard the current situation as simply a slowdown that will be corrected with time. With many corporations looking to make hefty \
+	investments in securing new resources on the Frontier however many investors fear the drops in profit will only get worse before they get better. 'What do I need that they haven't already \
+	sold me?' says Doctor Pierre Passeau PhD of Ecomonics, University of Selene, Luna. 'Nanotrasen the model for the modern megacorp was only able to make sure good returns because it was able \
+	to discover things that we didn't know we needed yet, phoron and synthetic bluespace crystals. However the galaxy isn't so big anymore and more of it we explore the more we realize that there \
+	is not going to be another phoron out there to come and solve our economic problems. Corporations and investors need to learn to lower their expectations we won't be seeing new markets opening \
+	for a long time, not unless Nanotrasen or someone else finds something really new to sell us'. Perhaps that is what Nanotrasen hopes by sending their plans to send explorers out into deep frontier \
+	space. Either way it seems no matter how to spin it, the post phoron war boom is finally as an end, whether there will be a bust too remains to be seen."
+
+/datum/lore/codex/page/volink2
+	name = "Volink Azunja named Crown Prince in New Kingdom of Adhomai? Can he modernize the Kingdom? - 7/25/2567"
+	data = "Following his capture of the infamous Ssizikar Tartic, Prince Volink Azunja has returned to Adhomai a hero. His victory has drawn congratulations from all corners of Adhomian society \
+	as all corners of Adhomai are satisfied that the pirate lord responsible for the deaths of thousands of Tajara has finally met justice. Though his victory has also seen criticism from the \
+	New Kingdom's rivals and the Confederate Commonwealth, with the People's Republic of Adhomai cautioning against attributing the victory to the Prince stating instead it belongs to the \
+	people of Adhomai as a whole. Similarly the Confederate Commonwealth has criticized the solo nature of the New Kingdom Naval operation that brought down Tartic's fleet, stressing the \
+	need of all Tajara powers to work together to face their mutual enemies among the stars. Still within the New Kingdom Volink's victory has seen as a symbol of the growing power of the \
+	New Kingdom's fledgling fleet and the continued modernization of their society. \
+	<br><br>\
+	It seems that the Prince's efforts are being richly rewards as today with the aging King Arzthram Azunja officially annouced that the Prince, the son of his youngest brother, \
+	is to be the new Crown Prince, following the death fo the King's only son Prince Thram in March. An official ceremony is scheduled to take place sometime in August. \
+	In a short release to the press the Prince thanked S'rendarr, his uncle the King, and the marines and spacers who fought with him agianst Tartic. He vowed that his reign \
+	will not abandon the sacred traditions of the New Kingdom but 'banish the darkness of Mesa that has clouded this kingdom for too long' and 'bring the Kingdom of Adhomai \
+	into a new bright golden age within the light of the S'rendarr' and finally to 'spread that light to the far corners of the galaxy so all Tajara can bask in its glow!'. \
+	<br><br>\
+	The annoucement of Volink's appointment through only muted diplomatic reactions form galactic powers, however is rumors are to be believed the young prince is already making \
+	alliances and with Nanotrasen. The Prince following his appointment annouced new trading arrangements with the company today perhaps making the New Kingdom the most Nanotrasen \
+	friendly power on the face of Adhomai. However, this is not the unequal exploitative treaties Adhomai is used to. Diplomats have been shocked by the concessions Nanotrasen has given \
+	in the deal. Whether this deal was simply a hard driven fluke or the start of a new age of cooperation between the Kingdom and megacorporations remains to be seen however for now \
+	Nanotrasen is expected to take and train New Kingdom peasants as workers, skills that will no doubt aid in the development of the New Kingdom's archaic economy. Perhaps for once in \
+	this kingdom out of time things are looking up, though with Nanotrasen involved one can only wonder the true price."
+
+/datum/lore/codex/page/xeno_surt //Filty Nanotrasen Propaganda...
+	name = "Nanotrasen Clears Xenomorphs from Mining Planet, Bronze Age Civilization Saved From Extinction! - 8/2/2567"
+	data = "KT-943 also known as 'Surt' was once a Nanotrasen possesion of little repute among the stars. Once thought to be the home of nothing more than the ruins of a lost \
+	civilization it was revealed that the bronze aged natives dubbed 'Scorians' by Nanotrasen had survied the cataclysmic volcanic eruptions that were thought to have wiped \
+	out their fledgeling species. The natives, now living beneath the surface, have retained a complex bronze age society herding the dangerous native fauna with as much ease \
+	as frontier spacers herd cattle. This civilization can consider itself lucky beyond most races of the galaxy and recently they have survived a second calamity that almost \
+	spelt their extinction and this time the threat did not come from their own world but from the stars itself. \
+	<br><br>\
+	On July 8th, a meteor containing a hive of xenomorphs hit Surt and disgorged its chitinous invaders onto the planet. From there the infestation preyed on local fauna \
+	absorbing thier DNA to adapt to the fiery surface or Surt breeding even deadlier xenomorph races. Nanotrasen quickly spring into action, desperate to protect the mineral and \
+	anthropoligcal wealth of Surt. Thanks to the quick action of the Nanotrasen the initial hive was dispersed before it could begin gathering victims to spread the xenomorph \
+	menace across the planet. However, some xenos escaped and over the past month Nanotrasen has been fighting a tireless campaign to eliminate them. \
+	<br><br>\
+	On the 29th of July Nanotrasen launched a massive operation that ended in the slaying of the new Queen of the Xenomorphs and the destruction of most of the xenos of the planet. \
+	This time however there was no where the xenos could escape to. Today Nanotrasen annouced that they had successfully cleared the planet of Xenomorphs. A Nanotrasen representative \
+	had this to say: 'It is not simply oue assets we have protected on Surt but, an entire sapient species. Science cannot being to predict the countless primtive civilization that \
+	have been destroyed by the xenomorphs and thankfully the Scori will not joiningg that list. Despite our reputation as a profit first company, we recognize its part of our duty \
+	as sapient life to protect the well being of other sapient life, even if it can be a bit pricey at times.' The Orion Confederation Institute of Anthropology formally thanks \
+	Nanotrasen for helping perserve the Scorian culture and expressed interest in further exploration fo Surt and its people. Though they, hestitated to use the word uplift they \
+	acknowledge that the Scori's integration with the galaxy is at this point inevitable even if they hoped it would be no time soon. At least the Scori then can rest easy perhaps \
+	never knowing how close they came to extinction yet again."
+
+/datum/lore/codex/page/hack
+	name = "Sector Spanning Cyber Attack Turns Synths Rogue! Hephaestus Combat Drones Designs Stolen! - 8/20/2567"
+	data = "Yesterday in the Frontier a massive cyber attack occured effecting an entire sector. Positronic intelligences, drones, ship AIs and all even MMI units were all said to \
+	be infected by a malignant virus that was spread across the sector through subspace relays. Subverted silicons from the simplest drone to ship AIs were driven to stockpile materials \
+	to fuel corrupted drone fabricators which then began producing armies of corrupted drones. Infected units were also compelled to construct communication systems which transmitted \
+	data back towards what can almost be assumed to be the source of the virus. Casulties are thankfully limited however for Hephaestus Industries, who relies heavily on its drone \
+	employees,the loss of life and destruction of assests is thought to be immense. \
+	<br><br>\
+	A Hephaestus Industry vessel, HIV Tungsten Heart, has been reportedly been completely siezed by its subverted silicon crew, its organic crew thought to already be \
+	slaughtered. The now rogue vessel, was home to several drone fabrication facilities and to make matters worse, the databases of the fabricators allegedly contain blueprints \
+	for an as of yet unreleased line of Hephaestus combat drones! These 'Warhound' series combat drones are armed with a variety of powerful mounted weapons meant to make short work \
+	of pirate threats. It can only be assumed that Tungsten Heart has become the center of an omincidal synthetic intelligence. Though the ship lacks weapons of its own, its fabricators \
+	are no doubt working tirelessly to create a silicon army. The entire sector and surrounding regions have been placed on high alert with SDF, mercenary, and corporate security \
+	working together to locate and eliminate the Tungsten Heart before it can threaten colonies in the region. \
+	<br><br>\
+	Back in Sol, the Orion Confederation has placed its own subspace relays under increased security with many neighboring regions following suit. Already synth units that have survived \
+	infection from the malignant code are being studied to figure out how to better counter this mysterious virus in the future. For now all civilian vessels are instructed to block \
+	all subspace packet transmissions over a certain size and to report any sightings of the Tungsten Heart to the SDF immediately. Synthetics are also advised to check with their \
+	software engineers for signs of system tampering and to update their system security software at the earliest opporutunity. Despite the damage caused by the cyber attacks, software \
+	engineers are confident that such an attacks will be rarer and rarer in the future as robotics technology improves and positronics become more independent. However, with the \
+	increasing scale of cyber attacks, other experts worry that a worst case scenario mass synthetic subversion simply has yet to occur."

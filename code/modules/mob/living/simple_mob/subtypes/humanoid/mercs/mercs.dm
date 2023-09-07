@@ -136,6 +136,13 @@
 /datum/ai_holder/simple_mob/merc/ranged/surpressor
 	conserve_ammo = FALSE //For Surpressive Fire Mercs like the Heavy and Tommy-Las
 
+/datum/ai_holder/simple_mob/merc/ranged/shotgun
+	max_range = 4 //Stop attempting to buckshot people from maximum vision range.
+
+/datum/ai_holder/simple_mob/merc/ranged/sweeper //Fully ultilize that auto-shotgun
+	max_range = 4
+	conserve_ammo = FALSE
+
 ////////////////////////////////
 //			Melee
 ////////////////////////////////
@@ -311,7 +318,20 @@
 	reload_max = 4
 	reload_time = 1.5 SECONDS	// It's a shotgun, it takes a moment
 
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
+
 	special_attack_charges = 5
+
+// Sniper, also miniboss style
+/mob/living/simple_mob/humanoid/merc/ranged/garand/sniper
+	name = "mercenary sniper"
+	desc = "A tough looking individual armed with a sniper rifle. Seems like he's got a good job, mate."
+	icon_state = "syndicateranged_sniper"
+	icon_living = "syndicateranged_sniper"
+
+	loot_list = list(/obj/item/gun/ballistic/garand/sniper = 100, /obj/item/clothing/head/cowboy_hat = 100)
+
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/sniper
 
 ////////////////////////////////
 //		Space Mercs
@@ -400,6 +420,8 @@
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/combat = 100)
 
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
+
 //Auto-Shotgun Space Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space/shotgun/auto
 	name = "mercenary sweeper"
@@ -415,7 +437,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/automatic/as24 = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/sweeper
 
 //Machine Gun Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space/heavy
@@ -702,7 +724,7 @@
 	projectiletype = /obj/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
 	corpse = /obj/spawner/corpse/vox/boarder_r
 	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/combat = 100,
 					/obj/item/ammo_magazine/m12gdrum = 30,

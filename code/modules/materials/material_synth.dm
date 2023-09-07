@@ -8,7 +8,7 @@
 
 /obj/item/stack/material/cyborg/Initialize(mapload, new_amount, merge)
 	. = ..()
-	name = "[material.display_name] synthesiser"
+	name = "[material.display_name] synthesizer"
 	desc = "A device that synthesises [material.display_name]."
 	materials = null
 

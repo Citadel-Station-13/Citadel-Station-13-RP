@@ -86,7 +86,7 @@ type DroneData = {
   drone_name: string,
   drone_integrity: number,
   drone_max_integrity: number,
-  drone_travel_coefficent: number,
+  drone_travel_coefficient: number,
   drone_log: Array<string>,
   configurable: boolean,
   cargo: Array<CargoData>,
@@ -516,7 +516,7 @@ const TravelTargetSelectionScreen = (props: {
   const {
     can_travel,
     travel_error,
-    drone_travel_coefficent,
+    drone_travel_coefficient,
   } = drone;
 
   const site = ("site" in drone) ? drone.site : null;
@@ -525,10 +525,10 @@ const TravelTargetSelectionScreen = (props: {
   const travel_cost = target_site => {
     if (site) {
       return Math.max(Math.abs(site.distance - target_site.distance), 1)
-        * drone_travel_coefficent;
+        * drone_travel_coefficient;
     }
     else {
-      return target_site.distance * drone_travel_coefficent;
+      return target_site.distance * drone_travel_coefficient;
     }
   };
   const [
@@ -587,7 +587,7 @@ const TravelTargetSelectionScreen = (props: {
             title="Home"
             buttons={
               <Box>
-                ETA: {formatTime(site.distance * drone_travel_coefficent, "short")}
+                ETA: {formatTime(site.distance * drone_travel_coefficient, "short")}
                 <Button
                   ml={1}
                   content={can_travel ? "Launch!" : travel_error}

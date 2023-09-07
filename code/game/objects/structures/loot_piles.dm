@@ -386,7 +386,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/circuitboard/rcon_console,
 		/obj/item/smes_coil,
 		/obj/item/cartridge/engineering,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/healthanalyzer,
 		/obj/item/robotanalyzer,
 		/obj/item/lightreplacer,

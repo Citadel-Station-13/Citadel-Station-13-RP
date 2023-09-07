@@ -295,6 +295,8 @@
 		return TRUE
 	if(M != user)
 		return TRUE
+	if(flags & INV_OP_IGNORE_DELAY)
+		return TRUE
 	. = FALSE
 	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/carbon/human, escape_straight_jacket))
 

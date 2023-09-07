@@ -1014,7 +1014,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/south
 	name = "\improper South Maintenance"
 
-/area/maintenance/public_garden_maintenence
+/area/maintenance/public_garden_maintenance
 	name = "\improper Public Garden Maintenance"
 
 /area/maintenance/elevator
@@ -1084,6 +1084,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/maintenance/substation/outpost
 	name = "Research Outpost Substation"
+
+/area/maintenance/substation/flight_deck
+	name = "Flight Deck Outpost Substation"
 
 /area/maintenance/substation/medsec
 	name = "\improper MedSec Substation"
@@ -1301,6 +1304,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "bridge"
 	music = null
 	sound_env = MEDIUM_SOFTFLOOR
+
+/area/bridge/hop_office
+	name = "Head Of Personal Office"
 
 /area/triumph/station/public_meeting_room
 	name = "Public Meeting Room"
@@ -2809,7 +2815,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "eva"
 
 /area/rnd/outpost/maintenance
-	name = "\improper Research Outpost Maintenence"
+	name = "\improper Research Outpost Maintenance"
 	area_flags = AREA_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = new /datum/turf_initializer/maintenance()

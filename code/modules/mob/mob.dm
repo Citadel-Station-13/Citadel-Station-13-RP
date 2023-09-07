@@ -141,7 +141,7 @@
 				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/screen/atom_hud/misc.dmi', src, "")
 				I.plane = FLOAT_PLANE
 				I.layer = FLOAT_LAYER + 100 + (GLOB.hud_icon_layers[hud] || 0)
-				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
+				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM|KEEP_APART
 				hud_list[hud] = I
 
 /mob/proc/remove_screen_obj_references()

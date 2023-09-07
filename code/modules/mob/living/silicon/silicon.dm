@@ -286,7 +286,7 @@
 
 	pose =  sanitize(input(usr, "This is [src]. It is...", "Pose", null)  as text)
 
-	visible_emote("Adjusts its posture.")
+	visible_emote("adjusts its posture.")
 
 /mob/living/silicon/verb/set_flavor()
 	set name = "Set Flavour Text"

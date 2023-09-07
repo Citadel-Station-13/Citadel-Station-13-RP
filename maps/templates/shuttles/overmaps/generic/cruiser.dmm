@@ -152,7 +152,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/mothership/breakroom)
 "as" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/wood,
@@ -590,7 +590,7 @@
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
 	pixel_x = -3
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -783,7 +783,7 @@
 /area/mothership/hydroponics)
 "bU" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2
+	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -820,7 +820,7 @@
 /area/mothership/hydroponics)
 "bY" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2
+	dir = 4
 	},
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -863,7 +863,7 @@
 "ce" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/machinery/light,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -876,7 +876,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/hydroponics)
 "cf" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -978,7 +978,7 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/mask/breath,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/table/rack/shelf/steel,
@@ -1023,7 +1023,7 @@
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -1532,7 +1532,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/bathroom1)
 "du" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -1597,7 +1597,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "dD" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -1623,7 +1623,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/bathroom2)
 "dH" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -1734,7 +1734,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/light{
@@ -1928,7 +1928,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -2071,7 +2071,7 @@
 	dir = 1
 	},
 /obj/machinery/light/small,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -2109,7 +2109,7 @@
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -2160,7 +2160,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -2198,7 +2198,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -2222,7 +2222,7 @@
 /area/mothership/surgery)
 "eW" = (
 /obj/structure/medical_stand,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -2428,7 +2428,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/vault)
 "fx" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22;
 	target_temperature = 274.15
 	},
@@ -2480,7 +2480,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -2684,7 +2684,7 @@
 	pixel_x = 6;
 	pixel_y = -2
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -2745,7 +2745,7 @@
 /obj/item/tool/screwdriver,
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -3091,7 +3091,7 @@
 /area/mothership/treatment)
 "ha" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	req_one_access = list(5)
 	},
 /obj/machinery/door/firedoor/glass,
@@ -3175,7 +3175,7 @@
 /area/mothership/hallway)
 "hg" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	req_one_access = list(1)
 	},
 /obj/structure/cable/cyan{
@@ -3389,7 +3389,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/light/small{
@@ -3475,7 +3475,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/light/small{
@@ -3685,7 +3685,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/treatment)
 "is" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -3784,7 +3784,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "iE" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -3831,7 +3831,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/morgue)
 "iL" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/table/steel_reinforced,
@@ -3974,7 +3974,7 @@
 /area/mothership/resleeving)
 "iZ" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -4049,7 +4049,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -4290,7 +4290,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/morgue)
 "jN" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/table/steel_reinforced,
@@ -4399,7 +4399,7 @@
 /area/mothership/warden)
 "jV" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -4681,7 +4681,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -4883,7 +4883,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -4970,7 +4970,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -5336,7 +5336,7 @@
 /area/mothership/medical)
 "lP" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2
+	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
@@ -6335,7 +6335,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/robotanalyzer,
 /obj/machinery/light,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -6459,7 +6459,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "ob" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -6538,7 +6538,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/bridge)
 "oj" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -6627,7 +6627,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "ox" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -6813,7 +6813,7 @@
 /area/mothership/robotics)
 "oQ" = (
 /obj/machinery/mech_recharger,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -6887,7 +6887,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -7319,7 +7319,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/telecomms2)
 "pW" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -7463,7 +7463,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms2)
 "qr" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -7613,7 +7613,7 @@
 /area/mothership/cryotube)
 "qZ" = (
 /obj/machinery/cryopod,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -7648,7 +7648,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -7902,26 +7902,23 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rP" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 4;
-	filter_type = 0;
-	filtered_out = list("phoron")
+	filtering = "phoron"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rQ" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 4;
-	filter_type = 3;
-	filtered_out = list("carbon_dioxide")
+	filtering = "co2"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rR" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 4;
-	filter_type = 4;
-	filtered_out = list("sleeping_agent")
+	filtering = "n2o"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
@@ -8613,7 +8610,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -8661,7 +8658,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -8985,7 +8982,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "JJ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -9042,7 +9039,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -9235,7 +9232,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},

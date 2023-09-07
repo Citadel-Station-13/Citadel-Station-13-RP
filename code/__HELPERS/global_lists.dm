@@ -113,6 +113,9 @@ GLOBAL_LIST_EMPTY(mannequins)
 	//* Recipes
 	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
 
+	//* Drink Reactions
+	init_subtypes(/datum/chemical_reaction/drinks, GLOB.drink_recipes)
+
 	var/list/paths
 
 	//Posters
@@ -327,6 +330,7 @@ var/global/list/edible_trash = list(/obj/item/broken_device,
 				/obj/item/flame,
 				/obj/item/light,
 				/obj/item/lipstick,
+				/obj/item/material/kitchen/utensil,
 				/obj/item/material/shard,
 				/obj/item/newspaper,
 				/obj/item/paper,
@@ -336,6 +340,8 @@ var/global/list/edible_trash = list(/obj/item/broken_device,
 				/obj/item/reagent_containers/food,
 				/obj/item/reagent_containers/glass/bottle,
 				/obj/item/reagent_containers/glass/rag,
+				/obj/item/reagent_containers/hypospray/autoinjector,
+				/obj/item/skub,
 				/obj/item/soap,
 				/obj/item/spacecash,
 				/obj/item/storage/box/vmcrystal,

@@ -8,15 +8,7 @@
 	luminosity = 1
 	level = 1
 
-	//? Flags
-	/// turf flags
-	var/turf_flags = NONE
-	/// multiz flags
-	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
-
-	var/holy = 0
-
-	//? atmospherics
+	//* Atmospherics
 	/**
 	 * the gas we start out as
 	 * can be:
@@ -25,33 +17,11 @@
 	 */
 	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
 
-	//? outdoors
-	/**
-	 * are we considered outdoors for things like weather effects?
-	 * todo: single var doing this is inefficient & bad, flags maybe?
-	 * todo: we aren't going to touch this for a while tbh
-	 *
-	 * possible values:
-	 * TRUE - as it implies
-	 * FALSE - as it implies
-	 * null - use area default
-	 */
-	var/outdoors = FALSE
+	//* Automata
+	/// acted automata - automata associated to power, act_cross() will be called when something enters us while this is set
+	var/list/acting_automata
 
-	//? Radiation
-	/// cached rad insulation of contents
-	var/rad_insulation_contents = 1
-
-	// Properties for airtight tiles (/wall)
-	var/thermal_conductivity = 0.05
-	var/heat_capacity = 1
-
-	// Properties for both
-	/// Initial turf temperature.
-	var/temperature = T20C
-	/// Does this turf contain air/let air through?
-	var/blocks_air = FALSE
-
+	//* Baseturfs / Turf Changing
 	/**
 	 * Baseturfs
 	 *
@@ -71,13 +41,52 @@
 	var/list/baseturfs = /turf/baseturf_bottom
 	/// are we mid changeturf?
 	var/changing_turf = FALSE
-	// End
 
+	//* Flags
+	/// turf flags
+	var/turf_flags = NONE
+	/// multiz flags
+	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
+
+	//* Movement / Pathfinding
+	/// How much the turf slows down movement, if any.
+	var/slowdown = 0
+	/// Pathfinding cost
+	var/path_weight = 1
+	/// danger flags to avoid
+	var/turf_path_danger = NONE
+	/// pathfinding id - used to avoid needing a big closed list to iterate through every cycle of jps
+	var/tmp/pathfinding_cycle
+
+	//* Outdoors
 	/**
-	 * Automata
+	 * are we considered outdoors for things like weather effects?
+	 * todo: single var doing this is inefficient & bad, flags maybe?
+	 * todo: we aren't going to touch this for a while tbh
+	 *
+	 * possible values:
+	 * TRUE - as it implies
+	 * FALSE - as it implies
+	 * null - use area default
 	 */
-	/// acted automata - automata associated to power, act_cross() will be called when something enters us while this is set
-	var/list/acting_automata
+	var/outdoors = FALSE
+
+	//* Radiation
+	/// cached rad insulation of contents
+	var/rad_insulation_contents = 1
+
+	// Properties for airtight tiles (/wall)
+	var/thermal_conductivity = 0.05
+	var/heat_capacity = 1
+
+	// Properties for both
+	/// Initial turf temperature.
+	var/temperature = T20C
+	/// Does this turf contain air/let air through?
+	var/blocks_air = FALSE
+
+
+	var/holy = 0
 
 	/// Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
 	var/list/fixed_underlay = null
@@ -88,11 +97,6 @@
 	var/blessed = FALSE
 
 	var/list/decals
-
-	/// How much the turf slows down movement, if any.
-	var/slowdown = 0
-	/// Pathfinding cost; null defaults to slowdown
-	var/pathweight
 
 	var/list/footstep_sounds = null
 
@@ -376,7 +380,7 @@
 /turf/proc/Distance(turf/t)
 	if(get_dist(src,t) == 1)
 		var/cost = (src.x - t.x) * (src.x - t.x) + (src.y - t.y) * (src.y - t.y)
-		cost *= ((isnull(pathweight)? slowdown : pathweight) + (isnull(t.pathweight)? t.slowdown : t.pathweight))/2
+		cost *= ((isnull(path_weight)? slowdown : path_weight) + (isnull(t.path_weight)? t.slowdown : t.path_weight))/2
 		return cost
 	else
 		return get_dist(src,t)

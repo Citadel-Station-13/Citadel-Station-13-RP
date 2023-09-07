@@ -532,8 +532,8 @@
 /datum/gas_mixture/belly_air/New()
     . = ..()
     gas = list(
-        /datum/gas/oxygen = 21,
-        /datum/gas/nitrogen = 79)
+        GAS_ID_OXYGEN = 21,
+        GAS_ID_NITROGEN = 79)
 
 // Procs for micros stuffed into boots and the like to escape from them
 /mob/living/proc/escape_clothes(obj/item/clothing/C)
@@ -658,6 +658,23 @@
 			if(S.holding)
 				to_chat(src, "<span class='warning'>There's something inside!</span>")
 				return
+		if(istype(I,/obj/item/reagent_containers/hypospray/autoinjector))
+			var/obj/item/reagent_containers/hypospray/autoinjector/A = I
+			if(A.reagents && A.reagents.reagent_list.len)
+				if(istype(src,/mob/living/carbon/human)) //in case other mobs besides humans have trashcan trait
+					to_chat(src, "<span class='warning'>[A] gets injected into you as you try to consume it!</span>")
+					A.do_injection(src,src) //a rather strange way of injecting yourself, don't you think?
+				else
+					to_chat(src, "<span class='warning'>You probably shouldn't eat this.</span>")
+					return
+		if(istype(I,/obj/item/material))
+			var/obj/item/material/M = I
+			if(M.material.id == "supermatter") //while it would be funny, it'd also be suicidal and we probably shouldn't allow it.
+				to_chat(src, "<span class='warning'>Your self preservation instincts kick in right as you had seriously considered eating something this dangerous.</span>")
+				return
+			if(M.material.radioactivity) //hope that uranium tastes good, you batshit insane monster.
+				src.afflict_radiation(M.material.radioactivity * 5,0) //they straight up put it inside them - armor can't save this maniac.
+
 
 		if(!attempt_insert_item_for_installation(I, vore_selected))
 			return
@@ -707,6 +724,23 @@
 				to_chat(src, "<span class='notice'>You can taste the flavor of garbage and leftovers. Delicious?</span>")
 			else
 				to_chat(src, "<span class='notice'>You can taste the flavor of gluttonous waste of food.</span>")
+		else if(istype(I,/obj/item/material/kitchen/utensil))
+			var/obj/item/material/kitchen/utensil/U = I
+			var/S = "You can taste the flavor of "
+			if(U.material.id == "plastic")
+				S += "delicious, delicious plastic and "
+			else
+				S += "an awful waste of " + U.material.name + " and "
+
+			if(istype(U,/obj/item/material/kitchen/utensil/fork))
+				S += "stabbing pains."
+			else
+				S += "the last scoop."
+			to_chat(src, "<span class='notice'>[S]</span>")
+		else if(istype(I,/obj/item/reagent_containers/hypospray/autoinjector))
+			to_chat(src, "<span class='notice'>You can taste the flavor of several tiny pricks.</span>")
+		else if(istype(I,/obj/item/skub))
+			to_chat(src, "<span class='notice'>You can taste the flavor of skub.</span>")
 		//TFF 10/7/19 - Add custom flavour for collars for trash can trait.
 		else if (istype(I,/obj/item/clothing/accessory/collar))
 			visible_message("<span class='warning'>[src] demonstrates their voracious capabilities by swallowing [I] whole!</span>")

@@ -193,24 +193,6 @@
 /obj/proc/hides_under_flooring()
 	return 0
 
-/**
- * This proc is used for telling whether something can pass by this object in a given direction, for use by the pathfinding system.
- *
- * Trying to generate one long path across the station will call this proc on every single object on every single tile that we're seeing if we can move through, likely
- * multiple times per tile since we're likely checking if we can access said tile from multiple directions, so keep these as lightweight as possible.
- *
- * Arguments:
- * * ID- An ID card representing what access we have (and thus if we can open things like airlocks or windows to pass through them). The ID card's physical location does not matter, just the reference
- * * to_dir- What direction we're trying to move in, relevant for things like directional windows that only block movement in certain directions
- * * caller- The movable we're checking pass flags for, if we're making any such checks
- **/
-/obj/proc/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
-	if(ismovable(caller))
-		var/atom/movable/AM = caller
-		if(AM.pass_flags & pass_flags_self)
-			return TRUE
-	. = !density
-
 /obj/proc/hear_talk(mob/M as mob, text, verb, datum/language/speaking)
 	if(talking_atom)
 		talking_atom.catchMessage(text, M)
@@ -294,7 +276,10 @@
 		return FALSE
 	if(INTERACTING_WITH_FOR(climber, src, INTERACTING_FOR_CLIMB))
 		return FALSE
-	climber.visible_action_feedback(SPAN_WARNING("[climber] starts climbing onto \the [src]!"), src, MESSAGE_RANGE_COMBAT_LOUD)
+	climber.visible_action_feedback(
+		target = src,
+		visible_hard = SPAN_WARNING("[climber] starts climbing onto \the [src]!"),
+		hard_range = MESSAGE_RANGE_COMBAT_LOUD)
 	START_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
 	LAZYDISTINCTADD(climbing, climber)
 	. = do_after(climber, climb_delay * delay_mod, src, mobility_flags = MOBILITY_CAN_MOVE | MOBILITY_CAN_STAND | MOBILITY_IS_STANDING)
@@ -302,7 +287,7 @@
 		. = FALSE
 	LAZYREMOVE(climbing, climber)
 	STOP_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
-	if(!allow_climb_on(climber))
+	if(!. || !allow_climb_on(climber))
 		climber.action_feedback(SPAN_WARNING("You couldn't climb onto [src]!"), src)
 		return FALSE
 	do_climb_on(climber)
@@ -441,6 +426,13 @@
 		return ""
 	return coloration
 
+//* Hiding / Underfloor
+
+/obj/proc/is_hidden_underfloor()
+	return FALSE
+
+/obj/proc/should_hide_underfloor()
+	return FALSE
 
 //? Materials
 

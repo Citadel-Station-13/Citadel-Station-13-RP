@@ -116,6 +116,9 @@
 
 	var/icon/last_rendered_hologram_icon
 
+	var/list/scanned_objects = list()
+	var/last_scanned_time = 0
+
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()
 	shell = loc
@@ -131,6 +134,7 @@
 
 	add_verb(src, /mob/living/silicon/pai/proc/choose_chassis)
 	add_verb(src, /mob/living/silicon/pai/proc/choose_verbs)
+	add_verb(src, /mob/living/proc/set_size)
 
 	//PDA
 	pda = new(src)
@@ -167,7 +171,7 @@
 	// Resting is just an aesthetic feature for them.
 	return ..(movable, be_close, no_dexterity, no_tk)
 
-/mob/living/silicon/pai/update_icon()
+/mob/living/silicon/pai/update_icon(animate = TRUE)
 	..()
 	update_fullness_pai()
 	if(!people_eaten && !resting)
@@ -178,6 +182,19 @@
 		icon_state = "[chassis]_full"
 	else if(people_eaten && resting)
 		icon_state = "[chassis]_rest_full"
+	if(resting)
+		update_transform(animate) // because when our chassis changes we dont want to stay rotated because only holograms rotate!!
+
+	// if in hologram form, chassis is null, and we need to make sure we are offset correctly
+	if(!chassis)
+		var/icon_width = last_rendered_hologram_icon.Width()
+		icon_x_dimension = icon_width
+		buckle_pixel_x = (icon_x_dimension - WORLD_ICON_SIZE) / 2
+	else
+		icon_x_dimension = 32
+		buckle_pixel_x = 0
+	reset_pixel_offsets()
+
 
 /// camera handling
 /mob/living/silicon/pai/check_eye(var/mob/user as mob)
@@ -239,9 +256,12 @@
 	release_vore_contents()
 	stop_pulling()
 	update_perspective()
-	set_resting(FALSE)
+	set_intentionally_resting(FALSE)
 	update_mobility()
 	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
+
+	// also we can interrupt our hologram display
+	card.stop_displaying_hologram()
 
 	// pass attack self on to the card regardless of our shell
 	if(!istype(new_shell, /obj/item/paicard))
@@ -255,15 +275,22 @@
 	last_special = world.time + 20
 
 	var/obj/item/clothing/base_clothing_path = get_base_clothing_path(object_path)
-	var/obj/item/new_object = new base_clothing_path
+	var/obj/item/clothing/new_object = new base_clothing_path
 	new_object.name = "[src.name] (pAI)"
 	new_object.desc = src.desc
 	new_object.icon = initial(object_path.icon)
 	new_object.icon_state = initial(object_path.icon_state)
-	if(istype(object_path, /obj/item/clothing/under))
+	new_object.slot_flags = initial(object_path.slot_flags)
+	new_object.icon_mob_y_align = initial(object_path.icon_mob_y_align)
+	new_object.worn_render_flags = initial(object_path.worn_render_flags)
+	new_object.accessory_render_legacy = initial(object_path.accessory_render_legacy)
+
+	if(istype(new_object, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = new_object
 		var/obj/item/clothing/under/under_path = object_path
 		U.snowflake_worn_state = initial(under_path.snowflake_worn_state)
+		if(!length(U.snowflake_worn_state))
+			U.snowflake_worn_state = U.icon_state
 	new_object.forceMove(src.loc)
 	switch_shell(new_object)
 	return TRUE
@@ -273,6 +300,8 @@
 		card.attack_self(shell.loc)
 
 /mob/living/silicon/pai/proc/get_base_clothing_path(obj/item/clothing/path)
+	if(ispath(path, /obj/item/clothing/accessory))
+		return /obj/item/clothing/accessory
 	if(initial(path.slot_flags) & SLOT_HEAD)
 		return /obj/item/clothing/head
 	if(initial(path.slot_flags) & SLOT_ICLOTHING)
@@ -287,3 +316,34 @@
 		return /obj/item/clothing/shoes
 	if(initial(path.slot_flags) & SLOT_OCLOTHING)
 		return /obj/item/clothing/suit
+
+/mob/living/silicon/pai/AltClickOn(var/atom/A)
+	if((isobj(A) || ismob(A)) && in_range_of(src, A) && !istype(A, /obj/item/paicard))
+		if(world.time > last_scanned_time + 600)
+			last_scanned_time = world.time
+			scan_object(A)
+			to_chat(src, "You scan the [A.name]")
+		else
+			to_chat(src, "You need to wait [((last_scanned_time+600) - world.time)/10] seconds to scan another object.")
+
+/mob/living/silicon/pai/proc/scan_object(var/atom/A)
+	var/icon/hologram_icon = render_hologram_icon(A, 210, TRUE, TRUE, "_pai")
+	var/hologram_width = hologram_icon.Width()
+	var/width_adjustment = (32 - hologram_width) / 2
+
+	var/image/I = image(hologram_icon)
+	I.color = rgb(204,255,204)
+	I.pixel_y = 30
+	I.pixel_x = width_adjustment
+	I.appearance_flags = RESET_TRANSFORM | KEEP_APART
+	scanned_objects[A.name] = I
+
+	// more than 10 items? remove the oldest object (index 0) in the list
+	if(length(scanned_objects) > 10)
+		scanned_objects.Cut(0, 1)
+
+/mob/living/silicon/pai/proc/get_holo_image()
+	return render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+
+/mob/living/silicon/pai/get_centering_pixel_x_offset(dir, atom/aligning)
+	return base_pixel_x + (WORLD_ICON_SIZE - icon_x_dimension) / 2

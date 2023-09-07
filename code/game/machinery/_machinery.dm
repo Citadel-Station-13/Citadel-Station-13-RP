@@ -108,6 +108,8 @@
 	// todo: anchored / unanchored should be replaced by movement force someday, how to handle that?
 
 	//* Construction / Deconstruction
+	/// allow default part replacement. null for disallowed, number for time.
+	var/default_part_replacement = 0
 	/// Can be constructed / deconstructed by players by default. null for off, number for time needed. Panel must be open.
 	//  todo: proc for allow / disallow, refactor
 	var/default_deconstruct
@@ -116,8 +118,12 @@
 	/// Can be anchored / unanchored by players without deconstructing by default with a wrench. null for off, number for time needed.
 	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
 	var/default_unanchor
-	/// allow default part replacement. null for disallowed, number for time.
-	var/default_part_replacement = 0
+	/// tool used for deconstruction
+	var/tool_deconstruct = TOOL_CROWBAR
+	/// tool used for panel open
+	var/tool_panel = TOOL_SCREWDRIVER
+	/// tool used for unanchor
+	var/tool_unanchor = TOOL_WRENCH
 	/// default icon state overlay for panel open
 	var/panel_icon_state
 	/// is the maintenance panel open?
@@ -195,50 +201,6 @@
 				qdel(A)
 	return ..()
 
-/obj/machinery/screwdriver_act(obj/item/I, mob/user, flags, hint)
-	if(!isnull(default_panel))
-		default_deconstruction_screwdriver(user, I)
-		return TRUE
-	return ..()
-
-/obj/machinery/crowbar_act(obj/item/I, mob/user, flags, hint)
-	if(!isnull(default_deconstruct))
-		default_deconstruction_crowbar(user, I)
-		return TRUE
-	return ..()
-
-/obj/machinery/wrench_act(obj/item/I, mob/user, flags, hint)
-	if(!isnull(default_unanchor))
-		default_unfasten_wrench(user, I, default_unanchor)
-		return TRUE
-	return ..()
-
-/obj/machinery/dynamic_tool_functions(obj/item/I, mob/user)
-	. = ..()
-	if(!isnull(default_unanchor))
-		COERCE_OPTIONS_LIST_IN(.[TOOL_WRENCH])
-		.[TOOL_WRENCH] += anchored? "unfasten" : "fasten"
-	if(!isnull(default_deconstruct) && panel_open)
-		COERCE_OPTIONS_LIST_IN(.[TOOL_CROWBAR])
-		.[TOOL_CROWBAR] += "deconstruct"
-	if(!isnull(default_panel))
-		COERCE_OPTIONS_LIST_IN(.[TOOL_SCREWDRIVER])
-		.[TOOL_SCREWDRIVER] += panel_open? "close panel" : "open panel"
-
-/obj/machinery/dynamic_tool_image(function, hint)
-	. = ..()
-	switch(hint)
-		if("unfasten")
-			return dyntool_image_backward(TOOL_WRENCH)
-		if("fasten")
-			return dyntool_image_forward(TOOL_WRENCH)
-		if("deconstruct")
-			return dyntool_image_backward(TOOL_CROWBAR)
-		if("open panel")
-			return dyntool_image_backward(TOOL_SCREWDRIVER)
-		if("close panel")
-			return dyntool_image_forward(TOOL_SCREWDRIVER)
-
 /obj/machinery/process(delta_time)//If you dont use process or power why are you here
 	return PROCESS_KILL
 
@@ -266,6 +228,10 @@
 	. = ..()
 	if(panel_open && panel_icon_state)
 		. += panel_icon_state
+
+/obj/machinery/proc/set_panel_open(panel_opened)
+	panel_open = panel_opened
+	update_appearance()
 
 /obj/machinery/legacy_ex_act(severity)
 	switch(severity)
@@ -334,13 +300,10 @@
 	else
 		return attack_hand(user)
 
+// todo: refactor
 /obj/machinery/attack_hand(mob/user, list/params)
 	if(IsAdminGhost(user))
 		return FALSE
-	if(inoperable(MAINT))
-		return TRUE
-	if(user.lying || user.stat)
-		return TRUE
 	if(!(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon)))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return TRUE
@@ -368,13 +331,15 @@
 	return ..()
 
 /obj/machinery/can_interact(mob/user)
-	if((machine_stat & (NOPOWER|BROKEN)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
+	if((machine_stat & (NOPOWER|BROKEN|MAINT)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
 		return FALSE
 	var/silicon = issilicon(user)
 	if(panel_open && !(interaction_flags_machine & INTERACT_MACHINE_OPEN)) // Check if we can interact with an open panel machine, if the panel is open
 		if(!silicon || !(interaction_flags_machine & INTERACT_MACHINE_OPEN_SILICON))
 			return FALSE
-	if(silicon /*|| isAdminGhostAI(user)*/) // If we are an AI or adminghsot, make sure the machine allows silicons to interact
+	// check silicon, but cyborgs can interact if within reach.
+	// todo: refactor interaction flags, fuck.
+	if(silicon && (!isrobot(user) || !user.Reachability(src))) // If we are an AI or adminghsot, make sure the machine allows silicons to interact
 		if(!(interaction_flags_machine & INTERACT_MACHINE_ALLOW_SILICON))
 			return FALSE
 	else if(isliving(user)) // If we are a living human
@@ -472,6 +437,12 @@
 			RefreshParts()
 	return 1
 
+// todo: refactor
+/obj/machinery/set_anchored(anchorvalue)
+	. = ..()
+	power_change()
+	update_appearance()
+
 // Default behavior for wrenching down machines.  Supports both delay and instant modes.
 /obj/machinery/proc/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time = 0)
 	if(!W.is_wrench())
@@ -494,8 +465,6 @@
 	return TRUE
 
 /obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, var/obj/item/C)
-
-
 	if(!C.is_crowbar())
 		return 0
 	if(!panel_open)
@@ -549,8 +518,9 @@
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
 	drop_products(ATOM_DECONSTRUCT_DISASSEMBLED)
 	on_deconstruction()
-	// If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
+	// If it doesn't have a circuit board, don't create a frame, instead just break.
 	if(!circuit)
+		qdel(src)
 		return 0
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
 	var/obj/item/circuitboard/M = circuit
