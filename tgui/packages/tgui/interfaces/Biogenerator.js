@@ -98,7 +98,7 @@ const BiogeneratorItems = (props, context) => {
   });
   return (
     <Flex.Item grow="1" overflow="auto">
-      <Section onClick={e => refocusLayout()}>
+      <Section>
         {has_contents
           ? contents : (
             <Box color="label">
