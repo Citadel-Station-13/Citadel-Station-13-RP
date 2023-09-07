@@ -146,7 +146,7 @@
 
 /obj/item/clothing/mask/gas/opaque_nitrogen
 	name = "Opaque Mask - Oxygen Filter"
-	desc = "A face-covering mask with an opaque faceplate that can be connected to an air supply, often used by various alien races to filter out oxygen.""
+	desc = "A face-covering mask with an opaque faceplate that can be connected to an air supply, often used by various alien races to filter out oxygen."
 	icon_state = "opaque_mask"
 	inv_hide_flags = null
 	filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE, GAS_ID_OXYGEN)
