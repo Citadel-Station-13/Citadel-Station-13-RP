@@ -16,12 +16,12 @@
 /datum/position/New(_x = 0, _y = 0, _z = 0, _pixel_x = 0, _pixel_y = 0)	//first argument can also be a /datum/point.
 	if(istype(_x, /datum/point))
 		var/datum/point/P = _x
-		var/turf/T = P.return_turf()
+		var/turf/T = P.turf()
 		_x = T.x
 		_y = T.y
 		_z = T.z
-		_pixel_x = P.return_px()
-		_pixel_y = P.return_py()
+		_pixel_x = P.pixel_x()
+		_pixel_y = P.pixel_y()
 	else if(istype(_x, /atom))
 		var/atom/A = _x
 		_x = A.x
@@ -49,12 +49,21 @@
 
 //* Points *//
 
+/**
+ * returns midpoint between two points as a /datum/point
+ */
 /proc/midpoint_between_points(datum/point/a, datum/point/b)	//Obviously will not support multiZ calculations! Same for the two below.
 	return new point(a.x + (b.x - a.x) / 2, a.y + (b.y - a.y) / 2, a.z)
 
+/**
+ * returns pixel distance between two points
+ */
 /proc/distance_between_points(datum/point/a, datum/point/b)
 	return sqrt(((b.x - a.x) ** 2) + ((b.y - a.y) ** 2))
 
+/**
+ * returns north-0 clockwise angle between two points
+ */
 /proc/angle_between_points(datum/point/a, datum/point/b)
 	return arctan((b.y - a.y), (b.x - a.x))
 

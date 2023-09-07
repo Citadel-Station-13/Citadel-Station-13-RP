@@ -39,7 +39,7 @@
 	/// number of times we've pierced something. Incremented BEFORE bullet_act and on_hit proc!
 	var/pierces = 0
 
-	/// current angle
+	/// current angle as clockwise from north as 0
 	var/angle = 0
 	/// original target
 	var/atom/target
@@ -107,19 +107,21 @@
 
 	/// the last point recorded
 	var/datum/point/hitscan_index
-	/// /obj/effect/projectile/tracer path
-	var/hitscan_tracer_type
-	/// /obj/effect/projectile/muzzle path
-	var/hitscan_muzzle_type
-	/// /obj/effect/projectile/impact path
-	var/hitscan_impact_type
+	/// hitscan effect file
+	var/hitscan_icon = 'icons/modules/projectiles/hitscan/hitscan.dmi'
+	/// hitscan effect state; muzzle/impact/tracer will be appended as _muzzle, _impact, _tracer accordingly.
+	var/hitscan_state = "laser"
+	/// hitscan effect color
+	var/hitscan_color = "#ffffff"
+	/// hitscan glow range in pixels
+	var/hitscan_glow_range = 2
 
 	/// point blanking ignores accuracy checks
 	/// this applies to submunitions too
 	var/point_blanking_doesnt_miss = FALSE
 
 	/// homing target, if any
-	var/atom/homing_target
+	var/atom/movable/homing_target
 	/// homing turn rate in deg per decisecond.
 	var/homing_rate = 5
 	/// if non null, stop homing permanently if we're within this error margin of angle towards the target.
@@ -244,12 +246,6 @@
 	var/turf/ending = return_predicted_turf_after_moves(moves, forced_angle)
 	return getline(current, ending)
 
-/obj/projectile/proc/set_pixel_speed(new_speed)
-	if(trajectory)
-		trajectory.set_speed(new_speed)
-		return TRUE
-	return FALSE
-
 /obj/projectile/proc/record_hitscan_start(datum/point/pcache)
 	if(!has_tracer)
 		return
@@ -314,36 +310,6 @@
 		animate(src, pixel_x = trajectory.return_px(), pixel_y = trajectory.return_py(), time = 1, flags = ANIMATION_END_NOW)
 	Range()
 
-/obj/projectile/Crossed(atom/movable/AM) //A mob moving on a tile with a projectile is hit by it.
-	if(AM.is_incorporeal())
-		return
-	..()
-	if(isliving(AM) && !check_pass_flags(ATOM_PASS_MOB))
-		var/mob/living/L = AM
-		if(can_hit_target(L, permutated, (AM == original)))
-			Bump(AM)
-
-/obj/projectile/proc/process_homing()			//may need speeding up in the future performance wise.
-	if(!homing_target)
-		return FALSE
-	var/datum/point/PT = RETURN_PRECISE_POINT(homing_target)
-	PT.x += clamp(homing_offset_x, 1, world.maxx)
-	PT.y += clamp(homing_offset_y, 1, world.maxy)
-	var/angle = closer_angle_difference(Angle, angle_between_points(RETURN_PRECISE_POINT(src), PT))
-	setAngle(Angle + clamp(angle, -homing_turn_speed, homing_turn_speed))
-
-/obj/projectile/proc/set_homing_target(atom/A)
-	if(!A || (!isturf(A) && !isturf(A.loc)))
-		return FALSE
-	homing = TRUE
-	homing_target = A
-	homing_offset_x = rand(homing_inaccuracy_min, homing_inaccuracy_max)
-	homing_offset_y = rand(homing_inaccuracy_min, homing_inaccuracy_max)
-	if(prob(50))
-		homing_offset_x = -homing_offset_x
-	if(prob(50))
-		homing_offset_y = -homing_offset_y
-
 /obj/projectile/process(delta_time)
 	last_process = world.time
 	if(!loc || !fired || !trajectory)
@@ -385,9 +351,6 @@
 		after_z_change(old, target)
 
 /obj/projectile/proc/fire(angle, atom/direct_target)
-	if(only_submunitions)	// refactor projectiles whwen holy shit this is awful lmao
-		qdel(src)
-		return
 	//If no angle needs to resolve it from xo/yo!
 	if(direct_target)
 		direct_target.bullet_act(src, def_zone)
@@ -825,6 +788,9 @@
 /obj/projectile/proc/set_speed(speed)
 	src.speed = speed
 
+/obj/projectile/proc/set_homing_target(atom/movable/AM)
+	homing_target = AM
+
 //* Firing
 
 /**
@@ -873,6 +839,8 @@
 	if(submunitions_only)
 		qdel(src)
 
+	QDEL_IN(src, lifetime)
+
 	for(var/obj/projectile/P as anything in submunitions_created)
 		P.fire(angle_override, point_blank, TRUE)
 
@@ -890,13 +858,15 @@
 //* Hitscan Rendering
 
 /obj/projectile/proc/hitscan_tracer_start(datum/point/where)
-	#warn impl
+	hitscan_index = where
 
 /obj/projectile/proc/hitscan_tracer_redirected(datum/point/where)
-	#warn impl
+	hitscan_tracer_effect(hitscan_index, where)
+	hitscan_index = where
 
 /obj/projectile/proc/hitscan_tracer_end(datum/point/where)
-	#warn impl
+	hitscan_tracer_effect(hitscan_index, where)
+	hitscan_index = null
 
 //* Processing / Flight
 
@@ -906,7 +876,7 @@
 	increment(speed * delta_time * SSprojectiles.global_speed_multiplier)
 	if(QDELETED(src))
 		return
-	if(!isnull(homing_target))
+	if(!isnull(homing_target) && isturf(homing_target.loc) && homing_target.z == z)
 		home_in(delta_time)
 
 /**
@@ -950,11 +920,20 @@
  * this is an issue but not worth fixing because 20+ fps is more than good enough.
  */
 /obj/projectile/proc/home_in(ds)
-	var/wanted = closer_angle_difference(angle, get_projectile_angle(src, homing_target))
+	var/wanted = closer_angle_difference(angle, get_homing_angle(homing_target))
 	var/turn_rate = homing_rate * ds
 	set_angle(angle + clamp(wanted, -turn_rate, turn_rate))
+	if(wanted < homing_shutoff)
+		set_homing_target(null)
 
-//* Movement Hooks
+/**
+ * get relative angle from us to something
+ * assumes target is on a turf and so are we, and we're on the same z
+ */
+/obj/projectile/proc/get_homing_angle(atom/movable/target)
+	return arctan(target.y * WORLD_ICON_SIZE - y * WORLD_ICON_SIZE + pixel_y, target.x * WORLD_ICON_SIZE - x * WORLD_ICON_SIZE + pixel_x)
+
+//* Movement
 
 // todo: this is one of the last Crossed() calls we have to deal with, probably.
 /obj/projectile/Crossed(atom/movable/AM)
@@ -973,6 +952,8 @@
 		trajectory_currently_phasing = FALSE
 		movement_type &= ~MOVEMENT_PHASING
 	scan_moved_turf()
+	if(!QDELETED(src))
+		increment_range()
 
 /obj/projectile/Bump(atom/A)
 	// we skip the rest of /atom/movable/Bump other than the signal.
@@ -981,11 +962,18 @@
 		return
 	impact(A)
 
-
 /obj/projectile/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
 	if(!isnull(impacted[blocker]))
 		return TRUE
 	return ..()
+
+/obj/projectile/proc/increment_range()
+	++travelled
+	if(travelled >= range)
+		out_of_range()
+
+/obj/projectile/proc/out_of_range()
+	qdel(src)
 
 //* Impact - Scan
 
@@ -1040,11 +1028,11 @@
  * 4. Turf
  * 5. Nothing
  */
-/obj/item/projectile/proc/select_target(turf/T, atom/bumped)
+/obj/projectile/proc/select_target(turf/T, atom/bumped)
 	#warn this sucks, we should swap bumped auto-hit to something else maybe?
 	// 1. original
-	if(can_impact(original, FALSE, original == bumped))
-		return original
+	if(original.loc == T && can_impact(original, FALSE, original == bumped))
+		return target
 	var/list/atom/possible = list()		// let's define these ONCE
 	var/list/atom/considering = list()
 	// 2. mobs

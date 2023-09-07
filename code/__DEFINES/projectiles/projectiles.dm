@@ -22,10 +22,12 @@
 #define BULLET_ACT_HIT				"HIT"
 /// It's a blocked hit, whatever that means in the context of the thing it's hitting.
 #define BULLET_ACT_BLOCK			"BLOCK"
-///It pierces through the object regardless of the bullet being piercing by default.
+/// It pierces through the object regardless of the bullet being piercing by default.
 #define BULLET_ACT_FORCE_PIERCE		"PIERCE"
-///It hit us but it should hit something on the same turf too. Usually used for turfs.
+/// It hit us but it should hit something on the same turf too. Usually used for turfs.
 #define BULLET_ACT_TURF				"TURF"
+/// It doesn't hit us - it just doesn't.
+#define BULLET_ACT_IGNORE			"IGNORE"
 
 //* submunition_spread_mode; null to not spread
 /// spread evenly

@@ -5,4 +5,5 @@ PROCESSING_SUBSYSTEM_DEF(projectiles)
 	priority = FIRE_PRIORITY_PROJECTILES
 	subsystem_flags = SS_NO_INIT
 
+	/// global projectile speed multiplier
 	var/global_speed_multiplier = 1
