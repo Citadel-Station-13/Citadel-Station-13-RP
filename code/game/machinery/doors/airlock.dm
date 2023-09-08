@@ -1243,7 +1243,7 @@ About the new airlock wires panel:
 
 //Freezable airlocks!
 
-/obj/machinery/door/airlock/New()// this is shit code refactor this!!!
+/obj/machinery/door/airlock/New()// I'm gonna murder the dev of yawn wider
 	//Associate objects with the number of seconds it would take to de-ice a door.
 	//Most items are either more or less effecient at it.
 	//For items with very specific cases (like welders using fuel, or needing to be on) see attackby().
@@ -1340,7 +1340,7 @@ About the new airlock wires panel:
 			avg_temp /= num_temps
 			if(cold_temps.total_moles < vacuum)//This is so it don't freeze in space
 				return FALSE
-			else if(cold_temps.temperature < maximal_cold) // this is to check if the airlock is colder than what it was designed for
+			else if(cold_temps.temperature < frozen_temperature) // this is to check if the airlock is colder than what it was designed for
 				return TRUE
 	return FALSE
 
