@@ -17,6 +17,7 @@
 	creating.result_type = product
 	creating.cost = cost
 	creating.result_amount = amount
+	creating.result_is_stack = ispath(product, /obj/item/stack)
 	creating.no_automatic_sanity_checks = !sanity_checks
 	creating.time = time
 	return creating
@@ -40,7 +41,13 @@
 	var/no_automatic_sanity_checks = FALSE
 	/// how many of the stack we need
 	var/cost = 1
+	/// this is a stack product
+	var/result_is_stack = FALSE
 	// todo: material constraints
+
+/datum/stack_recipe/New()
+	if(ispath(result_type, /obj/item/stack))
+		result_is_stack = TRUE
 
 /**
  * attepmt to craft
@@ -51,10 +58,11 @@
  * * stack - stack used
  * * user - (optional) person crafting
  * * silent - (optional) suppress feedback to user
+ * * use_dir - (optional) override dir if no user to get it from
  *
  * @return TRUE/FALSE success
  */
-/datum/stack_recipe/proc/craft(atom/where, amount, obj/item/stack/stack, mob/user, silent)
+/datum/stack_recipe/proc/craft(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir)
 	if(!check(where, amount, stack, user, silent))
 		return FALSE
 	return make(where, amount, stack, user, silent)
@@ -68,10 +76,11 @@
  * * stack - stack used
  * * user - (optional) person crafting
  * * silent - (optional) suppress feedback to user
+ * * use_dir - (optional) override dir if no user to get it from
  *
  * @return TRUE/FALSE success
  */
-/datum/stack_recipe/proc/check(atom/where, amount, obj/item/stack/stack, mob/user, silent)
+/datum/stack_recipe/proc/check(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir)
 	if(!no_automatic_sanity_checks)
 		#warn check turf, density, etc
 	return TRUE
@@ -87,8 +96,9 @@
  * * stack - stack used
  * * user - (optional) person crafting
  * * silent - (optional) suppress feedback to user
+ * * use_dir - (optional) override dir if no user to get it from
  */
-/datum/stack_recipe/proc/make(atom/where, amount, obj/item/stack/stack, mob/user, silent)
+/datum/stack_recipe/proc/make(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir)
 	#warn impl
 
 /**
@@ -104,4 +114,5 @@
 		"resultAmt" = result_amount,
 		"time" = time,
 		"noAutoSanity" = no_automatic_sanity_checks,
+		"isStack" = result_is_stack,
 	)

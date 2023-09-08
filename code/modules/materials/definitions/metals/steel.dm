@@ -65,6 +65,32 @@
 	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "voidcraft airlock assembly (vertical)", product = /obj/structure/door_assembly/voidcraft/vertical)
 	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "emergency shutter", product = /obj/structure/firedoor_assembly)
 	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "multi-tile airlock assembly", product = /obj/structure/door_assembly/multi_tile)
+	. += create_stack_recipe_datum(
+		name = "rack",
+		product = /obj/structure/table/rack,
+		cost = 1,
+		time = 0.5 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "closet",
+		product = /obj/structure/closet,
+		cost = 2,
+		time = 1.5 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "canister",
+		product = /obj/machinery/portable_atmospherics/canister,
+		cost = 10,
+		time = 1 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "frame",
+		product = /obj/item/frame,
+		cost = 5,
+		time = 2 SECONDS,
+	)
+	. += /datum/stack_recipe/railing
+
 
 /datum/material/steel/hull
 	id = "steel_hull"

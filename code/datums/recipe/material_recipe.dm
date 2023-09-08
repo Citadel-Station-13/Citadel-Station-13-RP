@@ -9,11 +9,11 @@
 
 // these are here to have the langserv cast for us since we know stack is material
 
-/datum/stack_recipe/material_recipe/craft(atom/where, amount, obj/item/stack/material/stack, mob/user, silent)
+/datum/stack_recipe/material_recipe/craft(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
 	return ..()
 
-/datum/stack_recipe/material_recipe/check(atom/where, amount, obj/item/stack/material/stack, mob/user, silent)
+/datum/stack_recipe/material_recipe/check(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
 	return ..()
 
-/datum/stack_recipe/material_recipe/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent)
+/datum/stack_recipe/material_recipe/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
 	return ..()

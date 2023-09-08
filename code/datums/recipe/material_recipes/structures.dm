@@ -10,7 +10,7 @@
 	result_type = /obj/structure/simple_door
 	cost = 5
 
-/datum/stack_recipe/material/structure/door/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent)
+/datum/stack_recipe/material/structure/door/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
 	for(var/i in 1 to amount)
 		new result_type(where, stack.material)
 
@@ -19,7 +19,7 @@
 	result_type = /obj/structure/barricade
 	cost = 5
 
-/datum/stack_recipe/material/structure/barricade/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent)
+/datum/stack_recipe/material/structure/barricade/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
 	for(var/i in 1 to amount)
 		new result_type(where, stack.material)
 
@@ -28,7 +28,7 @@
 	result_type = /obj/structure/girder
 	cost = 2
 
-/datum/stack_recipe/material/structure/girder/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent)
+/datum/stack_recipe/material/structure/girder/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
 	for(var/i in 1 to amount)
 		new result_type(where, stack.material)
 
@@ -37,7 +37,7 @@
 	result_type = /obj/structure/wall_frame
 	cost = 2
 
-/datum/stack_recipe/material/structure/low_wall/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent)
+/datum/stack_recipe/material/structure/low_wall/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
 	for(var/i in 1 to amount)
 		new result_type(where, stack.material)
 
