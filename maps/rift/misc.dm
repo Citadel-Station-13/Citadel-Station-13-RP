@@ -34,11 +34,7 @@
 //Freezable Airlock Door
 /obj/machinery/door/airlock/glass_external/lythios43c/freezable
 	maxhealth = 600
-	var/frozen = 0
-	var/freezing = 0 //see process().
-	var/deiceTools[0]
-	var/nextWeatherCheck
-
+/*
 /obj/machinery/door/airlock/glass_external/lythios43c/freezable/New()
 	//Associate objects with the number of seconds it would take to de-ice a door.
 	//Most items are either more or less effecient at it.
@@ -73,7 +69,7 @@
 				playsound(src, welder.tool_sound, 50, 1)
 				if(do_after(user, welderTime SECONDS))
 					to_chat(user, "<span class='notice'>You finish melting the ice off \the [src]</span>")
-					unFreeze()
+					thaw()
 					return
 
 		if(istype(I, /obj/item/pen/crayon))
@@ -96,16 +92,16 @@
 /obj/machinery/door/airlock/glass_external/lythios43c/freezable/proc/handleRemoveIce(obj/item/weapon/W as obj, mob/user as mob, var/time = 15 as num)
 	to_chat(user, "<span class='notice'>You start to chip at the ice covering \the [src]</span>")
 	if(do_after(user, text2num(time SECONDS)))
-		unFreeze()
+		thaw()
 		to_chat(user, "<span class='notice'>You finish chipping the ice off \the [src]</span>")
 
-/obj/machinery/door/airlock/glass_external/lythios43c/freezable/proc/unFreeze()
-	frozen = 0
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable/proc/thaw()
+	frozen = FALSE
 	update_icon()
 	return
 
 /obj/machinery/door/airlock/glass_external/lythios43c/freezable/proc/freeze()
-	frozen = 1
+	frozen = TRUE
 	update_icon()
 	return
 
@@ -115,24 +111,55 @@
 		add_overlay(image('icons/turf/overlays.dmi', "snowairlock"))
 	return
 
-/obj/machinery/door/airlock/glass_external/lythios43c/freezable/proc/handleFreezeUnfreeze()
 
-	for(var/datum/planet/lythios43c/P in SSplanets.planets)
-		if(istype(P.weather_holder.current_weather, /datum/weather/lythios43c/blizzard))
-			if(!frozen && density && prob(25))
-				freeze()
-		else if(!istype(P.weather_holder.current_weather, /datum/weather/lythios43c/blizzard))
-			if(frozen && prob(50))
-				unFreeze()
+//Init timer
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable/Initialize(mapload)
+	next_temp_check = world.time + rand(1, 7 SECONDS)
+	return ..()
+
+//Handels if the airlock should freeze or not
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable/proc/update_frozen()
+	for(var/dir in GLOB.cardinal)
+		var/turf/T = get_turf(get_step(loc,dir))
+		var/datum/gas_mixture/cold_temps = T.return_air()
+		if(cold_temps.temperature < maximal_cold) // this is to check if the airlock is colder than what it was designed for
+			freeze()
+		else if(cold_temps.temperature > maximal_cold)
+			thaw()
+		return
 	return
+
+//Timer that runs the proc for checking if it should be frozen or not
 /obj/machinery/door/airlock/glass_external/lythios43c/freezable/process()
-	if(world.time >= nextWeatherCheck && !freezing)  //don't do the thing if i'm already doing it.
+	if(world.time > next_temp_check)
+		update_frozen()
+		next_temp_check = world.time + 10 SECONDS
+	..()
+
+//Uses runtimes we don't want that
+/*
+//This handels checking if the tempature is below cold threshold
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable/proc/should_freeze()
+	for(var/dir in GLOB.cardinal)
+		var/turf/T = get_turf(get_step(loc,dir))
+		var/datum/gas_mixture/coldtemps = T.return_air()
+		if(!frozen && density && coldtemps.temperature <= maximal_cold && prob(25))
+			freeze()
+		else if(frozen && coldtemps.temperature >= maximal_cold && prob(50))
+			thaw()
+		return
+	return
+
+//Timer that checks if it is still cold
+/obj/machinery/door/airlock/glass_external/lythios43c/freezable/process()
+	if(world.time >= nextTempcheck && !freezing)
 		freezing = 1
 		var/random = rand(2,7)
-		nextWeatherCheck = (world.time + ((random + 13) SECONDS))
-		handleFreezeUnfreeze()
+		nextTempcheck = (world.time + ((random + 13) SECONDS))
+		should_freeze()
 		freezing = 0
 	..()
+*/
 
 /obj/machinery/door/airlock/glass_external/lythios43c/freezable/examine(mob/user)
 	. = ..()
@@ -144,7 +171,7 @@
 	if(frozen && !forced)
 		return
 	else if(frozen && forced)
-		unFreeze()
+		thaw()
 		return ..()
 	else
 		..()
@@ -154,8 +181,9 @@
 	if(frozen && !forced)
 		return
 	else if(frozen && forced)
-		unFreeze()
+		thaw()
 		return ..()
 	else
 		..()
 //end of freezable airlock stuff.
+*/

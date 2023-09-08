@@ -113,6 +113,11 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	/// Bandaid around a problem.
 	var/last_spark = 0
 
+	//Frozen airlock vars
+	var/frozen = FALSE
+	var/deiceTools[0] //OH HO HO THIS IS BAD
+	var/frozen_check_next
+	var/frozen_temperature  = T0C - 50 /// Default is -50c
 
 /obj/machinery/door/airlock/proc/set_airlock_overlays(state)
 	var/icon/color_overlay
@@ -887,7 +892,41 @@ About the new airlock wires panel:
 			..()
 	else
 		..()
-	return
+
+		//Special cases for tools that need more then just a type check.
+
+		//debug
+		//message_admins("[user] has used \the [C] of type [C.type] on [src]", R_DEBUG)
+
+	if(frozen)
+		var/welderTime = 5 //Welder
+		//the welding tool is a special snowflake.
+		if(istype(C, /obj/item/weldingtool))
+			var/obj/item/weldingtool/welder = C
+			if(welder.remove_fuel(0,user) && welder && welder.isOn())
+				to_chat(user, "<span class='notice'>You start to melt the ice off \the [src]</span>")
+				playsound(src, welder.tool_sound, 50, 1)
+				if(do_after(user, welderTime SECONDS))
+					to_chat(user, "<span class='notice'>You finish melting the ice off \the [src]</span>")
+					thaw()
+					return
+
+		if(istype(C, /obj/item/pen/crayon))
+			to_chat(user, "<span class='notice'>You try to use \the [C] to clear the ice, but it crumbles away!</span>")
+			qdel(C)
+			return
+
+		//Most items will be checked in this for loop using the list in New().
+		//Code for objects with specific checks (Like the welder) should be inserted above.
+		for(var/IT in deiceTools)
+			if(istype(C, IT))
+				handleRemoveIce(C, user, deiceTools[IT])
+				return
+
+		//if we can't de-ice the door tell them what's wrong.
+		to_chat(user, "<span class='notice'>\the [src] is frozen shut!</span>")
+		return
+	..()
 
 /obj/machinery/door/airlock/phoron/attackby(C as obj, mob/user as mob)
 	if(C)
@@ -963,6 +1002,9 @@ About the new airlock wires panel:
 
 	if(locked || welded)
 		return 0
+
+	if(frozen)
+		return 0
 	return ..()
 
 /obj/machinery/door/airlock/can_close(var/forced=0)
@@ -973,7 +1015,8 @@ About the new airlock wires panel:
 		//despite the name, this wire is for general door control.
 		if(!arePowerSystemsOn() || wires.is_cut(WIRE_OPEN_DOOR))
 			return	0
-
+	if(frozen)
+		return 0
 	return ..()
 
 /obj/machinery/door/airlock/toggle_open(forced)
@@ -1197,3 +1240,130 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/glass_external/public
 	req_one_access = list()
+
+//Freezable airlocks!
+
+/obj/machinery/door/airlock/New()// this is shit code refactor this!!!
+	//Associate objects with the number of seconds it would take to de-ice a door.
+	//Most items are either more or less effecient at it.
+	//For items with very specific cases (like welders using fuel, or needing to be on) see attackby().
+	deiceTools[/obj/item/pickaxe/icepick] = 3 //Ice Pick / Axe.
+	deiceTools[/obj/item/pickaxe/icepick/plasteel] = 2 //Plasteel Ice pickaxe.
+	deiceTools[/obj/item/material/knife/machete] = 4 //Machete
+	deiceTools[/obj/item/tool/crowbar] = 5 //Crowbar
+	deiceTools[/obj/item/pen] = 30 //Pen
+	deiceTools[/obj/item/card] = 35 //Cards. (Mostly ID cards)
+
+	//Generic weapon items. Tools are better then weapons.
+	//This is for preventing "Sierra" syndrome that could result from needing very specific objects.
+	deiceTools[/obj/item/tool] = 10
+	deiceTools[/obj/item] = 12
+	..()
+
+/obj/machinery/door/airlock/attackby(obj/item/I, mob/user as mob)
+	//Special cases for tools that need more then just a type check.
+	var/welderTime = 5 //Welder
+
+	//debug
+	//message_admins("[user] has used \the [I] of type [I.type] on [src]", R_DEBUG)
+
+	if(frozen)
+
+		//the welding tool is a special snowflake.
+		if(istype(I, /obj/item/weldingtool))
+			var/obj/item/weldingtool/welder = I
+			if(welder.remove_fuel(0,user) && welder && welder.isOn())
+				to_chat(user, "<span class='notice'>You start to melt the ice off \the [src]</span>")
+				playsound(src, welder.tool_sound, 50, 1)
+				if(do_after(user, welderTime SECONDS))
+					to_chat(user, "<span class='notice'>You finish melting the ice off \the [src]</span>")
+					thaw()
+					return
+
+		if(istype(I, /obj/item/pen/crayon))
+			to_chat(user, "<span class='notice'>You try to use \the [I] to clear the ice, but it crumbles away!</span>")
+			qdel(I)
+			return
+
+		//Most items will be checked in this for loop using the list in New().
+		//Code for objects with specific checks (Like the welder) should be inserted above.
+		for(var/IT in deiceTools)
+			if(istype(I, IT))
+				handleRemoveIce(I, user, deiceTools[IT])
+				return
+
+		//if we can't de-ice the door tell them what's wrong.
+		to_chat(user, "<span class='notice'>\the [src] is frozen shut!</span>")
+		return
+	..()
+
+/obj/machinery/door/airlock/proc/handleRemoveIce(obj/item/weapon/W as obj, mob/user as mob, var/time = 15 as num)
+	to_chat(user, "<span class='notice'>You start to chip at the ice covering \the [src]</span>")
+	if(do_after(user, text2num(time SECONDS)))
+		thaw()
+		to_chat(user, "<span class='notice'>You finish chipping the ice off \the [src]</span>")
+
+/obj/machinery/door/airlock/proc/thaw()
+	frozen = FALSE
+	update_icon()
+	return
+
+/obj/machinery/door/airlock/proc/freeze()
+	frozen = TRUE
+	update_icon()
+	return
+
+/obj/machinery/door/airlock/update_icon()
+	..()
+	if(frozen)
+		add_overlay(image('icons/turf/overlays.dmi', "snowairlock"))
+	return
+
+
+//Init timer
+/obj/machinery/door/airlock/Initialize(mapload)
+	frozen_check_next = world.time + rand(1, 40 SECONDS)
+	return ..()
+
+//Handles if the airlock should freeze or not
+/obj/machinery/door/airlock/proc/should_freeze()
+	var/avg_temp=0
+	var/num_temps=0
+	var/vacuum=0.01
+	for(var/dir in GLOB.cardinal)
+		var/turf/T = get_turf(get_step(loc,dir))
+		var/datum/gas_mixture/cold_temps = T.return_air()
+		if(istype(T,/turf/simulated))
+			num_temps += 1
+			avg_temp += cold_temps.temperature
+		if(num_temps > 0)
+			avg_temp /= num_temps
+			if(cold_temps.total_moles < vacuum)//This is so it don't freeze in space
+				return FALSE
+			else if(cold_temps.temperature < maximal_cold) // this is to check if the airlock is colder than what it was designed for
+				return TRUE
+	return FALSE
+
+/obj/machinery/door/airlock/proc/update_frozen()
+  . = FALSE
+  var/should_freeze = should_freeze()
+  if(should_freeze && !frozen && density && prob(25))//should not freeze open
+    freeze()
+    . = TRUE
+  else if(!should_freeze && frozen)
+    thaw()
+    . = TRUE
+
+//Timer that runs the proc for checking if it should be frozen or not
+/obj/machinery/door/airlock/process()
+	if(world.time > frozen_check_next)
+		update_frozen()
+		frozen_check_next = world.time + 40 SECONDS
+	..()
+
+/obj/machinery/door/airlock/examine(mob/user)
+	. = ..()
+	if(frozen)
+		to_chat(user, "it's frozen shut!")
+
+//end of freezable airlock stuff.

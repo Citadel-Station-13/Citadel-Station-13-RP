@@ -135,6 +135,7 @@
 	door_color = COLOR_MAROON
 	window_color = GLASS_COLOR
 
+
 /obj/machinery/door/airlock/glass
 	name = "Glass Airlock"
 	hitsound = 'sound/effects/Glasshit.ogg'
