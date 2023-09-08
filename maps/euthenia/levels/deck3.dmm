@@ -13520,16 +13520,14 @@
 "pHd" = (
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped,
 /obj/structure/table/standard,
+/obj/item/storage/box/monkeycubes{
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
+	},
+/obj/item/storage/box/monkeycubes{
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
+	},
 /obj/structure/window/reinforced{
 	dir = 8
-	},
-/obj/item/storage/bag/xenobio,
-/obj/item/storage/bag/xenobio,
-/obj/item/storage/box/monkeycubes{
-	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped = 10)
-	},
-/obj/item/storage/box/monkeycubes{
-	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped = 10)
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology)
