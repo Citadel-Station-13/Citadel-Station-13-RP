@@ -1,6 +1,12 @@
+#warn refactor top two rpocs
+
 /datum/material/proc/get_recipes()
 	if(!recipes)
 		generate_recipes()
+	return recipes
+
+/datum/material/proc/generate_recipes()
+	recipes = list()
 	return recipes
 
 /datum/material/steel/generate_recipes()

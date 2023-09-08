@@ -1,4 +1,6 @@
 //Ported from Cit Main.
+// todo: refactor into sculpting, with categories/free choice of material & greyscaling
+// todo: generate job state icons off of a given sprite, or off of their outfit
 /obj/structure/statue
 	name = "Statue"
 	desc = "Placeholder. Yell at Firecage if you SOMEHOW see this."

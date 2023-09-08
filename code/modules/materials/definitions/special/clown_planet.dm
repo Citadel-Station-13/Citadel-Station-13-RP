@@ -1,5 +1,3 @@
-// fuck this
-
 /datum/material/bananium
 
 /datum/material/bananium/generate_recipes()
