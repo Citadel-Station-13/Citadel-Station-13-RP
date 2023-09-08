@@ -3,7 +3,6 @@ import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from "../backend";
 import { Box, Button, Collapsible, Dropdown, Flex, Input, Section } from '../components';
 import { Window } from "../layouts";
-import { refocusLayout } from '../layouts';
 
 const sortTypes = {
   'Alphabetical': (a, b) => a - b,
