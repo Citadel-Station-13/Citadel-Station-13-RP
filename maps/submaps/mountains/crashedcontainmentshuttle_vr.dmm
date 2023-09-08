@@ -55,11 +55,11 @@
 /turf/simulated/shuttle/floor/black,
 /area/submap/crashedcontainmentshuttle)
 "ao" = (
-/obj/structure/door_assembly/door_assembly_ext,
+/obj/structure/door_assembly/external,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "ap" = (
-/obj/structure/door_assembly/door_assembly_ext{
+/obj/structure/door_assembly/external{
 	anchored = 1
 	},
 /turf/simulated/floor/plating,
@@ -179,7 +179,7 @@
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/crashedcontainmentshuttle)
 "aO" = (
-/obj/structure/door_assembly/door_assembly_highsecurity{
+/obj/structure/door_assembly/high_security{
 	anchored = 1
 	},
 /turf/simulated/shuttle/floor/black,
@@ -408,7 +408,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "bF" = (
-/obj/structure/door_assembly/door_assembly_ext{
+/obj/structure/door_assembly/external{
 	anchored = 1
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,

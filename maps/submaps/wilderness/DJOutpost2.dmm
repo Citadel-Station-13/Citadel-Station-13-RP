@@ -117,7 +117,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/DJOutpost1)
 "B" = (
-/obj/structure/door_assembly/door_assembly_ext,
+/obj/structure/door_assembly/external,
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/DJOutpost1)
 "C" = (

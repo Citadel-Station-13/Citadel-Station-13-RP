@@ -76,7 +76,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/cave/cultmine)
 "an" = (
-/obj/structure/door_assembly/door_assembly_highsecurity{
+/obj/structure/door_assembly/high_security{
 	anchored = 1
 	},
 /obj/effect/debris/cleanable/blood/oil,
@@ -215,12 +215,12 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "aQ" = (
-/obj/structure/door_assembly/door_assembly_hatch,
+/obj/structure/door_assembly/hatch,
 /obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/submap/cave/cultmine)
 "aR" = (
-/obj/structure/door_assembly/door_assembly_highsecurity{
+/obj/structure/door_assembly/high_security{
 	anchored = 1
 	},
 /obj/structure/boulder,

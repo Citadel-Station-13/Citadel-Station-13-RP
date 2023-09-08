@@ -93,7 +93,7 @@
 /turf/simulated/shuttle/floor/white/airless,
 /area/space/debrisfield/explodedship)
 "av" = (
-/obj/structure/door_assembly/door_assembly_com{
+/obj/structure/door_assembly/command{
 	anchored = 1
 	},
 /turf/simulated/shuttle/floor/white/airless,

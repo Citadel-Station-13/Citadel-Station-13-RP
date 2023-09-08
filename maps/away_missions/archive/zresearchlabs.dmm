@@ -303,7 +303,7 @@
 	},
 /area/awaymission/labs/cave)
 "bm" = (
-/obj/structure/door_assembly/door_assembly_research,
+/obj/structure/door_assembly/research,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
