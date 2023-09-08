@@ -127,7 +127,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			continue
 		if(!isnull(tlv_ids[id]))
 			continue
-		tlv_ids[id] = default
+		tlv_ids[id] = default.Copy()
 	for(var/group in global.gas_data.gas_group_names_filterable)
 		if(!isnull(tlv_groups[group]))
 			continue
