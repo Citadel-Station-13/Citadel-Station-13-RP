@@ -1260,43 +1260,6 @@ About the new airlock wires panel:
 	deiceTools[/obj/item] = 12
 	..()
 
-/obj/machinery/door/airlock/attackby(obj/item/I, mob/user as mob)
-	//Special cases for tools that need more then just a type check.
-	var/welderTime = 5 //Welder
-
-	//debug
-	//message_admins("[user] has used \the [I] of type [I.type] on [src]", R_DEBUG)
-
-	if(frozen)
-
-		//the welding tool is a special snowflake.
-		if(istype(I, /obj/item/weldingtool))
-			var/obj/item/weldingtool/welder = I
-			if(welder.remove_fuel(0,user) && welder && welder.isOn())
-				to_chat(user, "<span class='notice'>You start to melt the ice off \the [src]</span>")
-				playsound(src, welder.tool_sound, 50, 1)
-				if(do_after(user, welderTime SECONDS))
-					to_chat(user, "<span class='notice'>You finish melting the ice off \the [src]</span>")
-					thaw()
-					return
-
-		if(istype(I, /obj/item/pen/crayon))
-			to_chat(user, "<span class='notice'>You try to use \the [I] to clear the ice, but it crumbles away!</span>")
-			qdel(I)
-			return
-
-		//Most items will be checked in this for loop using the list in New().
-		//Code for objects with specific checks (Like the welder) should be inserted above.
-		for(var/IT in deiceTools)
-			if(istype(I, IT))
-				handleRemoveIce(I, user, deiceTools[IT])
-				return
-
-		//if we can't de-ice the door tell them what's wrong.
-		to_chat(user, "<span class='notice'>\the [src] is frozen shut!</span>")
-		return
-	..()
-
 /obj/machinery/door/airlock/proc/handleRemoveIce(obj/item/weapon/W as obj, mob/user as mob, var/time = 15 as num)
 	to_chat(user, "<span class='notice'>You start to chip at the ice covering \the [src]</span>")
 	if(do_after(user, text2num(time SECONDS)))
