@@ -698,8 +698,8 @@ var/global/list/xenobio_silver_materials_adv = list(
 var/global/list/xenobio_silver_materials_special = list(
 										/obj/item/stack/material/valhollide = 1,
 										/obj/item/stack/material/morphium = 1,
-										/obj/item/stack/material/bananium = 2, //cit addition: :o)
-										/obj/item/stack/material/silencium = 2)
+										/obj/item/stack/material/bananium = 1, //cit addition: :o)
+										/obj/item/stack/material/silencium = 1)
 
 //TODO: add Cit-RP specific mobs, maybe? also, maybe some mobs could be ported?
 var/global/list/xenobio_gold_mobs_hostile = list(
