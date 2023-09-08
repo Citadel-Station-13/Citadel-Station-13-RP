@@ -12237,7 +12237,7 @@
 /obj/machinery/requests_console/preset/cargo{
 	pixel_y = -32
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/foyer)
 "kbi" = (
@@ -14081,7 +14081,7 @@
 /area/quartermaster/warehouse)
 "lFs" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled,
 /area/space)
 "lFA" = (
@@ -25483,7 +25483,7 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/station/fighter_bay/maintenance)
 "vak" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "val" = (

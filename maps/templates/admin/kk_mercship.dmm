@@ -1481,7 +1481,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "hx" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/wood,
 /area/ship/manta/commander)
 "hy" = (

@@ -230,7 +230,7 @@
 /turf/simulated/floor/tiled/white/airless,
 /area/space/debrisfield/scioverrun)
 "aP" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled/white/airless,
 /area/space/debrisfield/scioverrun)
 "aQ" = (

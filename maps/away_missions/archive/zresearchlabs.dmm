@@ -582,7 +582,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/labs/cave)
 "cn" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -2693,7 +2693,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/labs/solars)
 "hX" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor{
 	icon_state = "wood"

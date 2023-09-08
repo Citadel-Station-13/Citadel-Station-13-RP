@@ -1913,7 +1913,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dS" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dT" = (

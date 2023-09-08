@@ -7313,7 +7313,7 @@
 /obj/effect/floor_decal/corner/purple/bordercorner{
 	dir = 4
 	},
-/obj/structure/filingcabinet/filingcabinet{
+/obj/structure/filingcabinet/tall{
 	pixel_x = 10
 	},
 /obj/machinery/light_switch{
@@ -11110,7 +11110,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "wh" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
 /obj/effect/floor_decal/steeldecal/steel_decals7{

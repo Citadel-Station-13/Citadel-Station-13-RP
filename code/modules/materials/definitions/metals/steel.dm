@@ -180,7 +180,7 @@
 		amount = 4,
 	)
 	. += create_stack_recipe_datum(category = "filing cabinets", cost = 4, name = "filing cabinet", product = /obj/structure/filingcabinet, time = 2 SECONDS)
-	. += create_stack_recipe_datum(category = "filing cabinets", cost = 4, name = "tall filing cabinet", product = /obj/structure/filingcabinet/filingcabinet, time = 2 SECONDS)
+	. += create_stack_recipe_datum(category = "filing cabinets", cost = 4, name = "tall filing cabinet", product = /obj/structure/filingcabinet/tall, time = 2 SECONDS)
 	. += create_stack_recipe_datum(category = "filing cabinets", cost = 4, name = "chest drawer", product = /obj/structure/filingcabinet/chestdrawer, time = 2 SECONDS)
 
 /datum/material/steel/hull

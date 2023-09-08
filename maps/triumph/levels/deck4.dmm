@@ -13266,7 +13266,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
@@ -17425,7 +17425,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 5
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "lOO" = (
@@ -21816,7 +21816,7 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "oUM" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "oVe" = (

@@ -2961,7 +2961,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "nx" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/outpost/testing_lab)
 "nz" = (

@@ -3384,7 +3384,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "mR" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "mS" = (

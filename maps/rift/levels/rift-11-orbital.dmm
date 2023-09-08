@@ -7053,7 +7053,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zs" = (

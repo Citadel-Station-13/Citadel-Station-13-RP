@@ -2943,7 +2943,7 @@
 	},
 /area/tdome)
 "hw" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "hz" = (
@@ -4874,7 +4874,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "oo" = (
@@ -5453,7 +5453,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "ps" = (
@@ -9635,7 +9635,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "CT" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},

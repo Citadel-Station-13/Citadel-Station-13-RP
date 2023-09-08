@@ -7406,7 +7406,7 @@
 	},
 /area/centcom/control)
 "xZ" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "ya" = (
@@ -12618,7 +12618,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "PD" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -13266,7 +13266,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "RG" = (
@@ -14973,7 +14973,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "XZ" = (
