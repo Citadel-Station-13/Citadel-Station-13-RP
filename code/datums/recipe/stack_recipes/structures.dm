@@ -1,6 +1,6 @@
 /datum/stack_recipe/railing
 	name = "railing"
-	result_type =  = /obj/structure/railing
+	result_type = /obj/structure/railing
 	cost = 2
 	time = 1.25 SECONDS
 
