@@ -818,9 +818,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "aGV" = (
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/effect/floor_decal/grass_edge/corner,
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/brflowers,
@@ -829,6 +826,9 @@
 	},
 /obj/machinery/light/no_nightshift{
 	dir = 1
+	},
+/obj/structure/railing/grey{
+	dir = 8
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rnd/research/researchdivision)
@@ -1783,6 +1783,10 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/monotile,
 /area/space)
+"boR" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/aft/port)
 "boW" = (
 /obj/structure/railing{
 	dir = 1
@@ -2547,6 +2551,9 @@
 /area/rnd/research/researchdivision)
 "bYK" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on,
+/obj/landmark{
+	name = "morphspawn"
+	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/aft)
 "bYL" = (
@@ -2869,6 +2876,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_gas)
+"cjC" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/starboard)
 "ckt" = (
 /obj/machinery/door/airlock{
 	name = "Hydroponics";
@@ -3489,6 +3500,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on{
 	dir = 1
 	},
+/obj/landmark{
+	name = "morphspawn"
+	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/aft)
 "cOp" = (
@@ -3844,7 +3858,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/fitness)
 "deT" = (
-/obj/structure/railing{
+/obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/open,
@@ -4496,7 +4510,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "dDH" = (
-/obj/structure/railing{
+/obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -5409,8 +5423,8 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/atmospheric_substation/medical)
 "ekM" = (
-/obj/structure/railing,
-/obj/structure/railing{
+/obj/structure/railing/grey,
+/obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/open,
@@ -5872,6 +5886,12 @@
 	},
 /obj/structure/railing{
 	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two)
+"eFt" = (
+/obj/landmark{
+	name = "morphspawn"
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two)
@@ -6531,9 +6551,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_gas)
 "fhR" = (
-/obj/machinery/atmospherics/valve{
-	name = "EMERGENCY VENT TO SPACE"
-	},
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "fin" = (
@@ -7670,15 +7688,18 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/space)
 "ggB" = (
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
 	id = "rd_office"
 	},
 /turf/simulated/open,
 /area/rnd/research/researchdivision)
+"ghh" = (
+/obj/landmark{
+	name = "morphspawn"
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/starboard)
 "ghs" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -8306,6 +8327,9 @@
 	pixel_y = 4
 	},
 /obj/machinery/camera/network/research,
+/obj/structure/railing/grey{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "gII" = (
@@ -8363,6 +8387,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_gas)
+"gMF" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/plating,
+/area/space)
 "gMH" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -8729,16 +8757,16 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck2)
 "hdn" = (
-/obj/machinery/door/airlock/glass/research{
-	name = "Robotics Lab";
-	req_access = list(29,47)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/multi_tile/glass/exploration{
+	req_one_access = list(29,47);
+	name = "Robotics Lab"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics)
 "hdq" = (
@@ -10155,6 +10183,10 @@
 /obj/machinery/seed_extractor,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"ioc" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/aft/starboard)
 "iou" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -12972,6 +13004,12 @@
 "kDH" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/transport_tunnel)
+"kDS" = (
+/obj/machinery/air_alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/main_map/maintenance/deck_two/aft/starboard)
 "kDX" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
@@ -13141,6 +13179,7 @@
 /obj/landmark{
 	name = "lightsout"
 	},
+/obj/structure/railing/grey,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "kLd" = (
@@ -13261,8 +13300,8 @@
 /turf/simulated/floor/wood,
 /area/medical/patient_wing)
 "kRX" = (
-/obj/structure/railing,
-/obj/structure/railing{
+/obj/structure/railing/grey,
+/obj/structure/railing/grey{
 	dir = 8
 	},
 /turf/simulated/open,
@@ -13317,6 +13356,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
+"kTt" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/forward/port)
 "kUj" = (
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Security Subgrid";
@@ -14534,6 +14577,10 @@
 "lUg" = (
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/hallway)
+"lVy" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/port)
 "lVU" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
@@ -17563,6 +17610,16 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
+"opC" = (
+/obj/machinery/air_alarm{
+	dir = 8;
+	pixel_x = 25
+	},
+/obj/landmark{
+	name = "morphspawn"
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two)
 "oqb" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
 	frequency = 1443;
@@ -18149,7 +18206,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/lab)
 "oPE" = (
-/obj/structure/railing{
+/obj/structure/railing/grey{
 	dir = 1
 	},
 /turf/simulated/open,
@@ -18569,6 +18626,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/recreation_area_hallway)
+"pbJ" = (
+/obj/structure/railing/grey,
+/turf/simulated/floor/tiled/steel_grid,
+/area/rnd/robotics)
 "pcf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -18736,7 +18797,7 @@
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos,
 /area/engineering/hallway)
 "pkd" = (
-/obj/structure/railing{
+/obj/structure/railing/grey{
 	dir = 8
 	},
 /turf/simulated/open,
@@ -19449,9 +19510,6 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/atmospheric_substation/cargo)
 "pPg" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/effect/floor_decal/grass_edge/corner,
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -19460,6 +19518,9 @@
 	},
 /obj/machinery/light/no_nightshift{
 	dir = 1
+	},
+/obj/structure/railing/grey{
+	dir = 4
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rnd/research/researchdivision)
@@ -20437,10 +20498,10 @@
 /turf/simulated/floor/reinforced,
 /area/main_map/Hangar_bay/deck2)
 "qJg" = (
-/obj/structure/railing{
+/obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/structure/railing{
+/obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/open,
@@ -20462,6 +20523,9 @@
 "qJx" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on{
 	dir = 1
+	},
+/obj/landmark{
+	name = "morphspawn"
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/port)
@@ -22523,13 +22587,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_two/forward/starboard)
-"swr" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing,
-/turf/simulated/open,
-/area/rnd/robotics)
 "swF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -22621,6 +22678,13 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/aft/port)
+"sAI" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/retro/on,
+/obj/landmark{
+	name = "morphspawn"
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/forward/port)
 "sBz" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -22671,7 +22735,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "sDQ" = (
-/obj/structure/railing,
+/obj/structure/railing/grey,
 /turf/simulated/open,
 /area/rnd/research/researchdivision)
 "sDS" = (
@@ -22942,6 +23006,9 @@
 "sPJ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on{
 	dir = 8
+	},
+/obj/landmark{
+	name = "morphspawn"
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/aft)
@@ -23978,15 +24045,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
-"tAE" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/open,
-/area/rnd/research/researchdivision)
 "tAJ" = (
 /obj/structure/table/fancyblack,
 /turf/simulated/floor/carpet,
@@ -24226,6 +24284,11 @@
 "tLr" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/station/fighter_bay)
+"tLO" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/item/barrier_tape_segment/engineering,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/forward/starboard)
 "tMn" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -24771,7 +24834,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/Hangar_bay/deck2)
 "unL" = (
-/obj/structure/railing{
+/obj/structure/railing/grey{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -24938,6 +25001,9 @@
 /area/engineering/atmos)
 "uuW" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/obj/structure/railing/grey{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -25378,10 +25444,6 @@
 /area/main_map/Hangar_bay/deck2)
 "uNG" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass/research{
-	name = "Robotics Lab";
-	req_access = list(29,47)
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics)
 "uNX" = (
@@ -25555,7 +25617,7 @@
 /area/crew_quarters/heads/cmo)
 "uXg" = (
 /obj/structure/stairs/spawner/north,
-/obj/structure/railing{
+/obj/structure/railing/grey{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -25701,13 +25763,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_two)
 "vbm" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing,
 /turf/simulated/open,
 /area/rnd/robotics)
 "vbs" = (
@@ -27396,11 +27451,11 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/main_map/hallway/deck2)
 "wmZ" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
+/obj/structure/railing/grey{
 	dir = 8
+	},
+/obj/structure/railing/grey{
+	dir = 1
 	},
 /turf/simulated/open,
 /area/rnd/research/researchdivision)
@@ -28472,10 +28527,10 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "xbe" = (
-/obj/mecha/combat/fighter/pinnace/loaded{
+/obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
-/obj/machinery/atmospherics/portables_connector{
+/obj/mecha/combat/fighter/baron/sec/loaded{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -29076,7 +29131,7 @@
 /area/main_map/maintenance/deck_two/aft)
 "xxt" = (
 /obj/structure/stairs/spawner/north,
-/obj/structure/railing{
+/obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -35015,12 +35070,12 @@ mRB
 mRB
 mRB
 wvw
-hts
-hts
-gCv
-hts
-hts
-gCv
+kLI
+kLI
+fkK
+kLI
+kLI
+fkK
 vdY
 clM
 clM
@@ -36380,7 +36435,7 @@ shT
 shT
 shT
 xGo
-esP
+kDS
 esP
 esP
 bFQ
@@ -40017,7 +40072,7 @@ nrV
 yao
 kbz
 yao
-yao
+gMF
 eUN
 rms
 avr
@@ -41428,11 +41483,11 @@ deT
 kna
 kna
 kna
-tAE
-tAE
-tAE
-tAE
-tAE
+kna
+kna
+kna
+kna
+kna
 tZE
 kLI
 kLI
@@ -42983,8 +43038,8 @@ fFn
 bkS
 qlL
 czQ
-wTj
-swr
+pbJ
+vbm
 ved
 kLI
 kLI
@@ -43177,8 +43232,8 @@ yev
 ecR
 nIA
 czQ
-wTj
-swr
+pbJ
+vbm
 ved
 mRB
 mRB
@@ -44130,7 +44185,7 @@ dUY
 uMx
 kIA
 hpx
-shT
+ioc
 trt
 shT
 xhy
@@ -45220,7 +45275,7 @@ aNJ
 fPn
 gQr
 fPn
-fPn
+boR
 nKv
 kgf
 bYR
@@ -45688,7 +45743,7 @@ sEh
 qxf
 bEC
 uuJ
-uuJ
+ghh
 eCL
 eCL
 eCL
@@ -46846,7 +46901,7 @@ uuJ
 uuJ
 uuJ
 sEh
-uuJ
+cjC
 hRn
 uuJ
 vir
@@ -47030,7 +47085,7 @@ sEh
 ycY
 uuJ
 mrc
-uuJ
+ghh
 iIC
 uuJ
 qRL
@@ -47411,7 +47466,7 @@ jmn
 duL
 qXn
 jmn
-kce
+opC
 jmn
 cbU
 lEO
@@ -49755,8 +49810,8 @@ boX
 boX
 boX
 boX
-aZH
-aZH
+tLO
+kvR
 kvR
 kvR
 kvR
@@ -50488,7 +50543,7 @@ upo
 eTw
 rrk
 kqv
-sZU
+kTt
 sZU
 rdE
 jSS
@@ -51245,7 +51300,7 @@ kLI
 kLI
 kLI
 mYy
-kKv
+lVy
 kKv
 kKv
 puw
@@ -51839,7 +51894,7 @@ mRB
 mRB
 ncN
 dOB
-kbi
+sAI
 gWH
 sZU
 sZU
@@ -53809,7 +53864,7 @@ aUc
 jUZ
 sFw
 cbU
-jmn
+eFt
 qXn
 duL
 mYR
@@ -54172,7 +54227,7 @@ kLI
 kLI
 dOB
 sZU
-kbi
+sAI
 eLY
 jGV
 dOB

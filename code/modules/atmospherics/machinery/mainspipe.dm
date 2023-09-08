@@ -368,19 +368,26 @@
 
 /obj/machinery/atmospherics/mains_pipe/split/return_network(A)
 	return split_node.return_network(A)
-
+/*
 /obj/machinery/atmospherics/mains_pipe/split/supply
 	icon_type = "supply"
 
 /obj/machinery/atmospherics/mains_pipe/split/Initialize(mapload)
 	. = ..()
 	split_node = supply
-
-/obj/machinery/atmospherics/mains_pipe/split/hidden
+*/
+/obj/machinery/atmospherics/mains_pipe/split/hidden/supply
 	level = 1
 	icon_state = "split-supply-f"
+/obj/machinery/atmospherics/mains_pipe/split/hidden/scrubbers
+	level = 1
+	icon_state = "split-scrubbers-f"
+/obj/machinery/atmospherics/mains_pipe/split/hidden/aux
+	level = 1
+	icon_state = "split-aux-f"
 
-/obj/machinery/atmospherics/mains_pipe/split/visible
+
+/obj/machinery/atmospherics/mains_pipe/split/visible/suppy
 	level = 2
 	icon_state = "split-supply"
 
@@ -391,9 +398,6 @@
 	. = ..()
 	split_node = scrubbers
 
-/obj/machinery/atmospherics/mains_pipe/split/hidden
-	level = 1
-	icon_state = "split-scrubbers-f"
 
 /obj/machinery/atmospherics/mains_pipe/split/visible
 	level = 2
@@ -405,10 +409,6 @@
 /obj/machinery/atmospherics/mains_pipe/split/Initialize(mapload)
 	. = ..()
 	split_node = aux
-
-/obj/machinery/atmospherics/mains_pipe/split/hidden
-	level = 1
-	icon_state = "split-aux-f"
 
 /obj/machinery/atmospherics/mains_pipe/split/visible
 	level = 2
