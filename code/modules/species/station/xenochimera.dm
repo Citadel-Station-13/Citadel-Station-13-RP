@@ -158,7 +158,7 @@
 	else
 		return
 
-/datum/species/shapeshifter/xenochimera/proc/remove_feral_spells(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/xenochimera/proc/remove_feral_abilities(var/mob/living/carbon/human/H)
 	if(has_feral_abilities)
 		has_feral_abilities = FALSE
 	else
@@ -277,7 +277,7 @@
 		if(!feral)
 			feral_state = FALSE
 			if(has_feral_abilities)
-				remove_feral_spells(H)
+				remove_feral_abilities(H)
 			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
 			log_and_message_admins("is no longer feral.", H)
 			update_xenochimera_hud(H, danger, feral_state)
