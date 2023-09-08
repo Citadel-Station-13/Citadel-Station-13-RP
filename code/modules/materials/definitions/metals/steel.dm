@@ -84,13 +84,104 @@
 		time = 1 SECONDS,
 	)
 	. += create_stack_recipe_datum(
-		name = "frame",
+		category = "frames",
+		name = "machine frame",
 		product = /obj/item/frame,
 		cost = 5,
 		time = 2 SECONDS,
 	)
 	. += /datum/stack_recipe/railing
-
+	. += create_stack_recipe_datum(category = "sofas", cost = 1, name = "sofa middle", product = /obj/structure/bed/chair/sofa, exclusitivity = /obj/structure/bed)
+	. += create_stack_recipe_datum(category = "sofas", cost = 1, name = "sofa left", product = /obj/structure/bed/chair/sofa/left, exclusitivity = /obj/structure/bed)
+	. += create_stack_recipe_datum(category = "sofas", cost = 1, name = "sofa right", product = /obj/structure/bed/chair/sofa/right, exclusitivity = /obj/structure/bed)
+	. += create_stack_recipe_datum(category = "sofas", cost = 1, name = "sofa corner", product = /obj/structure/bed/chair/sofa/corner, exclusitivity = /obj/structure/bed)
+	// todo: frame rework
+	. += create_stack_recipe_datum(
+		category = "frames",
+		name = "light switch frame",
+		product = /obj/item/frame/lightswitch,
+		cost = 2,
+	)
+	// todo: frame rework
+	. += create_stack_recipe_datum(
+		category = "frames",
+		name = "apc frame",
+		product = /obj/item/frame/apc,
+		cost = 2,
+	)
+	// todo: frame rework
+	. += create_stack_recipe_datum(
+		category = "frames",
+		name = "mirror frame",
+		product = /obj/item/frame/mirror,
+		cost = 2,
+	)
+	// todo: frame rework
+	. += create_stack_recipe_datum(
+		category = "frames",
+		name = "light fixture frame",
+		product = /obj/item/frame/light,
+		cost = 2,
+	)
+	// todo: frame rework
+	. += create_stack_recipe_datum(
+		category = "frames",
+		name = "floor lamp frame",
+		product = /obj/machinery/light_construct/flamp,
+		cost = 2,
+	)
+	// todo: frame rework
+	. += create_stack_recipe_datum(
+		category = "frames",
+		name = "small light fixture frame",
+		product = /obj/item/frame/light/small,
+		cost = 1,
+	)
+	// todo: frame rework
+	. += create_stack_recipe_datum(
+		category = "frames",
+		name = "fairy light fixture frame",
+		product = /obj/item/frame/light/fairy,
+		cost = 1,
+	)
+	// todo: frame rework
+	. += create_stack_recipe_datum(
+		category = "frames",
+		name = "fire extinguisher cabinet frame",
+		product = /obj/item/frame/extinguisher_cabinet,
+		cost = 2,
+	)
+	// todo: frame rework
+	. += create_stack_recipe_datum(
+		category = "frames",
+		name = "portable turret frame",
+		product = /obj/machinery/porta_turret_construct,
+		cost = 5,
+		time = 2.5 SECONDS,
+	)
+	. += create_stack_recipe_datum(category = "teshari nests", cost = 1, name = "small teshari nest", product = /obj/structure/bed/chair/bay/chair/padded/red/smallnest, exclusitivity = /obj/structure/bed)
+	. += create_stack_recipe_datum(category = "teshari nests", cost = 1, name = "big teshari nest", product = /obj/structure/bed/chair/bay/chair/padded/red/bignest, exclusitivity = /obj/structure/bed)
+	. += create_stack_recipe_datum(
+		name = "metal rod",
+		product = /obj/item/stack/rods,
+		cost = 1,
+		amount = 2,
+	)
+	. += create_stack_recipe_datum(
+		name = "floor tiles",
+		product = /obj/item/stack/tile/floor,
+		cost = 1,
+		amount = 4,
+	)
+	. += create_stack_recipe_datum(
+		name = "roofing tiles",
+		product = /obj/item/stack/tile/roofing,
+		cost = 3,
+		amount = 4,
+	)
+	. += create_stack_recipe_datum(category = "filing cabinets", cost = 4, name = "filing cabinet", product = /obj/structure/filingcabinet, time = 2 SECONDS)
+	. += create_stack_recipe_datum(category = "filing cabinets", cost = 4, name = "tall filing cabinet", product = /obj/structure/filingcabinet/filingcabinet, time = 2 SECONDS)
+	. += create_stack_recipe_datum(category = "filing cabinets", cost = 4, name = "chest drawer", product = /obj/structure/filingcabinet/chestdrawer, time = 2 SECONDS)
 
 /datum/material/steel/hull
 	id = "steel_hull"

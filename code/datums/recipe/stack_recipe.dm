@@ -43,6 +43,8 @@
 	var/cost = 1
 	/// this is a stack product
 	var/result_is_stack = FALSE
+	/// type to check against to make sure there's nothing in the way
+	var/exclusitivity
 	// todo: material constraints
 
 /datum/stack_recipe/New()
@@ -83,6 +85,12 @@
 /datum/stack_recipe/proc/check(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir)
 	if(!no_automatic_sanity_checks)
 		#warn check turf, density, etc
+	if(!isnull(exclusitivity))
+		for(var/atom/movable/AM as anything in where)
+			if(istype(AM, exclusitivity))
+				if(!silent && !isnull(user))
+					user.action_feedback(SPAN_WARNING("[AM] is in the way."))
+				return FALSE
 	return TRUE
 
 /**
