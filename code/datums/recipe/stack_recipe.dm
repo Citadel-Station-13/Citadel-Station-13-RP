@@ -1,6 +1,26 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+/**
+ * why is this here?
+ *
+ * to avoid a constructor for /datum/stack_recipe
+ *
+ * why? because this is easier to regex later if it turns out silicons code design(tm) was terrible
+ */
+/proc/create_stack_recipe_datum(name, product, cost, amount = 1, sanity_checks = TRUE, time = 0, recipe_type = /datum/stack_recipe, category)
+	// check this isn't being misused
+	ASSERT(!ispath(recipe_type, /datum/stack_recipe/material))
+	var/datum/stack_recipe/creating = new recipe_type
+	creating.name = name
+	creating.category = category
+	creating.result_type = product
+	creating.cost = cost
+	creating.result_amount = amount
+	creating.no_automatic_sanity_checks = !sanity_checks
+	creating.time = time
+	return creating
+
 /datum/stack_recipe
 	abstract_type = /datum/stack_recipe
 	/// sort order - lower is first

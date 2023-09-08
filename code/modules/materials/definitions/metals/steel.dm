@@ -11,6 +11,61 @@
 	table_icon_base = "metal"
 	tgui_icon_key = "metal"
 
+/datum/material/steel/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(
+		name = "dark office chair",
+		product = /obj/structure/bed/chair/office/dark,
+		cost = 5,
+		category = "office chairs",
+	)
+	. += create_stack_recipe_datum(
+		name = "light office chair",
+		product = /obj/structure/bed/chair/office/light,
+		cost = 5,
+		category = "office chairs",
+	)
+	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "beige comfy chair", product = /obj/structure/bed/chair/comfy/beige)
+	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "black comfy chair", product = /obj/structure/bed/chair/comfy/black)
+	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "brown comfy chair", product = /obj/structure/bed/chair/comfy/brown)
+	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "lime comfy chair", product = /obj/structure/bed/chair/comfy/lime)
+	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "teal comfy chair", product = /obj/structure/bed/chair/comfy/teal)
+	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "red comfy chair", product = /obj/structure/bed/chair/comfy/red)
+	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "blue comfy chair", product = /obj/structure/bed/chair/comfy/blue)
+	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "purple comfy chair", product = /obj/structure/bed/chair/comfy/purple)
+	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "green comfy chair", product = /obj/structure/bed/chair/comfy/green)
+	. += create_stack_recipe_datum(
+		name = "table frame",
+		product = /obj/structure/table,
+		time = 1 SECONDS,
+		cost = 1,
+	)
+	. += create_stack_recipe_datum(
+		name = "bench frame",
+		product = /obj/structure/table/bench,
+		time = 1 SECONDS,
+		cost = 1,
+	)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "standard airlock assembly", product = /obj/structure/door_assembly)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "command airlock assembly", product = /obj/structure/door_assembly/door_assembly_com)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "security airlock assembly", product = /obj/structure/door_assembly/door_assembly_sec)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "engi-atmos airlock assembly", product = /obj/structure/door_assembly/door_assembly_eat)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "engineering airlock assembly", product = /obj/structure/door_assembly/door_assembly_eng)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "mining airlock assembly", product = /obj/structure/door_assembly/door_assembly_min)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "atmospherics airlock assembly", product = /obj/structure/door_assembly/door_assembly_atmo)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "research airlock assembly", product = /obj/structure/door_assembly/door_assembly_research)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "medical airlock assembly", product = /obj/structure/door_assembly/door_assembly_med)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "maintenance airlock assembly", product = /obj/structure/door_assembly/door_assembly_mai)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "external airlock assembly", product = /obj/structure/door_assembly/door_assembly_ext)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "freezer airlock assembly", product = /obj/structure/door_assembly/door_assembly_fre)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "airtight airlock assembly", product = /obj/structure/door_assembly/door_assembly_hatch)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "maintenance hatch assembly", product = /obj/structure/door_assembly/door_assembly_mhatch)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "high security airlock assembly", product = /obj/structure/door_assembly/door_assembly_highsecurity)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "voidcraft airlock assembly (horizontal)", product = /obj/structure/door_assembly/door_assembly_voidcraft)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "voidcraft airlock assembly (vertical)", product = /obj/structure/door_assembly/door_assembly_voidcraft/vertical)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "emergency shutter", product = /obj/structure/firedoor_assembly)
+	. += create_stack_recipe_datum(category = "airlock assemblies", cost = 4, name = "multi-tile airlock assembly", product = /obj/structure/door_assembly/multi_tile)
+
 /datum/material/steel/hull
 	id = "steel_hull"
 	name = MAT_STEELHULL
