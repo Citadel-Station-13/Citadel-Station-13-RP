@@ -175,14 +175,6 @@
 	recipes += new/datum/stack_recipe("snowman head", /obj/item/clothing/head/snowman, 5, time = 5)
 	recipes += new/datum/stack_recipe("snowman suit", /obj/item/clothing/suit/snowman, 10, time = 10)
 
-/datum/material/snowbrick/generate_recipes()
-	recipes = list()
-	recipes += new/datum/stack_recipe("[display_name] stool", /obj/item/stool, one_per_turf = 1, on_floor = 1, supplied_material = "[name]")
-	recipes += new/datum/stack_recipe("[display_name] chair", /obj/structure/bed/chair, one_per_turf = 1, on_floor = 1, supplied_material = "[name]")
-	recipes += new/datum/stack_recipe("[display_name] bed", /obj/structure/bed, 2, one_per_turf = 1, on_floor = 1, supplied_material = "[name]")
-	recipes += new/datum/stack_recipe("[display_name] double bed", /obj/structure/bed/double, 4, one_per_turf = 1, on_floor = 1, supplied_material = "[name]")
-	recipes += new/datum/stack_recipe("[display_name] ashtray", /obj/item/material/ashtray, 2, one_per_turf = 1, on_floor = 1, supplied_material = "[name]")
-
 /datum/material/wood/sif/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("alien wood floor tile", /obj/item/stack/tile/wood/sif, 1, 4, 20, pass_stack_color = TRUE)
@@ -247,30 +239,6 @@
 	recipes += new/datum/stack_recipe("crude [display_name] bandage", /obj/item/stack/medical/crude_pack, 1, time = 2 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] membrane", /obj/effect/alien/resin/membrane, 1, time = 2 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] node", /obj/effect/alien/weeds/node, 1, time = 4 SECONDS)
-
-/datum/material/silver/generate_recipes()
-	..()
-	recipes += new/datum/stack_recipe_list("statues", list( \
-		new/datum/stack_recipe("head of security statue", /obj/structure/statue/silver/hos, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("medical doctor statue", /obj/structure/statue/silver/md, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("janitor statue", /obj/structure/statue/silver/janitor, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("security statue", /obj/structure/statue/silver/sec, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("secborg statue", /obj/structure/statue/silver/secborg, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("medborg statue", /obj/structure/statue/silver/medborg, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		))
-	recipes += new/datum/stack_recipe("silver floor tile", /obj/item/stack/tile/silver, 1, 4, 20)
-
-/datum/material/gold/generate_recipes()
-	..()
-	recipes += new/datum/stack_recipe("golden crown", /obj/item/clothing/head/crown, 10, time = 30)
-	recipes += new/datum/stack_recipe_list("statues", list( \
-		new/datum/stack_recipe("head of security statue", /obj/structure/statue/gold/hos, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("head of personnel statue", /obj/structure/statue/gold/hop, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("chief medical officer statue", /obj/structure/statue/gold/cmo, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("chief engineer statue", /obj/structure/statue/gold/ce, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("research director statue", /obj/structure/statue/gold/rd, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		))
-	recipes += new/datum/stack_recipe("gold floor tile", /obj/item/stack/tile/gold, 1, 4, 20)
 
 /datum/material/leather/generate_recipes()
 	..()
