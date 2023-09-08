@@ -263,7 +263,7 @@
 	cost = 0
 	custom_only = FALSE
 	var_changes = list(
-		"breath_type" = /datum/gas/nitrogen
+		"breath_type" = GAS_ID_NITROGEN
 	)
 
 /datum/trait/neutral/cyberpsycho

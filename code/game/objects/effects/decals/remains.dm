@@ -61,6 +61,3 @@
 	if (istype(F))
 		new /obj/effect/debris/cleanable/ash(F)
 	qdel(src)
-
-/obj/effect/decal/remains/robot/attack_hand(mob/user, list/params)
-	return

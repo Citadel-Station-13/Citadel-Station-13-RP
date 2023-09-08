@@ -1159,7 +1159,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/ladder,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "adJ" = (
@@ -21390,9 +21390,7 @@
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "iio" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
+/obj/machinery/door/firedoor/multi_tile,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -23341,7 +23339,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass/exploration{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/steel,
@@ -50101,7 +50099,7 @@ aqG
 aqG
 aOa
 asf
-afq
+bWN
 bWN
 aaA
 aaA
@@ -54200,7 +54198,7 @@ aTG
 aTG
 eod
 eod
-eod
+lze
 fax
 cYF
 afq

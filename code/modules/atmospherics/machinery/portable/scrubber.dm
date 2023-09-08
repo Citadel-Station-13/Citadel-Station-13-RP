@@ -13,9 +13,9 @@
 	volume = 1000
 
 	/// scrubbing ids
-	var/list/scrubbing_ids
+	var/list/scrubbing_ids = list()
 	/// scrubbing groups
-	var/scrubbing_groups
+	var/scrubbing_groups = NONE
 	/// molar rate current
 	var/transfer_current = 0
 	/// minimum moles to scrub per tick (if enough power) even if flow is not enough
