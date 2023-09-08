@@ -6,6 +6,8 @@
 	desc = "An industrial grinder used to automate the process of slime core extraction.  It can also recycle biomatter."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "processor"
+	base_icon_state = "processor"
+	panel_icon_state = "processor-panel"
 	density = TRUE
 	anchored = TRUE
 	/// Autointaking
@@ -24,12 +26,6 @@
 	if(let_slimes_pass)
 		. += SPAN_NOTICE("It looks slick enough to let slimes glide over it.")
 	. += SPAN_BOLDNOTICE("The automatic intake switch is in the [auto_mode? "On" : "Off"] position.")
-
-/obj/machinery/processor/update_overlays()
-	. = ..()
-	cut_overlays()
-	if(panel_open)
-		add_overlay("[base_icon_state]-panel")
 
 /obj/machinery/processor/attack_hand(mob/user, list/params)
 	if(processing)

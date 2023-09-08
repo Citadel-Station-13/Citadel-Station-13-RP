@@ -650,6 +650,7 @@ var/global/list/xenobio_metal_materials_normal = list(
 var/global/list/xenobio_metal_materials_adv = list(
 										/obj/item/stack/material/glass/reinforced = 15,
 										/obj/item/stack/material/marble = 10,
+										/obj/item/stack/material/brass = 10,
 										/obj/item/stack/material/plasteel = 10,
 										/obj/item/stack/material/glass/phoronglass = 10,
 										/obj/item/stack/material/wood/sif = 5,
@@ -668,13 +669,16 @@ var/global/list/xenobio_metal_materials_adv = list(
 var/global/list/xenobio_metal_materials_weird = list(
 										/obj/item/stack/material/cloth = 10,
 										/obj/item/stack/material/leather = 5,
+										/obj/item/stack/material/bone = 10,
+										/obj/item/stack/material/wax = 10,
 //										/obj/item/stack/material/fiber = 5,
 //										/obj/item/stack/material/fur/wool = 7,
 										/obj/item/stack/material/snow = 3,
 										/obj/item/stack/material/snowbrick = 3,
 //										/obj/item/stack/material/flint = 3,
 //										/obj/item/stack/material/stick = 3,
-										/obj/item/stack/material/chitin = 1)
+										/obj/item/stack/material/chitin = 1,
+										/obj/item/stack/material/resin = 1)
 
 var/global/list/xenobio_silver_materials_basic = list(
 										/obj/item/stack/material/silver = 10,
@@ -694,7 +698,8 @@ var/global/list/xenobio_silver_materials_adv = list(
 var/global/list/xenobio_silver_materials_special = list(
 										/obj/item/stack/material/valhollide = 1,
 										/obj/item/stack/material/morphium = 1,
-										/obj/item/stack/material/supermatter = 1)
+										/obj/item/stack/material/bananium = 2, //cit addition: :o)
+										/obj/item/stack/material/silencium = 2)
 
 //TODO: add Cit-RP specific mobs, maybe? also, maybe some mobs could be ported?
 var/global/list/xenobio_gold_mobs_hostile = list(
