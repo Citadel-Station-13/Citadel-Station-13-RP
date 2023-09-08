@@ -35,44 +35,21 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_The_Xenochimera"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
-	//rarity_value = 4
 
-	breath_type = GAS_ID_OXYGEN
-	poison_type = GAS_ID_PHORON
-	exhale_type = GAS_ID_CARBON_DIOXIDE
-
-	hazard_high_pressure  = HAZARD_HIGH_PRESSURE
-	warning_high_pressure = WARNING_HIGH_PRESSURE
-	warning_low_pressure  = WARNING_LOW_PRESSURE
 	hazard_low_pressure = -1 //Prevents them from dying normally in space. Special code handled below.
-	safe_pressure = ONE_ATMOSPHERE
 
 	cold_level_1 = -1 // All cold debuffs are handled below in handle_environment_special
 	cold_level_2 = -1
 	cold_level_3 = -1
 
 	heal_rate = 0.5
-	infect_wounds = 1
+	infect_wounds = TRUE
 
 	flesh_color = "#AFA59E"
 	base_color 	= "#333333"
 	blood_color = "#14AD8B"
 
 	reagent_tag = IS_CHIMERA
-
-	cold_discomfort_level = 285
-	cold_discomfort_strings = list(
-		"You feel chilly.",
-		"You shiver suddenly.",
-		"Your chilly flesh stands out in goosebumps.",
-	)
-
-	heat_discomfort_level = 315
-	heat_discomfort_strings = list(
-		"You feel sweat drip down your neck.",
-		"You feel uncomfortably warm.",
-		"Your skin prickles in the heat.",
-	)
 
 	valid_transform_species = list(
 		SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_TAJ, SPECIES_SKRELL,
@@ -146,6 +123,7 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 	)
+
 	var/has_feral_abilities = FALSE
 
 /datum/species/shapeshifter/xenochimera/handle_environment_special(mob/living/carbon/human/H)
