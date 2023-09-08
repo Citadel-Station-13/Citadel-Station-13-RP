@@ -3178,6 +3178,7 @@
 #include "code\modules\materials\definitions\organic\leather.dm"
 #include "code\modules\materials\definitions\organic\resin.dm"
 #include "code\modules\materials\definitions\organic\wood.dm"
+#include "code\modules\materials\definitions\special\clown_planet.dm"
 #include "code\modules\materials\definitions\special\cult.dm"
 #include "code\modules\materials\definitions\special\morphium.dm"
 #include "code\modules\materials\definitions\special\phoron.dm"

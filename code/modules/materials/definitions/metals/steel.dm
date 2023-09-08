@@ -32,7 +32,7 @@
 	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "teal comfy chair", product = /obj/structure/bed/chair/comfy/teal)
 	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "red comfy chair", product = /obj/structure/bed/chair/comfy/red)
 	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "blue comfy chair", product = /obj/structure/bed/chair/comfy/blue)
-	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "purple comfy chair", product = /obj/structure/bed/chair/comfy/purple)
+	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "purple comfy chair", product = /obj/structure/bed/chair/comfy/purp)
 	. += create_stack_recipe_datum(category = "comfy chairs", cost = 2, name = "green comfy chair", product = /obj/structure/bed/chair/comfy/green)
 	. += create_stack_recipe_datum(
 		name = "table frame",

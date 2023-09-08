@@ -17,6 +17,10 @@
 	table_icon_base = "metal"
 	tgui_icon_key = "durasteel"
 
+/datum/material/durasteel/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(name = "durasteel floor tiles", product = /obj/item/stack/tile/durasteel, amount = 4)
+
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
 	id = "durasteel_hull"
 	name = MAT_DURASTEELHULL

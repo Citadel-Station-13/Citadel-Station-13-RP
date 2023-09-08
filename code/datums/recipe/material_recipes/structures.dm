@@ -12,7 +12,7 @@
 
 /datum/stack_recipe/material/structure/door/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
 	for(var/i in 1 to amount)
-		new result_type(where, stack.material)
+		new /obj/structure/simple_door(where, stack.material)
 
 /datum/stack_recipe/material/structure/barricade
 	name = "barricade"
@@ -21,7 +21,7 @@
 
 /datum/stack_recipe/material/structure/barricade/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
 	for(var/i in 1 to amount)
-		new result_type(where, stack.material)
+		new /obj/structure/barricade(where, stack.material)
 
 /datum/stack_recipe/material/structure/girder
 	name = "girder"
@@ -30,7 +30,7 @@
 
 /datum/stack_recipe/material/structure/girder/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
 	for(var/i in 1 to amount)
-		new result_type(where, stack.material)
+		new /obj/structure/girder(where, stack.material)
 
 /datum/stack_recipe/material/structure/low_wall
 	name = "low walls"
@@ -39,6 +39,4 @@
 
 /datum/stack_recipe/material/structure/low_wall/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
 	for(var/i in 1 to amount)
-		new result_type(where, stack.material)
-
-#warn girder, lowwall, barricade, door
+		new /obj/structure/wall_frame(where, stack.material)

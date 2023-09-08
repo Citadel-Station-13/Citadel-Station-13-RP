@@ -3,31 +3,6 @@
 		generate_recipes()
 	return recipes
 
-/datum/material/proc/generate_recipes()
-	recipes = list()
-	. = recipes
-
-	// If is_brittle() returns true, these are only good for a single strike.
-	recipes += new/datum/stack_recipe("[display_name] baseball bat", /obj/item/material/twohanded/baseballbat, 10, time = 20, one_per_turf = 0, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] ashtray", /obj/item/material/ashtray, 2, one_per_turf = 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] spoon", /obj/item/material/kitchen/utensil/spoon/plastic, 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] armor plate", /obj/item/material/armor_plating, 1, time = 20, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] grave marker", /obj/item/material/gravemarker, 5, time = 50, supplied_material = "[name]", pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] ring", /obj/item/clothing/gloves/ring/material, 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] bracelet", /obj/item/clothing/accessory/bracelet/material, 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-
-	if(integrity>=50)
-		recipes += new/datum/stack_recipe("[display_name] stool", /obj/item/stool, one_per_turf = 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-		recipes += new/datum/stack_recipe("[display_name] chair", /obj/structure/bed/chair, one_per_turf = 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-		recipes += new/datum/stack_recipe("[display_name] bed", /obj/structure/bed, 2, one_per_turf = 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-		recipes += new/datum/stack_recipe("[display_name] double bed", /obj/structure/bed/double, 4, one_per_turf = 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-
-	if(hardness>50)
-		recipes += new/datum/stack_recipe("[display_name] fork", /obj/item/material/kitchen/utensil/fork/plastic, 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-		recipes += new/datum/stack_recipe("[display_name] knife", /obj/item/material/knife/plastic, 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-		recipes += new/datum/stack_recipe("[display_name] blade", /obj/item/material/butterflyblade, 6, time = 20, one_per_turf = 0, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-		recipes += new/datum/stack_recipe("[display_name] hammer Head", /obj/item/material/hammer_head, 10, time = 20, one_per_turf = 0, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-
 /datum/material/steel/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("cannon frame", /obj/item/cannonframe, 10, time = 15, one_per_turf = 0, on_floor = 0)
@@ -296,57 +271,6 @@
 		new/datum/stack_recipe("research director statue", /obj/structure/statue/gold/rd, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		))
 	recipes += new/datum/stack_recipe("gold floor tile", /obj/item/stack/tile/gold, 1, 4, 20)
-
-/datum/material/phoron/generate_recipes()
-	..()
-	recipes += new/datum/stack_recipe_list("statues", list( \
-		new/datum/stack_recipe("scientist statue", /obj/structure/statue/phoron/scientist, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("xenomorph statue", /obj/structure/statue/phoron/xeno, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		))
-	recipes += new/datum/stack_recipe("phoron floor tile", /obj/item/stack/tile/phoron, 1, 4, 20)
-
-/datum/material/uranium/generate_recipes()
-	..()
-	recipes += new/datum/stack_recipe_list("statues", list( \
-		new/datum/stack_recipe("nuke statue", /obj/structure/statue/uranium/nuke, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("engineer statue", /obj/structure/statue/uranium/eng, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		))
-	recipes += new/datum/stack_recipe("uranium floor tile", /obj/item/stack/tile/uranium, 1, 4, 20)
-
-/datum/material/diamond/generate_recipes()
-	..()
-	recipes += new/datum/stack_recipe_list("statues", list( \
-		new/datum/stack_recipe("captain statue", /obj/structure/statue/diamond/captain, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("ai hologram statue", /obj/structure/statue/diamond/ai1, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("ai core statue", /obj/structure/statue/diamond/ai2, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		))
-	recipes += new/datum/stack_recipe("diamond floor tile", /obj/item/stack/tile/diamond, 1, 4, 20)
-
-/datum/material/sandstone/generate_recipes()
-	..()
-	recipes += new/datum/stack_recipe_list("statues", list( \
-		new/datum/stack_recipe("assistant statue", /obj/structure/statue/sandstone/assistant, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		))
-
-/datum/material/bananium/generate_recipes()
-	..()
-	recipes += new/datum/stack_recipe_list("statues", list( \
-		new/datum/stack_recipe("bananium statue", /obj/structure/statue/bananium, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("clown statue", /obj/structure/statue/bananium/clown, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		))
-	recipes += new/datum/stack_recipe("bananium floor tile", /obj/item/stack/tile/bananium, 1, 4, 20)
-
-/datum/material/silencium/generate_recipes()
-	..()
-	recipes += new/datum/stack_recipe("silencium floor tile", /obj/item/stack/tile/silencium, 1, 4, 20)
-
-/datum/material/durasteel/generate_recipes()
-	..()
-	recipes += new/datum/stack_recipe("durasteel floor tile", /obj/item/stack/tile/durasteel, 1, 4, 20)
-
-/datum/material/brass/generate_recipes()
-	..()
-	recipes += new/datum/stack_recipe("brass floor tile", /obj/item/stack/tile/brass, 1, 4, 20)
 
 /datum/material/leather/generate_recipes()
 	..()

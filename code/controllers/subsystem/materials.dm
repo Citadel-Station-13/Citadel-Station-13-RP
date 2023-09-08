@@ -7,6 +7,8 @@ SUBSYSTEM_DEF(materials)
 	var/list/material_lookup
 	/// legacy material lookup *vomit
 	var/list/legacy_material_lookup
+	/// material recipes
+	var/list/datum/stack_recipe/material/material_stack_recipes
 
 	// todo: Recover() should keep procedural materials
 	// however, i can't be assed to write Recover() until we do procedural materials
@@ -16,10 +18,12 @@ SUBSYSTEM_DEF(materials)
 
 /datum/controller/subsystem/materials/Initialize()
 	initialize_materials()
+	initialize_material_recipes()
 	return ..()
 
 /datum/controller/subsystem/materials/Recover()
 	initialize_materials()
+	initialize_material_recipes()
 	return ..()
 
 /datum/controller/subsystem/materials/proc/initialize_materials()
@@ -39,6 +43,14 @@ SUBSYSTEM_DEF(materials)
 		// why are we doing initial() here? because the unit test checks for initial.
 		material_lookup[initial(mat_ref.id)] = mat_ref
 		legacy_material_lookup[lowertext(mat_ref.name)] = mat_ref
+
+/datum/controller/subsystem/materials/proc/initialize_material_recipes()
+	material_stack_recipes = list()
+	for(var/path in subtypesof(/datum/stack_recipe/material))
+		var/datum/stack_recipe/material/this = path
+		if(initial(this.abstract_type) == path)
+			continue
+		material_stack_recipes += new path
 
 /**
  * fetches material instance
@@ -80,6 +92,8 @@ SUBSYSTEM_DEF(materials)
  * Use SSmaterials.get_material()!
  */
 /proc/get_material_by_name(name)
+	if(istype(name, /datum/material))
+		return name
 	return SSmaterials.legacy_material_lookup[name]
 
 /**

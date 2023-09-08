@@ -8,7 +8,7 @@
  *
  * why? because this is easier to regex later if it turns out silicons code design(tm) was terrible
  */
-/proc/create_stack_recipe_datum(name, product, cost, amount = 1, sanity_checks = TRUE, time = 0, recipe_type = /datum/stack_recipe, category)
+/proc/create_stack_recipe_datum(name, product, cost, amount = 1, sanity_checks = TRUE, time = 0, recipe_type = /datum/stack_recipe, category, exclusitivity)
 	// check this isn't being misused
 	ASSERT(!ispath(recipe_type, /datum/stack_recipe/material))
 	var/datum/stack_recipe/creating = new recipe_type
@@ -20,6 +20,7 @@
 	creating.result_is_stack = ispath(product, /obj/item/stack)
 	creating.no_automatic_sanity_checks = !sanity_checks
 	creating.time = time
+	creating.exclusitivity = exclusitivity
 	return creating
 
 /datum/stack_recipe

@@ -17,3 +17,7 @@
 	sheet_plural_name = "bricks"
 	table_icon_base = "stone"
 	tgui_icon_key = "sandstone"
+
+/datum/material/sandstone/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(category = "statues", name = "assistant statue", product = /obj/structure/statue/sandstone/assistant, amount = 10)
