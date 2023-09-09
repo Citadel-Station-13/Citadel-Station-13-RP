@@ -52,7 +52,6 @@
 	//? global modifiers
 	var/carry_strength_add
 	var/carry_factor_mult
-	var/carry_exponent_pow
 
 /**
  * subtype for hardcoded physiology modifiers

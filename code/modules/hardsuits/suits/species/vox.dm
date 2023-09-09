@@ -7,7 +7,6 @@
 	atom_flags = PHORONGUARD
 	clothing_flags = CLOTHING_THICK_MATERIAL
 	siemens_coefficient = 0.2
-	offline_slowdown = 5
 	allowed = list(
 		/obj/item/gun,
 		/obj/item/flashlight,

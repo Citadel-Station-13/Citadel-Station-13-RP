@@ -17,8 +17,8 @@
 	icon_state = "merc_rig"
 	suit_type = "crimson hardsuit"
 	armor_type = /datum/armor/hardsuit/merc
-	slowdown = 1
-	offline_slowdown = 3
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY
+	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY * 2
 	offline_vision_restriction = 1
 	siemens_coefficient = 0.3
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/eva

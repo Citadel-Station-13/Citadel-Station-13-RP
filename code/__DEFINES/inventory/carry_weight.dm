@@ -1,7 +1,7 @@
 //? Despite this being carry_weight.dm, this contains defines for:
-//? carry strength - how much someone can carry
-//? weight - how much stuff weighs
-//? encumberence - how hard it is to move with an item
+//? carry strength - how much someone can carry or move
+//? weight - how much stuff weighs, recursive
+//? encumberence - how hard it is to move with an item, non-recursive
 
 //? Carry strength - flat strength. you can carry up to this with no penalty.
 
@@ -48,8 +48,12 @@
 //* Clothing
 
 #define ITEM_ENCUMBRANCE_SHOES_CUFFED 50
-#define ITEM_ENCUMBRANCE_SHOES_MAGBOOTS 10
-#define ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE 20
+/// magboots off
+#define ITEM_ENCUMBRANCE_SHOES_MAGBOOTS 5
+/// normal magboots on
+#define ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE 10
+/// ce magboots on
+#define ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE_ADVANCED 5
 #define ITEM_ENCUMBRANCE_SHOES_CLOWN 10
 #define ITEM_ENCUMBRANCE_SHOES_FINS 10
 #define ITEM_ENCUMBRANCE_SHOES_GALOSHES 10

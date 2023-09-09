@@ -4,8 +4,8 @@
 	icon_state = "nanomachine_rig"
 	armor_type = /datum/armor/hardsuit/protean
 	siemens_coefficient = 0.5
-	slowdown = 0
-	offline_slowdown = 0
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT
+	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT * 2
 	seal_delay = 1
 	var/mob/living/carbon/human/myprotean
 	initial_modules = list(

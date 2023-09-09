@@ -43,8 +43,8 @@
 	//? Traits / Physiology
 	/// Intrinsic datum traits to apply to the mob
 	var/list/mob_traits
-	//  todo: list of physiologies to add. list, incase we want to have separate ones for separate biology flags.
-	#warn *scream
+	/// physiology modifier to add - path or instance
+	var/datum/physiology_modifier/mob_physiology_modifier
 
 	//? Additional info
 	/// what you see on tooltip/examine
@@ -528,6 +528,8 @@
 
 	H.maxHealth = total_health
 
+	H.add_physiology_modifier(mob_physiology_modifier)
+
 	add_inherent_verbs(H)
 
 	for(var/name in traits)
@@ -553,6 +555,8 @@
 	remove_inherent_spells(H)
 	remove_inherent_verbs(H)
 	H.holder_type = null
+
+	H.remove_physiology_modifier(mob_physiology_modifier)
 
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]

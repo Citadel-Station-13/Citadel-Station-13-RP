@@ -14,9 +14,9 @@
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/cell)
 	armor_type = /datum/armor/hardsuit/light
 	emp_protection = 10
-	slowdown = 0
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT
+	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT * 2
 	clothing_flags = CLOTHING_THICK_MATERIAL
-	offline_slowdown = 0
 	offline_vision_restriction = 0
 
 	chest_type = /obj/item/clothing/suit/space/hardsuit/light
@@ -88,7 +88,6 @@
 	desc = "A unique suit of nano-enhanced armor designed for covert operations."
 	icon_state = "ninja_rig"
 	emp_protection = 40 //change this to 30 if too high.
-	slowdown = 0
 
 	chest_type = /obj/item/clothing/suit/space/hardsuit/light/ninja
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/light/ninja
