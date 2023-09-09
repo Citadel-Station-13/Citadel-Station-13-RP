@@ -8,11 +8,12 @@
 	density = 0
 	depth_projected = FALSE
 
-/obj/structure/table/bench/update_desc()
-	if(material)
-		name = "[material.display_name] bench"
+/obj/structure/table/bench/update_name(updates)
+	if(!isnull(material_base))
+		name = "[material_base.display_name] bench"
 	else
-		name = "bench frame"
+		name = "bench frmae"
+	return ..()
 
 /obj/structure/table/bench/CanAllowThrough(atom/movable/mover)
 	return 1

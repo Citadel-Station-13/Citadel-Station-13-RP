@@ -20,9 +20,8 @@
 	return
 
 /obj/structure/table/rack/update_icon()
-	if(material)
-		color = material.icon_colour
-	return
+	if(!isnull(material_base))
+		color = material_base.icon_colour
 
 /obj/structure/table/rack/holorack/dismantle(obj/item/tool/wrench/W, mob/user)
 	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")

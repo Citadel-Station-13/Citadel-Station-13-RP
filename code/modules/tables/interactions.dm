@@ -62,11 +62,12 @@
 				return
 			if (G.state < 2)
 				if(user.a_intent == INTENT_HARM)
-					if (prob(15))	M.afflict_paralyze(20 * 5)
+					if (prob(15))
+						M.afflict_paralyze(20 * 5)
 					M.apply_damage(8,def_zone = BP_HEAD)
 					visible_message("<span class='danger'>[G.assailant] slams [G.affecting]'s face against \the [src]!</span>")
-					if(material)
-						playsound(loc, material.tableslam_noise, 50, 1)
+					if(!isnull(material_base))
+						playsound(loc, material_base.tableslam_noise, 50, 1)
 					else
 						playsound(loc, 'sound/weapons/tablehit1.ogg', 50, 1)
 					var/list/L = break_to_parts()
@@ -103,25 +104,9 @@
 		break_to_parts()
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-	if(can_plate && !material)
+	if(can_plate && isnull(material_base))
 		to_chat(user, "<span class='warning'>There's nothing to put \the [W] on! Try adding plating to \the [src] first.</span>")
 		return CLICKCHAIN_DO_NOT_PROPAGATE
-
-/*
-	if(user.a_intent != INTENT_HARM && !(I.clothing_flags & ITEM_ABSTRACT))
-		if(user.transferItemToLoc(I, drop_location(), silent = FALSE))
-			var/list/click_params = params2list(params)
-			//Center the icon where the user clicked.
-			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
-				return
-			//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
-			I.pixel_x = clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
-			I.pixel_y = clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
-			AfterPutItemOnTable(I, user)
-			return TRUE
-	else
-		return ..()
-*/
 
 	if(item_place && (user.a_intent != INTENT_HARM))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE

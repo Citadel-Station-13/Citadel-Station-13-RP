@@ -4,42 +4,32 @@
 /obj/structure/table/standard
 	icon_state = "plain_preview"
 	color = "#EEEEEE"
-	material_parts = list(
-		"base" = /datum/material/plastic,
-		"reinf"= null,
-	)
+	material_base = /datum/material/plastic
+	material_reinforcing = null
 
 /obj/structure/table/steel
 	icon_state = "plain_preview"
 	color = "#666666"
-	material_parts = list(
-		"base" = /datum/material/steel,
-		"reinf"= null,
-	)
+	material_base = /datum/material/steel
+	material_reinforcing = null
 
 /obj/structure/table/marble
 	icon_state = "stone_preview"
 	color = "#CCCCCC"
-	material_parts = list(
-		"base" = /datum/material/sandstone/marble,
-		"reinf"= null,
-	)
+	material_base = /datum/material/sandstone/marble
+	material_reinforcing = null
 
 /obj/structure/table/reinforced
 	icon_state = "reinf_preview"
 	color = "#EEEEEE"
-	material_parts = list(
-		"base" = /datum/material/plastic,
-		"reinf"= /datum/material/steel,
-	)
+	material_base = /datum/material/plastic
+	material_reinforcing = /datum/material/steel
 
 /obj/structure/table/steel_reinforced
 	icon_state = "reinf_preview"
 	color = "#666666"
-	material_parts = list(
-		"base" = /datum/material/steel,
-		"reinf"= /datum/material/steel,
-	)
+	material_base = /datum/material/steel
+	material_reinforcing = /datum/material/steel
 
 /obj/structure/table/wooden_reinforced
 	icon_state = "reinf_preview"
@@ -48,10 +38,8 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_parts = list(
-		"base" = /datum/material/wood,
-		"reinf"= /datum/material/steel,
-	)
+	material_base = /datum/material/wood
+	material_reinforcing = /datum/material/steel
 
 /obj/structure/table/woodentable
 	icon_state = "plain_preview"
@@ -60,10 +48,8 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_parts = list(
-		"base" = /datum/material/wood,
-		"reinf"= null,
-	)
+	material_base = /datum/material/wood
+	material_reinforcing = null
 
 /obj/structure/table/sifwoodentable
 	icon_state = "plain_preview"
@@ -72,10 +58,8 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_parts = list(
-		"base" = /datum/material/wood/sif,
-		"reinf"= null,
-	)
+	material_base = /datum/material/wood/sif
+	material_reinforcing = null
 
 /obj/structure/table/sifwooden_reinforced
 	icon_state = "reinf_preview"
@@ -84,10 +68,8 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_parts = list(
-		"base" = /datum/material/wood/sif,
-		"reinf"= /datum/material/steel,
-	)
+	material_base = /datum/material/wood/sif
+	material_reinforcing = /datum/material/steel
 
 /obj/structure/table/hardwoodtable
 	icon_state = "stone_preview"
@@ -96,18 +78,14 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_parts = list(
-		"base" = /datum/material/wood/hardwood,
-		"reinf"= null,
-	)
+	material_base = /datum/material/wood/hardwood
+	material_reinforcing = null
 
 /obj/structure/table/gamblingtable
 	icon_state = "gamble_preview"
 
-	material_parts = list(
-		"base" = /datum/material/wood,
-		"reinf"= null,
-	)
+	material_base = /datum/material/wood
+	material_reinforcing = null
 	carpeted = TRUE
 
 /obj/structure/table/glass
@@ -118,41 +96,29 @@
 	smoothing_groups = (SMOOTH_GROUP_GLASS_TABLES)
 	canSmoothWith = (SMOOTH_GROUP_GLASS_TABLES)
 
-	material_parts = list(
-		"base" = /datum/material/glass,
-		"reinf"= null,
-	)
-
-/obj/structure/table/glass/Initialize(mapload)
-	material = SSmaterials.resolve_material(/datum/material/glass)
-	return ..()
+	material_base = /datum/material/glass
+	material_reinforcing = null
 
 /obj/structure/table/borosilicate
 	icon_state = "plain_preview"
 	color = "#4D3EAC"
 	alpha = 77
 
-	material_parts = list(
-		"base" = /datum/material/glass/phoron,
-		"reinf"= null,
-	)
+	material_base = /datum/material/glass/phoron
+	material_reinforcing = null
 
 /obj/structure/table/holotable
 	icon_state = "holo_preview"
 	color = "#EEEEEE"
 
-	material_parts = list(
-		"base" = /datum/material/plastic/holographic,
-		"reinf"= null,
-	)
+	material_base = /datum/material/plastic/holographic
+	material_reinforcing = null
 
 /obj/structure/table/woodentable/holotable
 	icon_state = "holo_preview"
 
-	material_parts = list(
-		"base" = /datum/material/wood/holographic,
-		"reinf"= null,
-	)
+	material_base = /datum/material/wood/holographic
+	material_reinforcing = null
 
 /obj/structure/table/alien
 	name = "alien table"
@@ -161,10 +127,8 @@
 	can_reinforce = FALSE
 	can_plate = FALSE
 
-	material_parts = list(
-		"base" = /datum/material/alienalloy/alium,
-		"reinf"= null,
-	)
+	material_base = /datum/material/alienalloy/alium
+	material_reinforcing = null
 
 /obj/structure/table/alien/Initialize(mapload)
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
@@ -179,19 +143,15 @@
 	icon_state = "plain_preview"
 	color = "#d6c100"
 
-	material_parts = list(
-		"base" = /datum/material/bananium,
-		"reinf"= null,
-	)
+	material_base = /datum/material/bananium
+	material_reinforcing = null
 
 /obj/structure/table/bananium_reinforced
 	icon_state = "reinf_preview"
 	color = "#d6c100"
 
-	material_parts = list(
-		"base" = /datum/material/bananium,
-		"reinf"= /datum/material/steel,
-	)
+	material_base = /datum/material/bananium
+	material_reinforcing = /datum/material/steel
 
 /obj/structure/table/sandstone
 	icon_state = "stone_preview"
@@ -200,10 +160,8 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_parts = list(
-		"base" = /datum/material/sandstone,
-		"reinf"= null,
-	)
+	material_base = /datum/material/sandstone
+	material_reinforcing = null
 
 /obj/structure/table/bone
 	icon_state = "stone_preview"
@@ -212,56 +170,44 @@
 	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
-	material_parts = list(
-		"base" = /datum/material/bone,
-		"reinf"= null,
-	)
+	material_base = /datum/material/bone
+	material_reinforcing = null
 
 //BENCH PRESETS
 /obj/structure/table/bench/standard
 	icon_state = "plain_preview"
 	color = "#EEEEEE"
 
-	material_parts = list(
-		"base" = /datum/material/plastic,
-		"reinf"= null,
-	)
+	material_base = /datum/material/plastic
+	material_reinforcing = null
 
 /obj/structure/table/bench/steel
 	icon_state = "plain_preview"
 	color = "#666666"
 
-	material_parts = list(
-		"base" = /datum/material/steel,
-		"reinf"= null,
-	)
+	material_base = /datum/material/steel
+	material_reinforcing = null
 
 /obj/structure/table/bench/marble
 	icon_state = "stone_preview"
 	color = "#CCCCCC"
 
-	material_parts = list(
-		"base" = /datum/material/sandstone/marble,
-		"reinf"= null,
-	)
+	material_base = /datum/material/sandstone/marble
+	material_reinforcing = null
 
 /obj/structure/table/bench/wooden
 	icon_state = "plain_preview"
 	color = "#824B28"
 
-	material_parts = list(
-		"base" = /datum/material/wood,
-		"reinf"= null,
-	)
+	material_base = /datum/material/wood
+	material_reinforcing = null
 
 /obj/structure/table/bench/sifwooden
 	icon_state = "plain_preview"
 	color = "#824B28"
 
-	material_parts = list(
-		"base" = /datum/material/wood/sif,
-		"reinf"= null,
-	)
+	material_base = /datum/material/wood/sif
+	material_reinforcing = null
 
 /obj/structure/table/bench/sifwooden/padded
 	icon_state = "padded_preview"
@@ -270,10 +216,8 @@
 /obj/structure/table/bench/padded
 	icon_state = "padded_preview"
 
-	material_parts = list(
-		"base" = /datum/material/steel,
-		"reinf"= null,
-	)
+	material_base = /datum/material/steel
+	material_reinforcing = null
 	carpeted = TRUE
 
 /obj/structure/table/bench/glass
@@ -281,25 +225,19 @@
 	color = "#00E1FF"
 	alpha = 77 // 0.3 * 255
 
-	material_parts = list(
-		"base" = /datum/material/glass,
-		"reinf"= null,
-	)
+	material_base = /datum/material/glass
+	material_reinforcing = null
 
 /obj/structure/table/bench/sandstone
 	icon_state = "stone_preview"
 	color = "#D9C179"
 
-	material_parts = list(
-		"base" = /datum/material/sandstone,
-		"reinf"= null,
-	)
+	material_base = /datum/material/sandstone
+	material_reinforcing = null
 
 /obj/structure/table/bench/bone
 	icon_state = "stone_preview"
 	color = "#e6dfc8"
 
-	material_parts = list(
-		"base" = /datum/material/bone,
-		"reinf"= null,
-	)
+	material_base = /datum/material/bone
+	material_reinforcing = null
