@@ -115,9 +115,9 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 
 	//Frozen airlock vars
 	var/frozen = FALSE
-	var/deiceTools[0] //OH HO HO THIS IS BAD
 	var/frozen_check_next
 	var/frozen_temperature  = T0C - 50 /// Default is -50c
+	var/list/deice_tools = list()
 
 /obj/machinery/door/airlock/proc/set_airlock_overlays(state)
 	var/icon/color_overlay
@@ -918,9 +918,9 @@ About the new airlock wires panel:
 
 		//Most items will be checked in this for loop using the list in New().
 		//Code for objects with specific checks (Like the welder) should be inserted above.
-		for(var/IT in deiceTools)
+		for(var/IT in deice_tools)
 			if(istype(C, IT))
-				handleRemoveIce(C, user, deiceTools[IT])
+				handleRemoveIce(C, user, deice_tools[IT])
 				return
 
 		//if we can't de-ice the door tell them what's wrong.
@@ -1244,21 +1244,22 @@ About the new airlock wires panel:
 //Freezable airlocks!
 
 /obj/machinery/door/airlock/New()// I'm gonna murder the dev of yawn wider
+	..()
 	//Associate objects with the number of seconds it would take to de-ice a door.
 	//Most items are either more or less effecient at it.
 	//For items with very specific cases (like welders using fuel, or needing to be on) see attackby().
-	deiceTools[/obj/item/pickaxe/icepick] = 3 //Ice Pick / Axe.
-	deiceTools[/obj/item/pickaxe/icepick/plasteel] = 2 //Plasteel Ice pickaxe.
-	deiceTools[/obj/item/material/knife/machete] = 4 //Machete
-	deiceTools[/obj/item/tool/crowbar] = 5 //Crowbar
-	deiceTools[/obj/item/pen] = 30 //Pen
-	deiceTools[/obj/item/card] = 35 //Cards. (Mostly ID cards)
+	deice_tools[/obj/item/pickaxe/icepick] = 3 //Ice Pick / Axe.
+	deice_tools[/obj/item/pickaxe/icepick/plasteel] = 2 //Plasteel Ice pickaxe.
+	deice_tools[/obj/item/material/knife/machete] = 4 //Machete
+	deice_tools[/obj/item/tool/crowbar] = 5 //Crowbar
+	deice_tools[/obj/item/pen] = 30 //Pen
+	deice_tools[/obj/item/card] = 35 //Cards. (Mostly ID cards)
 
 	//Generic weapon items. Tools are better then weapons.
 	//This is for preventing "Sierra" syndrome that could result from needing very specific objects.
-	deiceTools[/obj/item/tool] = 10
-	deiceTools[/obj/item] = 12
-	..()
+	deice_tools[/obj/item/tool] = 10
+	deice_tools[/obj/item] = 12
+
 
 /obj/machinery/door/airlock/proc/handleRemoveIce(obj/item/weapon/W as obj, mob/user as mob, var/time = 15 as num)
 	to_chat(user, "<span class='notice'>You start to chip at the ice covering \the [src]</span>")
