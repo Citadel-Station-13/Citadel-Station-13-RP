@@ -249,7 +249,7 @@
 			add_feral_abilities(H)
 
 		//Shock due to mostly halloss. More feral.
-		if(shock && 2.5*H.halloss >= H.traumatic_shock)
+		if(shock && H.halloss >= H.traumatic_shock/2.5)
 			danger = TRUE
 			feral = max(feral, H.halloss)
 
