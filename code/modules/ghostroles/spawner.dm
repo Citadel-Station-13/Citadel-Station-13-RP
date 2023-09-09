@@ -4,7 +4,7 @@
 /obj/structure/ghost_role_spawner
 	name = "Ghost Role Spawner"
 	desc = "if you're seeing this a coder fucked up"
-	resistance_flags = INDESTRUCTIBLE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	density = TRUE
 	icon = 'icons/obj/spawners.dmi'
 	icon_state = "cryostasis_sleeper"

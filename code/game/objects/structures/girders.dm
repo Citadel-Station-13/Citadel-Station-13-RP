@@ -25,9 +25,9 @@
 
 /obj/structure/girder/Initialize(mapload, material, reinforcement)
 	if(!isnull(material))
-		set_material_part(MATERIAL_PART_GIRDER_STRUCTURE, SSmaterials.resolve_material(material))
+		material_structure = material
 	if(!isnull(reinforcement))
-		set_material_part(MATERIAL_PART_GIRDER_REINFORCEMENT, SSmaterials.resolve_material(reinforcement))
+		material_reinforcing = reinforcement
 	. = ..()
 	update_appearance()
 
@@ -50,16 +50,16 @@
 /obj/structure/girder/material_init_parts()
 	material_structure = SSmaterials.resolve_material(material_structure)
 	material_reinforcing = SSmaterials.resolve_material(material_reinforcing)
-	register_material(material_structure, FALSE)
+	register_material(material_structure, TRUE)
 	register_material(material_reinforcing, FALSE)
 
 /obj/structure/girder/material_set_part(part, datum/material/material)
 	var/datum/material/old
 	switch(part)
-		if(MATERIAL_PART_GIRDER_STRUCTURE)
+		if("base")
 			old = material_structure
 			material_structure = material
-		if(MATERIAL_PART_GIRDER_REINFORCEMENT)
+		if("reinf")
 			old = material_reinforcing
 			material_reinforcing = material
 
@@ -69,20 +69,20 @@
 
 /obj/structure/girder/material_get_part(part)
 	switch(part)
-		if(MATERIAL_PART_GIRDER_REINFORCEMENT)
+		if("reinf")
 			return material_reinforcing
-		if(MATERIAL_PART_GIRDER_STRUCTURE)
+		if("base")
 			return material_structure
 
 /obj/structure/girder/material_get_parts()
 	return list(
-		MATERIAL_PART_GIRDER_STRUCTURE = material_structure,
-		MATERIAL_PART_GIRDER_REINFORCEMENT = material_reinforcing,
+		"base" = material_structure,
+		"reinf" = material_reinforcing,
 	)
 
 /obj/structure/girder/material_set_parts(list/part_instances)
-	material_structure = part_instances[MATERIAL_PART_GIRDER_STRUCTURE]
-	material_reinforcing = part_instances[MATERIAL_PART_GIRDER_REINFORCEMENT]
+	material_structure = part_instances["base"]
+	material_reinforcing = part_instances["reinf"]
 
 /obj/structure/girder/update_icon_state()
 	if(anchored)

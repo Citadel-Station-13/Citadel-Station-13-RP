@@ -22,14 +22,10 @@ var/list/table_icon_cache = list()
 	depth_level = 8
 	depth_projected = TRUE
 
-	material_parts = list(
-		"base" = /datum/material/steel,
-		"reinf" = null,
-	)
-	material_costs = list(
-		1 * SHEET_MATERIAL_AMOUNT,
-		1 * SHEET_MATERIAL_AMOUNT,
-	)
+	material_parts = MATERIAL_DEFAULT_ABSTRACTED
+
+	var/datum/material/material_base
+	var/datum/material/material_reinforcing
 
 	var/flipped = 0
 
@@ -38,8 +34,6 @@ var/list/table_icon_cache = list()
 	var/can_plate = 1
 
 	var/manipulating = 0
-	var/datum/material/material
-	var/datum/material/reinforced
 
 	// Gambling tables. I'd prefer reinforced with carpet/felt/cloth/whatever, but AFAIK it's either harder or impossible to get /obj/item/stack/material of those.
 	// Convert if/when you can easily get stacks of these.
@@ -51,11 +45,11 @@ var/list/table_icon_cache = list()
 	/// Do people pixel-place items or center place?
 	var/item_pixel_place = TRUE
 
-/obj/structure/table/Initialize(mapload, datum/material/base, datum/material/reinforcing)
-	if(!isnull(base))
-		set_material_part("base", SSmaterials.resolve_material(base))
-	if(!isnull(reinf))
-		set_material_part("reinf", SSmaterials.resolve_material(reinforcing))
+/obj/structure/table/Initialize(mapload, base_material, reinforcing_material)
+	if(!isnull(base_material))
+		material_base = base_material
+	if(!isnull(reinforcing_material))
+		material_reinforcing = reinforcing_material
 	. = ..()
 
 	// One table per turf.
@@ -88,31 +82,6 @@ var/list/table_icon_cache = list()
 	update_connections(TRUE) // Update tables around us to ignore us (material=null forces no connections)
 	. = ..()
 
-/obj/structure/table/update_material_parts(list/parts)
-	. = ..()
-	var/datum/material/structure = parts[parts[1]]
-	var/datum/material/reinforcing = parts[parts[2]]
-	var/amount = structure.relative_integrity * 100 + reinforcing.relative_integrity * 50
-	set_full_integrity(amount, amount)
-	// the () is to block the list() from making it a string
-	set_armor(SSmaterials.reinforcing_materials_armor(list(
-		(structure) = 1,
-		(reinforcing) = 2,
-	)))
-
-/obj/structure/table/take_damage_legacy(amount)
-	// If the table is made of a brittle material, and is *not* reinforced with a non-brittle material, damage is multiplied by TABLE_BRITTLE_MATERIAL_MULTIPLIER
-	if(material && material.is_brittle())
-		if(reinforced)
-			if(reinforced.is_brittle())
-				amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
-		else
-			amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
-	health -= amount
-	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
-		return break_to_parts() // if we break and form shards, return them to the caller to do !FUN! things with
-
 /obj/structure/table/attackby(obj/item/W, mob/user)
 
 	if(reinforced && W.is_screwdriver())
@@ -120,7 +89,6 @@ var/list/table_icon_cache = list()
 		if(!reinforced)
 			update_desc()
 			update_icon()
-			update_material()
 		return 1
 
 	if(carpeted && W.is_crowbar())
@@ -151,14 +119,13 @@ var/list/table_icon_cache = list()
 			for(var/obj/structure/table/T in oview(src, 1))
 				T.update_icon()
 			update_desc()
-			update_material()
 		return 1
 
 	if(!carpeted && !reinforced && !material && W.is_wrench())
 		dismantle(W, user)
 		return 1
 
-	if(health < maxhealth && istype(W, /obj/item/weldingtool))
+	if(integrity < integrity_max && istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/F = W
 		if(F.welding)
 			to_chat(user, "<span class='notice'>You begin reparing damage to \the [src].</span>")
@@ -176,7 +143,6 @@ var/list/table_icon_cache = list()
 			update_connections(1)
 			update_icon()
 			update_desc()
-			update_material()
 		return 1
 
 	return ..()
@@ -220,7 +186,6 @@ var/list/table_icon_cache = list()
 	if(reinforced)
 		update_desc()
 		update_icon()
-		update_material()
 
 /obj/structure/table/update_desc()
 	. = ..()

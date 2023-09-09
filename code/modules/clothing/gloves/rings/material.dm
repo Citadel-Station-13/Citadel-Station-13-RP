@@ -9,7 +9,7 @@
 
 /obj/item/clothing/gloves/ring/material/Initialize(mapload, material)
 	if(!isnull(material))
-		set_primary_material(SSmaterials.resolve_material(material))
+		material_parts = material
 	return ..()
 
 /obj/item/clothing/gloves/ring/material/update_material_single(datum/material/material)

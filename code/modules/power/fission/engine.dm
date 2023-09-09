@@ -238,7 +238,7 @@
 			to_chat(user, "<span class='notice'>There's nothing left to remove.</span>")
 			return
 		for(var/obj/item/fuelrod/rod in rods)
-			if(rod.health == 0 || rod.life == 0)
+			if(rod.integrity == 0 || rod.life == 0)
 				to_chat(user, "<span class='notice'>You carefully start removing \the [rod] from \the [src].</span>")
 				if(do_after(user, 40))
 					eject_rod(rod)

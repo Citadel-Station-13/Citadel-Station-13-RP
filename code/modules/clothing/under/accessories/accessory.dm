@@ -446,7 +446,7 @@
 
 /obj/item/clothing/accessory/bracelet/material/Initialize(mapload, material)
 	if(!isnull(material))
-		set_primary_material(SSmaterials.resolve_material(material))
+		material_parts = material
 	return ..()
 
 /obj/item/clothing/accessory/bracelet/material/update_material_single(datum/material/material)
@@ -454,9 +454,6 @@
 	name = "[material.display_name] bracelet"
 	desc = "A bracelet made from [material.display_name]."
 	color = material.icon_colour
-
-/obj/item/clothing/accessory/bracelet/material/get_material()
-	return material
 
 /obj/item/clothing/accessory/bracelet/material/wood
 	material_parts = /datum/material/wood
