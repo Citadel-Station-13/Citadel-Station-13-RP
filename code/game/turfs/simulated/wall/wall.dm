@@ -197,7 +197,8 @@
 	O.density = 1
 	O.plane = ABOVE_PLANE
 
-	if(material_girder.integrity >= 150) //Strong girders will remain in place when a wall is melted.
+	// todo: refactor?
+	if(material_girder.relative_integrity >= 1.5) //Strong girders will remain in place when a wall is melted.
 		dismantle_wall(1,1)
 	else
 		src.ChangeTurf(/turf/simulated/floor/plating)
@@ -214,25 +215,27 @@
 	return
 
 /turf/simulated/wall/proc/burn(temperature)
-	if(material.combustion_effect(src, temperature, 0.7))
-		spawn(2)
-			new /obj/structure/girder(src, material_girder.name)
-			src.ChangeTurf(/turf/simulated/floor)
-			for(var/turf/simulated/wall/W in range(3,src))
-				W.burn((temperature/4))
-			for(var/obj/machinery/door/airlock/phoron/D in range(3,src))
-				D.ignite(temperature/4)
+	if(material_outer.combustion_effect(src, temperature, 0.7))
+		addtimer(CALLBACK(src, PROC_REF(do_burn), temperature), 2)
+
+/turf/simulated/wall/proc/do_burn(temperature)
+	new /obj/structure/girder(src, material_girder.name)
+	src.ChangeTurf(/turf/simulated/floor)
+	for(var/turf/simulated/wall/W in range(3,src))
+		W.burn((temperature/4))
+	for(var/obj/machinery/door/airlock/phoron/D in range(3,src))
+		D.ignite(temperature/4)
 
 /turf/simulated/wall/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
-	if(!material)
+	if(isnull(material_outer))
 		return
 	if(material_reinf && !the_rcd.can_remove_rwalls) // Gotta do it the old fashioned way if your RCD can't.
 		return FALSE
 
 	if(passed_mode == RCD_DECONSTRUCT)
-		var/delay_to_use = material.integrity / 3 // Steel has 150 integrity, so it'll take five seconds to down a regular wall.
+		var/delay_to_use = material.relative_integrity * 100 / 3 // Steel has 150 integrity, so it'll take five seconds to down a regular wall.
 		if(material_reinf)
-			delay_to_use += material_reinf.integrity / 3
+			delay_to_use += material_reinf.relative_integrity * 100 / 3
 		return list(
 			RCD_VALUE_MODE = RCD_DECONSTRUCT,
 			RCD_VALUE_DELAY = delay_to_use,
