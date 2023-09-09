@@ -290,15 +290,8 @@
 	if(shard_type)
 		return new /obj/item/material/shard(target, src.name)
 
-
-/// Used by walls and weapons to determine if they break or not.
-/datum/material/proc/is_brittle()
-	return !!(flags & MATERIAL_BRITTLE)
-
-
 /datum/material/proc/combustion_effect(turf/T, temperature)
 	return
-
 
 /datum/material/proc/wall_touch_special(turf/simulated/wall/W, mob/living/L)
 	return

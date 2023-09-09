@@ -144,7 +144,7 @@
 /turf/simulated/wall/adjacent_fire_act(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)
 	burn(adj_temp)
 	if(adj_temp > material.melting_point)
-		inflict_atom_damage(log(RAND_F(0.9, 1.1) * (adj_temp - material.melting_point)), flag = ARMOR_FIRE, gradual = TRUE)
+		inflict_atom_damage(log(RAND_F(0.9, 1.1) * (adj_temp - material_outer.melting_point)), flag = ARMOR_FIRE, gradual = TRUE)
 
 	return ..()
 
@@ -197,7 +197,7 @@
 	O.density = 1
 	O.plane = ABOVE_PLANE
 
-	if(material_girder.integrity >= 150 && !material_girder.is_brittle()) //Strong girders will remain in place when a wall is melted.
+	if(material_girder.integrity >= 150) //Strong girders will remain in place when a wall is melted.
 		dismantle_wall(1,1)
 	else
 		src.ChangeTurf(/turf/simulated/floor/plating)

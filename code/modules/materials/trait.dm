@@ -17,10 +17,10 @@
  * * data - metadata
  * * target - mob being hit
  * * zone - target zone
- * * attack_source - what's damaging them. datatype semantics differs based on attack type
+ * * weapon - what's damaging them. datatype semantics differs based on attack type
  * * attack_type - ATTACK_TYPE_* define
  */
-/datum/material_trait/proc/on_mob_attack(atom/host, data, mob/target, zone, atom/attack_source, attack_type)
+/datum/material_trait/proc/on_mob_attack(atom/host, data, mob/target, zone, datum/weapon, attack_type)
 	return
 
 /**
@@ -34,12 +34,12 @@
  * * data - metadata
  * * target - mob being hit
  * * zone - target zone
- * * damage_source - what's damaging them. datatype semantics differs based on attack type
+ * * weapon - what's damaging them. datatype semantics differs based on attack type
  * * attack_type - ATTACK_TYPE_* define
  *
  * @return MATERIAL_DEFEND_* flags
  */
-/datum/material_trait/proc/on_mob_defense(obj/item/host, data, mob/target, zone, atom/damage_source, attack_type)
+/datum/material_trait/proc/on_mob_defense(obj/item/host, data, mob/target, zone, datum/weapon, attack_type)
 	return
 
 /**

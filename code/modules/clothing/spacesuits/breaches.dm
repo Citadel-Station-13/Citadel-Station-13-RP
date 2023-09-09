@@ -179,8 +179,9 @@ var/global/list/breach_burn_descriptors = list(
 
 /obj/item/clothing/suit/space/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack/material))
+		var/obj/item/stack/material/M = W
 		var/repair_power = 0
-		switch(W.get_material_name())
+		switch(M.material.name)
 			if(MAT_STEEL)
 				repair_power = 2
 			if("plastic")
