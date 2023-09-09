@@ -109,6 +109,7 @@
 	desc = "A hivebot that equipped with a long range magenetic weapon."
 	icon_state = "sniper"
 	icon_living = "sniper"
+	base_attack_cooldown = 60
 	projectiletype = /obj/projectile/bullet/magnetic
 	projectilesound = 'sound/weapons/railgun.ogg'
 	player_msg = "Your attacks are short-ranged, but can <b>arc over obstructions</b> such as allies \
@@ -142,7 +143,7 @@
 	maxHealth = 4 LASERS_TO_KILL // 120 health.
 	health = 4 LASERS_TO_KILL
 
-	reload_max = 5
+	base_attack_cooldown = 5
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/sniper
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/siege)
@@ -199,4 +200,4 @@
 
 	base_attack_cooldown = 60
 
-	projectiletype = /obj/projectile/arc/fragmentation
+	projectiletype = /obj/projectile/arc/fragmentation/mortar
