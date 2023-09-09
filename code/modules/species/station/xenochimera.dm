@@ -168,7 +168,7 @@
 /datum/species/shapeshifter/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
 
 	//Low-ish nutrition has messages and eventually feral
-	var/hungry = H.nutrition <= 200
+	var/hungry = H.nutrition <= 200 && !isbelly(H.loc)
 
 	//At 360 nutrition, this is 30 brute/burn, or 18 halloss. Capped at 50 brute/30 halloss - if they take THAT much, no amount of satiation will help them. Also they're fat.
 	var/shock = H.traumatic_shock > min(60, H.nutrition/10)
@@ -187,7 +187,7 @@
 	if(!feral && (hungry || shock || jittery))
 
 		// If they're hungry, give nag messages (when not bellied)
-		if(H.nutrition >= 100 && prob(0.5) && !isbelly(H.loc))
+		if(H.nutrition >= 100 && prob(0.5))
 			switch(H.nutrition)
 				if(150 to 200)
 					to_chat(H,"<span class='info'>You feel rather hungry. It might be a good idea to find some some food...</span>")
@@ -196,7 +196,7 @@
 					danger = TRUE
 
 		// Going feral due to hunger
-		else if(H.nutrition < 100 && !isbelly(H.loc))
+		else if(H.nutrition < 100)
 			to_chat(H,"<span class='danger'><big>Something in your mind flips, your instincts taking over, no longer able to fully comprehend your surroundings as survival becomes your primary concern - you must feed, survive, there is nothing else. Hunt. Eat. Hide. Repeat.</big></span>")
 			log_and_message_admins("has gone feral due to hunger.", H)
 			feral = 5
