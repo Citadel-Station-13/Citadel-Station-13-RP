@@ -43,6 +43,36 @@
 	return
 
 /**
+ * called when something with this material attacks an atom that isn't a mob
+ *
+ * @params
+ * * host - the atom attacking them that has us as a material
+ * * data - metadata
+ * * target - atom being hit
+ * * weapon - what's damaging them. datatype semantics differs based on attack type
+ * * attack_type - ATTACK_TYPE_* define
+ */
+/datum/material_trait/proc/on_obj_attack(atom/host, data, atom/target, datum/weapon, attack_type)
+	return
+
+/**
+ * called when something hits an atom with this material
+ *
+ * todo: use atom shieldcall system instead
+ * todo: or use run atom armor system and figure out a way to put shieldcall-like flags on it
+ *
+ * @params
+ * * host - the atom being hit that has us as a material
+ * * data - metadata
+ * * weapon - what's damaging them. datatype semantics differs based on attack type
+ * * attack_type - ATTACK_TYPE_* define
+ *
+ * @return MATERIAL_DEFEND_* flags
+ */
+/datum/material_trait/proc/on_obj_defense(atom/host, data, datum/weapon, attack_type)
+	return
+
+/**
  * called when examined
  *
  * @params
