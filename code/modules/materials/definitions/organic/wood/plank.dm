@@ -33,15 +33,16 @@
 		cost = 5,
 	)
 	. += create_stack_recipe_datum(
-		name = "wooden chair",
-		product = /obj/structure/bed/chair/wood,
-		cost = 3,
-	)
-	. += create_stack_recipe_datum(
 		name = "crossbow frame",
 		product = /obj/item/crossbowframe,
 		cost = 5,
 	)
+	. += new /datum/stack_recipe/oar
+	. += new /datum/stack_recipe/boat
+	. += new /datum/stack_recipe/dragon_boat
+	. += new /datum/stack_recipe/pew/middle
+	. += new /datum/stack_recipe/pew/left
+	. += new /datum/stack_recipe/pew/right
 
 /datum/material/wood_plank/special_recipes()
 	var/list/recipes = list()
@@ -183,7 +184,7 @@
 	)
 	// todo: this is shitcode
 	for(var/datum/stack_recipe/recipe as anything in .)
-		if(recipe.name == "wood floor tile" || recipe.name == "wooden chair")
+		if(recipe.name == "wood floor tile")
 			. -= recipe
 
 /datum/material/wood_plank/hardwood

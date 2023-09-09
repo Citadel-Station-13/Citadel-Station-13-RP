@@ -5,7 +5,7 @@
 	abstract_type = /datum/stack_recipe/material/furniture
 	category = "Material - Furniture"
 
-#warn chair, bed, double bed, stool, grave marker, sculpting block
+#warn sculpting block
 
 /datum/stack_recipe/material/furniture/bed
 	name = "bed"

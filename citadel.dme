@@ -801,6 +801,7 @@
 #include "code\datums\recipe\material_recipes\furniture.dm"
 #include "code\datums\recipe\material_recipes\structures.dm"
 #include "code\datums\recipe\material_recipes\tools.dm"
+#include "code\datums\recipe\stack_recipes\misc.dm"
 #include "code\datums\recipe\stack_recipes\structures.dm"
 #include "code\datums\repositories\ammomaterial.dm"
 #include "code\datums\repositories\cameras.dm"

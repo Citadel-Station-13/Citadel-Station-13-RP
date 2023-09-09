@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /datum/stack_recipe/railing
 	name = "railing"
 	result_type = /obj/structure/railing
