@@ -70,15 +70,23 @@
 						playsound(loc, material_base.tableslam_noise, 50, 1)
 					else
 						playsound(loc, 'sound/weapons/tablehit1.ogg', 50, 1)
-					var/list/L = break_to_parts()
-					// Shards. Extra damage, plus potentially the fact YOU LITERALLY HAVE A PIECE OF GLASS/METAL/WHATEVER IN YOUR FACE
-					for(var/obj/item/material/shard/S in L)
-						if(prob(50))
-							M.visible_message("<span class='danger'>\The [S] slices [M]'s face messily!</span>",
-							                   "<span class='danger'>\The [S] slices your face messily!</span>")
-							M.apply_damage(10, def_zone = BP_HEAD)
-							if(prob(2))
-								M.embed(S, def_zone = BP_HEAD)
+					var/turf/old_loc = loc
+					inflict_atom_damage(40, flag = ARMOR_MELEE)
+					if(QDELETED(src))
+						// got broken
+						visible_message(SPAN_DANGER("[src] shatters under the impact!"))
+						var/limit = 3
+						for(var/obj/item/material/shard/S in old_loc)
+							if(prob(50))
+								limit--
+								if(!limit)
+									break
+								M.visible_message("<span class='danger'>\The [S] slices [M]'s face messily!</span>",
+												"<span class='danger'>\The [S] slices your face messily!</span>")
+								M.apply_damage(10, def_zone = BP_HEAD)
+								if(prob(2))
+									M.embed(S, def_zone = BP_HEAD)
+
 				else
 					to_chat(user, "<span class='danger'>You need a better grip to do that!</span>")
 					return

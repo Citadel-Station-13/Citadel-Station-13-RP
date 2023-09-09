@@ -341,40 +341,6 @@ var/list/table_icon_cache = list()
 		desc = "[desc] This one seems to be reinforced with [material_reinforcing.display_name]."
 	return ..()
 
-// Returns a list of /obj/item/material/shard objects that were created as a result of this table's breakage.
-// Used for !fun! things such as embedding shards in the faces of tableslammed people.
-
-// The repeated
-//     S = [x].place_shard(loc)
-//     if(S) shards += S
-// is to avoid filling the list with nulls, as place_shard won't place shards of certain materials (holo-wood, holo-steel)
-
-/obj/structure/table/proc/break_to_parts(full_return = 0)
-	var/list/shards = list()
-	var/obj/item/material/shard/S = null
-	if(reinforced)
-		if(reinforced.stack_type && (full_return || prob(20)))
-			reinforced.place_sheet(loc)
-		else
-			S = reinforced.place_shard(loc)
-			if(S) shards += S
-	if(material)
-		if(material.stack_type && (full_return || prob(20)))
-			material.place_sheet(loc)
-		else
-			S = material.place_shard(loc)
-			if(S) shards += S
-	if(carpeted && (full_return || prob(50))) // Higher chance to get the carpet back intact, since there's no non-intact option
-		new carpeted_type(src.loc)
-	if(full_return || prob(20))
-		new /obj/item/stack/material/steel(src.loc)
-	else
-		var/datum/material/M = get_material_by_name(MAT_STEEL)
-		S = M.place_shard(loc)
-		if(S) shards += S
-	qdel(src)
-	return shards
-
 /proc/get_table_image(var/icon/ticon,var/ticonstate,var/tdir,var/tcolor,var/talpha)
 	var/icon_cache_key = "\ref[ticon]-[ticonstate]-[tdir]-[tcolor]-[talpha]"
 	var/image/I = table_icon_cache[icon_cache_key]
