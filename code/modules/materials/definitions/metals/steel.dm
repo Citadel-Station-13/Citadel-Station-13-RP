@@ -235,6 +235,12 @@
 		time = 2 SECONDS,
 		cost = 5,
 	)
+	. += create_stack_recipe_datum(
+		name = "ladder assembly",
+		product = /obj/structure/ladder_assembly,
+		cost = 4,
+		time = 3 SECONDS,
+	)
 
 /datum/material/steel/hull
 	id = "steel_hull"

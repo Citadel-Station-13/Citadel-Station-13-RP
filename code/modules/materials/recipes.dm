@@ -20,17 +20,6 @@
 /datum/material/proc/special_recipes()
 	return list()
 
-/datum/material/sandstone/marble/generate_recipes()
-	..()
-	recipes += new/datum/stack_recipe("light marble floor tile", /obj/item/stack/tile/wmarble, 1, 4, 20)
-	recipes += new/datum/stack_recipe("dark marble floor tile", /obj/item/stack/tile/bmarble, 1, 4, 20)
-	recipes += new/datum/stack_recipe_list("statues", list( \
-		new/datum/stack_recipe("male statue", /obj/structure/statue/marble/male, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("female statue", /obj/structure/statue/marble/female, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("monkey statue", /obj/structure/statue/marble/monkey, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("corgi statue", /obj/structure/statue/marble/corgi, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		))
-
 /datum/material/plastic/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("plastic crate", /obj/structure/closet/crate/plastic, 10, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)

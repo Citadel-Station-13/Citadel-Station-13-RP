@@ -17,7 +17,6 @@
 /datum/material/plastic/generate_recipes()
 	. = ..()
 
-
 /datum/material/plastic/holographic
 	name = "holoplastic"
 	id = "plastic_holo"
