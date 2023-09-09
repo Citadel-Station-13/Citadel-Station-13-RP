@@ -185,6 +185,8 @@
 
 //Handle feral triggers and pre-feral messages
 	if(!feral && (hungry || shock || jittery))
+		// Did we go feral as a result of this check
+		var/go_feral = FALSE
 
 		// If they're hungry, give nag messages (when not bellied)
 		if(H.nutrition >= 100 && prob(0.5))
@@ -199,11 +201,7 @@
 		else if(H.nutrition < 100)
 			to_chat(H,"<span class='danger'><big>Something in your mind flips, your instincts taking over, no longer able to fully comprehend your surroundings as survival becomes your primary concern - you must feed, survive, there is nothing else. Hunt. Eat. Hide. Repeat.</big></span>")
 			log_and_message_admins("has gone feral due to hunger.", H)
-			feral = 5
-			danger = TRUE
-			feral_state = TRUE
-			if(!H.stat)
-				H.emote("twitch")
+			go_feral = TRUE
 
 		// If they're hurt, chance of snapping.
 		else if(shock)
@@ -213,29 +211,23 @@
 				if(prob(min(10,(0.2 * H.traumatic_shock))))
 					to_chat(H,"<span class='danger'><big>The pain! It stings! Got to get away! Your instincts take over, urging you to flee, to hide, to go to ground, get away from here...</big></span>")
 					log_and_message_admins("has gone feral due to halloss.", H)
-					feral = 5
-					danger = TRUE
-					feral_state = TRUE
-					if(!H.stat)
-						H.emote("twitch")
+					go_feral = TRUE
 
 			//Majority due to other damage sources
 			else if(prob(min(10,(0.1 * H.traumatic_shock))))
 				to_chat(H,"<span class='danger'><big>Your fight-or-flight response kicks in, your injuries too much to simply ignore - you need to flee, to hide, survive at all costs - or destroy whatever is threatening you.</big></span>")
-				feral = 5
-				danger = TRUE
-				feral_state = TRUE
 				log_and_message_admins("has gone feral due to injury.", H)
-				if(!H.stat)
-					H.emote("twitch")
+				go_feral = TRUE
 
 		//No hungry or shock, but jittery
 		else if(jittery)
 			to_chat(H,"<span class='warning'><big>Suddenly, something flips - everything that moves is... potential prey. A plaything. This is great! Time to hunt!</big></span>")
+			log_and_message_admins("has gone feral due to jitteriness.", H)
+
+		if(go_feral)
 			feral = 5
 			danger = TRUE
 			feral_state = TRUE
-			log_and_message_admins("has gone feral due to jitteriness.", H)
 			if(!H.stat)
 				H.emote("twitch")
 
