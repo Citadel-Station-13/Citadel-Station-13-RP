@@ -9,7 +9,7 @@
 #define LANGUAGE_CHANGELING "Changeling"
 #define LANGUAGE_CHIMPANZEE "Chimpanzee"
 #define LANGUAGE_CULT "Cult"
-#define LANGUAGE_DAEMON "Daemon"
+#define LANGUAGE_DAEMON "Dremic"
 #define LANGUAGE_EAL "Encoded Audio Language"
 #define LANGUAGE_ENOCHIAN "Enochian"
 #define LANGUAGE_EVENT1 "Occursus"

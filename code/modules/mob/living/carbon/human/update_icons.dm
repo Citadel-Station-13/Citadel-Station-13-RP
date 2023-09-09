@@ -445,8 +445,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		apply_layer(HAIR_LAYER)
 		return
 
-	if(head_organ.transparent)
-		face_standing += rgb(,,,120)
+	face_standing += rgb(,,,head_organ.hair_opacity)
 
 	overlays_standing[HAIR_LAYER] = image(face_standing, layer = BODY_LAYER+HAIR_LAYER)
 	apply_layer(HAIR_LAYER)
@@ -1043,13 +1042,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	apply_layer(WING_LAYER)
 
-/mob/living/carbon/human/proc/wing_spread_start()
-	if(QDESTROYING(src))
-		return
-
-	update_wing_showing("[species.get_wing(src)]_spr")
-
-
 /mob/living/carbon/human/update_modifier_visuals()
 	if(QDESTROYING(src))
 		return
@@ -1164,7 +1156,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	//If you have custom wings selected
 	if(wing_style && (!(wear_suit && wear_suit.inv_hide_flags & HIDETAIL) || !wing_style.clothing_can_hide))
-		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state))
+		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = spread ? wing_style.spr_state : (flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state)))
 		if(wing_style.do_colouration)
 			if(grad_wingstyle)
 				grad_swing = new/icon("icon" = 'icons/mob/wing_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_wingstyle])

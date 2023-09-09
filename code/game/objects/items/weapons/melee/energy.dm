@@ -642,9 +642,6 @@
 	icon_state = "[base_state][active]"
 
 /obj/item/melee/energy/hfmachete/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	toggleActive(user)
 	add_fingerprint(user)
 

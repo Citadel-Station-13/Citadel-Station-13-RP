@@ -319,7 +319,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 
 /obj/machinery/door/airlock/phoron/proc/PhoronBurn(temperature)
 	for(var/turf/simulated/floor/target_tile in range(2,loc))
-		target_tile.assume_gas(/datum/gas/phoron, 35, 400+T0C)
+		target_tile.assume_gas(GAS_ID_PHORON, 35, 400+T0C)
 		spawn (0) target_tile.hotspot_expose(temperature, 400)
 	for(var/turf/simulated/wall/W in range(3,src))
 		W.burn((temperature/4))//Added so that you can't set off a massive chain reaction with a small flame
@@ -1059,9 +1059,11 @@ About the new airlock wires panel:
 		return 0
 	return ..(M)
 
-// Airlock is passable if it is open (!density), bot has access, and is not bolted shut or powered off)
-/obj/machinery/door/airlock/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
-	return ..() || (check_access(ID) && !locked && inoperable())
+/obj/machinery/door/airlock/can_pathfinding_enter(atom/movable/actor, dir, datum/pathfinding/search)
+	return ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !locked && !inoperable())
+
+/obj/machinery/door/airlock/can_pathfinding_pass(atom/movable/actor, datum/pathfinding/search)
+	return ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !locked && !inoperable())
 
 /obj/machinery/door/airlock/Initialize(mapload, obj/structure/door_assembly/assembly)
 	//if assembly is given, create the new door from the assembly

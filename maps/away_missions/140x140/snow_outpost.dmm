@@ -2263,7 +2263,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/snow_outpost/dark)
 "hH" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong/guard,
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong,
 /turf/simulated/floor,
 /area/awaymission/snow_outpost/dark)
 "hI" = (

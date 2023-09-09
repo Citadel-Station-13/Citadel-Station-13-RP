@@ -874,6 +874,59 @@
 	contraband = list(
 		/obj/item/reagent_containers/syringe/steroid = 4
 	)
+/obj/machinery/vending/weeb
+	name = "Nippon-Tan!"
+	desc = "A vendor full of asian snackfood variety!"
+	icon_state = "weeb"
+	icon_vend = "weeb-vend"
+	products = list(
+		/obj/item/reagent_containers/food/snacks/riceball = 10,
+		/obj/item/reagent_containers/food/snacks/hanamidango = 10,
+		/obj/item/reagent_containers/food/snacks/gomadango = 10,
+		/obj/item/reagent_containers/food/snacks/mochi = 10,
+		/obj/item/reagent_containers/food/snacks/dorayaki = 10,
+		/obj/item/reagent_containers/food/snacks/chocobanana = 10,
+		/obj/item/storage/box/pocky = 10,
+		/obj/item/storage/box/gondola = 10,
+		/obj/item/reagent_containers/food/snacks/wpeas = 10,
+		/obj/item/reagent_containers/food/drinks/cans/ochamidori = 10,
+		/obj/item/reagent_containers/food/drinks/cans/ramune = 10,
+		/obj/item/reagent_containers/food/drinks/cans/nicola = 10,
+		/obj/item/reagent_containers/food/drinks/cans/nicola_sakura = 10,
+		/obj/item/clothing/under/kimono = 5,
+		/obj/item/clothing/under/kimono/yellow = 5,
+		/obj/item/clothing/under/kimono/blue = 5,
+		/obj/item/clothing/under/bsing = 5,
+		/obj/item/clothing/shoes/boots/bsing = 5,
+		/obj/item/clothing/under/ysing = 5,
+		/obj/item/clothing/shoes/boots/ysing = 5,
+		/obj/item/storage/daki = 10,
+		/obj/item/toy/katana = 10
+	)
+	prices = list(
+		/obj/item/reagent_containers/food/snacks/riceball = 5,
+		/obj/item/reagent_containers/food/snacks/hanamidango = 5,
+		/obj/item/reagent_containers/food/snacks/gomadango = 5,
+		/obj/item/reagent_containers/food/snacks/mochi = 5,
+		/obj/item/reagent_containers/food/snacks/dorayaki = 5,
+		/obj/item/reagent_containers/food/snacks/chocobanana = 5,
+		/obj/item/storage/box/pocky = 5,
+		/obj/item/storage/box/gondola = 5,
+		/obj/item/reagent_containers/food/snacks/wpeas = 5,
+		/obj/item/reagent_containers/food/drinks/cans/ochamidori = 8,
+		/obj/item/reagent_containers/food/drinks/cans/ramune = 10,
+		/obj/item/reagent_containers/food/drinks/cans/nicola = 10,
+		/obj/item/reagent_containers/food/drinks/cans/nicola_sakura = 10,
+		/obj/item/clothing/under/kimono = 10,
+		/obj/item/clothing/under/kimono/yellow = 10,
+		/obj/item/clothing/under/kimono/blue = 10,
+		/obj/item/clothing/under/bsing = 10,
+		/obj/item/clothing/shoes/boots/bsing = 10,
+		/obj/item/clothing/under/ysing = 10,
+		/obj/item/clothing/shoes/boots/ysing = 10,
+		/obj/item/storage/daki = 50,
+		/obj/item/toy/katana = 15
+	)
 
 /obj/machinery/vending/cart
 	name = "PTech"
@@ -1287,7 +1340,7 @@
 		/obj/item/weldingtool = 3,
 		/obj/item/tool/wirecutters = 5,
 		/obj/item/tool/wrench = 5,
-		/obj/item/analyzer = 5,
+		/obj/item/atmos_analyzer = 5,
 		/obj/item/t_scanner = 5,
 		/obj/item/tool/screwdriver = 5,
 		/obj/item/flashlight/glowstick = 3,

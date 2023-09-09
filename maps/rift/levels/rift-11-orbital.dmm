@@ -1273,7 +1273,6 @@
 "ek" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
-	dir = 2;
 	icon_state = "right";
 	name = "Red Corner"
 	},
@@ -5241,7 +5240,7 @@
 /area/centcom/simulated/restaurant)
 "pL" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
@@ -6324,7 +6323,7 @@
 /area/holodeck/source_chess)
 "ve" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+	dir = 4
 	},
 /turf/unsimulated/floor/dark,
 /area/centcom/command)
@@ -8858,6 +8857,10 @@
 /obj/structure/bed/chair/backed_grey,
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
+"Pc" = (
+/obj/overmap/entity/visitable/sector/centcom,
+/turf/space,
+/area/space)
 "Pf" = (
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -10254,7 +10257,7 @@ hP
 hP
 hP
 hP
-hP
+Pc
 hP
 hP
 hP

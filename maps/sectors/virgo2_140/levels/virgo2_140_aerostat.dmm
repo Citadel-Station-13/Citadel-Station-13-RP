@@ -711,7 +711,7 @@
 /area/tether_away/aerostat/inside)
 "cg" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/inside)
@@ -765,7 +765,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)

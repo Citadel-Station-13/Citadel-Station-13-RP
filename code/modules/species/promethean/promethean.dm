@@ -117,7 +117,8 @@ var/datum/species/shapeshifter/promethean/prometheans
 	inherent_verbs = list(
 		/mob/living/proc/eat_trash,
 		/mob/living/proc/set_size,
-		/mob/living/carbon/human/proc/promethean_select_opaqueness,
+		/mob/living/carbon/human/proc/promethean_toggle_body_transparency,
+		/mob/living/carbon/human/proc/promethean_set_hair_transparency,
 		/mob/living/carbon/human/proc/prommie_blobform,
 		/mob/living/carbon/human/proc/regenerate,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
@@ -167,6 +168,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	var/obj/item/storage/toolbox/lunchbox/L = new boxtype(get_turf(H))
 	new /obj/item/reagent_containers/food/snacks/candy/proteinbar(L)
+	new /obj/item/tool/prybar/red(L)
 	if(H.backbag == 1)
 		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/hand/right)
 	else

@@ -1,5 +1,5 @@
 // // Helpers for machine transfer, taking into account power draws, max pressures, max volumes, etc.
-// // All of these also, if provided with machine parameter, set the machine's last_power_draw and last_transfer_rate.
+// // All of these also, if provided with machine parameter, set the machine's last_power_draw_legacy and last_transfer_rate.
 
 // /**
 //  * Gas pumping proc

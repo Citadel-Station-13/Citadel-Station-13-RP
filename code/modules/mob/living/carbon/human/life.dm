@@ -475,13 +475,13 @@
 	if(species.breath_type)
 		breath_type = species.breath_type
 	else
-		breath_type = /datum/gas/oxygen
+		breath_type = GAS_ID_OXYGEN
 	inhaling = breath.gas[breath_type]
 
 	if(species.poison_type)
 		poison_type = species.poison_type
 	else
-		poison_type = /datum/gas/phoron
+		poison_type = GAS_ID_PHORON
 	poison = breath.gas[poison_type]
 
 	if(species.exhale_type)
@@ -559,8 +559,8 @@
 		phoron_alert = 0
 
 	// If there's some other shit in the air lets deal with it here.
-	if(breath.gas[/datum/gas/nitrous_oxide])
-		var/SA_pp = (breath.gas[/datum/gas/nitrous_oxide] / breath.total_moles) * breath_pressure
+	if(breath.gas[GAS_ID_NITROUS_OXIDE])
+		var/SA_pp = (breath.gas[GAS_ID_NITROUS_OXIDE] / breath.total_moles) * breath_pressure
 
 		// Enough to make us paralysed for a bit
 		if(SA_pp > SA_para_min)
@@ -576,19 +576,26 @@
 		else if(SA_pp > 0.15)
 			if(prob(20))
 				spawn(0) emote(pick("giggle", "laugh"))
-		breath.adjust_gas(/datum/gas/nitrous_oxide, -breath.gas[/datum/gas/nitrous_oxide]/6, update = 0) //update after
+		breath.adjust_gas(GAS_ID_NITROUS_OXIDE, -breath.gas[GAS_ID_NITROUS_OXIDE]/6, update = 0) //update after
 
-	for(var/gasname in breath.gas) //datum/gas/
-		//var/datum/gas/gas = gasname
+	for(var/gasname in breath.gas)
+		// todo: all this needs rewritten.
 		if(gasname == breath_type)
 			continue
-		if(!GLOB.meta_gas_reagent_id[gasname])
+		var/list/reagent_gas_data = global.gas_data.reagents[gasname]
+		if(!reagent_gas_data)
+			continue
+		// up-convert since intuitively reagent gas uses mols in tile air, rather than in breath.
+		var/effective_moles = breath.gas[gasname] * (CELL_VOLUME / BREATH_VOLUME)
+		if(effective_moles < reagent_gas_data[GAS_REAGENT_LIST_THRESHOLD])
 			continue
 		// Little bit of sanity so we aren't trying to add 0.0000000001 units of CO2, and so we don't end up with 99999 units of CO2.
-		var/reagent_amount = breath.gas[gasname] * 10 * gas_to_process_ratio * GLOB.meta_gas_reagent_amount[gasname] //10 is for the u per gas mol, ratio is defined further up where we have the lungs for checks
+		var/reagent_id = reagent_gas_data[GAS_REAGENT_LIST_ID]
+		var/reagent_amount = ((effective_moles - reagent_gas_data[GAS_REAGENT_LIST_THRESHOLD]) * reagent_gas_data[GAS_REAGENT_LIST_FACTOR] + reagent_gas_data[GAS_REAGENT_LIST_AMOUNT]) * gas_to_process_ratio
+		reagent_amount = min(reagent_amount, reagent_gas_data[GAS_REAGENT_LIST_MAX] - reagents.get_reagent_amount(reagent_id))
 		if(reagent_amount < 0.05)
 			continue
-		reagents.add_reagent(GLOB.meta_gas_reagent_id[gasname], reagent_amount)
+		reagents.add_reagent(reagent_id, reagent_amount)
 		breath.adjust_gas(gasname, -breath.gas[gasname], update = 0) //update after
 
 	// Were we able to breathe?
@@ -708,7 +715,7 @@
 
 	//Check for contaminants before anything else because we don't want to skip it.
 	for(var/g in environment.gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_CONTAMINANT && environment.gas[g] > GLOB.meta_gas_visibility[g] + 1)
+		if(global.gas_data.flags[g] & GAS_FLAG_CONTAMINANT && environment.gas[g] > 1)
 			pl_effects()
 			break
 
@@ -1603,7 +1610,7 @@
 					stomach_contents.Remove(M)
 					qdel(M)
 					continue
-				if(air_master.current_cycle%3==1)
+				if(SSair.current_cycle%3==1)
 					if(!(M.status_flags & STATUS_GODMODE))
 						M.adjustBruteLoss(5)
 					nutrition += 10

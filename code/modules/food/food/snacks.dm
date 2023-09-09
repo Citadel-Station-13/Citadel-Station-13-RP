@@ -277,7 +277,159 @@
 //		bitesize = 3													//This is the amount each bite consumes.
 
 
+/obj/item/reagent_containers/food/snacks/riceball
+	name = "Onigiri"
+	desc = "A triangular, handeld ball of rice typically filled with a type of meat and wrapped with nori paper."
+	icon_state = "riceball"
+	nutriment_amt = 3
+	nutriment_desc = list("rice" = 2, "protein"= 2)
 
+/obj/item/reagent_containers/food/snacks/riceball/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("rice",2)
+	reagents.add_reagent("protein",1)
+
+/obj/item/reagent_containers/food/snacks/hanamidango
+	name = "Hanami Dango"
+	desc = "Three rice balls, each with a unique flavoring, served on a skewer. A traditional Japanese treat."
+	icon_state = "hanami_dango"
+	nutriment_amt = 3
+	nutriment_desc = list("sugar" = 2, "rice" = 2)
+
+/obj/item_reagent_containers/food/snacks/hanamidango/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("sugar",2)
+	reagents.add_reagent("protein",2)
+
+/obj/item/reagent_containers/food/snacks/gomadango
+	name = "Goma Dango"
+	desc = "Sticky rice balls served on a skewer with a crispy rice flour outer layer and a thick red bean paste inner layer. "
+	icon_state = "goma_dango"
+	nutriment_amt = 3
+	nutriment_desc = list("sugar" = 2, "protein" = 2)
+
+/obj/item/reagent_containers/food/snacks/gomadango/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("sugar",2)
+	reagents.add_reagent("rice",2)
+
+/obj/item/reagent_containers/food/snacks/mochi
+	name = "Mochi"
+	desc = "Small, cold and round mochi stuffed with sweet berries and ice cream."
+	icon_state = "mochi"
+	nutriment_amt = 2
+	nutriment_desc = list("rice" = 2, "sugar" = 1, "berryjuice" = 1 )
+
+/obj/item/reagent_containers/food/snacks/mochi/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("sugar", 1)
+	reagents.add_reagent("rice",1)
+	reagents.add_reagent("berryjuice",1)
+
+/obj/item/reagent_containers/food/snacks/dorayaki
+	name = "Dorayaki"
+	desc = "A small pancake filled with sweet red bean paste."
+	icon_state = "dorayaki"
+	nutriment_amt = 4
+	nutriment_desc = list("sugar" = 2, "protein" = 2)
+
+/obj/item/reagent_containers/food/snacks/dorayaki/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("sugar",1)
+	reagents.add_reagent("protein",2)
+
+/obj/item/reagent_containers/food/snacks/chocobanana
+	name = "Choco-Nana"
+	desc = "A chocolate and sprinkles coated banana. On a stick. How fancy!"
+	icon_state = "chocobanana"
+	nutriment_amt = 4
+	nutriment_desc = list("banana" = 2, "chocolate" = 2)
+
+/obj/item/reagent_containers/food/snacks/chocobanana/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("banana",2)
+	reagents.add_reagent("chocolate",2)
+	bitesize = 4
+
+/obj/item/reagent_containers/food/snacks/pockystick
+	name = "Pocky Stick"
+	desc = "A chocolate covered biscuit stick."
+	icon_state  = "pockystick"
+	w_class = ITEMSIZE_TINY
+	nutriment_amt = 2
+	nutriment_desc = list("chocolate" = 2)
+
+/obj/item/reagent_containers/food/snacks/pockystick/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("chocolate",1)
+	bitesize = 2
+
+/obj/item/storage/box/pocky //This is kinda like the donut box.
+	name = "Pocky"
+	desc = "A delicious box of pocky sticks!"
+	icon = 'icons/obj/food.dmi'
+	icon_state = "pockys"
+	starts_with = list(
+		/obj/item/reagent_containers/food/snacks/pockystick,
+		/obj/item/reagent_containers/food/snacks/pockystick,
+		/obj/item/reagent_containers/food/snacks/pockystick,
+		/obj/item/reagent_containers/food/snacks/pockystick,
+		/obj/item/reagent_containers/food/snacks/pockystick,
+		/obj/item/reagent_containers/food/snacks/pockystick,
+		/obj/item/reagent_containers/food/snacks/pockystick,
+		/obj/item/reagent_containers/food/snacks/pockystick
+	)
+	w_class = ITEMSIZE_TINY
+	max_storage_space = ITEMSIZE_COST_TINY * 8
+	can_hold = list(/obj/item/reagent_containers/food/snacks/pockystick)
+	foldable = null
+
+
+/obj/item/reagent_containers/food/snacks/wpeas
+	name = "Wasabi Peas"
+	desc = "Freeze Dried peas covered in a very spicy substance!"
+	icon_state = "wasabi_peas"
+	nutriment_amt = 4
+	nutriment_desc = list("capsaicin" = 2, "protein" = 2)
+
+/obj/item/reagent_containers/food/snacks/wpeas/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("capsaicin",2)
+	reagents.add_reagent("protein",2)
+
+/obj/item/reagent_containers/food/snacks/gondolas
+	name = "Gondola Cookies"
+	desc = "A small cookie filled with chocolate."
+	icon_state = "gondas"
+	w_class = ITEMSIZE_TINY
+	nutriment_amt = 2
+	nutriment_desc = list("chocolate" = 1, "sugar" = 1)
+
+/obj/item/reagent_containers/food/snacks/gondolas/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("chocolate",1)
+	reagents.add_reagent("sugar",1)
+
+/obj/item/storage/box/gondola
+	name = "Hello Gondolas"
+	desc = "Small cookies filled with chocolates."
+	icon = 'icons/obj/food.dmi'
+	icon_state = "hellogonda"
+	starts_with = list(/obj/item/reagent_containers/food/snacks/gondolas,
+		/obj/item/reagent_containers/food/snacks/gondolas,
+		/obj/item/reagent_containers/food/snacks/gondolas,
+		/obj/item/reagent_containers/food/snacks/gondolas,
+		/obj/item/reagent_containers/food/snacks/gondolas,
+		/obj/item/reagent_containers/food/snacks/gondolas,
+		/obj/item/reagent_containers/food/snacks/gondolas,
+		/obj/item/reagent_containers/food/snacks/gondolas
+	)
+	w_class = ITEMSIZE_TINY
+	max_storage_space = ITEMSIZE_COST_TINY * 8
+	can_hold = list(/obj/item/reagent_containers/food/snacks/gondolas)
+	foldable = null
+
+// End Nippon-Tan vending snacks
 
 /obj/item/reagent_containers/food/snacks/aesirsalad
 	name = "Aesir salad"
@@ -3239,11 +3391,9 @@
 			icon_state = "pizzabox_open"
 
 		if( pizza )
-			var/image/pizzaimg = image(icon = pizza.icon, icon_state = pizza.icon_state)
+			var/mutable_appearance/pizzaimg = mutable_appearance(icon = pizza.icon, icon_state = pizza.icon_state)
 			pizzaimg.pixel_y = -3
 			overlays_to_add += pizzaimg
-
-		return
 	else
 		// Stupid code because byondcode sucks
 		var/doimgtag = 0
@@ -3256,11 +3406,11 @@
 				doimgtag = 1
 
 		if( doimgtag )
-			var/image/tagimg = image("food.dmi", icon_state = "pizzabox_tag")
+			var/mutable_appearance/tagimg = mutable_appearance("food.dmi", icon_state = "pizzabox_tag")
 			tagimg.pixel_y = boxes.len * 3
 			overlays_to_add += tagimg
+		icon_state = "pizzabox[boxes.len+1]"
 
-	icon_state = "pizzabox[boxes.len+1]"
 	add_overlay(overlays_to_add)
 
 /obj/item/pizzabox/attack_hand(mob/user, list/params)

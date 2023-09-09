@@ -159,7 +159,7 @@
 	return PROJECTILE_CONTINUE	// It's a hole in the ground, doesn't usually stop or even care about bullets
 
 /obj/structure/closet/grave/return_air_for_internal_lifeform(var/mob/living/L)
-	var/gasid = /datum/gas/carbon_dioxide
+	var/gasid = GAS_ID_CARBON_DIOXIDE
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(H.species && H.species.exhale_type)

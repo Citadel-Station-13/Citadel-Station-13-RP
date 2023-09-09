@@ -1808,7 +1808,7 @@
 /area/awaymission/zoo/tradeship)
 "fq" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+	dir = 4
 	},
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)

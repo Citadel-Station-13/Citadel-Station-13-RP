@@ -1061,7 +1061,7 @@
 
 	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)
 
-	visible_emote("Adjusts [T.his] posture.")
+	visible_emote("adjusts [T.his] posture.")
 
 /mob/living/carbon/human/verb/set_flavor()
 	set name = "Set Flavour Text"
@@ -1123,7 +1123,6 @@
 			if(toggle_wing_spread(message = 1))
 				m_type = 1
 				message = "[spread ? "extends" : "retracts"] their wings."
-				src.wing_spread_start()
 			else
 				return 1
 		if ("mlem")
@@ -1277,6 +1276,8 @@
 	var/new_flapping = isnull(setting) ? !flapping : setting
 	if(new_flapping != flapping)
 		flapping = setting
+		if(flapping)
+			spread = FALSE
 		update_wing_showing()
 	return 1
 
@@ -1294,6 +1295,8 @@
 	var/new_spread = isnull(folded) ? !spread : folded
 	if(new_spread != spread)
 		spread = new_spread
+		if(spread)
+			flapping = FALSE
 		update_wing_showing()
 	return 1
 

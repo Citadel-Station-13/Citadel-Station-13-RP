@@ -116,7 +116,9 @@
 			O.see_emote(src, message, 2)
 
 		var/list/other_viewers = get_hearers_in_view(source = src)
-		for(var/mob/M in (other_viewers - vis_mobs) | GLOB.observer_list)
+		for(var/mob/M in (other_viewers - vis_mobs))
+			if(istype(M, /mob/observer))
+				continue
 			M.show_message(SPAN_SMALL("<i>[src] does something [pick("subtly", "discreetly", "hidden", "obscured")].</i>"), SAYCODE_TYPE_VISIBLE)
 
 /////// END

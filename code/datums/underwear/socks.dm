@@ -88,57 +88,6 @@
 	name = "Ripped Pantyhose"
 	icon_state = "pantyhose_ripped"
 
-//Stirrup Variants
-/datum/category_item/underwear/socks/pantyhose_stirrup
-	name = "Pantyhose (Stirrup)"
-	icon_state = "pantyhose-stir"
-
-/datum/category_item/underwear/socks/striped_knee_stirrup
-	name = "Knee, striped (Stirrup)"
-	icon_state = "striped_knee-stir"
-	has_color = TRUE
-
-/datum/category_item/underwear/socks/striped_thigh_stirrup
-	name = "Thigh, striped (Stirrup)"
-	icon_state = "striped_thigh-stir"
-	has_color = TRUE
-
-/datum/category_item/underwear/socks/rainbow_knee_stirrup
-	name = "Knee, rainbow (Stirrup)"
-	icon_state = "rainbow_knee-stir"
-
-/datum/category_item/underwear/socks/rainbow_thigh_stirrup
-	name = "Thigh, rainbow (Stirrup)"
-	icon_state = "rainbow_thigh-stir"
-
-/datum/category_item/underwear/socks/knee_stirrup
-	name = "Knee (Stirrup)"
-	icon_state = "socks_knee-stir"
-	has_color = TRUE
-
-/datum/category_item/underwear/socks/thigh_stirrup
-	name = "Thigh (Stirrup)"
-	icon_state = "socks_thigh-stir"
-	has_color = TRUE
-
-/datum/category_item/underwear/socks/thigh_stirrup/shorter
-	name = "Thigh (Stirrup) (Shorter)"
-	icon_state = "socks_thigh_short-stir"
-	has_color = TRUE
-
-/datum/category_item/underwear/socks/thigh_stirrup/shortest
-	name = "Thigh (Stirrup) (Shortest)"
-	icon_state = "socks_thigh_shortest-stir"
-	has_color = TRUE
-
-/datum/category_item/underwear/socks/leggings_stirrup
-	name = "Leggings (Stirrup)"
-	icon_state = "leggings-stir"
-	has_color = TRUE
-/datum/category_item/underwear/socks/pantyhose_rip_stirrup
-	name = "Ripped Pantyhose (Stirrup)"
-	icon_state = "pantyhose_ripped-stir"
-
 /datum/category_item/underwear/socks/commie_thigh
 	name = "Thigh, Communist"
 	icon_state = "commie_thigh"
@@ -262,6 +211,173 @@
 	icon_state = "socks_thigh_stripe_shortest"
 	has_color = TRUE
 
+/datum/category_item/underwear/socks/fishnet_thigh
+	name = "Filled Fishnets"
+	icon_state = "fishnet_thigh"
+	has_color = TRUE
+
+//Stirrup Varients
+
+/datum/category_item/underwear/socks/thin_thigh_shortest_stirrup
+	name = "Thigh, Thin, Shortest, Stirrup"
+	icon_state = "thin_thigh_shortest_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thin_thigh_short_stirrup
+	name = "Thigh, Thin, Short, Stirrup"
+	icon_state = "thin_thigh_short_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/christmas_thigh_stirrup
+	name = "Thigh, Christmas, Stirrup"
+	icon_state = "christmas_thigh_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/stockings_orange_stirrup
+	name = "Orange Stockings, Stirrup"
+	icon_state = "stockings_orange_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/stockings_lpink_stirrup
+	name = "Light Pink Stockings, Stirrup"
+	icon_state = "stockings_lpink_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/stockings_purple_stirrup
+	name = "Purple Stockings, Stirrup"
+	icon_state = "stockings_purple_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/stockings_yellow_stirrup
+	name = "Yellow Stockings, Stirrup"
+	icon_state = "stockings_ywllow_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/stockings_blue_stirrup
+	name = "Blue Stockings, Stirrup"
+	icon_state = "stockings_blue_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/stockings_cyan_stirrup
+	name = "Cyan Stockings, Stirrup"
+	icon_state = "stockings_cyan_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/stockings_dpink_stirrup
+	name = "Dark Pink Stockings, Stirrup"
+	icon_state = "stockings_dpink_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/stockings_green_stirrup
+	name = "Green Stockings, Stirrup"
+	icon_state = "stockings_green_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/christmas_norm_stirrup
+	name = "Normal, Christmas, Stirrup"
+	icon_state = "christmas_norm_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/candycaneg_knee_stirrup
+	name = "Knee, Green Candycane, Stirrup"
+	icon_state = "candycaneg_knee_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/candycaneg_norm_stirrup
+	name = "Normal, Green Candycane, Stirrup"
+	icon_state = "candycaneg_norm_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/candycaneg_thigh_stirrup
+	name = "Thigh, Green Candycane, Stirrup"
+	icon_state = "candycaneg_thigh_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/candycaner_knee_stirrup
+	name = "Knee, Red Candycane, Stirrup"
+	icon_state = "candycaner_knee_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/candycaner_norm_stirrup
+	name = "Normal, Red Candycane, Stirrup"
+	icon_state = "candycaner_norm_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/candycaner_thigh_stirrup
+	name = "Thigh, Red Candycane, Stirrup"
+	icon_state = "candycaner_thigh_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/assblastusa_thigh_stirrup
+	name = "Thigh, USA, Stirrup"
+	icon_state = "assblastusa_thigh_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/assblastusa_knee_stirrup
+	name = "Knee, USA, Stirrup"
+	icon_state = "assblastusa_knee_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/uk_knee_stirrup
+	name = "Knee, UK, Stirrup"
+	icon_state = "uk_knee_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/uk_thigh_stirrup
+	name = "Thigh, UK, Stirrup"
+	icon_state = "uk_thigh_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/garter_stirrup
+	name = "Garters, Stirrup"
+	icon_state = "garter_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/bee_knee_stirrup
+	name = "Knee, Bee, Stirrup"
+	icon_state = "bee_knee_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/bee_norm_stirrup
+	name = "Normal, Bee, Stirrup"
+	icon_state = "bee_norm_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/bee_thigh_stirrup
+	name = "Thigh, Bee, Stirrup"
+	icon_state = "bee_thigh_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/christmas_knee_stirrup
+	name = "Knee, Christmas, Stirrup"
+	icon_state = "christmas_knee_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/commie_knee_stirrup
+	name = "Knee, Communist, Stirrup"
+	icon_state = "commie_knee_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thin_thigh_stirrup
+	name = "Thigh, Thin, Stirrup"
+	icon_state = "thin_thigh_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thin_knee_stirrup
+	name = "Knee, Thin, Stirrup"
+	icon_state = "thin_knee_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/rainbow_thigh_stirrup
+	name = "Thigh, Rainbow, Stirrup"
+	icon_state = "rainbow_thigh_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/rainbow_knee_stirrup
+	name = "Knee, Rainbow, Stirrup"
+	icon_state = "rainbow_knee_stirrup"
+	has_color = TRUE
+
 /datum/category_item/underwear/socks/thigh_stripe_stirrup
 	name = "Thigh, Stripe, Stirrup"
 	icon_state = "socks_thigh_stripe_stirrup"
@@ -277,7 +393,53 @@
 	icon_state = "socks_thigh_stripe_shortest_stirrup"
 	has_color = TRUE
 
-/datum/category_item/underwear/socks/fishnet_thigh
-	name = "Filled Fishnets"
-	icon_state = "fishnet_thigh"
+/datum/category_item/underwear/socks/pantyhose_stirrup
+	name = "Pantyhose (Stirrup)"
+	icon_state = "pantyhose-stir"
+
+/datum/category_item/underwear/socks/striped_knee_stirrup
+	name = "Knee, striped (Stirrup)"
+	icon_state = "striped_knee-stir"
 	has_color = TRUE
+
+/datum/category_item/underwear/socks/striped_thigh_stirrup
+	name = "Thigh, striped (Stirrup)"
+	icon_state = "striped_thigh-stir"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/rainbow_knee_stirrup
+	name = "Knee, rainbow (Stirrup)"
+	icon_state = "rainbow_knee-stir"
+
+/datum/category_item/underwear/socks/rainbow_thigh_stirrup
+	name = "Thigh, rainbow (Stirrup)"
+	icon_state = "rainbow_thigh-stir"
+
+/datum/category_item/underwear/socks/knee_stirrup
+	name = "Knee (Stirrup)"
+	icon_state = "socks_knee-stir"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thigh_stirrup
+	name = "Thigh (Stirrup)"
+	icon_state = "socks_thigh-stir"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thigh_stirrup/shorter
+	name = "Thigh (Stirrup) (Shorter)"
+	icon_state = "socks_thigh_short-stir"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thigh_stirrup/shortest
+	name = "Thigh (Stirrup) (Shortest)"
+	icon_state = "socks_thigh_shortest-stir"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/leggings_stirrup
+	name = "Leggings (Stirrup)"
+	icon_state = "leggings-stir"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/pantyhose_rip_stirrup
+	name = "Ripped Pantyhose (Stirrup)"
+	icon_state = "pantyhose_ripped-stir"

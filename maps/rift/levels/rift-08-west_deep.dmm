@@ -1348,7 +1348,7 @@
 /area/rnd/outpost/underground)
 "mi" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/beige/border,
@@ -1958,7 +1958,7 @@
 /area/gateway/prep_room)
 "rb" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -2558,7 +2558,7 @@
 /turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "xf" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2662,7 +2662,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/gateway)
 "yp" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -2845,7 +2845,7 @@
 /area/outpost/mining_main/refinery)
 "zA" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Gateway Civilian Prep"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -2894,7 +2894,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -2968,7 +2968,7 @@
 /turf/simulated/mineral/ignore_cavegen/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "AW" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -3816,7 +3816,7 @@
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/outpost/recreation)
 "In" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/closet/hydrant{
@@ -4271,7 +4271,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
 "Mo" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -4279,7 +4279,7 @@
 /area/outpost/mining_main/outpost/airlock/three)
 "Mp" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Material Processing";
 	req_one_access = list(48)
 	},
@@ -4364,7 +4364,7 @@
 /area/rift/surfacebase/outside/west_deep)
 "Nl" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Gateway Prep"
 	},
 /obj/machinery/door/firedoor/multi_tile{
@@ -4374,7 +4374,7 @@
 /area/gateway/prep_room)
 "Nq" = (
 /obj/structure/table/reinforced,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -5514,7 +5514,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/cable/green{
@@ -5657,7 +5657,7 @@
 /area/quartermaster/belterdock)
 "ZY" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+	dir = 4
 	},
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 1

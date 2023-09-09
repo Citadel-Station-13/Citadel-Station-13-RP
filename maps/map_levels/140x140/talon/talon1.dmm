@@ -264,7 +264,7 @@
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/port_eng)
 "cB" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -352,7 +352,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -692,7 +692,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "gj" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/industrial/outline/red,
@@ -814,7 +814,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -863,7 +863,7 @@
 /obj/item/spaceflare,
 /obj/item/storage/box/flashshells/large,
 /obj/item/gun/ballistic/shotgun/flare,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -1241,7 +1241,7 @@
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/deckone/central_hallway)
 "kJ" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -1343,7 +1343,7 @@
 /area/talon/deckone/central_hallway)
 "lv" = (
 /obj/structure/catwalk,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
@@ -1396,7 +1396,7 @@
 /area/talon/deckone/central_hallway)
 "ms" = (
 /obj/structure/catwalk,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
@@ -1442,7 +1442,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -1848,7 +1848,7 @@
 /turf/simulated/wall/rshull,
 /area/talon/maintenance/deckone_starboard_aft_wing)
 "qf" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -1864,7 +1864,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "qi" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/eris/dark/monofloor,
@@ -2086,7 +2086,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
 "rX" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/industrial/outline/red,
@@ -2151,7 +2151,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Workroom"
 	},
 /obj/machinery/door/firedoor/glass/talon,
@@ -2289,7 +2289,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/up/scrubbers{
 	dir = 8
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -2775,7 +2775,7 @@
 	dir = 1;
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -2826,7 +2826,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/up/supply{
 	dir = 4
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -3159,7 +3159,7 @@
 	pixel_y = -8
 	},
 /obj/item/surgical/bioregen,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -3191,7 +3191,7 @@
 	},
 /obj/structure/table/standard,
 /obj/machinery/photocopier/faxmachine/talon,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -3676,7 +3676,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "DX" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
@@ -3806,7 +3806,7 @@
 /obj/item/stack/marker_beacon/thirty,
 /obj/item/pipe_dispenser,
 /obj/item/inducer/syndicate,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
@@ -4127,7 +4127,7 @@
 /obj/item/tank/jetpack/carbondioxide,
 /obj/item/tank/jetpack/carbondioxide,
 /obj/item/tank/jetpack/carbondioxide,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -4157,7 +4157,7 @@
 /obj/structure/table/standard,
 /obj/item/paper_bin,
 /obj/item/pen,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -5005,7 +5005,7 @@
 	dir = 1;
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -6045,7 +6045,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},

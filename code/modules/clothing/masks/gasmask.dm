@@ -12,7 +12,7 @@
 	siemens_coefficient = 0.9
 	armor_type = /datum/armor/mask/gas
 	var/gas_filter_strength = 1			//For gas mask filters
-	var/list/filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide)
+	var/list/filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE)
 
 /obj/item/clothing/mask/gas/filter_air(datum/gas_mixture/air)
 	var/datum/gas_mixture/gas_filtered = new
@@ -107,7 +107,7 @@
 	atom_flags = PHORONGUARD
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS
 	species_restricted = list(SPECIES_VOX)
-	filtered_gases = list(/datum/gas/oxygen, /datum/gas/nitrous_oxide)
+	filtered_gases = list(GAS_ID_OXYGEN, GAS_ID_NITROUS_OXIDE)
 	var/mask_open = FALSE	// Controls if the Vox can eat through this mask
 	action_button_name = "Toggle Feeding Port"
 
@@ -127,7 +127,6 @@
 	if(.)
 		return
 	feeding_port(user)
-	..()
 
 /obj/item/clothing/mask/gas/zaddat
 	name = "Zaddat Veil"
@@ -136,16 +135,21 @@
 	item_state = "vax_mask"
 	//body_cover_flags = 0
 	species_restricted = list(SPECIES_ZADDAT)
+	filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE, GAS_ID_NITROGEN)
 	inv_hide_flags = HIDEEARS //semi-transparent
-	filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide, /datum/gas/nitrogen)
 
 /obj/item/clothing/mask/gas/opaque
 	name = "Opaque Mask"
+	desc = "A face-covering mask with an opaque faceplate that can be connected to an air supply. Despite being stripped of all advanced technolgy, it still seems airtight."
+	icon_state = "opaque_mask"
+	inv_hide_flags = null
+
+/obj/item/clothing/mask/gas/opaque_nitrogen
+	name = "Opaque Mask - Oxygen Filter"
 	desc = "A face-covering mask with an opaque faceplate that can be connected to an air supply, often used by various alien races to filter out oxygen."
 	icon_state = "opaque_mask"
 	inv_hide_flags = null
-	filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide, /datum/gas/oxygen)
-
+	filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE, GAS_ID_OXYGEN)
 
 /obj/item/clothing/mask/gas/syndicate
 	name = "tactical mask"
