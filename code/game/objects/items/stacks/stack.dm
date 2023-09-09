@@ -10,8 +10,6 @@
 	var/amount = 1
 	/// See stack recipes initialisation, param "max_res_amount" must be equal to this max_amount.
 	var/max_amount = 50
-	/// bandaid until new inventorycode
-	var/mid_delete = FALSE
 	/// Determines whether different stack types can merge.
 	var/stacktype
 	/// Used when directly applied to a turf.
@@ -41,12 +39,6 @@
 				merge(S)
 	update_icon()
 
-/obj/item/stack/Destroy()
-	if (src && usr && usr.machine == src)
-		usr << browse(null, "window=stack")
-	mid_delete = TRUE
-	return ..()
-
 /obj/item/stack/update_icon()
 	if(no_variants)
 		icon_state = initial(icon_state)
@@ -74,16 +66,23 @@
 
 /obj/item/stack/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	.["recipes"] = tgui_recipes()
+	.["maxAmount"] = max_amount
+
+/obj/item/stack/proc/tgui_recipes()
 	#warn impl
 
 /obj/item/stack/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	#warn impl
+	.["amount"] = amount
 
 /obj/item/stack/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
+	#warn impl
+
+/obj/item/stack/proc/can_craft_recipe(datum/stack_recipe/recipe)
 	#warn impl
 
 /obj/item/stack/proc/list_recipes(mob/user, recipes_sublist)
@@ -235,8 +234,6 @@
 /obj/item/stack/proc/can_merge(obj/item/stack/other)
 	if(!istype(other))
 		return FALSE
-	if(mid_delete || other.mid_delete) // bandaid until new inventory code
-		return FALSE
 	if((strict_color_stacking || other.strict_color_stacking) && (color != other.color))
 		return FALSE
 	return other.stacktype == stacktype
@@ -247,7 +244,6 @@
 	if(!uses_charge)
 		amount -= used
 		if (amount <= 0)
-			mid_delete = TRUE
 			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 		update_icon()
 		return TRUE
