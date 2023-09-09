@@ -327,20 +327,6 @@
 	var/datum/species/real = SScharacters.resolve_species_name(base_species)
 	return real.real_race_key(H)
 
-/datum/species/shapeshifter/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
-	if(H.xenochimera_danger_display)
-		H.xenochimera_danger_display.invisibility = 0
-		if(danger && feral)
-			H.xenochimera_danger_display.icon_state = "danger11"
-		else if(danger && !feral)
-			H.xenochimera_danger_display.icon_state = "danger10"
-		else if(!danger && feral)
-			H.xenochimera_danger_display.icon_state = "danger01"
-		else
-			H.xenochimera_danger_display.icon_state = "danger00"
-
-	return
-
 /atom/movable/screen/xenochimera
 	icon = 'icons/mob/chimerahud.dmi'
 	invisibility = 101
@@ -349,6 +335,12 @@
 	name = "danger level"
 	icon_state = "danger00"		//first number is bool of whether or not we're in danger, second is whether or not we're feral
 	alpha = 200
+
+/datum/species/shapeshifter/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
+	if(H.xenochimera_danger_display)
+		H.xenochimera_danger_display.invisibility = 0
+		H.xenochimera_danger_display.icon_state = "danger[danger][feral > 0]"
+	return
 
 //Verbs Follow
 
