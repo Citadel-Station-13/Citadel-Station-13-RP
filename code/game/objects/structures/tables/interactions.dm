@@ -82,7 +82,8 @@
 				else
 					to_chat(user, "<span class='danger'>You need a better grip to do that!</span>")
 					return
-			else if(G.state > GRAB_AGGRESSIVE || world.time >= (G.last_action + UPGRADE_COOLDOWN))
+			else if(G.state > GRAB_AGGRESSIVE || world.time >= (G.last_action + 4 SECONDS))
+				// todo: refactor
 				M.forceMove(get_turf(src))
 				M.afflict_paralyze(20 * 5)
 				visible_message("<span class='danger'>[G.assailant] puts [G.affecting] on \the [src].</span>")

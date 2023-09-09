@@ -20,12 +20,6 @@
 /obj/item/clothing/update_material_single(datum/material/material)
 	. = ..()
 	name = "[material.display_name] [initial(name)]"
-	var/needs_ticking = MATERIAL_NEEDS_PROCESSING(material)
-	var/is_ticking = atom_flags & ATOM_MATERIALS_TICKING
-	if(needs_ticking && !is_ticking)
-		START_TICKING_MATERIALS(src)
-	else if(!needs_ticking && is_ticking)
-		STOP_TICKING_MATERIALS(src)
 	set_armor(material.create_armor(material_significance))
 	if(material_color)
 		color = material.icon_colour

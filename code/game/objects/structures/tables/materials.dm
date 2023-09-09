@@ -39,9 +39,6 @@
 	if(material != old)
 		unregister_material(old, primary)
 		register_material(material, primary)
-	if(!multi)
-		update_appearance()
-		update_connections()
 
 /obj/structure/table/material_init_parts()
 	material_base = SSmaterials.resolve_material(material_base)

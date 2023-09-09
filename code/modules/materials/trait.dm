@@ -40,7 +40,7 @@
  * @return MATERIAL_DEFEND_* flags
  */
 /datum/material_trait/proc/on_mob_defense(obj/item/host, data, mob/target, zone, datum/weapon, attack_type)
-	return
+	#warn shieldcalls?
 
 /**
  * called when something with this material attacks an atom that isn't a mob
@@ -70,7 +70,7 @@
  * @return MATERIAL_DEFEND_* flags
  */
 /datum/material_trait/proc/on_obj_defense(atom/host, data, datum/weapon, attack_type)
-	return
+	#warn shieldcalls?
 
 /**
  * called when examined

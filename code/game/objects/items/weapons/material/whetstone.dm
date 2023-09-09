@@ -90,7 +90,7 @@
 				uses -= M.w_class*2
 				return
 		else
-			to_chat(user, "Not enough material to sharpen [M]. You need [M.w_class*2] [M.material.sheet_plural_name].")
+			to_chat(user, "Not enough material to sharpen [M]. You need [M.w_class*2] [M.get_material_part(MATERIAL_PART_DEFAULT).sheet_plural_name].")
 			return
 	else
 		to_chat(user, "You can't sharpen [W] with [src]!")
