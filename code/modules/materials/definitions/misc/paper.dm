@@ -2,7 +2,6 @@
 	id = "cardboard"
 	name = "cardboard"
 	stack_type = /obj/item/stack/material/cardboard
-	flags = MATERIAL_BRITTLE
 	icon_base = 'icons/turf/walls/solid.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
 	icon_colour = "#AAAAAA"

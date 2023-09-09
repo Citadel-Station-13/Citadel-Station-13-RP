@@ -2,7 +2,6 @@
 	id = "snow"
 	name = MAT_SNOW
 	stack_type = /obj/item/stack/material/snow
-	flags = MATERIAL_BRITTLE
 	icon_base = 'icons/turf/walls/solid.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
 	icon_colour = "#FFFFFF"
@@ -27,7 +26,6 @@
 /datum/material/snowbrick //only slightly stronger than snow, used to make igloos mostly
 	id = "snow_packed"
 	name = "packed snow"
-	flags = MATERIAL_BRITTLE
 	stack_type = /obj/item/stack/material/snowbrick
 	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_stone.dmi'

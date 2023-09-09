@@ -2,7 +2,6 @@
 	name = "plastic"
 	id = "plastic"
 	stack_type = /obj/item/stack/material/plastic
-	flags = MATERIAL_BRITTLE
 	icon_base = 'icons/turf/walls/solid_wall.dmi'
 	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#CCCCCC"

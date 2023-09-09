@@ -2,7 +2,6 @@
 	id = "diamond"
 	name = "diamond"
 	stack_type = /obj/item/stack/material/diamond
-	flags = MATERIAL_UNMELTABLE
 	cut_delay = 60
 	icon_colour = "#00FFE1"
 	opacity = 0.4

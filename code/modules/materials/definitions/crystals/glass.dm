@@ -2,7 +2,6 @@
 	id = "glass"
 	name = "glass"
 	stack_type = /obj/item/stack/material/glass
-	flags = MATERIAL_BRITTLE
 	icon_colour = "#00E1FF"
 	opacity = 0.3
 	relative_integrity = 0.25
@@ -112,7 +111,6 @@
 	name = "rglass"
 	display_name = "reinforced glass"
 	stack_type = /obj/item/stack/material/glass/reinforced
-	flags = MATERIAL_BRITTLE
 	icon_colour = "#00E1FF"
 	opacity = 0.
 	relative_integrity = 0.5
@@ -143,7 +141,6 @@
 	name = "borosilicate glass"
 	display_name = "borosilicate glass"
 	stack_type = /obj/item/stack/material/glass/phoronglass
-	flags = MATERIAL_BRITTLE
 	relative_integrity = 1
 	icon_colour = "#FC2BC5"
 	stack_origin_tech = list(TECH_MATERIAL = 4)

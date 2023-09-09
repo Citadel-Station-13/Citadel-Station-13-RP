@@ -4,7 +4,6 @@
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	stack_type = /obj/item/stack/material/cloth
 	door_icon_base = "wood"
-	flags = MATERIAL_PADDING
 	ignition_point = T0C+232
 	melting_point = T0C+300
 	pass_stack_colors = TRUE
