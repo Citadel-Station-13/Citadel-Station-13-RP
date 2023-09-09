@@ -4,6 +4,8 @@
  * @return null if invalid (e.g. if table has other tables connected parallel to direction of flip), list of tables otherwise.
  */
 /obj/structure/table/proc/tableflip_closure(dir_to_flip, unflipping = FALSE)
+	if(!unflipping && isnull(material_base))
+		return
 	if(!isturf(loc))
 		return
 	// no stacked tables

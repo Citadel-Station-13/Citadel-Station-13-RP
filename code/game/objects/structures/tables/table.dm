@@ -174,6 +174,8 @@ var/list/table_icon_cache = list()
 		user.actor_construction_log(src, "de-plated")
 		material_base.place_sheet(loc, 1)
 		set_material_part("base", null)
+		if(flipped)
+			set_unflipped()
 	return TRUE
 
 /obj/structure/table/screwdriver_act(obj/item/I, mob/user, flags, hint)
@@ -230,20 +232,20 @@ var/list/table_icon_cache = list()
 	return ..()
 
 /obj/structure/table/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	if(!carpeted && !isnull(material_base) && istype(W, /obj/item/stack/tile/carpet))
-		var/obj/item/stack/tile/carpet/C = W
+	if(!carpeted && !isnull(material_base) && istype(I, /obj/item/stack/tile/carpet))
+		var/obj/item/stack/tile/carpet/C = I
 		if(C.use(1))
 			user.visible_message("<span class='notice'>\The [user] adds \the [C] to \the [src].</span>",
 			                              "<span class='notice'>You add \the [C] to \the [src].</span>")
 			carpeted = 1
-			carpeted_type = W.type
+			carpeted_type = I.type
 			update_icon()
-			return 1
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		else
 			to_chat(user, "<span class='warning'>You don't have enough carpet!</span>")
 
-	if(integrity < integrity_max && istype(W, /obj/item/weldingtool))
-		var/obj/item/weldingtool/F = W
+	if(integrity < integrity_max && istype(I, /obj/item/weldingtool))
+		var/obj/item/weldingtool/F = I
 		if(F.welding)
 			to_chat(user, "<span class='notice'>You begin reparing damage to \the [src].</span>")
 			playsound(src, F.tool_sound, 50, 1)
@@ -252,45 +254,80 @@ var/list/table_icon_cache = list()
 			user.visible_message("<span class='notice'>\The [user] repairs some damage to \the [src].</span>",
 			                              "<span class='notice'>You repair some damage to \the [src].</span>")
 			adjust_integrity(integrity_max / 2)
-			return 1
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
-	if(!material && can_plate && istype(W, /obj/item/stack/material))
-		material = common_material_add(W, user, "plat")
-		if(material)
-			update_connections(1)
-			update_icon()
-			update_desc()
-		return 1
+	if(istype(I, /obj/item/stack/material))
+		attempt_material_plate(I, user)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 	return ..()
 
-/obj/structure/table/MouseDroppedOnLegacy(obj/item/stack/material/what)
-	if(can_reinforce && isliving(usr) && (!usr.stat) && istype(what) && usr.get_active_held_item() == what && Adjacent(usr))
-		reinforce_table(what, usr)
-	else
-		return ..()
-
-/obj/structure/table/proc/reinforce_table(obj/item/stack/material/S, mob/user)
-	if(get_material_part("reinf"))
-		to_chat(user, "<span class='warning'>\The [src] is already reinforced!</span>")
+/obj/structure/table/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
+	if(!user.Adjacent(src))
+		return
+	if(!istype(dropping, /obj/item/stack/material))
+		return
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
+		user.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+		return
+	attempt_material_reinforce(dropping, user)
 
+/obj/structure/table/proc/attempt_material_plate(obj/item/stack/material/using, mob/user)
+	if(!isnull(material_base))
+		user.action_feedback(SPAN_WARNING("[src] is already plated."), src)
+		return FALSE
+	if(!can_plate)
+		user.action_feedback(SPAN_WARNING("[src] can't be plated."), src)
+		return FALSE
+	user.actor_construction_log(src, "started plating with [using.material]")
+	if(!do_after(user, 1 SECONDS, src, mobility_flags = MOBILITY_CAN_USE))
+		return FALSE
+	if(!isnull(material_base))
+		return FALSE
+	user.visible_action_feedback(
+		target = src,
+		hard_range = MESSAGE_RANGE_CONSTRUCTION,
+		visible_hard = SPAN_NOTICE("[user] plates \the [src] with \the [using]."),
+		visible_self = SPAN_NOTICE("You plate \the [src] with \the [using]"),
+		audible_hard = SPAN_NOTICE("You hear someone putting a sheet of a heavy material on something, and bolts being tightened."),
+	)
+	user.actor_construction_log(src, "plated with [using.material]")
+	set_material_part("base", using.material)
+	using.use(1)
+	return TRUE
+
+/obj/structure/table/proc/attempt_material_reinforce(obj/item/stack/material/using, mob/user)
+	if(isnull(material_base))
+		user.action_feedback(SPAN_WARNING("[src] needs to be plated first."), src)
+		return FALSE
+	if(!isnull(material_reinforcing))
+		user.action_feedback(SPAN_WARNING("[src] is already reinforced."), src)
+		return FALSE
 	if(!can_reinforce)
-		to_chat(user, "<span class='warning'>\The [src] cannot be reinforced!</span>")
-		return
-
-	if(!get_material_part("base"))
-		to_chat(user, "<span class='warning'>Plate \the [src] before reinforcing it!</span>")
-		return
-
+		user.action_feedback(SPAN_WARNING("[src] can't be reinforced."), src)
+		return FALSE
 	if(flipped)
-		to_chat(user, "<span class='warning'>Put \the [src] back in place before reinforcing it!</span>")
-		return
-
-	reinforced = common_material_add(S, user, "reinforc")
-	if(reinforced)
-		update_desc()
-		update_icon()
+		user.action_feedback(SPAN_WARNING("[src] can't be reinforced while flipped."), src)
+		return FALSE
+	user.actor_construction_log(src, "started reinforcing with [using.material]")
+	if(!do_after(user, 1 SECONDS, src, mobility_flags = MOBILITY_CAN_USE))
+		return FALSE
+	if(!isnull(material_base) || !isnull(material_reinforcing))
+		return FALSE
+	user.visible_action_feedback(
+		target = src,
+		hard_range = MESSAGE_RANGE_CONSTRUCTION,
+		visible_hard = SPAN_NOTICE("[user] reinforces \the [src] with \the [using]."),
+		visible_self = SPAN_NOTICE("You reinforce \the [src] with \the [using]"),
+		audible_hard = SPAN_NOTICE("You hear someone aligning a set of heavy rods, and screws being tightened."),
+	)
+	user.actor_construction_log(src, "reinforced with [using.material]")
+	set_material_part("reinf", using.material)
+	using.use(1)
+	return TRUE
 
 /obj/structure/table/update_name(updates)
 	name = isnull(material_base)? "table frame" : "[material_base.display_name] table"
@@ -303,23 +340,6 @@ var/list/table_icon_cache = list()
 	if(!isnull(material_reinforcing))
 		desc = "[desc] This one seems to be reinforced with [material_reinforcing.display_name]."
 	return ..()
-
-// Returns the material to set the table to.
-/obj/structure/table/proc/common_material_add(obj/item/stack/material/S, mob/user, verb) // Verb is actually verb without 'e' or 'ing', which is added. Works for 'plate'/'plating' and 'reinforce'/'reinforcing'.
-	var/datum/material/M = S.get_material()
-	if(!istype(M))
-		to_chat(user, "<span class='warning'>You cannot [verb]e \the [src] with \the [S].</span>")
-		return null
-
-	if(manipulating) return M
-	manipulating = 1
-	to_chat(user, "<span class='notice'>You begin [verb]ing \the [src] with [M.display_name].</span>")
-	if(!do_after(user, 20) || !S.use(1))
-		manipulating = 0
-		return null
-	user.visible_message("<span class='notice'>\The [user] [verb]es \the [src] with [M.display_name].</span>", "<span class='notice'>You finish [verb]ing \the [src].</span>")
-	manipulating = 0
-	return M
 
 // Returns a list of /obj/item/material/shard objects that were created as a result of this table's breakage.
 // Used for !fun! things such as embedding shards in the faces of tableslammed people.
@@ -381,15 +401,15 @@ var/list/table_icon_cache = list()
 			overlays_to_add += I
 
 		// Standard table image
-		if(material)
+		if(material_base)
 			for(var/i = 1 to 4)
-				var/image/I = get_table_image(icon, "[material.table_icon_base]_[connections[i]]", 1<<(i-1), material.icon_colour, 255 * material.opacity)
+				var/image/I = get_table_image(icon, "[material_base.table_icon_base]_[connections[i]]", 1<<(i-1), material_base.icon_colour, 255 * material_base.opacity)
 				overlays_to_add += I
 
 		// Reinforcements
-		if(reinforced)
+		if(material_reinforcing)
 			for(var/i = 1 to 4)
-				var/image/I = get_table_image(icon, "[reinforced.table_reinf_icon_base]_[connections[i]]", 1<<(i-1), reinforced.icon_colour, 255 * reinforced.opacity)
+				var/image/I = get_table_image(icon, "[material_reinforcing.table_reinf_icon_base]_[connections[i]]", 1<<(i-1), material_reinforcing.icon_colour, 255 * material_reinforcing.opacity)
 				overlays_to_add += I
 
 		if(carpeted)
@@ -401,7 +421,7 @@ var/list/table_icon_cache = list()
 		var/tabledirs = 0
 		for(var/direction in list(turn(dir,90), turn(dir,-90)) )
 			var/obj/structure/table/T = locate(/obj/structure/table ,get_step(src,direction))
-			if (T && T.flipped == 1 && T.dir == src.dir && material && T.material && T.material.name == material.name)
+			if (T && T.flipped == 1 && T.dir == src.dir && material_base && T.material_base && T.material_base.name == material_base.name)
 				type++
 				tabledirs |= direction
 
@@ -413,19 +433,19 @@ var/list/table_icon_cache = list()
 				type += "+"
 
 		icon_state = "flip[type]"
-		if(material)
-			var/image/I = image(icon, "[material.table_icon_base]_flip[type]")
-			I.color = material.icon_colour
-			I.alpha = 255 * material.opacity
+		if(material_base)
+			var/image/I = image(icon, "[material_base.table_icon_base]_flip[type]")
+			I.color = material_base.icon_colour
+			I.alpha = 255 * material_base.opacity
 			overlays_to_add += I
-			name = "[material.display_name] table"
+			name = "[material_base.display_name] table"
 		else
 			name = "table frame"
 
-		if(reinforced)
-			var/image/I = image(icon, "[reinforced.table_reinf_icon_base]_flip[type]")
-			I.color = reinforced.icon_colour
-			I.alpha = 255 * reinforced.opacity
+		if(material_reinforcing)
+			var/image/I = image(icon, "[material_reinforcing.table_reinf_icon_base]_flip[type]")
+			I.color = material_reinforcing.icon_colour
+			I.alpha = 255 * material_reinforcing.opacity
 			overlays_to_add += I
 
 		if(carpeted)
