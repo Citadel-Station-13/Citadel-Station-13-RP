@@ -9,7 +9,7 @@
 /datum/stack_recipe/oar/make(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir)
 	var/obj/item/stack/material/material_stack = stack
 	if(istype(material_stack))
-		for(var/i in 1 to amonut)
+		for(var/i in 1 to amount)
 			new result_type(where, material_stack.material)
 	else
 		for(var/i in 1 to amount)
@@ -23,7 +23,7 @@
 /datum/stack_recipe/boat/make(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir)
 	var/obj/item/stack/material/material_stack = stack
 	if(istype(material_stack))
-		for(var/i in 1 to amonut)
+		for(var/i in 1 to amount)
 			new result_type(where, material_stack.material)
 	else
 		for(var/i in 1 to amount)
@@ -37,7 +37,7 @@
 /datum/stack_recipe/dragon_boat/make(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir)
 	var/obj/item/stack/material/material_stack = stack
 	if(istype(material_stack))
-		for(var/i in 1 to amonut)
+		for(var/i in 1 to amount)
 			new result_type(where, material_stack.material)
 	else
 		for(var/i in 1 to amount)
@@ -51,7 +51,7 @@
 /datum/stack_recipe/pew/make(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir)
 	var/obj/item/stack/material/material_stack = stack
 	if(istype(material_stack))
-		for(var/i in 1 to amonut)
+		for(var/i in 1 to amount)
 			new result_type(where, material_stack.material)
 	else
 		for(var/i in 1 to amount)

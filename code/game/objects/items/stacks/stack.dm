@@ -66,11 +66,25 @@
 	else
 		. += "There is enough charge for [get_amount()]."
 
-/obj/item/stack/attack_self(mob/user)
+/obj/item/stack/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(isnull(ui))
+		ui = new(user, src, "StackCrafting")
+		ui.open()
+
+/obj/item/stack/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	#warn impl
+
+/obj/item/stack/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	#warn impl
+
+/obj/item/stack/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
-	list_recipes(user)
+	#warn impl
 
 /obj/item/stack/proc/list_recipes(mob/user, recipes_sublist)
 	if (!recipes)

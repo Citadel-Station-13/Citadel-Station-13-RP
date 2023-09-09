@@ -114,7 +114,6 @@
  * tgui stack recipe data
  */
 /datum/stack_recipe/proc/tgui_recipe_data()
-	#warn .tsx file
 	return list(
 		"sortOrder" = sort_order,
 		"name" = name,
