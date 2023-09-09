@@ -109,6 +109,7 @@
 	desc = "A hivebot that equipped with a long range magenetic weapon."
 	icon_state = "sniper"
 	icon_living = "sniper"
+	base_attack_cooldown = 60
 	projectiletype = /obj/projectile/bullet/magnetic
 	projectilesound = 'sound/weapons/railgun.ogg'
 	player_msg = "Your attacks are short-ranged, but can <b>arc over obstructions</b> such as allies \
