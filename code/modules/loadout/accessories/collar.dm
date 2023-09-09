@@ -26,6 +26,10 @@
 	name = "Collar - Shock"
 	path = /obj/item/clothing/accessory/collar/shock
 
+/datum/loadout_entry/collar/boom
+	name = "Collar - Explosive"
+	path = /obj/item/clothing/accessory/collar/shock/boom
+
 /datum/loadout_entry/collar/spike
 	name = "Collar - Spike"
 	path = /obj/item/clothing/accessory/collar/spike

@@ -770,6 +770,41 @@
 	onclose(user, "radio")
 	return
 
+//Copy of shock collar because I really don't want to copy and paste all of that code
+/obj/item/clothing/accessory/collar/shock/boom
+	name = "Explosive collar"
+	desc = "A collar used to terminate any unfortunate soul wearing it."
+	icon_state = "collar_shk0"
+	item_state = "collar_shk_overlay"
+	overlay_state = "collar_shk_overlay"
+	on = FALSE // 0 for off, 1 for on, starts off to encourage people to set non-default frequencies and codes.
+	frequency = 1449
+	code = 6
+
+//Copy of shock collar recieve signal, but modified
+/obj/item/clothing/accessory/collar/shock/boom/receive_signal(datum/signal/signal)
+	if(!signal || signal.encryption != code)
+		return
+
+	if(on)
+		var/mob/living/carbon/M = null
+		if(ismob(loc))
+			M = loc
+		if(ismob(loc.loc))
+			M = loc.loc // This is about as terse as I can make my solution to the whole 'collar won't work when attached as accessory' thing.
+		to_chat(M,"<span class='danger'>You hear a soul wrenching beep!</span>")
+		M.afflict_paralyze(20 * 10)
+		var/turf/T = get_turf(M.loc)
+		if(T)
+			T.hotspot_expose(700,125)
+			//Because I really want to see heads blow up
+			M.apply_damage(60, BURN, "head", used_weapon="Electrocution")
+			M.apply_damage(220, BRUTE, "head", used_weapon="Electrocution")
+			//Overkill is fun
+			explosion(T, 0, 0, 1, rand(1,2))
+			qdel(src)
+	return
+
 /obj/item/clothing/accessory/collar/spike
 	name = "Spiked collar"
 	desc = "A collar with spikes that look as sharp as your teeth."
