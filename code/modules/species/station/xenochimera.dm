@@ -205,7 +205,6 @@
 
 		// If they're hurt, chance of snapping.
 		else if(shock)
-
 			//If the majority of their shock is due to halloss, greater chance of snapping.
 			if(H.halloss >= H.traumatic_shock/2.5)
 				if(prob(min(10,(0.2 * H.traumatic_shock))))
@@ -233,39 +232,34 @@
 
 	// Handle being feral
 	if(feral)
-		//we're feral
 		feral_state = TRUE
 
-		//We check if the current spell list already has feral spells.
 		if(!has_feral_abilities)
 			add_feral_abilities(H)
 
-		//Shock due to mostly halloss. More feral.
+		// check conditions and increase ferality if they are still met
 		if(shock && H.halloss >= H.traumatic_shock/2.5)
 			danger = TRUE
 			feral = max(feral, H.halloss)
 
-		//Shock due to mostly injury. More feral.
 		else if(shock)
 			danger = TRUE
 			feral = max(feral, H.traumatic_shock * 2)
 
-		//Still jittery? More feral.
 		if(jittery)
 			danger = TRUE
 			feral = max(feral, H.jitteriness-100)
 
-		//Still hungry? More feral.
+		// if not hungry, reduce feral by 1
 		if(H.feral + H.nutrition < 150)
 			danger = TRUE
 			feral++
 		else
 			feral = max(0,--feral)
 
-		//Set our real mob's var to our temp var
 		H.feral = feral
 
-		//Did we just finish being feral?
+		//Handle no longer being feral
 		if(!feral)
 			feral_state = FALSE
 			if(has_feral_abilities)
@@ -306,28 +300,22 @@
 			update_xenochimera_hud(H, danger, feral_state)
 			return
 
-		// In the darkness or "hidden". No need for custom scene-protection checks as it's just an occational infomessage.
+		// In the darkness or "hidden". No need for custom scene-protection checks as it's just an occational infomessage based on the main feral conditions
 		if(darkish || !isturf(H.loc))
-			// If hurt, tell 'em to heal up
 			if (shock)
 				to_chat(H,"<span class='info'>This place seems safe, secure, hidden, a place to lick your wounds and recover...</span>")
 
-			//If hungry, nag them to go and find someone or something to eat.
 			else if(hungry)
 				to_chat(H,"<span class='info'>Secure in your hiding place, your hunger still gnaws at you. You need to catch some food...</span>")
 
-			//If jittery, etc
 			else if(jittery)
 				to_chat(H,"<span class='info'>sneakysneakyyesyesyescleverhidingfindthingsyessssss</span>")
 
-			//Otherwise, just tell them to keep hiding.
 			else
 				to_chat(H,"<span class='info'>...safe...</span>")
 
 		// NOT in the darkness
 		else
-
-			//Twitch twitch
 			if(!H.stat)
 				H.emote("twitch")
 
