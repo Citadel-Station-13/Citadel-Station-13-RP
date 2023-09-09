@@ -152,19 +152,6 @@
 			H.eye_blurry = max(5,H.eye_blurry)
 	..()
 
-/datum/species/shapeshifter/xenochimera/proc/add_feral_abilities(var/mob/living/carbon/human/H)
-	if(!has_feral_abilities)
-		has_feral_abilities = TRUE
-	else
-		return
-
-/datum/species/shapeshifter/xenochimera/proc/remove_feral_abilities(var/mob/living/carbon/human/H)
-	if(has_feral_abilities)
-		has_feral_abilities = FALSE
-	else
-		return
-
-
 /datum/species/shapeshifter/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
 
 	//Low-ish nutrition has messages and eventually feral
@@ -234,8 +221,7 @@
 	if(feral)
 		feral_state = TRUE
 
-		if(!has_feral_abilities)
-			add_feral_abilities(H)
+		has_feral_abilities = TRUE
 
 		// check conditions and increase ferality if they are still met
 		if(shock && H.halloss >= H.traumatic_shock/2.5)
@@ -262,8 +248,7 @@
 		//Handle no longer being feral
 		if(!feral)
 			feral_state = FALSE
-			if(has_feral_abilities)
-				remove_feral_abilities(H)
+			has_feral_abilities = FALSE
 			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
 			log_and_message_admins("is no longer feral.", H)
 			update_xenochimera_hud(H, danger, feral_state)
@@ -338,7 +323,6 @@
 				else
 					to_chat(H,"<span class='danger'>Confusing sights and sounds and smells surround you, this place is wrong, confusing, frightening. You need to hide, go to ground...</span>")
 
-	// HUD update time
 	update_xenochimera_hud(H, danger, feral_state)
 
 /datum/species/shapeshifter/xenochimera/get_bodytype_legacy()
