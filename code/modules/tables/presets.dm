@@ -22,7 +22,7 @@
 	color = "#CCCCCC"
 
 /obj/structure/table/marble/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/sandstone/marble)
+	material = SSmaterials.get_material(/datum/material/marble)
 	return ..()
 
 /obj/structure/table/reinforced
@@ -51,7 +51,7 @@
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/wooden_reinforced/Initialize(mapload)
-	material   = SSmaterials.get_material(/datum/material/wood)
+	material   = SSmaterials.get_material(/datum/material/wood_plank)
 	reinforced = SSmaterials.get_material(/datum/material/steel)
 	return ..()
 
@@ -63,7 +63,7 @@
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/woodentable/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood)
+	material = SSmaterials.get_material(/datum/material/wood_plank)
 	return ..()
 
 /obj/structure/table/sifwoodentable
@@ -74,7 +74,7 @@
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/sifwoodentable/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood/sif)
+	material = SSmaterials.get_material(/datum/material/wood_plank/sif)
 	return ..()
 
 /obj/structure/table/sifwooden_reinforced
@@ -85,7 +85,7 @@
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/sifwooden_reinforced/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood/sif)
+	material = SSmaterials.get_material(/datum/material/wood_plank/sif)
 	reinforced = SSmaterials.get_material(MAT_STEEL)
 	return ..()
 
@@ -97,14 +97,14 @@
 	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/hardwoodtable/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood/hardwood)
+	material = SSmaterials.get_material(/datum/material/wood_plank/hardwood)
 	return ..()
 
 /obj/structure/table/gamblingtable
 	icon_state = "gamble_preview"
 
 /obj/structure/table/gamblingtable/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood/)
+	material = SSmaterials.get_material(/datum/material/wood_plank/)
 	carpeted = 1
 	return ..()
 
@@ -141,7 +141,7 @@
 	icon_state = "holo_preview"
 
 /obj/structure/table/woodentable/holotable/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood/holographic)
+	material = SSmaterials.get_material(/datum/material/wood_plank/holographic)
 	return ..()
 
 /obj/structure/table/alien
@@ -222,7 +222,7 @@
 	color = "#CCCCCC"
 
 /obj/structure/table/bench/marble/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/sandstone/marble)
+	material = SSmaterials.get_material(/datum/material/marble)
 	return ..()
 
 /*
@@ -249,7 +249,7 @@
 	color = "#824B28"
 
 /obj/structure/table/bench/wooden_reinforced/New()
-	material = SSmaterials.get_material(/datum/material/wood)
+	material = SSmaterials.get_material(/datum/material/wood_plank)
 	reinforced = SSmaterials.get_material(/datum/material/steel)
 	..()
 */
@@ -258,7 +258,7 @@
 	color = "#824B28"
 
 /obj/structure/table/bench/wooden/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood)
+	material = SSmaterials.get_material(/datum/material/wood_plank)
 	return ..()
 
 /obj/structure/table/bench/sifwooden
@@ -266,7 +266,7 @@
 	color = "#824B28"
 
 /obj/structure/table/bench/sifwooden/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/wood/sif)
+	material = SSmaterials.get_material(/datum/material/wood_plank/sif)
 	return ..()
 
 /obj/structure/table/bench/sifwooden/padded
@@ -319,6 +319,6 @@
 	icon_state = "holo_preview"
 
 /obj/structure/table/bench/wooden/holotable/New()
-	material = SSmaterials.get_material(/datum/material/wood/holographic)
+	material = SSmaterials.get_material(/datum/material/wood_plank/holographic)
 	..()
 */

@@ -11,6 +11,118 @@
 	conductive = 0
 	pass_stack_colors = TRUE
 
+/datum/material/cloth/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(
+		name = "uniform",
+		product = /obj/item/clothing/under/color/white,
+		cost = 8,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "foot wraps",
+		product = /obj/item/clothing/shoes/footwraps,
+		cost = 2,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "gloves",
+		product = /obj/item/clothing/gloves/white,
+		cost = 2,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "wig",
+		product = /obj/item/clothing/head/powdered_wig,
+		cost = 4,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "philosopher's wig",
+		product = /obj/item/clothing/head/philosopher_wig,
+		cost = 5,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "taqiyah",
+		product = /obj/item/clothing/head/taqiyah,
+		cost = 3,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "turban",
+		product = /obj/item/clothing/head/turban,
+		cost = 3,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "hijab",
+		product = /obj/item/clothing/head/hijab,
+		cost = 3,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "kippa",
+		product = /obj/item/clothing/head/kippa,
+		cost = 3,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "kippa",
+		product = /obj/item/clothing/head/traveller,
+		cost = 3,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "scarf",
+		product = /obj/item/clothing/accessory/scarf/white,
+		cost = 4,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "baggy pants",
+		product = /obj/item/clothing/under/pants/baggy/white,
+		cost = 8,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "belt pouch",
+		product = /obj/item/storage/belt/fannypack/white,
+		cost = 8,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "crude bandage",
+		product = /obj/item/stack/medical/crude_pack,
+		cost = 1,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "empty sandbag",
+		product = /obj/item/stack/emptysandbag,
+		cost = 2,
+		amount = 5,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "shrine seal",
+		product = /obj/structure/shrine_seal,
+		cost = 2,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "cloth rag",
+		product = /obj/item/reagent_containers/glass/rag,
+		cost = 1,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "woven string",
+		product = /obj/item/weaponcrafting/string,
+		cost = 1,
+		time = 2 SECONDS,
+	)
+
 /datum/material/carpet
 	id = "carpet"
 	name = "carpet"

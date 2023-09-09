@@ -232,21 +232,21 @@
 	icon_state = "wood"
 	color = "#9c5930"
 
-	material        = /datum/material/wood
+	material        = /datum/material/wood_plank
 	reinf_material  = null
 	girder_material = null
 
 /turf/simulated/wall/wood/sifwood
 	color = "#0099cc"
 
-	material        = /datum/material/wood/sif
+	material        = /datum/material/wood_plank/sif
 	reinf_material  = null
 	girder_material = null
 
 /turf/simulated/wall/wood/hardwood
 	color = "#42291a"
 
-	material        = /datum/material/wood/hardwood
+	material        = /datum/material/wood_plank/hardwood
 	reinf_material  = null
 	girder_material = null
 
@@ -254,7 +254,7 @@
 	icon = 'icons/turf/walls/log.dmi'
 	color = "#9c5930"
 
-	material        = /datum/material/wood/log
+	material        = /datum/material/wood_log
 	reinf_material  = null
 	girder_material = null
 
@@ -262,7 +262,7 @@
 	icon = 'icons/turf/walls/log.dmi'
 	color = "#0099cc"
 
-	material        = /datum/material/wood/log/sif
+	material        = /datum/material/wood_log/sif
 	reinf_material  = null
 	girder_material = null
 
