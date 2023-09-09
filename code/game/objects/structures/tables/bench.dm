@@ -1,3 +1,5 @@
+// todo: de-table
+
 /obj/structure/table/bench
 	name = "bench frame"
 	icon = 'icons/obj/bench.dmi'

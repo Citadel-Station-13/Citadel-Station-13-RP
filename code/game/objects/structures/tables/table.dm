@@ -84,21 +84,160 @@ var/list/table_icon_cache = list()
 			T.update_connections()
 	return ..()
 
-/obj/structure/table/attackby(obj/item/W, mob/user)
+/obj/structure/table/examine_more(mob/user)
+	. = ..()
+	if(carpeted)
+		. += SPAN_NOTICE("Use a <b>crowbar</b> to remove its carpet.")
+	if(isnull(material_reinforcing))
+		if(!isnull(material_base))
+			. += SPAN_NOTICE("<b>Clickdrag</b> a material stack to this to apply a reinforcement layer.")
+			. += SPAN_NOTICE("Use a <b>wrench</b> to remove its surface plating.")
+		else
+			. += SPAN_NOTICE("Use a <b>wrench</b> to deconstruct the frame.")
+	else
+		. += SPAN_NOTICE("Use a <b>screwdriver</b> to remove its reinforcement.")
+
+/obj/structure/table/crowbar_act(obj/item/I, mob/user, flags, hint)
+	. = ..()
+	if(.)
+		return
+	if(!carpeted)
+		return FALSE
+	if(!use_crowbar(I, user, flags, 0, usage = TOOL_USAGE_DECONSTRUCT))
+		return TRUE
+	if(!carpeted)
+		return TRUE
+	user.visible_action_feedback(
+		target = src,
+		hard_range = MESSAGE_RANGE_CONSTRUCTION,
+		visible_hard = SPAN_NOTICE("[user] removes the carpet from [src]."),
+		visible_self = SPAN_NOTICE("You remove the carpet from [src]."),
+		audible_hard = SPAN_WARNING("You hear something soft being pulled off a surface."),
+	)
+	user.actor_construction_log(src, "de-carpeted")
+	new carpeted_type(loc)
+	carpeted = FALSE
+	update_appearance()
+	return TRUE
+
+/obj/structure/table/wrench_act(obj/item/I, mob/user, flags, hint)
+	. = ..()
+	if(.)
+		return
+	if(!isnull(material_reinforcing))
+		user.action_feedback(SPAN_WARNING("[src] needs to have its reinforcement removed before being dismantled!"))
+		return TRUE
+	if(isnull(material_base))
+		user.visible_action_feedback(
+			target = src,
+			hard_range = MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[user] begins dismantling \the [src]."),
+			visible_self = SPAN_NOTICE("You begin dismantling [src]."),
+			audible_hard = SPAN_WARNING("You hear the sound of bolts and screws being undone."),
+		)
+		user.actor_construction_log(src, "started dismantling")
+		if(!use_wrench(I, user, flags, 1.5 SECONDS), usage = TOOL_USAGE_DECONSTRUCT)
+			return TRUE
+		if(!isnull(material_reinforcing) || !isnull(material_base))
+			user.action_feedback(SPAN_WARNING("[src] needs to be entirely stripped before being dismantled!"))
+			return TRUE
+		user.visible_action_feedback(
+			target = src,
+			hard_range = MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[user] dismantles \the [src]."),
+			visible_self = SPAN_NOTICE("You dismantle [src]."),
+			audible_hard = SPAN_WARNING("You hear the sound of something being folded down and dismantled."),
+		)
+		user.actor_construction_log(src, "dismantled")
+		deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+	else
+		user.visible_action_feedback(
+			target = src,
+			hard_range = MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[user] begins removing the plating from \the [src]."),
+			visible_self = SPAN_NOTICE("You begin removing the plating from \the [src]."),
+			audible_hard = SPAN_WARNING("You hear the sound of bolts being undone."),
+		)
+		user.actor_construction_log(src, "started de-plating")
+		if(!use_wrench(I, user, flags, 3 SECONDS), usage = TOOL_USAGE_DECONSTRUCT)
+			return TRUE
+		if(!isnull(material_reinforcing))
+			user.action_feedback(SPAN_WARNING("[src] needs to have its reinforcement removed before being dismantled!"))
+			return TRUE
+		user.visible_action_feedback(
+			target = src,
+			hard_range = MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[user] removes the plating from \the [src]."),
+			visible_self = SPAN_NOTICE("You remove the plating from \the [src]."),
+			audible_hard = SPAN_WARNING("You hear the sound of a heavy plate being lifted off of something."),
+		)
+		user.actor_construction_log(src, "de-plated")
+		material_base.place_sheet(loc, 1)
+		set_material_part("base", null)
+	return TRUE
+
+/obj/structure/table/screwdriver_act(obj/item/I, mob/user, flags, hint)
+	. = ..()
+	if(.)
+		return
+	if(isnull(material_reinforcing))
+		return FALSE
+	user.visible_action_feedback(
+		target = src,
+		hard_range = MESSAGE_RANGE_CONSTRUCTION,
+		visible_hard = SPAN_NOTICE("[user] begins removing the reinforcement from \the [src]."),
+		visible_self = SPAN_NOTICE("You begin removing the reinforcement from \the [src]."),
+		audible_hard = SPAN_WARNING("You hear the sound of screws being undone."),
+	)
+	user.actor_construction_log(src, "started de-reinforcing")
+	if(!use_wrench(I, user, flags, 1.5 SECONDS), usage = TOOL_USAGE_DECONSTRUCT)
+		return TRUE
+	if(!isnull(material_reinforcing))
+		return TRUE
+	user.visible_action_feedback(
+		target = src,
+		hard_range = MESSAGE_RANGE_CONSTRUCTION,
+		visible_hard = SPAN_NOTICE("[user] removes the reinforcement from \the [src]."),
+		visible_self = SPAN_NOTICE("You remove the reinforcement from \the [src]."),
+		audible_hard = SPAN_WARNING("You hear the sound of screws falling out and something being slid out."),
+	)
+	user.actor_construction_log(src, "de-reinforced")
+	material_reinforcing.place_sheet(loc, 1)
+	set_material_part("reinf", null)
+	return TRUE
+
+/obj/structure/table/dynamic_tool_functions(obj/item/I, mob/user)
+	. = list()
+	if(carpeted)
+		.[TOOL_CROWBAR] = "remove carpet"
+	if(isnull(material_reinforcing))
+		if(isnull(material_base))
+			.[TOOL_WRENCH] = "dismantle"
+		else
+			.[TOOL_WRENCH] = "remove plating"
+	else
+		.[TOOL_SCREWDRIVER] = "remove reinforcement"
+	return merge_double_lazy_assoc_list(., ..())
+
+/obj/structure/table/dynamic_tool_image(function, hint)
+	switch(hint)
+		if("remove carpet")
+			return dyntool_image_backward(TOOL_CROWBAR)
+		if("dismantle", "remove plating")
+			return dyntool_image_backward(TOOL_WRENCH)
+		if("remove reinforcement")
+			return dyntool_image_backward(TOOL_SCREWDRIVER)
+	return ..()
+
+
+
+/obj/structure/table/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 
 	if(reinforced && W.is_screwdriver())
 		remove_reinforced(W, user)
 		if(!reinforced)
 			update_desc()
 			update_icon()
-		return 1
-
-	if(carpeted && W.is_crowbar())
-		user.visible_message("<span class='notice'>\The [user] removes the carpet from \the [src].</span>",
-		                              "<span class='notice'>You remove the carpet from \the [src].</span>")
-		new carpeted_type(loc)
-		carpeted = 0
-		update_icon()
 		return 1
 
 	if(!carpeted && material && istype(W, /obj/item/stack/tile/carpet))
@@ -217,48 +356,6 @@ var/list/table_icon_cache = list()
 	user.visible_message("<span class='notice'>\The [user] [verb]es \the [src] with [M.display_name].</span>", "<span class='notice'>You finish [verb]ing \the [src].</span>")
 	manipulating = 0
 	return M
-
-// Returns the material to set the table to.
-/obj/structure/table/proc/common_material_remove(mob/user, datum/material/M, delay, what, type_holding, sound)
-	if(!M.stack_type)
-		to_chat(user, "<span class='warning'>You are unable to remove the [what] from this [src]!</span>")
-		return M
-
-	if(manipulating) return M
-	manipulating = 1
-	user.visible_message("<span class='notice'>\The [user] begins removing the [type_holding] holding \the [src]'s [M.display_name] [what] in place.</span>",
-	                              "<span class='notice'>You begin removing the [type_holding] holding \the [src]'s [M.display_name] [what] in place.</span>")
-	if(sound)
-		playsound(src.loc, sound, 50, 1)
-	if(!do_after(user, delay))
-		manipulating = 0
-		return M
-	user.visible_message("<span class='notice'>\The [user] removes the [M.display_name] [what] from \the [src].</span>",
-	                              "<span class='notice'>You remove the [M.display_name] [what] from \the [src].</span>")
-	new M.stack_type(src.loc)
-	manipulating = 0
-	return null
-
-/obj/structure/table/proc/remove_reinforced(obj/item/S, mob/user)
-	reinforced = common_material_remove(user, reinforced, 40 * S.tool_speed, "reinforcements", "screws", S.tool_sound)
-
-/obj/structure/table/proc/remove_material(obj/item/W, mob/user)
-	material = common_material_remove(user, material, 20 * W.tool_speed, "plating", "bolts", W.tool_sound)
-
-/obj/structure/table/proc/dismantle(obj/item/W, mob/user)
-	if(manipulating)
-		return
-	manipulating = TRUE
-	user.visible_message("<span class='notice'>\The [user] begins dismantling \the [src].</span>",
-	                              "<span class='notice'>You begin dismantling \the [src].</span>")
-	playsound(src, W.tool_sound, 50, 1)
-	if(!do_after(user, 20 * W.tool_speed))
-		manipulating = FALSE
-		return
-	user.visible_message("<span class='notice'>\The [user] dismantles \the [src].</span>",
-	                              "<span class='notice'>You dismantle \the [src].</span>")
-	new /obj/item/stack/material/steel(src.loc)
-	qdel(src)
 
 // Returns a list of /obj/item/material/shard objects that were created as a result of this table's breakage.
 // Used for !fun! things such as embedding shards in the faces of tableslammed people.

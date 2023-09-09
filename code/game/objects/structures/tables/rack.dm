@@ -1,3 +1,5 @@
+// todo: de-table
+
 /obj/structure/table/rack
 	name = "rack"
 	desc = "Different from the Middle Ages version."

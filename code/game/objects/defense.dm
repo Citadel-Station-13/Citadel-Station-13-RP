@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /obj/ex_act(power, dir, datum/automata/wave/explosion/E)
 	. = ..()
 	// todo: wave explosions
