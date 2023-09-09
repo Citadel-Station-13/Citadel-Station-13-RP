@@ -209,7 +209,7 @@
 		else if(shock)
 
 			//If the majority of their shock is due to halloss, greater chance of snapping.
-			if(2.5*H.halloss >= H.traumatic_shock)
+			if(H.halloss >= H.traumatic_shock/2.5)
 				if(prob(min(10,(0.2 * H.traumatic_shock))))
 					to_chat(H,"<span class='danger'><big>The pain! It stings! Got to get away! Your instincts take over, urging you to flee, to hide, to go to ground, get away from here...</big></span>")
 					log_and_message_admins("has gone feral due to halloss.", H)
