@@ -182,6 +182,59 @@
 	. += create_stack_recipe_datum(category = "filing cabinets", cost = 4, name = "filing cabinet", product = /obj/structure/filingcabinet, time = 2 SECONDS)
 	. += create_stack_recipe_datum(category = "filing cabinets", cost = 4, name = "tall filing cabinet", product = /obj/structure/filingcabinet/tall, time = 2 SECONDS)
 	. += create_stack_recipe_datum(category = "filing cabinets", cost = 4, name = "chest drawer", product = /obj/structure/filingcabinet/chestdrawer, time = 2 SECONDS)
+	. += create_stack_recipe_datum(
+		name = "dance pole",
+		product = /obj/structure/dancepole,
+		time = 2 SECONDS,
+		cost = 2,
+	)
+	. += create_stack_recipe_datum(
+		name = "IV drip",
+		product = /obj/machinery/iv_drip,
+		time = 4 SECONDS,
+		cost = 4,
+	)
+	. += create_stack_recipe_datum(
+		name = "conveyor switch",
+		product = /obj/machinery/conveyor_switch,
+		cost = 2,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		category = "weapons",
+		product = /obj/item/cannonframe,
+		cost = 5,
+		time = 2 SECONDS,
+		name = "improvised pneumatic cannon frame",
+	)
+	. += create_stack_recipe_datum(
+		category = "weapons",
+		product = /obj/item/grenade/chem_grenade,
+		name = "grenade casing",
+		cost = 2,
+	)
+	. += create_stack_recipe_datum("category" = "modular computer frames", name = "modular console frame", product = /obj/item/modular_computer/console, time = 2 SECONDS, cost = 10)
+	. += create_stack_recipe_datum("category" = "modular computer frames", name = "modular telescreen frame", product = /obj/item/modular_computer/telescreen, time = 2 SECONDS, cost = 5)
+	. += create_stack_recipe_datum("category" = "modular computer frames", name = "modular laptop frame", product = /obj/item/modular_computer/laptop, time = 2 SECONDS, cost = 3)
+	. += create_stack_recipe_datum("category" = "modular computer frames", name = "modular tablet frame", product = /obj/item/modular_computer/tablet, time = 2 SECONDS, cost = 2)
+	. += create_stack_recipe_datum(
+		name = "desk bell",
+		product = /obj/item/deskbell,
+		cost = 2,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "scooter frame",
+		product = /obj/item/scooter_frame,
+		cost = 5,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "metal coffin",
+		product = /obj/structure/closet/coffin/comfy,
+		time = 2 SECONDS,
+		cost = 5,
+	)
 
 /datum/material/steel/hull
 	id = "steel_hull"

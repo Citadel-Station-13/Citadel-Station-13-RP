@@ -14,6 +14,10 @@
 	melting_point = T0C+371 //assuming heat resistant plastic
 	stack_origin_tech = list(TECH_MATERIAL = 3)
 
+/datum/material/plastic/generate_recipes()
+	. = ..()
+
+
 /datum/material/plastic/holographic
 	name = "holoplastic"
 	id = "plastic_holo"
