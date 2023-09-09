@@ -72,3 +72,8 @@
 		cost = 3,
 		time = 2.5 SECONDS,
 	)
+	. += create_stack_recipe_datum(category = "folders", name = "blue folder", product = /obj/item/folder/blue, cost = 1)
+	. += create_stack_recipe_datum(category = "folders", name = "grey folder", product = /obj/item/folder, cost = 1)
+	. += create_stack_recipe_datum(category = "folders", name = "red folder", product = /obj/item/folder/red, cost = 1)
+	. += create_stack_recipe_datum(category = "folders", name = "white folder", product = /obj/item/folder/white, cost = 1)
+	. += create_stack_recipe_datum(category = "folders", name = "yellow folder", product = /obj/item/folder/yellow, cost = 1)

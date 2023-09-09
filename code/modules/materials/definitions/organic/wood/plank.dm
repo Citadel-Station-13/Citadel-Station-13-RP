@@ -149,6 +149,11 @@
 		cost = 3,
 		amount = 4,
 	)
+	. += create_stack_recipe_datum(category = "fences", name = "fence", product = /obj/structure/fence/wooden, cost = 3)
+	. += create_stack_recipe_datum(category = "fences", name = "fence end", product = /obj/structure/fence/wooden/end, cost = 3)
+	. += create_stack_recipe_datum(category = "fences", name = "fencepost", product = /obj/structure/fence/wooden/post, cost = 3)
+	. += create_stack_recipe_datum(category = "fences", name = "fence corner", product = /obj/structure/fence/wooden/corner, cost = 3)
+	. += create_stack_recipe_datum(category = "fences", name = "gate", product = /obj/structure/fence/door/wooden, cost = 3)
 	return recipes
 
 /datum/material/wood_plank/holographic

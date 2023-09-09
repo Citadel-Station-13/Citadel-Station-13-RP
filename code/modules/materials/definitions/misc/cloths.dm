@@ -122,6 +122,24 @@
 		cost = 1,
 		time = 2 SECONDS,
 	)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "bedsheet", product = /obj/item/bedsheet, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "double bedsheet", product = /obj/item/bedsheet/double, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "red bedsheet", product = /obj/item/bedsheet/red, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "double red bedsheet", product = /obj/item/bedsheet/reddouble, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "orange bedsheet", product = /obj/item/bedsheet/orange, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "double orange bedsheet", product = /obj/item/bedsheet/orangedouble, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "yellow bedsheet", product = /obj/item/bedsheet/yellow, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "double yellow bedsheet", product = /obj/item/bedsheet/yellowdouble, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "green bedsheet", product = /obj/item/bedsheet/green, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "double green bedsheet", product = /obj/item/bedsheet/greendouble, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "blue bedsheet", product = /obj/item/bedsheet/blue, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "double blue bedsheet", product = /obj/item/bedsheet/bluedouble, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "purple bedsheet", product = /obj/item/bedsheet/purple, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "double purple bedsheet", product = /obj/item/bedsheet/purpledouble, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "brown bedsheet", product = /obj/item/bedsheet/brown, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "double brown bedsheet", product = /obj/item/bedsheet/browndouble, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "rainbow bedsheet", product = /obj/item/bedsheet/rainbow, cost = 5)
+	. += create_stack_recipe_datum(category = "bedsheets", name = "double rainbow bedsheet", product = /obj/item/bedsheet/rainbowdouble, cost = 5)
 
 /datum/material/carpet
 	id = "carpet"
