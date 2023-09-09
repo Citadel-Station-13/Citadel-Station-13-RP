@@ -136,7 +136,7 @@ var/list/table_icon_cache = list()
 			audible_hard = SPAN_WARNING("You hear the sound of bolts and screws being undone."),
 		)
 		user.actor_construction_log(src, "started dismantling")
-		if(!use_wrench(I, user, flags, 1.5 SECONDS), usage = TOOL_USAGE_DECONSTRUCT)
+		if(!use_wrench(I, user, flags, 1.5 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
 			return TRUE
 		if(!isnull(material_reinforcing) || !isnull(material_base))
 			user.action_feedback(SPAN_WARNING("[src] needs to be entirely stripped before being dismantled!"))
@@ -159,7 +159,7 @@ var/list/table_icon_cache = list()
 			audible_hard = SPAN_WARNING("You hear the sound of bolts being undone."),
 		)
 		user.actor_construction_log(src, "started de-plating")
-		if(!use_wrench(I, user, flags, 3 SECONDS), usage = TOOL_USAGE_DECONSTRUCT)
+		if(!use_wrench(I, user, flags, 3 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
 			return TRUE
 		if(!isnull(material_reinforcing))
 			user.action_feedback(SPAN_WARNING("[src] needs to have its reinforcement removed before being dismantled!"))
@@ -190,7 +190,7 @@ var/list/table_icon_cache = list()
 		audible_hard = SPAN_WARNING("You hear the sound of screws being undone."),
 	)
 	user.actor_construction_log(src, "started de-reinforcing")
-	if(!use_wrench(I, user, flags, 1.5 SECONDS), usage = TOOL_USAGE_DECONSTRUCT)
+	if(!use_wrench(I, user, flags, 1.5 SECONDS, usage = TOOL_USAGE_DECONSTRUCT))
 		return TRUE
 	if(!isnull(material_reinforcing))
 		return TRUE
@@ -229,18 +229,8 @@ var/list/table_icon_cache = list()
 			return dyntool_image_backward(TOOL_SCREWDRIVER)
 	return ..()
 
-
-
 /obj/structure/table/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-
-	if(reinforced && W.is_screwdriver())
-		remove_reinforced(W, user)
-		if(!reinforced)
-			update_desc()
-			update_icon()
-		return 1
-
-	if(!carpeted && material && istype(W, /obj/item/stack/tile/carpet))
+	if(!carpeted && !isnull(material_base) && istype(W, /obj/item/stack/tile/carpet))
 		var/obj/item/stack/tile/carpet/C = W
 		if(C.use(1))
 			user.visible_message("<span class='notice'>\The [user] adds \the [C] to \the [src].</span>",
@@ -251,20 +241,6 @@ var/list/table_icon_cache = list()
 			return 1
 		else
 			to_chat(user, "<span class='warning'>You don't have enough carpet!</span>")
-
-	if(!reinforced && !carpeted && material && W.is_wrench())
-		remove_material(W, user)
-		if(!material)
-			update_connections(1)
-			update_icon()
-			for(var/obj/structure/table/T in oview(src, 1))
-				T.update_icon()
-			update_desc()
-		return 1
-
-	if(!carpeted && !reinforced && !material && W.is_wrench())
-		dismantle(W, user)
-		return 1
 
 	if(integrity < integrity_max && istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/F = W
@@ -287,18 +263,6 @@ var/list/table_icon_cache = list()
 		return 1
 
 	return ..()
-
-/obj/structure/table/attack_hand(mob/user, list/params)
-	if(istype(user, /mob/living/carbon/human))
-		var/mob/living/carbon/human/X = user
-		if(istype(X.species, /datum/species/xenos))
-			src.attack_alien(user)
-			return
-	..()
-
-/obj/structure/table/attack_alien(mob/user as mob)
-	visible_message("<span class='danger'>\The [user] tears apart \the [src]!</span>")
-	src.break_to_parts()
 
 /obj/structure/table/MouseDroppedOnLegacy(obj/item/stack/material/what)
 	if(can_reinforce && isliving(usr) && (!usr.stat) && istype(what) && usr.get_active_held_item() == what && Adjacent(usr))
