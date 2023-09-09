@@ -23,6 +23,7 @@ var/list/table_icon_cache = list()
 	depth_projected = TRUE
 
 	material_parts = MATERIAL_DEFAULT_ABSTRACTED
+	material_primary = "base"
 
 	var/datum/material/material_base = /datum/material/steel
 	var/datum/material/material_reinforcing

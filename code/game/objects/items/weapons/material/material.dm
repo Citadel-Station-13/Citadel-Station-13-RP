@@ -75,7 +75,7 @@
 
 /obj/item/material/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	MATERIAL_INVOKE(src, MATERIAL_TRAIT_ATTACK, target, target_zone, src, ATTACK_TYPE_MELEE)
+	MATERIAL_INVOKE(src, MATERIAL_TRAIT_ATTACK, on_mob_attack, target, target_zone, src, ATTACK_TYPE_MELEE)
 
 /obj/item/material/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/whetstone))

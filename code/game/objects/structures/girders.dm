@@ -18,6 +18,7 @@
 	var/material_color = 1
 
 	material_parts = MATERIAL_DEFAULT_ABSTRACTED
+	material_primary = "base"
 	/// what we're made out of
 	var/datum/material/material_structure = /datum/material/steel
 	/// what our reinforcement is made out of
