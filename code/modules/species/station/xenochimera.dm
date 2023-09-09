@@ -789,9 +789,9 @@
 			..()
 	..()
 
-////////////////
-//Revive spell//
-////////////////
+//////////////////
+//Revive ability//
+//////////////////
 //Will incapacitate you for 10 minutes, and then you can revive.
 /datum/ability/species/xenochimera/hatch
 	name = "Hatch Stasis"
@@ -831,10 +831,10 @@
 		pop.associate(owner)
 
 
-///////////////////////
-//Actual Revive Spell//
-///////////////////////
-//Not to be used normally. Given by the 'hatch' spell
+/////////////////////////
+//Actual Revive Ability//
+/////////////////////////
+//Not to be used normally. Given by the 'hatch' ability
 /datum/ability/species/xenochimera/hatch_pop
 	name = "Emerge"
 	desc = "We emerge in our new form."
@@ -903,7 +903,7 @@
 
 	var/mob/living/M = target
 	if(M.stat == DEAD)
-		to_chat(owner, "Not even a Xenochimera can speak to the dead.")
+		to_chat(owner, "Not even an Xenochimera can speak to the dead.")
 		return
 
 	//The further the target is, the longer it takes.
