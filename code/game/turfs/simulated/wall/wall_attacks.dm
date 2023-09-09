@@ -107,17 +107,10 @@
 	return 0
 
 /turf/simulated/wall/attack_hand(mob/user, list/params)
-
-	radiate()
+	#warn route to unarmed act?
 	add_fingerprint(user)
 	user.setClickCooldown(user.get_attack_speed())
 	var/rotting = (locate(/obj/effect/overlay/wallrot) in src)
-	if (MUTATION_HULK in user.mutations)
-		if (rotting || !prob(material.hardness))
-			success_smash(user)
-		else
-			fail_smash(user)
-			return 1
 	if(iscarbon(user))
 		var/mob/living/carbon/M = user
 		switch(M.a_intent)
@@ -125,56 +118,12 @@
 				return
 			if(INTENT_DISARM, INTENT_GRAB)
 				try_touch(M, rotting)
-			if(INTENT_HARM)
-				//since only humans have organs_by_name but carbons still have intents this check only applies to humans
-				//it's hacky but it works
-				if(ishuman(user))
-					var/mob/living/carbon/human/H = user
-					var/obj/item/organ/external/E = H.organs_by_name[M.hand ? BP_L_HAND : BP_R_HAND]
-					if (!(E.is_usable()))
-						to_chat(user, SPAN_WARNING("You can't use that hand."))
-						return
-				if(rotting && !material_reinf)
-					M.visible_message(SPAN_DANGER("[M.name] punches \the [src] and it crumbles!"), SPAN_DANGER("You punch \the [src] and it crumbles!"))
-					dismantle_wall()
-					playsound(src, get_sfx("punch"), 20)
-				else
-					M.visible_message(SPAN_DANGER("[M.name] punches \the [src]!"), SPAN_DANGER("You punch \the [src]!"))
-					M.apply_damage(3, BRUTE, M.hand ? BP_L_HAND : BP_R_HAND)
-					playsound(src, get_sfx("punch"), 20)
-
 	else
 		try_touch(user, rotting)
 
-/turf/simulated/wall/attack_generic(var/mob/user, var/damage, var/attack_message)
-
-	radiate()
-	user.setClickCooldown(user.get_attack_speed())
-	var/rotting = (locate(/obj/effect/overlay/wallrot) in src)
-	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD * 2)
-		try_touch(user, rotting)
-		return
-
-	if(rotting)
-		return success_smash(user)
-
-	if(material_reinf)
-		if(damage >= max(material.hardness, material_reinf.hardness) )
-			return success_smash(user)
-	else if(damage >= material.hardness)
-		return success_smash(user)
-	return fail_smash(user)
-
 /turf/simulated/wall/attackby(obj/item/W as obj, mob/user as mob)
-
+	#warn route to unarmed act?
 	user.setClickCooldown(user.get_attack_speed(W))
-	if (!user)
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
-		return
-
-	//get the user's location
-	if(!istype(user.loc, /turf))
-		return	//can't do this stuff whilst inside objects and such
 
 	if(W)
 		if(is_hot(W))

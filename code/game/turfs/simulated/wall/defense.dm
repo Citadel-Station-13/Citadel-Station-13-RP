@@ -10,6 +10,14 @@
 	else
 		inflict_atom_damage(AM.throw_force * TT.get_damage_multiplier(), MELEE_TIER_LIGHT, ARMOR_MELEE, null, ATTACK_TYPE_THROWN, AM)
 
+/turf/simulated/wall/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult)
+	. = ..()
+	#warn impl
+
+/turf/simulated/wall/melee_act(mob/user, obj/item/weapon, target_zone, mult)
+	. = ..()
+	#warn impl
+
 /turf/simulated/wall/bullet_act(var/obj/projectile/Proj)
 	if(istype(Proj,/obj/projectile/beam))
 		burn(2500)

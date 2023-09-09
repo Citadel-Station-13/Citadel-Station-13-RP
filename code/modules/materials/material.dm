@@ -18,8 +18,6 @@
 	/// Prettier name for display.
 	var/display_name
 	var/use_name
-	/// Various status modifiers.
-	var/flags = 0
 	var/sheet_singular_name = "sheet"
 	var/sheet_plural_name = "sheets"
 	var/is_fusion_fuel

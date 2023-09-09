@@ -51,8 +51,4 @@
 #define SHARD_SPLINTER		"splinters"
 #define SHARD_NONE			""
 
-#define MATERIAL_UNMELTABLE	0x1
-#define MATERIAL_BRITTLE	0x2
-#define MATERIAL_PADDING	0x4
-
 #define SHEET_MATERIAL_AMOUNT 2000

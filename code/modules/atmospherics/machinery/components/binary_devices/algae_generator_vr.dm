@@ -100,8 +100,8 @@
 	var/converted_moles = min(co2_moles, moles_per_tick)
 	use_power(converted_moles * power_per_mole)
 	last_power_draw_legacy += converted_moles * power_per_mole
-	stored_material[MATERIAL_ALGAE] -= converted_moles * algae_per_mole
-	stored_material[MATERIAL_CARBON] += converted_moles * carbon_per_mole
+	stored_material[MAT_ALGAE] -= converted_moles * algae_per_mole
+	stored_material[MAT_CARBON] += converted_moles * carbon_per_mole
 
 	// STEP 5 - Output the converted oxygen. Fow now we output for free!
 	internal.adjust_gas(input_gas, -converted_moles)

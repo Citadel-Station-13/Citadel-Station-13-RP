@@ -144,7 +144,7 @@
 /turf/simulated/wall/adjacent_fire_act(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)
 	burn(adj_temp)
 	if(adj_temp > material.melting_point)
-		take_damage(log(RAND_F(0.9, 1.1) * (adj_temp - material.melting_point)))
+		inflict_atom_damage(log(RAND_F(0.9, 1.1) * (adj_temp - material.melting_point)), flag = ARMOR_FIRE, gradual = TRUE)
 
 	return ..()
 
@@ -176,14 +176,14 @@
 			ScrapeAway()
 		if(2.0)
 			if(prob(75))
-				take_damage(rand(150, 250))
+				inflict_atom_damage(rand(150, 250), flag = ARMOR_BOMB)
 			else
 				dismantle_wall(1,1)
 		if(3.0)
-			take_damage(rand(0, 250))
+			inflict_atom_damage(rand(0, 150), flag = ARMOR_BOMB)
 
 /turf/simulated/wall/proc/can_melt()
-	return material_outer?.flgas & MATERIAL_UNMELTABLE
+	return material_outer?.material_flags & MATERIAL_FLAG_UNMELTABLE
 
 /turf/simulated/wall/proc/thermitemelt(mob/user as mob)
 	if(!can_melt())
@@ -224,7 +224,7 @@
 				D.ignite(temperature/4)
 
 /turf/simulated/wall/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
-	if(material.integrity > 1000) // Don't decon things like elevatorium.
+	if(!material)
 		return FALSE
 	if(material_reinf && !the_rcd.can_remove_rwalls) // Gotta do it the old fashioned way if your RCD can't.
 		return FALSE

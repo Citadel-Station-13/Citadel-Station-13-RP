@@ -5,9 +5,12 @@
 
 /// vulnerability applies to mob armor (uh oh)
 #define MATERIAL_FLAG_VULNERABLE_MOB_ARMOR (1<<0)
+/// utterly immune to melting, thermite or otherwise
+#define MATERIAL_FLAG_UNMELTABLE (1<<1)
 
 DEFINE_BITFIELD(material_flags, list(
 	BITFIELD(MATERIAL_FLAG_VULNERABLE_MOB_ARMOR),
+	BITFIELD(MATERIAL_FLAG_UNMELTABLE),
 ))
 
 //* /datum/material material_constraints
