@@ -39,8 +39,15 @@
 
 //* Attributes - Significance; This is how much material is in something
 
+/// used for shards
+#define MATERIAL_SIGNIFICANCE_SHARD 2.5
 /// baseline significance of material calculations done on material-side / default computations
 #define MATERIAL_SIGNIFICANCE_BASELINE 10
+
+#define MATERIAL_SIGNIFICANCE_WEAPON_LIGHT 6.5
+#define MATERIAL_SIGNIFICANCE_WEAPON_MEDIUM 10
+#define MATERIAL_SIGNIFICANCE_WEAPON_HEAVY 15
+
 /// used for most doors
 #define MATERIAL_SIGNIFICANCE_DOOR 15
 /// significance used for normal wall layer

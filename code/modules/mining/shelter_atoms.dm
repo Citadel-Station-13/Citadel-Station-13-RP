@@ -158,6 +158,7 @@
 	icon_state = "table"
 	can_reinforce = FALSE
 	can_plate = FALSE
+	material_base = /datum/material/steel
 
 /obj/structure/table/survival_pod/update_icon()
 	icon_state = "table" //this table doesn't care about your material nonsense. just ignore the overlays.
@@ -167,7 +168,6 @@
 	icon_state = "table"
 
 /obj/structure/table/survival_pod/Initialize(mapload)
-	material = get_material_by_name(MAT_STEEL)
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
 	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 	return ..()

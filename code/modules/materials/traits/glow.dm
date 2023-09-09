@@ -26,7 +26,7 @@
 
 /datum/material_trait/glow/on_remove(atom/host, existing_data, our_data)
 	. = ..()
-	qdel(locate(/atom/movable/render/material_glow/renderer) in what.contents)
+	qdel(locate(/atom/movable/render/material_glow) in what.contents)
 
 /atom/movable/render/material_glow
 

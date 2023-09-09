@@ -3,21 +3,23 @@
  *
  * @return null if invalid (e.g. if table has other tables connected parallel to direction of flip), list of tables otherwise.
  */
-/obj/structure/table/proc/tableflip_closure(dir_to_flip, flipped_only = FALSE)
+/obj/structure/table/proc/tableflip_closure(dir_to_flip, unflipping = FALSE)
 	if(!isturf(loc))
 		return
 	// no stacked tables
-	for(var/obj/structure/table/other in loc)
-		if(other != src)
-			return
+	if(!unflipping)
+		for(var/obj/structure/table/other in loc)
+			if(other != src)
+				return
 	var/rev_to_flip = turn(dir_to_flip, 180)
 	// ensure there's no adjacent parallels
-	for(var/obj/structure/table/other in get_step(loc, dir_to_flip))
-		if(other.tableflip_connects(src))
-			return
-	for(var/obj/structure/table/other in get_step(loc, rev_to_flip))
-		if(other.tableflip_connects(src))
-			return
+	if(!unflipping)
+		for(var/obj/structure/table/other in get_step(loc, dir_to_flip))
+			if(other.tableflip_connects(src))
+				return
+		for(var/obj/structure/table/other in get_step(loc, rev_to_flip))
+			if(other.tableflip_connects(src))
+				return
 	var/list/collected = list(src)
 	var/turf/parsing
 	var/dir_to_parse
@@ -26,17 +28,18 @@
 	while(isturf(parsing))
 		var/found_any = FALSE
 		for(var/obj/structure/table/found in parsing)
-			if(found_any)
+			if(found_any && !unflipping)
 				return
 			if(!tableflip_connects(found))
 				continue
 			found_any = TRUE
-			for(var/obj/structure/table/other in get_step(parsing, dir_to_flip))
-				if(other.tableflip_connects(found))
-					return
-			for(var/obj/structure/table/other in get_step(parsing, rev_to_flip))
-				if(other.tableflip_connects(found))
-					return
+			if(!unflipping)
+				for(var/obj/structure/table/other in get_step(parsing, dir_to_flip))
+					if(other.tableflip_connects(found))
+						return
+				for(var/obj/structure/table/other in get_step(parsing, rev_to_flip))
+					if(other.tableflip_connects(found))
+						return
 			collected += found
 		if(!found_any)
 			break
@@ -45,17 +48,18 @@
 	while(isturf(parsing))
 		var/found_any = FALSE
 		for(var/obj/structure/table/found in parsing)
-			if(found_any)
+			if(found_any && !unflipping)
 				return
 			if(!tableflip_connects(found))
 				continue
 			found_any = TRUE
-			for(var/obj/structure/table/other in get_step(parsing, dir_to_flip))
-				if(other.tableflip_connects(found))
-					return
-			for(var/obj/structure/table/other in get_step(parsing, rev_to_flip))
-				if(other.tableflip_connects(found))
-					return
+			if(!unflipping)
+				for(var/obj/structure/table/other in get_step(parsing, dir_to_flip))
+					if(other.tableflip_connects(found))
+						return
+				for(var/obj/structure/table/other in get_step(parsing, rev_to_flip))
+					if(other.tableflip_connects(found))
+						return
 			collected += found
 		if(!found_any)
 			break
@@ -84,29 +88,6 @@
 	usr.visible_message("<span class='warning'>[usr] flips \the [src]!</span>")
 	shake_climbers()
 
-/obj/structure/table/proc/unflipping_check(var/direction)
-
-	for(var/mob/M in oview(src,0))
-		return 0
-
-	var/obj/occupied = turf_is_crowded()
-	if(occupied)
-		to_chat(usr, "There's \a [occupied] in the way.")
-		return 0
-
-	var/list/L = list()
-	if(direction)
-		L.Add(direction)
-	else
-		L.Add(turn(src.dir,-90))
-		L.Add(turn(src.dir,90))
-	for(var/new_dir in L)
-		var/obj/structure/table/T = locate() in get_step(src.loc,new_dir)
-		if(T && T.material.name == material.name)
-			if(T.flipped == 1 && T.dir == src.dir && !T.unflipping_check(new_dir))
-				return 0
-	return 1
-
 /obj/structure/table/proc/do_put()
 	set name = "Put table back"
 	set desc = "Puts flipped table back"
@@ -116,9 +97,27 @@
 	if (!can_touch(usr))
 		return
 
-	if (!unflipping_check())
-		to_chat(usr, "<span class='notice'>It won't budge.</span>")
-		return
+	var/list/obj/structure/table/tables = tableflip_closure(dir, unflipping = TRUE)
+	var/failed = FALSE
+	var/blocking
+	for(var/obj/structure/table/table as anything in tables)
+		for(var/mob/living/L in table.loc)
+			if(L.density)
+				failed = TRUE
+				blocking = "[L]"
+				break
+		for(var/obj/O in table.loc)
+			if(O == table)
+				continue
+			if(O.climb_allowed)
+				continue
+			if(O.density)
+				failed = TRUE
+				blocking = "[O]"
+				break
+	if(failed)
+		to_chat(usr, SPAN_WARNING("[blocking? "[blocking] is in the way!" : "It won't budge."]"))
+
 	unflip()
 
 /obj/structure/table/proc/flip(var/direction)
@@ -132,7 +131,7 @@
 	return TRUE
 
 /obj/structure/table/proc/unflip()
-	var/list/obj/structure/table/tables = tableflip_closure(direction)
+	var/list/obj/structure/table/tables = tableflip_closure(dir, unflipping = TRUE)
 	if(isnull(tables))
 		return FALSE
 

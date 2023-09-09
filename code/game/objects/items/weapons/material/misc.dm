@@ -93,7 +93,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "snowball"
 	material_parts = /datum/material/snow
-	health = 1
+	integrity = 1
 	fragile = 1
 	force_divisor = 0.01
 	thrown_force_divisor = 0.10

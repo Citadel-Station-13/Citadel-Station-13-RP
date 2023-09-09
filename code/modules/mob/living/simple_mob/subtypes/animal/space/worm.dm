@@ -416,7 +416,6 @@
 	name = "meat"
 	desc = "A chunk of pulsating meat."
 	icon_state = "wormmeat"
-	health = 180
 	filling_color = "#551A8B"
 	center_of_mass = list("x"=16, "y"=14)
 

@@ -160,7 +160,7 @@
 				obj_flags |= string_to_objflag[flag]
 
 /obj/Destroy()
-	#warn ugh handle materials ticking
+	#warn ugh handle materials cleanup
 	if(IS_TICKING_MATERIALS(src))
 		STOP_TICKING_MATERIALS(src)
 	if(register_as_dangerous_object)

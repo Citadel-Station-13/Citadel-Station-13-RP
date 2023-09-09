@@ -77,10 +77,12 @@ var/list/table_icon_cache = list()
 	update_desc()
 
 /obj/structure/table/Destroy()
-	material = null
-	reinforced = null
-	update_connections(TRUE) // Update tables around us to ignore us (material=null forces no connections)
-	. = ..()
+	var/old_loc = loc
+	// i am so sorry ~silicons
+	spawn(0)
+		for(var/obj/structure/table/T in old_loc)
+			T.update_connections()
+	return ..()
 
 /obj/structure/table/attackby(obj/item/W, mob/user)
 
@@ -187,18 +189,17 @@ var/list/table_icon_cache = list()
 		update_desc()
 		update_icon()
 
-/obj/structure/table/update_desc()
-	. = ..()
-	if(material)
-		name = "[material.display_name] table"
-	else
-		name = "table frame"
-
-	if(reinforced)
+/obj/structure/table/update_name(updates)
+	name = isnull(material_base)? "table frame" : "[material_base.display_name] table"
+	if(!isnull(material_reinforcing))
 		name = "reinforced [name]"
-		desc = "[initial(desc)] This one seems to be reinforced with [reinforced.display_name]."
-	else
-		desc = initial(desc)
+	return ..()
+
+/obj/structure/table/update_desc()
+	desc = initial(desc)
+	if(!isnull(material_reinforcing))
+		desc = "[desc] This one seems to be reinforced with [material_reinforcing.display_name]."
+	return ..()
 
 // Returns the material to set the table to.
 /obj/structure/table/proc/common_material_add(obj/item/stack/material/S, mob/user, verb) // Verb is actually verb without 'e' or 'ing', which is added. Works for 'plate'/'plating' and 'reinforce'/'reinforcing'.
@@ -373,7 +374,7 @@ var/list/table_icon_cache = list()
 
 // set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
 /obj/structure/table/update_connections(propagate=0)
-	if(!material)
+	if(!material_base)
 		connections = list("0", "0", "0", "0")
 		if(propagate)
 			for(var/obj/structure/table/T in orange(src, 1))
@@ -418,7 +419,7 @@ var/list/table_icon_cache = list()
 		var/T_dir = get_dir(src, T)
 		if(T_dir in blocked_dirs)
 			continue
-		if(material && T.material && material.name == T.material.name && flipped == T.flipped)
+		if(material_base && T.material_base && material_base.name == T.material_base.name && flipped == T.flipped)
 			connection_dirs |= T_dir
 		if(propagate)
 			spawn(0)

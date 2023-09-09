@@ -62,42 +62,18 @@
 		else
 			source.thermal_conductivity = initial(source.thermal_conductivity)
 
-/turf/simulated/wall/proc/fail_smash(var/mob/user)
-	var/damage_lower = 25
-	var/damage_upper = 75
-	if(isanimal(user))
-		var/mob/living/simple_mob/S = user
-		playsound(src, S.attack_sound, 75, 1)
-		if(!(S.legacy_melee_damage_upper >= STRUCTURE_MIN_DAMAGE_THRESHOLD * 2))
-			to_chat(user, "<span class='notice'>You bounce against the wall.</span>")
-			return FALSE
-		damage_lower = S.legacy_melee_damage_lower
-		damage_upper = S.legacy_melee_damage_upper
-	to_chat(user, "<span class='danger'>You smash against the wall!</span>")
-	user.do_attack_animation(src)
-	take_damage(rand(damage_lower,damage_upper))
-
-/turf/simulated/wall/proc/success_smash(var/mob/user)
-	to_chat(user, "<span class='danger'>You smash through the wall!</span>")
-	user.do_attack_animation(src)
-	if(isanimal(user))
-		var/mob/living/simple_mob/S = user
-		playsound(src, S.attack_sound, 75, 1)
-	spawn(1)
-		dismantle_wall(1)
-
 /turf/simulated/wall/proc/try_touch(var/mob/user, var/rotting)
 
 	if(rotting)
 		if(material_reinf)
 			to_chat(user, "<span class='danger'>\The [material_reinf.display_name] feels porous and crumbly.</span>")
 		else
-			to_chat(user, "<span class='danger'>\The [material.display_name] crumbles under your touch!</span>")
+			to_chat(user, "<span class='danger'>\The [material_outer.display_name] crumbles under your touch!</span>")
 			dismantle_wall()
 			return 1
 
 	if(!can_open)
-		if(!material.wall_touch_special(src, user))
+		if(!material_outer.wall_touch_special(src, user))
 			to_chat(user, "<span class='notice'>You push the wall, but nothing happens.</span>")
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 		return 0

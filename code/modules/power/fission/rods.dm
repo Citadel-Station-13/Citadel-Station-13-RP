@@ -104,7 +104,7 @@
 	else if(life > 0)
 		if(decay_heat > 0 || apply_heat)
 			life = max(0, life - ((1 / lifespan) * applied_insertion * 100))
-		if(life == 0 && health > 0)
+		if(life == 0 && integrity > 0)
 			name = "depleted [name]"
 		else if(decay_heat > 0)
 			return ((decay_heat * (mass / molar_mass)) / lifespan) * (min(life, 100) / 100) * applied_insertion

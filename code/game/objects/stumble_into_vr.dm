@@ -10,8 +10,8 @@
 	var/obj/occupied = turf_is_crowded()
 	if(occupied)
 		return ..()
-	if(material)
-		playsound(get_turf(src), material.tableslam_noise, 25, 1, -1)
+	if(material_base)
+		playsound(get_turf(src), material_base.tableslam_noise, 25, 1, -1)
 	else
 		playsound(get_turf(src), 'sound/weapons/tablehit1.ogg', 25, 1, -1)
 	visible_message("<span class='warning'>[M] flopped onto \the [src]!</span>")

@@ -35,13 +35,16 @@
 	if(isnull(material_reinforcing))
 		if(isnull(material_structure))
 			name = "girder"
-			set_full_integrity(initial(integrity), initial(integrity_max))
+			set_multiplied_integrity(1)
 		else
 			name = "[material_structure.display_name] girder"
-
+			set_multiplied_integrity(material_structure.relative_integrity)
 	else if(isnull(material_structure))
+		name = "girder"
+		set_multiplied_integrity(1)
 	else
-	#warn impl
+		name = "[material_reinforcing.display_name]-reinforced [material_structure.display_name] girder"
+		#warn impl integrity
 
 	// todo: refactor
 	if(material_color)
@@ -161,7 +164,7 @@
 			if(!src) return
 			to_chat(user, "<span class='notice'>You removed the support struts!</span>")
 			material_reinforcing.place_dismantled_product(get_turf(src), 2)
-			set_material_part(MATERIAL_PART_GIRDER_REINFORCEMENT)
+			set_material_part("reinf", null)
 			reset_girder()
 
 	else if(W.is_crowbar() && state == 0 && anchored)
@@ -233,7 +236,7 @@
 		return 1 //don't call parent attackby() past this point
 	to_chat(user, "<span class='notice'>You added reinforcement!</span>")
 
-	set_material_part(MATERIAL_PART_GIRDER_REINFORCEMENT, M)
+	set_material_part("reinf", M)
 	return 1
 
 /obj/structure/girder/drop_products(method, atom/where)
