@@ -1,14 +1,72 @@
+/**
+ * straight connected tables for flipping
+ *
+ * @return null if invalid (e.g. if table has other tables connected parallel to direction of flip), list of tables otherwise.
+ */
+/obj/structure/table/proc/tableflip_closure(dir_to_flip, flipped_only = FALSE)
+	if(!isturf(loc))
+		return
+	// no stacked tables
+	for(var/obj/structure/table/other in loc)
+		if(other != src)
+			return
+	var/rev_to_flip = turn(dir_to_flip, 180)
+	// ensure there's no adjacent parallels
+	for(var/obj/structure/table/other in get_step(loc, dir_to_flip))
+		if(other.tableflip_connects(src))
+			return
+	for(var/obj/structure/table/other in get_step(loc, rev_to_flip))
+		if(other.tableflip_connects(src))
+			return
+	var/list/collected = list(src)
+	var/turf/parsing
+	var/dir_to_parse
+	dir_to_parse = turn(dir_to_flip, 90)
+	parsing = get_step(loc, dir_to_parse)
+	while(isturf(parsing))
+		var/found_any = FALSE
+		for(var/obj/structure/table/found in parsing)
+			if(found_any)
+				return
+			if(!tableflip_connects(found))
+				continue
+			found_any = TRUE
+			for(var/obj/structure/table/other in get_step(parsing, dir_to_flip))
+				if(other.tableflip_connects(found))
+					return
+			for(var/obj/structure/table/other in get_step(parsing, rev_to_flip))
+				if(other.tableflip_connects(found))
+					return
+			collected += found
+		if(!found_any)
+			break
+	dir_to_parse = turn(dir_to_flip, -90)
+	parsing = get_step(loc, dir_to_parse)
+	while(isturf(parsing))
+		var/found_any = FALSE
+		for(var/obj/structure/table/found in parsing)
+			if(found_any)
+				return
+			if(!tableflip_connects(found))
+				continue
+			found_any = TRUE
+			for(var/obj/structure/table/other in get_step(parsing, dir_to_flip))
+				if(other.tableflip_connects(found))
+					return
+			for(var/obj/structure/table/other in get_step(parsing, rev_to_flip))
+				if(other.tableflip_connects(found))
+					return
+			collected += found
+		if(!found_any)
+			break
+	return collected
 
-/obj/structure/table/proc/straight_table_check(var/direction)
-	var/obj/structure/table/T
-	for(var/angle in list(-90,90))
-		T = locate() in get_step(src.loc,turn(direction,angle))
-		if(T && T.flipped == 0 && T.material.name == material.name)
-			return 0
-	T = locate() in get_step(src.loc,direction)
-	if (!T || T.flipped == 1 || T.material != material)
-		return 1
-	return T.straight_table_check(direction)
+/**
+ * can we connect to another table visually? this is called tableflip_connects but technically can/should
+ * be eventually used for visual handling as well.
+ */
+/obj/structure/table/proc/tableflip_connects(obj/structure/table/other)
+	return other.flipped == flipped && other.material_base == material_base
 
 /obj/structure/table/verb/do_flip()
 	set name = "Flip table"
@@ -64,17 +122,33 @@
 	unflip()
 
 /obj/structure/table/proc/flip(var/direction)
-	if( !straight_table_check(turn(direction,90)) || !straight_table_check(turn(direction,-90)) )
-		return 0
+	var/list/obj/structure/table/tables = tableflip_closure(direction)
+	if(isnull(tables))
+		return FALSE
 
+	for(var/obj/structure/table/other as anything in tables)
+		other.set_flipped(direction)
+
+	return TRUE
+
+/obj/structure/table/proc/unflip()
+	var/list/obj/structure/table/tables = tableflip_closure(direction)
+	if(isnull(tables))
+		return FALSE
+
+	for(var/obj/structure/table/other as anything in tables)
+		other.set_unflipped()
+
+	return TRUE
+
+/obj/structure/table/proc/set_flipped(direction)
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
 	add_obj_verb(src, /obj/structure/table/proc/do_put)
 
 	var/list/targets = list(get_step(src,dir),get_step(src,turn(dir, 45)),get_step(src,turn(dir, -45)))
-	for (var/atom/movable/A in get_turf(src))
-		if (!A.anchored)
-			spawn(0)
-				A.throw_at_old(pick(targets),1,1)
+	for(var/atom/movable/A in get_turf(src))
+		if(!A.anchored)
+			A.throw_at_old(pick(targets),1,1)
 
 	setDir(direction)
 	if(dir != NORTH)
@@ -83,16 +157,10 @@
 	climb_delay = 10 SECONDS
 	flipped = 1
 	atom_flags |= ATOM_BORDER
-	for(var/D in list(turn(direction, 90), turn(direction, -90)))
-		var/obj/structure/table/T = locate() in get_step(src,D)
-		if(T && T.flipped == 0 && material && T.material && T.material.name == material.name)
-			T.flip(direction)
 	update_connections(1)
 	update_icon()
 
-	return 1
-
-/obj/structure/table/proc/unflip()
+/obj/structure/table/proc/set_unflipped()
 	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 	add_obj_verb(src, /obj/structure/table/verb/do_flip)
 
@@ -100,12 +168,5 @@
 	flipped = 0
 	climb_delay = initial(climb_delay)
 	atom_flags &= ~ATOM_BORDER
-	for(var/D in list(turn(dir, 90), turn(dir, -90)))
-		var/obj/structure/table/T = locate() in get_step(src.loc,D)
-		if(T && T.flipped == 1 && T.dir == src.dir && material && T.material&& T.material.name == material.name)
-			T.unflip()
-
 	update_connections(1)
 	update_icon()
-
-	return 1
