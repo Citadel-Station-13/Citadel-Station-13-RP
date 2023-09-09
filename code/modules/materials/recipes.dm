@@ -1,25 +1,24 @@
-#warn refactor top two rpocs
-
+/**
+ * get recipe list
+ */
 /datum/material/proc/get_recipes()
-	if(!recipes)
-		generate_recipes()
-	return recipes
+	return isnull(recipes)? generate_recipes() : recipes
 
+/**
+ * regenerate recipes list and return it
+ */
 /datum/material/proc/generate_recipes()
 	recipes = list()
+	recipes += special_recipes()
 	return recipes
 
-/datum/material/plasteel/generate_recipes()
-	..()
-	recipes += new/datum/stack_recipe("whetstone", /obj/item/whetstone, 2, time = 10)
-	recipes += new/datum/stack_recipe("reinforced skateboard assembly", /obj/item/heavy_skateboard_frame, 10, time = 20, one_per_turf = 1)
-	recipes += new/datum/stack_recipe("plasteel floor tile", /obj/item/stack/tile/plasteel, 1, 4, 20)
-
-/datum/material/sandstone/generate_recipes()
-	..()
-	recipes += new/datum/stack_recipe("planting bed", /obj/machinery/portable_atmospherics/hydroponics/soil, 3, time = 10, one_per_turf = 1, on_floor = 1)
-	recipes += new/datum/stack_recipe("sandstone floor tile", /obj/item/stack/tile/floor/sandstone, 1, 4, 20)
-	recipes += new/datum/stack_recipe("sandstone jar", /obj/item/reagent_containers/glass/bucket/sandstone, 2, time = 4, one_per_turf = 0, on_floor = 0, pass_stack_color = FALSE)
+/**
+ * allows for better override support, for when you want specific subtypes to have specific recipes
+ *
+ * returns a recipe list that's added to generate_recipes()
+ */
+/datum/material/proc/special_recipes()
+	return list()
 
 /datum/material/sandstone/marble/generate_recipes()
 	..()
