@@ -793,16 +793,14 @@
 		if(ismob(loc.loc))
 			M = loc.loc // This is about as terse as I can make my solution to the whole 'collar won't work when attached as accessory' thing.
 		to_chat(M,"<span class='danger'>You hear a soul wrenching beep!</span>")
-		M.afflict_paralyze(20 * 10)
 		var/turf/T = get_turf(M.loc)
 		if(T)
-			T.hotspot_expose(700,125)
 			//Because I really want to see heads blow up
 			M.apply_damage(60, BURN, "head", used_weapon="Electrocution")
 			M.apply_damage(220, BRUTE, "head", used_weapon="Electrocution")
-			//Overkill is fun
+			//Overkill is fun, plus explosion effect
 			explosion(T, 0, 0, 1, rand(1,2))
-			qdel(src)
+			src.Destroy()
 	return
 
 /obj/item/clothing/accessory/collar/spike
