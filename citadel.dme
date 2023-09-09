@@ -230,6 +230,7 @@
 #include "code\__DEFINES\materials\helpers.dm"
 #include "code\__DEFINES\materials\misc.dm"
 #include "code\__DEFINES\materials\parts.dm"
+#include "code\__DEFINES\materials\stats.dm"
 #include "code\__DEFINES\mining\legacy.dm"
 #include "code\__DEFINES\misc\message_ranges.dm"
 #include "code\__DEFINES\mobs\actions.dm"

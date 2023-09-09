@@ -545,7 +545,7 @@
 			))
 		var/obj/item/material/MW = new_item
 		MW.material_color = TRUE
-		MW.set_material(new_item_mat)
+		MW.set_material_part(MATERIAL_PART_DEFAULT, new_item_mat)
 		if(istype(MW, /obj/item/material/twohanded))
 			var/obj/item/material/twohanded/TH = MW
 			TH.force_unwielded *= 0.7

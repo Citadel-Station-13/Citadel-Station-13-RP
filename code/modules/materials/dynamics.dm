@@ -44,8 +44,9 @@
  * autodetect with initial damage modes of item
  * alternatively forced modes can be specified via the param
  *
- * @return list(damage, armorflag, tier, mode, throwforce, throwspeed)
+ * @return list(damage, armorflag, tier, mode)
  */
 /datum/material/proc/melee_stats(initial_modes, multiplier = 1)
+	. = new /list(MATERIAL_MELEE_STATS_LISTLEN)
 	#warn impl - this requires caching
 
