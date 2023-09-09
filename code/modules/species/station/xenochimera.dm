@@ -168,7 +168,6 @@
 
 //Are we in danger of ferality?
 	var/danger = FALSE
-	var/feral_state = FALSE
 
 //Handle feral triggers and pre-feral messages
 	if(!feral && (hungry || shock || jittery))
@@ -213,14 +212,11 @@
 		if(go_feral)
 			feral = 5
 			danger = TRUE
-			feral_state = TRUE
 			if(!H.stat)
 				H.emote("twitch")
 
 	// Handle being feral
 	if(feral)
-		feral_state = TRUE
-
 		has_feral_abilities = TRUE
 
 		// check conditions and increase ferality if they are still met
@@ -247,11 +243,10 @@
 
 		//Handle no longer being feral
 		if(!feral)
-			feral_state = FALSE
 			has_feral_abilities = FALSE
 			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
 			log_and_message_admins("is no longer feral.", H)
-			update_xenochimera_hud(H, danger, feral_state)
+			update_xenochimera_hud(H, danger, FALSE)
 			return
 
 		//If they lose enough health to hit softcrit, handle_shock() will keep resetting this. Otherwise, pissed off critters will lose shock faster than they gain it.
@@ -260,7 +255,7 @@
 		//Handle light/dark areas
 		var/turf/T = get_turf(H)
 		if(!T)
-			update_xenochimera_hud(H, danger, feral_state)
+			update_xenochimera_hud(H, danger, TRUE)
 			return //Nullspace
 		var/darkish = T.get_lumcount() <= 0.1
 
@@ -282,7 +277,7 @@
 					H.handle_feral()
 
 			//And bail
-			update_xenochimera_hud(H, danger, feral_state)
+			update_xenochimera_hud(H, danger, TRUE)
 			return
 
 		// In the darkness or "hidden". No need for custom scene-protection checks as it's just an occational infomessage based on the main feral conditions
@@ -323,7 +318,7 @@
 				else
 					to_chat(H,"<span class='danger'>Confusing sights and sounds and smells surround you, this place is wrong, confusing, frightening. You need to hide, go to ground...</span>")
 
-	update_xenochimera_hud(H, danger, feral_state)
+	update_xenochimera_hud(H, danger, feral > 0)
 
 /datum/species/shapeshifter/xenochimera/get_bodytype_legacy()
 	return base_species
