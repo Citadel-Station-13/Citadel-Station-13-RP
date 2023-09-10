@@ -649,19 +649,16 @@
 	var/code = 30
 	var/datum/radio_frequency/radio_connection
 
-/obj/item/integrated_circuit/input/signaler/Initialize(mapload)
+/obj/item/integrated_circuit/input/signaler/Initialize()
 	. = ..()
-	spawn(40)
-		set_frequency(frequency)
-		set_pin_data(IC_INPUT, 1, frequency)
-		set_pin_data(IC_INPUT, 2, code)
-		addtimer(CALLBACK(src, PROC_REF(set_frequency), frequency), 40)
+	set_pin_data(IC_INPUT, 1, frequency)
+	set_pin_data(IC_INPUT, 2, code)
 
 /obj/item/integrated_circuit/input/signaler/Destroy()
-	if(radio_controller)
-		radio_controller.remove_object(src,frequency)
+	radio_controller.remove_object(src,frequency)
+	QDEL_NULL(radio_connection)
 	frequency = 0
-	. = ..()
+	return ..()
 
 /obj/item/integrated_circuit/input/signaler/on_data_written()
 	var/new_freq = get_pin_data(IC_INPUT, 1)
