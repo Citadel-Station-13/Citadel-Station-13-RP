@@ -1,12 +1,29 @@
 /**
  * Guns: common implementation of weapons that throw some kind of projectile,
  * or are aimable with firemode/burst/scope/etc support.
+ *
+ * # Keybind Priority
+ *
+ * When two functions need the same bind, they are to be resolved with the following,
+ * and any of the following keys *must* have these functions as long as there's
+ * not a competing function and a good reason to overrule:
+ *
+ * * use in hand / attack_self() --> rack
+ * * alt click --> safety
+ * * ctrl click --> firemode
+ * * drag onto user or a hand slot --> eject magazine
+ *
+ * This will obviously not apply universally, and is most relevant to ballistic weapons,
+ * as energy weapons do not have racking (normally) or magazines (normally) and will
+ * therefore likely use attack_self() firemode change instead.
  */
 /obj/item/gun
 	name = "gun"
 	desc = "Devs fucked up."
 
 	#warn impl
+
+	#warn impl keybind priority
 
 	attack_verb = list("struck", "hit", "bashed")
 	rad_flags = RAD_BLOCK_CONTENTS

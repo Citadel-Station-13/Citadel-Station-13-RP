@@ -2,17 +2,32 @@
  * Projectile guns that use ammo casings / magazines.
  */
 /obj/item/gun/projectile/ballistic
-	#warn impl
-
+	//* chamber
+	/// if in internal ammo mode, cycle forwards on fire, regardless of casing mode
+	var/cycle_on_fire = TRUE
+	/// drop spent casings?
+	var/eject_on_fire = TRUE
+	/// automatically rack on magazine insert, which transfers a round to chamber
+	var/rack_on_magazine = FALSE
+	/// default manual racking allowed
+	var/rack_allowed = TRUE
+	/// do we need racking at all? if not, we directly draw from magazine.
+	var/chamber_charging_system = TRUE
 	/// chambered casing
 	var/obj/item/ammo_casing/chambered
-	/// casing mode after firing
-	#warn BALLISTIC_CASING_EJECT? but also CYCLE handling revolvers can be awkward.
-	var/casing_mode
+	/// chamber racking sound
+	var/chamber_charging_sound
+	#warn find a sound
+	/// compatible calibers - either an enum or a list
+	/// this controls what magazines we can load, as well as what bullets we can hold
+	var/list/caliber
 
+	//* core config; do not change at runtime.
 	/// do we use magazines? this **CANNOT** be changed at runtime without a proc
 	/// because behavior and initializations depend on this!
 	var/use_magazines = FALSE
+
+	//* for guns that use magazines
 	/// magazine type to preload with
 	var/magazine_type
 	/// stored magazine
@@ -26,6 +41,19 @@
 	var/magazine_insert_sound = 'sound/weapons/guns/interaction/pistol_magin.ogg'
 	/// magazine unload sound
 	var/magazine_remove_sound = 'sound/weapons/guns/interaction/pistol_magout.ogg'
+	/// allow magazine removal.
+	var/magazine_removable = TRUE
+
+	//* for guns that don't use magazines
+	/// internal ammo holder size. 0 = single action, put in chamber, cock, and fire
+	var/internal_ammo_capacity = 0
+	/// internal ammo acts like a revolver; this means that the list will have nulls in it and be rotated
+	/// rather than have nulls dropped
+	var/internal_ammo_revolver = FALSE
+	/// for revolver mode: list position. this means we don't need to constantly shift the list.
+	var/internal_ammo_position
+	/// internal ammo list
+	var/list/internal_ammo_held
 
 /obj/item/gun/projectile/ballistic
 	name = "gun"
@@ -300,14 +328,12 @@
 		bullets += 1
 	return bullets
 
-/* Unneeded -- so far.
-//in case the weapon has firemodes and can't unload using attack_hand()
-/obj/item/gun/projectile/ballistic/verb/unload_gun()
-	set name = "Unload Ammo"
-	set category = "Object"
-	set src in usr
+/**
+ * has round in chambered
+ */
+/obj/item/gun/projectile/ballistic/proc/has_chambered()
 
-	if(usr.stat || usr.restrained()) return
-
-	unload_ammo(usr)
-*/
+/**
+ * get round chambered
+ */
+/obj/item/gun/projectile/ballistic/proc/peek_chambered()

@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 PROCESSING_SUBSYSTEM_DEF(projectiles)
 	name = "Projectiles"
 	wait = 0.5 // scale up to 20 fps, but not beyond. normal projectiles do not need that sort of resolution
