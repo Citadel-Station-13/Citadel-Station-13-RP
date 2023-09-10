@@ -86,9 +86,9 @@
 /obj/item/electronic_assembly/Bump(atom/AM)
 	collw = AM
 	.=..()
-	if((istype(collw, /obj/machinery/door/airlock) ||  istype(collw, /obj/machinery/door/window)) && (!isnull(access_card)))
+	if(istype(collw, /obj/machinery/door/airlock) ||  istype(collw, /obj/machinery/door/window))
 		var/obj/machinery/door/D = collw
-		if(D.check_access(access_card))
+		if(D.check_access(src))
 			D.open()
 
 /obj/item/electronic_assembly/Initialize(mapload)

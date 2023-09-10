@@ -92,15 +92,37 @@
 	.=..()
 	idc = new(src)
 
+/obj/item/integrated_circuit/smart/advanced_pathfinder/Destroy()
+	QDEL_NULL(idc)
+	return ..()
+
 /obj/item/integrated_circuit/smart/advanced_pathfinder/do_work()
 	if(!assembly)
 		activate_pin(3)
 		return
-	idc.access = assembly.access_card.access
+	var/Ps = get_pin_data(IC_INPUT, 4)
+	if(!Ps)
+		return
+
+	var/list/signature_and_data = splittext(Ps, ":")
+
+	if(length(signature_and_data) < 2)
+		return
+
+	var/signature = signature_and_data[1]
+	var/result = signature_and_data[2]
+
+	if(!check_data_signature(signature, result))
+		activate_pin(3)
+		return
+
+	var/list/Pl = json_decode(result)
+	if(Pl&&islist(Pl))
+		idc.access = Pl
 	var/turf/a_loc = get_turf(assembly)
 
 	var/turf/target_turf = locate(get_pin_data(IC_INPUT, 1), get_pin_data(IC_INPUT, 2), a_loc.z)
-	var/list/P = SSpathfinder.default_circuit_pathfinding(src, target_turf, 0, 200)
+	var/list/P = SSpathfinder.default_circuit_pathfinding(src, target_turf, 0, 200, access=Pl)
 
 	if(!P)
 		activate_pin(3)

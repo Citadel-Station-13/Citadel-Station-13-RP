@@ -106,17 +106,17 @@
 	outputs = list(
 		"registered name" = IC_PINTYPE_STRING,
 		"assignment" = IC_PINTYPE_STRING,
+		"passkey" = IC_PINTYPE_STRING
 	)
 	activators = list(
 		"on read" = IC_PINTYPE_PULSE_OUT
 	)
 
 /obj/item/integrated_circuit/input/card_reader/attackby_react(obj/item/I, mob/living/user, intent)
-	var/obj/item/card/id/card = I.GetID()
+	var/obj/item/card/id/card = I.GetIdCard()
 	var/list/access = I.GetAccess()
-
-	if(assembly)
-		assembly.access_card.access |= access
+	var/json_access = json_encode(access)
+	var/passkey = add_data_signature(json_access)
 
 	if(card) // An ID card.
 		set_pin_data(IC_OUTPUT, 1, card.registered_name)
@@ -129,9 +129,45 @@
 	else
 		return FALSE
 
+	set_pin_data(IC_OUTPUT, 3, passkey)
+	user.visible_message(SPAN_NOTICE("\The [user] swipes \the [I] onto \the [get_object()]'s card reader."))
 	push_data()
 	activate_pin(1)
 	return TRUE
+
+/obj/item/integrated_circuit/output/access_displayer
+	name = "access circuit"
+	desc = "broadcasts access for your assembly via a passkey."
+	extended_desc = "Useful for moving drones through airlocks."
+
+	complexity = 4
+	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+	inputs = list("passkey" = IC_PINTYPE_STRING)
+	activators = list(
+		"set passkey" = IC_PINTYPE_PULSE_IN
+	)
+	var/list/access
+
+/obj/item/integrated_circuit/output/access_displayer/do_work()
+	var/list/signature_and_data = splittext(get_pin_data(IC_INPUT, 1), ":")
+	if(length(signature_and_data) < 2)
+		return
+
+	var/signature = signature_and_data[1]
+	var/result = signature_and_data[2]
+
+	// check if the signature is valid
+	if(!check_data_signature(signature, result))
+		return FALSE
+
+	if(length(result) > 1)
+		result = json_decode(result)
+	else
+		result = list(result)
+	access = result
+
+/obj/item/integrated_circuit/output/access_displayer/GetAccess()
+	return access
 
 /obj/item/integrated_circuit/input/med_scanner
 	name = "integrated medical analyser"
@@ -290,7 +326,7 @@
 
 /obj/item/integrated_circuit/input/examiner/do_work(ord)
 	if(ord == 1)
-		var/atom/movable/H = get_pin_data_as_type(IC_INPUT, 1, /atom/movable)
+		var/atom/H = get_pin_data_as_type(IC_INPUT, 1, /atom)
 		var/turf/T = get_turf(src)
 
 		if(!istype(H) || !(H in view(T)))
@@ -321,84 +357,6 @@
 			activate_pin(2)
 
 
-
-/obj/item/integrated_circuit/input/turfpoint
-	name = "Tile pointer"
-	desc = "This circuit will get a tile ref with the provided absolute coordinates."
-	extended_desc = "If the machine	cannot see the target, it will not be able to calculate the correct direction.\
-	This circuit only works while inside an assembly."
-	icon_state = "numberpad"
-	complexity = 5
-	inputs = list("X" = IC_PINTYPE_NUMBER,"Y" = IC_PINTYPE_NUMBER)
-	outputs = list("tile" = IC_PINTYPE_REF)
-	activators = list("calculate dir" = IC_PINTYPE_PULSE_IN, "on calculated" = IC_PINTYPE_PULSE_OUT,"not calculated" = IC_PINTYPE_PULSE_OUT)
-	spawn_flags = IC_SPAWN_RESEARCH
-	power_draw_per_use = 40
-
-/obj/item/integrated_circuit/input/turfpoint/do_work(ord)
-	if(ord == 1)
-		if(!assembly)
-			activate_pin(3)
-			return
-		var/turf/T = get_turf(assembly)
-		var/target_x = clamp(get_pin_data(IC_INPUT, 1), 0, world.maxx)
-		var/target_y = clamp(get_pin_data(IC_INPUT, 2), 0, world.maxy)
-		var/turf/A = locate(target_x, target_y, T.z)
-		set_pin_data(IC_OUTPUT, 1, null)
-		if(!A || !(A in view(T)))
-			activate_pin(3)
-			return
-		else
-			set_pin_data(IC_OUTPUT, 1, WEAKREF(A))
-		push_data()
-		activate_pin(2)
-
-/obj/item/integrated_circuit/input/turfscan
-	name = "tile analyzer"
-	desc = "This circuit can analyze the contents of the scanned turf, and can read letters on the turf."
-	icon_state = "video_camera"
-	complexity = 5
-	inputs = list(
-		"target" = IC_PINTYPE_REF
-		)
-	outputs = list(
-		"located ref" 		= IC_PINTYPE_LIST,
-		"Written letters" 	= IC_PINTYPE_STRING,
-		"area"				= IC_PINTYPE_STRING
-		)
-	activators = list(
-		"scan" = IC_PINTYPE_PULSE_IN,
-		"on scanned" = IC_PINTYPE_PULSE_OUT,
-		"not scanned" = IC_PINTYPE_PULSE_OUT
-		)
-	spawn_flags = IC_SPAWN_RESEARCH
-	power_draw_per_use = 40
-	cooldown_per_use = 10
-
-/obj/item/integrated_circuit/input/turfscan/do_work(ord)
-	if(ord == 1)
-		var/turf/scanned_turf = get_pin_data_as_type(IC_INPUT, 1, /turf)
-		var/turf/circuit_turf = get_turf(src)
-		var/area_name = get_area_name(scanned_turf)
-		if(!istype(scanned_turf)) //Invalid input
-			activate_pin(3)
-			return
-
-		if(scanned_turf in view(circuit_turf)) // This is a camera.  It can't examine things that it can't see.
-			var/list/turf_contents = new()
-			for(var/obj/U in scanned_turf)
-				turf_contents += WEAKREF(U)
-			for(var/mob/U in scanned_turf)
-				turf_contents += WEAKREF(U)
-			set_pin_data(IC_OUTPUT, 1, turf_contents)
-			set_pin_data(IC_OUTPUT, 3, area_name)
-			var/list/St = new()
-			for(var/obj/effect/debris/cleanable/crayon/I in scanned_turf)
-				St.Add(I.icon_state)
-			if(St.len)
-				set_pin_data(IC_OUTPUT, 2, jointext(St, ",", 1, 0))
-			push_data()
-			activate_pin(2)
 
 /obj/item/integrated_circuit/input/turfpoint
 	name = "tile pointer"
@@ -441,7 +399,8 @@
 		)
 	outputs = list(
 		"located contents"	= IC_PINTYPE_LIST,
-		"Written letters" 	= IC_PINTYPE_STRING
+		"Written letters" 	= IC_PINTYPE_STRING,
+		"area"				= IC_PINTYPE_STRING
 		)
 	activators = list(
 		"scan" = IC_PINTYPE_PULSE_IN,
@@ -454,28 +413,28 @@
 
 /obj/item/integrated_circuit/input/turfscan/do_work(ord)
 	if(ord == 1)
-		var/atom/movable/H = get_pin_data_as_type(IC_INPUT, 1, /atom)
-		var/turf/T = get_turf(src)
-		var/turf/E = get_turf(H)
-		if(!istype(H)) //Invalid input
+		var/turf/scanned_turf = get_pin_data_as_type(IC_INPUT, 1, /turf)
+		var/turf/circuit_turf = get_turf(src)
+		var/area_name = get_area_name(scanned_turf)
+		if(!istype(scanned_turf)) //Invalid input
+			activate_pin(3)
 			return
 
-		if(H in view(T)) // This is a camera.  It can't examine thngs,that it can't see.
-			var/list/cont = new()
-			if(E.contents.len)
-				for(var/i = 1 to E.contents.len)
-					var/atom/U = E.contents[i]
-					cont += WEAKREF(U)
-			set_pin_data(IC_OUTPUT, 1, cont)
+		if(scanned_turf in view(circuit_turf)) // This is a camera.  It can't examine things that it can't see.
+			var/list/turf_contents = new()
+			for(var/obj/U in scanned_turf)
+				turf_contents += WEAKREF(U)
+			for(var/mob/U in scanned_turf)
+				turf_contents += WEAKREF(U)
+			set_pin_data(IC_OUTPUT, 1, turf_contents)
+			set_pin_data(IC_OUTPUT, 3, area_name)
 			var/list/St = new()
-			for(var/obj/effect/debris/cleanable/crayon/I in E.contents)
+			for(var/obj/effect/debris/cleanable/crayon/I in scanned_turf)
 				St.Add(I.icon_state)
 			if(St.len)
 				set_pin_data(IC_OUTPUT, 2, jointext(St, ",", 1, 0))
 			push_data()
 			activate_pin(2)
-		else
-			activate_pin(3)
 
 /obj/item/integrated_circuit/input/local_locator
 	name = "local locator"
@@ -685,6 +644,7 @@
 	power_draw_idle = 5
 	power_draw_per_use = 40
 	cooldown_per_use = 5
+	var/simple = 1
 	var/frequency = 1457
 	var/code = 30
 	var/datum/radio_frequency/radio_connection
@@ -708,21 +668,38 @@
 	var/new_code = get_pin_data(IC_INPUT, 2)
 	if(isnum(new_freq) && new_freq > 0)
 		set_frequency(new_freq)
-	if(isnum(new_code))
-		code = new_code
+	code = new_code
 
 
 /obj/item/integrated_circuit/input/signaler/do_work(ord) // Sends a signal.
-	if(ord == 1)
-		if(!radio_connection)
-			return
+	if(!radio_connection || ord != 1)
+		return
 
-		var/datum/signal/signal = new()
-		signal.source = src
+	radio_connection.post_signal(src, create_signal())
+	activate_pin(2)
+
+/obj/item/integrated_circuit/input/signaler/proc/signal_good(datum/signal/signal)
+	if(!signal || signal.source == src)
+		return FALSE
+	if(code)
+		var/real_code = 0
+		if(isnum(code))
+			real_code = code
+		var/rec = 0
+		if(signal.encryption)
+			rec = signal.encryption
+		if(real_code != rec)
+			return FALSE
+	return TRUE
+
+/obj/item/integrated_circuit/input/signaler/proc/create_signal()
+	var/datum/signal/signal = new()
+	signal.transmission_method = 1
+	signal.source = src
+	if(isnum(code))
 		signal.encryption = code
-		signal.data["message"] = "ACTIVATE"
-		radio_connection.post_signal(src, signal)
-		activate_pin(2)
+	signal.data["message"] = "ACTIVATE"
+	return signal
 
 /obj/item/integrated_circuit/input/signaler/proc/set_frequency(new_frequency)
 	if(!frequency)
@@ -736,26 +713,57 @@
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
 
 /obj/item/integrated_circuit/input/signaler/receive_signal(datum/signal/signal)
-	var/new_code = get_pin_data(IC_INPUT, 2)
-	var/code = 0
+	if(!signal_good(signal))
+		return 0
+	treat_signal(signal)
+	return 1
 
-	if(isnum(new_code))
-		code = new_code
-	if(!signal)
-		return 0
-	if(signal.encryption != code)
-		return 0
-	if(signal.source == src) // Don't trigger ourselves.
-		return 0
-
+//This only procs when a signal is valid.
+/obj/item/integrated_circuit/input/signaler/proc/treat_signal(datum/signal/signal)
 	activate_pin(3)
 
-	if(loc)
+	if(loc && simple)
 		for(var/mob/O in hearers(1, get_turf(src)))
 			to_chat(O, "[icon2html(thing = src, target = O)] *beep beep*")
 
+/obj/item/integrated_circuit/input/signaler/advanced
+	name = "advanced integrated signaler"
+	icon_state = "signal_advanced"
+	desc = "Signals from a signaler can be received with this, allowing for remote control.  Additionally, it can send signals as well."
+	extended_desc = "When a signal is received from another signaler with the right id tag, the 'on signal received' activator pin will be pulsed and the command output is updated.  \
+	The two input pins are to configure the integrated signaler's settings.  Note that the frequency should not have a decimal in it.  \
+	Meaning the default frequency is expressed as 1457, not 145.7.  To send a signal, pulse the 'send signal' activator pin. Set the command output to set the message received."
+	complexity = 8
+	inputs = list("frequency" = IC_PINTYPE_NUMBER, "id tag" = IC_PINTYPE_STRING, "command" = IC_PINTYPE_STRING)
+	outputs = list("received command" = IC_PINTYPE_STRING)
+	var/command
+	code = "Integrated_Circuits"
+	simple = 0
+
+/obj/item/integrated_circuit/input/signaler/advanced/on_data_written()
+	..()
+	command = get_pin_data(IC_INPUT,3)
+
+/obj/item/integrated_circuit/input/signaler/advanced/signal_good(datum/signal/signal)
+	if(!..() || signal.data["tag"] != code)
+		return FALSE
+	return TRUE
+
+/obj/item/integrated_circuit/input/signaler/advanced/create_signal()
+	var/datum/signal/signal = new()
+	signal.transmission_method = 1
+	signal.data["tag"] = code
+	signal.data["command"] = command
+	signal.encryption = 0
+	return signal
+
+/obj/item/integrated_circuit/input/signaler/advanced/treat_signal(datum/signal/signal)
+	set_pin_data(IC_OUTPUT,1,signal.data["command"])
+	push_data()
+	..()
+
 /obj/item/integrated_circuit/input/EPv2
-	name = "\improper EPv2 circuit"
+	name = "exonet circuit"
 	desc = "Enables the sending and receiving of messages on the Exonet with the EPv2 protocol."
 	extended_desc = "An EPv2 address is a string with the format of XXXX:XXXX:XXXX:XXXX.  Data can be send or received using the \
 	second pin on each side, with additonal data reserved for the third pin.  When a message is received, the second activaiton pin \

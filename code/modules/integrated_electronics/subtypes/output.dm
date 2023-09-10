@@ -124,7 +124,7 @@
 	extended_desc = "This will emit an audible message to anyone who can hear the assembly."
 	icon_state = "speaker"
 	complexity = 12
-	cooldown_per_use = 4 SECONDS
+	cooldown_per_use = 1 SECONDS
 	inputs = list("text" = IC_PINTYPE_STRING)
 	outputs = list()
 	activators = list("to speech" = IC_PINTYPE_PULSE_IN)
@@ -141,7 +141,7 @@
 	name = "advanced text-to-speech circuit"
 	desc = "A miniature speaker is attached to this component.  It is able to transpose any valid text to speech, matching a scanned target's voice."
 	complexity = 15
-	cooldown_per_use = 6 SECONDS
+	cooldown_per_use = 1 SECONDS
 	inputs = list("text" = IC_PINTYPE_STRING, "mimic target" = IC_PINTYPE_REF)
 	power_draw_per_use = 100
 
