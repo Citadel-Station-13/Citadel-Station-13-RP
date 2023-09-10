@@ -280,7 +280,7 @@
 		/obj/item/sniper_rifle_part/barrel,
 		/obj/item/sniper_rifle_part/stock,
 		/obj/item/sniper_rifle_part/trigger_group,
-		/obj/item/ammo_casing/a145 = 4
+		/obj/item/ammo_casing/a127 = 4
 	)
 
 /obj/item/storage/secure/briefcase/fuelrod
