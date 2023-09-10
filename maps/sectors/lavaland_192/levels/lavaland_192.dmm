@@ -894,10 +894,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	on = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/lavaland/central/base/common)
@@ -1553,7 +1553,7 @@
 /turf/simulated/wall/r_wall,
 /area/lavaland/central/base/common)
 "Em" = (
-/obj/machinery/door/firedoor/multi_tile{
+/obj/machinery/door/firedoor{
 	req_one_access = list(48)
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -1906,6 +1906,14 @@
 	},
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
+"Ot" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "Ow" = (
 /obj/machinery/button/remote/airlock{
 	id = "mine_orange";
@@ -11865,7 +11873,7 @@ EX
 db
 ZZ
 QR
-QR
+Ot
 QR
 La
 QR
