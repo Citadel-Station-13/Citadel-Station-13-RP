@@ -906,7 +906,6 @@
 /datum/loadout_entry/restricted/engineering/uniform/eng_skirt_pleated
 	name = "Engineers Pleated Skirt"
 	path = /obj/item/clothing/under/rank/engineer/skirt_pleated
-	allowed_roles = list("Chief Engineer", "Atmospheric Techician")
 
 /datum/loadout_entry/restricted/engineering/uniform/bodysuit
 	name = "Engineering Bodysuit"
