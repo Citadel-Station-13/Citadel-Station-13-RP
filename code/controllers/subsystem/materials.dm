@@ -66,6 +66,8 @@ SUBSYSTEM_DEF(materials)
 	else if(ispath(id_or_path))
 		// yay it's a path
 		return material_lookup[initial(id_or_path.id)]
+	else if(istype(id_or_path))
+		return id_or_path
 	else
 		// what
 		// yes you get a runtime if you pass null in, the subsystem shouldn't have to sanitycheck for you.

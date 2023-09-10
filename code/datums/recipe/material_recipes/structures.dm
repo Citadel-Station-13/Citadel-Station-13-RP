@@ -40,3 +40,12 @@
 /datum/stack_recipe/material/structure/low_wall/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
 	for(var/i in 1 to amount)
 		new /obj/structure/wall_frame(where, stack.material)
+
+/datum/stack_recipe/material/structure/sculpting_block
+	name = "sculpting block"
+	result_type = /obj/structure/sculpting_block
+	cost = 15
+
+/datum/stack_recipe/material/structure/low_wall/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
+	for(var/i in 1 to amount)
+		new /obj/structure/sculpting_block(where, stack.material)

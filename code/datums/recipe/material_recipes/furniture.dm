@@ -5,8 +5,6 @@
 	abstract_type = /datum/stack_recipe/material/furniture
 	category = "Material - Furniture"
 
-#warn sculpting block
-
 /datum/stack_recipe/material/furniture/bed
 	name = "bed"
 	result_type = /obj/structure/bed
