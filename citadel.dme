@@ -4109,7 +4109,7 @@
 #include "code\modules\projectiles\ammunition\magic.dm"
 #include "code\modules\projectiles\ammunition\magnetic.dm"
 #include "code\modules\projectiles\ammunition\rounds.dm"
-#include "code\modules\projectiles\guns\dnalocking.dm"
+#include "code\modules\projectiles\guns\external.dm"
 #include "code\modules\projectiles\guns\firemode.dm"
 #include "code\modules\projectiles\guns\gun.dm"
 #include "code\modules\projectiles\guns\pins.dm"

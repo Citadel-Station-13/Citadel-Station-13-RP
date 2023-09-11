@@ -54,6 +54,36 @@
 	var/internal_ammo_position
 	/// internal ammo list
 	var/list/internal_ammo_held
+	/// starts loaded with ammo type
+	var/internal_ammo_preload
+	/// starts loaded with amount; defaults to max
+	var/internal_ammo_amount
+
+	//* Rendering
+	/// rendering system for magazine
+	/// in all cases, we assume the naming is consistent for both onmob and item sprites
+	/// meaning if you add an overlay named _100, you'd have _100_all for the onmob rendering system
+	var/render_magazine_system = GUN_RENDERING_NONE
+	/// magazine state
+	/// in overlay mode, this is added directly as an overlay
+	/// in state mode, this is added as "-[state]"
+	var/render_magazine_state
+	/// rendering system for ammo
+	/// in overlay mode, "[base_icon_state]-[count]" is added as an overlay
+	/// in state mode, this is added as "-[count]" after magazine, if magazine state is there.
+	var/render_ammo_system = GUN_RENDERING_NONE
+	/// ammo states. this is 1 to x, rounded up
+	var/render_ammo_count = 0
+	/// ammo state includes 0
+	var/render_ammo_empty = FALSE
+
+/obj/item/gun/projectile/ballistic/Initialize(mapload)
+	. = ..()
+	init_ammo()
+
+/obj/item/gun/projectile/ballistic/proc/init_ammo()
+	#warn impl
+
 
 /obj/item/gun/projectile/ballistic
 	name = "gun"
@@ -329,11 +359,25 @@
 	return bullets
 
 /**
+ * process chamber post fire
+ */
+/obj/item/gun/projectile/ballistic/proc/process_chamber()
+	#warn impl
+
+/**
+ * rack chamber
+ */
+/obj/item/gun/projectile/ballistic/proc/rack_chamber()
+	#warn impl
+
+/**
  * has round in chambered
  */
 /obj/item/gun/projectile/ballistic/proc/has_chambered()
+	return !isnull(chambered)
 
 /**
  * get round chambered
  */
 /obj/item/gun/projectile/ballistic/proc/peek_chambered()
+	return chambered

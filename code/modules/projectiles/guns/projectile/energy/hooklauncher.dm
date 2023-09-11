@@ -1,6 +1,20 @@
-/*
- * Contains weapons primarily using the 'grappling hook' projectiles.
- */
+/datum/firemode/energy/gravwhip
+	name = "gravity beam"
+	fire_delay = 1.5 SECONDS
+	projectile_type = /obj/projectile/energy/hook
+	charge_cost = 400
+
+/datum/firemode/energy/gravring/grab
+	name = "manipulate"
+	fire_delay = 1.5 SECONDS
+	projectile_type = /obj/projectile/energy/hook/ring
+	charge_cost = 400
+
+/datum/firemode/energy/gravring/battle
+	name = "battle"
+	projectile_type = /obj/projectile/beam/xray
+	charge_cost = 260
+	fire_delay = 0.8 SECONDS
 
 /obj/item/gun/projectile/energy/hooklauncher
 	name = "gravity whip"
@@ -13,9 +27,10 @@
 	charge_cost = 300
 
 	cell_type = /obj/item/cell/device/weapon
-	projectile_type = /obj/projectile/energy/hook
 
-// An easily concealable not-ripoff version. It would be silenced, if it didn't make it blatant you're the one using it.
+	regex_this_firemodes = list(
+		/datum/firemode/energy/gravwhip,
+	)
 
 /obj/item/gun/projectile/energy/hooklauncher/ring
 	name = "ominous ring"
@@ -28,12 +43,8 @@
 
 	cell_type = /obj/item/cell/device/weapon/recharge/alien
 	battery_lock = TRUE
-	charge_cost = 400
-	charge_meter = FALSE
 
-	projectile_type = /obj/projectile/energy/hook/ring
-
-	firemodes = list(
-		list(mode_name="manipulate", fire_delay=15, projectile_type=/obj/projectile/energy/hook/ring, charge_cost = 400),
-		list(mode_name="battle", fire_delay=8, projectile_type=/obj/projectile/beam/xray, charge_cost = 260),
-		)
+	regex_this_firemodes = list(
+		/datum/firemode/energy/gravring/grab,
+		/datum/firemode/energy/gravring/battle,
+	)

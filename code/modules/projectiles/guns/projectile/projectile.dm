@@ -5,8 +5,14 @@
  * Guns that fire /obj/projectile's.
  */
 /obj/item/gun/projectile
+	//* Accuracy & Stability
+	/// tuning factor for how much instability goes into dispersion rather than accuracy
+	var/instability_balancing = 1
+	#warn lmfao this tuning factor
+
+	//* Rendering
 	/// projectile typepath hint for chameleon weapons, if autodetection otherwise fails.
-	var/nominal_projectile_type = /obj/projectile/bullet/pistol/strong
+	var/rendered_projectile_type = /obj/projectile/bullet/pistol/strong
 	#warn impl
 
 /obj/item/gun/projectile/fire(atom/target, atom/movable/user, angle, reflex, point_blank)
@@ -27,3 +33,15 @@
  */
 /obj/item/gun/projectile/proc/consume_next_projectile(atom/movable/firer)
 	return null
+
+/**
+ * Get max ammo - used in rendering
+ */
+/obj/item/gun/projectile/proc/get_max_ammo()
+	return 0
+
+/**
+ * Get ammo left - used in rendering
+ */
+/obj/item/gun/projectile/proc/get_count_ammo()
+	return 0

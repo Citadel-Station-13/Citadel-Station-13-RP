@@ -30,6 +30,27 @@
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	w_class = WEIGHT_CLASS_NORMAL
 
+	//* Accuracy & Stability
+	/// recoil to inflict per shot
+	var/recoil = 0
+	/// multiplier to recoil to inflict per shot when wielded
+	var/recoil_wielded_multiplier = 1
+	/// screenshake forced; null = auto
+	var/recoil_screen_shake
+	/// instability applied per tile moved
+	var/instability_motion = 0
+	/// instability applied when drawing the weapon out
+	var/instability_draw = 0
+	/// instability applied when wielding the weapon
+	var/instability_wield = 0
+	/// how sensitive we are to instability ; multiplied to instability of firer
+	var/instability_sensitivity = 1
+	/// inherent instability stored on gun
+	/// picking up or wielding a gun only applies instability to that gun
+	var/instability_stored = 0
+	/// last instability decay time
+	var/instability_decay
+
 	//* Firemodes
 	#warn init firemodes on .. init
 	/// current firemode
@@ -86,13 +107,14 @@
  * @params
  * * target - what to aim at / the 'original' var for projectile
  * * user - what's firing us, usually a mob but coudl be an obj
- * * angle - the angle to shoot in
+ * * where - this weirdly named variable is the original turf of the click, used for guns that don't use angles.
+ * * angle - the angle to shoot in. what this means to different guns can differ, and some guns can completely ignore this
  * * reflex - is it an automatic fire from aiming/hostage taking?
  * * burst_amount - how many shots to fire
  * * burst_interval - delay between shots
  * * point_blank - allow point blanking
  */
-/obj/item/gun/proc/firing_sequence(atom/target, atom/movable/user, angle, reflex, burst_amount, burst_interval, point_blank)
+/obj/item/gun/proc/firing_sequence(atom/target, atom/movable/user, turf/where, angle, reflex, burst_amount, burst_interval, point_blank)
 	var/current_cycle = firing_cycle
 	#warn impl
 
@@ -101,7 +123,7 @@
  *
  * @return TRUE/FALSE; false for failure, will always terminate burst.
  */
-/obj/item/gun/proc/fire(atom/target, atom/movable/user, angle, reflex, point_blank)
+/obj/item/gun/proc/fire(atom/target, atom/movable/user, turf/where, angle, reflex, point_blank)
 	#warn impl
 
 /**
@@ -117,6 +139,31 @@
  */
 /obj/item/gun/proc/restock_to_full()
 	return
+
+/**
+ * called after firing
+ *
+ * @params
+ * * target - original target
+ * * user - firing user
+ * * where - turf targeted
+ * * angle - angle firing in
+ * * reflex - was this a reflexive fire?
+ * * iteration - burst iteration
+ */
+/obj/item/gun/proc/post_fire(atom/target, atom/movable/user, turf/where, angle, reflex, iteration)
+	return
+
+/**
+ * check if we can fire
+ */
+/obj/item/gun/proc/can_fire(atom/target, atom/movable/user, turf/where, angle, reflex, burst_amount, burst_interval, point_blank)
+	return TRUE
+
+/**
+ * called after a fire() fails and the firing sequence is interrupted
+ */
+/obj/item/gun/proc/failed_fire(atom/target, atom/movable/user, turf/where, angle, reflex)
 
 
 #warn below
@@ -159,9 +206,6 @@
 	var/tmp/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
 	var/tmp/lock_time = -100
 
-	var/dna_lock = 0				//whether or not the gun is locked to dna
-	var/obj/item/dnalockingchip/attached_lock
-
 	var/last_shot = 0			//records the last shot fired
 
 	var/charge_sections = 4
@@ -201,13 +245,6 @@
 
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
-
-	if(dna_lock)
-		attached_lock = new /obj/item/dnalockingchip(src)
-	if(!dna_lock)
-		remove_obj_verb(src, /obj/item/gun/projectile/verb/remove_dna)
-		remove_obj_verb(src, /obj/item/gun/projectile/verb/give_dna)
-		remove_obj_verb(src, /obj/item/gun/projectile/verb/allow_dna)
 
 	if(pin)
 		pin = new pin(src)
@@ -337,19 +374,6 @@
 	return ..() //Pistolwhippin'
 
 /obj/item/gun/projectile/attackby(obj/item/A, mob/user)
-	if(istype(A, /obj/item/dnalockingchip))
-		if(dna_lock)
-			to_chat(user, "<span class='notice'>\The [src] already has a [attached_lock].</span>")
-			return
-		if(!user.attempt_insert_item_for_installation(A, src))
-			return
-		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
-		attached_lock = A
-		dna_lock = 1
-		add_obj_verb(src, /obj/item/gun/projectile/verb/remove_dna)
-		add_obj_verb(src, /obj/item/gun/projectile/verb/give_dna)
-		add_obj_verb(src, /obj/item/gun/projectile/verb/allow_dna)
-		return
 
 	if(A.is_screwdriver())
 		if(dna_lock && attached_lock && !attached_lock.controller_lock)
