@@ -158,6 +158,14 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+"aS" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/maintenance,
+/obj/machinery/atmospherics/mains_pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_four/forward)
 "aV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -3454,6 +3462,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/mains_pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/forward)
 "oH" = (
@@ -4295,6 +4306,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/aft/port)
+"st" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/mains_pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_four/forward)
 "sv" = (
 /obj/machinery/door/blast/regular/open{
 	dir = 2;
@@ -5059,6 +5079,10 @@
 /obj/machinery/camera/network/research_outpost,
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
+"ve" = (
+/obj/machinery/atmospherics/mains_pipe/simple/hidden,
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_four/forward)
 "vg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -5273,6 +5297,12 @@
 "wd" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/rdoffice)
+"we" = (
+/obj/machinery/atmospherics/mains_pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_four/forward)
 "wf" = (
 /obj/structure/frame{
 	anchored = 1
@@ -6013,6 +6043,9 @@
 "zi" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/mains_pipe/simple/hidden{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/main_map/maintenance/deck_four/forward)
@@ -8339,6 +8372,12 @@
 "Ji" = (
 /turf/simulated/floor/reinforced/outdoors,
 /area/space)
+"Jj" = (
+/obj/machinery/atmospherics/mains_pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/main_map/maintenance/deck_four/forward)
 "Jl" = (
 /obj/machinery/artifact_scanpad,
 /obj/machinery/light/no_nightshift{
@@ -8836,6 +8875,9 @@
 	},
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/mains_pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_four/forward)
 "Lg" = (
@@ -9792,6 +9834,12 @@
 /obj/item/storage/firstaid/regular,
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
+"OI" = (
+/obj/machinery/atmospherics/mains_pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_four/forward)
 "OJ" = (
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
@@ -9900,6 +9948,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"Pc" = (
+/obj/machinery/atmospherics/mains_pipe/split/hidden,
+/turf/simulated/floor/tiled,
+/area/main_map/hallway/deck4)
 "Pe" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
@@ -10422,6 +10474,15 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
+"Rw" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/mains_pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_four/forward)
 "Ry" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
@@ -10629,6 +10690,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/mains_pipe/simple/hidden{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/forward)
@@ -11604,6 +11668,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
+"Wx" = (
+/obj/machinery/light/small,
+/obj/machinery/atmospherics/mains_pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_four/forward)
 "WA" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/secure/briefcase,
@@ -21874,7 +21945,7 @@ eE
 pF
 AU
 AU
-AU
+Pc
 AU
 AU
 AU
@@ -22068,7 +22139,7 @@ Dc
 pF
 AU
 AU
-AU
+Pc
 AU
 AU
 AU
@@ -22262,7 +22333,7 @@ Dc
 pF
 AU
 AU
-AU
+Pc
 AU
 AU
 OC
@@ -32567,7 +32638,7 @@ Ge
 Ip
 wM
 wM
-uv
+we
 wM
 fX
 Ji
@@ -32761,7 +32832,7 @@ Ge
 MM
 uv
 uv
-uv
+we
 nw
 nw
 nw
@@ -32955,7 +33026,7 @@ CW
 Ip
 wM
 wM
-NW
+Wx
 nw
 nw
 nw
@@ -33149,7 +33220,7 @@ CW
 Ip
 wM
 wM
-uv
+we
 nw
 nw
 nw
@@ -33343,7 +33414,7 @@ CW
 Ip
 wM
 wM
-uv
+we
 wM
 fX
 Ji
@@ -33537,7 +33608,7 @@ Ge
 Ip
 wM
 wM
-uv
+we
 nw
 nw
 nw
@@ -33731,7 +33802,7 @@ fd
 Ip
 wM
 wM
-uv
+we
 nw
 nw
 nw
@@ -33925,7 +33996,7 @@ xy
 Ip
 wM
 wM
-uv
+we
 nw
 nw
 nw
@@ -34119,7 +34190,7 @@ xy
 Ip
 wM
 wM
-uv
+we
 wM
 fX
 Ji
@@ -34313,7 +34384,7 @@ Ip
 Ip
 wM
 wM
-uv
+we
 nw
 nw
 nw
@@ -34500,14 +34571,14 @@ Za
 kL
 nH
 nH
-ej
+Jj
 ej
 ej
 ex
 Ip
 wM
 wM
-uv
+we
 nw
 nw
 nw
@@ -34694,14 +34765,14 @@ Za
 kL
 nH
 nH
-ej
+Jj
 ej
 ej
 ex
 Ip
 wM
 wM
-uv
+we
 nw
 nw
 nw
@@ -34888,14 +34959,14 @@ Za
 Ji
 fX
 PO
-ej
+Jj
 ej
 QU
 Ip
 Ip
 Ip
 wM
-uv
+we
 wM
 fX
 Ji
@@ -35082,14 +35153,14 @@ Za
 kL
 nH
 nH
-ej
+Jj
 ej
 ej
 iW
 WM
 Ip
 wM
-uv
+we
 nw
 nw
 nw
@@ -35276,14 +35347,14 @@ Za
 kL
 nH
 nH
-ej
+Jj
 ej
 ej
 Ip
 SQ
 Ip
 wM
-NW
+Wx
 nw
 nw
 nw
@@ -35477,7 +35548,7 @@ Dy
 kK
 Ip
 wM
-uv
+we
 nw
 nw
 nw
@@ -35671,7 +35742,7 @@ Ip
 Ip
 Ip
 wM
-uv
+we
 wM
 fX
 Ji
@@ -35865,7 +35936,7 @@ nH
 nH
 wM
 wM
-uv
+we
 nw
 nw
 nw
@@ -36059,7 +36130,7 @@ nH
 nH
 nw
 sJ
-JZ
+aS
 nw
 nw
 nw
@@ -36246,14 +36317,14 @@ py
 kL
 nw
 nw
-ey
+Rw
 DZ
 FW
 nw
 nw
 wM
 wM
-uv
+we
 nw
 nw
 nw
@@ -36440,14 +36511,14 @@ Za
 Ji
 nw
 uv
-ey
-uv
-uv
-uv
-uv
-uv
-uv
-uv
+st
+ve
+ve
+ve
+ve
+ve
+ve
+OI
 wM
 nw
 Ji
@@ -36634,7 +36705,7 @@ Za
 kL
 nw
 nw
-ey
+Rw
 wM
 wM
 wM
@@ -36828,7 +36899,7 @@ Za
 kL
 nw
 nw
-ey
+Rw
 NB
 wM
 wM
