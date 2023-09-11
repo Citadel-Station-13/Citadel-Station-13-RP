@@ -5516,6 +5516,18 @@
 /obj/structure/lattice,
 /turf/simulated/open,
 /area/space)
+"goe" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/obj/machinery/light/spot/no_nightshift{
+	dir = 8
+	},
+/turf/simulated/floor/water/deep/indoors,
+/area/hydroponics/garden)
 "goo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -5987,6 +5999,11 @@
 /obj/structure/stairs/spawner/east,
 /obj/structure/railing,
 /turf/simulated/floor/plating,
+/area/hydroponics/garden)
+"gSl" = (
+/obj/effect/floor_decal/grass_edge,
+/obj/machinery/light/spot/no_nightshift,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/hydroponics/garden)
 "gSx" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -7843,12 +7860,6 @@
 /obj/machinery/light/no_nightshift,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/entrance)
-"iTr" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/wood,
-/area/hydroponics/garden)
 "iTP" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/substation/tcomms)
@@ -8496,6 +8507,7 @@
 "jMt" = (
 /obj/effect/floor_decal/grass_edge,
 /obj/machinery/seed_storage/garden,
+/obj/machinery/light/spot/no_nightshift,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/hydroponics/garden)
 "jMB" = (
@@ -10002,6 +10014,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
+"lxc" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light/spot/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/water/deep/indoors,
+/area/hydroponics/garden)
 "lya" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -10630,6 +10651,7 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/hydroponics/garden)
 "miU" = (
+/obj/machinery/door/airlock/lift,
 /turf/simulated/floor/tiled/monotile,
 /area/space)
 "mjo" = (
@@ -11998,6 +12020,9 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
 	},
+/obj/machinery/light/spot/no_nightshift{
+	dir = 4
+	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/hydroponics/garden)
 "nHu" = (
@@ -12593,6 +12618,12 @@
 "ooV" = (
 /turf/simulated/floor/tiled,
 /area/crew_quarters/cafeteria)
+"opA" = (
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/hydroponics/garden)
 "opJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -13117,15 +13148,6 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/security/brig)
-"oQa" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/water/deep/indoors,
-/area/hydroponics/garden)
 "oQn" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/hydroponics)
@@ -15855,6 +15877,18 @@
 /obj/machinery/atmospherics/component/unary/freezer,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"sgd" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 8
+	},
+/obj/machinery/light/spot/no_nightshift{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/hydroponics/garden)
 "sgQ" = (
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/outdoors,
@@ -17248,6 +17282,15 @@
 "tLp" = (
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_2)
+"tLL" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/obj/machinery/light/spot/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/hydroponics/garden)
 "tMG" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -18671,6 +18714,10 @@
 "vie" = (
 /turf/simulated/wall/r_wall,
 /area/tether/exploration/pilot_office)
+"vjn" = (
+/obj/turbolift_map_holder/euthenia_medical,
+/turf/simulated/open,
+/area/space)
 "vjz" = (
 /obj/structure/closet/secure_closet/psych,
 /turf/simulated/floor/carpet/sblucarpet,
@@ -19258,6 +19305,7 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/effect/floor_decal/grass_edge,
+/obj/machinery/light/spot/no_nightshift,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/hydroponics/garden)
 "vUi" = (
@@ -27226,12 +27274,12 @@ aje
 rae
 rae
 rae
-rae
-rae
+nAo
+nAo
 hsC
 wEx
 jxz
-rae
+nAo
 aal
 nJA
 nJA
@@ -27242,7 +27290,7 @@ xdd
 nJA
 nJA
 pQv
-rae
+nAo
 aje
 cUp
 vva
@@ -27420,12 +27468,12 @@ aje
 rae
 rae
 rae
-rae
-rae
+nAo
+nAo
 qri
 nHS
 naq
-rae
+nAo
 aal
 nJA
 nJA
@@ -27436,7 +27484,7 @@ cRh
 nJA
 nJA
 pQv
-rae
+nAo
 aje
 cUp
 vva
@@ -27614,12 +27662,12 @@ aje
 rae
 rae
 rae
+nAo
+nAo
 rae
 rae
 rae
-rae
-rae
-rae
+nAo
 qri
 nHS
 nHS
@@ -27630,7 +27678,7 @@ aHe
 nHS
 nHS
 naq
-rae
+nAo
 aje
 cUp
 sVT
@@ -27808,23 +27856,23 @@ aje
 rae
 rae
 rae
+nAo
+nAo
+rae
+rae
+rae
+nAo
+nAo
+nAo
+nAo
 rae
 rae
 rae
 rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
+nAo
+nAo
+nAo
+nAo
 aje
 cUp
 dff
@@ -28002,12 +28050,12 @@ aje
 rae
 rae
 rae
+nAo
+nAo
 rae
 rae
 rae
-rae
-rae
-rae
+nAo
 qBJ
 wEx
 wEx
@@ -28018,7 +28066,7 @@ cRh
 wEx
 wEx
 leZ
-rae
+nAo
 aje
 ciN
 fBa
@@ -28196,12 +28244,12 @@ aje
 rae
 rae
 rae
-rae
-rae
+nAo
+nAo
 qBJ
 wEx
 leZ
-rae
+nAo
 aal
 nJA
 nJA
@@ -28212,7 +28260,7 @@ aHe
 nJA
 nJA
 pQv
-rae
+nAo
 aje
 sVT
 sVT
@@ -28390,12 +28438,12 @@ aje
 rae
 rae
 rae
-rae
-rae
+nAo
+nAo
 uNE
 nHS
 naq
-rae
+nAo
 uNE
 nHS
 nHS
@@ -28406,7 +28454,7 @@ xdd
 nHS
 nHS
 naq
-rae
+nAo
 aje
 sVT
 sVT
@@ -28581,26 +28629,26 @@ dWc
 bYV
 dWc
 aje
+nAo
+nAo
+nAo
+nAo
+nAo
+nAo
+nAo
+nAo
+nAo
+nAo
+nAo
+nAo
 rae
 rae
 rae
 rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
-rae
+nAo
+nAo
+nAo
+nAo
 aje
 sVT
 sVT
@@ -28775,7 +28823,7 @@ dWc
 bYV
 dWc
 aje
-rae
+nAo
 wJU
 qiT
 mae
@@ -28785,8 +28833,8 @@ aZd
 goo
 qiT
 nBx
-rae
-rae
+nAo
+nAo
 rae
 rae
 rae
@@ -28794,7 +28842,7 @@ cRh
 wEx
 wEx
 leZ
-rae
+nAo
 aje
 dTX
 rGu
@@ -28969,7 +29017,7 @@ dWc
 bYV
 dWc
 aje
-rae
+nAo
 aje
 skX
 gea
@@ -28988,7 +29036,7 @@ aHe
 nJA
 nJA
 pQv
-rae
+nAo
 aje
 dff
 dff
@@ -29182,7 +29230,7 @@ xdd
 nHS
 nHS
 fGS
-rae
+nAo
 aje
 dff
 sVT
@@ -38203,7 +38251,7 @@ pVf
 dJS
 pAF
 pAF
-pAF
+vNt
 dJS
 lYZ
 wFh
@@ -39173,7 +39221,7 @@ vWE
 dJS
 pAF
 pAF
-pAF
+vNt
 dJS
 wFh
 wFh
@@ -40211,7 +40259,7 @@ vdM
 xtt
 jMZ
 jMZ
-jMZ
+vjn
 xoM
 ooC
 ahG
@@ -43482,12 +43530,12 @@ aAa
 aAa
 oac
 qQL
-qQL
+goe
 gSO
 aAa
 iWy
 spY
-iZx
+sgd
 fdz
 quW
 ulN
@@ -44254,7 +44302,7 @@ gBy
 mHS
 urs
 dHu
-iTr
+aAa
 aAa
 uRB
 uRB
@@ -44850,7 +44898,7 @@ alV
 crx
 vTB
 uMe
-wAb
+opA
 wAb
 mqR
 cRQ
@@ -45030,7 +45078,7 @@ bBl
 lso
 toY
 dHu
-hdl
+tLL
 sel
 bet
 pIY
@@ -46194,7 +46242,7 @@ bHz
 bHz
 bHz
 dHu
-nEv
+lxc
 uri
 nbs
 rJK
@@ -46206,7 +46254,7 @@ rQH
 qIQ
 txP
 jQj
-qAV
+gSl
 uMe
 kMO
 gRL
@@ -46582,7 +46630,7 @@ vWE
 vWE
 vWE
 uMe
-oQa
+iGc
 vwB
 djq
 djq

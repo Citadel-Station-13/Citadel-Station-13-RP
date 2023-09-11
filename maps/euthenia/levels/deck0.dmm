@@ -123,10 +123,6 @@
 "fU" = (
 /turf/simulated/wall,
 /area/space)
-"gj" = (
-/obj/machinery/oxygen_pump,
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
 "gA" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -250,6 +246,13 @@
 	},
 /turf/simulated/open,
 /area/space)
+"mu" = (
+/obj/machinery/oxygen_pump{
+	dir = 4;
+	pixel_x = 30
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/space)
 "mw" = (
 /obj/machinery/camera/network/outside{
 	dir = 8
@@ -312,6 +315,12 @@
 "oE" = (
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
+"pl" = (
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/main_map/hallway/deck0)
 "pq" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -422,6 +431,9 @@
 "tq" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
+/area/space)
+"uf" = (
+/turf/simulated/wall/r_wall/prepainted/security,
 /area/space)
 "uj" = (
 /obj/structure/cable{
@@ -541,6 +553,10 @@
 "AQ" = (
 /obj/machinery/computer/ship/sensors,
 /turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"Bb" = (
+/obj/machinery/door/airlock/lift,
+/turf/simulated/floor/tiled/monotile,
 /area/space)
 "Bf" = (
 /obj/machinery/computer/ship/navigation{
@@ -733,10 +749,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
-"Ke" = (
-/obj/machinery/oxygen_pump/mobile,
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
 "Ki" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techmaint,
@@ -806,6 +818,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"MT" = (
+/obj/landmark/map_data/euthenia,
+/turf/space,
+/area/space)
 "Nd" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
@@ -841,6 +857,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
+/area/space)
+"On" = (
+/obj/machinery/light/no_nightshift{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "Ox" = (
 /turf/simulated/open,
@@ -976,6 +998,9 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/space)
+"Ws" = (
+/turf/simulated/wall/r_wall/prepainted/security,
+/area/main_map/hallway/deck0)
 "Wy" = (
 /obj/item/banner/command,
 /turf/simulated/floor/tiled/monotile,
@@ -1463,7 +1488,7 @@ NT
 NT
 NT
 NT
-NT
+MT
 NT
 "}
 (3,1,1) = {"
@@ -10711,17 +10736,17 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-Fp
-Fp
-Fp
-Fp
-Fp
-Fp
+uf
+zp
+oE
+oE
+zp
+uf
+uf
+uf
+uf
+uf
+uf
 VJ
 VJ
 VJ
@@ -10905,17 +10930,17 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-Fp
-Fp
+uf
+zp
+oE
+oE
+zp
+uf
+uf
 Ox
 Ox
-Fp
-Fp
+uf
+uf
 VJ
 VJ
 VJ
@@ -11099,17 +11124,17 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-Fp
+uf
+zp
+oE
+oE
+zp
+uf
 zp
 Ox
 Ox
 zp
-Fp
+uf
 VJ
 VJ
 VJ
@@ -11293,17 +11318,17 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-Fp
+uf
 zp
 oE
 oE
 zp
-Fp
+uf
+zp
+oE
+oE
+zp
+uf
 VJ
 VJ
 VJ
@@ -11487,17 +11512,17 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-Fp
+uf
 zp
 oE
 oE
+oE
+oE
+oE
+oE
+oE
 zp
-Fp
+uf
 VJ
 VJ
 VJ
@@ -11681,17 +11706,17 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-Fp
+uf
 zp
 oE
 oE
+oE
+oE
+oE
+oE
+oE
 zp
-Fp
+uf
 VJ
 VJ
 VJ
@@ -11875,17 +11900,17 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-Fp
+uf
+zp
+zp
+zp
+zp
+uf
 zp
 oE
 oE
 zp
-Fp
+uf
 VJ
 VJ
 VJ
@@ -12069,17 +12094,17 @@ VJ
 VJ
 VJ
 ov
-ov
-ov
-ov
-ov
-ov
-ov
-ov
+Ws
+Ws
+Ws
+Ws
+Ws
+Ws
+Ws
 Qx
 oD
-ov
-ov
+Ws
+Ws
 ov
 ov
 ov
@@ -13014,8 +13039,8 @@ VJ
 VJ
 VJ
 VJ
-Hu
-Hu
+VJ
+VJ
 VJ
 VJ
 VJ
@@ -13208,8 +13233,8 @@ VJ
 VJ
 VJ
 VJ
-gj
-Ke
+VJ
+VJ
 VJ
 VJ
 VJ
@@ -13222,7 +13247,7 @@ aM
 Hk
 VR
 VJ
-VJ
+mu
 VJ
 VJ
 VJ
@@ -16678,7 +16703,7 @@ zp
 zp
 zp
 Fp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -16872,7 +16897,7 @@ oE
 oE
 oE
 zp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -17066,7 +17091,7 @@ oE
 oE
 oE
 zp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -17260,7 +17285,7 @@ oE
 oE
 oE
 zp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -17454,7 +17479,7 @@ oE
 oE
 oE
 Fp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -17648,7 +17673,7 @@ zp
 oE
 oE
 Fp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -17834,15 +17859,15 @@ Ox
 VJ
 VJ
 kd
-JQ
-JQ
-JQ
+VR
+VR
+VR
 kd
 zp
 oE
 oE
 zp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -18036,7 +18061,7 @@ zp
 oE
 oE
 zp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -18088,11 +18113,11 @@ wJ
 jm
 jm
 jm
-pZ
-pZ
-pZ
-pZ
-pZ
+jm
+jm
+jm
+jm
+jm
 jm
 jm
 jm
@@ -18225,12 +18250,12 @@ JQ
 Ox
 Ox
 Ox
-zp
+Bb
 zp
 oE
 oE
 zp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -18419,12 +18444,12 @@ JQ
 Ox
 Ox
 Ox
-zp
+Bb
 zp
 oE
 oE
 zp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -18618,7 +18643,7 @@ zp
 oE
 oE
 zp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -18804,15 +18829,15 @@ Ox
 VJ
 VJ
 kd
-JQ
-JQ
-JQ
+VR
+VR
+VR
 kd
 zp
 oE
 oE
 zp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -19006,7 +19031,7 @@ zp
 oE
 oE
 Fp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -19200,6 +19225,7 @@ oE
 oE
 oE
 Fp
+Fp
 VJ
 VJ
 VJ
@@ -19226,11 +19252,10 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
+Ti
+Hu
+Hu
+Ti
 KO
 KO
 VO
@@ -19394,6 +19419,7 @@ oE
 oE
 oE
 zp
+Fp
 VJ
 VJ
 VJ
@@ -19420,11 +19446,10 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
+Ti
+Hu
+Hu
+Ti
 KO
 wJ
 wJ
@@ -19588,6 +19613,7 @@ oE
 oE
 oE
 zp
+Fp
 VJ
 VJ
 VJ
@@ -19614,11 +19640,10 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
+Ti
+Hu
+Hu
+Ti
 KO
 wJ
 wJ
@@ -19782,6 +19807,7 @@ oE
 oE
 oE
 zp
+Fp
 VJ
 VJ
 VJ
@@ -19808,11 +19834,10 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
+Ti
+Hu
+Hu
+Ti
 KO
 wJ
 wJ
@@ -19976,6 +20001,7 @@ zp
 zp
 zp
 Fp
+Fp
 VJ
 VJ
 VJ
@@ -20002,11 +20028,10 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
+Ti
+Hu
+Hu
+Ti
 KO
 KO
 lB
@@ -20197,10 +20222,10 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
+Ti
+Hu
+Hu
+Ti
 Ti
 Ti
 Ti
@@ -20391,10 +20416,10 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
+Ti
+Hu
+Hu
+Hu
 Hu
 Hu
 Hu
@@ -20585,10 +20610,10 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
+Ti
+Hu
+Hu
+Hu
 Hu
 Hu
 Hu
@@ -20596,7 +20621,7 @@ Hu
 Nu
 Nu
 KO
-NG
+pl
 NG
 ov
 wJ
@@ -20779,14 +20804,14 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
+Ti
+Ti
+On
+Ti
 Ti
 Hu
 Hu
-Ti
+On
 Ti
 fD
 KO
@@ -20971,10 +20996,10 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
+KO
+KO
+KO
+KO
 KO
 KO
 xY
@@ -21165,10 +21190,10 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
+KO
+Ti
+Ti
+Ti
 KO
 fD
 Hu
@@ -21359,8 +21384,8 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
+KO
+Ti
 Hu
 Hu
 Hu
@@ -21553,8 +21578,8 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
+KO
+Ti
 Hu
 Hu
 Hu
@@ -21747,10 +21772,10 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
+KO
+Ti
+Ti
+Ti
 KO
 fD
 Hu

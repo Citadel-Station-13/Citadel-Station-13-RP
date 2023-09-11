@@ -14,6 +14,7 @@
 
 // BEGIN_INCLUDE
 #include "_mapload\_basemap.dm"
+#include "_mapload\euthenia.dm"
 #include "code\___compile_options.dm"
 #include "code\__byond_version_compat.dm"
 #include "code\__global_init.dm"
@@ -4831,6 +4832,7 @@
 #include "interface\skin.dmf"
 #include "interface\menus\_menus.dm"
 #include "interface\menus\main.dm"
+#include "maps\euthenia\euthenia.dm"
 #include "maps\generic\death_triggers.dm"
 #include "maps\generic\map_data.dm"
 #include "maps\generic\misc.dm"
