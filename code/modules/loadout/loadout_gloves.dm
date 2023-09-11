@@ -136,3 +136,7 @@
 /datum/loadout_entry/gloves/utility_fur_gloves
 	name = "Utility Fur Gloves"
 	path = /obj/item/clothing/gloves/utility_fur_gloves
+
+/datum/loadout_entry/gloves/darkcleric
+	name = "Dark Cleric Bracers"
+	path = /obj/item/clothing/gloves/darkcleric

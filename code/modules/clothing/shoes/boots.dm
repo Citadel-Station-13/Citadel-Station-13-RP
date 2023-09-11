@@ -276,3 +276,10 @@
 	name = "heeled knee-high duty boots"
 	desc = "A pair of steel-toed synthleather boots with a mirror shine. These ones feature a pronounced heel and stop just below the knee."
 	icon_state = "altduty_heel"
+
+/obj/item/clothing/shoes/boots/darkcleric
+	name = "dark cleric boots"
+	desc = "These well-worn leather boots have seen many a mile in service to a forgotten god."
+	icon = 'icons/clothing/shoes/boots/darkcleric.dmi'
+	icon_state = "darkcleric"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

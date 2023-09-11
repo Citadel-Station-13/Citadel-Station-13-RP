@@ -861,6 +861,10 @@ Swimsuits
 	name = "Antheia Tutu"
 	path = /obj/item/clothing/under/ballet
 
+/datum/loadout_entry/uniform/dark_cleric
+	name = "Dark Cleric Armor"
+	path = /obj/item/clothing/under/darkcleric
+
 //Tajaran wears
 
 /datum/loadout_entry/uniform/tajaran/summercloths_selection
