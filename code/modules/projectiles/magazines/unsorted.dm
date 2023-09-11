@@ -24,8 +24,7 @@
 
 
 
-///////// .357 /////////
-
+//* .357
 /obj/item/ammo_magazine/s357
 	name = "speedloader (.357)"
 	desc = "A speedloader for .357 revolvers."
@@ -42,8 +41,7 @@
 	ammo_type = /obj/item/ammo_casing/a357/silver
 	materials = list(MAT_STEEL = 2100, MAT_SILVER = 1200)
 
-///////// .38 /////////
-
+//* .38
 /obj/item/ammo_magazine/s38
 	name = "speedloader (.38)"
 	desc = "A speedloader for .38 revolvers."
@@ -69,8 +67,7 @@
 	ammo_type = /obj/item/ammo_casing/a38/silver
 	materials = list(MAT_STEEL = 780, MAT_SILVER = 600)
 
-///////// .45 /////////
-
+//* .45
 /obj/item/ammo_magazine/m45
 	name = "pistol magazine (.45)"
 	icon_state = "45"
@@ -317,8 +314,7 @@
 	icon_state = "caseless-mag-alt"
 	ammo_type = /obj/item/ammo_casing/a5mmcaseless/stun
 
-///////// 9mm /////////
-
+//* 9mm
 /obj/item/ammo_magazine/m9mm
 	name = "magazine (9mm)"
 	icon_state = "9x19p_fullsize"
@@ -467,8 +463,7 @@
 /obj/item/ammo_magazine/m9mmR/saber/empty
 	initial_ammo = 0
 
-/////// 5.7x28mm ////////
-/obj/item/ammo_magazine/m57x28mm
+//* 5.7x28mm/obj/item/ammo_magazine/m57x28mm
 	name = "magazine (5.7x28mm)"
 	desc = "A durable top-loading magazine, designed for withstanding rough treatment."
 	icon_state = "ntles"
@@ -482,8 +477,7 @@
 
 //NTLES
 
-/obj/item/ammo_magazine/m57x28mm/ntles/
-	max_ammo = 30
+/obj/item/ammo_magazine/m57x28mm//* ntles	max_ammo = 30
 
 /obj/item/ammo_magazine/m57x28mm/ntles/ap
 	name = "magazine (5.7x28mm armor piercing)"
@@ -612,8 +606,7 @@
 /obj/item/ammo_magazine/m57x28mmp90/empty
 	initial_ammo = 0
 
-///////// 10mm /////////
-
+//* 10mm
 /obj/item/ammo_magazine/m10mm
 	name = "magazine (10mm)"
 	icon_state = "10mm"
@@ -642,8 +635,7 @@
 	name = "ammunition box (10mm haywire)"
 	ammo_type = /obj/item/ammo_casing/a10mm/emp
 
-///////// 5.45mm /////////
-
+//* 5.45mm
 /obj/item/ammo_magazine/m545
 	name = "magazine (5.45mm)"
 	icon_state = "m545"
@@ -805,8 +797,7 @@
 	ammo_type = /obj/item/ammo_casing/a44/silver
 	materials = list(MAT_STEEL = 2100, MAT_SILVER = 1200)
 
-///////// 7.62mm /////////
-
+//* 7.62mm
 /obj/item/ammo_magazine/m762
 	name = "magazine (7.62mm)"
 	icon_state = "m762-small"
@@ -950,8 +941,7 @@
 /obj/item/ammo_magazine/m762_m60/empty
 	initial_ammo = 0
 
-///////// 12g /////////
-
+//* 12g
 /obj/item/ammo_magazine/m12gdrum
 	name = "magazine (12 gauge)"
 	icon_state = "ashot-mag"
@@ -1037,8 +1027,7 @@
 /obj/item/ammo_magazine/m75/empty
 	initial_ammo = 0
 
-///////// Misc. /////////
-
+//* Misc.
 /obj/item/ammo_magazine/caps
 	name = "speedloader (caps)"
 	icon_state = "T38"
