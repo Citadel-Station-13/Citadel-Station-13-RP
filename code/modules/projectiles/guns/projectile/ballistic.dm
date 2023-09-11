@@ -21,11 +21,24 @@
 	/// compatible calibers - either an enum or a list
 	/// this controls what magazines we can load, as well as what bullets we can hold
 	var/list/caliber
+	/// ammo load sound
+	var/casing_load_sound
+	#warn find a sound
 
-	//* core config; do not change at runtime.
+	//* static config; do not change at runtime without using helpers.
 	/// do we use magazines? this **CANNOT** be changed at runtime without a proc
 	/// because behavior and initializations depend on this!
+	/// speedloaders cannot be used with a gun that uses magazines
 	var/use_magazines = FALSE
+
+	//* dynamic config; can be changed at runtime freely
+	/// allow speedloaders?
+	/// speedloaders can only be used with guns that don't use magazines
+	var/speedlaoders_allowed = TRUE
+	/// speedloaders load 1 at a time?
+	var/speedloaders_serial = TRUE
+	/// speedloader delay
+	var/speedloaders_delay = 0.5 SECONDS
 
 	//* for guns that use magazines
 	/// magazine type to preload with
@@ -43,6 +56,10 @@
 	var/magazine_remove_sound = 'sound/weapons/guns/interaction/pistol_magout.ogg'
 	/// allow magazine removal.
 	var/magazine_removable = TRUE
+	/// specifically allow these magazine types, regardless of caliber
+	var/list/magazine_allowed_types
+	/// only allow types, not subtypes
+	var/magazine_allowed_picky = FALSE
 
 	//* for guns that don't use magazines
 	/// internal ammo holder size. 0 = single action, put in chamber, cock, and fire
@@ -63,7 +80,7 @@
 	/// rendering system for magazine
 	/// in all cases, we assume the naming is consistent for both onmob and item sprites
 	/// meaning if you add an overlay named _100, you'd have _100_all for the onmob rendering system
-	var/render_magazine_system = GUN_RENDERING_NONE
+	var/render_magazine_system = GUN_RENDERING_DISABLED
 	/// magazine state
 	/// in overlay mode, this is added directly as an overlay
 	/// in state mode, this is added as "-[state]"
@@ -71,7 +88,7 @@
 	/// rendering system for ammo
 	/// in overlay mode, "[base_icon_state]-[count]" is added as an overlay
 	/// in state mode, this is added as "-[count]" after magazine, if magazine state is there.
-	var/render_ammo_system = GUN_RENDERING_NONE
+	var/render_ammo_system = GUN_RENDERING_DISABLED
 	/// ammo states. this is 1 to x, rounded up
 	var/render_ammo_count = 0
 	/// ammo state includes 0
@@ -113,7 +130,6 @@
 				loaded += new ammo_type(src)
 		if(ispath(magazine_type) && (load_method & MAGAZINE))
 			ammo_magazine = new magazine_type(src)
-			allowed_magazines += /obj/item/ammo_magazine/smart
 	update_icon()
 
 /obj/item/gun/projectile/ballistic/consume_next_projectile()
@@ -358,10 +374,20 @@
 		bullets += 1
 	return bullets
 
+#warn above
+
+/obj/item/gun/projectile/ballistic/post_fire(atom/target, atom/movable/user, turf/where, angle, reflex, iteration)
+	. = ..()
+	process_chamber()
+
 /**
  * process chamber post fire
  */
 /obj/item/gun/projectile/ballistic/proc/process_chamber()
+
+
+
+
 	#warn impl
 
 /**

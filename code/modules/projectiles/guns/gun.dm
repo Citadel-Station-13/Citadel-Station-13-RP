@@ -156,15 +156,27 @@
 
 /**
  * check if we can fire
+ *
+ * @return GUN_FIRE_* define.
  */
-/obj/item/gun/proc/can_fire(atom/target, atom/movable/user, turf/where, angle, reflex, burst_amount, burst_interval, point_blank)
-	return TRUE
+/obj/item/gun/proc/can_fire(atom/target, atom/movable/user, turf/where, angle, reflex, iteration)
+	return GUN_FIRE_SUCCESS
 
 /**
  * called after a fire() fails and the firing sequence is interrupted
+ *
+ * fire_return is the GUN_FIRE_* define that describes why it failed.
  */
-/obj/item/gun/proc/failed_fire(atom/target, atom/movable/user, turf/where, angle, reflex)
+/obj/item/gun/proc/failed_fire(atom/target, atom/movable/user, turf/where, angle, reflex, iteration, fire_return)
+	switch(fire_return)
+		if(GUN_FIRE_NO_AMMO)
+			handle_fire_empty(target, user, where, angle, reflex, iteration)
 
+/**
+ * called when we fail to fire due to no next projectile
+ */
+/obj/item/gun/proc/handle_fire_empty(atom/target, atom/movable/user, turf/where, angle, reflex, iteration)
+	return
 
 #warn below
 

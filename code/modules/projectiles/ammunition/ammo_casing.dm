@@ -70,11 +70,6 @@
 	)
 	return merge_double_lazy_assoc_list(., ..())
 
-/obj/item/ammo_casing/proc/newshot() //For energy weapons, syringe gun, shotgun shells and wands (!).
-	if(stored)
-		return
-	init_projectile()
-
 /**
  * sees if we're currently loaded
  */

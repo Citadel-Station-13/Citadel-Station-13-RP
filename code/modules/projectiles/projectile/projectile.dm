@@ -140,7 +140,6 @@
 
 	var/ignore_source_check = FALSE
 
-	var/spread = 0			//amount (in degrees) of projectile spread
 	var/ricochets = 0
 	var/ricochets_max = 2
 	var/ricochet_chance = 30
@@ -148,17 +147,6 @@
 	var/miss_sounds
 	var/ricochet_sounds
 	var/list/impact_sounds	//for different categories, IMPACT_MEAT etc
-
-	//Fancy hitscan lighting effects!
-	var/hitscan_light_intensity = 1.5
-	var/hitscan_light_range = 0.75
-	var/hitscan_light_color_override
-	var/muzzle_flash_intensity = 3
-	var/muzzle_flash_range = 1.5
-	var/muzzle_flash_color_override
-	var/impact_light_intensity = 3
-	var/impact_light_range = 2
-	var/impact_light_color_override
 
 	//Targetting
 	var/yo = null
@@ -171,7 +159,6 @@
 	var/shot_from = "" // name of the object which shot us
 
 	var/accuracy = 0
-	var/dispersion = 0.0
 
 	var/SA_bonus_damage = 0 // Some bullets inflict extra damage on simple animals.
 	var/SA_vulnerability = null // What kind of simple animal the above bonus damage should be applied to. Set to null to apply to all SAs.
@@ -366,8 +353,6 @@
 			return
 		var/turf/target = locate(clamp(starting + xo, 1, world.maxx), clamp(starting + yo, 1, world.maxy), starting.z)
 		setAngle(get_visual_angle(src, target))
-	if(dispersion)
-		setAngle(Angle + rand(-dispersion, dispersion))
 	original_angle = Angle
 	trajectory_ignore_forcemove = TRUE
 	forceMove(starting)

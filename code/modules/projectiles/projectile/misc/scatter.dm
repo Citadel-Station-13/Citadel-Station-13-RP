@@ -9,25 +9,18 @@
 	name = "scatter projectile"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bullet"
-	density = FALSE
-	anchored = TRUE
-	unacidable = TRUE
-	pass_flags = ATOM_PASS_TABLE
-	mouse_opacity = 0
 
-	use_submunitions = TRUE
+	damage = 30
 
-	damage = 8
-	spread_submunition_damage = TRUE
-	only_submunitions = TRUE
-	range = 0	// Immediately deletes itself after firing, as its only job is to fire other projectiles.
-
-	submunition_spread_max = 30
-	submunition_spread_min = 2
-
+	submunitions_only = TRUE
+	submunition_disperse_type = /obj/projectile/bullet/pellet/shotgun/flak
 	submunitions = list(
-		/obj/projectile/bullet/pellet/shotgun/flak = 3
-		)
+		/obj/projectile/bullet/pellet/shotgun/flak = 3,
+	)
+	submunition_spread = 15
+	submunition_spread_mode = SUBMUNITION_SPREAD_RANDOM
+
+#warn deal with the shit below
 
 //Spread Shot
 /obj/projectile/scatter/heavy_shotgun

@@ -244,7 +244,6 @@
 	damage = 10
 	embed_chance = 0 //Nada.
 	damage_type = BRUTE
-	hitscan_muzzle_type = null
 
 	combustion = FALSE
 

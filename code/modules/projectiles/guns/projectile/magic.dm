@@ -1,3 +1,5 @@
+// todo: thsi stupid shit needs a refactor and i'm intentionally ignoring it because FUCK MAGIC
+
 /obj/item/gun/projectile/magic
 	name = "magic staff"
 	desc = "This staff is boring to watch because even though it came first you've seen everything it can do in other staves for years."
@@ -12,7 +14,7 @@
 	var/recharge_rate = 4
 	var/charge_tick = 0
 	var/can_charge = 1
-	var/ammo_type = /obj/projectile/magic
+	var/projectile_type = /obj/projectile/magic/spellblade
 	var/no_den_usage
 	pin = /obj/item/firing_pin/magic
 
@@ -29,22 +31,11 @@
 		return
 	. = ..()
 
-/obj/item/gun/projectile/magic/proc/recharge_newshot()
-	if(charges && chambered && !chambered.get_projectile())
-		chambered.newshot()
-
-/obj/item/gun/projectile/magic/proc/process_chamber()
-	if(chambered && !chambered.get_projectile()) //if BB is null, i.e the shot has been fired...
-		charges--//... drain a charge
-		recharge_newshot()
-
 /obj/item/gun/projectile/magic/Initialize(mapload)
 	. = ..()
 	charges = max_charges
-	chambered = new ammo_type(src)
 	if(can_charge)
 		START_PROCESSING(SSobj, src)
-
 
 /obj/item/gun/projectile/magic/Destroy()
 	if(can_charge)
@@ -62,18 +53,10 @@
 	return 1
 
 /obj/item/gun/projectile/magic/consume_next_projectile()
-	return chambered?.get_projectile()
+	if(!charges)
+		return
+	charges--
+	return new projectile_type
 
-/obj/item/gun/projectile/magic/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
-	to_chat(user, "<span class='warning'>The [name] whizzles quietly.</span>")
-
-/obj/item/gun/projectile/magic/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is twisting [src] above their head, releasing a magical blast! It looks like they are trying to commit suicide!</span>")
-	playsound(loc, fire_sound, 50, 1, -1)
-	return (FIRELOSS)
-
-/obj/item/gun/projectile/magic/vv_edit_var(var_name, var_value)
-	. = ..()
-	switch(var_name)
-		if(NAMEOF(src, charges))
-			recharge_newshot()
+/obj/item/gun/projectile/magic/handle_fire_empty(atom/target, atom/movable/user, turf/where, angle, reflex, iteration)
+	user.action_feedback(SPAN_WARNING("[src] whizzles quietly."))

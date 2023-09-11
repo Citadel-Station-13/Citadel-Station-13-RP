@@ -9,10 +9,10 @@
 /// safety on
 #define GUN_SAFETY_ON				1
 
-//* rendering system
-/// no automatic rendering
-#define GUN_RENDERING_DISABLED 0
-/// overlay rendering
-#define GUN_RENDERING_OVERLAYS 1
-/// state rendering
-#define GUN_RENDERING_STATES 2
+//* fire() returns
+/// success
+#define GUN_FIRE_SUCCESS 0
+/// usually caused by null return from consume_next_projectile() for /projectile guns
+#define GUN_FIRE_NO_AMMO 1
+/// generic failure
+#define GUN_FIRE_FAILURE 2

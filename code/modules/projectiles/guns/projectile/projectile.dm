@@ -20,7 +20,7 @@
 
 	var/obj/projectile/firing_projectile = consume_next_projectile()
 	if(isnull(firing_projectile))
-		return FALSE
+		return GUN_FIRE_NO_AMMO
 
 /**
  * get the projectile to use

@@ -14,36 +14,98 @@
 	throw_range = 10
 	preserve_item = 1
 
-	var/list/stored_ammo = list()
-	var/mag_type = SPEEDLOADER //ammo_magazines can only be used with compatible guns. This is not a bitflag, the load_method var on guns is.
-	var/caliber = ".357"
+	//* dynamic config; can be changed at runtime freely
+	/// is this a speedloader, or a real magazine?
+	/// speedloader can only be used with internal ammo guns, and only if they allow speedloaders
+	var/is_speedloader = FALSE
+
+	//* for speedloaders
+	/// inherent speedloader delay, added to gun's speedloaders_delay
+	var/speedloader_delay = 0
+
+	//* ammo storage
+	/// max ammo in us
 	var/max_ammo = 7
+	/// currently stored ammo; defaults to max_ammo if unset
+	var/current_ammo
+	/// can bullets be removed?
+	var/ammo_removable = TRUE
+	/// ammo list
+	/// only instantiated when we need to for memory reasons
+	/// should not be directly manipulated unless you know what you're doing.
+	///
+	/// spec:
+	/// ammo_preload is what 'current ammo' is, type-wise
+	/// ammo_internal is considered the list of 1 to n casings infront of current_ammo.
+	var/list/ammo_internal
+	/// caliber
+	var/ammo_caliber
+	/// preloaded ammo type
+	var/ammo_preload
+	#warn deal with caliber defines
 
-	var/ammo_type = /obj/item/ammo_casing //ammo type that is initially loaded
-	var/initial_ammo = null
-
-	var/can_remove_ammo = TRUE	// Can this thing have bullets removed one-by-one? As of first implementation, only affects smart magazines
-
-	var/multiple_sprites = 0
-	//because BYOND doesn't support numbers as keys in associative lists
-	var/list/icon_keys = list()		//keys
-	var/list/ammo_states = list()	//values
-	var/ammo_mark = null			//Used for overlays simulated paint or tape bands on magazines. Cuts down on bloat.
+	//* Rendering
+	/// use default rendering system
+	/// in state moide, we will be "[base_icon_state]-[count]"
+	/// in offset mode, we will repeatedly add "[base_icon_state]-ammo" with given offsets.
+	/// overlay mode is not supported
+	var/rendering_system = GUN_RENDERING_DISABLED
+	/// number of states
+	var/rendering_count = 0
+	/// for offset mode: initial x offset
+	var/rendering_segment_x_start
+	/// for offset mode: initial y offset
+	var/rendering_segment_y_start
+	/// for offset mode: x offset
+	var/rendering_segment_x_offset = 3
+	/// for offset mode: y offset
+	var/rendering_segment_y_offset = 0
+	/// add a specific overlay as "[base_icon_state]-[state]", useful for denoting different magazines
+	/// that look similar with a stripe
+	var/rendering_static_overlay
 
 /obj/item/ammo_magazine/Initialize(mapload)
 	. = ..()
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
-	if(multiple_sprites)
-		initialize_magazine_icondata(src)
-
-	if(isnull(initial_ammo))
-		initial_ammo = max_ammo
-
-	if(initial_ammo)
-		for(var/i in 1 to initial_ammo)
-			stored_ammo += new ammo_type(src)
+	if(!isnull(rendering_static_overlay))
+		add_overlay(rendering_static_overlay, TRUE)
 	update_icon()
+
+/**
+ * peek top ammo casing
+ */
+/obj/item/ammo_magazine/proc/peek_top()
+	#warn impl
+
+/**
+ * get and eject top casing
+ */
+/obj/item/ammo_magazine/proc/draw_top()
+	#warn impl
+
+/**
+ * instantiate the entire internal ammo list
+ *
+ * DO NOT USE UNLESS YOU KNOW WHAT YOU ARE DOING.
+ */
+/obj/item/ammo_magazine/proc/instantiate_internal_list()
+	#warn impl
+
+/**
+ * put a casing into top
+ */
+/obj/item/ammo_magazine/proc/insert_top(obj/item/ammo_casing/casing, replace_spent)
+	#warn impl
+
+/obj/item/ammo_magazine/examine(mob/user, dist)
+	. = ..()
+	var/amount_left = amount_remaining()
+	. += "There [(amount_left == 1)? "is" : "are"] [amount_left] round\s left!"
+
+
+#warn below
+
 
 /obj/item/ammo_magazine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/ammo_casing))
@@ -114,22 +176,6 @@
 				return
 	..()
 
-/obj/item/ammo_magazine/update_icon()
-	if(multiple_sprites)
-		//find the lowest key greater than or equal to stored_ammo.len
-		var/new_state = null
-		for(var/idx in 1 to icon_keys.len)
-			var/ammo_count = icon_keys[idx]
-			if (ammo_count >= stored_ammo.len)
-				new_state = ammo_states[idx]
-				break
-		icon_state = (new_state)? new_state : initial(icon_state)
-	if(ammo_mark)
-		add_overlay("[initial(icon_state)]_[ammo_mark]")
-
-/obj/item/ammo_magazine/examine(mob/user, dist)
-	. = ..()
-	. += "There [(stored_ammo.len == 1)? "is" : "are"] [stored_ammo.len] round\s left!"
 
 /**
  * puts a round into us, if possible
@@ -199,36 +245,18 @@
 	else
 		user?.action_feedback(SPAN_WARNING("You fail to collect anything."), src)
 
-/obj/item/ammo_magazine/proc/full()
-	return length(stored_ammo) >= max_ammo
+#warn above
 
-/obj/item/ammo_magazine/proc/remaining()
-	return length(stored_ammo)
+/obj/item/ammo_magazine/proc/is_full()
+	return amount_remaining() >= max_ammo
 
-/obj/item/ammo_magazine/proc/missing()
-	return max_ammo - length(stored_ammo)
+/obj/item/ammo_magazine/proc/amount_remaining(live_only)
+	if(!live_only)
+		return current_ammo + length(ammo_internal)
+	. = current_ammo
+	for(var/obj/item/ammo_casing/casing as anything in ammo_internal)
+		if(casing.loaded())
+			.++
 
-//magazine icon state caching
-/var/global/list/magazine_icondata_keys = list()
-/var/global/list/magazine_icondata_states = list()
-
-/proc/initialize_magazine_icondata(var/obj/item/ammo_magazine/M)
-	var/typestr = "[M.type]"
-	if(!(typestr in magazine_icondata_keys) || !(typestr in magazine_icondata_states))
-		magazine_icondata_cache_add(M)
-
-	M.icon_keys = magazine_icondata_keys[typestr]
-	M.ammo_states = magazine_icondata_states[typestr]
-
-/proc/magazine_icondata_cache_add(var/obj/item/ammo_magazine/M)
-	var/list/icon_keys = list()
-	var/list/ammo_states = list()
-	var/list/states = icon_states(M.icon)
-	for(var/i = 0, i <= M.max_ammo, i++)
-		var/ammo_state = "[M.icon_state]-[i]"
-		if(ammo_state in states)
-			icon_keys += i
-			ammo_states += ammo_state
-
-	magazine_icondata_keys["[M.type]"] = icon_keys
-	magazine_icondata_states["[M.type]"] = ammo_states
+/obj/item/ammo_magazine/proc/amount_missing(live_only)
+	return max_ammo - amount_remaining(live_only)

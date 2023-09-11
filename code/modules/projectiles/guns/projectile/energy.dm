@@ -15,13 +15,14 @@
 	dispersion = list(0)
 
 	//* Rendering
+	rendered_projectile_type = /obj/projectile/beam
 	/// render system for firemode rendering
 	/// if overlays, overlay is added as "[base_icon_state]-[firemode.state_overlay]"
-	var/render_firemode_system = GUN_RENDERING_NONE
+	var/render_firemode_system = GUN_RENDERING_DISABLED
 	/// rendering system for ammo
 	/// in overlay mode, "[base_icon_state]-[count]" is added as an overlay
 	/// in state mode, this is added as "-[count]" after magazine, if magazine state is there.
-	var/render_ammo_system = GUN_RENDERING_NONE
+	var/render_ammo_system = GUN_RENDERING_DISABLED
 	/// ammo states. this is 1 to x, rounded up
 	var/render_ammo_count = 0
 	/// ammo state includes 0
@@ -32,7 +33,6 @@
 
 	var/accept_cell_type = /obj/item/cell/device
 	var/cell_type = /obj/item/cell/device/weapon
-	projectile_type = /obj/projectile/beam/practice
 
 	var/modifystate
 	var/charge_meter = 1	//if set, the icon state will be chosen based on the current charge
@@ -50,7 +50,6 @@
 /obj/item/gun/projectile/energy/Initialize(mapload)
 	. = ..()
 	if(self_recharge)
-		power_supply = new /obj/item/cell/device/weapon(src)
 		START_PROCESSING(SSobj, src)
 	else
 		if(cell_type)
