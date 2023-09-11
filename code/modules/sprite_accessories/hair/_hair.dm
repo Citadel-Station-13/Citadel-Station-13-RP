@@ -479,6 +479,11 @@
 	id = "hair_jade"
 	icon_state = "hair_jade"
 
+/datum/sprite_accessory/hair/jay
+	name = "Jay"
+	id = "hair_jay"
+	icon_state = "hair_jay"
+
 /datum/sprite_accessory/hair/jensen
 	name = "Jensen"
 	id = "hair_jensen"
