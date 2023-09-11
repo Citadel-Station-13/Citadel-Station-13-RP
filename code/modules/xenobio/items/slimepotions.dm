@@ -344,7 +344,7 @@
 		to_chat(user, SPAN_WARNING("The slime cannot get any more fertile!"))
 		return ..()
 
-	to_chat(user, SPAN_NOTICE("You feed the slime the infertility agent. It will now have less offspring."))
+	to_chat(user, SPAN_NOTICE("You feed the slime the fertility agent. It will now have more offspring."))
 	M.split_amount = between(2, M.split_amount + 2, 6)
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 	qdel(src)

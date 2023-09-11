@@ -73,8 +73,8 @@
 
 // More or less functionally identical to the telecrystal tele.
 /obj/item/slime_crystal
-	name = "lesser slime cystal"
-	desc = "A small, gooy crystal."
+	name = "lesser slime crystal"
+	desc = "A small, gooey crystal."
 	description_info = "This will teleport you to a mostly 'safe' tile when used in-hand, consuming the slime crystal.  \
 	It can also teleport someone else, by throwing it at them or attacking them with it."
 	icon = 'icons/obj/objects.dmi'
@@ -142,7 +142,7 @@
 /obj/item/flashlight/slime
 	gender = PLURAL
 	name = "glowing slime extract"
-	desc = "A slimy ball that appears to be glowing from bioluminesence."
+	desc = "A slimy ball that appears to be glowing from bioluminescence."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "floor1" //not a slime extract sprite but... something close enough!
 	item_state = "slime"
@@ -168,7 +168,7 @@
 
 /obj/item/slime_irradiator
 	name = "glowing slime extract"
-	desc = "A slimy ball that appears to be glowing from bioluminesence."
+	desc = "A slimy ball that appears to be glowing from bioluminescence."
 	icon = 'icons/mob/slimes.dmi'
 	icon_state = "irradiator"
 	light_color = "#00FF00"

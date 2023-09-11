@@ -185,7 +185,7 @@
 	name = "blue slime extract"
 	icon_state = "blue slime extract"
 	description_info = "When injected with phoron, this extract creates some frost oil. When injected with blood, this extract creates stability agent that can reduce slime's mutation chance. \
-	When injected with water, this extract creates a clamness wave that calms enraged slimes. When injected with slime jelly, this extract creates some cryotoxin."
+	When injected with water, this extract creates a calmness wave that calms enraged slimes. When injected with slime jelly, this extract creates some cryotoxin."
 	slime_type = /mob/living/simple_mob/slime/xenobio/blue
 
 

@@ -48,7 +48,7 @@
 		if(M.rating >= 3)
 			let_slimes_pass = TRUE
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		monkeys_needed = max(4 - M.rating, 1) //4 @ T1. 1 @ T4. no effect at higher tiers. (else it'd be grey goo: monke edition lol)
+		monkeys_needed = max(5 - M.rating, 1) //4 @ T1. 1 @ T4. no effect at higher tiers. (else it'd be grey goo: monke edition lol)
 	for(var/obj/item/stock_parts/micro_laser/M in component_parts)
 		process_time = max(12.5 - (M.rating * 2.5), 1) //1 sec @ T1. 0.25 sec @ T4. 0.1 sec @ T5.
 

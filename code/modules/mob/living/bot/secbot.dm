@@ -94,7 +94,7 @@
 
 /mob/living/bot/secbot/slime
 	name = "Slime Securitron"
-	desc = "A little security robot, with a slime baton subsituted for the regular one."
+	desc = "A little security robot, with a slime baton substituted for the regular one."
 	default_icon_state = "slimesecbot"
 	stun_strength = 10 // Slimebatons aren't meant for humans.
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/secbot/slime)
