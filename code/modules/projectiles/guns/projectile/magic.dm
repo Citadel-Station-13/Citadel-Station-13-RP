@@ -45,12 +45,9 @@
 /obj/item/gun/projectile/magic/process(delta_time)
 	charge_tick++
 	if(charge_tick < recharge_rate || charges >= max_charges)
-		return 0
+		return
 	charge_tick = 0
 	charges++
-	if(charges == 1)
-		recharge_newshot()
-	return 1
 
 /obj/item/gun/projectile/magic/consume_next_projectile()
 	if(!charges)
@@ -59,4 +56,6 @@
 	return new projectile_type
 
 /obj/item/gun/projectile/magic/handle_fire_empty(atom/target, atom/movable/user, turf/where, angle, reflex, iteration)
-	user.action_feedback(SPAN_WARNING("[src] whizzles quietly."))
+	if(ismob(user))
+		var/mob/mob_user = user
+		mob_user.action_feedback(SPAN_WARNING("[src] whizzles quietly."))
