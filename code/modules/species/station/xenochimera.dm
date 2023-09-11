@@ -208,6 +208,7 @@
 		else if(jittery)
 			to_chat(H,"<span class='warning'><big>Suddenly, something flips - everything that moves is... potential prey. A plaything. This is great! Time to hunt!</big></span>")
 			log_and_message_admins("has gone feral due to jitteriness.", H)
+			go_feral = TRUE
 
 		if(go_feral)
 			feral = 5
