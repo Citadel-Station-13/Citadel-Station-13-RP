@@ -24,12 +24,14 @@
 	/// Will the stack merge with other stacks that are different colors? (Dyed cloth, wood, etc).
 	var/strict_color_stacking = FALSE
 
-	/// explicit recipes, lazy-list. if you use this, it better be a typelist or equivalent.
-	/// non cached lists would quickly eat through memory.
-	/// MAINTAINERS: deny prs that do not fulfill this requirement.
+	/// explicit recipes, lazy-list. this is typelist'd
 	var/list/datum/stack_recipe/explicit_recipes
 
 /obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
+	if(has_typelist(explicit_recipes))
+		explicit_recipes = get_typelist(explicit_recipes)
+	else
+		explicit_recipes = typelist(NAMEOF(src, explicit_recipes), generate_explicit_recipes())
 	if(new_amount != null)
 		amount = new_amount
 	if(!stacktype)
@@ -60,6 +62,12 @@
 	else
 		. += "There is enough charge for [get_amount()]."
 
+/**
+ * Get the explicit recipes of this stack type
+ */
+/obj/item/stack/proc/generate_explicit_recipes()
+	return list()
+
 /obj/item/stack/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(isnull(ui))
@@ -73,7 +81,7 @@
 
 /obj/item/stack/proc/tgui_recipes()
 	var/list/assembled = list()
-	for(var/datum/stack_recipe/recipe as anything in explicit_Recipes)
+	for(var/datum/stack_recipe/recipe as anything in explicit_recipes)
 		assembled[++assembled.len] = recipe.tgui_recipe_data()
 	return ..()
 
