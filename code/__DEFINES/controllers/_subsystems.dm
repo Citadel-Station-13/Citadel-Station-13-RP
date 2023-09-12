@@ -111,6 +111,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_PLANETS        -2
 #define INIT_ORDER_PERSISTENCE    -3
 #define INIT_ORDER_ASSETS         -4
+#define INIT_ORDER_TELEVISION     -5
 #define INIT_ORDER_MISC_LATE      -5
 #define INIT_ORDER_HOLOMAPS       -5
 #define INIT_ORDER_NIGHTSHIFT     -5
@@ -155,6 +156,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_PLANTS       5
 #define FIRE_PRIORITY_NIGHTSHIFT   6
 #define FIRE_PRIORITY_VOTE         9
+#define FIRE_PRIORITY_TELEVISION   10
 #define FIRE_PRIORITY_VIS          10
 #define FIRE_PRIORITY_SERVER_MAINT 10
 #define FIRE_PRIORITY_ZMIMIC       10

@@ -1,19 +1,18 @@
 SUBSYSTEM_DEF(television)
 	name = "Television"
-	priority = //FIRE_PRIORITY_MACHINES
-	init_order = //INIT_ORDER_MACHINES
-	subsystem_flags = //SS_KEEP_TIMING
-	runlevels = //RUNLEVEL_GAME
+	priority = FIRE_PRIORITY_TELEVISION
+	init_order = INIT_ORDER_TELEVISION
+	subsystem_flags = SS_KEEP_TIMING
+	runlevels = RUNLEVEL_GAME
 
+	var/list/tv_shows = list()
+	var/list/tv_ads = list()
 
-/datum/controller/subsystem/television/proc/Initialize()
-//This should open up scripts/ads here and load them into show and ad lists
-//Open JSON file
-//Convert to text > decode JSON into lists
+/datum/controller/subsystem/television/Initialize(timeofday)
+	tv_shows = json_decode(file2text("tv_shows.json"), JSON_STRICT)
+	tv_ads = json_decode(file2text("tv_ads.json"), JSON_STRICT)
 
-
-
-/datum/controller/subsystem/television/fire(//delay here?)
+/datum/controller/subsystem/television/fire(resumed = 0)
 //This should pick a random show and start playing, then play 1-2 ads between shows, then play shows again.
 //May need to run for multiple channels at once, MVP one channel only
 
