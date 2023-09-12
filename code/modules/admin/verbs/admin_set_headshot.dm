@@ -39,6 +39,7 @@
 	if(isnull(chosen_character))
 		return
 	var/chosen_slot = loaded_characters[chosen_character][1]
+	their_savefile.cd = "/character[chosen_slot]"
 	var/chosen_original_name = loaded_characters[chosen_character][2]
 	var/input_headshot = input(src, "Enter the URL for the headshot image. (Cancel to skip, empty string to remove)", "Reference Selection") as text|null
 	var/input_fullref = input(src, "Enter the URL for the full reference image. (Cancel to skip, empty string to remove)", "Reference Selection") as text|null
