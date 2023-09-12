@@ -114,6 +114,7 @@
  * tgui stack recipe data
  */
 /datum/stack_recipe/proc/tgui_recipe_data()
+	// todo: better way than ref? we don't want to do uids but refs are kinda ass to use in UIs for security/checking purposes.
 	return list(
 		"sortOrder" = sort_order,
 		"name" = name,
@@ -123,4 +124,5 @@
 		"time" = time,
 		"noAutoSanity" = no_automatic_sanity_checks,
 		"isStack" = result_is_stack,
+		"ref" = ref(src),
 	)

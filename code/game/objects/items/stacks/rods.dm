@@ -24,10 +24,11 @@
 	stacktype = /obj/item/stack/rods
 	no_variants = TRUE
 
-/obj/item/stack/rods/Initialize(mapload, new_amount, merge)
-	. = ..()
-	recipes = rods_recipes
-	update_icon()
+/obj/item/stack/rods/tgui_recipes()
+	var/list/assembled = ..()
+	for(var/datum/stack_recipe/recipe as anything in GLOB.stack_recipe_rods)
+		assembled[++assembled.len] = recipe.tgui_recipe_data()
+	return assembled
 
 /obj/item/stack/rods/update_icon()
 	var/amount = get_amount()
@@ -35,6 +36,8 @@
 		icon_state = "rods-[amount]"
 	else
 		icon_state = "rods"
+
+
 
 var/global/list/datum/stack_recipe/rods_recipes = list( \
 	new/datum/stack_recipe("grille", /obj/structure/grille, 2, time = 10, one_per_turf = 1, on_floor = 0),

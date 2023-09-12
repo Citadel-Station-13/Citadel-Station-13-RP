@@ -5,7 +5,6 @@
 	gender = PLURAL
 	origin_tech = list(TECH_MATERIAL = 1)
 	icon = 'icons/obj/stacks.dmi'
-	var/list/datum/stack_recipe/recipes
 	var/singular_name
 	var/amount = 1
 	/// See stack recipes initialisation, param "max_res_amount" must be equal to this max_amount.
@@ -25,7 +24,10 @@
 	/// Will the stack merge with other stacks that are different colors? (Dyed cloth, wood, etc).
 	var/strict_color_stacking = FALSE
 
-#warn deal with recipes and refactor ui
+	/// explicit recipes, lazy-list. if you use this, it better be a typelist or equivalent.
+	/// non cached lists would quickly eat through memory.
+	/// MAINTAINERS: deny prs that do not fulfill this requirement.
+	var/list/datum/stack_recipe/explicit_recipes
 
 /obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
 	if(new_amount != null)
@@ -70,20 +72,34 @@
 	.["maxAmount"] = max_amount
 
 /obj/item/stack/proc/tgui_recipes()
-	#warn impl
+	var/list/assembled = list()
+	for(var/datum/stack_recipe/recipe as anything in explicit_Recipes)
+		assembled[++assembled.len] = recipe.tgui_recipe_data()
+	return ..()
 
 /obj/item/stack/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["amount"] = amount
+	.["name"] = name
 
 /obj/item/stack/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
-	#warn impl
+	switch(action)
+		if("craft")
+			var/recipe_ref = params["recipe"]
+			if(!istext(recipe_ref))
+				return TRUE
+			var/datum/stack_recipe/recipe = locate(recipe_ref)
+			if(!can_craft_recipe(recipe))
+				return TRUE
+			#warn impl
 
 /obj/item/stack/proc/can_craft_recipe(datum/stack_recipe/recipe)
-	#warn impl
+	if(recipe in explicit_recipes)
+		return TRUE
+	return FALSE
 
 /obj/item/stack/proc/list_recipes(mob/user, recipes_sublist)
 	if (!recipes)

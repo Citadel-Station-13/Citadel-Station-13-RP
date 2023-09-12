@@ -32,8 +32,6 @@
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
 
-
-	recipes = material.get_recipes()
 	stacktype = material.stack_type
 	if(islist(material.stack_origin_tech))
 		origin_tech = material.stack_origin_tech.Copy()
@@ -49,6 +47,18 @@
 
 /obj/item/stack/material/get_material()
 	return material
+
+/obj/item/stack/material/tgui_recipes()
+	var/list/assembled = ..()
+	for(var/datum/stack_recipe/recipe as anything in material.recipes)
+		assembled[++assembled.len] = recipe.tgui_recipe_data()
+	return assembled
+
+/obj/item/stack/material/can_craft_recipe(datum/stack_recipe/recipe)
+	. = ..()
+	if(.)
+		return
+	return (recipe in material.recipes)
 
 /obj/item/stack/material/proc/update_strings()
 	// Update from material datum.

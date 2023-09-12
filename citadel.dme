@@ -4353,7 +4353,6 @@
 #include "code\modules\rogueminer_vr\zonemaster.dm"
 #include "code\modules\roles\role.dm"
 #include "code\modules\sculpting\sculpting_block.dm"
-#include "code\modules\sculpting\sculpting_helpers.dm"
 #include "code\modules\security levels\keycard authentication.dm"
 #include "code\modules\security levels\security levels.dm"
 #include "code\modules\shieldgen\directional_shield.dm"

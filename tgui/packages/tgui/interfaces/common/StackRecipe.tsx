@@ -9,4 +9,5 @@ export interface StackRecipeData {
   time: number;
   noAutoSanity: BooleanLike;
   isStack: BooleanLike;
+  ref: string;
 }
