@@ -38,6 +38,7 @@
 	/// last online, set in process()
 	var/last_online = FALSE
 
+	var/maintenance_while_online = FALSE
 	var/suit_state //The string used for the suit's icon_state.
 
 	var/interface_path = "hardsuit.tmpl"
