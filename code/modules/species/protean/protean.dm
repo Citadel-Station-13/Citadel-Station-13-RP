@@ -346,10 +346,11 @@
 
 	if(istype(back, /obj/item/hardsuit/protean))
 		var/obj/item/hardsuit/protean/suit = back
-		suit.reset()
-		suit.forceMove(src)
-		to_chat(src, SPAN_WARNING("You retract your nanosuit."))
-		return
+		if(suit.myprotean == src)			
+			suit.reset()
+			suit.forceMove(src)
+			to_chat(src, SPAN_WARNING("You retract your nanosuit."))
+			return
 
 	for(var/obj/item/hardsuit/protean/suit in contents)
 		force_equip_to_slot(suit, /datum/inventory_slot_meta/inventory/back)
