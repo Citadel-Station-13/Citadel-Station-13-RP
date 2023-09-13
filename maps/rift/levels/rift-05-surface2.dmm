@@ -36198,13 +36198,7 @@
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/paleblue/bordercorner2,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/structure/closet/crate/bin{
-	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
-	icon_closed = "biohazard";
-	icon_opened = "biohazardopen";
-	icon_state = "biohazard";
-	name = "biohazard bin"
-	},
+/obj/structure/closet/crate/biohazard,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "wUE" = (
