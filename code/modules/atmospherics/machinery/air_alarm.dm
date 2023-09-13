@@ -672,7 +672,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			var/index = text2num(params["index"]) + 1
 			if((index < AIR_ALARM_TLV_INDEX_MIN) || (index > AIR_ALARM_TLV_INDEX_MAX))
 				return TRUE
-			var/val = clamp(0, text2num(params["val"]), 1000000)
+			var/val = clamp(-1, text2num(params["val"]), 1000000)
 			var/list/target
 			switch(entry)
 				if("pressure")
