@@ -21,6 +21,22 @@ SUBSYSTEM_DEF(grids)
 /datum/controller/subsystem/grids/proc/get_ordered_turfs(x1, x2, y1, y2, z, dir)
 	#warn impl
 
+/datum/controller/subsystem/grids/proc/rotation_angle(from_dir, to_dir)
+	return (angle_to_dir(to_dir) - angle_to_dir(from_dir))
+
+/datum/controller/subsystem/grids/proc/angle_to_dir(dir)
+	switch(dir)
+		if(NORTH)
+			return 0
+		if(SOUTH)
+			return 180
+		if(EAST)
+			return 270
+		if(WEST)
+			return 90
+		else
+			CRASH("non-cardinal")
+
 /**
  * performs turf translation
  *
@@ -36,8 +52,10 @@ SUBSYSTEM_DEF(grids)
  * * grid_flags - flags to pass during move to motion procs
  * * baseturf_boundary - if set, turfs move down to this baseturf boundary. if it's not there, the turf is automatically skipped.
  * * leave_area - the area instance to leave behind. if not set, this defaults to the base area of the zlevel.
+ * * emit_motion_flags - use this to extract ordered motion flags
+ * * emit_moved_atoms - use this to extract what movables got moved
  */
-/datum/controller/subsystem/grids/proc/translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area)
+/datum/controller/subsystem/grids/proc/translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags = list(), list/emit_moved_atoms = list())
 	// While based on /tg/'s movement system, we do a few things differently.
 	// First, limitations:
 	// * base-areas aren't a thing. Areas are flat out trampled on move. On takeoff, areas are reset.
@@ -63,15 +81,17 @@ SUBSYSTEM_DEF(grids)
 	ASSERT(length(from_turfs) == length(to_turfs))
 
 	/// motion flags corrosponding to ordered turfs. this is ordered. null turf --> null.
-	var/list/ordered_motion_flags = list()
+	var/list/ordered_motion_flags = emit_motion_flags
 	/// list of area instances associated to turfs being moved from
 	var/list/source_turfs_by_area = list()
 	/// list of area instances associated to turfs being moved to
 	var/list/destination_turfs_by_area = list()
 	/// things moved
-	var/list/atom/movable/moved = list()
+	var/list/atom/movable/moved = emit_moved_atoms
 	/// for things that need a late / extra stage. these get grid_finished() called on it after everything
 	var/list/atom/movable/late_callers = list()
+	/// calculate rotation angle
+	var/rotation_angle = rotation_angle(from_dir, to_dir)
 
 	CHECK_TICK
 
@@ -89,12 +109,13 @@ SUBSYSTEM_DEF(grids)
 		var/motion_flags = source_area.grid_collect(grid_flags, source, destination, baseturf_boundary)
 		motion_flags = source.grid_collect(grid_flags, destination, baseturf_boundary, motion_flags)
 		for(var/atom/movable/AM as anything in source)
+			// no abstract check - abstract atoms can impact the collect cycle
 			motion_flags = AM.grid_collect(grid_flags, destination, motion_flags)
 		// add to ordered list
 		ordered_motion_flags += motion_flags
 		// if moving area, add to turfs_by_area
 		if(motion_flags & GRID_MOVE_AREA)
-			if(isnull(turfs_by_area[source_area]))
+			if(isnull(source_turfs_by_area[source_area]))
 				source_turfs_by_area[source_area] = list(source)
 				destination_turfs_by_area[source_area] = list(destination)
 			else
@@ -103,7 +124,7 @@ SUBSYSTEM_DEF(grids)
 		CHECK_TICK
 
 	//* Transfer areas
-	for(var/area/A as anything in turfs_by_area)
+	for(var/area/A as anything in source_turfs_by_area)
 		A.grid_transfer(grid_flags, source_turfs_by_area[A], destination_turfs_by_area[A], baseturf_boundary)
 		CHECK_TICK
 
@@ -127,13 +148,15 @@ SUBSYSTEM_DEF(grids)
 			continue
 		var/turf/destination = to_turfs[i]
 		for(var/atom/movable/AM as anything in source)
+			if(AM.atom_flags & ATOM_ABSTRACT) // don't move
+				continue
 			if(AM.loc != source) // multi tile object check
 				continue
 			AM.grid_move(grid_flags, destination)
 			moved += AM
 
 	//* Moved - areas
-	for(var/area/A as anything in turfs_by_area)
+	for(var/area/A as anything in source_turfs_by_area)
 		A.grid_after(grid_flags, source_turfs_by_area[A], destination_turfs_by_area[A], baseturf_boundary)
 
 	//* Moved - turfs
@@ -158,12 +181,12 @@ SUBSYSTEM_DEF(grids)
 		AM.grid_finished(grid_flags, rotation_angle)
 
 	//* Cleanup areas
-	for(var/area/A as anything in turfs_by_area)
-		A.grid_clean(grid_flags, source_turfs_by_area[A], destination_turfs_by_area[A], baseturf_boundary)
+	for(var/area/A as anything in source_turfs_by_area)
+		A.grid_clean(grid_flags, source_turfs_by_area[A], destination_turfs_by_area[A], baseturf_boundary, leave_area)
 		CHECK_TICK
 
 	//* Cleanup turfs
-	for(var/i in to length(from_turfs))
+	for(var/i in 1 to length(from_turfs))
 		var/turf/source = from_turfs[i]
 		if(isnull(source))
 			continue
@@ -188,13 +211,19 @@ SUBSYSTEM_DEF(grids)
  * Called when copying area to new turfs
  */
 /area/proc/grid_transfer(grid_flags, list/turf/old_turfs, list/turf/new_turfs, baseturf_boundary)
-	#warn impl
+	contents += new_turfs
 
 /**
  * Called when cleaning up after transfer
  */
-/area/proc/grid_clean(grid_flags, list/turf/old_turfs, list/turf/new_turfs, baseturf_boundary)
-	#warn impl
+/area/proc/grid_clean(grid_flags, list/turf/old_turfs, list/turf/new_turfs, baseturf_boundary, area/leave_area)
+	contents -= old_turfs
+	if(ispath(leave_area))
+		leave_area = cached_area_of_type(leave_area)
+	else if(istype(leave_area))
+	else
+		leave_area = cached_area_of_type[/area/space]
+	leave_area.contents += old_turfs
 
 /**
  * Called after everything is moved
@@ -230,7 +259,8 @@ SUBSYSTEM_DEF(grids)
  * Called after everything settles
  */
 /turf/proc/grid_after(grid_flags, rotation_angle)
-	#warn impl
+	if(rotation_angle != 0)
+		setDir(turn(dir, rotation_angle))
 
 //* Movables
 
@@ -247,14 +277,15 @@ SUBSYSTEM_DEF(grids)
  * Only called if moved
  */
 /atom/movable/proc/grid_move(grid_flags, turf/new_turf)
-	#warn impl
+	loc = new_turf
 
 /**
  * Called after everything settles, after area/turf moved
  * Only called if moved
  */
 /atom/movable/proc/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
-	#warn impl
+	if(rotation_angle != 0)
+		setDir(turn(dir, rotation_angle))
 
 /**
  * Called if we got added to late_call_hooks in grid_after.

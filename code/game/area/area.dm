@@ -1,4 +1,18 @@
 /**
+ * Gets a cached area of a given type
+ *
+ * This will work on non unique areas, and will not impact usual uniqueness checks,
+ * e.g. using this won't make maploader use an area made in this way unless the area already was unique
+ */
+/proc/cached_area_of_type(path)
+	ASSERT(ispath(path, /area))
+	if(!isnull(GLOB.areas_by_type[path]))
+		return GLOB.areas_by_type[path]
+	var/area/creating = new path
+	GLOB.areas_by_type[path] = creating
+	return creating
+
+/**
  * # area
  *
  * A grouping of tiles into a logical space, mostly used by map editors
