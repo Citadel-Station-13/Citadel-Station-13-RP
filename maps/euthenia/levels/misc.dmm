@@ -18,10 +18,41 @@
 /obj/item/chess/bbishop,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
+"ae" = (
+/obj/structure/railing,
+/turf/unsimulated/floor/techfloor_grid,
+/area/centcom/simulated/terminal)
 "af" = (
 /obj/effect/floor_decal/sign/dock/one,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_checker)
+"aj" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"ax" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "az" = (
 /obj/structure/railing,
 /turf/simulated/floor/holofloor/space,
@@ -40,6 +71,15 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/space)
+"aJ" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/centcom/simulated/terminal)
 "aS" = (
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/source_beach)
@@ -55,6 +95,9 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
+"ba" = (
+/turf/unsimulated/wall,
+/area/centcom/simulated/bar)
 "be" = (
 /turf/simulated/floor/holofloor/space,
 /area/holodeck/holodorm/source_space)
@@ -73,9 +116,51 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
+"bC" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/unsimulated/floor/techfloor_grid,
+/area/centcom/simulated/terminal)
+"bN" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "bR" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
+"bS" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 6
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"bU" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/industrial/warning,
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"bV" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 1
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/escape)
 "bX" = (
 /obj/structure/table/holotable,
 /obj/effect/floor_decal/corner/red/full{
@@ -95,6 +180,16 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
+"ck" = (
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "co" = (
 /obj/structure/bed/chair/holochair{
 	dir = 8
@@ -110,6 +205,20 @@
 	},
 /turf/simulated/floor/holofloor/reinforced,
 /area/holodeck/source_wildlife)
+"cr" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "cu" = (
 /obj/effect/floor_decal/carpet{
 	dir = 4
@@ -126,6 +235,27 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
+"cv" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "cB" = (
 /obj/effect/floor_decal/carpet{
 	dir = 9
@@ -136,6 +266,25 @@
 /obj/effect/floor_decal/corner/red/full,
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
+"cE" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/simulated/terminal)
+"cP" = (
+/obj/structure/table/reinforced,
+/obj/machinery/keycard_auth{
+	pixel_x = -24;
+	pixel_y = -8
+	},
+/obj/item/storage/secure/briefcase,
+/obj/item/multitool,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "cR" = (
 /obj/effect/overlay/palmtree_l,
 /turf/simulated/floor/holofloor/beach/sand,
@@ -164,10 +313,30 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
+"dy" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/centcom/simulated/terminal)
 "dK" = (
 /obj/effect/floor_decal/sign/dock/two,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_checker)
+"dS" = (
+/obj/structure/shuttle/engine/heater,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/effect/shuttle_landmark{
+	base_area = /area/centcom/terminal;
+	base_turf = /turf/unsimulated/floor/techfloor_grid;
+	landmark_tag = "escape_cc";
+	name = "Escape Shuttle Centcom"
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
 "dU" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-06"
@@ -199,6 +368,15 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
+"el" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 1
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
 "em" = (
 /obj/structure/lattice,
 /obj/structure/railing,
@@ -213,6 +391,9 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
+"eL" = (
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "eM" = (
 /obj/structure/table/woodentable/holotable,
 /turf/simulated/floor/holofloor/carpet,
@@ -220,6 +401,11 @@
 "eR" = (
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/holodorm/source_beach)
+"eT" = (
+/obj/structure/table/standard,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "eW" = (
 /obj/structure/table/holotable,
 /obj/item/clothing/gloves/boxing/hologlove{
@@ -228,6 +414,15 @@
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
+"eZ" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/centcom/simulated/terminal)
 "fn" = (
 /obj/effect/floor_decal/corner/green/full{
 	dir = 4
@@ -242,6 +437,24 @@
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_basketball)
+"fz" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "fD" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/holofloor/grass,
@@ -249,6 +462,16 @@
 "fF" = (
 /turf/space,
 /area/space)
+"fK" = (
+/obj/structure/window/reinforced,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_x = -32
+	},
+/obj/structure/handrail{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 "fN" = (
 /obj/structure/window/reinforced,
 /turf/unsimulated/wall,
@@ -257,10 +480,83 @@
 /obj/structure/holostool,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_boxingcourt)
+"fT" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"fY" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 10
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
+"ge" = (
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 26
+	},
+/obj/structure/bed/chair/shuttle,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"gf" = (
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "gg" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/holodorm/source_desert)
+"gl" = (
+/obj/structure/handrail{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
+"go" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 10
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"gr" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "gz" = (
 /obj/structure/flora/grass/brown,
 /turf/simulated/floor/holofloor/snow,
@@ -283,6 +579,15 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_theatre)
+"gW" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/danger/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/centcom/simulated/terminal)
 "gX" = (
 /obj/structure/bed/chair/holochair,
 /obj/effect/floor_decal/carpet{
@@ -290,6 +595,20 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
+"hf" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/simulated/terminal)
+"hl" = (
+/obj/structure/closet/walllocker/autolok_wall,
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 "ho" = (
 /obj/effect/floor_decal/sign/c,
 /turf/simulated/floor/holofloor/wood,
@@ -347,6 +666,15 @@
 /obj/effect/overlay/coconut,
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/source_beach)
+"hC" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/simulated/terminal)
 "hG" = (
 /obj/structure/holostool,
 /obj/effect/floor_decal/carpet{
@@ -354,6 +682,36 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
+"hM" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 6
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
+"hQ" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "ic" = (
 /obj/structure/holostool,
 /turf/simulated/floor/holofloor/carpet,
@@ -383,6 +741,31 @@
 /obj/item/clothing/head/pin/flower,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
+"iN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 5
+	},
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/escape)
+"iO" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "iR" = (
 /obj/effect/floor_decal/corner/white/full,
 /obj/effect/floor_decal/corner/white{
@@ -421,6 +804,18 @@
 	},
 /turf/simulated/floor/holofloor/space,
 /area/space)
+"js" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "jv" = (
 /obj/effect/floor_decal/sign/dock/three,
 /turf/simulated/floor/holofloor/wood,
@@ -448,6 +843,25 @@
 "jL" = (
 /turf/unsimulated/wall,
 /area/space)
+"jP" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/structure/fans/tiny,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 5
+	},
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Shuttle Hatch"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "jY" = (
 /obj/structure/bed/chair/holochair{
 	dir = 1
@@ -507,15 +921,30 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/space)
+"kG" = (
+/turf/simulated/floor/tiled,
+/area/centcom/simulated/terminal)
 "kH" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/holostool,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_picnicarea)
+"kP" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/unsimulated/floor/techfloor_grid,
+/area/centcom/simulated/terminal)
 "kS" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
+"kT" = (
+/obj/structure/table/reinforced,
+/obj/machinery/computer/communications,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "lf" = (
 /obj/effect/floor_decal/carpet{
 	dir = 1
@@ -543,6 +972,15 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
+"lu" = (
+/obj/machinery/button/windowtint{
+	id = "emergency_security";
+	pixel_x = 24;
+	pixel_y = -8
+	},
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "lF" = (
 /obj/structure/table/woodentable/holotable,
 /obj/structure/window/reinforced/holowindow,
@@ -551,6 +989,16 @@
 	},
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
+"lH" = (
+/obj/structure/sign/warning/docking_area,
+/turf/unsimulated/wall,
+/area/centcom/simulated/terminal)
+"lJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 6
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
 "ma" = (
 /obj/structure/holostool,
 /obj/effect/floor_decal/carpet{
@@ -571,12 +1019,44 @@
 /obj/structure/window/reinforced,
 /turf/unsimulated/wall,
 /area/space)
+"mq" = (
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'HIGH VOLTAGE'";
+	icon_state = "shock";
+	name = "HIGH VOLTAGE"
+	},
+/turf/unsimulated/wall,
+/area/centcom/simulated/terminal)
 "ms" = (
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_meetinghall)
+"mB" = (
+/obj/machinery/atmospherics/pipe/simple/visible/fuel,
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/obj/spawner/window/full/firelocks,
+/turf/simulated/floor/reinforced,
+/area/shuttle/escape)
+"nn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 5
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
 "np" = (
 /turf/simulated/floor/holofloor/beach/water,
 /area/holodeck/holodorm/source_beach)
+"nA" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/centcom/simulated/terminal)
 "nB" = (
 /obj/effect/floor_decal/carpet{
 	dir = 8
@@ -606,6 +1086,12 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
+"oE" = (
+/obj/machinery/door/airlock/command{
+	name = "Cockpit"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 "oM" = (
 /obj/effect/floor_decal/carpet{
 	dir = 8
@@ -637,6 +1123,12 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
+"pj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "pp" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
@@ -663,6 +1155,9 @@
 /obj/structure/flora/tree/pine,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/source_snowfield)
+"py" = (
+/turf/unsimulated/floor/steel,
+/area/centcom/simulated/terminal)
 "pJ" = (
 /obj/item/chess/bknight,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -673,6 +1168,9 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_boxingcourt)
+"pW" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/simulated/terminal)
 "qd" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -693,6 +1191,24 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
+"ql" = (
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/fuel_port{
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/escape)
+"qm" = (
+/obj/structure/table/standard,
+/obj/random/plushie,
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 "qo" = (
 /obj/structure/bed/chair/holochair{
 	dir = 8
@@ -714,12 +1230,36 @@
 /obj/item/clothing/glasses/sunglasses,
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/source_beach)
+"qK" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/unsimulated/floor/techfloor_grid,
+/area/centcom/simulated/terminal)
+"qT" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/tiled/steel_grid,
+/area/centcom/simulated/terminal)
+"qZ" = (
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/turf/simulated/floor/tiled,
+/area/centcom/simulated/terminal)
 "rb" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
+"rc" = (
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = -26
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "re" = (
 /obj/effect/floor_decal/sign/dock/one,
 /turf/simulated/floor/holofloor/wood,
@@ -728,6 +1268,17 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/holodorm/source_garden)
+"rk" = (
+/obj/machinery/door/airlock/medical{
+	name = "Shuttle Medical"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
+"rm" = (
+/obj/effect/floor_decal/borderfloorblack/corner,
+/obj/effect/floor_decal/industrial/warning/corner,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "rs" = (
 /obj/effect/floor_decal/corner/white/full,
 /obj/effect/floor_decal/corner/white{
@@ -740,10 +1291,26 @@
 /obj/item/beach_ball,
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/source_beach)
+"rz" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 "rF" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/holofloor/reinforced,
 /area/space)
+"rG" = (
+/obj/machinery/vending/blood,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"rN" = (
+/obj/machinery/door/airlock/security{
+	name = "Shuttle Security"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 "sa" = (
 /obj/structure/window/reinforced/holowindow{
 	dir = 1
@@ -759,6 +1326,15 @@
 /obj/item/chess/bpawn,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
+"sw" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/centcom/simulated/terminal)
 "sE" = (
 /obj/effect/floor_decal/corner/blue/full{
 	dir = 8
@@ -776,6 +1352,16 @@
 /obj/structure/bed/chair/holochair,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
+"sO" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/simulated/terminal)
 "tg" = (
 /obj/structure/window/reinforced/holowindow,
 /obj/machinery/door/window/holowindoor{
@@ -792,10 +1378,35 @@
 "tl" = (
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_chess)
+"tm" = (
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 "tv" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_desert)
+"tz" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/structure/handrail,
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"tB" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/escape)
 "tP" = (
 /obj/machinery/door/window/holowindoor{
 	name = "Red Team"
@@ -806,6 +1417,22 @@
 /obj/item/chess/brook,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
+"ue" = (
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "ui" = (
 /obj/structure/table/woodentable/holotable,
 /turf/simulated/floor/holofloor/wood,
@@ -816,6 +1443,15 @@
 "ul" = (
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
+"ur" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/simulated/terminal)
 "ut" = (
 /obj/structure/bed/chair/holochair{
 	dir = 8
@@ -847,6 +1483,25 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
+"uU" = (
+/obj/machinery/holoplant{
+	pixel_y = 6
+	},
+/obj/structure/table/glass,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "uW" = (
 /obj/structure/bed/chair/holochair{
 	dir = 1
@@ -856,6 +1511,12 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
+"ve" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 9
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
 "vv" = (
 /obj/effect/floor_decal/corner/blue/full{
 	dir = 4
@@ -865,6 +1526,16 @@
 "vw" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_meetinghall)
+"vx" = (
+/obj/structure/table/standard,
+/obj/item/defib_kit/loaded,
+/obj/item/storage/firstaid/clotting{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/storage/firstaid/adv,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "vC" = (
 /obj/structure/bed/chair/holochair,
 /turf/simulated/floor/holofloor/wood,
@@ -875,6 +1546,16 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
+"vI" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
+"vK" = (
+/obj/machinery/status_display,
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
 "vO" = (
 /obj/structure/holostool,
 /turf/simulated/floor/holofloor/tiled,
@@ -891,6 +1572,13 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
+"vR" = (
+/obj/machinery/door/window/brigdoor/southright{
+	dir = 4;
+	name = "holding cell"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 "vV" = (
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_seating)
@@ -898,10 +1586,35 @@
 /obj/effect/floor_decal/corner/green/full,
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
+"wb" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "wc" = (
 /obj/structure/table/woodentable/holotable,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
+"wi" = (
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/fuel_port{
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/escape)
+"wj" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "wm" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/effect/floor_decal/spline/fancy/wood/corner{
@@ -919,6 +1632,24 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
+"wp" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "ws" = (
 /obj/machinery/door/window/holowindoor{
 	name = "Red Team"
@@ -945,6 +1676,24 @@
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_boxingcourt)
+"wX" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "xa" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/effect/floor_decal/spline/fancy/wood/corner{
@@ -968,12 +1717,56 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/space)
+"xm" = (
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Shuttle Hatch"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "xv" = (
 /obj/effect/floor_decal/corner/red/full{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
+"xx" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 1
+	},
+/obj/machinery/meter,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/structure/handrail,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"xy" = (
+/obj/structure/handrail{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
+"xB" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/simulated/terminal)
+"xI" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/simulated/terminal)
 "xO" = (
 /obj/structure/window/reinforced/holowindow/disappearing{
 	dir = 1
@@ -983,6 +1776,17 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
+"xR" = (
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = -26
+	},
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "xS" = (
 /obj/structure/bed/chair/holochair{
 	dir = 8
@@ -1012,6 +1816,12 @@
 /obj/structure/flora/grass/green,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/holodorm/source_snow)
+"yE" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 4
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/escape)
 "yH" = (
 /obj/structure/catwalk,
 /obj/structure/table/holotable,
@@ -1025,6 +1835,12 @@
 /obj/item/chess/bking,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
+"zg" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 1
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
 "zm" = (
 /obj/structure/holostool,
 /turf/simulated/floor/holofloor/carpet,
@@ -1073,6 +1889,17 @@
 /obj/structure/lattice,
 /turf/simulated/floor/holofloor/space,
 /area/space)
+"As" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 1
+	},
+/obj/machinery/button/windowtint{
+	id = "emergency_cockpit";
+	pixel_x = -24;
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "AG" = (
 /turf/simulated/floor/holofloor/space,
 /area/holodeck/source_space)
@@ -1082,6 +1909,15 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
+"AJ" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "AQ" = (
 /obj/structure/holostool,
 /obj/effect/floor_decal/carpet{
@@ -1111,6 +1947,10 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
+"Bj" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/escape)
 "Bn" = (
 /obj/landmark{
 	name = "Wolfgirl Spawn"
@@ -1124,6 +1964,15 @@
 	},
 /turf/simulated/floor/holofloor/reinforced,
 /area/space)
+"Bq" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Br" = (
 /obj/structure/railing{
 	dir = 4
@@ -1141,24 +1990,75 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
+"BK" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/danger/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/centcom/simulated/terminal)
 "BO" = (
 /obj/structure/window/reinforced/holowindow/disappearing,
 /obj/effect/floor_decal/corner/red/full,
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
+"Cb" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Cd" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_desert)
+"Cg" = (
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = -26
+	},
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 "Ch" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-06"
 	},
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_meetinghall)
+"Cm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 1
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
 "Co" = (
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
+"Cp" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/simulated/main_hall)
 "Cu" = (
 /obj/structure/window/reinforced/holowindow{
 	dir = 4
@@ -1178,10 +2078,32 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
+"Cy" = (
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/machinery/camera/network/crescent{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/centcom/simulated/terminal)
+"CU" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/centcom/simulated/terminal)
 "CW" = (
 /obj/structure/table/woodentable/holotable,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_picnicarea)
+"Db" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/escape)
 "Dj" = (
 /obj/item/beach_ball/holoball,
 /obj/effect/floor_decal/corner/red{
@@ -1227,6 +2149,15 @@
 /obj/effect/floor_decal/sign/dock/two,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_chess)
+"Dt" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/centcom/simulated/terminal)
 "DF" = (
 /obj/structure/table/woodentable/holotable,
 /obj/effect/floor_decal/carpet{
@@ -1238,6 +2169,32 @@
 /obj/effect/floor_decal/carpet,
 /turf/simulated/floor/holofloor/carpet,
 /area/space)
+"DS" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"DU" = (
+/obj/machinery/vending/medical,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "DW" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -1288,15 +2245,44 @@
 /obj/item/chess/bqueen,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
+"EH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/escape)
 "EO" = (
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
+"EZ" = (
+/obj/structure/table/reinforced,
+/obj/machinery/computer/crew,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Fd" = (
 /obj/effect/floor_decal/corner/red/full{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
+"Ff" = (
+/obj/item/handcuffs,
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"Fh" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Fl" = (
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/holodorm/source_desert)
@@ -1329,6 +2315,24 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
+"FO" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/simulated/terminal)
+"FS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "FU" = (
 /obj/structure/holostool,
 /obj/structure/window/reinforced/holowindow{
@@ -1340,6 +2344,19 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_picnicarea)
+"Gb" = (
+/obj/structure/table/reinforced,
+/obj/machinery/computer/shuttle_control/emergency,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"Gc" = (
+/obj/structure/table/standard,
+/obj/item/material/ashtray/glass,
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
+"Gk" = (
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
 "Gm" = (
 /obj/structure/bed/chair/holochair{
 	dir = 8
@@ -1353,6 +2370,16 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
+"Gz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/handrail,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "GI" = (
 /obj/structure/railing{
 	dir = 8
@@ -1374,11 +2401,30 @@
 /obj/effect/floor_decal/carpet,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
+"Hf" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/machinery/camera/network/crescent{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/simulated/terminal)
 "Hj" = (
 /obj/structure/table/holotable,
 /obj/effect/floor_decal/corner/green/full,
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
+"Hq" = (
+/obj/structure/sign/warning/nosmoking_2,
+/turf/unsimulated/wall,
+/area/centcom/simulated/terminal)
+"Ht" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/simulated/terminal)
 "Hz" = (
 /obj/effect/floor_decal/carpet{
 	dir = 1
@@ -1399,6 +2445,11 @@
 /obj/structure/window/reinforced/holowindow,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_boxingcourt)
+"HQ" = (
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/industrial/danger/corner,
+/turf/simulated/floor/tiled/steel_grid,
+/area/centcom/simulated/terminal)
 "Io" = (
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_theatre)
@@ -1417,6 +2468,43 @@
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
+"IC" = (
+/turf/unsimulated/floor/techfloor_grid,
+/area/centcom/simulated/terminal)
+"IL" = (
+/obj/spawner/window/full/firelocks,
+/turf/simulated/floor,
+/area/shuttle/escape)
+"IO" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"IR" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/centcom/simulated/terminal)
+"IZ" = (
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"Jd" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/machinery/camera/network/crescent{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/simulated/terminal)
 "Jg" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 5
@@ -1453,6 +2541,15 @@
 /obj/structure/holostool,
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
+"JX" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
+"JZ" = (
+/turf/unsimulated/wall,
+/area/centcom/simulated/restaurant)
 "Kb" = (
 /obj/effect/floor_decal/carpet{
 	dir = 8
@@ -1481,6 +2578,21 @@
 /obj/structure/table/woodentable/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
+"Kl" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Ko" = (
 /obj/structure/holostool,
 /obj/effect/floor_decal/carpet,
@@ -1514,6 +2626,21 @@
 	},
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_basic)
+"KG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 9
+	},
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/escape)
+"KK" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/machinery/camera/network/crescent{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/simulated/terminal)
 "KQ" = (
 /obj/item/checker/redking,
 /obj/item/checker/redking,
@@ -1545,10 +2672,56 @@
 	},
 /turf/unsimulated/wall,
 /area/space)
+"Lq" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Ls" = (
 /obj/item/inflatable_duck,
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/source_beach)
+"LC" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 6
+	},
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Shuttle Hatch"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"LD" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/centcom/simulated/terminal)
 "LF" = (
 /obj/effect/floor_decal/carpet{
 	dir = 1
@@ -1563,6 +2736,10 @@
 /obj/item/chess/wqueen,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
+"Mm" = (
+/obj/machinery/power/pointdefense,
+/turf/simulated/floor/plating/eris/under,
+/area/shuttle/escape)
 "MG" = (
 /obj/structure/table/holotable,
 /obj/machinery/readybutton,
@@ -1578,6 +2755,17 @@
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
+"MZ" = (
+/obj/structure/table/standard,
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/storage/firstaid/surgery,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Na" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -1594,9 +2782,38 @@
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
+"Nh" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
 "Nk" = (
 /turf/simulated/floor/holofloor/carpet,
 /area/space)
+"Np" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"NA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
+"NC" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 8
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
 "NF" = (
 /obj/effect/floor_decal/carpet{
 	dir = 8
@@ -1608,6 +2825,18 @@
 /obj/item/clothing/gloves/boxing/hologlove,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
+"NX" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Oa" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/holofloor/grass,
@@ -1622,6 +2851,10 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
+"Oh" = (
+/obj/structure/window/reinforced,
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 "Oj" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
@@ -1661,6 +2894,18 @@
 "OA" = (
 /turf/simulated/floor/holofloor/lino,
 /area/holodeck/source_meetinghall)
+"OM" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "ON" = (
 /obj/effect/floor_decal/carpet{
 	dir = 5
@@ -1699,6 +2944,16 @@
 "Pf" = (
 /turf/simulated/floor/holofloor/reinforced,
 /area/holodeck/source_wildlife)
+"Ph" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/centcom/simulated/terminal)
 "Pk" = (
 /obj/machinery/door/window/holowindoor,
 /turf/simulated/floor/holofloor/tiled,
@@ -1706,6 +2961,27 @@
 "Pl" = (
 /turf/simulated/floor/holofloor/beach/water,
 /area/holodeck/source_beach)
+"Pz" = (
+/obj/structure/closet/emcloset,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "PF" = (
 /obj/effect/floor_decal/sign/dock/three,
 /turf/simulated/floor/holofloor/wood,
@@ -1713,6 +2989,11 @@
 "PI" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_thunderdomecourt)
+"PO" = (
+/obj/structure/medical_stand/anesthetic,
+/obj/structure/bed/roller,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "PX" = (
 /obj/structure/flora/grass/both,
 /turf/simulated/floor/holofloor/snow,
@@ -1743,10 +3024,44 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
+"Qf" = (
+/obj/structure/table/standard,
+/obj/item/deck/cards,
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
+"Qn" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/unsimulated/floor/techfloor_grid,
+/area/centcom/simulated/terminal)
+"Qq" = (
+/turf/unsimulated/wall,
+/area/centcom/simulated/main_hall)
 "Qr" = (
 /obj/effect/overlay/palmtree_r,
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/source_beach)
+"Qs" = (
+/obj/structure/bed/roller,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"Qw" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Qx" = (
 /obj/structure/table/holotable,
 /obj/item/clothing/head/helmet/thunderdome,
@@ -1758,6 +3073,17 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
+"QB" = (
+/obj/machinery/atmospherics/component/binary/pump/fuel{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/industrial/warning,
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "QP" = (
 /obj/structure/holostool,
 /obj/effect/floor_decal/carpet{
@@ -1785,6 +3111,13 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
+"Rx" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/folder/blue,
+/obj/item/pen,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "RC" = (
 /obj/effect/floor_decal/corner/green{
 	dir = 9
@@ -1803,11 +3136,48 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
+"RM" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/simulated/terminal)
+"RO" = (
+/obj/machinery/sleep_console{
+	dir = 4
+	},
+/obj/machinery/button/windowtint{
+	id = "emergency_medical";
+	pixel_x = -24;
+	pixel_y = -8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"RP" = (
+/obj/machinery/sleeper{
+	dir = 4
+	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 26
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "RT" = (
 /obj/structure/catwalk,
 /obj/structure/bed/chair/sofa/black/right,
 /turf/simulated/floor/holofloor/reinforced,
 /area/space)
+"RV" = (
+/obj/structure/shuttle/engine/heater,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
 "RX" = (
 /obj/effect/floor_decal/corner/green{
 	dir = 10
@@ -1821,6 +3191,60 @@
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
+"Se" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 1
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Blast Doors";
+	pixel_x = 24;
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"Sg" = (
+/obj/structure/table/reinforced,
+/obj/machinery/keycard_auth{
+	pixel_x = 24;
+	pixel_y = -8
+	},
+/obj/item/folder/blue,
+/obj/item/radio{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/radio,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"Sp" = (
+/obj/structure/window/reinforced,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_x = 32
+	},
+/obj/structure/handrail{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
+"Sr" = (
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = -26
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "SE" = (
 /obj/effect/floor_decal/carpet{
 	dir = 8
@@ -1833,6 +3257,18 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
+"SG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "SI" = (
 /obj/structure/railing,
 /obj/structure/lattice,
@@ -1862,9 +3298,30 @@
 /obj/effect/floor_decal/carpet,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
+"SY" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Te" = (
 /turf/space/basic,
 /area/space)
+"Tn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 10
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/escape)
 "Tt" = (
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_basic)
@@ -1913,6 +3370,29 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
+"Uw" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/turf/unsimulated/floor/techfloor_grid,
+/area/centcom/simulated/terminal)
+"UF" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"UQ" = (
+/obj/machinery/pointdefense_control,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "UT" = (
 /obj/effect/floor_decal/corner/white/full,
 /obj/effect/floor_decal/corner/white{
@@ -1921,6 +3401,21 @@
 /obj/item/chess/bknight,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
+"UW" = (
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = -26
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "UZ" = (
 /obj/effect/floor_decal/carpet{
 	dir = 4
@@ -1940,9 +3435,45 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
+"Vi" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 1
+	},
+/obj/machinery/meter,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/structure/handrail,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Vk" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
+"Vv" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "VO" = (
 /obj/structure/holostool,
 /obj/effect/floor_decal/carpet{
@@ -1954,6 +3485,28 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
+"VR" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 5
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "VW" = (
 /obj/structure/window/reinforced/holowindow/disappearing,
 /obj/effect/floor_decal/corner/red/full{
@@ -1961,6 +3514,26 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
+"Wg" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/structure/handrail,
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"Ws" = (
+/obj/effect/floor_decal/borderfloor/corner,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Wt" = (
 /obj/structure/bed/chair/holochair{
 	dir = 8
@@ -1970,6 +3543,32 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
+"Wv" = (
+/obj/structure/sign/warning{
+	name = "\improper STAND AWAY FROM TRACK EDGE"
+	},
+/turf/unsimulated/wall,
+/area/centcom/simulated/terminal)
+"WA" = (
+/turf/simulated/floor/tiled/steel_grid,
+/area/centcom/simulated/terminal)
+"WM" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"WO" = (
+/obj/structure/table/glass,
+/obj/random/action_figure,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "WU" = (
 /obj/item/chess/bbishop,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -1984,15 +3583,53 @@
 /obj/structure/bed/holobed,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_basic)
+"Xt" = (
+/obj/effect/floor_decal/industrial/warning/cee{
+	dir = 4
+	},
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/centcom/simulated/terminal)
+"Xu" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "XI" = (
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_checker)
 "XT" = (
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
+"XU" = (
+/obj/structure/closet/emcloset,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "XX" = (
 /turf/simulated/floor/holofloor/tiled,
 /area/space)
+"Ye" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/simulated/terminal)
 "Yg" = (
 /obj/structure/railing{
 	dir = 4
@@ -2050,6 +3687,30 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
+"Zh" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/escape)
+"Zj" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/centcom/simulated/terminal)
+"Zl" = (
+/obj/effect/floor_decal/industrial/warning/cee{
+	dir = 8
+	},
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/centcom/simulated/terminal)
 "Zq" = (
 /obj/effect/floor_decal/corner/white/full,
 /obj/effect/floor_decal/corner/white{
@@ -2070,6 +3731,9 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
+"ZB" = (
+/turf/unsimulated/wall,
+/area/centcom/simulated/terminal)
 "ZH" = (
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/source_snowfield)
@@ -2082,6 +3746,12 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
+"ZO" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 Te
@@ -5975,35 +7645,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
 Te
 Te
 Te
@@ -6169,35 +7839,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+lH
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+mq
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+mq
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+Wv
 Te
 Te
 Te
@@ -6363,35 +8033,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+FO
+Hf
+FO
+RM
+FO
+FO
+FO
+FO
+RM
+FO
+FO
+FO
+FO
+RM
+FO
+FO
+FO
+FO
+RM
+FO
+FO
+FO
+FO
+RM
+FO
+Hf
+FO
+ZB
 Te
 Te
 Te
@@ -6557,35 +8227,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+bV
+Nh
+NC
+NA
+mB
+mB
+NA
+nn
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+ZB
 Te
 Te
 Te
@@ -6751,35 +8421,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+IC
+IC
+IC
+IC
+IC
+Zh
+lJ
+NA
+mB
+NA
+NA
+NA
+KG
+bN
+bN
+bN
+eT
+zg
+RV
+Bj
+IC
+IC
+IC
+IC
+IC
+IC
+ZB
 Te
 Te
 Te
@@ -6945,35 +8615,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+IC
+IC
+IC
+Mm
+Db
+fY
+KG
+ue
+gl
+fz
+NX
+Gk
+fT
+ZO
+vR
+ZO
+Bq
+zg
+NA
+RV
+Bj
+IC
+bC
+bC
+bC
+IC
+ZB
 Te
 Te
 Te
@@ -7139,35 +8809,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+IC
+Gk
+Db
+IL
+Gk
+ue
+fK
+ck
+tm
+tm
+xR
+Gk
+ge
+tm
+tm
+rc
+Db
+tB
+ql
+Db
+Db
+Qn
+nA
+sw
+Dt
+qK
+ZB
 Te
 Te
 Te
@@ -7333,35 +9003,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+Gk
+Gk
+Db
+UQ
+vK
+VR
+Oh
+iO
+tm
+aj
+bS
+Gk
+lu
+tm
+tm
+Ff
+Gk
+Vi
+FS
+AJ
+jP
+WA
+WA
+py
+qT
+qK
+ZB
 Te
 Te
 Te
@@ -7527,35 +9197,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+Db
+Db
+cP
+Xu
+IL
+tz
+tm
+hQ
+tm
+Kl
+UW
+Db
+Gk
+rN
+IL
+vK
+Db
+Gz
+rm
+gr
+LC
+WA
+WA
+py
+qT
+qK
+ZB
 Te
 Te
 Te
@@ -7721,35 +9391,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+IL
+kT
+As
+hl
+IL
+Fh
+rz
+rz
+rz
+rz
+ax
+WO
+Pz
+tm
+XU
+uU
+IL
+Np
+QB
+EH
+EH
+Uw
+LD
+py
+qT
+qK
+ZB
 Te
 Te
 Te
@@ -7915,35 +9585,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+IL
+Gb
+IO
+tm
+oE
+tm
+qm
+Gc
+Qf
+qm
+tm
+tm
+tm
+tm
+tm
+eL
+xm
+wj
+pj
+dS
+Bj
+ae
+LD
+py
+qT
+qK
+ZB
 Te
 Te
 Te
@@ -8109,35 +9779,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+IL
+EZ
+Se
+hl
+IL
+Qw
+vI
+vI
+vI
+vI
+Ws
+UF
+Lq
+tm
+wX
+cr
+IL
+js
+bU
+Db
+Db
+kP
+LD
+py
+qT
+qK
+ZB
 Te
 Te
 Te
@@ -8303,35 +9973,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+Db
+Db
+Sg
+wb
+IL
+Wg
+tm
+cv
+tm
+SY
+Sr
+Db
+Gk
+rk
+IL
+vK
+Db
+Gz
+IZ
+AJ
+jP
+WA
+WA
+py
+qT
+qK
+ZB
 Te
 Te
 Te
@@ -8497,35 +10167,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+Gk
+Gk
+Db
+Rx
+vK
+DS
+Oh
+Vv
+tm
+Cb
+go
+Gk
+RO
+tm
+WM
+WM
+Gk
+xx
+SG
+gr
+LC
+WA
+WA
+py
+qT
+qK
+ZB
 Te
 Te
 Te
@@ -8691,35 +10361,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+IC
+Gk
+Db
+IL
+Gk
+gf
+Sp
+ck
+tm
+tm
+xR
+Gk
+RP
+tm
+tm
+Cg
+Db
+tB
+wi
+Db
+Db
+Uw
+LD
+py
+qT
+qK
+ZB
 Te
 Te
 Te
@@ -8885,35 +10555,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+IC
+IC
+IC
+Mm
+Db
+hM
+iN
+gf
+xy
+wp
+OM
+Gk
+DU
+tm
+tm
+tm
+rG
+zg
+NA
+RV
+Bj
+ae
+LD
+py
+qT
+qK
+ZB
 Te
 Te
 Te
@@ -9079,35 +10749,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+IC
+IC
+IC
+IC
+IC
+yE
+Tn
+NA
+mB
+NA
+NA
+NA
+iN
+MZ
+Qs
+PO
+vx
+zg
+RV
+Bj
+IC
+ae
+LD
+py
+qT
+qK
+ZB
 Te
 Te
 Te
@@ -9273,35 +10943,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+pW
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+bV
+el
+JX
+Cm
+mB
+mB
+Cm
+ve
+IC
+IC
+IC
+ae
+LD
+py
+qT
+qK
+ZB
 Te
 Te
 Te
@@ -9467,35 +11137,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+Qn
+LD
+py
+qT
+qK
+ZB
 Te
 Te
 Te
@@ -9661,35 +11331,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+Zl
+aJ
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+BK
+py
+qT
+xB
+ZB
 Te
 Te
 Te
@@ -9855,35 +11525,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+CU
+kG
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+qT
+xB
+ZB
 Te
 Te
 Te
@@ -10049,35 +11719,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+Xt
+Zj
+dy
+dy
+dy
+dy
+dy
+dy
+gW
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+HQ
+dy
+dy
+dy
+dy
+dy
+eZ
+xB
+ZB
 Te
 Te
 Te
@@ -10243,35 +11913,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+hC
+cE
+cE
+cE
+cE
+cE
+hf
+LD
+py
+py
+Ye
+qZ
+Ph
+sO
+Ph
+Cy
+IR
+py
+py
+qT
+xI
+cE
+cE
+cE
+cE
+cE
+pW
+ZB
 Te
 Te
 Te
@@ -10437,35 +12107,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+ZB
+Ht
+Jd
+ur
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+ZB
+Hq
+Qq
+Cp
+Cp
+Cp
+Qq
+JZ
+JZ
+JZ
+JZ
+JZ
+JZ
+JZ
+ba
+ur
+KK
+Ht
+ZB
 Te
 Te
 Te

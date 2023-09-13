@@ -8702,6 +8702,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
 	},
+/obj/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/hallway)
 "gXV" = (
@@ -10596,6 +10597,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/starboard)
+"iIE" = (
+/obj/landmark/spawnpoint/job/station_engineer,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/storage)
 "iIR" = (
 /obj/structure/sign/warning/radioactive,
 /turf/simulated/wall/r_wall,
@@ -12657,6 +12662,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"kpd" = (
+/obj/landmark/spawnpoint/job/senior_engineer,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/storage)
 "kpk" = (
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -17659,6 +17668,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/aft/starboard)
+"onw" = (
+/obj/landmark/spawnpoint/job/senior_engineer,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/hallway)
 "onC" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 4
@@ -23982,6 +23995,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "txB" = (
@@ -24514,6 +24528,10 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
+"tQR" = (
+/obj/landmark/spawnpoint/job/station_engineer,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/engine_smes)
 "tRb" = (
 /turf/simulated/wall/prepainted/medical,
 /area/main_map/maintenance/deck_two/forward/starboard)
@@ -25691,6 +25709,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
+/obj/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/hallway)
 "uWe" = (
@@ -40636,7 +40655,7 @@ kJt
 wNI
 cXL
 fgg
-pXb
+tQR
 kJt
 dzO
 jAi
@@ -41196,7 +41215,7 @@ auf
 flh
 lAk
 gXg
-nyY
+onw
 nyY
 jQs
 ntJ
@@ -41585,7 +41604,7 @@ puk
 ixz
 gXg
 oom
-nyY
+onw
 jQs
 xRc
 xRc
@@ -43712,10 +43731,10 @@ uSP
 cMD
 kIF
 oho
-uAp
+kpd
 ldT
 uAp
-uAp
+iIE
 fZK
 awY
 hYN

@@ -928,6 +928,10 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/crew_quarters/pool)
+"bbh" = (
+/obj/machinery/light/spot/no_nightshift,
+/turf/simulated/floor/tiled/monowhite,
+/area/rnd/xenobiology)
 "bbl" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -1398,6 +1402,10 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/forward)
+"bDm" = (
+/obj/landmark/spawnpoint/job/pilot,
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/exploration/pilot_office)
 "bDB" = (
 /obj/item/trash/candle,
 /turf/simulated/floor/plating,
@@ -1436,18 +1444,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
-"bEV" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
-/obj/machinery/light/no_nightshift{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/psych)
 "bFs" = (
 /obj/machinery/telecomms/processor/preset_one,
 /turf/simulated/floor/tiled/dark{
@@ -3938,6 +3934,11 @@
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rnd/research)
+"eFD" = (
+/obj/structure/table/woodentable,
+/obj/machinery/light/no_nightshift,
+/turf/simulated/floor/carpet,
+/area/medical/psych)
 "eFY" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -5434,6 +5435,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
+/obj/landmark/spawnpoint/job/psychiatrist,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_1)
 "ghy" = (
@@ -5704,6 +5706,18 @@
 "gAi" = (
 /obj/item/slime_extract/grey,
 /turf/simulated/floor/reinforced,
+/area/rnd/xenobiology)
+"gAZ" = (
+/obj/structure/window/reinforced,
+/obj/structure/table/standard,
+/obj/item/storage/box/monkeycubes{
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
+	},
+/obj/item/storage/box/monkeycubes{
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
+	},
+/obj/item/reagent_containers/food/snacks/monkeycube/wrapped,
+/turf/simulated/floor/glass/reinforced,
 /area/rnd/xenobiology)
 "gBr" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/red,
@@ -6160,6 +6174,10 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_1)
+"haz" = (
+/obj/map_helper/network_builder/power_cable/green/auto,
+/turf/simulated/floor/tiled/monowhite,
+/area/rnd/xenobiology)
 "haM" = (
 /obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/airless/ceiling,
@@ -6780,6 +6798,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
+"hLw" = (
+/obj/structure/railing/grey,
+/obj/machinery/light/spot/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/rnd/xenobiology)
 "hLM" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -8041,6 +8066,11 @@
 /obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirt,
 /area/hydroponics/garden)
+"jel" = (
+/obj/map_helper/network_builder/power_cable/green/auto,
+/obj/machinery/power/apc/direction_bump/south,
+/turf/simulated/floor/tiled/monowhite,
+/area/rnd/xenobiology)
 "jeo" = (
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/port)
@@ -10723,6 +10753,7 @@
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 8
 	},
+/obj/landmark/spawnpoint/job/psychiatrist,
 /turf/simulated/floor/carpet,
 /area/medical/psych)
 "mnL" = (
@@ -11057,6 +11088,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
+"mFd" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/landmark/spawnpoint/job/senior_engineer,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_monitoring)
 "mFz" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /obj/effect/floor_decal/grass_edge{
@@ -13024,6 +13065,12 @@
 "oGv" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/psych_ward)
+"oGM" = (
+/obj/machinery/light/spot/no_nightshift{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/rnd/xenobiology)
 "oHc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -16123,6 +16170,7 @@
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/job/psychiatrist,
 /turf/simulated/floor/carpet,
 /area/medical/psych)
 "suv" = (
@@ -17297,6 +17345,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/warehouse)
+"tMS" = (
+/obj/machinery/light/spot/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/rnd/xenobiology)
 "tNj" = (
 /obj/structure/disposalpipe/trunk,
 /obj/structure/disposaloutlet,
@@ -19132,6 +19186,9 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 8
 	},
+/obj/machinery/light/no_nightshift{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
 "vMd" = (
@@ -19342,6 +19399,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/job/psychiatrist,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_2)
 "vWh" = (
@@ -19424,6 +19482,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
+/obj/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "waf" = (
@@ -19663,6 +19722,16 @@
 	},
 /turf/simulated/floor/reinforced/overhang,
 /area/space)
+"wqI" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/obj/landmark/spawnpoint/job/pilot,
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/exploration/pilot_office)
 "wrj" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/closet/emcloset,
@@ -19814,6 +19883,7 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 6
 	},
+/obj/machinery/light/no_nightshift,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
 "wvZ" = (
@@ -19896,6 +19966,16 @@
 "wAb" = (
 /turf/simulated/floor/tiled,
 /area/hydroponics/garden)
+"wAi" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/obj/landmark/spawnpoint/job/pilot,
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/exploration/pilot_office)
 "wAN" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
@@ -20596,6 +20676,12 @@
 "xpm" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/substation/tcomms)
+"xpJ" = (
+/obj/landmark{
+	name = "lightsout"
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/rnd/xenobiology)
 "xpZ" = (
 /obj/machinery/field_generator,
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
@@ -20981,6 +21067,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pilot_office)
 "xNb" = (
@@ -27279,14 +27366,14 @@ nAo
 hsC
 wEx
 jxz
-nAo
+oGM
 aal
 nJA
 nJA
 xrn
 rae
 rae
-xdd
+gAZ
 nJA
 nJA
 pQv
@@ -27484,7 +27571,7 @@ cRh
 nJA
 nJA
 pQv
-nAo
+bbh
 aje
 cUp
 vva
@@ -27596,7 +27683,7 @@ nnl
 nnl
 pfm
 ogM
-ogM
+wqI
 jyQ
 mVx
 dWc
@@ -27853,15 +27940,15 @@ dWc
 bYV
 dWc
 aje
-rae
-rae
-rae
+tMS
+nAo
+nAo
 nAo
 nAo
 rae
 rae
 rae
-nAo
+xpJ
 nAo
 nAo
 nAo
@@ -28564,9 +28651,9 @@ iJv
 pVf
 pVf
 aNF
-hbP
+wAi
 gEA
-bXA
+bDm
 mQs
 mVx
 dWc
@@ -29036,7 +29123,7 @@ aHe
 nJA
 nJA
 pQv
-nAo
+bbh
 aje
 dff
 dff
@@ -29415,7 +29502,7 @@ aZd
 qth
 aZd
 aje
-pQv
+hLw
 nAo
 nAo
 nAo
@@ -30000,8 +30087,8 @@ svz
 nAo
 nAo
 nAo
-nAo
-nAo
+haz
+jel
 aje
 xpZ
 uMN
@@ -30194,7 +30281,7 @@ svz
 nAo
 nAo
 nAo
-nAo
+haz
 nAo
 aje
 aje
@@ -32474,7 +32561,7 @@ mAg
 mAg
 vZR
 mAg
-vZR
+mFd
 mAg
 vZR
 mAg
@@ -41441,7 +41528,7 @@ fHn
 ana
 eKZ
 lII
-lII
+eFD
 vYY
 dff
 dff
@@ -41625,7 +41712,7 @@ wGE
 xNJ
 kNz
 kNz
-bEV
+kNz
 dHw
 jDq
 vUi

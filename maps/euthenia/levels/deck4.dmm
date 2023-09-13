@@ -846,6 +846,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/landmark/spawnpoint/job/cyborg,
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
 "dP" = (
@@ -6569,6 +6570,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/aft/port)
+"AQ" = (
+/obj/landmark/spawnpoint/job/cyborg,
+/turf/simulated/floor/tiled/techfloor,
+/area/ai_upload)
 "AR" = (
 /obj/structure/table/rack/shelf,
 /obj/machinery/air_alarm{
@@ -11724,6 +11729,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/landmark/spawnpoint/job/cyborg,
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
 "VU" = (
@@ -24726,8 +24732,8 @@ qg
 UK
 VT
 dO
-lX
-lX
+AQ
+AQ
 jg
 UK
 Ji
