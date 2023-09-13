@@ -14,7 +14,6 @@ SUBSYSTEM_DEF(grids)
 	/// global motion mutex
 	var/translation_mutex = FALSE
 
-
 /**
  * gets ordered turfs for operation
  */
@@ -56,6 +55,13 @@ SUBSYSTEM_DEF(grids)
  * * emit_moved_atoms - use this to extract what movables got moved
  */
 /datum/controller/subsystem/grids/proc/translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags = list(), list/emit_moved_atoms = list())
+	UNTIL(!translation_mutex)
+	translation_mutex = TRUE
+	. = do_translate(arglist(args))
+	translation_mutex = FALSE
+
+/datum/controller/subsystem/grids/proc/do_translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags = list(), list/emit_moved_atoms = list())
+	PRIVATE_PROC(TRUE)
 	// While based on /tg/'s movement system, we do a few things differently.
 	// First, limitations:
 	// * base-areas aren't a thing. Areas are flat out trampled on move. On takeoff, areas are reset.
@@ -222,7 +228,7 @@ SUBSYSTEM_DEF(grids)
 		leave_area = cached_area_of_type(leave_area)
 	else if(istype(leave_area))
 	else
-		leave_area = cached_area_of_type[/area/space]
+		leave_area = cached_area_of_type(/area/space)
 	leave_area.contents += old_turfs
 
 /**
@@ -239,7 +245,11 @@ SUBSYSTEM_DEF(grids)
  * @return motion flags
  */
 /turf/proc/grid_collect(grid_flags, turf/new_turf, baseturf_boundary, area_opinion)
-	#warn impl
+	if(isnull(baseturf_boundary))
+		return area_opinion | GRID_MOVE_TURF | GRID_MOVE_MOVABLES
+	if(baseturf_boundary in baseturfs)
+		return area_opinion | GRID_MOVE_TURF | GRID_MOVE_MOVABLES
+	return area_opinion
 
 /**
  * Called when copying over to new turf
@@ -253,7 +263,13 @@ SUBSYSTEM_DEF(grids)
  * Only called if moved
  */
 /turf/proc/grid_clean(grid_flags, baseturf_boundary)
-	#warn impl
+	if(isnull(baseturf_boundary))
+		// tear to the bottom
+		ChangeTurf(baseturf_bottom(), /turf/baseturf_bottom)
+	else
+		// tear down to boundary
+		var/tear_to_index = baseturfs.Find(baseturf_boundary)
+		ScrapeAway(length(baseturfs) - tear_to_index + 1)
 
 /**
  * Called after everything settles
