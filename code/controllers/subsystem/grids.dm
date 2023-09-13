@@ -256,7 +256,10 @@ SUBSYSTEM_DEF(grids)
  * Only called if moved
  */
 /turf/proc/grid_transfer(grid_flags, turf/new_turf, baseturf_boundary)
-	#warn impl
+	if(isnull(baseturf_boundary))
+		new_turf.CopyOnTop(src, null, null, copy_flags = COPYTURF_COPY_AIR)
+	else
+		new_turf.CopyOnTop(src, 1, length(baseturfs) - baseturfs.Find(baseturf_boundary) + 1, COPYTURF_COPY_AIR)
 
 /**
  * Called when cleaning up after transfer
@@ -267,7 +270,7 @@ SUBSYSTEM_DEF(grids)
 		// tear to the bottom
 		ChangeTurf(baseturf_bottom(), /turf/baseturf_bottom)
 	else
-		// tear down to boundary
+		// tear down to below boundary
 		var/tear_to_index = baseturfs.Find(baseturf_boundary)
 		ScrapeAway(length(baseturfs) - tear_to_index + 1)
 

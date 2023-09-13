@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(turf_type)
 		ChangeTurf(turf_type)
 
-/turf/proc/CopyTurf(turf/T, copy_flags = NONE)
+/turf/proc/CopyTurf(turf/T, copy_flags)
 	if(T.type != type)
 		T.ChangeTurf(type)
 	if(T.icon_state != icon_state)
@@ -202,38 +202,6 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 	return new_turf
 
-// todo: zas refactor
-/turf/simulated/ChangeTurf(path, list/new_baseturfs, flags)
-	// invalidate zone
-	if(has_valid_zone())
-		if(can_safely_remove_from_zone())
-			zone.remove(src)
-			queue_zone_update()
-		else
-			zone.rebuild()
-	if((flags & CHANGETURF_INHERIT_AIR) && ispath(path, /turf/simulated))
-		// store air
-		var/datum/gas_mixture/GM = remove_cell_volume()
-		. = ..()
-		if(!.)
-			return
-		if(has_valid_zone())
-			stack_trace("zone rebuilt too fast")
-		// restore air
-		air = GM
-	else
-		// at this point the zone does not have our gas mixture in it, and is invalidated
-		. = ..()
-		if(!.)
-			return
-		// ensure zone didn't rebuild yet
-		if(has_valid_zone())
-			stack_trace("zone reubilt too fast")
-		// reset air
-		if(!air)
-			air = new /datum/gas_mixture(CELL_VOLUME)
-		air.parse_gas_string(initial_gas_mix, src)
-
 /// Take off the top layer turf and replace it with the next baseturf down
 /turf/proc/ScrapeAway(amount=1, flags)
 	if(!amount)
@@ -406,7 +374,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 // Copy an existing turf and put it on top
 // Returns the new turf
-/turf/proc/CopyOnTop(turf/copytarget, ignore_bottom=1, depth=INFINITY, copy_air = FALSE)
+/turf/proc/CopyOnTop(turf/copytarget, ignore_bottom=1, depth=INFINITY, copy_flags)
 	var/list/new_baseturfs = list()
 	new_baseturfs += baseturfs
 	new_baseturfs += type
@@ -423,7 +391,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			target_baseturfs -= new_baseturfs & GLOB.blacklisted_automated_baseturfs
 			new_baseturfs += target_baseturfs
 
-	var/turf/newT = copytarget.CopyTurf(src, copy_air)
+	var/turf/newT = copytarget.CopyTurf(src, copy_flags)
 	newT.baseturfs = baseturfs_string_list(new_baseturfs, newT)
 	return newT
 

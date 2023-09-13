@@ -11,4 +11,5 @@
 #define CHANGETURF_PRESERVE_OUTDOORS		32
 
 // CopyTurf() flags
-// -- currently none --
+/// copy air
+#define COPYTURF_COPY_AIR (1<<0)

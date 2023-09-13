@@ -189,9 +189,63 @@
 /turf/simulated/floor/plating
 	can_start_dirty = TRUE	// But let maints and decrepit areas have some randomness
 
+//? Changing Turf
+
+// todo: zas refactor
+/turf/simulated/ChangeTurf(path, list/new_baseturfs, flags)
+	// invalidate zone
+	if(has_valid_zone())
+		if(can_safely_remove_from_zone())
+			zone.remove(src)
+			queue_zone_update()
+		else
+			zone.rebuild()
+	if((flags & CHANGETURF_INHERIT_AIR) && ispath(path, /turf/simulated))
+		// store air
+		var/datum/gas_mixture/GM = remove_cell_volume()
+		. = ..()
+		if(!.)
+			return
+		if(has_valid_zone())
+			stack_trace("zone rebuilt too fast")
+		// restore air
+		air = GM
+	else
+		// at this point the zone does not have our gas mixture in it, and is invalidated
+		. = ..()
+		if(!.)
+			return
+		// ensure zone didn't rebuild yet
+		if(has_valid_zone())
+			stack_trace("zone reubilt too fast")
+		// reset air
+		if(!air)
+			air = new /datum/gas_mixture(CELL_VOLUME)
+		air.parse_gas_string(initial_gas_mix, src)
+
 //? Radiation
 
 /turf/simulated/update_rad_insulation()
 	. = ..()
 	for(var/atom/movable/AM as anything in contents)
 		rad_insulation_contents *= AM.rad_insulation
+
+//? Shuttle Movement
+
+/turf/simulated/CopyTurf(turf/T, copy_flags)
+	// invalidate zone
+	if(has_valid_zone())
+		if(can_safely_remove_from_zone())
+			zone.remove(src)
+			queue_zone_update()
+		else
+			zone.rebuild()
+	// store air
+	var/datum/gas_mixture/old_air = remove_cell_volume()
+	. = ..()
+	// restore air
+	if(istype(., /turf/simulated))
+		var/turf/simulated/casted = .
+		if(casted.has_valid_zone())
+			stack_trace("zone rebuilt too fast")
+		casted.air = old_air
