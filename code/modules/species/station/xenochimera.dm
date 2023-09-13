@@ -35,44 +35,21 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_The_Xenochimera"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
-	//rarity_value = 4
 
-	breath_type = GAS_ID_OXYGEN
-	poison_type = GAS_ID_PHORON
-	exhale_type = GAS_ID_CARBON_DIOXIDE
-
-	hazard_high_pressure  = HAZARD_HIGH_PRESSURE
-	warning_high_pressure = WARNING_HIGH_PRESSURE
-	warning_low_pressure  = WARNING_LOW_PRESSURE
 	hazard_low_pressure = -1 //Prevents them from dying normally in space. Special code handled below.
-	safe_pressure = ONE_ATMOSPHERE
 
 	cold_level_1 = -1 // All cold debuffs are handled below in handle_environment_special
 	cold_level_2 = -1
 	cold_level_3 = -1
 
 	heal_rate = 0.5
-	infect_wounds = 1
+	infect_wounds = TRUE
 
 	flesh_color = "#AFA59E"
 	base_color 	= "#333333"
 	blood_color = "#14AD8B"
 
 	reagent_tag = IS_CHIMERA
-
-	cold_discomfort_level = 285
-	cold_discomfort_strings = list(
-		"You feel chilly.",
-		"You shiver suddenly.",
-		"Your chilly flesh stands out in goosebumps.",
-	)
-
-	heat_discomfort_level = 315
-	heat_discomfort_strings = list(
-		"You feel sweat drip down your neck.",
-		"You feel uncomfortably warm.",
-		"Your skin prickles in the heat.",
-	)
 
 	valid_transform_species = list(
 		SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_TAJ, SPECIES_SKRELL,
@@ -146,6 +123,7 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 	)
+
 	var/has_feral_abilities = FALSE
 
 /datum/species/shapeshifter/xenochimera/handle_environment_special(mob/living/carbon/human/H)
@@ -174,23 +152,10 @@
 			H.eye_blurry = max(5,H.eye_blurry)
 	..()
 
-/datum/species/shapeshifter/xenochimera/proc/add_feral_abilities(var/mob/living/carbon/human/H)
-	if(!has_feral_abilities)
-		has_feral_abilities = TRUE
-	else
-		return
-
-/datum/species/shapeshifter/xenochimera/proc/remove_feral_spells(var/mob/living/carbon/human/H)
-	if(has_feral_abilities)
-		has_feral_abilities = FALSE
-	else
-		return
-
-
 /datum/species/shapeshifter/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
 
 	//Low-ish nutrition has messages and eventually feral
-	var/hungry = H.nutrition <= 200
+	var/hungry = H.nutrition <= 200 && !isbelly(H.loc)
 
 	//At 360 nutrition, this is 30 brute/burn, or 18 halloss. Capped at 50 brute/30 halloss - if they take THAT much, no amount of satiation will help them. Also they're fat.
 	var/shock = H.traumatic_shock > min(60, H.nutrition/10)
@@ -203,13 +168,14 @@
 
 //Are we in danger of ferality?
 	var/danger = FALSE
-	var/feral_state = FALSE
 
 //Handle feral triggers and pre-feral messages
 	if(!feral && (hungry || shock || jittery))
+		// Did we go feral as a result of this check
+		var/go_feral = FALSE
 
 		// If they're hungry, give nag messages (when not bellied)
-		if(H.nutrition >= 100 && prob(0.5) && !isbelly(H.loc))
+		if(H.nutrition >= 100 && prob(0.5))
 			switch(H.nutrition)
 				if(150 to 200)
 					to_chat(H,"<span class='info'>You feel rather hungry. It might be a good idea to find some some food...</span>")
@@ -218,91 +184,70 @@
 					danger = TRUE
 
 		// Going feral due to hunger
-		else if(H.nutrition < 100 && !isbelly(H.loc))
+		else if(H.nutrition < 100)
 			to_chat(H,"<span class='danger'><big>Something in your mind flips, your instincts taking over, no longer able to fully comprehend your surroundings as survival becomes your primary concern - you must feed, survive, there is nothing else. Hunt. Eat. Hide. Repeat.</big></span>")
 			log_and_message_admins("has gone feral due to hunger.", H)
-			feral = 5
-			danger = TRUE
-			feral_state = TRUE
-			if(!H.stat)
-				H.emote("twitch")
+			go_feral = TRUE
 
 		// If they're hurt, chance of snapping.
 		else if(shock)
-
 			//If the majority of their shock is due to halloss, greater chance of snapping.
-			if(2.5*H.halloss >= H.traumatic_shock)
+			if(H.halloss >= H.traumatic_shock/2.5)
 				if(prob(min(10,(0.2 * H.traumatic_shock))))
 					to_chat(H,"<span class='danger'><big>The pain! It stings! Got to get away! Your instincts take over, urging you to flee, to hide, to go to ground, get away from here...</big></span>")
 					log_and_message_admins("has gone feral due to halloss.", H)
-					feral = 5
-					danger = TRUE
-					feral_state = TRUE
-					if(!H.stat)
-						H.emote("twitch")
+					go_feral = TRUE
 
 			//Majority due to other damage sources
 			else if(prob(min(10,(0.1 * H.traumatic_shock))))
 				to_chat(H,"<span class='danger'><big>Your fight-or-flight response kicks in, your injuries too much to simply ignore - you need to flee, to hide, survive at all costs - or destroy whatever is threatening you.</big></span>")
-				feral = 5
-				danger = TRUE
-				feral_state = TRUE
 				log_and_message_admins("has gone feral due to injury.", H)
-				if(!H.stat)
-					H.emote("twitch")
+				go_feral = TRUE
 
 		//No hungry or shock, but jittery
 		else if(jittery)
 			to_chat(H,"<span class='warning'><big>Suddenly, something flips - everything that moves is... potential prey. A plaything. This is great! Time to hunt!</big></span>")
+			log_and_message_admins("has gone feral due to jitteriness.", H)
+			go_feral = TRUE
+
+		if(go_feral)
 			feral = 5
 			danger = TRUE
-			feral_state = TRUE
-			log_and_message_admins("has gone feral due to jitteriness.", H)
 			if(!H.stat)
 				H.emote("twitch")
 
 	// Handle being feral
 	if(feral)
-		//we're feral
-		feral_state = TRUE
+		has_feral_abilities = TRUE
 
-		//We check if the current spell list already has feral spells.
-		if(!has_feral_abilities)
-			add_feral_abilities(H)
-
-		//Shock due to mostly halloss. More feral.
-		if(shock && 2.5*H.halloss >= H.traumatic_shock)
+		// check conditions and increase ferality if they are still met
+		if(shock && H.halloss >= H.traumatic_shock/2.5)
 			danger = TRUE
 			feral = max(feral, H.halloss)
 
-		//Shock due to mostly injury. More feral.
 		else if(shock)
 			danger = TRUE
 			feral = max(feral, H.traumatic_shock * 2)
 
-		//Still jittery? More feral.
 		if(jittery)
 			danger = TRUE
 			feral = max(feral, H.jitteriness-100)
 
-		//Still hungry? More feral.
+		// if not hungry, reduce feral by 1
 		if(H.feral + H.nutrition < 150)
 			danger = TRUE
 			feral++
 		else
 			feral = max(0,--feral)
 
-		//Set our real mob's var to our temp var
 		H.feral = feral
 
-		//Did we just finish being feral?
+		//Handle no longer being feral
 		if(!feral)
-			feral_state = FALSE
-			if(has_feral_abilities)
-				remove_feral_spells(H)
+			has_feral_abilities = FALSE
 			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
 			log_and_message_admins("is no longer feral.", H)
-			update_xenochimera_hud(H, danger, feral_state)
+			update_xenochimera_hud(H, danger, FALSE)
 			return
 
 		//If they lose enough health to hit softcrit, handle_shock() will keep resetting this. Otherwise, pissed off critters will lose shock faster than they gain it.
@@ -311,7 +256,7 @@
 		//Handle light/dark areas
 		var/turf/T = get_turf(H)
 		if(!T)
-			update_xenochimera_hud(H, danger, feral_state)
+			update_xenochimera_hud(H, danger, TRUE)
 			return //Nullspace
 		var/darkish = T.get_lumcount() <= 0.1
 
@@ -333,31 +278,25 @@
 					H.handle_feral()
 
 			//And bail
-			update_xenochimera_hud(H, danger, feral_state)
+			update_xenochimera_hud(H, danger, TRUE)
 			return
 
-		// In the darkness or "hidden". No need for custom scene-protection checks as it's just an occational infomessage.
+		// In the darkness or "hidden". No need for custom scene-protection checks as it's just an occational infomessage based on the main feral conditions
 		if(darkish || !isturf(H.loc))
-			// If hurt, tell 'em to heal up
 			if (shock)
 				to_chat(H,"<span class='info'>This place seems safe, secure, hidden, a place to lick your wounds and recover...</span>")
 
-			//If hungry, nag them to go and find someone or something to eat.
 			else if(hungry)
 				to_chat(H,"<span class='info'>Secure in your hiding place, your hunger still gnaws at you. You need to catch some food...</span>")
 
-			//If jittery, etc
 			else if(jittery)
 				to_chat(H,"<span class='info'>sneakysneakyyesyesyescleverhidingfindthingsyessssss</span>")
 
-			//Otherwise, just tell them to keep hiding.
 			else
 				to_chat(H,"<span class='info'>...safe...</span>")
 
 		// NOT in the darkness
 		else
-
-			//Twitch twitch
 			if(!H.stat)
 				H.emote("twitch")
 
@@ -380,8 +319,7 @@
 				else
 					to_chat(H,"<span class='danger'>Confusing sights and sounds and smells surround you, this place is wrong, confusing, frightening. You need to hide, go to ground...</span>")
 
-	// HUD update time
-	update_xenochimera_hud(H, danger, feral_state)
+	update_xenochimera_hud(H, danger, feral > 0)
 
 /datum/species/shapeshifter/xenochimera/get_bodytype_legacy()
 	return base_species
@@ -389,20 +327,6 @@
 /datum/species/shapeshifter/xenochimera/get_race_key(mob/living/carbon/human/H)
 	var/datum/species/real = SScharacters.resolve_species_name(base_species)
 	return real.real_race_key(H)
-
-/datum/species/shapeshifter/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
-	if(H.xenochimera_danger_display)
-		H.xenochimera_danger_display.invisibility = 0
-		if(danger && feral)
-			H.xenochimera_danger_display.icon_state = "danger11"
-		else if(danger && !feral)
-			H.xenochimera_danger_display.icon_state = "danger10"
-		else if(!danger && feral)
-			H.xenochimera_danger_display.icon_state = "danger01"
-		else
-			H.xenochimera_danger_display.icon_state = "danger00"
-
-	return
 
 /atom/movable/screen/xenochimera
 	icon = 'icons/mob/chimerahud.dmi'
@@ -412,6 +336,12 @@
 	name = "danger level"
 	icon_state = "danger00"		//first number is bool of whether or not we're in danger, second is whether or not we're feral
 	alpha = 200
+
+/datum/species/shapeshifter/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
+	if(H.xenochimera_danger_display)
+		H.xenochimera_danger_display.invisibility = 0
+		H.xenochimera_danger_display.icon_state = "danger[danger][feral > 0]"
+	return
 
 //Verbs Follow
 
@@ -847,9 +777,9 @@
 			..()
 	..()
 
-////////////////
-//Revive spell//
-////////////////
+//////////////////
+//Revive ability//
+//////////////////
 //Will incapacitate you for 10 minutes, and then you can revive.
 /datum/ability/species/xenochimera/hatch
 	name = "Hatch Stasis"
@@ -889,10 +819,10 @@
 		pop.associate(owner)
 
 
-///////////////////////
-//Actual Revive Spell//
-///////////////////////
-//Not to be used normally. Given by the 'hatch' spell
+/////////////////////////
+//Actual Revive Ability//
+/////////////////////////
+//Not to be used normally. Given by the 'hatch' ability
 /datum/ability/species/xenochimera/hatch_pop
 	name = "Emerge"
 	desc = "We emerge in our new form."
@@ -961,7 +891,7 @@
 
 	var/mob/living/M = target
 	if(M.stat == DEAD)
-		to_chat(owner, "Not even a Xenochimera can speak to the dead.")
+		to_chat(owner, "Not even an Xenochimera can speak to the dead.")
 		return
 
 	//The further the target is, the longer it takes.
