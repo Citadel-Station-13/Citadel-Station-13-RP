@@ -16,9 +16,31 @@ SUBSYSTEM_DEF(grids)
 
 /**
  * gets ordered turfs for operation
+ *
+ * x2 must be the high value
+ * y2 must be the high value
  */
 /datum/controller/subsystem/grids/proc/get_ordered_turfs(x1, x2, y1, y2, z, dir)
-	#warn impl
+	ASSERT(x2 >= x1)
+	ASSERT(y2 >= y1)
+	. = list()
+	switch(dir)
+		if(NORTH)
+			for(var/y in y2 to y1 step -1)
+				for(var/x in x1 to x2 step 1)
+					. += locate(x, y, z)
+		if(SOUTH)
+			for(var/y in y1 to y2 step 1)
+				for(var/x in x2 to x1 step -1)
+					. += locate(x, y, z)
+		if(EAST)
+			for(var/x in x2 to x1 step -1)
+				for(var/y in y2 to y1 step -1)
+					. += locate(x, y, z)
+		if(WEST)
+			for(var/x in x1 to x2 step 1)
+				for(var/y in y1 to y2 step 1)
+					. += locate(x, y, z)
 
 /datum/controller/subsystem/grids/proc/rotation_angle(from_dir, to_dir)
 	return (angle_to_dir(to_dir) - angle_to_dir(from_dir))

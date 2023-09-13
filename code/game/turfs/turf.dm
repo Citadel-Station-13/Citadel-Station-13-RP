@@ -480,19 +480,6 @@
 		return TRUE
 	return FALSE
 
-// We're about to be the A-side in a turf translation
-/turf/proc/pre_translate_A(var/turf/B)
-	return
-// We're about to be the B-side in a turf translation
-/turf/proc/pre_translate_B(var/turf/A)
-	return
-// We were the the A-side in a turf translation
-/turf/proc/post_translate_A(var/turf/B)
-	return
-// We were the the B-side in a turf translation
-/turf/proc/post_translate_B(var/turf/A)
-	return
-
 /turf/has_gravity()
 	if(loc.has_gravity(src))
 		return TRUE
