@@ -9435,6 +9435,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker)
+"gaB" = (
+/obj/effect/overlay/snow/floor,
+/obj/item/storage/bag/xenobio,
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside2)
 "gaI" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 4
@@ -26834,6 +26839,14 @@
 /area/security/armory/red)
 "qJP" = (
 /obj/structure/table/steel,
+/obj/item/storage/bag/xenobio{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/storage/bag/xenobio{
+	pixel_x = -7;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "qKh" = (
@@ -45014,7 +45027,7 @@ fnX
 wTh
 gSO
 uom
-ufF
+gaB
 aal
 fSq
 tui
