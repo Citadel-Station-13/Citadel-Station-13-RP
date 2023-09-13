@@ -220,6 +220,48 @@
 /area/main_map/maintenance/engineering/deck4
 
 /area/main_map/maintenance/engineering/deck4/secondary
+
+/**
+ *! Flight Deck Maint Areas
+ */
+
+/area/main_map/maintenance/deck_zero
+	name = "\improper Flight Deck Maintenance"
+	icon_state = "maintcentral"
+
+/area/main_map/maintenance/deck_zero/port
+	name = "\improper Flight Deck Port Maintenance"
+	icon_state = "pmaint"
+
+/area/main_map/maintenance/deck_zero/starboard
+	name = "\improper Flight Deck Starboard Maintenance"
+	icon_state = "smaint"
+
+/area/main_map/maintenance/deck_zero/forward
+	name = "\improper Flight Deck Forward Maintenance"
+	icon_state = "fmaint"
+
+/area/main_map/maintenance/deck_zero/forward/port
+	name = "\improper Flight Deck Forward Port Maintenance"
+	icon_state = "fpmaint"
+
+/area/main_map/maintenance/deck_zero/forward/starboard
+	name = "\improper Flight Deck Forward Starboard Maintenance"
+	icon_state = "fsmaint"
+
+/area/main_map/maintenance/deck_zero/aft
+	name = "\improper Flight Deck Aft Maintenance"
+	icon_state = "amaint"
+
+/area/main_map/maintenance/deck_zero/aft/port
+	name = "\improper Flight Deck Aft Port Maintenance"
+	icon_state = "apmaint"
+
+/area/main_map/maintenance/deck_zero/aft/starboard
+	name = "\improper Flight Deck Aft Starboard Maintenance"
+	icon_state = "asmaint"
+
+
 /**
  *! Deck One Maint Areas
  */

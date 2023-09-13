@@ -47,6 +47,9 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
+"am" = (
+/turf/unsimulated/wall,
+/area/centcom/suppy)
 "ax" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -459,6 +462,14 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
+"fE" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 1
+	},
+/turf/simulated/shuttle/plating/airless/carry{
+	dir = 1
+	},
+/area/shuttle/supply)
 "fF" = (
 /turf/space,
 /area/space)
@@ -1178,6 +1189,16 @@
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
+"qe" = (
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "supply_shuttle_hatch";
+	locked = 1;
+	name = "Shuttle Hatch"
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/supply)
 "qk" = (
 /obj/structure/bed/chair/holochair{
 	dir = 1
@@ -1279,6 +1300,13 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
+"rp" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/turf/simulated/floor/airless,
+/area/shuttle/supply)
 "rs" = (
 /obj/effect/floor_decal/corner/white/full,
 /obj/effect/floor_decal/corner/white{
@@ -1297,6 +1325,9 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
+"rD" = (
+/turf/unsimulated/floor/dark,
+/area/centcom/suppy)
 "rF" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/holofloor/reinforced,
@@ -1835,6 +1866,20 @@
 /obj/item/chess/bking,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
+"za" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 1
+	},
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	landmark_tag = "supply_cc";
+	name = "Centcom Supply Depot"
+	},
+/turf/simulated/shuttle/plating/airless/carry{
+	dir = 1
+	},
+/area/shuttle/supply)
 "zg" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
 	dir = 1
@@ -1900,6 +1945,9 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
+"AB" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/shuttle/supply)
 "AG" = (
 /turf/simulated/floor/holofloor/space,
 /area/holodeck/source_space)
@@ -2044,6 +2092,10 @@
 	},
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_meetinghall)
+"Ck" = (
+/obj/machinery/status_display/supply_display,
+/turf/unsimulated/wall,
+/area/centcom/suppy)
 "Cm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 1
@@ -2445,6 +2497,10 @@
 /obj/structure/window/reinforced/holowindow,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_boxingcourt)
+"HK" = (
+/obj/effect/step_trigger/teleporter/random,
+/turf/space,
+/area/space)
 "HQ" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/industrial/danger/corner,
@@ -2487,6 +2543,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/terminal)
+"IU" = (
+/obj/effect/step_trigger/teleporter/random,
+/turf/space/basic,
+/area/space)
 "IZ" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 8
@@ -2728,6 +2788,16 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/space)
+"LY" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "supply_shuttle";
+	pixel_x = 26;
+	req_one_access = list(13,31);
+	tag_door = "supply_shuttle_hatch"
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/supply)
 "Mf" = (
 /obj/effect/floor_decal/corner/white/full,
 /obj/effect/floor_decal/corner/white{
@@ -2841,6 +2911,9 @@
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/holodorm/source_garden)
+"Ob" = (
+/turf/simulated/shuttle/floor,
+/area/shuttle/supply)
 "Oe" = (
 /obj/structure/flora/grass/brown,
 /turf/simulated/floor/holofloor/snow,
@@ -3316,6 +3389,13 @@
 "Te" = (
 /turf/space/basic,
 /area/space)
+"Tk" = (
+/obj/item/paper{
+	info = "You're not supposed to be here.";
+	name = "unnerving letter"
+	},
+/turf/unsimulated/floor/dark,
+/area/centcom/suppy)
 "Tn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 10
@@ -3389,6 +3469,9 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
+"UJ" = (
+/turf/simulated/shuttle/wall,
+/area/shuttle/supply)
 "UQ" = (
 /obj/machinery/pointdefense_control,
 /turf/simulated/floor/tiled/steel_grid,
@@ -3485,6 +3568,10 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
+"VQ" = (
+/obj/structure/closet/crate,
+/turf/unsimulated/floor/dark,
+/area/centcom/suppy)
 "VR" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -12301,35 +12388,35 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
 Te
 Te
 Te
@@ -18515,19 +18602,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+IU
+IU
+IU
+IU
+IU
+IU
+IU
+IU
+IU
+IU
+IU
+IU
+IU
 Te
 Te
 Te
@@ -18709,19 +18796,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+IU
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+IU
 Te
 Te
 Te
@@ -18903,19 +18990,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+IU
+am
+VQ
+VQ
+VQ
+VQ
+rD
+rD
+VQ
+VQ
+VQ
+am
+IU
 Te
 Te
 Te
@@ -19097,19 +19184,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+IU
+am
+rD
+rD
+rD
+rD
+rD
+rD
+rD
+rD
+rD
+am
+IU
 Te
 Te
 Te
@@ -19291,19 +19378,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+IU
+am
+VQ
+VQ
+VQ
+rD
+Tk
+rD
+VQ
+VQ
+VQ
+am
+IU
 Te
 Te
 Te
@@ -19485,19 +19572,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+IU
+am
+VQ
+VQ
+VQ
+rD
+rD
+rD
+VQ
+VQ
+VQ
+am
+IU
 Te
 Te
 Te
@@ -19679,19 +19766,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+IU
+am
+rD
+rD
+rD
+rD
+rD
+rD
+rD
+rD
+rD
+am
+IU
 Te
 Te
 Te
@@ -19873,19 +19960,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+IU
+am
+VQ
+VQ
+VQ
+VQ
+rD
+rD
+VQ
+VQ
+VQ
+am
+IU
 Te
 Te
 Te
@@ -20067,19 +20154,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+HK
+am
+am
+am
+am
+Ck
+rD
+rD
+Ck
+am
+am
+am
+HK
 Te
 Te
 Te
@@ -20261,19 +20348,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+HK
+fF
+AB
+UJ
+UJ
+UJ
+qe
+qe
+UJ
+UJ
+AB
+fF
+HK
 Te
 Te
 Te
@@ -20455,19 +20542,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+HK
+AB
+AB
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+AB
+AB
+HK
 Te
 Te
 Te
@@ -20649,19 +20736,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+HK
+fE
+rp
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+UJ
+HK
 Te
 Te
 Te
@@ -20843,19 +20930,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+HK
+za
+rp
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+UJ
+HK
 Te
 Te
 Te
@@ -21037,19 +21124,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+HK
+fE
+rp
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+UJ
+HK
 Te
 Te
 Te
@@ -21231,19 +21318,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+HK
+AB
+AB
+Ob
+Ob
+LY
+Ob
+Ob
+Ob
+Ob
+AB
+AB
+HK
 Te
 Te
 Te
@@ -21425,19 +21512,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+HK
+fF
+AB
+UJ
+UJ
+UJ
+UJ
+UJ
+UJ
+UJ
+AB
+fF
+HK
 Te
 Te
 Te
@@ -21619,6 +21706,7 @@ Te
 Te
 Te
 Te
+HK
 Te
 Te
 Te
@@ -21630,8 +21718,7 @@ Te
 Te
 Te
 Te
-Te
-Te
+HK
 Te
 Te
 Te
@@ -21813,6 +21900,7 @@ Te
 Te
 Te
 Te
+HK
 Te
 Te
 Te
@@ -21824,8 +21912,7 @@ Te
 Te
 Te
 Te
-Te
-Te
+HK
 Te
 Te
 Te
@@ -22007,6 +22094,7 @@ Te
 Te
 Te
 Te
+HK
 Te
 Te
 Te
@@ -22018,8 +22106,7 @@ Te
 Te
 Te
 Te
-Te
-Te
+HK
 Te
 Te
 Te
@@ -22201,6 +22288,7 @@ Te
 Te
 Te
 Te
+HK
 Te
 Te
 Te
@@ -22212,8 +22300,7 @@ Te
 Te
 Te
 Te
-Te
-Te
+HK
 Te
 Te
 Te
@@ -22395,6 +22482,7 @@ Te
 Te
 Te
 Te
+HK
 Te
 Te
 Te
@@ -22406,8 +22494,7 @@ Te
 Te
 Te
 Te
-Te
-Te
+HK
 Te
 Te
 Te
@@ -22589,6 +22676,7 @@ Te
 Te
 Te
 Te
+HK
 Te
 Te
 Te
@@ -22600,8 +22688,7 @@ Te
 Te
 Te
 Te
-Te
-Te
+HK
 Te
 Te
 Te
@@ -22783,6 +22870,7 @@ Te
 Te
 Te
 Te
+HK
 Te
 Te
 Te
@@ -22794,8 +22882,7 @@ Te
 Te
 Te
 Te
-Te
-Te
+HK
 Te
 Te
 Te
@@ -22977,6 +23064,7 @@ Te
 Te
 Te
 Te
+HK
 Te
 Te
 Te
@@ -22988,8 +23076,7 @@ Te
 Te
 Te
 Te
-Te
-Te
+HK
 Te
 Te
 Te
@@ -23171,19 +23258,19 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
 Te
 Te
 Te

@@ -2646,6 +2646,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/quartermaster/garage
 	name = "\improper Cargo Garage"
 
+/area/quartermaster/cargo_shelter_dock
+	name = "\improper Cargo Shuttle Dock"
 // SCIENCE
 
 /area/rnd/research
