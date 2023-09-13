@@ -8779,6 +8779,9 @@
 /area/bridge/bunker)
 "gWV" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/hallway)
 "gWX" = (
@@ -13238,6 +13241,13 @@
 "kDH" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/transport_tunnel)
+"kDJ" = (
+/obj/map_helper/network_builder/power_cable/green/auto,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_two/aft/port)
 "kDS" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -28600,6 +28610,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/machinery/light/spot/no_nightshift{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/hallway)
 "wNx" = (
@@ -43191,7 +43204,7 @@ kLI
 kLI
 kLI
 mRB
-sBK
+kDJ
 fPn
 fPn
 fPn
