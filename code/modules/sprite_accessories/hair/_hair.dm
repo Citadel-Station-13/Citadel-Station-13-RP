@@ -1633,5 +1633,5 @@
 
 /datum/sprite_accessory/hair/ornateponytail
 	name = "Ornate Ponytail"
-	id = "hair_ornateponytail"
-	icon_state = "ornate_ponytail"
+	id = "hair_ornate_ponytail"
+	icon_state = "hair_ornate_ponytail"

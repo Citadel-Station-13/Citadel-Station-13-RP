@@ -337,10 +337,6 @@
 	name = "Audacious Wide Brimmed Hat"
 	path = /obj/item/clothing/head/bard
 
-/datum/loadout_entry/head/darkcleric
-	name = "Dark Cleric Circlet"
-	path = /obj/item/clothing/head/darkcleric
-
 //Tajaran head wears
 
 /datum/loadout_entry/head/furhat

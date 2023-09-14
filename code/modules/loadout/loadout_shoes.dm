@@ -227,7 +227,3 @@
 /datum/loadout_entry/shoes/ballet
 	name = "Antheia Pointe Shoes"
 	path = /obj/item/clothing/shoes/ballet
-
-/datum/loadout_entry/shoes/kneeboots
-	name = "Dark Cleric Boots"
-	path = /obj/item/clothing/shoes/boots/darkcleric
