@@ -459,3 +459,30 @@
 /datum/category_item/underwear/undershirt/bluepolo_f_s
 	name = "Polo Shirt, Blue, Female"
 	icon_state = "bluepolo_f_s"
+
+/datum/category_item/underwear/undershirt/fishnet_base
+	name = "Fishnet top"
+	icon_state = "fishnet_body"
+
+/datum/category_item/underwear/undershirt/fishnet_sleeves
+	name = "Fishnet with sleeves"
+	icon_state = "fishnet_sleeves"
+
+/datum/category_item/underwear/undershirt/fishnet_gloves
+	name = "Fishnet with gloves"
+	icon_state = "fishnet_gloves"
+
+/datum/category_item/underwear/undershirt/cfishnet
+	name = "Dyed Fishnet top"
+	icon_state = "c_fishnet_body"
+	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/cfishnet_sleeve
+	name = "Dyed Fishnet with sleeves"
+	icon_state = "c_fishnet_sleeves"
+	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/cfishnet_glove
+	name = "Dyed Fishnet with gloves"
+	icon_state = "c_fishnet_gloves"
+	has_color = TRUE

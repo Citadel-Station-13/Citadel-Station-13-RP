@@ -39,9 +39,14 @@
 	if(isnull(chosen_character))
 		return
 	var/chosen_slot = loaded_characters[chosen_character][1]
+	their_savefile.cd = "/character[chosen_slot]"
 	var/chosen_original_name = loaded_characters[chosen_character][2]
 	var/input_headshot = input(src, "Enter the URL for the headshot image. (Cancel to skip, empty string to remove)", "Reference Selection") as text|null
 	var/input_fullref = input(src, "Enter the URL for the full reference image. (Cancel to skip, empty string to remove)", "Reference Selection") as text|null
+	to_chat(src, SPAN_BOLDNOTICE("Setting references for [their_ckey] slot [chosen_slot] ([chosen_original_name]) to \
+		[isnull(input_headshot)? "UNCHANGED" : (input_headshot || "EMPTY")] and [isnull(input_fullref)? "UNCHANGED" : (input_fullref || "EMPTY")]"))
+	if(alert(src, "Confirm?", "Selection", "Yes", "No") == "No")
+		return
 	if(!isnull(input_headshot))
 		their_savefile["Headshot_URL"] << input_headshot
 		if(their_prefs.default_slot == chosen_slot)
