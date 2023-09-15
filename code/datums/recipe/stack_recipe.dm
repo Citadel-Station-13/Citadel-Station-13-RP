@@ -46,6 +46,8 @@
 	var/result_is_stack = FALSE
 	/// type to check against to make sure there's nothing in the way
 	var/exclusitivity
+	/// max amount to allow crafting at once. null for 1 non stack, infinity stack
+	var/max_amount
 	// todo: material constraints
 
 /datum/stack_recipe/New()
@@ -144,4 +146,5 @@
 		"noAutoSanity" = no_automatic_sanity_checks,
 		"isStack" = result_is_stack,
 		"ref" = ref(src),
+		"maxAmount" = max_amount,
 	)

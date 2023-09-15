@@ -10,4 +10,5 @@ export interface StackRecipeData {
   noAutoSanity: BooleanLike;
   isStack: BooleanLike;
   ref: string;
+  maxAmount?: number;
 }

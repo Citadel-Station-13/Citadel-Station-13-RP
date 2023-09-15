@@ -112,6 +112,8 @@
 	return FALSE
 
 /obj/item/stack/proc/craft_recipe(datum/stack_recipe/recipe, mob/user, amount)
+	if(amount > (isnull(recipe.max_amount)? (recipe.result_is_stack? INFINITY : 1) : recipe.max_amount))
+		return FALSE
 	var/needed = recipe.cost * (amount / recipe.result_amount)
 	if((needed % 1) != needed)
 		return FALSE
