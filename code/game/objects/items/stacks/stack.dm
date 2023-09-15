@@ -83,7 +83,7 @@
 	var/list/assembled = list()
 	for(var/datum/stack_recipe/recipe as anything in explicit_recipes)
 		assembled[++assembled.len] = recipe.tgui_recipe_data()
-	return ..()
+	return assembled
 
 /obj/item/stack/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -112,7 +112,7 @@
 	return FALSE
 
 /obj/item/stack/proc/craft_recipe(datum/stack_recipe/recipe, mob/user, amount)
-	var/needed = recipe.cost * (amount / recipe.amount)
+	var/needed = recipe.cost * (amount / recipe.result_amount)
 	if((needed % 1) != needed)
 		return FALSE
 	if(needed > amount)

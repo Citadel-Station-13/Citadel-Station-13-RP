@@ -18,3 +18,9 @@
 
 /proc/add_construction_logs(mob/actor, atom/target, message)
 	log_game("LEGACY CONSTRUCTION: [actor] --> [target] ([COORD(target)]): [message]")
+
+/**
+ * Log stack crafting
+ */
+/proc/log_stackcrafting(mob/actor, mob/initiator, obj/item/stack/stack, name, amount, used, turf/where = get_turf(actor))
+	log_game("STACKCRAFT: [key_name(actor)] crafted [amount] of [name] with [used] of [stack] at [where]")
