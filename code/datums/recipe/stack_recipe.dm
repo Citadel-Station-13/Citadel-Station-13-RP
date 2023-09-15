@@ -65,10 +65,10 @@
  *
  * @return TRUE/FALSE success
  */
-/datum/stack_recipe/proc/craft(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir)
-	if(!check(where, amount, stack, user, silent))
+/datum/stack_recipe/proc/craft(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir = user?.dir)
+	if(!check(where, amount, stack, user, silent, use_dir))
 		return FALSE
-	return make(where, amount, stack, user, silent)
+	return make(where, amount, stack, user, silent, use_dir)
 
 /**
  * see if it's valid to make the recipe
@@ -83,9 +83,15 @@
  *
  * @return TRUE/FALSE success
  */
-/datum/stack_recipe/proc/check(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir)
+/datum/stack_recipe/proc/check(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir = user?.dir)
 	if(!no_automatic_sanity_checks)
-		#warn check turf, density, etc
+		var/atom/movable/casted_result = result_type
+		if(initial(casted_result.density))
+			for(var/atom/movable/AM as anything in where)
+				if(AM.density)
+					if(!silent)
+						user.action_feedback(SPAN_WARNING("[AM] is in the way."))
+					return FALSE
 	if(!isnull(exclusitivity))
 		for(var/atom/movable/AM as anything in where)
 			if(istype(AM, exclusitivity))
@@ -108,7 +114,20 @@
  * * use_dir - (optional) override dir if no user to get it from
  */
 /datum/stack_recipe/proc/make(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir)
-	#warn impl
+	if(result_is_stack)
+		var/obj/item/stack/casted = result_type
+		var/max_amount = initial(casted.max_amount)
+		var/safety = 50
+		while(amount)
+			if(!--safety)
+				CRASH("safety hit")
+			var/obj/item/stack/created = new(where, min(amount, max_amount))
+			amount -= created.amount
+	else
+		for(var/i in 1 to min(amount, 50))
+			var/atom/movable/created = new result_type(where)
+			created.setDir(use_dir)
+	return TRUE
 
 /**
  * tgui stack recipe data
