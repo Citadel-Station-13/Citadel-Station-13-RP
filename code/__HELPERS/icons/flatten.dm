@@ -91,7 +91,7 @@
 
 	// invis? skip.
 	if(!A || A.alpha <= 0)
-		return BLANK
+		return list(BLANK, 0, 0)
 
 	// detect if state exists
 	var/icon/icon = A.icon || deficon
@@ -125,7 +125,7 @@
 	if(!A.overlays.len && !A.underlays.len)
 		// we don't even have ourselves!
 		if(none)
-			return BLANK
+			return list(BLANK, 0, 0)
 		// no overlays/underlays, we're done, just mix in ourselves
 		var/icon/self_icon = icon(icon(icon, state, ourdir), "", SOUTH, no_anim? 1 : null)
 		if(A.alpha < 255)
@@ -135,7 +135,7 @@
 				self_icon.MapColors(arglist(A.color))
 			else
 				self_icon.Blend(A.color, ICON_MULTIPLY)
-		return self_icon
+		return list(self_icon, 0, 0)
 
 	// safety/performance check
 	if((A.overlays.len + A.underlays.len) > 80)
@@ -286,10 +286,10 @@
 		// clean up frames
 		var/icon/cleaned = icon()
 		cleaned.Insert(flat, "", SOUTH, 1, 0)
-		return cleaned
+		return list(cleaned, 0, 0)
 	else
 		// just return flat as SOUTH
-		return icon(flat, "", SOUTH)
+		return list(icon(flat, "", SOUTH), 0, 0)
 
 	#undef flatX1
 	#undef flatX2

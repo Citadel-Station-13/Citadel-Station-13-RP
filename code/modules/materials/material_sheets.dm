@@ -50,7 +50,7 @@
 
 /obj/item/stack/material/tgui_recipes()
 	var/list/assembled = ..()
-	for(var/datum/stack_recipe/recipe as anything in material.recipes)
+	for(var/datum/stack_recipe/recipe as anything in material.get_recipes())
 		assembled[++assembled.len] = recipe.tgui_recipe_data()
 	return assembled
 
