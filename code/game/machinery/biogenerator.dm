@@ -96,6 +96,7 @@
 		BIOGEN_ITEM("Leather Satchel", /obj/item/storage/backpack/satchel, 1, 400),
 		BIOGEN_ITEM("Cash Bag", /obj/item/storage/bag/cash, 1, 400),
 		BIOGEN_ITEM("Chemistry Bag", /obj/item/storage/bag/chemistry, 1, 400),
+		BIOGEN_ITEM("Xenobiology Bag", /obj/item/storage/bag/xenobio, 1, 400),
 		BIOGEN_ITEM("Workboots", /obj/item/clothing/shoes/boots/workboots, 1, 400),
 		BIOGEN_ITEM("Leather Chaps", /obj/item/clothing/under/pants/chaps, 1, 400),
 		BIOGEN_ITEM("Leather Coat", /obj/item/clothing/suit/leathercoat, 1, 500),

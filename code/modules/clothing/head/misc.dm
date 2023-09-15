@@ -721,3 +721,10 @@
 	desc = "The lettering on this hat is phenominal. It reads: 'Women fear me. Fish fear me. Men turn their eyes away from me as I walk. No beast dare makes a sound in my presence. I am alone in this barren space.' There is a patch of an extra large Monkfish sewn on beneath these words. Only the most prestegious fishers in the universe must own a hat like this..."
 	icon_state = "fishingcap"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "fishingcap", SLOT_ID_LEFT_HAND = "fishingcap")
+
+/obj/item/clothing/head/darkcleric
+	name = "dark cleric circlet"
+	desc = "This chased silver circlet bears a polished black stone in its center. A matching ponytail holder is included."
+	icon = 'icons/clothing/head/darkcleric.dmi'
+	icon_state = "darkcleric"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

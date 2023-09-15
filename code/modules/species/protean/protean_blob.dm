@@ -51,8 +51,8 @@
 	var/obj/item/organ/internal/nano/refactory/refactory
 	var/datum/modifier/healing
 
-	var/obj/prev_left_hand
-	var/obj/prev_right_hand
+	var/datum/weakref/prev_left_hand
+	var/datum/weakref/prev_right_hand
 
 	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
@@ -65,13 +65,11 @@
 //Constructor allows passing the human to sync damages
 /mob/living/simple_mob/protean_blob/Initialize(mapload, mob/living/carbon/human/H)
 	. = ..()
-	mob_radio = new(src)
 	access_card = new(src)
 	if(H)
 		humanform = H
 		refactory = locate() in humanform.internal_organs
 		add_verb(src, /mob/living/proc/hide)
-		add_verb(src, /mob/living/simple_mob/protean_blob/proc/useradio)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/appearanceswitch)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/rig_transform)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/leap_attack)
@@ -306,58 +304,24 @@
 	//Create our new blob
 	var/mob/living/simple_mob/protean_blob/blob = new(creation_spot,src)
 
-	//Drop all our things
-	var/list/things_to_drop = contents.Copy()
-	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear,gloves,glasses,shoes) //And whatever else we decide for balancing.
-	//you can instaflash or pepperspray on unblob with pockets anyways
-	if(l_hand && l_hand.w_class <= ITEMSIZE_SMALL) //Hands but only if small or smaller
-		things_to_not_drop += l_hand
-	if(r_hand && r_hand.w_class <= ITEMSIZE_SMALL)
-		things_to_not_drop += r_hand
-	things_to_drop -= things_to_not_drop //Crunch the lists
-	things_to_drop -= organs //Mah armbs
-	things_to_drop -= internal_organs //Mah sqeedily spooch
-
-	for(var/obj/item/hardsuit/protean/O in things_to_drop)
-		things_to_drop -= O
-
-	for(var/obj/item/I in things_to_drop) //rip hoarders
-		drop_item_to_ground(I)
-
-	if(wearing_rig)
-		for(var/obj/item/I in list(wearing_rig.helmet, wearing_rig.chest, wearing_rig.gloves, wearing_rig.boots))
-			transfer_item_to_loc(I, wearing_rig, INV_OP_FORCE)
-
-	for(var/obj/item/radio/headset/HS in things_to_not_drop)
-		if(HS.keyslot1)
-			blob.mob_radio.keyslot1 = new HS.keyslot1.type(blob.mob_radio)
-		if(HS.keyslot2)
-			blob.mob_radio.keyslot2 = new HS.keyslot2.type(blob.mob_radio)
-		if(HS.adhoc_fallback)
-			blob.mob_radio.adhoc_fallback = TRUE
-		blob.mob_radio.recalculateChannels()
-
-	for(var/obj/item/pda/P in things_to_not_drop)
-		if(P.id)
-			var/obj/item/card/id/PID = P.id
-			blob.access_card.access += PID.access
-
-	for(var/obj/item/card/id/I in things_to_not_drop)
-		blob.access_card.access += I.access
-
-	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
-		var/obj/item/clothing/uniform = w_uniform
-		if(LAZYLEN(uniform.accessories))
-			for(var/obj/item/clothing/accessory/A in uniform.accessories)
-				if(istype(A, /obj/item/clothing/accessory/holster) || istype(A, /obj/item/clothing/accessory/storage)) //only drop webbings/holsters so you don't drop your PAN or vanity/fluff accessories(the life notifier necklace, etc).
-					uniform.remove_accessory(null,A) //First param is user, but adds fingerprints and messages
+	if(isnull(blob.mob_radio) && istype(l_ear, /obj/item/radio))
+		blob.mob_radio = l_ear
+		if(!transfer_item_to_loc(l_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
+			blob.mob_radio = null
+	if(isnull(blob.mob_radio) && istype(r_ear, /obj/item/radio))
+		blob.mob_radio = r_ear
+		if(!transfer_item_to_loc(r_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
+			blob.mob_radio = null
 
 	//Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
 
-	if(l_hand) blob.prev_left_hand = l_hand //Won't save them if dropped above, but necessary if handdrop is disabled.
-	if(r_hand) blob.prev_right_hand = r_hand
+	if(l_hand)
+		blob.prev_left_hand = WEAKREF(l_hand) //Won't save them if dropped above, but necessary if handdrop is disabled.
+	if(r_hand)
+		blob.prev_right_hand = WEAKREF(r_hand)
+
 	//languages!!
 	for(var/datum/language/L in languages)
 		blob.add_language(L.name)
@@ -366,7 +330,7 @@
 	temporary_form = blob
 
 	//Mail them to nullspace
-	moveToNullspace()
+	forceMove(blob)
 
 	if(blob.client && panel_selected)
 		blob.client.statpanel = SPECIES_PROTEAN
@@ -408,13 +372,27 @@
 		if(istype(I, /obj/item/holder))
 			I.forceMove(root.drop_location())
 
-/mob/living/simple_mob/protean_blob/proc/useradio()
-	set name = "Utilize Radio"
-	set desc = "Allows a protean blob to interact with its internal radio."
-	set category = "Abilities"
+/mob/living/simple_mob/protean_blob/strip_menu_act(mob/user, action)
+	return humanform.strip_menu_act(arglist(args))
 
-	if(mob_radio)
-		mob_radio.nano_ui_interact(src, state = interactive_state)
+/mob/living/simple_mob/protean_blob/strip_menu_options(mob/user)
+	return humanform.strip_menu_options(arglist(args))
+
+/mob/living/simple_mob/protean_blob/strip_interaction_prechecks(mob/user, autoclose, allow_loc)
+	allow_loc = TRUE
+	return humanform.strip_interaction_prechecks(arglist(args))
+
+/mob/living/simple_mob/protean_blob/open_strip_menu(mob/user)
+	return humanform.open_strip_menu(arglist(args))
+
+/mob/living/simple_mob/protean_blob/close_strip_menu(mob/user)
+	return humanform.close_strip_menu(arglist(args))
+
+/mob/living/simple_mob/protean_blob/request_strip_menu(mob/user)
+	return humanform.request_strip_menu(arglist(args))
+
+/mob/living/simple_mob/protean_blob/render_strip_menu(mob/user)
+	return humanform.render_strip_menu(arglist(args))
 
 /mob/living/simple_mob/protean_blob/proc/rig_transform()
 	set name = "Modify Form - Hardsuit"
@@ -452,7 +430,7 @@
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
 		return
-	if(blob.loc == /obj/item/hardsuit/protean)
+	if(istype(blob.loc, /obj/item/hardsuit/protean))
 		return
 
 	buckled?.unbuckle_mob(src, BUCKLE_OP_FORCE)
@@ -498,8 +476,18 @@
 		B.forceMove(src)
 		B.owner = src
 
-	if(blob.prev_left_hand) put_in_left_hand(blob.prev_left_hand) //The restore for when reforming.
-	if(blob.prev_right_hand) put_in_right_hand(blob.prev_right_hand)
+	if(blob.prev_left_hand)
+		put_in_left_hand(blob.prev_left_hand.resolve()) //The restore for when reforming.
+	if(blob.prev_right_hand)
+		put_in_right_hand(blob.prev_right_hand.resolve())
+
+	if(!isnull(blob.mob_radio))
+		if(!equip_to_slots_if_possible(blob.mob_radio, list(
+			/datum/inventory_slot_meta/inventory/ears/left,
+			/datum/inventory_slot_meta/inventory/ears/right,
+		)))
+			blob.mob_radio.forceMove(reform_spot)
+		blob.mob_radio = null
 
 	Life(1, SSmobs.times_fired)
 

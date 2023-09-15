@@ -178,6 +178,8 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	return
 
 /obj/machinery/air_alarm/proc/handle_sounds()
+	if(!report_danger_level)
+		return
 	if(world.time > last_sound_played + (60 SECONDS / (danger_level ? danger_level : 1)))
 		if (danger_level == AIR_ALARM_RAISE_WARNING)
 			playsound(src,'sound/machines/air_alarm/warning.ogg', 100, pressure_affected = TRUE)
@@ -672,7 +674,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			var/index = text2num(params["index"]) + 1
 			if((index < AIR_ALARM_TLV_INDEX_MIN) || (index > AIR_ALARM_TLV_INDEX_MAX))
 				return TRUE
-			var/val = clamp(0, text2num(params["val"]), 1000000)
+			var/val = clamp(-1, text2num(params["val"]), 1000000)
 			var/list/target
 			switch(entry)
 				if("pressure")

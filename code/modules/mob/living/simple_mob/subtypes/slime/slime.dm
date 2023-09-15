@@ -144,6 +144,10 @@
 			return TRUE
 		else
 			return FALSE
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		if(istype(H.species, /datum/species/monkey))	// Monke always food
+			return FALSE
 	// The other stuff was already checked in parent proc, and the . variable will implicitly return the correct value.
 
 // Slimes regenerate passively.

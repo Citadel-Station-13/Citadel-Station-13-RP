@@ -643,3 +643,10 @@
 	icon_state = "furug"
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
+
+/obj/item/clothing/gloves/darkcleric
+	name = "dark cleric bracers"
+	desc = "Treated leather bracers worn by clerics in the service of higher powers."
+	icon = 'icons/clothing/gloves/darkcleric.dmi'
+	icon_state = "darkcleric"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
