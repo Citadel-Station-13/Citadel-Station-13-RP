@@ -308,6 +308,7 @@
 /area/submap/debrisfield_vr/sci_overrun)
 "bf" = (
 /obj/structure/table/reinforced,
+/obj/item/storage/bag/xenobio,
 /turf/simulated/floor/tiled/white/airless,
 /area/submap/debrisfield_vr/sci_overrun)
 "bg" = (

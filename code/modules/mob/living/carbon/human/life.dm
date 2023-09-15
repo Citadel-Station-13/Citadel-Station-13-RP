@@ -579,16 +579,19 @@
 		breath.adjust_gas(GAS_ID_NITROUS_OXIDE, -breath.gas[GAS_ID_NITROUS_OXIDE]/6, update = 0) //update after
 
 	for(var/gasname in breath.gas)
+		// todo: all this needs rewritten.
 		if(gasname == breath_type)
 			continue
 		var/list/reagent_gas_data = global.gas_data.reagents[gasname]
 		if(!reagent_gas_data)
 			continue
-		if(breath.gas[gasname] < reagent_gas_data[GAS_REAGENT_LIST_THRESHOLD])
-			return
+		// up-convert since intuitively reagent gas uses mols in tile air, rather than in breath.
+		var/effective_moles = breath.gas[gasname] * (CELL_VOLUME / BREATH_VOLUME)
+		if(effective_moles < reagent_gas_data[GAS_REAGENT_LIST_THRESHOLD])
+			continue
 		// Little bit of sanity so we aren't trying to add 0.0000000001 units of CO2, and so we don't end up with 99999 units of CO2.
 		var/reagent_id = reagent_gas_data[GAS_REAGENT_LIST_ID]
-		var/reagent_amount = (breath.gas[gasname] * reagent_gas_data[GAS_REAGENT_LIST_FACTOR] + reagent_gas_data[GAS_REAGENT_LIST_AMOUNT]) * gas_to_process_ratio
+		var/reagent_amount = ((effective_moles - reagent_gas_data[GAS_REAGENT_LIST_THRESHOLD]) * reagent_gas_data[GAS_REAGENT_LIST_FACTOR] + reagent_gas_data[GAS_REAGENT_LIST_AMOUNT]) * gas_to_process_ratio
 		reagent_amount = min(reagent_amount, reagent_gas_data[GAS_REAGENT_LIST_MAX] - reagents.get_reagent_amount(reagent_id))
 		if(reagent_amount < 0.05)
 			continue
@@ -919,7 +922,18 @@
 
 /mob/living/carbon/human/get_heat_protection(temperature) //Temperature is the temperature you're being exposed to.
 	var/thermal_protection_flags = get_heat_protection_flags(temperature)
-	return get_thermal_protection(thermal_protection_flags)
+	. = get_thermal_protection(thermal_protection_flags)
+	. = 1 - . // Invert from 1 = immunity to 0 = immunity.
+
+	// Doing it this way makes multiplicative stacking not get out of hand, so two modifiers that give 0.5 protection will be combined to 0.75 in the end.
+	for(var/thing in modifiers)
+		var/datum/modifier/M = thing
+		if(!isnull(M.heat_protection))
+			. *= 1 - M.heat_protection
+
+	// Code that calls this expects 1 = immunity so we need to invert again.
+	. = 1 - .
+	. = min(., 1.0)
 
 /mob/living/carbon/human/get_cold_protection(temperature)
 	if(MUTATION_COLD_RESIST in mutations)
@@ -927,7 +941,20 @@
 
 	temperature = max(temperature, 2.7) //There is an occasional bug where the temperature is miscalculated in ares with a small amount of gas on them, so this is necessary to ensure that that bug does not affect this calculation. Space's temperature is 2.7K and most suits that are intended to protect against any cold, protect down to 2.0K.
 	var/thermal_protection_flags = get_cold_protection_flags(temperature)
-	return get_thermal_protection(thermal_protection_flags)
+
+	. = get_thermal_protection(thermal_protection_flags)
+	. = 1 - . // Invert from 1 = immunity to 0 = immunity.
+
+	// Doing it this way makes multiplicative stacking not get out of hand, so two modifiers that give 0.5 protection will be combined to 0.75 in the end.
+	for(var/thing in modifiers)
+		var/datum/modifier/M = thing
+		if(!isnull(M.cold_protection))
+			// Invert the modifier values so they align with the current working value.
+			. *= 1 - M.cold_protection
+
+	// Code that calls this expects 1 = immunity so we need to invert again.
+	. = 1 - .
+	. = min(., 1.0)
 
 /mob/living/carbon/human/proc/get_thermal_protection(var/flags)
 	.=0

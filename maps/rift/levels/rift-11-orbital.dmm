@@ -1273,7 +1273,6 @@
 "ek" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
-	dir = 2;
 	icon_state = "right";
 	name = "Red Corner"
 	},
@@ -8741,14 +8740,14 @@
 /obj/structure/table/rack,
 /obj/item/gun/ballistic/automatic/lmg,
 /obj/item/gun/ballistic/automatic/lmg,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "NU" = (
@@ -8858,6 +8857,10 @@
 /obj/structure/bed/chair/backed_grey,
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
+"Pc" = (
+/obj/overmap/entity/visitable/sector/centcom,
+/turf/space,
+/area/space)
 "Pf" = (
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -9912,10 +9915,10 @@
 	dir = 8
 	},
 /obj/structure/table/rack,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor/dark,
@@ -10254,7 +10257,7 @@ hP
 hP
 hP
 hP
-hP
+Pc
 hP
 hP
 hP

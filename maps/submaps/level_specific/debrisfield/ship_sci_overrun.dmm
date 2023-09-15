@@ -133,6 +133,7 @@
 /area/space/debrisfield/scioverrun)
 "aB" = (
 /obj/structure/table/reinforced,
+/obj/item/storage/bag/xenobio,
 /turf/simulated/floor/tiled/white/airless,
 /area/space/debrisfield/scioverrun)
 "aC" = (
