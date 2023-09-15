@@ -175,7 +175,7 @@
 		#warn crop out irrelevant parts and blend in
 
 	sculpting_line_start = null
-	scultping_buffer = null
+	sculpting_buffer = null
 	sculpting_line_end = null
 
 /obj/structure/sculpting_block/proc/create_slate()
