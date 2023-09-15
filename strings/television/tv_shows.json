@@ -1,0 +1,32 @@
+{
+	"name": "Emergency Broadcast Test",
+	"default_language":"common",
+	"lines": [
+	  {
+		"language":"common",
+		"delay": 5,
+		"text": [
+		  "*BEEEEEEEEEEEEEEEEEEEEEP*",
+		  "THIS IS A TEST",
+		  "*For the next 30 seconds,",
+		  "this station will conduct a test of",
+		  "the Emergency Broadcast System.",
+		  "this is only a test.",
+		  "*BEEEEEEEEEEEEEEEP*"
+	  	]
+	  },
+	  {
+		"language":"tajaran",
+		"delay": 7,
+		"text": [
+		  "*BEEEEEEEEEEEEEEEEEEEEEP*",
+		  "THIS IS A TEST",
+		  "*For the next 30 seconds,",
+		  "this station will conduct a test of",
+		  "the Emergency Broadcast System.",
+		  "this is only a test.",
+		  "*BEEEEEEEEEEEEEEEP*"
+	  	]
+	  }
+	]
+  }
