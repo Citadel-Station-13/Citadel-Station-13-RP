@@ -147,7 +147,7 @@
 		gun.attack_self(holder.wearer)
 		return
 
-	gun.Fire(target,holder.wearer)
+	gun.firing_sequence(target, holder.wearer)
 	return 1
 
 /obj/item/hardsuit_module/mounted/egun

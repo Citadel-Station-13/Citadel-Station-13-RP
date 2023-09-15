@@ -912,7 +912,7 @@
 
 		if(!T)
 			return
-		installed_gun.Fire_userless(T)
+		installed_gun.firing_sequence(T, src)
 
 
 /obj/item/integrated_circuit/manipulation/grenade

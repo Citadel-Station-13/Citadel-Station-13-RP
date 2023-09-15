@@ -52,7 +52,6 @@
 	var/instability_decay
 
 	//* Firemodes
-	#warn init firemodes on .. init
 	/// current firemode
 	var/datum/firemode/firemode
 	/// available firemodes
@@ -88,6 +87,12 @@
 	#warn do it
 	var/fire_sound = "gunshot"
 
+/obj/item/gun/Initialize(mapload)
+	. = ..()
+	if(ispath(pin))
+		pin = new pin
+	init_firemodes()
+
 /obj/item/gun/unequipped(mob/user, slot, flags)
 	. = ..()
 	if(firing && user == firing_user)
@@ -107,14 +112,15 @@
  * @params
  * * target - what to aim at / the 'original' var for projectile
  * * user - what's firing us, usually a mob but coudl be an obj
- * * where - this weirdly named variable is the original turf of the click, used for guns that don't use angles.
- * * angle - the angle to shoot in. what this means to different guns can differ, and some guns can completely ignore this
+ * * where - (optional) this weirdly named variable is the original turf of the click, used for guns that don't use angles.
+ * * angle - (optional) the angle to shoot in. what this means to different guns can differ, and some guns can completely ignore this
  * * reflex - is it an automatic fire from aiming/hostage taking?
  * * burst_amount - how many shots to fire
  * * burst_interval - delay between shots
  * * point_blank - allow point blanking
  */
 /obj/item/gun/proc/firing_sequence(atom/target, atom/movable/user, turf/where, angle, reflex, burst_amount, burst_interval, point_blank)
+	#warn resolve where/angle/etc from target/user/self/etc if it's not there, because we use this for userless too
 	var/current_cycle = firing_cycle
 	#warn impl
 
@@ -252,14 +258,8 @@
 
 /obj/item/gun/Initialize(mapload)
 	. = ..()
-	for(var/i in 1 to firemodes.len)
-		firemodes[i] = new /datum/firemode(src, firemodes[i])
-
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
-
-	if(pin)
-		pin = new pin(src)
 
 /obj/item/gun/update_twohanding()
 	if(one_handed_penalty)
@@ -873,6 +873,28 @@
 		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
 	return 0
 
+//* Firemodes
+
+/obj/item/gun/proc/set_firemode(datum/firemode/mode)
+	firemode = mode
+	#warn impl
+
+/obj/item/gun/proc/init_firemodes()
+	if(length(regex_this_firemodes))
+		for(var/i in 1 to length(regex_this_firemodes))
+			var/val = regex_this_firemodes
+			if(ispath(val))
+				regex_this_firemodes[i] = new val
+		set_firemode(regex_this_firemodes[1])
+	else if(istype(regex_this_firemodes, /datum/firemode))
+		set_firemode(regex_this_firemodes)
+		regex_this_firemodes = list(regex_this_firemodes)
+	else if(ispath(regex_this_firemodes))
+		regex_this_firemodes = list(new regex_this_firemodes)
+		set_firemode(regex_this_firemodes)
+	else
+		CRASH("gun didn't have a firemode. why is it even a gun if so?")
+
 //* Safeties
 
 /obj/item/gun/update_overlays()
@@ -881,7 +903,7 @@
 		return
 	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()? "on" : "off"]")
 
-/obj/item/gun/projectile/proc/toggle_safety(mob/user)
+/obj/item/gun/proc/toggle_safety(mob/user)
 	if(user)
 		if(user.stat || user.restrained() || user.incapacitated(INCAPACITATION_DISABLED))
 			to_chat(user, SPAN_WARNING("You can't do that right now."))
@@ -905,7 +927,7 @@
 	update_appearance()
 	playsound(src, 'sound/weapons/flipblade.ogg', 10, 1)
 
-/obj/item/gun/projectile/verb/toggle_safety_verb()
+/obj/item/gun/verb/toggle_safety_verb()
 	set src in usr
 	set category = "Object"
 	set name = "Toggle Gun Safety"
@@ -913,7 +935,7 @@
 	if(usr == loc)
 		toggle_safety(usr)
 
-/obj/item/gun/projectile/AltClick(mob/user)
+/obj/item/gun/AltClick(mob/user)
 	if(loc == user)
 		toggle_safety(user)
 		return TRUE
@@ -922,5 +944,5 @@
 /**
  * returns TRUE/FALSE based on if we have safeties on
  */
-/obj/item/gun/projectile/proc/check_safety()
+/obj/item/gun/proc/check_safety()
 	return (safety_state == GUN_SAFETY_ON)

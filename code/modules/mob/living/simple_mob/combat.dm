@@ -133,10 +133,11 @@
 
 	// For some reason there isn't an argument for accuracy, so access the projectile directly instead.
 	// Also, placing dispersion here instead of in forced_spread will randomize the chosen angle between dispersion and -dispersion in fire() instead of having to do that here.
+	var/dispersion = calculate_dispersion()
 	P.accuracy += calculate_accuracy()
-	P.dispersion += calculate_dispersion()
+	P.target = A
+	P.fire(get_physics_angle(src, A) + rand(-dispersion, +dispersion))
 
-	P.launch_projectile(target = A, target_zone = null, user = src, params = null, angle_override = null, forced_spread = 0)
 	if(needs_reload)
 		reload_count++
 

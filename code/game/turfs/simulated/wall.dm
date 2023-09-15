@@ -129,15 +129,15 @@
 			visible_message("<span class='danger'>\The [src] reflects \the [Proj]!</span>")
 
 			// Find a turf near or on the original location to bounce to
-			var/new_x = Proj.starting.x + pick(0, 0, 0, -1, 1, -2, 2)
-			var/new_y = Proj.starting.y + pick(0, 0, 0, -1, 1, -2, 2)
+			var/new_x = Proj.starting_turf.x + pick(0, 0, 0, -1, 1, -2, 2)
+			var/new_y = Proj.starting_turf.y + pick(0, 0, 0, -1, 1, -2, 2)
 			//var/turf/curloc = get_turf(src)
-			var/turf/curloc = get_step(src, get_dir(src, Proj.starting))
+			var/turf/curloc = get_step(src, get_dir(src, Proj.starting_turf))
 
 			Proj.penetrating += 1 // Needed for the beam to get out of the wall.
 
 			// redirect the projectile
-			Proj.redirect(new_x, new_y, curloc, null)
+			Proj.regex_this_redirect(get_atom_angle(curloc, locate(new_x, new_y, curloc.z)), major = TRUE)
 
 	if(Proj.ricochet_sounds && prob(15))
 		playsound(src, pick(Proj.ricochet_sounds), 100, 1)

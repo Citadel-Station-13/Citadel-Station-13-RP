@@ -124,15 +124,12 @@
 	damage = 20
 	damage_type = BURN
 	damage_flag = ARMOR_LASER
+	speed = TILES_PER_SECOND(5)
 
 /obj/projectile/energy/homing_bolt/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	..()
 	if(target)
 		set_homing_target(target)
-
-/obj/projectile/energy/homing_bolt/fire(angle, atom/direct_target)
-	..()
-	set_pixel_speed(0.5)
 
 #define ELECTRIC_ZAP_POWER 20000
 

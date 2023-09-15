@@ -29,7 +29,7 @@
 	  * If you so badly need to make one go through *everything*, override check_pierce() for your projectile to always return PROJECTILE_PIERCE_PHASE/HIT.
 	  */
 	/// The "usual" flags of pass_flags is used in that can_hit_target ignores these unless they're specifically targeted/clicked on. This behavior entirely bypasses process_hit if triggered, rather than phasing which uses prehit_pierce() to check.
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	/// If FALSE, allow us to hit something directly targeted/clicked/whatnot even if we're able to phase through it
 	var/phases_through_direct_target = FALSE
 	/// Bitflag for things the projectile should just phase through entirely - No hitting unless direct target and [phasing_ignore_direct_target] is FALSE. Uses pass_flags flags.
@@ -132,7 +132,7 @@
 	/// fired time
 	var/fired_at
 	/// max range in tiles **touched**, not get_dist() range.
-	var/range = 50
+	var/range = 100
 	/// current range
 	var/travelled = 0
 
@@ -218,21 +218,6 @@
 /obj/projectile/proc/on_range() //if we want there to be effects when they reach the end of their range
 	qdel(src)
 
-/obj/projectile/proc/return_predicted_turf_after_moves(moves, forced_angle)		//I say predicted because there's no telling that the projectile won't change direction/location in flight.
-	if(!trajectory && isnull(forced_angle) && isnull(Angle))
-		return FALSE
-	var/datum/point/vector/current = trajectory
-	if(!current)
-		var/turf/T = get_turf(src)
-		current = new(T.x, T.y, T.z, pixel_x, pixel_y, isnull(forced_angle)? Angle : forced_angle, SSprojectiles.global_pixel_speed)
-	var/datum/point/vector/v = current.return_vector_after_increments(moves * SSprojectiles.global_iterations_per_move)
-	return v.return_turf()
-
-/obj/projectile/proc/return_pathing_turfs_in_moves(moves, forced_angle)
-	var/turf/current = get_turf(src)
-	var/turf/ending = return_predicted_turf_after_moves(moves, forced_angle)
-	return getline(current, ending)
-
 /obj/projectile/proc/record_hitscan_start(datum/point/pcache)
 	if(!has_tracer)
 		return
@@ -256,46 +241,6 @@
 				qdel(src)
 			return	//Kill!
 		pixel_move(1, TRUE)
-
-/obj/projectile/proc/pixel_move(trajectory_multiplier, hitscanning = FALSE)
-	if(!loc || !trajectory)
-		return
-	last_projectile_move = world.time
-	if(homing)
-		process_homing()
-	var/forcemoved = FALSE
-	for(var/i in 1 to SSprojectiles.global_iterations_per_move)
-		if(QDELETED(src))
-			return
-		trajectory.increment(trajectory_multiplier)
-		var/turf/T = trajectory.return_turf()
-		if(!istype(T))
-			qdel(src)
-			return
-		if(T.z != loc.z)
-			var/old = loc
-			before_z_change(loc, T)
-			trajectory_ignore_forcemove = TRUE
-			forceMove(T)
-			trajectory_ignore_forcemove = FALSE
-			after_z_change(old, loc)
-			if(!hitscanning)
-				pixel_x = trajectory.return_px()
-				pixel_y = trajectory.return_py()
-			forcemoved = TRUE
-			hitscan_last = loc
-		else if(T != loc)
-			before_move()
-			step_towards(src, T)
-			hitscan_last = loc
-			after_move()
-		if(can_hit_target(original, permutated))
-			Bump(original)
-	if(!hitscanning && !forcemoved)
-		pixel_x = trajectory.return_px() - trajectory.mpx * trajectory_multiplier * SSprojectiles.global_iterations_per_move
-		pixel_y = trajectory.return_py() - trajectory.mpy * trajectory_multiplier * SSprojectiles.global_iterations_per_move
-		animate(src, pixel_x = trajectory.return_px(), pixel_y = trajectory.return_py(), time = 1, flags = ANIMATION_END_NOW)
-	Range()
 
 /obj/projectile/process(delta_time)
 	last_process = world.time
@@ -450,16 +395,6 @@
 		var/oy = round(screenviewY/2) - user.client.pixel_y //"origin" y
 		angle = arctan(y - oy, x - ox)
 	return list(angle, p_x, p_y)
-
-/obj/projectile/proc/redirect(x, y, starting, source)
-	old_style_target(locate(x, y, z), starting? get_turf(starting) : get_turf(source))
-
-/obj/projectile/proc/old_style_target(atom/target, atom/source)
-	if(!source)
-		source = get_turf(src)
-	starting = get_turf(source)
-	original = target
-	setAngle(get_visual_angle(source, target))
 
 /obj/projectile/Destroy()
 	if(hitscan)
@@ -858,7 +793,7 @@
 /obj/projectile/process(delta_time)
 	if(paused)
 		return
-	increment(speed * delta_time * SSprojectiles.global_speed_multiplier)
+	increment(speed * delta_time * SSprojectiles.global_speed_multiplier, dt)
 	if(QDELETED(src))
 		return
 	if(!isnull(homing_target) && isturf(homing_target.loc) && homing_target.z == z)
@@ -867,8 +802,70 @@
 /**
  * Propagates our simulation by an amount of pixels
  */
-/obj/projectile/proc/increment(pixels)
+/obj/projectile/proc/increment(pixels, dt)
+	#warn microoptimize
+	var/original_pixels = pixels
+	var/original_angle = angle
+	// while pixels left ; do > because floating point inaccuracy
+	while(pixels > 0)
+		// increment needed to go to next in x or y
+		var/tx_to_next = dx_ratio == 0? 0 : (dx > 0? (WORLD_ICON_SIZE + 1 - px_current) : (px_current + 1)) / abs(dx_ratio)
+		var/ty_to_next = dy_ratio == 0? 0 : (dy > 0? (WORLD_ICON_SIZE + 1 - py_current) : (py_current + 1)) / abs(dy_ratio)
+		// check if we have enough
+		if(pixels < min(tx_to_next, ty_to_next))
+			// if we don't, we don't move to another tile
+			px_current += dx_ratio * pixels
+			py_current += dy_ratio * pixels
+			break
+		#warn once this works properly, handle potential ztransitions with a macro or proc or something; use forceMove and trajectory_ignore_forcemove
+		// we have enough to move
+		if(tx_to_next < ty_to_next)
+			// move x
+			step(src, dx_ratio > 0? EAST : WEST)
+			px_current = dx_ratio > 0? 1 : WORLD_ICON_SIZE
+			py_current += dy_ratio * tx_to_next
+			pixels -= tx_to_next
+		else
+			// move y
+			step(src, dy_ratio > 0? NORTH : SOUTH)
+			py_current = dy_ratio > 0? 1 : WORLD_ICON_SIZE
+			px_current += dx_ratio * ty_to_next
+			pixels -= ty_to_next
+		if(QDELETED(src))
+			return
+	// animate based on original pixels
+	// this is prettier/smoother the higher fps projectiles are
+	// todo: is there a better way to do this?
+	pixel_x -= sin(original_angle) * original_pixels
+	pixel_y -= cos(original_angle) * original_pixels
+	animate(src, pixel_x = px_current, pixel_y = py_current, time = dt)
+
+/**
+ * The new tracing algorithm stops at the edge of the turf.
+ * This is not necessarily a good thing if we're reflecting off of something that's visually
+ * or meant to be physically reflecting the projectile 'inside' the turf, e.g. a reflector.
+ *
+ * This basically tells the projectile to move into the turf that it's reflecting from instead
+ * of reflecting off its edge.
+ */
+/obj/projectile/proc/increment_for_redirection(pixels)
 	#warn impl
+
+/**
+ * Redirect the projectile.
+ *
+ * Never use set_angle() to redirect on collision. Use this proc.
+ *
+ * @params
+ * * angle - angle to reset to
+ * * pixels - increment_for_redirection() this many pixels.
+ * * major - count as a major reflect, which triggers effects
+ */
+/obj/projectile/proc/regex_this_redirect(angle, pixels, major)
+	#warn regex this
+	if(pixels)
+		increment_for_redirection(pixels)
+	set_angle(angle)
 
 /**
  * Process hitscan
@@ -893,8 +890,7 @@
 			stack_trace("hitscan projectile ran out of safety.")
 			qdel(src)
 			return
-
-	#warn impl
+		increment(WORLD_ICON_SIZE, 0)
 
 /**
  * process homing
@@ -919,6 +915,16 @@
 	return arctan(target.y * WORLD_ICON_SIZE - y * WORLD_ICON_SIZE + pixel_y, target.x * WORLD_ICON_SIZE - x * WORLD_ICON_SIZE + pixel_x)
 
 //* Movement
+
+/obj/projectile/doMove(atom/destination)
+	. = ..()
+	if(trajectory_ignore_forcemove == FALSE)
+		px_current = 16
+		py_current = 16
+		pixel_x = 16
+		pixel_y = 16
+	else
+		trajectory_ignore_forcemove = FALSE
 
 // todo: this is one of the last Crossed() calls we have to deal with, probably.
 /obj/projectile/Crossed(atom/movable/AM)
@@ -994,6 +1000,7 @@
 	// grab our point
 	var/datum/point/visual_point = new /datum/point(src)
 	#warn impl
+	#warn don't forget hitscan impact
 
 /**
  * Selects a target to hit from a turf
