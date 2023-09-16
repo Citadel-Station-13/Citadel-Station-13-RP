@@ -87,7 +87,7 @@
  * @return TRUE/FALSE
  */
 /mob/proc/force_equip_to_slot(obj/item/I, slot, flags, mob/user)
-	return _equip_item(I, flags | INV_OP_FORCE, slot, user)
+	return _equip_item(I, flags | INV_OP_FORCE | INV_OP_CAN_DISPLACE, slot, user)
 
 /**
  * forcefully equips an item to a slot

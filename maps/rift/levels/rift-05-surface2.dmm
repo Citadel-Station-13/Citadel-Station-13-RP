@@ -9435,6 +9435,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker)
+"gaB" = (
+/obj/effect/overlay/snow/floor,
+/obj/item/storage/bag/xenobio,
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside2)
 "gaI" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 4
@@ -26834,6 +26839,14 @@
 /area/security/armory/red)
 "qJP" = (
 /obj/structure/table/steel,
+/obj/item/storage/bag/xenobio{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/storage/bag/xenobio{
+	pixel_x = -7;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "qKh" = (
@@ -36198,13 +36211,7 @@
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/paleblue/bordercorner2,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/structure/closet/crate/bin{
-	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
-	icon_closed = "biohazard";
-	icon_opened = "biohazardopen";
-	icon_state = "biohazard";
-	name = "biohazard bin"
-	},
+/obj/structure/closet/crate/biohazard,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "wUE" = (
@@ -45020,7 +45027,7 @@ fnX
 wTh
 gSO
 uom
-ufF
+gaB
 aal
 fSq
 tui

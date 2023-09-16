@@ -815,3 +815,20 @@ default behaviour is:
 /mob/living/get_managed_pixel_y()
 	. = ..()
 	. += depth_current
+
+//TODO: maybe expand this system to be in the VV menu for event managers to mess with - provided they trust the observers enough...
+/**
+ * Allows an observer to take control of the mob at any time. Must use the "existing" ghostrole subtype.
+ * R: the ghostrole datum to use
+ */
+/mob/living/proc/add_ghostrole(datum/role/ghostrole/existing/R = /datum/role/ghostrole/existing/)
+	var/list/L = list()
+	L["mob"] += src
+	return AddComponent(/datum/component/ghostrole_spawnpoint, R, 1, L)
+
+/mob/living/proc/get_ghostrole() //! currently not using GetComponent because that seems bugged right now. :^) @silicons
+	. = datum_components?[/datum/component/ghostrole_spawnpoint]
+	return . && (length(.) ? .[1] : .)
+
+/mob/living/proc/remove_ghostrole()
+	return DelComponent(/datum/component/ghostrole_spawnpoint)
