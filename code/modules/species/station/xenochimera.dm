@@ -208,7 +208,6 @@
 		else if(jittery)
 			to_chat(H,"<span class='warning'><big>Suddenly, something flips - everything that moves is... potential prey. A plaything. This is great! Time to hunt!</big></span>")
 			log_and_message_admins("has gone feral due to jitteriness.", H)
-			go_feral = TRUE
 
 		if(go_feral)
 			feral = 5
@@ -789,6 +788,12 @@
 	nutrition_cost_minimum = 1
 	nutrition_cost_proportional = 1
 	nutrition_enforced = FALSE
+
+/datum/ability/species/xenochimera/hatch/check_trigger(mob/user, toggling, feedback)
+	if(!..())
+		return FALSE
+	else
+		return alert("Are you sure you want to use Hatch Stasis? This takes ten minutes and cannot be cancelled!", "Confirm Hatch", "Yes", "No") == "Yes"
 
 /datum/ability/species/xenochimera/hatch/on_trigger()
 	. = ..()
