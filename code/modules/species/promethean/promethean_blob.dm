@@ -23,8 +23,9 @@
 	var/mob/living/carbon/human/humanform
 	var/datum/modifier/healing
 
-	var/obj/prev_left_hand
-	var/obj/prev_right_hand
+	var/datum/weakref/prev_left_hand
+	var/datum/weakref/prev_right_hand
+
 	var/human_brute = 0
 	var/human_burn = 0
 	var/is_wide = FALSE
@@ -336,42 +337,34 @@
 		blob = stored_blob
 		blob.forceMove(creation_spot)
 
-	//Drop all our things
-	var/list/things_to_drop = contents.Copy()
-	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear) //And whatever else we decide for balancing.
-	var/obj/item/clothing/head/new_hat
+	if(isnull(blob.mob_radio) && istype(l_ear, /obj/item/radio))
+		blob.mob_radio = l_ear
+		if(!transfer_item_to_loc(l_ear, blob, INV_OP_FORCE))
+			blob.mob_radio = null
+	if(isnull(blob.mob_radio) && istype(r_ear, /obj/item/radio))
+		blob.mob_radio = r_ear
+		if(!transfer_item_to_loc(r_ear, blob, INV_OP_FORCE))
+			blob.mob_radio = null
+
 	var/has_hat = FALSE
-	things_to_drop -= things_to_not_drop //Crunch the lists
-	things_to_drop -= organs //Mah armbs
-	things_to_drop -= internal_organs //Mah sqeedily spooch
+	var/obj/item/clothing/head/new_hat
 
-	for(var/obj/item/clothing/head/H in things_to_drop)
-		if(H)
-			new_hat = H
-			has_hat = TRUE
-			temporarily_remove_from_inventory(H, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
-			things_to_drop -= H
-			break
-
-	for(var/obj/item/I in things_to_drop) //rip hoarders
-		drop_item_to_ground(I)
-
-	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
-		var/obj/item/clothing/uniform = w_uniform
-		if(LAZYLEN(uniform.accessories))
-			for(var/obj/item/clothing/accessory/A in uniform.accessories)
-				if(is_type_in_list(A, disallowed_promethean_accessories))
-					uniform.remove_accessory(null,A) //First param is user, but adds fingerprints and messages
+	for(var/obj/item/clothing/head/H in get_equipped_items())
+		new_hat = H
+		has_hat = TRUE
+		temporarily_remove_from_inventory(H, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+		break
 
 	//Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
 
-	if(l_hand) blob.prev_left_hand = l_hand //Won't save them if dropped above, but necessary if handdrop is disabled.
-	if(r_hand) blob.prev_right_hand = r_hand
+	if(l_hand)
+		blob.prev_left_hand = WEAKREF(l_hand) //Won't save them if dropped above, but necessary if handdrop is disabled.
+	if(r_hand)
+		blob.prev_right_hand = WEAKREF(r_hand)
 
 	//Put our owner in it (don't transfer var/mind)
-	blob.afflict_paralyze(20 * 2)
 	blob.transforming = TRUE
 	blob.ckey = ckey
 	blob.ooc_notes = ooc_notes
@@ -388,14 +381,14 @@
 		blob.handle_light()
 	if(has_hat)
 		blob.hat = new_hat
-		new_hat.forceMove(src)
+		new_hat.forceMove(blob)
 
 	blob.update_icon()
 	remove_verb(blob, /mob/living/proc/ventcrawl) // Absolutely not.
 	//remove_verb(blob, /mob/living/simple_mob/proc/set_name) // We already have a name.
 	temporary_form = blob
 	//Mail them to nullspace
-	moveToNullspace()
+	forceMove(blob)
 
 	//Message
 	blob.visible_message("<b>[src.name]</b> squishes into their true form!")
@@ -439,7 +432,6 @@
 	forceMove(reform_spot)
 
 	//Put our owner in it (don't transfer var/mind)
-	afflict_paralyze(20 * 2)
 	playsound(src.loc, "sound/effects/slime_squish.ogg", 15)
 	transforming = TRUE
 	ckey = blob.ckey
@@ -472,8 +464,20 @@
 		B.owner = src
 
 	//vore_organs.Cut()
-	if(blob.prev_left_hand) put_in_left_hand(blob.prev_left_hand) //The restore for when reforming.
-	if(blob.prev_right_hand) put_in_right_hand(blob.prev_right_hand)
+
+	if(blob.prev_left_hand)
+		put_in_left_hand(blob.prev_left_hand.resolve()) //The restore for when reforming.
+	if(blob.prev_right_hand)
+		put_in_right_hand(blob.prev_right_hand.resolve())
+
+	if(!isnull(blob.mob_radio))
+		if(!equip_to_slots_if_possible(blob.mob_radio, list(
+			/datum/inventory_slot_meta/inventory/ears/left,
+			/datum/inventory_slot_meta/inventory/ears/right,
+		)))
+			blob.mob_radio.forceMove(reform_spot)
+		blob.mob_radio = null
+
 
 	Life(1, SSmobs.times_fired)
 
@@ -485,6 +489,28 @@
 
 	//Return ourselves in case someone wants it
 	return src
+
+/mob/living/simple_mob/slime/promethean/strip_menu_act(mob/user, action)
+	return humanform.strip_menu_act(arglist(args))
+
+/mob/living/simple_mob/slime/promethean/strip_menu_options(mob/user)
+	return humanform.strip_menu_options(arglist(args))
+
+/mob/living/simple_mob/slime/promethean/strip_interaction_prechecks(mob/user, autoclose, allow_loc)
+	allow_loc = TRUE
+	return humanform.strip_interaction_prechecks(arglist(args))
+
+/mob/living/simple_mob/slime/promethean/open_strip_menu(mob/user)
+	return humanform.open_strip_menu(arglist(args))
+
+/mob/living/simple_mob/slime/promethean/close_strip_menu(mob/user)
+	return humanform.close_strip_menu(arglist(args))
+
+/mob/living/simple_mob/slime/promethean/request_strip_menu(mob/user)
+	return humanform.request_strip_menu(arglist(args))
+
+/mob/living/simple_mob/slime/promethean/render_strip_menu(mob/user)
+	return humanform.render_strip_menu(arglist(args))
 
 /mob/living/simple_mob/slime/promethean/examine(mob/user, dist)
 	. = ..()
