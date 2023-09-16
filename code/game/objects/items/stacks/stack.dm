@@ -115,15 +115,17 @@
 	if(amount > (isnull(recipe.max_amount)? (recipe.result_is_stack? INFINITY : 1) : recipe.max_amount))
 		return FALSE
 	var/needed = recipe.cost * (amount / recipe.result_amount)
-	if((needed % 1) != needed)
+	if(FLOOR(needed, 1) != needed) // no decimals, thank you!
 		return FALSE
-	if(needed > amount)
+	if(needed > src.amount)
 		return FALSE
 	var/turf/where = get_turf(user)
+	if(!do_after(user, recipe.time, src))
+		return FALSE
 	if(!recipe.craft(where, amount, src, user, FALSE, user.dir))
 		return FALSE
 	log_stackcrafting(user, null, src, recipe.name, amount, needed, where)
-	use(amount)
+	use(needed)
 
 /**
  * Return 1 if an immediate subsequent call to use() would succeed.

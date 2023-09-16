@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @license MIT
+ */
+
 import { BooleanLike } from "../../../common/react";
 
 export interface StackRecipeData {
@@ -11,4 +16,5 @@ export interface StackRecipeData {
   isStack: BooleanLike;
   ref: string;
   maxAmount?: number;
+  cost: number;
 }

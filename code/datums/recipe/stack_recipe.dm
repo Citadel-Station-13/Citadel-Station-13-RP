@@ -147,4 +147,5 @@
 		"isStack" = result_is_stack,
 		"ref" = ref(src),
 		"maxAmount" = max_amount,
+		"cost" = cost,
 	)

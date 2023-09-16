@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @license MIT
+ */
+
 import { ceiling } from "common/math";
 import { useBackend, useLocalState } from "../../backend";
 import { Button, Collapsible, Input, NumberInput, Section, Stack } from "../../components";
@@ -21,7 +26,9 @@ const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
   return (
     <Stack>
       <Stack.Item grow={1}>
-        <Button.Confirm icon="wrench" fluid content={props.recipe.name} onClick={() => props.craft(props.recipe.ref, amt)} />
+        <Button.Confirm icon="wrench" fluid
+          content={`${props.recipe.name} (${props.recipe.cost} sheets)`}
+          onClick={() => props.craft(props.recipe.ref, amt)} />
       </Stack.Item>
       {(!!props.recipe.isStack || !!props.recipe.maxAmount) && (
         <>
@@ -63,7 +70,7 @@ export const StackCrafting = (props, context) => {
     }
   });
   return (
-    <Window width={350} height={Math.max(300, 30 + approximateEntries * 30)} title={`${data.name}`}>
+    <Window width={425} height={Math.max(300, 30 + approximateEntries * 30)} title={`${data.name}`}>
       <Window.Content>
         <Section scrollable fill title={"Amount: " + data.amount} buttons={(
           <>
