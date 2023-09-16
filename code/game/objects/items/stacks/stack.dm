@@ -78,6 +78,7 @@
 	. = ..()
 	.["recipes"] = tgui_recipes()
 	.["maxAmount"] = max_amount
+	.["name"] = name
 
 /obj/item/stack/proc/tgui_recipes()
 	var/list/assembled = list()
@@ -88,7 +89,6 @@
 /obj/item/stack/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["amount"] = amount
-	.["name"] = name
 
 /obj/item/stack/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()

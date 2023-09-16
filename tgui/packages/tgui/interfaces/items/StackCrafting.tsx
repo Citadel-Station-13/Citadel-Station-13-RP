@@ -19,6 +19,7 @@ interface StackCraftingData {
 interface StackCraftingEntryProps {
   recipe: StackRecipeData;
   craft: (ref: string, amt: number) => void;
+  stackName: string;
 }
 
 const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
@@ -27,7 +28,7 @@ const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
     <Stack>
       <Stack.Item grow={1}>
         <Button.Confirm icon="wrench" fluid
-          content={`${props.recipe.name} (${props.recipe.cost} sheets)`}
+          content={`${props.recipe.name} (${props.recipe.cost} ${props.stackName})`}
           onClick={() => props.craft(props.recipe.ref, amt)} />
       </Stack.Item>
       {(!!props.recipe.isStack || !!props.recipe.maxAmount) && (
@@ -92,7 +93,7 @@ export const StackCrafting = (props, context) => {
                     <StackCraftingEntry recipe={r} craft={(ref, amt) => act(
                       'craft',
                       { recipe: ref, amount: amt }
-                    )} />
+                    )} stackName={data.name} />
                   </Stack.Item>
                 ))}
               </>
@@ -107,7 +108,7 @@ export const StackCrafting = (props, context) => {
                             <StackCraftingEntry recipe={r} craft={(ref, amt) => act(
                               'craft',
                               { recipe: ref, amount: amt }
-                            )} />
+                            )} stackName={data.name} />
                           </Stack.Item>
                         ))}
                       </Stack>
@@ -121,7 +122,7 @@ export const StackCrafting = (props, context) => {
                     <StackCraftingEntry recipe={r} craft={(ref, amt) => act(
                       'craft',
                       { recipe: ref, amount: amt }
-                    )} />
+                    )} stackName={data.name} />
                   </Stack.Item>
                 ))}
               </>
