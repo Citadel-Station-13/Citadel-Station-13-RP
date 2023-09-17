@@ -893,16 +893,16 @@
 
 	if(sealed)
 		if(H.head)
-			qdel(H.head)
+			H.drop_item_to_ground(H.head, flags = INV_OP_FORCE)
 
 		if(H.gloves)
-			qdel(H.gloves)
+			H.drop_item_to_ground(H.gloves, flags = INV_OP_FORCE)
 
 		if(H.shoes)
-			qdel(H.shoes)
+			H.drop_item_to_ground(H.shoes, flags = INV_OP_FORCE)
 
 		if(H.wear_suit)
-			qdel(H.wear_suit)
+			H.drop_item_to_ground(H.wear_suit, flags = INV_OP_FORCE)
 
 	for(var/piece in list("helmet","gauntlets","chest","boots"))
 		toggle_piece(piece, H, ONLY_DEPLOY)

@@ -1630,3 +1630,8 @@
 	icon = 'icons/mob/human_face_vr.dmi'
 	icon_add = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "rockstar"
+
+/datum/sprite_accessory/hair/ornateponytail
+	name = "Ornate Ponytail"
+	id = "hair_ornate_ponytail"
+	icon_state = "hair_ornate_ponytail"
