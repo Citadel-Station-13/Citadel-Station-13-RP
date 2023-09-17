@@ -22,7 +22,7 @@
 	color = "#CCCCCC"
 
 /obj/structure/table/marble/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/sandstone/marble)
+	material = SSmaterials.get_material(/datum/material/marble)
 	return ..()
 
 /obj/structure/table/reinforced
@@ -222,7 +222,7 @@
 	color = "#CCCCCC"
 
 /obj/structure/table/bench/marble/Initialize(mapload)
-	material = SSmaterials.get_material(/datum/material/sandstone/marble)
+	material = SSmaterials.get_material(/datum/material/marble)
 	return ..()
 
 /*
