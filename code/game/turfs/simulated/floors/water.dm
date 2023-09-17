@@ -23,7 +23,6 @@
 	var/singleton/flooring/F = get_flooring_data(/singleton/flooring/water)
 	footstep_sounds = F?.footstep_sounds
 	update_icon()
-	handle_fish()
 
 /turf/simulated/floor/water/update_icon()
 	..() // To get the edges.
@@ -53,18 +52,18 @@
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
 			var/amount = 300
-			water_breath.adjust_gas(/datum/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
+			water_breath.adjust_gas(GAS_ID_OXYGEN, amount) // Assuming water breathes just extract the oxygen directly from the water.
 			water_breath.temperature = above_air.temperature
 			return return_air()
 		else
-			var/gasid = /datum/gas/carbon_dioxide
+			var/gasid = GAS_ID_CARBON_DIOXIDE
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				if(H.species && H.species.exhale_type)
 					gasid = H.species.exhale_type
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
-			water_breath.adjust_gas(gasid, BREATH_MOLES) // They have no oxygen, but non-zero moles and temp
+			water_breath.adjust_gas(gasid, (above_air.return_pressure() * above_air.volume) / (above-air.temperature * R_IDEAL_GAS_EQUATION)) // They have no oxygen, but non-zero moles and temp
 			water_breath.temperature = above_air.temperature
 			return water_breath
 	return return_air() // Otherwise their head is above the water, so get the air from the atmosphere instead.
@@ -90,6 +89,13 @@
 			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
 	..()
 
+/turf/simulated/floor/water/pre_fishing_query(obj/item/fishing_rod/rod, mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!GetComponent(/datum/component/fishing_spot))
+		AddComponent(/datum/component/fishing_spot, /datum/fish_source/ocean)
+
 /turf/simulated/floor/water/deep
 	name = "deep water"
 	desc = "A body of water.  It seems quite deep."
@@ -98,6 +104,9 @@
 	slowdown = 8
 	depth = 2
 
+/turf/simulated/floor/water/deep/indoors
+	outdoors = FALSE
+	
 /turf/simulated/floor/water/pool
 	name = "pool"
 	desc = "Don't worry, it's not closed."
@@ -147,6 +156,8 @@ var/list/shoreline_icon_cache = list()
 	desc = "The waves look calm and inviting."
 	icon_state = "beach"
 	depth = 0
+	//smoothing_groups = null
+	edge_blending_priority = 0
 
 /turf/simulated/floor/water/beach/update_icon()
 	return
@@ -201,6 +212,9 @@ var/list/shoreline_icon_cache = list()
 		if(poisonlevel > 0)
 			L.adjustToxLoss(poisonlevel)
 
+/turf/simulated/floor/water/indoors
+	outdoors = FALSE
+
 //Supernatural/Horror Pool Turfs
 
 /turf/simulated/floor/water/acid
@@ -227,11 +241,11 @@ var/list/shoreline_icon_cache = list()
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
 			var/amount = 300
-			water_breath.adjust_gas(/datum/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
+			water_breath.adjust_gas(GAS_ID_OXYGEN, amount) // Assuming water breathes just extract the oxygen directly from the water.
 			water_breath.temperature = above_air.temperature
 			return water_breath
 		else
-			var/gasid = /datum/gas/carbon_dioxide
+			var/gasid = GAS_ID_CARBON_DIOXIDE
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				if(H.species && H.species.exhale_type)
@@ -337,11 +351,11 @@ var/list/shoreline_icon_cache = list()
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
 			var/amount = 300
-			water_breath.adjust_gas(/datum/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
+			water_breath.adjust_gas(GAS_ID_OXYGEN, amount) // Assuming water breathes just extract the oxygen directly from the water.
 			water_breath.temperature = above_air.temperature
 			return water_breath
 		else
-			var/gasid = /datum/gas/carbon_dioxide
+			var/gasid = GAS_ID_CARBON_DIOXIDE
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				if(H.species && H.species.exhale_type)

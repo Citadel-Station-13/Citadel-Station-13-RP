@@ -4,9 +4,10 @@
 	desc = "A magazine for some kind of gun."
 	icon_state = ".357"
 	icon = 'icons/obj/ammo.dmi'
+	item_flags = ITEM_EASY_LATHE_DECONSTRUCT
 	slot_flags = SLOT_BELT
 	item_state = "syringe_kit"
-	matter = list(MAT_STEEL = 500)
+	materials = list(MAT_STEEL = 500)
 	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4
@@ -78,6 +79,9 @@
 
 // This dumps all the bullets right on the floor
 /obj/item/ammo_magazine/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(can_remove_ammo)
 		if(!stored_ammo.len)
 			to_chat(user, "<span class='notice'>[src] is already empty!</span>")
@@ -98,7 +102,7 @@
 		return
 
 // This puts one bullet from the magazine into your hand
-/obj/item/ammo_magazine/attack_hand(mob/user)
+/obj/item/ammo_magazine/attack_hand(mob/user, list/params)
 	if(can_remove_ammo)	// For Smart Magazines
 		if(user.get_inactive_held_item() == src)
 			if(stored_ammo.len)
@@ -123,9 +127,86 @@
 	if(ammo_mark)
 		add_overlay("[initial(icon_state)]_[ammo_mark]")
 
-/obj/item/ammo_magazine/examine(mob/user)
+/obj/item/ammo_magazine/examine(mob/user, dist)
 	. = ..()
 	. += "There [(stored_ammo.len == 1)? "is" : "are"] [stored_ammo.len] round\s left!"
+
+/**
+ * puts a round into us, if possible
+ * does not update icon by default!
+ */
+/obj/item/ammo_magazine/proc/load_casing(obj/item/ammo_casing/casing, replace_spent, update_icon)
+	if(caliber)
+		if(casing.caliber != caliber)
+			return FALSE
+	else
+		if(casing.type != ammo_type)
+			return FALSE
+	if(length(stored_ammo) < max_ammo)
+		// add
+		casing.forceMove(src)
+		if(QDELETED(casing))
+			return FALSE
+		stored_ammo += casing
+		if(update_icon)
+			update_icon()
+		return TRUE
+	else if(replace_spent)
+		// replace
+		var/obj/item/ammo_casing/enemy
+		for(var/i in 1 to length(stored_ammo))
+			enemy = stored_ammo[i]
+			if(enemy.loaded())
+				continue
+			// this is the one
+			casing.forceMove(src)
+			if(QDELETED(casing))
+				return FALSE
+			stored_ammo[i] = casing
+			// kick 'em out
+			enemy.forceMove(drop_location())
+			if(update_icon)
+				update_icon()
+			return TRUE
+	return FALSE
+
+/**
+ * quickly gathers stuff from turf
+ * does not sainty check
+ *
+ * @params
+ * * where - the turf
+ * * user - (optional) who's doing it
+ *
+ * @return number of rounds gathered
+ */
+/obj/item/ammo_magazine/proc/quick_gather(turf/where, mob/user)
+	. = 0
+	if(full())
+		user?.action_feedback(SPAN_WARNING("[src] is full."), src)
+		return
+	for(var/obj/item/ammo_casing/casing in where)
+		if(length(stored_ammo) >= max_ammo)
+			break
+		if(!casing.loaded())
+			continue
+		if(!load_casing(casing, FALSE))
+			continue
+		++.
+	if(.)
+		update_icon()
+		user?.action_feedback(SPAN_NOTICE("You collect [.] rounds."), src)
+	else
+		user?.action_feedback(SPAN_WARNING("You fail to collect anything."), src)
+
+/obj/item/ammo_magazine/proc/full()
+	return length(stored_ammo) >= max_ammo
+
+/obj/item/ammo_magazine/proc/remaining()
+	return length(stored_ammo)
+
+/obj/item/ammo_magazine/proc/missing()
+	return max_ammo - length(stored_ammo)
 
 //magazine icon state caching
 /var/global/list/magazine_icondata_keys = list()

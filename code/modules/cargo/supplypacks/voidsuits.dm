@@ -19,7 +19,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/aether
 	container_name = "Atmospheric voidsuit crate"
-	access = access_atmospherics
+	access = ACCESS_ENGINEERING_ATMOS
 
 /datum/supply_pack/voidsuits/atmos/alt
 	name = "Heavy Duty Atmospheric voidsuits"
@@ -33,7 +33,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/aether
 	container_name = "Heavy Duty Atmospheric voidsuit crate"
-	access = access_atmospherics
+	access = ACCESS_ENGINEERING_ATMOS
 
 /datum/supply_pack/voidsuits/engineering
 	name = "Engineering voidsuits"
@@ -47,7 +47,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Engineering voidsuit crate"
-	access = access_engine_equip
+	access = ACCESS_ENGINEERING_ENGINE
 
 /datum/supply_pack/voidsuits/engineering/construction
 	name = "Engineering Construction voidsuits"
@@ -61,7 +61,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Engineering Construction voidsuit crate"
-	access = access_engine_equip
+	access = ACCESS_ENGINEERING_ENGINE
 
 /datum/supply_pack/voidsuits/engineering/hazmat
 	name = "Engineering Hazmat voidsuits"
@@ -75,7 +75,7 @@
 	cost = 45
 	container_type = /obj/structure/closet/crate/secure/aether
 	container_name = "Engineering Hazmat voidsuit crate"
-	access = access_engine_equip
+	access = ACCESS_ENGINEERING_ENGINE
 
 /datum/supply_pack/voidsuits/engineering/alt
 	name = "Reinforced Engineering voidsuits"
@@ -89,7 +89,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/aether
 	container_name = "Reinforced Engineering voidsuit crate"
-	access = access_engine_equip
+	access = ACCESS_ENGINEERING_ENGINE
 
 /datum/supply_pack/voidsuits/medical
 	name = "Medical voidsuits"
@@ -103,7 +103,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Medical voidsuit crate"
-	access = access_medical_equip
+	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/voidsuits/medical/emt
 	name = "Medical EMT voidsuits"
@@ -117,7 +117,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Medical EMT voidsuit crate"
-	access = access_medical_equip
+	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/voidsuits/medical/bio
 	name = "Medical Biohazard voidsuits"
@@ -131,7 +131,7 @@
 	cost = 45
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Medical Biohazard voidsuit crate"
-	access = access_medical_equip
+	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/voidsuits/medical/alt
 	name = "Vey-Med Medical voidsuits"
@@ -145,7 +145,7 @@
 	cost = 60
 	container_type = /obj/structure/closet/crate/secure/veymed
 	container_name = "Vey-Med Medical voidsuit crate"
-	access = access_medical_equip
+	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/voidsuits/medical/alt2
 	name = "Vey-Med Plated Medical voidsuits"
@@ -159,7 +159,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/veymed
 	container_name = "Vey-Med Medical voidsuit crate"
-	access = access_medical_equip
+	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/voidsuits/security
 	name = "Security voidsuits"
@@ -186,7 +186,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Security Crowd Control voidsuit crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/voidsuits/security/alt
 	name = "Security EVA Riot voidsuits"
@@ -200,7 +200,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Security EVA Riot voidsuit crate"
-	access = access_armory
+	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/voidsuits/supply
 	name = "Mining voidsuits"
@@ -213,7 +213,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "Mining voidsuit crate"
-	access = access_mining
+	access = ACCESS_SUPPLY_MINE
 
 /datum/supply_pack/voidsuits/supply/alt
 	name = "Frontier Mining voidsuits"
@@ -226,7 +226,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "Frontier Mining voidsuit crate"
-	access = access_mining
+	access = ACCESS_SUPPLY_MINE
 
 /datum/supply_pack/voidsuits/zaddat
 	name = "Zaddat Shroud"
@@ -323,7 +323,7 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Exploration voidsuit crate"
-	access = access_explorer
+	access = ACCESS_GENERAL_EXPLORER
 
 /datum/supply_pack/voidsuits/pilot
 	name = "Pilot voidsuits"
@@ -337,4 +337,61 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Pilot voidsuit crate"
-	access = access_pilot
+	access = ACCESS_GENERAL_PILOT
+
+//Cryosuits
+/datum/supply_pack/voidsuits/cryosec
+	name = "Security cryosuits"
+	contains = list(
+			/obj/item/clothing/suit/space/void/security/cryo = 1,
+			/obj/item/clothing/head/helmet/space/void/security/cryo = 1,
+			/obj/item/clothing/mask/breath = 1,
+			/obj/item/clothing/shoes/magboots = 1,
+			/obj/item/tank/oxygen = 1
+			)
+	cost = 20
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_name = "Security cryosuit crate"
+	access = ACCESS_SECURITY_ARMORY
+
+/datum/supply_pack/voidsuits/cryoengi
+	name = "Engineering cryosuits"
+	contains = list(
+			/obj/item/clothing/suit/space/void/engineering/cryo = 1,
+			/obj/item/clothing/head/helmet/space/void/engineering/cryo = 1,
+			/obj/item/clothing/mask/breath = 1,
+			/obj/item/clothing/shoes/magboots = 1,
+			/obj/item/tank/oxygen = 1
+			)
+	cost = 20
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_name = "Engineering cryosuit crate"
+	access = ACCESS_ENGINEERING_MAIN
+
+/datum/supply_pack/voidsuits/cryoatmos
+	name = "Atmospherics cryosuits"
+	contains = list(
+			/obj/item/clothing/suit/space/void/atmos/cryo = 1,
+			/obj/item/clothing/head/helmet/space/void/atmos/cryo = 1,
+			/obj/item/clothing/mask/breath = 1,
+			/obj/item/clothing/shoes/magboots = 1,
+			/obj/item/tank/oxygen = 1
+			)
+	cost = 20
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_name = "Atmospherics cryosuit crate"
+	access = ACCESS_ENGINEERING_ATMOS
+
+/datum/supply_pack/voidsuits/cryomining
+	name = "Mining cryosuits"
+	contains = list(
+			/obj/item/clothing/suit/space/void/mining/cryo = 1,
+			/obj/item/clothing/head/helmet/space/void/mining/cryo = 1,
+			/obj/item/clothing/mask/breath = 1,
+			/obj/item/clothing/shoes/magboots = 1,
+			/obj/item/tank/oxygen = 1
+			)
+	cost = 20
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_name = "Mining cryosuit crate"
+	access = ACCESS_SUPPLY_MINE

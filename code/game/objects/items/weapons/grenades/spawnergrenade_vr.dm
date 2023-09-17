@@ -1,12 +1,12 @@
 /obj/item/grenade/spawnergrenade/manhacks/station/locked
 	desc = "It is set to detonate in 5 seconds. It will deploy three weaponized survey drones. This one has a safety interlock that prevents release if used while in proximity to the facility."
-	req_access = list(access_armory) //for toggling safety
+	req_access = list(ACCESS_SECURITY_ARMORY) //for toggling safety
 	var/locked = 1
 
 /obj/item/grenade/spawnergrenade/manhacks/station/locked/detonate()
 	if(locked)
 		var/turf/T = get_turf(src)
-		if(T.z in GLOB.using_map.map_levels)
+		if(T.z in (LEGACY_MAP_DATUM).map_levels)
 			icon_state = initial(icon_state)
 			active = 0
 			return 0

@@ -47,7 +47,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	/// Allows additional multitool functionality
 	var/allow_multitool = 1
 
-/obj/item/integrated_circuit/examine(mob/user)
+/obj/item/integrated_circuit/examine(mob/user, dist)
 	. = ..()
 	external_examine(user)
 	ui_interact(user)
@@ -57,7 +57,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	attackby(I, user)
 
 /// This should be used when someone is examining while the case is opened.
-/obj/item/integrated_circuit/proc/internal_examine(mob/user)
+/obj/item/integrated_circuit/proc/internal_examine(mob/user, dist)
 	to_chat(user, "This board has [inputs.len] input pin\s, [outputs.len] output pin\s and [activators.len] activation pin\s.")
 	for(var/datum/integrated_io/I in inputs)
 		if(I.linked.len)
@@ -72,10 +72,10 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	ui_interact(user)
 
 /// This should be used when someone is examining from an 'outside' perspective, e.g. reading a screen or LED.
-/obj/item/integrated_circuit/proc/external_examine(mob/user)
+/obj/item/integrated_circuit/proc/external_examine(mob/user, dist)
 	return any_examine(user)
 
-/obj/item/integrated_circuit/proc/any_examine(mob/user)
+/obj/item/integrated_circuit/proc/any_examine(mob/user, dist)
 	return
 
 /obj/item/integrated_circuit/proc/attackby_react(var/atom/movable/A,mob/user)
@@ -125,10 +125,10 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		to_chat(M, SPAN_NOTICE("The circuit '[src.name]' is now labeled '[input]'."))
 		displayed_name = input
 
-/obj/item/integrated_circuit/ui_state(mob/user)
+/obj/item/integrated_circuit/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
-/obj/item/integrated_circuit/ui_host(mob/user)
+/obj/item/integrated_circuit/ui_host(mob/user, datum/tgui_module/module)
 	if(istype(loc, /obj/item/electronic_assembly))
 		return loc.ui_host()
 	return ..()
@@ -206,7 +206,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 	return pindata
 
-/obj/item/integrated_circuit/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/integrated_circuit/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -6,11 +6,14 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	var/obj/item/implant/imp = null
 	var/active = 1
 
-/obj/item/implanter/attack_self(var/mob/user)
+/obj/item/implanter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = !active
 	to_chat(user, "<span class='notice'>You [active ? "" : "de"]activate \the [src].</span>")
 	update()
@@ -116,21 +119,22 @@
 		return
 	return ..()
 
-/obj/item/implanter/compressed/afterattack(obj/item/I, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/implanter/compressed/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(!active)
 		to_chat(user, "<span class='warning'>Activate \the [src.name] first.</span>")
 		return
-	if(istype(I, /obj/item) && istype(imp, /obj/item/implant/compressed))
+	if(istype(target, /obj/item) && istype(imp, /obj/item/implant/compressed))
 		var/obj/item/implant/compressed/c = imp
 		if (c.scanned)
 			to_chat(user, "<span class='warning'>Something is already scanned inside the implant!</span>")
 			return
-		if(istype(I, /obj/item/storage))
-			to_chat(user, "<span class='warning'>You can't store [I] in this!</span>")
+		if(istype(target, /obj/item/storage))
+			to_chat(user, "<span class='warning'>You can't store [target] in this!</span>")
 			return
-		c.scanned = I
+		c.scanned = target
+		var/obj/item/I = target
 		I.forceMove(src)
 		update()
 

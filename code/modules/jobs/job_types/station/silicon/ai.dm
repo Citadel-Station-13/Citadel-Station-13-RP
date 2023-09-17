@@ -1,4 +1,4 @@
-/datum/job/station/ai
+/datum/role/job/station/ai
 	id = JOB_ID_AI
 	title = "AI"
 	flag = AI
@@ -12,7 +12,6 @@
 	req_admin_notify = 1
 	minimal_player_age = 7
 	account_allowed = 0
-	economic_modifier = 0
 	pto_type = PTO_CIVILIAN
 	has_headset = FALSE
 	assignable = FALSE
@@ -24,20 +23,20 @@
 	disallow_jobhop = TRUE
 
 // AI procs
-/datum/job/station/ai/equip(var/mob/living/carbon/human/H)
+/datum/role/job/station/ai/equip(var/mob/living/carbon/human/H)
 	if(!H)
 		return 0
 	return 1
 
-/datum/job/station/ai/slots_remaining(latejoin)
+/datum/role/job/station/ai/slots_remaining(latejoin)
 	if(latejoin)
 		return GLOB.empty_playable_ai_cores.len
 	return ..()
 
-/datum/job/station/ai/is_position_available()
+/datum/role/job/station/ai/is_position_available()
 	return (GLOB.empty_playable_ai_cores.len != 0)
 
-/datum/job/station/ai/equip_preview(mob/living/carbon/human/H)
+/datum/role/job/station/ai/equip_preview(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/straight_jacket(H), SLOT_ID_SUIT)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cardborg(H), SLOT_ID_HEAD)
 	return 1

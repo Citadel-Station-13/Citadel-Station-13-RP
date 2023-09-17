@@ -44,8 +44,11 @@
 ### TheLordME
 
 /code/modules/power/geothermal_power.dm @TheLordME
-/code/modules/mob/living/6carbon/human/human_powers.dm @TheLordME
-
+/code/modules/species/station/xenomorph_hybrids/ @TheLordME
+/code/modules/sprite_accessories/wings/xenomorph.dm @TheLordME
+/code/modules/sprite_accessories/tail/species/xenomorph.dm @TheLordME
+/code/modules/sprite_accessories/ears/xenomorph.dm @TheLordME
+/code/modules/events/xenoinfestation.dm @TheLordME
 
 ### Multiple Owners
 

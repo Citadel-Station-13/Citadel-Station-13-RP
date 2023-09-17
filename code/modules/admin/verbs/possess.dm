@@ -2,6 +2,9 @@
 	set name = "Possess Obj"
 	set category = "Object"
 
+	if(!O.loc)
+		return // erm erm erm maybe not?
+
 	if(istype(O,/obj/singularity))
 		if(config_legacy.forbid_singulo_possession)
 			to_chat(usr, "It is forbidden to possess singularities.")

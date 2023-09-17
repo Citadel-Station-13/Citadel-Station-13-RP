@@ -3,7 +3,7 @@
 	desc = "A roll of sticky tape. Possibly for taping ducks... or was that ducts?"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "taperoll"
-	force = 0
+	damage_force = 0
 	w_class = ITEMSIZE_TINY
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
@@ -39,7 +39,7 @@
 				if(H.glasses)
 					to_chat(user, "<span class='warning'>\The [H] is already wearing somethign on their eyes.</span>")
 					return
-				if(H.head && (H.head.body_parts_covered & FACE))
+				if(H.head && (H.head.body_cover_flags & FACE))
 					to_chat(user, "<span class='warning'>Remove their [H.head] first.</span>")
 					return
 				user.visible_message("<span class='danger'>\The [user] begins taping over \the [H]'s eyes!</span>")
@@ -59,7 +59,7 @@
 				if(!can_place)
 					return
 
-				if(!H || !src || !H.organs_by_name[BP_HEAD] || !H.has_eyes() || H.glasses || (H.head && (H.head.body_parts_covered & FACE)))
+				if(!H || !src || !H.organs_by_name[BP_HEAD] || !H.has_eyes() || H.glasses || (H.head && (H.head.body_cover_flags & FACE)))
 					return
 
 				user.visible_message("<span class='danger'>\The [user] has taped up \the [H]'s eyes!</span>")
@@ -78,7 +78,7 @@
 				if(H.wear_mask)
 					to_chat(user, "<span class='warning'>\The [H] is already wearing a mask.</span>")
 					return
-				if(H.head && (H.head.body_parts_covered & FACE))
+				if(H.head && (H.head.body_cover_flags & FACE))
 					to_chat(user, "<span class='warning'>Remove their [H.head] first.</span>")
 					return
 				user.visible_message("<span class='danger'>\The [user] begins taping up \the [H]'s mouth!</span>")
@@ -98,7 +98,7 @@
 				if(!can_place)
 					return
 
-				if(!H || !src || !H.organs_by_name[BP_HEAD] || !H.check_has_mouth() || (H.head && (H.head.body_parts_covered & FACE)))
+				if(!H || !src || !H.organs_by_name[BP_HEAD] || !H.check_has_mouth() || (H.head && (H.head.body_cover_flags & FACE)))
 					return
 
 				user.visible_message("<span class='danger'>\The [user] has taped up \the [H]'s mouth!</span>")
@@ -130,6 +130,9 @@
 	return ..()
 
 /obj/item/duct_tape_roll/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "You remove a piece of tape from the roll.")
 	var/obj/item/duct_tape_piece/tape = new(get_turf(src))
 	user.put_in_hands(tape)
@@ -164,7 +167,7 @@
 
 	var/obj/item/stuck = null
 
-/obj/item/duct_tape_piece/examine(mob/user)
+/obj/item/duct_tape_piece/examine(mob/user, dist)
 	if(stuck)
 		return stuck.examine(user)
 	else
@@ -178,6 +181,9 @@
 	copy_overlays(W)
 
 /obj/item/duct_tape_piece/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!stuck)
 		return
 
@@ -196,15 +202,15 @@
 		qdel(I)
 		to_chat(user, "<span-class='notice'>You place \the [I] back into \the [src].</span>")
 
-/obj/item/duct_tape_piece/attack_hand(mob/living/L)
+/obj/item/duct_tape_piece/attack_hand(mob/user, list/params)
 	anchored = FALSE
 	return ..() // Pick it up now that it's unanchored.
 
-/obj/item/duct_tape_piece/afterattack(var/A, mob/user, flag, params)
-	if(!in_range(user, A) || istype(A, /obj/machinery/door) || !stuck)
+/obj/item/duct_tape_piece/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!in_range(user, target) || istype(target, /obj/machinery/door) || !stuck)
 		return
 
-	var/turf/target_turf = get_turf(A)
+	var/turf/target_turf = get_turf(target)
 	var/turf/source_turf = get_turf(user)
 
 	var/dir_offset = 0

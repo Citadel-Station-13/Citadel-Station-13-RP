@@ -58,18 +58,16 @@ SUBSYSTEM_DEF(statpanels)
 		var/list/additional = player._statpanel_data()
 		// server data has priority
 		// assert primary status tab
-		var/server_data
+		var/server_data = "%5b%5d" // "[]"
 		if(player.statpanel_tab("Status", TRUE))
 			server_data = cache_server_data
 		// assert admin tabs - these are special and do not check for additional info
-		else if(player.statpanel_tab("MC", is_admin))
+		if(player.statpanel_tab("MC", is_admin))
 			server_data = fetch_mc_data()
-		else if(player.statpanel_tab("Tickets", is_admin))
+		if(player.statpanel_tab("Tickets", is_admin))
 			server_data = fetch_ticket_data()
-		else if(player.statpanel_tab("SDQL2", is_admin && length(GLOB.sdql2_queries)))
+		if(player.statpanel_tab("SDQL2", is_admin && length(GLOB.sdql2_queries)))
 			server_data = fetch_sdql2_data()
-		else
-			server_data = "%5b%5d" // "[]"
 		// send additional
 		player << output("[server_data];[url_encode(json_encode(additional))]", "statbrowser:byond_update")
 

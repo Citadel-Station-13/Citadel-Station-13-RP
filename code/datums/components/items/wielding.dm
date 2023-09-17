@@ -1,5 +1,7 @@
 // todo: can element this by usign 3 signals instead of 2, one to receive a keybind signal.
 /datum/component/wielding
+	registered_type = /datum/component/wielding
+	
 	/// hands needed
 	var/hands
 	/// lazylist
@@ -22,8 +24,8 @@
 
 /datum/component/wielding/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/signal_examine)
-	RegisterSignal(parent, COMSIG_ITEM_DROPPED, .proc/signal_dropped)
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(signal_examine))
+	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(signal_dropped))
 
 /datum/component/wielding/UnregisterFromParent()
 	unwield()

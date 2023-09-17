@@ -61,7 +61,7 @@
 	reagents.add_reagent("sugar", 5)
 	reagents.add_reagent("ice", 5)
 
-/obj/machinery/icecream_vat/attack_hand(mob/user as mob)
+/obj/machinery/icecream_vat/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	interact(user)
 

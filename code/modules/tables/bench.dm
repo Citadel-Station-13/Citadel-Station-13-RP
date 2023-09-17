@@ -6,6 +6,7 @@
 	can_reinforce = 0
 	flipped = -1
 	density = 0
+	depth_projected = FALSE
 
 /obj/structure/table/bench/update_desc()
 	if(material)

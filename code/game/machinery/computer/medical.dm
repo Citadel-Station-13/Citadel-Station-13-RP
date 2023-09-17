@@ -18,7 +18,7 @@
 	icon_screen = "medcomp"
 	density = TRUE
 	light_color = "#315ab4"
-	req_one_access = list(access_medical, access_forensics_lockers, access_robotics)
+	req_one_access = list(ACCESS_MEDICAL_MAIN, ACCESS_SECURITY_FORENSICS, ACCESS_SCIENCE_ROBOTICS)
 	circuit = /obj/item/circuitboard/med_data
 	var/obj/item/card/id/scan = null
 	var/authenticated = null
@@ -101,7 +101,7 @@
 /obj/machinery/computer/med_data/attack_ai(user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/med_data/attack_hand(mob/user as mob)
+/obj/machinery/computer/med_data/attack_hand(mob/user, list/params)
 	if(..())
 		return
 
@@ -351,7 +351,7 @@
 					printing = TRUE
 					// playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, TRUE)
 					SStgui.update_uis(src)
-					addtimer(CALLBACK(src, .proc/print_finish), 5 SECONDS)
+					addtimer(CALLBACK(src, PROC_REF(print_finish)), 5 SECONDS)
 			else
 				return FALSE
 
@@ -507,7 +507,9 @@
 	light_color = "#5284e7"
 	circuit = /obj/item/circuitboard/med_data/pcu
 	density = FALSE
-
+	depth_level = 0
+	depth_projected = FALSE
+	climb_allowed = FALSE
 
 #undef FIELD
 #undef MED_FIELD

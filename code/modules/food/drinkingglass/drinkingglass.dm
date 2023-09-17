@@ -25,9 +25,9 @@
 	possible_transfer_amounts = list(5,10,15,30)
 	atom_flags = OPENCONTAINER
 
-	matter = list(MAT_GLASS = 60)
+	materials = list(MAT_GLASS = 60)
 
-/obj/item/reagent_containers/food/drinks/glass2/examine(mob/user)
+/obj/item/reagent_containers/food/drinks/glass2/examine(mob/user, dist)
 	. = ..()
 
 	for(var/I in extras)
@@ -147,9 +147,9 @@
 		else continue
 		side = "right"
 
-/obj/item/reagent_containers/food/drinks/glass2/afterattack(var/obj/target, var/mob/user, var/proximity)
+/obj/item/reagent_containers/food/drinks/glass2/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(user.a_intent == INTENT_HARM) //We only want splashing to be done if they are on harm intent.
-		if(!is_open_container() || !proximity)
+		if(!is_open_container() || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 			return 1
 		if(standard_splash_mob(user, target))
 			return 1

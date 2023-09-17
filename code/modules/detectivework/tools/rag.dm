@@ -41,7 +41,10 @@
 	STOP_PROCESSING(SSobj, src) //so we don't continue turning to ash while gc'd
 	return ..()
 
-/obj/item/reagent_containers/glass/rag/attack_self(mob/user as mob)
+/obj/item/reagent_containers/glass/rag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(on_fire)
 		user.visible_message("<span class='warning'>\The [user] stamps out [src].</span>", "<span class='warning'>You stamp out [src].</span>")
 		user.drop_item_to_ground(src)
@@ -122,7 +125,7 @@
 		else if(user.zone_sel.selecting == O_MOUTH) //Check player L location, provided the rag is not on fire. Then check if mouth is exposed.
 			if(ishuman(L)) //Added this since player species process reagents in majority of cases.
 				var/mob/living/carbon/human/H = L
-				if(H.head && (H.head.body_parts_covered & FACE)) //Check human head coverage.
+				if(H.head && (H.head.body_cover_flags & FACE)) //Check human head coverage.
 					to_chat(user, SPAN_WARNING("Remove their [H.head] first."))
 					return
 				else if(reagents.total_volume) //Final check. If the rag is not on fire and their face is uncovered, smother L.
@@ -132,8 +135,8 @@
 						SPAN_WARNING("You smother [L] with [src]!"),
 						"You hear some struggling and muffled cries of surprise"
 						)
-					//it's inhaled, so... maybe CHEM_BLOOD doesn't make a whole lot of sense but it's the best we can do for now
-					reagents.trans_to_mob(L, amount_per_transfer_from_this, CHEM_BLOOD)
+					//it's inhaled, so... maybe CHEM_INJECT doesn't make a whole lot of sense but it's the best we can do for now
+					reagents.trans_to_mob(L, amount_per_transfer_from_this, CHEM_INJECT)
 					update_name()
 				else
 					to_chat(user, SPAN_WARNING("You can't smother this creature."))
@@ -144,25 +147,25 @@
 	else
 		wipe_down(target, user)
 
-/obj/item/reagent_containers/glass/rag/afterattack(atom/A as obj|turf|area, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/reagent_containers/glass/rag/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
-	if(istype(A, /obj/structure/reagent_dispensers) || istype(A, /obj/item/reagent_containers/glass/bucket) || istype(A, /obj/structure/mopbucket))
-		if(!reagents.get_free_space())
+	if(istype(target, /obj/structure/reagent_dispensers) || istype(target, /obj/item/reagent_containers/glass/bucket) || istype(target, /obj/structure/mopbucket))
+		if(!reagents.available_volume())
 			to_chat(user, "<span class='warning'>\The [src] is already soaked.</span>")
 			return
 
-		if(A.reagents && A.reagents.trans_to_obj(src, reagents.maximum_volume))
-			user.visible_message("<span class='notice'>\The [user] soaks [src] using [A].</span>", "<span class='notice'>You soak [src] using [A].</span>")
+		if(target.reagents && target.reagents.trans_to_obj(src, reagents.maximum_volume))
+			user.visible_message("<span class='notice'>\The [user] soaks [src] using [target].</span>", "<span class='notice'>You soak [src] using [target].</span>")
 			update_name()
 		return
 
-	if(!on_fire && istype(A) && (src in user))
-		if(A.is_open_container() && !(A in user))
-			remove_contents(user, A)
-		else if(!ismob(A)) //mobs are handled in attack() - this prevents us from wiping down people while smothering them.
-			wipe_down(A, user)
+	if(!on_fire && istype(target) && (src in user))
+		if(target.is_open_container() && !(target in user))
+			remove_contents(user, target)
+		else if(!ismob(target)) //mobs are handled in attack() - this prevents us from wiping down people while smothering them.
+			wipe_down(target, user)
 		return
 
 /obj/item/reagent_containers/glass/rag/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)

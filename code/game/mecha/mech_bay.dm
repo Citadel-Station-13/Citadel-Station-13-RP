@@ -16,10 +16,6 @@
 		// /mob/living/silicon/robot/platform
 	)
 
-/obj/machinery/mech_recharger/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/mech_recharger/Crossed(var/atom/movable/M)
 	. = ..()
 	if(charging == M)

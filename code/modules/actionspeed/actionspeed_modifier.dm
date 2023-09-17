@@ -178,7 +178,6 @@ GLOBAL_LIST_EMPTY(actionspeed_modification_cache)
 
 ///Adds a default action speed
 /mob/proc/initialize_actionspeed()
-	add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/base, multiplicative_slowdown = 1)
 
 /// Get the action speed modifier datums on the mob
 /mob/proc/get_actionspeed_modifiers()

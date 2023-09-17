@@ -20,20 +20,12 @@
  * * * Either world.time or stoppable timer cooldowns, depending on the other factors. Regular timer cooldowns do not support this.
 */
 
-// INDEXES FOR VAR COOLDOWNS - DO NOT USE UPPERCASE, DO NOT USE cooldown_, APPENDS ADDED AUTOMATICALLY
-
-// INDEXES FOR TIMER COOLDOWNS - Must be unique!
-#define CD_INDEX_SONAR_PULSE				"sonar_pulse"
-#define CD_INDEX_POWER_DRAIN_WARNING		"power_drain_warning"
-#define CD_INDEX_TAPE_TRANSLATION			"tape_translation"
-#define CD_INDEX_TAPE_PRINT					"tape_print"
-
 //TIMER COOLDOWN MACROS
 
 #define COMSIG_CD_STOP(cd_index) "cooldown_[cd_index]"
 #define COMSIG_CD_RESET(cd_index) "cd_reset_[cd_index]"
 
-#define TIMER_COOLDOWN_START(cd_source, cd_index, cd_time) LAZYSET(cd_source.cooldowns, cd_index, addtimer(CALLBACK(GLOBAL_PROC, /proc/end_cooldown, cd_source, cd_index), cd_time))
+#define TIMER_COOLDOWN_START(cd_source, cd_index, cd_time) LAZYSET(cd_source.cooldowns, cd_index, addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(end_cooldown), cd_source, cd_index), cd_time))
 
 #define TIMER_COOLDOWN_CHECK(cd_source, cd_index) LAZYACCESS(cd_source.cooldowns, cd_index)
 
@@ -46,7 +38,7 @@
  * A bit more expensive than the regular timers, but can be reset before they end and the time left can be checked.
 */
 
-#define S_TIMER_COOLDOWN_START(cd_source, cd_index, cd_time) LAZYSET(cd_source.cooldowns, cd_index, addtimer(CALLBACK(GLOBAL_PROC, /proc/end_cooldown, cd_source, cd_index), cd_time, TIMER_STOPPABLE))
+#define S_TIMER_COOLDOWN_START(cd_source, cd_index, cd_time) LAZYSET(cd_source.cooldowns, cd_index, addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(end_cooldown), cd_source, cd_index), cd_time, TIMER_STOPPABLE))
 
 #define S_TIMER_COOLDOWN_RESET(cd_source, cd_index) reset_cooldown(cd_source, cd_index)
 
@@ -68,3 +60,25 @@
 #define COOLDOWN_RESET(cd_source, cd_index) cd_source.cd_##cd_index = 0
 
 #define COOLDOWN_TIMELEFT(cd_source, cd_index) (max(0, cd_source.cd_##cd_index - world.time))
+
+// INDEXES FOR VAR COOLDOWNS - DO NOT USE UPPERCASE, DO NOT USE cooldown_, APPENDS ADDED AUTOMATICALLY
+
+// INDEXES FOR TIMER COOLDOWNS - Must be unique!
+
+//? General
+
+#define CD_INDEX_SONAR_PULSE				"sonar_pulse"
+#define CD_INDEX_SONAR_NOISE				"sonar_noise"
+#define CD_INDEX_POWER_DRAIN_WARNING		"power_drain_warning"
+
+//? Items
+//* /obj/item/tape_recorder
+#define CD_INDEX_TAPE_TRANSLATION			"tape_translation"
+#define CD_INDEX_TAPE_PRINT					"tape_print"
+
+//* /obj/item/fishing_rod
+#define CD_INDEX_FISHING_ROD_MOB_HOOK		"fishing_rod_mob_hook"
+
+//? Machinery
+//* /obj/machinery/computer/card
+#define CD_INDEX_IDCONSOLE_PRINT			"idconsole_print"

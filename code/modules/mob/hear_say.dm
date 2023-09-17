@@ -20,7 +20,7 @@
 			italics = 1
 			sound_vol *= 0.5 //muffle the sound a bit, so it's like we're actually talking through contact
 
-	if(sleeping || stat == 1)
+	if(IS_ALIVE_BUT_UNCONSCIOUS(src))
 		hear_sleep(message)
 		return
 
@@ -129,7 +129,7 @@
 	return list("AI") // AI door!
 
 // Converts specific characters, like +, |, and _ to formatted output.
-/mob/proc/say_emphasis(input)
+/proc/say_emphasis(input)
 	var/static/regex/italics = regex("\\|(?=\\S)(.+?)(?=\\S)\\|", "g")
 	input = replacetext_char(input, italics, "<i>$1</i>")
 	var/static/regex/bold = regex("\\+(?=\\S)(.+?)(?=\\S)\\+", "g")
@@ -140,7 +140,7 @@
 	input = replacetext_char(input, strikethrough, "<s>$1</s>")
 	return input
 
-/mob/proc/say_emphasis_strip(input)
+/proc/say_emphasis_strip(input)
 	var/static/regex/italics = regex("\\|(?=\\S)(.*?)(?=\\S)\\|", "g")
 	input = replacetext_char(input, italics, "$1")
 	var/static/regex/bold = regex("\\+(?=\\S)(.*?)(?=\\S)\\+", "g")
@@ -159,7 +159,7 @@
 		playsound(loc, 'sound/effects/radiochatter.ogg', 10, 0, -1, falloff = -3)
 		last_radio_sound = world.time
 
-	if(sleeping || stat==1) //If unconscious or sleeping
+	if(IS_ALIVE_BUT_UNCONSCIOUS(src)) //If unconscious or sleeping
 		hear_sleep(message)
 		return
 

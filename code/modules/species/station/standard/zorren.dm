@@ -1,5 +1,6 @@
 /datum/species/hi_zoxxen
 	uid = SPECIES_ID_ZORREN_HIGH
+	id = SPECIES_ID_ZORREN_HIGH
 	id = SPECIES_ID_ZORREN
 	name = SPECIES_ZORREN_HIGH
 	name_plural = "Zorren"
@@ -35,7 +36,7 @@
 	)
 
 
-	species_spawn_flags = SPECIES_SPAWN_CHARACTER
+	species_spawn_flags = SPECIES_SPAWN_SECRET
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"
@@ -52,6 +53,9 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 
 	unarmed_types = list(
@@ -99,7 +103,7 @@
 		/datum/category_item/catalogue/fauna/flatzorren,
 	)
 
-	species_spawn_flags = SPECIES_SPAWN_CHARACTER
+	species_spawn_flags = SPECIES_SPAWN_SECRET
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"
@@ -110,6 +114,9 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 
 	heat_discomfort_strings = list(

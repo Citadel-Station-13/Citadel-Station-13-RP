@@ -91,7 +91,7 @@
 			if(!O.blinded && isliving(O))
 				var/mob/living/L = O
 				L.flash_eyes()
-		O.Weaken(flash_time)
+		O.afflict_paralyze(20 * flash_time)
 
 /obj/machinery/flasher/emp_act(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
@@ -127,7 +127,7 @@
 	name = "flasher button"
 	desc = "A remote control switch for a mounted flasher."
 
-/obj/machinery/button/flasher/attack_hand(mob/user)
+/obj/machinery/button/flasher/attack_hand(mob/user, list/params)
 	if(..())
 		return
 

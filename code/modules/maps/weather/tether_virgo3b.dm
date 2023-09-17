@@ -85,8 +85,7 @@
 
 		new_color = rgb(new_r, new_g, new_b)
 
-	spawn(1)
-		update_sun_deferred(2, new_brightness, new_color)
+	update_sun_deferred(new_brightness, new_color)
 
 
 /datum/weather_holder/virgo3b
@@ -365,7 +364,7 @@
 					var/obj/item/melee/umbrella/U = L.get_active_held_item()
 					if(U.open)
 						to_chat(L, "<span class='danger'>You struggle to keep hold of your umbrella!</span>")
-						L.Stun(20)	// This is not nearly as long as it seems
+						L.afflict_stun(20 * 20)	// This is not nearly as long as it seems
 						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)	// Closest sound I've got to "Umbrella in the wind"
 				else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
 					var/obj/item/melee/umbrella/U = L.get_inactive_held_item()

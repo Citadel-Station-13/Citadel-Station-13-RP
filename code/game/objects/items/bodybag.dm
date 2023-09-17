@@ -8,6 +8,9 @@
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/bodybag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/obj/structure/closet/body_bag/R = new /obj/structure/closet/body_bag(user.loc)
 	R.add_fingerprint(user)
 	qdel(src)
@@ -33,19 +36,21 @@
 	name = "body bag"
 	desc = "A plastic bag designed for the storage and transportation of cadavers."
 	icon = 'icons/obj/medical/bodybag.dmi'
-	icon_state = "bodybag_closed"
-	icon_closed = "bodybag_closed"
-	icon_opened = "bodybag_open"
+	closet_appearance = null
 	open_sound = 'sound/items/zip.ogg'
 	close_sound = 'sound/items/zip.ogg'
+	icon_opened = "bodybag_open"
+	icon_closed = "bodybag_closed"
+	icon_state = "bodybag_closed"
 	var/item_path = /obj/item/bodybag
 	density = 0
 	storage_capacity = (MOB_MEDIUM * 2) - 1
 	var/contains_body = 0
+	use_old_icon_update = TRUE
 
 /obj/structure/closet/body_bag/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/pen))
-		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
+		var/t = input(user, "What would you like the label to be?", name, null) as text
 		if (user.get_active_held_item() != W)
 			return
 		if (!in_range(src, user) && src.loc != user)
@@ -108,7 +113,7 @@
 	if(opened)
 		icon_state = icon_opened
 	else
-		if(contains_body > 0)
+		if(contains_body)
 			icon_state = "bodybag_closed1"
 		else
 			icon_state = icon_closed
@@ -117,7 +122,7 @@
 /obj/item/bodybag/cryobag
 	name = "stasis bag"
 	desc = "A non-reusable plastic bag designed to slow down bodily functions such as circulation and breathing, \
-	especially useful if short on time or in a hostile enviroment."
+	especially useful if short on time or in a hostile environment."
 	icon = 'icons/obj/medical/cryobag.dmi'
 	icon_state = "bodybag_folded"
 	item_state = "bodybag_cryo_folded"
@@ -125,6 +130,9 @@
 	var/obj/item/reagent_containers/syringe/syringe
 
 /obj/item/bodybag/cryobag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/obj/structure/closet/body_bag/cryobag/R = new /obj/structure/closet/body_bag/cryobag(user.loc)
 	R.add_fingerprint(user)
 	if(syringe)
@@ -135,7 +143,7 @@
 /obj/structure/closet/body_bag/cryobag
 	name = "stasis bag"
 	desc = "A non-reusable plastic bag designed to slow down bodily functions such as circulation and breathing, \
-	especially useful if short on time or in a hostile enviroment."
+	especially useful if short on time or in a hostile environment."
 	icon = 'icons/obj/medical/cryobag.dmi'
 	item_path = /obj/item/bodybag/cryobag
 	store_misc = 0
@@ -155,7 +163,7 @@
 	QDEL_NULL(tank)
 	return ..()
 
-/obj/structure/closet/body_bag/cryobag/attack_hand(mob/living/user)
+/obj/structure/closet/body_bag/cryobag/attack_hand(mob/user, list/params)
 	if(used)
 		var/confirm = tgui_alert(user, "Are you sure you want to open \the [src]? \The [src] will expire upon opening it.", "Confirm Opening", list("No", "Yes"))
 		if(confirm == "Yes")
@@ -212,9 +220,9 @@
 		return
 
 	if(H.reagents)
-		syringe.reagents.trans_to_mob(H, 30, CHEM_BLOOD)
+		syringe.reagents.trans_to_mob(H, 30, CHEM_INJECT)
 
-/obj/structure/closet/body_bag/cryobag/examine(mob/user)
+/obj/structure/closet/body_bag/cryobag/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user)) //The bag's rather thick and opaque from a distance.
 		. += "<span class='info'>You peer into \the [src].</span>"

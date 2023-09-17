@@ -7,7 +7,10 @@
 	description_info = "Use in your hand to attempt to create a Promethean.  It functions similarly to a positronic brain, in that a ghost is needed to become the Promethean."
 	var/searching = 0
 
-/obj/item/slime_cube/attack_self(mob/user as mob)
+/obj/item/slime_cube/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!searching)
 		to_chat(user, "<span class='warning'>You stare at the slimy cube, watching as some activity occurs.</span>")
 		icon_state = "slime cube active"
@@ -70,15 +73,15 @@
 
 // More or less functionally identical to the telecrystal tele.
 /obj/item/slime_crystal
-	name = "lesser slime cystal"
-	desc = "A small, gooy crystal."
+	name = "lesser slime crystal"
+	desc = "A small, gooey crystal."
 	description_info = "This will teleport you to a mostly 'safe' tile when used in-hand, consuming the slime crystal.  \
 	It can also teleport someone else, by throwing it at them or attacking them with it."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "slime_crystal_small"
 	w_class = ITEMSIZE_TINY
 	origin_tech = list(TECH_MAGNET = 6, TECH_BLUESPACE = 3)
-	force = 1 //Needs a token force to ensure you can attack because for some reason you can't attack with 0 force things
+	damage_force = 1 //Needs a token damage_force to ensure you can attack because for some reason you can't attack with 0 damage_force things
 
 /obj/item/slime_crystal/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
@@ -91,6 +94,9 @@
 	return . | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/slime_crystal/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class='warning'>\The [user] teleports themselves with \the [src]!</span>")
 	safe_blink(user, 14)
 	qdel(src)
@@ -131,3 +137,93 @@
 /obj/item/reagent_containers/food/snacks/slime/Initialize(mapload)
 	. = ..()
 	bitesize = 5
+
+//Flashlight
+/obj/item/flashlight/slime
+	gender = PLURAL
+	name = "glowing slime extract"
+	desc = "A slimy ball that appears to be glowing from bioluminescence."
+	icon = 'icons/obj/lighting.dmi'
+	icon_state = "floor1" //not a slime extract sprite but... something close enough!
+	item_state = "slime"
+	light_color = LIGHT_COLOR_YELLOW
+	light_wedge = LIGHT_OMNI
+	w_class = ITEMSIZE_TINY
+	brightness_on = 6
+	on = TRUE //Bio-luminesence has one setting, on.
+	power_use = 0
+
+/obj/item/flashlight/slime/Initialize(mapload)
+	. = ..()
+	set_light(brightness_on, flashlight_power, light_color)
+
+/obj/item/flashlight/slime/update_appearance(updates = ~UPDATE_ICON_STATE)
+	return ..()
+
+/obj/item/flashlight/slime/attack_self(mob/user)
+	return //Bio-luminescence does not toggle.
+
+
+//Radiation Emitter
+
+/obj/item/slime_irradiator
+	name = "glowing slime extract"
+	desc = "A slimy ball that appears to be glowing from bioluminescence."
+	icon = 'icons/mob/slimes.dmi'
+	icon_state = "irradiator"
+	light_color = "#00FF00"
+	light_power = 0.4
+	light_range = 2
+	w_class = ITEMSIZE_TINY
+
+/obj/item/slime_irradiator/New()
+	START_PROCESSING(SSobj, src)
+	set_light(light_range, light_power, light_color)
+	return ..()
+
+/obj/item/slime_irradiator/process()
+	radiation_pulse(src, 5)
+
+/obj/item/slime_irradiator/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+
+//BS Pouch
+/obj/item/storage/backpack/holding/slime
+	name = "bluespace slime pouch"
+	desc = "A slimy pouch that opens into a localized pocket of bluespace."
+	icon_state = "slimepouch"
+
+
+
+//Slime Chems
+
+/datum/reagent/myelamine/slime
+	name = "Agent A"
+	id = "slime_bleed_fixer"
+	description = "A slimy liquid which appears to rapidly clot internal hemorrhages by increasing the effectiveness of platelets at low quantities.  Toxic in high quantities."
+	taste_description = "slime"
+	overdose = 5
+
+/datum/reagent/osteodaxon/slime
+	name = "Agent B"
+	id = "slime_bone_fixer"
+	description = "A slimy liquid which can be used to heal bone fractures at low quantities.  Toxic in high quantities."
+	taste_description = "slime"
+	overdose = 5
+
+/datum/reagent/peridaxon/slime
+	name = "Agent C"
+	id = "slime_organ_fixer"
+	description = "A slimy liquid which is used to encourage recovery of internal organs and nervous systems in low quantities.  Toxic in high quantities."
+	taste_description = "slime"
+	overdose = 5
+
+/datum/reagent/nutriment/glucose/slime
+	name = "Slime Goop"
+	id = "slime_goop"
+	description = "A slimy liquid, with a very compelling smell. Extremely nutritious."
+	color = "#FABA3A"
+	nutriment_factor = 30
+	taste_description = "slimy nectar"

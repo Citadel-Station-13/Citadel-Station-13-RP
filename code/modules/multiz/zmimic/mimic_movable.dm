@@ -1,7 +1,8 @@
-/// The mimic (if any) that's *directly* copying us.
-/atom/movable/var/tmp/atom/movable/openspace/mimic/bound_overlay
-/// Movable-level Z-Mimic flags. This uses ZMM_* flags, not ZM_* flags.
-/atom/movable/var/mz_flags = NONE
+/atom/movable
+	/// The mimic (if any) that's *directly* copying us.
+	var/tmp/atom/movable/openspace/mimic/bound_overlay
+	/// Movable-level Z-Mimic flags. This uses ZMM_* flags, not ZM_* flags.
+	var/zmm_flags = NONE
 
 /atom/movable/forceMove(atom/dest)
 	. = ..(dest)
@@ -9,7 +10,7 @@
 		// The overlay will handle cleaning itself up on non-openspace turfs.
 		if (isturf(dest))
 			bound_overlay.forceMove(get_step(src, UP))
-			if (dir != bound_overlay.dir)
+			if (bound_overlay && dir != bound_overlay.dir)
 				bound_overlay.setDir(dir)
 		else	// Not a turf, so we need to destroy immediately instead of waiting for the destruction timer to proc.
 			qdel(bound_overlay)
@@ -47,7 +48,7 @@
 		SSzmimic.queued_overlays += bound_overlay
 		bound_overlay.queued += 1
 	else if (bound_overlay && !bound_overlay.destruction_timer)
-		bound_overlay.destruction_timer = addtimer(CALLBACK(bound_overlay, /datum/.proc/qdel_self), 10 SECONDS, TIMER_STOPPABLE)
+		bound_overlay.destruction_timer = addtimer(CALLBACK(bound_overlay, TYPE_PROC_REF(/datum, qdel_self)), 10 SECONDS, TIMER_STOPPABLE)
 
 // Grabs a list of every openspace object that's directly or indirectly mimicking this object. Returns an empty list if none found.
 /atom/movable/proc/get_above_oo()
@@ -61,13 +62,26 @@
 
 /atom/movable/openspace
 	name = ""
-	// simulated = FALSE
+	atom_flags = ATOM_ABSTRACT
 	anchored = TRUE
 	mouse_opacity = FALSE
 	abstract_type = /atom/movable/openspace // unsure if this is valid, check with Lohi
 
 /atom/movable/openspace/can_fall()
 	return FALSE
+
+// No.
+/atom/movable/openspace/set_glide_size(new_glide_size, recursive)
+	return
+
+// This is an abstract object, we don't care about the move stack or throwing events.
+/atom/movable/openspace/Move()
+	if (bound_overlay)
+		bound_overlay.forceMove(get_step(src, UP))
+		// forceMove could've deleted our overlay
+		if (bound_overlay && bound_overlay.dir != dir)
+			bound_overlay.setDir(dir)
+	return TRUE
 
 // No blowing up abstract objects.
 /atom/movable/openspace/ex_act(ex_sev)
@@ -90,9 +104,9 @@
 	name = "openspace multiplier"
 	desc = "You shouldn't see this."
 	icon = LIGHTING_ICON
-	icon_state = LIGHTING_DARKNESS_ICON_STATE
+	icon_state = "blank"
 	plane = OPENTURF_MAX_PLANE
-	layer = MIMICED_LIGHTING_LAYER
+	layer = MIMICED_LIGHTING_LAYER_MAIN
 	blend_mode = BLEND_MULTIPLY
 	color = SHADOWER_DARKENING_COLOR
 
@@ -107,7 +121,7 @@
 
 /atom/movable/openspace/multiplier/proc/copy_lighting(atom/movable/lighting_overlay/LO)
 	appearance = LO
-	layer = MIMICED_LIGHTING_LAYER
+	layer = MIMICED_LIGHTING_LAYER_MAIN
 	plane = OPENTURF_MAX_PLANE
 	blend_mode = BLEND_MULTIPLY
 	invisibility = 0
@@ -172,7 +186,7 @@
 /atom/movable/openspace/mimic/attackby(obj/item/W, mob/user)
 	to_chat(user, SPAN_NOTICE("\The [src] is too far away."))
 
-/atom/movable/openspace/mimic/attack_hand(mob/user)
+/atom/movable/openspace/mimic/attack_hand(mob/user, list/params)
 	to_chat(user, SPAN_NOTICE("You cannot reach \the [src] from here."))
 
 /atom/movable/openspace/mimic/examine(...)
@@ -186,12 +200,12 @@
 			deltimer(destruction_timer)
 			destruction_timer = null
 	else if (!destruction_timer)
-		destruction_timer = addtimer(CALLBACK(src, /datum/.proc/qdel_self), 10 SECONDS, TIMER_STOPPABLE)
+		destruction_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, qdel_self)), 10 SECONDS, TIMER_STOPPABLE)
 
 // Called when the turf we're on is deleted/changed.
 /atom/movable/openspace/mimic/proc/owning_turf_changed()
 	if (!destruction_timer)
-		destruction_timer = addtimer(CALLBACK(src, /datum/.proc/qdel_self), 10 SECONDS, TIMER_STOPPABLE)
+		destruction_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, qdel_self)), 10 SECONDS, TIMER_STOPPABLE)
 
 // -- TURF PROXY --
 
@@ -199,12 +213,12 @@
 /atom/movable/openspace/turf_proxy
 	plane = OPENTURF_MAX_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	mz_flags = ZMM_IGNORE  // Only one of these should ever be visible at a time, the mimic logic will handle that.
+	zmm_flags = ZMM_IGNORE  // Only one of these should ever be visible at a time, the mimic logic will handle that.
 
 /atom/movable/openspace/turf_proxy/attackby(obj/item/W, mob/user)
 	loc.attackby(W, user)
 
-/atom/movable/openspace/turf_proxy/attack_hand(mob/user as mob)
+/atom/movable/openspace/turf_proxy/attack_hand(mob/user, list/params)
 	loc.attack_hand(user)
 
 /atom/movable/openspace/turf_proxy/attack_generic(mob/user as mob)
@@ -231,7 +245,7 @@
 /atom/movable/openspace/turf_mimic/attackby(obj/item/W, mob/user)
 	loc.attackby(W, user)
 
-/atom/movable/openspace/turf_mimic/attack_hand(mob/user as mob)
+/atom/movable/openspace/turf_mimic/attack_hand(mob/user, list/params)
 	to_chat(user, SPAN_NOTICE("You cannot reach \the [src] from here."))
 
 /atom/movable/openspace/turf_mimic/attack_generic(mob/user as mob)

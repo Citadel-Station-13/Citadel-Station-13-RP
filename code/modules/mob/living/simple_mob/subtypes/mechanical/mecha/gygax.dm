@@ -21,7 +21,7 @@
 	wreckage = /obj/structure/loot_pile/mecha/gygax
 
 	maxHealth = 300
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 25,
 				"bullet"	= 20,
 				"laser"		= 30,
@@ -31,7 +31,7 @@
 				"rad"		= 100
 				)
 
-	projectiletype = /obj/item/projectile/beam/midlaser
+	projectiletype = /obj/projectile/beam/midlaser
 
 	ai_holder_type = /datum/ai_holder/simple_mob/intentional/adv_dark_gygax
 
@@ -63,7 +63,7 @@
 	maxHealth = 400
 	deflect_chance = 25
 	has_repair_droid = TRUE
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 40,
 				"bullet"	= 40,
 				"laser"		= 50,

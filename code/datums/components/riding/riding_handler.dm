@@ -10,7 +10,7 @@
 	//? disabled as we don't have dupe handling
 	can_transfer = FALSE
 	dupe_mode = COMPONENT_DUPE_UNIQUE
-	dupe_type = /datum/component/riding_handler
+	registered_type = /datum/component/riding_handler
 	//! main
 	/// expected typepath of what we're handling for
 	var/expected_typepath = /atom/movable
@@ -85,13 +85,13 @@
 
 /datum/component/riding_handler/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_MOVABLE_MOB_BUCKLED, .proc/signal_hook_mob_buckled)
-	RegisterSignal(parent, COMSIG_MOVABLE_MOB_UNBUCKLED, .proc/signal_hook_mob_unbuckled)
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/signal_hook_handle_move)
-	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, .proc/signal_hook_handle_turn)
-	RegisterSignal(parent, COMSIG_ATOM_RELAYMOVE_FROM_BUCKLED, .proc/signal_hook_handle_relaymove)
-	RegisterSignal(parent, COMSIG_MOVABLE_PRE_BUCKLE_MOB, .proc/signal_hook_pre_buckle_mob)
-	RegisterSignal(parent, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED, .proc/signal_hook_pixel_offset_changed)
+	RegisterSignal(parent, COMSIG_MOVABLE_MOB_BUCKLED, PROC_REF(signal_hook_mob_buckled))
+	RegisterSignal(parent, COMSIG_MOVABLE_MOB_UNBUCKLED, PROC_REF(signal_hook_mob_unbuckled))
+	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(signal_hook_handle_move))
+	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, PROC_REF(signal_hook_handle_turn))
+	RegisterSignal(parent, COMSIG_ATOM_RELAYMOVE_FROM_BUCKLED, PROC_REF(signal_hook_handle_relaymove))
+	RegisterSignal(parent, COMSIG_MOVABLE_PRE_BUCKLE_MOB, PROC_REF(signal_hook_pre_buckle_mob))
+	RegisterSignal(parent, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED, PROC_REF(signal_hook_pixel_offset_changed))
 
 /datum/component/riding_handler/UnregisterFromParent()
 	. = ..()
@@ -159,10 +159,16 @@
 
 /datum/component/riding_handler/proc/on_rider_buckled(mob/rider, semantic)
 	full_update_riders(force = TRUE)
+	if(isliving(parent))
+		var/mob/living/L = parent
+		L.ai_holder?.pause_automated_movement()
 
 /datum/component/riding_handler/proc/on_rider_unbuckled(mob/rider, semantic)
 	reset_rider(rider, semantic)
 	full_update_riders(force = TRUE)
+	if(isliving(parent))
+		var/mob/living/L = parent
+		L.ai_holder?.resume_automated_movement()
 
 /datum/component/riding_handler/proc/reset_rider(mob/rider, semantic)
 	rider.reset_plane_and_layer()

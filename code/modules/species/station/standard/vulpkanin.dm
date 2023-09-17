@@ -1,5 +1,6 @@
 /datum/species/vulpkanin
 	uid = SPECIES_ID_VULPKANIN
+	id = SPECIES_ID_VULPKANIN
 	name = SPECIES_VULPKANIN
 	name_plural = SPECIES_VULPKANIN
 	primitive_form = SPECIES_MONKEY_VULPKANIN
@@ -17,8 +18,8 @@
 	name_language   = LANGUAGE_ID_VULPKANIN
 	intrinsic_languages = LANGUAGE_ID_VULPKANIN
 
-	darksight = 5 //worse than cats, but better than lizards. -- Poojawa
-//	gluttonous = 1
+	vision_innate = /datum/vision/baseline/species_tier_1
+
 	color_mult = 1
 
 	blurb = {"
@@ -52,4 +53,7 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)

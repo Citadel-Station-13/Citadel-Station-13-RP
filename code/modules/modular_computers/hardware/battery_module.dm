@@ -70,7 +70,8 @@
 	return ..()
 
 /obj/item/computer_hardware/battery_module/Destroy()
-	QDEL_NULL(battery)
+	if(!isnull(battery) && !ispath(battery))
+		QDEL_NULL(battery)
 	return ..()
 
 /obj/item/computer_hardware/battery_module/proc/charge_to_full()

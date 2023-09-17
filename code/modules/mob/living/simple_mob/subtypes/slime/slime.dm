@@ -91,17 +91,11 @@
 		drop_hat()
 	return ..()
 
-/mob/living/simple_mob/slime/death()
-	// Make dead slimes stop glowing.
-	glow_toggle = FALSE
-	handle_light()
-	..()
-
-/mob/living/simple_mob/slime/revive()
-	// Make revived slimes resume glowing.
-	glow_toggle = initial(glow_toggle)
-	handle_light()
-	..()
+/mob/living/simple_mob/slime/set_stat(new_stat, update_mobility)
+	. = ..()
+	if(!.)
+		return
+	glow_toggle = IS_ALIVE(src)? FALSE : initial(glow_toggle)
 
 /mob/living/simple_mob/slime/update_icon()
 	..() // Do the regular stuff first.
@@ -150,6 +144,10 @@
 			return TRUE
 		else
 			return FALSE
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		if(istype(H.species, /datum/species/monkey))	// Monke always food
+			return FALSE
 	// The other stuff was already checked in parent proc, and the . variable will implicitly return the correct value.
 
 // Slimes regenerate passively.
@@ -161,7 +159,10 @@
 	adjustBruteLoss(-1)
 
 // Clicked on by empty hand.
-/mob/living/simple_mob/slime/attack_hand(mob/living/L)
+/mob/living/simple_mob/slime/attack_hand(mob/user, list/params)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(L.a_intent == INTENT_GRAB && hat)
 		remove_hat(L)
 	else

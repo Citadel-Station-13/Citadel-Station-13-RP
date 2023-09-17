@@ -122,7 +122,7 @@
 		return
 	B.pulse(forceLeft - 1, dirs)
 
-/obj/effect/blob/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/blob/bullet_act(var/obj/projectile/Proj)
 	if(!Proj)
 		return
 
@@ -140,11 +140,11 @@
 	var/damage = 0
 	switch(W.damtype)
 		if("fire")
-			damage = (W.force / fire_resist)
+			damage = (W.damage_force / fire_resist)
 			if(istype(W, /obj/item/weldingtool))
 				playsound(src, W.tool_sound, 100, 1)
 		if("brute")
-			damage = (W.force / brute_resist)
+			damage = (W.damage_force / brute_resist)
 
 	take_damage(damage)
 	return

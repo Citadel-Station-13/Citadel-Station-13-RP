@@ -39,7 +39,7 @@ Initial Design Goals (X = Complete, / = WIP):
 		return
 	else
 		for(var/obj/item/organ/O in H.organs)
-			if(O.robotic < ORGAN_ROBOT)
+			if(O.robotic >= ORGAN_ROBOT)
 				cybernetics_count++
 				counted = 1
 

@@ -12,7 +12,7 @@
 	origin_tech =  list(TECH_MAGNET = 3, TECH_ENGINEERING = 3)
 	desc = "A handheld device that creates small fields of energy that resonate until they detonate, crushing rock. It can also be activated without a target to create a field at the user's location, to act as a delayed time trap. It's more effective in low temperature."
 	w_class = ITEMSIZE_NORMAL
-	force = 8
+	damage_force = 8
 	throw_force = 10
 	var/cooldown = 0
 	var/fieldsactive = 0
@@ -38,6 +38,9 @@
 			fieldsactive--
 
 /obj/item/resonator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(burst_time == 50)
 		burst_time = 30
 		to_chat(user, "<span class='info'>You set the resonator's fields to detonate after 3 seconds.</span>")
@@ -45,8 +48,8 @@
 		burst_time = 50
 		to_chat(user, "<span class='info'>You set the resonator's fields to detonate after 5 seconds.</span>")
 
-/obj/item/resonator/afterattack(atom/target, mob/user, proximity_flag)
-	if(proximity_flag)
+/obj/item/resonator/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		if(!check_allowed_items(target, 1))
 			return
 		CreateResonance(target, user)

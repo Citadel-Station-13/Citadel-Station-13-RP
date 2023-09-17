@@ -11,7 +11,7 @@ export const heat_pump = (props, context) => {
     sink_temp,
     on,
     lowest_temp,
-    efficency,
+    efficiency,
     highest_temp,
   } = data;
 
@@ -29,8 +29,8 @@ export const heat_pump = (props, context) => {
                 selected={on}
                 onClick={() => act('power')} />
             </LabeledList.Item>
-            <LabeledList.Item label="Current Efficency">
-              <AnimatedNumber value={efficency*100} /> %
+            <LabeledList.Item label="Current Efficiency">
+              <AnimatedNumber value={efficiency*100} /> %
             </LabeledList.Item>
             <LabeledList.Item label="Current Temperature">
               <AnimatedNumber value={current_temp} /> Kelvin

@@ -26,7 +26,7 @@
 	if (chassis)
 		chassis.visible_message("<span class='notice'>[user] starts to climb into [chassis].</span>")
 
-	if(do_after(user, 40, needhand=0))
+	if(do_after(user, 40, chassis, DO_AFTER_IGNORE_ACTIVE_ITEM))
 		if(!src.occupant)
 			//? WARNING WARNING SHITCODE ALERT
 			//? BYOND WILL REFUSE TO PROPERLY UPDATE STUFF IF WE MOVE IN IMMEDIATELY
@@ -75,7 +75,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/attach()
 	..()
 	if (chassis)
-		add_obj_verb(chassis, /obj/mecha/proc/move_inside_passenger)
+		add_obj_verb(chassis, TYPE_PROC_REF(/obj/mecha, move_inside_passenger))
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/detach()
 	if(occupant)

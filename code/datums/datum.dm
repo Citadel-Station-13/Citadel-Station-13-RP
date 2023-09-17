@@ -24,8 +24,7 @@
 
 	/**
 	 * Components attached to this datum
-	 *
-	 * Lazy associated list in the structure of `type:component/list of components`
+	 * Lazy assoclist of type -> component reference or list of component references
 	 */
 	var/list/datum_components
 	/**
@@ -111,17 +110,16 @@
 	#endif
 
 	//BEGIN: ECS SHIT
-	var/list/dc = datum_components
-	if(dc)
-		var/all_components = dc[/datum/component]
-		if(length(all_components))
-			for(var/datum/component/component as anything in all_components)
-				qdel(component, FALSE, TRUE)
-		else
-			var/datum/component/C = all_components
-			qdel(C, FALSE, TRUE)
-		dc.Cut()
-
+	if(!isnull(datum_components))
+		var/list/dc = datum_components
+		for(var/path in dc)
+			var/list/what = dc[path]
+			if(length(what))
+				for(var/thing in what)
+					qdel(thing, FALSE, TRUE)
+			else
+				qdel(what)
+		datum_components = null
 	clear_signal_refs()
 	//END: ECS SHIT
 	return QDEL_HINT_QUEUE
@@ -264,3 +262,45 @@
 		return
 	SEND_SIGNAL(source, COMSIG_CD_RESET(index), S_TIMER_COOLDOWN_TIMELEFT(source, index))
 	TIMER_COOLDOWN_END(source, index)
+
+//? simple serialize/deserialize; it's expected to use this for simple datums only.
+//? do not use this for /atoms, SSpersistence handles that!
+
+/**
+ * serializes us to a list
+ * note that *everything* will be trampled down to a number or text.
+ * do not store raw types.
+ *
+ * reserved:
+ * "type" - this is always the type at time of saving. this is for current limitations, DO NOT use this if at all possible.
+ */
+/datum/proc/serialize()
+	return list("type" = "[type]")
+
+/**
+ * deserializes from a list
+ *
+ * @params
+ * * data - json_decode()'d list.
+ */
+/datum/proc/deserialize(list/data)
+	return
+
+/**
+ * make a datum from a serialized list
+ * you are responsible for knowing what datums this is valid for.
+ * you are responsible for sanitizing the input.
+ */
+/proc/deserialize_datum(list/data)
+	if(istext(data))
+		data = json_decode(data)
+	var/path = text2path(data["type"])
+	ASSERT(ispath(path, /datum))
+	return (new path):deserialize(data)
+
+/**
+ * serializes a datum into a json text string
+ */
+/proc/serialize_datum(datum/D)
+	ASSERT(isdatum(D))
+	return json_encode(D.serialize())

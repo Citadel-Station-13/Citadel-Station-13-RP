@@ -70,17 +70,16 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 
 		var/newlevel = get_security_level()
 		for(var/obj/machinery/firealarm/FA in GLOB.machines)
-			if(FA.z in GLOB.using_map.contact_levels)
+			if(FA.z in (LEGACY_MAP_DATUM).contact_levels)
 				FA.set_security_level(newlevel)
 		for(var/obj/machinery/status_display/FA in GLOB.machines)
-			if(FA.z in GLOB.using_map.contact_levels)
+			if(FA.z in (LEGACY_MAP_DATUM).contact_levels)
 				FA.display_alert(newlevel)
 				FA.mode = 3
 
 		if(level >= SEC_LEVEL_RED)
-			GLOB.lore_atc.reroute_traffic(TRUE) // Tell them fuck off we're busy.
-		else
-			GLOB.lore_atc.reroute_traffic(FALSE)
+			if(SSlegacy_atc.squelched == FALSE) // Do nothing, ATC relay is already off
+				SSlegacy_atc.toggle_broadcast()
 
 		spawn()
 			SSnightshift.check_nightshift()

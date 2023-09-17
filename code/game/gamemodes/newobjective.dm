@@ -1335,7 +1335,7 @@ datum
 					return 0
 
 				var/current_amount
-				var/obj/item/rig/S
+				var/obj/item/hardsuit/S
 				if(istype(owner.current,/mob/living/carbon/human))
 					var/mob/living/carbon/human/H = owner.current
 					S = H.back

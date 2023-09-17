@@ -10,7 +10,7 @@
 	icon_living = "morph"
 	icon_dead = "morph_dead"
 	movement_cooldown = 1
-	status_flags = CANPUSH
+	status_flags = STATUS_CAN_PUSH
 	pass_flags = ATOM_PASS_TABLE
 	mob_bump_flag = SLIME
 
@@ -49,20 +49,22 @@
 	var/atom/movable/form = null
 	var/morph_time = 0
 	var/our_size_multiplier = 1
-	var/static/list/blacklist_typecache = typecacheof(list(
-	/atom/movable/screen,
-	/obj/singularity,
-	/mob/living/simple_mob/vore/hostile/morph,
-	/obj/effect))
+	var/list/blacklist_typecache
 
 /mob/living/simple_mob/vore/hostile/morph/Initialize(mapload)
+	blacklist_typecache = cached_typecacheof(list(
+		/atom/movable/screen,
+		/obj/singularity,
+		/mob/living/simple_mob/vore/hostile/morph,
+		/obj/effect,
+	))
 	add_verb(src, /mob/living/proc/ventcrawl)
 	return ..()
 
 /mob/living/simple_mob/vore/hostile/morph/proc/allowed(atom/movable/A)
 	return !is_type_in_typecache(A, blacklist_typecache) && (isobj(A) || ismob(A))
 
-/mob/living/simple_mob/vore/hostile/morph/examine(mob/user)
+/mob/living/simple_mob/vore/hostile/morph/examine(mob/user, dist)
 	if(morphed)
 		form.examine(user)
 		if(get_dist(user,src)<=3)
@@ -172,9 +174,11 @@
 
 /mob/living/simple_mob/vore/hostile/morph/update_transform()
 	if(morphed)
+		var/matrix/old_matrix = transform
 		var/matrix/M = matrix()
 		M.Scale(icon_scale_x, icon_scale_y)
 		M.Turn(icon_rotation)
 		src.transform = M
+		SEND_SIGNAL(src, COMSIG_MOB_UPDATE_TRANSFORM, old_matrix, M)
 	else
 		..()

@@ -17,7 +17,7 @@
 	. = ..()
 	layCable(new_turf,M_Dir)
 
-/obj/machinery/cablelayer/attack_hand(mob/user)
+/obj/machinery/cablelayer/attack_hand(mob/user, list/params)
 	if(!cable&&!on)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any cable loaded."))
 		return
@@ -48,7 +48,7 @@
 		else
 			to_chat(usr, SPAN_WARNING("There's no more cable on the reel."))
 
-/obj/machinery/cablelayer/examine(mob/user)
+/obj/machinery/cablelayer/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("\The [src]'s cable reel has [cable.amount] lengths left.")
 

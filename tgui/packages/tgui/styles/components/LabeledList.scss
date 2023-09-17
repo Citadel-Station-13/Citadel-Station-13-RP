@@ -35,15 +35,21 @@
 }
 
 .LabeledList__label {
-  width: 1%;
   white-space: nowrap;
   min-width: 5em;
 }
 
 .LabeledList__buttons {
-  width: 0.1%;
   white-space: nowrap;
   text-align: right;
   padding-top: base.em(1px);
   padding-bottom: 0;
+}
+
+.LabeledList__label:first-child {
+  width: 1%;
+}
+
+.LabeledList__buttons:first-child {
+  width: 0.1%;
 }

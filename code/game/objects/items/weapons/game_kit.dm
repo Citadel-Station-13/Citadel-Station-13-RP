@@ -23,7 +23,8 @@ THAT STUPID GAME KIT
 					src.attack_hand(usr, 0, 1)
 
 /obj/item/game_kit/proc/update()
-	var/dat = text("<CENTER><B>Game Board</B></CENTER><BR><a href='?src=\ref[];mode=hia'>[]</a> <a href='?src=\ref[];mode=remove'>remove</a><HR><table width= 256  border= 0  height= 256  cellspacing= 0  cellpadding= 0 >", src, (src.selected ? text("Selected: []", src.selected) : "Nothing Selected"), src)
+	var/dat = "<CENTER><B>Game Board</B></CENTER><BR><a href='?src=\ref[src];mode=hia'>[(selected ? "Selected: [selected]" : "Nothing Selected")]</a> <a href='?src=\ref[src];mode=remove'>remove</a><HR><table width= 256  border= 0  height= 256  cellspacing= 0  cellpadding= 0 >"
+
 	for (var/y = 1 to 8)
 		dat += "<tr>"
 
@@ -74,67 +75,67 @@ THAT STUPID GAME KIT
 	if ((usr.stat || usr.restrained()))
 		return
 
-	if (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf)))
+	if (usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf)))
 		if (href_list["s_piece"])
-			src.selected = href_list["s_piece"]
+			selected = href_list["s_piece"]
 		else if (href_list["mode"])
 			if (href_list["mode"] == "remove")
-				src.selected = "remove"
+				selected = "remove"
 			else
-				src.selected = null
+				selected = null
 		else if (href_list["s_board"])
-			if (!( src.selected ))
-				src.selected = href_list["s_board"]
+			if (!(selected))
+				selected = href_list["s_board"]
 			else
 				var/tx = text2num(copytext(href_list["s_board"], 1, 2))
 				var/ty = text2num(copytext(href_list["s_board"], 3, 4))
-				if ((copytext(src.selected, 2, 3) == " " && length(src.selected) == 3))
-					var/sx = text2num(copytext(src.selected, 1, 2))
-					var/sy = text2num(copytext(src.selected, 3, 4))
+				if ((copytext(selected, 2, 3) == " " && length(selected) == 3))
+					var/sx = text2num(copytext(selected, 1, 2))
+					var/sy = text2num(copytext(selected, 3, 4))
 					var/place = ((sy - 1) * 8 + sx) * 2 - 1
-					src.selected = copytext(src.board_stat, place, place + 2)
+					selected = copytext(board_stat, place, place + 2)
 					if (place == 1)
-						src.board_stat = text("BB[]", copytext(src.board_stat, 3, 129))
+						board_stat = "BB[copytext(board_stat, 3, 129)]"
 					else
 						if (place == 127)
-							src.board_stat = text("[]BB", copytext(src.board_stat, 1, 127))
+							board_stat = "[copytext(board_stat, 1, 127)]BB"
 						else
 							if (place)
-								src.board_stat = text("[]BB[]", copytext(src.board_stat, 1, place), copytext(src.board_stat, place + 2, 129))
+								board_stat = "[copytext(board_stat, 1, place)]BB[copytext(board_stat, place + 2, 129)]"
 					place = ((ty - 1) * 8 + tx) * 2 - 1
 					if (place == 1)
-						src.board_stat = text("[][]", src.selected, copytext(src.board_stat, 3, 129))
+						board_stat = "[selected][copytext(board_stat, 3, 129)]"
 					else
 						if (place == 127)
-							src.board_stat = text("[][]", copytext(src.board_stat, 1, 127), src.selected)
+							board_stat = "[copytext(board_stat, 1, 127)][selected]"
 						else
 							if (place)
-								src.board_stat = text("[][][]", copytext(src.board_stat, 1, place), src.selected, copytext(src.board_stat, place + 2, 129))
-					src.selected = null
+								board_stat = "[copytext(board_stat, 1, place)][selected][copytext(board_stat, place + 2, 129)]"
+					selected = null
 				else
-					if (src.selected == "remove")
+					if (selected == "remove")
 						var/place = ((ty - 1) * 8 + tx) * 2 - 1
 						if (place == 1)
-							src.board_stat = text("BB[]", copytext(src.board_stat, 3, 129))
+							board_stat = "BB[copytext(board_stat, 3, 129)]"
 						else
 							if (place == 127)
-								src.board_stat = text("[]BB", copytext(src.board_stat, 1, 127))
+								board_stat = "[copytext(board_stat, 1, 127)]BB"
 							else
 								if (place)
-									src.board_stat = text("[]BB[]", copytext(src.board_stat, 1, place), copytext(src.board_stat, place + 2, 129))
+									board_stat = "[copytext(board_stat, 1, place)]BB[copytext(board_stat, place + 2, 129)]"
 					else
-						if (length(src.selected) == 2)
+						if (length(selected) == 2)
 							var/place = ((ty - 1) * 8 + tx) * 2 - 1
 							if (place == 1)
-								src.board_stat = text("[][]", src.selected, copytext(src.board_stat, 3, 129))
+								board_stat = "[selected][copytext(board_stat, 3, 129)]"
 							else
 								if (place == 127)
-									src.board_stat = text("[][]", copytext(src.board_stat, 1, 127), src.selected)
+									board_stat = "[copytext(board_stat, 1, 127)][selected]"
 								else
 									if (place)
-										src.board_stat = text("[][][]", copytext(src.board_stat, 1, place), src.selected, copytext(src.board_stat, place + 2, 129))
-		src.add_fingerprint(usr)
+										board_stat = "[copytext(board_stat, 1, place)][selected][copytext(board_stat, place + 2, 129)]"
+		add_fingerprint(usr)
 		update()
 		for(var/mob/M in viewers(1, src))
 			if ((M.client && M.machine == src))
-				src.attack_hand(M)
+				attack_hand(M)

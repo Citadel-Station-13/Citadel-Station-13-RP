@@ -1,17 +1,30 @@
 /datum/category_item/player_setup_item/background/citizenship
 	name = "Citizenship"
 	save_key = CHARACTER_DATA_CITIZENSHIP
-	sort_order = 3
+	sort_order = 4
 
 /datum/category_item/player_setup_item/background/citizenship/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	var/list/datum/lore/character_background/citizenship/available = SScharacters.available_citizenships(prefs.character_species_id())
+	var/list/categories = list()
 	var/datum/lore/character_background/citizenship/current = SScharacters.resolve_citizenship(data)
+	var/current_category
+	for(var/datum/lore/character_background/citizenship/O as anything in available)
+		LAZYADD(categories[O.category], O)
+		if(O == current)
+			current_category = O.category
 	. += "<center>"
 	. += "<b>Citizenship</b><br>"
+	if(length(categories) > 1)
+		for(var/category in categories)
+			. += (category == current.category)? "<span class='linkOn'>[category]</span> " : href_simple(prefs, "category", "[category]", category)
+			. += " "
+		. += "<br>"
 	for(var/datum/lore/character_background/citizenship/O in available)
 		if(O == current)
 			. += "<span class='linkOn'>[O.name]</span>"
+		else if(current_category && O.category != current_category)
+			continue
 		else
 			. += href_simple(prefs, "pick", "[O.name]", O.id)
 		. += " "
@@ -33,6 +46,16 @@
 			write(prefs, id)
 			prefs.sanitize_background_lore()	// update
 			return PREFERENCES_REFRESH
+		if("category")
+			var/cat = params["category"]
+			var/list/datum/lore/character_background/citizenship/citizenships = SScharacters.available_citizenships(prefs.character_species_id(), cat)
+			if(!length(citizenships))
+				to_chat(user, SPAN_WARNING("No citizenships in that category have been found; this might be an error."))
+				return PREFERENCES_NOACTION
+			var/datum/lore/character_background/citizenship/first = citizenships[1]
+			write(prefs, first.id)
+			prefs.sanitize_background_lore()	// update
+			return PREFERENCES_REFRESH
 	return ..()
 
 /datum/category_item/player_setup_item/background/citizenship/filter_data(datum/preferences/prefs, data, list/errors)
@@ -48,7 +71,7 @@
 		M.add_language(id)
 	return TRUE
 
-/datum/category_item/player_setup_item/background/citizenship/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
+/datum/category_item/player_setup_item/background/citizenship/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	var/datum/lore/character_background/citizenship/current = SScharacters.resolve_citizenship(data)
 	if(!current?.check_species_id(prefs.character_species_id()))
 		errors?.Add("Invalid citizenship for your current species.")
@@ -68,4 +91,5 @@
 	return get_character_data(CHARACTER_DATA_CITIZENSHIP)
 
 /datum/preferences/proc/lore_citizenship_datum()
+	RETURN_TYPE(/datum/lore/character_background/citizenship)
 	return SScharacters.resolve_citizenship(lore_citizenship_id())

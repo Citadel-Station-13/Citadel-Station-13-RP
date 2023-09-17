@@ -78,7 +78,7 @@
 	max_storage_space = ITEMSIZE_COST_TINY * 3
 	sharp = 1
 	edge = 1
-	force = 15
+	damage_force = 15
 	throw_force = 15
 	attack_verb = list("stabbed", "chopped", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -119,7 +119,7 @@
 
 /obj/item/storage/box/papersack/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/pen))
-		var/choice = show_radial_menu(user, src , papersack_designs, custom_check = CALLBACK(src, .proc/check_menu, user, W), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src , papersack_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user, W), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		if(icon_state == "paperbag_[choice]")
@@ -180,8 +180,12 @@
 	name = "munition box (musket)"
 	desc = "A tanned leather pouch large enough to hold a few loose musket balls."
 	icon_state = "musket_box"
+	w_class = ITEMSIZE_SMALL
 	max_storage_space = ITEMSIZE_COST_TINY * 6
 	can_hold = list(
 		/obj/item/ammo_casing/musket
 		)
 	starts_with = list(/obj/item/ammo_casing/musket = 6)
+
+/obj/item/storage/box/munition_box/empty
+	starts_with = list()

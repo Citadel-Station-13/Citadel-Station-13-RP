@@ -3,7 +3,7 @@
 	desc = "Used to time things. Works well with contraptions which has to count down. Tick tock."
 	icon_state = "timer"
 	origin_tech = list(TECH_MAGNET = 1)
-	matter = list(MAT_STEEL = 500, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 500, MAT_GLASS = 50)
 
 	wires = WIRE_PULSE
 
@@ -84,7 +84,7 @@
 	data["loop"] = loop
 	return data
 
-/obj/item/assembly/timer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/assembly/timer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -56,7 +56,7 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
-	projectiletype = /obj/item/projectile/bullet/honker
+	projectiletype = /obj/projectile/bullet/honker
 	projectilesound = 'sound/items/bikehorn.ogg'
 	needs_reload = FALSE
 
@@ -99,7 +99,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 100, rad = 100)	// Same armor values as the vest they drop, plus simple mob immunities
+	armor_legacy_mob = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 100, rad = 100)	// Same armor values as the vest they drop, plus simple mob immunities
 
 	corpse = /obj/spawner/corpse/clown/clownop
 	loot_list = list(/obj/item/melee/clownop = 100)	// Might as well give it the knife
@@ -184,7 +184,7 @@
 	desc = "A brightly adorned clown armed with a weird pistol."
 	icon_state = "clownop_ranged"
 	icon_living = "clownop_ranged"
-	projectiletype = /obj/item/projectile/bullet/honker/lethal
+	projectiletype = /obj/projectile/bullet/honker/lethal
 	projectilesound = 'sound/items/bikehorn.ogg'
 	needs_reload = TRUE
 	reload_max = 12
@@ -220,7 +220,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit
 
 	min_oxy = 0
 	max_oxy = 0
@@ -253,7 +253,7 @@
 	movement_cooldown = 0
 
 	reload_max = 20
-	armor = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit. This should already have been here when polaris patched these guys in.
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit. This should already have been here when polaris patched these guys in.
 
 	min_oxy = 0
 	max_oxy = 0

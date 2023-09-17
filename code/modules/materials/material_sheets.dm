@@ -1,7 +1,7 @@
 // Stacked resources. They use a material datum for a lot of inherited values.
 // If you're adding something here, make sure to add it to fifty_spawner_mats.dm as well
 /obj/item/stack/material
-	force = 5
+	damage_force = 5
 	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 3
@@ -44,7 +44,7 @@
 	if(!material.conductive)
 		atom_flags |= NOCONDUCT
 
-	matter = material.get_matter()
+	materials = material.get_matter()
 	update_strings()
 
 /obj/item/stack/material/get_material()
@@ -77,9 +77,9 @@
 	if(M) M.update_strings()
 	return transfer
 
-/obj/item/stack/material/attack_self(var/mob/user)
+/obj/item/stack/material/attack_self(mob/user)
 	if(!allow_window_autobuild || !material.build_windows(user, src))
-		..()
+		return ..()
 
 /obj/item/stack/material/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
@@ -284,7 +284,7 @@
 	update_mass()
 	return
 
-/obj/item/stack/material/supermatter/attack_hand(mob/user)
+/obj/item/stack/material/supermatter/attack_hand(mob/user, list/params)
 	. = ..()
 
 	update_mass()
@@ -297,7 +297,7 @@
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/clothing/gloves/G = H.gloves
-		if(istype(G) && ((G.clothing_flags & THICKMATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
+		if(istype(G) && ((G.clothing_flags & CLOTHING_THICK_MATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
 			burn_user = FALSE
 
 		if(burn_user)
@@ -368,10 +368,10 @@
 	plank_type = /obj/item/stack/material/wood/hard
 
 /obj/item/stack/material/log/attackby(var/obj/item/W, var/mob/user)
-	if(!istype(W) || W.force <= 0)
+	if(!istype(W) || W.damage_force <= 0)
 		return ..()
 	if(W.sharp && W.edge)
-		var/time = (3 SECONDS / max(W.force / 10, 1)) * W.tool_speed
+		var/time = (3 SECONDS / max(W.damage_force / 10, 1)) * W.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))
 			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")

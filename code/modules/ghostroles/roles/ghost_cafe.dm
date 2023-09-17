@@ -1,5 +1,5 @@
 
-/datum/ghostrole/ghost_cafe
+/datum/role/ghostrole/ghost_cafe
 	name = "Ghost Cafe Visitor"
 	assigned_role = "Ghost Cafe Visitor"
 	desc = "Off-station area for ghosts to roleplay in."
@@ -11,7 +11,7 @@
 	name = "Ghost Cafe Sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	role_type = /datum/ghostrole/ghost_cafe
+	role_type = /datum/role/ghostrole/ghost_cafe
 	role_spawns = INFINITY
 
 /datum/action/toggle_dead_chat_mob
@@ -24,11 +24,11 @@
 	if(!..())
 		return 0
 	var/mob/M = target
-	if(HAS_TRAIT_FROM(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT))
-		REMOVE_TRAIT(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT)
+	if(HAS_TRAIT_FROM(M,TRAIT_SIXTHSENSE,ROLE_TRAIT))
+		REMOVE_TRAIT(M,TRAIT_SIXTHSENSE,ROLE_TRAIT)
 		to_chat(M,"<span class='notice'>You're no longer hearing deadchat.</span>")
 	else
-		ADD_TRAIT(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT)
+		ADD_TRAIT(M,TRAIT_SIXTHSENSE,ROLE_TRAIT)
 		to_chat(M,"<span class='notice'>You're once again longer hearing deadchat.</span>")
 
 /datum/action/disguise
@@ -97,7 +97,7 @@
 		H.remove_alt_appearance("ghost_cafe_disguise")
 		currently_disguised = FALSE
 
-/datum/ghostrole/ghost_cafe/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/role/ghostrole/ghost_cafe/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	to_chat(created,"<span class='boldwarning'>Ghosting is free!</span>")
 

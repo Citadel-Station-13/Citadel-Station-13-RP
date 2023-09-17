@@ -61,7 +61,7 @@
 		if(get_dist(user,src) <= 1) //not remotely though
 			return TryToSwitchState(user)
 
-/obj/structure/simple_door/attack_hand(mob/user as mob)
+/obj/structure/simple_door/attack_hand(mob/user, list/params)
 	return TryToSwitchState(user)
 
 /obj/structure/simple_door/CanAllowThrough(atom/movable/mover, turf/target)
@@ -133,7 +133,7 @@
 			visible_message("<span class='danger'>[user] finished digging [src]!</span>")
 			Dismantle()
 	else if(istype(W,/obj/item)) //not sure, can't not just weapons get passed to this proc?
-		hardness -= W.force/10
+		hardness -= W.damage_force/10
 		visible_message("<span class='danger'>[user] hits [src] with [W]!</span>")
 		if(material == get_material_by_name("resin"))
 			playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
@@ -150,8 +150,8 @@
 		attack_hand(user)
 	return
 
-/obj/structure/simple_door/bullet_act(var/obj/item/projectile/Proj)
-	hardness -= Proj.force/10
+/obj/structure/simple_door/bullet_act(var/obj/projectile/Proj)
+	hardness -= Proj.damage/10
 	CheckHardness()
 
 /obj/structure/simple_door/take_damage(var/damage)

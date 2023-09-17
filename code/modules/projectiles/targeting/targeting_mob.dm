@@ -26,12 +26,12 @@
 	if(..())
 		stop_aiming(no_message=1)
 
-/mob/living/update_canmove()
-	..()
+/mob/living/update_mobility(blocked, forced)
+	. = ..()
 	if(lying)
 		stop_aiming(no_message=1)
 
-/mob/living/Weaken(amount)
+/mob/living/afflict_paralyze(amount)
 	stop_aiming(no_message=1)
 	..()
 

@@ -25,7 +25,7 @@
 		set_context(context)
 
 /obj/item/universal_translator/Destroy()
-	if(context)
+	if(context && !ispath(context))
 		QDEL_NULL(context)
 	return ..()
 
@@ -38,7 +38,7 @@
 	context = context_or_path
 	if(istype(context, /datum/translation_context/variable/learning))
 		var/datum/translation_context/variable/learning/CTX = context
-		CTX.on_train = CALLBACK(src, .proc/on_learn)
+		CTX.on_train = CALLBACK(src, PROC_REF(on_learn))
 
 /obj/item/universal_translator/proc/on_learn(datum/translation_context/context, datum/language/L, old_efficiency)
 	if(old_efficiency)
@@ -47,7 +47,7 @@
 		return
 	to_chat(loc, SPAN_NOTICE("New language detected. Beginning translation network training."))
 
-/obj/item/universal_translator/examine(mob/user)
+/obj/item/universal_translator/examine(mob/user, dist)
 	. = ..()
 	if(cassette_translation)
 		. += SPAN_NOTICE("Use a cassette tape on this to translate the tape's contents where possible.")
@@ -89,6 +89,9 @@
 	ours.copy_knowledge(theirs)
 
 /obj/item/universal_translator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!listening) //Turning ON
 		var/list/allowed = list()
 		for(var/datum/language/L in user.languages)

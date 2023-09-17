@@ -40,40 +40,6 @@ VIRGO3B_TURF_CREATE_UN(/turf/simulated/floor/tiled/kafel_full/yellow)
 /turf/simulated/floor/outdoors/grass/sif
 	baseturfs = /turf/simulated/floor/outdoors/dirt/virgo3b
 
-	//This proc is responsible for ore generation on surface turfs
-/turf/simulated/mineral/virgo3b/make_ore(var/rare_ore)
-	if(mineral || ignore_mapgen)
-		return
-	var/mineral_name
-	if(rare_ore)
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 3,
-			MAT_URANIUM = 10,
-			MAT_PLATINUM = 10,
-			MAT_HEMATITE = 20,
-			MAT_CARBON = 20,
-			MAT_DIAMOND = 1,
-			MAT_GOLD = 8,
-			MAT_SILVER = 8,
-			MAT_PHORON = 18,
-			MAT_LEAD = 2,
-			MAT_VERDANTIUM = 1))
-	else
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 2,
-			MAT_URANIUM = 5,
-			MAT_PLATINUM = 5,
-			MAT_HEMATITE = 35,
-			MAT_CARBON = 35,
-			MAT_GOLD = 3,
-			MAT_SILVER = 3,
-			MAT_PHORON = 25,
-			MAT_LEAD = 1))
-	if(mineral_name && (mineral_name in GLOB.ore_data))
-		mineral = GLOB.ore_data[mineral_name]
-		UpdateMineral()
-
-
 /turf/simulated/mineral/rich/indoors
 	outdoors = FALSE
 

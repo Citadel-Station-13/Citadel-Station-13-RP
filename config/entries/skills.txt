@@ -1,0 +1,5 @@
+## Do we have the characteristics system at all?
+CHARACTERISTICS_ENABLED
+
+## Are skills in use?
+# CHARACTERISTICS_ACTIVE

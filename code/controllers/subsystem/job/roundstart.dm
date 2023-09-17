@@ -22,6 +22,9 @@
 	for(var/mob/new_player/player in GLOB.player_list)
 		if(!player.client)	// git out
 			continue
+		if(player.client.persistent.ligma)
+			log_shadowban("[player] ([player.client]) roundstart blocked")
+			continue // bye :)
 		if(player.ready && player.mind && !player.mind.assigned_role)
 			divide_unassigned += player
 		var/list/priorities = player.client.effective_job_priorities()
@@ -41,7 +44,7 @@
 // i'm going to figure out if i can speed it up BEFORE rewriting everything.
 
 /*
-/datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level, flag)
+/datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/role/job/job, level, flag)
 	JobDebug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
 	var/list/candidates = list()
 	for(var/mob/new_player/player in unassigned)
@@ -71,7 +74,7 @@
 /datum/controller/subsystem/job/proc/GiveRandomJob(mob/new_player/player)
 	JobDebug("GRJ Giving random job, Player: [player]")
 	. = FALSE
-	for(var/datum/job/job in shuffle(GetAllJobs()))
+	for(var/datum/role/job/job in shuffle(GetAllJobs()))
 		if(!job)
 			continue
 
@@ -124,7 +127,7 @@
 //This is basically to ensure that there's atleast a few heads in the round
 /datum/controller/subsystem/job/proc/FillHeadPosition()
 	for(var/level in level_order)
-		for(var/datum/job/job as anything in GetDepartmentJobDatums(/datum/department/command))
+		for(var/datum/role/job/job as anything in GetDepartmentJobDatums(/datum/department/command))
 			if(!job)
 				continue
 			if((job.current_positions >= job.total_positions) && job.total_positions != -1)
@@ -140,7 +143,7 @@
 //This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
 //This is also to ensure we get as many heads as possible
 /datum/controller/subsystem/job/proc/CheckHeadPositions(level)
-	for(var/datum/job/job as anything in GetDepartmentJobDatums(/datum/department/command))
+	for(var/datum/role/job/job as anything in GetDepartmentJobDatums(/datum/department/command))
 		if(!job)
 			continue
 		if((job.current_positions >= job.total_positions) && job.total_positions != -1)
@@ -153,7 +156,7 @@
 
 /datum/controller/subsystem/job/proc/FillAIPosition()
 	var/ai_selected = 0
-	var/datum/job/job = GetJobType(/datum/job/ai)
+	var/datum/role/job/job = GetJobType(/datum/role/job/ai)
 	if(!job)
 		return 0
 	for(var/i = job.total_positions, i > 0, i--)
@@ -179,7 +182,7 @@
 
 	//Holder for Triumvirate is stored in the SSticker, this just processes it
 	if(SSticker.triai)
-		for(var/datum/job/ai/A in GetAllJobs())
+		for(var/datum/role/job/ai/A in GetAllJobs())
 			A.roundstart_positions = 3
 		var/left = 2
 		for(var/atom/movable/landmark/spawnpoint/job/ai/secondary/S in GetAllSpawnpoints())
@@ -217,7 +220,7 @@
 
 	//People who wants to be the overflow role, sure, go on.
 	JobDebug("DO, Running Overflow Check 1")
-	var/datum/job/overflow = GetJobName(SSjob.overflow_role)
+	var/datum/role/job/overflow = GetJobName(SSjob.overflow_role)
 	var/list/overflow_candidates = FindOccupationCandidates(overflow, JP_LOW)
 	JobDebug("AC1, Candidates: [overflow_candidates?.len]")
 	for(var/mob/new_player/player in overflow_candidates)
@@ -256,7 +259,7 @@
 				RejectPlayer(player)
 
 			// Loop through all jobs
-			for(var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
+			for(var/datum/role/job/job in shuffledoccupations) // SHUFFLE ME BABY
 				if(!job)
 					continue
 
@@ -315,7 +318,7 @@
 	for(var/required_group in required_jobs)
 		var/group_ok = TRUE
 		for(var/rank in required_group)
-			var/datum/job/J = GetJobName(rank)
+			var/datum/role/job/J = GetJobName(rank)
 			if(!J)
 				SSticker.mode.setup_error = "Invalid job [rank] in gamemode required jobs."
 				return FALSE
@@ -352,7 +355,7 @@
 
 
 /datum/controller/subsystem/job/proc/setup_officer_positions()
-	var/datum/job/J = SSjob.GetJobType(/datum/job/officer)
+	var/datum/role/job/J = SSjob.GetJobType(/datum/role/job/officer)
 	if(!J)
 		CRASH("setup_officer_positions(): Security officer job is missing")
 

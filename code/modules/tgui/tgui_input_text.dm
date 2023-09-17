@@ -1,4 +1,22 @@
 /**
+ * Default operation for getting text input from a user.
+ *
+ * This can either route to TGUI or to native BYOND input depending on user prefs.
+ *
+ * @params
+ * * user - The user to show the text input to.
+ * * message - The content of the text input, shown in the body of the TGUI window.
+ * * title - The title of the text input modal, shown on the top of the TGUI window.
+ * * default - The default (or current) value, shown as a placeholder.
+ * * max_length - Specifies a max length for input. MAX_MESSAGE_LEN is default (1024)
+ * * multiline -  Bool that determines if the input box is much larger. Good for large messages, laws, etc.
+ * * encode - Toggling this determines if input is filtered via html_encode. Setting this to FALSE gives raw input.
+ * * timeout - The timeout of the textbox, after which the modal will close and qdel itself. Set to zero for no timeout.
+ */
+/proc/default_input_text(mob/user, message = "", title = "Text Input", default, max_length = MAX_MESSAGE_LEN, multiline = FALSE, encode = TRUE, timeout = 0)
+	return input(user, message, title, default) as text|null
+
+/**
  * Creates a TGUI window with a text input. Returns the user's response.
  *
  * This proc should be used to create windows for text entry that the caller will wait for a response from.
@@ -140,11 +158,11 @@
 		ui = new(user, src, "TextInputModal")
 		ui.open()
 
-/datum/tgui_input_text/ui_close(mob/user)
+/datum/tgui_input_text/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	closed = TRUE
 
-/datum/tgui_input_text/ui_state(mob/user)
+/datum/tgui_input_text/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.always_state
 
 /datum/tgui_input_text/ui_static_data(mob/user)

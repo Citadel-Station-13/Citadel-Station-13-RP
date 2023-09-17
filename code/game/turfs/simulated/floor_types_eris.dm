@@ -10,7 +10,7 @@
 	icon_base = "tiles"
 	has_damage_range = 2
 	damage_temperature = T0C+1400
-	flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BREAK
+	flooring_flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BREAK
 	build_type = /obj/item/stack/tile/floor/eris
 	can_paint = 1
 
@@ -304,14 +304,14 @@
 	singular_name = "cafe floor tile"
 	desc = "A chekered pattern, an ancient style for a familiar feeling."
 	icon_state = "tile_cafe"
-	matter = list(MAT_PLASTIC = 1)
+	materials = list(MAT_PLASTIC = 1)
 
 // Techmaint
 /obj/item/stack/tile/floor/eris/techmaint
 	name = "maint floor tile"
 	singular_name = "maint floor tile"
 	icon_state = "tile_techmaint"
-	matter = list(MAT_STEEL = 1)
+	materials = list(MAT_STEEL = 1)
 
 /obj/item/stack/tile/floor/eris/techmaint/perforated
 	name = "perforated maint floor tile"
@@ -335,7 +335,7 @@
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
 	icon_state = "tile_steel"
-	matter = list(MAT_STEEL = 1)
+	materials = list(MAT_STEEL = 1)
 
 /obj/item/stack/tile/floor/eris/steel/panels
 	name = "steel panel tile"
@@ -435,7 +435,7 @@
 	singular_name = "white floor tile"
 	desc = "Appears to be made out of a lighter mat."
 	icon_state = "tile_white"
-	matter = list(MAT_PLASTIC = 1)
+	materials = list(MAT_PLASTIC = 1)
 
 /obj/item/stack/tile/floor/eris/white/panels
 	name = "white panel tile"
@@ -519,7 +519,7 @@
 	name = "dark floor tile"
 	singular_name = "dark floor tile"
 	icon_state = "tile_dark"
-	matter = list(MAT_STEEL = 1)
+	materials = list(MAT_STEEL = 1)
 
 /obj/item/stack/tile/floor/eris/dark/panels
 	name = "dark panel tile"
@@ -866,7 +866,7 @@
 /singleton/flooring/grass/heavy
 	name = "heavy grass"
 	desc = "A dense ground coating of grass"
-	flags = TURF_REMOVE_SHOVEL
+	flooring_flags = TURF_REMOVE_SHOVEL
 	icon = 'icons/turf/outdoors.dmi'
 	icon_base = "grass-heavy"
 	has_base_range = 3
@@ -895,7 +895,7 @@
 	descriptor = "reinforced plating"
 	icon = 'icons/turf/flooring/eris/plating.dmi'
 	icon_base = "plating"
-	flags = TURF_REMOVE_WRENCH | TURF_HAS_CORNERS | TURF_HAS_EDGES | TURF_CAN_BURN | TURF_CAN_BREAK
+	flooring_flags = TURF_REMOVE_WRENCH | TURF_HAS_CORNERS | TURF_HAS_EDGES | TURF_CAN_BURN | TURF_CAN_BREAK
 	can_paint = 1
 	has_base_range = 18
 	is_plating = TRUE
@@ -933,7 +933,7 @@
 	icon = 'icons/turf/flooring/eris/plating.dmi'
 	descriptor = "support beams"
 	icon_base = "under"
-	flags = TURF_HAS_CORNERS | TURF_HAS_EDGES | TURF_CAN_BURN | TURF_CAN_BREAK | TURF_REMOVE_SCREWDRIVER
+	flooring_flags = TURF_HAS_CORNERS | TURF_HAS_EDGES | TURF_CAN_BURN | TURF_CAN_BREAK | TURF_REMOVE_SCREWDRIVER
 	has_base_range = 0
 	is_plating = TRUE
 
@@ -971,7 +971,7 @@
 	descriptor = "outer hull"
 	icon = 'icons/turf/flooring/eris/hull.dmi'
 	icon_base = "hullcenter"
-	flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_WRENCH | TURF_CAN_BURN | TURF_CAN_BREAK
+	flooring_flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_WRENCH | TURF_CAN_BURN | TURF_CAN_BREAK
 	has_base_range = 35
 	is_plating = FALSE
 	build_type = /obj/item/stack/material/plasteel

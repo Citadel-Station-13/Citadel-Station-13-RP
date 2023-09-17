@@ -10,6 +10,8 @@
 	var/id = null
 	var/one_time_use = 0 //Used for one-time-use teleport cards (such as clown planet coordinates.)
 						 //Setting this to 1 will set locked to null after a player enters the portal and will not allow hand-teles to open portals to that location.
+	var/list/beacon_uuid_assoc = list()
+
 
 /obj/machinery/computer/teleporter/Initialize(mapload)
 	id = "[rand(1000, 9999)]"
@@ -33,7 +35,7 @@
 		pad.com = src
 		pad.setDir(dir)
 
-/obj/machinery/computer/teleporter/examine(mob/user)
+/obj/machinery/computer/teleporter/examine(mob/user, dist)
 	. = ..()
 	if(locked)
 		var/turf/T = get_turf(locked)
@@ -84,11 +86,44 @@
 
 	return
 
-/obj/machinery/computer/teleporter/attack_hand(mob/user)
-	if(..()) return
+/obj/machinery/computer/teleporter/attack_hand(mob/user, list/params)
+	ui_interact(user)
 
-	/* Ghosts can't use this one because it's a direct selection */
-	if(istype(user, /mob/observer/dead)) return
+/obj/machinery/computer/teleporter/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "TeleporterConsole", name) // 500, 800
+		ui.open()
+
+/obj/machinery/computer/teleporter/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = list()
+
+	data["disabled"] = is_disabled()
+	data["locked"] = locked?.loc.loc.name || "None!"
+	data["teleporterid"] = id
+	data["projector_charge"] = projector?.current_joules || 0
+	data["projector_charge_max"] = projector?.power_capacity || 0
+	data["projector_recharge_rate"] = projector?.recharge_rate || 0
+	data["valid_destinations"] = generate_telebeacon_list()
+	return data
+
+/obj/machinery/computer/teleporter/ui_act(action, list/params, datum/tgui/ui)
+	switch(action)
+		if("set_destination")
+			set_destination(compare_beacon_to_identifier(params["new_locked"], beacon_uuid_assoc.Copy()))
+
+		if("set_recharge")
+			var/target = params["target"]
+			projector?.recharge_rate = target
+	. = ..()
+
+/obj/machinery/computer/teleporter/proc/is_disabled()
+	if (!(pad||projector))
+		return TRUE
+	return FALSE
+
+/obj/machinery/computer/teleporter/proc/generate_telebeacon_list()
+	beacon_uuid_assoc.Cut()
 
 	var/list/L = list()
 	var/list/areaindex = list()
@@ -97,14 +132,16 @@
 		var/turf/T = get_turf(R)
 		if(!T)
 			continue
-		if(!(T.z in GLOB.using_map.player_levels))
+		if(!(T.z in (LEGACY_MAP_DATUM).player_levels))
 			continue
 		var/tmpname = T.loc.name
 		if(areaindex[tmpname])
 			tmpname = "[tmpname] ([++areaindex[tmpname]])"
 		else
 			areaindex[tmpname] = 1
-		L[tmpname] = R
+		L += tmpname
+		beacon_uuid_assoc += "[R.identifier]"
+		beacon_uuid_assoc["[R.identifier]"] = list("beaconname" = tmpname, "beacon" = WEAKREF(R))
 
 	for (var/obj/item/implant/tracking/I in GLOB.all_tracking_implants)
 		if(!I.implanted || !ismob(I.loc))
@@ -117,25 +154,40 @@
 			var/turf/T = get_turf(M)
 			if(!T)
 				continue
-			if(!(T.z in GLOB.using_map.player_levels))
+			if(!(T.z in (LEGACY_MAP_DATUM).player_levels))
 				continue
 			var/tmpname = M.real_name
 			if(areaindex[tmpname])
 				tmpname = "[tmpname] ([++areaindex[tmpname]])"
 			else
 				areaindex[tmpname] = 1
-			L[tmpname] = I
+			L += tmpname
+			beacon_uuid_assoc += "[I.id]"
+			beacon_uuid_assoc["[I.id]"] = list("beaconname" = tmpname, "beacon" = WEAKREF(I))
+	return L
 
-	var/desc = tgui_input_list(user, "Please select a location to lock in.", "Locking Computer", L)
-	if(!desc)
-		return
+/obj/machinery/computer/teleporter/proc/compare_beacon_to_identifier(var/dname, var/list/beacon_list)
+	var/obj/item/B
+	for(var/I in beacon_list)
+		var/bname = beacon_list[I]["beaconname"]
+		if(cmptext(dname, bname))
+			var/datum/weakref/WR = beacon_list[I]["beacon"]
+			B = WR.resolve()
+			break
+	return B
+
+/obj/machinery/computer/teleporter/proc/set_destination(var/obj/destination)
 	if(get_dist(src, usr) > 1 && !issilicon(usr))
 		return
 
-	locked = L[desc]
-	for(var/mob/O in hearers(src, null))
-		O.show_message(SPAN_NOTICE("Locked In"), 2)
-	return
+	if(!destination)
+		audible_message(SPAN_BOLDWARNING("[src] buzzes, \"Destination Invalid.\""), hearing_distance = 5)
+		playsound(get_turf(src), 'sound/machines/buzz-sigh.ogg', 50, 0)
+		return
+
+	locked = destination
+	audible_message(SPAN_BOLDNOTICE("[src] chimes, \"Destination Locked.\""), hearing_distance = 5)
+	playsound(get_turf(src), 'sound/machines/ping.ogg', 50, 0)
 
 /obj/machinery/computer/teleporter/verb/set_id(t as text)
 	set category = "Object"

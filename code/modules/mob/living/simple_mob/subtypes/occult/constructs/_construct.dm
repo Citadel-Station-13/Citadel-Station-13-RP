@@ -71,7 +71,7 @@
 	shock_resist = 0.1 //Electricity isn't very effective on stone, especially that from hell.
 	poison_resist = 1.0
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 10,
 				"bullet" = 10,
 				"laser" = 10,
@@ -128,7 +128,7 @@
 
 /mob/living/simple_mob/construct/Initialize(mapload)
 	. = ..()
-	name = text("[initial(name)] ([rand(1, 1000)])")
+	name = "[initial(name)] ([rand(1, 1000)])"
 	real_name = name
 	for(var/spell in construct_spells)
 		src.add_spell(new spell, "const_spell_ready")
@@ -161,7 +161,7 @@
 		return
 	return ..()
 
-/mob/living/simple_mob/construct/examine(mob/user)
+/mob/living/simple_mob/construct/examine(mob/user, dist)
 	..(user)
 	var/msg = "<span cass='info'>This is [icon2html(thing = src, target = user)] \a <EM>[src]</EM>!\n"
 	if (src.health < src.getMaxHealth())

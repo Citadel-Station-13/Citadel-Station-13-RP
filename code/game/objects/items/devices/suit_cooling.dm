@@ -7,13 +7,13 @@
 	slot_flags = SLOT_BACK
 
 	//copied from tank.dm
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4
 	action_button_name = "Toggle Heatsink"
 
-	matter = list(MAT_STEEL = 15000, MAT_GLASS = 3500)
+	materials = list(MAT_STEEL = 15000, MAT_GLASS = 3500)
 	origin_tech = list(TECH_MAGNET = 2, TECH_MATERIAL = 2)
 
 	var/on = 0				//is it turned on?
@@ -24,6 +24,9 @@
 	var/thermostat = T20C
 
 	//TODO: make it heat up the surroundings when not in space
+
+/obj/item/suit_cooling_unit/empty
+	cell = null
 
 /obj/item/suit_cooling_unit/ui_action_click()
 	toggle(usr)
@@ -120,7 +123,10 @@
 	STOP_PROCESSING(SSobj, src)
 	updateicon()
 
-/obj/item/suit_cooling_unit/attack_self(var/mob/user)
+/obj/item/suit_cooling_unit/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(cover_open && cell)
 		if(ishuman(user))
 			user.put_in_hands(cell)
@@ -179,7 +185,7 @@
 	else
 		icon_state = "suitcooler0"
 
-/obj/item/suit_cooling_unit/examine(mob/user)
+/obj/item/suit_cooling_unit/examine(mob/user, dist)
 	. = ..()
 
 	if(Adjacent(user))

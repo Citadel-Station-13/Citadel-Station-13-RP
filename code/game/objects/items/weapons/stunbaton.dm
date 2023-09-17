@@ -7,7 +7,7 @@
 	item_state = "baton"
 	rad_flags = RAD_BLOCK_CONTENTS
 	slot_flags = SLOT_BELT
-	force = 15
+	damage_force = 15
 	sharp = 0
 	edge = 0
 	throw_force = 7
@@ -71,7 +71,7 @@
 	else
 		set_light(0)
 
-/obj/item/melee/baton/examine(mob/user)
+/obj/item/melee/baton/examine(mob/user, dist)
 	. = ..()
 	if(bcell)
 		. += "<span class='notice'>The [src] is [round(bcell.percent())]% charged.</span>"
@@ -94,7 +94,7 @@
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
 
-/obj/item/melee/baton/attack_hand(mob/user as mob)
+/obj/item/melee/baton/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(bcell && !integrated_cell)
 			bcell.update_icon()
@@ -109,6 +109,9 @@
 		return ..()
 
 /obj/item/melee/baton/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(use_external_power)
 		//try to find our power cell
 		var/mob/living/silicon/robot/R = loc
@@ -130,7 +133,7 @@
 /obj/item/melee/baton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(status && (MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='danger'>You accidentally hit yourself with the [src]!</span>")
-		user.Weaken(30)
+		user.afflict_paralyze(20 * 30)
 		deductcharge(hitcost)
 		return
 	deductcharge(hitcost)
@@ -193,7 +196,7 @@
 	desc = "An improvised stun baton."
 	icon_state = "stunprod"
 	item_state = "prod"
-	force = 3
+	damage_force = 3
 	throw_force = 5
 	stunforce = 0
 	agonyforce = 60	//same force as a stunbaton, but uses way more charge.
@@ -245,7 +248,7 @@
 	desc = "An improvised stun baton with a bluespace crystal attached to the tip."
 	icon_state = "teleprod"
 	item_state = "prod"
-	force = 3
+	damage_force = 3
 	throw_force = 5
 	stunforce = 0
 	agonyforce = 60	//same force as a stunbaton, but uses way more charge.
@@ -261,13 +264,13 @@
 // Rare version of a baton that causes lesser lifeforms to really hate the user and attack them.
 /obj/item/melee/baton/shocker
 	name = "shocker"
-	desc = "A device that appears to arc electricity into a target to incapacitate or otherwise hurt them, similar to a stun baton.  It looks inefficent."
+	desc = "A device that appears to arc electricity into a target to incapacitate or otherwise hurt them, similar to a stun baton.  It looks inefficient."
 	description_info = "Hitting a lesser lifeform with this while it is on will compel them to attack you above other nearby targets.  Otherwise \
 	it works like a regular stun baton, just less effectively."
 	icon_state = "shocker"
-	force = 10
+	damage_force = 10
 	throw_force = 5
-	agonyforce = 25 // Less efficent than a regular baton.
+	agonyforce = 25 // Less efficient than a regular baton.
 	attack_verb = list("poked")
 
 /obj/item/melee/baton/shocker/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -288,13 +291,24 @@
 	icon_state = "stunsword"
 	item_state = "baton"
 
+/obj/item/melee/baton/stunlance
+	name = "stun lance"
+	desc = "Designed by NanoTrasen for mounted expeditions, the stun lance is useful for running down and incapacitating wildlife for study. Its efficacy on fugitives is tacitly implied."
+	icon_state = "stunlance"
+	w_class = ITEMSIZE_NORMAL
+	reach = 2
+
+/obj/item/melee/baton/stunlance/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/jousting)
+
 /obj/item/melee/baton/loaded/mini
 	name = "Personal Defense Baton"
 	desc = "A smaller, more potent version of a hand-held tazer, one zap and the target is sure to be on the ground, and the <b>integrated</b> cell empty. Standard issue to Command staff, indentured sex workers and anyone else who might get mobbed by dissatisfied clientele. Do not lick."
 	icon_state = "mini_baton"
 	item_state = "mini_baton"
 	w_class = ITEMSIZE_SMALL
-	force = 5
+	damage_force = 5
 	stunforce = 5
 	throw_force = 2
 	agonyforce = 120	//one-hit

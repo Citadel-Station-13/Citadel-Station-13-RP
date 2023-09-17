@@ -131,15 +131,12 @@
 /turf/simulated/shuttle/floor/alien
 	icon_state = "alienpod1"
 	block_tele = TRUE
-
-/turf/simulated/shuttle/floor/alien/Initialize(mapload)
-
 	ambient_light = COLOR_LUMINOL
 	ambient_light_multiplier = 0.6
 
+/turf/simulated/shuttle/floor/alien/Initialize(mapload)
+	. = ..()
 	icon_state = "alienpod[rand(1, 9)]"
-
-	return ..()
 
 /turf/simulated/shuttle/floor/alienplating
 	icon_state = "alienplating"

@@ -44,3 +44,16 @@
 		return FALSE
 
 	return smart_equip(I)
+
+/**
+ * kicks out all physical restraints on us
+ */
+/mob/proc/remove_all_restraints()
+	drop_slots_to_ground(list(SLOT_ID_HANDCUFFED, SLOT_ID_LEGCUFFED), INV_OP_FORCE)
+	var/obj/item/suit_check = item_by_slot(SLOT_ID_SUIT)
+	if(istype(suit_check, /obj/item/clothing/suit/straight_jacket))
+		drop_item_to_ground(suit_check, INV_OP_FORCE)
+	// guess at if it's a bad thing
+	// todo: actual flag like BUCKLING_IS_CONSIDERED_RESTRICTING or something
+	if(buckled?.buckle_flags & (BUCKLING_NO_DEFAULT_RESIST | BUCKLING_NO_DEFAULT_UNBUCKLE))
+		unbuckle(BUCKLE_OP_FORCE)

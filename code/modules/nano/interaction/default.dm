@@ -31,7 +31,7 @@
 		return
 
 	// robots can interact with things they can see within their view range
-	if((src_object in view(src)) && get_dist(src_object, src) <= src.client.view)
+	if((src_object in view(src)) && get_dist(src_object, src) <= min(CEILING(client.current_viewport_width / 2, 1), CEILING(client.current_viewport_height / 2, 1)))
 		return UI_INTERACTIVE	// interactive (green visibility)
 	return UI_DISABLED			// no updates, completely disabled (red visibility)
 
@@ -43,7 +43,7 @@
 	// Prevents the AI from using Topic on admin levels (by for example viewing through the court/thunderdome cameras)
 	// unless it's on the same level as the object it's interacting with.
 	var/turf/T = get_turf(src_object)
-	if(!T || !(z == T.z || (T.z in GLOB.using_map.player_levels)))
+	if(!T || !(z == T.z || (T.z in (LEGACY_MAP_DATUM).player_levels)))
 		return UI_CLOSE
 
 	// If an object is in view then we can interact with it

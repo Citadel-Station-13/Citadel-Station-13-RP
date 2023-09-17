@@ -63,11 +63,11 @@
 				to_chat(affected_mob, "<span class='danger'>Your stomach hurts.</span>")
 				if(prob(20))
 					affected_mob.adjustToxLoss(1)
-					affected_mob.updatehealth()
+					affected_mob.update_health()
 		if(5)
 			to_chat(affected_mob, "<span class='danger'>You feel something tearing its way out of your stomach...</span>")
 			affected_mob.adjustToxLoss(10)
-			affected_mob.updatehealth()
+			affected_mob.update_health()
 			if(prob(50))
 				AttemptGrow()
 

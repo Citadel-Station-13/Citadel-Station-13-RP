@@ -29,13 +29,16 @@
 	template = null // without this, capsules would be one use. per round.
 	. = ..()
 
-/obj/item/survivalcapsule/examine(mob/user)
+/obj/item/survivalcapsule/examine(mob/user, dist)
 	. = ..()
 	get_template()
 	. += "This capsule has the [template.name] stored."
 	. += template.description
 
-/obj/item/survivalcapsule/attack_self()
+/obj/item/survivalcapsule/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	//Can't grab when capsule is New() because templates aren't loaded then
 	get_template()
 	if(!used)
@@ -139,14 +142,8 @@
 	name = "pod window"
 	icon = 'icons/obj/survival_pod.dmi'
 	icon_state = "pwindow"
-	basestate = "pwindow"
+	fulltile = FALSE
 
-//The windows have diagonal versions, and will never be a full window
-/obj/structure/window/reinforced/survival_pod/is_fulltile()
-	return FALSE
-
-/obj/structure/window/reinforced/survival_pod/update_icon()
-	icon_state = basestate
 
 //Windoor
 /obj/machinery/door/window/survival_pod
@@ -163,6 +160,10 @@
 	can_plate = FALSE
 
 /obj/structure/table/survival_pod/update_icon()
+	icon_state = "table" //this table doesn't care about your material nonsense. just ignore the overlays.
+
+/obj/structure/table/survival_pod/update_icon_state()
+	. = ..()
 	icon_state = "table"
 
 /obj/structure/table/survival_pod/Initialize(mapload)
@@ -171,9 +172,15 @@
 	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 	return ..()
 
-/obj/structure/table/survival_pod/dismantle(obj/item/tool/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
-	return
+/obj/structure/table/survival_pod/attackby(obj/item/W, mob/user)
+	if(W.is_wrench()) //dismantled with one wrench usage
+		dismantle(W, user)
+		return 1
+	return ..()
+
+/obj/structure/table/survival_pod/Destroy()
+	new /obj/item/stack/material/steel(src.loc) //add an additional steel so they can make a new table with two steel if desired
+	return ..()
 
 //Sleeper
 /obj/machinery/sleeper/survival_pod
@@ -183,10 +190,9 @@
 	stasis_level = 100 //Just one setting
 
 /obj/machinery/sleeper/survival_pod/update_icon()
+	overlays.Cut()
 	if(occupant)
 		add_overlay("sleeper_cover")
-	else
-		cut_overlays()
 
 //Computer
 /obj/item/gps/computer
@@ -210,7 +216,7 @@
 
 	return FALSE
 
-/obj/item/gps/computer/attack_hand(mob/user)
+/obj/item/gps/computer/attack_hand(mob/user, list/params)
 	attack_self(user)
 
 //Bed
@@ -227,13 +233,12 @@
 	desc = "A heated storage unit."
 	icon_state = "donkvendor"
 	icon = 'icons/obj/survival_pod_vend.dmi'
-	icon_on = "donkvendor"
-	icon_off = "donkvendor"
 	light_range = 5
 	light_power = 1.2
 	light_color = "#DDFFD3"
 	pixel_y = -4
 	max_n_of_items = 100
+	icon_base = "donkvendor"
 
 /obj/machinery/smartfridge/survival_pod/Initialize(mapload)
 	. = ..()
@@ -243,6 +248,17 @@
 
 /obj/machinery/smartfridge/survival_pod/accept_check(obj/item/O)
 	return isitem(O)
+
+/obj/machinery/smartfridge/survival_pod/update_icon() //survival pod smartfridges don't have the content nonsense, so this is mainly bandaid fix.
+	overlays.Cut()
+	if(inoperable())
+		icon_state = "[icon_base]-off"
+	else
+		icon_state = icon_base
+
+	if(panel_open)
+		icon_state = "[icon_base]_open"
+
 
 /obj/machinery/smartfridge/survival_pod/empty
 	name = "dusty survival pod storage"

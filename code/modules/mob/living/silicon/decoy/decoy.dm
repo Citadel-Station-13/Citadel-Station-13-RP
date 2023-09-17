@@ -2,12 +2,11 @@
 	name = "AI"
 	icon = 'icons/mob/AI.dmi'//
 	icon_state = "ai"
-	anchored = 1 // -- TLE
-	canmove = 0
+	anchored = TRUE // -- TLE
+	mobility_flags = NONE
 
 /mob/living/silicon/decoy/Initialize(mapload)
 	. = ..()
 	src.icon = 'icons/mob/AI.dmi'
 	src.icon_state = "ai"
-	src.anchored = 1
-	src.canmove = 0
+	src.anchored = TRUE

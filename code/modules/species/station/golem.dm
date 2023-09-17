@@ -1,7 +1,8 @@
 /datum/species/golem
+	uid = SPECIES_ID_GOLEM
+	id = SPECIES_ID_GOLEM
 	name = SPECIES_GOLEM
 	name_plural = "golems"
-	uid = SPECIES_ID_GOLEM
 
 	icobase      = 'icons/mob/species/golem/body.dmi'
 	deform       = 'icons/mob/species/golem/body.dmi'

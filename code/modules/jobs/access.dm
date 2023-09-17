@@ -49,116 +49,61 @@
 /proc/get_centcom_access(job)
 	switch(job)
 		if("VIP Guest")
-			return list(access_cent_general)
+			return list(ACCESS_CENTCOM_GENERAL)
 		if("Custodian")
-			return list(access_cent_general, access_cent_living, access_cent_storage)
+			return list(ACCESS_CENTCOM_GENERAL, ACCESS_CENTCOM_DORMS, ACCESS_CENTCOM_STORAGE)
 		if("Thunderdome Overseer")
-			return list(access_cent_general, access_cent_thunder)
+			return list(ACCESS_CENTCOM_GENERAL, ACCESS_CENTCOM_THUNDERDOME)
 		if("Intel Officer")
-			return list(access_cent_general, access_cent_living)
+			return list(ACCESS_CENTCOM_GENERAL, ACCESS_CENTCOM_DORMS)
 		if("Medical Officer")
-			return list(access_cent_general, access_cent_living, access_cent_medical)
+			return list(ACCESS_CENTCOM_GENERAL, ACCESS_CENTCOM_DORMS, ACCESS_CENTCOM_MEDICAL)
 		if("Death Commando")
-			return list(access_cent_general, access_cent_specops, access_cent_living, access_cent_storage)
+			return list(ACCESS_CENTCOM_GENERAL, ACCESS_CENTCOM_ERT, ACCESS_CENTCOM_DORMS, ACCESS_CENTCOM_STORAGE)
 		if("Research Officer")
-			return list(access_cent_general, access_cent_specops, access_cent_medical, access_cent_teleporter, access_cent_storage)
+			return list(ACCESS_CENTCOM_GENERAL, ACCESS_CENTCOM_ERT, ACCESS_CENTCOM_MEDICAL, ACCESS_CENTCOM_TELEPORTER, ACCESS_CENTCOM_STORAGE)
 		if("BlackOps Commander")
-			return list(access_cent_general, access_cent_thunder, access_cent_specops, access_cent_living, access_cent_storage, access_cent_creed)
+			return list(ACCESS_CENTCOM_GENERAL, ACCESS_CENTCOM_THUNDERDOME, ACCESS_CENTCOM_ERT, ACCESS_CENTCOM_DORMS, ACCESS_CENTCOM_STORAGE, ACCESS_CENTCOM_ERT_LEAD)
 		if("Supreme Commander")
 			return get_all_centcom_access()
 
-/var/list/datum/access/priv_all_access_datums
-/proc/get_all_access_datums()
-	if(!priv_all_access_datums)
-		priv_all_access_datums = init_subtypes(/datum/access)
-		priv_all_access_datums = dd_sortedObjectList(priv_all_access_datums)
+/proc/get_access_ids(access_types = ACCESS_TYPE_ALL)
+	// todo: remove this proc
+	RETURN_TYPE(/list)
+	return SSjob.access_ids_of_type(access_types)
 
-	return priv_all_access_datums
-
-/var/list/datum/access/priv_all_access_datums_id
-/proc/get_all_access_datums_by_id()
-	if(!priv_all_access_datums_id)
-		priv_all_access_datums_id = list()
-		for(var/datum/access/A in get_all_access_datums())
-			priv_all_access_datums_id["[A.id]"] = A
-
-	return priv_all_access_datums_id
-
-/var/list/datum/access/priv_all_access_datums_region
-/proc/get_all_access_datums_by_region()
-	if(!priv_all_access_datums_region)
-		priv_all_access_datums_region = list()
-		for(var/datum/access/A in get_all_access_datums())
-			if(!priv_all_access_datums_region[A.region])
-				priv_all_access_datums_region[A.region] = list()
-			priv_all_access_datums_region[A.region] += A
-
-	return priv_all_access_datums_region
-
-/proc/get_access_ids(var/access_types = ACCESS_TYPE_ALL)
-	var/list/L = new()
-	for(var/datum/access/A in get_all_access_datums())
-		if(A.access_type & access_types)
-			L += A.id
-	return L
-
-/var/list/priv_all_access
 /proc/get_all_accesses()
+	// todo: remove this proc
 	RETURN_TYPE(/list)
-	if(!priv_all_access)
-		priv_all_access = get_access_ids()
+	return SSjob.access_ids_of_type(ACCESS_TYPE_ALL)
 
-	return priv_all_access.Copy()
-
-/var/list/priv_station_access
 /proc/get_all_station_access()
+	// todo: remove this proc
 	RETURN_TYPE(/list)
-	if(!priv_station_access)
-		priv_station_access = get_access_ids(ACCESS_TYPE_STATION)
+	return SSjob.access_ids_of_type(ACCESS_TYPE_STATION)
 
-	return priv_station_access.Copy()
-
-/var/list/priv_centcom_access
 /proc/get_all_centcom_access()
+	// todo: remove this proc
 	RETURN_TYPE(/list)
-	if(!priv_centcom_access)
-		priv_centcom_access = get_access_ids(ACCESS_TYPE_CENTCOM)
+	return SSjob.access_ids_of_type(ACCESS_TYPE_CENTCOM)
 
-	return priv_centcom_access.Copy()
-
-/var/list/priv_syndicate_access
 /proc/get_all_syndicate_access()
+	// todo: remove this proc
 	RETURN_TYPE(/list)
-	if(!priv_syndicate_access)
-		priv_syndicate_access = get_access_ids(ACCESS_TYPE_SYNDICATE)
+	return SSjob.access_ids_of_type(ACCESS_TYPE_SYNDICATE)
 
-	return priv_syndicate_access.Copy()
-
-/var/list/priv_private_access
 /proc/get_all_private_access()
+	// todo: remove this proc
 	RETURN_TYPE(/list)
-	if(!priv_private_access)
-		priv_private_access = get_access_ids(ACCESS_TYPE_PRIVATE)
+	return SSjob.access_ids_of_type(ACCESS_TYPE_PRIVATE)
 
-	return priv_syndicate_access.Copy()
-
-/var/list/priv_region_access
-/proc/get_region_accesses(var/code)
+/proc/get_region_accesses(region)
+	// todo: remove this proc
 	RETURN_TYPE(/list)
-	if(code == ACCESS_REGION_ALL)
-		return get_all_station_access()
-
-	if(!priv_region_access)
-		priv_region_access = list()
-		for(var/datum/access/A in get_all_access_datums())
-			if(!priv_region_access["[A.region]"])
-				priv_region_access["[A.region]"] = list()
-			priv_region_access["[A.region]"] += A.id
-
-	var/list/L = priv_region_access["[code]"]
-	return L.Copy()
+	return SSjob.access_ids_of_region(region)
 
 /proc/get_region_accesses_name(var/code)
+	// todo: remove this proc
 	switch(code)
 		if(ACCESS_REGION_ALL)
 			return "All"
@@ -178,29 +123,19 @@
 			return "Supply"
 
 /proc/get_access_desc(id)
-	var/list/AS = get_all_access_datums_by_id()
-	var/datum/access/A = AS["[id]"]
-
-	return A ? A.desc : ""
+	// todo: remove this proc
+	return SSjob.access_lookup(id)?.access_name
 
 /proc/get_centcom_access_desc(A)
+	// todo: remove this proc
 	return get_access_desc(A)
 
 /proc/get_access_by_id(id)
-	var/list/AS = get_all_access_datums_by_id()
-	return AS[id]
-
-/proc/get_all_jobs()
-	var/list/all_jobs = list()
-	var/list/all_datums = typesof(/datum/job)
-	all_datums -= exclude_jobs
-	var/datum/job/jobdatum
-	for(var/jobtype in all_datums)
-		jobdatum = new jobtype
-		all_jobs.Add(jobdatum.title)
-	return all_jobs
+	// todo: remove this proc
+	return SSjob.access_lookup(id)
 
 /proc/get_all_centcom_jobs()
+	// todo: remove this proc
 	return list("VIP Guest",
 		"Custodian",
 		"Thunderdome Overseer",

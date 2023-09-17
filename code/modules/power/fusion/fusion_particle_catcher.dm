@@ -32,12 +32,12 @@
 		density = 0
 		name = "collector [mysize] OFF"
 
-/obj/effect/fusion_particle_catcher/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/fusion_particle_catcher/bullet_act(var/obj/projectile/Proj)
 	parent.AddEnergy(Proj.damage)
 	update_icon()
 	return 0
 
 /obj/effect/fusion_particle_catcher/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover, /obj/effect/accelerated_particle) || istype(mover, /obj/item/projectile/beam))
+	if(istype(mover, /obj/effect/accelerated_particle) || istype(mover, /obj/projectile/beam))
 		return !density
 	return TRUE

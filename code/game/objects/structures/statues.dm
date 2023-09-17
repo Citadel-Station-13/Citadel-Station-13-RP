@@ -78,16 +78,16 @@
 			Dismantle(1)
 
 	else
-		hardness -= W.force/100
+		hardness -= W.damage_force/100
 		..()
 		CheckHardness()
 
-/obj/structure/statue/attack_hand(mob/living/user)
+/obj/structure/statue/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	user.visible_message("[user] rubs some dust off from the [name]'s surface.", \
 						 "<span class='notice'>You rub some dust off from the [name]'s surface.</span>")
 
-/obj/structure/statue/bullet_act(obj/item/projectile/Proj)
+/obj/structure/statue/bullet_act(obj/projectile/Proj)
 	hardness -= Proj.damage
 	..()
 	CheckHardness()
@@ -346,4 +346,15 @@
 	density = TRUE
 	anchored = TRUE
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
-	climbable = TRUE
+	climb_allowed = TRUE
+	depth_projected = TRUE
+	depth_level = 24
+
+/obj/structure/memorial/small
+	icon = 'icons/obj/structures.dmi'
+
+/obj/structure/memorial/small/left
+	icon_state = "memorial_l"
+
+/obj/structure/memorial/small/right
+	icon_state = "memorial_r"

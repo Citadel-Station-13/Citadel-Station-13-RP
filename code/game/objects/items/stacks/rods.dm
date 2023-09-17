@@ -4,13 +4,13 @@
 	singular_name = "metal rod"
 	icon_state = "rods"
 	w_class = ITEMSIZE_NORMAL
-	force = 9.0
+	damage_force = 9.0
 	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
 	drop_sound = 'sound/items/drop/metalweapon.ogg'
 	pickup_sound = 'sound/items/pickup/metalweapon.ogg'
-	matter = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 2)
+	materials = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 2)
 	max_amount = 60
 	attack_verb = list("hit", "bludgeoned", "whacked")
 
@@ -18,7 +18,7 @@
 	name = "metal rod synthesizer"
 	desc = "A device that makes metal rods."
 	gender = NEUTER
-	matter = null
+	materials = null
 	uses_charge = 1
 	charge_costs = list(500)
 	stacktype = /obj/item/stack/rods
@@ -73,7 +73,10 @@ var/global/list/datum/stack_recipe/rods_recipes = list( \
 	..()
 
 /*
-/obj/item/stack/rods/attack_self(mob/user as mob)
+/obj/item/stack/rods/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	src.add_fingerprint(user)
 
 	if(!istype(user.loc,/turf)) return 0

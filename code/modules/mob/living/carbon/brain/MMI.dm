@@ -18,7 +18,7 @@
 	origin_tech = list(TECH_BIO = 3)
 	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/assisted)
 
-	req_access = list(access_robotics)
+	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 
 	//Revised. Brainmob is now contained directly within object of transfer. MMI in this case.
 
@@ -42,7 +42,7 @@
 	set category = "Object"
 	set src in usr
 	set popup_menu = 1
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return 0
 
 	if (radio.radio_enabled == 1)
@@ -109,7 +109,10 @@
 	..()
 
 //TODO: ORGAN REMOVAL UPDATE. Make the brain remain in the MMI so it doesn't lose organ data.
-/obj/item/mmi/attack_self(mob/user as mob)
+/obj/item/mmi/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!brainmob)
 		to_chat(user, "<span class='warning'>You upend the MMI, but there's nothing in it.</span>")
 	else if(locked)
@@ -151,12 +154,12 @@
 	return
 
 /obj/item/mmi/relaymove(var/mob/user, var/direction)
-	if(user.stat || user.stunned)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
-	var/obj/item/rig/rig = src.get_rig()
-	if(rig)
-		if(istype(rig,/obj/item/rig))
-			rig.forced_move(direction, user)
+	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	if(hardsuit)
+		if(istype(hardsuit,/obj/item/hardsuit))
+			hardsuit.forced_move(direction, user)
 
 /obj/item/mmi/Destroy()
 	if(isrobot(loc))
@@ -189,7 +192,7 @@
 /obj/item/mmi/digital
 	var/searching = 0
 	var/askDelay = 10 * 60 * 1
-	req_access = list(access_robotics)
+	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	locked = 0
 	mecha = null//This does not appear to be used outside of reference in mecha.dm.
 	var/ghost_query_type = null
@@ -210,7 +213,7 @@
 /obj/item/mmi/digital/attackby(obj/item/O as obj, mob/user as mob)
 	return //Doesn't do anything right now because none of the things that can be done to a regular MMI make any sense for these
 
-/obj/item/mmi/digital/examine(mob/user)
+/obj/item/mmi/digital/examine(mob/user, dist)
 	. = ..()
 	if(radio)
 		. += SPAN_NOTICE("There is a switch to toggle the radio system [radio.radio_enabled ? "off" : "on"].[brainobj ? " It is currently being covered by [brainobj]." : null]")
@@ -243,10 +246,10 @@
 	brainmob.timeofhostdeath = H.timeofdeath
 	brainmob.set_stat(CONSCIOUS)
 	if(H.mind)
-		H.mind.transfer_to(brainmob)
+		H.mind.transfer(brainmob)
 	return
 
-/obj/item/mmi/digital/attack_self(mob/user as mob)
+/obj/item/mmi/digital/attack_self(mob/user)
 	if(brainmob && !brainmob.key && searching == 0)
 		//Start the process of searching for a new user.
 		to_chat(user, "<font color=#4F49AF>You carefully locate the manual activation switch and start the [src]'s boot process.</font>")

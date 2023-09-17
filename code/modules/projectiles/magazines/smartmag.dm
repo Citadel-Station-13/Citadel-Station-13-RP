@@ -49,7 +49,7 @@
 			last_production_time = world.time
 			produce()
 
-/obj/item/ammo_magazine/smart/examine(mob/user)
+/obj/item/ammo_magazine/smart/examine(mob/user, dist)
 	. = ..()
 
 	if(attached_cell)
@@ -103,13 +103,13 @@
 
 	..()
 
-/obj/item/ammo_magazine/smart/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/ammo_magazine/smart/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(src.loc == user)
 		scan_ammo(target, user)
 	..()
 
 // You can remove the power cell from the magazine by hand, but it's way slower than using a screwdriver
-/obj/item/ammo_magazine/smart/attack_hand(mob/user)
+/obj/item/ammo_magazine/smart/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(attached_cell)
 			to_chat(user, "You struggle to remove \the [attached_cell] from \the [src].")

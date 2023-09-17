@@ -10,7 +10,7 @@
 	description_info = "You can use this on airlocks or APCs to try to hack them without cutting wires."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "multitool"
-	force = 5.0
+	damage_force = 5.0
 	w_class = ITEMSIZE_SMALL
 	throw_force = 5.0
 	throw_range = 15
@@ -18,7 +18,7 @@
 	drop_sound = 'sound/items/drop/multitool.ogg'
 	pickup_sound = 'sound/items/pickup/multitool.ogg'
 
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
 
 	var/mode_index = 1
 	var/toolmode = MULTITOOL_MODE_STANDARD
@@ -46,7 +46,10 @@
 				return
 		update_icon()
 
-/obj/item/multitool/attack_self(mob/living/user)
+/obj/item/multitool/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/choice = alert("What do you want to do with \the [src]?","Multitool Menu", "Switch Mode", "Clear Buffers", "Cancel")
 	switch(choice)
 		if("Cancel")
@@ -65,8 +68,6 @@
 			mode_switch(user)
 
 	update_icon()
-
-	return ..()
 
 /obj/item/multitool/is_multitool()
 	return TRUE
@@ -118,3 +119,16 @@
 
 /obj/item/multitool/green
 	color_overlay = "multi_g"
+
+/obj/item/multitool/crystal
+	name = "crystalline multitool"
+	desc = "A crystalline energy patterning tool of an alien make."
+	icon_state = "crystal_multitool"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	materials = list(MATERIAL_CRYSTAL = 1250)
+
+/obj/item/multitool/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)

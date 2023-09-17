@@ -13,14 +13,14 @@
 	desc = "Now you can feel like Zeus."
 	cast_methods = CAST_RANGED
 	aspect = ASPECT_SHOCK
-	spell_projectile = /obj/item/projectile/beam/lightning
+	spell_projectile = /obj/projectile/beam/lightning
 	energy_cost_per_shot = 2500
 	instability_per_shot = 10
 	cooldown = 20
 	pre_shot_delay = 10
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 
-/obj/item/projectile/beam/lightning
+/obj/projectile/beam/lightning
 	name = "lightning"
 	icon_state = "lightning"
 	nodamage = 1
@@ -32,7 +32,7 @@
 
 	var/power = 60				//How hard it will hit for with electrocute_act().
 
-/obj/item/projectile/beam/lightning/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
+/obj/projectile/beam/lightning/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
 	if(ishuman(target_mob))
 		var/mob/living/carbon/human/H = target_mob
 		var/obj/item/organ/external/affected = H.get_organ(check_zone(BP_TORSO))

@@ -199,7 +199,7 @@
 
 /proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
-		if (M.real_name == text("[msg]"))
+		if (M.real_name == "[msg]")
 			return 1
 	return 0
 
@@ -416,10 +416,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				A.add_overlay(alert_overlay)
 
 /mob/proc/switch_to_camera(obj/machinery/camera/C)
-	if (!C.can_use() || stat || (get_dist(C, src) > 1 || machine != src || blinded || !canmove))
-		return FALSE
-	check_eye(src)
-	return TRUE
+	return FALSE
 
 /mob/living/silicon/ai/switch_to_camera(obj/machinery/camera/C)
 	if(!C.can_use() || !is_in_chassis())
@@ -615,6 +612,9 @@ var/list/global/organ_rel_size = list(
 		item.screen_loc = null
 		return
 
+	if(item.base_pixel_x || item.base_pixel_y)
+		screen_place = pixel_shift_screen_loc(screen_place, item.base_pixel_x, item.base_pixel_y)
+
 	item.screen_loc = screen_place
 
 /mob/proc/can_see_reagents()
@@ -635,3 +635,11 @@ var/list/global/organ_rel_size = list(
 	. = JOINTEXT(.)
 	if(re_encode)
 		. = html_encode(.)
+
+/// if sufficent nutrition is present, take it and return true, otherwise just return false
+/mob/proc/try_take_nutrition(var/amount)
+	if(nutrition >= amount)
+		nutrition = nutrition - amount
+		return TRUE
+	else
+		return FALSE

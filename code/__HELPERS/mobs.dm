@@ -132,9 +132,9 @@
 	var/target_str = key_name(target)
 
 	if(ismob(user))
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attacked [target_str]: [what_done]</font>")
+		user.attack_log += "\[[time_stamp()]\] <font color='red'>Attacked [target_str]: [what_done]</font>"
 	if(ismob(target))
-		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Attacked by [user_str]: [what_done]</font>")
+		target.attack_log += "\[[time_stamp()]\] <font color='orange'>Attacked by [user_str]: [what_done]</font>"
 	log_attack(user_str,target_str,what_done)
 	if(admin_notify)
 		msg_admin_attack("[key_name_admin(user)] vs [target_str]: [what_done]")
@@ -170,6 +170,7 @@
 	return humans
 
 /proc/cached_character_icon(mob/desired)
+	desired.compile_overlays()
 	var/cachekey = "\ref[desired][desired.real_name]"
 
 	if(cached_character_icons[cachekey])

@@ -1,7 +1,8 @@
 /datum/species/apidaen
+	uid = SPECIES_ID_APIDAEN
+	id = SPECIES_ID_APIDAEN
 	name = SPECIES_APIDAEN
 	name_plural = SPECIES_APIDAEN
-	uid = SPECIES_ID_APIDAEN
 
 	icobase      = 'icons/mob/species/apidaen/body.dmi'
 	deform       = 'icons/mob/species/apidaen/body.dmi' // No deformed set has been made yet.
@@ -10,7 +11,8 @@
 	tail = "tail" //Bee tail. I've desaturated it for the sprite sheet.
 	icobase_tail = 1
 
-	darksight = 6     // Not quite as good as spiders. Meant to represent compound eyes and/or better hearing.
+	vision_innate = /datum/vision/baseline/species_tier_2
+
 	slowdown  = -0.10 // Speed boost similar to spiders, slightly nerfed due to two less legs.
 	brute_mod = 0.8   // 20% brute damage reduction seems fitting to match spiders, due to exoskeletons.
 	burn_mod  = 1.15  // 15% burn damage increase, the same as spiders. For the same reason.
@@ -75,11 +77,14 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/nectar_select,
 		/mob/living/carbon/human/proc/nectar_pick,
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
-
+	abilities = list(
+		/datum/ability/species/toggle_flight
+	)
 // Did you know it's actually called a honey stomach? I didn't!
 /obj/item/organ/internal/honey_stomach
 	icon = 'icons/obj/surgery.dmi'

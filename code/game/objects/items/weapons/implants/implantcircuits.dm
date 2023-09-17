@@ -14,9 +14,10 @@
 	IC.implant = src
 
 /obj/item/implant/integrated_circuit/Destroy()
-	IC.implant = null
-	qdel(IC)
-	..()
+	if(!isnull(IC))
+		IC.implant = null
+		qdel(IC)
+	return ..()
 
 /obj/item/implant/integrated_circuit/get_data()
 	var/dat = {"
@@ -35,7 +36,7 @@
 /obj/item/implant/integrated_circuit/emp_act(severity)
 	IC.emp_act(severity)
 
-/obj/item/implant/integrated_circuit/examine(mob/user)
+/obj/item/implant/integrated_circuit/examine(mob/user, dist)
 	return IC.examine(user)
 
 /obj/item/implant/integrated_circuit/attackby(var/obj/item/O, var/mob/user)
@@ -45,4 +46,7 @@
 		..()
 
 /obj/item/implant/integrated_circuit/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	IC.attack_self(user)

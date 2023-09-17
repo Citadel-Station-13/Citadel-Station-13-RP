@@ -27,7 +27,7 @@
 		return	//do not send ghosts, zshadows, ai eyes, etc
 	teleport(AM)
 
-/obj/structure/portal_subtle/attack_hand(mob/user as mob)
+/obj/structure/portal_subtle/attack_hand(mob/user, list/params)
 	if(istype(user) && !(istype(user,/mob/living)))
 		return	//do not send ghosts, zshadows, ai eyes, etc
 	spawn(0)

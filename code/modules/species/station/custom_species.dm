@@ -1,7 +1,8 @@
 
 /datum/species/custom
-	name = SPECIES_CUSTOM
 	uid = SPECIES_ID_CUSTOM
+	id = SPECIES_ID_CUSTOM
+	name = SPECIES_CUSTOM
 	name_plural = "Custom"
 	selects_bodytype = TRUE
 	base_species = SPECIES_HUMAN
@@ -45,6 +46,9 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 
 /datum/species/custom/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)

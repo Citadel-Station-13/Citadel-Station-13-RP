@@ -35,7 +35,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	push_flags = ~HEAVY
 	swap_flags = ~HEAVY
 
-	species_flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
+	species_flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
 	species_appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | RADIATION_GLOWS | HAS_UNDERWEAR
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
@@ -57,7 +57,6 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	max_age = 80
 
-	economic_modifier = 3
 
 	gluttonous = 0
 	virus_immune = TRUE
@@ -83,7 +82,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	body_temperature = T20C	// Room temperature
 
-	rarity_value = 5
+	//rarity_value = 5
 	siemens_coefficient = 1 //As of writing, original was 0.4 (bad)
 
 	genders = list(MALE, FEMALE, NEUTER, PLURAL)
@@ -118,7 +117,8 @@ var/datum/species/shapeshifter/promethean/prometheans
 	inherent_verbs = list(
 		/mob/living/proc/eat_trash,
 		/mob/living/proc/set_size,
-		/mob/living/carbon/human/proc/promethean_select_opaqueness,
+		/mob/living/carbon/human/proc/promethean_toggle_body_transparency,
+		/mob/living/carbon/human/proc/promethean_set_hair_transparency,
 		/mob/living/carbon/human/proc/prommie_blobform,
 		/mob/living/carbon/human/proc/regenerate,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
@@ -168,6 +168,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	var/obj/item/storage/toolbox/lunchbox/L = new boxtype(get_turf(H))
 	new /obj/item/reagent_containers/food/snacks/candy/proteinbar(L)
+	new /obj/item/tool/prybar/red(L)
 	if(H.backbag == 1)
 		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/hand/right)
 	else
@@ -175,7 +176,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 /datum/species/shapeshifter/promethean/hug(mob/living/carbon/human/H, mob/living/target)
 
-	if(H.zone_sel.selecting == "head" || H.zone_sel.selecting == "r_hand" || H.zone_sel.selecting == "l_hand")
+	if(H.zone_sel.selecting == "head" || H.zone_sel.selecting == "r_hand" || H.zone_sel.selecting == "l_hand" || H.zone_sel.selecting == "mouth")
 		return ..()
 	var/t_him = "them"
 	if(ishuman(target))
@@ -247,7 +248,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 		return
 
 	//Human form
-	else if(stat || paralysis || stunned || weakened || restrained())
+	else if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || restrained())
 		to_chat(src, SPAN_WARNING("You can only do this while not stunned."))
 		return
 	else

@@ -19,13 +19,13 @@
 
 /**
  * check the grab state of us to someone
+ *
+ * @return grab state, or null
  */
 /mob/proc/check_grab(mob/M)
 	for(var/obj/item/grab/G in get_held_items())
 		if(G.affecting == M)
 			return G.state
-	// CRASH("in grabbed by but no grab item?")
-
 /**
  * drops our grab to someone immediately
  */
@@ -33,6 +33,29 @@
 	for(var/obj/item/grab/G in get_held_items())
 		if(G.affecting == M)
 			qdel(G)
+
+/**
+ * drops all grabs immediately
+ */
+/mob/proc/drop_grabs()
+	for(var/obj/item/grab/G in get_held_items())
+		qdel(G)
+
+/**
+ * are we being grabbed
+ *
+ * @return TRUE / FALSE
+ */
+/mob/proc/is_grabbed()
+	return length(grabbed_by)
+
+/**
+ * are we being grabbed by someone
+ *
+ * @return null, or state
+ */
+/mob/proc/is_grabbed_by(mob/M)
+	return (M in grabbed_by)? M.check_grab(src) : null
 
 #define UPGRADE_COOLDOWN	40
 #define UPGRADE_KILL_TIMER	100
@@ -44,7 +67,7 @@
 	//if we are being grabbed
 	if(isliving(mob))
 		var/mob/living/L = mob
-		if(!L.canmove && L.grabbed_by.len)
+		if(!CHECK_MOBILITY(L, MOBILITY_CAN_MOVE) && L.grabbed_by.len)
 			L.resist() //shortcut for resisting grabs
 
 		//if we are grabbing someone
@@ -170,15 +193,15 @@
 			if(affecting.loc != assailant.loc || size_difference(affecting, assailant) > 0)
 				force_down = 0
 			else
-				affecting.Weaken(2)
+				affecting.afflict_paralyze(20 * 2)
 
 	if(state >= GRAB_NECK)
-		affecting.Stun(3)
+		affecting.afflict_stun(20 * 3)
 
 	if(state >= GRAB_KILL)
 		//affecting.apply_effect(STUTTER, 5) //would do this, but affecting isn't declared as mob/living for some stupid reason.
 		affecting.stuttering = max(affecting.stuttering, 5) //It will hamper your voice, being choked and all.
-		affecting.Weaken(5)	//Should keep you down unless you get help.
+		affecting.afflict_paralyze(20 * 5)	//Should keep you down unless you get help.
 		affecting.losebreath = max(affecting.losebreath + 2, 3)
 
 	adjust_position()
@@ -199,7 +222,10 @@
 			if(affecting.eye_blind < 3)
 				affecting.Blind(3)
 
-/obj/item/grab/attack_self()
+/obj/item/grab/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return s_click(hud)
 
 /obj/item/grab/throw_resolve_actual(mob/user)
@@ -274,7 +300,7 @@
 		return
 	if(world.time < (last_action + UPGRADE_COOLDOWN))
 		return
-	if(!assailant.canmove || assailant.lying)
+	if(!CHECK_ALL_MOBILITY(assailant, MOBILITY_CAN_USE | MOBILITY_IS_STANDING))
 		qdel(src)
 		return
 
@@ -306,7 +332,7 @@
 		add_attack_logs(assailant,affecting,"Neck grabbed")
 		hud.icon_state = "kill"
 		hud.name = "kill"
-		affecting.Stun(10) //10 ticks of ensured grab
+		affecting.afflict_stun(20 * 10) //10 ticks of ensured grab
 	else if(state < GRAB_KILL)
 		assailant.visible_message("<span class='danger'>[assailant] starts to tighten [TU.his] grip on [affecting]'s neck!</span>")
 		hud.icon_state = "kill1"
@@ -402,7 +428,7 @@
 		if(GRAB_NECK)
 			grab_name = "headlock"
 			//If the you move when grabbing someone then it's easier for them to break free. Same if the affected mob is immune to stun.
-			if(world.time - assailant.l_move_time < 30 || !affecting.stunned)
+			if(world.time - assailant.l_move_time < 30 || !affecting.is_stunned())
 				break_strength++
 			break_chance_table = list(3, 18, 45, 100)
 
@@ -453,7 +479,7 @@
 	user.visible_message("<span class='notice'>[user] starts inspecting [affecting]'s [E.name] carefully.</span>")
 	if(!do_mob(user,H, 10))
 		to_chat(user, "<span class='notice'>You must stand still to inspect [E] for wounds.</span>")
-	else if(E.wounds.len)
+	else if(length(E.wounds))
 		to_chat(user, "<span class='warning'>You find [E.get_wounds_desc()]</span>")
 	else
 		to_chat(user, "<span class='notice'>You find no visible wounds.</span>")
@@ -518,7 +544,7 @@
 		to_chat(attacker, "<span class='warning'>You require a better grab to do this.</span>")
 		return
 	for(var/obj/item/protection in list(target.head, target.wear_mask, target.glasses))
-		if(protection && (protection.body_parts_covered & EYES))
+		if(protection && (protection.body_cover_flags & EYES))
 			to_chat(attacker, "<span class='danger'>You're going to need to remove the eye covering first.</span>")
 			return
 	if(!target.has_eyes())
@@ -540,7 +566,7 @@
 	var/damage = 20
 	var/obj/item/clothing/hat = attacker.head
 	if(istype(hat))
-		damage += hat.force * 3
+		damage += hat.damage_force * 3
 
 	var/armor = target.run_armor_check(BP_HEAD, "melee")
 	var/soaked = target.get_armor_soak(BP_HEAD, "melee")
@@ -583,8 +609,7 @@
 
 /obj/item/grab/proc/apply_pinning(mob/target, mob/attacker)
 	force_down = 1
-	target.Weaken(3)
-	target.lying = 1
+	target.afflict_paralyze(20 * 3)
 	step_to(attacker, target)
 	attacker.setDir(EAST) //face the victim
 	target.setDir(SOUTH) //face up

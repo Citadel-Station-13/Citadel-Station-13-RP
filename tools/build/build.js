@@ -43,18 +43,16 @@ export const WarningParameter = new Juke.Parameter({
 
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
+    // include all maps
+    // exclude WIP maps
     const folders = [
-      // Everything but primary station map files.
-      ...Juke.glob('_maps/away_missions/**/*.dmm'),
-      // ...Juke.glob('_maps/map_levels/**/*.dmm'),
-      // ...Juke.glob('_maps/submaps/**/*.dmm'),
-      ...Juke.glob('_maps/templates/**/*.dmm'),
+      ...Juke.glob('maps/**/*.dmm'),
     ];
     const content = folders
-      .map((file) => file.replace('_maps/', ''))
+      .map((file) => file.replace('maps/', ''))
       .map((file) => `#include "${file}"`)
       .join('\n') + '\n';
-    fs.writeFileSync('_maps/templates.dm', content);
+    fs.writeFileSync('maps/templates.dm', content);
   },
 });
 
@@ -64,7 +62,7 @@ export const DmTarget = new Juke.Target({
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
   ],
   inputs: [
-    '_maps/map_files/generic/**',
+    'maps/**/*.dm',
     'code/**',
     'html/**',
     'icons/**',
@@ -272,7 +270,7 @@ export const CleanTarget = new Juke.Target({
     Juke.rm('*.{dmb,rsc}');
     Juke.rm('*.mdme*');
     Juke.rm('*.m.*');
-    Juke.rm('_maps/templates.dm');
+    Juke.rm('maps/templates.dm');
   },
 });
 

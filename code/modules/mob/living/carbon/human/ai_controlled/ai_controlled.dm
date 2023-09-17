@@ -89,9 +89,9 @@
 	if(to_wear_id_type)
 		var/obj/item/card/id/W = new to_wear_id_type(src)
 		W.name = "[real_name]'s ID Card"
-		var/datum/job/jobdatum
-		for(var/jobtype in typesof(/datum/job))
-			var/datum/job/J = new jobtype
+		var/datum/role/job/jobdatum
+		for(var/jobtype in typesof(/datum/role/job))
+			var/datum/role/job/J = new jobtype
 			if(J.title == to_wear_id_job)
 				jobdatum = J
 				break

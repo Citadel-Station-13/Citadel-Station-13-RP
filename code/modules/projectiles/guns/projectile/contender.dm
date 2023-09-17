@@ -8,12 +8,15 @@
 	handle_casings = HOLD_CASINGS
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/a357
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	projectile_type = /obj/projectile/bullet/pistol/strong
 	var/retracted_bolt = 0
 	load_method = SINGLE_CASING
 	heavy = TRUE
 
-/obj/item/gun/ballistic/contender/attack_self(mob/user as mob)
+/obj/item/gun/ballistic/contender/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(chambered)
 		chambered.loc = get_turf(src)
 		chambered = null
@@ -98,7 +101,7 @@
 	item_state = "revolver"
 	caliber = "12g"
 	ammo_type = /obj/item/ammo_casing/a12g/improvised
-	projectile_type = /obj/item/projectile/bullet/shotgun
+	projectile_type = /obj/projectile/bullet/shotgun
 	var/unstable = 1
 	var/jammed
 

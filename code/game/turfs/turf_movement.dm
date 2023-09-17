@@ -1,6 +1,67 @@
-var/const/enterloopsanity = 100
+/**
+ * Checks if an atom can enter us.
+ * For multi tile objects, oldloc is the turf that they're moving to us from, meaning it's always adjacent, not their real loc.
+ *
+ * Side effects: calls Bump() on top-most blocker, if any, or all blocking objects if atom is MOVEMENT_UNSTOPPABLE.
+ *
+ * Will return FALSE and terminate if the mover is moved away by a bump.
+ */
+/turf/Enter(atom/movable/mover, atom/oldloc)
+	// Do not call ..()
+	// Byond's default turf/Enter() doesn't have the behaviour we want with Bump()
+	// By default byond will call Bump() on the first dense object in contents
+	// Here's hoping it doesn't stay like this for years before we finish conversion to step_
+	// todo: signal
+	var/atom/firstbump
+	var/CanPassSelf = CanPass(mover, src)
+	var/atom/mover_loc = mover.loc
+	var/ignore_bumps = mover.movement_type & MOVEMENT_UNSTOPPABLE
+	if(CanPassSelf || ignore_bumps)
+		for(var/atom/movable/thing as anything in contents)
+			if(thing == mover) // multi tile objects
+				continue
+			if(thing.Cross(mover))
+				continue
+			if(ignore_bumps)
+				mover.Bump(thing)
+				if(mover.loc != mover_loc) // deleted or yanked out
+					return FALSE
+				continue
+			if(!firstbump || ((thing.layer > firstbump.layer || thing.atom_flags & ATOM_BORDER) && !(firstbump.atom_flags & ATOM_BORDER)))
+				firstbump = thing
+	if(!CanPassSelf)	//Even if mover is unstoppable they need to bump us.
+		firstbump = src
+	if(firstbump)
+		mover.Bump(firstbump)
+		return ignore_bumps && mover.loc == mover_loc
+	return TRUE
+
+/**
+ * Checks if an atom can exit us.
+ * For multi tile objects, oldloc is the turf that they're moving from us to, meaning it's always adjacent, not their real loc.
+ *
+ * Side effects: calls Bump() on top-most blocker, if any, or all blocking objects if atom is MOVEMENT_UNSTOPPABLE.
+ *
+ * Will return FALSE and terminate if the mover is moved away by a bump.
+ */
+/turf/Exit(atom/movable/mover, atom/newloc)
+	// atom/Exit() overridden!
+	// todo: signal
+	var/ignore_bumps = mover.movement_type & MOVEMENT_UNSTOPPABLE
+	for(var/atom/movable/thing as anything in contents)
+		if(thing == mover)
+			continue
+		if(!thing.Uncross(mover, newloc))
+			if(thing.atom_flags & ATOM_BORDER)
+				mover.Bump(thing)
+			if(!ignore_bumps)
+				return FALSE
+			if(mover.loc != src) // deleted or yanked out
+				return FALSE
+	return TRUE
+
 /turf/Entered(atom/movable/AM)
-	. = ..()
+	..()
 
 	if(LAZYLEN(acting_automata))
 		for(var/datum/automata/A as anything in acting_automata)
@@ -28,55 +89,6 @@ var/const/enterloopsanity = 100
 			M.make_floating(1)
 		else if(!is_space())
 			M.make_floating(0)
-		if(isliving(M) && (M.movement_type & GROUND))
+		if(isliving(M) && (M.movement_type & MOVEMENT_GROUND))
 			var/mob/living/L = M
 			L.handle_footstep(src)
-
-//There's a lot of QDELETED() calls here if someone can figure out how to optimize this but not runtime when something gets deleted by a Bump/CanAllowThrough/Cross call, lemme know or go ahead and fix this mess - kevinz000
-/turf/Enter(atom/movable/mover, atom/oldloc)
-	// Do not call ..()
-	// Byond's default turf/Enter() doesn't have the behaviour we want with Bump()
-	// By default byond will call Bump() on the first dense object in contents
-	// Here's hoping it doesn't stay like this for years before we finish conversion to step_
-	var/atom/firstbump
-	var/CanPassSelf = CanPass(mover, src)
-	if(CanPassSelf || (mover.movement_type & UNSTOPPABLE))
-		for(var/i in contents)
-			if(QDELETED(mover))
-				return FALSE		//We were deleted, do not attempt to proceed with movement.
-			if(i == mover || i == mover.loc) // Multi tile objects and moving out of other objects
-				continue
-			var/atom/movable/thing = i
-			if(!thing.Cross(mover))
-				if(QDELETED(mover))		//Mover deleted from Cross/CanAllowThrough, do not proceed.
-					return FALSE
-				if(mover.movement_type & UNSTOPPABLE)
-					mover.Bump(thing)
-					continue
-				else
-					if(!firstbump || ((thing.layer > firstbump.layer || thing.atom_flags & ATOM_BORDER) && !(firstbump.atom_flags & ATOM_BORDER)))
-						firstbump = thing
-	if(QDELETED(mover))					//Mover deleted from Cross/CanAllowThrough/Bump, do not proceed.
-		return FALSE
-	if(!CanPassSelf)	//Even if mover is unstoppable they need to bump us.
-		firstbump = src
-	if(firstbump)
-		mover.Bump(firstbump)
-		return !QDELETED(mover) && (mover.movement_type & UNSTOPPABLE)
-	return TRUE
-
-/turf/Exit(atom/movable/mover, atom/newloc)
-	. = ..()
-	if(!. || QDELETED(mover))
-		return FALSE
-	for(var/i in contents)
-		if(i == mover)
-			continue
-		var/atom/movable/thing = i
-		if(!thing.Uncross(mover, newloc))
-			if(thing.atom_flags & ATOM_BORDER)
-				mover.Bump(thing)
-			if(!(mover.movement_type & UNSTOPPABLE))
-				return FALSE
-		if(QDELETED(mover))
-			return FALSE		//We were deleted.

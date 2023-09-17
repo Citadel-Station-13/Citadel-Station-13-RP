@@ -121,8 +121,10 @@ SUBSYSTEM_DEF(zmimic)
 		"",	// newline
 		"ZSt: [build_zstack_display()]",	// This is a human-readable list of the z-stacks known to ZM.
 		"ZMx: [zlev_maximums.Join(", ")]",	// And this is the raw internal state.
-		// In order: Total, Queued, Skipped
-		"T: { T: [openspace_turfs] O: [openspace_overlays] } Q: { T: [queued_turfs.len - (qt_idex - 1)] O: [queued_overlays.len - (qo_idex - 1)] } Sk: { T: [multiqueue_skips_turf] O: [multiqueue_skips_object] }",
+		// This one gets broken out from the below because it's more important.
+		"Q: { T: [queued_turfs.len - (qt_idex - 1)] O: [queued_overlays.len - (qo_idex - 1)] }",
+		// In order: Total, Skipped
+		"T: { T: [openspace_turfs] O: [openspace_overlays] } Sk: { T: [multiqueue_skips_turf] O: [multiqueue_skips_object] }",
 		"F: { H: [fixup_hit] M: [fixup_miss] N: [fixup_noop] FC: [fixup_cache.len] FKG: [fixup_known_good.len] }",	// Fixup stats.
 	)
 	return ..() + entries.Join("<br>&emsp;")
@@ -313,7 +315,7 @@ SUBSYSTEM_DEF(zmimic)
 			TO.plane = t_target
 			TO.mouse_opacity = initial(TO.mouse_opacity)
 
-		T.queue_ao(T.ao_neighbors_mimic == null)	// If ao_neighbors hasn't been set yet, we need to do a rebuild
+		T.queue_ao(T.ao_junction_mimic == null) // If ao_junction hasn't been set yet, we need to do a rebuild.
 
 		// Explicitly copy turf delegates so they show up properly on below levels.
 		//   I think it's possible to get this to work without discrete delegate copy objects, but I'd rather this just work.
@@ -334,7 +336,7 @@ SUBSYSTEM_DEF(zmimic)
 		// Add everything below us to the update queue.
 		for (var/thing in T.below)
 			var/atom/movable/object = thing
-			if (QDELETED(object) || (object.mz_flags & ZMM_IGNORE) || object.loc != T.below || object.invisibility == INVISIBILITY_ABSTRACT)
+			if (QDELETED(object) || (object.zmm_flags & ZMM_IGNORE) || object.loc != T.below || object.invisibility == INVISIBILITY_ABSTRACT)
 				// Don't queue deleted stuff, stuff that's not visible, blacklisted stuff, or stuff that's centered on another tile but intersects ours.
 				continue
 
@@ -452,14 +454,14 @@ SUBSYSTEM_DEF(zmimic)
 			OO.particles = OO.associated_atom.particles
 
 		OO.appearance = OO.associated_atom
-		OO.mz_flags = OO.associated_atom.mz_flags
+		OO.zmm_flags = OO.associated_atom.zmm_flags
 		OO.plane = OPENTURF_MAX_PLANE - OO.depth
 
 		OO.opacity = FALSE
 		OO.queued = 0
 
 		// If an atom has explicit plane sets on its overlays/underlays, we need to replace the appearance so they can be mangled to work with our planing.
-		if (OO.mz_flags & ZMM_MANGLE_PLANES)
+		if (OO.zmm_flags & (ZMM_MANGLE_PLANES | ZMM_AUTOMANGLE))
 			var/new_appearance = fixup_appearance_planes(OO.appearance)
 			if (new_appearance)
 				OO.appearance = new_appearance
@@ -484,9 +486,8 @@ SUBSYSTEM_DEF(zmimic)
 		if (T.below.mimic_proxy)
 			QDEL_NULL(T.below.mimic_proxy)
 	QDEL_NULL(T.mimic_underlay)
-	for (var/atom/movable/openspace/OO in T)
-		if (istype(OO, /atom/movable/openspace/mimic))
-			qdel(OO)
+	for (var/atom/movable/openspace/mimic/OO in T)
+		qdel(OO)
 
 /datum/controller/subsystem/zmimic/proc/simple_appearance_copy(turf/T, new_appearance, target_plane)
 	if (T.mz_flags & MZ_MIMIC_OVERWRITE)
@@ -536,6 +537,31 @@ SUBSYSTEM_DEF(zmimic)
 
 	// Don't fixup the root object's plane.
 	if (depth > 0)
+		// * silicons edit *
+		// on citrp, everything above BYOND_PLANE (0) are vfx of some kind, like
+		// lighting and whatever.
+		// technically, ghosts are too, but, while it would be funny to see orbiting ghosts  on the floor
+		// above, it's not feasible to do this right now.
+		// everything that's meant to be abstract / non zm *below* plane 0 is not in the world map,
+		// so it won't be picked up by zm anyways.
+		// furthermore, there are things on atoms that go above 0, but they're really just not needed
+		// to be mirrored. things like HUD elements / whatever.
+		// if we need this later, we can always edit this.
+		if(appearance:plane >= BYOND_PLANE)
+			obliterate = TRUE
+		else
+			switch(appearance:plane)
+				// these planes are fine, we don't care
+				if(TURF_PLANE, FLOAT_PLANE)
+				// these plnaes need to be obliterated due to the usage of
+				// special rendering that will be lost if the plane is changed.
+				if(LIGHTLESS_PLANE)
+					obliterate = TRUE
+				else
+					plane_needs_fix = TRUE
+
+		//** original code **//
+		/*
 		switch (appearance:plane)
 			if (TURF_PLANE, FLOAT_PLANE)
 				// fine
@@ -543,6 +569,7 @@ SUBSYSTEM_DEF(zmimic)
 				obliterate = TRUE
 			else
 				plane_needs_fix = TRUE
+		*/
 
 	// Scan & fix overlays
 	var/list/fixed_overlays
@@ -687,7 +714,7 @@ var/list/zmimic_fixed_planes = list(
 			found_oo += D
 			temp_objects += D
 
-	tim_sort(found_oo, /proc/cmp_planelayer)
+	tim_sort(found_oo, GLOBAL_PROC_REF(cmp_planelayer))
 
 	var/list/atoms_list_list = list()
 	for (var/thing in found_oo)

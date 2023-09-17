@@ -29,8 +29,8 @@
 	icon = 'icons/obj/bots/medibots.dmi'
 	icon_state = "medibot"
 	base_icon_state = "medkit"
-	req_one_access = list(access_robotics, access_medical)
-	botcard_access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
+	req_one_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_MEDICAL_MAIN)
+	botcard_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_CHEMISTRY, ACCESS_MEDICAL_VIROLOGY, ACCESS_SCIENCE_GENETICS)
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/medibot)
 
 	var/healthanalyzer = /obj/item/healthanalyzer
@@ -186,7 +186,7 @@
 	update_appearance()
 	if(do_mob(src, victim, 30))
 		if(t == 1)
-			reagent_glass.reagents.trans_to_mob(victim, injection_amount, CHEM_BLOOD)
+			reagent_glass.reagents.trans_to_mob(victim, injection_amount, CHEM_INJECT)
 		else
 			victim.reagents.add_reagent(t, injection_amount)
 		visible_message(SPAN_WARNING("[src] injects [victim] with the syringe!"))
@@ -221,7 +221,13 @@
 	busy = FALSE
 	update_appearance()
 
-/mob/living/bot/medibot/attack_hand(mob/living/carbon/human/attacker)
+/mob/living/bot/medibot/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/attacker = user
+	if(!istype(attacker))
+		return
 	if(attacker.a_intent == INTENT_DISARM && !is_tipped)
 		attacker.visible_message(
 			SPAN_DANGER("[attacker] begins tipping over [src]."),
@@ -304,7 +310,7 @@
 	else
 		..()
 
-/mob/living/bot/medibot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/medibot/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -485,7 +491,7 @@
 	else if(prob(tipped_status * 0.2))
 		playsound(src, 'sound/machines/warning-buzzer.ogg', 30, extrarange=-2)
 
-/mob/living/bot/medibot/examine(mob/user)
+/mob/living/bot/medibot/examine(mob/user, dist)
 	. = ..()
 	if(tipped_status == MEDIBOT_PANIC_NONE)
 		return

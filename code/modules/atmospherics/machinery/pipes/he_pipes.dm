@@ -17,7 +17,7 @@
 	var/surface = 2	//surface area in m^2
 	var/icon_temperature = T20C //stop small changes in temperature causing an icon refresh
 
-	minimum_temperature_difference = 20
+	minimum_temperature_difference = 0.01
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 
 	buckle_lying = 1

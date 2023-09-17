@@ -20,7 +20,6 @@
 	my_shield = new my_shield_type
 	my_shield.shield_regen_delay = equip_cooldown
 	my_shield.my_tool = src
-	return
 
 /obj/item/mecha_parts/mecha_equipment/combat_shield/critfail()
 	..()
@@ -28,14 +27,16 @@
 	return
 
 /obj/item/mecha_parts/mecha_equipment/combat_shield/Destroy()
-	chassis.cut_overlay(drone_overlay)
-	my_shield.forceMove(src)
-	my_shield.destroy_shields()
-	my_shield.my_tool = null
-	my_shield.my_mecha = null
-	qdel(my_shield)
-	my_shield = null
-	..()
+	if(!isnull(chassis))
+		chassis.cut_overlay(drone_overlay)
+	if(!isnull(my_shield))
+		my_shield.forceMove(src)
+		my_shield.destroy_shields()
+		my_shield.my_tool = null
+		my_shield.my_mecha = null
+		qdel(my_shield)
+		my_shield = null
+	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/combat_shield/add_equip_overlay(obj/mecha/M)
 	..()

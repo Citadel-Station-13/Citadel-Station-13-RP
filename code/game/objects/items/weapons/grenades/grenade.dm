@@ -26,7 +26,7 @@
 	return 1
 
 
-/*/obj/item/grenade/afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
+/*/obj/item/grenade/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if (istype(target, /obj/item/storage)) return ..() // Trying to put it in a full container
 	if (istype(target, /obj/item/gun/grenadelauncher)) return ..()
 	if((user.get_active_held_item() == src) && (!active) && (clown_check(user)) && target.loc != src.loc)
@@ -44,7 +44,7 @@
 	return*/
 
 
-/obj/item/grenade/examine(mob/user)
+/obj/item/grenade/examine(mob/user, dist)
 	. = ..()
 	if(det_time > 1)
 		. += "<span class = 'notice'>The timer is set to [det_time/10] seconds.</span>"
@@ -53,7 +53,10 @@
 		. += "<span class = 'danger'>The [src] is set for instant detonation.</span>"
 
 
-/obj/item/grenade/attack_self(mob/user as mob)
+/obj/item/grenade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		if(clown_check(user))
 			to_chat(user, "<span class='warning'>You prime \the [name]! [det_time/10] seconds!</span>")
@@ -108,7 +111,7 @@
 	..()
 	return
 
-/obj/item/grenade/attack_hand()
+/obj/item/grenade/attack_hand(mob/user, list/params)
 	walk(src, null, null)
 	..()
 	return

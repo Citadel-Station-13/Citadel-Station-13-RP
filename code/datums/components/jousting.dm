@@ -18,12 +18,12 @@
 /datum/component/jousting/Initialize()
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
-	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/on_equip)
-	RegisterSignal(parent, COMSIG_ITEM_DROPPED, .proc/on_drop)
-	RegisterSignal(parent, COMSIG_ITEM_ATTACK, .proc/on_attack)
+	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equip))
+	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(on_drop))
+	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(on_attack))
 
 /datum/component/jousting/proc/on_equip(datum/source, mob/user, slot)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/mob_move, TRUE)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(mob_move), TRUE)
 	current_holder = user
 
 /datum/component/jousting/proc/on_drop(datum/source, mob/user)
@@ -32,7 +32,7 @@
 	current_direction = NONE
 	current_tile_charge = 0
 
-/datum/component/jousting/proc/on_attack(datum/source, mob/living/target, mob/user)
+/datum/component/jousting/proc/on_attack(datum/source, var/mob/living/target, mob/user)
 	if(user != current_holder)
 		return
 	var/current = current_tile_charge
@@ -45,16 +45,17 @@
 		var/knockdown_chance = (target_buckled? mounted_knockdown_chance_per_tile : unmounted_knockdown_chance_per_tile) * current
 		var/knockdown_time = (target_buckled? mounted_knockdown_time : unmounted_knockdown_time)
 		var/damage = (target_buckled? mounted_damage_boost_per_tile : unmounted_damage_boost_per_tile) * current
-		var/sharp = I.is_sharp()
+		var/sharp = is_sharp(I)
 		var/msg
+		var/mob/living/L = target
 		if(damage)
 			msg += "[user] [sharp? "impales" : "slams into"] [target] [sharp? "on" : "with"] their [parent]"
-			target.apply_damage(damage, BRUTE, user.zone_selected, 0)
+			target.apply_damage(damage, BRUTE, user.zone_sel, 0)
 		if(prob(knockdown_chance))
 			msg += " and knocks [target] [target_buckled? "off of [target.buckled]" : "down"]"
 			if(target_buckled)
 				target.buckled.unbuckle_mob(target)
-			target.Paralyze(knockdown_time)
+			L.set_unconscious(20 * knockdown_time)
 		if(length(msg))
 			user.visible_message("<span class='danger'>[msg]!</span>")
 
@@ -68,7 +69,7 @@
 		current_tile_charge++
 	if(current_timerid)
 		deltimer(current_timerid)
-	current_timerid = addtimer(CALLBACK(src, .proc/reset_charge), movement_reset_tolerance, TIMER_STOPPABLE)
+	current_timerid = addtimer(CALLBACK(src, PROC_REF(reset_charge)), movement_reset_tolerance, TIMER_STOPPABLE)
 
 /datum/component/jousting/proc/reset_charge()
 	current_tile_charge = 0

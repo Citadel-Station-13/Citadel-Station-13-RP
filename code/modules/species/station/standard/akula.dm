@@ -1,5 +1,6 @@
 /datum/species/akula
 	uid = SPECIES_ID_AKULA
+	id = SPECIES_ID_AKULA
 	name = SPECIES_AKULA
 	name_plural = SPECIES_AKULA //It's singular and plural. English is weird.
 	primitive_form = SPECIES_MONKEY_AKULA
@@ -59,6 +60,9 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 
 /datum/species/akula/can_breathe_water()

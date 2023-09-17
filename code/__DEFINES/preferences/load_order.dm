@@ -10,3 +10,5 @@
 #define PREFERENCE_LOAD_ORDER_LORE_FACTION 55
 // language loads last as intrinsincs need to load first
 #define PREFERENCE_LOAD_ORDER_LANGUAGE 60
+// occupations load last as lore stuff need to load first
+#define PREFERENCE_LOAD_ORDER_OCCUPATIONS 70

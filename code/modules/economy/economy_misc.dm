@@ -78,7 +78,7 @@ GLOBAL_VAR_INIT(economy_init, FALSE)
 	if(GLOB.economy_init)
 		return 2
 
-	//news_network.CreateFeedChannel("The [GLOB.using_map.starsys_name] Times", "[GLOB.using_map.starsys_name] Times ExoNode - [GLOB.using_map.station_short]", 1, 1)
+	//news_network.CreateFeedChannel("The [(LEGACY_MAP_DATUM).starsys_name] Times", "[(LEGACY_MAP_DATUM).starsys_name] Times ExoNode - [(LEGACY_MAP_DATUM).station_short]", 1, 1)
 	news_network.CreateFeedChannel("The Gibson Gazette", "Editor Mike Hammers", 1, 1)
 	news_network.CreateFeedChannel("Oculum Content Aggregator", "Oculus v6rev7", 1, 1)
 
@@ -114,13 +114,13 @@ GLOBAL_VAR_INIT(economy_init, FALSE)
 		GLOB.station_account.owner_name = "[station_name()] Station Account"
 		GLOB.station_account.account_number = rand(111111, 999999)
 		GLOB.station_account.remote_access_pin = rand(1111, 111111)
-		GLOB.station_account.money = 75000
+		GLOB.station_account.money = 100000
 
 		//create an entry in the account transaction log for when it was created
 		var/datum/transaction/T = new()
 		T.target_name = GLOB.station_account.owner_name
 		T.purpose = "Account creation"
-		T.amount = 75000
+		T.amount = 100000
 		T.date = "2nd April, 2555"
 		T.time = "11:24"
 		T.source_terminal = "Biesel GalaxyNet Terminal #277"
@@ -136,7 +136,7 @@ GLOBAL_VAR_INIT(economy_init, FALSE)
 	department_account.owner_name = "[department] Account"
 	department_account.account_number = rand(111111, 999999)
 	department_account.remote_access_pin = rand(1111, 111111)
-	department_account.money = 5000
+	department_account.money = 10000
 
 	//create an entry in the account transaction log for when it was created
 	var/datum/transaction/T = new()

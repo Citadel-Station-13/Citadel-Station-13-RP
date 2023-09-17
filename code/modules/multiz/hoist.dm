@@ -11,6 +11,9 @@
 	icon_state = "hoist_case"
 
 /obj/item/hoist_kit/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	new /obj/structure/hoist (get_turf(user), user.dir)
 	user.visible_message(SPAN_WARNING( "[user] deploys the hoist kit!"), SPAN_NOTICE("You deploy the hoist kit!"), SPAN_NOTICE("You hear the sound of parts snapping into place."))
 	qdel(src)
@@ -25,7 +28,7 @@
 	var/obj/structure/hoist/source_hoist
 	description_info = "Click and drag someone (or any object) to this to attach them to the clamp. If you are within reach, when you click and drag this to a turf adjacent to you, it will move the attached object there and release it."
 
-/obj/effect/hoist_hook/attack_hand(mob/living/user)
+/obj/effect/hoist_hook/attack_hand(mob/user, list/params)
 	return // This has to be overridden so that it works properly.
 
 /obj/effect/hoist_hook/MouseDroppedOnLegacy(atom/movable/AM,mob/user)
@@ -172,7 +175,7 @@
 			return
 
 
-/obj/structure/hoist/attack_hand(mob/living/user)
+/obj/structure/hoist/attack_hand(mob/user, list/params)
 	if (!ishuman(user))
 		return
 

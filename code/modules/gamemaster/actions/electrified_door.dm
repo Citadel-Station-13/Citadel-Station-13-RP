@@ -63,7 +63,7 @@
 			if(!chosen_door || !chosen_door.arePowerSystemsOn())
 				return
 			chosen_door.visible_message("<span class='critical'>\The [chosen_door]'s hydraulics detonate!</span>")
-			chosen_door.fragmentate(get_turf(chosen_door), rand(5, 10), rand(3, 5), list(/obj/item/projectile/bullet/pellet/fragment/tank/small))
+			chosen_door.fragmentate(get_turf(chosen_door), rand(5, 10), rand(3, 5), list(/obj/projectile/bullet/pellet/fragment/tank/small))
 			explosion(get_turf(chosen_door),-1,-1,2,3)
 
 	chosen_door.lock()

@@ -10,7 +10,7 @@
 	throw_speed = 1
 	throw_range = 2
 
-	matter = list(MAT_STEEL = 750)
+	materials = list(MAT_STEEL = 750)
 
 	origin_tech = list(TECH_POWER = 3, TECH_ILLEGAL = 5)
 	/// amount of power to drain per tick in kw
@@ -70,7 +70,7 @@
 /obj/item/powersink/attack_ai()
 	return
 
-/obj/item/powersink/attack_hand(var/mob/user)
+/obj/item/powersink/attack_hand(mob/user, list/params)
 	switch(mode)
 		if(0)
 			..()

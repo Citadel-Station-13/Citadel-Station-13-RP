@@ -7,6 +7,7 @@
 	// smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_GRASS)
 	canSmoothWith = (SMOOTH_GROUP_FLOOR_GRASS + SMOOTH_GROUP_CLOSED_TURFS)
+	edge_blending_priority = 1.5
 
 	var/grass_chance = 20
 

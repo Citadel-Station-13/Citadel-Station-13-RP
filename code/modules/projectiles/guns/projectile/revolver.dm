@@ -8,7 +8,7 @@
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a357
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	projectile_type = /obj/projectile/bullet/pistol/strong
 	mag_insert_sound = 'sound/weapons/guns/interaction/rev_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/rev_magout.ogg'
 	var/chamber_offset = 0 //how many empty chambers in the cylinder until you hit a round
@@ -57,7 +57,7 @@
 	icon_state = "knifegun"
 	caliber = ".38"
 	ammo_type = /obj/item/ammo_casing/a38
-	force = 15
+	damage_force = 15
 	sharp = 1
 	edge = 1
 
@@ -175,7 +175,7 @@
 	handle_casings = CYCLE_CASINGS
 	max_shells = 7
 	ammo_type = /obj/item/ammo_casing/cap
-	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	projectile_type = /obj/projectile/bullet/pistol/strong
 
 /obj/item/gun/ballistic/revolver/judge
 	name = "\"The Judge\""
@@ -187,12 +187,12 @@
 	recoil = 2 // ow my fucking hand
 	accuracy = -15 // smooth bore + short barrel = shit accuracy
 	ammo_type = /obj/item/ammo_casing/a12g
-	projectile_type = /obj/item/projectile/bullet/shotgun
+	projectile_type = /obj/projectile/bullet/shotgun
 	// ToDo: Remove accuracy debuf in exchange for slightly injuring your hand every time you fire it.
 
 /obj/item/gun/ballistic/revolver/lemat
 	name = "LeMat Revolver"
-	desc = "The LeMat Revolver is a 9 shot revolver with a secondary firing barrel loading shotgun shells. For when you really need something dead. Uses .38-Special and 12g rounds depending on the barrel."
+	desc = "The LeMat revolver is a 9-shot revolver with a secondar barrel for firing shotgun shells. Cybersun Industries still produces this iconic revolver in limited numbers, deliberately inflating the value of these collectible reproduction pistols. Uses .38 rounds and 12g shotgun shells."
 	icon_state = "lemat"
 	item_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -200,7 +200,7 @@
 	max_shells = 9
 	caliber = ".38"
 	ammo_type = /obj/item/ammo_casing/a38
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/projectile/bullet/pistol
 	var/secondary_max_shells = 1
 	var/secondary_caliber = "12g"
 	var/secondary_ammo_type = /obj/item/ammo_casing/a12g
@@ -269,7 +269,7 @@
 		if(rand(1,max_shells) > loaded.len)
 			chamber_offset = rand(0,max_shells - loaded.len)
 
-/obj/item/gun/ballistic/revolver/lemat/examine(mob/user)
+/obj/item/gun/ballistic/revolver/lemat/examine(mob/user, dist)
 	. = ..()
 	if(secondary_loaded)
 		var/to_print
@@ -326,8 +326,8 @@
 
 //NT SpecOps Revolver
 /obj/item/gun/ballistic/revolver/combat
-	name = "NT-R-7 combat revolver"
-	desc = "A semiautomatic revolver tooled for NanoTrasen special operations. Chambered in .44 Magnum, it serves as the perfect sidearm for any off the books endeavor."
+	name = "\improper Ogre combat revolver"
+	desc = "The NT-R-7 'Ogre' combat revolver is tooled for NanoTrasen special operations. Chambered in .44 Magnum with an advanced high-speed firing mechanism, it serves as the perfect sidearm for any off the books endeavor."
 	icon_state = "combatrevolver"
 	caliber = ".44"
 	fire_delay = 5.7

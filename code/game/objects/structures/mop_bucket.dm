@@ -4,7 +4,8 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "mopbucket"
 	density = 1
-	climbable = 1
+	climb_allowed = TRUE
+	depth_level = 8
 	w_class = ITEMSIZE_NORMAL
 	pressure_resistance = 5
 	atom_flags = OPENCONTAINER
@@ -16,7 +17,7 @@ GLOBAL_LIST_BOILERPLATE(all_mopbuckets, /obj/structure/mopbucket)
 	. = ..()
 	create_reagents(300)
 
-/obj/structure/mopbucket/examine(mob/user)
+/obj/structure/mopbucket/examine(mob/user, dist)
 	. = ..()
 	. += "[src] [icon2html(thing = src, target = user)] contains [reagents.total_volume] unit\s of water!"
 

@@ -33,9 +33,16 @@
  * called to check for errors; if non null, players get showed this while spawning and the
  * spawn is blocked.
  *
- * put reasons into errors
+ * @params
+ * * prefs - preferences datum of spawning mob
+ * * data - current effective data
+ * * flags - preferences copy/apply to flags
+ * * errors - put error reasons to show to user
+ * * warnings - put warnings to show to user; if these exist AND they can spawn, they'll be warned but allowed to spawn if they confirm.
+ *
+ * @return TRUE/FALSE if we should be allowd to spawn
  */
-/datum/category_item/player_setup_item/proc/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
+/datum/category_item/player_setup_item/proc/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	return TRUE
 
 /**

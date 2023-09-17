@@ -42,7 +42,10 @@
 	colourName = "mime"
 	uses = 0
 
-/obj/item/pen/crayon/mime/attack_self(mob/living/user as mob) //inversion
+/obj/item/pen/crayon/mime/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return //inversion
 	if(colour != "#FFFFFF" && shadeColour != "#000000")
 		colour = "#FFFFFF"
 		shadeColour = "#000000"
@@ -60,13 +63,16 @@
 	colourName = "rainbow"
 	uses = 0
 
-/obj/item/pen/crayon/rainbow/attack_self(mob/living/user as mob)
+/obj/item/pen/crayon/rainbow/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	colour = input(user, "Please select the main colour.", "Crayon colour") as color
 	shadeColour = input(user, "Please select the shade colour.", "Crayon colour") as color
 	return
 
-/obj/item/pen/crayon/afterattack(atom/target, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/pen/crayon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(istype(target,/turf/simulated/floor))
 		var/drawtype = input("Choose what you'd like to draw.", "Crayon scribbles") in list("graffiti","rune","letter","arrow")
 		switch(drawtype)
@@ -159,7 +165,10 @@
 	colourName = "mime"
 	uses = 0
 
-/obj/item/pen/crayon/marker/mime/attack_self(mob/living/user as mob) //inversion
+/obj/item/pen/crayon/marker/mime/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return //inversion
 	if(colour != "#FFFFFF" && shadeColour != "#000000")
 		colour = "#FFFFFF"
 		shadeColour = "#000000"
@@ -177,7 +186,10 @@
 	colourName = "rainbow"
 	uses = 0
 
-/obj/item/pen/crayon/marker/rainbow/attack_self(mob/living/user as mob)
+/obj/item/pen/crayon/marker/rainbow/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	colour = input(user, "Please select the main colour.", "Marker colour") as color
 	shadeColour = input(user, "Please select the shade colour.", "Marker colour") as color
 	return
@@ -222,8 +234,8 @@
 	shadeColour = "#0082A8"
 	colourName = "blue"
 
-/obj/item/pen/crayon/chalk/afterattack(atom/target, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/pen/crayon/chalk/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(istype(target,/turf/simulated/floor))
 		var/drawtype = input("Choose what you'd like to draw.") in list("graffiti","rune")
 		switch(drawtype)

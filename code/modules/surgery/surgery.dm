@@ -1,7 +1,10 @@
 /* SURGERY STEPS */
 
-/obj/
-	var/surgery_odds = 0 // Used for tables/etc which can have surgery done of them.
+/obj
+	var/surgery_odds = 60 // Used for tables/etc which can have surgery done of them.
+
+/turf
+	var/surgery_odds = 30 // temporary - surgery odds for on-turf.
 
 /datum/surgery_step
 	var/priority = 0	//steps with higher priority would be attempted first
@@ -26,6 +29,8 @@
 	var/can_infect = 0
 	//How much blood this step can get on surgeon. 1 - hands, 2 - full body.
 	var/blood_level = 0
+	// temp until refactor - buff to surface odds
+	var/surface_odd_buff = 0
 
 //returns how well tool is suited for this step
 /datum/surgery_step/proc/tool_quality(obj/item/tool)
@@ -145,7 +150,8 @@
 
 				// Bad or no surface may mean failure as well.
 				var/obj/surface = M.get_surgery_surface()
-				if(!surface || !prob(surface.surgery_odds))
+				var/turf/turf_surface = get_turf(M)
+				if(!((surface? surface.surgery_odds : turf_surface?.surgery_odds) + S.surface_odd_buff))
 					success = FALSE
 
 				// Not staying still fails you too.
@@ -170,7 +176,7 @@
 	. = list()
 	for(var/path in subtypesof(/datum/surgery_step))
 		. += new path
-	tim_sort(., cmp = /proc/cmp_surgery_priority_asc)
+	tim_sort(., cmp = GLOBAL_PROC_REF(cmp_surgery_priority_asc))
 
 /datum/surgery_status/
 	var/eyes	=	0

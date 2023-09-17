@@ -102,7 +102,7 @@
 					break
 			isactive[name] = active ? "Active" : "Inactive"
 
-			var/datum/job/J = SSjob.get_job(real_rank)
+			var/datum/role/job/J = SSjob.get_job(real_rank)
 			if(J?.offmap_spawn)
 				off[name] = rank
 
@@ -310,7 +310,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 
 	var/list/all_jobs = get_job_datums()
 
-	for(var/datum/job/J in all_jobs)
+	for(var/datum/role/job/J in all_jobs)
 		if(J.title == rank)					//If we have a rank, just default to using that.
 			real_title = rank
 			break
@@ -331,7 +331,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 	if(H.mind && !player_is_antag(H.mind, only_offstation_roles = 1))
 		var/assignment = GetAssignment(H)
 		var/hidden
-		var/datum/job/J = SSjob.get_job(H.mind.assigned_role)
+		var/datum/role/job/J = SSjob.get_job(H.mind.assigned_role)
 		hidden = J?.offmap_spawn
 
 		/* Note: Due to cached_character_icon, a number of emergent properties occur due to the initialization
@@ -439,7 +439,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		side = icon('html/images/no_image32.png')
 
 	if(!id)
-		id = text("[]", add_zero(num2hex(rand(1, 65536)), 4))
+		id = "[add_zero(num2hex(rand(1, 65536)), 4)]"
 	var/datum/data/record/G = new /datum/data/record()
 	G.name = "Employee Record #[id]"
 	G.fields["name"] = "New Record"
@@ -535,11 +535,11 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 			return R
 
 /proc/GetAssignment(var/mob/living/carbon/human/H)
-	if(H.mind.role_alt_title)
-		return H.mind.role_alt_title
-	else if(H.mind.assigned_role)
-		return H.mind.assigned_role
+	. = "Unassigned"
+	var/faction = H.mind?.original_background_faction()?.id
+	if((faction && !(faction == "nanotrasen")) || !H.mind.role_alt_title)
+		. = H.mind.assigned_role
+	else if(H.mind.role_alt_title)
+		. = H.mind.role_alt_title
 	else if(H.job)
-		return H.job
-	else
-		return "Unassigned"
+		. =  H.job

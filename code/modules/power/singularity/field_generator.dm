@@ -73,7 +73,7 @@ field_generator power level display
 	return
 
 
-/obj/machinery/field_generator/attack_hand(mob/user as mob)
+/obj/machinery/field_generator/attack_hand(mob/user, list/params)
 	if(state == 2)
 		if(get_dist(src, user) <= 1)//Need to actually touch the thing to turn it on
 			if(src.active >= 1)
@@ -154,8 +154,8 @@ field_generator power level display
 /obj/machinery/field_generator/emp_act()
 	return 0
 
-/obj/machinery/field_generator/bullet_act(var/obj/item/projectile/Proj)
-	if(istype(Proj, /obj/item/projectile/beam))
+/obj/machinery/field_generator/bullet_act(var/obj/projectile/Proj)
+	if(istype(Proj, /obj/projectile/beam))
 		power += Proj.damage * EMITTER_DAMAGE_POWER_TRANSFER
 		update_icon()
 	return 0

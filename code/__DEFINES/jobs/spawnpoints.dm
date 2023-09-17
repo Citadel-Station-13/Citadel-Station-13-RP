@@ -4,12 +4,12 @@
 /// Arrivals shuttle
 #define LATEJOIN_METHOD_ARRIVALS_SHUTTLE	"Arrivals Shuttle"
 /// Cryostorage
-#define LATEJOIN_METHOD_CRYOGENIC_STORAGE	"Cryogenics bay"
+#define LATEJOIN_METHOD_CRYOGENIC_STORAGE	"Cryogenic storage"
 /// Gateway teleport in
 #define LATEJOIN_METHOD_GATEWAY				"Gateway"
 /// Robotic storage
 #define LATEJOIN_METHOD_ROBOT_STORAGE		"Robotic storage"
 /// Tram
 #define LATEJOIN_METHOD_TRAM				"Tram"
-/// Shuttle dock
-#define LATEJOIN_METHOD_SHUTTLE_DOCK		"Shuttle Dock"
+
+/// DO NOT ADD MORE SPAWNPOINT METHODS

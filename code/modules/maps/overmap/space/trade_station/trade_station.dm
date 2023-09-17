@@ -1,5 +1,5 @@
 //Overmap Controller
-/obj/effect/overmap/visitable/sector/trade_post
+/obj/overmap/entity/visitable/sector/trade_post
 	name = "Nebula Gas Food Mart"
 	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
 	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}
@@ -64,38 +64,6 @@
     height = 1
 
 // Their shuttle
-
-/datum/shuttle/autodock/overmap/trade
-	name = "Beruang Trade Ship"
-	warmup_time = 0
-	shuttle_area = list(/area/shuttle/trade_ship/cockpit, /area/shuttle/trade_ship/general)
-	current_location = "tradeport_hangar"
-	docking_controller_tag = "tradeport_hangar_docker"
-	//landmark_transition = "nav_transit_trade"
-	fuel_consumption = 5
-	move_time = 10
-
-/obj/effect/overmap/visitable/ship/landable/trade
-	name = "Beruang Trade Ship"
-	desc = "You know our motto: 'We deliver!'"
-	vessel_mass = 4000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Beruang Trade Ship"
-
-/obj/machinery/computer/shuttle_control/explore/trade
-	name = "short jump console"
-	shuttle_tag = "Beruang Trade Ship"
-
-
-/area/shuttle/trade_ship
-	name = "Beruang Trade Ship"
-	icon_state = "shuttle"
-
-/area/shuttle/trade_ship/general
-	name = "\improper Beruang Trade Ship"
-
-/area/shuttle/trade_ship/cockpit
-	name = "\improper Beruang Trade Ship Cockpit"
 
 // Shuttle landmarks. Need to be removed at some point and generic waypoints used
 

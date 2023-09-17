@@ -21,15 +21,18 @@
 /obj/item/card/id/syndicate/prevent_tracking()
 	return electronic_warfare
 
-/obj/item/card/id/syndicate/afterattack(var/obj/item/O as obj, mob/user as mob, proximity)
-	if(!proximity) return
-	if(istype(O, /obj/item/card/id))
-		var/obj/item/card/id/I = O
+/obj/item/card/id/syndicate/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
+	if(istype(target, /obj/item/card/id))
+		var/obj/item/card/id/I = target
 		src.access |= I.access
 		if(player_is_antag(user.mind))
 			to_chat(user, "<span class='notice'>The microscanner activates as you pass it over the ID, copying its access.</span>")
 
-/obj/item/card/id/syndicate/attack_self(mob/user as mob)
+/obj/item/card/id/syndicate/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	// We use the fact that registered_name is not unset should the owner be vaporized, to ensure the id doesn't magically become unlocked.
 	if(!registered_user && register_user(user))
 		to_chat(user, "<span class='notice'>The microscanner marks you as its owner, preventing others from accessing its internals.</span>")
@@ -70,7 +73,7 @@
 	unset_registered_user()
 	registered_user = user
 	user.set_id_info(src)
-	user.register(OBSERVER_EVENT_DESTROY, src, /obj/item/card/id/syndicate/proc/unset_registered_user)
+	user.register(OBSERVER_EVENT_DESTROY, src, TYPE_PROC_REF(/obj/item/card/id/syndicate, unset_registered_user))
 	return TRUE
 
 /obj/item/card/id/syndicate/proc/unset_registered_user(var/mob/user)
@@ -222,4 +225,4 @@
 	registered_name = "Syndicate"
 	assignment = "Syndicate Overlord"
 	icon_state = "syndicate-id"
-	access = list(access_syndicate, access_external_airlocks)
+	access = list(ACCESS_FACTION_SYNDICATE, ACCESS_ENGINEERING_AIRLOCK)

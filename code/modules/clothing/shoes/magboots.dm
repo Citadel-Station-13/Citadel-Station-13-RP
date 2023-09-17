@@ -5,7 +5,7 @@
 	clothing_flags = PHORONGUARD
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "magboots", SLOT_ID_LEFT_HAND = "magboots")
 	species_restricted = null
-	force = 3
+	damage_force = 3
 	overshoes = 1
 	shoes_under_pants = -1	//These things are huge
 	preserve_item = 1
@@ -23,18 +23,21 @@
 		slowdown += slowdown_on
 
 /obj/item/clothing/shoes/magboots/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(magpulse)
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
 		set_slowdown()
-		force = 3
+		damage_force = 3
 		if(icon_base) icon_state = "[icon_base]0"
 		to_chat(user, "You disable the mag-pulse traction system.")
 	else
 		clothing_flags |= NOSLIP
 		magpulse = 1
 		set_slowdown()
-		force = 5
+		damage_force = 5
 		if(icon_base) icon_state = "[icon_base]1"
 		to_chat(user, "You enable the mag-pulse traction system.")
 	user.update_inv_shoes()	//so our mob-overlays update
@@ -59,7 +62,7 @@
 	. = ..()
 	set_slowdown()
 
-/obj/item/clothing/shoes/magboots/examine(mob/user)
+/obj/item/clothing/shoes/magboots/examine(mob/user, dist)
 	. = ..()
 	var/state = "disabled"
 	if(clothing_flags & NOSLIP)
@@ -106,7 +109,7 @@
 		magpulse = 0
 		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, MAGBOOT_TRAIT)
 
-/obj/item/clothing/shoes/magboots/vox/examine(mob/user)
+/obj/item/clothing/shoes/magboots/vox/examine(mob/user, dist)
 	. = ..()
 	if(magpulse)
 		. += "It would be hard to take these off without relaxing your grip first."

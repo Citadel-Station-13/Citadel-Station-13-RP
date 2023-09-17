@@ -19,7 +19,7 @@
 	..()
 	stuff_to_display = null
 
-/obj/item/integrated_circuit/output/screen/any_examine(mob/user)
+/obj/item/integrated_circuit/output/screen/any_examine(mob/user, dist)
 	to_chat(user, "There is a little screen labeled '[name]', which displays [!isnull(stuff_to_display) ? "'[stuff_to_display]'" : "nothing"].")
 
 /obj/item/integrated_circuit/output/screen/do_work()
@@ -124,7 +124,7 @@
 	extended_desc = "This will emit an audible message to anyone who can hear the assembly."
 	icon_state = "speaker"
 	complexity = 12
-	cooldown_per_use = 4 SECONDS
+	cooldown_per_use = 1 SECONDS
 	inputs = list("text" = IC_PINTYPE_STRING)
 	outputs = list()
 	activators = list("to speech" = IC_PINTYPE_PULSE_IN)
@@ -141,7 +141,7 @@
 	name = "advanced text-to-speech circuit"
 	desc = "A miniature speaker is attached to this component.  It is able to transpose any valid text to speech, matching a scanned target's voice."
 	complexity = 15
-	cooldown_per_use = 6 SECONDS
+	cooldown_per_use = 1 SECONDS
 	inputs = list("text" = IC_PINTYPE_STRING, "mimic target" = IC_PINTYPE_REF)
 	power_draw_per_use = 100
 
@@ -323,7 +323,7 @@
 /obj/item/integrated_circuit/output/led/power_fail()
 	set_pin_data(IC_INPUT, 1, FALSE)
 
-/obj/item/integrated_circuit/output/led/any_examine(mob/user)
+/obj/item/integrated_circuit/output/led/any_examine(mob/user, dist)
 	var/text_output = list()
 	var/initial_name = initial(name)
 

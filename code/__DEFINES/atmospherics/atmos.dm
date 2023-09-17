@@ -5,14 +5,13 @@
 #define ONE_ATMOSPHERE             101.325
 /// (mol^3 * s^3) / (kg^3 * L).
 #define IDEAL_GAS_ENTROPY_CONSTANT 1164
-///    0.0 degrees celcius
-#define T0C  273.15
-///   20.0 degrees celcius
-#define T20C 293.15
-/// -270.3 degrees celcius
-#define TCMB 2.7
-///    -60 degrees celcius
-#define TN60C 213.15
+
+#define TN60C 213.15 //!  -60.0 degrees celcius
+#define T0C 273.15   //!    0.0 degrees celcius
+#define T20C 293.15  //!   20.0 degrees celcius
+#define T100C 373.15 //!  100.0 degrees celsius
+#define TCMB 2.7     //! -270.3 degrees celcius
+
 // Radiation constants.
 /// W/(m^2*K^4).
 #define STEFAN_BOLTZMANN_CONSTANT    5.6704e-8

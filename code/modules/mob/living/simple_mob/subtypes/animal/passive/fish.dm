@@ -110,8 +110,13 @@
 		var/obj/belly/B = loc
 		sting(B.owner)
 
-/mob/living/simple_mob/animal/passive/fish/koi/poisonous/attack_hand(mob/living/L)
-	..()
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(isliving(L) && Adjacent(L))
 		var/mob/living/M = L
 		visible_message("<span class='warning'>\The [src][is_dead()?"'s corpse":""] flails at [M]!</span>")
@@ -161,7 +166,7 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/javelin)
 
-	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/sif
+	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/fish
 
 /datum/category_item/catalogue/fauna/icebass
 	name = "Sivian Fauna - Glitter Bass"
@@ -188,7 +193,7 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/icebass)
 
-	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/sif
+	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/fish
 
 	var/max_red = 150
 	var/min_red = 50
@@ -252,7 +257,7 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/rockfish)
 
-	armor = list(
+	armor_legacy_mob = list(
 		"melee" = 90,
 		"bullet" = 50,
 		"laser" = -15,
@@ -274,7 +279,7 @@
 
 	var/image/head_image
 
-	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/sif
+	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/fish
 
 /mob/living/simple_mob/animal/passive/fish/rockfish/Initialize(mapload)
 	. = ..()
@@ -318,7 +323,7 @@
 
 	has_eye_glow = TRUE
 
-	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/sif
+	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/fish
 
 /datum/category_item/catalogue/fauna/murkin
 	name = "Sivian Fauna - Murkfish"
@@ -345,4 +350,4 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/murkin)
 
-	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/sif/murkfish
+	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/fish/murkfish

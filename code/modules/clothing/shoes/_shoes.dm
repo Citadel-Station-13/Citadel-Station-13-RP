@@ -9,7 +9,7 @@
 	desc = "Comfortable-looking shoes."
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	siemens_coefficient = 0.9
-	body_parts_covered = FEET
+	body_cover_flags = FEET
 	slot_flags = SLOT_FEET
 	blood_sprite_state = "shoeblood"
 
@@ -26,7 +26,7 @@
 
 	permeability_coefficient = 0.50
 	slowdown = SHOES_SLOWDOWN
-	force = 2
+	damage_force = 2
 	var/overshoes = 0
 	species_restricted = list("exclude",SPECIES_TESHARI, SPECIES_VOX)
 	drop_sound = 'sound/items/drop/shoes.ogg'
@@ -67,8 +67,8 @@
 
 	update_icon()
 
-/obj/item/clothing/shoes/attack_hand(var/mob/living/M)
-	if(can_hold_knife == 1 && holding && src.loc == M)
+/obj/item/clothing/shoes/attack_hand(mob/user, list/params)
+	if(can_hold_knife == 1 && holding && src.loc == user)
 		draw_knife()
 		return
 	..()
@@ -104,7 +104,10 @@
 	else
 		return ..()
 
-/obj/item/clothing/shoes/attack_self(var/mob/user) //gtfo my shoe
+/obj/item/clothing/shoes/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return //gtfo my shoe
 	for(var/mob/M in src)
 		M.forceMove(get_turf(user))
 		to_chat(M,"<span class='warning'>[user] shakes you out of \the [src]!</span>")

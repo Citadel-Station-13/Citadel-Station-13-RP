@@ -10,7 +10,7 @@
 	name = "Facility Director's hat"
 	icon_state = "captain"
 	desc = "It's good being the king."
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/caphat/cap
 	name = "Facility Director's cap"
@@ -34,8 +34,8 @@
 	desc = "It's a hood that covers the head. It keeps you warm during the space winters."
 	icon_state = "chaplain_hood"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
-	flags_inv = BLOCKHAIR
-	body_parts_covered = HEAD
+	inv_hide_flags = BLOCKHAIR
+	body_cover_flags = HEAD
 
 //Chaplain but spookier
 /obj/item/clothing/head/chaplain_hood/whiteout
@@ -50,15 +50,15 @@
 	desc = "Maximum piety in this star system."
 	icon_state = "nun_hood"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
-	flags_inv = BLOCKHAIR
-	body_parts_covered = HEAD
+	inv_hide_flags = BLOCKHAIR
+	body_cover_flags = HEAD
 
 //Mime
 /obj/item/clothing/head/beret
 	name = "beret"
 	desc = "A beret, an artists favorite headwear."
 	icon_state = "beret"
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 //Security
 /obj/item/clothing/head/beret/sec
@@ -97,6 +97,12 @@
 	icon_state = "beret_corporate_hos"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
 
+/obj/item/clothing/head/beret/sec/corporate/blueshield
+	name = "Blueshield beret"
+	desc = "A corporate black beret with a Blueshield's rank emblem. For officers that are more inclined towards style than safety."
+	icon_state = "beret_corporate_blueshield"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
+
 /obj/item/clothing/head/beret/sec/corporate/warden
 	name = "warden beret"
 	desc = "A corporate black beret with a warden's rank emblem. For officers that are more inclined towards style than safety."
@@ -130,14 +136,14 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "", SLOT_ID_LEFT_HAND = "")
 	valid_accessory_slots = null
 	show_examine = FALSE
-	flags_inv = null
+	inv_hide_flags = null
 
 /obj/item/clothing/head/det
 	name = "fedora"
 	desc = "A brown fedora - either the cornerstone of a detective's style or a poor attempt at looking cool, depending on the person wearing it."
 	icon_state = "detective"
 	allowed = list(/obj/item/reagent_containers/food/snacks/candy_corn, /obj/item/pen)
-	armor = list(melee = 10, bullet = 10, laser = 15, energy = 10, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/security/light_formalwear
 	siemens_coefficient = 0.9
 	valid_accessory_slots = null
 	show_examine = FALSE
@@ -181,7 +187,7 @@
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs."
 	icon_state = "surgcap_blue"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_blue", SLOT_ID_LEFT_HAND = "beret_blue")
-	flags_inv = BLOCKHEADHAIR
+	inv_hide_flags = BLOCKHEADHAIR
 
 /obj/item/clothing/head/surgery/purple
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is deep purple."
@@ -207,3 +213,9 @@
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is navy blue."
 	icon_state = "surgcap_navyblue"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_navy", SLOT_ID_LEFT_HAND = "beret_navy")
+
+/obj/item/clothing/head/beret/medical
+	name = "medical beret"
+	desc = "A fashionably white piece of headwear issued to anyone who asks. Most patients have had an overall positive feedback, in spite of the increased risk of infection, or fraud."
+	icon_state = "beret_med"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_med", SLOT_ID_LEFT_HAND = "beret_med")

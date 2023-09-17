@@ -81,7 +81,7 @@
 	else
 		return ..()
 
-/obj/structure/bonfire/attack_hand(mob/user)
+/obj/structure/bonfire/attack_hand(mob/user, list/params)
 	if(has_buckled_mobs())
 		return ..()
 
@@ -164,7 +164,7 @@
 
 /obj/structure/bonfire/proc/check_oxygen()
 	var/datum/gas_mixture/G = loc.return_air()
-	if(G.gas[/datum/gas/oxygen] < 1)
+	if(G.gas[GAS_ID_OXYGEN] < 1)
 		return FALSE
 	return TRUE
 
@@ -288,7 +288,7 @@
 	else
 		return ..()
 
-/obj/structure/fireplace/attack_hand(mob/user)
+/obj/structure/fireplace/attack_hand(mob/user, list/params)
 	if(get_fuel_amount())
 		remove_fuel(user)
 
@@ -343,7 +343,7 @@
 
 /obj/structure/fireplace/proc/check_oxygen()
 	var/datum/gas_mixture/G = loc.return_air()
-	if(G.gas[/datum/gas/oxygen] < 1)
+	if(G.gas[GAS_ID_OXYGEN] < 1)
 		return FALSE
 	return TRUE
 

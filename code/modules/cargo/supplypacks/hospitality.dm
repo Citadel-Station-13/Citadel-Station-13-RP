@@ -169,9 +169,19 @@
 	container_name = "Tallow tank crate"
 
 /datum/supply_pack/hospitality/vampcarepackage
-	name = "Vampire Care package"
+	name = "Vetalan Care package"
 	contains = list(/obj/item/reagent_containers/blood/prelabeled/ABPlus = 3,
 					/obj/item/clothing/under/suit_jacket)
 	cost = 50
 	container_type = /obj/structure/closet/coffin/comfy
 	container_name = "Extra comfortable coffin"
+
+/datum/supply_pack/hospitality/moghes
+	name = "Moghes Foodstuffs"
+	contains = list(
+			/obj/item/reagent_containers/food/drinks/bottle/redeemersbrew = 2,
+			/obj/item/reagent_containers/food/snacks/unajerky = 4
+			)
+	cost = 50 //same cost as the others
+	container_type = /obj/structure/closet/crate/unathi
+	container_name = "Moghes Foodstuffs"

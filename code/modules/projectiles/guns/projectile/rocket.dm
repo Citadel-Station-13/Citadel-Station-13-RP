@@ -10,7 +10,7 @@
 	heavy = TRUE
 	throw_speed = 2
 	throw_range = 10
-	force = 5.0
+	damage_force = 5.0
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 5)
 	fire_sound = 'sound/weapons/rpg.ogg'
@@ -45,7 +45,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/rocket/attack_hand(mob/user)
+/obj/item/gun/ballistic/rocket/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload(user)
 	else
@@ -86,7 +86,7 @@
 	to_chat(user, "<span class='danger'>You cannot reload the [src]!</span>")
 	return
 
-/obj/item/gun/ballistic/rocket/collapsible/attack_hand(mob/user as mob)
+/obj/item/gun/ballistic/rocket/collapsible/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		to_chat(user, "<span class='danger'>You cannot unload the [src]'s munition!</span>")
 		return
@@ -108,7 +108,7 @@
 		item_state = "[initial(item_state)]"
 		collapsed = 1
 
-/obj/item/gun/ballistic/rocket/collapsible/examine(mob/user)
+/obj/item/gun/ballistic/rocket/collapsible/examine(mob/user, dist)
 	. = ..()
 	return
 

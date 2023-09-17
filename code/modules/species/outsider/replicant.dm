@@ -24,8 +24,7 @@
 
 	species_flags = NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
 
-	vision_flags = SEE_SELF
-	darksight = 5
+	vision_innate = /datum/vision/baseline/species_tier_1
 
 	brute_mod = 0.9
 	burn_mod = 0.9

@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * ! Unique String Persistence
  *
@@ -59,7 +62,7 @@
 
 //! Why the usr fuckery? Because we intentionally wish to obfuscate admin proccalls, since we properly sanitize **everything** in these procs.
 
-/datum/controller/subsystem/persistence/proc/LoadString(group = OBJECT_PERSISTENCE_STRING_GROUP_NULL, key)
+/datum/controller/subsystem/persistence/proc/LoadString(group = OBJECT_PERSISTENCE_GROUP_NONE, key)
 	if(!SSdbcore.Connect())
 		return
 	var/oldusr = usr
@@ -78,7 +81,7 @@
 	. = query.item[1]
 	qdel(query)
 
-/datum/controller/subsystem/persistence/proc/SaveString(group = OBJECT_PERSISTENCE_STRING_GROUP_NULL, key, value)
+/datum/controller/subsystem/persistence/proc/SaveString(group = OBJECT_PERSISTENCE_GROUP_NONE, key, value)
 	if(!SSdbcore.Connect())
 		return
 	var/oldusr = usr

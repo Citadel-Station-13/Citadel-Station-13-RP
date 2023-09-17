@@ -4,6 +4,7 @@
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "s-casing"
 	slot_flags = SLOT_BELT | SLOT_EARS
+	item_flags = ITEM_EASY_LATHE_DECONSTRUCT
 	throw_force = 1
 	w_class = ITEMSIZE_TINY
 	preserve_item = 1
@@ -16,7 +17,7 @@
 	/// projectile type
 	var/projectile_type
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
-	VAR_PRIVATE/obj/item/projectile/stored
+	VAR_PRIVATE/obj/projectile/stored
 
 	//! Icon
 	/// switch to "[initial(state)]-spent" after expenditure
@@ -62,7 +63,12 @@
 	stored.name = "[initial(stored.name)] (\"[label_text]\")"
 
 /obj/item/ammo_casing/dynamic_tool_functions(obj/item/I, mob/user)
-	return list(TOOL_SCREWDRIVER)
+	. = list(
+		TOOL_SCREWDRIVER = list(
+			"etch"
+		)
+	)
+	return merge_double_lazy_assoc_list(., ..())
 
 /obj/item/ammo_casing/proc/newshot() //For energy weapons, syringe gun, shotgun shells and wands (!).
 	if(stored)
@@ -110,7 +116,14 @@
 	else
 		icon_state = base_icon_state || icon_state
 
-/obj/item/ammo_casing/examine(mob/user)
+/obj/item/ammo_casing/examine(mob/user, dist)
 	. = ..()
 	if(!loaded())
 		. += "This one is spent."
+
+/obj/item/ammo_casing/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/ammo_magazine))
+		var/obj/item/ammo_magazine/mag = I
+		mag.quick_gather(get_turf(src), user)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()

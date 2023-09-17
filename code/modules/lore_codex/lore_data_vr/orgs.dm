@@ -6,8 +6,8 @@
 /datum/lore/codex/category/auto_org/New(var/new_holder, var/new_parent)
 	..(new_holder, new_parent)
 	keywords += auto_keywords
-	for(var/path in GLOB.loremaster.organizations)
-		var/datum/lore/organization/O = GLOB.loremaster.organizations[path]
+	for(var/path in SSlegacy_lore.organizations)
+		var/datum/lore/organization/O = SSlegacy_lore.organizations[path]
 		if(!(istype(O, desired_type)))
 			continue
 		var/datum/lore/codex/page/P = new(holder, src)

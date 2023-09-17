@@ -1,8 +1,8 @@
 SUBSYSTEM_DEF(input)
 	name = "Input"
-	wait = 1 //SS_TICKER means this runs every tick
+	wait = 0.25 // scale to 40 fps
 	init_order = INIT_ORDER_INPUT
-	subsystem_flags = SS_TICKER
+	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_INPUT
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
@@ -112,8 +112,9 @@ SUBSYSTEM_DEF(input)
 
 /datum/controller/subsystem/input/fire()
 	var/list/clients = GLOB.clients // Let's sing the list cache song
-	for(var/i in 1 to clients.len)
-		var/client/C = clients[i]
+	for(var/client/C as anything in clients)
+		if(!C.initialized)
+			continue
 		C.keyLoop()
 
 /// *sigh

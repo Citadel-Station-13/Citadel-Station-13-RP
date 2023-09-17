@@ -21,7 +21,7 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
-	rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
+	//rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
 
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_SHADEKIN_HIVEMIND
@@ -35,13 +35,14 @@
 	)
 
 	siemens_coefficient = 1
-	darksight = 10
+	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 
 	slowdown = -0.5
 	item_slowdown_mod = 0.5
 
 	brute_mod = 0.7 // Naturally sturdy.
 	burn_mod = 1.2 // Furry
+	radiation_mod = 0
 
 	warning_low_pressure = 50
 	hazard_low_pressure = -1
@@ -113,6 +114,8 @@
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
 	)
+
+	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 
 	//SHADEKIN-UNIQUE STUFF GOES HERE
 	var/list/shadekin_abilities = list(

@@ -8,13 +8,13 @@
 
 	fire_sound = 'sound/weapons/eluger.ogg'
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
-	projectile_type = /obj/item/projectile/beam/stun/blue
+	projectile_type = /obj/projectile/beam/stun/blue
 	charge_cost = 240
 	fire_delay = 5
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun/blue, fire_sound='sound/weapons/Taser.ogg', charge_cost=240, fire_delay=5),
-		list(mode_name="capture", projectile_type=/obj/item/projectile/beam/energy_net, fire_sound = 'sound/weapons/eluger.ogg', charge_cost=1200, fire_delay=50)
+		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun/blue, fire_sound='sound/weapons/Taser.ogg', charge_cost=240, fire_delay=5),
+		list(mode_name="capture", projectile_type=/obj/projectile/beam/energy_net, fire_sound = 'sound/weapons/eluger.ogg', charge_cost=1200, fire_delay=50)
 	)
 
 /obj/item/gun/energy/netgun/update_icon()

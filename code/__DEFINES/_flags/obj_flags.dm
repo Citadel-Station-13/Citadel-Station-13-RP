@@ -7,10 +7,13 @@
 #define ON_BLUEPRINTS			(1<<2)
 /// Prevent people from clicking under us
 #define OBJ_PREVENT_CLICK_UNDER	(1<<3)
+/// We ignore depth system when blocking mobs
+#define OBJ_IGNORE_MOB_DEPTH	(1<<4)
 
 DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(EMAGGED),
 	BITFIELD(CAN_BE_HIT),
 	BITFIELD(ON_BLUEPRINTS),
 	BITFIELD(OBJ_PREVENT_CLICK_UNDER),
+	BITFIELD(OBJ_IGNORE_MOB_DEPTH),
 ))

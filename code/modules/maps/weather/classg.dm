@@ -1,15 +1,13 @@
 /datum/atmosphere/planet/classg
-	base_gases = list(
-	/datum/gas/oxygen = 10,
-	/datum/gas/nitrogen = 10,
-	/datum/gas/phoron = 80
+	base = list(
+		/datum/gas/oxygen = 10,
+		/datum/gas/nitrogen = 10,
+		/datum/gas/phoron = 80,
 	)
-	base_target_pressure = 110.1
-	minimum_pressure = 110.1
-	maximum_pressure = 110.1
-	minimum_temp = 293.3
-	maximum_temp = 307.3
-
+	pressure_low = 110.1
+	pressure_high = 110.1
+	temperature_low = 293.3
+	temperature_high = 307.3
 
 /datum/time/classg
 	seconds_in_day = 3 HOURS
@@ -18,6 +16,7 @@
 	name = "Class-G Mineral Rich Planet"
 	desc = "A mineral rich planet with a volatile atmosphere."
 	current_time = new /datum/time/classg()
+	weather_holder = /datum/weather_holder/classg
 
 /datum/planet/classg/update_sun()
 	..()
@@ -95,8 +94,7 @@
 
 		new_color = rgb(new_r, new_g, new_b)
 
-	spawn(1)
-		update_sun_deferred(2, new_brightness, new_color)
+	update_sun_deferred(new_brightness, new_color)
 
 /datum/weather_holder/classg
 	temperature = T0C
@@ -181,7 +179,7 @@
 // Shuttle Path for Mining Planet
 
 // -- Datums -- //
-/*/obj/effect/overmap/visitable/sector/classg
+/*/obj/overmap/entity/visitable/sector/classg
 	name = "Mineral Rich Planet"			// The name of the destination
 	desc = "Sensors indicate that this is a world filled with minerals.  There seems to be a thin atmosphere on the planet."
 	icon_state = "globe"

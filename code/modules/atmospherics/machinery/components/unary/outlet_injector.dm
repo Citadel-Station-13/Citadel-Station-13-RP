@@ -55,8 +55,8 @@
 /obj/machinery/atmospherics/component/unary/outlet_injector/process(delta_time)
 	..()
 
-	last_power_draw = 0
-	last_flow_rate = 0
+	last_power_draw_legacy = 0
+	last_flow_rate_legacy = 0
 
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
@@ -69,7 +69,7 @@
 		power_draw = pump_gas(src, air_contents, environment, transfer_moles, power_rating)
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 
 		if(network)
@@ -197,7 +197,7 @@
 /obj/machinery/atmospherics/component/unary/outlet_injector/hide(var/i)
 	update_underlays()
 
-/obj/machinery/atmospherics/component/unary/outlet_injector/attack_hand(mob/user as mob)
+/obj/machinery/atmospherics/component/unary/outlet_injector/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/proc/toggle_injecting()
@@ -213,12 +213,8 @@
 		to_chat(user, "<span class='notice'>You begin to upload access data to \the [src]...</span>")
 		if (do_after(user, 20))
 			var/obj/item/airlock_electronics/E = W
-			if(E.one_access)
-				req_access = null
-				req_one_access = E.conf_access
-			else
-				req_access = E.conf_access
-				req_one_access = null
+			req_access = E.conf_req_access?.Copy()
+			req_one_access = E.conf_req_one_access?.Copy()
 			user.visible_message( \
 				"<span class='notice'>\The [user] uploads access data to \the [src].</span>", \
 				"<span class='notice'>You copied access data from \the [W] to \the [src].</span>", \

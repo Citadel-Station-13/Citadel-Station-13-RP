@@ -48,8 +48,12 @@
 	else if (islist(value))
 		var/list/L = value
 		var/list/items = list()
-
-		if (L.len > 0 && !(name == "underlays" || name == "overlays" || L.len > (IS_NORMAL_LIST(L) ? VV_NORMAL_LIST_NO_EXPAND_THRESHOLD : VV_SPECIAL_LIST_NO_EXPAND_THRESHOLD)))
+		// don't expand if it's:
+		// 1. overlays - this info is rarely needing to be accessed unless you're doing overlay debugging
+		// 2. underlays - ditto
+		// 3. GLOB - there's a metric ton of lists on global variables and we want to avoid admins needing to download MB's of data instantly
+		// 4. if the list is too long otherwise
+		if (L.len > 0 && !(name == "underlays" || name == "overlays" || D == GLOB || L.len > (IS_NORMAL_LIST(L) ? VV_NORMAL_LIST_NO_EXPAND_THRESHOLD : VV_SPECIAL_LIST_NO_EXPAND_THRESHOLD)))
 			for (var/i in 1 to L.len)
 				var/key = L[i]
 				var/val

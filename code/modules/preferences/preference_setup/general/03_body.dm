@@ -259,7 +259,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	if(has_flag(mob_species, HAS_SKIN_TONE))
 		. += "Skin Tone: <a href='?src=\ref[src];skin_tone=1'>[-pref.s_tone + 35]/220</a><br>"
 	if(has_flag(mob_species, HAS_BASE_SKIN_COLOR))
-		. += "Base Colour: <a href='?src=\ref[src];base_skin=1'>[pref.s_base]</a><br>"
+		. += "Base Appearance: <a href='?src=\ref[src];base_skin=1'>[pref.s_base]</a><br>"
 	. += "Needs Glasses: <a href='?src=\ref[src];disabilities=[DISABILITY_NEARSIGHTED]'><b>[pref.disabilities & DISABILITY_NEARSIGHTED ? "Yes" : "No"]</b></a><br>"
 	. += "Limbs: <a href='?src=\ref[src];limbs=1'>Adjust</a> <a href='?src=\ref[src];reset_limbs=1'>Reset</a><br>"
 	. += "Internal Organs: <a href='?src=\ref[src];organs=1'>Adjust</a><br>"
@@ -532,7 +532,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else if(href_list["base_skin"])
 		if(!has_flag(mob_species, HAS_BASE_SKIN_COLOR))
 			return PREFERENCES_NOACTION
-		var/new_s_base = tgui_input_list(user, "Choose your character's base colour:", "Character preference", mob_species.base_skin_colours)
+		var/new_s_base = tgui_input_list(user, "Choose your character's base appearance:", "Character preference", mob_species.base_skin_colours)
 		if(new_s_base && CanUseTopic(user))
 			pref.s_base = new_s_base
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
@@ -571,6 +571,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			var/datum/sprite_accessory/S = GLOB.sprite_accessory_markings[id]
 			translated[S.name] = id
 		var/new_marking = tgui_input_list(user, "Choose a body marking:", "Character Preference", translated)
+		var/marking_count = length(pref.body_marking_ids)
+		if(marking_count >= MAXIMUM_MARKINGS)
+			to_chat(user, "<span class='warning'>You may only select up to [MAXIMUM_MARKINGS] markings!</span>")
+			return
 		if(new_marking && CanUseTopic(user))
 			pref.body_marking_ids[translated[new_marking]] = "#000000" //New markings start black
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW

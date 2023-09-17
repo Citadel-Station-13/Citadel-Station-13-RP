@@ -71,8 +71,8 @@
 	if(istype(W, /obj/item/pipe_painter))
 		return
 
-	if(istype(W, /obj/item/analyzer) && in_range(user, src))
-		var/obj/item/analyzer/A = W
+	if(istype(W, /obj/item/atmos_analyzer) && in_range(user, src))
+		var/obj/item/atmos_analyzer/A = W
 		A.analyze_gases(src, user)
 
 /obj/machinery/atmospherics/pipe/tank/air
@@ -84,8 +84,8 @@
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
 
-	air_temporary.adjust_multi(/datum/gas/oxygen,  (start_pressure*O2STANDARD)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature), \
-	                           /datum/gas/nitrogen,(start_pressure*N2STANDARD)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+	air_temporary.adjust_multi(GAS_ID_OXYGEN,  (start_pressure*O2STANDARD)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature), \
+	                           GAS_ID_NITROGEN,(start_pressure*N2STANDARD)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
 
 	. = ..()
 	icon_state = "air"
@@ -99,7 +99,7 @@
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
 
-	air_temporary.adjust_gas(/datum/gas/oxygen, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+	air_temporary.adjust_gas(GAS_ID_OXYGEN, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
 	. = ..()
 	icon_state = "o2"
 
@@ -113,7 +113,7 @@
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
 
-	air_temporary.adjust_gas(/datum/gas/nitrogen, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+	air_temporary.adjust_gas(GAS_ID_NITROGEN, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
 
 	. = ..()
 	icon_state = "n2"
@@ -127,7 +127,7 @@
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
 
-	air_temporary.adjust_gas(/datum/gas/carbon_dioxide, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+	air_temporary.adjust_gas(GAS_ID_CARBON_DIOXIDE, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
 
 	. = ..()
 	icon_state = "co2"
@@ -142,7 +142,7 @@
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
 
-	air_temporary.adjust_gas(/datum/gas/phoron, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+	air_temporary.adjust_gas(GAS_ID_PHORON, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
 
 	. = ..()
 	icon_state = "phoron"
@@ -156,7 +156,7 @@
 	air_temporary.volume = volume
 	air_temporary.temperature = T0C
 
-	air_temporary.adjust_gas(/datum/gas/nitrous_oxide, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+	air_temporary.adjust_gas(GAS_ID_NITROUS_OXIDE, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
 
 	. = ..()
 	icon_state = "n2o"
@@ -171,7 +171,7 @@
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
 
-	air_temporary.adjust_gas(/datum/gas/chlorine, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+	air_temporary.adjust_gas(GAS_ID_CHLORINE, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
 
 	. = ..()
 	icon_state = "hazard"

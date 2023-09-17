@@ -5,16 +5,19 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal
 	name = "floor decal"
-	icon = 'icons/turf/flooring/decals_vr.dmi'
+	icon = 'icons/turf/flooring/decals.dmi'
+
 	plane = TURF_PLANE
-	#ifndef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
-	layer = TURF_DETAIL_LAYER
-	#else
-	layer = PLATING_LAYER
-	#endif
+
 	#ifdef IN_MAP_EDITOR
+	// Display disposal pipes etc. above walls in map editors.
+	layer = PLATING_DECAL_LAYER
 	alpha = 128 // Set for the benefit of mapping.
+	#else
+	// Our actual layer ingame.
+	layer = FLOOR_DECAL_LAYER
 	#endif
+
 	var/supplied_dir
 
 /obj/effect/floor_decal/Initialize(mapload, newdir, newcolour)
@@ -35,7 +38,7 @@ var/list/floor_decals = list()
 	I.alpha = alpha
 	return I
 
-/obj/effect/floor_decal/proc/get_cache_key(var/turf/T)
+/obj/effect/floor_decal/proc/get_cache_key(turf/T)
 	return "[alpha]-[color]-[dir]-[icon_state]-[T.layer]"
 
 // This is a separate proc from initialize() to facilitiate its caching and other stuff.  Look into it someday.
@@ -524,6 +527,10 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/spline/plain
 	name = "spline - plain"
 	icon_state = "spline_plain"
+
+/obj/effect/floor_decal/spline/plain/corner
+	name = "spline - plain"
+	icon_state = "spline_plain_corner"
 
 /obj/effect/floor_decal/spline/fancy
 	name = "spline - fancy"
@@ -1299,3 +1306,22 @@ var/list/floor_decals = list()
 /obj/effect/transit/light
 	icon = 'icons/turf/transit_128.dmi'
 	icon_state = "tube1-2"
+
+/obj/effect/floor_decal/tracks
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "rail"
+
+/obj/effect/floor_decal/tracks/intersection
+	icon_state = "rail_intersection"
+
+/obj/effect/floor_decal/tracks/t_north
+	icon_state = "rail_intersection_NEW"
+
+/obj/effect/floor_decal/tracks/t_south
+	icon_state = "rail_intersection_SEW"
+
+/obj/effect/floor_decal/tracks/t_west
+	icon_state = "rail_intersection_NSW"
+
+/obj/effect/floor_decal/tracks/t_east
+	icon_state = "rail_intersection_NSE"

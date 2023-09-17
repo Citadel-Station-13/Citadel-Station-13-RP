@@ -4,7 +4,7 @@
 	desc = "An upscaled variant of anti-mechanical weaponry constructed by NT, such as the EW Halicon."
 	icon_state = "mecha_ion"
 	energy_drain = 120
-	projectile = /obj/item/projectile/ion
+	projectile = /obj/projectile/ion
 	fire_sound = 'sound/weapons/Laser.ogg'
 
 	origin_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 4, TECH_MAGNET = 4)
@@ -15,6 +15,6 @@
 	desc = "A tesla coil modified to amplify an ionic wave, and use it as a projectile."
 	icon_state = "mecha_ion-rig"
 	energy_drain = 100
-	projectile = /obj/item/projectile/ion/pistol
+	projectile = /obj/projectile/ion/pistol
 
 	equip_type = EQUIP_UTILITY

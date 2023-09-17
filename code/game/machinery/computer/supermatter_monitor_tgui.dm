@@ -12,12 +12,12 @@
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/sm_monitor
 	req_access = list()
-	var/datum/tgui_module/supermatter_monitor/sm_monitor
+	var/datum/tgui_module_old/supermatter_monitor/sm_monitor
 
 /obj/machinery/computer/sm_monitor/attack_ai(mob/user)
 	ui_interact(user)
 
-/obj/machinery/computer/sm_monitor/attack_hand(mob/user)
+/obj/machinery/computer/sm_monitor/attack_hand(mob/user, list/params)
 	if(..())
 		return TRUE
 	ui_interact(user)

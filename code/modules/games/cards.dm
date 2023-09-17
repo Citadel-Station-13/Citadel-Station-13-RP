@@ -67,7 +67,7 @@
 			return
 	..()
 
-/obj/item/deck/attack_hand(mob/user as mob)
+/obj/item/deck/attack_hand(mob/user, list/params)
 	var/mob/living/carbon/human/H = user
 	if(istype(src.loc, /obj/item/storage) || src == H.r_store || src == H.l_store || src.loc == user) // so objects can be removed from storage containers or pockets. also added a catch-all, so if it's in the mob you'll pick it up.
 		..()
@@ -212,7 +212,10 @@
 
 	..()
 
-/obj/item/deck/attack_self()
+/obj/item/deck/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	shuffle()
 
 
@@ -284,7 +287,10 @@
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 
 
-/obj/item/pack/attack_self(var/mob/user as mob)
+/obj/item/pack/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class ='danger'>[user] rips open \the [src]!</span>")
 	var/obj/item/hand/H = new()
 
@@ -343,12 +349,15 @@
 	if(!cards.len)
 		qdel(src)
 
-/obj/item/hand/attack_self(var/mob/user as mob)
+/obj/item/hand/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	concealed = !concealed
 	update_icon()
 	user.visible_message("<span class = 'notice'>\The [user] [concealed ? "conceals" : "reveals"] their hand.</span>")
 
-/obj/item/hand/examine(mob/user)
+/obj/item/hand/examine(mob/user, dist)
 	. = ..()
 	if((!concealed) && cards.len)
 		. += "It contains: "

@@ -20,8 +20,6 @@
 #define LIGHTING_DARKNESS_ICON_STATE "black"
 #define LIGHTING_TRANSPARENT_ICON_STATE "blank"
 
-/// If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.
-#define LIGHTING_SOFT_THRESHOLD 0.001
 /// How much the range of a directional light will be reduced while facing a wall.
 #define LIGHTING_BLOCKED_FACTOR 0.5
 
@@ -40,6 +38,10 @@
  */
 #define TURF_IS_DYNAMICALLY_LIT_UNSAFE(T) ((T:dynamic_lighting && T:loc:dynamic_lighting))
 #define TURF_IS_DYNAMICALLY_LIT(T) (isturf(T) && TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
+
+// Note: this does not imply the above, a turf can have ambient light without being dynamically lit.
+#define TURF_IS_AMBIENT_LIT_UNSAFE(T) (T:ambient_active)
+#define TURF_IS_AMBIENT_LIT(T) (isturf(T) && TURF_IS_AMBIENT_LIT_UNSAFE(T))
 
 //! If I were you I'd leave this alone.
 #define LIGHTING_BASE_MATRIX \
@@ -121,8 +123,8 @@
 /// Uses a dedicated render_target object to copy the entire appearance in real time to the blocking layer. For things that can change in appearance a lot from the base state, like humans.
 #define EMISSIVE_BLOCK_UNIQUE  2
 
-/// The color matrix applied to all emissive overlays. Should be solely dependent on alpha and not have RGB overlap with [EM_BLOCK_COLOR].
-#define EMISSIVE_COLOR list(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1, 1,1,1,0)
+/// The color matrix applied to binary emissive overlays. Should be solely dependent on alpha and not have RGB overlap with [EM_BLOCK_COLOR].
+#define EMISSIVE_COLOR list(0,0,0,0, 0,0,0,0, 0,0,0,0, 1,1,1,1, 0,0,0,0)
 /// A globaly cached version of [EMISSIVE_COLOR] for quick access.
 GLOBAL_LIST_INIT(emissive_color, EMISSIVE_COLOR)
 /// The color matrix applied to all emissive blockers. Should be solely dependent on alpha and not have RGB overlap with [EMISSIVE_COLOR].
@@ -130,7 +132,7 @@ GLOBAL_LIST_INIT(emissive_color, EMISSIVE_COLOR)
 /// A globaly cached version of [EM_BLOCK_COLOR] for quick access.
 GLOBAL_LIST_INIT(em_block_color, EM_BLOCK_COLOR)
 /// The color matrix used to mask out emissive blockers on the emissive plane. Alpha should default to zero, be solely dependent on the RGB value of [EMISSIVE_COLOR], and be independant of the RGB value of [EM_BLOCK_COLOR].
-#define EM_MASK_MATRIX list(0,0,0,1/3, 0,0,0,1/3, 0,0,0,1/3, 0,0,0,0, 1,1,1,0)
+#define EM_MASK_MATRIX list(0,0,0,1/3, 0,0,0,1/3, 0,0,0,1/3, 0,0,0,0, 0,0,0,0)
 /// A globaly cached version of [EM_MASK_MATRIX] for quick access.
 GLOBAL_LIST_INIT(em_mask_matrix, EM_MASK_MATRIX)
 

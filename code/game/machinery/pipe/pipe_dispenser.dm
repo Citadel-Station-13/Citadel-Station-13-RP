@@ -11,7 +11,7 @@
 	var/disposals = FALSE
 
 
-/obj/machinery/pipedispenser/attack_hand(var/mob/user as mob)
+/obj/machinery/pipedispenser/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	ui_interact(user)
@@ -63,7 +63,7 @@
 	if(..())
 		return TRUE
 
-	if(unwrenched || !usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
+	if(unwrenched || !CHECK_MOBILITY(usr, MOBILITY_CAN_UI) || !in_range(loc, usr))
 		return TRUE
 
 	. = TRUE
@@ -149,7 +149,7 @@
 
 //Allow you to drag-drop disposal pipes into it
 /obj/machinery/pipedispenser/disposal/MouseDroppedOnLegacy(var/obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_UI))
 		return
 
 	if (!istype(pipe) || get_dist(usr, src) > 1 || get_dist(src,pipe) > 1 )

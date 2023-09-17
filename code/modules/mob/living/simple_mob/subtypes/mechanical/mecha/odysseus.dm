@@ -29,7 +29,7 @@
 	melee_damage_upper = 5
 	base_attack_cooldown = 2 SECONDS
 	attacktext = list("injected")
-	projectiletype = /obj/item/projectile/fake_syringe/poison
+	projectiletype = /obj/projectile/fake_syringe/poison
 	projectilesound = 'sound/weapons/empty.ogg' // Just like the syringe gun.
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/no_moonwalk
@@ -60,13 +60,13 @@
 
 
 // Fake syringe that tests if target can be injected before applying damage/modifiers/etc.
-/obj/item/projectile/fake_syringe
+/obj/projectile/fake_syringe
 	name = "syringe"
 	icon_state = "syringe"
 	damage = 5 // Getting hit with a launched syringe probably hurts, and makes it at least slightly relevant against synthetics.
 	var/piercing = FALSE // If true, ignores thick material.
 
-/obj/item/projectile/fake_syringe/on_hit(atom/target, blocked = 0, def_zone = null)
+/obj/projectile/fake_syringe/on_hit(atom/target, blocked = 0, def_zone = null)
 	if(isliving(target))
 		var/mob/living/L = target
 		if(!L.can_inject(null, null, def_zone, piercing))
@@ -76,6 +76,6 @@
 
 
 // Fake syringe, which inflicts a long lasting modifier that slowly kills them.
-/obj/item/projectile/fake_syringe/poison
+/obj/projectile/fake_syringe/poison
 	modifier_type_to_apply = /datum/modifier/poisoned
 	modifier_duration = 1 MINUTE // About 30 damage per stack over a minute.

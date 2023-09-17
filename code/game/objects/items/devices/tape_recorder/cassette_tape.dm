@@ -19,8 +19,8 @@
 	icon_state = "tape_white"
 	item_state = "analyzer"
 	w_class = ITEMSIZE_TINY
-	matter = list(MAT_STEEL=20, "glass"=5)
-	force = 1
+	materials = list(MAT_STEEL=20, "glass"=5)
+	damage_force = 1
 	throw_force = 0
 
 	/**
@@ -98,6 +98,9 @@
 	ruin()
 
 /obj/item/cassette_tape/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	. = ..()
 	if(user.a_intent != INTENT_HARM)
 		return

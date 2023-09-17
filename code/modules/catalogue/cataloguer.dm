@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	icon_state = "cataloguer"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_DATA = 3, TECH_MAGNET = 3)
-	force = 0
+	damage_force = 0
 	var/points_stored = 0 // Amount of 'exploration points' this device holds.
 	var/scan_range = 3 // How many tiles away it can scan. Changing this also changes the box size.
 	var/credit_sharing_range = INFINITY // If another person is within this radius, they will also be credited with a successful scan.
@@ -69,7 +69,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/cataloguer/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/cataloguer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	// Things that invalidate the scan immediately.
 	if(busy)
 		to_chat(user, SPAN_WARNING( "\The [src] is already scanning something."))
@@ -114,7 +114,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 
 	// The delay, and test for if the scan succeeds or not.
 	var/scan_start_time = world.time
-	if(do_after(user, scan_delay, target, ignore_movement = TRUE, max_distance = scan_range))
+	if(do_after(user, scan_delay, target, DO_AFTER_IGNORE_MOVEMENT, max_distance = scan_range))
 		if(target.can_catalogue(user))
 			to_chat(user, SPAN_NOTICE("You successfully scan \the [target] with \the [src]."))
 			playsound(src.loc, 'sound/machines/ping.ogg', 50)
@@ -246,7 +246,10 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 /obj/item/cataloguer/proc/adjust_points(amount)
 	points_stored = max(0, points_stored += amount)
 
-/obj/item/cataloguer/attack_self(mob/living/user)
+/obj/item/cataloguer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	interact(user)
 
 /obj/item/cataloguer/interact(mob/user)

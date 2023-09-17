@@ -38,6 +38,7 @@
 	eye_icon_location = 'icons/mob/species/adherent/eyes.dmi'
 	eye_icon = "eyes"
 	robotic = ORGAN_CRYSTAL
+//	can_intake_reagents = FALSE //! DO NOT UNCOMMENT THIS LINE UNTIL ADHERENTS CAN PASS IsSynthetic()
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_HEALS_OVERKILL | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/arm/crystal

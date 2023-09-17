@@ -1,9 +1,3 @@
-//Define a macro that we can use to assemble all the circuit board names
-#ifdef T_BOARD
-#error T_BOARD already defined elsewhere, we can't use it.
-#endif
-#define T_BOARD(name) "circuit board (" + (name) + ")"
-
 // TODO: split into machine, computer, etc circuits
 /**
  * circuitboards
@@ -15,11 +9,15 @@
 	name = "circuit board"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "id_mod"
+	materials = list(
+		MAT_STEEL = 1000,
+		MAT_GLASS = 250,
+	)
 	origin_tech = list(TECH_DATA = 2)
 	density = FALSE
 	anchored = FALSE
 	w_class = ITEMSIZE_SMALL
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 5.0
 	throw_speed = 3
 	throw_range = 15
@@ -100,7 +98,7 @@
 
 	M.RefreshParts()
 
-/obj/item/circuitboard/examine(mob/user)
+/obj/item/circuitboard/examine(mob/user, dist)
 	. = ..()
 	if(LAZYLEN(req_components))
 		var/list/nice_list = list()

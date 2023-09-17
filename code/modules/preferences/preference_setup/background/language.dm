@@ -48,6 +48,11 @@
 		var/list/truncated = extra.Copy(extra_max + 1)
 		extra.len = clamp(extra.len, 0, extra_max)
 		errors?.Add(SPAN_WARNING("truncated [english_list(truncated)] languages - too many!"))
+	for(var/id in extra)
+		if(isnull(SScharacters.resolve_language_id(id)))
+			extra -= id
+			errors?.Add(SPAN_WARNING("removed id [id] - can't locate it."))
+			continue
 	return extra
 
 /datum/category_item/player_setup_item/background/language/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
@@ -58,16 +63,17 @@
 	for(var/id in data)
 		H.add_language(id)
 
-/datum/category_item/player_setup_item/background/language/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
+/datum/category_item/player_setup_item/background/language/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	if(length(data) > prefs.extraneous_languages_max())
 		errors?.Add(SPAN_WARNING("You have selected too many extra languages for your species and culture."))
 		return FALSE
 	var/list/extraneous = data
 	var/datum/character_species/CS = prefs.character_species_datum()
+	var/list/whitelisted_ids = CS.get_whitelisted_language_ids() // cache ids from character species for speed
 	for(var/id in extraneous)
 		var/datum/language/L = SScharacters.resolve_language_id(id)
-		if((L.language_flags & LANGUAGE_WHITELISTED) && (!(L in CS.whitelist_languages)) && !config.check_alien_whitelist(ckey(L.name), prefs.client_ckey))
-			errors?.Add(SPAN_WARNING("[L.id] is a whitelisted language."))
+		if((L.language_flags & LANGUAGE_WHITELISTED) && (!(L.id in whitelisted_ids)) && !config.check_alien_whitelist(ckey(L.name), prefs.client_ckey))
+			errors?.Add(SPAN_WARNING("[L] is a whitelisted language."))
 			return FALSE
 	return TRUE
 
@@ -85,12 +91,7 @@
 	var/datum/character_species/S = character_species_datum()
 	. = S.get_intrinsic_language_ids()
 	if(include_background)
-		var/list/datum/lore/character_background/backgrounds = list(
-			lore_citizenship_datum(),
-			lore_origin_datum(),
-			lore_religion_datum(),
-			lore_faction_datum()
-		)
+		var/list/datum/lore/character_background/backgrounds = all_background_datums()
 		for(var/datum/lore/character_background/B in backgrounds)	// eh let's type filter
 			if(!B.innate_languages)
 				continue
@@ -100,12 +101,7 @@
  * returns max amounts we can have. doesn't take into account what we do have.
  */
 /datum/preferences/proc/extraneous_languages_max()
-	var/list/datum/lore/character_background/backgrounds = list(
-		lore_citizenship_datum(),
-		lore_origin_datum(),
-		lore_religion_datum(),
-		lore_faction_datum()
-	)
+	var/list/datum/lore/character_background/backgrounds = all_background_datums()
 	var/tally = character_species_datum().max_additional_languages
 	for(var/datum/lore/character_background/B in backgrounds)	// eh let's type filter
 		tally += B.language_amount_mod

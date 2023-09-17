@@ -1,6 +1,6 @@
 import { useBackend } from "../backend";
 import { NtosWindow } from "../layouts";
-import { IdentificationComputerRegions } from "./IdentificationComputer";
+import { IdentificationComputerRegions } from "./computers/IdentificationComputer";
 import { NoticeBox, Box, Section, Button } from "../components";
 
 export const NtosAccessDecrypter = (props, context) => {

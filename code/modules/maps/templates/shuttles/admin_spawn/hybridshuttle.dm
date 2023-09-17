@@ -17,7 +17,7 @@
 /obj/machinery/computer/shuttle_control/explore/hybridshuttle
 	name = "short jump console"
 	shuttle_tag = "XN-29 Prototype Shuttle"
-	req_one_access = list(access_pilot)
+	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/hybridshuttle
@@ -37,7 +37,7 @@
 	defer_initialisation = TRUE //We're not loaded until an admin does it
 
 // The 'ship'
-/obj/effect/overmap/visitable/ship/landable/hybridshuttle
+/obj/overmap/entity/visitable/ship/landable/hybridshuttle
 	scanner_name = "XN-29 Prototype Shuttle"
 	scanner_desc = @{"[i]Registration[/i]: UNKNOWN
 [i]Class[/i]: Shuttle

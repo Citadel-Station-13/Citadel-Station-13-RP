@@ -11,7 +11,10 @@
 	name = "inactive supermatter supply beacon"
 	deploy_path = /obj/machinery/power/supply_beacon/supermatter
 
-/obj/item/supply_beacon/attack_self(var/mob/user)
+/obj/item/supply_beacon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class='notice'>\The [user] begins setting up \the [src].</span>")
 	if(!do_after(user, deploy_time))
 		return
@@ -54,7 +57,7 @@
 		return
 	return ..()
 
-/obj/machinery/power/supply_beacon/attack_hand(mob/user)
+/obj/machinery/power/supply_beacon/attack_hand(mob/user, list/params)
 
 	if(expended)
 		update_use_power(USE_POWER_OFF)
@@ -114,6 +117,6 @@
 		var/drop_x = src.x - 2
 		var/drop_y = src.y - 2
 		var/drop_z = src.z
-		command_announcement.Announce("[GLOB.using_map.starsys_name] Rapid Fabrication priority supply request #[rand(1000,9999)]-[rand(100,999)] recieved. Shipment dispatched via ballistic supply pod for immediate delivery. Have a nice day.", "Thank You For Your Patronage")
+		command_announcement.Announce("[(LEGACY_MAP_DATUM).starsys_name] Rapid Fabrication priority supply request #[rand(1000,9999)]-[rand(100,999)] recieved. Shipment dispatched via ballistic supply pod for immediate delivery. Have a nice day.", "Thank You For Your Patronage")
 		spawn(rand(100, 300))
 			new /datum/random_map/droppod/supply(null, drop_x, drop_y, drop_z, supplied_drop = drop_type) // Splat.

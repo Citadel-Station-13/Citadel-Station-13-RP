@@ -1,7 +1,8 @@
 /datum/species/rapala
+	uid = SPECIES_ID_RAPALA
+	id = SPECIES_ID_RAPALA
 	name = SPECIES_RAPALA
 	name_plural = "Rapalans"
-	uid = SPECIES_ID_RAPALA
 
 	icobase      = 'icons/mob/species/rapala/body.dmi'
 	deform       = 'icons/mob/species/rapala/deformed_body.dmi'
@@ -49,7 +50,11 @@
 	)
 
 	inherent_verbs = list(
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
+	)
+	abilities = list(
+		/datum/ability/species/toggle_flight
 	)

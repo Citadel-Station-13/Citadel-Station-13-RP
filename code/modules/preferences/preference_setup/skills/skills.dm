@@ -1,8 +1,39 @@
-// This file has been UNTICKED on purpose, as it is not in use.
+// TODO: this file is still commented out, because we will not even *SHOW* it until skills implementation is near critical mass.
+
+/datum/category_group/player_setup_category/skills
+	name = "Skills"
+	sort_order = 3.5
+	category_item_type = /datum/category_item/player_setup_item/skills
 
 /datum/category_item/player_setup_item/skills
 	name = "Skills"
 	sort_order = 1
+	save_key = CHARACTER_DATA_SKILLS
+	is_global = FALSE
+
+/datum/category_item/player_setup_item/skills/content(datum/preferences/prefs, mob/user, data)
+	. = ..()
+
+/datum/category_item/player_setup_item/skills/act(datum/preferences/prefs, mob/user, action, list/params)
+	switch(action)
+		if("set")
+
+		if("reset")
+
+		if("preset")
+
+		if("details")
+
+	return ..()
+
+/datum/category_item/player_setup_item/skills/filter_data(datum/preferences/prefs, data, list/errors)
+	var/list/skill_data = sanitize_islist(data)
+
+
+/datum/category_item/player_setup_item/skills/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	. = ..()
+
+#warn impl above
 
 /datum/category_item/player_setup_item/skills/load_character(var/savefile/S)
 	S["skills"]					>> pref.skills

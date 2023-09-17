@@ -28,7 +28,7 @@
 			return custom_emote(m_type, message)
 		if("sign")
 			if (!src.restrained())
-				message = text("<B>The alien</B> signs[].", (text2num(param) ? text(" the number []", text2num(param)) : null))
+				message = "<B>The alien</B> signs[(text2num(param) ? " the number [text2num(param)]" : null)]."
 				m_type = 1
 		if ("burp")
 			if (!muzzled)
@@ -107,8 +107,8 @@
 			message = "<B>The [src.name]</B> hisses softly."
 			m_type = 1
 		if("collapse")
-			Unconscious(2)
-			message = text("<B>[]</B> collapses!", src)
+			afflict_unconscious(20 * 2)
+			message = "<B>[src]</B> collapses!"
 			m_type = 2
 		if("chirp")
 			message = "<B>The [src.name]</B> chirps!"

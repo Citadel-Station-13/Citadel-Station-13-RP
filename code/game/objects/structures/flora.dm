@@ -35,7 +35,7 @@
 	if(randomize_harvest_count)
 		max_harvests = max(0, rand(min_harvests, max_harvests)) // Incase you want to weight it more toward 'not harvestable', set min_harvests to a negative value.
 
-/obj/structure/flora/examine(mob/user)
+/obj/structure/flora/examine(mob/user, dist)
 	. = ..()
 	if(harvest_count < max_harvests)
 		. += "<span class='notice'>\The [src] seems to have something hanging from it.</span>"
@@ -394,7 +394,7 @@
 /obj/structure/flora/sif
 	icon = 'icons/obj/flora/sifflora.dmi'
 
-/obj/structure/flora/sif/attack_hand(mob/user)
+/obj/structure/flora/sif/attack_hand(mob/user, list/params)
 	if (user.a_intent == INTENT_HARM)
 		if(do_after(user, 5 SECONDS))
 			user.visible_message("\The [user] digs up \the [src.name].", "You dig up \the [src.name].")
@@ -515,7 +515,7 @@
 	var/gift_type = /obj/item/b_gift
 	var/list/ckeys_that_took = list()
 
-/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/living/user)
+/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return

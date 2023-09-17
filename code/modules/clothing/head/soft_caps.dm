@@ -5,7 +5,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cargosoft", SLOT_ID_LEFT_HAND = "cargosoft")
 	var/flipped = 0
 	siemens_coefficient = 0.9
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/soft/dropped(mob/user, flags, atom/newLoc)
 	icon_state = initial(icon_state)
@@ -13,6 +13,9 @@
 	..()
 
 /obj/item/clothing/head/soft/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	flipped = !flipped
 	if(flipped)
 		icon_state = "[icon_state]_flipped"

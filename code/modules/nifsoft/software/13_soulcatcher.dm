@@ -15,7 +15,7 @@
 	name = "Soulcatcher"
 	desc = "A mind storage and processing system capable of capturing and supporting human-level minds in a small VR space."
 	list_pos = NIF_SOULCATCHER
-	cost = 100 //If I wanna trap people's minds and lood them, then by god I'll do so.
+	cost = 25 //If I wanna trap people's minds and lood them, then by god I'll do so.
 	wear = 1
 	p_drain = 0.01
 
@@ -114,7 +114,7 @@
 	message = trim(message)
 	if(!length(message))
 		return
-	message = sender.say_emphasis(message)
+	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting
@@ -133,7 +133,7 @@
 	message = trim(message)
 	if(!length(message))
 		return
-	message = sender.say_emphasis(message)
+	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting
@@ -302,7 +302,7 @@
 
 	//Put the mind and player into the mob
 	// login should handle the perspective reset, now that nif is set.
-	M.mind.transfer_to(brainmob)
+	M.mind.transfer(brainmob)
 	brainmob.name = brainmob.mind.name
 	brainmob.real_name = brainmob.mind.name
 
@@ -360,7 +360,7 @@
 
 /mob/living/carbon/brain/caught_soul/Login()
 	..()
-	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
+	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
 	identifying_gender = client.prefs.identifying_gender
 	reset_perspective((nif?.human) || nif)
 
@@ -505,10 +505,13 @@
 /mob/living/carbon/brain/caught_soul/set_typing_indicator(state)
 	return eyeobj?.set_typing_indicator(state)
 
+/mob/living/carbon/brain/caught_soul/update_mobility(blocked, forced)
+	return ..(blocked, ALL)
+
 ///////////////////
 //A projected AR soul thing
 /mob/observer/eye/ar_soul
-	plane = PLANE_AUGMENTED
+	plane = AUGMENTED_PLANE
 	icon = 'icons/obj/machines/ar_elements.dmi'
 	icon_state = "beacon"
 	var/mob/living/carbon/human/parent_human
@@ -524,7 +527,7 @@
 	real_name = brainmob.real_name	//And the OTHER name
 
 	forceMove(get_turf(parent_human))
-	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, .proc/human_moved)
+	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, PROC_REF(human_moved))
 
 	//Time to play dressup
 	if(brainmob.client.prefs)
@@ -545,7 +548,7 @@
 		dummy.cut_overlay(dummy.hud_list)
 		// appearance clone immediately
 		appearance = dummy.appearance
-		plane = PLANE_AUGMENTED
+		plane = AUGMENTED_PLANE
 		qdel(dummy)
 
 /mob/observer/eye/ar_soul/Destroy()

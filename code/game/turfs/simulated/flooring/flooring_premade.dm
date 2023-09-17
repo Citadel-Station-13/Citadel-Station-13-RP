@@ -59,6 +59,51 @@
 	icon_state = "arcade"
 	initial_flooring = /singleton/flooring/carpet/arcadecarpet
 
+/turf/simulated/floor/carpet/patterened/brown
+	name = "brown patterend carpet"
+	icon_state = "brown"
+	initial_flooring = /singleton/flooring/carpet/patterened/brown
+
+/turf/simulated/floor/carpet/patterened/blue
+	name = "blue patterend carpet"
+	icon_state = "blue1"
+	initial_flooring = /singleton/flooring/carpet/patterened/blue
+
+/turf/simulated/floor/carpet/patterened/blue/alt
+	name = "blue patterend carpet"
+	icon_state = "blue2"
+	initial_flooring = /singleton/flooring/carpet/patterened/blue/alt
+
+/turf/simulated/floor/carpet/patterened/blue/alt2
+	name = "blue patterend carpet"
+	icon_state = "blue3"
+	initial_flooring = /singleton/flooring/carpet/patterened/blue/alt2
+
+/turf/simulated/floor/carpet/patterened/red
+	name = "red patterend carpet"
+	icon_state = "red"
+	initial_flooring = /singleton/flooring/carpet/patterened/red
+
+/turf/simulated/floor/carpet/patterened/green
+	name = "green patterend carpet"
+	icon_state = "green"
+	initial_flooring = /singleton/flooring/carpet/patterened/green
+
+/turf/simulated/floor/carpet/patterened/magneta
+	name = "magenta patterend carpet"
+	icon_state = "magenta"
+	initial_flooring = /singleton/flooring/carpet/patterened/magenta
+
+/turf/simulated/floor/carpet/patterened/purple
+	name = "purple patterend carpet"
+	icon_state = "purple"
+	initial_flooring = /singleton/flooring/carpet/patterened/purple
+
+/turf/simulated/floor/carpet/patterened/orange
+	name = "orange patterend carpet"
+	icon_state = "orange"
+	initial_flooring = /singleton/flooring/carpet/patterened/orange
+
 /turf/simulated/floor/bluegrid
 	name = "mainframe floor"
 	icon = 'icons/turf/flooring/circuit.dmi'
@@ -73,7 +118,7 @@
 
 /turf/simulated/floor/wood
 	name = "wooden floor"
-	icon = 'icons/turf/flooring/wood_vr.dmi'
+	icon = 'icons/turf/flooring/wood.dmi'
 	icon_state = "wood"
 	initial_flooring = /singleton/flooring/wood
 
@@ -105,13 +150,12 @@
 
 /turf/simulated/floor/tiled
 	name = "floor"
-	icon = 'icons/turf/flooring/tiles_vr.dmi'
+	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "tiled"
 	initial_flooring = /singleton/flooring/tiling
 
 /turf/simulated/floor/tiled/techmaint
 	name = "floor"
-	icon = 'icons/turf/flooring/tiles_vr.dmi'
 	icon_state = "techmaint"
 	initial_flooring = /singleton/flooring/tiling/new_tile/techmaint
 
@@ -120,37 +164,42 @@
 
 /turf/simulated/floor/tiled/monofloor
 	name = "floor"
-	icon = 'icons/turf/flooring/tiles_vr.dmi'
 	icon_state = "monofloor"
 	initial_flooring = /singleton/flooring/tiling/new_tile/monofloor
 
 /turf/simulated/floor/tiled/techfloor
 	name = "floor"
-	icon = 'icons/turf/flooring/techfloor_vr.dmi'
+	icon = 'icons/turf/flooring/techfloor.dmi'
 	icon_state = "techfloor_gray"
 	initial_flooring = /singleton/flooring/tiling/tech
 
 /turf/simulated/floor/tiled/monotile
 	name = "floor"
-	icon = 'icons/turf/flooring/tiles_vr.dmi'
 	icon_state = "monotile"
 	initial_flooring = /singleton/flooring/tiling/new_tile/monotile
 
 /turf/simulated/floor/tiled/monowhite
 	name = "floor"
-	icon = 'icons/turf/flooring/tiles_vr.dmi'
 	icon_state = "monowhite"
 	initial_flooring = /singleton/flooring/tiling/new_tile/monowhite
 
+/turf/simulated/floor/tiled/monodark
+	name = "floor"
+	icon_state = "monodark"
+	initial_flooring = /singleton/flooring/tiling/new_tile/monodark
+
+/turf/simulated/floor/tiled/monotechmaint
+	name = "floor"
+	icon_state = "monotechmaint"
+	initial_flooring = /singleton/flooring/tiling/new_tile/monotechmaint
+
 /turf/simulated/floor/tiled/steel_grid
 	name = "floor"
-	icon = 'icons/turf/flooring/tiles_vr.dmi'
 	icon_state = "steel_grid"
 	initial_flooring = /singleton/flooring/tiling/new_tile/steel_grid
 
 /turf/simulated/floor/tiled/steel_ridged
 	name = "floor"
-	icon = 'icons/turf/flooring/tiles_vr.dmi'
 	icon_state = "steel_ridged"
 	initial_flooring = /singleton/flooring/tiling/new_tile/steel_ridged
 
@@ -226,6 +275,10 @@
 	icon_state = "techfloor_grid"
 	initial_flooring = /singleton/flooring/tiling/tech/grid
 
+/turf/simulated/floor/tiled/techfloor/monogrid
+	name = "floor"
+	icon_state = "techfloor_monogrid"
+	initial_flooring = /singleton/flooring/tiling/tech/monogrid
 /turf/simulated/floor/reinforced
 	name = "reinforced floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
@@ -425,6 +478,23 @@
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "clockwork_floor"
 	initial_flooring = /singleton/flooring/brass
+
+/turf/simulated/floor/sandstone
+	name = "sandstone"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "sandstone"
+	initial_flooring = /singleton/flooring/sandstone
+
+/turf/simulated/floor/bone
+	name = "bone floor"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "bone"
+	initial_flooring = /singleton/flooring/bone
+
+/turf/simulated/floor/bone/engraved
+	name = "engraved bone floor"
+	icon_state = "bonecarve"
+	initial_flooring = /singleton/flooring/bone/engraved
 
 //ATMOS PREMADES
 /turf/simulated/floor/reinforced/airless

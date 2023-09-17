@@ -288,7 +288,7 @@
 				fear_amount += 1
 
 	var/turf/T = get_turf(holder)
-	if(T.get_lumcount() <= LIGHTING_SOFT_THRESHOLD) // Standing in complete darkness.
+	if(T.get_lumcount() <= 0) // Standing in complete darkness.
 		fear_amount += 5
 
 	return fear_amount
@@ -507,7 +507,7 @@
 		if(istype(thing, /obj/item/reagent_containers/hypospray/autoinjector)) //Don't know if I need to define autoinjectors too. Meh.
 			fear_amount += 3
 
-		if(istype(thing, /obj/item/rig_module/chem_dispenser))
+		if(istype(thing, /obj/item/hardsuit_module/chem_dispenser))
 			fear_amount += 5
 
 		if(istype(thing, /obj/item/storage/box/syringes))

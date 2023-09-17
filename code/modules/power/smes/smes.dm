@@ -15,6 +15,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	name = "power storage unit"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit."
 	icon_state = "smes"
+	icon = 'icons/obj/power_vr.dmi'
 	density = 1
 	anchored = 1
 	use_power = USE_POWER_OFF
@@ -111,19 +112,19 @@ GLOBAL_LIST_EMPTY(smeses)
 
 	var/list/overlays_to_add = list()
 
-	overlays_to_add += image('icons/obj/power.dmi', "smes-op[outputting]")
+	overlays_to_add += image(icon, "smes-op[outputting]")
 
 	if(inputting == 2)
-		overlays_to_add += image('icons/obj/power.dmi', "smes-oc2")
+		overlays_to_add += image(icon, "smes-oc2")
 	else if (inputting == 1)
-		overlays_to_add += image('icons/obj/power.dmi', "smes-oc1")
+		overlays_to_add += image(icon, "smes-oc1")
 	else
 		if(input_attempt)
-			overlays_to_add += image('icons/obj/power.dmi', "smes-oc0")
+			overlays_to_add += image(icon, "smes-oc0")
 
 	var/clevel = chargedisplay()
 	if(clevel>0)
-		overlays_to_add += image('icons/obj/power.dmi', "smes-og[clevel]")
+		overlays_to_add += image(icon, "smes-og[clevel]")
 
 	add_overlay(overlays_to_add)
 
@@ -214,7 +215,7 @@ GLOBAL_LIST_EMPTY(smeses)
 			tempDir = EAST
 		if (NORTHWEST, SOUTHWEST)
 			tempDir = WEST
-	var/turf/tempLoc = get_step(src, REVERSE_DIR(tempDir))
+	var/turf/tempLoc = get_step(src, global.reverse_dir[tempDir])
 	if (istype(tempLoc, /turf/space))
 		to_chat(user, "<span class='warning'>You can't build a terminal on space.</span>")
 		return 1
@@ -240,7 +241,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	add_hiddenprint(user)
 	ui_interact(user)
 
-/obj/machinery/power/smes/attack_hand(mob/user)
+/obj/machinery/power/smes/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	ui_interact(user)
 
@@ -294,7 +295,7 @@ GLOBAL_LIST_EMPTY(smeses)
 						s.set_up(5, 1, src)
 						s.start()
 						building_terminal = 0
-						if(usr.stunned)
+						if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 							return 0
 					new /obj/item/stack/cable_coil(loc,10)
 					user.visible_message(\
@@ -479,7 +480,7 @@ GLOBAL_LIST_EMPTY(smeses)
 
 
 /obj/machinery/power/smes/proc/ion_act()
-	if(src.z in GLOB.using_map.station_levels)
+	if(src.z in (LEGACY_MAP_DATUM).station_levels)
 		if(prob(1)) //explosion
 			for(var/mob/M in viewers(src))
 				M.show_message("<font color='red'>The [src.name] is making strange noises!</font>", 3, "<font color='red'>You hear sizzling electronics.</font>", 2)

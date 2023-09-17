@@ -119,7 +119,7 @@
 	S.blood_color = pref.blood_color
 
 	if(pref.real_species_id() == SPECIES_ID_CUSTOM)
-		if(flags & PREF_COPY_TO_IS_SPAWNING)
+		if(PREF_COPYING_TO_CHECK_IS_SPAWNING(flags))
 			//Statistics for this would be nice
 			var/english_traits = english_list(S.traits, and_text = ";", comma_text = ";")
 			log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet

@@ -80,7 +80,7 @@
 	dynamic_lighting = 1
 
 // The 'Dauntless'
-/obj/effect/overmap/visitable/ship/itglight
+/obj/overmap/entity/visitable/ship/itglight
 	name = "spacecraft"
 	desc = "Spacefaring vessel. Friendly IFF detected."
 	scanner_name = "ITG Dauntless"
@@ -100,7 +100,7 @@
 	skybox_pixel_x = 425
 	skybox_pixel_y = 200
 
-/obj/effect/overmap/visitable/ship/itglight/build_skybox_representation()
+/obj/overmap/entity/visitable/ship/itglight/build_skybox_representation()
 	..()
 	if(!cached_skybox_image)
 		return

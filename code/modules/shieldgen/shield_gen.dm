@@ -8,7 +8,7 @@
 	var/max_field_radius = 150
 	var/list/field = list()
 	density = 1
-	req_one_access = list(access_engine,access_captain,access_security)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_COMMAND_CAPTAIN,ACCESS_SECURITY_EQUIPMENT)
 	var/locked = 0
 	var/average_field_strength = 0
 	var/strengthen_rate = 0.2
@@ -27,7 +27,7 @@
 
 /obj/machinery/shield_gen/advanced
 	name = "advanced bubble shield generator"
-	desc = "A machine that generates a field of energy optimized for blocking meteorites when activated.  This version comes with a more efficent shield matrix."
+	desc = "A machine that generates a field of energy optimized for blocking meteorites when activated.  This version comes with a more efficient shield matrix."
 	energy_conversion_rate = 0.0012
 
 /obj/machinery/shield_gen/Initialize(mapload)
@@ -94,7 +94,7 @@
 /obj/machinery/shield_gen/attack_ai(user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/shield_gen/attack_hand(mob/user)
+/obj/machinery/shield_gen/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN))
 		return
 	interact(user)

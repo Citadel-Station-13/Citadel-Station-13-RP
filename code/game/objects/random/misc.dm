@@ -66,7 +66,7 @@
 /obj/random/technology_scanner/item_to_spawn()
 	return pick(prob(5);/obj/item/t_scanner,
 				prob(2);/obj/item/radio,
-				prob(5);/obj/item/analyzer)
+				prob(5);/obj/item/atmos_analyzer)
 
 /obj/random/powercell
 	name = "random powercell"
@@ -317,6 +317,21 @@
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/monkey,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/corgi,
 				prob(1);/obj/item/reagent_containers/food/snacks/xenomeat)
+
+/obj/random/meat/no_sapient
+	name = "random meat"
+	desc = "This is a random slab of meat."
+	icon = 'icons/obj/food.dmi'
+	icon_state = "meat"
+
+/obj/random/meat/no_sapient/item_to_spawn()
+	return pick(prob(60);/obj/item/reagent_containers/food/snacks/meat,
+				prob(20);/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+				prob(10);/obj/item/reagent_containers/food/snacks/carpmeat,
+				prob(5);/obj/item/reagent_containers/food/snacks/bearmeat,
+				prob(1);/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
+				prob(1);/obj/item/reagent_containers/food/snacks/meat/monkey,
+				prob(1);/obj/item/reagent_containers/food/snacks/meat/corgi)
 
 /obj/random/material //Random materials for building stuff
 	name = "random material"
@@ -816,6 +831,8 @@
 		prob(2);/obj/item/material/twohanded/fireaxe,
 		prob(2);/obj/item/gun/ballistic/luger/brown,
 		prob(2);/obj/item/gun/launcher/crossbow,
+		prob(1);/obj/item/gun/energy/plasma,
+		prob(1);/obj/item/gun/energy/plasma/pistol,
 		// prob(1);/obj/item/gun/ballistic/automatic/battlerifle, // Too OP
 		prob(1);/obj/item/gun/ballistic/deagle/gold,
 		prob(1);/obj/item/gun/ballistic/automatic/lmg/mg42,
@@ -859,12 +876,12 @@
 		prob(4);/obj/item/ammo_magazine/m9mmt,
 		prob(4);/obj/item/ammo_magazine/m57x28mmp90,
 		prob(4);/obj/item/ammo_magazine/m10mm,
-		prob(4);/obj/item/ammo_magazine/m545/small,
+		prob(4);/obj/item/ammo_magazine/m556/small,
 		prob(3);/obj/item/ammo_magazine/clip/c10mm,
 		prob(3);/obj/item/ammo_magazine/clip/c44,
 		prob(3);/obj/item/ammo_magazine/s44,
 		prob(3);/obj/item/ammo_magazine/m762,
-		prob(3);/obj/item/ammo_magazine/m545,
+		prob(3);/obj/item/ammo_magazine/m556,
 		prob(3);/obj/item/cell/device/weapon,
 		prob(2);/obj/item/ammo_magazine/m44,
 		prob(2);/obj/item/ammo_magazine/s357,

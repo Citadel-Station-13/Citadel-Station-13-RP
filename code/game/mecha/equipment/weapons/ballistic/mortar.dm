@@ -8,7 +8,7 @@
 	fire_volume = 100
 	projectiles = 3
 	deviation = 0.6
-	projectile = /obj/item/projectile/arc/fragmentation/mortar
+	projectile = /obj/projectile/arc/fragmentation/mortar
 	projectile_energy_cost = 600
 
 	step_delay = 2

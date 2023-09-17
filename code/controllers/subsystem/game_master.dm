@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(gamemaster)
 		var/datum/gm_action/choice = pickweight(weighted_actions)
 		if(choice)
 			log_debug(SPAN_DEBUG("[choice.name] was chosen by the Game Master, and is now being ran."))
-			INVOKE_ASYNC(src, .proc/run_action, choice)
+			INVOKE_ASYNC(src, PROC_REF(run_action), choice)
 
 /datum/controller/subsystem/gamemaster/proc/run_action(var/datum/gm_action/action)
 	action.set_up()

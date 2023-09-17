@@ -85,6 +85,12 @@
 	light_power = 1
 	light_color = "#FF0D00"
 
+/obj/effect/projectile/tracer/secutorkill
+	icon_state = "beam"
+	light_range = 2
+	light_power = 0.5
+	light_color = "#BF2F4B"
+
 /obj/effect/projectile/tracer/darkmatter
 	icon_state = "darkb"
 	light_range = 2

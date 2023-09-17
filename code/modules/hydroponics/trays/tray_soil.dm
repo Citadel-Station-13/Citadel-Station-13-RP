@@ -63,3 +63,7 @@
 		if(plant.invisibility == INVISIBILITY_MAXIMUM)
 			plant.invisibility = initial(plant.invisibility)
 	..()
+
+/obj/machinery/portable_atmospherics/hydroponics/soil/ashlander
+	name = "ashen soil"
+	hostile_soil = 1

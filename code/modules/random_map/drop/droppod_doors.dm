@@ -13,7 +13,7 @@
 /obj/structure/droppod_door/Initialize(mapload, autoopen = FALSE)
 	. = ..()
 	if(autoopen)
-		addtimer(CALLBACK(src, .proc/deploy), 10 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(deploy)), 10 SECONDS)
 
 /obj/structure/droppod_door/attack_ai(var/mob/user)
 	if(!user.Adjacent(src))
@@ -23,7 +23,7 @@
 /obj/structure/droppod_door/attack_generic(var/mob/user)
 	attack_hand(user)
 
-/obj/structure/droppod_door/attack_hand(var/mob/user)
+/obj/structure/droppod_door/attack_hand(mob/user, list/params)
 	if(deploying) return
 	to_chat(user, "<span class='danger'>You prime the explosive bolts. Better get clear!</span>")
 	sleep(30)

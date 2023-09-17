@@ -14,7 +14,7 @@
 	/// Associative list of paths and their chances. path = straws in the lot
 	var/list/harvest_results
 
-/mob/living/simple_mob/examine(mob/user)
+/mob/living/simple_mob/examine(mob/user, dist)
 	. = ..()
 	if(stat != DEAD && user && harvest_tool && (get_dist(user, src) <= 3))
 		. += SPAN_NOTICE("\The [src] can be [harvest_verb] with a [initial(harvest_tool.name)] every [round(harvest_cooldown, 0.1)] minutes.")

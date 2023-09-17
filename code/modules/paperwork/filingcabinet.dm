@@ -61,7 +61,7 @@
 	else
 		to_chat(user, SPAN_NOTICE("You can't put [P] in [src]!"))
 
-/obj/structure/filingcabinet/attack_hand(mob/user as mob)
+/obj/structure/filingcabinet/attack_hand(mob/user, list/params)
 	if(contents.len <= 0)
 		to_chat(user, SPAN_NOTICE("\The [src] is empty."))
 		return
@@ -83,7 +83,7 @@
 			return
 	to_chat(user, SPAN_NOTICE("You find nothing in [src]."))
 
-/obj/structure/filingcabinet/ui_state(mob/user)
+/obj/structure/filingcabinet/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/structure/filingcabinet/ui_interact(mob/user, datum/tgui/ui)
@@ -150,7 +150,7 @@
 			virgin = 0	//tabbing here is correct- it's possible for people to try and use it
 						//before the records have been generated, so we do this inside the loop.
 
-/obj/structure/filingcabinet/security/attack_hand()
+/obj/structure/filingcabinet/security/attack_hand(mob/user, list/params)
 	populate()
 	..()
 
@@ -187,7 +187,7 @@
 			virgin = 0	//tabbing here is correct- it's possible for people to try and use it
 						//before the records have been generated, so we do this inside the loop.
 
-/obj/structure/filingcabinet/medical/attack_hand()
+/obj/structure/filingcabinet/medical/attack_hand(mob/user, list/params)
 	populate()
 	..()
 

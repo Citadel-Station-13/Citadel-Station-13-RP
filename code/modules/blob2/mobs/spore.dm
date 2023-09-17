@@ -89,8 +89,7 @@
 	is_infesting = TRUE
 	if(H.wear_suit)
 		var/obj/item/clothing/suit/A = H.wear_suit
-		if(A.armor && A.armor["melee"])
-			maxHealth += A.armor["melee"] //That zombie's got armor, I want armor!
+		maxHealth += A.fetch_armor().raw(ARMOR_MELEE) * 100 //That zombie's got armor, I want armor!
 
 	maxHealth += 40
 	health = maxHealth

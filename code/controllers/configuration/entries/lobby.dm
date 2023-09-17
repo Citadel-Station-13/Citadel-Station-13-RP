@@ -17,3 +17,18 @@
 	default = 0 //0 means disabled
 	integer = TRUE
 	min_val = 0
+
+/// Enforce OOC notes
+/datum/config_entry/flag/enforce_ooc_notes
+
+/// Enforce flavortext
+/datum/config_entry/flag/enforce_flavor_text
+
+/datum/config_entry/string/community_shortname
+
+/datum/config_entry/string/community_link
+
+/datum/config_entry/string/tagline
+	default = "<br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>"
+
+/datum/config_entry/flag/usetaglinestrings

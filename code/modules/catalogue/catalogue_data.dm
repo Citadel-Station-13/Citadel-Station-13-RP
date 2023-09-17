@@ -296,21 +296,23 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 
 /datum/category_item/catalogue/information/organization/New()
 	..()
-	if(datum_to_copy)
-		// I'd just access the loremaster object but it might not exist because its ugly.
-		var/datum/lore/organization/O = new datum_to_copy()
-		// I would also change the name based on the org datum but changing the name messes up indexing in some lists in the category/collection object attached to us.
+	spawn(-1)
+		UNTIL(SSlegacy_lore.initialized)
+		if(datum_to_copy)
+			// I'd just access the loremaster object but it might not exist because its ugly.
+			var/datum/lore/organization/O = new datum_to_copy()
+			// I would also change the name based on the org datum but changing the name messes up indexing in some lists in the category/collection object attached to us.
 
-		// Now lets combine the data in the datum for a slightly more presentable entry.
-		var/constructed_desc = ""
+			// Now lets combine the data in the datum for a slightly more presentable entry.
+			var/constructed_desc = ""
 
-		if(O.motto)
-			constructed_desc += "<center><b><i>\"[O.motto]\"</i></b></center><br><br>"
+			if(O.motto)
+				constructed_desc += "<center><b><i>\"[O.motto]\"</i></b></center><br><br>"
 
-		constructed_desc += O.desc
+			constructed_desc += O.desc
 
-		desc = constructed_desc
-		qdel(O)
+			desc = constructed_desc
+			qdel(O)
 
 /datum/category_item/catalogue/information/organization/nanotrasen
 	name = "TSC - NanoTrasen Incorporated"
@@ -429,6 +431,24 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 /datum/category_item/catalogue/anomalous/precursor_b/precursor_b_basic
 	name = "Precursors - Precursor Group Beta"
 
+/datum/category_item/catalogue/anomalous/scorian_religion
+	name = "Scorian Religion"
+	desc = "To date, anthropologists and NanoTrasen researchers have been unable to fully decipher \
+	the Scorian language. A fusion of pictographs and script, much of the modern conception of Ashlander \
+	religious practices comes from diagrams and depictions found on carved sandstone monuments and cave \
+	paintings. The Scorian people appear to be monotheistic, with different tribes worshipping members of \
+	a pantheon known only to researchers as the 'Buried Ones'.\
+	<br><br>\
+	With the return of Ashlanders to the surface of Surt, archaeologists have confirmed several assumptions \
+	about the existence of a religious class within Scorian society. However, multiple hypotheses regarding \
+	religious rites and rituals have also been proven incorrect. The Scorian people are naturally insular and \
+	distrusting of outside observers. This distrust, paired with the existing language barrier, has prevented \
+	any further understanding of Scorian religion to develop. Therefore, many records in this entry may be \
+	disproven at a later date."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(
+		/datum/category_item/catalogue/anomalous/scorian_religion
+	)
 
 /datum/category_item/catalogue/material
 

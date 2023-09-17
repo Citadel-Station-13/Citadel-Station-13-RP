@@ -12,10 +12,7 @@
 	icon_state = "distiller"
 	var/base_state	// The string var used in update icon for overlays, either set manually or initialized.
 
-	power_rating = 3000
-	power_losses = 240
-
-	var/on = FALSE
+	var/power_rating = 3000
 
 	var/target_temp = T20C
 
@@ -108,7 +105,7 @@
 
 	..()
 
-/obj/machinery/portable_atmospherics/powered/reagent_distillery/attack_hand(mob/user)
+/obj/machinery/portable_atmospherics/powered/reagent_distillery/attack_hand(mob/user, list/params)
 	var/list/options = list()
 	options["examine"] = radial_examine
 	options["use"] = radial_use
@@ -210,7 +207,7 @@
 	update_icon()
 
 /obj/machinery/portable_atmospherics/powered/reagent_distillery/use_power(var/amount, var/chan = -1)
-	last_power_draw = amount
+	last_power_draw_legacy = amount
 	if(use_cell && cell && cell.charge)
 		var/needed = DYNAMIC_W_TO_CELL_UNITS(amount, 1)
 		needed -= cell.use(needed)

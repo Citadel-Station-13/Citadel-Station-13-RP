@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(persist)
 			continue
 
 		// Try and detect job and department of mob
-		var/datum/job/J = detect_job(M)
+		var/datum/role/job/J = detect_job(M)
 		if(!istype(J) || !J.pto_type || !J.timeoff_factor)
 			if (MC_TICK_CHECK)
 				return

@@ -28,16 +28,13 @@ SUBSYSTEM_DEF(xenoarch)
 	var/list/faster = list()
 	var/start
 	for(var/i in 1 to world.maxz)
-		faster += (i in GLOB.using_map.xenoarch_exempt_levels)
+		faster += (i in (LEGACY_MAP_DATUM).xenoarch_exempt_levels)
 
 	var/list/digsites_to_make = list()
 	start = world.timeofday
 	for(var/turf/simulated/mineral/M in world)
 		if(!M.density || faster[M.z])
 			continue
-
-		if(isnull(M.geologic_data))
-			M.geologic_data = new /datum/geosample(M)
 
 		if(!prob(XENOARCH_SPAWN_CHANCE))
 			continue

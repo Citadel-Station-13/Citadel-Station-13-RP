@@ -9,7 +9,7 @@
 	item_icons = list() // No in-hand sprites (for now, anyway, we could totally add some)
 	pixel_y = 0			// Override value from parent.
 
-/obj/item/holder/micro/examine(mob/user)
+/obj/item/holder/micro/examine(mob/user, dist)
 	for(var/mob/living/M in contents)
 		M.examine(user)
 
@@ -22,7 +22,10 @@
 	for(var/mob/living/carbon/human/O in contents)
 		O.request_strip_menu(usr)
 
-/obj/item/holder/micro/attack_self(var/mob/living/user)
+/obj/item/holder/micro/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	for(var/mob/living/carbon/human/M in contents)
 		M.help_shake_act(user)
 

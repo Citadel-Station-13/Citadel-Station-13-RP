@@ -32,18 +32,18 @@
 	name = "beam lock"
 	desc = "An esoteric object that responds to high intensity light."
 
-	var/projectile_key = /obj/item/projectile/beam
+	var/projectile_key = /obj/projectile/beam
 	var/timed = 0
 	var/timing = 0
 	var/time_limit = 1500 // In ticks. Ten is one second.
 
 	interaction_message = "<span class='notice'>The object remains inert to your touch.</span>"
 
-/obj/structure/prop/lock/projectile/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/prop/lock/projectile/bullet_act(var/obj/projectile/Proj)
 	if(!istype(Proj, projectile_key) || timing)
 		return
 
-	if(istype(Proj, /obj/item/projectile/beam/heavylaser/cannon) || istype(Proj, /obj/item/projectile/beam/emitter) || (Proj.damage >= 80 && Proj.damtype == BURN))
+	if(istype(Proj, /obj/projectile/beam/heavylaser/cannon) || istype(Proj, /obj/projectile/beam/emitter) || (Proj.damage >= 80 && Proj.damtype == BURN))
 		toggle_lock()
 		visible_message("<span class='notice'>\The [src] [enabled ? "disengages" : "engages"] its locking mechanism.</span>")
 

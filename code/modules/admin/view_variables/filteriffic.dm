@@ -4,7 +4,7 @@
 /datum/filter_editor/New(atom/target)
 	src.target = target
 
-/datum/filter_editor/ui_state(mob/user)
+/datum/filter_editor/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.admin_state
 
 /datum/filter_editor/ui_interact(mob/user, datum/tgui/ui)

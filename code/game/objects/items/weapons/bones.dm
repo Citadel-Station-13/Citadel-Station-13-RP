@@ -4,7 +4,7 @@
 	desc = "A non-descript bone. It's so old and worn you can barely tell which part of the body it's from."
 	icon = 'icons/obj/bones.dmi'
 	icon_state = "bone"
-	force = 5
+	damage_force = 5
 	throw_force = 6
 	item_state = "bone"
 	w_class = ITEMSIZE_SMALL
@@ -18,7 +18,7 @@
 
 /obj/item/bone/skull/attackby(var/obj/item/material/knife/D, mob/user as mob)
 	to_chat(user, "<span class='notice'>You hack chunks out of \the [src] with \the [D].  It might fit on top of your head.</span>")
-	user.put_in_hands(new /obj/item/clothing/head/skull)
+	user.put_in_hands(new /obj/item/clothing/mask/skull)
 	qdel(src)
 	return ..()
 

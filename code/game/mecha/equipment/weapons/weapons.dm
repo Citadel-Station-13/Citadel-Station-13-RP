@@ -69,8 +69,8 @@
 	return
 
 /obj/item/mecha_parts/mecha_equipment/weapon/proc/Fire(atom/A, atom/target, params)
-	if(istype(A, /obj/item/projectile))	// Sanity.
-		var/obj/item/projectile/P = A
+	if(istype(A, /obj/projectile))	// Sanity.
+		var/obj/projectile/P = A
 		P.dispersion = deviation
 		process_accuracy(P, chassis.occupant, target)
 		P.launch_projectile_from_turf(target, chassis.get_pilot_zone_sel(), chassis.occupant, params)
@@ -79,7 +79,7 @@
 		AM.throw_at_old(target, 7, 1, chassis)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/proc/process_accuracy(obj/projectile, mob/living/user, atom/target)
-	var/obj/item/projectile/P = projectile
+	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return
 

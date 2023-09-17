@@ -29,6 +29,7 @@
 	if(spell_masters && spell_masters.len)
 		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
 			spell_master.update_spells(0, src)
+	ability_master?.update_abilities(0, src)
 
 /**
  * processes physical life processes like being on fire

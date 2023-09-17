@@ -26,7 +26,7 @@
 	else
 		return ..()
 
-/obj/item/reagent_containers/food/drinks/glass2/attack_hand(mob/user as mob)
+/obj/item/reagent_containers/food/drinks/glass2/attack_hand(mob/user, list/params)
 	if(src != user.get_inactive_held_item())
 		return ..()
 

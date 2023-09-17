@@ -80,7 +80,7 @@
 	// Good to go.
 	return TRUE
 
-/obj/item/computer_hardware/examine(mob/user)
+/obj/item/computer_hardware/examine(mob/user, dist)
 	. = ..()
 	if(damage > damage_failure)
 		. += SPAN_DANGER("It seems to be severely damaged!")

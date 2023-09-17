@@ -18,11 +18,11 @@ var/global/list/weavable_items = list()
 /obj/effect/weaversilk/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
 
-	if(W.force)
+	if(W.damage_force)
 		visible_message("<span class='warning'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 		qdel(src)
 
-/obj/effect/weaversilk/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/weaversilk/bullet_act(var/obj/projectile/Proj)
 	..()
 	if(Proj.get_structure_damage())
 		qdel(src)
@@ -34,7 +34,7 @@ var/global/list/weavable_items = list()
 	if(damage)
 		qdel(src)
 
-/obj/effect/weaversilk/attack_hand(mob/user as mob)
+/obj/effect/weaversilk/attack_hand(mob/user, list/params)
 	..()
 	if(user.a_intent == INTENT_HARM)
 		to_chat(user,"<span class='warning'>You easily tear down [name].</span>")
@@ -61,8 +61,9 @@ var/global/list/weavable_items = list()
 /obj/effect/weaversilk/wall/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mover
-		if(H.species.is_weaver)
-			return TRUE
+		for(var/F in H.contents)
+			if(istype(F, /obj/item/organ/internal/weaver))
+				return TRUE
 	..()
 
 /obj/structure/bed/double/weaversilk_nest
@@ -80,7 +81,7 @@ var/global/list/weavable_items = list()
 		return
 	..()
 
-/obj/structure/bed/double/weaversilk_nest/attack_hand(mob/user as mob)
+/obj/structure/bed/double/weaversilk_nest/attack_hand(mob/user, list/params)
 	..()
 	if(user.a_intent == INTENT_HARM && !has_buckled_mobs())
 		to_chat(user,"<span class='warning'>You easily tear down [name].</span>")
@@ -98,8 +99,10 @@ var/global/list/weavable_items = list()
 		return
 	if(istype(AM, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = AM
-		if(H.species.is_weaver)
-			return
+		for(var/F in H.contents)
+			if(istype(F, /obj/item/organ/internal/weaver))
+				return
+
 	if(isliving(AM) && trap_active)
 		var/mob/living/L = AM
 		if(L.m_intent == MOVE_INTENT_RUN)
@@ -109,7 +112,7 @@ var/global/list/weavable_items = list()
 				"<b>You hear a squishy noise!</b>"
 				)
 			buckle_mob(L, BUCKLE_OP_FORCE)
-			L.Stun(1)
+			L.afflict_stun(20 * 1)
 			to_chat(L, "<span class='danger'>The sticky fibers of \the [src] ensnare, trapping you in place!</span>")
 			trap_active = FALSE
 			desc += " Actually, it looks like it's been all spent."
@@ -129,6 +132,6 @@ var/global/list/weavable_items = list()
 	desc = "A webbed cocoon that completely restrains the wearer."
 	icon_state = "web_bindings"
 	item_state = "web_bindings_mob"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 

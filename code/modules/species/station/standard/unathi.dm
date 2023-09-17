@@ -1,5 +1,6 @@
 /datum/species/unathi
 	uid = SPECIES_ID_UNATHI
+	id = SPECIES_ID_UNATHI
 	name = SPECIES_UNATHI
 	category = "Unathi"
 	name_plural = SPECIES_UNATHI
@@ -46,7 +47,6 @@
 
 	max_age = 260
 
-	economic_modifier = 10
 
 	cold_level_1 = 280
 	cold_level_2 = 220
@@ -75,7 +75,6 @@
 	flesh_color = "#34AF10"
 	blood_color = "#f24b2e"
 	base_color  = "#066000"
-	organs_icon = 'icons/mob/species/unathi/organs.dmi'
 
 	reagent_tag = IS_UNATHI
 
@@ -132,6 +131,9 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 
 /datum/species/unathi/equip_survival_gear(mob/living/carbon/human/H)

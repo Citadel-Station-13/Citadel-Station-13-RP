@@ -26,6 +26,8 @@
 #define NO_DEFIB (1<<11)
 ///(Phoron) Contamination doesnt affect them.
 #define CONTAMINATION_IMMUNE (1<<12)
+/// Cannot be ignited
+#define NO_IGNITE (1<<13)
 
 DEFINE_BITFIELD(species_flags, list(
 	BITFIELD(NO_MINOR_CUT),
@@ -52,12 +54,15 @@ DEFINE_BITFIELD(species_flags, list(
 #define SPECIES_FLUFF_PICKY_CITIZENSHIP (1<<2)
 /// deny religions that don't specifically whitelist us
 #define SPECIES_FLUFF_PICKY_RELIGION (1<<3)
+/// deny cultures that don't specifically whitelist us
+#define SPECIES_FLUFF_PICKY_CULTURE (1<<3)
 
 DEFINE_BITFIELD(species_fluff_flags, list(
 	BITFIELD(SPECIES_FLUFF_PICKY_FACTION),
 	BITFIELD(SPECIES_FLUFF_PICKY_ORIGIN),
 	BITFIELD(SPECIES_FLUFF_PICKY_CITIZENSHIP),
 	BITFIELD(SPECIES_FLUFF_PICKY_RELIGION),
+	BITFIELD(SPECIES_FLUFF_PICKY_CULTURE),
 ))
 
 //! species_spawn_flags
@@ -72,6 +77,8 @@ DEFINE_BITFIELD(species_fluff_flags, list(
 #define SPECIES_SPAWN_SECRET (1<<3)
 /// Cannot normally spawn; something must pass in PREFS_COPY_TO_NO_CHECK_SPECIES to spawn checks to use!
 #define SPECIES_SPAWN_RESTRICTED (1<<4)
+/// if set, check species.id in WL, otherwise use uid
+#define SPECIES_SPAWN_WHITELIST_FLEXIBLE (1<<5)
 //? FLAGS ABOVE ARE RELEVANT TO UI.
 //? If you change them, change necessary TGUI too.
 //? Current TGUI that uses this:
@@ -92,6 +99,7 @@ DEFINE_BITFIELD(species_spawn_flags, list(
 	BITFIELD(SPECIES_SPAWN_NO_FBP_CONSTRUCT),
 	BITFIELD(SPECIES_SPAWN_NO_FBP_SETUP),
 	BITFIELD(SPECIES_SPAWN_NO_ROBOTIC_ORGANS),
+	BITFIELD(SPECIES_SPAWN_WHITELIST_FLEXIBLE),
 ))
 
 //! species_appearance_flags

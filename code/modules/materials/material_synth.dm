@@ -4,13 +4,13 @@
 	uses_charge = 1
 	charge_costs = list(1000)
 	gender = NEUTER
-	matter = null // Don't shove it in the autholathe.
+	materials = null // Don't shove it in the autholathe.
 
 /obj/item/stack/material/cyborg/Initialize(mapload, new_amount, merge)
 	. = ..()
-	name = "[material.display_name] synthesiser"
+	name = "[material.display_name] synthesizer"
 	desc = "A device that synthesises [material.display_name]."
-	matter = null
+	materials = null
 
 /obj/item/stack/material/cyborg/update_strings()
 	return

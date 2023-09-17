@@ -8,7 +8,7 @@
 	var/my_vehicle_type
 	var/paint_color = "#666666"
 
-/obj/structure/vehiclecage/examine(mob/user)
+/obj/structure/vehiclecage/examine(mob/user, dist)
 	. = ..()
 	if(my_vehicle)
 		. += "<span class='notice'>It seems to contain \the [my_vehicle].</span>"
@@ -23,7 +23,7 @@
 			load_vehicle(I)
 	update_icon()
 
-/obj/structure/vehiclecage/attack_hand(mob/user as mob)
+/obj/structure/vehiclecage/attack_hand(mob/user, list/params)
 	to_chat(user, "<span class='notice'>You need a wrench to take this apart!</span>")
 	return
 

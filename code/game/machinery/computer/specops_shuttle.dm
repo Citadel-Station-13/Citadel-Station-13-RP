@@ -19,7 +19,7 @@ var/specops_shuttle_timeleft = 0
 	icon_keyboard = "security_key"
 	icon_screen = "syndishuttle"
 	light_color = "#00ffff"
-	req_access = list(access_cent_specops)
+	req_access = list(ACCESS_CENTCOM_ERT)
 //	req_access = list(ACCESS_CENT_SPECOPS)
 	var/temp = null
 	var/hacked = 0
@@ -77,7 +77,7 @@ var/specops_shuttle_timeleft = 0
 		var/turf/D = locate(T.x, throwy - 1, 1)
 					//var/turf/E = get_step(D, SOUTH)
 		for(var/atom/movable/AM as mob|obj in T)
-			AM.Move(D)
+			AM.abstract_move(D)
 		if(istype(T, /turf/simulated))
 			qdel(T)
 
@@ -91,7 +91,7 @@ var/specops_shuttle_timeleft = 0
 
 	for(var/turf/T in get_area_turfs(end_location) )
 		var/mob/M = locate(/mob) in T
-		to_chat(M, "<span class='notice'>You have arrived at [GLOB.using_map.boss_name]. Operation has ended!</span>")
+		to_chat(M, "<span class='notice'>You have arrived at [(LEGACY_MAP_DATUM).boss_name]. Operation has ended!</span>")
 
 	specops_shuttle_at_station = 0
 
@@ -226,7 +226,7 @@ var/specops_shuttle_timeleft = 0
 		var/turf/D = locate(T.x, throwy - 1, 1)
 					//var/turf/E = get_step(D, SOUTH)
 		for(var/atom/movable/AM as mob|obj in T)
-			AM.Move(D)
+			AM.abstract_move(D)
 		if(istype(T, /turf/simulated))
 			qdel(T)
 
@@ -255,7 +255,7 @@ var/specops_shuttle_timeleft = 0
 /obj/machinery/computer/specops_shuttle/emag_act(var/remaining_charges, var/mob/user)
 	to_chat(user, "<span class='notice'>The electronic systems in this console are far too advanced for your primitive hacking peripherals.</span>")
 
-/obj/machinery/computer/specops_shuttle/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/specops_shuttle/attack_hand(mob/user, list/params)
 	if(!allowed(user))
 		to_chat(user, "<span class='warning'>Access Denied.</span>")
 		return
@@ -288,14 +288,14 @@ var/specops_shuttle_timeleft = 0
 		if(!specops_shuttle_at_station|| specops_shuttle_moving_to_station || specops_shuttle_moving_to_centcom) return
 
 		if (!specops_can_move())
-			to_chat(usr, "<span class='notice'>[GLOB.using_map.boss_name] will not allow the Special Operations shuttle to return yet.</span>")
+			to_chat(usr, "<span class='notice'>[(LEGACY_MAP_DATUM).boss_name] will not allow the Special Operations shuttle to return yet.</span>")
 			if(world.timeofday <= specops_shuttle_timereset)
 				if (((world.timeofday - specops_shuttle_timereset)/10) > 60)
 					to_chat(usr, "<span class='notice'>[-((world.timeofday - specops_shuttle_timereset)/10)/60] minutes remain!</span>")
 				to_chat(usr, "<span class='notice'>[-(world.timeofday - specops_shuttle_timereset)/10] seconds remain!</span>")
 			return
 
-		to_chat(usr, "<span class='notice'>The Special Operations shuttle will arrive at [GLOB.using_map.boss_name] in [(SPECOPS_MOVETIME/10)] seconds.</span>")
+		to_chat(usr, "<span class='notice'>The Special Operations shuttle will arrive at [(LEGACY_MAP_DATUM).boss_name] in [(SPECOPS_MOVETIME/10)] seconds.</span>")
 
 		temp += "Shuttle departing.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 		updateUsrDialog()

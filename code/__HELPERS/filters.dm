@@ -22,6 +22,14 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 			"size" = 1
 		)
 	),
+	"bloom" = list(
+		"defaults" = list(
+			"threshold" = "#ffffff",
+			"size" = 0,
+			"offset" = 0,
+			"alpha" = 255,
+		)
+	),
 	/* Not supported because making a proper matrix editor on the frontend would be a huge dick pain.
 		Uncomment if you ever implement it
 	"color" = list(
@@ -163,6 +171,17 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 		.["y"] = y
 	if(!isnull(size))
 		.["size"] = size
+
+/proc/bloom_filter(threshold, size, offset, alpha)
+	. = list("type" = "bloom")
+	if(!isnull(threshold))
+		.["threshold"] = threshold
+	if(!isnull(size))
+		.["size"] = size
+	if(!isnull(offset))
+		.["offset"] = offset
+	if(!isnull(alpha))
+		.["alpha"] = alpha
 
 /proc/color_matrix_filter(matrix/in_matrix, space)
 	. = list("type" = "color")

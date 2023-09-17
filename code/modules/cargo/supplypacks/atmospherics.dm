@@ -28,6 +28,13 @@
 	container_type = /obj/structure/largecrate
 	contains = list(/obj/machinery/portable_atmospherics/canister/air)
 
+/datum/supply_pack/atmos/canister_helium
+	name = "Helium canister"
+	cost = 10
+	container_name = "Helium canister crate"
+	container_type = /obj/structure/largecrate
+	contains = list(/obj/machinery/portable_atmospherics/canister/helium)
+
 /datum/supply_pack/atmos/canister_oxygen
 	name = "Oxygen canister"
 	cost = 15
@@ -47,7 +54,7 @@
 	cost = 60
 	container_name = "Phoron gas canister crate"
 	container_type = /obj/structure/closet/crate/secure/large
-	access = access_atmospherics
+	access = ACCESS_ENGINEERING_ATMOS
 	contains = list(/obj/machinery/portable_atmospherics/canister/phoron)
 
 /datum/supply_pack/atmos/canister_nitrous_oxide
@@ -55,7 +62,7 @@
 	cost = 15
 	container_name = "N2O gas canister crate"
 	container_type = /obj/structure/closet/crate/secure/large
-	access = access_atmospherics
+	access = ACCESS_ENGINEERING_ATMOS
 	contains = list(/obj/machinery/portable_atmospherics/canister/nitrous_oxide)
 
 /datum/supply_pack/atmos/canister_carbon_dioxide
@@ -63,7 +70,7 @@
 	cost = 15
 	container_name = "CO2 canister crate"
 	container_type = /obj/structure/closet/crate/secure/large
-	access = access_atmospherics
+	access = ACCESS_ENGINEERING_ATMOS
 	contains = list(/obj/machinery/portable_atmospherics/canister/carbon_dioxide)
 
 /datum/supply_pack/atmos/air_dispenser
@@ -72,7 +79,7 @@
 	cost = 25
 	container_type = /obj/structure/closet/crate/secure/large
 	container_name = "Pipe Dispenser Crate"
-	access = access_atmospherics
+	access = ACCESS_ENGINEERING_ATMOS
 
 /datum/supply_pack/atmos/disposals_dispenser
 	contains = list(/obj/machinery/pipedispenser/disposal/orderable)
@@ -80,7 +87,7 @@
 	cost = 25
 	container_type = /obj/structure/closet/crate/secure/large
 	container_name = "Disposal Dispenser Crate"
-	access = access_atmospherics
+	access = ACCESS_ENGINEERING_ATMOS
 
 /datum/supply_pack/atmos/internals
 	name = "Internals crate"

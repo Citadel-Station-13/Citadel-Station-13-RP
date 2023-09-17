@@ -94,7 +94,7 @@
 		set_ambient_light(COLOR_WHITE)
 		return
 
-	if (ambient_light)
+	if (TURF_IS_AMBIENT_LIT_UNSAFE(src))
 		clear_ambient_light()
 
 
@@ -156,7 +156,7 @@
 	. = ..()
 
 	if(edge)
-		addtimer(CALLBACK(src, .proc/on_atom_edge_touch, A), 0)
+		addtimer(CALLBACK(src, PROC_REF(on_atom_edge_touch), A), 0)
 
 /turf/space/proc/on_atom_edge_touch(atom/movable/AM)
 	if(!QDELETED(AM) && (AM.loc == src))

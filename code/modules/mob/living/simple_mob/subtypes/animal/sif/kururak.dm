@@ -48,24 +48,17 @@
 	base_attack_cooldown = 2 SECONDS
 	attacktext = list("gouged", "bit", "cut", "clawed", "whipped")
 
-	armor = list(
+	armor_legacy_mob = list(
 		"melee" = 30,
+		"melee_soak" = 5,
 		"bullet" = 15,
+		"bullet_soak" = 5,
 		"laser" = 5,
+		"laser_soak" = 5,
 		"energy" = 0,
 		"bomb" = 10,
 		"bio" = 100,
 		"rad" = 100
-		)
-
-	armor_soak = list(
-		"melee" = 5,
-		"bullet" = 5,
-		"laser" = 5,
-		"energy" = 0,
-		"bomb" = 0,
-		"bio" = 0,
-		"rad" = 0
 		)
 
 	say_list_type = /datum/say_list/kururak
@@ -109,7 +102,7 @@
 			var/mob/living/carbon/human/H = L
 			if(H.get_active_held_item())
 				var/obj/item/I = H.get_active_held_item()
-				if(I.force >= 1.20 * melee_damage_upper)
+				if(I.damage_force >= 1.20 * melee_damage_upper)
 					return TRUE
 		else if(istype(L, /mob/living/simple_mob))
 			var/mob/living/simple_mob/S = L

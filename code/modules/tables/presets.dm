@@ -178,6 +178,28 @@
 	reinforced = SSmaterials.get_material(/datum/material/steel)
 	return ..()
 
+/obj/structure/table/sandstone
+	icon_state = "stone_preview"
+	color = "#D9C179"
+
+	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
+	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
+
+/obj/structure/table/sandstone/Initialize(mapload)
+	material = SSmaterials.get_material(/datum/material/sandstone)
+	return ..()
+
+/obj/structure/table/bone
+	icon_state = "stone_preview"
+	color = "#e6dfc8"
+
+	smoothing_groups = (SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
+	canSmoothWith = (SMOOTH_GROUP_WOOD_TABLES)
+
+/obj/structure/table/bone/Initialize(mapload)
+	material = SSmaterials.get_material(/datum/material/bone)
+	return ..()
+
 //BENCH PRESETS
 /obj/structure/table/bench/standard
 	icon_state = "plain_preview"
@@ -266,6 +288,22 @@
 
 /obj/structure/table/bench/glass/Initialize(mapload)
 	material = SSmaterials.get_material(/datum/material/glass)
+	return ..()
+
+/obj/structure/table/bench/sandstone
+	icon_state = "stone_preview"
+	color = "#D9C179"
+
+/obj/structure/table/bench/sandstone/Initialize(mapload)
+	material = SSmaterials.get_material(/datum/material/sandstone)
+	return ..()
+
+/obj/structure/table/bench/bone
+	icon_state = "stone_preview"
+	color = "#e6dfc8"
+
+/obj/structure/table/bench/bone/Initialize(mapload)
+	material = SSmaterials.get_material(/datum/material/bone)
 	return ..()
 
 /*

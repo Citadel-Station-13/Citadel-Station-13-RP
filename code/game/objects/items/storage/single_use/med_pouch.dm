@@ -41,7 +41,7 @@
 	add_overlay(cross_overlay)
 	icon_state = "pack[opened]"
 
-/* /obj/item/storage/single_use/med_pouch/examine(mob/user)
+/* /obj/item/storage/single_use/med_pouch/examine(mob/user, dist)
 	. = ..()
 	. += instructions
 */
@@ -51,6 +51,9 @@
 	desc += instructions
 
 /obj/item/storage/single_use/med_pouch/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	open(user)
 
 /*handled by single_use

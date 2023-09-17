@@ -11,7 +11,7 @@
 	return max(0, inc_damage)
 
 // Used for projectile impacts from bullet_act.
-/obj/item/mecha_parts/mecha_equipment/proc/handle_projectile_contact(var/obj/item/projectile/Proj, var/inc_damage = 0)
+/obj/item/mecha_parts/mecha_equipment/proc/handle_projectile_contact(var/obj/projectile/Proj, var/inc_damage = 0)
 	return max(0, inc_damage)
 
 // Used for on-movement actions.

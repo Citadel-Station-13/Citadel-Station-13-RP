@@ -3,7 +3,7 @@
 /datum/map_template/submap/level_specific/debrisfield
 	name = "Debris Field Content"
 	desc = "For seeding submaps in debris field"
-	prefix = "_maps/submaps/level_specific/debrisfield/"
+	prefix = "maps/submaps/level_specific/debrisfield/"
 
 /datum/map_template/submap/level_specific/debrisfield/asteroids1
 	name = "Asteroids 1"

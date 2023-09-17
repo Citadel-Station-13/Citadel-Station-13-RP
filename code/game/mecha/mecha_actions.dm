@@ -14,47 +14,47 @@
 
 /obj/mecha/proc/GrantActions(mob/living/user, human_occupant = 0)
 	if(human_occupant)
-		eject_action.Grant(user, src)
-	internals_action.Grant(user, src)
-	cycle_action.Grant(user, src)
-	lights_action.Grant(user, src)
-	stats_action.Grant(user, src)
-	strafing_action.Grant(user, src)//The defaults.
+		eject_action.grant(user, src)
+	internals_action.grant(user, src)
+	cycle_action.grant(user, src)
+	lights_action.grant(user, src)
+	stats_action.grant(user, src)
+	strafing_action.grant(user, src)//The defaults.
 
 	if(defence_mode_possible)
-		defence_action.Grant(user, src)
+		defence_action.grant(user, src)
 	if(overload_possible)
-		overload_action.Grant(user, src)
+		overload_action.grant(user, src)
 	if(smoke_possible)
-		smoke_action.Grant(user, src)
+		smoke_action.grant(user, src)
 	if(zoom_possible)
-		zoom_action.Grant(user, src)
+		zoom_action.grant(user, src)
 	if(thrusters_possible)
-		thrusters_action.Grant(user, src)
+		thrusters_action.grant(user, src)
 	if(phasing_possible)
-		phasing_action.Grant(user, src)
+		phasing_action.grant(user, src)
 	if(switch_dmg_type_possible)
-		switch_damtype_action.Grant(user, src)
+		switch_damtype_action.grant(user, src)
 	if(cloak_possible)
-		cloak_action.Grant(user, src)
+		cloak_action.grant(user, src)
 
 /obj/mecha/proc/RemoveActions(mob/living/user, human_occupant = 0)
 	if(human_occupant)
-		eject_action.Remove(user, src)
-	internals_action.Remove(user, src)
-	cycle_action.Remove(user, src)
-	lights_action.Remove(user, src)
-	stats_action.Remove(user, src)
-	strafing_action.Remove(user, src)
+		eject_action.remove(user, src)
+	internals_action.remove(user, src)
+	cycle_action.remove(user, src)
+	lights_action.remove(user, src)
+	stats_action.remove(user, src)
+	strafing_action.remove(user, src)
 
-	defence_action.Remove(user, src)
-	smoke_action.Remove(user, src)
-	zoom_action.Remove(user, src)
-	thrusters_action.Remove(user, src)
-	phasing_action.Remove(user, src)
-	switch_damtype_action.Remove(user, src)
-	overload_action.Remove(user, src)
-	cloak_action.Remove(user, src)
+	defence_action.remove(user, src)
+	smoke_action.remove(user, src)
+	zoom_action.remove(user, src)
+	thrusters_action.remove(user, src)
+	phasing_action.remove(user, src)
+	switch_damtype_action.remove(user, src)
+	overload_action.remove(user, src)
+	cloak_action.remove(user, src)
 
 
 //
@@ -62,11 +62,12 @@
 //
 
 /datum/action/innate/mecha
-	check_flags = AB_CHECK_RESTRAINED | AB_CHECK_STUNNED | AB_CHECK_ALIVE
+	check_flags = ACTION_CHECK_RESTRAINED | ACTION_CHECK_STUNNED | ACTION_CHECK_ALIVE
 	button_icon = 'icons/effects/actions_mecha.dmi'
 	var/obj/mecha/chassis
 
-/datum/action/innate/mecha/Grant(mob/living/L, obj/mecha/M)
+// todo: this is shitcode
+/datum/action/innate/mecha/grant(mob/living/T, obj/mecha/M)
 	if(M)
 		chassis = M
 	..()

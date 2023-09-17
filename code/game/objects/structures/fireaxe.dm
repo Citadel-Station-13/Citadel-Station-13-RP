@@ -46,7 +46,7 @@
 				return
 			else
 				playsound(user, 'sound/effects/Glasshit.ogg', 100, 1) //We don't want this playing every time
-			if(W.force < 15)
+			if(W.damage_force < 15)
 				to_chat(user, "<span class='notice'>The cabinet's protective glass glances off the hit.</span>")
 			else
 				hitstaken++
@@ -92,7 +92,7 @@
 			toggle_close_open()
 
 
-/obj/structure/fireaxecabinet/attack_hand(mob/user as mob)
+/obj/structure/fireaxecabinet/attack_hand(mob/user, list/params)
 	//var/hasaxe = 0	//Fuck this. Fuck everything about this. Who wrote this. Why.
 	//if(fireaxe)
 	//	hasaxe = 1
@@ -183,4 +183,4 @@
 	hasaxe = 0
 	if(fireaxe)
 		hasaxe = 1
-	icon_state = text("fireaxe[][][][]",hasaxe,open,hitstaken,smashed)
+	icon_state = "fireaxe[hasaxe][open][hitstaken][smashed]"

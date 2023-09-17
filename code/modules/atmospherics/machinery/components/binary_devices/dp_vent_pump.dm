@@ -107,8 +107,8 @@
 /obj/machinery/atmospherics/component/binary/dp_vent_pump/process(delta_time)
 	..()
 
-	last_power_draw = 0
-	last_flow_rate = 0
+	last_power_draw_legacy = 0
+	last_flow_rate_legacy = 0
 
 	if(machine_stat & (NOPOWER|BROKEN) || !use_power)
 		return 0
@@ -140,7 +140,7 @@
 					network2.update = 1
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 
 	return 1
@@ -199,9 +199,9 @@
 	if(frequency)
 		set_frequency(frequency)
 
-/obj/machinery/atmospherics/component/binary/dp_vent_pump/examine(mob/user)
+/obj/machinery/atmospherics/component/binary/dp_vent_pump/examine(mob/user, dist)
 	. = ..()
-	. += "A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W"
+	. += "A small gauge in the corner reads [round(last_flow_rate_legacy, 0.1)] L/s; [round(last_power_draw_legacy)] W"
 
 
 /obj/machinery/atmospherics/component/unary/vent_pump/power_change()

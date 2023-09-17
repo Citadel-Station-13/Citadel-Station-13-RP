@@ -2,26 +2,29 @@
 	name = "swarm drone module"
 	var/id
 
-/obj/item/robot_module/drone/swarm/Initialize(mapload)
+/obj/item/robot_module/drone/swarm/get_modules()
 	. = ..()
-	var/mob/living/silicon/robot/robot = loc
-	id = robot.idcard
-	src.modules += id
+	. |= list(
+		/obj/item/rcd/electric/mounted/borg/swarm,
+		/obj/item/flash/robot,
+		/obj/item/handcuffs/cable/tape/cyborg,
+		/obj/item/melee/baton/robot,
+		/obj/item/gun/energy/taser/mounted/cyborg/swarm,
+		/obj/item/matter_decompiler/swarm
+	)
 
-	src.modules += new /obj/item/rcd/electric/mounted/borg/swarm(src)
-	src.modules += new /obj/item/flash/robot(src)
-	src.modules += new /obj/item/handcuffs/cable/tape/cyborg(src)
-	src.modules += new /obj/item/melee/baton/robot(src)
-	src.modules += new /obj/item/gun/energy/taser/mounted/cyborg/swarm(src)
-	src.modules += new /obj/item/matter_decompiler/swarm(src)
+/obj/item/robot_module/drone/swarm/handle_special_module_init(mob/living/silicon/robot/robot)
+	. = ..()
+	id = robot.idcard
+	. += id
 
 /obj/item/robot_module/drone/swarm/ranged
 	name = "swarm gunner module"
 
-/obj/item/robot_module/drone/swarm/ranged/Initialize(mapload)
+/obj/item/robot_module/drone/swarm/ranged/get_modules()
 	. = ..()
-	src.modules += new /obj/item/gun/energy/xray/swarm(src)
+	. |= /obj/item/gun/energy/xray/swarm
 
-/obj/item/robot_module/drone/swarm/melee/Initialize(mapload)
+/obj/item/robot_module/drone/swarm/melee/get_modules()
 	. = ..()
-	src.modules += new /obj/item/melee/energy/sword/ionic_rapier/lance(src)
+	. |= /obj/item/melee/energy/sword/ionic_rapier/lance

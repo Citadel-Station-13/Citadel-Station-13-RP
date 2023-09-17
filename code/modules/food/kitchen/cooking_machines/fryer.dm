@@ -75,7 +75,6 @@
 			//We're above optimal, efficiency goes down as we pass too much over it
 			oil_efficiency = 1 - (oil_efficiency - 1)
 
-
 	cooking_power *= oil_efficiency
 
 
@@ -197,8 +196,8 @@
 			to_chat(victim, "<span class='danger'>Searing hot oil scorches your [E ? E.name : "flesh"]!</span>")
 
 
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has [cook_type] \the [victim] ([victim.ckey]) in \a [src]</font>")
-		victim.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been [cook_type] in \a [src] by [user.name] ([user.ckey])</font>")
+		user.attack_log += "\[[time_stamp()]\] <font color='red'>Has [cook_type] \the [victim] ([victim.ckey]) in \a [src]</font>"
+		victim.attack_log += "\[[time_stamp()]\] <font color='orange'>Has been [cook_type] in \a [src] by [user.name] ([user.ckey])</font>"
 		msg_admin_attack("[key_name_admin(user)] [cook_type] \the [victim] ([victim.ckey]) in \a [src]. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 
 	//Coat the victim in some oil
@@ -219,7 +218,7 @@
 			var/amount = 0
 			for (var/datum/reagent/R in I.reagents.reagent_list)
 				if (istype(R, /datum/reagent/nutriment/triglyceride/oil))
-					var/delta = oil.get_free_space()
+					var/delta = oil.available_volume()
 					delta = min(delta, R.volume)
 					oil.add_reagent(R.id, delta)
 					I.reagents.remove_reagent(R.id, delta)

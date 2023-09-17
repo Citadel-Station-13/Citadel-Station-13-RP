@@ -11,8 +11,16 @@
 	var/wall_type =  /turf/simulated/wall/elevator
 	var/floor_type = /turf/simulated/floor/tiled/dark
 	var/door_type =  /obj/machinery/door/airlock/lift
+	var/light_type =  /obj/machinery/light/no_nightshift
 
 	var/list/areas_to_use = list()
+
+	// rotated
+	var/got_rotated_by_maploader
+
+/obj/turbolift_map_holder/preloading_dir(datum/map_preloader/preloader)
+	. = ..()
+	got_rotated_by_maploader = preloader.loading_orientation
 
 /obj/turbolift_map_holder/Initialize(mapload)
 	. = ..()
@@ -23,6 +31,24 @@
 	var/ux = x
 	var/uy = y
 	var/uz = z
+
+	// handle orientations
+	switch(got_rotated_by_maploader)
+		if(SOUTH)
+		if(NORTH)
+			ux -= lift_size_x
+			uy -= lift_size_y
+		if(EAST)
+			var/swap = lift_size_x
+			lift_size_x = lift_size_y
+			lift_size_y = swap
+			ux -= lift_size_x
+		if(WEST)
+			var/swap = lift_size_x
+			lift_size_x = lift_size_y
+			lift_size_y = swap
+			uy -= lift_size_y
+
 	var/udir = dir
 	moveToNullspace()
 
@@ -79,7 +105,7 @@
 			door_y2 = uy - (make_walls ? 0 : 1)
 
 			light_x1 = ux + (make_walls ? 1 : 0)
-			light_y1 = uy + (make_walls ? 2 : 1)
+			light_y1 = uy + lift_size_y - (make_walls ? 1 : 0)
 			light_x2 = ux + lift_size_x - (make_walls ? 1 : 0)
 			light_y2 = uy + lift_size_y - (make_walls ? 1 : 0)
 
@@ -188,18 +214,6 @@
 		panel_ext.setDir(udir)
 		cfloor.ext_panel = panel_ext
 
-        // Place lights
-		var/turf/placing1 = locate(light_x1, light_y1, cz)
-		var/turf/placing2 = locate(light_x2, light_y2, cz)
-		var/obj/machinery/light/light1 = new(placing1)
-		var/obj/machinery/light/light2 = new(placing2)
-		if(udir == NORTH || udir == SOUTH)
-			light1.setDir(WEST)
-			light2.setDir(EAST)
-		else
-			light1.setDir(SOUTH)
-			light2.setDir(NORTH)
-
 		// Update area.
 		if(az > areas_to_use.len)
 			log_debug(SPAN_DEBUGWARNING("Insufficient defined areas in turbolift datum, aborting."))
@@ -219,6 +233,19 @@
 	lift.control_panel_interior = new(T, lift)
 	lift.control_panel_interior.setDir(udir)
 	lift.current_floor = lift.floors[1]
+
+	// Place interior lights
+	if(light_type)
+		var/turf/placing1 = locate(light_x1, light_y1, uz)
+		var/turf/placing2 = locate(light_x2, light_y2, uz)
+		var/obj/machinery/light/light1 = new light_type(placing1, light)
+		var/obj/machinery/light/light2 = new light_type(placing2, light)
+		if(udir == NORTH || udir == SOUTH)
+			light1.setDir(WEST)
+			light2.setDir(EAST)
+		else
+			light1.setDir(SOUTH)
+			light2.setDir(NORTH)
 
 	lift.open_doors()
 	return INITIALIZE_HINT_QDEL

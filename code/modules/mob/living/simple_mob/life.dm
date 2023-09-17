@@ -3,7 +3,7 @@
 		return
 
 	//Health
-	updatehealth()
+	update_health()
 
 /mob/living/simple_mob/BiologicalLife(seconds, times_fired)
 	if((. = ..()))
@@ -11,9 +11,6 @@
 
 	if(!IS_DEAD(src))
 
-		handle_stunned()
-		handle_weakened()
-		handle_paralysed()
 		handle_supernatural()
 		handle_atmos()
 
@@ -22,7 +19,7 @@
 	handle_guts(seconds)
 
 //Should we be dead?
-/mob/living/simple_mob/updatehealth()
+/mob/living/simple_mob/update_health()
 	health = getMaxHealth() - getFireLoss() - getBruteLoss() - getToxLoss() - getOxyLoss() - getCloneLoss()
 
 	//Alive, becoming dead
@@ -96,28 +93,28 @@
 				bodytemperature += ((Environment.temperature - bodytemperature) / 5)
 
 			if(min_oxy)
-				if(Environment.gas[/datum/gas/oxygen] < min_oxy)
+				if(Environment.gas[GAS_ID_OXYGEN] < min_oxy)
 					atmos_unsuitable = 1
 			if(max_oxy)
-				if(Environment.gas[/datum/gas/oxygen] > max_oxy)
+				if(Environment.gas[GAS_ID_OXYGEN] > max_oxy)
 					atmos_unsuitable = 1
 			if(min_tox)
-				if(Environment.gas[/datum/gas/phoron] < min_tox)
+				if(Environment.gas[GAS_ID_PHORON] < min_tox)
 					atmos_unsuitable = 2
 			if(max_tox)
-				if(Environment.gas[/datum/gas/phoron] > max_tox)
+				if(Environment.gas[GAS_ID_PHORON] > max_tox)
 					atmos_unsuitable = 2
 			if(min_n2)
-				if(Environment.gas[/datum/gas/nitrogen] < min_n2)
+				if(Environment.gas[GAS_ID_NITROGEN] < min_n2)
 					atmos_unsuitable = 1
 			if(max_n2)
-				if(Environment.gas[/datum/gas/nitrogen] > max_n2)
+				if(Environment.gas[GAS_ID_NITROGEN] > max_n2)
 					atmos_unsuitable = 1
 			if(min_co2)
-				if(Environment.gas[/datum/gas/carbon_dioxide] < min_co2)
+				if(Environment.gas[GAS_ID_CARBON_DIOXIDE] < min_co2)
 					atmos_unsuitable = 1
 			if(max_co2)
-				if(Environment.gas[/datum/gas/carbon_dioxide] > max_co2)
+				if(Environment.gas[GAS_ID_CARBON_DIOXIDE] > max_co2)
 					atmos_unsuitable = 1
 
 	//Atmos effect

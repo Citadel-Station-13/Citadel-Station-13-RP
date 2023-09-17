@@ -3,7 +3,7 @@
 	desc = "A superior version of the standard Hephaestus Autocannon MK2 design."
 	icon_state = "mecha_uac2"
 	equip_cooldown = 10
-	projectile = /obj/item/projectile/bullet/pistol/medium
+	projectile = /obj/projectile/bullet/pistol/medium
 	fire_sound = 'sound/weapons/Gunshot_machinegun.ogg'
 	projectiles = 30 //10 bursts, matching the Scattershot's 10. Also, conveniently, doesn't eat your powercell when reloading like 300 bullets does.
 	projectiles_per_shot = 3
@@ -16,7 +16,7 @@
 	desc = "The cross between a jackhammer and a whole lot of zipguns."
 	icon_state = "mecha_uac2-rig"
 	equip_cooldown = 12
-	projectile = /obj/item/projectile/bullet/pistol
+	projectile = /obj/projectile/bullet/pistol
 	deviation = 0.5
 
 	equip_type = EQUIP_UTILITY

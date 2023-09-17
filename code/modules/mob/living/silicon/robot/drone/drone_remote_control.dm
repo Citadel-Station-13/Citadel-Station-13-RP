@@ -27,7 +27,7 @@
 	speech_synthesizer_langs = controlling_ai.speech_synthesizer_langs.Copy()
 	set_stat(CONSCIOUS)
 	if(user.mind)
-		user.mind.transfer_to(src)
+		user.mind.transfer(src)
 	else
 		key = user.key
 	updatename()
@@ -65,7 +65,7 @@
 	new_drone.speech_synthesizer_langs = new_drone.controlling_ai.speech_synthesizer_langs.Copy()
 
 	if(user.mind)
-		user.mind.transfer_to(new_drone)
+		user.mind.transfer(new_drone)
 	else
 		new_drone.key = user.key
 	new_drone.updatename()
@@ -83,7 +83,7 @@
 
 	if(controlling_ai)
 		if(mind)
-			mind.transfer_to(controlling_ai)
+			mind.transfer(controlling_ai)
 		else
 			controlling_ai.key = key
 		to_chat(controlling_ai, "<span class='notice'>[message]</span>")

@@ -137,26 +137,26 @@
 	overdose = REAGENTS_OVERDOSE * 0.5
 	color_weight = 20
 
-/datum/reagent/paint/touch_turf(var/turf/T)
+/datum/reagent/paint/touch_turf(turf/T)
 	if(istype(T) && !istype(T, /turf/space))
 		T.color = color
 
-/datum/reagent/paint/touch_obj(var/obj/O)
+/datum/reagent/paint/touch_obj(obj/O)
 	if(istype(O))
 		O.color = color
 
-/datum/reagent/paint/touch_mob(var/mob/M)
+/datum/reagent/paint/touch_mob(mob/M)
 	if(istype(M) && !istype(M, /mob/observer)) //painting ghosts: not allowed
 		M.color = color //maybe someday change this to paint only clothes and exposed body parts for human mobs.
 
 /datum/reagent/paint/get_data()
 	return color
 
-/datum/reagent/paint/initialize_data(var/newdata)
+/datum/reagent/paint/initialize_data(newdata)
 	color = newdata
 	return
 
-/datum/reagent/paint/mix_data(var/newdata, var/newamount)
+/datum/reagent/paint/mix_data(newdata, newamount)
 	var/list/colors = list(0, 0, 0, 0)
 	var/tot_w = 0
 
@@ -198,10 +198,10 @@
 	glass_name = "liquid gold"
 	glass_desc = "It's magic. We don't have to explain it."
 
-/datum/reagent/adminordrazine/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/adminordrazine/affect_touch(mob/living/carbon/M, alien, removed)
 	affect_blood(M, alien, removed)
 
-/datum/reagent/adminordrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/adminordrazine/affect_blood(mob/living/carbon/M, alien, removed)
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)
 	M.radiation = 0
@@ -213,15 +213,15 @@
 	M.sdisabilities = 0
 	M.eye_blurry = 0
 	M.SetBlinded(0)
-	M.SetWeakened(0)
-	M.SetStunned(0)
-	M.SetUnconscious(0)
+	M.set_paralyzed(0)
+	M.set_stunned(0)
+	M.set_unconscious(0)
 	M.silent = 0
 	M.dizziness = 0
 	M.drowsyness = 0
 	M.stuttering = 0
 	M.SetConfused(0)
-	M.SetSleeping(0)
+	M.set_sleeping(0)
 	M.jitteriness = 0
 	M.radiation = 0
 	M.ExtinguishMob()
@@ -236,15 +236,17 @@
 		for(var/obj/item/organ/external/O in H.bad_external_organs)
 			if(O.status & ORGAN_BROKEN)
 				O.mend_fracture()		//Only works if the bone won't rebreak, as usual
-			for(var/datum/wound/W in O.wounds)
+			for(var/datum/wound/W as anything in O.wounds)
 				if(W.bleeding())
 					W.damage = max(W.damage - wound_heal, 0)
 					if(W.damage <= 0)
-						O.wounds -= W
+						O.cure_exact_wound(W)
+						continue
 				if(W.internal)
 					W.damage = max(W.damage - wound_heal, 0)
 					if(W.damage <= 0)
-						O.wounds -= W
+						O.cure_exact_wound(W)
+						continue
 
 /datum/reagent/gold
 	name = "Gold"
@@ -278,13 +280,13 @@
 	reagent_state = REAGENT_SOLID
 	color = "#777777"
 
-/datum/reagent/uranium/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/uranium/affect_touch(mob/living/carbon/M, alien, removed)
 	affect_ingest(M, alien, removed)
 
-/datum/reagent/uranium/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/uranium/affect_blood(mob/living/carbon/M, alien, removed)
 	M.apply_effect(5 * removed, IRRADIATE, 0)
 
-/datum/reagent/uranium/touch_turf(var/turf/T)
+/datum/reagent/uranium/touch_turf(turf/T)
 	if(volume >= 3)
 		if(!istype(T, /turf/space))
 			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)
@@ -301,11 +303,11 @@
 	color = "#C8A5DC"
 	mrate_static = TRUE
 
-/datum/reagent/adrenaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/adrenaline/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
-	M.SetUnconscious(0)
-	M.SetWeakened(0)
+	M.set_unconscious(0)
+	M.set_paralyzed(0)
 	M.adjustToxLoss(rand(3))
 
 /datum/reagent/water/holywater
@@ -319,13 +321,13 @@
 	glass_name = "holy water"
 	glass_desc = "An ashen-obsidian-water mix, this solution will alter certain sections of the brain's rationality."
 
-/datum/reagent/water/holywater/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/water/holywater/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
 	if(ishuman(M)) // Any location
 		if(M.mind && cult.is_antagonist(M.mind) && prob(10))
 			cult.remove_antagonist(M.mind)
 
-/datum/reagent/water/holywater/touch_turf(var/turf/T)
+/datum/reagent/water/holywater/touch_turf(turf/T)
 	if(volume >= 5)
 		T.holy = 1
 	return
@@ -339,10 +341,8 @@
 	reagent_state = REAGENT_GAS
 	color = "#404030"
 
-/datum/reagent/ammonia/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/ammonia/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_ALRAUNE)
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 2 //cit change: fertilizer is waste for plants
 		return
 
@@ -354,10 +354,8 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#604030"
 
-/datum/reagent/diethylamine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/diethylamine/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_ALRAUNE)
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5 //cit change: fertilizer is waste for plants
 		return
 
@@ -385,7 +383,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#009CA8"
 
-/datum/reagent/lube/touch_turf(var/turf/simulated/T)
+/datum/reagent/lube/touch_turf(turf/simulated/T)
 	if(!istype(T))
 		return
 	if(volume >= 1)
@@ -399,7 +397,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#C7FFFF"
 
-/datum/reagent/silicate/touch_obj(var/obj/O)
+/datum/reagent/silicate/touch_obj(obj/O)
 	if(istype(O, /obj/structure/window))
 		var/obj/structure/window/W = O
 		W.apply_silicate(volume)
@@ -432,7 +430,7 @@
 	color = "#C8A5DC"
 	affects_robots = TRUE
 
-/datum/reagent/coolant/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/coolant/affect_blood(mob/living/carbon/M, alien, removed)
 	if(M.isSynthetic() && ishuman(M))
 		var/mob/living/carbon/human/H = M
 
@@ -471,10 +469,10 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#F2F3F4"
 
-/datum/reagent/luminol/touch_obj(var/obj/O)
+/datum/reagent/luminol/touch_obj(obj/O)
 	O.reveal_blood()
 
-/datum/reagent/luminol/touch_mob(var/mob/living/L)
+/datum/reagent/luminol/touch_mob(mob/living/L)
 	L.reveal_blood()
 
 /datum/reagent/nutriment/biomass
@@ -496,7 +494,7 @@
 	metabolism = REM * 3 // Broken nanomachines go a bit slower.
 	scannable = 1
 
-/datum/reagent/defective_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/defective_nanites/affect_blood(mob/living/carbon/M, alien, removed)
 	M.take_organ_damage(2 * removed, 2 * removed)
 	M.adjustOxyLoss(4 * removed)
 	M.adjustToxLoss(2 * removed)
@@ -509,68 +507,6 @@
 	taste_description = "earthy"
 	reagent_state = REAGENT_LIQUID
 	color = "#62764E"
-
-////////////////////////////
-/// NW's shrinking serum ///
-////////////////////////////
-//Moved from Chemistry-Reagents-Medicine_vr.dm
-/datum/reagent/macrocillin
-	name = "Macrocillin"
-	id = "macrocillin"
-	description = "Glowing yellow liquid."
-	reagent_state = REAGENT_LIQUID
-	color = "#FFFF00" // rgb: 255, 255, 0
-	metabolism = 0.01
-	mrate_static = TRUE
-
-/datum/reagent/macrocillin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(M.size_multiplier < RESIZE_HUGE)
-		M.resize(M.size_multiplier+0.01)//Incrrease 1% per tick.
-	return
-
-/datum/reagent/microcillin
-	name = "Microcillin"
-	id = "microcillin"
-	description = "Murky purple liquid."
-	reagent_state = REAGENT_LIQUID
-	color = "#800080"
-	metabolism = 0.01
-	mrate_static = TRUE
-
-/datum/reagent/microcillin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(M.size_multiplier > RESIZE_TINY)
-		M.resize(M.size_multiplier-0.01) //Decrease 1% per tick.
-	return
-
-/datum/reagent/normalcillin
-	name = "Normalcillin"
-	id = "normalcillin"
-	description = "Translucent cyan liquid."
-	reagent_state = REAGENT_LIQUID
-	color = "#00FFFF"
-	metabolism = 0.01 //One unit will be just enough to bring someone from 200% to 100%
-	mrate_static = TRUE
-
-/datum/reagent/normalcillin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(M.size_multiplier > RESIZE_NORMAL)
-		M.resize(M.size_multiplier-0.01) //Decrease by 1% size per tick.
-	else if(M.size_multiplier < RESIZE_NORMAL)
-		M.resize(M.size_multiplier+0.01) //Increase 1% per tick.
-	return
-
-/datum/reagent/sizeoxadone
-	name = "Sizeoxadone"
-	id = "sizeoxadone"
-	description = "A volatile liquid used as a precursor to size-altering chemicals. Causes dizziness if taken unprocessed."
-	reagent_state = REAGENT_LIQUID
-	color = "#1E90FF"
-	overdose = REAGENTS_OVERDOSE
-
-/datum/reagent/sizeoxadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.make_dizzy(1)
-	if(!M.confused) M.confused = 1
-	M.confused = max(M.confused, 20)
-	return
 
 /datum/reagent/crude_oil
 	name = "Oil"
@@ -595,3 +531,94 @@
 	reagent_state = REAGENT_SOLID
 	color = "#464650"
 	taste_description = "salt"
+
+/*Liquid Carpets*/
+
+/datum/reagent/carpet
+	name = "Liquid Carpet"
+	id = "liquidcarpet"
+	description = "Liquified carpet fibers, ready for dyeing."
+	reagent_state = REAGENT_LIQUID
+	color = "#b51d05"
+	taste_description = "carpet"
+
+/datum/reagent/carpet/black
+	name = "Liquid Black Carpet"
+	id = "liquidcarpetb"
+	description = "Black Carpet Fibers, ready for reinforcement."
+	reagent_state = REAGENT_LIQUID
+	color = "#000000"
+	taste_description = "rare and ashy carpet"
+
+/datum/reagent/carpet/blue
+	name = "Liquid Blue Carpet"
+	id = "liquidcarpetblu"
+	description = "Blue Carpet Fibers, ready for reinforcement."
+	reagent_state = REAGENT_LIQUID
+	color = "#3f4aee"
+	taste_description = "commanding carpet"
+
+/datum/reagent/carpet/turquoise
+	name = "Liquid Turquoise Carpet"
+	id = "liquidcarpettur"
+	description = "Turquoise Carpet Fibers, ready for reinforcement."
+	reagent_state = REAGENT_LIQUID
+	color = "#0592b5"
+	taste_description = "water-logged carpet"
+
+/datum/reagent/carpet/sblue
+	name = "Liquid Silver Blue Carpet"
+	id = "liquidcarpetsblu"
+	description = "Silver Blue Carpet Fibers, ready for reinforcement."
+	reagent_state = REAGENT_LIQUID
+	color = "#0011ff"
+	taste_description = "sterile and medicinal carpet"
+
+/datum/reagent/carpet/clown
+	name = "Liquid Clown Carpet"
+	id = "liquidcarpetc"
+	description = "Clown Carpet Fibers.... No clowns were harmed in the making of this."
+	reagent_state = REAGENT_LIQUID
+	color = "#e925be"
+	taste_description = "clown shoes and banana peels"
+
+/datum/reagent/carpet/purple
+	name = "Liquid Purple Carpet"
+	id = "liquidcarpetp"
+	description = "Purple Carpet Fibers, ready for reinforcement."
+	reagent_state = REAGENT_LIQUID
+	color = "#a614d3"
+	taste_description = "bleeding edge carpet research"
+
+/datum/reagent/carpet/orange
+	name = "Liquid Orange Carpet"
+	id = "liquidcarpeto"
+	description = "Orange Carpet Fibers, ready for reinforcement."
+	reagent_state = REAGENT_LIQUID
+	color = "#f16e16"
+	taste_description = "extremely overengineered carpet"
+
+//Ashlander Alchemy!
+/datum/reagent/alchemybase
+	name = "Alchemical Base"
+	id = "alchemybase"
+	description = "A compound of ash and sulphuric acid, used on Surt as a base for alchemical processes."
+	reagent_state = REAGENT_LIQUID
+	color = "#5a5e3c"
+	taste_description = "sour ash"
+
+/datum/reagent/phlogiston
+	name = "Phlogiston"
+	id = "phlogiston"
+	description = "A solution of gunpowder and alchemical base, reduced into a sticky tar. It is immensely volatile."
+	reagent_state = REAGENT_LIQUID
+	color = "#522222"
+	taste_description = "sulphurous sand"
+
+/datum/reagent/bitterash
+	name = "Bitter Ash"
+	id = "bitterash"
+	description = "A finely granulated mixture of ash and pokalea, rendered into a pungent slurry by alchemical base."
+	reagent_state = REAGENT_SOLID
+	color = "#302f2f"
+	taste_description = "sour wax and sulphur"

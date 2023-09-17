@@ -82,9 +82,23 @@ var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J
 
 // Used by robots and robot preferences.
 var/list/robot_module_types = list(
-	"Standard", "Engineering", "Medical",
-	"Miner",    "Janitor",     "Service",
-	"Clerical", "Security",    "Research"
+	"Standard",
+	"Engineering",
+	"Medical",
+	"Miner",
+	"Janitor",
+	"Service",
+	"Clerical",
+	"Security",
+	"Research",
+	"Quadruped",
+	"MediQuad",
+	"SecuriQuad",
+	"JaniQuad",
+	"SciQuad",
+	"EngiQuad",
+	"Mining Quad",
+	"Service Quad"
 )
 
 // Some scary sounds.
@@ -115,19 +129,6 @@ var/max_explosion_range = 14
 //Could be useful for AI impersonation or something at some point?
 var/static/list/cached_character_icons = list()
 
-//! ## VR FILE MERGE ## !//
-
-/hook/startup/proc/modules_vr()
-	robot_module_types += "Quadruped"
-	robot_module_types += "MediQuad"
-	robot_module_types += "SecuriQuad"
-	robot_module_types += "JaniQuad"
-	robot_module_types += "SciQuad"
-	robot_module_types += "EngiQuad"
-	robot_module_types += "Mining Quad"
-	robot_module_types += "Service Quad"
-	return 1
-
 var/list/shell_module_types = list(
 	"Standard", "Service", "Clerical"
 )
@@ -149,6 +150,7 @@ var/global/list/acceptable_fruit_types = list(
 	"durian",
 	"eggplant",
 	"grapes",
+	"grass",
 	"greengrapes",
 	"harebells",
 	"jahtak",

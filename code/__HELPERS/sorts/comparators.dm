@@ -54,6 +54,12 @@
 /proc/cmp_name_dsc(atom/a, atom/b)
 	return sorttext(a.name, b.name)
 
+/proc/cmp_initial_name_asc(atom/a, atom/b)
+	return sorttext(initial(b.name), initial(a.name))
+
+/proc/cmp_initial_name_dsc(atom/a, atom/b)
+	return sorttext(initial(a.name), initial(b.name))
+
 GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_records_asc(datum/data/record/a, datum/data/record/b)
 	return sorttext(b.fields[GLOB.cmp_field], a.fields[GLOB.cmp_field])
@@ -122,7 +128,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /**
  * Sorts jobs by department, and then by flag within department.
  */
-/proc/cmp_job_datums(datum/job/a, datum/job/b)
+/proc/cmp_job_datums(datum/role/job/a, datum/role/job/b)
 	. = 0
 	if( LAZYLEN(a.departments) && LAZYLEN(b.departments) )
 		// Makes a list that contains only departments that were in both.

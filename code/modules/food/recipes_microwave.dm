@@ -1430,13 +1430,6 @@ I said no!
 	)
 	result = /obj/item/reagent_containers/food/snacks/greenham
 
-/datum/recipe/voxjerky
-	reagents = list("sodiumchloride" = 5)
-	items = list(
-		/obj/item/reagent_containers/food/snacks/meat/vox
-	)
-	result = /obj/item/reagent_containers/food/snacks/voxjerky
-
 /datum/recipe/roach_burger
 	items = list(
 		/obj/item/reagent_containers/food/snacks/bun,

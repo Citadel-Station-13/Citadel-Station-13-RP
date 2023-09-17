@@ -15,6 +15,7 @@ var/const/CLOWN				=(1<<13)
 var/const/MIME				=(1<<14)
 var/const/INTERN			=(1<<15)
 var/const/SENIOR_ENGINEER	=(1<<16)
+var/const/Blueshield		=(1<<17)
 
 var/const/MEDSCI			=(1<<1)
 
@@ -61,10 +62,10 @@ var/const/TRADER			=(1<<15)
 
 /proc/get_job_datums()
 	var/list/occupations = list()
-	var/list/all_jobs = typesof(/datum/job)
+	var/list/all_jobs = typesof(/datum/role/job)
 
 	for(var/A in all_jobs)
-		var/datum/job/job = new A()
+		var/datum/role/job/job = new A()
 		if(!job)	continue
 		occupations += job
 
@@ -74,7 +75,7 @@ var/const/TRADER			=(1<<15)
 	var/list/jobs = get_job_datums()
 	var/list/titles = list()
 
-	for(var/datum/job/J in jobs)
+	for(var/datum/role/job/J in jobs)
 		if(J.title == job)
 			titles = J.alt_titles
 

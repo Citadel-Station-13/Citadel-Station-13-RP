@@ -7,7 +7,7 @@
 		to_chat(src, "You are not yet ready for your growth...")
 		return
 
-	src.split()
+	src.diona_split()
 
 	if(istype(loc,/obj/item/holder/diona))
 		var/obj/item/holder/diona/L = loc

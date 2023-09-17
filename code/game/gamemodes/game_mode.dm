@@ -135,7 +135,6 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/announce() //to be called when round starts
 	to_chat(world, "<B>The current game mode is [capitalize(name)]!</B>")
-	to_chat(world, "<B>The current engine is [GLOB.used_engine]!</B>")//Actually, why not expand this....
 	if(round_description) to_chat(world, "[round_description]")
 	if(round_autoantag) to_chat(world, "Antagonists will be added to the round automagically as needed.")
 	if(antag_templates && antag_templates.len)
@@ -498,17 +497,17 @@ var/global/list/additional_antag_types = list()
 			if(D.mind && (D.mind.original == L || D.mind.current == L))
 				if(L.stat == DEAD)
 					if(L.suiciding)	//Suicider
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<font color='red'><b>Suicide</b></font>)\n"
+						msg += "<b>[L.name]</b> ([ckey(D.mind.ckey)]), the [L.job] (<font color='red'><b>Suicide</b></font>)\n"
 						continue //Disconnected client
 					else
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
+						msg += "<b>[L.name]</b> ([ckey(D.mind.ckey)]), the [L.job] (Dead)\n"
 						continue //Dead mob, ghost abandoned
 				else
 					if(D.can_reenter_corpse)
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<font color='red'><b>Adminghosted</b></font>)\n"
+						msg += "<b>[L.name]</b> ([ckey(D.mind.ckey)]), the [L.job] (<font color='red'><b>Adminghosted</b></font>)\n"
 						continue //Lolwhat
 					else
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<font color='red'><b>Ghosted</b></font>)\n"
+						msg += "<b>[L.name]</b> ([ckey(D.mind.ckey)]), the [L.job] (<font color='red'><b>Ghosted</b></font>)\n"
 						continue //Ghosted while alive
 
 	msg += "</span>" // close the span from right at the top
@@ -521,9 +520,9 @@ var/global/list/additional_antag_types = list()
 	var/list/dudes = list()
 	for(var/mob/living/carbon/human/man in GLOB.player_list)
 		if(man.client)
-			if(man.client.prefs.economic_status == CLASS_LOWER)
+			if(man.client.prefs.economic_status == CLASS_LOW)
 				dudes += man
-			else if(man.client.prefs.economic_status == CLASS_LOWMID && prob(50))
+			else if(man.client.prefs.economic_status == CLASS_LOWISH && prob(50))
 				dudes += man
 	if(dudes.len == 0) return null
 	return pick(dudes)
@@ -548,7 +547,6 @@ var/global/list/additional_antag_types = list()
 
 	if(master_mode != "secret")
 		to_chat(usr, "<b>The roundtype is [capitalize(SSticker.mode.name)]</b>")
-		to_chat(usr, "<b>The engine is [GLOB.used_engine]</b>")
 		if(SSticker.mode.round_description)
 			to_chat(usr, "<i>[SSticker.mode.round_description]</i>")
 		if(SSticker.mode.extended_round_description)

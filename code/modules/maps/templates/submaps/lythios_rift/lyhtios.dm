@@ -14,7 +14,7 @@
 	name = "Rift Content"
 	desc = "Bring a coat!"
 	allow_duplicates = FALSE
-	prefix = "_maps/submaps/lythios_rift/admin_spawn/"
+	prefix = "maps/submaps/lythios_rift/admin_spawn/"
 
 /datum/map_template/submap/level_specific/rift/admin_spawn_1
 	name = "Blank 5x5 building"
@@ -23,7 +23,7 @@
 
 // 'Normal' templates get used on the bottom half, and should be safer.
 /datum/map_template/submap/level_specific/rift/west_caves
-	prefix = "_maps/submaps/lythios_rift/caves/"
+	prefix = "maps/submaps/lythios_rift/caves/"
 
 /datum/map_template/submap/level_specific/rift/west_caves/west_caves_cavern1
 	name = "Cavern 1"
@@ -93,7 +93,7 @@
 
 // 'Deep' templates get used on the mid part, and should be mildly more dangerous and rewarding.
 /datum/map_template/submap/level_specific/rift/west_deep
-	prefix = "_maps/submaps/lythios_rift/deep_caves/"
+	prefix = "maps/submaps/lythios_rift/deep_caves/"
 
 /datum/map_template/submap/level_specific/rift/west_deep/deep_small_crystals_1
 	name = "Crystal 1"
@@ -105,7 +105,7 @@
 
 // 'Base' templates get used on the lowest most level, and should be more dangerous and rewarding.
 /datum/map_template/submap/level_specific/rift/west_base
-	prefix = "_maps/submaps/lythios_rift/base/"
+	prefix = "maps/submaps/lythios_rift/base/"
 
 /datum/map_template/submap/level_specific/rift/west_base/base_rock_1
 	name = "Rock 1"

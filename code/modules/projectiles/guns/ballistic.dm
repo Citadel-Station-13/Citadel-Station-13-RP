@@ -5,9 +5,9 @@
 	icon_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	w_class = ITEMSIZE_NORMAL
-	matter = list(MAT_STEEL = 1000)
+	materials = list(MAT_STEEL = 1000)
 	recoil = 0
-	projectile_type = /obj/item/projectile/bullet/pistol/strong	//Only used for chameleon guns
+	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
 	var/caliber = ".357"		//determines which casings will fit
 	var/handle_casings = EJECT_CASINGS	//determines how spent casings should be handled
@@ -126,7 +126,7 @@
 								if(!user.attempt_insert_item_for_installation(AM, src))
 									return
 								ammo_magazine.update_icon()
-								user.put_in_hands(ammo_magazine)
+								user.put_in_hands_or_drop(ammo_magazine)
 								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
 													 SPAN_WARNING("You tactically reload \the [src] with \the [AM]!"))
 						else //Speed reloading
@@ -205,7 +205,7 @@
 //attempts to unload src. If allow_dump is set to 0, the speedloader unloading method will be disabled
 /obj/item/gun/ballistic/proc/unload_ammo(mob/user, var/allow_dump=1)
 	if(ammo_magazine)
-		user.put_in_hands(ammo_magazine)
+		user.put_in_hands_or_drop(ammo_magazine)
 		user.visible_message("[user] removes [ammo_magazine] from [src].", "<span class='notice'>You remove [ammo_magazine] from [src].</span>")
 		playsound(src.loc, mag_remove_sound, 50, 1)
 		ammo_magazine.update_icon()
@@ -225,7 +225,7 @@
 		else if(load_method & SINGLE_CASING)
 			var/obj/item/ammo_casing/C = loaded[loaded.len]
 			loaded.len--
-			user.put_in_hands(C)
+			user.put_in_hands_or_drop(C)
 			user.visible_message("[user] removes \a [C] from [src].", "<span class='notice'>You remove \a [C] from [src].</span>")
 		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 	else
@@ -236,19 +236,26 @@
 	..()
 	load_ammo(A, user)
 
-/obj/item/gun/ballistic/attack_self(mob/user as mob)
+/obj/item/gun/ballistic/attack_self(mob/user)
 	if(firemodes.len > 1)
 		switch_firemodes(user)
+	else if(ammo_magazine)
+		ammo_magazine.forceMove(user.drop_location())
+		user.visible_message("[user] dumps [ammo_magazine] from [src] onto the floor.", SPAN_NOTICE("You dump [ammo_magazine] from [src] onto the floor."))
+		playsound(src, mag_remove_sound, 50, 1)
+		ammo_magazine.update_icon()
+		ammo_magazine = null
 	else
 		unload_ammo(user)
+	update_icon()
 
-/obj/item/gun/ballistic/attack_hand(mob/user as mob)
+/obj/item/gun/ballistic/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)
 	else
 		return ..()
 
-/obj/item/gun/ballistic/afterattack(atom/A, mob/living/user)
+/obj/item/gun/ballistic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.stored_ammo.len)
 		ammo_magazine.loc = get_turf(src.loc)
@@ -262,7 +269,7 @@
 		ammo_magazine = null
 		update_icon() //make sure to do this after unsetting ammo_magazine
 
-/obj/item/gun/ballistic/examine(mob/user)
+/obj/item/gun/ballistic/examine(mob/user, dist)
 	. = ..()
 	if(ammo_magazine)
 		. += "It has \a [ammo_magazine] loaded."

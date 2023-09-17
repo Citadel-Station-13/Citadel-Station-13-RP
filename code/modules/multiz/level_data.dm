@@ -12,7 +12,6 @@ GLOBAL_LIST_EMPTY(levels_by_id)
 
 	var/my_z
 	var/level_id
-	var/base_turf
 	var/list/connects_to
 	var/level_flags
 
@@ -32,19 +31,16 @@ INITIALIZE_IMMEDIATE(/obj/level_data)
 	else
 		GLOB.levels_by_id[level_id] = src
 
-	if(base_turf)
-		GLOB.using_map.base_turf_by_z["[my_z]"] = base_turf
-
 	if(level_flags & ZLEVEL_STATION)
-		GLOB.using_map.station_levels |= my_z
+		(LEGACY_MAP_DATUM).station_levels |= my_z
 	if(level_flags & ZLEVEL_ADMIN)
-		GLOB.using_map.admin_levels   |= my_z
+		(LEGACY_MAP_DATUM).admin_levels   |= my_z
 	if(level_flags & ZLEVEL_CONTACT)
-		GLOB.using_map.contact_levels |= my_z
+		(LEGACY_MAP_DATUM).contact_levels |= my_z
 	if(level_flags & ZLEVEL_PLAYER)
-		GLOB.using_map.player_levels  |= my_z
+		(LEGACY_MAP_DATUM).player_levels  |= my_z
 	if(level_flags & ZLEVEL_SEALED)
-		GLOB.using_map.sealed_levels  |= my_z
+		(LEGACY_MAP_DATUM).sealed_levels  |= my_z
 
 /obj/level_data/Destroy(force)
 	if(force)

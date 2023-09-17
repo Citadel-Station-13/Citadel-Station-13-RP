@@ -3,7 +3,7 @@
 	desc = "For seeding submaps in Underdark"
 	allow_duplicates = TRUE
 	annihilate = TRUE
-	prefix = "_maps/submaps/level_specific/underdark/"
+	prefix = "maps/submaps/level_specific/underdark/"
 
 /datum/map_template/submap/level_specific/underdark/normal_mob
 	name = "Underdark Normal Mob Spawn"

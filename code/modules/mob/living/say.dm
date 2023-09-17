@@ -214,7 +214,7 @@ var/list/channel_to_radio_key = new
 		speaking.broadcast(src,trim(message))
 		return 1
 
-	if(HAS_TRAIT(GLOB, TRAIT_MUTE))
+	if(HAS_TRAIT(src, TRAIT_MUTE))
 		to_chat(src, "<span class='danger'>You are not capable of speech!</span>")
 		return
 

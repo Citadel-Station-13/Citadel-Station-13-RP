@@ -1,3 +1,5 @@
+/// all mobs
+GLOBAL_LIST_EMPTY(mob_list)
 /// all player mobs (not clients!)
 GLOBAL_LIST_EMPTY(player_list)
 
@@ -52,9 +54,9 @@ GLOBAL_LIST(legacy_marking_lookup)
 			continue
 		.[S.id] = S
 		by_name[S.name] = S
-	tim_sort(by_name, /proc/cmp_text_asc, associative = FALSE)
+	tim_sort(by_name, GLOBAL_PROC_REF(cmp_text_asc), associative = FALSE)
 	GLOB.legacy_hair_lookup = by_name
-	tim_sort(., /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
 
 /proc/all_ear_styles()
 	. = list()
@@ -72,9 +74,9 @@ GLOBAL_LIST(legacy_marking_lookup)
 			continue
 		.[S.id] = S
 		by_type[S.type] = S
-	tim_sort(by_type, /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(by_type, GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
 	GLOB.legacy_ears_lookup = by_type
-	tim_sort(., /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
 
 /proc/all_wing_styles()
 	. = list()
@@ -92,9 +94,9 @@ GLOBAL_LIST(legacy_marking_lookup)
 			continue
 		.[S.id] = S
 		by_type[S.type] = S
-	tim_sort(by_type, /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(by_type, GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
 	GLOB.legacy_wing_lookup = by_type
-	tim_sort(., /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
 
 /proc/all_tail_styles()
 	. = list()
@@ -112,9 +114,9 @@ GLOBAL_LIST(legacy_marking_lookup)
 			continue
 		.[S.id] = S
 		by_type[S.type] = S
-	tim_sort(by_type, /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(by_type, GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
 	GLOB.legacy_tail_lookup = by_type
-	tim_sort(., /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
 
 /proc/all_facial_hair_styles()
 	. = list()
@@ -135,9 +137,9 @@ GLOBAL_LIST(legacy_marking_lookup)
 			continue
 		.[S.id] = S
 		by_name[S.name] = S
-	tim_sort(by_name, /proc/cmp_text_asc, associative = FALSE)
+	tim_sort(by_name, GLOBAL_PROC_REF(cmp_text_asc), associative = FALSE)
 	GLOB.legacy_facial_hair_lookup = by_name
-	tim_sort(., /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
 
 /proc/all_marking_styles()
 	. = list()
@@ -158,6 +160,6 @@ GLOBAL_LIST(legacy_marking_lookup)
 			continue
 		.[S.id] = S
 		by_name[S.name] = S
-	tim_sort(by_name, /proc/cmp_text_asc, associative = FALSE)
+	tim_sort(by_name, GLOBAL_PROC_REF(cmp_text_asc), associative = FALSE)
 	GLOB.legacy_marking_lookup = by_name
-	tim_sort(., /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)

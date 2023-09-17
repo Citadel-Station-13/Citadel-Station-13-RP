@@ -5,7 +5,7 @@
 /obj/item/trash
 	icon = 'icons/obj/trash.dmi'
 	w_class = ITEMSIZE_SMALL
-	force = 0
+	damage_force = 0
 	desc = "This is rubbish."
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
@@ -130,7 +130,7 @@
 
 	if(isrobot(target))
 		var/mob/living/silicon/robot/R = target
-		if(R.module.type == /obj/item/robot_module/robot/quad_jani) // You can now feed the trash borg yay.
+		if(R.module.type == /obj/item/robot_module/robot/quad/jani) // You can now feed the trash borg yay.
 			if(!user.attempt_insert_item_for_installation(src, R.vore_selected))
 				return
 			playsound(R,'sound/items/eatfood.ogg', rand(10,50), 1)
@@ -200,3 +200,8 @@
 /obj/item/trash/brainsnaxtrash
 	name = "\improper BrainSnax can"
 	icon_state = "brainsnaxtrash"
+
+/obj/item/trash/fishingboot
+	name = "old boot"
+	desc = "The famous pair of Salmucci's that was dropped in here by none other than Mister Nanotrasen's 53rd secretary is still rumoured to be lying at the bottom of the pool. This.. is not it. The shoe is soggy, and seems about as comfortable as it was before being tossed in here."
+	icon_state = "fishingboot"

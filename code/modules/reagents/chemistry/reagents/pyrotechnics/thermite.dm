@@ -7,7 +7,7 @@
 	color = "#673910"
 	touch_met = 50
 
-/datum/reagent/thermite/touch_turf(var/turf/T)
+/datum/reagent/thermite/touch_turf(turf/T)
 	if(volume >= 5)
 		if(istype(T, /turf/simulated/wall))
 			var/turf/simulated/wall/W = T
@@ -16,9 +16,9 @@
 			remove_self(5)
 	return
 
-/datum/reagent/thermite/touch_mob(var/mob/living/L, var/amount)
+/datum/reagent/thermite/touch_mob(mob/living/L, amount)
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 5)
 
-/datum/reagent/thermite/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/thermite/affect_blood(mob/living/carbon/M, alien, removed)
 	M.adjustFireLoss(3 * removed)

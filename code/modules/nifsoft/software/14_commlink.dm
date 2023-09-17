@@ -4,7 +4,7 @@
 	name = "Commlink"
 	desc = "An internal communicator for keeping in touch with people."
 	list_pos = NIF_COMMLINK
-	cost = 250
+	cost = 25
 	wear = 0
 	p_drain = 0.01
 	other_flags = (NIF_O_COMMLINK)

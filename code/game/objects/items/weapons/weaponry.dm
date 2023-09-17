@@ -4,7 +4,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "energynet"
 	throw_force = 0
-	force = 0
+	damage_force = 0
 	var/net_type = /obj/effect/energy_net
 
 /obj/item/energy_net/dropped(mob/user, flags, atom/newLoc)
@@ -83,7 +83,7 @@
 		return
 	M.setClickCooldown(M.get_attack_speed())
 	visible_message("<span class='danger'>[M] begins to tear at \the [src]!</span>")
-	if(!do_after(M, escape_time, src, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
+	if(!do_after(M, escape_time, src, mobility_flags = MOBILITY_CAN_RESIST))
 		return FALSE
 	visible_message("<span class='danger'>[M] manages to tear \the [src] apart!</span>")
 	qdel(src)
