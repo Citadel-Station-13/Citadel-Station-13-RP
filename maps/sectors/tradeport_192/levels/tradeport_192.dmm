@@ -7844,12 +7844,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
-"Cs" = (
-/obj/machinery/computer/security/telescreen{
-	pixel_y = -35
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/tradeport/dock)
 "Ct" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -37283,7 +37277,7 @@ LK
 ah
 bB
 PJ
-Cs
+Jv
 NQ
 dA
 Jc
