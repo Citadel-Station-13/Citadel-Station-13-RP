@@ -807,10 +807,10 @@ default behaviour is:
 
 //* Pixel Offsets
 
-/mob/living/get_centering_pixel_y_offset(dir, atom/aligning)
+/mob/living/get_centering_pixel_y_offset(dir)
 	. = ..()
 	// since we're shifted up by transforms..
-	. += ((size_multiplier * icon_scale_y) - 1) * 16
+	. -= ((size_multiplier * icon_scale_y) - 1) * 16
 
 /mob/living/get_managed_pixel_y()
 	. = ..()
