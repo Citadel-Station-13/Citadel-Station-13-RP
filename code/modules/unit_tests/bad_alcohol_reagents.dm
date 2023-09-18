@@ -1,4 +1,6 @@
 /datum/unit_test/accidental_alcoholism/Run()
+    SSchemistry.initialize_chemical_reactions()
+    SSchemistry.initialize_chemical_reagents()
     var/obj/item/reagent_synth/drink/soda_disp = new
     var/obj/item/reagent_synth/cafe/coff_disp = new
     var/list/soda_reagents = soda_disp.reagents_provided
