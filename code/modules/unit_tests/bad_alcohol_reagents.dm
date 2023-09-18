@@ -1,27 +1,13 @@
 /datum/unit_test/accidental_alcoholism/Run()
     SSchemistry.initialize_chemical_reactions()
     SSchemistry.initialize_chemical_reagents()
-    var/obj/item/reagent_synth/drink/soda_disp = new
-    var/obj/item/reagent_synth/cafe/coff_disp = new
-    var/list/soda_reagents = soda_disp.reagents_provided
-    var/list/coffee_reagents = coff_disp.reagents_provided
-    var/list/checked_reactions = list()
-    var/list/open = list()
-    var/list/closed = list()
-    var/list/all = list()
-    for(var/datum/reagent/R as anything in soda_reagents | coffee_reagents)
-        open += initial(R.id)
-    while(length(open))
-        var/top = open[1]
-        closed += top
-        all += top
-        open.Cut(1, 2)
-        for(var/datum/chemical_reaction/reaction as anything in SSchemistry.chemical_reactions_by_reagent[top])
-            if(!(reaction in checked_reactions))
-                if(!(reaction.result in closed))
-                    open += reaction.result
-            checked_reactions |= reaction
-    for(var/R in all)
-        var/datum/reagent/ethanol/E = SSchemistry.reagent_lookup[R]
+    for(var/datum/chemical_reaction/D as anything in SSchemistry.chemical_reactions)
+        var/datum/reagent/ethanol/E = SSchemistry.reagent_lookup[D.result]
         if(istype(E))
-            Fail("[E] is alcoholic but can be made with only soda/coffee dispensers")
+            var/any_ethanol = FALSE
+            for(var/R in D.required_reagents)
+                var/datum/reagent/ethanol/reagent = SSchemistry.reagent_lookup[R]
+                if(istype(reagent))
+                    any_ethanol=FALSE
+            if(!any_ethanol)
+                Fail("[D.result] is alcoholic but can be made with only non-alcoholic ingredients")
