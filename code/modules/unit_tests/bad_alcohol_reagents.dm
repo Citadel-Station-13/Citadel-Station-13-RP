@@ -12,7 +12,7 @@
         closed += top
         all += top
         open.Cut(1, 2)
-        for(reaction in reactions_by_reagent[top])
+        for(var/datum/chemical_reaction/reaction as anything in reactions_by_reagent[top])
             if(reaction not in checked_reactions)
                 if(reaction.result not in all)
                     open += reaction.result
