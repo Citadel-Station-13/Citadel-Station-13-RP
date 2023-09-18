@@ -5,6 +5,8 @@
     var/list/coffee_reagents = coff_disp.reagents_provided
     var/list/checked_reactions = list()
     var/list/open = list()
+    var/list/closed = list()
+    var/list/all = list()
     for(var/datum/reagent/R as anything in soda_reagents | coffee_reagents)
         open += initial(R.id)
     while(length(open))
@@ -12,7 +14,7 @@
         closed += top
         all += top
         open.Cut(1, 2)
-        for(var/datum/chemical_reaction/reaction as anything in reactions_by_reagent[top])
+        for(var/datum/chemical_reaction/reaction as anything in SSchemistry.chemical_reactions_by_reagent[top])
             if(!(reaction in checked_reactions))
                 if(!(reaction.result in closed))
                     open += reaction.result
@@ -20,4 +22,4 @@
     for(var/R in all)
         var/datum/reagent/ethanol/E = SSchemistry.reagent_lookup[R]
         if(istype(E))
-            Fail("[reagent] is alcoholic but can be made with only soda/coffee dispensers")
+            Fail("[E] is alcoholic but can be made with only soda/coffee dispensers")
