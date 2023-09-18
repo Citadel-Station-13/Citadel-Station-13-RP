@@ -3,6 +3,7 @@
     var/obj/item/reagent_synth/cafe/coff_disp = new
     var/list/soda_reagents = soda_disp.reagents_provided
     var/list/coffee_reagents = coff_disp.reagents_provided
+    var/list/checked_reactions = list()
     var/list/open = list()
     for(var/datum/reagent/R as anything in soda_reagents | coffee_reagents)
         open += initial(R.id)
@@ -12,8 +13,10 @@
         all += top
         open.Cut(1, 2)
         for(reaction in reactions_by_reagent[top])
-            if(reaction.result not in all)
-                open += reaction.result
+            if(reaction not in checked_reactions)
+                if(reaction.result not in all)
+                    open += reaction.result
+            checked_reactions |= reaction
     for(var/R in all)
         var/datum/reagent/ethanol/E = SSchemistry.reagent_lookup[R]
         if(istype(E))
