@@ -2189,6 +2189,7 @@
 		/obj/item/flashlight = 5,
 		/obj/item/laser_pointer = 3,
 		/obj/item/clothing/glasses/omnihud = 10,
+		/obj/item/device/walkpod = 5,
 	)
 	premium = list(
 		/obj/item/perfect_tele/one_beacon = 1,
@@ -2199,6 +2200,7 @@
 	prices = list(
 		/obj/item/modular_computer/tablet/preset/custom_loadout/cheap = 300,
 		/obj/item/laser_pointer = 100,
+		/obj/item/device/walkpod = 300,
 	)
 	price_default = 25
 

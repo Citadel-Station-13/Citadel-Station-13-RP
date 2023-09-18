@@ -339,3 +339,12 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate
 	container_name = "Alraune Culture crate"
+
+/datum/supply_pack/misc/music_players
+	name = "Music players"
+	contains = list(
+		/obj/item/device/walkpod = 3
+	)
+	cost = 150
+	container_type = /obj/structure/closet/crate
+	container_name = "Portable music players crate"
