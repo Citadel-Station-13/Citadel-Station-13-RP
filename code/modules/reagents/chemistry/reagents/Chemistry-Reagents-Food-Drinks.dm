@@ -2855,7 +2855,7 @@
 	glass_name = "Gin Fizz"
 	glass_desc = "Refreshingly lemony, deliciously dry."
 
-/datum/reagent/drinks/soda/nebula_riptide
+/datum/reagent/drink/nebula_riptide
 	name = "Nebula Riptide"
 	id = "nebula_riptide"
 	description = "The drink is compounded into form from a larger volume, leaving little to drink."
