@@ -20,4 +20,4 @@
     for(var/R in all)
         var/datum/reagent/ethanol/E = SSchemistry.reagent_lookup[R]
         if(istype(E))
-           Fail("[reagent] is alcoholic but can be made with only soda/coffee dispensers")
+            Fail("[reagent] is alcoholic but can be made with only soda/coffee dispensers")
