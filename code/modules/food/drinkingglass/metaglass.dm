@@ -795,7 +795,7 @@ Drinks Data
 	glass_icon_state = "ciderglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
 
-/datum/reagent/ethanol/gibbfloat
+/datum/reagent/drinks/soda/gibbfloat
 	glass_icon_state = "gibbfloats"
 	glass_center_of_mass = list("x"=16, "y"=8)
 

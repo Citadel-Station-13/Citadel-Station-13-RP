@@ -10,8 +10,10 @@
         if(istype(E))
             var/any_ethanol = FALSE
             for(var/R in D.required_reagents)
-                var/datum/reagent/ethanol/reagent = SSchemistry.reagent_lookup[R]
-                if(istype(reagent))
+                var/datum/reagent/reagent = SSchemistry.reagent_lookup[R]
+                if(istype(reagent, /datum/reagent/ethanol))
+                    any_ethanol=TRUE
+                if(istype(reagent, /datum/reagent/toxin)) // anything made from literal toxins is unsafe anyway, we don't care
                     any_ethanol=TRUE
             if(!any_ethanol)
                 Fail("[D.result] is alcoholic but can be made with only non-alcoholic ingredients")
