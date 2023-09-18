@@ -8,6 +8,6 @@
             for(var/R in D.required_reagents)
                 var/datum/reagent/ethanol/reagent = SSchemistry.reagent_lookup[R]
                 if(istype(reagent))
-                    any_ethanol=FALSE
+                    any_ethanol=TRUE
             if(!any_ethanol)
                 Fail("[D.result] is alcoholic but can be made with only non-alcoholic ingredients")
