@@ -2855,13 +2855,12 @@
 	glass_name = "Gin Fizz"
 	glass_desc = "Refreshingly lemony, deliciously dry."
 
-/datum/reagent/ethanol/nebula_riptide
+/datum/reagent/drinks/soda/nebula_riptide
 	name = "Nebula Riptide"
 	id = "nebula_riptide"
 	description = "The drink is compounded into form from a larger volume, leaving little to drink."
 	taste_description = "Burning hot, Freezing cold, and bitter irony"
 	color = "#09dbf7"
-	strength = 10
 
 	glass_name = "Nebula Riptide"
 	glass_desc = "Nebula Riptide. It's thick enough to stand on it's own, almost even parts spice and liquid."
@@ -3932,7 +3931,7 @@
 	glass_name = "Ichor Mead"
 	glass_desc = "A trip to Valhalla."
 
-/datum/reagent/ethanol/gibbfloat
+/datum/reagent/drink/soda/gibbfloat
 	name = "Gibbfloat"
 	id = "gibbfloat"
 	description = "A tasty, frothy drink."
@@ -4801,15 +4800,14 @@
 	glass_name = "Italian Crisis"
 	glass_desc = "This drink looks like it was a mistake."
 
-/datum/reagent/ethanol/shroomjuice
+/datum/reagent/drink/shroomjuice
 	name = "Dumb Shroom Juice"
 	id = "shroomjuice"
 	description = "The mushroom farmer didn't sort through their stock very well."
 	taste_description = "sweet and sour citrus with a savory kick."
-	strength = 100
-	druggy = 30
-	halluci = 30
-	var/adj_dizzy = 30
+	adj_druggy = 30
+	adj_halluci = 30
+	adj_dizzy = 30
 	color = "#d3785d"
 
 	glass_name = "Dumb Shroom Juice"

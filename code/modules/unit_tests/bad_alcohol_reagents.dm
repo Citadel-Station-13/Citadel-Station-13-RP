@@ -2,16 +2,14 @@
     SSchemistry.initialize_chemical_reactions()
     SSchemistry.initialize_chemical_reagents()
     for(var/datum/chemical_reaction/D as anything in SSchemistry.chemical_reactions)
+        if(istype(D,/datum/chemical_reaction/distilling)) // all distilling recipes should be passed, if alcoholic-making
+            continue
+        if(D.catalysts && D.catalysts.len > 0) // there isn't a catalyzed recipe around as of this writing that makes alcohol erroneously, so...
+            continue
         var/datum/reagent/ethanol/E = SSchemistry.reagent_lookup[D.result]
         if(istype(E))
             var/any_ethanol = FALSE
             for(var/R in D.required_reagents)
-                var/datum/reagent/ethanol/reagent = SSchemistry.reagent_lookup[R]
-                if(istype(reagent))
-                    any_ethanol=TRUE
-            for(var/R in D.catalysts)
-                if(R=="enzyme")  // a lot of alcoholic drinks are made with enzyme and some non-alcoholic ingredient
-                    any_ethanol=TRUE
                 var/datum/reagent/ethanol/reagent = SSchemistry.reagent_lookup[R]
                 if(istype(reagent))
                     any_ethanol=TRUE
