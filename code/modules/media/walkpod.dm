@@ -235,7 +235,7 @@
 		to_chat(usr, "<span class='warning'>The HeadPods are already deployed!</span>")
 		return
 	deployed_headpods = new ()
-	L.put_in_any_hand_if_possible(deployed_headpods)
+	L.put_in_hands_or_drop(deployed_headpods)
 	update_icon()
 
 /obj/item/device/walkpod/attackby(obj/item/W, mob/user)
@@ -244,7 +244,7 @@
 		return
 	return ..()
 
-/obj/item/device/walkpod/proc/restore_headpods(mob/living/potential_holder)
+/obj/item/device/walkpod/proc/restore_headpods(var/mob/living/potential_holder)
 	if(!deployed_headpods)
 		return
 
@@ -252,7 +252,7 @@
 		to_chat(listener, "<span class='notice'>The headphone cable reunites the [deployed_headpods] with the [src] by retracting inwards.</span>")
 
 	if(istype(potential_holder))
-		potential_holder.unEquip(deployed_headpods, force = TRUE)
+		potential_holder.is_holding(deployed_headpods)
 	QDEL_NULL(deployed_headpods)
 	update_icon()
 
