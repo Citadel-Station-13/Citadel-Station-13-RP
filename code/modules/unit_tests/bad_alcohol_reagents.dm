@@ -9,5 +9,11 @@
                 var/datum/reagent/ethanol/reagent = SSchemistry.reagent_lookup[R]
                 if(istype(reagent))
                     any_ethanol=TRUE
+            for(var/R in D.catalysts)
+                if(R=="enzyme")  // a lot of alcoholic drinks are made with enzyme and some non-alcoholic ingredient
+                    any_ethanol=TRUE
+                var/datum/reagent/ethanol/reagent = SSchemistry.reagent_lookup[R]
+                if(istype(reagent))
+                    any_ethanol=TRUE
             if(!any_ethanol)
                 Fail("[D.result] is alcoholic but can be made with only non-alcoholic ingredients")
