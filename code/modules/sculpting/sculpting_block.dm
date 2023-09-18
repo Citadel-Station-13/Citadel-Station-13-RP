@@ -42,6 +42,12 @@
 	var/sculpting_line_start
 	/// y end; this is set after end of sculpting right before we blend it into our icon
 	var/sculpting_line_end
+	/// is the model overlaid yet? for ones that get aligned to bottom, we don't overlay immediately.
+	var/sculpting_overlay_active
+	/// scultping user, if any
+	var/mob/sculpting_user
+	/// sculpting target
+	var/atom/movable/sculpting_target
 
 	/// current icon for sculpting; every operation flushes to this, this begins at a x by y blank.
 	/// we don't flush directly to our icon only because icon might get fucked with
@@ -63,27 +69,30 @@
 	finished = FALSE
 
 /obj/structure/sculpting_block/update_icon(updates)
-	cut_overlays()
 	if(length(underlays))
 		underlays.len = 0
+	if(sculpting_buffer)
+		icon = sculpting_slate
 	. = ..()
-	if(!finished)
-		underlays += sculpture_base_state
-	else
-		add_overlay(sculpture_base_state)
-
-	#warn impl above
+	underlays += sculpture_base_state
 
 /**
  * returns speed multiplier, or null if not tool
  */
 /obj/structure/sculpting_block/proc/is_sculpting_tool(obj/item/tool, mob/user)
-	#warn impl
+	// todo: well fucking obviously we don't want to just have only screwdrivers usable, right gang? ~silicons
+	if(tool.is_screwdriver())
+		return tool.tool_speed
+	return null
 
 /obj/structure/sculpting_block/proc/initiate_sculpting(mob/user, silent, atom/movable/forced_target, obj/item/tool)
+	if(finished)
+		if(!silent)
+			user?.action_feedback(SPAN_WARNING("[src] is finished."), src)
+			return FALSE
 	if(sculpting)
 		if(!silent)
-			user.action_feedback(SPAN_WARNING("Someone's already working on [src]."))
+			user?.action_feedback(SPAN_WARNING("Someone's already working on [src]."), src)
 		return FALSE
 	var/atom/movable/target = isnull(forced_target)? ask_for_target(user) : forced_target
 	if(isnull(tool))
@@ -91,16 +100,56 @@
 	var/tool_multiplier = is_sculpting_tool(tool)
 	if(isnull(tool_multiplier))
 		if(!silent)
-			user.action_feedback(SPAN_WARNING("You must be holding a valid sculpting tool."))
+			user?.action_feedback(SPAN_WARNING("You must be holding a valid sculpting tool."), src)
 		return FALSE
+	var/list/model_tuple = get_model_tuple(target, material.icon_colour)
+	var/icon/model = model_tuple[1]
+	var/model_width = model.Width()
+	if(model_width > icon_x_dimension)
+		if(!silent)
+			user.action_feedback(SPAN_WARNING("[target] is too wide."), src)
+		return FALSE
+	var/model_height = model.Height()
+	if(model_height > icon_y_dimension)
+		if(!silent)
+			user.action_feedback(SPAN_WARNING("[target] is too tall."), src)
+		return FALSE
+	var/model_y_align = 0
+	var/model_x_align = 0
+	if(model_height != icon_y_dimension || model_width != icon_x_dimension)
+		// align to bottom, center width
+		if(model_width != icon_x_dimension)
+			model_x_align = FLOOR((icon_x_dimension - model_width) / 2, 1)
+		if(model_height != icon_y_dimension)
+			model_y_align = icon_y_dimension - model_height
 
-	setup_op(target)
+	sculpting_buffer = model
+	sculpting_user = user
+	sculpting_target = target
+	sculpting_line_start = sculpting_line
+	sculpting_overlay_active = model_height <= sculpting_line
 
 	var/lines = 0
 
+	#warn filter icons/system/colors_32x32.dmi "white"
+
 	#warn impl
 
-	finish_op(lines)
+	sculpting_line_end = sculpting_line_start + lines
+	sculpting_line += lines
+
+	if(lines)
+		if(isnull(sculpting_slate))
+			create_slate()
+		sculpting_buffer.Crop(model_height - lines + 1, 1, model_width, model_height)
+		#warn crop out irrelevant parts and blend in
+
+	sculpting_line_start = null
+	sculpting_buffer = null
+	sculpting_line_end = null
+	sculpting_user = null
+	sculpting_target = null
+	sculpting_overlay_active = null
 
 	check_completion()
 
@@ -110,7 +159,8 @@
 		flush_finished()
 
 /obj/structure/sculpting_block/proc/flush_finished()
-	#warn impl
+	icon = sculpting_slate
+	sculpting_slate = null
 	update_appearance()
 
 /**
@@ -135,6 +185,9 @@
 /obj/structure/sculpting_block/proc/get_possible_targets(mob/user, range_to_scan = 7)
 	. = list()
 	var/list/atom/potential = view(range_to_scan, user)
+	var/list/mob/mobs = list()
+	var/list/obj/objs = list()
+	var/list/objs_seen_paths = list()
 	for(var/atom/movable/AM in potential)
 		if(AM.atom_flags & ATOM_ABSTRACT)
 			continue
@@ -144,39 +197,44 @@
 			continue
 		if(isobj(AM))
 			var/obj/O = AM
-			if(!(O.obj_flags & OBJ_NO_SCULPTING))
+			if(O.obj_flags & OBJ_NO_SCULPTING)
 				continue
+			if(objs_seen_paths[O.type])
+				continue
+			objs_seen_paths[O.type] = TRUE
+			objs += O
 		else
 			var/mob/M = AM
 			//! legacy code
 			if(M.is_incorporeal())
 				continue
 			//! end
-		. += AM
+			mobs += M
+	return mobs + objs
 
 /**
  * ask someone for target
  */
 /obj/structure/sculpting_block/proc/ask_for_target(mob/user)
-	#warn impl
-
-/obj/structure/sculpting_block/proc/setup_op(atom/movable/target)
-	sculpting_line_start = sculpting_line
-	#warn buffer
-
-/obj/structure/sculpting_block/proc/finish_op(lines)
-	sculpting_line_end = sculpting_line_start + lines
-
-	sculpting_line += lines
-
-	if(lines)
-		if(isnull(sculpting_slate))
-			create_slate()
-		#warn crop out irrelevant parts and blend in
-
-	sculpting_line_start = null
-	sculpting_buffer = null
-	sculpting_line_end = null
+	// todo: when we have click intercepts refactored, user should be asked to click on a target.
+	var/list/possible = get_possible_targets(user)
+	return input(user, "Pick a target", "Sculpting") as null|anything in possible
 
 /obj/structure/sculpting_block/proc/create_slate()
-	#warn impl
+	var/icon/generated
+	generated = icon('icons/system/blank_32x32.dmi')
+	generated.Scale(icon_x_dimension, icon_y_dimension)
+	sculpting_slate = generated
+
+/obj/structure/sculpting_block/proc/check_target(mob/user, atom/movable/target)
+	if(isnull(sculpting_user))
+		return TRUE // userless
+	if(QDELETED(user) || QDELETED(target))
+		return FALSE
+	if(get_dist(user, target) > min(user.using_perspective.cached_view_width, user.using_perspective.cached_view_height))
+		return FALSE
+	if(!user.can_see_plane(target.plane))
+		return FALSE
+	if(target.invisibility > user.see_invisible)
+		return FALSE
+	return TRUE
