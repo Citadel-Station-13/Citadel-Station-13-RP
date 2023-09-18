@@ -37,31 +37,7 @@
 	/// How many songs are we allowed to queue up?
 	var/max_queue_len = 3
 	var/list/queue = list()
-	/// What is our current genre?
-	var/current_genre = "Electronic"
-	//var/list/genres = list("Arcade", "Alternative", "Classical and Orchestral", "Country and Western", "Disco, Funk, Soul, and R&B", "Electronic", "Folk and Indie", "Hip-Hop and Rap", "Jazz and Lounge", "Metal", "Pop", "Rock", "Sol Common Precursors") //Avaliable genres.
 	var/datum/media_track/current_track
-	var/list/datum/media_track/tracks = list(
-		new/datum/media_track("Beyond", 'sound/ambience/ambispace.ogg'),
-		new/datum/media_track("Clouds of Fire", 'sound/music/clouds.s3m'),
-		new/datum/media_track("D`Bert", 'sound/music/title2.ogg'),
-		new/datum/media_track("D`Fort", 'sound/ambience/song_game.ogg'),
-		new/datum/media_track("Floating", 'sound/music/main.ogg'),
-		new/datum/media_track("Endless Space", 'sound/music/space.ogg'),
-		new/datum/media_track("Part A", 'sound/misc/TestLoop1.ogg'),
-		new/datum/media_track("Scratch", 'sound/music/title1.ogg'),
-		new/datum/media_track("Trai`Tor", 'sound/music/traitor.ogg'),
-		new/datum/media_track("Stellar Transit", 'sound/ambience/space/space_serithi.ogg'),
-	)
-
-	// Only visible if hacked
-	var/list/datum/media_track/secret_tracks = list(
-		new/datum/media_track("Clown", 'sound/music/clown.ogg'),
-		new/datum/media_track("Space Asshole", 'sound/music/space_asshole.ogg'),
-		new/datum/media_track("Thunderdome", 'sound/music/THUNDERDOME.ogg'),
-		new/datum/media_track("Russkiy rep Diskoteka", 'sound/music/russianrapdisco.ogg')
-	)
-
 	// Only visible if emagged
 	var/list/datum/media_track/emag_tracks = list(
 	)
@@ -83,7 +59,7 @@
 /obj/machinery/media/jukebox/proc/getTracksList()
 	return hacked ? SSmedia_tracks.all_tracks : SSmedia_tracks.jukebox_tracks
 
-/obj/machinery/media/jukebox/process(delta_time)
+/obj/machinery/media/jukebox/process()
 	if(!playing)
 		return
 	if(inoperable())
@@ -126,12 +102,9 @@
 	update_music()
 
 /obj/machinery/media/jukebox/proc/set_hacked(var/newhacked)
-	if (hacked == newhacked) return
+	if(hacked == newhacked)
+		return
 	hacked = newhacked
-	if (hacked)
-		tracks.Add(secret_tracks)
-	else
-		tracks.Remove(secret_tracks)
 	updateDialog()
 
 /obj/machinery/media/jukebox/attackby(obj/item/W as obj, mob/user as mob)
@@ -243,29 +216,26 @@
 	ui_interact(user)
 
 /obj/machinery/media/jukebox/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	//var/title = "RetroBox - Space Style"
 	var/list/data = ..()
 
-	if(operable())
-		data["playing"] = playing
-		data["hacked"] = hacked
-		data["max_queue_len"] = max_queue_len
-		data["media_start_time"] = media_start_time
-		data["loop_mode"] = loop_mode
-		data["volume"] = volume
-		if(current_track)
-			data["current_track_ref"] = "\ref[current_track]"  // Convenient shortcut
-			data["current_track"] = current_track.toTguiList()
-		data["percent"] = playing ? min(100, round(world.time - media_start_time) / current_track.duration) : 0;
+	data["playing"] = playing
+	data["loop_mode"] = loop_mode
+	data["volume"] = volume
+	data["current_track_ref"] = null
+	data["current_track"] = null
+	data["current_genre"] = null
+	if(current_track)
+		data["current_track_ref"] = "\ref[current_track]"  // Convenient shortcut
+		data["current_track"] = current_track.toTguiList()
+		data["current_genre"] = current_track.genre
+	data["percent"] = playing ? min(100, round(world.time - media_start_time) / current_track.duration) : 0;
 
-		data["current_genre"] = current_genre
+	var/list/ui_tracks = list()
+	for(var/datum/media_track/T in getTracksList())
+		ui_tracks.Add(list(T.toTguiList()))
+	data["tracks"] = ui_tracks
 
-		var/list/tgui_tracks = new
-		for(var/datum/media_track/T in tracks)
-			if(T.genre != current_genre)
-				continue
-			tgui_tracks[++tgui_tracks.len] = T.toTguiList()
-		data["tracks"] = tgui_tracks
+	return data
 
 	// update the ui if it exists, returns null if no ui is passed/found
 /obj/machinery/media/jukebox/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -344,6 +314,7 @@
 	return ..()
 
 /obj/machinery/media/jukebox/emag_act(remaining_charges, mob/user)
+	var/list/tracks = getTracksList()
 	if(!emagged)
 		emagged = 1
 		StopPlaying()
@@ -374,6 +345,7 @@
 
 // Advance to the next track - Don't start playing it unless we were already playing
 /obj/machinery/media/jukebox/proc/NextTrack()
+	var/list/tracks = getTracksList()
 	if(!tracks.len) return
 	var/curTrackIndex = max(1, tracks.Find(current_track))
 	var/newTrackIndex = (curTrackIndex % tracks.len) + 1  // Loop back around if past end
@@ -384,6 +356,7 @@
 
 // Advance to the next track - Don't start playing it unless we were already playing
 /obj/machinery/media/jukebox/proc/PrevTrack()
+	var/list/tracks = getTracksList()
 	if(!tracks.len) return
 	var/curTrackIndex = max(1, tracks.Find(current_track))
 	var/newTrackIndex = curTrackIndex == 1 ? tracks.len : curTrackIndex - 1

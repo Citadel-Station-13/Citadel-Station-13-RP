@@ -14,16 +14,16 @@
 	var/jukebox		// Does it even show up in the jukebox?
 	var/genre		// What is the genre of the song?
 
-/datum/media_track/New(var/url, var/title, var/duration, var/artist = "", var/secret = 0, var/emag = 0, var/lobby = 0, var/jukebox = 0, var/genre = "")
+/datum/media_track/New(var/url, var/title, var/duration, var/artist = "", var/genre = "", var/secret = 0, var/emag = 0, var/lobby = 0, var/jukebox = 0)
 	src.url = url
 	src.title = title
 	src.artist = artist
+	src.genre = genre
 	src.duration = duration
 	src.secret = secret
 	src.emag = emag
 	src.lobby = lobby
 	src.jukebox = jukebox
-	src.genre = genre
 
 /datum/media_track/proc/display()
 	var str = "\"[title]\""
@@ -32,4 +32,4 @@
 	return str
 
 /datum/media_track/proc/toTguiList()
-	return list("ref" = "\ref[src]", "title" = title, "artist" = artist, "duration" = duration)
+	return list("ref" = "\ref[src]", "title" = title, "artist" = artist, "genre" = genre, "duration" = duration)
