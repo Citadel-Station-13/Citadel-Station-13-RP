@@ -3936,7 +3936,6 @@
 	id = "gibbfloat"
 	description = "A tasty, frothy drink."
 	taste_description = "soda float"
-	strength = 100
 
 	glass_name = "Gibbfloat"
 	glass_desc = "A tasty, frothy drink"
@@ -4812,6 +4811,44 @@
 
 	glass_name = "Dumb Shroom Juice"
 	glass_desc = "Touch fuzzy, get dizzy."
+
+/datum/reagent/drink/shroomjuice/affect_blood(mob/living/carbon/M, alien, removed)
+	. = ..()
+
+	if(alien == IS_DIONA)
+		return
+
+	var/threshold = 1
+	if(alien == IS_SKRELL)
+		threshold = 1.2
+
+	if(alien == IS_SLIME)
+		threshold = 0.8
+
+	M.druggy = max(M.druggy, 30)
+
+	var/effective_dose = dose
+	if(issmall(M)) effective_dose *= 2
+	if(effective_dose < 1 * threshold)
+		M.apply_effect(3, STUTTER)
+		M.make_dizzy(5)
+		if(prob(5))
+			M.emote(pick("twitch", "giggle"))
+	else if(effective_dose < 2 * threshold)
+		M.apply_effect(3, STUTTER)
+		M.make_jittery(5)
+		M.make_dizzy(5)
+		M.druggy = max(M.druggy, 35)
+		if(prob(10))
+			M.emote(pick("twitch", "giggle"))
+	else
+		M.apply_effect(3, STUTTER)
+		M.make_jittery(10)
+		M.make_dizzy(10)
+		M.druggy = max(M.druggy, 40)
+		if(prob(15))
+			M.emote(pick("twitch", "giggle"))
+
 
 /datum/reagent/ethanol/honeyshot
 	name = "Honey Shot"
