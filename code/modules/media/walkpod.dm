@@ -122,7 +122,7 @@
 	if(current_track && playing)
 		media_url = current_track.url
 		media_start_time = world.time
-		//runechat_message("*&nbsp;[current_track.display()]&nbsp;*", specific_viewers = list(listener))
+		to_chat(usr, SPAN_NOTICE("\The [src] begins to play [current_track.display()]."))
 	else
 		media_url = ""
 		media_start_time = 0
