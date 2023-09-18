@@ -24,7 +24,6 @@
 	idle_power_usage = 10
 	active_power_usage = 100
 	circuit = /obj/item/circuitboard/jukebox
-	clicksound = 'sound/machines/buttonbeep.ogg'
 
 	// Vars for hacking
 	var/datum/wires/jukebox/wires = null
