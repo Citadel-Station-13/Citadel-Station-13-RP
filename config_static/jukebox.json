@@ -114,6 +114,16 @@
 "genre": "Rock"
 },
 {
+"url": "https://files.catbox.moe/s1igwu.mp3",
+"title": "Dream On",
+"duration": 2680,
+"artist": "Aerosmith",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
 "url": "https://files.catbox.moe/m8qpa4.m4a",
 "title": "Space Age Love Song",
 "duration": 2270,
@@ -255,6 +265,16 @@
 "genre": "Arcade"
 },
 {
+"url": "https://files.catbox.moe/gr1oyd.mp3",
+"title": "Meow",
+"duration": 2230,
+"artist": "Anamanaguchi",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Arcade"
+},
+{
 "url": "https://files.catbox.moe/15ybh9.mp3",
 "title": "Handel This",
 "duration": 890,
@@ -388,7 +408,7 @@
 "genre": "Disco, Funk, Soul, and R&B"
 },
 {
-"url": "https://files.catbox.moe/5e7fk5.m4a",
+"url": "https://files.catbox.moe/umha2l.mp3",
 "title": "Shooting Stars",
 "duration": 2270,
 "artist": "Bag Raiders",
@@ -772,9 +792,9 @@
 "genre": "Electronic"
 },
 {
-"url": "https://files.catbox.moe/1jcqzk.m4a",
+"url": "https://files.catbox.moe/quy6ss.mp3",
 "title": "Dramophone",
-"duration": 2040,
+"duration": 2030,
 "artist": "Caravan Palace",
 "secret": false,
 "lobby": false,
@@ -782,7 +802,7 @@
 "genre": "Electronic"
 },
 {
-"url": "https://files.catbox.moe/4ju4p1.mp3",
+"url": "https://files.catbox.moe/s0j5lb.mp3",
 "title": "Lone Digger",
 "duration": 2300,
 "artist": "Caravan Palace",
@@ -815,6 +835,16 @@
 "url": "https://files.catbox.moe/o824i3.m4a",
 "title": "Wonderland",
 "duration": 1920,
+"artist": "Caravan Palace",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/u45ieq.mp3",
+"title": "Russian",
+"duration": 2420,
 "artist": "Caravan Palace",
 "secret": false,
 "lobby": false,
@@ -987,7 +1017,7 @@
 "duration": 1180,
 "artist": "Cboyardee",
 "secret": false,
-"lobby": false,
+"lobby": true,
 "jukebox": true,
 "genre": "Electronic"
 },
@@ -1037,7 +1067,7 @@
 "duration": 3330,
 "artist": "Chris Hadfield",
 "secret": false,
-"lobby": false,
+"lobby": true,
 "jukebox": true,
 "genre": "Pop"
 },
@@ -1406,7 +1436,7 @@
 "duration": 3180,
 "artist": "David Bowie",
 "secret": false,
-"lobby": false,
+"lobby": true,
 "jukebox": true,
 "genre": "Rock"
 },
@@ -1806,7 +1836,7 @@
 "duration": 2660,
 "artist": "Duane Elms",
 "secret": false,
-"lobby": false,
+"lobby": true,
 "jukebox": true,
 "genre": "Folk and Indie"
 },
@@ -1977,6 +2007,16 @@
 "url": "https://files.catbox.moe/7x2cvf.mp3",
 "title": "Rocket Man",
 "duration": 2820,
+"artist": "Elton John",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/ey2e3j.mp3",
+"title": "I'm still standing",
+"duration": 1890,
 "artist": "Elton John",
 "secret": false,
 "lobby": false,
@@ -3045,6 +3085,117 @@
 "genre": "Electronic"
 },
 {
+"url": "https://files.catbox.moe/z1kgsz.mp3",
+"title": "12 A DAY",
+"duration": 690,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/ojf8mw.mp3",
+"title": "ALMONDS",
+"duration": 1100,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/1pbdz2.mp3",
+"title": "ARTHUR",
+"duration": 540,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/5gt87d.mp3",
+"title": "Chemical Burns",
+"duration": 1890,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/5gt87d.mp3",
+"title": "CMYK",
+"duration": 1630,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/xyseil.mp3",
+"title": "Drawing The Blinds",
+"duration": 1440,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/9hdy5s.mp3",
+"title": "FIT TOGETHER",
+"duration": 880,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/pe5knc.mp3",
+"title": "FRYING ON THE HOT CONCRETE",
+"duration": 1360,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/64g9sc.mp3",
+"title": "Glass",
+"duration": 2190,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/zdmpdi.mp3",
+"title": "GLOCKENSPIEL",
+"duration": 810,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/ekoaus.mp3",
+"title": "[ER#$-P3E IS STO4ED IN THE BA#$LS",
+"duration": 260,
+"artist": "HOME",
+"genre": "Electronic",
+"emag": true,
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
 "url": "https://files.catbox.moe/18lvy9.m4a",
 "title": "The Reason",
 "duration": 2320,
@@ -4063,7 +4214,7 @@
 "duration": 1340,
 "artist": "Leslie Fish",
 "secret": false,
-"lobby": false,
+"lobby": true,
 "jukebox": true,
 "genre": "Folk and Indie"
 },
@@ -4073,7 +4224,7 @@
 "duration": 1700,
 "artist": "Leslie Fish",
 "secret": false,
-"lobby": false,
+"lobby": true,
 "jukebox": true,
 "genre": "Folk and Indie"
 },
@@ -7009,9 +7160,9 @@
 "genre": "Alternative"
 },
 {
-"url": "https://files.catbox.moe/17w9d1.m4a",
-"title": "Once in a Lifetime",
-"duration": 2250,
+"url": "https://files.catbox.moe/aw43y2.mp3",
+"title": "Once in a Lifetime (2005 Remaster)",
+"duration": 2590,
 "artist": "Talking Heads",
 "secret": false,
 "lobby": false,
@@ -8519,5 +8670,135 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Arcade"
+},
+{
+"url": "https://files.catbox.moe/q3f6sq.mp3",
+"title": "Rhapsody In Blue",
+"duration": 9870,
+"artist": "Kamil Hala, Slovak Philharmonic Orchestra, Libor Pešek",
+"genre": "Classical and Orchestral",
+"secret": false,
+"lobby": true,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/qa6ahi.mp3",
+"title": "Deadlines",
+"duration": 1570,
+"artist": "Network Music Ensemble",
+"genre": "Rock",
+"secret": false,
+"lobby": true,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/xlrbbe.mp3",
+"title": "Pure Imagination",
+"duration": 2060,
+"artist": "Fiona Apple",
+"genre": "Electronic",
+"secret": false,
+"lobby": true,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/w48oqv.mp3",
+"title": "Pushin' The Speed of Light",
+"duration": 2130,
+"artist": "Julia Ecklar & Anne Prather",
+"genre": "Folk and Indie",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/yvn8bu.mp3",
+"title": "Stuck Here",
+"duration": 1360,
+"artist": "Free Fall & Other Delights",
+"genre": "Folk and Indie",
+"secret": false,
+"lobby": true,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/hwsbsi.mp3",
+"title": "Don't Push That Button",
+"duration": 2450,
+"artist": "Duane Elms",
+"genre": "Folk and Indie",
+"secret": false,
+"lobby": true,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/iizfw9.mp3",
+"title": "Late Night at the Draco Tavern",
+"duration": 2600,
+"artist": "Duane Elms",
+"genre": "Folk and Indie",
+"secret": false,
+"lobby": true,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/4zaljk.mp3",
+"title": "Startide Rising",
+"duration": 1050,
+"artist": "Duane Elms",
+"genre": "Folk and Indie",
+"secret": false,
+"lobby": true,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/ij2qa8.mp3",
+"title": "2AM",
+"duration": 1720,
+"artist": "William Reid",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/79q5a4.mp3",
+"title": "'Lectric Love",
+"duration": 2250,
+"artist": "The Destroyers",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/th3gzq.mp3",
+"title": "Deltron 3030",
+"duration": 2460,
+"artist": "Del The Funky Homosapien",
+"genre": "Hip-Hop and Rap",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/ohbbxv.mp3",
+"title": "After dark",
+"duration": 2590,
+"artist": "Mr.kitty",
+"genre": "Alternative",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/jt0ahe.mp3",
+"title": "Free Bird",
+"duration": 5470,
+"artist": "Lynyrd Skynyrd",
+"genre": "Rock",
+"secret": true,
+"lobby": false,
+"jukebox": true
 }
 ]
