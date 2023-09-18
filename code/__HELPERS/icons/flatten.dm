@@ -10,13 +10,13 @@
 /**
  * Generates an icon with all 4 directions of something.
  *
- * todo: this has no support for alignment / centering yet
- *
  * @params
  * - A - appearancelike object.
  * - no_anim - flatten out animations
+ *
+ * @return flat icon
  */
-/proc/get_compound_icon(atom/A, no_anim)
+/proc/get_compound_icon_simple(atom/A, no_anim)
 	var/mutable_appearance/N = new
 	N.appearance = A
 	N.dir = NORTH
@@ -39,6 +39,76 @@
 	qdel(east)
 	qdel(west)
 	return full
+
+/**
+ * Generates an icon with all 4 directions of something.
+ *
+ * @params
+ * - A - appearancelike object.
+ * - no_anim - flatten out animations
+ *
+ * @return list(flat icon, offset x, offset y) where x/y offsets are centering pixel offsets
+ */
+/proc/get_compound_icon(atom/A, no_anim)
+	var/mutable_appearance/N = new
+	N.appearance = A
+
+	var/list/gfi_return
+	var/x_offset = 0
+	var/y_offset = 0
+	var/got_anything = FALSE
+
+	N.dir = NORTH
+	gfi_return = get_flat_icon(N, NORTH, no_anim = no_anim)
+	var/icon/north
+	if(!isnull(gfi_return))
+		north = gfi_return[1]
+		x_offset = BIGGER_MAGNITUDE(x_offset, gfi_return[2])
+		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
+		got_anything = TRUE
+	N.dir = SOUTH
+	var/icon/south
+	if(!isnull(gfi_return))
+		south = gfi_return[1]
+		x_offset = BIGGER_MAGNITUDE(x_offset, gfi_return[2])
+		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
+		got_anything = TRUE
+	N.dir = EAST
+	var/icon/east
+	if(!isnull(gfi_return))
+		east = gfi_return[1]
+		x_offset = BIGGER_MAGNITUDE(x_offset, gfi_return[2])
+		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
+		got_anything = TRUE
+	N.dir = WEST
+	var/icon/west
+	if(!isnull(gfi_return))
+		west = gfi_return[1]
+		x_offset = BIGGER_MAGNITUDE(x_offset, gfi_return[2])
+		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
+		got_anything = TRUE
+
+	qdel(N)
+
+	if(!got_anything)
+		return
+
+	//Starts with a blank icon because of byond bugs.
+	var/icon/full = icon('icons/system/blank_32x32.dmi', "")
+	if(!isnull(north))
+		full.Insert(north, dir = NORTH)
+		qdel(north)
+	if(!isnull(south))
+		full.Insert(south, dir = SOUTH)
+		qdel(south)
+	if(!isnull(east))
+		full.Insert(east, dir = EAST)
+		qdel(east)
+	if(!isnull(west))
+		full.Insert(west, dir = WEST)
+		qdel(west)
+
+	return list(full, x_offset, y_offset)
 
 /**
  * grabs flat icon with no care for alignment / basically just grabs a png

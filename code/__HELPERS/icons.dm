@@ -992,7 +992,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 /**
  * Animate a 'halo' around an object.
  *
- * This proc is not exactly cheap. You'd be well advised to set up many-loops rather than call this super-often. get_compound_icon is
+ * This proc is not exactly cheap. You'd be well advised to set up many-loops rather than call this super-often. get_compound_icon_simple is
  * mostly to blame for this. If Byond ever implements a way to get something's icon more 'gently' than this, do that instead.
  *
  * * A - This is the atom to put the halo on
@@ -1020,7 +1020,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 	if(simple_icons)
 		hole = icon(A.icon, A.icon_state)
 	else
-		hole = get_compound_icon(A)
+		hole = get_compound_icon_simple(A)
 
 	hole.MapColors(0,0,0, 0,0,0, 0,0,0, 1,1,1) //White.
 

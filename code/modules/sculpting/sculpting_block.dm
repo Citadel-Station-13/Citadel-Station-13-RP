@@ -57,11 +57,21 @@
 	/// this starts at the topmost y
 	/// if we're done sculpting, this should be nulled for consistency
 	var/sculpting_line
+	/// virtual vis contents holder for buffer
+	var/atom/movable/sculpting_render/sculpting_renderer
+	/// slate dimension y
+	var/slate_dimension_y
+	/// slate dimension x
+	var/slate_dimension_x
 
 /obj/structure/sculpting_block/Initialize(mapload, material)
 	material = SSmaterials.get_material(material)
 	// todo: if it autoinit'd, don't do this
 	reset_sculpting()
+	return ..()
+
+/obj/structure/sculpting_block/Destroy()
+	QDEL_NULL(scultping_renderer)
 	return ..()
 
 /obj/structure/sculpting_block/proc/reset_sculpting()
@@ -86,10 +96,14 @@
 	return null
 
 /obj/structure/sculpting_block/proc/initiate_sculpting(mob/user, silent, atom/movable/forced_target, obj/item/tool)
+	if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_SCULPTING_COOLDOWN))
+		if(!silent)
+			user?.action_feedback(SPAN_WARNING("[src] was worked on too recently.."), src)
+		return FALSE
 	if(finished)
 		if(!silent)
 			user?.action_feedback(SPAN_WARNING("[src] is finished."), src)
-			return FALSE
+		return FALSE
 	if(sculpting)
 		if(!silent)
 			user?.action_feedback(SPAN_WARNING("Someone's already working on [src]."), src)
@@ -102,26 +116,31 @@
 		if(!silent)
 			user?.action_feedback(SPAN_WARNING("You must be holding a valid sculpting tool."), src)
 		return FALSE
+
+	sculpting = TRUE
+
 	var/list/model_tuple = get_model_tuple(target, material.icon_colour)
+	TIMER_COOLDOWN_START(src, CD_INDEX_SCULPTING_COOLDOWN, 1 SECONDS)
 	var/icon/model = model_tuple[1]
 	var/model_width = model.Width()
-	if(model_width > icon_x_dimension)
-		if(!silent)
-			user.action_feedback(SPAN_WARNING("[target] is too wide."), src)
-		return FALSE
 	var/model_height = model.Height()
 	if(model_height > icon_y_dimension)
 		if(!silent)
 			user.action_feedback(SPAN_WARNING("[target] is too tall."), src)
+		sculpting = FALSE
 		return FALSE
 	var/model_y_align = 0
 	var/model_x_align = 0
-	if(model_height != icon_y_dimension || model_width != icon_x_dimension)
+	if(isnull(slate_dimension_x))
+		slate_dimension_x = icon_x_dimension
+	if(isnull(slate_dimension_y))
+		slate_dimension_y = icon_y_dimension
+	if(model_height != slate_y_dimension || model_width != slate_x_dimension)
 		// align to bottom, center width
-		if(model_width != icon_x_dimension)
-			model_x_align = FLOOR((icon_x_dimension - model_width) / 2, 1)
-		if(model_height != icon_y_dimension)
-			model_y_align = icon_y_dimension - model_height
+		if(model_width != slate_x_dimension)
+			model_x_align = FLOOR((slate_x_dimension - model_width) / 2, 1)
+		if(model_height != slate_y_dimension)
+			model_y_align = slate_y_dimension - model_height
 
 	sculpting_buffer = model
 	sculpting_user = user
@@ -135,14 +154,23 @@
 
 	#warn impl
 
-	sculpting_line_end = sculpting_line_start + lines
-	sculpting_line += lines
+	sculpting_line_end = sculpting_line_start - lines
+	sculpting_line -= lines
 
 	if(lines)
 		if(isnull(sculpting_slate))
 			create_slate()
-		sculpting_buffer.Crop(model_height - lines + 1, 1, model_width, model_height)
-		#warn crop out irrelevant parts and blend in
+		if(model_width < slate_dimension_x)
+			// allow expansion but only for width
+			var/x_alignment = FLOOR((model_width - slate_dimension_x / 2), 1)
+			sculpting_slate.Crop(-x_alignment, 1, model_width - slate_dimension_x - x_alignment, slate_dimension_y)
+			set_base_pixel_x(-x_alignment)
+		if(!sculpting_overlay_active)
+			// we didn't even reach the buffer yet
+		else
+			sculpting_buffer.Crop(1, model_height - sculpting_line_end, model_width, model_height)
+			sculpting_slate.Blend(sculpting_buffer, ICON_OVERLAY, model_x_align, sculpting_line_end)
+		update_appearance()
 
 	sculpting_line_start = null
 	sculpting_buffer = null
@@ -153,6 +181,8 @@
 
 	check_completion()
 
+	sculpting = FALSE
+
 /obj/structure/sculpting_block/proc/check_completion()
 	if(sculpting_line > icon_y_dimension)
 		finished = TRUE
@@ -161,6 +191,7 @@
 /obj/structure/sculpting_block/proc/flush_finished()
 	icon = sculpting_slate
 	sculpting_slate = null
+	QDEL_NULL(sculpting_renderer)
 	update_appearance()
 
 /**
@@ -173,7 +204,7 @@
  * @return list(icon, x, y) where x/y are centering offsets
  */
 /obj/structure/sculpting_block/proc/get_model_tuple(atom/movable/to_clone, material_color)
-	. = get_flat_icon(to_clone)
+	. = get_compound_icon(to_clone)
 	if(isnull(.))
 		return
 	var/icon/flattened = .[1]
@@ -225,6 +256,8 @@
 	generated = icon('icons/system/blank_32x32.dmi')
 	generated.Scale(icon_x_dimension, icon_y_dimension)
 	sculpting_slate = generated
+	slate_dimension_x = icon_x_dimension
+	slate_dimension_y = icon_y_dimension
 
 /obj/structure/sculpting_block/proc/check_target(mob/user, atom/movable/target)
 	if(isnull(sculpting_user))
@@ -238,3 +271,17 @@
 	if(target.invisibility > user.see_invisible)
 		return FALSE
 	return TRUE
+
+/**
+ * rendering object that sits in vis contents while sculpting
+ */
+/atom/movable/sculpting_render
+	atom_flags = ATOM_ABSTRACT
+	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_DIR | VIS_INHERIT_ID
+	layer = FLOAT_LAYER
+	plane = OBJ_PLANE
+	mouse_opacity = MOUSE_OPACITY_ICON
+
+/atom/movable/sculpting_render/Destroy()
+	vis_locs.len = 0
+	return ..()
