@@ -386,7 +386,7 @@
 			return 0
 		if(COLORATION_MODE_MATRIX, COLORATION_MODE_MULTIPLY)
 			return 1
-		return coloration_amount
+	return coloration_amount
 
 /obj/proc/set_coloration_matrix(list/matrix)
 	if(coloration_mode != COLORATION_MODE_MATRIX)
@@ -416,14 +416,13 @@
 	return unpack_coloration_string(coloration)
 
 /obj/proc/get_coloration_packed()
-		switch(coloration_mode)
-			if(COLORATION_MODE_MULTIPLY)
-				// matrices are unsupported
-				return islist(color)? "#ffffff" : color
-			if(COLORATION_MODE_MATRIX)
-				// unsupported
-				return "#ffffff"
-		return ""
+	switch(coloration_mode)
+		if(COLORATION_MODE_MULTIPLY)
+			// matrices are unsupported
+			return islist(color)? "#ffffff" : color
+		if(COLORATION_MODE_MATRIX)
+			// unsupported
+			return "#ffffff"
 	return coloration
 
 //* Hiding / Underfloor

@@ -37,9 +37,11 @@
 
 /datum/component/rig_piece/RegisterWithParent()
 	. = ..()
+	#warn impl
 
 /datum/component/rig_piece/UnregisterFromParent()
 	. = ..()
+	#warn impl
 
 /datum/component/rig_piece/proc/tgui_piece_data()
 	return list(

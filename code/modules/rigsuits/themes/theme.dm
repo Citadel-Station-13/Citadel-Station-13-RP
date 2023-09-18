@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	if(!isnull(GLOB.rig_theme_cache[path]))
 		return GLOB.rig_theme_cache[path]
 	var/datum/rig_theme/instance = new path
-	GLOB.rig_theme_path[path] = instance
+	GLOB.rig_theme_cache[path] = instance
 	return instance
 
 /datum/rig_theme
@@ -54,11 +54,13 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/coloration_amount = 0
 
 	//* vars to be replaced by components/modules at some point
-	var/datum/armor/armor
+	var/datum/armor/armor = /datum/armor/rigsuit
 	var/min_pressure_protect = 0 * ONE_ATMOSPHERE
 	var/max_pressure_protect = 2 * ONE_ATMOSPHERE
 	var/min_temperature_protect = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	var/max_temperature_protect = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
+	var/insulated_gloves = TRUE
+	var/siemens_coefficient = 0.3
 
 	#warn values lmao
 
@@ -71,10 +73,16 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 /datum/rig_theme/proc/imprint_control_appearance(obj/item/rig/control_module)
 	#warn impl
 
+/datum/rig_theme/proc/imprint_control_behavior(obj/item/rig/control_module)
+	#warn impl
+
 /datum/rig_theme/proc/add_piece(datum/rig_piece/piece_path)
 	if(ispath(piece_path))
 		piece_path = new piece_path
 	#warn imprint piece with base states
+
+/datum/rig_theme/proc/apply_piece(datum/component/rig_piece/piece)
+	#warn impl
 
 /**
  * RIG piece definition datums
