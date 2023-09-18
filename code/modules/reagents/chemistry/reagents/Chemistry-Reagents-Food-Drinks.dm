@@ -4804,9 +4804,6 @@
 	id = "shroomjuice"
 	description = "The mushroom farmer didn't sort through their stock very well."
 	taste_description = "sweet and sour citrus with a savory kick."
-	adj_druggy = 30
-	adj_halluci = 30
-	adj_dizzy = 30
 	color = "#d3785d"
 
 	glass_name = "Dumb Shroom Juice"
