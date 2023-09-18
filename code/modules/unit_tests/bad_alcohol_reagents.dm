@@ -1,0 +1,20 @@
+/datum/unit_test/accidental_alcoholism/Run()
+    var/obj/item/reagent_synth/drink/soda_disp = new
+    var/obj/item/reagent_synth/cafe/coff_disp = new
+    var/list/soda_reagents = soda_disp.reagents_provided
+    var/list/coffee_reagents = coff_disp.reagents_provided
+    var/list/open = list()
+    for(var/datum/reagent/R as anything in soda_reagents | coffee_reagents)
+        open += initial(R.id)
+    while(length(open))
+        var/top = open[1]
+        closed += top
+        all += top
+        open.Cut(1, 2)
+        for(reaction in reactions_by_reagent[top])
+            if(reaction.result not in all)
+                open += reaction.result
+    for(var/R in all)
+        var/datum/reagent/ethanol/E = SSchemistry.reagent_lookup[R]
+        if(istype(E))
+           Fail("[reagent] is alcoholic but can be made with only soda/coffee dispensers")
