@@ -63,6 +63,10 @@
 	var/slate_dimension_y
 	/// slate dimension x
 	var/slate_dimension_x
+	/// amount of time it takes to sculpt one line at 1x toolspeed
+	var/sculpting_hardness = 0.5 SECONDS
+	/// sculpting mask for our slate
+	var/icon/sculpting_mask
 
 /obj/structure/sculpting_block/Initialize(mapload, material)
 	material = SSmaterials.get_material(material)
@@ -72,6 +76,9 @@
 
 /obj/structure/sculpting_block/Destroy()
 	QDEL_NULL(scultping_renderer)
+	QDEL_NULL(sculpting_mask)
+	QDEL_NULL(sculpting_slate)
+	QDEL_NULL(sculpting_buffer)
 	return ..()
 
 /obj/structure/sculpting_block/proc/reset_sculpting()
@@ -129,18 +136,19 @@
 			user.action_feedback(SPAN_WARNING("[target] is too tall."), src)
 		sculpting = FALSE
 		return FALSE
-	var/model_y_align = 0
+	// cut excess
+	if(model_height > sculpting_line)
+		model.Crop(1, 1, model_width, sculpting_line)
+		model_height = sculpting_line
+	// align
 	var/model_x_align = 0
 	if(isnull(slate_dimension_x))
 		slate_dimension_x = icon_x_dimension
 	if(isnull(slate_dimension_y))
 		slate_dimension_y = icon_y_dimension
-	if(model_height != slate_y_dimension || model_width != slate_x_dimension)
-		// align to bottom, center width
-		if(model_width != slate_x_dimension)
-			model_x_align = FLOOR((slate_x_dimension - model_width) / 2, 1)
-		if(model_height != slate_y_dimension)
-			model_y_align = slate_y_dimension - model_height
+	// align to bottom, center width
+	if(model_width != slate_dimension_x)
+		model_x_align = FLOOR((slate_dimension_x - model_width) / 2, 1)
 
 	sculpting_buffer = model
 	sculpting_user = user
@@ -150,9 +158,51 @@
 
 	var/lines = 0
 
-	#warn filter icons/system/colors_32x32.dmi "white"
+	if(isnull(sculpting_renderer))
+		sculpting_renderer = new
+		vis_contents += sculpting_renderer
 
-	#warn impl
+	sculpting_renderer.icon = sculpting_buffer
+	sculpting_renderer.pixel_x = model_x_align
+	sculpting_renderer.alpha = sculpting_overlay_active? initial(sculpting_renderer.alpha) : 0
+
+	if(isnull(sculpting_mask))
+		sculpting_mask = icon('icons/system/colors_32x32.dmi', "white")
+	if(sculpting_mask.Width() != model_width || sculpting_mask.Height() != model_height)
+		sculpting_mask.Scale(1, 1, model_width, model_height)
+
+	if(sculpting_overlay_active)
+		sculpting_renderer.add_filter("slate", 0, alpha_mask_filter(1, sculpting_line - model_height + 1, sculpting_mask, flags = MASK_INVERSE))
+
+	user.visible_action_feedback(
+		target = src,
+		hard_range = MESSAGE_RANGE_CONSTRUCTION,
+		visible_hard = SPAN_NOTICE("[user] starts chiselling at [src]..."),
+	)
+
+	// deciseconds progress
+	var/progress = 0
+	var/time_per_line = sculpting_hardness * tool_multiplier
+	var/finished_progress = sculpting_line_start * time_per_line
+	var/last = world.time
+	var/last_line = 0
+
+	while(progress < finished_progress)
+		if(QDELETED(src))
+			return
+		var/should_be_at = sculpting_line - FLOOR(progress / time_per_line, 1)
+		if(should_be_at != last_line)
+			last_line = should_be_at
+			if(last_line > model_height)
+			else
+				sculpting_overlay_active = TRUE
+				sculpting_renderer.add_filter("slate", 0, alpha_mask_filter(1, should_be_at - model_height + 1, sculpting_mask, flags = MASK_INVERSE))
+			#warn update
+
+		stoplag(time_per_line)
+		progress += world.time - last
+
+	lines = progress / time_per_line
 
 	sculpting_line_end = sculpting_line_start - lines
 	sculpting_line -= lines
@@ -179,7 +229,12 @@
 	sculpting_target = null
 	sculpting_overlay_active = null
 
-	check_completion()
+	if(check_completion())
+		user.visible_action_feedback(
+			target = src,
+			hard_range = MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[user] finishes chiselling at [src] with a flourish."),
+		)
 
 	sculpting = FALSE
 
@@ -187,6 +242,8 @@
 	if(sculpting_line > icon_y_dimension)
 		finished = TRUE
 		flush_finished()
+		return TRUE
+	return FALSE
 
 /obj/structure/sculpting_block/proc/flush_finished()
 	icon = sculpting_slate
