@@ -84,6 +84,7 @@
 #include "reagents/_reagents.dm"
 
 // #include "anchored_mobs.dm"
+#include "bad_alcohol_reagents.dm"
 #include "bespoke_id.dm"
 // #include "card_mismatch.dm"
 // #include "chain_pull_through_space.dm"

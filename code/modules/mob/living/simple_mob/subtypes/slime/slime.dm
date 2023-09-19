@@ -74,7 +74,7 @@
 	can_enter_vent_with = list(/obj/item/clothing/head)
 
 /datum/say_list/slime
-	speak = list("Blorp...", "Blop...")
+	speak = list("Blorp...", "Blop...", "Blorble...")
 	emote_see = list("bounces", "jiggles", "sways")
 	emote_hear = list("squishes")
 
