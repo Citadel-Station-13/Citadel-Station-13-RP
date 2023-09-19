@@ -790,6 +790,12 @@
 	nutrition_cost_proportional = 1
 	nutrition_enforced = FALSE
 
+/datum/ability/species/xenochimera/hatch/check_trigger(mob/user, toggling, feedback)
+	if(!..())
+		return FALSE
+	else
+		return alert("Are you sure you want to use Hatch Stasis? This takes ten minutes and cannot be cancelled!", "Confirm Hatch", "Yes", "No") == "Yes"
+
 /datum/ability/species/xenochimera/hatch/on_trigger()
 	. = ..()
 	if(ishuman(owner))
