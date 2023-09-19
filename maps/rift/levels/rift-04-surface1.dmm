@@ -3104,8 +3104,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "cdP" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/brflowers,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -3120,7 +3118,8 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/pumpkin/carved,
+/turf/simulated/floor/outdoors/mud,
 /area/hallway/primary/surfaceone)
 "cdW" = (
 /obj/structure/grille,
@@ -15254,8 +15253,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "jER" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/sunnybush,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -15264,7 +15261,8 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/obj/structure/bonfire/permanent,
+/turf/simulated/floor/outdoors/mud,
 /area/hallway/primary/surfaceone)
 "jEU" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -25615,8 +25613,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "pJn" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/genericbush,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -25625,7 +25621,8 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/pumpkin/carved/scream,
+/turf/simulated/floor/outdoors/mud,
 /area/hallway/primary/surfaceone)
 "pJC" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
