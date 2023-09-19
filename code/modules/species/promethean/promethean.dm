@@ -21,6 +21,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	catalogue_data = list(/datum/category_item/catalogue/fauna/promethean)
 
 	max_additional_languages = 4
+	intrinsic_languages = LANGUAGE_ID_PROMETHEAN
 	assisted_langs   = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX) // Prometheans are weird, let's just assume they can use basically any language.
 
 	show_ssd = "totally quiescent"
