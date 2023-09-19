@@ -3,7 +3,7 @@
  * @license MIT
  */
 
-import { ceiling } from "common/math";
+import { ceiling, floor } from "common/math";
 import { useBackend, useLocalState } from "../../backend";
 import { Button, Collapsible, Input, NumberInput, Section, Stack } from "../../components";
 import { Window } from "../../layouts";
@@ -20,6 +20,7 @@ interface StackCraftingEntryProps {
   recipe: StackRecipeData;
   craft: (ref: string, amt: number) => void;
   stackName: string;
+  stackAmt: number;
 }
 
 const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
@@ -28,19 +29,37 @@ const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
     <Stack>
       <Stack.Item grow={1}>
         <Button.Confirm icon="wrench" fluid
-          content={`${props.recipe.name} (${props.recipe.cost} ${props.stackName})`}
-          onClick={() => props.craft(props.recipe.ref, amt)} />
+          content={`${props.recipe.name} (${props.recipe.cost * (amt / props.recipe.resultAmt)} ${props.stackName})`}
+          onClick={() => props.craft(props.recipe.ref, amt)}
+          disabled={(props.recipe.cost * (amt / props.recipe.resultAmt)) > props.stackAmt} />
       </Stack.Item>
       {(!!props.recipe.isStack || !!props.recipe.maxAmount) && (
         <>
           <Stack.Item>
-            <Button icon="plus" onClick={() => setAmt(amt + props.recipe.resultAmt)} />
+            <Button icon="plus" onClick={() => setAmt(
+              Math.max(
+                Math.min(amt + props.recipe.resultAmt, (props.stackAmt / props.recipe.cost) * props.recipe.resultAmt),
+                props.recipe.resultAmt))} />
           </Stack.Item>
           <Stack.Item>
             <NumberInput width={2.5} value={amt}
               onChange={(e, val) => setAmt(
-                ceiling(
-                  Math.min(Math.max(1, val), props.recipe.maxAmount? props.recipe.maxAmount : Infinity),
+                Math.max(
+                  Math.min(
+                    Math.min(
+                      ceiling(
+                        Math.min(
+                          Math.max(1, val),
+                          props.recipe.maxAmount? props.recipe.maxAmount : Infinity
+                        ),
+                        props.recipe.resultAmt
+                      )
+                    ),
+                    floor(
+                      (props.stackAmt / props.recipe.cost) * props.recipe.resultAmt,
+                      props.recipe.resultAmt
+                    )
+                  ),
                   props.recipe.resultAmt
                 ))} />
           </Stack.Item>
@@ -93,7 +112,7 @@ export const StackCrafting = (props, context) => {
                     <StackCraftingEntry recipe={r} craft={(ref, amt) => act(
                       'craft',
                       { recipe: ref, amount: amt }
-                    )} stackName={data.name} />
+                    )} stackName={data.name} stackAmt={data.amount} />
                   </Stack.Item>
                 ))}
               </>
@@ -108,7 +127,7 @@ export const StackCrafting = (props, context) => {
                             <StackCraftingEntry recipe={r} craft={(ref, amt) => act(
                               'craft',
                               { recipe: ref, amount: amt }
-                            )} stackName={data.name} />
+                            )} stackName={data.name} stackAmt={data.amount} />
                           </Stack.Item>
                         ))}
                       </Stack>
@@ -122,7 +141,7 @@ export const StackCrafting = (props, context) => {
                     <StackCraftingEntry recipe={r} craft={(ref, amt) => act(
                       'craft',
                       { recipe: ref, amount: amt }
-                    )} stackName={data.name} />
+                    )} stackName={data.name} stackAmt={data.amount} />
                   </Stack.Item>
                 ))}
               </>
