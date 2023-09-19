@@ -92,10 +92,16 @@
 	sculpting_slates = null
 	return ..()
 
+/obj/structure/sculpting_block/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NOTICE("Use a <b>wrench</b> to un/fasten the anchoring bolts.")
+	. += SPAN_NOTICE("Use a <b>welder</b> to slice it apart.")
+
 /obj/structure/sculpting_block/proc/reset_sculpting()
 	sculpting_line = icon_y_dimension
 	finished = FALSE
 	remove_filter("top_erasure")
+	update_appearance()
 
 /obj/structure/sculpting_block/update_icon(updates)
 	if(length(underlays))
@@ -121,18 +127,57 @@
 	. = ..()
 	if(.)
 		return
-	user.action_feedback(SPAN_NOTICE("You start [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."), src)
-	log_construction(user, src, "start [anchored? "unanchor" : "anchor"]")
+	user.visible_action_feedback(
+		target = src,
+		hard_range = MESSAGE_RANGE_CONSTRUCTION,
+		visible_hard = SPAN_NOTICE("[user] starts [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		visible_self = SPAN_NOTICE("You start [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		audible_hard = SPAN_WARNING("You hear bolts being [anchored? "unfastened" : "fastened"]."),
+	)
+	log_construction(user, src, "started [anchored? "unanchoring" : "anchoring"]")
 	if(!use_wrench(I, user, flags, 3 SECONDS))
 		return TRUE
-	user.action_feedback(SPAN_NOTICE("You start [anchored? "unbolt [src] from the floor" : "bolt [src] to the floor"]."), src)
+	user.visible_action_feedback(
+		target = src,
+		hard_range = MESSAGE_RANGE_CONSTRUCTION,
+		visible_hard = SPAN_NOTICE("[user] finishes [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		visible_self = SPAN_NOTICE("You finish [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		audible_hard = SPAN_WARNING("You hear bolts [anchored? "falling out" : "clicking into place"]."),
+	)
 	log_construction(user, src, "[anchored? "unanchored" : "anchored"]")
 	set_anchored(!anchored)
+	return TRUE
+
+/obj/structure/sculpting_block/welder_act(obj/item/I, mob/user, flags, hint)
+	. = ..()
+	if(.)
+		return
+	user.visible_action_feedback(
+		target = src,
+		hard_range = MESSAGE_RANGE_CONSTRUCTION,
+		visible_hard = SPAN_NOTICE("[user] starts slicing [src] apart."),
+		visible_self = SPAN_NOTICE("You start slicing [src] apart."),
+		audible_hard = SPAN_WARNING("You hear the sound of a welding torch being used on something metallic."),
+	)
+	log_construction(user, src, "started deconstructing")
+	if(!use_welder(I, user, flags, 3 SECONDS, 3))
+		return TRUE
+	user.visible_action_feedback(
+		target = src,
+		hard_range = MESSAGE_RANGE_CONSTRUCTION,
+		visible_hard = SPAN_NOTICE("[user] slices [src] apart."),
+		visible_self = SPAN_NOTICE("You slice [src] apart."),
+		audible_hard = SPAN_WARNING("You hear the sound of a welding torch moving back into open air, and a few pieces of metal falling apart."),
+	)
+	log_construction(user, src, "deconstructed")
+	set_anchored(!anchored)
+	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 	return TRUE
 
 /obj/structure/sculpting_block/dynamic_tool_functions(obj/item/I, mob/user)
 	. = list()
 	.[TOOL_WRENCH] = anchored? "unanchor" : "anchor"
+	.[TOOL_WELDER] = "deconstruct"
 	return merge_double_lazy_assoc_list(., ..())
 
 /obj/structure/sculpting_block/dynamic_tool_image(function, hint)
@@ -144,6 +189,8 @@
 			return dyntool_image_backward(TOOL_WRENCH)
 		if("anchor")
 			return dyntool_image_forward(TOOL_WRENCH)
+		if("deconstruct")
+			return dyntool_image_backward(TOOL_WELDER)
 
 /**
  * returns speed multiplier, or null if not tool
@@ -194,10 +241,6 @@
 			user.action_feedback(SPAN_WARNING("[target] is too tall."), src)
 		sculpting = FALSE
 		return FALSE
-	// cut excess
-	if(model_height > sculpting_line)
-		model.Crop(1, 1, model_width, sculpting_line)
-		model_height = sculpting_line
 	// align
 	var/model_x_align = 0
 	if(isnull(slate_dimension_x))
@@ -212,7 +255,7 @@
 	sculpting_user = user
 	sculpting_target = target
 	sculpting_line_start = sculpting_line
-	sculpting_overlay_active = model_height <= sculpting_line
+	sculpting_overlay_active = model_height >= sculpting_line
 
 	var/lines = 0
 
@@ -236,6 +279,7 @@
 
 	if(sculpting_overlay_active)
 		sculpting_renderer.add_filter("slate", 0, alpha_mask_filter(1, sculpting_line - model_height + 1, sculpting_mask, flags = MASK_INVERSE))
+		sculpting_renderer.add_filter("cut_excess", 0, alpha_mask_filter(1, sculpting_line + 1, sculpting_mask, flags = MASK_INVERSE))
 
 	// todo: actual chisels wit htoolsounds, screwdrivers are dogshit
 	playsound(src, 'sound/effects/break_stone.ogg', vary = TRUE, vol = 50)
@@ -265,9 +309,12 @@
 			last_line = should_be_at
 			if(last_line > model_height)
 			else
-				sculpting_overlay_active = TRUE
+				if(!sculpting_overlay_active)
+					sculpting_overlay_active = TRUE
+					sculpting_renderer.alpha = 255
+					sculpting_renderer.add_filter("cut_excess", 0, alpha_mask_filter(1, sculpting_line + 1, sculpting_mask, flags = MASK_INVERSE))
 				sculpting_renderer.add_filter("slate", 0, alpha_mask_filter(1, should_be_at - model_height + 1, sculpting_mask, flags = MASK_INVERSE))
-			add_filter("top_erasure", 0, alpha_mask_filter(1, should_be_at + 1, sculpting_rolldown_mask))
+			add_filter("top_erasure", 0, alpha_mask_filter(1, should_be_at + 1, sculpting_rolldown_mask, flags = MASK_INVERSE))
 
 		progress += world.time - last
 		last = world.time
@@ -283,16 +330,16 @@
 	if(lines)
 		if(isnull(sculpting_slates))
 			create_slates()
-		if(model_width < slate_dimension_x)
+		if(slate_dimension_x < model_width)
 			// allow expansion but only for width
-			var/x_alignment = FLOOR((model_width - slate_dimension_x / 2), 1)
+			var/x_alignment = FLOOR((model_width - slate_dimension_x) / 2, 1)
 			crop_slates(-x_alignment, 1, model_width - slate_dimension_x - x_alignment, slate_dimension_y)
 			set_base_pixel_x(-x_alignment)
 		if(!sculpting_overlay_active)
 			// we didn't even reach the buffer yet
 		else
-			sculpting_buffer.Crop(1, model_height - sculpting_line_end, model_width, model_height)
-			blend_slates(sculpting_buffer, model_x_align, sculpting_line_end)
+			sculpting_buffer = crop_buffer(sculpting_buffer, 1, sculpting_line_end + 1, model_width, sculpting_line_start)
+			blend_slates(sculpting_buffer, model_x_align + 1, sculpting_line_end + 1)
 		assemble_built()
 		update_appearance()
 
@@ -303,7 +350,9 @@
 	sculpting_target = null
 	sculpting_overlay_active = null
 
-	add_filter("top_erasure", 0, alpha_mask_filter(1, sculpting_line + 1, sculpting_rolldown_mask))
+	add_filter("top_erasure", 0, alpha_mask_filter(1, sculpting_line + 1, sculpting_rolldown_mask, flags = MASK_INVERSE))
+	sculpting_renderer.alpha = 0
+	sculpting_renderer.clear_filters()
 
 	if(check_completion())
 		user.visible_action_feedback(
@@ -329,6 +378,23 @@
 	QDEL_NULL(sculpting_renderer)
 	remove_filter("top_erasure")
 	update_appearance()
+
+/obj/structure/sculpting_block/proc/crop_buffer(icon/buffer, x1, y1, x2, y2)
+	var/icon/built = icon('icons/system/blank_32x32.dmi', "")
+	var/icon/cropping
+	cropping = icon(buffer, dir = NORTH)
+	cropping.Crop(x1, y1, x2, y2)
+	built.Insert(cropping, dir = NORTH)
+	cropping = icon(buffer, dir = EAST)
+	cropping.Crop(x1, y1, x2, y2)
+	built.Insert(cropping, dir = EAST)
+	cropping = icon(buffer, dir = SOUTH)
+	cropping.Crop(x1, y1, x2, y2)
+	built.Insert(cropping, dir = SOUTH)
+	cropping = icon(buffer, dir = WEST)
+	cropping.Crop(x1, y1, x2, y2)
+	built.Insert(cropping, dir = WEST)
+	return built
 
 /obj/structure/sculpting_block/proc/assemble_built()
 	sculpting_built = icon('icons/system/blank_32x32.dmi', "")
@@ -408,10 +474,10 @@
 	slate_dimension_y = icon_y_dimension
 
 /obj/structure/sculpting_block/proc/blend_slates(icon/blending, x, y)
-	sculpting_slates[1].Blend(icon(blending, dir = NORTH), BLEND_OVERLAY, x, y)
-	sculpting_slates[2].Blend(icon(blending, dir = EAST), BLEND_OVERLAY, x, y)
-	sculpting_slates[3].Blend(icon(blending, dir = SOUTH), BLEND_OVERLAY, x, y)
-	sculpting_slates[4].Blend(icon(blending, dir = WEST), BLEND_OVERLAY, x, y)
+	sculpting_slates[1].Blend(icon(blending, dir = NORTH), ICON_OVERLAY, x, y)
+	sculpting_slates[2].Blend(icon(blending, dir = EAST), ICON_OVERLAY, x, y)
+	sculpting_slates[3].Blend(icon(blending, dir = SOUTH), ICON_OVERLAY, x, y)
+	sculpting_slates[4].Blend(icon(blending, dir = WEST), ICON_OVERLAY, x, y)
 
 /obj/structure/sculpting_block/proc/crop_slates(x1, y1, x2, y2)
 	for(var/i in 1 to 4)

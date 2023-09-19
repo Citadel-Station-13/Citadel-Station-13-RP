@@ -74,6 +74,7 @@
 		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
 		got_anything = TRUE
 	N.dir = SOUTH
+	gfi_return = get_flat_icon_with_offsets(N, SOUTH, no_anim = no_anim)
 	var/icon/south
 	if(!isnull(gfi_return))
 		south = gfi_return[1]
@@ -82,6 +83,7 @@
 		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
 		got_anything = TRUE
 	N.dir = EAST
+	gfi_return = get_flat_icon_with_offsets(N, EAST, no_anim = no_anim)
 	var/icon/east
 	if(!isnull(gfi_return))
 		east = gfi_return[1]
@@ -90,6 +92,7 @@
 		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
 		got_anything = TRUE
 	N.dir = WEST
+	gfi_return = get_flat_icon_with_offsets(N, WEST, no_anim = no_anim)
 	var/icon/west
 	if(!isnull(gfi_return))
 		west = gfi_return[1]
