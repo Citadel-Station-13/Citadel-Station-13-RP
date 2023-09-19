@@ -15,7 +15,7 @@
 	var/icon/processing
 	if(!isicon(rendering))
 		// cursed : operator; see params for why.
-		processing = get_compound_icon_simple(rendering, no_anim = no_anim)
+		processing = get_compound_icon(rendering, no_anim = no_anim)
 	else
 		if(no_anim)
 			processing = icon(rendering, frame = 1)

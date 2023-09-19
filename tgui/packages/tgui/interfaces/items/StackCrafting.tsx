@@ -84,7 +84,7 @@ export const StackCrafting = (props, context) => {
           </>
         )}>
           <Stack vertical>
-            {searchText && searchText.length >= 3? (
+            {searchText && searchText.length >= 2? (
               <>
                 {data.recipes.filter((r) => r.name.toLowerCase().includes(searchString)).sort(
                   (a, b) => a.name.localeCompare(b.name)

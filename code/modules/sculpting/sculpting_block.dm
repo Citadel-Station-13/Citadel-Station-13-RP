@@ -14,6 +14,7 @@
  * todo: add in a way to preload a template so it starts out sculpted, and an initialize() override for such
  * todo: de/serialization
  * todo: sculpting with shit tools should result in a bad image
+ * todo: the full white alpha masks should be cached
  */
 /obj/structure/sculpting_block
 	name = "material block"
@@ -53,7 +54,10 @@
 
 	/// current icon for sculpting; every operation flushes to this, this begins at a x by y blank.
 	/// we don't flush directly to our icon only because icon might get fucked with
-	var/icon/sculpting_slate
+	/// list(north, east, south, west)
+	var/list/icon/sculpting_slates
+	/// current combined slates
+	var/icon/sculpting_built
 	/// sculpting block is assumed to be a certain size
 	/// store the current line being sculpted
 	/// this starts at the topmost y
@@ -69,6 +73,8 @@
 	var/sculpting_hardness = 0.5 SECONDS
 	/// sculpting mask for our slate
 	var/icon/sculpting_mask
+	/// sculpting mask for our block
+	var/icon/sculpting_rolldown_mask
 
 /obj/structure/sculpting_block/Initialize(mapload, material)
 	// todo: materials system
@@ -79,22 +85,30 @@
 
 /obj/structure/sculpting_block/Destroy()
 	QDEL_NULL(sculpting_renderer)
-	QDEL_NULL(sculpting_mask)
-	QDEL_NULL(sculpting_slate)
-	QDEL_NULL(sculpting_buffer)
+	sculpting_mask = null
+	sculpting_rolldown_mask = null
+	sculpting_buffer = null
+	sculpting_built = null
+	sculpting_slates = null
 	return ..()
 
 /obj/structure/sculpting_block/proc/reset_sculpting()
 	sculpting_line = icon_y_dimension
 	finished = FALSE
+	remove_filter("top_erasure")
 
 /obj/structure/sculpting_block/update_icon(updates)
 	if(length(underlays))
 		underlays.len = 0
-	if(sculpting_buffer)
-		icon = sculpting_slate
+	cut_overlays()
+	if(sculpting_built)
+		var/image/render = new
+		render.icon = sculpting_built
+		render.appearance_flags = KEEP_APART
+		add_overlay(render)
+	color = material?.icon_colour
 	. = ..()
-	underlays += sculpture_base_state
+	underlays += image(initial(icon), icon_state = sculpture_base_state)
 
 /obj/structure/sculpting_block/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)
@@ -170,7 +184,7 @@
 
 	sculpting = TRUE
 
-	var/list/model_tuple = get_model_tuple(target, material.icon_colour)
+	var/list/model_tuple = get_model_tuple(target)
 	TIMER_COOLDOWN_START(src, CD_INDEX_SCULPTING_COOLDOWN, 1 SECONDS)
 	var/icon/model = model_tuple[1]
 	var/model_width = model.Width()
@@ -202,6 +216,11 @@
 
 	var/lines = 0
 
+	if(isnull(sculpting_rolldown_mask))
+		sculpting_rolldown_mask = icon('icons/system/color_32x32.dmi', "white")
+	if(sculpting_rolldown_mask.Width() != icon_x_dimension || sculpting_rolldown_mask.Height() != icon_y_dimension)
+		sculpting_rolldown_mask.Scale(icon_x_dimension, icon_y_dimension)
+
 	if(isnull(sculpting_renderer))
 		sculpting_renderer = new
 		vis_contents += sculpting_renderer
@@ -213,7 +232,7 @@
 	if(isnull(sculpting_mask))
 		sculpting_mask = icon('icons/system/color_32x32.dmi', "white")
 	if(sculpting_mask.Width() != model_width || sculpting_mask.Height() != model_height)
-		sculpting_mask.Scale(1, 1, model_width, model_height)
+		sculpting_mask.Scale(model_width, model_height)
 
 	if(sculpting_overlay_active)
 		sculpting_renderer.add_filter("slate", 0, alpha_mask_filter(1, sculpting_line - model_height + 1, sculpting_mask, flags = MASK_INVERSE))
@@ -248,30 +267,33 @@
 			else
 				sculpting_overlay_active = TRUE
 				sculpting_renderer.add_filter("slate", 0, alpha_mask_filter(1, should_be_at - model_height + 1, sculpting_mask, flags = MASK_INVERSE))
+			add_filter("top_erasure", 0, alpha_mask_filter(1, should_be_at + 1, sculpting_rolldown_mask))
 
 		progress += world.time - last
+		last = world.time
 		progressbar.update(sculpting_line - should_be_at)
 
 	QDEL_NULL(progressbar)
 
-	lines = progress / time_per_line
+	lines = min(sculpting_line, progress / time_per_line)
 
 	sculpting_line_end = sculpting_line_start - lines
 	sculpting_line -= lines
 
 	if(lines)
-		if(isnull(sculpting_slate))
-			create_slate()
+		if(isnull(sculpting_slates))
+			create_slates()
 		if(model_width < slate_dimension_x)
 			// allow expansion but only for width
 			var/x_alignment = FLOOR((model_width - slate_dimension_x / 2), 1)
-			sculpting_slate.Crop(-x_alignment, 1, model_width - slate_dimension_x - x_alignment, slate_dimension_y)
+			crop_slates(-x_alignment, 1, model_width - slate_dimension_x - x_alignment, slate_dimension_y)
 			set_base_pixel_x(-x_alignment)
 		if(!sculpting_overlay_active)
 			// we didn't even reach the buffer yet
 		else
 			sculpting_buffer.Crop(1, model_height - sculpting_line_end, model_width, model_height)
-			sculpting_slate.Blend(sculpting_buffer, ICON_OVERLAY, model_x_align, sculpting_line_end)
+			blend_slates(sculpting_buffer, model_x_align, sculpting_line_end)
+		assemble_built()
 		update_appearance()
 
 	sculpting_line_start = null
@@ -280,6 +302,8 @@
 	sculpting_user = null
 	sculpting_target = null
 	sculpting_overlay_active = null
+
+	add_filter("top_erasure", 0, alpha_mask_filter(1, sculpting_line + 1, sculpting_rolldown_mask))
 
 	if(check_completion())
 		user.visible_action_feedback(
@@ -291,17 +315,27 @@
 	sculpting = FALSE
 
 /obj/structure/sculpting_block/proc/check_completion()
-	if(sculpting_line > icon_y_dimension)
+	if(!sculpting_line)
 		finished = TRUE
 		flush_finished()
 		return TRUE
 	return FALSE
 
 /obj/structure/sculpting_block/proc/flush_finished()
-	icon = sculpting_slate
-	sculpting_slate = null
+	assemble_built()
+	icon = sculpting_built
+	sculpting_built = null
+	sculpting_slates = null
 	QDEL_NULL(sculpting_renderer)
+	remove_filter("top_erasure")
 	update_appearance()
+
+/obj/structure/sculpting_block/proc/assemble_built()
+	sculpting_built = icon('icons/system/blank_32x32.dmi', "")
+	sculpting_built.Insert(sculpting_slates[1], dir = NORTH)
+	sculpting_built.Insert(sculpting_slates[2], dir = EAST)
+	sculpting_built.Insert(sculpting_slates[3], dir = SOUTH)
+	sculpting_built.Insert(sculpting_slates[4], dir = WEST)
 
 /**
  * grabs an icon from something for sculpting, processing it into a greyscale toned to the material's color
@@ -313,11 +347,12 @@
  * @return list(icon, x, y) where x/y are centering offsets
  */
 /obj/structure/sculpting_block/proc/get_model_tuple(atom/movable/to_clone, material_color)
-	. = get_compound_icon(to_clone)
+	. = get_compound_icon_with_offsets(to_clone, CALLBACK(PROC_REF(preprocess_model_slice)))
 	if(isnull(.))
 		return
-	var/icon/flattened = .[1]
-	flattened.ColorTone(material_color)
+
+/obj/structure/sculpting_block/proc/preprocess_model_slice(icon/slice)
+	slice.ColorTone(material.icon_colour)
 
 /**
  * get things in range of user that can be sculpted
@@ -330,6 +365,8 @@
 	var/list/objs_seen_paths = list()
 	for(var/atom/movable/AM in potential)
 		if(AM.atom_flags & ATOM_ABSTRACT)
+			continue
+		if(!isturf(AM.loc))
 			continue
 		if(AM.invisibility > user.see_invisible)
 			continue
@@ -360,13 +397,26 @@
 	var/list/possible = get_possible_targets(user)
 	return input(user, "Pick a target", "Sculpting") as null|anything in possible
 
-/obj/structure/sculpting_block/proc/create_slate()
-	var/icon/generated
-	generated = icon('icons/system/blank_32x32.dmi')
-	generated.Scale(icon_x_dimension, icon_y_dimension)
-	sculpting_slate = generated
+/obj/structure/sculpting_block/proc/create_slates()
+	sculpting_slates = list()
+	for(var/i in 1 to 4)
+		var/icon/generated
+		generated = icon('icons/system/blank_32x32.dmi')
+		generated.Scale(icon_x_dimension, icon_y_dimension)
+		sculpting_slates += generated
 	slate_dimension_x = icon_x_dimension
 	slate_dimension_y = icon_y_dimension
+
+/obj/structure/sculpting_block/proc/blend_slates(icon/blending, x, y)
+	sculpting_slates[1].Blend(icon(blending, dir = NORTH), BLEND_OVERLAY, x, y)
+	sculpting_slates[2].Blend(icon(blending, dir = EAST), BLEND_OVERLAY, x, y)
+	sculpting_slates[3].Blend(icon(blending, dir = SOUTH), BLEND_OVERLAY, x, y)
+	sculpting_slates[4].Blend(icon(blending, dir = WEST), BLEND_OVERLAY, x, y)
+
+/obj/structure/sculpting_block/proc/crop_slates(x1, y1, x2, y2)
+	for(var/i in 1 to 4)
+		var/icon/cropping = sculpting_slates[i]
+		cropping.Crop(x1, y1, x2, y2)
 
 /obj/structure/sculpting_block/proc/check_target(mob/user, atom/movable/target)
 	if(isnull(sculpting_user))

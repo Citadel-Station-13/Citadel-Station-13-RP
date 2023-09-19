@@ -1,6 +1,6 @@
 //? File contains functions to generate flat /icon's from things.
 //? This is obviously expensive. Very, very expensive.
-//? new get_flat_icon_simple is faster, but, really, don't use these unless you need to.
+//? new get_flat_icon is faster, but, really, don't use these unless you need to.
 //? Chances are unless you are:
 //? - sending to html/browser (for non character preview purposes)
 //? - taking photos
@@ -16,17 +16,17 @@
  *
  * @return flat icon
  */
-/proc/get_compound_icon_simple(atom/A, no_anim)
+/proc/get_compound_icon(atom/A, no_anim)
 	var/mutable_appearance/N = new
 	N.appearance = A
 	N.dir = NORTH
-	var/icon/north = get_flat_icon_simple(N, NORTH, no_anim = no_anim)
+	var/icon/north = get_flat_icon(N, NORTH, no_anim = no_anim)
 	N.dir = SOUTH
-	var/icon/south = get_flat_icon_simple(N, SOUTH, no_anim = no_anim)
+	var/icon/south = get_flat_icon(N, SOUTH, no_anim = no_anim)
 	N.dir = EAST
-	var/icon/east = get_flat_icon_simple(N, EAST, no_anim = no_anim)
+	var/icon/east = get_flat_icon(N, EAST, no_anim = no_anim)
 	N.dir = WEST
-	var/icon/west = get_flat_icon_simple(N, WEST, no_anim = no_anim)
+	var/icon/west = get_flat_icon(N, WEST, no_anim = no_anim)
 	qdel(N)
 	//Starts with a blank icon because of byond bugs.
 	var/icon/full = icon('icons/system/blank_32x32.dmi', "")
@@ -49,12 +49,13 @@
  * It's not a 'true' semantic centering offset - the icon system doesn't handle that.
  *
  * @params
- * - A - appearancelike object.
- * - no_anim - flatten out animations
+ * * A - appearancelike object.
+ * * no_anim - flatten out animations
+ * * preprocess - preprocess callback. used because we can't icon ops on a compound icon.
  *
  * @return list(flat icon, offset x, offset y) where x/y offsets are centering pixel offsets
  */
-/proc/get_compound_icon(atom/A, no_anim)
+/proc/get_compound_icon_with_offsets(atom/A, no_anim, datum/callback/preprocess)
 	var/mutable_appearance/N = new
 	N.appearance = A
 
@@ -64,10 +65,11 @@
 	var/got_anything = FALSE
 
 	N.dir = NORTH
-	gfi_return = get_flat_icon(N, NORTH, no_anim = no_anim)
+	gfi_return = get_flat_icon_with_offsets(N, NORTH, no_anim = no_anim)
 	var/icon/north
 	if(!isnull(gfi_return))
 		north = gfi_return[1]
+		preprocess?.Invoke(north)
 		x_offset = BIGGER_MAGNITUDE(x_offset, gfi_return[2])
 		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
 		got_anything = TRUE
@@ -75,6 +77,7 @@
 	var/icon/south
 	if(!isnull(gfi_return))
 		south = gfi_return[1]
+		preprocess?.Invoke(south)
 		x_offset = BIGGER_MAGNITUDE(x_offset, gfi_return[2])
 		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
 		got_anything = TRUE
@@ -82,6 +85,7 @@
 	var/icon/east
 	if(!isnull(gfi_return))
 		east = gfi_return[1]
+		preprocess?.Invoke(east)
 		x_offset = BIGGER_MAGNITUDE(x_offset, gfi_return[2])
 		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
 		got_anything = TRUE
@@ -89,6 +93,7 @@
 	var/icon/west
 	if(!isnull(gfi_return))
 		west = gfi_return[1]
+		preprocess?.Invoke(west)
 		x_offset = BIGGER_MAGNITUDE(x_offset, gfi_return[2])
 		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
 		got_anything = TRUE
@@ -118,7 +123,7 @@
 /**
  * grabs flat icon with no care for alignment / basically just grabs a png
  */
-/proc/get_flat_icon_simple(appearance/appearancelike, dir, no_anim)
+/proc/get_flat_icon(appearance/appearancelike, dir, no_anim)
 	if(!dir && isloc(appearancelike))
 		dir = appearancelike.dir
 	. = _get_flat_icon(appearancelike, dir, no_anim, null, TRUE)
@@ -132,7 +137,7 @@
  * causing the original icon to be scaled beyond its sides.
  * It's not a 'true' semantic centering offset - the icon system doesn't handle that.
  */
-/proc/get_flat_icon(appearance/appearancelike, dir, no_anim)
+/proc/get_flat_icon_with_offsets(appearance/appearancelike, dir, no_anim)
 	if(!dir && isloc(appearancelike))
 		dir = appearancelike.dir
 	return _get_flat_icon(appearancelike, dir, no_anim, null, TRUE)
@@ -317,7 +322,7 @@
 			blend_mode = BLEND_OVERLAY
 			adding = icon(icon, state, ourdir)
 		else
-			// use full get_flat_icon
+			// use full get_flat_icon_with_offsets
 			blend_mode = copying.blend_mode
 			gfi_return = _get_flat_icon(copying, defdir, no_anim, icon)
 			adding = gfi_return?[1]
