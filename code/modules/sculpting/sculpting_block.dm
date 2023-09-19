@@ -160,7 +160,7 @@
 		audible_hard = SPAN_WARNING("You hear the sound of a welding torch being used on something metallic."),
 	)
 	log_construction(user, src, "started deconstructing")
-	if(!use_welder(I, user, flags, 3 SECONDS, 3))
+	if(!use_welder(I, user, flags, 7 SECONDS, 3))
 		return TRUE
 	user.visible_action_feedback(
 		target = src,
@@ -173,6 +173,10 @@
 	set_anchored(!anchored)
 	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 	return TRUE
+
+/obj/structure/sculpting_block/drop_products(method)
+	. = ..()
+	material.place_sheet(drop_location(), 10)
 
 /obj/structure/sculpting_block/dynamic_tool_functions(obj/item/I, mob/user)
 	. = list()
@@ -278,8 +282,8 @@
 		sculpting_mask.Scale(model_width, model_height)
 
 	if(sculpting_overlay_active)
-		sculpting_renderer.add_filter("slate", 0, alpha_mask_filter(1, sculpting_line - model_height + 1, sculpting_mask, flags = MASK_INVERSE))
-		sculpting_renderer.add_filter("cut_excess", 0, alpha_mask_filter(1, sculpting_line + 1, sculpting_mask, flags = MASK_INVERSE))
+		sculpting_renderer.add_filter("slate", 0, alpha_mask_filter(0, sculpting_line - model_height, sculpting_mask, flags = MASK_INVERSE))
+		sculpting_renderer.add_filter("cut_excess", 0, alpha_mask_filter(0, sculpting_line, sculpting_mask, flags = MASK_INVERSE))
 
 	// todo: actual chisels wit htoolsounds, screwdrivers are dogshit
 	playsound(src, 'sound/effects/break_stone.ogg', vary = TRUE, vol = 50)
@@ -312,9 +316,9 @@
 				if(!sculpting_overlay_active)
 					sculpting_overlay_active = TRUE
 					sculpting_renderer.alpha = 255
-					sculpting_renderer.add_filter("cut_excess", 0, alpha_mask_filter(1, sculpting_line + 1, sculpting_mask, flags = MASK_INVERSE))
-				sculpting_renderer.add_filter("slate", 0, alpha_mask_filter(1, should_be_at - model_height + 1, sculpting_mask, flags = MASK_INVERSE))
-			add_filter("top_erasure", 0, alpha_mask_filter(1, should_be_at + 1, sculpting_rolldown_mask, flags = MASK_INVERSE))
+					sculpting_renderer.add_filter("cut_excess", 0, alpha_mask_filter(0, sculpting_line, sculpting_mask, flags = MASK_INVERSE))
+				sculpting_renderer.add_filter("slate", 0, alpha_mask_filter(0, should_be_at - model_height, sculpting_mask, flags = MASK_INVERSE))
+			add_filter("top_erasure", 0, alpha_mask_filter(1, should_be_at, sculpting_rolldown_mask, flags = MASK_INVERSE))
 
 		progress += world.time - last
 		last = world.time
@@ -350,7 +354,7 @@
 	sculpting_target = null
 	sculpting_overlay_active = null
 
-	add_filter("top_erasure", 0, alpha_mask_filter(1, sculpting_line + 1, sculpting_rolldown_mask, flags = MASK_INVERSE))
+	add_filter("top_erasure", 0, alpha_mask_filter(1, sculpting_line, sculpting_rolldown_mask, flags = MASK_INVERSE))
 	sculpting_renderer.alpha = 0
 	sculpting_renderer.clear_filters()
 
@@ -376,7 +380,7 @@
 	sculpting_built = null
 	sculpting_slates = null
 	QDEL_NULL(sculpting_renderer)
-	remove_filter("top_erasure")
+	clear_filters()
 	update_appearance()
 
 /obj/structure/sculpting_block/proc/crop_buffer(icon/buffer, x1, y1, x2, y2)

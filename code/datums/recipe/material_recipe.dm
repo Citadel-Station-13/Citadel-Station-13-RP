@@ -6,6 +6,7 @@
 	sort_order = -1
 	category = "Material - Misc"
 	// todo: material constraints
+	// todo: auto-set materials list
 
 // these are here to have the langserv cast for us since we know stack is material
 
