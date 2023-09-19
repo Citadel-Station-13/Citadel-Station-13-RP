@@ -224,9 +224,6 @@
 				self_icon.Blend(A.color, ICON_MULTIPLY)
 		return list(self_icon, 0, 0)
 
-	var/realigned_x = 0
-	var/realigned_y = 0
-
 	// safety/performance check
 	if((A.overlays.len + A.underlays.len) > 80)
 		// we use fucking insertion check
