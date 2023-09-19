@@ -1770,6 +1770,56 @@
 	icon_state = "tribal_tunic_fem"
 	has_sensors = UNIFORM_HAS_NO_SENSORS
 
+/obj/item/clothing/under/acolyte_hunter
+	name = "acolyte's garbs"
+	desc = "Hand-woven cotton ornated with pieces of turquoise form little more than loincloth, which can be adjusted depending on the wearer's preferences. Well suited for a simpler life."
+	icon_state = "acolyte_hunter"
+
+/obj/item/clothing/under/acolyte_hunter_fem
+	name = "acolyte's garbs"
+	desc = "Hand-woven cotton ornated with pieces of turquoise form little more than loincloth, which can be adjusted depending on the wearer's preferences. Well suited for a simpler life."
+	icon_state = "acolyte_hunter_fem"
+
+/obj/item/clothing/under/shamanblue
+	name = "blue shaman garbs"
+	desc = "Finely crafted cotton clothing, dyed blue with anil. The care and craftsmanship put into such an outfit indicates high status in a tribe. Can be adjusted to suit the wearer's preferences."
+	icon_state = "shamanblue"
+
+/obj/item/clothing/under/shamanblue_fem
+	name = "blue shaman garbs"
+	desc = "Finely crafted cotton clothing, dyed blue with anil. The care and craftsmanship put into such an outfit indicates high status in a tribe. Can be adjusted to suit the wearer's preferences."
+	icon_state = "shamanblue_fem"
+
+/obj/item/clothing/under/shamanred
+	name = "red shaman garbs"
+	desc = "Finely crafted cotton clothing, dyed red with madder root. The care and craftsmanship put into such an outfit indicates high status in a tribe. Can be adjusted to suit the wearer's preferences."
+	icon_state = "shamanred"
+
+/obj/item/clothing/under/shamanred_fem
+	name = "red shaman garbs"
+	desc = "Finely crafted cotton clothing, dyed red with madder root. The care and craftsmanship put into such an outfit indicates high status in a tribe. Can be adjusted to suit the wearer's preferences."
+	icon_state = "shamanred_fem"
+
+/obj/item/clothing/under/hunter
+	name = "rugged loincloth"
+	desc = "Minimal yet hardy clothing padded in places by leather which can be taken off if need be, covering no more than it needs to. Ideal for those who spend their time away from the tribe in pursuit of the hunt."
+	icon_state = "hunter"
+
+/obj/item/clothing/under/hunter_fem
+	name = "rugged loincloth"
+	desc = "Minimal yet hardy clothing padded in places by leather which can be taken off if need be, covering no more than it needs to. Ideal for those who spend their time away from the tribe in pursuit of the hunt."
+	icon_state = "hunter_fem"
+
+/obj/item/clothing/under/gatherer
+	name = "loincloth"
+	desc = "Hand-woven cotton ornated with pieces of turquoise form covering the groin, which can also be adjusted to cover the breasts as well. Well suited for a simpler life."
+	icon_state = "gatherer"
+
+/obj/item/clothing/under/gatherer_fem
+	name = "loincloth"
+	desc = "Hand-woven cotton ornated with pieces of turquoise form covering the groin, which can also be adjusted to cover the breasts as well. Well suited for a simpler life."
+	icon_state = "gatherer_fem"
+
 /obj/item/clothing/under/skirt/pleated
 	name = "pleated skirt"
 	icon_state = "pleated"
