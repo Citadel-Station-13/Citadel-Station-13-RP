@@ -72,6 +72,13 @@
 	required_reagents = list("tequila" = 10, MAT_SILVER = 1)
 	result_amount = 10
 
+/datum/chemical_reaction/drinks/pilk
+	name = "Pilk"
+	id = "pilk"
+	result = "pilk"
+	required_reagents = list("milk" = 1, "cola" = 1)
+	result_amount = 2
+
 /datum/chemical_reaction/drinks/bilk
 	name = "Bilk"
 	id = "bilk"
