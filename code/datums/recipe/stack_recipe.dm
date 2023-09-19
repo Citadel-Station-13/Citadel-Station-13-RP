@@ -90,12 +90,16 @@
 		var/atom/movable/casted_result = result_type
 		if(initial(casted_result.density))
 			for(var/atom/movable/AM as anything in where)
+				if(AM == user)
+					continue
 				if(AM.density)
 					if(!silent)
 						user.action_feedback(SPAN_WARNING("[AM] is in the way."))
 					return FALSE
 	if(!isnull(exclusitivity))
 		for(var/atom/movable/AM as anything in where)
+			if(AM == user)
+				continue
 			if(istype(AM, exclusitivity))
 				if(!silent && !isnull(user))
 					user.action_feedback(SPAN_WARNING("[AM] is in the way."))
@@ -123,7 +127,7 @@
 		while(amount)
 			if(!--safety)
 				CRASH("safety hit")
-			var/obj/item/stack/created = new(where, min(amount, max_amount))
+			var/obj/item/stack/created = new result_type(where, min(amount, max_amount))
 			amount -= created.amount
 	else
 		for(var/i in 1 to min(amount, 50))

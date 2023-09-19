@@ -3,7 +3,7 @@
 
 /datum/stack_recipe/material/furniture
 	abstract_type = /datum/stack_recipe/material/furniture
-	category = "Material - Furniture"
+	category = "material - furniture"
 
 /datum/stack_recipe/material/furniture/bed
 	name = "bed"

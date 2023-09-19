@@ -20,11 +20,13 @@
 	desc = "A block of material. You can sculpt this with appropriate tools, like a screwdriver."
 	icon = 'icons/modules/sculpting/sculpting.dmi'
 	icon_state = "block"
+	density = TRUE
+	anchored = FALSE
 
 	/// finished base state
 	var/sculpture_base_state = "base"
 	/// material ref
-	var/datum/material/material
+	var/datum/material/material = /datum/material/steel
 
 	icon_x_dimension = 32
 	icon_y_dimension = 32
@@ -69,13 +71,14 @@
 	var/icon/sculpting_mask
 
 /obj/structure/sculpting_block/Initialize(mapload, material)
-	material = SSmaterials.get_material(material)
+	// todo: materials system
+	src.material = SSmaterials.get_material(material || src.material)
 	// todo: if it autoinit'd, don't do this
 	reset_sculpting()
 	return ..()
 
 /obj/structure/sculpting_block/Destroy()
-	QDEL_NULL(scultping_renderer)
+	QDEL_NULL(sculpting_renderer)
 	QDEL_NULL(sculpting_mask)
 	QDEL_NULL(sculpting_slate)
 	QDEL_NULL(sculpting_buffer)
@@ -92,6 +95,41 @@
 		icon = sculpting_slate
 	. = ..()
 	underlays += sculpture_base_state
+
+/obj/structure/sculpting_block/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(user.a_intent == INTENT_HELP)
+		initiate_sculpting(user, tool = I)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+
+/obj/structure/sculpting_block/wrench_act(obj/item/I, mob/user, flags, hint)
+	. = ..()
+	if(.)
+		return
+	user.action_feedback(SPAN_NOTICE("You start [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."), src)
+	log_construction(user, src, "start [anchored? "unanchor" : "anchor"]")
+	if(!use_wrench(I, user, flags, 3 SECONDS))
+		return TRUE
+	user.action_feedback(SPAN_NOTICE("You start [anchored? "unbolt [src] from the floor" : "bolt [src] to the floor"]."), src)
+	log_construction(user, src, "[anchored? "unanchored" : "anchored"]")
+	set_anchored(!anchored)
+	return TRUE
+
+/obj/structure/sculpting_block/dynamic_tool_functions(obj/item/I, mob/user)
+	. = list()
+	.[TOOL_WRENCH] = anchored? "unanchor" : "anchor"
+	return merge_double_lazy_assoc_list(., ..())
+
+/obj/structure/sculpting_block/dynamic_tool_image(function, hint)
+	. = ..()
+	if(.)
+		return
+	switch(hint)
+		if("unanchor")
+			return dyntool_image_backward(TOOL_WRENCH)
+		if("anchor")
+			return dyntool_image_forward(TOOL_WRENCH)
 
 /**
  * returns speed multiplier, or null if not tool
@@ -115,13 +153,19 @@
 		if(!silent)
 			user?.action_feedback(SPAN_WARNING("Someone's already working on [src]."), src)
 		return FALSE
-	var/atom/movable/target = isnull(forced_target)? ask_for_target(user) : forced_target
 	if(isnull(tool))
 		tool = user.get_active_held_item()
 	var/tool_multiplier = is_sculpting_tool(tool)
 	if(isnull(tool_multiplier))
 		if(!silent)
 			user?.action_feedback(SPAN_WARNING("You must be holding a valid sculpting tool."), src)
+		return FALSE
+	var/atom/movable/target = isnull(forced_target)? ask_for_target(user) : forced_target
+	if(isnull(target))
+		return FALSE
+	if(tool != user.get_active_held_item())
+		return FALSE
+	if(!user.Adjacent(src))
 		return FALSE
 
 	sculpting = TRUE
@@ -167,13 +211,15 @@
 	sculpting_renderer.alpha = sculpting_overlay_active? initial(sculpting_renderer.alpha) : 0
 
 	if(isnull(sculpting_mask))
-		sculpting_mask = icon('icons/system/colors_32x32.dmi', "white")
+		sculpting_mask = icon('icons/system/color_32x32.dmi', "white")
 	if(sculpting_mask.Width() != model_width || sculpting_mask.Height() != model_height)
 		sculpting_mask.Scale(1, 1, model_width, model_height)
 
 	if(sculpting_overlay_active)
 		sculpting_renderer.add_filter("slate", 0, alpha_mask_filter(1, sculpting_line - model_height + 1, sculpting_mask, flags = MASK_INVERSE))
 
+	// todo: actual chisels wit htoolsounds, screwdrivers are dogshit
+	playsound(src, 'sound/effects/break_stone.ogg', vary = TRUE, vol = 50)
 	user.visible_action_feedback(
 		target = src,
 		hard_range = MESSAGE_RANGE_CONSTRUCTION,
@@ -187,9 +233,14 @@
 	var/last = world.time
 	var/last_line = 0
 
+	var/datum/progressbar/progressbar = new(user, sculpting_line, src)
+
 	while(progress < finished_progress)
 		if(QDELETED(src))
+			QDEL_NULL(progressbar)
 			return
+		if(!do_after(user, time_per_line, src, DO_AFTER_NO_PROGRESS))
+			break
 		var/should_be_at = sculpting_line - FLOOR(progress / time_per_line, 1)
 		if(should_be_at != last_line)
 			last_line = should_be_at
@@ -197,10 +248,11 @@
 			else
 				sculpting_overlay_active = TRUE
 				sculpting_renderer.add_filter("slate", 0, alpha_mask_filter(1, should_be_at - model_height + 1, sculpting_mask, flags = MASK_INVERSE))
-			#warn update
 
-		stoplag(time_per_line)
 		progress += world.time - last
+		progressbar.update(sculpting_line - should_be_at)
+
+	QDEL_NULL(progressbar)
 
 	lines = progress / time_per_line
 

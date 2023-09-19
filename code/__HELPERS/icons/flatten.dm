@@ -43,6 +43,11 @@
 /**
  * Generates an icon with all 4 directions of something.
  *
+ * Note: Centering offsets here have a weird meaning.
+ * They basically tell you how to offset the finished result to ignore large icons
+ * causing the original icon to be scaled beyond its sides.
+ * It's not a 'true' semantic centering offset - the icon system doesn't handle that.
+ *
  * @params
  * - A - appearancelike object.
  * - no_anim - flatten out animations
@@ -121,6 +126,11 @@
 
 /**
  * grabs flat icon as list(icon, centering-x, centering-y) offsets
+ *
+ * Note: Centering offsets here have a weird meaning.
+ * They basically tell you how to offset the finished result to ignore large icons
+ * causing the original icon to be scaled beyond its sides.
+ * It's not a 'true' semantic centering offset - the icon system doesn't handle that.
  */
 /proc/get_flat_icon(appearance/appearancelike, dir, no_anim)
 	if(!dir && isloc(appearancelike))
@@ -138,7 +148,6 @@
  * @return list(icon, x, y) where x/y are centering pixel offsets
  */
 /proc/_get_flat_icon(image/A, defdir, no_anim, deficon, start)
-	#warn impl return
 	RETURN_TYPE(/list)
 	// start with blank image
 	var/static/icon/template = icon('icons/system/blank_32x32.dmi', "")
@@ -206,6 +215,9 @@
 			else
 				self_icon.Blend(A.color, ICON_MULTIPLY)
 		return list(self_icon, 0, 0)
+
+	var/realigned_x = 0
+	var/realigned_y = 0
 
 	// safety/performance check
 	if((A.overlays.len + A.underlays.len) > 80)
@@ -356,10 +368,10 @@
 		// clean up frames
 		var/icon/cleaned = icon()
 		cleaned.Insert(flat, "", SOUTH, 1, 0)
-		return list(cleaned, 0, 0)
+		return list(cleaned, -shift_x, -shift_y)
 	else
 		// just return flat as SOUTH
-		return list(icon(flat, "", SOUTH), 0, 0)
+		return list(icon(flat, "", SOUTH), -shift_x, -shift_y)
 
 	#undef flatX1
 	#undef flatX2

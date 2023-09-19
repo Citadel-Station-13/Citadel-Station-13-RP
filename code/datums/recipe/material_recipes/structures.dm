@@ -3,7 +3,7 @@
 
 /datum/stack_recipe/material/structure
 	abstract_type = /datum/stack_recipe/material/structure
-	category = "Material - Structure"
+	category = "material - structure"
 
 /datum/stack_recipe/material/structure/door
 	name = "simple door"

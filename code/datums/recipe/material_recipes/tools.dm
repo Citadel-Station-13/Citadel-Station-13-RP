@@ -3,7 +3,7 @@
 
 /datum/stack_recipe/material/tools
 	abstract_type = /datum/stack_recipe/material/tools
-	category = "Material - tools"
+	category = "material - tools"
 
 /datum/stack_recipe/material/tools/ring
 	name = "ring"

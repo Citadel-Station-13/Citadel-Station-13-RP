@@ -2984,7 +2984,7 @@
 #include "code\modules\loadout\accessories\collar.dm"
 #include "code\modules\loadout\accessories\insignia.dm"
 #include "code\modules\loadout\accessories\utility.dm"
-#include "code\modules\logging\mob_actor.dm"
+#include "code\modules\logging\logging.dm"
 #include "code\modules\loot\pack.dm"
 #include "code\modules\loot\table.dm"
 #include "code\modules\loot\packs\archeology.dm"

@@ -52,13 +52,15 @@
 	var/list/assembled = ..()
 	for(var/datum/stack_recipe/recipe as anything in material.get_recipes())
 		assembled[++assembled.len] = recipe.tgui_recipe_data()
+	for(var/datum/stack_recipe/material/recipe as anything in SSmaterials.material_stack_recipes)
+		assembled[++assembled.len] = recipe.tgui_recipe_data()
 	return assembled
 
 /obj/item/stack/material/can_craft_recipe(datum/stack_recipe/recipe)
 	. = ..()
 	if(.)
 		return
-	return (recipe in material.recipes)
+	return (recipe in material.recipes) || (istype(recipe, /datum/stack_recipe/material) && (recipe in SSmaterials.material_stack_recipes))
 
 /obj/item/stack/material/proc/update_strings()
 	// Update from material datum.

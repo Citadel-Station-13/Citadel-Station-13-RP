@@ -120,11 +120,11 @@
 	if(needed > src.amount)
 		return FALSE
 	var/turf/where = get_turf(user)
-	if(!do_after(user, recipe.time, src))
+	if(!do_after(user, recipe.time, src, progress_anchor = user))
 		return FALSE
 	if(!recipe.craft(where, amount, src, user, FALSE, user.dir))
 		return FALSE
-	log_stackcrafting(user, null, src, recipe.name, amount, needed, where)
+	log_stackcrafting(user, src, recipe.name, amount, needed, where)
 	use(needed)
 
 /**
