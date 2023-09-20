@@ -6731,12 +6731,12 @@
 	pixel_y = 4
 	},
 /obj/item/cell/device/weapon{
-	pixel_y = 4;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = 4
 	},
 /obj/item/cell/device/weapon{
-	pixel_y = 4;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 4
 	},
 /obj/item/hand_labeler{
 	pixel_x = 2;
@@ -6756,9 +6756,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "eyX" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -7139,8 +7137,8 @@
 	dir = 9
 	},
 /obj/item/storage/box/nifsofts_security{
-	pixel_y = 4;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /obj/item/storage/box/evidence{
 	pixel_x = -2;
@@ -7366,8 +7364,8 @@
 /obj/structure/wall_frame/prepainted,
 /obj/structure/wall_frame/prepainted,
 /obj/structure/window/reinforced/polarized/full{
-	name = "HoP Office window";
-	id = "hop_office"
+	id = "hop_office";
+	name = "HoP Office window"
 	},
 /obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
@@ -7742,9 +7740,9 @@
 	id = "courser_magazine_1"
 	},
 /obj/machinery/door/blast/regular{
+	dir = 4;
 	id = "courser_magazine_1";
-	name = "Cannon Magazine One";
-	dir = 4
+	name = "Cannon Magazine One"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -10501,9 +10499,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
 "hbA" = (
@@ -13574,9 +13570,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/clownoffice)
 "jiv" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -13610,9 +13604,9 @@
 	dir = 8
 	},
 /obj/machinery/door/blast/regular{
+	dir = 4;
 	id = "VaultAc";
-	name = "\improper Vault";
-	dir = 4
+	name = "\improper Vault"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
@@ -13686,6 +13680,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
+"jmS" = (
+/obj/machinery/air_alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/surfacebase/tram)
 "jmU" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 4
@@ -16345,9 +16346,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
 "kUE" = (
@@ -16838,7 +16837,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "lqA" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted,
 /area/triumph/surfacebase/tram)
 "lqD" = (
 /obj/machinery/power/apc{
@@ -19520,9 +19519,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "ntG" = (
@@ -20086,8 +20083,8 @@
 /obj/structure/grille,
 /obj/structure/wall_frame/prepainted,
 /obj/structure/window/reinforced/polarized/full{
-	name = "Internal Aiffars window";
-	id = "lawyer_blast"
+	id = "lawyer_blast";
+	name = "Internal Aiffars window"
 	},
 /obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor,
@@ -20772,9 +20769,9 @@
 /obj/machinery/button/remote/blast_door{
 	id = "VaultAc";
 	name = "Vault Blast Door";
+	pixel_x = -26;
 	req_access = list(53);
-	req_one_access = list(53);
-	pixel_x = -26
+	req_one_access = list(53)
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
@@ -20922,20 +20919,20 @@
 	pixel_y = 9
 	},
 /obj/item/clothing/accessory/holster/leg{
-	pixel_y = 9;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 9
 	},
 /obj/item/clothing/accessory/holster/leg{
-	pixel_y = 9;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 9
 	},
 /obj/item/clothing/accessory/holster/leg{
-	pixel_y = 9;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 9
 	},
 /obj/item/clothing/accessory/holster/leg{
-	pixel_y = 9;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 9
 	},
 /obj/item/clothing/accessory/storage/black_drop_pouches{
 	pixel_x = 7
@@ -22920,9 +22917,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
-"pDX" = (
-/turf/simulated/wall,
-/area/hallway/primary/aft)
 "pEt" = (
 /obj/structure/bed/chair/office/light,
 /turf/simulated/floor/tiled/old_cargo/white,
@@ -23435,20 +23429,20 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/glasses/sunglasses/sechud{
-	pixel_y = -5;
-	pixel_x = -1
+	pixel_x = -1;
+	pixel_y = -5
 	},
 /obj/item/clothing/glasses/sunglasses/sechud{
-	pixel_y = -5;
-	pixel_x = -1
+	pixel_x = -1;
+	pixel_y = -5
 	},
 /obj/item/clothing/glasses/sunglasses/sechud{
-	pixel_y = -5;
-	pixel_x = -1
+	pixel_x = -1;
+	pixel_y = -5
 	},
 /obj/item/clothing/glasses/sunglasses/sechud{
-	pixel_y = -5;
-	pixel_x = -1
+	pixel_x = -1;
+	pixel_y = -5
 	},
 /obj/item/gunbox/armor/security{
 	pixel_y = 8
@@ -23855,11 +23849,11 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
 	id = "bridge_lockdown";
 	name = "Bridge Lockdown";
-	opacity = 0;
-	dir = 4
+	opacity = 0
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full,
 /obj/effect/paint_stripe/commandblue,
@@ -24389,12 +24383,12 @@
 	pixel_y = 1
 	},
 /obj/item/clothing/accessory/holster/waist{
-	pixel_y = -7;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = -7
 	},
 /obj/item/clothing/accessory/holster/waist{
-	pixel_y = -7;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = -7
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
@@ -25148,7 +25142,6 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/morgue{
-	dir = 2;
 	name = "Private Study";
 	req_access = list(37)
 	},
@@ -25473,9 +25466,9 @@
 	dir = 4
 	},
 /obj/machinery/door/window{
+	dir = 4;
 	name = "Mass Driver";
-	req_access = list(22);
-	dir = 4
+	req_access = list(22)
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -25798,9 +25791,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "rHb" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -26120,8 +26111,8 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Exploration Public Lobby";
-	dir = 4
+	dir = 4;
+	name = "Exploration Public Lobby"
 	},
 /turf/simulated/floor/tiled,
 /area/exploration)
@@ -26347,8 +26338,8 @@
 /obj/structure/wall_frame/prepainted,
 /obj/structure/wall_frame/prepainted,
 /obj/structure/window/reinforced/polarized/full{
-	name = "HoP Office window";
-	id = "hop_office"
+	id = "hop_office";
+	name = "HoP Office window"
 	},
 /obj/effect/paint_stripe/commandblue,
 /turf/simulated/floor/plating,
@@ -26800,12 +26791,6 @@
 /obj/spawner/window/low_wall/full/nogrille,
 /turf/simulated/floor,
 /area/maintenance/tool_storage)
-"sor" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/aft)
 "spc" = (
 /obj/structure/railing{
 	dir = 8
@@ -27033,9 +27018,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "szs" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
@@ -27335,9 +27318,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
 "sMV" = (
@@ -30076,11 +30057,11 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
 	id = "bridge_lockdown";
 	name = "Bridge Lockdown";
-	opacity = 0;
-	dir = 4
+	opacity = 0
 	},
 /turf/simulated/floor/tiled,
 /area/bridge)
@@ -30237,9 +30218,9 @@
 	id = "courser_magazine_2"
 	},
 /obj/machinery/door/blast/regular{
+	dir = 4;
 	id = "courser_magazine_2";
-	name = "Cannon Magazine Two";
-	dir = 4
+	name = "Cannon Magazine Two"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -30835,9 +30816,9 @@
 /area/security/brig)
 "vid" = (
 /obj/machinery/door/blast/regular{
+	dir = 8;
 	id = "courser_cannon_shroud";
-	name = "Cannon Barrel Shutter";
-	dir = 8
+	name = "Cannon Barrel Shutter"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -31818,8 +31799,8 @@
 "vUQ" = (
 /obj/structure/table/steel,
 /obj/item/tool/crowbar{
-	pixel_y = 4;
-	pixel_x = -3
+	pixel_x = -3;
+	pixel_y = 4
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 9
@@ -31828,24 +31809,24 @@
 	dir = 6
 	},
 /obj/item/tool/crowbar{
-	pixel_y = 4;
-	pixel_x = -1
+	pixel_x = -1;
+	pixel_y = 4
 	},
 /obj/item/tool/crowbar{
-	pixel_y = 4;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = 4
 	},
 /obj/item/tool/crowbar{
-	pixel_y = 4;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 4
 	},
 /obj/item/tool/crowbar{
-	pixel_y = 4;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 4
 	},
 /obj/item/tool/crowbar{
-	pixel_y = 4;
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = 4
 	},
 /obj/item/retail_scanner/security{
 	pixel_x = 5;
@@ -32447,11 +32428,11 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
 	id = "bridge_lockdown";
 	name = "Bridge Lockdown";
-	opacity = 0;
-	dir = 4
+	opacity = 0
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge)
@@ -35087,9 +35068,9 @@
 	id = "courser_battery"
 	},
 /obj/machinery/door/blast/regular{
+	dir = 4;
 	id = "courser_cannon_chamber";
-	name = "Cannon Chamber Shroud";
-	dir = 4
+	name = "Cannon Chamber Shroud"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -47917,7 +47898,7 @@ qvn
 fuR
 hxi
 tBo
-rTZ
+jmS
 tFS
 rTZ
 rTZ
@@ -48116,7 +48097,7 @@ aNK
 aNK
 pjL
 pjL
-pDX
+aNK
 lqA
 qUM
 uty
@@ -49257,7 +49238,7 @@ xIq
 pxF
 aau
 sXO
-sor
+hhF
 xIq
 aau
 aau

@@ -23130,6 +23130,9 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
+/obj/machinery/air_alarm{
+	pixel_y = 22
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "sVt" = (
@@ -24442,12 +24445,7 @@
 /obj/effect/floor_decal/industrial/warning/cee{
 	dir = 1
 	},
-/obj/machinery/computer/general_air_control/large_tank_control{
-	input_tag = "atmos_out";
-	name = "Atmos Intake Control";
-	output_tag = "atmos_in";
-	sensors = list("atmos_intake"="Tank")
-	},
+/obj/machinery/computer/general_air_control,
 /turf/simulated/floor/tiled,
 /area/rnd/storage)
 "tVo" = (
