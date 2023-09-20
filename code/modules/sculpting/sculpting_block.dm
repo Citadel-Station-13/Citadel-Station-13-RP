@@ -118,7 +118,7 @@
 	. = ..()
 	var/image/stand = image(initial(icon), icon_state = sculpture_base_state)
 	stand.appearance_flags = KEEP_APART | RESET_COLOR
-	stand.pixel_x = alignment
+	stand.pixel_x = -alignment
 	underlays += stand
 
 /obj/structure/sculpting_block/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
@@ -234,6 +234,14 @@
 	if(isnull(target))
 		return FALSE
 	if(tool != user.get_active_held_item())
+		return FALSE
+	if(finished)
+		if(!silent)
+			user?.action_feedback(SPAN_WARNING("[src] is finished."), src)
+		return FALSE
+	if(sculpting)
+		if(!silent)
+			user?.action_feedback(SPAN_WARNING("Someone's already working on [src]."), src)
 		return FALSE
 	if(!user.Adjacent(src))
 		return FALSE
