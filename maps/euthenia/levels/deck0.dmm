@@ -99,7 +99,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/main_map/hallway/deck0)
 "ef" = (
 /turf/simulated/wall/r_wall,
 /area/main_map/maintenance/deck_zero/forward/port)
@@ -131,7 +131,6 @@
 /area/bridge)
 "fT" = (
 /obj/machinery/door/airlock/lift,
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/main_map/maintenance/deck_zero/forward/starboard)
 "fU" = (
@@ -178,7 +177,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
+/area/main_map/hallway/deck0)
 "iE" = (
 /obj/structure/railing,
 /turf/simulated/open,
@@ -344,7 +343,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/main_map/hallway/deck0)
 "pA" = (
 /obj/structure/railing{
 	dir = 1
@@ -401,7 +400,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
+/area/main_map/hallway/deck0)
 "rl" = (
 /obj/structure/table/reinforced,
 /obj/machinery/ai_status_display{
@@ -451,7 +450,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/main_map/hallway/deck0)
 "tq" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
@@ -732,7 +731,7 @@
 "HA" = (
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/main_map/hallway/deck0)
 "HM" = (
 /obj/machinery/door/firedoor,
 /obj/item/barrier_tape_segment/engineering,
@@ -886,7 +885,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/main_map/hallway/deck0)
 "MT" = (
 /obj/landmark/map_data/euthenia,
 /turf/space,
@@ -1002,7 +1001,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/main_map/hallway/deck0)
 "RX" = (
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/outdoors,
@@ -1029,7 +1028,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/main_map/hallway/deck0)
 "SH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
@@ -1144,7 +1143,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/main_map/hallway/deck0)
 "XX" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -11438,10 +11437,10 @@ VJ
 VJ
 VJ
 VJ
-Fp
-Xi
-Xi
-Fp
+ov
+CT
+CT
+ov
 Ox
 Ox
 Ox
@@ -11632,10 +11631,10 @@ VJ
 VJ
 VJ
 VJ
-Xi
-Ox
-Ox
-Xi
+CT
+rS
+rS
+CT
 Ox
 Ox
 Ox
@@ -11826,10 +11825,10 @@ VJ
 VJ
 VJ
 VJ
-Xi
-Ox
-Ox
-Xi
+CT
+rS
+rS
+CT
 Ox
 Ox
 Ox
@@ -12020,10 +12019,10 @@ VJ
 VJ
 VJ
 VJ
-Xi
-Ox
-Ox
-Xi
+CT
+rS
+rS
+CT
 Ox
 Ox
 Ox
@@ -12214,10 +12213,10 @@ ov
 ov
 ov
 ov
-Fp
+ov
 pq
 to
-Fp
+ov
 Ox
 Ox
 Ox
@@ -12411,7 +12410,7 @@ ov
 qJ
 MQ
 HA
-Xi
+CT
 Ox
 Ox
 Ox
@@ -12605,7 +12604,7 @@ zx
 pq
 XN
 HA
-Xi
+CT
 Ox
 Ox
 Ox
@@ -12799,7 +12798,7 @@ HM
 Rp
 dl
 Sq
-Xi
+CT
 Ox
 Ox
 Ox
@@ -12993,7 +12992,7 @@ ov
 iD
 iD
 iD
-Fp
+ov
 Ox
 Ox
 Ox
@@ -13184,10 +13183,10 @@ ov
 ov
 ov
 ov
-Fp
-Fp
-Fp
-Fp
+ov
+ov
+ov
+ov
 Ox
 Ox
 Ox
@@ -19958,7 +19957,7 @@ OM
 OM
 pZ
 pZ
-fT
+JQ
 Kx
 Kx
 Kx
@@ -20346,7 +20345,7 @@ pZ
 pZ
 pZ
 pZ
-fT
+VR
 Kx
 Kx
 Kx

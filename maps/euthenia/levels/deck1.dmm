@@ -971,7 +971,7 @@
 "aXw" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor,
-/turf/simulated/wall/prepainted/civilian,
+/turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one)
 "aXB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -40983,7 +40983,7 @@ cHN
 oud
 uGe
 wkU
-rVt
+lZd
 nPU
 nPU
 nPU
@@ -41371,7 +41371,7 @@ qRz
 kwb
 mXv
 nww
-rVt
+xpP
 nPU
 nPU
 nPU

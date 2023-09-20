@@ -1615,15 +1615,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_gas)
-"beK" = (
-/obj/machinery/power/terminal{
-	dir = 8
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
 "bfJ" = (
 /obj/machinery/door/firedoor,
 /obj/structure/catwalk,
@@ -6985,9 +6976,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/machinery/door/airlock/multi_tile/glass{
-	req_one_access = list(10)
-	},
+/obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/main_map/hallway/deck2)
 "fuY" = (
@@ -23300,13 +23289,6 @@
 /obj/machinery/power/apc/direction_bump/east,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
-"sKy" = (
-/obj/machinery/power/smes/magical{
-	output_level = 5000;
-	output_level_max = 5000
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
 "sKO" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/radio/off,
@@ -27362,8 +27344,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/terminal{
-	dir = 8
+/obj/machinery/power/smes/magical{
+	output_level = 5000;
+	output_level_max = 5000
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -35878,9 +35861,9 @@ noL
 noL
 eyi
 eyi
-sKy
-sKy
-sKy
+noL
+noL
+noL
 eyi
 eyi
 noL
@@ -36073,7 +36056,7 @@ noL
 eyi
 eyi
 vSD
-beK
+vSD
 vSD
 eyi
 eyi
@@ -49287,7 +49270,7 @@ qTw
 xMv
 wek
 tcJ
-ggs
+bKr
 foC
 foC
 foC
@@ -49675,7 +49658,7 @@ nIc
 nIc
 ivA
 wwF
-ggs
+nnS
 foC
 foC
 foC
