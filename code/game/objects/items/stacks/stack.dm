@@ -88,7 +88,7 @@
 
 /obj/item/stack/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	.["amount"] = amount
+	.["amount"] = get_amount()
 
 /obj/item/stack/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -102,8 +102,8 @@
 			var/datum/stack_recipe/recipe = locate(recipe_ref)
 			if(!can_craft_recipe(recipe))
 				return TRUE
-			var/amount = params["amount"]
-			craft_recipe(recipe, usr, amount)
+			var/make_amount = params["amount"]
+			craft_recipe(recipe, usr, make_amount)
 			return TRUE
 
 /obj/item/stack/proc/can_craft_recipe(datum/stack_recipe/recipe)
@@ -111,20 +111,22 @@
 		return TRUE
 	return FALSE
 
-/obj/item/stack/proc/craft_recipe(datum/stack_recipe/recipe, mob/user, amount)
-	if(amount > (isnull(recipe.max_amount)? (recipe.result_is_stack? INFINITY : 1) : recipe.max_amount))
+/obj/item/stack/proc/craft_recipe(datum/stack_recipe/recipe, mob/user, make_amount)
+	if(make_amount > (isnull(recipe.max_amount)? (recipe.result_is_stack? INFINITY : 1) : recipe.max_amount))
 		return FALSE
-	var/needed = recipe.cost * (amount / recipe.result_amount)
+	var/needed = recipe.cost * (make_amount / recipe.result_amount)
 	if(FLOOR(needed, 1) != needed) // no decimals, thank you!
 		return FALSE
-	if(needed > src.amount)
+	if(needed > get_amount())
 		return FALSE
 	var/turf/where = get_turf(user)
 	if(!do_after(user, recipe.time, src, progress_anchor = user))
 		return FALSE
-	if(!recipe.craft(where, amount, src, user, FALSE, user.dir))
+	if(needed > get_amount())
 		return FALSE
-	log_stackcrafting(user, src, recipe.name, amount, needed, where)
+	if(!recipe.craft(where, make_amount, src, user, FALSE, user.dir))
+		return FALSE
+	log_stackcrafting(user, src, recipe.name, make_amount, needed, where)
 	use(needed)
 
 /**

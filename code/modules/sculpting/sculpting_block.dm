@@ -36,6 +36,8 @@
 
 	/// is this sculpture finished?
 	var/finished = FALSE
+	/// sculpture x alignment offset
+	var/alignment = 0
 
 	/// currently being sculpted
 	var/sculpting = FALSE
@@ -114,7 +116,10 @@
 		add_overlay(render)
 	color = material?.icon_colour
 	. = ..()
-	underlays += image(initial(icon), icon_state = sculpture_base_state)
+	var/image/stand = image(initial(icon), icon_state = sculpture_base_state)
+	stand.appearance_flags = KEEP_APART | RESET_COLOR
+	stand.pixel_x = alignment
+	underlays += stand
 
 /obj/structure/sculpting_block/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)
@@ -334,16 +339,19 @@
 	if(lines)
 		if(isnull(sculpting_slates))
 			create_slates()
+		var/model_x_realigned = 0
 		if(slate_dimension_x < model_width)
 			// allow expansion but only for width
 			var/x_alignment = FLOOR((model_width - slate_dimension_x) / 2, 1)
-			crop_slates(-x_alignment, 1, model_width - slate_dimension_x - x_alignment, slate_dimension_y)
-			set_base_pixel_x(-x_alignment)
+			model_x_realigned = x_alignment
+			crop_slates(-x_alignment + 1, 1, slate_dimension_x + (model_width - slate_dimension_x - x_alignment), slate_dimension_y)
+			alignment -= x_alignment
+			set_base_pixel_x(base_pixel_x - x_alignment)
 		if(!sculpting_overlay_active)
 			// we didn't even reach the buffer yet
 		else
 			sculpting_buffer = crop_buffer(sculpting_buffer, 1, sculpting_line_end + 1, model_width, sculpting_line_start)
-			blend_slates(sculpting_buffer, model_x_align + 1, sculpting_line_end + 1)
+			blend_slates(sculpting_buffer, model_x_align + 1 + model_x_realigned, sculpting_line_end + 1)
 		assemble_built()
 		update_appearance()
 
@@ -379,6 +387,8 @@
 	icon = sculpting_built
 	sculpting_built = null
 	sculpting_slates = null
+	name = "sculpted statue"
+	desc = "A custom-chiseled statue depicting a particular thing of note."
 	QDEL_NULL(sculpting_renderer)
 	clear_filters()
 	update_appearance()
