@@ -522,6 +522,22 @@
 	name = "Colored Leotard"
 	path = /obj/item/clothing/under/leotardcolor
 
+/datum/loadout_entry/uniform/bunnysuit_f
+	name = "Bunny Leotard - Female"
+	path = /obj/item/clothing/under/bunnysuit_f
+
+/datum/loadout_entry/uniform/bunnysuit_m
+	name = "Bunny Leotard - Male"
+	path = /obj/item/clothing/under/bunnysuit_m
+
+/datum/loadout_entry/uniform/tabard_w
+	name = "White Tabard-Dress"
+	path = /obj/item/clothing/under/tabard_w
+
+/datum/loadout_entry/uniform/tabard_b
+	name = "Black Tabard-Dress"
+	path = /obj/item/clothing/under/tabard_b
+
 /datum/loadout_entry/uniform/verglasdress
 	name = "Verglas Dress"
 	path = /obj/item/clothing/under/verglasdress
