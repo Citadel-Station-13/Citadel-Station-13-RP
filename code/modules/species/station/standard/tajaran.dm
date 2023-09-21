@@ -31,7 +31,6 @@
 	burn_mod  = 1.15
 	flash_mod = 1.1
 
-	//Cattos be hungy
 	metabolic_rate = 1.1
 	gluttonous = 0
 	hunger_factor = 0.1
@@ -43,14 +42,15 @@
 
 
 	blurb = {"
-	The Tajaran are a mammalian species resembling roughly felines, hailing from Meralar in the Rarkajar system.
+	The Tajara are a race of humanoids that possess markedly felinoid traits that include
+	a semi-prehensile tail, a body covered in fur of varying shades, and padded, digitigrade feet.
+	They are a naturally superstitious species, with the new generations growing up with tales of the struggles of surviving a great ice age.
+	This spirit has led them forward to the reconstruction and advancement of their society to what they are today.
+	Their pride for the struggles they went through is heavily tied to their spiritual beliefs.
 
-	While reaching to the stars independently from outside influences, the humans engaged them in peaceful trade contact
-	and have accelerated the fledgling culture into the interstellar age. Their history is full of war and highly fractious
-	governments, something that permeates even to today's times. They prefer colder, tundra-like climates, much like their
-	home worlds and speak a variety of languages, especially Siik and Akhani.
-	"}
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Tajarans"
+	Recent discoveries have jump started the progression of highly advanced cybernetic technology, causing a culture shock within Tajaran society.
+	 "}
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Tajara"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/tajaran)
 
 	body_temperature = 320.15 //Even more cold resistant, even more flammable

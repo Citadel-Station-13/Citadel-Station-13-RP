@@ -383,7 +383,7 @@
 	name = "chemistry bag"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "chembag"
-	desc = "A bag for storing pills, patches, and bottles."
+	desc = "A bag for storing pills, patches, bottles, and hypovials."
 	max_storage_space = 200
 	w_class = ITEMSIZE_LARGE
 	slowdown = 1
@@ -392,6 +392,24 @@
 		/obj/item/reagent_containers/glass/beaker,
 		/obj/item/reagent_containers/glass/bottle,
 		/obj/item/reagent_containers/glass/hypovial,
+	)
+
+	// -----------------------------
+	//           Xenobiology Bag
+	// -----------------------------
+/obj/item/storage/bag/xenobio
+	name = "xenobiology bag"
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "biobag"
+	desc = "A bag for storing slime extracts, slime potions, monkey cubes, and beakers."
+	max_storage_space = 200
+	w_class = ITEMSIZE_LARGE
+	slowdown = 1
+	can_hold = list(
+		/obj/item/reagent_containers/glass/beaker,
+		/obj/item/reagent_containers/food/snacks/monkeycube,
+		/obj/item/slime_extract,
+		/obj/item/slimepotion
 	)
 
 	// -----------------------------

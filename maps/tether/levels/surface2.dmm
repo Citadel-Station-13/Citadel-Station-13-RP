@@ -11435,6 +11435,14 @@
 /area/tether/surfacebase/security/middlehall)
 "hXw" = (
 /obj/structure/table/steel,
+/obj/item/storage/bag/xenobio{
+	pixel_x = -7;
+	pixel_y = 5
+	},
+/obj/item/storage/bag/xenobio{
+	pixel_x = 7;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "hXE" = (

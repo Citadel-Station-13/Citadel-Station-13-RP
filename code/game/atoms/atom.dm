@@ -1081,21 +1081,21 @@
 	return base_pixel_y
 
 /**
- * get the pixel_x needed to adjust an atom on our turf **to the position of our visual center**
+ * get the pixel_x needed to adjust ourselves to be centered on our turf. this is used for alignment with buckles and whatnot.
  *
  * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
-/atom/proc/get_centering_pixel_x_offset(dir, atom/aligning)
+/atom/proc/get_centering_pixel_x_offset(dir)
 	return base_pixel_x + (icon_x_dimension - WORLD_ICON_SIZE) / 2
 
 /**
- * get the pixel_y needed to adjust an atom on our turf **to the position of our visual center**
+ * get the pixel_y needed to adjust ourselves to be centered on our turf. this is used for alignment with buckles and whatnot.
  *
  * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
-/atom/proc/get_centering_pixel_y_offset(dir, atom/aligning)
+/atom/proc/get_centering_pixel_y_offset(dir)
 	return base_pixel_y + (icon_y_dimension - WORLD_ICON_SIZE) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.

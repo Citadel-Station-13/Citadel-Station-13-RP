@@ -266,7 +266,7 @@
 	if(.)
 		open_strip_menu(user)
 
-/mob/proc/strip_interaction_prechecks(mob/user, autoclose = TRUE)
+/mob/proc/strip_interaction_prechecks(mob/user, autoclose = TRUE, allow_loc = FALSE)
 	if(!isliving(user))
 		// no ghost fuckery
 		return FALSE
@@ -277,7 +277,7 @@
 	if(user.restrained())
 		to_chat(user, SPAN_WARNING("You are restrained!"))
 		return FALSE
-	if(!user.Adjacent(src))
+	if(!user.Adjacent(src) && (!allow_loc || !user.Adjacent(loc)))
 		to_chat(user, SPAN_WARNING("You are too far away!"))
 		close_strip_menu(user)
 		return FALSE
