@@ -28,7 +28,7 @@
 		/obj/item/suit_cooling_unit,
 		/obj/item/melee/baton,
 		/obj/item/storage/backpack,
-		/obj/item/bluespace_radio,
+		/obj/item/subspace_radio,
 	)
 
 
@@ -89,7 +89,7 @@
 		/obj/item/roller,
 		/obj/item/suit_cooling_unit,
 		/obj/item/storage/backpack,
-		/obj/item/bluespace_radio,
+		/obj/item/subspace_radio,
 	)
 
 	chest_type = /obj/item/clothing/suit/space/hardsuit/military

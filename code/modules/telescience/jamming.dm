@@ -3,19 +3,38 @@
 	var/atom/host
 	/// for quick access: our level
 	var/z_index
-	/// jamming power
+	/// jamming power; negative for boost instead of jam
 	var/power = 0
-	/// boost jamming power
+	/// boost jamming power; this is pretty powerful
 	var/boost = 0
-	/// actually boosts, instead of jams
-	var/uno_reverse = FALSE
+	/// 
 
-#warn impl
+/datum/bluespace_jamming/New(atom/host)
+	set_host(host)
 
-/datum/bluespace_jamming/proc/signal_coefficient(datum/bluespace_signal/signal)
-	var/turf/them = get_turf(signal.attached)
-	return coefficient(them)
+/datum/bluespace_jamming/Destroy()
+	set_host(null)
+	return ..()
 
+/datum/bluespace_jamming/proc/set_host(atom/what)
+	unregister(host)
+	host = what
+	if(isnull(host))
+		return
+	register(host)
+
+/datum/bluespace_jamming/proc/register(atom/host)
+	#warn impl
+
+/datum/bluespace_jamming/proc/unregister(atom/host)
+	#warn impl
+
+/datum/bluespace_jamming/proc/z_changed(datum/source, old_z, new_z)
+	#warn impl
+
+/**
+ * Gets power coefficient to target
+ */
 /datum/bluespace_jamming/proc/coefficient(turf/target)
 	return 0
 
@@ -23,9 +42,6 @@
  * flat, full-zlevel
  */
 /datum/bluespace_jamming/flat
-
-/datum/bluespace_jamming/flat/signal_coefficient(datum/bluespace_signal/signal)
-	return 1
 
 /datum/bluespace_jamming/flat/coefficient(turf/target)
 	return 1
@@ -36,7 +52,7 @@
 /datum/bluespace_jamming/quadratic
 
 /datum/bluespace_jamming/quadratic/coefficient(turf/target)
-	var/turf/us = get_turf(src)
+	var/turf/us = get_turf(host)
 	return (1/2) ** get_dist(us, target)
 
 /**
@@ -49,7 +65,7 @@
 	var/falloff = 0.15
 
 /datum/bluespace_jamming/linear/coefficient(turf/target)
-	var/turf/us = get_turf(src)
+	var/turf/us = get_turf(host)
 	var/dist = get_dist(us, target)
 	if(grace >= dist)
 		return 1

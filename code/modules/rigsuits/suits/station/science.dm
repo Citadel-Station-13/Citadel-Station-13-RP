@@ -28,7 +28,7 @@
 		/obj/item/pickaxe/hand,
 		/obj/item/storage/bag/fossils,
 		/obj/item/storage/backpack,
-		/obj/item/bluespace_radio,
+		/obj/item/subspace_radio,
 	)
 
 /datum/armor/hardsuit/ami

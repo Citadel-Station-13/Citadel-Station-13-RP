@@ -43,7 +43,7 @@
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/roller,
 		/obj/item/storage/backpack,
-		/obj/item/bluespace_radio,
+		/obj/item/subspace_radio,
 	)
 
 	initial_modules = list(

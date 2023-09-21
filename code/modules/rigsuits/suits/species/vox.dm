@@ -14,7 +14,7 @@
 		/obj/item/tank,
 		/obj/item/suit_cooling_unit,
 		/obj/item/storage/backpack,
-		/obj/item/bluespace_radio,
+		/obj/item/subspace_radio,
 	)
 	air_type = /obj/item/tank/vox
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/vox

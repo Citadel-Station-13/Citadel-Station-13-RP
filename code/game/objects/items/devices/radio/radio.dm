@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	show_messages = 1
 
 	//Bluespace radios talk directly to telecomms equipment
-	var/bluespace_radio = FALSE
+	var/subspace_radio = FALSE
 	var/datum/weakref/bs_tx_weakref //Maybe misleading, this is the device to TRANSMIT TO
 	// For mappers or subtypes, to start them prelinked to these devices
 	var/bs_tx_preload_id
@@ -89,7 +89,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 
-	if(bluespace_radio)
+	if(subspace_radio)
 		if(bs_tx_preload_id)
 			//Try to find a receiver
 			for(var/obj/machinery/telecomms/receiver/RX in GLOB.telecomms_list)
@@ -469,7 +469,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	var/filter_type = DATA_LOCAL //If we end up having to send it the old fashioned way, it's with this data var.
 
 	/* ###### Bluespace radios talk directly to receivers (and only directly to receivers) ###### */
-	if(bluespace_radio)
+	if(subspace_radio)
 		//Nothing to transmit to
 		if(!bs_tx_weakref)
 			to_chat(loc, SPAN_WARNING("\The [src] buzzes to inform you of the lack of a functioning connection."))
@@ -580,7 +580,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 		return -1
 	if(!(0 in level))
 		var/turf/position = get_turf(src)
-		if((!position || !(position.z in level)) && !bluespace_radio)			return -1
+		if((!position || !(position.z in level)) && !subspace_radio)			return -1
 	if(freq in ANTAG_FREQS)
 		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys
 			return -1
@@ -782,7 +782,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	internal_channels = GLOB.default_medbay_channels.Copy()
 
 //Pathfinder's Subspace Radio
-/obj/item/bluespace_radio
+/obj/item/subspace_radio
 	name = "subspace radio"
 	desc = "A powerful new radio originally gifted to Nanotrasen from Ward Takahashi. Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere."
 	catalogue_data = list()///datum/category_item/catalogue/information/organization/ward_takahashi)
@@ -799,24 +799,24 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 
 	var/obj/item/radio/bluespace_handset/linked/handset = /obj/item/radio/bluespace_handset/linked
 
-/obj/item/bluespace_radio/Initialize(Mapload) //starts without a cell for rnd
+/obj/item/subspace_radio/Initialize(Mapload) //starts without a cell for rnd
 	. = ..()
 	handset = new(src, src)
 
-/obj/item/bluespace_radio/Destroy()
+/obj/item/subspace_radio/Destroy()
 	. = ..()
 	QDEL_NULL(handset)
 
-/obj/item/bluespace_radio/ui_action_click()
+/obj/item/subspace_radio/ui_action_click()
 	toggle_handset()
 
-/obj/item/bluespace_radio/attack_hand(mob/user, list/params)
+/obj/item/subspace_radio/attack_hand(mob/user, list/params)
 	if(loc == user)
 		toggle_handset()
 	else
 		..()
 
-/obj/item/bluespace_radio/OnMouseDropLegacy()
+/obj/item/subspace_radio/OnMouseDropLegacy()
 	if(ismob(loc))
 		if(!CanMouseDrop(src))
 			return
@@ -824,13 +824,13 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 		add_fingerprint(usr)
 		M.put_in_hands(src)
 
-/obj/item/bluespace_radio/attackby(obj/item/W, mob/user, params)
+/obj/item/subspace_radio/attackby(obj/item/W, mob/user, params)
 	if(W == handset)
 		reattach_handset(user)
 	else
 		return ..()
 
-/obj/item/bluespace_radio/verb/toggle_handset()
+/obj/item/subspace_radio/verb/toggle_handset()
 	set name = "Toggle Handset"
 	set category = "Object"
 
@@ -851,7 +851,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 		update_icon() //success
 
 //checks that the base unit is in the correct slot to be used
-/obj/item/bluespace_radio/proc/slot_check()
+/obj/item/subspace_radio/proc/slot_check()
 	var/mob/M = loc
 	if(!istype(M))
 		return 0 //not equipped
@@ -863,11 +863,11 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 
 	return 0
 
-/obj/item/bluespace_radio/dropped(mob/user, flags, atom/newLoc)
+/obj/item/subspace_radio/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	reattach_handset(user) //handset attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
 
-/obj/item/bluespace_radio/proc/reattach_handset(mob/user)
+/obj/item/subspace_radio/proc/reattach_handset(mob/user)
 	if(!handset)
 		return
 
@@ -879,17 +879,17 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 /obj/item/radio/bluespace_handset
 	name = "subspace radio handset"
 	desc = "A large walkie talkie attached to the subspace radio by a retractable cord. It sits comfortably on a slot in the radio when not in use."
-	bluespace_radio = TRUE
+	subspace_radio = TRUE
 	icon_state = "signaller"
 	slot_flags = null
 	w_class = ITEMSIZE_LARGE
 
 /obj/item/radio/bluespace_handset/linked
-	var/obj/item/bluespace_radio/base_unit
+	var/obj/item/subspace_radio/base_unit
 	bs_tx_preload_id = "Receiver A"  //Transmit to a receiver
 	bs_rx_preload_id = "Broadcaster A"  //Recveive from a transmitter
 
-/obj/item/radio/bluespace_handset/linked/Initialize(mapload, obj/item/bluespace_radio/radio)
+/obj/item/radio/bluespace_handset/linked/Initialize(mapload, obj/item/subspace_radio/radio)
 	base_unit = radio
 	return ..(mapload)
 
@@ -906,7 +906,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	if(base_unit)
 		base_unit.reattach_handset(user) //handset attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
 
-/obj/item/bluespace_radio/talon_prelinked
+/obj/item/subspace_radio/talon_prelinked
 	name = "bluespace radio (talon)"
 	handset = /obj/item/radio/bluespace_handset/linked/talon_prelinked
 
@@ -915,6 +915,6 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	bs_tx_preload_id = "talon_aio" //Transmit to a receiver
 	bs_rx_preload_id = "talon_aio" //Recveive from a transmitter
 */
-/obj/item/bluespace_radio/commerce
+/obj/item/subspace_radio/commerce
 	name = "commercial subspace radio"
 	desc = "Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere. Only a few of these devices have been sold by either Ward Takahashi or NanoTrasen. This device is incredibly rare and mind-numbingly expensive. Do not lose it."

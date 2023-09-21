@@ -19,7 +19,7 @@
 		/obj/item/stack/medical,
 		/obj/item/roller,
 		/obj/item/storage/backpack,
-		/obj/item/bluespace_radio,
+		/obj/item/subspace_radio,
 	)
 
 /datum/armor/hardsuit/medical

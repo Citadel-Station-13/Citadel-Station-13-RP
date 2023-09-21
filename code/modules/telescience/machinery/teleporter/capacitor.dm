@@ -26,4 +26,9 @@
 
 /obj/machinery/bluespace_capacitor/proc/use(kj)
 
+
 #warn impl all
+
+
+//! WARNING WARNING LEGACY SHITCODE
+//! REFACTORING ON POWERNET REFACTOR.
