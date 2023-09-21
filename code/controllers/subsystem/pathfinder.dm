@@ -45,9 +45,9 @@ SUBSYSTEM_DEF(pathfinder)
 		instance.ss13_with_access = potential_id.access?.Copy()
 	return run_pathfinding(instance)
 
-/datum/controller/subsystem/pathfinder/proc/default_circuit_pathfinding(obj/item/electronic_assembly/assembly, turf/goal, min_dist = 1, max_path = 128)
+/datum/controller/subsystem/pathfinder/proc/default_circuit_pathfinding(obj/item/electronic_assembly/assembly, turf/goal, min_dist = 1, max_path = 128, var/list/access)
 	var/datum/pathfinding/jps/instance = new(assembly, get_turf(assembly), goal, min_dist, max_path)
-	instance.ss13_with_access = assembly.access_card?.access?.Copy()
+	instance.ss13_with_access = access.Copy()
 	return jps_output_turfs(run_pathfinding(instance))
 
 /datum/controller/subsystem/pathfinder/proc/default_bot_pathfinding(mob/living/bot/bot, turf/goal, min_dist = 1, max_path = 128)

@@ -39,12 +39,6 @@
 		qdel(src)
 		return
 
-	materials = material.get_matter()
-	if(materials.len)
-		for(var/material_type in materials)
-			if(!isnull(materials[material_type]))
-				materials[material_type] *= force_divisor // May require a new var instead.
-
 	if(!(material.conductive))
 		src.atom_flags |= NOCONDUCT
 
