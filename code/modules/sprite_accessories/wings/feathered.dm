@@ -98,5 +98,5 @@
 	icon = 'icons/mob/sprite_accessories/wings_64x48.dmi'
 	icon_state = "seraph_eye"
 	spr_state = "seraph_eye_spr"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	//do_colouration = 1	//Maybe some day we'll allow multi-coloration and I'll make this colorable again too so the eyes can get colors.
+	//color_blend_mode = ICON_MULTIPLY
