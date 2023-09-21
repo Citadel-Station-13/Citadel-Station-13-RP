@@ -165,7 +165,7 @@
 
 /obj/item/clothing/suit/space/void/odst_exp
 	icon_state = "odst_purple"
-	name = "hephaestheus icarus suit"
+	name = "hephaestheus icarus frontier suit"
 	desc = "Cheaper version of the main Icarus line, often marketed to Frontier settlements. Perfect for Expeditions."
 	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
