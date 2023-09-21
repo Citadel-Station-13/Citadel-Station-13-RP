@@ -140,13 +140,6 @@
 	contraband = 1
 	group = "Supplies"
 
-/datum/supply_pack/supply/wolfgirl
-	name = "Wolfgirl Crate"
-	cost = 200 //I mean, it's a whole wolfgirl
-	container_type = /obj/structure/largecrate/animal/wolfgirl
-	container_name = "Wolfgirl crate"
-	contraband = 1
-
 /datum/supply_pack/supply/medieval
 	name = "Knight set crate"
 	contains = list(

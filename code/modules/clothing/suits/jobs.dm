@@ -10,7 +10,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "overalls", SLOT_ID_LEFT_HAND = "overalls")
 	blood_overlay_type = "armor"
 	body_cover_flags = 0
-	allowed = list (/obj/item/reagent_containers/spray/plantbgone, /obj/item/analyzer/plant_analyzer, /obj/item/seeds,
+	allowed = list (/obj/item/reagent_containers/spray/plantbgone, /obj/item/plant_analyzer, /obj/item/seeds,
 	/obj/item/reagent_containers/glass/bottle, /obj/item/material/minihoe)
 
 /obj/item/clothing/suit/storage/apron/white
@@ -159,13 +159,24 @@
 	desc = "A long blue forensics technician jacket."
 	icon_state = "forensics_blue_long"
 
+/obj/item/clothing/suit/storage/toggle/necroagent
+	name = "OSS&NECRO Field Jacket"
+	desc = "A slightly armored leather jacket branded with the OSS&NECRO logo on the back. Standard equipement for any OSS&NERCRO Field Operatives."
+	icon_state = "agent_jacket"
+	body_cover_flags = UPPER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight, /obj/item/gun/energy, /obj/item/gun/ballistic, /obj/item/ammo_magazine,
+	/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/handcuffs, /obj/item/storage/fancy/cigarettes, /obj/item/flame/lighter,
+	/obj/item/tape_recorder, /obj/item/uv_light)
+	armor_type = /datum/armor/station/light
+
 //Engineering
 /obj/item/clothing/suit/storage/hazardvest
 	name = "hazard vest"
 	desc = "A high-visibility vest used in work zones."
 	icon_state = "hazard"
 	blood_overlay_type = "armor"
-	allowed = list (/obj/item/analyzer, /obj/item/flashlight, /obj/item/multitool, /obj/item/pipe_painter, /obj/item/radio, /obj/item/t_scanner,
+	allowed = list (/obj/item/atmos_analyzer, /obj/item/flashlight, /obj/item/multitool, /obj/item/pipe_painter, /obj/item/radio, /obj/item/t_scanner,
 	/obj/item/tool/crowbar, /obj/item/tool/screwdriver, /obj/item/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/tank/emergency/oxygen,
 	/obj/item/clothing/mask/gas, /obj/item/barrier_tape_roll/engineering)
 	body_cover_flags = UPPER_TORSO
@@ -211,6 +222,12 @@
 	name = "\improper EMS jacket"
 	desc = "A dark blue, martian-pattern, EMS jacket. It sports high-visibility reflective stripes and a star of life on the back."
 	icon_state = "ems_jacket"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ems_jacket", SLOT_ID_LEFT_HAND = "ems_jacket")
+
+/obj/item/clothing/suit/storage/toggle/fr_jacket/ossnecro
+	name = "OSS&NECRO Field Medic Jacket"
+	desc = "A standard leather jacket branded with the OSS&NECRO logo on the back. This one lacks any armor, but has additional pockets."
+	icon_state = "agent_jacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ems_jacket", SLOT_ID_LEFT_HAND = "ems_jacket")
 
 /obj/item/clothing/suit/surgicalapron
@@ -268,7 +285,7 @@
 	armor_type = /datum/armor/medical/coat/field_medic
 	valid_accessory_slots = (ACCESSORY_SLOT_INSIGNIA)
 	allowed = list (/obj/item/gun,/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/analyzer,/obj/item/stack/medical,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/atmos_analyzer,/obj/item/stack/medical,
 	/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,
 	/obj/item/healthanalyzer,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
 	/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle)

@@ -6,6 +6,7 @@ var/global/list/ashtray_cache = list()
 	icon_state = "blank"
 	force_divisor = 0.1
 	thrown_force_divisor = 0.1
+	materials = list(MAT_STEEL = 4000)
 	var/image/base_image
 	var/max_butts = 10
 

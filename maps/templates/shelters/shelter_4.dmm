@@ -363,8 +363,7 @@
 /turf/simulated/shuttle/wall/voidcraft/survival/hard_corner,
 /area/survivalpod)
 "K" = (
-/obj/machinery/autolathe{
-	hacked = 1;
+/obj/machinery/lathe/autolathe{
 	name = "military autolathe"
 	},
 /turf/simulated/shuttle/floor/voidcraft/dark,
@@ -425,16 +424,16 @@
 /area/survivalpod)
 "T" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,

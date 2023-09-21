@@ -120,7 +120,7 @@
 	if(.)
 		return
 	if(enabled && screen_on)
-		nano_ui_interact(user)
+		ui_interact(user)
 	else if(!enabled && screen_on)
 		turn_on(user)
 

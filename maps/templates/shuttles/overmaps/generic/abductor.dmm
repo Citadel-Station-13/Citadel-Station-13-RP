@@ -529,7 +529,7 @@
 /turf/simulated/shuttle/wall/alien,
 /area/abductor/interior)
 "Hv" = (
-/obj/effect/overmap/visitable/ship/abductor,
+/obj/overmap/entity/visitable/ship/abductor,
 /turf/space,
 /area/space)
 "IH" = (
@@ -810,12 +810,6 @@
 	},
 /obj/machinery/power/rtg/abductor,
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
-"WC" = (
-/obj/structure/prop/alien/computer{
-
-	},
-/turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "WX" = (
 /turf/simulated/shuttle/wall/alien/hard_corner,
@@ -9749,7 +9743,7 @@ cF
 fo
 fo
 pV
-WC
+xD
 SD
 SD
 pV
@@ -10202,13 +10196,13 @@ SD
 SD
 Qe
 Qe
-WC
+xD
 SD
 SD
 JF
 SD
 SD
-WC
+xD
 Qe
 Qe
 SD
@@ -12613,7 +12607,7 @@ pV
 pa
 pV
 pV
-WC
+xD
 SD
 JF
 pV

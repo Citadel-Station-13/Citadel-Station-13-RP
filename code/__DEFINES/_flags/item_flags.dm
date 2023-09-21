@@ -7,7 +7,7 @@
 #define ITEM_NOBLUDGEON         (1<<2)
 /// for all things that are technically items but used for various different stuff
 #define ITEM_ABSTRACT           (1<<3)
-/// is this item in a storage component?
+/// is this item in a storage datum?
 #define ITEM_IN_STORAGE         (1<<4)
 /// we can't be caught when hitting a mob on throw
 #define ITEM_THROW_UNCATCHABLE  (1<<5)
@@ -21,7 +21,12 @@
 #define ITEM_GROUND_PLANTED     (1<<9)
 /// don't drop if incapacitated
 #define ITEM_DEATH_GRIP         (1<<10)
-#warn impl/hook
+/// allow easy lathe deconstruction
+#define ITEM_EASY_LATHE_DECONSTRUCT (1<<11)
+/// do not allow lathe deconstruction
+#define ITEM_NO_LATHE_DECONSTRUCT (1<<12)
+/// stack-like handling for ingredients
+#define ITEM_MASS_INGREDIENT (1<<13)
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_IN_INVENTORY),
@@ -35,6 +40,9 @@ DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_CAREFUL_BLUDGEON),
 	BITFIELD(ITEM_GROUND_PLANTED),
 	BITFIELD(ITEM_DEATH_GRIP),
+	BITFIELD(ITEM_EASY_LATHE_DECONSTRUCT),
+	BITFIELD(ITEM_NO_LATHE_DECONSTRUCT),
+	BITFIELD(ITEM_MASS_INGREDIENT),
 ))
 
 //! Flags for the clothing_flags var on /obj/item

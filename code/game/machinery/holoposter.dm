@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 	. = ..()
 	set_rand_sprite()
 	GLOB.holoposters += src
-	mytimer = addtimer(CALLBACK(src, .proc/set_rand_sprite), 30 MINUTES + rand(0, 5 MINUTES), TIMER_STOPPABLE | TIMER_LOOP)
+	mytimer = addtimer(CALLBACK(src, PROC_REF(set_rand_sprite)), 30 MINUTES + rand(0, 5 MINUTES), TIMER_STOPPABLE | TIMER_LOOP)
 
 /obj/machinery/holoposter/Destroy()
 	GLOB.holoposters -= src
@@ -53,7 +53,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 		examine_addon = "It appears to be malfunctioning."
 		new_color = "#6A6C71"
 	else
-		if((z in GLOB.using_map.station_levels) && GLOB.security_level) // 0 is fine, everything higher is alert levels
+		if((z in (LEGACY_MAP_DATUM).station_levels) && GLOB.security_level) // 0 is fine, everything higher is alert levels
 			icon_state = "attention"
 			examine_addon = "It warns you to remain calm and contact your supervisor as soon as possible."
 			new_color =  "#AA7039"
@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 			machine_stat &= ~BROKEN
 			icon_forced = FALSE
 			if(!mytimer)
-				mytimer = addtimer(CALLBACK(src, .proc/set_rand_sprite), 30 MINUTES + rand(0, 5 MINUTES), TIMER_STOPPABLE | TIMER_LOOP)
+				mytimer = addtimer(CALLBACK(src, PROC_REF(set_rand_sprite)), 30 MINUTES + rand(0, 5 MINUTES), TIMER_STOPPABLE | TIMER_LOOP)
 			set_rand_sprite()
 			return
 		icon_forced = TRUE

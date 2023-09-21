@@ -113,7 +113,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	breach_detection = 0;
 	dir = 8;
 	pixel_x = 25;
@@ -267,8 +267,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/med)
 "aJ" = (
-/obj/machinery/autolathe{
-	hacked = 1;
+/obj/machinery/lathe/autolathe{
 	name = "unlocked autolathe"
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -359,7 +358,7 @@
 	dir = 4
 	},
 /obj/machinery/door/window/brigdoor/southleft{
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(150)
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -375,7 +374,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/dark,
@@ -734,7 +733,7 @@
 	dir = 4
 	},
 /obj/machinery/door/window/brigdoor/southleft{
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(150)
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -829,7 +828,7 @@
 	dir = 4
 	},
 /obj/machinery/door/window/brigdoor/southleft{
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(150)
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -895,7 +894,7 @@
 	dir = 1
 	},
 /obj/item/storage/secure/briefcase,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/dark,
@@ -950,7 +949,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -1773,7 +1772,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -35
 	},
@@ -2307,7 +2306,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -35
 	},
@@ -2351,7 +2350,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -2610,7 +2609,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	breach_detection = 0;
 	dir = 8;
 	pixel_x = 25;
@@ -2899,7 +2898,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/white,
@@ -2920,8 +2919,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/mercenary/fighter)
 "fX" = (
-/obj/machinery/autolathe{
-	hacked = 1;
+/obj/machinery/lathe/autolathe{
 	name = "unlocked autolathe"
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -2985,7 +2983,7 @@
 /turf/simulated/floor,
 /area/ship/mercenary/southairlock)
 "gd" = (
-/obj/effect/overmap/visitable/ship/mercship{
+/obj/overmap/entity/visitable/ship/mercship{
 	fore_dir = 4
 	},
 /turf/space,
@@ -3018,7 +3016,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/white,
@@ -3084,7 +3082,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3096,7 +3094,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3124,7 +3122,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -3182,7 +3180,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -3203,7 +3201,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -3219,7 +3217,7 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -3675,7 +3673,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;

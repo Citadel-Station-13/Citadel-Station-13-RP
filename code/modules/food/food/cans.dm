@@ -324,5 +324,5 @@
 
 /obj/item/reagent_containers/food/drinks/cans/alraune/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("ammonia", 20)
+	reagents.add_reagent("diethylamine", 20)
 	reagents.add_reagent("water", 10)

@@ -75,7 +75,7 @@ const ApprenticeSelection = (props, context) => {
   } = props;
   return (
     <Section>
-      <Stack align="middle" fill>
+      <Stack align="center" fill>
         <Stack.Item>
           <Stack vertical>
             <Stack.Item>

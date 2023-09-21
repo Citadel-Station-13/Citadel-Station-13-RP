@@ -22,8 +22,7 @@
 
 	for(var/borgie in GLOB.available_ai_shells)
 		var/mob/living/silicon/robot/R = borgie
-		var/turf/T = get_turf(R)
-		if(R.shell && !R.deployed && (R.stat != DEAD) && (!R.connected_ai || (R.connected_ai == src) )  && !(GLOB.using_map.ai_shell_restricted && !(T.z in GLOB.using_map.ai_shell_allowed_levels)) )
+		if(R.shell && !R.deployed && (R.stat != DEAD) && (!R.connected_ai || (R.connected_ai == src) ))
 			possible += R
 
 	if(!LAZYLEN(possible))

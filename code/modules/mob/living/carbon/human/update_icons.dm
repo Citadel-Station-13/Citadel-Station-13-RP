@@ -435,7 +435,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return
 
 	var/icon/horns_s = get_horns_overlay()
-	if(horns_s)
+	if(horns_s && (!hiding_horns && horn_style.can_be_hidden))
 		if(horns_s.Height() > face_standing.Height())
 			face_standing.Crop(1, 1, face_standing.Width(), horns_s.Height())
 		face_standing.Blend(horns_s, ICON_OVERLAY)
@@ -445,8 +445,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		apply_layer(HAIR_LAYER)
 		return
 
-	if(head_organ.transparent)
-		face_standing += rgb(,,,120)
+	face_standing += rgb(,,,head_organ.hair_opacity)
 
 	overlays_standing[HAIR_LAYER] = image(face_standing, layer = BODY_LAYER+HAIR_LAYER)
 	apply_layer(HAIR_LAYER)
@@ -891,6 +890,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	remove_layer(TAIL_LAYER)
 	remove_layer(TAIL_LAYER_ALT)
 
+	if(hiding_tail && tail_style.can_be_hidden)
+		return
+
 	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
 
 	var/list/image/tail_images = list()
@@ -951,7 +953,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	remove_layer(TAIL_LAYER)
 	remove_layer(TAIL_LAYER_ALT)
 
-	if(!tail_overlays)
+	if(!tail_overlays || hiding_tail)
 		return
 	if(islist(tail_overlays))
 		for(var/image/tail_overlay as anything in tail_overlays)
@@ -1023,6 +1025,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	remove_layer(WING_LAYER)
 
+	if(hiding_wings && wing_style.can_be_hidden)
+		return
+
 	overlays_standing[WING_LAYER] = list()
 
 	var/image/vr_wing_image = get_wing_image(TRUE)
@@ -1036,13 +1041,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		overlays_standing[WING_LAYER] += vr_wing_image_2
 
 	apply_layer(WING_LAYER)
-
-/mob/living/carbon/human/proc/wing_spread_start()
-	if(QDESTROYING(src))
-		return
-
-	update_wing_showing("[species.get_wing(src)]_spr")
-
 
 /mob/living/carbon/human/update_modifier_visuals()
 	if(QDESTROYING(src))
@@ -1158,7 +1156,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	//If you have custom wings selected
 	if(wing_style && (!(wear_suit && wear_suit.inv_hide_flags & HIDETAIL) || !wing_style.clothing_can_hide))
-		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state))
+		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = spread ? wing_style.spr_state : (flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state)))
 		if(wing_style.do_colouration)
 			if(grad_wingstyle)
 				grad_swing = new/icon("icon" = 'icons/mob/wing_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_wingstyle])

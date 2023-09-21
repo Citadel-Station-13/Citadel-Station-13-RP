@@ -3,7 +3,7 @@
 	desc = "Used for scanning and alerting when someone enters a certain proximity."
 	icon_state = "prox"
 	origin_tech = list(TECH_MAGNET = 1)
-	matter = list(MAT_STEEL = 800, MAT_GLASS = 200)
+	materials = list(MAT_STEEL = 800, MAT_GLASS = 200)
 	wires = WIRE_PULSE
 
 	secured = 0
@@ -74,7 +74,7 @@
 
 /obj/item/assembly/prox_sensor/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
-	INVOKE_ASYNC(src, .proc/sense)
+	INVOKE_ASYNC(src, PROC_REF(sense))
 
 /obj/item/assembly/prox_sensor/proc/toggle_scan()
 	if(!secured)

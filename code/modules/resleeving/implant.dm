@@ -15,7 +15,7 @@
 /obj/item/implant/backup/get_data()
 	var/dat = {"
 <b>Implant Specifications:</b><BR>
-<b>Name:</b> [GLOB.using_map.company_name] Employee Backup Implant<BR>
+<b>Name:</b> [(LEGACY_MAP_DATUM).company_name] Employee Backup Implant<BR>
 <b>Life:</b> ~8 hours.<BR>
 <b>Important Notes:</b> Implant is life-limited. Dissolves into harmless biomaterial after around ~8 hours, the typical work shift.<BR>
 <HR>
@@ -46,7 +46,7 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 2000, MAT_GLASS = 2000)
+	materials = list(MAT_STEEL = 2000, MAT_GLASS = 2000)
 	var/list/obj/item/implant/backup/imps = list()
 	var/max_implants = 4 //Iconstates need to exist due to the update proc!
 

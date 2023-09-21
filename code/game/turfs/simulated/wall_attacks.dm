@@ -47,12 +47,12 @@
 	// "turf in loc" on a turf
 	// you for real?
 /*
-	if(!air_master)
+	if(!SSair)
 		return
 
 	for(var/turf/simulated/turf in loc)
 		update_thermal(turf)
-		air_master.mark_for_update(turf)
+		SSair.mark_for_update(turf)
 */
 
 /turf/simulated/wall/proc/update_thermal(var/turf/simulated/source)

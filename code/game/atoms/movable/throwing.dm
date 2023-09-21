@@ -113,6 +113,9 @@
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, target, range, speed, flags, thrower, on_hit, on_land, FALSE) & COMPONENT_CANCEL_PRE_THROW)
 		return FALSE
 
+	if(!isnull(throwing))
+		QDEL_NULL(throwing)
+
 	var/datum/thrownthing/TT = _init_throw_datum(target, range, speed, flags, thrower, on_hit, on_land, force)
 	if(!TT)
 		return FALSE
@@ -144,6 +147,9 @@
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/datum/thrownthing)
 
+	if(!isnull(throwing))
+		QDEL_NULL(throwing)
+
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, target, range, speed, flags, thrower, on_hit, on_land, TRUE) & COMPONENT_CANCEL_PRE_THROW)
 		return FALSE
 
@@ -162,7 +168,7 @@
 	return TRUE
 
 /atom/movable/proc/_init_throw_datum(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force, emulated)
-	if(throwing)
+	if(!isnull(throwing))
 		CRASH("already throwing")
 	var/calculated_speed = isnull(speed)? ((movable_flags & MOVABLE_NO_THROW_SPEED_SCALING)? (throw_speed) : (throw_speed * (force > throw_resist? (force / throw_resist) ** (throw_speed_scaling_exponential * 0.1) : 1 / (throw_resist / force) ** (throw_speed_scaling_exponential * 0.1)))) : speed
 	if(!calculated_speed)

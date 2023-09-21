@@ -1,6 +1,3 @@
-var/datum/controller/subsystem/air/air_master
-
-var/tick_multiplier = 2
 
 /*
 

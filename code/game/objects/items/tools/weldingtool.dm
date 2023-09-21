@@ -18,7 +18,7 @@
 	w_class = ITEMSIZE_SMALL
 
 	//Cost to make in the autolathe
-	matter = list(MAT_STEEL = 70, MAT_GLASS = 30)
+	materials = list(MAT_STEEL = 70, MAT_GLASS = 30)
 
 	//R&D tech level
 	origin_tech = list(TECH_ENGINEERING = 1)
@@ -334,7 +334,7 @@
 	icon_state = "indwelder"
 	max_fuel = 40
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_PHORON = 2)
-	matter = list(MAT_STEEL = 70, MAT_GLASS = 60)
+	materials = list(MAT_STEEL = 70, MAT_GLASS = 60)
 
 /obj/item/weldingtool/largetank/cyborg
 	name = "integrated welding tool"
@@ -348,7 +348,7 @@
 	max_fuel = 80
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 3)
-	matter = list(MAT_STEEL = 70, MAT_GLASS = 120)
+	materials = list(MAT_STEEL = 70, MAT_GLASS = 120)
 
 /obj/item/weldingtool/mini
 	name = "emergency welding tool"
@@ -356,7 +356,7 @@
 	icon_state = "miniwelder"
 	max_fuel = 10
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_METAL = 30, MAT_GLASS = 10)
+	materials = list(MAT_METAL = 30, MAT_GLASS = 10)
 	change_icons = 0
 	tool_speed = 2
 	eye_safety_modifier = 1 // Safer on eyes.
@@ -366,7 +366,7 @@
 	desc = "A curious welding tool that uses an anomalous ignition method."
 	icon_state = "ashwelder"
 	max_fuel = 20
-	matter = list(MAT_METAL = 30, MAT_BONE = 10)
+	materials = list(MAT_METAL = 30, MAT_BONE = 10)
 	tool_speed = 1.5
 	eye_safety_modifier = 3 // Safe for Scorians who don't have goggles.
 	always_process = TRUE
@@ -382,7 +382,7 @@
 	desc = "A brass plated welder utilizing an antiquated, yet incredibly efficient, fuel system."
 	icon_state = "brasswelder"
 	max_fuel = 40
-	matter = list(MAT_STEEL = 70, "brass" = 60)
+	materials = list(MAT_STEEL = 70, "brass" = 60)
 	tool_speed = 0.75
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_welder
@@ -434,7 +434,7 @@
 	max_fuel = 40
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_PHORON = 3)
-	matter = list(MAT_STEEL = 70, MAT_GLASS = 120)
+	materials = list(MAT_STEEL = 70, MAT_GLASS = 120)
 	tool_speed = 0.5
 	change_icons = 0
 	flame_intensity = 3
@@ -470,7 +470,7 @@
 	icon_state = "tubewelder"
 	max_fuel = 10
 	w_class = ITEMSIZE_NO_CONTAINER
-	matter = null
+	materials = null
 	tool_speed = 1.25
 	change_icons = 0
 	flame_intensity = 1
@@ -530,7 +530,7 @@
 	icon_state = "welderspear"
 	max_fuel = 10
 	w_class = ITEMSIZE_NORMAL
-	matter = list(MAT_METAL = 50, MAT_GLASS = 10)
+	materials = list(MAT_METAL = 50, MAT_GLASS = 10)
 	tool_speed = 1.5
 	eye_safety_modifier = 1 // Safer on eyes.
 	reach = 2
@@ -707,7 +707,7 @@
 	icon_state = "crystal_welder"
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
-	matter = list(MATERIAL_CRYSTAL = 1250)
+	materials = list(MATERIAL_CRYSTAL = 1250)
 	cell_type = null
 	charge_cost = null
 	tool_speed = 0.2

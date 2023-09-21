@@ -152,7 +152,7 @@
 "gU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/light,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -492,7 +492,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -608,7 +608,7 @@
 	dir = 8
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/mackerel_hc_skel,
-/obj/effect/overmap/visitable/ship/landable/mackerel_hc_skel,
+/obj/overmap/entity/visitable/ship/landable/mackerel_hc_skel,
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
 	id_tag = "mackerel_hc_skel_docking_star";
 	name = "Starboard Airlock Control";
@@ -956,7 +956,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},

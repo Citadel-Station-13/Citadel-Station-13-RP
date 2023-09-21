@@ -4,7 +4,7 @@
 	dir = 1;
 	pixel_y = -25
 	},
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
 "ac" = (
@@ -75,7 +75,6 @@
 /area/talon/maintenance/deckone_port)
 "be" = (
 /obj/machinery/vending/engineering{
-	icon = 'icons/obj/vending.dmi';
 	icon_deny = null;
 	icon_state = "sovietsoda";
 	products = list(/obj/item/clothing/under/rank/chief_engineer=4,/obj/item/clothing/under/rank/engineer=4,/obj/item/clothing/shoes/orange=4,/obj/item/clothing/head/hardhat=4,/obj/item/storage/belt/utility=4,/obj/item/clothing/glasses/meson=4,/obj/item/clothing/gloves/yellow=4,/obj/item/tool/screwdriver=12,/obj/item/tool/crowbar=12,/obj/item/tool/wirecutters=12,/obj/item/multitool=12,/obj/item/tool/wrench=12,/obj/item/t_scanner=12,/obj/item/stack/cable_coil/heavyduty=8,/obj/item/cell=8,/obj/item/weldingtool=8,/obj/item/clothing/head/welding=8,/obj/item/light/tube=10,/obj/item/clothing/head/hardhat/red=4,/obj/item/clothing/suit/fire=4,/obj/item/stock_parts/scanning_module=5,/obj/item/stock_parts/micro_laser=5,/obj/item/stock_parts/matter_bin=5,/obj/item/stock_parts/manipulator=5,/obj/item/stock_parts/console_screen=5);
@@ -265,7 +264,7 @@
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/port_eng)
 "cB" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -341,7 +340,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass/talon,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list(301)
 	},
 /obj/structure/disposalpipe/segment{
@@ -353,7 +352,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -679,7 +678,7 @@
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/port_engine)
 "gf" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list(301)
 	},
 /obj/machinery/door/firedoor/glass/talon,
@@ -693,7 +692,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "gj" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/industrial/outline/red,
@@ -815,7 +814,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -864,7 +863,7 @@
 /obj/item/spaceflare,
 /obj/item/storage/box/flashshells/large,
 /obj/item/gun/ballistic/shotgun/flare,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -1242,7 +1241,7 @@
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/deckone/central_hallway)
 "kJ" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -1344,7 +1343,7 @@
 /area/talon/deckone/central_hallway)
 "lv" = (
 /obj/structure/catwalk,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
@@ -1397,7 +1396,7 @@
 /area/talon/deckone/central_hallway)
 "ms" = (
 /obj/structure/catwalk,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
@@ -1443,7 +1442,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -1849,7 +1848,7 @@
 /turf/simulated/wall/rshull,
 /area/talon/maintenance/deckone_starboard_aft_wing)
 "qf" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -1865,7 +1864,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "qi" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/eris/dark/monofloor,
@@ -2087,7 +2086,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
 "rX" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/industrial/outline/red,
@@ -2152,7 +2151,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Workroom"
 	},
 /obj/machinery/door/firedoor/glass/talon,
@@ -2290,7 +2289,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/up/scrubbers{
 	dir = 8
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -2354,7 +2353,7 @@
 /area/talon/deckone/starboard_eng)
 "ux" = (
 /obj/machinery/vending/engivend{
-	products = list(/obj/item/geiger_counter=4,/obj/item/clothing/glasses/meson=2,/obj/item/multitool=4,/obj/item/cell/high=10,/obj/item/airlock_electronics=10,/obj/item/module/power_control=10,/obj/item/circuitboard/airalarm=10,/obj/item/circuitboard/firealarm=10,/obj/item/circuitboard/status_display=2,/obj/item/circuitboard/ai_status_display=2,/obj/item/circuitboard/newscaster=2,/obj/item/circuitboard/holopad=2,/obj/item/circuitboard/intercom=4,/obj/item/circuitboard/security/telescreen/entertainment=4,/obj/item/stock_parts/motor=2,/obj/item/stock_parts/spring=2,/obj/item/stock_parts/gear=2,/obj/item/circuitboard/atm,/obj/item/circuitboard/guestpass,/obj/item/circuitboard/keycard_auth,/obj/item/circuitboard/photocopier,/obj/item/circuitboard/fax,/obj/item/circuitboard/request,/obj/item/circuitboard/microwave,/obj/item/circuitboard/washing,/obj/item/circuitboard/scanner_console,/obj/item/circuitboard/sleeper_console,/obj/item/circuitboard/body_scanner,/obj/item/circuitboard/sleeper,/obj/item/circuitboard/dna_analyzer,/obj/item/circuitboard/partslathe);
+	products = list(/obj/item/geiger_counter=4,/obj/item/clothing/glasses/meson=2,/obj/item/multitool=4,/obj/item/cell/high=10,/obj/item/airlock_electronics=10,/obj/item/module/power_control=10,/obj/item/circuitboard/airalarm=10,/obj/item/circuitboard/firealarm=10,/obj/item/circuitboard/status_display=2,/obj/item/circuitboard/ai_status_display=2,/obj/item/circuitboard/newscaster=2,/obj/item/circuitboard/machine/holopad=2,/obj/item/circuitboard/intercom=4,/obj/item/circuitboard/security/telescreen/entertainment=4,/obj/item/stock_parts/motor=2,/obj/item/stock_parts/spring=2,/obj/item/stock_parts/gear=2,/obj/item/circuitboard/atm,/obj/item/circuitboard/guestpass,/obj/item/circuitboard/keycard_auth,/obj/item/circuitboard/photocopier,/obj/item/circuitboard/fax,/obj/item/circuitboard/request,/obj/item/circuitboard/microwave,/obj/item/circuitboard/washing,/obj/item/circuitboard/scanner_console,/obj/item/circuitboard/sleeper_console,/obj/item/circuitboard/body_scanner,/obj/item/circuitboard/sleeper,/obj/item/circuitboard/dna_analyzer);
 	req_access = list(301);
 	req_log_access = 301
 	},
@@ -2776,7 +2775,7 @@
 	dir = 1;
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -2827,7 +2826,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/up/supply{
 	dir = 4
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -3160,7 +3159,7 @@
 	pixel_y = -8
 	},
 /obj/item/surgical/bioregen,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -3192,7 +3191,7 @@
 	},
 /obj/structure/table/standard,
 /obj/machinery/photocopier/faxmachine/talon,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -3380,7 +3379,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass/talon,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	req_one_access = list(301)
 	},
 /obj/structure/disposalpipe/segment{
@@ -3407,7 +3406,7 @@
 /area/talon/deckone/port_solar)
 "Cr" = (
 /obj/machinery/door/firedoor/glass/talon,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list(301)
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
@@ -3677,7 +3676,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "DX" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
@@ -3807,7 +3806,7 @@
 /obj/item/stack/marker_beacon/thirty,
 /obj/item/pipe_dispenser,
 /obj/item/inducer/syndicate,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
@@ -4128,7 +4127,7 @@
 /obj/item/tank/jetpack/carbondioxide,
 /obj/item/tank/jetpack/carbondioxide,
 /obj/item/tank/jetpack/carbondioxide,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -4158,7 +4157,7 @@
 /obj/structure/table/standard,
 /obj/item/paper_bin,
 /obj/item/pen,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -5006,7 +5005,7 @@
 	dir = 1;
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -6046,7 +6045,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -6130,7 +6129,7 @@
 /area/talon/deckone/port_eng)
 "YM" = (
 /obj/machinery/door/firedoor/glass/talon,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	req_one_access = list(301)
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,

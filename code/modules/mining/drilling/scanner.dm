@@ -5,7 +5,7 @@
 	icon_state = "forensic0-old" //GET A BETTER SPRITE.
 	item_state = "electronic"
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
-	matter = list(MAT_STEEL = 150)
+	materials = list(MAT_STEEL = 150)
 	var/scanrange = 2
 	var/maxscanrange = 2
 	var/scan_time = 3 SECONDS
@@ -97,7 +97,7 @@
 	icon_state = "mining-scanner" //thank you eris spriters
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 4)
-	matter = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
 	scanrange = 5
 	maxscanrange = 5
 	scan_time = 1 SECONDS

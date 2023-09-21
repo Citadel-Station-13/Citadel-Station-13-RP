@@ -95,9 +95,9 @@
 /datum/reagent/toxin/hydrophoron/touch_turf(turf/simulated/T)
 	if(!istype(T))
 		return
-	T.assume_gas(/datum/gas/phoron, CEILING(volume/2, 1), T20C)
+	T.assume_gas(GAS_ID_PHORON, CEILING(volume/2, 1), T20C)
 	for(var/turf/simulated/floor/target_tile in range(0,T))
-		target_tile.assume_gas(/datum/gas/phoron, volume/2, 400+T0C)
+		target_tile.assume_gas(GAS_ID_PHORON, volume/2, 400+T0C)
 		spawn (0) target_tile.hotspot_expose(700, 400)
 	remove_self(volume)
 
@@ -154,7 +154,7 @@
 /datum/reagent/toxin/phoron/touch_turf(turf/simulated/T, amount)
 	if(!istype(T))
 		return
-	T.assume_gas(/datum/gas/volatile_fuel, amount, T20C)
+	T.assume_gas(GAS_ID_VOLATILE_FUEL, amount, T20C)
 	remove_self(amount)
 
 /datum/reagent/toxin/cyanide //Fast and Lethal
@@ -473,6 +473,17 @@
 	color = "#664330"
 	power = 2
 	meltdose = 30
+
+//Solid Chlorine is alkaline, but gaseous Chlorine is acidic.
+/datum/reagent/acid/chlorine_gas
+	name = "Chlorine gas"
+	id = "chlorinegas"
+	description = "A pungent yellow-green acidic gas."
+	taste_description = "bleach"
+	reagent_state = REAGENT_GAS
+	color = "#c5f72d"
+	power = 5
+	meltdose = 10
 
 /datum/reagent/thermite/venom
 	name = "Pyrotoxin"

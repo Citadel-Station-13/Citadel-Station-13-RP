@@ -220,14 +220,30 @@
 				return 0
 	return 0
 
-/datum/reagents/proc/has_all_reagents(list/check_reagents)
+/datum/reagents/proc/has_all_reagents(list/check_reagents, multiplier = 1)
 	//this only works if check_reagents has no duplicate entries... hopefully okay since it expects an associative list
 	var/missing = check_reagents.len
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id in check_reagents)
-			if(current.volume >= check_reagents[current.id])
+			if(current.volume >= check_reagents[current.id] * multiplier)
 				missing--
 	return !missing
+
+/**
+ * returns lowest multiple of what we have compared to reagents list.
+ *
+ * both typepaths and ids are acceptable.
+ */
+/datum/reagents/proc/has_multiple(list/reagents, multiplier = 1)
+	. = INFINITY
+	// *sigh*
+	var/list/legacy_translating = list()
+	for(var/datum/reagent/R in reagent_list)
+		legacy_translating[R.id] = R.volume
+	for(var/datum/reagent/reagent as anything in reagents)
+		. = min(., legacy_translating[ispath(reagent)? initial(reagent.id) : reagent] / reagents[reagent])
+		if(!.)
+			return
 
 /datum/reagents/proc/clear_reagents()
 	for(var/datum/reagent/current in reagent_list)

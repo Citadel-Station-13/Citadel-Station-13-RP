@@ -131,7 +131,7 @@ GLOBAL_LIST(paired_paper_tag_lookup)
 	tagname = "station"
 
 /datum/paper_tag/single/current_map/replace_with(mob/user, obj/item/paper/P, obj/item/pen/T)
-	return GLOB.using_map.station_name
+	return (LEGACY_MAP_DATUM).station_name
 
 //? todo: [station_controller]
 

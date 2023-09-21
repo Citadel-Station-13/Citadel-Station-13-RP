@@ -36,15 +36,17 @@
 	name = "body bag"
 	desc = "A plastic bag designed for the storage and transportation of cadavers."
 	icon = 'icons/obj/medical/bodybag.dmi'
-	icon_state = "bodybag_closed"
-	icon_closed = "bodybag_closed"
-	icon_opened = "bodybag_open"
+	closet_appearance = null
 	open_sound = 'sound/items/zip.ogg'
 	close_sound = 'sound/items/zip.ogg'
+	icon_opened = "bodybag_open"
+	icon_closed = "bodybag_closed"
+	icon_state = "bodybag_closed"
 	var/item_path = /obj/item/bodybag
 	density = 0
 	storage_capacity = (MOB_MEDIUM * 2) - 1
 	var/contains_body = 0
+	use_old_icon_update = TRUE
 
 /obj/structure/closet/body_bag/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/pen))
@@ -111,7 +113,7 @@
 	if(opened)
 		icon_state = icon_opened
 	else
-		if(contains_body > 0)
+		if(contains_body)
 			icon_state = "bodybag_closed1"
 		else
 			icon_state = icon_closed
@@ -120,7 +122,7 @@
 /obj/item/bodybag/cryobag
 	name = "stasis bag"
 	desc = "A non-reusable plastic bag designed to slow down bodily functions such as circulation and breathing, \
-	especially useful if short on time or in a hostile enviroment."
+	especially useful if short on time or in a hostile environment."
 	icon = 'icons/obj/medical/cryobag.dmi'
 	icon_state = "bodybag_folded"
 	item_state = "bodybag_cryo_folded"
@@ -141,7 +143,7 @@
 /obj/structure/closet/body_bag/cryobag
 	name = "stasis bag"
 	desc = "A non-reusable plastic bag designed to slow down bodily functions such as circulation and breathing, \
-	especially useful if short on time or in a hostile enviroment."
+	especially useful if short on time or in a hostile environment."
 	icon = 'icons/obj/medical/cryobag.dmi'
 	item_path = /obj/item/bodybag/cryobag
 	store_misc = 0

@@ -1,5 +1,7 @@
 /// Allows movables to be inserted/displayed in aquariums.
 /datum/component/aquarium_content
+	registered_type = /datum/component/aquarium_content
+	
 	/// Keeps track of our current aquarium.
 	var/obj/structure/aquarium/current_aquarium
 

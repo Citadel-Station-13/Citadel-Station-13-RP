@@ -262,13 +262,6 @@
 	},
 /turf/simulated/floor/tiled/steel/airless,
 /area/debrisfield/derelict)
-"bn" = (
-/obj/machinery/door/airlock/alien,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/debrisfield/derelict)
 "bo" = (
 /obj/mob_spawner/derelict/corrupt_maint_swarm,
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
@@ -346,12 +339,6 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/debrisfield/derelict)
-"bD" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/debrisfield/derelict)
 "bE" = (
 /obj/machinery/door/airlock/alien,
 /obj/structure/cable{
@@ -388,12 +375,6 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
-/area/debrisfield/derelict)
-"bK" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel/airless,
 /area/debrisfield/derelict)
 "bL" = (
 /obj/structure/cable{
@@ -454,12 +435,6 @@
 /area/debrisfield/derelict)
 "bY" = (
 /turf/simulated/floor/tiled/white/airless,
-/area/debrisfield/derelict)
-"bZ" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
 "ca" = (
 /obj/structure/cable{
@@ -591,12 +566,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-4"
-	},
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
-"cC" = (
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating/external,
 /area/debrisfield/derelict)
@@ -1052,7 +1021,7 @@ bB
 bB
 bB
 aq
-bD
+bM
 bB
 aq
 bB
@@ -1160,7 +1129,7 @@ aa
 aa
 ao
 ao
-bD
+bM
 bB
 ao
 ao
@@ -1214,7 +1183,7 @@ aa
 ao
 ao
 ao
-bD
+bM
 bB
 ao
 ao
@@ -2024,7 +1993,7 @@ aR
 cA
 cA
 aq
-bK
+bG
 au
 aq
 bX
@@ -2078,7 +2047,7 @@ aS
 cA
 cA
 aq
-bK
+bG
 au
 aq
 bT
@@ -2132,7 +2101,7 @@ cA
 aR
 aR
 aq
-bK
+bG
 au
 aq
 fl
@@ -2186,7 +2155,7 @@ aq
 aq
 aq
 aq
-bK
+bG
 au
 aq
 bY
@@ -2240,7 +2209,7 @@ bT
 bT
 bT
 aq
-bK
+bG
 au
 aq
 bY
@@ -2253,7 +2222,7 @@ TG
 bY
 bY
 bT
-bZ
+cp
 bT
 aq
 bT
@@ -2348,7 +2317,7 @@ aq
 bT
 aq
 aq
-bK
+bG
 au
 aq
 bY
@@ -2402,7 +2371,7 @@ aq
 cA
 cA
 aq
-bK
+bG
 au
 aq
 bY
@@ -2422,7 +2391,7 @@ bT
 bT
 aq
 JC
-cC
+cW
 JC
 ao
 ao
@@ -2456,7 +2425,7 @@ aq
 cA
 ba
 aq
-bK
+bG
 au
 aq
 br
@@ -2672,7 +2641,7 @@ ao
 ao
 ao
 ao
-bn
+bE
 bQ
 ao
 ao

@@ -48,8 +48,8 @@
 	siemens_coefficient = 1.5
 
 	//Adapted to Surt's hot, thin atmosphere.
-	breath_type = /datum/gas/carbon_dioxide
-	exhale_type = /datum/gas/oxygen
+	breath_type = GAS_ID_CARBON_DIOXIDE
+	exhale_type = GAS_ID_OXYGEN
 
 	heat_discomfort_level = T0C+20
 
@@ -59,7 +59,10 @@
 	minimum_breath_pressure = 11
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/tie_hair
+		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail
 		)
 
 /datum/species/scori/equip_survival_gear()

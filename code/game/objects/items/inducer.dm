@@ -168,7 +168,7 @@
 	if(opened && cell)
 		user.visible_message("<span class='notice'>[user] removes [cell] from [src]!</span>", "<span class='notice'>You remove [cell].</span>")
 		cell.update_icon()
-		user.put_in_hands(cell)
+		user.put_in_hands_or_drop(cell)
 		cell = null
 		update_icon()
 

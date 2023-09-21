@@ -1,4 +1,4 @@
-import { Color } from '../../common/color';
+import { Color } from '../../common/colorLegacy';
 import { useBackend, useSharedState } from '../backend';
 import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from '../components';
 import { Window } from '../layouts';

@@ -91,7 +91,7 @@
 /area/class_h/POIs/landing_pad)
 "s" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/door/airlock/multi_tile,
+/obj/machinery/door/airlock,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/landing_pad)
 "t" = (
@@ -120,7 +120,7 @@
 /area/class_h/POIs/landing_pad)
 "v" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/door/airlock/multi_tile,
+/obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/kafel_full,
 /area/class_h/POIs/landing_pad)
 "w" = (

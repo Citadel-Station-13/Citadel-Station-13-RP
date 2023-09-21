@@ -401,22 +401,22 @@
 //--Premades--//
 
 /obj/item/retail_scanner/command
-	account_to_connect = "Command"
+	account_to_connect = DEPARTMENT_COMMAND
 
 /obj/item/retail_scanner/medical
-	account_to_connect = "Medical"
+	account_to_connect = DEPARTMENT_MEDICAL
 
 /obj/item/retail_scanner/engineering
-	account_to_connect = "Engineering"
+	account_to_connect = DEPARTMENT_ENGINEERING
 
 /obj/item/retail_scanner/science
-	account_to_connect = "Science"
+	account_to_connect = DEPARTMENT_RESEARCH
 
 /obj/item/retail_scanner/security
-	account_to_connect = "Security"
+	account_to_connect = DEPARTMENT_SECURITY
 
 /obj/item/retail_scanner/cargo
-	account_to_connect = "Cargo"
+	account_to_connect = DEPARTMENT_CARGO
 
 /obj/item/retail_scanner/civilian
-	account_to_connect = "Civilian"
+	account_to_connect = DEPARTMENT_CIVILIAN

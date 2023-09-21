@@ -351,7 +351,7 @@
 					printing = TRUE
 					// playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, TRUE)
 					SStgui.update_uis(src)
-					addtimer(CALLBACK(src, .proc/print_finish), 5 SECONDS)
+					addtimer(CALLBACK(src, PROC_REF(print_finish)), 5 SECONDS)
 			else
 				return FALSE
 
@@ -507,7 +507,9 @@
 	light_color = "#5284e7"
 	circuit = /obj/item/circuitboard/med_data/pcu
 	density = FALSE
-
+	depth_level = 0
+	depth_projected = FALSE
+	climb_allowed = FALSE
 
 #undef FIELD
 #undef MED_FIELD

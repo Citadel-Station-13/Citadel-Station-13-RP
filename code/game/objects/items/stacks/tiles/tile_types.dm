@@ -122,49 +122,113 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "black carpet"
 	desc = "A piece of black carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-bcarpet"
+
 /obj/item/stack/tile/carpet/blucarpet
 	name = "blue carpet"
 	singular_name = "blue carpet"
 	desc = "A piece of blue carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-blucarpet"
+
 /obj/item/stack/tile/carpet/turcarpet
 	name = "tur carpet"
 	singular_name = "tur carpet"
 	desc = "A piece of turquoise carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-turcarpet"
+
 /obj/item/stack/tile/carpet/sblucarpet
 	name = "silver-blue carpet"
 	singular_name = "silver-blue carpet"
 	desc = "A piece of silver-blue carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-sblucarpet"
+
 /obj/item/stack/tile/carpet/gaycarpet
 	name = "funny carpet"
 	singular_name = "funny carpet"
 	desc = "A piece of funny carpet. Perfect for clowning around on."
 	icon_state = "tile-gaycarpet"
+
 /obj/item/stack/tile/carpet/purcarpet
 	name = "purple carpet"
 	singular_name = "purple carpet"
 	desc = "A piece of purple carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-purcarpet"
+
 /obj/item/stack/tile/carpet/oracarpet
 	name = "orange carpet"
 	singular_name = "orange carpet"
 	desc = "A piece of orange carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-oracarpet"
+
 /obj/item/stack/tile/carpet/arcadecarpet
 	name = "arcadey carpet"
 	singular_name = "arcadey carpet"
 	desc = "A piece of arcadey carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-carpet-arcade"
 
+/obj/item/stack/tile/carpet/patterned
+	no_variants = TRUE
+
+/obj/item/stack/tile/carpet/patterned/brown
+	name = "brown patterned carpet"
+	singular_name = "brown patterned carpet"
+	desc = "A piece of brown carpet with a fetching light brown pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetbrown"
+
+/obj/item/stack/tile/carpet/patterned/green
+	name = "green patterned carpet"
+	singular_name = "green patterned carpet"
+	desc = "A piece of green carpet with a fetching light green pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetgreen"
+
+/obj/item/stack/tile/carpet/patterned/red
+	name = "red patterned carpet"
+	singular_name = "red patterned carpet"
+	desc = "A piece of red carpet with a fetching gold pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetred"
+
+/obj/item/stack/tile/carpet/patterned/blue
+	name = "blue patterned carpet"
+	singular_name = "blue patterned carpet"
+	desc = "A piece of brown carpet with a fetching gold pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetblue"
+
+/obj/item/stack/tile/carpet/patterned/blue/alt
+	name = "blue patterned carpet"
+	singular_name = "blue patterned carpet"
+	desc = "A piece of blue carpet with a fetching white pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetblue2"
+
+/obj/item/stack/tile/carpet/patterned/blue/alt2
+	name = "blue patterned carpet"
+	singular_name = "blue patterned carpet"
+	desc = "A piece of blue carpet with a fetching seafoam green pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetblue3"
+
+/obj/item/stack/tile/carpet/patterned/magenta
+	name = "magenta patterned carpet"
+	singular_name = "magenta patterned carpet"
+	desc = "A piece of magenta carpet with a fetching gold pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetmagenta"
+
+/obj/item/stack/tile/carpet/patterned/purple
+	name = "purple patterned carpet"
+	singular_name = "purple patterned carpet"
+	desc = "A piece of purple carpet with a fetching gold pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetpurple"
+
+/obj/item/stack/tile/carpet/patterned/orange
+	name = "orange patterned carpet"
+	singular_name = "orange patterned carpet"
+	desc = "A piece of orange carpet with a fetching gold pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetorange"
+
 /obj/item/stack/tile/floor
 	name = "floor tile"
 	singular_name = "floor tile"
 	desc = "A metal tile fit for covering a section of floor."
 	icon_state = "tile"
+	materials = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 4)
 	damage_force = 6.0
-	matter = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 4)
 	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
@@ -193,21 +257,21 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
 	icon_state = "tile_steel"
-	matter = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
+	materials = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/steel
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
 	icon_state = "tile_steel"
-	matter = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
+	materials = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/white
 	name = "white floor tile"
 	singular_name = "white floor tile"
 	icon_state = "tile_white"
-	matter = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
+	materials = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/yellow
@@ -221,21 +285,21 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	name = "dark floor tile"
 	singular_name = "dark floor tile"
 	icon_state = "tile_steel"
-	matter = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
+	materials = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/freezer
 	name = "freezer floor tile"
 	singular_name = "freezer floor tile"
 	icon_state = "tile_freezer"
-	matter = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
+	materials = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/cyborg
 	name = "floor tile synthesizer"
 	desc = "A device that makes floor tiles."
 	gender = NEUTER
-	matter = null
+	materials = null
 	uses_charge = 1
 	charge_costs = list(250)
 	stacktype = /obj/item/stack/tile/floor
@@ -246,7 +310,7 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "sandstone tile"
 	desc = "Hardened sand compacted into a brick akin to stone in toughness."
 	icon_state = "tile-sandstone"
-	matter = list("sandstone" = SHEET_MATERIAL_AMOUNT / 4)
+	materials = list("sandstone" = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/linoleum

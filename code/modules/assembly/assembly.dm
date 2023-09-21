@@ -11,7 +11,7 @@
 	icon = 'icons/obj/assemblies/new_assemblies.dmi'
 	icon_state = ""
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 100)
+	materials = list(MAT_STEEL = 100)
 	throw_force = 2
 	throw_speed = 3
 	throw_range = 10

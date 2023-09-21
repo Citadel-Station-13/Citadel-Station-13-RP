@@ -8,10 +8,14 @@
 	var/on = 0 //Are we currently active??
 	var/menu_message = ""
 
-/obj/item/integated_radio/New()
-	..()
+/obj/item/integated_radio/Initialize()
+	. = ..()
 	if (istype(loc.loc, /obj/item/pda))
 		hostpda = loc.loc
+
+/obj/item/integated_radio/Destroy()
+	hostpda = null
+	return ..()
 
 /obj/item/integated_radio/proc/post_signal(freq, key, value, key2, value2, key3, value3, s_filter)
 
@@ -46,11 +50,10 @@
 	var/control_freq = BOT_FREQ
 
 /// Create a new QM cartridge, and register to receive bot control & beacon message.
-/obj/item/integated_radio/beepsky/New()
-	..()
-	spawn(5)
-		if(radio_controller)
-			radio_controller.add_object(src, control_freq, radio_filter = RADIO_SECBOT)
+/obj/item/integated_radio/beepsky/Initialize()
+	. = ..()
+	if(radio_controller)
+		radio_controller.add_object(src, control_freq, radio_filter = RADIO_SECBOT)
 
 /**
  * Receive radio signals.

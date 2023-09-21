@@ -4,7 +4,8 @@
 	icon = 'icons/obj/outcrop.dmi'
 	density = TRUE
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
-	climbable = TRUE
+	climb_allowed = TRUE
+	depth_level = 12
 	anchored = TRUE
 	icon_state = "outcrop"
 	var/mindrop = 5

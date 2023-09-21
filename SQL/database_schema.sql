@@ -77,6 +77,56 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Playtime / JEXP --
+
+--      Role Time Table - Master     --
+-- Stores total role time.           --
+
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime` (
+  `player` INT(11) NOT NULL,
+  `roleid` VARCHAR(64) NOT NULL,
+  `minutes` INT UNSIGNED NOT NULL,
+  PRIMARY KEY(`player`, `roleid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--      Role Time - Logging       --
+-- Stores changes in role time    --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime_log` (
+  `player` INT(11),
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `roleid` VARCHAR(64) NOT NULL,
+  `delta` INT(11) NOT NULL,
+  `datetime` TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  PRIMARY KEY (`id`),
+  KEY `player` (`player`),
+  KEY `roleid` (`roleid`),
+  KEY `datetime` (`datetime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+DELIMITER $$
+CREATE TRIGGER `playtimeTlogupdate` AFTER UPDATE ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes-OLD.minutes);
+END
+$$
+CREATE TRIGGER `playtimeTloginsert` AFTER INSERT ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes);
+END
+$$
+CREATE TRIGGER `playtimeTlogdelete` AFTER DELETE ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (OLD.player, OLD.roleid, 0-OLD.minutes);
+END
+$$
+DELIMITER ;
+
+-- Security - Ipintel --
+
+--        Ipintel Cache Table       --
+-- Stores cache entries for IPIntel --
+-- IP is in INET_ATON.              --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%ipintel` (
+  `ip` INT(10) unsigned NOT NULL,
+  `date` TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `intel` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ip`),
+  KEY `idx_ipintel` (`ip`, `intel`, `date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Table structure for table `round`

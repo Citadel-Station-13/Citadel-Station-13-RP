@@ -242,7 +242,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	var/Angle = round(get_visual_angle(src,M))
 	var/matrix/rot_matrix = matrix()
 	rot_matrix.Turn(Angle)
-	addtimer(CALLBACK(src, .proc/finish_shot, target), rotation_speed)
+	addtimer(CALLBACK(src, PROC_REF(finish_shot), target), rotation_speed)
 	animate(src, transform = rot_matrix, rotation_speed, easing = SINE_EASING)
 
 	setDir(arctan(transform.b, transform.a) > 0 ? NORTH : SOUTH)

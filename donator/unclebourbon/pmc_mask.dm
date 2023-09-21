@@ -7,7 +7,7 @@
 	inhand_default_type = INHAND_DEFAULT_ICON_MASKS
 	inhand_state = "swat"
 
-/datum/gear/donator/unclebourbon_pmcmask
+/datum/loadout_entry/donator/unclebourbon_pmcmask
 	name = "PMC Mask"
 	slot = SLOT_ID_MASK
 	path = /obj/item/clothing/mask/gas/clear/donator_pmc

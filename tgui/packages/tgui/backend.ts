@@ -13,6 +13,7 @@
 
 import { perf } from 'common/perf';
 import { createAction } from 'common/redux';
+import { SectionProps } from './components/Section';
 import { setupDrag } from './drag';
 import { globalEvents } from './events';
 import { focusMap } from './focus';
@@ -437,7 +438,10 @@ export const useSharedState = <T>(
 //* TGUI Module Backend
 
 export interface ModuleProps {
-  id: string, // module id, this lets it autoload from context
+  // module id, this lets it autoload from context
+  id: string;
+  // override props for rendering its external <Section>
+  section?: SectionProps;
 }
 
 export interface ModuleData {
@@ -449,6 +453,8 @@ export type ModuleBackend<TData extends ModuleData> = {
   data: TData;
   act: actFunctionType;
   backend: Backend<{}>;
+  // / module id if is currently embedded module, null otherwise
+  moduleID: string | null;
 }
 
 /**
@@ -475,6 +481,7 @@ export const useModule = <TData extends ModuleData>(context): ModuleBackend<TDat
       backend: backend,
       data: backend.data,
       act: backend.act,
+      moduleID: null,
     };
   }
   let { modules } = backend;
@@ -482,6 +489,7 @@ export const useModule = <TData extends ModuleData>(context): ModuleBackend<TDat
     backend: backend,
     data: (modules && modules[context.m_id]) || {},
     act: constructModuleAct(context.m_id, context.m_ref),
+    moduleID: context.m_id,
   };
 };
 

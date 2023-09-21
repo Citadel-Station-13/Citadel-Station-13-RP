@@ -67,3 +67,9 @@
 	name = "culinary excellence pin"
 	desc = "An enamel pin given out to members of the Service Department for exemplary service and demonstration of technical knowledge."
 	icon_state = "cooking_pin"
+
+/obj/item/clothing/accessory/medal/nka_miaphus
+	name = "Miaphus'irra Campaign Medal"
+	desc = "Issued by the New Kingdom of Adhomai for participation in the campaign against Pirate Lord Ssizikar's 'The Catskinner' Tartic during his invasion of Miaphus'irra. \
+	The twin medals represent Adhomai's twin suns."
+	icon_state = "nka_campaign"

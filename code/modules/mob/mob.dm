@@ -141,7 +141,7 @@
 				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/screen/atom_hud/misc.dmi', src, "")
 				I.plane = FLOAT_PLANE
 				I.layer = FLOAT_LAYER + 100 + (GLOB.hud_icon_layers[hud] || 0)
-				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
+				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM|KEEP_APART
 				hud_list[hud] = I
 
 /mob/proc/remove_screen_obj_references()
@@ -170,6 +170,9 @@
 	. = ..()
 	if(C.statpanel_tab("Status"))
 		STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
+		STATPANEL_DATA_ENTRY("Map", "[(LEGACY_MAP_DATUM)?.name || "Loading..."]")
+		if(!isnull(SSmapping.next_station) && (SSmapping.next_station.name != SSmapping.loaded_station.name))
+			STATPANEL_DATA_ENTRY("Next Map", "[SSmapping.next_station.name]")
 
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 // todo: refactor
@@ -556,6 +559,9 @@
 	set category = "OOC"
 	set desc = "Return to the lobby."
 
+	// don't lose out on that sweet observer playtime
+	SSplaytime.queue_playtimes(client)
+
 	if(stat != DEAD)
 		to_chat(usr, SPAN_BOLDNOTICE("You must be dead to use this!"))
 		return
@@ -608,9 +614,7 @@
 	set name = "Observe"
 	set category = "OOC"
 
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified))
-		return
-	else if(stat != DEAD || istype(src, /mob/new_player))
+	if(stat != DEAD || istype(src, /mob/new_player))
 		to_chat(usr, "<font color=#4F49AF>You must be observing to use this!</font>")
 		return
 
@@ -1136,12 +1140,22 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/get_buckled_pixel_x_offset()
 	if(!buckled)
 		return 0
-	return buckled.get_centering_pixel_x_offset(NONE, src) - get_centering_pixel_x_offset() + buckled.buckle_pixel_x
+	// todo: this doesn't properly take into account all transforms of both us and the buckled object
+	. = get_centering_pixel_x_offset(dir)
+	if(lying != 0)
+		. *= cos(lying)
+		. += sin(lying) * get_centering_pixel_y_offset(dir)
+	return buckled.pixel_x + . - buckled.get_centering_pixel_x_offset(buckled.dir) + buckled.get_buckled_x_offset(src)
 
 /mob/proc/get_buckled_pixel_y_offset()
 	if(!buckled)
 		return 0
-	return buckled.get_centering_pixel_y_offset(NONE, src) - get_centering_pixel_y_offset() + buckled.buckle_pixel_y
+	// todo: this doesn't properly take into account all transforms of both us and the buckled object
+	. = get_centering_pixel_y_offset(dir)
+	if(lying != 0)
+		. *= cos(lying)
+		. += sin(lying) * get_centering_pixel_x_offset(dir)
+	return buckled.pixel_y + . - buckled.get_centering_pixel_y_offset(buckled.dir) + buckled.get_buckled_y_offset(src)
 
 /mob/get_managed_pixel_x()
 	return ..() + shift_pixel_x + get_buckled_pixel_x_offset()
@@ -1149,11 +1163,11 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/get_managed_pixel_y()
 	return ..() + shift_pixel_y + get_buckled_pixel_y_offset()
 
-/mob/get_centering_pixel_x_offset(dir, atom/aligning)
+/mob/get_centering_pixel_x_offset(dir)
 	. = ..()
 	. += shift_pixel_x
 
-/mob/get_centering_pixel_y_offset(dir, atom/aligning)
+/mob/get_centering_pixel_y_offset(dir)
 	. = ..()
 	. += shift_pixel_y
 
@@ -1163,6 +1177,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = FALSE
 	pixel_x -= shift_pixel_x
 	pixel_y -= shift_pixel_y
+	wallflowering = NONE
 	shift_pixel_x = 0
 	shift_pixel_y = 0
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
@@ -1173,6 +1188,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	pixel_x += (val - shift_pixel_x)
 	shift_pixel_x = val
+	switch(val)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(EAST)) | WEST
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(EAST|WEST)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(WEST)) | EAST
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/set_pixel_shift_y(val)
@@ -1181,6 +1203,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	pixel_y += (val - shift_pixel_y)
 	shift_pixel_y = val
+	switch(val)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(NORTH)) | SOUTH
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(NORTH|SOUTH)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(SOUTH)) | NORTH
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/adjust_pixel_shift_x(val)
@@ -1189,6 +1218,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	shift_pixel_x += val
 	pixel_x += val
+	switch(shift_pixel_x)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(EAST)) | WEST
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(EAST|WEST)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(WEST)) | EAST
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/adjust_pixel_shift_y(val)
@@ -1197,6 +1233,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	shift_pixel_y += val
 	pixel_y += val
+	switch(shift_pixel_y)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(NORTH)) | SOUTH
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(NORTH|SOUTH)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(SOUTH)) | NORTH
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 //? Reachability

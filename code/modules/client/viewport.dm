@@ -5,6 +5,45 @@
  * This is becaues CENTER-50% or CENTER-7 alignment systems don't work with even numbers.
  */
 
+/client/proc/change_view(new_size, forced, translocate)
+	set waitfor = FALSE	// to async temporary view
+	// todo: refactor this, client view changes should be ephemeral.
+	var/list/L = decode_view_size(new_size)
+	set_temporary_view(L[1], L[2])
+
+/**
+ * directly sets our view
+ * you should probably be using perspective datums most of the time instead
+ * WARNING: this is verbatim; aka, view = 7 is 15 width 15 height, NOT 7x7!
+ *
+ * furthermore, this proc is BLOCKING.
+ */
+/client/proc/set_temporary_view(width, height)
+	if(!width || !height || width < 0 || height < 0)
+		reset_temporary_view()
+		return
+	using_temporary_viewsize = TRUE
+	// round up; even views are illegal.
+	if(!(width % 2))
+		width++
+	if(!(height % 2))
+		height++
+	temporary_viewsize_width = width
+	temporary_viewsize_height = height
+	request_viewport_update()
+
+/**
+ * resets our temporary view
+ * you should probably be using perspective datums most of the time instead
+ *
+ * furthermore, this proc is BLOCKING
+ */
+/client/proc/reset_temporary_view()
+	using_temporary_viewsize = FALSE
+	temporary_viewsize_height = null
+	temporary_viewsize_width = null
+	request_viewport_update()
+
 // these two variables control max dynamic resize for viewport
 GLOBAL_VAR_INIT(max_client_view_x, 19)
 GLOBAL_VAR_INIT(max_client_view_y, 15)
@@ -272,7 +311,7 @@ GLOBAL_VAR(lock_client_view_y)
 		_request_viewport_update()
 	if(!viewport_queued)
 		viewport_queued = TRUE
-		addtimer(CALLBACK(src, .proc/_request_viewport_update), 0)
+		addtimer(CALLBACK(src, PROC_REF(_request_viewport_update)), 0)
 
 /**
  * call this when things change to queue an update
@@ -287,7 +326,7 @@ GLOBAL_VAR(lock_client_view_y)
 		return
 	if(!viewport_queued)
 		viewport_queued = TRUE
-		addtimer(CALLBACK(src, .proc/_request_viewport_update), 0)
+		addtimer(CALLBACK(src, PROC_REF(_request_viewport_update)), 0)
 	UNTIL(!viewport_queued)
 
 // todo : locks are probably bad when working with request fit

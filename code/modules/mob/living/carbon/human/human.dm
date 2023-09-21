@@ -30,6 +30,8 @@
 	nutrition = rand(200,400)
 	hydration = rand(200,400)
 
+	immune_system = new /datum/immune_system(src)
+
 	AddComponent(/datum/component/personal_crafting)
 
 	human_mob_list |= src
@@ -1631,7 +1633,7 @@
 			LAZYDISTINCTADD(., SLOT_FEET)
 
 //! Pixel Offsets
-/mob/living/carbon/human/get_centering_pixel_x_offset(dir, atom/aligning)
+/mob/living/carbon/human/get_centering_pixel_x_offset(dir)
 	. = ..()
 	// uh oh stinky
 	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))

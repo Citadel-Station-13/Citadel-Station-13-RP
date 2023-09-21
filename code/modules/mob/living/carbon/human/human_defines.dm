@@ -268,3 +268,6 @@
 	//? movement
 	/// are we trying to crawl under someone? mob if true
 	var/mob/crawling_under_someone
+	var/hiding_wings = FALSE
+	var/hiding_tail = FALSE
+	var/hiding_horns = FALSE

@@ -62,5 +62,5 @@
 	if(sound_preamble)
 		announcer.SendSound(sound_preamble, channel, affected, sound_volume, sound_allow_environment)
 	if(sound_main)
-		addtimer(CALLBACK(announcer, /datum/announcer/proc/SendSound, sound_main, channel, affected, sound_volume, sound_allow_environment), delay)
-	addtimer(CALLBACK(announcer, /datum/announcer/proc/SendText, source, name, message, affected), delay)
+		addtimer(CALLBACK(announcer, TYPE_PROC_REF(/datum/announcer, SendSound), sound_main, channel, affected, sound_volume, sound_allow_environment), delay)
+	addtimer(CALLBACK(announcer, TYPE_PROC_REF(/datum/announcer, SendText), source, name, message, affected), delay)

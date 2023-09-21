@@ -233,10 +233,10 @@
 		return
 	var/datum/gas_mixture/GM = new
 	if(prob(10))
-		T.assume_gas(/datum/gas/phoron, 100, 1500+T0C)
+		T.assume_gas(GAS_ID_PHORON, 100, 1500+T0C)
 		T.visible_message("<span class='critical'>\The [src]'s tank vents a cloud of heated gas!</span>")
 	else
-		T.assume_gas(/datum/gas/phoron, 5, istype(T) ? T.air.temperature : T20C)
+		T.assume_gas(GAS_ID_PHORON, 5, istype(T) ? T.air.temperature : T20C)
 		visible_message("<span class='critical'>\The [src]'s tank ruptures!</span>")
 	T.assume_air(GM)
 	return

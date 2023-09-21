@@ -131,7 +131,7 @@
 	name = "knuckle dusters"
 	desc = "A pair of brass knuckles. Generally used to enhance the user's punches."
 	icon_state = "knuckledusters"
-	matter = list("brass" = 500)
+	materials = list(MAT_STEEL = 500)
 	attack_verb = list("punched", "beaten", "struck")
 	clothing_flags = CLOTHING_THICK_MATERIAL
 	siemens_coefficient = 1
@@ -389,7 +389,7 @@
 /obj/item/clothing/gloves/fingerless/ablative/equipped(mob/user, slot, flags)
 	. = ..()
 	if(worn_slot == SLOT_GLOVES)
-		RegisterSignal(user, COMSIG_LIVING_ACTIVE_PARRY_START, .proc/get_component_parry_data)
+		RegisterSignal(user, COMSIG_LIVING_ACTIVE_PARRY_START, PROC_REF(get_component_parry_data))
 		wornonce = TRUE
 
 /obj/item/clothing/gloves/fingerless/ablative/dropped(mob/user, flags, atom/newLoc)
@@ -643,3 +643,10 @@
 	icon_state = "furug"
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
+
+/obj/item/clothing/gloves/darkcleric
+	name = "dark cleric bracers"
+	desc = "Treated leather bracers worn by clerics in the service of higher powers."
+	icon = 'icons/clothing/gloves/darkcleric.dmi'
+	icon_state = "darkcleric"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

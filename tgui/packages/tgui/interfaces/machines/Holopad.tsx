@@ -1,6 +1,10 @@
+/**
+ * @file
+ * @license MIT
+ */
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, LabeledList, NoticeBox, Section, Stack, Table, Tabs } from "../../components";
+import { Button, LabeledList, NoticeBox, Section, Stack, Table, Tabs } from "../../components";
 import { Window } from "../../layouts";
 
 enum HolopadCalling {
@@ -80,12 +84,11 @@ export const Holopad = (props, context) => {
   return (
     <Window
       title="Holopad"
-      width={650}
-      height={400}>
+      width={700}
+      height={500}>
       <Window.Content>
         <Section
           fill
-          scrollable
           title={data.holopadName}
           buttons={data.isAI? (
             <Button
@@ -105,37 +108,45 @@ export const Holopad = (props, context) => {
               selected={data.aiRequested}
               onClick={() => act('ai_request')} />
           )}>
-          <HolopadRinging />
-          <Tabs>
-            <Tabs.Tab
-              width="50%"
-              selected={tab === 1}
-              onClick={() => setTab(1)}>
-              Communications
-            </Tabs.Tab>
-            <Tabs.Tab
-              width="50%"
-              selected={tab === 2}
-              onClick={() => setTab(2)}>
-              Settings
-            </Tabs.Tab>
-          </Tabs>
-          {tab === 1 && (
-            !!data.canCall && (
-              data.calling === HolopadCalling.None? (
-                <HolopadDirectory />
-              ) : (
-                data.calling === HolopadCalling.Destination? (
-                  <HolopadCallIncoming />
-                ) : (
-                  data.calling === HolopadCalling.Source && <HolopadCallOutgoing />
+          <Stack vertical fill>
+            <Stack.Item>
+              <HolopadRinging />
+            </Stack.Item>
+            <Stack.Item>
+              <Tabs>
+                <Tabs.Tab
+                  width="50%"
+                  selected={tab === 1}
+                  onClick={() => setTab(1)}>
+                  Communications
+                </Tabs.Tab>
+                <Tabs.Tab
+                  width="50%"
+                  selected={tab === 2}
+                  onClick={() => setTab(2)}>
+                  Settings
+                </Tabs.Tab>
+              </Tabs>
+            </Stack.Item>
+            <Stack.Item grow={1}>
+              {tab === 1 && (
+                !!data.canCall && (
+                  data.calling === HolopadCalling.None? (
+                    <HolopadDirectory />
+                  ) : (
+                    data.calling === HolopadCalling.Destination? (
+                      <HolopadCallIncoming />
+                    ) : (
+                      data.calling === HolopadCalling.Source && <HolopadCallOutgoing />
+                    )
+                  )
                 )
-              )
-            )
-          )}
-          {tab === 2 && (
-            <HolopadSettings />
-          )}
+              )}
+              {tab === 2 && (
+                <HolopadSettings />
+              )}
+            </Stack.Item>
+          </Stack>
         </Section>
       </Window.Content>
     </Window>
@@ -264,9 +275,9 @@ const HolopadDirectory = (props, context) => {
     }
   });
   return (
-    <Stack>
+    <Stack fill>
       <Stack.Item width="20%">
-        <Box height="100%">
+        <Section scrollable fill>
           <Tabs vertical>
             {
               Object.keys(sectors).sort((a, b) => (a.localeCompare(b))).map((key: string) => (
@@ -279,10 +290,10 @@ const HolopadDirectory = (props, context) => {
               ))
             }
           </Tabs>
-        </Box>
+        </Section>
       </Stack.Item>
-      <Stack.Item width="20%">
-        <Box height="100%">
+      <Stack.Item width="30%">
+        <Section scrollable fill>
           <Tabs vertical>
             {Object.keys(cats).sort((a, b) => (a.localeCompare(b))).map((cat) => (
               <Tabs.Tab
@@ -293,24 +304,24 @@ const HolopadDirectory = (props, context) => {
               </Tabs.Tab>
             ))}
           </Tabs>
-        </Box>
+        </Section>
       </Stack.Item>
-      <Stack.Item width="60%">
-        <Section height="100%">
+      <Stack.Item width="50%">
+        <Section fill scrollable mr={1} mt={0.5} mb={0.5} ml={1}>
           <Stack vertical>
             {(data.connectivity.filter((pad) => (
               pad.category? (pad.category === category) : (category === MISC_CATEGORY)
               && pad.sector? (pad.sector === sector) : (sector === MISC_SECTOR)
             )).map((pad) => (
               <Stack.Item key={pad.id}>
-                <Stack>
+                <Stack fill>
                   <Stack.Item grow={1}>
                     {pad.name}
                   </Stack.Item>
                   <Stack.Item>
                     <Button.Confirm
-                      fluid
                       content="Call"
+                      color="transparent"
                       onClick={() => act('call', { id: pad.id })} />
                   </Stack.Item>
                 </Stack>
@@ -326,67 +337,69 @@ const HolopadDirectory = (props, context) => {
 const HolopadSettings = (props, context) => {
   let { data, act } = useBackend<HolopadContext>(context);
   return (
-    <Table>
-      <Table.Row>
-        <Table.Cell>
-          Ringer
-        </Table.Cell>
-        <Table.Cell width="25%">
-          <Button fluid
-            content={data.ringerEnabled? "Enabled" : "Disabled"}
-            selected={data.ringerEnabled}
-            disabled={!data.ringerToggle}
-            onClick={() => act('toggle_ringer')} />
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>
-          Visibility
-        </Table.Cell>
-        <Table.Cell>
-          <Button fluid
-            content={data.callVisibility? "Visible" : "Invisible"}
-            selected={data.callVisibility}
-            disabled={!data.toggleVisibility}
-            onClick={() => act('toggle_visibility')} />
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>
-          Anonymous Sector Calls
-        </Table.Cell>
-        <Table.Cell>
-          <Button fluid
-            content={data.sectorAnonymous? "Mask Identity" : "Broadcast Identity"}
-            selected={data.sectorAnonymous}
-            disabled={!data.sectorAnonymousToggle}
-            onClick={() => act('toggle_anonymous_sector')} />
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>
-          Auto Pickup
-        </Table.Cell>
-        <Table.Cell>
-          <Button fluid
-            content={data.autoPickup? "Enabled" : "Disabled"}
-            selected={data.autoPickup}
-            disabled={!data.autoToggle}
-            onClick={() => act('toggle_auto')} />
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>
-          Inbound Video
-        </Table.Cell>
-        <Table.Cell>
-          <Button fluid
-            content={data.videoEnabled? "Enabled" : "Disabled"}
-            selected={data.videoEnabled}
-            disabled={!data.videoToggle}
-            onClick={() => act('toggle_video')} />
-        </Table.Cell>
-      </Table.Row>
-    </Table>
+    <Section m={1}>
+      <Table>
+        <Table.Row>
+          <Table.Cell>
+            Ringer
+          </Table.Cell>
+          <Table.Cell width="25%">
+            <Button fluid
+              content={data.ringerEnabled? "Enabled" : "Disabled"}
+              selected={data.ringerEnabled}
+              disabled={!data.ringerToggle}
+              onClick={() => act('toggle_ringer')} />
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>
+            Visibility
+          </Table.Cell>
+          <Table.Cell>
+            <Button fluid
+              content={data.callVisibility? "Visible" : "Invisible"}
+              selected={data.callVisibility}
+              disabled={!data.toggleVisibility}
+              onClick={() => act('toggle_visibility')} />
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>
+            Anonymous Sector Calls
+          </Table.Cell>
+          <Table.Cell>
+            <Button fluid
+              content={data.sectorAnonymous? "Mask Identity" : "Broadcast Identity"}
+              selected={data.sectorAnonymous}
+              disabled={!data.sectorAnonymousToggle}
+              onClick={() => act('toggle_anonymous_sector')} />
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>
+            Auto Pickup
+          </Table.Cell>
+          <Table.Cell>
+            <Button fluid
+              content={data.autoPickup? "Enabled" : "Disabled"}
+              selected={data.autoPickup}
+              disabled={!data.autoToggle}
+              onClick={() => act('toggle_auto')} />
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>
+            Inbound Video
+          </Table.Cell>
+          <Table.Cell>
+            <Button fluid
+              content={data.videoEnabled? "Enabled" : "Disabled"}
+              selected={data.videoEnabled}
+              disabled={!data.videoToggle}
+              onClick={() => act('toggle_video')} />
+          </Table.Cell>
+        </Table.Row>
+      </Table>
+    </Section>
   );
 };

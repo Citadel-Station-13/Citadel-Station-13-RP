@@ -9,8 +9,11 @@
 	supervisors = "company officials and Corporate Regulations"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/internal_affairs_agent
-	additional_access = list(ACCESS_COMMAND_IAA, ACCESS_SECURITY_MAIN, ACCESS_ENGINEERING_MAINT, ACCESS_COMMAND_BRIDGE)
-	minimal_access = list(ACCESS_COMMAND_IAA, ACCESS_SECURITY_MAIN, ACCESS_COMMAND_BRIDGE)
+	minimal_access = list(
+		ACCESS_COMMAND_IAA,
+		ACCESS_SECURITY_MAIN,
+		ACCESS_COMMAND_BRIDGE,
+	)
 	minimal_player_age = 7
 
 	outfit_type = /datum/outfit/job/station/internal_affairs_agent

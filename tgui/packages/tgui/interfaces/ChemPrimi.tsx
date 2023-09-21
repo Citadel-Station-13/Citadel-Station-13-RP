@@ -1,4 +1,4 @@
-import { Color } from '../../common/color';
+import { Color } from '../../common/colorLegacy';
 import { useBackend } from '../backend';
 import { AnimatedNumber, Box, Button, Section, Table } from '../components';
 import { Window } from '../layouts';

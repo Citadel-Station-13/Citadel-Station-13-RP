@@ -11,8 +11,16 @@
 	spawn_positions = 3
 	supervisors = "the Quartermaster and the Head of Personnel"
 	selection_color = "#7a4f33"
-	additional_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_SUPPLY_MAIN, ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MULEBOT, ACCESS_SUPPLY_MINE, ACCESS_SUPPLY_MINE_OUTPOST)
-	minimal_access = list(ACCESS_SUPPLY_MINE, ACCESS_SUPPLY_MINE_OUTPOST, ACCESS_SUPPLY_MAIN, ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MULEBOT)
+	additional_access = list(
+		ACCESS_ENGINEERING_MAINT,
+	)
+	minimal_access = list(
+		ACCESS_SUPPLY_MINE,
+		ACCESS_SUPPLY_MINE_OUTPOST,
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_SUPPLY_BAY,
+		ACCESS_SUPPLY_MULEBOT,
+	)
 
 	outfit_type = /datum/outfit/job/station/shaft_miner
 	desc = "A Shaft Miner mines and processes minerals to be delivered to departments that need them."

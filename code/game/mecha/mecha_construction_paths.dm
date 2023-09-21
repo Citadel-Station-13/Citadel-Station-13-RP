@@ -859,10 +859,9 @@
 					)
 
 /datum/construction/mecha/firefighter_chassis/custom_action(step, obj/item/I, mob/user)
-	if(!user.attempt_consume_item_for_construction(I, src))
-		return
 	user.visible_message("[user] has connected [I] to [holder].", "You connect [I] to [holder]")
 	holder.add_overlay("[I.icon_state]+o")
+	qdel(I)
 	return 1
 
 /datum/construction/mecha/firefighter_chassis/action(obj/item/I,mob/user as mob)

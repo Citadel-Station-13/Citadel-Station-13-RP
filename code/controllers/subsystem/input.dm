@@ -112,8 +112,9 @@ SUBSYSTEM_DEF(input)
 
 /datum/controller/subsystem/input/fire()
 	var/list/clients = GLOB.clients // Let's sing the list cache song
-	for(var/i in 1 to clients.len)
-		var/client/C = clients[i]
+	for(var/client/C as anything in clients)
+		if(!C.initialized)
+			continue
 		C.keyLoop()
 
 /// *sigh

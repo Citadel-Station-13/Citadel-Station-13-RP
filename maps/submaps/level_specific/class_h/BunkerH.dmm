@@ -426,7 +426,7 @@
 /area/class_h/POIs/vault)
 "If" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list()
 	},
 /turf/simulated/floor/tiled,
@@ -463,7 +463,6 @@
 /area/class_h/POIs/vault)
 "Lp" = (
 /obj/effect/debris/cleanable/greenglow,
-/obj/item/reagent_containers/chem_disp_cartridge/radium,
 /obj/effect/map_effect/radiation_emitter/strong,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/explored)

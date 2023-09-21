@@ -5,6 +5,7 @@
  * as much as possible to the components/elements system
  */
 /atom
+	SET_APPEARANCE_FLAGS(TILE_MOVER)
 	layer = TURF_LAYER
 
 	//? Core
@@ -183,7 +184,7 @@
  */
 /atom/New(loc, ...)
 	//atom creation method that preloads variables at creation
-	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+	if(global.use_preloader && (src.type == global.preloader.target_path))//in case the instanciated atom is creating other atoms in New()
 		world.preloader_load(src)
 
 	if(datum_flags & DF_USE_TAG)
@@ -750,11 +751,13 @@
 // todo: refactor
 /atom/proc/visible_message(message, self_message, blind_message, range = world.view)
 	var/list/see
+	//! LEGACY
 	if(isbelly(loc))
 		var/obj/belly/B = loc
 		see = B.effective_emote_hearers()
 	else
 		see = get_hearers_in_view(range, src)
+	//! end
 	for(var/atom/movable/AM as anything in see)
 		if(ismob(AM))
 			var/mob/M = AM
@@ -797,7 +800,7 @@
 		M.show_message(msg, 2, deaf_message, 1)
 		heard_to_floating_message += M
 	if(!no_runechat)
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
 
 /atom/movable/proc/dropInto(var/atom/destination)
 	while(istype(destination))
@@ -948,7 +951,7 @@
 
 /atom/proc/update_filters()
 	filters = null
-	filter_data = tim_sort(filter_data, /proc/cmp_filter_data_priority, TRUE)
+	filter_data = tim_sort(filter_data, GLOBAL_PROC_REF(cmp_filter_data_priority), TRUE)
 	for(var/f in filter_data)
 		var/list/data = filter_data[f]
 		var/list/arguments = data.Copy()
@@ -1078,21 +1081,21 @@
 	return base_pixel_y
 
 /**
- * get the pixel_x needed to adjust an atom on our turf **to the position of our visual center**
+ * get the pixel_x needed to adjust ourselves to be centered on our turf. this is used for alignment with buckles and whatnot.
  *
  * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
-/atom/proc/get_centering_pixel_x_offset(dir, atom/aligning)
+/atom/proc/get_centering_pixel_x_offset(dir)
 	return base_pixel_x + (icon_x_dimension - WORLD_ICON_SIZE) / 2
 
 /**
- * get the pixel_y needed to adjust an atom on our turf **to the position of our visual center**
+ * get the pixel_y needed to adjust ourselves to be centered on our turf. this is used for alignment with buckles and whatnot.
  *
  * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
-/atom/proc/get_centering_pixel_y_offset(dir, atom/aligning)
+/atom/proc/get_centering_pixel_y_offset(dir)
 	return base_pixel_y + (icon_y_dimension - WORLD_ICON_SIZE) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.
@@ -1117,3 +1120,12 @@
 /atom/proc/auto_pixel_offset_to_center()
 	set_base_pixel_y(get_centering_pixel_y_offset())
 	set_base_pixel_x(get_centering_pixel_x_offset())
+
+//? materials
+
+/**
+ * get raw materials remaining in us as list (not reagents)
+ * used from everything from economy to lathe recycling
+ */
+/atom/proc/get_materials()
+	return list()

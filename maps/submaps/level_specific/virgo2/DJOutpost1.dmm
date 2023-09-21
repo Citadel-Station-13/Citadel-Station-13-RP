@@ -236,7 +236,7 @@
 /obj/item/material/knife/machete/hatchet,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/material/minihoe,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/random_multi/single_item/sfr_headset,
 /turf/simulated/floor/wood,
 /area/submap/virgo2/DJOutpost1)

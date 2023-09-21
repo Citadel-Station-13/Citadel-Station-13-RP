@@ -32,7 +32,7 @@
 /datum/surgery_step/repairflesh/scan_injury
 	allowed_tools = list(
 	/obj/item/healthanalyzer = 100,
-	/obj/item/analyzer = 10
+	/obj/item/atmos_analyzer = 10
 	)
 
 	priority = 2

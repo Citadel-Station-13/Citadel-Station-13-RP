@@ -6,7 +6,7 @@
 /turf/simulated/wall,
 /area/mine/explored/underdark)
 "c" = (
-/obj/machinery/door/airlock/glass_engineering,
+/obj/machinery/door/airlock/glass/engineering,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
 "d" = (

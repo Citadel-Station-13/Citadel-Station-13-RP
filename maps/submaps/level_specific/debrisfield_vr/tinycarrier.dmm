@@ -108,7 +108,7 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/overmap/visitable/ship/landable/tinycarrier,
+/obj/overmap/entity/visitable/ship/landable/tinycarrier,
 /turf/simulated/floor/tiled/monotile,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "an" = (
@@ -212,7 +212,7 @@
 	},
 /area/submap/debrisfield_vr/tinyshuttle/bridge)
 "ay" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 24;
 	req_one_access = list()
@@ -374,8 +374,6 @@
 /obj/structure/prop{
 	desc = "A man-sized pod for entering suspended animation. This one is room temperature.";
 	dir = 8;
-	icon = 'icons/obj/Cryogenic2.dmi';
-	icon_state = "cryopod_0";
 	name = "cryogenic freezer"
 	},
 /obj/effect/floor_decal/corner/brown/full{
@@ -660,7 +658,7 @@
 /obj/effect/floor_decal/corner/brown{
 	dir = 10
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -848,7 +846,7 @@
 "bB" = (
 /obj/structure/table/rack/steel,
 /obj/item/storage/toolbox/mechanical{
-	starts_with = list(/obj/item/tool/screwdriver,/obj/item/tool/wrench,/obj/item/tool/crowbar,/obj/item/analyzer,/obj/item/tool/wirecutters)
+	starts_with = list(/obj/item/tool/screwdriver,/obj/item/tool/wrench,/obj/item/tool/crowbar,/obj/item/atmos_analyzer,/obj/item/tool/wirecutters)
 	},
 /obj/item/t_scanner,
 /obj/effect/floor_decal/corner/orange{
@@ -986,7 +984,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bO" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 24;
 	req_one_access = list()
@@ -1090,7 +1088,6 @@
 /obj/structure/loot_pile/surface/drone{
 	density = 1;
 	dir = 8;
-	icon = 'icons/mob/animal_vr64x64.dmi';
 	icon_state = "drone";
 	pixel_x = -16;
 	pixel_y = -16
@@ -1129,7 +1126,7 @@
 /obj/machinery/atmospherics/component/binary/pump/fuel{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -1155,8 +1152,6 @@
 /obj/structure/prop{
 	desc = "A man-sized pod for entering suspended animation. This one is room temperature.";
 	dir = 8;
-	icon = 'icons/obj/Cryogenic2.dmi';
-	icon_state = "cryopod_0";
 	name = "cryogenic freezer"
 	},
 /obj/effect/floor_decal/corner/brown/full{

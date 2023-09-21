@@ -14,6 +14,9 @@
 	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	circuit = /obj/item/circuitboard/skills/pcu
 	density = FALSE
+	depth_level = 0
+	depth_projected = FALSE
+	climb_allowed = FALSE
 	var/obj/item/card/id/scan = null
 	var/authenticated = null
 	var/rank = null
@@ -65,7 +68,7 @@
 /obj/machinery/computer/skills/attack_hand(mob/user, list/params)
 	if(..())
 		return
-	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
+	if ((LEGACY_MAP_DATUM) && !(src.z in (LEGACY_MAP_DATUM).contact_levels))
 		to_chat(user, "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!")
 		return
 	ui_interact(user)
@@ -239,7 +242,7 @@
 					printing = TRUE
 					// playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, TRUE)
 					SStgui.update_uis(src)
-					addtimer(CALLBACK(src, .proc/print_finish), 5 SECONDS)
+					addtimer(CALLBACK(src, PROC_REF(print_finish)), 5 SECONDS)
 			else
 				return FALSE
 

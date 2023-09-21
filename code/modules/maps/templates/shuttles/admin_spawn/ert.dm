@@ -4,7 +4,7 @@
 /datum/map_template/shuttle/overmap/generic/ert_ship
 	name = "OM Ship - ERT Ship (New Z)"
 	desc = "NT Emergency Response Ship."
-	mappath = "maps/templates/admin/ert.dmm"
+	map_path = "maps/templates/admin/ert.dmm"
 
 	// The ship's area(s)
 /area/ship/ert
@@ -100,7 +100,7 @@
 //	fuel_consumption = 3
 
 // The 'ship'
-/obj/effect/overmap/visitable/ship/ert_ship
+/obj/overmap/entity/visitable/ship/ert_ship
 	name = "NRV Von Braun"
 	desc = "Spacefaring vessel. Broadcasting Corporate Emergency Responder IFF."
 	scanner_desc = @{"[i]Registration[/i]: Nanotrasen RRV Von Braun

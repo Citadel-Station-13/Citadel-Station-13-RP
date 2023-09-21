@@ -62,7 +62,7 @@
 		to_chat(user, "<span class='notice'>We send an electrical pulse up our finger, and into \the [target], attempting to open it.</span>")
 
 		if(door.density && door.operable())
-			door.do_animate("spark")
+			door.do_animate(DOOR_ANIMATION_SPARK)
 			sleep(6)
 			//More typechecks, because windoors can't be locked.  Fun.
 			if(istype(target,/obj/machinery/door/airlock))

@@ -48,6 +48,9 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color)
@@ -148,6 +151,9 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,

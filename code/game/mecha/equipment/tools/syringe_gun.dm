@@ -321,7 +321,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/crisis_drone/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	..()
+	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/crisis_drone/attach(obj/mecha/M as obj)
 	. = ..(M)

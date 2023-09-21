@@ -356,6 +356,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 					comm.register_device(saved_name)
 				else if(human)
 					comm.register_device(human.name)
+				comm.initialize_exonet(human)
 			notify("Calibration complete! User data stored! Welcome to your Nanite Implant Framework!")
 
 //Called each life() tick on the mob
@@ -651,7 +652,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	durability = 50
 	bioadap = TRUE
 	id = NIF_ID_BIOADAPTIVE
-	
+
 /obj/item/nif/authenticbioadap
 	name = "\improper Vey-Med bioadaptive NIF"
 	desc = "A genuine Vey-Med nanotechnology fabricator, designed for strange body types. \

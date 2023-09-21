@@ -78,6 +78,9 @@
 		/mob/living/carbon/human/proc/nectar_select,
 		/mob/living/carbon/human/proc/nectar_pick,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 	abilities = list(
 		/datum/ability/species/toggle_flight

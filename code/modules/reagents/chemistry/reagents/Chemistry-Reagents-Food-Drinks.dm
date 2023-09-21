@@ -13,17 +13,21 @@
 	var/injectable = 0
 	color = "#664330"
 
-/datum/reagent/nutriment/mix_data(list/newdata, newamount)
+// todo: review data procs
 
-	if(!islist(newdata) || !newdata.len)
+/datum/reagent/nutriment/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+
+	if(!islist(new_data) || !length(new_data))
 		return
 
+	LAZYINITLIST(data)
+
 	//add the new taste data
-	for(var/taste in newdata)
+	for(var/taste in new_data)
 		if(taste in data)
-			data[taste] += newdata[taste]
+			data[taste] += new_data[taste]
 		else
-			data[taste] = newdata[taste]
+			data[taste] = new_data[taste]
 
 	//cull all tastes below 10% of total
 	var/totalFlavor = 0
@@ -2851,13 +2855,12 @@
 	glass_name = "Gin Fizz"
 	glass_desc = "Refreshingly lemony, deliciously dry."
 
-/datum/reagent/ethanol/nebula_riptide
+/datum/reagent/drink/soda/nebula_riptide
 	name = "Nebula Riptide"
 	id = "nebula_riptide"
 	description = "The drink is compounded into form from a larger volume, leaving little to drink."
 	taste_description = "Burning hot, Freezing cold, and bitter irony"
 	color = "#09dbf7"
-	strength = 10
 
 	glass_name = "Nebula Riptide"
 	glass_desc = "Nebula Riptide. It's thick enough to stand on it's own, almost even parts spice and liquid."
@@ -3928,12 +3931,11 @@
 	glass_name = "Ichor Mead"
 	glass_desc = "A trip to Valhalla."
 
-/datum/reagent/ethanol/gibbfloat
+/datum/reagent/drink/soda/gibbfloat
 	name = "Gibbfloat"
 	id = "gibbfloat"
 	description = "A tasty, frothy drink."
 	taste_description = "soda float"
-	strength = 100
 
 	glass_name = "Gibbfloat"
 	glass_desc = "A tasty, frothy drink"
@@ -4446,11 +4448,10 @@
 
 
 //Handles setting the temperature when oils are mixed
-/datum/reagent/nutriment/coating/mix_data(newdata, newamount)
-	if (!data)
-		data = list()
-
-	data["cooked"] = newdata["cooked"]
+// todo: review data procs
+/datum/reagent/nutriment/coating/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+	LAZYINITLIST(data)
+	data["cooked"] = new_data["cooked"]
 
 /datum/reagent/nutriment/coating/batter
 	name = "batter mix"
@@ -4506,29 +4507,23 @@
 	if(volume >= 3)
 		T.wet_floor(2)
 
+// todo: review data procs
 /datum/reagent/nutriment/triglyceride/oil/initialize_data(newdata) // Called when the reagent is created.
 	..()
 	if (!data)
 		data = list("temperature" = T20C)
 
 //Handles setting the temperature when oils are mixed
-/datum/reagent/nutriment/triglyceride/oil/mix_data(newdata, newamount)
-
-	if (!data)
-		data = list()
-
-	var/ouramount = volume - newamount
-	if (ouramount <= 0 || !data["temperature"] || !volume)
+/datum/reagent/nutriment/triglyceride/oil/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+	LAZYINITLIST(data)
+	if (current_amount <= 0 || !data["temperature"] || !volume)
 		//If we get here, then this reagent has just been created, just copy the temperature exactly
-		data["temperature"] = newdata["temperature"]
-
+		data["temperature"] = new_data["temperature"]
 	else
 		//Our temperature is set to the mean of the two mixtures, taking volume into account
-		var/total = (data["temperature"] * ouramount) + (newdata["temperature"] * newamount)
+		var/total = (data["temperature"] * current_amount) + (new_data["temperature"] * new_amount)
 		data["temperature"] = total / volume
-
 	return ..()
-
 
 //Calculates a scaling factor for scalding damage, based on the temperature of the oil and creature's heat resistance
 /datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(mob/living/carbon/M)
@@ -4804,19 +4799,53 @@
 	glass_name = "Italian Crisis"
 	glass_desc = "This drink looks like it was a mistake."
 
-/datum/reagent/ethanol/shroomjuice
+/datum/reagent/drink/shroomjuice
 	name = "Dumb Shroom Juice"
 	id = "shroomjuice"
 	description = "The mushroom farmer didn't sort through their stock very well."
 	taste_description = "sweet and sour citrus with a savory kick."
-	strength = 100
-	druggy = 30
-	halluci = 30
-	var/adj_dizzy = 30
 	color = "#d3785d"
 
 	glass_name = "Dumb Shroom Juice"
 	glass_desc = "Touch fuzzy, get dizzy."
+
+/datum/reagent/drink/shroomjuice/affect_blood(mob/living/carbon/M, alien, removed)
+	. = ..()
+
+	if(alien == IS_DIONA)
+		return
+
+	var/threshold = 1
+	if(alien == IS_SKRELL)
+		threshold = 1.2
+
+	if(alien == IS_SLIME)
+		threshold = 0.8
+
+	M.druggy = max(M.druggy, 30)
+
+	var/effective_dose = dose
+	if(issmall(M)) effective_dose *= 2
+	if(effective_dose < 1 * threshold)
+		M.apply_effect(3, STUTTER)
+		M.make_dizzy(5)
+		if(prob(5))
+			M.emote(pick("twitch", "giggle"))
+	else if(effective_dose < 2 * threshold)
+		M.apply_effect(3, STUTTER)
+		M.make_jittery(5)
+		M.make_dizzy(5)
+		M.druggy = max(M.druggy, 35)
+		if(prob(10))
+			M.emote(pick("twitch", "giggle"))
+	else
+		M.apply_effect(3, STUTTER)
+		M.make_jittery(10)
+		M.make_dizzy(10)
+		M.druggy = max(M.druggy, 40)
+		if(prob(15))
+			M.emote(pick("twitch", "giggle"))
+
 
 /datum/reagent/ethanol/honeyshot
 	name = "Honey Shot"

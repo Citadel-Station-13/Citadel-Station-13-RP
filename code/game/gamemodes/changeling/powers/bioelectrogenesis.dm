@@ -24,8 +24,8 @@
 
 	if(held_item == null)
 		if(src.mind.changeling.recursive_enhancement)
-			if(changeling_generic_weapon(/obj/item/electric_hand/efficent,0))
-				to_chat(src, "<span class='notice'>We will shock others more efficently.</span>")
+			if(changeling_generic_weapon(/obj/item/electric_hand/efficient,0))
+				to_chat(src, "<span class='notice'>We will shock others more efficiently.</span>")
 				return 1
 		else
 			if(changeling_generic_weapon(/obj/item/electric_hand,0))  //Chemical cost is handled in the equip proc.
@@ -108,7 +108,7 @@
 	var/agony_amount = 60
 	var/electrocute_amount = 10
 
-/obj/item/electric_hand/efficent
+/obj/item/electric_hand/efficient
 	shock_cost = 5
 	agony_amount = 80
 	electrocute_amount = 20

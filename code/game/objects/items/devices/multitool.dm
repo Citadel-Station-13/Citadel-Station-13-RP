@@ -18,7 +18,7 @@
 	drop_sound = 'sound/items/drop/multitool.ogg'
 	pickup_sound = 'sound/items/pickup/multitool.ogg'
 
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
 
 	var/mode_index = 1
 	var/toolmode = MULTITOOL_MODE_STANDARD
@@ -126,7 +126,7 @@
 	icon_state = "crystal_multitool"
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
-	matter = list(MATERIAL_CRYSTAL = 1250)
+	materials = list(MATERIAL_CRYSTAL = 1250)
 
 /obj/item/multitool/crystal/Initialize()
 	. = ..()

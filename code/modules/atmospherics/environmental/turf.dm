@@ -112,7 +112,7 @@
 	RETURN_TYPE(/datum/gas_mixture)
 	if(zone)
 		if(!zone.invalid)
-			air_master.mark_zone_update(zone)
+			SSair.mark_zone_update(zone)
 			return zone.air
 		else
 			c_copy_air()

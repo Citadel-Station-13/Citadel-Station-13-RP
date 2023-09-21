@@ -120,7 +120,7 @@
 	var/datum/gas_mixture/environment = T.return_air()
 	if(!environment) return
 
-	if(environment.gas[/datum/gas/phoron] > 0 || locate(/obj/effect/alien/weeds) in T)
+	if(environment.gas[GAS_ID_PHORON] > 0 || locate(/obj/effect/alien/weeds) in T)
 		if(!regenerate(H))
 			var/obj/item/organ/internal/xenos/plasmavessel/P = H.internal_organs_by_name[O_PLASMA]
 			P.stored_plasma += weeds_plasma_rate
@@ -198,10 +198,8 @@
 	inherent_verbs = list(
 		/mob/living/proc/ventcrawl,
 		/mob/living/carbon/human/proc/regurgitate,
-		/mob/living/carbon/human/proc/plant,
 		/mob/living/carbon/human/proc/transfer_plasma,
 		/mob/living/carbon/human/proc/evolve,
-		/mob/living/carbon/human/proc/resin,
 		/mob/living/carbon/human/proc/corrosive_acid
 		)
 
@@ -310,12 +308,10 @@
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/regurgitate,
 		/mob/living/carbon/human/proc/lay_egg,
-		/mob/living/carbon/human/proc/plant,
 		/mob/living/carbon/human/proc/transfer_plasma,
 		/mob/living/carbon/human/proc/corrosive_acid,
 		/mob/living/carbon/human/proc/neurotoxin,
 		/mob/living/carbon/human/proc/acidspit,
-		/mob/living/carbon/human/proc/resin
 		)
 
 /datum/species/xenos/queen/handle_login_special(var/mob/living/carbon/human/H)

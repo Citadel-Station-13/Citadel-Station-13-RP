@@ -3,7 +3,7 @@
 	desc = "Used to control a linked shuttle."
 	icon_keyboard = "atmos_key"
 	icon_screen = "shuttle"
-	circuit = null
+	circuit = /obj/item/circuitboard/shuttle_console
 
 	var/shuttle_tag  // Used to coordinate data in shuttle controller.
 	var/hacked = 0   // Has been emagged, no access restrictions.
@@ -160,8 +160,8 @@ GLOBAL_LIST_BOILERPLATE(papers_dockingcode, /obj/item/paper/dockingcodes)
 /obj/item/paper/dockingcodes/proc/populate_info()
 	var/dockingcodes = null
 	var/z_to_check = codes_from_z ? codes_from_z : z
-	if(GLOB.using_map.use_overmap)
-		var/obj/effect/overmap/visitable/location = get_overmap_sector(z_to_check)
+	if((LEGACY_MAP_DATUM).use_overmap)
+		var/obj/overmap/entity/visitable/location = get_overmap_sector(z_to_check)
 		if(location && location.docking_codes)
 			dockingcodes = location.docking_codes
 

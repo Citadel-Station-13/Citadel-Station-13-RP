@@ -173,6 +173,7 @@
 #define OBJ_PLANE -35
 #define OBJ_PLANE_RENDER_TARGET "OBJ_PLANE"
 
+#define WALL_LAYER         (TURF_LAYER+0.3) //! For walls.
 #define DEBRIS_LAYER       (TURF_LAYER+0.4) /// Cleanable debris.
 #define STAIRS_LAYER       (TURF_LAYER+0.5) /// Layer for stairs.
 #define DOOR_OPEN_LAYER    (TURF_LAYER+0.7) /// Under all objects if opened. 2.7 due to tables being at 2.6.
@@ -184,6 +185,8 @@
 
 #define ABOVE_JUNK_LAYER   (OBJ_LAYER+0.1) /// Things that want to be slightly above common objects.
 #define DOOR_CLOSED_LAYER  (OBJ_LAYER+0.1) /// Doors when closed.
+#define LOW_WALL_LAYER     (OBJ_LAYER+0.11)
+#define GRILLE_LAYER       (OBJ_LAYER+0.12)
 #define WINDOW_LAYER       (OBJ_LAYER+0.2) /// Windows.
 #define ON_WINDOW_LAYER    (OBJ_LAYER+0.3) /// Ontop of a window.
 #define ABOVE_WINDOW_LAYER (OBJ_LAYER+0.4) /// Above full tile windows so wall items are clickable.

@@ -8,7 +8,7 @@
 	item_flags = ITEM_NOBLUDGEON
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 200)
+	materials = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2, TECH_ILLEGAL = 1)
 
 /obj/item/bodysnatcher/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)

@@ -3,8 +3,6 @@
 	abstract_type = /datum/role/job
 
 	//? Intrinsics
-	/// ID of the job, used for save/load
-	var/id
 	/// The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title = "NOPE"
 	/// Description of the job
@@ -366,7 +364,9 @@
 	. = outfit.equip_base(H, title, alt_title)
 
 /datum/role/job/proc/get_access()
-	return minimal_access | (config_legacy.jobs_have_minimal_access? list() : additional_access)
+	. = minimal_access | (config_legacy.jobs_have_minimal_access? list() : additional_access)
+	if(faction == JOB_FACTION_STATION && CONFIG_GET(flag/almost_everyone_has_maintenance_access))
+		. |= ACCESS_ENGINEERING_MAINT
 
 // If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/role/job/proc/player_old_enough(client/C)
@@ -375,8 +375,10 @@
 /datum/role/job/proc/available_in_days(client/C)
 	if(C.has_jexp_bypass())
 		return 0
-	if(C && config_legacy.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(minimal_player_age))
-		return max(0, minimal_player_age - C.player_age)
+	if(!CONFIG_GET(flag/job_check_account_age))
+		return 0
+	if(isnum(C.player.player_age) && isnum(minimal_player_age))
+		return max(0, minimal_player_age - C.player.player_age)
 	return 0
 
 /datum/role/job/proc/apply_fingerprints(var/mob/living/carbon/human/target)

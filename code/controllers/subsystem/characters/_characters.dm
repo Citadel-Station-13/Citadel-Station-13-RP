@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * Manages character setup, character saving, loading,
  * and will eventually serve as the middleware
@@ -38,19 +41,7 @@ SUBSYSTEM_DEF(characters)
 	rebuild_character_species()
 	rebuild_backgrounds()
 
-/*
-/datum/controller/subsystem/characters/Initialize()
-	while(prefs_awaiting_setup.len)
-		var/datum/preferences/prefs = prefs_awaiting_setup[prefs_awaiting_setup.len]
-		prefs_awaiting_setup.len--
-		prefs.setup()
-	while(newplayers_requiring_init.len)
-		var/mob/new_player/new_player = newplayers_requiring_init[newplayers_requiring_init.len]
-		newplayers_requiring_init.len--
-		new_player.deferred_login()
-	. = ..()
-*/	//Might be useful if we ever switch to Bay prefs.
-/datum/controller/subsystem/characters/fire(resumed = FALSE)
+/datum/controller/subsystem/characters/fire(resumed)
 	while(save_queue.len)
 		var/datum/preferences/prefs = save_queue[save_queue.len]
 		save_queue.len--
@@ -61,7 +52,5 @@ SUBSYSTEM_DEF(characters)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/characters/proc/queue_preferences_save(var/datum/preferences/prefs)
+/datum/controller/subsystem/characters/proc/queue_preferences_save(datum/preferences/prefs)
 	save_queue |= prefs
-
-

@@ -54,7 +54,7 @@
 	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	light_range = 4
 
-	var/gasefficency = 0.25
+	var/gasefficiency = 0.25
 
 	base_icon_state = "darkmatter"
 
@@ -243,14 +243,10 @@
 /obj/machinery/power/supermatter/get_transit_zlevel()
 	//don't send it back to the station -- most of the time
 	if(prob(99))
-		var/list/candidates = GLOB.using_map.accessible_z_levels.Copy()
-		for(var/zlevel in GLOB.using_map.station_levels)
-			candidates.Remove("[zlevel]")
-		candidates.Remove("[src.z]")
-
-		if(candidates.len)
-			return text2num(pickweight(candidates))
-
+		var/list/candidates = SSmapping.crosslinked_levels() - (LEGACY_MAP_DATUM).station_levels
+		. = SAFEPICK(candidates)
+		if(.)
+			return
 	return ..()
 
 /obj/machinery/power/supermatter/process(delta_time)
@@ -310,7 +306,7 @@
 
 	if(!istype(L, /turf/space))
 		env = L.return_air()
-		removed = env.remove(gasefficency * env.total_moles)	//Remove gas from surrounding area
+		removed = env.remove(gasefficiency * env.total_moles)	//Remove gas from surrounding area
 
 	if(!env || !removed || !removed.total_moles)
 		damage += max((power - 15*POWER_FACTOR)/10, 0)
@@ -322,7 +318,7 @@
 		damage = max( damage + min( ( (removed.temperature - CRITICAL_TEMPERATURE) / 150 ), damage_inc_limit ) , 0 )
 		//Ok, 100% oxygen atmosphere = best reaction
 		//Maxes out at 100% oxygen pressure
-		oxygen = max(min((removed.gas[/datum/gas/oxygen] - (removed.gas[/datum/gas/nitrogen] * NITROGEN_SLOWING_FACTOR)) / removed.total_moles, 1), 0)
+		oxygen = max(min((removed.gas[GAS_ID_OXYGEN] - (removed.gas[GAS_ID_NITROGEN] * NITROGEN_SLOWING_FACTOR)) / removed.total_moles, 1), 0)
 
 		//calculate power gain for oxygen reaction
 		var/temp_factor
@@ -346,8 +342,8 @@
 
 		//Release reaction gasses
 		var/heat_capacity = removed.heat_capacity()
-		removed.adjust_multi(/datum/gas/phoron, max(device_energy / PHORON_RELEASE_MODIFIER, 0), \
-		                     /datum/gas/oxygen, max((device_energy + removed.temperature - T0C) / OXYGEN_RELEASE_MODIFIER, 0))
+		removed.adjust_multi(GAS_ID_PHORON, max(device_energy / PHORON_RELEASE_MODIFIER, 0), \
+		                     GAS_ID_OXYGEN, max((device_energy + removed.temperature - T0C) / OXYGEN_RELEASE_MODIFIER, 0))
 
 		var/thermal_power = THERMAL_RELEASE_MODIFIER * device_energy
 		if (debug)
@@ -560,7 +556,7 @@
 	emergency_point = 400
 	explosion_point = 600
 
-	gasefficency = 0.125
+	gasefficiency = 0.125
 
 	pull_radius = 5
 	pull_time = 45

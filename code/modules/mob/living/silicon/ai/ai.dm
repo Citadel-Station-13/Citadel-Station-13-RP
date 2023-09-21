@@ -169,7 +169,8 @@ var/list/ai_verbs_default = list(
 		if (istype(L, /datum/ai_laws))
 			laws = L
 	else
-		laws = new GLOB.using_map.default_law_type
+		var/datum/map/station/loaded = (LEGACY_MAP_DATUM)
+		laws = new loaded.default_law_type
 
 	aiMulti = new(src)
 	aiRadio = new(src)
@@ -449,12 +450,12 @@ var/list/ai_verbs_default = list(
 	if(emergency_message_cooldown)
 		to_chat(usr, "<span class='warning'>Arrays recycling. Please stand by.</span>")
 		return
-	var/input = sanitize(input(usr, "Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
+	var/input = sanitize(input(usr, "Please choose a message to transmit to [(LEGACY_MAP_DATUM).boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 	if(!input)
 		return
 	message_centcom(input, usr)
 	to_chat(usr, "<span class='notice'>Message transmitted.</span>")
-	log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
+	log_game("[key_name(usr)] has made an IA [(LEGACY_MAP_DATUM).boss_short] announcement: [input]")
 	emergency_message_cooldown = 1
 	spawn(300)
 		emergency_message_cooldown = 0
@@ -502,6 +503,10 @@ var/list/ai_verbs_default = list(
 			ai_actual_track(target)
 		else
 			to_chat(src, "<font color='red'>System error. Cannot locate [html_decode(href_list["trackname"])].</font>")
+	if(href_list["character_profile"])
+		if(!profile)
+			profile = new(src)
+		profile.ui_interact(usr)
 
 /mob/living/silicon/ai/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
 	. = ..()
@@ -539,7 +544,7 @@ var/list/ai_verbs_default = list(
 		for(var/i in tempnetwork)
 			cameralist[i] = i
 
-	cameralist = tim_sort(cameralist, /proc/cmp_text_asc, TRUE)
+	cameralist = tim_sort(cameralist, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 	return cameralist
 
 /mob/living/silicon/ai/proc/ai_network_change(var/network in get_camera_network_list())

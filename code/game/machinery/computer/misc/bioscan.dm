@@ -38,7 +38,7 @@
 		if(!T)
 			continue
 		. += list(list(
-			"level" = SSmapping.level_id(get_z(A)),
+			"level" = SSmapping.fluff_level_id(get_z(A)),
 			"id" = "[A.id]",
 			"anchor" = A.anchored,
 			"name" = A.name,
@@ -102,7 +102,7 @@
 	var/list/assembled = list()
 	for(var/z_str in indices)
 		var/list/gottem = list()
-		gottem["id"] = SSmapping.level_id(text2num(z_str))
+		gottem["id"] = SSmapping.fluff_level_id(text2num(z_str))
 		var/mobs_all = 0
 		var/mobs_complex = 0
 		var/mobs_complex_alive = 0

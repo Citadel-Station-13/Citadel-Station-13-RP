@@ -562,7 +562,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/atmos)
 "BG" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 28
 	},
@@ -685,7 +685,7 @@
 /turf/simulated/floor/bluegrid,
 /area/submap/debrisfiled_vr/clownshuttle/engine)
 "HT" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -28
 	},
@@ -697,7 +697,7 @@
 	dir = 4;
 	pixel_x = -29
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -28
 	},
@@ -830,7 +830,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/bunk)
 "PL" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 28
 	},
@@ -877,7 +877,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/atmos)
 "RR" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 28
 	},
@@ -955,7 +955,7 @@
 	dir = 4;
 	pixel_x = 29
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -28
 	},

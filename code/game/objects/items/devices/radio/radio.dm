@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	var/bs_tx_preload_id
 	var/bs_rx_preload_id
 
-	matter = list(MAT_GLASS = 25,MAT_STEEL = 75)
+	materials = list(MAT_GLASS = 25,MAT_STEEL = 75)
 	var/const/FREQ_LISTENING = 1
 	var/list/internal_channels
 
@@ -315,6 +315,9 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 		return
 
 	var/mob/living/silicon/ai/announcer/A = GLOB.virtual_announcer_ai
+	// WHY THE FUCK IS THIS A GLOBAL OBJECT
+	if(isnull(A))
+		return
 	A.SetName(from)
 	Broadcast_Message(connection, A,
 						0, "*garbled automated announcement*", src,
@@ -546,7 +549,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	//Nothing handled any sort of remote radio-ing and returned before now, just squawk on this zlevel.
 	return Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 		src, message, displayname, jobname, real_name, M.voice_name,
-		filter_type, signal.data["compression"], GLOB.using_map.get_map_levels(pos_z), connection.frequency, verb, speaking)
+		filter_type, signal.data["compression"], (LEGACY_MAP_DATUM).get_map_levels(pos_z), connection.frequency, verb, speaking)
 
 /obj/item/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)
 	if (broadcasting)
@@ -608,7 +611,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 
 	var/range = receive_range(freq, level)
 	if(range > -1)
-		return get_mobs_or_objects_in_view(canhear_range, src)
+		return get_hearers_in_view(canhear_range, src)
 
 
 /obj/item/radio/examine(mob/user, dist)

@@ -1,11 +1,11 @@
-#define MATERIAL_ARMOR_COEFFICENT 0.05
+#define MATERIAL_ARMOR_COEFFICIENT 0.05
 /*
 SEE code/modules/materials/materials.dm FOR DETAILS ON INHERITED DATUM.
 This class of armor takes armor and appearance data from a material "datum".
 They are also fragile based on material data and many can break/smash apart when hit.
 
 Materials has a var called protectiveness which plays a major factor in how good it is for armor.
-With the coefficent being 0.05, this is how strong different levels of protectiveness are (for melee)
+With the coefficient being 0.05, this is how strong different levels of protectiveness are (for melee)
 For bullets and lasers, material hardness and reflectivity also play a major role, respectively.
 
 
@@ -157,7 +157,7 @@ Protectiveness | Armor %
 				return PROJECTILE_CONTINUE // complete projectile permutation
 
 /proc/calculate_material_armor(amount)
-	var/result = 1 - MATERIAL_ARMOR_COEFFICENT * amount / (1 + MATERIAL_ARMOR_COEFFICENT * abs(amount))
+	var/result = 1 - MATERIAL_ARMOR_COEFFICIENT * amount / (1 + MATERIAL_ARMOR_COEFFICIENT * abs(amount))
 	result = result * 100
 	result = abs(result - 100)
 	return round(result) * 0.01

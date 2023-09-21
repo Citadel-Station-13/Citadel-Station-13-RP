@@ -381,6 +381,13 @@
 	icon_state = "hostrench"
 	inv_hide_flags = HIDEHOLSTER
 
+/obj/item/clothing/suit/storage/vest/hoscoat/combatcoat
+	name = "security combat coat"
+	desc = "A heavily armored vest worn under a thick coat. The gold embroidery suggests whoever wears this possesses a high rank."
+	icon_state = "hoscombatcoat"
+	blood_overlay_type = "armor"
+	valid_accessory_slots = null
+
 /obj/item/clothing/suit/storage/vest/pcrc
 	name = "PCRC armor vest"
 	desc = "A simple kevlar vest belonging to Proxima Centauri Risk Control. This one has a PCRC crest clipped to the chest."
@@ -590,13 +597,6 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.6
-	valid_accessory_slots = null
-
-/obj/item/clothing/suit/armor/combat/syndicate
-	name = "syndicate combat vest"
-	desc = "A heavily armored vest worn over a thick coat. The gold embroidery suggests whoever wears this possesses a high rank."
-	icon_state = "syndievest"
-	blood_overlay_type = "armor"
 	valid_accessory_slots = null
 
 //Modular plate carriers
@@ -810,12 +810,6 @@
 		to_chat(H,"<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
 		return FALSE
 
-/obj/item/clothing/suit/storage/vest/hoscoat/jensen
-	name = "armored trenchcoat"
-	desc = "A trenchcoat augmented with a special alloy for some protection and style."
-	icon_state = "hostrench"
-	inv_hide_flags = HIDEHOLSTER
-
 /obj/item/clothing/suit/storage/vest/oricon
 	name = "\improper Orion Confederation Government armored vest"
 	desc = "A synthetic armor vest. This one is marked with the crest of the Orion Confederation Group."
@@ -910,6 +904,12 @@
 	armor_type = /datum/armor/lavaland/ashlander
 	allowed = list(/obj/item/clothing/head/helmet/ashlander, /obj/item/melee, /obj/item/gun/ballistic)
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/armor/ashlander/xeno
+	name = "wyrm chitin armor"
+	desc = "Armor crafted from the chitin of now vanquished invading monsters from the stars. These relic suits are now prized symbols of Scorian victory over the invaders."
+	icon_state = "surtxeno"
+	armor_type = /datum/armor/lavaland/xeno
 
 //More Warhammer Fun
 /obj/item/clothing/suit/armor/utilitarian

@@ -13,34 +13,36 @@ SUBSYSTEM_DEF(shuttle)
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 
 	/// Whether ships can move on the overmap; used for adminbus.
-	var/overmap_halted = FALSE
+	var/static/overmap_halted = FALSE
 	/// List of all ships.
-	var/list/ships = list()
+	var/static/list/ships = list()
 
 	/// Maps shuttle tags to shuttle datums, so that they can be looked up.
-	var/list/shuttles = list()
+	var/static/list/shuttles = list()
 	/// Simple list of shuttles, for processing
-	var/list/process_shuttles = list()
+	var/static/list/process_shuttles = list()
+	/// built shuttles by type - legacy
+	var/static/list/shuttle_types = list()
 
 	/// Maps shuttle landmark tags to instances
-	var/list/registered_shuttle_landmarks = list()
+	var/static/list/registered_shuttle_landmarks = list()
 	/// world.time of most recent addition to registered_shuttle_landmarks
 	var/last_landmark_registration_time
 	/// (Not Implemented) Keeps records of shuttle movement, format is list(datum/shuttle = datum/shuttle_log)
 	var/list/shuttle_logs = list()
 	/// All the areas of all shuttles.
-	var/list/shuttle_areas = list()
+	var/static/list/shuttle_areas = list()
 	/// Docking controller tag -> docking controller program, mostly for init purposes.
-	var/list/docking_registry = list()
+	var/static/list/docking_registry = list()
 
 	/// Stores automatic landmarks that are waiting for a sector to finish loading.
-	var/list/landmarks_awaiting_sector = list()
+	var/static/list/landmarks_awaiting_sector = list()
 	/// Stores landmark_tags that need to be assigned to the sector (landmark_tag = sector) when registered.
-	var/list/landmarks_still_needed = list()
+	var/static/list/landmarks_still_needed = list()
 	/// A queue for shuttles to initialize at the appropriate time.
-	var/list/shuttles_to_initialize
+	var/static/list/shuttles_to_initialize = list()
 	/// Used to find all sector objects at the appropriate time.
-	var/list/sectors_to_initialize
+	var/static/list/sectors_to_initialize = list()
 	/// Block initialization of new shuttles/sectors
 	var/block_init_queue = TRUE
 
@@ -59,13 +61,6 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
 	last_landmark_registration_time = world.time
-	// Find all declared shuttle datums and initailize them. (Okay, queue them for initialization a few lines further down)
-	for(var/shuttle_type in subtypesof(/datum/shuttle)) // This accounts for most shuttles, though away maps can queue up more.
-		var/datum/shuttle/shuttle = shuttle_type
-		if(initial(shuttle.category) == shuttle_type)
-			continue // Its an "abstract class" datum, not for a real shuttle.
-		if(!initial(shuttle.defer_initialisation)) // Skip if it asks not to be initialized at startup.
-			LAZYDISTINCTADD(shuttles_to_initialize, shuttle_type)
 	block_init_queue = FALSE
 	process_init_queues()
 	return ..()
@@ -88,6 +83,15 @@ SUBSYSTEM_DEF(shuttle)
 
 		if(MC_TICK_CHECK)
 			return
+
+/datum/controller/subsystem/shuttle/proc/legacy_shuttle_assert(datum/shuttle/path)
+	if(initial(path.defer_initialisation))
+		return
+	if(initial(path.category) == path)
+		CRASH("attempted to init abstract shuttle")
+	if(!isnull(shuttle_types[path]))
+		return
+	shuttles_to_initialize += path
 
 /datum/controller/subsystem/shuttle/proc/process_init_queues()
 	if(block_init_queue)
@@ -127,7 +131,7 @@ SUBSYSTEM_DEF(shuttle)
 		registered_shuttle_landmarks[shuttle_landmark_tag] = shuttle_landmark
 		last_landmark_registration_time = world.time
 
-		var/obj/effect/overmap/visitable/O = landmarks_still_needed[shuttle_landmark_tag]
+		var/obj/overmap/entity/visitable/O = landmarks_still_needed[shuttle_landmark_tag]
 		if(O)	// These need to be added to sectors, which we handle.
 			try_add_landmark_tag(shuttle_landmark_tag, O)
 			landmarks_still_needed -= shuttle_landmark_tag
@@ -140,7 +144,7 @@ SUBSYSTEM_DEF(shuttle)
 
 // Checks if the given sector's landmarks have initialized; if so, registers them with the sector, if not, marks them for assignment after they come in.
 // Also adds automatic landmarks that were waiting on their sector to spawn.
-/datum/controller/subsystem/shuttle/proc/initialize_sector(obj/effect/overmap/visitable/given_sector)
+/datum/controller/subsystem/shuttle/proc/initialize_sector(obj/overmap/entity/visitable/given_sector)
 	given_sector.populate_sector_objects()	// This is a late init operation that sets up the sector's map_z and does non-overmap-related init tasks.
 
 	for(var/landmark_tag in given_sector.initial_generic_waypoints)
@@ -160,7 +164,7 @@ SUBSYSTEM_DEF(shuttle)
 			landmarks_awaiting_sector -= landmark
 
 // Attempts to add a landmark instance with a sector (returns false if landmark isn't registered yet)
-/datum/controller/subsystem/shuttle/proc/try_add_landmark_tag(landmark_tag, obj/effect/overmap/visitable/given_sector)
+/datum/controller/subsystem/shuttle/proc/try_add_landmark_tag(landmark_tag, obj/overmap/entity/visitable/given_sector)
 	var/obj/effect/shuttle_landmark/landmark = get_landmark(landmark_tag)
 	if(!landmark)
 		return
@@ -177,6 +181,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/datum/shuttle/shuttle = shuttle_type
 	if(initial(shuttle.category) != shuttle_type)	// Skip if its an "abstract class" datum
 		shuttle = new shuttle()
+		shuttle_types[shuttle.type] = shuttle
 		shuttle_areas |= shuttle.shuttle_area
 		log_debug(SPAN_DEBUG("Initialized shuttle [shuttle] ([shuttle.type])"))
 		return shuttle
@@ -205,7 +210,7 @@ SUBSYSTEM_DEF(shuttle)
 		return
 	overmap_halted = !overmap_halted
 	for(var/ship in ships)
-		var/obj/effect/overmap/visitable/ship/ship_effect = ship
+		var/obj/overmap/entity/visitable/ship/ship_effect = ship
 		overmap_halted ? ship_effect.halt() : ship_effect.unhalt()
 
 /datum/controller/subsystem/shuttle/stat_entry()

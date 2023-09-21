@@ -49,6 +49,7 @@
 
 /obj/item/gun/magnetic/update_icon()
 	var/list/overlays_to_add = list()
+	cut_overlays()
 	if(removable_components)
 		if(cell)
 			overlays_to_add += image(icon, "[icon_state]_cell")

@@ -1,6 +1,7 @@
 //Do not question I am not fixing ALL THE ICONS it works just leave it!
 
 /obj/item/clothing/accessory/tajaran
+	abstract_type = /obj/item/clothing/accessory/tajaran
 	icon = 'icons/mob/clothing/species/tajaran/ties.dmi'
 	icon_override = 'icons/obj/clothing/species/tajaran/ties.dmi'
 

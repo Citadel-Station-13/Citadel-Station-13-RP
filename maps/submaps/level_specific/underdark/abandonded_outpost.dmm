@@ -20,7 +20,7 @@
 /area/mine/explored/underdark)
 "ag" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)

@@ -7,7 +7,7 @@
 	var/datum/species/species
 
 	var/list/stomach_contents = list()
-	var/list/datum/disease2/disease/virus2 = list()
+	///var/list/datum/disease2/disease/virus2 = list()
 	var/list/antibodies = list()
 	var/last_eating = 0 	//Not sure what this does... I found it hidden in food.dm
 

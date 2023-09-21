@@ -13,7 +13,7 @@
 	throw_range = 4
 	action_button_name = "Toggle Heatsink"
 
-	matter = list(MAT_STEEL = 15000, MAT_GLASS = 3500)
+	materials = list(MAT_STEEL = 15000, MAT_GLASS = 3500)
 	origin_tech = list(TECH_MAGNET = 2, TECH_MATERIAL = 2)
 
 	var/on = 0				//is it turned on?
@@ -24,6 +24,9 @@
 	var/thermostat = T20C
 
 	//TODO: make it heat up the surroundings when not in space
+
+/obj/item/suit_cooling_unit/empty
+	cell = null
 
 /obj/item/suit_cooling_unit/ui_action_click()
 	toggle(usr)

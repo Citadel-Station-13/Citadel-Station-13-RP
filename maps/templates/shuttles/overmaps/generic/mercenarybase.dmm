@@ -155,7 +155,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -314,7 +314,7 @@
 /turf/simulated/floor,
 /area/mercbase/atmos)
 "fY" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -378,7 +378,7 @@
 /area/mercbase/fuel)
 "gq" = (
 /obj/machinery/computer/operating,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -450,7 +450,7 @@
 /turf/simulated/floor,
 /area/mercbase/atmos)
 "gD" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -610,7 +610,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/command)
 "hd" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Modified Security Airlock";
 	req_one_access = list(150)
 	},
@@ -717,7 +717,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/barracks)
 "hp" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Modified Security Airlock";
 	req_one_access = list(150)
 	},
@@ -1145,7 +1145,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -1200,7 +1200,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Modified Security Airlock";
 	req_one_access = list(150)
 	},
@@ -1276,7 +1276,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Modified Security Airlock";
 	req_one_access = list(150)
 	},
@@ -2041,7 +2041,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/hall)
 "kG" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -2229,7 +2229,7 @@
 /obj/structure/closet/secure_closet/chemical{
 	req_access = list(150)
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -2256,28 +2256,28 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/medical)
 "lE" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/engineering)
 "lF" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/hall)
 "lG" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -2288,7 +2288,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -2298,7 +2298,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 5
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -2407,7 +2407,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/eqroom)
 "lT" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -2672,7 +2672,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/dock)
 "mQ" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -2874,7 +2874,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/roid)
 "np" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/dark,

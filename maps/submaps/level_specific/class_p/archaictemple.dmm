@@ -399,7 +399,6 @@
 "tc" = (
 /obj/machinery/door/blast/puzzle{
 	color = "#CBA713";
-	icon = 'icons/obj/doors/material_doors.dmi';
 	icon_state = "metal";
 	icon_state_closed = "metal";
 	icon_state_closing = "metalclosing";
@@ -621,7 +620,6 @@
 "Dy" = (
 /obj/machinery/door/blast/puzzle{
 	color = "#1F1A04";
-	icon = 'icons/obj/doors/material_doors.dmi';
 	icon_state = "metal";
 	icon_state_closed = "metal";
 	icon_state_closing = "metalclosing";
@@ -904,7 +902,6 @@
 "Nk" = (
 /obj/machinery/door/blast/puzzle{
 	color = "#4D4D4D";
-	icon = 'icons/obj/doors/material_doors.dmi';
 	icon_state = "metal";
 	icon_state_closed = "metal";
 	icon_state_closing = "metalclosing";

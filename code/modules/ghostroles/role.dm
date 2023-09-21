@@ -48,8 +48,6 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 	var/important_info
 	/// should we show the standard ghostrole greeting?
 	var/show_standard_greeting = TRUE
-	/// snowflake ID for if we're not to be referred to by path - dynamically created ghostolres
-	var/id
 	/// spawnerless - advanced users only. This isn't for "load in spawners in PreInstantiate()", this is for true spawnpoint-less ghostroles.
 	var/spawnerless = FALSE
 	/// assigned role. defaults to name.
@@ -217,3 +215,20 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 	// var/datum/objective/O = new(objective)
 	// O.owner = mind
 	// A.objectives += O
+
+//to hold "existing" ghostroles, roles that allow ghosts to take control of mobs already existing
+/datum/role/ghostrole/existing
+	name = "Playable Mob"
+	desc = "Some badmin or coder is fucking with procs, probably. A mob's controllable if you want it though."
+	instantiator = /datum/ghostrole_instantiator/existing
+
+/datum/role/ghostrole/existing/Instantiate(client/C, atom/loc, list/params)
+	if(!istype(instantiator,/datum/ghostrole_instantiator/existing))
+		CRASH("ghostrole/existing must have an /existing instantiator")
+	if(params["mob"])
+		var/datum/ghostrole_instantiator/existing/E = instantiator
+		E.existing_mob = params["mob"]
+	else
+		CRASH("mob parameter must exist")
+
+	return ..()

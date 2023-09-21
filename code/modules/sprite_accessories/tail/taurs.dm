@@ -4,6 +4,7 @@
 	icon = 'icons/mob/sprite_accessories/taurs.dmi'
 	do_colouration = 1 // Yes color, using tail color
 	color_blend_mode = ICON_MULTIPLY  // The sprites for taurs are designed for ICON_MULTIPLY
+	can_be_hidden = FALSE
 
 	var/icon/suit_sprites = null //File for suit sprites, if any.
 
@@ -144,7 +145,7 @@
 	id = "tail_taur_naga_colorable"
 	icon_state = "naga_s"
 	extra_overlay = "naga_markings"
-	
+
 /datum/sprite_accessory/tail/taur/naga/naga_2c_alt
 	name = "Naga dual-color alt (Taur)"
 	id = "tail_taur_naga_colorable_alt"

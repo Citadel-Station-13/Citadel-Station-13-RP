@@ -5,7 +5,8 @@
 	icon = 'icons/obj/railing.dmi'
 	density = TRUE
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_CLICK | ATOM_PASS_BUCKLED
-	climbable = TRUE
+	climb_allowed = TRUE
+	depth_level = 24
 	layer = WINDOW_LAYER
 	anchored = TRUE
 	atom_flags = ATOM_BORDER
@@ -25,8 +26,6 @@
 	// TODO - "constructed" is not passed to us. We need to find a way to do this safely.
 	if (constructed) // player-constructed railings
 		anchored = 0
-	if(climbable)
-		add_obj_verb(src, /obj/structure/proc/climb_on)
 	if(src.anchored)
 		update_icon(0)
 
@@ -46,6 +45,10 @@
 		return TRUE
 	if(!(get_dir(src, newLoc) & dir))
 		return TRUE
+	if(isliving(mover))
+		var/mob/living/L = mover
+		if((L.depth_current >= depth_level) && !(obj_flags & OBJ_IGNORE_MOB_DEPTH))
+			return TRUE
 	return !density
 
 /obj/structure/railing/examine(mob/user, dist)
@@ -268,55 +271,13 @@
 	switch(severity)
 		if(1.0)
 			qdel(src)
-			return
 		if(2.0)
 			qdel(src)
-			return
 		if(3.0)
 			qdel(src)
-			return
-		else
-	return
-
-// Duplicated from structures.dm, but its a bit different.
-/obj/structure/railing/do_climb(var/mob/living/user)
-	if(!can_climb(user))
-		return
-
-	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
-	climbers |= user
-
-	if(!do_after(user,(issmall(user) ? 20 : 34)))
-		climbers -= user
-		return
-
-	if(!can_climb(user, post_climb_check=1))
-		climbers -= user
-		return
-
-	if(get_turf(user) == get_turf(src))
-		usr.locationTransitForceMove(get_step(src, src.dir), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
-	else
-		usr.locationTransitForceMove(get_turf(src), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
-
-	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
-	if(!anchored)	take_damage(maxhealth) // Fatboy
-	climbers -= user
-
-/obj/structure/railing/can_climb(var/mob/living/user, post_climb_check=0)
-	if(!..())
-		return 0
-
-	// Normal can_climb() handles climbing from adjacent turf onto our turf.  But railings also allow climbing
-	// from our turf onto an adjacent! If that is the case we need to do checks for that too...
-	if(get_turf(user) == get_turf(src))
-		var/obj/occupied = neighbor_turf_impassable()
-		if(occupied)
-			to_chat(user, "<span class='danger'>You can't climb there, there's \a [occupied] in the way.</span>")
-			return 0
-	return 1
 
 // TODO - This here might require some investigation
+// todo: no, this here needs to be thrown out, we have depth system now
 /obj/structure/proc/neighbor_turf_impassable()
 	var/turf/T = get_step(src, src.dir)
 	if(!T || !istype(T))
@@ -326,6 +287,10 @@
 	for(var/obj/O in T.contents)
 		if(istype(O,/obj/structure))
 			var/obj/structure/S = O
-			if(S.climbable) continue
+			if(S.climb_allowed)
+				continue
 		if(O && O.density && !(O.atom_flags & ATOM_BORDER && !(turn(O.dir, 180) & dir)))
 			return O
+
+/obj/structure/railing/do_climb_target(mob/living/climber)
+	return climber.loc == get_turf(src)? get_step(src, dir) : ..()

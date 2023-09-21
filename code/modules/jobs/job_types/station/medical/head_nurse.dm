@@ -11,8 +11,18 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/doctor
-	additional_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_CHEMISTRY, ACCESS_MEDICAL_VIROLOGY, ACCESS_SCIENCE_GENETICS, ACCESS_COMMAND_EVA)
-	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_VIROLOGY, ACCESS_COMMAND_EVA)
+	additional_access = list(
+		ACCESS_MEDICAL_CHEMISTRY,
+		ACCESS_MEDICAL_VIROLOGY,
+		ACCESS_SCIENCE_GENETICS,
+	)
+	minimal_access = list(
+		ACCESS_COMMAND_EVA,
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_MEDICAL_EQUIPMENT,
+		ACCESS_MEDICAL_MORGUE,
+		ACCESS_MEDICAL_SURGERY,
+	)
 	outfit_type = /datum/outfit/job/station/medical_doctor/head_nurse
 	desc = "A Head Nurse is a senior medical professional from the nursing field. They are expected to coordinate and perform the duties associated with \
 	nurses, such as sensors monitoring and non-critical care, as well as provide them and other medical staff with guidance and oversight when presented with \

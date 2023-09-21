@@ -295,8 +295,10 @@
 		return TRUE
 	if(M != user)
 		return TRUE
+	if(flags & INV_OP_IGNORE_DELAY)
+		return TRUE
 	. = FALSE
-	INVOKE_ASYNC(user, /mob/living/carbon/human/proc/escape_straight_jacket)
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/carbon/human, escape_straight_jacket))
 
 /obj/item/clothing/suit/straight_jacket/equipped(var/mob/living/user,var/slot)
 	. = ..()
@@ -988,10 +990,12 @@
 /obj/item/clothing/suit/varsity
 	name = "black varsity jacket"
 	desc = "A favorite of jocks everywhere from Sol to Nyx."
+	icon = 'icons/clothing/suit/jackets/varsity.dmi'
 	icon_state = "varsity"
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_black", SLOT_ID_LEFT_HAND = "suit_black")
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/varsity/red
 	name = "red varsity jacket"
@@ -1454,10 +1458,19 @@
 	icon_state = "centcomformal_f"
 
 //Someone's on the line.
-/obj/item/clothing/suit/storage/toggle/letterman
+/obj/item/clothing/suit/storage/toggle/varsity
 	name = "worn letterman jacket"
 	desc = "A worn varsity letterman jacket. Some of the faded stains around the cuffs are rather suspicious."
+	icon = 'icons/clothing/suit/jackets/varsity.dmi'
 	icon_state = "varsity_letterman"
+	inv_hide_flags = HIDEHOLSTER
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/toggle/varsity/worn
+	name = "well-worn varsity jacket"
+	desc = "A worn varsity jacket. The NanoTrasen corporate logo on the back is outdated, suggesting the age of this coat."
+	icon_state = "varsity_worn"
+	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 
 /obj/item/clothing/suit/storage/pullover
 	name = "pullover hoodie"

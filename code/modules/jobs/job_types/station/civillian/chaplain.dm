@@ -9,8 +9,13 @@
 	supervisors = "the Head of Personnel"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/chaplain
-	additional_access = list(ACCESS_MEDICAL_MORGUE, ACCESS_GENERAL_CHAPEL, ACCESS_GENERAL_CREMATOR, ACCESS_ENGINEERING_MAINT)
-	minimal_access = list(ACCESS_GENERAL_CHAPEL, ACCESS_GENERAL_CREMATOR)
+	additional_access = list(
+		ACCESS_MEDICAL_MORGUE,
+	)
+	minimal_access = list(
+		ACCESS_GENERAL_CHAPEL,
+		ACCESS_GENERAL_CREMATOR,
+	)
 
 	outfit_type = /datum/outfit/job/station/chaplain
 	desc = "The Chaplain ministers to the spiritual needs of the crew."

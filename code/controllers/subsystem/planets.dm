@@ -19,23 +19,20 @@ SUBSYSTEM_DEF(planets)
 
 /datum/controller/subsystem/planets/Initialize(timeofday)
 	report_progress("Initializing planetary weather.")
-	createPlanets()
 	allocateTurfs(TRUE)
 	fire() // Fire once to preemptively set up weather and planetary ambient lighting.
 	return ..()
 
-/datum/controller/subsystem/planets/proc/createPlanets()
-	var/list/planet_datums = GLOB.using_map.planet_datums_to_make
-	for(var/P in planet_datums)
-		var/datum/planet/NP = new P()
-		planets.Add(NP)
-		for(var/Z in NP.expected_z_levels)
-			if(Z > z_to_planet.len)
-				z_to_planet.len = Z
-			if(z_to_planet[Z])
-				admin_notice(SPAN_DEBUGTRACE("Z[Z] is shared by more than one planet!"), R_DEBUG)
-				continue
-			z_to_planet[Z] = NP
+/datum/controller/subsystem/planets/on_max_z_changed(old_z_count, new_z_count)
+	. = ..()
+	z_to_planet.len = new_z_count
+
+/datum/controller/subsystem/planets/proc/legacy_planet_assert(z_index, planet_path)
+	var/datum/planet/existing = locate(planet_path) in planets
+	if(isnull(existing))
+		existing = new planet_path
+		planets += existing
+	z_to_planet[z_index] = existing
 
 /datum/controller/subsystem/planets/proc/addTurf(turf/T)
 	if(T.turf_flags & (TURF_PLANET_QUEUED | TURF_PLANET_REGISTERED))

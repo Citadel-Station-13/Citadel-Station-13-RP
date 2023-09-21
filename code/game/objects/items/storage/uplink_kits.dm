@@ -234,7 +234,7 @@
 		C.reagents.add_reagent(reagent, reagents[reagent] * C.storage_slots)
 
 /obj/item/storage/box/syndie_kit/ewar_voice
-	name = "Electrowarfare and Voice Synthesiser kit"
+	name = "Electrowarfare and Voice Synthesizer kit"
 	desc = "Kit for confounding organic and synthetic entities alike."
 	starts_with = list(
 		/obj/item/hardsuit_module/electrowarfare_suite,
@@ -280,7 +280,7 @@
 		/obj/item/sniper_rifle_part/barrel,
 		/obj/item/sniper_rifle_part/stock,
 		/obj/item/sniper_rifle_part/trigger_group,
-		/obj/item/ammo_casing/a145 = 4
+		/obj/item/ammo_casing/a127 = 4
 	)
 
 /obj/item/storage/secure/briefcase/fuelrod

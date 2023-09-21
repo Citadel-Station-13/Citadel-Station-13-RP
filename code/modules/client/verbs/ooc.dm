@@ -47,6 +47,11 @@
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
 
+	if(!reject_on_initialization_block())
+		return
+	if(!reject_age_unverified())
+		return
+
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
 		return
@@ -146,6 +151,11 @@
 	set name = "LOOC"
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC"
+
+	if(!reject_on_initialization_block())
+		return
+	if(!reject_age_unverified())
+		return
 
 	if(!mob)
 		return

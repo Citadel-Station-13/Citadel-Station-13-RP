@@ -100,13 +100,13 @@
 	path = /obj/item/gun/ballistic/derringer
 
 /datum/uplink_item/item/visible_weapons/heavysnipermerc
-	name = "Anti-Materiel Rifle (14.5mm)"
+	name = "Anti-Materiel Rifle (12.7mm)"
 	item_cost = DEFAULT_TELECRYSTAL_AMOUNT
 	path = /obj/item/gun/ballistic/heavysniper
 	antag_roles = list("mercenary")
 
 /datum/uplink_item/item/visible_weapons/heavysnipertraitor
-	name = "Anti-Materiel Rifle (14.5mm)"
+	name = "Anti-Materiel Rifle (12.7mm)"
 	desc = "A convenient collapsible rifle for covert assassination. Comes with 4 shots and its own secure carrying case."
 	item_cost = DEFAULT_TELECRYSTAL_AMOUNT
 	path = /obj/item/storage/secure/briefcase/rifle
@@ -130,7 +130,7 @@
 	path = /obj/item/gun/ballistic/automatic/c20r
 
 /datum/uplink_item/item/visible_weapons/assaultrifle
-	name = "Assault Rifle (5.45mm)"
+	name = "Assault Rifle (5.56mm)"
 	item_cost = 75
 	path = /obj/item/gun/ballistic/automatic/sts35
 

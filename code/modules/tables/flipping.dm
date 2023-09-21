@@ -26,11 +26,7 @@
 		return
 
 	usr.visible_message("<span class='warning'>[usr] flips \the [src]!</span>")
-
-	if(climbable)
-		structure_shaken()
-
-	return
+	shake_climbers()
 
 /obj/structure/table/proc/unflipping_check(var/direction)
 
@@ -86,7 +82,7 @@
 	if(dir != NORTH)
 		plane = MOB_PLANE
 		layer = ABOVE_MOB_LAYER
-	climbable = 0 //flipping tables allows them to be used as makeshift barriers
+	climb_delay = 10 SECONDS
 	flipped = 1
 	atom_flags |= ATOM_BORDER
 	for(var/D in list(turn(direction, 90), turn(direction, -90)))
@@ -105,7 +101,7 @@
 
 	reset_plane_and_layer()
 	flipped = 0
-	climbable = initial(climbable)
+	climb_delay = initial(climb_delay)
 	atom_flags &= ~ATOM_BORDER
 	for(var/D in list(turn(dir, 90), turn(dir, -90)))
 		var/obj/structure/table/T = locate() in get_step(src.loc,D)

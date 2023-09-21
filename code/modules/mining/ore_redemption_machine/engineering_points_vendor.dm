@@ -41,7 +41,7 @@
         new /datum/data/mining_equipment("Power Tool - Experimental Welder",            /obj/item/weldingtool/experimental,                 80),
         new /datum/data/mining_equipment("Power Tool - Upgraded T-Ray Scanner",         /obj/item/t_scanner/upgraded,                       80),
         new /datum/data/mining_equipment("Power Tool - Advanced T-Ray Scanner",         /obj/item/t_scanner/advanced,                       80),
-        new /datum/data/mining_equipment("Power Tool - Long Range Atmosphere scanner",  /obj/item/analyzer/longrange,                       80),
+        new /datum/data/mining_equipment("Power Tool - Long Range Atmosphere scanner",  /obj/item/atmos_analyzer/longrange,                       80),
 		//new /datum/data/mining_equipment("Power Tool - Holofan Projector", 				/obj/item/holosign_creator/combifan,				80),
         new /datum/data/mining_equipment("Superior Welding Goggles",                    /obj/item/clothing/glasses/welding/superior,        50),
 
@@ -140,7 +140,7 @@
 
 /obj/item/tank/vimur/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/vimur, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	src.air_contents.adjust_gas(GAS_ID_VIMUR, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 	return .
 
 /obj/item/engineering_voucher

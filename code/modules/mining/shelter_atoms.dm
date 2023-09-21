@@ -159,6 +159,9 @@
 	can_reinforce = FALSE
 	can_plate = FALSE
 
+/obj/structure/table/survival_pod/update_icon()
+	icon_state = "table" //this table doesn't care about your material nonsense. just ignore the overlays.
+
 /obj/structure/table/survival_pod/update_icon_state()
 	. = ..()
 	icon_state = "table"
@@ -169,9 +172,15 @@
 	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 	return ..()
 
-/obj/structure/table/survival_pod/dismantle(obj/item/tool/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
-	return
+/obj/structure/table/survival_pod/attackby(obj/item/W, mob/user)
+	if(W.is_wrench()) //dismantled with one wrench usage
+		dismantle(W, user)
+		return 1
+	return ..()
+
+/obj/structure/table/survival_pod/Destroy()
+	new /obj/item/stack/material/steel(src.loc) //add an additional steel so they can make a new table with two steel if desired
+	return ..()
 
 //Sleeper
 /obj/machinery/sleeper/survival_pod
@@ -180,13 +189,10 @@
 	icon_state = "sleeper"
 	stasis_level = 100 //Just one setting
 
-
-/obj/machinery/sleeper/survival_pod/update_overlays()
-	. = ..()
-	cut_overlays()
+/obj/machinery/sleeper/survival_pod/update_icon()
+	overlays.Cut()
 	if(occupant)
-		. += "sleeper_cover"
-
+		add_overlay("sleeper_cover")
 
 //Computer
 /obj/item/gps/computer
@@ -227,13 +233,12 @@
 	desc = "A heated storage unit."
 	icon_state = "donkvendor"
 	icon = 'icons/obj/survival_pod_vend.dmi'
-	icon_on = "donkvendor"
-	icon_off = "donkvendor"
 	light_range = 5
 	light_power = 1.2
 	light_color = "#DDFFD3"
 	pixel_y = -4
 	max_n_of_items = 100
+	icon_base = "donkvendor"
 
 /obj/machinery/smartfridge/survival_pod/Initialize(mapload)
 	. = ..()
@@ -243,6 +248,17 @@
 
 /obj/machinery/smartfridge/survival_pod/accept_check(obj/item/O)
 	return isitem(O)
+
+/obj/machinery/smartfridge/survival_pod/update_icon() //survival pod smartfridges don't have the content nonsense, so this is mainly bandaid fix.
+	overlays.Cut()
+	if(inoperable())
+		icon_state = "[icon_base]-off"
+	else
+		icon_state = icon_base
+
+	if(panel_open)
+		icon_state = "[icon_base]_open"
+
 
 /obj/machinery/smartfridge/survival_pod/empty
 	name = "dusty survival pod storage"

@@ -1,5 +1,6 @@
 /// global slot meta cache - all ids must be string!
-GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
+/// initialized by SSearly_init
+GLOBAL_LIST_EMPTY(inventory_slot_meta)
 /// global slot meta cache by type - only works for hardcoded
 GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
@@ -18,8 +19,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		.[M.id || M.type] = M
 		if(!(M.inventory_slot_flags & INV_SLOT_ALLOW_RANDOM_ID))
 			GLOB.inventory_slot_type_cache[M.type] = M
-	tim_sort(., /proc/cmp_inventory_slot_meta_dsc, TRUE)
-	tim_sort(GLOB.inventory_slot_type_cache, /proc/cmp_inventory_slot_meta_dsc, TRUE)
+	tim_sort(., GLOBAL_PROC_REF(cmp_inventory_slot_meta_dsc), TRUE)
+	tim_sort(GLOB.inventory_slot_type_cache, GLOBAL_PROC_REF(cmp_inventory_slot_meta_dsc), TRUE)
 
 /proc/all_inventory_slot_ids()
 	. = list()
@@ -182,7 +183,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			render_default_icons -= bodytype_str
 			continue
 		var/icon/I = render_default_icons[bodytype_str]
-		render_state_cache[bodytype_str] = icon_states(I)
+		render_state_cache[bodytype_str] = fast_icon_states(I)
 		// turn into hash
 		for(var/state in render_state_cache[bodytype_str])
 			render_state_cache[bodytype_str][state] = TRUE
@@ -299,7 +300,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			render_rolldown_icons -= bodytype_str
 			continue
 		var/icon/I = render_rolldown_icons[bodytype_str]
-		render_rolldown_states[bodytype_str] = icon_states(I)
+		render_rolldown_states[bodytype_str] = fast_icon_states(I)
 		// turn into hash
 		for(var/state in render_rolldown_states[bodytype_str])
 			render_rolldown_states[bodytype_str][state] = TRUE
@@ -311,7 +312,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			render_rollsleeve_icons -= bodytype_str
 			continue
 		var/icon/I = render_rollsleeve_icons[bodytype_str]
-		render_rollsleeve_states[bodytype_str] = icon_states(I)
+		render_rollsleeve_states[bodytype_str] = fast_icon_states(I)
 		// turn into hash
 		for(var/state in render_rollsleeve_states[bodytype_str])
 			render_rollsleeve_states[bodytype_str][state] = TRUE

@@ -18,7 +18,9 @@
 	restricted_accessory_slots = (ACCESSORY_SLOT_ARMBAND)
 
 //taurized suit support
+//this is called after whatever calls render_apply_custom, hence the update_worn_icon()
 /obj/item/clothing/suit/equipped(mob/user, slot, flags)
+	. = ..()
 	var/normalize = TRUE
 
 	//Pyramid of doom-y. Improve somehow?
@@ -27,16 +29,15 @@
 		if(isTaurTail(H.tail_style))
 			var/datum/sprite_accessory/tail/taur/taurtail = H.tail_style
 			var/list/resolved = resolve_worn_assets(user, resolve_inventory_slot_meta(/datum/inventory_slot_meta/inventory/suit), FALSE, H.species.get_effective_bodytype(user, src, SLOT_ID_SUIT))
-			if(taurtail.suit_sprites && (resolved[3] in icon_states(taurtail.suit_sprites)))
+			if(taurtail.suit_sprites && (resolved[2] in icon_states(taurtail.suit_sprites)))
 				icon_override = taurtail.suit_sprites
 				normalize = FALSE
 				taurized = TRUE
+				update_worn_icon()
 
 	if(normalize && taurized)
 		icon_override = initial(icon_override)
 		taurized = FALSE
-
-	return ..()
 
 /obj/item/clothing/suit/render_apply_custom(mob/M, mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used, align_y)
 	. = ..()

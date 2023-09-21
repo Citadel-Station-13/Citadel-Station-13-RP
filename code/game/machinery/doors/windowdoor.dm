@@ -66,13 +66,13 @@
 		if(istype(bot))
 			if(density && src.check_access(bot.botcard))
 				open()
-				addtimer(CALLBACK(src, .proc/close), 50)
+				addtimer(CALLBACK(src, PROC_REF(close)), 50)
 		else if(istype(AM, /obj/mecha))
 			var/obj/mecha/mecha = AM
 			if(density)
 				if(mecha.occupant && src.allowed(mecha.occupant))
 					open()
-					addtimer(CALLBACK(src, .proc/close), 50)
+					addtimer(CALLBACK(src, PROC_REF(close)), 50)
 		return
 	if (!( SSticker ))
 		return
@@ -80,7 +80,7 @@
 		return
 	if (density && allowed(AM))
 		open()
-		addtimer(CALLBACK(src, .proc/close), check_access(null)? 50 : 20)
+		addtimer(CALLBACK(src, PROC_REF(close)), check_access(null)? 50 : 20)
 
 /obj/machinery/door/window/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!(get_dir(mover, loc) & turn(dir, 180)))
@@ -92,10 +92,14 @@
 		return ATMOS_PASS_NOT_BLOCKED
 	return density? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_ZONE_BLOCKED
 
-//used in the AStar algorithm to determinate if the turf the door is on is passable
-// todo: astar sucks
-/obj/machinery/door/window/CanAStarPass(obj/item/card/id/ID, to_dir)
-	return ..() || (check_access(ID) && inoperable()) || (dir != to_dir)
+/obj/machinery/door/window/can_pathfinding_enter(atom/movable/actor, dir, datum/pathfinding/search)
+	return (src.dir != dir) || ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !inoperable())
+
+/obj/machinery/door/window/can_pathfinding_exit(atom/movable/actor, dir, datum/pathfinding/search)
+	return (src.dir != dir)  || ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !inoperable())
+
+/obj/machinery/door/window/can_pathfinding_pass(atom/movable/actor, datum/pathfinding/search)
+	return ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !inoperable())
 
 /obj/machinery/door/window/CheckExit(atom/movable/AM, atom/newLoc)
 	if(!(get_dir(src, newLoc) & dir))

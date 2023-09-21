@@ -62,6 +62,8 @@
 	// full heal if requested
 	if(full_heal)
 		rejuvenate(TRUE)
+	// flush playtimes
+	SSplaytime.queue_playtimes(client)
 	// set to conscious
 	set_stat(CONSCIOUS)
 	// immediately update to kick down if needed

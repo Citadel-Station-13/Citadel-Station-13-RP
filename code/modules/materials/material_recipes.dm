@@ -23,6 +23,7 @@
 		recipes += new/datum/stack_recipe("[display_name] bed", /obj/structure/bed, 2, one_per_turf = 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
 		recipes += new/datum/stack_recipe("[display_name] double bed", /obj/structure/bed/double, 4, one_per_turf = 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
 		recipes += new/datum/stack_recipe("[display_name] wall girders", /obj/structure/girder, 2, time = 50, one_per_turf = 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
+		recipes += new/datum/stack_recipe("[display_name] low walls", /obj/structure/wall_frame, 2, time = 25, one_per_turf = 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
 
 	if(hardness>50)
 		recipes += new/datum/stack_recipe("[display_name] fork", /obj/item/material/kitchen/utensil/fork/plastic, 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
@@ -172,7 +173,6 @@
 	recipes += new/datum/stack_recipe("wooden sandals", /obj/item/clothing/shoes/sandal, 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("wood circlet", /obj/item/clothing/head/woodcirclet, 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("clipboard", /obj/item/clipboard, 1, pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("horse post", /obj/structure/bed/chair/post, 5, time = 20, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("wood floor tile", /obj/item/stack/tile/wood, 1, 4, 20, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("wood roofing tile", /obj/item/stack/tile/roofing/wood, 3, 4, 20)
 	recipes += new/datum/stack_recipe("wooden chair", /obj/structure/bed/chair/wood, 3, time = 10, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)

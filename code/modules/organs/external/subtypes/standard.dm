@@ -258,6 +258,7 @@
 	damage_force = 3
 	throw_force = 7
 
+	var/hair_opacity = 255
 	var/can_intake_reagents = TRUE
 	var/eyes_over_markings = FALSE
 	var/eye_icon = "eyes_s"

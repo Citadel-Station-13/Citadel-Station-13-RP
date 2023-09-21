@@ -108,23 +108,23 @@
 	organ_tag = O_FACT
 	parent_organ = BP_TORSO
 
-	var/list/materials = list(MAT_STEEL = 0)
+	var/list/stored_materials = list(MAT_STEEL = 0)
 	var/max_storage = 10000
 	var/processingbuffs = FALSE
 
 /obj/item/organ/internal/nano/refactory/proc/get_stored_material(var/material)
 	if(status & ORGAN_DEAD)
 		return 0
-	return materials[material] || 0
+	return stored_materials[material] || 0
 
 /obj/item/organ/internal/nano/refactory/proc/add_stored_material(var/material,var/amt)
 	if(status & ORGAN_DEAD)
 		return 0
-	var/increase = min(amt,max(max_storage-materials[material],0))
-	if(isnum(materials[material]))
-		materials[material] += increase
+	var/increase = min(amt,max(max_storage-stored_materials[material],0))
+	if(isnum(stored_materials[material]))
+		stored_materials[material] += increase
 	else
-		materials[material] = increase
+		stored_materials[material] = increase
 
 	return increase
 
@@ -132,15 +132,15 @@
 	if(status & ORGAN_DEAD)
 		return 0
 
-	var/available = materials[material]
+	var/available = stored_materials[material]
 
 	//Success
 	if(available >= amt)
 		var/new_amt = available-amt
 		if(new_amt == 0)
-			materials -= material
+			stored_materials -= material
 		else
-			materials[material] = new_amt
+			stored_materials[material] = new_amt
 		return amt
 
 	//Failure

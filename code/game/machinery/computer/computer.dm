@@ -7,6 +7,9 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 300
 	active_power_usage = 300
+	depth_level = 8
+	depth_projected = TRUE
+	climb_allowed = TRUE
 	//blocks_emissive = FALSE
 	var/processing = FALSE
 

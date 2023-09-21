@@ -273,7 +273,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		to_chat(usr, "You can't send PDA messages because you are dead!")
 		return
 	var/list/plist = available_pdas()
-	tim_sort(plist, cmp = /proc/cmp_text_asc)
+	tim_sort(plist, cmp = GLOBAL_PROC_REF(cmp_text_asc))
 	if (plist)
 		var/c = input(usr, "Please select a PDA") as null|anything in plist
 		if (!c) // if the user hasn't selected a PDA file we can't send a message
@@ -436,7 +436,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/Initialize(mapload)
 	. = ..()
 	GLOB.PDAs += src
-	tim_sort(GLOB.PDAs, cmp = /proc/cmp_name_asc)
+	tim_sort(GLOB.PDAs, cmp = GLOBAL_PROC_REF(cmp_name_asc))
 	if(default_cartridge)
 		cartridge = new default_cartridge(src)
 	new /obj/item/pen(src)
@@ -1572,10 +1572,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 		var/pressure = environment.return_pressure()
 		var/total_moles = environment.total_moles
 		if (total_moles)
-			var/o2_level = environment.gas[/datum/gas/oxygen]/total_moles
-			var/n2_level = environment.gas[/datum/gas/nitrogen]/total_moles
-			var/co2_level = environment.gas[/datum/gas/carbon_dioxide]/total_moles
-			var/phoron_level = environment.gas[/datum/gas/phoron]/total_moles
+			var/o2_level = environment.gas[GAS_ID_OXYGEN]/total_moles
+			var/n2_level = environment.gas[GAS_ID_NITROGEN]/total_moles
+			var/co2_level = environment.gas[GAS_ID_CARBON_DIOXIDE]/total_moles
+			var/phoron_level = environment.gas[GAS_ID_PHORON]/total_moles
 			var/unknown_level =  1-(o2_level+n2_level+co2_level+phoron_level)
 
 			// entry is what the element is describing

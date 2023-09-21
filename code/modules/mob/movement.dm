@@ -51,6 +51,8 @@
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
 			return TRUE
+		if((wallflowering != NONE) && (ISDIAGONALDIR(wallflowering) || (wallflowering != turn(get_dir(mover, target), 180))))
+			return TRUE
 	if(istype(mover, /obj/projectile))
 		var/obj/projectile/P = mover
 		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
@@ -63,6 +65,12 @@
 		var/atom/movable/AM = blocker
 		if(AM.pass_flags & ATOM_PASS_BUCKLED)
 			return TRUE
+	return ..()
+
+/mob/CheckExit(atom/movable/AM, atom/newLoc)
+	// clip their ass if they're in us and we're wallflowering
+	if((wallflowering != NONE) && !ISDIAGONALDIR(wallflowering) && (wallflowering == get_dir(AM, newLoc)))
+		return FALSE
 	return ..()
 
 /mob/proc/can_cross_under(atom/movable/mover)
@@ -511,14 +519,15 @@
 
 // Called when a mob successfully moves.
 // Would've been an /atom/movable proc but it caused issues.
-/mob/Moved(atom/oldloc)
+/mob/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	client?.parallax_holder?.Update()
 	for(var/obj/O in contents)
-		O.on_loc_moved(oldloc)
+		O.on_loc_moved(old_loc)
 	reset_pixel_shifting()
 
 // Received from Moved(), useful for items that need to know that their loc just moved.
+// todo: REMOVE, this is bad for performance.
 /obj/proc/on_loc_moved(atom/oldloc)
 	return
 

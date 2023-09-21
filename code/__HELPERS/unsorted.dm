@@ -456,7 +456,7 @@
 /// Orders mobs by type then by name.
 /proc/sortmobs()
 	var/list/moblist = list()
-	var/list/sortmob = sortList(GLOB.mob_list, cmp=/proc/cmp_name_asc)
+	var/list/sortmob = sortList(GLOB.mob_list, cmp= GLOBAL_PROC_REF(cmp_name_asc))
 	for(var/mob/observer/eye/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/observer/blob/M in sortmob)
@@ -836,7 +836,7 @@
 					var/old_underlays = T.underlays.Copy()
 
 					if(platingRequired)
-						if(istype(B, GLOB.using_map.base_turf_by_z[B.z]))
+						if(istype(B, SSmapping.level_baseturf(B.z)))
 							continue moving
 
 					var/turf/X = B
@@ -1080,7 +1080,7 @@
  * TODO - Fix this ancient list of wall items. Preferably make it dynamically populated. ~Leshana
 */
 var/list/WALLITEMS = list(
-	/obj/machinery/power/apc, /obj/machinery/alarm, /obj/item/radio/intercom, /obj/structure/frame,
+	/obj/machinery/power/apc, /obj/machinery/air_alarm, /obj/item/radio/intercom, /obj/structure/frame,
 	/obj/structure/extinguisher_cabinet, /obj/structure/reagent_dispensers/peppertank,
 	/obj/machinery/status_display, /obj/machinery/requests_console, /obj/machinery/light_switch, /obj/structure/sign,
 	/obj/machinery/newscaster, /obj/machinery/firealarm, /obj/structure/noticeboard, /obj/machinery/button/remote,

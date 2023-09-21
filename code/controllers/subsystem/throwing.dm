@@ -365,8 +365,8 @@ SUBSYSTEM_DEF(throwing)
 	thrownthing.throwing = null
 	if(!QDELETED(thrownthing))
 		// move
-		addtimer(CALLBACK(thrownthing, /atom/movable/proc/newtonian_move, init_dir), 1)
-		addtimer(CALLBACK(thrownthing, /atom/movable/proc/fall), 1)
+		addtimer(CALLBACK(thrownthing, TYPE_PROC_REF(/atom/movable, newtonian_move), init_dir), 1)
+		addtimer(CALLBACK(thrownthing, TYPE_PROC_REF(/atom/movable, fall)), 1)
 	if(in_qdel)
 		return
 	qdel(src)

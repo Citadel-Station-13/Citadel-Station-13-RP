@@ -561,7 +561,7 @@
 /area/awaymission/BMPship1)
 "cr" = (
 /obj/structure/closet/crate,
-/obj/item/analyzer,
+/obj/item/atmos_analyzer,
 /obj/item/spacecash/c10,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship1)

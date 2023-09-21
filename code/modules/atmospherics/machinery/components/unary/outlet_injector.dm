@@ -55,8 +55,8 @@
 /obj/machinery/atmospherics/component/unary/outlet_injector/process(delta_time)
 	..()
 
-	last_power_draw = 0
-	last_flow_rate = 0
+	last_power_draw_legacy = 0
+	last_flow_rate_legacy = 0
 
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
@@ -69,7 +69,7 @@
 		power_draw = pump_gas(src, air_contents, environment, transfer_moles, power_rating)
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 
 		if(network)

@@ -141,6 +141,9 @@
 			//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
 			W.pixel_x = clamp(text2num(params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
 			W.pixel_y = clamp(text2num(params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
+		if(istype(W, /obj/item/holder))
+			var/obj/item/holder/holder = W
+			holder.update_state()
 		return
 	return ..()
 

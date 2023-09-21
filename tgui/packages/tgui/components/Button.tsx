@@ -15,13 +15,14 @@ import { Tooltip } from './Tooltip';
 
 const logger = createLogger('Button');
 
-type ButtonProps = BoxProps & {
+export type ButtonProps = BoxProps & {
   fluid?: BooleanLike;
   icon?: string | BooleanLike;
   iconRotation?: number;
   iconSpin?: BooleanLike;
   iconColor?: any;
   iconPosition?: 'right' | 'left';
+  iconProps?: BoxProps;
   color?: string | BooleanLike;
   disabled?: BooleanLike;
   selected?: BooleanLike;
@@ -125,6 +126,7 @@ export const Button = (props: ButtonProps) => {
             color={iconColor}
             rotation={iconRotation}
             spin={iconSpin}
+            {...props.iconProps}
           />
         )}
         {content}
@@ -135,6 +137,7 @@ export const Button = (props: ButtonProps) => {
             color={iconColor}
             rotation={iconRotation}
             spin={iconSpin}
+            {...props.iconProps}
           />
         )}
       </div>

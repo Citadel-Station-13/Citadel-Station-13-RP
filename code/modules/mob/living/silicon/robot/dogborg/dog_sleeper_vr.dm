@@ -514,7 +514,7 @@
 			'sound/vore/digest12.ogg')
 		playsound(hound, churnsound, vol = 100, vary = 1, falloff = 0.1, ignore_walls = TRUE, preference = /datum/client_preference/digestion_noises)
 	//If the timing is right, and there are items to be touched
-	if(air_master.current_cycle%3==1 && length(touchable_items))
+	if(SSair.current_cycle%3==1 && length(touchable_items))
 
 		//Burn all the mobs or add them to the exclusion list
 		var/volume = 0
@@ -598,9 +598,9 @@
 						drain(-50 * digested)
 					if(volume)
 						water.add_charge(volume)
-					if(recycles && T.matter)
-						for(var/material in T.matter)
-							var/total_material = T.matter[material]
+					if(recycles && T.materials)
+						for(var/material in T.materials)
+							var/total_material = T.materials[material]
 							if(istype(T,/obj/item/stack))
 								var/obj/item/stack/stack = T
 								total_material *= stack.get_amount()
@@ -672,7 +672,7 @@
 
 /obj/item/dogborg/sleeper/compactor/decompiler
 	name = "Matter Decompiler"
-	desc = "A mounted matter decompiling unit with fuel processor."
+	desc = "A mounted materials decompiling unit with fuel processor."
 	icon_state = "decompiler"
 	max_item_count = 10
 	decompiler = TRUE

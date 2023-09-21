@@ -13,7 +13,7 @@
 	throw_speed = 4
 	throw_range = 20
 	origin_tech = list(TECH_MAGNET = 1)
-	matter = list(MAT_STEEL = 400)
+	materials = list(MAT_STEEL = 400)
 
 /obj/item/locator/attack_self(mob/user)
 	. = ..()
@@ -105,6 +105,3 @@ Frequency:
 			for(var/mob/M in viewers(1, src))
 				if (M.client)
 					src.attack_self(M)
-	return
-
-

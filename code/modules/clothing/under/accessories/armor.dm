@@ -519,17 +519,28 @@
 	camera_networks = list(NETWORK_CIV_HELMETS)
 
 /obj/item/clothing/accessory/armor/helmetcamera/security
-	name = "\improper Security helmet camera"
+	name = "security helmet camera"
 	desc = "A small camera that attaches to helmets. This one has its feed restricted to Security."
 	icon_state = "helmcam_sec"
 	camera_networks = list(NETWORK_SEC_HELMETS)
 
+/obj/item/clothing/accessory/armor/helmetcamera/security/body
+	name = "security body camera"
+	desc = "A small camera that attaches to most uniforms. This one has its feed restricted to Security."
+	icon_state = "helmcam_body_sec"
+	slot = ACCESSORY_SLOT_DECOR
+
 /obj/item/clothing/accessory/armor/helmetcamera/exploration
-	name = "\improper Exploration helmet camera"
+	name = "exploration helmet camera"
 	desc = "A small camera that attaches to helmets. This one has its feed restricted to Exploration."
 	icon_state = "helmcam_explo"
 	camera_networks = list(NETWORK_EXPLO_HELMETS)
 
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body
+	name = "exploration body camera"
+	desc = "A small camera that attaches to most uniforms. This one has its feed restricted to Exploration."
+	slot = ACCESSORY_SLOT_DECOR
+	icon_state = "helmcam_body_explo"
 
 //Lightweight Limb Plating - These are incompatible with plate carriers.
 

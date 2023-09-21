@@ -2,18 +2,21 @@
 	name = "grille"
 	desc = "A flimsy lattice of metal rods, with screws to secure it to the floor."
 	icon = 'icons/obj/structures/grille.dmi'
-	icon_state = "grille"
+	icon_state = "grille-0"
+	base_icon_state = "grille"
 	density = TRUE
 	anchored = TRUE
 	pass_flags_self = ATOM_PASS_GRILLE
 	pressure_resistance = 5*ONE_ATMOSPHERE
 	rad_flags = RAD_BLOCK_CONTENTS
-	layer = TABLE_LAYER
+	layer = GRILLE_LAYER
 	explosion_resistance = 1
+	color = COLOR_GRAY
 
-	// smoothing_flags = SMOOTH_BITMASK
+	plane = OBJ_PLANE
+	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_GRILLE)
-	canSmoothWith = (SMOOTH_GROUP_GRILLE)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_GRILLE + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS )
 
 	var/health = 10
 	var/destroyed = 0
@@ -21,12 +24,6 @@
 
 /obj/structure/grille/legacy_ex_act(severity)
 	qdel(src)
-
-/obj/structure/grille/update_icon()
-	if(destroyed)
-		icon_state = "[initial(icon_state)]-b"
-	else
-		icon_state = initial(icon_state)
 
 /obj/structure/grille/Bumped(atom/user)
 	if(ismob(user)) shock(user, 70)
@@ -137,7 +134,7 @@
 			if (ST.use(2))
 				var/obj/structure/window/WD = new wtype(loc, 1)
 				to_chat(user, "<span class='notice'>You place the [WD] on [src].</span>")
-				WD.update_icon()
+				WD.update_appearance()
 		return
 //window placing end
 
@@ -153,7 +150,6 @@
 	healthcheck()
 	..()
 	return
-
 
 /obj/structure/grille/proc/healthcheck()
 	if(health <= 0)
@@ -209,6 +205,21 @@
 	health -= damage
 	spawn(1) healthcheck()
 	return 1
+
+/obj/structure/grille/proc/is_on_frame()
+	if(locate(/obj/structure/wall_frame) in loc)
+		return TRUE
+
+/proc/place_grille(mob/user, loc, obj/item/stack/rods/ST)
+	if(ST.in_use)
+		return
+	if(ST.get_amount() < 2)
+		to_chat(user, SPAN_WARNING("You need at least two rods to do this."))
+		return
+	user.visible_message(SPAN_NOTICE("\The [user] begins assembling a grille."))
+	if(do_after(user, 1 SECOND, ST) && ST.use(2))
+		var/obj/structure/grille/F = new(loc)
+		user.visible_message(SPAN_NOTICE("\The [user] finishes building \a [F]."))
 
 // Used in mapping to avoid
 /obj/structure/grille/broken

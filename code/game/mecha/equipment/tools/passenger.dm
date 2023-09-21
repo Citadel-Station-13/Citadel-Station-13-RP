@@ -75,7 +75,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/attach()
 	..()
 	if (chassis)
-		add_obj_verb(chassis, /obj/mecha/proc/move_inside_passenger)
+		add_obj_verb(chassis, TYPE_PROC_REF(/obj/mecha, move_inside_passenger))
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/detach()
 	if(occupant)

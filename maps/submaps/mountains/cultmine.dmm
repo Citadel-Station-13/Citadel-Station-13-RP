@@ -393,7 +393,7 @@
 /area/submap/cave/cultmine)
 "bA" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	id_tag = null;
 	name = "Cafe";
 	req_access = list()
@@ -712,7 +712,7 @@
 /area/submap/cave/cultmine)
 "cM" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	id_tag = null;
 	name = "Medbay";
 	req_access = list()

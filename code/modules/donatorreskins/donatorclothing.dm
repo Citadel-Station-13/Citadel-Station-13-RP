@@ -273,7 +273,7 @@
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 
-/obj/item/clothing/suit/storage/hooded/tajaran/cloak/donatornoahcloak //...yeah. I need the hood code to use it, so it's odd.
+/obj/item/clothing/suit/storage/hooded/donatornoahcloak //...yeah. I need the hood code to use it, so it's odd.
 	name = "refurbished Adhomian cloak"
 	desc = "A snow-white Adhomian cloak bearing hand-sewn edges and additional fur built into the inside for warmth. Bears an unusual symbol, a four-pointed star with a small center sphere."
 	icon_state = "noah_cloak"
@@ -281,11 +281,11 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = TN60C
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	hoodtype = /obj/item/clothing/head/hood/tajaran/cloak/donatornoahcloak
+	hoodtype = /obj/item/clothing/head/hood/donatornoahcloak
 	icon = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 
-/obj/item/clothing/head/hood/tajaran/cloak/donatornoahcloak
+/obj/item/clothing/head/hood/donatornoahcloak
 	name = "refurbished Adhomian hood"
 	desc = "A snow-white hood to go with a similar Adhomian cloak."
 	icon_state = "noah_cloakhood"

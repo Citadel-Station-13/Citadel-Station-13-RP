@@ -358,6 +358,11 @@
 	var/datum/nifsoft/soulcatcher/soulcatcher
 	var/identifying_gender
 
+/mob/living/carbon/brain/caught_soul/Login()
+	..()
+	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
+	identifying_gender = client.prefs.identifying_gender
+	reset_perspective((nif?.human) || nif)
 
 /mob/living/carbon/brain/caught_soul/Destroy()
 	if(soulcatcher)
@@ -522,7 +527,7 @@
 	real_name = brainmob.real_name	//And the OTHER name
 
 	forceMove(get_turf(parent_human))
-	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, .proc/human_moved)
+	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, PROC_REF(human_moved))
 
 	//Time to play dressup
 	if(brainmob.client.prefs)
