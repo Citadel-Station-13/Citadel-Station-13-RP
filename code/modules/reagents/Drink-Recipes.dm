@@ -642,15 +642,15 @@
 	name = "Banana Honk"
 	id = "bananahonk"
 	result = "bananahonk"
-	required_reagents = list("banana" = 1, "cream" = 1, "sugar" = 1)
-	result_amount = 3
+	required_reagents = list("banana" = 1, "cream" = 1, "sugar" = 1, "rum" = 1)
+	result_amount = 4
 
 /datum/chemical_reaction/drinks/silencer
 	name = "Silencer"
 	id = "silencer"
 	result = "silencer"
-	required_reagents = list("nothing" = 1, "cream" = 1, "sugar" = 1)
-	result_amount = 3
+	required_reagents = list("nothing" = 1, "cream" = 1, "sugar" = 1, "rum" = 1)
+	result_amount = 4
 
 /datum/chemical_reaction/drinks/driestmartini
 	name = "Driest Martini"
@@ -933,7 +933,7 @@
 	name = "Debugger"
 	id = "debugger"
 	result = "debugger"
-	required_reagents = list("fuel" = 1, "sugar" = 2, "cornoil" = 2)
+	required_reagents = list("fuel" = 1, "sugar" = 2, "beer" = 2)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/spacersbrew

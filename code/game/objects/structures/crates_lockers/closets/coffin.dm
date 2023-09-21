@@ -22,7 +22,7 @@
 	desc = "Dirt."
 	icon = 'icons/obj/closets/grave.dmi'
 	closet_appearance = null
-	icon_state = "closed"
+	icon_state = "open"
 	icon_closed = "closed"
 	icon_opened = "open"
 	seal_tool = null
