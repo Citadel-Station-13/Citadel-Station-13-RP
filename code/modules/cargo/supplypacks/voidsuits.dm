@@ -426,7 +426,7 @@
 	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/voidsuits/odst_eng
-	name = "Hephaestheus Icarus Engineer Suits
+	name = "Hephaestheus Icarus Engineer Suits"
 	contains = list(
 			/obj/item/clothing/suit/space/void/odst_eng = 2,
 			/obj/item/clothing/head/helmet/space/void/odst_eng = 2,
