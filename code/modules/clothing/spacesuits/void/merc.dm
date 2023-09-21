@@ -96,132 +96,114 @@
 
 /obj/item/clothing/head/helmet/space/void/odst
 	name = "hephaestheus icarus helmet"
-	desc = "An advanced helmet designed for work in special operations. Part of the Icarus line."
+	desc = "One of the few combat-grade helmets avalible in the frontier, and the poster-child of Hephaestheus Industries."
 	icon_state = "odst"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_helm", SLOT_ID_LEFT_HAND = "syndie_helm")
 	armor_type = /datum/armor/station/secsuit
 	siemens_coefficient = 0.6
 	camera_networks = list(NETWORK_EXPLO_HELMETS)
-	var/list/species_restricted = null 
+	species_restricted = null
 
 /obj/item/clothing/suit/space/void/odst
 	icon_state = "odst"
 	name = "hephaestheus icarus suit"
-	desc = "An advanced suit that protects against injuries during special operations. Flagship combat suit made by the Hephaestheus Industries."
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
+	desc = "One of the few combat-grade suits avalible in the frontier, and the poster-child of Hephaestheus Industries. Comes equipped with a wrist-bound oxygen timer."
 	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/station/secsuit
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
-	var/list/species_restricted = null 
+	species_restricted = null
 
 /obj/item/clothing/head/helmet/space/void/odst_med
-	name = "hephaestheus icarus squad medic helmet"
-	desc = "An advanced helmet designed for work in special operations. Part of the Icarus line, this one is designed for use by squad medics."
+	name = "hephaestheus icarus medic helmet"
+	desc = "Part of the Icarus Medic suit."
 	icon_state = "odst_mil"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_helm", SLOT_ID_LEFT_HAND = "syndie_helm")
 	armor_type = /datum/armor/merc/space
 	siemens_coefficient = 0.6
 	camera_networks = list(NETWORK_EXPLO_HELMETS)
-	var/list/species_restricted = null 
+	species_restricted = null
 
 /obj/item/clothing/suit/space/void/odst_med
 	icon_state = "odst_corps"
-	name = "odst_corps"
-	desc = "An advanced suit that protects against injuries during special operations. Flagship combat suit made by the Hephaestheus Industries, this one is designed for use by squad medics."
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
+	name = "hephaestheus icarus medic suit"
+	desc = "A standard Icarus line suit that has been repourposed to protect from heavier biohazards."
 	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/medical/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
-	var/list/species_restricted = null 
+	species_restricted = null
 
 /obj/item/clothing/head/helmet/space/void/odst_eng
-	name = "blood-red voidsuit helmet"
-	desc = "An advanced helmet designed for work in special operations. Part of the Icarus line, this one is modified to be used by civilian Engineers."
+	name = "hephaestheus icarus engineer helmet"
+	desc = "Part of the Icarus Engineer suit."
 	icon_state = "odst_orange"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_helm", SLOT_ID_LEFT_HAND = "syndie_helm")
 	armor_type = /datum/armor/engineering/space
 	siemens_coefficient = 0.6
 	camera_networks = list(NETWORK_EXPLO_HELMETS)
-	var/list/species_restricted = null 
+	species_restricted = null
 
 /obj/item/clothing/suit/space/void/odst_eng
 	icon_state = "odst_orange"
-	name = "blood-red voidsuit"
-	desc = "An advanced suit that protects against injuries during special operations. Flagship combat suit made by the Hephaestheus Industries, this one is modified to be used by civilian Engineers."
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
+	name = "hephaestheus icarus engineer suit"
+	desc = "Favoured suit of deep-space engineers, comfortable and comparable to suits avalible to NanoTrasen Engineers. Comes equipped with a wrist-bound oxygen timer."
 	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/engineering/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
-	var/list/species_restricted = null 
+	species_restricted = null
 
 /obj/item/clothing/head/helmet/space/void/odst_exp
-	name = "blood-red voidsuit helmet"
-	desc = "An advanced helmet designed for work in special operations. Part of the Icarus line, this one is designed to withstand dangers present during exploration missions."
+	name = "hephaestheus icarus frontier helmet"
+	desc = "Part of the Icarus Frontier suit."
 	icon_state = "odst_purple"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_helm", SLOT_ID_LEFT_HAND = "syndie_helm")
 	armor_type = /datum/armor/exploration/space
 	siemens_coefficient = 0.6
 	camera_networks = list(NETWORK_EXPLO_HELMETS)
-	var/list/species_restricted = null 
+	species_restricted = null
 
 /obj/item/clothing/suit/space/void/odst_exp
 	icon_state = "odst_purple"
-	name = "blood-red voidsuit"
-	desc = "An advanced suit that protects against injuries during special operations. Flagship combat suit made by the Hephaestheus Industries, this one is designed to withstand dangers present during exploration missions."
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
+	name = "hephaestheus icarus suit"
+	desc = "Cheaper version of the main Icarus line, often marketed to Frontier settlements. Perfect for Expeditions."
 	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/exploration/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
-	var/list/species_restricted = null 
+	species_restricted = null
 
 // Admin spawn only, Necropolis Industries event gear
 
 /obj/item/clothing/head/helmet/space/void/odst_necro
-	name = "necropolis a-34 helmet"
-	desc = "An advanced helmet designed for work in special operations. Result of cooperation between Necropolis and Hephaestheus Industries. Equipped with sensors capable of sending information to Necropolis-brand implants that the user has."
+	name = "necropolis operations helmet"
+	desc = "Part of the Operations suit. Equipped with IFF sensors that send information directly to the user's implants."
 	icon_state = "odst_red"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_helm", SLOT_ID_LEFT_HAND = "syndie_helm")
 	armor_type = /datum/armor/merc/space
 	siemens_coefficient = 0.6
-	camera_networks =list(NETWORK_MERCENARY)
-	var/list/species_restricted = null 
+	camera_networks = list(NETWORK_MERCENARY)
+	species_restricted = null
 
 /obj/item/clothing/suit/space/void/odst_necro
 	icon_state = "odst_red"
-	name = "necropolis a-34 suit"
-	desc = "An advanced suit that protects against injuries during special operations. Result of cooperation between Necropolis and Hephaestheus Industries."
+	name = "necropolis operations suit"
+	desc = "The main suit used by Necropolis Industries security division, a heavily modified Hephaestheus Icarus suit emblazoned with the Necropolis logo on the left shoulder.. Equipped with direct connections to the user's implants and prosthetics, making it function as a second skin."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
-	slowdown = 1
+	slowdown = 0.4
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/merc/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
-	var/list/species_restricted = null 
-
-/obj/item/clothing/head/helmet/space/void/odst_necromed
-	name = "necropolis a-35 helmet"
-	desc = "An advanced helmet designed for work in special operations. Result of cooperation between Necropolis and Hephaestheus Industries. Equipped with sensors capable of sending information to Necropolis-brand implants that the user has."
-	icon_state = "odst_red"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_helm", SLOT_ID_LEFT_HAND = "syndie_helm")
-	armor_type = /datum/armor/merc/space
-	siemens_coefficient = 0.6
-	camera_networks =list(NETWORK_MERCENARY)
-	var/list/species_restricted = null 
+	species_restricted = null
 
 /obj/item/clothing/suit/space/void/odst_necromed
 	icon_state = "odst_red_mil"
-	name = "necropolis a-35 suit"
-	desc = "An advanced suit that protects against injuries during special operations. Result of cooperation between Necropolis and Hephaestheus Industries."
+	name = "necropolis field medic suit"
+	desc = "The main suit used by Necropolis Industries security division, a heavily modified Hephaestheus Icarus suit emblazoned with the Necropolis logo on the left shoulder and a blue cross on the right arm. Equipped with direct connections to the user's implants and prosthetics, making it function as a second skin."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
-	slowdown = 1
+	slowdown = 0.4
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/merc/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
