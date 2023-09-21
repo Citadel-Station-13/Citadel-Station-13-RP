@@ -189,7 +189,7 @@
 /obj/item/clothing/suit/space/void/odst_necro
 	icon_state = "odst_red"
 	name = "necropolis operations suit"
-	desc = "The main suit used by Necropolis Industries security division, a heavily modified Hephaestheus Icarus suit emblazoned with the Necropolis logo on the left shoulder.. Equipped with direct connections to the user's implants and prosthetics, making it function as a second skin."
+	desc = "The main suit used by Necropolis Industries security division, a heavily modified Hephaestheus Icarus suit emblazoned with the Necropolis logo on the left shoulder. Equipped with direct connections to the user's implants and prosthetics, making it function as a second skin."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
 	slowdown = 0.4
 	w_class = ITEMSIZE_NORMAL
