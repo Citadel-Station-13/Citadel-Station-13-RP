@@ -118,7 +118,7 @@
 	name = "hephaestheus icarus medic helmet"
 	desc = "Part of the Icarus Medic suit."
 	icon_state = "odst_mil"
-	armor_type = /datum/armor/medical/space
+	armor_type = /datum/armor/exploration/space
 	siemens_coefficient = 0.6
 	camera_networks = list(NETWORK_EXPLO_HELMETS)
 	species_restricted = null
@@ -129,7 +129,7 @@
 	desc = "A standard Icarus line suit that has been repourposed to protect from heavier biohazards."
 	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
-	armor_type = /datum/armor/medical/space
+	armor_type = /datum/armor/exploration/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 	species_restricted = null
