@@ -114,6 +114,9 @@ Drinks Data
 /datum/reagent/drink/milk
 	glass_icon_state = "glass_white"
 
+/datum/reagent/drink/milk/pilk
+	glass_icon_state = "glass_lightbrown"
+
 /datum/reagent/drink/milk/chocolate
 	glass_icon_state = "glass_brown"
 

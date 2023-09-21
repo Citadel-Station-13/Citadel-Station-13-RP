@@ -1529,7 +1529,7 @@
 			M.drowsyness = max(M.drowsyness, 60)
 	if(contains_lactose == TRUE && alien == IS_NARAMADI)
 		if(prob(5))
-			to_chat("You feel nauseous!")
+			to_chat(M, SPAN_WARNING("You feel nauseous!"))
 			return
 		if(prob(20))
 			var/mob/living/L = M
@@ -2245,14 +2245,13 @@
 	id = "pilk"
 	description = "Milk and Space Cola mixed together. What?"
 	taste_description = "creamed up cola"
-	reagent_state = REAGENT_LIQUID
-	color = "#bd9f81" //usually most pilk mixtures have the milk presence dominate.
+	color = "#c9ab84" //usually most pilk mixtures have the milk presence dominate.
 	adj_drowsy = -3 //space cola effects
 	adj_temp = -3
 
 	glass_name = "Pilk"
-	glass_desc = "Milk and Space Cola mixed together. Oh dear. While the soda ingredient isn't exactly the one based on the original \
-	old Earth brand, the \"Pilk\" name has stuck all these centuries later. It's a drink mixture that many still get upset about to this day."
+	glass_desc = "Milk and Space Cola mixed together. <i>Burenyuu~</i>. While the soda ingredient isn't exactly the one based on the original \
+	old Terra brand, the \"Pilk\" name has stuck all of these centuries later. It's a drink mixture that many still get upset about to this day."
 
 /* Alcohol */
 
