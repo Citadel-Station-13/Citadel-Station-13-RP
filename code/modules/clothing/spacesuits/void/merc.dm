@@ -118,7 +118,7 @@
 	name = "hephaestheus icarus medic helmet"
 	desc = "Part of the Icarus Medic suit."
 	icon_state = "odst_mil"
-	armor_type = /datum/armor/merc/space
+	armor_type = /datum/armor/medical/space
 	siemens_coefficient = 0.6
 	camera_networks = list(NETWORK_EXPLO_HELMETS)
 	species_restricted = null
