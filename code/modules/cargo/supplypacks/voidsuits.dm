@@ -399,7 +399,7 @@
 //ODST Suits
 
 /datum/supply_pack/voidsuits/odst
-	name = "Hephaestheus Icarus Combat Suits"
+	name = "Hephaestus Icarus Combat Suits"
 	contains = list(
 			/obj/item/clothing/suit/space/void/odst = 2,
 			/obj/item/clothing/head/helmet/space/void/odst = 2,
@@ -412,7 +412,7 @@
 	container_name = "Icarus Combat Suit crate"
 
 /datum/supply_pack/voidsuits/odst_med
-	name = "Hephaestheus Icarus Medic Suits"
+	name = "Hephaestus Icarus Medic Suits"
 	contains = list(
 			/obj/item/clothing/suit/space/void/odst_med = 2,
 			/obj/item/clothing/head/helmet/space/void/odst_med = 2,
@@ -426,7 +426,7 @@
 	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/voidsuits/odst_eng
-	name = "Hephaestheus Icarus Engineer Suits"
+	name = "Hephaestus Icarus Engineer Suits"
 	contains = list(
 			/obj/item/clothing/suit/space/void/odst_eng = 2,
 			/obj/item/clothing/head/helmet/space/void/odst_eng = 2,
@@ -440,7 +440,7 @@
 	access = ACCESS_ENGINEERING_ENGINE
 
 /datum/supply_pack/voidsuits/odst_exp
-	name = "Hephaestheus Icarus Frontier Suits"
+	name = "Hephaestus Icarus Frontier Suits"
 	contains = list(
 			/obj/item/clothing/suit/space/void/odst_exp = 2,
 			/obj/item/clothing/head/helmet/space/void/odst_exp = 2,
