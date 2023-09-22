@@ -96,6 +96,7 @@
 
 /obj/structure/sculpting_block/examine(mob/user, dist)
 	. = ..()
+	. += SPAN_NOTICE("It is made out of <b>[isnull(material)? "nothing?!": "[material.display_name]."]</b>")
 	. += SPAN_NOTICE("Use a <b>wrench</b> to un/fasten the anchoring bolts.")
 	. += SPAN_NOTICE("Use a <b>welder</b> to slice it apart.")
 
@@ -112,9 +113,8 @@
 	if(sculpting_built)
 		var/image/render = new
 		render.icon = sculpting_built
-		render.appearance_flags = KEEP_APART
+		render.appearance_flags = KEEP_APART | RESET_COLOR
 		add_overlay(render)
-	color = material?.icon_colour
 	. = ..()
 	var/image/stand = image(initial(icon), icon_state = sculpture_base_state)
 	stand.appearance_flags = KEEP_APART | RESET_COLOR
@@ -359,6 +359,9 @@
 			// we didn't even reach the buffer yet
 		else
 			sculpting_buffer = crop_buffer(sculpting_buffer, 1, sculpting_line_end + 1, model_width, sculpting_line_start)
+			//! TODO: this shouldn't be needed, but somehow is because of shennanigans. Figure out why and get rid of.
+			preprocess_model_buffer(sculpting_buffer)
+			//! End
 			blend_slates(sculpting_buffer, model_x_align + 1 + model_x_realigned, sculpting_line_end + 1)
 		assemble_built()
 		update_appearance()
@@ -435,11 +438,14 @@
  * @return list(icon, x, y) where x/y are centering offsets
  */
 /obj/structure/sculpting_block/proc/get_model_tuple(atom/movable/to_clone, material_color)
-	. = get_compound_icon_with_offsets(to_clone, CALLBACK(PROC_REF(preprocess_model_slice)))
+	. = get_compound_icon_with_offsets(to_clone, CALLBACK(src, PROC_REF(preprocess_model_slice)))
 	if(isnull(.))
 		return
 
 /obj/structure/sculpting_block/proc/preprocess_model_slice(icon/slice)
+	slice.ColorTone(material.icon_colour)
+
+/obj/structure/sculpting_block/proc/preprocess_model_buffer(icon/slice)
 	slice.ColorTone(material.icon_colour)
 
 /**
