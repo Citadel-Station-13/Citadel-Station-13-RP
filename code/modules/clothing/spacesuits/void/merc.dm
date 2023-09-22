@@ -95,7 +95,7 @@
 //Four below avalible through cargo
 
 /obj/item/clothing/head/helmet/space/void/odst
-	name = "hephaestheus icarus helmet"
+	name = "hephaestus icarus helmet"
 	desc = "One of the few combat-grade helmets avalible in the frontier, and the poster-child of Hephaestheus Industries."
 	icon_state = "odst"
 	armor_type = /datum/armor/station/secsuit
@@ -105,8 +105,8 @@
 
 /obj/item/clothing/suit/space/void/odst
 	icon_state = "odst"
-	name = "hephaestheus icarus suit"
-	desc = "One of the few combat-grade suits avalible in the frontier, and the poster-child of Hephaestheus Industries. Comes equipped with a wrist-bound oxygen timer."
+	name = "hephaestus icarus suit"
+	desc = "One of the few combat-grade suits avalible in the frontier, and the poster-child of Hephaestus Industries. Comes equipped with a wrist-bound oxygen timer."
 	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/station/secsuit
@@ -115,7 +115,7 @@
 	species_restricted = null
 
 /obj/item/clothing/head/helmet/space/void/odst_med
-	name = "hephaestheus icarus medic helmet"
+	name = "hephaestus icarus medic helmet"
 	desc = "Part of the Icarus Medic suit."
 	icon_state = "odst_mil"
 	armor_type = /datum/armor/exploration/space
@@ -125,7 +125,7 @@
 
 /obj/item/clothing/suit/space/void/odst_med
 	icon_state = "odst_corps"
-	name = "hephaestheus icarus medic suit"
+	name = "hephaestus icarus medic suit"
 	desc = "A standard Icarus line suit that has been repourposed to protect from heavier biohazards."
 	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
@@ -135,7 +135,7 @@
 	species_restricted = null
 
 /obj/item/clothing/head/helmet/space/void/odst_eng
-	name = "hephaestheus icarus engineer helmet"
+	name = "hephaestus icarus engineer helmet"
 	desc = "Part of the Icarus Engineer suit."
 	icon_state = "odst_orange"
 	armor_type = /datum/armor/engineering/space
@@ -145,7 +145,7 @@
 
 /obj/item/clothing/suit/space/void/odst_eng
 	icon_state = "odst_orange"
-	name = "hephaestheus icarus engineer suit"
+	name = "hephaestus icarus engineer suit"
 	desc = "Favoured suit of deep-space engineers, comfortable and comparable to suits avalible to NanoTrasen Engineers. Comes equipped with a wrist-bound oxygen timer."
 	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
@@ -155,7 +155,7 @@
 	species_restricted = null
 
 /obj/item/clothing/head/helmet/space/void/odst_exp
-	name = "hephaestheus icarus frontier helmet"
+	name = "hephaestus icarus frontier helmet"
 	desc = "Part of the Icarus Frontier suit."
 	icon_state = "odst_purple"
 	armor_type = /datum/armor/exploration/space
@@ -165,7 +165,7 @@
 
 /obj/item/clothing/suit/space/void/odst_exp
 	icon_state = "odst_purple"
-	name = "hephaestheus icarus frontier suit"
+	name = "hephaestus icarus frontier suit"
 	desc = "Cheaper version of the main Icarus line, often marketed to Frontier settlements. Perfect for Expeditions."
 	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
@@ -189,7 +189,7 @@
 /obj/item/clothing/suit/space/void/odst_necro
 	icon_state = "odst_red"
 	name = "necropolis operations suit"
-	desc = "The main suit used by Necropolis Industries security division, a heavily modified Hephaestheus Icarus suit emblazoned with the Necropolis logo on the left shoulder. Equipped with direct connections to the user's implants and prosthetics, making it function as a second skin."
+	desc = "The main suit used by Necropolis Industries security division, a heavily modified Hephaestus Icarus suit emblazoned with the Necropolis logo on the left shoulder. Equipped with direct connections to the user's implants and prosthetics, making it function as a second skin."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
 	slowdown = 0.4
 	w_class = ITEMSIZE_NORMAL
