@@ -8683,7 +8683,7 @@
 "eFC" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled,
 /area/security/checkpoint)
 "eFW" = (
@@ -23660,7 +23660,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "mxU" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/outpost/testing_lab)
 "myk" = (

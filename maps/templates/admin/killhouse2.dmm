@@ -2781,7 +2781,7 @@
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two)
 "XA" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/effect/floor_decal/corner/black/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two)
