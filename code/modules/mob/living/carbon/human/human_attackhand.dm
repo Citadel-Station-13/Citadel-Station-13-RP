@@ -67,8 +67,6 @@
 
 	switch(L.a_intent)
 		if(INTENT_HELP)
-			if (istype(H) && attempt_to_scoop(H))
-				return 0;
 			if(iscarbon(L) && attempt_cpr_interaction(L))
 				return TRUE
 			else if(!(L == src && apply_pressure(L, L.zone_sel.selecting)))
@@ -298,6 +296,16 @@
 
 /mob/living/carbon/human/proc/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	return
+
+//can move this to a different .dm if needed
+/mob/living/carbon/human/AltClick(mob/user)
+	. = ..()
+	if(!Adjacent(user) || !user.canClick() || user.incapacitated() || user.stat)
+		return
+	var/mob/living/carbon/human/H = user
+	if (istype(H) && attempt_to_scoop(H))
+		return
+	//if someone else ever decides altclicking people should do other things, bare in mind it currently continues if the person fails to be scooped
 
 /mob/living/carbon/human/attack_generic(var/mob/user, var/damage, var/attack_message, var/armor_type = "melee", var/armor_pen = 0, var/a_sharp = 0, var/a_edge = 0)
 

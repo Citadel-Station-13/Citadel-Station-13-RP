@@ -22667,7 +22667,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
 "Tg" = (
-/obj/structure/closet/emcloset,
+/obj/machinery/vending/weeb,
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "Th" = (
@@ -24090,6 +24090,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/structure/closet/emcloset,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "VW" = (

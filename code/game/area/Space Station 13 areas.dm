@@ -1085,6 +1085,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/substation/outpost
 	name = "Research Outpost Substation"
 
+/area/maintenance/substation/flight_deck
+	name = "Flight Deck Outpost Substation"
+
 /area/maintenance/substation/medsec
 	name = "\improper MedSec Substation"
 
@@ -1301,6 +1304,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "bridge"
 	music = null
 	sound_env = MEDIUM_SOFTFLOOR
+
+/area/bridge/hop_office
+	name = "Head Of Personal Office"
 
 /area/triumph/station/public_meeting_room
 	name = "Public Meeting Room"

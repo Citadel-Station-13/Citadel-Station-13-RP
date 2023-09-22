@@ -14593,6 +14593,9 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
+/obj/machinery/vending/weeb{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/station/stairs_one)
 "Xr" = (

@@ -851,6 +851,9 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "aDJ" = (
@@ -13380,8 +13383,8 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
+/obj/machinery/vending/weeb{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)

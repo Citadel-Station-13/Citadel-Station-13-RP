@@ -6,9 +6,10 @@
 
 	/// allow multitool "hijacking" even if this is controlled by something else
 	/// set to non-null for delay.
+	//  todo: implement multitool access
 	var/default_multitool_hijack = null
 	/// allow access normally
-	var/default_access_interface = FALSE
+	var/default_access_interface = TRUE
 	/// tgui interface
 	var/tgui_interface
 	/// ui flags
@@ -94,8 +95,12 @@
 /obj/machinery/portable_atmospherics/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["flow"] = flow_current
+	.["flowSetting"] = flow_setting
 	.["on"] = on
 	.["tank"] = holding?.tgui_tank_data()
+	.["pressure"] = air_contents.return_pressure()
+	.["temperature"] = air_contents.temperature
+	.["portConnected"] = !!connected_port
 
 /obj/machinery/portable_atmospherics/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()

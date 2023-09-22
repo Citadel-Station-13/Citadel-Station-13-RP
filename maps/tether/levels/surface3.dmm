@@ -20756,9 +20756,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "mdi" = (
-/obj/machinery/vending/cola{
-	dir = 4
-	},
 /obj/effect/floor_decal/corner/lightgrey{
 	dir = 10
 	},
@@ -20774,6 +20771,9 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
+	},
+/obj/machinery/vending/cola{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/surfacebase/surface_three_hall)
@@ -36530,6 +36530,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lobby)
+"uQi" = (
+/obj/machinery/vending/weeb{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/barbackmaintenance)
 "uQl" = (
 /obj/structure/lattice,
 /turf/simulated/open/virgo3b,
@@ -73025,7 +73031,7 @@ byv
 byv
 iIV
 uaC
-jNp
+uQi
 iEZ
 yja
 yja

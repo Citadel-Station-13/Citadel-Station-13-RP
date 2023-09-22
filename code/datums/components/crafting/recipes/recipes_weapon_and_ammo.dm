@@ -173,7 +173,7 @@
 
 /datum/crafting_recipe/dataknife
 	name = "Data Knife"
-	result = /obj/item/material/knife/tacknife/dataknife
+	result = /obj/item/gps/dataknife
 	tools = list(TOOL_SCREWDRIVER, TOOL_WELDER)
 	reqs = list(/obj/item/stack/cable_coil = 10,
 				/obj/item/multitool = 1,

@@ -114,7 +114,7 @@
 	reload_max = 6
 	reload_time = 15
 
-	projectiletype = /obj/projectile/bullet/rifle/a545
+	projectiletype = /obj/projectile/bullet/rifle/a556
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
 
 
@@ -191,7 +191,7 @@
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/Logout()
 	. = ..()
-	DelComponent(/datum/component/riding_filter/mob/animal, exact = TRUE)
+	DelComponent(/datum/component/riding_filter, /datum/component/riding_filter/mob/animal)
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return

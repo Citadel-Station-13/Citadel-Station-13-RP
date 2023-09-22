@@ -1348,7 +1348,7 @@
 /area/rnd/outpost/underground)
 "mi" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/beige/border,

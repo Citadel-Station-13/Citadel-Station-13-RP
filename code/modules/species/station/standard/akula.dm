@@ -31,7 +31,7 @@
 	max_additional_languages = 3
 	name_language   = LANGUAGE_ID_SKRELL
 	intrinsic_languages = LANGUAGE_ID_SKRELL
-	assisted_langs  = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+	assisted_langs  = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_PROMETHEAN)
 
 	// darksight  = 8
 	// slowdown   = -0.5

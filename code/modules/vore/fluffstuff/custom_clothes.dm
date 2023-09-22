@@ -554,7 +554,7 @@
 	desc = "Squeak! A shiny outfit for cleaning, made by people with dirty minds."
 
 	icon = 'icons/clothing/uniform/costume/maid.dmi'
-	icon_state = "latex"
+	icon_state = "maid"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO

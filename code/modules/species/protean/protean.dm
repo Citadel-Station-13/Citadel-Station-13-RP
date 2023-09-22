@@ -112,6 +112,7 @@
 		/mob/living/proc/glow_color,
 		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/rig_transform,
+		/mob/living/carbon/human/proc/rig_self,
 		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
 
 	species_statpanel = TRUE
@@ -338,6 +339,27 @@
 			prig.forceMove(get_turf(src))
 			src.forceMove(prig)
 			return
+
+/mob/living/carbon/human/proc/rig_self()
+	set name = "Deploy Nanosuit To Self"
+	set desc = "Deploy a light nanocluster RIGsuit around yourself."
+	set category = "Abilities"
+
+	if(istype(back, /obj/item/hardsuit/protean))
+		var/obj/item/hardsuit/protean/suit = back
+		if(suit.myprotean == src)			
+			suit.reset()
+			suit.forceMove(src)
+			to_chat(src, SPAN_WARNING("You retract your nanosuit."))
+			return
+
+	for(var/obj/item/hardsuit/protean/suit in contents)
+		force_equip_to_slot(suit, /datum/inventory_slot_meta/inventory/back)
+		to_chat(src, SPAN_WARNING("You deploy your nanosuit."))
+		suit.toggle_seals(src, TRUE)
+		return
+
+	to_chat(src, SPAN_WARNING("You don't have a nanocluster RIG. Somehow."))
 
 #undef DAM_SCALE_FACTOR
 #undef METAL_PER_TICK

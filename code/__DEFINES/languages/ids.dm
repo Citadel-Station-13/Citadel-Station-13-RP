@@ -1,4 +1,7 @@
 //! Language IDs
+//! Do not change these for lore / trivial reasons. These are internal UIDs and are NOT to be
+//! changed without a savefile update.
+
 //? Core
 /// everyone-general
 #define LANGUAGE_ID_COMMON "common"
@@ -70,6 +73,8 @@
 #define LANGUAGE_ID_VULPKANIN "vulpkanin"
 /// zaddat
 #define LANGUAGE_ID_ZADDAT "zaddat"
+/// promethean
+#define LANGUAGE_ID_PROMETHEAN "promethean"
 /// scori
 #define LANGUAGE_ID_SCORI "scori"
 /// keisani

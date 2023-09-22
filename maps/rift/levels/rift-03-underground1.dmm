@@ -356,7 +356,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "aY" = (
-/obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/primary/underone)
 "aZ" = (
@@ -966,6 +965,7 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 8
 	},
+/obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "cm" = (
@@ -1106,6 +1106,7 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
 	},
+/obj/machinery/vending/weeb,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "cE" = (
@@ -28815,7 +28816,7 @@ bf
 bf
 bi
 aG
-aY
+aT
 cU
 eg
 Ib
@@ -33277,7 +33278,7 @@ aG
 cM
 Ph
 aG
-aT
+aY
 dh
 tg
 St

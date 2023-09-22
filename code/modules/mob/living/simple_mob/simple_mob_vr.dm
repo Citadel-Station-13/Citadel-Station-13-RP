@@ -173,24 +173,23 @@
 	if(a_intent == INTENT_GRAB && isliving(A) && !has_hands)
 		animal_nom(A)
 
+// todo: shitcode, rewrite on say rewrite
 /mob/living/simple_mob/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)
-	if(mob_radio)
-		switch(message_mode)
-			if("intercom")
-				for(var/obj/item/radio/intercom/I in view(1, null))
-					I.talk_into(src, message, verb, speaking)
-					used_radios += I
-			if("headset")
-				if(mob_radio && istype(mob_radio,/obj/item/radio/headset/mob_headset))
-					mob_radio.talk_into(src,message,null,verb,speaking)
-					used_radios += mob_radio
-			else
-				if(message_mode)
-					if(mob_radio && istype(mob_radio,/obj/item/radio/headset/mob_headset))
-						mob_radio.talk_into(src,message, message_mode, verb, speaking)
-						used_radios += mob_radio
-	else
-		..()
+	switch(message_mode)
+		if("intercom")
+			for(var/obj/item/radio/intercom/I in view(1, null))
+				I.talk_into(src, message, verb, speaking)
+				used_radios += I
+		if("headset", "right ear", "left ear")
+			if(mob_radio)
+				mob_radio.talk_into(src,message,null,verb,speaking)
+				used_radios += mob_radio
+		if("department", "Command", "Science", "Medical", "Engineering", "Security", "Mercenary", "Raider", "Supply", "Service", "AI Private", "Explorer", "Trader", "Common")
+			if(mob_radio)
+				mob_radio.talk_into(src,message,message_mode,verb,speaking)
+				used_radios += mob_radio
+		else
+			..()
 
 /mob/living/simple_mob/proc/leap()
 	set name = "Pounce Target"
@@ -250,3 +249,13 @@
 	T.apply_damage(20, HALLOSS,, armor_block, armor_soak)
 	if(prob(33))
 		T.apply_effect(3, WEAKEN, armor_block)
+
+/mob/living/simple_mob/verb/access_mob_radio_legacy()
+	set name = "Access Mob Radio"
+	set category = "IC"
+
+	if(isnull(mob_radio))
+		to_chat(usr, SPAN_WARNING("You don't have a radio."))
+		return
+
+	mob_radio.ui_interact(usr)

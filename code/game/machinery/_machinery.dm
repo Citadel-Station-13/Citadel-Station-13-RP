@@ -300,13 +300,10 @@
 	else
 		return attack_hand(user)
 
+// todo: refactor
 /obj/machinery/attack_hand(mob/user, list/params)
 	if(IsAdminGhost(user))
 		return FALSE
-	if(inoperable(MAINT))
-		return TRUE
-	if(user.lying || user.stat)
-		return TRUE
 	if(!(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon)))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return TRUE
@@ -334,13 +331,15 @@
 	return ..()
 
 /obj/machinery/can_interact(mob/user)
-	if((machine_stat & (NOPOWER|BROKEN)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
+	if((machine_stat & (NOPOWER|BROKEN|MAINT)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
 		return FALSE
 	var/silicon = issilicon(user)
 	if(panel_open && !(interaction_flags_machine & INTERACT_MACHINE_OPEN)) // Check if we can interact with an open panel machine, if the panel is open
 		if(!silicon || !(interaction_flags_machine & INTERACT_MACHINE_OPEN_SILICON))
 			return FALSE
-	if(silicon /*|| isAdminGhostAI(user)*/) // If we are an AI or adminghsot, make sure the machine allows silicons to interact
+	// check silicon, but cyborgs can interact if within reach.
+	// todo: refactor interaction flags, fuck.
+	if(silicon && (!isrobot(user) || !user.Reachability(src))) // If we are an AI or adminghsot, make sure the machine allows silicons to interact
 		if(!(interaction_flags_machine & INTERACT_MACHINE_ALLOW_SILICON))
 			return FALSE
 	else if(isliving(user)) // If we are a living human
