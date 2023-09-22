@@ -64,7 +64,7 @@
 	init_subsystems()
 
 	for(var/datum/language/L as anything in SScharacters.all_languages())
-		if(L.translation_context & TRANSLATION_CLASS_LEVEL_1)
+		if(L.translation_class & TRANSLATION_CLASS_LEVEL_1)
 			add_language(L)
 	add_language(LANGUAGE_EAL)
 
