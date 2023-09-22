@@ -947,6 +947,7 @@
 	glass_desc = "Deliciously fattening!"
 
 /datum/reagent/drink/milk/chocolate/affect_ingest(mob/living/carbon/M, alien, removed)
+	..()
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		M.nutrition += removed * 5
 
@@ -960,7 +961,7 @@
 	holder.remove_reagent("capsaicin", 10 * removed)
 	if(contains_lactose == TRUE && alien == IS_NARAMADI) //Species-wide lactose intolerance, also funny that cheeses can't drink milk.
 		if(prob(5))
-			to_chat("You feel nauseous!")
+			to_chat(M, SPAN_WARNING("You feel nauseous!"))
 			return
 		if(prob(20))
 			var/mob/living/L = M
@@ -1528,7 +1529,7 @@
 			M.drowsyness = max(M.drowsyness, 60)
 	if(contains_lactose == TRUE && alien == IS_NARAMADI)
 		if(prob(5))
-			to_chat("You feel nauseous!")
+			to_chat(M, SPAN_WARNING("You feel nauseous!"))
 			return
 		if(prob(20))
 			var/mob/living/L = M
@@ -2238,6 +2239,19 @@
 
 	glass_name = "Root Beer Float"
 	glass_desc = "A classic from Humanity's early days. Soothing, cool, and nostalgic."
+
+/datum/reagent/drink/milk/pilk
+	name = "Pilk"
+	id = "pilk"
+	description = "Milk and Space Cola mixed together. What?"
+	taste_description = "creamed up cola"
+	color = "#c9ab84" //usually most pilk mixtures have the milk presence dominate.
+	adj_drowsy = -3 //space cola effects
+	adj_temp = -3
+
+	glass_name = "Pilk"
+	glass_desc = "Milk and Space Cola mixed together. <i>Burenyuu~</i>. While the soda ingredient isn't exactly the one based on the original \
+	old Terra brand, the \"Pilk\" name has stuck all of these centuries later. It's a drink mixture that many still get upset about to this day."
 
 /* Alcohol */
 
@@ -4606,7 +4620,7 @@
 /datum/reagent/nutriment/protein/cheese/affect_ingest(mob/living/carbon/M, alien, removed) //Cheese is a kind of milk.
 	if(alien == IS_NARAMADI)
 		if(prob(5))
-			to_chat("You feel nauseous!")
+			to_chat(M, SPAN_WARNING("You feel nauseous!"))
 			return
 		if(prob(20))
 			var/mob/living/L = M
