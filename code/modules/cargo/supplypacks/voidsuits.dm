@@ -395,3 +395,60 @@
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Mining cryosuit crate"
 	access = ACCESS_SUPPLY_MINE
+
+//ODST Suits
+
+/datum/supply_pack/voidsuits/odst
+	name = "Hephaestus Icarus Combat Suits"
+	contains = list(
+			/obj/item/clothing/suit/space/void/odst = 2,
+			/obj/item/clothing/head/helmet/space/void/odst = 2,
+			/obj/item/clothing/mask/breath = 2,
+			/obj/item/clothing/shoes/magboots = 2,
+			/obj/item/tank/oxygen = 2
+			)
+	cost = 40
+	container_type = /obj/structure/closet/crate/secure/heph
+	container_name = "Icarus Combat Suit crate"
+
+/datum/supply_pack/voidsuits/odst_med
+	name = "Hephaestus Icarus Medic Suits"
+	contains = list(
+			/obj/item/clothing/suit/space/void/odst_med = 2,
+			/obj/item/clothing/head/helmet/space/void/odst_med = 2,
+			/obj/item/clothing/mask/breath = 2,
+			/obj/item/clothing/shoes/magboots = 2,
+			/obj/item/tank/oxygen = 2
+			)
+	cost = 60
+	container_type = /obj/structure/closet/crate/secure/heph
+	container_name = "Hephaestheus Icarus Medic crate"
+	access = ACCESS_MEDICAL_EQUIPMENT
+
+/datum/supply_pack/voidsuits/odst_eng
+	name = "Hephaestus Icarus Engineer Suits"
+	contains = list(
+			/obj/item/clothing/suit/space/void/odst_eng = 2,
+			/obj/item/clothing/head/helmet/space/void/odst_eng = 2,
+			/obj/item/clothing/mask/breath = 2,
+			/obj/item/clothing/shoes/magboots = 2,
+			/obj/item/tank/oxygen = 2
+			)
+	cost = 40
+	container_type = /obj/structure/closet/crate/secure/heph
+	container_name = "Hephaestheus Icarus Engineer crate"
+	access = ACCESS_ENGINEERING_ENGINE
+
+/datum/supply_pack/voidsuits/odst_exp
+	name = "Hephaestus Icarus Frontier Suits"
+	contains = list(
+			/obj/item/clothing/suit/space/void/odst_exp = 2,
+			/obj/item/clothing/head/helmet/space/void/odst_exp = 2,
+			/obj/item/clothing/mask/breath = 3,
+			/obj/item/clothing/shoes/magboots = 3,
+			/obj/item/tank/oxygen = 3
+			)
+	cost = 50
+	container_type = /obj/structure/closet/crate/secure/heph
+	container_name = "Hephaestheus Icarus Frontier crate"
+	access = ACCESS_GENERAL_EXPLORER
