@@ -3,7 +3,7 @@
 	desc = "A special mechanical module made to store, sort, and apply standard machine parts."
 	icon_state = "RPED"
 	w_class = ITEMSIZE_HUGE
-	can_hold = list(/obj/item/stock_parts,/obj/item/cell/,/obj/item/reagent_containers/glass/beaker)
+	can_hold = list(/obj/item/stock_parts)
 	storage_slots = 100
 	use_to_pickup = 1
 	allow_quick_gather = 1
