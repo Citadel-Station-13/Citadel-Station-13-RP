@@ -399,11 +399,6 @@
 "tc" = (
 /obj/machinery/door/blast/puzzle{
 	color = "#CBA713";
-	icon_state = "metal";
-	icon_state_closed = "metal";
-	icon_state_closing = "metalclosing";
-	icon_state_open = "metalopen";
-	icon_state_opening = "metalopening";
 	lockID = "bchar";
 	name = "The Tomb of the Forgotten One"
 	},
@@ -620,11 +615,6 @@
 "Dy" = (
 /obj/machinery/door/blast/puzzle{
 	color = "#1F1A04";
-	icon_state = "metal";
-	icon_state_closed = "metal";
-	icon_state_closing = "metalclosing";
-	icon_state_open = "metalopen";
-	icon_state_opening = "metalopening";
 	lockID = "dmirr";
 	name = "enchanted door"
 	},
@@ -902,11 +892,6 @@
 "Nk" = (
 /obj/machinery/door/blast/puzzle{
 	color = "#4D4D4D";
-	icon_state = "metal";
-	icon_state_closed = "metal";
-	icon_state_closing = "metalclosing";
-	icon_state_open = "metalopen";
-	icon_state_opening = "metalopening";
 	lockID = "anak";
 	name = "Vault of B'Chardamz"
 	},
