@@ -6,7 +6,7 @@
 	color = null // Uses a special icon_state.
 	slime_color = "rainbow"
 	unity = TRUE
-	water_resist = 100 // Lets not kill the prommies
+	water_resist = 1 // Lets not kill the prommies
 	cores = 0
 	movement_cooldown = 3
 	//species_appearance_flags = RADIATION_GLOWS
