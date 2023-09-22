@@ -112,6 +112,7 @@
 		/mob/living/proc/glow_color,
 		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/rig_transform,
+		/mob/living/carbon/human/proc/rig_self,
 		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
 
 	species_statpanel = TRUE
@@ -339,7 +340,7 @@
 			src.forceMove(prig)
 			return
 
-/mob/living/carbon/human/verb/rig_self()
+/mob/living/carbon/human/proc/rig_self()
 	set name = "Deploy Nanosuit To Self"
 	set desc = "Deploy a light nanocluster RIGsuit around yourself."
 	set category = "Abilities"

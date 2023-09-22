@@ -81,7 +81,7 @@ em						{font-style: normal;font-weight: bold;}
 .sciradio				{color: #993399;}
 .suppradio				{color: #5F4519;}
 .servradio				{color: #6eaa2c;}
-.expradio				{color: #555555;}
+.expradio				{color: #c240a1;}
 
 .redteamradio			{color: #ff0000;}
 .blueteamradio			{color: #0000ff;}
