@@ -425,7 +425,7 @@
 					break
 			for(var/obj/item/stock_parts/B in R.contents)
 				if(istype(B, P) && istype(A, P))
-					if(B.rating > A.rating)
+					if(B.get_rating() > A.get_rating())
 						R.remove_from_storage(B, src)
 						R.handle_item_insertion(A, null, TRUE)
 						component_parts -= A
