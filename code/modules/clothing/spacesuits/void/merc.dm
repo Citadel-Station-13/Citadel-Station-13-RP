@@ -96,7 +96,7 @@
 
 /obj/item/clothing/head/helmet/space/void/odst
 	name = "hephaestus icarus helmet"
-	desc = "One of the few combat-grade helmets avalible in the frontier, and the poster-child of Hephaestheus Industries."
+	desc = "One of the few combat-grade helmets avalible in the frontier, and the poster-child of Hephaestus Industries."
 	icon_state = "odst"
 	armor_type = /datum/armor/station/secsuit
 	siemens_coefficient = 0.6
