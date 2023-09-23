@@ -15,6 +15,31 @@
 	door_icon_base = "stone"
 	table_icon_base = "stone"
 
+/datum/material/bone/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(
+		name = "bone roofing tile",
+		product = /obj/item/stack/tile/roofing/bone,
+		cost = 3,
+		amount = 4,
+	)
+	// todo: refactor, this just decons into fucking steel
+	. += create_stack_recipe_datum(
+		name = "bone table frame",
+		product = /obj/structure/table,
+		cost = 1,
+		time = 1 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "bone crate",
+		product = /obj/structure/closet/crate/ashlander,
+		cost = 5,
+		time = 3 SECONDS,
+	)
+	. += create_stack_recipe_datum(category = "statues", name = "bone statue", product = /obj/structure/statue/bone, cost = 15, time = 2 SECONDS)
+	. += create_stack_recipe_datum(category = "statues", name = "skull statue", product = /obj/structure/statue/bone/skull, cost = 15, time = 2 SECONDS)
+	. += create_stack_recipe_datum(category = "statues", name = "half-skull statue", product = /obj/structure/statue/bone/skull/half, cost = 15, time = 2 SECONDS)
+
 /datum/material/bone/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
 	var/mob/living/carbon/M = L
 	if(istype(M) && L.mind.isholy)
