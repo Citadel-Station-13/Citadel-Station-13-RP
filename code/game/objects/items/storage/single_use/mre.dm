@@ -142,7 +142,7 @@ MRE Stuff
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu10,
 	/obj/item/storage/single_use/mrebag/menu10,
-	/obj/item/reagent_containers/food/snacks/candy/proteinbar,
+	/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
 	/obj/item/reagent_containers/food/condiment/small/packet/protein,
 	/obj/random/mre/sauce/sugarfree,
 	/obj/item/reagent_containers/food/drinks/cans/waterbottle,

@@ -28,8 +28,8 @@
 /area/submap/Smol3)
 "g" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/chips,
-/obj/item/reagent_containers/food/snacks/chips,
+/obj/item/reagent_containers/food/snacks/bagged/chips,
+/obj/item/reagent_containers/food/snacks/bagged/chips,
 /obj/item/reagent_containers/food/drinks/cans/waterbottle,
 /obj/item/reagent_containers/food/drinks/cans/waterbottle,
 /obj/item/reagent_containers/food/drinks/cans/waterbottle,
