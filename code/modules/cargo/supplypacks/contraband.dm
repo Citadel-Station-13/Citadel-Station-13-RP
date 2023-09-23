@@ -201,7 +201,7 @@
 	contains = list(/obj/item/mechasalvage = 6)
 	cost = 400 //High End Mech Parts, Direct To You, at an extreme markup!
 	container_type = /obj/structure/closet/crate
-	container_name = "shady crate"
+	container_name = "oil-stained crate"
 	contraband = 1
 
 /datum/supply_pack/randomised/material/rareores
@@ -218,7 +218,7 @@
 		/obj/item/stack/material/valhollide
 		)
 	cost = 350
-	container_type = /obj/structure/closet/crate/grayson
+	container_type = /obj/structure/closet/crate
 	container_name = "dented mining crate"
 	contraband = 1
 	group = "Materials"
