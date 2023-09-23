@@ -16,6 +16,8 @@
 	var/nutriment_amt = 0
 	var/list/nutriment_desc = list("food" = 1)
 	var/datum/reagent/nutriment/coating/coating = null
+	var/custom_open_sound
+	var/open_message = "You open the container! It looks ready to eat!"
 	var/icon/flat_icon = null //Used to cache a flat icon generated from dipping in batter. This is used again to make the cooked-batter-overlay
 	var/do_coating_prefix = 1 //If 0, we wont do "battered thing" or similar prefixes. Mainly for recipes that include batter but have a special name
 	var/cooked_icon = null //Used for foods that are "cooked" without being made into a specific recipe or combination.
@@ -48,7 +50,16 @@
 	. = ..()
 	if(.)
 		return
-	return
+	if(!is_open_container())
+		open(user)
+
+/obj/item/reagent_containers/food/snacks/proc/open(mob/user)
+	if(custom_open_sound)
+		playsound(loc,custom_open_sound, rand(10,50), 1)
+	else
+		playsound(loc,"foodcanopen", rand(10,50), 1)
+	to_chat(user, "<span class='notice'>[open_message]</span>")
+	atom_flags |= OPENCONTAINER
 
 /obj/item/reagent_containers/food/snacks/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
@@ -62,6 +73,10 @@
 	if(reagents && !reagents.total_volume)
 		to_chat(user, "<span class='danger'>None of [src] left!</span>")
 		qdel(src)
+		return 0
+
+	if(!is_open_container())
+		to_chat(user, "<span class='notice'>You need to open [src]!</span>")
 		return 0
 
 	if(istype(M, /mob/living/carbon))
@@ -3781,33 +3796,44 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/rawsticks/Initialize(mapload)
 	. = ..()
 
-/obj/item/reagent_containers/food/snacks/liquidfood // Buff back to 30 from 20
+/obj/item/reagent_containers/food/snacks/liquid // Buff back to 30 from 20
 	name = "\improper LiquidFood Ration"
-	desc = "A prepackaged grey slurry of all the essential nutrients for a spacefarer on the go. Should this be crunchy?"
+	desc = "A prepackaged grey slurry of all the essential nutrients for a spacefarer on the go. Should this be crunchy? A fat straw integrated into the tip of the pouch seems designed to pierce it when pulled up."
 	icon_state = "liquidfood"
 	trash = /obj/item/trash/liquidfood
 	filling_color = "#A8A8A8"
 	survivalfood = TRUE
+	atom_flags = NONE //starts closed
 	center_of_mass = list("x"=16, "y"=15)
 	nutriment_amt = 30
 	bitesize = 4
 	nutriment_desc = list("chalk" = 6)
+	custom_open_sound = 'sound/effects/bonebreak4.ogg'
+	open_message = "You snap the straw into place, piercing the pouch."
 
-/obj/item/reagent_containers/food/snacks/liquidfood/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/liquid/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("iron", 3)
 
-/obj/item/reagent_containers/food/snacks/liquidvitamin
+/obj/item/reagent_containers/food/snacks/liquid/protein // Added Protein only version of LiquidFood + added custom sprite for it
+    name = "\improper LiquidProtein Ration"
+    desc = "A variant of the liquidfood ration, designed for obligate carnivore species. Only barely more appealing than regular liquidfood. Should this be crunchy? A fat straw integrated into the tip of the pouch seems designed to pierce it when pulled up."
+    icon_state = "liquidprotein"
+    trash = /obj/item/trash/liquidprotein
+
+/obj/item/reagent_containers/food/snacks/liquid/protein/Initialize(mapload)
+    . = ..()
+    reagents.add_reagent("protein", 30)
+    reagents.add_reagent("iron", 3)
+
+/obj/item/reagent_containers/food/snacks/liquid/vitamin
 	name = "\improper VitaPaste Ration"
-	desc = "A variant of the liquidfood ration, designed for any carbon-based life. Somehow worse than regular liquidfood. Should this be crunchy?"
+	desc = "A variant of the liquidfood ration, designed for any carbon-based life. Somehow worse than regular liquidfood. Should this be crunchy? A fat straw integrated into the tip of the pouch seems designed to pierce it when pulled up."
 	icon_state = "liquidvitamin"
 	trash = /obj/item/trash/liquidvitamin
-	filling_color = "#A8A8A8"
 	bitesize = 6
-	survivalfood = TRUE
-	center_of_mass = list("x"=16, "y"=15)
 
-/obj/item/reagent_containers/food/snacks/liquidvitamin/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/liquid/vitamin/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("nutriflour", 20)
 	reagents.add_reagent("tricordrazine", 5)
@@ -3826,20 +3852,6 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 15)
 	bitesize = 3
-
-/obj/item/reagent_containers/food/snacks/liquidprotein // Added Protein only version of LiquidFood + added custom sprite for it
-    name = "\improper LiquidProtein Ration"
-    desc = "A variant of the liquidfood ration, designed for obligate carnivore species. Only barely more appealing than regular liquidfood. Should this be crunchy?"
-    icon_state = "liquidprotein"
-    trash = /obj/item/trash/liquidprotein
-    filling_color = "#A8A8A8"
-    bitesize = 4
-    center_of_mass = list("x"=16, "y"=15)
-
-/obj/item/reagent_containers/food/snacks/liquidprotein/Initialize(mapload)
-    . = ..()
-    reagents.add_reagent("protein", 30)
-    reagents.add_reagent("iron", 3)
 
 /obj/item/reagent_containers/food/snacks/tastybread
 	name = "bread tube"

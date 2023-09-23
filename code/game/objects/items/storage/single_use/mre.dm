@@ -154,12 +154,12 @@ MRE Stuff
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 11, nutriment paste. Only for emergencies."
 	icon_state = "crayonmre"
 	starts_with = list(
-	/obj/item/reagent_containers/food/snacks/liquidfood,
-	/obj/item/reagent_containers/food/snacks/liquidfood,
-	/obj/item/reagent_containers/food/snacks/liquidfood,
-	/obj/item/reagent_containers/food/snacks/liquidfood,
-	/obj/item/reagent_containers/food/snacks/liquidprotein,
-	/obj/item/reagent_containers/food/snacks/liquidprotein,
+	/obj/item/reagent_containers/food/snacks/liquid,
+	/obj/item/reagent_containers/food/snacks/liquid,
+	/obj/item/reagent_containers/food/snacks/liquid,
+	/obj/item/reagent_containers/food/snacks/liquid,
+	/obj/item/reagent_containers/food/snacks/liquid/protein,
+	/obj/item/reagent_containers/food/snacks/liquid/protein,
 	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	)
 
@@ -180,10 +180,10 @@ MRE Stuff
 	desc = "This one is menu 13, vitamin paste & dessert. Only for emergencies."
 	icon_state = "crayonmre"
 	starts_with = list(
-	/obj/item/reagent_containers/food/snacks/liquidvitamin,
-	/obj/item/reagent_containers/food/snacks/liquidvitamin,
-	/obj/item/reagent_containers/food/snacks/liquidvitamin,
-	/obj/item/reagent_containers/food/snacks/liquidprotein,
+	/obj/item/reagent_containers/food/snacks/liquid/vitamin,
+	/obj/item/reagent_containers/food/snacks/liquid/vitamin,
+	/obj/item/reagent_containers/food/snacks/liquid/vitamin,
+	/obj/item/reagent_containers/food/snacks/liquid/protein,
 	/obj/random/mre/drink,
 	/obj/item/storage/single_use/mrebag/dessert,
 	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
