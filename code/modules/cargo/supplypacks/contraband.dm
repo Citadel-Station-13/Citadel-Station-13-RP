@@ -208,12 +208,8 @@
 	name = "Smuggled Ores and Materials"
 	num_contained = 20
 	contains = list(
-		/obj/item/stack/material/bananium,
-		/obj/item/stack/material/silencium,
 		/obj/item/ore/vaudium,
 		/obj/item/ore/diamond,
-		/obj/item/stack/deuterium,
-		/obj/item/stack/tritium,
 		/obj/item/stack/material/durasteel,
 		/obj/item/stack/material/morphium,
 		/obj/item/stack/material/platinum,
@@ -225,3 +221,4 @@
 	container_type = /obj/structure/closet/crate/grayson
 	container_name = "dented mining crate"
 	contraband = 1
+	group = "Materials"

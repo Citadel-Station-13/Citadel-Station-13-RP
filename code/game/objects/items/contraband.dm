@@ -261,6 +261,7 @@
 		/obj/item/mecha_parts/part/honker_left_leg,
 		/obj/item/mecha_parts/part/honker_right_arm,
 		/obj/item/mecha_parts/part/honker_right_leg,
+		/obj/item/mecha_parts/part/honker_armour,
 		/obj/item/mecha_parts/chassis/honker,
 		/obj/item/mecha_parts/part/reticent_torso,
 		/obj/item/mecha_parts/part/reticent_head,
@@ -269,6 +270,7 @@
 		/obj/item/mecha_parts/part/reticent_right_arm,
 		/obj/item/mecha_parts/part/reticent_right_leg,
 		/obj/item/mecha_parts/chassis/reticent,
+		/obj/item/mecha_parts/part/reticent_armour,
 		/obj/item/mecha_parts/part/durand_torso,
 		/obj/item/mecha_parts/part/durand_head,
 		/obj/item/mecha_parts/part/durand_left_arm,
@@ -283,35 +285,6 @@
 		/obj/item/mecha_parts/part/gygax_right_arm,
 		/obj/item/mecha_parts/part/gygax_right_leg,
 		/obj/item/mecha_parts/chassis/serenity)
-	new loot(usr.drop_location())
-	to_chat(user, "You unwrap the package.")
-	qdel(src)
-
-/obj/item/rareores
-	name = "pilfered materials"
-	desc = "Unethically sourced from confiscated smuggler hauls."
-	icon = 'icons/obj/storage.dmi'
-	icon_state = "deliverycrate5"
-	item_state = "table_parts"
-	w_class = ITEMSIZE_SMALL
-
-/obj/item/rareores/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-var/loot = pick(/obj/item/stack/material/bananium,
-		/obj/item/stack/material/silencium,
-		/obj/item/ore/vaudium,
-		/obj/item/ore/diamond,
-		/obj/item/stack/deuterium,
-		/obj/item/stack/tritium,
-		/obj/item/stack/material/durasteel,
-		/obj/item/stack/material/morphium,
-		/obj/item/stack/material/platinum,
-		/obj/item/ore/verdantium,
-		/obj/item/ore/hydrogen,
-		/obj/item/stack/material/valhollide)
-
 	new loot(usr.drop_location())
 	to_chat(user, "You unwrap the package.")
 	qdel(src)
