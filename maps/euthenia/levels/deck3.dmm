@@ -5426,7 +5426,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 32
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
 "gsR" = (

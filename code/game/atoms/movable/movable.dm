@@ -205,6 +205,7 @@
 
 //Overlays
 /atom/movable/overlay
+	atom_flags = ATOM_ABSTRACT
 	var/atom/master = null
 	anchored = TRUE
 
