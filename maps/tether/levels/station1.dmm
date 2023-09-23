@@ -20343,7 +20343,7 @@
 	dir = 8
 	},
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/bagged/chips,
+/obj/item/reagent_containers/food/snacks/bagged,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "OH" = (

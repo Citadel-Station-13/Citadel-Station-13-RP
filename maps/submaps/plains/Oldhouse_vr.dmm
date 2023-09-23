@@ -143,8 +143,8 @@
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "aG" = (
-/obj/item/reagent_containers/food/snacks/bagged/chips,
-/obj/item/reagent_containers/food/snacks/bagged/chips,
+/obj/item/reagent_containers/food/snacks/bagged,
+/obj/item/reagent_containers/food/snacks/bagged,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Oldhouse)
 "aH" = (

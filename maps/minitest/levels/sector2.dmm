@@ -82,7 +82,7 @@
 /area/awaymission/wwmines)
 "as" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/bagged/chips,
+/obj/item/reagent_containers/food/snacks/bagged,
 /turf/simulated/floor/carpet/turcarpet,
 /area/awaymission/wwmines)
 "at" = (
