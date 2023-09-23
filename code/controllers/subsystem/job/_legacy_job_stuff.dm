@@ -269,12 +269,13 @@
 			H.buckled.setDir(H.dir)
 
 	var/list/obj/item/loadout_rejected = list()
-	H.client.prefs.equip_loadout(
-		H,
-		joined_late? PREF_COPY_TO_FOR_LATEJOIN : PREF_COPY_TO_FOR_ROUNDSTART,
-		job,
-		reject = loadout_rejected
-	)
+	if(rank != "AI" && rank != "Cyborg") //! WARNING WARNING LEGACY SHITCODE REFACTOR LATER
+		H.client.prefs.equip_loadout(
+			H,
+			joined_late? PREF_COPY_TO_FOR_LATEJOIN : PREF_COPY_TO_FOR_ROUNDSTART,
+			job,
+			reject = loadout_rejected
+		)
 
 	if(job)
 		// Set up their account

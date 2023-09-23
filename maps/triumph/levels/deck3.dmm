@@ -2151,6 +2151,10 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
+/obj/structure/sink/kitchen{
+	name = "industrial sink";
+	pixel_y = 22
+	},
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics/surgery)
 "bUY" = (

@@ -4,7 +4,7 @@
 	name = "Command Airlock"
 	icon_state = "preview"
 	req_one_access = list(ACCESS_COMMAND_BRIDGE)
-	assembly_type = /obj/structure/door_assembly/door_assembly_com
+	assembly_type = /obj/structure/door_assembly/command
 	open_sound_powered = 'sound/machines/door/cmd3o.ogg'
 	close_sound_powered = 'sound/machines/door/cmd3c.ogg'
 	door_color = COLOR_COMMAND_BLUE
@@ -14,7 +14,7 @@
 	name = "Security Airlock"
 	icon_state = "preview"
 	req_one_access = list(ACCESS_SECURITY_EQUIPMENT)
-	assembly_type = /obj/structure/door_assembly/door_assembly_sec
+	assembly_type = /obj/structure/door_assembly/security
 	open_sound_powered = 'sound/machines/door/sec1o.ogg'
 	close_sound_powered = 'sound/machines/door/sec1c.ogg'
 	door_color = COLOR_SECURITY_RED
@@ -23,7 +23,7 @@
 	name = "Engineering Airlock"
 	icon_state = "preview"
 	req_one_access = list(ACCESS_ENGINEERING_MAIN)
-	assembly_type = /obj/structure/door_assembly/door_assembly_eng
+	assembly_type = /obj/structure/door_assembly/engi
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
@@ -33,7 +33,7 @@
 	name = "Atmospherics Airlock"
 	icon_state = "preview"
 	req_one_access = list(ACCESS_ENGINEERING_ATMOS)
-	assembly_type = /obj/structure/door_assembly/door_assembly_eat
+	assembly_type = /obj/structure/door_assembly/engi_atmos
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
 	door_color = COLOR_AMBER
@@ -43,7 +43,7 @@
 	name = "Medical Airlock"
 	icon_state = "preview"
 	req_one_access = list(ACCESS_MEDICAL_MAIN)
-	assembly_type = /obj/structure/door_assembly/door_assembly_med
+	assembly_type = /obj/structure/door_assembly/medical
 	open_sound_powered = 'sound/machines/door/med1o.ogg'
 	close_sound_powered = 'sound/machines/door/med1c.ogg'
 	door_color = COLOR_WHITE
@@ -53,7 +53,7 @@
 	name = "Maintenance Access"
 	icon_state = "preview"
 	//req_one_access = list(ACCESS_ENGINEERING_MAINT) // Maintenance is open access
-	assembly_type = /obj/structure/door_assembly/door_assembly_mai
+	assembly_type = /obj/structure/door_assembly/maint
 	open_sound_powered = 'sound/machines/door/door2o.ogg'
 	close_sound_powered = 'sound/machines/door/door2c.ogg'
 	stripe_color = COLOR_AMBER
@@ -89,7 +89,7 @@
 	name = "External Airlock"
 	icon_state = "preview"
 	airlock_type = "External"
-	assembly_type = /obj/structure/door_assembly/door_assembly_ext
+	assembly_type = /obj/structure/door_assembly/external
 	open_sound_powered = 'sound/machines/door/space1o.ogg'
 	close_sound_powered = 'sound/machines/door/space1c.ogg'
 	icon = 'icons/obj/doors/external/door.dmi'
@@ -126,7 +126,7 @@
 	emag_file = 'icons/obj/doors/external/emag.dmi'
 	opacity = FALSE
 	glass = TRUE
-	assembly_type = /obj/structure/door_assembly/door_assembly_ext
+	assembly_type = /obj/structure/door_assembly/external
 	opacity = 0
 	glass = 1
 	req_one_access = list(ACCESS_ENGINEERING_AIRLOCK)
@@ -170,7 +170,7 @@
 	explosion_resistance = 20
 	opacity = 1
 	secured_wires = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity //Until somebody makes better sprites.
+	assembly_type = /obj/structure/door_assembly/high_security //Until somebody makes better sprites.
 	req_one_access = list(ACCESS_COMMAND_VAULT)
 	open_sound_powered = 'sound/machines/door/vault1o.ogg'
 	close_sound_powered = 'sound/machines/door/vault1c.ogg'
@@ -184,7 +184,7 @@
 /obj/machinery/door/airlock/freezer
 	name = "Freezer Airlock"
 	opacity = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_fre
+	assembly_type = /obj/structure/door_assembly/freezer
 	door_color = COLOR_WHITE
 
 /obj/machinery/door/airlock/hatch
@@ -192,7 +192,7 @@
 	airlock_type = "Hatch"
 	explosion_resistance = 20
 	opacity = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_hatch
+	assembly_type = /obj/structure/door_assembly/hatch
 	req_one_access = list(ACCESS_ENGINEERING_MAINT)
 	open_sound_powered = 'sound/machines/door/hatchopen.ogg'
 	close_sound_powered = 'sound/machines/door/hatchclose.ogg'
@@ -214,7 +214,7 @@
 	airlock_type = "Hatch"
 	explosion_resistance = 20
 	opacity = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_mhatch
+	assembly_type = /obj/structure/door_assembly/hatch/maint
 	req_one_access = list(ACCESS_ENGINEERING_MAINT)
 	open_sound_powered = 'sound/machines/door/hatchopen.ogg'
 	close_sound_powered = 'sound/machines/door/hatchclose.ogg'
@@ -240,7 +240,7 @@
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_com
+	assembly_type = /obj/structure/door_assembly/command
 	glass = 1
 	req_one_access = list(ACCESS_COMMAND_BRIDGE)
 	open_sound_powered = 'sound/machines/door/cmd1o.ogg'
@@ -256,7 +256,7 @@
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_eng
+	assembly_type = /obj/structure/door_assembly/engi
 	glass = 1
 	req_one_access = list(ACCESS_ENGINEERING_MAIN)
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
@@ -271,7 +271,7 @@
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_eat
+	assembly_type = /obj/structure/door_assembly/engi_atmos
 	glass = 1
 	req_one_access = list(ACCESS_ENGINEERING_ATMOS)
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
@@ -286,7 +286,7 @@
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_sec
+	assembly_type = /obj/structure/door_assembly/security
 	glass = 1
 	req_one_access = list(ACCESS_SECURITY_EQUIPMENT)
 	open_sound_powered = 'sound/machines/door/sec1o.ogg'
@@ -300,7 +300,7 @@
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_med
+	assembly_type = /obj/structure/door_assembly/medical
 	glass = 1
 	req_one_access = list(ACCESS_MEDICAL_MAIN)
 	open_sound_powered = 'sound/machines/door/med1o.ogg'
@@ -311,7 +311,7 @@
 
 /obj/machinery/door/airlock/mining
 	name = "Mining Airlock"
-	assembly_type = /obj/structure/door_assembly/door_assembly_min
+	assembly_type = /obj/structure/door_assembly/mining
 	req_one_access = list(ACCESS_SUPPLY_MINE)
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
@@ -320,7 +320,7 @@
 
 /obj/machinery/door/airlock/atmos
 	name = "Atmospherics Airlock"
-	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
+	assembly_type = /obj/structure/door_assembly/atmos
 	req_one_access = list(ACCESS_ENGINEERING_ATMOS)
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
 	close_sound_powered = 'sound/machines/door/eng1c.ogg'
@@ -329,7 +329,7 @@
 
 /obj/machinery/door/airlock/research
 	name = "Research Airlock"
-	assembly_type = /obj/structure/door_assembly/door_assembly_research
+	assembly_type = /obj/structure/door_assembly/research
 	open_sound_powered = 'sound/machines/door/sci1o.ogg'
 	close_sound_powered = 'sound/machines/door/sci1c.ogg'
 	door_color = COLOR_WHITE
@@ -341,7 +341,7 @@
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_research
+	assembly_type = /obj/structure/door_assembly/research
 	glass = 1
 	req_one_access = list(ACCESS_SCIENCE_MAIN)
 	open_sound_powered = 'sound/machines/door/sci1o.ogg'
@@ -356,7 +356,7 @@
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_min
+	assembly_type = /obj/structure/door_assembly/mining
 	glass = 1
 	req_one_access = list(ACCESS_SUPPLY_MINE)
 	open_sound_powered = 'sound/machines/door/cgo1o.ogg'
@@ -371,7 +371,7 @@
 	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
+	assembly_type = /obj/structure/door_assembly/atmos
 	glass = 1
 	req_one_access = list(ACCESS_ENGINEERING_ATMOS)
 	open_sound_powered = 'sound/machines/door/eng1o.ogg'
@@ -450,7 +450,7 @@
 	fill_file = 'icons/obj/doors/secure/fill_steel.dmi'
 	explosion_resistance = 20
 	secured_wires = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity
+	assembly_type = /obj/structure/door_assembly/high_security
 	req_one_access = list(ACCESS_COMMAND_VAULT)
 	open_sound_powered = 'sound/machines/door/secure1o.ogg'
 	close_sound_powered = 'sound/machines/door/secure1c.ogg'
@@ -461,13 +461,13 @@
 	explosion_resistance = 20
 	opacity = 0
 	glass = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_voidcraft
+	assembly_type = /obj/structure/door_assembly/voidcraft
 	open_sound_powered = 'sound/machines/door/shuttle1o.ogg'
 	close_sound_powered = 'sound/machines/door/shuttle1c.ogg'
 
 // Airlock opens from top-bottom instead of left-right.
 /obj/machinery/door/airlock/voidcraft/vertical
-	assembly_type = /obj/structure/door_assembly/door_assembly_voidcraft/vertical
+	assembly_type = /obj/structure/door_assembly/voidcraft/vertical
 	open_sound_powered = 'sound/machines/door/shuttle1o.ogg'
 	close_sound_powered = 'sound/machines/door/shuttle1c.ogg'
 

@@ -1768,7 +1768,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dX" = (
-/obj/structure/filingcabinet/filingcabinet{
+/obj/structure/filingcabinet/tall{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/black,
