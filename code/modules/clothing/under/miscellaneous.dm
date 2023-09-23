@@ -1251,6 +1251,26 @@
 	desc = "A colorable leotard with a piece of semi-transparent cloth near the bust. Perfect for showing off cleavage. Bunny ears not included."
 	icon_state = "leotard_color"
 
+/obj/item/clothing/under/bunnysuit_f
+	name = "bunny leotard (f)"
+	desc = "A black leotard, commonly used by casino workers to drive up tips. Bunny ears and tail sold separately."
+	icon_state = "bunny_f"
+
+/obj/item/clothing/under/bunnysuit_m
+	name = "bunny leotard (m)"
+	desc = "A black leotard, commonly used by casino workers to drive up tips. Bunny ears and tail sold separately."
+	icon_state = "bunny_m"
+
+/obj/item/clothing/under/tabard_w
+	name = "white tabard-dress"
+	desc = "A gold-trimmed white tabard-dress with a large V-shaped boob window. For when you want to show off your hips and look classy at the same time."
+	icon_state = "white_tabard"
+
+/obj/item/clothing/under/tabard_b
+	name = "black tabard-dress"
+	desc = "A gold-trimmed black tabard-dress with a large circular boob window. Useful for showing off your hips while your buddy puts something in the target's drink."
+	icon_state = "black_tabard"
+
 /obj/item/clothing/under/verglasdress
     name = "verglas dress"
     desc = "The modern twist on a forgotten pattern, the Verglas style utilizes comfortable velvet and silver white satin to create an otherworldly effect evocative of winter, or the void."

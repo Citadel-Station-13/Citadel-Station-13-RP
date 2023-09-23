@@ -2623,7 +2623,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "jJ" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "jK" = (
