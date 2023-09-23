@@ -195,3 +195,33 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "teutonic armor crate"
 	contraband = 1
+
+/datum/supply_pack/robotics/salvage
+	name = "Redirected Mech Salvage"
+	contains = list(/obj/item/mechasalvage = 6)
+	cost = 400 //High End Mech Parts, Direct To You, at an extreme markup!
+	container_type = /obj/structure/closet/crate
+	container_name = "shady crate"
+	contraband = 1
+
+/datum/supply_pack/randomised/material/rareores
+	name = "Smuggled Ores and Materials"
+	num_contained = 20
+	contains = list(
+		/obj/item/stack/material/bananium,
+		/obj/item/stack/material/silencium,
+		/obj/item/ore/vaudium,
+		/obj/item/ore/diamond,
+		/obj/item/stack/deuterium,
+		/obj/item/stack/tritium,
+		/obj/item/stack/material/durasteel,
+		/obj/item/stack/material/morphium,
+		/obj/item/stack/material/platinum,
+		/obj/item/ore/verdantium,
+		/obj/item/ore/hydrogen,
+		/obj/item/stack/material/valhollide
+		)
+	cost = 350
+	container_type = /obj/structure/closet/crate/grayson
+	container_name = "dented mining crate"
+	contraband = 1
