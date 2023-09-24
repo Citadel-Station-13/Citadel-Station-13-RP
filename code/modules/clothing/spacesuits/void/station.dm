@@ -378,7 +378,6 @@
 	icon_state = "capsuit_void"
 	armor_type = /datum/armor/station/tactical
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun)
-	slowdown = 1.5
 
 //Head of Security - update to the snowflake suit
 /obj/item/clothing/head/helmet/space/void/headofsecurity
@@ -387,6 +386,8 @@
 	icon_state = "hosproto"
 	armor_type = /datum/armor/security/hos/space
 	camera_networks = list(NETWORK_SEC_HELMETS)
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_HELMET_HEAVY
+	weight = ITEM_WEIGHT_VOIDSUIT_HELMET_HEAVY
 
 /obj/item/clothing/suit/space/void/headofsecurity
 	desc = "A customized security voidsuit. Has additional composite armor."
@@ -394,7 +395,8 @@
 	icon_state = "hosproto_void"
 	armor_type = /datum/armor/security/hos/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun)
-	slowdown = 1.5
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_HEAVY
+	weight = ITEM_WEIGHT_VOIDSUIT_HEAVY
 
 //PARA
 /obj/item/clothing/head/helmet/space/void/para

@@ -59,6 +59,9 @@
 	status_effects = null
 	// mob lists
 	mob_list_unregister(stat)
+	// physiology
+	QDEL_NULL(physiology)
+	physiology_modifiers = null
 	// movespeed
 	movespeed_modification = null
 	// actionspeed
