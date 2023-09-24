@@ -3,8 +3,6 @@
 	"default_language":"common",
 	"lines": [
 	  {
-		"language":"common",
-		"delay": 5,
 		"text": [
 		  "*BEEEEEEEEEEEEEEEEEEEEEP*",
 		  "THIS IS A TEST",
@@ -17,7 +15,6 @@
 	  },
 	  {
 		"language":"tajaran",
-		"delay": 7,
 		"text": [
 		  "*BEEEEEEEEEEEEEEEEEEEEEP*",
 		  "THIS IS A TEST",

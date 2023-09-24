@@ -7,6 +7,13 @@
 	light_range_on = 2
 	//circuit = /obj/item/circuitboard/security/telescreen/entertainment //Need to make a new circuit outide camera monitors
 
+/obj/machinery/computer/television/Initialize(mapload)
+	. = ..()
+	SStelevision.all_tvs += src
+
+/obj/machinery/computer/television/Destroy()
+	SStelevision.all_tvs -= src
+	return ..()
 /*
 /obj/machinery/computer/security/telescreen
 	name = "Telescreen"
