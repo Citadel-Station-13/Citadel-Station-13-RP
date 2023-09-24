@@ -1,27 +1,14 @@
 /**
- * Stack type objects!
- *
- * Contains:
- * * Stacks
- * * Recipe datum
- * * Recipe list datum
+ * Items that can stack, tracking the number of which is in it
  */
-
-/*
- * Stacks
- */
-
 /obj/item/stack
 	gender = PLURAL
 	origin_tech = list(TECH_MATERIAL = 1)
 	icon = 'icons/obj/stacks.dmi'
-	var/list/datum/stack_recipe/recipes
 	var/singular_name
 	var/amount = 1
 	/// See stack recipes initialisation, param "max_res_amount" must be equal to this max_amount.
 	var/max_amount = 50
-	/// bandaid until new inventorycode
-	var/mid_delete = FALSE
 	/// Determines whether different stack types can merge.
 	var/stacktype
 	/// Used when directly applied to a turf.
@@ -37,7 +24,14 @@
 	/// Will the stack merge with other stacks that are different colors? (Dyed cloth, wood, etc).
 	var/strict_color_stacking = FALSE
 
+	/// explicit recipes, lazy-list. this is typelist'd
+	var/list/datum/stack_recipe/explicit_recipes
+
 /obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
+	if(has_typelist(explicit_recipes))
+		explicit_recipes = get_typelist(explicit_recipes)
+	else
+		explicit_recipes = typelist(NAMEOF(src, explicit_recipes), generate_explicit_recipes())
 	if(new_amount != null)
 		amount = new_amount
 	if(!stacktype)
@@ -48,12 +42,6 @@
 			if(can_merge(S))
 				merge(S)
 	update_icon()
-
-/obj/item/stack/Destroy()
-	if (src && usr && usr.machine == src)
-		usr << browse(null, "window=stack")
-	mid_delete = TRUE
-	return ..()
 
 /obj/item/stack/update_icon()
 	if(no_variants)
@@ -74,145 +62,72 @@
 	else
 		. += "There is enough charge for [get_amount()]."
 
-/obj/item/stack/attack_self(mob/user)
+/**
+ * Get the explicit recipes of this stack type
+ */
+/obj/item/stack/proc/generate_explicit_recipes()
+	return list()
+
+/obj/item/stack/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(isnull(ui))
+		ui = new(user, src, "StackCrafting")
+		ui.open()
+
+/obj/item/stack/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	.["recipes"] = tgui_recipes()
+	.["maxAmount"] = max_amount
+	.["name"] = name
+
+/obj/item/stack/proc/tgui_recipes()
+	var/list/assembled = list()
+	for(var/datum/stack_recipe/recipe as anything in explicit_recipes)
+		assembled[++assembled.len] = recipe.tgui_recipe_data()
+	return assembled
+
+/obj/item/stack/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	.["amount"] = get_amount()
+
+/obj/item/stack/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
-	list_recipes(user)
+	switch(action)
+		if("craft")
+			var/recipe_ref = params["recipe"]
+			if(!istext(recipe_ref))
+				return TRUE
+			var/datum/stack_recipe/recipe = locate(recipe_ref)
+			if(!can_craft_recipe(recipe))
+				return TRUE
+			var/make_amount = params["amount"]
+			craft_recipe(recipe, usr, make_amount)
+			return TRUE
 
-/obj/item/stack/proc/list_recipes(mob/user, recipes_sublist)
-	if (!recipes)
-		return
-	if (!src || get_amount() <= 0)
-		user << browse(null, "window=stack")
-	user.set_machine(src) //for correct work of onclose
-	var/list/recipe_list = recipes
-	if (recipes_sublist && recipe_list[recipes_sublist] && istype(recipe_list[recipes_sublist], /datum/stack_recipe_list))
-		var/datum/stack_recipe_list/srl = recipe_list[recipes_sublist]
-		recipe_list = srl.recipes
-	var/t1 = "<HTML><HEAD><title>Constructions from [src]</title></HEAD><body><TT>Amount Left: [get_amount()]<br>"
-	for(var/i=1;i<=recipe_list.len,i++)
-		var/E = recipe_list[i]
-		if (isnull(E))
-			t1 += "<hr>"
-			continue
+/obj/item/stack/proc/can_craft_recipe(datum/stack_recipe/recipe)
+	if(recipe in explicit_recipes)
+		return TRUE
+	return FALSE
 
-		if (i>1 && !isnull(recipe_list[i-1]))
-			t1+="<br>"
-
-		if (istype(E, /datum/stack_recipe_list))
-			var/datum/stack_recipe_list/srl = E
-			t1 += "<a href='?src=\ref[src];sublist=[i]'>[srl.title]</a>"
-
-		if (istype(E, /datum/stack_recipe))
-			var/datum/stack_recipe/R = E
-			var/max_multiplier = round(src.get_amount() / R.req_amount)
-			var/title
-			var/can_build = 1
-			can_build = can_build && (max_multiplier>0)
-			if (R.res_amount>1)
-				title+= "[R.res_amount]x [R.title]\s"
-			else
-				title+= "[R.title]"
-			title+= " ([R.req_amount] [src.singular_name]\s)"
-			if (can_build)
-				t1 += "<A href='?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  "
-			else
-				t1 += title
-				continue
-			if (R.max_res_amount>1 && max_multiplier>1)
-				max_multiplier = min(max_multiplier, round(R.max_res_amount/R.res_amount))
-				t1 += " |"
-				var/list/multipliers = list(5,10,25)
-				for (var/n in multipliers)
-					if (max_multiplier>=n)
-						t1 += " <A href='?src=\ref[src];make=[i];multiplier=[n]'>[n*R.res_amount]x</A>"
-				if (!(max_multiplier in multipliers))
-					t1 += " <A href='?src=\ref[src];make=[i];multiplier=[max_multiplier]'>[max_multiplier*R.res_amount]x</A>"
-
-	t1 += "</TT></body></HTML>"
-	user << browse(t1, "window=stack")
-	onclose(user, "stack")
-	return
-
-/obj/item/stack/proc/produce_recipe(datum/stack_recipe/recipe, quantity, mob/user)
-	var/required = quantity*recipe.req_amount
-	var/produced = min(quantity*recipe.res_amount, recipe.max_res_amount)
-
-	if (!can_use(required))
-		if (produced>1)
-			to_chat(user, SPAN_WARNING("You haven't got enough [src] to build \the [produced] [recipe.title]\s!"))
-		else
-			to_chat(user, SPAN_WARNING("You haven't got enough [src] to build \the [recipe.title]!"))
-		return
-
-	if (recipe.one_per_turf && (locate(recipe.result_type) in user.loc))
-		to_chat(user, SPAN_WARNING("There is another [recipe.title] here!"))
-		return
-
-	if (recipe.on_floor && !isfloor(user.loc))
-		to_chat(user, SPAN_WARNING("\The [recipe.title] must be constructed on the floor!"))
-		return
-
-	if (recipe.time)
-		to_chat(user, SPAN_NOTICE("Building [recipe.title] ..."))
-		if (!do_after(user, recipe.time))
-			return
-
-	if (use(required))
-		var/atom/O
-		if(ispath(recipe.result_type, /obj/item/stack))
-			O = new recipe.result_type(user.drop_location(), produced)
-		else if(recipe.use_material)
-			O = new recipe.result_type(user.drop_location(), recipe.use_material)
-		else
-			O = new recipe.result_type(user.drop_location())
-		O.setDir(user.dir)
-		O.add_fingerprint(user)
-
-		if (istype(O, /obj/item/storage)) //BubbleWrap - so newly formed boxes are empty
-			for (var/obj/item/I in O)
-				qdel(I)
-
-		if ((pass_color || recipe.pass_color))
-			if(!color)
-				if(recipe.use_material)
-					var/datum/material/MAT = get_material_by_name(recipe.use_material)
-					if(MAT.icon_colour)
-						O.color = MAT.icon_colour
-				else
-					return
-			else
-				O.color = color
-
-/obj/item/stack/Topic(href, href_list)
-	..()
-	if ((usr.restrained() || usr.stat || usr.get_active_held_item() != src))
-		return
-
-	if (href_list["sublist"] && !href_list["make"])
-		list_recipes(usr, text2num(href_list["sublist"]))
-
-	if (href_list["make"])
-		if (src.get_amount() < 1) qdel(src) //Never should happen
-
-		var/list/recipes_list = recipes
-		if (href_list["sublist"])
-			var/datum/stack_recipe_list/srl = recipes_list[text2num(href_list["sublist"])]
-			recipes_list = srl.recipes
-
-		var/datum/stack_recipe/R = recipes_list[text2num(href_list["make"])]
-		var/multiplier = text2num(href_list["multiplier"])
-		if (!multiplier || (multiplier <= 0)) //href exploit protection
-			return
-
-		src.produce_recipe(R, multiplier, usr)
-
-	if (src && usr.machine==src) //do not reopen closed window
-		spawn( 0 )
-			src.interact(usr)
-			return
-	return
+/obj/item/stack/proc/craft_recipe(datum/stack_recipe/recipe, mob/user, make_amount)
+	if(make_amount > (isnull(recipe.max_amount)? (recipe.result_is_stack? INFINITY : 1) : recipe.max_amount))
+		return FALSE
+	var/needed = recipe.cost * (make_amount / recipe.result_amount)
+	if(FLOOR(needed, 1) != needed) // no decimals, thank you!
+		return FALSE
+	if(needed > get_amount())
+		return FALSE
+	var/turf/where = get_turf(user)
+	if(!do_after(user, recipe.time, src, progress_anchor = user))
+		return FALSE
+	if(needed > get_amount())
+		return FALSE
+	if(!recipe.craft(where, make_amount, src, user, FALSE, user.dir))
+		return FALSE
+	log_stackcrafting(user, src, recipe.name, make_amount, needed, where)
+	use(needed)
 
 /**
  * Return 1 if an immediate subsequent call to use() would succeed.
@@ -229,8 +144,6 @@
 /obj/item/stack/proc/can_merge(obj/item/stack/other)
 	if(!istype(other))
 		return FALSE
-	if(mid_delete || other.mid_delete) // bandaid until new inventory code
-		return FALSE
 	if((strict_color_stacking || other.strict_color_stacking) && (color != other.color))
 		return FALSE
 	return other.stacktype == stacktype
@@ -241,7 +154,6 @@
 	if(!uses_charge)
 		amount -= used
 		if (amount <= 0)
-			mid_delete = TRUE
 			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 		update_icon()
 		return TRUE
@@ -450,46 +362,6 @@
 		fingerprintshidden = from.fingerprintshidden.Copy()
 	if(from.fingerprintslast)
 		fingerprintslast = from.fingerprintslast
-
-/*
- * Recipe datum
- */
-/datum/stack_recipe
-	var/title = "ERROR"
-	var/result_type
-	/// Amount of material needed for this recipe.
-	var/req_amount = 1
-	/// Amount of stuff that is produced in one batch (e.g. 4 for floor tiles).
-	var/res_amount = 1
-	var/max_res_amount = 1
-	var/time = 0
-	var/one_per_turf = 0
-	var/on_floor = 0
-	var/use_material
-	var/pass_color
-
-/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null, pass_stack_color)
-	src.title = title
-	src.result_type = result_type
-	src.req_amount = req_amount
-	src.res_amount = res_amount
-	src.max_res_amount = max_res_amount
-	src.time = time
-	src.one_per_turf = one_per_turf
-	src.on_floor = on_floor
-	src.use_material = supplied_material
-	src.pass_color = pass_stack_color
-
-/*
- * Recipe list datum
- */
-/datum/stack_recipe_list
-	var/title = "ERROR"
-	var/list/recipes = null
-
-/datum/stack_recipe_list/New(title, recipes)
-	src.title = title
-	src.recipes = recipes
 
 /obj/item/stack/proc/set_amount(new_amount, no_limits = FALSE)
 	if(new_amount < 0 || new_amount % 1)

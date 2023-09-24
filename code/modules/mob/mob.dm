@@ -1140,12 +1140,22 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/get_buckled_pixel_x_offset()
 	if(!buckled)
 		return 0
-	return buckled.get_centering_pixel_x_offset(NONE, src) - get_centering_pixel_x_offset() + buckled.buckle_pixel_x
+	// todo: this doesn't properly take into account all transforms of both us and the buckled object
+	. = get_centering_pixel_x_offset(dir)
+	if(lying != 0)
+		. *= cos(lying)
+		. += sin(lying) * get_centering_pixel_y_offset(dir)
+	return buckled.pixel_x + . - buckled.get_centering_pixel_x_offset(buckled.dir) + buckled.get_buckled_x_offset(src)
 
 /mob/proc/get_buckled_pixel_y_offset()
 	if(!buckled)
 		return 0
-	return buckled.get_centering_pixel_y_offset(NONE, src) - get_centering_pixel_y_offset() + buckled.buckle_pixel_y
+	// todo: this doesn't properly take into account all transforms of both us and the buckled object
+	. = get_centering_pixel_y_offset(dir)
+	if(lying != 0)
+		. *= cos(lying)
+		. += sin(lying) * get_centering_pixel_x_offset(dir)
+	return buckled.pixel_y + . - buckled.get_centering_pixel_y_offset(buckled.dir) + buckled.get_buckled_y_offset(src)
 
 /mob/get_managed_pixel_x()
 	return ..() + shift_pixel_x + get_buckled_pixel_x_offset()
@@ -1153,11 +1163,11 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/get_managed_pixel_y()
 	return ..() + shift_pixel_y + get_buckled_pixel_y_offset()
 
-/mob/get_centering_pixel_x_offset(dir, atom/aligning)
+/mob/get_centering_pixel_x_offset(dir)
 	. = ..()
 	. += shift_pixel_x
 
-/mob/get_centering_pixel_y_offset(dir, atom/aligning)
+/mob/get_centering_pixel_y_offset(dir)
 	. = ..()
 	. += shift_pixel_y
 

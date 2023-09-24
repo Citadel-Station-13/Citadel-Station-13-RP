@@ -219,3 +219,6 @@
 #define NORM(x, y) (sqrt(SQUAREDNORM(x,y)))
 #define ISPOWEROFTWO(x) ((x & (x - 1)) == 0)
 #define ROUNDUPTOPOWEROFTWO(x) (2 ** -round(-log(2,x)))
+
+/// get highest magnitude of two numbers, magnitude is abs value
+#define BIGGER_MAGNITUDE(a, b) ((abs(a) > abs(b))? a : b)

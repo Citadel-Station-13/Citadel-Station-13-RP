@@ -288,6 +288,9 @@
 /mob/living/carbon/human/proc/nano_intoblob()
 	if(loc == /obj/item/hardsuit/protean)
 		return
+	if(transforming)
+		return
+	transforming = TRUE
 	handle_grasp() //It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null. TODO: Fix the code so this can be done better.
 	remove_micros(src, src) //Living things don't fare well in roblobs.
 
@@ -362,6 +365,8 @@
 		blob.can_be_drop_prey = P.can_be_drop_prey
 		blob.can_be_drop_pred = P.can_be_drop_pred
 
+	transforming = FALSE
+
 	//Return our blob in case someone wants it
 	return blob
 
@@ -432,6 +437,9 @@
 		return
 	if(istype(blob.loc, /obj/item/hardsuit/protean))
 		return
+	if(transforming)
+		return
+	transforming = TRUE
 
 	buckled?.unbuckle_mob(src, BUCKLE_OP_FORCE)
 	unbuckle_all_mobs(BUCKLE_OP_FORCE)
@@ -495,6 +503,7 @@
 	qdel(blob)
 
 	//Return ourselves in case someone wants it
+	transforming = FALSE
 	return src
 
 /mob/living/simple_mob/protean_blob/say_understands()
