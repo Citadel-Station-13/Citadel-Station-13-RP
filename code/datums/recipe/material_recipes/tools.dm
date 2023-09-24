@@ -10,16 +10,20 @@
 	result_type = /obj/item/clothing/gloves/ring/material
 	cost = 1
 
-/datum/stack_recipe/material/tools/ring/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
-	return new /obj/item/clothing/gloves/ring/material(where, stack.material)
+/datum/stack_recipe/material/tools/ring/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir, list/created = list())
+	for(var/i in 1 to amount)
+		created += new /obj/item/clothing/gloves/ring/material(where, stack.material)
+	return TRUE
 
 /datum/stack_recipe/material/tools/braclet
 	name = "ring"
 	result_type = /obj/item/clothing/accessory/bracelet/material
 	cost = 1
 
-/datum/stack_recipe/material/tools/ring/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
-	return new /obj/item/clothing/accessory/bracelet/material(where, stack.material)
+/datum/stack_recipe/material/tools/ring/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir, list/created = list())
+	for(var/i in 1 to amount)
+		created += new /obj/item/clothing/accessory/bracelet/material(where, stack.material)
+	return TRUE
 
 /**
  * for the /obj/item/material path
@@ -27,9 +31,10 @@
 /datum/stack_recipe/material/tools/simple
 	abstract_type = /datum/stack_recipe/material/tools/simple
 
-/datum/stack_recipe/material/tools/simple/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
+/datum/stack_recipe/material/tools/simple/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir, list/created = list())
 	ASSERT(ispath(result_type, /obj/item/material))
-	return new result_type(where, stack.material)
+	new result_type(where, stack.material)
+	return TRUE
 
 /datum/stack_recipe/material/tools/simple/baseball_bat
 	name = "baseball bat"

@@ -22,9 +22,11 @@
 				return FALSE
 	return TRUE
 
-/datum/stack_recipe/railing/make(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir = user?.dir)
+/datum/stack_recipe/railing/make(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir = user?.dir, list/created = list())
 	if(isnull(use_dir))
 		return
-	var/obj/structure/railing/built = new(where, TRUE)
-	built.setDir(use_dir)
-	return built
+	for(var/i in 1 to amount)
+		var/obj/structure/railing/built = new(where, TRUE)
+		built.setDir(use_dir)
+		created += built
+	return TRUE
