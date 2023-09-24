@@ -8675,7 +8675,7 @@
 "duration": 5470,
 "artist": "Lynyrd Skynyrd",
 "genre": "Rock",
-"secret": true,
+"secret": false,
 "lobby": false,
 "jukebox": true
 }
