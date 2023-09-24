@@ -7316,13 +7316,13 @@
 /obj/structure/dogbed{
 	name = "pet bed"
 	},
-/mob/living/simple_mob/animal/passive/dog/corgi/Ian,
 /obj/machinery/light{
 	dir = 4
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
+/mob/living/simple_mob/animal/passive/dog/corgi/Ian,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "ePi" = (
@@ -11958,7 +11958,6 @@
 /area/triumph/surfacebase/sauna)
 "ibD" = (
 /obj/structure/dogbed,
-/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley,
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "west bump";
@@ -11967,6 +11966,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "ibU" = (
@@ -12182,6 +12182,7 @@
 /obj/machinery/ai_status_display{
 	pixel_y = 32
 	},
+/obj/item/hardsuit/hazard/equipped,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "iju" = (
@@ -13266,7 +13267,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
@@ -17152,7 +17153,6 @@
 /turf/simulated/floor/tiled,
 /area/security/hanger)
 "lDa" = (
-/mob/living/simple_mob/animal/passive/mimepet,
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
@@ -17161,6 +17161,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/mob/living/simple_mob/animal/passive/mimepet,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/mimeoffice)
 "lDo" = (
@@ -17425,7 +17426,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 5
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "lOO" = (
@@ -21816,7 +21817,7 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "oUM" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "oVe" = (
@@ -30525,19 +30526,12 @@
 	dir = 8
 	},
 /obj/machinery/door/window/northleft{
-	name = "Hardsuit Storage";
+	name = "RIG Storage";
 	req_access = list(1,2,18)
 	},
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/security,
-/obj/item/clothing/suit/space/void/security,
-/obj/item/clothing/head/helmet/space/void/security,
-/obj/item/clothing/head/helmet/space/void/security,
 /obj/structure/window/reinforced,
 /obj/machinery/light,
+/obj/item/hardsuit/hazard/equipped,
 /turf/simulated/floor/tiled,
 /area/security/eva)
 "uXy" = (
@@ -34560,6 +34554,22 @@
 /obj/effect/mist,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/sauna)
+"xIe" = (
+/obj/structure/table/rack{
+	dir = 8;
+	layer = 2.6
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window/northright{
+	name = "RIG Storage";
+	req_access = list(1,2,18)
+	},
+/obj/structure/window/reinforced,
+/obj/item/hardsuit/hazard/equipped,
+/turf/simulated/floor/tiled,
+/area/security/eva)
 "xIk" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -43873,7 +43883,7 @@ xDy
 kOM
 arT
 arT
-xmj
+xIe
 xDy
 sAS
 bzE
