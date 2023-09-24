@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(television)
 				for (var/nlang in line["language"])
 					language = nlang
 				for (var/line_text in line["text"])
-					if(language != NULL)
+					if(language != "")
 						broadcastLine(channel, line_text, language)
 					else
 						broadcastLine(channel, line_test, default_language)
