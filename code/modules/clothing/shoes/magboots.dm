@@ -19,7 +19,7 @@
 
 	var/encumbrance_on = ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE
 
-/obj/item/clothing/shoes/magboots/proc/set_slowdown()
+/obj/item/clothing/shoes/magboots/proc/update_magboot_encumbrance()
 	set_encumbrance(initial(encumbrance) + (magpulse? encumbrance_on : 0))
 
 /obj/item/clothing/shoes/magboots/attack_self(mob/user)
@@ -29,14 +29,14 @@
 	if(magpulse)
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
-		set_slowdown()
+		update_magboot_encumbrance()
 		damage_force = 3
 		if(icon_base) icon_state = "[icon_base]0"
 		to_chat(user, "You disable the mag-pulse traction system.")
 	else
 		clothing_flags |= NOSLIP
 		magpulse = 1
-		set_slowdown()
+		update_magboot_encumbrance()
 		damage_force = 5
 		if(icon_base) icon_state = "[icon_base]1"
 		to_chat(user, "You enable the mag-pulse traction system.")
@@ -56,11 +56,11 @@
 
 /obj/item/clothing/shoes/magboots/equipped(mob/user, slot, flags)
 	. = ..()
-	set_slowdown()
+	update_magboot_encumbrance()
 
 /obj/item/clothing/shoes/magboots/unequipped(mob/user, slot, flags)
 	. = ..()
-	set_slowdown()
+	update_magboot_encumbrance()
 
 /obj/item/clothing/shoes/magboots/examine(mob/user, dist)
 	. = ..()

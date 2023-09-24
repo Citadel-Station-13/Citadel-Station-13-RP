@@ -259,7 +259,7 @@
 //* carry weight
 
 // don't call this you shouldn't need to
-/mob/living/proc/update_carry_slowdown()
+/mob/living/update_carry_slowdown()
 	recalculate_carry()
 	update_carry()
 
@@ -300,7 +300,7 @@
 
 //* hard movespeed slowdown
 
-/mob/living/proc/update_item_slowdown()
+/mob/living/update_item_slowdown()
 	var/tally = get_item_slowdown()
 	if(tally)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_item_slowdown)
