@@ -7,8 +7,8 @@
 	explosion_resistance = 10
 	hardness = 75 //hee hoo bugblades.
 	weight = 15
-	protectiveness = 25 // better than plasteel.
+	protectiveness = 20
 	conductive = 0
-	stack_origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 2)
+	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	radiation_resistance = 10 //roach logic
 	tgui_icon_key = "greyhide"
