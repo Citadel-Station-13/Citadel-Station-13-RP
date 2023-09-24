@@ -800,6 +800,14 @@
 	id = "entry_corridor"
 	},
 /area/class_p/POIs/archaic_temple)
+"Jg" = (
+/obj/effect/trap/launcher/fireball_aoe/finite{
+	dir = 1;
+	id = "headmaster_office";
+	pixel_y = -32
+	},
+/turf/simulated/floor/wood/classp,
+/area/class_p/POIs/archaic_temple)
 "Jv" = (
 /turf/simulated/floor/trap/gold/classp{
 	id = "vault"
@@ -1234,13 +1242,6 @@
 /area/class_p/POIs/archaic_temple)
 "Zc" = (
 /turf/simulated/floor/crystal/classp,
-/area/class_p/POIs/archaic_temple)
-"Zs" = (
-/obj/effect/trap/launcher/fireball_aoe{
-	dir = 1;
-	id = "headmaster_office"
-	},
-/turf/simulated/wall/ironphoron/classp,
 /area/class_p/POIs/archaic_temple)
 "Zu" = (
 /obj/effect/trap/pop_up/flame{
@@ -3373,8 +3374,8 @@ Zc
 La
 ot
 ot
-ot
-Zs
+Jg
+qo
 TM
 TM
 rU
