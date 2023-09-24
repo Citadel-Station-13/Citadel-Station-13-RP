@@ -432,7 +432,7 @@
 				if(isnull(their_rating))
 					continue
 				if(istype(B, P) && istype(A, P))
-					if(B.get_rating() > A.get_rating())
+					if(their_rating > our_rating)
 						R.remove_from_storage(B, src)
 						R.handle_item_insertion(A, null, TRUE)
 						component_parts -= A
@@ -440,8 +440,8 @@
 						B.loc = null
 						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
 						break
-			update_appearance()
-			RefreshParts()
+		update_appearance()
+		RefreshParts()
 	return 1
 
 // todo: refactor
