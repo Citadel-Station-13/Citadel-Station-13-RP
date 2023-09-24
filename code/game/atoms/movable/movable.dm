@@ -205,6 +205,7 @@
 
 //Overlays
 /atom/movable/overlay
+	atom_flags = ATOM_ABSTRACT
 	var/atom/master = null
 	anchored = TRUE
 
@@ -481,13 +482,19 @@
 	update_emissive_layers()
 
 //? Pixel Offsets
-/atom/movable/get_centering_pixel_x_offset(dir, atom/aligning)
+/atom/movable/get_centering_pixel_x_offset(dir)
 	. = ..()
 	. *= icon_scale_x
 
-/atom/movable/get_centering_pixel_y_offset(dir, atom/aligning)
+/atom/movable/get_centering_pixel_y_offset(dir)
 	. = ..()
 	. *= icon_scale_y
+
+/atom/movable/proc/get_buckled_x_offset(atom/buckled)
+	return buckle_pixel_x
+
+/atom/movable/proc/get_buckled_y_offset(atom/buckled)
+	return buckle_pixel_y
 
 //? Emissives
 /atom/movable/proc/update_emissive_layers()

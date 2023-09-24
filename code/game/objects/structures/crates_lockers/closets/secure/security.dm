@@ -366,6 +366,8 @@
 		/obj/item/reagent_containers/food/drinks/flask/detflask,
 		/obj/item/storage/briefcase/crimekit,
 		/obj/item/tape_recorder,
+		/obj/item/camera,
+		/obj/item/camera_film = 2,
 		/obj/item/storage/bag/detective,
 		/obj/item/cassette_tape/random = 3)
 

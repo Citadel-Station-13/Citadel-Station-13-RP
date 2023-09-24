@@ -27,12 +27,26 @@
 	strict_color_stacking = TRUE
 
 /datum/material/hybrid_resin/generate_recipes()
-	recipes = list()
-	recipes += new/datum/stack_recipe("[display_name] door", /obj/structure/simple_door/hybrid_resin, 10, one_per_turf = 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] barricade", /obj/effect/alien/hybrid_resin/wall, 5, time = 5 SECONDS, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] nest", /obj/structure/bed/hybrid_nest, 2, one_per_turf = 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("crude [display_name] bandage", /obj/item/stack/medical/crude_pack, 1, time = 2 SECONDS, pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] membrane", /obj/effect/alien/hybrid_resin/membrane, 1, time = 2 SECONDS, pass_stack_color = TRUE)
+	. = ..()
+	. += create_stack_recipe_datum(
+		name = "resin nest",
+		product = /obj/structure/bed/hybrid_nest,
+		exclusitivity = /obj/structure/bed,
+		cost = 2,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "crude resin bandage",
+		product = /obj/item/stack/medical/crude_pack,
+		time = 2 SECONDS,
+		cost = 1,
+	)
+	. += create_stack_recipe_datum(
+		name = "resin membrane",
+		product = /obj/effect/alien/hybrid_resin/membrane,
+		cost = 1,
+		time = 2 SECONDS,
+	)
 
 /mob/living/carbon/human/proc/hybrid_resin() //
 	set name = "Secrete Resin (75)"
@@ -64,8 +78,6 @@
 
 	if(O)
 		O.color = "#321D37"
-
-	return
 
 /obj/structure/simple_door/hybrid_resin/Initialize(mapload, material_name)
 	return ..(mapload, "resin compound")

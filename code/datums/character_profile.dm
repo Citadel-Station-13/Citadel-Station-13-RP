@@ -7,7 +7,6 @@ GLOBAL_LIST_EMPTY(cached_previews)
 	. = ..()
 	host = WEAKREF(host_mob)
 
-
 /datum/description_profile/Destroy(force, ...)
 	. = ..()
 	host = null
@@ -21,8 +20,8 @@ GLOBAL_LIST_EMPTY(cached_previews)
 	var/mob/living/carbon/human/H = host.resolve()
 
 	data["oocnotes"] = H?.ooc_notes || ""
-	data["headshot_url"] = H?.client?.prefs?.headshot_url
-	data["fullref_url"] = H?.client?.prefs?.full_ref_url
+	data["headshot_url"] = H?.headshot_url
+	data["fullref_url"] = H?.fullref_url
 	data["fullref_toggle"] = H?.client?.prefs?.full_ref_toggle
 	data["directory_visible"] = H?.client?.prefs?.show_in_directory
 	data["vore_tag"] = H?.client?.prefs?.directory_tag || "Unset"

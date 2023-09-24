@@ -12,9 +12,7 @@
 		"nebula_pad_1",
 		"nebula_pad_2",
 		"nebula_space_SW",
-		"nebula_pad_3a",
-		"nebula_pad_3b",
-		"nebula_pad_3c",
+		"nebula_pad_3",
 		"nebula_pad_4a",
 		"nebula_pad_4b",
 		"nebula_pad_4c",
@@ -26,7 +24,7 @@
 		)
 
 	initial_restricted_waypoints = list(
-		"Beruang Trade Ship" = list("tradeport_hangar")
+		"Beruang Trade Ship" = list("tradeport_hangar"), "Beluga Passenger Liner" = list("nebula_pad_3")
 		)
 /* // Old Restricted list. Leaving commented out for reference - Bloop
 	initial_restricted_waypoints = list(
