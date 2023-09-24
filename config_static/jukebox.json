@@ -5,7 +5,6 @@
 "duration": 2040,
 "artist": "2Mello",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -16,7 +15,6 @@
 "duration": 2230,
 "artist": "2Mello",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -87,7 +85,6 @@
 "duration": 2980,
 "artist": "Aerosmith",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -98,7 +95,6 @@
 "duration": 3210,
 "artist": "Aerosmith",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -199,7 +195,6 @@
 "duration": 1690,
 "artist": "Alkaline Trio",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -340,7 +335,6 @@
 "duration": 2720,
 "artist": "Arctic Monkeys",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -371,7 +365,6 @@
 "duration": 2510,
 "artist": "Avery Tare's Slasher Flicks",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -402,7 +395,6 @@
 "duration": 2130,
 "artist": "Bad Boys Blue",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Disco, Funk, Soul, and R&B"
@@ -623,7 +615,6 @@
 "duration": 3070,
 "artist": "Bo Burnham",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Folk and Indie"
@@ -634,7 +625,6 @@
 "duration": 2810,
 "artist": "Bo Burnham",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -645,7 +635,6 @@
 "duration": 2470,
 "artist": "Bo En",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -756,7 +745,6 @@
 "duration": 2390,
 "artist": "Bruce Springsteen",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1187,7 +1175,6 @@
 "duration": 2200,
 "artist": "Constipated Jesus",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Country and Western"
@@ -1198,7 +1185,6 @@
 "duration": 1390,
 "artist": "Creedence Clearwater Revival",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1219,7 +1205,6 @@
 "duration": 1590,
 "artist": "Creedence Clearwater Revival",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1230,7 +1215,6 @@
 "duration": 1860,
 "artist": "Creedence Clearwater Revival",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1241,7 +1225,6 @@
 "duration": 2800,
 "artist": "Creedence Clearwater Revival",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1252,7 +1235,6 @@
 "duration": 3140,
 "artist": "Crystal Castles",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -1263,7 +1245,6 @@
 "duration": 3250,
 "artist": "Crystal Castles",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -1304,7 +1285,6 @@
 "duration": 1080,
 "artist": "Cyriak",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -1385,7 +1365,6 @@
 "duration": 2420,
 "artist": "Damon Albarn",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -1506,7 +1485,6 @@
 "duration": 2460,
 "artist": "Deadmau5 (Ft. Gerard Way)",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -1557,7 +1535,6 @@
 "duration": 2750,
 "artist": "Death Grips",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -1588,7 +1565,6 @@
 "duration": 1610,
 "artist": "Death Grips",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -1599,7 +1575,6 @@
 "duration": 2250,
 "artist": "Death Grips (A /k/ production)",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -1610,7 +1585,6 @@
 "duration": 2950,
 "artist": "Def Leppard",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1621,7 +1595,6 @@
 "duration": 2470,
 "artist": "Def Leppard",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1632,7 +1605,6 @@
 "duration": 2470,
 "artist": "Def Leppard",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1643,7 +1615,6 @@
 "duration": 2140,
 "artist": "Deltron3030",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -1654,7 +1625,6 @@
 "duration": 2660,
 "artist": "Deltron3030",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -1775,7 +1745,6 @@
 "duration": 1020,
 "artist": "Dongle Fimblethorp",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1936,7 +1905,6 @@
 "duration": 2160,
 "artist": "Eddie Noack",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Country and Western"
@@ -1967,7 +1935,6 @@
 "duration": 2810,
 "artist": "Electric Light Orchestra",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1978,7 +1945,6 @@
 "duration": 1420,
 "artist": "Electric Six",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -2219,7 +2185,6 @@
 "duration": 2500,
 "artist": "Fleetwood Mac",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -2290,7 +2255,6 @@
 "duration": 2680,
 "artist": "Foreigner",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -2721,7 +2685,6 @@
 "duration": 2060,
 "artist": "Gorillaz",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -2742,7 +2705,6 @@
 "duration": 1660,
 "artist": "Gorillaz",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -2773,7 +2735,6 @@
 "duration": 1330,
 "artist": "Gorillaz",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -2804,7 +2765,6 @@
 "duration": 1390,
 "artist": "Graham Kartna",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -2825,7 +2785,6 @@
 "duration": 6860,
 "artist": "Grant MacDonald",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -2836,7 +2795,6 @@
 "duration": 4090,
 "artist": "Grant MacDonald",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -2847,7 +2805,6 @@
 "duration": 1530,
 "artist": "Green Day",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -2858,7 +2815,6 @@
 "duration": 2850,
 "artist": "Green Day",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -2869,7 +2825,6 @@
 "duration": 2240,
 "artist": "Green Day",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -3190,7 +3145,6 @@
 "duration": 260,
 "artist": "HOME",
 "genre": "Electronic",
-"emag": true,
 "secret": true,
 "lobby": false,
 "jukebox": true
@@ -3281,7 +3235,6 @@
 "duration": 2040,
 "artist": "Hunnid-P & Tomoya Ohtani",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -3292,7 +3245,6 @@
 "duration": 1440,
 "artist": "ibitbt",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -3343,7 +3295,6 @@
 "duration": 4480,
 "artist": "Infected Mushroom",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -3354,7 +3305,6 @@
 "duration": 3940,
 "artist": "Infected Mushroom",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -3435,7 +3385,6 @@
 "duration": 2080,
 "artist": "Jack Stauber",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -3446,7 +3395,6 @@
 "duration": 1880,
 "artist": "Jack Stauber",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -3507,7 +3455,6 @@
 "duration": 1830,
 "artist": "Jan Valta & Adam Sporka",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Sol Common Precursors"
@@ -3548,7 +3495,6 @@
 "duration": 2360,
 "artist": "Jennifer Saunders",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -3619,7 +3565,6 @@
 "duration": 870,
 "artist": "J. Jonah Jameson",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Arcade"
@@ -3800,7 +3745,6 @@
 "duration": 2570,
 "artist": "Junji Majima",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Sol Common Precursors"
@@ -4101,7 +4045,6 @@
 "duration": 2240,
 "artist": "KNOWER",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -4162,7 +4105,6 @@
 "duration": 1770,
 "artist": "Lemon Demon",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -4183,7 +4125,6 @@
 "duration": 730,
 "artist": "Leonz",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -4384,7 +4325,6 @@
 "duration": 2480,
 "artist": "Love Fist",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -4395,7 +4335,6 @@
 "duration": 1920,
 "artist": "Love Fist",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -4956,7 +4895,6 @@
 "duration": 3400,
 "artist": "Mick Gordon",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Metal"
@@ -4997,7 +4935,6 @@
 "duration": 1770,
 "artist": "Mild High Club",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -5488,7 +5425,6 @@
 "duration": 2470,
 "artist": "Neil Cicierega",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -5499,7 +5435,6 @@
 "duration": 2090,
 "artist": "Neil Cicierega",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -5550,7 +5485,6 @@
 "duration": 2660,
 "artist": "New Order",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -5591,7 +5525,6 @@
 "duration": 3000,
 "artist": "New Radicals",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -5682,7 +5615,6 @@
 "duration": 1640,
 "artist": "Ninja Sex Party",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Disco, Funk, Soul, and R&B"
@@ -5693,7 +5625,6 @@
 "duration": 2360,
 "artist": "Ninja Sex Party",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Disco, Funk, Soul, and R&B"
@@ -5714,7 +5645,6 @@
 "duration": 1610,
 "artist": "OblivionFall",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -5855,7 +5785,6 @@
 "duration": 1400,
 "artist": "Pepper Coyote",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Country and Western"
@@ -5956,7 +5885,6 @@
 "duration": 2530,
 "artist": "PilotRedSun",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -5977,7 +5905,6 @@
 "duration": 2160,
 "artist": "Poison",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -6018,7 +5945,6 @@
 "duration": 2270,
 "artist": "Poison",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -6399,7 +6325,6 @@
 "duration": 1010,
 "artist": "Robert Prince",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Arcade"
@@ -6440,7 +6365,6 @@
 "duration": 4880,
 "artist": "Rock Hard",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -6601,7 +6525,6 @@
 "duration": 1110,
 "artist": "Shoji Meguro",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Arcade"
@@ -6642,7 +6565,6 @@
 "duration": 2190,
 "artist": "SHOKK 青",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -7063,7 +6985,6 @@
 "duration": 2420,
 "artist": "Sugar Ray",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7094,7 +7015,6 @@
 "duration": 1870,
 "artist": "Superorganism",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -7185,7 +7105,6 @@
 "duration": 2450,
 "artist": "Tally Hall",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -7286,7 +7205,6 @@
 "duration": 2520,
 "artist": "Tee Grizzly",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -7377,7 +7295,6 @@
 "duration": 2250,
 "artist": "The Cars",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7438,7 +7355,6 @@
 "duration": 1880,
 "artist": "The Clash",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7529,7 +7445,6 @@
 "duration": 3050,
 "artist": "The Eagles",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7540,7 +7455,6 @@
 "duration": 2110,
 "artist": "The Eagles",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7631,7 +7545,6 @@
 "duration": 2570,
 "artist": "Them Crooked Vultures",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7692,7 +7605,6 @@
 "duration": 2600,
 "artist": "The Police",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7753,7 +7665,6 @@
 "duration": 2120,
 "artist": "The Scary Jokes",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -7764,7 +7675,6 @@
 "duration": 2940,
 "artist": "The Scary Jokes",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -7785,7 +7695,6 @@
 "duration": 2660,
 "artist": "The Smashing Pumpkins",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7796,7 +7705,6 @@
 "duration": 2010,
 "artist": "The Smashing Pumpkins",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7807,7 +7715,6 @@
 "duration": 1990,
 "artist": "The Soft Pack",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7958,7 +7865,6 @@
 "duration": 1720,
 "artist": "Thursday",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -8179,7 +8085,6 @@
 "duration": 1300,
 "artist": "Vera Keyes",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Jazz and Lounge"
@@ -8240,7 +8145,6 @@
 "duration": 2240,
 "artist": "Weird Al Yankovic",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -8301,7 +8205,6 @@
 "duration": 2840,
 "artist": "Whitesnake",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -8332,7 +8235,6 @@
 "duration": 2270,
 "artist": "Will Smith",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -8353,7 +8255,6 @@
 "duration": 1060,
 "artist": "WittyUsername",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -8474,7 +8375,6 @@
 "duration": 2280,
 "artist": "Young Scrolls",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -8485,7 +8385,6 @@
 "duration": 1400,
 "artist": "Young Scrolls",
 "secret": true,
-"emag": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -8526,7 +8425,6 @@
 "duration": 2580,
 "artist": "ZZ Top",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"

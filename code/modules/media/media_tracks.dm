@@ -9,7 +9,6 @@
 	var/artist		// Song's creator
 	var/duration	// Song length in deciseconds
 	var/secret		// Show up in regular playlist or secret playlist?
-	var/emag        // Show up in the emagged playlist?
 	var/lobby		// Be one of the choices for lobby music?
 	var/jukebox		// Does it even show up in the jukebox?
 	var/genre		// What is the genre of the song?
@@ -21,7 +20,6 @@
 	src.genre = genre
 	src.duration = duration
 	src.secret = secret
-	src.emag = emag
 	src.lobby = lobby
 	src.jukebox = jukebox
 

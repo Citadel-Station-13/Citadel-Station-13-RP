@@ -37,9 +37,6 @@
 	var/max_queue_len = 3
 	var/list/queue = list()
 	var/datum/media_track/current_track
-	// Only visible if emagged
-	var/list/datum/media_track/emag_tracks = list(
-	)
 
 
 /obj/machinery/media/jukebox/Destroy()
@@ -56,7 +53,7 @@
 		machine_stat |= BROKEN
 
 /obj/machinery/media/jukebox/proc/getTracksList()
-	return hacked ? SSmedia_tracks.all_tracks : SSmedia_tracks.jukebox_tracks
+	return emagged ? SSmedia_tracks.all_tracks : SSmedia_tracks.jukebox_tracks
 
 /obj/machinery/media/jukebox/process()
 	if(!playing)
@@ -313,18 +310,18 @@
 	return ..()
 
 /obj/machinery/media/jukebox/emag_act(remaining_charges, mob/user)
-	var/list/tracks = getTracksList()
 	if(!emagged)
 		emagged = 1
 		StopPlaying()
 	else
 		StopPlaying()
 		visible_message(SPAN_NOTICE("\The [src] abruptly stops and reboots itself, but nothing else happens."))
+		getTracksList()
 		return 1
 	if(emagged == 1)
-		tracks.Add(emag_tracks)
 		visible_message(SPAN_NOTICE("\The [src] abruptly stops before rebooting itself. A notice flashes on the screen indicating new songs have been added to the tracklist."))
 		update_icon()
+		getTracksList()
 		return 1
 
 /obj/machinery/media/jukebox/proc/StopPlaying()
