@@ -383,7 +383,6 @@ Add those other swinging traps you mentioned above!
 			M.use(5)
 			Break()
 			to_chat(user, "<span class='notice'>You slip the rods into the firing mechanism, jamming it.</span>")
-			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need five rods to jam the mechanism.</span>")
 
