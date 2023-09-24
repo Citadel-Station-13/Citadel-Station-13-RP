@@ -1,5 +1,5 @@
 /datum/material/steel
-	id = "steel"
+	id = MAT_STEEL
 	name = MAT_STEEL
 	stack_type = /obj/item/stack/material/steel
 	integrity = 150
