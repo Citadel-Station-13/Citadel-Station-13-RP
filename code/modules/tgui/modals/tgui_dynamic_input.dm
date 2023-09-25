@@ -9,7 +9,7 @@
 	/// options list
 	var/list/options
 
-/datum/tgui_dyamic_query/proc/text(key, name, desc, max_length = 512, multi_line = FALSE, default)
+/datum/tgui_dynamic_query/proc/text(key, name, desc, max_length = 512, multi_line = FALSE, default)
 	RETURN_TYPE(/datum/tgui_dynamic_query)
 	options += list(
 		"key" = key,

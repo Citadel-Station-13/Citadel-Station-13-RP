@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /mob/living/carbon/_slot_by_item(obj/item/I)
 	if(handcuffed == I)
 		return SLOT_ID_HANDCUFFED
