@@ -461,7 +461,9 @@
 
 /obj/item/clothing/accessory/collar/vmcrystal/proc/check_owner()
 	//He's dead, jim
-	if((state == 1) && owner && (owner.stat == DEAD))
+	if(state != 1)
+		return
+	if(owner && (owner in src.view) && owner.stat == DEAD)
 		update_state(2)
 		audible_message("<span class='warning'>The [name] begins flashing red.</span>")
 		sleep(30)
