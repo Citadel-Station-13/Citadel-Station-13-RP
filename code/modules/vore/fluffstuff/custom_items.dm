@@ -463,7 +463,8 @@
 	//He's dead, jim
 	if(state != 1)
 		return
-	if(owner && (in_range_of(src, owner,7)) && owner.stat == DEAD)
+	var/list/connected_z_levels = GetConnectedZlevels(get_z(src))
+	if(owner && (owner.z in connected_z_levels) && owner.stat == DEAD)
 		update_state(2)
 		audible_message("<span class='warning'>The [name] begins flashing red.</span>")
 		sleep(30)
