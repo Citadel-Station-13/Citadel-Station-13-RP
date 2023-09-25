@@ -1,5 +1,5 @@
 /datum/material/copper
-	id = "copper"
+	id = MAT_COPPER
 	name = "copper"
 	icon_colour = "#b45c13"
 	weight = 15

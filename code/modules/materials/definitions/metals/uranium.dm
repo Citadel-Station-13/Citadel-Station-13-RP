@@ -1,5 +1,5 @@
 /datum/material/uranium
-	id = "uranium"
+	id = MAT_URANIUM
 	name = "uranium"
 	stack_type = /obj/item/stack/material/uranium
 	radioactivity = RAD_INTENSITY_MAT_URANIUM

@@ -3177,6 +3177,7 @@
 #include "code\modules\materials\definitions\misc\snow.dm"
 #include "code\modules\materials\definitions\misc\wax.dm"
 #include "code\modules\materials\definitions\organic\bone.dm"
+#include "code\modules\materials\definitions\organic\chitin.dm"
 #include "code\modules\materials\definitions\organic\cotton.dm"
 #include "code\modules\materials\definitions\organic\diona.dm"
 #include "code\modules\materials\definitions\organic\flesh.dm"
