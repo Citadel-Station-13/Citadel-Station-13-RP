@@ -155,7 +155,7 @@
 	/// callback to invoke on finish
 	var/datum/callback/callback
 
-/datum/tgui_dynamic_input/New(mob/user, message, title, datum/tgui_dynaimc_query/query, timeout, datum/callback/callback)
+/datum/tgui_dynamic_input/New(mob/user, message, title, datum/tgui_dynamic_query/query, timeout, datum/callback/callback)
 	#warn impl
 
 /datum/tgui_dynamic_input/Destroy()

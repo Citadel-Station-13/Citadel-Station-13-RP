@@ -248,7 +248,7 @@
 	energy = 7000
 	max_energy = 7000
 	regen_rate = 70 //100 seconds to full
-	hard_slowdown = -1
+	slowdown = -1
 	instability_modifier = 0.9
 	cooldown_modifier = 0.9
 

@@ -310,4 +310,4 @@
 /mob/living/proc/get_item_slowdown()
 	. = 0
 	for(var/obj/item/I as anything in get_equipped_items())
-		. += I.hard_slowdown
+		. += I.slowdown

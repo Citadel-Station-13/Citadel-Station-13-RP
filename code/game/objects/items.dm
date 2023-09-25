@@ -52,8 +52,7 @@
 	var/weight_registered
 	/// Hard slowdown. Applied before carry weight.
 	/// This affects multiplicative movespeed.
-	#warn regex to slowdown again
-	var/hard_slowdown = 0
+	var/slowdown = 0
 
 	//? Combat
 	/// Amount of damage we do on melee.
@@ -819,9 +818,9 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	update_encumbrance()
 
 /obj/item/proc/set_slowdown(amount)
-	if(amount == hard_slowdown)
+	if(amount == slowdown)
 		return
-	hard_slowdown = amount
+	slowdown = amount
 	worn_mob()?.update_item_slowdown()
 
 /obj/item/proc/propagate_weight(old_weight, new_weight)

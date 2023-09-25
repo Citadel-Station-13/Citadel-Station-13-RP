@@ -583,7 +583,7 @@
 		if(istype(wearer) && !wearer.wearing_rig)
 			wearer.wearing_rig = src
 		set_encumbrance(isnull(online_encumbrance)? initial(encumbrance) : online_encumbrance)
-		hard_slowdown = initial(hard_slowdown) + sprint_slowdown_modifier
+		set_slowdown(initial(slowdown) + sprint_slowdown_modifier)
 
 	if(cell && cell.charge > 0 && electrified > 0)
 		electrified--
