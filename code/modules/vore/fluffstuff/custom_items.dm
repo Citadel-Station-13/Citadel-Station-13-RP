@@ -463,7 +463,7 @@
 	//He's dead, jim
 	if(state != 1)
 		return
-	if(owner && (owner in src.view) && owner.stat == DEAD)
+	if(owner && (in_range_of(src, owner,7)) && owner.stat == DEAD)
 		update_state(2)
 		audible_message("<span class='warning'>The [name] begins flashing red.</span>")
 		sleep(30)
