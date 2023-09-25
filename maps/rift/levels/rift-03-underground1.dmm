@@ -4528,7 +4528,7 @@
 	external_pressure_bound_default = 0;
 	frequency = 1441;
 	icon_state = "map_vent_in";
-	id_tag = "mix_out";
+	id_tag = "o2_out"s;
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
@@ -6987,7 +6987,7 @@
 /area/crew_quarters/pool)
 "xg" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Underground Research Storage"
+	RCon_tag = s
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -13792,7 +13792,7 @@
 	dir = 4;
 	input_tag = "o2_in";
 	name = "Oxygen Supply Control";
-	output_tag = "o2_out";
+	output_tag = s;
 	sensors = list("o2_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black,
