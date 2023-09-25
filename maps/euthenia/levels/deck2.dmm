@@ -2236,10 +2236,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/security/lobby)
-"bCc" = (
-/obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/turf/simulated/floor/reinforced,
-/area/crew_quarters/bar_backroom)
 "bCi" = (
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
@@ -3218,10 +3214,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
-"cxK" = (
-/obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/turf/simulated/floor/reinforced,
-/area/main_map/maintenance/deck_two/forward/port)
 "cxY" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -18321,6 +18313,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
+"oHG" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/crew_quarters/bar_backroom)
 "oHN" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -23433,6 +23429,10 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_two/forward/port)
+"sSO" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/forward/port)
 "sSQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
@@ -54084,10 +54084,10 @@ sZU
 sZU
 jWH
 ulZ
-dOB
-dOB
-dOB
-dOB
+jSS
+jSS
+jSS
+jSS
 ppi
 lTJ
 jSS
@@ -54278,10 +54278,10 @@ ljM
 sZU
 jWH
 xuL
-dOB
-kLI
-kLI
-vYd
+jSS
+oWw
+oWw
+oWw
 thb
 mJX
 non
@@ -54472,10 +54472,10 @@ sZU
 vKw
 exX
 hfN
-dOB
-kLI
-kLI
-vYd
+jSS
+oWw
+oWw
+oWw
 thb
 mJX
 oWw
@@ -54666,10 +54666,10 @@ sZU
 sAI
 eLY
 jGV
-dOB
-kLI
-kLI
-jmt
+jSS
+oWw
+oWw
+oWw
 thb
 mJX
 oWw
@@ -54860,10 +54860,10 @@ jSS
 jSS
 fKs
 jSS
-dOB
-kLI
-kLI
-jmt
+jSS
+oWw
+oWw
+oWw
 thb
 hEd
 tuk
@@ -55054,10 +55054,10 @@ sZU
 sZU
 jWH
 sZU
-dOB
-kLI
-kLI
-vYd
+jSS
+oWw
+oWw
+oWw
 thb
 thb
 jjn
@@ -55248,10 +55248,10 @@ sZU
 sZU
 jWH
 ulZ
-dOB
-kLI
-kLI
-goG
+jSS
+nkE
+nkE
+nkE
 nkE
 nkE
 nkE
@@ -55442,11 +55442,11 @@ ljM
 vKw
 dkZ
 xuL
-dOB
-kLI
-kLI
-goG
+sZU
 nkE
+cOp
+cOp
+cOp
 cOp
 cOp
 nkE
@@ -55636,11 +55636,11 @@ sZU
 kbi
 eqX
 sZU
-dOB
-kLI
-kLI
-goG
+sZU
+nkE
 mRV
+cOp
+cOp
 tCN
 rBy
 nkE
@@ -55830,11 +55830,11 @@ gZV
 vhr
 orC
 bEU
-dOB
-kLI
-kLI
-bCc
+sZU
+nkE
 sxM
+cOp
+cOp
 bFx
 nYN
 nkE
@@ -56023,11 +56023,11 @@ dOB
 sZU
 hNQ
 sZU
-dOB
-dOB
-kLI
-kLI
-bCc
+sZU
+sZU
+nkE
+rEy
+cOp
 cOp
 ncn
 nrk
@@ -56217,12 +56217,12 @@ dOB
 sZU
 gOz
 sZU
-cxK
-kLI
-kLI
-hts
-goG
-rEy
+sZU
+sZU
+nkE
+cOp
+cOp
+cOp
 gLT
 cOp
 nkE
@@ -56411,11 +56411,11 @@ dOB
 sZU
 gOz
 sZU
-cxK
-kLI
-kLI
-hts
+dOB
+sSO
 goG
+oHG
+oHG
 goG
 cOp
 wXY

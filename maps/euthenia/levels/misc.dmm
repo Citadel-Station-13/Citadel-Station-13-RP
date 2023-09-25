@@ -337,17 +337,6 @@
 /obj/machinery/shipsensors,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
-"dS" = (
-/obj/structure/shuttle/engine/heater,
-/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
-/obj/effect/shuttle_landmark{
-	base_area = /area/centcom/terminal;
-	base_turf = /turf/unsimulated/floor/techfloor_grid;
-	landmark_tag = "escape_cc";
-	name = "Escape Shuttle Centcom"
-	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/escape)
 "dU" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-06"
@@ -9833,7 +9822,7 @@ eL
 xm
 wj
 pj
-dS
+RV
 Bj
 ae
 LD
@@ -21847,17 +21836,17 @@ Te
 Te
 Te
 HK
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
-Te
+IU
+IU
+IU
+IU
+IU
+IU
+IU
+IU
+IU
+IU
+IU
 HK
 Te
 Te
