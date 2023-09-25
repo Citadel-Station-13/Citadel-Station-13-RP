@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(transcore)
 	var/timer = TICK_USAGE
 
 	INTERNAL_PROCESS_STEP(SSTRANSCORE_IMPLANTS,TRUE,process_implants,cost_implants,SSTRANSCORE_BACKUPS)
-//	INTERNAL_PROCESS_STEP(SSTRANSCORE_BACKUPS,FALSE,process_backups,cost_backups,SSTRANSCORE_IMPLANTS)
+	INTERNAL_PROCESS_STEP(SSTRANSCORE_BACKUPS,FALSE,process_backups,cost_backups,SSTRANSCORE_IMPLANTS)
 
 /datum/controller/subsystem/transcore/proc/process_implants(resumed = 0)
 	if (!resumed)
@@ -139,9 +139,8 @@ SUBSYSTEM_DEF(transcore)
 			MR.nif_durability = null
 			MR.nif_software = null
 			MR.nif_savedata = null
-
-
-	MR = new(mind, mind.current, add_to_db = FALSE, one_time = one_time)
+	else
+		MR = new(mind, mind.current, add_to_db = TRUE, one_time = one_time)
 
 	return MR
 

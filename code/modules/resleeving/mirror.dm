@@ -43,6 +43,7 @@
 		icon_state = "mirror_implant"
 		human = H
 		human.mirror = src
+		LAZYADD(SStranscore.implants, src)
 
 /obj/item/implant/mirror/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/obj/machinery/computer/transhuman/resleeving/comp = target
