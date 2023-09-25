@@ -11296,7 +11296,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "wv" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
 "ww" = (
@@ -15177,7 +15177,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -25
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
@@ -18945,7 +18945,7 @@
 /area/tether/station/visitorhallway/lounge)
 "Mf" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "Mg" = (

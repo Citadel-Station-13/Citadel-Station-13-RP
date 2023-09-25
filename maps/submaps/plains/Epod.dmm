@@ -10,7 +10,7 @@
 /turf/template_noop,
 /area/submap/Epod1)
 "d" = (
-/obj/structure/door_assembly/door_assembly_ext,
+/obj/structure/door_assembly/external,
 /turf/template_noop,
 /area/submap/Epod1)
 "e" = (

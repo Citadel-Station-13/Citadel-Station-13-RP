@@ -1,3 +1,5 @@
+// todo: damn, 2011? sounds like ripe time for refactor / optimizations round 'ere-- [user was banned for this post]
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * *
  * /datum/recipe by rastaf0            13 apr 2011 *
  * * * * * * * * * * * * * * * * * * * * * * * * * *

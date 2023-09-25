@@ -881,11 +881,11 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/iaa)
 "atO" = (
-/mob/living/simple_mob/animal/passive/cow,
 /obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
 	},
+/mob/living/simple_mob/animal/passive/cow,
 /turf/simulated/floor/grass,
 /area/hydroponics/cafegarden)
 "atT" = (
@@ -2409,6 +2409,7 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/suit/space/void/headofsecurity,
 /obj/item/clothing/head/helmet/space/void/headofsecurity,
+/obj/item/hardsuit/hazard/equipped,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/hos)
 "biw" = (
@@ -36294,7 +36295,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics/mechbay)
 "uJx" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "uJD" = (
