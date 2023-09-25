@@ -63,6 +63,7 @@
 
 #define TGUI_INPUT_DATA_KEY "key"
 #define TGUI_INPUT_DATA_TYPE "type"
+#define TGUI_INPUT_DATA_DESC "desc"
 #define TGUI_INPUT_DATA_NAME "name"
 #define TGUI_INPUT_DATA_CONSTRAINTS "constraints"
 #define TGUI_INPUT_DATA_DEFAULT "default"

@@ -2,6 +2,103 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /**
+ * Helper datum used to build a query for tgui_dynamic_input
+ * High overhead, technically not necessary, but, this is easy to use as an API.
+ */
+/datum/tgui_dynamic_query
+	/// options list
+	var/list/options
+
+/datum/tgui_dyamic_query/proc/text(key, name, desc, max_length = 512, multi_line = FALSE, default)
+	RETURN_TYPE(/datum/tgui_dynamic_query)
+	options += list(
+		"key" = key,
+		"name" = name,
+		"desc" = desc,
+		"default" = default,
+		"type" = TGUI_INPUT_DATATYPE_TEXT,
+		"constraints" = list(max_length),
+	)
+	return src
+
+/datum/tgui_dynamic_query/proc/number(key, name, desc, min_value = -INFINITY, max_value = INFINITY, round_to, default)
+	RETURN_TYPE(/datum/tgui_dynamic_query)
+	options += list(
+		"key" = key,
+		"name" = name,
+		"desc" = desc,
+		"default" = default,
+		"type" = TGUI_INPUT_DATATYPE_NUM,
+		"constraints" = list(min_value, max_value, round_to),
+	)
+	return src
+
+/datum/tgui_dynamic_query/proc/toggle(key, name, desc, default)
+	RETURN_TYPE(/datum/tgui_dynamic_query)
+	options += list(
+		"key" = key,
+		"name" = name,
+		"desc" = desc,
+		"default" = default,
+		"type" = TGUI_INPUT_DATATYPE_TOGGLE,
+		"constraints" = list(),
+	)
+	return src
+
+/datum/tgui_dynamic_query/proc/pick(key, name, desc, list/choices = list(), default)
+	RETURN_TYPE(/datum/tgui_dynamic_query)
+	options += list(
+		"key" = key,
+		"name" = name,
+		"desc" = desc,
+		"default" = default,
+		"type" = TGUI_INPUT_DATATYPE_LIST_PICK,
+		"constraints" = choices,
+	)
+	return src
+
+/**
+ * builds return list of results
+ */
+/datum/tgui_dynamic_query/proc/get_results(list/choices)
+	. = list()
+	var/got
+	for(var/i in 1 to length(choices))
+		var/list/params = options[i]
+		switch(params[TGUI_INPUT_DATA_TYPE])
+			if(TGUI_INPUT_DATATYPE_TEXT)
+				got = isnull(choices[i]) ? params[TGUI_INPUT_DATA_DEFAULT] : choices[i]
+				if(!isnull(got))
+					if(length(got) > params[TGUI_INPUT_DATA_CONSTRAINTS][1])
+						got = copytext_char(got, 1, params[TGUI_INPUT_DATA_CONSTRAINTS][1] + 1)
+				. += got
+			if(TGUI_INPUT_DATATYPE_NUM)
+				got = isnull(choices[i]) ? params[TGUI_INPUT_DATA_DEFAULT] : text2num(choices[i])
+				if(!isnull(got))
+					got = clamp(got, params[TGUI_INPUT_DATA_CONSTRAINTS][1], params[TGUI_INPUT_DATA_CONSTRAINTS][2])
+					got = round(got, params[TGUI_INPUT_DATA_CONSTRAINTS][3])
+			if(TGUI_INPUT_DATATYPE_LIST_PICK)
+				got = isnull(choices[i]) ? params[TGUI_INPUT_DATA_DEFAULT] : choices[i]
+				if(!isnull(got))
+					if(!(got in params[TGUI_INPUT_DATA_CONSTRAINTS]))
+						if(length(params[TGUI_INPUT_DATA_CONSTRAINTS]))
+							got = params[TGUI_INPUT_DATA_CONSTRAINTS][1]
+						else
+							got = null
+				. += got
+			if(TGUI_INPUT_DATATYPE_TOGGLE)
+				got = isnull(choices[i]) ? params[TGUI_INPUT_DATA_DEFAULT] : choices[i]
+				if(!isnull(got))
+					got = !!got
+				. += got
+
+/**
+ * returns list to be sent to UI
+ */
+/datum/tgui_dynamic_query/proc/get_query()
+	return options
+
+/**
  * Creates a TGUI input window and returns the user's response
  *
  * This is used to grab a set of responses to various datatypes.
@@ -11,14 +108,15 @@
  * * user - who to send this to
  * * message - description in interface
  * * title - self explanatory
- * * query - structured list of input items (see TGUI_INPUT_DATA_* defines) as list(list(data...), ...)
+ * * query - built query
  * * timeout - timeout before menu closes. if it times out, choices will be null.
- * * sanitize - perform sanitize in this proc instead of trusting caller to do it
  *
- * @return list of key-value pairs (TGUI_INPUT_DATA_KEY) associated to values
+ * @return list of key-value pairs (the TGUI_INPUT_DATA_KEY's you put in) associated to values
  */
-/proc/tgui_dynamic_input(mob/user, message, title = "Input", list/query, timeout = 0, sanitize = FALSE)
-	#warn impl
+/proc/tgui_dynamic_input(mob/user, message, title = "Input", datum/tgui_dynamic_query/query, timeout = 0)
+	var/datum/tgui_dynamic_input/modal = new(user, message, title, query, timeout)
+	modal.block_on_finished()
+	return modal.query.get_results(modal.choices)
 
 /**
  * Creates a TGUI input window and returns the user's response
@@ -30,20 +128,22 @@
  * * user - who to send this to
  * * message - description in interface
  * * title - self explanatory
- * * query - structured list of input items (see TGUI_INPUT_DATA_* defines) as list(list(data...), ...)
+ * * query - built query
+ * * timeout - timeout before menu closes. if it times out, choices will be null.
  * * callback - callback called with first arg being the picked list when we're done.
- * * sanitize - perform sanitize in this proc instead of trusting caller to do it
+ *
+ * @return the /datum/tgui_dynamic_input instance created. you should probably not touch this unless you know what you're doing.
  */
-/proc/tgui_dynamic_input_async(mob/user, message, title = "Input", list/query, sanitize = FALSE, datum/callback/callback)
-	#warn impl
+/proc/tgui_dynamic_input_async(mob/user, message, title = "Input", datum/tgui_dynamic_query/query, timeout = 0, datum/callback/callback)
+	return new /datum/tgui_dynamic_input(user, message, title, query, timeout, callback)
 
 /datum/tgui_dynamic_input
 	/// title of the windo
 	var/title
 	/// message that appears inside the window
 	var/message
-	/// structured query list
-	var/list/query
+	/// query datum
+	var/datum/tgui_dynamic_query/query
 	/// list of user's choices; null if they haven't picked yet
 	var/list/choices
 	/// when we were opened
@@ -54,12 +154,8 @@
 	var/closed
 	/// callback to invoke on finish
 	var/datum/callback/callback
-	/// do we sanitize?
-	var/sanitize
 
-	#warn impl
-
-/datum/tgui_dynamic_input/New(mob/user, message, title, list/query, timeout, sanitize, datum/callback/callback)
+/datum/tgui_dynamic_input/New(mob/user, message, title, datum/tgui_dynaimc_query/query, timeout, datum/callback/callback)
 	#warn impl
 
 /datum/tgui_dynamic_input/Destroy()
