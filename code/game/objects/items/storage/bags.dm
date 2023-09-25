@@ -403,7 +403,6 @@
 	desc = "A bag for storing slime extracts, slime potions, monkey cubes, and beakers."
 	max_storage_space = 200
 	w_class = ITEMSIZE_LARGE
-	slowdown = 1
 	can_hold = list(
 		/obj/item/reagent_containers/glass/beaker,
 		/obj/item/reagent_containers/food/snacks/monkeycube,
