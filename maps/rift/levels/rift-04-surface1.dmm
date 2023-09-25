@@ -14342,6 +14342,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
+"jdt" = (
+/obj/structure/sign/warning/caution,
+/turf/simulated/wall/prepainted,
+/area/maintenance/security/lower)
 "jdA" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
@@ -58740,7 +58744,7 @@ dHp
 dMX
 dMX
 gvB
-tdI
+jdt
 nQJ
 qlA
 xPm

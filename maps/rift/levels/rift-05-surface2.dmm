@@ -287,6 +287,9 @@
 /obj/structure/sign/department/sci{
 	pixel_y = -32
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "ang" = (
@@ -5094,7 +5097,7 @@
 	dir = 8
 	},
 /obj/structure/cable/green{
-	icon_state = "4-8"
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -19590,6 +19593,9 @@
 /area/crew_quarters/pool)
 "mod" = (
 /obj/effect/floor_decal/plaque,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacetwo)
 "mop" = (
@@ -20068,7 +20074,7 @@
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/purple/bordercorner,
 /obj/structure/cable/green{
-	icon_state = "4-8"
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -20464,6 +20470,9 @@
 	},
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 10
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -26150,12 +26159,6 @@
 /obj/structure/bed/chair/wheelchair,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
-"qxd" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/glass/reinforced,
-/area/hallway/primary/surfacetwo)
 "qxp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -27326,6 +27329,9 @@
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "rib" = (
@@ -28274,6 +28280,9 @@
 	},
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 6
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -30202,6 +30211,9 @@
 "teP" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/purple/bordercorner,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "teZ" = (
@@ -36299,6 +36311,9 @@
 	},
 /obj/effect/floor_decal/corner/purple/bordercorner{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -53128,7 +53143,7 @@ jru
 xLE
 mDz
 bgP
-qxd
+bgP
 amA
 bEp
 bEp
@@ -53322,7 +53337,7 @@ sfB
 bgP
 bgP
 bgP
-qxd
+bgP
 xoD
 unt
 siA
@@ -53516,7 +53531,7 @@ crX
 bgP
 bgP
 bgP
-qxd
+bgP
 mod
 iLd
 cxg
@@ -53710,7 +53725,7 @@ jmj
 bgP
 bgP
 bgP
-qxd
+bgP
 teP
 uXR
 siA
@@ -53904,7 +53919,7 @@ hLX
 sJl
 iru
 bgP
-qxd
+bgP
 rhM
 tVF
 tVF

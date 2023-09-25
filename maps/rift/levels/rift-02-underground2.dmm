@@ -1969,6 +1969,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-4"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
 "gp" = (
@@ -4535,7 +4536,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_one)
 "nw" = (
-/obj/structure/catwalk,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -8237,6 +8237,21 @@
 	},
 /turf/simulated/floor/wood,
 /area/chapel/observation)
+"AP" = (
+/obj/structure/closet/crate,
+/obj/item/circuitboard/smes,
+/obj/item/smes_coil,
+/obj/item/smes_coil,
+/obj/item/smes_coil/super_capacity,
+/obj/item/smes_coil/super_capacity,
+/obj/item/smes_coil/super_io,
+/obj/item/smes_coil/super_io,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/engineering/storage)
 "AS" = (
 /turf/simulated/floor/lythios43c,
 /area/engineering/engine_room)
@@ -8447,7 +8462,6 @@
 /area/engineering/break_room)
 "BM" = (
 /obj/structure/closet/crate,
-/obj/item/circuitboard/smes,
 /obj/item/circuitboard/smes,
 /obj/item/smes_coil,
 /obj/item/smes_coil,
@@ -12095,9 +12109,6 @@
 	dir = 2
 	},
 /obj/structure/catwalk,
-/obj/machinery/door/airlock/multi_tile/metal{
-	dir = 4
-	},
 /obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/plating,
 /area/engineering/storage)
@@ -27318,7 +27329,7 @@ fa
 vW
 Iw
 BF
-BF
+AP
 Zq
 bN
 Ox

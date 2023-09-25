@@ -1219,10 +1219,7 @@
 	dir = 5
 	},
 /obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/bridge)
@@ -5670,6 +5667,9 @@
 	},
 /obj/machinery/camera/network/command{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -17308,7 +17308,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/cable/green{
-	icon_state = "1-2"
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/bridge)
@@ -20282,6 +20282,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "fFL" = (
@@ -20747,18 +20750,19 @@
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "gYP" = (
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
-/obj/structure/railing/grey{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
 	},
-/obj/structure/railing/grey,
 /obj/structure/cable/green{
-	icon_state = "1-2"
+	icon_state = "4-8"
 	},
-/turf/simulated/open,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/dark,
 /area/bridge)
 "haO" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -23655,6 +23659,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
+"oYl" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "pem" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -45638,7 +45651,7 @@ apM
 tAo
 aXg
 adO
-gYP
+aQF
 aWp
 aSX
 aEf
@@ -46025,9 +46038,9 @@ afA
 tAo
 aur
 amt
-aeE
+gYP
 aqh
-aSn
+oYl
 aMp
 aqw
 tAo
