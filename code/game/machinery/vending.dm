@@ -734,11 +734,11 @@
 	product_ads = "The healthiest!;Award-winning chocolate bars!;Mmm! So good!;Oh my god it's so juicy!;Have a snack.;Snacks are good for you!;Have some more Getmore!;Best quality snacks straight from mars.;We love chocolate!;Try our new jerky!"
 	icon_state = "snack"
 	products = list(
-		/obj/item/reagent_containers/food/snacks/wrapped = 6,
+		/obj/item/reagent_containers/food/snacks/wrapped/candy = 6,
 		/obj/item/reagent_containers/food/drinks/dry_ramen = 6,
-		/obj/item/reagent_containers/food/snacks/bagged =6,
+		/obj/item/reagent_containers/food/snacks/bagged/chips =6,
 		/obj/item/reagent_containers/food/snacks/bagged/sosjerky = 6,
-		/obj/item/reagent_containers/food/snacks/boxed = 6,
+		/obj/item/reagent_containers/food/snacks/boxed/no_raisin = 6,
 		/obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie = 6,
 		/obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers = 6,
 		/obj/item/reagent_containers/food/snacks/bagged/hotcheesiehonkers = 3,
@@ -756,11 +756,11 @@
 		/obj/item/reagent_containers/food/snacks/boxed/unajerky = 6,
 	)
 	prices = list(
-		/obj/item/reagent_containers/food/snacks/wrapped = 2,
+		/obj/item/reagent_containers/food/snacks/wrapped/candy = 2,
 		/obj/item/reagent_containers/food/drinks/dry_ramen = 5,
-		/obj/item/reagent_containers/food/snacks/bagged = 3,
+		/obj/item/reagent_containers/food/snacks/bagged/chips = 3,
 		/obj/item/reagent_containers/food/snacks/bagged/sosjerky = 3,
-		/obj/item/reagent_containers/food/snacks/boxed = 2,
+		/obj/item/reagent_containers/food/snacks/boxed/no_raisin = 2,
 		/obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie = 2,
 		/obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers = 3,
 		/obj/item/reagent_containers/food/snacks/bagged/hotcheesiehonkers = 6,

@@ -467,18 +467,6 @@
 	reagents.add_reagent("tricordrazine", 8)
 	bitesize = 3
 
-/obj/item/reagent_containers/food/snacks/wrapped/donor
-	name = "Donor Candy"
-	desc = "A little treat for blood donors."
-	trash = /obj/item/trash/candy
-	nutriment_amt = 9
-	nutriment_desc = list("candy" = 10)
-
-/obj/item/reagent_containers/food/snacks/wrapped/donor/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("sugar", 3)
-	bitesize = 5
-
 /obj/item/reagent_containers/food/snacks/candy_corn
 	name = "candy corn"
 	desc = "It's a handful of candy corn. Cannot be stored in a detective's hat, alas."
@@ -6792,7 +6780,11 @@ END CITADEL CHANGE */
 // Packaged Snack Foods Below
 // Wrapped
 
-/obj/item/reagent_containers/food/snacks/wrapped // Buff 4 >> 8
+/obj/item/reagent_containers/food/snacks/wrapped/candy // Buff 4 >> 8
+	name = "ABSTRACT"
+	desc = "You shouldn't be seeing this. Contact an admin!"
+
+/obj/item/reagent_containers/food/snacks/wrapped/candy // Buff 4 >> 8
 	name = "candy"
 	desc = "Nougat, love it or hate it."
 	icon_state = "candy"
@@ -6804,7 +6796,7 @@ END CITADEL CHANGE */
 	custom_open_sound = 'sound/effects/pageturn2.ogg'
 	open_message = "You peel back the wrapping!"
 
-/obj/item/reagent_containers/food/snacks/wrapped/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/wrapped/candy/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sugar", 4)
 	reagents.add_reagent("protein", 1)
@@ -6868,6 +6860,18 @@ END CITADEL CHANGE */
 	reagents.add_reagent("iron", 1)
 	bitesize = 4
 
+/obj/item/reagent_containers/food/snacks/wrapped/donor
+	name = "Donor Candy"
+	desc = "A little treat for blood donors."
+	trash = /obj/item/trash/candy
+	nutriment_amt = 9
+	nutriment_desc = list("candy" = 10)
+
+/obj/item/reagent_containers/food/snacks/wrapped/donor/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("sugar", 3)
+	bitesize = 5
+
 /obj/item/reagent_containers/food/snacks/wrapped/proteinbar // Buff 17 >> 21
 	name = "protein bar"
 	desc = "SwoleMAX brand protein bars, guaranteed to get you feeling perfectly overconfident."
@@ -6894,8 +6898,11 @@ END CITADEL CHANGE */
 	bitesize = 2
 
 // Bagged
-
 /obj/item/reagent_containers/food/snacks/bagged // Buff 3 >> 5
+	name = "ABSTRACT"
+	desc = "You shouldn't be seeing this. Contact an admin!"
+
+/obj/item/reagent_containers/food/snacks/bagged/chips // Buff 3 >> 5
 	name = "chips"
 	desc = "Commander Riker's What-The-Crisps"
 	icon_state = "chips"
@@ -6907,7 +6914,7 @@ END CITADEL CHANGE */
 	custom_open_sound = 'sound/bureaucracy/papercrumple.ogg'
 	open_message = "You pull the package open!"
 
-/obj/item/reagent_containers/food/snacks/bagged/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/bagged/chips/Initialize(mapload)
 	. = ..()
 	bitesize = 2
 
@@ -6951,8 +6958,11 @@ END CITADEL CHANGE */
 	bitesize = 2
 
 // Boxed
+/obj/item/reagent_containers/food/snacks/boxed // Buff 3 >> 5
+	name = "ABSTRACT"
+	desc = "You shouldn't be seeing this. Contact an admin!"
 
-/obj/item/reagent_containers/food/snacks/boxed // Buff 6 >> 12
+/obj/item/reagent_containers/food/snacks/boxed/no_raisin // Buff 6 >> 12
 	name = "4no Raisins"
 	icon_state = "4no_raisins"
 	desc = "Best raisins in the universe. Not sure why."
@@ -6964,7 +6974,7 @@ END CITADEL CHANGE */
 	custom_open_sound = 'sound/misc/boxopen.ogg'
 	open_message = "You pop open the box!"
 
-/obj/item/reagent_containers/food/snacks/boxed/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/boxed/no_raisin/Initialize(mapload)
 	. = ..()
 	bitesize = 3
 

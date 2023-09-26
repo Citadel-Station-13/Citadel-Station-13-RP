@@ -1,4 +1,4 @@
-/obj/item/reagent_containers/food/snacks/wrapped
+/obj/item/reagent_containers/food/snacks/wrapped/candy
   description_fluff = "The Candy Bar is a copylefted recipe designed by information freedom activists to bring the delicious taste of nougat to the masses. It's cheap, familiar, and easy to synthesize, so most food vendors stock it."
 
 /obj/item/reagent_containers/food/snacks/wrapped/proteinbar
@@ -7,7 +7,7 @@
 /obj/item/reagent_containers/food/snacks/candy_corn
   description_fluff = "Nobody knows why Nanotrasen keeps making these waxy pieces of sugar and bone glue, but a handful of people swear by them. Purportedly popular with Skrell children, dubiously enough."
 
-/obj/item/reagent_containers/food/snacks/bagged
+/obj/item/reagent_containers/food/snacks/bagged/chips
   description_fluff = "Actual potatos haven't been used in potato chips for centuries. They're mostly a denatured nutrient slurry pressed into a chip-shaped mold and salted. Still tastes the same."
 
 /obj/item/reagent_containers/food/snacks/donut
@@ -22,7 +22,7 @@
 /obj/item/reagent_containers/food/snacks/bagged/sosjerky
   description_fluff = "Space Cows, here, being an affectionate name given by early colonists to the massive food synthesizers used to sustain independent outposts before the dominance of hydroponics. Tastes like cardboard rubbed in meat seasoning."
 
-/obj/item/reagent_containers/food/snacks/boxed
+/obj/item/reagent_containers/food/snacks/boxed/no_raisin
   description_fluff = "Originally Raisin Blend no. 4, 4noraisins obtained their current name in the Skadi Positronic Exclusion Crisis of 2442, where they were rebranded as part of the protests." //the exclusion crisis, presumably, involved positronic immigration being banned for no raisin
 
 /obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie

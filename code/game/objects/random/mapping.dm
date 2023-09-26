@@ -722,14 +722,14 @@
 				/obj/structure/closet/crate/galaksi //GALAKSI JANITOR SUPPLIES
 			),
 			prob(5);list(
-				/obj/item/reagent_containers/food/snacks/wrapped,
-				/obj/item/reagent_containers/food/snacks/wrapped,
-				/obj/item/reagent_containers/food/snacks/wrapped,
-				/obj/item/reagent_containers/food/snacks/wrapped,
-				/obj/item/reagent_containers/food/snacks/wrapped,
-				/obj/item/reagent_containers/food/snacks/wrapped,
-				/obj/item/reagent_containers/food/snacks/wrapped,
-				/obj/item/reagent_containers/food/snacks/wrapped,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
 				/obj/structure/closet/crate/allico //GUMMIES
 			),
 			prob(2);list(
