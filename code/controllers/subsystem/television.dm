@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(television)
 			var/list/current_show_decoded = json_decode(lastshow)
 			for(var/name in current_show_decoded["name"])
 				showname = name
-			for(var/dlang in current_show_decoded["default_language"]
+			for(var/dlang in current_show_decoded["default_language"])
 				default_language = dlang
 
 			//start looping through each lines block, pull laguage if it exists, then read and send lines
@@ -72,5 +72,6 @@ SUBSYSTEM_DEF(television)
 /datum/controller/subsystem/television/proc/broadcastLine(channel, line, language)
 	//loop through global_TVs and send to tv procs.
 	//TV side with receiveLine(line)?
-	for (var/path/to/tv/tv in all_tvs)
-    tv.tvize_idk()
+	//for (var/path/to/tv/tv in all_tvs)
+    //tv.tvize_idk()
+	return
