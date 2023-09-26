@@ -310,18 +310,15 @@
 	. = ..()
 	if(.)
 		if(unstable)
-			switch(rand(1,100))
-				if(1 to 10)
-					to_chat(user, "<span class='danger'>The cell overcooks and ruptures!</span>")
-					spawn(rand(2 SECONDS,5 SECONDS))
-						if(src)
-							visible_message("<span class='critical'>\The [src] detonates!</span>")
-							explosion(get_turf(src), -1, 0, 2, 3)
-							qdel(chambered)
-							qdel(src)
-					return ..()
-				if(11 to 100)
-					return
+			if(prob(10))
+				to_chat(user, "<span class='danger'>The cell overcooks and ruptures!</span>")
+				spawn(rand(2 SECONDS,5 SECONDS))
+					if(src)
+						visible_message("<span class='critical'>\The [src] detonates!</span>")
+						explosion(get_turf(src), -1, 0, 2, 3)
+						qdel(chambered)
+						qdel(src)
+				return ..()
 
 //NT SpecOps Laser Rifle
 /obj/item/gun/energy/combat

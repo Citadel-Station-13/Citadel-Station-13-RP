@@ -109,17 +109,14 @@
 	//var/instability = rand(1,100)
 	if(.)
 		if(unstable)
-			switch(rand(1,100))
-				if(1 to 10)
-					to_chat(user, "<span class='danger'>The pipe bursts open as the gun backfires!</span>")
-					name = "ruptured pipe rifle"
-					desc = "The barrel has blown wide open."
-					icon_state = "pipegun-destroyed"
-					destroyed = 1
-					spawn(1 SECOND)
-						explosion(get_turf(src), -1, 0, 2, 3)
-				if(11 to 100)
-					return
+			if(prob(10))
+				to_chat(user, "<span class='danger'>The pipe bursts open as the gun backfires!</span>")
+				name = "ruptured pipe rifle"
+				desc = "The barrel has blown wide open."
+				icon_state = "pipegun-destroyed"
+				destroyed = 1
+				spawn(1 SECOND)
+					explosion(get_turf(src), -1, 0, 2, 3)
 
 		if(destroyed)
 			to_chat(user, "<span class='notice'>The [src] is broken!</span>")
