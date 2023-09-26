@@ -63,7 +63,7 @@
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	bone_type = /obj/item/stack/chitin
+	bone_type = /obj/item/stack/material/chitin
 	bone_amount = 5
 
 	faction = "lavaland"
@@ -184,7 +184,7 @@
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	bone_type = /obj/item/stack/chitin
+	bone_type = /obj/item/stack/material/chitin
 	bone_amount = 5
 
 	faction = "lavaland"

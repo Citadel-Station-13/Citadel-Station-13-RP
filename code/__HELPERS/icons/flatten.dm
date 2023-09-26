@@ -13,6 +13,8 @@
  * @params
  * - A - appearancelike object.
  * - no_anim - flatten out animations
+ *
+ * @return flat icon
  */
 /proc/get_compound_icon(atom/A, no_anim)
 	var/mutable_appearance/N = new
@@ -38,7 +40,107 @@
 	qdel(west)
 	return full
 
+/**
+ * Generates an icon with all 4 directions of something.
+ *
+ * Note: Centering offsets here have a weird meaning.
+ * They basically tell you how to offset the finished result to ignore large icons
+ * causing the original icon to be scaled beyond its sides.
+ * It's not a 'true' semantic centering offset - the icon system doesn't handle that.
+ *
+ * @params
+ * * A - appearancelike object.
+ * * no_anim - flatten out animations
+ * * preprocess - preprocess callback. used because we can't icon ops on a compound icon.
+ *
+ * @return list(flat icon, offset x, offset y) where x/y offsets are centering pixel offsets
+ */
+/proc/get_compound_icon_with_offsets(atom/A, no_anim, datum/callback/preprocess)
+	var/mutable_appearance/N = new
+	N.appearance = A
+
+	var/list/gfi_return
+	var/x_offset = 0
+	var/y_offset = 0
+	var/got_anything = FALSE
+
+	N.dir = NORTH
+	gfi_return = get_flat_icon_with_offsets(N, NORTH, no_anim = no_anim)
+	var/icon/north
+	if(!isnull(gfi_return))
+		north = gfi_return[1]
+		preprocess?.Invoke(north)
+		x_offset = BIGGER_MAGNITUDE(x_offset, gfi_return[2])
+		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
+		got_anything = TRUE
+	N.dir = SOUTH
+	gfi_return = get_flat_icon_with_offsets(N, SOUTH, no_anim = no_anim)
+	var/icon/south
+	if(!isnull(gfi_return))
+		south = gfi_return[1]
+		preprocess?.Invoke(south)
+		x_offset = BIGGER_MAGNITUDE(x_offset, gfi_return[2])
+		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
+		got_anything = TRUE
+	N.dir = EAST
+	gfi_return = get_flat_icon_with_offsets(N, EAST, no_anim = no_anim)
+	var/icon/east
+	if(!isnull(gfi_return))
+		east = gfi_return[1]
+		preprocess?.Invoke(east)
+		x_offset = BIGGER_MAGNITUDE(x_offset, gfi_return[2])
+		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
+		got_anything = TRUE
+	N.dir = WEST
+	gfi_return = get_flat_icon_with_offsets(N, WEST, no_anim = no_anim)
+	var/icon/west
+	if(!isnull(gfi_return))
+		west = gfi_return[1]
+		preprocess?.Invoke(west)
+		x_offset = BIGGER_MAGNITUDE(x_offset, gfi_return[2])
+		y_offset = BIGGER_MAGNITUDE(y_offset, gfi_return[3])
+		got_anything = TRUE
+
+	qdel(N)
+
+	if(!got_anything)
+		return
+
+	//Starts with a blank icon because of byond bugs.
+	var/icon/full = icon('icons/system/blank_32x32.dmi', "")
+	if(!isnull(north))
+		full.Insert(north, dir = NORTH)
+		qdel(north)
+	if(!isnull(south))
+		full.Insert(south, dir = SOUTH)
+		qdel(south)
+	if(!isnull(east))
+		full.Insert(east, dir = EAST)
+		qdel(east)
+	if(!isnull(west))
+		full.Insert(west, dir = WEST)
+		qdel(west)
+
+	return list(full, x_offset, y_offset)
+
+/**
+ * grabs flat icon with no care for alignment / basically just grabs a png
+ */
 /proc/get_flat_icon(appearance/appearancelike, dir, no_anim)
+	if(!dir && isloc(appearancelike))
+		dir = appearancelike.dir
+	. = _get_flat_icon(appearancelike, dir, no_anim, null, TRUE)
+	return .?[1]
+
+/**
+ * grabs flat icon as list(icon, centering-x, centering-y) offsets
+ *
+ * Note: Centering offsets here have a weird meaning.
+ * They basically tell you how to offset the finished result to ignore large icons
+ * causing the original icon to be scaled beyond its sides.
+ * It's not a 'true' semantic centering offset - the icon system doesn't handle that.
+ */
+/proc/get_flat_icon_with_offsets(appearance/appearancelike, dir, no_anim)
 	if(!dir && isloc(appearancelike))
 		dir = appearancelike.dir
 	return _get_flat_icon(appearancelike, dir, no_anim, null, TRUE)
@@ -50,8 +152,11 @@
  * * no_anim - (optional) trample animations to first frame
  * * deficon - (optional) default icon to use instead of using the host appearance's
  * * start - is this the first call in the recurse? this is important
+ *
+ * @return list(icon, x, y) where x/y are centering pixel offsets
  */
 /proc/_get_flat_icon(image/A, defdir, no_anim, deficon, start)
+	RETURN_TYPE(/list)
 	// start with blank image
 	var/static/icon/template = icon('icons/system/blank_32x32.dmi', "")
 
@@ -73,7 +178,7 @@
 
 	// invis? skip.
 	if(!A || A.alpha <= 0)
-		return BLANK
+		return list(BLANK, 0, 0)
 
 	// detect if state exists
 	var/icon/icon = A.icon || deficon
@@ -107,7 +212,7 @@
 	if(!A.overlays.len && !A.underlays.len)
 		// we don't even have ourselves!
 		if(none)
-			return BLANK
+			return list(BLANK, 0, 0)
 		// no overlays/underlays, we're done, just mix in ourselves
 		var/icon/self_icon = icon(icon(icon, state, ourdir), "", SOUTH, no_anim? 1 : null)
 		if(A.alpha < 255)
@@ -117,7 +222,7 @@
 				self_icon.MapColors(arglist(A.color))
 			else
 				self_icon.Blend(A.color, ICON_MULTIPLY)
-		return self_icon
+		return list(self_icon, 0, 0)
 
 	// safety/performance check
 	if((A.overlays.len + A.underlays.len) > 80)
@@ -163,6 +268,7 @@
 			comparing = gathered[i]
 			if(current_layer < gathered[comparing])
 				gathered.Insert(i, copying)
+				break
 		// associate
 		gathered[copying] = current_layer
 
@@ -186,11 +292,14 @@
 			comparing = gathered[i]
 			if(current_layer < gathered[comparing])
 				gathered.Insert(i, copying)
+				break
 		// associate
 		gathered[copying] = current_layer
 
 	// adding icon we're mixing in
 	var/icon/adding
+	// full flat icon returned by a recursive GFI call during rendering
+	var/list/gfi_return
 	// current dimensions
 	var/list/flat_size = list(1, flat.Width(), 1, flat.Height())
 	// adding dimensions
@@ -215,12 +324,13 @@
 			blend_mode = BLEND_OVERLAY
 			adding = icon(icon, state, ourdir)
 		else
-			// use full get_flat_icon
+			// use full get_flat_icon_with_offsets
 			blend_mode = copying.blend_mode
-			adding = _get_flat_icon(copying, defdir, no_anim, icon)
+			gfi_return = _get_flat_icon(copying, defdir, no_anim, icon)
+			adding = gfi_return?[1]
 
 		// if we got nothing, skip
-		if(!adding)
+		if(isnull(adding))
 			continue
 
 		// detect adding size, taking into account copying overlay's pixel offsets
@@ -265,10 +375,10 @@
 		// clean up frames
 		var/icon/cleaned = icon()
 		cleaned.Insert(flat, "", SOUTH, 1, 0)
-		return cleaned
+		return list(cleaned, -shift_x, -shift_y)
 	else
 		// just return flat as SOUTH
-		return icon(flat, "", SOUTH)
+		return list(icon(flat, "", SOUTH), -shift_x, -shift_y)
 
 	#undef flatX1
 	#undef flatX2

@@ -41,28 +41,24 @@
 	drop_sound = 'sound/items/drop/herb.ogg'
 	pickup_sound = 'sound/items/pickup/herb.ogg'
 
-/obj/item/stack/tile/grass/Initialize(mapload, new_amount, merge)
-	. = ..()
-	recipes = grass_recipes
-	update_icon()
-
-var/global/list/datum/stack_recipe/grass_recipes = list( \
-	new/datum/stack_recipe("bush", /obj/structure/flora/ausbushes, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("reeds", /obj/structure/flora/ausbushes/reedbush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("leafy bush", /obj/structure/flora/ausbushes/leafybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("sparse bush", /obj/structure/flora/ausbushes/palebush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("stalks", /obj/structure/flora/ausbushes/stalkybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("ferns", /obj/structure/flora/ausbushes/fernybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("sapling", /obj/structure/flora/ausbushes/sunnybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("leafy sapling", /obj/structure/flora/ausbushes/genericbush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("needled sapling", /obj/structure/flora/ausbushes/pointybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("sparse flowers", /obj/structure/flora/ausbushes/lavendergrass, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("yellow flowers", /obj/structure/flora/ausbushes/ywflowers, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("colorful flowers", /obj/structure/flora/ausbushes/brflowers, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("purple flowers", /obj/structure/flora/ausbushes/ppflowers, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("lush grass", /obj/structure/flora/ausbushes/grassybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("grass", /obj/structure/flora/ausbushes/fullgrass, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("sparse grass", /obj/structure/flora/ausbushes/sparsegrass, 1, one_per_turf = 0, on_floor = 1))
+/obj/item/stack/tile/grass/generate_explicit_recipes()
+	. = list()
+	. += create_stack_recipe_datum(name = "bush", product = /obj/structure/flora/ausbushes, cost = 1)
+	. += create_stack_recipe_datum(name = "reeds", product = /obj/structure/flora/ausbushes/reedbush, cost = 1)
+	. += create_stack_recipe_datum(name = "leafy bush", product = /obj/structure/flora/ausbushes/leafybush, cost = 1)
+	. += create_stack_recipe_datum(name = "sparse bush", product = /obj/structure/flora/ausbushes/palebush, cost = 1)
+	. += create_stack_recipe_datum(name = "stalks", product = /obj/structure/flora/ausbushes/stalkybush, cost = 1)
+	. += create_stack_recipe_datum(name = "ferns", product = /obj/structure/flora/ausbushes/fernybush, cost = 1)
+	. += create_stack_recipe_datum(name = "sapling", product = /obj/structure/flora/ausbushes/sunnybush, cost = 1)
+	. += create_stack_recipe_datum(name = "leafy sapling", product = /obj/structure/flora/ausbushes/genericbush, cost = 1)
+	. += create_stack_recipe_datum(name = "needled sapling", product = /obj/structure/flora/ausbushes/pointybush, cost = 1)
+	. += create_stack_recipe_datum(name = "sparse flowers", product = /obj/structure/flora/ausbushes/lavendergrass, cost = 1)
+	. += create_stack_recipe_datum(name = "yellow flowers", product = /obj/structure/flora/ausbushes/ywflowers, cost = 1)
+	. += create_stack_recipe_datum(name = "colorful flowers", product = /obj/structure/flora/ausbushes/brflowers, cost = 1)
+	. += create_stack_recipe_datum(name = "purple flowers", product = /obj/structure/flora/ausbushes/ppflowers, cost = 1)
+	. += create_stack_recipe_datum(name = "lush grass", product = /obj/structure/flora/ausbushes/grassybush, cost = 1)
+	. += create_stack_recipe_datum(name = "grass", product = /obj/structure/flora/ausbushes/fullgrass, cost = 1)
+	. += create_stack_recipe_datum(name = "sparse grass", product = /obj/structure/flora/ausbushes/sparsegrass, cost = 1)
 
 /*
  * Wood

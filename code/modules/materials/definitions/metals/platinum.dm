@@ -1,6 +1,6 @@
 /datum/material/platinum
 	name = "platinum"
-	id = "platinum"
+	id = MAT_PLATINUM
 	stack_type = /obj/item/stack/material/platinum
 	icon_colour = "#9999FF"
 	weight = 27

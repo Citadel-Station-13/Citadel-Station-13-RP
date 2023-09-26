@@ -11,7 +11,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/academy/headmaster)
 "ad" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "ae" = (
@@ -1404,7 +1404,7 @@
 	},
 /area/awaymission/academy/classrooms)
 "gj" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor{
 	dir = 5
 	},

@@ -2147,12 +2147,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
-"bUU" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/old_cargo/gray,
-/area/assembly/robotics/surgery)
 "bUY" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -5456,6 +5450,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/chargebay)
+"eJc" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/structure/sink/kitchen{
+	name = "industrial sink";
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/assembly/robotics/surgery)
 "eKi" = (
 /obj/structure/table/rack,
 /obj/item/hardsuit/hazmat/equipped{
@@ -15716,6 +15720,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
+"nbH" = (
+/obj/effect/floor_decal/industrial/warning/cee{
+	dir = 1
+	},
+/obj/machinery/computer/general_air_control,
+/turf/simulated/floor/tiled,
+/area/rnd/storage)
 "nbO" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -23126,12 +23137,6 @@
 /obj/structure/closet/secure_closet/psych,
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
-"sUS" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/teleporter/departing)
 "sVt" = (
 /obj/machinery/smartfridge/drying_rack,
 /obj/machinery/camera/network/research{
@@ -24438,18 +24443,6 @@
 "tUr" = (
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics/surgery)
-"tUO" = (
-/obj/effect/floor_decal/industrial/warning/cee{
-	dir = 1
-	},
-/obj/machinery/computer/general_air_control/large_tank_control{
-	input_tag = "atmos_out";
-	name = "Atmos Intake Control";
-	output_tag = "atmos_in";
-	sensors = list("atmos_intake"="Tank")
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/storage)
 "tVo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -26058,6 +26051,15 @@
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
+"vsZ" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/machinery/air_alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/teleporter/departing)
 "vtg" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -38315,7 +38317,7 @@ vLK
 vLK
 vLK
 tAg
-sUS
+vsZ
 xSe
 qvd
 xSe
@@ -42961,7 +42963,7 @@ qpQ
 ctu
 sBB
 qpQ
-bUU
+eJc
 xkd
 vdw
 yhE
@@ -46052,7 +46054,7 @@ fWy
 gIy
 qks
 kQU
-tUO
+nbH
 eQr
 ouW
 xvK
