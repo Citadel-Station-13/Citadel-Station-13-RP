@@ -111,6 +111,8 @@
  * this is past point of no return
  * shouldn't cancel under any circumstances
  *
+ * * When overriding this proc you **must** ensure list/created has a = list() in the args, if it doesn't call ..() first. Otherwise, the pattern being used will runtime.
+ *
  * @params
  * * where - where to spawn result
  * * amount - amount
@@ -118,8 +120,9 @@
  * * user - (optional) person crafting
  * * silent - (optional) suppress feedback to user
  * * use_dir - (optional) override dir if no user to get it from
+ * * creating - (optional) list will be populated of objects created. supply a list so you can read it, or don't to ignore.
  */
-/datum/stack_recipe/proc/make(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir)
+/datum/stack_recipe/proc/make(atom/where, amount, obj/item/stack/stack, mob/user, silent, use_dir, list/created = list())
 	if(result_is_stack)
 		var/obj/item/stack/casted = result_type
 		var/max_amount = initial(casted.max_amount)
@@ -127,12 +130,14 @@
 		while(amount)
 			if(!--safety)
 				CRASH("safety hit")
-			var/obj/item/stack/created = new result_type(where, min(amount, max_amount))
-			amount -= created.amount
+			var/obj/item/stack/creating = new result_type(where, min(amount, max_amount))
+			amount -= creating.amount
+			created += creating
 	else
 		for(var/i in 1 to min(amount, 50))
-			var/atom/movable/created = new result_type(where)
-			created.setDir(use_dir)
+			var/atom/movable/creating = new result_type(where)
+			creating.setDir(use_dir)
+			created += creating
 	return TRUE
 
 /**

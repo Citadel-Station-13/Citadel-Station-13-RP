@@ -519,7 +519,7 @@
 /obj/item/ammo_casing/rocket
 	name = "rocket shell"
 	desc = "A high explosive designed to be fired from a launcher."
-	icon_state = "rocketshell"
+	icon_state = "rocketshell_alt"
 	projectile_type = /obj/projectile/bullet/srmrocket
 	caliber = "rocket"
 	materials = list(MAT_STEEL = 10000)

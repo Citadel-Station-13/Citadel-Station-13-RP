@@ -947,7 +947,7 @@
 	id = "melectricalhigh"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_POWER = 5, TECH_MATERIAL = 4)
 	materials = list(MAT_STEEL = 3000, MAT_GLASS = 4000, MAT_PLASTIC = 5000, MAT_GOLD = 5000)
-	build_path = /obj/item/mecha_parts/component/electrical
+	build_path = /obj/item/mecha_parts/component/electrical/high_current
 
 /datum/design/science/mecha_component/hull
 	design_name = "Mecha Hull"

@@ -1,5 +1,5 @@
 /datum/material/diamond
-	id = "diamond"
+	id = MAT_DIAMOND
 	name = "diamond"
 	stack_type = /obj/item/stack/material/diamond
 	flags = MATERIAL_UNMELTABLE

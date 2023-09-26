@@ -22,8 +22,8 @@
 		/obj/item/storage/box/survival_knife,
 		/obj/item/material/knife/machete,
 		/obj/item/clothing/accessory/holster/machete,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/snacks/liquidprotein,
+		/obj/item/reagent_containers/food/snacks/liquid,
+		/obj/item/reagent_containers/food/snacks/liquid/protein,
 		/obj/item/cataloguer)
 
 /obj/structure/closet/secure_closet/explorer/Initialize(mapload)
@@ -60,8 +60,8 @@
 		/obj/item/healthanalyzer,
 		/obj/item/radio/off,
 		/obj/random/medical,
-		/obj/item/reagent_containers/food/snacks/liquidfood = 2,
-		/obj/item/reagent_containers/food/snacks/liquidprotein = 2,
+		/obj/item/reagent_containers/food/snacks/liquid = 2,
+		/obj/item/reagent_containers/food/snacks/liquid/protein = 2,
 		/obj/item/tool/crowbar,
 		/obj/item/extinguisher/mini,
 		/obj/item/storage/box/freezer,
@@ -92,8 +92,8 @@
 		/obj/item/clothing/gloves/fingerless,
 		/obj/item/radio/headset/pilot/alt,
 		/obj/item/flashlight,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/snacks/liquidprotein,
+		/obj/item/reagent_containers/food/snacks/liquid,
+		/obj/item/reagent_containers/food/snacks/liquid/protein,
 		/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 		/obj/item/storage/box/flare,
 		/obj/item/gun/ballistic/shotgun/flare/explo,
@@ -141,8 +141,8 @@
 		/obj/item/ammo_magazine/m57x28mm/ntles,
 		/obj/item/clothing/accessory/holster/machete,
 		/obj/item/clothing/accessory/holster/leg,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/snacks/liquidprotein,
+		/obj/item/reagent_containers/food/snacks/liquid,
+		/obj/item/reagent_containers/food/snacks/liquid/protein,
 		/obj/item/card/mining_point_card/survey/gimmick,
 		/obj/item/cataloguer/compact/pathfinder)
 
