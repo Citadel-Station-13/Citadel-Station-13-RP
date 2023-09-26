@@ -1866,6 +1866,8 @@
 #include "code\game\objects\structures\stool_bed_chair_nest\chairs_vr.dm"
 #include "code\game\objects\structures\stool_bed_chair_nest\stools.dm"
 #include "code\game\objects\structures\stool_bed_chair_nest\wheelchair.dm"
+#include "code\game\objects\systems\_system.dm"
+#include "code\game\objects\systems\cell_slot.dm"
 #include "code\game\rendering\client.dm"
 #include "code\game\rendering\mob.dm"
 #include "code\game\rendering\screen.dm"

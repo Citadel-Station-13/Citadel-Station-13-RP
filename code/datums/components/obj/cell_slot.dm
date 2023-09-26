@@ -12,15 +12,27 @@
 	/// reserved - cell type accepted enum, for when we do large/medium/small/etc cells later.
 	var/cell_type
 
+/datum/component/cell_slot/Initialize()
+	#warn impl
 
-#warn impl all
+/datum/component/cell_slot/RegisterWithParent()
+	. = ..()
+	#warn impl
+
+/datum/component/cell_slot/UnregisterFromParent()
+	. = ..()
+	#warn impl
 
 /datum/component/cell_slot/proc/
 
 /**
  * Grabs our /datum/component/cell_slot cell
+ *
+ * todo: optimize
  */
 /obj/proc/cell_slotted()
 	RETURN_TYPE(/obj/item/cell)
 	var/datum/component/cell_slot/slot = GetComponent(/datum/component/cell_slot)
 	return slot?.cell
+
+#warn maybe odn't do this

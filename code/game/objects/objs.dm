@@ -59,6 +59,11 @@
 	/// volume when breaking out using resist process
 	var/breakout_volume = 100
 
+	//? Systems - naming convention is 'object_[system]'
+	/// cell slot system
+	var/datum/object_system/cell_slot/object_cell_slot
+	#warn hook above
+
 	//? misc / legacy
 	/// Set when a player renames a renamable object.
 	var/renamed_by_player = FALSE
@@ -238,6 +243,24 @@
 		add_fingerprint(user)
 	..()
 
+//? Attacks
+
+#warn cell attackby/attack hand
+
+//? Cells / Inducers
+
+/**
+ * get cell slot
+ */
+/obj/get_cell()
+	. = ..()
+	if(.)
+		return
+	if(object_cell_slot?.primary && !isnull(object_cell_slot.cell))
+		return object_cell_slot.cell
+
+#warn inducer
+
 //? Climbing
 
 /obj/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
@@ -368,7 +391,11 @@
 			H.update_health()
 	*/
 
-//* Hiding / Underfloor
+//? Context
+
+#warn cell context
+
+//? Hiding / Underfloor
 
 /obj/proc/is_hidden_underfloor()
 	return FALSE
