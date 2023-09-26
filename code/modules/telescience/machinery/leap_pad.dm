@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 GLOBAL_LIST_EMPTY(leap_pad_lookup)
 
 /obj/machinery/leap_pad

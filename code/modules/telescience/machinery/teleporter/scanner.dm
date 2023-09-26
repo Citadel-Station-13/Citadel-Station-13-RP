@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 #warn circuit
 
 /**
@@ -7,12 +10,8 @@
  *
  * diminishing returns based on distance to each other.
  */
-/obj/machinery/bluespace_scanner
-	name = "bluespace sensors"
+/obj/machinery/teleporter/bluespace_scanner
+	name = "bluespace lensing suite"
 	desc = "A prototype bluespace scanning and analysis suite. Uses massive amounts of power to detect nearby locator signals, whether active or passive. Additional power is required to lock onto passive sources."
 
 
-	/// linked consoles
-	var/list/obj/machinery/computer/teleporter/consoles
-	/// linked remotes
-	var/list/obj/item/bluespace_remote/remotes

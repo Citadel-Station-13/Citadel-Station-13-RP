@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //! ON GOD, READ tool_system.dm's use_tool_standard to learn how to use these!
 
 /**

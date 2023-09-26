@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /datum/bluespace_jamming
 	/// attached atom
 	var/atom/host
@@ -7,7 +10,14 @@
 	var/power = 0
 	/// boost jamming power; this is pretty powerful
 	var/boost = 0
-	/// 
+	/// instability power; this is pretty powerful
+	var/instability = 0
+	/// inaccuracy power; this is pretty powerful
+	var/inaccuracy = 0
+	/// lensing power - how much this jamming field affects teleportation destinations. negative repels, positive attracts.
+	var/lensing = 0
+	/// maximum distance this still affects something
+	var/max_distance = INFINITY
 
 /datum/bluespace_jamming/New(atom/host)
 	set_host(host)
@@ -39,6 +49,12 @@
 	return 0
 
 /**
+ * rebuild everything; call this after modifying *any* variables.
+ */
+/datum/bluespace_jamming/proc/rebuild()
+	return
+
+/**
  * flat, full-zlevel
  */
 /datum/bluespace_jamming/flat
@@ -47,13 +63,15 @@
 	return 1
 
 /**
- * quadratic falloff
+ * exponential falloff
  */
-/datum/bluespace_jamming/quadratic
+/datum/bluespace_jamming/exponential
+	var/exponent = 1/2
+	var/factor = 1
 
-/datum/bluespace_jamming/quadratic/coefficient(turf/target)
+/datum/bluespace_jamming/exponential/coefficient(turf/target)
 	var/turf/us = get_turf(host)
-	return (1/2) ** get_dist(us, target)
+	return exponent ** (game_range_to(us, target) * factor)
 
 /**
  * linear falloff

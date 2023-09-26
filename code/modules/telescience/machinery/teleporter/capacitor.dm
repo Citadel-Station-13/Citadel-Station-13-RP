@@ -1,5 +1,7 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
 
-/obj/machinery/bluespace_capacitor
+/obj/machinery/teleporter/bluespace_capacitor
 	name = "bluespace projection capacitor"
 	desc = "A powerful capacitor used to power a bluespace field projector."
 	#warn sprite
@@ -7,28 +9,41 @@
 	/// kilojoules of energy stored
 	var/stored = 0
 	/// kilojoules of energy we can store
-	var/capacity = 50
+	var/capacity = 25000
 	/// charge rate in kw
 	var/draw_rate = 0
 	/// max charge rate in kw
 	var/draw_max = 1000
 
 	/// linked projector
-	var/obj/machinery/bluespace_projector/projector
-	/// linked consoles
-	var/list/obj/machinery/computer/teleporter/consoles
-	/// linked remotes
-	var/list/obj/item/bluespace_remote/remotes
+	var/obj/machinery/teleporter/bluespace_projector/projector
 
-	#warn powernet connection datums?
+/obj/machinery/teleporter/bluespace_capacitor/update_icon_state()
+	#warn projector status
+	return ..()
 
-/obj/machinery/bluespace_capacitor/proc/charge(kj)
+/obj/machinery/teleporter/bluespace_capacitor/proc/charge(kj)
+	. = min(capacity - stored, kj)
+	stored += .
 
-/obj/machinery/bluespace_capacitor/proc/use(kj)
+/obj/machinery/teleporter/bluespace_capacitor/proc/use(kj)
+	. = min(stored, kj)
+	stored -= .
 
+/obj/machinery/teleporter/bluespace_capacitor/process(delta_time)
+	if(!draw_rate)
+		return
+	if(stored >= capacity)
+		return
+	var/needed = min(capacity - stored, draw_rate)
+	var/got = shitcode_consume_kw_immediate(needed)
+	charge(got)
 
-#warn impl all
-
+/obj/machinery/teleporter/bluespace_capacitor/proc/set_draw_rate(rate)
+	draw_rate = clamp(rate, 0, draw_max)
 
 //! WARNING WARNING LEGACY SHITCODE
 //! REFACTORING ON POWERNET REFACTOR.
+
+/obj/machinery/teleporter/bluespace_capacitor/proc/shitcode_consume_kw_immediate(amt)
+	#warn impl

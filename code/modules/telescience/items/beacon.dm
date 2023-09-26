@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /obj/item/bluespace_beacon
 	name = "bluespace signal flare"
 	desc = "A miniature cell-powered flare used to provide an adequate signal for teleporters to lock onto. It doesn't look very energy-efficient."

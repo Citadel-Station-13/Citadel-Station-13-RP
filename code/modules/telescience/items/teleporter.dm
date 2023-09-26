@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /obj/item/bluespace_teleporter
 
 #warn bluespace_teleporter

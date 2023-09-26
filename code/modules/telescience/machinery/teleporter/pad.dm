@@ -1,6 +1,9 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 #warn circuit
 
-/obj/machinery/bluespace_pad
+/obj/machinery/teleporter/bluespace_pad
 	name = "bluespace projection pad"
 	desc = "A pad specially built to contain a projected confinement field."
 	#warn sprite
@@ -13,13 +16,13 @@
 	/// active field
 	var/obj/effect/bluespace_field/field
 
-/obj/machinery/bluespace_pad/Destroy()
+/obj/machinery/teleporter/bluespace_pad/Destroy()
 	if(field)
 		QDEL_NULL(field)
 	#warn impl
 	return ..()
 
-/obj/machinery/bluespace_pad/proc/generate_field()
+/obj/machinery/teleporter/bluespace_pad/proc/generate_field()
 
 #warn impl all
 

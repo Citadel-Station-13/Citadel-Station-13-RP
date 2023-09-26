@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * item tool API: allows items to be one or more types of generic tool-functionalities
  * with arbitrary tool speeds and qualities, while allowing the item to hook usages.

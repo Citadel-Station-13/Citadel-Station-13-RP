@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /obj/effect/bluespace_field
 	name = "bluespace translation field"
 	desc = "A projected energy field partially bridging local space with another dimension. Usually used by teleportation machinery."

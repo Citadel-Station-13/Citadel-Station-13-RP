@@ -1,3 +1,20 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
+/datum/bluespace_teleport
+	/// original source turf
+	var/turf/source
+	/// original destination turf
+	var/turf/destination
+	/// what to teleport to - usually a turf
+	var/atom/target
+
+	/// inaccuracy
+	var/inaccuracy = 0
+	/// instability
+	var/instability = 0
+
+#warn impl all
 //wrapper
 /proc/do_teleport(ateleatom, adestination, aprecision=0, afteleport=1, aeffectin=null, aeffectout=null, asoundin=null, asoundout=null, local=TRUE, bohsafe=FALSE)
 	new /datum/teleport/instant/science(arglist(args))

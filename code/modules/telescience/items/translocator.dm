@@ -1,4 +1,10 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /obj/item/bluespace_translocator
+	name = "bluespace translocator"
+	desc = "An experimental translocation device of unknown make and origin, capable of teleporting the user near-instantaneously to a destination beacon."
+
 
 #warn bluespace_translocator
 /obj/item/perfect_tele
@@ -65,12 +71,6 @@
 	. = ..()
 	if(.)
 		return
-	if(!(user.ckey in warned_users))
-		warned_users |= user.ckey
-		alert(user,"This device can be easily used to break ERP preferences due to the nature of teleporting \
-		and tele-vore. Make sure you carefully examine someone's OOC prefs before teleporting them if you are \
-		going to use this device for ERP purposes. This device records all warnings given and teleport events for \
-		admin review in case of pref-breaking, so just don't do it.","OOC WARNING")
 
 	var/choice = alert(user,"What do you want to do?","[src]","Create Beacon","Cancel","Target Beacon")
 	switch(choice)

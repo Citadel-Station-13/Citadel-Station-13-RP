@@ -1,10 +1,18 @@
-#warn circuit
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
 
+#warn circuit
 /obj/machinery/computer/teleporter
 	name = "teleporter control console"
-	desc = "Used to control a linked teleportation Pad and Projector."
+	desc = "Used to control a linked teleportation mainframe and its peripherals"
 	icon_keyboard = "teleport_key"
 	icon_screen = "teleport"
+
+	/// linked controller
+	var/obj/machinery/teleporter_controller/controller
+	
+
+/obj/machinery/computer/teleporter
 	circuit = /obj/item/circuitboard/teleporter
 	var/obj/machinery/tele_projector/projector = null
 	var/obj/machinery/tele_pad/pad = null

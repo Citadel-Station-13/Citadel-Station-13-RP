@@ -1,6 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/obj/item/bluespace_jaunter
+#warn send effect
 
-#warn uh
+#warn receive effect

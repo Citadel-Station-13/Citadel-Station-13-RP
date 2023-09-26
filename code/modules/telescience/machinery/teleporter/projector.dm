@@ -1,22 +1,25 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 #warn circuit
 
-/obj/machinery/bluespace_projector
+/obj/machinery/teleporter/bluespace_projector
 	name = "bluespace field projector"
 	desc = "A prototype field projector used to project a confinement field over a teleportation pad."
 
 	/// linked capacitor
-	var/obj/machinery/bluespace_capacitor/capacitor
+	var/obj/machinery/teleporter/bluespace_capacitor/capacitor
 	/// target pad
-	var/obj/machinery/bluespace_pad/active_target
+	var/obj/machinery/teleporter/bluespace_pad/active_target
 	/// linked consoles
 	var/list/obj/machinery/computer/teleporter/consoles
 	/// linked remotes
 	var/list/obj/item/bluespace_remote/remotes
 
-/obj/machinery/bluespace_projector/proc/draw(kilojoules)
+/obj/machinery/teleporter/bluespace_projector/proc/draw(kilojoules)
 	return capacitor?.use(kilojoules)
 
-/obj/machinery/bluespace_projector/drain_energy(datum/actor, amount, flags)
+/obj/machinery/teleporter/bluespace_projector/drain_energy(datum/actor, amount, flags)
 	return draw(amount)
 
 #warn teleport_projector

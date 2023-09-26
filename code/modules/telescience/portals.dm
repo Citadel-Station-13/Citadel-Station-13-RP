@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 
 /obj/effect/portal
@@ -29,7 +32,7 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 	if(target.anchored)
 		return FALSE
 
-#warn impl
+#warn below
 
 
 /obj/effect/portal

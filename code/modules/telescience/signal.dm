@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * So this serves as the overall documentation for telescience, since it's, at its core, based on signals.
  *
@@ -95,4 +98,8 @@
 /datum/bluespace_signal/proc/z_changed(datum/source, old_z, new_z)
 	#warn impl
 
-
+/**
+ * rebuild everything; call this after modifying *any* variables.
+ */
+/datum/bluespace_signal/proc/rebuild()
+	return
