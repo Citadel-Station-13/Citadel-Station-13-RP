@@ -3209,8 +3209,8 @@
 	dir = 4
 	},
 /obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = 24
+	dir = 4;
+	pixel_x = 26
 	},
 /turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under1)
@@ -4528,7 +4528,7 @@
 	external_pressure_bound_default = 0;
 	frequency = 1441;
 	icon_state = "map_vent_in";
-	id_tag = "o2_out"s;
+	id_tag = "o2_out";
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
