@@ -208,13 +208,14 @@
 	name = "Smuggled Ores and Materials"
 	num_contained = 20
 	contains = list(
-		/obj/item/ore/vaudium,
-		/obj/item/ore/diamond,
+		/obj/item/stack/material/bananium,
+		/obj/item/stack/material/diamond,
 		/obj/item/stack/material/durasteel,
 		/obj/item/stack/material/morphium,
 		/obj/item/stack/material/platinum,
-		/obj/item/ore/verdantium,
-		/obj/item/ore/hydrogen,
+		/obj/item/stack/material/verdantium,
+		/obj/item/stack/material/mhydrogen,
+		/obj/item/stack/material/silencium,
 		/obj/item/stack/material/valhollide
 		)
 	cost = 350
