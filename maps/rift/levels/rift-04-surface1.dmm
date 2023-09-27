@@ -3839,9 +3839,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "cBA" = (
 /obj/item/storage/box/beakers{
 	pixel_x = 2;
@@ -6714,9 +6712,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "emM" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -6885,9 +6881,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "euC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -10486,9 +10480,7 @@
 /area/security/detectives_office)
 "gTY" = (
 /turf/simulated/wall/prepainted,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "gUg" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel,
@@ -10924,9 +10916,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "heg" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
@@ -11754,9 +11744,7 @@
 	name_tag = "Research Southwest Wing Subgrid"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "hFb" = (
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -13804,9 +13792,7 @@
 	icon_state = "32-1"
 	},
 /turf/simulated/open,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "iKN" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled/steel,
@@ -20960,9 +20946,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "njD" = (
 /obj/effect/floor_decal/corner/beige{
 	dir = 10
@@ -26760,9 +26744,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "qEl" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -26818,9 +26800,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "qIp" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
@@ -26903,9 +26883,7 @@
 "qKN" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "qKO" = (
 /turf/simulated/floor/wood,
 /area/rift/station/public_garden)
@@ -35772,9 +35750,7 @@
 "wcq" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "wcC" = (
 /obj/machinery/light{
 	dir = 4
@@ -36144,9 +36120,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "wnn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -36874,9 +36848,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "wGR" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -37332,9 +37304,7 @@
 /area/quartermaster/foyer)
 "wYB" = (
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "wZk" = (
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -38083,9 +38053,7 @@
 	RCon_tag = "Research Southwest Wing Bypass"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/research/xenobiology_lab{
-	name = "Research Southwest Wing Substation"
-	})
+/area/maintenance/substation/research/southwest_wing)
 "xsL" = (
 /obj/structure/closet/crate,
 /turf/simulated/floor/plating,
