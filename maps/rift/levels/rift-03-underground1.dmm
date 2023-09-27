@@ -4962,7 +4962,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
-	icon_state = "1-2"
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
@@ -6424,11 +6424,11 @@
 /obj/machinery/atmospherics/pipe/zpipe/up/supply{
 	dir = 1
 	},
-/obj/structure/cable{
+/obj/structure/cable/green{
 	icon_state = "16-0"
 	},
-/obj/structure/cable{
-	icon_state = "0-8"
+/obj/structure/cable/green{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
@@ -6985,18 +6985,6 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/blue,
 /area/crew_quarters/pool)
-"xg" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Underground Research Storage"
-	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/research/xenobio)
 "xh" = (
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
@@ -7759,16 +7747,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Underground  Research Storage";
-	name_tag = "Underground Research Storage Subgrid"
-	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
@@ -11731,12 +11709,6 @@
 /obj/item/stack/material/algae,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos)
-"NM" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/research/xenobio)
 "NN" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
@@ -12272,9 +12244,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
-	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
@@ -13064,12 +13033,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
-"SF" = (
-/obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Underground Research Storage"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/research/xenobio)
 "SG" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/resin/membrane{
@@ -13667,18 +13630,6 @@
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/security/prison)
-"Vg" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/research/xenobio)
 "Vh" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
@@ -21193,8 +21144,8 @@ es
 WR
 WR
 UF
-SF
-NM
+jh
+jh
 cx
 rr
 UF
@@ -21387,8 +21338,8 @@ WR
 WR
 WR
 UF
-xg
-Vg
+jh
+jh
 jh
 jh
 jh
