@@ -3735,7 +3735,6 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/cable/pink,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "cow" = (
@@ -15270,10 +15269,6 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/cafeteria_dock)
-"jOE" = (
-/obj/structure/cable/pink,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "jOS" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/mist,
@@ -28921,7 +28916,6 @@
 /turf/simulated/floor/tiled/red,
 /area/security/evastorage)
 "skv" = (
-/obj/structure/cable/pink,
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
@@ -32510,7 +32504,6 @@
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
-/obj/structure/cable/pink,
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
@@ -35578,10 +35571,6 @@
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
-"wPl" = (
-/obj/structure/cable/pink,
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
 "wPF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -37615,16 +37604,6 @@
 /obj/machinery/light/small,
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/steel,
-/area/rift/trade_shop/loading)
-"ybv" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/cable/pink,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating,
 /area/rift/trade_shop/loading)
 "ybB" = (
 /obj/effect/floor_decal/corner_techfloor_grid/full,
@@ -45988,7 +45967,7 @@ qfQ
 qfQ
 qfQ
 sAX
-ybv
+pHH
 sAX
 sAX
 sAX
@@ -61805,7 +61784,7 @@ uLR
 cmA
 cmA
 xYV
-jOE
+uLR
 fzX
 fzX
 fzX
@@ -62926,7 +62905,7 @@ pBj
 pBj
 kcn
 eKH
-wPl
+vBG
 kKR
 vBG
 vBG

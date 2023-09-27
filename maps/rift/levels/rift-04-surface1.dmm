@@ -20505,7 +20505,6 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
 	},
-/obj/structure/cable/pink,
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "mVa" = (
@@ -32684,10 +32683,6 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/library)
-"ugF" = (
-/obj/structure/cable/pink,
-/turf/simulated/floor/plating,
-/area/maintenance/security/lower)
 "ugN" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -38326,10 +38321,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
-"xAH" = (
-/obj/structure/cable/pink,
-/turf/simulated/floor/plating,
-/area/maintenance/library)
 "xAW" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -59218,7 +59209,7 @@ dMX
 dMX
 dMX
 dMX
-ugF
+dMX
 rPj
 cjy
 cjy
@@ -64453,7 +64444,7 @@ hgE
 hgE
 hgE
 snT
-xAH
+awP
 oZF
 awP
 snT

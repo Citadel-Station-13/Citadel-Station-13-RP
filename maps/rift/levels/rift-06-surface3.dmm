@@ -22652,10 +22652,6 @@
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
-"mph" = (
-/obj/structure/cable/pink,
-/turf/simulated/floor/plating,
-/area/maintenance/research/xenobio)
 "mpH" = (
 /obj/machinery/door/airlock/maintenance/sec,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -24782,10 +24778,6 @@
 /obj/effect/paint_stripe/violet,
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/general)
-"sFl" = (
-/obj/structure/cable/pink,
-/turf/simulated/floor/plating,
-/area/maintenance/station/exploration)
 "sHK" = (
 /obj/structure/sign/department/conference_room,
 /turf/simulated/wall/prepainted/command,
@@ -33617,7 +33609,7 @@ aCA
 lMp
 vXg
 eGR
-mph
+jTJ
 lMp
 aOi
 aKW
@@ -47782,7 +47774,7 @@ aKt
 fOb
 aKt
 fam
-sFl
+aKt
 aif
 cQT
 pxw
@@ -50488,7 +50480,7 @@ aCK
 owP
 agh
 pxw
-sFl
+aKt
 aKt
 pxw
 afq

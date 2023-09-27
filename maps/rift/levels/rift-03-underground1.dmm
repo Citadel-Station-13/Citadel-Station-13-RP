@@ -2152,9 +2152,6 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos)
-"fj" = (
-/turf/simulated/wall/prepainted/science,
-/area/maintenance/research/xenobio)
 "fk" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -3209,7 +3206,7 @@
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "jg" = (
 /obj/machinery/door/airlock/maintenance/engi{
 	name = "Substation Access"
@@ -4061,7 +4058,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "mj" = (
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
@@ -4084,7 +4081,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "mm" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -4094,7 +4091,7 @@
 	pixel_x = 22
 	},
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "mn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 8
@@ -4771,13 +4768,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/research/xenobio)
-"oY" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "oZ" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -5254,7 +5245,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "qW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 8
@@ -6023,13 +6014,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "tK" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "tO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -9759,7 +9750,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "Hd" = (
 /obj/structure/railing{
 	dir = 8
@@ -9946,7 +9937,7 @@
 	},
 /obj/machinery/holoplant,
 /turf/simulated/floor/tiled/white,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "HH" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/disposalpipe/segment,
@@ -10874,7 +10865,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "KY" = (
 /obj/structure/closet/firecloset/full,
 /turf/simulated/floor/plating,
@@ -11165,7 +11156,7 @@
 "LT" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/white,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "LU" = (
 /obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "Waste O2 Filter";
@@ -11524,7 +11515,7 @@
 "Nm" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/white,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "Nn" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12203,7 +12194,7 @@
 "Pr" = (
 /obj/structure/stairs/spawner/north,
 /turf/simulated/floor/tiled/white,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "Ps" = (
 /obj/item/trash/candle{
 	pixel_y = -6
@@ -13772,7 +13763,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "VL" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -14226,7 +14217,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under1)
+/area/rnd/secure_storage/upper)
 "Xn" = (
 /obj/machinery/nanite_chamber,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -14381,9 +14372,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/hangar)
-"XY" = (
-/turf/simulated/floor/tiled/white,
-/area/rift/surfacebase/underground/under1)
 "XZ" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/turbolift/rmine/under1)
@@ -22495,11 +22483,11 @@ WR
 WR
 WR
 WR
-IH
-IH
-IH
-IH
-fj
+uA
+uA
+uA
+uA
+HV
 oW
 uA
 uA
@@ -22689,10 +22677,10 @@ WR
 WR
 WR
 WR
-IH
+uA
 HF
 Hc
-XY
+JE
 Nm
 tJ
 tK
@@ -22883,11 +22871,11 @@ WR
 WR
 WR
 WR
-IH
+uA
 Pr
-XY
+JE
 qV
-oY
+pZ
 ml
 KX
 KX
@@ -23077,9 +23065,9 @@ WR
 WR
 WR
 WR
-IH
+uA
 Pr
-XY
+JE
 Xl
 mi
 VK
@@ -23271,14 +23259,14 @@ WR
 ER
 WR
 hq
-IH
-IH
-IH
-IH
-IH
-IH
-IH
-IH
+uA
+uA
+uA
+uA
+uA
+uA
+uA
+uA
 uA
 Ax
 JE
