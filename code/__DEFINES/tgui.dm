@@ -61,7 +61,6 @@
 //* tgui dynamic input
 //* all constraints must be specified if it is included.
 
-#define TGUI_INPUT_DATA_KEY "key"
 #define TGUI_INPUT_DATA_TYPE "type"
 #define TGUI_INPUT_DATA_DESC "desc"
 #define TGUI_INPUT_DATA_NAME "name"

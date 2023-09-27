@@ -1,11 +1,12 @@
 
 interface UIDynamicInputContext {
-  query: UIDynamicInputEntry[];
+  // key to entry data
+  query: Record<string, UIDynamicInputEntry>;
 }
 
 interface UIDynamicInputEntry {
-  key: string;
   name: string;
+  desc: string;
 }
 
 interface StringEntry extends UIDynamicInputEntry {
@@ -39,7 +40,7 @@ type UIDynamicInputConstraint = StringConstraint | NumberConstraint | ListConstr
 
 type StringConstraint = [number] | undefined;
 type NumberConstraint = [number, number, number] | undefined;
-type ListConstraint = string[];
+type ListConstraint = string[] | undefined;
 type ToggleConstraint = [] | undefined;
 
 export const UIDynamicInputModal = (props, context) => {
@@ -48,6 +49,7 @@ export const UIDynamicInputModal = (props, context) => {
 
 interface DynamicEntryProps {
   entry: UIDynamicInputEntry;
+  id: string;
 }
 
 const DynamicEntry = (props: DynamicEntryProps, context) => {

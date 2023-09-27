@@ -84,15 +84,33 @@
 	abstract_type = /datum/physiology_modifier
 
 	/// our name
-	var/name
+	var/name = "Some Modifier"
 	/// is this a globally cached modifier?
 	var/is_globally_cached = FALSE
 
 	// todo: on biologies update, we need to specify what biologies this applies to
 
 	//? global modifiers
-	var/carry_strength_add
-	var/carry_factor_mult
+	var/carry_strength_add = 0
+	var/carry_factor_mult = 1
+
+/datum/physiology_modifier/serialize()
+	. = ..()
+	if(name != initial(name))
+		.["name"] = name
+	if(carry_strength_add != initial(carry_strength_add))
+		.["carry_strength_add"] = carry_strength_add
+	if(carry_factor_mult != initial(carry_factor_mult))
+		.["carry_factor_mult"] = carry_factor_mult
+
+/datum/physiology_modifier/deserialize(list/data)
+	. = ..()
+	if(istext(data["name"]))
+		name = data["name"]
+	if(isnum(data["carry_strength_add"]))
+		carry_strength_add = data["carry_strength_add"]
+	if(isnum(data["carry_factor_mult"]))
+		carry_factor_mult = data["carry_factor_mult"]
 
 /**
  * subtype for hardcoded physiology modifiers
@@ -104,6 +122,7 @@
  * subtype for admin varedit tracking
  */
 /datum/physiology_modifier/varedit
+	name = "Admin Varedits"
 
 GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 
@@ -175,9 +194,46 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 /mob/vv_do_topic(list/href_list)
 	. = ..()
 	if(href_list[VV_HK_ADD_PHYSIOLOGY_MODIFIER])
-		#warn impl
+		// todo: this should be able to be done globally via admin panel and then added to mobs
+
+		var/datum/tgui_dynamic_query/query = new
+		query.text("name", "Name", "Name your modifier.", 64, FALSE, "Custom Modifier")
+		query.number("carry_strength_add", "Carry Strength - Add", "Modify the person's base carry strength", default = 0)
+		query.number("carry_factor_mult", "Carry Factor - Multiply", "Multiply the person's divisor for slowdown when carrying over their limit.", default = 1)
+
+		var/list/choices = tgui_dynamic_input(usr, "Add a physiology modifier", "Add Physiology Modifier", query)
+
+		if(isnull(choices))
+			return
+		if(QDELETED(src))
+			return
+
+		var/datum/physiology_modifier/modifier = new
+
+		// we manually deserialize because we might have custom datatypes
+		// in the future that won't be serialized by the ui necessarily in the same way
+		// we would serialize it via json.
+
+		modifier.name = choices["name"]
+		modifier.carry_strength_add = choices["carry_strength_add"]
+		modifier.carry_factor_mult = choices["carry_factor_mult"]
+
+		log_admin("[key_name(usr)] --> [key_name(src)] - added physiology modifier [json_encode(modifier.serialize())]")
+		add_physiology_modifier(modifier)
+		return TRUE
+
 	if(href_list[VV_HK_REMOVE_PHYSIOLOGY_MODIFIER])
-		#warn impl
+		var/list/assembled = list()
+		var/i = 0
+		for(var/datum/physiology_modifier/modifier as anything in physiology_modifiers)
+			assembled["[modifier.name] (#[++i])"] = modifier
+		var/picked = input(usr, "Which modifier to remove? Please do not do this unless you know what you are doing.", "Remove Physiology Modifier") as null|anything in assembled
+		var/datum/physiology_modifer/removing = assembled[picked]
+		if(!(removing in physiology_modifiers))
+			return TRUE
+		log_admin("[key_name(usr)] --> [key_name(src)] - removed physiology modifier [json_encode(removing.serialize())]")
+		remove_physiology_modifier(removing)
+		return TRUE
 
 /mob/proc/get_varedit_physiology_modifier()
 	RETURN_TYPE(/datum/physiology_modifier)

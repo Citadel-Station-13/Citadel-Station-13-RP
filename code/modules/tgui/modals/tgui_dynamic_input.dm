@@ -11,8 +11,7 @@
 
 /datum/tgui_dynamic_query/proc/text(key, name, desc, max_length = 512, multi_line = FALSE, default)
 	RETURN_TYPE(/datum/tgui_dynamic_query)
-	options += list(
-		"key" = key,
+	options[key] = list(
 		"name" = name,
 		"desc" = desc,
 		"default" = default,
@@ -23,8 +22,7 @@
 
 /datum/tgui_dynamic_query/proc/number(key, name, desc, min_value = -INFINITY, max_value = INFINITY, round_to, default)
 	RETURN_TYPE(/datum/tgui_dynamic_query)
-	options += list(
-		"key" = key,
+	options[key] = list(
 		"name" = name,
 		"desc" = desc,
 		"default" = default,
@@ -35,8 +33,7 @@
 
 /datum/tgui_dynamic_query/proc/toggle(key, name, desc, default)
 	RETURN_TYPE(/datum/tgui_dynamic_query)
-	options += list(
-		"key" = key,
+	options[key] = list(
 		"name" = name,
 		"desc" = desc,
 		"default" = default,
@@ -47,8 +44,7 @@
 
 /datum/tgui_dynamic_query/proc/pick(key, name, desc, list/choices = list(), default)
 	RETURN_TYPE(/datum/tgui_dynamic_query)
-	options += list(
-		"key" = key,
+	options[key] = list(
 		"name" = name,
 		"desc" = desc,
 		"default" = default,
@@ -63,34 +59,36 @@
 /datum/tgui_dynamic_query/proc/get_results(list/choices)
 	. = list()
 	var/got
-	for(var/i in 1 to length(choices))
-		var/list/params = options[i]
+	for(var/key in options)
+		var/list/params = options[key]
+		var/val = choices[key]
 		switch(params[TGUI_INPUT_DATA_TYPE])
 			if(TGUI_INPUT_DATATYPE_TEXT)
-				got = isnull(choices[i]) ? params[TGUI_INPUT_DATA_DEFAULT] : choices[i]
+				got = isnull(val) ? params[TGUI_INPUT_DATA_DEFAULT] : val
 				if(!isnull(got))
 					if(length(got) > params[TGUI_INPUT_DATA_CONSTRAINTS][1])
 						got = copytext_char(got, 1, params[TGUI_INPUT_DATA_CONSTRAINTS][1] + 1)
-				. += got
+				.[key] = got
 			if(TGUI_INPUT_DATATYPE_NUM)
-				got = isnull(choices[i]) ? params[TGUI_INPUT_DATA_DEFAULT] : text2num(choices[i])
+				got = isnull(val) ? params[TGUI_INPUT_DATA_DEFAULT] : text2num(val)
 				if(!isnull(got))
 					got = clamp(got, params[TGUI_INPUT_DATA_CONSTRAINTS][1], params[TGUI_INPUT_DATA_CONSTRAINTS][2])
 					got = round(got, params[TGUI_INPUT_DATA_CONSTRAINTS][3])
+				.[key] = got
 			if(TGUI_INPUT_DATATYPE_LIST_PICK)
-				got = isnull(choices[i]) ? params[TGUI_INPUT_DATA_DEFAULT] : choices[i]
+				got = isnull(val) ? params[TGUI_INPUT_DATA_DEFAULT] : val
 				if(!isnull(got))
 					if(!(got in params[TGUI_INPUT_DATA_CONSTRAINTS]))
 						if(length(params[TGUI_INPUT_DATA_CONSTRAINTS]))
 							got = params[TGUI_INPUT_DATA_CONSTRAINTS][1]
 						else
 							got = null
-				. += got
+				.[key] = got
 			if(TGUI_INPUT_DATATYPE_TOGGLE)
-				got = isnull(choices[i]) ? params[TGUI_INPUT_DATA_DEFAULT] : choices[i]
+				got = isnull(val) ? params[TGUI_INPUT_DATA_DEFAULT] : val
 				if(!isnull(got))
 					got = !!got
-				. += got
+				.[key] = got
 
 /**
  * returns list to be sent to UI
@@ -154,23 +152,40 @@
 	var/closed
 	/// callback to invoke on finish
 	var/datum/callback/callback
+	/// are we finished? set to true on close, here to prevent double close.
+	var/finished = FALSE
 
 /datum/tgui_dynamic_input/New(mob/user, message, title, datum/tgui_dynamic_query/query, timeout, datum/callback/callback)
-	#warn impl
+	src.title = title
+	src.message = message
+	src.query = query
+	src.timeout = timeout
+	if(timeout)
+		QDEL_IN(src, timeout)
+	src.callback = callback
+	ui_interact(user)
 
 /datum/tgui_dynamic_input/Destroy()
+	// 'choices' intentionally kept
 	query = null
-	choices = null
+	if(!finished)
+		finish(null)
 	closed = TRUE
 	return ..()
 
 /datum/tgui_dynamic_input/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	#warn impl
+	.["query"] = query.get_query()
+	.["title"] = title
+	.["message"] = message
+	.["timeout"] = timeout
 
 /datum/tgui_dynamic_input/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	. = ..()
-	#warn impl
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "UIDynamicInputModal")
+		ui.set_autoupdate(FALSE)
+		ui.open()
 
 /datum/tgui_dynamic_input/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -178,17 +193,24 @@
 		return
 	switch(action)
 		if("submit")
-			#warn impl
+			finish(params["choices"])
+			return TRUE
 		if("cancel")
 			closed = TRUE
 			SStgui.close_uis(src)
+			if(!finished)
+				finish(null)
 			return TRUE
 
 /datum/tgui_dynamic_input/proc/block_on_finished()
-	#warn impl
+	UNTIL(closed)
+	return choices
 
 /datum/tgui_dynamic_input/proc/finish(list/choices)
+	finished = TRUE
+	choices = query.get_results(choices)
 	callback?.InvokeAsync(choices)
+	if(!QDESTROYING(src))
+		qdel(src)
 
-/datum/tgui_dynamic_input/proc/sanitize(list/choices)
-	#warn impl
+#warn finish ui
