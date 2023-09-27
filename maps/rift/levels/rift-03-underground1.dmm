@@ -2862,10 +2862,6 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/orange/bordercorner2,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "hD" = (
@@ -4528,7 +4524,7 @@
 	external_pressure_bound_default = 0;
 	frequency = 1441;
 	icon_state = "map_vent_in";
-	id_tag = sssssss;
+	id_tag = "o2_out";
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
