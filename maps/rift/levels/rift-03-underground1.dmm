@@ -4528,7 +4528,7 @@
 	external_pressure_bound_default = 0;
 	frequency = 1441;
 	icon_state = "map_vent_in";
-	id_tag = "o2_out";
+	id_tag = sssssss;
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
@@ -13743,7 +13743,7 @@
 	dir = 4;
 	input_tag = "o2_in";
 	name = "Oxygen Supply Control";
-	output_tag = s;
+	output_tag = "o2_out";
 	sensors = list("o2_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black,
