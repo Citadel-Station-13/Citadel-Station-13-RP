@@ -407,6 +407,7 @@
 	CB.apply_default_parts(src)
 	RefreshParts()
 
+// todo: this is fucked, refactor
 /obj/machinery/proc/default_part_replacement(var/mob/user, var/obj/item/storage/part_replacer/R)
 	if(!istype(R))
 		return 0
@@ -418,14 +419,20 @@
 	if(panel_open || !R.panel_req)
 		var/obj/item/circuitboard/CB = circuit
 		var/P
-		for(var/obj/item/stock_parts/A in component_parts)
+		for(var/obj/item/A in component_parts)
+			var/our_rating = A.rped_rating()
+			if(isnull(our_rating))
+				continue
 			for(var/T in CB.req_components)
 				if(ispath(A.type, T))
 					P = T
 					break
-			for(var/obj/item/stock_parts/B in R.contents)
+			for(var/obj/item/B in R.contents)
+				var/their_rating = B.rped_rating()
+				if(isnull(their_rating))
+					continue
 				if(istype(B, P) && istype(A, P))
-					if(B.rating > A.rating)
+					if(their_rating > our_rating)
 						R.remove_from_storage(B, src)
 						R.handle_item_insertion(A, null, TRUE)
 						component_parts -= A
@@ -433,8 +440,8 @@
 						B.loc = null
 						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
 						break
-			update_appearance()
-			RefreshParts()
+		update_appearance()
+		RefreshParts()
 	return 1
 
 // todo: refactor
