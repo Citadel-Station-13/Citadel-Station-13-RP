@@ -3,7 +3,11 @@
 
 /obj/item/bluespace_translocator
 	name = "bluespace translocator"
-	desc = "An experimental translocation device of unknown make and origin, capable of teleporting the user near-instantaneously to a destination beacon."
+	desc = "A prototype launcher that shoots bluespace signalling beacons at long ranges and accuracies."
+
+/obj/item/bluespace_translocator/Initialize(mapload)
+	. = ..()
+	init_cell_slot_easy_tool()
 
 
 #warn bluespace_translocator

@@ -37,7 +37,7 @@
 /datum/bluespace_wake/New(turf/source, turf/dest, bidirectional)
 	src.source = source
 	src.destination = dest
-	src.was_bidirectional = bidreictional
+	src.was_bidirectional = bidirectional
 	SStelesci.register_bluespace_wake(src)
 
 /datum/bluespace_wake/Destroy()

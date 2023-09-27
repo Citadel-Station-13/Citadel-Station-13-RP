@@ -8,3 +8,9 @@
  */
 /datum/object_system
 	abstract_type = /datum/object_system
+
+	/// owning object
+	var/obj/parent
+
+/datum/object_system/New(obj/parent)
+	src.parent = parent

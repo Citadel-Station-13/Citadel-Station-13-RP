@@ -3,6 +3,11 @@
 
 /obj/item/bluespace_teleporter
 
+/obj/item/bluespace_teleporter/Initialize(mapload)
+	. = ..()
+	init_cell_slot_easy_tool()
+
+
 #warn bluespace_teleporter
 /obj/item/hand_tele
 	name = "hand tele"

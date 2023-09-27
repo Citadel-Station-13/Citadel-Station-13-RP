@@ -1,79 +1,58 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
+GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/bluespace_portal)
 
-/obj/effect/portal
+/proc/lazy_bluespace_portal_pair(turf/source, turf/destination, instability, duration = 30 SECONDS)
+	var/datum/bluespace_teleport/teleport = new
+	teleport.source = source
+	teleport.destination = destination
+	teleport.instability = instability
+	teleport.absolute = TRUE
+	return bluespace_portal_pair(teleport)
+
+/proc/bluespace_portal_pair(datum/bluespace_teleport/teleportation, duration = 30 SECONDS)
+	var/obj/effect/bluespace_portal/A = new(teleportation.source, teleportation, TRUE)
+	var/obj/effect/bluespace_portal/B = new(teleportation.destination, teleportation, FALSE)
+	QDEL_IN(A, 30 SECONDS)
+	QDEL_IN(B, 30 SECONDS)
+	return list(A, B)
+
+/obj/effect/bluespace_portal
 	name = "portal"
 	desc = "A semi-stable conduit through bluespace. Surely this can't be a bad idea."
 	#warn sprite
 	anchored = TRUE
 
-/obj/effect/portal/Initialize()
+	/// teleport datum
+	var/datum/bluespace_teleport/teleportation
+	/// are we source or dest?
+	var/is_source_side
+
+/obj/effect/bluespace_portal/Initialize(mapload, datum/bluespace_teleport/teleport_datum, is_source)
 	. = ..()
-	AddElement(/datum/element/connect_loc, list(COMSIG_ATOM_ENTERED, TYPE_PROC_REF(/obj/effect/portal, on_cross)))
+	ASSERT(istype(teleport_datum))
+	AddElement(/datum/element/connect_loc, list(COMSIG_ATOM_ENTERED, TYPE_PROC_REF(/obj/effect/bluespace_portal, on_enter)))
+	src.teleportation = teleport_datum
+	src.is_source_side = is_source
+	LAZYADD(teleport_datum.portals, src)
 
-/obj/effect/portal/Destroy()
-
+/obj/effect/bluespace_portal/Destroy()
+	LAZYREMOVE(teleport_datum.portals, src)
 	return ..()
 
-/obj/effect/portal/proc/on_cross(datum/source, atom/movable/what, atom/oldloc)
-	if(oldloc == loc)
+/obj/effect/bluespace_portal/proc/on_enter(datum/source, atom/movable/what, atom/oldloc)
+	if(oldloc == (is_source_side? teleportation.destination : teleportation.source))
 		return // no loops
 	teleport(what, TRUE)
 
-/obj/effect/portal/attack_hand(mob/user, list/params)
-	teleport(user, FALSE)
+/obj/effect/bluespace_portal/attack_hand(mob/user, list/params)
+	user.forceMove(get_turf(src))
 	return TRUE
 
-/obj/effect/portal/proc/teleport(atom/movable/target, crossed)
+/obj/effect/bluespace_portal/proc/teleport(atom/movable/target, crossed)
 	if(target.atom_flags & ATOM_ABSTRACT)
 		return FALSE
 	if(target.anchored)
 		return FALSE
-
-#warn below
-
-
-/obj/effect/portal
-	name = "portal"
-	desc = "Looks unstable. Best to test it with the clown."
-	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "portal"
-	density = 1
-	unacidable = 1//Can't destroy energy portals.
-	var/failchance = 5
-	var/obj/item/target = null
-	var/creator = null
-	anchored = 1.0
-
-/obj/effect/portal/attack_hand(mob/user, list/params)
-	if(istype(user) && !(istype(user,/mob/living)))
-		return	//do not send ghosts, zshadows, ai eyes, etc
-	spawn(0)
-		src.teleport(user)
-		return
-	return
-
-/obj/effect/portal/Initialize(mapload, ...)
-	. = ..()
-	QDEL_IN(src, 30 SECONDS)
-
-/obj/effect/portal/proc/teleport(atom/movable/M as mob|obj)
-	if(istype(M, /obj/effect)) //sparks don't teleport
-		return
-	if (M.anchored&&istype(M, /obj/mecha))
-		return
-	if (icon_state == "portal1")
-		return
-	if (!( target ))
-		qdel(src)
-		return
-	if (istype(M, /atom/movable))
-		if(prob(failchance))
-			src.icon_state = "portal1"
-			do_teleport(M, locate(rand(5, world.maxx - 5), rand(5, world.maxy -5), pick((LEGACY_MAP_DATUM).get_map_levels(z))), 0)
-		else
-			do_teleport(M, target, 1) ///You will appear adjacent to the beacon
-
-
+	teleportation.translate_movable(target, is_source_side? teleportation.destination : teleportation.source)

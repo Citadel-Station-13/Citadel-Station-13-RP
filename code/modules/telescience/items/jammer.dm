@@ -5,8 +5,9 @@
 	name = "bluespace disruption flare"
 	desc = "A high throughput device used to disrupt nearby teleportation systems."
 
-/obj/item/bluespace_jammer/proc/consume_energy(joules)
-	#warn impl
+/obj/item/bluespace_jammer/Initialize(mapload)
+	. = ..()
+	init_cell_slot_easy_tool()
 
 /obj/item/bluespace_jammer/trap
 	name = "modified disruption flare"

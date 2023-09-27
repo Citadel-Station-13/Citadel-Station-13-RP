@@ -3,6 +3,13 @@
 
 GLOBAL_LIST_EMPTY(leap_pad_lookup)
 
+/**
+ * These are just fluffy canonical teleporters that are actually magical.
+ * They are indestructible and whatnot, and useful for admin areas/etc
+ *
+ * Leap pads are explicitly not part of the telescience system, and are only here
+ * for organizational reasons.
+ */
 /obj/machinery/leap_pad
 	name = "quantum leap pad"
 	desc = "An expensive, and highly efficient quantum pad configured to near-instantaneously transmit its cargo instead of keeping the conduit open."

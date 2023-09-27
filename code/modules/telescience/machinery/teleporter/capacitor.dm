@@ -42,6 +42,18 @@
 /obj/machinery/teleporter/bluespace_capacitor/proc/set_draw_rate(rate)
 	draw_rate = clamp(rate, 0, draw_max)
 
+/obj/machinery/teleporter/bluespace_capacitor/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	.["stored"] = stored
+	.["drawRate"] = draw_rate
+	.["linkedProjector"] = !isnull(projector)
+
+/obj/machinery/teleporter/bluespace_capacitor/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	.["capacity"] = capacity
+	.["drawMax"] = draw_max
+
+
 //! WARNING WARNING LEGACY SHITCODE
 //! REFACTORING ON POWERNET REFACTOR.
 

@@ -16,9 +16,8 @@
 	/// autolink receive id
 	/// normal link checks are still done
 	var/autolink_id
-	/// linked pad
-	/// only one pad allowed
-	var/obj/machinery/teleporter/bluespace_pad/pad
+	/// linked pads
+	var/list/obj/machinery/teleporter/bluespace_pad/pads
 	/// linked capacitors
 	/// capacitor linking is optional
 	var/list/obj/machinery/teleporter/bluespace_capacitor/capacitors

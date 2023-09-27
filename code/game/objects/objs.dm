@@ -110,6 +110,7 @@
 		unregister_dangerous_to_step()
 	SStgui.close_uis(src)
 	SSnanoui.close_uis(src)
+	QDEL_NULL(object_cell_slot)
 	return ..()
 
 /obj/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
@@ -499,3 +500,7 @@
 	var/shake_dir = pick(-1, 1)
 	animate(src, transform=turn(matrix(), 8*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
+
+//? Tool System
+
+#warn hook cell slot

@@ -6,6 +6,11 @@
 	desc = "A device used to rip open short duration conduits through bluespace to tunnel to a nearby location. Takes a moment to charge up and perform path calculations, and uses a lot of energy in the process."
 	#warn sprite
 
+/obj/item/bluespace_harpoon/Initialize(mapload)
+	. = ..()
+	init_cell_slot_easy_tool()
+
+
 #warn below
 
 //RD 'gun'

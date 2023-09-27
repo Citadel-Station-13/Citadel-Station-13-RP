@@ -17,8 +17,9 @@
 	var/obj/item/cell/cell
 
 /obj/item/bluespace_remote/Initialize(mapload)
+	. = ..()
+	init_cell_slot_easy_tool()
 	#warn impl autolink
-	return ..()
 
 /obj/item/bluespace_remote/Destroy()
 	#warn unlink

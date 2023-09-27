@@ -11,10 +11,6 @@
 	var/obj/machinery/teleporter/bluespace_capacitor/capacitor
 	/// target pad
 	var/obj/machinery/teleporter/bluespace_pad/active_target
-	/// linked consoles
-	var/list/obj/machinery/computer/teleporter/consoles
-	/// linked remotes
-	var/list/obj/item/bluespace_remote/remotes
 
 /obj/machinery/teleporter/bluespace_projector/proc/draw(kilojoules)
 	return capacitor?.use(kilojoules)

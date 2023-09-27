@@ -14,6 +14,27 @@
 	/// instability
 	var/instability = 0
 
+	/// cannot be deviated by new sources of jamming/traps/etc
+	var/absolute = FALSE
+
+	/// list of portals open
+	var/list/obj/effect/bluespace_portal/portals
+
+/datum/bluespace_teleport/Destroy()
+	QDEL_NULL(portals)
+	#warn impl
+	return ..()
+
+/**
+ * @params
+ * * victim - what to teleport
+ * * destination - where to send the movable.
+ * * instability - modify instability amount
+ */
+/datum/bluespace_teleport/proc/translate_movable(atom/movable/victim, atom/destination, instability)
+	instability = max(instability + src.instability, 0)
+	#warn impl
+
 #warn impl all
 //wrapper
 /proc/do_teleport(ateleatom, adestination, aprecision=0, afteleport=1, aeffectin=null, aeffectout=null, asoundin=null, asoundout=null, local=TRUE, bohsafe=FALSE)

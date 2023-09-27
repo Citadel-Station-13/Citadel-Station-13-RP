@@ -50,6 +50,7 @@
 	if(ispath(cell_type))
 		cell = new cell_type
 	reset_signal()
+	init_cell_slot_easy_tool()
 
 /obj/item/bluespace_beacon/proc/set_active(active)
 
