@@ -3970,7 +3970,7 @@
 /area/shuttle/pirate/bridge)
 "JA" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/reagent_containers/food/snacks/chips,
+/obj/item/reagent_containers/food/snacks/bagged/chips,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/piratebase/mess)
 "JB" = (

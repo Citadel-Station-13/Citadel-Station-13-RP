@@ -1,5 +1,5 @@
 /datum/material/phoron
-	id = "phoron"
+	id = MAT_PHORON
 	name = "phoron"
 	stack_type = /obj/item/stack/material/phoron
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
