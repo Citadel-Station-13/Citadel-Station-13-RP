@@ -155,6 +155,8 @@
 	w_class = WEIGHT_CLASS_TINY
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
+	/// rped rating
+	var/rped_rating = 0
 
 /obj/item/reagent_containers/glass/beaker/Initialize(mapload)
 	. = ..()
@@ -171,6 +173,9 @@
 /obj/item/reagent_containers/glass/beaker/attack_hand(mob/user, list/params)
 	..()
 	update_icon()
+
+/obj/item/reagent_containers/glass/beaker/rped_rating()
+	return rped_rating
 
 /obj/item/reagent_containers/glass/beaker/update_icon()
 	cut_overlays()
@@ -209,6 +214,7 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60,120)
 	atom_flags = OPENCONTAINER
+	rped_rating = 1
 
 /obj/item/reagent_containers/glass/beaker/noreact
 	name = "cryostasis beaker"
@@ -232,6 +238,7 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60,120,300)
 	atom_flags = OPENCONTAINER
+	rped_rating = 3
 
 /obj/item/reagent_containers/glass/beaker/vial
 	name = "vial"

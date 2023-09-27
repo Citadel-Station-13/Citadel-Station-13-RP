@@ -53,8 +53,6 @@
 	icon_state = "human_female"
 	gender = NEUTER
 
-
-
 //# Mob AI Code.
 
 /datum/ai_holder/simple_mob/statue
@@ -65,8 +63,6 @@
 	can_flee = FALSE
 	speak_chance = 0
 	wander = FALSE
-
-
 
 //# Mob Code.
 

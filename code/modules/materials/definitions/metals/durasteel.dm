@@ -1,5 +1,5 @@
 /datum/material/durasteel
-	id = "durasteel"
+	id = MAT_DURASTEEL
 	name = "durasteel"
 	stack_type = /obj/item/stack/material/durasteel
 	integrity = 600

@@ -16,11 +16,11 @@ var/list/lunchables_snacks_ = list(/obj/item/reagent_containers/food/snacks/donu
                                    /obj/item/reagent_containers/food/snacks/donut/cherryjelly,
                                    /obj/item/reagent_containers/food/snacks/muffin,
                                    /obj/item/reagent_containers/food/snacks/popcorn,
-                                   /obj/item/reagent_containers/food/snacks/sosjerky,
-                                   /obj/item/reagent_containers/food/snacks/unajerky,
-                                   /obj/item/reagent_containers/food/snacks/no_raisin,
-                                   /obj/item/reagent_containers/food/snacks/spacetwinkie,
-                                   /obj/item/reagent_containers/food/snacks/cheesiehonkers,
+                                   /obj/item/reagent_containers/food/snacks/bagged/sosjerky,
+                                   /obj/item/reagent_containers/food/snacks/boxed/unajerky,
+                                   /obj/item/reagent_containers/food/snacks/boxed/no_raisin,
+                                   /obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie,
+                                   /obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers,
                                    /obj/item/reagent_containers/food/snacks/poppypretzel,
                                    /obj/item/reagent_containers/food/snacks/carrotfries,
                                    /obj/item/reagent_containers/food/snacks/candiedapple,
@@ -39,7 +39,7 @@ var/list/lunchables_snacks_ = list(/obj/item/reagent_containers/food/snacks/donu
                                    /obj/item/reagent_containers/food/snacks/watermelonslice,
                                    /obj/item/reagent_containers/food/snacks/slice/applecake/filled,
                                    /obj/item/reagent_containers/food/snacks/slice/pumpkinpie/filled,
-                                   /obj/item/reagent_containers/food/snacks/skrellsnacks)
+                                   /obj/item/reagent_containers/food/snacks/wrapped/skrellsnacks)
 
 var/list/lunchables_drinks_ = list(/obj/item/reagent_containers/food/drinks/cans/cola,
                                    /obj/item/reagent_containers/food/drinks/cans/waterbottle,

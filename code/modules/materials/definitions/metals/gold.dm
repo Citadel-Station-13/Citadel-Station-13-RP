@@ -1,5 +1,5 @@
 /datum/material/gold
-	id = "gold"
+	id = MAT_GOLD
 	name = "gold"
 	stack_type = /obj/item/stack/material/gold
 	icon_colour = "#EDD12F"
