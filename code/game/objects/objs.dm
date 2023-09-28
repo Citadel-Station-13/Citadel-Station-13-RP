@@ -245,7 +245,7 @@
 
 //? Attacks
 
-/obj/on_attack_hand(datum/event_args/clickchain/e_args)
+/obj/on_attack_hand(datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -410,27 +410,27 @@
 
 //? Context
 
-/obj/context_query(datum/event_args/actor/actor)
+/obj/context_query(datum/event_args/actor/e_args)
 	. = ..()
-	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(actor.performer))
+	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(e_args.performer))
 		.["obj_cell_slot"] = ATOM_CONTEXT_TUPLE("remove cell", null, null, MOBILITY_CAN_USE)
 
-/obj/context_act(datum/event_args/actor/actor, key)
+/obj/context_act(datum/event_args/actor/e_args, key)
 	if(key == "obj_cell_slot")
 		if(isnull(obj_cell_slot.cell))
-			actor.performer.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
+			e_args.performer.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
 			return TRUE
-		if(!obj_cell_slot.interaction_active(actor.performer))
+		if(!obj_cell_slot.interaction_active(e_args.performer))
 			return TRUE
-		actor.performer.visible_action_feedback(
+		e_args.visible_feedback(
 			target = src,
 			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[actor.performer] removes the cell from [src]."),
+			visible_hard = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
 			audible_hard = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
-			visible_self = SPAN_NOTICE("You remove the cell from [src]."),
+			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)
-		log_construction(actor.performer, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		actor.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(actor.performer))
+		log_construction(e_args.performer, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
 		return TRUE
 	return ..()
 
