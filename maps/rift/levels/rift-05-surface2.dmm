@@ -709,7 +709,7 @@
 	pixel_x = -32
 	},
 /obj/structure/cable/green{
-	icon_state = "0-4"
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
@@ -1270,9 +1270,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/coffee_shop)
@@ -4133,6 +4130,9 @@
 	},
 /obj/effect/floor_decal/spline/plain/corner{
 	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
@@ -7767,9 +7767,6 @@
 	},
 /obj/structure/railing,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "fik" = (
@@ -7840,7 +7837,7 @@
 	},
 /obj/machinery/computer/timeclock/premade/west,
 /obj/machinery/holopad,
-/obj/structure/cable{
+/obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/cult,
@@ -8772,20 +8769,11 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/spline/plain/corner,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
@@ -10419,9 +10407,6 @@
 	},
 /obj/structure/cult/pylon,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "gHJ" = (
@@ -11047,15 +11032,8 @@
 /area/crew_quarters/showers)
 "hid" = (
 /obj/effect/floor_decal/spline/plain,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/spline/plain,
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/drinks/cup,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/outdoors/mud,
 /area/crew_quarters/coffee_shop)
 "hij" = (
@@ -11355,29 +11333,10 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 1
 	},
-/obj/structure/curtain/open/bed{
-	name = "brown curtain";
-	pixel_x = -32
-	},
 /obj/item/flame/candle/black,
 /obj/structure/table/fancyblack,
 /obj/item/toy/plushie/coffee_fox{
 	name = "Cream"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/table/wooden_reinforced,
-/obj/item/flame/candle,
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 1
-	},
-/obj/structure/curtain/open/bed{
-	name = "brown curtain";
-	pixel_x = -32
 	},
 /turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
@@ -11648,14 +11607,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacetwo)
 "hDh" = (
-/obj/structure/curtain/open/bed{
-	name = "brown curtain";
-	pixel_x = -32
-	},
-/obj/structure/cable{
+/obj/structure/bed/chair/wood,
+/obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/bed/chair/wood,
 /turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "hDK" = (
@@ -14303,30 +14258,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/curtain/black,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lightgrey/border,
-/obj/structure/curtain/open/bed{
-	name = "brown curtain"
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "jjr" = (
@@ -14364,9 +14299,6 @@
 "jjL" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/coffee_shop)
@@ -16174,21 +16106,6 @@
 "kpm" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/assembly/chargebay)
-"kpz" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/cult,
-/area/crew_quarters/coffee_shop)
 "kpD" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/research{
@@ -17446,13 +17363,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "kYZ" = (
@@ -17509,39 +17419,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)
-"laS" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/curtain/black,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/obj/structure/curtain/open/bed{
-	name = "brown curtain"
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals5,
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacetwo)
 "lbx" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -21566,21 +21443,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -21788,13 +21650,6 @@
 /turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "nMg" = (
-/obj/structure/curtain/open/bed{
-	name = "brown curtain";
-	pixel_x = -32
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
@@ -22273,18 +22128,6 @@
 "obn" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
 	},
 /turf/simulated/floor/outdoors/mud,
 /area/crew_quarters/coffee_shop)
@@ -22796,14 +22639,10 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/asmaint2)
 "otm" = (
-/obj/structure/curtain/open/bed{
-	name = "brown curtain";
-	pixel_x = -32
-	},
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/obj/structure/cable{
+/obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/cult,
@@ -24080,20 +23919,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/security_bathroom)
-"peh" = (
-/obj/effect/rune,
-/obj/item/flame/candle/everburn/black,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 1
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/cult,
-/area/crew_quarters/coffee_shop)
 "peR" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/paleblue{
@@ -24853,21 +24678,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
-"pGc" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/crew_quarters/coffee_shop)
 "pGf" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -25594,6 +25404,9 @@
 /obj/effect/floor_decal/spline/plain,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
@@ -27022,18 +26835,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
 "rdi" = (
-/obj/effect/floor_decal/spline/plain,
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/outdoors/mud,
 /area/crew_quarters/coffee_shop)
@@ -31563,18 +31366,6 @@
 /obj/structure/bed/chair,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"uau" = (
-/obj/effect/rune,
-/obj/item/flame/candle/everburn/black,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/cult,
-/area/crew_quarters/coffee_shop)
 "uax" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -34717,12 +34508,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"wcw" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/cult,
-/area/crew_quarters/coffee_shop)
 "wcF" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -35173,14 +34958,7 @@
 /area/medical/resleeving)
 "wtK" = (
 /obj/effect/floor_decal/spline/plain,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/spline/plain,
 /obj/structure/table/marble,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/outdoors/mud,
 /area/crew_quarters/coffee_shop)
 "wuF" = (
@@ -35206,13 +34984,6 @@
 /area/security/hallway)
 "wuW" = (
 /obj/structure/cult/talisman,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "wwg" = (
@@ -35392,6 +35163,10 @@
 /obj/structure/kitchenspike,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/dormitory)
+"wDj" = (
+/obj/item/toy/plushie/carp,
+/turf/simulated/floor/cult,
+/area/crew_quarters/coffee_shop)
 "wDE" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -35633,15 +35408,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "wMv" = (
-/obj/structure/curtain/open/bed{
-	name = "brown curtain";
-	pixel_x = -32
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/structure/table/fancyblack,
 /obj/item/flame/candle/black,
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "wMA" = (
@@ -36364,9 +36135,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/plain/corner,
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "xkX" = (
@@ -37846,9 +37614,6 @@
 /area/maintenance/dormitory)
 "ydU" = (
 /obj/effect/floor_decal/spline/plain,
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "yem" = (
@@ -49141,7 +48906,7 @@ jGC
 jGC
 jGC
 cLy
-wcw
+fmy
 wZw
 xkX
 cqf
@@ -49332,10 +49097,10 @@ usC
 hid
 ydU
 vPE
-fmy
+wDj
 vPE
 qgA
-wcw
+fmy
 wZw
 ibo
 cqf
@@ -49529,7 +49294,7 @@ fmy
 hsX
 fmy
 qgA
-wcw
+fmy
 fLD
 tsb
 cqf
@@ -49719,11 +49484,11 @@ vmG
 kHS
 obn
 kYQ
-uau
+vPE
 wuW
-peh
+vPE
 fNx
-kpz
+iQK
 iQK
 ujW
 hpi
@@ -49912,7 +49677,7 @@ cqf
 cqf
 huA
 hBf
-pGc
+jjL
 jjL
 fij
 aUf
@@ -50106,7 +49871,7 @@ ylV
 vRp
 cqf
 cqf
-laS
+oUQ
 eXs
 tfk
 oUQ

@@ -13616,9 +13616,6 @@
 	},
 /turf/simulated/floor/cult,
 /area/crew_quarters/barrestroom)
-"cIq" = (
-/turf/simulated/wall/prepainted/civilian,
-/area/hydroponics)
 "cJo" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -13693,16 +13690,6 @@
 /obj/item/flame/candle/candelabra/everburn{
 	pixel_x = -16;
 	pixel_y = 6
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/table/hardwoodtable,
-/obj/item/flame/candle{
-	pixel_x = -16
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -13812,16 +13799,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -13850,9 +13827,6 @@
 /obj/machinery/newscaster{
 	pixel_x = 32
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/light{
 	dir = 4
 	},
@@ -13860,22 +13834,6 @@
 /obj/effect/floor_decal/corner/orange/diagonal,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/beige/full{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/obj/machinery/newscaster{
-	pixel_x = 32
-	},
-/obj/item/stool/padded,
-/obj/machinery/light{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
@@ -14738,13 +14696,6 @@
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/sofa/black/right{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/plain,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -15193,19 +15144,6 @@
 	},
 /obj/structure/table/hardwoodtable,
 /obj/effect/floor_decal/corner/purple/diagonal,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/table/reinforced,
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/door/blast/shutters{
-	id = "kitchen_shutters";
-	name = "Kitchen Shutters"
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/light{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "fhj" = (
@@ -15647,15 +15585,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/corner/purple/diagonal,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/corner/red/diagonal,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "fHQ" = (
@@ -15774,9 +15703,6 @@
 /turf/simulated/floor/carpet,
 /area/bridge/bridge_hallway)
 "fSV" = (
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -15784,16 +15710,6 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/orange/diagonal,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/red/diagonal,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -16528,10 +16444,6 @@
 /area/maintenance/station/exploration)
 "hkW" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/obj/effect/debris/cleanable/cobweb2,
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "hkX" = (
@@ -16957,18 +16869,6 @@
 	dir = 4
 	},
 /obj/structure/table/hardwoodtable,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/structure/table/standard,
-/obj/machinery/microwave,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -17157,14 +17057,6 @@
 	dir = 1
 	},
 /obj/structure/table/bench/marble,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/item/stool/padded,
-/obj/landmark/spawnpoint/job/assistant,
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -17237,7 +17129,7 @@
 	icon_state = "shock";
 	name = "HIGH VOLTAGE"
 	},
-/turf/simulated/wall/wood/hardwood,
+/turf/simulated/wall/prepainted/engineering,
 /area/maintenance/substation/exploration)
 "iwj" = (
 /turf/simulated/wall/wood/hardwood,
@@ -17449,16 +17341,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
-"iLu" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
-/turf/simulated/floor/wood,
-/area/crew_quarters/kitchen)
 "iLO" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
@@ -19074,17 +18956,6 @@
 /obj/effect/floor_decal/corner/orange/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
-"lGp" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lime/border,
-/turf/simulated/floor/wood,
-/area/hydroponics)
 "lGQ" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -19220,13 +19091,6 @@
 	dir = 5
 	},
 /obj/structure/bed/chair/pew/right,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/sofa/black/left,
-/obj/effect/floor_decal/spline/plain{
-	dir = 5
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -19808,15 +19672,8 @@
 	icon_state = "2-8"
 	},
 /obj/effect/debris/cleanable/blood/drip,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
 /obj/structure/cable/green{
 	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/kitchen)
@@ -19967,15 +19824,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/corner/orange/diagonal,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/corner/red/diagonal,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "mHU" = (
@@ -20074,10 +19922,6 @@
 /area/ai_upload_foyer)
 "mSe" = (
 /obj/effect/floor_decal/corner/purple/diagonal,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/red/diagonal,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -20157,15 +20001,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /obj/effect/debris/cleanable/blood/drip,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -21375,17 +21210,6 @@
 	dir = 5
 	},
 /obj/structure/disposalpipe/segment,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -21668,18 +21492,6 @@
 	dir = 10
 	},
 /obj/structure/table/hardwoodtable,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/structure/table/standard,
-/obj/machinery/microwave,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -21983,17 +21795,6 @@
 	},
 /obj/structure/table/fancyblack,
 /obj/effect/floor_decal/corner/orange/diagonal,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/table/hardwoodtable,
-/obj/effect/floor_decal/spline/plain,
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "bar_shutters";
-	name = "Bar Shutters"
-	},
-/obj/effect/floor_decal/corner/red/diagonal,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -22390,16 +22191,7 @@
 /area/crew_quarters/bar)
 "qEx" = (
 /obj/structure/cable/green,
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
 /obj/machinery/power/apc/direction_bump/south,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/power/apc/direction_bump/south,
-/obj/structure/cable/green,
 /turf/simulated/floor/wood,
 /area/crew_quarters/kitchen)
 "qGL" = (
@@ -22836,19 +22628,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/button/remote/blast_door{
 	id = "kitchen_shutters";
 	name = "Kitchen Shutter control";
 	pixel_x = -26;
 	pixel_y = 24
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -23178,15 +22963,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "sjA" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
@@ -23810,9 +23586,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_cyborg_station)
-"tqJ" = (
-/turf/simulated/wall/wood/hardwood,
-/area/maintenance/substation/exploration)
 "trR" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/lightgrey/bordercorner,
@@ -24130,24 +23903,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/diagonal,
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/beige/full{
-	dir = 8
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -24271,16 +24026,6 @@
 /area/exploration/showers)
 "uer" = (
 /obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/structure/cable/green{
 	icon_state = "2-8"
 	},
 /obj/structure/cable/green{
@@ -24301,25 +24046,10 @@
 /obj/item/packageWrap,
 /obj/machinery/power/apc/direction_bump/south,
 /obj/structure/table/fancyblack,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/table/standard{
-	name = "plastic table frame"
-	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lime/border,
 /obj/item/destTagger{
 	pixel_x = 4;
 	pixel_y = 3
 	},
-/obj/machinery/camera/network/civilian{
-	dir = 1
-	},
-/obj/item/packageWrap,
-/obj/item/packageWrap,
-/obj/machinery/power/apc/direction_bump/south,
-/obj/structure/cable/green,
 /turf/simulated/floor/wood,
 /area/hydroponics)
 "ugj" = (
@@ -24574,16 +24304,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "uFi" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
@@ -24638,27 +24361,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/effect/floor_decal/corner/orange/diagonal,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/door/window/brigdoor/eastleft{
-	dir = 8;
-	name = "Bar Access";
-	req_access = list(25)
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
-	},
-/obj/effect/floor_decal/corner/red/diagonal,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
@@ -25621,9 +25326,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "wfc" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -25631,16 +25333,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/diagonal,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "wfy" = (
@@ -25834,21 +25526,6 @@
 /obj/item/flame/candle/candelabra/everburn{
 	pixel_x = -16;
 	pixel_y = 6
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/table/hardwoodtable,
-/obj/item/flame/candle{
-	pixel_x = -16
-	},
-/obj/item/deck/tarot{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/deck/cards{
-	pixel_x = -2;
-	pixel_y = -2
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -26109,15 +25786,6 @@
 	},
 /obj/structure/bed/chair/pew/right{
 	dir = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/sofa/black/right{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 6
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -26724,19 +26392,10 @@
 /turf/simulated/floor/wood,
 /area/hydroponics)
 "xDb" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /obj/structure/flora/pumpkin/carved/girly,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/cult,
 /area/crew_quarters/bar)
 "xDl" = (
@@ -26817,17 +26476,6 @@
 /turf/simulated/floor/wood,
 /area/hydroponics)
 "xKw" = (
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
@@ -26989,10 +26637,6 @@
 /area/shuttle/excursion/general)
 "ybh" = (
 /obj/structure/bed/chair/sofa/brown/left,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/sofa/black/left,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -27058,17 +26702,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "ygG" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/landmark/spawnpoint/job/chef,
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner/grey/diagonal,
 /obj/landmark/spawnpoint/job/chef,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -39066,7 +38699,7 @@ lrI
 eWS
 cYC
 fgT
-iLu
+gMZ
 uFi
 ygG
 uer
@@ -40816,7 +40449,7 @@ wbw
 htY
 dwj
 pee
-lGp
+dwj
 arW
 aTv
 aTv
@@ -42558,7 +42191,7 @@ use
 aKd
 iwj
 iwj
-cIq
+iwj
 iwj
 iwj
 iwj
@@ -42944,11 +42577,11 @@ myS
 cnu
 qcL
 arS
-tqJ
+luo
 eHU
 eBu
 hNb
-tqJ
+luo
 arS
 aUi
 ahj
@@ -43142,7 +42775,7 @@ rEk
 wod
 yjM
 iKY
-tqJ
+luo
 aUi
 aUi
 akk
@@ -43332,11 +42965,11 @@ daS
 cnu
 aUi
 aTv
-tqJ
+luo
 hkW
 shQ
 apv
-tqJ
+luo
 azw
 aUi
 aUi
@@ -43526,11 +43159,11 @@ myS
 cnu
 vOW
 aTv
-tqJ
-tqJ
-tqJ
+luo
+luo
+luo
 rfk
-tqJ
+luo
 aPF
 aUi
 aUi
