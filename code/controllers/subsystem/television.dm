@@ -1,77 +1,110 @@
+#define CHANSTATE_AD1 "ad1"
+#define CHANSTATE_AD1AIR "ad1running"
+#define CHANSTATE_AD2 "ad2"
+#define CHANSTATE_AD2AIR "ad2running"
+#define CHANSTATE_SHOW1 "show1"
+#define CHANSTATE_SHOW1AIR "show1running"
+
 SUBSYSTEM_DEF(television)
 	name = "Television"
+	wait = 27
+	subsystem_flags = SS_NO_TICK_CHECK
 	priority = FIRE_PRIORITY_TELEVISION
 	init_order = INIT_ORDER_TELEVISION
-	subsystem_flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_GAME
 
-	var/running = TRUE
 	var/list/channels = list()
+	//all_tvs will be updated by TVs and will be paired with the channel they are in.
 	var/list/all_tvs = list()
+	//current show or ad played in channel
+	var/list/channel_current_shows = list()
+	//last show played in channel
+	var/list/channel_previous_shows = list()
+	//last ad played in channel
+	var/list/channel_previous_ads = list()
+	//which CHANSTATE the channel is in
+	var/list/channel_current_state = list()
+	//stores an integer, which line the channel is on
+	var/list/channel_current_line = list()
+	//How many lines total the current show or AD is
+	var/list/channel_show_length = list()
+	//all possible shows for the channel
+	var/list/possible_shows = list()
+	//all possible ads for ANY channel
+	var/list/possible_ads = list()
 
-///Gets all folders in strings/television as channels, launches a show master loop for each channel.
-/datum/controller/subsystem/television/Initialize(timeofday)\
+/datum/controller/subsystem/television/Initialize(timeofday)
 	channels = flist("strings/television/")
-	for(var/c in channels)
-		Show_Master(c)
+	possible_shows = channels
+	//2d list pairing a list of shows to a channel name.
+	for (var/c in channels)
+		possible_shows[c] = flist("strings/television/[c]/shows/")
+	//all advertisments available
+	possible_ads = flist("string/television/ads/")
 
-///Primary function for running a TV channel, runs on a while loop so long as var/running is TRUE.
-///Runs 1 show then 2 ads then repeats.
-/datum/controller/subsystem/television/proc/Show_Master(channel)
-	var/lastad
-	var/lastshow
-	var/list/channel_shows = flist("string/television/[channel]/shows"/)
-	var/list/channel_ads = flist("string/television/[channel]/ads/")
-	var/i = 1
-	var/default_delay = 27
+//Lohi code what he do
+//Not exactly Lohi code anymore
+/datum/controller/subsystem/television/fire(resumed = FALSE)
+	for (var/channel in channels)
+		switch (channel_current_state[channel])
+			if (null)
+				var/new_show
+				do
+					new_show = pick(possible_shows[channel])
+				while (new_show == channel_previous_shows[channel] && length(possible_shows[channel]) > 1)
+				channel_current_shows[channel] = new_show
+				channel_current_state[channel] = CHANSTATE_SHOW1
 
-	while(running)
-		var/showname = ""
-		var/language = ""
-		var/default_language = "common"
-		if(i == 1)
-			//pick a random show but not the same as the last
-			var/randomshow = pick(channel_shows)
-			while(randomshow == lastshow)
-				randomshow = pick(channel_shows)
-				//add a break condition here in case this runs forever :cat:
-			lastshow = randomshow
+			if (CHANSTATE_SHOW1)
+				//load show details, grab length, etc
 
-			//decode picked show and set basics
-			var/list/current_show_decoded = json_decode(lastshow)
-			for(var/name in current_show_decoded["name"])
-				showname = name
-			for(var/dlang in current_show_decoded["default_language"])
-				default_language = dlang
 
-			//start looping through each lines block, pull laguage if it exists, then read and send lines
-			for (var/list/line in current_show_decoded["lines"])
-				for (var/nlang in line["language"])
-					language = nlang
-				for (var/line_text in line["text"])
-					if(language != "")
-						broadcastLine(channel, line_text, language)
-					else
-						broadcastLine(channel, line_test, default_language)
-			i++
-			continue
-		else if(i == 2 || i == 3)
-			//Copy above but targetting ads instead. Functionize this?
-			i++
-			continue
-		else if(i == 4)
-			i = 1
-			continue
-	return
+				channel_current_state[channel] = CHANSTATE_SHOW1AIR
+
+			if (CHANSTATE_SHOW1AIR, CHANSTATE_AD1AIR, CHANSTATE_AD2AIR)
+				var/current_line = channel_current_line[channel]// index of line to show
+				broadcastLine(current_line)
+				if (current_line == channel_show_length[channel])
+					var/state = channel_current_state[channel]
+					switch (state)
+						if (CHANSTATE_SHOW1AIR)
+							reset_channel(channel)
+							channel_current_state[channel] = CHANSTATE_AD1
+						if (CHANSTATE_AD1AIR)
+							reset_channel(channel)
+							channel_current_state[channel] = CHANSTATE_AD2
+						if (CHANSTATE_AD2AIR)
+							reset_channel(channel)
+							channel_current_state[channel] = null
+				else
+					channel_current_state[channel] += 1
+
+			if (CHANSTATE_AD1, CHANSTATE_AD2)
+				//pick an ad, load the ad, grab length,
+				//ads play faster than shows because fuck you capitalism
+				var/new_ad
+				do
+					new_ad = pick(possible_ads)
+				while (new_ad == channel_previous_ads[channel] && length(possible_ads) > 1)
+				//Tie new_ad to channel_current_show in some fashion either file link or custom decode
+
+///To deliver lines to TVs.
+/datum/controller/subsystem/television/proc/broadcastLine(line)
+	var/language = "shut up VSC"
+	//loop through global_TVs and send to tv procs.
+	for (var/obj/machinery/computer/television/tv in all_tvs)
+		tv.receiveLines(line, language)
+
+/datum/controller/subsystem/television/proc/reset_channel(channel)
+	switch (channel_current_state[channel])
+		if (CHANSTATE_SHOW1AIR)
+			channel_previous_shows[channel] = channel_current_shows[channel]
+			channel_current_shows[channel] = null
+		else
+			channel_previous_ads[channel] = channel_current_shows[channel]
+			channel_current_shows[channel] = null
+	channel_current_line[channel] = 1
 
 ///For TV's to call on initialization.
 /datum/controller/subsystem/television/proc/getChannels()
 	return channels
-
-///For Show_Master to deliver lines to TVs.
-/datum/controller/subsystem/television/proc/broadcastLine(channel, line, language)
-	//loop through global_TVs and send to tv procs.
-	//TV side with receiveLine(line)?
-	//for (var/path/to/tv/tv in all_tvs)
-    //tv.tvize_idk()
-	return
