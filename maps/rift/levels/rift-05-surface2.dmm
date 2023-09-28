@@ -11340,10 +11340,6 @@
 	},
 /turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
-"hsX" = (
-/obj/effect/gateway/active/cult,
-/turf/simulated/floor/cult,
-/area/crew_quarters/coffee_shop)
 "huA" = (
 /obj/structure/flora/pumpkin/carved,
 /obj/effect/debris/cleanable/cobweb2,
@@ -35163,10 +35159,6 @@
 /obj/structure/kitchenspike,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/dormitory)
-"wDj" = (
-/obj/item/toy/plushie/carp,
-/turf/simulated/floor/cult,
-/area/crew_quarters/coffee_shop)
 "wDE" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -49097,7 +49089,7 @@ usC
 hid
 ydU
 vPE
-wDj
+fmy
 vPE
 qgA
 fmy
@@ -49291,7 +49283,7 @@ dcW
 wtK
 ydU
 fmy
-hsX
+fmy
 fmy
 qgA
 fmy

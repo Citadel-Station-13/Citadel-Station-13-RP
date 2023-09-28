@@ -13827,9 +13827,6 @@
 /obj/machinery/newscaster{
 	pixel_x = 32
 	},
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/structure/table/bench/marble,
 /obj/effect/floor_decal/corner/orange/diagonal,
 /obj/effect/floor_decal/spline/plain{
@@ -23899,9 +23896,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/effect/floor_decal/corner/purple/diagonal,
 /obj/structure/cable/green{
 	icon_state = "1-2"
