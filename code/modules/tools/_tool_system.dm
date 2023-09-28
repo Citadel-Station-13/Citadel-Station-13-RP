@@ -53,11 +53,11 @@
  * * hint - forced hint - used in automation
  * * reachability_check - a callback used for reachability checks. if none, defaults to mob.Reachability when in clickcode, can always reach otherwise.
  */
-/atom/proc/tool_interaction(obj/item/I, mob/user, clickchain_flags, function, hint, datum/callback/reachability_check)
+/atom/proc/tool_interaction(obj/item/I, datum/event_args/actor/clickchain/e_args, clickchain_flags, function, hint, datum/callback/reachability_check)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	return _tool_interaction_entrypoint(I, user, clickchain_flags, function, hint, reachability_check)
 
-/atom/proc/_tool_interaction_entrypoint(obj/item/provided_item, mob/user, clickchain_flags, function, hint, datum/callback/reachability_check)
+/atom/proc/_tool_interaction_entrypoint(obj/item/provided_item, datum/event_args/actor/clickchain/e_args, clickchain_flags, function, hint, datum/callback/reachability_check)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	PRIVATE_PROC(TRUE)
 	if(isnull(reachability_check))
@@ -160,12 +160,12 @@
 		return NONE
 
 //! Primary Tool API
-/atom/proc/_tool_act(obj/item/I, mob/user, function, flags, hint)
+/atom/proc/_tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	PRIVATE_PROC(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	if((. = SEND_SIGNAL(src, COMSIG_ATOM_TOOL_ACT, I, user, function, flags, hint)) & CLICKCHAIN_COMPONENT_SIGNAL_HANDLED)
+	if((. = SEND_SIGNAL(src, COMSIG_ATOM_TOOL_ACT, I, e_args, function, flags, hint)) & CLICKCHAIN_COMPONENT_SIGNAL_HANDLED)
 		return . & ~(CLICKCHAIN_COMPONENT_SIGNAL_HANDLED)
-	return tool_act(I, user, function, flags, hint)
+	return tool_act(I, e_args, function, flags, hint)
 
 /**
  * primary proc to be used when calling an interaction with a tool with an atom
@@ -185,22 +185,22 @@
  * * flags - tool operation flags
  * * hint - the operation hint, if the calling system is the dynamic tool system.
  */
-/atom/proc/tool_act(obj/item/I, mob/user, function, flags, hint)
+/atom/proc/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	switch(function)
 		if(TOOL_CROWBAR)
-			return crowbar_act(I, user, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
+			return crowbar_act(I, e_args, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
 		if(TOOL_MULTITOOL)
-			return multitool_act(I, user, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
+			return multitool_act(I, e_args, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
 		if(TOOL_SCREWDRIVER)
-			return screwdriver_act(I, user, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
+			return screwdriver_act(I, e_args, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
 		if(TOOL_WRENCH)
-			return wrench_act(I, user, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
+			return wrench_act(I, e_args, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
 		if(TOOL_WELDER)
-			return welder_act(I, user, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
+			return welder_act(I, e_args, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
 		if(TOOL_WIRECUTTER)
-			return wirecutter_act(I, user, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
+			return wirecutter_act(I, e_args, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
 		if(TOOL_ANALYZER)
-			return analyzer_act(I, user, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
+			return analyzer_act(I, e_args, flags, hint)? CLICKCHAIN_DO_NOT_PROPAGATE : NONE
 		//? Add more tool_acts as necessary.
 
 /**
@@ -215,7 +215,7 @@
  * * cost - optional; cost multiplier to the default cost of 1 per second.
  * * usage - optional; usage flags for tool speed/quality checks.
  */
-/atom/proc/use_tool_standard(function, obj/item/I, mob/user, flags, delay, cost, usage)
+/atom/proc/use_tool_standard(function, obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
 	return use_tool(function, I, e_args, flags, delay, cost, usage)
 
 /**
@@ -231,7 +231,7 @@
  * * usage - optional; usage flags for tool speed/quality checks.
  * * volume - optional; volume override
  */
-/atom/proc/use_tool(function, obj/item/I, mob/user, flags, delay, cost = 1, usage, volume)
+/atom/proc/use_tool(function, obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost = 1, usage, volume)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/quality = I.tool_check(function, user, src, flags, usage)
 	if(!quality)

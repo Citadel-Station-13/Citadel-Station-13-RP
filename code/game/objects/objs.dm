@@ -560,7 +560,7 @@
 		return dyntool_image_backward(function)
 	return ..()
 
-/obj/tool_act(obj/item/I, mob/user, function, flags, hint)
+/obj/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	if(isnull(obj_cell_slot) || (obj_cell_slot.remove_tool_behavior != function) || !obj_cell_slot.interaction_active(user))
 		return ..()
 	if(isnull(obj_cell_slot.cell))

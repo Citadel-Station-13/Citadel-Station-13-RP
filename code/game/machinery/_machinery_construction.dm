@@ -19,7 +19,7 @@
 			return dyntool_image_backward(function)
 	return ..()
 
-/obj/machinery/tool_act(obj/item/I, mob/user, function, flags, hint)
+/obj/machinery/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	if(INTERACTING_WITH_FOR(user, src, INTERACTING_FOR_CONSTRUCTION))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	START_INTERACTING_WITH(user, src, INTERACTING_FOR_CONSTRUCTION)
