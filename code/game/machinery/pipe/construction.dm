@@ -278,11 +278,11 @@ Buildable meters
 			pipe = P
 			break
 	if(!pipe)
-		to_chat(user, "<span class='warning'>You need to fasten it to a pipe!</span>")
+		e_args.chat_feedback(SPAN_WARNING("You need to fasten it to a pipe!"), src)
 		return TRUE
 	new /obj/machinery/meter(loc, piping_layer)
 	playsound(src, I.tool_sound, 50, 1)
-	to_chat(user, "<span class='notice'>You fasten the meter to the pipe.</span>")
+	e_args.chat_feedback(SPAN_NOTICE("You fasten the meter to the pipe."), src)
 	qdel(src)
 
 /obj/item/pipe_meter/dropped(mob/user, flags, atom/newLoc)

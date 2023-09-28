@@ -137,7 +137,7 @@
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONFIGURATION,
-		visible = SPAN_WARNING("[user] starts tinkering with [src] using their [I]!"),
+		visible = SPAN_WARNING("[e_args.performer] starts tinkering with [src] using their [I]!"),
 		otherwise_self = SPAN_WARNING("You start tinkering with [src] using your [I]..."),
 	)
 	if(!do_after(e_args.performer, default_multitool_hijack, src, mobility_flags = MOBILITY_CAN_USE, progress_instance = create_actor_progress_bar(e_args)))

@@ -134,12 +134,12 @@
 		return ..()
 	if(use_wrench(I, e_args, delay = 4 SECONDS))
 		log_construction(e_args.performer, src, "fastened")
-		set_anchored(!anchor)
+		set_anchored(!anchored)
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
 			visible = SPAN_NOTICE("[e_args.performer] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."),
-			audbile = SPAN_WARNING("You hear bolts being [anchored? "fastened" : "unfastened"]"),
+			audible = SPAN_WARNING("You hear bolts being [anchored? "fastened" : "unfastened"]"),
 			otherwise_self = SPAN_NOTICE("You [anchored? "fasten" : "unfasten"] [src]."),
 		)
 		return TRUE

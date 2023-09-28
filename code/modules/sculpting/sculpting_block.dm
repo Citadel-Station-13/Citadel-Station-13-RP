@@ -132,22 +132,22 @@
 	. = ..()
 	if(.)
 		return
-	user.visible_action_feedback(
+	e_args.visible_feedback(
 		target = src,
-		hard_range = MESSAGE_RANGE_CONSTRUCTION,
-		visible_hard = SPAN_NOTICE("[user] starts [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
-		visible_self = SPAN_NOTICE("You start [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
-		audible_hard = SPAN_WARNING("You hear bolts being [anchored? "unfastened" : "fastened"]."),
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[user] starts [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		audible = SPAN_WARNING("You hear bolts being [anchored? "unfastened" : "fastened"]."),
+		otherwise_self = SPAN_NOTICE("You start [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
 	)
 	log_construction(ue_argsser, src, "started [anchored? "unanchoring" : "anchoring"]")
 	if(!use_wrench(I, user, flags, 3 SECONDS))
 		return TRUE
-	user.visible_action_feedback(
+	e_args.visible_feedback(
 		target = src,
-		hard_range = MESSAGE_RANGE_CONSTRUCTION,
-		visible_hard = SPAN_NOTICE("[user] finishes [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
-		visible_self = SPAN_NOTICE("You finish [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
-		audible_hard = SPAN_WARNING("You hear bolts [anchored? "falling out" : "clicking into place"]."),
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[user] finishes [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		audible = SPAN_WARNING("You hear bolts [anchored? "falling out" : "clicking into place"]."),
+		otherwise_self = SPAN_NOTICE("You finish [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
 	)
 	log_construction(e_args, src, "[anchored? "unanchored" : "anchored"]")
 	set_anchored(!anchored)
@@ -157,22 +157,22 @@
 	. = ..()
 	if(.)
 		return
-	user.visible_action_feedback(
+	e_args.visible_feedback(
 		target = src,
-		hard_range = MESSAGE_RANGE_CONSTRUCTION,
-		visible_hard = SPAN_NOTICE("[user] starts slicing [src] apart."),
-		visible_self = SPAN_NOTICE("You start slicing [src] apart."),
-		audible_hard = SPAN_WARNING("You hear the sound of a welding torch being used on something metallic."),
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[user] starts slicing [src] apart."),
+		audible = SPAN_WARNING("You hear the sound of a welding torch being used on something metallic."),
+		otherwise_self = SPAN_NOTICE("You start slicing [src] apart."),
 	)
 	log_construction(e_args, src, "started deconstructing")
 	if(!use_welder(I, user, flags, 7 SECONDS, 3))
 		return TRUE
-	user.visible_action_feedback(
+	e_args.visible_feedback(
 		target = src,
-		hard_range = MESSAGE_RANGE_CONSTRUCTION,
-		visible_hard = SPAN_NOTICE("[user] slices [src] apart."),
-		visible_self = SPAN_NOTICE("You slice [src] apart."),
-		audible_hard = SPAN_WARNING("You hear the sound of a welding torch moving back into open air, and a few pieces of metal falling apart."),
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[user] slices [src] apart."),
+		audible = SPAN_WARNING("You hear the sound of a welding torch moving back into open air, and a few pieces of metal falling apart."),
+		otherwise_self = SPAN_NOTICE("You slice [src] apart."),
 	)
 	log_construction(e_args, src, "deconstructed")
 	set_anchored(!anchored)

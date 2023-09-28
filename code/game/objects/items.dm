@@ -788,7 +788,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		e_args.visible_feedback(
 			target = src,
 			range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_NOTICE("[user] removes the cell from [src]."),
+			visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
 			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
 			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)

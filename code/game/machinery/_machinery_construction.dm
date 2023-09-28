@@ -43,19 +43,21 @@
 /obj/machinery/proc/default_deconstruction_panel(obj/item/tool, datum/event_args/actor/clickchain/e_args, speed_mult = 1, flags)
 	var/needed_time = default_panel * speed_mult * (isnull(tool)? 1 : tool.tool_speed)
 	if(needed_time)
-		user.visible_action_feedback(
+		e_args.visible_feedback(
 			target = src,
-			soft_range = MESSAGE_RANGE_CONSTRUCTION,
-			visible_soft = SPAN_WARNING("[user] starts to [panel_open? "close" : "open"] [src]'s maintenance panel."),
-			audible_soft = SPAN_WARNING("You hear something being (un)fastened."),
+			range = MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_WARNING("[user] starts to [panel_open? "close" : "open"] [src]'s maintenance panel."),
+			audible = SPAN_WARNING("You hear something being (un)fastened."),
+			otherwise_self = SPAN_WARNING("You start to [panel_open? "close" : "open"] [src]'s panel."),
 		)
 	if(!use_tool(tool_panel, tool, user, flags, needed_time))
 		return FALSE
-	user.visible_action_feedback(
+	e_args.visible_feedback(
 		target = src,
-		soft_range = MESSAGE_RANGE_CONSTRUCTION,
-			visible_soft = SPAN_WARNING("[user] [panel_open? "closes" : "opens"] [src]'s maintenance panel."),
-		audible_soft = SPAN_WARNING("You hear something being (un)fastened."),
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_WARNING("[user] [panel_open? "closes" : "opens"] [src]'s maintenance panel."),
+		audible = SPAN_WARNING("You hear something being (un)fastened."),
+		otherwise_self = SPAN_WARNING("You [panel_open? "close" : "open"] [src]'s panel."),
 	)
 	set_panel_open(!panel_open)
 	return TRUE
@@ -64,19 +66,21 @@
 /obj/machinery/proc/default_deconstruction_dismantle(obj/item/tool, datum/event_args/actor/clickchain/e_args, speed_mult = 1, flags)
 	var/needed_time = default_deconstruct * speed_mult * (isnull(tool)? 1 : tool.tool_speed)
 	if(needed_time)
-		user.visible_action_feedback(
+		e_args.visible_feedback(
 			target = src,
-			soft_range = MESSAGE_RANGE_CONSTRUCTION,
-			visible_soft = SPAN_WARNING("[user] starts to dismantle [src]."),
-			audible_soft = SPAN_WARNING("You hear a series of small parts being removed from something."),
+			range = MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_WARNING("[user] starts to dismantle [src]."),
+			audible = SPAN_WARNING("You hear a series of small parts being removed from something."),
+			otherwise_self = SPAN_WARNING("You start to dismantle [src]."),
 		)
 	if(!use_tool(tool_deconstruct, tool, user, flags, needed_time))
 		return FALSE
-	user.visible_action_feedback(
+	e_args.visible_feedback(
 		target = src,
-		soft_range = MESSAGE_RANGE_CONSTRUCTION,
-		visible_soft = SPAN_WARNING("[user] dismantles [src]."),
-		audible_soft = SPAN_WARNING("You hear something getting dismantled."),
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_WARNING("[user] dismantles [src]."),
+		audible = SPAN_WARNING("You hear something getting dismantled."),
+		otherwise_self = SPAN_WARNING("You dismantle [src]."),
 	)
 	dismantle()
 	return TRUE
@@ -85,19 +89,21 @@
 /obj/machinery/proc/default_deconstruction_anchor(obj/item/tool, datum/event_args/actor/clickchain/e_args, speed_mult = 1, flags)
 	var/needed_time = default_unanchor * speed_mult * (isnull(tool)? 1 : tool.tool_speed)
 	if(needed_time)
-		user.visible_action_feedback(
+		e_args.visible_feedback(
 			target = src,
-			soft_range = MESSAGE_RANGE_CONSTRUCTION,
-			visible_soft = SPAN_WARNING("[user] starts to [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
-			audible_soft = SPAN_WARNING("You hear something heavy being (un)fastened."),
+			range = MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_WARNING("[user] starts to [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
+			audible = SPAN_WARNING("You hear something heavy being (un)fastened."),
+			otherwise_self = SPAN_WARNING("You start to [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
 		)
 	if(!use_tool(tool_unanchor, tool, user, flags, needed_time))
 		return FALSE
-	user.visible_action_feedback(
+	e_args.visible_feedback(
 		target = src,
-		soft_range = MESSAGE_RANGE_CONSTRUCTION,
-		visible_soft = SPAN_WARNING("[user] [anchored? "bolts" : "unbolts"] [src] [anchored? "to" : "from"] from the floor."),
-		audible_soft = SPAN_WARNING("You hear something heavy being (un)fastened."),
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_WARNING("[user] [anchored? "bolts" : "unbolts"] [src] [anchored? "to" : "from"] from the floor."),
+		audible = SPAN_WARNING("You hear something heavy being (un)fastened."),
+		otherwise_self = SPAN_WARNING("You [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
 	)
 	set_anchored(!anchored)
 	return TRUE
