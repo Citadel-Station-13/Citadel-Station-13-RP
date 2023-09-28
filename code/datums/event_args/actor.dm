@@ -11,14 +11,17 @@
 	src.performer = performer
 	src.initiator = isnull(initiator)? performer : initiator
 
-/datum/event_args/actor/proc/chat_feedback(atom/target, msg)
+/datum/event_args/actor/proc/chat_feedback(msg, atom/target)
 	performer.action_feedback(msg, target)
 	initiator.action_feedback(msg, target)
 
-/datum/event_args/actor/proc/bubble_feedback(atom/target, msg)
+/datum/event_args/actor/proc/bubble_feedback(msg, atom/target)
 	performer.bubble_action_feedback(msg, target)
 	initiator.bubble_action_feedback(msg, target)
 
+/**
+ * It is highly recommended to use named parameters with this.
+ */
 /datum/event_args/actor/proc/visible_feedback(atom/target, range, visible, audible, visible_self, otherwise_self, visible_them, otherwise_them)
 	performer.visible_action_feedback(
 		target = target,
@@ -32,6 +35,9 @@
 		otherwise_them = otherwise_them,
 	)
 
+/**
+ * It is highly recommended to use named parameters with this.
+ */
 /datum/event_args/actor/proc/visible_dual_feedback(atom/target, range_hard, range_soft, visible_hard, visible_soft, audible_hard, audible_soft, visible_self, otherwise_self, visible_them, otherwise_them)
 	performer.visible_action_feedback(
 		target = target,

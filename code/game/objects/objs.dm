@@ -549,7 +549,7 @@
 //? Tool System
 
 /obj/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
-	if(isnull(obj_cell_slot) || !obj_cell_slot.remove_tool_behavior || !obj_cell_slot.interaction_active(user))
+	if(isnull(obj_cell_slot) || !obj_cell_slot.remove_tool_behavior || !obj_cell_slot.interaction_active(e_args.performer))
 		return ..()
 	. = list()
 	.[obj_cell_slot.remove_tool_behavior] = "remove cell"
