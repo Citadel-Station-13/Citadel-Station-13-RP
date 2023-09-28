@@ -40,7 +40,7 @@
 		return ..()
 
 // todo: better verb/message support
-/obj/machinery/proc/default_deconstruction_panel(obj/item/tool, datum/event_args/actor/clickchain/e_args speed_mult = 1, flags)
+/obj/machinery/proc/default_deconstruction_panel(obj/item/tool, datum/event_args/actor/clickchain/e_args, speed_mult = 1, flags)
 	var/needed_time = default_panel * speed_mult * (isnull(tool)? 1 : tool.tool_speed)
 	if(needed_time)
 		user.visible_action_feedback(
