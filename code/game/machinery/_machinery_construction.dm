@@ -46,16 +46,16 @@
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_WARNING("[user] starts to [panel_open? "close" : "open"] [src]'s maintenance panel."),
+			visible = SPAN_WARNING("[e_args.performer] starts to [panel_open? "close" : "open"] [src]'s maintenance panel."),
 			audible = SPAN_WARNING("You hear something being (un)fastened."),
 			otherwise_self = SPAN_WARNING("You start to [panel_open? "close" : "open"] [src]'s panel."),
 		)
-	if(!use_tool(tool_panel, tool, user, flags, needed_time))
+	if(!use_tool(tool_panel, tool, e_args, flags, needed_time))
 		return FALSE
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_WARNING("[user] [panel_open? "closes" : "opens"] [src]'s maintenance panel."),
+		visible = SPAN_WARNING("[e_args.performer] [panel_open? "closes" : "opens"] [src]'s maintenance panel."),
 		audible = SPAN_WARNING("You hear something being (un)fastened."),
 		otherwise_self = SPAN_WARNING("You [panel_open? "close" : "open"] [src]'s panel."),
 	)
@@ -69,16 +69,16 @@
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_WARNING("[user] starts to dismantle [src]."),
+			visible = SPAN_WARNING("[e_args.performer] starts to dismantle [src]."),
 			audible = SPAN_WARNING("You hear a series of small parts being removed from something."),
 			otherwise_self = SPAN_WARNING("You start to dismantle [src]."),
 		)
-	if(!use_tool(tool_deconstruct, tool, user, flags, needed_time))
+	if(!use_tool(tool_deconstruct, tool, e_args, flags, needed_time))
 		return FALSE
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_WARNING("[user] dismantles [src]."),
+		visible = SPAN_WARNING("[e_args.performer] dismantles [src]."),
 		audible = SPAN_WARNING("You hear something getting dismantled."),
 		otherwise_self = SPAN_WARNING("You dismantle [src]."),
 	)
@@ -92,16 +92,16 @@
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_WARNING("[user] starts to [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
+			visible = SPAN_WARNING("[e_args.performer] starts to [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
 			audible = SPAN_WARNING("You hear something heavy being (un)fastened."),
 			otherwise_self = SPAN_WARNING("You start to [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
 		)
-	if(!use_tool(tool_unanchor, tool, user, flags, needed_time))
+	if(!use_tool(tool_unanchor, tool, e_args, flags, needed_time))
 		return FALSE
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_WARNING("[user] [anchored? "bolts" : "unbolts"] [src] [anchored? "to" : "from"] from the floor."),
+		visible = SPAN_WARNING("[e_args.performer] [anchored? "bolts" : "unbolts"] [src] [anchored? "to" : "from"] from the floor."),
 		audible = SPAN_WARNING("You hear something heavy being (un)fastened."),
 		otherwise_self = SPAN_WARNING("You [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
 	)

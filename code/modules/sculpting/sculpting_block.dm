@@ -135,17 +135,17 @@
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_NOTICE("[user] starts [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		visible = SPAN_NOTICE("[e_args.performer] starts [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
 		audible = SPAN_WARNING("You hear bolts being [anchored? "unfastened" : "fastened"]."),
 		otherwise_self = SPAN_NOTICE("You start [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
 	)
-	log_construction(ue_argsser, src, "started [anchored? "unanchoring" : "anchoring"]")
-	if(!use_wrench(I, user, flags, 3 SECONDS))
+	log_construction(e_args, src, "started [anchored? "unanchoring" : "anchoring"]")
+	if(!use_wrench(I, e_args, flags, 3 SECONDS))
 		return TRUE
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_NOTICE("[user] finishes [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		visible = SPAN_NOTICE("[e_args.performer] finishes [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
 		audible = SPAN_WARNING("You hear bolts [anchored? "falling out" : "clicking into place"]."),
 		otherwise_self = SPAN_NOTICE("You finish [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
 	)
@@ -160,17 +160,17 @@
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_NOTICE("[user] starts slicing [src] apart."),
+		visible = SPAN_NOTICE("[e_args.performer] starts slicing [src] apart."),
 		audible = SPAN_WARNING("You hear the sound of a welding torch being used on something metallic."),
 		otherwise_self = SPAN_NOTICE("You start slicing [src] apart."),
 	)
 	log_construction(e_args, src, "started deconstructing")
-	if(!use_welder(I, user, flags, 7 SECONDS, 3))
+	if(!use_welder(I, e_args, flags, 7 SECONDS, 3))
 		return TRUE
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_NOTICE("[user] slices [src] apart."),
+		visible = SPAN_NOTICE("[e_args.performer] slices [src] apart."),
 		audible = SPAN_WARNING("You hear the sound of a welding torch moving back into open air, and a few pieces of metal falling apart."),
 		otherwise_self = SPAN_NOTICE("You slice [src] apart."),
 	)

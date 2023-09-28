@@ -55,7 +55,7 @@
  */
 /atom/proc/tool_interaction(obj/item/I, datum/event_args/actor/clickchain/e_args, clickchain_flags, function, hint, datum/callback/reachability_check)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	return _tool_interaction_entrypoint(I, user, clickchain_flags, function, hint, reachability_check)
+	return _tool_interaction_entrypoint(I, e_args, clickchain_flags, function, hint, reachability_check)
 
 /atom/proc/_tool_interaction_entrypoint(obj/item/provided_item, datum/event_args/actor/clickchain/e_args, clickchain_flags, function, hint, datum/callback/reachability_check)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -63,24 +63,31 @@
 	if(isnull(reachability_check))
 		if(clickchain_flags & CLICKCHAIN_TOOL_ACT)
 			// provided_item should never be null
-			reachability_check = CALLBACK(user, TYPE_PROC_REF(/atom/movable, Reachability), src, null, provided_item.reach, provided_item)
+			// we inject our default reachability check if tool act is set by tool attack chain
+			// otherwise we just ignore it if it wasn't specified
+			reachability_check = CALLBACK(e_args.performer, TYPE_PROC_REF(/atom/movable, Reachability), src, null, provided_item.reach, provided_item)
 	if(reachability_check && !reachability_check.Invoke())
 		return NONE
 	// from click chain
 	if(provided_item)
 		if(function)
 			// automation, just go
-			return _dynamic_tool_act(provided_item, user, function, TOOL_OP_AUTOPILOT | TOOL_OP_REAL, hint)
+			return _dynamic_tool_act(provided_item, e_args, function, TOOL_OP_AUTOPILOT | TOOL_OP_REAL, hint)
+		var/list/hint_images = list()
 		// used in clickchain
-		var/list/possibilities = dynamic_tool_functions(provided_item, user)
-		#warn possibilities is fundamentally used incorrectly later, we might
-		#warn have to refactor this to not use dynamic_tool_image at all.
+		// as of now, format is:
+		// function = hint OR list(hint, ...)
+		// hint images is passed in so it can be prebuilt by components
+		// more info is in comment of dynamic_tool_functions
+		var/list/possibilities = dynamic_tool_functions(provided_item, e_args, hint_images)
 		if(!length(possibilities) || (provided_item.tool_locked == TOOL_LOCKING_STATIC))
 			// no dynamic tool functionality, or dynamic functionality disabled, route normally.
 			function = provided_item.tool_behaviour()
 			if(!function)
 				return NONE
-			return _tool_act(provided_item, user, function, TOOL_OP_REAL)
+			return _tool_act(provided_item, e_args, function, TOOL_OP_REAL)
+		#warn possibilities is fundamentally used incorrectly later, we might
+		#warn have to refactor this to not use dynamic_tool_image at all.
 		// enumerate
 		var/list/functions = provided_item.tool_query(user, src)
 		if((provided_item.tool_locked == TOOL_LOCKING_AUTO) && (length(functions) == 1))
@@ -268,7 +275,7 @@
  * @params
  * * I - the tool used, if any
  * * user - the user, if any
- * * hint_images - allows us to immediately associate hints to specific images without calling dynamic_tool_image after. usually not what you want.
+ * * hint_images - allows us to immediately associate hints to specific images without calling dynamic_tool_image after. usually not what you want, as this isn't lazy.
  */
 /atom/proc/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list()

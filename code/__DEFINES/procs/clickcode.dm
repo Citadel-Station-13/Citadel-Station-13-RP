@@ -24,6 +24,7 @@
 /// person can reach us normally
 #define CLICKCHAIN_HAS_PROXIMITY			(1<<1)
 /// in tool act - used to check if we should do default proximity checks when none are specified
+/// this is added to clickchain flags by tool_attack_chain.
 #define CLICKCHAIN_TOOL_ACT					(1<<2)
 /// redirected by something - like when a switchtool to another item
 #define CLICKCHAIN_REDIRECTED				(1<<3)
