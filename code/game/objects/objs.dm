@@ -59,6 +59,11 @@
 	/// volume when breaking out using resist process
 	var/breakout_volume = 100
 
+	//? Systems - naming convention is 'object_[system]'
+	/// cell slot system
+	var/datum/object_system/cell_slot/object_cell_slot
+	#warn hook above
+
 	//? misc / legacy
 	/// Set when a player renames a renamable object.
 	var/renamed_by_player = FALSE
@@ -105,6 +110,7 @@
 		unregister_dangerous_to_step()
 	SStgui.close_uis(src)
 	SSnanoui.close_uis(src)
+	QDEL_NULL(object_cell_slot)
 	return ..()
 
 /obj/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
@@ -238,6 +244,24 @@
 		add_fingerprint(user)
 	..()
 
+//? Attacks
+
+#warn cell attackby/attack hand
+
+//? Cells / Inducers
+
+/**
+ * get cell slot
+ */
+/obj/get_cell()
+	. = ..()
+	if(.)
+		return
+	if(object_cell_slot?.primary && !isnull(object_cell_slot.cell))
+		return object_cell_slot.cell
+
+#warn inducer
+
 //? Climbing
 
 /obj/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
@@ -368,7 +392,11 @@
 			H.update_health()
 	*/
 
-//* Hiding / Underfloor
+//? Context
+
+#warn cell context
+
+//? Hiding / Underfloor
 
 /obj/proc/is_hidden_underfloor()
 	return FALSE
@@ -472,3 +500,7 @@
 	var/shake_dir = pick(-1, 1)
 	animate(src, transform=turn(matrix(), 8*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
+
+//? Tool System
+
+#warn hook cell slot
