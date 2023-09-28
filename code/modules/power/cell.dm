@@ -1,4 +1,4 @@
->>>// the power cell
+// the power cell
 // charge from 0 to 100%
 // fits in APC to provide backup power
 
