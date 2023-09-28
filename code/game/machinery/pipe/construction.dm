@@ -180,7 +180,7 @@ Buildable meters
 		return wrench_act(W, user)
 	return ..()
 
-/obj/item/pipe/wrench_act(obj/item/I, mob/user, flags, hint)
+/obj/item/pipe/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	if(!isturf(loc))
 		return TRUE
 
@@ -269,7 +269,7 @@ Buildable meters
 		return wrench_act(W, user)
 	return ..()
 
-/obj/item/pipe_meter/wrench_act(obj/item/I, mob/user, flags, hint)
+/obj/item/pipe_meter/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	var/obj/machinery/atmospherics/pipe/pipe
 	for(var/obj/machinery/atmospherics/pipe/P in loc)
 		if(P.piping_layer == piping_layer)

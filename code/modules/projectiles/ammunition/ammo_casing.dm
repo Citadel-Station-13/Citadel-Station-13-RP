@@ -48,7 +48,7 @@
 	setDir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
 
-/obj/item/ammo_casing/screwdriver_act(obj/item/I, mob/user, flags, hint)
+/obj/item/ammo_casing/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if(!stored)
 		user.action_feedback(SPAN_WARNING("There is no bullet in [src] to inscribe."), src)

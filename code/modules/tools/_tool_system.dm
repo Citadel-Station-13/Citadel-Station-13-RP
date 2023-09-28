@@ -216,7 +216,7 @@
  * * usage - optional; usage flags for tool speed/quality checks.
  */
 /atom/proc/use_tool_standard(function, obj/item/I, mob/user, flags, delay, cost, usage)
-	return use_tool(function, I, user, flags, delay, cost, usage)
+	return use_tool(function, I, e_args, flags, delay, cost, usage)
 
 /**
  * primary proc called by wrappers to use a tool on us

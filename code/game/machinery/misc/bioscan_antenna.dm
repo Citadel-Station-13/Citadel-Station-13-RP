@@ -34,7 +34,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	change_network(null)
 	return ..()
 
-/obj/machinery/bioscan_antenna/multitool_act(obj/item/I, mob/user, flags, hint)
+/obj/machinery/bioscan_antenna/multitool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	if(!network_mutable)
 		return ..()
 	. = TRUE

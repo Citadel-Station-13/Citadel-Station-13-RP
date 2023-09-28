@@ -128,7 +128,7 @@
 		initiate_sculpting(user, tool = I)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/structure/sculpting_block/wrench_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/sculpting_block/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = ..()
 	if(.)
 		return
@@ -153,7 +153,7 @@
 	set_anchored(!anchored)
 	return TRUE
 
-/obj/structure/sculpting_block/welder_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/sculpting_block/welder_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = ..()
 	if(.)
 		return

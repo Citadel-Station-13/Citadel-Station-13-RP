@@ -129,7 +129,7 @@
 			return anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH)
 	return ..()
 
-/obj/structure/aquarium/wrench_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/aquarium/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	if(!allow_unanchor)
 		return ..()
 	if(use_wrench(I, user, delay = 4 SECONDS))

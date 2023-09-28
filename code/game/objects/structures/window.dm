@@ -453,7 +453,7 @@
 			new shardtype(drop_location())
 
 
-/obj/structure/window/screwdriver_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/window/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 
 	if (construction_state == WINDOW_STATE_UNSECURED || construction_state == WINDOW_STATE_SCREWED_TO_FLOOR || !considered_reinforced)
@@ -483,7 +483,7 @@
 	construction_state = unsecuring ? WINDOW_STATE_CROWBRARED_IN : WINDOW_STATE_SECURED_TO_FRAME
 
 
-/obj/structure/window/crowbar_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/window/crowbar_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if (!considered_reinforced)
 		return
@@ -496,7 +496,7 @@
 	construction_state = unsecuring ? WINDOW_STATE_SCREWED_TO_FLOOR : WINDOW_STATE_CROWBRARED_IN
 
 
-/obj/structure/window/wrench_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/window/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if (construction_state != WINDOW_STATE_UNSECURED)
 		user.action_feedback(SPAN_WARNING("[src] has to be entirely unfastened from the floor before you can disasemble it!"))

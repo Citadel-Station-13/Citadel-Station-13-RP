@@ -125,7 +125,7 @@
 		ui = new(user, src, tgui_interface)
 		ui.open()
 
-/obj/machinery/atmospherics/component/multitool_act(obj/item/I, mob/user, flags, hint)
+/obj/machinery/atmospherics/component/multitool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = ..()
 	if(.)
 		return
