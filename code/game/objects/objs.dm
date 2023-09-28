@@ -561,7 +561,7 @@
 	return ..()
 
 /obj/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
-	if(isnull(obj_cell_slot) || (obj_cell_slot.remove_tool_behavior != function) || !obj_cell_slot.interaction_active(user))
+	if(isnull(obj_cell_slot) || (obj_cell_slot.remove_tool_behavior != function) || !obj_cell_slot.interaction_active(e_args.performer))
 		return ..()
 	if(isnull(obj_cell_slot.cell))
 		e_args.chat_feedback(SPAN_WARNING("[src] has no cell in it."))

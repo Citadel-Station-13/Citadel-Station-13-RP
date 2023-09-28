@@ -785,15 +785,15 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  */
 /obj/item/proc/on_attack_self(datum/event_args/actor/e_args)
 	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_inhand && obj_cell_slot.interaction_active(src))
-		user.visible_action_feedback(
+		e_args.visible_feedback(
 			target = src,
-			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[user] removes the cell from [src]."),
-			audible_hard = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
-			visible_self = SPAN_NOTICE("You remove the cell from [src]."),
+			range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_NOTICE("[user] removes the cell from [src]."),
+			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
+			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)
 		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		user.put_in_hands_or_drop(obj_cell_slot.remove_cell(user))
+		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
 		return TRUE
 	return FALSE
 
