@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * ? Atom Tool API
  *
@@ -68,6 +71,8 @@
 			return _dynamic_tool_act(provided_item, user, function, TOOL_OP_AUTOPILOT | TOOL_OP_REAL, hint)
 		// used in clickchain
 		var/list/possibilities = dynamic_tool_functions(provided_item, user)
+		#warn possibilities is fundamentally used incorrectly later, we might
+		#warn have to refactor this to not use dynamic_tool_image at all.
 		if(!length(possibilities) || (provided_item.tool_locked == TOOL_LOCKING_STATIC))
 			// no dynamic tool functionality, or dynamic functionality disabled, route normally.
 			function = provided_item.tool_behaviour()
@@ -156,7 +161,8 @@
 /atom/proc/_tool_act(obj/item/I, mob/user, function, flags, hint)
 	PRIVATE_PROC(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_ACT, I, user, function, flags, hint)
+	if((. = SEND_SIGNAL(src, COMSIG_ATOM_TOOL_ACT, I, user, function, flags, hint)) & CLICKCHAIN_COMPONENT_SIGNAL_HANDLED)
+		return . & ~(CLICKCHAIN_COMPONENT_SIGNAL_HANDLED)
 	return tool_act(I, user, function, flags, hint)
 
 /**
