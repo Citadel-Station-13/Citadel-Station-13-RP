@@ -233,26 +233,26 @@
  */
 /atom/proc/use_tool(function, obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost = 1, usage, volume)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	var/quality = I.tool_check(function, user, src, flags, usage)
+	var/quality = I.tool_check(function, e_args, src, flags, usage)
 	if(!quality)
 		return FALSE
-	var/speed = I.tool_speed(function, user, src, flags, usage)
+	var/speed = I.tool_speed(function, e_args, src, flags, usage)
 	//! this currently makes tools more efficient if you have more toolspeed.
 	//! this is probably a bad thing.
 	// todo: automatically adjust cost to rectify this.
 	// todo: tool_cost()? potentially invert cost multiplier automagically, or invert it in this proc.
 	delay = delay * speed
-	if(!I.using_as_tool(function, flags, user, src, delay, cost, usage))
+	if(!I.using_as_tool(function, flags, e_args, src, delay, cost, usage))
 		return FALSE
-	I.tool_feedback_start(function, flags, user, src, delay, cost, usage, volume)
-	if(!do_after(user, delay, src))
-		I.used_as_tool(function, flags, user, src, delay, cost, usage, FALSE)
-		I.tool_feedback_end(function, flags, user, src, delay, cost, usage, FALSE, volume)
+	I.tool_feedback_start(function, flags, e_args, src, delay, cost, usage, volume)
+	if(!do_after(e_args.performer, delay, src, progress_instance = create_actor_progress_bar(e_args, delay)))
+		I.used_as_tool(function, flags, e_args, src, delay, cost, usage, FALSE)
+		I.tool_feedback_end(function, flags, e_args, src, delay, cost, usage, FALSE, volume)
 		return FALSE
-	if(!I.used_as_tool(function, flags, user, src, delay, cost, usage, TRUE))
-		I.tool_feedback_end(function, flags, user, src, delay, cost, usage, FALSE, volume)
+	if(!I.used_as_tool(function, flags, e_args, src, delay, cost, usage, TRUE))
+		I.tool_feedback_end(function, flags, e_args, src, delay, cost, usage, FALSE, volume)
 		return FALSE
-	I.tool_feedback_end(function, flags, user, src, delay, cost, usage, TRUE, volume)
+	I.tool_feedback_end(function, flags, e_args, src, delay, cost, usage, TRUE, volume)
 	return TRUE
 
 //! Dynamic Tool API
