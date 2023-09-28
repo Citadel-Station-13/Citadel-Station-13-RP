@@ -184,19 +184,19 @@ Buildable meters
 	if(!isturf(loc))
 		return TRUE
 
-	add_fingerprint(user)
+	add_fingerprint(e_args.performer)
 	fixdir()
 
 	var/obj/machinery/atmospherics/fakeA = pipe_type
 	var/initial_flags = initial(fakeA.pipe_flags)
 	for(var/obj/machinery/atmospherics/M in loc)
 		if((M.pipe_flags & initial_flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
-			to_chat(user, "<span class='warning'>Something is hogging the tile!</span>")
+			e_args.chat_feedback(SPAN_WARNING("Something is hogging the tile!"), src)
 			return TRUE
 		if((M.piping_layer != piping_layer) && !((M.pipe_flags | initial_flags) & PIPING_ALL_LAYER)) // Pipes on different layers can't block each other unless they are ALL_LAYER
 			continue
 		if(M.get_init_dirs() & SSmachines.get_init_dirs(pipe_type, dir))	// matches at least one direction on either type of pipe
-			to_chat(user, "<span class='warning'>There is already a pipe at that location!</span>")
+			e_args.chat_feedback(SPAN_WARNING("There is already a pipe at that location!"), src)
 			return TRUE
 	// no conflicts found
 
@@ -205,15 +205,17 @@ Buildable meters
 	// TODO - Evaluate and remove the "need at least one thing to connect to" thing ~Leshana
 	// With how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment.
 	if (QDELETED(A))
-		to_chat(user, "<span class='warning'>There's nothing to connect this pipe section to!</span>")
+		e_args.chat_feedback(SPAN_WARNING("There's nothing to connect this pipe section to!"), src)
 		return TRUE
 	transfer_fingerprints_to(A)
 
 	playsound(src, I.tool_sound, 50, 1)
-	user.visible_message( \
-		"[user] fastens \the [src].", \
-		"<span class='notice'>You fasten \the [src].</span>", \
-		"<span class='italics'>You hear ratcheting.</span>")
+	e_args.visible_feedback(
+		target = src,
+		visible = SPAN_NOTICE("[e_args.performer] fastens \the [src]."),
+		audible = SPAN_WARNING("You hear ratcheting."),
+		otherwise_self = SPAN_NOTICE("You fasten \the [src].")
+	)
 
 	qdel(src)
 

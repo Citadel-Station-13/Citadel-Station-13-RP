@@ -13,11 +13,13 @@
 
 /datum/event_args/actor/proc/chat_feedback(msg, atom/target)
 	performer.action_feedback(msg, target)
-	initiator.action_feedback(msg, target)
+	if(performer != initiator)
+		initiator.action_feedback(msg, target)
 
 /datum/event_args/actor/proc/bubble_feedback(msg, atom/target)
 	performer.bubble_action_feedback(msg, target)
-	initiator.bubble_action_feedback(msg, target)
+	if(performer != initiator)
+		initiator.bubble_action_feedback(msg, target)
 
 /**
  * It is highly recommended to use named parameters with this.

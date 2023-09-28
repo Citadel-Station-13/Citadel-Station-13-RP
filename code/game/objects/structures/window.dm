@@ -457,11 +457,11 @@
 	. = TRUE
 
 	if (construction_state == WINDOW_STATE_UNSECURED || construction_state == WINDOW_STATE_SCREWED_TO_FLOOR || !considered_reinforced)
-		if (!use_screwdriver(I, user, flags))
+		if (!use_screwdriver(I, e_args, flags))
 			return
 
 		var/unsecuring = construction_state != WINDOW_STATE_UNSECURED
-		user.action_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the frame [unsecuring? "from" : "to"] the floor."), src)
+		e_args.chat_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the frame [unsecuring? "from" : "to"] the floor."), src)
 		if (unsecuring)
 			construction_state = WINDOW_STATE_UNSECURED
 			set_anchored(FALSE)
@@ -475,11 +475,11 @@
 	if (construction_state != WINDOW_STATE_CROWBRARED_IN && construction_state != WINDOW_STATE_SECURED_TO_FRAME)
 		return
 
-	if (!use_screwdriver(I, user, flags))
+	if (!use_screwdriver(I, e_args, flags))
 		return
 
 	var/unsecuring = construction_state == WINDOW_STATE_SECURED_TO_FRAME
-	user.action_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the window [unsecuring? "from" : "to"] the frame."), src)
+	e_args.chat_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the window [unsecuring? "from" : "to"] the frame."), src)
 	construction_state = unsecuring ? WINDOW_STATE_CROWBRARED_IN : WINDOW_STATE_SECURED_TO_FRAME
 
 
@@ -489,21 +489,21 @@
 		return
 	if (construction_state != WINDOW_STATE_CROWBRARED_IN && construction_state != WINDOW_STATE_SCREWED_TO_FLOOR)
 		return
-	if (!use_crowbar(I, user, flags))
+	if (!use_crowbar(I, e_args, flags))
 		return
 	var/unsecuring = construction_state == WINDOW_STATE_CROWBRARED_IN
-	user.action_feedback(SPAN_NOTICE("You pry [src] [unsecuring ? "out of" : "into"] the frame."), src)
+	e_args.chat_feedback(SPAN_NOTICE("You pry [src] [unsecuring ? "out of" : "into"] the frame."), src)
 	construction_state = unsecuring ? WINDOW_STATE_SCREWED_TO_FLOOR : WINDOW_STATE_CROWBRARED_IN
 
 
 /obj/structure/window/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if (construction_state != WINDOW_STATE_UNSECURED)
-		user.action_feedback(SPAN_WARNING("[src] has to be entirely unfastened from the floor before you can disasemble it!"))
+		e_args.chat_feedback(SPAN_WARNING("[src] has to be entirely unfastened from the floor before you can disasemble it!"))
 		return
-	if (!use_wrench(I, user, flags))
+	if (!use_wrench(I, e_args, flags))
 		return
-	user.action_feedback(SPAN_NOTICE("You disassemble [src]."), src)
+	e_args.chat_feedback(SPAN_NOTICE("You disassemble [src]."), src)
 	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
 

@@ -38,10 +38,15 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	if(!network_mutable)
 		return ..()
 	. = TRUE
-	var/new_network = default_input_text(user, "What do you want to set the network key to?", "Modify Network", network_key)
-	if(!user.Reachability(src) || isnull(new_network))
+	var/new_network = default_input_text(e_args.initiator, "What do you want to set the network key to?", "Modify Network", network_key)
+	if(!e_args.performer.Reachability(src) || isnull(new_network))
 		return
-	user.visible_message(SPAN_NOTICE("[user] reprograms the network on [src]."), range = MESSAGE_RANGE_CONFIGURATION)
+	e_args.visible_feedback(
+		target = src,
+		visible = SPAN_NOTICE("[e_args.performer] reprograms the network on [src]."),
+		range = MESSAGE_RANGE_CONFIGURATION,
+		otherwise_self = SPAN_NOTICE("You reprogram the network on [src]."),
+	)
 	change_network(new_network)
 
 /obj/machinery/bioscan_antenna/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())

@@ -564,24 +564,24 @@
 	if(isnull(obj_cell_slot) || (obj_cell_slot.remove_tool_behavior != function) || !obj_cell_slot.interaction_active(user))
 		return ..()
 	if(isnull(obj_cell_slot.cell))
-		user.action_feedback(SPAN_WARNING("[src] has no cell in it."))
+		e_args.chat_feedback(SPAN_WARNING("[src] has no cell in it."))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
-	log_construction(user, src, "removing cell")
-	user.visible_action_feedback(
+	log_construction(e_args.performer, src, "removing cell")
+	e_args.visible_feedback(
 		target = src,
-		hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-		visible_hard = SPAN_NOTICE("[user] starts removing the cell from [src]."),
-		visible_self = SPAN_NOTICE("You start removing the cell from [src]."),
-		audible_hard = SPAN_NOTICE("You hear fasteners being undone."),
+		range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[user] starts removing the cell from [src]."),
+		audible = SPAN_NOTICE("You hear fasteners being undone."),
+		otherwise_self = SPAN_NOTICE("You start removing the cell from [src]."),
 	)
-	if(!use_tool(function, I, user, flags, obj_cell_slot.remove_tool_time, 1))
+	if(!use_tool(function, I, e_args, flags, obj_cell_slot.remove_tool_time, 1))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
-	log_construction(user, src, "removed cell")
-	user.visible_action_feedback(
+	log_construction(e_args.performer, src, "removed cell")
+	e_args.visible_feedback(
 		target = src,
-		hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-		visible_hard = SPAN_NOTICE("[user] removes the cell from [src]."),
-		audible_hard = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
-		visible_self = SPAN_NOTICE("You remove the cell from [src]."),
+		range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[user] removes the cell from [src]."),
+		audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
+		otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
 	)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
