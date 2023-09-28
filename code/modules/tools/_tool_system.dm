@@ -17,7 +17,7 @@
  *
  * intended api for static tool usage:
  *
- * - override necessary <function>_act for that tool type
+ * * override necessary <function>_act for that tool type
  * .../function_act(...)
  *     if(use_<function>(...))
  *         # success code
@@ -26,11 +26,11 @@
  *     return TRUE // halt attack chain
  *
  * intended api for dynamic tool usage:
- * - override dynamic_tool_functions() to return the functions and minimal qualities for a user
- * - override dynamic_tool_act() if needed, otherwise it will simply go into tool_act
- * - override dynamic_tool_image() to return the image to render for a specific tool function for radials
- * - realistically, you just need to override dynamic_tool_functions.
- * - if you don't override dynamic_tool_image you are a lemming and it'll probabl be ugly.
+ * * override dynamic_tool_functions() to return the functions and minimal qualities for a user
+ * * override dynamic_tool_act() if needed, otherwise it will simply go into tool_act
+ * * override dynamic_tool_image() to return the image to render for a specific tool function for radials
+ * * realistically, you just need to override dynamic_tool_functions.
+ * * if you don't override dynamic_tool_image you are a lemming and it'll probabl be ugly.
  *
  * It's That Simple (tm)!
  *
@@ -46,12 +46,12 @@
  * warning: this proc is not necessarily called only within clickcode.
  *
  * @params
- * - I - the item
- * - user - the user
- * - clickchain_flags - the clickchain flags given
- * - function - forced function - used in automation
- * - hint - forced hint - used in automation
- * - reachability_check - a callback used for reachability checks. if none, defaults to mob.Reachability when in clickcode, can always reach otherwise.
+ * * I - the item
+ * * user - the user
+ * * clickchain_flags - the clickchain flags given
+ * * function - forced function - used in automation
+ * * hint - forced hint - used in automation
+ * * reachability_check - a callback used for reachability checks. if none, defaults to mob.Reachability when in clickcode, can always reach otherwise.
  */
 /atom/proc/tool_interaction(obj/item/I, mob/user, clickchain_flags, function, hint, datum/callback/reachability_check)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -171,19 +171,19 @@
  * primary proc to be used when calling an interaction with a tool with an atom
  *
  * everything in this proc and procs it calls:
- * - should not verify that the item is on the user
- * - can, but doesn't need to verify that the item has the function in question (assumed it does)
- * - should not require a user to run (do not runtime without user)
- * - should handle functions with helpers in tihs file whenever possibl
+ * * should not verify that the item is on the user
+ * * can, but doesn't need to verify that the item has the function in question (assumed it does)
+ * * should not require a user to run (do not runtime without user)
+ * * should handle functions with helpers in tihs file whenever possibl
  *
  * default behaviour: route the call to <function>_act, which interrupts the melee attack chain if it returns TRUE.
  *
  * @params
- * - I - the tool in question
- * - user - the user in question, if they exist
- * - function - the tool function used
- * - flags - tool operation flags
- * - hint - the operation hint, if the calling system is the dynamic tool system.
+ * * I - the tool in question
+ * * user - the user in question, if they exist
+ * * function - the tool function used
+ * * flags - tool operation flags
+ * * hint - the operation hint, if the calling system is the dynamic tool system.
  */
 /atom/proc/tool_act(obj/item/I, mob/user, function, flags, hint)
 	switch(function)
@@ -207,13 +207,13 @@
  * standard use tool
  *
  * @params
- * - function - tool function
- * - I - the tool
- * - user - the person using it
- * - flags - tool operation flags
- * - delay - how long it'll take to use the tool
- * - cost - optional; cost multiplier to the default cost of 1 per second.
- * - usage - optional; usage flags for tool speed/quality checks.
+ * * function - tool function
+ * * I - the tool
+ * * user - the person using it
+ * * flags - tool operation flags
+ * * delay - how long it'll take to use the tool
+ * * cost - optional; cost multiplier to the default cost of 1 per second.
+ * * usage - optional; usage flags for tool speed/quality checks.
  */
 /atom/proc/use_tool_standard(function, obj/item/I, mob/user, flags, delay, cost, usage)
 	return use_tool(function, I, user, flags, delay, cost, usage)
@@ -222,14 +222,14 @@
  * primary proc called by wrappers to use a tool on us
  *
  * @params
- * - function - tool function
- * - I - the tool
- * - user - the person using it
- * - flags - tool operation flags
- * - delay - how long it'll take to use the tool
- * - cost - optional; cost multiplier to the default cost of 1 per second.
- * - usage - optional; usage flags for tool speed/quality checks.
- * - volume - optional; volume override
+ * * function - tool function
+ * * I - the tool
+ * * user - the person using it
+ * * flags - tool operation flags
+ * * delay - how long it'll take to use the tool
+ * * cost - optional; cost multiplier to the default cost of 1 per second.
+ * * usage - optional; usage flags for tool speed/quality checks.
+ * * volume - optional; volume override
  */
 /atom/proc/use_tool(function, obj/item/I, mob/user, flags, delay, cost = 1, usage, volume)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -266,12 +266,13 @@
  * if you're caching your own list, make sure to return cache.Copy()!
  *
  * @params
- * - I - the tool used, if any
- * - user - the user, if any
+ * * I - the tool used, if any
+ * * user - the user, if any
+ * * hint_images - allows us to immediately associate hints to specific images without calling dynamic_tool_image after. usually not what you want.
  */
-/atom/proc/dynamic_tool_functions(obj/item/I, mob/user)
-	// todo: signal
-	return list()
+/atom/proc/dynamic_tool_functions(obj/item/I, mob/user, list/hint_images = list())
+	. = list()
+	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_FUNCTIONS, I, user, ., hint_images)
 
 /atom/proc/_dynamic_tool_act(obj/item/I, mob/user, function, flags, hint)
 	PRIVATE_PROC(TRUE)
@@ -287,11 +288,11 @@
  * this must return a set of clickchain flags!
  *
  * @params
- * - I - the tool used
- * - user - the user, if any
- * - function - the tool behaviour used
- * - flags - tool operation flags
- * - hint - the hint of what operation to do
+ * * I - the tool used
+ * * user - the user, if any
+ * * function - the tool behaviour used
+ * * flags - tool operation flags
+ * * hint - the hint of what operation to do
  */
 /atom/proc/dynamic_tool_act(obj/item/I, mob/user, function, flags, hint)
 	return tool_act(I, user, function, flags, hint)
@@ -302,8 +303,8 @@
  * WARNING: If you use tool **and** hint, you need to implement a hintless, or return to base to use the default.
  *
  * @params
- * - function - the tool behaviour
- * - hint - the context provided when you want to implement multiple actions for a tool
+ * * function - the tool behaviour
+ * * hint - the context provided when you want to implement multiple actions for a tool
  */
 /atom/proc/dynamic_tool_image(function, hint)
 	return dyntool_image_neutral(function)
