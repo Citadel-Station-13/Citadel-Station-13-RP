@@ -4,13 +4,12 @@
 /datum/category_item/catalogue/technology/ripley
 	name = "Exosuit - APLU"
 	desc = "The Armored Power Loader Unit, more commonly referred to as the 'Ripley', \
-	is a tried and tested exosuit model often described as the workhorse of the Frontier. \
-	Originally designed for industrial use, the APLU is a second generation iteration of \
-	the design. Unlike its predecessor - the PLU - the APLU possesses a fully enclosed cockpit \
-	making it able to work in vacuum. It retains the PLU's rugged design and resilience, and is \
-	frequently employed in mining, construction, heavy lifting, and cargo transport capacities. \
-	Coming in at just under 9'(3m) tall, the APLU cockpit is cramped, requiring its pilot to \
-	stand upright and move in conjunction with the exosuit."
+	is a tried and tested exosuit model. Often described as the workhorse of the Frontier, \
+	the Ripley was originally designed for industrial use. The APLU is a second generation \
+	improvement of the original PLU. The APLU possesses a fully enclosed cockpit enabling it \
+	to work in vacuum. The APLU retains the PLU's rugged design and resilience, and is frequently \
+	employed in mining, construction, and cargo transport capacities. Coming in at just under 9'(2.7m) tall, \
+	the APLU cockpit is cramped, requiring its pilot to stand upright and move in conjunction with the exosuit."
 	value = CATALOGUER_REWARD_EASY
 
 

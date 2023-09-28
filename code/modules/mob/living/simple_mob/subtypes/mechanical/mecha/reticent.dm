@@ -2,14 +2,14 @@
 
 /datum/category_item/catalogue/technology/reticent
 	name = "Exosuit - Reticent"
-	desc = "During the Melancholy Occupation of 2476 - callously referred to by their opposition as the 'Prank War', the \
+	desc = "During the Melancholy Occupation of 2476 - callously referred to by their opposition as the 'Prank War' - the \
 	people of Le Rien realized the rapidly widening gulf between their technological advancements and Columbina's. Aiming to \
 	prevent another such tragedy from happening again, extensive research was conducted on the H.O.N.K. mecha deployed by \
 	the Clowns. Although Silencium bears less technological utility, scientists were able to employ its own unique properties in \
 	the Reticent's design. An agile mecha plated in a sturdy layer of Silencium, the Reticent was able to move silently through \
 	corridors its bulkier opponent could not. Able to close distance with the more range biased H.O.N.K. mecha, Reticent units \
 	deployed to occupied zones quickly cleared out mechanized garrisons. Although formidable, the Reticent suffers from a weak \
-	chassis - a byproduct of its maneuverability, and is easily disabled once its dense mineral armor is shattered. Its 11'(3m) \
+	chassis - a byproduct of its maneuverability - and is easily disabled once its dense mineral armor is shattered. Its 11'(3m) \
 	oblong body is designed to move at a forward tilt, assisting the exosuit in rapidly gaining momentum."
 	value = CATALOGUER_REWARD_HARD
 

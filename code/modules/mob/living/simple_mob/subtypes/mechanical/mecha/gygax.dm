@@ -3,11 +3,12 @@
 
 /datum/category_item/catalogue/technology/gygax
 	name = "Exosuit - Gygax"
-	desc = "The Gygax is a relatively modern exosuit built to be lightweight and agile without sacrificing durability. \
-	These traits have made the Gygax rather popular among well funded private and corporate security forces who desire \
-	the ability to rapidly respond to conflict.	The Gygax features a bespoke actuator assembly that grants the exosuit \
-	short-term bursts of unparalleled speed at the expense of damaging the unit's structural integrity. 10'(3m) tall and \
-	somewhat rotund, the Gygax's cockpit is fully enclosed and protected by the design's diamond-weave armor plating."
+	desc = "The Gygax is a relatively modern exosuit designed for agility and speed without sacrificing durability. \
+	These traits have made the Gygax fairly popular among well funded private and corporate security forces. The Gygax \
+	features a bespoke actuator assembly that grants the exosuit short-term bursts of unparalleled speed. Consequently, \
+	the strain this assembly puts on the exosuit causes damage the unit's structural integrity. In spite of the drawbacks, \
+	this feature is frequently utilized by those who require the ability to rapidly respond to conflict. 10'(3m) tall and \
+	rotund, the Gygax's cockpit is fully enclosed and protected by the design's diamond-weave armor plating."
 	value = CATALOGUER_REWARD_HARD
 
 /mob/living/simple_mob/mechanical/mecha/combat/gygax
@@ -41,14 +42,13 @@
 
 /datum/category_item/catalogue/technology/dark_gygax
 	name = "Exosuit - Dark Gygax"
-	desc = "This variant of the standard Gygax is colloquially referred to as the 'Dark Gygax' on account of \
-	the exotic materials utilized in its construction. The standard Gygax's diamond-weave armor system is augmented \
-	with depleted morphium, lending it a darker and marginally more sinister hue whilst simultaneously granting \
-	the Dark Gygax considerably more resilience - without sacrificing any of the standard model's agility or speed. \
-	Due to the gross expenditure required to fabricate a Dark Gygax's armor plating, these platforms are exceedingly \
-	rare. Most security forces are content with the protection and utility of the standard Gygax, making this upgrade \
-	unnecessary. However, the Dark Gygax is often sought out by high-tier asset protection teams and paramilitary \
-	outfits."
+	desc = "This variant of the standard Gygax is colloquially referred to as the 'Dark Gygax', on account of the exotic \
+	materials used in its construction. The standard Gygax's diamond-weave armor system is augmented with depleted morphium, \
+	lending it a darker and marginally more sinister hue. Simultaneously, this upgrade grants the Dark Gygax considerably more \
+	resilience without sacrificing the standard model's agility or speed. Due to the gross expenditure required to fabricate a \
+	Dark Gygax's armor plating, these platforms are exceedingly rare. Most security forces are content with the protection and \
+	utility of the standard Gygax, making this upgrade appear unnecessary. However, the Dark Gygax is often sought out by \
+	high-tier asset protection teams and paramilitary outfits."
 	value = CATALOGUER_REWARD_HARD
 
 /mob/living/simple_mob/mechanical/mecha/combat/gygax/dark

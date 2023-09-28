@@ -264,15 +264,15 @@
 	name = "\"Classic\" APLU customisation kit"
 	new_name = "APLU \"Classic\""
 	new_desc = "An antique APLU that visibly bears the weight of time."
-	new_fluff = "A very retro APLU unit; didn't they retire these back in 2543?"
+	new_fluff = "A very retro APLU unit; didn't they retire these back in 2453?"
 	new_icon = "ripley-old"
 	allowed_types = list("ripley")
 
 /obj/item/kit/paint/ripley/death
 	name = "\"Reaper\" APLU customisation kit"
 	new_name = "APLU \"Reaper\""
-	new_desc = "This APLU bears menacing spikes and a sinister black and red paint job."
-	new_fluff = "A terrifying, grim power loader. Why do those clamps have spikes?"
+	new_desc = "This APLU bears a sinister black and red paint job."
+	new_fluff = "A grim power loader with a threatening profile. Why do those clamps have spikes?"
 	new_icon = "deathripley"
 	allowed_types = list("ripley","firefighter")
 
@@ -294,7 +294,7 @@
 	name = "\"Brigand\" APLU customisation kit"
 	new_name = "APLU \"Brigand\""
 	new_desc = "A vandalized APLU bearing the Jolly Roger."
-	new_fluff = "An up-armored power loader design often favored by pirates."
+	new_fluff = "An up-armored power loader design often favored by pirates. Its bulky frame and implacability help it function as mobile cover during boarding actions."
 	new_icon = "pirate"
 
 /obj/item/kit/paint/ripley/junker
@@ -329,7 +329,7 @@
 	name = "\"Arnold\" APLU customisation kit"
 	new_name = "APLU \"Arnold\""
 	new_desc = "An APLU with a jungle green camo paint job."
-	new_fluff = "Power loaders are loud, and clunky. Poorly suited for jungle operations of any kind, this camo paint job is likely only cosmetic."
+	new_fluff = "Power loaders are loud, slow, and clunky. Poorly suited for jungle operations of any kind, this camo paint job is likely only cosmetic."
 	new_icon = "ripley_camo"
 
 /obj/item/kit/paint/ripley/clown
@@ -351,7 +351,7 @@
 	name = "\"Silhouette\" Gygax customisation kit"
 	new_name = "Gygax \"Silhouette\""
 	new_desc = "A Gygax with an ominous black gleam."
-	new_fluff = "An ominous Gygax exosuit modelled after the fictional corporate 'death squads' that were popular in the pulp action-thrillers of 2554."
+	new_fluff = "An ominous Gygax exosuit modelled after the fictional corporate 'death squads' made popular in the pulp action-thrillers of 2554."
 	new_icon = "darkgygax"
 	allowed_types = list("gygax")
 
@@ -393,8 +393,8 @@
 /obj/item/kit/paint/gygax/carp
 	name = "\"Ishmael\" Gygax customisation kit"
 	new_name = "Gygax \"Ishmael\""
-	new_desc = "A Gygax painted the strinking purple most commonly associated with Space Carp. A menacing face has been painted on the glacis."
-	new_fluff = "This Gygax resembles the fierce Space Carp heraldry worn by Ishmael after their famed defense of Barker IV Orbital Station Sigma. The Ace mech pilot operated in hazardous EVA conditions to neutralize an overwhelmingly large migration of carp, saving the facility."
+	new_desc = "A Gygax painted Space Carp purple. A menacing face has been painted on the glacis."
+	new_fluff = "This Gygax resembles the fierce Space Carp heraldry worn by ace pilot 'Ishmael' after their famed defense of Barker IV Orbital Station Sigma. 'Ishmael' operated in intensely hazardous EVA conditions to neutralize an overwhelmingly large migration of carp, saving the facility."
 	new_icon = "gygax_carp"
 
 // Durand kits.
@@ -410,7 +410,7 @@
 	name = "\"Crusader\" Durand customisation kit"
 	new_name = "Durand \"Crusader\""
 	new_desc = "A Durand painted in stark whites and golds. It seems to radiate purity."
-	new_fluff = "This Durand's gleaming white plating and golden highlights radiate holiness and justice. Use it to smite evil wheresoever you find it."
+	new_fluff = "This Durand's gleaming white plating and golden highlights radiate holiness and justice. Use it to smite evil wheresoever you find it. Be mindful of ledges - this Durand provides no protection against falls."
 	new_icon = "paladin"
 
 /obj/item/kit/paint/durand/turtle
@@ -434,7 +434,7 @@
 	name = "\"8-Ball\" Mauler customisation kit"
 	new_name = "Marauder \"8-Ball\""
 	new_desc = "An aged Mauler with multiple aesthetic modifications - most notably a large 8-Ball decal on the glacis."
-	new_fluff = "This legendary exosuit saw much use during a variety of Frontier mercenary operations at the peak of the Phoron War. Wanted for its participation in the junta on Editius and numerous other criminal operations, it was presumed lost in 2497, with the rest of its mercenary company. A NanoTrasen backed bounty for the capture and return of 8-Ball remains open to this day."
+	new_fluff = "At the peak of the Phoron War, this legendary exosuit saw much use during a variety of Frontier mercenary operations. 8-Ball was presumed lost alongside the rest of its mercenary company in 2497. Due to its participation in the junta on Editius and numerous other war crimes, a NanoTrasen backed bounty for the capture and return of 8-Ball and its pilot remains open to this day."
 	new_icon = "eightball"
 	allowed_types = list("mauler")
 
