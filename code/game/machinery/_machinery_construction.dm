@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/obj/machinery/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
+/obj/machinery/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list()
 	if(tool_deconstruct && !isnull(default_deconstruct) && panel_open)
 		LAZYSET(.[tool_deconstruct], "deconstruct", dyntool_image_backward(tool_deconstruct))

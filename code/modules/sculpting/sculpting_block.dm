@@ -183,7 +183,7 @@
 	. = ..()
 	material.place_sheet(drop_location(), 10)
 
-/obj/structure/sculpting_block/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
+/obj/structure/sculpting_block/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list()
 	LAZYSET(.[TOOL_WRENCH], anchored? "unanchor" : "anchor", anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH))
 	LAZYSET(.[TOOL_WELDER], "deconstruct", dyntool_image_backward(TOOL_WELDER))

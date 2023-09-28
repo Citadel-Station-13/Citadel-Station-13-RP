@@ -1,8 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-#warn use /datum/event_args/actor/e_args
-
 /**
  * ? Atom Tool API
  *
@@ -26,10 +24,10 @@
  *     return TRUE // halt attack chain
  *
  * intended api for dynamic tool usage:
- * * override dynamic_tool_functions() to return the functions and minimal qualities for a user
+ * * override dynamic_tool_query() to return the functions and minimal qualities for a user
  * * override dynamic_tool_act() if needed, otherwise it will simply go into tool_act
  * * override dynamic_tool_image() to return the image to render for a specific tool function for radials
- * * realistically, you just need to override dynamic_tool_functions.
+ * * realistically, you just need to override dynamic_tool_query.
  * * if you don't override dynamic_tool_image you are a lemming and it'll probabl be ugly.
  *
  * It's That Simple (tm)!
@@ -77,24 +75,22 @@
 		// as of now, format is:
 		// function = hint OR list(hint, ...)
 		// hint images is passed in so it can be prebuilt by components
-		// more info is in comment of dynamic_tool_functions
-		var/list/possibilities = dynamic_tool_functions(provided_item, e_args, hint_images)
+		// more info is in comment of dynamic_tool_query
+		var/list/possibilities = dynamic_tool_query(provided_item, e_args)
 		if(!length(possibilities) || (provided_item.tool_locked == TOOL_LOCKING_STATIC))
 			// no dynamic tool functionality, or dynamic functionality disabled, route normally.
 			function = provided_item.tool_behaviour()
 			if(!function)
 				return NONE
 			return _tool_act(provided_item, e_args, function, TOOL_OP_REAL)
-		#warn possibilities is fundamentally used incorrectly later, we might
-		#warn have to refactor this to not use dynamic_tool_image at all.
+		var/list/functions = provided_item.tool_query(e_args, src)
 		// enumerate
-		var/list/functions = provided_item.tool_query(user, src)
 		if((provided_item.tool_locked == TOOL_LOCKING_AUTO) && (length(functions) == 1))
 			// use first function
 			function = functions[1]
-			if(!(function in possibilities))
+			if(isnull(possibilities[function]))
 				// not found, route normally
-				return _tool_act(provided_item, user, function, TOOL_OP_REAL)
+				return _tool_act(provided_item, e_args, function, TOOL_OP_REAL)
 		else
 			for(var/i in possibilities)
 				if(functions[i])
@@ -105,60 +101,65 @@
 				function = provided_item.tool_behaviour()
 				if(!function)
 					return NONE
-				return _tool_act(provided_item, user, function, TOOL_OP_REAL)
+				return _tool_act(provided_item, e_args, function, TOOL_OP_REAL)
+		// possibilities is now filtered
 		// everything in possibilities is valid for the tool
 		var/list/transformed = list()
+		// check if we have function locked already
 		if(!function)
 			// we're about to sleep; if we're already breaking from this, maybe like, don't
-			if(INTERACTING_WITH_FOR(user, src, INTERACTING_FOR_DYNAMIC_TOOL))
+			if(INTERACTING_WITH_FOR(e_args.initiator, src, INTERACTING_FOR_DYNAMIC_TOOL))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			// if we didn't pick function already
-			for(var/i in possibilities)
-				// is there only one hint?
-				var/list/associated = possibilities[i]
-				if(associated && (!islist(associated) || (length(associated) == 1)))
-					// yes there is!
-					associated = islist(associated)? associated[1] : associated
+			for(var/potential_function in possibilities)
+				var/list/potential_hints = possibilities[potential_function]
+				var/image/radial_render
+				var/radial_text = potential_function
+				if(length(potential_hints) == 1)
+					radial_text = potential_hints[1]
+					radial_render = potential_hints[hint] || dyntool_image_neutral(potential_function)
 				else
-					associated = null
-				var/image/I = dynamic_tool_image(i, associated)
-				I.maptext = MAPTEXT_CENTER(associated || i)
-				I.maptext_x = -16
-				I.maptext_y = 32
-				I.maptext_width = 64
-				transformed[i] = I
+					radial_render = dyntool_image_neutral(potential_function)
+				radial_render.maptext = MAPTEXT_CENTER(radial_text)
+				radial_render.maptext_x = -16
+				radial_render.maptext_y = 32
+				radial_render.maptext_width = 64
+				transformed[potential_function] = radial_render
 			// todo: radial menu at some point should be made to automatically close when they click something else.
-			START_INTERACTING_WITH(user, src, INTERACTING_FOR_DYNAMIC_TOOL)
-			function = show_radial_menu(user, src, transformed, custom_check = reachability_check)
-			STOP_INTERACTING_WITH(user, src, INTERACTING_FOR_DYNAMIC_TOOL)
+			// todo: the initiator/performer pattern doesn't work well with radial menu and interacting with
+			// todo: because there's no semantics for mutexing the performer vs the initator
+			// todo: in the future, we are going to want to get a proper mutex up for tool interactions
+			START_INTERACTING_WITH(e_args.initiator, src, INTERACTING_FOR_DYNAMIC_TOOL)
+			function = show_radial_menu(e_args.initiator, src, transformed, custom_check = reachability_check)
+			STOP_INTERACTING_WITH(e_args.initiator, src, INTERACTING_FOR_DYNAMIC_TOOL)
 			if(!function || (reachability_check && !reachability_check.Invoke()))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 		// determine hint
 		var/list/hints = possibilities[function]
 		if(!islist(hints))
 			// is a direct hint or null
-			return _dynamic_tool_act(provided_item, user, function, TOOL_OP_REAL, hints)
+			return _dynamic_tool_act(provided_item, e_args, function, TOOL_OP_REAL, hints)
 		else if(length(hints) <= 1)
 			// no hint, or only one hint
-			return _dynamic_tool_act(provided_item, user, function, TOOL_OP_REAL, length(hints)? hints[1] : null)
+			return _dynamic_tool_act(provided_item, e_args, function, TOOL_OP_REAL, length(hints)? hints[1] : null)
 		// we're about to sleep; if we're already breaking from this, maybe like, don't
-		if(INTERACTING_WITH_FOR(user, src, INTERACTING_FOR_DYNAMIC_TOOL))
+		if(INTERACTING_WITH_FOR(e_args.initiator, src, INTERACTING_FOR_DYNAMIC_TOOL))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		transformed.len = 0
 		for(var/i in hints)
-			var/image/I = dynamic_tool_image(function, i)
-			I.maptext = MAPTEXT_CENTER(i)
-			I.maptext_x = -16
-			I.maptext_y = 32
-			I.maptext_width = 64
-			transformed[i] = I
-		START_INTERACTING_WITH(user, src, INTERACTING_FOR_DYNAMIC_TOOL)
-		hint = show_radial_menu(user, src, transformed, custom_check = reachability_check)
-		STOP_INTERACTING_WITH(user, src, INTERACTING_FOR_DYNAMIC_TOOL)
+			var/image/radial_render = hints[i] || dyntool_image_neutral(function)
+			radial_render.maptext = MAPTEXT_CENTER(i)
+			radial_render.maptext_x = -16
+			radial_render.maptext_y = 32
+			radial_render.maptext_width = 64
+			transformed[i] = radial_render
+		START_INTERACTING_WITH(e_args.initiator, src, INTERACTING_FOR_DYNAMIC_TOOL)
+		hint = show_radial_menu(e_args.initiator, src, transformed, custom_check = reachability_check)
+		STOP_INTERACTING_WITH(e_args.initiator, src, INTERACTING_FOR_DYNAMIC_TOOL)
 		if(!hint || (reachability_check && !reachability_check.Invoke()))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// use hint
-		return _dynamic_tool_act(provided_item, user, function, TOOL_OP_REAL, hint) | CLICKCHAIN_DO_NOT_PROPAGATE
+		return _dynamic_tool_act(provided_item, e_args, function, TOOL_OP_REAL, hint) | CLICKCHAIN_DO_NOT_PROPAGATE
 	else
 		// in the future, we might have situations where clicking something with an empty hand
 		// yet having organs that server as built-in tools can do something with
@@ -275,9 +276,9 @@
  * * I - the tool used, if any
  * * user - the user, if any
  */
-/atom/proc/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args)
+/atom/proc/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args)
 	. = list()
-	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_FUNCTIONS, I, e_args, .)
+	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_QUERY, I, e_args, .)
 
 /atom/proc/_dynamic_tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	PRIVATE_PROC(TRUE)

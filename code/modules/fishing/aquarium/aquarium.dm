@@ -118,7 +118,7 @@
 	update_appearance()
 	return TRUE
 
-/obj/structure/aquarium/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
+/obj/structure/aquarium/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = ..()
 	if(allow_unanchor)
 		LAZYSET(.[TOOL_WRENCH], anchored? "unanchor" : "anchor", anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH))

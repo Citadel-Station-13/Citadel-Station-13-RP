@@ -507,7 +507,7 @@
 	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
 
-/obj/structure/window/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
+/obj/structure/window/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	if (construction_state == WINDOW_STATE_UNSECURED)
 		. = list(
 			TOOL_SCREWDRIVER = list(

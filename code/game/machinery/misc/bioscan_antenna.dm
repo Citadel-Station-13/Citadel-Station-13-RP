@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	)
 	change_network(new_network)
 
-/obj/machinery/bioscan_antenna/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
+/obj/machinery/bioscan_antenna/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list()
 	if(network_mutable)
 		.[TOOL_MULTITOOL] = "change network"
