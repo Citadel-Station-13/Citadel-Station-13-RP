@@ -121,13 +121,7 @@
 /obj/structure/aquarium/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = ..()
 	if(allow_unanchor)
-		.[TOOL_WRENCH] = anchored? "anchor" : "unanchor"
-
-/obj/structure/aquarium/dynamic_tool_image(function, hint)
-	switch(function)
-		if(TOOL_WRENCH)
-			return anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH)
-	return ..()
+		LAZYSET(.[TOOL_WRENCH], anchored? "unanchor" : "anchor", anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH))
 
 /obj/structure/aquarium/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	if(!allow_unanchor)

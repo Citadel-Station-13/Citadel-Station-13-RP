@@ -4691,6 +4691,7 @@
 #include "code\modules\tools\_tool_system.dm"
 #include "code\modules\tools\items.dm"
 #include "code\modules\tools\multitool.dm"
+#include "code\modules\tools\visuals.dm"
 #include "code\modules\tools\wrappers.dm"
 #include "code\modules\tools\z_legacy.dm"
 #include "code\modules\tooltip\tooltip.dm"

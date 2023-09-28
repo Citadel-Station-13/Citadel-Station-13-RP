@@ -73,7 +73,6 @@
 		if(function)
 			// automation, just go
 			return _dynamic_tool_act(provided_item, e_args, function, TOOL_OP_AUTOPILOT | TOOL_OP_REAL, hint)
-		var/list/hint_images = list()
 		// used in clickchain
 		// as of now, format is:
 		// function = hint OR list(hint, ...)
@@ -267,7 +266,7 @@
  * returns a list of behaviours that can be used on us in our current state
  * the behaviour may be associated to a list of "hints" for multiple possible actions per behaviour.
  * the hint should be human readable.
- * associating directly to a single hint is allowed.
+ * hints can / should be associated to images for graphics, otherwise defaults to dyntool neutral images
  *
  * **warning**: by default, the provided list is mutable
  * if you're caching your own list, make sure to return cache.Copy()!
@@ -275,11 +274,10 @@
  * @params
  * * I - the tool used, if any
  * * user - the user, if any
- * * hint_images - allows us to immediately associate hints to specific images without calling dynamic_tool_image after. usually not what you want, as this isn't lazy.
  */
-/atom/proc/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
+/atom/proc/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args)
 	. = list()
-	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_FUNCTIONS, I, e_args, ., hint_images)
+	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_FUNCTIONS, I, e_args, .)
 
 /atom/proc/_dynamic_tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	PRIVATE_PROC(TRUE)
@@ -303,25 +301,3 @@
  */
 /atom/proc/dynamic_tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	return tool_act(I, e_args, function, flags, hint)
-
-/**
- * builds the image used for the radial icon
- *
- * WARNING: If you use tool **and** hint, you need to implement a hintless, or return to base to use the default.
- *
- * @params
- * * function - the tool behaviour
- * * hint - the context provided when you want to implement multiple actions for a tool
- */
-/atom/proc/dynamic_tool_image(function, hint)
-	return dyntool_image_neutral(function)
-
-//! Dynamic Tools - default images
-/proc/dyntool_image_neutral(function)
-	return image('icons/screen/radial/tools/generic.dmi', icon_state = _dyntool_image_states[function] || "unknown")
-
-/proc/dyntool_image_forward(function)
-	return image('icons/screen/radial/tools/generic.dmi', icon_state = "[_dyntool_image_states[function] || "unknown"]_up")
-
-/proc/dyntool_image_backward(function)
-	return image('icons/screen/radial/tools/generic.dmi', icon_state = "[_dyntool_image_states[function] || "unknown"]_down")

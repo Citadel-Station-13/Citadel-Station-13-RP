@@ -552,13 +552,8 @@
 	if(isnull(obj_cell_slot) || !obj_cell_slot.remove_tool_behavior || !obj_cell_slot.interaction_active(e_args.performer))
 		return ..()
 	. = list()
-	.[obj_cell_slot.remove_tool_behavior] = "remove cell"
+	LAZYSET(.[obj_cell_slot.remove_tool_behavior], "remove cell", dyntool_image_backward(obj_cell_slot.remove_tool_behavior))
 	return merge_double_lazy_assoc_list(..(), .)
-
-/obj/dynamic_tool_image(function, hint)
-	if(hint == "remove cell")
-		return dyntool_image_backward(function)
-	return ..()
 
 /obj/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	if(isnull(obj_cell_slot) || (obj_cell_slot.remove_tool_behavior != function) || !obj_cell_slot.interaction_active(e_args.performer))

@@ -185,21 +185,9 @@
 
 /obj/structure/sculpting_block/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list()
-	.[TOOL_WRENCH] = anchored? "unanchor" : "anchor"
-	.[TOOL_WELDER] = "deconstruct"
+	LAZYSET(.[TOOL_WRENCH], anchored? "unanchor" : "anchor", anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH))
+	LAZYSET(.[TOOL_WELDER], "deconstruct", dyntool_image_backward(TOOL_WELDER))
 	return merge_double_lazy_assoc_list(., ..())
-
-/obj/structure/sculpting_block/dynamic_tool_image(function, hint)
-	. = ..()
-	if(.)
-		return
-	switch(hint)
-		if("unanchor")
-			return dyntool_image_backward(TOOL_WRENCH)
-		if("anchor")
-			return dyntool_image_forward(TOOL_WRENCH)
-		if("deconstruct")
-			return dyntool_image_backward(TOOL_WELDER)
 
 /**
  * returns speed multiplier, or null if not tool

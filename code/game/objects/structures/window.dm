@@ -510,48 +510,46 @@
 /obj/structure/window/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	if (construction_state == WINDOW_STATE_UNSECURED)
 		. = list(
-			TOOL_SCREWDRIVER = TOOL_HINT_SCREWING_WINDOW_FRAME,
-			TOOL_WRENCH
+			TOOL_SCREWDRIVER = list(
+				"fasten frame" = dyntool_image_forward(TOOL_SCREWDRIVER),
+			),
+			TOOL_WRENCH = list(
+				"deconstruct" = dyntool_image_backward(TOOL_WRENCH),
+			),
 		)
 	else if (!considered_reinforced)
 		. = list(
-			TOOL_SCREWDRIVER = TOOL_HINT_UNSCREWING_WINDOW_FRAME
+			TOOL_SCREWDRIVER = list(
+				"unfasten frame" = dyntool_image_backward(TOOL_SCREWDRIVER),
+			),
 		)
 	else
 		switch (construction_state)
 			if (WINDOW_STATE_SCREWED_TO_FLOOR)
 				. = list(
-				  TOOL_SCREWDRIVER = TOOL_HINT_UNSCREWING_WINDOW_FRAME,
-				  TOOL_CROWBAR = TOOL_HINT_CROWBAR_WINDOW_IN
+					TOOL_SCREWDRIVER = list(
+						"unfasten frame" = dyntool_image_backward(TOOL_SCREWDRIVER),
+					),
+					TOOL_CROWBAR = list(
+						"seat pane" = dyntool_image_forward(TOOL_CROWBAR),
+					),
 				)
 			if (WINDOW_STATE_CROWBRARED_IN)
 				. = list(
-				TOOL_SCREWDRIVER = TOOL_HINT_SCREWING_WINDOW_PANE,
-				TOOL_CROWBAR = TOOL_HINT_CROWBAR_WINDOW_OUT
+					TOOL_SCREWDRIVER = list(
+						"fasten pane" = dyntool_image_forward(TOOL_SCREWDRIVER),
+					),
+					TOOL_CROWBAR = list(
+						"unseat pane" = dyntool_image_backward(TOOL_CROWBAR),
+					),
 				)
 			if (WINDOW_STATE_SECURED_TO_FRAME)
 				. = list(
-				  TOOL_SCREWDRIVER = TOOL_HINT_UNSCREWING_WINDOW_PANE
+					TOOL_SCREWDRIVER = list(
+						"unfasten pane" = dyntool_image_backward(TOOL_SCREWDRIVER),
+					),
 				)
 	return merge_double_lazy_assoc_list(., ..())
-
-
-/obj/structure/window/dynamic_tool_image(function, hint)
-	switch (hint)
-		if (TOOL_HINT_CROWBAR_WINDOW_IN)
-			return dyntool_image_forward(TOOL_CROWBAR)
-		if (TOOL_HINT_CROWBAR_WINDOW_OUT)
-			return dyntool_image_backward(TOOL_CROWBAR)
-		if (TOOL_HINT_SCREWING_WINDOW_FRAME)
-			return dyntool_image_forward(TOOL_SCREWDRIVER)
-		if (TOOL_HINT_UNSCREWING_WINDOW_FRAME)
-			return dyntool_image_backward(TOOL_SCREWDRIVER)
-		if (TOOL_HINT_SCREWING_WINDOW_PANE)
-			return dyntool_image_forward(TOOL_SCREWDRIVER)
-		if (TOOL_HINT_UNSCREWING_WINDOW_PANE)
-			return dyntool_image_backward(TOOL_SCREWDRIVER)
-	return ..()
-
 
 //This proc is used to update the icons of nearby windows.
 /obj/structure/window/proc/update_nearby_icons()
