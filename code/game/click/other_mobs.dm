@@ -33,7 +33,7 @@
 /// Return TRUE to cancel other attack hand effects that respect it.
 // todo: /datum/event_args/clickchain
 /atom/proc/attack_hand(mob/user, list/params)
-	if(on_attack_hand(new /datum/event_args/actor(user, intent = user.a_intent, params = params)))
+	if(on_attack_hand(new /datum/event_args/clickchain(user, intent = user.a_intent, params = params)))
 		return TRUE
 	. = _try_interact(user)
 

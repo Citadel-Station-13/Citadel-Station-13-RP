@@ -11,7 +11,7 @@
  */
 /atom/proc/context_query(datum/event_args/actor/actor)
 	. = list()
-	SEND_SIGNAL(src, COMSIG_ATOM_CONTEXT_QUERY, ., user, distance)
+	SEND_SIGNAL(src, COMSIG_ATOM_CONTEXT_QUERY, ., actor)
 
 /**
  * act on a context option
@@ -19,7 +19,7 @@
  * @return TRUE / FALSE; TRUE if handled.
  */
 /atom/proc/context_act(datum/event_args/actor/actor, key)
-	if(SEND_SIGNAL(src, COMSIG_ATOM_CONTEXT_ACT, key, user) & RAISE_ATOM_CONTEXT_ACT_HANDLED)
+	if(SEND_SIGNAL(src, COMSIG_ATOM_CONTEXT_ACT, key, actor) & RAISE_ATOM_CONTEXT_ACT_HANDLED)
 		return TRUE
 	return FALSE
 

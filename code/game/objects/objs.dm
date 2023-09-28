@@ -249,7 +249,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_offhand && e_args.performer.is_holding_inactive(src) && obj_cell_slot.interaction_active(user))
+	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_offhand && e_args.performer.is_holding_inactive(src) && obj_cell_slot.interaction_active(e_args.performer))
 		e_args.performer.visible_action_feedback(
 			target = src,
 			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
@@ -412,8 +412,8 @@
 
 /obj/context_query(datum/event_args/actor/actor)
 	. = ..()
-	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(user))
-		.["obj_cell_slot"] = ATOM_CONTEXT_TUPLE("remove cell", null, null)
+	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(actor.performer))
+		.["obj_cell_slot"] = ATOM_CONTEXT_TUPLE("remove cell", null, null, MOBILITY_CAN_USE)
 
 /obj/context_act(datum/event_args/actor/actor, key)
 	if(key == "obj_cell_slot")
