@@ -44,7 +44,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	user.visible_message(SPAN_NOTICE("[user] reprograms the network on [src]."), range = MESSAGE_RANGE_CONFIGURATION)
 	change_network(new_network)
 
-/obj/machinery/bioscan_antenna/dynamic_tool_functions(obj/item/I, mob/user)
+/obj/machinery/bioscan_antenna/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list()
 	if(network_mutable)
 		.[TOOL_MULTITOOL] = "change network"

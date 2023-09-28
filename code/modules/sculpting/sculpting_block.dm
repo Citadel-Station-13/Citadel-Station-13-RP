@@ -183,7 +183,7 @@
 	. = ..()
 	material.place_sheet(drop_location(), 10)
 
-/obj/structure/sculpting_block/dynamic_tool_functions(obj/item/I, mob/user)
+/obj/structure/sculpting_block/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list()
 	.[TOOL_WRENCH] = anchored? "unanchor" : "anchor"
 	.[TOOL_WELDER] = "deconstruct"

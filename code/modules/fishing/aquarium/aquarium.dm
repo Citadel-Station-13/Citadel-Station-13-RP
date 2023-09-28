@@ -118,7 +118,7 @@
 	update_appearance()
 	return TRUE
 
-/obj/structure/aquarium/dynamic_tool_functions(obj/item/I, mob/user)
+/obj/structure/aquarium/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = ..()
 	if(allow_unanchor)
 		.[TOOL_WRENCH] = anchored? "anchor" : "unanchor"

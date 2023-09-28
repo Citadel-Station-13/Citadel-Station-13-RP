@@ -162,7 +162,7 @@
 /obj/item/weldingtool/proc/get_max_fuel()
 	return max_fuel
 
-/obj/item/weldingtool/using_as_tool(function, flags, mob/user, atom/target, time, cost, usage)
+/obj/item/weldingtool/using_as_tool(function, flags, datum/event_args/actor/clickchain/e_args, atom/target, time, cost, usage)
 	. = ..()
 	if(!. || function != TOOL_WELDER)
 		return
@@ -175,7 +175,7 @@
 		user.action_feedback(SPAN_WARNING("[src] doesn't have enough fuel left to do that!"), target)
 		return FALSE
 
-/obj/item/weldingtool/used_as_tool(function, flags, mob/user, atom/target, time, cost, usage, success)
+/obj/item/weldingtool/used_as_tool(function, flags, datum/event_args/actor/clickchain/e_args, atom/target, time, cost, usage, success)
 	. = ..()
 	if(!.)
 		return

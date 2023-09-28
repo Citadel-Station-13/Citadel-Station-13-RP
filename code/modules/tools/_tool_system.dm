@@ -270,16 +270,16 @@
  * * user - the user, if any
  * * hint_images - allows us to immediately associate hints to specific images without calling dynamic_tool_image after. usually not what you want.
  */
-/atom/proc/dynamic_tool_functions(obj/item/I, mob/user, list/hint_images = list())
+/atom/proc/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list()
-	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_FUNCTIONS, I, user, ., hint_images)
+	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_FUNCTIONS, I, e_args, ., hint_images)
 
-/atom/proc/_dynamic_tool_act(obj/item/I, mob/user, function, flags, hint)
+/atom/proc/_dynamic_tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	PRIVATE_PROC(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	flags |= TOOL_OP_DYNAMIC
-	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_ACT, I, user, function, flags, hint)
-	return dynamic_tool_act(I, user, function, flags, hint)
+	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_ACT, I, e_args, function, flags, hint)
+	return dynamic_tool_act(I, e_args, function, flags, hint)
 
 /**
  * called when we are acted on by the dynamic tool system
@@ -294,8 +294,8 @@
  * * flags - tool operation flags
  * * hint - the hint of what operation to do
  */
-/atom/proc/dynamic_tool_act(obj/item/I, mob/user, function, flags, hint)
-	return tool_act(I, user, function, flags, hint)
+/atom/proc/dynamic_tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
+	return tool_act(I, e_args, function, flags, hint)
 
 /**
  * builds the image used for the radial icon

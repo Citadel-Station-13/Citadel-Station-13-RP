@@ -62,7 +62,7 @@
 	user.action_feedback(SPAN_NOTICE("You inscribe [label_text] into \the [initial(stored.name)]."), src)
 	stored.name = "[initial(stored.name)] (\"[label_text]\")"
 
-/obj/item/ammo_casing/dynamic_tool_functions(obj/item/I, mob/user)
+/obj/item/ammo_casing/dynamic_tool_functions(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list(
 		TOOL_SCREWDRIVER = list(
 			"etch"
