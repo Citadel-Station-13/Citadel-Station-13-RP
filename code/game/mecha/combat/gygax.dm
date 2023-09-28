@@ -48,7 +48,7 @@
 
 
 /obj/mecha/combat/gygax/dark
-	desc = "A lightweight exosuit used by Heavy Asset Protection. A significantly upgraded Gygax security mech."
+	desc = "A lightweight exosuit used by paramilitary forces. A significantly upgraded Gygax security mech."
 	name = "Dark Gygax"
 	icon_state = "darkgygax_adv"
 	initial_icon = "darkgygax_adv"

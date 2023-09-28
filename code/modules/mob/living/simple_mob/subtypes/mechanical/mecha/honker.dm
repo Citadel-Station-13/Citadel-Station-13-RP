@@ -2,14 +2,15 @@
 
 /datum/category_item/catalogue/technology/honker
 	name = "Exosuit - H.O.N.K."
-
 	desc = "Utilized with shocking effectiveness during the Prank War of 2476, the H.O.N.K. mech was commissioned by former \
-	Honktifex Maximus Pierrot LXIX. Utilizing advanced technology for its time, these mecha were constructed utilizing the extremely rare \
+	Honktifex Maximus Pierrot LXIX. Utilizing advanced technology for its time, these mecha were constructed with the extremely rare \
 	alloy Vaudium. Viewed by external observers as a simple curiosity, the H.O.N.K. mech's ability to inflict widespread 'hilarity' was not \
 	realized until the design was made public some decades later. After less than two years on the open market, harsh sanctions and bans on \
 	production were levied across at least thirty six Galactic sectors. In spite of this production moratorium, experts in Robotics may sometimes \
-	ignore the warnings and fabricate these suits when asked. This is generally considered to be a poor decision.There is some dispute regarding \
-	exactly what H.O.N.K. stands for. The most likely suggestion is generallly accepted to be: 'Hilariously Overpowered Noise Kreator'"
+	ignore the warnings and fabricate these suits when asked. This is generally considered to be a poor decision. There is some dispute regarding \
+	exactly what H.O.N.K. stands for. The most likely suggestion is generallly accepted to be: 'Hilariously Overpowered Noise Kreator'. This \
+	plodding mecha comes in at 10'(3m) in height, and features a curiously barrel shaped body that provides supreme stability when firing its \
+	weaponry."
 	value = CATALOGUER_REWARD_HARD
 
 /mob/living/simple_mob/mechanical/mecha/combat/honker
@@ -52,12 +53,12 @@
 	dispatched off-planet to support Clown Commando teams. Due to the immense amount of Vaudium required to fabricate a \
 	single C.L.U.W.N.E. mech, their mass production remains untenable. Even if it were, Clown Planet guards the mech's schematics \
 	jealously. It is currently assumed that the mecha's designation stands for 'Combative Laughter Unit With New Equipment', though \
-	this theory is widely disputed."
+	this theory is widely disputed. The C.L.U.W.N.E. retains its predecessor's squat 10'(3m) height and wide body."
 	value = CATALOGUER_REWARD_HARD
 
 /mob/living/simple_mob/mechanical/mecha/combat/honker/cluwne
 	name = "C.L.U.W.N.E."
-	desc = "The C.L.U.W.N.E. mecha is an up-armored cousin of the H.O.N.K. mech. Still in service on the borders of the Clown Planet, this unit is not typically found elsewhere."
+	desc = "The C.L.U.W.N.E. mecha is an up-armored cousin of the H.O.N.K. mech. Still in service on the borders of Scaena Globus, this unit is not typically found elsewhere."
 	catalogue_data = list(/datum/category_item/catalogue/technology/cluwne)
 	icon = 'icons/mecha/mecha_vr.dmi'
 	icon_state = "cluwne"
