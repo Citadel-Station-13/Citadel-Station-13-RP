@@ -570,7 +570,7 @@
 		power_supply = new /obj/item/cell/device(src)
 	update_icon()
 
-/obj/item/weldingtool/electric/get_cell()
+/obj/item/weldingtool/electric/get_cell(inducer)
 	return power_supply
 
 /obj/item/weldingtool/electric/examine(mob/user, dist)

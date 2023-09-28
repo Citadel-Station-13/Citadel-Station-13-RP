@@ -28,6 +28,8 @@
 	var/remove_tool_behavior = null
 	/// tool time for removal, if any
 	var/remove_tool_time = 0
+	/// removal is discrete or loud
+	var/remove_is_discrete = TRUE
 	#warn hook above
 	/// legacy
 	// todo: kill this
@@ -54,7 +56,7 @@
 	parent.object_cell_slot_inserted(cell, src)
 
 /datum/object_system/cell_slot/proc/interaction_active(mob/user)
-	return parent.object_cell_slot_interactable(user, src))
+	return parent.object_cell_slot_mutable(user, src)
 
 //? Hooks
 

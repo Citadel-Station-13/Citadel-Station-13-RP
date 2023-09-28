@@ -44,7 +44,7 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/cell/get_cell()
+/obj/item/cell/get_cell(inducer)
 	return src
 
 /obj/item/cell/process(delta_time)

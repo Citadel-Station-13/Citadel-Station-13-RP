@@ -873,7 +873,7 @@
 	return reagents && (reagents.reagents_holder_flags & DRAINABLE)
 
 
-/atom/proc/get_cell()
+/atom/proc/get_cell(inducer)
 	return
 
 //? Radiation

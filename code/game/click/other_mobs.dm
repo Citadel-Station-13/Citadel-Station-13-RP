@@ -32,7 +32,21 @@
 
 /// Return TRUE to cancel other attack hand effects that respect it.
 /atom/proc/attack_hand(mob/user, list/params)
+	if(on_attack_hand(user, params))
+		return TRUE
 	. = _try_interact(user)
+
+/**
+ * Override this instead of attack_hand.
+ *
+ * Return TRUE to cancel other attack hand effects that respect it.
+ *
+ * @params
+ * * user - the user
+ * * params - click parameters
+ */
+/atom/proc/on_attack_hand(mob/user, list/params)
+	return FALSE
 
 //Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
 /atom/proc/_try_interact(mob/user)

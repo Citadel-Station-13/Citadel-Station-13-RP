@@ -5,9 +5,9 @@
  * get context options
  *
  * key is a text string
- * value are tuples of (name, image)
+ * value are tuples; use ATOM_CONTEXT_TUPLE to create.
  *
- * @return list(key = list(name, image))
+ * @return list(key = value)
  */
 /atom/proc/context_query(mob/user, distance)
 	. = list()

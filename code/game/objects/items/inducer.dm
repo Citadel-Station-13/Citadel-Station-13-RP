@@ -36,7 +36,21 @@
 	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type)
 	cell_slot.receive_emp = TRUE
 	cell_slot.receive_inducer = TRUE
+	cell_slot.remove_yank_offhand = TRUE
+	cell_slot.remove_yank_context = TRUE
+	cell_slot.remove_yank_inhand = TRUE
 	update_appearance()
+
+/obj/item/inducer/examine(mob/user, dist)
+	. = ..()
+	if(!isnull(obj_cell_slot.cell))
+		. += "<br><span class='notice'>Its display shows: [round(obj_cell_slot.cell.charge)] / [obj_cell_slot.cell.maxcharge].</span>"
+	else
+		. += "<br><span class='notice'>Its display is dark.</span>"
+	if(opened)
+		. += SPAN_NOTICE("Its battery compartment is open, and looks like it can be closed with a <b>screwdriver</b>")
+	else
+		. += SPAN_NOTICE("Its battery compartment is closed, and looks like it can be opened with a <b>screwdriver</b>")
 
 /obj/item/inducer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(user.a_intent == INTENT_HARM)
@@ -149,15 +163,6 @@
 /obj/item/inducer/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
 	return opened && ..()
 
-/obj/item/inducer/examine(mob/living/M)
-	. = ..()
-	if(!isnull(obj_cell_slot.cell))
-		. += "<br><span class='notice'>Its display shows: [round(cell.charge)] / [cell.maxcharge].</span>"
-	else
-		. += "<br><span class='notice'>Its display is dark.</span>"
-	if(opened)
-		. += "<br><span class='notice'>Its battery compartment is open.</span>"
-
 /obj/item/inducer/update_icon()
 	..()
 	cut_overlays()
@@ -214,7 +219,7 @@
  * even if full, always add things, or the inducer might think we don't support induction when we do!
  */
 /atom/proc/inducer_scan(obj/item/inducer/I, list/things_to_induce = list(), inducer_flags)
-	var/obj/item/cell/C = get_cell()
+	var/obj/item/cell/C = get_cell(TRUE)
 	if(C)
 		things_to_induce += C
 		if(C.charge >= C.maxcharge)

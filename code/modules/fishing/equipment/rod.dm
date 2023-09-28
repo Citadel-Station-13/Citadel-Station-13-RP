@@ -81,6 +81,9 @@
 	update_icon()
 
 /obj/item/fishing_rod/on_attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	reel(user)
 
 /obj/item/fishing_rod/proc/reel(mob/user, atom/target)

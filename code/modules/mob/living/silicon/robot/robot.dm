@@ -1071,7 +1071,7 @@
 			to_chat(src, "Module isn't activated")
 		installed_modules()
 		return 1
-		
+
 	if(href_list["character_profile"])
 		if(!profile)
 			profile = new(src)
@@ -1403,7 +1403,7 @@
 /mob/living/silicon/robot/is_sentient()
 	return braintype != BORG_BRAINTYPE_DRONE
 
-/mob/living/silicon/robot/get_cell()
+/mob/living/silicon/robot/get_cell(inducer)
 	return cell
 
 /mob/living/silicon/robot/verb/robot_nom(var/mob/living/T in living_mobs(1))

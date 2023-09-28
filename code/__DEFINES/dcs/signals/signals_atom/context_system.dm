@@ -7,3 +7,6 @@
 /// from base of /atom/proc/context_act: (key, mob/user)
 #define COMSIG_ATOM_CONTEXT_ACT "atom_context_act"
 	#define RAISE_ATOM_CONTEXT_ACT_HANDLED (1<<0)
+
+/// create context
+#define ATOM_CONTEXT_TUPLE(name, image) list(name, image)
