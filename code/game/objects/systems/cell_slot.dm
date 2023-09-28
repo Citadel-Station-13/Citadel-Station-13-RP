@@ -8,7 +8,6 @@
 	var/cell_type
 	/// considered primary? if so, we get returned on get_cell()
 	var/primary = TRUE
-	#warn hook below
 	/// allow inducer?
 	var/receive_inducer = FALSE
 	/// allow EMPs to hit?
@@ -30,7 +29,6 @@
 	var/remove_tool_time = 0
 	/// removal is discrete or loud
 	var/remove_is_discrete = TRUE
-	#warn hook above
 	/// legacy
 	// todo: kill this
 	var/legacy_use_device_cells = FALSE

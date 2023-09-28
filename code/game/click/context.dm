@@ -9,7 +9,7 @@
  *
  * @return list(key = value)
  */
-/atom/proc/context_query(mob/user, distance)
+/atom/proc/context_query(datum/event_args/actor/actor)
 	. = list()
 	SEND_SIGNAL(src, COMSIG_ATOM_CONTEXT_QUERY, ., user, distance)
 
@@ -18,9 +18,13 @@
  *
  * @return TRUE / FALSE; TRUE if handled.
  */
-/atom/proc/context_act(mob/user, key)
+/atom/proc/context_act(datum/event_args/actor/actor, key)
 	if(SEND_SIGNAL(src, COMSIG_ATOM_CONTEXT_ACT, key, user) & RAISE_ATOM_CONTEXT_ACT_HANDLED)
 		return TRUE
 	return FALSE
 
-#warn hook all
+/atom/proc/context_menu(datum/event_args/actor/actor)
+	// admin proccall support
+	WRAP_MOB_TO_ACTOR_EVENT_ARGS(actor)
+	// todo: dynamically rebuild menu based on distance?
+	#warn impl

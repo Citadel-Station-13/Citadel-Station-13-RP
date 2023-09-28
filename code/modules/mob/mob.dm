@@ -52,6 +52,8 @@
 	return ..()
 
 /mob/Destroy()
+	// context menu
+	QDEL_NULL(context_menu)
 	// status effects
 	for(var/id in status_effects)
 		var/datum/status_effect/effect = status_effects[id]

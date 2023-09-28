@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+#warn use /datum/event_args/actor/actor
+
 /**
  * ? Atom Tool API
  *

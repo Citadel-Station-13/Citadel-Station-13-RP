@@ -41,6 +41,10 @@
 	/// armor datum type
 	var/armor_type = /datum/armor/none
 
+	//? Context
+	/// open context menus by mob
+	var/list/context_menus
+
 	//? Economy
 	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.
 	var/worth_intrinsic = 0

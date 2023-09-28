@@ -245,20 +245,20 @@
 
 //? Attacks
 
-/obj/on_attack_hand(mob/user, list/params)
+/obj/on_attack_hand(datum/event_args/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
-	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_offhand && user.is_holding_inactive(src) && obj_cell_slot.interaction_active(user))
-		user.visible_action_feedback(
+	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_offhand && e_args.performer.is_holding_inactive(src) && obj_cell_slot.interaction_active(user))
+		e_args.performer.visible_action_feedback(
 			target = src,
 			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[user] removes the cell from [src]."),
+			visible_hard = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
 			audible_hard = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
 			visible_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)
-		log_construction(user, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		user.put_in_hands_or_drop(obj_cell_slot.remove_cell(user))
+		log_construction(e_args.performer, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
 		return TRUE
 
 //? Cells / Inducers
@@ -410,29 +410,36 @@
 
 //? Context
 
-/obj/context_query(mob/user, distance)
+/obj/context_query(datum/event_args/actor/actor)
 	. = ..()
 	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(user))
-		.["obj_cell_slot"] = ATOM_CONTEXT_TUPLE("remove cell", null)
+		.["obj_cell_slot"] = ATOM_CONTEXT_TUPLE("remove cell", null, null)
 
-/obj/context_act(mob/user, key)
+/obj/context_act(datum/event_args/actor/actor, key)
 	if(key == "obj_cell_slot")
 		if(isnull(obj_cell_slot.cell))
-			user.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
+			actor.performer.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
 			return TRUE
-		if(!obj_cell_slot.interaction_active(user))
+		if(!obj_cell_slot.interaction_active(actor.performer))
 			return TRUE
-		user.visible_action_feedback(
+		actor.performer.visible_action_feedback(
 			target = src,
 			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[user] removes the cell from [src]."),
+			visible_hard = SPAN_NOTICE("[actor.performer] removes the cell from [src]."),
 			audible_hard = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
 			visible_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)
-		log_construction(user, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		user.put_in_hands_or_drop(obj_cell_slot.remove_cell(user))
+		log_construction(actor.performer, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		actor.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(actor.performer))
 		return TRUE
 	return ..()
+
+//? EMP
+
+/obj/emp_act(severity)
+	. = ..()
+	if(obj_cell_slot?.receive_emp)
+		obj_cell_slot?.cell?.emp_act(severity)
 
 //? Hiding / Underfloor
 

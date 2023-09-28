@@ -314,3 +314,9 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	QDEL_NULL(menu)
 	GLOB.radial_menus -= uniqueid
 	return answer
+
+/datum/radial_menu/context_menu
+
+/datum/radial_menu/Destroy()
+	LAZYREMOVE(anchor.context_menus, current_user)
+	return ..()
