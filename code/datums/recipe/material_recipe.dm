@@ -16,5 +16,5 @@
 /datum/stack_recipe/material/check(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
 	return ..()
 
-/datum/stack_recipe/material/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir)
+/datum/stack_recipe/material/make(atom/where, amount, obj/item/stack/material/stack, mob/user, silent, use_dir, list/created = list())
 	return ..()

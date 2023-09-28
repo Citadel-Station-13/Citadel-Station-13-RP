@@ -1,4 +1,4 @@
-// the power cell
+>>>// the power cell
 // charge from 0 to 100%
 // fits in APC to provide backup power
 
@@ -24,6 +24,7 @@
 	var/charge_amount = 25 // How much power to give, if self_recharge is true.  The number is in absolute cell charge, as it gets divided by CELLRATE later.
 	var/last_use = 0 // A tracker for use in self-charging
 	var/charge_delay = 0 // How long it takes for the cell to start recharging after last use
+	var/rating = 1
 	materials = list(MAT_STEEL = 700, MAT_GLASS = 50)
 
 	// Overlay stuff.
@@ -43,6 +44,9 @@
 	if(self_recharge)
 		STOP_PROCESSING(SSobj, src)
 	return ..()
+
+/obj/item/cell/get_rating()
+	return rating
 
 /obj/item/cell/get_cell(inducer)
 	return src

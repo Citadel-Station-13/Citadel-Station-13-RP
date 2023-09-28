@@ -724,8 +724,9 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 /// These procs are for RPEDs and part ratings. The concept for this was borrowed from /vg/station.
 /// Gets the rating of the item, used in stuff like machine construction.
+/// return null for don't use as part
 /obj/item/proc/get_rating()
-	return FALSE
+	return null
 
 /// These procs are for RPEDs and part ratings, but used for RPED sorting of parts.
 /obj/item/proc/rped_rating()

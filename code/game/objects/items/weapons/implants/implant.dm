@@ -514,32 +514,17 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	var/area/t = get_area(M)
 	switch (cause)
 		if("death")
-			var/obj/item/radio/headset/a = new /obj/item/radio/headset/heads/captain(null)
 			if(istype(t, /area/syndicate_station) || istype(t, /area/syndicate_mothership) || istype(t, /area/shuttle/syndicate_elite) )
 				//give the syndies a bit of stealth
-				a.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm")
-//				a.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm", "Security")
-//				a.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm", "Medical")
+				GLOB.global_announcer.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm")
 			else
-				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm")
-//				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm", "Security")
-//				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm", "Medical")
-			qdel(a)
-			STOP_PROCESSING(SSobj, src)
+				GLOB.global_announcer.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm")
 		if ("emp")
-			var/obj/item/radio/headset/a = new /obj/item/radio/headset/heads/captain(null)
 			var/name = prob(50) ? t.name : pick(teleportlocs)
-			a.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm")
-//			a.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm", "Security")
-//			a.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm", "Medical")
-			qdel(a)
+			GLOB.global_announcer.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm")
 		else
-			var/obj/item/radio/headset/a = new /obj/item/radio/headset/heads/captain(null)
-			a.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm")
-//			a.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "Security")
-//			a.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "Medical")
-			qdel(a)
-			STOP_PROCESSING(SSobj, src)
+			GLOB.global_announcer.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm")
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/implant/death_alarm/emp_act(severity)			//for some reason alarms stop going off in case they are emp'd, even without this
 	if (malfunction)		//so I'm just going to add a meltdown chance here

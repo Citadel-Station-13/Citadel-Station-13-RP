@@ -1,6 +1,6 @@
 /datum/material/mhydrogen
 	name = "mhydrogen"
-	id = "mhydrogen"
+	id = MAT_METALHYDROGEN
 	stack_type = /obj/item/stack/material/mhydrogen
 	icon_colour = "#E6C5DE"
 	stack_origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 6, TECH_MAGNET = 5)

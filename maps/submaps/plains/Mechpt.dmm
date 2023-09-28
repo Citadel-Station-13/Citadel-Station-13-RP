@@ -16,7 +16,7 @@
 "e" = (
 /obj/structure/railing,
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/chips,
+/obj/item/reagent_containers/food/snacks/bagged/chips,
 /turf/template_noop,
 /area/submap/Mechpt)
 "f" = (
