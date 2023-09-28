@@ -27,6 +27,10 @@
  * - for loop runs 3 times, hits turf, doesn't add turf area
  * - TurfAdjacency is checked since it isn't a ranged attack
  *
+ * Caveats:
+ * * This is not enough for 'can we physically reach'; that should be Adjacency. This is because telekinesis is a thing, and will be added later.
+ * * For this reason, the cost is higher than just checking 'can telekinesis', because telekinesis is checked after physical, as physical is stronger.
+ *
  * @params
  * - target - the target
  * - depth - max depth - should be at least 1 in most cases.
@@ -36,12 +40,12 @@
 /atom/movable/proc/Reachability(atom/target, depth = DEFAULT_REACHABILITY_DEPTH, range = 1, obj/item/tool)
 	if(!target)
 		// apologies sir, you may not grasp the void...
-		return FALSE
+		return REACH_FAILED
 	// direct cache - check if we can access something using if dc[atom]
 	var/list/dc = DirectAccessCache()
 	// optimization - a lot of the time we're clicking on ourselves/things on ourselves
 	if(dc[target])
-		return TRUE
+		return REACH_PHYSICAL
 	// turf adjacency enabled? stores if we can try to path to our turf
 	var/turf/tadj
 	// loc checking
@@ -105,7 +109,7 @@
 					continue
 				if(dc[l])
 					// found
-					return TRUE
+					return REACH_PHYSICAL
 				if(isturf(l) && !th)
 					// is turf; turf adjacency enabled
 					th = l
@@ -117,7 +121,7 @@
 			++i
 	if(!(tadj && th))
 		// didn't hit both, fail
-		return FALSE
+		return REACH_FAILED
 	// at this point, we're on a turf
 	if(range == 1)
 		// most common case: reach directly aronud yourself
@@ -136,18 +140,18 @@
 			if(n.TurfAdjacency(th))
 				// succeeded
 				qdel(D)
-				return TRUE
+				return REACH_PHYSICAL
 			// dumb directional pathfinding both for cheapness and for practical purposes
 			// so you can't snake-arms round a row of windows or something crazy
 			n = get_step(D, get_dir(D, th))
 			if(!D.Move(n))
 				// failed
 				qdel(D)
-				return FALSE
+				return REACH_FAILED
 			// keep going
 		// at this point, we failed
 		qdel(D)
-		return FALSE
+		return REACH_FAILED
 
 /**
  * quick and dirty reachability check
@@ -160,18 +164,18 @@
 	if(isturf(curr))
 		source = get_turf(src)
 		if(!source)
-			return FALSE
+			return REACH_FAILED
 		return curr.TurfAdjacency(source)
 	do
 		if(curr == src)
-			return TRUE
+			return REACH_PHYSICAL
 		if(!curr)
-			return FALSE
+			return REACH_FAILED
 		curr = curr.loc
 	while(!isturf(curr))
 	source = get_turf(src)
 	if(!source)
-		return FALSE
+		return REACH_FAILED
 	return curr.TurfAdjacency(source)
 
 /atom/movable/reachability_delegate

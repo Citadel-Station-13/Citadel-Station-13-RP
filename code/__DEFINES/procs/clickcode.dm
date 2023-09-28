@@ -40,3 +40,11 @@
 //! Reachability Depths - checked from level of DirectAccess and turf adjacency.
 /// default reachability depth
 #define DEFAULT_REACHABILITY_DEPTH			3		// enough to reach into pill bottles in box in backpack
+
+//! Reachability
+/// can't reach - this *must* be a fals-y value.
+#define REACH_FAILED 0
+/// can physically reach normally
+#define REACH_PHYSICAL 1
+/// can reach with something like telekinesis
+#define REACH_INDIRECT 2

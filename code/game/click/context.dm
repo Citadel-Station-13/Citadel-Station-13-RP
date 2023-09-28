@@ -16,6 +16,8 @@
 /**
  * act on a context option
  *
+ * things in this should re-check validity / sanity!
+ *
  * @return TRUE / FALSE; TRUE if handled.
  */
 /atom/proc/context_act(datum/event_args/actor/e_args, key)
@@ -27,4 +29,8 @@
 	// admin proccall support
 	WRAP_MOB_TO_ACTOR_EVENT_ARGS(e_args)
 	// todo: dynamically rebuild menu based on distance?
+	var/client/receiving = e_args.initiator.client
+	if(isnull(receiving))
+		// well what the hell are we doing here?
+		// automated functions should be using context_query and context_act directly
 	#warn impl

@@ -417,8 +417,14 @@
 
 /obj/context_act(datum/event_args/actor/e_args, key)
 	if(key == "obj_cell_slot")
+		var/reachability = e_args.performer.Reachability(src)
+		if(!reachability)
+			return TRUE
+		if(!CHECK_MOBILITY(e_args.performer, MOBILITY_CAN_USE))
+			e_args.initiator.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+			return TRUE
 		if(isnull(obj_cell_slot.cell))
-			e_args.performer.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
+			e_args.initiator.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
 			return TRUE
 		if(!obj_cell_slot.interaction_active(e_args.performer))
 			return TRUE
@@ -430,7 +436,11 @@
 			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)
 		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
+		var/obj/item/cell/removed = obj_cell_slot.remove_cell(src)
+		if(reachability == REACH_PHYSICAL)
+			e_args.performer.put_in_hands_or_drop()
+		else
+			removed.forceMove(drop_location())
 		return TRUE
 	return ..()
 
