@@ -13,10 +13,15 @@
 	var/receive_inducer = FALSE
 	/// allow EMPs to hit?
 	var/receive_emp = FALSE
+	/// allow explosions to hit cell?
+	// todo: currently unused
+	var/recieve_explosion = FALSE
 	/// allow quick removal by clicking with hand?
 	var/remove_yank_offhand = FALSE
 	/// allow context menu removal?
 	var/remove_yank_context = FALSE
+	/// allow quick removal by using in hand?
+	var/remove_yank_inhand = FALSE
 	/// no-tool time for removal, if any
 	var/remove_yank_time = 0
 	/// tool behavior for removal, if any
@@ -24,9 +29,6 @@
 	/// tool time for removal, if any
 	var/remove_tool_time = 0
 	#warn hook above
-	/// allow explosions to hit cell?
-	// todo: currently unused
-	var/recieve_explosion = FALSE
 	/// legacy
 	// todo: kill this
 	var/legacy_use_device_cells = FALSE
@@ -51,6 +53,9 @@
 		cell.forceMove(parent)
 	parent.object_cell_slot_inserted(cell, src)
 
+/datum/object_system/cell_slot/proc/interaction_active(mob/user)
+	return parent.object_cell_slot_interactable(user, src))
+
 //? Hooks
 
 /**
@@ -65,13 +70,31 @@
 /obj/proc/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot)
 	return
 
+/**
+ * hook called to check if cell slot removal behavior is active
+ */
+/obj/proc/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+	return TRUE
+
 //? Lazy wrappers for init
 
-/obj/proc/init_cell_slot_easy_tool(offhand_removal = TRUE)
-	ASSERT(isnull(object_cell_slot))
-	object_cell_slot = new(src)
+/obj/proc/init_cell_slot(initial_cell_path)
+	RETURN_TYPE(/datum/object_system/cell_slot)
+	ASSERT(isnull(obj_cell_slot))
+	obj_cell_slot = new(src)
+	if(initial_cell_path)
+		obj_cell_slot.cell = new initial_cell_path
+	return obj_cell_slot
+
+/obj/proc/init_cell_slot_easy_tool(initial_cell_path, offhand_removal = TRUE, inhand_removal = FALSE)
+	RETURN_TYPE(/datum/object_system/cell_slot)
+	if(isnull(init_cell_slot(initial_cell_path)))
+		return
 	if(offhand_removal)
-		object_cell_slot.remove_yank_offhand = TRUE
-	object_cell_slot.remove_yank_context = TRUE
-	object_cell_slot.remove_yank_time = 0
-	object_cell_slot.legacy_use_device_cells = TRUE
+		obj_cell_slot.remove_yank_offhand = TRUE
+	if(inhand_removal)
+		obj_cell_slot.remove_yank_inhand = FALSE
+	obj_cell_slot.remove_yank_context = TRUE
+	obj_cell_slot.remove_yank_time = 0
+	obj_cell_slot.legacy_use_device_cells = TRUE
+	return obj_cell_slot

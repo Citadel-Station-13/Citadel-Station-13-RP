@@ -61,7 +61,7 @@
 
 	//? Systems - naming convention is 'object_[system]'
 	/// cell slot system
-	var/datum/object_system/cell_slot/object_cell_slot
+	var/datum/object_system/cell_slot/obj_cell_slot
 	#warn hook above
 
 	//? misc / legacy
@@ -110,7 +110,7 @@
 		unregister_dangerous_to_step()
 	SStgui.close_uis(src)
 	SSnanoui.close_uis(src)
-	QDEL_NULL(object_cell_slot)
+	QDEL_NULL(obj_cell_slot)
 	return ..()
 
 /obj/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
@@ -257,8 +257,8 @@
 	. = ..()
 	if(.)
 		return
-	if(object_cell_slot?.primary && !isnull(object_cell_slot.cell))
-		return object_cell_slot.cell
+	if(obj_cell_slot?.primary && !isnull(obj_cell_slot.cell))
+		return obj_cell_slot.cell
 
 #warn inducer
 
