@@ -132,8 +132,16 @@
 /obj/structure/aquarium/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	if(!allow_unanchor)
 		return ..()
-	if(use_wrench(I, user, delay = 4 SECONDS))
-		user.visible_message(SPAN_NOTICE("[user] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."), range = MESSAGE_RANGE_CONSTRUCTION)
+	if(use_wrench(I, e_args, delay = 4 SECONDS))
+		log_construction(e_args.performer, src, "fastened")
+		set_anchored(!anchor)
+		e_args.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_NOTICE("[e_args.performer] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."),
+			audbile = SPAN_WARNING("You hear bolts being [anchored? "fastened" : "unfastened"]"),
+			otherwise_self = SPAN_NOTICE("You [anchored? "fasten" : "unfasten"] [src]."),
+		)
 		return TRUE
 	return ..()
 

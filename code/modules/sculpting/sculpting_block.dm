@@ -139,7 +139,7 @@
 		visible_self = SPAN_NOTICE("You start [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
 		audible_hard = SPAN_WARNING("You hear bolts being [anchored? "unfastened" : "fastened"]."),
 	)
-	log_construction(user, src, "started [anchored? "unanchoring" : "anchoring"]")
+	log_construction(ue_argsser, src, "started [anchored? "unanchoring" : "anchoring"]")
 	if(!use_wrench(I, user, flags, 3 SECONDS))
 		return TRUE
 	user.visible_action_feedback(
@@ -149,7 +149,7 @@
 		visible_self = SPAN_NOTICE("You finish [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
 		audible_hard = SPAN_WARNING("You hear bolts [anchored? "falling out" : "clicking into place"]."),
 	)
-	log_construction(user, src, "[anchored? "unanchored" : "anchored"]")
+	log_construction(e_args, src, "[anchored? "unanchored" : "anchored"]")
 	set_anchored(!anchored)
 	return TRUE
 
@@ -164,7 +164,7 @@
 		visible_self = SPAN_NOTICE("You start slicing [src] apart."),
 		audible_hard = SPAN_WARNING("You hear the sound of a welding torch being used on something metallic."),
 	)
-	log_construction(user, src, "started deconstructing")
+	log_construction(e_args, src, "started deconstructing")
 	if(!use_welder(I, user, flags, 7 SECONDS, 3))
 		return TRUE
 	user.visible_action_feedback(
@@ -174,7 +174,7 @@
 		visible_self = SPAN_NOTICE("You slice [src] apart."),
 		audible_hard = SPAN_WARNING("You hear the sound of a welding torch moving back into open air, and a few pieces of metal falling apart."),
 	)
-	log_construction(user, src, "deconstructed")
+	log_construction(e_args, src, "deconstructed")
 	set_anchored(!anchored)
 	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 	return TRUE

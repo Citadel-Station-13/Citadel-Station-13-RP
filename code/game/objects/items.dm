@@ -769,7 +769,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	// SHOULD_CALL_PARENT(TRUE)
 	// attack_self isn't really part of the item attack chain.
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
-	if(on_attack_self(user))
+	if(on_attack_self(new /datum/event_args/actor(user)))
 		return TRUE
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
 		interact(user)
@@ -783,7 +783,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  *
  * @return TRUE to signal to overrides to stop the chain and do nothing.
  */
-/obj/item/proc/on_attack_self(mob/user)
+/obj/item/proc/on_attack_self(datum/event_args/actor/e_args)
 	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_inhand && obj_cell_slot.interaction_active(src))
 		user.visible_action_feedback(
 			target = src,
@@ -792,7 +792,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			audible_hard = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
 			visible_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)
-		log_construction(user, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 		user.put_in_hands_or_drop(obj_cell_slot.remove_cell(user))
 		return TRUE
 	return FALSE

@@ -257,7 +257,7 @@
 			audible_hard = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
 			visible_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)
-		log_construction(e_args.performer, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
 		return TRUE
 
@@ -429,7 +429,7 @@
 			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
 			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)
-		log_construction(e_args.performer, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
 		return TRUE
 	return ..()
@@ -566,21 +566,21 @@
 	if(isnull(obj_cell_slot.cell))
 		e_args.chat_feedback(SPAN_WARNING("[src] has no cell in it."))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
-	log_construction(e_args.performer, src, "removing cell")
+	log_construction(e_args, src, "removing cell")
 	e_args.visible_feedback(
 		target = src,
 		range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_NOTICE("[user] starts removing the cell from [src]."),
+		visible = SPAN_NOTICE("[e_args.performer] starts removing the cell from [src]."),
 		audible = SPAN_NOTICE("You hear fasteners being undone."),
 		otherwise_self = SPAN_NOTICE("You start removing the cell from [src]."),
 	)
 	if(!use_tool(function, I, e_args, flags, obj_cell_slot.remove_tool_time, 1))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
-	log_construction(e_args.performer, src, "removed cell")
+	log_construction(e_args, src, "removed cell")
 	e_args.visible_feedback(
 		target = src,
 		range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_NOTICE("[user] removes the cell from [src]."),
+		visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
 		audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
 		otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
 	)

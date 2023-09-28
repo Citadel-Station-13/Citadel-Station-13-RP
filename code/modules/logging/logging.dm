@@ -25,8 +25,8 @@
  *
  * todo: log initiator
  */
-/proc/log_construction(mob/user, atom/target, message)
-	log_game("CONSTRUCTION: [key_name(user)] [COORD(user)] -> [target] [COORD(target)]: [message]")
+/proc/log_construction(datum/event_args/actor/e_args, atom/target, message)
+	log_game("CONSTRUCTION: [key_name(e_args.performer)] [COORD(e_args.performer)] -> [target] [COORD(target)]: [message]")
 
 /**
  * log click - context menu

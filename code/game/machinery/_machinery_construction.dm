@@ -20,27 +20,27 @@
 	return ..()
 
 /obj/machinery/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
-	if(INTERACTING_WITH_FOR(user, src, INTERACTING_FOR_CONSTRUCTION))
+	if(INTERACTING_WITH_FOR(e_args.performer, src, INTERACTING_FOR_CONSTRUCTION))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
-	START_INTERACTING_WITH(user, src, INTERACTING_FOR_CONSTRUCTION)
+	START_INTERACTING_WITH(e_args.performer, src, INTERACTING_FOR_CONSTRUCTION)
 	if(function == tool_deconstruct && !isnull(default_deconstruct))
-		if(default_deconstruction_dismantle(I, user, flags = flags))
+		if(default_deconstruction_dismantle(I, e_args, flags = flags))
 			. = CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 	else if(function == tool_unanchor && !isnull(default_unanchor))
-		if(default_deconstruction_anchor(I, user, flags = flags))
+		if(default_deconstruction_anchor(I, e_args, flags = flags))
 			. = CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 	else if(function == tool_panel && !isnull(default_panel))
-		if(default_deconstruction_panel(I, user, flags = flags))
+		if(default_deconstruction_panel(I, e_args, flags = flags))
 			. = CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
-	STOP_INTERACTING_WITH(user, src,INTERACTING_FOR_CONSTRUCTION)
+	STOP_INTERACTING_WITH(e_args.performer, src,INTERACTING_FOR_CONSTRUCTION)
 	if(isnull(.))
 		return ..()
 
 // todo: better verb/message support
-/obj/machinery/proc/default_deconstruction_panel(obj/item/tool, mob/user, speed_mult = 1, flags)
+/obj/machinery/proc/default_deconstruction_panel(obj/item/tool, datum/event_args/actor/clickchain/e_args speed_mult = 1, flags)
 	var/needed_time = default_panel * speed_mult * (isnull(tool)? 1 : tool.tool_speed)
 	if(needed_time)
 		user.visible_action_feedback(
@@ -61,7 +61,7 @@
 	return TRUE
 
 // todo: better verb/message support
-/obj/machinery/proc/default_deconstruction_dismantle(obj/item/tool, mob/user, speed_mult = 1, flags)
+/obj/machinery/proc/default_deconstruction_dismantle(obj/item/tool, datum/event_args/actor/clickchain/e_args, speed_mult = 1, flags)
 	var/needed_time = default_deconstruct * speed_mult * (isnull(tool)? 1 : tool.tool_speed)
 	if(needed_time)
 		user.visible_action_feedback(
@@ -82,7 +82,7 @@
 	return TRUE
 
 // todo: better verb/message support
-/obj/machinery/proc/default_deconstruction_anchor(obj/item/tool, mob/user, speed_mult = 1, flags)
+/obj/machinery/proc/default_deconstruction_anchor(obj/item/tool, datum/event_args/actor/clickchain/e_args, speed_mult = 1, flags)
 	var/needed_time = default_unanchor * speed_mult * (isnull(tool)? 1 : tool.tool_speed)
 	if(needed_time)
 		user.visible_action_feedback(
