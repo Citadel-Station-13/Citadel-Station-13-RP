@@ -36295,7 +36295,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics/mechbay)
 "uJx" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "uJD" = (

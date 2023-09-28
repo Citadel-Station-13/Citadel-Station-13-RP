@@ -658,8 +658,8 @@
 	drop_get_turf = FALSE
 
 /obj/random/mre/dessert/item_to_spawn()
-	return pick(/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy/proteinbar,
+	return pick(/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
 				/obj/item/reagent_containers/food/snacks/donut/normal,
 				/obj/item/reagent_containers/food/snacks/donut/cherryjelly,
 				/obj/item/reagent_containers/food/snacks/chocolatebar,
@@ -670,7 +670,7 @@
 	desc = "This is a random vegan dessert for MREs."
 
 /obj/random/mre/dessert/vegan/item_to_spawn()
-	return pick(/obj/item/reagent_containers/food/snacks/candy,
+	return pick(/obj/item/reagent_containers/food/snacks/wrapped/candy,
 				/obj/item/reagent_containers/food/snacks/chocolatebar,
 				/obj/item/reagent_containers/food/snacks/donut/cherryjelly,
 				/obj/item/reagent_containers/food/snacks/plumphelmetbiscuit)

@@ -17,6 +17,44 @@
 	sheet_plural_name = "pile" //Just a bigger pile
 	radiation_resistance = 1
 
+/datum/material/snow/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(
+		name = "snowball",
+		product = /obj/item/material/snow/snowball,
+		cost = 1,
+	)
+	. += create_stack_recipe_datum(
+		name = "snow brick",
+		product = /obj/item/stack/material/snowbrick,
+		cost = 2,
+	)
+	. += create_stack_recipe_datum(
+		name = "snowman",
+		product = /obj/structure/snowman,
+		cost = 2,
+	)
+	. += create_stack_recipe_datum(
+		name = "snow robot",
+		product = /obj/structure/snowman/borg,
+		cost = 2,
+	)
+	. += create_stack_recipe_datum(
+		name = "snow spider",
+		product = /obj/structure/snowman/spider,
+		cost = 3,
+	)
+	. += create_stack_recipe_datum(
+		name = "snowman head",
+		product = /obj/item/clothing/head/snowman,
+		cost = 5,
+	)
+	. += create_stack_recipe_datum(
+		name = "snowman suit",
+		product = /obj/item/clothing/suit/snowman,
+		cost = 10,
+	)
+
 /datum/material/snowbrick //only slightly stronger than snow, used to make igloos mostly
 	id = "snow_packed"
 	name = "packed snow"

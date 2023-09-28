@@ -1,8 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ac" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
-	},
+/obj/machinery/door/airlock/multi_tile/glass,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "ae" = (
@@ -571,7 +569,6 @@
 "bO" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/holding)
@@ -1046,7 +1043,6 @@
 "dj" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/security)
@@ -3637,7 +3633,6 @@
 "lR" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/control)
@@ -3924,7 +3919,6 @@
 /obj/spawner/window/low_wall/reinforced/full,
 /obj/structure/fans/tiny,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/shuttle/escape)
@@ -4685,7 +4679,6 @@
 /area/centcom/control)
 "pg" = (
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/control)
@@ -5163,6 +5156,10 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"qM" = (
+/obj/structure/sign/double/barsign,
+/turf/unsimulated/wall,
+/area/centcom/restaurant)
 "qQ" = (
 /obj/item/stamp/centcomm,
 /obj/item/pen,
@@ -5317,7 +5314,6 @@
 "rp" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/restaurant)
@@ -6665,7 +6661,6 @@
 "vN" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/terminal)
@@ -7240,7 +7235,6 @@
 "xC" = (
 /obj/structure/table/standard,
 /obj/structure/reagent_dispensers/acid{
-	density = 0;
 	pixel_y = -30
 	},
 /obj/item/storage/toolbox/mechanical{
@@ -7406,7 +7400,7 @@
 	},
 /area/centcom/control)
 "xZ" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "ya" = (
@@ -7789,7 +7783,6 @@
 /area/centcom/command)
 "zw" = (
 /obj/machinery/door/window{
-	dir = 2;
 	name = "AI Core Door";
 	req_access = list(109)
 	},
@@ -8374,7 +8367,6 @@
 "Bj" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/medical)
@@ -8566,7 +8558,6 @@
 "BV" = (
 /obj/machinery/mech_recharger,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/control)
@@ -9109,7 +9100,6 @@
 "DZ" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/bar)
@@ -9233,7 +9223,6 @@
 /area/centcom/command)
 "Et" = (
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/security)
@@ -9338,12 +9327,6 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
-"EK" = (
-/obj/structure/sign/double/barsign{
-	dir = 1
-	},
-/turf/unsimulated/floor/wood,
-/area/centcom/restaurant)
 "EL" = (
 /obj/machinery/telecomms/processor/preset_cent,
 /turf/unsimulated/floor/steel,
@@ -10008,7 +9991,6 @@
 	},
 /obj/structure/window/reinforced/full,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/specops)
@@ -10145,7 +10127,6 @@
 "HN" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/command)
@@ -10232,7 +10213,6 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/evac)
@@ -11755,7 +11735,6 @@
 "MH" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/main_hall)
@@ -12618,7 +12597,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "PD" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -13266,7 +13245,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "RG" = (
@@ -13394,9 +13373,7 @@
 	pixel_y = 9
 	},
 /obj/item/pen,
-/obj/machinery/door/window/brigdoor{
-	dir = 2
-	},
+/obj/machinery/door/window/brigdoor,
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
@@ -13640,7 +13617,6 @@
 "SW" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/centcom/evac)
@@ -14276,7 +14252,6 @@
 "Vu" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/tdome/tdomeobserve)
@@ -14591,7 +14566,6 @@
 "WD" = (
 /obj/spawner/window/low_wall/reinforced/full,
 /turf/unsimulated/floor{
-	icon_state = "plating";
 	name = "plating"
 	},
 /area/tdome/tdomeadmin)
@@ -14973,7 +14947,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "XZ" = (
@@ -41811,8 +41785,8 @@ Dr
 Dr
 Dr
 Dr
-Sc
-EK
+qM
+mh
 mh
 Mt
 Hf

@@ -57,6 +57,28 @@ export const round = (value, precision) => {
 };
 
 /**
+ * Return closest higher multiple of 'multiple' from value
+ * @param {number} value
+ * @param {number} multiple
+ * @return {number}
+ */
+export const ceiling = (value: number, multiple: number): number => {
+  let mult = value / multiple;
+  return Math.ceil(mult) * multiple;
+};
+
+/**
+ * Return closest lower multiple of 'multiple' from value
+ * @param {number} value
+ * @param {number} multiple
+ * @return {number}
+ */
+export const floor = (value: number, multiple: number): number => {
+  let mult = value / multiple;
+  return Math.floor(mult) * multiple;
+};
+
+/**
  * Returns a string representing a number in fixed point notation.
  */
 export const toFixed = (value, fractionDigits = 0) => {
