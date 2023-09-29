@@ -58,13 +58,12 @@
 			continue
 		if(isnull(data[3])? !actor.Adjacent(src) : get_dist(actor, src) > data[3])
 			continue
-		var/image/I = data[2]
+		var/image/I = data[2] || image()
 		// todo: why isn't radial menu doing this procesisng?
-		if(I)
-			I.maptext_x = -16
-			I.maptext_y = 32
-			I.maptext_width = 64
-			I.maptext = MAPTEXT_CENTER(data[1])
+		I.maptext_x = -16
+		I.maptext_y = 32
+		I.maptext_width = 64
+		I.maptext = MAPTEXT_CENTER(data[1])
 		transformed[data[1]] = I
 		inverse_lookup[data[1]] = key
 

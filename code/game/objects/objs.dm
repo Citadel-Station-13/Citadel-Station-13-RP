@@ -431,7 +431,8 @@
 /obj/context_query(datum/event_args/actor/e_args)
 	. = ..()
 	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(e_args.performer))
-		.["obj_cell_slot"] = ATOM_CONTEXT_TUPLE("remove cell", null, null, MOBILITY_CAN_USE)
+		var/image/rendered = image(obj_cell_slot.cell)
+		.["obj_cell_slot"] = ATOM_CONTEXT_TUPLE("remove cell", rendered, null, MOBILITY_CAN_USE)
 
 /obj/context_act(datum/event_args/actor/e_args, key)
 	if(key == "obj_cell_slot")
