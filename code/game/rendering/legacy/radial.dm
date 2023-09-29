@@ -320,8 +320,11 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	return answer
 
 /datum/radial_menu/context_menu
+	/// host atom
+	var/atom/host
 	// todo: this needs such a drastic fucking refactor along with the rest of this file i'm going to scream
 
 /datum/radial_menu/context_menu/Destroy()
-	LAZYREMOVE(anchor.context_menus, current_user)
+	LAZYREMOVE(host.context_menus, current_user)
+	host = null
 	return ..()

@@ -74,6 +74,7 @@
 	LAZYSET(context_menus, receiving, menu)
 
 	menu.radius = 32
+	menu.host = src
 	menu.anchor = src
 	menu.check_screen_border(receiving.mob)
 	menu.set_choices(transformed, FALSE)
@@ -90,3 +91,7 @@
 
 	var/key = inverse_lookup[chosen_name]
 	context_act(e_args, key)
+
+/atom/proc/context_close()
+	for(var/client/C as anything in context_menus)
+		qdel(context_menus[C])
