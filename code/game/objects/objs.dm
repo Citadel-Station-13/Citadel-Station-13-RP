@@ -456,7 +456,7 @@
 		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 		var/obj/item/cell/removed = obj_cell_slot.remove_cell(src)
 		if(reachability == REACH_PHYSICAL)
-			e_args.performer.put_in_hands_or_drop()
+			e_args.performer.put_in_hands_or_drop(removed)
 		else
 			removed.forceMove(drop_location())
 		return TRUE

@@ -86,11 +86,6 @@
 			opened = FALSE
 			update_icon()
 			return
-	if(cantbeused(user))
-		return
-
-	if(recharge(W, user))
-		return
 
 	return ..()
 
