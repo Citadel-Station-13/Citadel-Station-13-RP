@@ -2721,7 +2721,7 @@
 	id = "bananahonk"
 	description = "A drink from Clown Heaven."
 	taste_description = "bananas and sugar"
-	nutriment_factor = 1
+	nutrition = 1
 	color = "#FFFF91"
 
 	glass_name = "Banana Honk"
@@ -3201,7 +3201,7 @@
 	description = "A drink from Mime Heaven."
 	taste_description = "a pencil eraser"
 	taste_mult = 1.2
-	nutriment_factor = 1
+	nutrition = 1
 	color = "#FFFFFF"
 
 	glass_name = "Silencer"
