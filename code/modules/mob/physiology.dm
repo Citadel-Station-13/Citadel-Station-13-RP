@@ -228,7 +228,7 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 		for(var/datum/physiology_modifier/modifier as anything in physiology_modifiers)
 			assembled["[modifier.name] (#[++i])"] = modifier
 		var/picked = input(usr, "Which modifier to remove? Please do not do this unless you know what you are doing.", "Remove Physiology Modifier") as null|anything in assembled
-		var/datum/physiology_modifer/removing = assembled[picked]
+		var/datum/physiology_modifier/removing = assembled[picked]
 		if(!(removing in physiology_modifiers))
 			return TRUE
 		log_admin("[key_name(usr)] --> [key_name(src)] - removed physiology modifier [json_encode(removing.serialize())]")

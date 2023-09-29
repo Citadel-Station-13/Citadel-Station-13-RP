@@ -1,5 +1,8 @@
 
 interface UIDynamicInputContext {
+  title: string;
+  message: string;
+  timeout: number;
   // key to entry data
   query: Record<string, UIDynamicInputEntry>;
 }
