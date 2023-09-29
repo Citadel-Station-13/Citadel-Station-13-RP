@@ -292,7 +292,17 @@
 
 /mob/living/proc/update_carry()
 	var/slowdown = max(carry_weight_to_slowdown(cached_carry_weight), carry_encumbrance_to_slowdown(cached_carry_encumbrance))
-	#warn throw alert
+	switch(round(slowdown * 100))
+		if(0 to 25)
+			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/minor)
+		if(26 to 50)
+			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/moderate)
+		if(51 to 150)
+			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/severe)
+		if(151 to INFINITY)
+			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/extreme)
+		else
+			clear_alert("encumbered")
 	if(slowdown)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_inventory_carry, multiplicative_slowdown = slowdown)
 	else
