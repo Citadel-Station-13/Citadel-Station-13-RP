@@ -197,7 +197,7 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 		// todo: this should be able to be done globally via admin panel and then added to mobs
 
 		var/datum/tgui_dynamic_query/query = new
-		query.text("name", "Name", "Name your modifier.", 64, FALSE, "Custom Modifier")
+		query.string("name", "Name", "Name your modifier.", 64, FALSE, "Custom Modifier")
 		query.number("carry_strength_add", "Carry Strength - Add", "Modify the person's base carry strength", default = 0)
 		query.number("carry_factor_mult", "Carry Factor - Multiply", "Multiply the person's divisor for slowdown when carrying over their limit.", default = 1)
 

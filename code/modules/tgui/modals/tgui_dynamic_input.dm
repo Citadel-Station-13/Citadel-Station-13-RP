@@ -9,7 +9,7 @@
 	/// options list
 	var/list/options
 
-/datum/tgui_dynamic_query/proc/text(key, name, desc, max_length = 512, multi_line = FALSE, default)
+/datum/tgui_dynamic_query/proc/string(key, name, desc, max_length = 512, multi_line = FALSE, default)
 	RETURN_TYPE(/datum/tgui_dynamic_query)
 	options[key] = list(
 		"name" = name,
@@ -42,7 +42,7 @@
 	)
 	return src
 
-/datum/tgui_dynamic_query/proc/pick(key, name, desc, list/choices = list(), default)
+/datum/tgui_dynamic_query/proc/pick_one(key, name, desc, list/choices = list(), default)
 	RETURN_TYPE(/datum/tgui_dynamic_query)
 	options[key] = list(
 		"name" = name,
