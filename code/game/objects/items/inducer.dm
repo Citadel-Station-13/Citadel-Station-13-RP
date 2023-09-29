@@ -167,7 +167,7 @@
 	..()
 	cut_overlays()
 	if(opened)
-		if(!isnull(obj_cell_slot.cell))
+		if(isnull(obj_cell_slot.cell))
 			add_overlay("inducer-nobat")
 		else
 			add_overlay("inducer-bat")

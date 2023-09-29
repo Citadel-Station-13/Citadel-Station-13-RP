@@ -255,7 +255,7 @@
 		user.visible_action_feedback(
 			target = src,
 			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[e_args.performer] inserts [I] into [src]."),
+			visible_hard = SPAN_NOTICE("[user] inserts [I] into [src]."),
 			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
 			visible_self = SPAN_NOTICE("You insert [I] into [src]."),
 		)

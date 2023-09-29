@@ -67,6 +67,7 @@
 	LAZYSET(context_menus, receiving, menu)
 
 	menu.radius = 16
+	menu.anchor = src
 	menu.check_screen_border(receiving.mob)
 	menu.set_choices(transformed, FALSE)
 	menu.show_to(receiving.mob)
