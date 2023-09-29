@@ -31,6 +31,8 @@
 	//! end
 	var/hard_visible = visible_hard || visible_soft
 	var/hard_audible = audible_hard || audible_soft
+	visible_self = visible_self || otherwise_self
+	visible_them = visible_them || otherwise_them
 	// todo: all of this needs rewritten oh my god
 	for(var/atom/movable/AM as anything in viewing)
 		if(get_dist(AM, src) <= hard_range)

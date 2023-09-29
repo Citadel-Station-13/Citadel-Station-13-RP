@@ -245,7 +245,7 @@
 
 //? Attacks
 
-/obj/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+/obj/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(istype(I, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))

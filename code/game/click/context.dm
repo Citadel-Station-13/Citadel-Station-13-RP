@@ -60,10 +60,11 @@
 			continue
 		var/image/I = data[2]
 		// todo: why isn't radial menu doing this procesisng?
-		I.maptext_x = -16
-		I.maptext_y = 32
-		I.maptext_width = 64
-		I.maptext = MAPTEXT_CENTER(data[1])
+		if(I)
+			I.maptext_x = -16
+			I.maptext_y = 32
+			I.maptext_width = 64
+			I.maptext = MAPTEXT_CENTER(data[1])
 		transformed[data[1]] = I
 		inverse_lookup[data[1]] = key
 
@@ -72,7 +73,7 @@
 	GLOB.radial_menus[id] = menu
 	LAZYSET(context_menus, receiving, menu)
 
-	menu.radius = 16
+	menu.radius = 32
 	menu.anchor = src
 	menu.check_screen_border(receiving.mob)
 	menu.set_choices(transformed, FALSE)
