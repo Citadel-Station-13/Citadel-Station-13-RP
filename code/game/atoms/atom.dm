@@ -438,14 +438,21 @@
 		if(reagents.reagents_holder_flags & TRANSPARENT)
 			. += "It contains:"
 			if(length(reagents.reagent_list))
+				var/has_alcohol = FALSE
 				if(user.can_see_reagents()) //Show each individual reagent
 					for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
+						if(!has_alcohol && istype(current_reagent,/datum/reagent/ethanol))
+							has_alcohol = TRUE
 						. += "&bull; [round(current_reagent.volume, 0.01)] units of [current_reagent.name]"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
+						if(!has_alcohol && istype(current_reagent,/datum/reagent/ethanol))
+							has_alcohol = TRUE
 						total_volume += current_reagent.volume
 					. += "[total_volume] units of various reagents"
+				if(has_alcohol)
+					. += "It smells of alcohol."
 			else
 				. += "Nothing."
 		else if(reagents.reagents_holder_flags & AMOUNT_VISIBLE)
