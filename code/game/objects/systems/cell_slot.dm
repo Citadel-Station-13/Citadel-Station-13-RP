@@ -27,7 +27,7 @@
 	var/remove_tool_behavior = null
 	/// tool time for removal, if any
 	var/remove_tool_time = 0
-	/// removal is discrete or loud
+	/// removal / insertion is discrete or loud
 	var/remove_is_discrete = TRUE
 	/// legacy
 	// todo: kill this
@@ -40,9 +40,9 @@
 	if(isnull(cell))
 		return
 	. = cell
-	cell = null
 	if(cell.loc != new_loc)
 		cell.forceMove(new_loc)
+	cell = null
 	parent.object_cell_slot_removed(., src)
 
 /datum/object_system/cell_slot/proc/insert_cell(obj/item/cell/cell)

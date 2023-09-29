@@ -245,6 +245,24 @@
 
 //? Attacks
 
+/obj/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(istype(I, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))
+		if(!user.transfer_item_to_loc(I, src))
+			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		user.visible_action_feedback(
+			target = src,
+			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[e_args.performer] inserts [I] into [src]."),
+			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
+			visible_self = SPAN_NOTICE("You insert [I] into [src]."),
+		)
+		obj_cell_slot.insert_cell(I)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
+
 /obj/on_attack_hand(datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)

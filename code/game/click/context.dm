@@ -35,7 +35,7 @@
 		// well what the hell are we doing here?
 		// automated functions should be using context_query and context_act directly
 		return FALSE
-	if(context_menus[receiving])
+	if(context_menus?[receiving])
 		// close
 		log_click_context(e_args, src, "menu close")
 		qdel(context_menus[receiving])
@@ -46,21 +46,25 @@
 	// open
 	log_click_context(e_args, src, "menu open")
 	. = TRUE
-	blocking_context_menu(e_args)
+	blocking_context_menu(e_args, receiving, menu_options, e_args.performer)
 
-/atom/proc/blocking_context_menu(datum/event_args/actor/e_args)
+/atom/proc/blocking_context_menu(datum/event_args/actor/e_args, client/receiving, list/menu_options, mob/actor)
 	// for now, we just filter without auto-updating/rebuilding when things change
 	var/list/transformed = list()
 	var/list/inverse_lookup = list()
 	for(var/key as anything in menu_options)
 		var/list/data = menu_options[key]
+		if(!CHECK_ALL_MOBILITY(actor, data[4]))
+			continue
+		if(isnull(data[3])? !actor.Adjacent(src) : get_dist(actor, src) > data[3])
+			continue
 		transformed[data[1]] = data[2]
 		inverse_lookup[data[1]] = key
 
 	var/datum/radial_menu/context_menu/menu = new
 	var/id = "context_[REF(e_args.initiator)]"
 	GLOB.radial_menus[id] = menu
-	context_menus[receiving] = menu
+	LAZYSET(context_menus, receiving, menu)
 
 	menu.radius = 16
 	menu.check_screen_border(receiving.mob)

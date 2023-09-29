@@ -114,11 +114,12 @@
 			for(var/potential_function in possibilities)
 				var/list/potential_hints = possibilities[potential_function]
 				var/image/radial_render
-				var/radial_text = potential_function
+				var/radial_text
 				if(length(potential_hints) == 1)
 					radial_text = potential_hints[1]
-					radial_render = potential_hints[hint] || dyntool_image_neutral(potential_function)
+					radial_render = potential_hints[radial_text] || dyntool_image_neutral(potential_function)
 				else
+					radial_text = potential_function
 					radial_render = dyntool_image_neutral(potential_function)
 				radial_render.maptext = MAPTEXT_CENTER(radial_text)
 				radial_render.maptext_x = -16
