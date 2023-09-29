@@ -34,6 +34,7 @@
 		/datum/material_trait/glow{
 
 		},
+	)
 
 /datum/material/supermatter/generate_recipes()
 	. = ..()
