@@ -316,7 +316,8 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	return answer
 
 /datum/radial_menu/context_menu
+	// todo: this needs such a drastic fucking refactor along with the rest of this file i'm going to scream
 
-/datum/radial_menu/Destroy()
+/datum/radial_menu/context_menu/Destroy()
 	LAZYREMOVE(anchor.context_menus, current_user)
 	return ..()
