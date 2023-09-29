@@ -234,8 +234,12 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		choices += id
 		choices_values[id] = E
 		if(new_choices[E])
-			var/I = extract_image(new_choices[E])
+			var/image/I = extract_image(new_choices[E])
 			if(I)
+				//! perform fixup
+				I.plane = FLOAT_PLANE
+				I.layer = FLOAT_LAYER
+				//! end
 				choices_icons[id] = I
 	setup_menu(use_tooltips)
 
