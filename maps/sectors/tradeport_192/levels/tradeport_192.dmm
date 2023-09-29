@@ -1543,7 +1543,7 @@
 /area/tradeport)
 "fz" = (
 /obj/structure/table/glass,
-/obj/item/reagent_containers/food/snacks/chips,
+/obj/item/reagent_containers/food/snacks/bagged/chips,
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 8
 	},
