@@ -16,18 +16,25 @@ SUBSYSTEM_DEF(television)
 	var/list/channels = list()
 	//all_tvs will be updated by TVs and will be paired with the channel they are in.
 	var/list/all_tvs = list()
+
 	//current show or ad played in channel
 	var/list/channel_current_shows = list()
 	//last show played in channel
 	var/list/channel_previous_shows = list()
 	//last ad played in channel
 	var/list/channel_previous_ads = list()
+
 	//which CHANSTATE the channel is in
 	var/list/channel_current_state = list()
 	//stores an integer, which line the channel is on
 	var/list/channel_current_line = list()
 	//How many lines total the current show or AD is
 	var/list/channel_show_length = list()
+	//Name of the current show in channel
+	var/list/channel_show_name = list()
+	//Default language of the current show in channel
+	var/list/channel_default_language = list()
+
 	//all possible shows for the channel
 	var/list/possible_shows = list()
 	//all possible ads for ANY channel
@@ -56,14 +63,12 @@ SUBSYSTEM_DEF(television)
 				channel_current_state[channel] = CHANSTATE_SHOW1
 
 			if (CHANSTATE_SHOW1)
-				//load show details, grab length, etc
-
-
+				prepare_show(channel)
 				channel_current_state[channel] = CHANSTATE_SHOW1AIR
 
 			if (CHANSTATE_SHOW1AIR, CHANSTATE_AD1AIR, CHANSTATE_AD2AIR)
 				var/current_line = channel_current_line[channel]// index of line to show
-				broadcastLine(current_line)
+				broadcastLine(channel_current_shows[channel][current_line], channel)
 				if (current_line == channel_show_length[channel])
 					var/state = channel_current_state[channel]
 					switch (state)
@@ -77,7 +82,7 @@ SUBSYSTEM_DEF(television)
 							reset_channel(channel)
 							channel_current_state[channel] = null
 				else
-					channel_current_state[channel] += 1
+					channel_current_line[channel] += 1
 
 			if (CHANSTATE_AD1, CHANSTATE_AD2)
 				//pick an ad, load the ad, grab length,
@@ -86,14 +91,20 @@ SUBSYSTEM_DEF(television)
 				do
 					new_ad = pick(possible_ads)
 				while (new_ad == channel_previous_ads[channel] && length(possible_ads) > 1)
-				//Tie new_ad to channel_current_show in some fashion either file link or custom decode
+				channel_current_shows[channel] = new_ad
+				prepare_show(channel)
+				switch(channel_current_state[channel])
+					if (CHANSTATE_AD1)
+						channel_current_state[channel] = CHANSTATE_AD1AIR
+					if (CHANSTATE_AD2)
+						channel_current_state[channel] = CHANSTATE_AD2AIR
 
 ///To deliver lines to TVs.
-/datum/controller/subsystem/television/proc/broadcastLine(line)
-	var/language = "shut up VSC"
+/datum/controller/subsystem/television/proc/broadcastLine(line, channel)
 	//loop through global_TVs and send to tv procs.
 	for (var/obj/machinery/computer/television/tv in all_tvs)
-		tv.receiveLines(line, language)
+		if (all_tvs[tv] == channel)
+			tv.receiveLines(line)
 
 /datum/controller/subsystem/television/proc/reset_channel(channel)
 	switch (channel_current_state[channel])
@@ -104,6 +115,31 @@ SUBSYSTEM_DEF(television)
 			channel_previous_ads[channel] = channel_current_shows[channel]
 			channel_current_shows[channel] = null
 	channel_current_line[channel] = 1
+
+/datum/controller/subsystem/television/proc/prepare_show(channel)
+	var/list/decoded_show = json_decode(channel_current_shows[channel])
+	var/default_language = ""
+	var/current_language = ""
+	for(var/name in decoded_show["name"])
+		channel_show_name[channel] = name
+	for(var/dlang in decoded_show["default_language"])
+		default_language = dlang
+	var/lines_total = 0
+	var/prepared_script_text = list()
+	for (var/list/line in decoded_show["lines"])
+		for (var/language in line["language"])
+			current_language = language
+		for (var/line_text in line["text"])
+			lines_total += 1
+			if (current_language != "")
+				prepared_script_text[lines_total] = current_language + "--" + line_text
+			else
+				prepared_script_text[lines_total] = default_language + "--" + line_text
+		current_language = ""
+	channel_show_length[channel] = lines_total
+	channel_current_shows[channel] = prepared_script_text
+
+
 
 ///For TV's to call on initialization.
 /datum/controller/subsystem/television/proc/getChannels()

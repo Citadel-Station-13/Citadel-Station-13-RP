@@ -11,11 +11,16 @@
 //NEED LOCAL CHANNEL VAR PULLED FROM SS. RETURN CURRENT CHANNEL TO SUBSYSTEM
 /obj/machinery/computer/television/Initialize(mapload)
 	. = ..()
+	var/channel = "strings/television/Nanotrasen_Public_Network/"
 	SStelevision.all_tvs += src
+	SStelevision.all_tvs[src] = channel
 
 /obj/machinery/computer/television/Destroy()
 	SStelevision.all_tvs -= src
 	return ..()
 
-/obj/machinery/computer/television/proc/receiveLines(line, language)
+/obj/machinery/computer/television/proc/receiveLines(line)
 	//magic code that plays runetext and talks in chat I guess
+	TO_WORLD(line)
+
+//lines = default_language + "--" + line_text
