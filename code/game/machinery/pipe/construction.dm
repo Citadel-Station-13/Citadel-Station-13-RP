@@ -175,11 +175,6 @@ Buildable meters
 	else
 		return ..()
 
-/obj/item/pipe/attackby(var/obj/item/W as obj, var/mob/user as mob)
-	if(W.is_wrench())
-		return wrench_act(W, user)
-	return ..()
-
 /obj/item/pipe/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	if(!isturf(loc))
 		return TRUE
