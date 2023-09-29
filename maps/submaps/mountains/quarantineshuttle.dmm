@@ -121,7 +121,7 @@
 "as" = (
 /obj/machinery/vending/snack{
 	contraband = null;
-	products = list(/obj/item/reagent_containers/food/snacks/candy=0,/obj/item/reagent_containers/food/drinks/dry_ramen=0,/obj/item/reagent_containers/food/snacks/chips=0,/obj/item/reagent_containers/food/snacks/sosjerky=0,/obj/item/reagent_containers/food/snacks/no_raisin=0,/obj/item/reagent_containers/food/snacks/spacetwinkie=0,/obj/item/reagent_containers/food/snacks/cheesiehonkers=0,/obj/item/reagent_containers/food/snacks/tastybread=0,/obj/item/reagent_containers/food/snacks/skrellsnacks=0)
+	products = list(/obj/item/reagent_containers/food/snacks/wrapped/candy=0,/obj/item/reagent_containers/food/drinks/dry_ramen=0,/obj/item/reagent_containers/food/snacks/bagged/chips=0,/obj/item/reagent_containers/food/snacks/bagged/sosjerky=0,/obj/item/reagent_containers/food/snacks/boxed/no_raisin=0,/obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie=0,/obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers=0,/obj/item/reagent_containers/food/snacks/tastybread=0,/obj/item/reagent_containers/food/snacks/wrapped/skrellsnacks=0)
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"

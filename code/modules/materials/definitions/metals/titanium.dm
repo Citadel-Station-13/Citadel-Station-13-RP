@@ -1,5 +1,5 @@
 /datum/material/plasteel/titanium
-	id = "titanium"
+	id = MAT_TITANIUM
 	name = MAT_TITANIUM
 	stack_type = /obj/item/stack/material/titanium
 	icon_base = 'icons/turf/walls/metal_wall.dmi'

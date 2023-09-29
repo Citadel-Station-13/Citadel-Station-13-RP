@@ -232,39 +232,39 @@
 	icon_state = "wood"
 	color = "#9c5930"
 
-	material_outer  = /datum/material/wood
+	material_outer  = /datum/material/wood_plank
 	material_reinf  = null
-	material_girder = /datum/material/wood
+	material_girder = /datum/material/wood_plank
 
 /turf/simulated/wall/wood/sifwood
 	color = "#0099cc"
 
-	material_outer  = /datum/material/wood/sif
+	material_outer  = /datum/material/wood_plank/sif
 	material_reinf  = null
-	material_girder = /datum/material/wood/sif
+	material_girder = /datum/material/wood_plank/sif
 
 /turf/simulated/wall/wood/hardwood
 	color = "#42291a"
 
-	material_outer  = /datum/material/wood/hardwood
+	material_outer  = /datum/material/wood_plank/hardwood
 	material_reinf  = null
-	material_girder = /datum/material/wood/hardwood
+	material_girder = /datum/material/wood_plank/hardwood
 
 /turf/simulated/wall/log
 	icon = 'icons/turf/walls/log.dmi'
 	color = "#9c5930"
 
-	material_outer  = /datum/material/wood/log
+	material_outer  = /datum/material/wood_log
 	material_reinf  = null
-	material_girder = /datum/material/wood
+	material_girder = /datum/material/wood_log
 
 /turf/simulated/wall/log_sif
 	icon = 'icons/turf/walls/log.dmi'
 	color = "#0099cc"
 
-	material_outer  = /datum/material/wood/log/sif
+	material_outer  = /datum/material/wood_log/sif
 	material_reinf  = null
-	material_girder = /datum/material/wood/sif
+	material_girder = /datum/material/wood_log/sif
 
 // TODO: Nuke. @Zandario
 // Shuttle Walls

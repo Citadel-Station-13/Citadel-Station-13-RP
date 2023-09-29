@@ -1633,7 +1633,7 @@
 			LAZYDISTINCTADD(., SLOT_FEET)
 
 //! Pixel Offsets
-/mob/living/carbon/human/get_centering_pixel_x_offset(dir, atom/aligning)
+/mob/living/carbon/human/get_centering_pixel_x_offset(dir)
 	. = ..()
 	// uh oh stinky
 	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))

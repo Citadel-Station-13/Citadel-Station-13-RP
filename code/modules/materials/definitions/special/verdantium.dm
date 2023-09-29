@@ -1,6 +1,6 @@
 /datum/material/verdantium
 	name = MAT_VERDANTIUM
-	id = "verdantium"
+	id = MAT_VERDANTIUM
 	stack_type = /obj/item/stack/material/verdantium
 	icon_base = 'icons/turf/walls/metal.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'

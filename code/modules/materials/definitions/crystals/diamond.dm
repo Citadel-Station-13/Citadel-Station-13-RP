@@ -1,5 +1,5 @@
 /datum/material/diamond
-	id = "diamond"
+	id = MAT_DIAMOND
 	name = "diamond"
 	stack_type = /obj/item/stack/material/diamond
 	cut_delay = 60
@@ -20,3 +20,10 @@
 	nullification = MATERIAL_RESISTANCE_LOW
 	relative_density = 0.8
 	relative_conductivity = 0
+
+/datum/material/diamond/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(category = "statues", name = "ai hologram statue", product = /obj/structure/statue/diamond/ai1, cost = 10, time = 2 SECONDS)
+	. += create_stack_recipe_datum(category = "statues", name = "ai core statue", product = /obj/structure/statue/diamond/ai2, cost = 10, time = 2 SECONDS)
+	. += create_stack_recipe_datum(category = "statues", name = "captain statue", product = /obj/structure/statue/diamond/captain, cost = 10, time = 2 SECONDS)
+	. += create_stack_recipe_datum(name = "diamond floor tiles", product = /obj/item/stack/tile/diamond, amount = 4)

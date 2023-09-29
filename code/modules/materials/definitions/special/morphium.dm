@@ -1,6 +1,6 @@
 /datum/material/morphium
 	name = MAT_MORPHIUM
-	id = "morphium"
+	id = MAT_MORPHIUM
 	stack_type = /obj/item/stack/material/morphium
 	icon_base = 'icons/turf/walls/metal.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'

@@ -57,3 +57,7 @@
 /datum/loadout_entry/mask/opaque
 	name = "Opaque Mask"
 	path = /obj/item/clothing/mask/gas/opaque
+
+/datum/loadout_entry/mask/opaque_nitrogen
+	name = "Opaque Mask - Oxygen Filter"
+	path = /obj/item/clothing/mask/gas/opaque_nitrogen

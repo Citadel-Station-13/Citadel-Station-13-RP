@@ -3,17 +3,19 @@
 
 /datum/category_item/catalogue/technology/ripley
 	name = "Exosuit - APLU"
-	desc = "The Autonomous Power Loader Unit, more commonly designated as the 'Ripley', \
-	is an exosuit that is often described as 'the workhorse of the exosuit world', \
-	due to being designed for industrial use. Featuring a rugged design, they are fairly \
-	resilient to the stresses of operation. As such, they are often used for various roles, \
-	such as mining, construction, heavy lifting, and cargo transportation."
+	desc = "The Armored Power Loader Unit, more commonly referred to as the 'Ripley', \
+	is a tried and tested exosuit model. Often described as the workhorse of the Frontier, \
+	the Ripley was originally designed for industrial use. The APLU is a second generation \
+	improvement of the original PLU. The APLU possesses a fully enclosed cockpit enabling it \
+	to work in vacuum. The APLU retains the PLU's rugged design and resilience, and is frequently \
+	employed in mining, construction, and cargo transport capacities. Coming in at just under 9'(2.7m) tall, \
+	the APLU cockpit is cramped, requiring its pilot to stand upright and move in conjunction with the exosuit."
 	value = CATALOGUER_REWARD_EASY
 
 
 /mob/living/simple_mob/mechanical/mecha/ripley
 	name = "\improper APLU ripley"
-	desc = "Autonomous Power Loader Unit. The workhorse of the exosuit world. This one has big drill."
+	desc = "Armored Power Loader Unit. The workhorse of the exosuit world. This one has big drill."
 	catalogue_data = list(/datum/category_item/catalogue/technology/ripley)
 	icon_state = "ripley"
 	wreckage = /obj/structure/loot_pile/mecha/ripley
@@ -112,4 +114,3 @@
 	has_repair_droid = TRUE		//But has repair drone
 	pilot_type = /mob/living/simple_mob/humanoid/possessed/merc/feral	//Possessed rig suit piloting a mech. Tremble in fear
 	movement_shake_radius = 5	//Actually tremble
-

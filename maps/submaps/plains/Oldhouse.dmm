@@ -143,8 +143,8 @@
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "G" = (
-/obj/item/reagent_containers/food/snacks/chips,
-/obj/item/reagent_containers/food/snacks/chips,
+/obj/item/reagent_containers/food/snacks/bagged/chips,
+/obj/item/reagent_containers/food/snacks/bagged/chips,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Oldhouse)
 "H" = (
@@ -203,8 +203,8 @@
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "Q" = (
-/obj/item/reagent_containers/food/snacks/cheesiehonkers,
-/obj/item/reagent_containers/food/snacks/cheesiehonkers,
+/obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers,
+/obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Oldhouse)
 "R" = (

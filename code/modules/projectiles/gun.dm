@@ -112,6 +112,10 @@
 	var/no_pin_required = 0
 	var/scrambled = 0
 
+	//Gun Malfunction variables
+	var/unstable = 0
+	var/destroyed = 0
+
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
 		toggle_flashlight()

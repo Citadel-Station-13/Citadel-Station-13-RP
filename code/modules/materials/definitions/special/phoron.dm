@@ -1,6 +1,5 @@
-
 /datum/material/phoron
-	id = "phoron"
+	id = MAT_PHORON
 	name = "phoron"
 	stack_type = /obj/item/stack/material/phoron
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
@@ -41,3 +40,9 @@
 			target_tile.hotspot_expose(temperature, 400)
 	return round(totalPhoron/100)
 */
+
+/datum/material/phoron/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(category = "statues", name = "scientist statue", product = /obj/structure/statue/phoron/scientist, cost = 10, time = 2 SECONDS)
+	. += create_stack_recipe_datum(category = "statues", name = "xenomorph statue", product = /obj/structure/statue/phoron/xeno, cost = 10, time = 2 SECONDS)
+	. += create_stack_recipe_datum(name = "phoron floor tiles", product = /obj/item/stack/tile/phoron, amount = 4)

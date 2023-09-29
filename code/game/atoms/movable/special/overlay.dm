@@ -1,6 +1,9 @@
 /atom/movable/overlay
-	var/atom/master = null
+	atom_flags = ATOM_ABSTRACT
+	vis_flags = VIS_INHERIT_ID
 	anchored = TRUE
+	// todo: nuke this shit from orbit, this is awful.
+	var/atom/master = null
 
 /atom/movable/overlay/attackby(a, b)
 	if (src.master)

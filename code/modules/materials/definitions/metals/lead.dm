@@ -1,6 +1,6 @@
 /datum/material/lead
 	name = MAT_LEAD
-	id = "lead"
+	id = MAT_LEAD
 	stack_type = /obj/item/stack/material/lead
 	icon_colour = "#273956"
 	sheet_singular_name = "ingot"

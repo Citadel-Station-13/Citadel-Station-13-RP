@@ -73,6 +73,8 @@
 #define LANGUAGE_ID_VULPKANIN "vulpkanin"
 /// zaddat
 #define LANGUAGE_ID_ZADDAT "zaddat"
+/// promethean
+#define LANGUAGE_ID_PROMETHEAN "promethean"
 /// scori
 #define LANGUAGE_ID_SCORI "scori"
 /// keisani

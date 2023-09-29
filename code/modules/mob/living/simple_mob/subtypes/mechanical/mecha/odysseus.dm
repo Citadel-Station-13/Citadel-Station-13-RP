@@ -4,11 +4,12 @@
 
 /datum/category_item/catalogue/technology/odysseus
 	name = "Exosuit - Odysseus"
-	desc = "A Vey-Medical innovation, the Odysseus was designed to incorporate some of their \
-	other inventions, such as the Sleeper, into a mobile frame. Due to its ability to safely \
-	rescue injured people in potentially hostile environments such as vacuum, as well as its \
-	agility compared to other civilian exosuits, the Odysseus dominates the market for \
-	medical exosuits."
+	desc = "The dominant medical exosuit on the modern market, the Odysseus is a Vey-Med product \
+	designed to incorporate other Vey-Med inventions - like the Sleeper - into a mobile frame. The \
+	Odysseus' focus on rescue operations in hazardous environments is augmented with some of the best \
+	agility ratings on the civilian market. In spite of its narrow profile, the Odysseus stands slightly \
+	taller than the APLU at 9.5'(3m). Capable of operating in vacuum as well as in most adverse weather \
+	conditions, the staying power of this mecha speaks volumes for its efficacy."
 	value = CATALOGUER_REWARD_EASY
 
 /mob/living/simple_mob/mechanical/mecha/odysseus

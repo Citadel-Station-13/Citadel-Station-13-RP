@@ -1,5 +1,5 @@
 /datum/material/supermatter
-	id = "supermatter"
+	id = MAT_SUPERMATTER
 	name = "supermatter"
 	icon_colour = "#FFFF00"
 	stack_type = /obj/item/stack/material/supermatter
@@ -34,4 +34,12 @@
 		/datum/material_trait/glow{
 
 		},
+
+/datum/material/supermatter/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(
+		name = "supermatter shard",
+		product = /obj/machinery/power/supermatter/shard,
+		cost = 30,
+		time = 30 SECONDS,
 	)

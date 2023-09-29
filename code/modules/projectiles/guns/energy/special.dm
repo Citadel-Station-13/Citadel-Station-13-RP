@@ -423,13 +423,14 @@
 
 /obj/item/gun/energy/ermitter
 	name = "Ermitter rifle"
-	desc = "A industrial energy projector turned into a crude, portable weapon. The Tyrmalin answer to armored hardsuits used by pirates, what it lacks in precision, it makes up for in firepower."
+	desc = "A industrial energy projector turned into a crude, portable weapon - the Tyrmalin answer to armored hardsuits used by pirates. What it lacks in precision, it makes up for in firepower. The 'Ermitter' rifle cell receptacle has been heavily modified."
 	icon_state = "ermitter_gun"
 	item_state = "pulse"
 	projectile_type = /obj/projectile/beam/emitter
 	fire_delay = 10
 	charge_cost = 900
 	cell_type = /obj/item/cell
+	accept_cell_type = /obj/item/cell
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
@@ -440,7 +441,7 @@
 
 /obj/item/gun/energy/ionrifle/pistol/tyrmalin
 	name = "botbuster pistol"
-	desc = "These jury-rigged pistols are sometimes fielded by Tyrmalin facing sythetic pirates or faulty machinery. Capable of discharging a single ionized bolt before needing to recharge, they're often treated as holdout or ambush weapons."
+	desc = "These jury-rigged pistols are sometimes fielded by Tyrmalin facing synthetic pirates or malfunctioning machinery. Capable of discharging a single ionized bolt before needing to recharge, they're often treated as holdout or ambush weapons."
 	icon_state = "botbuster"
 	charge_cost = 1300
 	projectile_type = /obj/projectile/ion/pistol

@@ -144,7 +144,7 @@
 					prob(4);/obj/item/caution,
 					prob(4);/obj/item/cell,
 					prob(4);/obj/item/cell/device,
-					prob(4);/obj/item/reagent_containers/food/snacks/liquidfood,
+					prob(4);/obj/item/reagent_containers/food/snacks/liquid,
 					prob(4);/obj/item/spacecash/c1,
 					prob(4);/obj/item/storage/backpack/satchel,
 					prob(4);/obj/item/storage/briefcase,

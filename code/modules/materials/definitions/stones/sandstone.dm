@@ -24,3 +24,24 @@
 	refraction = MATERIAL_RESISTANCE_VULNERABLE
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_VULNERABLE
+
+/datum/material/sandstone/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(category = "statues", name = "assistant statue", product = /obj/structure/statue/sandstone/assistant, amount = 10)
+	. += create_stack_recipe_datum(
+		name = "planting bed",
+		product = /obj/machinery/portable_atmospherics/hydroponics/soil,
+		cost = 3,
+		time = 1 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "sandstone floor tile",
+		product = /obj/item/stack/tile/floor/sandstone,
+		cost = 1,
+		amount = 3,
+	)
+	. += create_stack_recipe_datum(
+		name = "sandstone jar",
+		product = /obj/item/reagent_containers/glass/bucket/sandstone,
+		cost = 2
+	)

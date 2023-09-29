@@ -74,7 +74,7 @@
 	can_enter_vent_with = list(/obj/item/clothing/head)
 
 /datum/say_list/slime
-	speak = list("Blorp...", "Blop...")
+	speak = list("Blorp...", "Blop...", "Blorble...")
 	emote_see = list("bounces", "jiggles", "sways")
 	emote_hear = list("squishes")
 
@@ -143,6 +143,10 @@
 		if(S.slime_color == src.slime_color)
 			return TRUE
 		else
+			return FALSE
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		if(istype(H.species, /datum/species/monkey))	// Monke always food
 			return FALSE
 	// The other stuff was already checked in parent proc, and the . variable will implicitly return the correct value.
 

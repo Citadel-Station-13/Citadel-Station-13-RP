@@ -26,6 +26,34 @@
 	absorption = MATERIAL_RESISTANCE_VULNERABLE
 	nullification = MATERIAL_RESISTANCE_VERY_VULNERABLE
 
+/datum/material/resin/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(
+		name = "resin nest",
+		product = /obj/structure/bed/nest,
+		exclusitivity = /obj/structure/bed,
+		cost = 2,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "crude resin bandage",
+		product = /obj/item/stack/medical/crude_pack,
+		time = 2 SECONDS,
+		cost = 1,
+	)
+	. += create_stack_recipe_datum(
+		name = "resin membrane",
+		product = /obj/effect/alien/resin/membrane,
+		cost = 1,
+		time = 2 SECONDS,
+	)
+	. += create_stack_recipe_datum(
+		name = "resin node",
+		product = /obj/effect/alien/weeds/node,
+		cost = 1,
+		time = 2 SECONDS,
+	)
+
 /datum/material/resin/can_open_material_door(var/mob/living/user)
 	var/mob/living/carbon/M = user
 	if(istype(M) && locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)

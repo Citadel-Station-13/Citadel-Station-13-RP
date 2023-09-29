@@ -130,6 +130,12 @@ meteor_act
 		if(istype(C) && (C.body_cover_flags & def_zone.body_part_flags)) // Is that body part being targeted covered?
 			siemens_coefficient *= C.siemens_coefficient
 
+	// Modifiers.
+	for(var/thing in modifiers)
+		var/datum/modifier/M = thing
+		if(!isnull(M.siemens_coefficient))
+			siemens_coefficient *= M.siemens_coefficient
+
 	return siemens_coefficient
 
 // Similar to above but is for the mob's overall protection, being the average of all slots.
@@ -151,7 +157,7 @@ meteor_act
 
 // Returns a number between 0 to 1, with 1 being total protection.
 /mob/living/carbon/human/get_shock_protection()
-	return clamp( 1-get_siemens_coefficient_average(), 0,  1)
+	return min(1 - get_siemens_coefficient_average(), 1) // Don't go above 1, but negatives are fine.
 
 // Returns a list of clothing that is currently covering def_zone.
 /mob/living/carbon/human/proc/get_clothing_list_organ(var/obj/item/organ/external/def_zone, var/type)

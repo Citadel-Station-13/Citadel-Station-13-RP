@@ -86,13 +86,6 @@
 		/obj/item/pda/clown,
 		/obj/item/pda/mime,
 		/obj/item/pda/syndicate,
-		/obj/item/mecha_parts/chassis/phazon,
-		/obj/item/mecha_parts/part/phazon_head,
-		/obj/item/mecha_parts/part/phazon_left_arm,
-		/obj/item/mecha_parts/part/phazon_left_leg,
-		/obj/item/mecha_parts/part/phazon_right_arm,
-		/obj/item/mecha_parts/part/phazon_right_leg,
-		/obj/item/mecha_parts/part/phazon_torso,
 		// /obj/item/bodysnatcher,
 		/obj/item/bluespace_harpoon,
 		/obj/item/clothing/accessory/permit/gun,
@@ -115,6 +108,11 @@
 		/obj/item/grenade/flashbang/clusterbang,
 		/obj/item/grenade/flashbang/clusterbang,
 		/obj/item/grenade/spawnergrenade/spesscarp,
+		/obj/item/melee/energy/sword/ionic_rapier,
+		/obj/item/clothing/shoes/syndigaloshes,
+		/obj/item/storage/backpack/dufflebag/syndie,
+		/obj/item/binoculars,
+		/obj/item/storage/firstaid/combat,
 		/obj/item/melee/energy/sword,
 		/obj/item/melee/telebaton,
 		/obj/item/pen/reagent/paralysis,
@@ -193,13 +191,12 @@
 					/obj/item/clothing/suit/armor/laserproof,
 					/obj/item/chameleon,
 					/obj/item/pda/syndicate,
-					/obj/item/mecha_parts/chassis/phazon,
-					/obj/item/mecha_parts/part/phazon_head,
-					/obj/item/mecha_parts/part/phazon_left_arm,
-					/obj/item/mecha_parts/part/phazon_left_leg,
-					/obj/item/mecha_parts/part/phazon_right_arm,
-					/obj/item/mecha_parts/part/phazon_right_leg,
-					/obj/item/mecha_parts/part/phazon_torso,
+					/obj/item/storage/toolbox/syndicate/powertools,
+					/obj/item/storage/box/syndie_kit/space,
+					/obj/item/clothing/shoes/syndigaloshes,
+					/obj/item/clothing/suit/space/void/merc,
+					/obj/item/clothing/head/helmet/space/void/merc,
+					/obj/item/clothing/shoes/magboots/syndicate,
 					// /obj/item/bodysnatcher,
 					/obj/item/bluespace_harpoon,
 					/obj/item/clothing/accessory/permit/gun,
@@ -233,6 +230,59 @@
 					/obj/item/storage/fancy/cigar/taj/premium,
 					/obj/item/storage/belt/spike_bandolier,
 					/obj/random/weapon/guarenteed)
+	new loot(usr.drop_location())
+	to_chat(user, "You unwrap the package.")
+	qdel(src)
+
+/obj/item/mechasalvage
+	name = "mystery mech salvage"
+	desc = "An oil and rust stained 'box'."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "deliverycrate5"
+	item_state = "table_parts"
+	w_class = ITEMSIZE_HUGE
+
+/obj/item/mechasalvage/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	var/loot = pick(/obj/item/mecha_parts/chassis/phazon,
+		/obj/item/mecha_parts/part/phazon_head,
+		/obj/item/mecha_parts/part/phazon_left_arm,
+		/obj/item/mecha_parts/part/phazon_left_leg,
+		/obj/item/mecha_parts/part/phazon_right_arm,
+		/obj/item/mecha_parts/part/phazon_right_leg,
+		/obj/item/mecha_parts/part/phazon_torso,
+		/obj/item/mecha_parts/part/honker_torso,
+		/obj/item/mecha_parts/part/honker_head,
+		/obj/item/mecha_parts/part/honker_left_arm,
+		/obj/item/mecha_parts/part/honker_left_leg,
+		/obj/item/mecha_parts/part/honker_right_arm,
+		/obj/item/mecha_parts/part/honker_right_leg,
+		/obj/item/mecha_parts/part/honker_armour,
+		/obj/item/mecha_parts/chassis/honker,
+		/obj/item/mecha_parts/part/reticent_torso,
+		/obj/item/mecha_parts/part/reticent_head,
+		/obj/item/mecha_parts/part/reticent_left_arm,
+		/obj/item/mecha_parts/part/reticent_left_leg,
+		/obj/item/mecha_parts/part/reticent_right_arm,
+		/obj/item/mecha_parts/part/reticent_right_leg,
+		/obj/item/mecha_parts/chassis/reticent,
+		/obj/item/mecha_parts/part/reticent_armour,
+		/obj/item/mecha_parts/part/durand_torso,
+		/obj/item/mecha_parts/part/durand_head,
+		/obj/item/mecha_parts/part/durand_left_arm,
+		/obj/item/mecha_parts/part/durand_left_leg,
+		/obj/item/mecha_parts/part/durand_right_arm,
+		/obj/item/mecha_parts/part/durand_right_leg,
+		/obj/item/mecha_parts/chassis/durand,
+		/obj/item/mecha_parts/part/gygax_torso,
+		/obj/item/mecha_parts/part/gygax_head,
+		/obj/item/mecha_parts/part/gygax_left_arm,
+		/obj/item/mecha_parts/part/gygax_left_leg,
+		/obj/item/mecha_parts/part/gygax_right_arm,
+		/obj/item/mecha_parts/part/gygax_right_leg,
+		/obj/item/mecha_parts/chassis/serenity)
 	new loot(usr.drop_location())
 	to_chat(user, "You unwrap the package.")
 	qdel(src)

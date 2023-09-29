@@ -29,6 +29,7 @@
 	icon_state = "hcell"
 	maxcharge = 10000
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 60)
+	rating = 2
 
 /obj/item/cell/high/empty
 	charge = 0
@@ -39,6 +40,7 @@
 	icon_state = "scell"
 	maxcharge = 20000
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 70)
+	rating = 3
 
 /obj/item/cell/super/empty
 	charge = 0
@@ -49,6 +51,7 @@
 	icon_state = "hpcell"
 	maxcharge = 30000
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 80)
+	rating = 4
 
 /obj/item/cell/hyper/empty
 	charge = 0
@@ -59,6 +62,7 @@
 	origin_tech =  null
 	maxcharge = 30000 //determines how badly mobs get shocked
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 80)
+	rating = 6
 
 /obj/item/cell/infinite/check_charge()
 	return 1
@@ -85,6 +89,7 @@
 	description_info = "This 'cell' holds a max charge of 10k and self recharges over time."
 	maxcharge = 10000
 	materials_base = null
+	rating = 5
 	self_recharge = TRUE
 	charge_amount = 750
 

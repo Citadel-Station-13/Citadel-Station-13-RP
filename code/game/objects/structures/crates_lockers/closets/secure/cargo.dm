@@ -79,6 +79,7 @@
 		/obj/item/flashlight/lantern,
 		/obj/item/shovel,
 		/obj/item/pickaxe,
+		/obj/item/mining_scanner,
 		/obj/item/gps/mining,
 		/obj/item/survivalcapsule,
 		/obj/item/clothing/glasses/material,

@@ -304,6 +304,21 @@
 	charge_cost = 1500 //You got 1 shot...
 	projectile_type = /obj/projectile/beam/heavylaser //But it hurts a lot
 	cell_type = /obj/item/cell/device/weapon
+	unstable = 1
+
+/obj/item/gun/energy/zip/consume_next_projectile(mob/user as mob)
+	. = ..()
+	if(.)
+		if(unstable)
+			if(prob(10))
+				to_chat(user, "<span class='danger'>The cell overcooks and ruptures!</span>")
+				spawn(rand(2 SECONDS,5 SECONDS))
+					if(src)
+						visible_message("<span class='critical'>\The [src] detonates!</span>")
+						explosion(get_turf(src), -1, 0, 2, 3)
+						qdel(chambered)
+						qdel(src)
+				return ..()
 
 //NT SpecOps Laser Rifle
 /obj/item/gun/energy/combat

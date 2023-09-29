@@ -328,6 +328,9 @@ Add those other swinging traps you mentioned above!
 	var/burst_delay = 2
 	var/initial_fire_delay = 5
 
+	var/ammo_count = 0
+	var/ammo_store = 0 //How many shots the trap has stored before it runs out. This seems to work out to the value + 1.
+
 	//This needs to check dirs, projectiles, accuracy, reload/recharge. It's kinda gonna suck. Consult Turret code.
 
 /obj/effect/trap/launcher/Initialize(mapload)
@@ -345,7 +348,10 @@ Add those other swinging traps you mentioned above!
 		return
 	if(atom_flags & ATOM_BROKEN)
 		return
-	if(((src.last_shot + src.fire_delay) <= world.time) && (src.tripped))
+	if(ammo_count)
+		if(src.shot_number > src.ammo_store)
+			return
+	if(((src.last_shot + src.fire_delay) <= world.time) && src.tripped)
 
 		src.last_shot = world.time
 		if(src.shot_number < burst_shots)
@@ -417,6 +423,10 @@ Add those other swinging traps you mentioned above!
 /obj/effect/trap/launcher/fireball_aoe
 	projectile_type = /obj/projectile/magic/aoe/fireball
 	projectile_sound = 'sound/weapons/cannon.ogg'
+
+/obj/effect/trap/launcher/fireball_aoe/finite //Finite variant
+	ammo_count = 1
+	ammo_store = 1
 
 //Web Launcher
 /obj/effect/trap/launcher/web

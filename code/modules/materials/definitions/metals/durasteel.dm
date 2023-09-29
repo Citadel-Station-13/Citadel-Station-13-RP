@@ -1,5 +1,5 @@
 /datum/material/durasteel
-	id = "durasteel"
+	id = MAT_DURASTEEL
 	name = "durasteel"
 	stack_type = /obj/item/stack/material/durasteel
 	melting_point = 7000
@@ -22,6 +22,10 @@
 	refraction = MATERIAL_RESISTANCE_MODERATE
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_LOW
+
+/datum/material/durasteel/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(name = "durasteel floor tiles", product = /obj/item/stack/tile/durasteel, amount = 4)
 
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
 	id = "durasteel_hull"

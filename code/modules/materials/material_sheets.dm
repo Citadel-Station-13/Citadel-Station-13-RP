@@ -31,10 +31,9 @@
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
 
-	recipes = src.material.get_recipes()
-	stacktype = src.material.stack_type
-	if(islist(src.material.stack_origin_tech))
-		origin_tech = src.material.stack_origin_tech
+	stacktype = material.stack_type
+	if(islist(material.stack_origin_tech))
+		origin_tech = material.stack_origin_tech.Copy()
 
 	if(apply_colour)
 		color = src.material.icon_colour
@@ -46,6 +45,20 @@
 
 /obj/item/stack/material/get_materials(respect_multiplier)
 	return list(material.id = (respect_multiplier? material_multiplier : 1) * SHEET_MATERIAL_AMOUNT)
+
+/obj/item/stack/material/tgui_recipes()
+	var/list/assembled = ..()
+	for(var/datum/stack_recipe/recipe as anything in material.get_recipes())
+		assembled[++assembled.len] = recipe.tgui_recipe_data()
+	for(var/datum/stack_recipe/material/recipe as anything in SSmaterials.material_stack_recipes)
+		assembled[++assembled.len] = recipe.tgui_recipe_data()
+	return assembled
+
+/obj/item/stack/material/can_craft_recipe(datum/stack_recipe/recipe)
+	. = ..()
+	if(.)
+		return
+	return (recipe in material.recipes) || (istype(recipe, /datum/stack_recipe/material) && (recipe in SSmaterials.material_stack_recipes))
 
 /obj/item/stack/material/proc/update_strings()
 	// Update from material datum.
@@ -441,6 +454,18 @@
 	drop_sound = 'sound/items/drop/leather.ogg'
 	pickup_sound = 'sound/items/pickup/leather.ogg'
 
+/obj/item/stack/material/chitin
+	name = "chitin plates"
+	desc = "Sheets of hardened chitin, usually harvested from insectile beasts."
+	singular_name = "chitin plate"
+	icon_state = "chitin"
+	material = /datum/material/chitin
+	no_variants = FALSE
+	pass_color = TRUE
+	strict_color_stacking = TRUE
+	drop_sound = 'sound/items/drop/leather.ogg'
+	pickup_sound = 'sound/items/pickup/leather.ogg'
+
 /obj/item/stack/material/glass
 	name = "glass"
 	icon_state = "sheet-glass"
@@ -472,7 +497,7 @@
 	no_variants = FALSE
 
 /obj/item/stack/material/bananium
-	name = "bananium"
+	name = MAT_BANANIUM
 	desc = "When smelted, Vaudium takes on a bright yellow hue and remains pliable, growing rigid when met with a forceful impact."
 	icon_state = "sheet-clown"
 	material = /datum/material/bananium
@@ -481,7 +506,7 @@
 	pickup_sound = 'sound/items/pickup/boots.ogg'
 
 /obj/item/stack/material/silencium
-	name = "silencium"
+	name = MAT_SILENCIUM
 	desc = "When compressed, Vaudium loses its color, gaining distinctive black bands and becoming intensely rigid."
 	icon_state = "sheet-mime"
 	material = /datum/material/silencium

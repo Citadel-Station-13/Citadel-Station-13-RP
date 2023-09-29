@@ -24,3 +24,22 @@
 	refraction = MATERIAL_RESISTANCE_VULNERABLE
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_VULNERABLE
+	
+/datum/material/marble/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(
+		name = "light marble floor tile",
+		product = /obj/item/stack/tile/wmarble,
+		cost = 1,
+		amount = 4
+	)
+	. += create_stack_recipe_datum(
+		name = "dark marble floor tile",
+		product = /obj/item/stack/tile/bmarble,
+		cost = 1,
+		amount = 4
+	)
+	. += create_stack_recipe_datum(category = "statues", name = "male statue", product = /obj/structure/statue/marble/male, cost = 15, time = 4 SECONDS)
+	. += create_stack_recipe_datum(category = "statues", name = "female statue", product = /obj/structure/statue/marble/female, cost = 15, time = 4 SECONDS)
+	. += create_stack_recipe_datum(category = "statues", name = "monkey statue", product = /obj/structure/statue/marble/monkey, cost = 15, time = 4 SECONDS)
+	. += create_stack_recipe_datum(category = "statues", name = "corgi statue", product = /obj/structure/statue/marble/corgi, cost = 15, time = 4 SECONDS)

@@ -64,7 +64,6 @@
 
 /obj/item/stack/sandbags/Initialize(mapload, new_amount, merge)
 	. = ..()
-	recipes = sandbags_recipes
 	update_icon()
 
 /obj/item/stack/sandbags/update_icon()
@@ -76,8 +75,9 @@
 	else
 		icon_state = "sandbags"
 
-var/global/list/datum/stack_recipe/sandbags_recipes = list( \
-	new/datum/stack_recipe("sandbag barricade", /obj/structure/sandbag, 10, one_per_turf = 1, on_floor = 1))
+/obj/item/stack/sandbags/generate_explicit_recipes()
+	. = list()
+	. += create_stack_recipe_datum(name = "sandbag barricade", product = /obj/structure/sandbag, cost = 7, time = 1.5 SECONDS)
 
 /obj/item/stack/sandbags/attackby(var/obj/item/W, var/mob/user)
 	if(is_sharp(W))
