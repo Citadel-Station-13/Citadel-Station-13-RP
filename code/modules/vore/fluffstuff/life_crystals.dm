@@ -76,7 +76,7 @@
 
 /obj/item/clothing/accessory/collar/vmcrystal/proc/send_message()
 	visible_message(SPAN_WARNING("The [name] shatters into dust!"))
-	GLOB.global_announcer.autosay("[owner] has died!", "[owner]'s Death Alarm")
+	GLOB.global_announcer.autosay("[owner] has died!", "[owner]'s Life Crystal")
 	if(owner_c)
 		to_chat(owner_c, "<span class='notice'>The HAVENS system is notified of your demise via \the [name].</span>")
 	update_state(3)
