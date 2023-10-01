@@ -11,7 +11,7 @@
 //NEED LOCAL CHANNEL VAR PULLED FROM SS. RETURN CURRENT CHANNEL TO SUBSYSTEM
 /obj/machinery/computer/television/Initialize(mapload)
 	. = ..()
-	var/channel = "strings/television/Nanotrasen_Public_Network/"
+	var/channel = "Nanotrasen_Public_Network/"
 	SStelevision.all_tvs += src
 	SStelevision.all_tvs[src] = channel
 

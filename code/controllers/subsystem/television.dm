@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(television)
 		possible_shows[c] += flist("strings/television/shows/[c]")
 		channel_current_line[c] = 1
 	//all advertisments available
-	possible_ads = flist("string/television/ads/")
+	possible_ads = flist("strings/television/ads/")
 
 //Lohi code what he do
 //Not exactly Lohi code anymore
@@ -66,12 +66,14 @@ SUBSYSTEM_DEF(television)
 				channel_current_state[channel] = CHANSTATE_SHOW1
 
 			if (CHANSTATE_SHOW1)
-				prepare_show(channel)
+				prepare_show(channel, file2text("strings/television/shows/[channel][channel_current_shows[channel]]"))
 				channel_current_state[channel] = CHANSTATE_SHOW1AIR
 
 			if (CHANSTATE_SHOW1AIR, CHANSTATE_AD1AIR, CHANSTATE_AD2AIR)
 				var/list/current_show = channel_current_shows[channel]
-				broadcastLine(current_show[channel_current_line[channel]], channel)
+				var/i = channel_current_line[channel]
+				//cannot read from list
+				broadcastLine(current_show[i], channel)
 				if (channel_current_line[channel] == channel_show_length[channel])
 					var/state = channel_current_state[channel]
 					switch (state)
@@ -95,7 +97,7 @@ SUBSYSTEM_DEF(television)
 					new_ad = pick(possible_ads)
 				while (new_ad == channel_previous_ads[channel] && length(possible_ads) > 1)
 				channel_current_shows[channel] = new_ad
-				prepare_show(channel)
+				prepare_show(channel, file2text("strings/television/ads/[channel_current_shows[channel]]"))
 				switch(channel_current_state[channel])
 					if (CHANSTATE_AD1)
 						channel_current_state[channel] = CHANSTATE_AD1AIR
@@ -119,31 +121,27 @@ SUBSYSTEM_DEF(television)
 			channel_current_shows[channel] = null
 	channel_current_line[channel] = 1
 
-/datum/controller/subsystem/television/proc/prepare_show(channel)
-	var/list/decoded_show = json_decode(file2text("strings/television/shows/[channel][channel_current_shows[channel]]"))
-	var/default_language = ""
+/datum/controller/subsystem/television/proc/prepare_show(channel, prepared_text)
+	var/list/decoded_show = json_decode(prepared_text)
+	var/default_language = "Common"
 	var/current_language = ""
-	for(var/name in decoded_show["name"])
-		channel_show_name[channel] = name
-	for(var/dlang in decoded_show["default_language"])
-		default_language = dlang
-	var/lines_total = 1
-	//var/prepared_script_text = list()
-	channel_current_shows[channel] = null
-	channel_current_shows[channel] = list()
+	channel_show_name[channel] = decoded_show["name"]
+	default_language = decoded_show["default_language"]
+	var/lines_total = 0
+	var/prepared_script_text = list()
 	for (var/list/line in decoded_show["lines"])
-		for (var/language in line["language"])
-			current_language = language
+		current_language = line["language"]
 		for (var/line_text in line["text"])
-			if (current_language != "")
-				channel_current_shows[channel][lines_total] += ("[current_language]--[line_text]")
+			if (current_language != null)
+				prepared_script_text += ("[current_language]--[line_text]")
 			else
 				//index out of bounds
-				channel_current_shows[channel][lines_total] += ("[default_language]--[line_text]")
+				prepared_script_text += ("[default_language]--[line_text]")
 			lines_total += 1
 		current_language = ""
 	channel_show_length[channel] = lines_total
-	//channel_current_shows[channel] = prepared_script_text
+	channel_current_shows[channel] = null
+	channel_current_shows[channel] = prepared_script_text
 
 
 
