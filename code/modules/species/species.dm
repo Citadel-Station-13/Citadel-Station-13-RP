@@ -528,7 +528,8 @@
 
 	H.maxHealth = total_health
 
-	H.add_physiology_modifier(mob_physiology_modifier)
+	if(!isnull(mob_physiology_modifier))
+		H.add_physiology_modifier(mob_physiology_modifier)
 
 	add_inherent_verbs(H)
 
@@ -556,7 +557,8 @@
 	remove_inherent_verbs(H)
 	H.holder_type = null
 
-	H.remove_physiology_modifier(mob_physiology_modifier)
+	if(!isnull(mob_physiology_modifier))
+		H.remove_physiology_modifier(mob_physiology_modifier)
 
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]

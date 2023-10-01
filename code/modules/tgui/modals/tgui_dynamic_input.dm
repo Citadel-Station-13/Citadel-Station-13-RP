@@ -7,7 +7,7 @@
  */
 /datum/tgui_dynamic_query
 	/// options list
-	var/list/options
+	var/list/options = list()
 
 /datum/tgui_dynamic_query/proc/string(key, name, desc, max_length = 512, multi_line = FALSE, default)
 	RETURN_TYPE(/datum/tgui_dynamic_query)

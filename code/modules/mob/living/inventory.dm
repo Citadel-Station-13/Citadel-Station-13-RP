@@ -293,7 +293,7 @@
 /mob/living/proc/update_carry()
 	var/slowdown = max(carry_weight_to_slowdown(cached_carry_weight), carry_encumbrance_to_slowdown(cached_carry_encumbrance))
 	switch(round(slowdown * 100))
-		if(0 to 25)
+		if(1 to 25)
 			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/minor)
 		if(26 to 50)
 			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/moderate)
