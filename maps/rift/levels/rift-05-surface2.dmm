@@ -4540,7 +4540,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
 "dcW" = (
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/crew_quarters/coffee_shop)
 "ddZ" = (
 /turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
@@ -8668,7 +8668,7 @@
 /area/maintenance/medbay)
 "fLD" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/water/blood/deep,
+/turf/simulated/floor/water/blood/deep/indoors,
 /area/crew_quarters/coffee_shop)
 "fLK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11032,9 +11032,7 @@
 /area/crew_quarters/showers)
 "hid" = (
 /obj/effect/floor_decal/spline/plain,
-/obj/structure/table/marble,
-/obj/item/reagent_containers/food/drinks/cup,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/crew_quarters/coffee_shop)
 "hij" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -12511,7 +12509,7 @@
 /obj/structure/catwalk,
 /obj/structure/table/fancyblack,
 /obj/item/deck/tarot,
-/turf/simulated/floor/water/blood/deep,
+/turf/simulated/floor/water/blood/deep/indoors,
 /area/crew_quarters/coffee_shop)
 "ibv" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -13695,7 +13693,7 @@
 	},
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/effect/debris/cleanable/cobweb,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/crew_quarters/coffee_shop)
 "iRD" = (
 /obj/structure/window/reinforced{
@@ -16772,7 +16770,7 @@
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/crew_quarters/coffee_shop)
 "kIF" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -22125,7 +22123,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/crew_quarters/coffee_shop)
 "obw" = (
 /obj/machinery/door/blast/regular{
@@ -26834,7 +26832,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/crew_quarters/coffee_shop)
 "rdl" = (
 /obj/machinery/atmospherics/pipe/zpipe/down/supply,
@@ -28611,7 +28609,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/crew_quarters/coffee_shop)
 "sjS" = (
 /obj/structure/undies_wardrobe,
@@ -29932,10 +29930,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
 "tfk" = (
-/obj/structure/curtain/open/bed{
-	name = "brown curtain"
-	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/structure/curtain/black,
 /turf/simulated/floor/plating,
 /area/hallway/primary/surfacetwo)
 "tfp" = (
@@ -30347,7 +30343,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/water/blood/deep,
+/turf/simulated/floor/water/blood/deep/indoors,
 /area/crew_quarters/coffee_shop)
 "tsj" = (
 /obj/machinery/door/blast/regular{
@@ -30590,7 +30586,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/water/blood/deep,
+/turf/simulated/floor/water/blood/deep/indoors,
 /area/crew_quarters/coffee_shop)
 "tBX" = (
 /obj/machinery/light{
@@ -31858,7 +31854,7 @@
 /area/security/range)
 "usC" = (
 /obj/structure/flora/pumpkin/pumpkin_patch/presents,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/crew_quarters/coffee_shop)
 "usM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -33280,7 +33276,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/crew_quarters/coffee_shop)
 "vnk" = (
 /obj/structure/marker_beacon/red,
@@ -34952,11 +34948,6 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/resleeving)
-"wtK" = (
-/obj/effect/floor_decal/spline/plain,
-/obj/structure/table/marble,
-/turf/simulated/floor/outdoors/mud,
-/area/crew_quarters/coffee_shop)
 "wuF" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -35784,7 +35775,7 @@
 "wZw" = (
 /obj/structure/bed/chair/wood,
 /obj/structure/catwalk,
-/turf/simulated/floor/water/blood/deep,
+/turf/simulated/floor/water/blood/deep/indoors,
 /area/crew_quarters/coffee_shop)
 "xax" = (
 /obj/structure/railing{
@@ -36137,7 +36128,7 @@
 /obj/structure/catwalk,
 /obj/structure/table/fancyblack,
 /obj/structure/spirit_board/prop,
-/turf/simulated/floor/water/blood/deep,
+/turf/simulated/floor/water/blood/deep/indoors,
 /area/crew_quarters/coffee_shop)
 "xln" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -49280,7 +49271,7 @@ oRV
 cqf
 dcW
 dcW
-wtK
+hid
 ydU
 fmy
 fmy

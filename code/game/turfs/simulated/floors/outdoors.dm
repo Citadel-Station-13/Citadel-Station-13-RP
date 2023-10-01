@@ -13,6 +13,9 @@
 	name = "mud"
 	icon_state = "mud_dark"
 
+/turf/simulated/floor/outdoors/mud/indoors
+	outdoors = FALSE
+
 /turf/simulated/floor/outdoors/rocks
 	name = "rocks"
 	desc = "Hard as a rock."

@@ -106,7 +106,7 @@
 
 /turf/simulated/floor/water/deep/indoors
 	outdoors = FALSE
-	
+
 /turf/simulated/floor/water/pool
 	name = "pool"
 	desc = "Don't worry, it's not closed."
@@ -415,6 +415,9 @@ var/list/shoreline_icon_cache = list()
 			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
 	..()
 
+/turf/simulated/floor/water/blood/indoors
+	outdoors = FALSE
+
 /turf/simulated/floor/water/blood/deep
 	name = "deep coagulating pool"
 	desc = "A body of crimson fluid. It smells like pennies and gasoline.  It seems quite deep."
@@ -422,3 +425,6 @@ var/list/shoreline_icon_cache = list()
 	under_state = "abyss"
 	slowdown = 8
 	depth = 7
+
+/turf/simulated/floor/water/blood/deep/indoors
+	outdoors = FALSE

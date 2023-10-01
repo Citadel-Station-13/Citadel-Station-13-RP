@@ -4145,7 +4145,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "amZ" = (
 /obj/machinery/computer/station_alert/all,
@@ -16608,7 +16608,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "aZt" = (
 /obj/effect/floor_decal/borderfloor{
@@ -17428,7 +17428,7 @@
 "cGx" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "cHl" = (
 /obj/machinery/door/blast/shutters{
@@ -19065,7 +19065,7 @@
 /area/rift/surfaceeva/airlock/arrivals)
 "gou" = (
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "gpa" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -19572,7 +19572,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "hEX" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -20003,7 +20003,7 @@
 /turf/simulated/floor/cult,
 /area/crew_quarters/barrestroom)
 "iCm" = (
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "iCv" = (
 /obj/structure/disposalpipe/segment{
@@ -20967,7 +20967,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "kLl" = (
 /obj/structure/closet/gmcloset{
@@ -21011,7 +21011,7 @@
 /mob/living/simple_mob/animal/passive/cow{
 	name = "Betsy"
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "kPD" = (
 /obj/effect/floor_decal/spline/plain,
@@ -21162,7 +21162,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "lhu" = (
 /obj/machinery/light{
@@ -22362,7 +22362,7 @@
 /area/crew_quarters/bar)
 "nzW" = (
 /obj/landmark/spawnpoint/job/botanist,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "nCn" = (
 /obj/structure/ladder{
@@ -23208,7 +23208,7 @@
 	dir = 6
 	},
 /obj/machinery/portable_atmospherics/hydroponics,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "pBE" = (
 /obj/effect/floor_decal/borderfloor{
@@ -23627,7 +23627,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "quy" = (
 /obj/structure/grille,
@@ -23725,7 +23725,7 @@
 /area/rift/surfacebase/outside/outside3)
 "qEq" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "qGN" = (
 /obj/structure/catwalk,
@@ -23783,7 +23783,7 @@
 /area/crew_quarters/barrestroom)
 "qNK" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "qOi" = (
 /turf/simulated/wall/cult,
@@ -23883,7 +23883,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "raY" = (
 /obj/machinery/holoposter{
@@ -23980,7 +23980,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "rtY" = (
 /obj/effect/floor_decal/borderfloor,
@@ -24255,7 +24255,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "slu" = (
 /obj/structure/railing{
@@ -24650,7 +24650,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "tEl" = (
 /obj/effect/floor_decal/borderfloor{
@@ -24831,7 +24831,7 @@
 "tQY" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/portable_atmospherics/hydroponics,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hydroponics)
 "tSU" = (
 /obj/machinery/door/blast/shutters{
