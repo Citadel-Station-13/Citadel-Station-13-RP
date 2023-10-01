@@ -351,7 +351,8 @@
 	icon_state = "satchel-bone"
 
 /obj/item/storage/backpack/satchel/invisible
-	icon_state = "satchel"
+	name = "integrated satchel"
+	desc = "A minimalist satchel designed to fit inside of clothing, directly against the skin."
 	item_state = "none"
 
 //ERT backpacks.
