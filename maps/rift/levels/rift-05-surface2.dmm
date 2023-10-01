@@ -11336,6 +11336,9 @@
 /obj/item/toy/plushie/coffee_fox{
 	name = "Cream"
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "huA" = (

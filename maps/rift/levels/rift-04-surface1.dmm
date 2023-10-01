@@ -7158,10 +7158,10 @@
 /area/maintenance/engineering/pumpstation)
 "eDQ" = (
 /obj/machinery/power/apc{
+	alarms_hidden = 1;
 	dir = 4;
 	name = "east bump";
-	pixel_x = 24;
-	alarms_hidden = 1
+	pixel_x = 24
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -8950,7 +8950,7 @@
 	dir = 1
 	},
 /obj/structure/bonfire/permanent,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hallway/primary/surfaceone)
 "fTz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14713,7 +14713,7 @@
 	dir = 1
 	},
 /obj/structure/flora/pumpkin/carved/scream,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hallway/primary/surfaceone)
 "jrc" = (
 /obj/machinery/light/small,
@@ -26765,8 +26765,8 @@
 "qHS" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Research Southwest Wing Subgrid";
-	output_attempt = 0;
-	cur_coils = 2
+	cur_coils = 2;
+	output_attempt = 0
 	},
 /obj/structure/cable/green,
 /obj/structure/cable/green{
@@ -33920,7 +33920,7 @@
 	dir = 4
 	},
 /obj/structure/flora/pumpkin/carved,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/hallway/primary/surfaceone)
 "uNc" = (
 /obj/structure/closet/emcloset,
