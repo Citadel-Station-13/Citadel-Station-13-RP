@@ -47,6 +47,7 @@
 	var/backpack = /obj/item/storage/backpack
 	var/satchel_one  = /obj/item/storage/backpack/satchel/norm
 	var/satchel_two  = /obj/item/storage/backpack/satchel
+	var/satchel_three = /obj/item/storage/backpack/satchel/invisible
 	var/messenger_bag = /obj/item/storage/backpack/messenger
 	var/rig = /obj/item/storage/backpack/rig
 	var/dufflebag = /obj/item/storage/backpack/dufflebag
@@ -61,9 +62,10 @@
 			if(2) back = backpack
 			if(3) back = satchel_one
 			if(4) back = satchel_two
-			if(5) back = messenger_bag
-			if(6) back = rig
-			if(7) back = dufflebag
+			if(5) back = satchel_three
+			if(6) back = messenger_bag
+			if(7) back = rig
+			if(8) back = dufflebag
 			else  back = null
 
 /datum/outfit/proc/post_equip(mob/living/carbon/human/H)

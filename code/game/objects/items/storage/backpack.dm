@@ -350,6 +350,9 @@
 	desc = "A grotesque satchel made of sinew and bone."
 	icon_state = "satchel-bone"
 
+/obj/item/storage/backpack/satchel/invisible
+	icon_state = "satchel"
+	item_state = "none"
 
 //ERT backpacks.
 /obj/item/storage/backpack/ert

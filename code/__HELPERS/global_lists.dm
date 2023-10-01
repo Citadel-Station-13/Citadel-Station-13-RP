@@ -40,7 +40,7 @@ var/list/obj/item/uplink/world_uplinks = list()
 //!Underwear
 var/datum/category_collection/underwear/global_underwear = new()
 //!Backpacks - The load order here is important to maintain. Don't go swapping these around.
-var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag", "RIG", "Duffle Bag")
+var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Satchel Invis", "Messenger Bag", "RIG", "Duffle Bag")
 var/global/list/pdachoicelist = list("Default", "Slim", "Old", "Rugged","Minimalist", "Holographic", "Wrist-Bound")
 var/global/list/exclude_jobs = list(/datum/role/job/station/ai,/datum/role/job/station/cyborg)
 
