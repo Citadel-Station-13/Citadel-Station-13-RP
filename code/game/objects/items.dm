@@ -378,9 +378,9 @@
 		R.activate_module(src)
 		R.hud_used.update_robot_modules_display()
 
-/obj/item/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/storage))
-		var/obj/item/storage/S = W
+/obj/item/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/storage))
+		var/obj/item/storage/S = I
 		if(S.use_to_pickup)
 			if(S.collection_mode) //Mode is set to collect all items
 				if(isturf(src.loc))
@@ -388,7 +388,19 @@
 
 			else if(S.can_be_inserted(src))
 				S.handle_item_insertion(src, user)
-	return
+	if(istype(I, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))
+		if(!user.transfer_item_to_loc(I, src))
+			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		user.visible_action_feedback(
+			target = src,
+			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[user] inserts [I] into [src]."),
+			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
+			visible_self = SPAN_NOTICE("You insert [I] into [src]."),
+		)
+		obj_cell_slot.insert_cell(I)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/proc/talk_into(mob/M as mob, text)
 	return
@@ -769,17 +781,33 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	// SHOULD_CALL_PARENT(TRUE)
 	// attack_self isn't really part of the item attack chain.
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
+	if(on_attack_self(new /datum/event_args/actor(user)))
+		return TRUE
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
 		interact(user)
-	on_attack_self(user)
 
 /**
  * Called after we attack self
  * Used to allow for attack_self to be interrupted by signals in nearly all cases.
  * You should usually override this instead of attack_self.
+ *
+ * You should do . = ..() and check ., if it's TRUE, it means a parent proc requested the call chain to stop.
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
  */
-/obj/item/proc/on_attack_self(mob/user)
-	return
+/obj/item/proc/on_attack_self(datum/event_args/actor/e_args)
+	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_inhand && obj_cell_slot.interaction_active(src))
+		e_args.visible_feedback(
+			target = src,
+			range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
+			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
+			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
+		)
+		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
+		return TRUE
+	return FALSE
 
 //? Mob Armor
 

@@ -128,53 +128,53 @@
 		initiate_sculpting(user, tool = I)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/structure/sculpting_block/wrench_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/sculpting_block/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = ..()
 	if(.)
 		return
-	user.visible_action_feedback(
+	e_args.visible_feedback(
 		target = src,
-		hard_range = MESSAGE_RANGE_CONSTRUCTION,
-		visible_hard = SPAN_NOTICE("[user] starts [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
-		visible_self = SPAN_NOTICE("You start [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
-		audible_hard = SPAN_WARNING("You hear bolts being [anchored? "unfastened" : "fastened"]."),
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[e_args.performer] starts [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		audible = SPAN_WARNING("You hear bolts being [anchored? "unfastened" : "fastened"]."),
+		otherwise_self = SPAN_NOTICE("You start [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
 	)
-	log_construction(user, src, "started [anchored? "unanchoring" : "anchoring"]")
-	if(!use_wrench(I, user, flags, 3 SECONDS))
+	log_construction(e_args, src, "started [anchored? "unanchoring" : "anchoring"]")
+	if(!use_wrench(I, e_args, flags, 3 SECONDS))
 		return TRUE
-	user.visible_action_feedback(
+	e_args.visible_feedback(
 		target = src,
-		hard_range = MESSAGE_RANGE_CONSTRUCTION,
-		visible_hard = SPAN_NOTICE("[user] finishes [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
-		visible_self = SPAN_NOTICE("You finish [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
-		audible_hard = SPAN_WARNING("You hear bolts [anchored? "falling out" : "clicking into place"]."),
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[e_args.performer] finishes [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		audible = SPAN_WARNING("You hear bolts [anchored? "falling out" : "clicking into place"]."),
+		otherwise_self = SPAN_NOTICE("You finish [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
 	)
-	log_construction(user, src, "[anchored? "unanchored" : "anchored"]")
+	log_construction(e_args, src, "[anchored? "unanchored" : "anchored"]")
 	set_anchored(!anchored)
 	return TRUE
 
-/obj/structure/sculpting_block/welder_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/sculpting_block/welder_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = ..()
 	if(.)
 		return
-	user.visible_action_feedback(
+	e_args.visible_feedback(
 		target = src,
-		hard_range = MESSAGE_RANGE_CONSTRUCTION,
-		visible_hard = SPAN_NOTICE("[user] starts slicing [src] apart."),
-		visible_self = SPAN_NOTICE("You start slicing [src] apart."),
-		audible_hard = SPAN_WARNING("You hear the sound of a welding torch being used on something metallic."),
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[e_args.performer] starts slicing [src] apart."),
+		audible = SPAN_WARNING("You hear the sound of a welding torch being used on something metallic."),
+		otherwise_self = SPAN_NOTICE("You start slicing [src] apart."),
 	)
-	log_construction(user, src, "started deconstructing")
-	if(!use_welder(I, user, flags, 7 SECONDS, 3))
+	log_construction(e_args, src, "started deconstructing")
+	if(!use_welder(I, e_args, flags, 7 SECONDS, 3))
 		return TRUE
-	user.visible_action_feedback(
+	e_args.visible_feedback(
 		target = src,
-		hard_range = MESSAGE_RANGE_CONSTRUCTION,
-		visible_hard = SPAN_NOTICE("[user] slices [src] apart."),
-		visible_self = SPAN_NOTICE("You slice [src] apart."),
-		audible_hard = SPAN_WARNING("You hear the sound of a welding torch moving back into open air, and a few pieces of metal falling apart."),
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[e_args.performer] slices [src] apart."),
+		audible = SPAN_WARNING("You hear the sound of a welding torch moving back into open air, and a few pieces of metal falling apart."),
+		otherwise_self = SPAN_NOTICE("You slice [src] apart."),
 	)
-	log_construction(user, src, "deconstructed")
+	log_construction(e_args, src, "deconstructed")
 	set_anchored(!anchored)
 	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 	return TRUE
@@ -183,23 +183,11 @@
 	. = ..()
 	material.place_sheet(drop_location(), 10)
 
-/obj/structure/sculpting_block/dynamic_tool_functions(obj/item/I, mob/user)
+/obj/structure/sculpting_block/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list()
-	.[TOOL_WRENCH] = anchored? "unanchor" : "anchor"
-	.[TOOL_WELDER] = "deconstruct"
+	LAZYSET(.[TOOL_WRENCH], anchored? "unanchor" : "anchor", anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH))
+	LAZYSET(.[TOOL_WELDER], "deconstruct", dyntool_image_backward(TOOL_WELDER))
 	return merge_double_lazy_assoc_list(., ..())
-
-/obj/structure/sculpting_block/dynamic_tool_image(function, hint)
-	. = ..()
-	if(.)
-		return
-	switch(hint)
-		if("unanchor")
-			return dyntool_image_backward(TOOL_WRENCH)
-		if("anchor")
-			return dyntool_image_forward(TOOL_WRENCH)
-		if("deconstruct")
-			return dyntool_image_backward(TOOL_WELDER)
 
 /**
  * returns speed multiplier, or null if not tool

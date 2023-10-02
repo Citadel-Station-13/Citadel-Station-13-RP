@@ -101,6 +101,9 @@
 	if(zoom)
 		zoom() //binoculars, scope, etc
 
+	// close context menus
+	context_close()
+
 	return ((. & COMPONENT_ITEM_DROPPED_RELOCATE)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
 /**
