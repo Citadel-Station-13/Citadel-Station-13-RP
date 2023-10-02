@@ -202,6 +202,9 @@
 				finish(null)
 			return TRUE
 
+/datum/tgui_dynamic_input/ui_state(mob/user, datum/tgui_module/module)
+	return GLOB.always_state
+
 /datum/tgui_dynamic_input/proc/block_on_finished()
 	UNTIL(closed)
 	return choices
