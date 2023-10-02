@@ -1,3 +1,5 @@
+/obj/item/pen/crayon
+
 /obj/item/pen/crayon/afterattack(atom/target, mob/user as mob, proximity)
 	if(!proximity) return
 	if(istype(target,/turf/simulated/floor))
@@ -252,3 +254,5 @@
 	colour = "#00B7EF"
 	shadeColour = "#0082A8"
 	colourName = "blue"
+
+#warn spraycans :D
