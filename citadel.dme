@@ -4541,6 +4541,7 @@
 #include "code\modules\sprite_accessories\markings\taj.dm"
 #include "code\modules\sprite_accessories\markings\tanlines.dm"
 #include "code\modules\sprite_accessories\markings\tattoo.dm"
+#include "code\modules\sprite_accessories\markings\taur_markings.dm"
 #include "code\modules\sprite_accessories\markings\tesh.dm"
 #include "code\modules\sprite_accessories\markings\unathi.dm"
 #include "code\modules\sprite_accessories\markings\vox.dm"
