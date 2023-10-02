@@ -216,5 +216,3 @@
 	callback?.InvokeAsync(choices)
 	if(!QDESTROYING(src))
 		qdel(src)
-
-#warn finish ui

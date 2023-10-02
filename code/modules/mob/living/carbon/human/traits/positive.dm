@@ -5,18 +5,6 @@
 	var_changes = list("slowdown" = -0.2)
 	excludes = list(/datum/trait/positive/hardy, /datum/trait/positive/hardy_plus)
 
-/datum/trait/positive/hardy
-	name = "Hardy"
-	desc = "Allows you to carry heavy equipment with less slowdown."
-	cost = 1
-	var_changes = list("item_slowdown_mod" = 0.5)
-
-/datum/trait/positive/hardy_plus
-	name = "Major Hardy"
-	desc = "Allows you to carry heavy equipment with almost no slowdown."
-	cost = 2
-	var_changes = list("item_slowdown_mod" = 0.25)
-
 /datum/trait/positive/endurance_plus
 	name = "Better Endurance"
 	desc = "Increases your maximum total hitpoints to 110"

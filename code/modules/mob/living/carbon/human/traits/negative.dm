@@ -1,4 +1,4 @@
-/datum/trait/negative/speed_slow
+w/datum/trait/negative/speed_slow
 	name = "Slowdown"
 	desc = "Allows you to move slower on average than baseline."
 	cost = -2
@@ -9,18 +9,6 @@
 	desc = "Allows you to move MUCH slower on average than baseline."
 	cost = -3
 	var_changes = list("slowdown" = 1.0)
-
-/datum/trait/negative/weakling
-	name = "Weakling"
-	desc = "Causes heavy equipment to slow you down more when carried."
-	cost = -1
-	var_changes = list("item_slowdown_mod" = 1.5)
-
-/datum/trait/negative/weakling_plus
-	name = "Major Weakling"
-	desc = "Allows you to carry heavy equipment with much more slowdown."
-	cost = -2
-	var_changes = list("item_slowdown_mod" = 2.0)
 
 /datum/trait/negative/endurance_low
 	name = "Low Endurance"
