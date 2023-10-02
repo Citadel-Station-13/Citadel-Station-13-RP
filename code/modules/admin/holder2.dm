@@ -20,6 +20,9 @@ GLOBAL_PROTECT(href_token)
 
 	var/datum/filter_editor/filteriffic
 
+	/// vv context
+	var/datum/vv_context/introspection = new
+
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
 		log_world("Admin datum created without a ckey argument. Datum has been deleted")
@@ -41,6 +44,7 @@ GLOBAL_PROTECT(href_token)
 		owner.holder = src
 		owner.add_admin_verbs()	//TODO
 		GLOB.admins |= C
+		introspection?.active = C
 
 /datum/admins/proc/disassociate()
 	if(owner)
@@ -48,6 +52,7 @@ GLOBAL_PROTECT(href_token)
 		owner.remove_admin_verbs()
 		owner.deadmin_holder = owner.holder
 		owner.holder = null
+		introspection?.active = null
 
 /datum/admins/proc/reassociate()
 	if(owner)
@@ -55,6 +60,7 @@ GLOBAL_PROTECT(href_token)
 		owner.holder = src
 		owner.deadmin_holder = null
 		owner.add_admin_verbs()
+		introspection?.active = owner
 
 /*
 checks if usr is an admin with at least ONE of the flags in rights_required. (Note, they don't need all the flags)

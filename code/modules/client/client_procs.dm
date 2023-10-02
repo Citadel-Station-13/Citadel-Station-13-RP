@@ -223,6 +223,8 @@
 	if(is_localhost() && CONFIG_GET(flag/enable_localhost_rank))
 		holder = new /datum/admins("!localhost!", ALL, ckey)
 		holder.owner = src
+		if(istype(holder.introspection))
+			holder.introspection.active = src
 		GLOB.admins |= src
 		//admins |= src // this makes them not have admin. what the fuck??
 		// holder.associate(ckey)
@@ -306,6 +308,8 @@
 	if(holder)
 		add_admin_verbs()
 		admin_memo_show()
+		if(istype(holder.introspection))
+			holder.introspection.active = src
 		// to_chat(src, get_message_output("memo"))
 		// adminGreet()
 
@@ -379,6 +383,8 @@
 	SSserver_maint.UpdateHubStatus()
 	if(holder)
 		holder.owner = null
+		if(istype(holder.introspection))
+			holder.introspection.active = null
 		GLOB.admins -= src //delete them on the managed one too
 
 	active_mousedown_item = null
