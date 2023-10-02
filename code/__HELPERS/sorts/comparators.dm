@@ -179,6 +179,10 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_holiday_priority(datum/holiday/A, datum/holiday/B)
 	return A.priority - B.priority
 
+///Tracks are sorted by genre then by title inside that.
+/proc/cmp_media_track_asc(datum/media_track/A, datum/media_track/B)
+	var/genre_sort = sorttext(B.genre || "Uncategorized", A.genre || "Uncategorized")
+	return genre_sort || sorttext(B.title, A.title)
 
 //! Line Profiling
 

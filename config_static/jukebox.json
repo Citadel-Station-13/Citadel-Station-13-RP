@@ -5,7 +5,6 @@
 "duration": 2040,
 "artist": "2Mello",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -16,7 +15,6 @@
 "duration": 2230,
 "artist": "2Mello",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -87,7 +85,6 @@
 "duration": 2980,
 "artist": "Aerosmith",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -98,7 +95,6 @@
 "duration": 3210,
 "artist": "Aerosmith",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -107,6 +103,16 @@
 "url": "https://files.catbox.moe/w8plzv.m4a",
 "title": "What It Takes",
 "duration": 3110,
+"artist": "Aerosmith",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/s1igwu.mp3",
+"title": "Dream On",
+"duration": 2680,
 "artist": "Aerosmith",
 "secret": false,
 "lobby": false,
@@ -189,7 +195,6 @@
 "duration": 1690,
 "artist": "Alkaline Trio",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -248,6 +253,16 @@
 "url": "https://files.catbox.moe/c0kpqn.m4a",
 "title": "Another Winter",
 "duration": 1530,
+"artist": "Anamanaguchi",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Arcade"
+},
+{
+"url": "https://files.catbox.moe/zsywsn.mp3",
+"title": "Meow",
+"duration": 2210,
 "artist": "Anamanaguchi",
 "secret": false,
 "lobby": false,
@@ -320,7 +335,6 @@
 "duration": 2720,
 "artist": "Arctic Monkeys",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -351,7 +365,6 @@
 "duration": 2510,
 "artist": "Avery Tare's Slasher Flicks",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -382,13 +395,12 @@
 "duration": 2130,
 "artist": "Bad Boys Blue",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Disco, Funk, Soul, and R&B"
 },
 {
-"url": "https://files.catbox.moe/5e7fk5.m4a",
+"url": "https://files.catbox.moe/umha2l.mp3",
 "title": "Shooting Stars",
 "duration": 2270,
 "artist": "Bag Raiders",
@@ -602,8 +614,7 @@
 "title": "[E$%RR%]That Funny Feeling",
 "duration": 3070,
 "artist": "Bo Burnham",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Folk and Indie"
@@ -613,8 +624,7 @@
 "title": "[E#R@]Welcome to the Internet",
 "duration": 2810,
 "artist": "Bo Burnham",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -625,7 +635,6 @@
 "duration": 2470,
 "artist": "Bo En",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -736,7 +745,6 @@
 "duration": 2390,
 "artist": "Bruce Springsteen",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -772,9 +780,9 @@
 "genre": "Electronic"
 },
 {
-"url": "https://files.catbox.moe/1jcqzk.m4a",
+"url": "https://files.catbox.moe/quy6ss.mp3",
 "title": "Dramophone",
-"duration": 2040,
+"duration": 2030,
 "artist": "Caravan Palace",
 "secret": false,
 "lobby": false,
@@ -782,7 +790,7 @@
 "genre": "Electronic"
 },
 {
-"url": "https://files.catbox.moe/4ju4p1.mp3",
+"url": "https://files.catbox.moe/s0j5lb.mp3",
 "title": "Lone Digger",
 "duration": 2300,
 "artist": "Caravan Palace",
@@ -815,6 +823,16 @@
 "url": "https://files.catbox.moe/o824i3.m4a",
 "title": "Wonderland",
 "duration": 1920,
+"artist": "Caravan Palace",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/u45ieq.mp3",
+"title": "Russian",
+"duration": 2420,
 "artist": "Caravan Palace",
 "secret": false,
 "lobby": false,
@@ -1156,8 +1174,7 @@
 "title": "[Err$%]Housebuilding Lumb@go",
 "duration": 2200,
 "artist": "Constipated Jesus",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Country and Western"
@@ -1168,7 +1185,6 @@
 "duration": 1390,
 "artist": "Creedence Clearwater Revival",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1189,7 +1205,6 @@
 "duration": 1590,
 "artist": "Creedence Clearwater Revival",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1200,7 +1215,6 @@
 "duration": 1860,
 "artist": "Creedence Clearwater Revival",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1211,7 +1225,6 @@
 "duration": 2800,
 "artist": "Creedence Clearwater Revival",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1222,7 +1235,6 @@
 "duration": 3140,
 "artist": "Crystal Castles",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -1233,7 +1245,6 @@
 "duration": 3250,
 "artist": "Crystal Castles",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -1274,7 +1285,6 @@
 "duration": 1080,
 "artist": "Cyriak",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -1355,7 +1365,6 @@
 "duration": 2420,
 "artist": "Damon Albarn",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -1476,7 +1485,6 @@
 "duration": 2460,
 "artist": "Deadmau5 (Ft. Gerard Way)",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -1527,7 +1535,6 @@
 "duration": 2750,
 "artist": "Death Grips",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -1558,7 +1565,6 @@
 "duration": 1610,
 "artist": "Death Grips",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -1568,8 +1574,7 @@
 "title": "[ERR!·][E#R#$] - OH SHIT I'M FEELING IT",
 "duration": 2250,
 "artist": "Death Grips (A /k/ production)",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -1580,7 +1585,6 @@
 "duration": 2950,
 "artist": "Def Leppard",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1591,7 +1595,6 @@
 "duration": 2470,
 "artist": "Def Leppard",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1602,7 +1605,6 @@
 "duration": 2470,
 "artist": "Def Leppard",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1613,7 +1615,6 @@
 "duration": 2140,
 "artist": "Deltron3030",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -1624,7 +1625,6 @@
 "duration": 2660,
 "artist": "Deltron3030",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -1744,8 +1744,7 @@
 "title": "[E%RR@]The Only Thing I Know For Real Is Bhop",
 "duration": 1020,
 "artist": "Dongle Fimblethorp",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1905,8 +1904,7 @@
 "title": "[ERR#%]$BAD Re4Dh-z!$ Psycho",
 "duration": 2160,
 "artist": "Eddie Noack",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Country and Western"
@@ -1937,7 +1935,6 @@
 "duration": 2810,
 "artist": "Electric Light Orchestra",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1947,8 +1944,7 @@
 "title": "[ERR!2$&] Gay Bar",
 "duration": 1420,
 "artist": "Electric Six",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -1977,6 +1973,16 @@
 "url": "https://files.catbox.moe/7x2cvf.mp3",
 "title": "Rocket Man",
 "duration": 2820,
+"artist": "Elton John",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/ey2e3j.mp3",
+"title": "I'm still standing",
+"duration": 1890,
 "artist": "Elton John",
 "secret": false,
 "lobby": false,
@@ -2179,7 +2185,6 @@
 "duration": 2500,
 "artist": "Fleetwood Mac",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -2250,7 +2255,6 @@
 "duration": 2680,
 "artist": "Foreigner",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -2681,7 +2685,6 @@
 "duration": 2060,
 "artist": "Gorillaz",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -2702,7 +2705,6 @@
 "duration": 1660,
 "artist": "Gorillaz",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -2733,7 +2735,6 @@
 "duration": 1330,
 "artist": "Gorillaz",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -2764,7 +2765,6 @@
 "duration": 1390,
 "artist": "Graham Kartna",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -2784,8 +2784,7 @@
 "title": "[ERR0*)] Ram Ranch 7",
 "duration": 6860,
 "artist": "Grant MacDonald",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -2795,8 +2794,7 @@
 "title": "[ERR1!@%] Ram Ranch",
 "duration": 4090,
 "artist": "Grant MacDonald",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -2807,7 +2805,6 @@
 "duration": 1530,
 "artist": "Green Day",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -2818,7 +2815,6 @@
 "duration": 2850,
 "artist": "Green Day",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -2829,7 +2825,6 @@
 "duration": 2240,
 "artist": "Green Day",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -3045,6 +3040,116 @@
 "genre": "Electronic"
 },
 {
+"url": "https://files.catbox.moe/z1kgsz.mp3",
+"title": "12 A DAY",
+"duration": 690,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/ojf8mw.mp3",
+"title": "ALMONDS",
+"duration": 1100,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/1pbdz2.mp3",
+"title": "ARTHUR",
+"duration": 540,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/5gt87d.mp3",
+"title": "Chemical Burns",
+"duration": 1890,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/ufid11.mp3",
+"title": "CMYK",
+"duration": 1630,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/xyseil.mp3",
+"title": "Drawing The Blinds",
+"duration": 1440,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/9hdy5s.mp3",
+"title": "FIT TOGETHER",
+"duration": 880,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/pe5knc.mp3",
+"title": "FRYING ON THE HOT CONCRETE",
+"duration": 1360,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/64g9sc.mp3",
+"title": "Glass",
+"duration": 2190,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/zdmpdi.mp3",
+"title": "GLOCKENSPIEL",
+"duration": 810,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/ekoaus.mp3",
+"title": "[ER#$-P3E IS STO4ED IN THE BA#$LS",
+"duration": 260,
+"artist": "HOME",
+"genre": "Electronic",
+"secret": true,
+"lobby": false,
+"jukebox": true
+},
+{
 "url": "https://files.catbox.moe/18lvy9.m4a",
 "title": "The Reason",
 "duration": 2320,
@@ -3129,8 +3234,7 @@
 "title": "[E-R-R] A Ghost's Pumpkin Soup",
 "duration": 2040,
 "artist": "Hunnid-P & Tomoya Ohtani",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -3141,7 +3245,6 @@
 "duration": 1440,
 "artist": "ibitbt",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -3192,7 +3295,6 @@
 "duration": 4480,
 "artist": "Infected Mushroom",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -3203,7 +3305,6 @@
 "duration": 3940,
 "artist": "Infected Mushroom",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -3284,7 +3385,6 @@
 "duration": 2080,
 "artist": "Jack Stauber",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -3295,7 +3395,6 @@
 "duration": 1880,
 "artist": "Jack Stauber",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -3355,8 +3454,7 @@
 "title": "[ER000] Credo",
 "duration": 1830,
 "artist": "Jan Valta & Adam Sporka",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Sol Common Precursors"
@@ -3396,8 +3494,7 @@
 "title": "[ERR02]Holding Out for a $hRHeK",
 "duration": 2360,
 "artist": "Jennifer Saunders",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -3467,8 +3564,7 @@
 "title": "[E##%^] Pizza Time",
 "duration": 870,
 "artist": "J. Jonah Jameson",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Arcade"
@@ -3648,8 +3744,7 @@
 "title": "[E@EE#]Ikouze Paradise",
 "duration": 2570,
 "artist": "Junji Majima",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Sol Common Precursors"
@@ -3950,7 +4045,6 @@
 "duration": 2240,
 "artist": "KNOWER",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -4011,7 +4105,6 @@
 "duration": 1770,
 "artist": "Lemon Demon",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -4031,8 +4124,7 @@
 "title": "[ER%#][SU$]Among Us",
 "duration": 730,
 "artist": "Leonz",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -4232,8 +4324,7 @@
 "title": "[ERR01$] Dangerous Bastard",
 "duration": 2480,
 "artist": "Love Fist",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -4243,8 +4334,7 @@
 "title": "[ERR@!3] Fist Fury",
 "duration": 1920,
 "artist": "Love Fist",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -4600,16 +4690,6 @@
 "genre": "Pop"
 },
 {
-"url": "https://files.catbox.moe/y3x3ft.m4a",
-"title": "Down Under",
-"duration": 2220,
-"artist": "Men at Work",
-"secret": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Pop"
-},
-{
 "url": "https://files.catbox.moe/qdrvvi.m4a",
 "title": "Overkill",
 "duration": 2290,
@@ -4814,8 +4894,7 @@
 "title": "[ER666]Kar En Tuk",
 "duration": 3400,
 "artist": "Mick Gordon",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Metal"
@@ -4856,7 +4935,6 @@
 "duration": 1770,
 "artist": "Mild High Club",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -5346,8 +5424,7 @@
 "title": "[ERR-][ER$2]Bustin'",
 "duration": 2470,
 "artist": "Neil Cicierega",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -5357,8 +5434,7 @@
 "title": "[ER$%]Wow Wow",
 "duration": 2090,
 "artist": "Neil Cicierega",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -5404,22 +5480,11 @@
 "genre": "Alternative"
 },
 {
-"url": "https://files.catbox.moe/i4fodk.m4a",
-"title": "Blue Monday",
-"duration": 4460,
-"artist": "New Order",
-"secret": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
-},
-{
 "url": "https://files.catbox.moe/3zmjbi.m4a",
 "title": "Ceremony",
 "duration": 2660,
 "artist": "New Order",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -5460,7 +5525,6 @@
 "duration": 3000,
 "artist": "New Radicals",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -5550,8 +5614,7 @@
 "title": "[ERR#@]Mansion Party",
 "duration": 1640,
 "artist": "Ninja Sex Party",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Disco, Funk, Soul, and R&B"
@@ -5561,8 +5624,7 @@
 "title": "[ER*%]Welcome To My Parents House",
 "duration": 2360,
 "artist": "Ninja Sex Party",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Disco, Funk, Soul, and R&B"
@@ -5582,8 +5644,7 @@
 "title": "[ERROR]Welcome to the $C%#M@# Zone",
 "duration": 1610,
 "artist": "OblivionFall",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -5723,8 +5784,7 @@
 "title": "[ERR!!!!!] No Cock Like Horse Cock",
 "duration": 1400,
 "artist": "Pepper Coyote",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Country and Western"
@@ -5825,7 +5885,6 @@
 "duration": 2530,
 "artist": "PilotRedSun",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -5846,7 +5905,6 @@
 "duration": 2160,
 "artist": "Poison",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -5887,7 +5945,6 @@
 "duration": 2270,
 "artist": "Poison",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -6267,8 +6324,7 @@
 "title": "[ERR!ERR!012#%] E1M1 - At Doom's Gate",
 "duration": 1010,
 "artist": "Robert Prince",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Arcade"
@@ -6308,8 +6364,7 @@
 "title": "[Q!#ERRoR] Firefighter Fantasy",
 "duration": 4880,
 "artist": "Rock Hard",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -6470,7 +6525,6 @@
 "duration": 1110,
 "artist": "Shoji Meguro",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Arcade"
@@ -6510,8 +6564,7 @@
 "title": "[ERR@&#]Repost",
 "duration": 2190,
 "artist": "SHOKK 青",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -6932,7 +6985,6 @@
 "duration": 2420,
 "artist": "Sugar Ray",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -6963,7 +7015,6 @@
 "duration": 1870,
 "artist": "Superorganism",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -7009,9 +7060,9 @@
 "genre": "Alternative"
 },
 {
-"url": "https://files.catbox.moe/17w9d1.m4a",
-"title": "Once in a Lifetime",
-"duration": 2250,
+"url": "https://files.catbox.moe/aw43y2.mp3",
+"title": "Once in a Lifetime (2005 Remaster)",
+"duration": 2590,
 "artist": "Talking Heads",
 "secret": false,
 "lobby": false,
@@ -7053,8 +7104,7 @@
 "title": "[ERR@#HONK$%]Banana Man",
 "duration": 2450,
 "artist": "Tally Hall",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -7154,8 +7204,7 @@
 "title": "[ERR$R] FIRST DAY OUT THE CLOSET",
 "duration": 2520,
 "artist": "Tee Grizzly",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -7246,7 +7295,6 @@
 "duration": 2250,
 "artist": "The Cars",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7307,7 +7355,6 @@
 "duration": 1880,
 "artist": "The Clash",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7398,7 +7445,6 @@
 "duration": 3050,
 "artist": "The Eagles",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7409,7 +7455,6 @@
 "duration": 2110,
 "artist": "The Eagles",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7500,7 +7545,6 @@
 "duration": 2570,
 "artist": "Them Crooked Vultures",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7561,7 +7605,6 @@
 "duration": 2600,
 "artist": "The Police",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7622,7 +7665,6 @@
 "duration": 2120,
 "artist": "The Scary Jokes",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -7633,7 +7675,6 @@
 "duration": 2940,
 "artist": "The Scary Jokes",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -7654,7 +7695,6 @@
 "duration": 2660,
 "artist": "The Smashing Pumpkins",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7665,7 +7705,6 @@
 "duration": 2010,
 "artist": "The Smashing Pumpkins",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7676,7 +7715,6 @@
 "duration": 1990,
 "artist": "The Soft Pack",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -7827,7 +7865,6 @@
 "duration": 1720,
 "artist": "Thursday",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -8047,8 +8084,7 @@
 "title": "[ERR-$MADRE$] Begin Again",
 "duration": 1300,
 "artist": "Vera Keyes",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Jazz and Lounge"
@@ -8108,8 +8144,7 @@
 "title": "[ER$%R2]Hardware Store",
 "duration": 2240,
 "artist": "Weird Al Yankovic",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -8170,7 +8205,6 @@
 "duration": 2840,
 "artist": "Whitesnake",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -8201,7 +8235,6 @@
 "duration": 2270,
 "artist": "Will Smith",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -8221,8 +8254,7 @@
 "title": "[ERR#$][ERROR!]Rats",
 "duration": 1060,
 "artist": "WittyUsername",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -8342,8 +8374,7 @@
 "title": "[ERRRR#@]DAGOTHWAVE",
 "duration": 2280,
 "artist": "Young Scrolls",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -8353,11 +8384,10 @@
 "title": "[ER@$$$]Filthy Rich",
 "duration": 1400,
 "artist": "Young Scrolls",
-"secret": false,
-"emag": true,
+"secret": true,
 "lobby": false,
 "jukebox": true,
-"genre": "Electroinc"
+"genre": "Electronic"
 },
 {
 "url": "https://files.catbox.moe/6kn1k1.m4a",
@@ -8395,7 +8425,6 @@
 "duration": 2580,
 "artist": "ZZ Top",
 "secret": false,
-"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -8448,7 +8477,7 @@
 "secret": false,
 "lobby": false,
 "jukebox": true,
-"genre": "Country"
+"genre": "Country and Western"
 },
 {
 "url": "https://files.catbox.moe/wmls2q.mp3",
@@ -8458,7 +8487,7 @@
 "secret": false,
 "lobby": false,
 "jukebox": true,
-"genre": "Rap"
+"genre": "Hip-Hop and Rap"
 },
 {
 "url": "https://files.catbox.moe/me6nh9.mp3",
@@ -8519,5 +8548,135 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Arcade"
+},
+{
+"url": "https://files.catbox.moe/q3f6sq.mp3",
+"title": "Rhapsody In Blue",
+"duration": 9870,
+"artist": "Kamil Hala, Slovak Philharmonic Orchestra, Libor Pešek",
+"genre": "Classical and Orchestral",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/qa6ahi.mp3",
+"title": "Deadlines",
+"duration": 1570,
+"artist": "Network Music Ensemble",
+"genre": "Rock",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/xlrbbe.mp3",
+"title": "Pure Imagination",
+"duration": 2060,
+"artist": "Fiona Apple",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/w48oqv.mp3",
+"title": "Pushin' The Speed of Light",
+"duration": 2130,
+"artist": "Julia Ecklar & Anne Prather",
+"genre": "Folk and Indie",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/yvn8bu.mp3",
+"title": "Stuck Here",
+"duration": 1360,
+"artist": "Free Fall & Other Delights",
+"genre": "Folk and Indie",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/hwsbsi.mp3",
+"title": "Don't Push That Button",
+"duration": 2450,
+"artist": "Duane Elms",
+"genre": "Folk and Indie",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/iizfw9.mp3",
+"title": "Late Night at the Draco Tavern",
+"duration": 2600,
+"artist": "Duane Elms",
+"genre": "Folk and Indie",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/4zaljk.mp3",
+"title": "Startide Rising",
+"duration": 1050,
+"artist": "Duane Elms",
+"genre": "Folk and Indie",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/ij2qa8.mp3",
+"title": "2AM",
+"duration": 1720,
+"artist": "William Reid",
+"genre": "Electronic",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/79q5a4.mp3",
+"title": "'Lectric Love",
+"duration": 2250,
+"artist": "The Destroyers",
+"genre": "Disco, Funk, Soul, and R&B",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/th3gzq.mp3",
+"title": "Deltron 3030",
+"duration": 2460,
+"artist": "Del The Funky Homosapien",
+"genre": "Hip-Hop and Rap",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/ohbbxv.mp3",
+"title": "After dark",
+"duration": 2590,
+"artist": "Mr.kitty",
+"genre": "Alternative",
+"secret": false,
+"lobby": false,
+"jukebox": true
+},
+{
+"url": "https://files.catbox.moe/jt0ahe.mp3",
+"title": "Free Bird",
+"duration": 5470,
+"artist": "Lynyrd Skynyrd",
+"genre": "Rock",
+"secret": false,
+"lobby": false,
+"jukebox": true
 }
 ]

@@ -20052,11 +20052,6 @@
 /obj/structure/railing,
 /turf/simulated/open,
 /area/maintenance/station/exploration)
-"fax" = (
-/obj/structure/foamedmetal,
-/obj/structure/grille,
-/turf/space/basic,
-/area/rift/surfacebase/outside/outside3)
 "fbX" = (
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/reinforced,
@@ -26712,7 +26707,7 @@
 "xUe" = (
 /obj/structure/foamedmetal,
 /obj/structure/grille,
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/ai)
 "xVh" = (
 /obj/effect/floor_decal/borderfloor{
@@ -53561,7 +53556,7 @@ hNS
 hNS
 aBL
 bWN
-fax
+iKl
 xUe
 eod
 eod
@@ -53577,7 +53572,7 @@ aTG
 eod
 eod
 eod
-fax
+iKl
 cYF
 afq
 afq

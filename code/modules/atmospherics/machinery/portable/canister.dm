@@ -425,17 +425,12 @@ update_flag
 					log_open()
 			valve_open = !valve_open
 			. = TRUE
-		if("eject")
-			if(holding)
-				if(valve_open)
-					valve_open = 0
-					release_log += "Valve was <b>closed</b> by [usr] ([usr.ckey]), stopping the transfer into the [holding]<br>"
-				if(istype(holding, /obj/item/tank))
-					holding.manipulated_by = usr.real_name
-				holding.loc = loc
-				holding = null
-			. = TRUE
 	update_appearance()
+
+/obj/machinery/portable_atmospherics/canister/on_eject(obj/item/tank/tank, mob/user)
+	user.action_feedback(SPAN_WARNING("[src]'s valve closes automatically as you yank \the [tank] out. That was close."), src)
+	valve_open = FALSE
+	return ..()
 
 /obj/machinery/portable_atmospherics/canister/phoron/Initialize(mapload)
 	. = ..()
