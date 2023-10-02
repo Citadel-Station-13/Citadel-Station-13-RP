@@ -6,7 +6,7 @@
 		var/list/turf/simulated/floor/turfs = get_area_turfs(typesof(/area/hallway)) //list of all the empty floor turfs in the hallway areas
 		for(var/i in turfs)
 			var/turf/T = i
-			if(!(T.z in GLOB.using_map.station_levels))
+			if(!(T.z in (LEGACY_MAP_DATUM).station_levels))
 				turfs -= T
 
 		if(turfs.len) //Pick a turf to spawn at if we can
@@ -34,7 +34,7 @@
 	density = 0
 	color = DEAD_PLANT_COLOUR
 
-/obj/effect/dead_plant/attack_hand()
+/obj/effect/dead_plant/attack_hand(mob/user, list/params)
 	qdel(src)
 
 /obj/effect/dead_plant/attackby()
@@ -45,13 +45,13 @@
 
 /obj/effect/plant
 	name = "plant"
-	anchored = 1
-	can_buckle = 1
+	anchored = TRUE
+	buckle_allowed = TRUE
 	opacity = 0
 	density = 0
 	icon = 'icons/obj/hydroponics_growing.dmi'
 	icon_state = "bush4-1"
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = 2
 
 	var/health = 15
@@ -72,8 +72,9 @@
 	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
 
 /obj/effect/plant/Destroy()
-	if(SSplants)
-		SSplants.remove_plant(src)
+	plant = null
+	parent = null
+	SSplants.remove_plant(src)
 	for(var/obj/effect/plant/neighbor in range(1,src))
 		SSplants.add_plant(neighbor)
 	return ..()
@@ -121,7 +122,8 @@
 	//Some plants eat through plating.
 	if(islist(seed.chems) && !isnull(seed.chems["pacid"]))
 		var/turf/T = get_turf(src)
-		T.ex_act(prob(80) ? 3 : 2)
+		var/P = prob(80)? 3 : 2
+		LEGACY_EX_ACT(T, P, null)
 
 /obj/effect/plant/update_icon()
 	//TODO: should really be caching this.
@@ -244,8 +246,8 @@
 		sampled = 1
 	else
 		..()
-		if(W.force)
-			health -= W.force
+		if(W.damage_force)
+			health -= W.damage_force
 	check_health()
 
 //handles being overrun by vines - note that attacker_parent may be null in some cases
@@ -274,7 +276,7 @@
 		health -= aggression*5
 		check_health()
 
-/obj/effect/plant/ex_act(severity)
+/obj/effect/plant/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			die_off()

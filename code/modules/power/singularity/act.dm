@@ -11,7 +11,6 @@
 
 /mob/living/singularity_pull(S, current_size)
 	step_towards(src, S)
-	apply_effect(current_size * 3, IRRADIATE, blocked = getarmor(null, "rad"))
 
 /mob/living/carbon/human/singularity_act()
 	var/gain = 20
@@ -31,21 +30,21 @@
 				step_towards(hand, S)
 				to_chat(src, "<span class = 'warning'>The [S] pulls \the [hand] from your grip!</span>")
 
-	if(!lying && (!shoes || !(shoes.clothing_flags & NOSLIP)) && (!species || !(species.flags & NOSLIP)) && prob(current_size*5))
+	if(!lying && (!shoes || !(shoes.clothing_flags & NOSLIP)) && (!species || !(species.species_flags & NOSLIP)) && prob(current_size*5))
 		to_chat(src, "<span class='danger'>A strong gravitational force slams you to the ground!</span>")
-		Weaken(current_size)
+		afflict_paralyze(20 * current_size)
 	..()
 
 /obj/singularity_act()
-	if(flags & ATOM_ABSTRACT)
+	if(atom_flags & ATOM_ABSTRACT)
 		return
-	ex_act(1)
+	legacy_ex_act(1)
 	if(!QDELETED(src))
 		qdel(src)
 	return 2
 
 /obj/singularity_pull(S, current_size)
-	if(flags & ATOM_ABSTRACT)
+	if(atom_flags & ATOM_ABSTRACT)
 		return
 	if(anchored)
 		if(current_size >= STAGE_FIVE)
@@ -62,7 +61,7 @@
 /obj/item/singularity_pull(S, current_size)
 	spawn(0) //this is needed or multiple items will be thrown sequentially and not simultaneously
 		if(current_size >= STAGE_FOUR)
-			//throw_at(S, 14, 3)
+			//throw_at_old(S, 14, 3)
 			step_towards(src,S)
 			sleep(1)
 			step_towards(src,S)
@@ -91,7 +90,7 @@
 	qdel(src)
 	return 50000
 
-/obj/item/projectile/beam/emitter/singularity_pull()
+/obj/projectile/beam/emitter/singularity_pull()
 	return
 
 /obj/effect/projectile/emitter/singularity_pull()
@@ -110,7 +109,7 @@
 	if(flooring && current_size >= STAGE_THREE)
 		if(prob(current_size / 2))
 			var/leave_tile = TRUE
-			if(broken || burnt || flooring.flags & TURF_IS_FRAGILE)
+			if(broken || burnt || flooring.flooring_flags & TURF_IS_FRAGILE)
 				leave_tile = FALSE
 			playsound(src, 'sound/items/crowbar.ogg', 50, 1)
 			make_plating(leave_tile)

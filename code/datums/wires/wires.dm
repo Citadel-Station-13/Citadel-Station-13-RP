@@ -92,7 +92,7 @@
 		ui = new(user, src, "Wires", "[proper_name] wires")
 		ui.open()
 
-/datum/wires/ui_state(mob/user)
+/datum/wires/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /datum/wires/ui_data(mob/user)
@@ -170,7 +170,7 @@
 				to_chat(user, "<span class='error'>You need wirecutters!</span>")
 				return
 
-			playsound(holder, I.usesound, 20, 1)
+			playsound(holder, I.tool_sound, 20, 1)
 			cut_color(color)
 			return TRUE
 

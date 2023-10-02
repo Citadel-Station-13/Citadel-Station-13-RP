@@ -39,9 +39,3 @@
 	name = T_BOARD("resleeving control console")
 	build_path = /obj/machinery/computer/transhuman/resleeving
 	origin_tech = list(TECH_DATA = 5)
-
-
-/obj/item/circuitboard/body_designer
-	name = T_BOARD("body design console")
-	build_path = /obj/machinery/computer/transhuman/designer
-	origin_tech = list(TECH_DATA = 5)

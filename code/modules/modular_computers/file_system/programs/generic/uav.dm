@@ -4,7 +4,7 @@
 /datum/computer_file/program/uav
 	filename = "rigger"
 	filedesc = "UAV Control"
-	nanomodule_path = /datum/nano_module/uav
+	tguimodule_path = /datum/tgui_module/uav
 	program_icon_state = "comm_monitor"
 	program_key_state = "generic_key"
 	program_menu_icon = "link"
@@ -12,6 +12,8 @@
 	size = 12
 	available_on_ntnet = 1
 	//requires_ntnet = 1
+<<<<<<< HEAD
+=======
 
 /datum/nano_module/uav
 	name = "UAV Control program"
@@ -80,14 +82,14 @@
 		var/obj/item/uav/U = locate(href_list["switch_uav"]) //This is a \ref to the UAV itself
 		if(!istype(U))
 			to_chat(usr,"<span class='warning'>Something is blocking the connection to that UAV. In-person investigation is required.</span>")
-			return TOPIC_NOACTION
+			return PREFERENCES_NOACTION
 
 		if(!get_signal_to(U))
 			to_chat(usr,"<span class='warning'>The screen freezes for a moment, before returning to the UAV selection menu. It's not able to connect to that UAV.</span>")
-			return TOPIC_NOACTION
+			return PREFERENCES_NOACTION
 
 		set_current(U)
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	if(href_list["del_uav"])
 		var/refstring = href_list["del_uav"] //This is a \ref to the UAV itself
@@ -101,17 +103,17 @@
 
 	else if(href_list["view_uav"])
 		if(!current_uav)
-			return TOPIC_NOACTION
+			return PREFERENCES_NOACTION
 
 		if(current_uav.check_eye(user) < 0)
 			to_chat(usr,SPAN_WARNING("The screen freezes for a moment, before returning to the UAV selection menu. It's not able to connect to that UAV."))
 		else
 			viewing_uav(user) ? unlook(user) : look(user)
-		return TOPIC_NOACTION
+		return PREFERENCES_NOACTION
 
 	else if(href_list["power_uav"])
 		if(!current_uav)
-			return TOPIC_NOACTION
+			return PREFERENCES_NOACTION
 		else if(current_uav.toggle_power())
 			//Clean up viewers faster
 			if(LAZYLEN(viewers))
@@ -119,7 +121,7 @@
 					var/M = W.resolve()
 					if(M)
 						unlook(M)
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 /datum/nano_module/uav/proc/DefaultTopicState()
 	return global.default_state
@@ -171,8 +173,8 @@
 		else
 			return 0
 
-	var/list/zlevels_in_range = GLOB.using_map.get_map_levels(their_z, FALSE)
-	var/list/zlevels_in_long_range = GLOB.using_map.get_map_levels(their_z, TRUE) - zlevels_in_range
+	var/list/zlevels_in_range = (LEGACY_MAP_DATUM).get_map_levels(their_z, FALSE)
+	var/list/zlevels_in_long_range = (LEGACY_MAP_DATUM).get_map_levels(their_z, TRUE) - zlevels_in_range
 	var/their_signal = 0
 	for(var/relay in ntnet_global.relays)
 		var/obj/machinery/ntnet_relay/R = relay
@@ -264,3 +266,4 @@
 	M.clear_fullscreen("fishbed",0)
 	M.clear_fullscreen("scanlines",0)
 	M.clear_fullscreen("whitenoise",0)
+>>>>>>> 787c6065a7ab2843080de41ea1d62e0322e8dd9c

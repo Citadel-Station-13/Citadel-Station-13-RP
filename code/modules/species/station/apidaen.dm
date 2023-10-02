@@ -1,4 +1,6 @@
 /datum/species/apidaen
+	uid = SPECIES_ID_APIDAEN
+	id = SPECIES_ID_APIDAEN
 	name = SPECIES_APIDAEN
 	name_plural = SPECIES_APIDAEN
 
@@ -9,13 +11,14 @@
 	tail = "tail" //Bee tail. I've desaturated it for the sprite sheet.
 	icobase_tail = 1
 
-	darksight = 6     // Not quite as good as spiders. Meant to represent compound eyes and/or better hearing.
+	vision_innate = /datum/vision/baseline/species_tier_2
+
 	slowdown  = -0.10 // Speed boost similar to spiders, slightly nerfed due to two less legs.
 	brute_mod = 0.8   // 20% brute damage reduction seems fitting to match spiders, due to exoskeletons.
 	burn_mod  = 1.15  // 15% burn damage increase, the same as spiders. For the same reason.
 
-	num_alternate_languages = 2
-	secondary_langs = list(LANGUAGE_VESPINAE)
+	max_additional_languages = 2
+	intrinsic_languages = LANGUAGE_ID_VASILISSAN
 
 	reagent_tag = IS_APIDAEN
 
@@ -41,8 +44,8 @@
 
 	//primitive_form = SPECIES_MONKEY //I dunno. Replace this in the future.
 
-	flags = NO_MINOR_CUT
-	spawn_flags = SPECIES_CAN_JOIN
+	species_flags = NO_MINOR_CUT
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	color_mult = 1
@@ -74,11 +77,14 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/nectar_select,
 		/mob/living/carbon/human/proc/nectar_pick,
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
-
+	abilities = list(
+		/datum/ability/species/toggle_flight
+	)
 // Did you know it's actually called a honey stomach? I didn't!
 /obj/item/organ/internal/honey_stomach
 	icon = 'icons/obj/surgery.dmi'
@@ -97,31 +103,30 @@
 	var/short_emote_descriptor = list("coaxes", "scoops")
 	var/self_emote_descriptor = list("scoop", "coax", "heave")
 	var/nectar_type = "nectar (honey)"
-	var/mob/organ_owner = null
 	var/gen_cost = 5
 
 /obj/item/organ/internal/honey_stomach/Initialize(mapload)
 	. = ..()
 	create_reagents(usable_volume)
 
-/obj/item/organ/internal/honey_stomach/process(delta_time)
-	if(!owner) return
-	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
-	var/before_gen
-	if(parent && generated_reagents && organ_owner) //Is it in the chest/an organ, has reagents, and is 'activated'
-		before_gen = reagents.total_volume
-		if(reagents.total_volume < reagents.maximum_volume)
-			if(organ_owner.nutrition >= gen_cost)
-				do_generation()
+/obj/item/organ/internal/honey_stomach/tick_life(dt)
+	. = ..()
+	if(.)
+		return
+
+	var/before_gen = reagents.total_volume
+	if(reagents.total_volume < reagents.maximum_volume)
+		if(owner.nutrition >= gen_cost)
+			do_generation()
 
 	if(reagents)
 		if(reagents.total_volume == reagents.maximum_volume * 0.05)
-			to_chat(organ_owner, SPAN_NOTICE("[pick(empty_message)]"))
+			to_chat(owner, SPAN_NOTICE("[pick(empty_message)]"))
 		else if(reagents.total_volume == reagents.maximum_volume && before_gen < reagents.maximum_volume)
-			to_chat(organ_owner, SPAN_WARNING("[pick(full_message)]"))
+			to_chat(owner, SPAN_WARNING("[pick(full_message)]"))
 
 /obj/item/organ/internal/honey_stomach/proc/do_generation()
-	organ_owner.nutrition -= gen_cost
+	owner.nutrition -= gen_cost
 	for(var/reagent in generated_reagents)
 		reagents.add_reagent(reagent, generated_reagents[reagent])
 
@@ -140,10 +145,9 @@
 		var/selection = input(src, "Choose your character's nectar. Choosing nothing will result in a default of honey.", "Nectar Type", honey_stomach.nectar_type) as null|anything in acceptable_nectar_types
 		if(selection)
 			honey_stomach.nectar_type = selection
-		verbs |= /mob/living/carbon/human/proc/nectar_pick
-		verbs -= /mob/living/carbon/human/proc/nectar_select
-		honey_stomach.organ_owner = src
-		honey_stomach.emote_descriptor = list("nectar fresh from [honey_stomach.organ_owner]!", "nectar from [honey_stomach.organ_owner]!")
+		add_verb(src, /mob/living/carbon/human/proc/nectar_pick)
+		remove_verb(src, /mob/living/carbon/human/proc/nectar_select)
+		honey_stomach.emote_descriptor = list("nectar fresh from [honey_stomach.owner]!", "nectar from [honey_stomach.owner]!")
 
 	else
 		to_chat(src, SPAN_NOTICE("You lack the organ required to produce nectar."))

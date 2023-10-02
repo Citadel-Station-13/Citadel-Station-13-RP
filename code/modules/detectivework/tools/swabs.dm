@@ -11,17 +11,18 @@
 /obj/item/forensics/swab/proc/is_used()
 	return used
 
-/obj/item/forensics/swab/attack(var/mob/living/M, var/mob/user)
-
-	if(!ishuman(M))
+/obj/item/forensics/swab/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
 		return ..()
-
+	if(!ishuman(target))
+		return ..()
 	if(is_used())
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/H = target
 	var/sample_type
 
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(user != H && H.a_intent != "help" && !H.lying)
 		user.visible_message("<span class='danger'>\The [user] tries to take a swab sample from \the [H], but they move away.</span>")
 		return
@@ -66,12 +67,10 @@
 
 	if(sample_type)
 		set_used(sample_type, H)
-		return
-	return 1
 
-/obj/item/forensics/swab/afterattack(var/atom/A, var/mob/user, var/proximity)
+/obj/item/forensics/swab/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
-	if(!proximity || istype(A, /obj/machinery/dnaforensics))
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) || istype(target, /obj/machinery/dnaforensics))
 		return
 
 	if(is_used())
@@ -81,14 +80,14 @@
 	add_fingerprint(user)
 
 	var/list/choices = list()
-	if(A.blood_DNA)
+	if(target.blood_DNA)
 		choices |= "Blood"
-	if(istype(A, /obj/item/clothing))
+	if(istype(target, /obj/item/clothing))
 		choices |= "Gunshot Residue"
 
 	var/choice
 	if(!choices.len)
-		to_chat(user, "<span class='warning'>There is no evidence on \the [A].</span>")
+		to_chat(user, "<span class='warning'>There is no evidence on \the [target].</span>")
 		return
 	else if(choices.len == 1)
 		choice = choices[1]
@@ -100,21 +99,21 @@
 
 	var/sample_type
 	if(choice == "Blood")
-		if(!A.blood_DNA || !A.blood_DNA.len) return
-		dna = A.blood_DNA.Copy()
+		if(!target.blood_DNA || !target.blood_DNA.len) return
+		dna = target.blood_DNA.Copy()
 		sample_type = "blood"
 
 	else if(choice == "Gunshot Residue")
-		var/obj/item/clothing/B = A
+		var/obj/item/clothing/B = target
 		if(!istype(B) || !B.gunshot_residue)
-			to_chat(user, "<span class='warning'>There is no residue on \the [A].</span>")
+			to_chat(user, "<span class='warning'>There is no residue on \the [target].</span>")
 			return
 		gsr = B.gunshot_residue
 		sample_type = "residue"
 
 	if(sample_type)
-		user.visible_message("\The [user] swabs \the [A] for a sample.", "You swab \the [A] for a sample.")
-		set_used(sample_type, A)
+		user.visible_message("\The [user] swabs \the [target] for a sample.", "You swab \the [target] for a sample.")
+		set_used(sample_type, target)
 
 /obj/item/forensics/swab/proc/set_used(var/sample_str, var/atom/source)
 	name = "[initial(name)] ([sample_str] - [source])"

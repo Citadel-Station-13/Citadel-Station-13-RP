@@ -24,7 +24,7 @@
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
 
 	mmi = new /obj/item/mmi/digital/robot(src) // Explicitly a drone.
-	overlays.Cut()
+	cut_overlays()
 	init_id()
 
 	updatename("Syndicate")

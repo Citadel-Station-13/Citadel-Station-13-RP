@@ -13,10 +13,11 @@
 			C.adjustBruteLoss(rand(5,25) * weakness)
 			C.adjustFireLoss(rand(5,25) * weakness)
 			C.adjustBrainLoss(rand(1,5) * weakness)
+			C.afflict_radiation(RAD_MOB_AFFLICT_ANOMALY_BURST)
 			C.apply_effect(25 * weakness, IRRADIATE)
 			C.nutrition -= min(50 * weakness, C.nutrition)
 			C.make_dizzy(6 * weakness)
-			C.weakened += 6 * weakness
+			C.afflict_paralyze(20 * weakness * 6)
 
 /datum/artifact_effect/hurt/DoEffectAura()
 	if(holder)
@@ -31,7 +32,7 @@
 				C.adjustToxLoss(1 * weakness)
 				C.adjustOxyLoss(1 * weakness)
 				C.adjustBrainLoss(0.1 * weakness)
-				C.updatehealth()
+				C.update_health()
 
 /datum/artifact_effect/hurt/DoEffectPulse()
 	if(holder)
@@ -45,4 +46,4 @@
 				C.adjustToxLoss(3 * weakness)
 				C.adjustOxyLoss(3 * weakness)
 				C.adjustBrainLoss(0.1 * weakness)
-				C.updatehealth()
+				C.update_health()

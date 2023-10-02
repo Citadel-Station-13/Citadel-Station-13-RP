@@ -33,27 +33,17 @@
 	container_name = "Special Ops crate"
 	contraband = 1
 
-/datum/supply_pack/supply/moghes
-	name = "Moghes imports"
-	contains = list(
-			/obj/item/reagent_containers/food/drinks/bottle/redeemersbrew = 2,
-			/obj/item/reagent_containers/food/snacks/unajerky = 4
-			)
-	cost = 25
-	container_type = /obj/structure/closet/crate
-	container_name = "Moghes imports crate"
-	contraband = 1
-
 /datum/supply_pack/munitions/bolt_rifles_militia
- 	name = "Weapon - Surplus militia rifles"
- 	contains = list(
- 			/obj/item/gun/projectile/shotgun/pump/rifle = 3,
- 			/obj/item/ammo_magazine/clip/c762 = 6
- 			)
- 	cost = 50
- 	contraband = 1
- 	container_type = /obj/structure/closet/crate/secure/weapon
- 	container_name = "Ballistic weapons crate"
+    name = "Weapon - Misplaced militia rifles"
+    contains = list(
+            /obj/item/gun/ballistic/shotgun/pump/rifle = 3,
+            /obj/item/ammo_magazine/clip/c762 = 6
+            )
+    cost = 50
+    contraband = 1
+    container_type = /obj/structure/closet/crate/secure/weapon
+    container_name = "Ballistic weapons crate"
+    access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/randomised/misc/telecrate //you get something awesome, a couple of decent things, and a few weak/filler things
 	name = "ERR_NULL_ENTRY" //null crate! also dream maker is hell,
@@ -77,7 +67,7 @@
 	name = "operator's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/ops/PopulateContents()
-	new /obj/item/gun/projectile/shotgun/pump/combat(src)
+	new /obj/item/gun/ballistic/shotgun/pump/combat(src)
 	new /obj/item/clothing/suit/storage/vest/heavy/merc(src)
 	new /obj/item/clothing/glasses/night(src)
 	new /obj/item/storage/box/anti_photons(src)
@@ -89,7 +79,7 @@
 
 /obj/item/storage/box/cargo_null_entry_kit/doctor/PopulateContents()
 	new /obj/item/storage/firstaid/combat(src)
-	new /obj/item/gun/projectile/dartgun(src)
+	new /obj/item/gun/ballistic/dartgun(src)
 	new /obj/item/reagent_containers/hypospray(src)
 	new /obj/item/reagent_containers/glass/bottle/chloralhydrate(src)
 	new /obj/item/reagent_containers/glass/bottle/cyanide(src)
@@ -110,8 +100,7 @@
 	name = "spy's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/spy/PopulateContents()
-	new /obj/item/gun/projectile/silenced(src)
-	new /obj/item/chameleon(src)
+	new /obj/item/gun/ballistic/silenced(src)
 	new /obj/item/storage/box/syndie_kit/chameleon(src)
 	new /obj/item/encryptionkey/syndicate(src)
 	new /obj/item/card/id/syndicate(src)
@@ -122,7 +111,7 @@
 	name = "professional's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/pro/PopulateContents()
-	new /obj/item/gun/projectile/silenced(src)
+	new /obj/item/gun/ballistic/silenced(src)
 	new /obj/item/gun/energy/ionrifle/pistol(src)
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 	new /obj/item/card/emag(src)
@@ -150,13 +139,6 @@
 	container_name = "shadier crate"
 	contraband = 1
 	group = "Supplies"
-
-/datum/supply_pack/supply/wolfgirl
-	name = "Wolfgirl Crate"
-	cost = 200 //I mean, it's a whole wolfgirl
-	container_type = /obj/structure/largecrate/animal/wolfgirl
-	container_name = "Wolfgirl crate"
-	contraband = 1
 
 /datum/supply_pack/supply/medieval
 	name = "Knight set crate"
@@ -213,3 +195,31 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "teutonic armor crate"
 	contraband = 1
+
+/datum/supply_pack/robotics/salvage
+	name = "Redirected Mech Salvage"
+	contains = list(/obj/item/mechasalvage = 6)
+	cost = 400 //High End Mech Parts, Direct To You, at an extreme markup!
+	container_type = /obj/structure/closet/crate
+	container_name = "oil-stained crate"
+	contraband = 1
+
+/datum/supply_pack/randomised/material/rareores
+	name = "Smuggled Ores and Materials"
+	num_contained = 20
+	contains = list(
+		/obj/item/stack/material/bananium,
+		/obj/item/stack/material/diamond,
+		/obj/item/stack/material/durasteel,
+		/obj/item/stack/material/morphium,
+		/obj/item/stack/material/platinum,
+		/obj/item/stack/material/verdantium,
+		/obj/item/stack/material/mhydrogen,
+		/obj/item/stack/material/silencium,
+		/obj/item/stack/material/valhollide
+		)
+	cost = 350
+	container_type = /obj/structure/closet/crate
+	container_name = "dented mining crate"
+	contraband = 1
+	group = "Materials"

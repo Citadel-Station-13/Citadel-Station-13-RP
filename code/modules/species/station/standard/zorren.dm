@@ -1,16 +1,20 @@
 /datum/species/hi_zoxxen
+	uid = SPECIES_ID_ZORREN_HIGH
+	id = SPECIES_ID_ZORREN_HIGH
+	id = SPECIES_ID_ZORREN
 	name = SPECIES_ZORREN_HIGH
 	name_plural = "Zorren"
 	//primitive_form = "" //We don't have fox-monkey sprites.
+	default_bodytype = BODYTYPE_ZORREN_HIGH
 
 	icobase = 'icons/mob/species/zorren_hi/body_greyscale.dmi'
 	deform  = 'icons/mob/species/zorren_hi/deformed_body.dmi'
 	tail = "tail"
 	icobase_tail = 1
 
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_TERMINUS)
-	name_language = LANGUAGE_TERMINUS
+	max_additional_languages = 3
+	intrinsic_languages = LANGUAGE_ID_TERMINUS
+	name_language = LANGUAGE_ID_TERMINUS
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
 	max_age = 80
@@ -32,7 +36,7 @@
 	)
 
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_SECRET
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"
@@ -49,6 +53,9 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 
 	unarmed_types = list(
@@ -59,18 +66,21 @@
 	)
 
 /datum/species/fl_zorren
+	uid = SPECIES_ID_ZORREN_FLAT
+	id = SPECIES_ID_ZORREN
 	name = SPECIES_ZORREN_FLAT
 	name_plural = "Zorren"
 	//primitive_form = "" //We don't have fennec-monkey sprites.
+	default_bodytype = BODYTYPE_ZORREN_FLAT
 
 	icobase = 'icons/mob/species/zorren_fl/body_greyscale.dmi'
 	deform  = 'icons/mob/species/zorren_fl/deformed_body.dmi'
 	tail = "tail"
 	icobase_tail = 1
 
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_TERMINUS)
-	name_language = LANGUAGE_TERMINUS
+	max_additional_languages = 3
+	intrinsic_languages = LANGUAGE_ID_TERMINUS
+	name_language = LANGUAGE_ID_TERMINUS
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
 	max_age = 80
@@ -93,7 +103,7 @@
 		/datum/category_item/catalogue/fauna/flatzorren,
 	)
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_SECRET
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"
@@ -104,6 +114,9 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 
 	heat_discomfort_strings = list(

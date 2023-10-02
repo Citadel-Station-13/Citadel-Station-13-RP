@@ -20,7 +20,10 @@
 	var/list/genes = list()
 	var/genesource = "unknown"
 
-/obj/item/disk/xenobio/attack_self(var/mob/user as mob)
+/obj/item/disk/xenobio/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(genes.len)
 		var/choice = alert(user, "Are you sure you want to wipe the disk?", "Xenobiological Data", "No", "Yes")
 		if(src && user && genes && choice && choice == "Yes" && user.Adjacent(get_turf(src)))
@@ -56,7 +59,7 @@
 /obj/machinery/xenobio/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/xenobio/attack_hand(mob/user as mob)
+/obj/machinery/xenobio/attack_hand(mob/user, list/params)
 	nano_ui_interact(user)
 
 /obj/machinery/xenobio/attackby(obj/item/W as obj, mob/user as mob)
@@ -257,7 +260,7 @@
 
 /obj/machinery/xenobio/editor
 	name = "biological genetic bombarder"
-	icon = 'icons/obj/cryogenics.dmi'
+	icon = 'icons/obj/medical/cryogenics.dmi'
 	icon_state = "cellold0"
 	disk_needs_genes = 1
 	circuit = /obj/item/circuitboard/biobombarder

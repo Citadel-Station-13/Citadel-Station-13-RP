@@ -13,7 +13,7 @@
 	set name = "Deaf sting (5)"
 	set desc="Sting target:"
 
-	var/mob/living/carbon/T = changeling_sting(5,/mob/proc/changeling_deaf_sting)
+	var/mob/living/carbon/T = changeling_sting(5, TYPE_PROC_REF(/mob, changeling_deaf_sting))
 	if(!T)	return 0
 	add_attack_logs(src,T,"Deaf sting (changeling)")
 	var/duration = 300
@@ -21,7 +21,7 @@
 		duration = duration + 100
 		to_chat(src, "<span class='notice'>They will be unable to hear for a little longer.</span>")
 	to_chat(T, "<span class='danger'>Your ears pop and begin ringing loudly!</span>")
-	T.sdisabilities |= DEAF
-	spawn(duration)	T.sdisabilities &= ~DEAF
+	T.sdisabilities |= SDISABILITY_DEAF
+	spawn(duration)	T.sdisabilities &= ~SDISABILITY_DEAF
 	feedback_add_details("changeling_powers","DS")
 	return 1

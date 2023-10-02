@@ -25,7 +25,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "rift"
 
-/obj/effect/phase_shift/ex_act()
+/obj/effect/phase_shift/legacy_ex_act()
 	return
 
 /obj/effect/phase_shift/Initialize(mapload)

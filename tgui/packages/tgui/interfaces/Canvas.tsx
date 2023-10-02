@@ -1,4 +1,4 @@
-import { Color } from 'common/color';
+import { Color } from 'common/colorLegacy';
 import { decodeHtmlEntities } from 'common/string';
 import { Component, createRef, RefObject } from 'inferno';
 import { useBackend } from '../backend';

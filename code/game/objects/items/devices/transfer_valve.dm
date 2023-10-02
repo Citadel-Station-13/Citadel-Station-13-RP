@@ -15,8 +15,6 @@
 	var/mob/attacher = null
 	var/valve_open = FALSE
 	var/toggle = TRUE
-	flags = PROXMOVE
-
 
 /obj/item/transfer_valve/Destroy()
 	attached_device = null
@@ -72,13 +70,13 @@
 		SStgui.update_uis(src) //Update all UIs attached to src
 	return ..()
 
-/obj/item/transfer_valve/HasProximity(atom/movable/AM as mob|obj)
-	attached_device?.HasProximity(AM)
-
 /obj/item/transfer_valve/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	ui_interact(user)
 
-/obj/item/transfer_valve/ui_state(mob/user)
+/obj/item/transfer_valve/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/transfer_valve/ui_interact(mob/user, datum/tgui/ui = null)

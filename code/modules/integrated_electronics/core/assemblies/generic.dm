@@ -109,8 +109,8 @@
 	if you're feeling optimistic."
 	can_fire_equipped = TRUE
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 		)
 
 /obj/item/electronic_assembly/medium/radio

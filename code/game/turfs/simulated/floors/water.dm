@@ -6,9 +6,8 @@
 	icon_state = "seashallow" // So it shows up in the map editor as water.
 	var/water_state = "water_shallow"
 	var/under_state = "rock"
-	edge_blending_priority = -1
 	edge_icon_state = "water_shallow"
-	movement_cost = 4
+	slowdown = 4
 	outdoors = TRUE
 
 	layer = WATER_FLOOR_LAYER
@@ -21,10 +20,9 @@
 
 /turf/simulated/floor/water/Initialize(mapload)
 	. = ..()
-	var/decl/flooring/F = get_flooring_data(/decl/flooring/water)
+	var/singleton/flooring/F = get_flooring_data(/singleton/flooring/water)
 	footstep_sounds = F?.footstep_sounds
 	update_icon()
-	handle_fish()
 
 /turf/simulated/floor/water/update_icon()
 	..() // To get the edges.
@@ -54,18 +52,18 @@
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
 			var/amount = 300
-			water_breath.adjust_gas(/datum/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
+			water_breath.adjust_gas(GAS_ID_OXYGEN, amount) // Assuming water breathes just extract the oxygen directly from the water.
 			water_breath.temperature = above_air.temperature
 			return return_air()
 		else
-			var/gasid = /datum/gas/carbon_dioxide
+			var/gasid = GAS_ID_CARBON_DIOXIDE
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				if(H.species && H.species.exhale_type)
 					gasid = H.species.exhale_type
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
-			water_breath.adjust_gas(gasid, BREATH_MOLES) // They have no oxygen, but non-zero moles and temp
+			water_breath.adjust_gas(gasid, (above_air.return_pressure() * above_air.volume) / (above-air.temperature * R_IDEAL_GAS_EQUATION)) // They have no oxygen, but non-zero moles and temp
 			water_breath.temperature = above_air.temperature
 			return water_breath
 	return return_air() // Otherwise their head is above the water, so get the air from the atmosphere instead.
@@ -91,15 +89,24 @@
 			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
 	..()
 
+/turf/simulated/floor/water/pre_fishing_query(obj/item/fishing_rod/rod, mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!GetComponent(/datum/component/fishing_spot))
+		AddComponent(/datum/component/fishing_spot, /datum/fish_source/ocean)
+
 /turf/simulated/floor/water/deep
 	name = "deep water"
 	desc = "A body of water.  It seems quite deep."
 	icon_state = "seadeep" // So it shows up in the map editor as water.
 	under_state = "abyss"
-	edge_blending_priority = -2
-	movement_cost = 8
+	slowdown = 8
 	depth = 2
 
+/turf/simulated/floor/water/deep/indoors
+	outdoors = FALSE
+	
 /turf/simulated/floor/water/pool
 	name = "pool"
 	desc = "Don't worry, it's not closed."
@@ -149,6 +156,8 @@ var/list/shoreline_icon_cache = list()
 	desc = "The waves look calm and inviting."
 	icon_state = "beach"
 	depth = 0
+	//smoothing_groups = null
+	edge_blending_priority = 0
 
 /turf/simulated/floor/water/beach/update_icon()
 	return
@@ -193,7 +202,7 @@ var/list/shoreline_icon_cache = list()
 	desc = "This water smells pretty acrid."
 	var/poisonlevel = 10
 
-turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
+/turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	..()
 	if(istype(AM, /mob/living))
 		var/mob/living/L = AM
@@ -202,6 +211,9 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 		poisonlevel *= 1 - L.get_water_protection()
 		if(poisonlevel > 0)
 			L.adjustToxLoss(poisonlevel)
+
+/turf/simulated/floor/water/indoors
+	outdoors = FALSE
 
 //Supernatural/Horror Pool Turfs
 
@@ -212,8 +224,7 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	icon_state = "acid_shallow"
 	var/acid_state = "acid_shallow"
 	under_state = "rock"
-	edge_blending_priority = 0
-	movement_cost = 4
+	slowdown = 4
 	depth = 4
 	layer = WATER_FLOOR_LAYER
 
@@ -230,11 +241,11 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
 			var/amount = 300
-			water_breath.adjust_gas(/datum/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
+			water_breath.adjust_gas(GAS_ID_OXYGEN, amount) // Assuming water breathes just extract the oxygen directly from the water.
 			water_breath.temperature = above_air.temperature
 			return water_breath
 		else
-			var/gasid = /datum/gas/carbon_dioxide
+			var/gasid = GAS_ID_CARBON_DIOXIDE
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				if(H.species && H.species.exhale_type)
@@ -251,7 +262,8 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/water/acid/hitby(atom/movable/AM)
+/turf/simulated/floor/water/acid/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 
@@ -312,8 +324,7 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	desc = "A body of sickly green liquid. It emanates an acrid stench.  It seems quite deep."
 	icon_state = "acid_deep"
 	under_state = "abyss"
-	edge_blending_priority = -2
-	movement_cost = 8
+	slowdown = 8
 	depth = 5
 
 //Blood
@@ -324,8 +335,7 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	icon_state = "acidb_shallow"
 	var/blood_state = "acidb_shallow"
 	under_state = "rock"
-	edge_blending_priority = -1
-	movement_cost = 4
+	slowdown = 4
 	layer = WATER_FLOOR_LAYER
 	depth = 6
 
@@ -341,11 +351,11 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
 			var/amount = 300
-			water_breath.adjust_gas(/datum/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
+			water_breath.adjust_gas(GAS_ID_OXYGEN, amount) // Assuming water breathes just extract the oxygen directly from the water.
 			water_breath.temperature = above_air.temperature
 			return water_breath
 		else
-			var/gasid = /datum/gas/carbon_dioxide
+			var/gasid = GAS_ID_CARBON_DIOXIDE
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				if(H.species && H.species.exhale_type)
@@ -357,12 +367,14 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 			return water_breath
 	return return_air() // Otherwise their head is above the water, so get the air from the atmosphere instead.
 
+//! this entire file needs refactored, jesus christ
 /turf/simulated/floor/water/blood/Entered(atom/movable/AM)
 	..()
 	if(blood_wade(AM))
 		START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/water/blood/hitby(atom/movable/AM)
+/turf/simulated/floor/water/blood/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if(blood_wade(AM))
 		START_PROCESSING(SSobj, src)
 
@@ -408,6 +420,5 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	desc = "A body of crimson fluid. It smells like pennies and gasoline.  It seems quite deep."
 	icon_state = "acidb_deep"
 	under_state = "abyss"
-	edge_blending_priority = -2
-	movement_cost = 8
+	slowdown = 8
 	depth = 7

@@ -204,7 +204,7 @@
 	if(!covering)
 		return
 
-	if(!(covering.body_parts_covered & (I.body_parts_covered | extra_flags)))
+	if(!(covering.body_cover_flags & (I.body_cover_flags | extra_flags)))
 		return
 
 	return covering
@@ -223,8 +223,9 @@
 		return FALSE
 
 	// then, check bodyparts
-	if(I.item_flags & EQUIP_IGNORE_DELIMB)
-		return
+	if(I.clothing_flags & CLOTHING_IGNORE_DELIMB)
+		return TRUE
+	var/allow_single = (I.clothing_flags & CLOTHING_ALLOW_SINGLE_LIMB)
 
 	var/has_part = TRUE
 	var/part_text
@@ -239,11 +240,19 @@
 			has_part = has_organ(BP_HEAD)
 			part_text = "head"
 		if(SLOT_ID_HANDCUFFED, SLOT_ID_GLOVES)
-			has_part = has_organ(BP_L_HAND) && has_organ(BP_R_HAND)
-			override_text = SPAN_WARNING("[self_equip? "You" : "They"] are missing a hand!")
+			if(allow_single)
+				has_part = has_organ(BP_L_HAND) || has_organ(BP_R_HAND)
+				override_text = SPAN_WARNING("[self_equip? "You" : "They"] need a hand!")
+			else
+				has_part = has_organ(BP_L_HAND) && has_organ(BP_R_HAND)
+				override_text = SPAN_WARNING("[self_equip? "You" : "They"] are missing a hand!")
 		if(SLOT_ID_LEGCUFFED, SLOT_ID_SHOES)
-			has_part = has_organ(BP_L_FOOT) && has_organ(BP_R_FOOT)
-			override_text = SPAN_WARNING("[self_equip? "You" : "They"] are missing a foot!")
+			if(allow_single)
+				has_part = has_organ(BP_L_FOOT) || has_organ(BP_R_FOOT)
+				override_text = SPAN_WARNING("[self_equip? "You" : "They"] need a foot!")
+			else
+				has_part = has_organ(BP_L_FOOT) && has_organ(BP_R_FOOT)
+				override_text = SPAN_WARNING("[self_equip? "You" : "They"] are missing a foot!")
 
 	if(!has_part)
 		to_chat(user, override_text || SPAN_WARNING("[self_equip? "You" : "They"] are missing [self_equip? "your" : "their"] [part_text]!"))

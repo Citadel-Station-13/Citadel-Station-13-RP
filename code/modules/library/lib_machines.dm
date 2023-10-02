@@ -11,7 +11,7 @@
 /*
  * Borrowbook datum
  */
-datum/borrowbook // Datum used to keep track of who has borrowed what when and for how long.
+/datum/borrowbook // Datum used to keep track of who has borrowed what when and for how long.
 	var/bookname
 	var/mobname
 	var/getdate
@@ -31,7 +31,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	var/category = "Any"
 	var/author
 
-/obj/machinery/librarypubliccomp/attack_hand(var/mob/user as mob)
+/obj/machinery/librarypubliccomp/attack_hand(mob/user, list/params)
 	usr.set_machine(src)
 	var/dat = "<HEAD><TITLE>Library Visitor</TITLE></HEAD><BODY>\n" // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	switch(screenstate)
@@ -160,7 +160,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			var/obj/item/book/M = new path(null)
 			all_books[M.title] = M
 
-/obj/machinery/librarycomp/attack_hand(var/mob/user as mob)
+/obj/machinery/librarycomp/attack_hand(mob/user, list/params)
 	usr.set_machine(src)
 	var/dat = "<HEAD><TITLE>Book Inventory Management</TITLE></HEAD><BODY>\n" // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	switch(screenstate)
@@ -177,7 +177,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 				dat += "<A href='?src=\ref[src];switchscreen=7'>7. Access the Forbidden Lore Vault</A><BR>"
 			if(src.arcanecheckout)
 				new /obj/item/book/tome(src.loc)
-				var/datum/gender/T = gender_datums[user.get_visible_gender()]
+				var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 				to_chat(user, "<span class='warning'>Your sanity barely endures the seconds spent in the vault's browsing window. The only thing to remind you of this when you stop browsing is a dusty old tome sitting on the desk. You don't really remember printing it.</span>")
 				user.visible_message("<span class='notice'>\The [user] stares at the blank screen for a few moments, [T.his] expression frozen in fear. When [T.he] finally awakens from it, [T.he] looks a lot older.</span>", 2)
 				src.arcanecheckout = 0
@@ -471,12 +471,12 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	density = 1
 	var/obj/item/book/cache		// Last scanned book
 
-/obj/machinery/libraryscanner/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+/obj/machinery/libraryscanner/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/book))
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 
-/obj/machinery/libraryscanner/attack_hand(var/mob/user as mob)
+/obj/machinery/libraryscanner/attack_hand(mob/user, list/params)
 	usr.set_machine(src)
 	var/dat = "<HEAD><TITLE>Scanner Control Interface</TITLE></HEAD><BODY>\n" // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	if(cache)
@@ -535,13 +535,13 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	if(panel_open)
 		add_overlay("[base_icon_state]-panel")
 
-/obj/machinery/bookbinder/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+/obj/machinery/bookbinder/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/paper))
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		user.visible_message("[user] loads some paper into [src].", "You load some paper into [src].")
-		flick_overlay_view("[base_icon_state]-load-paper", src, 10)
-		flick_overlay_view("[base_icon_state]-active", src, 12)
+		flick_overlay_view("[base_icon_state]-load-paper", 10)
+		flick_overlay_view("[base_icon_state]-active", 12)
 		visible_message("[src] begins to hum as it warms up its printing drums.")
 		sleep(rand(200,400))
 		visible_message("[src] whirs as it prints and binds a new book.")

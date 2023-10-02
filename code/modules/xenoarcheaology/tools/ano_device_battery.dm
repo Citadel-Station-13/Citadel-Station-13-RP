@@ -48,10 +48,13 @@
 	else
 		return ..()
 
-/obj/item/anodevice/attack_self(var/mob/user as mob)
+/obj/item/anodevice/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return ui_interact(user)
 
-/obj/item/anodevice/ui_state(mob/user)
+/obj/item/anodevice/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 /obj/item/anodevice/ui_interact(mob/user, datum/tgui/ui)
@@ -82,7 +85,7 @@
 
 	return data
 
-/obj/item/anodevice/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/anodevice/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -197,20 +200,24 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/anodevice/attack(mob/living/M as mob, mob/living/user as mob, def_zone)
-	if (!istype(M))
+/obj/item/anodevice/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if (!isliving(target))
 		return
+	var/mob/living/L = target
 
 	if(activated && inserted_battery?.battery_effect?.effect == EFFECT_TOUCH && !isnull(inserted_battery))
-		inserted_battery?.battery_effect?.DoEffectTouch(M)
+		inserted_battery?.battery_effect?.DoEffectTouch(L)
 		inserted_battery.use_power(energy_consumed_on_touch)
-		user.visible_message("<font color=#4F49AF>[user] taps [M] with [src], and it shudders on contact.</font>")
+		user.visible_message("<font color=#4F49AF>[user] taps [L] with [src], and it shudders on contact.</font>")
 	else
-		user.visible_message("<font color=#4F49AF>[user] taps [M] with [src], but nothing happens.</font>")
+		user.visible_message("<font color=#4F49AF>[user] taps [L] with [src], but nothing happens.</font>")
 
 	//admin logging
-	user.lastattacked = M
-	M.lastattacker = user
+	user.lastattacked = L
+	L.lastattacker = user
 
 	if(inserted_battery?.battery_effect)
-		add_attack_logs(user,M,"Anobattery tap ([inserted_battery?.battery_effect?.name])")
+		add_attack_logs(user,L,"Anobattery tap ([inserted_battery?.battery_effect?.name])")

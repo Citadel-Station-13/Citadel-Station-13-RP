@@ -77,3 +77,14 @@
 			exploded = TRUE
 			explosion(src.loc, explosion_dev_range, explosion_heavy_range, explosion_light_range, explosion_flash_range)
 	return ..()
+
+// Weakened version of Phoron spiders
+/mob/living/simple_mob/animal/giant_spider/phorogenic/weak
+	maxHealth = 100
+	health = 100
+
+	melee_damage_lower = 10
+	melee_damage_upper = 25
+	attack_armor_pen = 10
+
+	poison_chance = 20

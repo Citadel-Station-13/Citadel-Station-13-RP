@@ -11,7 +11,7 @@
 	var/obj/structure/ladder/target_up
 	var/obj/structure/ladder/target_down
 
-	var/const/climb_time = 2 SECONDS
+	var/climb_time = 2 SECONDS
 
 /obj/structure/ladder/Initialize(mapload)
 	. = ..()
@@ -37,16 +37,24 @@
 	attack_hand(user)
 	return
 
-/obj/structure/ladder/attack_hand(var/mob/M)
+/obj/structure/ladder/attack_hand(mob/user, list/params)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/M = user
+	if(!istype(M))
+		return
 	if(!M.may_climb_ladders(src))
 		return
 
 	var/obj/structure/ladder/target_ladder = getTargetLadder(M)
 	if(!target_ladder)
 		return
-	if(!(M.loc == loc) && !M.Move(get_turf(src)))
-		to_chat(M, "<span class='notice'>You fail to reach \the [src].</span>")
-		return
+	if(M.loc != loc)
+		step_towards(M, loc)
+		if(M.loc != loc)
+			to_chat(M, "<span class='notice'>You fail to reach \the [src].</span>")
+			return
 
 	climbLadder(M, target_ladder)
 
@@ -54,7 +62,7 @@
 	. = ..()
 	var/target_ladder = getTargetLadder(M)
 	if(target_ladder)
-		M.forceMove(get_turf(target_ladder))
+		M.locationTransitForceMove(get_turf(target_ladder), 1, allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
 
 /obj/structure/ladder/attack_robot(var/mob/M)
 	attack_hand(M)
@@ -120,5 +128,21 @@
 	icon_state = "ladder10"
 
 /obj/structure/ladder/updown
+	allowed_directions = UP|DOWN
+	icon_state = "ladder11"
+
+
+// Meme Variants, Snake Eater. Used on Rift for that 3 meter difference between the base z level and the one above it -Bloop
+
+/obj/structure/ladder/snake_eater
+	name = "long ladder"
+	desc = "A ladder. You can climb it up and down. This one looks really long, what a thrill..."
+	climb_time = 120 SECONDS
+
+/obj/structure/ladder/snake_eater/up
+	allowed_directions = UP
+	icon_state = "ladder10"
+
+/obj/structure/ladder/snake_eater/updown
 	allowed_directions = UP|DOWN
 	icon_state = "ladder11"

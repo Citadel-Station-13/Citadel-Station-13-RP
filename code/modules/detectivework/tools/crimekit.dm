@@ -8,8 +8,8 @@
 	drop_sound = 'sound/items/drop/toolbox.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_storage.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_storage.dmi',
 		)
 
 /obj/item/storage/briefcase/crimekit/PopulateContents()

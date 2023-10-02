@@ -10,7 +10,7 @@
 	landmark_transition = "skipjack_transit"
 	shuttle_area = /area/shuttle/skipjack
 	destination_tags = list(
-		"piratebase_hanger",
+		"pirate_docking_arm",
 		"skipjack_base",
 		"aerostat_south",
 		"beach_e",
@@ -34,7 +34,7 @@
 	defer_initialisation = TRUE
 
 // The 'ship' of the excursion shuttle
-/obj/effect/overmap/visitable/ship/landable/skipjack
+/obj/overmap/entity/visitable/ship/landable/skipjack
 	name = "Unknown Vessel"
 	desc = "Scans inconclusive."
 	vessel_mass = 4000

@@ -2,6 +2,7 @@
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH
 	use_power = USE_POWER_IDLE
+	layer = EXPOSED_ATMOS_LAYER
 
 	var/datum/gas_mixture/air1
 	var/datum/gas_mixture/air2
@@ -10,13 +11,10 @@
 	var/datum/pipe_network/network2
 
 /obj/machinery/atmospherics/component/binary/Initialize(mapload)
-	. = ..()
+	air1 = new(200)
+	air2 = new(200)
 
-	air1 = new
-	air2 = new
-
-	air1.volume = 200
-	air2.volume = 200
+	return ..()
 
 /obj/machinery/atmospherics/component/binary/init_dir()
 	switch(dir)

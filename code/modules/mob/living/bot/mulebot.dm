@@ -32,7 +32,7 @@
 	max_target_dist = 250
 	target_speed = 3
 	max_frustration = 5
-	botcard_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
+	botcard_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_SUPPLY_MAIN, ACCESS_SUPPLY_BAY, ACCESS_SUPPLY_MULEBOT, ACCESS_SUPPLY_QM, ACCESS_SUPPLY_MINE, ACCESS_SUPPLY_MINE_OUTPOST)
 
 	var/atom/movable/load
 
@@ -235,8 +235,8 @@
 /mob/living/bot/mulebot/Bump(var/mob/living/M)
 	if(!safety && istype(M))
 		visible_message("<span class='warning'>[src] knocks over [M]!</span>")
-		M.Stun(8)
-		M.Weaken(5)
+		M.afflict_stun(20 * 8)
+		M.afflict_paralyze(20 * 5)
 	..()
 
 /mob/living/bot/mulebot/proc/runOver(var/mob/living/M)
@@ -314,7 +314,7 @@
 	C.pixel_y += 9
 	if(C.layer < layer)
 		C.layer = layer + 0.1
-	overlays += C
+	add_overlay(C)
 
 	busy = 0
 

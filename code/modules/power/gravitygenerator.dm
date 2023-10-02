@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 
 	pixel_y = 16
 
-/obj/machinery/gravity_generator/ex_act(severity, target)
+/obj/machinery/gravity_generator/legacy_ex_act(severity, target)
 	if(severity == 1) // Very sturdy.
 		set_broken()
 
@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 /obj/machinery/gravity_generator/part/get_status()
 	return main_part?.get_status()
 
-/obj/machinery/gravity_generator/part/attack_hand(mob/user)
+/obj/machinery/gravity_generator/part/attack_hand(mob/user, list/params)
 	return main_part.attack_hand(user)
 
 /obj/machinery/gravity_generator/part/set_broken()
@@ -205,7 +205,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 		if(GRAV_NEEDS_SCREWDRIVER)
 			if(I.is_screwdriver())
 				to_chat(user, "<span class='notice'>You secure the screws of the framework.</span>")
-				playsound(src, I.usesound, 75, 1)
+				playsound(src, I.tool_sound, 75, 1)
 				broken_state++
 				update_icon()
 				return
@@ -232,12 +232,12 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 		if(GRAV_NEEDS_WRENCH)
 			if(I.is_wrench())
 				to_chat(user, "<span class='notice'>You secure the plating to the framework.</span>")
-				playsound(src, I.usesound, 75, 1)
+				playsound(src, I.tool_sound, 75, 1)
 				set_fix()
 				return
 	return ..()
 
-/obj/machinery/gravity_generator/main/attack_hand(mob/user)
+/obj/machinery/gravity_generator/main/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	ui_interact(user)
@@ -269,7 +269,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 			breaker = !breaker
 			investigate_log("was toggled [breaker ? "<font color='green'>ON</font>" : "<font color='red'>OFF</font>"] by [key_name(usr)].", "gravity")
 			set_power()
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 // Power and Icon States
 
@@ -380,7 +380,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 
 
 /obj/machinery/gravity_generator/main/proc/pulse_radiation()
-	SSradiation.radiate(src, 200)
+	radiation_pulse(src, RAD_INTENSITY_GRAVGEN_OPERATING_TICK)
 
 /obj/machinery/gravity_generator/main/proc/update_gravity(var/on)
 	for(var/area/A in src.areas)
@@ -389,7 +389,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 // Shake everyone on the z level to let them know that gravity was enagaged/disenagaged.
 /obj/machinery/gravity_generator/main/proc/shake_everyone()
 	var/sound/alert_sound = sound('sound/effects/alert.ogg')
-	for(var/mob/M as anything in player_list)
+	for(var/mob/M as anything in GLOB.player_list)
 		if(!(M.z in levels))
 			continue
 		M.update_gravity(M.mob_has_gravity())
@@ -409,8 +409,8 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	var/my_z = get_z(src)
 
 	//Actually doing it special this time instead of letting using_map decide
-	if(GLOB.using_map.use_overmap)
-		var/obj/effect/overmap/visitable/S = get_overmap_sector(my_z)
+	if((LEGACY_MAP_DATUM).use_overmap)
+		var/obj/overmap/entity/visitable/S = get_overmap_sector(my_z)
 		if(S)
 			levels = S.get_space_zlevels() //Just the spacey ones
 		else

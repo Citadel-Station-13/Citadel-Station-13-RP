@@ -14,7 +14,10 @@
 	w_class = ITEMSIZE_TINY
 	var/list/item_quants = list()
 
-/obj/item/seedbag/attack_self(mob/user as mob)
+/obj/item/seedbag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.machine = src
 	interact(user)
 

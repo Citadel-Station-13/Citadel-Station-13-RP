@@ -36,7 +36,7 @@ obj/machinery/scanner
 	else
 		icon_state = "scanner_idle"
 
-obj/machinery/scanner/attack_hand(mob/living/carbon/human/user)
+obj/machinery/scanner/attack_hand(mob/user, list/params)
 	if(stat & NOPOWER)
 		return
 	if(!ishuman(user) || lastuser == user.real_name)
@@ -98,11 +98,11 @@ obj/machinery/scanner/attack_hand(mob/living/carbon/human/user)
 		G.fields["sex"] = "Female"
 	else
 		G.fields["sex"] = "Male"
-	G.fields["age"] = text("[]", age)
-	G.fields["fingerprint"] = text("[]", fingerprint)
+	G.fields["age"] = "[age]"
+	G.fields["fingerprint"] = "[fingerprint]"
 	G.fields["p_stat"] = "Active"
 	G.fields["m_stat"] = "Stable"
-	M.fields["b_type"] = text("[]", bloodtype)
+	M.fields["b_type"] = "[bloodtype]"
 	M.fields["b_dna"] = dna
 	M.fields["mi_dis"] = "None"
 	M.fields["mi_dis_d"] = "No minor disabilities have been declared."
@@ -131,7 +131,7 @@ obj/machinery/scanner/attack_hand(mob/living/carbon/human/user)
 	L.fields["b_dna"] = dna
 	L.fields["enzymes"] = user.dna.struc_enzymes
 	L.fields["identity"] = user.dna.uni_identity
-	L.fields["image"] = getFlatIcon(user,0)//What the person looks like. Naked, in this case.
+	L.fields["image"] = get_flat_icon(user,0)//What the person looks like. Naked, in this case.
 	//End locked reporting
 
 	data_core.general += G

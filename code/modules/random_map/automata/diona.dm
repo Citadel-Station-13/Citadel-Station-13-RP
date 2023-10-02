@@ -155,7 +155,7 @@
 		for(var/thing in T)
 			if(istype(thing, /atom))
 				var/atom/A = thing
-				if(!(A.flags & ATOM_ABSTRACT))
+				if(!(A.atom_flags & ATOM_ABSTRACT))
 					continue
 			qdel(thing)
 

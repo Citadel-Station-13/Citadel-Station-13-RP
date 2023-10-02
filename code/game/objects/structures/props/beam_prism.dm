@@ -19,10 +19,12 @@
 	var/compass_directions = list("North" = 0, "South" = 180, "East" = 90, "West" = 270, "Northwest" = 315, "Northeast" = 45, "Southeast" = 135, "Southwest" = 225)
 	var/interaction_sound = 'sound/mecha/mechmove04.ogg'
 
-	var/redirect_type = /obj/item/projectile/beam
+	var/redirect_type = /obj/projectile/beam
 
 	var/dialID = null
 	var/obj/structure/prop/prismcontrol/remote_dial = null
+
+	var/silent = FALSE
 
 	interaction_message = "<span class='notice'>The prismatic turret seems to be able to rotate.</span>"
 
@@ -41,7 +43,7 @@
 	var/degrees_to_rotate = -1 * degrees_from_north
 	animate(src, transform = turn(src.transform, degrees_to_rotate), time = 2)
 
-/obj/structure/prop/prism/attack_hand(mob/living/user)
+/obj/structure/prop/prism/attack_hand(mob/user, list/params)
 	..()
 
 	if(rotation_lock)
@@ -117,9 +119,10 @@
 	else
 		animate(src, transform = turn(src.transform, rotate_degrees), time = 6)
 
-/obj/structure/prop/prism/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/prop/prism/bullet_act(var/obj/projectile/Proj)
 	if(istype(Proj, redirect_type))
-		visible_message("<span class='danger'>\The [src] redirects \the [Proj]!</span>")
+		if(!silent)
+			visible_message("<span class='danger'>\The [src] redirects \the [Proj]!</span>")
 		flick("[initial(icon_state)]+glow", src)
 
 		var/new_x = (1 * round(10 * cos(degrees_from_north - 90))) + x //Vectors vectors vectors.
@@ -154,7 +157,7 @@
 	var/list/my_turrets = list()
 	var/dialID = null
 
-/obj/structure/prop/prismcontrol/attack_hand(mob/living/user)
+/obj/structure/prop/prismcontrol/attack_hand(mob/user, list/params)
 	..()
 
 	var/confirm = input("Do you want to try to rotate \the [src]?", "[name]") in list("Yes", "No")
@@ -214,3 +217,19 @@
 		P.remote_dial = null
 	my_turrets = list()
 	..()
+
+/obj/structure/prop/prism/reflector
+	name = "reflector prism"
+	desc = "A box with an internal set of mirrors that reflects all laser beams in a single direction."
+	icon_state = "reflector_box"
+	icon = 'icons/obj/reflector.dmi'
+	silent = TRUE
+	free_rotate = FALSE
+	anchored = FALSE
+
+/obj/structure/prop/prism/reflector/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	. = ..()
+	if(I.is_wrench())
+		if(do_after(user,40 * I.tool_speed))
+			to_chat(user, SPAN_NOTICE("You [anchored ? "anchor" : "unanchor"] [src]."))
+			anchored = !anchored

@@ -41,13 +41,13 @@
 			var/total_moles = air_sample.total_moles
 			if(total_moles > 0)
 				if(output&4)
-					signal.data["oxygen"] = round(100*air_sample.gas[/datum/gas/oxygen]/total_moles,0.1)
+					signal.data["oxygen"] = round(100*air_sample.gas[GAS_ID_OXYGEN]/total_moles,0.1)
 				if(output&8)
-					signal.data["phoron"] = round(100*air_sample.gas[/datum/gas/phoron]/total_moles,0.1)
+					signal.data["phoron"] = round(100*air_sample.gas[GAS_ID_PHORON]/total_moles,0.1)
 				if(output&16)
-					signal.data["nitrogen"] = round(100*air_sample.gas[/datum/gas/nitrogen]/total_moles,0.1)
+					signal.data["nitrogen"] = round(100*air_sample.gas[GAS_ID_NITROGEN]/total_moles,0.1)
 				if(output&32)
-					signal.data["carbon_dioxide"] = round(100*air_sample.gas[/datum/gas/carbon_dioxide]/total_moles,0.1)
+					signal.data["carbon_dioxide"] = round(100*air_sample.gas[GAS_ID_CARBON_DIOXIDE]/total_moles,0.1)
 			else
 				signal.data["oxygen"] = 0
 				signal.data["phoron"] = 0
@@ -66,7 +66,7 @@
 	if(frequency)
 		set_frequency(frequency)
 
-obj/machinery/air_sensor/Destroy()
+/obj/machinery/air_sensor/Destroy()
 	if(radio_controller)
 		radio_controller.remove_object(src,frequency)
 	. = ..()
@@ -81,12 +81,12 @@ obj/machinery/air_sensor/Destroy()
 	var/datum/radio_frequency/radio_connection
 	circuit = /obj/item/circuitboard/air_management
 
-obj/machinery/computer/general_air_control/Destroy()
+/obj/machinery/computer/general_air_control/Destroy()
 	if(radio_controller)
 		radio_controller.remove_object(src, frequency)
 	..()
 
-/obj/machinery/computer/general_air_control/attack_hand(mob/user)
+/obj/machinery/computer/general_air_control/attack_hand(mob/user, list/params)
 	if(..(user))
 		return
 

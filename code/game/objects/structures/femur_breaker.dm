@@ -15,14 +15,14 @@
 	can_buckle = TRUE
 	anchored = TRUE
 	density = TRUE
-	max_buckled_mobs = 1
+	buckle_max_mobs = 1
 	buckle_lying = TRUE
 	buckle_prevents_pull = TRUE
 	layer = ABOVE_MOB_LAYER
 	var/slat_status = BREAKER_SLAT_RAISED
 	var/current_action = 0 // What's currently happening to the femur breaker
 
-/obj/structure/femur_breaker/examine(mob/user)
+/obj/structure/femur_breaker/examine(mob/user, dist)
 	. = ..()
 	. += "It is [anchored ? "secured to the floor." : "unsecured."]"
 	if (slat_status == BREAKER_SLAT_RAISED)
@@ -45,7 +45,7 @@
 		if (BREAKER_SLAT_DROPPED)
 			slat_status = BREAKER_SLAT_MOVING
 			icon_state = "breaker_raise"
-			addtimer(CALLBACK(src, .proc/raise_slat), BREAKER_ANIMATION_LENGTH)
+			addtimer(CALLBACK(src, PROC_REF(raise_slat)), BREAKER_ANIMATION_LENGTH)
 			return
 		if (BREAKER_SLAT_RAISED)
 			if (LAZYLEN(buckled_mobs))
@@ -94,8 +94,8 @@
 			return
 
 		playsound(src, 'sound/effects/femur_breaker.ogg', 100, FALSE)
-		H.Stun(BREAKER_ANIMATION_LENGTH)
-		addtimer(CALLBACK(src, .proc/damage_leg, H), BREAKER_ANIMATION_LENGTH, TIMER_UNIQUE)
+		H.afflict_stun(20 * BREAKER_ANIMATION_LENGTH)
+		addtimer(CALLBACK(src, PROC_REF(damage_leg), H), BREAKER_ANIMATION_LENGTH, TIMER_UNIQUE)
 		log_combat(user, H, "femur broke", src)
 
 	slat_status = BREAKER_SLAT_DROPPED

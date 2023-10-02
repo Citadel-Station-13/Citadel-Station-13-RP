@@ -9,8 +9,8 @@
 	icon_state = "cell"
 	item_state = "cell"
 	origin_tech = list(TECH_POWER = 1)
-	force = 5.0
-	throwforce = 5.0
+	damage_force = 5.0
+	throw_force = 5.0
 	throw_speed = 3
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
@@ -24,7 +24,8 @@
 	var/charge_amount = 25 // How much power to give, if self_recharge is true.  The number is in absolute cell charge, as it gets divided by CELLRATE later.
 	var/last_use = 0 // A tracker for use in self-charging
 	var/charge_delay = 0 // How long it takes for the cell to start recharging after last use
-	matter = list(MAT_STEEL = 700, MAT_GLASS = 50)
+	var/rating = 1
+	materials = list(MAT_STEEL = 700, MAT_GLASS = 50)
 
 	// Overlay stuff.
 	var/overlay_half_state = "cell-o1" // Overlay used when not fully charged but not empty.
@@ -44,7 +45,10 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/cell/get_cell()
+/obj/item/cell/get_rating()
+	return rating
+
+/obj/item/cell/get_cell(inducer)
 	return src
 
 /obj/item/cell/process(delta_time)
@@ -96,6 +100,8 @@
 #undef OVERLAY_EMPTY
 
 /obj/item/cell/proc/percent()		// return % charge of cell
+	if(!maxcharge)
+		return 0
 	return 100.0*charge/maxcharge
 
 /obj/item/cell/proc/fully_charged()
@@ -155,7 +161,7 @@
 	return amount_used
 
 
-/obj/item/cell/examine(mob/user)
+/obj/item/cell/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) <= 1)
 		. += " It has a power rating of [maxcharge].\nThe charge meter reads [round(src.percent() )]%."
@@ -228,7 +234,7 @@
 
 	update_icon()
 
-/obj/item/cell/ex_act(severity)
+/obj/item/cell/legacy_ex_act(severity)
 
 	switch(severity)
 		if(1.0)
@@ -278,6 +284,6 @@
 			return 0
 
 /obj/item/cell/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return (FIRELOSS)

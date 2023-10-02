@@ -22,7 +22,7 @@
 	icon = 'icons/mob/vore64x32.dmi'
 	has_eye_glow = TRUE
 
-	faction = "corrupt"
+	faction = "hivebot"
 
 	maxHealth = 200
 	health = 200
@@ -39,11 +39,7 @@
 	attacktext = list("ravaged")
 	friendly = list("nuzzles", "slobberlicks", "noses softly at", "noseboops", "headbumps against", "leans on", "nibbles affectionately on")
 
-	old_x = -16
-	old_y = 0
-	default_pixel_x = -16
-	pixel_x = -16
-	pixel_y = 0
+	base_pixel_x = -16
 
 	min_oxy = 0
 	max_oxy = 0
@@ -59,9 +55,9 @@
 	say_list_type = /datum/say_list/corrupthound
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/corrupthound
 
-	max_buckled_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
+	buckle_max_mobs = 1 //Yeehaw
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
 	buckle_lying = FALSE
 
 	vore_active = TRUE
@@ -87,6 +83,88 @@
 
 	say_list_type = /datum/say_list/corrupthound_prettyboi
 
+/mob/living/simple_mob/vore/aggressive/corrupthound/sniper
+	name = "sniper hound"
+	desc = "Good boy machine broke and its got a sniper rifle built in. This is no good news for anyone in range."
+	icon_state = "sniperboi"
+	icon_living = "sniperboi"
+	icon_dead = "sniperboi-dead"
+	icon_rest = "sniperboi_rest"
+
+	base_attack_cooldown = 60
+
+	projectiletype = /obj/projectile/beam/sniper
+	projectilesound = 'sound/weapons/gauss_shoot.ogg'
+
+
+	vore_pounce_chance = 0 //It does ranged attacks anyway
+
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/sniper
+
+/mob/living/simple_mob/vore/aggressive/corrupthound/gunner
+	name = "gunner hound"
+	desc = "Good boy machine broke and its a got a machine gun!"
+	icon_state = "gunnerboi"
+	icon_living = "gunnerboi"
+	icon_dead = "gunnerboi-dead"
+	icon_rest = "gunnerboi_rest"
+
+	needs_reload = TRUE
+	base_attack_cooldown = 2.5
+	reload_max = 6
+	reload_time = 15
+
+	projectiletype = /obj/projectile/bullet/rifle/a556
+	projectilesound = 'sound/weapons/Gunshot_light.ogg'
+
+
+	vore_pounce_chance = 0 //It does ranged attacks anyway
+
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+
+
+
+/mob/living/simple_mob/vore/aggressive/corrupthound/sword
+	name = "fencer hound"
+	desc = "Good boy machine broke. Who thought it was a good idea to install an energy sword in his tail?"
+	icon_state = "fencerboi"
+	icon_living = "fencerboi"
+	icon_dead = "fencerboi-dead"
+	icon_rest = "fencerboi_rest"
+
+	melee_damage_lower = 30
+	melee_damage_upper = 30
+	attack_armor_pen = 50
+	attack_sharp = 1
+	attack_edge = 1
+	attacktext = list("slashed")
+
+	vore_pounce_chance = 0 //No...
+
+/mob/living/simple_mob/vore/aggressive/corrupthound/sword/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if(O.damage_force)
+		if(prob(20))
+			visible_message("<span class='danger'>\The [src] swats \the [O] with its sword tail!</span>")
+			if(user)
+				ai_holder.react_to_attack(user)
+			return
+		else
+			..()
+	else
+		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
+		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
+
+/mob/living/simple_mob/vore/aggressive/corrupthound/sword/bullet_act(var/obj/projectile/Proj)
+	if(!Proj)	return
+	if(prob(35))
+		visible_message("<span class='warning'>[src] deflects [Proj] with its sword tail!</span>")
+		if(Proj.firer)
+			ai_holder.react_to_attack(Proj.firer)
+		return
+	else
+		..()
+
+
 /mob/living/simple_mob/vore/aggressive/corrupthound/isSynthetic()
 	return TRUE
 
@@ -109,9 +187,11 @@
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/Login()
 	. = ..()
-	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_mob(src)
-	verbs |= /mob/living/simple_mob/proc/animal_mount
+	AddComponent(/datum/component/riding_filter/mob/animal)
+
+/mob/living/simple_mob/vore/aggressive/corrupthound/Logout()
+	. = ..()
+	DelComponent(/datum/component/riding_filter, /datum/component/riding_filter/mob/animal)
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return

@@ -30,7 +30,7 @@
 			to_chat(user, "<span class='warning'>You need to have something in your active hand, to use this verb.</span>")
 			return
 		var/weapon_attack_speed = user.get_attack_speed(I) / 10
-		var/weapon_damage = I.force
+		var/weapon_damage = I.damage_force
 		var/modified_damage_percent = 1
 
 		for(var/datum/modifier/M in user.modifiers)
@@ -40,16 +40,16 @@
 
 		if(istype(I, /obj/item/gun))
 			var/obj/item/gun/G = I
-			var/obj/item/projectile/P
+			var/obj/projectile/P
 
 			if(istype(I, /obj/item/gun/energy))
 				var/obj/item/gun/energy/energy_gun = G
 				P = new energy_gun.projectile_type()
 
-			else if(istype(I, /obj/item/gun/projectile))
-				var/obj/item/gun/projectile/projectile_gun = G
+			else if(istype(I, /obj/item/gun/ballistic))
+				var/obj/item/gun/ballistic/projectile_gun = G
 				var/obj/item/ammo_casing/ammo = projectile_gun.chambered
-				P = ammo.BB
+				P = ammo.get_projectile()
 
 			else
 				to_chat(user, "<span class='warning'>DPS calculation by this verb is not supported for \the [G]'s type. Energy or Ballistic only, sorry.</span>")
@@ -97,9 +97,6 @@
 	set category = "Fun"
 	set name = "Make Robot"
 
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 	if(istype(M, /mob/living/carbon/human))
 		log_admin("[key_name(src)] has robotized [M.key].")
 		spawn(10)
@@ -111,10 +108,6 @@
 /client/proc/cmd_admin_animalize(var/mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Simple Animal"
-
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 
 	if(!M)
 		alert("That mob doesn't seem to exist, close the panel and try again.")
@@ -160,9 +153,6 @@
 	set category = "Fun"
 	set name = "Make Alien"
 
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 	if(ishuman(M))
 		log_admin("[key_name(src)] has alienized [M.key].")
 		spawn(10)
@@ -245,7 +235,7 @@
 
 	if(!check_rights(R_DEBUG))	return
 	var/list/dellog = list("<B>List of things that have gone through qdel this round</B><BR><BR><ol>")
-	sortTim(SSgarbage.items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
+	tim_sort(SSgarbage.items, cmp=GLOBAL_PROC_REF(cmp_qdel_item_time), associative = TRUE)
 	for(var/path in SSgarbage.items)
 		var/datum/qdel_item/I = SSgarbage.items[path]
 		dellog += "<li><u>[path]</u><ul>"
@@ -291,8 +281,8 @@
 	render_stats(SSoverlays.stats, src)
 
 // Render stats list for round-end statistics.
-/proc/render_stats(list/stats, user, sort = /proc/cmp_generic_stat_item_time)
-	sortTim(stats, sort, TRUE)
+/proc/render_stats(list/stats, user, sort = GLOBAL_PROC_REF(cmp_generic_stat_item_time))
+	tim_sort(stats, sort, TRUE)
 
 	var/list/lines = list()
 	for (var/entry in stats)
@@ -355,7 +345,7 @@
 		qdel(adminmob)
 	feedback_add_details("admin_verb","ADC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/take_picture(var/atom/A in world)
+/client/proc/take_picture(atom/A in world)
 	set name = "Save PNG"
 	set category = "Debug"
 	set desc = "Opens a dialog to save a PNG of any object in the game."
@@ -363,7 +353,7 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	downloadImage(A)
+	download_icon(A)
 
 /client/proc/cmd_admin_areatest()
 	set category = "Mapping"
@@ -387,7 +377,7 @@
 		if(A && !(A.type in areas_with_APC))
 			areas_with_APC.Add(A.type)
 
-	for(var/obj/machinery/alarm/alarm in GLOB.machines)
+	for(var/obj/machinery/air_alarm/alarm in GLOB.machines)
 		var/area/A = get_area(alarm)
 		if(A && !(A.type in areas_with_air_alarm))
 			areas_with_air_alarm.Add(A.type)
@@ -521,10 +511,10 @@
 		if(Rad.anchored)
 			if(!Rad.P)
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
-				Phoron.air_contents.gas[/datum/gas/phoron] = 70
-				Rad.drainratio = 0
+				/// supercooled so we don't just maxcap the engine lol
+				Phoron.air_contents.adjust_gas_temp(GAS_ID_PHORON, 350, 25)
+				Phoron.forceMove(Rad)
 				Rad.P = Phoron
-				Phoron.loc = Rad
 
 			if(!Rad.active)
 				Rad.toggle_power()
@@ -560,7 +550,7 @@
 
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
 
-				Phoron.air_contents.gas[/datum/gas/phoron] = 29.1154	//This is a full tank if you filled it from a canister
+				Phoron.air_contents.gas[GAS_ID_PHORON] = 29.1154	//This is a full tank if you filled it from a canister
 				Rad.P = Phoron
 
 				Phoron.loc = Rad
@@ -573,7 +563,7 @@
 				var/obj/machinery/atmospherics/component/binary/pump/Pump = M
 				if(Pump.name == "Engine Feed" && response == "Setup Completely")
 					found_the_pump = 1
-					Pump.air2.gas[/datum/gas/nitrogen] = 3750	//The contents of 2 canisters.
+					Pump.air2.gas[GAS_ID_NITROGEN] = 3750	//The contents of 2 canisters.
 					Pump.air2.temperature = 50
 					Pump.air2.update_values()
 				Pump.update_use_power(USE_POWER_IDLE)
@@ -601,7 +591,7 @@
 	if(!found_the_pump && response == "Setup Completely")
 		to_chat(src, "<font color='red'>Unable to locate air supply to fill up with coolant, adding some coolant around the supermatter</font>")
 		var/turf/simulated/T = SM.loc
-		T.zone.air.gas[/datum/gas/nitrogen] += 450
+		T.zone.air.gas[GAS_ID_NITROGEN] += 450
 		T.zone.air.temperature = 50
 		T.zone.air.update_values()
 
@@ -617,9 +607,9 @@
 
 	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
 		if("Players")
-			to_chat(usr, jointext(player_list,","))
+			to_chat(usr, jointext(GLOB.player_list,","))
 		if("Admins")
-			to_chat(usr, jointext(admins,","))
+			to_chat(usr, jointext(GLOB.admins,","))
 		if("Mobs")
 			to_chat(usr, jointext(GLOB.mob_list,","))
 		if("Living Mobs")
@@ -631,9 +621,6 @@
 
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 	if(istype(M, /mob/living/carbon))
 		M.dna.SetSEState(block,!M.dna.GetSEState(block))
 		domutcheck(M,null,MUTCHK_FORCED)
@@ -719,7 +706,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/mob/living/carbon/human/H = input("Pick a mob with a player","Quick NIF") as null|anything in player_list
+	var/mob/living/carbon/human/H = input("Pick a mob with a player","Quick NIF") as null|anything in GLOB.player_list
 
 	if(!H)
 		return
@@ -736,27 +723,23 @@
 		to_chat(usr,"<span class='warning'>Target already has a NIF.</span>")
 		return
 
-	if(H.species.flags & NO_SCAN)
-		var/obj/item/nif/S = /obj/item/nif/bioadap
-		input_NIF = initial(S.name)
-		new /obj/item/nif/bioadap(H)
+	//if the admins want to adminbus a prommie with a full veymed, let them. screw the system. NIFs aren't in the plans to last long anyways. :^)
+	var/list/NIF_types = typesof(/obj/item/nif)
+	var/list/NIFs = list()
+
+	for(var/NIF_type in NIF_types)
+		var/obj/item/nif/S = NIF_type
+		NIFs[capitalize(initial(S.name))] = NIF_type
+
+	var/list/show_NIFs = sortList(NIFs) // the list that will be shown to the user to pick from
+
+	input_NIF = input("Pick the NIF type","Quick NIF") in show_NIFs
+	var/chosen_NIF = NIFs[capitalize(input_NIF)]
+
+	if(chosen_NIF)
+		new chosen_NIF(H)
 	else
-		var/list/NIF_types = typesof(/obj/item/nif)
-		var/list/NIFs = list()
-
-		for(var/NIF_type in NIF_types)
-			var/obj/item/nif/S = NIF_type
-			NIFs[capitalize(initial(S.name))] = NIF_type
-
-		var/list/show_NIFs = sortList(NIFs) // the list that will be shown to the user to pick from
-
-		input_NIF = input("Pick the NIF type","Quick NIF") in show_NIFs
-		var/chosen_NIF = NIFs[capitalize(input_NIF)]
-
-		if(chosen_NIF)
-			new chosen_NIF(H)
-		else
-			new /obj/item/nif(H)
+		new /obj/item/nif(H)
 
 	log_and_message_admins("[key_name(src)] Quick NIF'd [H.real_name] with a [input_NIF].")
 	feedback_add_details("admin_verb","QNIF") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

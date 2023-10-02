@@ -56,7 +56,7 @@ export const MechStatPane = (props, context) => {
         <Section title="Enviromental Data">
           <LabeledList>
             <LabeledList.Item label="Air Source">
-              <Button 
+              <Button
                 disabled={!airtank_present}
                 onClick={() => act('toggle_airsource')}>
                 {air_source}
@@ -188,7 +188,7 @@ const PowerBar = (props, context) => {
           bad: [-Infinity, 0.25*power_max],
         }}
         maxValue={power_max}
-        value={power_level} />
+        value={power_level || 0} />
     );
   }
 };

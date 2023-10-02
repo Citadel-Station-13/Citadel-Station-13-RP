@@ -6,7 +6,7 @@
 	touching = new/datum/reagents/metabolism/touch(500, src)
 	reagents = bloodstr
 	if (!default_language && species_language)
-		default_language = GLOB.all_languages[species_language]
+		default_language = SScharacters.resolve_language_name(species_language)
 
 /mob/living/carbon/BiologicalLife(seconds, times_fired)
 	if((. = ..()))
@@ -28,12 +28,6 @@
 		qdel(food)
 	return ..()
 
-/mob/living/carbon/rejuvenate()
-	bloodstr.clear_reagents()
-	ingested.clear_reagents()
-	touching.clear_reagents()
-	..()
-
 /mob/living/carbon/gib()
 	for(var/mob/M in src)
 		if(M in src.stomach_contents)
@@ -41,11 +35,13 @@
 		M.loc = src.loc
 		for(var/mob/N in viewers(src, null))
 			if(N.client)
-				N.show_message(text("<font color='red'><B>[M] bursts out of [src]!</B></font>"), 2)
+				N.show_message("<font color='red'><B>[M] bursts out of [src]!</B></font>", 2)
 	..()
 
-/mob/living/carbon/attack_hand(mob/M as mob)
-	if(!istype(M, /mob/living/carbon)) return
+/mob/living/carbon/attack_hand(mob/user, list/params)
+	var/mob/living/carbon/M = user
+	if(!istype(M))
+		return ..()
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
@@ -54,13 +50,14 @@
 		if(temp && !temp.is_usable())
 			to_chat(H, "<font color='red'>You can't use your [temp.name]</font>")
 			return
+	return ..()
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(src.health >= config_legacy.health_threshold_crit)
 		if(src == M && istype(src, /mob/living/carbon/human))
 
 			var/mob/living/carbon/human/H = src
-			var/datum/gender/T = gender_datums[H.get_visible_gender()]
+			var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()]
 			var/to_send = "<blockquote class ='notice'>"
 			src.visible_message("[src] examines [T.himself].", \
 				SPAN_NOTICE("You check yourself for injuries."))
@@ -109,7 +106,7 @@
 			to_send += "</blockquote>"
 			to_chat(src, to_send)
 
-			if((SKELETON in H.mutations) && (!H.w_uniform) && (!H.wear_suit))
+			if((MUTATION_SKELETON in H.mutations) && (!H.w_uniform) && (!H.wear_suit))
 				H.play_xylophone()
 		else if (on_fire)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
@@ -139,23 +136,20 @@
 				var/mob/living/carbon/human/H = src
 				H.w_uniform.add_fingerprint(M)
 
-			var/show_ssd
 			var/mob/living/carbon/human/H = src
-			var/datum/gender/T = gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
-			if(istype(H)) show_ssd = H.species.show_ssd
-			if(show_ssd && !client && !teleop)
-				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
-					SPAN_NOTICE("You shake [src], but [T.he] [T.does] not respond... Maybe [T.he] [T.has] S.S.D?"))
-			else if(lying || src.sleeping)
-				AdjustSleeping(-5)
-				if(src.sleeping == 0)
-					src.resting = 0
-				if(H) H.in_stasis = 0
+			var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
+			if(IS_PRONE(src) || !IS_CONSCIOUS(src))
+				if(!resting_intentionally && IS_PRONE(src) && CHECK_MOBILITY(src, MOBILITY_CAN_STAND))
+					set_resting(FALSE)
+				adjust_sleeping(-5 SECONDS)
+				adjust_unconscious(-2 SECONDS)
+				if(H)
+					H.in_stasis = 0
 				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
 					SPAN_NOTICE("You shake [src] trying to wake [T.him] up!"))
 			else
 				var/mob/living/carbon/human/hugger = M
-				var/datum/gender/TM = gender_datums[M.get_visible_gender()]
+				var/datum/gender/TM = GLOB.gender_datums[M.get_visible_gender()]
 				if(M.resting == 1) //Are they resting on the ground?
 					M.visible_message(SPAN_NOTICE("[M] grabs onto [src] and pulls [TM.himself] up."),
 						SPAN_NOTICE("You grip onto [src] and pull yourself up off the ground!"))
@@ -176,9 +170,9 @@
 					M.adjust_fire_stacks(-1)
 				if(M.on_fire)
 					src.IgniteMob()
-			AdjustParalysis(-3)
-			AdjustStunned(-3)
-			AdjustWeakened(-3)
+			adjust_unconscious(20 * -3)
+			adjust_stunned(20 * -3)
+			adjust_paralyzed(20 * -3)
 
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
@@ -243,16 +237,15 @@
 	set name = "Sleep"
 	set category = "IC"
 
-	if(usr.sleeping)
-		to_chat(usr, "<font color='red'>You are already sleeping</font>")
+
+	if(is_sleeping())
+		to_chat(src, "<font color='red'>You are already sleeping</font>")
 		return
-	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
-		usr.AdjustSleeping(20)
+	if(alert(src, "You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
+		afflict_sleeping(20 SECONDS)
 
 /mob/living/carbon/Bump(atom/A)
-	if(now_pushing)
-		return
-	..()
+	. = ..()
 	if(istype(A, /mob/living/carbon) && prob(10))
 		spread_disease_to(A, "Contact")
 
@@ -265,7 +258,7 @@
 	stop_pulling()
 	to_chat(src, "<span class='warning'>You slipped on [slipped_on]!</span>")
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
-	Weaken(FLOOR(stun_duration/2, 1))
+	afflict_paralyze(20 * FLOOR(stun_duration/2, 1))
 	return 1
 
 /mob/living/carbon/proc/add_chemical_effect(var/effect, var/magnitude = 1)
@@ -274,17 +267,23 @@
 	else
 		chem_effects[effect] = magnitude
 
+/mob/living/carbon/proc/ceiling_chemical_effect(var/effect, var/magnitude = 1)
+	if(effect in chem_effects)
+		chem_effects[effect] = max(magnitude, chem_effects[effect])
+	else
+		chem_effects[effect] = magnitude
+
 /mob/living/carbon/get_default_language()
 	if(default_language)
 		if(can_speak(default_language))
 			return default_language
 		else
-			return GLOB.all_languages[LANGUAGE_GIBBERISH]
+			return SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
 
 	if(!species)
 		return null
 
-	return species.default_language ? GLOB.all_languages[species.default_language] : null
+	return species.default_language ? SScharacters.resolve_language(species.default_language) : null
 
 /mob/living/carbon/proc/should_have_organ(var/organ_check)
 	return 0
@@ -292,7 +291,7 @@
 /mob/living/carbon/can_feel_pain(var/check_organ)
 	if(isSynthetic())
 		return 0
-	return !(species.flags & NO_PAIN)
+	return !(species.species_flags & NO_PAIN)
 
 /mob/living/carbon/needs_to_breathe()
 	if(does_not_breathe)
@@ -320,13 +319,13 @@
 
 /mob/living/carbon/check_obscured_slots()
 	// if(slot)
-	// 	if(head.flags_inv & HIDEMASK)
-	// 		LAZYOR(., SLOT_MASK)
-	// 	if(head.flags_inv & HIDEEYES)
-	// 		LAZYOR(., SLOT_EYES)
-	// 	if(head.flags_inv & HIDEEARS)
-	// 		LAZYOR(., SLOT_EARS)
+	// 	if(head.inv_hide_flags & HIDEMASK)
+	// 		LAZYDISTINCTADD(., SLOT_MASK)
+	// 	if(head.inv_hide_flags & HIDEEYES)
+	// 		LAZYDISTINCTADD(., SLOT_EYES)
+	// 	if(head.inv_hide_flags & HIDEEARS)
+	// 		LAZYDISTINCTADD(., SLOT_EARS)
 
 	if(wear_mask)
-		if(wear_mask.flags_inv & HIDEEYES)
-			LAZYOR(., SLOT_EYES)
+		if(wear_mask.inv_hide_flags & HIDEEYES)
+			LAZYDISTINCTADD(., SLOT_EYES)

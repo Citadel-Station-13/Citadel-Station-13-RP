@@ -296,14 +296,14 @@
 			to_chat(usr, "This can only be used on instances of type /obj")
 			return
 
-		var/action_type = tgui_alert(usr, "Strict type ([O.type]) or type and all subtypes?","Type Selection",list("Strict type","Type and subtypes","Cancel"))
+		var/action_type = alert(usr, "Strict type ([O.type]) or type and all subtypes?","Type Selection", "Strict type","Type and subtypes","Cancel")
 		if(action_type == "Cancel" || !action_type)
 			return
 
-		if(tgui_alert(usr, "Are you really sure you want to delete all objects of type [O.type]?","Delete All?",list("Yes","No")) != "Yes")
+		if(alert(usr, "Are you really sure you want to delete all objects of type [O.type]?","Delete All?", "Yes","No") != "Yes")
 			return
 
-		if(tgui_alert(usr, "Second confirmation required. Delete?","REALLY?",list("Yes","No")) != "Yes")
+		if(alert(usr, "Second confirmation required. Delete?","REALLY?", "Yes", "No") != "Yes")
 			return
 
 		var/O_type = O.type
@@ -441,13 +441,13 @@
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		var/new_species = tgui_input_list(usr, "Please choose a new species.","Species", GLOB.species_meta)
+		var/new_species = tgui_input_list(usr, "Please choose a new species.","Species", SScharacters.all_species_names())
 
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
 
-		if(H.set_species(new_species))
+		if(H.set_species(new_species, force = TRUE))
 			to_chat(usr, "Set species of [H] to [H.species].")
 		else
 			to_chat(usr, "Failed! Something went wrong.")
@@ -460,7 +460,7 @@
 			to_chat(usr, "This can only be done to instances of type /mob")
 			return
 
-		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", GLOB.all_languages)
+		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", SScharacters.all_language_names())
 
 		if(!new_language)
 			return
@@ -529,7 +529,7 @@
 		if(!verb || verb == "Cancel")
 			return
 		else
-			H.verbs += verb
+			add_verb(H, verb)
 
 	else if(href_list["remverb"])
 		if(!check_rights(R_DEBUG))      return
@@ -546,7 +546,7 @@
 		if(!verb)
 			return
 		else
-			H.verbs -= verb
+			remove_verb(H, verb)
 
 	else if(href_list["addorgan"])
 		if(!check_rights(R_SPAWN))	return

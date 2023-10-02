@@ -1,15 +1,15 @@
 // Stacked resources. They use a material datum for a lot of inherited values.
 // If you're adding something here, make sure to add it to fifty_spawner_mats.dm as well
 /obj/item/stack/material
-	force = 5.0
-	throwforce = 5
+	damage_force = 5
+	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 3
 	throw_range = 3
 	max_amount = 50
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 		)
 
 	var/default_type = MAT_STEEL
@@ -32,8 +32,6 @@
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
 
-
-	recipes = material.get_recipes()
 	stacktype = material.stack_type
 	if(islist(material.stack_origin_tech))
 		origin_tech = material.stack_origin_tech.Copy()
@@ -42,13 +40,27 @@
 		color = material.icon_colour
 
 	if(!material.conductive)
-		flags |= NOCONDUCT
+		atom_flags |= NOCONDUCT
 
-	matter = material.get_matter()
+	materials = material.get_matter()
 	update_strings()
 
 /obj/item/stack/material/get_material()
 	return material
+
+/obj/item/stack/material/tgui_recipes()
+	var/list/assembled = ..()
+	for(var/datum/stack_recipe/recipe as anything in material.get_recipes())
+		assembled[++assembled.len] = recipe.tgui_recipe_data()
+	for(var/datum/stack_recipe/material/recipe as anything in SSmaterials.material_stack_recipes)
+		assembled[++assembled.len] = recipe.tgui_recipe_data()
+	return assembled
+
+/obj/item/stack/material/can_craft_recipe(datum/stack_recipe/recipe)
+	. = ..()
+	if(.)
+		return
+	return (recipe in material.recipes) || (istype(recipe, /datum/stack_recipe/material) && (recipe in SSmaterials.material_stack_recipes))
 
 /obj/item/stack/material/proc/update_strings()
 	// Update from material datum.
@@ -77,9 +89,9 @@
 	if(M) M.update_strings()
 	return transfer
 
-/obj/item/stack/material/attack_self(var/mob/user)
+/obj/item/stack/material/attack_self(mob/user)
 	if(!allow_window_autobuild || !material.build_windows(user, src))
-		..()
+		return ..()
 
 /obj/item/stack/material/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
@@ -284,11 +296,11 @@
 	update_mass()
 	return
 
-/obj/item/stack/material/supermatter/attack_hand(mob/user)
+/obj/item/stack/material/supermatter/attack_hand(mob/user, list/params)
 	. = ..()
 
 	update_mass()
-	SSradiation.radiate(src, 5 + amount)
+	radiation_pulse(src, RAD_INTENSITY_MAT_SUPERMATTER_PICKUP_PER_SHEET(amount))
 	var/mob/living/M = user
 	if(!istype(M))
 		return
@@ -297,7 +309,7 @@
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/clothing/gloves/G = H.gloves
-		if(istype(G) && ((G.clothing_flags & THICKMATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
+		if(istype(G) && ((G.clothing_flags & CLOTHING_THICK_MATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
 			burn_user = FALSE
 
 		if(burn_user)
@@ -313,13 +325,14 @@
 	if(burn_user)
 		M.apply_damage(amount, BURN, null, used_weapon="Supermatter Chunk")
 
-/obj/item/stack/material/supermatter/ex_act(severity)	// An incredibly hard to manufacture material, SM chunks are unstable by their 'stabilized' nature.
+/obj/item/stack/material/supermatter/legacy_ex_act(severity)	// An incredibly hard to manufacture material, SM chunks are unstable by their 'stabilized' nature.
 	if(prob((4 / severity) * 20))
-		SSradiation.radiate(get_turf(src), amount * 4)
+		// you dun fucked up
+		radiation_pulse(src, RAD_INTENSITY_MAT_SUPERMATTER_EXPLODE_PER_SHEET(amount))
 		explosion(get_turf(src),round(amount / 12) , round(amount / 6), round(amount / 3), round(amount / 25))
 		qdel(src)
 		return
-	SSradiation.radiate(get_turf(src), amount * 2)
+	radiation_pulse(src, RAD_INTENSITY_MAT_SUPERMATTER_EXPLODE_PER_SHEET(amount))
 	..()
 
 /obj/item/stack/material/wood
@@ -367,10 +380,10 @@
 	plank_type = /obj/item/stack/material/wood/hard
 
 /obj/item/stack/material/log/attackby(var/obj/item/W, var/mob/user)
-	if(!istype(W) || W.force <= 0)
+	if(!istype(W) || W.damage_force <= 0)
 		return ..()
 	if(W.sharp && W.edge)
-		var/time = (3 SECONDS / max(W.force / 10, 1)) * W.toolspeed
+		var/time = (3 SECONDS / max(W.damage_force / 10, 1)) * W.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))
 			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")
@@ -442,8 +455,9 @@
 	pickup_sound = 'sound/items/pickup/leather.ogg'
 
 /obj/item/stack/material/chitin
-	name = "chitin"
-	desc = "The by-product of mob grinding."
+	name = "chitin plates"
+	desc = "Sheets of hardened chitin, usually harvested from insectile beasts."
+	singular_name = "chitin plate"
 	icon_state = "chitin"
 	default_type = MAT_CHITIN
 	no_variants = FALSE
@@ -483,19 +497,19 @@
 	no_variants = FALSE
 
 /obj/item/stack/material/bananium
-	name = "bananium"
+	name = MAT_BANANIUM
 	desc = "When smelted, Vaudium takes on a bright yellow hue and remains pliable, growing rigid when met with a forceful impact."
 	icon_state = "sheet-clown"
-	default_type = "bananium"
+	default_type = MAT_BANANIUM
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
 
 /obj/item/stack/material/silencium
-	name = "silencium"
+	name = MAT_SILENCIUM
 	desc = "When compressed, Vaudium loses its color, gaining distinctive black bands and becoming intensely rigid."
 	icon_state = "sheet-mime"
-	default_type = "silencium"
+	default_type = MAT_SILENCIUM
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'

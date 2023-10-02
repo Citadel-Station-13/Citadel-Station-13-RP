@@ -7,12 +7,14 @@
 /obj/effect/step_trigger/teleporter/roguemine_loop/south/Initialize(mapload)
 	. = ..()
 	teleport_x = x
-	teleport_y = world.maxy - 16
+//	teleport_y = world.maxy - 16	// Causes step triggers to teleport base off of world's maximum y distance which if map sizes are increased again will cause issues.
+	teleport_y = 177	// Future proofing this for any map size changes (aka bigger maps so we dont have people teleporting into unused map space)
 	teleport_z = z
 
 /obj/effect/step_trigger/teleporter/roguemine_loop/west/Initialize(mapload)
 	. = ..()
-	teleport_x = world.maxx - 16
+//	teleport_x = world.maxx - 16	// Same as with the world's maxiumum y
+	teleport_x = 177	// Future proofing this for any map size changes (aka bigger maps so we dont have people teleporting into unused map space)
 	teleport_y = y
 	teleport_z = z
 

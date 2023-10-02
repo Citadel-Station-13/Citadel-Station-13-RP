@@ -15,14 +15,11 @@ var/silent_ert = 0
 	if(!holder)
 		to_chat(usr, "<span class='danger'>Only administrators may use this command.</span>")
 		return
-	if(!SSticker)
-		to_chat(usr, "<span class='danger'>The game hasn't started yet!</span>")
-		return
-	if(SSticker.current_state <= GAME_STATE_PLAYING)
+	if(SSticker.current_state < GAME_STATE_PLAYING)
 		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
 		return
 	if(send_emergency_team)
-		to_chat(usr, "<span class='danger'>[GLOB.using_map.boss_name] has already dispatched an emergency response team!</span>")
+		to_chat(usr, "<span class='danger'>[(LEGACY_MAP_DATUM).boss_name] has already dispatched an emergency response team!</span>")
 		return
 	if(alert("Do you want to dispatch an Emergency Response Team?",,"Yes","No") != "Yes")
 		return
@@ -40,7 +37,7 @@ var/silent_ert = 0
 	log_admin("[key_name(usr)] used Dispatch Response Team.")
 	trigger_armed_response_team(1)
 
-client/verb/JoinResponseTeam()
+/client/verb/JoinResponseTeam()
 
 	set name = "Join Response Team"
 	set category = "IC"
@@ -64,7 +61,7 @@ client/verb/JoinResponseTeam()
 		to_chat(usr, "You need to be an observer or new player to use this.")
 
 // returns a number of dead players in %
-proc/percentage_dead()
+/proc/percentage_dead()
 	var/total = 0
 	var/deadcount = 0
 	for(var/mob/living/carbon/human/H in GLOB.mob_list)
@@ -76,7 +73,7 @@ proc/percentage_dead()
 	else return round(100 * deadcount / total)
 
 // counts the number of antagonists in %
-proc/percentage_antagonists()
+/proc/percentage_antagonists()
 	var/total = 0
 	var/antagonists = 0
 	for(var/mob/living/carbon/human/H in GLOB.mob_list)
@@ -89,7 +86,7 @@ proc/percentage_antagonists()
 
 // Increments the ERT chance automatically, so that the later it is in the round,
 // the more likely an ERT is to be able to be called.
-proc/increment_ert_chance()
+/proc/increment_ert_chance()
 	while(send_emergency_team == 0) // There is no ERT at the time.
 		if(get_security_level() == "green")
 			ert_base_chance += 1
@@ -108,7 +105,7 @@ proc/increment_ert_chance()
 		sleep(600 * 3) // Minute * Number of Minutes
 
 
-proc/trigger_armed_response_team(var/force = 0)
+/proc/trigger_armed_response_team(var/force = 0)
 	if(!can_call_ert && !force)
 		return
 	if(send_emergency_team)
@@ -123,11 +120,11 @@ proc/trigger_armed_response_team(var/force = 0)
 
 	// there's only a certain chance a team will be sent
 	if(!prob(send_team_chance))
-		command_announcement.Announce("It would appear that an emergency response team was requested for [station_name()]. Unfortunately, we were unable to send one at this time.", "[GLOB.using_map.boss_name]")
+		command_announcement.Announce("It would appear that an emergency response team was requested for [station_name()]. Unfortunately, we were unable to send one at this time.", "[(LEGACY_MAP_DATUM).boss_name]")
 		can_call_ert = 0 // Only one call per round, ladies.
 		return
 	if(silent_ert == 0)
-		command_announcement.Announce("It would appear that an emergency response team was requested for [station_name()]. We will prepare and send one as soon as possible.", "[GLOB.using_map.boss_name]")
+		command_announcement.Announce("It would appear that an emergency response team was requested for [station_name()]. We will prepare and send one as soon as possible.", "[(LEGACY_MAP_DATUM).boss_name]")
 
 	can_call_ert = 0 // Only one call per round, gentleman.
 	send_emergency_team = 1

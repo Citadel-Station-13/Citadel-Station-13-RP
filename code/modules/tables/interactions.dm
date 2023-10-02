@@ -1,22 +1,29 @@
 /obj/structure/table/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover,/obj/item/projectile))
-		return (check_cover(mover,target))
-	if (flipped == 1)
-		if (get_dir(loc, target) == dir)
-			return !density
-		else
-			return TRUE
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+	. = ..()
+	if(.)
+		return
+	if(istype(mover,/obj/projectile))
+		return check_cover(mover,target)
+	if(flipped == 1)
+		if(get_dir(mover, target) & turn(dir, 180))
+			return FALSE
 		return TRUE
-	if(locate(/obj/structure/table/bench) in get_turf(mover))
-		return FALSE
-	var/obj/structure/table/table = locate(/obj/structure/table) in get_turf(mover)
-	if(table && !table.flipped)
+	for(var/obj/structure/table/T in get_turf(mover))
+		if(istype(T, /obj/structure/table/bench))
+			continue
+		if(T.flipped == 1)
+			continue
 		return TRUE
-	return FALSE
+
+/obj/structure/table/CheckExit(atom/movable/AM, atom/newLoc)
+	if(check_standard_flag_pass(AM))
+		return TRUE
+	if(flipped == -1 || !flipped)
+		return TRUE
+	return !density || !(get_dir(loc, newLoc) & dir)
 
 //checks if projectile 'P' from turf 'from' can hit whatever is behind the table. Returns 1 if it can, 0 if bullet stops.
-/obj/structure/table/proc/check_cover(obj/item/projectile/P, turf/from)
+/obj/structure/table/proc/check_cover(obj/projectile/P, turf/from)
 	var/turf/cover
 	if(flipped==1)
 		cover = get_turf(src)
@@ -48,17 +55,7 @@
 				return 1
 	return 1
 
-/obj/structure/table/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSTABLE))
-		return 1
-	if (flipped==1)
-		if (get_dir(loc, target) == dir)
-			return !density
-		else
-			return 1
-	return 1
-
-/obj/structure/table/attackby(obj/item/W, mob/user, params)
+/obj/structure/table/attackby(obj/item/W, mob/user, list/params)
 	// Handle harm intent grabbing/tabling.
 	if(istype(W, /obj/item/grab) && get_dist(src,user)<2)
 		var/obj/item/grab/G = W
@@ -72,7 +69,7 @@
 				return
 			if (G.state < 2)
 				if(user.a_intent == INTENT_HARM)
-					if (prob(15))	M.Weaken(5)
+					if (prob(15))	M.afflict_paralyze(20 * 5)
 					M.apply_damage(8,def_zone = BP_HEAD)
 					visible_message("<span class='danger'>[G.assailant] slams [G.affecting]'s face against \the [src]!</span>")
 					if(material)
@@ -93,7 +90,7 @@
 					return
 			else if(G.state > GRAB_AGGRESSIVE || world.time >= (G.last_action + UPGRADE_COOLDOWN))
 				M.forceMove(get_turf(src))
-				M.Weaken(5)
+				M.afflict_paralyze(20 * 5)
 				visible_message("<span class='danger'>[G.assailant] puts [G.affecting] on \the [src].</span>")
 			qdel(W)
 			return
@@ -138,13 +135,15 @@
 		if(!user.transfer_item_to_loc(W, loc))
 			return
 		if(item_pixel_place)
-			var/list/click_params = params2list(params)
 			//Center the icon where the user clicked.
-			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
+			if(!params || !params["icon-x"] || !params["icon-y"])
 				return
 			//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
-			W.pixel_x = clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
-			W.pixel_y = clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
+			W.pixel_x = clamp(text2num(params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
+			W.pixel_y = clamp(text2num(params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
+		if(istype(W, /obj/item/holder))
+			var/obj/item/holder/holder = W
+			holder.update_state()
 		return
 	return ..()
 

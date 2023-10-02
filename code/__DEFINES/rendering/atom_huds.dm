@@ -3,7 +3,7 @@
 // /datum/atom_hud expects these to be unique
 // these need to be strings in order to make them associative lists
 /// dead, alive, sick, health status
-#define STATUS_HUD		"1"
+#define BIOLOGY_HUD		"1"
 /// a simple line rounding the mob's number health
 #define LIFE_HUD		"2"
 /// the job asigned to your ID
@@ -24,7 +24,7 @@
 
 // constant list lookup of hud to icon
 GLOBAL_LIST_INIT(hud_icon_files, list(
-	STATUS_HUD = 'icons/screen/atom_hud/status.dmi',
+	BIOLOGY_HUD = 'icons/screen/atom_hud/biology.dmi',
 	LIFE_HUD = 'icons/screen/atom_hud/health.dmi',
 	WANTED_HUD = 'icons/screen/atom_hud/security.dmi',
 	IMPLOYAL_HUD = 'icons/screen/atom_hud/implant.dmi',
@@ -36,7 +36,7 @@ GLOBAL_LIST_INIT(hud_icon_files, list(
 
 // constant list lookup of hud to layer
 GLOBAL_LIST_INIT(hud_icon_layers, list(
-	STATUS_HUD = 1	// render above default
+	BIOLOGY_HUD = 1	// render above default
 ))
 
 //by default everything in the hud_list of an atom is an image
@@ -56,3 +56,7 @@ GLOBAL_LIST_INIT(hud_icon_layers, list(
 
 ///cooldown for being shown the images for any particular data hud
 #define ADD_HUD_TO_COOLDOWN 20
+
+//alternate appearance flags
+#define AA_TARGET_SEE_APPEARANCE (1<<0)
+#define AA_MATCH_TARGET_OVERLAYS (1<<1)

@@ -36,7 +36,7 @@
 	var/ranged_spores = FALSE			// For proper spores of the type above.
 	var/spore_firesound = 'sound/effects/slime_squish.ogg'
 	var/spore_range = 7					// The range the spore can fire.
-	var/spore_projectile = /obj/item/projectile/energy/blob
+	var/spore_projectile = /obj/projectile/energy/blob
 
 	var/factory_type = /obj/structure/blob/factory
 	var/resource_type = /obj/structure/blob/resource
@@ -166,7 +166,7 @@
 		return
 	var/datum/gas_mixture/env = T.return_air()
 	if(env)
-		env.add_thermal_energy(10 * 1000)
+		env.adjust_thermal_energy(10 * 1000)
 
 
 // Mostly a classic blob.  No nodes, no other blob types.
@@ -423,7 +423,7 @@
 		var/protection = H.get_cold_protection(50)
 		if(protection < 1)
 			var/temp_change = 80 // Each hit can reduce temperature by up to 80 kelvin.
-			var/datum/species/baseline = get_static_species_meta(/datum/species/human)
+			var/datum/species/baseline = SScharacters.resolve_species_path(/datum/species/human)
 			var/temp_cap = baseline.cold_level_3 - 5 // Can't go lower than this.
 
 			var/cold_factor = abs(protection - 1)
@@ -440,7 +440,7 @@
 	T.freeze_floor()
 	var/datum/gas_mixture/env = T.return_air()
 	if(env)
-		env.add_thermal_energy(-10 * 1000)
+		env.adjust_thermal_energy(-10 * 1000)
 
 // Electric blob that stuns.
 /datum/blob_type/energized_jelly
@@ -513,7 +513,7 @@
 	// Now for sounds.
 	playsound(T, SFX_ALIAS_EXPLOSION, 75, 1) // Local sound.
 
-	for(var/mob/M in player_list) // For everyone else.
+	for(var/mob/M in GLOB.player_list) // For everyone else.
 		if(M.z == T.z && get_dist(M, T) > world.view && !M.ear_deaf && !istype(M.loc,/turf/space))
 			SEND_SOUND(M, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 
@@ -593,7 +593,7 @@
 	attack_verb = "splashes"
 
 /datum/blob_type/radioactive_ooze/on_pulse(var/obj/structure/blob/B)
-	SSradiation.radiate(B, 200)
+	radiation_pulse(src, RAD_INTENSITY_BLOB_RADIOACTIVE_OOZE)
 
 /datum/blob_type/volatile_alluvium
 	name = "volatile alluvium"
@@ -617,7 +617,7 @@
 	spore_type = /mob/living/simple_mob/blob/spore/weak
 	ranged_spores = TRUE
 	spore_range = 3
-	spore_projectile = /obj/item/projectile/energy/blob/splattering
+	spore_projectile = /obj/projectile/energy/blob/splattering
 	factory_type = /obj/structure/blob/factory/sluggish
 	resource_type = /obj/structure/blob/resource/sluggish
 
@@ -635,7 +635,7 @@
 			I.forceMove(get_turf(B)) // Disarmed entirely.
 			B.visible_message("<span class='danger'>The [name] heaves, \the [attacker]'s weapon becoming stuck in the churning mass!</span>")
 		else
-			I.throw_at(B, 2, 4) // Just yoinked.
+			I.throw_at_old(B, 2, 4) // Just yoinked.
 			B.visible_message("<span class='danger'>The [name] heaves, pulling \the [attacker]'s weapon from their hands!</span>")
 	return ..()
 

@@ -4,7 +4,8 @@
 // ###
 // Species definition follows.
 /datum/species/shapeshifter/promethean/avatar
-
+	uid = SPECIES_ID_VIRTUAL_REALITY
+	id = SPECIES_ID_VIRTUAL_REALITY
 	name =             SPECIES_VR
 	name_plural =      "Virtual Reality Avatars"
 	blurb =            "A 3-dimensional representation of some sort of animate object used to display the presence and actions of some-one or -thing using a virtual reality program."
@@ -12,7 +13,7 @@
 	death_message =    "flickers briefly, their gear falling in a heap on the floor around their motionless body."
 	knockout_message = "has been knocked unconscious!"
 
-	spawn_flags =		SPECIES_IS_RESTRICTED
+	species_spawn_flags =		SPECIES_SPAWN_SPECIAL
 
 	speech_bubble_appearance = "cyber"
 
@@ -23,7 +24,7 @@
 	male_sneeze_sound = 'sound/effects/mob_effects/sneeze.ogg'
 	female_sneeze_sound = 'sound/effects/mob_effects/f_sneeze.ogg'
 
-	valid_transform_species = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_DIONA, SPECIES_TESHARI, SPECIES_VOX, SPECIES_MONKEY, SPECIES_SKELETON)
+	valid_transform_species = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_DIONA, SPECIES_TESHARI, SPECIES_VOX, SPECIES_MONKEY, SPECIES_SKELETON)
 
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 	has_organ =     list(O_BRAIN = /obj/item/organ/internal/brain/slime, O_EYES = /obj/item/organ/internal/eyes) // Slime core.
@@ -77,8 +78,8 @@
 	src.vr_link = avatar // Can't reuse vr_holder so that death can automatically eject users from VR
 
 	// Move the mind
-	avatar.Sleeping(1)
-	src.mind.transfer_to(avatar)
+	avatar.afflict_sleeping(20 * 1)
+	src.mind.transfer(avatar)
 	to_chat(avatar, "<b>You have enterred Virtual Reality!\nAll normal gameplay rules still apply.\nWounds you suffer here won't persist when you leave VR, but some of the pain will.\nYou can leave VR at any time by using the \"Exit Virtual Reality\" verb in the Abilities tab, or by ghosting.\nYou can modify your appearance by using various \"Change \[X\]\" verbs in the Abilities tab.</b>")
 	to_chat(avatar, "<span class='notice'> You black out for a moment, and wake to find yourself in a new body in virtual reality.</span>") // So this is what VR feels like?
 
@@ -99,8 +100,7 @@
 		total_damage = H.getBruteLoss() + H.getFireLoss() + H.getOxyLoss() + H.getToxLoss()
 
 	// Move the mind back to the original mob
-//	vr_holder.Sleeping(1)
-	src.mind.transfer_to(vr_holder)
+	src.mind.transfer(vr_holder)
 	to_chat(vr_holder, "<span class='notice'>You black out for a moment, and wake to find yourself back in your own body.</span>")
 	// Two-thirds damage is transferred as agony for /humans
 	// Getting hurt in VR doesn't damage the physical body, but you still got hurt.
@@ -115,4 +115,4 @@
 
 	if(istype(vr_holder.loc, /obj/machinery/vr_sleeper))
 		var/obj/machinery/vr_sleeper/V = vr_holder.loc
-		INVOKE_ASYNC(V, /obj/machinery/vr_sleeper/proc/go_out, TRUE)
+		INVOKE_ASYNC(V, TYPE_PROC_REF(/obj/machinery/vr_sleeper, go_out), TRUE)

@@ -6,11 +6,11 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "powersink0"
 	w_class = ITEMSIZE_LARGE
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 1
 	throw_range = 2
 
-	matter = list(MAT_STEEL = 750)
+	materials = list(MAT_STEEL = 750)
 
 	origin_tech = list(TECH_POWER = 3, TECH_ILLEGAL = 5)
 	/// amount of power to drain per tick in kw
@@ -47,7 +47,7 @@
 					anchored = 1
 					mode = 1
 					src.visible_message("<span class='notice'>[user] attaches [src] to the cable!</span>")
-					playsound(src, I.usesound, 50, 1)
+					playsound(src, I.tool_sound, 50, 1)
 					return
 			else
 				to_chat(user, "Device must be placed over an exposed cable to attach to it.")
@@ -60,7 +60,7 @@
 			mode = 0
 			src.visible_message("<span class='notice'>[user] detaches [src] from the cable!</span>")
 			set_light(0)
-			playsound(src, I.usesound, 50, 1)
+			playsound(src, I.tool_sound, 50, 1)
 			icon_state = "powersink0"
 
 			return
@@ -70,7 +70,7 @@
 /obj/item/powersink/attack_ai()
 	return
 
-/obj/item/powersink/attack_hand(var/mob/user)
+/obj/item/powersink/attack_hand(mob/user, list/params)
 	switch(mode)
 		if(0)
 			..()

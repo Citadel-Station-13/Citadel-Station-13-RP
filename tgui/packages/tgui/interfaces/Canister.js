@@ -51,11 +51,6 @@ export const Canister = (props, context) => {
                       onClick={() => act('restricted')} />
                   )}
                   <Button
-                    icon={data.shielding ? 'power-off' : 'times'}
-                    content={data.shielding ? 'Shielding-ON' : 'Shielding-OFF'}
-                    selected={data.shielding}
-                    onClick={() => act('shielding')} />
-                  <Button
                     icon="pencil-alt"
                     content="Relabel"
                     onClick={() => act('relabel')} />
@@ -146,13 +141,6 @@ export const Canister = (props, context) => {
                   </Tooltip>
                 </LabeledControls.Item>
               </LabeledControls>
-            </Section>
-            <Section>
-              <Box>
-                {data.has_cell ? (
-                  "Cell charge at: " + data.cell_charge + "%"
-                ) : "Missing Cell"}
-              </Box>
             </Section>
           </Flex.Item>
           <Flex.Item grow={1}>

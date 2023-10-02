@@ -3,6 +3,7 @@
 	name = "autolok suit storage"
 	desc = "It's wall-mounted storage unit for an AutoLok suit."
 	store_mobs = FALSE
+	closet_appearance = /singleton/closet_appearance/wall/emergency
 
 	starts_with = list(
 		/obj/item/clothing/suit/space/void/autolok,
@@ -14,6 +15,7 @@
 	name = "emergency suit storage"
 	desc = "It's wall-mounted storage unit for an emergency suit."
 	store_mobs = FALSE
+	closet_appearance = /singleton/closet_appearance/wall/emergency
 
 	starts_with = list(
 		/obj/item/clothing/head/helmet/space/emergency,

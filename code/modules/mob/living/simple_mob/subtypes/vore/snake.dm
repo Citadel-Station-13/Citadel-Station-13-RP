@@ -27,12 +27,8 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 12
 
-	old_x = -16
-	old_y = -16
-	default_pixel_x = -16
-	default_pixel_y = -16
-	pixel_x = -16
-	pixel_y = -16
+	base_pixel_x = -16
+	base_pixel_y = -16
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 

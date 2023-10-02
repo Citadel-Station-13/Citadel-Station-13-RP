@@ -1,22 +1,13 @@
-
-//duck you byond
-var/global/image/stringbro = new() // Temporarily super-global because of BYOND init order dumbness.
-var/global/image/iconbro = new() // Temporarily super-global because of BYOND init order dumbness.
-var/global/image/appearance_bro = new() // Temporarily super-global because of BYOND init order dumbness.
-
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core = null
 var/global/list/processing_machines      = list()	// TODO - Move into SSmachines
 var/global/list/processing_power_items   = list()	// TODO - Move into SSmachines
-var/global/list/active_diseases          = list()
 var/global/list/hud_icon_reference       = list()
 
 
 var/global/list/global_mutations  = list() // List of hidden mutation things.
 
 var/global/datum/universal_state/universe = new
-
-var/global/list/global_map = null
 
 // Noises made when hit while typing.
 var/list/hit_appends	= list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF")
@@ -72,10 +63,6 @@ var/list/adminlog  = list()
 
 var/list/powernets = list()	// TODO - Move into SSmachines
 
-var/datum/debug/debugobj
-
-var/datum/moduletypes/mods = new()
-
 var/gravity_is_on = 1
 
 var/join_motd = null
@@ -83,16 +70,6 @@ var/join_motd = null
 var/datum/metric/metric = new() // Metric datum, used to keep track of the round.
 
 var/list/awaydestinations = list() // Away missions. A list of landmarks that the warpgate can take you to.
-
-// Forum MySQL configuration. (for use with forum account/key authentication)
-// These are all default values that will load should the forumdbconfig_legacy.txt file fail to read for whatever reason.
-var/forumsqladdress = "localhost"
-var/forumsqlport    = "3306"
-var/forumsqldb      = "tgstation"
-var/forumsqllogin   = "root"
-var/forumsqlpass    = ""
-var/forum_activated_group     = "2"
-var/forum_authenticated_group = "10"
 
 // For FTP requests. (i.e. downloading runtime logs.)
 // However it'd be ok to use for accessing attack logs and such too, which are even laggier.
@@ -105,9 +82,23 @@ var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J
 
 // Used by robots and robot preferences.
 var/list/robot_module_types = list(
-	"Standard", "Engineering", "Medical",
-	"Miner",    "Janitor",     "Service",
-	"Clerical", "Security",    "Research"
+	"Standard",
+	"Engineering",
+	"Medical",
+	"Miner",
+	"Janitor",
+	"Service",
+	"Clerical",
+	"Security",
+	"Research",
+	"Quadruped",
+	"MediQuad",
+	"SecuriQuad",
+	"JaniQuad",
+	"SciQuad",
+	"EngiQuad",
+	"Mining Quad",
+	"Service Quad"
 )
 
 // Some scary sounds.
@@ -138,16 +129,6 @@ var/max_explosion_range = 14
 //Could be useful for AI impersonation or something at some point?
 var/static/list/cached_character_icons = list()
 
-//! ## VR FILE MERGE ## !//
-
-/hook/startup/proc/modules_vr()
-	robot_module_types += "Medihound"
-	robot_module_types += "K9"
-	robot_module_types += "Janihound"
-	robot_module_types += "Sci-Hound"
-	robot_module_types += "Pupdozer"
-	return 1
-
 var/list/shell_module_types = list(
 	"Standard", "Service", "Clerical"
 )
@@ -169,8 +150,10 @@ var/global/list/acceptable_fruit_types = list(
 	"durian",
 	"eggplant",
 	"grapes",
+	"grass",
 	"greengrapes",
 	"harebells",
+	"jahtak",
 	"lavender",
 	"lemon",
 	"lettuce",
@@ -181,6 +164,7 @@ var/global/list/acceptable_fruit_types = list(
 	"poppies",
 	"potato",
 	"pumpkin",
+	"pyrrhlea",
 	"rice",
 	"rose",
 	"rhubarb",

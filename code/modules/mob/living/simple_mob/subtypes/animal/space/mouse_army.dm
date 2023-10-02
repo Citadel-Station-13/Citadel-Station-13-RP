@@ -45,7 +45,7 @@
 	taser_kill = 0
 
 	mob_size = MOB_MINISCULE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 //	can_pull_size = ITEMSIZE_TINY
 //	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
@@ -62,22 +62,23 @@
 	//Mob melee settings
 	melee_damage_lower = 5
 	melee_damage_upper = 15
-	list/attacktext = list("attacked", "chomped", "gnawed on")
-	list/friendly = list("baps", "nuzzles")
+	attacktext = list("attacked", "chomped", "gnawed on")
+	friendly = list("baps", "nuzzles")
 	attack_armor_type = "melee"
 	attack_sharp = 1
 	attack_edge = 1
 
 	//Damage resistances
 	shock_resist = 1
-	armor = list(
-				"melee" = 30,
-				"bullet" = 20,
-				"laser" = 20,
-				"energy" = 10,
-				"bomb" = 10,
-				"bio" = 0,
-				"rad" = 0)	//Standard armor vest stats, slightly dropped due to scale.
+	armor_legacy_mob = list(
+		"melee" = 30,
+		"bullet" = 20,
+		"laser" = 20,
+		"energy" = 10,
+		"bomb" = 10,
+		"bio" = 0,
+		"rad" = 0,
+	) // Standard armor vest stats, slightly dropped due to scale.
 
 	has_langs = list("Mouse")
 
@@ -97,8 +98,8 @@
 /mob/living/simple_mob/animal/space/mouse_army/Initialize(mapload)
 	. = ..()
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 	if(name == initial(name))
 		name = "[name] ([rand(1, 1000)])"
@@ -161,7 +162,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/operative)
 
 	shock_resist = 1
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 40,
 				"bullet" = 40,
 				"laser" = 30,
@@ -197,7 +198,7 @@
 
 	//Damage resistances
 	shock_resist = 0.6
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 20,
 				"bullet" = 20,
 				"laser" = 20,
@@ -206,7 +207,7 @@
 				"bio" = 100,
 				"rad" = 100)
 
-	projectiletype = /obj/item/projectile/bullet/incendiary/flamethrower
+	projectiletype = /obj/projectile/bullet/incendiary/flamethrower
 	base_attack_cooldown = 10
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged
@@ -232,10 +233,10 @@
 		return
 	var/datum/gas_mixture/GM = new
 	if(prob(10))
-		T.assume_gas(/datum/gas/phoron, 100, 1500+T0C)
+		T.assume_gas(GAS_ID_PHORON, 100, 1500+T0C)
 		T.visible_message("<span class='critical'>\The [src]'s tank vents a cloud of heated gas!</span>")
 	else
-		T.assume_gas(/datum/gas/phoron, 5, istype(T) ? T.air.temperature : T20C)
+		T.assume_gas(GAS_ID_PHORON, 5, istype(T) ? T.air.temperature : T20C)
 		visible_message("<span class='critical'>\The [src]'s tank ruptures!</span>")
 	T.assume_air(GM)
 	return
@@ -269,7 +270,7 @@
 
 	//Damage resistances
 	shock_resist = 0.6
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 40,
 				"bullet" = 30,
 				"laser" = 10,
@@ -335,7 +336,7 @@
 
 	//Damage resistances
 	shock_resist = 0.6
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 50,
 				"bullet" = 10,
 				"laser" = 10,
@@ -409,14 +410,14 @@
 	if(stealthed)
 		if(isliving(A))
 			var/mob/living/L = A
-			L.Weaken(stealthed_weaken_amount)
+			L.afflict_paralyze(20 * stealthed_weaken_amount)
 			to_chat(L, SPAN_DANGER("\The [src] ambushes you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
 	unstealth()
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/animal/space/mouse_army/stealth/bullet_act(obj/item/projectile/P)
+/mob/living/simple_mob/animal/space/mouse_army/stealth/bullet_act(obj/projectile/P)
 	. = ..()
 	break_cloak()
 

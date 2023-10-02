@@ -54,7 +54,7 @@
 /obj/machinery/atmospherics/component/binary/passive_gate/process(delta_time)
 	..()
 
-	last_flow_rate = 0
+	last_flow_rate_legacy = 0
 
 	if(!unlocked)
 		return 0
@@ -94,7 +94,7 @@
 		if(network2)
 			network2.update = 1
 
-	if (last_flow_rate)
+	if (last_flow_rate_legacy)
 		flowing = 1
 
 	update_icon()
@@ -168,7 +168,7 @@
 	update_icon()
 	return
 
-/obj/machinery/atmospherics/component/binary/passive_gate/attack_hand(user as mob)
+/obj/machinery/atmospherics/component/binary/passive_gate/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	add_fingerprint(usr)
@@ -197,7 +197,7 @@
 		"output_pressure" = round(air2.return_pressure()*100),
 		"regulate_mode" = regulate_mode,
 		"set_flow_rate" = round(set_flow_rate*10),
-		"last_flow_rate" = round(last_flow_rate*10),
+		"last_flow_rate" = round(last_flow_rate_legacy*10),
 	)
 
 	return data
@@ -255,9 +255,9 @@
 	if(unsafe_pressure())
 		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
 	add_fingerprint(user)
-	playsound(src, W.usesound, 50, 1)
+	playsound(src, W.tool_sound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-	if (do_after(user, 40 * W.toolspeed))
+	if (do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
 			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
 			"<span class='notice'>You have unfastened \the [src].</span>", \

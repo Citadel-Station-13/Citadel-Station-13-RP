@@ -1,13 +1,16 @@
 /obj/item/bot_assembly
 	icon = 'icons/obj/bots/aibots.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
-	force = 3
+	damage_force = 3
 	throw_speed = 2
 	throw_range = 5
+
 	var/created_name
 	var/build_step = ASSEMBLY_FIRST_STEP
 	var/robot_arm = /obj/item/robot_parts/l_arm
-	var/skin = null //Same as medibot, set to tox or ointment for the respective kits.
+
+	/// Same as medibot, set to tox or ointment for the respective kits.
+	var/skin = null
 
 /obj/item/bot_assembly/attackby(obj/item/I, mob/user, params)
 	..()

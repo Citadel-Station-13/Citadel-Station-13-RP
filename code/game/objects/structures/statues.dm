@@ -1,4 +1,6 @@
 //Ported from Cit Main.
+// todo: refactor into sculpting, with categories/free choice of material & greyscaling
+// todo: generate job state icons off of a given sprite, or off of their outfit
 /obj/structure/statue
 	name = "Statue"
 	desc = "Placeholder. Yell at Firecage if you SOMEHOW see this."
@@ -22,7 +24,7 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
 			user.visible_message("[user] is loosening the [name]'s bolts.", \
 								 "<span class='notice'>You are loosening the [name]'s bolts...</span>")
-			if(do_after(user,40/W.toolspeed, target = src))
+			if(do_after(user,40/W.tool_speed, target = src))
 				if(!src.loc || !anchored)
 					return
 				user.visible_message("[user] loosened the [name]'s bolts!", \
@@ -35,7 +37,7 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
 			user.visible_message("[user] is securing the [name]'s bolts...", \
 								 "<span class='notice'>You are securing the [name]'s bolts...</span>")
-			if(do_after(user, 40/W.toolspeed, target = src))
+			if(do_after(user, 40/W.tool_speed, target = src))
 				if(!src.loc || anchored)
 					return
 				user.visible_message("[user] has secured the [name]'s bolts.", \
@@ -69,7 +71,7 @@
 		playsound(loc, 'sound/items/Welder.ogg', 40, 1)
 		user.visible_message("[user] is slicing apart the [name].", \
 							 "<span class='notice'>You are slicing apart the [name]...</span>")
-		if(do_after(user, 40/W.toolspeed, target = src))
+		if(do_after(user, 40/W.tool_speed, target = src))
 			if(!src.loc)
 				return
 			playsound(loc, 'sound/items/Welder2.ogg', 50, 1)
@@ -78,16 +80,16 @@
 			Dismantle(1)
 
 	else
-		hardness -= W.force/100
+		hardness -= W.damage_force/100
 		..()
 		CheckHardness()
 
-/obj/structure/statue/attack_hand(mob/living/user)
+/obj/structure/statue/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	user.visible_message("[user] rubs some dust off from the [name]'s surface.", \
 						 "<span class='notice'>You rub some dust off from the [name]'s surface.</span>")
 
-/obj/structure/statue/bullet_act(obj/item/projectile/Proj)
+/obj/structure/statue/bullet_act(obj/projectile/Proj)
 	hardness -= Proj.damage
 	..()
 	CheckHardness()
@@ -124,7 +126,7 @@
 				new ore(get_turf(src))
 	qdel(src)
 
-/obj/structure/statue/ex_act(severity = 1)
+/obj/structure/statue/legacy_ex_act(severity = 1)
 	switch(severity)
 		if(1)
 			Dismantle(1)
@@ -343,7 +345,18 @@
 	icon = 'icons/obj/structures_64x.dmi'
 	icon_state = "memorial"
 
-	density = 1
-	anchored = 1
-	throwpass = 0
-	climbable = 1
+	density = TRUE
+	anchored = TRUE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
+	climb_allowed = TRUE
+	depth_projected = TRUE
+	depth_level = 24
+
+/obj/structure/memorial/small
+	icon = 'icons/obj/structures.dmi'
+
+/obj/structure/memorial/small/left
+	icon_state = "memorial_l"
+
+/obj/structure/memorial/small/right
+	icon_state = "memorial_r"

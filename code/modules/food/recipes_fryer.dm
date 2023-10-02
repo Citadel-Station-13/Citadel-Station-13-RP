@@ -79,6 +79,14 @@
 	reagent_mix = RECIPE_REAGENT_REPLACE //Simplify end product
 	result = /obj/item/reagent_containers/food/snacks/friedmushroom
 
+/datum/recipe/shrimptempura
+	appliance = FRYER
+	reagents = list("sodiumchloride" = 2)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/shrimp
+	)
+	coating = /datum/reagent/nutriment/coating/batter
+	result = /obj/item/reagent_containers/food/snacks/shrimptempura
 
 //Sweet Recipes.
 //==================

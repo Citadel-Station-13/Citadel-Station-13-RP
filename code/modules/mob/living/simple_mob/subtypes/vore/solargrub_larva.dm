@@ -27,7 +27,7 @@ var/global/list/grub_machine_overlays = list()
 
 
 	mob_size = MOB_MINISCULE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	can_pull_size = ITEMSIZE_TINY
 	can_pull_mobs = MOB_PULL_NONE
 	density = 0
@@ -62,7 +62,7 @@ var/global/list/grub_machine_overlays = list()
 	sparks = new(src)
 	sparks.set_up()
 	sparks.attach(src)
-	verbs += /mob/living/proc/ventcrawl
+	add_verb(src, /mob/living/proc/ventcrawl)
 
 /mob/living/simple_mob/animal/solargrub_larva/death()
 	powermachine.draining = 0
@@ -73,7 +73,7 @@ var/global/list/grub_machine_overlays = list()
 	QDEL_NULL(powermachine)
 	QDEL_NULL(sparks)
 	if(machine_effect)
-		for(var/mob/L in player_list)
+		for(var/mob/L in GLOB.player_list)
 			L.client?.images -= machine_effect
 		QDEL_NULL(machine_effect)
 	return ..()
@@ -95,8 +95,8 @@ var/global/list/grub_machine_overlays = list()
 
 	if(istype(loc, /obj/machinery))
 		// to anyone who sees me on git blame, i'm not responsible for this shit code ~silicons
-		if(machine_effect && (air_master.current_cycle % 30))
-			for(var/mob/M in player_list)
+		if(machine_effect && (SSair.current_cycle % 30))
+			for(var/mob/M in GLOB.player_list)
 				SEND_IMAGE(M, machine_effect)
 		if(prob(10))
 			sparks.start()
@@ -132,7 +132,7 @@ var/global/list/grub_machine_overlays = list()
 	if(!(M.type in grub_machine_overlays))
 		generate_machine_effect(M)
 	machine_effect = image(grub_machine_overlays[M.type], M) //Can't do this the reasonable way with an overlay,
-	for(var/mob/L in player_list)				//because nearly every machine updates its icon by removing all overlays first
+	for(var/mob/L in GLOB.player_list)				//because nearly every machine updates its icon by removing all overlays first
 		SEND_IMAGE(L, machine_effect)
 
 /mob/living/simple_mob/animal/solargrub_larva/proc/generate_machine_effect(var/obj/machinery/M)
@@ -150,7 +150,7 @@ var/global/list/grub_machine_overlays = list()
 	forceMove(get_turf(M))
 	sparks.start()
 	if(machine_effect)
-		for(var/mob/L in player_list)
+		for(var/mob/L in GLOB.player_list)
 			L.client?.images -= machine_effect
 		QDEL_NULL(machine_effect)
 	ai_holder.target = null
@@ -215,10 +215,9 @@ var/global/list/grub_machine_overlays = list()
 	var/list/ignored_targets = list()
 
 /datum/ai_holder/simple_mob/solargrub_larva/list_targets()
-	var/static/potential_targets = typecacheof(list(/obj/machinery))
 	var/list/actual_targets = list()
 
-	for(var/AT in typecache_filter_list(range(vision_range, holder), potential_targets))
+	for(var/AT in typecache_filter_list(range(vision_range, holder), GLOB.typecache_machine))
 		var/obj/machinery/M = AT
 		if(istype(M, /obj/machinery/atmospherics/component/unary/vent_pump))
 			var/obj/machinery/atmospherics/component/unary/vent_pump/V = M
@@ -296,12 +295,12 @@ var/global/list/grub_machine_overlays = list()
 	idle_power_usages = split_into_3(total_idle_power_usage)
 
 
-/obj/item/multitool/afterattack(obj/O, mob/user, proximity)
-	if(proximity)
-		if(istype(O, /obj/machinery))
-			var/mob/living/simple_mob/animal/solargrub_larva/grub = locate() in O
+/obj/item/multitool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
+		if(istype(target, /obj/machinery))
+			var/mob/living/simple_mob/animal/solargrub_larva/grub = locate() in target
 			if(grub)
-				grub.eject_from_machine(O)
-				to_chat(user, "<span class='warning'>You disturb a grub nesting in \the [O]!</span>")
+				grub.eject_from_machine(target)
+				to_chat(user, "<span class='warning'>You disturb a grub nesting in \the [target]!</span>")
 				return
 	return ..()

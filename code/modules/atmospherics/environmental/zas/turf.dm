@@ -30,7 +30,7 @@
 		if(!istype(potential) || !potential.has_valid_zone())
 			continue
 
-		block = potential.CanAtmosPass(src, REVERSE_DIR(d))
+		block = potential.CanAtmosPass(src, global.reverse_dir[d])
 
 		if(block == ATMOS_PASS_AIR_BLOCKED)
 			continue
@@ -40,53 +40,82 @@
 		if(r_block == ATMOS_PASS_AIR_BLOCKED)
 			continue
 
-		air_master.connect(potential, src, min(block, r_block), d)
+		SSair.connect(potential, src, min(block, r_block), d)
+
+//* credit to kapu/daedalus dock for some of the code below*//
+
+#ifdef MULTIZAS
+///"Can safely remove from zone"
+GLOBAL_REAL_VAR(list/csrfz_check) = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST, NORTHUP, EASTUP, WESTUP, SOUTHUP, NORTHDOWN, EASTDOWN, WESTDOWN, SOUTHDOWN)
+///"Get zone neighbors"
+GLOBAL_REAL_VAR(list/gzn_check) = list(NORTH, SOUTH, EAST, WEST, UP, DOWN)
+#else
+///"Can safely remove from zone"
+GLOBAL_REAL_VAR(list/csrfz_check) = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
+///"Get zone neighbors"
+GLOBAL_REAL_VAR(list/gzn_check) = list(NORTH, SOUTH, EAST, WEST)
+#endif
+
+// Helper for can_safely_remove_from_zone().
+#define GET_ZONE_NEIGHBOURS(T, ret) \
+	ret = 0; \
+	if (T.zone) { \
+		for (var/_gzn_dir in gzn_check) { \
+			var/turf/simulated/other = get_step(T, _gzn_dir); \
+			if (istype(other) && other.zone == T.zone) { \
+				var/block = other.CanAtmosPass(T, global.reverse_dir[_gzn_dir]); \
+				if (block != ATMOS_PASS_AIR_BLOCKED) { \
+					ret |= _gzn_dir; \
+				} \
+			} \
+		} \
+	}
 
 /*
 	Simple heuristic for determining if removing the turf from it's zone will not partition the zone (A very bad thing).
 	Instead of analyzing the entire zone, we only check the nearest 3x3 turfs surrounding the src turf.
 	This implementation may produce false negatives but it (hopefully) will not produce any false postiives.
 */
-
+///Simple heuristic for determining if removing the turf from it's zone will not partition the zone (A very bad thing).
 /turf/simulated/proc/can_safely_remove_from_zone()
-	if(!zone)
+	if(isnull(zone))
 		return TRUE
 
-	var/check_dirs = get_zone_neighbours(src)
-	var/unconnected_dirs = check_dirs
+	var/check_dirs
+	GET_ZONE_NEIGHBOURS(src, check_dirs)
 
-	#ifdef MULTIZAS
-	var/to_check = GLOB.cornerdirsz
-	#else
-	var/to_check = GLOB.cornerdirs
-	#endif
+	. = check_dirs
 
-	for(var/dir in to_check)
+	//src is only connected to the zone by a single direction, this is a safe removal.
+	if (!(. & (. - 1))) //if(IsInteger(log(2, .)))
+		return TRUE
+
+	for(var/dir in csrfz_check)
 		//for each pair of "adjacent" cardinals (e.g. NORTH and WEST, but not NORTH and SOUTH)
-		if((dir & check_dirs) == dir)
+		if(((check_dirs & dir) == dir))
 			//check that they are connected by the corner turf
-			var/connected_dirs = get_zone_neighbours(get_step(src, dir))
-			if(connected_dirs && (dir & GLOB.reverse_dir[connected_dirs]) == dir)
-				unconnected_dirs &= ~dir //they are, so unflag the cardinals in question
+			var/turf/simulated/T = get_step(src, dir)
+			if (!istype(T))
+				. &= ~dir
+				continue
+
+			var/connected_dirs
+			GET_ZONE_NEIGHBOURS(T, connected_dirs)
+			if(connected_dirs && (dir & reverse_dir[connected_dirs]) == dir)
+				. &= ~dir //they are, so unflag the cardinals in question
 
 	//it is safe to remove src from the zone if all cardinals are connected by corner turfs
-	return !unconnected_dirs
+	. = !.
 
-//helper for can_safely_remove_from_zone()
-/turf/simulated/proc/get_zone_neighbours(turf/simulated/T)
-	. = 0
-	if(istype(T) && T.zone)
-		#ifdef MULTIZAS
-		var/to_check = GLOB.cardinalz
-		#else
-		var/to_check = GLOB.cardinal
-		#endif
-		for(var/dir in to_check)
-			var/turf/simulated/other = get_step(T, dir)
-			if(istype(other) && other.zone == T.zone && !(other.CanAtmosPass(T, REVERSE_DIR(dir)) == ATMOS_PASS_AIR_BLOCKED) && get_dist(src, other) <= 1)
-				. |= dir
+#undef GET_ZONE_NEIGHBOURS
+
+//* End *//
 
 /turf/simulated/update_air_properties()
+	#ifdef ZAS_BREAKPOINT_HOOKS
+	if(zas_verbose)
+		pass()
+	#endif
 	if(zone?.invalid)
 		c_copy_air()
 		zone = null //Easier than iterating through the list at the zone.
@@ -94,7 +123,7 @@
 	var/self_block = CanAtmosPass(src, NONE)
 	if(self_block == ATMOS_PASS_AIR_BLOCKED)
 		#ifdef ZAS_DEBUG_GRAPHICS
-		if(verbose)
+		if(zas_verbose)
 			to_chat(world, "Self-blocked.")
 		//dbg(blocked)
 		#endif
@@ -119,11 +148,11 @@
 		var/turf/potential = get_step_multiz(src, d)
 		if(!potential)
 			continue
-		var/them_to_us = potential.CanAtmosPass(src, REVERSE_DIR(d))
+		var/them_to_us = potential.CanAtmosPass(src, global.reverse_dir[d])
 		if(them_to_us == ATMOS_PASS_AIR_BLOCKED)
 
 			#ifdef ZAS_DEBUG_GRAPHICS
-			if(verbose) to_chat(world, "[d] is blocked.")
+			if(zas_verbose) to_chat(world, "[d] is blocked.")
 			//unsim.dbg(air_blocked, turn(180,d))
 			#endif
 
@@ -133,7 +162,7 @@
 		if(us_to_them == ATMOS_PASS_AIR_BLOCKED)
 
 			#ifdef ZAS_DEBUG_GRAPHICS
-			if(verbose) to_chat(world, "[d] is blocked.")
+			if(zas_verbose) to_chat(world, "[d] is blocked.")
 			//dbg(air_blocked, d)
 			#endif
 
@@ -142,8 +171,10 @@
 			if((previously_open & d) && istype(potential, /turf/simulated))
 				var/turf/simulated/S = potential
 				if(zone && S.zone == zone)
+					// todo: safely remove? for now the hueristic doesn't seem to work
 					zone.rebuild()
-					return
+					// todo: don't do this, just keep going, zone rebuilds shouldn't need this return
+					return	// handle it next cycle, we're done here
 
 			continue
 
@@ -151,7 +182,7 @@
 
 		if(istype(potential, /turf/simulated))
 			var/turf/simulated/S = potential
-			S.open_directions |= REVERSE_DIR(d)
+			S.open_directions |= global.reverse_dir[d]
 			if(S.has_valid_zone())
 				//Might have assigned a zone, since this happens for each direction.
 				if(!zone)
@@ -161,7 +192,7 @@
 					//    we are blocking them and not blocking ourselves - this prevents tiny zones from forming on doorways.
 					if(((them_to_us == ATMOS_PASS_ZONE_BLOCKED) && (us_to_them != ATMOS_PASS_ZONE_BLOCKED)) || ((us_to_them == ATMOS_PASS_ZONE_BLOCKED) && (self_block != ATMOS_PASS_ZONE_BLOCKED)))
 						#ifdef ZAS_DEBUG_GRAPHICS
-						if(verbose)
+						if(zas_verbose)
 							to_chat(world, "[d] is zone blocked.")
 						//dbg(zone_blocked, d)
 						#endif
@@ -174,23 +205,23 @@
 
 						#ifdef ZAS_DEBUG_GRAPHICS
 						dbg(assigned)
-						if(verbose) to_chat(world, "Added to [zone]")
+						if(zas_verbose) to_chat(world, "Added to [zone]")
 						#endif
 
 				else if(S.zone != zone)
 
 					#ifdef ZAS_DEBUG_GRAPHICS
-					if(verbose)
+					if(zas_verbose)
 						to_chat(world, "Connecting to [sim.zone]")
 					#endif
 
-					air_master.connect(src, potential, min(them_to_us, us_to_them), d)
+					SSair.connect(src, potential, min(them_to_us, us_to_them), d)
 
 			#ifdef ZAS_DEBUG_GRAPHICS
-				else if(verbose)
+				else if(zas_verbose)
 					to_chat(world, "[d] has same zone.")
 
-			else if(verbose)
+			else if(zas_verbose)
 				to_chat(world, "[d] has invalid zone.")
 			#endif
 
@@ -207,14 +238,14 @@
 		dbg(created)
 	#endif
 
-	#ifdef ZAS_DEBUG
+	#ifdef ZAS_ASSERTIONS
 	ASSERT(zone)
 	#endif
 
 	//At this point, a zone should have happened. If it hasn't, don't add more checks, fix the bug.
 
 	for(var/turf/T as anything in postponed)
-		air_master.connect(src, T, postponed[T], postponed_dirs[T])
+		SSair.connect(src, T, postponed[T], postponed_dirs[T])
 
 /turf/proc/post_update_air_properties()
 	connections?.update_all()

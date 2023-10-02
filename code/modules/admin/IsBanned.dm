@@ -1,6 +1,6 @@
 #ifndef OVERRIDE_BAN_SYSTEM
 //Blocks an attempt to connect before even creating our client datum thing.
-world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
+/world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
 	var/static/key_cache = list()
 	if(!real_bans_only)
 		if(key_cache[key])

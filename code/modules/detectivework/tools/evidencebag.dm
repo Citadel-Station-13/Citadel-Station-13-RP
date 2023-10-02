@@ -17,6 +17,9 @@
 
 	var/mob/living/carbon/human/user = usr
 
+	if(!user.is_holding(src))
+		return //bag must be in your hands to use
+
 	if (isturf(I.loc))
 		if (!user.Adjacent(I))
 			return
@@ -31,7 +34,7 @@
 			user.client.screen -= I
 			U.contents.Remove(I)
 		else if(user.is_holding(I))
-			user.transfer_item_to_loc(I, src)
+			user.drop_item_to_ground(I)
 		else
 			return
 
@@ -47,8 +50,8 @@
 		to_chat(user, "<span class='notice'>[src] already has something inside it.</span>")
 		return
 
-	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",
-		"You hear a rustle as someone puts something into a plastic bag.")
+	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",\
+	"You hear a rustle as someone puts something into a plastic bag.")
 
 	icon_state = "evidence"
 
@@ -59,8 +62,10 @@
 	var/image/img = image("icon"=I, "layer"=FLOAT_LAYER)	//take a snapshot. (necessary to stop the underlays appearing under our inventory-HUD slots ~Carn
 	I.pixel_x = xx		//and then return it
 	I.pixel_y = yy
-	overlays += img
-	overlays += "evidence"	//should look nicer for transparent stuff. not really that important, but hey.
+	var/list/overlays_to_add = list()
+	overlays_to_add += img
+	overlays_to_add += "evidence"	//should look nicer for transparent stuff. not really that important, but hey.
+	add_overlay(overlays_to_add)
 
 	desc = "An evidence bag containing [I]."
 	I.loc = src
@@ -69,12 +74,15 @@
 	return
 
 
-/obj/item/evidencebag/attack_self(mob/user as mob)
+/obj/item/evidencebag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(contents.len)
 		var/obj/item/I = contents[1]
 		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",\
 		"You hear someone rustle around in a plastic bag, and remove something.")
-		overlays.Cut()	//remove the overlays
+		cut_overlays()
 
 		user.put_in_hands(I)
 		stored_item = null
@@ -87,7 +95,7 @@
 		icon_state = "evidenceobj"
 	return
 
-/obj/item/evidencebag/examine(mob/user)
+/obj/item/evidencebag/examine(mob/user, dist)
 	. = ..()
 	if(stored_item)
-		stored_item.examine(user)
+		. += stored_item.examine(user)

@@ -7,7 +7,7 @@
 
 /obj/machinery/conveyor
 	icon = 'icons/obj/recycling.dmi'
-	icon_state = "conveyor0"
+	icon_state = "conveyor_map"
 	name = "conveyor belt"
 	desc = "A conveyor belt."
 	plane = TURF_PLANE
@@ -32,6 +32,7 @@
 	// create a conveyor
 /obj/machinery/conveyor/Initialize(mapload, newdir, on = 0)
 	. = ..()
+	icon_state = "conveyor0"
 	if(newdir)
 		setDir(newdir)
 
@@ -103,13 +104,13 @@
 		return
 	use_power(10)
 	var/list/affecting = loc.contents - src		// moved items will be all in loc
-	addtimer(CALLBACK(src, .proc/convey, affecting), 1)
+	addtimer(CALLBACK(src, PROC_REF(convey), affecting), 1)
 
 /obj/machinery/conveyor/proc/convey(list/affecting)
 	var/turf/T = get_step(src, movedir)
 	if(!T)
 		return
-	affecting.len = max(min(affecting.len, 10, 150 - T.contents.len), 0)
+	affecting.len = max(min(affecting.len, 150 - T.contents.len), 0)
 	if(!affecting.len)
 		return
 	var/items_moved = 0
@@ -150,10 +151,10 @@
 	return ..()
 
 // attack with hand, move pulled object onto conveyor
-/obj/machinery/conveyor/attack_hand(mob/user as mob)
-	if ((!( user.canmove ) || user.restrained() || !( user.pulling )))
+/obj/machinery/conveyor/attack_hand(mob/user, list/params)
+	if(!CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 		return
-	if (user.pulling.anchored)
+	if(isnull(user.pulling) || user.pulling.anchored)
 		return
 	if ((user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1))
 		return
@@ -165,7 +166,6 @@
 	else
 		step(user.pulling, get_dir(user.pulling.loc, src))
 		user.stop_pulling()
-	return
 
 // make the conveyor broken
 // also propagate inoperability to any connected conveyor with the same ID
@@ -255,7 +255,7 @@
 		C.setmove()
 
 // attack with hand, switch position
-/obj/machinery/conveyor_switch/attack_hand(mob/user)
+/obj/machinery/conveyor_switch/attack_hand(mob/user, list/params)
 	if(!allowed(user))
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
@@ -290,8 +290,8 @@
 			if(!WT.remove_fuel(0, user))
 				to_chat(user, "The welding tool must be on to complete this task.")
 				return
-			playsound(src, WT.usesound, 50, 1)
-			if(do_after(user, 20 * WT.toolspeed))
+			playsound(src, WT.tool_sound, 50, 1)
+			if(do_after(user, 20 * WT.tool_speed))
 				if(!src || !WT.isOn()) return
 				to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
 				new /obj/item/stack/material/steel( src.loc, 2 )
@@ -316,7 +316,7 @@
 	desc = "A conveyor control switch. It appears to only go in one direction."
 
 // attack with hand, switch position
-/obj/machinery/conveyor_switch/oneway/attack_hand(mob/user)
+/obj/machinery/conveyor_switch/oneway/attack_hand(mob/user, list/params)
 	if(position == 0)
 		position = convdir
 	else

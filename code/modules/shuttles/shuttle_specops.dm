@@ -1,7 +1,7 @@
 /obj/machinery/computer/shuttle_control/specops
 	name = "special operations shuttle console"
 	shuttle_tag = "Special Operations"
-	req_access = list(access_cent_specops)
+	req_access = list(ACCESS_CENTCOM_ERT)
 
 /obj/machinery/computer/shuttle_control/specops/attack_ai(user as mob)
 	to_chat(user, "<span class='warning'>Access Denied.</span>")
@@ -36,7 +36,7 @@
 		var/obj/machinery/computer/C = user
 
 		if(world.time <= reset_time)
-			C.visible_message("<span class='notice'>[GLOB.using_map.boss_name] will not allow the Special Operations shuttle to launch yet.</span>")
+			C.visible_message("<span class='notice'>[(LEGACY_MAP_DATUM).boss_name] will not allow the Special Operations shuttle to launch yet.</span>")
 			if (((world.time - reset_time)/10) > 60)
 				C.visible_message("<span class='notice'>[-((world.time - reset_time)/10)/60] minutes remain!</span>")
 			else
@@ -69,7 +69,7 @@
 			// Just arrived home
 			for(var/turf/T in get_area_turfs(shuttle_area))
 				var/mob/M = locate(/mob) in T
-				to_chat(M, "<span class='danger'>You have arrived at [GLOB.using_map.boss_name]. Operation has ended!</span>")
+				to_chat(M, "<span class='danger'>You have arrived at [(LEGACY_MAP_DATUM).boss_name]. Operation has ended!</span>")
 		else
 			// Fust left for the station
 			launch_mauraders()
@@ -202,17 +202,3 @@
 						M.close()
 		special_ops.readyreset()	// Reset firealarm after the team launched.
 	// End Marauder launchpad.
-
-/obj/machinery/light/small/readylight
-	brightness_range = 5
-	brightness_power = 1
-	brightness_color = "#DA0205"
-	var/state = 0
-
-/obj/machinery/light/small/readylight/proc/set_state(var/new_state)
-	state = new_state
-	if(state)
-		brightness_color = "00FF00"
-	else
-		brightness_color = initial(brightness_color)
-	update()

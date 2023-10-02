@@ -11,9 +11,9 @@
 	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/atmoscontrol
-	req_access = list(access_atmospherics)
+	req_access = list(ACCESS_ENGINEERING_ATMOS)
 	var/list/monitored_alarm_ids = null
-	var/datum/tgui_module/atmos_control/atmos_control
+	var/datum/tgui_module_old/atmos_control/atmos_control
 
 /obj/machinery/computer/atmoscontrol/Initialize(mapload)
 	. = ..()
@@ -26,11 +26,14 @@
 	icon_keyboard = "pcu_key"
 	density = FALSE
 	light_color = "#00cc00"
+	depth_level = 0
+	depth_projected = FALSE
+	climb_allowed = FALSE
 
 /obj/machinery/computer/atmoscontrol/attack_ai(mob/user)
 	ui_interact(user)
 
-/obj/machinery/computer/atmoscontrol/attack_hand(mob/user)
+/obj/machinery/computer/atmoscontrol/attack_hand(mob/user, list/params)
 	if(..())
 		return TRUE
 	ui_interact(user)

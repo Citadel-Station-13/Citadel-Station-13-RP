@@ -263,6 +263,9 @@
 				if(!D)
 					alert("Invalid ref!")
 					continue
+				if(!istype(D))
+					alert("Not a datum.")
+					continue
 				if(!D.can_vv_mark())
 					alert("Datum can not be marked!")
 					continue

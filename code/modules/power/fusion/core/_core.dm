@@ -31,11 +31,8 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core/Initialize(mapload)
 	. = ..()
 	fusion_cores += src
-	default_apply_parts()
-
-/obj/machinery/power/fusion_core/mapped/Initialize(mapload)
-	. = ..()
-	connect_to_network()
+	if(anchored)
+		connect_to_network()
 
 /obj/machinery/power/fusion_core/Destroy()
 	for(var/obj/machinery/computer/fusion_core_control/FCC in GLOB.machines)
@@ -90,7 +87,7 @@ var/list/fusion_cores = list()
 		owned_field.AddParticles(name, quantity)
 		. = 1
 
-/obj/machinery/power/fusion_core/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/power/fusion_core/bullet_act(var/obj/projectile/Proj)
 	if(owned_field)
 		. = owned_field.bullet_act(Proj)
 
@@ -101,7 +98,7 @@ var/list/fusion_cores = list()
 	if(owned_field)
 		owned_field.ChangeFieldStrength(value)
 
-/obj/machinery/power/fusion_core/attack_hand(var/mob/user)
+/obj/machinery/power/fusion_core/attack_hand(mob/user, list/params)
 	if(!Adjacent(user)) // As funny as it was for the AI to hug-kill the tokamak field from a distance...
 		return
 	visible_message("<span class='notice'>\The [user] hugs \the [src] to make it feel better!</span>")

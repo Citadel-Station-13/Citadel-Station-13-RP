@@ -33,9 +33,9 @@
 	update_icon()
 
 /obj/machinery/doorbell_chime/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(panel_open)
-		overlays += "dbchime-open"
+		add_overlay("dbchime-open")
 	if(inoperable())
 		icon_state = "dbchime-off"
 	if(!id_tag)
@@ -111,7 +111,7 @@
 	else
 		icon_state = "doorbell-standby"
 
-/obj/machinery/button/doorbell/attack_hand(mob/user)
+/obj/machinery/button/doorbell/attack_hand(mob/user, list/params)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(..())
 		return
@@ -154,3 +154,11 @@
 	refund_amt = 4
 	refund_type = /obj/item/stack/material/wood
 	build_machine_type = /obj/machinery/button/doorbell
+
+
+/obj/machinery/doorbell_chime/cursed
+	chime_sound = 'sound/effects/adminhelp.ogg'
+
+/obj/machinery/doorbell_chime/soft
+	chime_sound = 'sound/machines/achime.ogg'
+

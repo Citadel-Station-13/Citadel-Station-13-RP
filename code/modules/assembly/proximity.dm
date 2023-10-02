@@ -3,8 +3,7 @@
 	desc = "Used for scanning and alerting when someone enters a certain proximity."
 	icon_state = "prox"
 	origin_tech = list(TECH_MAGNET = 1)
-	matter = list(MAT_STEEL = 800, MAT_GLASS = 200)
-	flags = PROXMOVE
+	materials = list(MAT_STEEL = 800, MAT_GLASS = 200)
 	wires = WIRE_PULSE
 
 	secured = 0
@@ -14,6 +13,12 @@
 	var/time = 10
 	var/hearing_range = 3
 	var/range = 2
+
+	var/datum/proxfield/basic/square/monitor
+
+/obj/item/assembly/prox_sensor/Initialize(mapload)
+	. = ..()
+	monitor = new(src, 1)
 
 /obj/item/assembly/prox_sensor/activate()
 	if(!..())
@@ -33,9 +38,9 @@
 	update_icon()
 	return secured
 
-/obj/item/assembly/prox_sensor/HasProximity(atom/movable/AM as mob|obj)
+/obj/item/assembly/prox_sensor/Proximity(datum/proxfield/field, atom/movable/AM)
 	if(!istype(AM))
-		log_debug("DEBUG: HasProximity called with [AM] on [src] ([usr]).")
+		log_debug(SPAN_DEBUGINFO("DEBUG: HasProximity called with [AM] on [src] ([usr])."))
 		return
 	if (istype(AM, /obj/effect/beam))
 		return
@@ -69,7 +74,7 @@
 
 /obj/item/assembly/prox_sensor/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
-	INVOKE_ASYNC(src, .proc/sense)
+	INVOKE_ASYNC(src, PROC_REF(sense))
 
 /obj/item/assembly/prox_sensor/proc/toggle_scan()
 	if(!secured)
@@ -116,7 +121,7 @@
 
 	return data
 
-/obj/item/assembly/prox_sensor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/assembly/prox_sensor/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

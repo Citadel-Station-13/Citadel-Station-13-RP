@@ -3,13 +3,13 @@
 	name = "shoes"
 	icon = 'icons/obj/clothing/shoes.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_shoes.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_shoes.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_shoes.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_shoes.dmi',
 		)
 	desc = "Comfortable-looking shoes."
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	siemens_coefficient = 0.9
-	body_parts_covered = FEET
+	body_cover_flags = FEET
 	slot_flags = SLOT_FEET
 	blood_sprite_state = "shoeblood"
 
@@ -26,14 +26,9 @@
 
 	permeability_coefficient = 0.50
 	slowdown = SHOES_SLOWDOWN
-	force = 2
+	damage_force = 2
 	var/overshoes = 0
 	species_restricted = list("exclude",SPECIES_TESHARI, SPECIES_VOX)
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/shoes.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/shoes.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/feet.dmi'
-		)
 	drop_sound = 'sound/items/drop/shoes.ogg'
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/shoes.ogg'
@@ -64,16 +59,16 @@
 	if(usr.put_in_hands(holding))
 		usr.visible_message("<span class='danger'>\The [usr] pulls a knife out of their boot!</span>")
 		holding = null
-		overlays -= image(icon, "[icon_state]_knife")
+		cut_overlay(image(icon, "[icon_state]_knife"))
 	else
 		to_chat(usr, "<span class='warning'>Your need an empty, unbroken hand to do that.</span>")
 	if(!holding)
-		verbs -= /obj/item/clothing/shoes/proc/draw_knife
+		remove_obj_verb(src, /obj/item/clothing/shoes/proc/draw_knife)
 
 	update_icon()
 
-/obj/item/clothing/shoes/attack_hand(var/mob/living/M)
-	if(can_hold_knife == 1 && holding && src.loc == M)
+/obj/item/clothing/shoes/attack_hand(mob/user, list/params)
+	if(can_hold_knife == 1 && holding && src.loc == user)
 		draw_knife()
 		return
 	..()
@@ -92,7 +87,7 @@
 			return
 		holding = I
 		user.visible_message("<span class='notice'>\The [user] shoves \the [I] into \the [src].</span>")
-		verbs |= /obj/item/clothing/shoes/proc/draw_knife
+		add_obj_verb(src, /obj/item/clothing/shoes/proc/draw_knife)
 		update_icon()
 	else if(istype(I,/obj/item/holder/micro)) //MICROS IN MY SHOES
 		var/full = 0
@@ -109,7 +104,10 @@
 	else
 		return ..()
 
-/obj/item/clothing/shoes/attack_self(var/mob/user) //gtfo my shoe
+/obj/item/clothing/shoes/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return //gtfo my shoe
 	for(var/mob/M in src)
 		M.forceMove(get_turf(user))
 		to_chat(M,"<span class='warning'>[user] shakes you out of \the [src]!</span>")
@@ -122,25 +120,29 @@
 	set category = "Object"
 
 	if(shoes_under_pants == -1)
-		to_chat(usr, "<span class='notice'>\The [src] cannot be worn above your suit!</span>")
+		to_chat(usr, SPAN_NOTICE("\The [src] cannot be worn under your pants"))
 		return
 	shoes_under_pants = !shoes_under_pants
 	update_icon()
 
 /obj/item/clothing/shoes/update_icon()
-	overlays.Cut() //This removes all the overlays on the sprite and then goes down a checklist adding them as required.
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(blood_DNA)
 		add_blood()
 	if(holding)
-		overlays += image(icon, "[icon_state]_knife")
+		overlays_to_add += image(icon, "[icon_state]_knife")
 	if(contaminated)
-		overlays += contamination_overlay
+		overlays_to_add += contamination_overlay
 	if(gurgled)
 		decontaminate()
 		gurgle_contaminate()
 	if(ismob(usr))
 		var/mob/M = usr
 		M.update_inv_shoes()
+
+	add_overlay(overlays_to_add)
+
 	return ..()
 
 /obj/item/clothing/shoes/clean_blood()

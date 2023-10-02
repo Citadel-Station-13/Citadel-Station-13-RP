@@ -1,6 +1,3 @@
-/// world.icon_size
-#define PIXELS 32
-
 // These get to go at the top, because they're special
 //You can use these defines to get the typepath of the currently running proc/verb (yes procs + verbs are objects)
 /* eg:
@@ -35,10 +32,14 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define SEE_INVISIBLE_MINIMUM		5
 #define INVISIBILITY_MAXIMUM		100
+#define INVISIBILITY_ABSTRACT		101
 
 /// Pseudo-Invis, like Ninja, Ling, Etc.
 /// Below this, can't be examined, may as well be invisible to the game
 #define EFFECTIVE_INVIS				50
+
+/// default mob sight flags
+#define SIGHT_FLAGS_DEFAULT (SEE_SELF | SEE_BLACKNESS)
 
 /// For the client FPS pref and anywhere else
 #define MAX_CLIENT_FPS	200
@@ -46,10 +47,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 // Some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 /// Used to trigger removal from a processing list.
 #define PROCESS_KILL	26
-/// Used in chargen for accessory loadout limit.
-#define MAX_GEAR_COST					20
-/// Used in chargen for accessory loadout limit on holidays.
-#define MAX_GEAR_COST_HOLIDAY_SPAM		30
 
 //	Shuttles.
 
@@ -89,7 +86,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define SHELTER_DEPLOY_BAD_AREA			"bad area"
 #define SHELTER_DEPLOY_ANCHORED_OBJECTS	"anchored objects"
 
-
+#define MAX_SCRIBBLE_LEN		512
 // Setting this much higher than 1024 could allow spammers to DOS the server easily.
 /// I'm not sure about "easily". It can be a lot longer.
 #define MAX_MESSAGE_LEN			4096
@@ -110,12 +107,10 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define ANNOUNCER_NAME "Facility PA"
 
-#define DEFAULT_JOB_TYPE /datum/job/station/assistant
+#define DEFAULT_JOB_TYPE /datum/role/job/station/assistant
 
 //Assistant/Visitor/Whatever
 #define USELESS_JOB	"Visitor"
-
-#define ECO_MODIFIER 10
 
 // Convoluted setup so defines can be supplied by Bay12 main server compile script.
 // Should still work fine for people jamming the icons into their repo.
@@ -131,65 +126,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define WALL_CAN_OPEN	1
 #define WALL_OPENING	2
-
-
-// Material Defines
-#define MAT_BANANIUM		"bananium"
-#define MAT_CARBON			"carbon"
-#define MAT_CHITIN			"chitin"
-#define MAT_COPPER			"copper"
-#define MAT_DIAMOND			"diamond"
-#define MAT_DURASTEEL		"durasteel"
-#define MAT_DURASTEELHULL	"durasteel hull"
-#define MAT_GLASS			"glass"
-#define MAT_GOLD			"gold"
-#define MAT_GRAPHITE		"graphite"
-#define MAT_HARDLOG			"hardwood log"
-#define MAT_HARDWOOD		"hardwood"
-#define MAT_HEMATITE		"hematite"
-#define MAT_IRON			"iron"
-#define MAT_LEAD			"lead"
-#define MAT_LEATHER			"leather"
-#define MAT_LOG				"log"
-#define MAT_MARBLE			"marble"
-#define MAT_METALHYDROGEN	"mhydrogen"
-#define MAT_MORPHIUM		"morphium"
-#define MAT_MORPHIUMHULL	"morphium hull"
-#define MAT_OSMIUM			"osmium"
-#define MAT_PHORON			"phoron"
-#define MAT_PLASTEEL		"plasteel"
-#define MAT_PLASTEELHULL	"plasteel hull"
-#define MAT_PLASTIC			"plastic"
-#define MAT_PLATINUM		"platinum"
-#define MAT_SIFLOG			"alien log"
-#define MAT_SIFWOOD			"alien wood"
-#define MAT_SILENCIUM		"silencium"
-#define MAT_SILVER			"silver"
-#define MAT_SNOW			"snow"
-#define MAT_STEEL			"steel"
-#define MAT_STEELHULL		"steel hull"
-#define MAT_SUPERMATTER		"supermatter"
-#define MAT_TITANIUM		"titanium"
-#define MAT_TITANIUMHULL	"titanium hull"
-#define MAT_URANIUM			"uranium"
-#define MAT_VALHOLLIDE		"valhollide"
-#define MAT_VAUDIUM			"vaudium"
-#define MAT_VERDANTIUM		"verdantium"
-#define MAT_WOOD			"wood"
-
-
-#define SHARD_SHARD			"shard"
-#define SHARD_SHRAPNEL		"shrapnel"
-#define SHARD_STONE_PIECE	"piece"
-#define SHARD_SPLINTER		"splinters"
-#define SHARD_NONE			""
-
-#define MATERIAL_UNMELTABLE	0x1
-#define MATERIAL_BRITTLE	0x2
-#define MATERIAL_PADDING	0x4
-
-/// Amount table damage is multiplied by if it is made of a brittle material (e.g. glass)
-#define TABLE_BRITTLE_MATERIAL_MULTIPLIER 4
 
 #define BOMBCAP_DVSTN_RADIUS	(max_explosion_range/4)
 #define BOMBCAP_HEAVY_RADIUS	(max_explosion_range/2)
@@ -231,6 +167,10 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAX_NTNET_LOGS	500
 #define MIN_NTNET_LOGS	10
 
+#define NTOS_EMAIL_NONEWMESSAGES	0
+#define NTOS_EMAIL_NOTIFALREADY		1
+#define NTOS_EMAIL_NEWMESSAGE		2
+
 
 // Special return values from bullet_act(). Positive return values are already used to indicate the blocked level of the projectile.
 /// If the projectile should continue flying after calling bullet_act()
@@ -258,6 +198,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 
 // Job groups
+// todo: nuke this from fucking orbit during job refactor
 #define DEPARTMENT_CARGO			"cargo"
 #define DEPARTMENT_CIVILIAN			"civilian"
 #define DEPARTMENT_COMMAND			"command"
@@ -286,7 +227,6 @@ var/list/economy_station_departments = list(
 	DEPARTMENT_SECURITY
 )
 
-
 // Off-duty time
 #define PTO_CARGO			"Cargo"
 #define PTO_CIVILIAN		"Civilian"
@@ -314,20 +254,10 @@ var/list/economy_station_departments = list(
 ///The number of deciseconds in a day
 #define MIDNIGHT_ROLLOVER		864000
 
-/// Needed for the R-UST port
-#define WORLD_ICON_SIZE 32
 ///Needed for the R-UST port
 #define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32
 /// Maximum effective value of client.view (According to DM references)
 #define MAX_CLIENT_VIEW	34
-
-// Maploader bounds indices
-#define MAP_MINX	1
-#define MAP_MINY	2
-#define MAP_MINZ	3
-#define MAP_MAXX	4
-#define MAP_MAXY	5
-#define MAP_MAXZ	6
 
 // /atom/proc/use_check flags
 #define USE_ALLOW_NONLIVING			1
@@ -387,11 +317,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define IS_WIRECUTTER		"wirecutter"
 #define IS_WRENCH			"wrench"
 
-
-// Diagonal movement
-#define FIRST_DIAG_STEP 1
-#define SECOND_DIAG_STEP 2
-
 // RCD modes. Used on the RCD, and gets passed to an object's rcd_act() when an RCD is used on it, to determine what happens.
 /// Builds plating on space/ground/open tiles. Builds a wall when on floors. Finishes walls when used on girders.
 #define RCD_FLOORWALL		"Floor / Wall"
@@ -415,14 +340,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 /// Should be sufficiently hard to achieve without a broken mouse or autoclicker while still fulfilling its intended goal.
 #define PREF_SAVELOAD_COOLDOWN	2
 
-
-// Radiation 'levels'. Used for the geiger counter, for visuals and sound. They are in different files so this goes here.
-/// Around the level at which radiation starts to become harmful
-#define RAD_LEVEL_LOW		0.5
-#define RAD_LEVEL_MODERATE	5
-#define RAD_LEVEL_HIGH		25
-#define RAD_LEVEL_VERY_HIGH	75
-
 /// Radiation will not affect a tile when below this value.
 #define RADIATION_THRESHOLD_CUTOFF	0.1
 
@@ -431,14 +348,14 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define PR_ANNOUNCEMENTS_PER_ROUND	5
 
 //https://secure.byond.com/docs/ref/info.html#/atom/var/mouse_opacity
-#define MOUSE_OPACITY_TRANSPARENT	0
-#define MOUSE_OPACITY_ICON			1
-#define MOUSE_OPACITY_OPAQUE		2
+#define MOUSE_OPACITY_TRANSPARENT 0
+#define MOUSE_OPACITY_ICON        1
+#define MOUSE_OPACITY_OPAQUE      2
 
 //world/proc/shelleo
 #define SHELLEO_ERRORLEVEL 1
-#define SHELLEO_STDOUT 2
-#define SHELLEO_STDERR 3
+#define SHELLEO_STDOUT     2
+#define SHELLEO_STDERR     3
 
 /// Embed chance unset for embed_chance var on /obj/item.
 #define EMBED_CHANCE_UNSET	-1337
@@ -453,7 +370,7 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define HERM "herm"
 // For custom species
 #define STARTING_SPECIES_POINTS	1
-#define MAX_SPECIES_TRAITS		5
+#define MAX_SPECIES_TRAITS		7
 
 // Xenochimera thing mostly
 #define REVIVING_NOW		-1
@@ -560,3 +477,40 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 		"purple"	= "darkslateblue",	\
 		"pink"		= "lightgrey"		\
 	)
+
+//! Window construction stages
+/// window construction isn't started at all
+#define WINDOW_STATE_UNSECURED 0
+/// frame is screwed to floor
+#define WINDOW_STATE_SCREWED_TO_FLOOR 1
+/// window is crowbarred in
+#define WINDOW_STATE_CROWBRARED_IN 2
+/// window is secured to frame
+#define WINDOW_STATE_SECURED_TO_FRAME 3
+
+//! cassette tapes
+//* data list
+#define CASSETTE_TAPE_DATA_MESSAGE 1
+#define CASSETTE_TAPE_DATA_NAME 2
+#define CASSETTE_TAPE_DATA_LANGUAGE 3
+#define CASSETTE_TAPE_DATA_DELAY 4
+#define CASSETTE_TAPE_DATA_OPCODE 5
+/// list length for data reads
+#define CASSETTE_TAPE_DATA_LEN 5
+//* metadata
+#define CASSETTE_METADATA_LANGUAGE "%"
+#define CASSETTE_METADATA_NAME "^"
+
+
+#define Z_ALL_TURFS(Z) block(locate(1, 1, Z), locate(world.maxx, world.maxy, Z))
+
+//Turf/area values for 'this space is outside' checks
+#define OUTSIDE_AREA null
+#define OUTSIDE_NO   FALSE
+#define OUTSIDE_YES  TRUE
+
+//Define a macro that we can use to assemble all the circuit board names
+#ifdef T_BOARD
+#error T_BOARD already defined elsewhere, we can't use it.
+#endif
+#define T_BOARD(name) "circuit board (" + (name) + ")"

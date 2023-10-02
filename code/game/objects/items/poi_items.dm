@@ -13,7 +13,7 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/poi/pascalb/process(delta_time)
-	SSradiation.radiate(src, 5)
+	radiation_pulse(src, RAD_INTENSITY_POI_MANHOLE_COVER)
 
 /obj/item/poi/pascalb/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -26,7 +26,6 @@
 	icon_state = "poireactor"
 	icon_opened = "poireactor_open"
 	icon_closed = "poireactor"
-	climbable = 0
 
 	starts_with = list(
 		/obj/item/fuel_assembly/deuterium = 6)
@@ -41,7 +40,7 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/poi/brokenoldreactor/process(delta_time)
-	SSradiation.radiate(src, 25)
+	radiation_pulse(src, RAD_INTENSITY_POI_REACTOR_RACK)
 
 /obj/item/poi/brokenoldreactor/Destroy()
 	STOP_PROCESSING(SSobj, src)

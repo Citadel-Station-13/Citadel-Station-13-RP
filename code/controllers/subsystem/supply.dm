@@ -154,7 +154,7 @@ SUBSYSTEM_DEF(supply)
 			var/datum/exported_crate/adm = new()
 			adm.name = EC.name
 			adm.value = EC.value
-			adm.contents = deepCopyList(EC.contents)
+			adm.contents = deep_copy_list(EC.contents)
 			adm_export_history += adm
 
 			qdel(MA)
@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(supply)
 				continue
 			var/occupied = 0
 			for(var/atom/A in T.contents)
-				if((A.flags & ATOM_ABSTRACT))
+				if((A.atom_flags & ATOM_ABSTRACT))
 					continue
 				occupied = 1
 				break
@@ -221,6 +221,9 @@ SUBSYSTEM_DEF(supply)
 
 // Will attempt to purchase the specified order, returning TRUE on success, FALSE on failure
 /datum/controller/subsystem/supply/proc/approve_order(var/datum/supply_order/O, var/mob/user)
+	// do not double purchase!!
+	if(O.status != SUP_ORDER_REQUESTED)
+		return FALSE
 	// Not enough points to purchase the crate
 	if(SSsupply.points <= O.object.cost)
 		return FALSE

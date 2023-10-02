@@ -1,4 +1,6 @@
-//Returns the top(last) element from the list and removes it from the list (typical stack function)
+/**
+ * Returns the top(last) element from the list and removes it from the list (typical stack function)
+ */
 /proc/pop(list/L)
 	if(L.len)
 		. = L[L.len]

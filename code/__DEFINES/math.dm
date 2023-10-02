@@ -29,6 +29,8 @@
 
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
 
+#define ROUND_UP(x) ( -round(-(x)))
+
 // round() acts like floor(x, 1) by default but can't handle other values
 #define FLOOR(x, y) ( round((x) / (y)) * (y) )
 
@@ -53,8 +55,6 @@
 
 // Least Common Multiple
 #define LCM(a, b) (abs(a) / GCD(a, b) * abs(b))
-
-#define IS_CARDINAL(x) ((x & (x - 1)) == 0)
 
 #define INVERSE(x) ( 1/(x) )
 
@@ -219,3 +219,6 @@
 #define NORM(x, y) (sqrt(SQUAREDNORM(x,y)))
 #define ISPOWEROFTWO(x) ((x & (x - 1)) == 0)
 #define ROUNDUPTOPOWEROFTWO(x) (2 ** -round(-log(2,x)))
+
+/// get highest magnitude of two numbers, magnitude is abs value
+#define BIGGER_MAGNITUDE(a, b) ((abs(a) > abs(b))? a : b)

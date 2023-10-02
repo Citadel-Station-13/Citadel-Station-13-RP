@@ -61,14 +61,16 @@
 		set_light(0)
 
 	if(is_infesting)
-		overlays.Cut()
+		cut_overlays()
+		var/list/overlays_to_add = (infested.overlays ? infested.overlays : list())
 		icon = infested.icon
-		overlays = infested.overlays
 		var/mutable_appearance/blob_head_overlay = mutable_appearance('icons/mob/blob.dmi', "blob_head")
 		if(overmind)
 			blob_head_overlay.color = overmind.blob_type.complementary_color
 		color = initial(color)//looks better.
-		overlays += blob_head_overlay
+		overlays_to_add += blob_head_overlay
+
+		add_overlay(overlays_to_add)
 
 /mob/living/simple_mob/hostile/blob/spore/Life(seconds, times_fired)
 	if(can_infest && !is_infesting && isturf(src.loc))
@@ -87,8 +89,7 @@
 	is_infesting = TRUE
 	if(H.wear_suit)
 		var/obj/item/clothing/suit/A = H.wear_suit
-		if(A.armor && A.armor["melee"])
-			maxHealth += A.armor["melee"] //That zombie's got armor, I want armor!
+		maxHealth += A.fetch_armor().raw(ARMOR_MELEE) * 100 //That zombie's got armor, I want armor!
 
 	maxHealth += 40
 	health = maxHealth

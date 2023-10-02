@@ -25,18 +25,7 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 30
 
-	old_x = -16
-	old_y = 0
-	default_pixel_x = -16
-	pixel_x = -16
-	pixel_y = 0
-
-	max_buckled_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
-	buckle_lying = FALSE
-	mount_offset_x = 5
-	mount_offset_y = 30
+	base_pixel_x = -16
 
 	randomized = TRUE
 	mod_min = 90

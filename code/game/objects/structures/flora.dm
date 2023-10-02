@@ -4,7 +4,7 @@
 	desc = "A perfectly generic plant."
 
 	anchored = TRUE // Usually, plants don't move. Usually.
-	plane = DECAL_PLANE
+	plane = TURF_PLANE
 	layer = BELOW_MOB_LAYER
 
 	var/randomize_size = FALSE
@@ -35,7 +35,7 @@
 	if(randomize_harvest_count)
 		max_harvests = max(0, rand(min_harvests, max_harvests)) // Incase you want to weight it more toward 'not harvestable', set min_harvests to a negative value.
 
-/obj/structure/flora/examine(mob/user)
+/obj/structure/flora/examine(mob/user, dist)
 	. = ..()
 	if(harvest_count < max_harvests)
 		. += "<span class='notice'>\The [src] seems to have something hanging from it.</span>"
@@ -100,7 +100,7 @@
 /obj/structure/flora/ausbushes/attackby(obj/item/W as obj, mob/user as mob)
 	// Dismantle
 	if(istype(W, /obj/item/shovel))
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 		if(do_after(user, 10, src))
 			user.visible_message("<span class='notice'>\The [user] digs up \the [src].</span>", "<span class='notice'>You dig up \the [src].</span>")
 			new /obj/item/stack/tile/grass(get_turf(usr), 1)
@@ -394,7 +394,7 @@
 /obj/structure/flora/sif
 	icon = 'icons/obj/flora/sifflora.dmi'
 
-/obj/structure/flora/sif/attack_hand(mob/user)
+/obj/structure/flora/sif/attack_hand(mob/user, list/params)
 	if (user.a_intent == INTENT_HARM)
 		if(do_after(user, 5 SECONDS))
 			user.visible_message("\The [user] digs up \the [src.name].", "You dig up \the [src.name].")
@@ -515,7 +515,7 @@
 	var/gift_type = /obj/item/b_gift
 	var/list/ckeys_that_took = list()
 
-/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/living/user)
+/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return

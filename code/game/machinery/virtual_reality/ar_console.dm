@@ -6,7 +6,7 @@
 /obj/machinery/vr_sleeper/alien
 	name = "strange pod"
 	desc = "A strange machine with what appears to be a comfortable, if quite vertical, bed. Numerous mechanical cylinders dot the ceiling, their purpose uncertain."
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "alienpod_0"
 	base_state = "alienpod_"
 
@@ -35,7 +35,7 @@
 	add_fingerprint(user)
 
 	if(occupant && (istype(I, /obj/item/healthanalyzer) || istype(I, /obj/item/robotanalyzer)))
-		I.attack(occupant, user)
+		I.melee_attack_chain(occupant, user)
 	return
 
 /obj/machinery/vr_sleeper/alien/eject()
@@ -95,9 +95,9 @@
 	if(!avatar)
 		var/turf/T = get_turf(src)
 		avatar = new(src, produce_species)
-		if(occupant.species.name != SPECIES_PROMETHEAN && occupant.species.name != SPECIES_HUMAN && mirror_first_occupant)
+		if(occupant.species.get_species_id() != SPECIES_ID_PROMETHEAN && occupant.species.get_species_id() != SPECIES_ID_HUMAN && mirror_first_occupant)
 			avatar.shapeshifter_change_shape(occupant.species.name)
-		avatar.Sleeping(6)
+		avatar.afflict_sleeping(20 * 6)
 
 		occupant.enter_vr(avatar)
 

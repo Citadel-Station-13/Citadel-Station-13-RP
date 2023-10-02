@@ -8,7 +8,7 @@
 	name = "small grey smock"
 	desc = "It looks fitted to nonhuman proportions."
 	icon_state = "tesh_smock_grey"
-	body_parts_covered = 0 // It's a thin piece of cloth with a neck hole.
+	body_cover_flags = 0 // It's a thin piece of cloth with a neck hole.
 
 /obj/item/clothing/under/teshari/smock/red
 	name = "small red smock"
@@ -155,7 +155,7 @@
 	icon_override = 'icons/mob/clothing/species/teshari/teshari_uniform.dmi'
 	icon_state = "tesh_uniform_bo"
 	item_state = "tesh_uniform_bo"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/teshari/undercoat/standard/black_orange
 	name = "black and orange undercoat"

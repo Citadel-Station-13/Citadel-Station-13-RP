@@ -152,7 +152,8 @@ var/list/radiochannels = list(
 var/list/CENT_FREQS = list(ERT_FREQ, DTH_FREQ)
 
 // Antag channels, i.e. Syndicate
-var/list/ANTAG_FREQS = list(SYND_FREQ, RAID_FREQ)
+// Raider Frequency was previously listed here, RAID_FREQ. I'm removing it to see if I can make it self contained.
+var/list/ANTAG_FREQS = list(SYND_FREQ)
 
 //Department channels, arranged lexically
 var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ, TRADE_FREQ)

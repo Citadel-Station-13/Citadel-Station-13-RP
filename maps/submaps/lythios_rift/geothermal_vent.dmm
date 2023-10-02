@@ -1,0 +1,137 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/mineral/ignore_oregen,
+/area/submap/lythios/west_caves)
+"n" = (
+/turf/simulated/mineral/classd,
+/area/submap/lythios/west_caves)
+"E" = (
+/turf/simulated/mineral/ignore_mapgen,
+/area/submap/lythios/west_caves)
+"L" = (
+/turf/simulated/mineral/virgo2,
+/area/submap/lythios/west_caves)
+"W" = (
+/turf/simulated/mineral,
+/area/submap/lythios/west_caves)
+
+(1,1,1) = {"
+E
+E
+a
+a
+L
+L
+n
+n
+W
+W
+"}
+(2,1,1) = {"
+E
+E
+a
+a
+L
+L
+n
+n
+W
+W
+"}
+(3,1,1) = {"
+E
+E
+a
+a
+L
+L
+n
+n
+W
+W
+"}
+(4,1,1) = {"
+E
+E
+a
+a
+L
+L
+n
+n
+W
+W
+"}
+(5,1,1) = {"
+E
+E
+a
+a
+L
+L
+n
+n
+W
+W
+"}
+(6,1,1) = {"
+E
+E
+a
+a
+L
+L
+n
+n
+W
+W
+"}
+(7,1,1) = {"
+E
+E
+a
+a
+L
+L
+n
+n
+W
+W
+"}
+(8,1,1) = {"
+E
+E
+a
+a
+L
+L
+n
+n
+W
+W
+"}
+(9,1,1) = {"
+E
+E
+a
+a
+L
+L
+n
+n
+W
+W
+"}
+(10,1,1) = {"
+E
+E
+a
+a
+L
+L
+n
+n
+W
+W
+"}

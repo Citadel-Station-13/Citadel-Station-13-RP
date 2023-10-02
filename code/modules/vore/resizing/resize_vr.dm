@@ -17,7 +17,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 // Adding needed defines to /mob/living
 // Note: Polaris had this on /mob/living/carbon/human We need it higher up for animals and stuff.
 /mob/living
-	var/size_multiplier = 1 //multiplier for the mob's icon size
 	var/holder_default
 
 // Define holder_type on types we want to be scoop-able
@@ -44,7 +43,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	ASSERT(!ishuman(src))
 	var/matrix/M = matrix()
 	M.Scale(size_multiplier * icon_scale_x, size_multiplier * icon_scale_y)
-	M.Translate(0, 16*(size_multiplier-1))
 	src.transform = M
 
 /**
@@ -66,30 +64,27 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 /mob/living/proc/resize(var/new_size, var/animate = FALSE)
 	if(size_multiplier == new_size)
 		return 1
-
+	if(last_special > world.time)
+		to_chat(src, SPAN_WARNING("You are trying to resize to fast!"))
+		return 0
+	var/change = new_size - size_multiplier
 	size_multiplier = new_size //Change size_multiplier so that other items can interact with them
 	if(animate)
-		var/change = new_size - size_multiplier
-		var/duration = (abs(change)+0.25) SECONDS
+		var/duration = (abs(change * 5)+0.25) SECONDS
 		var/matrix/resize = matrix() // Defines the matrix to change the player's size
 		resize.Scale(new_size * icon_scale_x, size_multiplier * icon_scale_y) //Change the size of the matrix
 		resize.Translate(0, 16 * (new_size - 1)) //Move the player up in the tile so their feet align with the bottom
 		animate(src, transform = resize, time = duration) //Animate the player resizing
-
-		var/aura_grow_to = change > 0 ? 2 : 0.5
-		var/aura_anim_duration = 5
-		var/aura_offset = change > 0 ? 0 : 10
-		var/aura_color = size_multiplier > new_size ? "#FF2222" : "#2222FF"
-		var/aura_loops = round((duration)/aura_anim_duration)
-
-		animate_aura(src, color = aura_color, offset = aura_offset, anim_duration = aura_anim_duration, loops = aura_loops, grow_to = aura_grow_to)
+		last_special = world.time + duration
 	else
 		update_transform() //Lame way
+		last_special = world.time + base_attack_cooldown
 
 /mob/living/carbon/human/resize(var/new_size, var/animate = TRUE)
 	. = ..()
 	if(LAZYLEN(hud_list))
-		var/new_y_offset = 32 * (size_multiplier - 1)
+		var/new_y_offset = (size_multiplier < 1 ? 27 : 32) * (size_multiplier - 1)
+		//it lowers lesser than it raises when it comes to micros v. macros else the medHUD would bury the micro
 		for(var/key in hud_list)
 			var/image/HI = hud_list[key]
 			HI.pixel_y = new_y_offset
@@ -118,80 +113,153 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 /*
 //Add the set_size() proc to usable verbs. By commenting this out, we can leave the proc and hand it to species that need it.
 /hook/living_new/proc/resize_setup(mob/living/H)
-	H.verbs += /mob/living/proc/set_size
+	add_verb(H, /mob/living/proc/set_size)
 	return 1
 */
 
 /**
- * Attempt to scoop up this mob up into H's hands, if the size difference is large enough.
- * @return false if normal code should continue, 1 to prevent normal code.
+ * Attempt to scoop up this mob up into M's hands, if the size difference is large enough.
+ * @return false if normal code should continue, true to prevent normal code.
  */
 /mob/living/proc/attempt_to_scoop(var/mob/living/M)
 	var/size_diff = M.get_effective_size() - get_effective_size()
 	if(!holder_default && holder_type)
 		holder_default = holder_type
 	if(!istype(M))
-		return 0
+		return FALSE
 	if(isanimal(M))
 		var/mob/living/simple_mob/SA = M
 		if(!SA.has_hands)
-			return 0
+			return FALSE
+	if(M.get_active_held_item() && !istype(M.get_active_held_item(), /obj/item/grab)) //scooper's hand is holding something that isn't a grab.
+		to_chat(M, SPAN_WARNING("You can't pick up someone with your occupied hand."))
+		return TRUE
 	if(M.buckled)
-		to_chat(usr,"<span class='notice'>You have to unbuckle \the [M] before you pick them up.</span>")
-		return 0
+		to_chat(usr, SPAN_NOTICE("You have to unbuckle \the [M] before you pick them up."))
+		return FALSE
 	if(size_diff >= 0.50)
-		if(M.get_effective_size() >= RESIZE_PREF_LIMIT && !M.permit_size_pickup)
-			to_chat(src, "<span class='warning'>[M] is far too skittish to casually scoop up.</span>")
-			return TRUE
+		// if the person being scooped up is past a set size limit then the pickup pref is applied
+		if(get_effective_size() >= RESIZE_PREF_LIMIT && !permit_size_pickup)
+			if(M.check_grab(src)) //requires a grab of any kind before they can commence a "fair gameplay" scoopup. about the same prereqs as a fireman carry
+				to_chat(M, SPAN_NOTICE("You attempt to scoop up \the [src]."))
+				to_chat(src, SPAN_USERDANGER("[M] is attempting to scoop you up!")) //big red text so they know they're about to get bad-touched
+				if(!do_after(M, 3 SECONDS, src))
+					return TRUE
+			else
+				var/datum/gender/G = GLOB.gender_datums[src.get_visible_gender()]
+				to_chat(M, SPAN_WARNING("[src] is far too skittish to casually scoop up. Try grabbing [G.him] first."))
+				return FALSE
 		holder_type = /obj/item/holder/micro
+		if(M.get_active_held_item()) //drop the grab before scooping - should be the only item that passes at this point
+			M.drop_active_held_item()
 		var/obj/item/holder/m_holder = get_scooped(M)
 		holder_type = holder_default
 		if (m_holder)
-			return 1
+			return TRUE
 		else
-			return 0; // Unable to scoop, let other code run
+			return FALSE; // Unable to scoop, let other code run
+
+//! Fuck you.
+#define STEP_TEXT_OWNER_NON_SHITCODE(x, m) "[replacetext(x,"%prey",m)]"
+#define STEP_TEXT_PREY_NON_SHITCODE(x, m) "[replacetext(x,"%owner",m)]"
+// they're bigger
+#define WE_RAN_BETWEEN_THEIR_LEGS			1
+// we're bigger
+#define THEY_RAN_BETWEEN_OUR_LEGS			2
+#define WE_ARE_BOTH_MICROS					3
+#define NEITHER_OF_US_ARE_FETISH_CONTENT	4
+
+//! call this from the bumping side aka the mob that ran into other, not the other way around
+/mob/living/proc/fetish_hook_for_help_intent_swapping(mob/living/other)
+	if(a_intent != INTENT_HELP)
+		return FALSE
+	switch(stupid_fucking_micro_canpass_fetish_check(other))
+		if(WE_ARE_BOTH_MICROS)
+			return TRUE
+		if(NEITHER_OF_US_ARE_FETISH_CONTENT)
+			return FALSE
+		// they are bigger and we just ran under them
+		if(WE_RAN_BETWEEN_THEIR_LEGS)
+			other.inform_someone_they_just_ran_under_you(src)
+			return TRUE
+		// we are bigger and just stepped over a micro
+		if(THEY_RAN_BETWEEN_OUR_LEGS)
+			inform_someone_you_just_stepped_over_them(other)
+			return TRUE
+
+/mob/living/proc/stupid_fucking_micro_canpass_fetish_check(mob/living/crossing)
+	var/hatred = a_intent != INTENT_HELP || crossing.a_intent != INTENT_HELP
+	if(hatred)
+		return NEITHER_OF_US_ARE_FETISH_CONTENT
+	if(get_effective_size() <= RESIZE_A_SMALLTINY && crossing.get_effective_size() <= RESIZE_A_SMALLTINY)
+		return WE_ARE_BOTH_MICROS
+	var/diff = get_effective_size() - crossing.get_effective_size()
+	if(abs(diff) < 0.50)
+		return NEITHER_OF_US_ARE_FETISH_CONTENT
+	return diff > 0? THEY_RAN_BETWEEN_OUR_LEGS : WE_RAN_BETWEEN_THEIR_LEGS
+
+/mob/living/proc/inform_someone_you_just_stepped_over_them(mob/living/micro)
+	var/mob/living/carbon/human/H
+	var/datum/sprite_accessory/tail/taur/tail
+	tail = ishuman(src)? ((H = src) && isTaurTail(H.tail_style) && H.tail_style) : null
+	to_chat(src, tail? STEP_TEXT_OWNER_NON_SHITCODE(tail.msg_owner_help_run, micro) : "You carefully step over [micro].")
+	to_chat(micro, tail? STEP_TEXT_PREY_NON_SHITCODE(tail.msg_prey_help_run, src) : "[src] carefully steps over you.")
+
+/mob/living/proc/inform_someone_they_just_ran_under_you(mob/living/micro)
+	var/mob/living/carbon/human/H
+	var/datum/sprite_accessory/tail/taur/tail
+	tail = ishuman(src)? ((H = src) && isTaurTail(H.tail_style) && H.tail_style) : null
+	to_chat(micro, tail? STEP_TEXT_OWNER_NON_SHITCODE(tail.msg_prey_stepunder, src) : "You run between [src]'s legs.")
+	to_chat(src, tail? STEP_TEXT_PREY_NON_SHITCODE(tail.msg_owner_stepunder, micro) : "[micro] runs between your legs.")
+
+//! sigh, we can't do this yet
+/*
+/mob/living/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
+	if(isliving(mover))
+		var/fetish_content_check = stupid_fucking_micro_canpass_fetish_check(mover)
+		if(fetish_content_check != NEITHER_OF_US_ARE_FETISH_CONTENT)
+			return TRUE
+
+/mob/lving/Crossed(atom/movable/AM, oldloc)
+	. = ..()
+	if(isliving(AM))
+		var/fetish_content_check = stupid_fucking_micro_canpass_fetish_check(mover)
+		var/mob/living/carbon/human/H
+		var/datum/sprite_accessory/tail/taur/tail
+		switch(fetish_content_check)
+			if(NEITHER_OF_US_ARE_FETISH_CONTENT, WE_ARE_BOTH_MICROS)
+				return
+			// macro walked onto our tile
+			if(WE_RAN_BETWEEN_THEIR_LEGS)
+				tail = ishuman(AM) && (H = AM) && isTaurTail(H.tail_style) && H.tail_style
+				to_chat(AM, STEP_TEXT_OWNER_NON_SHITCODE(tail?.msg_owner_help_run, AM) || "You carefully step over [src].")
+				to_chat(src, STEP_TEXT_PREY_NON_SHITCODE(tail?.msg_prey_help_run, src) || "[AM] carefully steps over you.")
+			// micro ran onto our tile
+			if(THEY_RAN_BETWEEN_OUR_LEGS)
+				tail = ishuman(src) && (H = src) && isTaurTail(H.tail_style) && H.tail_style
+				to_chat(AM, STEP_TEXT_PREY_NON_SHITCODE(tail?.msg_prey_stepunder, src),  || "You run between [src]'s legs.")
+				to_chat(src, STEP_TEXT_OWNER_NON_SHITCODE(tail?.msg_owner_stepunder, AM) || "[AM] runs between your legs.")
+*/
+
+#undef WE_RAN_BETWEEN_THEIR_LEGS
+#undef THEY_RAN_BETWEEN_OUR_LEGS
+#undef WE_ARE_BOTH_MICROS
+#undef NEITHER_OF_US_ARE_FETISH_CONTENT
+#undef STEP_TEXT_OWNER_NON_SHITCODE
+#undef STEP_TEXT_PREY_NON_SHITCODE
 
 #define STEP_TEXT_OWNER(x) "[replacetext(x,"%prey",tmob)]"
 #define STEP_TEXT_PREY(x) "[replacetext(x,"%owner",src)]"
+
 /**
- * Handle bumping into someone with helping intent.
- * Called from /mob/living/Bump() in the 'brohugs all around' section.
- * @return false if normal code should continue, true to prevent normal code.
+ * we bumped into other
  */
-/mob/living/proc/handle_micro_bump_helping(var/mob/living/tmob)
-
-	//Both small! Go ahead and go.
-	if(src.get_effective_size() <= RESIZE_A_SMALLTINY && tmob.get_effective_size() <= RESIZE_A_SMALLTINY)
-		return TRUE
-
-	//Worthy of doing messages at all
-	if(abs(get_effective_size() - tmob.get_effective_size()) >= 0.50)
-
-		//Smaller person being stepped onto
-		if(get_effective_size() > tmob.get_effective_size() && ishuman(src))
-			var/mob/living/carbon/human/H = src
-			if(H.flying)
-				return TRUE //Silently pass without a message.
-			if(isTaurTail(H.tail_style))
-				var/datum/sprite_accessory/tail/taur/tail = H.tail_style
-				to_chat(src,STEP_TEXT_OWNER(tail.msg_owner_help_run))
-				to_chat(tmob,STEP_TEXT_PREY(tail.msg_prey_help_run))
-			else
-				to_chat(src,"You carefully step over [tmob].")
-				to_chat(tmob,"[src] steps over you carefully!")
-
-		//Smaller person stepping under larger person
-		else if(tmob.get_effective_size() > get_effective_size() && ishuman(tmob))
-			var/mob/living/carbon/human/H = tmob
-			if(isTaurTail(H.tail_style))
-				var/datum/sprite_accessory/tail/taur/tail = H.tail_style
-				to_chat(src,STEP_TEXT_OWNER(tail.msg_prey_stepunder))
-				to_chat(tmob,STEP_TEXT_PREY(tail.msg_owner_stepunder))
-			else
-				to_chat(src,"You run between [tmob]'s legs.")
-				to_chat(tmob,"[src] runs between your legs.")
-		return TRUE
-	return FALSE
+/mob/living/proc/fetish_hook_for_non_help_intent_bumps(mob/living/other)
+	if(a_intent == INTENT_HELP)
+		return FALSE
+	// flatten to true/false
+	return !!handle_micro_bump_other(other)
 
 /**
  * Handle bumping into someone without mutual help intent.
@@ -215,7 +283,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 			return
 
 	//They can't be stepping on anyone
-	if(!canmove || buckled)
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
 	//Test/set if human
@@ -246,8 +314,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		if(INTENT_DISARM)
 			// If bigger than them by at least 0.75, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.75)
-				now_pushing = 0
-				forceMove(tmob.loc)
 
 				//Running on INTENT_DISARM
 				if(m_intent == "run")
@@ -300,7 +366,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		if(INTENT_HARM)
 			// If bigger than them by at least 0.75, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.75)
-				now_pushing = 0
 				forceMove(tmob.loc)
 
 				//Precalculate base damage
@@ -363,7 +428,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		if(INTENT_GRAB)
 			// If bigger than them by at least 0.50, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.50)
-				now_pushing = 0
 				tmob.resting = 1
 				forceMove(tmob.loc)
 
@@ -375,8 +439,8 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 				//Human, not a taur, but not wearing shoes = yes grab
 				else if(H && (!isTaurTail(H.tail_style) && !H.shoes))
-					to_chat(src,"<span class='danger'>You pin [tmob] down onto the floor with your foot and curl your toes up around their body, trapping them inbetween them!</span>")
-					to_chat(tmob,"<span class='danger'>[src] pins you down to the floor with their foot and curls their toes up around your body, trapping you inbetween them!</span>")
+					to_chat(src,"<span class='danger'>You pin [tmob] down onto the floor with your foot and curl your toes up around their body, trapping them in between them!</span>")
+					to_chat(tmob,"<span class='danger'>[src] pins you down to the floor with their foot and curls their toes up around your body, trapping you in between them!</span>")
 					equip_to_slot_if_possible(tmob.get_scooped(H), SLOT_ID_SHOES, INV_OP_SILENT)
 					add_attack_logs(src,tmob,"Grabbed underfoot (nontaur, no shoes)")
 

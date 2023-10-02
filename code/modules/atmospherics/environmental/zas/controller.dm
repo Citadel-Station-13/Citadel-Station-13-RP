@@ -1,6 +1,3 @@
-var/datum/controller/subsystem/air/air_master
-
-var/tick_multiplier = 2
 
 /*
 
@@ -90,7 +87,7 @@ Class Procs:
 	zones_to_update.Remove(z)
 
 /datum/controller/subsystem/air/proc/merge(datum/zas_zone/A, datum/zas_zone/B)
-	#ifdef ZAS_DEBUG
+	#ifdef ZAS_ASSERTIONS
 	ASSERT(istype(A))
 	ASSERT(istype(B))
 	ASSERT(!A.invalid)
@@ -105,7 +102,7 @@ Class Procs:
 		mark_zone_update(A)
 
 /datum/controller/subsystem/air/proc/connect(turf/simulated/A, turf/simulated/B, given_block, given_dir)
-	#ifdef ZAS_DEBUG
+	#ifdef ZAS_ASSERTIONS
 	ASSERT(istype(A))
 	ASSERT(isturf(B))
 	ASSERT(A.has_valid_zone())
@@ -132,7 +129,7 @@ Class Procs:
 			return
 
 	var/a_to_b = given_dir || get_dir_multiz(A, B)
-	var/b_to_a = REVERSE_DIR(a_to_b)
+	var/b_to_a = global.reverse_dir[a_to_b]
 
 	if(!A.connections)
 		A.connections = new
@@ -153,16 +150,16 @@ Class Procs:
 		c.mark_direct()
 
 /datum/controller/subsystem/air/proc/mark_for_update(turf/T)
-	#ifdef ZAS_DEBUG
+	#ifdef ZAS_ASSERTIONS
 	ASSERT(isturf(T))
 	#endif
 	tiles_to_update += T
 	#ifdef ZAS_DEBUG_GRAPHICS
-	T.overlays += mark
+	T.add_overlay(mark)
 	#endif
 
 /datum/controller/subsystem/air/proc/mark_zone_update(datum/zas_zone/Z)
-	#ifdef ZAS_DEBUG
+	#ifdef ZAS_ASSERTIONS
 	ASSERT(istype(Z))
 	#endif
 	if(Z.needs_update)
@@ -171,7 +168,7 @@ Class Procs:
 	Z.needs_update = 1
 
 /datum/controller/subsystem/air/proc/mark_edge_sleeping(datum/zas_edge/E)
-	#ifdef ZAS_DEBUG
+	#ifdef ZAS_ASSERTIONS
 	ASSERT(istype(E))
 	#endif
 	if(E.sleeping)
@@ -180,7 +177,7 @@ Class Procs:
 	E.sleeping = 1
 
 /datum/controller/subsystem/air/proc/mark_edge_active(datum/zas_edge/E)
-	#ifdef ZAS_DEBUG
+	#ifdef ZAS_ASSERTIONS
 	ASSERT(istype(E))
 	#endif
 	if(!E.sleeping)

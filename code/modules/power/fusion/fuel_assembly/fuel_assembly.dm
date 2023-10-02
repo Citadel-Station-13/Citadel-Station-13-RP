@@ -38,7 +38,7 @@
 	icon_state = "blank"
 	var/image/I = image(icon, "fuel_assembly")
 	I.color = fuel_colour
-	overlays += list(I, image(icon, "fuel_assembly_bracket"))
+	add_overlay(list(I, image(icon, "fuel_assembly_bracket")))
 	rod_quantities[fuel_type] = initial_amount
 
 /obj/item/fuel_assembly/process(delta_time)
@@ -46,7 +46,7 @@
 		return PROCESS_KILL
 
 	if(istype(loc, /turf))
-		SSradiation.radiate(src, max(1,CEILING(radioactivity/30, 1)))
+		radiation_pulse(src, radioactivity)
 
 /obj/item/fuel_assembly/Destroy()
 	STOP_PROCESSING(SSobj, src)

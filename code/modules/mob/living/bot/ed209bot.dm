@@ -72,12 +72,12 @@
 
 	last_shot = world.time
 
-	var/projectile = /obj/item/projectile/beam/stun
+	var/projectile = /obj/projectile/beam/stun
 	if(emagged)
-		projectile = /obj/item/projectile/beam
+		projectile = /obj/projectile/beam
 
 	playsound(loc, emagged ? 'sound/weapons/Laser.ogg' : 'sound/weapons/Taser.ogg', 50, 1)
-	var/obj/item/projectile/P = new projectile(loc)
+	var/obj/projectile/P = new projectile(loc)
 
 	P.firer = src
 	P.old_style_target(A)
@@ -199,7 +199,7 @@
 
 		if(8)
 			if(W.is_screwdriver())
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				var/turf/T = get_turf(user)
 				to_chat(user, "<span class='notice'>Now attaching the gun to the frame...</span>")
 				sleep(40)

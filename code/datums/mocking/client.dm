@@ -11,3 +11,6 @@
 
 	/// The mob the client controls
 	var/mob/mob
+
+	var/current_viewport_width = 15
+	var/current_viewport_height = 15

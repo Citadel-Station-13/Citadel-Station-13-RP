@@ -126,7 +126,6 @@
 	desc = "Like a normal chair, but more stationary."
 	icon_state = "bay_chair_preview"
 	base_icon = "bay_chair"
-	buckle_movable = 1
 
 /obj/structure/bed/chair/bay/chair/padded/red/Initialize(mapload, new_material, new_padding_material)
 	return ..(mapload, new_material, "carpet")
@@ -215,20 +214,19 @@
 	desc = "A comfortable, secure seat. It has a sturdy-looking buckling system for smoother flights."
 	base_icon = "shuttle_chair"
 	icon_state = "shuttle_chair_preview"
-	buckle_movable = 0
 	var/buckling_sound = 'sound/effects/metal_close.ogg'
 	var/padding = "blue"
 
 /obj/structure/bed/chair/bay/shuttle/Initialize(mapload, new_material, new_padding_material)
 	return ..(mapload, MAT_STEEL, padding)
 
-/obj/structure/bed/chair/bay/shuttle/post_buckle_mob()
+/obj/structure/bed/chair/bay/shuttle/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	playsound(src,buckling_sound,75,1)
 	if(has_buckled_mobs())
 		base_icon = "shuttle_chair-b"
 	else
 		base_icon = "shuttle_chair"
-	..()
 
 /obj/structure/bed/chair/bay/shuttle/update_icon()
 	..()

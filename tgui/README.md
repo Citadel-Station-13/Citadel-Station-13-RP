@@ -71,7 +71,8 @@ However, if you want finer control over the installation or build process, you w
 - `tools/build/build tgui-clean` - Clean up tgui folder.
 
 > With Juke Build, you can run multiple targets together, e.g.:
-> ```
+>
+> ```pwsh
 > tools/build/build tgui tgui-lint tgui-tsc tgui-test
 > ```
 
@@ -100,17 +101,17 @@ Remember to always run a full build of tgui before submitting a PR, because it c
 
 ## Troubleshooting
 
-**Development server is crashing**
+### Development server is crashing
 
 Make sure path to your working directory does not contain spaces, special unicode characters, exclamation marks or any other special symbols. If so, move codebase to a location which does not contain these characters.
 
 This is a known issue with Yarn (and some other tools, like Webpack), and fix is going to happen eventually.
 
-**Development server doesn't find my BYOND cache!**
+### Development server doesn't find my BYOND cache
 
 This happens if your Documents folder in Windows has a custom location, for example in `E:\Libraries\Documents`. Development server tries its best to find this non-standard location (searches for a Windows Registry key), but it can fail. You have to run the dev server with an additional environmental variable, with a full path to BYOND cache.
 
-```
+```js
 BYOND_CACHE="E:/Libraries/Documents/BYOND/cache"
 ```
 

@@ -10,7 +10,10 @@
 	throw_range = 20
 	origin_tech = list(TECH_BLUESPACE = 4)
 
-/obj/item/teleportation_scroll/attack_self(mob/user as mob)
+/obj/item/teleportation_scroll/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if((user.mind && !wizards.is_antagonist(user.mind)))
 		to_chat(usr, "<span class='warning'>You stare at the scroll but cannot make sense of the markings!</span>")
 		return
@@ -80,7 +83,7 @@
 	var/success = 0
 	while(tempL.len)
 		attempt = pick(tempL)
-		success = user.Move(attempt)
+		success = user.forceMove(attempt)
 		if(!success)
 			tempL.Remove(attempt)
 		else

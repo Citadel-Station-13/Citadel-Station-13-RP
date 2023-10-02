@@ -179,9 +179,6 @@
 	if(!M.density)
 		return
 
-	if(isnull(M.geologic_data))
-		M.geologic_data = new /datum/geosample(M)
-
 	if(!prob(XENOARCH_SPAWN_CHANCE))
 		return
 

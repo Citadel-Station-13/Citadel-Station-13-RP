@@ -1,14 +1,19 @@
 //Stand-in until this is made more lore-friendly.
 /datum/species/xenos
+	id = SPECIES_ID_XENOMORPH
+	uid = SPECIES_ID_XENOMORPH
 	name = SPECIES_XENO
 	name_plural = "Xenomorphs"
 
-	default_language = LANGUAGE_XENO
-	language = "Hivemind"
+	default_language = LANGUAGE_ID_XENOMORPH
+	intrinsic_languages = list(
+		LANGUAGE_ID_XENOMORPH,
+		LANGUAGE_ID_XENOMORPH_HIVEMIND
+	)
 	assisted_langs = list()
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno, /datum/unarmed_attack/bite/strong/xeno)
 	hud_type = /datum/hud_data/alien
-	rarity_value = 3
+	//rarity_value = 3
 
 	has_fine_manipulation = 0
 	siemens_coefficient = 0
@@ -24,8 +29,8 @@
 	cold_level_2 = -1
 	cold_level_3 = -1
 
-	flags =  NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_INFECT
-	spawn_flags = SPECIES_IS_RESTRICTED
+	species_flags =  NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_INFECT
+	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 
 	reagent_tag = IS_XENOS
 
@@ -115,7 +120,7 @@
 	var/datum/gas_mixture/environment = T.return_air()
 	if(!environment) return
 
-	if(environment.gas[/datum/gas/phoron] > 0 || locate(/obj/effect/alien/weeds) in T)
+	if(environment.gas[GAS_ID_PHORON] > 0 || locate(/obj/effect/alien/weeds) in T)
 		if(!regenerate(H))
 			var/obj/item/organ/internal/xenos/plasmavessel/P = H.internal_organs_by_name[O_PLASMA]
 			P.stored_plasma += weeds_plasma_rate
@@ -167,12 +172,13 @@
 */
 
 /datum/species/xenos/drone
+	uid = SPECIES_ID_XENOMORPH_DRONE
 	name = SPECIES_XENO_DRONE
 	caste_name = "drone"
 	weeds_plasma_rate = 15
 	slowdown = 1
 	tail = "xenos_drone_tail"
-	rarity_value = 5
+	//rarity_value = 5
 
 	icobase = 'icons/mob/species/xenomorph/drone.dmi'
 	deform =  'icons/mob/species/xenomorph/drone.dmi'
@@ -192,10 +198,8 @@
 	inherent_verbs = list(
 		/mob/living/proc/ventcrawl,
 		/mob/living/carbon/human/proc/regurgitate,
-		/mob/living/carbon/human/proc/plant,
 		/mob/living/carbon/human/proc/transfer_plasma,
 		/mob/living/carbon/human/proc/evolve,
-		/mob/living/carbon/human/proc/resin,
 		/mob/living/carbon/human/proc/corrosive_acid
 		)
 
@@ -207,6 +211,7 @@
 	..()
 
 /datum/species/xenos/hunter
+	uid = SPECIES_ID_XENOMORPH_HUNTER
 	name = SPECIES_XENO_HUNTER
 	weeds_plasma_rate = 5
 	caste_name = "hunter"
@@ -237,6 +242,7 @@
 		)
 
 /datum/species/xenos/sentinel
+	uid = SPECIES_ID_XENOMORPH_SENTINEL
 	name = SPECIES_XENO_SENTINEL
 	weeds_plasma_rate = 10
 	caste_name = "sentinel"
@@ -269,7 +275,7 @@
 		)
 
 /datum/species/xenos/queen
-
+	uid = SPECIES_ID_XENOMORPH_QUEEN
 	name = SPECIES_XENO_QUEEN
 	total_health = 250
 	weeds_heal_rate = 5
@@ -277,7 +283,7 @@
 	caste_name = "queen"
 	slowdown = 4
 	tail = "xenos_queen_tail"
-	rarity_value = 10
+	//rarity_value = 10
 
 	icobase = 'icons/mob/species/xenomorph/queen.dmi'
 	deform =  'icons/mob/species/xenomorph/queen.dmi'
@@ -302,12 +308,10 @@
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/regurgitate,
 		/mob/living/carbon/human/proc/lay_egg,
-		/mob/living/carbon/human/proc/plant,
 		/mob/living/carbon/human/proc/transfer_plasma,
 		/mob/living/carbon/human/proc/corrosive_acid,
 		/mob/living/carbon/human/proc/neurotoxin,
 		/mob/living/carbon/human/proc/acidspit,
-		/mob/living/carbon/human/proc/resin
 		)
 
 /datum/species/xenos/queen/handle_login_special(var/mob/living/carbon/human/H)

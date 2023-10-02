@@ -58,11 +58,11 @@
 	autolinkers = list("receiverA") // link to relay
 	freq_listening = list(AI_FREQ, SCI_FREQ, MED_FREQ, SUP_FREQ, SRV_FREQ, COMM_FREQ, ENG_FREQ, SEC_FREQ, ENT_FREQ)
 
-	//Common and other radio frequencies for people to freely use
-	New()
-		for(var/i = PUBLIC_LOW_FREQ, i < PUBLIC_HIGH_FREQ, i += 2)
-			freq_listening |= i
-		..()
+/// Common and other radio frequencies for people to freely use.
+/obj/machinery/telecomms/receiver/preset_right/New()
+	for(var/i = PUBLIC_LOW_FREQ, i < PUBLIC_HIGH_FREQ, i += 2)
+		freq_listening |= i
+	..()
 
 /obj/machinery/telecomms/receiver/preset_cent
 	id = "CentCom Receiver"
@@ -220,3 +220,12 @@
 	network = "tcommsat"
 	produces_heat = 0
 	autolinkers = list("broadcasterCent")
+
+
+/obj/item/multitool/nt_buffered
+	name = "pre-linked multitool (hub)"
+	desc = "This multitool has already been linked to the NT telecomms hub aboard your vessel and can be used to configure one (1) relay."
+
+/obj/item/multitool/nt_buffered/Initialize(mapload)
+	. = ..()
+	buffer = locate(/obj/machinery/telecomms/hub/preset)

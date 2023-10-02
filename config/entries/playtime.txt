@@ -1,0 +1,7 @@
+### PLAYTIME TRACKING
+## Enable playtime tracking
+PLAYTIME_TRACKING
+## Enable job playtime restrictions
+# JOB_CHECK_PLAYTIME
+## Enable job account age restrictions
+# JOB_CHECK_ACCOUNT_AGE

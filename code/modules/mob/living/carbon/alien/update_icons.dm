@@ -1,5 +1,5 @@
 /mob/living/carbon/alien/regenerate_icons()
-	overlays = list()
+	cut_overlays()
 	update_icons()
 
 /mob/living/carbon/alien/update_icons()
@@ -12,7 +12,7 @@
 
 	if(stat == DEAD)
 		icon_state = "[initial(icon_state)][state]_dead"
-	else if (stunned)
+	else if (!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 		icon_state = "[initial(icon_state)][state]_stun"
 	else if(lying || resting)
 		icon_state = "[initial(icon_state)][state]_sleep"

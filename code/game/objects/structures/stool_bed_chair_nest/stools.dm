@@ -6,8 +6,8 @@ var/global/list/stool_cache = list() //haha stool
 	desc = "Apply butt."
 	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "stool_preview" //set for the map
-	force = 10
-	throwforce = 10
+	damage_force = 10
+	throw_force = 10
 	w_class = ITEMSIZE_HUGE
 	var/base_icon = "stool_base"
 	var/datum/material/material
@@ -26,7 +26,7 @@ var/global/list/stool_cache = list() //haha stool
 	if(!istype(material))
 		qdel(src)
 		return
-	force = round(material.get_blunt_damage()*0.4)
+	damage_force = round(material.get_blunt_damage()*0.4)
 	update_icon()
 
 /obj/item/stool/padded/Initialize(mapload, new_material)
@@ -35,14 +35,15 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/stool/update_icon()
 	// Prep icon.
 	icon_state = ""
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	// Base icon.
 	var/cache_key = "stool-[material.name]"
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, base_icon)
 		I.color = material.icon_colour
 		stool_cache[cache_key] = I
-	overlays |= stool_cache[cache_key]
+	overlays_to_add += stool_cache[cache_key]
 	// Padding overlay.
 	if(padding_material)
 		var/padding_cache_key = "stool-padding-[padding_material.name]"
@@ -50,7 +51,7 @@ var/global/list/stool_cache = list() //haha stool
 			var/image/I =  image(icon, "stool_padding")
 			I.color = padding_material.icon_colour
 			stool_cache[padding_cache_key] = I
-		overlays |= stool_cache[padding_cache_key]
+		overlays_to_add += stool_cache[padding_cache_key]
 	// Strings.
 	if(padding_material)
 		name = "[padding_material.display_name] [initial(name)]" //this is not perfect but it will do for now.
@@ -58,6 +59,8 @@ var/global/list/stool_cache = list() //haha stool
 	else
 		name = "[material.display_name] [initial(name)]"
 		desc = "A stool. Apply butt with care. It's made of [material.use_name]."
+
+	add_overlay(overlays_to_add)
 
 /obj/item/stool/proc/add_padding(var/padding_type)
 	padding_material = get_material_by_name(padding_type)
@@ -69,21 +72,23 @@ var/global/list/stool_cache = list() //haha stool
 		padding_material = null
 	update_icon()
 
-/obj/item/stool/attack(mob/M as mob, mob/user as mob)
-	if (prob(5) && istype(M,/mob/living))
-		user.visible_message("<span class='danger'>[user] breaks [src] over [M]'s back!</span>")
-		user.setClickCooldown(user.get_attack_speed())
-		user.do_attack_animation(M)
-		user.drop_item_to_ground(src, INV_OP_FORCE)
+/obj/item/stool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+
+	var/mob/living/L = user
+	if (prob(5) && istype(L) && istype(target, /mob/living))
+		L.visible_message("<span class='danger'>[L] breaks [src] over [target]'s back!</span>")
+		L.setClickCooldown(L.get_attack_speed())
+		L.do_attack_animation(target)
+		L.drop_item_to_ground(src, INV_OP_FORCE)
 		dismantle()
 		qdel(src)
-		var/mob/living/T = M
-		T.Weaken(10)
+		var/mob/living/T = target
+		T.afflict_paralyze(20 * 10)
 		T.apply_damage(20)
-		return
-	..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/item/stool/ex_act(severity)
+/obj/item/stool/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -106,7 +111,7 @@ var/global/list/stool_cache = list() //haha stool
 
 /obj/item/stool/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		dismantle()
 		qdel(src)
 	else if(istype(W,/obj/item/stack))
@@ -135,7 +140,7 @@ var/global/list/stool_cache = list() //haha stool
 			to_chat(user, "\The [src] has no padding to remove.")
 			return
 		to_chat(user, "You remove the padding from \the [src].")
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 		remove_padding()
 	else
 		..()

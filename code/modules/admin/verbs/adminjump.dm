@@ -78,7 +78,7 @@
 
 	if(config_legacy.allow_admin_jump)
 		var/list/keys = list()
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			keys += M.client
 		var/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
 		if(!selection)
@@ -118,7 +118,7 @@
 
 	if(config_legacy.allow_admin_jump)
 		var/list/keys = list()
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			keys += M.client
 		var/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
 		if(!selection)

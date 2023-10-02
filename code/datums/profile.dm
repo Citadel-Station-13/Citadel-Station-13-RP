@@ -5,8 +5,8 @@ GLOBAL_REAL_VAR(PROFILE_FILE)
 GLOBAL_REAL_VAR(PROFILE_SLEEPCHECK)
 GLOBAL_REAL_VAR(PROFILE_TIME)
 
-/proc/profile_show(user, sort = /proc/cmp_profile_avg_time_dsc)
-	sortTim(PROFILE_STORE, sort, TRUE)
+/proc/profile_show(user, sort = GLOBAL_PROC_REF(cmp_profile_avg_time_dsc))
+	tim_sort(PROFILE_STORE, sort, TRUE)
 
 	var/list/lines = list()
 

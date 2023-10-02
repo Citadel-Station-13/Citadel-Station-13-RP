@@ -31,7 +31,7 @@
 	name = "\improper SRM-8 missile rack"
 	desc = "A missile battery that holds eight missiles."
 	icon_state = "mecha_missilerack"
-	projectile = /obj/item/projectile/bullet/srmrocket
+	projectile = /obj/projectile/bullet/srmrocket
 	fire_sound = 'sound/weapons/rpg.ogg'
 	projectiles = 8
 	projectile_energy_cost = 1000
@@ -42,7 +42,7 @@
 	name = "jury-rigged rocket pod"
 	desc = "A series of pipes, tubes, and cables that resembles a rocket pod."
 	icon_state = "mecha_missilerack-rig"
-	projectile = /obj/item/projectile/bullet/srmrocket/weak
+	projectile = /obj/projectile/bullet/srmrocket/weak
 	projectiles = 3
 	projectile_energy_cost = 800
 

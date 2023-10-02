@@ -81,15 +81,17 @@
 	if(node3)
 		node3.update_underlays()
 
-/obj/machinery/atmospherics/pipe/manifold/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/pipe/manifold/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 
 	alpha = 255
 
-	overlays.Cut()
-	overlays += icon_manager.get_atmos_icon("manifold", , pipe_color, "core" + icon_connect_type)
-	overlays += icon_manager.get_atmos_icon("manifold", , , "clamps" + icon_connect_type)
+	cut_overlays()
+	var/list/overlays_to_add = list()
+	overlays_to_add += icon_manager.get_atmos_icon("manifold", , pipe_color, "core" + icon_connect_type)
+	overlays_to_add += icon_manager.get_atmos_icon("manifold", , , "clamps" + icon_connect_type)
+	add_overlay(overlays_to_add)
 	underlays.Cut()
 
 	var/turf/T = get_turf(src)

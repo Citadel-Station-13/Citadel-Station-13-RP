@@ -31,7 +31,7 @@
 	has_hands = TRUE
 	humanoid_hands = TRUE
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
 	universal_understand = 1
 
@@ -42,7 +42,7 @@
 	base_attack_cooldown = 1 SECOND
 	attacktext = list("nipped", "bit", "cut", "clawed")
 
-	armor = list(
+	armor_legacy_mob = list(
 		"melee" = 15,
 		"bullet" = 5,
 		"laser" = 5,
@@ -50,16 +50,6 @@
 		"bomb" = 10,
 		"bio" = 100,
 		"rad" = 100
-		)
-
-	armor_soak = list(
-		"melee" = 2,
-		"bullet" = 2,
-		"laser" = 0,
-		"energy" = 0,
-		"bomb" = 0,
-		"bio" = 0,
-		"rad" = 0
 		)
 
 	say_list_type = /datum/say_list/sakimm
@@ -144,20 +134,18 @@
 	..()
 
 /mob/living/simple_mob/animal/sif/sakimm/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	..()
 	if(hat)
-		var/hat_state = hat.item_state ? hat.item_state : hat.icon_state
-		var/image/I = image(INV_HEAD_DEF_ICON, src, hat_state)
-		I.pixel_y = -15 // Sakimm are tiny!
-		I.appearance_flags = RESET_COLOR
-		add_overlay(I)
+		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD, BODYTYPE_STRING_DEFAULT)
+		MA.appearance_flags = RESET_COLOR
+		add_overlay(MA)
 
 /mob/living/simple_mob/animal/sif/sakimm/Initialize(mapload)
 	. = ..()
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 	if(randomize_size)
 		adjust_scale(rand(8, 11) / 10)

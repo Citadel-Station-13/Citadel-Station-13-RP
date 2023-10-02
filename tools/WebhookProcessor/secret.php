@@ -130,4 +130,3 @@ $discordWebHooks[$configitem]['no_text'] = false;
 */
 
 unset($configitem); //ignore
-

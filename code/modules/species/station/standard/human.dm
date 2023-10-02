@@ -1,7 +1,11 @@
 /datum/species/human
+	id = SPECIES_ID_HUMAN
+	uid = SPECIES_ID_HUMAN
+	category = "Human"
 	name = SPECIES_HUMAN
 	name_plural = "Humans"
 	primitive_form = SPECIES_MONKEY
+	override_worn_legacy_bodytype = SPECIES_HUMAN
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
@@ -12,20 +16,23 @@
 	worlds tumultous at best."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/humans)
 
-	num_alternate_languages = 3
-	species_language = LANGUAGE_SOL_COMMON
-	secondary_langs  = list(LANGUAGE_SOL_COMMON, LANGUAGE_TERMINUS)
+	max_additional_languages = 3
+	intrinsic_languages = list(
+		LANGUAGE_ID_COMMON,
+		LANGUAGE_ID_HUMAN
+	)
+	whitelist_languages = list(
+		LANGUAGE_ID_HUMAN_SLAVIC
+	)
 	name_language    = null // Use the first-name last-name generator rather than a language scrambler
-	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_PROMETHEAN)
 
 	max_age = 130
 
-	economic_modifier = 10
 
 	health_hud_intensity = 1.5
 
-	spawn_flags = SPECIES_CAN_JOIN
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
 	has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart,
@@ -50,6 +57,9 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 
 	color_mult = 1

@@ -25,7 +25,7 @@
 
 		if(floor.density)
 			if(!isnull(seed.chems["pacid"]))
-				spawn(rand(5,25)) floor.ex_act(3)
+				spawn(rand(5,25)) LEGACY_EX_ACT(floor, 3, null)
 			continue
 
 		if(!Adjacent(floor) || !floor.Enter(src))
@@ -63,6 +63,10 @@
 
 	// Handle life.
 	var/turf/simulated/T = get_turf(src)
+	// todo: proper refactor to plants, for now this is a bandaid
+	if(!T)
+		qdel(src)
+		return
 	if(istype(T))
 		health -= seed.handle_environment(T,T.return_air(),null,1)
 	if(health < max_health)
@@ -158,6 +162,16 @@
 				neighbor.neighbors -= target_turf
 
 		child.finish_spreading()
+
+/obj/effect/plant/Cross(atom/movable/AM)
+	// we check here to prevent plants from stacking up from zlevel falling
+	// since zfall obstructions check Cross()ing
+	if(istype(AM, /obj/effect/plant)) // no stackies!!
+		var/obj/effect/plant/enemy = AM
+		if(enemy.seed != seed)
+			return TRUE // yes vines, battle to the death!!
+		return FALSE
+	return ..()
 
 /obj/effect/plant/proc/die_off()
 	// Kill off our plant.

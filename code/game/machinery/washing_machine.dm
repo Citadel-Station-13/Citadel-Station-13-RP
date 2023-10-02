@@ -25,10 +25,6 @@
 		/obj/item/clothing/head/helmet/space
 		)
 
-/obj/machinery/washing_machine/Initialize(mapload, newdir)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/washing_machine/verb/start()
 	set name = "Start Washing"
 	set category = "Object"
@@ -50,6 +46,7 @@
 	sleep(200)
 	for(var/atom/A in washing)
 		A.clean_blood()
+		A.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER_WASHING_MACHINE, RAD_CONTAMINATION_CLEANSE_FACTOR_WASHING_MACHINE)
 
 	for(var/obj/item/I in washing)
 		I.decontaminate()
@@ -123,7 +120,7 @@
 		..()
 	update_icon()
 
-/obj/machinery/washing_machine/attack_hand(mob/user as mob)
+/obj/machinery/washing_machine/attack_hand(mob/user, list/params)
 	switch(state)
 		if(1)
 			state = 2
@@ -160,6 +157,8 @@
 	update_icon()
 
 /obj/machinery/washing_machine/AltClick(mob/user)
+	if(!user.Reachability(src))
+		return
 	if(!istype(usr, /mob/living)) //ew ew ew usr, but it's the only way to check.
 		return
 

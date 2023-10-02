@@ -56,7 +56,7 @@
 			/obj/item/reagent_containers/glass/bottle/ammonia = 2,
 			/obj/item/material/knife/machete/hatchet,
 			/obj/item/material/minihoe,
-			/obj/item/analyzer/plant_analyzer,
+			/obj/item/plant_analyzer,
 			/obj/item/clothing/gloves/botanic_leather,
 			/obj/item/clothing/suit/storage/apron,
 			/obj/item/material/minihoe,
@@ -65,28 +65,28 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/hydroponics
 	container_name = "Hydroponics crate"
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 /datum/supply_pack/hydro/cow
 	name = "Cow crate"
 	cost = 25
 	container_type = /obj/structure/largecrate/animal/cow
 	container_name = "Cow crate"
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 /datum/supply_pack/hydro/goat
 	name = "Goat crate"
 	cost = 25
 	container_type = /obj/structure/largecrate/animal/goat
 	container_name = "Goat crate"
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 /datum/supply_pack/hydro/chicken
 	name = "Chicken crate"
 	cost = 25
 	container_type = /obj/structure/largecrate/animal/chick
 	container_name = "Chicken crate"
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 /datum/supply_pack/hydro/seeds
 	name = "Seeds crate"
@@ -112,7 +112,7 @@
 	cost = 10
 	container_type = /obj/structure/closet/crate/hydroponics
 	container_name = "Seeds crate"
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 /datum/supply_pack/hydro/weedcontrol
 	name = "Weed control crate"
@@ -126,7 +126,7 @@
 	cost = 45
 	container_type = /obj/structure/closet/crate/hydroponics
 	container_name = "Weed control crate"
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 /datum/supply_pack/hydro/watertank
 	name = "Water tank crate"
@@ -148,7 +148,7 @@
 	cost = 40
 	container_type = /obj/structure/closet/crate/hydroponics
 	container_name = "Beekeeping crate"
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 /datum/supply_pack/hydro/tray
 	name = "Empty hydroponics trays"
@@ -156,7 +156,7 @@
 	container_type = /obj/structure/closet/crate/hydroponics
 	container_name = "Hydroponics tray crate"
 	contains = list(/obj/machinery/portable_atmospherics/hydroponics{anchored = 0} = 3)
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 
 /datum/supply_pack/hydro/diycarpotox
@@ -176,7 +176,7 @@
 	cost = 200 //You're getting 22 birds. Of course it's going to be a lot!
 	container_type = /obj/structure/largecrate/birds
 	container_name = "Bird crate"
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 /datum/supply_pack/hydro/sobaka
 	name = "Sobaka crate"
@@ -216,6 +216,7 @@
 	name = "Fish supply crate"
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/lobster = 6,
+			/obj/item/reagent_containers/food/snacks/shrimp = 6,
 			/obj/item/reagent_containers/food/snacks/cuttlefish = 8,
 			/obj/item/reagent_containers/food/snacks/sliceable/monkfish = 1
 			)
@@ -228,21 +229,21 @@
 	cost = 50
 	container_type = /obj/structure/largecrate/animal/woolie
 	container_name = "Woolie crate"
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 /datum/supply_pack/hydro/icegoat
 	name = "Glacicorn crate"
 	cost = 50
 	container_type = /obj/structure/largecrate/animal/icegoat
 	container_name = "Glacicorn crate"
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 /datum/supply_pack/hydro/cow
 	name = "Furnace Grub crate"
 	cost = 40
 	container_type = /obj/structure/largecrate/animal/furnacegrub
 	container_name = "Furnace Grub crate"
-	access = access_hydroponics
+	access = ACCESS_GENERAL_BOTANY
 
 
 

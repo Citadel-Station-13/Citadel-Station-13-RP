@@ -171,3 +171,8 @@
 	'sound/ambience/engineering/engineering3.ogg',\
 	'sound/ambience/atmospherics/atmospherics1.ogg'\
 	)
+
+// Ambience for Lythios areas that arent POI's and such
+#define AMBIENCE_LYTHIOS list(\
+	'sound/ambience/lythios/lythios_ambience.ogg'\
+	)

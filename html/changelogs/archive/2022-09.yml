@@ -1,0 +1,88 @@
+2022-09-05:
+  Captain277:
+  - rscdel: Removes AR-V vectors for Explo.
+2022-09-07:
+  Knightfall5:
+  - rscdel: Removed unused, duplicate sprites
+  - bugfix: fixed clothing circuit cloning, teleporting through walls with railings
+  silicons:
+  - tweak: advanced vis toggles for soulcatchers
+2022-09-09:
+  silicons:
+  - bugfix: pulling things around corners should work now
+  - rscadd: advanced throwing
+  - rscadd: overhand throwing. default bind is ctrl + R
+  - refactor: movespeed, actionspeed shimmed in. no implementation yet.
+  - tweak: pushing things now "pushes through", which means 2x speed for those of
+      you who haul two things at once.
+  - tweak: pushing mobs no longer changes their direction if they're faced the right
+      way so it looks less janky
+  - refactor: pass_flags_self
+2022-09-10:
+  CharlesWedge:
+  - tweak: Removed Open space in Bar Maint
+  - bugfix: Access on Surface 3 Bunkers
+2022-09-12:
+  Captain277:
+  - bugfix: Fixes an Unsimulated turf's erroneous placement.
+2022-09-13:
+  CharlesWedge:
+  - rscadd: Muskets by Ruskit, their unique rounds, sprites, projectiles
+  - tweak: Colonial Lockbox has period appropiate weaponry
+  - bugfix: inhand sprites for the Tajaran guns facing the wrong way
+2022-09-14:
+  Captain277:
+  - rscadd: Adds Ashlander ghost role.
+  - bugfix: Green labcoat path.
+2022-09-16:
+  Captain277:
+  - bugfix: Fixes a typo.
+2022-09-18:
+  Captain277:
+  - rscadd: Adds cosmetic chlorine gas icon.
+  - rscadd: Adds horror aura for...horrors.
+  - bugfix: Fixes incorrect Courser dir.
+  Nepnya:
+  - tweak: Allows anyone with a synthetic voicebox to use synthetic emotes.
+2022-09-20:
+  Captain277:
+  - rscadd: Adds the Konigin-63 Compact.
+  - rscadd: Adds Virology.
+2022-09-21:
+  ktoma36:
+  - rscadd: Mining outpost on west plains
+  - tweak: Mining's elevator area at the bottom
+  - bugfix: Underground Weatherbug
+  - code_imp: Commented out addTurf and removeTurf procs in cave generation (with
+      silicons help, they were the root cause of the bug)
+2022-09-22:
+  nevimer:
+  - rscadd: floating messages and preferences for it.
+2022-09-23:
+  Captain277:
+  - rscdel: Removes cult mobs from Surt.
+  - balance: Tweaks Tyrmalin heavy charge distribution.
+  silicons:
+  - refactor: tool handling has been rewritten
+2022-09-24:
+  Mouseofthecake:
+  - rscadd: Added Brainsnax food cans to food-o-mats.
+2022-09-26:
+  Captain277:
+  - bugfix: Corrects inheritance of color changing var.
+  - rscadd: Adds an open space turf.
+  - rscadd: Adds a faction to launchers.
+2022-09-28:
+  Captain277:
+  - bugfix: Enables turf checking for skyfall.
+  - tweak: Adjusts charge cost.
+  - rscadd: Adds the Runner Jacket
+  - rscadd: Adds Grit, an exotic shotgun.
+  TheLordME:
+  - tweak: tweaked the mining refinery machines to work a little faster
+2022-09-30:
+  Captain277:
+  - tweak: Tweaks how the horror aura is assigned to mobs.
+  - tweak: Changes cost of Tyrmalin mining crate.
+  - bugfix: Fixes issues in chainsaw proc.
+  - rscadd: Adds new voidsuit.

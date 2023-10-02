@@ -7,7 +7,7 @@
 	w_class = ITEMSIZE_SMALL
 	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'
 	icon_state = "setup_small"
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	show_messages = TRUE
 	datum_flags = DF_USE_TAG
 	var/list/assembly_components = list()
@@ -58,7 +58,7 @@
 /obj/item/electronic_assembly/GenerateTag()
 	tag = "assembly_[next_assembly_id++]"
 
-/obj/item/electronic_assembly/examine(mob/user)
+/obj/item/electronic_assembly/examine(mob/user, dist)
 	. = ..()
 	if(can_anchor)
 		. += "<span class='notice'>The anchoring bolts [anchored ? "are" : "can be"] <b>wrenched</b> in place and the maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>"
@@ -86,9 +86,9 @@
 /obj/item/electronic_assembly/Bump(atom/AM)
 	collw = AM
 	.=..()
-	if((istype(collw, /obj/machinery/door/airlock) ||  istype(collw, /obj/machinery/door/window)) && (!isnull(access_card)))
+	if(istype(collw, /obj/machinery/door/airlock) ||  istype(collw, /obj/machinery/door/window))
 		var/obj/machinery/door/D = collw
-		if(D.check_access(access_card))
+		if(D.check_access(src))
 			D.open()
 
 /obj/item/electronic_assembly/Initialize(mapload)
@@ -138,7 +138,6 @@
 		var/obj/item/integrated_circuit/IC = I
 		/* Uncomment for debugging purposes. */
 		if(!IC)
-			to_world(SPAN_DEBUGERROR("Bad assembly_components entry in [src].  Has remove() been called incorrectly?"))
 			var/x = assembly_components.Find(null)
 			assembly_components.Cut(x,++x)
 			return
@@ -150,11 +149,11 @@
 /obj/item/electronic_assembly/proc/check_interactivity(mob/user)
 	return ui_status(user, GLOB.physical_state) == UI_INTERACTIVE
 
-/obj/item/electronic_assembly/get_cell()
+/obj/item/electronic_assembly/get_cell(inducer)
 	return battery
 
 // TGUI
-/obj/item/electronic_assembly/ui_state(mob/user)
+/obj/item/electronic_assembly/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/item/electronic_assembly/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -204,7 +203,7 @@
 				)))*/
 	return data
 
-/obj/item/electronic_assembly/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/electronic_assembly/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -309,6 +308,7 @@
 	set name = "Rename Circuit"
 	set category = "Object"
 	set desc = "Rename your circuit, useful to stay organized."
+	set src in usr
 
 	var/mob/M = usr
 	var/input = tgui_input_text(usr, "What do you want to name this?", "Rename", src.name, MAX_NAME_LEN)
@@ -411,10 +411,10 @@
 	diag_hud_set_circuittracking()
 	*/
 
-/obj/item/electronic_assembly/afterattack(atom/target, mob/user, proximity)
+/obj/item/electronic_assembly/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	for(var/obj/item/integrated_circuit/input/S in assembly_components)
-		if(S.sense(target,user,proximity))
+		if(S.sense(target,user,(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)))
 			visible_message(SPAN_NOTICE("\The [user] waves \the [src] around [target]."))
 
 /obj/item/electronic_assembly/attackby(var/obj/item/I, var/mob/user, intent)
@@ -428,7 +428,7 @@
 			on_anchored()
 		else
 			on_unanchored()
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		return TRUE
 
 	else if(istype(I, /obj/item/integrated_circuit))
@@ -495,12 +495,27 @@
 		to_chat(user, SPAN_NOTICE("You slot \the [cell] inside \the [src]'s power supplier."))
 		ui_interact(user)
 		return TRUE
+	else if(istype(I, /obj/item/integrated_electronics/analyzer))
+		if(!opened)
+			to_chat(usr, SPAN_WARNING("You need to open the [src] to analyze the contents!"))
+			return
+		var/save = SScircuit.save_electronic_assembly(src)
+		var/saved = "[src.name] analyzed! On circuit printers with cloning enabled, you may use the code below to clone the circuit:<br><br><code>[save]</code>"
+		if(save)
+			to_chat(usr, SPAN_WARNING("You scan [src]."))
+			user << browse(saved, "window=circuit_scan;size=500x600;border=1;can_resize=1;can_close=1;can_minimize=1")
+		else
+			to_chat(usr, SPAN_WARNING("[src] is not complete enough to be encoded!"))
+		return TRUE
 	else for(var/obj/item/integrated_circuit/S in assembly_components)
 		if(S.attackby_react(I,user,user.a_intent))
 			return TRUE
 	return ..()
 
 /obj/item/electronic_assembly/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!check_interactivity(user))
 		return
 	ui_interact(user)

@@ -51,23 +51,188 @@ GLOBAL_LIST_EMPTY(apcs)
 
 //NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
 
+/obj/machinery/power/apc/direction_bump  //For the love of god there's so many fucking var edits of the APC, use these instead pleaaaaase -Bloop
+
+/obj/machinery/power/apc/direction_bump/east
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+
+/obj/machinery/power/apc/direction_bump/west
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/direction_bump/north
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/direction_bump/south
+	name = "south bump"
+	pixel_y = -28
+
+//Critical//
 /obj/machinery/power/apc/critical
 	is_critical = 1
 
+/obj/machinery/power/apc/critical/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+
+/obj/machinery/power/apc/critical/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/critical/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/critical/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+/// High capacity cell APCs
 /obj/machinery/power/apc/high
 	cell_type = /obj/item/cell/high
 
+/obj/machinery/power/apc/high/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+/obj/machinery/power/apc/high/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/high/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/high/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+/// Super capacity cell APCS
 /obj/machinery/power/apc/super
 	cell_type = /obj/item/cell/super
 
+/obj/machinery/power/apc/super/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+/obj/machinery/power/apc/super/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/super/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/super/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+
+/// Critical APCs with super cells
 /obj/machinery/power/apc/super/critical
 	is_critical = 1
 
+/obj/machinery/power/apc/super/critical/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+/obj/machinery/power/apc/super/critical/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/super/critical/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/super/critical/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+/// APCS with hyper cells. How lewd
 /obj/machinery/power/apc/hyper
 	cell_type = /obj/item/cell/hyper
 
+/obj/machinery/power/apc/hyper/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+/obj/machinery/power/apc/hyper/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/hyper/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/hyper/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+
+/// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
 /obj/machinery/power/apc/alarms_hidden
 	alarms_hidden = TRUE
+
+/obj/machinery/power/apc/alarms_hidden/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+
+/obj/machinery/power/apc/alarms_hidden/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/alarms_hidden/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/alarms_hidden/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+/// APCS with hidden alarms and no power cells
+/obj/machinery/power/apc/alarms_hidden/no_cell
+	cell_type = null
+	chargelevel = 0
+
+/obj/machinery/power/apc/alarms_hidden/no_cell/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+
+/obj/machinery/power/apc/alarms_hidden/no_cell/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/alarms_hidden/no_cell/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/alarms_hidden/no_cell/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+
 
 /**
  * APCs
@@ -93,13 +258,13 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
-	icon = 'icons/obj/power_vr.dmi'
+	icon = 'icons/obj/apc.dmi'
 	icon_state = "apc0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
 	use_power = USE_POWER_OFF
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	var/area/area
 	var/areastring = null
 	var/obj/item/cell/cell
@@ -211,6 +376,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		name = "[area.name] APC"
 		machine_stat |= MAINT
 		src.update_icon()
+	setDir(dir)
 
 /obj/machinery/power/apc/Destroy()
 	GLOB.apcs -= src
@@ -234,7 +400,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	return ..()
 
-/obj/machinery/power/apc/get_cell()
+/obj/machinery/power/apc/get_cell(inducer)
 	return cell
 
 // APCs are pixel-shifted, so they need to be updated.
@@ -283,9 +449,9 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	make_terminal()
 
-	addtimer(CALLBACK(src, .proc/update), 5)
+	addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
-/obj/machinery/power/apc/examine(mob/user)
+/obj/machinery/power/apc/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user))
 		if(machine_stat & BROKEN)
@@ -324,9 +490,9 @@ GLOBAL_LIST_EMPTY(apcs)
 
 		status_overlays_lock.len = 2
 		status_overlays_charging.len = 3
-		status_overlays_equipment.len = 4
-		status_overlays_lighting.len = 4
-		status_overlays_environ.len = 4
+		status_overlays_equipment.len = 5
+		status_overlays_lighting.len = 5
+		status_overlays_environ.len = 5
 
 		status_overlays_lock[1] = image(icon, "apcox-0")    // 0=blue 1=red
 		status_overlays_lock[2] = image(icon, "apcox-1")
@@ -335,24 +501,19 @@ GLOBAL_LIST_EMPTY(apcs)
 		status_overlays_charging[2] = image(icon, "apco3-1")
 		status_overlays_charging[3] = image(icon, "apco3-2")
 
-		status_overlays_equipment[1] = image(icon, "apco0-0")
-		status_overlays_equipment[2] = image(icon, "apco0-1")
-		status_overlays_equipment[3] = image(icon, "apco0-2")
-		status_overlays_equipment[4] = image(icon, "apco0-3")
-
-		status_overlays_lighting[1] = image(icon, "apco1-0")
-		status_overlays_lighting[2] = image(icon, "apco1-1")
-		status_overlays_lighting[3] = image(icon, "apco1-2")
-		status_overlays_lighting[4] = image(icon, "apco1-3")
-
-		status_overlays_environ[1] = image(icon, "apco2-0")
-		status_overlays_environ[2] = image(icon, "apco2-1")
-		status_overlays_environ[3] = image(icon, "apco2-2")
-		status_overlays_environ[4] = image(icon, "apco2-3")
+		var/list/channel_overlays = list(status_overlays_equipment, status_overlays_lighting, status_overlays_environ)
+		var/channel = 0
+		for(var/list/channel_leds in channel_overlays)
+			channel_leds[POWERCHAN_OFF + 1] = overlay_image(icon,"apco[channel]",COLOR_RED)
+			channel_leds[POWERCHAN_OFF_AUTO + 1] = overlay_image(icon,"apco[channel]",COLOR_ORANGE)
+			channel_leds[POWERCHAN_ON + 1] = overlay_image(icon,"apco[channel]",COLOR_LIME)
+			channel_leds[POWERCHAN_ON_AUTO + 1] = overlay_image(icon,"apco[channel]",COLOR_BLUE)
+			channel++
 
 	var/update = check_updates() 		//returns 0 if no need to update icons.
 						// 1 if we need to update the icon_state
 						// 2 if we need to update the overlays
+
 	if(!update)
 		return
 
@@ -360,7 +521,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(update_state & UPDATE_ALLGOOD)
 			icon_state = "apc0"
 		else if(update_state & (UPDATE_OPENED1|UPDATE_OPENED2))
-			var/basestate = "apc[ cell ? "2" : "1" ]"
+			var/basestate = "apc[ get_cell(FALSE) ? "2" : "1" ]"
 			if(update_state & UPDATE_OPENED1)
 				if(update_state & (UPDATE_MAINT|UPDATE_BROKE))
 					icon_state = "apcmaint" //disabled APC cannot hold cell
@@ -370,42 +531,59 @@ GLOBAL_LIST_EMPTY(apcs)
 				icon_state = "[basestate]-nocover"
 		else if(update_state & UPDATE_BROKE)
 			icon_state = "apc-b"
-		else if(update_state & UPDATE_WIREEXP)
-			icon_state = "apcewires"
 		else if(update_state & UPDATE_BLUESCREEN)
 			icon_state = "apcemag"
+		else if(update_state & UPDATE_WIREEXP)
+			icon_state = "apcewires"
 
 	if(!(update_state & UPDATE_ALLGOOD))
-		if(overlays.len)
-			overlays = 0
-			return
+		cut_overlays()
 
 	if(update & 2)
-		if(overlays.len)
-			overlays.len = 0
+		cut_overlays()
 		if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
-			overlays += status_overlays_lock[locked+1]
-			overlays += status_overlays_charging[charging+1]
+			add_overlay(status_overlays_lock[locked+1])
+			add_overlay(status_overlays_charging[charging+1])
 			if(operating)
-				overlays += status_overlays_equipment[equipment+1]
-				overlays += status_overlays_lighting[lighting+1]
-				overlays += status_overlays_environ[environ+1]
+				add_overlay(status_overlays_equipment[equipment+1])
+				add_overlay(status_overlays_lighting[lighting+1])
+				add_overlay(status_overlays_environ[environ+1])
 
 	if(update & 3)
-		if(update_state & UPDATE_BLUESCREEN)
-			set_light(l_range = 2, l_power = 0.25, l_color = "#0000FF")
+		if((update_state & (UPDATE_OPENED1|UPDATE_OPENED2|UPDATE_BROKE)))
+			set_light(0)
+		else if(update_state & UPDATE_BLUESCREEN)
+			set_light(l_range = 2, l_power = 0.5, l_color = "#00ecff")
 		else if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
 			var/color
 			switch(charging)
 				if(0)
-					color = "#F86060"
+					color = "#f86060"
 				if(1)
-					color = "#A8B0F8"
+					color = "#a8b0f8"
 				if(2)
-					color = "#82FF4C"
-			set_light(l_range = 2, l_power = 0.25, l_color = color)
+					color = "#82ff4c"
+			set_light(l_range = 2, l_power = 0.5, l_color = color)
 		else
 			set_light(0)
+
+/obj/machinery/power/apc/setDir(new_dir)
+	. = ..()
+	base_pixel_x = 0
+	base_pixel_y = 0
+	var/turf/T = get_step(get_turf(src), dir)
+	if(istype(T) && T.density)
+		switch(dir)
+			if(SOUTH)
+				base_pixel_y = -22
+			if(NORTH)
+				base_pixel_y = 22
+			if(EAST)
+				base_pixel_x = 22
+			if(WEST)
+				base_pixel_x = -22
+	reset_pixel_offsets()
+
 
 /obj/machinery/power/apc/proc/check_updates()
 
@@ -499,9 +677,9 @@ GLOBAL_LIST_EMPTY(apcs)
 			if (terminal)
 				to_chat(user,"<span class='warning'>Disconnect the wires first.</span>")
 				return
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			to_chat(user,"You begin to remove the power control board...") //lpeters - fixed grammar issues //Ner - grrrrrr
-			if(do_after(user, 50 * W.toolspeed))
+			if(do_after(user, 50 * W.tool_speed))
 				if (has_electronics==1)
 					has_electronics = 0
 					if ((machine_stat & BROKEN))
@@ -552,12 +730,12 @@ GLOBAL_LIST_EMPTY(apcs)
 				if (has_electronics==1 && terminal)
 					has_electronics = 2
 					machine_stat &= ~MAINT
-					playsound(src.loc, W.usesound, 50, 1)
+					playsound(src.loc, W.tool_sound, 50, 1)
 					to_chat(user,"You screw the circuit electronics into place.")
 				else if (has_electronics==2)
 					has_electronics = 1
 					machine_stat |= MAINT
-					playsound(src.loc, W.usesound, 50, 1)
+					playsound(src.loc, W.tool_sound, 50, 1)
 					to_chat(user,"You unfasten the electronics.")
 				else /* has_electronics==0 */
 					to_chat(user,"<span class='warning'>There is nothing to secure.</span>")
@@ -566,7 +744,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		else
 			wiresexposed = !wiresexposed
 			to_chat(user,"The wires have been [wiresexposed ? "exposed" : "unexposed"].")
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			update_icon()
 
 	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))			// trying to unlock the interface with an ID card
@@ -606,7 +784,7 @@ GLOBAL_LIST_EMPTY(apcs)
 					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(5, 1, src)
 					s.start()
-					if(user.stunned)
+					if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 						return
 				C.use(10)
 				user.visible_message(\
@@ -622,13 +800,13 @@ GLOBAL_LIST_EMPTY(apcs)
 		user.visible_message("<span class='warning'>[user.name] starts dismantling the [src]'s power terminal.</span>", \
 							"You begin to cut the cables...")
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-		if(do_after(user, 50 * W.toolspeed))
+		if(do_after(user, 50 * W.tool_speed))
 			if(terminal && opened && has_electronics!=2)
 				if (prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
 					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(5, 1, src)
 					s.start()
-					if(usr.stunned)
+					if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 						return
 				new /obj/item/stack/cable_coil(loc,10)
 				to_chat(user,"<span class='notice'>You cut the cables and dismantle the power terminal.</span>")
@@ -654,8 +832,8 @@ GLOBAL_LIST_EMPTY(apcs)
 		user.visible_message("<span class='warning'>[user.name] begins cutting apart [src] with the [WT.name].</span>", \
 							"You start welding the APC frame...", \
 							"You hear welding.")
-		playsound(src, WT.usesound, 25, 1)
-		if(do_after(user, 50 * WT.toolspeed))
+		playsound(src, WT.tool_sound, 25, 1)
+		if(do_after(user, 50 * WT.tool_speed))
 			if(!src || !WT.remove_fuel(3, user)) return
 			if (emagged || (machine_stat & BROKEN) || opened==2)
 				new /obj/item/stack/material/steel(loc)
@@ -701,7 +879,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	else
 		if ((machine_stat & BROKEN) \
 				&& !opened \
-				&& W.force >= 5 \
+				&& W.damage_force >= 5 \
 				&& W.w_class >= ITEMSIZE_SMALL )
 			user.visible_message("<span class='danger'>The [src.name] has been hit with the [W.name] by [user.name]!</span>", \
 				"<span class='danger'>You hit the [src.name] with your [W.name]!</span>", \
@@ -755,7 +933,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		wires.cut_all()
 		update_icon()
 
-/obj/machinery/power/apc/attack_hand(mob/user)
+/obj/machinery/power/apc/attack_hand(mob/user, list/params)
 //	if (!can_use(user)) This already gets called in interact() and in topic()
 //		return
 	if(!user)
@@ -944,7 +1122,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			for(var/obj/machinery/light/L in area)
 				if(!initial(L.no_emergency)) //If there was an override set on creation, keep that override
 					L.no_emergency = emergency_lights
-					INVOKE_ASYNC(L, /obj/machinery/light/.proc/update, FALSE)
+					INVOKE_ASYNC(L, TYPE_PROC_REF(/obj/machinery/light, update), FALSE)
 				CHECK_TICK
 		if("overload")
 			if(locked_exception) // Reusing for simplicity!
@@ -1092,7 +1270,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		main_status = 2
 
 	if(debug)
-		log_debug("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]")
+		log_debug(SPAN_DEBUGINFO("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]"))
 
 	if(cell && !shorted && !grid_check)
 		// draw power from cell as before to power the area
@@ -1217,7 +1395,7 @@ GLOBAL_LIST_EMPTY(apcs)
 // val 0=off, 1=off(auto) 2=on 3=on(auto)
 // on 0=off, 1=on, 2=autooff
 // defines a state machine, returns the new state
-obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
+/obj/machinery/power/apc/proc/autoset(cur_state, on)
 	switch(cur_state)
 		if(POWERCHAN_OFF_AUTO)
 			if(on == 1)
@@ -1252,30 +1430,30 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 	update_icon()
 	..()
 
-/obj/machinery/power/apc/ex_act(severity)
+/obj/machinery/power/apc/legacy_ex_act(severity)
 
 	switch(severity)
 		if(1)
 			//set_broken() //now qdel() do what we need
 			if (cell)
-				cell.ex_act(1) // more lags woohoo
+				LEGACY_EX_ACT(cell, 1, null) // more lags woohoo
 			qdel(src)
 			return
 		if(2)
 			if (prob(75))
 				set_broken()
 				if (cell && prob(50))
-					cell.ex_act(2)
+					LEGACY_EX_ACT(cell, 2, null)
 		if(3)
 			if (prob(50))
 				set_broken()
 				if (cell && prob(50))
-					cell.ex_act(3)
+					LEGACY_EX_ACT(cell, 3, null)
 		if(4)
 			if (prob(25))
 				set_broken()
 				if (cell && prob(50))
-					cell.ex_act(3)
+					LEGACY_EX_ACT(cell, 3, null)
 	return
 
 /obj/machinery/power/apc/disconnect_terminal()
@@ -1380,7 +1558,7 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 
 	if(prob(10)) // Computers get broken.
 		for(var/obj/machinery/computer/comp in area)
-			comp.ex_act(3)
+			LEGACY_EX_ACT(comp, 3, null)
 
 	if(prob(5)) // APC completely ruined.
 		set_broken()

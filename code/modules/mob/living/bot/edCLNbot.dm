@@ -11,8 +11,8 @@
 	name = "ED-CLN Cleaning Robot"
 	desc = "A large cleaning robot. It looks rather efficient."
 	icon_state = "edCLN0"
-	req_one_access = list(access_robotics, access_janitor)
-	botcard_access = list(access_janitor, access_maint_tunnels)
+	req_one_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_GENERAL_JANITOR)
+	botcard_access = list(ACCESS_GENERAL_JANITOR, ACCESS_ENGINEERING_MAINT)
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/cleanbot/edCLN)
 
 	locked = FALSE //Starts unlocked so roboticist can set them to patrol.
@@ -90,7 +90,7 @@
 	data["blue_switch"] = blue_switch
 	return data
 
-/mob/living/bot/cleanbot/edCLN/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/cleanbot/edCLN/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -207,7 +207,7 @@
 
 		if(7)
 			if(W.is_screwdriver())
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				var/turf/T = get_turf(user)
 				to_chat(user, "<span class='notice'>Attatching the mop to the frame...</span>")
 				if(do_after(user, 40) && get_turf(user) == T)

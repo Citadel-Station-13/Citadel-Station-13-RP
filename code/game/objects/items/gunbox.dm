@@ -4,11 +4,11 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "gunbox"
 
-/obj/item/gunbox/attack_self(mob/living/user)
+/obj/item/gunbox/attack_self(mob/user)
 	var/list/options = list()
-	options["NT Mk58 (.45)"] = list(/obj/item/gun/projectile/sec, /obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash)
-	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/projectile/revolver/detective45, /obj/item/ammo_magazine/s45/rubber, /obj/item/ammo_magazine/s45/rubber)
-	options["P92X (9mm)"] = list(/obj/item/gun/projectile/p92x/sec, /obj/item/ammo_magazine/m9mm/rubber, /obj/item/ammo_magazine/m9mm/flash)
+	options["NT Mk58 (.45)"] = list(/obj/item/gun/ballistic/sec, /obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash)
+	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/s45/rubber, /obj/item/ammo_magazine/s45/rubber)
+	options["P92X (9mm)"] = list(/obj/item/gun/ballistic/p92x/sec, /obj/item/ammo_magazine/m9mm/rubber, /obj/item/ammo_magazine/m9mm/flash)
 	var/choice = input(user,"Would you prefer a pistol or a revolver?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
@@ -24,11 +24,11 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "gunbox"
 
-/obj/item/gunbox/lethal/attack_self(mob/living/user)
+/obj/item/gunbox/lethal/attack_self(mob/user)
 	var/list/options = list()
-	options["M1911 Dynamic (.45)"] = list(/obj/item/gun/projectile/colt, /obj/item/ammo_magazine/m45, /obj/item/ammo_magazine/m45)
-	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/projectile/revolver/detective45, /obj/item/ammo_magazine/s45, /obj/item/ammo_magazine/s45)
-	options["P92X (9mm)"] = list(/obj/item/gun/projectile/p92x, /obj/item/ammo_magazine/m9mm, /obj/item/ammo_magazine/m9mm)
+	options["M1911 Dynamic (.45)"] = list(/obj/item/gun/ballistic/colt, /obj/item/ammo_magazine/m45, /obj/item/ammo_magazine/m45)
+	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/s45, /obj/item/ammo_magazine/s45)
+	options["P92X (9mm)"] = list(/obj/item/gun/ballistic/p92x, /obj/item/ammo_magazine/m9mm, /obj/item/ammo_magazine/m9mm)
 	var/choice = input(user,"Would you prefer a pistol or a revolver?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
@@ -46,10 +46,10 @@
 	icon_state = "gunbox"
 	w_class = ITEMSIZE_HUGE
 
-/obj/item/gunbox/attack_self(mob/living/user)
+/obj/item/gunbox/attack_self(mob/user)
 	var/list/options = list()
-	options[".45 Pistol"] = list(/obj/item/gun/projectile/colt/detective, /obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/rubber)
-	options[".45 Revolver"] = list(/obj/item/gun/projectile/revolver/detective45, /obj/item/ammo_magazine/s45/rubber, /obj/item/ammo_magazine/s45/rubber)
+	options[".45 Pistol"] = list(/obj/item/gun/ballistic/colt/detective, /obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/rubber)
+	options[".45 Revolver"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/s45/rubber, /obj/item/ammo_magazine/s45/rubber)
 	var/choice = input(user,"Would you prefer a pistol or a revolver?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
@@ -67,10 +67,10 @@
 	icon_state = "gunbox"
 	w_class = ITEMSIZE_HUGE
 
-/obj/item/gunbox/marksman/attack_self(mob/living/user)
+/obj/item/gunbox/marksman/attack_self(mob/user)
 	var/list/options = list()
 	options["Marksman Energy Rifle"] = list(/obj/item/gun/energy/sniperrifle/locked)
-	options["M1A Garand"] = list(/obj/item/gun/projectile/garand/sniper, /obj/item/storage/belt/security/tactical/bandolier, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter) // 7 clips, 56 rounds
+	options["M1A Garand"] = list(/obj/item/gun/ballistic/garand/sniper, /obj/item/storage/belt/security/tactical/bandolier, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter) // 7 clips, 56 rounds
 	var/choice = input(user,"Would you prefer a ballistic rifle or a laser?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
@@ -87,11 +87,11 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "donkbox"
 
-/obj/item/gunbox/donksoft/attack_self(mob/living/user)
+/obj/item/gunbox/donksoft/attack_self(mob/user)
 	var/list/options = list()
-	options["Classic DONKsoft Pistol"] = list(/obj/item/gun/projectile/pistol/foam, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
-	options["Blue DONKsoft Pistol"] = list(/obj/item/gun/projectile/pistol/foam/blue, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
-	options["DONKsoft Automag"] = list(/obj/item/gun/projectile/pistol/foam/magnum, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
+	options["Classic DONKsoft Pistol"] = list(/obj/item/gun/ballistic/pistol/foam, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
+	options["Blue DONKsoft Pistol"] = list(/obj/item/gun/ballistic/pistol/foam/blue, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
+	options["DONKsoft Automag"] = list(/obj/item/gun/ballistic/pistol/foam/magnum, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
 	var/choice = input(user,"What toy is in this box?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
@@ -107,10 +107,10 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "donkbox2"
 
-/obj/item/gunbox/donksoft/shotgun/attack_self(mob/living/user)
+/obj/item/gunbox/donksoft/shotgun/attack_self(mob/user)
 	var/list/options = list()
-	options["Classic DONKsoft Shotgun"] = list(/obj/item/gun/projectile/shotgun/pump/foam, /obj/item/storage/box/foamdart, /obj/item/storage/box/foamdart)
-	options["Blue DONKsoft Shotgun"] = list(/obj/item/gun/projectile/shotgun/pump/foam/blue, /obj/item/storage/box/foamdart, /obj/item/storage/box/foamdart)
+	options["Classic DONKsoft Shotgun"] = list(/obj/item/gun/ballistic/shotgun/pump/foam, /obj/item/storage/box/foamdart, /obj/item/storage/box/foamdart)
+	options["Blue DONKsoft Shotgun"] = list(/obj/item/gun/ballistic/shotgun/pump/foam/blue, /obj/item/storage/box/foamdart, /obj/item/storage/box/foamdart)
 	var/choice = input(user,"What toy is in this box?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
@@ -126,10 +126,10 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "donkbox3"
 
-/obj/item/gunbox/donksoft/smg/attack_self(mob/living/user)
+/obj/item/gunbox/donksoft/smg/attack_self(mob/user)
 	var/list/options = list()
-	options["Classic DONKsoft SMG"] = list(/obj/item/gun/projectile/automatic/advanced_smg/foam, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
-	options["Blue DONKsoft SMG"] = list(/obj/item/gun/projectile/automatic/advanced_smg/foam/blue, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
+	options["Classic DONKsoft SMG"] = list(/obj/item/gun/ballistic/automatic/advanced_smg/foam, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
+	options["Blue DONKsoft SMG"] = list(/obj/item/gun/ballistic/automatic/advanced_smg/foam/blue, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
 	var/choice = input(user,"What toy is in this box?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
@@ -137,4 +137,44 @@
 			var/atom/movable/AM = new new_type(get_turf(src))
 			if(istype(AM, /obj/item/gun))
 				to_chat(user, "You have pulled out \the [AM]. Say hello to your new friend.")
+		qdel(src)
+
+/obj/item/gunbox/carrier/blueshield
+	name = "\improper Blueshield armor box"
+	desc = "A secure box containing a Blueshield's carrier and armor plate."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "gunbox"
+
+/obj/item/gunbox/carrier/blueshield/attack_self(mob/user)
+	var/list/options = list()
+	options["\improper Black Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield)
+	options["\improper Black-Short Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/alt)
+	options["\improper Navy Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/navy)
+	var/choice = input(user,"Select which plate carrier you find within the box.") as null|anything in options
+	if(src && choice)
+		var/list/things_to_spawn = options[choice]
+		for(var/new_type in things_to_spawn)
+			var/atom/movable/AM = new new_type(get_turf(src))
+			if(istype(AM, /obj/item/clothing))
+				to_chat(user, "You withdraw \the [AM].")
+		qdel(src)
+
+/obj/item/gunbox/armor/security
+	name = "\improper Security armor box"
+	desc = "A secure box containing a single Corporate Security armor vest."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "gunbox"
+
+/obj/item/gunbox/armor/security/attack_self(mob/user)
+	var/list/options = list()
+	options["\improper Flat Vest"] = list(/obj/item/clothing/suit/armor/vest)
+	options["\improper Security Vest"] = list(/obj/item/clothing/suit/armor/vest/alt)
+	options["\improper Webbed Vest"] = list(/obj/item/clothing/suit/storage/vest/officer)
+	var/choice = input(user,"Select the armor vest you find within the box.") as null|anything in options
+	if(src && choice)
+		var/list/things_to_spawn = options[choice]
+		for(var/new_type in things_to_spawn)
+			var/atom/movable/AM = new new_type(get_turf(src))
+			if(istype(AM, /obj/item/clothing))
+				to_chat(user, "You withdraw \the [AM].")
 		qdel(src)

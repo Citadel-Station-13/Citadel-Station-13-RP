@@ -49,8 +49,8 @@
 /obj/machinery/atmospherics/component/trinary/mixer/process(delta_time)
 	..()
 
-	last_power_draw = 0
-	last_flow_rate = 0
+	last_power_draw_legacy = 0
+	last_flow_rate_legacy = 0
 
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
@@ -72,7 +72,7 @@
 			network3.update = 1
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 
 	return 1
@@ -95,7 +95,7 @@
 	data["node2_dir"] = dir_name(node_connects[2],TRUE)
 	return data
 
-/obj/machinery/atmospherics/component/trinary/mixer/attack_hand(user as mob)
+/obj/machinery/atmospherics/component/trinary/mixer/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	ui_interact(user)
@@ -133,7 +133,7 @@
 //
 // "T" Orientation - Inputs are on oposite sides instead of adjacent
 //
-obj/machinery/atmospherics/component/trinary/mixer/t_mixer
+/obj/machinery/atmospherics/component/trinary/mixer/t_mixer
 	icon_state = "tmap"
 	construction_type = /obj/item/pipe/trinary  // Can't flip a "T", its symmetrical
 	pipe_state = "t_mixer"

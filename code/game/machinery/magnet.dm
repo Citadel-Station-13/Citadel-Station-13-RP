@@ -9,7 +9,7 @@
 	icon_state = "floor_magnet-f"
 	name = "Electromagnetic Generator"
 	desc = "A device that uses station power to create points of magnetic energy."
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
@@ -173,7 +173,7 @@
 		center = locate(x+center_x, y+center_y, z)
 		if(center)
 			for(var/obj/M in orange(magnetic_field, center))
-				if(!M.anchored && !(M.flags & NOCONDUCT))
+				if(!M.anchored && !(M.atom_flags & NOCONDUCT))
 					step_towards(M, center)
 
 			for(var/mob/living/silicon/S in orange(magnetic_field, center))
@@ -251,7 +251,7 @@
 /obj/machinery/magnetic_controller/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/magnetic_controller/attack_hand(mob/user)
+/obj/machinery/magnetic_controller/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	user.set_machine(src)

@@ -1,5 +1,5 @@
 /mob/living/carbon/alien/diona/confirm_evolution()
-	if(!is_alien_whitelisted(src, get_static_species_meta(/datum/species/diona)))
+	if(!config.check_alien_whitelist(SPECIES_DIONA, ckey))
 		alert(src, "You are currently not whitelisted to play as a full diona.", "Evolution Error")
 		return
 
@@ -7,7 +7,7 @@
 		to_chat(src, "You are not yet ready for your growth...")
 		return
 
-	src.split()
+	src.diona_split()
 
 	if(istype(loc,/obj/item/holder/diona))
 		var/obj/item/holder/diona/L = loc

@@ -1,3 +1,6 @@
+/mob/living/init_inventory()
+	inventory = new(src)
+
 /mob/living/get_active_held_item()
 	RETURN_TYPE(/obj/item)
 	return hand? l_hand : r_hand
@@ -61,6 +64,7 @@
 	if(!_common_handle_put_in_hand(I, flags))
 		return FALSE
 	l_hand = I
+	log_inventory("[key_name(src)] put [I] in hand 1")
 	l_hand.update_twohanding()
 	l_hand.update_held_icon()
 	// ! WARNING: snowflake - at time of equipped, vars aren't set yet.
@@ -81,6 +85,7 @@
 	if(!_common_handle_put_in_hand(I, flags))
 		return FALSE
 	r_hand = I
+	log_inventory("[key_name(src)] put [I] in hand 1")
 	r_hand.update_twohanding()
 	r_hand.update_held_icon()
 	// ! WARNING: snowflake - at time of equipped, vars aren't set yet.
@@ -104,7 +109,10 @@
 		return _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, flags)
 	// newly equipped
 	var/atom/oldLoc = I.loc
-	I.forceMove(src)
+	if(I.loc != src)
+		I.forceMove(src)
+	if(I.loc != src)
+		return FALSE
 	I.pickup(src, flags, oldLoc)
 	I.equipped(src, SLOT_ID_HANDS, flags)
 	return TRUE
@@ -244,3 +252,6 @@
 
 /mob/living/has_hands()
 	return has_hands
+
+/mob/living/has_free_hand()
+	return !l_hand || !r_hand

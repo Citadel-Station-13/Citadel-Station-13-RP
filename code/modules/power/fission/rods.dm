@@ -1,4 +1,4 @@
-#define ROD_RADIATION_MULTIPLIER 1.5
+#define ROD_RADIATION_MULTIPLIER 15
 #define ROD_TEMPERATURE_CUTOFF 10000
 #define ROD_EXPOSED_POWER 0.1
 
@@ -9,7 +9,7 @@
 	icon_state = "rod"
 	var/gasefficiency = 0.05
 	var/insertion = 0
-	var/integrity = 100
+	integrity = 100
 	var/life = 100
 	var/lifespan = 3600
 	var/reflective = 1
@@ -41,8 +41,8 @@
 			if(integrity == 0)
 				insertion_multiplier = 1
 			var/power = (tick_life(0, insertion_multiplier) / REACTOR_RADS_TO_MJ)
-			add_thermal_energy(power)
-			SSradiation.radiate(src, max(power * ROD_RADIATION_MULTIPLIER, 0))
+			adjust_thermal_energy(power)
+			radiation_pulse(src, max(power * ROD_RADIATION_MULTIPLIER, 0))
 
 /obj/item/fuelrod/proc/equalize(var/E, var/efficiency)
 	var/our_heatcap = heat_capacity()
@@ -78,7 +78,7 @@
 	if(integrity == 0 && integrity_lost > 0) // Meltdown time.
 		meltdown()
 
-/obj/item/fuelrod/add_thermal_energy(var/thermal_energy)
+/obj/item/fuelrod/adjust_thermal_energy(var/thermal_energy)
 	if(mass < 1)
 		return 0
 

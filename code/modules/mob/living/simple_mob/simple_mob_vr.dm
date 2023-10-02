@@ -42,11 +42,7 @@
 	var/vore_icons = 0					// Bitfield for which fields we have vore icons for.
 	var/life_disabled = 0				// For performance reasons
 
-	var/mount_offset_x = 5				// Horizontal riding offset.
-	var/mount_offset_y = 8				// Vertical riding offset
-
 	var/obj/item/radio/headset/mob_headset/mob_radio		//Adminbus headset for simplemob shenanigans.
-	does_spin = FALSE
 
 // Release belly contents before being gc'd!
 /mob/living/simple_mob/Destroy()
@@ -83,74 +79,7 @@
 			icon_state = "[icon_rest]-[vore_fullness]"
 
 /mob/living/simple_mob/proc/will_eat(var/mob/living/M)
-	if(client) //You do this yourself, dick!
-		return 0
-	if(!istype(M)) //Can't eat 'em if they ain't /mob/living
-		return 0
-	if(src == M) //Don't eat YOURSELF dork
-		return 0
-	if(vore_ignores_undigestable && !M.digestable) //Don't eat people with nogurgle prefs
-		return 0
-	if(!M.allowmobvore) // Don't eat people who don't want to be ate by mobs
-		return 0
-	if(M in prey_excludes) // They're excluded
-		return 0
-	if(M.size_multiplier < vore_min_size || M.size_multiplier > vore_max_size)
-		return 0
-	if(vore_capacity != 0 && (vore_fullness >= vore_capacity)) // We're too full to fit them
-		return 0
-	return 1
-
-/mob/living/simple_mob/apply_attack(atom/A, damage_to_do)
-	if(isliving(A)) // Converts target to living
-		var/mob/living/L = A
-
-		//ai_log("vr/do_attack() [L]", 3)
-		// If we're not hungry, call the sideways "parent" to do normal punching
-		if(!vore_active)
-			return ..()
-
-		// If target is standing we might pounce and knock them down instead of attacking
-		var/pouncechance = CanPounceTarget(L)
-		if(pouncechance)
-			return PounceTarget(L, pouncechance)
-
-		// We're not attempting a pounce, if they're down or we can eat standing, do it as long as they're edible. Otherwise, hit normally.
-		if(will_eat(L) && (!L.canmove || vore_standing_too))
-			return EatTarget(L)
-		else
-			return ..()
-	else
-		return ..()
-
-
-/mob/living/simple_mob/proc/CanPounceTarget(var/mob/living/M) //returns either FALSE or a %chance of success
-	if(!M.canmove || issilicon(M) || world.time < vore_pounce_cooldown) //eliminate situations where pouncing CANNOT happen
-		return FALSE
-	if(!prob(vore_pounce_chance) || !will_eat(M)) //mob doesn't want to pounce
-		return FALSE
-	if(vore_standing_too) //100% chance of hitting people we can eat on the spot
-		return 100
-	var/TargetHealthPercent = (M.health/M.getMaxHealth())*100 //now we start looking at the target itself
-	if (TargetHealthPercent > vore_pounce_maxhealth) //target is too healthy to pounce
-		return FALSE
-	else
-		return max(0,(vore_pounce_successrate - (vore_pounce_falloff * TargetHealthPercent)))
-
-
-/mob/living/simple_mob/proc/PounceTarget(var/mob/living/M, var/successrate = 100)
-	vore_pounce_cooldown = world.time + 20 SECONDS // don't attempt another pounce for a while
-	if(prob(successrate)) // pounce success!
-		M.Weaken(5)
-		M.visible_message("<span class='danger'>\the [src] pounces on \the [M]!</span>!")
-	else // pounce misses!
-		M.visible_message("<span class='danger'>\the [src] attempts to pounce \the [M] but misses!</span>!")
-		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-
-	if(will_eat(M) && (!M.canmove || vore_standing_too)) //if they're edible then eat them too
-		return EatTarget(M)
-	else
-		return //just leave them
+	return FALSE // no more mobvore
 
 // Attempt to eat target
 // TODO - Review this.  Could be some issues here
@@ -181,15 +110,15 @@
 		return
 
 	if(!IsAdvancedToolUser())
-		verbs |= /mob/living/simple_mob/proc/animal_nom
-		verbs |= /mob/living/proc/shred_limb
+		add_verb(src, /mob/living/simple_mob/proc/animal_nom)
+		add_verb(src, /mob/living/proc/shred_limb)
 
 	if(LAZYLEN(vore_organs))
 		return
 
 	// Since they have bellies, add verbs to toggle settings on them.
-	verbs |= /mob/living/simple_mob/proc/toggle_digestion
-	verbs |= /mob/living/simple_mob/proc/toggle_fancygurgle
+	add_verb(src, /mob/living/simple_mob/proc/toggle_digestion)
+	add_verb(src, /mob/living/simple_mob/proc/toggle_fancygurgle)
 
 	//A much more detailed version of the default /living implementation
 	var/obj/belly/B = new /obj/belly(src)
@@ -231,19 +160,6 @@
 		"The churning walls slowly pulverize you into meaty nutrients.",
 		"The stomach glorps and gurgles as it tries to work you into slop.")
 
-/mob/living/simple_mob/Bumped(var/atom/movable/AM, yes)
-	if(ismob(AM))
-		var/mob/tmob = AM
-		if(will_eat(tmob) && !istype(tmob, type) && prob(vore_bump_chance) && !ckey) //check if they decide to eat. Includes sanity check to prevent cannibalism.
-			if(tmob.canmove && prob(vore_pounce_chance)) //if they'd pounce for other noms, pounce for these too, otherwise still try and eat them if they hold still
-				tmob.Weaken(5)
-			tmob.visible_message("<span class='danger'>\the [src] [vore_bump_emote] \the [tmob]!</span>!")
-			set_AI_busy(TRUE)
-			animal_nom(tmob)
-			update_icon()
-			set_AI_busy(FALSE)
-	..()
-
 // Checks to see if mob doesn't like this kind of turf
 /mob/living/simple_mob/IMove(turf/newloc, safety = TRUE)
 	if(istype(newloc,/turf/simulated/floor/sky))
@@ -257,110 +173,23 @@
 	if(a_intent == INTENT_GRAB && isliving(A) && !has_hands)
 		animal_nom(A)
 
-// Riding
-/datum/riding/simple_mob
-	keytype = /obj/item/material/twohanded/fluff/riding_crop // Crack!
-	nonhuman_key_exemption = FALSE	// If true, nonhumans who can't hold keys don't need them, like borgs and simplemobs.
-	key_name = "a riding crop"		// What the 'keys' for the thing being rided on would be called.
-	only_one_driver = TRUE			// If true, only the person in 'front' (first on list of riding mobs) can drive.
-
-/datum/riding/simple_mob/handle_vehicle_layer()
-	ridden.set_base_layer(initial(ridden.layer))
-
-/datum/riding/simple_mob/ride_check(mob/living/M)
-	var/mob/living/L = ridden
-	if(L.stat)
-		force_dismount(M)
-		return FALSE
-	return TRUE
-
-/datum/riding/simple_mob/force_dismount(mob/M)
-	. =..()
-	ridden.visible_message("<span class='notice'>[M] stops riding [ridden]!</span>")
-
-/datum/riding/simple_mob/get_offsets(pass_index) // list(dir = x, y, layer)
-	var/mob/living/simple_mob/L = ridden
-	var/scale = L.size_multiplier
-
-	var/list/values = list(
-		"[NORTH]" = list(0, L.mount_offset_y*scale, ABOVE_MOB_LAYER),
-		"[SOUTH]" = list(0, L.mount_offset_y*scale, BELOW_MOB_LAYER),
-		"[EAST]" = list(-L.mount_offset_x*scale, L.mount_offset_y*scale, ABOVE_MOB_LAYER),
-		"[WEST]" = list(L.mount_offset_x*scale, L.mount_offset_y*scale, ABOVE_MOB_LAYER))
-
-	return values
-
-/mob/living/simple_mob/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
-	if(forced)
-		return ..() // Skip our checks
-	if(!riding_datum)
-		return FALSE
-	if(lying)
-		return FALSE
-	if(!ishuman(M))
-		return FALSE
-	if(M in buckled_mobs)
-		return FALSE
-	if(M.size_multiplier > size_multiplier * 1.2)
-		to_chat(src,"<span class='warning'>This isn't a pony show! You need to be bigger for them to ride.</span>")
-		return FALSE
-
-	var/mob/living/carbon/human/H = M
-
-	if(H.loc != src.loc)
-		if(H.Adjacent(src))
-			H.forceMove(get_turf(src))
-
-	. = ..()
-	if(.)
-		buckled_mobs[H] = "riding"
-
-/mob/living/simple_mob/attack_hand(mob/user as mob)
-	if(riding_datum && LAZYLEN(buckled_mobs))
-		//We're getting off!
-		if(user in buckled_mobs)
-			riding_datum.force_dismount(user)
-		//We're kicking everyone off!
-		if(user == src)
-			for(var/rider in buckled_mobs)
-				riding_datum.force_dismount(rider)
-	else
-		. = ..()
-
-/mob/living/simple_mob/proc/animal_mount(var/mob/living/M in living_mobs(1))
-	set name = "Animal Mount/Dismount"
-	set category = "Abilities"
-	set desc = "Let people ride on you."
-
-	if(LAZYLEN(buckled_mobs))
-		for(var/rider in buckled_mobs)
-			riding_datum.force_dismount(rider)
-		return
-	if (stat != CONSCIOUS)
-		return
-	if(!can_buckle || !istype(M) || !M.Adjacent(src) || M.buckled)
-		return
-	if(buckle_mob(M))
-		visible_message("<span class='notice'>[M] starts riding [name]!</span>")
-
+// todo: shitcode, rewrite on say rewrite
 /mob/living/simple_mob/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)
-	if(mob_radio)
-		switch(message_mode)
-			if("intercom")
-				for(var/obj/item/radio/intercom/I in view(1, null))
-					I.talk_into(src, message, verb, speaking)
-					used_radios += I
-			if("headset")
-				if(mob_radio && istype(mob_radio,/obj/item/radio/headset/mob_headset))
-					mob_radio.talk_into(src,message,null,verb,speaking)
-					used_radios += mob_radio
-			else
-				if(message_mode)
-					if(mob_radio && istype(mob_radio,/obj/item/radio/headset/mob_headset))
-						mob_radio.talk_into(src,message, message_mode, verb, speaking)
-						used_radios += mob_radio
-	else
-		..()
+	switch(message_mode)
+		if("intercom")
+			for(var/obj/item/radio/intercom/I in view(1, null))
+				I.talk_into(src, message, verb, speaking)
+				used_radios += I
+		if("headset", "right ear", "left ear")
+			if(mob_radio)
+				mob_radio.talk_into(src,message,null,verb,speaking)
+				used_radios += mob_radio
+		if("department", "Command", "Science", "Medical", "Engineering", "Security", "Mercenary", "Raider", "Supply", "Service", "AI Private", "Explorer", "Trader", "Common")
+			if(mob_radio)
+				mob_radio.talk_into(src,message,message_mode,verb,speaking)
+				used_radios += mob_radio
+		else
+			..()
 
 /mob/living/simple_mob/proc/leap()
 	set name = "Pounce Target"
@@ -394,17 +223,17 @@
 		return
 
 	last_special = world.time + 10
-	status_flags |= LEAPING
+	status_flags |= STATUS_LEAPING
 	pixel_y = pixel_y + 10
 
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
-	src.throw_at(get_step(get_turf(T),get_turf(src)), 4, 1, src)
+	src.throw_at_old(get_step(get_turf(T),get_turf(src)), 4, 1, src)
 	playsound(src.loc, 'sound/effects/bodyfall1.ogg', 50, 1)
-	pixel_y = default_pixel_y
+	pixel_y = base_pixel_y
 
 	sleep(5)
 
-	if(status_flags & LEAPING) status_flags &= ~LEAPING
+	if(status_flags & STATUS_LEAPING) status_flags &= ~STATUS_LEAPING
 
 	if(!src.Adjacent(T))
 		to_chat(src, "<span class='warning'>You miss!</span>")
@@ -413,10 +242,20 @@
 	if(ishuman(T))
 		var/mob/living/carbon/human/H = T
 		if(H.species.lightweight == 1)
-			H.Weaken(3)
+			H.afflict_paralyze(20 * 3)
 			return
 	var/armor_block = run_armor_check(T, "melee")
 	var/armor_soak = get_armor_soak(T, "melee")
 	T.apply_damage(20, HALLOSS,, armor_block, armor_soak)
 	if(prob(33))
 		T.apply_effect(3, WEAKEN, armor_block)
+
+/mob/living/simple_mob/verb/access_mob_radio_legacy()
+	set name = "Access Mob Radio"
+	set category = "IC"
+
+	if(isnull(mob_radio))
+		to_chat(usr, SPAN_WARNING("You don't have a radio."))
+		return
+
+	mob_radio.ui_interact(usr)

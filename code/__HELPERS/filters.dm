@@ -22,6 +22,14 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 			"size" = 1
 		)
 	),
+	"bloom" = list(
+		"defaults" = list(
+			"threshold" = "#ffffff",
+			"size" = 0,
+			"offset" = 0,
+			"alpha" = 255,
+		)
+	),
 	/* Not supported because making a proper matrix editor on the frontend would be a huge dick pain.
 		Uncomment if you ever implement it
 	"color" = list(
@@ -138,8 +146,10 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 
 #undef ICON_NOT_SET
 
-//Helpers to generate lists for filter helpers
-//This is the only practical way of writing these that actually produces sane lists
+/**
+ * Helpers to generate lists for filter helpers.
+ * This is the only practical way of writing these that actually produces sane lists.
+ */
 /proc/alpha_mask_filter(x, y, icon/icon, render_source, flags)
 	. = list("type" = "alpha")
 	if(!isnull(x))
@@ -161,6 +171,17 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 		.["y"] = y
 	if(!isnull(size))
 		.["size"] = size
+
+/proc/bloom_filter(threshold, size, offset, alpha)
+	. = list("type" = "bloom")
+	if(!isnull(threshold))
+		.["threshold"] = threshold
+	if(!isnull(size))
+		.["size"] = size
+	if(!isnull(offset))
+		.["offset"] = offset
+	if(!isnull(alpha))
+		.["alpha"] = alpha
 
 /proc/color_matrix_filter(matrix/in_matrix, space)
 	. = list("type" = "color")
@@ -296,7 +317,7 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 
 /proc/apply_wibbly_filters(atom/in_atom, length)
 	for(var/i in 1 to 7)
-		//This is a very baffling and strange way of doing this but I am just preserving old functionality
+		// This is a very baffling and strange way of doing this but I am just preserving old functionality.
 		var/X
 		var/Y
 		var/rsq
@@ -304,7 +325,8 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 			X = 60*rand() - 30
 			Y = 60*rand() - 30
 			rsq = X*X + Y*Y
-		while(rsq<100 || rsq>900) // Yeah let's just loop infinitely due to bad luck what's the worst that could happen?
+		// Yeah let's just loop infinitely due to bad luck what's the worst that could happen?
+		while(rsq<100 || rsq>900)
 		var/random_roll = rand()
 		in_atom.add_filter("wibbly-[i]", 5, wave_filter(x = X, y = Y, size = rand() * 2.5 + 0.5, offset = random_roll))
 		var/filter = in_atom.get_filter("wibbly-[i]")

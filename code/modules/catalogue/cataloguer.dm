@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	icon_state = "cataloguer"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_DATA = 3, TECH_MAGNET = 3)
-	force = 0
+	damage_force = 0
 	var/points_stored = 0 // Amount of 'exploration points' this device holds.
 	var/scan_range = 3 // How many tiles away it can scan. Changing this also changes the box size.
 	var/credit_sharing_range = INFINITY // If another person is within this radius, they will also be credited with a successful scan.
@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	desc = "A hand-held device, used for compiling information about an object by scanning it. This one is an upgraded model, \
 	with a scanner that both can scan from farther away, and with less time."
 	scan_range = 4
-	toolspeed = 0.8
+	tool_speed = 0.8
 
 // Able to see all defined catalogue data regardless of if it was unlocked, intended for testing.
 /obj/item/cataloguer/debug
@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	just seems to already know everything about narrowly defined pieces of knowledge one would find \
 	from nearby, perhaps due to being colored gold. Truly a epistemological mystery."
 	icon_state = "debug_cataloguer"
-	toolspeed = 0.1
+	tool_speed = 0.1
 	scan_range = 7
 	debug = TRUE
 
@@ -69,7 +69,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/cataloguer/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/cataloguer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	// Things that invalidate the scan immediately.
 	if(busy)
 		to_chat(user, SPAN_WARNING( "\The [src] is already scanning something."))
@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 		return
 
 	// Get how long the delay will be.
-	var/scan_delay = target.get_catalogue_delay() * toolspeed
+	var/scan_delay = target.get_catalogue_delay() * tool_speed
 	if(partial_scanned)
 		if(partial_scanned.resolve() == target)
 			scan_delay -= partial_scan_time
@@ -114,7 +114,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 
 	// The delay, and test for if the scan succeeds or not.
 	var/scan_start_time = world.time
-	if(do_after(user, scan_delay, target, ignore_movement = TRUE, max_distance = scan_range))
+	if(do_after(user, scan_delay, target, DO_AFTER_IGNORE_MOVEMENT, max_distance = scan_range))
 		if(target.can_catalogue(user))
 			to_chat(user, SPAN_NOTICE("You successfully scan \the [target] with \the [src]."))
 			playsound(src.loc, 'sound/machines/ping.ogg', 50)
@@ -150,7 +150,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	var/list/contributer_names = list()
 	var/turf/T = get_turf(user) || get_turf(target)
 	var/list/contributing_z = GetConnectedZlevels(T.z)
-	for(var/thing in player_list)
+	for(var/thing in GLOB.player_list)
 		var/mob/living/L = thing
 		if(L == user)
 			continue
@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 		// Now to our friends, if any.
 		if(contributers.len)
 			for(var/mob/M in contributers)
-				var/list/things = M.GetAllContents() // Depth of two should reach into bags but just in case lets make it three.
+				var/list/things = M.get_all_contents() // Depth of two should reach into bags but just in case lets make it three.
 				var/obj/item/cataloguer/other_cataloguer = locate() in things // If someone has two or more scanners this only adds points to one.
 				if(other_cataloguer)
 					to_chat(M, SPAN_NOTICE("Gained [points_gained] points from \the [user]'s scan of \the [target]."))
@@ -246,7 +246,10 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 /obj/item/cataloguer/proc/adjust_points(amount)
 	points_stored = max(0, points_stored += amount)
 
-/obj/item/cataloguer/attack_self(mob/living/user)
+/obj/item/cataloguer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	interact(user)
 
 /obj/item/cataloguer/interact(mob/user)

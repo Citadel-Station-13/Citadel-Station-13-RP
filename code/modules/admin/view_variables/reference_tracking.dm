@@ -9,6 +9,9 @@
 
 
 /datum/proc/find_references(skip_alert)
+	UNLINT(_find_references(skip_alert))
+
+/datum/proc/_find_references(skip_alert)
 	running_find_references = type
 	if(usr?.client)
 		if(usr.client.running_find_references)
@@ -33,6 +36,8 @@
 	testing("Beginning search for references to a [type].")
 	last_find_references = world.time
 
+	DoSearchVar(world, "!world!") // world
+	DoSearchVar(global, "!global!") // unmanaged globals
 	DoSearchVar(GLOB) //globals
 	for(var/datum/thing in world) //atoms (don't beleive its lies)
 		DoSearchVar(thing, "World -> [thing]")

@@ -130,9 +130,9 @@
 /obj/machinery/atmospherics/valve/attack_ai(mob/user as mob)
 	return
 
-/obj/machinery/atmospherics/valve/attack_hand(mob/user as mob)
+/obj/machinery/atmospherics/valve/attack_hand(mob/user, list/params)
 	src.add_fingerprint(usr)
-	update_icon(1)
+	update_icon()
 	sleep(10)
 	if (src.open)
 		src.close()
@@ -234,7 +234,7 @@
 /obj/machinery/atmospherics/valve/digital/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/atmospherics/valve/digital/attack_hand(mob/user as mob)
+/obj/machinery/atmospherics/valve/digital/attack_hand(mob/user, list/params)
 	if(!powered())
 		return
 	if(!src.allowed(user))
@@ -295,12 +295,8 @@
 		to_chat(user, "<span class='notice'>You begin to upload access data to \the [src]...</span>")
 		if (do_after(user, 20))
 			var/obj/item/airlock_electronics/E = W
-			if(E.one_access)
-				req_access = null
-				req_one_access = E.conf_access
-			else
-				req_access = E.conf_access
-				req_one_access = null
+			req_access = E.conf_req_access?.Copy()
+			req_one_access = E.conf_req_one_access?.Copy()
 			user.visible_message( \
 				"<span class='notice'>\The [user] uploads access data to \the [src].</span>", \
 				"<span class='notice'>You copied access data from \the [W] to \the [src].</span>", \
@@ -315,15 +311,15 @@
 	if(unsafe_pressure())
 		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
 	add_fingerprint(user)
-	playsound(src, W.usesound, 50, 1)
+	playsound(src, W.tool_sound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-	if (do_after(user, 40 * W.toolspeed))
+	if (do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
 			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
 			"<span class='notice'>You have unfastened \the [src].</span>", \
 			"You hear a ratchet.")
 		deconstruct()
 
-/obj/machinery/atmospherics/valve/examine(mob/user)
-	..()
+/obj/machinery/atmospherics/valve/examine(mob/user, dist)
+	. = ..()
 	. += "It is [open ? "open" : "closed"]."

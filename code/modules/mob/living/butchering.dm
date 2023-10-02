@@ -27,6 +27,8 @@
 
 	/// Does it gib when butchered?
 	var/gib_on_butchery = FALSE
+	/// Does it drop or spawn in organs to drop when butchered?
+	var/butchery_drops_organs = TRUE
 	/// Associated list, path = number.
 	var/list/butchery_loot
 
@@ -63,7 +65,7 @@
 				butchery_loot.Cut()
 				butchery_loot = null
 
-		if(LAZYLEN(organs))
+		if(LAZYLEN(organs)&& butchery_drops_organs)
 			organs_by_name.Cut()
 
 			for(var/path in organs)
@@ -85,7 +87,7 @@
 				OR.removed()
 				organs -= OR
 
-		if(LAZYLEN(internal_organs))
+		if(LAZYLEN(internal_organs)&& butchery_drops_organs)
 			internal_organs_by_name.Cut()
 
 			for(var/path in internal_organs)

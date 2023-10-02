@@ -32,18 +32,21 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 	. = ..()
 	. += SPAN_NOTICE("It contains \a [initial(contains_type.name)].")
 
-/obj/item/a_gift/attack_self(mob/M)
+/obj/item/a_gift/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	qdel(src)
 
-	var/obj/item/I = new contains_type(get_turf(M))
+	var/obj/item/I = new contains_type(get_turf(user))
 	if (!QDELETED(I)) //might contain something like metal rods that might merge with a stack on the ground
-		M.visible_message(SPAN_NOTICE("[M] unwraps \the [src], finding \a [I] inside!"))
-		I.investigate_log("([I.type]) was found in a present by [key_name(M)].", INVESTIGATE_PRESENTS)
-		M.put_in_hands(I)
-		I.add_fingerprint(M)
+		user.visible_message(SPAN_NOTICE("[user] unwraps \the [src], finding \a [I] inside!"))
+		I.investigate_log("([I.type]) was found in a present by [key_name(user)].", INVESTIGATE_PRESENTS)
+		user.put_in_hands(I)
+		I.add_fingerprint(user)
 	else
-		M.visible_message(SPAN_DANGER("Oh no! The present that [M] opened had nothing inside it!"))
+		user.visible_message(SPAN_DANGER("Oh no! The present that [user] opened had nothing inside it!"))
 
 /obj/item/a_gift/proc/get_gift_type()
 	var/gift_type_list = list(

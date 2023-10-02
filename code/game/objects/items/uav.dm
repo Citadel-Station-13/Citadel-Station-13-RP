@@ -64,7 +64,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/uav/attack_hand(var/mob/user)
+/obj/item/uav/attack_hand(mob/user, list/params)
 	//Has to be on the ground to work with it properly
 	if(!isturf(loc))
 		return ..()
@@ -110,7 +110,7 @@
 	else if(I.is_screwdriver() && cell)
 		if(do_after(user, 3 SECONDS, src))
 			to_chat(user, SPAN_NOTICE("You remove [cell] into [nickname]."))
-			playsound(src, I.usesound, 50, 1)
+			playsound(src, I.tool_sound, 50, 1)
 			power_down()
 			cell.forceMove(get_turf(src))
 			cell = null
@@ -250,7 +250,7 @@
 	visible_message(SPAN_NOTICE("[nickname] gracefully settles onto the ground."))
 
 //////////////// Helpers
-/obj/item/uav/get_cell()
+/obj/item/uav/get_cell(inducer)
 	return cell
 
 /obj/item/uav/relaymove(var/mob/user, direction, signal = 1)
@@ -336,7 +336,7 @@
 	CheckHealth()
 	return
 
-/obj/item/uav/ex_act(severity)
+/obj/item/uav/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			die()

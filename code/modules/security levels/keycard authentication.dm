@@ -31,7 +31,7 @@
 		return
 	if(istype(W,/obj/item/card/id))
 		var/obj/item/card/id/ID = W
-		if(access_keycard_auth in ID.access)
+		if(ACCESS_COMMAND_KEYAUTH in ID.access)
 			if(active == 1)
 				//This is not the device that made the initial request. It is the device confirming the request.
 				if(event_source)
@@ -43,8 +43,8 @@
 
 	if(W.is_screwdriver())
 		to_chat(user, "You begin removing the faceplate from the [src]")
-		playsound(src, W.usesound, 50, 1)
-		if(do_after(user, 10 * W.toolspeed))
+		playsound(src, W.tool_sound, 50, 1)
+		if(do_after(user, 10 * W.tool_speed))
 			to_chat(user, "You remove the faceplate from the [src]")
 			var/obj/structure/frame/A = new /obj/structure/frame(loc)
 			var/obj/item/circuitboard/M = new circuit(A)
@@ -59,7 +59,7 @@
 				C.forceMove(loc)
 			A.state = 3
 			A.update_icon()
-			M.deconstruct(src)
+			M.after_deconstruct(src)
 			qdel(src)
 			return
 
@@ -68,7 +68,7 @@
 	if(machine_stat & NOPOWER)
 		icon_state = "auth_off"
 
-/obj/machinery/keycard_auth/attack_hand(mob/user as mob)
+/obj/machinery/keycard_auth/attack_hand(mob/user, list/params)
 	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
@@ -196,6 +196,6 @@ var/global/maint_all_access = 0
 	to_chat(world, "<font color='red'>The maintenance access requirement has been readded on all maintenance airlocks.</font>")
 
 /obj/machinery/door/airlock/allowed(mob/M)
-	if(maint_all_access && src.check_access_list(list(access_maint_tunnels)))
+	if(maint_all_access && src.check_access_list(list(ACCESS_ENGINEERING_MAINT)))
 		return 1
 	return ..(M)

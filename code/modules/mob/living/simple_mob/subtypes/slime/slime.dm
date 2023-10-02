@@ -27,7 +27,7 @@
 	faction = "slime" // Note that slimes are hostile to other slimes of different color regardless of faction (unless Unified).
 	maxHealth = 150
 	movement_cooldown = 0
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	makes_dirt = FALSE	// Goop
 	mob_class = MOB_CLASS_SLIME
 
@@ -74,12 +74,12 @@
 	can_enter_vent_with = list(/obj/item/clothing/head)
 
 /datum/say_list/slime
-	speak = list("Blorp...", "Blop...")
+	speak = list("Blorp...", "Blop...", "Blorble...")
 	emote_see = list("bounces", "jiggles", "sways")
 	emote_hear = list("squishes")
 
 /mob/living/simple_mob/slime/Initialize(mapload)
-	verbs += /mob/living/proc/ventcrawl
+	add_verb(src, /mob/living/proc/ventcrawl)
 	update_mood()
 	glow_color = color
 	handle_light()
@@ -91,21 +91,16 @@
 		drop_hat()
 	return ..()
 
-/mob/living/simple_mob/slime/death()
-	// Make dead slimes stop glowing.
-	glow_toggle = FALSE
-	handle_light()
-	..()
-
-/mob/living/simple_mob/slime/revive()
-	// Make revived slimes resume glowing.
-	glow_toggle = initial(glow_toggle)
-	handle_light()
-	..()
+/mob/living/simple_mob/slime/set_stat(new_stat, update_mobility)
+	. = ..()
+	if(!.)
+		return
+	glow_toggle = IS_ALIVE(src)? FALSE : initial(glow_toggle)
 
 /mob/living/simple_mob/slime/update_icon()
 	..() // Do the regular stuff first.
 
+	cut_overlays()
 	if(stat != DEAD)
 		// General slime shine.
 		var/image/I = image(icon, src, "slime light")
@@ -125,11 +120,10 @@
 
 	// Hat simulator.
 	if(hat)
-		var/hat_state = hat.item_state ? hat.item_state : hat.icon_state
-		var/image/I = image(INV_HEAD_DEF_ICON, src, hat_state)
-		I.pixel_y = -7 // Slimes are small.
-		I.appearance_flags = RESET_COLOR
-		add_overlay(I)
+		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD)
+		MA.pixel_y = -7
+		MA.appearance_flags |= RESET_COLOR
+		add_overlay(MA)
 
 // Controls the 'mood' overlay. Overrided in subtypes for specific behaviour.
 /mob/living/simple_mob/slime/proc/update_mood()
@@ -150,6 +144,10 @@
 			return TRUE
 		else
 			return FALSE
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		if(istype(H.species, /datum/species/monkey))	// Monke always food
+			return FALSE
 	// The other stuff was already checked in parent proc, and the . variable will implicitly return the correct value.
 
 // Slimes regenerate passively.
@@ -161,7 +159,10 @@
 	adjustBruteLoss(-1)
 
 // Clicked on by empty hand.
-/mob/living/simple_mob/slime/attack_hand(mob/living/L)
+/mob/living/simple_mob/slime/attack_hand(mob/user, list/params)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(L.a_intent == INTENT_GRAB && hat)
 		remove_hat(L)
 	else

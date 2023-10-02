@@ -150,7 +150,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	if(!lst)
 		return
 
-	if(!A || !IsValidSrc(A))
+	if(!A || !is_valid_src(A))
 		to_chat(usr, "<span class='warning'>Error: callproc_datum(): owner of proc no longer exists.</span>")
 		return
 	log_admin("[key_name(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].")
@@ -185,6 +185,8 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		retval += named_args
 	return retval
 
+// todo: rework all of vv and proccall yet again because this is shit formatting
+
 /client/proc/get_callproc_returnval(returnval,procname)
 	. = ""
 	if(islist(returnval))
@@ -195,7 +197,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 			if(istext(assoc_check) && (returnedlist[assoc_check] != null))
 				. += "[procname] returned an associative list:"
 				for(var/key in returnedlist)
-					. += "\n[key] = [returnedlist[key]]"
+					. += "\n[key] = [islist(returnedlist[key])? json_encode(returnedlist[key]) : returnedlist[key]]"
 
 			else
 				. += "[procname] returned a list:"

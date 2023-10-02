@@ -15,3 +15,12 @@
 	desc = "It's a very robust backpack. This one bears a blue cross, and has been modified for use in a sterile environment."
 	icon_state = "cameronbackpack"
 	item_state = "cameronbackpack"
+
+/obj/item/storage/backpack/satchel/donator/jacksonbackpack
+	name = "Granite Gear Aid Bag"
+	desc = "A square-like robust medical bag in an age-old multicam pattern. A zipper bisects it's top and sides, indicating it folds open to access its contents. T. Lutz is inscribed on a nametape on a molle panel affixed to the face of the bag by buckles."
+	icon = 'icons/donator/jackson_backpack.dmi'
+	icon_state = "bag"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPE_DEFAULT
+	icon_override = null

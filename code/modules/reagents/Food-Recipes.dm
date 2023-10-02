@@ -11,7 +11,7 @@
 	catalysts = list("enzyme" = 5)
 	result_amount = 1
 
-/datum/chemical_reaction/food/tofu/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/food/tofu/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/tofu(location)
@@ -32,7 +32,7 @@
 	required_reagents = list("soymilk" = 2, "coco" = 2, "sugar" = 2)
 	result_amount = 1
 
-/datum/chemical_reaction/food/chocolate_bar/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/food/chocolate_bar/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/chocolatebar(location)
@@ -45,7 +45,7 @@
 	required_reagents = list("milk" = 2, "coco" = 2, "sugar" = 2)
 	result_amount = 1
 
-/datum/chemical_reaction/food/chocolate_bar2/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/food/chocolate_bar2/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/chocolatebar(location)
@@ -81,7 +81,7 @@
 	catalysts = list("enzyme" = 5)
 	result_amount = 1
 
-/datum/chemical_reaction/food/cheesewheel/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/food/cheesewheel/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/sliceable/cheesewheel(location)
@@ -94,7 +94,7 @@
 	required_reagents = list("milk" = 40, "virusfood" = 5)
 	result_amount = 1
 
-/datum/chemical_reaction/food/bluecheesewheel/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/food/bluecheesewheel/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/sliceable/bluecheesewheel(location)
@@ -107,7 +107,7 @@
 	required_reagents = list("protein" = 3, "flour" = 5)
 	result_amount = 3
 
-/datum/chemical_reaction/food/meatball/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/food/meatball/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/meatball(location)
@@ -121,7 +121,7 @@
 	inhibitors = list("water" = 1, "beer" = 1) //To prevent it messing with batter recipes
 	result_amount = 1
 
-/datum/chemical_reaction/food/dough/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/food/dough/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/dough(location)
@@ -135,7 +135,7 @@
 	required_reagents = list("blood" = 5, "clonexadone" = 1)
 	result_amount = 1
 
-/datum/chemical_reaction/food/syntiflesh/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/food/syntiflesh/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/meat/syntiflesh(location)
@@ -183,7 +183,7 @@
 	required_reagents = list("cream" = 20, "sodiumchloride" = 1)
 	result_amount = 1
 
-/datum/chemical_reaction/food/butter/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/food/butter/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/spreads/butter(location)

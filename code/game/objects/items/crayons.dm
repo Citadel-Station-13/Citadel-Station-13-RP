@@ -122,7 +122,10 @@
 	colourName = "mime"
 	uses = 0
 
-/obj/item/pen/crayon/mime/attack_self(mob/living/user as mob) //inversion
+/obj/item/pen/crayon/mime/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return //inversion
 	if(colour != "#FFFFFF" && shadeColour != "#000000")
 		colour = "#FFFFFF"
 		shadeColour = "#000000"
@@ -140,7 +143,10 @@
 	colourName = "rainbow"
 	uses = 0
 
-/obj/item/pen/crayon/rainbow/attack_self(mob/living/user as mob)
+/obj/item/pen/crayon/rainbow/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	colour = input(user, "Please select the main colour.", "Crayon colour") as color
 	shadeColour = input(user, "Please select the shade colour.", "Crayon colour") as color
 
@@ -194,7 +200,10 @@
 	colourName = "mime"
 	uses = 0
 
-/obj/item/pen/crayon/marker/mime/attack_self(mob/living/user as mob) //inversion
+/obj/item/pen/crayon/marker/mime/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return //inversion
 	if(colour != "#FFFFFF" && shadeColour != "#000000")
 		colour = "#FFFFFF"
 		shadeColour = "#000000"
@@ -212,13 +221,18 @@
 	colourName = "rainbow"
 	uses = 0
 
-/obj/item/pen/crayon/marker/rainbow/attack_self(mob/living/user as mob)
+/obj/item/pen/crayon/marker/rainbow/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	colour = input(user, "Please select the main colour.", "Marker colour") as color
 	shadeColour = input(user, "Please select the shade colour.", "Marker colour") as color
 	return
 
-/obj/item/pen/crayon/marker/attack(mob/M as mob, mob/user as mob)
-	if(M == user)
+/obj/item/pen/crayon/marker/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(target == user)
 		to_chat(user, "You take a bite of the marker and swallow it.")
 		user.nutrition += 1
 		user.reagents.add_reagent("marker_ink",6)
@@ -227,8 +241,8 @@
 			if(uses <= 0)
 				to_chat(user,"<span class='warning'>You ate the marker!</span>")
 				qdel(src)
-	else
-		..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 //Ritual Chalk
 /obj/item/pen/crayon/chalk/white
@@ -255,4 +269,44 @@
 	shadeColour = "#0082A8"
 	colourName = "blue"
 
+<<<<<<< HEAD
 #warn spraycans :D
+=======
+/obj/item/pen/crayon/chalk/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
+	if(istype(target,/turf/simulated/floor))
+		var/drawtype = input("Choose what you'd like to draw.") in list("graffiti","rune")
+		switch(drawtype)
+			if("graffiti")
+				to_chat(user, "You start drawing graffiti on the [target.name].")
+			if("rune")
+				to_chat(user, "You start drawing a rune on the [target.name].")
+		if(instant || do_after(user, 50))
+			if(!user.Adjacent(target))
+				return
+			new /obj/effect/debris/cleanable/crayon/chalk(target,colour,shadeColour,drawtype)
+			to_chat(user, "You finish drawing.")
+			target.add_fingerprint(user)		// Adds their fingerprints to the floor the chalk is drawn on.
+			log_game("[key_name(user)] drew [target], [colour], [shadeColour], [drawtype] with chalk.")
+			if(uses)
+				uses--
+				if(!uses)
+					to_chat(user, "<span class='warning'>You used up your chalk!</span>")
+					qdel(src)
+	return
+
+/obj/item/pen/crayon/chalk/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(target == user)
+		to_chat(user, "You take a bite of the chalk and swallow it.")
+		user.nutrition += 1
+		user.reagents.add_reagent("chalk_dust",min(5,uses)/3)
+		if(uses)
+			uses -= 5
+			if(uses <= 0)
+				to_chat(user,"<span class='warning'>You ate your chalk!</span>")
+				qdel(src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
+>>>>>>> citrp/master

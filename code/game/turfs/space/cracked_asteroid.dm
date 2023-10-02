@@ -14,4 +14,4 @@
 // /turf/space/cracked_asteroid/New()
 // 	..()
 // 	spawn(2 SECONDS)
-// 		overlays.Cut()
+// 		cut_overlays()

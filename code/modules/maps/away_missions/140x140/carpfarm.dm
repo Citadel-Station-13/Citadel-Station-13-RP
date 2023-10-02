@@ -1,4 +1,4 @@
-/obj/effect/overmap/visitable/sector/tether_gateway/carpfarm
+/obj/overmap/entity/visitable/sector/gateway/carpfarm
 	initial_generic_waypoints = list("carpfarm1", "carpfarm2")
 	scanner_name = "Carp-Infested Outpost"
 	scanner_desc = @{"[i]Registration[/i]: UNKNOWN

@@ -14,7 +14,7 @@
 	ai_log("forget_path() : Entering.", AI_LOG_DEBUG)
 	if(path_display)
 		for(var/turf/T in path)
-			T.overlays -= path_overlay
+			T.cut_overlay(path_overlay)
 	path.Cut()
 	ai_log("forget_path() : Exiting.", AI_LOG_DEBUG)
 
@@ -42,14 +42,14 @@
 /datum/ai_holder/proc/get_path(var/turf/target,var/get_to = 1, var/max_distance = world.view*6)
 	ai_log("get_path() : Entering.",AI_LOG_DEBUG)
 	forget_path()
-	var/list/new_path = AStar(get_turf(holder.loc), target, astar_adjacent_proc, /turf/proc/Distance, min_target_dist = get_to, max_node_depth = max_distance, id = holder.IGetID(), exclude = obstacles)
+	var/list/new_path = SSpathfinder.default_ai_pathfinding(src, target, get_to)
 
 	if(new_path && new_path.len)
 		path = new_path
 		ai_log("get_path() : Made new path.",AI_LOG_DEBUG)
 		if(path_display)
 			for(var/turf/T in path)
-				T.overlays |= path_overlay
+				T.add_overlay(path_overlay)
 	else
 		ai_log("get_path() : Failed to make new path. Exiting.",AI_LOG_DEBUG)
 		return 0

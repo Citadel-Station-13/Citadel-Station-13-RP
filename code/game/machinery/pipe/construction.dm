@@ -8,8 +8,8 @@ Buildable meters
 	desc = "A pipe."
 	var/pipe_type
 	var/pipename
-	force = 7
-	throwforce = 7
+	damage_force = 7
+	throw_force = 7
 	icon = 'icons/obj/pipe-item.dmi'
 	icon_state = "simple"
 	item_state = "buildpipe"
@@ -104,7 +104,7 @@ Buildable meters
 	set name = "Flip Pipe"
 	set src in view(1)
 
-	if ( usr.stat || usr.restrained() || !usr.canmove )
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 
 	do_a_flip()
@@ -126,7 +126,7 @@ Buildable meters
 	set name = "Rotate Pipe Clockwise"
 	set src in view(1)
 
-	if ( usr.stat || usr.restrained() || !usr.canmove )
+	if (!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 
 	setDir(turn(src.dir, -90)) // Rotate clockwise
@@ -160,40 +160,38 @@ Buildable meters
 		setDir(turn(dir, 45))
 
 /obj/item/pipe/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	setDir(turn(dir,-90))
 	fixdir()
 
 //called when a turf is attacked with a pipe item
-/obj/item/pipe/afterattack(turf/simulated/floor/target, mob/user, proximity)
-	if(!proximity)
+/obj/item/pipe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(istype(target))
 		user.transfer_item_to_loc(src, target)
 	else
 		return ..()
 
-/obj/item/pipe/attackby(var/obj/item/W as obj, var/mob/user as mob)
-	if(W.is_wrench())
-		return wrench_act(user, W)
-	return ..()
-
-/obj/item/pipe/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
+/obj/item/pipe/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	if(!isturf(loc))
 		return TRUE
 
-	add_fingerprint(user)
+	add_fingerprint(e_args.performer)
 	fixdir()
 
 	var/obj/machinery/atmospherics/fakeA = pipe_type
-	var/flags = initial(fakeA.pipe_flags)
+	var/initial_flags = initial(fakeA.pipe_flags)
 	for(var/obj/machinery/atmospherics/M in loc)
-		if((M.pipe_flags & flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
-			to_chat(user, "<span class='warning'>Something is hogging the tile!</span>")
+		if((M.pipe_flags & initial_flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
+			e_args.chat_feedback(SPAN_WARNING("Something is hogging the tile!"), src)
 			return TRUE
-		if((M.piping_layer != piping_layer) && !((M.pipe_flags | flags) & PIPING_ALL_LAYER)) // Pipes on different layers can't block each other unless they are ALL_LAYER
+		if((M.piping_layer != piping_layer) && !((M.pipe_flags | initial_flags) & PIPING_ALL_LAYER)) // Pipes on different layers can't block each other unless they are ALL_LAYER
 			continue
 		if(M.get_init_dirs() & SSmachines.get_init_dirs(pipe_type, dir))	// matches at least one direction on either type of pipe
-			to_chat(user, "<span class='warning'>There is already a pipe at that location!</span>")
+			e_args.chat_feedback(SPAN_WARNING("There is already a pipe at that location!"), src)
 			return TRUE
 	// no conflicts found
 
@@ -202,15 +200,17 @@ Buildable meters
 	// TODO - Evaluate and remove the "need at least one thing to connect to" thing ~Leshana
 	// With how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment.
 	if (QDELETED(A))
-		to_chat(user, "<span class='warning'>There's nothing to connect this pipe section to!</span>")
+		e_args.chat_feedback(SPAN_WARNING("There's nothing to connect this pipe section to!"), src)
 		return TRUE
 	transfer_fingerprints_to(A)
 
-	playsound(src, W.usesound, 50, 1)
-	user.visible_message( \
-		"[user] fastens \the [src].", \
-		"<span class='notice'>You fasten \the [src].</span>", \
-		"<span class='italics'>You hear ratcheting.</span>")
+	playsound(src, I.tool_sound, 50, 1)
+	e_args.visible_feedback(
+		target = src,
+		visible = SPAN_NOTICE("[e_args.performer] fastens \the [src]."),
+		audible = SPAN_WARNING("You hear ratcheting."),
+		otherwise_self = SPAN_NOTICE("You fasten \the [src].")
+	)
 
 	qdel(src)
 
@@ -263,21 +263,21 @@ Buildable meters
 
 /obj/item/pipe_meter/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
-		return wrench_act(user, W)
+		return wrench_act(W, user)
 	return ..()
 
-/obj/item/pipe_meter/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
+/obj/item/pipe_meter/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	var/obj/machinery/atmospherics/pipe/pipe
 	for(var/obj/machinery/atmospherics/pipe/P in loc)
 		if(P.piping_layer == piping_layer)
 			pipe = P
 			break
 	if(!pipe)
-		to_chat(user, "<span class='warning'>You need to fasten it to a pipe!</span>")
+		e_args.chat_feedback(SPAN_WARNING("You need to fasten it to a pipe!"), src)
 		return TRUE
 	new /obj/machinery/meter(loc, piping_layer)
-	playsound(src, W.usesound, 50, 1)
-	to_chat(user, "<span class='notice'>You fasten the meter to the pipe.</span>")
+	playsound(src, I.tool_sound, 50, 1)
+	e_args.chat_feedback(SPAN_NOTICE("You fasten the meter to the pipe."), src)
 	qdel(src)
 
 /obj/item/pipe_meter/dropped(mob/user, flags, atom/newLoc)

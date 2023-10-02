@@ -27,7 +27,7 @@
 	a_intent = INTENT_HARM
 	stop_automated_movement = 1
 
-	status_flags = CANPUSH
+	status_flags = STATUS_CAN_PUSH
 
 	universal_speak = 0
 	universal_understand = 1
@@ -65,7 +65,7 @@
 
 	shock_resistance = 0.9 //Electricity isn't very effective on stone, especially that from hell.
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 10,
 				"bullet" = 10,
 				"laser" = 10,
@@ -111,7 +111,7 @@
 
 /mob/living/simple_animal/construct/Initialize(mapload)
 	. = ..()
-	name = text("[initial(name)] ([rand(1, 1000)])")
+	name = "[initial(name)] ([rand(1, 1000)])"
 	real_name = name
 	add_language("Cult")
 	add_language("Occult")
@@ -120,7 +120,7 @@
 	updateicon()
 
 /mob/living/simple_animal/construct/updateicon()
-	overlays.Cut()
+	cut_overlays()
 	..()
 	if(do_glow)
 		add_glow()
@@ -150,7 +150,7 @@
 		return
 	return ..()
 
-/mob/living/simple_animal/construct/examine(mob/user)
+/mob/living/simple_animal/construct/examine(mob/user, dist)
 	. = ..()
 	. += "<span cass='info'>This is [icon2html(thing = src, target = user)]\a <EM>[src]</EM>!\n"
 	if (src.health < src.getMaxHealth())
@@ -197,7 +197,7 @@
 							/spell/targeted/construct_advanced/slam
 							)
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 70,
 				"bullet" = 30,
 				"laser" = 30,
@@ -210,16 +210,16 @@
 	weakened = 0
 	..()
 
-/mob/living/simple_animal/construct/armoured/bullet_act(var/obj/item/projectile/P)
-//	if(istype(P, /obj/item/projectile/energy) || istype(P, /obj/item/projectile/beam)) //If it's going to be slow, it's probably going to need every reflect it can get.
+/mob/living/simple_animal/construct/armoured/bullet_act(var/obj/projectile/P)
+//	if(istype(P, /obj/projectile/energy) || istype(P, /obj/projectile/beam)) //If it's going to be slow, it's probably going to need every reflect it can get.
 	var/reflectchance = 80 - round(P.damage/3)
 	if(prob(reflectchance))
 		var/damage_mod = rand(2,4)
 		var/projectile_dam_type = P.damage_type
 		var/incoming_damage = (round(P.damage / damage_mod) - (round((P.damage / damage_mod) * 0.3)))
-		var/armorcheck = run_armor_check(null, P.check_armour)
-		var/soakedcheck = get_armor_soak(null, P.check_armour)
-		if(!(istype(P, /obj/item/projectile/energy) || istype(P, /obj/item/projectile/beam)))
+		var/armorcheck = run_armor_check(null, P.damage_flag)
+		var/soakedcheck = get_armor_soak(null, P.damage_flag)
+		if(!(istype(P, /obj/projectile/energy) || istype(P, /obj/projectile/beam)))
 			visible_message("<span class='danger'>The [P.name] bounces off of [src]'s shell!</span>", \
 						"<span class='userdanger'>The [P.name] bounces off of [src]'s shell!</span>")
 			new /obj/item/material/shard/shrapnel(src.loc)
@@ -351,7 +351,7 @@
 	icon_scale = 2
 	var/energy = 0
 	var/max_energy = 1000
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 60,
 				"bullet" = 60,
 				"laser" = 60,
@@ -364,7 +364,7 @@
 							/spell/targeted/construct_advanced/slam
 							)
 
-/mob/living/simple_animal/construct/behemoth/bullet_act(var/obj/item/projectile/P)
+/mob/living/simple_animal/construct/behemoth/bullet_act(var/obj/projectile/P)
 	var/reflectchance = 80 - round(P.damage/3)
 	if(prob(reflectchance))
 		visible_message("<span class='danger'>The [P.name] gets reflected by [src]'s shell!</span>", \
@@ -408,7 +408,7 @@
 	environment_smash = 1
 	attack_sound = 'sound/weapons/pierce.ogg'
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 10,
 				"bullet" = 20,
 				"laser" = 20,
@@ -428,11 +428,11 @@
 /mob/living/simple_animal/construct/proc/add_glow()
 	var/image/eye_glow = image(icon,"glow-[icon_state]")
 	eye_glow.plane = ABOVE_LIGHTING_PLANE
-	overlays += eye_glow
+	add_overlay(eye_glow)
 	set_light(2, -2, l_color = "#FFFFFF")
 
 /mob/living/simple_animal/construct/proc/remove_glow()
-	overlays.Cut()
+	cut_overlays()
 
 ////////////////HUD//////////////////////
 
@@ -452,7 +452,7 @@
 
 		silence_spells(purge)
 
-/mob/living/simple_animal/construct/updatehealth() //Special icons.
+/mob/living/simple_animal/construct/update_health() //Special icons.
 	health = getMaxHealth() - getToxLoss() - getFireLoss() - getBruteLoss()
 
 	//Alive, becoming dead

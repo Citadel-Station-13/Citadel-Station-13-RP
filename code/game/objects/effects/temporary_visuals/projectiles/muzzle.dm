@@ -92,6 +92,12 @@
 	light_power = 3
 	light_color = "#3300ff"
 
+/obj/effect/projectile/muzzle/secutorkill
+	icon_state = "muzzle_laser"
+	light_range = 2
+	light_power = 0.5
+	light_color = "#BF2F4B"
+
 // Medigun
 /obj/effect/projectile/muzzle/medigun
 	icon = 'icons/obj/projectiles_vr.dmi'

@@ -14,6 +14,9 @@
 	 * Defines how duplicate existing components are handled when added to a datum
 	 *
 	 * See [COMPONENT_DUPE_*][COMPONENT_DUPE_ALLOWED] definitions for available options
+	 *
+	 * Dupe detection operates on registered_type. If you use components with subtypes,
+	 * you shouldn't be relying on dupe_mode or argument passing at all.
 	 */
 	var/dupe_mode = COMPONENT_DUPE_HIGHLANDER
 
@@ -28,6 +31,10 @@
 
 	/// The datum this components belongs to
 	var/datum/parent
+
+	/// the type we register at in the datum_components list; null = exact type
+	/// this is also the type used for detection with dupe_mode.
+	var/registered_type
 
 	/**
 	 * Only set to true if you are able to properly transfer this component
@@ -88,34 +95,18 @@
 	var/datum/P = parent
 	//lazy init the parent's dc list
 	var/list/dc = P.datum_components
-	if(!dc)
+	if(isnull(dc))
 		P.datum_components = dc = list()
 
 	//set up the typecache
-	var/our_type = type
-	for(var/I in _GetInverseTypeList(our_type))
-		var/test = dc[I]
-		if(test) //already another component of this type here
-			var/list/components_of_type
-			if(!length(test))
-				components_of_type = list(test)
-				dc[I] = components_of_type
-			else
-				components_of_type = test
-			if(I == our_type) //exact match, take priority
-				var/inserted = FALSE
-				for(var/J in 1 to components_of_type.len)
-					var/datum/component/C = components_of_type[J]
-					if(C.type != our_type) //but not over other exact matches
-						components_of_type.Insert(J, I)
-						inserted = TRUE
-						break
-				if(!inserted)
-					components_of_type += src
-			else //indirect match, back of the line with ya
-				components_of_type += src
-		else //only component of this type, no list
-			dc[I] = src
+	var/our_type = isnull(registered_type)? type : registered_type
+	var/list/existing = dc[our_type]
+	if(length(existing))
+		existing += src
+	else if(!isnull(existing))
+		dc[our_type] = list(existing, src)
+	else
+		dc[our_type] = src
 
 	RegisterWithParent()
 
@@ -125,21 +116,17 @@
 /datum/component/proc/_RemoveFromParent()
 	var/datum/parent = src.parent
 	var/list/parents_components = parent.datum_components
-	for(var/I in _GetInverseTypeList())
-		var/list/components_of_type = parents_components[I]
+	var/our_type = isnull(registered_type)? type : registered_type
+	var/list/existing = parents_components[our_type]
+	if(length(existing))
+		existing -= src
+		if(length(existing) == 1)
+			parents_components[our_type] = existing[1]
+		// we don't check for 0 because joinwithparent only makes a list if len >= 2
+	else
+		parents_components -= our_type
 
-		if(length(components_of_type)) //
-			var/list/subtracted = components_of_type - src
-
-			if(subtracted.len == 1) //only 1 guy left
-				parents_components[I] = subtracted[1] //make him special
-			else
-				parents_components[I] = subtracted
-
-		else //just us
-			parents_components -= I
-
-	if(!parents_components.len)
+	if(!length(parents_components))
 		parent.datum_components = null
 
 	UnregisterFromParent()
@@ -170,43 +157,56 @@
  *
  * This sets up a listening relationship such that when the target object emits a signal
  * the source datum this proc is called upon, will receive a callback to the given proctype
+ * Use PROC_REF(procname), TYPE_PROC_REF(type,procname) or GLOBAL_PROC_REF(procname) macros to validate the passed in proc at compile time.
+ * PROC_REF for procs defined on current type or it's ancestors, TYPE_PROC_REF for procs defined on unrelated type and GLOBAL_PROC_REF for global procs.
  * Return values from procs registered must be a bitfield
  *
  * Arguments:
  * * datum/target The target to listen for signals from
- * * sig_type_or_types Either a string signal name, or a list of signal names (strings)
+ * * signal_type A signal name
  * * proctype The proc to call back when the signal is emitted
  * * override If a previous registration exists you must explicitly set this
  */
-/datum/proc/RegisterSignal(datum/target, sig_type_or_types, proctype, override = FALSE)
+/datum/proc/RegisterSignal(datum/target, signal_type, proctype, override = FALSE)
 	if(QDELETED(src) || QDELETED(target))
 		return
 
-	var/list/procs = signal_procs
-	if(!procs)
-		signal_procs = procs = list()
-	if(!procs[target])
-		procs[target] = list()
-	var/list/lookup = target.comp_lookup
-	if(!lookup)
-		target.comp_lookup = lookup = list()
+	if (islist(signal_type))
+		var/static/list/known_failures = list()
+		var/list/signal_type_list = signal_type
+		var/message = "([target.type]) is registering [signal_type_list.Join(", ")] as a list, the older method. Change it to RegisterSignals."
 
-	var/list/sig_types = islist(sig_type_or_types) ? sig_type_or_types : list(sig_type_or_types)
-	for(var/sig_type in sig_types)
-		if(!override && procs[target][sig_type])
-			stack_trace("[sig_type] overridden. Use override = TRUE to suppress this warning")
+		if (!(message in known_failures))
+			known_failures[message] = TRUE
+			stack_trace("[target] [message]")
 
-		procs[target][sig_type] = proctype
+		RegisterSignals(target, signal_type, proctype, override)
+		return
 
-		if(!lookup[sig_type]) // Nothing has registered here yet
-			lookup[sig_type] = src
-		else if(lookup[sig_type] == src) // We already registered here
-			continue
-		else if(!length(lookup[sig_type])) // One other thing registered here
-			lookup[sig_type] = list(lookup[sig_type]=TRUE)
-			lookup[sig_type][src] = TRUE
-		else // Many other things have registered here
-			lookup[sig_type][src] = TRUE
+	var/list/procs = (signal_procs ||= list())
+	var/list/target_procs = (procs[target] ||= list())
+	var/list/lookup = (target.comp_lookup ||= list())
+
+	if(!override && target_procs[signal_type])
+		var/override_message = "[signal_type] overridden. Use override = TRUE to suppress this warning.\nTarget: [target] ([target.type]) Proc: [proctype]"
+		stack_trace(override_message)
+
+	target_procs[signal_type] = proctype
+	var/list/looked_up = lookup[signal_type]
+
+	if(isnull(looked_up)) // Nothing has registered here yet
+		lookup[signal_type] = src
+	else if(looked_up == src) // We already registered here
+		return
+	else if(!length(looked_up)) // One other thing registered here
+		lookup[signal_type] = list((looked_up) = TRUE, (src) = TRUE)
+	else // Many other things have registered here
+		looked_up[src] = TRUE
+
+/// Registers multiple signals to the same proc.
+/datum/proc/RegisterSignals(datum/target, list/signal_types, proctype, override = FALSE)
+	for (var/signal_type in signal_types)
+		RegisterSignal(target, signal_type, proctype, override)
 
 /**
  * Stop listening to a given signal from target
@@ -297,18 +297,6 @@
 	return COMPONENT_INCOMPATIBLE //Do not support transfer by default as you must properly support it
 
 /**
- * Internal proc to create a list of our type and all parent types
- */
-/datum/component/proc/_GetInverseTypeList(our_type = type)
-	//we can do this one simple trick
-	var/current_type = parent_type
-	. = list(our_type, current_type)
-	//and since most components are root level + 1, this won't even have to run
-	while (current_type != /datum/component)
-		current_type = type2parent(current_type)
-		. += current_type
-
-/**
  * Internal proc to handle most all of the signaling procedure
  *
  * Will runtime if used on datums with an empty component list
@@ -334,45 +322,15 @@
 /**
  * Return any component assigned to this datum of the given type
  *
- * This will throw an error if it's possible to have more than one component of that type on the parent
+ * If it has a registered type, that'll be used instead!
  *
  * Arguments:
- * * datum/component/c_type The typepath of the component you want to get a reference to
+ * * datum/component/c_type The type of the component you want to get a reference to. It will be overridden with the type of its [registered_type] if it's set.
  */
 /datum/proc/GetComponent(datum/component/c_type)
 	RETURN_TYPE(c_type)
-	if(initial(c_type.dupe_mode) == COMPONENT_DUPE_ALLOWED || initial(c_type.dupe_mode) == COMPONENT_DUPE_SELECTIVE)
-		stack_trace("GetComponent was called to get a component of which multiple copies could be on an object. This can easily break and should be changed. Type: \[[c_type]\]")
-	var/list/dc = datum_components
-	if(!dc)
-		return null
-	. = dc[c_type]
-	if(length(.))
-		return .[1]
-
-// The type arg is casted so initial works, you shouldn't be passing a real instance into this
-/**
- * Return any component assigned to this datum of the exact given type
- *
- * This will throw an error if it's possible to have more than one component of that type on the parent
- *
- * Arguments:
- * * datum/component/c_type The typepath of the component you want to get a reference to
- */
-/datum/proc/GetExactComponent(datum/component/c_type)
-	RETURN_TYPE(c_type)
-	if(initial(c_type.dupe_mode) == COMPONENT_DUPE_ALLOWED || initial(c_type.dupe_mode) == COMPONENT_DUPE_SELECTIVE)
-		stack_trace("GetComponent was called to get a component of which multiple copies could be on an object. This can easily break and should be changed. Type: \[[c_type]\]")
-	var/list/dc = datum_components
-	if(!dc)
-		return null
-	var/datum/component/C = dc[c_type]
-	if(C)
-		if(length(C))
-			C = C[1]
-		if(C.type == c_type)
-			return C
-	return null
+	. = datum_components?[initial(c_type.registered_type)]
+	return . && (length(.) ? .[1] : .)
 
 /**
  * Get all components of a given type that are attached to this datum
@@ -403,11 +361,13 @@
 	var/new_type = raw_args[1]
 	var/datum/component/nt = new_type
 
+	// todo: rewrite this proc; we already horribly changed component behavior
+	// e.g. dupe behavior is entirely changed and needs to be rethought, probably.
+
 	if(QDELING(src))
 		CRASH("Attempted to add a new component of type \[[nt]\] to a qdeleting parent of type \[[type]\]!")
 
 	var/dm = initial(nt.dupe_mode)
-	var/dt = initial(nt.dupe_type)
 
 	var/datum/component/old_comp
 	var/datum/component/new_comp
@@ -422,10 +382,7 @@
 	raw_args[1] = src
 
 	if(dm != COMPONENT_DUPE_ALLOWED && dm != COMPONENT_DUPE_SELECTIVE)
-		if(!dt)
-			old_comp = GetExactComponent(nt)
-		else
-			old_comp = GetComponent(dt)
+		old_comp = GetComponent(nt)
 		if(old_comp)
 			switch(dm)
 				if(COMPONENT_DUPE_UNIQUE)
@@ -453,7 +410,7 @@
 		var/list/arguments = raw_args.Copy()
 		arguments[1] = new_comp
 		var/make_new_component = TRUE
-		for(var/datum/component/existing_component as anything in GetComponents(new_type))
+		for(var/datum/component/existing_component as anything in GetComponents(initial(nt.registered_type)))
 			if(existing_component.CheckDupeComponent(arglist(arguments)))
 				make_new_component = FALSE
 				QDEL_NULL(new_comp)
@@ -481,6 +438,31 @@
 	. = GetComponent(arguments[1])
 	if(!.)
 		return _AddComponent(arguments)
+
+/**
+ * qdels a component of given registered type,
+ * optionally filtering to a subtype to make sure it's the right one
+ */
+/datum/proc/DelComponent(registered_type, filter_type)
+	var/list/val = datum_components?[registered_type]
+	if(isnull(val))
+		return FALSE
+	var/datum/component/potential
+	if(length(val))
+		for(potential as anything in val)
+			if(isnull(filter_type))
+				qdel(potential)
+				return TRUE
+			else if(istype(potential, filter_type))
+				qdel(potential)
+				return TRUE
+		return FALSE
+	else
+		potential = val
+		if(!isnull(filter_type) && !istype(potential, filter_type))
+			return FALSE
+		qdel(potential)
+		return TRUE
 
 /**
  * Removes the component from parent, ends up with a null parent
@@ -529,17 +511,17 @@
  */
 /datum/proc/TransferComponents(datum/target)
 	var/list/dc = datum_components
-	if(!dc)
+	if(isnull(dc))
 		return
-	var/comps = dc[/datum/component]
-	if(islist(comps))
-		for(var/datum/component/I in comps)
-			if(I.can_transfer)
-				target.TakeComponent(I)
-	else
-		var/datum/component/C = comps
-		if(C.can_transfer)
-			target.TakeComponent(comps)
+	for(var/key in dc)
+		if(length(key))
+			for(var/datum/component/thing as anything in dc[key])
+				if(thing.can_transfer)
+					target.TakeComponent(thing)
+		else
+			var/datum/component/val = dc[key]
+			if(val.can_transfer)
+				target.TakeComponent(val)
 
 /**
  * Return the object that is the host of any UI's that this component has

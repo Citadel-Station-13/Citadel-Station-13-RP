@@ -31,8 +31,8 @@ GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 		return
 
 	// Robots can interact with anything they can see.
-	var/list/clientviewlist = getviewsize(client.view)
-	if(get_dist(src, src_object) <= min(clientviewlist[1],clientviewlist[2]))
+	// todo: in view range for zooming
+	if(get_dist(src, src_object) <= min(CEILING(client.current_viewport_width / 2, 1), CEILING(client.current_viewport_height / 2, 1)))
 		return UI_INTERACTIVE
 	return UI_DISABLED // Otherwise they can keep the UI open.
 
@@ -44,7 +44,7 @@ GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 	// Prevents the AI from using Topic on admin levels (by for example viewing through the court/thunderdome cameras)
 	// unless it's on the same level as the object it's interacting with.
 	var/turf/T = get_turf(src_object)
-	if(!T || !(z == T.z || (T.z in GLOB.using_map.player_levels)))
+	if(!T || !(z == T.z || (T.z in (LEGACY_MAP_DATUM).player_levels)))
 		return UI_CLOSE
 
 	// If an object is in view then we can interact with it

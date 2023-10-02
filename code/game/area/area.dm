@@ -4,20 +4,50 @@
  * A grouping of tiles into a logical space, mostly used by map editors
  */
 /area
-	/// area flags
-	var/area_flags = NONE
-
-	var/fire = null
-	var/atmos = 1
-	var/atmosalm = 0
-	var/poweralm = 1
-	var/party = null
 	level = null
 	name = "Unknown"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
 	plane = ABOVE_LIGHTING_PLANE //In case we color them
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+	//? intrinsics
+	/// area flags
+	var/area_flags = NONE
+	/// stores the next uid to use
+	var/global/global_uid = 0
+	/// our uid
+	var/uid
+	/**
+	 * If false, loading multiple maps with this area type will create multiple instances.
+	 * This is not a flag because you probably should not be touching this at runtime!
+	 */
+	var/unique = TRUE
+
+	//? defaults
+	/// outdoors by default?
+	var/initial_outdoors = FALSE
+	/// default initial gas mix
+	var/initial_gas_mix = GAS_STRING_STP
+
+	//? tracking lists for machinery
+	/// holopads - lazyinit'd
+	var/list/obj/machinery/holopad/holopads
+	/// vents
+	var/list/obj/machinery/atmospherics/component/unary/vent_pump/vent_pumps
+	/// next vent id
+	var/vent_pump_next = 1
+	/// scrubbers
+	var/list/obj/machinery/atmospherics/component/unary/vent_scrubber/vent_scrubbers
+	/// next scrubber id
+	var/vent_scrubber_next = 1
+
+	//? unsorted
+	var/fire = null
+	var/atmos = 1
+	var/atmosalm = 0
+	var/poweralm = 1
+	var/party = null
 	var/lightswitch = 1
 
 	var/eject = null
@@ -55,7 +85,6 @@
 
 	var/has_gravity = TRUE
 	var/obj/machinery/power/apc/apc = null
-	var/no_air = null
 //	var/list/lights				// list of all lights on this area
 	var/list/all_doors = null		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/list/all_arfgs = null		//Similar, but a list of all arfgs adjacent to this area
@@ -66,17 +95,14 @@
 	var/list/forced_ambience = null
 	/// Used to decide what kind of reverb the area makes sound have
 	var/sound_env = STANDARD_STATION
-	var/global/global_uid = 0
-	var/uid
-
-	/// If false, loading multiple maps with this area type will create multiple instances.
-	var/unique = TRUE
 
 	/// Color on minimaps, if it's null (which is default) it makes one at random.
 	var/minimap_color
 
 	///Typepath to limit the areas (subtypes included) that atoms in this area can smooth with. Used for shuttles.
 	var/area/area_limited_icon_smoothing
+
+	var/tmp/is_outside = OUTSIDE_NO
 
 /**
  * Called when an area loads
@@ -87,6 +113,9 @@
 	// This interacts with the map loader, so it needs to be set immediately
 	// rather than waiting for atoms to initialize.
 	if (unique)
+		// todo: something is double initing reserve area god damnit...
+		// if(GLOB.areas_by_type[type])
+		// 	STACK_TRACE("duplicated unique area, someone fucked up")
 		GLOB.areas_by_type[type] = src
 
 	uid = ++global_uid
@@ -125,7 +154,7 @@
 		else if(dynamic_lighting != DYNAMIC_LIGHTING_IFSTARLIGHT)
 			dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	if(dynamic_lighting == DYNAMIC_LIGHTING_IFSTARLIGHT)
-		dynamic_lighting = CONFIG_GET(number/starlight) ? DYNAMIC_LIGHTING_ENABLED : DYNAMIC_LIGHTING_DISABLED
+		dynamic_lighting = CONFIG_GET(flag/starlight) ? DYNAMIC_LIGHTING_ENABLED : DYNAMIC_LIGHTING_DISABLED
 
 	. = ..()
 
@@ -185,14 +214,16 @@
 				A.power_light = FALSE
 				A.power_equip = FALSE
 				A.power_environ = FALSE
-			INVOKE_ASYNC(A, .proc/power_change)
+			INVOKE_ASYNC(A, PROC_REF(power_change))
 */
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-// Changes the area of T to A. Do not do this manually.
-// Area is expected to be a non-null instance.
-/proc/ChangeArea(var/turf/T, var/area/A)
+/**
+ * Changes the area of T to A. Do not do this manually.
+ * Area is expected to be a non-null instance.
+ */
+/proc/ChangeArea(turf/T, area/A)
 	if(!istype(A))
 		CRASH("Area change attempt failed: invalid area supplied.")
 	var/area/old_area = get_area(T)
@@ -203,17 +234,23 @@
 	A.contents.Add(T)
 	if(old_area)
 		// Handle dynamic lighting update if
-		if(T.dynamic_lighting && old_area.dynamic_lighting != A.dynamic_lighting)
-			if(A.dynamic_lighting)
-				T.lighting_build_overlay()
-			else
-				T.lighting_clear_overlay()
+		if(SSlighting.initialized)
+			if(T.dynamic_lighting && old_area.dynamic_lighting != A.dynamic_lighting)
+				if(A.dynamic_lighting)
+					T.lighting_build_overlay()
+				else
+					T.lighting_clear_overlay()
 		for(var/atom/movable/AM in T)
 			old_area.Exited(AM, A)
+
 	for(var/atom/movable/AM in T)
 		A.Entered(AM, old_area)
+
 	for(var/obj/machinery/M in T)
 		M.power_change()
+
+	// if(T.is_outside == OUTSIDE_AREA && T.is_outside() != old_outside)
+	// 	T.update_weather()
 
 // compatibility wrapper, remove posthaste by making sure nothing checks area has_gravity.
 /area/has_gravity()
@@ -232,14 +269,16 @@
 	if (danger_level == 0)
 		atmosphere_alarm.clearAlarm(src, alarm_source)
 	else
-		var/obj/machinery/alarm/atmosalarm = alarm_source //maybe other things can trigger these, who knows
+		var/obj/machinery/air_alarm/atmosalarm = alarm_source //maybe other things can trigger these, who knows
 		if(istype(atmosalarm))
 			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level, hidden = atmosalarm.alarms_hidden)
 		else
 			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level)
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
-	for (var/obj/machinery/alarm/AA in src)
+	for (var/obj/machinery/air_alarm/AA as anything in GLOB.air_alarms)
+		if(AA.loc?.loc != src)
+			continue
 		if (!(AA.machine_stat & (NOPOWER|BROKEN)) && !AA.shorted && AA.report_danger_level)
 			danger_level = max(danger_level, AA.danger_level)
 
@@ -249,7 +288,7 @@
 		if (danger_level < 1 || danger_level >= 2)
 			firedoors_update()
 
-		for (var/obj/machinery/alarm/AA in src)
+		for (var/obj/machinery/air_alarm/AA in src)
 			AA.update_icon()
 
 		return 1
@@ -559,14 +598,14 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 			return // Being buckled to something solid keeps you in place.
 		if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.clothing_flags & NOSLIP))
 			return
-		if(H.species.flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
+		if(H.species.species_flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
 			return
 		if(H.m_intent == MOVE_INTENT_RUN)
-			H.AdjustStunned(6)
-			H.AdjustWeakened(6)
+			H.adjust_stunned(20 * 6)
+			H.adjust_paralyzed(20 * 6)
 		else
-			H.AdjustStunned(3)
-			H.AdjustWeakened(3)
+			H.adjust_stunned(20 * 3)
+			H.adjust_paralyzed(20 * 3)
 		to_chat(mob, "<span class='notice'>The sudden appearance of gravity makes you fall to the floor!</span>")
 		playsound(get_turf(src), "bodyfall", 50, 1)
 
@@ -613,7 +652,7 @@ var/list/teleportlocs = list()
 			continue
 		var/station = FALSE
 		for(var/turf/T in AR.contents)
-			if(T.z in GLOB.using_map.station_levels)
+			if(T.z in (LEGACY_MAP_DATUM).station_levels)
 				station = TRUE
 				break
 			else
@@ -621,7 +660,7 @@ var/list/teleportlocs = list()
 		if(station)
 			teleportlocs[AR.name] = AR
 
-	teleportlocs = sortTim(teleportlocs, /proc/cmp_text_asc, TRUE)
+	teleportlocs = tim_sort(teleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 
 	return 1
 
@@ -634,10 +673,56 @@ var/list/ghostteleportlocs = list()
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 		var/turf/picked = pick(get_area_turfs(AR.type))
-		if (picked.z in GLOB.using_map.player_levels)
+		if (picked.z in (LEGACY_MAP_DATUM).player_levels)
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 
-	ghostteleportlocs = sortTim(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
+	ghostteleportlocs = tim_sort(ghostteleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 
 	return 1
+
+//* Atmospherics
+
+/area/proc/register_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
+	LAZYADD(vent_scrubbers, instance)
+	instance.name = "\improper [name] Vent Scrubber #[vent_scrubber_next++]"
+
+/area/proc/unregister_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
+	LAZYREMOVE(vent_scrubbers, instance)
+	instance.name = "\improper Vent Scrubber"
+
+/area/proc/register_vent(obj/machinery/atmospherics/component/unary/vent_pump/instance)
+	LAZYADD(vent_pumps, instance)
+	instance.name = "\improper [name] Vent Pump #[vent_pump_next++]"
+
+/area/proc/unregister_vent(obj/machinery/atmospherics/component/unary/vent_pump/instance)
+	LAZYREMOVE(vent_pumps, instance)
+	instance.name = "\improper Vent Pump"
+
+// todo: this should unregister first, probably, incase anyone makes registration non-repeatable
+
+/area/proc/reregister_atmos_machinery()
+	reregister_atmos_vents()
+	reregister_atmos_scrubbers()
+
+/area/proc/reregister_atmos_vents()
+	vent_pump_next = 0
+	var/list/old = vent_pumps.Copy()
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/instance in old)
+		register_vent(instance)
+
+/area/proc/reregister_atmos_scrubbers()
+	vent_scrubber_next = 0
+	var/list/old = vent_scrubbers.Copy()
+	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/instance in old)
+		register_scrubber(instance)
+
+/area/proc/vent_pump_by_id(id)
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in vent_pumps)
+		if(pump.id_tag == id)
+			return pump
+
+/area/proc/vent_scrubber_by_id(id)
+	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in vent_scrubbers)
+		if(scrubber.id_tag == id)
+			return scrubber

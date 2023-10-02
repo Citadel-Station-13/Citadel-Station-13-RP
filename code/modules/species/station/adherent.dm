@@ -1,4 +1,6 @@
 /datum/species/adherent
+	uid = SPECIES_ID_ADHERENT
+	id = SPECIES_ID_ADHERENT
 	name = SPECIES_ADHERENT
 	name_plural = "Adherents"
 	default_bodytype = BODYTYPE_ADHERENT
@@ -26,15 +28,26 @@
 	blood_mask      = 'icons/mob/species/adherent/blood_mask.dmi'
 
 	siemens_coefficient  = 0
-	rarity_value         = 6
+	//rarity_value         = 6
 	min_age              = 10000
 	max_age              = 12000
 	// antaghud_offset_y    = 14
-	warning_low_pressure = 50
-	hazard_low_pressure  = -1
 	mob_size             = MOB_LARGE
 	// strength             = STR_HIGH
 	has_glowing_eyes     = TRUE
+
+	warning_low_pressure = 50
+	hazard_low_pressure  = -1
+	hazard_high_pressure = INFINITY
+	radiation_mod		 = 0
+	toxins_mod			 = 0
+	breath_type 		 = null
+	poison_type 		 = null
+	brute_mod			 =	2
+	burn_mod 			 =	0.1
+	total_health 		 = 75
+
+	hunger_factor 		 = 0.04
 
 	speech_sounds = list('sound/voice/chime.ogg')
 	speech_chance = 25
@@ -47,13 +60,12 @@
 	heat_level_2 = 1000
 	heat_level_3 = 2000
 
-	flags       = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+	species_flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN | NO_POISON | NO_IGNITE
+	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_NO_FBP_CONSTRUCT | SPECIES_SPAWN_NO_FBP_SETUP | SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_EYE_COLOR | HAS_BASE_SKIN_COLOR
 
-	language         = LANGUAGE_ADHERENT
-	species_language = LANGUAGE_ADHERENT
-	num_alternate_languages = 2
+	intrinsic_languages = LANGUAGE_ID_ADHERENT
+	max_additional_languages = 2
 
 	blood_color = "#2de00d"
 	flesh_color = "#90edeb"
@@ -107,22 +119,25 @@
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/snake
 
 	base_skin_colours = list(
-		"Turquoise"   = "", // First so it's default.
-		"Amethyst"    = "_purple",
-		"Emerald"     = "_green",
-		"Jet"         = "_black",
-		"Quartz"      = "_white",
-		"Ruby"        = "_red",
-		"Sapphire"    = "_blue",
-		"Topaz"       = "_yellow",
+		"Turquoise"   = null, // First so it's default.
+		"Amethyst"    = "purple",
+		"Emerald"     = "green",
+		"Jet"         = "black",
+		"Quartz"      = "white",
+		"Ruby"        = "red",
+		"Sapphire"    = "blue",
+		"Topaz"       = "yellow",
 	)
 
 	wikilink = "N/A"
 
+/datum/species/adherent/equip_survival_gear(mob/living/carbon/human/H, extendedtank = FALSE, comprehensive = FALSE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/crystal, /datum/inventory_slot_meta/abstract/put_in_backpack)
+
 /datum/species/adherent/New()
 	/*equip_adjust = list(
-		"[slot_l_hand_str]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
-		"[slot_r_hand_str]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
+		"[SLOT_ID_LEFT_HAND]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
+		"[SLOT_ID_RIGHT_HAND]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
 		"[SLOT_ID_BACK]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
 		"[SLOT_ID_BELT]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
 		"[SLOT_ID_HEAD]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 3, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = -3, "y" = 14)),
@@ -149,7 +164,8 @@
 	return slowdown
 */
 /datum/species/adherent/handle_environment_special(mob/living/carbon/human/H)
-	H.our_overlays = list()//This removes all overlays, including temperature and pressure warnings
+	for(var/i in H.overlays_standing)
+		H.cut_overlay(i)
 	//Todo: find a better way to adjust clothing, than to wipe all overlays
 
 /datum/species/adherent/handle_fall_special(mob/living/carbon/human/H, turf/landing)

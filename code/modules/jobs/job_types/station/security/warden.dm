@@ -1,4 +1,6 @@
-/datum/job/station/warden
+/datum/role/job/station/warden
+	id = JOB_ID_WARDEN
+	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR
 	title = "Warden"
 	flag = WARDEN
 	departments = list(DEPARTMENT_SECURITY)
@@ -10,9 +12,20 @@
 	selection_color = "#601C1C"
 	idtype = /obj/item/card/id/security/warden
 	pto_type = PTO_SECURITY
-	economic_modifier = 5
-	access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_morgue, access_external_airlocks)
-	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_external_airlocks)
+	additional_access = list(
+		ACCESS_COMMAND_EVA,
+		ACCESS_MEDICAL_MORGUE,
+		ACCESS_ENGINEERING_AIRLOCK,
+	)
+	minimal_access = list(
+		ACCESS_SECURITY_EQUIPMENT,
+		ACCESS_SECURITY_MAIN,
+		ACCESS_SECURITY_BRIG,
+		ACCESS_SECURITY_ARMORY,
+		ACCESS_ENGINEERING_MAINT,
+		ACCESS_SECURITY_GENPOP_ENTER,
+		ACCESS_SECURITY_GENPOP_EXIT,
+	)
 	minimal_player_age = 5
 
 	outfit_type = /datum/outfit/job/station/warden
@@ -20,6 +33,16 @@
 						prisoners that have been processed and brigged, and are responsible for their well being. The Warden is also in charge of distributing \
 						Armoury gear in a crisis, and retrieving it when the crisis has passed. In an emergency, the Warden may be called upon to direct the \
 						Security Department as a whole."
+	alt_titles = list(
+		"Jailor" = /datum/prototype/struct/alt_title/warden/jailor,
+		"Dispatch Officer" = /datum/prototype/struct/alt_title/warden/dispatch_officer
+		)
+
+/datum/prototype/struct/alt_title/warden/jailor
+	title = "Jailor"
+
+/datum/prototype/struct/alt_title/warden/dispatch_officer
+	title = "Dispatch Officer"
 
 /datum/outfit/job/station/warden
 	name = OUTFIT_JOB_NAME("Warden")

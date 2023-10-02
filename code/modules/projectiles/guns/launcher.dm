@@ -19,11 +19,11 @@
 	to_chat(user, "<font color='red'>Shooting yourself with \a [src] is pretty tricky. You can't seem to manage it.</font>")
 	return
 
-/obj/item/gun/launcher/proc/update_release_force(obj/item/projectile)
+/obj/item/gun/launcher/proc/update_release_force(obj/projectile)
 	return 0
 
-/obj/item/gun/launcher/process_projectile(obj/item/projectile, mob/user, atom/target, var/target_zone, var/params=null, var/pointblank=0, var/reflex=0)
+/obj/item/gun/launcher/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null, var/pointblank=0, var/reflex=0)
 	update_release_force(projectile)
-	projectile.loc = get_turf(user)
-	projectile.throw_at(target, throw_distance, release_force, user)
+	projectile.forceMove(get_turf(user))
+	projectile.throw_at_old(target, throw_distance, release_force, user)
 	return 1

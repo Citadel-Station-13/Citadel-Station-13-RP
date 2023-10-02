@@ -10,6 +10,7 @@ Barricades
 	desc = "This space is blocked off by a barricade."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "barricade"
+	pass_flags_self = ATOM_PASS_TABLE
 	anchored = TRUE
 	density = TRUE
 	var/health = 100
@@ -53,9 +54,9 @@ Barricades
 	else
 		switch(W.damtype)
 			if("fire")
-				health -= W.force * 1
+				health -= W.damage_force * 1
 			if("brute")
-				health -= W.force * 0.75
+				health -= W.damage_force * 0.75
 		if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
 			playsound(loc, 'sound/effects/woodcutting.ogg', 100, TRUE)
 		else
@@ -93,7 +94,7 @@ Barricades
 	qdel(src)
 	return
 
-/obj/structure/barricade/ex_act(severity)
+/obj/structure/barricade/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			dismantle()
@@ -101,18 +102,12 @@ Barricades
 			health -= 25
 			CheckHealth()
 
-/obj/structure/barricade/CanAllowThrough(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return TRUE
-	return FALSE
-
 //Actual Deployable machinery stuff
 /obj/machinery/deployable
 	name = "deployable"
 	desc = "deployable"
 	icon = 'icons/obj/objects.dmi'
-	req_access = list(access_security)//I'm changing this until these are properly tested./N
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)//I'm changing this until these are properly tested./N
 
 /obj/machinery/deployable/barrier
 	name = "deployable barrier"
@@ -121,10 +116,11 @@ Barricades
 	anchored = FALSE
 	density = TRUE
 	icon_state = "barrier0"
+	pass_flags_self = ATOM_PASS_TABLE
 	var/health = 100
 	var/maxhealth = 100
 	var/locked = FALSE
-//	req_access = list(access_maint_tunnels)
+//	req_access = list(ACCESS_ENGINEERING_MAINT)
 
 /obj/machinery/deployable/barrier/Initialize(mapload, newdir)
 	. = ..()
@@ -159,21 +155,21 @@ Barricades
 		if(health < maxhealth)
 			health = maxhealth
 			emagged = 0
-			req_access = list(access_security)
+			req_access = list(ACCESS_SECURITY_EQUIPMENT)
 			visible_message(SPAN_WARNING("[user] repairs \the [src]!"))
 			return
 		else if(emagged > 0)
 			emagged = 0
-			req_access = list(access_security)
+			req_access = list(ACCESS_SECURITY_EQUIPMENT)
 			visible_message(SPAN_WARNING("[user] repairs \the [src]!"))
 			return
 		return
 	else
 		switch(W.damtype)
 			if("fire")
-				health -= W.force * 0.75
+				health -= W.damage_force * 0.75
 			if("brute")
-				health -= W.force * 0.5
+				health -= W.damage_force * 0.5
 		playsound(src, 'sound/weapons/smash.ogg', 50, TRUE)
 		CheckHealth()
 		..()
@@ -196,7 +192,7 @@ Barricades
 	CheckHealth()
 	return
 
-/obj/machinery/deployable/barrier/ex_act(severity)
+/obj/machinery/deployable/barrier/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			explode()
@@ -213,12 +209,6 @@ Barricades
 		locked = !locked
 		anchored = !anchored
 		icon_state = "barrier[locked]"
-
-/obj/machinery/deployable/barrier/CanAllowThrough(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
-	. = ..()
-	if(mover.checkpass(PASSTABLE))
-		return TRUE
-	return FALSE
 
 /obj/machinery/deployable/barrier/proc/explode()
 

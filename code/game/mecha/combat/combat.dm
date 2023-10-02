@@ -6,7 +6,7 @@
 	internal_damage_threshold = 50
 	maint_access = 0
 	//add_req_access = 0
-	//operation_req_access = list(access_hos)
+	//operation_req_access = list(ACCESS_SECURITY_HOS)
 	damage_absorption = list("brute"=0.7,"fire"=1,"bullet"=0.7,"laser"=0.85,"energy"=1,"bomb"=0.8)
 	var/am = "d3c2fbcadca903a41161ccc9df9cf948"
 
@@ -64,7 +64,7 @@
 					var/update = 0
 					switch(damtype)
 						if("brute")
-							H.Paralyse(1)
+							H.afflict_unconscious(20 * 1)
 							update |= temp.take_damage(rand(force/2, force), 0)
 						if("fire")
 							update |= temp.take_damage(0, rand(force/2, force))
@@ -79,12 +79,12 @@
 						else
 							return
 					if(update)	H.UpdateDamageIcon()
-				H.updatehealth()
+				H.update_health()
 
 			else
 				switch(damtype)
 					if("brute")
-						M.Paralyse(1)
+						M.afflict_unconscious(20 * 1)
 						M.take_overall_damage(rand(force/2, force))
 					if("fire")
 						M.take_overall_damage(0, rand(force/2, force))
@@ -96,7 +96,7 @@
 								M.reagents.add_reagent("cryptobiolin", force)
 					else
 						return
-				M.updatehealth()
+				M.update_health()
 			src.occupant_message("You hit [T].")
 			src.visible_message("<font color='red'><b>[src.name] hits [T].</b></font>")
 		else

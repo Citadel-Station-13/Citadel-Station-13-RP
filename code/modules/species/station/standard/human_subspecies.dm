@@ -1,4 +1,6 @@
 /datum/species/human/gravworlder
+	uid = SPECIES_ID_HUMAN_GRAV
+	id = SPECIES_ID_HUMAN
 	name = SPECIES_HUMAN_GRAV
 	name_plural = "grav-adapted Humans"
 
@@ -26,11 +28,12 @@
 	total_health = 130
 	hunger_factor = 0.075//50% more hungry
 
-	flags = NO_MINOR_CUT
-	spawn_flags = SPECIES_CAN_JOIN
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_flags = NO_MINOR_CUT
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
+	color_force_greyscale = TRUE
 	base_color = "#EECEB3"
 
 	has_limbs = list(
@@ -48,6 +51,8 @@
 	)
 
 /datum/species/human/spacer
+	uid = SPECIES_ID_HUMAN_SPACE
+	id = SPECIES_ID_HUMAN
 	name = SPECIES_HUMAN_SPACER
 	name_plural = "space-adapted Humans"
 
@@ -72,10 +77,11 @@
 	slowdown = -0.1//Minor speedboost
 	item_slowdown_mod = 1.05 //Minor slowdown
 
-	spawn_flags = SPECIES_CAN_JOIN
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
+	color_force_greyscale = TRUE
 	base_color = "#EECEB3"
 
 	has_limbs = list(
@@ -93,6 +99,8 @@
 	)
 
 /datum/species/human/vatgrown
+	uid = SPECIES_ID_HUMAN_VAT
+	id = SPECIES_ID_HUMAN
 	name = SPECIES_HUMAN_VATBORN
 	name_plural = SPECIES_HUMAN_VATBORN
 
@@ -109,12 +117,13 @@
 	toxins_mod = 1.05
 
 	total_health = 115
-	hunger_factor = 0.35//less hungry
+	hunger_factor =  0.035
 
-	spawn_flags = SPECIES_CAN_JOIN
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
+	color_force_greyscale = TRUE
 	base_color = "#EECEB3"
 
 	has_organ = list(

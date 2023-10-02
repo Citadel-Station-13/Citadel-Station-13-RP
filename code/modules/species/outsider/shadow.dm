@@ -1,4 +1,5 @@
 /datum/species/shadow
+	uid = SPECIES_ID_SHADOW
 	name = SPECIES_SHADOW
 	name_plural = "shadows"
 
@@ -14,7 +15,7 @@
 	assisted_langs = list()
 
 	light_dam = 2
-	darksight = 8
+	vision_innate = /datum/vision/baseline/species_tier_3
 	has_organ = list()
 	siemens_coefficient = 0
 
@@ -26,8 +27,8 @@
 	remains_type = /obj/effect/debris/cleanable/ash
 	death_message = "dissolves into ash..."
 
-	flags = NO_SCAN | NO_SLIP | NO_POISON | NO_MINOR_CUT
-	spawn_flags = SPECIES_IS_RESTRICTED
+	species_flags = NO_SCAN | NO_SLIP | NO_POISON | NO_MINOR_CUT
+	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 
 	genders = list(NEUTER)
 

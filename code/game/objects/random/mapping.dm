@@ -251,7 +251,7 @@
 				/obj/structure/closet/crate
 			),
 			prob(2);list(
-				/obj/item/rig/industrial/equipped,
+				/obj/item/hardsuit/industrial/equipped,
 				/obj/item/storage/bag/ore,
 				/obj/structure/closet/crate/engineering
 			),
@@ -280,8 +280,8 @@
 				/obj/item/clothing/head/helmet/space/syndicate/black/red,
 				/obj/item/clothing/suit/space/syndicate/black/red,
 				/obj/item/clothing/head/helmet/space/syndicate/black/red,
-				/obj/item/gun/projectile/automatic/mini_uzi,
-				/obj/item/gun/projectile/automatic/mini_uzi,
+				/obj/item/gun/ballistic/automatic/mini_uzi,
+				/obj/item/gun/ballistic/automatic/mini_uzi,
 				/obj/item/ammo_magazine/m45uzi,
 				/obj/item/ammo_magazine/m45uzi,
 				/obj/item/ammo_magazine/m45uzi/empty,
@@ -297,8 +297,8 @@
 			prob(2);list(
 				/obj/item/clothing/suit/armor/vest,
 				/obj/item/clothing/suit/armor/vest,
-				/obj/item/gun/projectile/garand,
-				/obj/item/gun/projectile/garand,
+				/obj/item/gun/ballistic/garand,
+				/obj/item/gun/ballistic/garand,
 				/obj/item/ammo_magazine/m762garand,
 				/obj/item/ammo_magazine/m762garand,
 				/obj/structure/closet/crate/plastic
@@ -378,15 +378,15 @@
 				/obj/item/clothing/head/bearpelt,
 				/obj/item/clothing/under/soviet,
 				/obj/item/clothing/under/soviet,
-				/obj/item/gun/projectile/shotgun/pump/rifle/ceremonial,
-				/obj/item/gun/projectile/shotgun/pump/rifle/ceremonial,
+				/obj/item/gun/ballistic/shotgun/pump/rifle/ceremonial,
+				/obj/item/gun/ballistic/shotgun/pump/rifle/ceremonial,
 				/obj/structure/closet/crate
 			),
 			prob(1);list(
-				/obj/item/gun/projectile/revolver/detective,
-				/obj/item/gun/projectile/contender,
-				/obj/item/gun/projectile/p92x,
-				/obj/item/gun/projectile/derringer,
+				/obj/item/gun/ballistic/revolver/detective,
+				/obj/item/gun/ballistic/contender,
+				/obj/item/gun/ballistic/p92x,
+				/obj/item/gun/ballistic/derringer,
 				/obj/structure/closet/crate
 			),
 			prob(1);list(
@@ -693,14 +693,14 @@
 				/obj/structure/closet/crate/ummarcar //UMMARCAR OFFICE TRASH
 			),
 			prob(5);list(
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
 				/obj/structure/closet/crate/unathi //UNAJERKY
 			),
 			prob(10);list(
@@ -722,14 +722,14 @@
 				/obj/structure/closet/crate/galaksi //GALAKSI JANITOR SUPPLIES
 			),
 			prob(5);list(
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
 				/obj/structure/closet/crate/allico //GUMMIES
 			),
 			prob(2);list(
@@ -941,3 +941,52 @@
 /obj/random/empty_or_lootable_crate/item_to_spawn()
 	return pick(/obj/random/crate,
 			/obj/random/multiple/corp_crate)
+
+/obj/random/crystal
+	name = "random crystal"
+	desc = "Sometimes spawns a crystal, sometimes spawns nothing 40% of the time"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "crystal"
+	spawn_nothing_percentage = 40
+
+/obj/random/crystal/item_to_spawn()
+	return	/obj/machinery/crystal
+
+/obj/random/crystal/ice
+	name = "random ice crystal"
+	desc = "Sometimes spawns a crystal, sometimes spawns nothing 40% of the time. This time its an ice crystal"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "icecrystal2"
+	spawn_nothing_percentage = 40
+
+/obj/random/crystal/ice/item_to_spawn()
+	return	/obj/machinery/crystal/ice
+
+/obj/random/crystal/normal_ice
+	name = "random crystal, ice/normal"
+	desc = "Sometimes spawns a crystal, sometimes spawns nothing 40% of the time. 50/50 between ice and normal crystal spawning"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "crystal"
+	spawn_nothing_percentage = 40
+
+/obj/random/crystal/normal_ice/item_to_spawn()
+	return pick(/obj/machinery/crystal/ice,
+				/obj/machinery/crystal)
+
+/obj/random/snow_debris
+	name = "random snow and ice debri"
+	desc = "for all your cold needs and fun :)"
+	icon = 'icons/obj/snowman.dmi'
+	icon_state = "snowman"
+
+/obj/random/snow_debris/item_to_spawn()
+	return pick(prob(100);/obj/structure/flora/rock/ice,
+				prob(100);/obj/structure/flora/rock/ice/alternative_1,
+				prob(100);/obj/structure/flora/rock/ice/alternative_2,
+				prob(80);/obj/structure/flora/grass/both,
+				prob(60);/obj/structure/flora/bush,
+				prob(40);/obj/structure/flora/tree/dead,
+				prob(1);/obj/structure/snowman,
+				prob(1);/obj/structure/snowman/borg,
+				prob(1);/obj/structure/snowman/spider,
+				prob(1);/obj/machinery/crystal/ice)

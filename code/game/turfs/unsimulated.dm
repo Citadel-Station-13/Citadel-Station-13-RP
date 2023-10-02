@@ -6,7 +6,9 @@
 	initial_gas_mix = GAS_STRING_STP
 
 /turf/unsimulated/Initialize(mapload)
-	flags |= INITIALIZED
+	SHOULD_CALL_PARENT(FALSE)
+	atom_flags |= ATOM_INITIALIZED
+	SETUP_SMOOTHING()
 	return INITIALIZE_HINT_NORMAL
 
 /turf/unsimulated/fake_space
@@ -16,9 +18,11 @@
 	dynamic_lighting = FALSE
 
 /turf/unsimulated/fake_space/Initialize(mapload)
+	icon_state = SPACE_ICON_STATE(x, y, z) // So realistic!
 	. = ..()
-	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
+/turf/unsimulated/get_lumcount(minlum = 0,maxlum = 1)
+	return 0.8
 
 // Better nip this just in case.
 /turf/unsimulated/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)

@@ -23,7 +23,7 @@
 	var/list/nearby_things = range(round(calculate_spell_power(4)),owner)
 
 	var/temp_change = calculate_spell_power(25)
-	var/datum/species/baseline = get_static_species_meta(/datum/species/human)
+	var/datum/species/baseline = SScharacters.resolve_species_path(/datum/species/human)
 	var/temp_cap = baseline.heat_level_3 * 1.5
 	var/fire_power = calculate_spell_power(2)
 

@@ -10,7 +10,7 @@
 	name = "Facility Director's hat"
 	icon_state = "captain"
 	desc = "It's good being the king."
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/caphat/cap
 	name = "Facility Director's cap"
@@ -33,75 +33,81 @@
 	name = "chaplain's hood"
 	desc = "It's a hood that covers the head. It keeps you warm during the space winters."
 	icon_state = "chaplain_hood"
-	item_state_slots = list(slot_r_hand_str = "beret_black", slot_l_hand_str = "beret_black")
-	flags_inv = BLOCKHAIR
-	body_parts_covered = HEAD
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
+	inv_hide_flags = BLOCKHAIR
+	body_cover_flags = HEAD
 
 //Chaplain but spookier
 /obj/item/clothing/head/chaplain_hood/whiteout
 	name = "white hood"
 	desc = "It's a generic white hood. Very spooky."
 	icon_state = "whiteout_hood"
-	item_state_slots = list(slot_r_hand_str = "beret_white", slot_l_hand_str = "beret_white")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_white", SLOT_ID_LEFT_HAND = "beret_white")
 
 //Chaplain
 /obj/item/clothing/head/nun_hood
 	name = "nun hood"
 	desc = "Maximum piety in this star system."
 	icon_state = "nun_hood"
-	item_state_slots = list(slot_r_hand_str = "beret_black", slot_l_hand_str = "beret_black")
-	flags_inv = BLOCKHAIR
-	body_parts_covered = HEAD
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
+	inv_hide_flags = BLOCKHAIR
+	body_cover_flags = HEAD
 
 //Mime
 /obj/item/clothing/head/beret
 	name = "beret"
 	desc = "A beret, an artists favorite headwear."
 	icon_state = "beret"
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 //Security
 /obj/item/clothing/head/beret/sec
 	name = "security beret"
 	desc = "A beret with the security insignia emblazoned on it. For officers that are more inclined towards style than safety."
 	icon_state = "beret_officer"
-	item_state_slots = list(slot_r_hand_str = "beret", slot_l_hand_str = "beret")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret", SLOT_ID_LEFT_HAND = "beret")
 
 /obj/item/clothing/head/beret/sec/navy/officer
 	name = "officer beret"
 	desc = "A navy blue beret with an officer's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "beret_navy_officer"
-	item_state_slots = list(slot_r_hand_str = "beret_navy", slot_l_hand_str = "beret_navy")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_navy", SLOT_ID_LEFT_HAND = "beret_navy")
 
 /obj/item/clothing/head/beret/sec/navy/hos
 	name = "Head of Security beret"
 	desc = "A navy blue beret with a Head of Security's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "beret_navy_hos"
-	item_state_slots = list(slot_r_hand_str = "beret_navy", slot_l_hand_str = "beret_navy")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_navy", SLOT_ID_LEFT_HAND = "beret_navy")
 
 /obj/item/clothing/head/beret/sec/navy/warden
 	name = "warden beret"
 	desc = "A navy blue beret with a warden's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "beret_navy_warden"
-	item_state_slots = list(slot_r_hand_str = "beret_navy", slot_l_hand_str = "beret_navy")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_navy", SLOT_ID_LEFT_HAND = "beret_navy")
 
 /obj/item/clothing/head/beret/sec/corporate/officer
 	name = "officer beret"
 	desc = "A corporate black beret with an officer's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "beret_corporate_officer"
-	item_state_slots = list(slot_r_hand_str = "beret_black", slot_l_hand_str = "beret_black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
 
 /obj/item/clothing/head/beret/sec/corporate/hos
 	name = "Head of Security beret"
 	desc = "A corporate black beret with a Head of Security's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "beret_corporate_hos"
-	item_state_slots = list(slot_r_hand_str = "beret_black", slot_l_hand_str = "beret_black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
+
+/obj/item/clothing/head/beret/sec/corporate/blueshield
+	name = "Blueshield beret"
+	desc = "A corporate black beret with a Blueshield's rank emblem. For officers that are more inclined towards style than safety."
+	icon_state = "beret_corporate_blueshield"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
 
 /obj/item/clothing/head/beret/sec/corporate/warden
 	name = "warden beret"
 	desc = "A corporate black beret with a warden's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "beret_corporate_warden"
-	item_state_slots = list(slot_r_hand_str = "beret_black", slot_l_hand_str = "beret_black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
 
 /obj/item/clothing/head/helmet/warden
 	name = "warden's helmet"
@@ -127,24 +133,24 @@
 	name = "Dermal Armour Patch"
 	desc = "You're not quite sure how you manage to take it on and off, but it implants nicely in your head."
 	icon_state = "dermal"
-	item_state_slots = list(slot_r_hand_str = "", slot_l_hand_str = "")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "", SLOT_ID_LEFT_HAND = "")
 	valid_accessory_slots = null
 	show_examine = FALSE
-	flags_inv = null
+	inv_hide_flags = null
 
 /obj/item/clothing/head/det
 	name = "fedora"
 	desc = "A brown fedora - either the cornerstone of a detective's style or a poor attempt at looking cool, depending on the person wearing it."
 	icon_state = "detective"
 	allowed = list(/obj/item/reagent_containers/food/snacks/candy_corn, /obj/item/pen)
-	armor = list(melee = 10, bullet = 10, laser = 15, energy = 10, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/security/light_formalwear
 	siemens_coefficient = 0.9
 	valid_accessory_slots = null
 	show_examine = FALSE
 
 /obj/item/clothing/head/det/grey
 	icon_state = "detective2"
-	item_state_slots = list(slot_r_hand_str = "detective", slot_l_hand_str = "detective")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "detective", SLOT_ID_LEFT_HAND = "detective")
 	desc = "A grey fedora - either the cornerstone of a detective's style or a poor attempt at looking cool, depending on the person wearing it."
 
 /obj/item/clothing/head/beret/engineering
@@ -161,49 +167,55 @@
 	name = "officers beret"
 	desc = "A dark blue beret adorned with a silver patch. Worn by NanoTrasen Officials."
 	icon_state = "beret_centcom_officer"
-	item_state_slots = list(slot_r_hand_str = "beret_white", slot_l_hand_str = "beret_white")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_white", SLOT_ID_LEFT_HAND = "beret_white")
 
 /obj/item/clothing/head/beret/centcom/captain
 	name = "captains beret"
 	desc = "A white beret adorned with a blue patch. Worn by NanoTrasen command staff."
 	icon_state = "beret_centcom_captain"
-	item_state_slots = list(slot_r_hand_str = "beret_white", slot_l_hand_str = "beret_white")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_white", SLOT_ID_LEFT_HAND = "beret_white")
 
 /obj/item/clothing/head/beret/sec/gov
 	name = "officer beret"
 	desc = "A black beret with a gold emblem."
 	icon_state = "beret_corporate_hos"
-	item_state_slots = list(slot_r_hand_str = "beret_black", slot_l_hand_str = "beret_black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
 
 //Medical
 /obj/item/clothing/head/surgery
 	name = "surgical cap"
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs."
 	icon_state = "surgcap_blue"
-	item_state_slots = list(slot_r_hand_str = "beret_blue", slot_l_hand_str = "beret_blue")
-	flags_inv = BLOCKHEADHAIR
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_blue", SLOT_ID_LEFT_HAND = "beret_blue")
+	inv_hide_flags = BLOCKHEADHAIR
 
 /obj/item/clothing/head/surgery/purple
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is deep purple."
 	icon_state = "surgcap_purple"
-	item_state_slots = list(slot_r_hand_str = "beret_purple", slot_l_hand_str = "beret_purple")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_purple", SLOT_ID_LEFT_HAND = "beret_purple")
 
 /obj/item/clothing/head/surgery/blue
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is baby blue."
 	icon_state = "surgcap_blue"
-	item_state_slots = list(slot_r_hand_str = "beret_blue", slot_l_hand_str = "beret_blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_blue", SLOT_ID_LEFT_HAND = "beret_blue")
 
 /obj/item/clothing/head/surgery/green
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is dark green."
 	icon_state = "surgcap_green"
-	item_state_slots = list(slot_r_hand_str = "beret_green", slot_l_hand_str = "beret_green")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_green", SLOT_ID_LEFT_HAND = "beret_green")
 
 /obj/item/clothing/head/surgery/black
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is black."
 	icon_state = "surgcap_black"
-	item_state_slots = list(slot_r_hand_str = "beret_black", slot_l_hand_str = "beret_black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
 
 /obj/item/clothing/head/surgery/navyblue
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is navy blue."
 	icon_state = "surgcap_navyblue"
-	item_state_slots = list(slot_r_hand_str = "beret_navy", slot_l_hand_str = "beret_navy")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_navy", SLOT_ID_LEFT_HAND = "beret_navy")
+
+/obj/item/clothing/head/beret/medical
+	name = "medical beret"
+	desc = "A fashionably white piece of headwear issued to anyone who asks. Most patients have had an overall positive feedback, in spite of the increased risk of infection, or fraud."
+	icon_state = "beret_med"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_med", SLOT_ID_LEFT_HAND = "beret_med")

@@ -1,3 +1,5 @@
+// todo: literally nuke all of this what the fuck why is this not just get-current-logs or better, individual logs
+
 /datum/admin_secret_item/admin_secret/admin_logs
 	name = "Admin Logs"
 
@@ -5,7 +7,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/dat = "<B>Admin Log<HR></B>"
+	var/list/dat = "<B>Admin Log<HR></B>"
 	for(var/l in admin_log)
 		dat += "<li>[l]</li>"
 	if(!admin_log.len)
@@ -25,7 +27,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/dat = "<B>Dialogue Log<HR></B>"
+	var/list/dat = "<B>Dialogue Log<HR></B>"
 
 	dat += "<fieldset style='border: 2px solid white; display: inline'>"
 

@@ -23,7 +23,7 @@
 	var/list/nearby_mobs = range(round(calculate_spell_power(4)),owner)
 
 	var/temp_change = calculate_spell_power(40)
-	var/datum/species/baseline = get_static_species_meta(/datum/species/human)
+	var/datum/species/baseline = SScharacters.resolve_species_path(/datum/species/human)
 	var/temp_cap = baseline.cold_level_2 - 5
 
 	if(check_for_scepter())

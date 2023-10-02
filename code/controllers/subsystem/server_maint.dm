@@ -17,8 +17,8 @@ SUBSYSTEM_DEF(server_maint)
 		src.currentrun = GLOB.clients.Copy()
 		switch (cleanup_SSticker) // do only one of these at a time, once per 5 fires
 			if (0)
-				if(listclearnulls(player_list))
-					log_world("Found a null in player_list!")
+				if(listclearnulls(GLOB.player_list))
+					log_world("Found a null in GLOB.player_list!")
 				cleanup_SSticker++
 			if (5)
 				if(listclearnulls(GLOB.mob_list))

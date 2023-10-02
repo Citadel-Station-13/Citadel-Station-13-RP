@@ -26,11 +26,7 @@
 		return
 
 	usr.visible_message("<span class='warning'>[usr] flips \the [src]!</span>")
-
-	if(climbable)
-		structure_shaken()
-
-	return
+	shake_climbers()
 
 /obj/structure/table/proc/unflipping_check(var/direction)
 
@@ -73,22 +69,22 @@
 	if( !straight_table_check(turn(direction,90)) || !straight_table_check(turn(direction,-90)) )
 		return 0
 
-	verbs -=/obj/structure/table/verb/do_flip
-	verbs +=/obj/structure/table/proc/do_put
+	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
+	add_obj_verb(src, /obj/structure/table/proc/do_put)
 
 	var/list/targets = list(get_step(src,dir),get_step(src,turn(dir, 45)),get_step(src,turn(dir, -45)))
 	for (var/atom/movable/A in get_turf(src))
 		if (!A.anchored)
 			spawn(0)
-				A.throw_at(pick(targets),1,1)
+				A.throw_at_old(pick(targets),1,1)
 
 	setDir(direction)
 	if(dir != NORTH)
 		plane = MOB_PLANE
 		layer = ABOVE_MOB_LAYER
-	climbable = 0 //flipping tables allows them to be used as makeshift barriers
+	climb_delay = 10 SECONDS
 	flipped = 1
-	flags |= ON_BORDER
+	atom_flags |= ATOM_BORDER
 	for(var/D in list(turn(direction, 90), turn(direction, -90)))
 		var/obj/structure/table/T = locate() in get_step(src,D)
 		if(T && T.flipped == 0 && material && T.material && T.material.name == material.name)
@@ -100,13 +96,13 @@
 	return 1
 
 /obj/structure/table/proc/unflip()
-	verbs -=/obj/structure/table/proc/do_put
-	verbs +=/obj/structure/table/verb/do_flip
+	remove_obj_verb(src, /obj/structure/table/proc/do_put)
+	add_obj_verb(src, /obj/structure/table/verb/do_flip)
 
 	reset_plane_and_layer()
 	flipped = 0
-	climbable = initial(climbable)
-	flags &= ~ON_BORDER
+	climb_delay = initial(climb_delay)
+	atom_flags &= ~ATOM_BORDER
 	for(var/D in list(turn(dir, 90), turn(dir, -90)))
 		var/obj/structure/table/T = locate() in get_step(src.loc,D)
 		if(T && T.flipped == 1 && T.dir == src.dir && material && T.material&& T.material.name == material.name)

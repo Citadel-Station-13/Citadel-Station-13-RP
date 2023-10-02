@@ -1,3 +1,5 @@
+// todo: we need a set of 'core' procs subtypes need to override, and the rest are composites of those procs.
+
 /mob/proc/put_in_hands(obj/item/I, flags)
 	if(is_holding(I))
 		return TRUE
@@ -170,6 +172,12 @@
 	return !!get_held_index(I)
 
 /**
+ * returns if we're holding something in inactive hand slots
+ */
+/mob/proc/is_holding_inactive(obj/item/I)
+	return is_holding(I) && (get_active_held_item() != I)
+
+/**
  * drops all our held items
  *
  * @params
@@ -195,3 +203,9 @@
 
 /mob/proc/drop_right_held_item(flags)
 	return drop_held_item_of_index(2, flags)
+
+/**
+ * means if we have an empty hand able to accept an arbitrary item.
+ */
+/mob/proc/has_free_hand()
+	return FALSE

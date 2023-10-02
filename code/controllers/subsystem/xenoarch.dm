@@ -24,25 +24,17 @@ SUBSYSTEM_DEF(xenoarch)
 	if (istype(SSxenoarch.digsite_spawning_turfs))
 		digsite_spawning_turfs = SSxenoarch.digsite_spawning_turfs
 
-/datum/controller/subsystem/xenoarch/stat_entry(msg)
-	if (!GLOB.Debug2)
-		return // Only show up in stat panel if debugging is enabled.
-	. = ..()
-
 /datum/controller/subsystem/xenoarch/proc/SetupXenoarch()
 	var/list/faster = list()
 	var/start
 	for(var/i in 1 to world.maxz)
-		faster += (i in GLOB.using_map.xenoarch_exempt_levels)
+		faster += (i in (LEGACY_MAP_DATUM).xenoarch_exempt_levels)
 
 	var/list/digsites_to_make = list()
 	start = world.timeofday
 	for(var/turf/simulated/mineral/M in world)
 		if(!M.density || faster[M.z])
 			continue
-
-		if(isnull(M.geologic_data))
-			M.geologic_data = new /datum/geosample(M)
 
 		if(!prob(XENOARCH_SPAWN_CHANCE))
 			continue
@@ -109,6 +101,8 @@ SUBSYSTEM_DEF(xenoarch)
 		to_make += pick_n_take(artifact_spawning_turfs)
 
 	var/list/artifacts_spawnturf_temp = to_make.Copy()
+	LAZYCLEARLIST(artifact_spawning_turfs)
+	artifact_spawning_turfs = LAZYCOPY(to_make)
 	while(artifacts_spawnturf_temp.len)
 		var/turf/simulated/mineral/artifact_turf = artifacts_spawnturf_temp[artifacts_spawnturf_temp.len]
 		--artifacts_spawnturf_temp.len

@@ -1,7 +1,10 @@
 /datum/species/vulpkanin
+	uid = SPECIES_ID_VULPKANIN
+	id = SPECIES_ID_VULPKANIN
 	name = SPECIES_VULPKANIN
 	name_plural = SPECIES_VULPKANIN
 	primitive_form = SPECIES_MONKEY_VULPKANIN
+	default_bodytype = BODYTYPE_VULPKANIN
 
 	icobase      = 'icons/mob/species/vulpkanin/body.dmi'
 	deform       = 'icons/mob/species/vulpkanin/body.dmi' // They don't have a proper one for some reason...
@@ -11,12 +14,12 @@
 	tail = "vulptail"
 	tail_animation = 'icons/mob/clothing/species/vulpkanin/tail.dmi' // probably need more than just one of each, but w/e
 
-	num_alternate_languages = 3
-	name_language   = LANGUAGE_CANILUNZT
-	secondary_langs = list(LANGUAGE_CANILUNZT)
+	max_additional_languages = 3
+	name_language   = LANGUAGE_ID_VULPKANIN
+	intrinsic_languages = LANGUAGE_ID_VULPKANIN
 
-	darksight = 5 //worse than cats, but better than lizards. -- Poojawa
-//	gluttonous = 1
+	vision_innate = /datum/vision/baseline/species_tier_1
+
 	color_mult = 1
 
 	blurb = {"
@@ -32,7 +35,7 @@
 
 	primitive_form = SPECIES_MONKEY_VULPKANIN
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#966464"
@@ -50,4 +53,7 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)

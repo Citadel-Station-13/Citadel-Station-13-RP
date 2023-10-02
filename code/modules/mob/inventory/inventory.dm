@@ -1,4 +1,36 @@
 /**
+ * mob inventory data goes in here.
+ */
+/datum/inventory
+	//? basics
+	/// owning mob
+	var/mob/owner
+
+	//? slots
+
+	//? caches
+
+/datum/inventory/New(mob/M)
+	if(!istype(M))
+		CRASH("no mob")
+	owner = M
+
+/datum/inventory/Destroy()
+	owner = null
+	return ..()
+
+/**
+ * returns list() of items with body_cover_flags
+ */
+/datum/inventory/proc/items_that_cover(cover_flags)
+	if(cover_flags == NONE)
+		return list()
+	. = list()
+	for(var/obj/item/I as anything in owner.get_equipped_items())
+		if(I.body_cover_flags & cover_flags)
+			. += I
+
+/**
  * handles the insertion
  * item can be moved or not moved before calling
  *
@@ -11,13 +43,13 @@
 		slot = resolve_inventory_slot_meta(slot)?.type
 		if(!ispath(slot, /datum/inventory_slot_meta/abstract))
 			stack_trace("invalid slot: [slot]")
-		else
+		else if(slot != /datum/inventory_slot_meta/abstract/put_in_hands)
 			stack_trace("attempted usage of slot id in abstract insertion converted successfully")
 	. = FALSE
 	switch(slot)
-		if(/datum/inventory_slot_meta/abstract/left_hand)
+		if(/datum/inventory_slot_meta/abstract/hand/left)
 			return put_in_left_hand(I, flags)
-		if(/datum/inventory_slot_meta/abstract/right_hand)
+		if(/datum/inventory_slot_meta/abstract/hand/right)
 			return put_in_right_hand(I, flags)
 		if(/datum/inventory_slot_meta/abstract/put_in_belt)
 			var/obj/item/storage/S = item_by_slot(SLOT_ID_BELT)
@@ -49,80 +81,6 @@
 			return FALSE
 		else
 			CRASH("Invalid abstract slot [slot]")
-
-
-// So why do all of these return true if the item is null?
-// Semantically, transferring/dropping nothing always works
-// This lets us tidy up other pieces of code by not having to typecheck everything.
-// However, if you do pass in an invalid object instead of null, the procs will fail or pass
-// depending on needed behavior.
-// Use the helpers when you can, it's easier for everyone and makes replacing behaviors later easier.
-
-// This logic is actually **stricter** than the previous logic, which was "if item doesn't exist, it always works"
-
-/**
- * drops an item to ground
- *
- * semantically returns true if the thing is no longer in our inventory after our call, whether or not we dropped it
- * if you require better checks, check if something is in inventory first.
- *
- * if the item is null, this returns true
- * if an item is not in us, this returns true
- */
-/mob/proc/drop_item_to_ground(obj/item/I, flags, mob/user = src)
-	// destroyed IS allowed to call these procs
-	if(I && QDELETED(I) && !QDESTROYING(I))
-		to_chat(user, SPAN_DANGER("A deleted item [I] was used in drop_item_to_ground(). Report the entire line to coders. Debugging information: [I] ([REF(I)]) flags [flags] user [user]"))
-		to_chat(user, SPAN_DANGER("Drop item to ground will now proceed, ignoring the bugged state. Errors may ensue."))
-	else if(!is_in_inventory(I))
-		return TRUE
-	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, drop_location(), user)
-
-/**
- * transfers an item somewhere
- * newloc MUST EXIST, use transfer_item_to_nullspace otherwise
- *
- * semantically returns true if we transferred something from our inventory to newloc in the call
- *
- * if the item is null, this returns true
- * if an item is not in us, this crashes
- */
-/mob/proc/transfer_item_to_loc(obj/item/I, newloc, flags, mob/user)
-	if(!I)
-		return TRUE
-	ASSERT(newloc)
-	if(!is_in_inventory(I))
-		return FALSE
-	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, newloc, user)
-
-/**
- * transfers an item into nullspace
- *
- * semantically returns true if we transferred something from our inventory to null in the call
- *
- * if the item is null, this returns true
- * if an item is not in us, this crashes
- */
-/mob/proc/transfer_item_to_nullspace(obj/item/I, flags, mob/user)
-	if(!I)
-		return TRUE
-	if(!is_in_inventory(I))
-		return FALSE
-	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, null, user)
-
-/**
- * removes an item from inventory. does NOT move it.
- * item MUST be qdel'd or moved after this if it returns TRUE!
- *
- * semantically returns true if the passed item is no longer in our inventory after the call
- *
- * if the item is null, ths returns true
- * if an item is not in us, this returns true
- */
-/mob/proc/temporarily_remove_from_inventory(obj/item/I, flags, mob/user)
-	if(!is_in_inventory(I))
-		return TRUE
-	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, FALSE, user)
 
 /**
  * handles internal logic of unequipping an item
@@ -176,7 +134,7 @@
 			// this is meant to catch any potential deletions dropped can cause.
 			. = FALSE
 		else
-			if(!(I.item_flags & DROPDEL))
+			if(!(I.item_flags & ITEM_DROPDEL))
 				if(newloc == null)
 					I.moveToNullspace()
 				else if(newloc != FALSE)
@@ -239,11 +197,11 @@
 		to_chat(user, SPAN_DANGER("A deleted [I] was checked in can_unequip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
 		to_chat(user, SPAN_DANGER("can_unequip will return TRUE to allow you to drop the item, but expect potential glitches!"))
 		return TRUE
-		
+
 	if(!slot)
 		slot = slot_by_item(I)
 
-	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_NODROP))
+	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_ITEM_NODROP))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
 		return FALSE
@@ -258,110 +216,6 @@
 	if(!I.can_unequip(src, slot, user, flags))
 		return FALSE
 
-	return TRUE
-
-/**
- * equips an item to a slot if possible
- *
- * @params
- * - I - item
- * - slot - the slot
- * - flags - inventory operation hint bitfield, see defines
- * - user - the user doing the action, if any. defaults to ourselves.
- *
- * @return TRUE/FALSE
- */
-/mob/proc/equip_to_slot_if_possible(obj/item/I, slot, flags, mob/user)
-	return _equip_item(I, flags, slot, user)
-
-/**
- * equips an item to a slot if possible
- * item is deleted on failure
- *
- * @params
- * - I - item
- * - slot - the slot
- * - flags - inventory operation hint bitfield, see defines
- * - user - the user doing the action, if any. defaults to ourselves.
- *
- * @return TRUE/FALSE
- */
-/mob/proc/equip_to_slot_or_del(obj/item/I, slot, flags, mob/user)
-	. = equip_to_slot_if_possible(I, slot, flags, user)
-	if(!.)
-		qdel(I)
-/**
- * automatically equips to the best inventory (non storage!) slot we can find for an item, if possible
- * this proc is silent for the sub-calls by default to prevent spam.
- *
- * @params
- * - I - item
- * - flags - inventory operation hint bitfield, see defines
- * - user - the user doing the action, if any. defaults to ourselves.
- *
- * @return TRUE/FALSE
- */
-/mob/proc/equip_to_appropriate_slot(obj/item/I, flags, mob/user)
-	for(var/slot in GLOB.slot_equipment_priority)
-		if(equip_to_slot_if_possible(I, slot, flags | INV_OP_SUPPRESS_WARNING, user))
-			return TRUE
-	if(!(flags & INV_OP_SUPPRESS_WARNING))
-		to_chat(user, user == src? SPAN_WARNING("You can't find somewhere to equip [I] to!") : SPAN_WARNING("[src] has nowhere to equip [I] to!"))
-	return FALSE
-
-/**
- * automatically equips to the best inventory (non storage!) slot we can find for an item, if possible
- *
- * item is deleted on failure.
- *
- * @params
- * - I - item
- * - flags - inventory operation hint bitfield, see defines
- * - user - the user doing the action, if any. defaults to ourselves.
- *
- * @return TRUE/FALSE
- */
-
-/mob/proc/equip_to_appropriate_slot_or_del(obj/item/I, flags, mob/user)
-	if(!equip_to_appropriate_slot(I, flags, user))
-		qdel(I)
-
-/**
- * forcefully equips an item to a slot
- * kicks out conflicting items if possible
- *
- * This CAN fail, so listen to return value
- * Why? YOU MIGHT EQUIP TO A MOB WITHOUT A CERTAIN SLOT!
- *
- * @params
- * - I - item
- * - slot - slot to equip to
- * - flags - inventory operation hint bitfield, see defines
- * - user - the user doing the action, if any. defaults to ourselves.
- *
- * @return TRUE/FALSE
- */
-/mob/proc/force_equip_to_slot(obj/item/I, slot, flags, mob/user)
-	return _equip_item(I, flags, slot, user)
-
-/**
- * forcefully equips an item to a slot
- * kicks out conflicting items if possible
- * if still failing, item is deleted
- *
- * this can fail, so listen to return values.
- * @params
- * - I - item
- * - slot - slot to equip to
- * - flags - inventory operation hint bitfield, see defines
- * - user - the user doing the action, if any. defaults to ourselves.
- *
- * @return TRUE/FALSE
- */
-/mob/proc/force_equip_to_slot_or_del(obj/item/I, slot, flags, mob/user)
-	if(!force_equip_to_slot(I, slot, flags, user))
-		qdel(I)
-		return FALSE
 	return TRUE
 
 /**
@@ -386,7 +240,7 @@
 		to_chat(user, SPAN_DANGER("A deleted [I] was checked in can_equip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
 		to_chat(user, SPAN_DANGER("can_equip will now attempt to prevent the deleted item from being equipped. There should be no glitches."))
 		return FALSE
-		
+
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
 	var/self_equip = user == src
 	if(!slot_meta)
@@ -396,9 +250,9 @@
 	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// special handling: make educated guess, defaulting to yes
 		switch(slot_meta.type)
-			if(/datum/inventory_slot_meta/abstract/left_hand)
+			if(/datum/inventory_slot_meta/abstract/hand/left)
 				return (flags & INV_OP_FORCE) || !get_left_held_item()
-			if(/datum/inventory_slot_meta/abstract/right_hand)
+			if(/datum/inventory_slot_meta/abstract/hand/right)
 				return (flags & INV_OP_FORCE) || !get_right_held_item()
 			if(/datum/inventory_slot_meta/abstract/put_in_backpack)
 				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
@@ -417,7 +271,7 @@
 	if(!inventory_slot_bodypart_check(I, slot, user, flags) && !(flags & INV_OP_FORCE))
 		return FALSE
 
-	var/conflict_result = inventory_slot_conflict_check(I, slot)
+	var/conflict_result = inventory_slot_conflict_check(I, slot, flags)
 	var/obj/item/to_wear_over
 
 	if((flags & INV_OP_IS_FINAL_CHECK) && conflict_result && (slot != SLOT_ID_HANDS))
@@ -541,9 +395,15 @@
 /**
  * checks for slot conflict
  */
-/mob/proc/inventory_slot_conflict_check(obj/item/I, slot)
-	if(_item_by_slot(slot))
-		return CAN_EQUIP_SLOT_CONFLICT_HARD
+/mob/proc/inventory_slot_conflict_check(obj/item/I, slot, flags)
+	var/obj/item/conflicting = _item_by_slot(slot)
+	if(conflicting)
+		if((flags & (INV_OP_CAN_DISPLACE | INV_OP_IS_FINAL_CHECK)) == (INV_OP_CAN_DISPLACE | INV_OP_IS_FINAL_CHECK))
+			drop_item_to_ground(conflicting, INV_OP_FORCE)
+			if(_item_by_slot(slot))
+				return CAN_EQUIP_SLOT_CONFLICT_HARD
+		else
+			return CAN_EQUIP_SLOT_CONFLICT_HARD
 	switch(slot)
 		if(SLOT_ID_LEFT_EAR, SLOT_ID_RIGHT_EAR)
 			if(I.slot_flags & SLOT_TWOEARS)
@@ -591,6 +451,11 @@
 		// if it's abstract, we go there directly - do not use can_equip as that will just guess.
 		return handle_abstract_slot_insertion(I, slot, flags)
 
+	// slots must have IDs.
+	ASSERT(!isnull(slot_meta.id))
+	// convert to ID after abstract slot checks
+	slot = slot_meta.id
+
 	var/old_slot = slot_by_item(I)
 
 	if(old_slot)
@@ -603,11 +468,19 @@
 		if(!can_equip(I, slot, flags | INV_OP_IS_FINAL_CHECK, user))
 			return FALSE
 
+		var/atom/oldLoc = I.loc
+		if(I.loc != src)
+			I.forceMove(src)
+		if(I.loc != src)
+			// UH OH, SOMEONE MOVED US
+			log_inventory("[key_name(src)] failed to equip [I] to slot (loc sanity failed).")
+			// UH OH x2, WE GOT WORN OVER SOMETHING
+			if(I.worn_over)
+				handle_item_denesting(I, slot, INV_OP_FATAL, user)
+			return FALSE
+
 		_equip_slot(I, slot, flags)
 
-		var/atom/oldLoc = I.loc
-
-		I.forceMove(src)
 		// TODO: HANDLE DELETIONS IN PICKUP AND EQUIPPED PROPERLY
 		I.pickup(src, flags, oldLoc)
 		I.equipped(src, slot, flags)

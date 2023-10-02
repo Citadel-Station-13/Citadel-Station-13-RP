@@ -1,28 +1,28 @@
-#define HUMAN_EATING_NO_ISSUE		0
-#define HUMAN_EATING_NO_MOUTH		1
-#define HUMAN_EATING_BLOCKED_MOUTH	2
+#define HUMAN_EATING_NO_ISSUE      0
+#define HUMAN_EATING_NO_MOUTH      1
+#define HUMAN_EATING_BLOCKED_MOUTH 2
 
-/mob/living/carbon/human/can_eat(var/food, var/feedback = 1)
+/mob/living/carbon/human/can_eat(food, feedback = TRUE)
 	var/list/status = can_eat_status()
 	if(status[1] == HUMAN_EATING_NO_ISSUE)
-		return 1
+		return TRUE
 	if(feedback)
 		if(status[1] == HUMAN_EATING_NO_MOUTH)
 			to_chat(src, "Where do you intend to put \the [food]? You don't have a mouth!")
 		else if(status[1] == HUMAN_EATING_BLOCKED_MOUTH)
-			to_chat(src, "<span class='warning'>\The [status[2]] is in the way!</span>")
-	return 0
+			to_chat(src, SPAN_WARNING("\The [status[2]] is in the way!"))
+	return FALSE
 
-/mob/living/carbon/human/can_force_feed(var/feeder, var/food, var/feedback = 1)
+/mob/living/carbon/human/can_force_feed(feeder, food, feedback = TRUE)
 	var/list/status = can_eat_status()
 	if(status[1] == HUMAN_EATING_NO_ISSUE)
-		return 1
+		return TRUE
 	if(feedback)
 		if(status[1] == HUMAN_EATING_NO_MOUTH)
 			to_chat(feeder, "Where do you intend to put \the [food]? \The [src] doesn't have a mouth!")
 		else if(status[1] == HUMAN_EATING_BLOCKED_MOUTH)
-			to_chat(feeder, "<span class='warning'>\The [status[2]] is in the way!</span>")
-	return 0
+			to_chat(feeder, SPAN_WARNING("\The [status[2]] is in the way!"))
+	return FALSE
 
 /mob/living/carbon/human/proc/can_eat_status()
 	if(!check_has_mouth())
@@ -35,39 +35,43 @@
 /mob/living/carbon/human/proc/get_coverage()
 	var/list/coverage = list()
 	for(var/obj/item/clothing/C in get_equipped_items())
-		if(C.body_parts_covered & HEAD)
+		if(C.body_cover_flags & HEAD)
 			coverage += list(organs_by_name[BP_HEAD])
-		if(C.body_parts_covered & UPPER_TORSO)
+		if(C.body_cover_flags & UPPER_TORSO)
 			coverage += list(organs_by_name[BP_TORSO])
-		if(C.body_parts_covered & LOWER_TORSO)
+		if(C.body_cover_flags & LOWER_TORSO)
 			coverage += list(organs_by_name[BP_GROIN])
-		if(C.body_parts_covered & LEGS)
+		if(C.body_cover_flags & LEGS)
 			coverage += list(organs_by_name[BP_L_LEG], organs_by_name[BP_R_LEG])
-		if(C.body_parts_covered & ARMS)
+		if(C.body_cover_flags & ARMS)
 			coverage += list(organs_by_name[BP_R_ARM], organs_by_name[BP_L_ARM])
-		if(C.body_parts_covered & FEET)
+		if(C.body_cover_flags & FEET)
 			coverage += list(organs_by_name[BP_L_FOOT], organs_by_name[BP_R_FOOT])
-		if(C.body_parts_covered & HANDS)
+		if(C.body_cover_flags & HANDS)
 			coverage += list(organs_by_name[BP_L_HAND], organs_by_name[BP_R_HAND])
 	return coverage
 
 
-//This is called when we want different types of 'cloaks' to stop working, e.g. when attacking.
+/// This is called when we want different types of 'cloaks' to stop working, e.g. when attacking.
 /mob/living/carbon/human/break_cloak()
-	if(mind && mind.changeling) //Changeling visible camo
+	// Changeling visible camo.
+	if(mind && mind.changeling)
 		mind.changeling.cloaked = 0
-	if(istype(back, /obj/item/rig)) //Ninja cloak
-		var/obj/item/rig/suit = back
-		for(var/obj/item/rig_module/stealth_field/cloaker in suit.installed_modules)
+	// Ninja cloak.
+	if(istype(back, /obj/item/hardsuit))
+		var/obj/item/hardsuit/suit = back
+		for(var/obj/item/hardsuit_module/stealth_field/cloaker in suit.installed_modules)
 			if(cloaker.active)
 				cloaker.deactivate()
 
 /mob/living/carbon/human/is_cloaked()
-	if(mind && mind.changeling && mind.changeling.cloaked) // Ling camo.
+	// Changeling visible camo.
+	if(mind && mind.changeling && mind.changeling.cloaked)
 		return TRUE
-	else if(istype(back, /obj/item/rig)) //Ninja cloak
-		var/obj/item/rig/suit = back
-		for(var/obj/item/rig_module/stealth_field/cloaker in suit.installed_modules)
+	// Ninja cloak.
+	else if(istype(back, /obj/item/hardsuit))
+		var/obj/item/hardsuit/suit = back
+		for(var/obj/item/hardsuit_module/stealth_field/cloaker in suit.installed_modules)
 			if(cloaker.active)
 				return TRUE
 	return ..()
@@ -77,15 +81,15 @@
 	if(istype(l_ear, /obj/item/clothing/ears))
 		var/obj/item/clothing/ears/L = l_ear
 		sum += L.ear_protection
-	if(istype(l_ear, /obj/item/radio/headset))		//CITADEL
-		var/obj/item/radio/headset/L = l_ear			//BOWNAN
-		sum += L.ear_protection								//CHANGE
+	if(istype(l_ear, /obj/item/radio/headset))
+		var/obj/item/radio/headset/L = l_ear
+		sum += L.ear_protection
 	if(istype(r_ear, /obj/item/clothing/ears))
 		var/obj/item/clothing/ears/R = r_ear
 		sum += R.ear_protection
-	if(istype(r_ear, /obj/item/radio/headset))		//CITADEL
-		var/obj/item/radio/headset/R = r_ear			//BOWMAN
-		sum += R.ear_protection								//CHANGE
+	if(istype(r_ear, /obj/item/radio/headset))
+		var/obj/item/radio/headset/R = r_ear
+		sum += R.ear_protection
 	if(istype(head, /obj/item/clothing/head))
 		var/obj/item/clothing/head/H = head
 		sum += H.ear_protection
@@ -94,100 +98,100 @@
 /mob/living/carbon/human/get_gender()
 	return identifying_gender ? identifying_gender : gender
 
-// This is the 'mechanical' check for synthetic-ness, not appearance
-// Returns the company that made the synthetic
+/**
+ * This is the 'mechanical' check for synthetic-ness, not appearance.
+ * Returns the company that made the synthetic
+ */
 /mob/living/carbon/human/isSynthetic()
+	// If you're synthetic, your synthetic-ness isn't going away.
 	if(synthetic)
-		return synthetic //Your synthetic-ness is not going away
+		return synthetic
+
 	var/obj/item/organ/external/T = organs_by_name[BP_TORSO]
 	if(T && T.robotic >= ORGAN_ROBOT)
-		src.verbs += /mob/living/carbon/human/proc/self_diagnostics
-		src.verbs += /mob/living/carbon/human/proc/setmonitor_state
+		add_verb(T.owner, /mob/living/carbon/human/proc/self_diagnostics)
+		add_verb(T.owner, /mob/living/carbon/human/proc/setmonitor_state)
 		var/datum/robolimb/R = GLOB.all_robolimbs[T.model]
 		synthetic = R
 		return synthetic
 
-	return 0
+	return FALSE
 
-// Would an onlooker know this person is synthetic?
-// Based on sort of logical reasoning, 'Look at head, look at torso'
+/**
+ * Would an onlooker know this person is synthetic?
+ * Based on sort of logical reasoning, 'Look at head, look at torso'
+ */
 /mob/living/carbon/human/proc/looksSynthetic()
 	var/obj/item/organ/external/T = organs_by_name[BP_TORSO]
 	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
 
-	//Look at their head
-	if(!head || !(head && (head.flags_inv & HIDEFACE)))
-		if(H && H.robotic == ORGAN_ROBOT) //Exactly robotic, not higher as lifelike is higher
-			return 1
+	// Look at their head.
+	if(!head || !(head && (head.inv_hide_flags & HIDEFACE)))
+		// Exactly robotic, not higher as lifelike is higher.
+		if(H && H.robotic == ORGAN_ROBOT)
+			return TRUE
 
-	//Look at their torso
-	if(!wear_suit || (wear_suit && !(wear_suit.flags_inv & HIDEJUMPSUIT)))
-		if(!w_uniform || (w_uniform && !(w_uniform.body_parts_covered & UPPER_TORSO)))
+	// Look at their torso.
+	if(!wear_suit || (wear_suit && !(wear_suit.inv_hide_flags & HIDEJUMPSUIT)))
+		if(!w_uniform || (w_uniform && !(w_uniform.body_cover_flags & UPPER_TORSO)))
 			if(T && T.robotic == ORGAN_ROBOT)
-				return 1
+				return TRUE
 
-	return 0
+	return FALSE
 
-// Returns a string based on what kind of brain the FBP has.
+/// Returns a string based on what kind of brain the FBP has.
 /mob/living/carbon/human/proc/get_FBP_type()
 	if(!isSynthetic())
 		return FBP_NONE
 	var/obj/item/organ/internal/brain/B
 	B = internal_organs_by_name[O_BRAIN]
-	if(B) // Incase we lost our brain for some reason, like if we got decapped.
+	// Incase we lost our brain for some reason, like if we got decapped.
+	if(B)
 		if(istype(B, /obj/item/organ/internal/mmi_holder))
 			var/obj/item/organ/internal/mmi_holder/mmi_holder = B
 			if(istype(mmi_holder.stored_mmi, /obj/item/mmi/digital/posibrain))
 				return FBP_POSI
 			else if(istype(mmi_holder.stored_mmi, /obj/item/mmi/digital/robot))
 				return FBP_DRONE
-			else if(istype(mmi_holder.stored_mmi, /obj/item/mmi)) // This needs to come last because inheritence.
+			// This needs to come last because inheritence.
+			else if(istype(mmi_holder.stored_mmi, /obj/item/mmi))
 				return FBP_CYBORG
 
 	return FBP_NONE
 
 /mob/living/carbon/human/recalculate_vis()
-	if(!vis_enabled || !plane_holder)
+	if(!self_perspective)
 		return
 
-	//These things are allowed to add vision flags.
-	//If you code some crazy item that goes on your feet that lets you see ghosts, you need to add a slot here.
+	/**
+	 * These things are allowed to add vision flags.
+	 * If you code some crazy item that goes on your feet that lets you see ghosts, you need to add a slot here.
+	 */
 	var/list/slots = list(SLOT_ID_GLASSES,SLOT_ID_HEAD)
 	var/list/compiled_vis = list()
 
 	for(var/slot in slots)
-		var/obj/item/clothing/O = item_by_slot(slot) //Change this type if you move the vision stuff to item or something.
-		if(istype(O) && O.enables_planes && (slot in O.plane_slots))
+		// Change this type if you move the vision stuff to item or something.
+		var/obj/item/clothing/O = item_by_slot(slot)
+		if(istype(O) && O.enables_planes && (slot in O.active_slots))
 			compiled_vis |= O.enables_planes
 
-	//Check to see if we have a rig (ugh, blame rigs, desnowflake this)
-	var/obj/item/rig/rig = back
-	if(istype(rig) && rig.visor)
-		if(!rig.helmet || (head && rig.helmet == head))
-			if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)
-				var/obj/item/clothing/glasses/V = rig.visor.vision.glasses
+	// Check to see if we have a hardsuit (ugh, blame rigs, desnowflake this).
+	var/obj/item/hardsuit/hardsuit = back
+	if(istype(hardsuit) && hardsuit.visor)
+		if(!hardsuit.helmet || (head && hardsuit.helmet == head))
+			if(hardsuit.visor && hardsuit.visor.vision && hardsuit.visor.active && hardsuit.visor.vision.glasses)
+				var/obj/item/clothing/glasses/V = hardsuit.visor.vision.glasses
 				compiled_vis |= V.enables_planes
 
-	// NIF Support
+	// NIF Support.
 	if(nif)
 		compiled_vis |= nif.planes_visible()
 
-	if(!compiled_vis.len && !vis_enabled.len)
-		return //Nothin' doin'.
+	self_perspective.unset_plane_visible(source = CLOTHING_TRAIT)
+	for(var/vis in compiled_vis)
 
-	var/list/oddities = vis_enabled ^ compiled_vis
-	if(!oddities.len)
-		return //Same thing in both lists!
-
-	var/list/to_enable = oddities - vis_enabled
-	var/list/to_disable = oddities - compiled_vis
-
-	for(var/vis in to_enable)
-		plane_holder.set_vis(vis,TRUE)
-		vis_enabled += vis
-	for(var/vis in to_disable)
-		plane_holder.set_vis(vis,FALSE)
-		vis_enabled -= vis
+		self_perspective.set_plane_visible(vis, CLOTHING_TRAIT)
 
 /mob/living/carbon/human/get_restraining_bolt()
 	var/obj/item/implant/restrainingbolt/RB
@@ -205,7 +209,9 @@
 
 /mob/living/carbon/human/can_see_reagents()
 	. = ..()
-	if(.) //No need to run through all of this if it's already true.
+
+	if(.)
+		// No need to run through all of this if it's already true.
 		return
 	if(istype(glasses, /obj/item/clothing))
 		var/obj/item/clothing/C = glasses

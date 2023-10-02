@@ -8,7 +8,7 @@
 /datum/gm_action/viral_outbreak/set_up()
 	candidates.Cut()	// Incase we somehow get run twice.
 	severity = rand(2, 4)
-	for(var/mob/living/carbon/human/G in player_list)
+	for(var/mob/living/carbon/human/G in GLOB.player_list)
 		if(G.client && G.stat != DEAD)
 			candidates += G
 	if(!candidates.len)	return

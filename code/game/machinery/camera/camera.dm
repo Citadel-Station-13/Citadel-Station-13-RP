@@ -1,7 +1,7 @@
 /obj/machinery/camera
 	name = "security camera"
 	desc = "It's used to monitor rooms."
-	icon = 'icons/obj/monitors_vr.dmi'
+	icon = 'icons/obj/monitors.dmi'
 	icon_state = "camera"
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
@@ -65,6 +65,7 @@
 	if(!c_tag)
 		var/area/A = get_area(src)
 		c_tag = "[A ? A.name : "Unknown"] #[rand(111,999)]"
+	update_icon()
 	return ..()
 
 /obj/machinery/camera/Destroy()
@@ -98,10 +99,10 @@
 			update_coverage()
 			START_PROCESSING(SSobj, src)
 
-/obj/machinery/camera/bullet_act(var/obj/item/projectile/P)
+/obj/machinery/camera/bullet_act(var/obj/projectile/P)
 	take_damage(P.get_structure_damage())
 
-/obj/machinery/camera/ex_act(severity)
+/obj/machinery/camera/legacy_ex_act(severity)
 	if(src.invuln)
 		return
 
@@ -116,29 +117,30 @@
 		return
 	destroy()
 
-/obj/machinery/camera/hitby(AM as mob|obj)
-	..()
+/obj/machinery/camera/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if (istype(AM, /obj))
 		var/obj/O = AM
-		if (O.throwforce >= src.toughness)
+		if (O.throw_force >= src.toughness)
 			visible_message("<span class='warning'><B>[src] was hit by [O].</B></span>")
-		take_damage(O.throwforce)
+		take_damage(O.throw_force)
 
 /obj/machinery/camera/proc/setViewRange(var/num = 7)
 	src.view_range = num
 	GLOB.cameranet.updateVisibility(src, 0)
 
-/obj/machinery/camera/attack_hand(mob/living/carbon/human/user as mob)
-	if(!istype(user))
+/obj/machinery/camera/attack_hand(mob/user, list/params)
+	var/mob/living/carbon/human/L = user
+	if(!istype(L))
 		return
 
-	if(user.species.can_shred(user))
+	if(L.species.can_shred(L))
 		set_status(0)
-		user.do_attack_animation(src)
-		user.setClickCooldown(user.get_attack_speed())
-		visible_message("<span class='warning'>\The [user] slashes at [src]!</span>")
+		L.do_attack_animation(src)
+		L.setClickCooldown(L.get_attack_speed())
+		visible_message("<span class='warning'>\The [L] slashes at [src]!</span>")
 		playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)
-		add_hiddenprint(user)
+		add_hiddenprint(L)
 		destroy()
 
 /obj/machinery/camera/attack_generic(mob/user as mob)
@@ -162,7 +164,7 @@
 		panel_open = !panel_open
 		user.visible_message("<span class='warning'>[user] screws the camera's panel [panel_open ? "open" : "closed"]!</span>",
 		"<span class='notice'>You screw the camera's panel [panel_open ? "open" : "closed"].</span>")
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 
 	else if((W.is_wirecutter() || istype(W, /obj/item/multitool)) && panel_open)
 		interact(user)
@@ -207,18 +209,18 @@
 			if(!O.client) continue
 			if(U.name == "Unknown") to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
 			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U];trackname=[U.name]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
-			O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
+			O << browse("<HTML><HEAD><TITLE>[itemname]</TITLE></HEAD><BODY><TT>[info]</TT></BODY></HTML>", "window=[itemname]")
 
 	else if(W.damtype == BRUTE || W.damtype == BURN) //bashing cameras
 		user.setClickCooldown(user.get_attack_speed(W))
-		if (W.force >= src.toughness)
+		if (W.damage_force >= src.toughness)
 			user.do_attack_animation(src)
-			visible_message("<span class='warning'><b>[src] has been [W.attack_verb.len? pick(W.attack_verb) : "attacked"] with [W] by [user]!</b></span>")
+			visible_message("<span class='warning'><b>[src] has been [W.get_attack_verb(src, user)] with [W] by [user]!</b></span>")
 			if (istype(W, /obj/item)) //is it even possible to get into attackby() with non-items?
 				var/obj/item/I = W
 				if (I.hitsound)
 					playsound(loc, I.hitsound, 50, 1, -1)
-		take_damage(W.force)
+		take_damage(W.damage_force)
 
 	else
 		..()
@@ -293,6 +295,23 @@
 	else
 		icon_state = initial(icon_state)
 
+/obj/machinery/camera/setDir(ndir)
+	. = ..()
+	base_pixel_x = 0
+	base_pixel_y = 0
+	var/turf/T = get_step(get_turf(src), turn(src.dir, 180))
+	for(var/obj/O in T.contents)
+		if(O.density)
+			switch(dir)
+				if(SOUTH)
+					base_pixel_y = 21
+				if(WEST)
+					base_pixel_x = 10
+				if(EAST)
+					base_pixel_x = -10
+			break
+	reset_pixel_offsets()
+
 /obj/machinery/camera/proc/triggerCameraAlarm(duration = 0)
 	alarm_on = 1
 	camera_alarm.triggerAlarm(loc, src, duration)
@@ -363,10 +382,10 @@
 
 	// Do after stuff here
 	to_chat(user, "<span class='notice'>You start to weld [src]..</span>")
-	playsound(src.loc, WT.usesound, 50, 1)
+	playsound(src.loc, WT.tool_sound, 50, 1)
 	WT.eyecheck(user)
 	busy = 1
-	if(do_after(user, 100 * WT.toolspeed))
+	if(do_after(user, 100 * WT.tool_speed))
 		busy = 0
 		if(!WT.isOn())
 			return 0

@@ -1,0 +1,4816 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ah" = (
+/obj/effect/floor_decal/spline/plain,
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"au" = (
+/obj/machinery/power/apc/hyper/west_bump{
+	cell_type = /obj/item/cell/infinite
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one)
+"az" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/structure/curtain,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"aS" = (
+/obj/effect/debris/cleanable/cobweb2,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"bq" = (
+/obj/item/handcuffs/cable/white,
+/obj/item/handcuffs/cable/white,
+/obj/item/handcuffs/cable/white,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/one)
+"bF" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/killhouse/one/outside)
+"cV" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/structure/table/standard,
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"cX" = (
+/obj/machinery/vending/coffee,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"dn" = (
+/obj/machinery/holosign/exit,
+/turf/simulated/wall/wood,
+/area/killhouse/one)
+"dJ" = (
+/obj/structure/trash_pile,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"dO" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"dP" = (
+/obj/structure/bed/padded,
+/obj/item/bedsheet/purple,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"dT" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"en" = (
+/obj/structure/closet/jcloset,
+/obj/item/soap/nanotrasen,
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/one)
+"fh" = (
+/obj/structure/table/hardwoodtable,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"fj" = (
+/obj/structure/closet/chefcloset,
+/obj/item/glass_jar,
+/obj/item/retail_scanner/civilian,
+/obj/item/soap/nanotrasen,
+/obj/item/destTagger{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/packageWrap,
+/obj/item/packageWrap,
+/obj/item/packageWrap,
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"fu" = (
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"gh" = (
+/obj/structure/bed/chair/wood{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"gA" = (
+/obj/structure/kitchenspike,
+/turf/simulated/floor/tiled/freezer,
+/area/killhouse/one)
+"hb" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/one)
+"hf" = (
+/obj/structure/railing/grey,
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/killhouse/one/outside)
+"iw" = (
+/obj/item/trash,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"iI" = (
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/carpet/bcarpet,
+/area/killhouse/one)
+"kb" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"ku" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/killhouse/one)
+"kT" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"kU" = (
+/obj/structure/undies_wardrobe,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"ld" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"ll" = (
+/obj/structure/bed/chair/sofa/beige{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"lo" = (
+/obj/structure/railing/grey,
+/obj/structure/flora/ausbushes/palebush,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/killhouse/one/outside)
+"lt" = (
+/obj/machinery/light/spot,
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/killhouse/one)
+"lz" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/concrete/tile/lythios43c,
+/area/killhouse/one)
+"lC" = (
+/obj/machinery/vending/fitness,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"lK" = (
+/obj/structure/bed/chair/sofa/beige/left{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"lP" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/tile/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"mR" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"mT" = (
+/obj/structure/bed/chair/sofa/beige/right{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"mZ" = (
+/obj/structure/table/hardwoodtable,
+/obj/item/newspaper{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/item/newspaper{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/obj/item/newspaper{
+	pixel_x = 8;
+	pixel_y = 1
+	},
+/obj/item/newspaper{
+	pixel_x = 8;
+	pixel_y = -1
+	},
+/obj/item/pen{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"nc" = (
+/obj/structure/table/hardwoodtable,
+/obj/item/deskbell,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"nx" = (
+/turf/simulated/floor/tiled/freezer,
+/area/killhouse/one)
+"nA" = (
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/carpet/turcarpet,
+/area/killhouse/one)
+"op" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/one)
+"oq" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/structure/table/marble,
+/obj/machinery/microwave{
+	pixel_y = 5
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"oA" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/item/material/knife/butch,
+/obj/item/material/kitchen/rollingpin,
+/obj/structure/table/marble,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"oB" = (
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/obj/machinery/vending/sovietsoda,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"oG" = (
+/obj/structure/trash_pile,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"pc" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/chemical_dispenser/catering/bar_alc{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"pg" = (
+/obj/effect/debris/cleanable/blood/drip,
+/turf/simulated/floor/tiled/freezer,
+/area/killhouse/one)
+"pi" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"pl" = (
+/obj/structure/railing/grey,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/killhouse/one/outside)
+"pz" = (
+/obj/structure/table/wooden_reinforced,
+/obj/structure/flora/pottedplant/shoot{
+	pixel_y = 12
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"pI" = (
+/obj/structure/table/marble,
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = 3
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = 9
+	},
+/obj/item/reagent_containers/food/condiment/spacespice{
+	pixel_x = -8;
+	pixel_y = 13
+	},
+/obj/item/reagent_containers/food/condiment/hotsauce{
+	pixel_y = 16
+	},
+/obj/item/reagent_containers/food/condiment/coldsauce{
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"pO" = (
+/obj/machinery/light/spot,
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/killhouse/one)
+"pY" = (
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"qr" = (
+/turf/simulated/wall/wood,
+/area/killhouse/one)
+"qA" = (
+/obj/machinery/light/spot{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"qN" = (
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"rr" = (
+/obj/structure/bed/chair/wood{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"rN" = (
+/obj/structure/bed/chair/sofa/beige/right{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"rO" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one)
+"sb" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"si" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/killhouse/one)
+"sj" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/trash,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"sm" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"sD" = (
+/obj/effect/debris/cleanable/blood/drip,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/killhouse/one)
+"sI" = (
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = -14
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/one)
+"sX" = (
+/turf/simulated/floor/carpet/bcarpet,
+/area/killhouse/one)
+"tb" = (
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/one)
+"tu" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/one)
+"tA" = (
+/obj/structure/table/wooden_reinforced,
+/obj/structure/flora/pottedplant/bamboo{
+	pixel_y = 11
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"tF" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/tile/lythios43c,
+/area/killhouse/one)
+"vp" = (
+/obj/structure/grille,
+/obj/structure/window/basic/full,
+/obj/structure/curtain/black,
+/turf/simulated/floor/plating,
+/area/killhouse/one)
+"wa" = (
+/obj/structure/table/rack,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 2
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 4
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 6
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 8
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/one)
+"xf" = (
+/obj/structure/bed/padded,
+/obj/item/bedsheet/orange,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"xi" = (
+/obj/structure/fence,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one)
+"xG" = (
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"yg" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/reagentgrinder{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"yt" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"yN" = (
+/obj/structure/fence/door,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one)
+"yW" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"zf" = (
+/obj/structure/table/wooden_reinforced,
+/obj/structure/flora/pottedplant/small{
+	pixel_y = 12
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"zi" = (
+/obj/structure/table/hardwoodtable,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Af" = (
+/obj/effect/debris/cleanable/spiderling_remains,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Aw" = (
+/obj/structure/railing/grey,
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/ausbushes/sunnybush,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/killhouse/one/outside)
+"AJ" = (
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"AU" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/circuitboard/cell_charger,
+/obj/item/stack/cable_coil/white,
+/obj/item/stack/cable_coil/white,
+/obj/item/cell/high,
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/one)
+"AV" = (
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one)
+"Bu" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"BA" = (
+/obj/structure/bed/chair/sofa/beige{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"BK" = (
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"BU" = (
+/obj/machinery/vending/loadout/uniform,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Cg" = (
+/obj/structure/railing/grey,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/killhouse/one/outside)
+"Ct" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/killhouse/one)
+"CI" = (
+/obj/structure/mopbucket,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/mop,
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/one)
+"CO" = (
+/obj/structure/railing/grey,
+/obj/structure/flora/ausbushes/genericbush,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/killhouse/one/outside)
+"CP" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = -4
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 5
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/one)
+"De" = (
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/one)
+"Dw" = (
+/obj/effect/debris/cleanable/cobweb,
+/obj/structure/bed/chair/bay/chair/padded/green,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"DR" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/structure/table/marble,
+/obj/machinery/reagentgrinder{
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/dropper{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/dropper{
+	pixel_y = -18
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"Ei" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/killhouse/one)
+"EJ" = (
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"EL" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/killhouse/one)
+"EY" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/killhouse/one)
+"FR" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"FS" = (
+/obj/machinery/light/small,
+/obj/machinery/vending/loadout/clothing,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"GB" = (
+/obj/effect/floor_decal/spline/plain,
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/tiled/freezer,
+/area/killhouse/one)
+"GG" = (
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Hl" = (
+/obj/structure/table/wooden_reinforced,
+/obj/structure/flora/pottedplant/smallcactus{
+	pixel_y = 12
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"HA" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/vending/dinnerware{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"Iu" = (
+/obj/structure/closet/crate/trashcart,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"IJ" = (
+/obj/structure/bed/padded,
+/obj/item/bedsheet/red,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"IS" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/reagent_containers/food/drinks/bottle/wine,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"IT" = (
+/obj/structure/simple_door/wood,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"Jh" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/killhouse/one)
+"Jn" = (
+/turf/simulated/floor/concrete/tile/lythios43c,
+/area/killhouse/one)
+"JB" = (
+/obj/structure/bed/padded,
+/obj/item/bedsheet/brown,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"JC" = (
+/obj/item/storage/box/glasses/meta,
+/obj/structure/table/hardwoodtable,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"JO" = (
+/obj/structure/railing/grey,
+/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/killhouse/one/outside)
+"JS" = (
+/obj/structure/bed/padded,
+/obj/item/bedsheet/blue,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Ky" = (
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"KJ" = (
+/obj/item/stool/padded,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"KO" = (
+/obj/structure/table/wooden_reinforced,
+/obj/structure/flora/pottedplant/decorative{
+	pixel_y = 10
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Ld" = (
+/obj/structure/kitchenspike,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/killhouse/one)
+"LM" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/killhouse/one)
+"My" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/turf/simulated/floor/tiled/freezer,
+/area/killhouse/one)
+"MR" = (
+/obj/structure/trash_pile,
+/obj/machinery/power/apc/hyper/east_bump{
+	cell_type = /obj/item/cell/infinite
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"MU" = (
+/obj/structure/kitchenspike,
+/obj/effect/debris/cleanable/blood,
+/turf/simulated/floor/tiled/freezer,
+/area/killhouse/one)
+"MZ" = (
+/obj/structure/bed/chair/wood,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Nl" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"Nq" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/concrete/tile/lythios43c,
+/area/killhouse/one)
+"ND" = (
+/obj/machinery/vending/snack,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Oo" = (
+/obj/machinery/vending/boozeomat{
+	pixel_x = -64;
+	req_access = null
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Or" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/reagent_containers/food/drinks/bottle/whitewine,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"OK" = (
+/turf/simulated/floor/concrete/tile/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"Pc" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/gibber,
+/obj/effect/debris/cleanable/blood,
+/turf/simulated/floor/tiled/freezer,
+/area/killhouse/one)
+"Pw" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/concrete/tile/lythios43c,
+/area/killhouse/one)
+"PH" = (
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"PI" = (
+/obj/structure/bed/chair/sofa/beige/left{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Qk" = (
+/obj/machinery/door/window/eastleft,
+/obj/machinery/holosign/bar{
+	pixel_y = 31
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Ql" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	dir = 4
+	},
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Qx" = (
+/obj/structure/bed/padded,
+/obj/item/bedsheet/green,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"QQ" = (
+/obj/machinery/light/spot{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"QW" = (
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Rc" = (
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Rm" = (
+/obj/machinery/light/spot{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/obj/structure/table/wooden_reinforced,
+/obj/structure/flora/pottedplant/flower{
+	pixel_y = 12
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Rq" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/concrete/tile/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"SI" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"SU" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Tg" = (
+/obj/structure/bed/chair/sofa/beige/left{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"TL" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/storage/box/glasses/wine,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"TO" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/one)
+"Ug" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/item/trash,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one/outside)
+"Ui" = (
+/turf/template_noop,
+/area/template_noop)
+"UA" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/structure/table/standard,
+/obj/item/storage/box/papersack{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/storage/box/papersack{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/item/storage/box/papersack{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/box/papersack,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"UI" = (
+/obj/structure/grille,
+/obj/structure/window/basic/full,
+/turf/simulated/floor/plating,
+/area/killhouse/one)
+"VF" = (
+/obj/structure/table/standard,
+/obj/item/book/manual/chef_recipes,
+/obj/effect/floor_decal/corner/grey/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"VR" = (
+/obj/structure/bed/chair/sofa/beige{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Wj" = (
+/obj/effect/debris/cleanable/spiderling_remains,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"WZ" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/chemical_dispenser/catering/bar_soft{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Xb" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/debris/cleanable/blood/drip,
+/turf/simulated/floor/tiled/freezer,
+/area/killhouse/one)
+"XF" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/killhouse/one)
+"Ye" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"YH" = (
+/obj/structure/fence/corner{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one)
+"YY" = (
+/obj/structure/bed/chair/sofa/beige/right{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Zb" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/structure/simple_door/wood,
+/obj/effect/debris/cleanable/blood/drip,
+/turf/simulated/floor/tiled/freezer,
+/area/killhouse/one)
+"ZK" = (
+/obj/structure/table/wooden_reinforced,
+/obj/structure/flora/pottedplant/smallcactus{
+	pixel_y = 12
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"ZM" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"ZX" = (
+/obj/structure/bed/chair/wood{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"ZZ" = (
+/obj/machinery/door/window/eastright,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+
+(1,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(2,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(3,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(4,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(5,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(6,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(7,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(8,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(9,1,1) = {"
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(10,1,1) = {"
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+EJ
+EJ
+iw
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+"}
+(11,1,1) = {"
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+qr
+qr
+vp
+vp
+vp
+qr
+vp
+vp
+vp
+qr
+qr
+qr
+qr
+kT
+iw
+EJ
+EJ
+SI
+qr
+qr
+qr
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+"}
+(12,1,1) = {"
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+pz
+Rc
+Rc
+AJ
+AJ
+AJ
+Rc
+AJ
+AJ
+AJ
+Rc
+Rc
+pY
+qr
+oG
+EJ
+EJ
+EJ
+iw
+Pw
+tF
+Jn
+Jn
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+"}
+(13,1,1) = {"
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+zf
+Rc
+QW
+Rc
+Rc
+yt
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+qr
+Iu
+EJ
+iw
+EJ
+EJ
+Pw
+Jn
+Jn
+Jn
+Jn
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+"}
+(14,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+Rc
+Rc
+Rc
+Rc
+Rc
+yt
+Rc
+Rc
+xG
+lK
+VR
+mT
+xG
+lK
+VR
+mT
+xG
+Rc
+Rc
+qr
+sj
+EJ
+EJ
+EJ
+EJ
+qr
+qr
+Jn
+Jn
+Jn
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+"}
+(15,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+Rc
+Rc
+qr
+qr
+qr
+qr
+Rc
+Rc
+qr
+AJ
+AJ
+AJ
+qr
+AJ
+AJ
+AJ
+qr
+ZK
+Rc
+qr
+Iu
+MR
+Ug
+sj
+dJ
+qr
+qr
+qr
+Jn
+lz
+qr
+qr
+qr
+qr
+lP
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+"}
+(16,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+Rc
+Rc
+qr
+sI
+hb
+qr
+Rc
+Rc
+QW
+rN
+ll
+PI
+QW
+rN
+ll
+PI
+QW
+Rc
+Rc
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+Jn
+Jn
+Jn
+Jn
+Jn
+Pw
+OK
+OK
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(17,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+Rc
+Rc
+TO
+De
+De
+qr
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+pY
+qr
+JC
+Ql
+WZ
+pc
+yg
+fh
+qr
+Jn
+Jn
+Jn
+Jn
+Jn
+Pw
+OK
+OK
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(18,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+fu
+Rc
+qr
+en
+CI
+qr
+pY
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+EY
+Ei
+Rc
+Rc
+UI
+Rc
+Rc
+Rc
+Rc
+Rc
+Oo
+qr
+Jn
+lz
+qr
+qr
+qr
+qr
+lP
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(19,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+Rc
+Rc
+qr
+qr
+qr
+qr
+qr
+yt
+yt
+qr
+qr
+qr
+qr
+qr
+fu
+Rc
+EL
+nA
+Rc
+Rc
+UI
+Rc
+Rc
+KJ
+KJ
+Rc
+Rc
+qr
+Jn
+Jn
+qr
+lo
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(20,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Rq
+qr
+dn
+Rc
+Rc
+Rc
+PH
+Rc
+Ye
+qr
+SU
+Rc
+Rc
+kb
+Rc
+Rm
+qr
+cX
+Rc
+EL
+nA
+Rc
+FR
+qr
+Qk
+fh
+fh
+fh
+fh
+ZZ
+qr
+Nq
+Nq
+qr
+pl
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(21,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+OK
+OK
+dT
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+yt
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+yt
+Rc
+Rc
+EL
+nA
+Rc
+Rc
+yt
+Rc
+KJ
+KJ
+KJ
+KJ
+Rc
+Rc
+Rc
+Rc
+vp
+Aw
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(22,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+OK
+OK
+dT
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+yt
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+yt
+Rc
+Rc
+XF
+si
+Rc
+Rc
+yt
+Rc
+Rc
+xG
+Rc
+Rc
+Rc
+xG
+Rc
+Rc
+vp
+hf
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(23,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Rq
+qr
+dn
+Rc
+Rc
+Rc
+Rc
+Rc
+Ye
+qr
+SU
+Rc
+tA
+Rc
+Bu
+QQ
+qr
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+qr
+Rc
+Rc
+qr
+Rc
+Rc
+Rc
+qr
+Rc
+Rc
+vp
+pl
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(24,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+Rc
+Rc
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+Rc
+FR
+qr
+qr
+fu
+Rc
+qr
+Rc
+Rc
+qr
+Rc
+Rc
+Rc
+qr
+Rc
+Rc
+qr
+CO
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(25,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+fu
+Rc
+qr
+fj
+sb
+sm
+sm
+sb
+VF
+qr
+UA
+cV
+ZM
+qr
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+qr
+Rc
+Rc
+QW
+Rc
+Rc
+Rc
+QW
+Rc
+Rc
+qr
+qr
+bF
+bF
+bF
+bF
+EJ
+bF
+bF
+bF
+bF
+EJ
+bF
+bF
+bF
+bF
+EJ
+bF
+bF
+bF
+"}
+(26,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+Rc
+Rc
+ah
+sm
+sm
+sm
+sm
+sm
+sm
+qr
+sm
+sm
+sm
+nc
+Rc
+Rc
+rr
+rr
+Rc
+Rc
+qr
+Rc
+MZ
+IS
+ZX
+Rc
+Rc
+Rc
+Rc
+LM
+lt
+dn
+lP
+bF
+bF
+EJ
+Ky
+EJ
+bF
+bF
+EJ
+Ky
+EJ
+bF
+bF
+EJ
+Ky
+EJ
+bF
+bF
+"}
+(27,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+Rc
+Rc
+Rc
+qr
+sm
+DR
+oA
+pI
+oq
+sm
+az
+sm
+sm
+sm
+zi
+Rc
+Rc
+AJ
+AJ
+Rc
+Rc
+qr
+Rc
+MZ
+TL
+ZX
+Rc
+LM
+Jh
+Jh
+sX
+iI
+yt
+OK
+OK
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+bF
+"}
+(28,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+Hl
+Rc
+Rc
+rr
+qr
+sm
+sm
+sm
+sm
+sm
+sm
+az
+sm
+sm
+sm
+zi
+Rc
+Rc
+gh
+gh
+Rc
+Rc
+qr
+Rc
+MZ
+Or
+ZX
+Rc
+ku
+Ct
+Ct
+sX
+iI
+yt
+OK
+OK
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+EJ
+bF
+"}
+(29,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+vp
+Tg
+Rc
+Rc
+AJ
+qr
+HA
+dO
+sm
+sm
+dO
+sm
+az
+sm
+sm
+sm
+mZ
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+qr
+Rc
+MZ
+AJ
+ZX
+Rc
+Rc
+Rc
+Rc
+ku
+pO
+dn
+lP
+bF
+bF
+EJ
+Ky
+EJ
+bF
+bF
+EJ
+Ky
+EJ
+bF
+bF
+EJ
+Ky
+EJ
+bF
+bF
+"}
+(30,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+vp
+BA
+Rc
+Rc
+gh
+qr
+qr
+qr
+yt
+qr
+qr
+qr
+qr
+qr
+az
+az
+qr
+fu
+AJ
+AJ
+AJ
+AJ
+FR
+qr
+Rc
+Rc
+xG
+Rc
+Rc
+Rc
+xG
+Rc
+Rc
+qr
+qr
+bF
+bF
+bF
+bF
+EJ
+bF
+bF
+bF
+bF
+EJ
+bF
+bF
+bF
+bF
+EJ
+bF
+bF
+bF
+"}
+(31,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+vp
+BA
+Rc
+Rc
+rr
+qr
+Dw
+AJ
+Rc
+qr
+Xb
+Pc
+My
+qr
+sm
+mR
+qr
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+qr
+Rc
+Rc
+qr
+Rc
+Rc
+Rc
+qr
+Rc
+Rc
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(32,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+vp
+YY
+Rc
+Rc
+AJ
+qr
+Wj
+Rc
+Rc
+Zb
+nx
+nx
+pg
+qr
+sm
+sm
+qr
+Rc
+Rc
+rr
+rr
+Rc
+Rc
+qr
+Rc
+Rc
+qr
+Rc
+Rc
+tA
+qr
+Rc
+Rc
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(33,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+KO
+Rc
+Rc
+gh
+qr
+AJ
+AJ
+Rc
+qr
+MU
+nx
+nx
+qr
+sm
+sm
+qr
+Rc
+Rc
+AJ
+AJ
+Rc
+Rc
+qr
+Rc
+Rc
+QW
+Rc
+Rc
+Rc
+QW
+Rc
+Rc
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(34,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+lC
+Rc
+Rc
+yt
+Rc
+Rc
+Af
+qr
+gA
+pg
+nx
+GB
+sm
+sm
+dT
+Rc
+Rc
+gh
+gh
+Rc
+Rc
+qr
+PH
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(35,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+Rc
+Rc
+qr
+aS
+yW
+AJ
+qr
+Ld
+nx
+sD
+qr
+Nl
+HA
+qr
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+qr
+Bu
+Rc
+Rc
+Rc
+Rc
+Rc
+qr
+qr
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(36,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+fu
+Rc
+qr
+qr
+qr
+qr
+qr
+qr
+IT
+qr
+qr
+qr
+qr
+qr
+Rc
+FR
+qr
+qr
+fu
+Rc
+qr
+ND
+Rc
+Rc
+Rc
+Rc
+pY
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(37,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Rq
+qr
+dn
+Rc
+Rc
+Rc
+Rc
+Rc
+Ye
+qr
+SU
+Rc
+Rc
+ZK
+Rc
+qA
+qr
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+qr
+qr
+qr
+qr
+yt
+yt
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(38,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+OK
+OK
+dT
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+yt
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+yt
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+KJ
+AJ
+KJ
+Rc
+FR
+qr
+Cg
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(39,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+OK
+OK
+dT
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+yt
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+yt
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+vp
+pl
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(40,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Rq
+qr
+dn
+Rc
+Rc
+Rc
+Rc
+Rc
+Ye
+qr
+SU
+Rc
+PH
+pi
+pi
+QQ
+qr
+qN
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+vp
+CO
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+"}
+(41,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+yt
+yt
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+oB
+Rc
+Rc
+Rc
+Rc
+FR
+qr
+JO
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+"}
+(42,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+rO
+AV
+AV
+au
+qr
+ld
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+ld
+Rc
+Rc
+Rc
+Rc
+Rc
+yt
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+"}
+(43,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+yN
+AV
+AV
+AV
+dT
+Rc
+Rc
+Rc
+yW
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+yW
+Rc
+yt
+Rc
+Rc
+Rc
+Rc
+Rc
+pY
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+"}
+(44,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+YH
+xi
+xi
+xi
+qr
+qr
+op
+qr
+qr
+qr
+qr
+qr
+yt
+yt
+qr
+qr
+qr
+qr
+qr
+qr
+op
+qr
+qr
+qr
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+"}
+(45,1,1) = {"
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+CP
+De
+qr
+GG
+Rc
+AJ
+qr
+SU
+Rc
+qr
+GG
+Rc
+AJ
+qr
+wa
+De
+De
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+"}
+(46,1,1) = {"
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+AU
+bq
+qr
+Rc
+Rc
+Rc
+yt
+Rc
+Rc
+yt
+Rc
+Rc
+Rc
+qr
+wa
+tu
+tb
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+"}
+(47,1,1) = {"
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+qr
+qr
+kU
+Rc
+IJ
+qr
+Rc
+Ye
+qr
+kU
+Rc
+xf
+qr
+qr
+qr
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+"}
+(48,1,1) = {"
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+Rc
+Bu
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+"}
+(49,1,1) = {"
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+qr
+AJ
+Rc
+BK
+qr
+SU
+Rc
+qr
+AJ
+Rc
+kU
+qr
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+"}
+(50,1,1) = {"
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+qr
+Rc
+Rc
+Rc
+yt
+Rc
+Rc
+yt
+Rc
+Rc
+Rc
+qr
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(51,1,1) = {"
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+JS
+Rc
+kU
+qr
+Rc
+Ye
+qr
+GG
+Rc
+dP
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(52,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+qr
+qr
+qr
+qr
+ND
+Rc
+qr
+qr
+qr
+qr
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(53,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+AJ
+AJ
+AJ
+qr
+SU
+Rc
+qr
+kU
+Rc
+AJ
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(54,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+GG
+Rc
+Rc
+yt
+Rc
+Rc
+yt
+Rc
+Rc
+Rc
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(55,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+kU
+Rc
+JB
+qr
+Rc
+Rc
+qr
+GG
+Rc
+Qx
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(56,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+qr
+qr
+qr
+BU
+FS
+qr
+qr
+qr
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(57,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+qr
+qr
+qr
+qr
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(58,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(59,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}
+(60,1,1) = {"
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+bF
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+Ui
+"}

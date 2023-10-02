@@ -5,6 +5,7 @@
 
 /datum/surgery_step/robotics/
 	can_infect = 0
+	surface_odd_buff = 30 // can do it basically anywhere but a floor
 
 /datum/surgery_step/robotics/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (isslime(target))
@@ -36,8 +37,8 @@
 
 	req_open = 0
 
-	min_duration = 90
-	max_duration = 110
+	min_duration = 20
+	max_duration = 30
 
 /datum/surgery_step/robotics/unscrew_hatch/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
@@ -74,8 +75,8 @@
 
 	allowed_procs = list(IS_CROWBAR = 100)
 
-	min_duration = 30
-	max_duration = 40
+	min_duration = 20
+	max_duration = 30
 
 /datum/surgery_step/robotics/open_hatch/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
@@ -112,8 +113,8 @@
 
 	allowed_procs = list(IS_CROWBAR = 100)
 
-	min_duration = 70
-	max_duration = 100
+	min_duration = 20
+	max_duration = 30
 
 /datum/surgery_step/robotics/close_hatch/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
@@ -148,8 +149,8 @@
 		/obj/item/pickaxe/plasmacutter = 50
 	)
 
-	min_duration = 50
-	max_duration = 60
+	min_duration = 20
+	max_duration = 20
 
 /datum/surgery_step/robotics/repair_brute/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
@@ -170,7 +171,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] finishes patching damage to [target]'s [affected.name] with \the [tool].</span>", \
 	"<span class='notice'>You finish patching damage to [target]'s [affected.name] with \the [tool].</span>")
-	affected.heal_damage(rand(30,50),0,1,1)
+	affected.heal_damage(20, 0, 1, 1)
 	affected.disfigured = 0
 
 /datum/surgery_step/robotics/repair_brute/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -188,8 +189,8 @@
 		/obj/item/stack/cable_coil = 100
 	)
 
-	min_duration = 50
-	max_duration = 60
+	min_duration = 20
+	max_duration = 20
 
 /datum/surgery_step/robotics/repair_burn/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
@@ -200,11 +201,11 @@
 				to_chat(user, "<span class='notice'>There are no burnt wires here!</span>")
 				return SURGERY_FAILURE
 			else
-				if(!C.can_use(5))
+				if(!C.can_use(1))
 					to_chat(user, "<span class='danger'>You need at least five cable pieces to repair this part.</span>") //usage amount made more consistent with regular cable repair
 					return SURGERY_FAILURE
 				else
-					C.use(5)
+					C.use(1)
 
 		return affected && affected.open == 3 && (affected.disfigured || affected.burn_dam > 0) && target_zone != O_MOUTH
 
@@ -218,7 +219,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] finishes splicing cable into [target]'s [affected.name].</span>", \
 	"<span class='notice'>You finishes splicing new cable into [target]'s [affected.name].</span>")
-	affected.heal_damage(0,rand(30,50),1,1)
+	affected.heal_damage(0, 20, 1, 1)
 	affected.disfigured = 0
 
 /datum/surgery_step/robotics/repair_burn/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -280,7 +281,7 @@
 				"<span class='notice'>You repair [target]'s [I.name] with [tool].</span>" )
 				I.revive(TRUE)
 				if(I.organ_tag == O_EYES)
-					target.sdisabilities &= ~BLIND
+					target.sdisabilities &= ~SDISABILITY_NERVOUS
 
 /datum/surgery_step/robotics/fix_organ_robotic/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
@@ -291,7 +292,7 @@
 	"<span class='warning'>Your hand slips, gumming up the mechanisms inside of [target]'s [affected.name] with \the [tool]!</span>")
 
 	target.adjustToxLoss(5)
-	affected.createwound(CUT, 5)
+	affected.create_wound(CUT, 5)
 
 	for(var/obj/item/organ/I in affected.internal_organs)
 		if(I)
@@ -459,7 +460,7 @@
 	holder.update_from_mmi()
 
 	if(M.brainmob && M.brainmob.mind)
-		M.brainmob.mind.transfer_to(target)
+		M.brainmob.mind.transfer(target)
 		target.languages = M.brainmob.languages
 
 	spawn(0) //Name yourself on your own damn time
@@ -480,13 +481,13 @@
 	user.visible_message("<span class='warning'>[user]'s hand slips.</span>", \
 	"<span class='warning'>Your hand slips.</span>")
 
-/*
- * Install a Diona Nymph into a Nymph Mech
+/**
+ *! Install a Diona Nymph into a Nymph Mech
  */
 
 /datum/surgery_step/robotics/install_nymph
 	allowed_tools = list(
-	/obj/item/holder/diona = 100
+		/obj/item/holder/diona = 100
 	)
 
 	min_duration = 60
@@ -500,43 +501,48 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
 	if(!(affected && affected.open == 3))
-		return 0
+		return FALSE
 
 	if(!istype(N))
-		return 0
+		return FALSE
 
 	if(!N.held_mob.client || N.held_mob.stat >= DEAD)
-		to_chat(user, "<span class='danger'>That nymph is not viable.</span>")
+		to_chat(user, SPAN_DANGER("That nymph is not viable."))
 		return SURGERY_FAILURE
 
 	if(!(affected.robotic >= ORGAN_ROBOT))
-		to_chat(user, "<span class='danger'>You cannot install a nymph into a meat puppet.</span>")
+		to_chat(user, SPAN_DANGER("You cannot install a nymph into a meat puppet.")) // No meat muppet for you.
 		return SURGERY_FAILURE
 
 	if(!(affected.model != "Skrellian Exoskeleton"))
-		to_chat(user, "<span class='dangerou'>You're fairly certain a nymph can't pilot a normal robot.</span>")
+		to_chat(user, SPAN_DANGER("You're fairly certain a nymph can't pilot a normal robot.<"))
 		return SURGERY_FAILURE
 
 	if(!target.should_have_organ("brain"))
-		to_chat(user, "<span class='danger'>You're pretty sure [target.species.name_plural] don't normally have a brain.</span>")
+		to_chat(user, SPAN_DANGER("You're pretty sure [target.species.name_plural] don't normally have a brain."))
 		return SURGERY_FAILURE
 
 	if(!isnull(target.internal_organs["brain"]))
-		to_chat(user, "<span class='danger'>Your subject already has a cephalon.</span>")
+		to_chat(user, SPAN_DANGER("Your subject already has a cephalon."))
 		return SURGERY_FAILURE
 
-	return 1
+	return TRUE
 
 /datum/surgery_step/robotics/install_nymph/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] starts setting \the [tool] into [target]'s [affected.name].", \
-	"You start setting \the [tool] into [target]'s [affected.name].")
+	user.visible_message(
+		SPAN_NOTICE("[user] starts setting \the [tool] into [target]'s [affected.name]."),
+		SPAN_NOTICE("You start setting \the [tool] into [target]'s [affected.name]."),
+		SPAN_HEAR("You hear something being placed inside something."),
+	)
 	..()
 
 /datum/surgery_step/robotics/install_nymph/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='notice'>[user] has installed \the [tool] into [target]'s [affected.name].</span>", \
-	"<span class='notice'>You have installed \the [tool] into [target]'s [affected.name].</span>")
+	user.visible_message(
+		SPAN_NOTICE("[user] has installed \the [tool] into [target]'s [affected.name]."),
+		SPAN_NOTICE("You have installed \the [tool] into [target]'s [affected.name]."),
+	)
 
 	var/obj/item/holder/diona/N = tool
 	var/obj/item/organ/internal/brain/cephalon/cephalon = new(target, 1)
@@ -545,20 +551,21 @@
 	user.drop_item_to_ground(tool, INV_OP_FORCE)
 
 	if(D && D.mind)
-		D.mind.transfer_to(target)
+		D.mind.transfer(target)
 		target.languages |= D.languages
 
 	qdel(D)
 
 	target.set_species(/datum/species/diona)
 
-	target.verbs |= /mob/living/carbon/human/proc/diona_split_nymph
-	target.verbs |= /mob/living/carbon/human/proc/regenerate
+	add_verb(target, /mob/living/carbon/human/proc/diona_split_nymph)
+	add_verb(target, /mob/living/carbon/human/proc/regenerate)
 
 	spawn(0) //Name yourself on your own damn time
 		var/new_name = ""
 		while(!new_name)
-			if(!target) return
+			if(!target)
+				return
 			var/try_name = input(target,"Pick a name for your new form!", "New Name", target.name)
 			var/clean_name = sanitizeName(try_name)
 			if(clean_name)
@@ -570,5 +577,7 @@
 		target.real_name = target.name
 
 /datum/surgery_step/robotics/install_nymph/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<span class='warning'>[user]'s hand slips.</span>", \
-	"<span class='warning'>Your hand slips.</span>")
+	user.visible_message(
+		SPAN_WARNING("[user]'s hand slips."),
+		SPAN_WARNING("Your hand slips."),
+	)

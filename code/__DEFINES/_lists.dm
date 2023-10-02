@@ -1,11 +1,12 @@
 /*
  * Holds procs to help with list operations
  */
-
 /// Picks from the list, with some safeties, and returns the "default" arg if it fails
 #define DEFAULTPICK(L, default) ((istype(L, /list) && L:len) ? pick(L) : default)
 /// Ensures L is initailized after this point
-#define LAZYINITLIST(L) if (!L) L = list()
+#define LAZYINITLIST(L) if (isnull(L)) L = list()
+/// Ensures L is initialized and uses it as a rvalue
+#define LAZYGETLIST(L) (isnull(L)? (L = list()) : L)
 /// Sets a L back to null iff it is empty
 #define UNSETEMPTY(L) if (L && !length(L)) L = null
 /// Removes I from list L, and sets I to null if it is now empty
@@ -14,8 +15,7 @@
 #define LAZYADD(L, I) if(!L) { L = list(); } L += I;
 /// Adds I to L, initalizing L if necessary, if I is not already in L
 #define LAZYDISTINCTADD(L, I) if(!L) { L = list(); } L |= I;
-/// please use LAZYDISTINCTADD instead, this is juts an alias for tgcode ports
-#define LAZYOR(L, I) LAZYDISTINCTADD(L, I)
+/// Calls L.Find(V) if L exists, otherwise evals to 0.
 #define LAZYFIND(L, V) (L ? L.Find(V) : 0)
 /// Reads I from L safely - Works with both associative and traditional lists.
 #define LAZYACCESS(L, I) (L ? (isnum(I) ? (I > 0 && I <= length(L) ? L[I] : null) : L[I]) : null)
@@ -27,6 +27,8 @@
 #define LAZYNULL(L) L = null
 /// Null-safe L.Cut()
 #define LAZYCLEARLIST(L) if(L) L.Cut()
+/// Null-safe L.Copy()
+#define LAZYCOPY(L) (L? L.Copy() : null)
 /// Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
 #define SANITIZE_LIST(L) ( islist(L) ? L : list() )
 #define SANITIZE_TO_LIST(L) ( islist(L) ? L : list(L) )
@@ -39,6 +41,11 @@
 // Returns the key based on the index
 #define KEYBYINDEX(L, index) (((index <= length(L)) && (index > 0)) ? L[index] : null)
 
+/// sanitize a lazy null-or-entry-or-list into always a list
+#define COERCE_OPTIONS_LIST(Entry) (islist(Entry)? Entry : (isnull(Entry)? list() : list(Entry)))
+/// COERCE_OPTIONS_LIST but does it to an existing variablew.
+#define COERCE_OPTIONS_LIST_IN(Variable) Variable = COERCE_OPTIONS_LIST(Variable)
+
 /// Passed into BINARY_INSERT to compare keys
 #define COMPARE_KEY __BIN_LIST[__BIN_MID]
 /// Passed into BINARY_INSERT to compare values
@@ -46,6 +53,8 @@
 
 /****
 	* Binary search sorted insert
+	* Sorts low to high.
+	*
 	* INPUT: Object to be inserted
 	* LIST: List to insert object into
 	* TYPECONT: The typepath of the contents of the list

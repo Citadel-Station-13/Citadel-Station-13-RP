@@ -2,7 +2,7 @@
 	icon_state = "picket"
 	name = "blank picket sign"
 	desc = "It's blank."
-	force = 5
+	damage_force = 5
 	w_class = WEIGHT_CLASS_BULKY
 	attack_verb = list("bashed","smacked")
 
@@ -12,7 +12,7 @@
 /obj/item/picket_sign/cyborg
 	name = "metallic nano-sign"
 	desc = "A high tech picket sign used by silicons that can reprogram its surface at will. Probably hurts to get hit by, too."
-	force = 13
+	damage_force = 13
 
 /obj/item/picket_sign/proc/retext(mob/user)
 	var/txt = stripped_input(user, "What would you like to write on the sign?", "Sign Label", null , 30)
@@ -27,7 +27,10 @@
 	else
 		return ..()
 
-/obj/item/picket_sign/attack_self(mob/living/carbon/human/user)
+/obj/item/picket_sign/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if( last_wave + 20 < world.time )
 		last_wave = world.time
 		if(label)

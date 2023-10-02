@@ -1,5 +1,5 @@
 //Returns 1 if the turf is dense, or if there's dense objects/mobs on it, unless told to ignore them.
-/turf/proc/check_density(var/ignore_objs = FALSE, var/ignore_mobs = FALSE)
+/turf/proc/check_density(ignore_objs, ignore_mobs, ignore_border)
 	if(density)
 		return TRUE
 	if(!ignore_objs || !ignore_mobs)
@@ -8,6 +8,8 @@
 				if(ignore_objs && isobj(stuff))
 					continue
 				else if(ignore_mobs && isliving(stuff)) // Ghosts aren't dense but keeping this limited to living type will probably save headaches in the future.
+					continue
+				else if(ignore_border && (stuff.atom_flags & ATOM_BORDER))
 					continue
 				else
 					return TRUE
@@ -27,7 +29,7 @@
 
 /obj/item/spell/proc/allowed_to_teleport()
 	if(owner)
-		if(owner.z in GLOB.using_map.admin_levels)
+		if(owner.z in (LEGACY_MAP_DATUM).admin_levels)
 			return FALSE
 
 		var/turf/T = get_turf(owner)

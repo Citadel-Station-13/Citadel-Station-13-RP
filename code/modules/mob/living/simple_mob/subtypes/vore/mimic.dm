@@ -14,6 +14,7 @@
 	icon_state = "mimic"
 	icon_opened = "open"
 	icon_closed = "mimic"
+	closet_appearance = /singleton/closet_appearance/crate
 	var/mimic_chance = 30
 	var/mimic_active = TRUE
 
@@ -34,7 +35,7 @@
 			new_mimic.real_crate = src
 			new_mimic.name = name
 			new_mimic.desc = desc
-			new_mimic.icon = icon
+			new_mimic.icon = 'icons/mob/mimic.dmi'
 			new_mimic.icon_state = "mimicopen"
 			new_mimic.icon_living = "mimicopen"
 		else
@@ -42,7 +43,7 @@
 	else
 		return ..()
 
-/obj/structure/closet/crate/mimic/ex_act(severity) //Stores Mimic Contents for later
+/obj/structure/closet/crate/mimic/legacy_ex_act(severity) //Stores Mimic Contents for later
 	for(var/obj/O in src.contents)
 		qdel(O)
 	qdel(src)
@@ -123,7 +124,7 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(knockdown_chance))
-			L.Weaken(3)
+			L.afflict_paralyze(20 * 3)
 			L.visible_message(SPAN_DANGER("\The [src] knocks down \the [L]!"))
 
 /mob/living/simple_mob/vore/aggressive/mimic/will_show_tooltip()
@@ -148,6 +149,7 @@
 	anchored = 1 //You will not be able to push back the airlock mimic
 	density = 1
 	opacity = 1
+	closet_appearance = null
 
 /obj/structure/closet/crate/mimic/airlock/open()
 	if(src.opened)
@@ -175,7 +177,7 @@
 	else
 		return ..()
 
-/obj/structure/closet/crate/mimic/airlock/ex_act(severity) //Stores Mimic Contents for later
+/obj/structure/closet/crate/mimic/airlock/legacy_ex_act(severity) //Stores Mimic Contents for later
 	for(var/obj/O in src.contents)
 		qdel(O)
 	qdel(src)
@@ -214,7 +216,7 @@
 	melee_damage_upper = 30
 	attack_armor_pen = 50 //Its jaw is an airlock. Its got enough bite strength.
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 70,
 				"bullet" = 30,
 				"laser" = 30,
@@ -237,9 +239,7 @@
 	name = "old closet"
 	desc = "It's a basic storage unit. It seems awfully rickety."
 	icon_state = "cmimic"
-	icon = 'icons/mob/animal.dmi'
-	icon_opened = "copen"
-	icon_closed = "cmimic"
+	closet_appearance = /singleton/closet_appearance
 	mimic_chance = 30
 	mimic_active = TRUE
 
@@ -258,7 +258,7 @@
 			new_mimic.real_crate = src
 			new_mimic.name = name
 			new_mimic.desc = desc
-			new_mimic.icon = icon
+			new_mimic.icon = 'icons/mob/animal.dmi'
 			new_mimic.icon_state = "cmimicopen"
 			new_mimic.icon_living = "cmimicopen"
 		else
@@ -266,7 +266,7 @@
 	else
 		return ..()
 
-/obj/structure/closet/crate/mimic/closet/ex_act(severity) //Stores Mimic Contents for later
+/obj/structure/closet/crate/mimic/closet/legacy_ex_act(severity) //Stores Mimic Contents for later
 	for(var/obj/O in src.contents)
 		qdel(O)
 	qdel(src)
@@ -307,7 +307,7 @@
 	melee_damage_upper = 20
 	attack_armor_pen =  25 // NOM NOM
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 10,
 				"bullet" = 20,
 				"laser" = 20,
@@ -372,7 +372,7 @@
 	else
 		return ..()
 
-/obj/effect/floormimic/ex_act(severity)
+/obj/effect/floormimic/legacy_ex_act(severity)
 	qdel(src)
 
 /obj/effect/floormimic/safe

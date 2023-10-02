@@ -1,3 +1,6 @@
+/datum/vision/baseline/demon
+	hard_darksight = 0
+
 /mob/living/simple_mob/vore/demon
 	name = "Rift Walker"
 	desc = "A large bipedal creature, body a mix of dark fur and scales. Marks on the creatures body pulse slowly with red light"
@@ -13,8 +16,7 @@
 	health = 30
 	movement_cooldown = 0
 
-	see_in_dark = 10
-	seedarkness = FALSE
+	vision_innate = /datum/vision/baseline/demon
 
 	min_oxy = 0
 	max_oxy = 0
@@ -83,9 +85,8 @@
 	else
 		return .=..()
 
-/mob/living/simple_mob/vore/demon/update_canmove()
+// todo: better way
+/mob/living/simple_mob/vore/demon/update_mobility()
 	if(is_shifting)
-		canmove = FALSE
-		return canmove
-	else
-		return ..()
+		return (mobility_flags = MOBILITY_CAN_MOVE)
+	return ..()

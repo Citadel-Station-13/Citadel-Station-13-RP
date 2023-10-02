@@ -21,7 +21,7 @@
 
 	var/attack_type = RESIST_ATTACK_DEFAULT
 
-	if(H.gloves && istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig))
+	if(H.gloves && istype(H.gloves,/obj/item/clothing/gloves/gauntlets/hardsuit))
 		breakouttime /= 2	// Pneumatic force goes a long way.
 	else if(H.species.unarmed_types)
 		for(var/datum/unarmed_attack/U in H.species.unarmed_types)
@@ -51,7 +51,7 @@
 			"<span class='warning'>You gnaw on \the [SJ]. (This will take around [round(breakouttime / 600)] minutes and you need to stand still.)</span>"
 			)
 
-	if(do_after(src, breakouttime, incapacitation_flags = INCAPACITATION_DISABLED & INCAPACITATION_KNOCKDOWN))
+	if(do_after(src, breakouttime, mobility_flags = MOBILITY_CAN_RESIST))
 		if(!wear_suit)
 			return
 		visible_message(
@@ -65,7 +65,7 @@
 #undef RESIST_ATTACK_BITE
 
 /mob/living/carbon/human/proc/can_break_straight_jacket()
-	if((HULK in mutations) || species.can_shred(src,1))
+	if((MUTATION_HULK in mutations) || species.can_shred(src,1))
 		return TRUE
 	return FALSE
 
@@ -75,7 +75,7 @@
 		"<span class='warning'>You attempt to rip your [wear_suit.name] apart. (This will take around 5 seconds and you need to stand still)</span>"
 		)
 
-	if(do_after(src, 20 SECONDS, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))	// Same scaling as breaking cuffs, 5 seconds to 120 seconds, 20 seconds to 480 seconds.
+	if(do_after(src, 20 SECONDS, mobility_flags = MOBILITY_CAN_RESIST))	// Same scaling as breaking cuffs, 5 seconds to 120 seconds, 20 seconds to 480 seconds.
 		if(!wear_suit || buckled)
 			return
 
@@ -88,8 +88,7 @@
 
 		qdel(wear_suit)
 		wear_suit = null
-		if(buckled && buckled.buckle_require_restraints)
-			buckled.unbuckle_mob()
+		buckled?.buckled_reconsider_restraints(src)
 
 /mob/living/carbon/human/can_break_cuffs()
 	if(species.can_shred(src,1))

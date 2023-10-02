@@ -2,7 +2,7 @@ import { useBackend } from '../backend';
 import { Button, Icon, NoticeBox, NumberInput, Section, Table, Tabs, Slider } from '../components';
 import { Window } from '../layouts';
 
-export const Colormate = (props, context) => {
+export const ColorMate = (props, context) => {
   const { act, data } = useBackend(context);
   const { activemode, temp } = data;
   const item = data.item || [];
@@ -88,11 +88,11 @@ export const Colormate = (props, context) => {
                 </Table.Cell>
                 <Table.Cell width="66%">
                   {activemode === 1 ? (
-                    <ColormateTint />
+                    <ColorMateTint />
                   ) : activemode === 2 ? (
-                    <ColormateHSV />
+                    <ColorMateHSV />
                   ) : (
-                    <ColormateMatrix />
+                    <ColorMateMatrix />
                   )}
                 </Table.Cell>
               </Table>
@@ -106,7 +106,7 @@ export const Colormate = (props, context) => {
   );
 };
 
-export const ColormateTint = (props, context) => {
+export const ColorMateTint = (props, context) => {
   const { act, data } = useBackend(context);
   return (
     <Button
@@ -118,7 +118,7 @@ export const ColormateTint = (props, context) => {
   );
 };
 
-export const ColormateMatrix = (props, context) => {
+export const ColorMateMatrix = (props, context) => {
   const { act, data } = useBackend(context);
   const matrixcolors = data.matrixcolors || [];
   return (
@@ -283,7 +283,7 @@ export const ColormateMatrix = (props, context) => {
   );
 };
 
-export const ColormateHSV = (props, context) => {
+export const ColorMateHSV = (props, context) => {
   const { act, data } = useBackend(context);
   const { buildhue, buildsat, buildval } = data;
   return (

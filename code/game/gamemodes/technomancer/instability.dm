@@ -16,6 +16,8 @@
 	var/last_instability = 0 // Used to calculate instability delta.
 	var/last_instability_event = null // most recent world.time that something bad happened due to instability.
 
+// todo: convert to status effect
+
 // Proc: adjust_instability()
 // Parameters: 0
 // Description: Does nothing, because inheritence.
@@ -90,9 +92,9 @@
 	last_instability_event = world.time
 	spawn(1)
 		var/image/instability_flash = image('icons/obj/spells.dmi',"instability")
-		overlays |= instability_flash
+		add_overlay(instability_flash)
 		sleep(4)
-		overlays.Remove(instability_flash)
+		cut_overlay(instability_flash)
 		qdel(instability_flash)
 
 /mob/living/silicon/instability_effects()
@@ -179,12 +181,11 @@
 						qdel(sparks)
 					if(1)
 						return
-
 			if(30 to 50) //Moderate
 				rng = rand(0,8)
 				switch(rng)
 					if(0)
-						apply_effect(instability * 0.3, IRRADIATE)
+						afflict_radiation(instability * 0.3, FALSE)
 					if(1)
 						return
 					if(2)
@@ -212,7 +213,7 @@
 				rng = rand(0,8)
 				switch(rng)
 					if(0)
-						apply_effect(instability * 0.7, IRRADIATE)
+						afflict_radiation(instability * 0.7, FALSE)
 					if(1)
 						return
 					if(2)
@@ -237,11 +238,11 @@
 				rng = rand(0,8)
 				switch(rng)
 					if(0)
-						apply_effect(instability, IRRADIATE)
+						afflict_radiation(instability, FALSE)
 					if(1)
 						visible_message("<span class='warning'>\The [src] suddenly collapses!</span>",
 						"<span class='danger'>You suddenly feel very light-headed, and faint!</span>")
-						Paralyse(instability * 0.1)
+						afflict_unconscious(20 * instability * 0.1)
 					if(2)
 						if(can_feel_pain())
 							apply_effect(instability, AGONY)
@@ -277,7 +278,7 @@
 // This should only be used for EXTERNAL sources of instability, such as from someone or something glowing.
 /mob/living/proc/receive_radiated_instability(amount)
 	// Energy armor like from the AMI RIG can protect from this.
-	var/armor = getarmor(null, "energy")
+	var/armor = legacy_mob_armor(null, "energy")
 	var/armor_factor = abs( (armor - 100) / 100)
 	amount = amount * armor_factor
 	if(amount && prob(10))

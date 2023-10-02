@@ -17,7 +17,7 @@
 	endWhen = 1800 // Aproximately 1 hour in master controller ticks, refined by end_time
 
 /datum/event/supply_demand/setup()
-	my_department = "[GLOB.using_map.company_name] Supply Division" // Can't have company name in initial value (not const)
+	my_department = "[(LEGACY_MAP_DATUM).company_name] Supply Division" // Can't have company name in initial value (not const)
 	end_time = world.time + 1 HOUR + (severity * 30 MINUTES)
 	running_demand_events += src
 	// Decide what items are requried!
@@ -41,7 +41,7 @@
 		choose_bar_items(rand(5, 10)) // Really? Well add drinks. If a crew can't even get the bar open they suck.
 
 /datum/event/supply_demand/announce()
-	var/message = "[GLOB.using_map.company_short] is comparing accounts and the bean counters found our division "
+	var/message = "[(LEGACY_MAP_DATUM).company_short] is comparing accounts and the bean counters found our division "
 	if(severity <= EVENT_LEVEL_MUNDANE)
 		message += "is a few items short. "
 	else if(severity == EVENT_LEVEL_MODERATE)
@@ -74,7 +74,7 @@
 		// Success!
 		SSsupply.points += 100 * severity
 		var/msg = "Great work! With those items you delivered our inventory levels all match up. "
-		msg += "[capitalize(pick(first_names_female))] from accounting will have nothing to complain about. "
+		msg += "[capitalize(pick(GLOB.first_names_female))] from accounting will have nothing to complain about. "
 		msg += "I think you'll find a little something in your supply account."
 		command_announcement.Announce(msg, my_department)
 	else
@@ -173,7 +173,7 @@
 	src.type_path = type_path
 	src.name = initial(type_path.name)
 	if(!name)
-		log_debug("supply_demand event: Order for thing [type_path] has no name.")
+		log_debug(SPAN_DEBUGWARNING("supply_demand event: Order for thing [type_path] has no name."))
 
 /datum/supply_demand_order/thing/match_item(var/atom/I)
 	if(istype(I, type_path))
@@ -214,7 +214,7 @@
 		qty_need = CEILING((qty_need - amount_to_take), 1)
 		return 1
 	else
-		log_debug("supply_demand event: not taking reagent '[reagent_id]': [amount_to_take]")
+		log_debug(SPAN_DEBUGWARNING("supply_demand event: not taking reagent '[reagent_id]': [amount_to_take]"))
 	return
 
 //
@@ -230,7 +230,7 @@
 	var/total_moles = mixture.total_moles
 	var desc = "Canister filled to [round(pressure,0.1)] kPa with gas mixture:\n"
 	for(var/gas in mixture.gas)
-		desc += "<br>- [GLOB.meta_gas_names[gas]]: [round((mixture.gas[gas] / total_moles) * 100)]%\n"
+		desc += "<br>- [global.gas_data.names[gas]]: [round((mixture.gas[gas] / total_moles) * 100)]%\n"
 	return desc
 
 /datum/supply_demand_order/gas/match_item(var/obj/machinery/portable_atmospherics/canister)
@@ -240,14 +240,14 @@
 	if(!canmix || canmix.total_moles <= 0)
 		return
 	if(canmix.return_pressure() < mixture.return_pressure())
-		log_debug("supply_demand event: canister fails to match [canmix.return_pressure()] kPa < [mixture.return_pressure()] kPa")
+		log_debug(SPAN_DEBUGWARNING("supply_demand event: canister fails to match [canmix.return_pressure()] kPa < [mixture.return_pressure()] kPa"))
 		return
 	// Make sure ratios are equal
 	for(var/gas in mixture.gas)
 		var/targetPercent = round((mixture.gas[gas] / mixture.total_moles) * 100)
 		var/canPercent = round((canmix.gas[gas] / canmix.total_moles) * 100)
 		if(abs(targetPercent-canPercent) > 1)
-			log_debug("supply_demand event: canister fails to match because '[gas]': [canPercent] != [targetPercent]")
+			log_debug(SPAN_DEBUGWARNING("supply_demand event: canister fails to match because '[gas]': [canPercent] != [targetPercent]"))
 			return // Fail!
 	// Huh, it actually matches!
 	qty_need -= 1
@@ -282,7 +282,7 @@
 	var/list/medicineReagents = list()
 	for(var/path in typesof(/datum/chemical_reaction) - /datum/chemical_reaction)
 		var/datum/chemical_reaction/CR = path // Stupid casting required for reading
-		var/datum/reagent/R = SSchemistry.chemical_reagents[initial(CR.result)]
+		var/datum/reagent/R = SSchemistry.reagent_lookup[initial(CR.result)]
 		if(R && R.scannable)
 			medicineReagents += R
 	for(var/i in 1 to differentTypes)
@@ -296,7 +296,7 @@
 	var/list/drinkReagents = list()
 	for(var/path in typesof(/datum/chemical_reaction) - /datum/chemical_reaction)
 		var/datum/chemical_reaction/CR = path // Stupid casting required for reading
-		var/datum/reagent/R = SSchemistry.chemical_reagents[initial(CR.result)]
+		var/datum/reagent/R = SSchemistry.reagent_lookup[initial(CR.result)]
 		if(istype(R, /datum/reagent/drink) || istype(R, /datum/reagent/ethanol))
 			drinkReagents += R
 	for(var/i in 1 to differentTypes)
@@ -322,7 +322,7 @@
 /datum/event/supply_demand/proc/choose_atmos_items(var/differentTypes)
 	var/datum/gas_mixture/mixture = new
 	mixture.temperature = T20C
-	var/unpickedTypes = gas_data.gases.Copy()
+	var/unpickedTypes = global.gas_data.gases.Copy()
 	unpickedTypes -= "volatile_fuel" // Don't do that one
 	for(var/i in 1 to differentTypes)
 		var/gasId = pick(unpickedTypes)

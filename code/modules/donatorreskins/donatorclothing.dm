@@ -15,17 +15,17 @@
 	desc = "Yet again just here for convenience, use it as a base for donator armour-style items."
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 
 /obj/item/clothing/suit/storage/hooded/donator/bee_costume
 	name = "bee costume"
 	desc = "Bee the true Queen!"
 	icon_state = "bee"
-	item_state_slots = list(slot_r_hand_str = "bee", slot_l_hand_str = "bee")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bee", SLOT_ID_LEFT_HAND = "bee")
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/donator/bee_hood
 
 /obj/item/clothing/head/donator/bee_hood
@@ -34,15 +34,15 @@
 	icon_state = "beehood"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	item_state_slots = list(slot_r_hand_str = "bee", slot_l_hand_str = "bee") //Does not exist -S2-
-	body_parts_covered = HEAD
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bee", SLOT_ID_LEFT_HAND = "bee") //Does not exist -S2-
+	body_cover_flags = HEAD
 
 /obj/item/clothing/mask/red_mask
 	name = "Explorer's Red Lensed Mask"
 	desc = "A gas mask with red lenses."
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 	icon_state = "gas_mining"
 
 /obj/item/clothing/suit/storage/toggle/labcoat/donator/blackredgold
@@ -60,8 +60,8 @@
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "zuliecloak"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/donator/cloak_hood
 
 /obj/item/clothing/head/donator/cloak_hood
@@ -71,7 +71,7 @@
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "zuliecap"
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 
 /obj/item/clothing/under/donator/pinksuit
 	name = "pink latex jumpsuit"
@@ -95,15 +95,8 @@
 	icon_state = "blackberet"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	item_state_slots = list(slot_r_hand_str = "blackberet", slot_l_hand_str = "blackberet")
-	body_parts_covered = HEAD
-
-/obj/item/clothing/head/donator/woolhat //ckey vfivesix. delete this later
-	name = "Army Garrison Cap"
-	desc = "A vintage wool cap, neatly shaven down the grain, adorning a golden oak leaf on its left half."
-	icon_state = "woolhat"
-	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blackberet", SLOT_ID_LEFT_HAND = "blackberet")
+	body_cover_flags = HEAD
 
 /obj/item/clothing/under/carcharodon
 	name = "Carcharodon Suit"
@@ -112,9 +105,9 @@
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "carcharodon"
 	item_state = "carcharodon"
-	item_icons = list(slot_r_hand_str = 'icons/mob/inhands/clothing_right.dmi', slot_l_hand_str = 'icons/mob/inhands/clothing_left.dmi')
-	rolled_sleeves = -1
-	rolled_down = -1
+	item_icons = list(SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/clothing_right.dmi', SLOT_ID_LEFT_HAND = 'icons/mob/inhands/clothing_left.dmi')
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/carcharodon/verb/switchsprite()
     set name = "Reconfigure Suit"
@@ -125,10 +118,10 @@
     if(usr.stat)
         return
     to_chat(usr, "You rearrange the suit's configuration.")
-    if(worn_state == "carcharodon_s")
-        worn_state = "carcharodon_d_s"
-    if(worn_state == "carcharodon_d_s")
-        worn_state = "carcharodon_s"
+    if(snowflake_worn_state == "carcharodon_s")
+        snowflake_worn_state = "carcharodon_d_s"
+    if(snowflake_worn_state == "carcharodon_d_s")
+        snowflake_worn_state = "carcharodon_s"
 
 /obj/item/clothing/under/mantleofheaven
 	name = "Mantle of the Heavens"
@@ -137,9 +130,9 @@
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "mantleofheaven"
 	item_state = "mantleofheaven"
-	item_icons = list(slot_r_hand_str = 'icons/mob/inhands/clothing_right.dmi', slot_l_hand_str = 'icons/mob/inhands/clothing_left.dmi')
-	rolled_sleeves = -1
-	rolled_down = -1
+	item_icons = list(SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/clothing_right.dmi', SLOT_ID_LEFT_HAND = 'icons/mob/inhands/clothing_left.dmi')
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/mantleofheaven/verb/switchsprite()
     set name = "Reconfigure Suit"
@@ -150,10 +143,10 @@
     if(usr.stat)
         return
     to_chat(usr, "You rearrange the suit's configuration.")
-    if(worn_state == "mantleofheaven_s")
-        worn_state = "mantleofheaven_d_s"
-    if(worn_state == "mantleofheaven_d_s")
-        worn_state = "mantleofheaven_s"
+    if(snowflake_worn_state == "mantleofheaven_s")
+        snowflake_worn_state = "mantleofheaven_d_s"
+    if(snowflake_worn_state == "mantleofheaven_d_s")
+        snowflake_worn_state = "mantleofheaven_s"
 
 /obj/item/clothing/suit/storage/hooded/techpriest/chaos
 	name = "chaote robe"
@@ -167,15 +160,6 @@
 	name = "chaote hood"
 	icon_state = "chaospriesth"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-
-/obj/item/clothing/under/skirt/donator/doopytoots
-	name = "high-waisted business skirt"
-	desc = "A well tailored skirt matched with a form fitting blouse, perfect for all those paper pushing needs."
-	icon_state = "hueyskirt"
-	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	rolled_down_sleeves_icon = 'icons/obj/clothing/donatorclothing.dmi'
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/donator/mikubikini
 	name = "starlight singer bikini"
@@ -192,7 +176,7 @@
 /obj/item/clothing/head/donator/mikuhair
 	name = "starlight singer hair"
 	desc = " "
-	flags_inv = HIDEEARS|BLOCKHEADHAIR
+	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
 	icon_state = "mikuhair"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
@@ -223,7 +207,7 @@
 	icon_state = "dancer_veil"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	flags_inv = HIDEFACE
+	inv_hide_flags = HIDEFACE
 	action_button_name = "Adjust Veil"
 	var/hanging = 0
 
@@ -231,17 +215,20 @@
 	if(!user.incapacitated() && !user.restrained() && !user.stat)
 		hanging = !hanging
 		if (hanging)
-			body_parts_covered = body_parts_covered & ~FACE
+			body_cover_flags = body_cover_flags & ~FACE
 			icon_state = "dancer_veil_down"
 			to_chat(user, "You drape the veil to one side.")
 		else
-			body_parts_covered = initial(body_parts_covered)
+			body_cover_flags = initial(body_cover_flags)
 			clothing_flags = initial(clothing_flags)
 			icon_state = initial(icon_state)
 			to_chat(user, "You pull the veil over to cover your face.")
 		update_worn_icon()
 
 /obj/item/clothing/mask/donator/dancer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	adjust_mask(user)
 
 /obj/item/clothing/mask/donator/dancer/verb/toggle()
@@ -262,8 +249,8 @@
 	icon_state = "dancer_costume"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	rolled_sleeves = -1
-	rolled_down = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	action_button_name = "Reconfigure Suit"
 
 /obj/item/clothing/under/donator/dancer/verb/switchsprite()
@@ -275,13 +262,37 @@
     if(usr.stat)
         return
     to_chat(usr, "You rearrange the suit's configuration.")
-    if(worn_state == "dancer_costume_s")
-        worn_state = "dancer_costume_d_s"
-    if(worn_state == "dancer_costume_d_s")
-        worn_state = "dancer_costume_s"
+    if(snowflake_worn_state == "dancer_costume_s")
+        snowflake_worn_state = "dancer_costume_d_s"
+    if(snowflake_worn_state == "dancer_costume_d_s")
+        snowflake_worn_state = "dancer_costume_s"
 /obj/item/clothing/shoes/donator/dancer
 	name = "belly dancer footwraps"
 	desc = "Soft silk wraps meant to provide some protection without hampering agility."
 	icon_state = "dancer_wraps"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
+
+/obj/item/clothing/suit/storage/hooded/donatornoahcloak //...yeah. I need the hood code to use it, so it's odd.
+	name = "refurbished Adhomian cloak"
+	desc = "A snow-white Adhomian cloak bearing hand-sewn edges and additional fur built into the inside for warmth. Bears an unusual symbol, a four-pointed star with a small center sphere."
+	icon_state = "noah_cloak"
+	item_state = "noah_cloak"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	min_cold_protection_temperature = TN60C
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	hoodtype = /obj/item/clothing/head/hood/donatornoahcloak
+	icon = 'icons/mob/clothing/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
+
+/obj/item/clothing/head/hood/donatornoahcloak
+	name = "refurbished Adhomian hood"
+	desc = "A snow-white hood to go with a similar Adhomian cloak."
+	icon_state = "noah_cloakhood"
+	item_state = "noah_cloakhood"
+	body_cover_flags = HEAD
+	inv_hide_flags = HIDEEARS|BLOCKHAIR
+	cold_protection = HEAD
+	min_cold_protection_temperature = TN60C
+	icon = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'

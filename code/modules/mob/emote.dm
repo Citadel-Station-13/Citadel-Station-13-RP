@@ -7,7 +7,8 @@
 		return
 
 	var/muzzled = is_muzzled()
-	if(m_type == 2 && muzzled) return
+	if(m_type == 2 && muzzled)
+		return
 
 	var/input
 	if(!message)
@@ -23,6 +24,8 @@
 
 	if (message)
 		message = say_emphasis(message)
+		var/overhead_message = ("** [message] **")
+		say_overhead(overhead_message, FALSE, range)
 		SEND_SIGNAL(src, COMSIG_MOB_CUSTOM_EMOTE, src, message)
 
  // Hearing gasp and such every five seconds is not good emotes were not global for a reason.
@@ -73,6 +76,9 @@
 			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
 			return
 
+	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
+		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
+		return
 
 	var/input
 	if(!message)

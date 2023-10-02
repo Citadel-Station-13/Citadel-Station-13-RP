@@ -11,13 +11,14 @@
 	icon = 'icons/obj/assemblies/new_assemblies.dmi'
 	icon_state = ""
 	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 100)
-	throwforce = 2
+	materials = list(MAT_STEEL = 100)
+	throw_force = 2
 	throw_speed = 3
 	throw_range = 10
 	drop_sound = 'sound/items/drop/component.ogg'
 	pickup_sound =  'sound/items/pickup/component.ogg'
 	origin_tech = list(TECH_MAGNET = 1)
+	worn_render_flags = WORN_RENDER_SLOT_NO_RENDER | WORN_RENDER_INHAND_NO_RENDER
 
 	var/secured = 1
 	var/list/attached_overlays = null
@@ -86,7 +87,7 @@
 /obj/item/assembly/process(delta_time)
 	return PROCESS_KILL
 
-/obj/item/assembly/examine(mob/user)
+/obj/item/assembly/examine(mob/user, dist)
 	. = ..()
 	if((in_range(src, user) || loc == user))
 		if(secured)
@@ -96,14 +97,17 @@
 	return
 
 
-/obj/item/assembly/attack_self(mob/user as mob)
+/obj/item/assembly/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!user)
 		return FALSE
 	user.set_machine(src)
 	ui_interact(user)
 	return TRUE
 
-/obj/item/device/assembly/ui_state(mob/user)
+/obj/item/device/assembly/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.deep_inventory_state
 
 /obj/item/device/assembly/ui_interact(mob/user, datum/tgui/ui)

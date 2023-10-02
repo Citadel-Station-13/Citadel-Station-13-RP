@@ -4,6 +4,7 @@
 // Mappers: you can use "Generate Instances from Icon-states"
 //  to get the different pieces.
 /obj/structure/transit_tube
+	name = "transit tube"
 	icon = 'icons/obj/pipes/transit_tube.dmi'
 	icon_state = "E-W"
 	density = 1
@@ -13,17 +14,29 @@
 	var/exit_delay = 2
 	var/enter_delay = 1
 
+	level = 2
+
 	// alldirs in global.dm is the same list of directions, but since
 	//  the specific order matters to get a usable icon_state, it is
 	//  copied here so that, in the unlikely case that alldirs is changed,
 	//  this continues to work.
 	var/global/list/tube_dir_list = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 
+//People are complaining the basic tube is too slow, but I don't want ALL tubes to be super fast. So here's the trick, I think.
+/obj/structure/transit_tube/high_velocity
+	inertia_move_delay = 0
+	exit_delay = 0.5
+	enter_delay = 0.5
+
+//A variant that will can be hidden underneath tiles similiar to pipes and such
+/obj/structure/transit_tube/hidden
+	level = 1
 
 // A place where tube pods stop, and people can get in or out.
 // Mappers: use "Generate Instances from Directions" for this
 //  one.
 /obj/structure/transit_tube/station
+	name = "Transit Tube Station"
 	icon = 'icons/obj/pipes/transit_tube_station.dmi'
 	icon_state = "closed"
 	exit_delay = 2
@@ -34,8 +47,6 @@
 	var/const/OPEN_DURATION = 6
 	var/const/CLOSE_DURATION = 6
 
-
-
 /obj/structure/transit_tube_pod
 	icon = 'icons/obj/pipes/transit_tube_pod.dmi'
 	icon_state = "pod"
@@ -43,8 +54,7 @@
 	anchored = 1.0
 	density = 1
 	var/moving = 0
-	var/datum/gas_mixture/air_contents = new()
-
+	var/datum/gas_mixture/air_contents = new(CELL_VOLUME)
 
 
 /obj/structure/transit_tube_pod/Destroy()
@@ -56,12 +66,12 @@
 
 
 // When destroyed by explosions, properly handle contents.
-/obj/structure/transit_tube_pod/ex_act(severity)
+/obj/structure/transit_tube_pod/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/AM in contents)
 				AM.loc = loc
-				AM.ex_act(severity++)
+				LEGACY_EX_ACT(AM, severity + 1, null)
 
 			qdel(src)
 			return
@@ -69,7 +79,7 @@
 			if(prob(50))
 				for(var/atom/movable/AM in contents)
 					AM.loc = loc
-					AM.ex_act(severity++)
+					LEGACY_EX_ACT(AM, severity + 1, null)
 
 				qdel(src)
 				return
@@ -79,7 +89,7 @@
 /obj/structure/transit_tube_pod/Initialize(mapload)
 	. = ..()
 
-	air_contents.adjust_multi(/datum/gas/oxygen, MOLES_O2STANDARD * 2, /datum/gas/nitrogen, MOLES_N2STANDARD)
+	air_contents.adjust_multi(GAS_ID_OXYGEN, MOLES_O2STANDARD * 2, GAS_ID_NITROGEN, MOLES_N2STANDARD)
 	air_contents.temperature = T20C
 
 	// Give auto tubes time to align before trying to start moving
@@ -94,6 +104,10 @@
 
 	if(tube_dirs == null)
 		init_dirs()
+
+	var/turf/T = loc
+	if(level == 1 && !T.is_plating()) hide(1)
+	update_icon()
 
 /obj/structure/transit_tube/Bumped(mob/AM as mob|obj)
 	var/obj/structure/transit_tube/T = locate() in AM.loc
@@ -115,7 +129,7 @@
 				return
 
 
-/obj/structure/transit_tube/station/attack_hand(mob/user as mob)
+/obj/structure/transit_tube/station/attack_hand(mob/user, list/params)
 	if(!pod_moving)
 		for(var/obj/structure/transit_tube_pod/pod in loc)
 			if(!pod.moving && (pod.dir in directions()))
@@ -355,7 +369,7 @@
 
 	//note that share_ratio assumes both gas mixes have the same volume,
 	//so if the volume is changed this may need to be changed as well.
-	air_contents.share_ratio(environment, 1)
+	air_contents.default_share_ratio(environment, 1)
 
 // When the player moves, check if the pos is currently stopped at a station.
 //  if it is, check the direction. If the direction matches the direction of
@@ -593,3 +607,20 @@
 			return "SW"
 		else
 	return
+
+
+
+/// Z level transit tubes. I dont know how to get these to work why is all the movement based off the fucking pod itself
+/*
+/obj/structure/transit_tube/ender
+	//Will look like a regular transit tube
+	unacidable = 1
+	var/id = null
+
+/obj/structure/transit_tube/ender/init_dirs_automatic()
+	. = ..()
+	if(id)
+		for(var/obj/structure/transit_tube/ender/target in world)	//Having this check in world is prolly the wrong way of doing this @ktoma36
+			if(target.id == id)
+				. |= target
+*/

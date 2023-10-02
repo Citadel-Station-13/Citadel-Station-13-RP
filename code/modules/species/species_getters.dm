@@ -1,3 +1,63 @@
+//! IDs
+/**
+ * get species id; subspecies returns main species
+ */
+/datum/species/proc/get_species_id()
+	return id || uid
+
+/**
+ * get exact species id; subspecies does NOT return main species
+ */
+/datum/species/proc/get_exact_species_id()
+	return uid
+
+//? Bodytypes
+/**
+ * get effective bodytype
+ */
+/datum/species/proc/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
+	return default_bodytype
+
+//? Languages
+/datum/species/proc/get_default_language_id()
+	var/datum/language/L = default_language
+	return ispath(L)? initial(L.id) : L
+
+/datum/species/proc/get_intrinsic_language_ids()
+	RETURN_TYPE(/list)
+	if(!intrinsic_languages)
+		return galactic_language? list(LANGUAGE_ID_COMMON) : list()
+	. = list()
+	if(islist(intrinsic_languages))
+		for(var/datum/language/id_or_path as anything in intrinsic_languages)
+			. += ispath(id_or_path)? initial(id_or_path.id) : id_or_path
+	else
+		var/datum/language/L = intrinsic_languages
+		. += ispath(L)? initial(L.id) : L
+	if(galactic_language)
+		. |= LANGUAGE_ID_COMMON
+
+/datum/species/proc/get_name_language_id()
+	var/datum/language/L = name_language
+	return ispath(name_language)? initial(L.id) : name_language
+
+/datum/species/proc/get_max_additional_languages()
+	return max_additional_languages
+
+/datum/species/proc/get_whitelisted_language_ids()
+	RETURN_TYPE(/list)
+	if(!whitelist_languages)
+		return list()
+	. = list()
+	if(islist(whitelist_languages))
+		for(var/datum/language/id_or_path as anything in whitelist_languages)
+			. += ispath(id_or_path)? initial(id_or_path.id) : id_or_path
+	else
+		var/datum/language/L = whitelist_languages
+		. += ispath(L)? initial(L.id) : L
+
+//? misc
+
 /datum/species/proc/get_valid_shapeshifter_forms(mob/living/carbon/human/H)
 	return list()
 
@@ -27,9 +87,6 @@
 
 /datum/species/proc/get_husk_icon(mob/living/carbon/human/H)
 	return husk_icon
-
-/datum/species/proc/get_station_variant()
-	return name
 
 // used for limb caching
 // todo: rework limbs and get rid of this, numerical static keys are dumb as fuck,
@@ -95,7 +152,7 @@
 	for(var/obj/item/clothing/clothes in H)
 		if(H.is_holding(clothes))
 			continue
-		if((clothes.body_parts_covered & UPPER_TORSO) && (clothes.body_parts_covered & LOWER_TORSO))
+		if((clothes.body_cover_flags & UPPER_TORSO) && (clothes.body_cover_flags & LOWER_TORSO))
 			covered = 1
 			break
 
@@ -110,13 +167,13 @@
 /datum/species/proc/get_random_name(gender)
 	if(!name_language)
 		if(gender == FEMALE)
-			return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
+			return capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 		else
-			return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
+			return capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 
-	var/datum/language/species_language = GLOB.all_languages[name_language]
+	var/datum/language/species_language = SScharacters.resolve_language_id(get_name_language_id())
 	if(!species_language)
-		species_language = GLOB.all_languages[default_language]
+		species_language = SScharacters.resolve_language_id(default_language)
 	if(!species_language)
 		return "unknown"
 	return species_language.get_random_name(gender)

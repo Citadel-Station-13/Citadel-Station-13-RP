@@ -3,6 +3,10 @@
  *		Pens
  *		Sleepy Pens
  *		Parapens
+ *		Crayons
+ *		Markers
+ *		Ritual Chalk
+ *		Charcoal
  */
 
 
@@ -16,11 +20,11 @@
 	icon_state = "pen"
 	item_state = "pen"
 	slot_flags = SLOT_BELT | SLOT_EARS
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_TINY
 	throw_speed = 7
 	throw_range = 15
-	matter = list(MAT_STEEL = 10)
+	materials = list(MAT_STEEL = 10)
 	pressure_resistance = 2
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
@@ -31,7 +35,10 @@
 	/// spans to force when writing - either text or list
 	var/pen_spans
 
-/obj/item/pen/attack_self(var/mob/user)
+/obj/item/pen/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.next_move > world.time)
 		return
 	user.setClickCooldown(1 SECOND)
@@ -63,6 +70,9 @@
 	return
 
 /obj/item/pen/multi/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(++selectedColor > 3)
 		selectedColor = 1
 
@@ -78,7 +88,10 @@
 /obj/item/pen/click
 	name = "clicker pen"
 
-/obj/item/pen/click/attack_self(mob/user as mob)
+/obj/item/pen/click/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HELP)
 		user.visible_message("<span class='notice'><b>\The [user]</b> clicks [src] idly.</span>","<span class='notice'>You click [src] idly.</span>")
 		playsound(user, 'sound/weapons/flipblade.ogg', 20, 1)
@@ -101,26 +114,24 @@
  */
 
 /obj/item/pen/reagent
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 
 /obj/item/pen/reagent/Initialize(mapload)
 	. = ..()
 	create_reagents(30)
 
-/obj/item/pen/reagent/attack(mob/living/M as mob, mob/user as mob)
-
-	if(!istype(M))
-		return
-
+/obj/item/pen/reagent/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-
-	if(M.can_inject(user,1))
+	var/mob/living/L = target
+	if(istype(L))
+		return
+	if(L.can_inject(user,1))
 		if(reagents.total_volume)
-			if(M.reagents)
+			if(target.reagents)
 				var/contained = reagents.get_reagents()
-				var/trans = reagents.trans_to_mob(M, 30, CHEM_BLOOD)
-				add_attack_logs(user,M,"Injected with [src.name] containing [contained], trasferred [trans] units")
+				var/trans = reagents.trans_to_mob(target, 30, CHEM_INJECT)
+				add_attack_logs(user,target,"Injected with [src.name] containing [contained], trasferred [trans] units")
 
 /*
  * Blade pens.
@@ -135,7 +146,7 @@
 	icon_state = "pen"
 	item_state = "pen"
 	slot_flags = SLOT_BELT | SLOT_EARS
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_TINY
 	throw_speed = 7
 	throw_range = 15
@@ -169,14 +180,17 @@
 	active = 1
 	icon_state = active_icon_state
 	embed_chance = active_embed_chance
-	force = active_force
-	throwforce = active_throwforce
+	damage_force = active_force
+	throw_force = active_throwforce
+
+
+
 	sharp = 1
 	edge = 1
 	w_class = active_w_class
 	playsound(src, 'sound/weapons/saberon.ogg', 15, 1)
 	damtype = SEARING
-	catchable = FALSE
+	item_flags |= ITEM_THROW_UNCATCHABLE
 
 	attack_verb |= list(\
 		"slashed",\
@@ -192,13 +206,13 @@
 	active = 0
 	icon_state = default_icon_state
 	embed_chance = initial(embed_chance)
-	force = initial(force)
-	throwforce = initial(throwforce)
+	damage_force = initial(damage_force)
+	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
 	w_class = initial(w_class)
 	damtype = BRUTE
-	catchable = TRUE
+	item_flags &= ~ITEM_THROW_UNCATCHABLE
 
 /obj/item/pen/blade/blue
 	desc = "It's a normal blue ink pen."
@@ -244,7 +258,10 @@
 /obj/item/pen/chameleon
 	var/signature = ""
 
-/obj/item/pen/chameleon/attack_self(mob/user as mob)
+/obj/item/pen/chameleon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	/*
 	// Limit signatures to official crew members
 	var/personnel_list[] = list()
@@ -314,7 +331,7 @@
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
 
 /obj/item/pen/crayon/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	to_chat(viewers(user),"<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to commit suicide.</b></font>")
 	return (BRUTELOSS|OXYLOSS)
 
@@ -340,5 +357,14 @@
 	. = ..()
 	name = "[colourName] chalk"
 
-/obj/item/pen/crayon/chalk/attack_self()
+/obj/item/pen/crayon/chalk/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	return
+
+/obj/item/pen/charcoal
+	name = "charcoal stick"
+	desc = "Carefully burnt carbon, compacted and held together with a binding agent. One of the oldest common implements for writing across the galaxy."
+	icon_state = "charcoal"
+	materials = list(MAT_CARBON = 10)

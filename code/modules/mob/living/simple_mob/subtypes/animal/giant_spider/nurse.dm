@@ -262,3 +262,26 @@
 			var/obj/O = the_target
 			if(!O.anchored)
 				return TRUE
+
+//The Queen Spider
+/mob/living/simple_mob/animal/giant_spider/nurse/queen
+	name = "giant spider queen"
+	desc = "Absolutely gigantic, this creature is horror itself."
+	tt_desc = "X Brachypelma phorus tyrannus"
+	icon = 'icons/mob/64x64.dmi'
+	icon_state = "spider_queen"
+	icon_living = "spider_queen"
+	icon_dead = "spider_queen_dead"
+
+	maxHealth = 320
+	health = 320
+
+	melee_damage_lower = 20
+	melee_damage_upper = 30
+	attack_armor_pen = 25
+
+	base_pixel_x = -16
+	base_pixel_y = -16
+
+	mod_min = 100
+	mod_max = 150

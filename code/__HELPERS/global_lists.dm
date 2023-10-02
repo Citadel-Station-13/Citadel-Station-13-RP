@@ -1,13 +1,8 @@
 //? BEHOLD THE LIST OF GLOBAL LISTS ?//
 
-/// List of all clients whom are admins
-var/list/admins = list()
-
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 
-/// List of all mobs **with clients attached**. Excludes /mob/new_player
-var/global/list/player_list = list()
 /// List of all human mobs and sub-types, including clientless.
 var/global/list/human_mob_list = list()
 /// List of all silicon mobs, including clientless.
@@ -27,8 +22,6 @@ var/global/list/cable_list = list()
 var/global/list/side_effects = list()
 /// List of all mechs. Used by hostile mobs target tracking.
 var/global/list/mechas_list = list()
-/// List of all jobstypes, minus borg and AI
-var/global/list/joblist = list()
 
 #define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER,HERM)
 #define all_genders_text_list list("Male","Female","Plural","Neuter","Herm")
@@ -44,31 +37,12 @@ var/global/list/NT_poster_designs = list()
 var/list/obj/item/uplink/world_uplinks = list()
 
 //* Preferences stuff *//
-//!Hairstyles
-/// Stores /datum/sprite_accessory/hair indexed by name
-var/global/list/hair_styles_list = list()
-var/global/list/hair_styles_male_list = list()
-var/global/list/hair_styles_female_list = list()
-/// Stores /datum/sprite_accessory/facial_hair indexed by name
-var/global/list/facial_hair_styles_list = list()
-var/global/list/facial_hair_styles_male_list = list()
-var/global/list/facial_hair_styles_female_list = list()
-//!Misc styles
-var/global/list/skin_styles_female_list = list() //unused
-/// Stores /datum/sprite_accessory/marking indexed by name
-var/global/list/body_marking_styles_list = list()
-/// Stores /datum/sprite_accessory/ears indexed by type
-var/global/list/ear_styles_list = list()
-/// Stores /datum/sprite_accessory/tail indexed by type
-var/global/list/tail_styles_list = list()
-/// Stores /datum/sprite_accessory/wing indexed by type
-var/global/list/wing_styles_list = list()
 //!Underwear
 var/datum/category_collection/underwear/global_underwear = new()
-//!Backpacks
-var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag","Duffle Bag", "RIG")
+//!Backpacks - The load order here is important to maintain. Don't go swapping these around.
+var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag", "RIG", "Duffle Bag")
 var/global/list/pdachoicelist = list("Default", "Slim", "Old", "Rugged","Minimalist", "Holographic", "Wrist-Bound")
-var/global/list/exclude_jobs = list(/datum/job/station/ai,/datum/job/station/cyborg)
+var/global/list/exclude_jobs = list(/datum/role/job/station/ai,/datum/role/job/station/cyborg)
 
 //* Visual nets
 GLOBAL_LIST_EMPTY(visual_nets)
@@ -84,7 +58,7 @@ var/global/list/endgame_safespawns = list()
 var/global/list/lavaland_entry = list()
 var/global/list/lavaland_exit = list()
 
-var/global/list/syndicate_access = list(access_maint_tunnels, access_syndicate, access_external_airlocks)
+var/global/list/syndicate_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_FACTION_SYNDICATE, ACCESS_ENGINEERING_AIRLOCK)
 
 /// Strings which corraspond to bodypart covering flags, useful for outputting what something covers.
 var/global/list/string_part_flags = list(
@@ -139,93 +113,10 @@ GLOBAL_LIST_EMPTY(mannequins)
 	//* Recipes
 	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
 
+	//* Drink Reactions
+	init_subtypes(/datum/chemical_reaction/drinks, GLOB.drink_recipes)
+
 	var/list/paths
-
-	//Hair - Initialise all /datum/sprite_accessory/hair into an list indexed by hair-style name
-	paths = typesof(/datum/sprite_accessory/hair) - /datum/sprite_accessory/hair
-	hair_styles_list = list()
-	for(var/path in paths)
-		var/datum/sprite_accessory/hair/H = new path
-		if(!istext(H.name))
-			qdel(H)
-			continue
-		if(hair_styles_list[H.name])
-			stack_trace("Duplicate name [H.name] detected - [hair_styles_list[H.name]] vs [H]")
-			continue
-		hair_styles_list[H.name] = H
-		switch(H.gender)
-			if(MALE)	hair_styles_male_list += H.name
-			if(FEMALE)	hair_styles_female_list += H.name
-			else
-				hair_styles_male_list += H.name
-				hair_styles_female_list += H.name
-	sortTim(hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
-
-	//Facial Hair - Initialise all /datum/sprite_accessory/facial_hair into an list indexed by facialhair-style name
-	paths = typesof(/datum/sprite_accessory/facial_hair) - /datum/sprite_accessory/facial_hair
-	facial_hair_styles_list = list()
-	for(var/path in paths)
-		var/datum/sprite_accessory/facial_hair/H = new path()
-		if(!istext(H.name))
-			qdel(H)
-			continue
-		if(facial_hair_styles_list[H.name])
-			stack_trace("Duplicate name [H.name] detected - [facial_hair_styles_list[H.name]] vs [H]")
-			continue
-		facial_hair_styles_list[H.name] = H
-		switch(H.gender)
-			if(MALE)	facial_hair_styles_male_list += H.name
-			if(FEMALE)	facial_hair_styles_female_list += H.name
-			else
-				facial_hair_styles_male_list += H.name
-				facial_hair_styles_female_list += H.name
-	sortTim(facial_hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
-
-	//Body markings - Initialise all /datum/sprite_accessory/marking into an list indexed by marking name
-	paths = typesof(/datum/sprite_accessory/marking) - /datum/sprite_accessory/marking
-	body_marking_styles_list = list()
-	for(var/path in paths)
-		var/datum/sprite_accessory/marking/M = new path()
-		if(!istext(M.name))
-			qdel(M)
-			continue
-		if(body_marking_styles_list[M.name])
-			stack_trace("Duplicate name [M.name] detected - [body_marking_styles_list[M.name]] vs [M]")
-			continue
-
-		body_marking_styles_list[M.name] = M
-	sortTim(body_marking_styles_list, /proc/cmp_name_asc, associative = TRUE)
-
-	//List of job. I can't believe this was calculated multiple times per tick!
-	paths = typesof(/datum/job)-/datum/job
-	paths -= exclude_jobs
-	for(var/T in paths)
-		var/datum/job/J = new T
-		joblist[J.title] = J
-
-	if(!length(GLOB.species_meta))	// yeah i hate it too but hey
-		initialize_static_species_cache()
-	// SScharacter_setup handling static caches and body markings and sprit eaccessories when?? this is all awful
-
-	//Languages and species.
-	paths = subtypesof(/datum/language)
-	for(var/T in paths)
-		var/datum/language/L = T
-		if(initial(L.abstract_type) == T)
-			continue
-		L = new T
-		GLOB.all_languages[L.name] = L
-
-	for (var/language_name in GLOB.all_languages)
-		var/datum/language/L = GLOB.all_languages[language_name]
-		if(!(L.flags & NONGLOBAL))
-			GLOB.language_keys[L.key] = L
-
-	for(var/datum/species/S as anything in all_static_species_meta())
-		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
-			GLOB.playable_species += S.name
-		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
-			GLOB.whitelisted_species += S.name
 
 	//Posters
 	paths = typesof(/datum/poster) - /datum/poster
@@ -238,24 +129,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 	for(var/T in paths)
 		var/datum/poster/P = new T
 		NT_poster_designs += P
-
-	//Custom Ears
-	paths = typesof(/datum/sprite_accessory/ears) - /datum/sprite_accessory/ears
-	for(var/path in paths)
-		var/obj/item/clothing/head/instance = new path()
-		ear_styles_list[path] = instance
-
-	//Custom Tails
-	paths = typesof(/datum/sprite_accessory/tail) - /datum/sprite_accessory/tail - /datum/sprite_accessory/tail/taur
-	for(var/path in paths)
-		var/datum/sprite_accessory/tail/instance = new path()
-		tail_styles_list[path] = instance
-
-	//Custom Wings
-	paths = typesof(/datum/sprite_accessory/wing) - /datum/sprite_accessory/wing
-	for(var/path in paths)
-		var/datum/sprite_accessory/wing/instance = new path()
-		wing_styles_list[path] = instance
 
 	// Custom species traits
 	paths = typesof(/datum/trait) - /datum/trait - /datum/trait/negative - /datum/trait/neutral - /datum/trait/positive
@@ -274,19 +147,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 			if(0.1 to INFINITY)
 				positive_traits[path] = instance
 
-	// Custom species icon bases
-	var/list/blacklisted_icons = list(SPECIES_CUSTOM, SPECIES_PROMETHEAN)
-	var/list/whitelisted_icons = list(SPECIES_VULPKANIN, SPECIES_XENOHYBRID)
-	for(var/species_name in GLOB.playable_species)
-		if(species_name in blacklisted_icons)
-			continue
-		var/datum/species/S = name_static_species_meta(species_name)
-		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
-			continue
-		GLOB.custom_species_bases += species_name
-	for(var/species_name in whitelisted_icons)
-		GLOB.custom_species_bases += species_name
-
 	return 1 // Hooks must return 1
 
 /* // Uncomment to debug chemical reaction list.
@@ -302,9 +162,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 */
 ///Hexidecimal numbers
 var/global/list/hexNums = list("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
-
-//* Custom Species Lists *//
-GLOBAL_LIST_EMPTY(custom_species_bases)
 
 //! ## Traits
 /// Negative custom species traits, indexed by path.
@@ -415,6 +272,7 @@ var/global/list/fancy_release_sounds = list(
 
 var/global/list/global_vore_egg_types = list(
 		SPECIES_UNATHI 		= UNATHI_EGG,
+		SPECIES_UNATHI_DIGI = UNATHI_EGG,
 		"Tajaran" 		= TAJARAN_EGG,
 		SPECIES_AKULA 		= AKULA_EGG,
 		SPECIES_SKRELL 		= SKRELL_EGG,
@@ -428,6 +286,7 @@ var/global/list/global_vore_egg_types = list(
 
 var/global/list/tf_vore_egg_types = list(
 	SPECIES_UNATHI 		= /obj/structure/closet/secure_closet/egg/unathi,
+	SPECIES_UNATHI_DIGI = /obj/structure/closet/secure_closet/egg/unathi,
 	SPECIES_TAJ 		= /obj/structure/closet/secure_closet/egg/tajaran,
 	SPECIES_AKULA 		= /obj/structure/closet/secure_closet/egg/shark,
 	SPECIES_SKRELL 		= /obj/structure/closet/secure_closet/egg/skrell,
@@ -471,6 +330,7 @@ var/global/list/edible_trash = list(/obj/item/broken_device,
 				/obj/item/flame,
 				/obj/item/light,
 				/obj/item/lipstick,
+				/obj/item/material/kitchen/utensil,
 				/obj/item/material/shard,
 				/obj/item/newspaper,
 				/obj/item/paper,
@@ -480,6 +340,8 @@ var/global/list/edible_trash = list(/obj/item/broken_device,
 				/obj/item/reagent_containers/food,
 				/obj/item/reagent_containers/glass/bottle,
 				/obj/item/reagent_containers/glass/rag,
+				/obj/item/reagent_containers/hypospray/autoinjector,
+				/obj/item/skub,
 				/obj/item/soap,
 				/obj/item/spacecash,
 				/obj/item/storage/box/vmcrystal,
@@ -717,26 +579,15 @@ var/global/list/contamination_colors = list("green",
 				"pink")
 
 ///For the mechanic of leaving remains. Ones listed below are basically ones that got no bones or leave no trace after death.
-var/global/list/remainless_species = list(SPECIES_PROMETHEAN,
-				SPECIES_DIONA,
-				SPECIES_ALRAUNE,
-				SPECIES_PROTEAN,
-				SPECIES_MONKEY, //Exclude all monkey subtypes, to prevent abuse of it. They aren't,
-				SPECIES_MONKEY_TAJ, //set to have remains anyway, but making double sure,
-				SPECIES_MONKEY_SKRELL,
-				SPECIES_MONKEY_UNATHI,
-				SPECIES_MONKEY_AKULA,
-				SPECIES_MONKEY_NEVREAN,
-				SPECIES_MONKEY_SERGAL,
-				SPECIES_MONKEY_VULPKANIN,
-				SPECIES_XENO, //Same for xenos,
-				SPECIES_XENO_DRONE,
-				SPECIES_XENO_HUNTER,
-				SPECIES_XENO_SENTINEL,
-				SPECIES_XENO_QUEEN,
-				SPECIES_SHADOW,
-				SPECIES_GOLEM, //Some special species that may or may not be ever used in event too,
-				SPECIES_SHADEKIN) //Shadefluffers just poof away
+var/global/list/remainless_species = list(SPECIES_ID_PROMETHEAN,
+				SPECIES_ID_DIONA,
+				SPECIES_ID_ALRAUNE,
+				SPECIES_ID_PROTEAN,
+				SPECIES_ID_MONKEY, //Exclude all monkey subtypes, which is handled by ID
+				SPECIES_ID_XENOMORPH, //Same for xenos
+				SPECIES_ID_SHADOW,
+				SPECIES_ID_GOLEM, //Some special species that may or may not be ever used in event too,
+				SPECIES_ID_SHADEKIN) //Shadefluffers just poof away
 
 /hook/startup/proc/init_vore_datum_ref_lists()
 	var/paths
@@ -776,3 +627,263 @@ var/global/list/remainless_species = list(SPECIES_PROMETHEAN,
 		weavable_items[instance.title] = instance
 
 	return 1 // Hooks must return 1
+
+
+// XENOBIOLOGY
+var/global/list/xenobio_metal_materials_normal = list(
+										/obj/item/stack/material/steel = 20,
+										/obj/item/stack/material/glass = 15,
+										/obj/item/stack/material/plastic = 12,
+										/obj/item/stack/material/wood = 12,
+										/obj/item/stack/material/cardboard = 6,
+										/obj/item/stack/material/sandstone = 5,
+										/obj/item/stack/material/log = 5,
+										/obj/item/stack/material/lead = 5,
+										/obj/item/stack/material/iron = 5,
+//uncomment these if it's ever decided that these should exist
+//										/obj/item/stack/material/graphite = 5,
+//										/obj/item/stack/material/tin = 4,
+//										/obj/item/stack/material/bronze = 4,
+//										/obj/item/stack/material/aluminium = 4,
+										/obj/item/stack/material/copper = 4)
+
+var/global/list/xenobio_metal_materials_adv = list(
+										/obj/item/stack/material/glass/reinforced = 15,
+										/obj/item/stack/material/marble = 10,
+										/obj/item/stack/material/brass = 10,
+										/obj/item/stack/material/plasteel = 10,
+										/obj/item/stack/material/glass/phoronglass = 10,
+										/obj/item/stack/material/wood/sif = 5,
+										/obj/item/stack/material/wood/hard = 5,
+										/obj/item/stack/material/log/sif = 5,
+										/obj/item/stack/material/log/hard = 5,
+										/obj/item/stack/material/glass/phoronrglass = 5,
+//										/obj/item/stack/material/glass/titanium = 3,
+//										/obj/item/stack/material/glass/plastitanium = 3,
+//										/obj/item/stack/material/painite = 1,
+//										/obj/item/stack/material/void_opal = 1,
+//										/obj/item/stack/material/quartz = 1
+										/obj/item/stack/material/durasteel = 2)
+
+
+var/global/list/xenobio_metal_materials_weird = list(
+										/obj/item/stack/material/cloth = 10,
+										/obj/item/stack/material/leather = 5,
+										/obj/item/stack/material/bone = 10,
+										/obj/item/stack/material/wax = 10,
+//										/obj/item/stack/material/fiber = 5,
+//										/obj/item/stack/material/fur/wool = 7,
+										/obj/item/stack/material/snow = 3,
+										/obj/item/stack/material/snowbrick = 3,
+//										/obj/item/stack/material/flint = 3,
+//										/obj/item/stack/material/stick = 3,
+										/obj/item/stack/material/chitin = 1,
+										/obj/item/stack/material/resin = 1)
+
+var/global/list/xenobio_silver_materials_basic = list(
+										/obj/item/stack/material/silver = 10,
+										/obj/item/stack/material/uranium = 8,
+										/obj/item/stack/material/gold = 6,
+										/obj/item/stack/material/titanium = 4,
+										/obj/item/stack/material/phoron = 1)
+
+var/global/list/xenobio_silver_materials_adv = list(
+										/obj/item/stack/material/deuterium = 5,
+										/obj/item/stack/material/tritium = 5,
+										/obj/item/stack/material/osmium = 5,
+										/obj/item/stack/material/mhydrogen = 3,
+										/obj/item/stack/material/diamond = 2,
+										/obj/item/stack/material/verdantium = 1)
+
+var/global/list/xenobio_silver_materials_special = list(
+										/obj/item/stack/material/valhollide = 1,
+										/obj/item/stack/material/morphium = 1,
+										/obj/item/stack/material/bananium = 1, //cit addition: :o)
+										/obj/item/stack/material/silencium = 1)
+
+//TODO: add Cit-RP specific mobs, maybe? also, maybe some mobs could be ported?
+var/global/list/xenobio_gold_mobs_hostile = list(
+//										/mob/living/simple_mob/vore/alienanimals/space_jellyfish,
+//										/mob/living/simple_mob/vore/alienanimals/skeleton,
+//										/mob/living/simple_mob/vore/alienanimals/space_ghost,
+//										/mob/living/simple_mob/vore/alienanimals/startreader,
+//										/mob/living/simple_mob/animal/passive/mouse/operative,
+										/mob/living/simple_mob/animal/giant_spider,
+										/mob/living/simple_mob/animal/giant_spider/frost,
+										/mob/living/simple_mob/animal/giant_spider/electric,
+										/mob/living/simple_mob/animal/giant_spider/hunter,
+										/mob/living/simple_mob/animal/giant_spider/lurker,
+										/mob/living/simple_mob/animal/giant_spider/pepper,
+										/mob/living/simple_mob/animal/giant_spider/thermic,
+										/mob/living/simple_mob/animal/giant_spider/tunneler,
+										/mob/living/simple_mob/animal/giant_spider/webslinger,
+										/mob/living/simple_mob/animal/giant_spider/phorogenic,
+										/mob/living/simple_mob/animal/giant_spider/carrier,
+										/mob/living/simple_mob/animal/giant_spider/nurse,
+										/mob/living/simple_mob/animal/giant_spider/ion,
+										/mob/living/simple_mob/animal/giant_spider/nurse/queen,
+										/mob/living/simple_mob/animal/sif/diyaab,
+										/mob/living/simple_mob/animal/sif/duck,
+										/mob/living/simple_mob/animal/sif/frostfly,
+										/mob/living/simple_mob/animal/sif/glitterfly,
+										/mob/living/simple_mob/animal/sif/hooligan_crab,
+										/mob/living/simple_mob/animal/sif/kururak,
+										/mob/living/simple_mob/animal/sif/leech,
+//										/mob/living/simple_mob/animal/sif/tymisian,
+										/mob/living/simple_mob/animal/sif/sakimm,
+										/mob/living/simple_mob/animal/sif/savik,
+										/mob/living/simple_mob/animal/sif/shantak,
+//										/mob/living/simple_mob/animal/sif/siffet,
+										/mob/living/simple_mob/animal/space/alien,
+										/mob/living/simple_mob/animal/space/alien/drone,
+										/mob/living/simple_mob/animal/space/alien/sentinel,
+										/mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
+										/mob/living/simple_mob/animal/space/bats,
+										/mob/living/simple_mob/animal/space/bear,
+										/mob/living/simple_mob/animal/space/carp,
+										/mob/living/simple_mob/animal/space/carp/large,
+										/mob/living/simple_mob/animal/space/carp/large/huge,
+										/mob/living/simple_mob/animal/space/goose,
+										/mob/living/simple_mob/creature,
+										/mob/living/simple_mob/faithless,
+										/mob/living/simple_mob/tomato,
+										/mob/living/simple_mob/animal/space/tree,
+										/mob/living/simple_mob/vore/aggressive/corrupthound,
+										/mob/living/simple_mob/vore/aggressive/corrupthound/prettyboi,
+										/mob/living/simple_mob/vore/aggressive/deathclaw,
+										/mob/living/simple_mob/vore/aggressive/dino,
+										/mob/living/simple_mob/vore/aggressive/frog,
+//										/mob/living/simple_mob/vore/otie,
+//										/mob/living/simple_mob/vore/otie/red,
+										/mob/living/simple_mob/vore/aggressive/panther,
+										/mob/living/simple_mob/vore/aggressive/rat,
+//										/mob/living/simple_mob/vore/sect_drone,
+//										/mob/living/simple_mob/vore/sect_queen,
+//										/mob/living/simple_mob/vore/weretiger,
+//										/mob/living/simple_mob/vore/wolf,
+//										/mob/living/simple_mob/vore/xeno_defanged,
+										/mob/living/simple_mob/vore/aggressive/giant_snake)
+
+//TODO: literally none of these boss mobs exist in code, so I just shoved the aliens and dragon in as a placeholder for now
+var/global/list/xenobio_gold_mobs_bosses = list(
+										/mob/living/simple_mob/animal/space/alien/queen,
+										/mob/living/simple_mob/animal/space/alien/queen/empress,
+										/mob/living/simple_mob/animal/space/alien/queen/empress/mother,
+										/mob/living/simple_mob/vore/aggressive/dragon)
+//										/mob/living/simple_mob/vore/leopardmander,
+//										/mob/living/simple_mob/vore/leopardmander/blue,
+//										/mob/living/simple_mob/vore/leopardmander/exotic,
+//										/mob/living/simple_mob/vore/greatwolf,
+//										/mob/living/simple_mob/vore/greatwolf/black,
+//										/mob/living/simple_mob/vore/greatwolf/grey,
+//										/mob/living/simple_mob/vore/bigdragon,
+
+var/global/list/xenobio_gold_mobs_safe = list(
+//										/mob/living/simple_mob/vore/alienanimals/dustjumper,
+										/mob/living/simple_mob/animal/passive/chicken,
+										/mob/living/simple_mob/animal/passive/cow,
+										/mob/living/simple_mob/animal/goat,
+										/mob/living/simple_mob/animal/passive/crab,
+//										/mob/living/simple_mob/animal/passive/mouse/jerboa,
+										/mob/living/simple_mob/animal/passive/lizard,
+										/mob/living/simple_mob/animal/passive/lizard/large,
+										/mob/living/simple_mob/animal/passive/yithian,
+										/mob/living/simple_mob/animal/passive/tindalos,
+										/mob/living/simple_mob/animal/passive/mouse,
+										/mob/living/simple_mob/animal/passive/penguin,
+//										/mob/living/simple_mob/animal/passive/opossum,
+										/mob/living/simple_mob/animal/passive/cat,
+										/mob/living/simple_mob/animal/passive/dog/corgi,
+//										/mob/living/simple_mob/animal/passive/dog/void_puppy,
+//										/mob/living/simple_mob/animal/passive/dog/bullterrier,
+										/mob/living/simple_mob/animal/passive/dog/tamaskan,
+//										/mob/living/simple_mob/animal/passive/dog/brittany,
+										/mob/living/simple_mob/animal/passive/fox,
+										/mob/living/simple_mob/animal/passive/fox/syndicate,
+//										/mob/living/simple_mob/animal/passive/hare,
+//										/mob/living/simple_mob/animal/passive/pillbug,
+										/mob/living/simple_mob/animal/passive/gaslamp,
+										/mob/living/simple_mob/animal/passive/snake,
+//										/mob/living/simple_mob/animal/passive/snake/red,
+//										/mob/living/simple_mob/animal/passive/snake/python,
+										/mob/living/simple_mob/vore/bee,
+										/mob/living/simple_mob/vore/fennec,
+										/mob/living/simple_mob/vore/fennix,
+//										/mob/living/simple_mob/vore/seagull,
+										/mob/living/simple_mob/vore/hippo,
+//										/mob/living/simple_mob/vore/horse,
+//										/mob/living/simple_mob/vore/jelly,
+//										/mob/living/simple_mob/vore/oregrub,
+//										/mob/living/simple_mob/vore/oregrub/lava,
+//										/mob/living/simple_mob/vore/rabbit,
+										/mob/living/simple_mob/vore/redpanda,
+//										/mob/living/simple_mob/vore/sheep,
+//										/mob/living/simple_mob/vore/squirrel,
+										/mob/living/simple_mob/vore/solargrub)
+
+var/global/list/xenobio_gold_mobs_birds = list(/mob/living/simple_mob/animal/passive/bird/black_bird,
+										/mob/living/simple_mob/animal/passive/bird/azure_tit,
+										/mob/living/simple_mob/animal/passive/bird/european_robin,
+										/mob/living/simple_mob/animal/passive/bird/goldcrest,
+										/mob/living/simple_mob/animal/passive/bird/ringneck_dove,
+										/mob/living/simple_mob/animal/passive/bird/parrot,
+										/mob/living/simple_mob/animal/passive/bird/parrot/kea,
+										/mob/living/simple_mob/animal/passive/bird/parrot/eclectus,
+										/mob/living/simple_mob/animal/passive/bird/parrot/grey_parrot,
+										/mob/living/simple_mob/animal/passive/bird/parrot/black_headed_caique,
+										/mob/living/simple_mob/animal/passive/bird/parrot/white_caique,
+										/mob/living/simple_mob/animal/passive/bird/parrot/budgerigar,
+										/mob/living/simple_mob/animal/passive/bird/parrot/budgerigar/blue,
+										/mob/living/simple_mob/animal/passive/bird/parrot/budgerigar/bluegreen,
+										/mob/living/simple_mob/animal/passive/bird/parrot/cockatiel,
+										/mob/living/simple_mob/animal/passive/bird/parrot/cockatiel/white,
+										/mob/living/simple_mob/animal/passive/bird/parrot/cockatiel/yellowish,
+										/mob/living/simple_mob/animal/passive/bird/parrot/cockatiel/grey,
+										/mob/living/simple_mob/animal/passive/bird/parrot/sulphur_cockatoo,
+										/mob/living/simple_mob/animal/passive/bird/parrot/white_cockatoo,
+										/mob/living/simple_mob/animal/passive/bird/parrot/pink_cockatoo)			//There's too dang many
+
+var/global/list/xenobio_cerulean_potions = list(
+										/obj/item/slimepotion/enhancer,
+										/obj/item/slimepotion/stabilizer,
+										/obj/item/slimepotion/mutator,
+										/obj/item/slimepotion/docility,
+										/obj/item/slimepotion/steroid,
+										/obj/item/slimepotion/unity,
+										/obj/item/slimepotion/loyalty,
+										/obj/item/slimepotion/friendship,
+										/obj/item/slimepotion/feeding,
+										/obj/item/slimepotion/infertility,
+										/obj/item/slimepotion/fertility,
+										/obj/item/slimepotion/shrink,
+										/obj/item/slimepotion/death,
+										/obj/item/slimepotion/ferality,
+										/obj/item/slimepotion/reinvigoration,
+										/obj/item/slimepotion/mimic,
+										/obj/item/slimepotion/sapience,
+										/obj/item/slimepotion/obedience)
+
+var/global/list/xenobio_rainbow_extracts = list(
+										/obj/item/slime_extract/grey = 2,
+										/obj/item/slime_extract/metal = 3,
+										/obj/item/slime_extract/blue = 3,
+										/obj/item/slime_extract/purple = 1,
+										/obj/item/slime_extract/orange = 3,
+										/obj/item/slime_extract/yellow = 3,
+										/obj/item/slime_extract/gold = 3,
+										/obj/item/slime_extract/silver = 3,
+										/obj/item/slime_extract/dark_purple = 2,
+										/obj/item/slime_extract/dark_blue = 3,
+										/obj/item/slime_extract/red = 3,
+										/obj/item/slime_extract/green = 3,
+										/obj/item/slime_extract/pink = 3,
+										/obj/item/slime_extract/oil = 3,
+										/obj/item/slime_extract/bluespace = 3,
+										/obj/item/slime_extract/cerulean = 1,
+										/obj/item/slime_extract/amber = 3,
+										/obj/item/slime_extract/sapphire = 3,
+										/obj/item/slime_extract/ruby = 3,
+										/obj/item/slime_extract/emerald = 3,
+										/obj/item/slime_extract/light_pink = 1,
+										/obj/item/slime_extract/rainbow = 1)
+//END XENOBIOLOGY

@@ -69,7 +69,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 100, rad = 100)	// Same armor are cult armor, may nerf since DAMN THAT IS GOOD ARMOR
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 100, rad = 100)	// Same armor are cult armor, may nerf since DAMN THAT IS GOOD ARMOR
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 3
 
@@ -135,7 +135,7 @@
 		visible_message(SPAN_DANGER("\The [src] suddenly rises from a pool of blood \the [L]!"))
 		new /obj/effect/debris/cleanable/blood (src.loc)
 		playsound(L, 'sound/weapons/heavysmash.ogg', 75, 1)
-		L.Weaken(3)
+		L.afflict_paralyze(20 * 3)
 		overshoot = FALSE
 
 	if(!overshoot) // We hit the target, or something, at destination, so we're done.
@@ -178,7 +178,7 @@
 		if(T.check_density(ignore_mobs = TRUE))
 			to_chat(src, SPAN_CRITICAL("You hit something really solid!"))
 			playsound(src, "punch", 75, 1)
-			Weaken(5)
+			afflict_paralyze(20 * 5)
 			add_modifier(/datum/modifier/tunneler_vulnerable, 10 SECONDS)
 			return FALSE // Hit a wall.
 
@@ -237,7 +237,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 45, bullet = 40, laser = 30, energy = 80, bomb = 20, bio = 100, rad = 100)	// Reduced Resistance to Approximate increased Tesh damage.
+	armor_legacy_mob = list(melee = 45, bullet = 40, laser = 30, energy = 80, bomb = 20, bio = 100, rad = 100)	// Reduced Resistance to Approximate increased Tesh damage.
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 2
 
@@ -287,7 +287,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 70, bullet = 60, laser = 30, energy = 80, bomb = 35, bio = 100, rad = 100)	// Better Armor to match lizard brute resist
+	armor_legacy_mob = list(melee = 70, bullet = 60, laser = 30, energy = 80, bomb = 35, bio = 100, rad = 100)	// Better Armor to match lizard brute resist
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	movement_cooldown = 4
 	base_attack_cooldown = 7.5 //Two knives mean double stab.
@@ -338,10 +338,10 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
+	armor_legacy_mob = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	movement_cooldown = 4
-	projectiletype = /obj/item/projectile/beam/inversion
+	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged
@@ -389,7 +389,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
+	armor_legacy_mob = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 100, rad = 100)	//Armor Rebalanced for Cult Robes.
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	movement_cooldown = 4
 
@@ -437,11 +437,11 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 35, bullet = 20, laser = 35, energy = 60, bomb = 20, bio = 100, rad = 100)	//Rebalanced for Robes and Tesh damage
+	armor_legacy_mob = list(melee = 35, bullet = 20, laser = 35, energy = 60, bomb = 20, bio = 100, rad = 100)	//Rebalanced for Robes and Tesh damage
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	movement_cooldown = 2
 	base_attack_cooldown = 7.5
-	projectiletype = /obj/item/projectile/beam/inversion
+	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
@@ -487,14 +487,14 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 100, rad = 100)	// Same armor are cult armor, may nerf since DAMN THAT IS GOOD ARMOR
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 100, rad = 100)	// Same armor are cult armor, may nerf since DAMN THAT IS GOOD ARMOR
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 3
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
 /mob/living/simple_mob/humanoid/cultist/elite/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(O.force)
+	if(O.damage_force)
 		if(prob(30))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
 			if(user)
@@ -506,7 +506,7 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/cultist/elite/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/simple_mob/humanoid/cultist/elite/bullet_act(var/obj/projectile/Proj)
 	if(!Proj)	return
 	if(prob(50))
 		visible_message("<font color='red'><B>[Proj] disappears into the mirror world as it hits the shield.</B></font>")
@@ -562,11 +562,11 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 4
 
-	projectiletype = /obj/item/projectile/beam/inversion
+	projectiletype = /obj/projectile/beam/inversion
 	base_attack_cooldown = 5
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 	var/obj/item/shield_projector/shields = null
@@ -635,15 +635,15 @@
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
-	armor = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 0 //This is so he can't be kited well
 
-	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
+	projectiletype = /obj/projectile/bullet/pellet/shotgun
 
 	base_attack_cooldown = 7.5
 
-	loot_list = list(/obj/item/material/butterfly/saw = 100, /obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt = 100)
+	loot_list = list(/obj/item/material/butterfly/saw = 100, /obj/item/gun/ballistic/shotgun/doublebarrel/sawn/alt = 100)
 
 	needs_reload = TRUE
 	reload_max = 2

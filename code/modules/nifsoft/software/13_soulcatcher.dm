@@ -15,13 +15,16 @@
 	name = "Soulcatcher"
 	desc = "A mind storage and processing system capable of capturing and supporting human-level minds in a small VR space."
 	list_pos = NIF_SOULCATCHER
-	cost = 100 //If I wanna trap people's minds and lood them, then by god I'll do so.
+	cost = 25 //If I wanna trap people's minds and lood them, then by god I'll do so.
 	wear = 1
 	p_drain = 0.01
 
 	var/setting_flags = (NIF_SC_CATCHING_OTHERS|NIF_SC_ALLOW_EARS|NIF_SC_ALLOW_EYES|NIF_SC_BACKUPS|NIF_SC_PROJECTING)
 	var/list/brainmobs = list()
 	var/inside_flavor = "A small completely white room with a couch, and a window to what seems to be the outside world. A small sign in the corner says 'Configure Me'."
+	var/visibility = TRUE
+	var/list/visibility_exceptions = list()
+	var/list/visibility_blacklist = list()
 
 /datum/nifsoft/soulcatcher/New()
 	..()
@@ -44,28 +47,57 @@
 	if((. = ..()))
 		//nif.set_flag(NIF_O_SCOTHERS,NIF_FLAGS_OTHER)	//Only required on install if the flag is in the default setting_flags list defined few lines above.
 		if(nif?.human)
-			nif.human.verbs |= /mob/living/carbon/human/proc/nsay
-			nif.human.verbs |= /mob/living/carbon/human/proc/nme
+			add_verb(nif.human, /mob/living/carbon/human/proc/nsay)
+			add_verb(nif.human, /mob/living/carbon/human/proc/nme)
 
 /datum/nifsoft/soulcatcher/uninstall()
 	QDEL_LIST_NULL(brainmobs)
 	if((. = ..()) && nif?.human) //Sometimes NIFs are deleted outside of a human
-		nif.human.verbs -= /mob/living/carbon/human/proc/nsay
-		nif.human.verbs -= /mob/living/carbon/human/proc/nme
+		remove_verb(nif.human, /mob/living/carbon/human/proc/nsay)
+		remove_verb(nif.human, /mob/living/carbon/human/proc/nme)
 
 /datum/nifsoft/soulcatcher/proc/save_settings()
 	if(!nif)
 		return
 	nif.save_data["[list_pos]"] = inside_flavor
+	var/list/save_data = list()
+	save_data["vis"] = visibility
+	save_data["vis_exceptions"] = visibility_exceptions
+	save_data["vis_blacklist"] = visibility_blacklist
+	nif.save_data["[list_pos]_actual"] = save_data
 	return TRUE
 
 /datum/nifsoft/soulcatcher/proc/load_settings()
 	if(!nif)
 		return
 	var/load = nif.save_data["[list_pos]"]
+	// todo: refactor nifs i'm going to get Fucking Violent if i see this kind of shit again
+	// why the fuck was it not a list in the first place?
+	// jfc get out.
+	var/list/save_data = nif.save_data["[list_pos]_actual"]
+	if(!islist(save_data))
+		save_data = list()
 	if(load)
 		inside_flavor = load
+	if(!isnull(save_data["vis"]))
+		visibility = save_data["vis"]
+	if(islist(save_data["vis_exceptions"]))
+		visibility_exceptions = save_data["vis_exceptions"]
+	if(islist(save_data["vis_blacklist"]))
+		visibility_blacklist = save_data["vis_blacklist"]
 	return TRUE
+
+/datum/nifsoft/soulcatcher/proc/visibility_check(ckey)
+	ckey = ckey(ckey)
+	if(islist(visibility_blacklist))
+		if(ckey in visibility_blacklist)
+			return FALSE
+	if(visibility)
+		return TRUE
+	if(islist(visibility_exceptions))
+		if(ckey in visibility_exceptions)
+			return TRUE
+	return FALSE
 
 /datum/nifsoft/soulcatcher/proc/notify_into(var/message)
 	var/sound = nif.good_sound
@@ -82,7 +114,7 @@
 	message = trim(message)
 	if(!length(message))
 		return
-	message = sender.say_emphasis(message)
+	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting
@@ -101,7 +133,7 @@
 	message = trim(message)
 	if(!length(message))
 		return
-	message = sender.say_emphasis(message)
+	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting
@@ -126,11 +158,59 @@
 //	"Mind Backups \[[setting_flags & NIF_SC_BACKUPS ? "Enabled" : "Disabled"]\]" = NIF_SC_BACKUPS,
 	"AR Projecting \[[setting_flags & NIF_SC_PROJECTING ? "Enabled" : "Disabled"]\]" = NIF_SC_PROJECTING,
 	"Design Inside",
+	"Visibility \[[visibility? "Visible to Observers" : "Invisible to Observers"]\]" = "Visibility",
+	"Visibility Exceptions ([length(visibility_exceptions)])" = "Exceptions",
+	"Visibility Blacklist ([length(visibility_blacklist)])" = "Blacklist",
 	"Erase Contents")
 	var/choice = tgui_input_list(nif.human,"Select a setting to modify:","Soulcatcher NIFSoft", settings_list)
 	if(choice in settings_list)
-		switch(choice)
+		var/associative = settings_list[choice]
+		switch(associative)
+			if("Visibility")
+				if(visibility)
+					visibility = FALSE
+					notify_into("Network visibility disabled.")
+				else
+					visibility = TRUE
+					notify_into("Network visibility enabled.")
+				save_settings()
+				return
 
+			if("Exceptions")
+				var/assembled = islist(visibility_exceptions)? visibility_exceptions.Join("<br>") : "None!"
+				to_chat(nif.human, SPAN_NOTICE("[assembled]"))
+				to_chat(nif.human, SPAN_BOLDNOTICE("These ckeys above will always be allowed to see and request a soulcatcher join, even if visibility is off."))
+				var/toggle = input(nif.human, "What ckey do you want to add/remove to the whitelist?", "Whitelist") as text|null
+				if(!toggle)
+					return
+				toggle = ckey(toggle)
+				if(toggle in visibility_exceptions)
+					visibility_exceptions -= toggle
+					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] removed from exceptions."))
+				else
+					visibility_exceptions += toggle
+					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] added to exceptions."))
+				save_settings()
+				return
+
+			if("Blacklist")
+				var/assembled = islist(visibility_blacklist)? visibility_blacklist.Join("<br>") : "None!"
+				to_chat(nif.human, SPAN_NOTICE("[assembled]"))
+				to_chat(nif.human, SPAN_BOLDNOTICE("These ckeys above will never be allowed to see your soulcatcher and request to join, even while visibility is on."))
+				var/toggle = input(nif.human, "What ckey do you want to add/remove to the blacklist?", "Blacklist") as text|null
+				if(!toggle)
+					return
+				toggle = ckey(toggle)
+				if(toggle in visibility_blacklist)
+					visibility_blacklist -= toggle
+					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] removed from blacklist."))
+				else
+					visibility_blacklist += toggle
+					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] added to blacklist."))
+				save_settings()
+				return
+
+		switch(choice)
 			if("Design Inside")
 				var/new_flavor = input(nif.human, "Type what the prey sees after being 'caught'. This will be \
 				printed after an intro ending with: \"Around you, you see...\" to the prey. If you already \
@@ -222,7 +302,7 @@
 
 	//Put the mind and player into the mob
 	// login should handle the perspective reset, now that nif is set.
-	M.mind.transfer_to(brainmob)
+	M.mind.transfer(brainmob)
 	brainmob.name = brainmob.mind.name
 	brainmob.real_name = brainmob.mind.name
 
@@ -280,7 +360,7 @@
 
 /mob/living/carbon/brain/caught_soul/Login()
 	..()
-	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
+	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
 	identifying_gender = client.prefs.identifying_gender
 	reset_perspective((nif?.human) || nif)
 
@@ -379,32 +459,16 @@
 	soulcatcher.say_into(message,src,eyeobj)
 
 /mob/living/carbon/brain/caught_soul/eastshift()
-	if(!eyeobj)
-		return
-	if(eyeobj.pixel_x <= 16)
-		eyeobj.pixel_x++
-		eyeobj.is_shifted = TRUE
+	eyeobj?.eastshift()
 
 /mob/living/carbon/brain/caught_soul/westshift()
-	if(!eyeobj)
-		return
-	if(eyeobj.pixel_x >= -16)
-		eyeobj.pixel_x--
-		eyeobj.is_shifted = TRUE
+	eyeobj?.westshift()
 
 /mob/living/carbon/brain/caught_soul/northshift()
-	if(!eyeobj)
-		return
-	if(eyeobj.pixel_y <= 16)
-		eyeobj.pixel_y++
-		eyeobj.is_shifted = TRUE
+	eyeobj?.northshift()
 
 /mob/living/carbon/brain/caught_soul/southshift()
-	if(!eyeobj)
-		return
-	if(eyeobj.pixel_y >= -16)
-		eyeobj.pixel_y--
-		eyeobj.is_shifted = TRUE
+	eyeobj?.southshift()
 
 /mob/living/carbon/brain/caught_soul/allow_examine(atom/A)
 	return TRUE
@@ -441,10 +505,13 @@
 /mob/living/carbon/brain/caught_soul/set_typing_indicator(state)
 	return eyeobj?.set_typing_indicator(state)
 
+/mob/living/carbon/brain/caught_soul/update_mobility(blocked, forced)
+	return ..(blocked, ALL)
+
 ///////////////////
 //A projected AR soul thing
 /mob/observer/eye/ar_soul
-	plane = PLANE_AUGMENTED
+	plane = AUGMENTED_PLANE
 	icon = 'icons/obj/machines/ar_elements.dmi'
 	icon_state = "beacon"
 	var/mob/living/carbon/human/parent_human
@@ -460,7 +527,7 @@
 	real_name = brainmob.real_name	//And the OTHER name
 
 	forceMove(get_turf(parent_human))
-	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, .proc/human_moved)
+	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, PROC_REF(human_moved))
 
 	//Time to play dressup
 	if(brainmob.client.prefs)
@@ -474,14 +541,14 @@
 		alpha_mask.blend_mode = BLEND_SUBTRACT
 		alpha_mask.color = list(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,1,1,1,1)
 		dummy.add_overlay(alpha_mask)
-		COMPILE_OVERLAYS(dummy)
+		dummy.compile_overlays()
 		dummy.alpha = 192
 
 		// remove hudlist
-		dummy.overlays -= dummy.hud_list
+		dummy.cut_overlay(dummy.hud_list)
 		// appearance clone immediately
 		appearance = dummy.appearance
-		plane = PLANE_AUGMENTED
+		plane = AUGMENTED_PLANE
 		qdel(dummy)
 
 /mob/observer/eye/ar_soul/Destroy()
@@ -513,12 +580,6 @@
 /mob/observer/eye/ar_soul/proc/human_moved()
 	if(get_dist(parent_human,src) > SOULCATCHER_RANGE)
 		forceMove(get_turf(parent_human))
-
-/mob/observer/eye/ar_soul/Moved()
-	. = ..()
-	if(is_shifted)
-		pixel_x = 0
-		pixel_y = 0
 
 ///////////////////
 //The catching hook

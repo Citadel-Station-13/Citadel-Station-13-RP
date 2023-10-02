@@ -17,7 +17,7 @@
 	var/surface = 2	//surface area in m^2
 	var/icon_temperature = T20C //stop small changes in temperature causing an icon refresh
 
-	minimum_temperature_difference = 20
+	minimum_temperature_difference = 0.01
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 
 	buckle_lying = 1
@@ -109,9 +109,9 @@
 			if(abs(pipe_air.temperature - icon_temperature) > 10)
 				icon_temperature = pipe_air.temperature
 
-				var/h_r = heat2color_r(icon_temperature)
-				var/h_g = heat2color_g(icon_temperature)
-				var/h_b = heat2color_b(icon_temperature)
+				var/h_r = heat2colour_r(icon_temperature)
+				var/h_g = heat2colour_g(icon_temperature)
+				var/h_b = heat2colour_b(icon_temperature)
 
 				if(icon_temperature < 2000) //scale up overlay until 2000K
 					var/scale = (icon_temperature - 500) / 1500

@@ -78,7 +78,7 @@
 /turf/unsimulated/wall/supermatter/attack_ai(mob/user as mob)
 	return user.examinate(src)
 
-/turf/unsimulated/wall/supermatter/attack_hand(mob/user as mob)
+/turf/unsimulated/wall/supermatter/attack_hand(mob/user, list/params)
 	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src]... And then blinks out of existance.</span>",\
 		"<span class=\"danger\">You reach out and touch \the [src]. Everything immediately goes quiet. Your last thought is \"That was not a wise decision.\"</span>",\
 		"<span class=\"warning\">You hear an unearthly noise.</span>")
@@ -99,7 +99,7 @@
 /turf/unsimulated/wall/supermatter/Bumped(atom/AM as mob|obj)
 	if(istype(AM, /mob/living))
 		var/mob/living/M = AM
-		var/datum/gender/T = gender_datums[M.get_visible_gender()]
+		var/datum/gender/T = GLOB.gender_datums[M.get_visible_gender()]
 		AM.visible_message("<span class=\"warning\">\The [AM] slams into \the [src] inducing a resonance... [T.his] body starts to glow and catch flame before flashing into ash.</span>",\
 		"<span class=\"danger\">You slam into \the [src] as your ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\"</span>",\
 		"<span class=\"warning\">You hear an unearthly noise as a wave of heat washes over you.</span>")

@@ -3,12 +3,12 @@
 
 var/list/ghost_traps
 
-proc/get_ghost_trap(var/trap_key)
+/proc/get_ghost_trap(trap_key)
 	if(!ghost_traps)
 		populate_ghost_traps()
 	return ghost_traps[trap_key]
 
-proc/populate_ghost_traps()
+/proc/populate_ghost_traps()
 	ghost_traps = list()
 	for(var/traptype in typesof(/datum/ghosttrap))
 		var/datum/ghosttrap/G = new traptype
@@ -39,7 +39,7 @@ proc/populate_ghost_traps()
 /datum/ghosttrap/proc/request_player(var/mob/target, var/request_string)
 	if(!target)
 		return
-	for(var/mob/observer/dead/O in player_list)
+	for(var/mob/observer/dead/O in GLOB.player_list)
 		if(!O.MayRespawn())
 			continue
 		if(islist(ban_checks))

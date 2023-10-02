@@ -6,7 +6,7 @@
 	icon_state = "paperplane"
 	throw_range = 7
 	throw_speed = 1
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_TINY
 
 	var/obj/item/paper/internalPaper
@@ -17,7 +17,7 @@
 	pixel_x = rand(-9, 9)
 	if(newPaper)
 		internalPaper = newPaper
-		flags = newPaper.flags
+		atom_flags = newPaper.atom_flags
 		color = newPaper.color
 		if(isstorage(newPaper.loc))
 			var/obj/item/storage/S = newPaper.loc
@@ -35,7 +35,9 @@
 	return ..()
 
 /obj/item/paperplane/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	var/list/stamped = internalPaper.stamped
 	if(!stamped)
 		stamped = new
@@ -43,9 +45,14 @@
 		for(var/S in stamped)
 			var/obj/item/stamp/ = S
 			var/image/stampoverlay = image('icons/obj/bureaucracy.dmi', "paperplane_[initial(stamp.icon_state)]")
-			overlays += stampoverlay
+			overlays_to_add.Add(stampoverlay)
+
+	add_overlay(overlays_to_add)
 
 /obj/item/paperplane/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>You unfold [src].</span>")
 	var/atom/movable/internal_paper_tmp = internalPaper
 	internal_paper_tmp.forceMove(loc)
@@ -64,7 +71,7 @@
 		update_icon()
 
 	else if(is_hot(P))
-		if(user.disabilities & CLUMSY && prob(10))
+		if(user.disabilities & MUTATION_CLUMSY && prob(10))
 			user.visible_message("<span class='warning'>[user] accidentally ignites themselves!</span>", \
 				"<span class='userdanger'>You miss the [src] and accidentally light yourself on fire!</span>")
 			user.drop_item_to_ground(P)
@@ -85,7 +92,7 @@
 		return
 	var/mob/living/carbon/human/H = hit_atom
 	if(prob(2))
-		if((H.head && H.head.body_parts_covered & EYES) || (H.wear_mask && H.wear_mask.body_parts_covered & EYES) || (H.glasses && H.glasses.body_parts_covered & EYES))
+		if((H.head && H.head.body_cover_flags & EYES) || (H.wear_mask && H.wear_mask.body_cover_flags & EYES) || (H.glasses && H.glasses.body_cover_flags & EYES))
 			return
 		visible_message("<span class='danger'>\The [src] hits [H] in the eye!</span>")
 		H.eye_blurry += 10

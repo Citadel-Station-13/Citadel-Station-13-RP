@@ -1,5 +1,13 @@
 // todo: tgui
 // todo: ui state handles prechecks? interesting to deal with.
+/mob/proc/mouse_drop_strip_interaction(mob/user)
+	if(user.a_intent == INTENT_GRAB)
+		return NONE	// riding code
+	if(user == src)
+		return NONE // why would we?
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	request_strip_menu(user)
+
 /mob/proc/request_strip_menu(mob/user)
 	if(!strip_interaction_prechecks(user, FALSE))
 		return FALSE
@@ -160,7 +168,7 @@
 	var/hide_item = view_flags & (INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME | INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE)
 
 	if(removing)
-		if(!can_unequip(ours))
+		if(!can_unequip(ours, user = user))
 			to_chat(user, SPAN_WARNING("[ours] is stuck!"))
 			return FALSE
 		if(!(view_flags & INV_VIEW_STRIP_IS_SILENT))
@@ -258,14 +266,19 @@
 	if(.)
 		open_strip_menu(user)
 
-/mob/proc/strip_interaction_prechecks(mob/user, autoclose = TRUE)
+/mob/proc/strip_interaction_prechecks(mob/user, autoclose = TRUE, allow_loc = FALSE)
 	if(!isliving(user))
 		// no ghost fuckery
 		return FALSE
 	if(user.incapacitated())
+		to_chat(user, SPAN_WARNING("You are incapacitated!"))
 		close_strip_menu(user)
 		return FALSE
-	if(!user.Adjacent(src))
+	if(user.restrained())
+		to_chat(user, SPAN_WARNING("You are restrained!"))
+		return FALSE
+	if(!user.Adjacent(src) && (!allow_loc || !user.Adjacent(loc)))
+		to_chat(user, SPAN_WARNING("You are too far away!"))
 		close_strip_menu(user)
 		return FALSE
 	return TRUE

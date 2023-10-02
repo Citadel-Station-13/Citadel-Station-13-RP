@@ -3,15 +3,11 @@
 		var/datum/map_template/M = path
 		if(initial(M.abstract_type) == path)
 			continue
-		if(ispath(path, /datum/map_template/submap))
-			var/datum/map_template/submap/S = path
-			if(!fexists(initial(S.prefix) + initial(S.suffix)))
-				Fail("Failed to resolve [path]'s prefix+suffix to a file - [initial(S.prefix) + initial(S.suffix)].")
-			continue
-		if(ispath(path, /datum/map_template/shuttle))
-			var/datum/map_template/shuttle/S = path
-			if(!fexists(initial(S.prefix) + initial(S.suffix)))
-				Fail("Failed to resolve [path]'s prefix+suffix to a file - [initial(S.prefix) + initial(S.suffix)].")
-			continue
-		if(!fexists("[initial(M.mappath)]"))
-			Fail("Failed to resolve [path]'s initial mappath to a file - [initial(M.mappath)].")
+		var/map_path = initial(M.map_path)
+		var/using_prefixes = FALSE
+		if(isnull(map_path))
+			map_path = "[initial(M.prefix)][initial(M.suffix)]"
+			using_prefixes = TRUE
+		if(!fexists("[map_path]"))
+			var/reason = using_prefixes? "prefix+suffix ([initial(M.prefix)] / [initial(M.suffix)])" : "map_path ([initial(M.map_path)])"
+			TEST_FAIL("Failed to resolve [path]'s initial [reason] to a file.")

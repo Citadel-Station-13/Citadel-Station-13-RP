@@ -1,5 +1,5 @@
 /mob/living/silicon/robot/proc/transform_with_anim()
-	INVOKE_ASYNC(src, .proc/do_transform_animation)
+	INVOKE_ASYNC(src, PROC_REF(do_transform_animation))
 
 /mob/living/silicon/robot/proc/do_transform_animation()
 	notransform = TRUE
@@ -15,7 +15,7 @@
 	sleep(2)
 	for(var/i in 1 to 6)
 		playsound(src, pick('sound/items/drill_use.ogg', 'sound/items/jaws_cut.ogg', 'sound/items/jaws_pry.ogg', 'sound/items/Welder.ogg', 'sound/items/Wirecutter.ogg', 'sound/items/Crowbar.ogg', 'sound/items/Ratchet.ogg'), 80, 1, -1)
-		sleep(8)
+		sleep(4)
 	if(!prev_lockcharge)
 		SetLockdown(0)
 	anchored = FALSE

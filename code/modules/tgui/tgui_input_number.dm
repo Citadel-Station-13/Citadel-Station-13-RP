@@ -136,11 +136,11 @@
 		ui = new(user, src, "NumberInputModal")
 		ui.open()
 
-/datum/tgui_input_number/ui_close(mob/user)
+/datum/tgui_input_number/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	closed = TRUE
 
-/datum/tgui_input_number/ui_state(mob/user)
+/datum/tgui_input_number/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.always_state
 
 /datum/tgui_input_number/ui_static_data(mob/user)

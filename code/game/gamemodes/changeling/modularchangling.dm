@@ -2,36 +2,42 @@
 
 //Ling power's evolution menu entry datum should be contained alongside the mob proc for the actual power, in their own file.
 
-var/list/powers = typesof(/datum/power/changeling) - /datum/power/changeling	//needed for the badmin verb for now
-var/list/datum/power/changeling/powerinstances = list()
+GLOBAL_LIST_INIT(changeling_powers, init_changeling_powers())
+/proc/init_changeling_powers()
+	. = list()
+	for(var/datum/power/changeling/path as anything in subtypesof(/datum/power/changeling))
+		. += new path
 
-/datum/power			//Could be used by other antags too
+/datum/power //Could be used by other antags too
 	var/name = "Power"
 	var/desc = "Placeholder"
 	var/helptext = ""
 	var/enhancedtext = ""
-	var/isVerb = 1 	// Is it an active power, or passive?
-	var/verbpath // Path to a verb that contains the effects.
-	var/make_hud_button = 1 // Is this ability significant enough to dedicate screen space for a HUD button?
-	var/ability_icon_state = null // icon_state for icons for the ability HUD.  Must be in screen_spells.dmi.
+	/// Is it an active power, or passive?
+	var/isVerb = 1
+	/// Path to a verb that contains the effects.
+	var/verbpath
+	/// Is this ability significant enough to dedicate screen space for a HUD button?
+	var/make_hud_button = 1
+	/// icon_state for icons for the ability HUD.  Must be in screen_spells.dmi.
+	var/ability_icon_state = null
 
 /datum/power/changeling
 	var/allowduringlesserform = 0
-	var/genomecost = 500000 // Cost for the changling to evolve this power.
+	/// Cost for the changling to evolve this power.
+	var/genomecost = 500000
 
 
-// Modularchangling, totally stolen from the new player panel.  YAYY
-/datum/changeling/proc/EvolutionMenu()//The new one
+/// Modularchangling, totally stolen from the new player panel.  YAYY
+/datum/changeling/proc/EvolutionMenu() //The new one
 	set name = "-Evolution Menu-"
 	set category = "Changeling"
 	set desc = "Adapt yourself carefully."
 
-	if(!usr || !usr.mind || !usr.mind.changeling)	return
+	if(!usr || !usr.mind || !usr.mind.changeling)
+		return
 	src = usr.mind.changeling
 
-	if(!powerinstances.len)
-		for(var/P in powers)
-			powerinstances += new P()
 
 	var/dat = "<html><head><title>Changling Evolution Menu</title></head>"
 
@@ -248,7 +254,7 @@ var/list/datum/power/changeling/powerinstances = list()
 		<table width='560' align='center' cellspacing='0' cellpadding='5' id='maintable_data'>"}
 
 	var/i = 1
-	for(var/datum/power/changeling/P in powerinstances)
+	for(var/datum/power/changeling/P in GLOB.changeling_powers)
 		var/ownsthis = 0
 
 		if(P in purchased_powers)
@@ -304,18 +310,18 @@ var/list/datum/power/changeling/powerinstances = list()
 		if(!istype(M))
 			return
 		purchasePower(M, href_list["P"])
-		call(/datum/changeling/proc/EvolutionMenu)()
+		call(TYPE_PROC_REF(/datum/changeling, EvolutionMenu))()
 
 
 
-/datum/changeling/proc/purchasePower(var/datum/mind/M, var/Pname, var/remake_verbs = 1)
+/datum/changeling/proc/purchasePower(datum/mind/M, Pname, remake_verbs = 1)
 	if(!M || !M.changeling)
 		return
 
 	var/datum/power/changeling/Thepower = Pname
 
 
-	for (var/datum/power/changeling/P in powerinstances)
+	for (var/datum/power/changeling/P in GLOB.changeling_powers)
 		//to_chat(world, "[P] - [Pname] = [P.name == Pname ? "True" : "False"]")
 		if(P.name == Pname)
 			Thepower = P
@@ -357,4 +363,3 @@ var/list/datum/power/changeling/powerinstances = list()
 		call(M.current, Thepower.verbpath)()
 	else if(remake_verbs)
 		M.current.make_changeling()
-

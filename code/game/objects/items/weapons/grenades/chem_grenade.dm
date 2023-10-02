@@ -4,8 +4,8 @@
 	item_state = "grenade"
 	desc = "A hand made chemical grenade."
 	w_class = ITEMSIZE_SMALL
-	force = 2.0
-	det_time = null
+	damage_force = 2.0
+	det_time = 50
 	unacidable = 1
 
 	var/stage = 0
@@ -25,12 +25,12 @@
 	QDEL_LIST_NULL(beakers)
 	return ..()
 
-/obj/item/grenade/chem_grenade/attack_self(mob/user as mob)
+/obj/item/grenade/chem_grenade/attack_self(mob/user)
 	if(!stage || stage==1)
 		if(detonator)
 //				detonator.loc=src.loc
 			detonator.detached()
-			usr.put_in_hands(detonator)
+			usr.put_in_hands_or_drop(detonator)
 			detonator=null
 			det_time = null
 			stage=0
@@ -39,7 +39,7 @@
 			for(var/obj/B in beakers)
 				if(istype(B))
 					beakers -= B
-					user.put_in_hands(B)
+					user.put_in_hands_or_drop(B)
 		name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
 	if(stage > 1 && !active && clown_check(user))
 		to_chat(user, "<span class='warning'>You prime \the [name]!</span>")
@@ -86,7 +86,7 @@
 //					to_chat(user, "<span class='warning'>You need to add at least one beaker before locking the assembly.</span>")
 				to_chat(user, "<span class='notice'>You lock the empty assembly.</span>")
 				name = "fake grenade"
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			icon_state = initial(icon_state) +"_locked"
 			stage = 2
 		else if(stage == 2)
@@ -96,7 +96,7 @@
 				return
 			else
 				to_chat(user, "<span class='notice'>You unlock the assembly.</span>")
-				playsound(src.loc, W.usesound, 50, -3)
+				playsound(src.loc, W.tool_sound, 50, -3)
 				name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
 				icon_state = initial(icon_state) + (detonator?"_ass":"")
 				stage = 1
@@ -117,14 +117,13 @@
 			else
 				to_chat(user, "<span class='warning'>\The [W] is empty.</span>")
 
-/obj/item/grenade/chem_grenade/examine(mob/user)
+/obj/item/grenade/chem_grenade/examine(mob/user, dist)
 	. = ..()
 	if(detonator)
 		. += "With attached [detonator.name]"
 
 /obj/item/grenade/chem_grenade/activate(mob/user as mob)
-	if(active) return
-
+	. = ..()
 	if(detonator)
 		if(!isigniter(detonator.a_left))
 			detonator.a_left.activate()
@@ -132,13 +131,7 @@
 		if(!isigniter(detonator.a_right))
 			detonator.a_right.activate()
 			active = 1
-	if(active)
-		icon_state = initial(icon_state) + "_active"
 
-		if(user)
-			msg_admin_attack("[key_name_admin(user)] primed \a [src.name]")
-
-	return
 
 /obj/item/grenade/chem_grenade/proc/primed(var/primed = 1)
 	if(active)
@@ -364,6 +357,28 @@
 	B1.reagents.add_reagent("fluorosurfactant", 40)
 	B2.reagents.add_reagent("lube", 40)
 	B2.reagents.add_reagent("water", 10)
+
+	detonator = new/obj/item/assembly_holder/timer_igniter(src)
+
+	beakers += B1
+	beakers += B2
+	icon_state = initial(icon_state) +"_locked"
+
+/obj/item/grenade/chem_grenade/chlorine_gas
+	name = "chlorine gas grenade"
+	desc = "Chlorine is a powerful corrosive. When deployed in gas form it may often be used for area denial or clearing trenches."
+	stage = 2
+	path = 1
+
+/obj/item/grenade/chem_grenade/chlorine_gas/Initialize(mapload)
+	. = ..()
+	var/obj/item/reagent_containers/glass/beaker/large/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/large/B2 = new(src)
+
+	B1.reagents.add_reagent("phosphorus", 40)
+	B1.reagents.add_reagent("chlorine", 80)
+	B2.reagents.add_reagent("potassium", 40)
+	B2.reagents.add_reagent("sugar", 40)
 
 	detonator = new/obj/item/assembly_holder/timer_igniter(src)
 

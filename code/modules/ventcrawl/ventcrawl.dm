@@ -57,7 +57,7 @@ var/list/ventcrawl_machinery = list(
 			break
 
 	//Only allow it if it's "IN" the mob, not equipped on/being held
-	if(listed && !is_in_inventory(carried_item))
+	if((listed && !is_holding(carried_item)) || !is_in_inventory(carried_item))
 		return 1
 
 /mob/living/carbon/is_allowed_vent_crawl_item(var/obj/item/carried_item)
@@ -96,7 +96,7 @@ var/list/ventcrawl_machinery = list(
 		pipe = pipes[1]
 	else
 		pipe = input("Crawl Through Vent", "Pick a pipe") as null|anything in pipes
-	if(canmove && pipe)
+	if(CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) && pipe)
 		return pipe
 
 /mob/living/carbon/alien/ventcrawl_carry()

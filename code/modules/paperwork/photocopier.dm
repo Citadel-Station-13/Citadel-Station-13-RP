@@ -11,18 +11,15 @@
 	active_power_usage = 200
 	power_channel = EQUIP
 	circuit = /obj/item/circuitboard/photocopier
-	can_buckle = TRUE
+	buckle_allowed = TRUE
+	buckle_max_mobs = 1
 	var/obj/item/copyitem = null	//what's in the copier!
 	var/copies = 1	//how many copies to print!
 	var/toner = 30 //how much toner is left! woooooo~
 	var/maxcopies = 10	//how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
 	var/copying = FALSE // Is the printer busy with something? Sanity check variable.
 
-/obj/machinery/photocopier/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
-
-/obj/machinery/photocopier/examine(mob/user)
+/obj/machinery/photocopier/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user))
 		. += "The screen shows there's [toner ? "[toner]" : "no"] toner left in the printer."
@@ -30,7 +27,7 @@
 /obj/machinery/photocopier/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/photocopier/attack_hand(mob/user as mob)
+/obj/machinery/photocopier/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 
 	nano_ui_interact(user)
@@ -108,7 +105,7 @@
 	if(href_list["copy"])
 		if(machine_stat & (BROKEN|NOPOWER))
 			return
-		addtimer(CALLBACK(src, .proc/copy_operation, usr), 0)
+		addtimer(CALLBACK(src, PROC_REF(copy_operation), usr), 0)
 
 	else if(href_list["remove"])
 		if(copyitem)
@@ -118,7 +115,7 @@
 			copyitem = null
 		else if(has_buckled_mobs())
 			to_chat(buckled_mobs[1], "<span class='notice'>You feel a slight pressure on your ass.</span>") // It can't eject your asscheeks, but it'll try.
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 	else if(href_list["min"])
 		if(copies > 1)
 			copies--
@@ -173,7 +170,7 @@
 		else
 			to_chat(user, "<span class='notice'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>")
 	else if(O.is_wrench())
-		playsound(loc, O.usesound, 50, 1)
+		playsound(loc, O.tool_sound, 50, 1)
 		anchored = !anchored
 		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 	else if(default_deconstruction_screwdriver(user, O))
@@ -183,7 +180,7 @@
 
 	return
 
-/obj/machinery/photocopier/ex_act(severity)
+/obj/machinery/photocopier/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -219,7 +216,7 @@
 	c.ico = copy.ico
 	c.offset_x = copy.offset_x
 	c.offset_y = copy.offset_y
-	var/list/temp_overlays = copy.overlays       //Iterates through stamps
+	var/list/temp_overlays = copy.overlays     //Iterates through stamps
 	var/image/img                                //and puts a matching
 	for (var/j = 1, j <= min(temp_overlays.len, copy.ico.len), j++) //gray overlay onto the copy
 		if (findtext(copy.ico[j], "cap") || findtext(copy.ico[j], "cent"))
@@ -230,7 +227,7 @@
 			img = image('icons/obj/bureaucracy.dmi', "paper_stamp-dots")
 		img.pixel_x = copy.offset_x[j]
 		img.pixel_y = copy.offset_y[j]
-		c.overlays += img
+		c.add_overlay(img)
 	c.updateinfolinks()
 	if(need_toner)
 		toner--
@@ -241,19 +238,15 @@
 
 
 /obj/machinery/photocopier/proc/photocopy(var/obj/item/photo/photocopy, var/need_toner=1)
-	var/obj/item/photo/p = photocopy.copy()
-	p.loc = src.loc
+	var/icon/raw = photocopy.full_image()
 
-	var/icon/I = icon(photocopy.icon, photocopy.icon_state)
 	if(toner > 10)	//plenty of toner, go straight greyscale
-		I.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))		//I'm not sure how expensive this is, but given the many limitations of photocopying, it shouldn't be an issue.
-		p.img.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
-		p.tiny.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
+		raw.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))		//I'm not sure how expensive this is, but given the many limitations of photocopying, it shouldn't be an issue.
 	else			//not much toner left, lighten the photo
-		I.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
-		p.img.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
-		p.tiny.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
-	p.icon = I
+		raw.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
+
+	var/obj/item/photo/copy = create_photo(drop_location(), raw)
+
 	if(need_toner)
 		toner -= 5	//photos use a lot of ink!
 	if(toner < 0)
@@ -261,7 +254,7 @@
 		playsound(loc, "sound/machines/buzz-sigh.ogg", 100)
 		visible_message("<span class='notice'>A red light on \the [src] flashes, indicating that it is out of toner.</span>")
 
-	return p
+	return copy
 
 /obj/machinery/photocopier/proc/copyass(mob/user)
 	var/icon/temp_img
@@ -279,6 +272,8 @@
 			if(SPECIES_TAJ)
 				temp_img = icon('icons/obj/butts.dmi', "tajaran")
 			if(SPECIES_UNATHI)
+				temp_img = icon('icons/obj/butts.dmi', "unathi")
+			if(SPECIES_UNATHI_DIGI)
 				temp_img = icon('icons/obj/butts.dmi', "unathi")
 			if(SPECIES_SKRELL)
 				temp_img = icon('icons/obj/butts.dmi', "skrell")
@@ -328,17 +323,12 @@
 		temp_img = icon('icons/obj/butts.dmi', "nymph")
 	else
 		return
-	var/obj/item/photo/p = new /obj/item/photo (loc)
+	var/obj/item/photo/p = create_photo(drop_location(), temp_img)
 	p.desc = "You see [sitter]'s ass on the photo."
 	p.pixel_x = rand(-10, 10)
 	p.pixel_y = rand(-10, 10)
-	p.img = temp_img
-	var/icon/small_img = icon(temp_img) // Icon() is needed or else temp_img will be rescaled too >.>
-	var/icon/ic = icon('icons/obj/items.dmi',"photo")
-	small_img.Scale(8, 8)
-	ic.Blend(small_img,ICON_OVERLAY, 10, 13)
-	p.icon = ic
-	toner -= 10 // PHOTOCOPYING YOUR ASS IS EXPENSIVE (And so you can't just spam it a bunch).
+	toner -= 5 // PHOTOCOPYING YOUR ASS IS EXPENSIVE (And so you can't just spam it a bunch).
+	// fuck you let us photocopy more asses; 10 --> 5 toner cost ~silicons
 	if(toner < 0)
 		toner = 0
 		playsound(loc, "sound/machines/buzz-sigh.ogg", 100)
@@ -370,16 +360,14 @@
 	p.pixel_x = rand(-9, 9)
 	return p
 
-/obj/machinery/photocopier/can_buckle_check(mob/living/M, forced = FALSE)
-	if(!..())
-		return FALSE
+/obj/machinery/photocopier/can_buckle_mob(mob/M, flags, mob/user, semantic)
 	for(var/obj/item/clothing/C in M)
 		if(M.is_holding(C))
 			continue
-		if((C.body_parts_covered & LOWER_TORSO) && !istype(C,/obj/item/clothing/under/permit))
-			to_chat(usr, "<span class='warning'>One needs to not be wearing pants to photocopy one's ass...</span>")
+		if((C.body_cover_flags & LOWER_TORSO) && !istype(C,/obj/item/clothing/under/permit))
+			to_chat(user, "<span class='warning'>One needs to not be wearing pants to photocopy one's ass...</span>")
 			return FALSE
-	return TRUE
+	return ..()
 
 /obj/item/toner
 	name = "toner cartridge"

@@ -26,7 +26,7 @@
 /obj/item/multitool/hacktool/attackby(var/obj/item/W, var/mob/user)
 	if(W.is_screwdriver())
 		in_hack_mode = !in_hack_mode
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 	else
 		..()
 
@@ -68,7 +68,7 @@
 		return 0
 
 	known_targets.Insert(1, target)	// Insert the newly hacked target first,
-	target.register(OBSERVER_EVENT_DESTROY, src, /obj/item/multitool/hacktool/proc/on_target_destroy)
+	target.register(OBSERVER_EVENT_DESTROY, src, TYPE_PROC_REF(/obj/item/multitool/hacktool, on_target_destroy))
 	return 1
 
 /obj/item/multitool/hacktool/proc/sanity_check()

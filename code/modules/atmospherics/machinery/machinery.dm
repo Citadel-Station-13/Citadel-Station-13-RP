@@ -14,14 +14,17 @@ Pipelines + Other Objects -> Pipe network
 	idle_power_usage = 0
 	active_power_usage = 0
 	power_channel = ENVIRON
-	layer = ATMOS_LAYER
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
+	layer = EXPOSED_PIPE_LAYER
 	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS
+	// why block contents? so you ventcrawling little fucks don't pull a 2020 Citadel Main.
+	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
+	atom_colouration_system = FALSE
+	climb_allowed = FALSE
+	depth_projected = FALSE
 
 	///The color of the pipe
 	var/pipe_color
-	///The maximum amount of power the machine can use to do work, affects how powerful the machine is, in Watts
-	var/power_rating
 	///The flags of the pipe/component (PIPING_ALL_LAYER | PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY | PIPING_CARDINAL_AUTONORMALIZE)
 	var/pipe_flags = PIPING_DEFAULT_LAYER_ONLY
 	///What pipe layer can this connect to.
@@ -42,6 +45,9 @@ Pipelines + Other Objects -> Pipe network
 	var/global/datum/pipe_icon_manager/icon_manager
 	var/obj/machinery/atmospherics/node1
 	var/obj/machinery/atmospherics/node2
+
+	var/last_flow_rate_legacy = 0
+	var/last_power_draw_legacy = 0
 
 /obj/machinery/atmospherics/Initialize(mapload, newdir)
 	. = ..()
@@ -86,8 +92,8 @@ Pipelines + Other Objects -> Pipe network
 /obj/machinery/atmospherics/proc/check_connectable(obj/machinery/atmospherics/target)
 	return (src.connect_types & target.connect_types)
 
-/obj/machinery/atmospherics/attackby(atom/A, mob/user as mob)
-	if(istype(A, /obj/item/pipe_painter))
+/obj/machinery/atmospherics/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/pipe_painter))
 		return
 	..()
 
@@ -126,8 +132,8 @@ Pipelines + Other Objects -> Pipe network
 	return node.pipe_color
 
 /obj/machinery/atmospherics/process(delta_time)
-	last_flow_rate = 0
-	last_power_draw = 0
+	last_flow_rate_legacy = 0
+	last_power_draw_legacy = 0
 
 	build_network()
 
@@ -159,9 +165,6 @@ Pipelines + Other Objects -> Pipe network
 
 /obj/machinery/atmospherics/proc/disconnect(obj/machinery/atmospherics/reference)
 
-/obj/machinery/atmospherics/update_icon()
-	return null
-
 /obj/machinery/atmospherics/proc/unsafe_pressure()
 	var/datum/gas_mixture/int_air = return_air()
 	var/datum/gas_mixture/env_air = loc.return_air()
@@ -170,14 +173,11 @@ Pipelines + Other Objects -> Pipe network
 	return FALSE
 
 // Deconstruct into a pipe item.
-/obj/machinery/atmospherics/proc/deconstruct()
-	if(QDELETED(src))
-		return
+/obj/machinery/atmospherics/drop_products(method)
 	if(construction_type)
 		var/obj/item/pipe/I = new construction_type(loc, null, null, src)
 		I.setPipingLayer(piping_layer)
 		transfer_fingerprints_to(I)
-	qdel(src)
 
 // Return a list of nodes which we should call atmos_init() and build_network() during on_construction()
 /obj/machinery/atmospherics/proc/get_neighbor_nodes_for_init()
@@ -233,3 +233,25 @@ Pipelines + Other Objects -> Pipe network
 	// pixel_x = PIPE_PIXEL_OFFSET_X(piping_layer)
 	// pixel_y = PIPE_PIXEL_OFFSET_Y(piping_layer)
 	// layer = initial(layer) + PIPE_LAYER_OFFSET(piping_layer)
+
+/obj/machinery/atmospherics/hide(do_hide)
+	if(do_hide && level == 1)
+		layer = PIPE_LAYER
+	else
+		reset_plane_and_layer()
+
+// todo: refactor
+
+/obj/machinery/atmospherics/is_hidden_underfloor()
+	var/turf/T = loc
+	return istype(T) && (level == 1) && !T.is_plating()
+
+/obj/machinery/atmospherics/should_hide_underfloor()
+	return level == 1
+
+/**
+ * currently unimplemented
+ * call when our internal settings change to push changes to relevant uis.
+ */
+/obj/machinery/atmospherics/proc/ui_settings_updated()
+	// todo: implement

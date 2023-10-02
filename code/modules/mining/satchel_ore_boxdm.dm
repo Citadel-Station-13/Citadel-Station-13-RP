@@ -10,7 +10,7 @@
 	var/last_update = 0
 	var/list/stored_ore = list()
 
-/obj/structure/ore_box/ex_act(severity)
+/obj/structure/ore_box/legacy_ex_act(severity)
 	return //if an overstuffed ore box explodes it crashes the server, thank you GC
 
 /obj/structure/ore_box/attackby(obj/item/W as obj, mob/user as mob)
@@ -27,7 +27,7 @@
 		for(var/obj/item/ore/O in S.contents)
 			S.remove_from_storage(O, src) //This will move the item to this item's contents
 
-/obj/structure/ore_box/examine(mob/user)
+/obj/structure/ore_box/examine(mob/user, dist)
 	. = ..()
 
 	to_chat(user,"It holds:")

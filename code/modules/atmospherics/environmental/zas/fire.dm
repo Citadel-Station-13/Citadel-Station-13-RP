@@ -61,7 +61,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 		fuel_objs.Cut()
 
 	if(!fire_tiles.len)
-		air_master.active_fire_zones.Remove(src)
+		SSair.active_fire_zones.Remove(src)
 
 /datum/zas_zone/proc/remove_liquidfuel(var/used_liquid_fuel, var/remove_fire=0)
 	if(!fuel_objs.len)
@@ -99,7 +99,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 		return 1
 
 	fire = new(src, fl)
-	air_master.active_fire_zones |= zone
+	SSair.active_fire_zones |= zone
 
 	var/obj/effect/debris/cleanable/liquid_fuel/fuel = locate() in src
 	zone.fire_tiles |= src
@@ -136,7 +136,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	set_light(3, 1, color)
 
 	firelevel = fl
-	air_master.active_hotspots.Add(src)
+	SSair.active_hotspots.Add(src)
 
 /atom/movable/fire/Destroy()
 	RemoveFire()
@@ -150,7 +150,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 			T.fire = null
 		else
 			stack_trace("Mismatching fire on [T] [COORD(T)]")
-	air_master.active_hotspots.Remove(src)
+	SSair.active_hotspots.Remove(src)
 
 /atom/movable/fire/process(delta_time)
 	. = 1
@@ -215,7 +215,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 /atom/movable/fire/proc/fire_color(var/env_temperature)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	var/temperature = max(4000*sqrt(firelevel/firelevel_multiplier), env_temperature)
-	return heat2color(temperature)
+	return heat2colour(temperature)
 
 /turf/simulated
 	var/fire_protection = 0 //Protects newly extinguished tiles from being overrun again.
@@ -250,15 +250,15 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 			continue
 
 		if( C.max_heat_protection_temperature >= last_temperature )
-			if(C.body_parts_covered & HEAD)
+			if(C.body_cover_flags & HEAD)
 				head_exposure = 0
-			if(C.body_parts_covered & UPPER_TORSO)
+			if(C.body_cover_flags & UPPER_TORSO)
 				chest_exposure = 0
-			if(C.body_parts_covered & LOWER_TORSO)
+			if(C.body_cover_flags & LOWER_TORSO)
 				groin_exposure = 0
-			if(C.body_parts_covered & LEGS)
+			if(C.body_cover_flags & LEGS)
 				legs_exposure = 0
-			if(C.body_parts_covered & ARMS)
+			if(C.body_cover_flags & ARMS)
 				arms_exposure = 0
 	//minimize this for low-pressure enviroments
 	var/mx = 5 * firelevel/firelevel_multiplier * min(pressure / ONE_ATMOSPHERE, 1)

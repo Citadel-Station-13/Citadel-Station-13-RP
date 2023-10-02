@@ -15,10 +15,6 @@
 	var/id = 1
 	var/drive_range = 50 //this is mostly irrelevant since current mass drivers throw into space, but you could make a lower-range mass driver for interstation transport or something I guess.
 
-/obj/machinery/mass_driver/Initialize(mapload, newdir)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/mass_driver/attackby(obj/item/I, mob/user)
 	if(default_deconstruction_screwdriver(user, I))
 		return
@@ -50,7 +46,7 @@
 				break
 			use_power(500)
 			spawn(0)
-				O.throw_at(target, drive_range * power, power)
+				O.throw_at_old(target, drive_range * power, power)
 	flick("mass_driver1", src)
 	return
 

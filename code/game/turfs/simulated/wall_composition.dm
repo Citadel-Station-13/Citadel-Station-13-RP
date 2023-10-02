@@ -1,37 +1,42 @@
-/turf/simulated/wall/proc/set_material(datum/material/newmaterial, datum/material/newrmaterial, datum/material/newgmaterial, defer_icon)
-	material = newmaterial
-	reinf_material = newrmaterial
-	if(!newgmaterial)
-		girder_material = MAT_STEEL
-	else
-		girder_material = newgmaterial
-	if(!defer_icon)
-		QUEUE_SMOOTH(src)
-		QUEUE_SMOOTH_NEIGHBORS(src)
-	update_material(TRUE)
+/turf/simulated/wall/proc/set_materials(materialtype, rmaterialtype, girdertype)
+	// var/datum/material/plating_mat_ref
+	// if(materialtype)
+	// 	plating_mat_ref = SSmaterials.get_material(materialtype)
+	// var/datum/material/reinf_mat_ref
+	// if(rmaterialtype)
+	// 	reinf_mat_ref = SSmaterials.get_material(rmaterialtype)
+	// var/datum/material/girder_mat_ref
+	// if(girdertype)
+	// 	girder_mat_ref = SSmaterials.get_material(girdertype)
 
-/turf/simulated/wall/proc/update_material(defer_icon)
-	if(!material)
-		return
+	material = materialtype
+	if(ispath(material, /datum/material))
+		material = SSmaterials.get_material(material)
+	else if(!istype(material))
+		material = SSmaterials.get_material(get_default_material())
+
+	reinf_material = rmaterialtype
+	if(ispath(reinf_material, /datum/material))
+		reinf_material = SSmaterials.get_material(reinf_material)
+	else if(!istype(reinf_material))
+		reinf_material = null
+
+	girder_material = girdertype
+	if(ispath(girder_material, /datum/material))
+		girder_material = SSmaterials.get_material(girder_material)
+	else if(!istype(girder_material))
+		girder_material = SSmaterials.get_material(/datum/material/steel)
 
 	if(reinf_material)
 		construction_stage = 6
 	else
 		construction_stage = null
-	if(!material)
-		material = get_material_by_name(MAT_STEEL)
-	if(material)
-		explosion_resistance = material.explosion_resistance
-	if(reinf_material && reinf_material.explosion_resistance > explosion_resistance)
-		explosion_resistance = reinf_material.explosion_resistance
 
 	if(reinf_material)
-		name = "reinforced [material.display_name] wall"
-		desc = "It seems to be a section of hull reinforced with [reinf_material.display_name] and plated with [material.display_name]."
+		name = "reinforced [material.display_name || material.name] wall"
+		desc = "It seems to be a section of hull reinforced with [reinf_material.display_name || reinf_material.name] and plated with [material.display_name || material.name]."
 	else
-		name = "[material.display_name] wall"
-		desc = "It seems to be a section of hull plated with [material.display_name]."
+		name = "[material.display_name || material.name] wall"
+		desc = "It seems to be a section of hull plated with [material.display_name || material.name]."
 
-	SSradiation.resistance_cache.Remove(src)
-	if(!defer_icon)
-		update_icon()
+	update_appearance()

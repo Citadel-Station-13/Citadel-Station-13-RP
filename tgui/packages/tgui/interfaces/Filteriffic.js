@@ -154,6 +154,7 @@ const FilterDataEntry = (props, context) => {
   };
 
   const filterEntryMap = {
+    alpha: 'float',
     x: 'float',
     y: 'float',
     icon: 'icon',

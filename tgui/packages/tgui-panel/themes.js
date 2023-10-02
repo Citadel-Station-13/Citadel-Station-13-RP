@@ -36,11 +36,12 @@ let setClientThemeTimer = null;
 export const setClientTheme = name => {
   // Transmit once for fast updates and again in a little while in case we won
   // the race against statbrowser init.
-  clearInterval(setClientThemeTimer);
-  Byond.command(`.output statbrowser:set_theme ${name}`);
+  let stat_theme = name === "light"? "light" : "dark";
+  clearTimeout(setClientThemeTimer);
+  Byond.command(`.output statbrowser:set_theme ${stat_theme}`);
   setClientThemeTimer = setTimeout(() => {
-    Byond.command(`.output statbrowser:set_theme ${name}`);
-  }, 1500);
+    Byond.command(`.output statbrowser:set_theme ${stat_theme}`);
+  }, 5000);
 
   if (name === 'light') {
     return Byond.winset({
@@ -73,19 +74,21 @@ export const setClientTheme = name => {
       'output.text-color': COLOR_WHITE_TEXT,
       'statwindow.background-color': COLOR_WHITE_DARKBG,
       'statwindow.text-color': COLOR_WHITE_TEXT,
-      'statbrowser.background-color': COLOR_WHITE_BG,
-      'statbrowser.tab-background-color': COLOR_WHITE_DARKBG,
-      'statbrowser.text-color': COLOR_WHITE_TEXT,
-      'statbrowser.tab-text-color': COLOR_WHITE_TEXT,
-      'statbrowser.prefix-color': COLOR_WHITE_TEXT,
-      'statbrowser.suffix-color': COLOR_WHITE_TEXT,
+      'stat_tab.background-color': COLOR_WHITE_DARKBG,
+      'stat_tab.text-color': COLOR_WHITE_TEXT,
+      'statpanel.background-color': COLOR_WHITE_BG,
+      'statpanel.tab-background-color': COLOR_WHITE_DARKBG,
+      'statpanel.text-color': COLOR_WHITE_TEXT,
+      'statpanel.tab-text-color': COLOR_WHITE_TEXT,
+      'statpanel.prefix-color': COLOR_WHITE_TEXT,
+      'statpanel.suffix-color': COLOR_WHITE_TEXT,
       // Say, OOC, me Buttons etc.
       'saybutton.background-color': COLOR_WHITE_DARKBG,
       'saybutton.text-color': COLOR_WHITE_TEXT,
-      'oocbutton.background-color': COLOR_WHITE_DARKBG,
-      'oocbutton.text-color': COLOR_WHITE_TEXT,
-      'mebutton.background-color': COLOR_WHITE_DARKBG,
-      'mebutton.text-color': COLOR_WHITE_TEXT,
+      // 'oocbutton.background-color': COLOR_WHITE_DARKBG,
+      // 'oocbutton.text-color': COLOR_WHITE_TEXT,
+      // 'mebutton.background-color': COLOR_WHITE_DARKBG,
+      // 'mebutton.text-color': COLOR_WHITE_TEXT,
       'asset_cache_browser.background-color': COLOR_WHITE_DARKBG,
       'asset_cache_browser.text-color': COLOR_WHITE_TEXT,
       'tooltip.background-color': COLOR_WHITE_BG,
@@ -123,19 +126,21 @@ export const setClientTheme = name => {
       'output.text-color': COLOR_DARK_TEXT,
       'statwindow.background-color': COLOR_DARK_DARKBG,
       'statwindow.text-color': COLOR_DARK_TEXT,
-      'statbrowser.background-color': COLOR_DARK_DARKBG,
-      'statbrowser.tab-background-color': COLOR_DARK_BG,
-      'statbrowser.text-color': COLOR_DARK_TEXT,
-      'statbrowser.tab-text-color': COLOR_DARK_TEXT,
-      'statbrowser.prefix-color': COLOR_DARK_TEXT,
-      'statbrowser.suffix-color': COLOR_DARK_TEXT,
+      'stat_tab.background-color': COLOR_DARK_BG,
+      'stat_tab.text-color': COLOR_DARK_TEXT,
+      'statpanel.background-color': COLOR_DARK_DARKBG,
+      'statpanel.tab-background-color': COLOR_DARK_BG,
+      'statpanel.text-color': COLOR_DARK_TEXT,
+      'statpanel.tab-text-color': COLOR_DARK_TEXT,
+      'statpanel.prefix-color': COLOR_DARK_TEXT,
+      'statpanel.suffix-color': COLOR_DARK_TEXT,
       // Say, OOC, me Buttons etc.
       'saybutton.background-color': COLOR_DARK_BG,
       'saybutton.text-color': COLOR_DARK_TEXT,
-      'oocbutton.background-color': COLOR_DARK_BG,
-      'oocbutton.text-color': COLOR_DARK_TEXT,
-      'mebutton.background-color': COLOR_DARK_BG,
-      'mebutton.text-color': COLOR_DARK_TEXT,
+      // 'oocbutton.background-color': COLOR_DARK_BG,
+      // 'oocbutton.text-color': COLOR_DARK_TEXT,
+      // 'mebutton.background-color': COLOR_DARK_BG,
+      // 'mebutton.text-color': COLOR_DARK_TEXT,
       'asset_cache_browser.background-color': COLOR_DARK_BG,
       'asset_cache_browser.text-color': COLOR_DARK_TEXT,
       'tooltip.background-color': COLOR_DARK_BG,
@@ -173,19 +178,21 @@ export const setClientTheme = name => {
       'output.text-color': COLOR_DARK_TEXT,
       'statwindow.background-color': COLOR_DARK_DARKBG,
       'statwindow.text-color': COLOR_DARK_TEXT,
-      'statbrowser.background-color': COLOR_DARK_DARKBG,
-      'statbrowser.tab-background-color': COLOR_DARK_BG,
-      'statbrowser.text-color': COLOR_DARK_TEXT,
-      'statbrowser.tab-text-color': COLOR_DARK_TEXT,
-      'statbrowser.prefix-color': COLOR_DARK_TEXT,
-      'statbrowser.suffix-color': COLOR_DARK_TEXT,
+      'stat_tab.background-color': COLOR_DARK_BG,
+      'stat_tab.text-color': COLOR_DARK_TEXT,
+      'statpanel.background-color': COLOR_DARK_DARKBG,
+      'statpanel.tab-background-color': COLOR_DARK_BG,
+      'statpanel.text-color': COLOR_DARK_TEXT,
+      'statpanel.tab-text-color': COLOR_DARK_TEXT,
+      'statpanel.prefix-color': COLOR_DARK_TEXT,
+      'statpanel.suffix-color': COLOR_DARK_TEXT,
       // Say, OOC, me Buttons etc.
       'saybutton.background-color': COLOR_DARK_BG,
       'saybutton.text-color': COLOR_DARK_TEXT,
-      'oocbutton.background-color': COLOR_DARK_BG,
-      'oocbutton.text-color': COLOR_DARK_TEXT,
-      'mebutton.background-color': COLOR_DARK_BG,
-      'mebutton.text-color': COLOR_DARK_TEXT,
+      // 'oocbutton.background-color': COLOR_DARK_BG,
+      // 'oocbutton.text-color': COLOR_DARK_TEXT,
+      // 'mebutton.background-color': COLOR_DARK_BG,
+      // 'mebutton.text-color': COLOR_DARK_TEXT,
       'asset_cache_browser.background-color': COLOR_DARK_BG,
       'asset_cache_browser.text-color': COLOR_DARK_TEXT,
       'tooltip.background-color': COLOR_DARK_BG,

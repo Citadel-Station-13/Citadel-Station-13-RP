@@ -17,7 +17,7 @@
 /datum/technomancer/presets/summoner
 	name = "Summoner"
 	desc = "This preset is dedicated to amassing a large army of entities to do your bidding.  It includes the Summoner Core, to allow \
-	for more efficency, as well as Summon Creature and Summon Automatron, for obvious reasons.  The functions Aspect Aura and \
+	for more efficiency, as well as Summon Creature and Summon Automatron, for obvious reasons.  The functions Aspect Aura and \
 	Mend Wounds are also included, to allow for an area of effect heal that is ideal for keeping your (nonrobotic) army alive.  \
 	Finally, this includes the Scepter of Enpowerment, to make your summoned entities friendly to you and your allies, without the \
 	need for the Control function.  The Control function can be obtained if one wishes to micromanage their summon army, however."

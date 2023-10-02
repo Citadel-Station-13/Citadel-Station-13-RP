@@ -80,6 +80,12 @@
 	light_power = 3
 	light_color = "#3300ff"
 
+/obj/effect/projectile/impact/secutorkill
+	icon_state = "impact_laser"
+	light_range = 2
+	light_power = 0.5
+	light_color = "#BF2F4B"
+
 // Medigun
 /obj/effect/projectile/impact/medigun
 	icon = 'icons/obj/projectiles_vr.dmi'

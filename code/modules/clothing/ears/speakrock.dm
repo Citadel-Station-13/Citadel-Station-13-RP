@@ -4,7 +4,7 @@
     icon = 'icons/obj/items.dmi'    // Radios set their own icons, so have to re-set this here.
 
     icon_state = "headphones_off"
-    item_state_slots = list(slot_r_hand_str = "headphones", slot_l_hand_str = "headphones")
+    item_state_slots = list(SLOT_ID_RIGHT_HAND = "headphones", SLOT_ID_LEFT_HAND = "headphones")
     slot_flags = SLOT_EARS
     ear_protection = 0    // set to 0 for now, can change later
 

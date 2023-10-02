@@ -22,16 +22,15 @@
 			E.density = 1
 			E.anchored = 1
 			E.invisibility = 0
-		spawn(10)
-			UpdateMove()
+		UpdateMove()
 	return 1
 
 /datum/artifact_effect/forcefield/process(delta_time)
 	..()
 	for(var/obj/effect/energy_field/E in created_field)
-		if(E.strength < 1)
+		if(E.strength < 2)
 			E.adjust_strength(0.15, 0)
-		else if(E.strength < 5)
+		else if(E.strength < 10)
 			E.adjust_strength(0.25, 0)
 
 /datum/artifact_effect/forcefield/UpdateMove()

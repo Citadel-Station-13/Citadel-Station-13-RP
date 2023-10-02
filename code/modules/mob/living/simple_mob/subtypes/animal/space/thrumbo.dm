@@ -61,7 +61,7 @@
 		return
 	var/chargedir = get_dir(src, chargeturf)
 	setDir(chargedir)
-	var/turf/T = get_ranged_target_turf(chargeturf, chargedir, isDiagonal(chargedir) ? 1 : 2)
+	var/turf/T = get_ranged_target_turf(chargeturf, chargedir, IS_DIAGONAL(chargedir) ? 1 : 2)
 	if(!T)
 		charging = 0
 		movement_shake_radius = null
@@ -86,10 +86,10 @@
 		if(istype(AM, /mob/living))
 			var/mob/living/M = AM
 			visible_message("<span class='warning'>[src] rams [AM]!</span>")
-			M.Stun(5)
-			M.Weaken(3)
+			M.afflict_stun(20 * 5)
+			M.afflict_paralyze(20 * 3)
 			var/throwdir = pick(turn(dir, 45), turn(dir, -45))
-			M.throw_at(get_step(src.loc, throwdir), 1, 1, src)
+			M.throw_at_old(get_step(src.loc, throwdir), 1, 1, src)
 			runOver(M) // Actually should not use this, placeholder
 		if(istype(AM, /obj/structure))
 			if(istype(AM, /obj/structure/window))
@@ -142,11 +142,11 @@
 	var/beforehealth = icon_living
 	var/healthpercent = health/maxHealth
 	switch(healthpercent)
-		if(0.25 to 0)
+		if(0 to 0.25)
 			icon_living = "thrumbo-25"
-		if(0.50 to 0.26)
+		if(0.26 to 0.50)
 			icon_living = "thrumbo-50"
-		if(0.75 to 0.51)
+		if(0.51 to 0.75)
 			icon_living = "thrumbo-75"
 		if(0.76 to INFINITY)
 			icon_living = "thrumbo-100"

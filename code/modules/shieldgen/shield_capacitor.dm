@@ -9,7 +9,7 @@
 	icon_state = "capacitor"
 	var/active = 0
 	density = 1
-	req_one_access = list(access_engine,access_captain,access_security)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_COMMAND_CAPTAIN,ACCESS_SECURITY_EQUIPMENT)
 	var/stored_charge = 0	//not to be confused with power cell charge, this is in Joules
 	var/last_stored_charge = 0
 	var/time_since_fail = 100
@@ -50,7 +50,7 @@
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 	else if(W.is_wrench())
 		src.anchored = !src.anchored
-		playsound(src, W.usesound, 75, 1)
+		playsound(src, W.tool_sound, 75, 1)
 		src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].</font>")
 
 		if(anchored)
@@ -67,7 +67,7 @@
 	else
 		..()
 
-/obj/machinery/shield_capacitor/attack_hand(mob/user)
+/obj/machinery/shield_capacitor/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN))
 		return
 	interact(user)

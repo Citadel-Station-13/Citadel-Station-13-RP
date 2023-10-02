@@ -1,20 +1,23 @@
 // helpers
 /// sets up a simple log. only use this for dumber logs that don't need any special logic.
-#define SIMPLE_LOG_BOILERPLATE(type)						\
-/world/_setup_logs_boilerplate(){							\
-	GLOB.##type_log = "[GLOB.log_directory]/[#type].log";	\
-	start_log(GLOB.##type_log);								\
-}															\
-/proc/log_##type(text){										\
-	WRITE_LOG(GLOB.##type_log, text);						\
-}															\
-GLOBAL_PROTECT(##type_log);									\
-GLOBAL_VAR(##type_log);
+#define SIMPLE_LOG_BOILERPLATE(gvar, name)				\
+/world/_setup_logs_boilerplate(){						\
+	. = ..();											\
+	GLOB.##gvar = "[GLOB.log_directory]/[#name].log";	\
+	start_log(GLOB.##gvar);								\
+}														\
+/proc/log_##name(text){								\
+	WRITE_LOG(GLOB.##gvar, text);						\
+}														\
+GLOBAL_PROTECT(##gvar);									\
+GLOBAL_VAR(##gvar);
 
 //Investigate logging defines
 #define INVESTIGATE_ATMOS "atmos"
 #define INVESTIGATE_CIRCUIT "circuit"
 #define INVESTIGATE_PRESENTS "presents"
+#define INVESTIGATE_RADIATION "radiation"
+#define INVESTIGATE_REAGENTS "reagents"
 #define INVESTIGATE_RECORDS "records"
 #define INVESTIGATE_SINGULO "singulo"
 #define INVESTIGATE_SUPERMATTER "supermatter"
@@ -24,6 +27,8 @@ GLOBAL_VAR(##type_log);
 	INVESTIGATE_ATMOS,					\
 	INVESTIGATE_CIRCUIT,				\
 	INVESTIGATE_PRESENTS,				\
+	INVESTIGATE_RADIATION,				\
+	INVESTIGATE_REAGENTS,				\
 	INVESTIGATE_RECORDS,				\
 	INVESTIGATE_SINGULO,				\
 	INVESTIGATE_SUPERMATTER,			\

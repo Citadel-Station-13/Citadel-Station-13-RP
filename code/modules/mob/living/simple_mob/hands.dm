@@ -16,32 +16,7 @@
 
 	if(r_hand)
 		r_hand.screen_loc = ui_rhand	//TODO
-
-		//determine icon state to use
-		var/t_state
-		if(r_hand.item_state_slots && r_hand.item_state_slots[slot_r_hand_str])
-			t_state = r_hand.item_state_slots[slot_r_hand_str]
-		else if(r_hand.item_state)
-			t_state = r_hand.item_state
-		else
-			t_state = r_hand.icon_state
-
-		//determine icon to use
-		var/icon/t_icon
-		if(r_hand.item_icons && (slot_r_hand_str in r_hand.item_icons))
-			t_icon = r_hand.item_icons[slot_r_hand_str]
-		else if(r_hand.icon_override)
-			t_state += "_r"
-			t_icon = r_hand.icon_override
-		else
-			t_icon = INV_R_HAND_DEF_ICON
-
-		//apply color
-		var/image/standing = image(icon = t_icon, icon_state = t_state)
-		standing.color = r_hand.color
-
-		r_hand_sprite = standing
-
+		r_hand_sprite = r_hand.render_mob_appearance(src, 2, BODYTYPE_DEFAULT)
 	else
 		r_hand_sprite = null
 
@@ -53,32 +28,7 @@
 
 	if(l_hand)
 		l_hand.screen_loc = ui_lhand	//TODO
-
-		//determine icon state to use
-		var/t_state
-		if(l_hand.item_state_slots && l_hand.item_state_slots[slot_l_hand_str])
-			t_state = l_hand.item_state_slots[slot_l_hand_str]
-		else if(l_hand.item_state)
-			t_state = l_hand.item_state
-		else
-			t_state = l_hand.icon_state
-
-		//determine icon to use
-		var/icon/t_icon
-		if(l_hand.item_icons && (slot_l_hand_str in l_hand.item_icons))
-			t_icon = l_hand.item_icons[slot_l_hand_str]
-		else if(l_hand.icon_override)
-			t_state += "_l"
-			t_icon = l_hand.icon_override
-		else
-			t_icon = INV_L_HAND_DEF_ICON
-
-		//apply color
-		var/image/standing = image(icon = t_icon, icon_state = t_state)
-		standing.color = l_hand.color
-
-		l_hand_sprite = standing
-
+		l_hand_sprite = r_hand.render_mob_appearance(src, 1, BODYTYPE_DEFAULT)
 	else
 		l_hand_sprite = null
 

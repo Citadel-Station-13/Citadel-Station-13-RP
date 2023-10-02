@@ -57,16 +57,16 @@
 	bone_amount = 3
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
-
+/* //Commenting out for now
 	var/knockdown_chance = 15
 
 /mob/living/simple_mob/animal/space/carp/apply_melee_effects(var/atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(knockdown_chance))
-			L.Weaken(3)
+			L.afflict_paralyze(20 * 3)
 			L.visible_message(SPAN_DANGER("\The [src] knocks down \the [L]!"))
-
+*/
 // Subtypes.
 
 // Won't wander away.
@@ -87,10 +87,8 @@
 	movement_cooldown = 5 // Slower than the younger carp.
 	mob_size = MOB_LARGE
 
-	pixel_x = -16
-	default_pixel_x = -16
-	icon_expected_width = 64
-	icon_expected_height = 32
+	base_pixel_x = -16
+	icon_x_dimension = 64
 
 	meat_amount = 5
 	bone_amount = 4
@@ -115,9 +113,9 @@
 	melee_damage_upper = 25
 
 	pixel_y = -16
-	default_pixel_y = -16
-	icon_expected_width = 64
-	icon_expected_height = 64
+	base_pixel_y = -16
+	icon_x_dimension = 64
+	icon_y_dimension = 64
 
 	meat_amount = 10
 	bone_amount = 7

@@ -26,20 +26,20 @@
 			lost_target()
 			ai_log("engage_target() : No more targets. Exiting.", AI_LOG_DEBUG)
 			return
-	//		if(lose_target_time + lose_target_timeout < world.time)
-	//			ai_log("engage_target() : Unseen enemy timed out.", AI_LOG_TRACE)
-	//			set_stance(STANCE_IDLE) // It must've been the wind.
-	//			lost_target()
-	//			ai_log("engage_target() : Exiting.", AI_LOG_DEBUG)
-	//			return
+			// if(lose_target_time + lose_target_timeout < world.time)
+			// 	ai_log("engage_target() : Unseen enemy timed out.", AI_LOG_TRACE)
+			// 	set_stance(STANCE_IDLE) // It must've been the wind.
+			// 	lost_target()
+			// 	ai_log("engage_target() : Exiting.", AI_LOG_DEBUG)
+			// 	return
 
-	//		// But maybe we do one last ditch effort.
-	//		if(!target_last_seen_turf || intelligence_level < AI_SMART)
-	//			ai_log("engage_target() : No last known position or is too dumb to fight unseen enemies.", AI_LOG_TRACE)
-	//			set_stance(STANCE_IDLE)
-	//		else
-	//			ai_log("engage_target() : Fighting unseen enemy.", AI_LOG_TRACE)
-	//			engage_unseen_enemy()
+			// // But maybe we do one last ditch effort.
+			// if(!target_last_seen_turf || intelligence_level < AI_SMART)
+			// 	ai_log("engage_target() : No last known position or is too dumb to fight unseen enemies.", AI_LOG_TRACE)
+			// 	set_stance(STANCE_IDLE)
+			// else
+			// 	ai_log("engage_target() : Fighting unseen enemy.", AI_LOG_TRACE)
+			// 	engage_unseen_enemy()
 		else
 			ai_log("engage_target() : Got new target ([target]).", AI_LOG_TRACE)
 
@@ -189,7 +189,7 @@
 
 // Can be used to conditionally do a ranged or melee attack.
 /datum/ai_holder/proc/max_range(atom/movable/AM)
-	return holder.ICheckRangedAttack(AM) ? 7 : 1
+	return holder.ICheckRangedAttack(AM) ? max_range : 1
 
 // Goes to the target, to attack them.
 // Called when in STANCE_APPROACH.
@@ -301,11 +301,11 @@
 		ai_log("destroy_surroundings() : Going to try to violently clear [problem_turf].", AI_LOG_DEBUG)
 		// First, kill windows in the way.
 		for(var/obj/structure/window/W in problem_turf)
-			if(W.dir == GLOB.reverse_dir[holder.dir]) // So that windows get smashed in the right order
+			if(W.dir == global.reverse_dir[holder.dir]) // So that windows get smashed in the right order
 				ai_log("destroy_surroundings() : Attacking side window.", AI_LOG_INFO)
 				return holder.IAttack(W)
 
-			else if(W.is_fulltile())
+			else if(W.fulltile)
 				ai_log("destroy_surroundings() : Attacking full tile window.", AI_LOG_INFO)
 				return holder.IAttack(W)
 

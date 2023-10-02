@@ -3,10 +3,10 @@
 	name = "head"
 	icon = 'icons/obj/clothing/hats.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_hats.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_hats.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_hats.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_hats.dmi',
 		)
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 	slot_flags = SLOT_HEAD
 	w_class = ITEMSIZE_SMALL
 	blood_sprite_state = "helmetblood"
@@ -17,18 +17,15 @@
 	var/on = 0
 	var/image/helmet_light
 
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/head.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/head.dmi'
-		)
-
 	drop_sound = 'sound/items/drop/hat.ogg'
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/hat.ogg'
 	pickup_sound = 'sound/items/pickup/hat.ogg'
 
 /obj/item/clothing/head/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(brightness_on)
 		if(!isturf(user.loc))
 			to_chat(user, "You cannot turn the light on while in this [user.loc]")
@@ -46,7 +43,8 @@
 	else if(!on && light_applied)
 		set_light(0)
 		light_applied = 0
-	update_icon(user)
+	update_icon()
+	update_worn_icon()
 	user.update_action_buttons()
 
 /obj/item/clothing/head/attack_ai(var/mob/user)
@@ -84,10 +82,8 @@
 		to_chat(user, "<span class='notice'>You crawl under \the [src].</span>")
 	return 1
 
-/obj/item/clothing/head/update_icon(var/mob/user)
-	var/mob/living/carbon/human/H
-	if(ishuman(user))
-		H = user
+/obj/item/clothing/head/update_icon()
+	var/mob/living/carbon/human/H = worn_mob()
 
 	if(on)
 		// Generate object icon.
@@ -98,7 +94,7 @@
 
 		// Generate and cache the on-mob icon, which is used in update_inv_head().
 		var/body_type = (H && H.species.get_bodytype_legacy(H))
-		var/cache_key = "[light_overlay][body_type && sprite_sheets[body_type] ? "_[body_type]" : ""]"
+		var/cache_key = "[light_overlay][body_type && sprite_sheets?[body_type] ? "_[body_type]" : ""]"
 		if(!GLOB.light_overlay_cache[cache_key])
 			var/use_icon = LAZYACCESS(sprite_sheets,body_type) || 'icons/mob/light_overlays.dmi'
 			GLOB.light_overlay_cache[cache_key] = image(icon = use_icon, icon_state = "[light_overlay]")
@@ -106,5 +102,3 @@
 	else if(helmet_light)
 		cut_overlay(helmet_light)
 		helmet_light = null
-
-	user.update_inv_head() //Will redraw the helmet with the light on the mob

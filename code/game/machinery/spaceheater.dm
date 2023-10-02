@@ -19,16 +19,16 @@
 	update_icon()
 
 /obj/machinery/space_heater/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	icon_state = "sheater[on]"
 	if(panel_open)
-		overlays  += "sheater-open"
+		add_overlay("sheater-open")
 	if(on)
 		set_light(3, 3, "#FFCC00")
 	else
 		set_light(0)
 
-/obj/machinery/space_heater/examine(mob/user)
+/obj/machinery/space_heater/examine(mob/user, dist)
 	. = ..()
 	. += "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"]."
 	if(panel_open)
@@ -64,7 +64,7 @@
 			return
 	else if(I.is_screwdriver())
 		panel_open = !panel_open
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		user.visible_message("<span class='notice'>[user] [panel_open ? "opens" : "closes"] the hatch on the [src].</span>", "<span class='notice'>You [panel_open ? "open" : "close"] the hatch on the [src].</span>")
 		update_icon()
 		if(!panel_open && user.machine == src)
@@ -74,7 +74,7 @@
 		..()
 	return
 
-/obj/machinery/space_heater/attack_hand(mob/user as mob)
+/obj/machinery/space_heater/attack_hand(mob/user, list/params)
 	interact(user)
 
 /obj/machinery/space_heater/interact(mob/user as mob)
@@ -158,7 +158,7 @@
 					if(heat_transfer > 0)	//heating air
 						heat_transfer = min(heat_transfer, heating_power) //limit by the power rating of the heater
 
-						removed.add_thermal_energy(heat_transfer)
+						removed.adjust_thermal_energy(heat_transfer)
 						cell.use(DYNAMIC_W_TO_CELL_UNITS(heat_transfer * SPACE_HEATER_CHEAT_FACTOR, 1))
 					else	//cooling air
 						heat_transfer = abs(heat_transfer)
@@ -167,7 +167,7 @@
 						var/cop = removed.temperature/T20C	//coefficient of performance from thermodynamics -> power used = heat_transfer/cop
 						heat_transfer = min(heat_transfer, cop * heating_power)	//limit heat transfer by available power
 
-						heat_transfer = removed.add_thermal_energy(-heat_transfer)	//get the actual heat transfer
+						heat_transfer = removed.adjust_thermal_energy(-heat_transfer)	//get the actual heat transfer
 
 						var/power_used = abs(heat_transfer)/cop
 						cell.use(DYNAMIC_W_TO_CELL_UNITS(power_used * SPACE_HEATER_CHEAT_FACTOR, 1))
@@ -200,11 +200,7 @@
 	var/target_temp = T20C
 	var/mode = MODE_IDLE
 
-/obj/machinery/power/thermoregulator/Initialize(mapload)
-	.=..()
-	default_apply_parts()
-
-/obj/machinery/power/thermoregulator/examine(mob/user)
+/obj/machinery/power/thermoregulator/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>There is a small display that reads [target_temp]K.</span>"
 
@@ -218,7 +214,7 @@
 	if(I.is_wrench())
 		anchored = !anchored
 		visible_message("<span class='notice'>\The [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].</span>")
-		playsound(src, I.usesound, 75, 1)
+		playsound(src, I.tool_sound, 75, 1)
 		if(anchored)
 			connect_to_network()
 		else
@@ -234,7 +230,7 @@
 		return
 	..()
 
-/obj/machinery/power/thermoregulator/attack_hand(mob/user)
+/obj/machinery/power/thermoregulator/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	interact(user)
 
@@ -276,7 +272,7 @@
 	else if(heat_transfer > 0)
 		change_mode(MODE_HEATING)
 		power_avail = draw_power(min(heat_transfer, active_power_usage) * 0.001) * 1000
-		removed.add_thermal_energy(min(power_avail * THERMOREGULATOR_CHEAT_FACTOR, heat_transfer))
+		removed.adjust_thermal_energy(min(power_avail * THERMOREGULATOR_CHEAT_FACTOR, heat_transfer))
 	else
 		change_mode(MODE_COOLING)
 		heat_transfer = abs(heat_transfer)
@@ -284,18 +280,20 @@
 		var/actual_heat_transfer = heat_transfer
 		heat_transfer = min(heat_transfer, active_power_usage * cop)
 		power_avail = draw_power((heat_transfer/cop) * 0.001) * 1000
-		removed.add_thermal_energy(-min(power_avail * THERMOREGULATOR_CHEAT_FACTOR * cop, actual_heat_transfer))
+		removed.adjust_thermal_energy(-min(power_avail * THERMOREGULATOR_CHEAT_FACTOR * cop, actual_heat_transfer))
 	env.merge(removed)
 
 /obj/machinery/power/thermoregulator/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(on)
-		overlays += "lasergen-on"
+		overlays_to_add += "lasergen-on"
 		switch(mode)
 			if(MODE_HEATING)
-				overlays += "lasergen-heat"
+				overlays_to_add += "lasergen-heat"
 			if(MODE_COOLING)
-				overlays += "lasergen-cool"
+				overlays_to_add += "lasergen-cool"
+	add_overlay(overlays_to_add)
 
 /obj/machinery/power/thermoregulator/proc/turn_off()
 	on = 0
@@ -325,11 +323,11 @@
 		var/datum/gas_mixture/removed = env.remove_ratio(0.99)
 		if(removed)
 			// OH BOY!
-			removed.add_thermal_energy(power_avail * 1000 * THERMOREGULATOR_CHEAT_FACTOR)
+			removed.adjust_thermal_energy(power_avail * 1000 * THERMOREGULATOR_CHEAT_FACTOR)
 			env.merge(removed)
 	var/turf/T = get_turf(src)
 	new /obj/effect/debris/cleanable/liquid_fuel(T, 5)
-	T.assume_gas(/datum/gas/volatile_fuel, 5, T20C)
+	T.assume_gas(GAS_ID_VOLATILE_FUEL, 5, T20C)
 	T.hotspot_expose(700,400)
 	var/datum/effect_system/spark_spread/s = new
 	s.set_up(5, 0, T)

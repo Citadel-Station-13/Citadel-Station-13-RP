@@ -156,8 +156,8 @@
 		for(var/obj/item/clothing/clothes in target)
 			if(target.is_holding(clothes))
 				return
-			if(clothes.clothing_flags & THICKMATERIAL)
-				body_coverage &= ~(clothes.body_parts_covered)
+			if(clothes.clothing_flags & CLOTHING_THICK_MATERIAL)
+				body_coverage &= ~(clothes.body_cover_flags)
 
 		if(!body_coverage)
 			return
@@ -192,7 +192,7 @@
 			for(var/obj/item/clothing/clothes in M)
 				if(M.is_holding(clothes))
 					return
-				body_coverage &= ~(clothes.body_parts_covered)
+				body_coverage &= ~(clothes.body_cover_flags)
 			if(!body_coverage)
 				continue
 			var/datum/reagents/R = M.reagents
@@ -417,12 +417,12 @@
 
 	if(prob(5))
 		consume_gasses = list()
-		var/gas = pick(/datum/gas/oxygen,/datum/gas/nitrogen,/datum/gas/phoron,/datum/gas/carbon_dioxide)
+		var/gas = pick(GAS_ID_OXYGEN,GAS_ID_NITROGEN,GAS_ID_PHORON,GAS_ID_CARBON_DIOXIDE)
 		consume_gasses[gas] = rand(3,9)
 
 	if(prob(5))
 		exude_gasses = list()
-		var/gas = pick(/datum/gas/oxygen,/datum/gas/nitrogen,/datum/gas/phoron,/datum/gas/carbon_dioxide)
+		var/gas = pick(GAS_ID_OXYGEN,GAS_ID_NITROGEN,GAS_ID_PHORON,GAS_ID_CARBON_DIOXIDE)
 		exude_gasses[gas] = rand(3,9)
 
 	chems = list()
@@ -440,7 +440,7 @@
 
 		for(var/x=1;x<=additional_chems;x++)
 
-			var/new_chem = pick(SSchemistry.chemical_reagents)
+			var/new_chem = pick(SSchemistry.reagent_lookup)
 			if(new_chem in banned_chems)
 				continue
 			banned_chems += new_chem
@@ -736,7 +736,7 @@
 				product.set_light(get_trait(TRAIT_BIOLUM), l_color = clr)
 
 			if(get_trait(TRAIT_STINGS))
-				product.force = 1
+				product.damage_force = 1
 
 			//Handle spawning in living, mobile products (like dionaea).
 			if(istype(product,/mob/living))

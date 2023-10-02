@@ -9,8 +9,8 @@
 	being_shocked = TRUE
 	var/power_bounced = power / 2
 	tesla_zap(src, 3, power_bounced)
-	//addtimer(CALLBACK(src, .proc/reset_shocked), 10)
-	//schedule_task_with_source_in(10, src, .proc/reset_shocked)
+	//addtimer(CALLBACK(src, PROC_REF(reset_shocked)), 10)
+	//schedule_task_with_source_in(10, src, PROC_REF(reset_shocked))
 	spawn(10) reset_shocked()
 
 /obj/proc/reset_shocked()
@@ -34,7 +34,7 @@
 	else if(prob(50))
 		emp_act(2)
 	else
-		ex_act(2)
+		legacy_ex_act(2)
 
 /obj/machinery/camera/tesla_act(var/power)//EMP proof upgrade also makes it tesla immune
 	if(isEmpProof())

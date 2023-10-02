@@ -1,63 +1,42 @@
-/obj/item/robot_module/robot/stray
+/obj/item/robot_module/robot/quad/stray
 	name = "stray robot module"
 	hide_on_manifest = 1
 	sprites = list(
-					"Stray" = "stray"
-				)
+		"Stray" = "stray"
+	)
+	can_shred = TRUE
 
-/obj/item/robot_module/robot/stray/Initialize(mapload)
+/obj/item/robot_module/robot/quad/stray/get_modules()
 	. = ..()
-	var/mob/living/silicon/robot/R = loc
-	// General
-	src.modules += new /obj/item/dogborg/boop_module(src)
+	. |= list(
+		// Sec
+		/obj/item/handcuffs/cyborg,
+		/obj/item/dogborg/jaws/big,
+		/obj/item/melee/baton/robot,
+		/obj/item/dogborg/pounce,
 
-	// Sec
-	src.modules += new /obj/item/handcuffs/cyborg(src)
-	src.modules += new /obj/item/dogborg/jaws/big(src)
-	src.modules += new /obj/item/melee/baton/robot(src)
-	src.modules += new /obj/item/dogborg/pounce(src)
+		// Med
+		/obj/item/healthanalyzer,
+		/obj/item/shockpaddles/robot/hound,
+		/obj/item/dogborg/mirrortool,
 
-	// Med
-	src.modules += new /obj/item/healthanalyzer(src)
-	src.modules += new /obj/item/shockpaddles/robot/hound(src)
-	src.modules += new /obj/item/dogborg/mirrortool(src)
+		// Engi
+		/obj/item/weldingtool/electric/mounted,
+		/obj/item/tool/screwdriver/cyborg,
+		/obj/item/tool/wrench/cyborg,
+		/obj/item/tool/wirecutters/cyborg,
+		/obj/item/multitool
+	)
 
-	// Engi
-	src.modules += new /obj/item/weldingtool/electric/mounted(src)
-	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
-	src.modules += new /obj/item/tool/wrench/cyborg(src)
-	src.modules += new /obj/item/tool/wirecutters/cyborg(src)
-	src.modules += new /obj/item/multitool(src)
-
+/obj/item/robot_module/robot/quad/stray/handle_special_module_init(mob/living/silicon/robot/R)
+	. = ..()
 	// Boof
 	src.emag 	 = new /obj/item/gun/energy/retro/mounted(src)
 
-	var/datum/matter_synth/water = new /datum/matter_synth(500) //Starts full and has a max of 500
-	water.name = "Water reserves"
-	water.recharge_rate = 0
-	R.water_res = water
-	synths += water
-
 	var/obj/item/reagent_containers/borghypo/hound/lost/H = new /obj/item/reagent_containers/borghypo/hound/lost(src)
-	H.water = water
-	src.modules += H
-
-	var/obj/item/dogborg/tongue/T = new /obj/item/dogborg/tongue(src)
-	T.water = water
-	src.modules += T
+	H.water = synths_by_kind[MATSYN_WATER]
+	. += H
 
 	var/obj/item/dogborg/sleeper/B = new /obj/item/dogborg/sleeper(src)
-	B.water = water
-	src.modules += B
-
-	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
-	R.ui_style_vr = TRUE
-	R.pixel_x 	 = -16
-	R.old_x 	 = -16
-	R.default_pixel_x = -16
-	R.dogborg = TRUE
-	R.wideborg = TRUE
-	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
-	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
-	R.verbs |= /mob/living/proc/shred_limb
-	R.verbs |= /mob/living/silicon/robot/proc/rest_style
+	B.water = synths_by_kind[MATSYN_WATER]
+	. += B

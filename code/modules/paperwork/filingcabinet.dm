@@ -24,7 +24,7 @@
 /obj/structure/filingcabinet/chestdrawer/unanchored
 	anchored = FALSE
 
-/obj/structure/filingcabinet/filingcabinet	//not changing the path to avoid unecessary map issues, but please don't name stuff like this in the future -Pete
+/obj/structure/filingcabinet/tall	//not changing the path to avoid unecessary map issues, but please don't name stuff like this in the future -Pete
 	icon_state = "tallcabinet"
 
 
@@ -43,15 +43,15 @@
 		SStgui.update_uis(src)
 
 	else if(P.is_wrench())
-		playsound(loc, P.usesound, 50, 1)
+		playsound(loc, P.tool_sound, 50, 1)
 		anchored = !anchored
 		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
 
 	else if(P.is_screwdriver())
 		to_chat(user, SPAN_NOTICE("You begin taking the [name] apart."))
-		playsound(src, P.usesound, 50, 1)
-		if(do_after(user, 10 * P.toolspeed))
-			playsound(loc, P.usesound, 50, 1)
+		playsound(src, P.tool_sound, 50, 1)
+		if(do_after(user, 10 * P.tool_speed))
+			playsound(loc, P.tool_sound, 50, 1)
 			to_chat(user, SPAN_NOTICE("You take the [name] apart."))
 			new /obj/item/stack/material/steel( src.loc, 4 )
 			for(var/obj/item/I in contents)
@@ -61,7 +61,7 @@
 	else
 		to_chat(user, SPAN_NOTICE("You can't put [P] in [src]!"))
 
-/obj/structure/filingcabinet/attack_hand(mob/user as mob)
+/obj/structure/filingcabinet/attack_hand(mob/user, list/params)
 	if(contents.len <= 0)
 		to_chat(user, SPAN_NOTICE("\The [src] is empty."))
 		return
@@ -83,7 +83,7 @@
 			return
 	to_chat(user, SPAN_NOTICE("You find nothing in [src]."))
 
-/obj/structure/filingcabinet/ui_state(mob/user)
+/obj/structure/filingcabinet/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.physical_state
 
 /obj/structure/filingcabinet/ui_interact(mob/user, datum/tgui/ui)
@@ -150,7 +150,7 @@
 			virgin = 0	//tabbing here is correct- it's possible for people to try and use it
 						//before the records have been generated, so we do this inside the loop.
 
-/obj/structure/filingcabinet/security/attack_hand()
+/obj/structure/filingcabinet/security/attack_hand(mob/user, list/params)
 	populate()
 	..()
 
@@ -187,7 +187,7 @@
 			virgin = 0	//tabbing here is correct- it's possible for people to try and use it
 						//before the records have been generated, so we do this inside the loop.
 
-/obj/structure/filingcabinet/medical/attack_hand()
+/obj/structure/filingcabinet/medical/attack_hand(mob/user, list/params)
 	populate()
 	..()
 

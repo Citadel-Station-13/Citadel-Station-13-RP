@@ -6,6 +6,18 @@
 #define OBJECT_PERSISTENCE_UNIQUE_GENERIC			3
 #define OBJECT_PERSISTENCE_UNIQUE_STRING			4
 
+//? Object Storage System - Groups
+
+/// default group for null groups
+#define OBJECT_PERSISTENCE_GROUP_NONE ""
+/// group for map persistence key
+#define OBJECT_PERSISTENCE_GROUP_FOR_MAP_KEY(_key) "map_[_key]"
+
+//? Object Storage System - Character Types
+
+/// /datum/character_data/human
+#define OBJECT_PERSISTENCE_CHARACTER_TYPE_HUMAN "human"
+
 //! Object Storage System - atom proc opflags
 /// when deciding whether or not to persist things, don't persist if they are fully broken/dead
 #define PERSIST_OP_CHECK_SEMANTIC_SURVIVAL			(1<<0)

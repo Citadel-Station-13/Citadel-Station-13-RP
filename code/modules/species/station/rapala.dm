@@ -1,4 +1,6 @@
 /datum/species/rapala
+	uid = SPECIES_ID_RAPALA
+	id = SPECIES_ID_RAPALA
 	name = SPECIES_RAPALA
 	name_plural = "Rapalans"
 
@@ -9,9 +11,9 @@
 	tail = "tail"
 	icobase_tail = 1
 
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	name_language = null
-	secondary_langs = list(LANGUAGE_BIRDSONG)
+	intrinsic_languages = LANGUAGE_ID_BIRDSONG
 
 	color_mult = 1
 	max_age = 80
@@ -31,7 +33,7 @@
 	// wikilink = ""
 	catalogue_data = list(/datum/category_item/catalogue/fauna/rapala)
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	heat_discomfort_strings = list(
@@ -48,7 +50,11 @@
 	)
 
 	inherent_verbs = list(
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
+	)
+	abilities = list(
+		/datum/ability/species/toggle_flight
 	)

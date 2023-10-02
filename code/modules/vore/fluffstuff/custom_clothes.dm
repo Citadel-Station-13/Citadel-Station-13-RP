@@ -48,13 +48,11 @@
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "wolfgirluni"
-	worn_state = "wolfgirluni_mob"
-	rolled_sleeves = 0
-	rolled_down = 0
+	snowflake_worn_state = "wolfgirluni_mob"
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "wolfgirluni_mob"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 //! ## For general use
 /obj/item/clothing/accessory/fluff/smilepin
@@ -90,8 +88,8 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "freddyhead_mob"
 	permeability_coefficient = 0.01
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	flags_inv = HIDEMASK|HIDEEARS
+	armor_type = /datum/armor/none
+	inv_hide_flags = HIDEMASK|HIDEEARS
 	cold_protection = HEAD
 	siemens_coefficient = 0.9
 
@@ -126,10 +124,10 @@
 
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight,/obj/item/tank)
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	armor_type = /datum/armor/none
+	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	siemens_coefficient = 0.9
 
@@ -175,7 +173,7 @@
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "rig0-hos_mob"
-	armor = list("melee" = 60, "bullet" = 35, "laser" = 35, "energy" = 15, "bomb" = 50, "bio" = 100, "rad" = 10)
+	armor_type = /datum/armor/security/hos
 	species_restricted = null
 
 /obj/item/storage/belt/utility/fluff/vulpine
@@ -209,7 +207,7 @@
 	icon_override = 'icons/vore/custom_onmob_vr.dmi'
 	item_icons = list()
 
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/shoes/black/cuffs/red
 	name = "red leg wraps"
@@ -263,14 +261,14 @@
 	desc = "The uniform worn by command officers in the mid 2260s."
 	icon_state = "trek_command"
 	item_state = "trek_command"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0) // Considering only staff heads get to pick it
+	armor_type = /datum/armor/station/padded
 
 /obj/item/clothing/under/rank/trek/engsec
 	name = "Operations Uniform"
 	desc = "The uniform worn by operations officers of the mid 2260s. You feel strangely vulnerable just seeing this..."
 	icon_state = "trek_engsec"
 	item_state = "trek_engsec"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0) // since they're shared between jobs and kinda moot.
+	armor_type = /datum/armor/station/padded
 
 /obj/item/clothing/under/rank/trek/medsci
 	name = "MedSci Uniform"
@@ -278,7 +276,7 @@
 	icon_state = "trek_medsci"
 	item_state = "trek_medsci"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0) // basically a copy of vanilla sci/med
+	armor_type = /datum/armor/medical/jumpsuit
 
 //TNG
 /obj/item/clothing/under/rank/trek/command/next
@@ -337,23 +335,23 @@
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "trek_ds9_coat_mob"
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	permeability_coefficient = 0.50
 	allowed = list(
-		/obj/item/flashlight, /obj/item/analyzer,
+		/obj/item/flashlight, /obj/item/atmos_analyzer,
 		/obj/item/radio, /obj/item/tank/emergency/oxygen,
 		/obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer,
 		/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
 		/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle
 		)
-	armor = list(melee = 20, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 20, rad = 25)
+	armor_type = /datum/armor/security/light_formalwear
 
 /obj/item/clothing/suit/storage/trek/ds9/equipped(mob/user, slot, flags)
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == SPECIES_VOX)
+		if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/suits.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -364,7 +362,7 @@
 	desc = "Admirality specialty coat to keep flag officers fashionable and protected."
 	icon_state = "trek_ds9_coat_adm"
 	item_state = "trek_ds9_coat_adm_mob"
-	armor = list(melee = 45, bullet = 35, laser = 35, energy = 20, bomb = 0, bio = 40, rad = 55)
+	armor_type = /datum/armor/security/hos
 
 
 /obj/item/clothing/under/rank/trek/command/ds9
@@ -376,7 +374,7 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
-		if(H.species.name == SPECIES_VOX)
+		if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -391,7 +389,7 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
-		if(H.species.name == SPECIES_VOX)
+		if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -406,7 +404,7 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
-		if(H.species.name == SPECIES_VOX)
+		if(H.species.get_species_id() == SPECIES_ID_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -445,7 +443,7 @@
 	set category = "Object"
 	set src in usr
 
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return 0
 
 	switch(unbuttoned)
@@ -555,15 +553,12 @@
 	name = "latex maid dress"
 	desc = "Squeak! A shiny outfit for cleaning, made by people with dirty minds."
 
-	item_icons = list(SLOT_ID_UNIFORM = 'icons/vore/custom_clothes_vr.dmi')
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "latexmaid"
-	item_state = "latexmaid_mob"
+	icon = 'icons/clothing/uniform/costume/maid.dmi'
+	icon_state = "latex"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
-	sprite_sheets = list(
-			SPECIES_TESHARI = 'icons/vore/custom_clothes_tesh_vr.dmi'
-			)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 
 //Aztectornado:Tron inspired Siren outfit
 /obj/item/clothing/under/fluff/siren
@@ -574,9 +569,8 @@
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "tronsiren"
-	worn_state = "tronsiren_mob"
+	snowflake_worn_state = "tronsiren_mob"
 	item_state = "tronsiren_mob"
-	rolled_sleeves = 0
 
 /obj/item/clothing/gloves/fluff/siren
 	name = "Siren Gloves"
@@ -657,13 +651,13 @@
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "aika_coat_mob"
-	flags_inv = HIDEJUMPSUIT | HIDETIE
+	inv_hide_flags = HIDEJUMPSUIT | HIDETIE
 
 	item_icons = list(
-		slot_l_hand_str = 'icons/vore/custom_clothes_vr.dmi',
-		slot_r_hand_str = 'icons/vore/custom_clothes_vr.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/vore/custom_clothes_vr.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/vore/custom_clothes_vr.dmi',
 		)
-	item_state_slots = list(slot_r_hand_str = "aika_coat_mob_r", slot_l_hand_str = "aika_coat_mob_l")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "aika_coat_mob_r", SLOT_ID_LEFT_HAND = "aika_coat_mob_l")
 
 //Burrito Justice: Jayda Wilson
 /obj/item/clothing/under/oricon/utility/sysguard/medical/fluff
@@ -673,11 +667,9 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 
 	icon_state = "blackutility_med"
-	worn_state = "blackutility_med"
+	snowflake_worn_state = "blackutility_med"
 	item_state = "blackutility_med"
 
-	rolled_down = 0
-	rolled_sleeves = 0
 	starting_accessories = null
 	item_icons = list()
 
@@ -692,7 +684,7 @@
 	icon_state = "melanie_skeleton"
 	item_state = "melanie_skeleton_mob"
 
-	body_parts_covered = NONE
+	body_cover_flags = NONE
 
 	species_restricted = list("exclude", SPECIES_TESHARI)
 

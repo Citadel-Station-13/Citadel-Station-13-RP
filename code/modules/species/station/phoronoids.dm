@@ -1,15 +1,17 @@
 /datum/species/phoronoid
+	uid = SPECIES_ID_PHORONOID
+	id = SPECIES_ID_PHORONOID
 	name = SPECIES_PHORONOID
 	name_plural = "Phoronoids"
+	default_bodytype = BODYTYPE_PHORONOID
 
 	icobase      = 'icons/mob/species/phoronoid/body.dmi'
 	deform       = 'icons/mob/species/phoronoid/body.dmi'
 	preview_icon = 'icons/mob/species/phoronoid/preview.dmi'
 	husk_icon    = 'icons/mob/species/phoronoid/husk.dmi'
 
-	language = LANGUAGE_GALCOM
-	species_language = LANGUAGE_BONES
-	num_alternate_languages = 3
+	intrinsic_languages = LANGUAGE_ID_PHORONOID
+	max_additional_languages = 3
 	name_language = null // name randomisers are fucking weird
 
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)
@@ -21,11 +23,11 @@
 
 	max_age = 180
 	health_hud_intensity = 1.5
-	rarity_value = 5
+	//rarity_value = 5
 	blood_color = "#FC2BC5"
 
-	flags = NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+	species_flags = NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
+	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_EYE_COLOR
 
 	show_ssd = "completely motionless"
@@ -44,8 +46,8 @@
 	flash_mod     = 2
 	chemOD_mod    = 1 // turns out this is just damage
 
-	breath_type = /datum/gas/phoron
-	poison_type = /datum/gas/oxygen
+	breath_type = GAS_ID_PHORON
+	poison_type = GAS_ID_OXYGEN
 	siemens_coefficient = 1
 
 	speech_bubble_appearance = "phoron"
@@ -88,7 +90,7 @@
 	/// In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
 	var/enviroment_bad = FALSE
 
-	if(environment.gas[/datum/gas/oxygen] > 0.5)
+	if(environment.gas[GAS_ID_OXYGEN] > 0.5)
 		// Now any airtight spessuit works for them. Which means exploration voidsuits work. :O
 		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space) && H.head && istype(H.head,/obj/item/clothing/head/helmet/space))
 			return

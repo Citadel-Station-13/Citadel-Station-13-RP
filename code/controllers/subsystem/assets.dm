@@ -20,17 +20,18 @@ SUBSYSTEM_DEF(assets)
 		transport = newtransport
 	transport.Load()
 
-
-
 /datum/controller/subsystem/assets/Initialize(timeofday)
 	for(var/type in typesof(/datum/asset))
 		var/datum/asset/A = type
-		if (type != initial(A._abstract))
-			get_asset_datum(type)
+		if(type == initial(A.abstract_type))
+			continue
+		if(initial(A.lazy))
+			continue
+		load_asset_datum(type)
 
 	transport.Initialize(cache)
 
-	..()
+	return ..()
 
 /datum/controller/subsystem/assets/Recover()
 	cache = SSassets.cache

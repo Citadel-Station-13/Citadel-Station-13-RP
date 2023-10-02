@@ -33,6 +33,12 @@
 #define INV_OP_DIRECTLY_EQUIPPING	(1<<15)
 /// hint: we're mid delete. maybe don't try to delete again?
 #define INV_OP_DELETING				(1<<16)
+/// hint: we're currently mitigating a fatal error in an inventory proc, likely trying to revert state
+#define INV_OP_FATAL				(1<<17)
+/// hint: we're just checking instead of doing, don't invoke delayed checks just yet
+#define INV_OP_JUST_CHECKING		(1<<18)
+/// during force, can force other things out of the slot
+#define INV_OP_CAN_DISPLACE			(1<<19)
 
 /// no delays and reachability checks entirely
 #define INV_OP_FLUFFLESS			(INV_OP_IGNORE_REACHABILITY | INV_OP_IGNORE_DELAY)

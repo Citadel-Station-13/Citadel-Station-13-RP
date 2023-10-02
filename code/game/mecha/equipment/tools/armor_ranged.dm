@@ -13,8 +13,8 @@
 
 	equip_type = EQUIP_HULL
 
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster/handle_projectile_contact(var/obj/item/projectile/Proj, var/inc_damage)
-	if(istype(Proj, /obj/item/projectile/test))
+/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster/handle_projectile_contact(var/obj/projectile/Proj, var/inc_damage)
+	if(istype(Proj, /obj/projectile/test))
 		return inc_damage// Don't care about test projectiles, just what comes after them
 	if(!action_checks(src))
 		return inc_damage
@@ -70,8 +70,8 @@
 	..()
 	return
 
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster/proc/dynbulletdamage(var/obj/item/projectile/Proj)
-	if(istype(Proj, /obj/item/projectile/test))
+/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster/proc/dynbulletdamage(var/obj/projectile/Proj)
+	if(istype(Proj, /obj/projectile/test))
 		return // Don't care about test projectiles, just what comes after them
 	if(!action_checks(src))
 		return chassis.dynbulletdamage(Proj)
@@ -80,7 +80,7 @@
 		chassis.visible_message("The [chassis.name] armor deflects the projectile")
 		chassis.log_append_to_last("Armor saved.")
 	else
-		chassis.take_damage(round(Proj.damage*src.damage_coeff),Proj.check_armour)
+		chassis.take_damage(round(Proj.damage*src.damage_coeff),Proj.damage_flag)
 		chassis.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		Proj.on_hit(chassis)
 	set_ready_state(0)
@@ -100,8 +100,8 @@
 			M.take_organ_damage(10)
 	else if(istype(A, /obj))
 		var/obj/O = A
-		if(O.throwforce)
-			chassis.take_damage(round(O.throwforce*damage_coeff))
+		if(O.throw_force)
+			chassis.take_damage(round(O.throw_force*damage_coeff))
 			chassis.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	set_ready_state(0)
 	chassis.use_power(energy_drain)

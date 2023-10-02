@@ -93,12 +93,10 @@
 	if(is_infesting)
 		icon = infested.icon
 		copy_overlays(infested)
-	//	overlays = infested.overlays
 		var/mutable_appearance/blob_head_overlay = mutable_appearance('icons/mob/blob.dmi', "blob_head")
 		if(overmind)
 			blob_head_overlay.color = overmind.blob_type.complementary_color
 		color = initial(color)//looks better.
-	//	overlays += blob_head_overlay
 		add_overlay(blob_head_overlay, TRUE)
 
 /mob/living/simple_mob/blob/spore/handle_special()
@@ -119,8 +117,7 @@
 	is_infesting = TRUE
 	if(H.wear_suit)
 		var/obj/item/clothing/suit/A = H.wear_suit
-		if(A.armor && A.armor["melee"])
-			maxHealth += A.armor["melee"] //That zombie's got armor, I want armor!
+		maxHealth += A.fetch_armor().raw(ARMOR_MELEE) * 100 //That zombie's got armor, I want armor!
 
 	maxHealth += 40
 	health = maxHealth

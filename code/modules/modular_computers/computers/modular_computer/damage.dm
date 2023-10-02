@@ -1,4 +1,4 @@
-/obj/item/modular_computer/examine(mob/user)
+/obj/item/modular_computer/examine(mob/user, dist)
 	. = ..()
 	if(damage > broken_damage)
 		. += SPAN_DANGER("It is heavily damaged!")
@@ -37,7 +37,7 @@
  * Stronger explosions cause serious damage to internal components
  * Minor explosions are mostly mitigitated by casing.
  */
-/obj/item/modular_computer/ex_act(severity)
+/obj/item/modular_computer/legacy_ex_act(severity)
 	take_damage(rand(100,200) / severity, 30 / severity)
 
 /// EMPs are similar to explosions, but don't cause physical damage to the casing. Instead they screw up the components
@@ -49,7 +49,7 @@
  * "Burn" damage is equally strong against internal components and exterior casing
  * "Brute" damage mostly damages the casing.
  */
-/obj/item/modular_computer/bullet_act(obj/item/projectile/Proj)
+/obj/item/modular_computer/bullet_act(obj/projectile/Proj)
 	switch(Proj.damage_type)
 		if(BRUTE)
 			take_damage(Proj.damage, Proj.damage / 2)

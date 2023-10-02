@@ -2,8 +2,8 @@
 /obj/item/clothing/gloves
 	name = "gloves"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_gloves.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_gloves.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_gloves.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 		)
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	w_class = ITEMSIZE_SMALL
@@ -18,14 +18,9 @@
 	var/overgloves = 0			//Used by gauntlets and arm_guards
 	var/punch_force = 0			//How much damage do these gloves add to a punch?
 	var/punch_damtype = BRUTE	//What type of damage does this make fists be?
-	body_parts_covered = HANDS
+	body_cover_flags = HANDS
 	slot_flags = SLOT_GLOVES
 	attack_verb = list("challenged")
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/gloves.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/gloves.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/hands.dmi'
-		)
 	drop_sound = 'sound/items/drop/gloves.ogg'
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/gloves.ogg'
@@ -45,7 +40,7 @@
 			update_icon()
 			return
 
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 		user.visible_message("<font color='red'>[user] cuts the fingertips off of the [src].</font>","<font color='red'>You cut the fingertips off of the [src].</font>")
 
 		clipped = 1
@@ -73,7 +68,7 @@
 	if(!istype(I, /obj/item/clothing/gloves))
 		return FALSE
 
-	if(clothing_flags & THICKMATERIAL)
+	if(clothing_flags & CLOTHING_THICK_MATERIAL)
 		return FALSE
 
 	var/obj/item/clothing/gloves/G = I
@@ -86,7 +81,7 @@
 	if(!istype(I, /obj/item/clothing/gloves))
 		return FALSE
 
-	if(clothing_flags & THICKMATERIAL)
+	if(clothing_flags & CLOTHING_THICK_MATERIAL)
 		return FALSE
 
 	var/obj/item/clothing/gloves/G = I

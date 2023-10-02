@@ -103,7 +103,7 @@
 	complexity = 4
 	cooldown_per_use = 2 SECOND
 	power_draw_per_use = 50
-	spawn_flags = IC_SPAWN_DEFAULT
+	spawn_flags = NONE
 	origin_tech = list(TECH_ENGINEERING = 2)
 	var/lock_enabled = -1
 
@@ -291,7 +291,10 @@
 	set_pin_data(IC_OUTPUT, 4, contents)
 	push_data()
 
-/obj/item/integrated_circuit/manipulation/grabber/attack_self(var/mob/user)
+/obj/item/integrated_circuit/manipulation/grabber/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	drop_all()
 	update_outputs()
 	push_data()
@@ -316,14 +319,14 @@
 /obj/item/integrated_circuit/manipulation/claw/do_work(ord)
 	var/obj/acting_object = get_object()
 	var/atom/movable/AM = get_pin_data_as_type(IC_INPUT, 1, /atom/movable)
-	var/mode = get_pin_data(IC_INPUT, 2)
+	// var/mode = get_pin_data(IC_INPUT, 2)
 	switch(ord)
 		if(1)
-			mode = clamp(mode, GRAB_PASSIVE, max_grab)
+			// mode = clamp(mode, GRAB_PASSIVE, max_grab)
 			if(AM)
 				if(check_target(AM, exclude_contents = TRUE))
 					acting_object.investigate_log("grabbed ([AM]) using [src].", INVESTIGATE_CIRCUIT)
-					acting_object.start_pulling(AM,mode)
+					acting_object.start_pulling(AM)
 					if(acting_object.pulling)
 						set_pin_data(IC_OUTPUT, 1, TRUE)
 					else
@@ -431,7 +434,7 @@
 		assembly.visible_message("<span class='danger'>[assembly] has thrown [A]!</span>")
 		log_attack("[assembly] [REF(assembly)] has thrown [A] with non-lethal force.")
 		A.forceMove(drop_location())
-		A.throw_at(locate(x_abs, y_abs, T.z), range, 3, src)
+		A.throw_at_old(locate(x_abs, y_abs, T.z), range, 3, src)
 
 		// If the item came from a grabber now we can update the outputs since we've thrown it.
 		if(istype(G))
@@ -506,7 +509,7 @@
 		)
 
 /obj/item/integrated_circuit/manipulation/matman/ComponentInitialize()
-	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, mtypes, 100000, FALSE, /obj/item/stack, CALLBACK(src, .proc/is_insertion_ready), CALLBACK(src, .proc/AfterMaterialInsert))
+	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, mtypes, 100000, FALSE, /obj/item/stack, CALLBACK(src, PROC_REF(is_insertion_ready)), CALLBACK(src, PROC_REF(AfterMaterialInsert)))
 	materials.precise_insertion = TRUE
 	.=..()
 
@@ -674,7 +677,7 @@
 		targx = target.loc.x
 		targy = target.loc.y
 		playsound(src, 'sound/items/drill_use.ogg',50,1)
-		addtimer(CALLBACK(src, .proc/drill), drill_delay)
+		addtimer(CALLBACK(src, PROC_REF(drill)), drill_delay)
 
 
 /obj/item/integrated_circuit/mining/mining_drill/proc/drill()
@@ -711,10 +714,10 @@
 			investigate_log("Drilled through [target]")
 		else if(istype(S, /turf/simulated/wall))
 			investigate_log("Drilled through [target]")
-			S.ex_act(2)
+			LEGACY_EX_ACT(S, 2, null)
 	else
 		investigate_log("Drilled through [target]")
-		target.ex_act(2)
+		LEGACY_EX_ACT(target, 2, null)
 	activate_pin(2)
 	return(TRUE)
 
@@ -768,7 +771,7 @@
 
 	switch(ord)
 		if(1)
-			assembly.desc = get_pin_data(IC_INPUT, 1)
+			assembly.desc = sanitizeSafe(get_pin_data(IC_INPUT, 1), 2048)
 
 		else
 			set_pin_data(IC_OUTPUT, 1, assembly.desc)
@@ -851,7 +854,10 @@
 	else
 		..()
 
-/obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(var/mob/user)
+/obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(installed_gun)
 		user.put_in_hands_or_drop(installed_gun)
 		to_chat(user, "<span class='notice'>You slide \the [installed_gun] out of the firing mechanism.</span>")
@@ -958,7 +964,10 @@
 	else
 		return ..()
 
-/obj/item/integrated_circuit/manipulation/grenade/attack_self(var/mob/user)
+/obj/item/integrated_circuit/manipulation/grenade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(attached_grenade)
 		user.visible_message("<span class='warning'>\The [user] removes \an [attached_grenade] from \the [src]!</span>", "<span class='notice'>You remove \the [attached_grenade] from \the [src].</span>")
 		user.put_in_hands(attached_grenade) || attached_grenade.dropInto(loc)
@@ -979,7 +988,7 @@
 /// These procs do not relocate the grenade, that's the callers responsibility
 /obj/item/integrated_circuit/manipulation/grenade/proc/attach_grenade(var/obj/item/grenade/G)
 	attached_grenade = G
-	RegisterSignal(attached_grenade, COMSIG_PARENT_QDELETING, .proc/detach_grenade)
+	RegisterSignal(attached_grenade, COMSIG_PARENT_QDELETING, PROC_REF(detach_grenade))
 	size += G.w_class
 	desc += " \An [attached_grenade] is attached to it!"
 
@@ -990,8 +999,3 @@
 	attached_grenade = null
 	size = initial(size)
 	desc = initial(desc)
-
-/obj/item/integrated_circuit/manipulation/grenade/frag
-	pre_attached_grenade_type = /obj/item/grenade/explosive
-	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3, TECH_COMBAT = 10)
-	spawn_flags = null			// Used for world initializing, see the #defines above.

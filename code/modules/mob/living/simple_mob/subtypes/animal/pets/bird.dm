@@ -21,7 +21,7 @@
 	icon_rest = "parrot-held"
 	icon_dead = "parrot-dead"
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
 	health = 30
 	maxHealth = 30

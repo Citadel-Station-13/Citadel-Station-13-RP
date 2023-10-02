@@ -66,7 +66,7 @@
 	minbodytemp = 0
 	heat_damage_per_tick = 0 //Even if the atmos stuff doesn't work, at least it won't take any damage.
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = -50,
 				"bullet" = 0,
 				"laser" = 50,
@@ -84,8 +84,8 @@
 		if(prob(shock_chance))
 			A.emp_act(4) //The weakest strength of EMP
 			playsound(src, 'sound/weapons/Egloves.ogg', 75, 1)
-			L.Weaken(4)
-			L.Stun(4)
+			L.afflict_paralyze(20 * 4)
+			L.afflict_stun(20 * 4)
 			L.stuttering = max(L.stuttering, 4)
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(5, 1, L)
@@ -114,12 +114,12 @@
 		var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
 		if(heat_transfer > 0 && env.temperature < T0C + 200)	//This should start heating the room at a moderate pace up to 200 degrees celsius.
 			heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else if(heat_transfer > 0 && env.temperature < set_temperature) //Set temperature is 450 degrees celsius. Heating rate should increase between 200 and 450 C.
 			heating_power = original_temp*100
 			heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater. Except it's hot, so yeah.
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else
 			return
@@ -163,6 +163,9 @@
 /mob/living/simple_mob/vore/solarmoth/lunarmoth
 	name = "Lunarmoth"
 	desc = "A peculiar adult variation of a solargrub. Don't stare for too long and start running."
+	icon_state = "lunarmoth"
+	icon_living = "lunarmoth"
+	icon_dead = "lunarmoth-dead"
 	var/nospampls = 0
 	cold_damage_per_tick = 0
 	//ATMOS
@@ -182,12 +185,12 @@
 		var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
 		if(heat_transfer > 0 && env.temperature > T0C - 275)
 			heat_transfer = min(heat_transfer , heating_power)
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else if(heat_transfer < 0 && env.temperature > set_temperature)
 			heating_power = original_temp*100
 			heat_transfer = min(heat_transfer , heating_power)
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else
 			return

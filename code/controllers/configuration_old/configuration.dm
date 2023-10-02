@@ -2,8 +2,6 @@
 	config_legacy = new /datum/configuration_legacy()
 	config_legacy.load("config/legacy/config.txt")
 	config_legacy.load("config/legacy/game_options.txt","game_options")
-	config_legacy.loadsql("config/legacy/dbconfig.txt")
-	config_legacy.loadforumsql("config/legacy/forumdbconfig.txt")
 
 /datum/configuration_legacy
 	var/server_name = null				// server name (for world name / status)
@@ -35,7 +33,6 @@
 	var/allow_vote_mode = 0				// allow votes to change mode
 	var/allow_admin_jump = 1			// allows admin jumping
 	var/allow_admin_spawning = 1		// allows admin item spawning
-	var/allow_admin_rev = 1				// allows admin revives
 	var/vote_delay = 6000				// minimum time between voting sessions (deciseconds, 10 minute default)
 	var/vote_period = 600				// length of voting period (deciseconds, default 1 minute)
 	var/vote_autotransfer_initial = 108000 // Length of time before the first autotransfer vote is called
@@ -50,7 +47,6 @@
 	var/objectives_disabled = 0 			//if objectives are disabled or not
 	var/protect_roles_from_antagonist = 0// If security and such can be traitor/cult/other
 	var/continous_rounds = 0			// Gamemodes which end instantly will instead keep on going until the round ends by escape shuttle or nuke.
-	var/allow_Metadata = 0				// Metadata is supported.
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 	var/fps = 20
 	var/tick_limit_mc_init = TICK_LIMIT_MC_INIT_DEFAULT	//SSinitialization throttling
@@ -96,7 +92,6 @@
 	var/cult_ghostwriter_req_cultists = 10 //...so long as this many cultists are active.
 
 	var/character_slots = 10				// The number of available character slots
-	var/loadout_slots = 3					// The number of loadout slots per character
 
 	var/max_maint_drones = 5				//This many drones can spawn,
 	var/allow_drone_spawn = 1				//assuming the admin allow them to.
@@ -111,17 +106,7 @@
 	var/allow_extra_antags = 0
 	var/guests_allowed = 1
 	var/debugparanoid = 0
-	var/panic_bunker = 0
-	var/panic_bunker_message = "Sorry, this server is not accepting connections from never seen before players."
 	var/paranoia_logging = 0
-
-	var/ip_reputation = FALSE		//Should we query IPs to get scores? Generates HTTP traffic to an API service.
-	var/ipr_email					//Left null because you MUST specify one otherwise you're making the internet worse.
-	var/ipr_block_bad_ips = FALSE	//Should we block anyone who meets the minimum score below? Otherwise we just log it (If paranoia logging is on, visibly in chat).
-	var/ipr_bad_score = 1			//The API returns a value between 0 and 1 (inclusive), with 1 being 'definitely VPN/Tor/Proxy'. Values equal/above this var are considered bad.
-	var/ipr_allow_existing = FALSE 	//Should we allow known players to use VPNs/Proxies? If the player is already banned then obviously they still can't connect.
-	var/ipr_minimum_age = 5
-	var/ipqualityscore_apikey //API key for ipqualityscore.com
 
 	var/serverurl
 	var/server
@@ -179,8 +164,6 @@
 
 	var/admin_legacy_system = 0	//Defines whether the server uses the legacy admin system with admins.txt or the SQL system. Config option in
 	var/ban_legacy_system = 0	//Defines whether the server uses the legacy banning system with the files in /data or the SQL system. Config option in config_legacy.txt
-	var/use_age_restriction_for_jobs = 0 //Do jobs use account age restrictions? --requires database
-	var/use_age_restriction_for_antags = 0 //Do antags use account age restrictions? --requires database
 
 	var/simultaneous_pm_warning_timeout = 100
 
@@ -251,6 +234,11 @@
 
 	var/list/gamemode_cache = list()
 
+	var/lock_client_view_x
+	var/lock_client_view_y
+	var/max_client_view_x
+	var/max_client_view_y
+
 
 /datum/configuration_legacy/New()
 	var/list/L = subtypesof(/datum/game_mode)
@@ -309,12 +297,6 @@
 
 				if ("hub_visibility")					//CITADEL CHANGE - ADDS HUB CONFIG
 					config_legacy.hub_visibility = 1
-
-				if ("use_age_restriction_for_jobs")
-					config_legacy.use_age_restriction_for_jobs = 1
-
-				if ("use_age_restriction_for_antags")
-					config_legacy.use_age_restriction_for_antags = 1
 
 				if ("jobs_have_minimal_access")
 					config_legacy.jobs_have_minimal_access = 1
@@ -393,9 +375,6 @@
 
 				if ("allow_admin_jump")
 					config_legacy.allow_admin_jump = 1
-
-				if("allow_admin_rev")
-					config_legacy.allow_admin_rev = 1
 
 				if ("allow_admin_spawning")
 					config_legacy.allow_admin_spawning = 1
@@ -512,9 +491,6 @@
 
 				if ("feature_object_spell_system")
 					config_legacy.feature_object_spell_system = 1
-
-				if ("allow_metadata")
-					config_legacy.allow_Metadata = 1
 
 				if ("traitor_scaling")
 					config_legacy.traitor_scaling = 1
@@ -697,9 +673,6 @@
 				if("character_slots")
 					config_legacy.character_slots = text2num(value)
 
-				if("loadout_slots")
-					config_legacy.loadout_slots = text2num(value)
-
 				if("allow_drone_spawn")
 					config_legacy.allow_drone_spawn = text2num(value)
 
@@ -713,16 +686,16 @@
 					config_legacy.use_overmap = 1
 /*
 				if("station_levels")
-					GLOB.using_map.station_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).station_levels = text2numlist(value, ";")
 
 				if("admin_levels")
-					GLOB.using_map.admin_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).admin_levels = text2numlist(value, ";")
 
 				if("contact_levels")
-					GLOB.using_map.contact_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).contact_levels = text2numlist(value, ";")
 
 				if("player_levels")
-					GLOB.using_map.player_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).player_levels = text2numlist(value, ";")
 */
 				if("expected_round_length")
 					config_legacy.expected_round_length = MinutesToTicks(text2num(value))
@@ -776,32 +749,8 @@
 				if("radiation_lower_limit")
 					radiation_lower_limit = text2num(value)
 
-				if ("panic_bunker")
-					config_legacy.panic_bunker = 1
-
-				if ("panic_bunker_message")
-					config_legacy.panic_bunker_message = value
-
 				if ("paranoia_logging")
 					config_legacy.paranoia_logging = 1
-
-				if("ip_reputation")
-					config_legacy.ip_reputation = 1
-
-				if("ipr_email")
-					config_legacy.ipr_email = value
-
-				if("ipr_block_bad_ips")
-					config_legacy.ipr_block_bad_ips = 1
-
-				if("ipr_bad_score")
-					config_legacy.ipr_bad_score = text2num(value)
-
-				if("ipr_allow_existing")
-					config_legacy.ipr_allow_existing = 1
-
-				if("ipr_minimum_age")
-					config_legacy.ipr_minimum_age = text2num(value)
 
 				if("minute_click_limit")
 					config_legacy.minute_click_limit = text2num(value)
@@ -888,94 +837,6 @@
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
-
-/datum/configuration_legacy/proc/loadsql(filename)  // -- TLE
-	var/list/Lines = world.file2list(filename)
-	for(var/t in Lines)
-		if(!t)	continue
-
-		t = trim(t)
-		if (length(t) == 0)
-			continue
-		else if (copytext(t, 1, 2) == "#")
-			continue
-
-		var/pos = findtext(t, " ")
-		var/name = null
-		var/value = null
-
-		if (pos)
-			name = lowertext(copytext(t, 1, pos))
-			value = copytext(t, pos + 1)
-		else
-			name = lowertext(t)
-
-		if (!name)
-			continue
-
-		switch (name)
-			if ("address")
-				sqladdress = value
-			if ("port")
-				sqlport = value
-			if ("database")
-				sqldb = value
-			if ("login")
-				sqllogin = value
-			if ("password")
-				sqlpass = value
-			if ("feedback_database")
-				sqlfdbkdb = value
-			if ("feedback_login")
-				sqlfdbklogin = value
-			if ("feedback_password")
-				sqlfdbkpass = value
-			if ("enable_stat_tracking")
-				sqllogging = 1
-			else
-				log_misc("Unknown setting in configuration: '[name]'")
-
-/datum/configuration_legacy/proc/loadforumsql(filename)  // -- TLE
-	var/list/Lines = world.file2list(filename)
-	for(var/t in Lines)
-		if(!t)	continue
-
-		t = trim(t)
-		if (length(t) == 0)
-			continue
-		else if (copytext(t, 1, 2) == "#")
-			continue
-
-		var/pos = findtext(t, " ")
-		var/name = null
-		var/value = null
-
-		if (pos)
-			name = lowertext(copytext(t, 1, pos))
-			value = copytext(t, pos + 1)
-		else
-			name = lowertext(t)
-
-		if (!name)
-			continue
-
-		switch (name)
-			if ("address")
-				forumsqladdress = value
-			if ("port")
-				forumsqlport = value
-			if ("database")
-				forumsqldb = value
-			if ("login")
-				forumsqllogin = value
-			if ("password")
-				forumsqlpass = value
-			if ("activatedgroup")
-				forum_activated_group = value
-			if ("authenticatedgroup")
-				forum_authenticated_group = value
-			else
-				log_misc("Unknown setting in configuration: '[name]'")
 
 /datum/configuration_legacy/proc/pick_mode(mode_name)
 	// I wish I didn't have to instance the game modes in order to look up

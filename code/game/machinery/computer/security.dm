@@ -12,7 +12,7 @@
 	icon_keyboard = "security_key"
 	icon_screen = "security"
 	light_color = "#a91515"
-	req_one_access = list(access_security, access_forensics_lockers, access_lawyer)
+	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_FORENSICS, ACCESS_COMMAND_IAA)
 	circuit = /obj/item/circuitboard/secure_data
 	var/obj/item/card/id/scan = null
 	var/authenticated = null
@@ -87,7 +87,7 @@
 /obj/machinery/computer/secure_data/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/secure_data/attack_hand(mob/user as mob)
+/obj/machinery/computer/secure_data/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	add_fingerprint(user)
@@ -174,9 +174,9 @@
 					fields[++fields.len] = FIELD("Details", active2.fields["mi_crim_d"], "mi_crim_d")
 					fields[++fields.len] = FIELD("Major Crimes", active2.fields["ma_crim"], "ma_crim")
 					fields[++fields.len] = FIELD("Details", active2.fields["ma_crim_d"], "ma_crim_d")
-					fields[++fields.len] = FIELD("Important Notes", active2.fields["notes"], "notes")
 					if(!active2.fields["comments"] || !islist(active2.fields["comments"]))
 						active2.fields["comments"] = list()
+					security["notes"] = active2.fields["notes"]
 					security["comments"] = active2.fields["comments"]
 					security["empty"] = FALSE
 				else
@@ -297,8 +297,6 @@
 					R.fields["mi_crim_d"]	= "No minor crime convictions."
 					R.fields["ma_crim"]		= "None"
 					R.fields["ma_crim_d"]	= "No major crime convictions."
-					R.fields["notes"]		= "No notes."
-					R.fields["notes"]		= "No notes."
 					data_core.security += R
 					active2 = R
 					screen = SEC_DATA_RECORD
@@ -336,7 +334,7 @@
 					printing = TRUE
 					// playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, TRUE)
 					SStgui.update_uis(src)
-					addtimer(CALLBACK(src, .proc/print_finish), 5 SECONDS)
+					addtimer(CALLBACK(src, PROC_REF(print_finish)), 5 SECONDS)
 			if("photo_front")
 				var/icon/photo = get_photo(usr)
 				if(photo && active1)
@@ -393,11 +391,11 @@
 						answer = text2num(answer)
 
 					if(field == "rank")
-						if(answer in joblist)
+						if(answer in SSjob.all_job_titles())
 							active1.fields["real_rank"] = answer
 
 					if(field == "criminal")
-						for(var/mob/living/carbon/human/H in player_list)
+						for(var/mob/living/carbon/human/H in GLOB.player_list)
 							H.update_hud_sec_status()
 
 					if(istype(active2) && (field in active2.fields))
@@ -439,7 +437,7 @@
 		<br>\nDetails: [active2.fields["mi_crim_d"]]<br>\n
 		<br>\nMajor Crimes: [active2.fields["ma_crim"]]
 		<br>\nDetails: [active2.fields["ma_crim_d"]]<br>\n
-		<br>\nImportant Notes:
+		<br>\nSecurity Notes Summary:
 		<br>\n\t[active2.fields["notes"]]<br>\n
 		<br>\n
 		<center><b>Comments/Log</b></center><br>"}
@@ -473,12 +471,12 @@
 /obj/machinery/computer/secure_data/proc/get_photo(var/mob/user)
 	if(istype(user.get_active_held_item(), /obj/item/photo))
 		var/obj/item/photo/photo = user.get_active_held_item()
-		return photo.img
+		return photo.full_image()
 	if(istype(user, /mob/living/silicon))
 		var/mob/living/silicon/tempAI = usr
 		var/obj/item/photo/selection = tempAI.GetPicture()
 		if (selection)
-			return selection.img
+			return selection.full_image()
 
 /obj/machinery/computer/secure_data/emp_act(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
@@ -489,7 +487,7 @@
 		if(prob(10/severity))
 			switch(rand(1,6))
 				if(1)
-					R.fields["name"] = "[pick(pick(first_names_male), pick(first_names_female))] [pick(last_names)]"
+					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
 				if(2)
 					R.fields["sex"]	= pick("Male", "Female")
 				if(3)

@@ -1,5 +1,7 @@
 
 /datum/species/diona
+	uid = SPECIES_ID_DIONA
+	id = SPECIES_ID_DIONA
 	name = SPECIES_DIONA
 	name_plural = "Dionaea"
 	//primitive_form = "Nymph"
@@ -8,11 +10,12 @@
 	deform       = 'icons/mob/species/diona/deformed_body.dmi'
 	preview_icon = 'icons/mob/species/diona/preview.dmi'
 
-	language = LANGUAGE_ROOTLOCAL
-	num_alternate_languages = 2
-	name_language = LANGUAGE_ROOTLOCAL
-	species_language = LANGUAGE_ROOTLOCAL
-	secondary_langs  = list(LANGUAGE_ROOTGLOBAL)
+	max_additional_languages = 2
+	name_language = LANGUAGE_ID_DIONA
+	intrinsic_languages = list(
+		LANGUAGE_ID_DIONA,
+		LANGUAGE_ID_DIONA_HIVEMIND
+	)
 	assisted_langs   = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
 
 	slowdown = 2.5
@@ -26,7 +29,6 @@
 
 	max_age = 300
 
-	economic_modifier = 4
 
 	blurb = {"
 	Commonly referred to (erroneously) as 'plant people', the Dionaea are a strange space-dwelling collective
@@ -40,7 +42,7 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Dionea"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/dionaea)
-	rarity_value   = 3
+	//rarity_value   = 3
 
 	has_organ = list(
 		O_NUTRIENT = /obj/item/organ/internal/diona/nutrients,
@@ -93,8 +95,8 @@
 	body_temperature = T0C + 15		//make the plant people have a bit lower body temperature, why not
 	hunger_factor = 0//Handled in handle_environment_special()
 
-	flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD | CONTAMINATION_IMMUNE
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
+	species_flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD | CONTAMINATION_IMMUNE
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
 
 	blood_color = "#004400"
 	flesh_color = "#907E4A"
@@ -112,7 +114,7 @@
 
 /datum/species/diona/equip_survival_gear(mob/living/carbon/human/H)
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H), /datum/inventory_slot_meta/abstract/right_hand)
+		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H), /datum/inventory_slot_meta/abstract/hand/right)
 	else
 		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H.back), /datum/inventory_slot_meta/abstract/put_in_backpack)
 
@@ -121,18 +123,18 @@
 	var/mob/living/carbon/alien/diona/S = new(get_turf(H))
 
 	if(H.mind)
-		H.mind.transfer_to(S)
+		H.mind.transfer(S)
 
 	if(H.isSynthetic())
 		H.visible_message(SPAN_DANGER("\The [H] collapses into parts, revealing a solitary diona nymph at the core."))
-		H.set_species(get_static_species_meta(/datum/species/human), skip = TRUE, force = TRUE)
+		H.set_species(SScharacters.resolve_species_path(/datum/species/human), skip = TRUE, force = TRUE)
 
 		for(var/obj/item/organ/internal/diona/Org in H.internal_organs) // Remove Nymph organs.
 			qdel(Org)
 
 		// Purge the diona verbs.
-		H.verbs -= /mob/living/carbon/human/proc/diona_split_nymph
-		H.verbs -= /mob/living/carbon/human/proc/regenerate
+		remove_verb(H, /mob/living/carbon/human/proc/diona_split_nymph)
+		remove_verb(H, /mob/living/carbon/human/proc/regenerate)
 
 		return
 

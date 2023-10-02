@@ -1,6 +1,8 @@
 /datum/species/shadekin
+	uid = SPECIES_ID_SHADEKIN
 	name = SPECIES_SHADEKIN
 	name_plural = SPECIES_SHADEKIN
+	category = SPECIES_CATEGORY_RESTRICTED
 
 	icobase      = 'icons/mob/species/shadekin/body.dmi'
 	deform       = 'icons/mob/species/shadekin/body.dmi'
@@ -19,13 +21,11 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
-	rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
+	//rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
 
-	num_alternate_languages = 3
-	language = LANGUAGE_SHADEKIN
-	name_language = LANGUAGE_SHADEKIN
-	species_language = LANGUAGE_SHADEKIN
-	secondary_langs = list(LANGUAGE_SHADEKIN)
+	max_additional_languages = 3
+	intrinsic_languages = LANGUAGE_ID_SHADEKIN_HIVEMIND
+	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
 
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,
@@ -35,13 +35,14 @@
 	)
 
 	siemens_coefficient = 1
-	darksight = 10
+	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 
 	slowdown = -0.5
 	item_slowdown_mod = 0.5
 
 	brute_mod = 0.7 // Naturally sturdy.
 	burn_mod = 1.2 // Furry
+	radiation_mod = 0
 
 	warning_low_pressure = 50
 	hazard_low_pressure = -1
@@ -57,8 +58,8 @@
 	heat_level_2 = 1000
 	heat_level_3 = 1150
 
-	flags =  NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+	species_flags = NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
+	species_spawn_flags = SPECIES_SPAWN_RESTRICTED | SPECIES_SPAWN_CHARACTER
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
 
@@ -114,6 +115,8 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
 	)
 
+	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
+
 	//SHADEKIN-UNIQUE STUFF GOES HERE
 	var/list/shadekin_abilities = list(
 		/datum/power/shadekin/phase_shift,
@@ -159,7 +162,7 @@
 		H.ability_master = new /atom/movable/screen/movable/ability_master/shadekin(H)
 	for(var/datum/power/shadekin/P in shadekin_ability_datums)
 		if(!(P.verbpath in H.verbs))
-			H.verbs += P.verbpath
+			add_verb(H, P.verbpath)
 			H.ability_master.add_shadekin_ability(
 				object_given = H,
 				verb_given = P.verbpath,
@@ -180,7 +183,7 @@
 
 	var/brightness = T.get_lumcount() //Brightness in 0.0 to 1.0
 	darkness = 1-brightness //Invert
-	var/is_dark = (darkness <= 0.5)
+	var/is_dark = (darkness >= 0.5)
 
 	if(H.ability_flags & AB_PHASE_SHIFTED)
 		dark_gains = 0

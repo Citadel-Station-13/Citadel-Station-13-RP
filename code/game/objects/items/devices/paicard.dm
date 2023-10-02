@@ -8,23 +8,31 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_DATA = 2)
-	show_messages = 0
-	preserve_item = 1
+	show_messages = FALSE
+	preserve_item = TRUE
 
+	var/holoray_icon = 'icons/obj/pda.dmi'
+	var/holoray_icon_state = "pai_holoray"
+	var/image/displayed_hologram
+	var/displaying_hologram = FALSE
+
+	var/current_emotion = "off"
 	var/obj/item/radio/radio
-	var/looking_for_personality = 0
+	var/looking_for_personality = FALSE
 	var/mob/living/silicon/pai/pai
+	var/image/cached_holo_image
 
 /obj/item/paicard/relaymove(var/mob/user, var/direction)
-	if(user.stat || user.stunned)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
-	var/obj/item/rig/rig = src.get_rig()
-	if(istype(rig))
-		rig.forced_move(direction, user)
+	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	if(istype(hardsuit))
+		hardsuit.forced_move(direction, user)
 
 /obj/item/paicard/Initialize(mapload)
 	. = ..()
-	overlays += "pai-off"
+	RegisterSignal(src, COMSIG_ITEM_EQUIPPED, PROC_REF(stop_displaying_hologram))
+	add_overlay("pai-off")
 
 /obj/item/paicard/Destroy()
 	//Will stop people throwing friend pAIs into the singularity so they can respawn
@@ -34,6 +42,9 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	return ..()
 
 /obj/item/paicard/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (!in_range(src, user))
 		return
 	user.set_machine(src)
@@ -227,7 +238,6 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 			"}
 	user << browse(dat, "window=paicard")
 	onclose(user, "paicard")
-	return
 
 /obj/item/paicard/Topic(href, href_list)
 
@@ -256,7 +266,6 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 				to_chat(M, "<font color = #ff4d4d><h3>Byte by byte you lose your sense of self.</h3></font>")
 				to_chat(M, "<font color = #ff8787><h4>Your mental faculties leave you.</h4></font>")
 				to_chat(M, "<font color = #ffc4c4><h5>oblivion... </h5></font>")
-				M.death(0)
 			removePersonality()
 	if(href_list["wires"])
 		var/t1 = text2num(href_list["wires"])
@@ -279,36 +288,34 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 //		WIRE_TRANSMIT = 4
 
 /obj/item/paicard/proc/setPersonality(mob/living/silicon/pai/personality)
-	src.pai = personality
-	src.overlays += "pai-happy"
+	pai = personality
+	setEmotion("null")
+	src.forceMove(get_turf(src))
+	pai.open_up()
 
 /obj/item/paicard/proc/removePersonality()
-	src.pai = null
-	src.overlays.Cut()
-	src.overlays += "pai-off"
+	QDEL_NULL(pai)
+	pai = null
+	cached_holo_image = null
+	displaying_hologram = FALSE
+	displayed_hologram = null
+	setEmotion("off")
 
-/obj/item/paicard
-	var/current_emotion = 1
-/obj/item/paicard/proc/setEmotion(var/emotion)
-	if(pai)
-		src.overlays.Cut()
-		switch(emotion)
-			if(1) src.overlays += "pai-happy"
-			if(2) src.overlays += "pai-cat"
-			if(3) src.overlays += "pai-extremely-happy"
-			if(4) src.overlays += "pai-face"
-			if(5) src.overlays += "pai-laugh"
-			if(6) src.overlays += "pai-off"
-			if(7) src.overlays += "pai-sad"
-			if(8) src.overlays += "pai-angry"
-			if(9) src.overlays += "pai-what"
-			if(10) src.overlays += "pai-neutral"
-			if(11) src.overlays += "pai-silly"
-			if(12) src.overlays += "pai-nose"
-			if(13) src.overlays += "pai-smirk"
-			if(14) src.overlays += "pai-exclamation"
-			if(15) src.overlays += "pai-question"
-		current_emotion = emotion
+/obj/item/paicard/proc/setEmotion(emotion)
+	current_emotion = emotion
+	update_icons()
+
+/obj/item/paicard/proc/get_holo_image()
+	if(cached_holo_image)
+		return cached_holo_image
+	if(!pai.last_rendered_hologram_icon)
+		pai.last_rendered_hologram_icon = pai.get_holo_image()
+	var/icon/new_icon = icon(pai.last_rendered_hologram_icon)
+	var/crop_adjustment = (new_icon.Width() - 32) / 2
+	new_icon.Crop(12 + crop_adjustment, 21, 21 + crop_adjustment, 30)
+	var/image/image = image(new_icon, pixel_x = 11, pixel_y = 9)
+	cached_holo_image = image
+	return image
 
 /obj/item/paicard/proc/alertUpdate()
 	var/turf/T = get_turf_or_move(src.loc)
@@ -319,20 +326,60 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	for(var/mob/M in src)
 		M.emp_act(severity)
 
-/obj/item/paicard/ex_act(severity)
+/obj/item/paicard/legacy_ex_act(severity)
 	if(pai)
-		pai.ex_act(severity)
+		LEGACY_EX_ACT(pai, severity, null)
 	else
 		qdel(src)
-
-/obj/item/paicard/see_emote(mob/living/M, text)
-	if(pai && pai.client && !pai.canmove)
-		var/rendered = "<span class='message'>[text]</span>"
-		pai.show_message(rendered, 2)
-	..()
 
 /obj/item/paicard/show_message(msg, type, alt, alt_type)
 	if(pai && pai.client)
 		var/rendered = "<span class='message'>[msg]</span>"
 		pai.show_message(rendered, type)
 	..()
+
+/obj/item/paicard/proc/update_icons()
+	cut_overlays()
+
+	// handle our screen overlays
+	if(current_emotion != "off" && current_emotion != "character")
+		add_overlay("pai-underlay")
+		add_overlay("pai-[current_emotion]")
+	else if(current_emotion == "character")
+		var/image/image = get_holo_image()
+		if(displaying_hologram)
+			image.pixel_x = 9
+			image.pixel_y = 11
+		else
+			image.pixel_x = 11
+			image.pixel_y = 9
+		add_overlay(image)
+	else
+		add_overlay("pai-off")
+
+	// if we are displaying a hologram currently, display it
+	if(displaying_hologram)
+		var/image/holoray_image = image(holoray_icon, holoray_icon_state)
+		holoray_image.appearance_flags = RESET_TRANSFORM | KEEP_APART
+		add_overlay(holoray_image)
+		add_overlay(displayed_hologram)
+
+		// we also make some adjustments to ourselves to make displaying it look nicer
+		var/matrix/M = matrix()
+		M.Turn(90)
+		M.Translate(1, -8)
+
+		transform = M
+	else
+		// not displaying a hologram? reset our transforms because it might be wrong
+		var/matrix/M = matrix()
+		transform = M
+
+/obj/item/paicard/proc/display_hologram_from_image(image)
+	displaying_hologram = TRUE
+	displayed_hologram = image
+	update_icons()
+
+/obj/item/paicard/proc/stop_displaying_hologram()
+	displaying_hologram = FALSE
+	update_icons()

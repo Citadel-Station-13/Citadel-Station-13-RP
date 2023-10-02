@@ -6,8 +6,8 @@
 	if(!check_rights(R_FUN))
 		return
 
-	if(alert("Are you sure you want to run [cinematic]?","Confirmation","Yes","No")=="No") return
-	if(!SSticker)	return
+	if(alert("Are you sure you want to run [cinematic]?","Confirmation","Yes","No") == "No")
+		return
 	switch(cinematic)
 		if("explosion")
 			if(alert("The game will be over. Are you really sure?", "Confirmation" ,"Continue", "Cancel") == "Cancel")

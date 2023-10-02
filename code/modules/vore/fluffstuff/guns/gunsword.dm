@@ -12,7 +12,7 @@
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 4)
 	slot_flags = null
-	projectile_type = /obj/item/projectile/beam/stun
+	projectile_type = /obj/projectile/beam/stun
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	charge_meter = 1
 
@@ -21,8 +21,8 @@
 	modifystate = "gbuster"
 
 	firemodes = list(
-	list(mode_name="stun", charge_cost=240,projectile_type=/obj/item/projectile/beam/stun, modifystate="gbuster", fire_sound='sound/weapons/Taser.ogg'),
-	list(mode_name="lethal", charge_cost=480,projectile_type=/obj/item/projectile/beam, modifystate="gbuster", fire_sound='sound/weapons/gauss_shoot.ogg'),
+	list(mode_name="stun", charge_cost=240,projectile_type=/obj/projectile/beam/stun, modifystate="gbuster", fire_sound='sound/weapons/Taser.ogg'),
+	list(mode_name="lethal", charge_cost=480,projectile_type=/obj/projectile/beam, modifystate="gbuster", fire_sound='sound/weapons/gauss_shoot.ogg'),
 	)
 
 
@@ -37,8 +37,8 @@
 	item_state = "gsaberoff"
 	maxcharge = 2400
 	charge_amount = 20
-	force = 3
-	throwforce = 5
+	damage_force = 3
+	throw_force = 5
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
@@ -52,7 +52,7 @@
 	sharp = 0
 	edge = 0
 	armor_penetration = 50
-	flags = NOBLOODY
+	atom_flags = NOBLOODY
 	var/lrange = 2
 	var/lpower = 2
 	var/lcolor = "#800080"
@@ -65,8 +65,8 @@
 	item_state = "gsaber"
 	active = 1
 	embed_chance = active_embed_chance
-	force = active_force
-	throwforce = active_throwforce
+	damage_force = active_force
+	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
 	w_class = active_w_class
@@ -84,8 +84,8 @@
 	item_state = "gsaberoff"
 	active = 0
 	embed_chance = initial(embed_chance)
-	force = initial(force)
-	throwforce = initial(throwforce)
+	damage_force = initial(damage_force)
+	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
 	w_class = initial(w_class)
@@ -93,13 +93,17 @@
 	attack_verb = list()
 
 
-/obj/item/cell/device/weapon/gunsword/attack_self(mob/living/user as mob)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+/obj/item/cell/device/weapon/gunsword/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if (active)
-		if ((CLUMSY in user.mutations) && prob(50))
+		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts [TU.himself] with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
-			user.take_organ_damage(5,5)
+			var/mob/living/carbon/human/H = ishuman(user)? user : null
+			H?.take_organ_damage(5,5)
 		deactivate(user)
 		update_icon()
 		update_held_icon()
@@ -117,11 +121,11 @@
 	return
 
 /obj/item/cell/device/weapon/gunsword/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if(active)
 		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] stomach open with \the [src]! It looks like [TU.he] [TU.is] trying to commit seppuku.</span>",\
 			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
 		return (BRUTELOSS|FIRELOSS)
 
 /obj/item/cell/device/weapon/gunsword/update_icon()
-	overlays.Cut()
+	cut_overlay()

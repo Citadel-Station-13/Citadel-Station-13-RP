@@ -1,38 +1,38 @@
-/*
-
-Here's how to use the chat system with configs
-
-send2adminchat is a simple function that broadcasts to admin channels
-
-send2chat is a bit verbose but can be very specific
-
-The second parameter is a string, this string should be read from a config.
-What this does is dictacte which TGS4 channels can be sent to.
-
-For example if you have the following channels in tgs4 set up
-- Channel 1, Tag: asdf
-- Channel 2, Tag: bombay,asdf
-- Channel 3, Tag: Hello my name is asdf
-- Channel 4, No Tag
-- Channel 5, Tag: butts
-
-and you make the call:
-
-send2chat("I sniff butts", CONFIG_GET(string/where_to_send_sniff_butts))
-
-and the config option is set like:
-
-WHERE_TO_SEND_SNIFF_BUTTS asdf
-
-It will be sent to channels 1 and 2
-
-Alternatively if you set the config option to just:
-
-WHERE_TO_SEND_SNIFF_BUTTS
-
-it will be sent to all connected chats.
-
-In TGS3 it will always be sent to all connected designated game chats.
+/**
+ *
+ * Here's how to use the chat system with configs
+ *
+ *? send2adminchat is a simple function that broadcasts to admin channels
+ *
+ *? send2chat is a bit verbose but can be very specific
+ *
+ * The second parameter is a string, this string should be read from a config.
+ * What this does is dictacte which TGS4 channels can be sent to.
+ *
+ * For example if you have the following channels in tgs4 set up
+ * - Channel 1, Tag: asdf
+ * - Channel 2, Tag: bombay,asdf
+ * - Channel 3, Tag: Hello my name is asdf
+ * - Channel 4, No Tag
+ * - Channel 5, Tag: butts
+ *
+ * and you make the call:
+ *
+ * send2chat("I sniff butts", CONFIG_GET(string/where_to_send_sniff_butts))
+ *
+ * and the config option is set like:
+ *
+ * WHERE_TO_SEND_SNIFF_BUTTS asdf
+ *
+ * It will be sent to channels 1 and 2
+ *
+ * Alternatively if you set the config option to just:
+ *
+ * WHERE_TO_SEND_SNIFF_BUTTS
+ *
+ * it will be sent to all connected chats.
+ *
+ * In TGS3 it will always be sent to all connected designated game chats.
 */
 
 /**

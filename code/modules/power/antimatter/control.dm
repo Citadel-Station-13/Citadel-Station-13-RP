@@ -105,7 +105,7 @@
 	return 0
 
 
-/obj/machinery/power/am_control_unit/ex_act(severity)
+/obj/machinery/power/am_control_unit/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			stability -= 60
@@ -117,9 +117,9 @@
 	return
 
 
-/obj/machinery/power/am_control_unit/bullet_act(var/obj/item/projectile/Proj)
-	if(Proj.check_armour != "bullet")
-		stability -= Proj.force
+/obj/machinery/power/am_control_unit/bullet_act(var/obj/projectile/Proj)
+	if(Proj.damage_flag != "bullet")
+		stability -= Proj.damage
 	return 0
 
 
@@ -140,14 +140,14 @@
 	if(!istype(W) || !user) return
 	if(W.is_wrench())
 		if(!anchored)
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			user.visible_message("[user.name] secures the [src.name] to the floor.", \
 				"You secure the anchor bolts to the floor.", \
 				"You hear a ratchet.")
 			src.anchored = 1
 			connect_to_network()
 		else if(!linked_shielding.len > 0)
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			user.visible_message("[user.name] unsecures the [src.name].", \
 				"You remove the anchor bolts.", \
 				"You hear a ratchet.")
@@ -170,14 +170,14 @@
 				"You hear a thunk.")
 		return
 
-	if(W.force >= 20)
-		stability -= W.force/2
+	if(W.damage_force >= 20)
+		stability -= W.damage_force/2
 		check_stability()
 	..()
 	return
 
 
-/obj/machinery/power/am_control_unit/attack_hand(mob/user as mob)
+/obj/machinery/power/am_control_unit/attack_hand(mob/user, list/params)
 	if(anchored)
 		interact(user)
 	return

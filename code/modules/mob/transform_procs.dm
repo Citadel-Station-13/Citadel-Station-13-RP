@@ -3,9 +3,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
-	stunned = 1
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)
@@ -18,18 +17,17 @@
 	sleep(48)
 	//animation = null
 
-	transforming = 0
-	stunned = 0
-	update_canmove()
+	transforming = FALSE
+	update_mobility()
 	invisibility = initial(invisibility)
 
 	if(!species.primitive_form) //If the creature in question has no primitive set, this is going to be messy.
 		gib()
 		return
 
-	set_species(species_type_by_name(species.primitive_form))
-	dna.SetSEState(MONKEYBLOCK,1)
-	dna.SetSEValueRange(MONKEYBLOCK,0xDAC, 0xFFF)
+	set_species(species.primitive_form)
+	dna.SetSEState(DNABLOCK_MONKEY,1)
+	dna.SetSEValueRange(DNABLOCK_MONKEY,0xDAC, 0xFFF)
 
 	to_chat(src, "<B>You are now [species.name]. </B>")
 	qdel(animation)
@@ -52,8 +50,8 @@
 	if (transforming)
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	return ..()
@@ -61,42 +59,27 @@
 /mob/proc/AIize(move=1)
 	if(client)
 		SEND_SOUND(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1)) // stop the jams for AIs
-	var/mob/living/silicon/ai/O = new (loc, GLOB.using_map.default_law_type,,1)//No MMI but safety is in effect.
+	var/mob/living/silicon/ai/O = new (loc, (LEGACY_MAP_DATUM).default_law_type,,1)//No MMI but safety is in effect.
 	O.invisibility = 0
 	O.aiRestorePowerRoutine = 0
 
 	if(mind)
-		mind.transfer_to(O)
+		mind.transfer(O)
 		O.mind.original = O
 	else
 		O.key = key
 
 	//Languages
 	add_language("Robot Talk", 1)
-	add_language(LANGUAGE_GALCOM, 1)
-	add_language(LANGUAGE_SOL_COMMON, 1)
-	add_language(LANGUAGE_UNATHI, 1)
-	add_language(LANGUAGE_SIIK, 1)
-	add_language(LANGUAGE_AKHANI, 1)
-	add_language(LANGUAGE_SKRELLIAN, 1)
-	add_language(LANGUAGE_TRADEBAND, 1)
-	add_language(LANGUAGE_GUTTER, 1)
-	add_language(LANGUAGE_EAL, 1)
-	add_language(LANGUAGE_SCHECHI, 1)
-	add_language(LANGUAGE_SIGN, 1)
-	add_language(LANGUAGE_TERMINUS, 1)
-	add_language(LANGUAGE_ZADDAT, 0)
 
 	// Lorefolks say it may be so.
-	if(O.client && O.client.prefs)
-		var/datum/preferences/B = O.client.prefs
-		if(LANGUAGE_ROOTGLOBAL in B.alternate_languages)
-			O.add_language(LANGUAGE_ROOTGLOBAL, 1)
-		if(LANGUAGE_ROOTLOCAL in B.alternate_languages)
-			O.add_language(LANGUAGE_ROOTLOCAL, 1)
+	if(LANGUAGE_ROOTGLOBAL in languages)
+		O.add_language(LANGUAGE_ROOTGLOBAL, 1)
+	if(LANGUAGE_ROOTLOCAL in languages)
+		O.add_language(LANGUAGE_ROOTLOCAL, 1)
 
 	if(move)
-		var/obj/landmark/spawnpoint/S = SSjob.GetLatejoinSpawnpoint(job_path = /datum/job/station/ai)
+		var/obj/landmark/spawnpoint/S = SSjob.get_latejoin_spawnpoint(job_path = /datum/role/job/station/ai)
 		O.forceMove(S.GetSpawnLoc())
 		S.OnSpawn(O)
 
@@ -104,19 +87,22 @@
 
 	O.add_ai_verbs()
 
-	O.rename_self("ai",1)
-	spawn(0)	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned
+	O.view_core()
+
+	O.rename_self("ai")
+	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned.
+	spawn(0)
 		qdel(src)
 	return O
 
-//human -> robot
+/// Human -> Robot
 /mob/living/carbon/human/proc/Robotize()
 	if (transforming)
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)
@@ -134,7 +120,7 @@
 	O.invisibility = 0
 
 	if(mind)		//TODO
-		mind.transfer_to(O)
+		mind.transfer(O)
 		if(O.mind && O.mind.assigned_role == "Cyborg")
 			O.mind.original = O
 			if(O.mind.role_alt_title == "Drone")
@@ -149,13 +135,14 @@
 	else
 		O.key = key
 
-	O.loc = loc
+	O.forceMove(loc)
 	O.job = "Cyborg"
+
+	for(var/i in languages)
+		O.add_language(i)
 
 	if(O.client && O.client.prefs)
 		var/datum/preferences/B = O.client.prefs
-		for(var/language in B.alternate_languages)
-			O.add_language(language)
 		O.resize(B.size_multiplier, animate = TRUE)		// Adds size prefs to borgs
 		O.fuzzy = B.fuzzy								// Ditto
 
@@ -171,8 +158,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)
@@ -194,8 +181,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)	//this really should not be necessary
@@ -224,8 +211,8 @@
 	drop_inventory(TRUE, TRUE, TRUE)
 
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 
@@ -296,6 +283,3 @@
 
 	//Not in here? Must be untested!
 	return 0
-
-
-

@@ -73,7 +73,7 @@
 		else if(isfloor(T3) || istype(T3, /turf/space))
 			under = T3
 		else
-			under = (baseturfs && (islist(baseturfs)? baseturfs[1] : baseturfs)) || /turf/space
+			under = baseturf_underneath()
 
 	if(istype(under,/turf/simulated/shuttle))
 		interior_corner = 1	// Prevents us from 'landing on grass' and having interior corners update.
@@ -130,10 +130,9 @@
 
 /turf/simulated/shuttle/floor/alien
 	icon_state = "alienpod1"
-	light_range = 3
-	light_power = 0.6
-	light_color = "#66ffff"	// Bright cyan.
 	block_tele = TRUE
+	ambient_light = COLOR_LUMINOL
+	ambient_light_multiplier = 0.6
 
 /turf/simulated/shuttle/floor/alien/Initialize(mapload)
 	. = ..()

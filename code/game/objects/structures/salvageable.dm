@@ -15,8 +15,8 @@
 
 /obj/structure/salvageable/attackby(obj/item/I, mob/user)
 	if(I.is_crowbar())
-		playsound(src, I.usesound, 50, 1)
-		var/actual_time = I.toolspeed * 170
+		playsound(src, I.tool_sound, 50, 1)
+		var/actual_time = I.tool_speed * 170
 		user.visible_message( \
 			"<span class='notice'>\The [user] begins salvaging from \the [src].</span>", \
 			"<span class='notice'>You start salvaging from \the [src].</span>")
@@ -80,7 +80,8 @@
 		/obj/item/stock_parts/capacitor/adv = 30,
 		/obj/item/computer_hardware/network_card/advanced = 20
 	)
-obj/structure/salvageable/computer/Initialize()
+
+/obj/structure/salvageable/computer/Initialize()
 	. = ..()
 	icon_state = "computer[rand(0,7)]"
 
@@ -136,7 +137,7 @@ obj/structure/salvageable/computer/Initialize()
 		/obj/item/stack/material/silver{amount = 10} = 30
 	)
 
-obj/structure/salvageable/implant_container/Initialize()
+/obj/structure/salvageable/implant_container/Initialize()
 	. = ..()
 	icon_state = "implant_container[rand(0,1)]"
 
@@ -164,7 +165,7 @@ obj/structure/salvageable/implant_container/Initialize()
 		/obj/item/computer_hardware/network_card/advanced = 20
 	)
 
-obj/structure/salvageable/data/Initialize()
+/obj/structure/salvageable/data/Initialize()
 	. = ..()
 	icon_state = "data[rand(0,1)]"
 
@@ -194,7 +195,7 @@ obj/structure/salvageable/data/Initialize()
 		/obj/item/computer_hardware/network_card/advanced = 20
 	)
 
-obj/structure/salvageable/server/Initialize()
+/obj/structure/salvageable/server/Initialize()
 	. = ..()
 	icon_state = "server[rand(0,1)]"
 
@@ -219,7 +220,7 @@ obj/structure/salvageable/server/Initialize()
 		/obj/item/computer_hardware/hard_drive/advanced = 40
 	)
 
-obj/structure/salvageable/personal/Initialize()
+/obj/structure/salvageable/personal/Initialize()
 	. = ..()
 	icon_state = "personal[rand(0,12)]"
 	new /obj/structure/table/reinforced (loc)
@@ -234,7 +235,7 @@ obj/structure/salvageable/personal/Initialize()
 		/obj/item/computer_hardware/hard_drive/cluster = 50
 	)
 
-obj/structure/salvageable/bliss/Initialize()
+/obj/structure/salvageable/bliss/Initialize()
 	. = ..()
 	icon_state = "bliss[rand(0,1)]"
 

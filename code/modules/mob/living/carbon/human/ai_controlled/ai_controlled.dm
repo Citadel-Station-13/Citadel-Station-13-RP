@@ -81,17 +81,17 @@
 		equip_to_slot_or_del(new to_wear_back(src), SLOT_ID_BACK)
 
 	if(to_wear_l_hand)
-		equip_to_slot_or_del(new to_wear_l_hand(src), /datum/inventory_slot_meta/abstract/left_hand)
+		equip_to_slot_or_del(new to_wear_l_hand(src), /datum/inventory_slot_meta/abstract/hand/left)
 
 	if(to_wear_r_hand)
-		equip_to_slot_or_del(new to_wear_r_hand(src), /datum/inventory_slot_meta/abstract/right_hand)
+		equip_to_slot_or_del(new to_wear_r_hand(src), /datum/inventory_slot_meta/abstract/hand/right)
 
 	if(to_wear_id_type)
 		var/obj/item/card/id/W = new to_wear_id_type(src)
 		W.name = "[real_name]'s ID Card"
-		var/datum/job/jobdatum
-		for(var/jobtype in typesof(/datum/job))
-			var/datum/job/J = new jobtype
+		var/datum/role/job/jobdatum
+		for(var/jobtype in typesof(/datum/role/job))
+			var/datum/role/job/J = new jobtype
 			if(J.title == to_wear_id_job)
 				jobdatum = J
 				break

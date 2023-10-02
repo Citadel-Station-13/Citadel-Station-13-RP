@@ -261,6 +261,9 @@ const SecurityRecordsViewSecurity = (_properties, context) => {
           </LabeledList.Item>
         ))}
       </LabeledList>
+      <Section title="Security Notes Summary" level={2} preserveWhitespace>
+        {security.notes || "No data found."}
+      </Section>
       <Section title="Comments/Log">
         {security.comments.length === 0 ? (
           <Box color="label">

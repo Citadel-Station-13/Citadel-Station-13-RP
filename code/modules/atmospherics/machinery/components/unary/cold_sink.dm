@@ -2,7 +2,7 @@
 /obj/machinery/atmospherics/component/unary/freezer
 	name = "gas cooling system"
 	desc = "Cools gas when connected to pipe network"
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "freezer_0"
 	density = 1
 	anchored = 1
@@ -14,7 +14,7 @@
 	var/internal_volume = 600		// L
 
 	var/max_power_rating = 20000	// Power rating when the usage is turned up to 100
-	var/power_setting = 100
+	var/power_setting_legacy = 100
 
 	var/set_temperature = T20C		// Thermostat
 	var/cooling = 0
@@ -59,7 +59,7 @@
 /obj/machinery/atmospherics/component/unary/freezer/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/unary/freezer/attack_hand(mob/user as mob)
+/obj/machinery/atmospherics/component/unary/freezer/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/atmospherics/component/unary/freezer/ui_interact(mob/user, datum/tgui/ui)
@@ -77,7 +77,7 @@
 	data["minGasTemperature"] = 0
 	data["maxGasTemperature"] = round(T20C+500)
 	data["targetGasTemperature"] = round(set_temperature)
-	data["powerSetting"] = power_setting
+	data["powerSetting"] = power_setting_legacy
 
 	var/temp_class = "good"
 	if(air_contents.temperature > (T0C - 20))
@@ -119,13 +119,13 @@
 		cooling = 1
 
 		var/heat_transfer = max( -air_contents.get_thermal_energy_change(set_temperature - 5), 0 )
-
 		//Assume the heat is being pumped into the hull which is fixed at heatsink_temperature
 		//not /really/ proper thermodynamics but whatever
-		var/cop = THERMOMACHINE_CHEAT_FACTOR * air_contents.temperature/heatsink_temperature	//heatpump coefficient of performance from thermodynamics -> power used = heat_transfer/cop
+		CACHE_VSC_PROP(atmos_vsc, /atmos/thermomachine_cheat_factor, cheat_factor)
+		var/cop = cheat_factor * air_contents.temperature/heatsink_temperature	//heatpump coefficient of performance from thermodynamics -> power used = heat_transfer/cop
 		heat_transfer = min(heat_transfer, cop * power_rating)	//limit heat transfer by available power
 
-		var/removed = -air_contents.add_thermal_energy(-heat_transfer)		//remove the heat
+		var/removed = -air_contents.adjust_thermal_energy(-heat_transfer)		//remove the heat
 		if(debug)
 			visible_message("[src]: Removing [removed] W.")
 
@@ -155,11 +155,11 @@
 	max_power_rating = initial(max_power_rating) * cap_rating / 2			//more powerful
 	heatsink_temperature = initial(heatsink_temperature) / ((manip_rating + bin_rating) / 2)	//more efficient
 	air_contents.volume = max(initial(internal_volume) - 200, 0) + 200 * bin_rating
-	set_power_level(power_setting)
+	set_power_level(power_setting_legacy)
 
-/obj/machinery/atmospherics/component/unary/freezer/proc/set_power_level(var/new_power_setting)
-	power_setting = new_power_setting
-	power_rating = max_power_rating * (power_setting/100)
+/obj/machinery/atmospherics/component/unary/freezer/proc/set_power_level(var/new_power_setting_legacy)
+	power_setting_legacy = new_power_setting_legacy
+	power_rating = max_power_rating * (power_setting_legacy/100)
 
 /obj/machinery/atmospherics/component/unary/freezer/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))
@@ -171,7 +171,7 @@
 
 	..()
 
-/obj/machinery/atmospherics/component/unary/freezer/examine(mob/user)
+/obj/machinery/atmospherics/component/unary/freezer/examine(mob/user, dist)
 	. = ..()
 	if(panel_open)
 		. += "The maintenance hatch is open."

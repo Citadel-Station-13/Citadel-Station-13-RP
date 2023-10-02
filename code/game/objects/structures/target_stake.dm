@@ -10,7 +10,7 @@
 
 /obj/structure/target_stake/Moved()
 	. = ..()
-	if(pinned_target.loc != loc)
+	if(pinned_target && (pinned_target.loc != loc))
 		// Move the pinned target along with the stake
 		pinned_target.forceMove(loc)
 
@@ -29,7 +29,7 @@
 	else
 		return ..()
 
-/obj/structure/target_stake/attack_hand(mob/user as mob)
+/obj/structure/target_stake/attack_hand(mob/user, list/params)
 	// taking pinned targets off!
 	if(pinned_target)
 		pinned_target.layer = OBJ_LAYER
@@ -47,7 +47,7 @@
 	else
 		return ..()
 
-/obj/structure/target_stake/bullet_act(obj/item/projectile/P, def_zone)
+/obj/structure/target_stake/bullet_act(obj/projectile/P, def_zone)
 	if(pinned_target)
 		return pinned_target.bullet_act(P, def_zone)
 	else

@@ -15,7 +15,7 @@
 /datum/announce_location/proc/get_affected_atoms()
 	. = list()
 	var/list/levels = get_affected_levels()
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(always_allow_ghosts && istype(M, /mob/observer/dead))
 			. += M
 			continue

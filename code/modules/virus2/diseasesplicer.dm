@@ -11,7 +11,7 @@
 	var/splicing = 0
 	var/scanning = 0
 
-/obj/machinery/computer/diseasesplicer/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+/obj/machinery/computer/diseasesplicer/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(I.is_screwdriver())
 		return ..(I, user)
 
@@ -38,7 +38,7 @@
 /obj/machinery/computer/diseasesplicer/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/diseasesplicer/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/diseasesplicer/attack_hand(mob/user, list/params)
 	if(..())
 		return TRUE
 	ui_interact(user)
@@ -130,7 +130,7 @@
 			ping("\The [src] pings, \"Backup disk saved.\"")
 			SStgui.update_uis(src)
 
-/obj/machinery/computer/diseasesplicer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/diseasesplicer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

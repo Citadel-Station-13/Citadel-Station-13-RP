@@ -8,8 +8,14 @@
 	desc = "A gas circulator turbine and heat exchanger."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "circ-unassembled"
-	anchored = 0
+	layer = OBJ_LAYER
+	plane = OBJ_PLANE
+	climb_allowed = TRUE
+	depth_projected = TRUE
+	depth_level = 12
+	anchored = FALSE
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
+	default_deconstruct = null
 
 	var/kinetic_efficiency = 0.04 //combined kinetic and kinetic-to-electric efficiency
 	var/volume_ratio = 0.2
@@ -95,7 +101,7 @@
 
 /obj/machinery/atmospherics/component/binary/circulator/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
-		playsound(src, W.usesound, 75, 1)
+		playsound(src, W.tool_sound, 75, 1)
 		anchored = !anchored
 		user.visible_message("[user.name] [anchored ? "secures" : "unsecures"] the bolts holding [src.name] to the floor.", \
 					"You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor.", \
@@ -133,7 +139,7 @@
 /obj/machinery/atmospherics/component/binary/circulator/verb/rotate_clockwise()
 	set name = "Rotate Circulator Clockwise"
 	set category = "Object"
-	set src in view(1)
+	set src in oview(1)
 
 	if (usr.stat || usr.restrained() || anchored)
 		return
@@ -145,7 +151,7 @@
 /obj/machinery/atmospherics/component/binary/circulator/verb/rotate_counterclockwise()
 	set name = "Rotate Circulator Counterclockwise"
 	set category = "Object"
-	set src in view(1)
+	set src in oview(1)
 
 	if (usr.stat || usr.restrained() || anchored)
 		return

@@ -22,7 +22,7 @@ var/global/datum/controller/xenobio/xenobio_controller // Set in New().
 
 /datum/controller/xenobio/New()
 	if(xenobio_controller && xenobio_controller != src)
-		log_debug("Rebuilding xenobio controller.")
+		log_debug(SPAN_DEBUG("Rebuilding xenobio controller."))
 		qdel(xenobio_controller)
 	xenobio_controller = src
 	setup()

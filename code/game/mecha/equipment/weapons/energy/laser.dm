@@ -4,7 +4,7 @@
 	desc = "A laser carbine's firing system mounted on a high-powered exosuit weapon socket."
 	icon_state = "mecha_laser"
 	energy_drain = 30
-	projectile = /obj/item/projectile/beam
+	projectile = /obj/projectile/beam
 	fire_sound = 'sound/weapons/Laser.ogg'
 
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 3, TECH_MAGNET = 3)
@@ -15,7 +15,7 @@
 	desc = "A large, mounted variant of the anti-armor xray rifle."
 	icon_state = "mecha_xray"
 	energy_drain = 150
-	projectile = /obj/item/projectile/beam/xray
+	projectile = /obj/projectile/beam/xray
 	fire_sound = 'sound/weapons/eluger.ogg'
 
 	origin_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3, TECH_PHORON = 3, TECH_POWER = 3)
@@ -35,7 +35,7 @@
 	desc = "While not regulation, this inefficient weapon can be attached to working exo-suits in desperate, or malicious, times."
 	icon_state = "mecha_laser-rig"
 	energy_drain = 60
-	projectile = /obj/item/projectile/beam
+	projectile = /obj/projectile/beam
 	fire_sound = 'sound/weapons/Laser.ogg'
 	required_type = list(/obj/mecha/combat, /obj/mecha/working)
 
@@ -49,7 +49,7 @@
 	desc = "In the Solaris, the lasing medium is enclosed in a tube lined with plutonium-239 and subjected to extreme neutron flux in a nuclear reactor core. This incredible technology may help YOU achieve high excitation rates with massive laser volumes!"
 	icon_state = "mecha_laser"
 	energy_drain = 60
-	projectile = /obj/item/projectile/beam/heavylaser
+	projectile = /obj/projectile/beam/heavylaser
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 
 	step_delay = 1
@@ -62,7 +62,7 @@
 	desc = "While not regulation, this mining tool can be used as an inefficient weapon on working exo-suits in desperate, or malicious, times."
 	icon_state = "mecha_emitter"
 	energy_drain = 80
-	projectile = /obj/item/projectile/beam/heavylaser/fakeemitter
+	projectile = /obj/projectile/beam/heavylaser/fakeemitter
 	fire_sound = 'sound/weapons/emitter.ogg'
 
 	equip_type = EQUIP_UTILITY

@@ -24,7 +24,7 @@
 	if(!owned_scanner)
 		owned_scanner = locate(/obj/machinery/artifact_scanpad) in orange(1, src)
 
-/obj/machinery/artifact_analyser/attack_hand(mob/user)
+/obj/machinery/artifact_analyser/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	if(machine_stat & (NOPOWER|BROKEN) || get_dist(src, user) > 1)
 		return
@@ -46,7 +46,7 @@
 
 	return data
 
-/obj/machinery/artifact_analyser/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/artifact_analyser/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -107,7 +107,7 @@
 		P.info += "<br>"
 		P.info += "\icon[scanned_object] [results]"
 		P.stamped = list(/obj/item/stamp)
-		P.overlays = list("paper_stamped")
+		P.add_overlay("paper_stamped")
 
 		if(scanned_object && istype(scanned_object, /obj/machinery/artifact))
 			var/obj/machinery/artifact/A = scanned_object

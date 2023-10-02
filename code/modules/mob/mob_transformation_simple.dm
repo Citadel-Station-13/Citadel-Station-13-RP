@@ -44,13 +44,13 @@
 		M.dna = src.dna.Clone()
 
 	if(mind)
-		mind.transfer_to(M)
+		mind.transfer(M)
 	else
 		M.key = key
 
 	if(subspecies && istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		H.set_species(species_type_by_name(subspecies))
+		H.set_species(subspecies)
 
 	if(delete_old_mob)
 		spawn(1)

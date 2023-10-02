@@ -18,15 +18,11 @@
 	var/datum/pipe_network/network3
 
 /obj/machinery/atmospherics/component/trinary/Initialize(mapload)
-	. = ..()
+	air1 = new(200)
+	air2 = new(200)
+	air3 = new(200)
 
-	air1 = new
-	air2 = new
-	air3 = new
-
-	air1.volume = 200
-	air2.volume = 200
-	air3.volume = 200
+	return ..()
 
 /obj/machinery/atmospherics/component/trinary/init_dir()
 	initialize_directions = get_initialize_directions_trinary(dir, mirrored, tee)
@@ -57,9 +53,9 @@
 	if(unsafe_pressure())
 		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
 	add_fingerprint(user)
-	playsound(src, W.usesound, 50, 1)
+	playsound(src, W.tool_sound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-	if (do_after(user, 40 * W.toolspeed))
+	if (do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
 			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
 			"<span class='notice'>You have unfastened \the [src].</span>", \

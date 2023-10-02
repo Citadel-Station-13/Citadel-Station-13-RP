@@ -7,8 +7,8 @@
 	if((temperature > PHORON_MINIMUM_BURN_TEMPERATURE || force_burn) && (no_check ||check_recombustability(zone? zone.fuel_objs : null)))
 
 		#ifdef FIREDBG
-		log_debug("***************** FIREDBG *****************")
-		log_debug("Burning [zone? zone.name : "zoneless gas_mixture"]!")
+		log_debug(SPAN_DEBUGINFO("***************** FIREDBG *****************"))
+		log_debug(SPAN_DEBUGINFO("Burning [zone? zone.name : "zoneless gas_mixture"]!"))
 		#endif
 
 		var/gas_fuel = 0
@@ -18,9 +18,9 @@
 
 		//*** Get the fuel and oxidizer amounts
 		for(var/g in gas)
-			if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL)
+			if(global.gas_data.flags[g] & GAS_FLAG_FUEL)
 				gas_fuel += gas[g]
-			if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER)
+			if(global.gas_data.flags[g] & GAS_FLAG_OXIDIZER)
 				total_oxidizers += gas[g]
 		gas_fuel *= group_multiplier
 		total_oxidizers *= group_multiplier
@@ -61,13 +61,13 @@
 		var/used_oxidizers = used_fuel*(FIRE_REACTION_OXIDIZER_AMOUNT/FIRE_REACTION_FUEL_AMOUNT)
 
 		#ifdef FIREDBG
-		log_debug("gas_fuel = [gas_fuel], liquid_fuel = [liquid_fuel], total_oxidizers = [total_oxidizers]")
-		log_debug("fuel_area = [fuel_area], total_fuel = [total_fuel], reaction_limit = [reaction_limit]")
-		log_debug("firelevel -> [firelevel] (gas: [gas_firelevel], liquid: [liquid_firelevel])")
-		log_debug("liquid_reaction_progress = [liquid_reaction_progress]")
-		log_debug("gas_reaction_progress = [gas_reaction_progress]")
-		log_debug("total_reaction_progress = [total_reaction_progress]")
-		log_debug("used_fuel = [used_fuel], used_oxidizers = [used_oxidizers]; ")
+		log_debug(SPAN_DEBUGINFO("gas_fuel = [gas_fuel], liquid_fuel = [liquid_fuel], total_oxidizers = [total_oxidizers]"))
+		log_debug(SPAN_DEBUGINFO("fuel_area = [fuel_area], total_fuel = [total_fuel], reaction_limit = [reaction_limit]"))
+		log_debug(SPAN_DEBUGINFO("firelevel -> [firelevel] (gas: [gas_firelevel], liquid: [liquid_firelevel])"))
+		log_debug(SPAN_DEBUGINFO("liquid_reaction_progress = [liquid_reaction_progress]"))
+		log_debug(SPAN_DEBUGINFO("gas_reaction_progress = [gas_reaction_progress]"))
+		log_debug(SPAN_DEBUGINFO("total_reaction_progress = [total_reaction_progress]"))
+		log_debug(SPAN_DEBUGINFO("used_fuel = [used_fuel], used_oxidizers = [used_oxidizers]; "))
 		#endif
 
 		//if the reaction is progressing too slow then it isn't self-sustaining anymore and burns out
@@ -85,7 +85,7 @@
 		//remove_by_flag() and adjust_gas() handle the group_multiplier for us.
 		remove_by_flag(GAS_FLAG_OXIDIZER, used_oxidizers)
 		remove_by_flag(GAS_FLAG_FUEL, used_gas_fuel)
-		adjust_gas(/datum/gas/carbon_dioxide, used_oxidizers)
+		adjust_gas(GAS_ID_CARBON_DIOXIDE, used_oxidizers)
 
 		if(zone)
 			zone.remove_liquidfuel(used_liquid_fuel, !check_combustability())
@@ -95,16 +95,16 @@
 		update_values()
 
 		#ifdef FIREDBG
-		log_debug("used_gas_fuel = [used_gas_fuel]; used_liquid_fuel = [used_liquid_fuel]; total = [used_fuel]")
-		log_debug("new temperature = [temperature]; new pressure = [return_pressure()]")
+		log_debug(SPAN_DEBUGINFO("used_gas_fuel = [used_gas_fuel]; used_liquid_fuel = [used_liquid_fuel]; total = [used_fuel]"))
+		log_debug(SPAN_DEBUGINFO("new temperature = [temperature]; new pressure = [return_pressure()]"))
 		#endif
 
 		return firelevel
 
-datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
+/datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	. = 0
 	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && gas[g] >= 0.1)
+		if(global.gas_data.flags[g] & GAS_FLAG_OXIDIZER && gas[g] >= 0.1)
 			. = 1
 			break
 
@@ -116,7 +116,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 
 	. = 0
 	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && gas[g] >= 0.1)
+		if(global.gas_data.flags[g] & GAS_FLAG_FUEL && gas[g] >= 0.1)
 			. = 1
 			break
 
@@ -124,7 +124,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	. = 0
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/consumption_rate, fire_consumption_rate)
 	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.1)
+		if(global.gas_data.flags[g] & GAS_FLAG_OXIDIZER && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.1)
 			. = 1
 			break
 
@@ -136,7 +136,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 
 	. = 0
 	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && (QUANTIZE(gas[g] * fire_consumption_rate) >= max(0.005, MINIMUM_MOLES_TO_SPARK)))
+		if(global.gas_data.flags[g] & GAS_FLAG_FUEL && (QUANTIZE(gas[g] * fire_consumption_rate) >= max(0.005, MINIMUM_MOLES_TO_SPARK)))
 			. = 1
 			break
 

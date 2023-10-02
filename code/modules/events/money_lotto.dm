@@ -5,17 +5,17 @@
 
 /datum/event/money_lotto/start()
 	winner_sum = pick(5000, 10000, 50000, 100000, 500000, 1000000, 1500000)
-	if(all_money_accounts.len)
-		var/datum/money_account/D = pick(all_money_accounts)
+	if(GLOB.all_money_accounts.len)
+		var/datum/money_account/D = pick(GLOB.all_money_accounts)
 		winner_name = D.owner_name
 		if(!D.suspended)
 			D.money += winner_sum
 
 			var/datum/transaction/T = new()
-			T.target_name = "The [GLOB.using_map.starsys_name] Times Grand Slam -Stellar- Lottery"
+			T.target_name = "The [(LEGACY_MAP_DATUM).starsys_name] Times Grand Slam -Stellar- Lottery"
 			T.purpose = "Winner!"
 			T.amount = winner_sum
-			T.date = current_date_string
+			T.date = GLOB.current_date_string
 			T.time = stationtime2text()
 			T.source_terminal = "Sif TCD Terminal #[rand(111,333)]"
 			D.transaction_log.Add(T)
@@ -23,11 +23,11 @@
 			deposit_success = 1
 
 /datum/event/money_lotto/announce()
-	var/author = "[GLOB.using_map.company_name] Editor"
-	var/channel = "The [GLOB.using_map.starsys_name] Times"
+	var/author = "[(LEGACY_MAP_DATUM).company_name] Editor"
+	var/channel = "The [(LEGACY_MAP_DATUM).starsys_name] Times"
 
-	var/body = "The [GLOB.using_map.starsys_name] Times wishes to congratulate <b>[winner_name]</b> for recieving the [GLOB.using_map.starsys_name] Stellar Slam Lottery, and receiving the out of this world sum of [winner_sum] credits!"
+	var/body = "The [(LEGACY_MAP_DATUM).starsys_name] Times wishes to congratulate <b>[winner_name]</b> for recieving the [(LEGACY_MAP_DATUM).starsys_name] Stellar Slam Lottery, and receiving the out of this world sum of [winner_sum] credits!"
 	if(!deposit_success)
-		body += "<br>Unfortunately, we were unable to verify the account details provided, so we were unable to transfer the money. Send a cheque containing the sum of 5000 Thalers to ND 'Stellar Slam' office on the The [GLOB.using_map.starsys_name] Times gateway containing updated details, and your winnings'll be re-sent within the month."
+		body += "<br>Unfortunately, we were unable to verify the account details provided, so we were unable to transfer the money. Send a cheque containing the sum of 5000 Thalers to ND 'Stellar Slam' office on the The [(LEGACY_MAP_DATUM).starsys_name] Times gateway containing updated details, and your winnings'll be re-sent within the month."
 
 	news_network.SubmitArticle(body, author, channel, null, 1)

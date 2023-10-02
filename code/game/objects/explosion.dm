@@ -1,6 +1,6 @@
 //TODO: Flash range does nothing currently
 
-proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, z_transfer = UP|DOWN, shaped)
+/proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, z_transfer = UP|DOWN, shaped)
 	var/multi_z_scalar = config_legacy.multi_z_explosion_scalar
 	spawn(0)
 		var/start = world.timeofday
@@ -32,11 +32,11 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 		far_dist += devastation_range * 10
 		var/frequency = get_rand_frequency()
 		var/creaking_explosion = FALSE
-		var/on_station = SSmapping.level_trait(epicenter.z, MAP_LEVEL_STATION)
+		var/on_station = SSmapping.level_trait(epicenter.z, LEGACY_LEVEL_STATION)
 		if(prob(devastation_range*30+heavy_impact_range*5) && on_station) // Huge explosions are near guaranteed to make the station creak and whine, smaller ones might.
 			creaking_explosion = TRUE // prob over 100 always returns true
 		var/far_volume = clamp(far_dist, 30, 50) // Volume is based on explosion size and dist
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			var/turf/M_turf = get_turf(M)
 			var/dist = get_dist(M_turf, epicenter)
 			if(M.z == epicenter.z)
@@ -64,7 +64,7 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 								SEND_SOUND(M, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 
 				if(creaking_explosion)
-					addtimer(CALLBACK(M, /mob/proc/playsound_local, epicenter, null, rand(25, 40), 1, frequency, null, null, FALSE, 'sound/effects/creak1.ogg', null, null, null, null, 0), 5 SECONDS)
+					addtimer(CALLBACK(M, TYPE_PROC_REF(/mob, playsound_local), epicenter, null, rand(25, 40), 1, frequency, null, null, FALSE, 'sound/effects/creak1.ogg', null, null, null, null, 0), 5 SECONDS)
 		if(adminlog)
 			message_admins("Explosion with [shaped ? "shaped" : "non-shaped"] size ([devastation_range], [heavy_impact_range], [light_impact_range]) in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[epicenter.x];Y=[epicenter.y];Z=[epicenter.z]'>JMP</a>)")
 			log_game("Explosion with [shaped ? "shaped" : "non-shaped"] size ([devastation_range], [heavy_impact_range], [light_impact_range]) in area [epicenter.loc.name] ")
@@ -98,11 +98,11 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 				if(!T)
 					T = locate(x0,y0,z0)
 				for(var/atom/movable/AM as anything in T.contents)	//bypass type checking since only atom/movable can be contained by turfs anyway
-					if(AM.flags & ATOM_ABSTRACT)
+					if(AM.atom_flags & ATOM_ABSTRACT)
 						continue
-					AM.ex_act(dist)
+					LEGACY_EX_ACT(AM, dist, null)
 
-				T.ex_act(dist)
+				LEGACY_EX_ACT(T, dist, null)
 
 		var/took = (world.timeofday-start)/10
 		//You need to press the DebugGame verb to see these now....they were getting annoying and we've collected a fair bit of data. Just -test- changes  to explosion code using this please so we can compare
@@ -121,6 +121,6 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 			defer_powernet_rebuild = 0
 	return 1
 
-proc/secondaryexplosion(turf/epicenter, range)
+/proc/secondaryexplosion(turf/epicenter, range)
 	for(var/turf/tile in range(range, epicenter))
-		tile.ex_act(2)
+		LEGACY_EX_ACT(tile, 2, null)

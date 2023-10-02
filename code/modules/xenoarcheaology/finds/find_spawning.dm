@@ -236,7 +236,7 @@
 		if(19)
 			apply_prefix = 0
 			new_item = new /obj/item/material/sword(src.loc)
-			new_item.force = 10
+			new_item.damage_force = 10
 			item_type = new_item.name
 			if(prob(30))
 				new_item.icon = 'icons/obj/xenoarchaeology.dmi'
@@ -284,7 +284,7 @@
 		if(25)
 			apply_prefix = 0
 			new_item = new /obj/item/material/sword/katana(src.loc)
-			new_item.force = 10
+			new_item.damage_force = 10
 			item_type = new_item.name
 		if(26)
 			//energy gun
@@ -316,7 +316,7 @@
 			item_type = "gun"
 		if(27)
 			//revolver
-			var/obj/item/gun/projectile/new_gun = new /obj/item/gun/projectile/revolver(src.loc)
+			var/obj/item/gun/ballistic/new_gun = new /obj/item/gun/ballistic/revolver(src.loc)
 			new_item = new_gun
 			new_item.icon_state = "gun[rand(1,4)]"
 			new_item.icon = 'icons/obj/xenoarchaeology.dmi'
@@ -494,8 +494,8 @@
 				MAT_SUPERMATTER = 1
 				))
 			var/list/alien_stuff = list(
-				/obj/vehicle/boat,
-				/obj/vehicle/boat/dragon
+				/obj/vehicle/ridden/boat,
+				/obj/vehicle/ridden/boat/dragon
 				)
 			if(prob(30))
 				new /obj/item/oar(src.loc, new_boat_mat)
@@ -551,7 +551,7 @@
 			TH.force_unwielded *= 0.7
 			TH.force_wielded *= 0.5
 		else
-			MW.force *= 0.3
+			MW.damage_force *= 0.3
 
 	var/decorations = ""
 	if(apply_material_decorations)

@@ -23,7 +23,7 @@
 
 	if(href_list["race"])
 		if(can_change(APPEARANCE_RACE) && (href_list["race"] in valid_species))
-			if(owner.set_species(species_type_by_name(href_list["race"])))
+			if(owner.set_species(href_list["race"]))
 				cut_and_generate_data()
 				return 1
 	if(href_list["gender"])

@@ -17,6 +17,9 @@
 
 	speaking = parse_language(message)
 
+	if(speaking == -1)
+		return
+		
 	message = trim(message)
 
 	if(!message || stat)

@@ -1,4 +1,6 @@
-//Converts a bitfield to a list of numbers (or words if a wordlist is provided)
+/**
+ * Converts a bitfield to a list of numbers (or words if a wordlist is provided)
+ */
 /proc/bitfield2list(bitfield = NONE, list/wordlist)
 	var/list/r = list()
 	if(islist(wordlist))

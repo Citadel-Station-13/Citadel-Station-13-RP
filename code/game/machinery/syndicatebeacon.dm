@@ -15,7 +15,7 @@
 	var/selfdestructing = FALSE
 	var/charges = 1
 
-/obj/machinery/syndicate_beacon/attack_hand(mob/user)
+/obj/machinery/syndicate_beacon/attack_hand(mob/user, list/params)
 	usr.set_machine(src)
 	var/dat = "<font color=#005500><i>Scanning [pick("retina pattern", "voice print", "fingerprints", "dna sequence")]...<br>Identity confirmed,<br></i></font>"
 	if(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon/ai))
@@ -108,7 +108,7 @@
 /obj/machinery/power/singularity_beacon/attack_ai(mob/user)
 	return
 
-/obj/machinery/power/singularity_beacon/attack_hand(mob/user)
+/obj/machinery/power/singularity_beacon/attack_hand(mob/user, list/params)
 	if(anchored)
 		return active ? Deactivate(user) : Activate(user)
 	else
@@ -124,7 +124,7 @@
 		if(anchored)
 			anchored = 0
 			to_chat(user, "<span class='notice'>You unscrew the beacon from the floor.</span>")
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			disconnect_from_network()
 			return
 		else
@@ -133,7 +133,7 @@
 				return
 			anchored = 1
 			to_chat(user, "<span class='notice'>You screw the beacon to the floor and attach the cable.</span>")
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			return
 	..()
 	return
@@ -159,7 +159,7 @@
 //! ## VR FILE MERGE ## !//
 //  Virgo modified syndie beacon, does not give objectives
 
-/obj/machinery/syndicate_beacon/virgo/attack_hand(mob/user )
+/obj/machinery/syndicate_beacon/virgo/attack_hand(mob/user, list/params)
 	usr.set_machine(src)
 	var/dat = "<font color=#005500><i>Scanning [pick("retina pattern", "voice print", "fingerprints", "dna sequence")]...<br>Identity confirmed,<br></i></font>"
 	if(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon/ai))

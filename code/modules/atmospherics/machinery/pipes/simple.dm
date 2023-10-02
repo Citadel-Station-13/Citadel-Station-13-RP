@@ -103,18 +103,18 @@
 	if(node2)
 		node2.update_underlays()
 
-/obj/machinery/atmospherics/pipe/simple/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/pipe/simple/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 
 	alpha = 255
 
-	overlays.Cut()
+	cut_overlays()
 
 	if(node1 && node2)
-		overlays += icon_manager.get_atmos_icon("pipe", , pipe_color, "[pipe_icon]intact[icon_connect_type]")
+		add_overlay(icon_manager.get_atmos_icon("pipe", , pipe_color, "[pipe_icon]intact[icon_connect_type]"))
 	else
-		overlays += icon_manager.get_atmos_icon("pipe", , pipe_color, "[pipe_icon]exposed[node1?1:0][node2?1:0][icon_connect_type]")
+		add_overlay(icon_manager.get_atmos_icon("pipe", , pipe_color, "[pipe_icon]exposed[node1?1:0][node2?1:0][icon_connect_type]"))
 
 /obj/machinery/atmospherics/pipe/simple/update_underlays()
 	return
@@ -231,11 +231,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden
 	icon_state = "intact"
 	level = 1
-	alpha = 128		//set for the benefit of mapping - this is reset to opaque when the pipe is spawned in game
 
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers
 	name = "Scrubbers pipe"
-	desc = "A one meter section of scrubbers pipe"
 	icon_state = "intact-scrubbers"
 	connect_types = CONNECT_TYPE_SCRUBBER
 	piping_layer = PIPING_LAYER_SCRUBBER
@@ -245,7 +243,6 @@
 
 /obj/machinery/atmospherics/pipe/simple/hidden/supply
 	name = "Air supply pipe"
-	desc = "A one meter section of supply pipe"
 	icon_state = "intact-supply"
 	connect_types = CONNECT_TYPE_SUPPLY
 	piping_layer = PIPING_LAYER_SUPPLY
@@ -255,7 +252,6 @@
 
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel
 	name = "Fuel pipe"
-	desc = "A one meter section of fuel pipe"
 	icon_state = "intact-fuel"
 	connect_types = CONNECT_TYPE_FUEL
 	piping_layer = PIPING_LAYER_FUEL
@@ -265,7 +261,6 @@
 
 /obj/machinery/atmospherics/pipe/simple/hidden/aux
 	name = "Aux pipe"
-	desc = "A one meter section of aux pipe"
 	icon_state = "intact-aux"
 	connect_types = CONNECT_TYPE_AUX
 	piping_layer = PIPING_LAYER_AUX

@@ -1,4 +1,4 @@
-/proc/make_types_fancy(var/list/types)
+/proc/make_types_fancy(list/types)
 	if (ispath(types))
 		types = list(types)
 	. = list()
@@ -8,10 +8,10 @@
 			/obj/effect/debris/cleanable = "CLEANABLE",
 			/obj/item/radio/headset = "HEADSET",
 			/obj/item/clothing/head/helmet/space = "SPESSHELMET",
-//			/obj/item/book/manual = "MANUAL",
-//			/obj/item/reagent_containers/food/drinks = "DRINK", //longest paths comes first
-//			/obj/item/reagent_containers/food = "FOOD",
-//			/obj/item/reagent_containers = "REAGENT_CONTAINERS",
+			// /obj/item/book/manual = "MANUAL",
+			// /obj/item/reagent_containers/food/drinks = "DRINK", //longest paths comes first
+			// /obj/item/reagent_containers/food = "FOOD",
+			// /obj/item/reagent_containers = "REAGENT_CONTAINERS",
 			/obj/machinery/atmospherics = "ATMOS_MACH",
 			/obj/machinery/portable_atmospherics = "PORT_ATMOS",
 			/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack = "MECHA_MISSILE_RACK",
@@ -22,13 +22,13 @@
 			/obj/effect = "EFFECT",
 			/obj = "O",
 			/datum = "D",
-//			/turf/open = "OPEN",
-//			/turf/closed = "CLOSED",
+			// /turf/open = "OPEN",
+			// /turf/closed = "CLOSED",
 			/turf = "T",
 			/mob/living/carbon = "CARBON",
 			/mob/living/simple_animal = "SIMPLE",
 			/mob/living = "LIVING",
-			/mob = "M"
+			/mob = "M",
 		)
 		for (var/tn in TYPES_SHORTCUTS)
 			if (copytext(typename,1, length("[tn]/")+1)=="[tn]/" /*findtextEx(typename,"[tn]/",1,2)*/ )

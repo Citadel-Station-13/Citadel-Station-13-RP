@@ -65,7 +65,7 @@
 	// And for those far away. If the strike happens on a planet, everyone on the planet will hear it.
 	// Otherwise only those on the current z-level will hear it.
 	var/sound = get_sfx("thunder")
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if((P && (M.z in P.expected_z_levels)) || M.z == T.z)
 			if(M.is_preference_enabled(/datum/client_preference/weather_sounds))
 				M.playsound_local(get_turf(M), soundin = sound, vol = 70, vary = FALSE, is_global = TRUE)
@@ -91,7 +91,7 @@
 
 		// Deafen them.
 		if(L.get_ear_protection() < 2)
-			L.AdjustSleeping(-100)
+			L.adjust_sleeping(20 * -100)
 			if(iscarbon(L))
 				var/mob/living/carbon/C = L
 				C.ear_deaf += 10

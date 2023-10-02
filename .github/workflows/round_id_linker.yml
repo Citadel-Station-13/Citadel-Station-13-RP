@@ -7,6 +7,6 @@ jobs:
   link_rounds:
     runs-on: ubuntu-20.04
     steps:
-    - uses: Cidatel-Station-13/round_linker@master #notice: fork the round linkies from tg!!
+    - uses: tgstation/round_linker@master
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}

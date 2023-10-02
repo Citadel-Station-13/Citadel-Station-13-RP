@@ -11,9 +11,8 @@
 	for(var/path in accepts)
 		if(I.type in typesof(path))
 			qdel(I)
-			overlays += image('icons/obj/pipes/disposal.dmi', "dispover-handle")
+			add_overlay(image('icons/obj/pipes/disposal.dmi', "dispover-handle"))
 			for(var/mob/O in hearers(src, null))
 				O.show_message("[icon2html(thing = src, target = O)] <font color=#4F49AF>The [src.name] beeps.</font>", 2)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
-

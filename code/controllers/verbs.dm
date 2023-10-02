@@ -4,6 +4,7 @@
 // Clickable stat() button.
 /obj/effect/statclick
 	name = "Initializing..."
+	icon = null
 	var/target
 
 INITIALIZE_IMMEDIATE(/obj/effect/statclick)
@@ -14,8 +15,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	src.target = target
 
 /obj/effect/statclick/proc/update(text)
+	if(name == text)
+		return src	// let's ont change for no reason shall we
 	name = text
-	return src
+	return name
+
+/obj/effect/statclick/statpanel_click(client/C, action)
+	Click()
 
 /obj/effect/statclick/debug
 	var/class
@@ -73,9 +79,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	if(!holder)
 		return
 	var/list/options = list()
-	options["MC"] = Master
-	options["Failsafe"] = Failsafe
-	options["Configuration"] = config
+	options["MC"] = global.Master
+	options["Failsafe"] = global.Failsafe
+	options["Global Variables"] = global.GLOB
+	options["Configuration"] = global.config
+	options["Gas Data"] = global.gas_data
 	options["Legacy Configuration"] = config_legacy
 	for(var/i in Master.subsystems)
 		var/datum/controller/subsystem/S = i
@@ -91,7 +99,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 			options[strtype] = S
 
 	//Goon PS stuff, and other yet-to-be-subsystem things.
-	options["LEGACY: air_master"] = air_master
 	options["LEGACY: radio_controller"] = radio_controller
 	options["LEGACY: paiController"] = paiController
 	options["LEGACY: GLOB.cameranet"] = GLOB.cameranet

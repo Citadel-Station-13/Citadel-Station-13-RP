@@ -1,4 +1,6 @@
-//Returns a list in plain english as a string
+/**
+ * Returns a list in plain english as a string.
+ */
 /proc/english_list(list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
 	var/total = input.len
 	if (!total)
@@ -19,7 +21,9 @@
 
 		return "[output][and_text][input[index]]"
 
-//Removes a string from a list
+/**
+ * Removes a string from a list.
+ */
 /proc/remove_strings_from_list(string, list/L)
 	if(!LAZYLEN(L) || !string)
 		return

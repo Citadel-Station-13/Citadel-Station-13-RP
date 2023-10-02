@@ -4,11 +4,12 @@
 
 /datum/category_item/catalogue/technology/odysseus
 	name = "Exosuit - Odysseus"
-	desc = "A Vey-Medical innovation, the Odysseus was designed to incorporate some of their \
-	other inventions, such as the Sleeper, into a mobile frame. Due to its ability to safely \
-	rescue injured people in potentially hostile environments such as vacuum, as well as its \
-	agility compared to other civilian exosuits, the Odysseus dominates the market for \
-	medical exosuits."
+	desc = "The dominant medical exosuit on the modern market, the Odysseus is a Vey-Med product \
+	designed to incorporate other Vey-Med inventions - like the Sleeper - into a mobile frame. The \
+	Odysseus' focus on rescue operations in hazardous environments is augmented with some of the best \
+	agility ratings on the civilian market. In spite of its narrow profile, the Odysseus stands slightly \
+	taller than the APLU at 9.5'(3m). Capable of operating in vacuum as well as in most adverse weather \
+	conditions, the staying power of this mecha speaks volumes for its efficacy."
 	value = CATALOGUER_REWARD_EASY
 
 /mob/living/simple_mob/mechanical/mecha/odysseus
@@ -29,7 +30,7 @@
 	melee_damage_upper = 5
 	base_attack_cooldown = 2 SECONDS
 	attacktext = list("injected")
-	projectiletype = /obj/item/projectile/fake_syringe/poison
+	projectiletype = /obj/projectile/fake_syringe/poison
 	projectilesound = 'sound/weapons/empty.ogg' // Just like the syringe gun.
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/no_moonwalk
@@ -53,29 +54,29 @@
 
 		var/target_zone = pick(BP_TORSO,BP_TORSO,BP_TORSO,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_HEAD)
 		if(L.can_inject(src, null, target_zone))
-			to_chat(L, SPAN_WARNING( "You feel a tiny prick."))
+			L.custom_pain(SPAN_WARNING("You feel a tiny prick."), 1, TRUE)
 			if(L.get_poison_protection() < 1)
 				L.add_modifier(/datum/modifier/poisoned, 30 SECONDS)
 				L.inflict_poison_damage(5)
 
 
 // Fake syringe that tests if target can be injected before applying damage/modifiers/etc.
-/obj/item/projectile/fake_syringe
+/obj/projectile/fake_syringe
 	name = "syringe"
 	icon_state = "syringe"
 	damage = 5 // Getting hit with a launched syringe probably hurts, and makes it at least slightly relevant against synthetics.
 	var/piercing = FALSE // If true, ignores thick material.
 
-/obj/item/projectile/fake_syringe/on_hit(atom/target, blocked = 0, def_zone = null)
+/obj/projectile/fake_syringe/on_hit(atom/target, blocked = 0, def_zone = null)
 	if(isliving(target))
 		var/mob/living/L = target
 		if(!L.can_inject(null, null, def_zone, piercing))
 			return FALSE
-		to_chat(L, SPAN_WARNING( "You feel a tiny prick."))
+		L.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
 	return ..() // This will add the modifier and return the correct value.
 
 
 // Fake syringe, which inflicts a long lasting modifier that slowly kills them.
-/obj/item/projectile/fake_syringe/poison
+/obj/projectile/fake_syringe/poison
 	modifier_type_to_apply = /datum/modifier/poisoned
 	modifier_duration = 1 MINUTE // About 30 damage per stack over a minute.

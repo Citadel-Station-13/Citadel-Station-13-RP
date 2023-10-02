@@ -30,10 +30,10 @@
 	if(!chosen_dna)
 		return
 
-	var/mob/living/carbon/T = changeling_sting(40,/mob/proc/changeling_transformation_sting)
+	var/mob/living/carbon/T = changeling_sting(40, TYPE_PROC_REF(/mob, changeling_transformation_sting))
 	if(!T)
 		return 0
-	if((HUSK in T.mutations) || (!ishuman(T) && !issmall(T)))
+	if((MUTATION_HUSK in T.mutations) || (!ishuman(T) && !issmall(T)))
 		to_chat(src, "<span class='warning'>Our sting appears ineffective against its DNA.</span>")
 		return 0
 	add_attack_logs(src,T,"Transformation sting (changeling)")

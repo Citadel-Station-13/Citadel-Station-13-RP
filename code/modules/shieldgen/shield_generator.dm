@@ -54,10 +54,6 @@
 	. = ..()
 	if(!wires)
 		wires = new(src)
-	// TODO - Remove this bit once machines are converted to Initialize
-	if(ispath(circuit))
-		circuit = new circuit(src)
-	default_apply_parts()
 	connect_to_network()
 
 	mode_list = list()
@@ -221,7 +217,7 @@
 
 		for(var/obj/effect/shield/S in startends)
 			var/adjacent = startends[S]
-			log_debug("Processing startend [S] at [S?.x],[S?.y] adjacent=[adjacent]")
+			log_debug(SPAN_DEBUGINFO("Processing startend [S] at [S?.x],[S?.y] adjacent=[adjacent]"))
 			var/turf/T = get_step(S, adjacent)
 			var/obj/effect/shield/SO = locate() in T
 			S.setDir(SO.dir)
@@ -435,7 +431,7 @@
 
 	return data
 
-/obj/machinery/power/shield_generator/attack_hand(mob/user)
+/obj/machinery/power/shield_generator/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	if(panel_open && Adjacent(user))
@@ -450,7 +446,7 @@
 		return min(..(), UI_DISABLED)
 	return ..()
 
-/obj/machinery/power/shield_generator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/power/shield_generator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -459,7 +455,7 @@
 			if(running < SHIELD_RUNNING) // Discharging or off
 				return
 			var/alert = alert(usr, "Are you sure you wish to do this? It will drain the power inside the internal storage rapidly.", "Are you sure?", "Yes", "No")
-			if(ui_status(usr, state) != UI_INTERACTIVE)
+			if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 				return
 			if(running < SHIELD_RUNNING)
 				return

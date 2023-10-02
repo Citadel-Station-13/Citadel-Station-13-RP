@@ -7,7 +7,7 @@
 	icon_state = "emitter"
 	anchored = 0
 	density = 1
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	var/id = null
 
 	use_power = USE_POWER_OFF	//uses powernet power, not APC power
@@ -27,7 +27,7 @@
 	var/burst_delay = 2
 	var/initial_fire_delay = 100
 
-	var/integrity = 80
+	integrity = 80
 
 
 /obj/machinery/power/emitter/verb/rotate_clockwise()
@@ -58,7 +58,7 @@
 	else
 		icon_state = "emitter"
 
-/obj/machinery/power/emitter/attack_hand(mob/user as mob)
+/obj/machinery/power/emitter/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 	activate(user)
 
@@ -140,7 +140,7 @@
 			s.set_up(5, 1, src)
 			s.start()
 
-		var/obj/item/projectile/beam/emitter/A = get_emitter_beam()
+		var/obj/projectile/beam/emitter/A = get_emitter_beam()
 		A.damage = round(power_per_shot/EMITTER_DAMAGE_POWER_TRANSFER)
 		A.firer = src
 		A.fire(dir2angle(dir))
@@ -154,14 +154,14 @@
 		switch(state)
 			if(0)
 				state = 1
-				playsound(src, W.usesound, 75, 1)
+				playsound(src, W.tool_sound, 75, 1)
 				user.visible_message("[user.name] secures [src] to the floor.", \
 					"You secure the external reinforcing bolts to the floor.", \
 					"You hear a ratchet.")
 				src.anchored = 1
 			if(1)
 				state = 0
-				playsound(src, W.usesound, 75, 1)
+				playsound(src, W.tool_sound, 75, 1)
 				user.visible_message("[user.name] unsecures [src] reinforcing bolts from the floor.", \
 					"You undo the external reinforcing bolts.", \
 					"You hear a ratchet.")
@@ -181,11 +181,11 @@
 				to_chat(user, "<span class='warning'>\The [src] needs to be wrenched to the floor.</span>")
 			if(1)
 				if (WT.remove_fuel(0,user))
-					playsound(loc, WT.usesound, 50, 1)
+					playsound(loc, WT.tool_sound, 50, 1)
 					user.visible_message("[user.name] starts to weld [src] to the floor.", \
 						"You start to weld [src] to the floor.", \
 						"You hear welding")
-					if (do_after(user,20 * WT.toolspeed))
+					if (do_after(user,20 * WT.tool_speed))
 						if(!src || !WT.isOn()) return
 						state = 2
 						to_chat(user, "You weld [src] to the floor.")
@@ -194,11 +194,11 @@
 					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 			if(2)
 				if (WT.remove_fuel(0,user))
-					playsound(loc, WT.usesound, 50, 1)
+					playsound(loc, WT.tool_sound, 50, 1)
 					user.visible_message("[user.name] starts to cut [src] free from the floor.", \
 						"You start to cut [src] free from the floor.", \
 						"You hear welding")
-					if (do_after(user,20 * WT.toolspeed))
+					if (do_after(user,20 * WT.tool_speed))
 						if(!src || !WT.isOn()) return
 						state = 1
 						to_chat(user, "You cut [src] free from the floor.")
@@ -246,7 +246,7 @@
 		user.visible_message("[user.name] emags [src].","<span class='warning'>You short out the lock.</span>")
 		return 1
 
-/obj/machinery/power/emitter/bullet_act(var/obj/item/projectile/P)
+/obj/machinery/power/emitter/bullet_act(var/obj/projectile/P)
 	if(!P || !P.damage || P.get_structure_damage() <= 0 )
 		return
 
@@ -266,7 +266,7 @@
 		if(src)
 			qdel(src)
 
-/obj/machinery/power/emitter/examine(mob/user)
+/obj/machinery/power/emitter/examine(mob/user, dist)
 	. = ..()
 	var/integrity_percentage = round((integrity / initial(integrity)) * 100)
 	switch(integrity_percentage)
@@ -288,4 +288,4 @@
 	return burst_delay
 
 /obj/machinery/power/emitter/proc/get_emitter_beam()
-	return new /obj/item/projectile/beam/emitter(get_turf(src))
+	return new /obj/projectile/beam/emitter(get_turf(src))

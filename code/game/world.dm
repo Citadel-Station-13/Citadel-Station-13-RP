@@ -1,28 +1,56 @@
-//Byond is a shit. That's why this is here.
-/*
-	The initialization of the game happens roughly like this:
+#define RESTART_COUNTER_PATH "data/round_counter.txt"
 
-	1. All global variables are initialized (including the global_init instance).
-	2. The map is initialized, and map objects are created.
-	3. world/New() runs, creating the process scheduler (and the old master controller) and spawning their setup.
-	4. processScheduler/setup() runs, creating all the processes. game_controller/setup() runs, calling initialize() on all movable atoms in the world.
-	5. The gameSSticker is created.
-
-*/
-
-GLOBAL_VAR_INIT(tgs_initialized, FALSE)
+GLOBAL_VAR(restart_counter)
 
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
-//This happens after the Master subsystem new(s) (it's a global datum)
-//So subsystems globals exist, but are not initialised
-/world/New()
-	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
-	if (debug_server)
-		call(debug_server, "auxtools_init")()
-		enable_debugging()
+/world
+	mob = /mob/new_player
+	turf = /turf/space/basic
+	area = /area/space
+	view = "15x15"
+	hub = "Exadv1.spacestation13"
+	hub_password = "kMZy3U5jJHSiBQjr"
+	name = "Citadel Station 13 - Roleplay"
+	status = "ERROR: Default status"
+	visibility = TRUE
+	fps = 20
+#ifdef FIND_REF_NO_CHECK_TICK
+	loop_checks = FALSE
+#endif
 
+/**
+ * World creation
+ *
+ * Here is where a round itself is actually begun and setup.
+ * * db connection setup
+ * * config loaded from files
+ * * loads admins
+ * * Sets up the dynamic menu system
+ * * and most importantly, calls initialize on the master subsystem, starting the game loop that causes the rest of the game to begin processing and setting up
+ *
+ *
+ * Nothing happens until something moves. ~Albert Einstein
+ *
+ * For clarity, this proc gets triggered later in the initialization pipeline, it is not the first thing to happen, as it might seem.
+ *
+ * Initialization Pipeline:
+ * Global vars are new()'ed, (including config, glob, and the master controller will also new and preinit all subsystems when it gets new()ed)
+ * Compiled in maps are loaded (mainly centcom). all areas/turfs/objs/mobs(ATOMs) in these maps will be new()ed
+ * world/New() (You are here)
+ * Once world/New() returns, client's can connect.
+ * 1 second sleep
+ * Master Controller initialization.
+ * Subsystem initialization.
+ * Non-compiled-in maps are maploaded, all atoms are new()ed
+ * All atoms in both compiled and uncompiled maps are initialized()
+ */
+/world/New()
+#ifdef USE_BYOND_TRACY
+	#warn USE_BYOND_TRACY is enabled
+	init_byond_tracy()
+#endif
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
@@ -38,6 +66,7 @@ GLOBAL_LIST(topic_status_cache)
 	InitTgs()
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
+	config.update_world_viewsize()	//! Since world.view is immutable, we load it here.
 
 	//SetupLogs depends on the RoundID, so lets check
 	//DB schema and set RoundID if we can
@@ -76,13 +105,6 @@ GLOBAL_LIST(topic_status_cache)
 
 	. = ..()
 
-	// *sighs*
-	job_master = new
-	job_master.SetupOccupations()
-
-	// This is kinda important. Set up details of what the hell things are made of.
-	populate_material_list()
-
 	// Create frame types.
 	populate_frame_types()
 
@@ -95,19 +117,25 @@ GLOBAL_LIST(topic_status_cache)
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
 
-	Master.Initialize(10, FALSE)
+	if(fexists(RESTART_COUNTER_PATH))
+		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
+		fdel(RESTART_COUNTER_PATH)
+
+	if(NO_INIT_PARAMETER in params)
+		return
+
+	Master.Initialize(10, FALSE, TRUE)
 
 	#ifdef UNIT_TESTS
 	HandleTestRun()
 	#endif
 
 	if(config_legacy.ToRban)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/ToRban_autoupdate), 5 MINUTES)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ToRban_autoupdate)), 5 MINUTES)
 
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
-	GLOB.tgs_initialized = TRUE
 
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
@@ -116,11 +144,11 @@ GLOBAL_LIST(topic_status_cache)
 	CONFIG_SET(number/round_end_countdown, 0)
 	var/datum/callback/cb
 #ifdef UNIT_TESTS
-	cb = CALLBACK(GLOBAL_PROC, /proc/RunUnitTests)
+	cb = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(RunUnitTests))
 #else
 	cb = VARSET_CALLBACK(SSticker, force_ending, TRUE)
 #endif
-	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, /proc/_addtimer, cb, 10 SECONDS))
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), cb, 10 SECONDS))
 
 /world/proc/SetupLogs()
 	var/override_dir = params[OVERRIDE_LOG_DIRECTORY_PARAMETER]
@@ -128,21 +156,13 @@ GLOBAL_LIST(topic_status_cache)
 		var/realtime = world.realtime
 		var/texttime = time2text(realtime, "YYYY/MM/DD")
 		GLOB.log_directory = "data/logs/[texttime]/round-"
-		GLOB.picture_logging_prefix = "L_[time2text(realtime, "YYYYMMDD")]_"
-		GLOB.picture_log_directory = "data/picture_logs/[texttime]/round-"
 		if(GLOB.round_id)
 			GLOB.log_directory += "[GLOB.round_id]"
-			GLOB.picture_logging_prefix += "R_[GLOB.round_id]_"
-			GLOB.picture_log_directory += "[GLOB.round_id]"
 		else
 			var/timestamp = replacetext(TIME_STAMP("hh:mm:ss", FALSE), ":", ".")
 			GLOB.log_directory += "[timestamp]"
-			GLOB.picture_log_directory += "[timestamp]"
-			GLOB.picture_logging_prefix += "T_[timestamp]_"
 	else
 		GLOB.log_directory = "data/logs/[override_dir]"
-		GLOB.picture_logging_prefix = "O_[override_dir]_"
-		GLOB.picture_log_directory = "data/picture_logs/[override_dir]"
 
 	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
 	GLOB.world_asset_log = "[GLOB.log_directory]/asset.log"
@@ -153,6 +173,7 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
+	GLOB.world_reagent_log = "[GLOB.log_directory]/reagents.log"
 	GLOB.subsystem_log = "[GLOB.log_directory]/subsystem.log"
 
 #ifdef UNIT_TESTS
@@ -219,8 +240,8 @@ GLOBAL_LIST(topic_status_cache)
 	set waitfor = FALSE
 	var/list/fail_reasons
 	if(GLOB)
-		if(global.total_runtimes != 0)
-			fail_reasons = list("Total runtimes: [global.total_runtimes] - if you don't see any runtimes above, launch locally with `dreamseeker -trusted -verbose citadel.dmb` after compile and check Options and Messages. Inform a maintainer too, if this happens..")
+		if(GLOB.total_runtimes != 0)
+			fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
 #ifdef UNIT_TESTS
 		if(GLOB.failed_any_test)
 			LAZYADD(fail_reasons, "Unit Tests failed!")
@@ -233,29 +254,28 @@ GLOBAL_LIST(topic_status_cache)
 		text2file("Success!", "[GLOB.log_directory]/clean_run.lk")
 	else
 		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
-	sleep(0)	//yes, 0, this'll let Reboot finish and prevent byond memes
-	qdel(src)	//shut it down
+	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
+	qdel(src) //shut it down
 
 /world/Reboot(reason = 0, fast_track = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff
-		if (usr)
-			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
-			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
-		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request</span>")
+		if (usr && Master && GLOB) // why && Master / GLOB? if OOM, MC gets erased :D
+			message_admins("Blocked reboot request from [key_name_admin(usr)]. Please use the Reboot World verb.")
+			return // no thank you
+			// log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
+			// message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
+		to_chat(world, SPAN_BOLDANNOUNCE("Rebooting World immediately due to host request."))
 	else
-		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
+		to_chat(world, SPAN_BOLDANNOUNCE("Rebooting world..."))
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
 		Master.Shutdown() //run SS shutdowns
-
-	TgsReboot()
 
 	#ifdef UNIT_TESTS
 	FinishTestRun()
 	return
 	#endif
 
-/*
 	if(TgsAvailable())
 		var/do_hard_reboot
 		// check the hard reboot counter
@@ -276,17 +296,25 @@ GLOBAL_LIST(topic_status_cache)
 			log_world("World hard rebooted at [time_stamp()]")
 			shutdown_logging() // See comment below.
 			TgsEndProcess()
-*/
 
 	log_world("World rebooted at [time_stamp()]")
+
+	TgsReboot()
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
+
+	//! Shutdown Auxtools
+	// AUXTOOLS_SHUTDOWN(AUXTOOLS_YAML)
+
+	//! Finale
+	// hmmm let's sleep for one (1) second incase rust_g threads are running for whatever reason
+	sleep(1 SECONDS)
 	..()
 
 /world/Del()
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
 		call(debug_server, "auxtools_shutdown")()
-	..()
+	. = ..()
 
 /hook/startup/proc/loadMode()
 	world.load_mode()
@@ -363,7 +391,7 @@ GLOBAL_LIST(topic_status_cache)
 	// ---Hub title---
 	var/servername = config_legacy?.server_name
 	var/stationname = station_name()
-	var/defaultstation = GLOB.using_map ? GLOB.using_map.station_name : stationname
+	var/defaultstation = (LEGACY_MAP_DATUM) ? (LEGACY_MAP_DATUM).station_name : stationname
 	if(servername || stationname != defaultstation)
 		. += (servername ? "<b>[servername]" : "<b>")
 		. += (stationname != defaultstation ? "[servername ? " - " : ""][stationname]</b>\] " : "</b>\] ")
@@ -382,8 +410,8 @@ GLOBAL_LIST(topic_status_cache)
 
 	// ---Hub footer---
 	. += "\["
-	if(GLOB.using_map)
-		. += "[GLOB.using_map.station_short], "
+	if((LEGACY_MAP_DATUM))
+		. += "[(LEGACY_MAP_DATUM).station_short], "
 
 	. += "[get_security_level()] alert, "
 
@@ -406,8 +434,11 @@ GLOBAL_LIST(topic_status_cache)
 		hub_password = "SORRYNOPASSWORD"
 
 // Things to do when a new z-level was just made.
-/world/proc/max_z_changed()
+/world/proc/max_z_changed(old_z_count, new_z_count)
 	assert_players_by_zlevel_list()
+	assert_gps_level_list()
+	for(var/datum/controller/subsystem/S in Master.subsystems)
+		S.on_max_z_changed(old_z_count, new_z_count)
 
 /proc/assert_players_by_zlevel_list()
 	if(!islist(GLOB.players_by_zlevel))
@@ -418,7 +449,7 @@ GLOBAL_LIST(topic_status_cache)
 // Call this to make a new blank z-level, don't modify maxz directly.
 /world/proc/increment_max_z()
 	. = ++maxz
-	max_z_changed()
+	max_z_changed(. - 1, .)
 
 //! LOG SHUNTER STUFF, LEAVE THIS ALONE
 /**
@@ -462,3 +493,18 @@ GLOBAL_LIST(topic_status_cache)
 #endif
 //! END
 
+
+/world/proc/init_byond_tracy()
+	var/library
+
+	switch (system_type)
+		if (MS_WINDOWS)
+			library = "prof.dll"
+		if (UNIX)
+			library = "libprof.so"
+		else
+			CRASH("Unsupported platform: [system_type]")
+
+	var/init_result = call(library, "init")()
+	if (init_result != "0")
+		CRASH("Error initializing byond-tracy: [init_result]")

@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
+>>>>>>> citrp/master
 /**
  * ! Unique String Persistence
  *
@@ -38,6 +44,8 @@
 /**
  * gets the group name for the current map
  */
+//! This segment will be uncommented when maploader rework is done and we have station map IDs.
+/*
 /datum/controller/subsystem/persistence/proc/_map_string_group()
 	PRIVATE_PROC(TRUE)
 	return current_map_id? "__map_[current_map_id]" : null
@@ -53,10 +61,11 @@
 	if(!group)
 		return
 	return SetString(key, value, group, flush)
+*/
 
 //! Why the usr fuckery? Because we intentionally wish to obfuscate admin proccalls, since we properly sanitize **everything** in these procs.
 
-/datum/controller/subsystem/persistence/proc/LoadString(group, key)
+/datum/controller/subsystem/persistence/proc/LoadString(group = OBJECT_PERSISTENCE_GROUP_NONE, key)
 	if(!SSdbcore.Connect())
 		return
 	var/oldusr = usr
@@ -75,7 +84,7 @@
 	. = query.item[1]
 	qdel(query)
 
-/datum/controller/subsystem/persistence/proc/SaveString(group, key, value)
+/datum/controller/subsystem/persistence/proc/SaveString(group = OBJECT_PERSISTENCE_GROUP_NONE, key, value)
 	if(!SSdbcore.Connect())
 		return
 	var/oldusr = usr

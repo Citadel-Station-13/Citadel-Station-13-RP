@@ -1,4 +1,4 @@
-//wrapper macros for easier grepping
+// Wrapper macros for easier grepping
 #define DIRECT_OUTPUT(A, B) A << B
 #define DIRECT_INPUT(A, B) A >> B
 #define SEND_IMAGE(target, image) DIRECT_OUTPUT(target, image)
@@ -11,28 +11,28 @@
 #define WRITE_LOG(log, text) extools_log_write(log,text,TRUE)
 #define WRITE_LOG_NO_FORMAT(log, text) extools_log_write(log,text,FALSE)
 #else
-//This is an external call, "true" and "false" are how rust parses out booleans
+// This is an external call, "true" and "false" are how rust parses out booleans
 #define WRITE_LOG(log, text) rustg_log_write(log, text, "true")
 #define WRITE_LOG_NO_FORMAT(log, text) rustg_log_write(log, text, "false")
 #endif
-//print a warning message to world.log
+// Print a warning message to world.log
 #define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [UNLINT(src)] usr: [usr].")
 /proc/warning(msg)
 	msg = "## WARNING: [msg]"
 	log_world(msg)
 
-//not an error or a warning, but worth to mention on the world log, just in case.
+// Not an error or a warning, but worth to mention on the world log, just in case.
 #define NOTICE(MSG) notice(MSG)
 /proc/notice(msg)
 	msg = "## NOTICE: [msg]"
 	log_world(msg)
 
-//print a testing-mode debug message to world.log and world
+// Print a testing-mode debug message to world.log and world
 #ifdef TESTING
 #define testing(msg) log_world("## TESTING: [msg]"); to_chat(world, "## TESTING: [msg]")
 
 GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
-// we don't really check if a word or name is used twice, be aware of that
+// We don't really check if a word or name is used twice, be aware of that
 #define testing_profile_start(NAME, LIST) LIST[NAME] = world.timeofday
 #define testing_profile_current(NAME, LIST) round((world.timeofday - LIST[NAME])/10,0.1)
 #define testing_profile_output(NAME, LIST) testing("[LIST["_PROFILE_NAME"]] profile of [NAME] is [testing_profile_current(NAME,LIST)]s")
@@ -75,7 +75,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 #define log_reftracker(msg)
 #endif
 
-/* Items with ADMINPRIVATE prefixed are stripped from public logs. */
+/**
+ * Items with ADMINPRIVATE prefixed are stripped from public logs.
+ */
 /proc/log_admin(text)
 	admin_log.Add(text)
 	if (config_legacy.log_admin)
@@ -106,7 +108,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	if (config_legacy.log_admin)
 		WRITE_LOG(GLOB.world_game_log, "ADMINPM: [key_name(source)]->[key_name(dest)]: [html_decode(text)]")
 
-/* All other items are public. */
+/**
+ * All other items are public.
+ */
 /proc/log_game(text)
 	if (config_legacy.log_game)
 		WRITE_LOG(GLOB.world_game_log, "GAME: [text]")
@@ -172,6 +176,10 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	if (config_legacy.log_emote)
 		WRITE_LOG(GLOB.world_game_log, "SUBTLER: [speaker.simple_info_line()]: [html_decode(text)]")
 
+/proc/log_subtle_vore(text, mob/speaker)
+	if (config_legacy.log_emote)
+		WRITE_LOG(GLOB.world_game_log, "SUBTLE_VORE: [speaker.simple_info_line()]: [html_decode(text)]")
+
 /proc/log_aooc(text, client/user)
 	if (config_legacy.log_ooc)
 		WRITE_LOG(GLOB.world_game_log, "AOOC: [user.simple_info_line()]: [html_decode(text)]")
@@ -183,6 +191,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		WRITE_LOG(GLOB.world_game_log, "LOOC: [user.simple_info_line()]: [html_decode(text)]")
 
 	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>LOOC:</u> - <span style='color:orange'><b>[text]</b></span>"
+
+/proc/log_ipintel(text)
+	WRITE_LOG(GLOB.world_runtime_log, "IPINTEL: [text]")
 
 /proc/log_vote(text)
 	if (config_legacy.log_vote)
@@ -203,21 +214,39 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_qdel(text)
 	WRITE_LOG(GLOB.world_qdel_log, "QDEL: [text]")
 
+/proc/log_reagent(text)
+	WRITE_LOG(GLOB.world_reagent_log, text)
+
+/proc/log_reagent_transfer(text)
+	log_reagent("TRANSFER: [text]")
+
+/proc/log_security(text)
+	WRITE_LOG(GLOB.world_game_log, "SECURITY: [text]")
+
 /proc/log_subsystem(subsystem, text)
 	WRITE_LOG(GLOB.subsystem_log, "[subsystem]: [text]")
 
-/* Log to both DD and the logfile. */
+/**
+ * Log to both DD and the logfile.
+ */
 /proc/log_world(text)
 #ifdef USE_CUSTOM_ERROR_HANDLER
 	WRITE_LOG(GLOB.world_runtime_log, text)
 #endif
 	SEND_TEXT(world.log, text)
 
-/* Log to the logfile only. */
+/**
+ * Log to the logfile only.
+ */
 /proc/log_runtime(text)
 	WRITE_LOG(GLOB.world_runtime_log, text)
 
-/* Rarely gets called; just here in case the config breaks. */
+/proc/log_shadowban(text)
+	WRITE_LOG(GLOB.world_game_log, "SHADOWBAN: [text]")
+
+/**
+ * Rarely gets called; just here in case the config breaks.
+ */
 /proc/log_config(text)
 	WRITE_LOG(GLOB.config_error_log, text)
 	SEND_TEXT(world.log, text)
@@ -225,12 +254,15 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_mapping(text)
 	WRITE_LOG(GLOB.world_map_error_log, text)
 
-/* For logging round startup. */
+/**
+ * For logging round startup.
+ */
 /proc/start_log(log)
 	WRITE_LOG(log, "Starting up round ID [GLOB.round_id].\n-------------------------")
 
 /**
- * Appends a tgui-related log entry. All arguments are optional.
+ * Appends a tgui-related log entry.
+ * All arguments are optional.
  */
 /proc/log_tgui(user, message, context,
 		datum/tgui_window/window,
@@ -261,7 +293,10 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		entry += "\n[message]"
 	WRITE_LOG(GLOB.tgui_log, entry)
 
-/* Close open log handles. This should be called as late as possible, and no logging should hapen after. */
+/**
+ * Close open log handles.
+ * This should be called as late as possible, and no logging should hapen after.
+ */
 /proc/shutdown_logging()
 #ifdef EXTOOLS_LOGGING
 	extools_finalize_logging()
@@ -269,7 +304,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	rustg_log_close_all()
 #endif
 
-/* Helper procs for building detailed log lines */
+/**
+ * Helper procs for building detailed log lines
+ */
 /proc/key_name(whom, include_link = null, include_name = TRUE, highlight_special_characters = TRUE)
 	var/mob/M
 	var/client/C
@@ -297,8 +334,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			M = C.mob
 	else if(istype(whom, /datum/mind))
 		var/datum/mind/mind = whom
-		key = mind.key
-		ckey = ckey(key)
+		ckey = mind.ckey
 		if(mind.current)
 			M = mind.current
 			if(M.client)
@@ -374,14 +410,24 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	else if(A.loc)
 		return "(UNKNOWN (?, ?, ?))"
 
+/proc/ref_name(atom/A)
+	return "[A] ([REF(A)])"
+
+/proc/ref_name_path(atom/A)
+	return "[A] ([REF(A)]) \[[A.type]\]"
+
 /// VSTATION SPECIFIC LOGGING. ///
 /proc/log_debug(text)
 	if (config_legacy.log_debug)
 		WRITE_LOG(GLOB.world_runtime_log, "DEBUG: [text]")
 
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(C.is_preference_enabled(/datum/client_preference/debug/show_debug_logs))
-			to_chat(C, "DEBUG: [text]")
+			to_chat(C,
+				type = MESSAGE_TYPE_DEBUG,
+				html = "DEBUG: [text]",
+				confidential = TRUE,
+			)
 
 /proc/log_ghostsay(text, mob/speaker)
 	if (config_legacy.log_say)
@@ -419,8 +465,8 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_unit_test(text)
 	log_world("## UNIT_TEST: [text]")
 
-/proc/report_progress(var/progress_message)
-	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)
+/proc/report_progress(progress_message)
+	admin_notice(SPAN_BOLDANNOUNCE("[progress_message]"), R_DEBUG)
 	log_world(progress_message)
 
 /proc/log_nsay(text, inside, mob/speaker)
@@ -434,20 +480,30 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 /// VSTATION LOGGING HELPERS ///
 
-//pretty print a direction bitflag, can be useful for debugging.
-/proc/print_dir(var/dir)
+/**
+ * Pretty print a direction bitflag, can be useful for debugging.
+ */
+/proc/print_dir(dir)
 	var/list/comps = list()
-	if(dir & NORTH) comps += "NORTH"
-	if(dir & SOUTH) comps += "SOUTH"
-	if(dir & EAST) comps += "EAST"
-	if(dir & WEST) comps += "WEST"
-	if(dir & UP) comps += "UP"
-	if(dir & DOWN) comps += "DOWN"
+	if(dir & NORTH)
+		comps += "NORTH"
+	if(dir & SOUTH)
+		comps += "SOUTH"
+	if(dir & EAST)
+		comps += "EAST"
+	if(dir & WEST)
+		comps += "WEST"
+	if(dir & UP)
+		comps += "UP"
+	if(dir & DOWN)
+		comps += "DOWN"
 
 	return english_list(comps, nothing_text="0", and_text="|", comma_text="|")
 
 
-// Helper procs for building detailed log lines
+/**
+ * Helper procs for building detailed log lines.
+ */
 /datum/proc/log_info_line()
 	return "[src] ([type])"
 
@@ -463,12 +519,12 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /mob/log_info_line()
 	return "[..()] ([ckey])"
 
-/proc/log_info_line(var/datum/d)
-	if(!d)
+/proc/log_info_line(datum/datum)
+	if(!datum)
 		return "*null*"
-	if(!istype(d))
-		return json_encode(d)
-	return d.log_info_line()
+	if(!istype(datum))
+		return json_encode(datum)
+	return datum.log_info_line()
 
 /mob/proc/simple_info_line()
 	return "[key_name(src)] ([AREACOORD(src)])"

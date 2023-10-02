@@ -3,20 +3,20 @@
 	desc = "Dance my monkeys! DANCE!!!"
 	icon_state = "electropack0"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_storage.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_storage.dmi',
 			)
 	item_state = "electropack"
 	frequency = 1449
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_HUGE
 
-	matter = list(MAT_STEEL = 10000, MAT_GLASS = 2500)
+	materials = list(MAT_STEEL = 10000, MAT_GLASS = 2500)
 
 	var/code = 2
 
-/obj/item/radio/electropack/attack_hand(mob/living/user as mob)
-	if(src == user.back)
+/obj/item/radio/electropack/attack_hand(mob/user, list/params)
+	if(src == user.item_by_slot(SLOT_ID_BACK))
 		to_chat(user, "<span class='notice'>You need help taking this off!</span>")
 		return
 	..()
@@ -87,9 +87,9 @@
 		var/mob/M = loc
 		var/turf/T = M.loc
 		if(istype(T, /turf))
-			if(!M.moved_recently && M.last_move)
+			if(!M.moved_recently && M.last_move_dir)
 				M.moved_recently = 1
-				step(M, M.last_move)
+				step(M, M.last_move_dir)
 				sleep(50)
 				if(M)
 					M.moved_recently = 0
@@ -98,7 +98,7 @@
 		s.set_up(3, 1, M)
 		s.start()
 
-		M.Weaken(10)
+		M.afflict_paralyze(20 * 10)
 
 	if(master && wires & 1)
 		master.receive_signal()

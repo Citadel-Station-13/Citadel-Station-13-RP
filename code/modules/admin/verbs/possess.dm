@@ -2,6 +2,9 @@
 	set name = "Possess Obj"
 	set category = "Object"
 
+	if(!O.loc)
+		return // erm erm erm maybe not?
+
 	if(istype(O,/obj/singularity))
 		if(config_legacy.forbid_singulo_possession)
 			to_chat(usr, "It is forbidden to possess singularities.")
@@ -47,6 +50,6 @@
 	set desc = "Give this guy possess/release verbs"
 	set category = "Debug"
 	set name = "Give Possessing Verbs"
-	M.verbs += /proc/possess
-	M.verbs += /proc/release
+	add_verb(M, /proc/possess)
+	add_verb(M, /proc/release)
 	feedback_add_details("admin_verb","GPV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

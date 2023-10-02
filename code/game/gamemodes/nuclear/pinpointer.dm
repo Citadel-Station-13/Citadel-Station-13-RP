@@ -7,13 +7,16 @@
 	item_state = "electronic"
 	throw_speed = 4
 	throw_range = 20
-	matter = list(MAT_STEEL = 500)
+	materials = list(MAT_STEEL = 500)
 	preserve_item = 1
 	var/obj/item/disk/nuclear/the_disk = null
 	var/active = 0
 
 
-/obj/item/pinpointer/attack_self()
+/obj/item/pinpointer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		active = 1
 		workdisk()
@@ -43,7 +46,7 @@
 			icon_state = "pinonfar"
 	spawn(5) .()
 
-/obj/item/pinpointer/examine(mob/user)
+/obj/item/pinpointer/examine(mob/user, dist)
 	. = ..()
 	for(var/obj/machinery/nuclearbomb/bomb in GLOB.machines)
 		if(bomb.timing)
@@ -61,7 +64,10 @@
 	var/turf/location = null
 	var/obj/target = null
 
-/obj/item/pinpointer/advpinpointer/attack_self()
+/obj/item/pinpointer/advpinpointer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		active = 1
 		if(mode == 0)
@@ -183,7 +189,10 @@
 	var/mode = 0	//Mode 0 locates disk, mode 1 locates the shuttle
 	var/obj/machinery/computer/shuttle_control/multi/syndicate/home = null
 
-/obj/item/pinpointer/nukeop/attack_self(mob/user as mob)
+/obj/item/pinpointer/nukeop/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		active = 1
 		if(!mode)
@@ -269,7 +278,10 @@
 	var/shuttle_comp_id = null
 	var/obj/machinery/computer/shuttle_control/our_shuttle = null
 
-/obj/item/pinpointer/shuttle/attack_self(mob/user as mob)
+/obj/item/pinpointer/shuttle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		active = TRUE
 		find_shuttle()

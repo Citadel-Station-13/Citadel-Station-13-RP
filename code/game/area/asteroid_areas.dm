@@ -123,9 +123,10 @@
 	always_unpowered = 1
 	dynamic_lighting = 0
 
-	aft
-		name = "\improper Engineering Outpost Solar Array"
-		icon_state = "yellow"
+/area/outpost/engineering/solarsoutside/aft
+	name = "\improper Engineering Outpost Solar Array"
+	icon_state = "yellow"
+
 
 // Engineering Mining Outpost
 /area/outpost/engineering/mining
@@ -228,7 +229,7 @@
 	name = "Research Outpost Anomaly Analysis"
 
 /area/outpost/research/exp_prep
-	name = "Research Outpost Expedition Preperation"
+	name = "Research Outpost Expedition Preparation"
 
 /area/outpost/research/disposal
 	name = "Research Outpost Waste Disposal"

@@ -22,9 +22,9 @@
 		/obj/item/bluespace_harpoon,
 		/obj/item/clothing/glasses/thermal/syndi,
 		/obj/item/gun/energy/netgun,
-		/obj/item/gun/projectile/pirate,
+		/obj/item/gun/ballistic/pirate,
 		/obj/item/clothing/accessory/permit/gun,
-		/obj/item/gun/projectile/dartgun
+		/obj/item/gun/ballistic/dartgun
 		)
 
 	var/global/list/allocated_gamma = list()
@@ -82,7 +82,7 @@
 	else
 		return ..()
 
-/obj/structure/trash_pile/attack_hand(mob/user)
+/obj/structure/trash_pile/attack_hand(mob/user, list/params)
 	//Human mob
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -144,7 +144,7 @@
 					prob(4);/obj/item/caution,
 					prob(4);/obj/item/cell,
 					prob(4);/obj/item/cell/device,
-					prob(4);/obj/item/reagent_containers/food/snacks/liquidfood,
+					prob(4);/obj/item/reagent_containers/food/snacks/liquid,
 					prob(4);/obj/item/spacecash/c1,
 					prob(4);/obj/item/storage/backpack/satchel,
 					prob(4);/obj/item/storage/briefcase,

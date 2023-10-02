@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/datum/legacy_announcement/priority/emergency_shuttle_called = new(0, new_sound = sound('sound/AI/shuttlecalled.ogg'))
 	var/datum/legacy_announcement/priority/emergency_shuttle_recalled = new(0, new_sound = sound('sound/AI/shuttlerecalled.ogg'))
 
-/datum/controller/subsystem/emergencyshuttle/PreInit()
+/datum/controller/subsystem/emergencyshuttle/PreInit(recovering)
 	escape_pods = list()
 
 /datum/controller/subsystem/emergencyshuttle/fire()
@@ -53,9 +53,9 @@ SUBSYSTEM_DEF(emergencyshuttle)
 			var/estimated_time = round(estimate_launch_time()/60,1)
 
 			if (evac)
-				emergency_shuttle_docked.Announce(replacetext(replacetext(GLOB.using_map.emergency_shuttle_docked_message, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
+				emergency_shuttle_docked.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).emergency_shuttle_docked_message, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
 			else
-				priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.shuttle_docked_message, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
+				priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).shuttle_docked_message, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
 
 		//arm the escape pods
 		if (evac)
@@ -90,12 +90,12 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/estimated_time = round(estimate_arrival_time()/60,1)
 
 	evac = 1
-	emergency_shuttle_called.Announce(replacetext(GLOB.using_map.emergency_shuttle_called_message, "%ETA%", "[estimated_time] minute\s"))
+	emergency_shuttle_called.Announce(replacetext((LEGACY_MAP_DATUM).emergency_shuttle_called_message, "%ETA%", "[estimated_time] minute\s"))
 	for(var/area/A in GLOB.sortedAreas)
 		if(istype(A, /area/hallway))
 			A.readyalert()
-
-	GLOB.lore_atc.reroute_traffic(TRUE)
+	if(SSlegacy_atc.squelched == FALSE)
+		SSlegacy_atc.toggle_broadcast()
 
 //calls the shuttle for a routine crew transfer
 /datum/controller/subsystem/emergencyshuttle/proc/call_transfer()
@@ -110,8 +110,8 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	shuttle.move_time = SHUTTLE_TRANSIT_DURATION
 	var/estimated_time = round(estimate_arrival_time()/60,1)
 
-	priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.shuttle_called_message, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
-	GLOB.lore_atc.shift_ending()
+	priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).shuttle_called_message, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
+	SSlegacy_atc.shift_ending()
 
 //recalls the shuttle
 /datum/controller/subsystem/emergencyshuttle/proc/recall()
@@ -121,14 +121,14 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	shuttle.cancel_launch(src)
 
 	if (evac)
-		emergency_shuttle_recalled.Announce(GLOB.using_map.emergency_shuttle_recall_message)
+		emergency_shuttle_recalled.Announce((LEGACY_MAP_DATUM).emergency_shuttle_recall_message)
 
 		for(var/area/A in GLOB.sortedAreas)
 			if(istype(A, /area/hallway))
 				A.readyreset()
 		evac = 0
 	else
-		priority_announcement.Announce(GLOB.using_map.shuttle_recall_message)
+		priority_announcement.Announce((LEGACY_MAP_DATUM).shuttle_recall_message)
 
 /datum/controller/subsystem/emergencyshuttle/proc/can_call()
 	if (!universe.OnShuttleCall(null))

@@ -2,7 +2,7 @@
 /obj/machinery/atmospherics/component/unary/heater
 	name = "gas heating system"
 	desc = "Heats gas when connected to a pipe network"
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "heater_0"
 	density = TRUE
 	anchored = TRUE
@@ -14,14 +14,10 @@
 	var/internal_volume = 600	//L
 
 	var/max_power_rating = 20000	//power rating when the usage is turned up to 100
-	var/power_setting = 100
+	var/power_setting_legacy = 100
 
 	var/set_temperature = T20C	//thermostat
 	var/heating = 0		//mainly for icon updates
-
-/obj/machinery/atmospherics/component/unary/heater/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
 
 /obj/machinery/atmospherics/component/unary/heater/atmos_init()
 	if(node)
@@ -62,8 +58,9 @@
 		return
 
 	if(network && air_contents.total_moles && air_contents.temperature < set_temperature)
-		var/limit = clamp(air_contents.heat_capacity() * (set_temperature - air_contents.temperature), 0, power_rating * THERMOMACHINE_CHEAT_FACTOR)
-		air_contents.add_thermal_energy(limit)
+		CACHE_VSC_PROP(atmos_vsc, /atmos/thermomachine_cheat_factor, cheat_factor)
+		var/limit = clamp(air_contents.heat_capacity() * (set_temperature - air_contents.temperature), 0, power_rating * cheat_factor)
+		air_contents.adjust_thermal_energy(limit)
 		use_power(power_rating)
 
 		heating = 1
@@ -76,7 +73,7 @@
 /obj/machinery/atmospherics/component/unary/heater/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/unary/heater/attack_hand(mob/user as mob)
+/obj/machinery/atmospherics/component/unary/heater/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/atmospherics/component/unary/heater/ui_interact(mob/user, datum/tgui/ui)
@@ -94,7 +91,7 @@
 	data["minGasTemperature"] = 0
 	data["maxGasTemperature"] = round(max_temperature)
 	data["targetGasTemperature"] = round(set_temperature)
-	data["powerSetting"] = power_setting
+	data["powerSetting"] = power_setting_legacy
 
 	var/temp_class = "average"
 	if(air_contents.temperature > (T20C+40))
@@ -137,11 +134,11 @@
 	max_power_rating = initial(max_power_rating) * cap_rating / 2
 	max_temperature = max(initial(max_temperature) - T20C, 0) * ((bin_rating * 4 + cap_rating) / 5) + T20C
 	air_contents.volume = max(initial(internal_volume) - 200, 0) + 200 * bin_rating
-	set_power_level(power_setting)
+	set_power_level(power_setting_legacy)
 
-/obj/machinery/atmospherics/component/unary/heater/proc/set_power_level(var/new_power_setting)
-	power_setting = new_power_setting
-	power_rating = max_power_rating * (power_setting/100)
+/obj/machinery/atmospherics/component/unary/heater/proc/set_power_level(var/new_power_setting_legacy)
+	power_setting_legacy = new_power_setting_legacy
+	power_rating = max_power_rating * (power_setting_legacy/100)
 
 /obj/machinery/atmospherics/component/unary/heater/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))
@@ -153,7 +150,7 @@
 
 	..()
 
-/obj/machinery/atmospherics/component/unary/heater/examine(mob/user)
+/obj/machinery/atmospherics/component/unary/heater/examine(mob/user, dist)
 	. = ..()
 	if(panel_open)
 		. += "The maintenance hatch is open."

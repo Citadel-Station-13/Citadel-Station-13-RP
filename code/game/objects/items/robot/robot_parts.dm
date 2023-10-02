@@ -70,19 +70,23 @@
 	updateicon()
 
 /obj/item/robot_parts/robot_suit/proc/updateicon()
-	src.overlays.Cut()
-	if(src.l_arm)
-		src.overlays += "l_arm+o"
-	if(src.r_arm)
-		src.overlays += "r_arm+o"
-	if(src.chest)
-		src.overlays += "chest+o"
-	if(src.l_leg)
-		src.overlays += "l_leg+o"
-	if(src.r_leg)
-		src.overlays += "r_leg+o"
-	if(src.head)
-		src.overlays += "head+o"
+	cut_overlays()
+
+	var/list/overlays_to_add = list()
+	if(l_arm)
+		overlays_to_add += "l_arm+o"
+	if(r_arm)
+		overlays_to_add += "r_arm+o"
+	if(chest)
+		overlays_to_add += "chest+o"
+	if(l_leg)
+		overlays_to_add += "l_leg+o"
+	if(r_leg)
+		overlays_to_add += "r_leg+o"
+	if(head)
+		overlays_to_add += "head+o"
+
+	add_overlay(overlays_to_add)
 
 /obj/item/robot_parts/robot_suit/proc/check_completion()
 	if(src.l_arm && src.r_arm)
@@ -171,7 +175,7 @@
 				if(!M.brainmob.key)
 					var/ghost_can_reenter = 0
 					if(M.brainmob.mind)
-						for(var/mob/observer/dead/G in player_list)
+						for(var/mob/observer/dead/G in GLOB.player_list)
 							if(G.can_reenter_corpse && G.mind == M.brainmob.mind)
 								ghost_can_reenter = 1 //May come in use again at another point.
 								to_chat(user, "<span class='notice'>\The [W] is completely unresponsive; though it may be able to auto-resuscitate.</span>") //Jamming a ghosted brain into a borg is likely detrimental, and may result in some problems.
@@ -200,7 +204,7 @@
 			O.updatename("Default")
 
 			if(M.brainmob)
-				M.brainmob.mind.transfer_to(O)
+				M.brainmob.mind.transfer(O)
 				if(O.mind && O.mind.special_role)
 					O.mind.store_memory("In case you look at this after being borged, the objectives are only here until I find a way to make them not show up for you, as I can't simply delete them without screwing up round-end reporting. --NeoFite")
 				for(var/datum/language/L in M.brainmob.languages)

@@ -6,12 +6,14 @@
 	desc = "A virtual map of the surrounding station."
 	icon = 'icons/obj/machines/stationmap.dmi'
 	icon_state = "station_map"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
 	circuit = /obj/item/circuitboard/station_map
+	depth_projected = FALSE
+	climb_allowed = FALSE
 
 	// TODO - Port use_auto_lights from /vg - for now declare here
 	var/use_auto_lights = 1
@@ -35,7 +37,7 @@
 	holomap_datum = new
 	original_zLevel = loc.z
 	SSholomaps.station_holomaps += src
-	flags |= ON_BORDER // Why? It doesn't help if its not density
+	atom_flags |= ATOM_BORDER // Why? It doesn't help if its not density
 	if(SSholomaps.holomaps_initialized)
 		setup_holomap()
 	return ..()
@@ -60,15 +62,15 @@
 
 	small_station_map = image(SSholomaps.extraMiniMaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[original_zLevel]"], dir = dir)
 	// small_station_map.plane = LIGHTING_PLANE // Not until we do planes ~Leshana
-	// small_station_map.layer = LIGHTING_LAYER+1 // Weird things will happen!
+	// small_station_map.layer = LIGHTING_LAYER_MAIN+1 // Weird things will happen!
 
 	floor_markings = image('icons/obj/machines/stationmap.dmi', "decal_station_map")
 	floor_markings.dir = src.dir
 	// floor_markings.plane = ABOVE_TURF_PLANE // Not until we do planes ~Leshana
-	// floor_markings.layer = DECAL_LAYER
+	// floor_markings.layer = FLOOR_DECAL_LAYER
 	update_icon()
 
-/obj/machinery/station_map/attack_hand(var/mob/user)
+/obj/machinery/station_map/attack_hand(mob/user, list/params)
 	if(watching_mob && (watching_mob != user))
 		to_chat(user, "<span class='warning'>Someone else is currently watching the holomap.</span>")
 		return
@@ -86,7 +88,7 @@
 // couldn't really walk into us anyway.  But in reality we are on the turf in front of the wall, so bumping
 // against where we seem is actually trying to *exit* our real loc
 /obj/machinery/station_map/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
-	// log_debug("[src] (dir=[dir]) CheckExit([mover], [target])  get_dir() = [get_dir(target, loc)]")
+	// log_debug(SPAN_DEBUG("[src] (dir=[dir]) CheckExit([mover], [target])  get_dir() = [get_dir(target, loc)]"))
 	if(get_dir(target, loc) == dir) // Opposite of "normal" since we are visually in the next turf over
 		return FALSE
 	else
@@ -118,9 +120,9 @@
 			user.client.images |= holomap_datum.station_map
 
 			watching_mob = user
-			RegisterSignal(watching_mob, COMSIG_ATOM_DIR_CHANGE, .proc/checkPosition)
-			RegisterSignal(watching_mob, COMSIG_MOVABLE_MOVED, .proc/checkPosition)
-			RegisterSignal(watching_mob, COMSIG_PARENT_QDELETING, .proc/stopWatching)
+			RegisterSignal(watching_mob, COMSIG_ATOM_DIR_CHANGE, PROC_REF(checkPosition))
+			RegisterSignal(watching_mob, COMSIG_MOVABLE_MOVED, PROC_REF(checkPosition))
+			RegisterSignal(watching_mob, COMSIG_PARENT_QDELETING, PROC_REF(stopWatching))
 			update_use_power(USE_POWER_ACTIVE)
 
 			if(bogus)
@@ -167,7 +169,8 @@
 	update_icon()
 
 /obj/machinery/station_map/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(machine_stat & BROKEN)
 		icon_state = "station_mapb"
 	else if((machine_stat & NOPOWER) || !anchored)
@@ -179,20 +182,22 @@
 			holomap_datum.initialize_holomap_bogus()
 		else
 			small_station_map.icon = SSholomaps.extraMiniMaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[original_zLevel]"]
-			overlays |= small_station_map
+			overlays_to_add += small_station_map
 			holomap_datum.initialize_holomap(get_turf(src))
 
 	// Put the little "map" overlay down where it looks nice
 	if(floor_markings)
-		floor_markings.dir = src.dir
-		floor_markings.pixel_x = -src.pixel_x
-		floor_markings.pixel_y = -src.pixel_y
-		overlays += floor_markings
+		floor_markings.dir = dir
+		floor_markings.pixel_x = -pixel_x
+		floor_markings.pixel_y = -pixel_y
+		overlays_to_add += floor_markings
 
 	if(panel_open)
-		overlays += "station_map-panel"
+		overlays_to_add += "station_map-panel"
 	else
-		overlays -= "station_map-panel"
+		overlays_to_add -= "station_map-panel"
+
+	add_overlay(overlays_to_add)
 
 /obj/machinery/station_map/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
@@ -202,7 +207,7 @@
 		return
 	return ..()
 
-/obj/machinery/station_map/ex_act(severity)
+/obj/machinery/station_map/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			qdel(src)

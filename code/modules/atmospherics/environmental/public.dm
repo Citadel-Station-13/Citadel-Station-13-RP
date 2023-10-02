@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 // when writing atmos machinery, prefer using these procs
 // this lets us somewhat separate API from implemenetation of the environmental module.
 // a lot of things are on atom instead, since stuff like breathing should work with inside, say, bluespace bodybags.
@@ -23,7 +26,7 @@
  */
 /turf/proc/spawn_air(gas_string)
 	var/datum/gas_mixture/G = new
-	G.parse_gas_string(gas_string)
+	G.parse_gas_string(gas_string, src)
 	assume_air(G)
 
 /**
@@ -53,8 +56,8 @@
 /**
  * add/remove thermal energy from air
  */
-/atom/proc/add_thermal_energy(joules)
-	return return_air()?.add_thermal_energy(joules)
+/atom/proc/adjust_thermal_energy(joules)
+	return return_air()?.adjust_thermal_energy(joules)
 
 /**
  * get thermal energy needed for our air to be x temperature

@@ -1,7 +1,7 @@
 // Why? Because when you screw up too early in init, total runtimes won't be initialized. You can see why this can be a problem, right?
-GLOBAL_REAL_VAR(total_runtimes) = 0
-GLOBAL_VAR_INIT(total_runtimes_seen, 0)
+GLOBAL_VAR_INIT(total_runtimes, GLOB.total_runtimes || 0)
 GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
+GLOBAL_VAR_INIT(total_runtimes_seen, 0)
 // to detect when someone fucks up royally and breaks error handling with preinit runtimes
 GLOBAL_REAL_VAR(runtime_skip_once) = FALSE
 GLOBAL_REAL_VAR(runtime_trap_triggered) = FALSE
@@ -18,7 +18,7 @@ GLOBAL_REAL_VAR(runtime_trap_triggered) = FALSE
 		return
 #endif
 
-	++global.total_runtimes
+	++GLOB.total_runtimes
 
 	var/static/list/error_last_seen = list()
 	var/static/list/error_cooldown = list() /* Error_cooldown items will either be positive(cooldown time) or negative(silenced error)

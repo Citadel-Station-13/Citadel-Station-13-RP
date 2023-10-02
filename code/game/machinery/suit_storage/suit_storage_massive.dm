@@ -54,7 +54,7 @@
 		ispowered = 0
 		//Todo: add lockdown
 
-/obj/machinery/suit_storage_closet/ex_act(severity)
+/obj/machinery/suit_storage_closet/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			if(prob(50))
@@ -65,7 +65,7 @@
 				dump_everything()
 				qdel(src)
 
-/obj/machinery/suit_storage_closet/attack_hand(mob/user as mob)
+/obj/machinery/suit_storage_closet/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(machine_stat & NOPOWER)
@@ -200,7 +200,7 @@
 		return
 	/*if(I.is_screwdriver())
 		panelopen = !panelopen
-		playsound(src, I.usesound, 100, 1)
+		playsound(src, I.tool_sound, 100, 1)
 		to_chat(user, "<font color=#4F49AF>You [panelopen ? "open up" : "close"] the unit's maintenance panel.</font>")
 		updateUsrDialog()
 		return*/

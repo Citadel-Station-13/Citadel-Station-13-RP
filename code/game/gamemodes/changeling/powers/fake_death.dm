@@ -26,7 +26,7 @@
 		return
 	to_chat(C, "<span class='notice'>We will attempt to regenerate our form.</span>")
 
-	C.update_canmove()
+	C.update_mobility()
 	C.remove_changeling_powers()
 	changeling.chem_charges -= CHANGELING_STASIS_COST
 
@@ -43,7 +43,7 @@
 
 	spawn(rand(2 MINUTES, 4 MINUTES))
 		//The ling will now be able to choose when to revive
-		src.verbs += /mob/proc/changeling_revive
+		add_verb(src, /mob/proc/changeling_revive)
 		to_chat(src, "<span class='notice'><font size='5'>We are ready to rise.  Use the <b>Revive</b> verb when you are ready.</font></span>")
 
 	feedback_add_details("changeling_powers","FD")

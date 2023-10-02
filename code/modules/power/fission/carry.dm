@@ -3,7 +3,7 @@
 	name = "lead lined carrying case"
 	desc = "It's made of AUTHENTIC sealed lead and has a trifoil tag attached. Should probably handle this one with care."
 	icon_state = "carrycase"
-	item_state_slots = list(slot_r_hand_str = "case", slot_l_hand_str = "case")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "case", SLOT_ID_LEFT_HAND = "case")
 
 /obj/item/storage/briefcase/fission/uranium
 	name = "lead lined uranium carrying case"
