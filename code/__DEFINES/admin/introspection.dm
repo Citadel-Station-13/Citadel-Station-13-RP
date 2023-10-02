@@ -5,6 +5,8 @@
 
 /// when seen, we know to treat as global scope
 #define VV_GLOBAL_SCOPE /datum/vv_global
+/// max marks
+#define VV_MAX_MARKS 50
 
 //* return values for vv_edit_var
 
