@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //? roleban types
 /// full server ban - currently just a shim to go to legacy isbanned, eventually just will go to server_ban.dm
 #define BAN_ROLE_SERVER "server"
