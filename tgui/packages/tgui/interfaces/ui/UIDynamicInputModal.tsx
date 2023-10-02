@@ -122,7 +122,7 @@ export const UIDynamicInputModal = (props, context) => {
                     content="Confirm" onClick={() => act('submit', { choices: preprocessOptions(options, data.query) })} />
                 </Stack.Item>
                 <Stack.Item grow={1} align="center">
-                  <Button.Confirm icon="x"
+                  <Button.Confirm icon="xmark"
                     content="Cancel" onClick={() => act('cancel')} />
                 </Stack.Item>
               </Stack>

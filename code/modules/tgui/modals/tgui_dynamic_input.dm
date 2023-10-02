@@ -73,7 +73,8 @@
 				got = isnull(val) ? params[TGUI_INPUT_DATA_DEFAULT] : text2num(val)
 				if(!isnull(got))
 					got = clamp(got, params[TGUI_INPUT_DATA_CONSTRAINTS][1], params[TGUI_INPUT_DATA_CONSTRAINTS][2])
-					got = round(got, params[TGUI_INPUT_DATA_CONSTRAINTS][3])
+					if(!isnull(params[TGUI_INPUT_DATA_CONSTRAINTS][3]))
+						got = round(got, params[TGUI_INPUT_DATA_CONSTRAINTS][3])
 				.[key] = got
 			if(TGUI_INPUT_DATATYPE_LIST_PICK)
 				got = isnull(val) ? params[TGUI_INPUT_DATA_DEFAULT] : val
