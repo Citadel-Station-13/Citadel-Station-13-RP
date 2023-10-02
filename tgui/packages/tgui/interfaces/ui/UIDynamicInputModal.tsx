@@ -1,6 +1,7 @@
+import { round } from "common/math";
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, Section, Stack, Tooltip } from "../../components";
+import { Button, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "../../components";
 import { Window } from "../../layouts";
 
 interface UIDynamicInputContext {
@@ -51,10 +52,10 @@ enum UIDynamicInputType {
 
 type UIDynamicInputConstraint = StringConstraint | NumberConstraint | ListConstraint | ToggleConstraint;
 
-type StringConstraint = [number] | undefined;
-type NumberConstraint = [number, number, number] | undefined;
-type ListConstraint = string[] | undefined;
-type ToggleConstraint = [] | undefined;
+type StringConstraint = [number];
+type NumberConstraint = [number, number, number | null];
+type ListConstraint = string[];
+type ToggleConstraint = [];
 
 type UIDynamicInputOption = StringOption | NumberOption | ListOption | ToggleOption;
 
@@ -81,15 +82,31 @@ export const UIDynamicInputModal = (props, context) => {
                 {Object.entries(data.query).map(([key, entry]) => (
                   <Stack.Item key={key}>
                     <Stack>
-                      <Stack.Item>
-                        {`${entry.name} `}
-                        <Tooltip content={entry.desc}>
-                          <Button icon="question" />
-                        </Tooltip>
-                      </Stack.Item>
                       <Stack.Item grow={1}>
+                        <Stack>
+                          <Stack.Item grow={1}>
+                            {`${entry.name} `}
+                          </Stack.Item>
+                          <Stack.Item>
+                            <Tooltip content={entry.desc}>
+                              <Button icon="question" />
+                            </Tooltip>
+                          </Stack.Item>
+                        </Stack>
+                      </Stack.Item>
+                      {/*
+                        WARNING: You see that 'as any'? That's to forcefully disable typescript checking.
+                        This is because 'right' does work as an align-items CSS properties as of time of writing,
+                        but this may change in the future. If shit breaks, remove it and find another hack
+                        to align the items.
+                       */}
+                      <Stack.Item grow={1} shrink={1} align={"right" as any}>
                         <DynamicEntry id={key} entry={entry} current={options[key]}
-                          pick={(val) => { setOptions({ ...options, key: val }); }} />
+                          pick={(val) => {
+                            let mutated = options;
+                            mutated[key] = val;
+                            setOptions(mutated);
+                          }} />
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
@@ -123,6 +140,7 @@ const preprocessOptions = (picked: Record<string, any>, query: Record<string, UI
 };
 
 interface DynamicEntryProps {
+  // eslint-disable-next-line react/no-unused-prop-types
   id: string;
   entry: UIDynamicInputEntry;
   current: UIDynamicInputOption;
@@ -156,10 +174,12 @@ interface DynamicEntryNumberProps extends DynamicEntryProps {
 }
 
 const DynamicEntryNumber = (props: DynamicEntryNumberProps, context) => {
+  let current = props.current === undefined? props.entry.default === null? 0 : props.entry.default : props.current;
   return (
-    <Box>
-      Test
-    </Box>
+    <NumberInput value={current} minValue={props.entry.constraints[0]} maxValue={props.entry.constraints[1]}
+      onChange={(e, val) => props.pick(
+        props.entry.constraints[2] === null? val : round(val, props.entry.constraints[2])
+      )} width="100%" />
   );
 };
 
@@ -169,10 +189,12 @@ interface DynamicEntryStringProps extends DynamicEntryProps {
 }
 
 const DynamicEntryString = (props: DynamicEntryStringProps, context) => {
+  let current = props.current === undefined? props.entry.default === null? "" : props.entry.default : props.current;
   return (
-    <Box>
-      Test
-    </Box>
+    <Input value={current} maxLength={props.entry.constraints[0]}
+      onInput={(e, val) => props.pick(
+        val
+      )} width="100%" />
   );
 };
 
@@ -182,10 +204,14 @@ interface DynamicEntryPickProps extends DynamicEntryProps {
 }
 
 const DynamicEntryPick = (props: DynamicEntryPickProps, context) => {
+  let current = props.current === undefined? (
+    props.entry.constraints.length > 0? props.entry.constraints[0] : ""
+  ) : props.current;
   return (
-    <Box>
-      Test
-    </Box>
+    <Dropdown
+      options={props.entry.constraints}
+      selected={current}
+      onSelected={(v) => props.pick(v)} />
   );
 };
 
@@ -195,10 +221,11 @@ interface DynamicEntryToggleProps extends DynamicEntryProps {
 }
 
 const DynamicEntryToggle = (props: DynamicEntryToggleProps, context) => {
+  let current = props.current === undefined? !!props.entry.default : props.current;
   return (
-    <Box>
-      Test
-    </Box>
+    <Button.Checkbox
+      selected={current}
+      onClick={() => props.pick(!current)} />
   );
 };
 
