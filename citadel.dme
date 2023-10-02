@@ -2011,6 +2011,7 @@
 #include "code\modules\admin\functions\modify_traits.dm"
 #include "code\modules\admin\permissionverbs\permissionedit.dm"
 #include "code\modules\admin\propedit\external.dm"
+#include "code\modules\admin\propedit\marking.dm"
 #include "code\modules\admin\propedit\proccall.dm"
 #include "code\modules\admin\propedit\render.dm"
 #include "code\modules\admin\propedit\ui.dm"
