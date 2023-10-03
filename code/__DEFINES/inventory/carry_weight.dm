@@ -14,14 +14,13 @@
 
 #define CARRY_STRENGTH_ADD_HUMAN 0
 #define CARRY_STRENGTH_ADD_UNATHI 2.5
-#define CARRY_STRENGTH_ADD_PROTEAN 2.5
+#define CARRY_STRENGTH_ADD_PROTEAN 5
 #define CARRY_STRENGTH_ADD_MOTH_LIGHT 2.5
 #define CARRY_STRENGTH_ADD_MOTH_DARK -2.5
 #define CARRY_STRENGTH_ADD_TAJARAN -2.5
 #define CARRY_STRENGTH_ADD_TESHARI -2.5
 #define CARRY_STRENGTH_ADD_XENOCHIMERA 5
 #define CARRY_STRENGTH_ADD_XENOHYBRID 5
-#define CARRY_STRENGTH_ADD_PROTEAN 5
 
 //? Carry factor - divisor for over-limit weight to apply to penalty after exponent
 
@@ -34,6 +33,8 @@
 #define CARRY_FACTOR_MOD_TAJARAN 0.8
 #define CARRY_FACTOR_MOD_TESHARI 0.6
 #define CARRY_FACTOR_MOD_PROTEAN 0.7
+#define CARRY_FACTOR_MOD_XENOCHIMERA 1.2
+#define CARRY_FACTOR_MOD_XENOHYBRID 1.2
 
 //? Carry exponent - what's used in the formula for slowdown after extra weight is divided by divisor
 

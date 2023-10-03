@@ -136,6 +136,9 @@ export const UIDynamicInputModal = (props, context) => {
 
 const preprocessOptions = (picked: Record<string, any>, query: Record<string, UIDynamicInputEntry>) => {
   let built = {};
+  for (let key in Object.keys(query)) {
+    built[key] = picked[key] === undefined? query[key].default : picked[key];
+  }
   return built;
 };
 
