@@ -1055,6 +1055,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/substation/research/xenobiology_lab
 	name = "Research Xenobiology Substation"
 
+/area/maintenance/substation/research/southwest_wing
+	name = "Research Southwest Wing Substation"
+
 /area/maintenance/substation/research/docks
 	name = "Research Docks Substation"
 

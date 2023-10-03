@@ -1504,7 +1504,7 @@
 /area/space)
 "pP" = (
 /obj/structure/table/standard,
-/obj/item/reagent_containers/food/snacks/chips,
+/obj/item/reagent_containers/food/snacks/bagged/chips,
 /turf/unsimulated/beach/sand,
 /area/space)
 "pQ" = (

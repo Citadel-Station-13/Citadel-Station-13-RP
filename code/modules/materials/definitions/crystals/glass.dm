@@ -1,5 +1,5 @@
 /datum/material/glass
-	id = "glass"
+	id = MAT_GLASS
 	name = "glass"
 	stack_type = /obj/item/stack/material/glass
 	flags = MATERIAL_BRITTLE

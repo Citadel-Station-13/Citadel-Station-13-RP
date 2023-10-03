@@ -8,8 +8,10 @@
 	and move through solid materials. Although initial field tests were positive, the raw cost of manufacturing \
 	the Phazon made mass production untenable. Of the few suits deployed during the Phoron War, none are known to \
 	have fallen into enemy hands. In spite of this, corporate espionage has lead to various parts and components \
-	becoming available on the black market. The actual circuitry and chips necessary to construct the Phazon, however \
-	remain closely guarded corporate secrets."
+	becoming available on the black market. The actual circuitry and chips necessary to construct the Phazon, however, \
+	remain closely guarded corporate secrets. The exosuit's hover capabilities cause it to float roughly a foot off of \
+	the ground. Due to this, although the Phazon itself comes in at a moderate 9'(2.7m) in height, it effectively takes \
+	up 10' to 11'(3m-3.4m) of space when in operation."
 	value = CATALOGUER_REWARD_HARD
 
 /mob/living/simple_mob/mechanical/mecha/combat/phazon

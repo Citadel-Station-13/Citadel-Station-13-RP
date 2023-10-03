@@ -289,6 +289,8 @@
 
 /atom/proc/AltClick(var/mob/user)
 	SEND_SIGNAL(src, COMSIG_CLICK_ALT, user)
+	if(context_menu(new /datum/event_args/actor(user)))
+		return TRUE
 	return FALSE
 
 // todo: rework

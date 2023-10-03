@@ -1,5 +1,5 @@
 /datum/material/supermatter
-	id = "supermatter"
+	id = MAT_SUPERMATTER
 	name = "supermatter"
 	icon_colour = "#FFFF00"
 	stack_type = /obj/item/stack/material/supermatter
