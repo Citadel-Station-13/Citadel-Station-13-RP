@@ -167,8 +167,7 @@
 	ui_interact(user)
 
 /datum/tgui_dynamic_input/Destroy()
-	// 'choices' intentionally kept
-	query = null
+	// 'choices' and 'query' intentionally kept
 	if(!finished)
 		finish(null)
 	closed = TRUE
