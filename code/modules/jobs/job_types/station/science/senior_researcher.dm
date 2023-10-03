@@ -35,7 +35,7 @@
 		"Research Training Specialist" = /datum/prototype/struct/alt_title/sci_trainer
 		)
 
-	/datum/prototype/struct/alt_title/sci_trainer
+/datum/prototype/struct/alt_title/sci_trainer
 	title = "Research Training Specialist"
 	title_blurb = "An Research Training Specialist is an experienced scientist who dedicates their time and expertise to the training of those who are less knowledgeable."
 
