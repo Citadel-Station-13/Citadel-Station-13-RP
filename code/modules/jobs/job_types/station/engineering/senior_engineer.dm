@@ -30,18 +30,15 @@
 
 	outfit_type = /datum/outfit/job/station/station_engineer/senior
 	desc = "A Senior Engineer fulfills similar duties to other engineers, but usually occupies spare time with with training of other, newer Engineers \
-					and making sure the Chief's orders are followed to the letter. You are not in command of the Engineering departement."
+			and giving advice in tricky engineering situtations. You are not in command of the Engineering departement, but should assist the CE in accordance with Standard Operating Procedures."
 
 	alt_titles = list(
-		"Artificer-Adept" = /datum/prototype/struct/alt_title/artificer_adept
+		"Engineering Training Specialist" = /datum/prototype/struct/alt_title/engi_trainer
 		)
 
-/datum/prototype/struct/alt_title/artificer_adept
-	title = "Artificer-Adept"
-	background_allow = list(
-		/datum/lore/character_background/faction/naramadiguilds
-	)
-	background_enforce = TRUE
+/datum/prototype/struct/alt_title/engi_trainer
+	title = "Engineering Training Specialist"
+	title_blurb = "An Engineering Training Specialist is an experienced engineer who dedicates their time and expertise to the training of those who are less knowledgeable."
 
 /datum/outfit/job/station/station_engineer/senior
 	name = OUTFIT_JOB_NAME("Senior Engineer")

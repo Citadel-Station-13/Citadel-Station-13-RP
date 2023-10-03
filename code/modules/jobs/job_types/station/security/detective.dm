@@ -31,21 +31,12 @@
 						For crimes only witnessed after the fact, or those with no survivors, they attempt to piece together what they can from pure evidence."
 	alt_titles = list(
 		"Forensic Technician" = /datum/prototype/struct/alt_title/detective/forensics_tech,
-		"Crime Scene Investigator" = /datum/prototype/struct/alt_title/detective/csi,
-		"Investigatory Specialist" = /datum/prototype/struct/alt_title/detective/inv_spec
+		"Crime Scene Investigator" = /datum/prototype/struct/alt_title/detective/csi
 		)
-
-/datum/prototype/struct/alt_title/detective/inv_spec
-	title = "Investigatory Specialist"
-	background_allow = list(
-		/datum/lore/character_background/faction/onkhera_necropolis
-	)
-	background_enforce = TRUE
 
 /datum/prototype/struct/alt_title/detective/csi
 	title = "Crime Scene Investigator"
 
-/// Detective Alt Titles
 /datum/prototype/struct/alt_title/detective/forensics_tech
 	title = "Forensic Technician"
 	title_blurb = "A Forensic Technician works more with hard evidence and labwork than a Detective, but they share the purpose of solving crimes."
@@ -76,9 +67,3 @@
 	name = OUTFIT_JOB_NAME("Forensic technician")
 	head = null
 	suit = /obj/item/clothing/suit/storage/forensics/blue
-
-/datum/outfit/job/station/detective/vice
-	name = OUTFIT_JOB_NAME("Vice Investigator")
-	head = null
-	uniform = /obj/item/clothing/under/hawaiian
-	suit = null

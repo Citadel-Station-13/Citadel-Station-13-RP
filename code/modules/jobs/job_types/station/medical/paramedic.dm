@@ -25,32 +25,23 @@
 		ACCESS_ENGINEERING_AIRLOCK,
 	)
 	outfit_type = /datum/outfit/job/station/paramedic
-	desc = "A Paramedic is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their own. \
+	desc = "A Paramedic is primarily concerned with the stabilization and recovery of patients who are unable to make it to the Medical Department on their own. \
 						They may also be called upon to keep patients stable when Medical is busy or understaffed."
 	alt_titles = list(
 		"Emergency Medical Technician" = /datum/prototype/struct/alt_title/emt,
-		"Medical Responder" = /datum/prototype/struct/alt_title/medical_responder,
-		"Biotechnical Responder" = /datum/prototype/struct/alt_title/biotech_responder
+		"Trainee Emergency Medical Technician" = /datum/prototype/struct/alt_title/emt_trainee
 		)
 
-/datum/prototype/struct/alt_title/biotech_responder
-	title = "Biotechnical Responder"
-	title_outfit = /datum/outfit/job/station/paramedic/emt  //TODO: add OSSNECRO outfits.
-	background_allow = list(
-		/datum/lore/character_background/faction/onkhera_necropolis
-	)
-	background_enforce = TRUE
 
 /datum/prototype/struct/alt_title/emt
 	title = "Emergency Medical Technician"
-	title_blurb = "An Emergency Medical Technician is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their \
+	title_blurb = "An Emergency Medical Technician is primarily concerned with the stabilization and recovery of patients who are unable to make it to the Medical Department on their \
 					own. They are capable of keeping a patient stabilized until they reach the hands of someone with more training."
 	title_outfit = /datum/outfit/job/station/paramedic/emt
 
-/datum/prototype/struct/alt_title/medical_responder
-	title = "Medical Responder"
-	title_blurb = "A Medical Responder is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their \
-					own. They are capable of keeping a patient stabilized until they reach the hands of someone with more training."
+/datum/prototype/struct/alt_title/emt_trainee
+	title = "Trainee Emergency Medical Technician"
+	title_blurb = "A Trainee Medical Technician is learning how to perform the role of an EMT, stabilizing and recovering patients who are unable to make it to the medical department on their own."
 	title_outfit = /datum/outfit/job/station/paramedic/emt
 
 /datum/outfit/job/station/paramedic

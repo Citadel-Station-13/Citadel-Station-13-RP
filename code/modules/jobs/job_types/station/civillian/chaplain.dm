@@ -20,14 +20,14 @@
 	outfit_type = /datum/outfit/job/station/chaplain
 	desc = "The Chaplain ministers to the spiritual needs of the crew."
 	alt_titles = list(
-		"Counselor" = /datum/prototype/struct/alt_title/counselor,
+		"Religious Counselor" = /datum/prototype/struct/alt_title/counselor,
 		"Religious Affairs Advisor" = /datum/prototype/struct/alt_title/chaplain/advisor
 		)
 
 // Chaplain Alt Titles
 /datum/prototype/struct/alt_title/counselor
-	title = "Counselor"
-	title_blurb = "The Counselor attends to the emotional needs of the crew, without a specific medicinal or spiritual focus."
+	title = "Religious Counselor"
+	title_blurb = "The Religious Counselor attends to the emotional needs of the crew, usually through the lens of a religion or spiritual ideology."
 
 /datum/prototype/struct/alt_title/chaplain/advisor
 	title = "Religious Affairs Advisor"

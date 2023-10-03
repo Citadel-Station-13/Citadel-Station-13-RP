@@ -32,32 +32,16 @@
 		"Nurse" = /datum/prototype/struct/alt_title/nurse,
 		"Virologist" = /datum/prototype/struct/alt_title/virologist,
 		"Medical Resident" = /datum/prototype/struct/alt_title/doctor/resident,
-		"Medical Intern" = /datum/prototype/struct/alt_title/doctor/intern,
-		"Orderly" = /datum/prototype/struct/alt_title/orderly,
-		"Biotechnician" = /datum/prototype/struct/alt_title/biotechnician
 		)
 
 // Medical Doctor Alt Titles
 
-/datum/prototype/struct/alt_title/biotechnician
-	title = "Biotechnician"
-	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon //todo: add OSSNECRO outfits
-	background_allow = list(
-		/datum/lore/character_background/faction/onkhera_necropolis
-	)
-	background_enforce = TRUE
 
 /datum/prototype/struct/alt_title/surgeon
 	title = "Surgeon"
 	title_blurb = "A Surgeon specializes in providing surgical aid to injured patients, up to and including amputation and limb reattachement. They are expected \
 					to know the ins and outs of anesthesia and surgery."
 	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon
-
-/datum/prototype/struct/alt_title/orderly
-	title = "Orderly"
-	title_blurb = "An Orderly acts as Medbay's general helping hand, assisting any doctor that might need some form of help, as well as handling manual \
-					and dirty labor around the department."
-	title_outfit = /datum/outfit/job/station/medical_doctor/nurse
 
 /datum/prototype/struct/alt_title/emergency_physician
 	title = "Emergency Physician"
@@ -68,7 +52,7 @@
 
 /datum/prototype/struct/alt_title/nurse
 	title = "Nurse"
-	title_blurb = "A Nurse acts as a general purpose Doctor's Aide, providing basic care to non-critical patients, and stabilizing critical patients during \
+	title_blurb = "A Nurse acts as a general purpose aide to the doctors, providing basic care to non-critical patients, and stabilizing critical patients during \
 					busy periods. They frequently watch the suit sensors console, to help manage the time of other Doctors. In rare occasions, a Nurse can be \
 					called upon to revive deceased crew members."
 	title_outfit = /datum/outfit/job/station/medical_doctor/nurse
@@ -81,9 +65,7 @@
 
 /datum/prototype/struct/alt_title/doctor/resident
 	title = "Medical Resident"
-
-/datum/prototype/struct/alt_title/doctor/intern
-	title = "Medical Intern"
+	title_blurb = "A Medical Resident is someone who has a medical dregree but is still in their resdiency, training under the supervision of more experienced doctors."
 
 /datum/outfit/job/station/medical_doctor
 	name = OUTFIT_JOB_NAME("Medical Doctor")
