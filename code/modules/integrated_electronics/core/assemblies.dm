@@ -149,7 +149,7 @@
 /obj/item/electronic_assembly/proc/check_interactivity(mob/user)
 	return ui_status(user, GLOB.physical_state) == UI_INTERACTIVE
 
-/obj/item/electronic_assembly/get_cell()
+/obj/item/electronic_assembly/get_cell(inducer)
 	return battery
 
 // TGUI

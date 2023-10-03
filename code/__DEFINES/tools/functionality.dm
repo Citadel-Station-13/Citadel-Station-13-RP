@@ -38,16 +38,6 @@ GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 
 //* None yet! Waiting on skill-system design.
 
-//? Tool hints - make these human readable!
-
-#define TOOL_HINT_UNSCREWING_WINDOW_FRAME "unsecure frame"
-#define TOOL_HINT_SCREWING_WINDOW_FRAME "secure frame"
-#define TOOL_HINT_UNSCREWING_WINDOW_PANE "unfasten pane"
-#define TOOL_HINT_SCREWING_WINDOW_PANE "fasten pane"
-#define TOOL_HINT_CROWBAR_WINDOW_IN "pane in"
-#define TOOL_HINT_CROWBAR_WINDOW_OUT "pane out"
-#define TOOL_HINT_WRENCH_WINDOW_DISASSEMBLY "dismantle"
-
 //? tool_locked var
 
 /// unlocked - use dynamic tool system

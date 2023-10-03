@@ -253,6 +253,16 @@
 		SLOT_ID_RIGHT_HAND = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
 	)
 
+/datum/loadout_entry/seasonal/masquarade/changeling/claw
+	display_name = "Claws"
+	path = /obj/item/clothing/gloves/fake_chitin
+
+/obj/item/clothing/gloves/fake_chitin
+	STD_DEF("plastic claws")
+	icon_state = "ling_gauntlets"
+	icon = 'icons/antagonists/changeling/items/clothing.dmi'
+	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
+
 /datum/loadout_entry/seasonal/masquarade/changeling/shield
 	display_name = "Shield"
 	path = /obj/item/toy/flesh_shield

@@ -30,7 +30,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/melee/baton/get_cell()
+/obj/item/melee/baton/get_cell(inducer)
 	return bcell
 
 /obj/item/melee/baton/suicide_act(mob/user)

@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //! ON GOD, READ tool_system.dm's use_tool_standard to learn how to use these!
 
 /**
@@ -9,7 +12,7 @@
  * - flags - tool operation flags
  * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/crowbar_act(obj/item/I, mob/user, flags, hint)
+/atom/proc/crowbar_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	return FALSE
 
 /**
@@ -21,14 +24,14 @@
  *
  * @params
  * - I - the item
- * - user - the user, if any
+ * - e_args - clickchain data, if any
  * - flags - tool operation flags
  * - delay - how long this should take
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_crowbar(obj/item/I, mob/user, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_CROWBAR, I, user, flags, delay, cost, usage)
+/atom/proc/use_crowbar(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_CROWBAR, I, e_args, flags, delay, cost, usage)
 
 /**
  * Called when a wrench is used on us.
@@ -39,7 +42,7 @@
  * - flags - tool operation flags
  * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/wrench_act(obj/item/I, mob/user, flags, hint)
+/atom/proc/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	return FALSE
 
 /**
@@ -51,14 +54,14 @@
  *
  * @params
  * - I - the item
- * - user - the user, if any
+ * - e_args - clickchain data, if any
  * - flags - tool operation flags
  * - delay - how long this should take
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_wrench(obj/item/I, mob/user, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_WRENCH, I, user, flags, delay, cost, usage)
+/atom/proc/use_wrench(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_WRENCH, I, e_args, flags, delay, cost, usage)
 
 /**
  * Called when a welder is used on us.
@@ -69,7 +72,7 @@
  * - flags - tool operation flags
  * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/welder_act(obj/item/I, mob/user, flags, hint)
+/atom/proc/welder_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	return FALSE
 
 /**
@@ -81,14 +84,14 @@
  *
  * @params
  * - I - the item
- * - user - the user, if any
+ * - e_args - clickchain data, if any
  * - flags - tool operation flags
  * - delay - how long this should take
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_welder(obj/item/I, mob/user, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_WELDER, I, user, flags, delay, cost, usage)
+/atom/proc/use_welder(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_WELDER, I, e_args, flags, delay, cost, usage)
 
 /**
  * Called when a pair of wirecutters is used on us.
@@ -99,7 +102,7 @@
  * - flags - tool operation flags
  * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/wirecutter_act(obj/item/I, mob/user, flags, hint)
+/atom/proc/wirecutter_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	return FALSE
 
 /**
@@ -111,14 +114,14 @@
  *
  * @params
  * - I - the item
- * - user - the user, if any
+ * - e_args - clickchain data, if any
  * - flags - tool operation flags
  * - delay - how long this should take
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_wirecutter(obj/item/I, mob/user, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_WIRECUTTER, I, user, flags, delay, cost, usage)
+/atom/proc/use_wirecutter(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_WIRECUTTER, I, e_args, flags, delay, cost, usage)
 
 /**
  * Called when a screwdriver is used on us.
@@ -129,7 +132,7 @@
  * - flags - tool operation flags
  * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/screwdriver_act(obj/item/I, mob/user, flags, hint)
+/atom/proc/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	return FALSE
 
 /**
@@ -141,14 +144,14 @@
  *
  * @params
  * - I - the item
- * - user - the user, if any
+ * - e_args - clickchain data, if any
  * - flags - tool operation flags
  * - delay - how long this should take
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_screwdriver(obj/item/I, mob/user, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_SCREWDRIVER, I, user, flags, delay, cost, usage)
+/atom/proc/use_screwdriver(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_SCREWDRIVER, I, e_args, flags, delay, cost, usage)
 
 /**
  * Called when a analyzer is used on us.
@@ -159,7 +162,7 @@
  * - flags - tool operation flags
  * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/analyzer_act(obj/item/I, mob/user, flags, hint)
+/atom/proc/analyzer_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	return FALSE
 
 /**
@@ -171,14 +174,14 @@
  *
  * @params
  * - I - the item
- * - user - the user, if any
+ * - e_args - clickchain data, if any
  * - flags - tool operation flags
  * - delay - how long this should take
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_analyzer(obj/item/I, mob/user, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_ANALYZER, I, user, flags, delay, cost, usage)
+/atom/proc/use_analyzer(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_ANALYZER, I, e_args, flags, delay, cost, usage)
 
 
 /**
@@ -190,7 +193,7 @@
  * - flags - tool operation flags
  * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/multitool_act(obj/item/I, mob/user, flags, hint)
+/atom/proc/multitool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	return FALSE
 
 /**
@@ -202,12 +205,12 @@
  *
  * @params
  * - I - the item
- * - user - the user, if any
+ * - e_args - clickchain data, if any
  * - flags - tool operation flags
  * - delay - how long this should take
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_multitool(obj/item/I, mob/user, flags, delay, cost, usage)
-	return use_tool_standard(TOOL_MULTITOOL, I, user, flags, delay, cost, usage)
+/atom/proc/use_multitool(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_MULTITOOL, I, e_args, flags, delay, cost, usage)
 

@@ -101,12 +101,16 @@
 	if(zoom)
 		zoom() //binoculars, scope, etc
 
+	// clear carry
 	if(isliving(user))
 		var/mob/living/L = user
 		L.adjust_current_carry_weight(-weight_registered)
 		L.adjust_current_carry_encumbrance(-encumbrance_registered)
 	weight_registered = null
 	encumbrance_registered = null
+
+	// close context menus
+	context_close()
 
 	return ((. & COMPONENT_ITEM_DROPPED_RELOCATE)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
