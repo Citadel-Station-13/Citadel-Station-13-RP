@@ -1,4 +1,4 @@
-w/datum/trait/negative/speed_slow
+/datum/trait/negative/speed_slow
 	name = "Slowdown"
 	desc = "Allows you to move slower on average than baseline."
 	cost = -2

@@ -1,3 +1,8 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
+#warn value tune everything
+
 //? Despite this being carry_weight.dm, this contains defines for:
 //? carry strength - how much someone can carry or move
 //? weight - how much stuff weighs, recursive
@@ -6,23 +11,33 @@
 //? Carry strength - flat strength. you can carry up to this with no penalty.
 
 #define CARRY_STRENGTH_BASELINE 15
-#define CARRY_STRENGTH_UNATHI 17.5
-#define CARRY_STRENGTH_PROTEAN 17.5
-#define CARRY_STRENGTH_MOTH_LIGHT 17.5
-#define CARRY_STRENGTH_MOTH_DARK 12.5
-#define CARRY_STRENGTH_TAJARAN 12.5
-#define CARRY_STRENGTH_XENOCHIMERA 20
-#define CARRY_STRENGTH_XENOHYBRID 20
+
+#define CARRY_STRENGTH_ADD_HUMAN 0
+#define CARRY_STRENGTH_ADD_UNATHI 2.5
+#define CARRY_STRENGTH_ADD_PROTEAN 2.5
+#define CARRY_STRENGTH_ADD_MOTH_LIGHT 2.5
+#define CARRY_STRENGTH_ADD_MOTH_DARK -2.5
+#define CARRY_STRENGTH_ADD_TAJARAN -2.5
+#define CARRY_STRENGTH_ADD_TESHARI -2.5
+#define CARRY_STRENGTH_ADD_XENOCHIMERA 5
+#define CARRY_STRENGTH_ADD_XENOHYBRID 5
+#define CARRY_STRENGTH_ADD_PROTEAN 5
 
 //? Carry factor - divisor for over-limit weight to apply to penalty after exponent
 
 #define CARRY_FACTOR_BASELINE 7.5
 
+#define CARRY_FACTOR_MOD_HUMAN 1.2
+#define CARRY_FACTOR_MOD_UNATHI 1.2
+#define CARRY_FACTOR_MOD_MOTH_LIGHT 1.2
+#define CARRY_FACTOR_MOD_MOTH_DARK 0.8
+#define CARRY_FACTOR_MOD_TAJARAN 0.8
+#define CARRY_FACTOR_MOD_TESHARI 0.6
+#define CARRY_FACTOR_MOD_PROTEAN 0.7
+
 //? Carry exponent - what's used in the formula for slowdown after extra weight is divided by divisor
 
 #define CARRY_EXPONENT_BASELINE (2 / 3)
-
-#warn species physiology mods for above
 
 //? Item Encumbrance defines
 

@@ -3,7 +3,6 @@
 	desc = "Allows you to move faster on average than baseline."
 	cost = 2
 	var_changes = list("slowdown" = -0.2)
-	excludes = list(/datum/trait/positive/hardy, /datum/trait/positive/hardy_plus)
 
 /datum/trait/positive/endurance_plus
 	name = "Better Endurance"
