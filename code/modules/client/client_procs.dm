@@ -359,6 +359,8 @@
 	return ..()
 
 /client/Destroy()
+	// get rid of context menus
+	QDEL_NULL(context_menu)
 	// Unregister globals
 	GLOB.clients -= src
 	GLOB.directory -= ckey

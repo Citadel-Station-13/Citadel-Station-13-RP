@@ -217,7 +217,7 @@
 /obj/item/suit_cooling_unit/emergency/updateicon()
 	return
 
-/obj/item/suit_cooling_unit/emergency/get_cell()
+/obj/item/suit_cooling_unit/emergency/get_cell(inducer)
 	if(on)
 		return null // Don't let recharging happen while we're on
 	return cell

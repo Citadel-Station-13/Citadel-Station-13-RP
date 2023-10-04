@@ -138,23 +138,23 @@
 		product = /obj/item/clipboard,
 		cost = 1,
 	)
-	. += create_stack_recipe_datum(
+	recipes += create_stack_recipe_datum(
 		name = "wood floor tile",
 		product = /obj/item/stack/tile/wood,
 		cost = 1,
 		amount = 4,
 	)
-	. += create_stack_recipe_datum(
+	recipes += create_stack_recipe_datum(
 		name = "wood roofing tile",
 		product = /obj/item/stack/tile/roofing/wood,
 		cost = 3,
 		amount = 4,
 	)
-	. += create_stack_recipe_datum(category = "fences", name = "fence", product = /obj/structure/fence/wooden, cost = 3)
-	. += create_stack_recipe_datum(category = "fences", name = "fence end", product = /obj/structure/fence/wooden/end, cost = 3)
-	. += create_stack_recipe_datum(category = "fences", name = "fencepost", product = /obj/structure/fence/wooden/post, cost = 3)
-	. += create_stack_recipe_datum(category = "fences", name = "fence corner", product = /obj/structure/fence/wooden/corner, cost = 3)
-	. += create_stack_recipe_datum(category = "fences", name = "gate", product = /obj/structure/fence/door/wooden, cost = 3)
+	recipes += create_stack_recipe_datum(category = "fences", name = "fence", product = /obj/structure/fence/wooden, cost = 3)
+	recipes += create_stack_recipe_datum(category = "fences", name = "fence end", product = /obj/structure/fence/wooden/end, cost = 3)
+	recipes += create_stack_recipe_datum(category = "fences", name = "fencepost", product = /obj/structure/fence/wooden/post, cost = 3)
+	recipes += create_stack_recipe_datum(category = "fences", name = "fence corner", product = /obj/structure/fence/wooden/corner, cost = 3)
+	recipes += create_stack_recipe_datum(category = "fences", name = "gate", product = /obj/structure/fence/door/wooden, cost = 3)
 	return recipes
 
 /datum/material/wood_plank/holographic

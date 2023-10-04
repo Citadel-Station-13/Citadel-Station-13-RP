@@ -453,15 +453,15 @@
 			new shardtype(drop_location())
 
 
-/obj/structure/window/screwdriver_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/window/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 
 	if (construction_state == WINDOW_STATE_UNSECURED || construction_state == WINDOW_STATE_SCREWED_TO_FLOOR || !considered_reinforced)
-		if (!use_screwdriver(I, user, flags))
+		if (!use_screwdriver(I, e_args, flags))
 			return
 
 		var/unsecuring = construction_state != WINDOW_STATE_UNSECURED
-		user.action_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the frame [unsecuring? "from" : "to"] the floor."), src)
+		e_args.chat_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the frame [unsecuring? "from" : "to"] the floor."), src)
 		if (unsecuring)
 			construction_state = WINDOW_STATE_UNSECURED
 			set_anchored(FALSE)
@@ -475,83 +475,81 @@
 	if (construction_state != WINDOW_STATE_CROWBRARED_IN && construction_state != WINDOW_STATE_SECURED_TO_FRAME)
 		return
 
-	if (!use_screwdriver(I, user, flags))
+	if (!use_screwdriver(I, e_args, flags))
 		return
 
 	var/unsecuring = construction_state == WINDOW_STATE_SECURED_TO_FRAME
-	user.action_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the window [unsecuring? "from" : "to"] the frame."), src)
+	e_args.chat_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the window [unsecuring? "from" : "to"] the frame."), src)
 	construction_state = unsecuring ? WINDOW_STATE_CROWBRARED_IN : WINDOW_STATE_SECURED_TO_FRAME
 
 
-/obj/structure/window/crowbar_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/window/crowbar_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if (!considered_reinforced)
 		return
 	if (construction_state != WINDOW_STATE_CROWBRARED_IN && construction_state != WINDOW_STATE_SCREWED_TO_FLOOR)
 		return
-	if (!use_crowbar(I, user, flags))
+	if (!use_crowbar(I, e_args, flags))
 		return
 	var/unsecuring = construction_state == WINDOW_STATE_CROWBRARED_IN
-	user.action_feedback(SPAN_NOTICE("You pry [src] [unsecuring ? "out of" : "into"] the frame."), src)
+	e_args.chat_feedback(SPAN_NOTICE("You pry [src] [unsecuring ? "out of" : "into"] the frame."), src)
 	construction_state = unsecuring ? WINDOW_STATE_SCREWED_TO_FLOOR : WINDOW_STATE_CROWBRARED_IN
 
 
-/obj/structure/window/wrench_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/window/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if (construction_state != WINDOW_STATE_UNSECURED)
-		user.action_feedback(SPAN_WARNING("[src] has to be entirely unfastened from the floor before you can disasemble it!"))
+		e_args.chat_feedback(SPAN_WARNING("[src] has to be entirely unfastened from the floor before you can disasemble it!"))
 		return
-	if (!use_wrench(I, user, flags))
+	if (!use_wrench(I, e_args, flags))
 		return
-	user.action_feedback(SPAN_NOTICE("You disassemble [src]."), src)
+	e_args.chat_feedback(SPAN_NOTICE("You disassemble [src]."), src)
 	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
 
-/obj/structure/window/dynamic_tool_functions(obj/item/I, mob/user)
+/obj/structure/window/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	if (construction_state == WINDOW_STATE_UNSECURED)
 		. = list(
-			TOOL_SCREWDRIVER = TOOL_HINT_SCREWING_WINDOW_FRAME,
-			TOOL_WRENCH
+			TOOL_SCREWDRIVER = list(
+				"fasten frame" = dyntool_image_forward(TOOL_SCREWDRIVER),
+			),
+			TOOL_WRENCH = list(
+				"deconstruct" = dyntool_image_backward(TOOL_WRENCH),
+			),
 		)
 	else if (!considered_reinforced)
 		. = list(
-			TOOL_SCREWDRIVER = TOOL_HINT_UNSCREWING_WINDOW_FRAME
+			TOOL_SCREWDRIVER = list(
+				"unfasten frame" = dyntool_image_backward(TOOL_SCREWDRIVER),
+			),
 		)
 	else
 		switch (construction_state)
 			if (WINDOW_STATE_SCREWED_TO_FLOOR)
 				. = list(
-				  TOOL_SCREWDRIVER = TOOL_HINT_UNSCREWING_WINDOW_FRAME,
-				  TOOL_CROWBAR = TOOL_HINT_CROWBAR_WINDOW_IN
+					TOOL_SCREWDRIVER = list(
+						"unfasten frame" = dyntool_image_backward(TOOL_SCREWDRIVER),
+					),
+					TOOL_CROWBAR = list(
+						"seat pane" = dyntool_image_forward(TOOL_CROWBAR),
+					),
 				)
 			if (WINDOW_STATE_CROWBRARED_IN)
 				. = list(
-				TOOL_SCREWDRIVER = TOOL_HINT_SCREWING_WINDOW_PANE,
-				TOOL_CROWBAR = TOOL_HINT_CROWBAR_WINDOW_OUT
+					TOOL_SCREWDRIVER = list(
+						"fasten pane" = dyntool_image_forward(TOOL_SCREWDRIVER),
+					),
+					TOOL_CROWBAR = list(
+						"unseat pane" = dyntool_image_backward(TOOL_CROWBAR),
+					),
 				)
 			if (WINDOW_STATE_SECURED_TO_FRAME)
 				. = list(
-				  TOOL_SCREWDRIVER = TOOL_HINT_UNSCREWING_WINDOW_PANE
+					TOOL_SCREWDRIVER = list(
+						"unfasten pane" = dyntool_image_backward(TOOL_SCREWDRIVER),
+					),
 				)
 	return merge_double_lazy_assoc_list(., ..())
-
-
-/obj/structure/window/dynamic_tool_image(function, hint)
-	switch (hint)
-		if (TOOL_HINT_CROWBAR_WINDOW_IN)
-			return dyntool_image_forward(TOOL_CROWBAR)
-		if (TOOL_HINT_CROWBAR_WINDOW_OUT)
-			return dyntool_image_backward(TOOL_CROWBAR)
-		if (TOOL_HINT_SCREWING_WINDOW_FRAME)
-			return dyntool_image_forward(TOOL_SCREWDRIVER)
-		if (TOOL_HINT_UNSCREWING_WINDOW_FRAME)
-			return dyntool_image_backward(TOOL_SCREWDRIVER)
-		if (TOOL_HINT_SCREWING_WINDOW_PANE)
-			return dyntool_image_forward(TOOL_SCREWDRIVER)
-		if (TOOL_HINT_UNSCREWING_WINDOW_PANE)
-			return dyntool_image_backward(TOOL_SCREWDRIVER)
-	return ..()
-
 
 //This proc is used to update the icons of nearby windows.
 /obj/structure/window/proc/update_nearby_icons()

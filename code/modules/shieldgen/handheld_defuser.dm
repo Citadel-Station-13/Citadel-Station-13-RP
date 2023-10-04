@@ -21,7 +21,7 @@
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/shield_diffuser/get_cell()
+/obj/item/shield_diffuser/get_cell(inducer)
 	return cell
 
 /obj/item/shield_diffuser/process(delta_time)

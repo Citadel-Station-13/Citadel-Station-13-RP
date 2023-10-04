@@ -57,7 +57,7 @@
 			update_appearance()
 			return PROCESS_KILL
 
-/obj/item/flashlight/get_cell()
+/obj/item/flashlight/get_cell(inducer)
 	return cell
 
 /obj/item/flashlight/verb/toggle()
