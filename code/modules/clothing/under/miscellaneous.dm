@@ -2356,3 +2356,10 @@
 	icon = 'icons/clothing/uniform/costume/darkcleric.dmi'
 	icon_state = "darkcleric"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/under/tourist
+	name = "tourist liesurewear"
+	desc = "This loud shirt is made of mid-grade cashmere. This premier liesurewear pairs well with a nice pair of khaki shorts that stop uncomfortably above the knee."
+	icon = 'icons/clothing/uniform/misc/tourist.dmi'
+	icon_state = "tourist"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

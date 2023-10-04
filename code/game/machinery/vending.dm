@@ -2479,6 +2479,7 @@
 		/obj/item/clothing/suit/banana = 3,
 		/obj/item/clothing/suit/assassin = 3,
 		/obj/item/clothing/head/bard = 3,
+		/obj/item/clothing/head/helmet/aquiline = 3,
 		/obj/item/clothing/under/aquiline_enforcer = 3,
 		/obj/item/clothing/under/yoko = 3,
 		/obj/item/clothing/under/kamina = 3,

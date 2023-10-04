@@ -286,3 +286,10 @@
 	icon = 'icons/clothing/shoes/ballet.dmi'
 	icon_state = "ballet"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/socksandals
+	name = "socks and sandals"
+	desc = "These broken in leather sandals go great with a brand new pair of white socks. The ultimate in comfort for a wandering sightseer."
+	icon = 'icons/clothing/uniform/misc/tourist.dmi'
+	icon_state = "touristsandal"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
