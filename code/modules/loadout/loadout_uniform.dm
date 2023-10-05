@@ -917,6 +917,10 @@ Swimsuits
 	name = "Antheia Tutu"
 	path = /obj/item/clothing/under/ballet
 
+/datum/loadout_entry/uniform/tourist
+	name = "Tourist Liesurewear"
+	path = /obj/item/clothing/under/tourist
+
 //Tajaran wears
 
 /datum/loadout_entry/uniform/tajaran/summercloths_selection
