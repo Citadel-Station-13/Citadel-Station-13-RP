@@ -55,3 +55,4 @@
 	satchel_one = /obj/item/storage/backpack/satchel/tox
 	messenger_bag = /obj/item/storage/backpack/messenger/tox
 	dufflebag = /obj/item/storage/backpack/dufflebag/sci
+	
