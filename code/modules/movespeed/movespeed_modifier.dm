@@ -37,10 +37,18 @@ Key procs
 	/// flags
 	var/movespeed_modifier_flags = NONE
 
+	/// calculation type
+	var/calculation_type = MOVESPEED_CALCULATION_HYPERBOLIC
+
+	//* HYPERBOLIC, HYPERBOLIC_BOOST calculations
 	/// Multiplicative slowdown
 	var/multiplicative_slowdown = 0
-	/// Next two variables depend on this: Should we do advanced calculations?
-	var/complex_calculation = FALSE
+
+	//* MULTIPLY calculations
+	/// multiply resulting speed by
+	var/multiply_speed = 1
+
+	//* HYPERBOLIC_BOOST, MULTIPLY calculations
 	/// Absolute max tiles we can boost to
 	var/absolute_max_tiles_per_second = INFINITY
 	/// Max tiles per second we can boost
@@ -72,6 +80,24 @@ Key procs
 	var/max_buff_to = max(existing + multiplicative_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
 	// never slow the user
 	return min(existing, max_buff_to)
+
+/**
+ * applies from params
+ */
+/datum/movespeed_modifier/proc/parse(list/params)
+	. = FALSE
+	if(!isnull(params[MOVESPEED_PARAM_DELAY_MOD]))
+		. = TRUE
+		multiplicative_slowdown = params[MOVESPEED_PARAM_DELAY_MOD]
+	if(!isnull(params[MOVESPEED_PARAM_MULTIPLY_SPEED]))
+		. = TRUE
+		multiply_speed = params[MOVESPEED_PARAM_MULTIPLY_SPEED]
+	if(!isnull(params[MOVESPEED_PARAM_MAX_TILE_ABSOLUTE]))
+		. = TRUE
+		absolute_max_tiles_per_second = params[MOVESPEED_PARAM_MAX_TILE_ABSOLUTE]
+	if(!isnull(params[MOVESPEED_PARAM_MAX_TILE_BOOST]))
+		. = TRUE
+		max_tiles_per_second_boost = params[MOVESPEED_PARAM_MAX_TILE_BOOST]
 
 GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 
@@ -122,15 +148,16 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		update_movespeed(FALSE)
 	return TRUE
 
-/*! Used for variable slowdowns like hunger/health loss/etc, works somewhat like the old list-based modification adds. Returns the modifier datum if successful
-	How this SHOULD work is:
-	1. Ensures type_id_datum one way or another refers to a /variable datum. This makes sure it can't be cached. This includes if it's already in the modification list.
-	2. Instantiate a new datum if type_id_datum isn't already instantiated + in the list, using the type. Obviously, wouldn't work for ID only.
-	3. Add the datum if necessary using the regular add proc
-	4. If any of the rest of the args are not null (see: multiplicative slowdown), modify the datum
-	5. Update if necessary
-*/
-/mob/proc/add_or_update_variable_movespeed_modifier(datum/movespeed_modifier/type_id_datum, update = TRUE, multiplicative_slowdown)
+/**
+ * Used for variable slowdowns like hunger/health loss/etc, works somewhat like the old list-based modification adds. Returns the modifier datum if successful
+ * How this SHOULD work is:
+ * 1. Ensures type_id_datum one way or another refers to a /variable datum. This makes sure it can't be cached. This includes if it's already in the modification list.
+ * 2. Instantiate a new datum if type_id_datum isn't already instantiated + in the list, using the type. Obviously, wouldn't work for ID only.
+ * 3. Add the datum if necessary using the regular add proc
+ * 4. If any of the rest of the args are not null (see: multiplicative slowdown), modify the datum
+ * 5. Update if necessary
+ */
+/mob/proc/add_or_update_variable_movespeed_modifier(datum/movespeed_modifier/type_id_datum, update = TRUE, list/params)
 	var/modified = FALSE
 	var/inject = FALSE
 	var/datum/movespeed_modifier/final
@@ -153,8 +180,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		if(!LAZYACCESS(movespeed_modification, final.id))
 			inject = TRUE
 			modified = TRUE
-	if(!isnull(multiplicative_slowdown))
-		final.multiplicative_slowdown = multiplicative_slowdown
+	if(final.parse(params))
 		modified = TRUE
 	if(inject)
 		add_movespeed_modifier(final, FALSE)
@@ -171,7 +197,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		diff = var_value - cached_multiplicative_slowdown
 	. = ..()
 	if(. && slowdown_edit && isnum(diff))
-		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/admin_varedit, multiplicative_slowdown = diff)
+		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/admin_varedit, params = list(MOVESPEED_PARAM_DELAY_MOD = diff))
 
 ///Is there a movespeed modifier for this mob
 /mob/proc/has_movespeed_modifier(datum/movespeed_modifier/datum_type_id)

@@ -199,7 +199,7 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 		var/datum/tgui_dynamic_query/query = new
 		query.string("name", "Name", "Name your modifier.", 64, FALSE, "Custom Modifier")
 		query.number("carry_strength_add", "Carry Strength - Add", "Modify the person's base carry strength", default = 0)
-		query.number("carry_factor_mult", "Carry Factor - Multiply", "Multiply the person's divisor for slowdown when carrying over their limit.", default = 1)
+		query.number("carry_factor_mult", "Carry Factor - Multiply", "Multiply the person's weight to slowdown multiplier when carrying over their limit.", default = 1)
 
 		var/list/choices = tgui_dynamic_input(usr, "Add a physiology modifier", "Add Physiology Modifier", query)
 

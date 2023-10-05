@@ -10,21 +10,21 @@
 
 //? Carry strength - flat strength. you can carry up to this with no penalty.
 
-#define CARRY_STRENGTH_BASELINE 15
+#define CARRY_STRENGTH_BASELINE 20
 
-#define CARRY_STRENGTH_ADD_HUMAN 0
-#define CARRY_STRENGTH_ADD_UNATHI 2.5
+#define CARRY_STRENGTH_ADD_HUMAN 2.5
+#define CARRY_STRENGTH_ADD_UNATHI 5
 #define CARRY_STRENGTH_ADD_PROTEAN 5
 #define CARRY_STRENGTH_ADD_MOTH_LIGHT 2.5
-#define CARRY_STRENGTH_ADD_MOTH_DARK -2.5
+#define CARRY_STRENGTH_ADD_MOTH_DARK -5
 #define CARRY_STRENGTH_ADD_TAJARAN -2.5
-#define CARRY_STRENGTH_ADD_TESHARI -2.5
+#define CARRY_STRENGTH_ADD_TESHARI -5
 #define CARRY_STRENGTH_ADD_XENOCHIMERA 5
 #define CARRY_STRENGTH_ADD_XENOHYBRID 5
 
-//? Carry factor - divisor for over-limit weight to apply to penalty after exponent
+//? Carry factor - multiplier for over-limit weight to apply to penalty after exponent
 
-#define CARRY_FACTOR_BASELINE 7.5
+#define CARRY_FACTOR_BASELINE 1
 
 #define CARRY_FACTOR_MOD_HUMAN 1.2
 #define CARRY_FACTOR_MOD_UNATHI 1.2

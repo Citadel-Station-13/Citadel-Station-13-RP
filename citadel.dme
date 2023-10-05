@@ -22,6 +22,7 @@
 #include "code\__DEFINES\_bitfields.dm"
 #include "code\__DEFINES\_cooldowns.dm"
 #include "code\__DEFINES\_core.dm"
+#include "code\__DEFINES\_enums.dm"
 #include "code\__DEFINES\_globals.dm"
 #include "code\__DEFINES\_lists.dm"
 #include "code\__DEFINES\_planes+layers.dm"

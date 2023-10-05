@@ -53,12 +53,12 @@
 /mob/living/carbon/carry_weight_to_slowdown(amount)
 	. = max(0, amount - physiology.carry_strength)
 	if(.)
-		. = (. / physiology.carry_factor) ** physiology.carry_exponent
+		. = (. * physiology.carry_factor) ** physiology.carry_exponent
 
 /mob/living/carbon/carry_encumbrance_to_slowdown(amount)
 	. = max(0, amount - physiology.carry_strength)
 	if(.)
-		. = (. / physiology.carry_factor) ** physiology.carry_exponent
+		. = (. * physiology.carry_factor) ** physiology.carry_exponent
 
 /mob/living/carbon/get_item_slowdown()
 	. = ..()
