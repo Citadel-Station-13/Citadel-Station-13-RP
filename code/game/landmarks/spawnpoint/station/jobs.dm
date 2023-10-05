@@ -123,7 +123,7 @@
 	icon_state = "Medical Doctor"
 	job_path = /datum/role/job/station/doctor
 
-/obj/landmark/spawnpoint/job/senior_physician
+/obj/landmark/spawnpoint/job/head_nurse
 	name = "Senior Physician"
 //	icon_state = "Medical Doctor"
 	job_path = /datum/role/job/station/senior_physician
