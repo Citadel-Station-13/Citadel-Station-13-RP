@@ -47,7 +47,7 @@ DEFINE_BITFIELD(item_flags, list(
 #define CLOTHING_IGNORE_BELTLINK	(1<<2)
 /// for plural limbs, wearable with just one
 #define CLOTHING_ALLOW_SINGLE_LIMB	(1<<3)
-/// Prevents syringes, parapens and hyposprays if equipped to slot_suit or SLOT_ID_HEAD.
+/// Prevents syringes, parapens and hyposprays.
 #define CLOTHING_THICK_MATERIAL		(1<<4)
 /// Syringes / hyposprays / etc can get through, but need to pass through an injection port.
 #define CLOTHING_INJECTION_PORT		(1<<5)

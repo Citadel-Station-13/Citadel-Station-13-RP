@@ -255,7 +255,24 @@
 /obj/item/examine(mob/user, dist)
 	. = ..()
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weightclass2text(w_class)] item."
-	switch(max(get_encumbrance(), get_weight()))
+	switch(get_encumbrance())
+		if(-INFINITY to 0.1)
+			. += "It looks effortless to carry around and wear."
+		if(0.1 to 0.75)
+			. += "It looks very easy to carry around and wear."
+		if(0.75 to 2)
+			. += "It looks decently able to be carried around and worn."
+		if(2 to 5)
+			. += "It looks somewhat unwieldly."
+		if(5 to 10)
+			. += "It looks quite unwieldly."
+		if(10 to 20)
+			. += "It looks very unwieldly. It would take a good effort to run around with it."
+		if(20 to 40)
+			. += "It looks extremely unwieldly. You probably will have a hard time running with it."
+		if(40 to INFINITY)
+			. += "It's so unwieldly that it's a surprise you can hold it at all. You really won't be doing much running with it."
+	switch(get_weight())
 		if(-INFINITY to 0.1)
 			. += "It looks like it weighs practically nothing."
 		if(0.1 to 0.75)

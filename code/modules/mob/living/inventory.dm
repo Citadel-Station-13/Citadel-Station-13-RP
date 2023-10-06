@@ -297,8 +297,10 @@
 	return 1
 
 /mob/living/proc/update_carry()
-	var/penalty = min(carry_weight_to_penalty(cached_carry_weight), carry_encumbrance_to_penalty(cached_carry_encumbrance))
-	switch(round(penalty * 100))
+	var/weight_penalty = carry_weight_to_penalty(cached_carry_weight)
+	var/encumbrance_penalty = carry_encumbrance_to_penalty(cached_carry_encumbrance)
+	var/penalty = min(weight_penalty, encumbrance_penalty)
+	switch(round(weight_penalty * 100))
 		if(88 to 99)
 			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/minor)
 		if(76 to 87)

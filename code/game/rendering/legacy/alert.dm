@@ -519,6 +519,16 @@ so as to remain in compliance with the most up-to-date laws."
 	background_state = "default"
 	desc = "Carrying more than you can comfortably bear. Movement slowed."
 
+/atom/movable/screen/alert/encumbered/Click(location, control, params)
+	if(!isliving(owner))
+		return
+	var/mob/living/L = owner
+	to_chat(usr, jointext(list(
+		"[usr == L? "You are" : "[L] is"] <b>[lowertext(name)]</b>.",
+		"Encumbrance: [L.cached_carry_encumbrance] / [L.physiology.carry_strength]",
+		"Weight: [L.cached_carry_weight] / [L.physiology.carry_strength]",
+	)))
+
 /atom/movable/screen/alert/encumbered/minor
 	name = "Lightly Encumbered"
 	icon_state = "1"
