@@ -284,28 +284,33 @@
 	cached_carry_encumbrance += amount
 	update_carry()
 
-/mob/living/proc/carry_weight_to_slowdown(amount)
-	return 0
+/**
+ * @return penalty as speed multiplier from 0 to 1
+ */
+/mob/living/proc/carry_weight_to_penalty(amount)
+	return 1
 
-/mob/living/proc/carry_encumbrance_to_slowdown(amount)
-	return 0
+/**
+ * @return penalty as speed multiplier from 0 to 1
+ */
+/mob/living/proc/carry_encumbrance_to_penalty(amount)
+	return 1
 
 /mob/living/proc/update_carry()
-	var/slowdown = max(carry_weight_to_slowdown(cached_carry_weight), carry_encumbrance_to_slowdown(cached_carry_encumbrance))
-	switch(round(slowdown * 100))
-		if(1 to 25)
+	var/penalty = min(carry_weight_to_penalty(cached_carry_weight), carry_encumbrance_to_penalty(cached_carry_encumbrance))
+	switch(round(penalty * 100))
+		if(88 to 99)
 			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/minor)
-		if(26 to 50)
+		if(76 to 87)
 			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/moderate)
-		if(51 to 150)
+		if(51 to 75)
 			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/severe)
-		if(151 to INFINITY)
+		if(0 to 50)
 			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/extreme)
 		else
 			clear_alert("encumbered")
-	if(slowdown)
-		#warn redo
-		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_inventory_carry, multiplicative_slowdown = slowdown)
+	if(penalty)
+		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_inventory_carry, params = list(MOVESPEED_PARAM_MULTIPLY_SPEED = penalty))
 	else
 		remove_movespeed_modifier(/datum/movespeed_modifier/mob_inventory_carry)
 

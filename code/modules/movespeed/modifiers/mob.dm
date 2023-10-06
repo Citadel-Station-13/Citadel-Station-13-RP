@@ -5,6 +5,7 @@
 	variable = TRUE
 
 /datum/movespeed_modifier/mob_inventory_carry
+	priority = MOVESPEED_PRIORITY_CARRY_WEIGHT
 	variable = TRUE
 
 /datum/movespeed_modifier/mob_item_slowdown

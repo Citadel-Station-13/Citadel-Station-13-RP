@@ -33,7 +33,7 @@ Key procs
 	var/id
 
 	/// Determines order. Lower priorities are applied first.
-	var/priority = 0
+	var/priority = MOVESPEED_PRIORITY_DEFAULT
 	/// flags
 	var/movespeed_modifier_flags = NONE
 

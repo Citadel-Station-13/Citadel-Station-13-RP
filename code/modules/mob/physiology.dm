@@ -12,11 +12,8 @@
 
 	/// carry weight baseline modify
 	var/carry_strength = CARRY_STRENGTH_BASELINE
-	/// carry weight penalty divisor
+	/// carry weight penalty modifier
 	var/carry_factor = CARRY_FACTOR_BASELINE
-	/// carry weight exponent
-	//  todo: a modifier var for this
-	var/carry_exponent = CARRY_EXPONENT_BASELINE
 
 /datum/global_physiology/Destroy()
 	ownership = null
@@ -198,8 +195,8 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 
 		var/datum/tgui_dynamic_query/query = new
 		query.string("name", "Name", "Name your modifier.", 64, FALSE, "Custom Modifier")
-		query.number("carry_strength_add", "Carry Strength - Add", "Modify the person's base carry strength", default = 0)
-		query.number("carry_factor_mult", "Carry Factor - Multiply", "Multiply the person's weight to slowdown multiplier when carrying over their limit.", default = 1)
+		query.number("carry_strength_add", "Carry Strength - Add", "Modify the person's base carry strength. Higher is better.", default = 0)
+		query.number("carry_factor_mult", "Carry Factor - Multiply", "Multiply the person's weight to slowdown effect when carrying over their limit. Lower is better.", default = 1)
 
 		var/list/choices = tgui_dynamic_input(usr, "Add a physiology modifier", "Add Physiology Modifier", query)
 

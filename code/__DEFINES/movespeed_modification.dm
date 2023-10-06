@@ -31,6 +31,11 @@ DEFINE_ENUM(movespeed_modifier_calculation_type, list(
 /// max_tiles_per_second_boost
 #define MOVESPEED_PARAM_MAX_TILE_BOOST "max_tlies"
 
+//! Priorities - Lower is applied first
+
+#define MOVESPEED_PRIORITY_DEFAULT 0
+#define MOVESPEED_PRIORITY_CARRY_WEIGHT 10
+
 //! Conflicts IDs
 // None yet
 

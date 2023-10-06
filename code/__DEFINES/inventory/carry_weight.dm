@@ -8,6 +8,8 @@
 //? weight - how much stuff weighs, recursive
 //? encumberence - how hard it is to move with an item, non-recursive
 
+//* CHECK https://www.desmos.com/calculator/5o2cx7grbo FOR INFORMATION *//
+
 //? Carry strength - flat strength. you can carry up to this with no penalty.
 
 #define CARRY_STRENGTH_BASELINE 20
@@ -22,23 +24,27 @@
 #define CARRY_STRENGTH_ADD_XENOCHIMERA 5
 #define CARRY_STRENGTH_ADD_XENOHYBRID 5
 
-//? Carry factor - multiplier for over-limit weight to apply to penalty after exponent
+//? Carry factor - multiplier for penalizing over-limit weight; higher is worse.
 
 #define CARRY_FACTOR_BASELINE 1
 
-#define CARRY_FACTOR_MOD_HUMAN 1.2
-#define CARRY_FACTOR_MOD_UNATHI 1.2
-#define CARRY_FACTOR_MOD_MOTH_LIGHT 1.2
-#define CARRY_FACTOR_MOD_MOTH_DARK 0.8
-#define CARRY_FACTOR_MOD_TAJARAN 0.8
-#define CARRY_FACTOR_MOD_TESHARI 0.6
-#define CARRY_FACTOR_MOD_PROTEAN 0.7
-#define CARRY_FACTOR_MOD_XENOCHIMERA 1.2
-#define CARRY_FACTOR_MOD_XENOHYBRID 1.2
+#define CARRY_FACTOR_MOD_HUMAN 0.8
+#define CARRY_FACTOR_MOD_UNATHI 0.8
+#define CARRY_FACTOR_MOD_MOTH_LIGHT 0.8
+#define CARRY_FACTOR_MOD_MOTH_DARK 1.1
+#define CARRY_FACTOR_MOD_TAJARAN 1.1
+#define CARRY_FACTOR_MOD_TESHARI 1.2
+#define CARRY_FACTOR_MOD_PROTEAN 1.2
+#define CARRY_FACTOR_MOD_XENOCHIMERA 0.8
+#define CARRY_FACTOR_MOD_XENOHYBRID 0.8
 
-//? Carry exponent - what's used in the formula for slowdown after extra weight is divided by divisor
+//? Carry equation constants
 
-#define CARRY_EXPONENT_BASELINE (2 / 3)
+/// How penalizing the default penalty curve is; lower is weaker slowdowns from overweight.
+#define CARRY_WEIGHT_SCALING 2.5
+/// For now, constant - bias factor; higher = skip more of the curve as soon as weight goes above strength
+
+#define CARRY_WEIGHT_BIAS 1
 
 //? Item Encumbrance defines
 
