@@ -22,7 +22,6 @@
 /datum/global_physiology/proc/reset()
 	carry_strength = initial(carry_strength)
 	carry_factor = initial(carry_factor)
-	carry_exponent = initial(carry_exponent)
 
 /datum/global_physiology/proc/apply(datum/physiology_modifier/modifier)
 	if(!isnull(modifier.carry_strength_add))

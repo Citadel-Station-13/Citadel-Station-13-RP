@@ -43,7 +43,6 @@
 /// How penalizing the default penalty curve is; lower is weaker slowdowns from overweight.
 #define CARRY_WEIGHT_SCALING 2.5
 /// For now, constant - bias factor; higher = skip more of the curve as soon as weight goes above strength
-
 #define CARRY_WEIGHT_BIAS 1
 
 //? Item Encumbrance defines

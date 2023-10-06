@@ -1,7 +1,7 @@
-//! movespeed_modifier_flags
+//* movespeed_modifier_flags
 // None yet
 
-//! calculation_type
+//* calculation_type
 
 /// just use multiplicative_slowdown
 #define MOVESPEED_CALCULATION_HYPERBOLIC "hyperbolic"
@@ -20,7 +20,7 @@ DEFINE_ENUM(movespeed_modifier_calculation_type, list(
 	ENUM("Multiply", MOVESPEED_CALCULATION_MULTIPLY),
 ))
 
-//! params for add_or_update_variable_movespeed_modifier
+//* params for add_or_update_variable_movespeed_modifier
 
 /// multiplicative_slowdown
 #define MOVESPEED_PARAM_DELAY_MOD "delay"
@@ -31,13 +31,18 @@ DEFINE_ENUM(movespeed_modifier_calculation_type, list(
 /// max_tiles_per_second_boost
 #define MOVESPEED_PARAM_MAX_TILE_BOOST "max_tlies"
 
-//! Priorities - Lower is applied first
+//* Constants
+
+/// minimum movespeed
+#define MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND 0.25
+
+//* Priorities - Lower is applied first
 
 #define MOVESPEED_PRIORITY_DEFAULT 0
 #define MOVESPEED_PRIORITY_CARRY_WEIGHT 10
 
-//! Conflicts IDs
+//* Conflicts IDs
 // None yet
 
-//! IDs
+//* IDs
 // None yet
