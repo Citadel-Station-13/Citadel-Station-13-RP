@@ -2193,6 +2193,7 @@
 		/obj/item/flashlight = 5,
 		/obj/item/laser_pointer = 3,
 		/obj/item/clothing/glasses/omnihud = 10,
+		/obj/item/device/walkpod = 5,
 	)
 	premium = list(
 		/obj/item/perfect_tele/one_beacon = 1,
@@ -2203,6 +2204,7 @@
 	prices = list(
 		/obj/item/modular_computer/tablet/preset/custom_loadout/cheap = 300,
 		/obj/item/laser_pointer = 100,
+		/obj/item/device/walkpod = 300,
 	)
 	price_default = 25
 
@@ -2477,6 +2479,7 @@
 		/obj/item/clothing/suit/banana = 3,
 		/obj/item/clothing/suit/assassin = 3,
 		/obj/item/clothing/head/bard = 3,
+		/obj/item/clothing/head/helmet/aquiline = 3,
 		/obj/item/clothing/under/aquiline_enforcer = 3,
 		/obj/item/clothing/under/yoko = 3,
 		/obj/item/clothing/under/kamina = 3,

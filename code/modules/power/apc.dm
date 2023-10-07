@@ -400,7 +400,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	return ..()
 
-/obj/machinery/power/apc/get_cell()
+/obj/machinery/power/apc/get_cell(inducer)
 	return cell
 
 // APCs are pixel-shifted, so they need to be updated.

@@ -129,7 +129,7 @@
 		attached_cell.emp_act(severity)
 
 // Finds the cell for the magazine, used by rechargers
-/obj/item/ammo_magazine/smart/get_cell()
+/obj/item/ammo_magazine/smart/get_cell(inducer)
 	return attached_cell
 
 // Removes energy from the attached cell when creating new bullets

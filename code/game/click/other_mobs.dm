@@ -31,8 +31,22 @@
 	A.attack_hand(src)
 
 /// Return TRUE to cancel other attack hand effects that respect it.
+// todo: /datum/event_args/actor/clickchain
 /atom/proc/attack_hand(mob/user, list/params)
+	if(on_attack_hand(new /datum/event_args/actor/clickchain(user, intent = user.a_intent, params = params)))
+		return TRUE
 	. = _try_interact(user)
+
+/**
+ * Override this instead of attack_hand.
+ *
+ * Return TRUE to cancel other attack hand effects that respect it.
+ *
+ * @params
+ * * e_args - click data
+ */
+/atom/proc/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	return FALSE
 
 //Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
 /atom/proc/_try_interact(mob/user)

@@ -261,3 +261,8 @@ modular computers
 	name = "Webbing - White" //it's a nice day for a / white webbing
 	path = /obj/item/clothing/accessory/storage/white_vest
 	cost = 2
+
+/datum/loadout_entry/utility/walkpod
+	name = "Podzu music player"
+	path = /obj/item/device/walkpod
+	cost = 2

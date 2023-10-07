@@ -234,8 +234,12 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		choices += id
 		choices_values[id] = E
 		if(new_choices[E])
-			var/I = extract_image(new_choices[E])
+			var/image/I = extract_image(new_choices[E])
 			if(I)
+				//! perform fixup
+				I.plane = FLOAT_PLANE
+				I.layer = FLOAT_LAYER
+				//! end
 				choices_icons[id] = I
 	setup_menu(use_tooltips)
 
@@ -314,3 +318,13 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	QDEL_NULL(menu)
 	GLOB.radial_menus -= uniqueid
 	return answer
+
+/datum/radial_menu/context_menu
+	/// host atom
+	var/atom/host
+	// todo: this needs such a drastic fucking refactor along with the rest of this file i'm going to scream
+
+/datum/radial_menu/context_menu/Destroy()
+	LAZYREMOVE(host.context_menus, current_user)
+	host = null
+	return ..()

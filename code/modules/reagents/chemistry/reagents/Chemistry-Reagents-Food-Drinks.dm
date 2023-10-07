@@ -2716,14 +2716,13 @@
 	glass_name = "Bahama Mama"
 	glass_desc = "Tropical cocktail."
 
-/datum/reagent/ethanol/bananahonk
+/datum/reagent/drink/bananahonk
 	name = "Banana Mama"
 	id = "bananahonk"
 	description = "A drink from Clown Heaven."
 	taste_description = "bananas and sugar"
-	nutriment_factor = 1
+	nutrition = 1
 	color = "#FFFF91"
-	strength = 12
 
 	glass_name = "Banana Honk"
 	glass_desc = "A drink from Banana Heaven."
@@ -3196,15 +3195,14 @@
 	glass_name = "Screwdriver"
 	glass_desc = "A simple, yet superb mixture of Vodka and orange juice. Just the thing for the tired engineer."
 
-/datum/reagent/ethanol/silencer
+/datum/reagent/drink/silencer
 	name = "Silencer"
 	id = "silencer"
 	description = "A drink from Mime Heaven."
 	taste_description = "a pencil eraser"
 	taste_mult = 1.2
-	nutriment_factor = 1
+	nutrition = 1
 	color = "#FFFFFF"
-	strength = 12
 
 	glass_name = "Silencer"
 	glass_desc = "A drink from mime Heaven."

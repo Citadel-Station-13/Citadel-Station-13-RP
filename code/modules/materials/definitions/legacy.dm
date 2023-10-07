@@ -8,6 +8,7 @@
 	display_name = "darkglass"
 	icon_base = "darkglass"
 	icon_colour = "#FFFFFF"
+	table_icon_base = "darkglass"
 
 // what the fuck?
 /datum/material/fancyblack
@@ -16,6 +17,7 @@
 	display_name = "fancyblack"
 	icon_base = "fancyblack"
 	icon_colour = "#FFFFFF"
+	table_icon_base = "fancyblack"
 
 // what the fuck?
 /datum/material/alienalloy/alium
@@ -23,3 +25,4 @@
 	name = "alium"
 	display_name = "alien"
 	icon_colour = "#FFFFFF"
+	table_icon_base = "alien"
