@@ -1,6 +1,6 @@
 /datum/physiology_modifier/intrinsic/species/tajaran
 	carry_strength_add = CARRY_STRENGTH_ADD_TAJARAN
-	carry_factor_mult = CARRY_FACTOR_MOD_TAJARAN
+	carry_strength_factor = CARRY_FACTOR_MOD_TAJARAN
 
 /datum/species/tajaran
 	uid = SPECIES_ID_TAJARAN

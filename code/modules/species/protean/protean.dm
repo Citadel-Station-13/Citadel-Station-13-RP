@@ -3,7 +3,7 @@
 
 /datum/physiology_modifier/intrinsic/species/protean
 	carry_strength_add = CARRY_STRENGTH_ADD_PROTEAN
-	carry_factor_mult = CARRY_FACTOR_MOD_PROTEAN
+	carry_strength_factor = CARRY_FACTOR_MOD_PROTEAN
 
 /datum/species/protean
 	uid = SPECIES_ID_PROTEAN

@@ -37,8 +37,6 @@
 	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
 
 	//? Carry Weight
-	//  todo: rename carry_weight to weight by getting rid of other var/weight variables.
-
 	/// encumberance.
 	/// calculated as max() of all encumbrance
 	/// result is calculated into slowdown value

@@ -132,6 +132,8 @@
 	var/cached_carry_weight = 0
 	/// cached encumbrance of all items
 	var/cached_carry_encumbrance = 0
+	/// highest flat encumbrance of all items
+	var/cached_carry_flat_encumbrance = 0
 
 	//? movement
 	/// are we currently pushing (or trying to push) (or otherwise inside Bump() handling that deals with this crap) another atom?

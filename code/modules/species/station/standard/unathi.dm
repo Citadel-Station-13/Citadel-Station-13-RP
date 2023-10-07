@@ -1,6 +1,6 @@
 /datum/physiology_modifier/intrinsic/species/unathi
 	carry_strength_add = CARRY_STRENGTH_ADD_UNATHI
-	carry_factor_mult = CARRY_FACTOR_MOD_UNATHI
+	carry_strength_factor = CARRY_FACTOR_MOD_UNATHI
 
 /datum/species/unathi
 	uid = SPECIES_ID_UNATHI

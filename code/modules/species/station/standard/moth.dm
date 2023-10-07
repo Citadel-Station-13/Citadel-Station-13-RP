@@ -161,7 +161,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 /datum/physiology_modifier/intrinsic/species/nepid/dark
 	carry_strength_add = CARRY_STRENGTH_ADD_MOTH_DARK
-	carry_factor_mult = CARRY_FACTOR_MOD_MOTH_DARK
+	carry_strength_factor = CARRY_FACTOR_MOD_MOTH_DARK
 
 /datum/species/moth/dark
 	name = SPECIES_MOTH_DARK
@@ -176,7 +176,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 /datum/physiology_modifier/intrinsic/species/nepid/light
 	carry_strength_add = CARRY_STRENGTH_ADD_MOTH_LIGHT
-	carry_factor_mult = CARRY_FACTOR_MOD_MOTH_LIGHT
+	carry_strength_factor = CARRY_FACTOR_MOD_MOTH_LIGHT
 
 /datum/species/moth/light
 	name = SPECIES_MOTH_LIGHT

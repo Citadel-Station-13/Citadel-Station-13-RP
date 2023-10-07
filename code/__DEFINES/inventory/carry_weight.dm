@@ -1,8 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-#warn value tune everything
-
 //? Despite this being carry_weight.dm, this contains defines for:
 //? carry strength - how much someone can carry or move
 //? weight - how much stuff weighs, recursive

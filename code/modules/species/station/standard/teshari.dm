@@ -1,6 +1,6 @@
 /datum/physiology_modifier/intrinsic/species/teshari
 	carry_strength_add = CARRY_STRENGTH_ADD_TESHARI
-	carry_factor_mult = CARRY_FACTOR_MOD_TESHARI
+	carry_strength_factor = CARRY_FACTOR_MOD_TESHARI
 
 /datum/species/teshari
 	uid = SPECIES_ID_TESHARI

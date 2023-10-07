@@ -1,6 +1,6 @@
 /datum/physiology_modifier/intrinsic/species/xenochimera
 	carry_strength_add = CARRY_STRENGTH_ADD_XENOCHIMERA
-	carry_factor_mult = CARRY_FACTOR_MOD_XENOCHIMERA
+	carry_strength_factor = CARRY_FACTOR_MOD_XENOCHIMERA
 
 /datum/species/shapeshifter/xenochimera //Scree's race.
 	uid = SPECIES_ID_XENOCHIMERA

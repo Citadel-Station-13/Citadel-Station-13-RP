@@ -1,6 +1,6 @@
 /datum/physiology_modifier/intrinsic/species/human
 	carry_strength_add = CARRY_STRENGTH_ADD_HUMAN
-	carry_factor_mult = CARRY_FACTOR_MOD_HUMAN
+	carry_strength_factor = CARRY_FACTOR_MOD_HUMAN
 
 /datum/species/human
 	id = SPECIES_ID_HUMAN

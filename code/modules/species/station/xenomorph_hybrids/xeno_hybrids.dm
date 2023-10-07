@@ -1,6 +1,6 @@
 /datum/physiology_modifier/intrinsic/species/xenohybrid
 	carry_strength_add = CARRY_STRENGTH_ADD_XENOHYBRID
-	carry_factor_mult = CARRY_FACTOR_MOD_XENOHYBRID
+	carry_strength_factor = CARRY_FACTOR_MOD_XENOHYBRID
 
 /datum/species/xenohybrid
 	name = SPECIES_XENOHYBRID
