@@ -49,7 +49,7 @@
 	if(!isnull(modifier.carry_strength_factor))
 		carry_factor /= modifier.carry_strength_factor
 	if(!isnull(modifier.carry_weight_add))
-		carry_strength_add -= modifier.carry_weight_add
+		carry_weight_add -= modifier.carry_weight_add
 	if(!isnull(modifier.carry_weight_factor))
 		carry_weight_factor /= modifier.carry_weight_factor
 
@@ -104,7 +104,7 @@
 	var/carry_strength_add = 0
 	var/carry_strength_factor = 1
 	var/carry_weight_add = 0
-	var/carry_weight_factor = 0
+	var/carry_weight_factor = 1
 
 /datum/physiology_modifier/serialize()
 	. = ..()
@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 	if(ispath(modifier))
 		modifier = cached_physiology_modifier(modifier)
 	ASSERT(!(modifier in physiology_modifiers))
-	physiology_modifiers += modifier
+	LAZYADD(physiology_modifiers, modifier)
 	physiology.apply(modifier)
 
 /**
@@ -180,7 +180,7 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 	if(ispath(modifier))
 		modifier = cached_physiology_modifier(modifier)
 	ASSERT(modifier in physiology_modifiers)
-	physiology_modifiers -= modifier
+	LAZYREMOVE(physiology_modifiers, modifier)
 	if(!physiology.revert(modifier))
 		// todo: optimize with reset().
 		rebuild_physiology()

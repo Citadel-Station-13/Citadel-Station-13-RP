@@ -258,7 +258,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 				continue
 		. = M.apply_multiplicative(., src)
 	// your delay decreases, "give" the delay back to the client
-	cached_multiplicative_slowdown = .
+	cached_multiplicative_slowdown = min(., 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
 	if(!client)
 		return
 	var/diff = (last_move_time - move_delay) - cached_multiplicative_slowdown

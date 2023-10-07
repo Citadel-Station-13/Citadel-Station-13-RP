@@ -81,6 +81,7 @@
 
 	// clear carry
 	if(isliving(user))
+		var/mob/living/L = user
 		if(flat_encumbrance)
 			L.recalculate_carry()
 		else if(!isnull(encumbrance_registered))
