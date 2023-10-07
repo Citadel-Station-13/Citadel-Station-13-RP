@@ -48,11 +48,14 @@
 	user.update_inv_hands()
 
 	// register carry
-	if((slot == SLOT_ID_HANDS)? (item_flags & ITEM_ENCUMBERS_WHILE_HELD) : !(item_flags & ITEM_ENCUMBERS_ONLY_HELD))
-		encumbrance_registered = get_encumbrance()
-		if(isliving(user))
-			var/mob/living/L = user
-			L.adjust_current_carry_encumbrance(encumbrance_registered)
+	if(isliving(user))
+		var/mob/living/L = user
+		if((slot == SLOT_ID_HANDS)? (item_flags & ITEM_ENCUMBERS_WHILE_HELD) : !(item_flags & ITEM_ENCUMBERS_ONLY_HELD))
+			if(flat_encumbrance)
+				L.recalculate_carry()
+			else
+				encumbrance_registered = get_encumbrance()
+				L.adjust_current_carry_encumbrance(encumbrance_registered)
 
 /**
  * called when an item is unequipped from inventory or moved around in inventory
@@ -77,9 +80,10 @@
 		playsound(src, unequip_sound, 30, ignore_walls = FALSE)
 
 	// clear carry
-	if(!isnull(encumbrance_registered))
-		if(isliving(user))
-			var/mob/living/L = user
+	if(isliving(user))
+		if(flat_encumbrance)
+			L.recalculate_carry()
+		else if(!isnull(encumbrance_registered))
 			L.adjust_current_carry_encumbrance(-encumbrance_registered)
 
 /**

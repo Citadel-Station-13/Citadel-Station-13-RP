@@ -25,6 +25,7 @@
 	siemens_coefficient = 0 //They're thick rubber boots! Of course they won't conduct electricity!
 	clothing_flags = NOSLIP
 	encumbrance = ITEM_ENCUMBRANCE_SHOES_GALOSHES
+	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_GALOSHES
 	species_restricted = null
 	drop_sound = 'sound/items/drop/rubber.ogg'
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
@@ -65,6 +66,7 @@
 	name = "clown shoes"
 	icon_state = "clown"
 	encumbrance = ITEM_ENCUMBRANCE_SHOES_CLOWN
+	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_SHOES_CLOWN
 	damage_force = 0
 	var/footstep = 1	//used for squeeks whilst walking
 	species_restricted = null
@@ -137,6 +139,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "galoshes", SLOT_ID_LEFT_HAND = "galoshes")
 	clothing_flags = NOSLIP
 	encumbrance = ITEM_ENCUMBRANCE_SHOES_FINS
+	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_SHOES_FINS
 	species_restricted = null
 
 /obj/item/clothing/shoes/flipflop

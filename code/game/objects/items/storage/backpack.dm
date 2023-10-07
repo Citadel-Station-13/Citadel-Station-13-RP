@@ -169,6 +169,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle", SLOT_ID_LEFT_HAND = "duffle")
 	weight = ITEM_WEIGHT_STORAGE_DUFFLEBAG
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
+	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_DUFFLEBAG
 	// todo: remove when weight system is used
 	slowdown = 0.25
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE

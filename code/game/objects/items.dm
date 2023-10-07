@@ -50,6 +50,9 @@
 	var/weight = ITEM_WEIGHT_BASELINE
 	/// registered carry weight - null if not in inventory.
 	var/weight_registered
+	/// flat encumbrance - while worn, you are treated as at **least** this encumbered
+	/// e.g. if someone is wearing a flat 50 encumbrance item, but their regular encumbrance tally is only 45, they still have 50 total.
+	var/flat_encumbrance = 0
 	/// Hard slowdown. Applied before carry weight.
 	/// This affects multiplicative movespeed.
 	var/slowdown = 0
@@ -811,6 +814,9 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/get_encumbrance()
 	return encumbrance
 
+/obj/item/proc/get_flat_encumbrance()
+	return flat_encumbrance
+
 /obj/item/proc/update_weight()
 	if(isnull(weight_registered))
 		return null
@@ -833,6 +839,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(istype(wearer))
 		wearer.adjust_current_carry_encumbrance(.)
 
+/obj/item/proc/update_flat_encumbrance()
+	var/mob/living/wearer = worn_mob()
+	if(istype(wearer))
+		wearer.recalculate_carry()
+
 /obj/item/proc/set_weight(amount)
 	if(amount == weight)
 		return
@@ -846,6 +857,12 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		return
 	encumbrance = amount
 	update_encumbrance()
+
+/obj/item/proc/set_flat_encumbrance(amount)
+	if(amount == flat_encumbrance)
+		return
+	flat_encumbrance = amount
+	update_flat_encumbrance()
 
 /obj/item/proc/set_slowdown(amount)
 	if(amount == slowdown)
@@ -953,15 +970,14 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 				if(istype(L))
 					L.recalculate_carry()
 					L.update_carry()
-		if(NAMEOF(src, weight), NAMEOF(src, encumbrance))
+		if(NAMEOF(src, weight), NAMEOF(src, encumbrance), NAMEOF(src, flat_encumbrance))
 			// todo: introspection system update - this should be 'handled', as opposed to hooked.
 			. = ..()
 			if(. )
 				var/mob/living/L = worn_mob()
 				// check, as worn_mob() returns /mob, not /living
 				if(istype(L))
-					L.recalculate_carry()
-					L.update_carry()
+					L.update_carry_slowdown()
 		if(NAMEOF(src, slowdown))
 			. = ..()
 			if(. )
