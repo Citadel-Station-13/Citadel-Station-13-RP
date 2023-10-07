@@ -11,7 +11,7 @@
 	//? Flags
 	/// Item flags.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
-	var/item_flags = NONE
+	var/item_flags = ITEM_ENCUMBERS_WHILE_HELD
 	/// Miscellaneous flags pertaining to equippable objects.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/clothing_flags = NONE
@@ -939,3 +939,35 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
 	damage = fetch_armor().resultant_damage(damage, tier, flag)
 	return args.Copy()
+
+//? VV
+
+/obj/item/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	switch(var_name)
+		if(NAMEOF(src, item_flags))
+			var/requires_update = (item_flags & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD)) != (var_value & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD))
+			. = ..()
+			if(. && requires_update)
+				var/mob/living/L = worn_mob()
+				// check, as worn_mob() returns /mob, not /living
+				if(istype(L))
+					L.recalculate_carry()
+					L.update_carry()
+		if(NAMEOF(src, weight), NAMEOF(src, encumbrance))
+			// todo: introspection system update - this should be 'handled', as opposed to hooked.
+			. = ..()
+			if(. )
+				var/mob/living/L = worn_mob()
+				// check, as worn_mob() returns /mob, not /living
+				if(istype(L))
+					L.recalculate_carry()
+					L.update_carry()
+		if(NAMEOF(src, slowdown))
+			. = ..()
+			if(. )
+				var/mob/living/L = worn_mob()
+				// check, as worn_mob() returns /mob, not /living
+				if(istype(L))
+					L.update_item_slowdown()
+		else
+			return ..()

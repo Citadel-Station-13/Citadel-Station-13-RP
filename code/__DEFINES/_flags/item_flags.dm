@@ -23,6 +23,11 @@
 #define ITEM_NO_LATHE_DECONSTRUCT (1<<10)
 /// stack-like handling for ingredients
 #define ITEM_MASS_INGREDIENT (1<<11)
+/// encumbers while in hand
+#define ITEM_ENCUMBERS_WHILE_HELD (1<<12)
+/// doesn't encumber while not in hand
+#define ITEM_ENCUMBERS_ONLY_HELD (1<<13)
+// todo: ITEM_SLOWS_WHILE_HELD for slowdown
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_IN_INVENTORY),
@@ -37,6 +42,8 @@ DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_EASY_LATHE_DECONSTRUCT),
 	BITFIELD(ITEM_NO_LATHE_DECONSTRUCT),
 	BITFIELD(ITEM_MASS_INGREDIENT),
+	BITFIELD(ITEM_ENCUMBERS_WHILE_HELD),
+	BITFIELD(ITEM_ENCUMBERS_ONLY_HELD),
 ))
 
 //! Flags for the clothing_flags var on /obj/item

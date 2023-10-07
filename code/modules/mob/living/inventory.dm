@@ -268,6 +268,12 @@
 	var/tally_encumbrance = 0
 	for(var/obj/item/I as anything in get_equipped_items())
 		tally_weight += I.get_weight()
+		if(I.is_held())
+			if(!(I.item_flags & ITEM_ENCUMBER_IN_HAND))
+				continue
+		else
+			if(I.item_flags & ITEM_ENCUMBERS_ONLY_HELD)
+				continue
 		tally_encumbrance += I.get_encumbrance()
 	cached_carry_weight = tally_weight
 	cached_carry_encumbrance = tally_encumbrance

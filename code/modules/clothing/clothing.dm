@@ -5,6 +5,7 @@
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/clothing.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
+	item_flags = NONE
 
 	//? equip
 	/// Inventory slot IDs where this is active for any effects. Used by subtypes, to be potentially refactored in the future.
