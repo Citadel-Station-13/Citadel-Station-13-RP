@@ -306,7 +306,7 @@
 	var/weight_penalty = carry_weight_to_penalty(cached_carry_weight)
 	var/encumbrance_penalty = carry_encumbrance_to_penalty(cached_carry_encumbrance)
 	var/penalty = min(weight_penalty, encumbrance_penalty)
-	switch(round(weight_penalty * 100))
+	switch(round(penalty * 100))
 		if(88 to 99)
 			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/minor)
 		if(76 to 87)
@@ -317,6 +317,8 @@
 			throw_alert("encumbered", /atom/movable/screen/alert/encumbered/extreme)
 		else
 			clear_alert("encumbered")
+	/// do not slow down below 10% of base
+	penalty = max(penalty, 0.1)
 	if(penalty)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_inventory_carry, params = list(MOVESPEED_PARAM_MULTIPLY_SPEED = penalty))
 	else

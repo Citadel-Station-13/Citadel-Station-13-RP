@@ -8,7 +8,7 @@
 //? weight - how much stuff weighs, recursive
 //? encumberence - how hard it is to move with an item, non-recursive
 
-//* CHECK https://www.desmos.com/calculator/5o2cx7grbo FOR INFORMATION *//
+//* CHECK https://www.desmos.com/calculator/o44o3naob2 FOR INFORMATION *//
 //* DO nOT CHANGE ANY CONSTANTS WItHOUT GRAPHING IT OUT FIRST.         *//
 
 //? Carry strength - flat strength. you can carry up to this with no penalty.
@@ -27,7 +27,7 @@
 
 //? Carry factor - multiplier for penalizing over-limit weight; higher is worse.
 
-#define CARRY_FACTOR_BASELINE 1.25
+#define CARRY_FACTOR_BASELINE 1
 
 #define CARRY_FACTOR_MOD_HUMAN 0.92
 #define CARRY_FACTOR_MOD_UNATHI 0.92
@@ -45,6 +45,8 @@
 #define CARRY_WEIGHT_SCALING 2
 /// For now, constant - bias factor; higher = skip more of the curve as soon as weight goes above strength
 #define CARRY_WEIGHT_BIAS 1
+/// % from 0 to 1 of the curve that is automatically given ; 0.1 = the asymptote is 10%, as opposed to 0% movespeed
+#define CARRY_WEIGHT_ASYMPTOTE 0.1
 
 //? Item Encumbrance defines
 
@@ -100,23 +102,23 @@
 /// magboots off
 #define ITEM_ENCUMBRANCE_SHOES_MAGBOOTS 5
 /// normal magboots on
-#define ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE 20
+#define ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE 30
 /// ce magboots on
-#define ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE_ADVANCED 5
-#define ITEM_ENCUMBRANCE_SHOES_CLOWN 10
-#define ITEM_ENCUMBRANCE_SHOES_FINS 10
-#define ITEM_ENCUMBRANCE_SHOES_GALOSHES 10
+#define ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE_ADVANCED 10
+#define ITEM_ENCUMBRANCE_SHOES_CLOWN 15
+#define ITEM_ENCUMBRANCE_SHOES_FINS 15
+#define ITEM_ENCUMBRANCE_SHOES_GALOSHES 15
 
 //* Factions
 
 #define ITEM_ENCUMBRANCE_CHANGELING_MAGBOOTS 5
 #define ITEM_ENCUMBRANCE_CHANGELING_MAGBOOTS_PULSE 15
-#define ITEM_ENCUMBRANCE_CULT_VOIDSUIT 20
+#define ITEM_ENCUMBRANCE_CULT_VOIDSUIT 30
 #define ITEM_ENCUMBRANCE_CULT_VOIDSUIT_HELMET 2.5
 
 //* Spacesuits
 
-#define ITEM_ENCUMBRANCE_SOFTSUIT 20
+#define ITEM_ENCUMBRANCE_SOFTSUIT 30
 #define ITEM_ENCUMBRANCE_SOFTSUIT_HELMET 2.5
 
 #warn below
@@ -142,13 +144,13 @@
 
 //* Storage
 
-#define ITEM_ENCUMBRANCE_STORAGE_BACKPACK 5
-#define ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG 15
+#define ITEM_ENCUMBRANCE_STORAGE_BACKPACK 10
+#define ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG 20
 #define ITEM_ENCUMBRANCE_STORAGE_POUCH_LARGE 5
 
 //* Species
 
-#define ITEM_ENCUMBRANCE_PHORONOID_SUIT 30
+#define ITEM_ENCUMBRANCE_PHORONOID_SUIT 15
 #define ITEM_ENCUMBRANCE_PHORONOID_HELMET 0
 #define ITEM_ENCUMBRANCE_TAJARAN_SWORDSMAN_ARMOR 10
 
