@@ -51,6 +51,8 @@
 /obj/item/storage/backpack/holding/duffle
 	name = "dufflebag of holding"
 	icon_state = "holdingduffle"
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
+	weight = ITEM_WEIGHT_STORAGE_DUFFLEBAG
 
 /obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage/backpack/holding))
@@ -166,7 +168,9 @@
 	icon_state = "duffle"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "duffle", SLOT_ID_LEFT_HAND = "duffle")
 	weight = ITEM_WEIGHT_STORAGE_DUFFLEBAG
-	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
+	// todo: remove when weight system is used
+	slowdown = 0.25
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE
 
 /obj/item/storage/backpack/dufflebag/syndie
