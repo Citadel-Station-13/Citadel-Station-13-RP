@@ -43,13 +43,13 @@
 	)
 	. += create_stack_recipe_datum(
 		name = "resin membrane",
-		product = /obj/effect/alien/resin/membrane,
+		product = /obj/structure/alien/resin/membrane,
 		cost = 1,
 		time = 2 SECONDS,
 	)
 	. += create_stack_recipe_datum(
 		name = "resin node",
-		product = /obj/effect/alien/weeds/node,
+		product = /obj/structure/alien/weeds/node,
 		cost = 1,
 		time = 2 SECONDS,
 	)

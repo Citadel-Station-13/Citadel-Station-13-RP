@@ -115,8 +115,8 @@
 		return
 
 	is_adult = FALSE
-	melee_damage_lower = round(melee_damage_lower / 2) // 20
-	melee_damage_upper = round(melee_damage_upper / 2) // 30
+	legacy_melee_damage_lower = round(legacy_melee_damage_lower / 2) // 20
+	legacy_melee_damage_upper = round(legacy_melee_damage_upper / 2) // 30
 	maxHealth = initial(maxHealth)
 	health = clamp(health, 0, maxHealth)
 	nutrition = 400

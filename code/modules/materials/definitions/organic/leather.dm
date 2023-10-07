@@ -20,8 +20,6 @@
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
-	protectiveness = 3 // 13%
-	conductive = 0
 
 /datum/material/leather/generate_recipes()
 	. = ..()

@@ -203,9 +203,6 @@
 	icon_base = 'icons/turf/walls/wood_wall.dmi'
 	wall_stripe_icon = 'icons/turf/walls/wood_wall_stripe.dmi'
 	icon_reinf_directionals = TRUE
-	integrity = 65	//a bit stronger than regular wood
-	hardness = 20
-	weight = 20	//likewise, heavier
 	table_icon_base = "stone"
 
 /datum/material/wood_plank/hardwood/special_recipes()
