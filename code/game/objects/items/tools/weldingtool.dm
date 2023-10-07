@@ -162,20 +162,20 @@
 /obj/item/weldingtool/proc/get_max_fuel()
 	return max_fuel
 
-/obj/item/weldingtool/using_as_tool(function, flags, mob/user, atom/target, time, cost, usage)
+/obj/item/weldingtool/using_as_tool(function, flags, datum/event_args/actor/clickchain/e_args, atom/target, time, cost, usage)
 	. = ..()
 	if(!. || function != TOOL_WELDER)
 		return
 	if(!isOn())
-		user.action_feedback(SPAN_WARNING("[src] must be on to be used to weld!"), target)
+		e_args.chat_feedback(SPAN_WARNING("[src] must be on to be used to weld!"), target)
 		return FALSE
 	// floor
 	var/computed = round(cost * time * TOOL_WELDING_FUEL_PER_DS)
 	if(get_fuel() < computed)
-		user.action_feedback(SPAN_WARNING("[src] doesn't have enough fuel left to do that!"), target)
+		e_args.chat_feedback(SPAN_WARNING("[src] doesn't have enough fuel left to do that!"), target)
 		return FALSE
 
-/obj/item/weldingtool/used_as_tool(function, flags, mob/user, atom/target, time, cost, usage, success)
+/obj/item/weldingtool/used_as_tool(function, flags, datum/event_args/actor/clickchain/e_args, atom/target, time, cost, usage, success)
 	. = ..()
 	if(!.)
 		return
@@ -570,7 +570,7 @@
 		power_supply = new /obj/item/cell/device(src)
 	update_icon()
 
-/obj/item/weldingtool/electric/get_cell()
+/obj/item/weldingtool/electric/get_cell(inducer)
 	return power_supply
 
 /obj/item/weldingtool/electric/examine(mob/user, dist)

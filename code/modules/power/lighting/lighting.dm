@@ -632,7 +632,7 @@ var/global/list/light_type_cache = list()
 	on = (s && status == LIGHT_OK)
 	update()
 
-/obj/machinery/light/get_cell()
+/obj/machinery/light/get_cell(inducer)
 	return cell
 
 // examine verb

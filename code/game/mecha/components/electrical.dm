@@ -5,6 +5,7 @@
 	icon_state = "board"
 	w_class = ITEMSIZE_HUGE
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
+	materials = list(MAT_STEEL = 2500, MAT_GLASS = 1000)
 
 	component_type = MECH_ELECTRIC
 

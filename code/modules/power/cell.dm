@@ -48,7 +48,7 @@
 /obj/item/cell/get_rating()
 	return rating
 
-/obj/item/cell/get_cell()
+/obj/item/cell/get_cell(inducer)
 	return src
 
 /obj/item/cell/process(delta_time)

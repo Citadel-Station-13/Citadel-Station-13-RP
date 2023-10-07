@@ -22,12 +22,22 @@
 
 /**
  * Log construction action
+ *
+ * todo: log initiator
  */
-/proc/log_construction(mob/user, atom/target, message)
-	log_game("CONSTRUCTION: [key_name(user)] [COORD(user)] -> [target] [COORD(target)]: [message]")
+/proc/log_construction(datum/event_args/actor/e_args, atom/target, message)
+	log_game("CONSTRUCTION: [key_name(e_args.performer)] [COORD(e_args.performer)] -> [target] [COORD(target)]: [message]")
+
+/**
+ * log click - context menu
+ */
+/proc/log_click_context(datum/event_args/actor/e_args, atom/target, message)
+	log_click("CONTEXT: [key_name(e_args.initiator)][e_args.performer != e_args.initiator? " via [key_name(e_args.performer)]" : ""] -> [target] [AUDIT_COORD(target)]: [message]")
 
 /**
  * Log stack crafting
+ *
+ * todo: log initiator
  */
 /proc/log_stackcrafting(mob/user, obj/item/stack/stack, name, amount, used, turf/where = get_turf(user))
 	log_game("STACKCRAFT: [key_name(user)] crafted [amount] of [name] with [used] of [stack] at [where]")

@@ -2001,7 +2001,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
 "brd" = (
 /obj/machinery/light{
@@ -4736,11 +4736,6 @@
 "did" = (
 /turf/simulated/wall/prepainted/cargo,
 /area/maintenance/substation/cargo)
-"die" = (
-/obj/structure/catwalk,
-/obj/structure/disposalpipe/segment,
-/turf/space/basic,
-/area/maintenance/security/lower)
 "dix" = (
 /obj/structure/table/rack/shelf,
 /obj/fiftyspawner/hardwood,
@@ -59200,7 +59195,7 @@ cFW
 cFW
 lUJ
 jAY
-die
+jAY
 vaO
 jAY
 dVt

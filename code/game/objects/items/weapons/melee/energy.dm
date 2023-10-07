@@ -145,7 +145,7 @@
 			return
 	return ..()
 
-/obj/item/melee/energy/get_cell()
+/obj/item/melee/energy/get_cell(inducer)
 	return bcell
 
 /obj/item/melee/energy/update_icon()

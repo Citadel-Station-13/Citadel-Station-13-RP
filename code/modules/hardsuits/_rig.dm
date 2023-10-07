@@ -117,7 +117,7 @@
 
 	var/sprint_slowdown_modifier = 0					      // Sprinter module modifier.
 
-/obj/item/hardsuit/get_cell()
+/obj/item/hardsuit/get_cell(inducer)
 	return cell
 
 /obj/item/hardsuit/examine(mob/user, dist)

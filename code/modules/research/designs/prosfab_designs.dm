@@ -13,6 +13,8 @@
 	if(istype(fabricator, /obj/machinery/mecha_part_fabricator/pros))
 		var/obj/machinery/mecha_part_fabricator/pros/prosfab = fabricator
 		var/obj/item/organ/O = new build_path(where)
+		if(!istype(O))
+			return O
 		if(prosfab.manufacturer)
 			var/datum/robolimb/manf = GLOB.all_robolimbs[prosfab.manufacturer]
 

@@ -5,6 +5,7 @@
 	icon_state = "armor"
 	w_class = ITEMSIZE_HUGE
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 2)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 1000)
 
 	component_type = MECH_ARMOR
 

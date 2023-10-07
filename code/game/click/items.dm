@@ -54,7 +54,7 @@
 	// are we on harm intent? if so, lol no
 	if(user && (user.a_intent == INTENT_HARM))
 		return NONE
-	return target.tool_interaction(src, user, clickchain_flags | CLICKCHAIN_TOOL_ACT)
+	return target.tool_interaction(src, new /datum/event_args/actor/clickchain(user, params = params), clickchain_flags | CLICKCHAIN_TOOL_ACT)
 
 /**
  * called at the start of melee attack chains

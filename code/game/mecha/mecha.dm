@@ -398,7 +398,7 @@
 		return
 	cell = new /obj/item/cell/high(src)
 
-/obj/mecha/get_cell()
+/obj/mecha/get_cell(inducer)
 	return cell
 
 /obj/mecha/proc/add_cabin()
@@ -2850,5 +2850,5 @@
 				occupant.clear_alert("mech damage")
 
 // Various sideways-defined get_cells
-/obj/mecha/get_cell()
+/obj/mecha/get_cell(inducer)
 	return cell
