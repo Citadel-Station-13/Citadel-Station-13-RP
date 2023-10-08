@@ -26,7 +26,7 @@
 						They can also assist the station by producing simple robots and even pilotable exosuits."
 	alt_titles = list(
 		"Biomechanical Technician" = /datum/prototype/struct/alt_title/biomech,
-		"Mechatronic Technician" = /datum/prototype/struct/alt_title/mech_tech
+		"Mechatronic Technician" = /datum/prototype/struct/alt_title/mech_tech,
 		"Artificer-Biotechnicist" = /datum/prototype/struct/alt_title/artificer_biotechnicist
 		)
 
