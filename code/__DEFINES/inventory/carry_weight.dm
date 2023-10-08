@@ -42,7 +42,7 @@
 /// How penalizing the default penalty curve is; lower is weaker slowdowns from overweight.
 #define CARRY_WEIGHT_SCALING 2
 /// For now, constant - bias factor; higher = skip more of the curve as soon as weight goes above strength
-#define CARRY_WEIGHT_BIAS 1.25
+#define CARRY_WEIGHT_BIAS 1.2
 /// % from 0 to 1 of the curve that is automatically given ; 0.1 = the asymptote is 10%, as opposed to 0% movespeed
 #define CARRY_WEIGHT_ASYMPTOTE 0.1
 

@@ -78,6 +78,17 @@ Key procs
 /datum/movespeed_modifier/proc/apply_multiplicative(existing, mob/target)
 	// todo: we should max/min to ticklag rather than 0, but, we can't until everything is moved to modifiers.
 	switch(calculation_type)
+	/*
+		if(MOVESPEED_CALCULATION_HYPERBOLIC)
+			return max(world.tick_lag, existing + multiplicative_slowdown)
+		if(MOVESPEED_CALCULATION_HYPERBOLIC_BOOST)
+			var/current_tiles = 10 / max(existing, world.tick_lag)
+			var/max_buff_to = max(existing + multiplicative_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
+			return clamp(max_buff_to, world.tick_lag, existing)
+		if(MOVESPEED_CALCULATION_MULTIPLY)
+			var/current_tiles = 10 / max(world.tick_lag, existing)
+			return 10 / (current_tiles * multiply_speed)
+	*/
 		if(MOVESPEED_CALCULATION_HYPERBOLIC)
 			// going below 0 would fuck multipliers up pretty badly
 			return max(0, existing + multiplicative_slowdown)
@@ -86,8 +97,14 @@ Key procs
 			var/max_buff_to = max(existing + multiplicative_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
 			return min(existing, max_buff_to)
 		if(MOVESPEED_CALCULATION_MULTIPLY)
-			var/current_tiles = 10 / max(existing, world.tick_lag)
-			return min(existing, 10 / (current_tiles * multiply_speed))
+			if(existing > 0)
+				var/current_tiles = 10 / existing
+				return 10 / (current_tiles * multiply_speed)
+			else
+				var/current_tiles = 10 / config_legacy.run_delay
+				return 10 / (current_tiles * multiply_speed)
+		if(MOVESPEED_CALCULATION_MULTIPLY_LEGACY)
+			target.cached_movespeed_multiply *= multiply_speed
 		else
 			return existing
 
@@ -244,6 +261,9 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 /mob/proc/update_movespeed()
 	. = 0
 	var/list/conflict_tracker = list()
+	//! TODO: LEGACY
+	cached_movespeed_multiply = 1
+	//! END
 	for(var/datum/movespeed_modifier/M in get_movespeed_modifiers())
 		if(!(M.movement_type & movement_type)) // We don't affect any of these move types, skip
 			continue
@@ -259,12 +279,15 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 			else
 				continue
 		. = M.apply_multiplicative(., src)
-	// your delay decreases, "give" the delay back to the client
+	//! TODO: LEGACY
+	cached_multiplicative_slowdown = 10 / (cached_multiplicative_slowdown * (1 / cached_movespeed_multiply))
+	//! END
 	cached_multiplicative_slowdown = min(., 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
 	if(!client)
 		return
 	var/diff = (last_move_time - move_delay) - cached_multiplicative_slowdown
 	if(diff > 0)
+		// your delay decreases, "give" the delay back to the client
 		if(move_delay > world.time + 1.5)
 			move_delay -= diff
 #ifdef SMOOTH_MOVEMENT
