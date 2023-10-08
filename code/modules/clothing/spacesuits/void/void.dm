@@ -87,13 +87,13 @@
 
 /obj/item/clothing/suit/space/void/get_weight()
 	. = ..()
-	if(boots.loc == src)
+	if(boots?.loc == src)
 		. += boots.get_weight()
-	if(helmet.loc == src)
+	if(helmet?.loc == src)
 		. += helmet.get_weight()
-	if(tank.loc == src)
+	if(tank?.loc == src)
 		. += tank.get_weight()
-	if(cooler.loc == src)
+	if(cooler?.loc == src)
 		. += cooler.get_weight()
 
 /obj/item/clothing/suit/space/void/examine(mob/user, dist)

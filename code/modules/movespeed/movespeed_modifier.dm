@@ -76,16 +76,18 @@ Key procs
   * This is so math doesn't break down when something attempts to break through the asymptote at 0 for move delay to speed.
   */
 /datum/movespeed_modifier/proc/apply_multiplicative(existing, mob/target)
+	// todo: we should max/min to ticklag rather than 0, but, we can't until everything is moved to modifiers.
 	switch(calculation_type)
 		if(MOVESPEED_CALCULATION_HYPERBOLIC)
-			return existing + multiplicative_slowdown
+			// going below 0 would fuck multipliers up pretty badly
+			return max(0, existing + multiplicative_slowdown)
 		if(MOVESPEED_CALCULATION_HYPERBOLIC_BOOST)
 			var/current_tiles = 10 / max(existing, world.tick_lag)
 			var/max_buff_to = max(existing + multiplicative_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
 			return min(existing, max_buff_to)
 		if(MOVESPEED_CALCULATION_MULTIPLY)
 			var/current_tiles = 10 / max(existing, world.tick_lag)
-			return 10 / (current_tiles * multiply_speed)
+			return min(existing, 10 / (current_tiles * multiply_speed))
 		else
 			return existing
 

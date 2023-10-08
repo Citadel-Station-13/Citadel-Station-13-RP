@@ -86,6 +86,7 @@
 			L.recalculate_carry()
 		else if(!isnull(encumbrance_registered))
 			L.adjust_current_carry_encumbrance(-encumbrance_registered)
+			encumbrance_registered = null
 
 /**
  * called when a mob drops an item

@@ -10,14 +10,18 @@
 	// todo: /datum/global_physiology should hold global body physiology, limbs should hold modifiers/whatever themselves.
 	//       this way biologies can be supported as efficiently as possible.
 
-	/// carry weight baseline modify
+	/// carry baseline modify
 	var/carry_strength = CARRY_STRENGTH_BASELINE
-	/// carry weight penalty modifier
+	/// carry penalty modifier
 	var/carry_factor = CARRY_FACTOR_BASELINE
+	/// carry bias modify
+	var/carry_bias = 1
 	/// carry weight add - added to carry_strength for carry weight only, not encumbrance.
 	var/carry_weight_add = 0
 	/// carry weight factor - multiplied to carry_factor for carry weight only, not encumbrance.
 	var/carry_weight_factor = 1
+	/// carry weight bias - multipled to carry_bias for carry weight only, not encumbrance
+	var/carry_weight_bias = 1
 
 /datum/global_physiology/Destroy()
 	ownership = null
@@ -28,6 +32,8 @@
 	carry_factor = initial(carry_factor)
 	carry_weight_add = initial(carry_weight_add)
 	carry_weight_factor = initial(carry_weight_factor)
+	carry_bias = initial(carry_bias)
+	carry_weight_bias = initial(carry_weight_bias)
 
 /datum/global_physiology/proc/apply(datum/physiology_modifier/modifier)
 	if(!isnull(modifier.carry_strength_add))
@@ -38,6 +44,10 @@
 		carry_weight_add += modifier.carry_weight_add
 	if(!isnull(modifier.carry_weight_factor))
 		carry_weight_factor *= modifier.carry_weight_factor
+	if(!isnull(modifier.carry_strength_bias))
+		carry_bias *= modifier.carry_strength_bias
+	if(!isnull(modifier.carry_weight_bias))
+		carry_weight_bias *= modifier.carry_weight_bias
 
 /**
  * return FALSE if we need to reset due to non-canonical operations
@@ -52,6 +62,10 @@
 		carry_weight_add -= modifier.carry_weight_add
 	if(!isnull(modifier.carry_weight_factor))
 		carry_weight_factor /= modifier.carry_weight_factor
+	if(!isnull(modifier.carry_strength_bias))
+		carry_bias /= modifier.carry_strength_bias
+	if(!isnull(modifier.carry_weight_bias))
+		carry_weight_bias /= modifier.carry_weight_bias
 
 /datum/global_physiology/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	// we automatically hook varedits and change the admin varedit holder so rebuilds take it into account
@@ -103,8 +117,10 @@
 	//? global modifiers
 	var/carry_strength_add = 0
 	var/carry_strength_factor = 1
+	var/carry_strength_bias = 1
 	var/carry_weight_add = 0
 	var/carry_weight_factor = 1
+	var/carry_weight_bias = 1
 
 /datum/physiology_modifier/serialize()
 	. = ..()
@@ -123,6 +139,14 @@
 		carry_strength_add = data["carry_strength_add"]
 	if(isnum(data["carry_strength_factor"]))
 		carry_strength_factor = data["carry_strength_factor"]
+	if(isnum(data["carry_strength_bias"]))
+		carry_strength_bias = data["carry_strength_bias"]
+	if(isnum(data["carry_weight_add"]))
+		carry_weight_add = data["carry_weight_add"]
+	if(isnum(data["carry_weight_factor"]))
+		carry_weight_factor = data["carry_weight_factor"]
+	if(isnum(data["carry_weight_bias"]))
+		carry_weight_bias = data["carry_Weight_bias"]
 
 /**
  * subtype for hardcoded physiology modifiers
@@ -212,8 +236,10 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 		query.string("name", "Name", "Name your modifier.", 64, FALSE, "Custom Modifier")
 		query.number("carry_strength_add", "Carry Strength - Add", "Modify the person's base carry strength. Higher is better.", default = 0)
 		query.number("carry_strength_factor", "Carry Factor - Multiply", "Multiply the person's carry weight/encumbrance to slowdown effect when carrying over their limit. Lower is better.", default = 1)
+		query.number("carry_strength_bias", "Carry Bias - Multiply", "Multiply the person's carry weight/encumbrance to slowdown bias when carrying over their limit. Lower is better.", default = 1)
 		query.number("carry_weight_add", "Carry Weight - Add", "Modify the person's base carry weight. Higher is better. This only applies to weight, not encumbrance.", default = 0)
 		query.number("carry_weight_factor", "Carry Weight - Multiply", "Multiply the person's weight to slowdown effect when carrying over their limit. Lower is better. This only applies to weight, not encumbrance.", default = 1)
+		query.number("carry_weight_bias", "Carry Weight - Bias", "Multiply the person's weight to slowdown calculation bias; lower is better.", default = 1)
 
 		var/list/choices = tgui_dynamic_input(usr, "Add a physiology modifier", "Add Physiology Modifier", query)
 
@@ -231,8 +257,10 @@ GLOBAL_LIST_EMPTY(cached_physiology_modifiers)
 		modifier.name = choices["name"]
 		modifier.carry_strength_add = choices["carry_strength_add"]
 		modifier.carry_strength_factor = choices["carry_strength_factor"]
+		modifier.carry_strength_bias = choices["carry_strength_bias"]
 		modifier.carry_weight_add = choices["carry_weight_add"]
 		modifier.carry_weight_factor = choices["carry_weight_factor"]
+		modifier.carry_weight_bias = choices["carry_weight_bias"]
 
 		log_admin("[key_name(usr)] --> [key_name(src)] - added physiology modifier [json_encode(modifier.serialize())]")
 		add_physiology_modifier(modifier)

@@ -64,9 +64,9 @@
 
 	//* Carry Weight
 	/// encumbrance compensation for accessories - flat.
-	var/encumbrance_mitigation = 0
+	var/accessory_encumbrance_mitigation = 0
 	/// encumbrance multiplier for accessories.
-	var/encumbrance_multiply = 1
+	var/accessory_encumbrance_multiply = 1
 
 /obj/item/clothing/Initialize(mapload)
 	. = ..()

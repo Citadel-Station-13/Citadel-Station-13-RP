@@ -18,15 +18,15 @@
 /obj/item/clothing/get_encumbrance()
 	. = ..()
 	if(!isnull(accessory_host))
-		. = max(0, . * accessory_host.encumbrance_multiply - accessory_host.encumbrance_mitigation)
+		. = max(0, . * accessory_host.accessory_encumbrance_multiply - accessory_host.accessory_encumbrance_mitigation)
 
-/obj/item/clothing/proc/set_encumbrance_mitigation(val, update)
-	encumbrance_mitigation = val
+/obj/item/clothing/proc/set_accessory_encumbrance_mitigation(val, update)
+	accessory_encumbrance_mitigation = val
 	if(update)
 		update_accessory_encumbrance()
 
-/obj/item/clothing/proc/set_encumbrance_multiply(val, update)
-	encumbrance_multiply = val
+/obj/item/clothing/proc/set_accessory_encumbrance_multiply(val, update)
+	accessory_encumbrance_multiply = val
 	if(update)
 		update_accessory_encumbrance()
 
