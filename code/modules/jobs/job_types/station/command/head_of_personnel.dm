@@ -33,6 +33,7 @@
 						of the crew, including their money and access. If necessary, the Head of Personnel is first in line to assume Acting Command."
 	alt_titles = list(
 		"First Officer" = /datum/prototype/struct/alt_title/fo,
+		"Crew Resources Officer" = /datum/prototype/struct/alt_title/cro,
 		"Deputy Director" = /datum/prototype/struct/alt_title/hop/deputy
 	)
 
@@ -76,6 +77,9 @@
 
 /datum/prototype/struct/alt_title/fo
 	title = "First Officer"
+
+/datum/prototype/struct/alt_title/cro
+	title = "Crew Resources Officer"
 
 /datum/prototype/struct/alt_title/hop/deputy
 	title = "Deputy Director"

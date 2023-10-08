@@ -29,7 +29,6 @@
 						They may also be called upon to keep patients stable when Medical is busy or understaffed."
 	alt_titles = list(
 		"Emergency Medical Technician" = /datum/prototype/struct/alt_title/emt,
-		"Medical Responder" = /datum/prototype/struct/alt_title/medical_responder,
 		"Biotechnical Responder" = /datum/prototype/struct/alt_title/biotech_responder
 		)
 
@@ -39,7 +38,7 @@
 	background_allow = list(
 		/datum/lore/character_background/faction/onkhera_necropolis
 	)
-background_enforce = TRUE
+	background_enforce = TRUE
 
 /datum/prototype/struct/alt_title/emt
 	title = "Emergency Medical Technician"
