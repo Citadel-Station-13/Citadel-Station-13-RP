@@ -32,9 +32,17 @@
 	ideal_character_age = 45
 
 	alt_titles = list (
-		"Medical Training Specialist" = /datum/prototype/struct/alt_title/medical_specialist
+		"Medical Training Specialist" = /datum/prototype/struct/alt_title/medical_specialist,
+		"Biotechnical Advisor" = /datum/prototype/struct/alt_title/biotechnical_advisor
 	)
 
+/datum/prototype/struct/alt_title/biotechnical_advisor
+	title = "Biotechnical Advisor"
+	title_outfit = /datum/outfit/job/station/medical_doctor // todo: add OSSNECRO outfits.
+	background_allow = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+	background_enforce = TRUE
 
 /datum/prototype/struct/alt_title/medical_specialist
 	title = "Medical Training Specialist"

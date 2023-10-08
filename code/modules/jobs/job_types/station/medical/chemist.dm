@@ -28,8 +28,16 @@
 						They are likely to know the use and dangers of many lab-produced chemicals."
 	alt_titles = list(
 		"Pharmacist" = /datum/prototype/struct/alt_title/pharmacist,
-		"Pharmacologist" = /datum/prototype/struct/alt_title/pharmacologist
+		"Pharmacologist" = /datum/prototype/struct/alt_title/pharmacologist,
+		"Biochemist" = /datum/prototype/struct/alt_title/biochemist
 		)
+
+/datum/prototype/struct/alt_title/biochemist
+	title = "Biochemist"
+	background_allow = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+	background_enforce = TRUE
 
 /datum/prototype/struct/alt_title/pharmacist
 	title = "Pharmacist"

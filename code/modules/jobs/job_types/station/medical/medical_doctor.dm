@@ -32,10 +32,19 @@
 		"Nurse" = /datum/prototype/struct/alt_title/nurse,
 		"Virologist" = /datum/prototype/struct/alt_title/virologist,
 		"Medical Resident" = /datum/prototype/struct/alt_title/doctor/resident,
+		"Medical Intern" = /datum/prototype/struct/alt_title/doctor/intern,
+		"Biotechnician" = /datum/prototype/struct/alt_title/biotechnician
 		)
 
 // Medical Doctor Alt Titles
 
+/datum/prototype/struct/alt_title/biotechnician
+	title = "Biotechnician"
+	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon //todo: add OSSNECRO outfits
+	background_allow = list(
+		/datum/lore/character_background/faction/onkhera_necropolis
+	)
+	background_enforce = TRUE
 
 /datum/prototype/struct/alt_title/surgeon
 	title = "Surgeon"
@@ -66,6 +75,10 @@
 /datum/prototype/struct/alt_title/doctor/resident
 	title = "Medical Resident"
 	title_blurb = "A Medical Resident is someone who has a medical dregree but is still in their resdiency, training under the supervision of more experienced doctors."
+	
+/datum/prototype/struct/alt_title/doctor/intern
+	title = "Medical Intern"
+	title_blurb = "A Medical Intern is someone just learning the ropes of the medical field, learning from and answering to other medbay staff."
 
 /datum/outfit/job/station/medical_doctor
 	name = OUTFIT_JOB_NAME("Medical Doctor")
