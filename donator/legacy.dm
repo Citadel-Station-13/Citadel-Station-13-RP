@@ -275,3 +275,8 @@
 	name = "Noah's Cloak"
 	path = /obj/item/clothing/suit/storage/hooded/donatornoahcloak
 	ckeywhitelist = list("rainbyplays")
+
+/datum/loadout_entry/donator/kenjyu
+	name = "Kenjyu Kimono"
+	path = /obj/item/clothing/under/donator/kenjyu
+	ckeywhitelist = list("grapepantasoda")

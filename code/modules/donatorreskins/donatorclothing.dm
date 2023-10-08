@@ -2,7 +2,36 @@
 	name = "base donator jumpsuit"
 	desc = "Here for ease of use in the future when adding items."
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
+	//icon_override = 'icons/mob/clothing/donatorclothing.dmi'
+	action_button_name = "Adjust Outfit"
+	var/alt_sprite = FALSE
+	var/close_message = "Lorem Ipsum"
+	var/open_message = "Lorem Ipsum"
+
+/obj/item/clothing/under/donator/AltClick(mob/user)
+	. = ..()
+	SwitchSprite()
+
+/obj/item/clothing/under/donator/ui_action_click()
+	SwitchSprite()
+
+/obj/item/clothing/under/donator/proc/SwitchSprite()
+	if(!alt_sprite)
+		return
+
+	if(!istype(usr, /mob/living))
+		return
+
+	if(usr.stat)
+		return
+
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]-alt"
+		to_chat(usr, "[open_message]")
+	else
+		src.icon_state = initial(icon_state)
+		to_chat(usr, "[close_message]")
+	update_worn_icon()	//so our mob-overlays update
 
 /obj/item/clothing/suit/storage/toggle/labcoat/donator
 	name = "base donator labcoat"
@@ -266,6 +295,7 @@
         snowflake_worn_state = "dancer_costume_d_s"
     if(snowflake_worn_state == "dancer_costume_d_s")
         snowflake_worn_state = "dancer_costume_s"
+
 /obj/item/clothing/shoes/donator/dancer
 	name = "belly dancer footwraps"
 	desc = "Soft silk wraps meant to provide some protection without hampering agility."
@@ -296,3 +326,16 @@
 	min_cold_protection_temperature = TN60C
 	icon = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
+
+/obj/item/clothing/under/donator/kenjyu
+	name = "Kenjyu kimono"
+	desc = "A well-worn kimono that greats its wearer an intimidating air."
+	description_fluff = "Originally patterned in nanosilk, the Kenjyu kimono eventually had to be reconstructed out of sturdier linen. The white kimono which serves as the basis for this outfit bears intricate embroidery work along its lower paneling. Gold silk and carefully braided red silk cord adorn the waist of the kimono. A black jacket layered over the kimono squares out the shoulders of the outfit, its arms flapping boldly whenever the wearer moves. The device of a wide-eyed skull menaces from the right shoulder of the jacket. A small tag bearing an embroidered 'K' is the only manufacturer's mark."
+	icon = 'icons/clothing/donator/uniform/soda.dmi'
+	icon_state = "kenjyu"
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	alt_sprite = TRUE
+	close_message = "You straighten out the kimono and tighten the wraps."
+	open_message = "You loosen the wraps of the kimono."
