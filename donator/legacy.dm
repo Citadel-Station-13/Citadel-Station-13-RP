@@ -158,12 +158,12 @@
 
 /datum/loadout_entry/donator/carcharodon
 	name = "Carcharodon Suit"
-	path = /obj/item/clothing/under/carcharodon
+	path = /obj/item/clothing/under/donator/carcharodon
 	ckeywhitelist = list("desucake")
 
 /datum/loadout_entry/donator/mantleofheaven
 	name = "Mantle of the Heavens"
-	path = /obj/item/clothing/under/mantleofheaven
+	path = /obj/item/clothing/under/donator/mantleofheaven
 	ckeywhitelist = list("hjorthorn")
 
 /datum/loadout_entry/donator/kepytw
