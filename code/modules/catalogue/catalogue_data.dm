@@ -229,6 +229,24 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 	and as such many things about them have yet to be comprehensively studied."
 	value = CATALOGUER_REWARD_TRIVIAL
 
+/datum/category_item/catalogue/fauna/krisitik
+	name = "Sapients - Krisitik"
+	desc = "Krisitik are a species of subterrianian mammals from the planet of Murith. \
+	Their unstable genetics means the species has a varied appearance though they \
+	can generally be described as 'Murine'. Their unstable genetics also means \
+	they are prone to cancers and lethal mutations which is aggravated by the species \
+	reliance on nuclear energy. \
+	<br><br>\
+	Their society is highly competitive and the frequent disasters in their underground \
+	cities mean the species as a whole has a degree of paranoia far above average for \
+	most sapients, instinctively prepping for any kinds of disaster. \
+	<br><br>\
+	Even before their discovery of FTL the Krisitik had a very advanced society \
+	the discovery of FTL was likely delayed due to the subterrian nature of Krisitik \
+	society and the toxic atmosphere of their homeworld. This edge has meant the Krisitik \
+	have faired better as an independent species then other 'newcomers' to the galaxy. "
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /datum/category_item/catalogue/fauna/vox
 	name = "Sapients - Vox"
 	desc = "Probably the best known of these aliens are the Vox, a bird-like species \
