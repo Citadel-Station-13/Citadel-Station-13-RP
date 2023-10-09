@@ -9,6 +9,9 @@
 #define MOVESPEED_CALCULATION_HYPERBOLIC_BOOST "hyperbolic_boost"
 /// use % change and TILE_BOOST calculations
 #define MOVESPEED_CALCULATION_MULTIPLY "multiply"
+/// legacy multiply
+//! TODO: REMOVE THIS SHIT
+#define MOVESPEED_CALCULATION_LEGACY_MULTIPLY "legacy_multiply"
 
 DEFINE_ENUM(movespeed_modifier_calculation_type, list(
 	/datum/movespeed_modifier = list(
@@ -18,6 +21,7 @@ DEFINE_ENUM(movespeed_modifier_calculation_type, list(
 	ENUM("Hyperbolic", MOVESPEED_CALCULATION_HYPERBOLIC),
 	ENUM("Hyperbolic w/ Limit", MOVESPEED_CALCULATION_HYPERBOLIC_BOOST),
 	ENUM("Multiply", MOVESPEED_CALCULATION_MULTIPLY),
+	ENUM("Legacy Multiply", MOVESPEED_CALCULATION_LEGACY_MULTIPLY),
 ))
 
 //* params for add_or_update_variable_movespeed_modifier

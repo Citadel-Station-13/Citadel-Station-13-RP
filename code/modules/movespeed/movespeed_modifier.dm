@@ -101,10 +101,11 @@ Key procs
 				var/current_tiles = 10 / existing
 				return 10 / (current_tiles * multiply_speed)
 			else
-				var/current_tiles = 10 / config_legacy.run_delay
+				var/current_tiles = 10 / config_legacy.run_speed
 				return 10 / (current_tiles * multiply_speed)
-		if(MOVESPEED_CALCULATION_MULTIPLY_LEGACY)
+		if(MOVESPEED_CALCULATION_LEGACY_MULTIPLY)
 			target.cached_movespeed_multiply *= multiply_speed
+			return existing
 		else
 			return existing
 
@@ -279,9 +280,6 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 			else
 				continue
 		. = M.apply_multiplicative(., src)
-	//! TODO: LEGACY
-	cached_multiplicative_slowdown = 10 / (cached_multiplicative_slowdown * (1 / cached_movespeed_multiply))
-	//! END
 	cached_multiplicative_slowdown = min(., 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
 	if(!client)
 		return

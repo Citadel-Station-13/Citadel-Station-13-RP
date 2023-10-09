@@ -92,7 +92,7 @@
 			tally = (tally + tally/4) //Add a quarter of penalties on top.
 		tally += chem_effects[CE_SLOWDOWN]
 
-	return max(HUMAN_LOWEST_SLOWDOWN, tally + . + config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
+	. = max(HUMAN_LOWEST_SLOWDOWN, tally + . + config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
 
 // Similar to above, but for turf slowdown.
 /mob/living/carbon/human/proc/calculate_turf_slowdown(turf/T, direct)
