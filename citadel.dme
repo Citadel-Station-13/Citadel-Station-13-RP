@@ -4442,6 +4442,7 @@
 #include "code\modules\species\station\standard\akula.dm"
 #include "code\modules\species\station\standard\human.dm"
 #include "code\modules\species\station\standard\human_subspecies.dm"
+#include "code\modules\species\station\standard\krisitik.dm"
 #include "code\modules\species\station\standard\moth.dm"
 #include "code\modules\species\station\standard\naramadi.dm"
 #include "code\modules\species\station\standard\nevrean.dm"
