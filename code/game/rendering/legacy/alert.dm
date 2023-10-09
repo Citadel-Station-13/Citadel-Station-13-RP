@@ -477,6 +477,8 @@ so as to remain in compliance with the most up-to-date laws."
 
 // Re-render all alerts - also called in /datum/hud/show_hud() because it's needed there
 /datum/hud/proc/reorganize_alerts()
+	if(!mymob)
+		return
 	var/list/alerts = mymob.alerts
 	if(!hud_shown)
 		for(var/i = 1, i <= alerts.len, i++)
