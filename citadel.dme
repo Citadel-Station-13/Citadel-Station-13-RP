@@ -4779,6 +4779,7 @@
 #include "code\modules\vore\fluffstuff\custom_items_cit.dm"
 #include "code\modules\vore\fluffstuff\custom_mecha.dm"
 #include "code\modules\vore\fluffstuff\custom_permits.dm"
+#include "code\modules\vore\fluffstuff\life_crystals.dm"
 #include "code\modules\vore\fluffstuff\guns\bsharpoon.dm"
 #include "code\modules\vore\fluffstuff\guns\crestrose.dm"
 #include "code\modules\vore\fluffstuff\guns\dominator.dm"

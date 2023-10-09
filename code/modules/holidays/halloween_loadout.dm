@@ -137,8 +137,12 @@
 	path = /obj/item/clothing/head/medievalfake/crusader/winged
 
 /datum/loadout_entry/seasonal/halloween/costumes/head/darkcleric
-	display_name = "Costume Head - Dark Cleric Circlet"
+	name = "Costume Head - Dark Cleric Circlet"
 	path = /obj/item/clothing/head/darkcleric
+
+/datum/loadout_entry/seasonal/halloween/costumes/head/aquiline
+	name = "Costume Head - Aquiline Enforcer"
+	path = /obj/item/clothing/head/helmet/aquiline
 
 // Mask
 /datum/loadout_entry/seasonal/halloween/costumes/mask
@@ -429,8 +433,12 @@
 	path = /obj/item/clothing/under/imperial
 
 /datum/loadout_entry/seasonal/halloween/costumes/under/dark_cleric
-	display_name = "Costume Uniform - Dark Cleric Armor"
+	name = "Costume Uniform - Dark Cleric Armor"
 	path = /obj/item/clothing/under/darkcleric
+
+/datum/loadout_entry/seasonal/halloween/costumes/under/aquiline
+	name = "Costume Uniform - Aquiline Enforcer"
+	path = /obj/item/clothing/under/aquiline_enforcer
 
 // Gloves
 
@@ -493,3 +501,23 @@
 /datum/loadout_entry/seasonal/halloween/costumes/accessory/crusader/teutonic
 	name = "Costume Accessories - Crusader Tabard (Teutonic)"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/teutonic
+
+/datum/loadout_entry/seasonal/halloween/costumes/dancer_scarf
+	name = "belly dancer headscarf"
+	path = /obj/item/clothing/head/donator/dancer
+
+/datum/loadout_entry/seasonal/halloween/costumes/dancer_veil
+	name = "belly dancer veil"
+	path = /obj/item/clothing/mask/donator/dancer
+
+/datum/loadout_entry/seasonal/halloween/costumes/dancer_gloves
+	name = "belly dancer sleeves"
+	path = /obj/item/clothing/gloves/donator/dancer
+
+/datum/loadout_entry/seasonal/halloween/costumes/dancer_costume
+	name = "belly dancer costume"
+	path = /obj/item/clothing/under/donator/dancer
+
+/datum/loadout_entry/seasonal/halloween/costumes/dancer_wraps
+	name = "belly dancer footwraps"
+	path = /obj/item/clothing/shoes/donator/dancer

@@ -2726,7 +2726,7 @@
 	},
 /area/centcom/simulated/evac)
 "iS" = (
-/obj/structure/memorial/small/left,
+/obj/structure/memorial,
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
@@ -8763,12 +8763,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/command)
-"NZ" = (
-/obj/structure/memorial/small/right,
-/turf/unsimulated/floor/steel{
-	icon_state = "asteroidfloor"
-	},
-/area/centcom/simulated/evac)
 "Oc" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -20666,7 +20660,7 @@ hP
 cN
 hy
 ij
-NZ
+iT
 iT
 iP
 ij

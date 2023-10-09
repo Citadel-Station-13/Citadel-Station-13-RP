@@ -443,21 +443,21 @@
 
 /obj/item/clothing/suit/storage/hooded/fake_cult_hardsuit
 	STD_DEF("plastic suit")
-	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
-	icon_state = "cult_armor"
+	icon = 'icons/clothing/suit/armor/cult.dmi'
+	icon_state = "cult"
 	hoodtype = /obj/item/clothing/head/hood/fake_cult_hardsuit
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET|HANDS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET|HANDS
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_cult_hardsuit
 	STD_DEF("hood")
-	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
-	icon_state = "cult_helmet"
+	icon = 'icons/clothing/suit/armor/cult.dmi'
+	icon_state = "culthelm"
 	body_cover_flags = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /datum/loadout_entry/seasonal/masquarade/cult/robes_new
 	display_name = "Robes (new)"
@@ -465,20 +465,20 @@
 
 /obj/item/clothing/suit/storage/hooded/fake_cult_robes_new
 	STD_DEF("plastic suit")
-	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	icon = 'icons/clothing/suit/antag/cult.dmi'
 	icon_state = "cultrobesalt"
 	hoodtype = /obj/item/clothing/head/hood/fake_cult_robes_new
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_cult_robes_new
 	STD_DEF("hood")
-	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	icon = 'icons/clothing/suit/antag/cult.dmi'
 	icon_state = "culthoodalt"
 	body_cover_flags = HEAD
 	cold_protection = HEAD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /datum/loadout_entry/seasonal/masquarade/cult/robes_old
 	display_name = "Robes (old)"
@@ -486,20 +486,20 @@
 
 /obj/item/clothing/suit/storage/hooded/fake_cult_robes_old
 	STD_DEF("plastic suit")
-	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	icon = 'icons/clothing/suit/antag/cult.dmi'
 	icon_state = "cultrobes"
 	hoodtype = /obj/item/clothing/head/hood/fake_cult_robes_old
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_cult_robes_old
 	STD_DEF("hood")
-	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	icon = 'icons/clothing/suit/antag/cult.dmi'
 	icon_state = "culthood"
 	body_cover_flags = HEAD
 	cold_protection = HEAD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /datum/loadout_entry/seasonal/masquarade/cult/sword
 	display_name = "Sword"
@@ -518,20 +518,20 @@
 
 /obj/item/clothing/suit/storage/hooded/fake_heretic
 	STD_DEF("cloth robes")
-	icon = 'icons/antagonists/heretic/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
-	icon_state = "eldritch_armor"
+	icon = 'icons/clothing/suit/antag/heretic.dmi'
+	icon_state = "eldritcharmor"
 	hoodtype = /obj/item/clothing/head/hood/fake_heretic
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_heretic
 	STD_DEF("hood")
-	icon = 'icons/antagonists/heretic/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
-	icon_state = "eldritch_armor_hood"
+	icon = 'icons/clothing/suit/antag/heretic.dmi'
+	icon_state = "eldritchhood"
 	body_cover_flags = HEAD
 	cold_protection = HEAD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /datum/loadout_entry/seasonal/masquarade/heretic/void_cloak
 	display_name = "Void Cloak"
@@ -539,21 +539,21 @@
 
 /obj/item/clothing/suit/storage/hooded/fake_void
 	STD_DEF("cloth cloak")
-	icon = 'icons/antagonists/heretic/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
-	icon_state = "void_cloak"
+	icon = 'icons/clothing/suit/antag/heretic.dmi'
+	icon_state = "voidcloak"
 	hoodtype = /obj/item/clothing/head/hood/fake_void
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_void
 	STD_DEF_NON_HIDING("hood")
-	icon = 'icons/antagonists/heretic/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
-	icon_state = "void_cloak_hood"
+	icon = 'icons/clothing/suit/antag/heretic.dmi'
+	icon_state = "voidhood"
 	body_cover_flags = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /*
 /datum/loadout_entry/seasonal/masquarade/heretic/living_heart

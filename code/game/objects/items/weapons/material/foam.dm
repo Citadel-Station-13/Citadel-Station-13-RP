@@ -29,7 +29,7 @@
 	force_divisor = 1
 	damage_force = 0
 	applies_material_colour = 1
-	base_icon = "spear_mask0"
+	base_icon = "spear_mask"
 	icon_state = "spear_mask0"
 	unbreakable = 1
 	drop_sound = 'sound/items/drop/device.ogg'
@@ -45,7 +45,7 @@
 	force_divisor = 1
 	damage_force = 0
 	applies_material_colour = 1
-	base_icon = "fireaxe_mask0"
+	base_icon = "fireaxe_mask"
 	icon_state = "fireaxe_mask0"
 	unbreakable = 1
 	sharp = 0
