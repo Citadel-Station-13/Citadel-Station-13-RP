@@ -114,7 +114,7 @@
 #define BODYTYPE_STRING_PHORONOID "phoronoid"
 #define BODYTYPE_STRING_WEREBEAST "werebeast"
 #define BODYTYPE_STRING_XENOHYBRID "xenohybrid"
-#define BODYTYPE_STRING_KRISITIK "krisitik"
+#define BODYTYPE_STRING_KRISITIK "krisitik" //Currently Unused until I can do Suit Sprites
 
 /proc/bodytype_to_string(bodytype)
 	// todo: assoc list lookup
@@ -158,6 +158,6 @@
 		if(BODYTYPE_XENOHYBRID)
 			return BODYTYPE_STRING_XENOHYBRID
 		if(BODYTYPE_KRISITIK)
-			return BODYTYPE_STRING_KRISITIK
+			return BODYTYPE_STRING_VULPKANIN //Borrowing Vulp Sprites until I can sprite all the space suits.
 		else
 			CRASH("unknown bodytype: [bodytype]")
