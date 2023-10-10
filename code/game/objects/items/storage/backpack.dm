@@ -350,6 +350,10 @@
 	desc = "A grotesque satchel made of sinew and bone."
 	icon_state = "satchel-bone"
 
+/obj/item/storage/backpack/satchel/invisible
+	name = "integrated satchel"
+	desc = "A minimalist satchel designed to fit inside of clothing, directly against the skin."
+	item_state = "none"
 
 //ERT backpacks.
 /obj/item/storage/backpack/ert
