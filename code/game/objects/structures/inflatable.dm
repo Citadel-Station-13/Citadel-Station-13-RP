@@ -252,10 +252,7 @@
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "folded_wall_torn"
 
-/obj/item/inflatable/torn/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
+/obj/item/inflatable/torn/inflate(user,location)
 	to_chat(user, "<span class='notice'>The inflatable wall is too torn to be inflated!</span>")
 	add_fingerprint(user)
 
@@ -265,10 +262,7 @@
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "folded_door_torn"
 
-/obj/item/inflatable/door/torn/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
+/obj/item/inflatable/door/torn/inflate(user,location)
 	to_chat(user, "<span class='notice'>The inflatable door is too torn to be inflated!</span>")
 	add_fingerprint(user)
 
