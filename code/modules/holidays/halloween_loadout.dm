@@ -501,23 +501,3 @@
 /datum/loadout_entry/seasonal/halloween/costumes/accessory/crusader/teutonic
 	name = "Costume Accessories - Crusader Tabard (Teutonic)"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/teutonic
-
-/datum/loadout_entry/seasonal/halloween/costumes/dancer_scarf
-	name = "belly dancer headscarf"
-	path = /obj/item/clothing/head/donator/dancer
-
-/datum/loadout_entry/seasonal/halloween/costumes/dancer_veil
-	name = "belly dancer veil"
-	path = /obj/item/clothing/mask/donator/dancer
-
-/datum/loadout_entry/seasonal/halloween/costumes/dancer_gloves
-	name = "belly dancer sleeves"
-	path = /obj/item/clothing/gloves/donator/dancer
-
-/datum/loadout_entry/seasonal/halloween/costumes/dancer_costume
-	name = "belly dancer costume"
-	path = /obj/item/clothing/under/donator/dancer
-
-/datum/loadout_entry/seasonal/halloween/costumes/dancer_wraps
-	name = "belly dancer footwraps"
-	path = /obj/item/clothing/shoes/donator/dancer
