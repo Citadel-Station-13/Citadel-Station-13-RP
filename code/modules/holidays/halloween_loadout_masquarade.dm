@@ -648,4 +648,16 @@
 /obj/item/toy/ninja_katana
 */
 
+/**
+ * Non-costume seasonally restricted items.
+ */
+
+/datum/loadout_entry/seasonal/masquarade/aesthetic
+	antag_name = "Aesthetic"
+	abstract_type = /datum/loadout_entry/seasonal/masquarade/aesthetic
+
+/datum/loadout_entry/seasonal/masquarade/aesthetic/invisible_satchel
+	display_name = "Invisible Satchel"
+	path = /obj/item/storage/backpack/satchel/invisible
+
 #undef STD_DEF
