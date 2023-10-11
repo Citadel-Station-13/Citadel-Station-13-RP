@@ -6784,6 +6784,9 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/wrapped/candy // Buff 4 >> 8
 	name = "ABSTRACT"
 	desc = "You shouldn't be seeing this. Contact an admin!"
+	sealed = TRUE
+	custom_open_sound = 'sound/effects/pageturn2.ogg'
+	open_message = "You peel back the wrapping!"
 
 /obj/item/reagent_containers/food/snacks/wrapped/candy // Buff 4 >> 8
 	name = "candy"
@@ -6793,9 +6796,6 @@ END CITADEL CHANGE */
 	filling_color = "#7D5F46"
 	nutriment_amt = 3
 	nutriment_desc = list("candy" = 1)
-	sealed = TRUE
-	custom_open_sound = 'sound/effects/pageturn2.ogg'
-	open_message = "You peel back the wrapping!"
 
 /obj/item/reagent_containers/food/snacks/wrapped/candy/Initialize(mapload)
 	. = ..()
@@ -6902,6 +6902,9 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/bagged // Buff 3 >> 5
 	name = "ABSTRACT"
 	desc = "You shouldn't be seeing this. Contact an admin!"
+	sealed = TRUE
+	custom_open_sound = 'sound/bureaucracy/papercrumple.ogg'
+	open_message = "You pull the package open!"
 
 /obj/item/reagent_containers/food/snacks/bagged/chips // Buff 3 >> 5
 	name = "chips"
@@ -6911,9 +6914,6 @@ END CITADEL CHANGE */
 	filling_color = "#E8C31E"
 	nutriment_amt = 5
 	nutriment_desc = list("salt" = 1, "chips" = 2)
-	sealed = TRUE
-	custom_open_sound = 'sound/bureaucracy/papercrumple.ogg'
-	open_message = "You pull the package open!"
 
 /obj/item/reagent_containers/food/snacks/bagged/chips/Initialize(mapload)
 	. = ..()
@@ -6962,6 +6962,9 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/boxed // Buff 3 >> 5
 	name = "ABSTRACT"
 	desc = "You shouldn't be seeing this. Contact an admin!"
+	sealed = TRUE
+	custom_open_sound = 'sound/misc/boxopen.ogg'
+	open_message = "You pop open the box!"
 
 /obj/item/reagent_containers/food/snacks/boxed/no_raisin // Buff 6 >> 12
 	name = "4no Raisins"
@@ -6971,9 +6974,6 @@ END CITADEL CHANGE */
 	filling_color = "#343834"
 	nutriment_amt = 12
 	nutriment_desc = list("dried raisins" = 6)
-	sealed = TRUE
-	custom_open_sound = 'sound/misc/boxopen.ogg'
-	open_message = "You pop open the box!"
 
 /obj/item/reagent_containers/food/snacks/boxed/no_raisin/Initialize(mapload)
 	. = ..()

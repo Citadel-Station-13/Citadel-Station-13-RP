@@ -2008,12 +2008,19 @@
 
 /obj/item/clothing/under/antediluvian/dress
 	name = "Antediluvian dress"
-	desc = "A metalic dress with inner padding, following a similar, scantily-clad fashion trend.  It is unknown whether it serveed ceremonial or official purpose."
+	desc = "A metalic dress with inner padding, following a similar, scantily-clad fashion trend.  It is unknown whether it served ceremonial or official purpose."
 	icon_state = "ante"
 	icon = 'icons/clothing/suit/misc/ante.dmi'
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/under/antediluvian/dress/aziru
+	name = "Antediluvian Wrap"
+	desc = "A dress made out of an elegantly wrapped single piece of cloth, with golden embellishments of unknown origin. It seems to have purposefully exposed arms."
+	icon_state = "aziru_dress"
+	icon = 'icons/clothing/uniform/misc/ante_aziru.dmi'
+
 /obj/item/clothing/under/hasie
 	name = "Hasie skirt"
 	desc = "A daring combination of dark charcoals and vibrant reds and whites, the Hasie skirt/vest combo knows what it's doing. Sporting a low cut charcoal miniskirt and matching midriff button-up, this ensemble wows with the incredible color contrast of its two-tone vest."

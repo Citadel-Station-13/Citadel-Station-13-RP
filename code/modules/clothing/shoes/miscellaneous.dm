@@ -255,11 +255,22 @@
 	icon_state = "antediluvian"
 
 /obj/item/clothing/shoes/antediluvian/heels
-	name = "Antediluvian legwraps"
-	desc = "These thigh-high legwraps are designed to cling tightly to the body. Secured to the feet by stirrups, it is unknown whether shoes were meant to be worn over these."
+	name = "Antediluvian heels"
+	desc = "A pair of black-gold heels based on an unknown design. The inside of the shoe has an odd texture, and snugly covers the whole foot."
 	icon_state = "ante"
 	icon = 'icons/clothing/shoes/ante.dmi'
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/antediluvian/heels/aziru
+	name = "Antediluvian exposed heels"
+	desc = "A pair of a set of heels recovered with an odd design. This version has toes exposed, granting the wearer elegance, or unsightliness."
+	icon_state = "aziru_heels"
+	icon = 'icons/clothing/shoes/ante_aziru.dmi'
+
+/obj/item/clothing/shoes/antediluvian/heels/aziru/alt
+	name = "Antediluvian exposed heels alt"
+	desc = "A pair of a set of heels recovered with an odd design. This version has toes exposed, granting the wearer elegance, or unsightliness. This one has extra gold trimming."
+	icon_state = "aziru_heels_alt"
 // The things folks do for fashion...
 /obj/item/clothing/shoes/galoshes/black
 	name = "black galoshes"
