@@ -31,9 +31,9 @@
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
 
-	stacktype = material.stack_type
-	if(islist(material.stack_origin_tech))
-		origin_tech = material.stack_origin_tech.Copy()
+	stacktype = src.material.stack_type
+	if(islist(src.material.stack_origin_tech))
+		origin_tech = src.material.stack_origin_tech.Copy()
 
 	if(apply_colour)
 		color = src.material.icon_colour

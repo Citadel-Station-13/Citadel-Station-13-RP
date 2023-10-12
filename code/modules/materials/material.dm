@@ -79,32 +79,32 @@
 	/// * impacts sharp / blade damage
 	/// * impacts kinetic penetration resistance
 	/// * impacts bomb armor
-	var/regex_this_hardness = 0
+	var/regex_this_hardness = MATERIAL_RESISTANCE_NONE
 	/// kinetic scattering/dampening for something made out of this
 	/// based on MATERIAL_RESISTANCE_ defines
 	/// * impacts kinetic damage resistance
 	/// * impacts bomb armor
-	var/toughness = 0
+	var/toughness = MATERIAL_RESISTANCE_NONE
 	/// how easily this material scatters energy
 	/// based on MATERIAL_RESISTANCE_ defines
 	/// * impacts laser armor penetration resistance
 	/// * impacts special energy armor
 	/// * impacts exotic energy armor (minor)
 	/// * slight modifier to radiation resist
-	var/refraction = 0
+	var/refraction = MATERIAL_RESISTANCE_NONE
 	/// how easily this material absorbs regular energy blasts
 	/// based on MATERIAL_RESISTANCE_ defines
 	/// * impacts laser armor
 	/// * impacts special energy armor (minor)
 	/// * very slight modifier to radiation resist
-	var/absorption = 0
+	var/absorption = MATERIAL_RESISTANCE_NONE
 	/// for how easily this material deflects exotic energy
 	/// based on MATERIAL_RESISTANCE_ defines
 	/// * impacts special energy armor (minor)
 	/// * impacts laser armor penetration resistance (moderate)
 	/// * impacts anomaly armor
 	/// * impacts radiation armor
-	var/nullification = 0
+	var/nullification = MATERIAL_RESISTANCE_NONE
 	/// relative density multiplier for how heavy this material is
 	/// * impacts carry weight of things made out of this
 	/// * impacts radiation armor (major)

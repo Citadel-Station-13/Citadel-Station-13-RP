@@ -209,28 +209,26 @@ var/list/table_icon_cache = list()
 	set_material_part("reinf", null)
 	return TRUE
 
-/obj/structure/table/dynamic_tool_functions(obj/item/I, mob/user)
+/obj/structure/table/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images)
 	. = list()
 	if(carpeted)
-		.[TOOL_CROWBAR] = "remove carpet"
+		.[TOOL_CROWBAR] = list(
+			"remove carpet" = dyntool_image_backward(TOOL_CROWBAR),
+		)
 	if(isnull(material_reinforcing))
 		if(isnull(material_base))
-			.[TOOL_WRENCH] = "dismantle"
+			.[TOOL_WRENCH] = list(
+				"dismantle" = dyntool_image_backward(TOOL_WRENCH)
+			)
 		else
-			.[TOOL_WRENCH] = "remove plating"
+			.[TOOL_WRENCH] = list(
+				"remove plating" = dyntool_image_backward(TOOL_WRENCH),
+			)
 	else
-		.[TOOL_SCREWDRIVER] = "remove reinforcement"
+		.[TOOL_SCREWDRIVER] = list(
+			"remove reinforcement" = dyntool_image_backward(TOOL_SCREWDRIVER)
+		)
 	return merge_double_lazy_assoc_list(., ..())
-
-/obj/structure/table/dynamic_tool_image(function, hint)
-	switch(hint)
-		if("remove carpet")
-			return dyntool_image_backward(TOOL_CROWBAR)
-		if("dismantle", "remove plating")
-			return dyntool_image_backward(TOOL_WRENCH)
-		if("remove reinforcement")
-			return dyntool_image_backward(TOOL_SCREWDRIVER)
-	return ..()
 
 /obj/structure/table/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(!carpeted && !isnull(material_base) && istype(I, /obj/item/stack/tile/carpet))

@@ -317,7 +317,7 @@
 /obj/structure/window/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if(!allow_deconstruct)
-		user.action_feedback(SPAN_NOTICE("This can't be deconstructed."), src)
+		e_args.initiator.action_feedback(SPAN_NOTICE("This can't be deconstructed."), src)
 		return FALSE
 
 	if (construction_state == WINDOW_STATE_UNSECURED || construction_state == WINDOW_STATE_SCREWED_TO_FLOOR || !considered_reinforced)
@@ -350,7 +350,7 @@
 /obj/structure/window/crowbar_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if(!allow_deconstruct)
-		user.action_feedback(SPAN_NOTICE("This can't be deconstructed."), src)
+		e_args.initiator.action_feedback(SPAN_NOTICE("This can't be deconstructed."), src)
 		return FALSE
 	if (!considered_reinforced)
 		return
@@ -366,7 +366,7 @@
 /obj/structure/window/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if(!allow_deconstruct)
-		user.action_feedback(SPAN_NOTICE("This can't be deconstructed."), src)
+		e_args.initiator.action_feedback(SPAN_NOTICE("This can't be deconstructed."), src)
 		return FALSE
 	if (construction_state != WINDOW_STATE_UNSECURED)
 		e_args.chat_feedback(SPAN_WARNING("[src] has to be entirely unfastened from the floor before you can disasemble it!"))
