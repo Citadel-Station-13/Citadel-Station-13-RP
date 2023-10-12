@@ -10,17 +10,13 @@
 /// queued for ZAS rebuild
 #define TURF_ZONE_REBUILD_QUEUED	(1<<5)
 
-///CITMAIN TURF FLAGS - Completely unused
-/*
-/// If a turf can be made dirty at roundstart. This is also used in areas.
-#define CAN_BE_DIRTY				(1<<3)
-/// Should this tile be cleaned up and reinserted into an excited group?
-#define EXCITED_CLEANUP				(1<<4)
-/// Blocks lava rivers being generated on the turf
-#define NO_LAVA_GEN					(1<<5)
-/// Blocks ruins spawning on the turf
-#define NO_RUINS					(1<<6)
-*/
+/// course-level procedural generation (terrain, mostly) should avoid this turf
+#define TURF_PROCGEN_MASK			(1<<22)
+/// procedural generation of any kind should avoid this turf
+#define TURF_PROCGEN_IGNORE			(1<<23)
+
+/// these turf flags are carried through changeturf
+#define TURF_FLAGS_STICKY (TURF_PROCGEN_MASK | TURF_PROCGEN_IGNORE)
 
 DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(NO_JAUNT),
@@ -28,6 +24,8 @@ DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(TURF_PLANET_QUEUED),
 	BITFIELD(TURF_PLANET_REGISTERED),
 	BITFIELD(TURF_ZONE_REBUILD_QUEUED),
+	BITFIELD(TURF_PROCGEN_MASK),
+	BITFIELD(TURF_PROCGEN_IGNORE),
 ))
 
 //* /turf_path_danger var on /turf
