@@ -456,6 +456,17 @@
 	flame_color = "#990000" // deep red, as the sprite shows
 	change_icons = 0
 
+/obj/item/weldingtool/experimental/clockwork
+	name = "clockwork welding tool"
+	desc = "An antique welding tool, adorned with brass, and a brilliant red gem as the fuel tank. It neither runs out of fuel, nor hurts the unprotected eye. <span class = 'nezbere_small'>A masterpiece.</span>"
+	icon_state = "clockwelder"
+	max_fuel = 100
+	eye_safety_modifier = 2
+	tool_sound = 'sound/machines/clockcult/steam_whoosh.ogg'
+	tool_speed = 0.1
+	flame_color = "#990000" // deep red, as above, so below
+	change_icons = 0
+
 /obj/item/weldingtool/experimental/hybrid
 	name = "strange welding tool"
 	desc = "An experimental welder capable of synthesizing its own fuel from spatial waveforms. It's like welding with a star!"

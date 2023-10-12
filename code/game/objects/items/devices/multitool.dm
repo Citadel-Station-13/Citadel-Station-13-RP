@@ -113,6 +113,13 @@
 	origin_tech = list(TECH_MAGNET = 5, TECH_ENGINEERING = 5)
 	colorable = 0
 
+/obj/item/multitool/clockwork
+	name = "clockwork multitool"
+	desc = "A slender brass device, adorned with three prongs pulsing with energy, a faintly glowing red gem, and a screen in the shape of an eye. <span class = 'nzcrentr_small'>It almost looks bored.</span>"
+	icon_state = "clockitool"
+	tool_speed = 0.1
+	colorable = 0
+
 //Colored Variants
 /obj/item/multitool/red
 	color_overlay = "multi_r"

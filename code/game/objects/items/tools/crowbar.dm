@@ -42,6 +42,13 @@
 	icon_state = "crowbar_brass"
 	tool_speed = 0.75
 
+/obj/item/tool/crowbar/clockwork
+	name = "clockwork crowbar"
+	desc = "An engraved piece of compressed brass, capable of prying things up and open with un-natural ease. <span class = 'brass'> It feels frigid to the touch. </span>"
+	icon_state = "crowbar_clock"
+	tool_sound = 'sound/magic/clockwork/fellowship_armory.ogg'
+	tool_speed = 0.1
+
 /datum/category_item/catalogue/anomalous/precursor_a/alien_crowbar
 	name = "Precursor Alpha Object - Hard Light Pry Tool"
 	desc = "An object which bears striking resemblence to the common crowbar. \

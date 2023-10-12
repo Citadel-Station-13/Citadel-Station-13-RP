@@ -59,6 +59,14 @@
 	tool_speed = 0.75
 	random_color = FALSE
 
+/obj/item/tool/wrench/clockwork
+	name = "clockwork wrench"
+	desc = "A wrench cast completely out of brass, with a head that perfectly affixes to anything it's braced around. <span class = 'brass'>The handle thrums faintly in your hand.</span>"
+	icon_state = "wrench_clock"
+	tool_sound = 'sound/machines/clockcult/integration_cog_install.ogg'
+	tool_speed = 0.1
+	random_color = FALSE
+
 /obj/item/tool/wrench/cyborg
 	name = "automatic wrench"
 	desc = "An advanced robotic wrench. Can be found in industrial synthetic shells."

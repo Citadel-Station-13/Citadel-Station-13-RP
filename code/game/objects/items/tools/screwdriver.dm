@@ -82,6 +82,14 @@
 	tool_speed = 0.75
 	random_color = FALSE
 
+/obj/item/tool/screwdriver/clockwork
+	name = "clockwork screwdriver"
+	desc = "An all-brass screwdriver with a <span class = 'nezbere_small'>vaugely shifting tip.</span> Seems to always fit any screw channel it is placed in."
+	icon_state = "screwdriver_clock"
+	tool_sound = 'sound/machines/clockcult/integration_cog_install.ogg'
+	tool_speed = 0.1
+	random_color = FALSE
+
 /datum/category_item/catalogue/anomalous/precursor_a/alien_screwdriver
 	name = "Precursor Alpha Object - Hard Light Torgue Tool"
 	desc = "This appears to be a tool, with a solid handle, and a thin hard light \
