@@ -11,7 +11,7 @@
 	item_state = "buildpipe"
 
 	density = TRUE
-	slowdown = 10 //It's a vehicle frame, what do you expect?
+	weight = ITEM_WEIGHT_VEHICLE_FRAME
 	w_class = 5
 	pixel_x = -16
 

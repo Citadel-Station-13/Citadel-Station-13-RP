@@ -38,6 +38,7 @@
 		)
 	icon_state = "detective"
 	item_state = "gun"
+	item_flags = ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	materials = list(MAT_STEEL = 2000)
 	rad_flags = RAD_BLOCK_CONTENTS

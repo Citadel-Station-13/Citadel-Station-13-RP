@@ -32,6 +32,11 @@
 	unacidable = 1
 	preserve_item = 1
 
+	weight = ITEM_WEIGHT_BASELINE
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG
+	var/online_encumbrance
+	var/offline_encumbrance = ITEM_WEIGHT_LEGACY_RIG * 2
+
 	// Activation
 	/// activation state
 	var/activation_state = RIG_ACTIVATION_OFF
@@ -93,7 +98,6 @@
 	var/locked_down = 0
 
 	var/seal_delay = SEAL_DELAY
-	var/offline_slowdown = 3                                  // If the suit is deployed and unpowered, it sets slowdown to this.
 	var/vision_restriction
 	var/offline_vision_restriction = 1                        // 0 - none, 1 - welder vision, 2 - blind. Maybe move this to helmets.
 	var/airtight = 1 //If set, will adjust ALLOWINTERNALS flag and pressure protections on components. Otherwise it should leave them untouched.
@@ -562,13 +566,10 @@
 			last_online = FALSE
 			for(var/obj/item/hardsuit_module/module in installed_modules)
 				module.deactivate()
-			slowdown = offline_slowdown
+			set_encumbrance(offline_encumbrance)
 			if(istype(wearer))
 				if(is_activated())
-					if (offline_slowdown < 3)
-						to_chat(wearer, "<span class='danger'>Your suit beeps stridently, and suddenly goes dead.</span>")
-					else
-						to_chat(wearer, "<span class='danger'>Your suit beeps stridently, and suddenly you're wearing a leaden mass of metal and plastic composites instead of a powered suit.</span>")
+					to_chat(wearer, "<span class='danger'>Your suit beeps stridently, and suddenly you're wearing a leaden mass of metal and plastic composites instead of a powered suit.</span>")
 				if(offline_vision_restriction == 1)
 					to_chat(wearer, "<span class='danger'>The suit optics flicker and die, leaving you with restricted vision.</span>")
 				else if(offline_vision_restriction == 2)
@@ -581,7 +582,8 @@
 			last_online = TRUE
 		if(istype(wearer) && !wearer.wearing_rig)
 			wearer.wearing_rig = src
-		slowdown = initial(slowdown) + sprint_slowdown_modifier
+		set_encumbrance(isnull(online_encumbrance)? initial(encumbrance) : online_encumbrance)
+		set_slowdown(initial(slowdown) + sprint_slowdown_modifier)
 
 	if(cell && cell.charge > 0 && electrified > 0)
 		electrified--

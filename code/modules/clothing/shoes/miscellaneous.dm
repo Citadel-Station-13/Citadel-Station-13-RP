@@ -24,11 +24,11 @@
 	permeability_coefficient = 0.05
 	siemens_coefficient = 0 //They're thick rubber boots! Of course they won't conduct electricity!
 	clothing_flags = NOSLIP
-	slowdown = SHOES_SLOWDOWN+1
+	encumbrance = ITEM_ENCUMBRANCE_SHOES_GALOSHES
+	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_GALOSHES
 	species_restricted = null
 	drop_sound = 'sound/items/drop/rubber.ogg'
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
-
 
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
@@ -65,7 +65,8 @@
 	desc = "The prankster's standard-issue clowning shoes. Damn they're huge!"
 	name = "clown shoes"
 	icon_state = "clown"
-	slowdown = SHOES_SLOWDOWN+1
+	encumbrance = ITEM_ENCUMBRANCE_SHOES_CLOWN
+	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_SHOES_CLOWN
 	damage_force = 0
 	var/footstep = 1	//used for squeeks whilst walking
 	species_restricted = null
@@ -137,7 +138,8 @@
 	icon_state = "flippers"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "galoshes", SLOT_ID_LEFT_HAND = "galoshes")
 	clothing_flags = NOSLIP
-	slowdown = SHOES_SLOWDOWN+1
+	encumbrance = ITEM_ENCUMBRANCE_SHOES_FINS
+	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_SHOES_FINS
 	species_restricted = null
 
 /obj/item/clothing/shoes/flipflop
@@ -271,6 +273,7 @@
 	name = "Antediluvian exposed heels alt"
 	desc = "A pair of a set of heels recovered with an odd design. This version has toes exposed, granting the wearer elegance, or unsightliness. This one has extra gold trimming."
 	icon_state = "aziru_heels_alt"
+
 // The things folks do for fashion...
 /obj/item/clothing/shoes/galoshes/black
 	name = "black galoshes"
@@ -281,7 +284,7 @@
 	name = "dark-purple semi-galoshes"
 	desc = "A dark-purple rubber boots. They obviously don't smell like a cotton candy, roses and fresh roasted peanuts."
 	icon_state = "galoshes_sc"
-	slowdown = SHOES_SLOWDOWN
+	encumbrance = ITEM_ENCUMBRANCE_BASELINE
 
 //More Warhammer Fun
 /obj/item/clothing/shoes/utilitarian
