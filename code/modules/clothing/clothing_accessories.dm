@@ -15,6 +15,25 @@
 		return accessory_host.update_worn_icon()
 	return ..()
 
+/obj/item/clothing/get_encumbrance()
+	. = ..()
+	if(!isnull(accessory_host))
+		. = max(0, . * accessory_host.accessory_encumbrance_multiply - accessory_host.accessory_encumbrance_mitigation)
+
+/obj/item/clothing/proc/set_accessory_encumbrance_mitigation(val, update)
+	accessory_encumbrance_mitigation = val
+	if(update)
+		update_accessory_encumbrance()
+
+/obj/item/clothing/proc/set_accessory_encumbrance_multiply(val, update)
+	accessory_encumbrance_multiply = val
+	if(update)
+		update_accessory_encumbrance()
+
+/obj/item/clothing/proc/update_accessory_encumbrance()
+	for(var/obj/item/I as anything in accessories)
+		I.update_encumbrance()
+
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
 	// propagate through accessories
@@ -210,22 +229,16 @@
 	LAZYADD(accessories,A)
 	A.on_attached(src, user)
 	add_obj_verb(src, /obj/item/clothing/proc/removetie_verb)
-	update_accessory_slowdown()
 	update_worn_icon()
+	update_encumbrance()
 
 /obj/item/clothing/proc/remove_accessory(mob/user, obj/item/clothing/accessory/A)
 	if(!LAZYLEN(accessories) || !(A in accessories))
 		return
-
 	A.on_removed(user)
 	accessories -= A
-	update_accessory_slowdown()
 	update_worn_icon()
-
-/obj/item/clothing/proc/update_accessory_slowdown()
-	slowdown = initial(slowdown)
-	for(var/obj/item/clothing/accessory/A in accessories)
-		slowdown += A.slowdown
+	update_encumbrance()
 
 /obj/item/clothing/proc/removetie_verb()
 	set name = "Remove Accessory"

@@ -6,6 +6,8 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_helm", SLOT_ID_LEFT_HAND = "syndie_helm")
 	armor_type = /datum/armor/merc/space
 	siemens_coefficient = 0.6
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_HELMET
+	weight = ITEM_WEIGHT_VOIDSUIT_HELMET
 	camera_networks = list(NETWORK_MERCENARY)
 	light_overlay = "helmet_light_green" //todo: species-specific light overlays
 
@@ -14,7 +16,8 @@
 	name = "blood-red voidsuit"
 	desc = "An advanced suit that protects against injuries during special operations. Property of Gorlex Marauders."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
-	slowdown = 1
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT
+	weight = ITEM_WEIGHT_VOIDSUIT
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/merc/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
@@ -86,7 +89,6 @@
 	name = "clown commando voidsuit"
 	desc = "An advanced suit that protects against injuries during special operations. An intricate bananium wafer in the shape of a banana bears the crest of Columbina."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
-	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/merc/space/clown
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
@@ -107,7 +109,6 @@
 	icon_state = "odst"
 	name = "hephaestus icarus suit"
 	desc = "One of the few combat-grade suits avalible in the frontier, and the poster-child of Hephaestus Industries. Comes equipped with a wrist-bound oxygen timer."
-	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/station/secsuit
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
@@ -127,7 +128,6 @@
 	icon_state = "odst_corps"
 	name = "hephaestus icarus medic suit"
 	desc = "A standard Icarus line suit that has been repourposed to protect from heavier biohazards."
-	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/exploration/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
@@ -147,7 +147,6 @@
 	icon_state = "odst_orange"
 	name = "hephaestus icarus engineer suit"
 	desc = "Favoured suit of deep-space engineers, comfortable and comparable to suits avalible to NanoTrasen Engineers. Comes equipped with a wrist-bound oxygen timer."
-	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/engineering/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
@@ -167,7 +166,6 @@
 	icon_state = "odst_purple"
 	name = "hephaestus icarus frontier suit"
 	desc = "Cheaper version of the main Icarus line, often marketed to Frontier settlements. Perfect for Expeditions."
-	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/exploration/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
@@ -191,7 +189,6 @@
 	name = "necropolis operations suit"
 	desc = "The main suit used by Necropolis Industries security division, a heavily modified Hephaestus Icarus suit emblazoned with the Necropolis logo on the left shoulder. Equipped with direct connections to the user's implants and prosthetics, making it function as a second skin."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
-	slowdown = 0.4
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/merc/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
@@ -203,9 +200,8 @@
 	name = "necropolis field medic suit"
 	desc = "The main suit used by Necropolis Industries security division, a heavily modified Hephaestheus Icarus suit emblazoned with the Necropolis logo on the left shoulder and a blue cross on the right arm. Equipped with direct connections to the user's implants and prosthetics, making it function as a second skin."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
-	slowdown = 0.4
 	w_class = ITEMSIZE_NORMAL
 	armor_type = /datum/armor/merc/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
-	species_restricted = null 
+	species_restricted = null

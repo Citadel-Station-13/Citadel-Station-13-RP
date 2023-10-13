@@ -25,7 +25,6 @@
 	var/step_volume_mod = 1	//How quiet or loud footsteps in this shoe are
 
 	permeability_coefficient = 0.50
-	slowdown = SHOES_SLOWDOWN
 	damage_force = 2
 	var/overshoes = 0
 	species_restricted = list("exclude",SPECIES_TESHARI, SPECIES_VOX)

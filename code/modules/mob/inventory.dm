@@ -57,3 +57,11 @@
 	// todo: actual flag like BUCKLING_IS_CONSIDERED_RESTRICTING or something
 	if(buckled?.buckle_flags & (BUCKLING_NO_DEFAULT_RESIST | BUCKLING_NO_DEFAULT_UNBUCKLE))
 		unbuckle(BUCKLE_OP_FORCE)
+
+//* Carry Weight
+
+/mob/proc/update_carry_slowdown()
+	return
+
+/mob/proc/update_item_slowdown()
+	return

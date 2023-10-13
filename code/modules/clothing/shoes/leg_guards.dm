@@ -2,7 +2,8 @@
 	name = "leg guards"
 	desc = "These will protect your legs and feet."
 	body_cover_flags = LEGS|FEET
-	slowdown = SHOES_SLOWDOWN+0.5
+	weight = ITEM_WEIGHT_ARMOR_MEDIUM_BOOTS
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIUM_BOOTS
 	species_restricted = null	//Unathi and Taj can wear leg armor now
 	w_class = ITEMSIZE_NORMAL
 	step_volume_mod = 1.3
@@ -68,7 +69,8 @@
 	icon_state = "leg_guards_flexitac"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.6
-	slowdown = SHOES_SLOWDOWN+0.2
+	weight = ITEM_WEIGHT_ARMOR_LIGHT_BOOTS
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_LIGHT_BOOTS
 	armor_type = /datum/armor/station/tactical
 	min_cold_protection_temperature = T0C - 20
 	cold_protection = LEGS
