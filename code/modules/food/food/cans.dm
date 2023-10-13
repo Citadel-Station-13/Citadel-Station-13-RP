@@ -275,15 +275,35 @@
 	. = ..()
 	reagents.add_reagent("nicola", 30)
 
+/obj/item/reagent_containers/food/drinks/cans/nicola_fire
+	name = "\improper NiCola Fire"
+	desc = "A can of crisp NiCola, spiked with flaming hot spices."
+	icon_state = "nicolafire"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/nicola_fire/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("nicolafire", 30)
+
 /obj/item/reagent_containers/food/drinks/cans/nicola_sakura
 	name = "\improper NiCola Sakura"
-	desc = "A can of crisp NiCola, subtly flavored with cherry."
+	desc = "A can of crisp NiCola, subtly flavored with cherry blossoms."
 	icon_state = "nicolasakura"
 	center_of_mass = list("x"=16, "y"=10)
 
 /obj/item/reagent_containers/food/drinks/cans/nicola_sakura/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("nicolacherry", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/nicola_blue
+	name = "\improper NiCola Blue"
+	desc = "A limited edition can of crisp NiCola, paired with a mellow violet flavor."
+	icon_state = "nicolablue"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/nicola_blue/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("nicolablue", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/robustexpress
 	name = "\improper Robust Express"

@@ -1796,15 +1796,35 @@
 	glass_name = "NiCola"
 	glass_desc = "A glass of imported Japanese NiCola."
 
+/datum/reagent/drink/soda/nicola/fire
+	name = "NiCola Fire"
+	id = "nicolafire"
+	description = "Cool imported cola mixed with firey hot spices."
+	taste_description = "cough syrup, capsaicin, and cola"
+	color = "#271402"
+
+	glass_name = "NiCola Fire"
+	glass_desc = "A glass of spicy Japanese NiCola Fire."
+
 /datum/reagent/drink/soda/nicola/cherry
 	name = "NiCola Sakura"
 	id = "nicolacherry"
 	description = "Originally a limited flavor, brought back by popular demand."
-	taste_description = "cherry cough syrup and cola"
+	taste_description = "cough syrup, cherry blossoms, and cola"
 	color = "#271402"
 
 	glass_name = "NiCola Sakura"
 	glass_desc = "A glass of limited edition NiCola Sakura."
+
+/datum/reagent/drink/soda/nicola/blue
+	name = "NiCola Blue"
+	id = "nicolablue"
+	description = "A limited edition NiCola flavor praised for its refreshing taste."
+	taste_description = "cough syrup, violets, and cola"
+	color = "#271402"
+
+	glass_name = "NiCola Blue"
+	glass_desc = "A glass of limited edition NiCola Blue."
 
 /datum/reagent/drink/shirley_temple
 	name = "Shirley Temple"
