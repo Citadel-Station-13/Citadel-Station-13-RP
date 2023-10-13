@@ -404,7 +404,8 @@
 //Hey did you ever see Kingsman? Well, you know this gun then.
 /obj/item/gun/ballistic/konigin
 	name = "Konigin-63 compact"
-	desc = "Originally produced in 2463 by GMC, the Konigin is generally considered to be a direct ancestor to the P3 Whisper. By the time GMC ended production, the Konigin-63 had undergone significant design changes - including the installment of a single capacity shotgun on the underbarrel. This rare design is certainly inspired, and has become something of a collector's item post-war."
+	desc = "A compact 9mm pistol with an underslung single-round shotgun barrel."
+	description_fluff = "Originally produced in 2463 by GMC, the Konigin is generally considered to be a direct ancestor to the P3 Whisper. By the time GMC ended production, the Konigin-63 had undergone significant design changes - including the installment of a single capacity shotgun on the underbarrel. This rare design is certainly inspired, and has become something of a collector's item post-war."
 	icon_state = "konigin"
 	item_state = null
 	w_class = ITEMSIZE_SMALL
