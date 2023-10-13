@@ -14,7 +14,6 @@
 	desc = "A special suit that protects against hazardous, low pressure environments. Has radiation shielding."
 	icon_state = "rig-engineering"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "eng_voidsuit", SLOT_ID_LEFT_HAND = "eng_voidsuit")
-	slowdown = 1
 	armor_type = /datum/armor/engineering/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/storage/bag/ore,/obj/item/t_scanner,/obj/item/pickaxe, /obj/item/rcd)
 	min_pressure_protection = 0  * ONE_ATMOSPHERE
@@ -162,6 +161,8 @@
 	icon_state = "rig0-medicalalt"
 	armor_type = /datum/armor/medical/space
 	light_overlay = "helmet_light_dual_blue"
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_HELMET_ULTRALIGHT
+	weight = ITEM_WEIGHT_VOIDSUIT_HELMET_ULTRALIGHT
 
 /obj/item/clothing/head/helmet/space/void/medical/alt_plated
 	name = "streamlined medical voidsuit helmet"
@@ -169,19 +170,23 @@
 	icon_state = "rig0-medicalalt2"
 	armor_type = /datum/armor/medical/space/upgraded
 	light_overlay = "helmet_light_dual_blue"
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_HELMET_ULTRALIGHT
+	weight = ITEM_WEIGHT_VOIDSUIT_HELMET_ULTRALIGHT
 
 /obj/item/clothing/suit/space/void/medical/alt
 	icon_state = "rig-medicalalt"
 	name = "streamlined medical voidsuit"
 	desc = "A more recent model of Vey-Med voidsuit, exchanging physical protection for fully unencumbered movement and a complete range of motion."
-	slowdown = 0
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_ULTRALIGHT
+	weight = ITEM_WEIGHT_VOIDSUIT_ULTRALIGHT
 	armor_type = /datum/armor/medical/space
 
 /obj/item/clothing/suit/space/void/medical/alt_plated
 	icon_state = "rig-medicalalt2"
 	name = "plated medical voidsuit"
 	desc = "An iteration of an existing Vey-Med voidsuit, allowing full biohazard, radiation and increased close-quarters protection, at the expense of projectile and ranged layers."
-	slowdown = 0
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_ULTRALIGHT
+	weight = ITEM_WEIGHT_VOIDSUIT_ULTRALIGHT
 	armor_type = /datum/armor/medical/space/upgraded
 
 //Security
@@ -373,7 +378,6 @@
 	icon_state = "capsuit_void"
 	armor_type = /datum/armor/station/tactical
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun)
-	slowdown = 1.5
 
 //Head of Security - update to the snowflake suit
 /obj/item/clothing/head/helmet/space/void/headofsecurity
@@ -382,6 +386,8 @@
 	icon_state = "hosproto"
 	armor_type = /datum/armor/security/hos/space
 	camera_networks = list(NETWORK_SEC_HELMETS)
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_HELMET_HEAVY
+	weight = ITEM_WEIGHT_VOIDSUIT_HELMET_HEAVY
 
 /obj/item/clothing/suit/space/void/headofsecurity
 	desc = "A customized security voidsuit. Has additional composite armor."
@@ -389,7 +395,8 @@
 	icon_state = "hosproto_void"
 	armor_type = /datum/armor/security/hos/space
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun)
-	slowdown = 1.5
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_HEAVY
+	weight = ITEM_WEIGHT_VOIDSUIT_HEAVY
 
 //PARA
 /obj/item/clothing/head/helmet/space/void/para

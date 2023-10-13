@@ -4,6 +4,8 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 /proc/init_moth_lore()
 	return json_decode(file2text('strings/misc/moth_species.json'))
 
+/datum/physiology_modifier/intrinsic/species/nepid
+
 /datum/species/moth
 	name = SPECIES_MOTH
 	uid = SPECIES_ID_MOTH
@@ -157,20 +159,30 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	"}
 	value = CATALOGUER_REWARD_TRIVIAL
 
+/datum/physiology_modifier/intrinsic/species/nepid/dark
+	carry_strength_add = CARRY_STRENGTH_ADD_MOTH_DARK
+	carry_strength_factor = CARRY_FACTOR_MOD_MOTH_DARK
+
 /datum/species/moth/dark
 	name = SPECIES_MOTH_DARK
 	uid = SPECIES_ID_MOTH_DARK
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/dark
 
 	// darksight, but weak to light
 	vision_innate = /datum/vision/baseline/species_tier_2
 	flash_burn = 5
 	flash_mod = 1.2
 
+/datum/physiology_modifier/intrinsic/species/nepid/light
+	carry_strength_add = CARRY_STRENGTH_ADD_MOTH_LIGHT
+	carry_strength_factor = CARRY_FACTOR_MOD_MOTH_LIGHT
+
 /datum/species/moth/light
 	name = SPECIES_MOTH_LIGHT
 	uid = SPECIES_ID_MOTH_LIGHT
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/light
 
 	// hardy, but no darksight
 	vision_innate = /datum/vision/baseline/species_tier_0
