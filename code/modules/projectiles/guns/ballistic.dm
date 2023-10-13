@@ -236,6 +236,30 @@
 	..()
 	load_ammo(A, user)
 
+	if(suppressible)
+		if(istype(A, /obj/item/silencer))
+			if(!user.is_holding(src))	//if we're not in his hands
+				to_chat(user, "<span class='notice'>You'll need [src] in your hands to do that.</span>")
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			if(!user.attempt_insert_item_for_installation(A, src))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			to_chat(user, "<span class='notice'>You screw [A] onto [src].</span>")
+			silenced = TRUE
+			w_class = ITEMSIZE_NORMAL
+			update_icon()
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		else if(istype(A, /obj/item/tool/wrench))
+			var/obj/item/silencer/S = new (get_turf(user))
+			if(silenced)
+				to_chat(user, "<span class='notice'>You unscrew [S]] from [src].</span>")
+				user.put_in_hands(S)
+				silenced = FALSE
+				w_class = ITEMSIZE_SMALL
+				update_icon()
+				return
+			else
+				return
+
 /obj/item/gun/ballistic/attack_self(mob/user)
 	if(firemodes.len > 1)
 		switch_firemodes(user)

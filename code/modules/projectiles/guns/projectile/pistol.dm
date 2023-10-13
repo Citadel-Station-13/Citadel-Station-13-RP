@@ -182,9 +182,9 @@
 /obj/item/gun/ballistic/gyropistol/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
-		icon_state = "gyropistolloaded"
+		icon_state = "[initial(icon_state)]"
 	else
-		icon_state = "gyropistol"
+		icon_state = "[initial(icon_state)]-e"
 
 /obj/item/gun/ballistic/pistol
 	name = "compact pistol"
@@ -193,7 +193,8 @@
 	item_state = null
 	w_class = ITEMSIZE_SMALL
 	caliber = "9mm"
-	silenced = 0
+	suppressible = TRUE
+	silenced_icon = "pistol_silencer"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact
@@ -203,48 +204,19 @@
 /obj/item/gun/ballistic/pistol/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
-		icon_state = "[initial(icon_state)]"
+		if(silenced)
+			icon_state = "[silenced_icon]"
+		else
+			icon_state = "[initial(icon_state)]"
 	else
-		icon_state = "[initial(icon_state)]-e"
+		if(silenced)
+			icon_state = "[silenced_icon]-e"
+		else
+			icon_state = "[initial(icon_state)]-e"
 
 /obj/item/gun/ballistic/pistol/flash
 	name = "compact signal pistol"
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact/flash
-
-/obj/item/gun/ballistic/pistol/attack_hand(mob/user, list/params)
-	if(user.get_inactive_held_item() == src)
-		if(silenced)
-			if(!user.is_holding(src))
-				..()
-				return
-			to_chat(user, "<span class='notice'>You unscrew [silenced] from [src].</span>")
-			user.put_in_hands(silenced)
-			silenced = 0
-			w_class = ITEMSIZE_SMALL
-			update_icon()
-			return
-	..()
-
-/obj/item/gun/ballistic/pistol/attackby(obj/item/I as obj, mob/living/user as mob)
-	if(istype(I, /obj/item/silencer))
-		if(!user.is_holding(src))	//if we're not in his hands
-			to_chat(user, "<span class='notice'>You'll need [src] in your hands to do that.</span>")
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		if(!user.attempt_insert_item_for_installation(I, src))
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		to_chat(user, "<span class='notice'>You screw [I] onto [src].</span>")
-		silenced = I	//dodgy?
-		w_class = ITEMSIZE_NORMAL
-		update_icon()
-		return CLICKCHAIN_DO_NOT_PROPAGATE
-	return ..()
-
-/obj/item/gun/ballistic/pistol/update_icon_state()
-	. = ..()
-	if(silenced)
-		icon_state = "pistol-silencer"
-	else
-		icon_state = "pistol"
 
 /obj/item/silencer
 	name = "silencer"
@@ -437,10 +409,11 @@
 	item_state = null
 	w_class = ITEMSIZE_SMALL
 	caliber = "9mm"
-	silenced = 0
+	suppressible = TRUE
+	silenced_icon = "konigin_silencer"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m9mm/compact
+	magazine_type = /obj/item/ammo_magazine/m9mm/compact/double
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
 	projectile_type = /obj/projectile/bullet/pistol
 
@@ -480,9 +453,15 @@
 /obj/item/gun/ballistic/konigin/update_icon_state()
 	. = ..()
 	if(ammo_magazine)
-		icon_state = "[initial(icon_state)]"
+		if(silenced)
+			icon_state = "[silenced_icon]"
+		else
+			icon_state = "[initial(icon_state)]"
 	else
-		icon_state = "[initial(icon_state)]-e"
+		if(silenced)
+			icon_state = "[silenced_icon]-e"
+		else
+			icon_state = "[initial(icon_state)]-e"
 
 /* Having issues with getting this to work atm.
 /obj/item/gun/ballistic/konigin/examine(mob/user, dist)
