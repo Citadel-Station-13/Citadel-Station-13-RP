@@ -13,7 +13,7 @@
 	desc = "This shouldn't be here, ahelp it."
 	icon = 'icons/obj/surgery.dmi'
 	w_class = ITEMSIZE_SMALL
-	item_flags = ITEM_CAREFUL_BLUDGEON
+	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/helpforce = 0	//For help intent things
 	drop_sound = 'sound/items/drop/weldingtool.ogg'
 	pickup_sound = 'sound/items/pickup/weldingtool.ogg'

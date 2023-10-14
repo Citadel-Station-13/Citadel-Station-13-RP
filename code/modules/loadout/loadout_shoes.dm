@@ -199,9 +199,17 @@
 	name = "Antediluvian Legwraps"
 	path = /obj/item/clothing/shoes/antediluvian
 
-/datum/loadout_entry/shoes/antediluvian
+/datum/loadout_entry/shoes/antediluvian/heels
 	name = "Antediluvian Heels"
 	path = /obj/item/clothing/shoes/antediluvian/heels
+
+/datum/loadout_entry/shoes/antediluvian/heels/aziru
+	name = "Antediluvian Exposed Heels"
+	path = /obj/item/clothing/shoes/antediluvian/heels/aziru
+
+/datum/loadout_entry/shoes/antediluvian/heels/aziru/alt
+	name = "Antediluvian Exposed Heels Alt"
+	path = /obj/item/clothing/shoes/antediluvian/heels/aziru/alt
 
 /datum/loadout_entry/shoes/halfmoon
 	name = "Half Moon boots"
@@ -227,3 +235,7 @@
 /datum/loadout_entry/shoes/ballet
 	name = "Antheia Pointe Shoes"
 	path = /obj/item/clothing/shoes/ballet
+
+/datum/loadout_entry/shoes/socksandals
+	name = "Sandals With Socks"
+	path = /obj/item/clothing/shoes/socksandals

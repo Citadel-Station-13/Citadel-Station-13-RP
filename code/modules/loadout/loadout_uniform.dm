@@ -777,6 +777,11 @@ Swimsuits
 	name = "Antediluvian Dress"
 	path = /obj/item/clothing/under/antediluvian/dress
 
+
+/datum/loadout_entry/uniform/antediluvian_wraps
+	name = "Antediluvian Wraps"
+	path = /obj/item/clothing/under/antediluvian/dress/aziru
+
 /datum/loadout_entry/accessory/antediluvian_gloves_alt
 	name = "Antediluvian Bracers Alternate"
 	path = /obj/item/clothing/accessory/antediluvian_gloves/alt
@@ -916,6 +921,10 @@ Swimsuits
 /datum/loadout_entry/uniform/ballet
 	name = "Antheia Tutu"
 	path = /obj/item/clothing/under/ballet
+
+/datum/loadout_entry/uniform/tourist
+	name = "Tourist Liesurewear"
+	path = /obj/item/clothing/under/tourist
 
 //Tajaran wears
 

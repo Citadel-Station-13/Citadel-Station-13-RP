@@ -150,10 +150,12 @@
 /obj/item/clothing/head/hood/eldritch
 	name = "eldritch hood"
 	desc = "A baggy hood smeared with some kind of waxy substance. Up close, what appeared to be burlap is revealed to actually be tanned skin."
-	icon_state = "eldritch"
+	icon = 'icons/clothing/suit/antag/heretic.dmi'
+	icon_state = "eldritchhood"
 	clothing_flags = CLOTHING_THICK_MATERIAL
 	siemens_coefficient = 0.9
 	armor_type = /datum/armor/lavaland/eldritch
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 // Costumes
 /obj/item/clothing/head/hood/carp_hood

@@ -392,7 +392,7 @@
 			prob(1);list(
 				/obj/item/melee/cultblade,
 				/obj/item/clothing/suit/cultrobes,
-				/obj/item/clothing/head/culthood,
+				/obj/item/clothing/head/cult,
 				/obj/item/soulstone,
 				/obj/structure/closet/crate
 			),

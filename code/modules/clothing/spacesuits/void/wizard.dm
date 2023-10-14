@@ -16,7 +16,8 @@
 	name = "gem-encrusted voidsuit"
 	desc = "A bizarre gem-encrusted suit that radiates magical energies."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wiz_voidsuit", SLOT_ID_LEFT_HAND = "wiz_voidsuit")
-	slowdown = 1
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_LIGHT
+	weight = ITEM_WEIGHT_VOIDSUIT_LIGHT
 	w_class = ITEMSIZE_NORMAL
 	unacidable = 1
 	armor_type = /datum/armor/wizard
