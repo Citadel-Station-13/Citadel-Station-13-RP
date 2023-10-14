@@ -266,7 +266,7 @@
 
 /mob/living/simple_mob/otie/Logout()
 	. = ..()
-	DelComponent(/datum/component/riding_filter/mob/animal)
+	DelComponent(/datum/component/riding_filter, /datum/component/riding_filter/mob/animal)
 
 /mob/living/simple_mob/otie/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return

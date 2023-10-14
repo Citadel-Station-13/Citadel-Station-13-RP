@@ -62,7 +62,7 @@
 					hood.atom_flags |= PHORONGUARD
 				else
 					hood.atom_flags &= ~PHORONGUARD
-				hood.set_armor(armor)
+				hood.set_armor(fetch_armor())
 				hood.copy_atom_colour(src)
 				// equip after armor / color changes
 				H.equip_to_slot_if_possible(hood, SLOT_ID_HEAD)
@@ -481,7 +481,8 @@
 /obj/item/clothing/suit/storage/hooded/eldritch
 	name = "eldritch garment"
 	desc = "A billowing garment that seeps a thick, waxy substance. Upon closer inspection this outfit is crafted out of tanned skin, the ritual icons and spells drawn onto it having been tattooed before removal."
-	icon_state = "eldritch_armor"
+	icon = 'icons/clothing/suit/antag/heretic.dmi'
+	icon_state = "eldritcharmor"
 	clothing_flags = CLOTHING_THICK_MATERIAL
 	inv_hide_flags = HIDEHOLSTER
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
@@ -492,6 +493,7 @@
 	siemens_coefficient = 0.9
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/material/knife)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/hooded/cloak/goliath
 	name = "goliath cloak"

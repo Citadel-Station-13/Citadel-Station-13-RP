@@ -39,6 +39,9 @@
 			if(istype(A,/area/maintenance))
 				apcs += apc
 				apcs += apc
+			if(istype(A,/area/main_map/maintenance))
+				apcs += apc
+				apcs += apc
 
 	if(!apcs.len)
 		return

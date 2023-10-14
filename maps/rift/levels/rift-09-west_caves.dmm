@@ -2430,7 +2430,7 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "Cv" = (
-/obj/machinery/suit_storage_unit/cryosuit/mining,
+/obj/machinery/suit_storage_unit/mining,
 /turf/simulated/floor/tiled/techmaint,
 /area/outpost/mining_main/outpost/storage)
 "Cy" = (

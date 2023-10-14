@@ -32,8 +32,6 @@
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
 
-
-	recipes = material.get_recipes()
 	stacktype = material.stack_type
 	if(islist(material.stack_origin_tech))
 		origin_tech = material.stack_origin_tech.Copy()
@@ -49,6 +47,20 @@
 
 /obj/item/stack/material/get_material()
 	return material
+
+/obj/item/stack/material/tgui_recipes()
+	var/list/assembled = ..()
+	for(var/datum/stack_recipe/recipe as anything in material.get_recipes())
+		assembled[++assembled.len] = recipe.tgui_recipe_data()
+	for(var/datum/stack_recipe/material/recipe as anything in SSmaterials.material_stack_recipes)
+		assembled[++assembled.len] = recipe.tgui_recipe_data()
+	return assembled
+
+/obj/item/stack/material/can_craft_recipe(datum/stack_recipe/recipe)
+	. = ..()
+	if(.)
+		return
+	return (recipe in material.recipes) || (istype(recipe, /datum/stack_recipe/material) && (recipe in SSmaterials.material_stack_recipes))
 
 /obj/item/stack/material/proc/update_strings()
 	// Update from material datum.
@@ -275,7 +287,6 @@
 	apply_colour = TRUE
 
 /obj/item/stack/material/supermatter/proc/update_mass()	// Due to how dangerous they can be, the item will get heavier and larger the more are in the stack.
-	slowdown = amount / 10
 	w_class = min(5, round(amount / 10) + 1)
 	throw_range = round(amount / 7) + 1
 
@@ -443,8 +454,9 @@
 	pickup_sound = 'sound/items/pickup/leather.ogg'
 
 /obj/item/stack/material/chitin
-	name = "chitin"
-	desc = "The by-product of mob grinding."
+	name = "chitin plates"
+	desc = "Sheets of hardened chitin, usually harvested from insectile beasts."
+	singular_name = "chitin plate"
 	icon_state = "chitin"
 	default_type = MAT_CHITIN
 	no_variants = FALSE
@@ -484,19 +496,19 @@
 	no_variants = FALSE
 
 /obj/item/stack/material/bananium
-	name = "bananium"
+	name = MAT_BANANIUM
 	desc = "When smelted, Vaudium takes on a bright yellow hue and remains pliable, growing rigid when met with a forceful impact."
 	icon_state = "sheet-clown"
-	default_type = "bananium"
+	default_type = MAT_BANANIUM
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
 
 /obj/item/stack/material/silencium
-	name = "silencium"
+	name = MAT_SILENCIUM
 	desc = "When compressed, Vaudium loses its color, gaining distinctive black bands and becoming intensely rigid."
 	icon_state = "sheet-mime"
-	default_type = "silencium"
+	default_type = MAT_SILENCIUM
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'

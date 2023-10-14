@@ -256,11 +256,11 @@
 			return "shield"
 
 //? tool redirection
-/obj/item/switchtool/tool_check(function, mob/user, atom/target, flags, usage)
+/obj/item/switchtool/tool_check(function, datum/event_args/actor/clickchain/e_args, atom/target, flags, usage)
 	return (function in tool_functions)? tool_quality : null
 
 //? tool redirection
-/obj/item/switchtool/tool_query(mob/user, atom/target, flags, usage)
+/obj/item/switchtool/tool_query(datum/event_args/actor/clickchain/e_args, atom/target, flags, usage)
 	. = list()
 	for(var/i in tool_functions)
 		.[i] = tool_quality

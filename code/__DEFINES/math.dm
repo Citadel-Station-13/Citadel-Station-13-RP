@@ -222,3 +222,6 @@
 
 /// return old combined with new, retaining a certain percent of the old value's magnitude.
 #define SIMPLE_VALUE_SMOOTHING(_retain_percent, _old, _new) ((_retain_percent * _old) + ((1 - _retain_percent) * _new))
+
+/// get highest magnitude of two numbers, magnitude is abs value
+#define BIGGER_MAGNITUDE(a, b) ((abs(a) > abs(b))? a : b)

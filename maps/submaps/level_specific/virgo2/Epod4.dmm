@@ -75,7 +75,7 @@
 /turf/simulated/shuttle/wall,
 /area/submap/virgo2/Epod4)
 "p" = (
-/obj/structure/door_assembly/door_assembly_ext{
+/obj/structure/door_assembly/external{
 	anchored = 1
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,

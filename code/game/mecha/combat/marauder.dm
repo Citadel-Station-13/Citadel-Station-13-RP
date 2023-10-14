@@ -71,7 +71,7 @@
 
 //Note that is the Mauler
 /obj/mecha/combat/marauder/mauler
-	desc = "Heavy-duty, combat exosuit, developed off of the existing Marauder model."
+	desc = "A stolen heavy-duty combat exosuit, developed off of the existing Marauder model."
 	name = "Mauler"
 	icon_state = "mauler"
 	initial_icon = "mauler"

@@ -156,6 +156,12 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_teshari.dmi'
 	unavailable_to_build = TRUE
 
+/datum/robolimb/unbranded_digitigrade
+	company = "Unbranded - Generic Digitigrade"
+	desc = "A digitigrade robotic leg of a fairly generic design."
+	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_digitigrade.dmi'
+	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
+
 /datum/robolimb/nanotrasen
 	company = "NanoTrasen"
 	desc = "A simple but efficient robotic limb, created by NanoTrasen."

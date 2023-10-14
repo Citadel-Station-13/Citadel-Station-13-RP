@@ -1,5 +1,7 @@
 var/list/table_icon_cache = list()
 
+// todo: refactor literally everything, this is atrocious, especially the icongen
+
 /obj/structure/table
 	name = "table frame"
 	icon = 'icons/obj/tables.dmi'

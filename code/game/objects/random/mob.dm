@@ -171,8 +171,7 @@
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/rapid,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser,
-				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong,
-				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong/guard)
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong)
 
 /obj/random/mob/robotic/hivebot
 	name = "Random Hivebot"
@@ -188,8 +187,7 @@
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/rapid,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser,
-				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong,
-				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong/guard)
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong)
 
 //Mice
 

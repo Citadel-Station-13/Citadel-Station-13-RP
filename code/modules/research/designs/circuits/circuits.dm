@@ -208,6 +208,12 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	build_path = /obj/item/circuitboard/prosthetics
 
+/datum/design/circuit/processor
+	design_name = "slime processor"
+	id = "slime_processor"
+	req_tech = list(TECH_DATA = 2, TECH_BIO = 2)
+	build_path = /obj/item/circuitboard/processor
+
 /datum/design/circuit/mech_recharger
 	design_name = "mech recharger"
 	id = "mech_recharger"
@@ -465,6 +471,24 @@ CIRCUITS BELOW
 	id = "honker_targ"
 	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2, TECH_ILLEGAL = 4)
 	build_path = /obj/item/circuitboard/mecha/honker/targeting
+
+/datum/design/circuit/mecha/phazon_main
+	design_name = "'Phazon' central control"
+	id = "phazon_main"
+	req_tech = list(TECH_DATA = 6, TECH_COMBAT = 4, TECH_BLUESPACE = 6, TECH_ARCANE = 2)
+	build_path = /obj/item/circuitboard/mecha/phazon/main
+
+/datum/design/circuit/mecha/phazon_peri
+	design_name = "'Phazon' peripherals control"
+	id = "phazon_peri"
+	req_tech = list(TECH_DATA = 6, TECH_COMBAT = 4, TECH_BLUESPACE = 6, TECH_ARCANE = 2)
+	build_path = /obj/item/circuitboard/mecha/phazon/peripherals
+
+/datum/design/circuit/mecha/phazon_targ
+	design_name = "'Phazon' weapon control and targeting"
+	id = "phazon_targ"
+	req_tech = list(TECH_DATA = 6, TECH_COMBAT = 4, TECH_BLUESPACE = 6, TECH_ARCANE = 2)
+	build_path = /obj/item/circuitboard/mecha/phazon/targeting
 
 /datum/design/circuit/mecha/reticent_main
 	design_name = "'Reticent' central control"

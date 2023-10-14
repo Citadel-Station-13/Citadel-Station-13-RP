@@ -325,6 +325,9 @@ Add those other swinging traps you mentioned above!
 	var/burst_delay = 2
 	var/initial_fire_delay = 5
 
+	var/ammo_count = 0
+	var/ammo_store = 0 //How many shots the trap has stored before it runs out. This seems to work out to the value + 1.
+
 	//This needs to check dirs, projectiles, accuracy, reload/recharge. It's kinda gonna suck. Consult Turret code.
 
 /obj/effect/trap/launcher/Initialize(mapload)
@@ -342,6 +345,9 @@ Add those other swinging traps you mentioned above!
 		return
 	if(broken)
 		return
+	if(ammo_count)
+		if(src.shot_number > src.ammo_store)
+			return
 	if(((src.last_shot + src.fire_delay) <= world.time) && (!broken) && (src.tripped))
 
 		src.last_shot = world.time
@@ -377,7 +383,6 @@ Add those other swinging traps you mentioned above!
 			M.use(5)
 			Break()
 			to_chat(user, "<span class='notice'>You slip the rods into the firing mechanism, jamming it.</span>")
-			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need five rods to jam the mechanism.</span>")
 
@@ -415,6 +420,10 @@ Add those other swinging traps you mentioned above!
 /obj/effect/trap/launcher/fireball_aoe
 	projectile_type = /obj/projectile/magic/aoe/fireball
 	projectile_sound = 'sound/weapons/cannon.ogg'
+
+/obj/effect/trap/launcher/fireball_aoe/finite //Finite variant
+	ammo_count = 1
+	ammo_store = 1
 
 //Web Launcher
 /obj/effect/trap/launcher/web

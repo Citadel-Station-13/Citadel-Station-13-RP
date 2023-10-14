@@ -38,6 +38,7 @@
 		)
 	icon_state = "detective"
 	item_state = "gun"
+	item_flags = ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	materials = list(MAT_STEEL = 2000)
 	rad_flags = RAD_BLOCK_CONTENTS
@@ -111,6 +112,10 @@
 	var/obj/item/firing_pin/pin = /obj/item/firing_pin
 	var/no_pin_required = 0
 	var/scrambled = 0
+
+	//Gun Malfunction variables
+	var/unstable = 0
+	var/destroyed = 0
 
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))

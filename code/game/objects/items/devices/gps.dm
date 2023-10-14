@@ -590,3 +590,24 @@
 	long_range = TRUE
 	hide_signal = TRUE
 	can_hide_signal = TRUE
+
+/obj/item/gps/dataknife
+	name = "data knife"
+	desc = "This sleek combat knife's blade is inlaid with complex circuitry, capable of hacking electronics. A GPS device built into the pommel ensures the user can always maintain their orientation. Formerly produced under contract by Ward Takahashi in 2512 - allegedly for SysDef counter-piracy units - this deadly blade boasts an electronics warfare package that remains viable to this day."
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "dataknife"
+	item_state = "knife"
+	damage_force = 15
+	throw_force = 10
+	sharp = 1
+	edge = 1
+	w_class = ITEMSIZE_NORMAL
+	origin_tech = list(TECH_COMBAT = 4, TECH_ILLEGAL = 4)
+	attack_verb = list("sliced", "chopped", "stabbed", "pierced")
+	tool_speed = 2 // Use a real axe if you want to chop logs.
+	gps_tag = "UNKN"
+	hide_signal = TRUE
+	update_name_tag = FALSE
+
+/obj/item/gps/dataknife/is_multitool()
+	return TRUE

@@ -6,6 +6,7 @@
 	mind.active = 1		//indicates that the mind is currently synced with a client
 
 	update_antag_icons(mind)
+	update_action_buttons()
 
 	if(ai_holder && !ai_holder.autopilot)
 		ai_holder.go_sleep()

@@ -19,6 +19,7 @@ interface CollapsibleProps extends ComponentProps{
   more?: InfernoNode;
   boxProps?: BoxProps;
   headerProps?: ButtonProps;
+  contentFunction?: () => InfernoNode;
 }
 
 interface CollapsibleState {
@@ -76,7 +77,7 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
         </div>
         {open && (
           <div className="Collapsible__content">
-            {children}
+            {!!props.contentFunction && props.contentFunction()}{children}
           </div>
         )}
       </Box>
@@ -104,7 +105,7 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
         </div>
         {open && (
           <div className="Collapsible__content">
-            {children}
+            {!!props.contentFunction && props.contentFunction()}{children}
           </div>
         )}
       </Box>

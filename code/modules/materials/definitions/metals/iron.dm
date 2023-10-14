@@ -1,6 +1,6 @@
 /datum/material/iron
 	name = "iron"
-	id = "iron"
+	id = MAT_IRON
 	stack_type = /obj/item/stack/material/iron
 	icon_colour = "#5C5454"
 	weight = 22

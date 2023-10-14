@@ -298,6 +298,32 @@
 /datum/reagent/tricordrazine/affect_touch(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
 		affect_blood(M, alien, removed * 0.4)
+
+/datum/reagent/earthsblood
+	name = "Earthsblood"
+	id = "earthsblood"
+	description = "A rare plant extract with immense, almost magical healing capabilities. Induces a potent psychoactive state, damaging neurons with prolonged use."
+	taste_description = "the sweet highs of life"
+	reagent_state = REAGENT_LIQUID
+	color = "#ffb500"
+	overdose = REAGENTS_OVERDOSE * 0.50
+
+
+/datum/reagent/earthsblood/affect_blood(mob/living/carbon/M, alien, removed)
+	var/chem_effective = 1
+	if(alien == IS_ALRAUNE)
+		chem_effective = 1.1 //Plant to Plant Restoration
+	if(alien == IS_DIONA)
+		chem_effective = 1.1
+	if(alien == IS_SLIME)
+		chem_effective = 0.7 //It just goes right through them ... right onto the floor
+	M.heal_organ_damage (4 * removed * chem_effective, 4 * removed * chem_effective)
+	M.adjustOxyLoss(-10 * removed * chem_effective)
+	M.adjustToxLoss(-4 * removed * chem_effective)
+	M.adjustCloneLoss(-2 * removed * chem_effective)
+	M.druggy = max(M.druggy, 40)
+	M.adjustBrainLoss(1 * removed) //your life for your mind. The Earthmother's Tithe.
+	M.ceiling_chemical_effect(CE_PAINKILLER, 120 * chem_effective) //It's just a burning memory. The pain, I mean.
 /*
 /datum/reagent/tricorlidaze//Main way to obtain is destiller
 	name = "Tricorlidaze"
@@ -1256,8 +1282,10 @@
 	if(istype(L))
 		if(istype(L, /mob/living/simple_mob/slime))
 			var/mob/living/simple_mob/slime/S = L
-			S.adjustToxLoss(rand(15, 25) * amount)	// Does more damage than water.
-			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the fluid touches it!</span>", "<span class='danger'>Your flesh burns in the fluid!</span>")
+			var/amt = rand(15, 25) * amount * (1-S.water_resist)
+			if(amt>0)
+				S.adjustToxLoss(rand(15, 25) * amount)	// Does more damage than water.
+				S.visible_message("<span class='warning'>[S]'s flesh sizzles where the fluid touches it!</span>", "<span class='danger'>Your flesh burns in the fluid!</span>")
 		remove_self(amount)
 
 /datum/reagent/leporazine
@@ -1570,8 +1598,10 @@
 /datum/reagent/firefighting_foam/touch_mob(mob/living/M, reac_volume)
 	if(istype(M, /mob/living/simple_mob/slime)) //I'm sure foam is water-based!
 		var/mob/living/simple_mob/slime/S = M
-		S.adjustToxLoss(15 * reac_volume)
-		S.visible_message("<span class='warning'>[S]'s flesh sizzles where the foam touches it!</span>", "<span class='danger'>Your flesh burns in the foam!</span>")
+		var/amt = 15 * reac_volume * (1-S.water_resist)
+		if(amt>0)
+			S.adjustToxLoss(amt)
+			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the foam touches it!</span>", "<span class='danger'>Your flesh burns in the foam!</span>")
 
 	M.adjust_fire_stacks(-reac_volume)
 	M.ExtinguishMob()

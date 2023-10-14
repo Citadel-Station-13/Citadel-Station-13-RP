@@ -431,6 +431,12 @@
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
 
+/datum/sprite_accessory/marking/lipcolorhuman
+	name = "Humanoid Lip Colour"
+	id = "marking_lip"
+	icon_state = "lipcolor"
+	body_parts = list(BP_HEAD)
+
 /datum/sprite_accessory/marking/jackal_backpattern
 	name = "Jackal Backpattern"
 	id = "marking_back_jackal"

@@ -72,12 +72,7 @@
 /turf/simulated/floor/outdoors/mud/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "fS" = (
-/obj/structure/window/reinforced/polarized/full{
-	color = "#222222";
-	name = "reflective window";
-	opacity = 1
-	},
-/obj/structure/grille/cult,
+/obj/structure/prop/prism/incremental,
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "gr" = (
@@ -92,23 +87,28 @@
 /obj/structure/boulder,
 /turf/simulated/floor/outdoors/grass/heavy/interior/classp,
 /area/class_p/POIs/archaic_temple)
+"gV" = (
+/obj/effect/trap/pit/deep{
+	id = "tunnel_easthigh"
+	},
+/turf/simulated/floor/classp,
+/area/class_p/POIs/archaic_temple)
 "hQ" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/flame/candle/everburn/black,
 /turf/simulated/floor/wood/classp,
-/area/class_p/POIs/archaic_temple)
-"if" = (
-/obj/structure/prop/lock/projectile{
-	lockID = "anak"
-	},
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "ik" = (
 /obj/structure/statue/marble/male{
 	name = "eroded male statue"
 	},
 /turf/simulated/floor/silver/classp,
+/area/class_p/POIs/archaic_temple)
+"is" = (
+/obj/effect/trap/pit/deep{
+	id = "tunnel_westhigh"
+	},
+/turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "iV" = (
 /obj/structure/bookcase,
@@ -170,22 +170,9 @@
 /obj/machinery/artifact,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
-"lc" = (
-/obj/structure/grille/cult,
-/obj/structure/window/reinforced/polarized/full{
-	color = "#222222";
-	name = "reflective window";
-	opacity = 1
-	},
-/turf/simulated/floor/trap/delayed/plating/classp{
-	id = "tunnel_south"
-	},
-/area/class_p/POIs/archaic_temple)
 "lf" = (
-/obj/effect/trap/pit/deep{
-	id = "tunnel_north"
-	},
 /obj/effect/ceiling,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "lh" = (
@@ -256,7 +243,7 @@
 	opacity = 1
 	},
 /turf/simulated/floor/trap/delayed/plating/classp{
-	id = "tunnel_west"
+	id = "tunnel_westlow"
 	},
 /area/class_p/POIs/archaic_temple)
 "nD" = (
@@ -267,6 +254,10 @@
 /obj/structure/prop/lock/projectile{
 	lockID = "dmirr"
 	},
+/turf/simulated/floor/classp,
+/area/class_p/POIs/archaic_temple)
+"nK" = (
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "nX" = (
@@ -377,14 +368,14 @@
 /turf/simulated/floor/silver/classp,
 /area/class_p/POIs/archaic_temple)
 "sH" = (
-/obj/effect/trap/launcher/fireball_aoe{
-	dir = 1;
-	id = "vault";
-	pixel_y = -32
-	},
 /obj/structure/table/marble,
 /obj/item/gun/energy/staff/focus{
 	name = "Staff of the Forgotten"
+	},
+/obj/effect/trap/launcher/fireball_aoe/finite{
+	dir = 1;
+	id = "vault";
+	pixel_y = -32
 	},
 /turf/simulated/floor/silver/classp,
 /area/class_p/POIs/archaic_temple)
@@ -399,6 +390,8 @@
 "tc" = (
 /obj/machinery/door/blast/puzzle{
 	color = "#CBA713";
+	desc = "A large, virtually indestructible door locked shut by some arcane mechanism. Perhaps if that were removed, it could be opened...";
+	icon = 'icons/obj/doors/material_doors.dmi';
 	icon_state = "metal";
 	icon_state_closed = "metal";
 	icon_state_closing = "metalclosing";
@@ -487,6 +480,17 @@
 	},
 /obj/effect/ceiling,
 /turf/simulated/floor/classp,
+/area/class_p/POIs/archaic_temple)
+"xV" = (
+/obj/structure/window/reinforced/polarized/full{
+	color = "#222222";
+	name = "reflective window";
+	opacity = 1
+	},
+/obj/structure/grille/cult,
+/turf/simulated/floor/trap/delayed/plating/classp{
+	id = "tunnel_easthigh"
+	},
 /area/class_p/POIs/archaic_temple)
 "yg" = (
 /obj/structure/bookcase,
@@ -620,6 +624,8 @@
 "Dy" = (
 /obj/machinery/door/blast/puzzle{
 	color = "#1F1A04";
+	desc = "A large, virtually indestructible door locked shut by some arcane mechanism. Perhaps if that were removed, it could be opened...";
+	icon = 'icons/obj/doors/material_doors.dmi';
 	icon_state = "metal";
 	icon_state_closed = "metal";
 	icon_state_closing = "metalclosing";
@@ -667,6 +673,17 @@
 "Fg" = (
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
+"Fh" = (
+/obj/structure/window/reinforced/polarized/full{
+	color = "#222222";
+	name = "reflective window";
+	opacity = 1
+	},
+/obj/structure/grille/cult,
+/turf/simulated/floor/trap/delayed/plating/classp{
+	id = "tunnel_westhigh"
+	},
+/area/class_p/POIs/archaic_temple)
 "Fp" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 8
@@ -694,7 +711,7 @@
 /area/class_p/POIs/archaic_temple)
 "FF" = (
 /obj/effect/trap/pit/deep{
-	id = "tunnel_east"
+	id = "tunnel_eastlow"
 	},
 /obj/effect/ceiling,
 /turf/simulated/floor/classp,
@@ -715,8 +732,8 @@
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "GY" = (
-/mob/living/simple_mob/living_statue{
-	name = "eroded male statue"
+/obj/structure/prop/lock/projectile{
+	lockID = "anak"
 	},
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
@@ -782,6 +799,14 @@
 /turf/simulated/floor/trap/phoron/classp{
 	id = "entry_corridor"
 	},
+/area/class_p/POIs/archaic_temple)
+"Jg" = (
+/obj/effect/trap/launcher/fireball_aoe/finite{
+	dir = 1;
+	id = "headmaster_office";
+	pixel_y = -32
+	},
+/turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "Jv" = (
 /turf/simulated/floor/trap/gold/classp{
@@ -902,6 +927,8 @@
 "Nk" = (
 /obj/machinery/door/blast/puzzle{
 	color = "#4D4D4D";
+	desc = "A large, virtually indestructible door locked shut by some arcane mechanism. Perhaps if that were removed, it could be opened...";
+	icon = 'icons/obj/doors/material_doors.dmi';
 	icon_state = "metal";
 	icon_state_closed = "metal";
 	icon_state_closing = "metalclosing";
@@ -1009,7 +1036,7 @@
 /area/class_p/POIs/archaic_temple)
 "PU" = (
 /obj/effect/trap/pit/deep{
-	id = "tunnel_west"
+	id = "tunnel_westlow"
 	},
 /obj/effect/ceiling,
 /turf/simulated/floor/classp,
@@ -1070,7 +1097,7 @@
 	opacity = 1
 	},
 /turf/simulated/floor/trap/delayed/plating/classp{
-	id = "tunnel_east"
+	id = "tunnel_eastlow"
 	},
 /area/class_p/POIs/archaic_temple)
 "Uh" = (
@@ -1193,11 +1220,6 @@
 /turf/simulated/wall/dungeon,
 /area/class_p/POIs/archaic_temple)
 "YP" = (
-/obj/effect/trap/launcher/fireball_aoe{
-	dir = 1;
-	id = "vault";
-	pixel_y = -32
-	},
 /obj/structure/table/marble,
 /obj/item/clothing/suit/space/void/wizard{
 	name = "Mantle of the Forgotten"
@@ -1205,28 +1227,21 @@
 /obj/item/clothing/head/helmet/space/void/wizard{
 	name = "Helm of the Forgotten"
 	},
+/obj/effect/trap/launcher/fireball_aoe/finite{
+	dir = 1;
+	id = "vault";
+	pixel_y = -32
+	},
 /turf/simulated/floor/silver/classp,
 /area/class_p/POIs/archaic_temple)
 "YS" = (
-/obj/structure/window/reinforced/polarized/full{
-	color = "#222222";
-	name = "reflective window";
-	opacity = 1
+/obj/structure/prop/prism/incremental{
+	degrees_from_north = 45
 	},
-/obj/structure/grille/cult,
-/turf/simulated/floor/trap/delayed/plating/classp{
-	id = "tunnel_north"
-	},
+/turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "Zc" = (
 /turf/simulated/floor/crystal/classp,
-/area/class_p/POIs/archaic_temple)
-"Zs" = (
-/obj/effect/trap/launcher/fireball_aoe{
-	dir = 1;
-	id = "headmaster_office"
-	},
-/turf/simulated/wall/ironphoron/classp,
 /area/class_p/POIs/archaic_temple)
 "Zu" = (
 /obj/effect/trap/pop_up/flame{
@@ -1235,10 +1250,10 @@
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "Zw" = (
-/obj/effect/trap/pit/deep{
-	id = "tunnel_south"
-	},
 /obj/effect/ceiling,
+/mob/living/simple_mob/living_statue{
+	name = "eroded male statue"
+	},
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "Zx" = (
@@ -2417,7 +2432,7 @@ TM
 qo
 se
 se
-qo
+se
 qo
 zY
 zY
@@ -2475,7 +2490,7 @@ qo
 LP
 lf
 YS
-zY
+qo
 zY
 Zc
 Zc
@@ -2484,9 +2499,9 @@ Dl
 Zc
 zY
 zY
-lc
+qo
 Zw
-if
+UJ
 PU
 qo
 ZV
@@ -2530,9 +2545,9 @@ TM
 TM
 qo
 se
-se
+nK
+is
 qo
-GF
 Dl
 Zc
 Zc
@@ -2588,8 +2603,8 @@ Ar
 Mq
 Ar
 qo
+Fh
 qo
-GF
 Zc
 zY
 od
@@ -2873,8 +2888,8 @@ Mq
 Au
 Mq
 qo
+xV
 qo
-zY
 Zc
 zY
 od
@@ -2930,8 +2945,8 @@ TM
 qo
 UJ
 UJ
+gV
 qo
-zY
 Zc
 Zc
 Dl
@@ -2988,7 +3003,7 @@ qo
 GY
 UJ
 fS
-zY
+qo
 zY
 Zc
 Zc
@@ -3044,7 +3059,7 @@ TM
 qo
 se
 se
-qo
+se
 qo
 zY
 zY
@@ -3359,8 +3374,8 @@ Zc
 La
 ot
 ot
-ot
-Zs
+Jg
+qo
 TM
 TM
 rU

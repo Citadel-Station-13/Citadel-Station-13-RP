@@ -20,6 +20,8 @@ SUBSYSTEM_DEF(vote)
 	var/list/current_votes = list()
 	/// Who has voted
 	var/list/voting = list()
+	/// Anonymous votes
+	var/secret = FALSE
 
 /datum/controller/subsystem/vote/fire(resumed)
 	if(mode)
@@ -222,6 +224,7 @@ SUBSYSTEM_DEF(vote)
 		"admin" = check_rights_for(user.client, R_ADMIN),
 
 		"vote_happening" = !!choices.len,
+		"secret" = secret,
 	)
 
 	for(var/key in choices)
@@ -262,4 +265,7 @@ SUBSYSTEM_DEF(vote)
 			submit_vote(usr.key,params["index"])
 		if("unvote")
 			submit_vote(usr.key, null)
+		if("hide")
+			secret = !secret
+			log_and_message_admins("[usr] made the individual vote numbers [(secret ? "invisibile" : "visible")].")
 	return TRUE

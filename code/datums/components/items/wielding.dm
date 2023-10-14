@@ -1,5 +1,7 @@
 // todo: can element this by usign 3 signals instead of 2, one to receive a keybind signal.
 /datum/component/wielding
+	registered_type = /datum/component/wielding
+	
 	/// hands needed
 	var/hands
 	/// lazylist

@@ -277,13 +277,10 @@
 	else
 		return attack_hand(user)
 
+// todo: refactor
 /obj/machinery/attack_hand(mob/user, list/params)
 	if(IsAdminGhost(user))
 		return FALSE
-	if(inoperable(MAINT))
-		return TRUE
-	if(user.lying || user.stat)
-		return TRUE
 	if(!(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon)))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return TRUE
@@ -311,13 +308,15 @@
 	return ..()
 
 /obj/machinery/can_interact(mob/user)
-	if((machine_stat & (NOPOWER|BROKEN)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
+	if((machine_stat & (NOPOWER|BROKEN|MAINT)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
 		return FALSE
 	var/silicon = issilicon(user)
 	if(panel_open && !(interaction_flags_machine & INTERACT_MACHINE_OPEN)) // Check if we can interact with an open panel machine, if the panel is open
 		if(!silicon || !(interaction_flags_machine & INTERACT_MACHINE_OPEN_SILICON))
 			return FALSE
-	if(silicon /*|| isAdminGhostAI(user)*/) // If we are an AI or adminghsot, make sure the machine allows silicons to interact
+	// check silicon, but cyborgs can interact if within reach.
+	// todo: refactor interaction flags, fuck.
+	if(silicon && (!isrobot(user) || !user.Reachability(src))) // If we are an AI or adminghsot, make sure the machine allows silicons to interact
 		if(!(interaction_flags_machine & INTERACT_MACHINE_ALLOW_SILICON))
 			return FALSE
 	else if(isliving(user)) // If we are a living human
@@ -385,6 +384,7 @@
 	CB.apply_default_parts(src)
 	RefreshParts()
 
+// todo: this is fucked, refactor
 /obj/machinery/proc/default_part_replacement(var/mob/user, var/obj/item/storage/part_replacer/R)
 	if(!istype(R))
 		return 0
@@ -396,14 +396,20 @@
 	if(panel_open || !R.panel_req)
 		var/obj/item/circuitboard/CB = circuit
 		var/P
-		for(var/obj/item/stock_parts/A in component_parts)
+		for(var/obj/item/A in component_parts)
+			var/our_rating = A.rped_rating()
+			if(isnull(our_rating))
+				continue
 			for(var/T in CB.req_components)
 				if(ispath(A.type, T))
 					P = T
 					break
-			for(var/obj/item/stock_parts/B in R.contents)
+			for(var/obj/item/B in R.contents)
+				var/their_rating = B.rped_rating()
+				if(isnull(their_rating))
+					continue
 				if(istype(B, P) && istype(A, P))
-					if(B.rating > A.rating)
+					if(their_rating > our_rating)
 						R.remove_from_storage(B, src)
 						R.handle_item_insertion(A, null, TRUE)
 						component_parts -= A
@@ -411,8 +417,8 @@
 						B.loc = null
 						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
 						break
-			update_appearance()
-			RefreshParts()
+		update_appearance()
+		RefreshParts()
 	return 1
 
 // todo: refactor

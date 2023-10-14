@@ -1,6 +1,6 @@
 /datum/material/osmium
 	name = "osmium"
-	id = "osmium"
+	id = MAT_OSMIUM
 	stack_type = /obj/item/stack/material/osmium
 	icon_colour = "#9999FF"
 	stack_origin_tech = list(TECH_MATERIAL = 5)

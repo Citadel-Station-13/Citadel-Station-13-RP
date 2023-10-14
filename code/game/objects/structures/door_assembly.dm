@@ -18,43 +18,43 @@
 	. = ..()
 	update_state()
 
-/obj/structure/door_assembly/door_assembly_com
+/obj/structure/door_assembly/command
 	base_icon_state = "com"
 	base_name = "Command airlock"
 	glass_type = "/glass_command"
 	airlock_type = "/command"
 
-/obj/structure/door_assembly/door_assembly_sec
+/obj/structure/door_assembly/security
 	base_icon_state = "sec"
 	base_name = "Security airlock"
 	glass_type = "/glass/security"
 	airlock_type = "/security"
 
-/obj/structure/door_assembly/door_assembly_eng
+/obj/structure/door_assembly/engi
 	base_icon_state = "eng"
 	base_name = "Engineering airlock"
 	glass_type = "/glass_engineering"
 	airlock_type = "/engineering"
 
-/obj/structure/door_assembly/door_assembly_eat
+/obj/structure/door_assembly/engi_atmos
 	base_icon_state = "eat"
 	base_name = "Engineering atmos airlock"
 	glass_type = "/glass_engineeringatmos"
 	airlock_type = "/engineering"
 
-/obj/structure/door_assembly/door_assembly_min
+/obj/structure/door_assembly/mining
 	base_icon_state = "min"
 	base_name = "Mining airlock"
 	glass_type = "/glass_mining"
 	airlock_type = "/mining"
 
-/obj/structure/door_assembly/door_assembly_atmo
+/obj/structure/door_assembly/atmos
 	base_icon_state = "atmo"
 	base_name = "Atmospherics airlock"
 	glass_type = "/glass_atmos"
 	airlock_type = "/atmos"
 
-/obj/structure/door_assembly/door_assembly_research
+/obj/structure/door_assembly/research
 	base_icon_state = "res"
 	base_name = "Research airlock"
 	glass_type = "/glass_research"
@@ -66,55 +66,55 @@
 	glass_type = "/glass_science"
 	airlock_type = "/science"
 
-/obj/structure/door_assembly/door_assembly_med
+/obj/structure/door_assembly/medical
 	base_icon_state = "med"
 	base_name = "Medical airlock"
 	glass_type = "/glass/medical"
 	airlock_type = "/medical"
 
-/obj/structure/door_assembly/door_assembly_ext
+/obj/structure/door_assembly/external
 	base_icon_state = "ext"
 	base_name = "External airlock"
 	glass_type = "/glass_external"
 	airlock_type = "/external"
 
-/obj/structure/door_assembly/door_assembly_mai
+/obj/structure/door_assembly/maint
 	base_icon_state = "mai"
 	base_name = "Maintenance airlock"
 	airlock_type = "/maintenance"
 	glass = -1
 
-/obj/structure/door_assembly/door_assembly_fre
+/obj/structure/door_assembly/freezer
 	base_icon_state = "fre"
 	base_name = "Freezer airlock"
 	airlock_type = "/freezer"
 	glass = -1
 
-/obj/structure/door_assembly/door_assembly_hatch
+/obj/structure/door_assembly/hatch
 	base_icon_state = "hatch"
 	base_name = "airtight hatch"
 	airlock_type = "/hatch"
 	glass = -1
 
-/obj/structure/door_assembly/door_assembly_mhatch
+/obj/structure/door_assembly/hatch/maint
 	base_icon_state = "mhatch"
 	base_name = "maintenance hatch"
 	airlock_type = "/maintenance_hatch"
 	glass = -1
 
-/obj/structure/door_assembly/door_assembly_highsecurity // Borrowing this until WJohnston makes sprites for the assembly
+/obj/structure/door_assembly/high_security // Borrowing this until WJohnston makes sprites for the assembly
 	base_icon_state = "highsec"
 	base_name = "high security airlock"
 	airlock_type = "/highsecurity"
 	glass = -1
 
-/obj/structure/door_assembly/door_assembly_voidcraft
+/obj/structure/door_assembly/voidcraft
 	base_icon_state = "voidcraft"
 	base_name = "voidcraft hatch"
 	airlock_type = "/voidcraft"
 	glass = -1
 
-/obj/structure/door_assembly/door_assembly_voidcraft/vertical
+/obj/structure/door_assembly/voidcraft/vertical
 	base_icon_state = "voidcraft_vertical"
 	airlock_type = "/voidcraft/vertical"
 

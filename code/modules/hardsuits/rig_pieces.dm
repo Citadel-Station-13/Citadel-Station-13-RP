@@ -16,6 +16,9 @@
 	min_pressure_protection = null
 	damage_force = 3 // if you're headbutting someone with something meant to protect you from space...
 
+	weight = 0
+	encumbrance = 0
+
 	species_restricted = list(
 		SPECIES_AKULA,
 		SPECIES_ALRAUNE,
@@ -49,6 +52,9 @@
 	body_cover_flags = HANDS
 	heat_protection    = HANDS
 	cold_protection    = HANDS
+
+	weight = 0
+	encumbrance = 0
 
 	species_restricted = list(
 		SPECIES_AKULA,
@@ -86,6 +92,9 @@
 
 	icon_base = null
 	damage_force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
+
+	weight = 0
+	encumbrance = 0
 
 	species_restricted = list(
 		SPECIES_AKULA,
@@ -125,7 +134,8 @@
 	inv_hide_flags          = HIDEJUMPSUIT|HIDETAIL
 	heat_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
-	slowdown = NONE
+	weight = 0
+	encumbrance = 0
 
 	// Will reach 10 breach damage after 25 laser carbine blasts, 3 revolver hits, or ~1 PTR hit.
 	// Completely immune to smg or sts hits.

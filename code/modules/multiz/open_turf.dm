@@ -7,7 +7,7 @@
 	icon = 'icons/turf/space.dmi'
 	icon_state = "opendebug"
 	density = FALSE
-	pathweight = INFINITY //Seriously, don't try and path over this one numbnuts
+	turf_path_danger = TURF_PATH_DANGER_FALL
 	can_build_into_floor = TRUE
 	allow_gas_overlays = FALSE
 	mz_flags = MZ_MIMIC_DEFAULTS | MZ_MIMIC_OVERWRITE | MZ_MIMIC_NO_AO | MZ_ATMOS_BOTH | MZ_OPEN_BOTH

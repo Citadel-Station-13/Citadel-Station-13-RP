@@ -33,13 +33,13 @@
 /obj/machinery/portable_atmospherics/powered/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	.["useCharge"] = TRUE
-	.["maxCharge"] = isnull(cell)? cell.maxcharge : 0
+	.["maxCharge"] = isnull(cell)? 0 : cell.maxcharge
 	.["powerRating"] = power_maximum
 	.["useCell"] = use_cell
 
 /obj/machinery/portable_atmospherics/powered/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	.["charge"] = isnull(cell)? cell.charge : 0
+	.["charge"] = isnull(cell)? 0 : cell.charge
 	if(atmos_portable_ui_flags & (ATMOS_PORTABLE_UI_SEE_POWER | ATMOS_PORTABLE_UI_SET_POWER))
 		.["powerCurrent"] = power_current
 	.["hasCell"] = !isnull(cell)

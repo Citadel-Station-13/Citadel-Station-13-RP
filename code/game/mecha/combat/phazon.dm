@@ -1,6 +1,6 @@
 /obj/mecha/combat/phazon
-	desc = "An exosuit which can only be described as 'WTF?'."
 	name = "Phazon"
+	desc = "A sleek exosuit with unnaturally pronounced curves."
 	icon_state = "phazon"
 	initial_icon = "phazon"
 	step_in = 1
@@ -80,10 +80,7 @@
 
 /obj/mecha/combat/phazon/janus
 	name = "Phazon Prototype Janus Class"
-	desc = "An exosuit which a more crude civilization such as yours might describe as WTF?."
-	description_fluff = "An incredibly high-tech exosuit constructed out of salvaged alien and cutting-edge modern technology.\
-	This machine, theoretically, is capable of travelling through time, however due to the strange nature of its miniaturized \
-	supermatter-fueled bluespace drive, it is uncertain how this ability manifests."
+	desc = "A sleek exosuit that radiates a strange, alien energy."
 	icon_state = "janus"
 	initial_icon = "janus"
 	step_in = 1

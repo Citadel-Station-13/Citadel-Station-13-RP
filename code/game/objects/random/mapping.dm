@@ -392,7 +392,7 @@
 			prob(1);list(
 				/obj/item/melee/cultblade,
 				/obj/item/clothing/suit/cultrobes,
-				/obj/item/clothing/head/culthood,
+				/obj/item/clothing/head/cult,
 				/obj/item/soulstone,
 				/obj/structure/closet/crate
 			),
@@ -693,14 +693,14 @@
 				/obj/structure/closet/crate/ummarcar //UMMARCAR OFFICE TRASH
 			),
 			prob(5);list(
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
-				/obj/item/reagent_containers/food/snacks/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
+				/obj/item/reagent_containers/food/snacks/boxed/unajerky,
 				/obj/structure/closet/crate/unathi //UNAJERKY
 			),
 			prob(10);list(
@@ -722,14 +722,14 @@
 				/obj/structure/closet/crate/galaksi //GALAKSI JANITOR SUPPLIES
 			),
 			prob(5);list(
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/candy,
 				/obj/structure/closet/crate/allico //GUMMIES
 			),
 			prob(2);list(

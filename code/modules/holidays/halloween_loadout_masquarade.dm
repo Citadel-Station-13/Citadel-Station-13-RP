@@ -253,6 +253,16 @@
 		SLOT_ID_RIGHT_HAND = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
 	)
 
+/datum/loadout_entry/seasonal/masquarade/changeling/claw
+	display_name = "Claws"
+	path = /obj/item/clothing/gloves/fake_chitin
+
+/obj/item/clothing/gloves/fake_chitin
+	STD_DEF("plastic claws")
+	icon_state = "ling_gauntlets"
+	icon = 'icons/antagonists/changeling/items/clothing.dmi'
+	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
+
 /datum/loadout_entry/seasonal/masquarade/changeling/shield
 	display_name = "Shield"
 	path = /obj/item/toy/flesh_shield
@@ -433,21 +443,21 @@
 
 /obj/item/clothing/suit/storage/hooded/fake_cult_hardsuit
 	STD_DEF("plastic suit")
-	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
-	icon_state = "cult_armor"
+	icon = 'icons/clothing/suit/armor/cult.dmi'
+	icon_state = "cult"
 	hoodtype = /obj/item/clothing/head/hood/fake_cult_hardsuit
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET|HANDS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET|HANDS
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_cult_hardsuit
 	STD_DEF("hood")
-	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
-	icon_state = "cult_helmet"
+	icon = 'icons/clothing/suit/armor/cult.dmi'
+	icon_state = "culthelm"
 	body_cover_flags = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /datum/loadout_entry/seasonal/masquarade/cult/robes_new
 	display_name = "Robes (new)"
@@ -455,20 +465,20 @@
 
 /obj/item/clothing/suit/storage/hooded/fake_cult_robes_new
 	STD_DEF("plastic suit")
-	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	icon = 'icons/clothing/suit/antag/cult.dmi'
 	icon_state = "cultrobesalt"
 	hoodtype = /obj/item/clothing/head/hood/fake_cult_robes_new
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_cult_robes_new
 	STD_DEF("hood")
-	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	icon = 'icons/clothing/suit/antag/cult.dmi'
 	icon_state = "culthoodalt"
 	body_cover_flags = HEAD
 	cold_protection = HEAD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /datum/loadout_entry/seasonal/masquarade/cult/robes_old
 	display_name = "Robes (old)"
@@ -476,20 +486,20 @@
 
 /obj/item/clothing/suit/storage/hooded/fake_cult_robes_old
 	STD_DEF("plastic suit")
-	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	icon = 'icons/clothing/suit/antag/cult.dmi'
 	icon_state = "cultrobes"
 	hoodtype = /obj/item/clothing/head/hood/fake_cult_robes_old
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_cult_robes_old
 	STD_DEF("hood")
-	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	icon = 'icons/clothing/suit/antag/cult.dmi'
 	icon_state = "culthood"
 	body_cover_flags = HEAD
 	cold_protection = HEAD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /datum/loadout_entry/seasonal/masquarade/cult/sword
 	display_name = "Sword"
@@ -508,20 +518,20 @@
 
 /obj/item/clothing/suit/storage/hooded/fake_heretic
 	STD_DEF("cloth robes")
-	icon = 'icons/antagonists/heretic/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
-	icon_state = "eldritch_armor"
+	icon = 'icons/clothing/suit/antag/heretic.dmi'
+	icon_state = "eldritcharmor"
 	hoodtype = /obj/item/clothing/head/hood/fake_heretic
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_heretic
 	STD_DEF("hood")
-	icon = 'icons/antagonists/heretic/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
-	icon_state = "eldritch_armor_hood"
+	icon = 'icons/clothing/suit/antag/heretic.dmi'
+	icon_state = "eldritchhood"
 	body_cover_flags = HEAD
 	cold_protection = HEAD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /datum/loadout_entry/seasonal/masquarade/heretic/void_cloak
 	display_name = "Void Cloak"
@@ -529,21 +539,21 @@
 
 /obj/item/clothing/suit/storage/hooded/fake_void
 	STD_DEF("cloth cloak")
-	icon = 'icons/antagonists/heretic/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
-	icon_state = "void_cloak"
+	icon = 'icons/clothing/suit/antag/heretic.dmi'
+	icon_state = "voidcloak"
 	hoodtype = /obj/item/clothing/head/hood/fake_void
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_void
 	STD_DEF_NON_HIDING("hood")
-	icon = 'icons/antagonists/heretic/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
-	icon_state = "void_cloak_hood"
+	icon = 'icons/clothing/suit/antag/heretic.dmi'
+	icon_state = "voidhood"
 	body_cover_flags = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /*
 /datum/loadout_entry/seasonal/masquarade/heretic/living_heart
@@ -637,5 +647,17 @@
 
 /obj/item/toy/ninja_katana
 */
+
+/**
+ * Non-costume seasonally restricted items.
+ */
+
+/datum/loadout_entry/seasonal/masquarade/aesthetic
+	antag_name = "Aesthetic"
+	abstract_type = /datum/loadout_entry/seasonal/masquarade/aesthetic
+
+/datum/loadout_entry/seasonal/masquarade/aesthetic/invisible_satchel
+	display_name = "Invisible Satchel"
+	path = /obj/item/storage/backpack/satchel/invisible
 
 #undef STD_DEF

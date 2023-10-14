@@ -17,6 +17,11 @@
 /obj/landmark/map_data/west_plains
 	height = 4
 
+/** Euthenia */
+
+/obj/landmark/map_data/euthenia
+	height = 5
+
 // See beach.dm for more details on this. Placeholder for now to stop compiling issues -Bloop
 /obj/away_mission_init/beachcave
 	name = "away mission initializer - beachcave"

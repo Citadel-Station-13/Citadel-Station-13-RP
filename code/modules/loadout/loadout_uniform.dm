@@ -522,6 +522,22 @@
 	name = "Colored Leotard"
 	path = /obj/item/clothing/under/leotardcolor
 
+/datum/loadout_entry/uniform/bunnysuit_f
+	name = "Bunny Leotard - Female"
+	path = /obj/item/clothing/under/bunnysuit_f
+
+/datum/loadout_entry/uniform/bunnysuit_m
+	name = "Bunny Leotard - Male"
+	path = /obj/item/clothing/under/bunnysuit_m
+
+/datum/loadout_entry/uniform/tabard_w
+	name = "White Tabard-Dress"
+	path = /obj/item/clothing/under/tabard_w
+
+/datum/loadout_entry/uniform/tabard_b
+	name = "Black Tabard-Dress"
+	path = /obj/item/clothing/under/tabard_b
+
 /datum/loadout_entry/uniform/verglasdress
 	name = "Verglas Dress"
 	path = /obj/item/clothing/under/verglasdress
@@ -669,6 +685,46 @@ Swimsuits
 	name = "Tunic - Flowered - Female"
 	path = /obj/item/clothing/under/druidic_gown_fem
 
+/datum/loadout_entry/uniform/acolyte_hunter
+	name = "Acolytes garbs"
+	path = /obj/item/clothing/under/acolyte_hunter
+
+/datum/loadout_entry/uniform/acolyte_hunter_fem
+	name = "Acolytes garbs - Female"
+	path = /obj/item/clothing/under/acolyte_hunter_fem
+
+/datum/loadout_entry/uniform/shamanblue
+	name = "Blue Shaman Garbs"
+	path = /obj/item/clothing/under/shamanblue
+
+/datum/loadout_entry/uniform/shamanblue_fem
+	name = "Blue Shaman Garbs - Female"
+	path = /obj/item/clothing/under/shamanblue_fem
+
+/datum/loadout_entry/uniform/shamanred
+	name = "Red Shaman Garbs"
+	path = /obj/item/clothing/under/shamanred
+
+/datum/loadout_entry/uniform/shamanred_fem
+	name = "Red Shaman Garbs - Female"
+	path = /obj/item/clothing/under/shamanred_fem
+
+/datum/loadout_entry/uniform/hunter
+	name = "Rugged Loincloth"
+	path = /obj/item/clothing/under/hunter
+
+/datum/loadout_entry/uniform/hunter_fem
+	name = "Rugged Loincloth - Female"
+	path = /obj/item/clothing/under/hunter_fem
+
+/datum/loadout_entry/uniform/gatherer
+	name = "Loincloth"
+	path = /obj/item/clothing/under/gatherer
+
+/datum/loadout_entry/uniform/gatherer_fem
+	name = "Loincloth - Female"
+	path = /obj/item/clothing/under/gatherer_fem
+
 /datum/loadout_entry/uniform/laconic
 	name = "Laconic Field Suit"
 	path = /obj/item/clothing/under/laconic
@@ -720,6 +776,11 @@ Swimsuits
 /datum/loadout_entry/uniform/antediluvian_dress
 	name = "Antediluvian Dress"
 	path = /obj/item/clothing/under/antediluvian/dress
+
+
+/datum/loadout_entry/uniform/antediluvian_wraps
+	name = "Antediluvian Wraps"
+	path = /obj/item/clothing/under/antediluvian/dress/aziru
 
 /datum/loadout_entry/accessory/antediluvian_gloves_alt
 	name = "Antediluvian Bracers Alternate"
@@ -860,6 +921,10 @@ Swimsuits
 /datum/loadout_entry/uniform/ballet
 	name = "Antheia Tutu"
 	path = /obj/item/clothing/under/ballet
+
+/datum/loadout_entry/uniform/tourist
+	name = "Tourist Liesurewear"
+	path = /obj/item/clothing/under/tourist
 
 //Tajaran wears
 

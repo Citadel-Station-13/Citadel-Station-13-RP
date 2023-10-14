@@ -296,7 +296,9 @@
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/hailer,
 		/obj/item/flashlight/glowstick,
+		/obj/item/clothing/suit/armor/vest/alt,
 		/obj/item/clothing/accessory/storage/black_vest,
+		/obj/item/clothing/head/helmet,
 		/obj/item/clothing/head/soft/sec/corp,
 		/obj/item/clothing/under/rank/security/corp,
 		/obj/item/gun/energy/secutor,
@@ -366,6 +368,8 @@
 		/obj/item/reagent_containers/food/drinks/flask/detflask,
 		/obj/item/storage/briefcase/crimekit,
 		/obj/item/tape_recorder,
+		/obj/item/camera,
+		/obj/item/camera_film = 2,
 		/obj/item/storage/bag/detective,
 		/obj/item/cassette_tape/random = 3)
 

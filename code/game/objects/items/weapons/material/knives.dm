@@ -224,20 +224,6 @@
 	icon_state = "machetedx"
 	item_state = "machete"
 
-//The Return of the Data Knife
-/obj/item/material/knife/tacknife/dataknife
-	name = "data knife"
-	desc = "Oddly enough, a Ward-Takahashi product. This sleek combat knife's blade is inlaid with complex circuitry, capable of hacking electronics. It also sports a GPS system in the pommel, ensuring you'll never be lost."
-	icon = 'icons/obj/kitchen.dmi'
-	icon_state = "dataknife"
-	item_state = "knife"
-	applies_material_colour = FALSE
-	default_material = "plasteel"
-	tool_speed = 2 // Use a real axe if you want to chop logs.
-
-/obj/item/material/knife/tacknife/dataknife/is_multitool()
-	return TRUE
-
 // Knife Material Variants
 /obj/item/material/butterfly/plasteel
 	default_material = "plasteel"

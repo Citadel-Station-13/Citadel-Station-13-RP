@@ -63,7 +63,7 @@
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	bone_type = /obj/item/stack/chitin
+	bone_type = /obj/item/stack/material/chitin
 	bone_amount = 5
 
 	faction = "lavaland"
@@ -184,7 +184,7 @@
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	bone_type = /obj/item/stack/chitin
+	bone_type = /obj/item/stack/material/chitin
 	bone_amount = 5
 
 	faction = "lavaland"
@@ -210,7 +210,7 @@
 	if(istype(O, /obj/item/tool/wirecutters) && rideable)
 		to_chat(user, "<span class='danger'>You nip the straps of the [O]! It falls off of the [src].</span>")
 		rideable = 0
-		DelComponent(/datum/component/riding_handler/shank)
+		DelComponent(/datum/component/riding_handler, /datum/component/riding_handler/shank)
 		var/turf/T = get_turf(src)
 		new /obj/item/saddle/shank(T)
 	if(istype(O, /obj/item/pen/charcoal) && rideable)

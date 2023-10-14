@@ -556,6 +556,7 @@
 	icon = 'icons/clothing/uniform/costume/maid.dmi'
 	icon_state = "latex"
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 

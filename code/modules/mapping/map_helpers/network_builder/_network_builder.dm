@@ -10,6 +10,8 @@
 	var/adminspawned = FALSE
 	/// our base type
 	var/base_type
+	/// constraint
+	var/network_constraint
 
 /obj/map_helper/network_builder/Initialize(mapload)
 	. = ..()

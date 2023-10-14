@@ -152,6 +152,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	// Sounds.
 	if(effective_gen > (max_power * 0.05)) // More than 5% and sounds start.
 		soundloop.start()
+		soundloop.opacity_check = 1
 		soundloop.volume = LERP(1, 40, effective_gen / max_power)
 	else
 		soundloop.stop()
