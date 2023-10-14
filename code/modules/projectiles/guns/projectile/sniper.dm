@@ -4,6 +4,7 @@
 	name = "anti-materiel rifle"
 	desc = "A portable anti-armour rifle fitted with a scope, the HI PTR-7 Rifle was originally designed to used against armoured exosuits. It is capable of punching through windows and non-reinforced walls with ease. Fires armor piercing 12.7mm shells."
 	icon_state = "heavysniper"
+	item_state = "heavysniper"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "l6closed-empty", SLOT_ID_LEFT_HAND = "l6closed-empty") // placeholder
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	damage_force = 10
@@ -101,7 +102,7 @@
 	if(ammo_magazine)
 		icon_state = "SVD"
 	else
-		icon_state = "SVD-empty"
+		icon_state = "SVD-e"
 
 /obj/item/gun/ballistic/SVD/verb/scope()
 	set category = "Object"
@@ -123,4 +124,4 @@
 	if(ammo_magazine)
 		icon_state = "SVD-taj"
 	else
-		icon_state = "SVD-taj-empty"
+		icon_state = "SVD-taj-e"

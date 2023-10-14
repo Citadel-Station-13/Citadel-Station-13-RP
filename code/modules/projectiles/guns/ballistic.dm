@@ -44,6 +44,19 @@
 			allowed_magazines += /obj/item/ammo_magazine/smart
 	update_icon()
 
+/obj/item/gun/ballistic/update_icon_state()
+	. = ..()
+	if(ammo_magazine)
+		if(silenced)
+			icon_state = "[silenced_icon]"
+		else
+			icon_state = "[initial(icon_state)]"
+	else
+		if(silenced)
+			icon_state = "[silenced_icon]-e"
+		else
+			icon_state = "[initial(icon_state)]-e"
+
 /obj/item/gun/ballistic/consume_next_projectile()
 	//get the next casing
 	if(loaded.len)

@@ -92,13 +92,6 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
 
-/obj/item/gun/ballistic/sec/update_icon_state()
-	. = ..()
-	if(ammo_magazine)
-		icon_state = "secguncomp"
-	else
-		icon_state = "secguncomp-e"
-
 /obj/item/gun/ballistic/sec/flash
 	name = ".45 signal pistol"
 	magazine_type = /obj/item/ammo_magazine/m45/flash
@@ -107,13 +100,6 @@
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. This one has a sweet wooden grip and only accepts .45 rubber or flash magazines."
 	name = "custom .45 pistol"
 	icon_state = "secgundark"
-
-/obj/item/gun/ballistic/sec/wood/update_icon_state()
-	. = ..()
-	if(ammo_magazine)
-		icon_state = "secgundark"
-	else
-		icon_state = "secgundark-e"
 
 /obj/item/gun/ballistic/silenced
 	name = "silenced pistol"
@@ -141,13 +127,6 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m44
 	allowed_magazines = list(/obj/item/ammo_magazine/m44)
-
-/obj/item/gun/ballistic/deagle/update_icon_state()
-	. = ..()
-	if(ammo_magazine)
-		icon_state = "[initial(icon_state)]"
-	else
-		icon_state = "[initial(icon_state)]-e"
 
 /obj/item/gun/ballistic/deagle/gold
 	desc = "A gold plated gun folded over a million times by superior martian gunsmiths. Uses .44 rounds."
@@ -179,13 +158,6 @@
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
-/obj/item/gun/ballistic/gyropistol/update_icon_state()
-	. = ..()
-	if(ammo_magazine)
-		icon_state = "gyropistolloaded"
-	else
-		icon_state = "gyropistol"
-
 /obj/item/gun/ballistic/pistol
 	name = "compact pistol"
 	desc = "An ultra-compact pistol with a matte black finish. Uses 9mm."
@@ -201,19 +173,6 @@
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
 	projectile_type = /obj/projectile/bullet/pistol
-
-/obj/item/gun/ballistic/pistol/update_icon_state()
-	. = ..()
-	if(ammo_magazine)
-		if(silenced)
-			icon_state = "[silenced_icon]"
-		else
-			icon_state = "[initial(icon_state)]"
-	else
-		if(silenced)
-			icon_state = "[silenced_icon]-e"
-		else
-			icon_state = "[initial(icon_state)]-e"
 
 /obj/item/gun/ballistic/pistol/flash
 	name = "compact signal pistol"
@@ -318,13 +277,6 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
 	projectile_type = /obj/projectile/bullet/pistol
 
-/obj/item/gun/ballistic/luger/update_icon_state()
-	. = ..()
-	if(ammo_magazine)
-		icon_state = "[initial(icon_state)]"
-	else
-		icon_state = "[initial(icon_state)]-e"
-
 /obj/item/gun/ballistic/luger/brown
 	icon_state = "p08b"
 
@@ -337,13 +289,6 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mm
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm) // Can accept illegal large capacity magazines, or compact magazines.
-
-/obj/item/gun/ballistic/p92x/update_icon_state()
-	. = ..()
-	if(ammo_magazine)
-		icon_state = "[initial(icon_state)]"
-	else
-		icon_state = "[initial(icon_state)]-e"
 
 /obj/item/gun/ballistic/p92x/sec
 	desc = "A widespread sidearm called the P92X which is used by military, police, and security forces across the galaxy. This one is a less-lethal variant that only accepts 9mm rubber or flash magazines."
@@ -395,13 +340,6 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/compact)
 	projectile_type = /obj/projectile/bullet/organic
 
-/obj/item/gun/ballistic/clown_pistol/update_icon_state()
-	. = ..()
-	if(ammo_magazine)
-		icon_state = "[initial(icon_state)]"
-	else
-		icon_state = "[initial(icon_state)]-e"
-
 //Hey did you ever see Kingsman? Well, you know this gun then.
 /obj/item/gun/ballistic/konigin
 	name = "Konigin-63 compact"
@@ -451,19 +389,6 @@
 			//switch_firemodes(user) //switch back automatically
 	else
 		..()
-
-/obj/item/gun/ballistic/konigin/update_icon_state()
-	. = ..()
-	if(ammo_magazine)
-		if(silenced)
-			icon_state = "[silenced_icon]"
-		else
-			icon_state = "[initial(icon_state)]"
-	else
-		if(silenced)
-			icon_state = "[silenced_icon]-e"
-		else
-			icon_state = "[initial(icon_state)]-e"
 
 /* Having issues with getting this to work atm.
 /obj/item/gun/ballistic/konigin/examine(mob/user, dist)
@@ -561,7 +486,7 @@
 
 /obj/item/gun/ballistic/apinae_pistol/update_icon_state()
 	. = ..()
-	icon_state = "apipistol-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
+	icon_state = "apipistol-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "e"]"
 
 //Tyrmalin Weapons
 /obj/item/gun/ballistic/pirate/junker_pistol
@@ -589,13 +514,6 @@
 	magazine_type = /obj/item/ammo_magazine/mfoam/pistol
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/pistol)
 	fire_sound = 'sound/items/syringeproj.ogg'
-
-/obj/item/gun/ballistic/pistol/foam/update_icon_state()
-	. = ..()
-	if(ammo_magazine)
-		icon_state = "[initial(icon_state)]"
-	else
-		icon_state = "[initial(icon_state)]-e"
 
 /obj/item/gun/ballistic/pistol/foam/handle_suicide(mob/living/user)
 	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
