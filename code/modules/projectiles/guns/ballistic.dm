@@ -46,12 +46,12 @@
 
 /obj/item/gun/ballistic/update_icon_state()
 	. = ..()
-	if(ammo_magazine)
+	if(magazine_type && ammo_magazine)
 		if(silenced)
 			icon_state = "[silenced_icon]"
 		else
 			icon_state = "[initial(icon_state)]"
-	else
+	else if(magazine_type && !ammo_magazine)
 		if(silenced)
 			icon_state = "[silenced_icon]-e"
 		else
