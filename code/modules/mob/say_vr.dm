@@ -41,6 +41,7 @@
 		message = say_emphasis(message)
 		SEND_SIGNAL(src, COMSIG_MOB_SUBTLE_EMOTE, src, message)
 
+		// todo: get hearers in view this
 		var/list/vis = get_mobs_and_objs_in_view_fast(get_turf(src),1,2) //Turf, Range, and type 2 is emote
 		var/list/vis_mobs = vis["mobs"]
 		var/list/vis_objs = vis["objs"]
@@ -57,10 +58,6 @@
 			var/obj/O = visobj
 			spawn(0)
 				O.see_emote(src, message, 2)
-
-		var/list/other_viewers = get_hearers_in_view(source = src)
-		for(var/mob/M in other_viewers - vis_mobs)
-			M.show_message(SPAN_SMALL("<i>[src] does something [pick("subtly", "discreetly", "hidden", "obscured")].</i>"), SAYCODE_TYPE_VISIBLE)
 
 /mob/proc/emote_vr(var/act, var/type, var/message) //This would normally go in say.dm
 	if(act == "me")
