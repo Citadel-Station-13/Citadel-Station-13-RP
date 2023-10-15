@@ -7,7 +7,7 @@
 	w_class = ITEMSIZE_SMALL
 	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'
 	icon_state = "setup_small"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	show_messages = TRUE
 	datum_flags = DF_USE_TAG
 	var/list/assembly_components = list()

@@ -38,6 +38,13 @@
 
 	var/last_message = 0
 
+	/// carry weight in us
+	var/weight_cached = 0
+	/// carry weight mitigation, static. applied after multiplicative
+	var/weight_mitigation = 0
+	/// carry weight mitigation, multiplicative.
+	var/weight_multiply = 1
+
 /obj/item/storage/Initialize(mapload)
 	. = ..()
 
@@ -96,22 +103,7 @@
 
 	//calibrate_size()			//Let's not!
 
-/obj/item/storage/proc/populate_contents_legacy()
-	if(LAZYLEN(starts_with) && !empty)
-		for(var/newtype in starts_with)
-			var/count = starts_with[newtype] || 1 //Could have left it blank.
-			while(count)
-				count--
-				new newtype(src)
-		starts_with = null //Reduce list count.
-
-/obj/item/storage/proc/PopulateContents()
-
-/obj/item/storage/proc/drop_contents()
-	hide_from(usr)
-	var/turf/T = get_turf(src)
-	for(var/obj/item/I in contents)
-		remove_from_storage(I, T)
+	reset_weight()
 
 /obj/item/storage/Destroy()
 	close_all()
@@ -124,6 +116,33 @@
 	QDEL_NULL(src.stored_end)
 	QDEL_NULL(closer)
 	return ..()
+
+/obj/item/storage/get_weight()
+	. = ..()
+	. += max(0, (weight_cached * weight_multiply) - weight_mitigation)
+
+/obj/item/storage/proc/reset_weight()
+	var/old_weight_cached = weight_cached
+	weight_cached = 0
+	for(var/obj/item/I in contents)
+		weight_cached += I.get_weight()
+	propagate_weight(old_weight_cached, weight_cached)
+	update_weight()
+
+/obj/item/storage/proc/stored_weight_changed(obj/item/I, old_weight, new_weight)
+	var/diff = new_weight - old_weight
+	var/old = weight_cached
+	weight_cached += diff
+	propagate_weight(old, weight_cached)
+/obj/item/storage/proc/reset_weight_recursive()
+	do_reset_weight_recursive(200)
+
+/obj/item/storage/proc/do_reset_weight_recursive(safety)
+	if(!(safety - 1))
+		CRASH("out of safety")
+	for(var/obj/item/storage/S in contents)
+		S.do_reset_weight_recursive(safety - 1)
+	reset_weight()
 
 /obj/item/storage/AltClick(mob/user)
 	if(user in is_seeing)
@@ -143,7 +162,6 @@
 	else if(isliving(user) && user.Reachability(src))
 		open(user)
 	else
-		return ..()
 
 /obj/item/storage/proc/return_inv()
 
@@ -432,6 +450,9 @@
 	W.forceMove(src)
 	W.on_enter_storage(src)
 	W.item_flags |= ITEM_IN_STORAGE
+	var/old_weight = weight_cached
+	weight_cached += W.get_weight()
+	propagate_weight(old_weight, weight_cached)
 	if(user)
 		if(!prevent_warning)
 			for(var/mob/M in viewers(user))
@@ -480,6 +501,9 @@
 		W.maptext = ""
 	W.on_exit_storage(src)
 	W.item_flags &= ~ITEM_IN_STORAGE
+	var/old_weight = weight_cached
+	weight_cached -= W.get_weight()
+	propagate_weight(old_weight, weight_cached)
 	update_icon()
 	return 1
 
@@ -584,6 +608,24 @@
 	if(((!(ishuman(usr) || isrobot(usr))) && (src.loc != usr)) || usr.stat || usr.restrained())
 		return
 	drop_contents()
+
+/obj/item/storage/proc/drop_contents()
+	hide_from(usr)
+	var/turf/T = get_turf(src)
+	for(var/obj/item/I in contents)
+		remove_from_storage(I, T)
+
+/obj/item/storage/proc/populate_contents_legacy()
+	if(LAZYLEN(starts_with) && !empty)
+		for(var/newtype in starts_with)
+			var/count = starts_with[newtype] || 1 //Could have left it blank.
+			while(count)
+				count--
+				new newtype(src)
+		starts_with = null //Reduce list count.
+
+/obj/item/storage/proc/PopulateContents()
+	return
 
 ///Prevents spawned containers from being too small for their contents.
 /obj/item/storage/proc/calibrate_size()

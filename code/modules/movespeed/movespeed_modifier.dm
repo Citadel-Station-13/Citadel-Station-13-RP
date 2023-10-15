@@ -33,13 +33,22 @@ Key procs
 	var/id
 
 	/// Determines order. Lower priorities are applied first.
-	var/priority = 0
-	var/flags = NONE
+	var/priority = MOVESPEED_PRIORITY_DEFAULT
+	/// flags
+	var/movespeed_modifier_flags = NONE
 
+	/// calculation type
+	var/calculation_type = MOVESPEED_CALCULATION_HYPERBOLIC
+
+	//* HYPERBOLIC, HYPERBOLIC_BOOST calculations
 	/// Multiplicative slowdown
 	var/multiplicative_slowdown = 0
-	/// Next two variables depend on this: Should we do advanced calculations?
-	var/complex_calculation = FALSE
+
+	//* MULTIPLY calculations
+	/// multiply resulting speed by
+	var/multiply_speed = 1
+
+	//* HYPERBOLIC_BOOST, MULTIPLY calculations
 	/// Absolute max tiles we can boost to
 	var/absolute_max_tiles_per_second = INFINITY
 	/// Max tiles per second we can boost
@@ -51,7 +60,8 @@ Key procs
 	/// Movetypes this never applies to
 	var/blacklisted_movetypes = NONE
 
-	/// Other modification datums this conflicts with.
+	/// Other modification datums this conflicts with. Enum string.
+	/// If there is, it prioritizes the highest slow *or* the highest speedup, with abs().
 	var/conflicts_with
 
 /datum/movespeed_modifier/New()
@@ -61,15 +71,61 @@ Key procs
 
 /**
   * Returns new multiplicative movespeed after modification.
+  *
+  * The minimum move delay is always world.tick_lag. Attempting to go lower will result in the excess being cut.
+  * This is so math doesn't break down when something attempts to break through the asymptote at 0 for move delay to speed.
   */
 /datum/movespeed_modifier/proc/apply_multiplicative(existing, mob/target)
-	if(!complex_calculation || (multiplicative_slowdown > 0))		// we aren't limiting how much things can slowdown.. yet.
-		return existing + multiplicative_slowdown
-	var/current_tiles = 10 / max(existing, world.tick_lag)
-	// multiplicative_slowdown is negative due to our first check
-	var/max_buff_to = max(existing + multiplicative_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
-	// never slow the user
-	return min(existing, max_buff_to)
+	// todo: we should max/min to ticklag rather than 0, but, we can't until everything is moved to modifiers.
+	switch(calculation_type)
+	/*
+		if(MOVESPEED_CALCULATION_HYPERBOLIC)
+			return max(world.tick_lag, existing + multiplicative_slowdown)
+		if(MOVESPEED_CALCULATION_HYPERBOLIC_BOOST)
+			var/current_tiles = 10 / max(existing, world.tick_lag)
+			var/max_buff_to = max(existing + multiplicative_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
+			return clamp(max_buff_to, world.tick_lag, existing)
+		if(MOVESPEED_CALCULATION_MULTIPLY)
+			var/current_tiles = 10 / max(world.tick_lag, existing)
+			return 10 / (current_tiles * multiply_speed)
+	*/
+		if(MOVESPEED_CALCULATION_HYPERBOLIC)
+			// going below 0 would fuck multipliers up pretty badly
+			return max(0, existing + multiplicative_slowdown)
+		if(MOVESPEED_CALCULATION_HYPERBOLIC_BOOST)
+			var/current_tiles = 10 / max(existing, world.tick_lag)
+			var/max_buff_to = max(existing + multiplicative_slowdown, 10 / absolute_max_tiles_per_second, 10 / (current_tiles + max_tiles_per_second_boost))
+			return min(existing, max_buff_to)
+		if(MOVESPEED_CALCULATION_MULTIPLY)
+			if(existing > 0)
+				var/current_tiles = 10 / existing
+				return 10 / (current_tiles * multiply_speed)
+			else
+				var/current_tiles = 10 / config_legacy.run_speed
+				return 10 / (current_tiles * multiply_speed)
+		if(MOVESPEED_CALCULATION_LEGACY_MULTIPLY)
+			target.cached_movespeed_multiply *= multiply_speed
+			return existing
+		else
+			return existing
+
+/**
+ * applies from params
+ */
+/datum/movespeed_modifier/proc/parse(list/params)
+	. = FALSE
+	if(!isnull(params[MOVESPEED_PARAM_DELAY_MOD]))
+		. = TRUE
+		multiplicative_slowdown = params[MOVESPEED_PARAM_DELAY_MOD]
+	if(!isnull(params[MOVESPEED_PARAM_MULTIPLY_SPEED]))
+		. = TRUE
+		multiply_speed = params[MOVESPEED_PARAM_MULTIPLY_SPEED]
+	if(!isnull(params[MOVESPEED_PARAM_MAX_TILE_ABSOLUTE]))
+		. = TRUE
+		absolute_max_tiles_per_second = params[MOVESPEED_PARAM_MAX_TILE_ABSOLUTE]
+	if(!isnull(params[MOVESPEED_PARAM_MAX_TILE_BOOST]))
+		. = TRUE
+		max_tiles_per_second_boost = params[MOVESPEED_PARAM_MAX_TILE_BOOST]
 
 GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 
@@ -120,15 +176,16 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		update_movespeed(FALSE)
 	return TRUE
 
-/*! Used for variable slowdowns like hunger/health loss/etc, works somewhat like the old list-based modification adds. Returns the modifier datum if successful
-	How this SHOULD work is:
-	1. Ensures type_id_datum one way or another refers to a /variable datum. This makes sure it can't be cached. This includes if it's already in the modification list.
-	2. Instantiate a new datum if type_id_datum isn't already instantiated + in the list, using the type. Obviously, wouldn't work for ID only.
-	3. Add the datum if necessary using the regular add proc
-	4. If any of the rest of the args are not null (see: multiplicative slowdown), modify the datum
-	5. Update if necessary
-*/
-/mob/proc/add_or_update_variable_movespeed_modifier(datum/movespeed_modifier/type_id_datum, update = TRUE, multiplicative_slowdown)
+/**
+ * Used for variable slowdowns like hunger/health loss/etc, works somewhat like the old list-based modification adds. Returns the modifier datum if successful
+ * How this SHOULD work is:
+ * 1. Ensures type_id_datum one way or another refers to a /variable datum. This makes sure it can't be cached. This includes if it's already in the modification list.
+ * 2. Instantiate a new datum if type_id_datum isn't already instantiated + in the list, using the type. Obviously, wouldn't work for ID only.
+ * 3. Add the datum if necessary using the regular add proc
+ * 4. If any of the rest of the args are not null (see: multiplicative slowdown), modify the datum
+ * 5. Update if necessary
+ */
+/mob/proc/add_or_update_variable_movespeed_modifier(datum/movespeed_modifier/type_id_datum, update = TRUE, list/params)
 	var/modified = FALSE
 	var/inject = FALSE
 	var/datum/movespeed_modifier/final
@@ -151,8 +208,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		if(!LAZYACCESS(movespeed_modification, final.id))
 			inject = TRUE
 			modified = TRUE
-	if(!isnull(multiplicative_slowdown))
-		final.multiplicative_slowdown = multiplicative_slowdown
+	if(final.parse(params))
 		modified = TRUE
 	if(inject)
 		add_movespeed_modifier(final, FALSE)
@@ -169,7 +225,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		diff = var_value - cached_multiplicative_slowdown
 	. = ..()
 	if(. && slowdown_edit && isnum(diff))
-		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/admin_varedit, multiplicative_slowdown = diff)
+		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/admin_varedit, params = list(MOVESPEED_PARAM_DELAY_MOD = diff))
 
 ///Is there a movespeed modifier for this mob
 /mob/proc/has_movespeed_modifier(datum/movespeed_modifier/datum_type_id)
@@ -206,6 +262,9 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 /mob/proc/update_movespeed()
 	. = 0
 	var/list/conflict_tracker = list()
+	//! TODO: LEGACY
+	cached_movespeed_multiply = 1
+	//! END
 	for(var/datum/movespeed_modifier/M in get_movespeed_modifiers())
 		if(!(M.movement_type & movement_type)) // We don't affect any of these move types, skip
 			continue
@@ -221,12 +280,12 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 			else
 				continue
 		. = M.apply_multiplicative(., src)
-	// your delay decreases, "give" the delay back to the client
-	cached_multiplicative_slowdown = .
+	cached_multiplicative_slowdown = min(., 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
 	if(!client)
 		return
 	var/diff = (last_move_time - move_delay) - cached_multiplicative_slowdown
 	if(diff > 0)
+		// your delay decreases, "give" the delay back to the client
 		if(move_delay > world.time + 1.5)
 			move_delay -= diff
 #ifdef SMOOTH_MOVEMENT

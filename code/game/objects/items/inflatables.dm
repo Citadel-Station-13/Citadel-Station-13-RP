@@ -39,6 +39,7 @@
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "folded_door"
 	deploy_path = /obj/structure/inflatable/door
+
 /obj/item/inflatable/torn
 	name = "torn inflatable wall"
 	desc = "A folded membrane which rapidly expands into a large cubical shape on activation. It is too torn to be usable."
