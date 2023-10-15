@@ -660,4 +660,36 @@
 	display_name = "Invisible Satchel"
 	path = /obj/item/storage/backpack/satchel/invisible
 
+/**
+ * Belly dancer costume
+ */
+/datum/loadout_entry/seasonal/masquarade/dancer
+	antag_name = "Belly Dancer"
+	description = "The outfit of a belly dancer"
+	abstract_type = /datum/loadout_entry/seasonal/masquarade/dancer
+
+/datum/loadout_entry/seasonal/masquarade/dancer/scarf
+	display_name = "Headscarf"
+	path = /obj/item/clothing/head/donator/dancer
+	slot = SLOT_ID_HEAD
+
+/datum/loadout_entry/seasonal/masquarade/dancer/veil
+	display_name = "Veil"
+	path = /obj/item/clothing/mask/donator/dancer
+	slot = SLOT_ID_MASK
+
+/datum/loadout_entry/seasonal/masquarade/dancer/gloves
+	display_name = "Sleeves"
+	path = /obj/item/clothing/gloves/donator/dancer
+	slot = SLOT_ID_GLOVES
+/datum/loadout_entry/seasonal/masquarade/dancer/costume
+	display_name = "Costume"
+	path = /obj/item/clothing/under/donator/dancer
+	slot = SLOT_ID_UNIFORM
+
+/datum/loadout_entry/seasonal/masquarade/dancer/wraps
+	display_name = "Footwraps"
+	path = /obj/item/clothing/shoes/donator/dancer
+	slot = SLOT_ID_SHOES
+
 #undef STD_DEF
