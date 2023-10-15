@@ -109,6 +109,8 @@
 			var/mob/M = vismob
 			if(istype(vismob, /mob/observer))
 				continue
+			if(M.stat == DEAD)
+				continue // get mobs and objs in view fast is shitty; say refactor will deal with that
 			M.show_message(message, SAYCODE_TYPE_ALWAYS)
 
 		for(var/visobj in vis_objs)
