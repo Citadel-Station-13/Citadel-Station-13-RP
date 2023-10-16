@@ -13,7 +13,7 @@
 
 	// raw carbon is bad
 	relative_integrity = 0.7
-	relative_density = 0.8
+	density = 8 * 0.8
 	relative_conductivity = 0.05
 	relative_reactivity = 1.5
 	relative_permeability = 0.1

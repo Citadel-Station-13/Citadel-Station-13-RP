@@ -11,7 +11,7 @@
 	// the true neutral material
 
 	relative_integrity = 1
-	relative_density = 1
+	density = 8
 	relative_conductivity = 1
 	relative_permeability = 0
 	relative_reactivity = 1

@@ -14,8 +14,8 @@
 	tgui_icon_key = "marble"
 
 	relative_integrity = 0.7
-	relative_weight = 4
-	relative_density = 1
+	weight_multiplier = 4
+	density = 8 * 1
 	relative_conductivity = 0
 	relative_permeability = 0.05
 	relative_reactivity = 0.4
@@ -24,7 +24,7 @@
 	refraction = MATERIAL_RESISTANCE_VULNERABLE
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_VULNERABLE
-	
+
 /datum/material/marble/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(

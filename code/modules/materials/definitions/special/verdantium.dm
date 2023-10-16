@@ -13,8 +13,8 @@
 	sheet_plural_name = "sheets"
 
 	relative_integrity = 0.8
-	relative_density = 2.5
-	relative_weight = 0.5
+	density = 8 * 2.5
+	weight_multiplier = 0.5
 	relative_conductivity = 0.7
 	relative_permeability = 0
 	relative_reactivity = 2.5

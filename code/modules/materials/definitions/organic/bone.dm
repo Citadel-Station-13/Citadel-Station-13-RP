@@ -14,8 +14,8 @@
 	table_icon_base = "stone"
 
 	relative_integrity = 0.75
-	relative_weight = 0.75
-	relative_density = 1
+	weight_multiplier = 0.75
+	density = 8 * 1
 	relative_conductivity = 0.1
 	relative_permeability = 0.07
 	relative_reactivity = 1
@@ -24,7 +24,7 @@
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_NONE
-	
+
 /datum/material/bone/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(

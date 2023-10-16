@@ -10,7 +10,7 @@
 	tgui_icon_key = "bananium"
 
 	relative_integrity = 2
-	relative_density = 3
+	density = 8 * 3
 	relative_conductivity = 0.3
 	relative_permeability = 0
 	relative_reactivity = 0.5
@@ -37,7 +37,7 @@
 	tgui_icon_key = "silencium"
 
 	relative_integrity = 2
-	relative_density = 3
+	density = 8 * 3
 	relative_conductivity = 0.3
 	relative_permeability = 0
 	relative_reactivity = 0.5

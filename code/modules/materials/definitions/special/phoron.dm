@@ -13,8 +13,8 @@
 	sheet_plural_name = "crystals"
 
 	relative_integrity = 0.5
-	relative_weight = 0.7
-	relative_density = 3
+	weight_multiplier = 0.7
+	density = 8 * 3
 	relative_conductivity = 0.1
 	relative_permeability = 0
 	relative_reactivity = 4.25

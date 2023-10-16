@@ -11,8 +11,8 @@
 	tgui_icon_key = "uranium"
 
 	relative_integrity = 1.2
-	relative_weight = 1
-	relative_density = 2.25
+	weight_multiplier = 1
+	density = 8 * 2.25
 	relative_conductivity = 1.5
 	relative_permeability = 0
 	relative_reactivity = 0.05

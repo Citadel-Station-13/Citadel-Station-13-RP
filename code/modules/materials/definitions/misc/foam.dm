@@ -8,7 +8,7 @@
 	icon_colour = "#ff9900"
 
 	relative_integrity = 0.2
-	relative_density = 0.05
+	density = 8 * 0.05
 	relative_conductivity = 0
 	relative_permeability = 0
 	relative_reactivity = 1

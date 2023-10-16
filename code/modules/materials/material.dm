@@ -101,15 +101,16 @@
 	/// * impacts radiation armor
 	var/nullification = MATERIAL_RESISTANCE_NONE
 
-	/// relative density multiplier for how heavy this material is
+	/// density in g/cm3
+	///
 	/// * impacts carry weight of things made out of this
 	/// * impacts radiation armor (major)
 	/// * impacts bomb armor
 	/// * impacts blunt / crush damage
-	var/relative_density = 1
-	/// relative multiplier for how light this material is
+	var/density = 8 * 1
+	/// weight multiplier - allowing for materials that behave like a high-density material but are light
 	/// * basically, low values = high density stats without the penalties from weight
-	var/relative_weight = 1
+	var/weight_multiplier = 1
 
 	/// relative multiplier for how easily this material passes electricity
 	/// * impacts conductivity

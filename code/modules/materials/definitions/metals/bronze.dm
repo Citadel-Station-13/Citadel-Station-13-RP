@@ -10,7 +10,7 @@
 	tgui_icon_key = "bronze"
 
 	relative_integrity = 0.8
-	relative_density = 0.9
+	density = 8 * 0.9
 	relative_conductivity = 0.7
 	relative_reactivity = 1
 	relative_permeability = 0

@@ -9,8 +9,8 @@
 	tgui_icon_key = "ingots"
 
 	relative_integrity = 0.8
-	relative_weight = 1
-	relative_density = 1.75
+	weight_multiplier = 1
+	density = 8 * 1.75
 	relative_conductivity = 1.5
 	relative_permeability = 0
 	relative_reactivity = 0.05

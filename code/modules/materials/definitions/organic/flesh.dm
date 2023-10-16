@@ -15,8 +15,8 @@
 	explosion_resistance = 200
 
 	relative_integrity = 0.6
-	relative_density = 0.4
-	relative_weight = 1
+	density = 8 * 0.4
+	weight_multiplier = 1
 	relative_conductivity = 0.5
 	relative_permeability = 0
 	relative_reactivity = 1.5

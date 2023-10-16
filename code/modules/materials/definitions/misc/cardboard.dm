@@ -13,8 +13,8 @@
 	pass_stack_colors = TRUE
 
 	relative_integrity = 0.25
-	relative_weight = 1
-	relative_density = 0.2
+	weight_multiplier = 1
+	density = 8 * 0.2
 	relative_conductivity = 0.3
 	relative_permeability = 0.45
 	relative_reactivity = 1.7

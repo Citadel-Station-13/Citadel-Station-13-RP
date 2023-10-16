@@ -18,7 +18,7 @@
 	refraction = MATERIAL_RESISTANCE_MODERATE
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_LOW
-	relative_density = 0.8
+	density = 8 * 0.8
 	relative_conductivity = 0
 
 /datum/material/diamond/generate_recipes()

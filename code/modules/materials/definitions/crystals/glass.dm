@@ -27,7 +27,7 @@
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_NONE
 	nullification = MATERIAL_RESISTANCE_NONE
-	relative_density = 1
+	density = 8 * 1
 	relative_conductivity = 0
 
 /datum/material/glass/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
@@ -131,7 +131,7 @@
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_NONE
 	nullification = MATERIAL_RESISTANCE_NONE
-	relative_density = 1.15
+	density = 8 * 1.15
 
 /datum/material/glass/reinforced/is_reinforced()
 	return TRUE
@@ -157,7 +157,7 @@
 	refraction = MATERIAL_RESISTANCE_LOW
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
-	relative_density = 1.3
+	density = 8 * 1.3
 
 /datum/material/glass/phoron/reinforced
 	id = "glass_boro_reinf"
@@ -181,7 +181,7 @@
 	refraction = MATERIAL_RESISTANCE_LOW
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_NONE
-	relative_density = 1.6
+	density = 8 * 1.6
 
 /datum/material/glass/phoron/reinforced/is_reinforced()
 	return TRUE

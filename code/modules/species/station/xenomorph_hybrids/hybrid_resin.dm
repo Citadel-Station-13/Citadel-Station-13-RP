@@ -16,8 +16,8 @@
 	stack_type = /obj/item/stack/material/hybrid_resin
 
 	relative_integrity = 1
-	relative_weight = 0.5
-	relative_density = 1
+	weight_multiplier = 0.5
+	density = 8 * 1
 	relative_conductivity = 0.1
 	relative_permeability = 0.2
 	relative_reactivity = 0.45

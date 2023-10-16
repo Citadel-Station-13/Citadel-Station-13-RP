@@ -9,8 +9,8 @@
 	stack_origin_tech = list(TECH_MATERIAL = 3)
 
 	relative_integrity = 0.65
-	relative_weight = 0.75
-	relative_density = 1
+	weight_multiplier = 0.75
+	density = 8 * 1
 	relative_conductivity = 0.5
 	relative_permeability = 0
 	relative_reactivity = 0.25

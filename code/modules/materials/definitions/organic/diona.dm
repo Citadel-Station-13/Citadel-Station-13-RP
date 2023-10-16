@@ -7,8 +7,8 @@
 	icon_reinf = null
 
 	relative_integrity = 2
-	relative_density = 0.8
-	relative_weight = 1
+	density = 8 * 0.8
+	weight_multiplier = 1
 	relative_conductivity = 0.2
 	relative_permeability = 0.5
 	relative_reactivity = 0.8

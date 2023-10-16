@@ -9,7 +9,7 @@
 	tgui_icon_key = "gold"
 
 	relative_integrity = 0.8
-	relative_density = 1.75
+	density = 8 * 1.75
 	relative_conductivity = 2
 	relative_permeability = 0
 	relative_reactivity = 0

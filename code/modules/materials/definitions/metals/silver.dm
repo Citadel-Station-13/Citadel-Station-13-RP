@@ -9,8 +9,8 @@
 	tgui_icon_key = "silver"
 
 	relative_integrity = 0.7
-	relative_weight = 1
-	relative_density = 1.4
+	weight_multiplier = 1
+	density = 8 * 1.4
 	relative_conductivity = 2.5
 	relative_permeability = 0
 	relative_reactivity = 0.05

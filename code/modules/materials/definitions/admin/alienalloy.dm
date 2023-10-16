@@ -16,7 +16,7 @@
 	refraction = MATERIAL_RESISTANCE_EXTREME
 	absorption = MATERIAL_RESISTANCE_EXTREME
 	nullification = MATERIAL_RESISTANCE_EXTREME
-	relative_density = 0.5
+	density = 8 * 0.5
 	relative_conductivity = 0
 
 // Likewise.

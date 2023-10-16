@@ -10,7 +10,7 @@
 	tgui_icon_key = "titanium"
 
 	relative_integrity = 1
-	relative_density = 0.5
+	density = 8 * 0.5
 	relative_conductivity = 1.27
 	regex_this_hardness = MATERIAL_RESISTANCE_HIGH
 	toughness = MATERIAL_RESISTANCE_HIGH

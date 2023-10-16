@@ -12,8 +12,8 @@
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_MAGNET = 8, TECH_PHORON = 6, TECH_BLUESPACE = 6, TECH_ARCANE = 3)
 
 	relative_integrity = 3
-	relative_weight = 0.75
-	relative_density = 2.5
+	weight_multiplier = 0.75
+	density = 8 * 2.5
 	relative_conductivity = 2
 	relative_permeability = 0
 	relative_reactivity = 0.2

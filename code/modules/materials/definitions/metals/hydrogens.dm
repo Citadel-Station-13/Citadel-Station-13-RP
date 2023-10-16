@@ -2,7 +2,7 @@
 	abstract_type = /datum/material/hydrogen
 
 	relative_integrity = 0.2
-	relative_density = 0.2
+	density = 8 * 0.2
 	relative_conductivity = 5
 	relative_permeability = 0.7
 	relative_reactivity = 3

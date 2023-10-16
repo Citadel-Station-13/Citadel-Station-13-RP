@@ -10,8 +10,8 @@
 	melting_point = T0C+300
 
 	relative_integrity = 1
-	relative_density = 0.5
-	relative_weight = 1
+	density = 8 * 0.5
+	weight_multiplier = 1
 	relative_conductivity = 0.25
 	relative_permeability = 0.2
 	relative_reactivity = 0.3

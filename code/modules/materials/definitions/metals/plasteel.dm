@@ -15,8 +15,8 @@
 	tgui_icon_key = "plasteel"
 
 	relative_integrity = 1.5
-	relative_weight = 1
-	relative_density = 1.75
+	weight_multiplier = 1
+	density = 8 * 1.75
 	relative_conductivity = 0.1
 	relative_permeability = 0
 	relative_reactivity = 0.05

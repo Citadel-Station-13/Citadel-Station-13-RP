@@ -15,7 +15,7 @@
 	// somewhat brittle, but well-formed crystals
 
 	relative_integrity = 0.75
-	relative_density = 0.5
+	density = 8 * 0.5
 	relative_conductivity = 0
 	relative_permeability = 0
 	relative_reactivity = 0.05

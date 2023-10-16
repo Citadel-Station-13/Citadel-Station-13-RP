@@ -14,8 +14,8 @@
 	tgui_icon_key = "sandstone"
 
 	relative_integrity = 0.7
-	relative_weight = 4
-	relative_density = 0.7
+	weight_multiplier = 4
+	density = 8 * 0.7
 	relative_conductivity = 0
 	relative_permeability = 0.05
 	relative_reactivity = 0.4

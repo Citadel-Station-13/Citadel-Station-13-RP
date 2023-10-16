@@ -12,8 +12,8 @@
 	sheet_plural_name = "pile" //Just a bigger pile
 
 	relative_integrity = 0.25
-	relative_weight = 1
-	relative_density = 0.2
+	weight_multiplier = 1
+	density = 8 * 0.2
 	relative_conductivity = 0.7
 	relative_permeability = 0.8
 	relative_reactivity = 0.6
@@ -76,8 +76,8 @@
 	sheet_plural_name = "bricks"
 
 	relative_integrity = 0.5
-	relative_weight = 1
-	relative_density = 0.2
+	weight_multiplier = 1
+	density = 8 * 0.2
 	relative_conductivity = 0.5
 	relative_permeability = 0.4
 	relative_reactivity = 0.3
