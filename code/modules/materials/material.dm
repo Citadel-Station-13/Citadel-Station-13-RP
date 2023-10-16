@@ -66,14 +66,7 @@
 	//* Attributes
 	/// relative HP multiplier for something made out of this
 	var/relative_integrity = 1
-	/// relative reactivity multiplier for something made out of this
-	/// * impacts fire/acid armor
-	var/relative_reactivity = 1
-	/// relative permeability multiplier for something made out of this
-	/// * impacts permeability armor
-	/// * impacts bomb armor a little bit
-	/// * impacts acid armor
-	var/relative_permeability = 1
+
 	/// kinetic penetration resistance for something made out of this
 	/// based on MATERIAL_RESISTANCE_ definesw
 	/// * impacts sharp / blade damage
@@ -82,9 +75,11 @@
 	var/regex_this_hardness = MATERIAL_RESISTANCE_NONE
 	/// kinetic scattering/dampening for something made out of this
 	/// based on MATERIAL_RESISTANCE_ defines
+	/// * impacts blunt / crush damage
 	/// * impacts kinetic damage resistance
 	/// * impacts bomb armor
 	var/toughness = MATERIAL_RESISTANCE_NONE
+
 	/// how easily this material scatters energy
 	/// based on MATERIAL_RESISTANCE_ defines
 	/// * impacts laser armor penetration resistance
@@ -105,18 +100,29 @@
 	/// * impacts anomaly armor
 	/// * impacts radiation armor
 	var/nullification = MATERIAL_RESISTANCE_NONE
+
 	/// relative density multiplier for how heavy this material is
 	/// * impacts carry weight of things made out of this
 	/// * impacts radiation armor (major)
 	/// * impacts bomb armor
+	/// * impacts blunt / crush damage
 	var/relative_density = 1
+	/// relative multiplier for how light this material is
+	/// * basically, low values = high density stats without the penalties from weight
+	var/relative_weight = 1
+
 	/// relative multiplier for how easily this material passes electricity
 	/// * impacts conductivity
 	/// * impacts usage as a conductor
 	var/relative_conductivity = 0
-	/// relative multiplier for how light this material is
-	/// * basically, low values = high density stats without the penalties from weight
-	var/relative_weight = 1
+	/// relative reactivity multiplier for something made out of this
+	/// * impacts fire/acid armor
+	var/relative_reactivity = 1
+	/// relative permeability multiplier for something made out of this
+	/// * impacts permeability armor
+	/// * impacts bomb armor a little bit
+	/// * impacts acid armor
+	var/relative_permeability = 1
 
 	//* Flags
 	/// material flags
