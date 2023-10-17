@@ -19,9 +19,9 @@
 			icon_state = initial(icon_state)
 	else
 		if(unique_reskin)
-			icon_state = "[unique_reskin]-e"
+			icon_state = "[unique_reskin]-empty"
 		else
-			icon_state = "[initial(icon_state)]-e"
+			icon_state = "[initial(icon_state)]-empty"
 
 /obj/item/gun/ballistic/colt/detective
 	desc = "A Martian recreation of an old pistol. Uses .45 rounds."
@@ -423,9 +423,9 @@
 	else if(extended && ammo_magazine)
 		icon_state = "ntles_extended"
 	else if(extended && !ammo_magazine)
-		icon_state = "ntles_extended-e"
+		icon_state = "ntles_extended-empty"
 	else
-		icon_state = "ntles-e"
+		icon_state = "ntles-empty"
 
 /obj/item/gun/ballistic/ntles/attack_self(mob/user, obj/item/gun/G)
 	if(collapsible && !extended)
@@ -464,11 +464,6 @@
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m57x28mm/fiveseven/highcap))
 		icon_state = "fiveseven-extended"
-	else
-		if(ammo_magazine)
-			icon_state = "fiveseven"
-		else
-			icon_state = "fiveseven-e"
 
 //Apidean Weapons
 /obj/item/gun/ballistic/apinae_pistol

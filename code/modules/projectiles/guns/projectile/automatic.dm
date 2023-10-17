@@ -17,7 +17,7 @@
 /obj/item/gun/ballistic/automatic/advanced_smg
 	name = "advanced SMG"
 	desc = "The NT-S3W is an advanced submachine gun design, using a reflective laser optic for increased accuracy over competing models. Chambered for 9mm rounds."
-	icon_state = "advanced_smg-e"
+	icon_state = "advanced_smg-empty"
 	w_class = ITEMSIZE_NORMAL
 	load_method = MAGAZINE
 	caliber = "9mm"
@@ -33,7 +33,7 @@
 
 /obj/item/gun/ballistic/automatic/advanced_smg/update_icon_state()
 	. = ..()
-	icon_state = (ammo_magazine)? "advanced_smg" : "advanced_smg-e"
+	icon_state = (ammo_magazine)? "advanced_smg" : "advanced_smg-empty"
 
 /obj/item/gun/ballistic/automatic/advanced_smg/loaded
 	magazine_type = /obj/item/ammo_magazine/m9mmAdvanced
@@ -96,7 +96,7 @@
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m556/small))
 		icon_state = "arifle-small" // If using the small magazines, use the small magazine sprite.
 	else
-		icon_state = (ammo_magazine)? "arifle" : "arifle-e"
+		icon_state = (ammo_magazine)? "arifle" : "arifle-empty"
 
 /obj/item/gun/ballistic/automatic/sts35/update_icon(ignore_inhands)
 	. = ..()
@@ -275,8 +275,8 @@
 		icon_state = "l6[cover_open ? "open" : "closed"]mag"
 		item_state = icon_state
 	else
-		icon_state = "l6[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 10) : "-e"]"
-		item_state = "l6[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-e"]"
+		icon_state = "l6[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 10) : "-empty"]"
+		item_state = "l6[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
 
 /obj/item/gun/ballistic/automatic/lmg/load_ammo(var/obj/item/A, mob/user)
 	if(!cover_open)
@@ -305,8 +305,8 @@
 
 /obj/item/gun/ballistic/automatic/lmg/mg42/update_icon_state()
 	. = ..()
-	icon_state = "mg42[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 25) : "-e"]"
-	item_state = "mg42[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-e"]"
+	icon_state = "mg42[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 25) : "-empty"]"
+	item_state = "mg42[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
 
 /obj/item/gun/ballistic/automatic/lmg/m60
 	name = "M60"
@@ -327,8 +327,8 @@
 
 /obj/item/gun/ballistic/automatic/lmg/m60/update_icon_state()
 	. = ..()
-	icon_state = "M60[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 15) : "-e"]"
-	item_state = "M60[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-e"]"
+	icon_state = "M60[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 15) : "-empty"]"
+	item_state = "M60[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
 
 //Future AA-12
 /obj/item/gun/ballistic/automatic/as24
@@ -361,7 +361,7 @@
 	if(ammo_magazine)
 		icon_state = "ashot"
 	else
-		icon_state = "ashot-e"
+		icon_state = "ashot-empty"
 	return
 
 /obj/item/gun/ballistic/automatic/mini_uzi
@@ -385,7 +385,7 @@
 	if(ammo_magazine)
 		icon_state = "mini-uzi"
 	else
-		icon_state = "mini-uzi-e"
+		icon_state = "mini-uzi-empty"
 
 /obj/item/gun/ballistic/automatic/mini_uzi/custom
 	name = "\improper custom Uzi"
@@ -398,7 +398,7 @@
 	if(ammo_magazine)
 		icon_state = "mini-uzi-custom"
 	else
-		icon_state = "mini-uzi-custom-e"
+		icon_state = "mini-uzi-custom-empty"
 
 /obj/item/gun/ballistic/automatic/mini_uzi/taj
 	name = "\improper Adhomai Uzi"
@@ -412,8 +412,8 @@
 		icon_state = "mini-uzi-taj"
 		item_state = "mini-uzi-taj"
 	else
-		icon_state = "mini-uzi-taj-e"
-		item_state = "mini-uzi-taj-e"
+		icon_state = "mini-uzi-taj-empty"
+		item_state = "mini-uzi-taj-empty"
 
 /obj/item/gun/ballistic/automatic/p90
 	name = "personal defense weapon"
@@ -469,7 +469,7 @@
 
 /obj/item/gun/ballistic/automatic/tommygun/update_icon_state()
 	. = ..()
-	icon_state = (ammo_magazine)? "tommygun" : "tommygun-e"
+	icon_state = (ammo_magazine)? "tommygun" : "tommygun-empty"
 //	update_held_icon()
 
 /obj/item/gun/ballistic/automatic/bullpup // Admin abuse assault rifle. ToDo: Make this less shit. Maybe remove its autofire, and make it spawn with only 10 rounds at start.
@@ -498,10 +498,6 @@
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
 		icon_state = "bullpup-small"
-	else if(istype(ammo_magazine,/obj/item/ammo_magazine/m762m))
-		icon_state = "bullpup"
-	else
-		item_state = "bullpup-e"
 
 /obj/item/gun/ballistic/automatic/bullpup/update_icon()
 	. = ..()
@@ -533,7 +529,7 @@
 	if(ammo_magazine)
 		icon_state = initial(icon_state)
 	else
-		icon_state = "[initial(icon_state)]-e"
+		icon_state = "[initial(icon_state)]-empty"
 
 /obj/item/gun/ballistic/automatic/automat
 	name = "Avtomat Rifle"
@@ -596,7 +592,7 @@
 	if(ammo_magazine)
 		icon_state = "holyshotgun"
 	else
-		icon_state = "holyshotgun-e"
+		icon_state = "holyshotgun-empty"
 
 //Clown Rifle
 /obj/item/gun/ballistic/automatic/clown_rifle
@@ -629,7 +625,7 @@
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
-		icon_state = "[initial(icon_state)]-e"
+		icon_state = "[initial(icon_state)]-empty"
 
 //Muh Alternator
 /obj/item/gun/ballistic/automatic/wt274
@@ -654,7 +650,7 @@
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
-		icon_state = "[initial(icon_state)]-e"
+		icon_state = "[initial(icon_state)]-empty"
 
 //NT SpecOps SMG
 /obj/item/gun/ballistic/automatic/combat
@@ -679,7 +675,7 @@
 
 /obj/item/gun/ballistic/automatic/combat/update_icon_state()
 	. = ..()
-	icon_state = (ammo_magazine)? "combatsmg" : "combatsmg-e"
+	icon_state = (ammo_magazine)? "combatsmg" : "combatsmg-empty"
 
 //Foam Weapons
 /obj/item/gun/ballistic/automatic/advanced_smg/foam
@@ -694,7 +690,7 @@
 
 /obj/item/gun/ballistic/automatic/advanced_smg/foam/update_icon_state()
 	. = ..()
-	icon_state = (ammo_magazine)? "toy_smg" : "toy_smg-e"
+	icon_state = (ammo_magazine)? "toy_smg" : "toy_smg-empty"
 
 /obj/item/gun/ballistic/automatic/advanced_smg/foam/handle_suicide(mob/living/user)
 	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
@@ -705,7 +701,7 @@
 
 /obj/item/gun/ballistic/automatic/advanced_smg/foam/blue/update_icon_state()
 	. = ..()
-	icon_state = (ammo_magazine)? "toy_smg_blue" : "toy_smg_blue-e"
+	icon_state = (ammo_magazine)? "toy_smg_blue" : "toy_smg_blue-empty"
 
 //Foam c20r
 /obj/item/gun/ballistic/automatic/c20r/foam
@@ -750,8 +746,8 @@
 
 /obj/item/gun/ballistic/automatic/lmg/foam/update_icon_state()
 	. = ..()
-	icon_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 10) : "-e"]"
-	item_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-e"]"
+	icon_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 10) : "-empty"]"
+	item_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
 
 /obj/item/gun/ballistic/automatic/lmg/foam/update_icon()
 	. = ..()

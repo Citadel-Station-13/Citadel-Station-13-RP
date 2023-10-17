@@ -102,7 +102,7 @@
 	if(ammo_magazine)
 		icon_state = "SVD"
 	else
-		icon_state = "SVD-e"
+		icon_state = "SVD-empty"
 
 /obj/item/gun/ballistic/SVD/verb/scope()
 	set category = "Object"
@@ -124,4 +124,4 @@
 	if(ammo_magazine)
 		icon_state = "SVD-taj"
 	else
-		icon_state = "SVD-taj-e"
+		icon_state = "SVD-taj-empty"

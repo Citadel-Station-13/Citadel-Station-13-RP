@@ -53,9 +53,9 @@
 			icon_state = "[initial(icon_state)]"
 	else if(magazine_type && !ammo_magazine)
 		if(silenced)
-			icon_state = "[silenced_icon]-e"
+			icon_state = "[silenced_icon]-empty"
 		else
-			icon_state = "[initial(icon_state)]-e"
+			icon_state = "[initial(icon_state)]-empty"
 
 /obj/item/gun/ballistic/consume_next_projectile()
 	//get the next casing
