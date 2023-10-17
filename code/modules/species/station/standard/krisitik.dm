@@ -43,7 +43,7 @@
 	flesh_color = "#AFA59E"
 	base_color  = "B2B2B2"
 
-	slowdown  = -0.5
+	slowdown  = -0.35
 
 	brute_mod = 1.1
 	burn_mod  = 1.1
