@@ -454,6 +454,8 @@
 // Master vore proc that actually does vore procedures
 //
 /mob/living/proc/perform_the_nom(var/mob/living/user, var/mob/living/prey, var/mob/living/pred, var/obj/belly/belly, var/delay)
+	if(!prey.devourable)
+		return
 	//Sanity
 	if(!user || !prey || !pred || !istype(belly) || !(belly in pred.vore_organs))
 		log_debug(SPAN_DEBUG("[user] attempted to feed [prey] to [pred], via [lowertext(belly.name)] but it went wrong."))
