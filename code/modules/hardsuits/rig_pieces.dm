@@ -54,6 +54,9 @@
 	heat_protection    = HANDS
 	cold_protection    = HANDS
 
+	weight = 0
+	encumbrance = 0
+
 	species_restricted = list(
 		SPECIES_AKULA,
 		SPECIES_ALRAUNE,
@@ -91,6 +94,9 @@
 
 	icon_base = null
 	damage_force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
+
+	weight = 0
+	encumbrance = 0
 
 	species_restricted = list(
 		SPECIES_AKULA,
@@ -143,6 +149,9 @@
 	var/obj/item/material/knife/tacknife
 	max_pressure_protection = null
 	min_pressure_protection = null
+
+	weight = 0
+	encumbrance = 0
 
 	species_restricted = list(
 		SPECIES_AKULA,
