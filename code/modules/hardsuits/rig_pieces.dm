@@ -16,6 +16,9 @@
 	min_pressure_protection = null
 	damage_force = 3 // if you're headbutting someone with something meant to protect you from space...
 
+	weight = 0
+	encumbrance = 0
+
 	species_restricted = list(
 		SPECIES_AKULA,
 		SPECIES_ALRAUNE,
