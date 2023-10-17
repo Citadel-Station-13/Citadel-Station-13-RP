@@ -28,8 +28,6 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/telecube)
 
-	slowdown = 5
-
 	throw_range = 2
 
 	var/obj/item/telecube/mate = null

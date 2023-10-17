@@ -9,18 +9,18 @@
 	overshoes = 1
 	shoes_under_pants = -1	//These things are huge
 	preserve_item = 1
+	encumbrance = ITEM_ENCUMBRANCE_SHOES_MAGBOOTS
 	var/magpulse = 0
-	var/slowdown_on = 3
 	var/icon_base = "magboots"
 	action_button_name = "Toggle Magboots"
 	step_volume_mod = 1.3
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
 
-/obj/item/clothing/shoes/magboots/proc/set_slowdown()
-	slowdown = worn_over? max(SHOES_SLOWDOWN, worn_over.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.
-	if (magpulse)
-		slowdown += slowdown_on
+	var/encumbrance_on = ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE
+
+/obj/item/clothing/shoes/magboots/proc/update_magboot_encumbrance()
+	set_encumbrance(initial(encumbrance) + (magpulse? encumbrance_on : 0))
 
 /obj/item/clothing/shoes/magboots/attack_self(mob/user)
 	. = ..()
@@ -29,14 +29,14 @@
 	if(magpulse)
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
-		set_slowdown()
+		update_magboot_encumbrance()
 		damage_force = 3
 		if(icon_base) icon_state = "[icon_base]0"
 		to_chat(user, "You disable the mag-pulse traction system.")
 	else
 		clothing_flags |= NOSLIP
 		magpulse = 1
-		set_slowdown()
+		update_magboot_encumbrance()
 		damage_force = 5
 		if(icon_base) icon_state = "[icon_base]1"
 		to_chat(user, "You enable the mag-pulse traction system.")
@@ -56,11 +56,11 @@
 
 /obj/item/clothing/shoes/magboots/equipped(mob/user, slot, flags)
 	. = ..()
-	set_slowdown()
+	update_magboot_encumbrance()
 
 /obj/item/clothing/shoes/magboots/unequipped(mob/user, slot, flags)
 	. = ..()
-	set_slowdown()
+	update_magboot_encumbrance()
 
 /obj/item/clothing/shoes/magboots/examine(mob/user, dist)
 	. = ..()
@@ -118,7 +118,7 @@
 /obj/item/clothing/shoes/magboots/advanced
 	name = "advanced magboots"
 	icon_state = "advmag0"
-	slowdown_on = 0
+	encumbrance_on = 0
 	icon_base = "advmag"
 
 /obj/item/clothing/shoes/magboots/syndicate
@@ -126,4 +126,4 @@
 	desc = "Prior to its dissolution, many Syndicate agents were tasked with stealing NanoTrasen's prototype advanced magboots. Reverse engineering these rare tactical boots was achieved shortly before the end of the conflict."
 	icon_state = "syndiemag0"
 	icon_base = "syndiemag"
-	slowdown_on = 0
+	encumbrance_on = 0
