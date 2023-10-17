@@ -56,7 +56,7 @@
 		return melee_cache[cache_key]
 	. = new /list(MATERIAL_MELEE_STATS_LISTLEN)
 
-	// https://www.desmos.com/calculator/dzyyj0vpem
+	// see [code/__DEFINEs/materials/dynamics.dm] for equations / desmos links
 	// this is far less documented than carry weight but this shit is hellish so whatever.
 
 	// todo: damage mode flag has some overlap/confusing semantics
