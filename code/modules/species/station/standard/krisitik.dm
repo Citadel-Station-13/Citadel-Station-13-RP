@@ -22,15 +22,16 @@
 	color_mult = 1
 
 	blurb = {"
-	Krisitik are a race of subterrainian dwelling murine people from the Perseus Arm. Already significantly advanved
+	Krisitik are a race of subterranean murine people from the Perseus Arm. Already significantly advanced
 	even before developing FTL, the Krisitik have exploded onto the galaxy using their mastery of nuclear technology
-	to do their best to bridge the gap between them and the galactic superpowers. The crowding in the massive underground\
-	cities of their toxic homeworld of Murith has lead many Krisitik to emigrate to their colonies or towards the
+	to bridge the gap between them and the galactic superpowers. The crowding in the massive underground\
+	cities of their toxic homeworld of Murith has led many Krisitik to emigrate to their colonies or towards the
 	corporate frontier. As their isolationist government becomes more open, this emigration is only increasing.
 
-	The Krisitik are highly varied people owing to their unstable genetics which can result in lethal defects
-	if left untreated. They are a competitive, survivalist and paranoid people known to stretch bend and
+	The Krisitik are highly varied people owing to their unstable genetics, which can result in lethal defects
+	if left untreated. They are a competitive, survivalist, and paranoid people known to stretch, bend, and
 	break the rules if it means being prepared for disasters to come, even if they are unlikely."}
+
 
 	// wikilink = ""
 	catalogue_data = list(/datum/category_item/catalogue/fauna/krisitik)
