@@ -60,7 +60,7 @@
 	damage_force = returned[MATERIAL_MELEE_STATS_DAMAGE]
 	damage_mode = returned[MATERIAL_MELEE_STATS_MODE]
 	damage_flag = returned[MATERIAL_MELEE_STATS_FLAG]
-	damage_tier = returned[MATERIAL_MELEE_STATS_TIER]
+	damage_tier = returned[MATERIAL_MELEE_STATS_TIERMOD]
 
 /obj/item/material/proc/update_force()
 	if(no_force_calculations)
