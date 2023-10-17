@@ -137,7 +137,8 @@
 	inv_hide_flags          = HIDEJUMPSUIT|HIDETAIL
 	heat_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
-	slowdown = NONE
+	weight = 0
+	encumbrance = 0
 
 	// Will reach 10 breach damage after 25 laser carbine blasts, 3 revolver hits, or ~1 PTR hit.
 	// Completely immune to smg or sts hits.
@@ -149,9 +150,6 @@
 	var/obj/item/material/knife/tacknife
 	max_pressure_protection = null
 	min_pressure_protection = null
-
-	weight = 0
-	encumbrance = 0
 
 	species_restricted = list(
 		SPECIES_AKULA,
