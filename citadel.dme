@@ -230,6 +230,7 @@
 #include "code\__DEFINES\mapping\multiz.dm"
 #include "code\__DEFINES\mapping\system.dm"
 #include "code\__DEFINES\materials\balancing.dm"
+#include "code\__DEFINES\materials\dynamics.dm"
 #include "code\__DEFINES\materials\flags.dm"
 #include "code\__DEFINES\materials\helpers.dm"
 #include "code\__DEFINES\materials\misc.dm"

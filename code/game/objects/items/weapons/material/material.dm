@@ -19,10 +19,11 @@
 
 	/// applies material color
 	var/material_color = TRUE
-	/// material significance
+	/// material attribute significance
 	var/material_significance = MATERIAL_SIGNIFICANCE_BASELINE
-	/// material *amount* significance
-	var/material_factoring = MATERIAL_FACTORING_BASELINE
+	/// material quantity significance
+	/// this is multiplier to material amount to determine stuff like weight.
+	var/material_factoring = 0.05
 
 	var/unbreakable = 0		//Doesn't lose health
 	var/fragile = 0			//Shatters when it dies

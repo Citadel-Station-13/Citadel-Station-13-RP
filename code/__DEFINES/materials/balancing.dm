@@ -37,33 +37,6 @@
 /// the level at which resistance is nearly impermeable
 #define MATERIAL_RESISTANCE_IMPERMEABLE 800
 
-//* Attributes - Significance; This is how much material is in something
-
-/// used for shards
-#define MATERIAL_SIGNIFICANCE_SHARD 2.5
-/// baseline significance of material calculations done on material-side / default computations
-#define MATERIAL_SIGNIFICANCE_BASELINE 10
-
-#define MATERIAL_SIGNIFICANCE_WEAPON_LIGHT 6.5
-#define MATERIAL_SIGNIFICANCE_WEAPON_MEDIUM 10
-#define MATERIAL_SIGNIFICANCE_WEAPON_HEAVY 15
-
-/// used for most doors
-#define MATERIAL_SIGNIFICANCE_DOOR 15
-/// significance used for normal wall layer
-#define MATERIAL_SIGNIFICANCE_WALL 20
-/// significance used for reinforcing wall layer
-#define MATERIAL_SIGNIFICANCE_WALL_REINF 10
-/// significance used for girder wall layer
-#define MATERIAL_SIGNIFICANCE_WALL_GIRDER 5
-
-//* Attributes - Factoring; This is applied to stats like density/weight, as significance affects armor.
-
-/// baseline
-#define MATERIAL_FACTORING_BASELINE 10
-/// material gloves
-#define MATERIAL_FACTORING_GLOVES 2
-
 //* Conductvitiy
 /// relative_conductivity threshold considered NOCONDUCT
 #define MATERIAL_CONDUCTIVITY_NOCONDUCT 0.05

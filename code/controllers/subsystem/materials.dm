@@ -22,6 +22,11 @@ SUBSYSTEM_DEF(materials)
 	/// currentrun
 	var/list/currentrun
 
+	/// layered armor cache
+	var/list/layered_armor_cache = list()
+	/// combined armor cache
+	var/list/combined_armor_cache = list()
+
 /datum/controller/subsystem/materials/Initialize()
 	initialize_material_traits()
 	initialize_materials()
@@ -274,8 +279,3 @@ SUBSYSTEM_DEF(materials)
 		"materials" = data,
 		"sheetAmount" = SHEET_MATERIAL_AMOUNT,
 	)
-
-/**
- * Ticks materials
- */
-/datum/proc/process_materials(dt)

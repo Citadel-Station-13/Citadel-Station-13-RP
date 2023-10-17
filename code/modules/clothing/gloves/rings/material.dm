@@ -4,7 +4,7 @@
 	icon = 'icons/obj/clothing/rings.dmi'
 	icon_state = "material"
 	material_parts = /datum/material/steel
-	material_costs = SHEET_MATERIAL_AMOUNT * 1
+	material_costs = SHEET_MATERIAL_AMOUNT * 0.2
 	material_primary = MATERIAL_PART_DEFAULT
 
 /obj/item/clothing/gloves/ring/material/Initialize(mapload, material)

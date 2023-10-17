@@ -113,6 +113,7 @@
 	var/weight_multiplier = 1
 
 	/// relative multiplier for how easily this material passes electricity
+	/// '1' is an arbitrary value, probably 'the conductivity of high quality power lines'
 	/// * impacts conductivity
 	/// * impacts usage as a conductor
 	var/relative_conductivity = 0
