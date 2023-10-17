@@ -17,7 +17,7 @@
 /obj/item/gun/ballistic/automatic/advanced_smg
 	name = "advanced SMG"
 	desc = "The NT-S3W is an advanced submachine gun design, using a reflective laser optic for increased accuracy over competing models. Chambered for 9mm rounds."
-	icon_state = "advanced_smg-empty"
+	icon_state = "advanced_smg"
 	w_class = ITEMSIZE_NORMAL
 	load_method = MAGAZINE
 	caliber = "9mm"
@@ -30,10 +30,6 @@
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,20), dispersion=list(0.0, 0.3, 0.6))
 	)
-
-/obj/item/gun/ballistic/automatic/advanced_smg/update_icon_state()
-	. = ..()
-	icon_state = (ammo_magazine)? "advanced_smg" : "advanced_smg-empty"
 
 /obj/item/gun/ballistic/automatic/advanced_smg/loaded
 	magazine_type = /obj/item/ammo_magazine/m9mmAdvanced
@@ -95,8 +91,6 @@
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m556/small))
 		icon_state = "arifle-small" // If using the small magazines, use the small magazine sprite.
-	else
-		icon_state = (ammo_magazine)? "arifle" : "arifle-empty"
 
 /obj/item/gun/ballistic/automatic/sts35/update_icon(ignore_inhands)
 	. = ..()
