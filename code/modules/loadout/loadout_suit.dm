@@ -240,6 +240,10 @@
 	name = "Winter Coat - Olive Green"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/olive
 
+/datum/loadout_entry/suit/wintercoat/cosmic
+	name = "Winter Coat - Cosmic"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/cosmic
+
 /datum/loadout_entry/suit/techrobes
 	name = "Techpriest"
 	path = /obj/item/clothing/suit/storage/hooded/techpriest
