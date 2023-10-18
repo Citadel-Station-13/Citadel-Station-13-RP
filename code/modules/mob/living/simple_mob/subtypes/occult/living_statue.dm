@@ -38,11 +38,16 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	movement_cooldown = -100
+	movement_cooldown = -5
 
 	ai_holder_type = /datum/ai_holder/simple_mob/statue
 
-
+/mob/living/simple_mob/living_statue/death()
+	new /obj/item/ectoplasm (src.loc)
+	new /obj/item/stack/material/marble (src.loc)
+	..(null,"shatters into a pile of rubble.")
+	ghostize()
+	qdel(src)
 
 //# Statue Subtypes
 
@@ -75,6 +80,7 @@
 	// Give spells
 	add_spell(new/spell/aoe_turf/flicker_lights)
 	add_spell(new/spell/aoe_turf/blindness)
+	add_spell(new/spell/aoe_turf/veil_of_darkness)
 
 
 //? Cannot talk
@@ -147,3 +153,35 @@
 /spell/aoe_turf/blindness/cast(list/targets, mob/user = usr)
 	for(var/mob/living/victim as anything in targets)
 		victim.Blind(4)
+
+/// Veil of Darkness Spell
+/spell/aoe_turf/veil_of_darkness
+	name = "Veil of Darkness"
+	desc = "You sheathe yourself in a powerful veil of darkness."
+
+	override_base = "grey"
+	hud_state = "wiz_smoke"
+
+	message = "<span class='notice'>You call upon the void.</span>"
+
+	cooldown_min = 5 MINUTE
+
+
+/spell/aoe_turf/veil_of_darkness/cast(list/targets, mob/user = usr)
+	var/mob/living/simple_mob/living_statue/S = holder
+	playsound(usr.loc, 'sound/effects/bamf.ogg', 50, 1, 5)
+	S.add_modifier(/datum/modifier/veil_of_darkness, 3 SECONDS)
+
+/datum/modifier/veil_of_darkness
+	name = "Veil of Darkness"
+	desc = "You pull upon the unreality of The Dark to mask your movements. The attempt is heavily taxing."
+	mob_overlay_state = "purple_electricity_constant"
+
+	on_created_text = "<span class='warning'>Your edges warp and dim!</span>"
+	on_expired_text = "<span class='notice'>You are no longer shrouded in darkness.</span>"
+
+/datum/modifier/veil_of_darkness/on_applied()
+	holder.set_light(8, -10, "#FFFFFF")
+
+/datum/modifier/veil_of_darkness/on_expire()
+	holder.set_light(0)
